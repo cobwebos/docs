@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: 79fbe2db1ec9758d1e15ba7d89363429415918c7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c8ef95f6a01b64b722544d9397d928387a69d7c7
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729469"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56458427"
 ---
 1. 启动 Visual Studio 2017。
 
@@ -49,7 +49,7 @@ ms.locfileid: "53729469"
 1. 包管理器控制台中将显示以下输出行。
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 1.2.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 1.3.0' to helloworld
    ```
 
 1. 由于应用程序使用麦克风进行语音输入，因此请向项目添加“麦克风”功能。 在解决方案资源管理器中，双击“Package.appxmanifest”，编辑应用程序清单。 然后切换到“功能”选项卡，选择“麦克风”功能的框，然后保存所做的更改。

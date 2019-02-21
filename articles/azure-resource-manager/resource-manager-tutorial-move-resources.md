@@ -13,16 +13,14 @@ ms.devlang: na
 ms.date: 12/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 99d4f3b6cf42ee21c34809b5604c4603da784e7b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cf1894a218af35459e0d0dc432c5813169856cca
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107814"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267694"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group-or-subscription"></a>教程：将 Azure 资源移到另一个资源组或订阅中
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 了解有关如何将 Azure 资源在资源组之间移动。 此外还可以将 Azure 资源在订阅间移动。 在本教程中，使用资源管理器模板来部署两个资源组和一个存储帐户。 然后，将存储帐户从一个资源组移动到另一个资源组。
 
@@ -37,8 +35,6 @@ ms.locfileid: "56107814"
 > * 清理资源。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-resources"></a>准备资源
 
@@ -98,6 +94,8 @@ New-AzDeployment `
 ## <a name="move-the-resource"></a>移动资源
 
 存储帐户位于源资源组 (rg1) 内，运行以下 PowerShell 脚本将资源移动到目标资源组 (rg2)。 确保使用的项目名称与部署资源时使用的相同。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 $projectName = Read-Host -prompt "Enter a project name"
