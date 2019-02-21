@@ -1,15 +1,16 @@
 ---
 author: PatrickFarley
 ms.service: cognitive-services
+ms.subservice: custom-vision
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: a5980352ee6720f903ee185bd70cf06522914378
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 44e38d2ea7c45b75cd1f59761a214c52f64497f8
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284393"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56323413"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 如果你希望实现自己的图像分类项目（或改为尝试[对象检测](../csharp-tutorial-od.md)项目），可能希望从此示例中删除树识别项目。 免费试用版允许存在两个自定义视觉项目。
