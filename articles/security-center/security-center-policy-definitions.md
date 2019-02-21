@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbc9fa5586b848de79c52142f75b22b744fdae38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e83ff9f3bf02a134919d497662744028e1b9acda
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105944"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343011"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>通过 Azure 安全中心监视的 Azure 安全策略
 本文提供了可在安全中心监视的 Azure Policy 定义的列表。 有关安全策略的详细信息，请参阅[使用安全策略](tutorial-security-policy.md)。
@@ -96,4 +96,4 @@ ms.locfileid: "56105944"
 * [Azure 安全中心常见问题解答](security-center-faq.md)：获取服务使用方面的常见问题解答。
 * [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/)：查找关于 Azure 安全性及合规性的博客文章。
 
-若要了解有关 Azure Policy 的详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)
+若要了解有关 Azure Policy 的详细信息，请参阅[什么是 Azure Policy？](../governance/policy/overview.md)
