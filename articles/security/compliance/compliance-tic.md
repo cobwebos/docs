@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751916"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341704"
 ---
 # <a name="trusted-internet-connections-guidance"></a>受信任 Internet 连接指南
 
@@ -198,7 +198,7 @@ Azure 提供云本机工具，以帮助确保你具备了解网络流量所需�
 
 ### <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](https://azure.microsoft.com/services/azure-policy/) 是一项 Azure 服务，可更好地审核组织并实施符合性计划。 Azure Policy 目前在市场上销售的 Azure 服务中提供公共预览版。 Azure Policy 在 Azure 政府中尚不可用。 客户现在可以规划和测试其 Azure Policy 规则，以确保未来的 TIC 符合性。 
+[Azure Policy](../../governance/policy/overview.md) 是一项 Azure 服务，可更好地审核组织并实施符合性计划。 客户现在可以规划和测试其 Azure Policy 规则，以确保未来的 TIC 符合性。
 
 Azure Policy 以订阅级别为目标。 该服务提供了一个集中的接口，用于执行符合性任务，包括：
 - 管理计划
@@ -213,13 +213,13 @@ Azure Policy 以订阅级别为目标。 该服务提供了一个集中的接口
 
 |策略  |示例方案  |模板  |
 |---------|---------|---------|
-|强制执行用户定义的路由表。 | 确保所有虚拟网络点上的默认路由指向已批准的虚拟网关，以便路由到本地。    | 开始使用此[模板](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table)。 |
-|如果未对区域启用网络观察程序，则进行审核。  | 确保为所有使用的区域启用了网络观察程序。  | 开始使用此[模板](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled)。 |
-|每个子网上的 NSG X。  | 确保将阻止 Internet 流量的 NSG（或一组已批准的 NSG）应用于每个虚拟网络中的所有子网。 | 开始使用此[模板](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet)。 |
-|每个 NIC 上的 NSG X。 | 确保将阻止 Internet 流量的 NSG 应用于所有虚拟机上的所有 NIC。 | 开始使用此[模板](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic)。 |
-|将已批准的虚拟网络用于虚拟机网络接口。  | 确保所有 NIC 都位于已批准的虚拟网络上。 | 开始使用此[模板](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics)。 |
-|允许的位置。 | 确保将所有资源部署到符合虚拟网络和网络观察程序配置的区域。  | 开始使用此[模板](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs)。 |
-|不允许的资源类型，如 PublicIP。 | 禁止部署没有符合性计划的资源类型。 使用此策略禁止部署公共 IP 地址资源。 虽然 NSG 规则可用于有效阻止入站 Internet 流量，但阻止使用公共 IP 可进一步减少攻击面。   | 开始使用此[模板](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type)。  |
+|强制执行用户定义的路由表。 | 确保所有虚拟网络点上的默认路由指向已批准的虚拟网关，以便路由到本地。    | 开始使用此[模板](../../governance/policy/samples/no-user-defined-route-table.md)。 |
+|如果未对区域启用网络观察程序，则进行审核。  | 确保为所有使用的区域启用了网络观察程序。  | 开始使用此[模板](../../governance/policy/samples/network-watcher-not-enabled.md)。 |
+|每个子网上的 NSG X。  | 确保将阻止 Internet 流量的 NSG（或一组已批准的 NSG）应用于每个虚拟网络中的所有子网。 | 开始使用此[模板](../../governance/policy/samples/nsg-on-subnet.md)。 |
+|每个 NIC 上的 NSG X。 | 确保将阻止 Internet 流量的 NSG 应用于所有虚拟机上的所有 NIC。 | 开始使用此[模板](../../governance/policy/samples/nsg-on-nic.md)。 |
+|将已批准的虚拟网络用于虚拟机网络接口。  | 确保所有 NIC 都位于已批准的虚拟网络上。 | 开始使用此[模板](../../governance/policy/samples/use-approved-vnet-vm-nics.md)。 |
+|允许的位置。 | 确保将所有资源部署到符合虚拟网络和网络观察程序配置的区域。  | 开始使用此[模板](../../governance/policy/samples/allowed-locations.md)。 |
+|不允许的资源类型，如 PublicIP。 | 禁止部署没有符合性计划的资源类型。 使用此策略禁止部署公共 IP 地址资源。 虽然 NSG 规则可用于有效阻止入站 Internet 流量，但阻止使用公共 IP 可进一步减少攻击面。   | 开始使用此[模板](../../governance/policy/samples/not-allowed-resource-types.md)。  |
 
 ### <a name="network-watcher-traffic-analytics"></a>网络观察程序流量分析
 

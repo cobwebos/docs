@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: d515363e1413634d8222e043fff0b91aa464002c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b569a021dab5e6008dc61af3af8168585c5edc1b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509315"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416235"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 从不同的部署模型连接虚拟网络
 
@@ -165,6 +165,8 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 
 ## <a name="creatermgw"></a>第 2 节 - 配置 RM VNet 网关
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 先决条件是假设你已创建了一个 RM VNet。 在此步骤中，你将为 RM VNet 创建一个 VPN 网关。 请务必在检索到经典 VNet 的网关的公共 IP 地址之后再开始执行以下步骤。 
 
 1. 在 PowerShell 控制台中登录到 Azure 帐户。 以下 cmdlet 会提示提供 Azure 帐户的登录凭据。 登录后将下载帐户设置，以便 Azure PowerShell 使用这些设置。 还可以使用“试一试”功能在浏览器中启动 Azure Cloud Shell。
@@ -172,18 +174,18 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
   如果使用 Azure Cloud Shell，请跳过以下 cmdlet:
 
   ```azurepowershell
-  Connect-AzureRmAccount
+  Connect-AzAccount
   ``` 
   若要验证是否在使用正确的订阅，请运行以下 cmdlet：  
 
   ```azurepowershell-interactive
-  Get-AzureRmSubscription
+  Get-AzSubscription
   ```
    
   如果有多个订阅，请指定要使用的订阅。
 
   ```azurepowershell-interactive
-  Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+  Select-AzSubscription -SubscriptionName "Name of subscription"
   ```
 2. 创建本地网络网关。 在虚拟网络中，局域网网关通常指本地位置。 在本例中，本地网络网关是指经典 VNet。 指定该网关的名称以供 Azure 引用，同时指定地址空间前缀。 Azure 使用指定的 IP 地址前缀来识别要发送到本地位置的流量。 如果稍后需要在创建网关之前调整此处的信息，可以修改这些值并再次运行该示例。
    
@@ -192,7 +194,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    **-GatewayIpAddress** 是经典 VNet 网关的公共 IP 地址。 请务必更改下面的示例文本“n.n.n.n”以反映正确的 IP 地址。<br>
 
   ```azurepowershell-interactive
-  New-AzureRmLocalNetworkGateway -Name ClassicVNetLocal `
+  New-AzLocalNetworkGateway -Name ClassicVNetLocal `
   -Location "West US" -AddressPrefix "10.0.0.0/24" `
   -GatewayIpAddress "n.n.n.n" -ResourceGroupName RG1
   ```
@@ -201,7 +203,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
   本步骤还将设置一个要在后续步骤中使用的变量。
 
   ```azurepowershell-interactive
-  $ipaddress = New-AzureRmPublicIpAddress -Name gwpip `
+  $ipaddress = New-AzPublicIpAddress -Name gwpip `
   -ResourceGroupName RG1 -Location 'EastUS' `
   -AllocationMethod Dynamic
   ```
@@ -213,8 +215,8 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
    **-ResourceGroupName** 是 VNet 所关联的资源组。 此 VNet 必须已经存在网关子网，并且该子网必须命名为 *GatewaySubnet* 才能正常工作。<br>
 
   ```azurepowershell-interactive
-  $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet `
-  -VirtualNetwork (Get-AzureRmVirtualNetwork -Name RMVNet -ResourceGroupName RG1)
+  $subnet = Get-AzVirtualNetworkSubnetConfig -Name GatewaySubnet `
+  -VirtualNetwork (Get-AzVirtualNetwork -Name RMVNet -ResourceGroupName RG1)
   ``` 
 
 6. 创建网关 IP 寻址配置。 网关配置定义要使用的子网和公共 IP 地址。 使用以下示例创建网关配置。
@@ -222,14 +224,14 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
   在本步骤中，**-SubnetId** 和 **-PublicIpAddressId** 参数必须分别从子网和 IP 地址对象传递 ID 属性。 不能使用简单字符串。 将在请求公共 IP 的步骤和检索子网的步骤中设置这些变量。
 
   ```azurepowershell-interactive
-  $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig `
+  $gwipconfig = New-AzVirtualNetworkGatewayIpConfig `
   -Name gwipconfig -SubnetId $subnet.id `
   -PublicIpAddressId $ipaddress.id
   ```
 7. 通过运行以下命令，创建 Resource Manager 虚拟网络网关。 `-VpnType` 必须是 *RouteBased*。 创建网关可能需要 45 分钟或更长时间。
 
   ```azurepowershell-interactive
-  New-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1 `
+  New-AzVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1 `
   -Location "EastUS" -GatewaySKU Standard -GatewayType Vpn `
   -IpConfigurations $gwipconfig `
   -EnableBgp $false -VpnType RouteBased
@@ -237,7 +239,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 8. VPN 网关创建好后，复制公共 IP 地址。 为经典 VNet 配置本地网络设置时要使用该地址。 可以使用以下 cmdlet 来检索公共 IP 地址。 公共 IP 地址在返回结果中作为 *IpAddress* 列出。
 
   ```azurepowershell-interactive
-  Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName RG1
+  Get-AzPublicIpAddress -Name gwpip -ResourceGroupName RG1
   ```
 
 ## <a name="localsite"></a>第 3 节 - 修改经典 VNet 本地站点设置
@@ -274,14 +276,14 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
   设置变量。
 
   ```azurepowershell-interactive
-  $vnet01gateway = Get-AzureRmLocalNetworkGateway -Name ClassicVNetLocal -ResourceGroupName RG1
-  $vnet02gateway = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1
+  $vnet01gateway = Get-AzLocalNetworkGateway -Name ClassicVNetLocal -ResourceGroupName RG1
+  $vnet02gateway = Get-AzVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1
   ```
    
   创建连接。 请注意，**-ConnectionType** 是 IPsec，而不是 Vnet2Vnet。
 
   ```azurepowershell-interactive
-  New-AzureRmVirtualNetworkGatewayConnection -Name RM-Classic -ResourceGroupName RG1 `
+  New-AzVirtualNetworkGatewayConnection -Name RM-Classic -ResourceGroupName RG1 `
   -Location "East US" -VirtualNetworkGateway1 `
   $vnet02gateway -LocalNetworkGateway2 `
   $vnet01gateway -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'

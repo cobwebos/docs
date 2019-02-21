@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: sogup
-ms.openlocfilehash: 55fbc997f6aaf4cf99bfb8492a2e4ac608c72af8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: fe0b47bbf1ebb9cba328bfc444172249135270c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494895"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310268"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>常见问题 - Azure 备份
 
@@ -81,7 +81,7 @@ Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排�
   * 添加备份时不存在的配置设置
   * 控制创建的资源的命名约定。
   * 将 VM 添加到可用性集。
-  * 添加必须使用 PowerShell 或模板配置的任何其他设置。  w
+  * 添加必须使用 PowerShell 或模板配置的任何其他设置。
 
 ### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>升级到托管磁盘后，是否可以还原非托管 VM 磁盘的备份？
 是的，可使用将磁盘从非托管迁移到托管之前创建的备份。

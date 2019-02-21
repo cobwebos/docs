@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 946b5a568d98367daec0244968b962618f22ae76
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037941"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326919"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
 ## <a name="overview"></a>概述
@@ -36,7 +36,7 @@ StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介
 ## <a name="why-use-storsimple"></a>为什么使用 StorSimple？
 下表介绍了 Microsoft Azure StorSimple 提供的某些主要优势。
 
-| 功能 | 优势 |
+| Feature | 优势 |
 | --- | --- |
 | 透明集成 |使用 iSCSI 协议以不可见的方式链接数据存储设施。 这样可以确保存储在云中、数据中心或远程服务器上的数据看起来好像存储在单个位置。 |
 | 降低存储成本 |分配足够的本地存储或云存储以满足当前需求，仅在必要时才扩展云存储。 它可以通过消除相同数据的冗余版本（删除重复）和使用压缩，进一步降低存储需求和开支。 |
@@ -92,7 +92,7 @@ StorSimple 设备包括 SSD 和硬盘驱动器 HDD，并且支持群集和自动
 * 可在云中创建无数云设备，并根据需要将其打开和关闭。
 * 它可以帮助模拟灾难恢复、开发和测试情形下的本地环境，并可帮助从备份中进行项目级检索。
 
-StorSimple 云设备提供两种型号：8010 设备（以前称为 1100 型）和 8020 设备。 8010 设备的最大容量为 30 TB。 充分利用 Azure 高级存储的 8020 设备的最大容量为 64 TB。 （在本地层中，Azure 高级存储将数据存储在 SSD 上，而标准存储将数据存储在 HDD 上。）请注意，必须具有 Azure 高级存储帐户才能使用高级存储。 有关高级存储的详细信息，请转到[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../virtual-machines/windows/premium-storage.md)。
+StorSimple 云设备提供两种型号：8010 设备（以前称为 1100 型）和 8020 设备。 8010 设备的最大容量为 30 TB。 充分利用 Azure 高级存储的 8020 设备的最大容量为 64 TB。 （在本地层中，Azure 高级存储将数据存储在 SSD 上，而标准存储将数据存储在 HDD 上。）请注意，必须具有 Azure 高级存储帐户才能使用高级存储。
 
 有关 StorSimple 云设备的详细信息，请转到[在 Azure 中部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。
 
@@ -205,7 +205,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作负荷摘要
 下表列出了受支持的 StorSimple 工作负荷摘要。
 
-| 场景 | 工作负载 | 支持 | 限制 | 版本 |
+| 场景 | 工作负荷 | 支持 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 协作 |文件共享 |是 | |所有版本 |
 | 协作 |分布式文件共享 |是 | |所有版本 |
@@ -232,7 +232,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 下面是 StorSimple 支持的基础结构组件列表。
 
-| 场景 | 工作负载 | 支持 | 限制 | 版本 |
+| 场景 | 工作负荷 | 支持 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
 | 常规 |Express Route |是 | |所有版本 |
 | 常规 |DataCore FC |是* |受 DataCore SANsymphony 支持 |所有版本 |
@@ -255,7 +255,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 部署 Microsoft Azure StorSimple 解决方案之前，我们建议查看以下术语和定义。
 
 ### <a name="key-terms-and-definitions"></a>关键术语和定义
-| 术语（首字母缩写词或缩写） | Description |
+| 术语（首字母缩写词或缩写） | 说明 |
 | --- | --- |
 | 访问控制记录 (ACR) |与 Microsoft Azure StorSimple 设备上的卷相关联的记录，可决定哪些主机可以连接到它。 此决定基于连接到 StorSimple 设备的主机（包含在 ACR 中）上 iSCSI 限定的名称 (IQN)。 |
 | AES-256 |当数据在云中出入时，用于加密该数据的 256 位高级加密标准 (AES) 算法。 |

@@ -13,18 +13,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8eea14703a7a4ed6fad56dc0bed981b84266e2db
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d05ec1835bc04be0ca0fc12f41322c14b5420213
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112608"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337810"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 资源策略的 RequestDisallowedByPolicy 错误
 
 本文说明了 RequestDisallowedByPolicy 错误的原因，它还提供了此错误的解决方案。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>症状
 
@@ -68,5 +66,5 @@ az policy definition show --name regionPolicyAssignment
 
 有关详细信息，请参阅以下文章：
 
-- [什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)
-- [创建和管理策略以强制实施符合性](../azure-policy/create-manage-policy.md)
+- [什么是 Azure Policy？](../governance/policy/overview.md)
+- [创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)

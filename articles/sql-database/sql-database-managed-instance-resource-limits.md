@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: a9e5be3c1dcbf4461bd00b2b1ce530aa16e441ef
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c2cc1b5829f3bb530c01e2bfc3538006bb8663cb
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962122"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339305"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -40,7 +40,7 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 | 计算 | 8、16、24 个 vCore | 8、16、24、32、40、64、80 个 vCore |
 | 内存 | 每个 vCore 7 GB | 每个 vCore 5.1 GB |
 | 内存中 OLTP 内存 | 每个 vCore 3 GB | 每个 vCore 2.6 GB |
-| 最大存储（常规用途） |  8 TB | 1 TB |
+| 最大存储（常规用途） |  8 TB | 8 TB |
 | 最大存储（业务关键） | 1 TB | 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
 ### <a name="service-tier-characteristics"></a>服务层特征

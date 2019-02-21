@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e3f60c3b0578647e68109a21ba7d57b083bea11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae93cce7a26666383b609ac898a25fb84caee517
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184527"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301632"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>教程：Azure Active Directory 与 Workday 的集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "56184527"
 
     ![Workday 域和 URL 单一登录信息](./media/workday-tutorial/tutorial_workday_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://impl.workday.com/<tenant>/login-saml2.htmld`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://impl.workday.com/<tenant>/login-saml2.flex`
 
     b. 在“标识符”文本框中，键入一个 URL：`https://www.workday.com`
 
@@ -166,7 +166,7 @@ ms.locfileid: "56184527"
 
     >[!NOTE]
     > “环境”属性的值与租户 URL 的值绑定：  
-    >-如果 Workday 租户 URL 的域名以 impl 开头（例如：*https://impl.workday.com/\<tenant\>/login-saml2.htmld*），则“环境”属性必须设置为“实现”。  
+    >-如果 Workday 租户 URL 的域名以 impl 开头（例如：*https://impl.workday.com/\<tenant\>/login-saml2.flex*），则“环境”属性必须设置为“实现”。  
     >如果域名以其他内容开头，则需要联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)，获取匹配的“环境”值。
 
 12. 在“SAML 设置”部分中执行以下步骤：

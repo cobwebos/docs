@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 02/20/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 29e32177c899e8f42ee892be12a61c6633b23bdc
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a6bd0097bacaa988c9c9f03c2ce827c42769aa99
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567326"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447372"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 本文提供在 Azure 数据工厂 (ADF) 中配置 Azure-SSIS 集成运行时 (IR) 所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 在 Azure 的此集成运行时中部署并运行 SQL Server Integration Services (SSIS) 包。
@@ -546,7 +546,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
         "variables": {},
         "resources": [{
             "name": "<Specify a name for your data factory>",
-            "apiVersion": "2017-09-01-preview",
+            "apiVersion": "2018-06-01",
             "type": "Microsoft.DataFactory/factories",
             "location": "East US",
             "properties": {},
@@ -554,7 +554,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
                 "type": "integrationruntimes",
                 "name": "<Specify a name for your Azure-SSIS IR>",
                 "dependsOn": [ "<The name of the data factory you specified at the beginning>" ],
-                "apiVersion": "2017-09-01-preview",
+                "apiVersion": "2018-06-01",
                 "properties": {
                     "type": "Managed",
                     "typeProperties": {

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 45fb1cbf57f54f040f9dfbc522c22a2e0884d6db
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116490"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341210"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
@@ -39,7 +39,7 @@ ms.locfileid: "56116490"
 保护 VM 安全的第一步是确保只有授权用户才能设置新 VM 以及访问 VM。
 
 **最佳做法**：控制 VM 访问。   
-**详细信息**：使用 [Azure 策略](../azure-policy/azure-policy-introduction.md)建立组织中的资源约定和创建自定义策略。 将这些策略应用于资源，如[资源组](../azure-resource-manager/resource-group-overview.md)。 属于该资源组的 VM 将继承该组的策略。
+**详细信息**：使用 [Azure 策略](../governance/policy/overview.md)建立组织中的资源约定和创建自定义策略。 将这些策略应用于资源，如[资源组](../azure-resource-manager/resource-group-overview.md)。 属于该资源组的 VM 将继承该组的策略。
 
 如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 [Azure 管理组](../azure-resource-manager/management-groups-overview.md)提供订阅上的作用域级别。 可将订阅组织到管理组（容器）中，并将管理条件应用到该组。 管理组中的所有订阅都将自动继承应用于该组的条件。 不管使用什么类型的订阅，管理组都能提供大规模的企业级管理。
 

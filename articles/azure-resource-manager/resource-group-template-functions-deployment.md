@@ -12,16 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 58eca4c73a6e1fd0941e100a55bdad763b986590
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114342"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268090"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的部署函数 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 

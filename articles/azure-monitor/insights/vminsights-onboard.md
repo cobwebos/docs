@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: 37e2da00ecbecdddcc8757e64c57b03774092e14
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 46df2d6828cd60aee3c64128197579eb6f51a11a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814983"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340325"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>部署用于 VM 的 Azure Monitor（预览版）
 本文介绍如何设置用于 VM 的 Azure Monitor。 该服务监视 Azure 虚拟机 (VM)、虚拟机规模集和环境中的虚拟机的操作系统运行状况。 此监视包括发现和映射可能在其上托管的应用程序依赖关系。 
@@ -336,7 +336,7 @@ ms.locfileid: "55814983"
         provisioningState       : Succeeded
 
 ### Enable by using Azure Policy
-To enable Azure Monitor for VMs at scale in a way that helps ensure consistent compliance and the automatic enabling of the newly provisioned VMs, we recommend [Azure Policy](../../azure-policy/azure-policy-introduction.md). These policies:
+To enable Azure Monitor for VMs at scale in a way that helps ensure consistent compliance and the automatic enabling of the newly provisioned VMs, we recommend [Azure Policy](../../governance/policy/overview.md). These policies:
 
 * Deploy the Log Analytics agent and the Dependency agent.
 * Report on compliance results.

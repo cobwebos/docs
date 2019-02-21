@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770578"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341941"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure Policy 限制 Linux VM 上的扩展安装
 
@@ -28,7 +28,7 @@ ms.locfileid: "55770578"
 
 ## <a name="create-a-rules-file"></a>创建规则文件
 
-若要限制可以安装哪些扩展，需要使用[规则](/azure/azure-policy/policy-definition#policy-rule)来提供用于识别扩展的逻辑。
+若要限制可以安装哪些扩展，需要使用[规则](../../governance/policy/concepts/definition-structure.md#policy-rule)来提供用于识别扩展的逻辑。
 
 本示例演示如何通过在 Azure Cloud Shell 中创建规则文件来拒绝安装“Microsoft.OSTCExtensions”发布的扩展，但如果在本地使用 CLI，也可以创建一个本地文件并将路径 (~/clouddrive) 替换为计算机上本地文件的路径。
 
@@ -69,7 +69,7 @@ vim ~/clouddrive/azurepolicy.rules.json
 
 ## <a name="create-a-parameters-file"></a>创建参数文件
 
-还需要一个[参数](/azure/azure-policy/policy-definition#parameters)文件，以创建一个用于传入要阻止的扩展列表的结构。 
+还需要一个[参数](../../governance/policy/concepts/definition-structure.md#parameters)文件，以创建一个用于传入要阻止的扩展列表的结构。 
 
 本示例演示如何在 Cloud Shell 中为 Linux VM 创建参数文件，但如果在本地使用 CLI，也可以创建一个本地文件并将路径 (~/clouddrive) 替换为计算机上本地文件的路径。
 
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [Azure Policy](../../azure-policy/azure-policy-introduction.md)。
+
+有关详细信息，请参阅 [Azure Policy](../../governance/policy/overview.md)。

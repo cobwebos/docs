@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508328"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417967"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -30,6 +30,8 @@ ms.locfileid: "55508328"
 如果还没有虚拟网络网关并且不想创建一个，建议你改为考虑使用 VNet 对等互连连接 VNet。 VNet 对等互连不使用 VPN 网关。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
 ### <a name="before"></a>准备工作
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * 这些步骤假定已创建了两个 VNet。 如果使用本文进行练习并且还没有 VNet，相关步骤中的链接可以帮助你创建它们。
 * 请确认两个 VNet 的地址范围不相互重叠，也不与网关可能连接到的其他连接的任何范围重叠。
@@ -226,19 +228,19 @@ SKU = VpnGw1 <br>
 使用提升的权限打开 PowerShell 控制台并登录 Azure 帐户。 登录后将下载帐户设置，以便 Azure PowerShell 使用这些设置。 以下 cmdlet 会提示为资源管理器部署模型提供 Azure 帐户的登录凭据：
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 获取 Azure 订阅的列表。
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 如果有多个订阅，请指定要使用的订阅。
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+Select-AzSubscription -SubscriptionName "Name of subscription"
 ```
 
 接下来，登录以使用经典 PowerShell cmdlet（服务管理）。 使用以下命令为经典部署模型添加 Azure 帐户：

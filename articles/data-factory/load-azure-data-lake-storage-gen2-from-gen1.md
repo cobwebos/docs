@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: da42e0bf86aca571fb26367f18bbf07f90f5531b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e1dd3953925d4907617295fbc14a1a4e042213e1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884607"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309601"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
@@ -92,7 +92,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
     ![指定输出文件夹](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
-7. 在“目标数据存储”页中，单击“+ 创建新连接”，然后选择“Azure Data Lake Storage Gen2”，并选择“继续”：
+7. 在“目标数据存储”页中，单击“+ 新建连接”，然后选择“Azure Data Lake Storage Gen2”，并选择“继续”：
 
     ![“目标数据存储”页](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
 

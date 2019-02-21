@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 2ac140e40ec1c70bf04c35512c28e84f59522bb8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1e8bb6deeb66b506e1342fceb725b1563b822dff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989417"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453114"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>从 Excel 使用 Azure 机器学习工作室 Web 服务
 
@@ -34,7 +34,7 @@ ms.locfileid: "55989417"
 
 1. 在 Web 服务的“DASHBOARD”选项卡上有一行“REQUEST/RESPONSE”服务。 如果此服务具有单个输出，应在该行看到“下载 Excel 工作簿”链接。
    
-    ![][1]
+    ![](./media/consuming-from-excel/excellink.png)
 2. 单击“下载 Excel 工作簿”。
 
 **新的 Web 服务**
@@ -47,13 +47,13 @@ ms.locfileid: "55989417"
 1. 打开工作簿。
 2. 系统会显示安全警告；单击“启用编辑”按钮。
    
-    ![][2]
+    ![](./media/consuming-from-excel/enableeditting.png)
 3. 系统会显示安全警告。 单击“启用内容”按钮，在电子表格上运行宏。
    
-    ![][3]
+    ![](./media/consuming-from-excel/enablecontent.png)
 4. 启用宏后，将生成一个表。 要求将蓝色的列作为 RRS Web 服务的输入或 **PARAMETERS**。 注意，RRS 服务的输出，**PREDICTED VALUES** 为绿色。 给定行的所有列都填满时，工作簿会自动调用评分 API，并显示评分结果。
    
-    ![][4]
+    ![](./media/consuming-from-excel/sampletable.png)
 5. 要对多行进行评分，请使用数据填充第二行，并生成预测值。 甚至可以一次粘贴多行。
 
 可以使用任何具有预测值的 Excel 功能（Graph、Power Map、条件格式等），帮助可视化数据。    
@@ -66,8 +66,3 @@ ms.locfileid: "55989417"
 
 1. 第一次某行在其所有 **PARAMETERS** 中都有内容时
 2. 任何时候，输入了其所有 **PARAMETERS** 的行中的任一 **PARAMETERS** 发生更改时。
-
-[1]: ./media/consuming-from-excel/excellink.png
-[2]: ./media/consuming-from-excel/enableeditting.png
-[3]: ./media/consuming-from-excel/enablecontent.png
-[4]: ./media/consuming-from-excel/sampletable.png

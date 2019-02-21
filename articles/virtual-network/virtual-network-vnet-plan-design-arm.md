@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: ef293b39d0e82cdd26e0c41af5d63d0459064017
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820787"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339510"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -113,7 +113,7 @@ Azure 对资源使用[基于角色的访问控制](../role-based-access-control/
 
 通过 Azure Policy，可创建、分配和管理策略定义。 策略定义将在整个资源中强制实施不同的规则，以便资源符合组织标准和服务级别协议。 Azure 策略对资源进行评估，扫描并找到与所定义策略不相符的资源。 例如，可以定义和应用仅在特定资源组或区域中允许创建虚拟网络的策略。 另一个策略可能要求每个子网都有一个与之关联的网络安全组。 然后，在创建和更新资源时评估此策略。
 
-策略应用于以下层次结构：订阅、管理组和资源组。 了解有关 [Azure Policy](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或部署某些虚拟网络[策略模板](policy-samples.md)示例的详细信息。
+策略应用于以下层次结构：订阅、管理组和资源组。 了解有关 [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或部署某些虚拟网络[策略模板](policy-samples.md)示例的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

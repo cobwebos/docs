@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 12c82d440613078e9f0593ddb9fb6c7fe7b8c362
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5db8c4be9317706fcc8a31b916cff72fd13596d6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488343"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453285"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>将 Excel 中的分析信息迁移到 Azure 机器学习工作室
 
@@ -102,11 +102,11 @@ ms.locfileid: "55488343"
 
 *Web 服务仪表板*部分包括可下载的 Excel 工作簿。 该工作簿已使用 Web 服务 API 进行预格式化，并嵌入了架构信息。 单击“下载 Excel 工作簿”时，工作簿会打开，用户可以将其保存到本地计算机。 
 
-![][1]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 在工作簿打开时，请将预定义的参数复制到蓝色的 Parameter 部分，如下所示。 一旦输入这些参数，Excel 即会调用机器学习 Web 服务，而且会在绿色预测值部分显示预测的评分标签。 该工作簿会根据在 Parameters 下输入的所有行项，继续根据训练模型创建预测。 有关如何使用此功能的详细信息，请参阅[从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)。 
 
-![][2]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>优化和进一步实验
 至此，我们已经有了一个使用 Excel 模型的基线，接下来我们对机器学习线性回归模型进行了优化。 我们使用了模块[基于筛选器的功能选择][filter-based-feature-selection]来改善所选的初始数据元素，并且它帮助我们实现了平均绝对误差 4.6% 的性能提升。 对于将来的项目，我们将使用此功能，它可以在通过数据属性进行迭代以找出用于建模的正确功能集方面，为我们节省数周的时间。 

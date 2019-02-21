@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: 1a291a54389b678647f4a08ea03ec8c2f85a5917
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c9e72ea2762af0d9a4c47ca5b23fe4bdbe53b968
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872827"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447542"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -26,7 +26,7 @@ ms.locfileid: "55872827"
 
 ## <a name="speech-sdk"></a>语音 SDK
 
-在[语音服务 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中作为 `SpeechConfig.FromSubscription` 的参数）。
+在[语音 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中用作 `SpeechConfig.FromSubscription` 的参数）。
 
 ### <a name="speech-recognition-and-translation"></a>语音识别和翻译
 

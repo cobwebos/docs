@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c1718c5a2acfe49fba4974bcf7e580c45553113d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2bb6237e53f945b645f1ee757a53ef67270e2416
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108732"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268373"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
@@ -113,7 +113,7 @@ ms.locfileid: "56108732"
 10. 选择 **Web.config**。
 11. 在 system.webServer 中，添加此配置（用于捕获特定 URL）：
 
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*api*" />
@@ -129,7 +129,7 @@ ms.locfileid: "56108732"
     </tracing>
     ```
 12. 若要对性能缓慢问题进行故障排除，请添加此配置（如果捕获请求时间超过 30 秒）：
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*" />

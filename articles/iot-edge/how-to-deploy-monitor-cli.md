@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/25/2018
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8cc253f751b209332ee890c0ebc9b6846d4feab5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f93d9eaefe18dd012a639cd26636b56b9eb09249
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749826"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427630"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
@@ -113,7 +113,6 @@ ms.locfileid: "55749826"
    }
    ```
 
-
 ## <a name="identify-devices-using-tags"></a>使用标记标识设备
 
 创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备均可以拥有多个标记，你可以用适合解决方案的任何方式定义它们。 例如，如果管理有智能楼宇的校园，可将以下标记添加到设备：
@@ -155,10 +154,12 @@ ms.locfileid: "55749826"
    ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
    ```
+
 * **--deployment-id** - IoT 中心存在的部署的名称。
 * **--hub-name** - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 
 在命令窗口中检查部署。 **metrics** 属性列出由每个中心评估的每个指标的计数：
+
 * **targetedCount** - 一个系统指标，根据目标条件指定 IoT 中心的设备孪生数。
 * **appliedCount** - 一个系统指标，指定已在 IoT 中心将部署内容应用到其模块孪生的设备数。
 * **reportedSuccessfulCount** - 一个设备指标，指定已通过 IoT Edge 客户端运行时报告成功的部署中的 Edge 设备数。
@@ -179,6 +180,7 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 修改部署时，更改会立即复制到所有目标设备。 
 
 如果更新目标条件，将发生以下更新：
+
 * 如果设备虽然不满足旧的目标条件，但满足新的目标条件，且此部署是此设备的最高优先级，则此部署将应用到设备。 
 * 如果当前运行此部署的设备不再满足目标条件，则它将卸载此部署并采用下一个最高优先级部署。 
 * 如果当前运行此部署的设备不再满足目标条件且不满足任何其他部署的目标条件，则此设备上不会发生任何更改。 设备在当前状态下继续运行当前模块，但不再作为此部署的一部分被托管。 一旦它满足任何其他部署的目标条件，将卸载此部署并采用新的部署。 
@@ -188,12 +190,13 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
    ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
    ```
+
 * **--deployment-id** - IoT 中心存在的部署的名称。
 * **--hub-name** - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 * **--set** - 更新部署中的属性。 可以更新以下属性：
-    * targetCondition - 例如 `targetCondition=tags.location.state='Oregon'`
-    * 标签 
-    * priority
+  * targetCondition - 例如 `targetCondition=tags.location.state='Oregon'`
+  * 标签 
+  * priority
 
 
 ## <a name="delete-a-deployment"></a>删除部署
@@ -205,6 +208,7 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
    ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name] 
    ```
+
 * **--deployment-id** - IoT 中心存在的部署的名称。
 * **--hub-name** - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 

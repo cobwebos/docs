@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/05/2017
+ms.date: 12/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: baf49856f8f7480ece10e065b3ac002297f06617
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ae1d6ddfb96d65a730fd1008f44c663d3b447b17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30918075"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326113"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 计算单元 (ACU)
 

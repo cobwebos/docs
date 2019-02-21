@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 337e7a848b6aa141ecf4f96cd4f8f391be35a619
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b216242b5c1c093c5f508adce04ef7b4bec4d1e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475527"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453182"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>使用 Azure 机器学习工作室 Web 服务参数
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数*允许执行此任务。 
@@ -57,7 +57,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 
 3. 单击“指向以容器参数开头的 blob 的路径”右侧的图标。 如下所示：
    
-   ![Web 服务参数图标][icon]
+   ![Web 服务参数图标](./media/web-service-parameters/icon.png)
    
    选择“设为 Web 服务参数”。
    
@@ -65,7 +65,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 4. 要重命名 Web 服务参数，请单击名称、输入“Blob 路径”，并按“Enter”键。 
 5. 要提供 Web 服务参数的默认值，请单击名称右侧的图标、选择“提供默认值”、输入值（例如“container1/output1.csv”），并按“Enter”键。
    
-   ![Web 服务参数][parameter]
+   ![Web 服务参数](./media/web-service-parameters/parameter.png)
 6. 单击“运行”。 
 7. 单击“部署 Web 服务”时，并选择“部署 Web 服务[经典]”或“部署 Web 服务[新]”，部署 Web 服务。
 
@@ -78,11 +78,6 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 有关更详细的示例，请参阅 [机器学习博客](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 中的 [Web 服务参数](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 条目。
 
 有关访问机器学习 Web 服务的详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
-
-<!-- Images -->
-[icon]: ./media/web-service-parameters/icon.png
-[parameter]: ./media/web-service-parameters/parameter.png
-
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

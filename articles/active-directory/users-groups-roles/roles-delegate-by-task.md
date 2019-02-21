@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2fdede1308ac2c4c036d835a7be28b0e5ee180d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ea25510596903e4020e8237bc5bd389c584ead9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207069"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268424"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -202,8 +202,8 @@ ms.locfileid: "56207069"
 禁用 MFA | 全局管理员角色 | 
 启用 MFA | 全局管理员角色 | 
 管理 MFA 服务设置 | 全局管理员角色 | 
-要求选定的用户再次提供联系方法 | 全局管理员角色 | 
-在所有记住的设备上还原多重身份验证  | 全局管理员角色 | 
+要求选定的用户再次提供联系方法 | 身份验证管理员 | 
+在所有记住的设备上还原多重身份验证  | 身份验证管理员 | 
 
 ## <a name="mfa-server"></a>MFA 服务器
 

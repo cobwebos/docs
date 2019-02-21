@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
-ms.date: 02/11/2019
-ms.openlocfilehash: bff0feab7ce062c9e2515fa038d249838a809591
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.date: 02/20/2019
+ms.openlocfilehash: 08e83cdcadabdcf7234d0bbd0fb7e6d103c8369c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101303"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447525"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>在 Azure 机器学习服务中启用日志记录
 
@@ -112,7 +112,7 @@ logs = service.get_logs()
 还可以通过启用 Application Insights 来记录 Web 服务的自定义堆栈跟踪，这样，便可以监视请求/响应时间、失败率和异常。 针对现有的 Web 服务调用 `update()` 函数可启用 Application Insights。
 
 ```python
-service..update(enable_app_insights=True)
+service.update(enable_app_insights=True)
 ```
 
 有关如何在 Azure 门户中使用 Application Insights 的详细信息，请参阅[操作指南](how-to-enable-app-insights.md#enable-and-disable-in-the-portal)。

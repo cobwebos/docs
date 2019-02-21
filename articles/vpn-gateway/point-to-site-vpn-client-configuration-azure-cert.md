@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 02/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0a9c5b5f0fd47f2fcf0c9df02789abae5f07f023
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 48dad37ca5ea5a74f52c60b8734d0296757e94aa
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564980"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417544"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -45,10 +45,12 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 ### <a name="zipps"></a>使用 PowerShell 生成文件
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. 生成 VPN 客户端配置文件时，“-AuthenticationMethod”的值为“EapTls”。 使用以下命令生成 VPN 客户端配置文件：
 
-  ```powershell
-  $profile=New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
+  ```azurepowershell-interactive
+  $profile=New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
 
   $profile.VPNProfileSASUrl
   ```
@@ -79,7 +81,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 使用以下步骤在 Mac 中配置用于证书身份验证的本机 VPN 客户端。 必须在将连接到 Azure 的每个 Mac 上完成以下步骤：
 
-1. 将 **VpnServerRoot** 根证书导入 Mac。 为此，可将该文件复制到 Mac，并双击它。
+1. 将 **VpnServerRoot** 根证书导入 Mac。 为此，可将该文件复制到 Mac，并双击它。  
 单击“添加”进行导入。
 
   ![添加证书](./media/point-to-site-vpn-client-configuration-azure-cert/addcert.png)
@@ -113,13 +115,10 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
 
-### <a name="1-generate-the-key-and-certificate"></a>1:生成密钥和证书
+### <a name="extract-the-key-and-certificate"></a>提取密钥和证书
 
 对于 strongSwan，需要从客户端证书（.pfx 文件）提取密钥和证书，并将其保存为单独的 .pem 文件。
-
-[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
-
-### <a name="2-extract-the-key"></a>2:提取密钥
+请遵循以下步骤进行配置：
 
 1. 从 [OpenSSL](https://www.openssl.org/source/) 下载并安装 OpenSSL。
 2. 打开命令行窗口并切换到 OpenSSL 的安装目录，例如 'c:\OpenSLL-Win64\bin\'。
@@ -128,13 +127,13 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
   ```
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nocerts -out privatekey.pem -nodes
   ```
-4.  运行以下命令提取公共证书，并将其保存到新文件：
- 
+4.  现在，运行以下命令提取公共证书，并将其保存到新文件：
+
   ```
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nokeys -out publiccert.pem -nodes
   ```
 
-### <a name="install"></a>3：安装和配置
+### <a name="install"></a>安装和配置
 
 以下说明是通过 Ubuntu 17.0.4 上的 strongSwan 5.5.1 创建的。 Ubuntu 16.0.10 不支持 strongSwan GUI。 如果想要使用 Ubuntu 16.0.10，则必须使用[命令行](#linuxinstallcli)。 以下示例可能与你看到的屏幕不同，具体取决于所用的 Linux 和 strongSwan 版本。
 
@@ -163,13 +162,14 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 
-### <a name="1-generate-the-key-and-certificate"></a>1:生成密钥和证书
+### <a name="install-strongswan"></a>安装 strongSwan
 
 可以使用以下 CLI 命令或使用 [GUI](#install) 中的 strongSwan 步骤来安装 strongSwan。
 
-[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
+1. `apt-get install strongswan-ikev2 strongswan-plugin-eap-tls`
+2. `apt-get install libstrongswan-standard-plugins`
 
-### <a name="2-install-and-configure"></a>2:安装和配置
+### <a name="install-and-configure"></a>安装和配置
 
 1. 从 Azure 门户下载 VPNClient 程序包。
 2. 解压缩该文件。

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 1/9/2019
+ms.date: 2/19/2019
 ms.author: douglasl
-ms.openlocfilehash: 5cc625e07f1c92c53491e83f4049bad12cd9d1a1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b672264e1cb3cd415532cf4bcfbbd268afffa70d
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158255"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415931"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
 
@@ -172,7 +172,7 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 6.  在查询窗口中，执行以下 T-SQL 脚本，将 ADF 的托管标识转换为二进制类型：
 
     ```sql
-    DECLARE @applicationId uniqueidentifier = {your SERVICE IDENTITY APPLICATION ID}
+    DECLARE @applicationId uniqueidentifier = '{your SERVICE IDENTITY APPLICATION ID}'
     select CAST(@applicationId AS varbinary)
     ```
     
@@ -181,7 +181,7 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 7.  清除查询窗口，执行以下 T-SQL 脚本，以用户身份添加 ADF 的托管标识
 
     ```sql
-    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID ={your SERVICE IDENTITY APPLICATION ID as binary}, TYPE = E
+    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your SERVICE IDENTITY APPLICATION ID as binary}, TYPE = E
     ALTER SERVER ROLE [dbcreator] ADD MEMBER [{the managed identity name}]
     ALTER SERVER ROLE [securityadmin] ADD MEMBER [{the managed identity name}]
     ```

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 98d2d3a54ff2f0c4ef326f8aae26e5ba8845d603
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882329"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301870"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
 
@@ -41,19 +41,19 @@ Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本�
 
 | V2 API 方法   | V3 API 兼容性 |
 |:----------- |:-------------|
-| Translate     | [Translate](reference/v3-0-translate.md)          |
-| TranslateArray      | [Translate](reference/v3-0-translate.md)        |
-| GetLanguageNames      | [语言](reference/v3-0-languages.md)         |
-| GetLanguagesForTranslate     | [语言](reference/v3-0-languages.md)       |
-| GetLanguagesForSpeak      | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Speak     | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Detect     | [Detect](reference/v3-0-detect.md)         |
-| DetectArray     | [Detect](reference/v3-0-detect.md)         |
-| AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
-| BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
-| GetTranslations      | 不再支持的功能         |
-| GetTranslationsArray      | 不再支持的功能         |
+| `Translate`     | [Translate](reference/v3-0-translate.md)          |
+| `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
+| `GetLanguageNames`      | [语言](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [语言](reference/v3-0-languages.md)       |
+| `GetLanguagesForSpeak`      | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| `Speak`     | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `Detect`     | [Detect](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
+| `AddTranslation`     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| `AddTranslationArray`    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
+| `GetTranslations`      | 不再支持的功能         |
+| `GetTranslationsArray`      | 不再支持的功能         |
 
 ## <a name="move-to-json-format"></a>改为 JSON 格式
 
@@ -75,12 +75,12 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 
 | V3 方法   | 应计费的字符 |
 |:----------- |:-------------|
-| Languages     | 未提交任何字符：不计算字符数，免费。          |
-| Translate     | 根据提交翻译的字符数，以及字符要翻译成的语言数来统计费用。 如果提交了 50 个字符并 5 请求翻译成 5 种语言，则费用是 50x5。           |
-| Transliterate     | 根据提交音译的字符数统计费用。         |
-| Dictionary lookup &amp; example     | 根据提交请求字典查找和示例的字符数统计费用。         |
-| BreakSentence     | 免费。       |
-| Detect     | 免费。      |
+| `Languages`     | 未提交任何字符：不计算字符数，免费。          |
+| `Translate`     | 根据提交翻译的字符数，以及字符要翻译成的语言数来统计费用。 如果提交了 50 个字符并 5 请求翻译成 5 种语言，则费用是 50x5。           |
+| `Transliterate`     | 根据提交音译的字符数统计费用。         |
+| `Dictionary lookup & example`     | 根据提交请求字典查找和示例的字符数统计费用。         |
+| `BreakSentence`     | 无费用。       |
+| `Detect`     | 免费。      |
 
 ## <a name="v3-end-points"></a>V3 终结点
 
@@ -88,22 +88,21 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 
 * api.cognitive.microsofttranslator.com
 
-
 ## <a name="v3-api-text-translations-methods"></a>V3 API 文本翻译方法
 
-[语言](reference/v3-0-languages.md)
+[`Languages`](reference/v3-0-languages.md)
 
-[Translate](reference/v3-0-translate.md)
+[`Translate`](reference/v3-0-translate.md)
 
-[Transliterate](reference/v3-0-transliterate.md)
+[`Transliterate`](reference/v3-0-transliterate.md)
 
-[BreakSentence](reference/v3-0-break-sentence.md)
+[`BreakSentence`](reference/v3-0-break-sentence.md)
 
-[Detect](reference/v3-0-detect.md)
+[`Detect`](reference/v3-0-detect.md)
 
-[Dictionary/lookup](reference/v3-0-dictionary-lookup.md)
+[`Dictionary/lookup`](reference/v3-0-dictionary-lookup.md)
 
-[Dictionary/example](reference/v3-0-dictionary-examples.md)
+[`Dictionary/example`](reference/v3-0-dictionary-examples.md)
 
 ## <a name="compatibility-and-customization"></a>兼容性和自定义
 
@@ -132,7 +131,6 @@ Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 
 * 如果正在使用 api.microsofttranslator.com 终结点，则使用的是文本翻译 API 版本 2。
 
 任何版本的 Translator API 都不会创建翻译的记录。 永远不会与任何人共享你的翻译。 有关详细信息，请参阅 [Translator 无跟踪](http://www.aka.ms/NoTrace)网页。
-
 
 ## <a name="links"></a>链接
 

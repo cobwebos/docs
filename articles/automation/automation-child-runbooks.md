@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 37cf44e2c9d28b1aac8f2ab80ba29d126fb8651f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f52c9731b0289563037cbf065f3e22d652b40e74
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422962"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417425"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
@@ -28,7 +28,7 @@ ms.locfileid: "54422962"
 
 发布某个 Runbook 时，必须事先发布它所调用的任何子 Runbook。 这是因为，在编译 Runbook 时，Azure 自动化会生成与任何子 Runbook 的关联。 如果未进行这种关联，父 Runbook 看似发布正常，但在启动时会生成异常。 如果发生这种情况，可以重新发布父 Runbook，以正确引用子 Runbook。 如果由于已创建关联而更改了任何子 Runbook，则不需重新发布父 Runbook。
 
-内联调用的子 Runbook 的参数可以是任意数据类型，包括复杂对象。 不会进行 [JSON 序列化](automation-starting-a-runbook.md#runbook-parameters)，因为使用 Azure 门户或 Start-AzureRmAutomationRunbook cmdlet 启动 Runbook 时会进行这种序列化。
+内联调用的子 Runbook 的参数可以是任意数据类型，包括复杂对象。 不会进行 [JSON 序列化](start-runbooks.md#runbook-parameters)，因为使用 Azure 门户或 Start-AzureRmAutomationRunbook cmdlet 启动 Runbook 时会进行这种序列化。
 
 ### <a name="runbook-types"></a>Runbook 类型
 
@@ -65,7 +65,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 > [!IMPORTANT]
 > 如果结合 `-Wait` 开关使用 `Start-AzureRmAutomationRunbook` cmdlet 调用子 Runbook，并且子 Runbook 的结果是一个对象，则你可能会遇到错误。 若要解决此错误，请参阅[使用对象输出的子 Runbook](troubleshoot/runbooks.md#child-runbook-object)，以了解如何实现相关逻辑来轮询结果并使用 [Get-AzureRmAutomationJobOutputRecord](/powershell/module/azurerm.automation/get-azurermautomationjoboutputrecord)
 
-可以根据[使用 Windows PowerShell 启动 Runbook](automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell) 中所述，使用 [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) cmdlet 来启动 Runbook。 使用此 cmdlet 的模式有两种。  在第一个模式中，cmdlet 会在子 Runbook 的子作业创建时返回作业 ID。  在第二个模式（通过指定 **-wait** 参数启用）中，cmdlet 会等待子作业完成，并且会返回子 Runbook 的输出。
+可以根据[使用 Windows PowerShell 启动 Runbook](start-runbooks.md#start-a-runbook-with-powershell) 中所述，使用 [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) cmdlet 来启动 Runbook。 使用此 cmdlet 的模式有两种。  在第一个模式中，cmdlet 会在子 Runbook 的子作业创建时返回作业 ID。  在第二个模式（通过指定 **-wait** 参数启用）中，cmdlet 会等待子作业完成，并且会返回子 Runbook 的输出。
 
 使用 cmdlet 启动的子 Runbook 的作业会在父 Runbook 的某个独立作业中运行。 此行为会导致比启动内联 Runbook 更多的作业，并使这些作业更难以跟踪。不过，父级可以异步启动多个子 Runbook，而无需等待每个子 Runbook 完成。 对于调用内嵌子 Runbook 的同一种并行执行，父 Runbook 需要使用[并行关键字](automation-powershell-workflow.md#parallel-processing)。
 
@@ -73,7 +73,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 如果不希望父 Runbook 在等待时被阻止，则可以使用不带 `-Wait` 开关的 `Start-AzureRmAutomationRunbook` cmdlet 启动子 Runbook。 然后，需要使用 `Get-AzureRmAutomationJob` 等待作业完成，然后使用 `Get-AzureRmAutomationJobOutput` 和 `Get-AzureRmAutomationJobOutputRecord` 来检索结果。
 
-使用 cmdlet 启动的子 Runbook 的参数以哈希表形式提供，如 [Runbook 参数](automation-starting-a-runbook.md#runbook-parameters)中所述。 只能使用简单数据类型。 如果 Runbook 的参数使用复杂数据类型，则必须内联调用该 Runbook。
+使用 cmdlet 启动的子 Runbook 的参数以哈希表形式提供，如 [Runbook 参数](start-runbooks.md#runbook-parameters)中所述。 只能使用简单数据类型。 如果 Runbook 的参数使用复杂数据类型，则必须内联调用该 Runbook。
 
 将子 Runbook 作为单独作业启动时，可能会丢失订阅上下文。 为了使子 Runbook 针对特定的 Azure 订阅执行 Azure RM cmdlet，子 Runbook 必须独立于父 Runbook 对此订阅进行身份验证。
 
@@ -120,6 +120,6 @@ Start-AzureRmAutomationRunbook `
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md)
+* [在 Azure 自动化中启动 Runbook](start-runbooks.md)
 * [Azure 自动化中的 Runbook 输出和消息](automation-runbook-output-and-messages.md)
 

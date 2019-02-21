@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 62d6dce4ccb5d4badbcf9b02cbbcda576ee63212
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: add526d8c09d2aa557ddd645e9016cb9c3b225a3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869239"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328191"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在认知服务中的语言理解 (LUIS) 中导出和删除客户数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "55869239"
 - 在注册时收集的用户帐户内容
 - 构建模型时所需的训练数据（即意向和实体）
 - 在运行时记录的可帮助改进用户模型的用户查询
-  - 用户可以通过将 `&log=false` 追加到请求来关闭查询日志记录，[此处](luis-resources-faq.md#how-can-i-disable-the-logging-of-utterances)提供了详细信息
+  - 用户可以通过将 `&log=false` 追加到请求来关闭查询日志记录，[此处](troubleshooting.md#how-can-i-disable-the-logging-of-utterances)提供了详细信息
 
 ## <a name="deleting-customer-data"></a>删除客户数据
 LUIS 用户具有完全控制权限通过 LUIS Web 门户或 LUIS 编程 API 来删除任何用户内容。 下表显示了对这两种方式有帮助的链接：

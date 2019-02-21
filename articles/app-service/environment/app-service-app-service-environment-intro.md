@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 205e61634a902ef052f665c65f2b67a66e6fe598
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2bb1a9c3922f435b6be78614aacff6e85bf475ff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728221"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454236"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>应用服务环境 v1 简介
 
 > [!NOTE]
 > 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要深入了解新版本，请先参阅[应用服务环境简介](intro.md)。
-> 
 
 ## <a name="overview"></a>概述
+
 应用服务环境是 [Azure 应用服务](../overview.md)的一项[高级][PremiumTier]服务计划选项，可提供完全隔离的专用环境来安全地大规模运行 Azure 应用服务应用，包括 Web 应用、移动应用和 API 应用。  
 
 应用服务环境适用于有以下要求的应用程序工作负荷：
@@ -46,16 +46,17 @@ ms.locfileid: "53728221"
 
 若要查看“AzureCon 深入探讨”中所示的安全体系结构的配置方式，请参阅有关使用应用服务环境实现[分层安全体系结构](app-service-app-service-environment-layered-security.md)的文章。
 
-在应用服务环境中运行的应用的访问权限可能受到 Web 应用程序防火墙 (WAF) 等上游设备的管制。  有关[配置应用服务环境的 WAF](app-service-app-service-environment-web-application-firewall.md) 的文章介绍了这种方案。 
+在应用服务环境中运行的应用的访问权限可能受到 Web 应用程序防火墙 (WAF) 等上游设备的管制。  有关[配置应用服务环境的 WAF](app-service-app-service-environment-web-application-firewall.md) 的文章介绍了这种方案。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="dedicated-compute-resources"></a>专用计算资源
+
 应用服务环境中的所有计算资源专属于单个订阅，对于一个应用服务环境，最多可以配置最多五十 (50) 个计算资源让单个应用程序独占使用。
 
-应用服务环境由前端计算资源池，以及一到三个工作线程计算资源池组成。 
+应用服务环境由前端计算资源池，以及一到三个工作线程计算资源池组成。
 
-前端池包含负责处理 SSL 终止以及应用服务环境中应用请求的自动负载均衡的计算资源。 
+前端池包含负责处理 SSL 终止以及应用服务环境中应用请求的自动负载均衡的计算资源。
 
 每个工作线程池包含分配给[应用服务计划][AppServicePlan]的计算资源，而这些资源又包含一个或多个 Azure 应用服务应用。  由于应用服务环境中可能有多达三个不同的工作线程池，因此可以灵活地为每个工作线程池选择不同的计算资源。  
 
@@ -66,6 +67,7 @@ ms.locfileid: "53728221"
 有关应用服务环境中支持的可用计算资源大小的详细信息，请参阅[应用服务定价][AppServicePricing]页，并查看高级定价层中应用服务环境可用的选项。
 
 ## <a name="virtual-network-support"></a>虚拟网络支持
+
 可以在 Azure 资源管理器虚拟网络**或者**经典的部署模型虚拟网络中创建应用服务环境（[关于虚拟网络的更多信息][MoreInfoOnVirtualNetworks]）。  由于应用服务环境始终位于虚拟网络中（更准确地说，是位于虚拟网络的子网中），因此可以利用虚拟网络的安全功能来控制入站和出站网络通信。  
 
 应用服务环境既可以是面向 Internet 的（使用公共 IP 地址），也可以是面向内部的（只使用 Azure 内部负载均衡器 (ILB) 地址）。
@@ -77,6 +79,7 @@ ms.locfileid: "53728221"
 有关应用服务环境如何在虚拟网络和本地网络中使用的详细信息，请参阅以下文章：[网络体系结构][NetworkArchitectureOverview]、[控制入站流量][ControllingInboundTraffic]和[安全连接到后端][SecurelyConnectingToBackends]。 
 
 ## <a name="getting-started"></a>入门
+
 若要开始使用应用服务环境，请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]
 
 有关应用服务环境网络体系结构的概述，请参阅[网络体系结构概述][NetworkArchitectureOverview]一文。
@@ -104,5 +107,3 @@ ms.locfileid: "53728221"
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 
 <!-- IMAGES -->
-
-

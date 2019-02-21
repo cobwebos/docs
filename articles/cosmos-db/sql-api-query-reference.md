@@ -4,16 +4,16 @@ description: 本文介绍 Azure Cosmos DB 中使用的 SQL 查询语言语法、
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 457f64b9ae9101628df5347c921bfa057a7cb754
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: de50c18fa8e2bebcb584fcd5763f0428637df484
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991423"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455783"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB SQL 语言参考 
 

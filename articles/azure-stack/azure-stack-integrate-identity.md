@@ -10,12 +10,12 @@ ms.date: 01/23/19
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/23/19
-ms.openlocfilehash: a7753280c0b84b21f44e52c303b96f11cd4cd8af
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a71362f4d6a69f2eaed36dd549437bb5857d555f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765784"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456990"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -24,7 +24,7 @@ ms.locfileid: "55765784"
 
 ||从 Internet 断开连接|连接到 Internet|
 |---------|---------|---------|
-|帐单|必须是“容量”<br> 仅限企业协议 (EA)|“容量”或“即用即付”<br>“EA”或“云解决方案提供商”(CSP)|
+|计费|必须是“容量”<br> 仅限企业协议 (EA)|“容量”或“即用即付”<br>“EA”或“云解决方案提供商”(CSP)|
 |标识|必须是“AD FS”|“Azure AD”或“AD FS”|
 |市场 |支持<br>BYOL 许可|支持<br>BYOL 许可|
 |注册|必需选项，需要使用可移动媒体<br> 和独立的连接设备。|自动|
@@ -73,7 +73,7 @@ Graph 仅支持与单个 Active Directory 林集成。 如果存在多个林，�
 
 如果 Active Directory 部署包含多个站点，请配置最靠近 Azure Stack 部署的 Active Directory 站点。 这种配置可以避免让 Azure Stack Graph 服务使用全局目录服务器从远程站点解析查询。
 
-将 Azure Stack [公共 VIP 网络](azure-stack-network.md#public-vip-network)子网添加到最靠近 Azure Stack 的 Azure AD 站点。 例如，如果 Active Directory 包含 Seattle 和 Redmond 两个站点，且 Azure stack 部署在 Seattle 站点，则应将 Azure Stack 公共 VIP 网络子网添加到 Seattle 的 Azure AD 站点。
+添加 Azure Stack[公共 VIP 网络](azure-stack-network.md#public-vip-network)到 Azure Stack 与最接近的 Active Directory 站点的子网。 例如，如果你的 Active Directory 具有两个站点西雅图和雷德蒙德西雅图站点上部署 Azure stack，可将 Azure Stack 公共 VIP 网络子网到 Active Directory 站点为西雅图。
 
 有关 Active Directory 站点的详细信息，请参阅[设计站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。
 
@@ -118,7 +118,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口与可写入的全局�
 
 Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Directory 通信：
 
-|类型|端口|协议|
+|Type|端口|协议|
 |---------|---------|---------|
 |LDAP|389|TCP 和 UDP|
 |LDAP SSL|636|TCP|
@@ -308,7 +308,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 有关创建 SPN 的详细信息，请参阅[为 AD FS 创建服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)。
 
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="configuration-rollback"></a>配置回滚
 

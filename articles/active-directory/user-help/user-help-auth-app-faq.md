@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a1fd3efb9eac30e70fea9622716a54769369e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78fc7441b109c87f1ab9ff5b56ed8e055c152d10
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184119"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456055"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator 应用常见问题解答
 
@@ -49,7 +49,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 |为何适用于 Apple Watch 的 Microsoft Authenticator 伴侣应用在手表上不同步或显示？|如果该应用未显示在 Watch 上，请尝试以下方法： <ol><li>确保 Watch 运行 watchOS 4.0 或更高版本。</li><li>再次同步 Watch。</li></ol>|
 |我的 Apple Watch 伴侣应用已崩溃。 是否可以向你们发送崩溃日志以便调查？ |首先，请务必选择与我们共享分析数据。 如果你是 TestFlight 用户，则已注册。 否则，可以转到“设置”>“隐私”>“分析”，并同时选择“共享 iPhone 和 Watch 分析”和“与应用开发人员共享”选项。<br><br>注册后，可以尝试重现崩溃，因此自动将崩溃日志发送给我们进行调查。 但是，如果无法重现崩溃，可以手动复制日志文件并将其发送给我们。<ol><li>在手机上打开 Watch 应用，转到“设置”>“通用”，然后单击“复制 Watch 分析数据”。</li><li>在“设置”>“隐私”>“分析”>“分析数据”下找到相应的崩溃信息，然后手动复制整个文本。</li><li>在手机上打开 Microsoft Authenticator 应用，并将复制的文本粘贴到“发送日志”页上的“与应用开发人员共享”文本框中。</li></ol>|
 |什么是应用锁定功能，它如何帮助我更加安全？|若要使你的一次性密码、应用信息和应用设置更加安全，可以在 Microsoft Authenticator 应用中开启应用锁定功能。 从 Microsoft Authenticator 应用的“设置”屏幕开启应用锁定意味着你每次打开 Microsoft Authenticator 应用时都会要求你使用 PIN 或生物识别进行身份验证。 此功能提供额外的保护，你对 Microsoft Authenticator 应用中的通知进行批准的方式不会改变。<br><br>**注意**<br>如果你在 30 秒内返回到在 Android 设备上运行的 Microsoft Authenticator 应用，则不会提示你再次进行身份验证。|
-|为什么会收到关于帐户活动的通知？|为了帮助你更好地掌握 Microsoft 个人帐户状况的最新信息，我们会向你的 Microsoft Authenticator 应用发送活动通知。 这些通知会在发生更改后立即显示，帮助提高安全性。 我们之前通过电子邮件或短信发送这些通知，现在将其扩展为包括应用。 有关这些活动通知的详细信息，请参阅[存在异常帐户登录时会发生什么](https://support.microsoft.com/en-us/help/13967/microsoft-account-unusual-sign-in)。 若要更改接收通知的方式，请登录 https://account.live.com/SecurityNotifications/Update。|
+|为什么会收到关于帐户活动的通知？|为了帮助你更好地掌握 Microsoft 个人帐户状况的最新信息，我们会向你的 Microsoft Authenticator 应用发送活动通知。 这些通知会在发生更改后立即显示，帮助提高安全性。 我们之前通过电子邮件或短信发送这些通知，现在将其扩展为包括应用。 有关这些活动通知的详细信息，请参阅[存在异常帐户登录时会发生什么](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)。 若要更改接收通知的方式，请登录 https://account.live.com/SecurityNotifications/Update。|
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -58,4 +58,4 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 -   如需有关安全信息的详细信息，请参阅[管理安全信息](security-info-manage-settings.md)
 
-- 如果此文档没有回答问题，请告知我们。 请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)发布问题，并从社区获取帮助，或在此页面留下评论。
+- 如果此文档没有回答问题，请告知我们。 请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp)发布问题，并从社区获取帮助，或在此页面留下评论。

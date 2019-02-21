@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d15e3773a9b6e3dceb0799d206070730675c211d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492277"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310960"
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
 
@@ -31,7 +31,7 @@ ms.locfileid: "55492277"
 
    ![创建恢复服务保管库步骤 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
-   此时会显示恢复服务保管库列表。 
+   此时会显示恢复服务保管库列表。
 
    ![从列表中选择保管库](./media/backup-azure-delete-vault/choose-vault-to-delete-.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "55492277"
 
 ## <a name="delete-the-recovery-services-vault-by-force"></a>强制删除恢复服务保管库
 
-PowerShell 可用于强制删除恢复服务保管库。 强制删除意味着永久删除恢复服务保管库及其所有关联备份数据。 
+PowerShell 可用于强制删除恢复服务保管库。 强制删除意味着永久删除恢复服务保管库及其所有关联备份数据。
 
 > [!Warning]
 > 使用 PowerShell 删除恢复服务保管库时，请确保自己要永久删除保管库中的所有备份数据。
@@ -95,7 +95,7 @@ PowerShell 可用于强制删除恢复服务保管库。 强制删除意味着�
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
-   
+
 1. 在 Azure 门户中登录订阅，并确认保管库是否已遭删除。
 
 
@@ -106,7 +106,6 @@ PowerShell 可用于强制删除恢复服务保管库。 强制删除意味着�
 * Azure 存储（Azure 文件）备份
 * Azure VM 中的 SQL Server 备份
 * Azure 虚拟机备份
-* Microsoft Azure 恢复服务代理备份
 
 将“备份基础结构”菜单（见下图）用于：
 
@@ -125,7 +124,7 @@ PowerShell 可用于强制删除恢复服务保管库。 强制删除意味着�
 
 1. 对于列表中的所有项，右键单击相应项，再选择关联菜单中的“停止备份”。
 
-    ![选择备份类型](./media/backup-azure-delete-vault/stop-backup-item.png) 
+    ![选择备份类型](./media/backup-azure-delete-vault/stop-backup-item.png)
 
     此时会打开“停止备份”菜单。
 
@@ -154,9 +153,9 @@ PowerShell 可用于强制删除恢复服务保管库。 强制删除意味着�
 
 ## <a name="removing-azure-backup-server-or-dpm"></a>删除 Azure 备份服务器或 DPM
 
-1. 在保管库仪表板菜单中，向下滚动到“管理”部分，再单击“备份基础结构”。 
+1. 在保管库仪表板菜单中，向下滚动到“管理”部分，再单击“备份基础结构”。
 
-1. 在子菜单中，单击“备份管理服务器”，以查看 Azure 备份服务器和 System Center DPM 服务器。 可以停止和删除 Azure 文件服务器、Azure VM 中的 SQL Server 和 Azure 虚拟机。 
+1. 在子菜单中，单击“备份管理服务器”，以查看 Azure 备份服务器和 System Center DPM 服务器。 可以停止和删除 Azure 文件服务器、Azure VM 中的 SQL Server 和 Azure 虚拟机。
 
     ![选择保管库，以打开它的仪表板](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 

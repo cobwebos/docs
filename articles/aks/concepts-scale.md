@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: f464b6411e1375fa005980454a9b61d2d6c05b0b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7cd6af1dc6b947abd91c9d25a4b102e52da9d24d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819104"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456718"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -23,7 +23,7 @@ ms.locfileid: "55819104"
 - [手动缩放](#manually-scale-pods-or-nodes)
 - [水平 Pod 自动缩放程序 (HPA)](#horizontal-pod-autoscaler)
 - [群集自动缩放程序](#cluster-autoscaler)
-- Azure 容器实例 (ACI) 与 AKS 集成
+- [Azure 容器实例 (ACI) 与 AKS 集成](#burst-to-azure-container-instances)
 
 ## <a name="manually-scale-pods-or-nodes"></a>手动缩放 Pod 或节点
 

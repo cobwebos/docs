@@ -160,6 +160,8 @@ items:
         href: azure-to-azure-how-to-enable-replication-ade-vms.md
       - name: 为 S2D VM 启用 Azure 到 Azure 复制
         href: azure-to-azure-how-to-enable-replication-s2d-vms.md
+      - name: 排除磁盘
+        href: azure-to-azure-exclude-disks.md
       - name: 故障转移后重新保护 Azure VM
         href: azure-to-azure-how-to-reprotect.md
       - name: 设置 Azure VM 迁移到 Azure 后的灾难恢复
@@ -460,9 +462,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 0b9c7300737ca91508111de9e414249441ba0916
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 49cdd301f87db09e4950339e1925ac313a8cdd33
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980205"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454780"

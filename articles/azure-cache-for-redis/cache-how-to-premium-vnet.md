@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: dafa9f09b6aed1f61facf3737c7e03c81b2a0e7d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 15b7bae6116d05e7bf4cd76a1ba1b93bb127fef8
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238243"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313086"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
 Azure Redis 缓存有不同的缓存套餐，因此在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上很灵活。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
@@ -85,7 +85,7 @@ Azure Redis 缓存有不同的缓存套餐，因此在缓存大小和功能（�
 
 * Azure Redis 缓存和 VNet 有哪些常见的错误配置问题？
 * [如何验证 VNET 中缓存是否正常工作？](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
-* [尝试连接到 VNET 中的 Azure Redis 缓存时，为何会收到一项指出远程证书无效的错误？](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
+* 尝试连接到 VNET 中的 Azure Redis 缓存时，为何会收到一项指出远程证书无效的错误？
 * [是否可以通过标准或基本缓存使用 VNet？](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * 为什么在某些子网中创建 Azure Redis 缓存会失败，而在其他子网中不会失败？
 * [子网地址空间有哪些要求？](#what-are-the-subnet-address-space-requirements)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169966"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447407"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -221,8 +221,6 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 作为托管服务，对于从 VNET 传入和传出的流量，HDInsight 都需要对 HDinsight 运行状况和管理服务具有不受限制的访问权限。 使用 NSG 和 UDR 时，必须确保这些服务仍然可以与 HDInsight 进行通信。
 
-HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必须允许用于这些服务的端口上的通信。 有关详细信息，请参阅 [所需端口] 一节。
-
 ### <a id="hdinsight-ip"></a>使用网络安全组和用户定义的路由的 HDInsight
 
 如果你计划使用网络安全组或用户定义的路由控制网络流量，请在安装 HDInsight 之前执行以下操作：
@@ -305,8 +303,6 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
 3. 还必须允许从 168.63.129.16 访问。 此地址是 Azure 的递归解析程序。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。
 
 有关详细信息，请参阅[控制网络流量](#networktraffic)一节。
-
-对于出站 NSG 规则，请允许来自 VNET 中任何源的流量到达作为“目标 IP 地址”的上述地址。
 
 如果使用用户定义的路由 (UDR)，则应当指定一个路由并允许来自 VNET 的出站流量到达下一跃点设置为“Internet”的上述 IP。
     

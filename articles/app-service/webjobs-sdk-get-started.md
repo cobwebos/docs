@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: glenga
-ms.openlocfilehash: 9e85dbe21b98ce936ede09e741e83f59a865b73e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b39c8c19b494422d34bae7145d69e8e95cb16846
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999379"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416814"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -431,7 +431,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 如果没有可用的 Application Insights 资源，请[创建一个](../azure-monitor/app/create-new-resource.md )。 将“应用程序类型”设置为“常规”，并跳过“复制检测密钥”后面的部分。
 
-1. 如果已有可用的 Application Insights 资源，请[复制检测密钥](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)。
+1. 如果已有可用的 Application Insights 资源，请[复制检测密钥](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)。
 
 ### <a name="configure-app-settings"></a>配置应用设置 
 

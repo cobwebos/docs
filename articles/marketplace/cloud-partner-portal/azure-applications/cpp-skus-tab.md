@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7f73e71677a700ba8047246addb2d27799c5a616
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a963db0b0b1a20c110f90bacdae092846f7bdd8b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890886"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342535"
 ---
 # <a name="azure-application-skus-tab"></a>Azure 应用程序 SKU 选项卡
 
@@ -139,7 +139,7 @@ ms.locfileid: "55890886"
 
 #### <a name="policy-settings"></a>策略设置
 
-添加托管应用符合的策略。 详细了解 Azure 资源策略，请参阅[什么是 Azure Policy？](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) 
+添加托管应用符合的策略。 详细了解 Azure 资源策略，请参阅[什么是 Azure Policy？](../../../governance/policy/overview.md)
 
 
    ![托管应用程序的授权和策略设置](./media/azureapp-sku-details-managedapp-auth-policy.png)

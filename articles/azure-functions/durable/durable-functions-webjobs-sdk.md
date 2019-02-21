@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 282b07a384ac6db5bfbc144ca06440f3a8f01a6a
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713262"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301190"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
 
@@ -190,7 +190,7 @@ while (true)
 
 1. 若要在本地运行时查看 Application Insights 中的日志：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建应用类型为“常规”的 Application Insights 资源。
+    a. 创建应用类型为“常规”的 Application Insights 资源。
 
     b. 在 *App.config* 文件中保存检测密钥。
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 886c41f669d0b0363f4484b24ba3b9975904d9f7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c5c3f498f62d6399534333f8166a514a10f044c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492209"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310147"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>监视 Azure 虚拟机备份的警报
 
@@ -42,7 +42,7 @@ ms.locfileid: "55492209"
 
     ![事件详细信息](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
-    若要自定义列表中显示的属性，请参阅 [View additional event attributes](backup-azure-monitor-vms.md#view-additional-event-attributes)（查看其他事件属性）
+    若要自定义列表中显示的属性，请参阅 [View additional event attributes](backup-azure-monitor-vms.md)（查看其他事件属性）
 
 ## <a name="configure-notifications"></a>配置通知
 

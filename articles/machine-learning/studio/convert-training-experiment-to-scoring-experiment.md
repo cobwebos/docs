@@ -9,12 +9,12 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 22cfdd22a8d2adacb5a5a5c817a628fe2c072755
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1d07ad7e60e1ee9ff3216767fcfc77405d557f44
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001691"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455103"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>如何准备在 Azure 机器学习工作室中部署的模型
 
@@ -50,11 +50,11 @@ Azure 机器学习工作室提供必需的工具，方便你开发预测分析�
 
 例如，以下试验使用示例人口普查数据，训练双类提升的决策树模型：
 
-![训练实验][figure1]
+![训练实验](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
 在此实验的模块执行四个基本上不同的函数：
 
-![模块函数][figure2]
+![模块函数](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
 将此训练实验转换为预测实验时，不再需要这些模块中的某些模块，因此会将其丢弃，或者让它们充当其他用途：
 
@@ -70,7 +70,7 @@ Azure 机器学习工作室提供必需的工具，方便你开发预测分析�
 
 单击“设置 Web 服务”示例如下所示：
 
-![转换预测实验][figure3]
+![转换预测实验](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
 要准备将实验部署为 Web 服务，“设置 Web 服务”所做的工作可能已经足够了。 但是，可能想要执行特定于试验的一些附加工作。
 
@@ -79,7 +79,7 @@ Azure 机器学习工作室提供必需的工具，方便你开发预测分析�
 
 例如，默认情况下“设置 Web 服务”将“Web 服务输入”模块置于数据流的顶部，如上图所示。 不过，我们可以手动对“Web 服务输入”定位，使其通过数据处理模块：
 
-![移动 web 服务输入][figure4]
+![移动 web 服务输入](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
 通过 web 服务提供的输入数据现在直接传递到分数模型模块，无需任何预处理。
 
@@ -88,14 +88,14 @@ Azure 机器学习工作室提供必需的工具，方便你开发预测分析�
 
 例如，若要仅返回输入数据的评分结果而不是整个向量，则可添加[选择数据集中的列][select-columns]模块，以排除除计分结果之外的所有列。 然后，将“Web 服务输出”模块移动到[选择数据集中的列][select-columns]模块的输出。 该实验如下所示：
 
-![移动 web 服务输出][figure5]
+![移动 web 服务输出](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
 ### <a name="add-or-remove-additional-data-processing-modules"></a>添加或删除其他数据处理模块
 如果知道在评分过程不再需要试验中的多个模块，则可以删除这些模块。 例如，由于在数据处理模块后已将“Web 服务输入”移动到点，可以删除预测实验中的[清理缺失数据][clean-missing-data]模块。
 
 现在，预测试验如下所示：
 
-![删除其他模块][figure6]
+![删除其他模块](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
 ### <a name="add-optional-web-service-parameters"></a>添加其他 Web 服务参数
@@ -116,16 +116,6 @@ Azure 机器学习工作室提供必需的工具，方便你开发预测分析�
 有关完整的部署过程的详细信息，请参阅 [Azure 机器学习 Web 服务][deploy]
 
 [deploy]: publish-a-machine-learning-web-service.md
-
-
-<!-- Images -->
-[figure1]:./media/convert-training-experiment-to-scoring-experiment/figure1.png
-[figure2]:./media/convert-training-experiment-to-scoring-experiment/figure2.png
-[figure3]:./media/convert-training-experiment-to-scoring-experiment/figure3.png
-[figure4]:./media/convert-training-experiment-to-scoring-experiment/figure4.png
-[figure5]:./media/convert-training-experiment-to-scoring-experiment/figure5.png
-[figure6]:./media/convert-training-experiment-to-scoring-experiment/figure6.png
-
 
 <!-- Module References -->
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/

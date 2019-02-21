@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
 ms.custom: mvc
-ms.openlocfilehash: ca0a6569dda89586c629cc46909862de4f27cf04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ab04fc69d29d9bb5386261f6453b2f47bfd66bc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56160905"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446318"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Azure Stack 计算容量规划
 [Azure Stack 上支持的 VM 大小](./user/azure-stack-vm-sizes.md)是在 Azure 上支持的 VM 大小的子集。 Azure 在多方面施加资源限制，以避免资源（服务器本地和服务级别）的过度消耗。 如果未对租户使用资源施加一些限制，则当一些租户过度使用资源时，另一些租户的体验就会变差。 VM 的网络出口在 Azure Stack 上有与 Azure 限制一致的带宽上限。 就存储资源来说，在 Azure Stack 上实施存储 IOPS 限制可以避免租户因访问存储而造成资源过度使用。  
@@ -43,7 +43,7 @@ ms.locfileid: "56160905"
 
 以下计算会生成一个可用于租户 VM 放置的总可用内存。 该内存容量适用于整个 Azure Stack 缩放单元。
 
-  VM 放置的可用内存 = 服务器总内存 – 复原保留 – Azure Stack 基础结构开销<sup>1</sup>
+  VM 放置虚拟机的可用内存 = 正在运行的 Vm-Azure Stack 基础结构开销所使用的总服务器内存 – 复原预留 – 内存<sup>1</sup>
 
   复原保留 = H + R * (N-1) + V * (N-2)
 

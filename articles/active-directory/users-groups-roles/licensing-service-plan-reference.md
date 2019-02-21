@@ -10,17 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
+ms.subservice: users-groups-roles
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 452aba374898ce613ddcaace5e3b074c14755a79
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f12a300afbf56d5f6149dcc71f2fc4efedbc44f8
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171462"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430160"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>用于许可的产品名称和服务计划标识符
 

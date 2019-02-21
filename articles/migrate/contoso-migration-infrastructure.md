@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 32a489ee6266018ef1160a0870fe236cc6a72d36
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 17ec8eb779dec560cfc5350fecc0fb819e89195a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726978"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340121"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 部署迁移基础结构
 
@@ -646,7 +646,7 @@ Azure 提供了一系列跨服务和 Azure 平台的管理控制。 [详细了�
 
 Azure Policy 服务对资源进行评估，找到与所定义策略不相符的资源。 例如，可能有策略只允许某种类型的 VM，或要求资源具有特定标记。 
 
-Azure 策略指定策略定义，而策略分配指定策略的应用范围。 该范围可以是从管理组到资源组。 [了解](https://docs.microsoft.com/azure/azure-policy/create-manage-policy)如何创建和管理策略。
+Azure 策略指定策略定义，而策略分配指定策略的应用范围。 该范围可以是从管理组到资源组。 [了解](../governance/policy/tutorials/create-and-manage.md)如何创建和管理策略。
 
 Contoso 想要开始使用几个策略：
 

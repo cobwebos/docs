@@ -13,16 +13,14 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: fbf94d0430685ea5791aaaa83669a730986e665c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9bb6491565f685e8ca3d7a6271747a5df3629e81
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111299"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269070"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署操作
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 可以通过 Azure 门户查看部署操作。 在部署过程中收到错误时，可能最想要查看的就是这些操作，因此，本文将重点介绍如何查看已失败的操作。 该门户提供一个界面，可用于轻松查找错误并确定潜在修复。
 

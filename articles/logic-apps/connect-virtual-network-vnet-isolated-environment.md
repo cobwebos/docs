@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/12/2019
-ms.openlocfilehash: 8d7fc6d8f581c3ad0e0f3266ea615acadcb7bc25
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.date: 02/15/2019
+ms.openlocfilehash: d67bc99a63242dd56d65d6bdac0448c7742a6b9d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176197"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311896"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -67,9 +67,10 @@ ms.locfileid: "56176197"
 | 与 Azure 逻辑应用通信 <br>从 Azure 逻辑应用通信 | 入站 <br>出站 | * <br>80 和 443 | INTERNET <br>VIRTUAL_NETWORK |
 | Azure Active Directory | 出站 | * <br>80 和 443 | VIRTUAL_NETWORK <br>AzureActiveDirectory |
 | Azure 存储依赖项 | 出站 | * <br>80 和 443 | VIRTUAL_NETWORK <br>存储 |
+| 逻辑应用的运行历史记录 | 入站 | * <br>443 | INTERNET <br>VIRTUAL_NETWORK |
 | 连接管理 | 出站 | * <br>443 | VIRTUAL_NETWORK <br>INTERNET |
 | 发布诊断日志和指标 | 出站 | * <br>443 | VIRTUAL_NETWORK <br>AzureMonitor |
-| 逻辑应用设计器 - 动态属性 <br>逻辑应用的运行历史记录 <br>连接器部署 <br>请求触发器终结点 | 入站 | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
+| 逻辑应用设计器 - 动态属性 <br>连接器部署 <br>请求触发器终结点 | 入站 | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
 | 应用服务管理依赖项 | 入站 | * <br>454 和 455 | AppServiceManagement <br>VIRTUAL_NETWORK |
 | API 管理 - 管理终结点 | 入站 | * <br>3443 | APIManagement <br>VIRTUAL_NETWORK |
 | “记录到事件中心”策略和监视代理中的依赖项 | 出站 | * <br>5672 | VIRTUAL_NETWORK <br>EventHub |

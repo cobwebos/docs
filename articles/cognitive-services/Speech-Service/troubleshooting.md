@@ -1,7 +1,7 @@
 ---
 title: 排查语音 SDK 问题 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 本文提供的信息可帮助你解决在使用语音服务 SDK 时可能遇到的问题。
+description: 本文提供的信息可帮助你解决在使用语音 SDK 时可能遇到的问题。
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: dbcdfd117a39939491914ebddb717f404e07f09c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a3741cb351b11b8cfd7c5d38713bb71232cf010e
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859311"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446522"
 ---
-# <a name="troubleshoot-the-speech-service-sdk"></a>排查语音服务 SDK 问题
+# <a name="troubleshoot-the-speech-sdk"></a>排查语音 SDK 问题
 
-本文提供的信息可帮助你解决在使用语音服务 SDK 时可能遇到的问题。
+本文提供的信息可帮助你解决在使用语音 SDK 时可能遇到的问题。
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>错误：WebSocket 升级失败，出现身份验证错误 (403)
 

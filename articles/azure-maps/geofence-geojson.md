@@ -3,21 +3,21 @@ title: Azure Maps 中的地理围栏 GeoJSON 数据格式 | Microsoft Docs
 description: 了解 Azure Maps 中的地理围栏 GeoJSON 数据格式
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/08/2018
+ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: aa39661c8ecc4b594478def7d0cc9be3006294c4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5a654b7fdae341da62d94499830a5e1202dff921
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007485"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339628"
 ---
 # <a name="geofencing-geojson-data"></a>地理围栏 GeoJSON 数据
 
-使用 Azure Maps [GET 地理围栏](https://docs.microsoft.com/rest/api/map/spatial/getgeofencepreview)和 [POST 地理围栏](https://docs.microsoft.com/rest/api/map/spatial/postgeofencepreview) API 可以检索某个坐标相对于所提供地理围栏或围栏集的邻近性。 本文详细介绍如何准备可在 Azure Maps GET 和 POST API 中使用的地理围栏数据。
+使用 Azure Maps [GET 地理围栏](https://docs.microsoft.com/rest/api/maps/spatial/getgeofencepreview)和 [POST 地理围栏](https://docs.microsoft.com/rest/api/maps/spatial/postgeofencepreview) API 可以检索某个坐标相对于所提供地理围栏或围栏集的邻近性。 本文详细介绍如何准备可在 Azure Maps GET 和 POST API 中使用的地理围栏数据。
 
 地理围栏或地理围栏集的数据由 [rfc7946](https://tools.ietf.org/html/rfc7946) 中定义的、采用 `GeoJSON` 格式的 `Feature` 对象和 `FeatureCollection` 对象表示。 除此之外：
 

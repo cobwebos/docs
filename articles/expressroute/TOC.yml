@@ -46,8 +46,6 @@ items:
     href: expressroute-erdirect-about.md
   - name: 关于 ExpressRoute Global Reach
     href: expressroute-global-reach.md
-  - name: ExpressRoute Global Reach 应用程序方案
-    href: expressroute-global-reach-app-scenario.md
   - name: 后端连接互操作性
     items:
     - name: 前言和测试设置
@@ -227,9 +225,9 @@ items:
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/
     - name: 为线路设置公共对等互连
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/
-ms.openlocfilehash: 54100c59be82666914ea35684fbae5130a763ada
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 9980b405670b3fee0d1aa47c746e8f33001ba335
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329110"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448053"

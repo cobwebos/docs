@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 32bed77146284799faebdb8a44e2e610f49913cf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 02adb36bec574719f3f6d7f1c1b66124f96ccae1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003731"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309227"
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream-legacy"></a>使用 FMLE 编码器发送单比特率实时流（旧版）
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ ms.locfileid: "56003731"
 >
 >
 
-启动频道时，可以[配置编码器](media-services-configure-fmle-live-encoder.md#configure_fmle_rtmp)。
+启动频道时，可以[配置编码器](media-services-configure-fmle-live-encoder.md)。
 
 > [!IMPORTANT]
 > 请注意，只要频道进入就绪状态，就会开始计费。 有关详细信息，请参阅[频道的状态](media-services-manage-live-encoder-enabled-channels.md#states)。

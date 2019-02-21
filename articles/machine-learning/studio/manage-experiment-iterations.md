@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 503a93064b81e0db35c0477a11f2ee525680c854
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e41a669e3dcd14952077cbd21e7387184546de80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488419"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454273"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>在 Azure机器学习工作室中管理试验迭代
 开发预测分析模型是一个迭代过程 - 在修改试验的各种函数和参数时，结果会不断聚合，直到对经过培训的有效模型感到满意为止。 此过程的关键是跟踪试验参数和配置的各种迭代。
@@ -48,7 +48,7 @@ ms.locfileid: "55488419"
 
 如果单击“**查看运行历史记录**”，会看到所有这些运行的列表：
 
-![运行历史记录示例][runhistory]
+![运行历史记录示例](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
 单击这些运行中的任意一个，以查看在运行时的试验快照。 配置、参数值、注释和结果将全部保留，从而提供试验运行的完整记录。
 
@@ -73,10 +73,6 @@ ms.locfileid: "55488419"
 5. 单击“**运行**”。
 
 现在可以继续修改并运行此版本的试验，构建新的运行历史记录以记录所做的工作。
-
-<!-- Images -->
-[runhistory]:./media/manage-experiment-iterations/viewrunhistory.jpg
-
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/

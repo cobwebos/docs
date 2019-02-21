@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: eb344d6da15a8faf8f05720ae9b1fd49bd42db2f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d2086f02cc981ad944c030ad40083d153c520359
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808190"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447321"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>什么是 Azure 搜索中的“认知搜索”？
 
@@ -96,18 +96,24 @@ Azure 搜索中的认知技能基于认知服务 API 中的机器学习模型：
 
 + 美国中西部
 + 美国中南部
++ 美国中北部
 + 美国东部
 + 美国东部 2
 + 美国西部
 + 美国西部 2
++ 美国中部
 + 加拿大中部
 + 西欧
-+ 英国南部
 + 北欧
++ 英国南部
++ 法国中部
 + 巴西南部
 + 东亚
 + 东南亚
 + 印度中部
++ 日本西部
++ 日本东部
++ 韩国中部
 + 澳大利亚东部
 
 **步骤 2：掌握工作流的实践体验**
