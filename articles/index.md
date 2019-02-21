@@ -5,13 +5,7 @@ title: Microsoft Azure 文档
 description: 了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。
 ms.topic: hub-page
 featureFlags:
-- clicktale
-ms.openlocfilehash: 4ae03eedb96ecd1b460b06df3a80a7349c04e099
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330709"
+  - clicktale
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -195,6 +189,7 @@ Go</a>
                                                 <h4>关系数据库</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">SQL 数据库即服务</a></li>
+                                                    <li><a class="barLink" href="/azure/virtual-machines/windows/sql/">Azure VM 上的 SQL Server</a></li>
                                                     <li><a class="barLink" href="/azure/sql-data-warehouse/">SQL 数据仓库即服务</a></li>
                                                     <li><a class="barLink" href="/azure/postgresql/">PostgreSQL 数据库即服务</a></li>
                                                     <li><a class="barLink" href="/azure/mysql/">MySQL 数据库即服务</a></li>

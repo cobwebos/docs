@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 46457711c1611e614f89a813b1856687beb27ac7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 372d3d88c0a160c1f294f07e58c5e11dbf5eac5e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311426"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456599"
 documentType: LandingData
 title: Azure 机器学习服务文档
 metadata:
   title: Azure 机器学习服务文档 - 教程和 API 参考 | Microsoft Docs
-  description: Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来开发、培训、测试、部署、管理和跟踪机器学习模型。 Azure 机器学习服务完全支持开放源代码技术，如 Scikit-learn、Tensorflow、Pytorch 或任何其他基于 Python 的框架。 使用我们的快速入门和教程了解如何将 Azure 机器学习服务用于机器学习工作流。
+  description: Azure 机器学习服务提供了 SDK 和服务，以用于快速准备数据并训练和部署机器学习模型。 可通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 通过我们的快速入门和教程开始使用。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -17,12 +17,21 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 2/15/2019
+  ms.date: 2/19/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Azure 机器学习服务提供了一个云环境，以用于快速准备数据并训练和部署机器学习模型。 使用自动化机器学习功能可更加快速地识别算法并优化超参数。 通过自动缩放计算和管道，提高生产效率并降低成本。 使用开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn 以及服务的 SDK）访问这些功能。 通过我们的快速入门和教程开始使用。
+  description: Azure 机器学习服务提供了 SDK 和服务，以用于快速准备数据并训练和部署机器学习模型。 可通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 通过我们的快速入门和教程开始使用。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: 观看视频 (9:58)
+    href: https://www.youtube.com/watch?v=GBDSBInvz08
+    width: 250
 sections:
 - title: 5 分钟快速入门
   items:
@@ -46,14 +55,14 @@ sections:
   items:
   - type: paragraph
     text: 在 GitHub 上查找 <a href="samples-notebooks">Jupyter 笔记本</a>以帮助你探索该服务。
-- title: 引用
+- title: 参考
   items:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://aka.ms/aml-sdk">主 SDK (Python)</a>
-    - html: <a href="https://aka.ms/data-prep-sdk">数据准备 SDK (Python)</a>
-    - html: <a href="https://aka.ms/aml-monitoring-sdk">监视 SDK (Python)</a>
+    - html: <a href="https://aka.ms/aml-sdk">主 Python SDK</a>：核心功能、自动机器学习、管道等等
+    - html: <a href="https://aka.ms/data-prep-sdk">数据准备</a> Python SDK：准备和转换数据
+    - html: <a href="https://aka.ms/aml-monitoring-sdk">监视</a> Python SDK：在已部署的 Web 服务上收集数据
 - title: 其他 Azure 机器学习技术
   items:
   - type: list

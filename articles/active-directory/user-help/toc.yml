@@ -23,26 +23,6 @@ items:
     href: active-directory-passwords-reset-register.md
   - name: 重置密码
     href: user-help-reset-password.md
-- name: 安全信息（预览版）帮助
-  items:
-  - name: 概述
-    href: user-help-security-info-overview.md
-  - name: 设置验证器应用
-    href: security-info-setup-auth-app.md
-  - name: 设置短信
-    href: security-info-setup-text-msg.md
-  - name: 设置电话呼叫
-    href: security-info-setup-phone-number.md
-  - name: 设置电子邮件
-    href: security-info-setup-email.md
-  - name: 设置安全问题
-    href: security-info-setup-questions.md
-  - name: 管理应用密码
-    href: security-info-app-passwords.md
-  - name: 管理安全信息
-    href: security-info-manage-settings.md
-  - name: 登录方法
-    href: user-help-sign-in.md?toc=./toc.json
 - name: Microsoft Authenticator 应用帮助
   items:
   - name: 概述
@@ -60,21 +40,49 @@ items:
       href: user-help-auth-app-add-non-ms-account.md
     - name: 手动添加帐户
       href: user-help-auth-app-add-account-manual.md
-    expanded: true
   - name: 使用 Microsoft Authenticator 应用登录
     href: user-help-auth-app-sign-in.md
   - name: 备份并恢复帐户
     href: user-help-auth-app-backup-recovery.md
   - name: 常见问题解答
     href: user-help-auth-app-faq.md
-- name: “我的应用”门户帮助
+- name: “我的配置文件”（预览版）门户帮助
   items:
   - name: 概述
-    href: user-help-my-apps-overview.md
-  - name: 什么是“我的应用”门户？
-    href: active-directory-saas-access-panel-introduction.md
-  - name: 排查问题
-    href: active-directory-saas-access-panel-user-help.md
+    href: myprofile-portal-overview.md
+  - name: 管理安全信息
+    href: user-help-security-info-overview.md
+  - name: 查看登录活动
+    href: myprofile-portal-recent-activity-page.md
+  - name: 管理组织
+    href: myprofile-portal-organizations-page.md
+  - name: 管理连接的设备
+    href: myprofile-portal-devices-page.md
+  - name: 查看与隐私相关的信息
+    href: myprofile-portal-privacy-page.md
+- name: 安全信息（预览版）帮助
+  items:
+  - name: 概述
+    href: user-help-security-info-overview.md
+  - name: 在登录过程中添加安全信息
+    href: security-info-setup-signin.md
+  - name: 添加或更新安全信息的方法概述
+    href: security-info-add-update-methods-overview.md
+    items:
+    - name: 设置验证器应用
+      href: security-info-setup-auth-app.md
+    - name: 设置短信
+      href: security-info-setup-text-msg.md
+    - name: 设置电话呼叫
+      href: security-info-setup-phone-number.md
+    - name: 设置电子邮件
+      href: security-info-setup-email.md
+    - name: 设置安全问题
+      href: security-info-setup-questions.md
+  - name: 管理应用密码
+    href: security-info-app-passwords.md
+  - name: 登录方法
+    href: user-help-sign-in.md?toc=./toc.json
 - name: 管理设备帮助
   items:
   - name: 概述
@@ -85,9 +93,17 @@ items:
     href: user-help-register-device-on-network.md
   - name: 针对“无法访问”消息进行故障排除
     href: user-help-device-remediation.md
-ms.openlocfilehash: 604b2c204f893bf0abaaec86f85e2159c17a8656
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+- name: “我的应用”门户帮助
+  items:
+  - name: 概述
+    href: user-help-my-apps-overview.md
+  - name: 什么是“我的应用”门户？
+    href: active-directory-saas-access-panel-introduction.md
+  - name: 排查问题
+    href: active-directory-saas-access-panel-user-help.md
+ms.openlocfilehash: b7d8c297559736c9f22b118d50423f980302018d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816044"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452568"

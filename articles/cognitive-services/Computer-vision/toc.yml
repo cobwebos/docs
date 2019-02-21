@@ -102,7 +102,7 @@ items:
     href: quickstarts-sdk/python-sdk.md
 - name: 教程
   items:
-  - name: 获取 Azure 图像的元数据
+  - name: 生成图像的元数据
     href: Tutorials/storage-lab-tutorial.md
 - name: 概念
   items:
@@ -156,7 +156,7 @@ items:
     href: vs-computer-vision-connected-service.md
   - name: 分析实时视频
     href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
-- name: 引用
+- name: 参考
   items:
   - name: Azure CLI
     href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
@@ -202,9 +202,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: 区域可用性
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 30b8a6937bafc469c4135a899af56277b4f3a9eb
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e3653590989020e4a9186cf9e083bf3b061f2f49
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310706"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452315"

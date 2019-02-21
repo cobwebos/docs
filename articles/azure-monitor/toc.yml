@@ -315,6 +315,8 @@ items:
           href: app/asp-net-exceptions.md
         - name: 日志跟踪
           href: app/asp-net-trace-logs.md
+        - name: ILogger
+          href: app/ilogger.md
         - name: 性能计数器
           href: app/performance-counters.md
         - name: 依赖项
@@ -390,6 +392,8 @@ items:
           href: app/proactive-cloud-services.md
         - name: 管理智能检测规则
           href: app/proactive-arm-config.md
+        - name: 电子邮件通知
+          href: app/proactive-email-notification.md
       - name: 创建资源
         href: app/create-new-resource.md
       - name: 故障排除
@@ -912,7 +916,7 @@ items:
         href: insights/solutions-best-practices.md
       - name: 从 runbook 收集监视数据
         href: platform/runbook-datacollect.md
-- name: 引用
+- name: 参考
   items:
   - name: Application Insights
     items:
@@ -1027,9 +1031,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 79a0748ad69348d9eec2954731ef88232c253c64
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 519c8213c715995fea89475e81f8c63f41190d65
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416966"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455392"
