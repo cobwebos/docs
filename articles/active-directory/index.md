@@ -11,13 +11,8 @@ ms.topic: landing-page
 ms.date: 01/24/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ae193bbb5bdd3de3e26a48fd38705ef8ca7082
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204553"
 ---
+
 <div id="main" class="v2">
     <div class="container">
         <h1>Azure Active Directory 文档</h1>
@@ -278,7 +273,7 @@ ms.locfileid: "56204553"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="privileged-identity-management/index.yml">Azure 资源的托管标识</a></h3>
+                                                        <h3><a href="managed-identities-azure-resources/index.yml">Azure 资源的托管标识</a></h3>
                                                         <p>
                                                             <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">使用 Windows VM 访问 Azure SQL</a><br>
                                                             <a href="managed-identities-azure-resources/how-to-use-vm-token.md">将 Azure VM 用于获取令牌</a><br>

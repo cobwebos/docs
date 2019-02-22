@@ -7,15 +7,10 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 02/15/2019
+ms.date: 02/21/2019
 ms.topic: hub-page
-ms.openlocfilehash: 12957121d386afdc911bb0be954c0066d580e83e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338030"
 ---
+
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
 
@@ -77,7 +72,6 @@ ms.locfileid: "56338030"
                 </div>
             </a>
         </li>
-
         <li>
             <a href="/azure/cognitive-services/language-support/">
                 <div class="cardSize">
@@ -133,7 +127,7 @@ ms.locfileid: "56338030"
                         <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/csharp-analyze-sdk">使用 C#</a></p>
                         <p><a href="/azure/cognitive-services/bing-visual-search/quickstarts/java">使用 Java</a></p>
                         <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/node-analyze">使用 Node.js</a></p>
-                        <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk#analyze-an-image">使用 Python</a></p>
+                        <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk">使用 Python</a></p>
                     </div>
                 </div>
             </div>
@@ -151,10 +145,9 @@ ms.locfileid: "56338030"
                     <div class="cardText">
                         <h3>使用语音服务识别语音</h3>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-csharp-windows/">使用 C#</a></p>
-                        <p><a href="/azure/cognitive-services/speech-service/quickstart-java-jre">使用 Java</a></p>
-                        <p><a href="/azure/cognitive-services/speech-service/quickstart-objectivec-ios">使用 Objective-C</a></p>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-js-browser">使用 JavaScript</a></p>
-                        <p><a href="/azure/cognitive-services/speech-service/quickstart-cpp-windows">使用 C++</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-python">使用 Python</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-java-jre">使用 Java</a></p>
                     </div>
                 </div>
             </div>
@@ -214,7 +207,7 @@ ms.locfileid: "56338030"
                         <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/csharp">使用 C#</a></p>
                         <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/java">使用 Java</a></p>
                         <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/nodejs">使用 Node.js</a></p>
-                        <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/python">使用 Python</a></p>
+                        <p><a href="/azure/cognitive-services/bing-web-search/web-sdk-python-quickstart">使用 Python</a></p>
                     </div>
                 </div>
             </div>
@@ -234,7 +227,7 @@ ms.locfileid: "56338030"
                         <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/csharp">使用 C#</a></p>
                         <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/java">使用 Java</a></p>
                         <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/nodejs">使用 Node.js</a></p>
-                        <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/python">使用 Python</a></p>
+                        <p><a href="/azure/cognitive-services/bing-image-search/image-sdk-python-quickstart">使用 Python</a></p>
                     </div>
                 </div>
             </div>

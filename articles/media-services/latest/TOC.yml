@@ -72,6 +72,14 @@ items:
       items:
       - name: 带有访问控制的多 DRM 系统
         href: design-multi-drm-system-with-access-control.md
+      - name: DRM 许可证
+        items:
+        - name: PlayReady 许可证模板
+          href: playready-license-template-overview.md
+        - name: Widevine 许可证模板
+          href: widevine-license-template-overview.md
+        - name: FairPlay 许可证要求
+          href: fairplay-license-overview.md
     - name: 流式处理终结点
       displayName: Origins
       href: streaming-endpoint-concept.md
@@ -101,6 +109,8 @@ items:
     items:
     - name: 将事件与事件网格配合使用
       href: reacting-to-media-services-events.md
+    - name: 事件网格架构
+      href: media-services-event-schemas.md
   - name: 播放器客户端
     items:
     - name: Azure Media Player
@@ -197,16 +207,6 @@ items:
       href: https://aka.ms/ams-v3-go-ref
   - name: 资源管理器模板
     href: /azure/templates/microsoft.media/allversions
-  - name: 事件网格架构
-    href: media-services-event-schemas.md
-  - name: DRM 许可证
-    items:
-    - name: PlayReady 许可证模板
-      href: playready-license-template-overview.md
-    - name: Widevine 许可证模板
-      href: widevine-license-template-overview.md
-    - name: FairPlay 许可证要求
-      href: fairplay-license-overview.md
 - name: 资源
   items:
   - name: Azure 路线图
@@ -241,9 +241,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure 云和区域
     href: azure-clouds-regions.md
-ms.openlocfilehash: ca4ad36aab79f82c558c3d653a77ad5ec10b254c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b73b6018a2627918ebf31a046422c09f80d900e2
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416944"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652809"

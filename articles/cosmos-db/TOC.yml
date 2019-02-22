@@ -53,6 +53,7 @@ items:
       - name: Xamarin
         href: mobile-apps-with-xamarin.md
   - name: 2 - 迁移数据
+    displayName: import
     href: import-data.md
   - name: 3 - 查询数据
     href: tutorial-query-sql-api.md
@@ -76,15 +77,16 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: 模型文档数据
-    href: modeling-data.md
   - name: 全球分布
     items:
     - name: 概述
+      displayName: replication, replicate, geo distribution
       href: distribute-data-globally.md
     - name: 一致性级别
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: consistency-levels.md
     - name: 选择适当的一致性级别
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: consistency-levels-choosing.md
     - name: 一致性级别和 Azure Cosmos DB API
       href: consistency-levels-across-apis.md
@@ -93,8 +95,10 @@ items:
     - name: 高可用性
       href: high-availability.md
     - name: 全局缩放预配的吞吐量
+      displayName: request units, RUs, RU
       href: scaling-throughput.md
     - name: 冲突类型和解决策略
+      displayName: last write wins, custom
       href: conflict-resolution-policies.md
     - name: 全球分布 - 揭秘
       href: global-dist-under-the-hood.md
@@ -111,26 +115,36 @@ items:
   - name: 预配的吞吐量
     items:
     - name: 请求单位
+      displayName: RUs, RU
       href: request-units.md
     - name: 在容器和数据库上预配吞吐量
+      displayName: request units, RUs, RU, limits, database throughput, shared throughput, container throughput
       href: set-throughput.md
   - name: 使用 Azure Cosmos 帐户
     href: account-overview.md
   - name: 容器和项
     items:
     - name: 使用数据库、容器和项
+      displayName: collection, document
       href: databases-containers-items.md
     - name: SQL 语言参考
+      displayName: collection, document
       href: sql-api-query-reference.md
     - name: SQL 查询示例
+      displayName: collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains
       href: how-to-sql-query.md
+    - name: 模型文档数据
+      displayName: document
+      href: modeling-data.md
     - name: 索引
       items:
       - name: 概述
         href: index-overview.md
       - name: 索引策略
+        displayName: consistent, none
         href: index-policy.md
       - name: 索引类型
+        displayName: hash, range, spatial
         href: index-types.md
       - name: 索引路径
         href: index-paths.md
@@ -143,8 +157,10 @@ items:
       - name: 更改源处理器
         href: change-feed-processor.md
       - name: 触发 Azure Functions
+        displayName: change feed
         href: change-feed-functions.md
     - name: 生存时间
+      displayName: delete, delete data, ttl
       href: time-to-live.md
     - name: 唯一键约束
       href: unique-keys.md
@@ -165,6 +181,7 @@ items:
     - name: 了解帐单
       href: understand-your-bill.md
     - name: 优化预配吞吐量成本
+      displayName: request units, RUs, RU
       href: optimize-cost-throughput.md
     - name: 优化查询成本
       href: optimize-cost-queries.md
@@ -185,6 +202,7 @@ items:
     - name: 数据加密
       href: database-encryption-at-rest.md
     - name: 保护对数据的访问
+      displayName: master key, resource token, users, roles
       href: secure-access-to-data.md
     - name: IP 防火墙
       href: firewall-support.md
@@ -241,6 +259,7 @@ items:
         - name: Node.js 和 React 应用
           href: tutorial-develop-mongodb-react.md
       - name: 2 - 迁移数据
+        displayName: import
         href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3 - 查询数据
         href: tutorial-query-mongodb.md
@@ -257,6 +276,7 @@ items:
       - name: 使用 Mongoose 进行连接
         href: mongodb-mongoose.md
       - name: 全球分配读取
+        displayName: read preference
         href: mongodb-readpreference.md
       - name: 生存时间 - MongoDB
         href: mongodb-time-to-live.md
@@ -266,6 +286,7 @@ items:
         href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
         maintainContext: true
   - name: Gremlin API
+    displayName: graph, graph database
     items:
     - name: 介绍
       href: graph-introduction.md
@@ -323,6 +344,7 @@ items:
       - name: 3 - 查询数据
         href: cassandra-api-query-data.md
       - name: 4 - 迁移数据
+        displayName: import
         href: cassandra-import-data.md
     - name: 操作指南
       items:
@@ -370,6 +392,7 @@ items:
       - name: 1 - 创建帐户
         href: tutorial-develop-table-dotnet.md
       - name: 2 - 迁移数据
+        displayName: import
         href: table-import.md
       - name: 3 - 查询数据
         href: tutorial-query-table.md
@@ -423,6 +446,7 @@ items:
     - name: 配置多主数据库
       href: how-to-multi-master.md
     - name: 管理一致性级别
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: how-to-manage-consistency.md
     - name: 实现自定义同步
       href: how-to-custom-synchronization.md
@@ -431,8 +455,10 @@ items:
   - name: 预配的吞吐量
     items:
     - name: 预配容器吞吐量
+      displayName: request units, RUs, RU, collection level
       href: how-to-provision-container-throughput.md
     - name: 预配数据库吞吐量
+      displayName: request units, RUs, RU, shared throughput, database level
       href: how-to-provision-database-throughput.md
   - name: 使用容器和项
     items:
@@ -441,6 +467,7 @@ items:
     - name: 查询容器
       href: how-to-query-container.md
     - name: 配置生存时间
+      displayName: delete, delete data, ttl
       href: how-to-time-to-live.md
     - name: 使用 Azure 存储资源管理器处理数据
       href: storage-explorer.md
@@ -627,9 +654,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: f2f061aebd996f62f793ba515f574c8a3748b87f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: f1f36d86466f93c0acac30364ba648391fb03095
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429105"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652512"

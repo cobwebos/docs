@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 372d3d88c0a160c1f294f07e58c5e11dbf5eac5e
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: b7765fc5506129cdf594ef3fd0424f8771de5ef4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456599"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651662"
 documentType: LandingData
 title: Azure 机器学习服务文档
 metadata:
   title: Azure 机器学习服务文档 - 教程和 API 参考 | Microsoft Docs
-  description: Azure 机器学习服务提供了 SDK 和服务，以用于快速准备数据并训练和部署机器学习模型。 可通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 通过我们的快速入门和教程开始使用。
+  description: Azure 机器学习服务提供了 SDK 和服务，以用于快速准备数据并训练和部署机器学习模型。 通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 通过我们的快速入门和教程开始使用。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -26,7 +26,7 @@ abstract:
   aside:
     image:
       alt: 
-      height: 110
+      height: 130
       src: media/index/video.png
       width: 250
     title: 观看视频 (9:58)
@@ -55,7 +55,7 @@ sections:
   items:
   - type: paragraph
     text: 在 GitHub 上查找 <a href="samples-notebooks">Jupyter 笔记本</a>以帮助你探索该服务。
-- title: 参考
+- title: 引用
   items:
   - type: list
     style: unordered

@@ -136,15 +136,15 @@ items:
     - name: v3 文本翻译 API 参考
       href: reference/v3-0-reference.md
       items:
-      - name: 语言
+      - name: Languages
         href: reference/v3-0-languages.md
-      - name: 翻译
+      - name: Translate
         href: reference/v3-0-translate.md
-      - name: 直译
+      - name: Transliterate
         href: reference/v3-0-transliterate.md
-      - name: 检测
+      - name: Detect
         href: reference/v3-0-detect.md
-      - name: 断句
+      - name: BreakSentence
         href: reference/v3-0-break-sentence.md
       - name: 字典查找
         href: reference/v3-0-dictionary-lookup.md
@@ -230,7 +230,7 @@ items:
   - name: 资源
     items:
     - name: 语言支持
-      href: https://docs.microsoft.com/azure/cognitive-services/translator/language-support
+      href: https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization
     - name: 术语表
       href: custom-translator/glossary.md
     - name: 常见问题解答
@@ -241,9 +241,9 @@ items:
       href: https://stackoverflow.com/questions/tagged/microsoft-translator
     - name: UserVoice
       href: https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide
-ms.openlocfilehash: d1e1ed12b863f37a2a0d8e5ebefd456131509737
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 72fc95b92d8e93e3cf56d614de8a1967d2752f96
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159972"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585264"
