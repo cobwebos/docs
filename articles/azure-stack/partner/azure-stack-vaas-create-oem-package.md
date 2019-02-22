@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 2/15/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 415cdecc33b7360d482d37a3cb9d4f1bce528ab1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cc2d19bec91998116143058d2bc4313fd192db38
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251786"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592967"
 ---
 # <a name="create-an-oem-package"></a>创建一个 OEM 包
 
@@ -30,11 +30,10 @@ Azure Stack OEM 扩展包是由哪个 OEM 特定的内容添加到 Azure Stack �
 
 ## <a name="creating-the-package"></a>创建包
 
-创建并验证后，可以在 VaaS 使用 OEM 扩展包。  在继续之前，确保已完成的步骤[创建一个 OEM 包](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true)。 然后将包提交给 Microsoft 以及以解决方案验证工作流中的登录 VaaS 测试结果。 以下步骤详细说明了如何绑定到单个 zip 文件 VaaS 可使用生成的文件。
+创建并验证后，可以在 VaaS 使用 OEM 扩展包。  在继续之前，确保已完成的步骤[创建一个 OEM 包](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true)。 然后将包提交给 Microsoft 以及 VaaS 测试结果以在包验证工作流中的登录。 以下步骤详细说明了如何绑定到单个 zip 文件 VaaS 可使用生成的文件。
 
 1. 标识包的以下内容：
-    - 名为可执行文件 `<Publisher>-<Model>-<Version>.exe`
-    - 一个或多个文件必须命名为二进制文件`<Publisher><Model>-<Version>-#.bin`，其中 # 是从 1 开始的序号。 二进制文件数为依赖于包内容的总大小。
+    - 包含包的内容的 zip 文件
     - 名为的清单文件`oemMetadata.xml`，应将包内容的根目录中的 metadata.xml 文件的内容相同。
 
 2. 选择的内容文件和内容创建的 zip 文件：
@@ -51,7 +50,7 @@ Azure Stack OEM 扩展包是由哪个 OEM 特定的内容添加到 Azure Stack �
 
 ![正确压缩的包内容](media/vaas-create-oem-package-3.png)
 
-可上传到 VaaS 和由 Microsoft 签名解决方案验证工作流中的 zip 文件。
+可上传到 VaaS 和包验证工作流中由 Microsoft 签名的 zip 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,25 +13,25 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 66c462dee3a2940a7a090101ffb9cec7e4ff1e7c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 431c31b39103e5ef21cb83b388167cab57e0c129
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981275"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649078"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>教程：创建和测试订阅
 
-本教程介绍如何创建包含套餐的订阅，然后对其进行测试。 测试时，需要以云管理员身份登录到 Azure Stack 用户门户，订阅套餐，然后创建虚拟机。
+本教程演示如何创建包含产品/服务的订阅，然后测试它。 测试时，需要以云管理员身份登录到 Azure Stack 用户门户，订阅套餐，然后创建虚拟机。
 
 > [!TIP]
-> 若要获得更高级的评估体验，可[为特定用户创建订阅](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator)，然后在用户门户中以该用户的身份登录。 
+> 若要获得更高级的评估体验，可[为特定用户创建订阅](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator)，然后在用户门户中以该用户的身份登录。
 
-本教程介绍如何订阅 Azure Stack 套餐。
+本教程演示如何在 Azure Stack 产品/服务订阅。
 
 要学习的知识：
 
@@ -60,10 +60,10 @@ ms.locfileid: "55981275"
 
 ## <a name="test-the-offer"></a>测试产品/服务
 
-登录到用户门户后，可以使用新订阅功能预配虚拟机，以测试套餐。 
+登录到用户门户后，可以使用新订阅功能预配虚拟机，以测试套餐。
 
 > [!NOTE]
-> 此项测试需要用到事先已添加到 Azure Stack 市场的 Windows Server 2016 Datacenter VM。 
+> 此项测试需要用到事先已添加到 Azure Stack 市场的 Windows Server 2016 Datacenter VM。
 
 1. 登录到用户门户。
 
@@ -84,7 +84,6 @@ ms.locfileid: "55981275"
 > [!NOTE]
 > 虚拟机部署需要几分钟时间才能完成。
 
-
 ## <a name="next-steps"></a>后续步骤
 
 本教程已介绍如何执行以下操作：
@@ -92,7 +91,6 @@ ms.locfileid: "55981275"
 > [!div class="checklist"]
 > * 订阅产品 
 > * 测试产品/服务
-
 
 > [!div class="nextstepaction"]
 > [从社区模板创建 VM](azure-stack-create-vm-template.md)

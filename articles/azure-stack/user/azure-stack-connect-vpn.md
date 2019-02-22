@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: 882724c5f45cc2c5b3debb8fa80538239a98b749
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aa467910cfa2dad84af3905db3592657cae85be9
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240686"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594349"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>使用 VPN 将 Azure Stack 连接到 Azure
 
@@ -56,7 +56,7 @@ ms.locfileid: "55240686"
 
 ## <a name="create-the-network-resources-in-azure"></a>在 Azure 中创建网络资源
 
-首先，为 Azure 创建网络资源。 以下说明介绍如何使用 [Azure 门户](https://portal.azure.com/)来创建资源。
+首先，创建用于 Azure 的网络资源。 以下说明介绍如何使用 [Azure 门户](https://portal.azure.com/)来创建资源。
 
 ### <a name="create-the-virtual-network-and-virtual-machine-vm-subnet"></a>创建虚拟网络和虚拟机 (VM) 子网
 
@@ -74,7 +74,7 @@ ms.locfileid: "55240686"
 
 1. 从仪表板打开刚创建的虚拟网络资源 (**AzureVNet**)。
 2. 在“设置”部分中选择“子网”。
-3. 选择“网关子网”，将网关子网添加到虚拟网络。
+3. 选择**网关子网**若要将网关子网添加到虚拟网络。
 4. 默认情况下，子网的名称设置为 **GatewaySubnet**。
 
    >[!IMPORTANT]
@@ -234,7 +234,7 @@ ms.locfileid: "55240686"
 6. 提供“订阅”、“资源组”和“位置”，并选择“确定”。
 7. 在“大小”部分，为此实例选择一种虚拟机大小，然后选择“选择”。
 8. 在“设置”部分接受默认值。 务必选择 **Azs-VNet** 虚拟网络。 确认子网已设置为 **10.1.0.0/24**。 然后选择“确定”。
-9. 上**摘要**部分，查看设置，并选择 * 确定 * *。
+9. 在“摘要”部分中，查看设置并选择“确定”。***
 
 ## <a name="test-the-connection"></a>测试连接
 
@@ -305,4 +305,4 @@ ms.locfileid: "55240686"
 
 ## <a name="next-steps"></a>后续步骤
 
-[将应用部署到 Azure 和 Azure Stack](azure-stack-solution-pipeline.md)
+* [将应用部署到 Azure 和 Azure Stack](azure-stack-solution-pipeline.md)

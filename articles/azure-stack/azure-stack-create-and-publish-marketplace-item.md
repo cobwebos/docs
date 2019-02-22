@@ -15,12 +15,12 @@ ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ac4366a2e90ea239c650e611b7c4e8dddf5d5106
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243634"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649656"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>创建和发布市场项目
 
@@ -28,8 +28,8 @@ ms.locfileid: "55243634"
 
 ## <a name="create-a-marketplace-item"></a>创建市场项目
 
-1. 下载[Azure Gallery Packager 工具](https://www.aka.ms/azurestackmarketplaceitem)和示例 Azure Stack Marketplace 项。
-2. 打开示例市场项并重命名 **SimpleVMTemplate** 文件夹。 使用与你的 Marketplace 项; 相同的名称例如， **Contoso.TodoList**。 此文件夹包含：
+1. 下载 [Azure Gallery Packager 工具](https://www.aka.ms/azurestackmarketplaceitem)和示例 Azure Stack 市场项。
+2. 打开示例市场项并重命名 **SimpleVMTemplate** 文件夹。 使用与市场项相同的名称，例如 **Contoso.TodoList**。 此文件夹包含：
 
    ```shell
    /Contoso.TodoList/
@@ -43,19 +43,19 @@ ms.locfileid: "55243634"
 3. [创建一个 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)或从 GitHub 中选择一个模板。 市场项使用此模板来创建资源。
 
     > [!Note]  
-    > 切勿对 Azure 资源管理器模板中的任何机密（例如产品密钥、密码或任何客户身份信息）进行硬编码。 模板 JSON 文件进行访问而无需进行身份验证后在库中发布。 将所有机密存储在 [Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) 中，然后从模板内部调用它们。
+    > 切勿对 Azure 资源管理器模板中的任何机密（例如产品密钥、密码或任何客户身份信息）进行硬编码。 将模板 JSON 文件发布到库中后，无法身份验证即可访问这些文件。 将所有机密存储在 [Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) 中，然后从模板内部调用它们。
 
 4. 若要确保可以成功部署资源，测试与 Microsoft Azure Stack Api 的模板。
 5. 如果你的模板依赖于虚拟机映像，请按照说明[向 Azure Stack 中添加虚拟机映像](azure-stack-add-vm-image.md)。
 6. 将 Azure Resource Manager 模板保存在 **/Contoso.TodoList/DeploymentTemplates/** 文件夹中。
-7. 为市场项选择图标和文本。 将图标添加到 **Icons** 文件夹，并向 **Strings** 文件夹中的 **resources** 文件添加文本。 使用**小型**，**中等**，**大型**，以及**宽**图标的命名约定。 请参阅[Marketplace 项 UI 参考](#reference-marketplace-item-ui)有关这些大小的详细说明。
+7. 为市场项选择图标和文本。 将图标添加到 **Icons** 文件夹，并向 **Strings** 文件夹中的 **resources** 文件添加文本。 为图标使用 **small**、**medium**、**large** 和 **wide** 命名约定。 有关这些大小的详细说明，请参阅[市场项 UI 参考](#reference-marketplace-item-ui)。
 
    > [!NOTE]
    > 为正确生成市场项，需要全部四个图标大小（small、medium、large、wide）。
    >
    >
-8. 在中**Manifest.json**文件中，将**名称**为你的 Marketplace 项的名称。 另外，将 **publisher** 更改为你的公司的名称。
-9. 下**项目**，更改**名称**并**路径**到包含 Azure 资源管理器模板的正确信息：
+8. 在 **Manifest.json** 文件中，将 **name** 更改为你的市场项的名称。 另外，将 **publisher** 更改为你的公司的名称。
+9. 在 **artifacts** 下，将 **name** 和 **path** 更改为你包括的 Azure 资源管理器模板的正确信息：
 
    ```json
    "artifacts": [
@@ -67,7 +67,7 @@ ms.locfileid: "55243634"
       }
    ```
 
-10. 替换**My Marketplace Items**与你的 Marketplace 项应出现的位置的类别的列表：
+10. 将 **My Marketplace Items** 替换为你的市场项应当显示在其中的类别的列表：
 
    ```json
    "categories":[
@@ -75,7 +75,7 @@ ms.locfileid: "55243634"
    ],
    ```
 
-11. 有关任何进一步编辑 Manifest.json，请参阅[引用：Marketplace 项 manifest.json](#reference-marketplace-item-manifestjson)。
+11. 若要进一步编辑 Manifest.json，请参阅[参考：市场项 manifest.json](#reference-marketplace-item-manifestjson)。
 
 12. 若要将文件夹打包到 .azpkg 文件，请打开命令提示符并运行以下命令：
 
@@ -90,8 +90,8 @@ ms.locfileid: "55243634"
 
 ## <a name="publish-a-marketplace-item"></a>发布市场项
 
-1. 使用 PowerShell 或 Azure 存储资源管理器将市场项 (.azpkg) 上传到 Azure Blob 存储。 可以上传到本地 Azure Stack 存储或上传到 Azure 存储;这是包的临时位置。 请确保 blob 可公开访问。
-2. 在客户端虚拟机在 Microsoft Azure Stack 环境中，确保使用你的服务管理员凭据设置 PowerShell 会话。 您可以找到有关如何进行身份验证中的 Azure Stack 中的 PowerShell 的说明[使用 PowerShell 部署模板](user/azure-stack-deploy-template-powershell.md)。
+1. 使用 PowerShell 或 Azure 存储资源管理器将市场项 (.azpkg) 上传到 Azure Blob 存储。 可以上传到本地 Azure Stack 存储或上传到 Azure 存储，即包的临时位置。 请确保 blob 可公开访问。
+2. 在客户端虚拟机在 Microsoft Azure Stack 环境中，确保使用你的服务管理员凭据设置 PowerShell 会话。 可以在[使用 PowerShell 部署模板](user/azure-stack-deploy-template-powershell.md)中找到有关如何在 Azure Stack 中对 PowerShell 进行身份验证的说明。
 3. 使用 [PowerShell 1.3.0](azure-stack-powershell-install.md) 或更高版本时，可以使用 **Add-AzsGalleryItem** PowerShell cmdlet 将市场项发布到 Azure Stack。 在使用 PowerShell 1.3.0 之前，请使用 cmdlet **Add-AzureRMGalleryitem** 取代 **Add-AzsGalleryItem**。 例如，使用 PowerShell 1.3.0 或更高版本时：
 
    ```powershell
@@ -105,7 +105,7 @@ ms.locfileid: "55243634"
    | GalleryItemUri |已上传到存储的库包的 Blob URI。 |
    | Apiversion |设置为 **2015-04-01**。 |
 
-4. 转到门户。 作为操作员或用户，现在可以看到在门户中的 Marketplace 项。 包可能需要过几分钟才会出现。
+4. 转到门户。 你现在可以作为操作员或用户在门户中查看市场项。 包可能需要过几分钟才会出现。
 
 5. 你的市场项现在已保存到 Azure Stack 市场。 你可以选择从 Blob 存储位置中将其删除。
     > [!Caution]  
@@ -125,7 +125,7 @@ ms.locfileid: "55243634"
    >
    >
 
-## <a name="reference-marketplace-item-manifestjson"></a>参考：Marketplace 项 manifest.json
+## <a name="reference-marketplace-item-manifestjson"></a>参考：市场项 manifest.json
 
 ### <a name="identity-information"></a>标识信息
 
@@ -186,14 +186,14 @@ ms.locfileid: "55243634"
 
 `h1, h2, h3, h4, h5, p, ol, ul, li, a[target|href], br, strong, em, b, i`
 
-## <a name="reference-marketplace-item-ui"></a>参考：Marketplace 项 UI
+## <a name="reference-marketplace-item-ui"></a>参考：市场项 UI
 
 在 Azure Stack 门户中显示的市场项的图标和文本将如下所示。
 
 ### <a name="create-blade"></a>“创建”边栏选项卡
 
-![“创建”边栏选项卡](media/azure-stack-marketplace-item-ui-reference/image1.png)
+![“创建”边栏选项卡](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### <a name="marketplace-item-details-blade"></a>市场项详细信息边栏选项卡
 
-![市场项详细信息边栏选项卡](media/azure-stack-marketplace-item-ui-reference/image3.png)
+![市场项详细信息边栏选项卡](media/azure-stack-create-and-publish-marketplace-item/image3.png)

@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
-ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b498283ee117935438c55e5162e92acdb0f5ebfe
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249674"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649894"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack 市场中的 Windows Server 常见问题解答
 
@@ -38,7 +38,7 @@ ms.locfileid: "55249674"
 
 Microsoft 通过 Azure Stack 市场提供两种版本的 Windows Server 映像：
 
-- **即用即付**：这些映像运行全价 Windows 计量器。 
+- **即用即付**：这些映像运行全价 Windows 计量器。
    适合对象：使用消耗量计费模型的企业协议 (EA) 客户、不想要使用 SPLA 许可的 CSP。
 - **自带许可证 (BYOL)**：这些映像运行基本计量器。
    适合对象：具有 Windows Server 许可证的 EA 客户、使用 SPLA 许可的 CSP。
@@ -74,23 +74,23 @@ Azure Stack 不支持 Azure 混合使用权益 (AHUB)。 通过“容量”模�
 
 ### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>如何验证虚拟机是否已激活？
 
-在提升的命令提示符下运行以下命令： 
+在提升的命令提示符下运行以下命令：
 
 ```shell
 slmgr /dlv
-``` 
+```
 
 如果虚拟机已正确激活，则 `slmgr` 输出中会明确指示此状态，并显示主机名。 请不要依赖于显示画面中的水印，因为它们可能不是最新的，或者显示你的虚拟机后面的其他虚拟机的状态。
 
 ### <a name="my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it"></a>我的 VM 未设置为使用 AVMA，如何解决此问题？
 
-在提升的命令提示符下运行以下命令： 
+在提升的命令提示符下运行以下命令：
 
 ```shell
-slmgr /ipk <AVMA key> 
+slmgr /ipk <AVMA key>
 ```
 
-请参阅[自动虚拟机激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))一文，获取映像使用的密钥。
+请参阅[虚拟机自动激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))一文，了解要用于您的图像的键。
 
 ### <a name="i-create-my-own-windows-server-images-how-can-i-make-sure-they-use-avma"></a>我自行创建了 Windows Server 映像，如何确保它们使用 AVMA？
 

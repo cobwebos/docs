@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 460edc7f092764cce3584c81371db4801fbd69bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c866bb1ff5603f08377ed96ddd81eedf71e243bf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240006"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593228"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>教程：设置验证为服务资源
 
@@ -92,7 +92,7 @@ Azure AD 租户是进行身份验证和注册 VaaS 所必需的。 合作伙伴�
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-在测试执行期间 VaaS 输出到 Azure 存储帐户的诊断日志。 除了测试日志的存储帐户可能还用于上传 OEM 扩展包解决方案验证工作流。
+在测试执行期间 VaaS 输出到 Azure 存储帐户的诊断日志。 除了测试日志的存储帐户可能还用于上传 OEM 扩展包在包验证工作流。
 
 在 Azure 公有云，不能在 Azure Stack 环境中托管的 Azure 存储帐户。
 

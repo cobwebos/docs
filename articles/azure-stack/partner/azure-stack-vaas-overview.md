@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 12/20/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: c0694a3839ae6b843abd1ddc8b67d1f3e3322e0e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6126bacf50d47029c29772b35f6dc1d552d47029
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246035"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592632"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>验证用作 Azure Stack 的服务是什么？
 
@@ -43,19 +43,19 @@ VaaS 的主要用途是：
 
 ## <a name="validate-changes-to-the-azure-stack-software"></a>验证对 Azure Stack 软件所做的更改
 
-合作伙伴使用**解决方案验证**工作流，以检查他们的解决方案，适用于最新的 Azure Stack 软件更新。 解决方案验证工作流必须运行 Microsoft 推荐的硬件环境的修补和更新 (& U) 用于应用更新。 建议也在基线版本上运行工作流。
+合作伙伴使用**包验证**工作流，以检查他们的解决方案，适用于最新的 Azure Stack 软件更新。 包验证工作流必须运行 Microsoft 推荐的硬件环境的修补和更新 (& U) 用于应用更新。 建议也在基线版本上运行工作流。
 
 有关详细信息，请参阅[验证来自 Microsoft 的软件更新](azure-stack-vaas-validate-microsoft-updates.md)。
 
 ## <a name="get-digitally-signed-solution-partner-packages"></a>获取进行了数字签名的解决方案合作伙伴程序包
 
-验证 Azure Stack 的更新，除了合作伙伴使用**解决方案验证**工作流，以便验证对 OEM 自定义包，其中包括 Azure Stack 特定于合作伙伴的驱动程序、 固件和其他软件更新在 Azure Stack 软件的部署过程中使用。 部署验证的 Azure Stack 软件至少使用将受支持的最小大小的解决方案的当前版本的包。 包执行测试前提交给 VaaS。 如果测试成功，通知[ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)使用 Azure Stack 数字签名的包已完成测试并进行数字签名。 Microsoft 对包进行签名，并通知 Azure Stack 合作伙伴包是可供下载的 VaaS 门户。
+验证 Azure Stack 的更新，除了合作伙伴使用**包验证**工作流，以便验证对 OEM 自定义包，其中包括 Azure Stack 特定于合作伙伴的驱动程序、 固件和其他软件更新在 Azure Stack 软件的部署过程中使用。 部署验证的 Azure Stack 软件至少使用将受支持的最小大小的解决方案的当前版本的包。 包执行测试前提交给 VaaS。 如果测试成功，通知[ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)使用 Azure Stack 数字签名的包已完成测试并进行数字签名。 Microsoft 对包进行签名，并通知 Azure Stack 合作伙伴包是可供下载的 VaaS 门户。
 
 有关详细信息，请参阅[验证 OEM 程序包](azure-stack-vaas-validate-oem-package.md)。
 
 ## <a name="preview-vaas-test-collateral"></a>预览 VaaS 测试附件
 
-Microsoft 定期对新功能在 Azure Stack 中可用。 作为向市场提供这些功能的开发过程的一部分，新的测试附件都可以在**测试轮次**工作流。 测试通过工作流包括从其他工作流以允许非官方测试执行的测试附件。 不使用测试通过工作流提交以供审核的结果。 使用解决方案验证和解决方案验证工作流以获取官方批准你的解决方案。
+Microsoft 定期对新功能在 Azure Stack 中可用。 作为向市场提供这些功能的开发过程的一部分，新的测试附件都可以在**测试轮次**工作流。 测试通过工作流包括从其他工作流以允许非官方测试执行的测试附件。 不使用测试通过工作流提交以供审核的结果。 使用解决方案验证和包验证工作流来获取官方批准你的解决方案。
 
 有关详细信息，请参阅[快速入门：用于验证的服务门户，作为计划第一次测试](azure-stack-vaas-schedule-test-pass.md)。
 

@@ -10,25 +10,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 01/17/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6287b4f07c99dd45628ed4b9eb1412200cf7cd43
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 99a1b218919380dcdb0c1dba4540d9f8219d2df3
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244600"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593635"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>自动执行使用 PowerShell 的 Azure Stack 验证
 
 作为一项服务 (VaaS) 验证提供的功能来自动执行的测试使用启动**LaunchVaaSTests.ps1**脚本。
 
-可以使用 PowerShell 执行以下工作流：
-
-- 测试通过
+> [!NOTE]
+> 自动化功能仅适用于测试通过工作流。 通过 VaaS 门户仅支持在包验证和解决方案验证工作流。
 
 在本教程中，学习如何创建脚本的：
 

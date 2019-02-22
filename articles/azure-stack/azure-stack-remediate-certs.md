@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/19/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/19/2018
-ms.openlocfilehash: 291ecd35947c09f2b50cd8710c90d25960166422
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0a5c0204909a3fa6730a5e852fb24b2213e093a1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242597"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650574"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>修复 Azure Stack PKI 证书的常见问题
 
@@ -29,9 +29,9 @@ ms.locfileid: "55242597"
 
 ## <a name="pfx-encryption"></a>PFX 加密
 
-**失败** - PFX 加密不是 TripleDES-SHA1。   
+**失败** - PFX 加密不是 TripleDES-SHA1。
 
-**补救** - 使用 **TripleDES-SHA1** 加密导出 PFX 文件。 从证书管理单元导出或使用 `Export-PFXCertificate` 时，这是所有 Windows 10 客户端的默认设置。 
+**补救** - 使用 **TripleDES-SHA1** 加密导出 PFX 文件。 从证书管理单元导出或使用 `Export-PFXCertificate` 时，这是所有 Windows 10 客户端的默认设置。
 
 ## <a name="read-pfx"></a>读取 PFX
 
@@ -45,27 +45,27 @@ ms.locfileid: "55242597"
 
 ## <a name="signature-algorithm"></a>签名算法
 
-**失败** - 签名算法为 SHA1。   
- 
+**失败** - 签名算法为 SHA1。
+
 **补救措施** - 执行“生成 Azure Stack 证书签名请求”中的步骤，使用签名算法 SHA256 重新生成证书签名请求 (CSR)。 然后向证书颁发机构重新提交 CSR，要求其重新颁发证书。
 
 ## <a name="private-key"></a>私钥
 
 **失败** - 私钥缺失或者不包含本地计算机属性。  
 
-**修复** - 在生成 CSR 的计算机中，使用“准备用于部署的 Azure Stack PKI 证书”中的步骤重新导出证书。 这些步骤包括从本地计算机证书存储进行导出。
+**修正**-从生成 CSR 的计算机的重新导出的证书中的步骤[为部署准备 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)。 这些步骤包括从本地计算机证书存储进行导出。
 
 ## <a name="certificate-chain"></a>证书链
 
 **失败** - 证书链不完整。  
 
-**修复** - 证书应包含完整的证书链。 使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)中的步骤重新导出证书，然后选择选项“包括证书路径中的所有证书(如果可能)”。
+**修复** - 证书应包含完整的证书链。 使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书，然后选择选项“包括证书路径中的所有证书(如果可能)”。
 
 ## <a name="dns-names"></a>DNS 名称
 
-**失败** - 证书上的 DNSNameList 不包含 Azure Stack 服务终结点名称或有效的通配符匹配项。 通配符匹配项仅适用于 DNS 名称最左侧的命名空间。 例如，_*.region.domain.com_ 仅适用于 *portal.region.domain.com*，不适用于 _*.table.region.domain.com_。 
- 
-**修复** - 执行“生成 Azure Stack 证书签名请求”中的步骤，以便使用为 Azure Stack 终结点提供支持所需的正确 DNS 名称重新生成 CSR。 将 CSR 重新提交给证书颁发机构，然后执行[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)中的步骤，以便从生成了 CSR 的计算机导出证书。  
+**失败**-针对证书的 DNSNameList 不包含 Azure Stack 服务终结点名称或有效的通配符匹配。 通配符匹配项仅适用于 DNS 名称最左侧的命名空间。 例如，_*.region.domain.com_ 仅适用于 *portal.region.domain.com*，不适用于 _*.table.region.domain.com_。
+
+**修复** - 执行“生成 Azure Stack 证书签名请求”中的步骤，以便使用为 Azure Stack 终结点提供支持所需的正确 DNS 名称重新生成 CSR。 将 CSR 重新提交给证书颁发机构，然后执行[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤，以便从生成了 CSR 的计算机导出证书。  
 
 ## <a name="key-usage"></a>密钥使用情况
 
@@ -83,51 +83,55 @@ ms.locfileid: "55242597"
 
 **失败** - 证书链的顺序不正确。  
 
-**补救措施** - 使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)中的步骤重新导出证书，然后选择选项“包括证书路径中的所有证书(如果可能)”。 确保仅选择分支证书进行导出。 
+**补救措施** - 使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书，然后选择选项“包括证书路径中的所有证书(如果可能)”。 确保仅选择分支证书进行导出。
 
 ## <a name="other-certificates"></a>其他证书
 
 **失败** - PFX 包包含的证书不是分支证书，也不是证书链的一部分。  
 
-**补救措施** - 使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)中的步骤重新导出证书，然后选择选项“包括证书路径中的所有证书(如果可能)”。 确保仅选择分支证书进行导出。
+**补救措施** - 使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书，然后选择选项“包括证书路径中的所有证书(如果可能)”。 确保仅选择分支证书进行导出。
 
 ## <a name="fix-common-packaging-issues"></a>修复常见的打包问题
 
-**AzsReadinessChecker** 包含名为 `Repair-AzsPfxCertificate` 的帮助程序 cmdlet，它可以通过导入和导出 PFX 文件来修复常见的打包问题，其中包括： 
- - *PFX 加密*不是 TripleDES-SHA1
- - 私钥缺少本地计算机属性。
- - 证书链不完整或错误。 如果 PFX 包不包含证书链，则本地计算机必须包含。
- - *其他证书*。
- 
-如果需要生成新的 CSR 并重新颁发证书，则 `Repair-AzsPfxCertificate` 无用。 
+**AzsReadinessChecker** 包含名为 `Repair-AzsPfxCertificate` 的帮助程序 cmdlet，它可以通过导入和导出 PFX 文件来修复常见的打包问题，其中包括：
+
+- *PFX 加密*是否不是 TripleDES SHA1。
+- 私钥缺少本地计算机属性。
+- 证书链不完整或错误。 如果 PFX 包不包含证书链，则本地计算机必须包含。
+- *其他证书*
+
+如果需要生成新的 CSR 并重新颁发证书，则 `Repair-AzsPfxCertificate` 无用。
 
 ### <a name="prerequisites"></a>必备组件
 
-在运行此工具的计算机上，必须满足以下先决条件： 
- - Windows 10 或 Windows Server 2016，具有 Internet 连接。
- - PowerShell 5.1 或更高版本。 若要检查版本，请运行以下 PowerShell cmdlet，然后查看主要版本和次要版本：
+在运行此工具的计算机上，必须满足以下先决条件：
+
+- Windows 10 或 Windows Server 2016，具有 Internet 连接。
+- PowerShell 5.1 或更高版本。 若要检查版本，请运行以下 PowerShell cmdlet，然后查看主要版本和次要版本：
 
    ```powershell
    $PSVersionTable.PSVersion
    ```
- - 配置[适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。 
- - 下载最新版本的 [Microsoft Azure Stack 就绪性检查器](https://aka.ms/AzsReadinessChecker)工具。
+
+- 配置[适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
+- 下载最新版本的 [Microsoft Azure Stack 就绪性检查器](https://aka.ms/AzsReadinessChecker)工具。
 
 ### <a name="import-and-export-an-existing-pfx-file"></a>导入和导出现有的 PFX 文件
 
-1. 在满足先决条件的计算机上，打开一个管理 PowerShell 提示符，然后运行以下命令来安装 AzsReadinessChecker：
-  
+1. 满足的先决条件的计算机上, 打开管理 PowerShell 提示符，并运行以下命令以安装 AzsReadinessChecker:
+
    ```powershell
    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
    ```
 
-2. 在 PowerShell 提示符下，运行以下 cmdlet 来设置 PFX 密码。 请将 *PFXpassword* 替换为实际密码：
- 
+2. 在 PowerShell 提示符下，运行以下 cmdlet 来设置 PFX 密码。 替换为`PFXpassword`使用实际密码：
+
    ```powershell
    $password = Read-Host -Prompt PFXpassword -AsSecureString
    ```
 
 3. 在 PowerShell 提示符下，运行以下命令来导出新的 PFX 文件：
+
    - 对于 `-PfxPath`，请指定要处理的 PFX 文件的路径。 在以下示例中，路径为 `.\certificates\ssl.pfx`。
    - 对于 `-ExportPFXPath`，请指定要导出的 PFX 文件的位置和名称。 在以下示例中，路径为 `.\certificates\ssl_new.pfx`：
 
@@ -136,8 +140,8 @@ ms.locfileid: "55242597"
    ```  
 
 4. 在工具完成相关操作后，查看成功后的输出：
- 
-   ```PowerShell
+
+   ```powershell
    Repair-AzsPfxCertificate v1.1809.1005.1 started.
    Starting Azure Stack Certificate Import/Export
    Importing PFX .\certificates\ssl.pfx into Local Machine Store
@@ -150,4 +154,4 @@ ms.locfileid: "55242597"
 
 ## <a name="next-steps"></a>后续步骤
 
-[详细了解 Azure Stack 安全性](azure-stack-rotate-secrets.md)
+- [若要了解有关 Azure Stack 安全性的详细信息，转到此处](azure-stack-rotate-secrets.md)。

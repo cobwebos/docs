@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/20/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: c96fdbfb56fe5274de941c0f9ab1a12cbcc241b6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 9ce21a6b01dc4f4a99e5c70faf1e004bf7918dad
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658413"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594111"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>将 Kubernetes 部署到 Azure Stack
 
@@ -39,7 +39,7 @@ ms.locfileid: "55658413"
 
 - 开发可以大规模伸缩、升级并可快速部署的应用程序。 
 - 通过不同的 Helm 应用程序简化应用程序的设计并改进其可靠性。 [Helm](https://github.com/kubernetes/helm) 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。
-- 轻松监视和诊断具有缩放和升级功能的应用程序的运行状况。
+- 轻松地监视和诊断你的应用程序的运行状况。
 
 你将为所需的支持你的群集节点的计算使用情况付费。 有关详细信息，请参阅 [Azure Stack 中的使用量和计费](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "55658413"
 - **Active Directory 联合身份验证服务 (AD FS)**  
 有关使用 AD FS 时安装该群集的说明，请参阅[到 Azure Stack 使用 Active Directory 联合身份验证服务 (AD FS) 部署 Kubernetes](azure-stack-solution-template-kubernetes-adfs.md)。
 
-## <a name="connect-to-your-cluster"></a>连接到你的群集
+## <a name="connect-to-your-cluster"></a>连接到群集
 
 现在，你可以连接到你的群集。 master 可以在群集资源组中找到，其名称为 `k8s-master-<sequence-of-numbers>`。 使用 SSH 客户端连接到 master。 在 master 上，可以使用 **kubectl**（Kubernetes 命令行客户端）来管理群集。 有关说明，请参阅 [Kubernetes.io](https://kubernetes.io/docs/reference/kubectl/overview)。
 
