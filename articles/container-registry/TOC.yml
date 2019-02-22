@@ -58,6 +58,8 @@ items:
       href: container-registry-repositories.md
     - name: 导入容器映像
       href: container-registry-import-images.md
+    - name: 锁定容器映像
+      href: container-registry-image-lock.md
     - name: 删除容器映像
       href: container-registry-delete.md
     - name: 内容信任（预览版）
@@ -68,7 +70,7 @@ items:
       href: container-registry-webhook.md
     - name: Helm 图表存储库（预览版）
       href: container-registry-helm-repos.md
-  - name: 身份验证
+  - name: Authentication
     items:
     - name: 身份验证概述
       href: container-registry-authentication.md
@@ -135,9 +137,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-registry
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 2f622c23a3278f202fceb177459f8cf81d334f57
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bce8a055a537a1ac147e2779a891b0ae64b9a3c8
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870681"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652155"

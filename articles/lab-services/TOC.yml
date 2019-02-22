@@ -173,6 +173,8 @@ items:
         href: devtest-lab-mandatory-artifacts.md
       - name: 创建自定义项目
         href: devtest-lab-artifact-author.md
+      - name: 将项目存储库添加到实验室
+        href: add-artifact-repository.md
       - name: 对项目故障进行诊断
         href: devtest-lab-troubleshoot-artifact-failure.md
     - name: 管理虚拟网络
@@ -223,9 +225,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 783aec352d79c56525751142e4e5e95697149dbc
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d27b3f85b947a9ce10118d515665889133bab336
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747275"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594094"

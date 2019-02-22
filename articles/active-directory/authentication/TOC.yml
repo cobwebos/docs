@@ -25,8 +25,8 @@ items:
   items:
   - name: 身份验证方法
     href: concept-authentication-methods.md
-  - name: 聚合注册
-    href: concept-registration-mfa-sspr-converged.md
+  - name: 合并注册
+    href: concept-registration-mfa-sspr-combined.md
   - name: 密码重置
     items:
     - name: 密码重置工作原理
@@ -104,6 +104,12 @@ items:
         href: howto-mfa-nps-extension-rdg.md
       - name: VPN
         href: howto-mfa-nps-extension-vpn.md
+  - name: 合并注册
+    items:
+    - name: 启用合并注册
+      href: howto-registration-mfa-sspr-combined.md
+    - name: 排查合并注册问题
+      href: howto-registration-mfa-sspr-combined-troubleshoot.md
   - name: Azure AD 密码保护
     items:
     - name: 配置禁止的密码列表
@@ -191,8 +197,6 @@ items:
         href: howto-mfa-nps-extension-errors.md
   - name: 故障排除
     items:
-    - name: 禁用聚合注册
-      href: howto-registration-mfa-sspr-converged-troubleshoot.md
     - name: 对 SSPR 进行故障排除
       href: active-directory-passwords-troubleshoot.md
     - name: SSPR 常见问题解答
@@ -225,9 +229,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: d834bcd12f4f8af44c467233230744571dd9b23c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 99d21cd59b7281dbb6a34c2e3cdc9026c9955622
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660045"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585978"
