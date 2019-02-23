@@ -230,7 +230,7 @@
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=media-services)
-## [Azure PowerShell（资源管理器）](/powershell/module/azurerm.media)
+## [Azure PowerShell（资源管理器）](/powershell/module/az.media)
 ## [Azure PowerShell（服务管理）](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
 ## [REST](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)

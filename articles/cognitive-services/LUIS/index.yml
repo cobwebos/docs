@@ -1,8 +1,14 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 9d8433debd31176b4cf4096a4b80cfbd9ddcba82
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737257"
 documentType: LandingData
 title: 语言理解 (LUIS) 文档
 metadata:
-  document_id: null
+  document_id: 
   title: 语言理解 (LUIS) - 教程、快速入门、API 参考
   description: 了解如何使用语言理解服务使应用程序可以理解用户以自己的语言表达的内容。
   author: nitinme
@@ -17,98 +23,98 @@ abstract:
   description: 语言理解服务 (LUIS) 使应用程序可以理解用户以自己的语言表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
   aside:
     image:
-      alt: null
+      alt: 
       height: 110
       src: ../media/index/luis-landing-page-video.png
       width: 250
-    title: 'LUIS 新增功能 (18:28)'
-    href: 'https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis'
+    title: LUIS 新增功能 (18:28)
+    href: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
     width: 250
 sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/luis/what-is-luis
-            html: <p>了解语言理解服务 (LUIS)。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什么是 LUIS？
-          - href: /azure/cognitive-services/luis/luis-how-plan-your-app
-            html: <p>准备与应用相关的意向和实体的大纲。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: 计划 LUIS 应用
-          - href: /azure/cognitive-services/luis/luis-concept-best-practices
-            html: <p>在创建 LUIS 应用时请遵循这些最佳做法。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: LUIS 应用的最佳做法
-  - title: 5 分钟快速入门
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
     items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-          - image:
-              src: media/index/logo_python.svg
-        rows:
-          - title: 终结点 API
-            values:
-              - href: luis-get-started-cs-get-intent
-              - href: luis-get-started-java-get-intent
-              - href: luis-get-started-node-get-intent
-              - href: luis-get-started-python-get-intent
-          - title: 创作 API
-            values:
-              - href: luis-get-started-cs-add-utterance
-              - href: luis-get-started-java-add-utterance
-              - href: luis-get-started-node-add-utterance
-              - href: luis-get-started-python-add-utterance
-  - title: 分步教程
+    - href: /azure/cognitive-services/luis/what-is-luis
+      html: <p>了解语言理解服务 (LUIS)。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 什么是 LUIS？
+    - href: /azure/cognitive-services/luis/luis-how-plan-your-app
+      html: <p>准备与应用相关的意向和实体的大纲。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 计划 LUIS 应用
+    - href: /azure/cognitive-services/luis/luis-concept-best-practices
+      html: <p>在创建 LUIS 应用时请遵循这些最佳做法。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: LUIS 应用的最佳做法
+- title: 5 分钟快速入门
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_nodejs.svg
+    - image:
+        src: media/index/logo_python.svg
+    rows:
+    - title: 终结点 API
+      values:
+      - href: luis-get-started-cs-get-intent
+      - href: luis-get-started-java-get-intent
+      - href: luis-get-started-node-get-intent
+      - href: luis-get-started-python-get-intent
+    - title: 创作 API
+      values:
+      - href: luis-get-started-cs-add-utterance
+      - href: luis-get-started-java-add-utterance
+      - href: luis-get-started-node-add-utterance
+      - href: luis-get-started-python-add-utterance
+- title: 分步教程
+  items:
+  - type: list
+    style: ordered
     items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="luis-quickstart-intents-only">构建人力资源 (HR) 领域的应用</a>
-          - html: <a href="luis-tutorial-prebuilt-intents-entities">添加预构建的意向和实体</a>
-          - html: <a href="luis-quickstart-intents-regex-entity">添加正则表达式实体</a>
-          - html: <a href="luis-quickstart-intent-and-list-entity">添加列表实体</a>
-          - html: <a href="luis-quickstart-intent-and-hier-entity">添加分层的实体</a>
-          - html: <a href="luis-quickstart-primary-and-secondary-data">添加简单实体和短语列表</a>
-          - html: <a href="luis-quickstart-intent-and-key-phrase">添加 keyPhrase 实体</a>
-          - html: <a href="luis-quickstart-intent-and-sentiment-analysis">添加情绪分析</a>
-  - title: 示例
+    - html: <a href="luis-quickstart-intents-only">构建人力资源 (HR) 领域的应用</a>
+    - html: <a href="luis-tutorial-prebuilt-intents-entities">添加预构建的意向和实体</a>
+    - html: <a href="luis-quickstart-intents-regex-entity">添加正则表达式实体</a>
+    - html: <a href="luis-quickstart-intent-and-list-entity">添加列表实体</a>
+    - html: <a href="luis-quickstart-intent-and-hier-entity">添加分层的实体</a>
+    - html: <a href="luis-quickstart-primary-and-secondary-data">添加简单实体和短语列表</a>
+    - html: <a href="luis-quickstart-intent-and-key-phrase">添加 keyPhrase 实体</a>
+    - html: <a href="luis-quickstart-intent-and-sentiment-analysis">添加情绪分析</a>
+- title: 示例
+  items:
+  - type: list
+    style: unordered
     items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://aka.ms/luis-code-samples">GitHub 上的示例</a><br/>'
-  - title: 视频
+    - html: <a href="https://aka.ms/luis-code-samples">GitHub 上的示例</a><br/>
+- title: 视频
+  items:
+  - type: list
+    style: unordered
     items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" >Build 2018 中的 Azure Friday - 认知服务 - 语言 (LUIS)</a>'
-          - html: '<a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018 会议 - 机器人智能、语音功能和 NLU 最佳做法</a>'
-  - title: 引用
+    - html: <a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" >Build 2018 中的 Azure Friday - 认知服务 - 语言 (LUIS)</a>
+    - html: <a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018 会议 - 机器人智能、语音功能和 NLU 最佳做法</a>
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API v2
-            html: '<p><a href="https://aka.ms/luis-endpoint-apis">终结点 API</a></p><p><a href="https://aka.ms/luis-authoring-apis">创作 API</a></p>'
-          - title: SDK
-            html: '<p><a href="https://aka.ms/luis-endpoint-sdk"> .NET 终结点 SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET 创作 SDK</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'
+    - title: REST API v2
+      html: <p><a href="https://aka.ms/luis-endpoint-apis">终结点 API</a></p><p><a href="https://aka.ms/luis-authoring-apis">创作 API</a></p>
+    - title: SDK
+      html: <p><a href="https://aka.ms/luis-endpoint-sdk"> .NET 终结点 SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET 创作 SDK</a></p>
+    - title: PowerShell
+      html: <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
+    - title: CLI
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>
