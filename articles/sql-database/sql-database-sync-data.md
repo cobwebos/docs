@@ -87,7 +87,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>在 Azure 门户中设置数据同步
 
 - [设置 Azure SQL 数据同步](sql-database-get-started-sql-data-sync.md)
-- 数据同步代理 - [Azure SQL 数据同步的数据同步代理](sql-database-data-sync-agent.md)
+- Data Sync Agent - [Azure SQL 数据同步的 Data Sync Agent](sql-database-data-sync-agent.md)
 
 ### <a name="set-up-data-sync-with-powershell"></a>使用 PowerShell 设置数据同步
 

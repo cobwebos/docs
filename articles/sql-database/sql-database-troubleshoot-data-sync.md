@@ -115,7 +115,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 ## <a name="client-agent-issues"></a>客户端代理问题
 
-若要排查客户端代理问题，请参阅[排查数据同步代理问题](sql-database-data-sync-agent.md#agent-tshoot)。
+若要排查客户端代理问题，请参阅[排查 Data Sync Agent 问题](sql-database-data-sync-agent.md#agent-tshoot)。
 
 ## <a name="setup-and-maintenance-issues"></a>设置和维护问题
 
@@ -248,7 +248,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
     - 使用 PowerShell
         -  [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
--   数据同步代理 - [Azure SQL 数据同步的数据同步代理](sql-database-data-sync-agent.md)
+-   Data Sync Agent - [Azure SQL 数据同步的 Data Sync Agent](sql-database-data-sync-agent.md)
 -   最佳做法 - [Azure SQL 数据同步最佳做法](sql-database-best-practices-data-sync.md)
 -   监视 - [使用 Log Analytics 监视 SQL 数据同步](sql-database-sync-monitor-oms.md)
 -   更新同步架构

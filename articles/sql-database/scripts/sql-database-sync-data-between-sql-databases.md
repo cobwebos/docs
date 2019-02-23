@@ -372,7 +372,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
     - 在门户中 - [教程：设置 SQL 数据同步，以在 Azure SQL 数据库和本地 SQL Server 之间同步数据](../sql-database-get-started-sql-data-sync.md)
     - 使用 PowerShell
         -  [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](sql-database-sync-data-between-azure-onprem.md)
--   数据同步代理 - [Azure SQL 数据同步的数据同步代理](../sql-database-data-sync-agent.md)
+-   Data Sync Agent - [Azure SQL 数据同步的 Data Sync Agent](../sql-database-data-sync-agent.md)
 -   最佳做法 - [Azure SQL 数据同步最佳做法](../sql-database-best-practices-data-sync.md)
 -   监视 - [使用 Log Analytics 监视 SQL 数据同步](../sql-database-sync-monitor-oms.md)
 -   故障排除 - [排查 Azure SQL 数据同步问题](../sql-database-troubleshoot-data-sync.md)

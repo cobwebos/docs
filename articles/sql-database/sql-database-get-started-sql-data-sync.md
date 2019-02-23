@@ -103,7 +103,7 @@ ms.locfileid: "55567921"
 
   如果选择“新建代理”，请执行以下操作：
 
-    1. 通过提供的链接下载数据同步代理，并将其安装在 SQL Server 所在的计算机上。 还可以直接从 [SQL Azure 数据同步代理](https://www.microsoft.com/download/details.aspx?id=27693)下载代理。
+    1. 通过提供的链接下载 Data Sync Agent，并将其安装在 SQL Server 所在的计算机上。 还可以直接从 [SQL Azure Data Sync Agent](https://www.microsoft.com/download/details.aspx?id=27693) 下载代理。
 
       > [!IMPORTANT]
       > 必须在防火墙中打开出站 TCP 端口 1433，以便客户端代理能够与服务器进行通信。
