@@ -36,7 +36,7 @@ items:
     items:
     - name: 流式数据输入
       href: stream-analytics-define-inputs.md
-    - name: 参考数据输入
+    - name: 引用数据输入
       href: stream-analytics-use-reference-data.md
   - name: 作业的输出类型
     href: stream-analytics-define-outputs.md
@@ -399,10 +399,10 @@ items:
   - name: 事件传递保证
     href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
   maintainContext: true
-- name: 参考
+- name: 引用
   items:
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.streamanalytics
+    href: /powershell/module/az.streamanalytics
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.streamanalytics
   - name: REST
@@ -435,9 +435,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: ee7eb6f1a92e5e3af603dab2e38eff5debaf3e9f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: cace0353c34b2c055ed5a15f1da6958c7428008b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300714"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736363"

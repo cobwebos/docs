@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 822fd40b2fc707efe34d4081c3c49e5f71621cdb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3a4efb6282a0aca8173403009fd58e9154a91b2b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245535"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728942"
 ---
 # <a name="using-dns-in-azure-stack"></a>使用 Azure Stack 中的 DNS
 
@@ -34,7 +34,7 @@ Azure Stack 支持以下域名系统 (DNS) 功能：
 
 可以为公用 IP 资源指定一个 DNS 域名标签。 Azure Stack 使用 **domainnamelabel.location.cloudapp.azurestack.external** 作为标签名称并将其映射到 Azure Stack 托管 DNS 服务器中的公共 IP 地址。
 
-例如，如果创建公共 IP 资源时**contoso**作为在本地 Azure Stack 位置中，一个域名标签[完全限定的域名 (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) **contoso.local.cloudapp.azurestack.external**解析为该资源的公共 IP 地址。 可以使用此 FQDN 创建自定义域 CNAME 记录，该记录指向 Azure Stack 中的公共 IP 地址。
+例如，如果在本地 Azure Stack 位置创建一个以 **contoso** 作为域名标签的公共 IP 资源，则[完全限定的域名 (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) **contoso.local.cloudapp.azurestack.external** 将解析为该资源的公共 IP 地址。 可以使用此 FQDN 创建自定义域 CNAME 记录，该记录指向 Azure Stack 中的公共 IP 地址。
 
 若要了解有关名称解析的详细信息，请参阅 [DNS 解析](../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文。
 
@@ -43,7 +43,7 @@ Azure Stack 支持以下域名系统 (DNS) 功能：
 
 以下屏幕截图显示了使用门户创建公共 IP 地址时的“创建公共 IP 地址”对话框：
 
-![创建公共 IP 地址](media/azure-stack-whats-new-dns/image01.png)
+![创建公共 IP 地址](media/azure-stack-dns/image01.png)
 
 ### <a name="example-scenario"></a>示例方案
 
@@ -55,23 +55,23 @@ Azure Stack 支持以下域名系统 (DNS) 功能：
 
 Azure Stack 使用与 Azure DNS API 一致的 API 提供与 Azure 类似的 DNS 服务。  通过将域托管在 Azure Stack DNS 中，可以使用相同的凭据、API 和工具来管理 DNS 记录。 还可以使用与其他 Azure 服务相同的计费和支持功能。
 
-Azure Stack DNS 的基础结构比 Azure 的更为精简。 Azure Stack 部署的大小和位置会影响 DNS 的作用域、规模和性能。 这也意味着性能、 可用性、 全局分发和高可用性可以改变部署的。
+Azure Stack DNS 的基础结构比 Azure 的更为精简。 Azure Stack 部署的大小和位置会影响 DNS 的作用域、规模和性能。 这还意味着性能、可用性、全局分发和高可用性可能会因部署而异。
 
 ## <a name="comparison-with-azure-dns"></a>与 Azure DNS 比较
 
-Azure Stack 中的 DNS 类似于 DNS 在 Azure 中，但有几个重要的例外情况：
+Azure Stack 中的 DNS 类似于 Azure 中的 DNS，但有几个重要例外：
 
-* **不支持 AAAA 记录**:Azure Stack 不支持 AAAA 记录，因为 Azure Stack 不支持 IPv6 地址。 这是 Azure DNS 与 Azure Stack DNS 之间的主要差异。
+* **不支持 AAAA 记录**：Azure Stack 不支持 AAAA 记录，因为 Azure Stack 不支持 IPv6 地址。 这是 Azure DNS 与 Azure Stack DNS 之间的主要差异。
 
-* **不是多租户**:Azure Stack 中的 DNS 服务不是多租户的。 各个租户不能创建相同的 DNS 区域。 仅首个订阅尝试创建区域会成功，后续请求都会失败。 这是 Azure DNS 与 Azure Stack DNS 之间的主要差异。
+* **不是多租户**：Azure Stack 中的 DNS 服务不是多租户的。 各个租户不能创建相同的 DNS 区域。 仅首个订阅尝试创建区域会成功，后续请求都会失败。 这是 Azure DNS 与 Azure Stack DNS 之间的主要差异。
 
-* **标记、 元数据和 Etag**:Azure Stack DNS 在处理标记、元数据、Etag 和限制的方式方面也有一些细微差异。
+* **标记、元数据和 Etag**：Azure Stack DNS 在处理标记、元数据、Etag 和限制的方式方面也有一些细微差异。
 
 若要了解有关 Azure DNS 的更多信息，请参阅 [DNS 区域和记录](../../dns/dns-zones-records.md)。
 
 ### <a name="tags"></a>标记
 
-Azure Stack DNS 支持在 DNS 区域资源上使用 Azure 资源管理器标记。 它不支持标记上 DNS 记录集，作为替代方法，尽管**元数据**下一节中所述，在 DNS 记录集上支持。
+Azure Stack DNS 支持在 DNS 区域资源上使用 Azure 资源管理器标记。 它不支持在 DNS 记录集上使用标记，不过作为替代方法，在 DNS 记录集上支持“元数据”，如下一部分所述。
 
 ### <a name="metadata"></a>元数据
 
@@ -83,7 +83,7 @@ Azure Stack DNS 支持在 DNS 区域资源上使用 Azure 资源管理器标记�
 
 Azure Stack DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag 与 Azure 资源管理器“标记”不同。 每个 DNS 资源（区域或记录集）都有与其相关联的 Etag。 检索资源时，还会检索其 Etag。 更新资源时，可以选择传递回 Etag 以便 Azure Stack DNS 可以验证服务器上的 Etag 是否匹配。 由于对资源的每次更新都会导致重新生成 Etag，Etag 不匹配表示发生了并发更改。 当创建新的资源时也可以使用 Etag，以确保该资源不存在。
 
-默认情况下，Azure Stack DNS PowerShell cmdlet 使用 Etag 来阻止对区域和记录集的并发更改。 您可以使用可选`-Overwrite`切换来取消 Etag 检查，这将导致发生覆盖任何并发更改。
+默认情况下，Azure Stack DNS PowerShell cmdlet 使用 Etag 来阻止对区域和记录集的并发更改。 可以通过可选 `-Overwrite` 开关取消 Etag 检查，这种情况下会覆盖已发生的所有并发更改。
 
 Etag 是在 Azure Stack DNS REST API 级别使用 HTTP 标头指定的。 下表介绍了它们的行为：
 

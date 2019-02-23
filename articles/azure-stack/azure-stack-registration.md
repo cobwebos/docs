@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: ebf8066139df93aefe1cfa21f2dc80ab57ca84bb
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 1fa85fa26594ef6e5df2d05bb3bcc34e5689c3be
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652444"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728397"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -77,7 +77,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 使用适用于 Azure Stack 的最新 PowerShell 来注册到 Azure。
 
-如果最新版本尚未安装，请参阅[安装适用于 Azure Stack 的 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)。
+如果尚未安装最新版本，请参阅[安装适用于 Azure Stack PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)。
 
 ### <a name="download-the-azure-stack-tools"></a>下载 Azure Stack 工具
 
@@ -108,7 +108,7 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 
 ```powershell
 Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
-Run: get-azurestackstampinformation 
+Run: Get-AzureStackStampInformation 
 ```
 
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>使用即用即付计费模型注册连接的 Azure Stack
@@ -125,7 +125,7 @@ Run: get-azurestackstampinformation
 2. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet。 系统会提示输入 Azure 帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。
 
    ```PowerShell
-      Add-AzureRmAccount -EnvironmentName "<environment name>"
+   Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
    | 参数 | 描述 |  
@@ -135,7 +135,7 @@ Run: get-azurestackstampinformation
 3. 如果有多个订阅，请运行以下命令，选择要使用的那个订阅：  
 
    ```PowerShell  
-      Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
+   Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
 4. 运行以下命令，在 Azure 订阅中注册 Azure Stack 资源提供程序：
@@ -153,7 +153,7 @@ Run: get-azurestackstampinformation
 6. 接下来，在同一个 PowerShell 会话中，确保已登录到正确的 Azure PowerShell 上下文。 这是前面在注册 Azure Stack 资源提供程序时所用的 Azure 帐户。 要运行的 Powershell：
 
    ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<environment name>"
+   Connect-AzureRmAccount -Environment "<environment name>"
    ```
 
    | 参数 | 描述 |  
@@ -189,7 +189,7 @@ Run: get-azurestackstampinformation
 2. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet。 系统会提示输入 Azure 帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。
 
    ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<environment name>"
+   Connect-AzureRmAccount -Environment "<environment name>"
    ```
 
    | 参数 | 描述 |  
@@ -199,7 +199,7 @@ Run: get-azurestackstampinformation
 3. 如果有多个订阅，请运行以下命令，选择要使用的那个订阅：  
 
    ```PowerShell  
-      Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
+   Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
 4. 运行以下命令，在 Azure 订阅中注册 Azure Stack 资源提供程序：
@@ -255,16 +255,16 @@ Run: get-azurestackstampinformation
 在连接到 Internet 的计算机上，执行相同的步骤以导入 RegisterWithAzure.psm1 模块，并登录到正确的 Azure Powershell 上下文。 然后调用 Register-AzsEnvironment。 指定可注册到 Azure 的注册令牌。 如果使用同一 Azure 订阅 ID 注册多个 Azure Stack 实例，请指定唯一的注册名称。 运行以下 cmdlet：
 
   ```PowerShell  
-  $registrationToken = "<Your Registration Token>"
+  $RegistrationToken = "<Your Registration Token>"
   $RegistrationName = "<unique-registration-name>"
-  Register-AzsEnvironment -RegistrationToken $registrationToken  -RegistrationName $RegistrationName
+  Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
   ```
 
 （可选）可以使用 Get-Content cmdlet，使之指向包含注册令牌的文件：
 
   ```PowerShell  
-  $registrationToken = Get-Content -Path '<Path>\<Registration Token File>'
-  Register-AzsEnvironment -RegistrationToken $registrationToken -RegistrationName $RegistrationName
+  $RegistrationToken = Get-Content -Path '<Path>\<Registration Token File>'
+  Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
   ```
 
   > [!Note]  
@@ -287,7 +287,7 @@ Run: get-azurestackstampinformation
 
 ### <a name="create-an-activation-resource-in-azure-stack"></a>在 Azure Stack 中创建激活资源
 
-使用 Get-AzsActivationKey 从创建的激活密钥中获取文件或文本后，返回到 Azure Stack 环境。 接下来，使用该激活密钥在 Azure Stack 中创建激活资源。 若要创建激活资源，请运行以下 PowerShell cmdlet：  
+使用 Get-AzsActivationKey 从创建的激活密钥中获取文件或文本后，返回到 Azure Stack 环境。 接下来，使用该激活密钥在 Azure Stack 中创建激活资源。 若要创建激活资源，请运行以下 PowerShell cmdlet： 
 
   ```Powershell
   $ActivationKey = "<activation key>"
@@ -381,15 +381,15 @@ Run: get-azurestackstampinformation
 可以使用用于创建资源的注册令牌：  
 
   ```Powershell
-  $registrationToken = "<registration token>"
-  Unregister-AzsEnvironment -RegistrationToken $registrationToken
+  $RegistrationToken = "<registration token>"
+  Unregister-AzsEnvironment -RegistrationToken $RegistrationToken
   ```
 
 或者，可以使用注册名称：
 
   ```Powershell
-  $registrationName = "AzureStack-<unique-registration-name>"
-  Unregister-AzsEnvironment -RegistrationName $registrationName
+  $RegistrationName = "AzureStack-<unique-registration-name>"
+  Unregister-AzsEnvironment -RegistrationName $RegistrationName
   ```
 
 ### <a name="re-register-using-disconnected-steps"></a>使用适用于联网场景的步骤重新注册
@@ -441,11 +441,11 @@ Run: get-azurestackstampinformation
 - 此外还必须在登录到 Azure PowerShell 时，使用其身份为该订阅的所有者或参与者的帐户。
 
 ```PowerShell
-    Set-AzsRegistration [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String> [[-AzureContext]
+Set-AzsRegistration [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String> [[-AzureContext]
     <PSObject>] [[-ResourceGroupName] <String>] [[-ResourceGroupLocation] <String>] [[-BillingModel] <String>]
     [-MarketplaceSyndicationEnabled] [-UsageReportingEnabled] [[-AgreementNumber] <String>] [[-RegistrationName]
     <String>] [<CommonParameters>]
-   ```
+```
 
 | 参数 | Type | 描述 |
 |-------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -465,7 +465,7 @@ Run: get-azurestackstampinformation
 Get-AzsRegistrationToken 根据输入参数生成注册令牌。
 
 ```PowerShell  
-    Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String>
+Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String>
     [-BillingModel] <String> [[-TokenOutputFilePath] <String>] [-UsageReportingEnabled] [[-AgreementNumber] <String>]
     [<CommonParameters>]
 ```

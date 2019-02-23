@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9f0ccb85fa4b42ef3ca90c6d4ca2d80113b93a0c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312848"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733693"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>通过创建服务主体向应用程序授予对 Azure Stack 资源的访问权限
 
@@ -75,7 +75,7 @@ ms.locfileid: "56312848"
 
 2. 复制“应用程序 ID”并将其存储在应用程序代码中。 在示例应用程序中的应用程序使用**客户端 id**指**应用程序 ID**。
 
-     ![应用程序的应用程序 ID](./media/azure-stack-create-service-principal/image12.png)
+     ![应用程序的应用程序 ID](./media/azure-stack-create-service-principals/image12.png)
 3. 若要生成身份验证密钥，请选择“密钥”。
 
 4. 提供密钥说明和密钥持续时间。 完成后，选择“保存”。
@@ -83,7 +83,7 @@ ms.locfileid: "56312848"
 >[!IMPORTANT]
 保存密钥后，将显示密钥**值**。 请记下此值，因为以后无法检索密钥。 将密钥值存储在应用程序可检索的位置。
 
-![有关已保存的密钥的密钥值警告。](./media/azure-stack-create-service-principal/image15.png)
+![有关已保存的密钥的密钥值警告。](./media/azure-stack-create-service-principals/image15.png)
 
 最后一步是[将应用程序分配到某个角色](azure-stack-create-service-principals.md)。
 
@@ -110,7 +110,7 @@ ms.locfileid: "56312848"
 
 2. 选择要将应用程序分配到的订阅。 在此示例中，该订阅是 Visual Studio Enterprise。
 
-     ![选择 Visual Studio Enterprise 订阅用于分配](./media/azure-stack-create-service-principal/image16.png)
+     ![选择 Visual Studio Enterprise 订阅用于分配](./media/azure-stack-create-service-principals/image16.png)
 
 3. 选择该订阅的“访问控制(标识和访问管理)”。
 

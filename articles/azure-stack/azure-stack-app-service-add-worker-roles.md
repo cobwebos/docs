@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 02/22/2010
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 0ac20ee9f6197a8322bb741020aee813c690847e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 839fa7fe8374f1f85b019178d4c3fe53f7137372
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445877"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729638"
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>在 Azure Stack 上的应用服务：添加更多的基础结构或辅助角色
 
@@ -37,11 +37,6 @@ ms.locfileid: "56445877"
 如果不确定默认的基于 Azure Stack 的应用服务安装的部署内容，可以参阅[基于 Azure Stack 的应用服务概述](azure-stack-app-service-overview.md)以获取更多信息。
 
 基于 Azure Stack 的 Azure 应用服务使用虚拟机规模集来部署所有角色，因此可充分利用此工作负荷的缩放功能。 因此，辅助角色层的所有缩放都是通过应用服务管理员完成的。
-
-> [!IMPORTANT]
-> 目前无法按照 Azure Stack 发行说明中介绍的那样在门户中缩放虚拟机规模集，因此请使用 PowerShell 示例进行横向扩展。
->
->
 
 ## <a name="add-additional-workers-with-powershell"></a>使用 PowerShell 添加更多辅助角色
 
@@ -80,7 +75,7 @@ ms.locfileid: "56445877"
 
 3. 在“应用服务管理”中监视新角色实例的状态。若要查看单个角色实例的状态，请单击列表中的角色类型。
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>在“应用服务资源提供程序管理”中直接添加更多辅助角色。
+## <a name="add-additional-workers-using-the-administration-portal"></a>添加更多辅助角色使用管理门户
 
 1. 以服务管理员身份登录到 Azure Stack 管理门户。
 

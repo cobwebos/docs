@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/22/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 60767c3c61b0d386e4ac9b0a93d16ad161c59949
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0467f131ab4300ba3217ed01f37ebb7f4b8dbe5e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445928"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732766"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>将应用服务资源提供程序添加到 Azure Stack
 
@@ -132,22 +132,7 @@ ms.locfileid: "56445928"
 
     ![应用服务安装程序][10]
 
-11. 为用于托管应用服务资源提供程序数据库的服务器实例输入 SQL Server 详细信息，然后选择“下一步”。 安装程序将验证 SQL 连接属性。
-
-    > [!NOTE]
-    > 在继续下一步之前，安装程序会尝试测试与 SQL Server 的连接。 不过，如果是部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果 SQL Server 信息是正确的，请继续部署。
-    >
-    > 从 Azure Stack 1.3 上的 Azure 应用服务开始，安装程序将检查 SQL Server 是否在 SQL Server 级别启用了数据库包含。  如果未启用，则会出现以下异常提示：
-    > ```sql
-    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
-    >    ***********************************************************
-    >    sp_configure 'contained database authentication', 1;  
-    >    GO  
-    >    RECONFIGURE;  
-    >    GO
-    >    ***********************************************************
-    > ```
-    > 有关更多详细信息，请参阅 [Azure Stack 1.3 上的 Azure 应用服务的发行说明](azure-stack-app-service-release-notes-update-three.md)。
+11. 为用于托管应用服务资源提供程序数据库的服务器实例输入 SQL Server 详细信息，然后选择“下一步”。 安装程序将验证 SQL 连接属性。<br><br>应用服务安装程序会尝试测试继续之前的 SQL server 的连接。 如果你正在部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果 SQL Server 信息是正确的，请继续部署。
 
     ![应用服务安装程序][11]
 

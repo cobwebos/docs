@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 0a73119c7d079498f0e766fb92904c86ff5131c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 4fb2a398baa306cf9303284526bb43cd7f778441
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767216"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734619"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>更换 Azure Stack 中的物理磁盘
 
@@ -39,7 +39,7 @@ ms.locfileid: "55767216"
 
 如果打开该警报，警报说明包含必须更换之磁盘的缩放单元节点和确切物理插槽位置。 Azure Stack 会使用 LED 指示器功能来进一步帮助你确定发生故障的磁盘。
 
- ## <a name="replace-the-disk"></a>更换磁盘
+## <a name="replace-the-disk"></a>更换磁盘
 
 请按照 OEM 硬件供应商的 FRU 说明来实际更换磁盘。
 
@@ -50,7 +50,7 @@ ms.locfileid: "55767216"
 
 更换磁盘后，Azure Stack 会自动发现新磁盘，并启动虚拟磁盘修复过程。
  
- ## <a name="check-the-status-of-virtual-disk-repair"></a>检查虚拟磁盘修复状态
+## <a name="check-the-status-of-virtual-disk-repair"></a>检查虚拟磁盘修复状态
  
  更换磁盘后，可以使用特权终结点监视虚拟磁盘运行状况和修复作业进度。 从任何可以通过网络连接到特权终结点的计算机，按照下列步骤进行操作。
 

@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/22/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 0be1814fd501824056bc80d4aeb561ff58735125
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.lastreviewed: 02/22/2019
+ms.openlocfilehash: 3b057e9c4a0fccb3f85ec237433e4020fd4a84da
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447440"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737478"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>在 Azure Stack 上开始使用应用服务之前
 
@@ -307,6 +307,16 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 > 可通过市场管理功能获取许多 SQL IaaS 虚拟机映像。 在使用市场项部署 VM 之前，请确保下载最新版本的 SQL IaaS 扩展。 SQL 映像与 Azure 中提供的 SQL VM 相同。 对于从这些映像创建的 SQL VM，IaaS 扩展和相应的门户增强功能可提供自动修补和备份等功能。
 >
 对于任何 SQL Server 角色，可以使用默认实例或命名实例。 如果使用命名实例，请务必手动启动 SQL Server Browser 服务并打开端口 1434。
+
+应用服务安装程序将检查以确保 SQL Server 已启用的数据库包含。 若要启用数据库包含关系将托管应用程序服务数据库的 SQL 服务器上，运行以下 SQL 命令：
+
+```sql
+sp_configure 'contained database authentication', 1;  
+GO  
+RECONFIGURE;  
+GO
+```
+
 
 >[!IMPORTANT]
 > 如果选择在现有虚拟网络中部署应用服务，应将 SQL Server 部署到独立于应用服务和文件服务器的子网中。
