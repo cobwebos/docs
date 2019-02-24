@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 71ddf1d70953b721911a7315ab6875dd41a9a4db
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894167"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338591"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>教程：使用 .NET 通过媒体服务 v3 进行实时流式传输
 
@@ -126,7 +126,7 @@ ms.locfileid: "55894167"
 #### <a name="create-a-streaming-locator"></a>创建流定位符
 
 > [!NOTE]
-> 创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+> 创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用[动态打包](dynamic-packaging-overview.md)和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
 如果已使用流定位符发布了实时输出资产，则实时事件（长达 DVR 窗口长度）将继续可见，直到流定位符过期或被删除（以先发生为准）。
 

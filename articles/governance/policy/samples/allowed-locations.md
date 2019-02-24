@@ -1,6 +1,6 @@
 ---
 title: 示例 - 允许的位置
-description: 此示例策略要求所有资源都部署到已批准的位置。
+description: 此示例策略定义要求所有资源都部署到已批准的位置。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: a13f181e90f0435f23e22a7c4db42976bd0afb44
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 70e1b2b20c4846626121dec190dff220a154b81b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243539"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341345"
 ---
-# <a name="allowed-locations"></a>允许的位置
+# <a name="sample---allowed-region-locations"></a>示例 - 允许的区域位置
 
 通过此策略，可限制组织在部署资源时可指定的位置。 用于强制执行异地符合性要求。 排除资源组、Microsoft.AzureActiveDirectory/b2cDirectories 以及使用“全局”区域的资源。 由你指定允许的位置的数组。
 

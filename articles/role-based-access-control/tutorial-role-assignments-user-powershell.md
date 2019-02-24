@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 RBAC 和 Azure PowerShell 授予用户的访问权限 | Microsoft Docs
-description: 使用基于角色的访问控制 (RBAC) 授予用户访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
+title: 教程 - 使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限 | Microsoft Docs
+description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 授予用户对 Azure 资源的访问权限。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 7f5e67edd2a5300ae1898e2620ee8ace80ac6d92
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109021"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343470"
 ---
-# <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 为用户授予访问权限
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限
 
-可以在 Azure 中通过[基于角色的访问控制 (RBAC)](overview.md) 这种方式管理对资源的访问。 在本教程中，请授予用户访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
+可以通过[基于角色的访问控制 (RBAC)](overview.md) 方式管理对 Azure 资源的访问权限。 在本教程中，请授予用户访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
 
 本教程介绍如何执行下列操作：
 
@@ -279,4 +279,4 @@ ms.locfileid: "56109021"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 RBAC 和 PowerShell 管理访问权限](role-assignments-powershell.md)
+> [使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限](role-assignments-powershell.md)

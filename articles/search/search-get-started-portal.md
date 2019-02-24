@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure 门户索引和查询快速入门教程 - Azure 搜索
-description: 本快速入门教程介绍如何使用 Azure 门户和内置的示例数据在 Azure 搜索中生成索引。 探索全文搜索、筛选器、分面 (Facet)、模糊搜索、地域搜索等功能。
+description: 了解如何使用 Azure 门户中的内置示例数据和导入数据向导在 Azure 搜索中构建和查询第一个索引。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 53be1180f074c075ed2ca2d544b9b164a3a1bdd6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991304"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270328"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>快速入门：使用内置门户工具在 Azure 搜索中进行导入、索引编制和查询
 
@@ -94,15 +94,17 @@ ms.locfileid: "55991304"
 
 存储要求不会因你的选择而发生更改。 例如，如果你在多个字段上设置“可检索”属性，则存储需求不会增加。
 
-默认情况下，向导会在数据源中扫描用作键字段基础的唯一标识符。 字符串经过属性化，可检索且可搜索。 整数经过属性化，可检索、可筛选、可排序且可分面。
+默认情况下，向导会在数据源中扫描用作键字段基础的唯一标识符。 字符串经过属性化，**可检索**且**可搜索**。 整数经过属性化，**可检索**、**可筛选**、**可排序**且**可分面**。
 
-1. 接受所有默认值。
+1. 接受默认值。 
 
-  ![生成的 realestate 索引](media/search-get-started-portal/realestateindex2.png)
+   如果使用现有的 realestate 数据源再次重新运行向导，则不会使用默认属性配置索引。 以后导入时，你必须手动选择属性。
+
+   ![生成的 realestate 索引](media/search-get-started-portal/realestateindex2.png)
 
 2. 继续转到下一页。
 
-  ![下一页可创建索引器](media/search-get-started-portal/next-button-create-indexer.png)
+   ![下一页可创建索引器](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>步骤 4 - 配置索引器
 

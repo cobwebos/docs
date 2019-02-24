@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/25/2018
+ms.date: 02/20/2019
 ms.author: pareshmu
-ms.openlocfilehash: 913661b1d4360eba90d7e827d08d1b48bc7b4e71
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c80477eee18eda2bb3f6e273fdab760d27531310
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244396"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456429"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -112,14 +112,14 @@ ms.locfileid: "56244396"
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |支持 |支持 |开普敦、约翰内斯堡 |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、丹佛、都柏林、香港特别行政区、拉斯维加斯、伦敦、洛杉矶、墨尔本、迈阿密、纽约、魁北克市、圣安东尼奥、西雅图、硅谷、新加坡、新加坡 2、悉尼、多伦多、华盛顿特区 |
 | **[MTN](http://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |支持 |支持 |伦敦 |
-| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、迈阿密、圣保罗 |
+| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、洛杉矶、迈阿密、圣保罗 |
 | **[Next Generation Data](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |支持 |支持 |墨尔本、珀斯、悉尼 |
 | **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |支持 |支持 |阿姆斯特丹、香港特别行政区、伦敦、洛杉矶、大阪、新加坡、悉尼、东京、华盛顿特区 |
 | **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |支持 |支持 |东京 |
 | **[NTT SmartConnect](http://cloud.nttsmc.com/cxc/azure.html)** |支持 |支持 |大阪 |
 | **[Optus](https://www.optus.com.au/enterprise/networking/network-connectivity/express-link)** |支持 |支持 |墨尔本、悉尼 |
-| **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |支持 |支持 |阿姆斯特丹、香港特别行政区、伦敦、巴黎、圣保罗、硅谷、新加坡、悉尼、华盛顿特区 |
+| **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |支持 |支持 |阿姆斯特丹、香港特别行政区、伦敦、巴黎、圣保罗、硅谷、新加坡、悉尼、东京、华盛顿特区 |
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |支持 |支持 |芝加哥、香港特别行政区、伦敦 |
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |支持 |支持 |首尔 |

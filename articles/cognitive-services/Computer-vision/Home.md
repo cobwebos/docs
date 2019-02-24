@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/22/2018
+ms.date: 02/20/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4322b118268ee88235190f5672585d17ea365495
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872637"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453046"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -45,17 +45,17 @@ ms.locfileid: "55872637"
 
 ## <a name="extract-text-from-images"></a>从图像中提取文本
 
-可以使用计算机视觉[通过 OCR 来提取文本](concept-extracting-text-ocr.md)，将文本从图像提取到计算机可读的字符流中。 如果需要，OCR 会围绕图像水平轴更正所识别文本的方向（以度为单位），并提供每个词的帧坐标。 OCR 支持 25 种语言，并会自动检测已提取文本的语言。
+可以使用计算机视觉[通过光学字符识别 (OCR) 来提取文本](concept-extracting-text-ocr.md)，将文本从图像提取到计算机可读的字符流中。 如果需要，OCR 会校正已识别文本的旋转角度并提供每个词的帧坐标。 OCR 支持 25 种语言，并会自动检测已识别文本的语言。
 
-也可在图像中[识别印刷文本和手写文本](concept-recognizing-text.md)。 计算机视觉可以在图像中检测并提取印刷文本和手写文本，这些图像包含各种具有不同表面和背景的对象（例如收据、海报、名片、信函、白板）。 目前，识别印刷文本和手写文本功能为预览版，并且仅支持英语。  
+也可在图像中[识别印刷体文本和手写文本](concept-recognizing-text.md)。 计算机视觉可以在图像中检测并提取印刷文本和手写文本，这些图像包含各种具有不同表面和背景的对象（例如收据、海报、名片、信函、白板）。 目前，印刷体文本和手写文本识别功能以预览版提供，并且仅支持英语。 
 
 ## <a name="moderate-content-in-images"></a>管理图像中的内容
 
-可以使用计算机视觉在图像中[检测成人内容和不雅内容](concept-detecting-adult-content.md)，对图像包含成人内容或不雅内容的可能性进行评分，并为二者生成一个置信度分数。 可以根据自己的偏好在滑尺上设置成人和不雅内容检测的筛选器。
+可以使用计算机视觉来[检测图像中的成人和不雅内容](concept-detecting-adult-content.md)，并返回这两者的置信度分数。 可以根据自己的偏好在滑尺上设置成人和不雅内容检测的筛选器。
 
 ## <a name="use-containers"></a>使用容器
 
-将标准化的 Docker 容器安装到靠近数据的位置以后，即可在本地[使用计算机视觉容器](computer-vision-how-to-install-containers.md)识别打印的和手写的文本。
+将标准化的 Docker 容器安装到靠近数据的位置以后，即可在本地[使用计算机视觉容器](computer-vision-how-to-install-containers.md)识别印刷体文本和手写文本。
 
 ## <a name="image-requirements"></a>映像要求
 

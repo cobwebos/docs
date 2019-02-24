@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b5d7be25ba18e256352d8793689bcb63a013e20b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891651"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452589"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 数据
 
@@ -38,6 +38,17 @@ ms.locfileid: "55891651"
 
 * 安装 AzCopy v10。 请参阅[使用 AzCopy v10 传输数据](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
+*  创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+
+   在执行该文中的步骤时，需要完成一些特定的事项。
+
+   :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给服务主体。
+
+   > [!IMPORTANT]
+   > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
+
+   :heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
+
 ### <a name="download-the-flight-data"></a>下载航班数据
 
 本教程使用美国运输统计局的航班数据，演示如何执行 ETL 操作。 必须下载该数据才能完成本教程。
@@ -49,24 +60,6 @@ ms.locfileid: "55891651"
 3. 选择“下载”按钮并将结果保存到计算机。 
 
 4. 将压缩文件的内容解压缩，并记下文件名和文件路径。 在稍后的步骤中需要使用此信息。
-
-## <a name="get-your-storage-account-name"></a>获取存储帐户名
-
-需要存储帐户的名称。 若要获取此名称，请登录到 [Azure 门户](https://portal.azure.com/)，选择“所有服务”，然后使用“存储”一词进行筛选。 然后选择“存储帐户”，找到你的存储帐户。
-
-将该名称粘贴到某个文本文件中。 稍后需要使用该名称。
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>创建服务主体
-
-遵循以下主题中的指导创建服务主体：[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
-
-在执行该文中的步骤时，需要完成几项操作。
-
-:heavy_check_mark:在执行文章的[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分的步骤时，请确保将应用程序分配给“Blob 存储参与者”角色。
-
-:heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
 
 ## <a name="create-an-azure-databricks-service"></a>创建 Azure Databricks 服务
 
@@ -145,9 +138,16 @@ ms.locfileid: "55891651"
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. 在此代码块中，请将 `storage-account-name`、`application-id`、`authentication-id`、`tenant-id` 占位符的值替换为你在完成此文的保存存储帐户配置和[创建服务主体](#service-principal)部分的步骤时收集的值。 将 `file-system-name` 占位符替换为你要为文件系统提供的任何名称。
 
-19. 按 **SHIFT + ENTER** 键，运行此块中的代码。 
+18. 在此代码块中，请将 `application-id`、`authentication-id`、`tenant-id` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `file-system-name` 占位符值替换为你想要为文件系统指定的任何名称。
+
+   * `application-id` 和 `authentication-id` 来自在创建服务主体的过程中向 active directory 注册的应用。
+
+   * `tenant-id` 来自你的订阅。
+
+   * `storage-account-name` 是 Azure Data Lake Storage Gen2 存储帐户的名称。
+
+19. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 
     请将此笔记本保持打开状态，因为稍后要在其中添加命令。
 

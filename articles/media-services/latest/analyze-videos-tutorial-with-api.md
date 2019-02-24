@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 02/18/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 191a6c9dc1cc5a24c1a46af21c5b63e3ff27a290
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9dbe641c5e22129f7db3d3f3b886fea4501300b0
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150387"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416133"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>教程：通过 .NET 使用媒体服务 v3 来分析视频
 
@@ -125,6 +125,11 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 **作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
+
+
+### <a name="job-error-codes"></a>作业错误代码
+
+请参阅[错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
 
 ### <a name="download-the-result-of-the-job"></a>下载作业结果
 

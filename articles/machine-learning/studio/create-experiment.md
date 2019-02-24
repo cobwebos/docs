@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f5b24b21c4511b535509421aaa35ba3498e9f6a8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 803a52994536d2d6f39a064f97af7831af0cebb6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246011"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453165"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>快速入门：在 Azure 机器学习工作室中创建你的第一个数据科学试验
 
@@ -57,15 +57,15 @@ ms.locfileid: "56246011"
 
 1. 试验有一个默认名称，显示在画布顶部。 选中该名称，将试验重命名为某个有意义的名称，例如“汽车价格预测”。 名称不需唯一。
 
-    ![将试验重命名][rename-experiment]
+    ![将试验重命名](./media/create-experiment/rename-experiment.png)
 
 1. 试验画布左侧是数据集和模块的控制板。 在此控制板顶部的“搜索”框中键入**汽车**，找到标有“汽车价格数据(原始)”的数据集。 将该数据集拖放到试验画布上。
 
-    ![找到汽车数据集并将其拖放到试验画布上][type-automobile]
+    ![找到汽车数据集并将其拖放到试验画布上](./media/create-experiment/type-automobile.png)
 
 若要查看此数据的大致外观，请单击汽车数据集底部的输出端口，并选择“可视化”。
 
-![单击输出端口，并选择“可视化”][select-visualize]
+![单击输出端口，并选择“可视化”](./media/create-experiment/select-visualize.png)
 
 > [!TIP]
 > 数据集和模块都有由小圆圈表示的输入和输出端口 - 输入端口位于顶部，输出端口位于底部。
@@ -74,7 +74,7 @@ ms.locfileid: "56246011"
 
 在此数据集中，每行代表一辆汽车，与每辆汽车关联的变量显示为列。 使用特定汽车的变量在最右列（第 26 列，标题为“价格”）中预测价格。
 
-![在数据可视化窗口中查看汽车数据][visualize-auto-data]
+![在数据可视化窗口中查看汽车数据](./media/create-experiment/visualize-auto-data.png)
 
 单击右上角的“x”关闭可视化窗口。
 
@@ -89,9 +89,9 @@ ms.locfileid: "56246011"
 
 1. 在模块控制板顶部的搜索框中键入“选择列”，以查找[选择数据集中的列][select-columns]模块。 然后将该模块拖放到试验画布上。 使用此模块可以选择要将哪些列包含在模型中，或者从模型中排除。
 
-1. 将“汽车价格数据(原始)”数据集的输出端口连接到[选择数据集中的列][select-columns]模块的输入端口。
+1. 将“汽车价格数据(原始)”数据集的输出端口连接到“选择数据集中的列”模块的输入端口。
 
-    ![将“选择数据集中的列”模块添加到试验画布并进行连接][type-select-columns]
+    ![将“选择数据集中的列”模块添加到试验画布并进行连接](./media/create-experiment/type-select-columns.png)
 
 1. 单击[选择数据集中的列][select-columns] 模块，并单击“属性”窗格中的“启动列选择器”。
 
@@ -100,26 +100,26 @@ ms.locfileid: "56246011"
     - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
     - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
-    ![启动列选择器，排除“规范化损失”列][launch-column-selector]
+    ![启动列选择器，排除“规范化损失”列](./media/create-experiment/launch-column-selector.png)
 
     此时“选择数据集中的列”的属性窗格指示它将传入数据集中的所有列，但“规范化损失”除外。
 
-    ![属性窗格显示“规范化损失”列已排除][showing-excluded-column]
+    ![属性窗格显示“规范化损失”列已排除](./media/create-experiment/showing-excluded-column.png)
 
     > [!TIP] 
     > 可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在本例中，请双击[选择数据集中的列][select-columns]模块，并键入注释“排除规范化损失”。
 
-    ![双击要添加注释的模块][add-comment]
+    ![双击要添加注释的模块](./media/create-experiment/add-comment.png)
 
 1. 将[清理缺失数据][clean-missing-data]模块拖到试验画布，然后将其连接到[选择数据集中的列][select-columns]”模块。 在“属性”窗格的“清理模式”下选择“删除整行”。 这些选项指示[清理缺失数据][clean-missing-data]清理数据，删除存在缺失值的行。 双击该模块并键入注释“删除缺失值行”。
 
-    ![将“清理缺失数据”模块的清理模式设置为“删除整行”][set-remove-entire-row]
+    ![将“清理缺失数据”模块的清理模式设置为“删除整行”](./media/create-experiment/set-remove-entire-row.png)
 
 1. 通过单击页面底部的“运行”运行此试验。
 
     试验运行完以后，所有模块都会出现绿色复选标记，表示已成功完成。 另请留意右上角的“已完成运行”状态。
 
-    ![运行后，试验看起来应与上图类似][early-experiment-run]
+    ![运行后，试验看起来应与上图类似](./media/create-experiment/early-experiment-run.png)
 
 > [!TIP]
 > 为什么我们现在运行此试验？ 运行此试验，数据的列定义就会从数据集传入[选择数据集中的列][select-columns]模块和[清理缺失数据][clean-missing-data]模块。 这意味着，只要连接到[清理缺失数据][clean-missing-data]，任何模块也都会有此类相同信息。
@@ -140,7 +140,7 @@ ms.locfileid: "56246011"
 
 1. 将另一[选择数据集中的列][select-columns]模块拖放到试验画布上。 将[清理缺失数据][clean-missing-data]模块左侧的输出端口连接到[选择数据集中的列][select-columns]模块的输入端口。
 
-    ![将“选择数据集中的列”模块连接到“清理缺失数据”模块][connect-clean-to-select]
+    ![将“选择数据集中的列”模块连接到“清理缺失数据”模块](./media/create-experiment/connect-clean-to-select.png)
 
 1. 双击该模块，并键入“选择要预测的特征”。
 
@@ -152,7 +152,7 @@ ms.locfileid: "56246011"
 
 1. 单击复选标记（“确定”）按钮。
 
-    ![选择要包括在预测中的列（特征）][select-columns-to-include]
+    ![选择要包括在预测中的列（特征）](./media/create-experiment/select-columns-to-include.png)
 
 此模块生成经过筛选的数据集，只包含需要传递到下一步使用的学习算法中的特征。 稍后可以返回，选择不同的特征重试生成结果。
 
@@ -174,7 +174,7 @@ ms.locfileid: "56246011"
 
 1. 单击[拆分数据][split]模块将其选中。 找到“第一个输出数据集中的行的比例”（位于画布右侧的“属性”窗格中），将其设置为 0.75。 这样，我们将使用 75% 的数据来训练模型，保留 25% 的数据用于测试。
 
-    ![将“拆分数据”模块的拆分比例设置为 0.75][set-split-data-percentage]
+    ![将“拆分数据”模块的拆分比例设置为 0.75](./media/create-experiment/set-split-data-percentage.png)
 
     > [!TIP]
     > 更改“随机种子”参数可为训练和测试生成不同的随机样本。 此参数控制伪随机数生成器的种子。
@@ -185,19 +185,19 @@ ms.locfileid: "56246011"
 
 1. 找到[训练模型][train-model]模块并将其拖到试验画布。 将[线性回归][linear-regression]”模块的输出连接到[定型模型][train-model]模块左侧的输入，将[拆分数据][split]”模块的定型数据输出（左端口）连接到[定型模型][train-model]”模块右侧的输入。
 
-    ![将“训练模型”模块连接到“线性回归”和“拆分数据”模块][connect-train-model]
+    ![将“训练模型”模块连接到“线性回归”和“拆分数据”模块](./media/create-experiment/connect-train-model.png)
 
 1. 选择“训练模型[模块][train-model]，单击**属性**窗格中的**启动列选择器**，并选择**价格**列。 “价格”是模型要预测的值。
 
     在列选择器中选择“价格”列，方法是将其从“可用列”列表移至“所选列”列表。
 
-    ![选择“训练模型”模块的“价格”列][select-price-column]
+    ![选择“训练模型”模块的“价格”列](./media/create-experiment/select-price-column.png)
 
 1. 运行试验。
 
 我们现在获得了一个经过定型的回归模型，用来为新的汽车数据评分，以便进行价格预测。
 
-![运行后，试验现在看起来应与上图类似][second-experiment-run]
+![运行后，试验现在看起来应与上图类似](./media/create-experiment/second-experiment-run.png)
 
 ## <a name="predict-new-automobile-prices"></a>预测新汽车价格
 
@@ -205,21 +205,21 @@ ms.locfileid: "56246011"
 
 1. 找到[评分模型][score-model]模块并将其拖放到试验画布上。 将[定型模型][train-model]模块的输出连接到[评分模型][score-model]的左侧输入端口。 将[拆分数据][split]模型的测试数据输出（右侧端口）连接到[评分模型][score-model].
 
-    ![将“评分模型”模块连接到“训练模型”和“拆分数据”模块][connect-score-model]
+    ![将“评分模型”模块连接到“训练模型”和“拆分数据”模块](./media/create-experiment/connect-score-model.png)
 
 1. 运行试验，通过单击[评分模型][score-model]的输出端口并选择“可视化”来查看[评分模型][score-model]模块的输出。 输出显示价格预测值，以及来自测试数据的已知值。  
 
-    ![“评分模型”模块的输出][score-model-output]
+    ![“评分模型”模块的输出](./media/create-experiment/score-model-output.png)
 
 1. 最后，我们对结果的质量进行测试。 选择[评估模型][evaluate-model]模块并将其拖放到试验画布上，然后将[评分模型][score-model]模块的输出连接到[评估模型][evaluate-model]的左侧输入。 最终试验看起来应与下图类似：
 
-    ![最终试验][complete-linear-regression-experiment]
+    ![最终试验](./media/create-experiment/complete-linear-regression-experiment.png)
 
 1. 运行试验。
 
 要查看[评估模型][evaluate-model]模块的输出，请单击输出端口，并选择“可视化”。
 
-![试验的评估结果][evaluation-results]
+![试验的评估结果](./media/create-experiment/evaluation-results.png)
 
 针对本例中的模型显示了以下统计信息：
 
@@ -241,35 +241,6 @@ ms.locfileid: "56246011"
 
 > [!div class="nextstepaction"]
 > [教程：在工作室中开发预测解决方案](tutorial-part1-credit-risk.md)
-
-<!-- Images -->
-[sign-in-to-studio]: ./media/create-experiment/sign-in-to-studio.png
-[rename-experiment]: ./media/create-experiment/rename-experiment.png
-[visualize-auto-data]:./media/create-experiment/visualize-auto-data.png
-[select-visualize]: ./media/create-experiment/select-visualize.png
-[showing-excluded-column]:./media/create-experiment/showing-excluded-column.png
-[set-remove-entire-row]:./media/create-experiment/set-remove-entire-row.png
-[early-experiment-run]:./media/create-experiment/early-experiment-run.png
-[select-columns-to-include]:./media/create-experiment/select-columns-to-include.png
-[second-experiment-run]:./media/create-experiment/second-experiment-run.png
-[connect-score-model]:./media/create-experiment/connect-score-model.png
-[evaluation-results]:./media/create-experiment/evaluation-results.png
-[complete-linear-regression-experiment]:./media/create-experiment/complete-linear-regression-experiment.png
-
-<!-- temporarily switching GIFs to PNGs to remove animation -->
-[type-automobile]:./media/create-experiment/type-automobile.png
-[type-select-columns]:./media/create-experiment/type-select-columns.png
-[launch-column-selector]:./media/create-experiment/launch-column-selector.png
-[add-comment]:./media/create-experiment/add-comment.png
-[connect-clean-to-select]:./media/create-experiment/connect-clean-to-select.png
-
-[set-split-data-percentage]:./media/create-experiment/set-split-data-percentage.png
-
-<!-- temporarily switching GIFs to PNGs to remove animation -->
-[connect-train-model]:./media/create-experiment/connect-train-model.png
-[select-price-column]:./media/create-experiment/select-price-column.png
-
-[score-model-output]:./media/create-experiment/score-model-output.png
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

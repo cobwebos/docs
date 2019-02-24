@@ -7,13 +7,13 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/24/2019
-ms.openlocfilehash: 0ec682ea852f3c6da6248f3c16b539725ca18c0f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/15/2019
+ms.openlocfilehash: 9d00819143d9a8fc38bfc09844d55f088e732b46
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895799"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453020"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据
 
@@ -25,27 +25,20 @@ ms.locfileid: "55895799"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建启用了 Data Lake Storage Gen2 的存储帐户](data-lake-storage-quickstart-create-account.md)
+* 创建 Data Lake Gen2 存储帐户。 请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)
 
-<a id="config"/>
+  将存储帐户的名称粘贴到文本文件中。 稍后需要使用该名称。
 
-## <a name="get-the-name-of-your-storage-account"></a>获取你的存储帐户的名称
+*  创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
-若要在 Azure 门户中获取存储帐户的名称，请选择“所有服务”，然后使用“存储”一词进行筛选。 然后选择“存储帐户”，找到你的存储帐户。
+   在执行该文中的步骤时，需要完成一些特定的事项。
 
-将该名称粘贴到文本文件。 稍后将需要使用该名称。
+   :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给服务主体。
 
-<a id="service-principal"/>
+   > [!IMPORTANT]
+   > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
 
-## <a name="create-a-service-principal"></a>创建服务主体
-
-遵循以下主题中的指导创建服务主体：[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
-
-在执行该文中的步骤时，需要完成一些特定的事项。
-
-:heavy_check_mark:在执行文章的[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分的步骤时，请确保将应用程序分配给“Blob 存储参与者”角色。
-
-:heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
+   :heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
@@ -126,11 +119,11 @@ ms.locfileid: "55895799"
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
- 
+
     > [!NOTE]
     > 此代码块通过 OAuth 直接访问 Data Lake Gen2 终结点，但是，也可以通过其他方式将 Databricks 工作区连接到 Data Lake Storage Gen2 帐户。 例如，可以通过 OAuth 来装载文件系统，还可以通过共享密钥进行直接访问。 <br>有关这些方法的示例，请参阅 Azure Databricks 网站上的文章：[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)。
 
-5. 在此代码块中，请将 `storage-account-name`、`application-id`、`authentication-id` 和 `tenant-id` 占位符的值替换为你在完成本文的[获取存储帐户的名称](#config)和[创建服务主体](#service-principal)部分的步骤时收集的值。  将 `file-system-name` 占位符的值设置为你想要为文件系统提供的任意名称。
+5. 在此代码块中，请将 `storage-account-name`、`application-id`、`authentication-id` 和 `tenant-id` 占位符值替换为在创建服务主体时收集的值。 将 `file-system-name` 占位符的值设置为你想要为文件系统提供的任意名称。
 
 6. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 

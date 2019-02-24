@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccb593e198e4dff8f30bddfe26071523ea7a893d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a160c604050f567f3fc0f77ca20a22349f07fd9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179223"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>教程：Azure Active Directory 与 Adobe Creative Cloud 集成
 
@@ -45,7 +45,7 @@ ms.locfileid: "56179223"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Adobe Creative Cloud 支持 SP 和 IDP 发起的 SSO
+* Adobe Creative Cloud 支持 **SP** 发起的 SSO
 
 ## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>从库中添加 Adobe Creative Cloud
 
@@ -67,7 +67,7 @@ ms.locfileid: "56179223"
 
 4. 在搜索框中，键入“Adobe Creative Cloud”，在结果面板中选择“Adobe Creative Cloud”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的 Adobe Creative Cloud](common/search-new-app.png)
+    ![结果列表中的 Adobe Creative Cloud](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -101,29 +101,23 @@ ms.locfileid: "56179223"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 IDP 发起的模式下进行配置，请在“基本 SAML 配置”部分中执行以下步骤：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    ![Adobe Creative Cloud 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![Adobe Creative Cloud 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<token>`
+    a. 在“登录 URL”文本框中，键入值：`https://adobe.com`。
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.okta.com/auth/saml20/accauthlinktest`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Adobe Creative Cloud 客户端支持团队](https://www.adobe.com/au/creativecloud/business/teams/plans.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 标识符非实际值。 请使用实际标识符更新此值。 请联系 [Adobe Creative Cloud 客户端支持团队](https://www.adobe.com/au/creativecloud/business/teams/plans.html)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
-
-    在“登录 URL”文本框中，键入值：`https://adobe.com`。
-
-    ![Adobe Creative Cloud 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
-
-6. Adobe Creative Cloud 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+5. Adobe Creative Cloud 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
     ![图像](common/edit-attribute.png)
 
-7. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
- 
+6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+
     | 名称 | 源属性|
     |----- | --------- |
     | FirstName | user.givenname |
@@ -151,11 +145,11 @@ ms.locfileid: "56179223"
     > [!NOTE]
     > 用户需要有一个有效的 Office 365 ExO 许可证，以便在 SAML 响应中填充电子邮件声明值。
 
-8. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-9. 在“设置 Adobe Creative Cloud”部分中，根据要求复制相应的 URL。
+8. 在“设置 Adobe Creative Cloud”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 

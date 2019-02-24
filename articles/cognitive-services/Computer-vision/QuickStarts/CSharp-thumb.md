@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ad8b00ad7ef212299b67826fd8d6b411c3fb7633
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 05d48c67876b02c1909243eaa86a57fd4ab8d5c1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868168"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312831"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c35-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 C&#35 生成缩略图
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 C# 生成缩略图
 
 在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法，可以生成图像的缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
@@ -194,7 +194,7 @@ namespace CSHttpClientSample
 
 示例应用程序会在控制台窗口中显示成功的响应，如下例所示：
 
-```text
+```console
 Response:
 
 StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:

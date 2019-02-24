@@ -1,6 +1,6 @@
 ---
 title: 示例 - 没有与 Express Route 网络对等互连的网络
-description: 此示例策略禁止将网络对等互联关联到指定资源组中的网络。
+description: 此示例策略定义禁止将网络对等互连关联到指定资源组中的网络。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: dbd7494b5104482624448fc0525a58d68138a833
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c06e750c19227d245fcf8eaeb077691ef2c8a675
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245637"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337591"
 ---
-# <a name="no-network-peering-to-express-route-network"></a>没有与 Express Route 网络对等互连的网络
+# <a name="sample---no-network-peering-to-express-route-network"></a>示例 - 没有与 Express Route 网络对等互连的网络
 
 此策略禁止将网络对等互联关联到指定资源组中的网络。 用于防止与中心托管的网络基础结构连接。 指定要防止关联的资源组的名称。
 

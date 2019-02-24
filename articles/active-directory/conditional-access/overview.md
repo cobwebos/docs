@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41771db4ff674b2f0df941286358d3154034ea1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e6f1174351f0907ce2bef21324c7ba81c81498b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194353"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266707"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问是什么？
 
@@ -109,11 +109,7 @@ ms.locfileid: "56194353"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如需深入了解：
-    - 条件，请参阅 [Azure Active Directory 条件访问中的条件](conditions.md)。
+若要了解如何在环境中实现条件访问，请参阅[在 Azure Active Directory 中规划条件访问部署](plan-conditional-access.md)。
 
-    - 访问控制，请参阅 [Azure Active Directory 条件访问中的访问控制](controls.md)。
 
-- 若要体验一下如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用进行多重身份验证](app-based-mfa.md)。
 
-- 如果想要使用推荐策略的分步部署计划，请参阅[条件访问部署计划](https://aka.ms/conditionalaccessdeploymentplan)

@@ -1,23 +1,23 @@
 ---
 title: 快速入门：识别语音，Objective-C - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用语音服务 SDK 在 iOS 上的 Objective-C 中识别语音
+description: 了解如何在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
 services: cognitive-services
 author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: f92a5c5ea064d91eae065c96e656416b21714e98
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5f6a66b4005a0fa7106830d7e53950a9902cd078
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878096"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447236"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>快速入门：使用语音服务 SDK 在 iOS 上的 Objective-C 中识别语音
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "55878096"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.2.0`。
+认知服务语音 SDK 的当前版本是 `1.3.0`。
 
 用于 Mac 和 iOS 的认知服务语音 SDK 目前以 Cocoa Framework 形式发行。
 它可以从 https://aka.ms/csspeech/iosbinary 下载。 将文件下载到主目录。

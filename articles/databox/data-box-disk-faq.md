@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 68bc3302874849a69249a50dcecd46024ad939ef
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 007c63c163b6e972bd59189569c92c99d2718cbe
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448323"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301479"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
@@ -131,6 +131,9 @@ A. 随 Data Box Disk 提供的工具集包含三个工具：
 此工具集可用于 Windows 和 Linux。 可以从以下位置下载此工具集：
  - [下载适用于 Windows 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolswin) 
  - [下载适用于 Linux 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolslinux)
+ 
+ ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>问： 我可以使用 Data Box Disk 将数据传输到 Azure 文件，然后在 Azure 文件同步中使用该数据吗？ 
+ A. Data Box Disk 不支持 Azure 文件。 如果以后在 Azure 文件同步中使用文件数据，元数据也不会保留。
 
 
 ## <a name="verify-and-upload"></a>验证和上传

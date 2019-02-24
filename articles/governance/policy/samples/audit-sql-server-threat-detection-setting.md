@@ -1,6 +1,6 @@
 ---
 title: 示例 - 审核服务器级别的威胁检测设置
-description: 此示例策略对那些未设置成指定状态的 SQL 数据库安全警报策略进行审核。
+description: 此示例策略定义会对那些未设置成指定状态的 SQL Server 安全警报策略进行审核。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 9e0ea3b65a4c442358c357e9603d607d8464c21b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ba694618bf86ef8e97241c955a40790960be2f0c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242169"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341362"
 ---
-# <a name="audit-server-level-threat-detection-setting"></a>审核服务器级别的威胁检测设置
+# <a name="sample---audit-server-level-threat-detection-setting"></a>示例 - 审核服务器级别的威胁检测设置
 
-如果 SQL 数据库安全警报策略未设置成指定状态，则此策略将对其进行审核。 指定一个值，该值指示威胁检测是启用还是禁用状态。
+此策略会对那些未设置成指定状态的 SQL Server 安全警报策略进行审核。 指定一个值，该值指示威胁检测是启用还是禁用状态。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

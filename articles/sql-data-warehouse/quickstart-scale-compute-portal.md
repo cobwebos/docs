@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kevin
-ms.reviewer: igorstan
-ms.openlocfilehash: 31ec1537a0075f486130a3bcf1017d35b47e499d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.reviewer: jrasnick
+ms.openlocfilehash: 2e3bb00cee679671ed382ee46690fc4dff8bddfb
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463644"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453879"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure SQL 数据仓库中缩放计算资源
 
@@ -29,11 +29,14 @@ ms.locfileid: "55463644"
 
 ## <a name="before-you-begin"></a>开始之前
 
-可以缩放现有的数据仓库，或使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。  本快速入门教程缩放 **mySampleDataWarehouse**。
+可以缩放现有的数据仓库，或使用[快速入门：创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。  本快速入门教程缩放 **mySampleDataWarehouse**。
+
+>[!Note]
+>数据仓库必须处于联机状态才能缩放。 
 
 ## <a name="scale-compute"></a>缩放计算
 
-在 SQL 数据仓库中，可以通过调整数据仓库单位来增加或减少计算资源。 [创建和 Connect - 门户](create-data-warehouse-portal.md)创建 **mySampleDataWarehouse** 并初始化 400 DWU。 以下步骤调整为 DWU **mySampleDataWarehouse**。
+可以通过增加或减少数据仓库单位来缩放 SQL 数据仓库计算资源。 [创建和连接 - 门户] 快速入门(create-data-warehouse-portal.md)创建了 **mySampleDataWarehouse** 并使用 400 DWU 对其进行了初始化。 以下步骤调整为 DWU **mySampleDataWarehouse**。
 
 更改数据仓库单位：
 
@@ -54,7 +57,7 @@ ms.locfileid: "55463644"
 
 
 ## <a name="next-steps"></a>后续步骤
-现在已暂停并恢复了数据仓库的计算。 若要了解有关 Azure SQL 数据仓库的详细信息，请继续有关加载数据的教程。
+你现在已了解如何缩放数据仓库的计算。 若要了解有关 Azure SQL 数据仓库的详细信息，请继续有关加载数据的教程。
 
 > [!div class="nextstepaction"]
 >[将数据加载到 SQL 数据仓库](load-data-from-azure-blob-storage-using-polybase.md)

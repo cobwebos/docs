@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813273"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267948"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph
 
@@ -38,7 +38,7 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 
 现在，你已更好地了解了 Azure Resource Graph，我们来深入了解如何构造查询。
 
-务必要了解的一点是，Azure Resource Graph 的查询语言基于 [Azure 数据资源管理器查询语言](../../data-explorer/data-explorer-overview.md)。
+务必要了解的一点是，Azure Resource Graph 的查询语言基于 Azure 数据资源管理器使用的 [Kusto 查询语言](../../data-explorer/data-explorer-overview.md)。
 
 首先，有关可以在 Azure Resource Graph 中使用的操作和函数，请参阅 [Resource Graph 查询语言](./concepts/query-language.md)。 若要浏览资源，请参阅[浏览资源](./concepts/explore-resources.md)。
 

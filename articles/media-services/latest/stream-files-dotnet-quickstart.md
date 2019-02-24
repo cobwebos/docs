@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 50c17e6ce953b601cc4ac0a406f443a54b9db3e7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d50bb6ca67d7d09525013b65d0635e8e16b4cb4e
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162712"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417272"
 ---
 # <a name="quickstart-stream-video-files---net"></a>快速入门：流式处理视频文件 - .NET
 
@@ -81,6 +81,8 @@ ms.locfileid: "55162712"
 
 1. 打开 Web 浏览器并导航到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
 2. 在“URL:”框中，粘贴运行应用程序时获取的某个流式处理 URL 值。 
+ 
+     可以粘贴 HLS、Dash 或 Smooth 格式的 URL，Azure Media Player将切换到适当的流协议，以便在你的设备上自动播放。
 3. 按“更新播放器”。
 
 Azure Media Player 可用于测试，但不可在生产环境中使用。 
@@ -100,6 +102,10 @@ az group delete --name amsResourceGroup
 有关示例代码中的每个功能的内容介绍，请在[此源文件](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中查看相关代码和注释。
 
 如需了解更高级的流式处理示例及其详细说明，请参阅[上传、编码和流式处理文件](stream-files-tutorial-with-api.md)教程。 
+
+### <a name="job-error-codes"></a>作业错误代码
+
+请参阅[错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
 
 ## <a name="multithreading"></a>多线程处理
 

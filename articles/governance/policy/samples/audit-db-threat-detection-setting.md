@@ -1,6 +1,6 @@
 ---
 title: 示例 - 审核 DB 级别的威胁检测设置
-description: 此示例策略对那些未设置成指定状态的 SQL 数据库安全警报策略进行审核。
+description: 此示例策略定义会对那些未设置成指定状态的 SQL 数据库安全警报策略进行审核。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2ef0e83f73a30b0510ec728cd5c2a88845821dc9
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73f9300d2948337b8e397f544e1dde2d5d09ed0b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241659"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342349"
 ---
-# <a name="audit-db-level-threat-detection-setting"></a>审核 DB 级别的威胁检测设置
+# <a name="sample---audit-db-level-threat-detection-setting"></a>示例 - 审核 DB 级别的威胁检测设置
 
 如果 SQL 数据库安全警报策略未设置成指定状态，则此策略将对其进行审核。 指定一个值，该值指示威胁检测是启用还是禁用状态。
 

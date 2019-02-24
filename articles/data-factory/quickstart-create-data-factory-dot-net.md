@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/28/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 9846422405df491124a101a7898f356a1d9fb1d8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 780820f260657c2ca02572a3449802cf53a5e939
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998665"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446692"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入门：使用 .NET SDK 创建数据工厂和管道
 
@@ -62,11 +62,11 @@ ms.locfileid: "55998665"
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
 1. 单击“工具” -> “NuGet 包管理器” -> “包管理器控制台”。
-2. 在“包管理器控制台”中，运行以下命令来安装包：
+2. 在“包管理器控制台”中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
 
     ```
-    Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
-    Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
+    Install-Package Microsoft.Azure.Management.DataFactory
+    Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 

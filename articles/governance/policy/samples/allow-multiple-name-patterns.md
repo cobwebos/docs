@@ -1,6 +1,6 @@
 ---
 title: 示例 - 多名称模式
-description: 该示例策略需要资源匹配所提供的其中一个名称模式。
+description: 此示例策略定义要求资源匹配所提供的其中一种名称模式。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2e424b7ff79aab36a50e9b44436295cf4ff3d447
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2c77edfcb8dbf777a14e3a5ffa5b78a5689dbcbc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242968"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342518"
 ---
-# <a name="allow-multiple-name-patterns"></a>允许多名称模式
+# <a name="sample---allow-multiple-name-patterns"></a>示例 - 允许多种名称模式
 
 允许资源使用多种名称模式中的一种。 在策略规则中指定允许的名称模式。
 

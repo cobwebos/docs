@@ -1,6 +1,6 @@
 ---
 title: 示例 - 允许的资源类型
-description: 此示例策略确保仅部署已批准的资源类型。
+description: 此示例策略定义确保仅部署已批准的资源类型。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 3d2f065f875cd012a808af985e36469c85532913
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0dc58bb11d6415cb1003a8b505e337ab385f7d46
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243631"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339985"
 ---
-# <a name="allowed-resource-types"></a>允许的资源类型
+# <a name="sample---allowed-resource-types"></a>示例 - 允许的资源类型
 
 此策略确保仅部署已批准的资源类型。 指定一个允许的资源类型的数组。
 

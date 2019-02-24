@@ -1,6 +1,6 @@
 ---
 title: 示例 - 不允许的资源类型
-description: 此示例策略禁止部署指定的资源类型。
+description: 此示例策略定义禁止部署指定的资源类型。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: e310cba1db2816b9d87b211d455c03aafc6bb110
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 159cc4e33df6ed86d21a6ed362087163200720f8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244583"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338149"
 ---
-# <a name="not-allowed-resource-types"></a>不允许的资源类型
+# <a name="sample---not-allowed-resource-types"></a>示例 - 不允许的资源类型
 
 此策略禁止部署指定的资源类型。 指定一个阻止使用的资源类型的数组。
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: c8c7d94e216f45551ed869b2ba921f3c79e6307a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d3f8ae94cd6896aba1db29a00f6f45c81995bbd1
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452677"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301258"
 ---
 # <a name="get-started"></a>快速入门：使用 Azure PowerShell 创建公共负载均衡器
 本快速入门介绍了如何使用 Azure PowerShell 创建基本负载均衡器。 为了测试负载均衡器，需要部署两台运行 Windows 服务器的虚拟机 (VM)，并在 VM 之间对一个 Web 应用进行负载均衡。
@@ -72,7 +72,8 @@ $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "myBackEndP
 
 以下示例创建一个 TCP 探测。 还可创建自定义 HTTP 探测，以便执行更精细的运行状况检查。 使用自定义 HTTP 探测时，必须创建运行状况检查页，例如 healthcheck.aspx。 探测必须为负载均衡器返回 HTTP 200 OK 响应，以保持主机处于旋转状态。
 
-若要创建 TCP 运行状况探测，请使用 [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig)。 以下示例创建名为 *myHealthProbe* 的运行状况探测，用于在 *HTTP* 端口 *80* 上监视每台 VM：
+若要创建 TCP 运行状况探测，请使用 [New-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/new-azurermloadbalancerprobeconfig)。
+以下示例创建名为 *myHealthProbe* 的运行状况探测，用于在 *HTTP* 端口 *80* 上监视每台 VM：
 
 ```azurepowershell-interactive
 $probe = New-AzureRmLoadBalancerProbeConfig `

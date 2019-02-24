@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 9c0255382e2cfe09683931408d25ffb3f60419d1
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 4441797eb41dc909a98be3c42931140e71e36f80
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508889"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270345"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -72,7 +72,10 @@ ms.locfileid: "55508889"
      * ```touch app.js```
      * ```touch config.js```
 
-4. 通过 npm 安装 @azure/cosmos 模块。 请使用以下命令：
+4. 创建并初始化 `package.json` 文件。 请使用以下命令：
+   * ```npm init -y```
+
+5. 通过 npm 安装 @azure/cosmos 模块。 请使用以下命令：
    * ```npm install @azure/cosmos --save```
 
 ## <a id="Config"></a>设置应用的配置
@@ -190,13 +193,12 @@ ms.locfileid: "55508889"
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
    ```
 
 1. 复制并粘贴以下代码，以使用前面保存的 ```config.endpoint``` 和 ```config.primaryKey``` 来创建新的 CosmosClient。
 
    ```javascript
-   const url = require('url');
+   const config = require('./config');
 
    // ADD THIS PART TO YOUR CODE
    const endpoint = config.endpoint;
@@ -280,7 +282,6 @@ ms.locfileid: "55508889"
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -382,7 +383,6 @@ ms.locfileid: "55508889"
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -695,7 +695,6 @@ Azure Cosmos DB 支持删除 JSON 项。
 const CosmosClient = require('@azure/cosmos').CosmosClient;
 
 const config = require('./config');
-const url = require('url');
 
 const endpoint = config.endpoint;
 const masterKey = config.primaryKey;
@@ -889,9 +888,9 @@ node app.js
 * 一个 [Azure Cosmos DB 帐户][create-account]。 
 * GitHub 上提供的[入门](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started)解决方案。 
 
-通过 npm 安装 **@azure/cosmos** 模块。 请使用以下命令： 
+通过 npm 安装项目的依赖项。 请使用以下命令： 
 
-* ```npm install @azure/cosmos --save``` 
+* ```npm install``` 
 
 接下来，在 ```config.js``` 文件中更新 config.endpoint 和 config.primaryKey 的值，如[步骤 3：设置应用的配置](#Config)中所述。  
 

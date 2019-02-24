@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1866a5d86d3ee47371a5eb6e14c2976798d2b4da
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ab920094561b9143945793ddd4ea3da877a7ae90
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787834"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340529"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>在 Azure 区域之间故障转移和故障回复 Azure VM
 
@@ -70,6 +70,16 @@ ms.locfileid: "53787834"
 3. 查看“资源组、网络、存储和可用性集”信息。 任何标记为“新”的资源将在重新保护操作中创建。
 4. 单击“确定”触发重新保护作业。 此作业使用最新数据植入目标站点。 然后，它将增量复制到主要区域。 该 VM 现在处于受保护状态。
 
+> [!NOTE]
+> 请参阅[“操作方法”部分](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)，了解有关重新保护工作流和重新保护期间发生的情况的更多详细信息。
+
+
 ## <a name="fail-back-to-the-primary-region"></a>故障回复到主要区域
 
 VM 重新受保护后，可以根据需要故障回复到主要区域。 为此，请设置从次要区域到主要区域的故障转移，如本文所述。
+
+![右键单击以重新保护](./media/azure-to-azure-tutorial-failover-failback/failback.png)
+
+如果你看到前面的屏幕截图，则“ContosoWin2016”VM 已从美国中部故障转移到美国东部，然后从美国东部故障回复到美国中部。
+
+故障转移过程会关闭次要区域（即灾难恢复区域）中的 VM，在主要区域中创建并启动 VM。 请**注意**，DR VM 将保持关闭解除分配状态，如上所示。 此行为是设计使然，因为 Azure Site Recovery 会保存虚拟机的信息，这可能有助于以后从主要区域故障转移到次要区域。 你不需要为已解除分配的虚拟机付费，因此它应保持原样。

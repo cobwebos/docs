@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: ce2d69e26909231383f3538d51387f27d8202a43
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 09d43386b994ffc046f8c3e22c82f13ec15acd38
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332466"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428965"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -37,18 +37,15 @@ ms.locfileid: "54332466"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-> [!NOTE] 
-> Flow Logs 版本 2 仅在美国中西部区域推出。 在不支持的区域启用版本 2 日志时，版本 1 日志会输出到存储帐户中。
-
 ## <a name="create-a-vm"></a>创建 VM
 
 1. 选择 Azure 门户左上角的“+ 创建资源”。
-2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或“Ubuntu Server 17.10 VM”。
+2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或“Ubuntu Server”版本。
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”：
 
     |设置|值|
     |---|---|
-    |名称|myVm|
+    |Name|myVm|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
@@ -91,7 +88,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 
     | 设置        | 值                                                        |
     | ---            | ---   |
-    | 名称           | 长度为 3-24 个字符，只能包含小写字母和数字，且必须在所有 Azure 存储帐户中唯一。                                                               |
+    | Name           | 长度为 3-24 个字符，只能包含小写字母和数字，且必须在所有 Azure 存储帐户中唯一。                                                               |
     | 位置       | 选择“美国东部”                                           |
     | 资源组 | 选择“使用现有资源组”，然后选择“myResourceGroup” |
 

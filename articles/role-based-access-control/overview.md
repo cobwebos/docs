@@ -1,6 +1,6 @@
 ---
-title: Azure 中基于角色的访问控制 (RBAC) 是什么？ | Microsoft Docs
-description: 获取 Azure 中基于角色的访问控制 (RBAC) 的概述。 使用角色分配可以控制对 Azure 中的资源的访问。
+title: 什么是 Azure 资源的基于角色的访问控制 (RBAC)？ | Microsoft Docs
+description: 获取 Azure 资源的基于角色的访问控制 (RBAC) 的概述。 使用角色分配可以控制对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c614ae9d157c6e4121701cb22213706020ee20a7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 2d8f3ffb4f7d90b053c8a285d62007f5655d9adb
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303300"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338625"
 ---
-# <a name="what-is-role-based-access-control-rbac"></a>什么是基于角色的访问控制 (RBAC)？
+# <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>什么是 Azure 资源的基于角色的访问控制 (RBAC)？
 
 对于任何使用云的组织而言，云资源的访问权限管理都是一项重要功能。 基于角色的访问控制 (RBAC) 可帮助你管理谁有权访问 Azure 资源、他们可以对这些资源执行哪些操作以及他们有权访问哪些区域。
 
-RBAC 是在 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)基础上构建的授权系统，针对 Azure 中的资源提供精细的访问权限管理。
+RBAC 是在 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)基础上构建的授权系统，针对 Azure 资源提供精细的访问权限管理。
 
 ## <a name="what-can-i-do-with-rbac"></a>RBAC 的作用是什么？
 
@@ -72,15 +72,15 @@ Azure 包含多个可用的[内置角色](built-in-roles.md)。 下面列出了�
 - [读取者](built-in-roles.md#reader) - 可以查看现有的 Azure 资源。
 - [用户访问管理员](built-in-roles.md#user-access-administrator) - 允许你管理用户对 Azure 资源的访问。
 
-剩余的内置角色允许管理特定的 Azure 资源。 例如，[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色允许用户创建和管理虚拟机。 如果内置角色不能满足组织的特定需求，则你可以创建自己的[自定义角色](custom-roles.md)。
+剩余的内置角色允许管理特定的 Azure 资源。 例如，[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色允许用户创建和管理虚拟机。 如果内置角色不能满足组织的特定需求，则可以[为 Azure 资源创建你自己的自定义角色](custom-roles.md)。
 
-Azure 引入了数据操作（目前以预览版提供），用于授予对对象中数据的访问权限。 例如，如果某个用户对某个存储帐户拥有读取数据的访问权限，则该用户可以读取该存储帐户中的 Blob 或消息。 有关详细信息，请参阅[了解角色定义](role-definitions.md)。
+Azure 引入了数据操作（目前以预览版提供），用于授予对对象中数据的访问权限。 例如，如果某个用户对某个存储帐户拥有读取数据的访问权限，则该用户可以读取该存储帐户中的 Blob 或消息。 有关详细信息，请参阅[了解 Azure 资源的角色定义](role-definitions.md)。
 
 ### <a name="scope"></a>范围
 
 范围是访问权限适用于的资源集。 分配角色时，可以通过定义范围来进一步限制允许的操作。 如果你想要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则使用范围就很有帮助。
 
-在 Azure 中，可在多个级别指定范围：[管理组](../azure-resource-manager/management-groups-overview.md)、订阅、资源组或资源。 范围采用父子关系结构。
+在 Azure 中，可在多个级别指定范围：[管理组](../governance/management-groups/index.md)、订阅、资源组或资源。 范围采用父子关系结构。
 
 ![角色分配的范围](./media/overview/rbac-scope.png)
 
@@ -108,7 +108,7 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 
 ## <a name="deny-assignments"></a>拒绝分配
 
-以前，RBAC 是一种仅允许模型，没有拒绝功能，但 RBAC 现在以有限方式支持拒绝分配。 *拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组、服务主体或托管标识，以便拒绝访问。 角色分配定义了一组允许的操作，而拒绝分配定义了一组不允许的操作。 换而言之，即使角色分配授予用户访问权限，拒绝分配也会阻止用户执行指定的操作。 拒绝分配优先于角色分配。 当前，拒绝分配为“只读”，且只能由 Azure 设置。 有关详细信息，请参阅[了解拒绝分配](deny-assignments.md)和[使用 Azure 门户查看拒绝分配](deny-assignments-portal.md)。
+以前，RBAC 是一种仅允许模型，没有拒绝功能，但 RBAC 现在以有限方式支持拒绝分配。 *拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组、服务主体或托管标识，以便拒绝访问。 角色分配定义了一组允许的操作，而拒绝分配定义了一组不允许的操作。 换而言之，即使角色分配授予用户访问权限，拒绝分配也会阻止用户执行指定的操作。 拒绝分配优先于角色分配。 当前，拒绝分配为“只读”，且只能由 Azure 设置。 有关详细信息，请参阅[了解 Azure 资源的拒绝分配](deny-assignments.md)，以及[使用 Azure 门户查看 Azure 资源的拒绝分配](deny-assignments-portal.md)。
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>RBAC 如何确定用户是否有权访问资源
 
@@ -132,7 +132,7 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门：使用 RBAC 和 Azure 门户为用户授予访问权限](quickstart-assign-role-user-portal.md)
-- [使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)
+- [快速入门：使用 Azure 门户查看用户对 Azure 资源的访问权限](check-access.md)
+- [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](role-assignments-portal.md)
 - [了解 Azure 中的不同角色](rbac-and-directory-admin-roles.md)
 - [企业云采用：Azure 中的资源访问管理](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214811"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408827"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>快速入门：创建 Azure 数据资源管理器群集和数据库
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本快速入门中，你将创建群集和数据库。 在后续文章中，我们介绍如何引入数据。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本快速入门中，你将创建群集和数据库。 在后续文章中，我们介绍如何引入数据。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -77,8 +77,8 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
     **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 数据库名称 | *TestDatabase* | 该数据库名称在群集中必须是唯一的。
-    | 保留期 | *3650* | 保证数据可供查询的时间跨度。 时间跨度从引入数据时算起。
-    | 缓存期 | *31* | 使频繁查询的数据在 SSD 存储或 RAM（而不是更长期的存储）中保持可用的时间跨度。
+    | 保留期 | *3650* | 保证数据可供查询的时间跨度（以天为单位）。 时间跨度从引入数据时算起。
+    | 缓存期 | *31* | 使频繁查询的数据在 SSD 存储或 RAM（而不是更长期的存储）中保持可用的时间跨度（以天为单位）。
     | | | |
 
 1. 选择“保存”创建数据库。 创建过程通常需要不到一分钟的时间。 该过程完成后，将返回到群集的“概述”选项卡。

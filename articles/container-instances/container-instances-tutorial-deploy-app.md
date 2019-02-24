@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191082"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326733"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教程：将容器应用程序部署到 Azure 容器实例
 
@@ -36,26 +36,20 @@ ms.locfileid: "53191082"
 
 ### <a name="get-registry-credentials"></a>获取注册表凭据
 
-部署托管在专用容器注册表（例如[第二篇教程](container-instances-tutorial-prepare-acr.md)中创建的注册表）中的映像时，必须提供该注册表的凭据。
+部署托管在专用容器注册表（例如[第二篇教程](container-instances-tutorial-prepare-acr.md)中创建的注册表）中的映像时，必须提供用于访问该注册表的凭据。 正如[使用 Azure 容器注册表从 Azure 容器实例进行身份验证](../container-registry/container-registry-auth-aci.md)中所示，对于许多方案来说，最佳做法是创建和配置对注册表具有“拉取”权限的 Azure Active Directory 服务主体。 有关用于创建具有必要权限的服务主体的示例脚本，请参阅该文章。 请记下服务主体 ID 和服务主体密码。 部署容器时将使用这些凭据。
 
-首先，获取容器注册表登录服务器的完整名称（请将 `<acrName>` 替换为注册表的名称）:
+还需要容器注册表登录服务器的完整名称（请将 `<acrName>` 替换为注册表的名称）:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
-接下来，获取容器注册表密码：
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
 ### <a name="deploy-container"></a>部署容器
 
-现在，使用 [az container create][az-container-create] 部署容器。 将 `<acrLoginServer>` 和 `<acrPassword>` 替换为之前两个命令获得的值。 将 `<acrName>` 替换为容器注册表名称，将 `<aciDnsLabel>` 替换为所需的 DNS 名称。
+现在，使用 [az container create][az-container-create] 部署容器。 将 `<acrLoginServer>` 替换为从前一命令中获得的值。 将 `<service-principal-ID>` 和 `<service-principal-password>` 替换为你为访问注册表而创建的服务主体 ID 和密码。 将 `<aciDnsLabel>` 替换为所需的 DNS 名称。
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label <aciDnsLabel> --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
 ```
 
 将在几秒钟内收到来自 Azure 的初始响应。 在创建容器实例时所在的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果在执行命令时收到 **DNS 名称标签**错误消息，请修改前一命令中的值。

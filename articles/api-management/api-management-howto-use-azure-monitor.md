@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 8b95c311cd91ab6db84fb6640be5b6c1a6c0a9a5
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 3501284be2430941863bbae90f044df8ba5e7a2a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443111"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454798"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -40,8 +40,8 @@ ms.locfileid: "52443111"
 ## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
++ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -124,7 +124,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
     ![诊断日志](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. 单击“启用诊断”。 可以将诊断日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Log Analytics。 
+3. 单击“启用诊断”。 可以将诊断日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
 
 API 管理当前提供有关单个 API 请求的诊断日志（每小时进行批处理），其中每个条目具有以下架构：
 
@@ -173,7 +173,7 @@ API 管理当前提供有关单个 API 请求的诊断日志（每小时进行�
 }  
 ```
 
-| 属性  | 类型 | Description |
+| 属性  | Type | 说明 |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | 布尔值 | 如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true |
 | time | 日期时间 | 网关接收 HTTP 请求的时间戳 |
@@ -183,7 +183,7 @@ API 管理当前提供有关单个 API 请求的诊断日志（每小时进行�
 | callerIpAddress | 字符串 | 直接网关调用方（可以是中介）的 IP 地址 |
 | correlationId | 字符串 | 由 API 管理分配的唯一 http 请求标识符 |
 | 位置 | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
-| httpStatusCodeCategory | 字符串 | Http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
+| httpStatusCodeCategory | 字符串 | http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
 | resourceId | 字符串 | API 管理资源 /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> 的 ID |
 | 属性 | 对象 | 当前请求的属性 |
 | 方法 | 字符串 | 传入请求的 HTTP 方法 |

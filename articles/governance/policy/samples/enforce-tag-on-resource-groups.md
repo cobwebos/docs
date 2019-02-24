@@ -1,6 +1,6 @@
 ---
 title: 示例 - 在资源组强制执行标记及其值
-description: 此示例策略要求，必须对资源组使用标记和值。
+description: 此示例策略定义要求对资源组使用标记和值。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8fd9ba2e6e5eae43476102c8928c67d6015ec2eb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73990de30525dff4e3a0981ebca96368f56845fe
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245654"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339067"
 ---
-# <a name="enforce-tag-and-its-value-on-resource-groups"></a>在资源组强制执行标记及其值
+# <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>示例 - 在资源组强制执行标记及其值
 
 此策略要求资源组有标记和值。 由你指定标记名称和值。
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 28710ebfaef4c82212e0208c36f50a96f0dda083
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 764b5ebb73340d377250d39e20b17ed0daf18bbe
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892042"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447678"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>教程：使用 Azure 实验室服务设置实验室帐户
 在 Azure 实验室服务中，实验室帐户充当管理组织实验室的中心帐户。 在你的实验室帐户中，授予他人创建实验室的权限，并设置适用于实验室帐户下所有实验室的策略。 在本教程中，了解如何以实验室管理员身份创建实验室帐户。 
@@ -37,10 +37,10 @@ ms.locfileid: "55892042"
 以下步骤演示了如何使用 Azure 门户通过 Azure 实验室服务创建实验室。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中，选择“所有服务”。 在“DEVOPS”部分，选择“实验室帐户”。 如果选择“实验室帐户”旁边的星号 (`*`)，则会将其添加到左侧菜单上的“收藏夹”部分。 从下次开始，请在“收藏夹”下选择“实验室帐户”。
+2. 在左侧菜单中，选择“所有服务”。 在“DEVOPS”部分中，选择“实验室帐户”。 如果选择“实验室帐户”旁边的星星 (`*`)，则会将其添加到左侧菜单上的“收藏夹”部分。 从下次开始，请在“收藏夹”下选择“实验室帐户”。
 
     ![“所有服务”->“实验室帐户”](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. 在“实验室帐户”页上的工具栏中选择“添加”。 
+3. 在“实验室帐户”页上，在工具栏中选择“添加”。 
 
     ![在“实验室帐户”页上选择“添加”](../media/tutorial-setup-lab-account/add-lab-account-button.png)
 4. 在“实验室帐户”页上，执行以下操作： 
@@ -48,7 +48,8 @@ ms.locfileid: "55892042"
     2. 选择要在其中创建实验室帐户的“Azure 订阅”。
     3. 在“资源组”中选择“新建”，然后输入资源组的名称。
     4. 为“位置”选择要在其中创建实验室帐户的位置/区域。 
-    5. 选择“创建”。 
+    5. 对于“允许实验室创建者选择实验室位置”字段，请指定是否希望实验室创建者能够选择实验室位置。 默认情况下，此选项已禁用。 此选项禁用时，实验室创建者无法为他们正在创建的实验室指定位置。 实验室在距离实验室帐户最近的地理位置进行创建。 此选项启用时，实验室创建者可以在创建实验室时选择位置。 
+    6. 选择“创建”。 
 
         ![创建实验室帐户窗口](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. 选择工具栏上的**钟形图标**（**通知**），确认部署已成功，然后选择“转到资源”。 
@@ -68,7 +69,7 @@ ms.locfileid: "55892042"
 1. 在“实验室帐户”页上，选择“访问控制(IAM)”，然后单击工具栏中的“+ 添加角色分配”。 
 
     ![“访问控制”->“添加角色分配”按钮](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. 在“添加角色分配”页上，选择“实验室创建者”作为“角色”，选择想要添加为“实验室创建者”角色的用户，然后选择“保存”。 
+1. 在“添加角色分配”页上，选择“实验室创建者”作为“角色”，选择想要添加到“实验室创建者”角色的用户，然后选择“保存”。 
 
     ![添加实验室创建者](../media/tutorial-setup-lab-account/add-lab-creator.png)
 

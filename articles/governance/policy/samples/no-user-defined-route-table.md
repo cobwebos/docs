@@ -1,6 +1,6 @@
 ---
 title: 示例 - 无用户定义的路由表
-description: 此示例策略禁止通过用户定义的路由表部署虚拟网络。
+description: 此示例策略定义禁止通过用户定义的路由表部署虚拟网络。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: db0e7ec5d684f71b3a8426cdf5256adaa8467383
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6155477f7ff70544032e4890cae215fb68523a11
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242866"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341413"
 ---
-# <a name="no-user-defined-route-table"></a>无用户定义的路由表
+# <a name="sample---no-user-defined-route-table"></a>示例 - 无用户定义的路由表
 
 此策略禁止通过用户定义的路由表部署虚拟网络。
 

@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7f476efebc6b37b0a8d157a5cb3f59fba9e29e90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1fb9804addece1700a69b79edc99520174af6eee
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864836"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308683"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 C&#35; 提取印刷体文本 (OCR)
 
-在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
+在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 功能，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
@@ -254,7 +254,7 @@ namespace CSHttpClientSample
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款基本 Windows 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+浏览一款基本 Windows 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。
 
 > [!div class="nextstepaction"]
-> [计算机视觉 API C&#35; 教程](../Tutorials/CSharpTutorial.md)
+> [计算机视觉 API C# 教程](../Tutorials/CSharpTutorial.md)

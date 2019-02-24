@@ -9,17 +9,18 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 04/30/2018
 ms.author: alzam
-ms.openlocfilehash: 65dd0c7038d6b99d1a5532898a3a6468c498a95f
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a8e713121695330da7efe38809c4b7507388e116
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511796"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414858"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>使用 PowerShell 创建 VPN 网关并添加站点到站点连接
 
 此脚本创建基于路由的 VPN 网关，并添加站点到站点配置。 若要创建连接，还需要配置 VPN 设备。 有关详细信息，请参阅[关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数](../vpn-gateway-about-vpn-devices.md)。
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 # Declare variables
@@ -38,54 +39,54 @@ ms.locfileid: "55511796"
   $GWIPName = "VNet1GWIP"
   $GWIPconfName = "gwipconf"
 # Create a resource group
-New-AzureRmResourceGroup -Name TestRG1 -Location EastUS
+New-AzResourceGroup -Name TestRG1 -Location EastUS
 # Create a virtual network
-$virtualNetwork = New-AzureRmVirtualNetwork `
+$virtualNetwork = New-AzVirtualNetwork `
   -ResourceGroupName TestRG1 `
   -Location EastUS `
   -Name VNet1 `
   -AddressPrefix 10.1.0.0/16
 # Create a subnet configuration
-$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -Name Frontend `
   -AddressPrefix 10.1.0.0/24 `
   -VirtualNetwork $virtualNetwork
 # Set the subnet configuration for the virtual network
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 # Add a gateway subnet
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
 # Set the subnet configuration for the virtual network
-$vnet | Set-AzureRmVirtualNetwork
+$vnet | Set-AzVirtualNetwork
 # Request a public IP address
-$gwpip= New-AzureRmPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' `
+$gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' `
  -AllocationMethod Dynamic
 # Create the gateway IP address configuration
-$vnet = Get-AzureRmVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
+$vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+$gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 # Create the VPN gateway
-New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
+New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
  -Location 'East US' -IpConfigurations $gwipconfig -GatewayType Vpn `
  -VpnType RouteBased -GatewaySku VpnGw1
 # Create the local network gateway
-New-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
+New-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
  -Location 'East US' -GatewayIpAddress '23.99.221.164' -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
 # Configure your on-premises VPN device
 # Create the VPN connection
-$gateway1 = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
-$local = Get-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
-New-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1 `
+$gateway1 = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
+$local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
+New-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1 `
  -Location 'East US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
  -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要所创建的资源，请使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令删除资源组。 这将删除资源组及其包含的所有资源。
+如果不再需要所创建的资源，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令删除资源组。 这将删除资源组及其包含的所有资源。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name TestRG1
+Remove-AzResourceGroup -Name TestRG1
 ```
 
 ## <a name="script-explanation"></a>脚本说明
@@ -94,22 +95,22 @@ Remove-AzureRmResourceGroup -Name TestRG1
 
 | 命令 | 说明 |
 |---|---|
-| [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig) | 添加子网配置。 在虚拟网络创建过程中将使用此配置。 |
-| [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) | 获取虚拟网络详细信息。 |
-| [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway) | 获取虚拟网络网关详细信息。 |
-| [Get-AzureRmLocalNetworkGateway](/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway) | 获取本地网络网关详细信息。 |
-| [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig) | 获取虚拟网络子网配置详细信息。 |
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
-| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |
-| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) | 创建虚拟网络。 |
-| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | 创建公共 IP 地址。 |
-| [New-AzureRmVirtualNetworkGatewayIpConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayipconfig) | 新建网关 IP 配置。 |
-| [New-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgateway?view=azurermps-6.8.1) | 创建 VPN 网关。 |
-| [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-6.8.1) | 创建本地网络网关。 |
-| [New-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection) | 创建站点到站点连接。 |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 删除资源组及其中包含的所有资源。 |
-| [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) | 设置虚拟网络的子网配置。 |
-| [Set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) | 设置 VPN 网关的配置。 |
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 添加子网配置。 在虚拟网络创建过程中将使用此配置。 |
+| [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | 获取虚拟网络详细信息。 |
+| [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway) | 获取虚拟网络网关详细信息。 |
+| [Get-AzLocalNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway) | 获取本地网络网关详细信息。 |
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | 获取虚拟网络子网配置详细信息。 |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |
+| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。 |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | 创建公共 IP 地址。 |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | 新建网关 IP 配置。 |
+| [New-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgateway?view=azurermps-6.8.1) | 创建 VPN 网关。 |
+| [New-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azlocalnetworkgateway?view=azurermps-6.8.1) | 创建本地网络网关。 |
+| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | 创建站点到站点连接。 |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组及其中包含的所有资源。 |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | 设置虚拟网络的子网配置。 |
+| [Set-AzVirtualNetworkGateway](/powershell/module/az.network/set-azvirtualnetworkgateway) | 设置 VPN 网关的配置。 |
 
 ## <a name="next-steps"></a>后续步骤
 

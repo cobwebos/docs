@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 RBAC 和 Azure PowerShell 授予组的访问权限 | Microsoft Docs
-description: 使用基于角色的访问控制 (RBAC) 授予组访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
+title: 教程 - 使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限 | Microsoft Docs
+description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 授予组对 Azure 资源的访问权限。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: ad6884067a756412efe27ce275387ff5ceb1b298
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7f080682baf42c5852e167a20bfbad7f00fe8bd3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105665"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343683"
 ---
-# <a name="tutorial-grant-access-for-a-group-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 为组授予访问权限
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限
 
-可以在 Azure 中通过[基于角色的访问控制 (RBAC)](overview.md) 这种方式管理对资源的访问。 在本教程中，请授予组访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
+可以通过[基于角色的访问控制 (RBAC)](overview.md) 方式管理对 Azure 资源的访问权限。 在本教程中，请授予组访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
 
 本教程介绍如何执行下列操作：
 
@@ -70,7 +70,7 @@ ms.locfileid: "56105665"
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-如果你无权创建组，可以尝试改用[教程：使用 RBAC 和 Azure PowerShell 为用户授予访问权限](tutorial-role-assignments-user-powershell.md)。
+如果你无权创建组，可以尝试改用[教程：使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限](tutorial-role-assignments-user-powershell.md)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -294,4 +294,4 @@ ms.locfileid: "56105665"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 RBAC 和 PowerShell 管理访问权限](role-assignments-powershell.md)
+> [使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限](role-assignments-powershell.md)

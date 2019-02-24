@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed159decb51d71e8c0beddb285f6c01ae264ed2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f72cbd719cea585144be3757f0791a74bde452ab
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206661"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416762"
 ---
 # <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>快速入门：使用 Azure Active Directory 保护 Web API
 
@@ -45,21 +45,20 @@ ms.locfileid: "56206661"
 
 ```Shell
 {
-  "name": "node-aad-demo",
+  "name": "active-directory-webapi-nodejs",
   "version": "0.0.1",
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
     "passport": "0.4.0",
-    "passport-azure-ad": "3.0.8",
-    "restify": "6.0.1",
-    "restify-plugins": "1.6.0"
+    "passport-azure-ad": "4.0.0",
+    "restify": "7.7.0"
   }
 }
 ```
 
-创建 `package.json` 后，在命令提示符下运行 `npm install` 来安装包依赖项。 
+创建 `package.json` 后，在命令提示符下运行 `npm install` 来安装包依赖项。
 
 #### <a name="configure-the-project-to-use-active-directory"></a>将项目配置为使用 Active Directory
 
@@ -116,7 +115,7 @@ module.exports.credentials = {
 ```JavaScript
 const
       restify = require('restify')
-    , restifyPlugins = require('restify-plugins')
+    , restifyPlugins = require ('restify').plugins
     , passport = require('passport')
     , BearerStrategy = require('passport-azure-ad').BearerStrategy
     , config = require('./config')
@@ -127,7 +126,7 @@ const
 
 在此代码片段中：
 
-- 引用了 `restify` 和 `restify-plugins` 模块以设置 Restify 服务器。
+- 引用了 `restify` 和插件模块以设置 Restify 服务器。
 - `passport` 和 `passport-azure-ad` 模块负责与 Azure AD 通信。
 - `config` 变量已使用在前一步骤中创建的 `config.js` 文件中的值初始化。
 - 为 `authenticatedUserTokens` 创建了一个数组，将用户令牌传递到受保护的终结点时，该数组会存储这些令牌。

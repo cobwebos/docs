@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 160d42725abdb91af4f83696c2bceae38bbab67d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dd9429ade750810138335c522d68df5cd595f320
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869324"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310977"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c35-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 C# 提取手写文本
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 C# 提取手写文本
 
-在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)和[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)方法，可以检测图像中的手写文本，并将识别的字符提取到计算机可用的字符流中。
+在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)和[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)方法，可以检测图像中的手写文本，并将识别的字符提取到计算机可读的字符流中。
 
 > [!IMPORTANT]
 > 不同于 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，识别文本方法返回 `Operation-Content` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)方法，同时检查状态并返回识别文本方法调用的结果。
@@ -425,7 +425,7 @@ namespace CSHttpClientSample
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款基本 Windows 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+探索一个使用计算机视觉执行光学字符识别 (OCR) 的基本 Windows 应用程序。 创建智能裁剪的缩略图；加上对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。
 
 > [!div class="nextstepaction"]
-> [计算机视觉 API C&#35; 教程](../Tutorials/CSharpTutorial.md)
+> [计算机视觉 API C# 教程](../Tutorials/CSharpTutorial.md)

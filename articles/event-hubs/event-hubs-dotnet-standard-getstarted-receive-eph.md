@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 18b37fd7c85fced4cc57b57320daf195f6f33e3e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a3c4bc741cef60576bec17cd3257914132b72666
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082374"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452619"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>使用 .NET Core 中的事件处理程序主机接收消息入门
 事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
-本教程显示如何编写 .NET Core 控制台应用程序，以使用[事件处理程序主机](event-hubs-event-processor-host.md)从事件中心接收消息。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 此示例演示如何为单一接收方使用事件处理程序主机。 [扩大事件处理][使用事件中心扩大事件处理]示例显示如何将事件处理程序主机用于多个接收方。
+本教程显示如何编写 .NET Core 控制台应用程序，以使用[事件处理程序主机](event-hubs-event-processor-host.md)从事件中心接收消息。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 此示例演示如何为单一接收方使用事件处理程序主机。 [横向扩展事件处理](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)示例显示如何将事件处理程序主机用于多个接收方。
 
 > [!NOTE]
 > 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 下载此用作示例的快速入门，将 `EventHubConnectionString`、`EventHubName`、`StorageAccountName`、`StorageAccountKey`、`StorageContainerName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
@@ -208,6 +208,7 @@ ms.locfileid: "53082374"
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，你已创建从事件中心接收消息的 .NET Core 应用程序。 若要了解如何使用 .NET Core 将事件发送到事件中心，请参阅[从事件中心发送事件 - .NET Core](event-hubs-dotnet-standard-getstarted-send.md)。
+
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

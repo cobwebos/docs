@@ -10,25 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 02/14/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c2684c7373d9ee4536b248650c7012c261166b81
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 37d84206246e60ed16244d6172a5e22ca18524c9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235387"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270243"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 了解如何使用 Visual Studio Code 和 Azure 资源管理器工具扩展创建和编辑 Azure 资源管理器模板。 可以在 Visual Studio Code 中不使用扩展创建资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,6 +50,7 @@ ms.locfileid: "56235387"
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
+
 3. 选择“打开”以打开该文件。
 4. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。
 
@@ -94,6 +91,9 @@ ms.locfileid: "56235387"
 ## <a name="deploy-the-template"></a>部署模板
 
 可通过多种方法来部署模板。  在本快速入门中，请使用 Azure Cloud shell。 Cloud shell 是一个 Web 应用程序，不需要进行任何配置。 它同时支持 Azure CLI 和 Azure PowerShell。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
@@ -148,7 +148,10 @@ ms.locfileid: "56235387"
     
     ---
 
-    如果将模板文件保存到了 **azuredeploy.json** 之外的其他文件中，其更新其名称。
+    > [!NOTE]
+    > 在云 shell 中使用 Azure PowerShell 时存在文件 IO 问题。  错误消息为“无法检索 cmdlet 的动态参数。找不到路径‘Azure:/azuredeploy.json’，因为它不存在”。  临时解决方法是不在 `New-AzResourceGroupDeploy` 命令中包含 **-TemplateFile** 开关。 该命令将提示你输入文件名。
+
+    如果将模板文件保存到了 **azuredeploy.json** 之外的其他文件中，其更新其名称。 
 
     以下屏幕截图显示了一个示例部署：
 

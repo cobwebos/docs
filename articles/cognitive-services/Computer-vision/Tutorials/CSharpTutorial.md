@@ -1,5 +1,5 @@
 ---
-title: 教程：构建图像处理应用 - C#
+title: 示例：使用 C# 探索图像处理应用
 titleSuffix: Computer Vision - Cognitive Services - Azure
 description: 介绍一款使用 Microsoft 认知服务中的计算机视觉 API 的基本 Windows 应用。 执行 OCR、创建缩略图，并处理图像中的视觉特征。
 services: cognitive-services
@@ -7,18 +7,18 @@ author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: article
-ms.date: 08/28/2018
+ms.topic: sample
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b944325287593a028d28545731370dc9ea6a5ac2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224915"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310932"
 ---
-# <a name="tutorial-build-an-image-processing-app---c35"></a>教程：构建图像处理应用 - C#
+# <a name="sample-explore-an-image-processing-app-with-c"></a>示例：使用 C# 探索图像处理应用
 
 探索一款基本 Windows 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 通过以下示例可提交图像 URL 或存储于本地的文件。 可将此开放源代码示例作为模板，使用计算机视觉 API 和 .NET Framework 中的 Windows Presentation Foundation (WPF) 构建自己的 Windows 应用程序。
 

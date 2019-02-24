@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 2/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: effe6fa942ce0cabace08e72dba90baf8646680e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118788"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312134"
 ---
-# <a name="how-to-configure-multi-master-in-your-applications-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中配置应用程序中的多主数据库
+# <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>如何在使用 Azure Cosmos DB 的应用程序配置多主数据库
 
-若要使用应用程序中的多主数据库功能，需在应用程序中启用多区域写入并配置多宿主功能，方法是设置在其中部署应用程序的当前区域。
+要在应用程序中使用多主数据库功能，需要启用多区域写入并配置多宿主功能。 通过设置部署应用程序的当前区域来配置多宿主功能。
 
 ## <a id="netv2"></a>.NET SDK v2
 
-若要在应用程序中启用多主数据库，请将 `UseMultipleWriteLocations` 设置为 true，并将 `SetCurrentLocation` 配置为在其中部署应用程序并复制 Cosmos DB 的区域。
+若要在应用程序中启用多主数据库，请将 `UseMultipleWriteLocations` 设置为 true，并将 `SetCurrentLocation` 配置为在其中部署应用程序并复制 Azure Cosmos DB 的区域。
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy

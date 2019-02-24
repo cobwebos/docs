@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 Azure PowerShell 创建自定义角色 | Microsoft Docs
-description: 开始使用 Azure PowerShell 创建自定义角色。
+title: 教程 - 使用 Azure PowerShell 为 Azure 资源创建自定义角色 | Microsoft Docs
+description: 开始使用 Azure PowerShell 为 Azure 资源创建自定义角色。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 9dddef43e1ac5f3bcedcc08b313eea300436ea61
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 23ee8aef4ab9b7ea54dae0587e2caaafbf08e5b2
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106421"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339152"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建自定义角色
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>教程：使用 Azure PowerShell 为 Azure 资源创建自定义角色
 
-如果[内置角色](built-in-roles.md)不能满足组织的特定需求，你可以创建自己的自定义角色。 对于本教程，你将使用 Azure PowerShell 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户查看订阅中的所有内容，以及创建支持票证。
+如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建你自己的自定义角色。 对于本教程，你将使用 Azure PowerShell 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户查看订阅中的所有内容，以及创建支持票证。
 
 本教程介绍如何执行下列操作：
 
@@ -277,4 +277,4 @@ ms.locfileid: "56106421"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 PowerShell 创建自定义角色](custom-roles-powershell.md)
+> [使用 Azure PowerShell 为 Azure 资源创建自定义角色](custom-roles-powershell.md)

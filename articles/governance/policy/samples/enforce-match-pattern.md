@@ -1,6 +1,6 @@
 ---
 title: 示例 - 强制实施匹配模式
-description: 此示例策略要求，资源必须符合用于命名约定的匹配模式。
+description: 此示例策略定义要求资源符合用于命名约定的 match 模式。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4a001316afb489c7147153b5a2de076a5a425c93
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8fdbd6bc319a85c240eddcc5513c8e900329870b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241803"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341379"
 ---
-# <a name="enforce-match-pattern-for-naming-conventions"></a>强制实施用于命名约定的 match 模式
+# <a name="sample---enforce-match-pattern-for-naming-conventions"></a>示例 - 强制实施用于命名约定的 match 模式
 
 需要资源名称符合用于命名约定的 like 模式。 将允许的 match 模式指定为参数。
 

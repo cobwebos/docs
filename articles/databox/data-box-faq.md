@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3d79f106554bf4a80df835ac880fbb7a72c8bfe
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077448"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268390"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题
 
@@ -70,7 +70,7 @@ A.  要想获得 Azure Data Box，请登录 Azure 门户并创建 Data Box 订�
 ### <a name="q-i-was-not-able-to-create-a-data-box-order-in-the-azure-portal-why-would-this-be"></a>问： 我无法在 Azure 门户中创建 Data Box 订单。 这是为什么？
 A. 如果无法创建 Data Box 订单，有可能是订阅类型或访问权限的问题。 
 
-请查看你的订阅。 Data Box 仅适用于企业协议 (EA)、云解决方案提供商 (CSP) 或即用即付订阅产品/服务。 如果订阅不属于以上任何类型，请联系 Microsoft 支持部门升级订阅。
+请查看你的订阅。 Data Box 仅适用于企业协议 (EA) 和云解决方案提供商 (CSP) 订阅产品/服务。 如果订阅不属于以上任何类型，请联系 Microsoft 支持部门升级订阅。
 
 如果具有受支持的订阅产品/服务类型，请查看订阅访问级别。 只有订阅的参与者或所有者才能创建订单。
 

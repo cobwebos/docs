@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/22/2018
+ms.date: 02/20/2019
 ms.author: shlo
-ms.openlocfilehash: 93f8a5e806bd10824a78dd62351fd3d9be0cf32c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 53540128b5a9a1e2690179a35f26a9a82c6cb584
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025821"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446947"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 在本教程中，我们将创建一个数据工厂管道来展示某些控制流功能。 此管道执行从 Azure Blob 存储容器中某个容器到同一存储帐户中另一个容器的简单复制。 如果复制活动成功，可以在告知成功结果的电子邮件中发送成功复制操作的详细信息（例如写入的数据量）。 如果复制活动失败，可以在告知失败结果的电子邮件中发送复制失败的详细信息（例如错误消息）。 整个教程讲解了如何传递参数。
@@ -71,11 +71,11 @@ ms.locfileid: "54025821"
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
 1. 单击“工具” -> “NuGet 包管理器” -> “包管理器控制台”。
-2. 在“包管理器控制台”中，运行以下命令来安装包：
+2. 在“包管理器控制台”中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
 
     ```
-    Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
-    Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
+    Install-Package Microsoft.Azure.Management.DataFactory
+    Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 

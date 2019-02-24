@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 Azure CLI 创建自定义角色 | Microsoft Docs
-description: 开始使用 Azure CLI 创建自定义角色。
+title: 教程 - 使用 Azure CLI 为 Azure 资源创建自定义角色 | Microsoft Docs
+description: 开始使用 Azure CLI 为 Azure 资源创建自定义角色。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: d2b34fa12836416f68d57f0147dd0364a1501c13
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9cd736272fce71f08006d32a169b88d092a48231
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698006"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340206"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-cli"></a>教程：使用 Azure CLI 创建自定义角色
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>教程：使用 Azure CLI 为 Azure 资源创建自定义角色
 
-如果[内置角色](built-in-roles.md)不能满足组织的特定需求，你可以创建自己的自定义角色。 对于本教程，你将使用 Azure CLI 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户查看订阅中的所有内容，以及创建支持票证。
+如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建你自己的自定义角色。 对于本教程，你将使用 Azure CLI 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户查看订阅中的所有内容，以及创建支持票证。
 
 本教程介绍如何执行下列操作：
 
@@ -269,4 +269,4 @@ ms.locfileid: "55698006"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 Azure CLI 创建自定义角色](custom-roles-cli.md)
+> [使用 Azure CLI 为 Azure 资源创建自定义角色](custom-roles-cli.md)

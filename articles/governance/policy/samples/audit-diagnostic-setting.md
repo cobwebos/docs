@@ -1,6 +1,6 @@
 ---
 title: 示例 - 审核诊断设置
-description: 如果未对指定资源类型启用诊断设置，此示例策略会进行审核。
+description: 如果未对指定资源类型启用诊断设置，此示例策略定义会进行审核。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 77d430138ea1fe7f3a0e6e81031fb3a733f47b1c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: f5b3a5cfd8adb97918a727bd05133d6c1b9f8a42
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241455"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343717"
 ---
-# <a name="audit-diagnostic-setting"></a>审核诊断设置
+# <a name="sample---audit-diagnostic-setting"></a>示例 - 审核诊断设置
 
 如果未对指定资源类型启用诊断设置，则内置策略会进行审核。 指定一个资源类型的数组以检查是否已启用诊断设置。
 

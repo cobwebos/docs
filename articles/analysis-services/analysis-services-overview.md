@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 427f3f498ac04c68ef0b335b50c60db46b46d042
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 114dac10592213d3b2fdfff909913039b3dba344
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243848"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429428"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -61,9 +61,9 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
-|S1    |    40     |    10     |
-|S2    |    100     |    25     |
-|S3    |    200     |    50     |
+|S0    |    40     |    10     |
+|S1    |    100     |    25     |
+|S2    |    200     |    50     |
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
@@ -217,7 +217,7 @@ Azure Analysis Services 受 [Microsoft 联机服务条款](https://www.microsoft
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断
 
-Azure Analysis Services 与 Azure 指标集成，提供多种多样的资源特定指标来帮助监视服务器的性能与运行状况。 有关详细信息，请参阅[监视服务器指标](analysis-services-monitor.md)。 使用 [Azure 资源诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)记录指标。 监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) 服务 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)。 有关详细信息，请参阅[设置诊断日志记录](analysis-services-logging.md)。
+Azure Analysis Services 与 Azure 指标集成，提供多种多样的资源特定指标来帮助监视服务器的性能与运行状况。 有关详细信息，请参阅[监视服务器指标](analysis-services-monitor.md)。 使用 [Azure 资源诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)记录指标。 监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) 服务 [Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)。 有关详细信息，请参阅[设置诊断日志记录](analysis-services-logging.md)。
 
 Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.microsoft.com/sql/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services)。 DMV 基于 SQL 语法，能够与返回元数据和监视有关服务器实例的信息的架构行集相对接。
 

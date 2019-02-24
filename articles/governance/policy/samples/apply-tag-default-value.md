@@ -1,6 +1,6 @@
 ---
 title: 示例 - 应用标记及其默认值
-description: 如果未提供该标记，此示例策略会追加指定的标记名称和值。
+description: 此示例策略定义会追加指定的标记名称和值（如果未提供该标记）。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef044d5ccba706ebc0c7102414cb1e2b42b537cb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 989d09b3e4b576fa21156ec71485c54422c643b7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242152"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338218"
 ---
-# <a name="apply-tag-and-its-default-value"></a>应用标记及其默认值
+# <a name="sample---apply-tag-and-its-default-value"></a>示例 - 应用标记及其默认值
 
 如果未提供标记，此策略会追加指定的标记名称和值。 由你指定要应用的标记名称和值。
 

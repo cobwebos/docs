@@ -1,6 +1,6 @@
 ---
 title: 示例 - 允许使用来自资源组的自定义 VM 映像
-description: 此示例策略需要自定义映像来自批准的资源组。
+description: 此示例策略定义要求自定义映像来自已批准的资源组。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: c1afedf9d3c3ebb68d4c5344cd8795851e2bd10a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2fe72b6f13c1bda6978a541d3665a8389ee6fa59
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242050"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340903"
 ---
-# <a name="allow-custom-vm-image-from-a-resource-group"></a>允许使用来自资源组的自定义 VM 映像
+# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>示例 - 允许使用来自资源组的自定义 VM 映像
 
 此示例策略需要自定义映像来自批准的资源组。 指定已批准的资源组的名称。
 

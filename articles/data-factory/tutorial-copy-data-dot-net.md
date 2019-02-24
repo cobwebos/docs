@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/22/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ad344d3169643128a4860c9b0856f845d9656cd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3cbfb29542f2c71f4308b63319e77b37093529d4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021350"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445894"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Blob 复制到 Azure SQL 数据库
 本教程介绍如何创建一个将数据从 Azure Blob 存储复制到 Azure SQL 数据库的数据工厂管道。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -95,11 +95,11 @@ ms.locfileid: "54021350"
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
 1. 单击“工具” -> “NuGet 包管理器” -> “包管理器控制台”。
-2. 在“包管理器控制台”中，运行以下命令来安装包：
+2. 在“包管理器控制台”中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
 
     ```
-    Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
-    Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
+    Install-Package Microsoft.Azure.Management.DataFactory
+    Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 

@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: a7fbd9eb70c50f3bbd154726bdaa807c2bc41818
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f56893f830720c57c66eb4c17bb2771efbb73f6f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863952"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267166"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>什么是必应视频搜索 API？
 
@@ -29,7 +29,7 @@ ms.locfileid: "55863952"
 | [筛选和限制视频结果](concepts/get-videos.md#filtering-videos)                      | 通过编辑查询参数筛选返回的视频。                                                                                                       |
 | [缩略图的裁剪、重设大小和显示](resize-and-crop-thumbnails.md)                                                | 编辑和显示必应视频搜索 API 返回的视频的缩略图预览。                                                                                      |
 | [获取热门视频](trending-videos.md) | 从全世界搜索热门视频。                                                                                                          |
-| [获取视频见解](video-insights.md) | 自定义一个搜罗全世界热门图像的搜索。                                                                                                          |
+| [获取视频见解](video-insights.md) | 自定义一个从全世界搜罗热门视频的搜索。                                                                                                          |
 
 ## <a name="workflow"></a>工作流
 

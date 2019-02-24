@@ -1,6 +1,6 @@
 ---
 title: 示例 - 允许的虚拟网络网关 SKU
-description: 此示例策略要求虚拟网络网关使用已批准的 SKU 和网关类型。
+description: 此示例策略定义要求虚拟网络网关使用已批准的 SKU 和网关类型。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 1a9f536f57db0de205a4782c21af2ec4892bbceb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b8df07d2ebb58cbdd290452a3a1297f49da95f1c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241931"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342637"
 ---
-# <a name="allowed-virtual-network-gateway-skus"></a>允许的虚拟网络网关 SKU
+# <a name="sample---allowed-virtual-network-gateway-skus"></a>示例 - 允许的虚拟网络网关 SKU
 
 此策略要求虚拟网络网关使用已批准的 SKU 和网关类型。 指定一个已批准的 SKU 的数组和已批准的网关类型的数组。
 

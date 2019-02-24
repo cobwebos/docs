@@ -2,33 +2,36 @@
 title: 什么是人脸 API？
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用人脸服务来检测和分析图像中的人脸。
-author: SteveMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 10/29/2018
-ms.author: sbowles
-ms.openlocfilehash: 655234bfec650ef027e325ff8df23fe91eecfd43
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: pafarley
+ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861046"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455970"
 ---
 # <a name="what-is-the-azure-face-api"></a>什么是 Azure 人脸 API？
 
 Azure 人脸 API 服务是一项认知服务，其提供的算法可用于检测、识别和分析图像中的人脸。 处理人脸信息的功能在许多不同的软件方案中很重要，这些方案包括安全性、自然用户界面、图像内容分析和管理、移动应用和机器人。
 
-人脸 API 提供多项不同的功能，每一项在以下部分都进行了概述。 请继续阅读，详细了解每一项，然后确定其是否适合自己的需求。
+人脸 API 提供多项不同的功能，每一项在以下部分都进行了概述。 请继续阅读了解每一项功能的更多信息。
 
 ## <a name="face-detection"></a>人脸检测
 
-人脸 API 可以检测图像中的人脸，并返回其位置的矩形坐标。 人脸检测还可提取一系列人脸相关属性，例如身体姿势、性别、年龄、头部姿势、面部毛发和眼镜。
+人脸 API 可以检测图像中的人脸，并返回其位置的矩形坐标。 人脸检测还可提取一系列人脸相关属性，例如身体姿势、头部姿势、性别、年龄、情感、面部毛发和眼镜。
 
 ![一位女士和一位男士的图像，在其面部绘制了矩形并显示了年龄和性别](./Images/Face.detection.jpg)
 
-人脸检测功能也可通过[计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 获取，但若要对人脸数据执行进一步的操作，则应使用人脸 API（本服务）。 有关人脸检测的详细信息，请参阅[检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)。
+> [!NOTE] 
+> 人脸检测功能也可通过[计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 获取，但若要对人脸数据执行进一步的操作，则应使用人脸 API（本服务）。 
+
+有关人脸检测的详细信息，请参阅[检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)。
 
 ## <a name="face-verification"></a>人脸验证
 

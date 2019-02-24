@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 02/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 5a72bfccd69a51aa6bafb34bb768b48640e554af
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 254ebb9e23a80f71d2c46e6666362d764ff03141
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243002"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341583"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>教程：寄回 Azure Data Box 并验证上传到 Azure 的数据
 
@@ -42,9 +42,7 @@ ms.locfileid: "56243002"
 ## <a name="ship-data-box-back"></a>寄回 Data Box
 
 1. 确保设备已关闭电源且拔下电缆。 将设备随附的电源线卷好并安全地放在设备后面。
-2. 如果设备在美国发货，请确保发货标签显示在电子墨水显示屏上，并与承运人安排好取件。 如果该标签损坏或丢失，或者未显示在电子墨水显示屏上，则请联系 Microsoft 支持部门。 只有在支持部门建议的情况下，才请在 Azure 门户中转到“概览”>“下载发货标签”。 下载发货标签，将其贴在设备上。
-
-    如果设备在欧洲发货，则电子墨水显示屏不会显示发货标签。 而是，退件发货标签包含在转寄发货标签下的透明袋中。 移除旧的发货标签，并确保发货标签清晰可见。
+2. 确保发货标签显示在电子墨水显示屏上，并与承运人安排好取件。 如果该标签损坏或丢失，或者未显示在电子墨水显示屏上，请联系 Microsoft 支持部门。 在支持部门建议的情况下，可以在 Azure 门户中转到“概览”>“下载发货标签”。 下载发货标签，将其贴在设备上。
     
 3. 如果要寄回设备，请安排 UPS 提货。 若要安排提货，请呼叫当地的 UPS（国家/地区特定的免费电话号码），或者将 Data Box at 送到最近的自送位置。
 

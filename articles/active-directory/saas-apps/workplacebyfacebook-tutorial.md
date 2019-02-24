@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6cdc7ef8ee991719153f6daed01fbb76f945a7a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e233de6f0909477e5033d2a0104f9165e86a9077
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194931"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 与 Workplace by Facebook 集成
 
@@ -143,31 +143,38 @@ ms.locfileid: "56194931"
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录 Workplace by Facebook 公司站点。
   
-   > [!NOTE]
-   > 作为 SAML 身份验证过程的一部分，Workplace 可使用查询字符串（最大为 2.5 KB）将参数传递给 Azure AD。
+    > [!NOTE]
+    > 作为 SAML 身份验证过程的一部分，Workplace 可使用查询字符串（最大为 2.5 KB）将参数传递给 Azure AD。
 
-2. 在“管理员面板”中，转到“安全”选项卡，然后转到“身份验证”。
+2. 在“管理面板”中，转到“安全性”标签页。
 
-3. 在“SAML 身份验证”下，从下拉列表中选择“仅 SSO”。
+    ![管理面板](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-4. 将从 Azure 门户的“Workplace by Facebook 配置”部分复制的值输入到相应字段中：
+3. 在“身份验证”标签页下，选择“单一登录(SSO)”并执行以下步骤：
 
-    * 在“SAML URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
-    * 在“SAML 颁发者 URL 文本框”中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
-    * 在“SAML 注销重定向”（可选）中，粘贴从 Azure 门户复制的“注销 URL”值。
-    * 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“SAML 证书”文本框。
+    ![“身份验证”标签页](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-5. 可能需要输入“基本 SAML 配置”部分下列出的受众 URL、收件人 URL 和 ACS（断言使用者服务）URL。
+    a. 在“SAML URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-6. 滚动到该部分的底部，单击“测试 SSO”按钮。 此时会出现包含 Azure AD 登录页面的一个弹出窗口。 照常输入凭据进行身份验证。
+    b. 在“SAML 颁发者 URI”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
+
+    c. 在“SAML 注销重定向”（可选）中，粘贴从 Azure 门户复制的“注销 URL”值。
+
+    d. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“SAML 证书”文本框。
+
+    e. 复制实例的**受众 URL**，并将其粘贴到 Azure 门户上“基本 SAML 配置” **** 部分的“标识符(实体 ID)” **** 文本框中。
+
+    f. 复制实例的**收件人 URL**，并将其粘贴到 Azure 门户上“基本 SAML 配置” **** 部分的“登录 URL” **** 文本框中。
+
+    g. 滚动到该部分的底部，单击“测试 SSO”按钮。 此时会出现包含 Azure AD 登录页面的一个弹出窗口。 照常输入凭据进行身份验证。
 
     故障排除：确保从 Azure AD 返回的电子邮件地址与用于登录的 Workplace 帐户相同。
 
-7. 成功完成测试后，滚动到页面底部并单击“保存”按钮。
+    h. 成功完成测试后，滚动到页面底部并单击“保存”按钮。
 
-8. 现在所有使用 Workplace 的用户都会在 Azure AD 登录页面上进行身份验证。
+    i. 现在所有使用 Workplace 的用户都会在 Azure AD 登录页面上进行身份验证。
 
-9. **SAML 注销重定向（可选）** -
+4. **SAML 注销重定向（可选）** -
 
     可以选择配置一个 SAML 注销 URL，该 URL 可用于指向 Azure AD 的注销页面。 启用并配置此设置后，用户将不会再被定向到 Workplace 注销页面。 用户会转而被重定向到在“SAML 注销重定向”设置中添加的 URL。
 

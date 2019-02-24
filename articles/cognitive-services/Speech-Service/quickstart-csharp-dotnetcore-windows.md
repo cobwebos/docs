@@ -1,7 +1,7 @@
 ---
 title: 快速入门：识别语音，C# (.NET Core Windows) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何在 Windows 上使用语音服务 SDK 通过 .NET Core 下的 C# 识别语音
+description: 了解如何在 Windows 上使用语音 SDK 通过 .NET Core 下的 C# 识别语音
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: cf6ffdad9fbbf1705c0160e16de0e5ee3e5929a1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1f6cbb511546784b316da1e978abf84c41ac753c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869936"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446046"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>快速入门：使用适用于 .NET Core 的语音 SDK 识别语音
 

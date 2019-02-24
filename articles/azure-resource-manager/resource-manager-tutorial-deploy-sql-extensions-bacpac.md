@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53a2f20254d2f206d014e6643c6fd883828a63db
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c0aa88704f699334cacf12ec24284e61fca7d2bc
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238328"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267591"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件
 
@@ -34,8 +34,6 @@ ms.locfileid: "56238328"
 > * 验证部署
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -154,6 +152,9 @@ New-AzResourceGroupDeployment `
     -adminPassword $adminPassword `
     -TemplateFile azuredeploy.json
 ```
+
+> [!NOTE]
+> 在云 shell 中使用 Azure PowerShell 时存在文件 IO 问题。  错误消息为“无法检索 cmdlet 的动态参数。 找不到路径‘Azure:/azuredeploy.json’，因为它不存在”。*临时解决方法是不在 `New-AzResourceGroupDeploy` 命令中包含 **-TemplateFile** 开关。 该命令将提示你输入文件名。
 
 使用生成的密码。 请参阅[先决条件](#prerequisites)。
 

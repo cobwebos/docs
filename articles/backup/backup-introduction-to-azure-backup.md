@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2601f81b4abecd98d645af9bc0d368e52534a04e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e2b9d380b5e164bb8b730ec7037a6b2836c2af85
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487874"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447355"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
 Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云端数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。 Azure 备份提供多个组件，可将其下载并部署到适当的计算机、服务器或云中。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 的恢复服务保管库中。 请参阅本文稍后部分的 [Azure 备份组件表格](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)，了解保护特定数据、应用程序或工作负荷所用的组件。
@@ -33,7 +33,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 * 本地冗余存储 (LRS) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
 
-* 异地冗余存储 (GRS) 是默认的和推荐的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 可让数据更为持久，即使出现区域性故障也是如此。
+* 异地冗余存储 (GRS) 是默认的和推荐的复制选项。 GRS 将数据复制到次要区域，该次要区域是 [Azure 配对区域](../best-practices-availability-paired-regions.md)（距离源数据的主要位置数百英里）。 GRS 的成本比 LRS 的高，但 GRS 可让数据更为持久，即使出现区域性故障也是如此。
 
 **无限数据传输** - Azure 备份不会限制传输的入站或出站数据量。 Azure 备份也不会对传输的数据收费。 但如果使用 Azure 导入/导出服务来导入大量数据，则入站数据将产生相关费用。 有关此费用的详细信息，请参阅 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。 出站数据是指还原操作期间从恢复服务保管库传输的数据。
 
@@ -44,7 +44,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 **长期保留** - 可以将恢复服务保管库用于短期和长期数据保留。 Azure 不会限制恢复服务保管库中数据的保留时间长度。 可以根据需要设置数据在保管库中的保留时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。 请参阅本文的[备份和保留](backup-introduction-to-azure-backup.md#backup-and-retention)部分，了解此限制对用户备份需求的影响。
 
 ## <a name="which-azure-backup-components-should-i-use"></a>应使用哪些 Azure 备份组件？
-通过下表了解可以对每个 Azure 备份组件进行保护的内容。 
+通过下表了解可以对每个 Azure 备份组件进行保护的内容。
 
 | 组件 | 优点 | 限制 | 保护哪些内容？ | 备份存储在何处？ |
 | --- | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 | Azure IaaS VM 备份 |<p>**是**</p><p>Azure 结构的一部分</p><p>专用于[备份 Azure 基础结构即服务 (IaaS) 虚拟机](backup-azure-vms-introduction.md)。</p> |<p>**否**</p> <p>使用 System Center DPM 备份数据中心内的虚拟机。</p> |<p>恢复服务保管库</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>可以备份哪些应用程序和工作负荷？
-下表提供了可使用 Azure 备份保护的数据和工作负荷的矩阵。 Azure 备份解决方案列具有该解决方案部署文档的链接。 
+下表提供了可使用 Azure 备份保护的数据和工作负荷的矩阵。 Azure 备份解决方案列具有该解决方案部署文档的链接。
 
 | 数据或工作负荷 | 源环境 | Azure 备份解决方案 |
 | --- | --- | --- |
@@ -81,17 +81,17 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 下表显示了 Linux 支持的 Azure 备份组件。  
 
 组件 | **Linux（Azure 认可）**
---- | --- 
-Azure 备份 (MARS) 代理 | 否（仅限基于 Windows 的代理） 
+--- | ---
+Azure 备份 (MARS) 代理 | 否（仅限基于 Windows 的代理）
 System Center DPM | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原</br></br> 文件一致性备份不适用于 Azure VM
-Azure 备份服务器 | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原</br></br> 文件一致性备份不适用于 Azure VM 
+Azure 备份服务器 | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原</br></br> 文件一致性备份不适用于 Azure VM
 Azure IaaS VM 备份 | 应用一致性备份，使用[前脚本和后脚本框架](backup-azure-linux-app-consistent.md)<br/><br/> [文件级恢复](backup-azure-restore-files-from-vm.md)<br/><br/> [从还原的磁盘创建 VM](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [从恢复点创建 VM](backup-azure-arm-restore-vms.md#create-new-create-a-vm)。
 
-## <a name="using-premium-storage-vms-with-azure-backup"></a>结合使用高级存储 VM 和 Azure 备份
-Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储的详细信息，请参阅文章[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../virtual-machines/windows/premium-storage.md)。
+## <a name="using-premium-storage-vms-with-azure-backup"></a>将高级存储 VM 与 Azure 备份配合使用
+Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储和其他磁盘类型的详细信息，请参阅[选择磁盘类型](../virtual-machines/windows/disks-types.md)一文。
 
 ### <a name="back-up-premium-storage-vms"></a>备份高级存储 VM
-在备份高级存储 VM 时，备份服务在高级存储帐户中创建名为“AzureBackup-”的临时暂存位置。 暂存位置大小与恢复点快照大小相同。 请确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅[高级存储限制](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)一文。 备份作业完成后，将删除暂存位置。 用于暂存位置的存储的价格与所有 [高级存储定价](../virtual-machines/windows/premium-storage.md#pricing-and-billing)一致。
+在备份高级存储 VM 时，备份服务在高级存储帐户中创建名为“AzureBackup-”的临时暂存位置。 暂存位置大小与恢复点快照大小相同。 请确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅 [Azure 存储可伸缩性目标](../storage/common/storage-scalability-targets.md)中的文章。 备份作业完成后，将删除暂存位置。 用于暂存位置的存储的价格与所有 [高级存储定价](../virtual-machines/windows/disks-types.md)一致。
 
 > [!NOTE]
 > 请不要修改或编辑暂存位置。

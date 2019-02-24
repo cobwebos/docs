@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/23/2019
+ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0bd882ffd5048d0b33afc9ecf00c0ed6356b6e98
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: a33001216fb805b700d077aa8c9d42fae9bd6bae
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883511"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416796"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
@@ -41,10 +41,6 @@ ms.locfileid: "54883511"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
-
-- 在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
-
-    目前，并非所有[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中运行。 建议在本地使用 CLI。
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。
 
@@ -151,7 +147,7 @@ ms.locfileid: "54883511"
 
 ### <a name="create-a-transform"></a>创建转换
 
-对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交**作业**，将该脚本应用于视频。 为每个新视频提交新作业后，即可将该脚本应用于库中的所有视频。 媒体服务中的脚本称为**转换**。 有关详细信息，请参阅[转换和作业](transform-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。 
+对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交**作业**，将该脚本应用于视频。 为每个新视频提交新作业后，可将该脚本应用到库中的所有视频。 媒体服务中的脚本称为**转换**。 有关详细信息，请参阅[转换和作业](transform-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。 
 
 创建新[转换](https://docs.microsoft.com/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 所需参数是 TransformOutput 对象。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
 
@@ -230,11 +226,15 @@ ms.locfileid: "54883511"
 
 **作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
 
+#### <a name="job-error-codes"></a>作业错误代码
+
+请参阅[错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+
 ### <a name="create-a-streaming-locator"></a>创建流式处理定位符
 
 编码作业完成后，下一步是使输出**资产**中的视频可供客户端播放。 可通过两个步骤完成此操作：首先创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后生成客户端可以使用的流式处理 URL。 
 
-创建**流式处理定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流式处理定位符**立即生效，并持续到其被删除为止。 
+创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流式处理定位符**立即生效，并持续到其被删除为止。 
 
 创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)时，需要指定所需的 **StreamingPolicyName**。 在此示例中，将流式传输明文（或未加密的）内容，因此使用预定义的明文流式传输策略 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
 

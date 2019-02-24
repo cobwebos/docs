@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 44ad80732d1e874ccec4ecc376b9ce9b513a3aa9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 341278237bc18bfbb8f4bb1e5d600e2cab894926
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652364"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343351"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Storm 与 Apache Kafka on HDInsight 配合使用
 
@@ -367,13 +367,13 @@ streams:
 
 项目包含名为 `dev.properties` 的文件，用于传递拓扑使用的参数。 它定义以下属性：
 
-| dev.properties 文件 | Description |
+| dev.properties 文件 | 说明 |
 | --- | --- |
 | `kafka.zookeeper.hosts` | Kafka 群集的 [Apache ZooKeeper](https://zookeeper.apache.org/) 主机。 |
 | `kafka.broker.hosts` | Kafka 代理主机（辅助角色节点）。 |
 | `kafka.topic` | 拓扑使用的 Kafka 主题。 |
 | `hdfs.write.dir` | Kafka 读取器拓扑写入的目录。 |
-| `hdfs.url` | Storm 群集使用的文件系统。 对于 Azure 存储帐户，使用值 `wasb:///`。 对于 Azure Data Lake Storage，使用值 `adl:///`。 |
+| `hdfs.url` | Storm 群集使用的文件系统。 对于 Azure 存储帐户，使用值 `wasb:///`。 对于 Azure Data Lake Storage Gen2，使用值 `abfs:///`。 对于 Azure Data Lake Storage Gen1，使用值 `adl:///`。 |
 
 ## <a name="create-the-clusters"></a>创建群集
 

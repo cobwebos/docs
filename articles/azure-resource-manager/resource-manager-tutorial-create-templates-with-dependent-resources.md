@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2dc9d72afd14547a091acf64cea2c8f0bad75914
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c5bf56482534a55d24d8ca043e36c39cec99b1f0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234401"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267523"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：创建包含依赖的资源的 Azure 资源管理器模板
 
@@ -34,8 +34,6 @@ ms.locfileid: "56234401"
 > * 部署模板
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -156,6 +154,9 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile azuredeploy.json
     ```
+
+    > [!NOTE]
+    > 在云 shell 中使用 Azure PowerShell 时存在文件 IO 问题。  错误消息为“无法检索 cmdlet 的动态参数。找不到路径‘Azure:/azuredeploy.json’，因为它不存在”。  临时解决方法是不在 `New-AzResourceGroupDeploy` 命令中包含 **-TemplateFile** 开关。 该命令将提示你输入文件名。
 
 8. 运行以下 PowerShell 命令，列出新建的虚拟机：
 

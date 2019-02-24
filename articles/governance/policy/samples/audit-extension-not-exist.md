@@ -1,6 +1,6 @@
 ---
 title: 示例 - 如果扩展不存在，则进行审核
-description: 如果虚拟机未部署扩展，此示例策略会进行审核。
+description: 如果虚拟机未部署扩展，此示例策略定义会进行审核。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7e5f396bb4acfdef0d49d38019b6c4d19661d9ae
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0c0f41c01d33add81508d828259ddcdd48d0cbc8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244175"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340869"
 ---
-# <a name="audit-if-extension-does-not-exist"></a>如果扩展不存在，则进行审核
+# <a name="sample---audit-if-extension-does-not-exist"></a>示例 - 如果扩展不存在，则进行审核
 
 如果虚拟机未部署扩展，则此策略会进行审核。 指定扩展发布者和类型以检查是否已部署扩展。
 

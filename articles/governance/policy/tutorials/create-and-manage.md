@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Policy 来创建和管理策略以强制实施符合性
+title: 创建和管理策略以强制实施符合性
 description: 使用 Azure Policy 强制执行标准、满足法规遵从性、审核需求、控制成本、维护安全和性能的一致性，并实施企业范围的设计原则。
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: cb6f033c784832efab23c747057b1c0ef1b317fa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e49cffc5ba08d400c733ef7c211132c4909f9ef4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730265"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343555"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
@@ -354,7 +354,7 @@ az policy definition list
 
    ![计划定义](../media/create-and-manage/initiative-definition-2.png)
 
-1. 如果要添加到计划的策略定义有参数，则这些参数会显示在“策略和参数”区域的策略名称下。 _value_ 可以设置为“设置值”（针对此计划的所有分配进行硬编码）或“使用计划参数”（在每个计划分配期间设置）。 如果选择了“设置值”，则下拉到 _Values_ 的右侧即可输入或选择值。 如果选择了“使用计划参数”，则会显示新的“计划参数”部分，用于定义将要在计划分配期间设置的参数。 此计划参数的允许值可能会进一步限制能够在计划分配期间设置的内容。
+1. 如果要添加到计划的策略定义有参数，则这些参数会显示在“策略和参数”区域的策略名称下。 _value_ 可以设置为“设置值”（针对此计划的所有分配进行硬编码）或“使用计划参数”（在每个计划分配期间设置）。 如果选择了“设置值”，则“值”右侧的下拉列表允许输入或选择值。 如果选择了“使用计划参数”，则会显示新的“计划参数”部分，用于定义将要在计划分配期间设置的参数。 此计划参数的允许值可能会进一步限制能够在计划分配期间设置的内容。
 
    ![计划定义参数](../media/create-and-manage/initiative-definition-3.png)
 

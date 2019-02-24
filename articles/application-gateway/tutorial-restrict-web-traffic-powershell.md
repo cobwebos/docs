@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c8abcf484ffe57122fadeeed9f9a94d922b76362
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6a43d96bc59ea348c8bcd456e1e06d70e851d182
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429117"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454458"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>使用 Azure PowerShell 启用 Web 应用程序防火墙
 
@@ -248,7 +248,7 @@ Update-AzureRmVmss `
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>创建存储帐户和配置诊断
 
-在本教程中，应用程序网关使用存储帐户来存储用于检测和防范目的的数据。 也可以使用 Log Analytics 或事件中心来记录数据。
+在本教程中，应用程序网关使用存储帐户来存储用于检测和防范目的的数据。 也可以使用 Azure Monitor 日志或事件中心来记录数据。
 
 ### <a name="create-the-storage-account"></a>创建存储帐户
 

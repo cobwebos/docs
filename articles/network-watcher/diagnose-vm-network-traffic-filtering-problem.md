@@ -1,6 +1,6 @@
 ---
 title: 诊断虚拟机网络流量筛选器问题 - 快速入门 - Azure 门户 | Microsoft Docs
-description: 本快速入门介绍如何使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
+description: 本快速入门介绍了如何使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
 services: network-watcher
 documentationcenter: network-watcher
 author: jimdial
@@ -17,18 +17,18 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 1802df4e6cbe77b4bc7ee2ee49f24d8dc51de015
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d5c159d030303b90128513d3521a19419e4277e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32180515"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429224"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>快速入门：使用 Azure 门户诊断虚拟机网络流量筛选器问题
 
-在本快速入门中，请先部署虚拟机 (VM)，然后检查到某个 IP 地址和 URL 的通信以及来自某个 IP 地址的通信。 请确定通信失败的原因以及解决方法。
+在本快速入门中，将部署虚拟机 (VM)，然后检查到某个 IP 地址和 URL 的通信以及来自某个 IP 地址的通信。 确定通信失败的原因以及解决方法。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -37,17 +37,17 @@ ms.locfileid: "32180515"
 ## <a name="create-a-vm"></a>创建 VM
 
 1. 选择 Azure 门户左上角的“+ 创建资源”。
-2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或“Ubuntu Server 17.10 VM”。
+2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或某一版本的“Ubuntu Server”。
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”：
 
     |设置|值|
     |---|---|
-    |名称|myVm|
+    |Name|myVm|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup|
-    |Location| 选择“美国东部”|
+    |位置| 选择“美国东部”|
 
 4. 选择 VM 的大小，然后选择“选择”。
 5. 保留“设置”下的所有默认设置，然后选择“确定”。
@@ -70,7 +70,7 @@ ms.locfileid: "32180515"
 
 ### <a name="use-ip-flow-verify"></a>使用 IP 流验证
 
-创建 VM 时，Azure 会默认允许和拒绝出入 VM 的网络流量。 可以在以后覆盖 Azure 的默认设置，允许或拒绝其他类型的流量。
+创建 VM 时，Azure 在默认情况下会允许或拒绝出入 VM 的网络流量。 可以在以后覆盖 Azure 的默认设置，允许或拒绝其他类型的流量。
 
 1. 在门户中，选择“所有服务”。 在“所有服务”>“筛选器”框中，输入“网络观察程序”。 结果中出现“网络观察程序”后，将其选中。
 2. 在“网络诊断工具”下选择“IP 流验证”。
@@ -124,6 +124,6 @@ ms.locfileid: "32180515"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何创建 VM 并对入站和出站网络流量筛选器进行诊断， 同时还介绍了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 详细了解[安全规则](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
+在本快速入门中，你已创建 VM 并对入站和出站网络流量筛选器进行诊断。 你已了解了如何通过网络安全组规则来允许或拒绝出入 VM 的流量。 请详细了解[安全规则](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)以及如何[创建安全规则](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule)。
 
 即使相应的网络流量筛选器已就位，与 VM 的通信仍可能因路由配置问题而失败。 若要了解如何诊断 VM 网络路由问题，请参阅[诊断 VM 路由问题](diagnose-vm-network-routing-problem.md)；若要使用某个工具诊断出站路由、延迟和流量筛选问题，请参阅[排查连接问题](network-watcher-connectivity-portal.md)。

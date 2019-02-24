@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: eab00663918eadea485aed17a91ce01e5718c36e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4aa4c69857bfd1ab99945cb0f5f748e60cff9978
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413666"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417324"
 ---
 # <a name="transform-and-protect-your-api"></a>转换和保护 API 
 
@@ -41,8 +41,8 @@ ms.locfileid: "50413666"
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
 + 了解 [Azure API 管理中策略的概念](api-management-howto-policies.md)。
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
++ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -126,9 +126,10 @@ ms.locfileid: "50413666"
 1. 选择“演示会议 API”。
 2. 选择“所有操作”。
 3. 选择屏幕顶部的“设计”选项卡。
-4. 在“入站处理”部分，单击 **</>** 图标。5. 将光标置于 **&lt;inbound&gt;** 元素内。
-5. 在右侧窗口中的“访问限制策略”下面，单击“+ 限制每个键的调用速率”。
-6. 将 **rate-limit-by-key** 代码（在 **\<inbound\>** 元素中）修改为以下代码：
+4. 在“入站处理”部分中，单击 **</>** 图标。
+5. 将光标置于 **&lt;inbound&gt;** 元素内。
+6. 在右侧窗口中的“访问限制策略”下面，单击“+ 限制每个键的调用速率”。
+7. 将 **rate-limit-by-key** 代码（在 **\<inbound\>** 元素中）修改为以下代码：
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 

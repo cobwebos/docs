@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1560dad31e00b00a2d27cf1675e05901e6611825
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112540"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309856"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
@@ -51,7 +51,7 @@ Azure 随着客户群的扩大而不断扩建，由于需求的增大，我们�
 > 目前，Azure Site Recovery 支持将 VM 从一个区域移到另一个区域，而不支持在一个区域中移动。 
 
 > [!NOTE]
-> 此处所述的每种方案的文档中提供了这些步骤的详细指导
+> [此处](#next-steps)所述的每种方案的文档中提供了这些步骤的详细指导
 
 ## <a name="typical-architectures-for-a-multi-tier-deployment"></a>多层部署的典型体系结构
 以下部分逐步讲解客户对 Azure 中的多层应用程序最常采用的部署体系结构。 此处使用的示例是采用公共 IP 的三层式应用程序。 每个层（Web 层、应用层和数据库层）各有 2 个 VM，并已通过负载均衡器连接到其他层。 数据库层在 VM 之间使用 SQL Always ON 复制，以实现高可用性 (HA)。

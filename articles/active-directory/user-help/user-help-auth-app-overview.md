@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1724454ff67f6cfe3646b59e8302a3dd099081
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 79abead77705d13df909703a234bf72ee121a5be
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217439"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301173"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>什么是 Microsoft Authenticator 应用？
 Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登录到帐户。 双重验证可帮助你更安全地访问帐户，尤其是在查看敏感信息时。 由于密码可能会遗忘、失窃或者泄露，双重验证作为一种附加的安全保障步骤，可帮助保护帐户的安全，因为其他人更难破解它。
@@ -59,11 +59,11 @@ Microsoft Authenticator 应用通过两种方式执行双重验证：
 ## <a name="who-decides-if-you-use-this-feature"></a>谁决定是否要使用此功能？
 根据具体的帐户类型，你的组织可能决定必须使用双重验证，有时你也可以自行决定使用此功能。
 
-- **工作或学校帐户。** 如果你使用工作或学校帐户（例如 alain@contoso.com），则由你的组织决定是否必须使用双重验证，以及具体的验证方法是什么。 有关将工作或学校帐户添加到 Microsoft Authenticator 应用的详细信息，请参阅[添加工作或学校帐户](microsoft-authenticator-app-add-work-account.md)。
+- **工作或学校帐户。** 如果你使用工作或学校帐户（例如 alain@contoso.com），则由你的组织决定是否必须使用双重验证，以及具体的验证方法是什么。 有关将工作或学校帐户添加到 Microsoft Authenticator 应用的详细信息，请参阅[添加工作或学校帐户](user-help-auth-app-add-work-school-account.md)。
 
-- **Microsoft 个人帐户。** 可以选择为 Microsoft 个人帐户（例如 alain@outlook.com）设置双重验证。 有关添加个人 Microsoft 帐户的详细信息，请参阅 
+- **Microsoft 个人帐户。** 可以选择为 Microsoft 个人帐户（例如 alain@outlook.com）设置双重验证。 有关添加个人 Microsoft 帐户的详细信息，请参阅[添加个人帐户](user-help-auth-app-add-personal-ms-account.md)。
 
-- **非 Microsoft 帐户。** 可以选择为非 Microsoft 帐户（例如 alain@gmail.com）设置双重验证。 非 Microsoft 帐户可能不使用“两重验证”这一术语，但你应该可以在“安全性”或“登录”设置中找到类似功能。 Microsoft Authenticator 应用适用于支持 TOTP 标准的任何帐户。
+- **非 Microsoft 帐户。** 可以选择为非 Microsoft 帐户（例如 alain@gmail.com）设置双重验证。 非 Microsoft 帐户可能不使用“两重验证”这一术语，但你应该可以在“安全性”或“登录”设置中找到类似功能。 Microsoft Authenticator 应用适用于支持 TOTP 标准的任何帐户。 有关添加非 Microsoft 帐户的详细信息，请参阅[添加非 Microsoft 帐户](user-help-auth-app-add-non-ms-account.md)。
 
 ## <a name="in-this-section"></a>本节内容
 
@@ -71,7 +71,8 @@ Microsoft Authenticator 应用通过两种方式执行双重验证：
 |------|------------|
 |[下载并安装应用](user-help-auth-app-download-install.md)|介绍了从何处以及如何为运行 Android 和 iOS 的设备获取并安装 Microsoft Authenticator 应用。|
 |[添加工作或学校帐户](user-help-auth-app-add-work-school-account.md)|介绍如何将各种工作或学校帐户和个人帐户添加到 Microsoft Authenticator 应用。|
-|[添加个人帐户](user-help-auth-app-add-personal-ms-account.md)|介绍如何将 Microsoft 个人帐户和非 Microsoft 帐户添加到 Microsoft Authenticator 应用。|
+|[添加个人帐户](user-help-auth-app-add-personal-ms-account.md)|介绍如何将 Microsoft 个人帐户添加到 Microsoft Authenticator 应用。|
+|[添加非 Microsoft 帐户](user-help-auth-app-add-non-ms-account.md)|介绍如何将非 Microsoft 帐户添加到 Microsoft Authenticator 应用。|
 |[手动添加帐户](user-help-auth-app-add-account-manual.md)|介绍在无法扫描所提供的 QR 码的情况下，如何手动将帐户添加到 Microsoft Authenticator 应用。|
 |[使用应用登录](user-help-auth-app-sign-in.md)|介绍如何使用 Microsoft Authenticator 应用登录到各种帐户。|
 |[备份和恢复帐户凭据](user-help-auth-app-backup-recovery.md)| 提供有关如何使用 Microsoft Authenticator 应用备份和恢复帐户凭据的信息。|

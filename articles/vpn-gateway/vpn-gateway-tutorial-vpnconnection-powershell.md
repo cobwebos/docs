@@ -2,28 +2,20 @@
 title: 使用 PowerShell 创建和管理 Azure S2S VPN 连接 | Microsoft Docs
 description: 教程 - 使用 Azure PowerShell 模块创建和管理 S2S VPN 连接
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: infrastructure
-ms.date: 05/08/2018
+ms.date: 02/11/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 0c71062bded65f8aa7c259c0678ee6675e2dab38
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a9ca626ecf026736617ba495422ed957d03b2b37
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509467"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414594"
 ---
-# <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建和管理 S2S VPN 连接
+# <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>教程：使用 PowerShell 创建和管理 S2S VPN 连接
 
 Azure S2S VPN 连接提供客户本地和 Azure 间的安全跨界连接。 本教程介绍 IPsec S2S VPN 连接的生命周期，例如创建和管理 S2S VPN 连接。 学习如何：
 
@@ -33,13 +25,13 @@ Azure S2S VPN 连接提供客户本地和 Azure 间的安全跨界连接。 本�
 > * 添加更多的 VPN 连接
 > * 删除 VPN 连接
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 下图显示了本教程的拓扑：
 
 ![站点到站点 VPN 连接图](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
-
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.3 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
 
 ## <a name="requirements"></a>要求
 
@@ -48,7 +40,11 @@ Azure S2S VPN 连接提供客户本地和 Azure 间的安全跨界连接。 本�
 1. 资源组 (TestRG1)、虚拟网络 (VNet1) 和 GatewaySubnet
 2. VPN 网关 (VNet1GW)
 
-下面列出的是虚拟网络参数值。 请注意本地网关用来表示本地网络的其他值。 可以根据环境和网络设置更改这些值。
+下面列出的是虚拟网络参数值。 请注意本地网关用来表示本地网络的其他值。 根据你的环境和网络设置更改以下值，然后复制并粘贴以设置本教程的变量。 如果 Cloud Shell 会话超时，或者需要使用其他 PowerShell 窗口，请将变量复制并粘贴到新会话中，然后继续使用本教程。
+
+>[!NOTE]
+> 如果用它进行连接，请务必更改相关值，使之与本地网络匹配。 如果只是作为教程来运行这些步骤，则不需进行更改，但不能进行连接。
+>
 
 ```azurepowershell-interactive
 # Virtual network
@@ -59,11 +55,11 @@ $VNet1Prefix = "10.1.0.0/16"
 $VNet1ASN    = 65010
 $Gw1         = "VNet1GW"
 
-# On-premises network
+# On-premises network - LNGIP1 is the VPN device public IP address
 $LNG1        = "VPNsite1"
 $LNGprefix1  = "10.101.0.0/24"
 $LNGprefix2  = "10.101.1.0/24"
-$LNGIP1      = "YourDevicePublicIP"
+$LNGIP1      = "5.4.3.2"
 
 # Optional - on-premises BGP properties
 $LNGASN1     = 65011
@@ -86,22 +82,22 @@ $Connection1 = "VNet1ToSite1"
 * 本地地址空间
 * （可选）BGP 属性（BGP 对等机 IP 地址和 AS 编号）
 
-使用 [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-6.8.1) 命令创建本地网关。
+使用 [New-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/new-azlocalnetworkgateway?view=azurermps-6.8.1) 命令创建本地网关。
 
 ```azurepowershell-interactive
-New-AzureRmLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
+New-AzLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
   -Location 'East US' -GatewayIpAddress $LNGIP1 -AddressPrefix $LNGprefix1,$LNGprefix2
 ```
 
 ## <a name="create-a-s2s-vpn-connection"></a>创建 S2S VPN 连接
 
-接下来，请使用 [New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-6.8.1) 在虚拟网关和 VPN 设备之间创建站点到站点 VPN 连接。 请注意，站点到站点 VPN 的“-ConnectionType”为 *IPsec*。
+接下来，请使用 [New-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?view=azurermps-6.8.1) 在虚拟网关和 VPN 设备之间创建站点到站点 VPN 连接。 请注意，站点到站点 VPN 的“-ConnectionType”为 *IPsec*。
 
 ```azurepowershell-interactive
-$vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
-$lng1 = Get-AzureRmLocalNetworkGateway   -Name $LNG1 -ResourceGroupName $RG1
+$vng1 = Get-AzVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
+$lng1 = Get-AzLocalNetworkGateway   -Name $LNG1 -ResourceGroupName $RG1
 
-New-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1 `
+New-AzVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1 `
   -Location $Location1 -VirtualNetworkGateway1 $vng1 -LocalNetworkGateway2 $lng1 `
   -ConnectionType IPsec -SharedKey "Azure@!b2C3"
 ```
@@ -112,7 +108,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName
 
 ### <a name="view-and-update-your-pre-shared-key"></a>查看和更新预共享密钥
 
-Azure S2S VPN 连接使用预共享密钥（机密）在本地 VPN 设备和 Azure VPN 网关之间进行身份验证。 可以使用 [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkgatewayconnectionsharedkey?view=azurermps-6.8.1) 和 [Set-AzureRmVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnectionsharedkey?view=azurermps-6.8.1) 查看和更新连接的预共享密钥。
+Azure S2S VPN 连接使用预共享密钥（机密）在本地 VPN 设备和 Azure VPN 网关之间进行身份验证。 可以使用 [Get-AzVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionsharedkey?view=azurermps-6.8.1) 和 [Set-AzVirtualNetworkGatewayConnectionSharedKey](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnectionsharedkey?view=azurermps-6.8.1) 查看和更新连接的预共享密钥。
 
 > [!IMPORTANT]
 > 预共享密钥是一个由**可打印 ASCII 字符**组成的字符串，长度不得超出 128 个字符。
@@ -120,14 +116,14 @@ Azure S2S VPN 连接使用预共享密钥（机密）在本地 VPN 设备和 Azu
 以下命令显示连接的预共享密钥：
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayConnectionSharedKey `
+Get-AzVirtualNetworkGatewayConnectionSharedKey `
   -Name $Connection1 -ResourceGroupName $RG1
 ```
 
 执行上面的示例时，输出将为“**Azure@!b2C3**”。 使用以下命令可以将预共享密钥值更改为“**Azure@!_b2=C3**”：
 
 ```azurepowershell-interactive
-Set-AzureRmVirtualNetworkGatewayConnectionSharedKey `
+Set-AzVirtualNetworkGatewayConnectionSharedKey `
   -Name $Connection1 -ResourceGroupName $RG1 `
   -Value "Azure@!_b2=C3"
 ```
@@ -140,24 +136,26 @@ Azure VPN 网关支持 BGP 动态路由协议。 可以在每个单独的连接�
 * 本地网关 ASN
 * 本地网关 BGP 对等机 IP 地址
 
-如果尚未配置 BGP 属性，请使用以下命令将这些属性添加到 VPN 网关和本地网关：[Set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-6.8.1) 和 [Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-6.8.1)。
+如果尚未配置 BGP 属性，请使用以下命令将这些属性添加到 VPN 网关和本地网关：[Set-AzVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgateway?view=azurermps-6.8.1) 和 [Set-AzLocalNetworkGateway](https://docs.microsoft.com/powershell/module/az.network/set-azlocalnetworkgateway?view=azurermps-6.8.1)。
+
+使用以下示例配置 BGP 属性：
 
 ```azurepowershell-interactive
-$vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
-Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $vng1 -Asn $VNet1ASN
+$vng1 = Get-AzVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $vng1 -Asn $VNet1ASN
 
-$lng1 = Get-AzureRmLocalNetworkGateway   -Name $LNG1 -ResourceGroupName $RG1
-Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $lng1 `
+$lng1 = Get-AzLocalNetworkGateway   -Name $LNG1 -ResourceGroupName $RG1
+Set-AzLocalNetworkGateway -LocalNetworkGateway $lng1 `
   -Asn $LNGASN1 -BgpPeeringAddress $BGPPeerIP1
 ```
 
-使用 [Set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-6.8.1) 启用 BGP。
+使用 [Set-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkgatewayconnection?view=azurermps-6.8.1) 启用 BGP。
 
 ```azurepowershell-interactive
-$connection = Get-AzureRmVirtualNetworkGatewayConnection `
+$connection = Get-AzVirtualNetworkGatewayConnection `
   -Name $Connection1 -ResourceGroupName $RG1
 
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection `
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection `
   -EnableBGP $True
 ```
 
@@ -171,14 +169,14 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 * IPsec：AES128、SHA1、PFS14、SA 生存期 14,400 秒和 102,400,000 KB
 
 ```azurepowershell-interactive
-$connection = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 `
+$connection = Get-AzVirtualNetworkGatewayConnection -Name $Connection1 `
                 -ResourceGroupName $RG1
-$newpolicy  = New-AzureRmIpsecPolicy `
+$newpolicy  = New-AzIpsecPolicy `
                 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup14 `
                 -IpsecEncryption AES128 -IpsecIntegrity SHA1 -PfsGroup PFS2048 `
                 -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection `
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection `
   -IpsecPolicies $newpolicy
 ```
 
@@ -186,24 +184,24 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 
 ## <a name="add-another-s2s-vpn-connection"></a>添加另一 S2S VPN 连接
 
-若要添加另一个到同一 VPN 网关的 S2S VPN 连接，请创建另一本地网关，然后在新的本地网关和 VPN 网关之间创建新连接。 请执行本文中的示例。
+添加另一个到同一 VPN 网关的 S2S VPN 连接，创建另一本地网关，然后在新的本地网关和 VPN 网关之间创建新连接。 使用以下示例，确保修改变量，使之反映你自己的网络配置。
 
 ```azurepowershell-interactive
-# On-premises network
+# On-premises network - LNGIP2 is the VPN device public IP address
 $LNG2        = "VPNsite2"
 $Location2   = "West US"
 $LNGprefix21 = "10.102.0.0/24"
 $LNGprefix22 = "10.102.1.0/24"
-$LNGIP2      = "YourDevicePublicIP"
+$LNGIP2      = "4.3.2.1"
 $Connection2 = "VNet1ToSite2"
 
-New-AzureRmLocalNetworkGateway -Name $LNG2 -ResourceGroupName $RG1 `
+New-AzLocalNetworkGateway -Name $LNG2 -ResourceGroupName $RG1 `
   -Location $Location2 -GatewayIpAddress $LNGIP2 -AddressPrefix $LNGprefix21,$LNGprefix22
 
-$vng1 = Get-AzureRmVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
-$lng2 = Get-AzureRmLocalNetworkGateway   -Name $LNG2 -ResourceGroupName $RG1
+$vng1 = Get-AzVirtualNetworkGateway -Name $GW1  -ResourceGroupName $RG1
+$lng2 = Get-AzLocalNetworkGateway   -Name $LNG2 -ResourceGroupName $RG1
 
-New-AzureRmVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $RG1 `
+New-AzVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $RG1 `
   -Location $Location1 -VirtualNetworkGateway1 $vng1 -LocalNetworkGateway2 $lng2 `
   -ConnectionType IPsec -SharedKey "AzureA1%b2_C3+"
 ```
@@ -214,16 +212,24 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName
 
 ## <a name="delete-a-s2s-vpn-connection"></a>删除 S2S VPN 连接
 
-使用 [Remove-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermvirtualnetworkgatewayconnection?view=azurermps-6.8.1) 删除 S2S VPN 连接。
+使用 [Remove-AzVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworkgatewayconnection?view=azurermps-6.8.1) 删除 S2S VPN 连接。
 
 ```azurepowershell-interactive
-Remove-AzureRmVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $RG1
+Remove-AzVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $RG1
 ```
 
 在不再需要的情况下删除本地网关。 如果有其他连接与本地网关相关联，则不能删除本地网关。
 
 ```azurepowershell-interactive
-Remove-AzureRmVirtualNetworkGatewayConnection -Name $LNG2 -ResourceGroupName $RG1
+Remove-AzVirtualNetworkGatewayConnection -Name $LNG2 -ResourceGroupName $RG1
+```
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果此配置是某个原型、测试或概念证明部署的一部分，则可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令来删除资源组、VPN 网关和所有相关资源。
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name $RG1
 ```
 
 ## <a name="next-steps"></a>后续步骤

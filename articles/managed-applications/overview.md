@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67797f3bc5eadc126bad1051e793a8d3bc4590e5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800938"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341943"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -73,7 +73,7 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 ## <a name="azure-policy"></a>Azure Policy
 
-可以向托管应用程序应用 [Azure Policy](../azure-policy/azure-policy-introduction.md)。 可以应用策略以确保托管应用程序的已部署实例满足数据和安全要求。 如果应用程序与敏感数据进行交互，请确保你已评估应当如何对该数据进行保护。 例如，如果应用程序与来自 Office 365 的数据进行交互，请应用策略来确保启用数据加密。
+可以向托管应用程序应用 [Azure Policy](../governance/policy/overview.md)。 可以应用策略以确保托管应用程序的已部署实例满足数据和安全要求。 如果应用程序与敏感数据进行交互，请确保你已评估应当如何对该数据进行保护。 例如，如果应用程序与来自 Office 365 的数据进行交互，请应用策略来确保启用数据加密。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 6a731750da4edfb4a71c00156c5ff527dee30941
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5597f3c017ccf2dbb58b7b6b046720c8f49803c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824435"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312274"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>将 Azure VM 移到可用性区域中
 数据中心发生故障时，Azure 中的可用性区域可以保护应用程序和数据。 每个可用性区域都由一个或多个数据中心组成，这些数据中心单独配置了电源、散热和网络设备。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 区域中可用性区域的物理隔离可以在发生数据中心故障的情况下保护应用程序和数据。 Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 [此处](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)所述的选定区域支持可用性区域。 
@@ -91,7 +91,7 @@ ms.locfileid: "55824435"
 3. 在“配置灾难恢复” > “目标区域”中，选择要复制到的目标区域。 确保此区域[支持](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)可用性区域。
 ![enable-rep-1.PNG](media/azure-vms-to-zones/enable-rep-1.PNG)
 
-1. 选择“下一步:高级设置”
+1. 在完成时选择“下一步:高级设置”
 2. 为目标订阅、目标 VM 资源组和虚拟网络选择适当的值。
 3. 在“可用性”部分，选择要将 VM 移到的可用性区域。 
 > [!NOTE]

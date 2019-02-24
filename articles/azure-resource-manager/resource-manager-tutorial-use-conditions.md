@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 04b3ebac6406f4a6e5ec07f1806b48e3b2062470
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 90431ea7649b38da6cbbd242b00c21278d8e8967
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235421"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268883"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>教程：在 Azure 资源管理器模板中使用条件
 
@@ -35,8 +35,6 @@ ms.locfileid: "56235421"
 > * 清理资源
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -154,6 +152,9 @@ New-AzResourceGroupDeployment `
     -newOrExisting $newOrExisting `
     -TemplateFile azuredeploy.json
 ```
+
+> [!NOTE]
+> 在云 shell 中使用 Azure PowerShell 时存在文件 IO 问题。  错误消息为“无法检索 cmdlet 的动态参数。找不到路径‘Azure:/azuredeploy.json’，因为它不存在”。  临时解决方法是不在 `New-AzResourceGroupDeploy` 命令中包含 **-TemplateFile** 开关。 该命令将提示你输入文件名。
 
 > [!NOTE]
 > 如果 **newOrExisting** 为 **new**，但具有指定存储帐户名称的存储帐户已存在，则部署将会失败。

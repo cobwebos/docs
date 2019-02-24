@@ -14,16 +14,14 @@ ms.date: 01/25/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 979867e7630c21b0bd724967dbc79c5f8155ca5e
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7371808db8d40948f501b051692172fd6a84e2ac
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237172"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270209"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>教程：在资源管理器模板部署中集成 Azure Key Vault
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 了解如何在资源管理器部署期间从 Azure Key Vault 检索机密，并将机密作为参数传递。 值永远不会公开，因为仅引用其密钥保管库 ID。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](./resource-manager-keyvault-parameter.md)。
 
@@ -192,6 +190,9 @@ New-AzResourceGroupDeployment `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
+
+> [!NOTE]
+> 在云 shell 中使用 Azure PowerShell 时存在文件 IO 问题。  错误消息为“无法检索 cmdlet 的动态参数。找不到路径‘Azure:/azuredeploy.json’，因为它不存在”。  临时解决方法是不在 `New-AzResourceGroupDeploy` 命令中包含 **-TemplateFile** 和 **TemplateParameterFile** 开关。 该命令将提示你输入文件名。
 
 部署模板时，请使用 Key Vault 所在的同一个资源组。 这样可以更轻松地清理资源。 只需删除一个资源组，而不用删除两个。
 

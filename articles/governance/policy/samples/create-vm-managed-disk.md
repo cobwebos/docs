@@ -1,6 +1,6 @@
 ---
 title: 示例 - 审核未使用托管磁盘的 VM
-description: 如果未使用托管磁盘创建虚拟机，则此 json 示例会进行审核。
+description: 如果未使用托管磁盘创建虚拟机，则此 json 示例定义会进行审核。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 30f143fa4ad8bd7e90cfafca8ea6eb276e70e28c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c2bdfb5bc855467be61065e93a932838b5782bee
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243427"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337095"
 ---
-# <a name="audit-when-vm-does-not-use-managed-disk"></a>在 VM 未使用托管磁盘时审核
+# <a name="sample---audit-when-vm-does-not-use-managed-disk"></a>示例 - 在 VM 未使用托管磁盘时审核
 
 如果创建了未使用托管磁盘的虚拟机，则进行审核。
 

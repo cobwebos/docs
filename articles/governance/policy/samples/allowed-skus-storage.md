@@ -1,6 +1,6 @@
 ---
 title: 示例 - 允许用于存储帐户和虚拟机的 SKU
-description: 此示例策略要求存储帐户和虚拟机使用已批准的 SKU。
+description: 此示例策略定义要求存储帐户和虚拟机使用已批准的 SKU。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4e194e70c13fe70702e700fcaafa7cdf981e0147
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: cb6ccf87cc14424801a06cc2e9749e2fc2f6ee4a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242067"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339900"
 ---
-# <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>允许用于存储帐户和虚拟机的 SKU
+# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>示例 - 允许用于存储帐户和虚拟机的 SKU
 
 此策略需要存储帐户和虚拟机使用已批准的 SKU。 使用内置策略以确保使用已批准的 SKU。 指定已批准的虚拟机 SKU 数组和已批准的存储帐户 SKU 数组。
 

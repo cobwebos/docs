@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6789e1d6e514ce107ab96fddbaa582ccbe922bbb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243716"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453607"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>教程 1：预测信用风险 - Azure 机器学习工作室
 
@@ -23,7 +23,7 @@ ms.locfileid: "56243716"
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室和机器学习 Web 服务。  
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室和机器学习 Web 服务。  
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
@@ -55,7 +55,7 @@ ms.locfileid: "56243716"
 
 若要使用机器学习工作室，需要具有 Microsoft Azure 机器学习工作室工作区。 此工作区包含创建、管理和发布试验所需的工具。   
 
-若要创建工作区，请参阅[创建和共享 Azure 机器学习工作区](create-workspace.md)。
+若要创建工作区，请参阅[创建和共享 Azure 机器学习工作室工作区](create-workspace.md)。
 
 创建工作区后，请打开机器学习工作室 ([https://studio.azureml.net/Home](https://studio.azureml.net/Home))。 如果有多个工作区，可在窗口右上角的工具栏中选择工作区。
 

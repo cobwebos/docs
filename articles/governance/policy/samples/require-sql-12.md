@@ -1,6 +1,6 @@
 ---
 title: 示例 - 需要 SQL Server 版本 12.0
-description: 此示例策略需要 SQL Server 使用版本 12.0。
+description: 此示例策略定义要求 SQL Server 运行 12.0 版。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: d00ff3554666ddbe6915882baa423da319b9f54a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 33fb78ed99bff0ccf035f68cfc2d23552a822df7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244201"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340614"
 ---
-# <a name="require-sql-server-version-120"></a>需要 SQL Server 版本 12.0
+# <a name="sample---require-sql-server-version-120"></a>示例 - 需要 SQL Server 版本 12.0
 
 此策略需要 SQL Server 使用版本 12.0。
 

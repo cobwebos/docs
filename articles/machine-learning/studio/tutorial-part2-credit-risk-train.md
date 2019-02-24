@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8ffcfc86823d46e65e116eed86ef35fcba2a99bf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56006403"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453471"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>教程 2：训练信用风险模型 - Azure 机器学习工作室
 
@@ -23,7 +23,7 @@ ms.locfileid: "56006403"
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室和机器学习 Web 服务。  
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室和机器学习 Web 服务。  
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
@@ -191,9 +191,9 @@ ms.locfileid: "56006403"
 通过检查这些值，可以确定哪个模型提供的结果与你所需的结果最接近。 可以返回，通过更改不同模型中的参数值来迭代进行实验。 
 
 对这些结果进行解释以及对模型性能进行优化的科学与艺术不在本教程的范围内。 若要获得更多帮助，可以阅读以下文章：
-- [如何在 Azure 机器学习中评估模型性能](evaluate-model-performance.md)
-- [选择参数来优化 Azure 机器学习中的算法](algorithm-parameters-optimize.md)
-- [在 Azure 机器学习中解释模型结果](interpret-model-results.md)
+- [如何在 Azure 机器学习工作室中评估模型性能](evaluate-model-performance.md)
+- [选择参数优化 Azure 机器学习工作室中的算法](algorithm-parameters-optimize.md)
+- [在 Azure 机器学习工作室中解释模型结果](interpret-model-results.md)
 
 > [!TIP]
 > 每次运行实验时，该迭代的记录都会保留在运行历史记录中。 可以通过单击画布下面的“查看运行历史记录”查看这些迭代，并返回到任何一个迭代。 也可以单击“属性”窗格中的“之前运行”，返回到已打开迭代的前一个迭代。

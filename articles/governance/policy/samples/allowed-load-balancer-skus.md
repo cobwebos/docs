@@ -1,6 +1,6 @@
 ---
 title: 示例 - 允许的负载均衡器 SKU
-description: 此示例策略需要负载均衡器使用已批准的 SKU。
+description: 此示例策略定义要求负载均衡器使用已批准的 SKU。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 6adebea6a6cce1844e413e460a06fd1a7eeb3a2a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b65761d0c325f46a54fc64d39c20f9d1e10ec412
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241948"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341873"
 ---
-# <a name="allowed-load-balancer-skus"></a>允许的负载均衡器 SKU
+# <a name="sample---allowed-load-balancer-skus"></a>示例 - 允许的负载均衡器 SKU
 
 此策略需要负载均衡器使用已批准的 SKU。 指定允许的 SKU 的数组。
 

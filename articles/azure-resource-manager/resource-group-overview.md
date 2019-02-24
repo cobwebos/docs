@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: fbfbb4e452032073d92e7c2b93f78669da0ceaf5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1d576b24e96d6c4c88d6fbef86cb1c6cf7f7c61a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691551"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268117"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
 
 Azure 资源管理器是 Azure 的部署和管理服务。 它提供一致的管理层用于在 Azure 订阅中创建、更新和删除资源。 部署后，可以使用其访问控制、审核和标记功能来保护与组织资源。
 
-通过门户、PowerShell、Azure CLI、REST API 或客户端 SDK 执行操作时，Azure 资源管理器 API 将处理你的请求。 由于所有请求是通过同一个 API 处理的，因此在所有不同的工具中会看到一致的结果和功能。
+通过门户、PowerShell、Azure CLI、REST API 或客户端 SDK 执行操作时，Azure 资源管理器 API 将处理你的请求。 由于所有请求是通过同一个 API 处理的，因此在所有不同的工具中会看到一致的结果和功能。 在门户中提供的所有功能也可以通过 PowerShell、Azure CLI、REST API 和客户端 SDK 来提供。 最初通过 API 发布的功能将在初次发布后的 180 天内在门户中提供。
 
 下图显示各种工具如何与 Azure 资源管理器 API 交互。 API 将请求传递给 Resource Manager 服务，后者对请求进行身份验证和授权。 资源管理器随后将请求路由到相应的服务。
 

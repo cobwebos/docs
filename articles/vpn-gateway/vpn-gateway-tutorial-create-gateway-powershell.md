@@ -2,33 +2,26 @@
 title: 使用 PowerShell 创建和管理 Azure VPN 网关 | Microsoft Docs
 description: 教程 - 使用 Azure PowerShell 模块创建和管理 VPN 网关
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: infrastructure
-ms.date: 05/14/2018
+ms.date: 02/11/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 17c8a55c27a276fa1e2e04ebb9f748fa6d59a9dc
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: afe71953e9917ccf274742124d59cb790f15521b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55505965"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414127"
 ---
-# <a name="create-and-manage-vpn-gateway-with-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建和管理 VPN 网关
+# <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教程：使用 PowerShell 创建和管理 VPN 网关
 
 Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程介绍了基本的 Azure VPN 网关部署项目，例如创建和管理 VPN 网关。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 VPN 网关
+> * 查看公用 IP 地址
 > * 调整 VPN 网关大小
 > * 重置 VPN 网关
 
@@ -38,13 +31,13 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 ### <a name="azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell 和 Azure PowerShell
 
-[!INCLUDE [working with cloudshell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.3 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。 
+[!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ## <a name="common-network-parameter-values"></a>通用网络参数值
 
-根据环境和网络设置更改以下值。
+根据你的环境和网络设置更改以下值，然后复制并粘贴以设置本教程的变量。 如果 Cloud Shell 会话超时，或者需要使用其他 PowerShell 窗口，请将变量复制并粘贴到新会话中，然后继续使用本教程。
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"
@@ -64,23 +57,23 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="create-resource-group"></a>创建资源组
+## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须先创建资源组。 以下示例在*美国东部*区域中创建名为 *TestRG1* 的资源组：
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须先创建资源组。 以下示例在*美国东部*区域中创建名为 *TestRG1* 的资源组：
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName $RG1 -Location $Location1
+New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 ```
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-Azure VPN 网关为虚拟网络提供跨界连接和 P2S VPN 服务器功能。 可以将 VPN 网关添加到现有虚拟网络，也可以创建新的虚拟网络和网关。 此示例创建包含三个子网的全新虚拟网络：Frontend、Backend 和 GatewaySubnet，使用 [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) 和 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) 进行创建：
+Azure VPN 网关为虚拟网络提供跨界连接和 P2S VPN 服务器功能。 可以将 VPN 网关添加到现有虚拟网络，也可以创建新的虚拟网络和网关。 此示例创建包含三个子网的全新虚拟网络：Frontend、Backend 和 GatewaySubnet，使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 和 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 进行创建：
 
 ```azurepowershell-interactive
-$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
-$besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
-$gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubnet1 -AddressPrefix $GwPrefix1
-$vnet   = New-AzureRmVirtualNetwork `
+$fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
+$besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
+$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubnet1 -AddressPrefix $GwPrefix1
+$vnet   = New-AzVirtualNetwork `
             -Name $VNet1 `
             -ResourceGroupName $RG1 `
             -Location $Location1 `
@@ -90,26 +83,26 @@ $vnet   = New-AzureRmVirtualNetwork `
 
 ## <a name="request-a-public-ip-address-for-the-vpn-gateway"></a>为 VPN 网关请求一个公用 IP 地址
 
-Azure VPN 网关通过 Internet 与本地 VPN 设备进行通信，执行 IKE（Internet 密钥交换）协商并建立 IPsec 隧道。 使用 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) 和 [New-AzureRmVirtualNetworkGatewayIpConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayipconfig) 创建一个公用 IP 地址并将其分配给 VPN 网关，如以下示例中所示：
+Azure VPN 网关通过 Internet 与本地 VPN 设备进行通信，执行 IKE（Internet 密钥交换）协商并建立 IPsec 隧道。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 和 [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) 创建一个公共 IP 地址并将其分配给 VPN 网关，如以下示例中所示：
 
 > [!IMPORTANT]
 > 目前，只能为网关使用“动态”公用 IP 地址。 Azure VPN 网关不支持静态 IP 地址。
 
 ```azurepowershell-interactive
-$gwpip    = New-AzureRmPublicIpAddress -Name $GwIP1 -ResourceGroupName $RG1 `
+$gwpip    = New-AzPublicIpAddress -Name $GwIP1 -ResourceGroupName $RG1 `
               -Location $Location1 -AllocationMethod Dynamic
-$subnet   = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' `
+$subnet   = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' `
               -VirtualNetwork $vnet
-$gwipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GwIPConf1 `
+$gwipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 `
               -Subnet $subnet -PublicIpAddress $gwpip
 ```
 
-## <a name="create-vpn-gateway"></a>创建 VPN 网关
+## <a name="create-a-vpn-gateway"></a>创建 VPN 网关
 
-创建 VPN 网关可能需要 45 分钟或更长时间。 完成网关创建后，可以在虚拟网络与另一个 VNet 之间创建连接。 或者，在虚拟网络与本地位置之间创建连接。 使用 [New-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/New-AzureRmVirtualNetworkGateway) cmdlet 创建 VPN 网关。
+创建 VPN 网关可能需要 45 分钟或更长时间。 完成网关创建后，可以在虚拟网络与另一个 VNet 之间创建连接。 或者，在虚拟网络与本地位置之间创建连接。 使用 [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) cmdlet 创建 VPN 网关。
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
+New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
   -Location $Location1 -IpConfigurations $gwipconf -GatewayType Vpn `
   -VpnType RouteBased -GatewaySku VpnGw1
 ```
@@ -119,47 +112,51 @@ New-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 * VpnType：使用 **RouteBased** 与更广范围的 VPN 设备和更多路由功能进行交互
 * GatewaySku：默认值为 **VpnGw1**；如果需要更高的吞吐量或更多连接，请将其更改为 VpnGw2 或 VpnGw3。 有关详细信息，请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
+如果使用的是 TryIt，你的会话可能会超时。没关系。 仍会创建网关。
+
 完成网关创建后，可以在虚拟网络与另一个 VNet 之间创建连接，或者在虚拟网络与本地位置之间创建连接。 还可以配置从客户端计算机到 VNet 的 P2S 连接。
 
-## <a name="resize-vpn-gateway"></a>调整 VPN 网关大小
+## <a name="view-the-gateway-public-ip-address"></a>查看网关公共 IP 地址
 
-可以在创建网关之后更改 VPN 网关 SKU。 不同的网关 SKU 支持不同的规范，例如吞吐量、连接数，等等。以下示例使用 [Resize-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Resize-AzureRmVirtualNetworkGateway) 将网关的大小从 VpnGw1 调整为 VpnGw2。 有关详细信息，请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
+如果知道公共 IP 地址的名称，可使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azurermps-6.8.1) 来显示分配给网关的公共 IP 地址。
+
+如果会话超时，请将本教程开头的常用网络参数复制到新会话中，然后继续操作。
 
 ```azurepowershell-interactive
-$gateway = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
-Resize-AzureRmVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $gateway
+$myGwIp = Get-AzPublicIpAddress -Name $GwIP1 -ResourceGroup $RG1
+$myGwIp.IpAddress
+```
+
+## <a name="resize-a-gateway"></a>重设网关大小
+
+可以在创建网关之后更改 VPN 网关 SKU。 不同的网关 SKU 支持不同的规范，例如吞吐量、连接数，等等。以下示例使用 [Resize-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) 将网关的大小从 VpnGw1 调整为 VpnGw2。 有关详细信息，请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
+
+```azurepowershell-interactive
+$gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
+Resize-AzVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $gateway
 ```
 
 调整 VPN 网关大小也将花费大约 30 到 45 分钟，但是此操作“不会”中断或删除现有连接和配置。
 
-## <a name="reset-vpn-gateway"></a>重置 VPN 网关
+## <a name="reset-a-gateway"></a>重置网关
 
-作为故障排除步骤的一部分，你可以重置 Azure VPN 网关来强制 VPN 网关重新启动 IPsec/IKE 隧道配置。 使用 [Reset-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Reset-AzureRmVirtualNetworkGateway) 重置网关。
+作为故障排除步骤的一部分，你可以重置 Azure VPN 网关来强制 VPN 网关重新启动 IPsec/IKE 隧道配置。 使用 [Reset-AzVirtualNetworkGateway](/powershell/module/az.network/Reset-azVirtualNetworkGateway) 重置网关。
 
 ```azurepowershell-interactive
-$gateway = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
-Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway
+$gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
+Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 
 有关详细信息，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md)。
 
-## <a name="get-the-gateway-public-ip-address"></a>获取网关公用 IP 地址
+## <a name="clean-up-resources"></a>清理资源
 
-如果知道公用 IP 地址的名称，可使用 [Get-AzureRmPublicIpAddress](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-6.8.1) 来显示分配给网关的公用 IP 地址。
+如果要转到[下一个教程](vpn-gateway-tutorial-vpnconnection-powershell.md)，你将需要保留这些资源，因为它们是先决条件。
 
-```azurepowershell-interactive
-$myGwIp = Get-AzureRmPublicIpAddress -Name $GwIP1 -ResourceGroup $RG1
-$myGwIp.IpAddress
-```
-
-## <a name="delete-vpn-gateway"></a>删除 VPN 网关
-
-除了 VPN 网关之外，跨界和 VNet 到 VNet 连接的完整配置还需要多种类型的资源。 在删除 VPN 网关本身之前，请删除与其关联的连接。 在删除网关后，可以删除网关的公用 IP 地址。 有关详细步骤，请参阅[删除 VPN 网关](vpn-gateway-delete-vnet-gateway-powershell.md)。
-
-如果网关是某个原型或概念验证部署的一部分，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令来删除资源组、VPN 网关和所有相关资源。
+但是，如果网关是某个原型、测试或概念证明部署的一部分，则可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令来删除资源组、VPN 网关和所有相关资源。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name $RG1
+Remove-AzResourceGroup -Name $RG1
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -168,6 +165,7 @@ Remove-AzureRmResourceGroup -Name $RG1
 
 > [!div class="checklist"]
 > * 创建 VPN 网关
+> * 查看公用 IP 地址
 > * 调整 VPN 网关大小
 > * 重置 VPN 网关
 

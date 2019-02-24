@@ -1,6 +1,6 @@
 ---
 title: 示例 - 每个 NIC 上的 NSG X
-description: 此示例策略要求每个虚拟网络接口使用特定的网络安全组。
+description: 此示例策略定义要求每个虚拟网络接口都使用特定的网络安全组。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 37701a2240f5b017efdbd051972952c9f0449d69
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: d297d296f8b33122ce2b8079c5ee6c79705bcc55
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245960"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342552"
 ---
-# <a name="nsg-x-on-every-nic"></a>每个 NIC 上的 NSG x
+# <a name="sample---network-security-group-x-on-every-nic"></a>示例 - 每个 NIC 上的网络安全组 X
 
 此策略需要每个虚拟网络接口使用特定的网络安全组。 指定要使用的网络安全组的 ID。
 

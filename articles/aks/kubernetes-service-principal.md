@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 2bc0579d3dd60d66a23a29dabff7e43ca8dfee76
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b8cbeacda98aec639724f30fe3a7e94346f05ba4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435389"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308748"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -128,11 +128,10 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - 在 Kubernetes 群集的主 VM 和节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中
 - 使用 [az aks create][az-aks-create] 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
 - 删除通过 [az aks create][az-aks-create] 创建的 AKS 群集时，不会删除自动创建的服务主体。
-    - 若要删除服务主体，请首先使用 [az ad app list][az-ad-app-list] 获取服务主体的 ID。 以下示例查询名为 *myAKSCluster* 的群集，然后使用 [az ad app delete][az-ad-app-delete] 删除应用 ID。 将以下名称替换为你自己的值：
+    - 若要删除服务主体，请查询群集 *servicePrincipalProfile.clientId*，然后使用 [az ad app delete][az-ad-app-delete] 进行删除。 将以下资源组和群集名称替换为你自己的值：
 
         ```azurecli
-        az ad app list --query "[?displayName=='myAKSCluster'].{Name:displayName,Id:appId}" --output table
-        az ad app delete --id <appId>
+        az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
 ## <a name="next-steps"></a>后续步骤

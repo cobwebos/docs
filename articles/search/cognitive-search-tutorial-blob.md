@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8c63b97f9d4423bf57909da7716675915a5271ef
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a4481e1bbc6248a9616fa7b3fe1d67c7d90af56e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994041"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429411"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>教程：了解如何调用认知搜索 API（预览版）
 
@@ -403,9 +403,7 @@ Content-Type: application/json
 
 另请注意配置参数中的 ```"dataToExtract":"contentAndMetadata"``` 语句。 该语句告知索引器从不同的文件格式以及与每个文件相关的元数据中自动提取内容。 
 
-提取内容后，可以设置 ```ImageAction```，以从数据源中的图像提取文本。 ```"ImageAction":"generateNormalizedImages"``` 告知索引器从图像中提取文本（例如，禁行交通标志中的单词“stop”），并将其嵌入到内容字段中。 此行为将应用到文档中嵌入的图像（例如 PDF 中的图像），以及数据源（例如 JPG 文件）中的图像。
-
-在预览版中，只有 ```"generateNormalizedImages"``` 是 ```"ImageAction"``` 的有效值。
+提取内容后，可以设置 ```imageAction```，以从数据源中的图像提取文本。 ```"imageAction":"generateNormalizedImages"``` 配置与 OCR 技能和文本合并技能相结合，告知索引器从图像中提取文本（例如，禁行交通标志中的单词“stop”），并将其嵌入到内容字段中。 此行为将应用到文档中嵌入的图像（例如 PDF 中的图像），以及数据源（例如 JPG 文件）中的图像。
 
 ## <a name="check-indexer-status"></a>检查索引器状态
 

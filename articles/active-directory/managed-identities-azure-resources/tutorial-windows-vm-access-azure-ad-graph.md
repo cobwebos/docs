@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49412731823cb906e77835e2b915f7915b18dea2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed94b7571acb0ced124644dafc59d805d5112e8a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203788"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268560"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure AD 图形 API
 
@@ -39,6 +39,7 @@ ms.locfileid: "56203788"
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 - 向 VM 标识授予 Azure AD Graph 访问权限的帐户需在 Azure AD 中分配有“全局管理员”角色。
+- 安装最新的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)（如果尚未安装）。 
 
 ## <a name="connect-to-azure-ad"></a>连接到 Azure AD
 

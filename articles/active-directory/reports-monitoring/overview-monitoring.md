@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 228d54f1b2b438c05779b96025d3ad03a7757beb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 961f7bf85ed8bb67c8284edea1846e96895d7f46
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165081"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452842"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>什么是 Azure Active Directory 监视？ （预览版）
 
@@ -57,9 +57,9 @@ ms.locfileid: "56165081"
 
 将日志路由到 Azure 事件中心即可将其与第三方 SIEM 工具（例如 Sumologic 和 Splunk）集成。 可以通过此集成将 Azure AD 活动日志数据与其他由 SIEM 托管的数据组合起来，获取更丰富的有关环境的见解。 了解如何[将日志流式传输到事件中心](tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-## <a name="send-logs-to-log-analytics"></a>将日志发送到 Log Analytics
+## <a name="send-logs-to-azure-monitor-logs"></a>将日志发送到 Azure Monitor 日志
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 是一项解决方案，可以将不同源的监视数据合并，并提供查询语言和分析引擎，让你深入了解应用程序和资源的操作。 将 Azure AD 活动日志发送到 Log Analytics 即可快速检索和监视收集的数据以及针对其发出警报。 了解如何[将数据发送到 Log Analytics](howto-integrate-activity-logs-with-log-analytics.md)。
+[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)是一项解决方案，可以将不同源的监视数据合并，并提供查询语言和分析引擎，让你深入了解应用程序和资源的操作。 将 Azure AD 活动日志发送到 Azure Monitor 日志即可快速检索和监视收集的数据以及针对其发出警报。 了解如何[将数据发送到 Azure Monitor 日志](howto-integrate-activity-logs-with-log-analytics.md)。
 
 也可安装针对 Azure AD 活动日志预生成的视图，以便监视涉及登录和审核事件的常见场景。 了解如何[安装和使用 Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)。
 
@@ -67,4 +67,4 @@ ms.locfileid: "56165081"
 
 * [Azure Monitor 中的活动日志](concept-activity-logs-azure-monitor.md)
 * [将日志流式传输到事件中心](tutorial-azure-monitor-stream-logs-to-event-hub.md)
-* [将日志发送到 Log Analytics](howto-integrate-activity-logs-with-log-analytics.md)
+* [将日志发送到 Azure Monitor 日志](howto-integrate-activity-logs-with-log-analytics.md)
