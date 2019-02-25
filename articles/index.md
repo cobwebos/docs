@@ -1707,7 +1707,7 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://azure.microsoft.com/">
+                                            <a href="https://docs.microsoft.com/azure/azure-portal/">
                                                 <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
                                                 <p>Microsoft Azure 门户</p>
                                             </a>
