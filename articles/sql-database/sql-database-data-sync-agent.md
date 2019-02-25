@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据同步的数据同步代理 | Microsoft Docs
-description: 了解如何安装并运行 Azure SQL 数据同步的数据同步代理来将数据与本地 SQL Server 数据库进行同步
+title: Azure SQL 数据同步的 Data Sync Agent | Microsoft Docs
+description: 了解如何安装并运行 Azure SQL 数据同步的 Data Sync Agent 来将数据与本地 SQL Server 数据库进行同步
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -19,20 +19,20 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2019
 ms.locfileid: "55567904"
 ---
-# <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的数据同步代理
+# <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的 Data Sync Agent
 
-通过安装并配置 Azure SQL 数据同步的数据同步代理来将数据与本地 SQL Server 数据库进行同步。有关 SQL 数据同步的详细信息，请参阅[使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+通过安装并配置 Azure SQL 数据同步的 Data Sync Agent 来将数据与本地 SQL Server 数据库进行同步。有关 SQL 数据同步的详细信息，请参阅[使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
 > 目前，Azure SQL 数据同步**不**支持 Azure SQL 数据库托管实例。
 
 ## <a name="download-and-install"></a>下载并安装
 
-若要下载数据同步代理，请转到 [SQL Azure 数据同步代理](https://www.microsoft.com/download/details.aspx?id=27693)。
+若要下载 Data Sync Agent，请转到 [SQL Azure Data Sync Agent](https://www.microsoft.com/download/details.aspx?id=27693)。
 
 ### <a name="install-silently"></a>以无提示方式安装
 
-若要从命令提示符以无提示方式安装数据同步代理，请输入类似于以下示例的命令。 检查下载的 .msi 文件的文件名，并为 **TARGETDIR** 和 **SERVICEACCOUNT** 参数提供你自己的值。
+若要从命令提示符以无提示方式安装 Data Sync Agent，请输入类似于以下示例的命令。 检查下载的 .msi 文件的文件名，并为 **TARGETDIR** 和 **SERVICEACCOUNT** 参数提供你自己的值。
 
 - 如果没有为 **TARGETDIR** 提供值，则默认值为 `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`。
 
@@ -46,7 +46,7 @@ msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\
 
 ## <a name="sync-data-with-sql-server-on-premises"></a>将数据与本地 SQL Server 进行同步
 
-若要配置数据同步代理以便可以将数据与一个或多个本地 SQL Server 数据库进行同步，请参阅[添加本地 SQL Server 数据库](sql-database-get-started-sql-data-sync.md#add-on-prem)。
+若要配置 Data Sync Agent 以便可以将数据与一个或多个本地 SQL Server 数据库进行同步，请参阅[添加本地 SQL Server 数据库](sql-database-get-started-sql-data-sync.md#add-on-prem)。
 
 ## <a name="agent-faq"></a> 数据同步代理常见问题解答
 
@@ -151,14 +151,14 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
     a. 选择“启动”。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。  
-    d. 在“服务”窗口中，滚动到 **SQL 数据同步代理**所对应的条目。  
-  1. 右键单击“SQL 数据同步代理”并选择“停止”。
-  1. 右键单击“SQL 数据同步代理”并选择“属性”。
-  1. 在“SQL 数据同步代理属性”中，选择“登录”选项卡。
+    d. 在“服务”窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
+  1. 右键单击“SQL Data Sync Agent”并选择“停止”。
+  1. 右键单击“SQL Data Sync Agent”并选择“属性”。
+  1. 在“SQL Data Sync Agent 属性”中，选择“登录”选项卡。
   1. 在“密码”框中输入自己的密码。
   1. 在“确认密码”框中再次输入自己的密码。
   1. 依次选择“应用”、“确定”。
-  1. 在“服务”窗口中，右键单击“SQL 数据同步代理”服务并单击“启动”。
+  1. 在“服务”窗口中，右键单击“SQL Data Sync Agent”服务并单击“启动”。
   1. 关闭“服务”窗口。
 
 ### <a name="agent-key"></a>无法提交代理密钥
@@ -220,9 +220,9 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
   1. 重启“SQL 数据同步”服务。  
   1. 重新打开应用。
 
-## <a name="run-the-data-sync-agent-from-the-command-prompt"></a>从命令提示符运行数据同步代理
+## <a name="run-the-data-sync-agent-from-the-command-prompt"></a>从命令提示符运行 Data Sync Agent
 
-可以从命令提示符运行以下数据同步代理命令：
+可以从命令提示符运行以下 Data Sync Agent 命令：
 
 ### <a name="ping-the-service"></a>对服务执行 Ping 命令
 
