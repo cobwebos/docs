@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5ec95e9f1f91c31620644d3bd66118ed89337228
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 15c1e8af5e6df658ea24ce357aeeee711eaf9279
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078554"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673481"
 documentType: LandingData
 title: Azure Active Directory B2B 文档
 metadata:
   document_id: 
-  title: Azure Active Directory B2B 文档 - 教程、快速入门、概念和参考 | Microsoft Docs
-  description: 了解如何使用 B2B 来宾用户访问权限，以便安全地与外部合作伙伴共享资源和协作。
+  title: Azure Active Directory B2B 文档 | Microsoft Docs
+  description: 使用我们的教程、快速入门和操作指南，了解如何使用 B2B 来宾用户访问权限与外部伙伴进行共享和协作。
   services: active-directory
   ms.subservice: authentication
   author: msmimart
@@ -41,10 +41,12 @@ sections:
     style: icon48
     items:
     - image:
+        alt: 
         src: ./media/index/i_security-management.png
       text: 在 Azure 门户中添加来宾用户
       href: b2b-quickstart-add-guest-users-portal.md
     - image:
+        alt: 
         src: ./media/index/i_security-management.png
       text: 使用 PowerShell 添加来宾用户
       href: b2b-quickstart-invite-powershell.md

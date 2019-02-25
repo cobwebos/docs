@@ -531,6 +531,8 @@ items:
       href: sql-database-develop-overview.md
     - name: 处理 JSON 数据
       href: sql-database-json-features.md
+    - name: 使用 Azure Functions
+      href: ../azure-functions/functions-scenario-database-table-cleanup.md?toc=/azure/sql-database/toc.json
     - name: 使用 Spark 连接器
       href: sql-database-spark-connector.md
     - name: 应用身份验证
@@ -714,9 +716,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: bf8a32ede6ce782bc0ff5ac58cd12ba70283289e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 0d518613897f550af5dabe073f5baf4550a0dcf9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100034"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672964"

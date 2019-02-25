@@ -171,15 +171,15 @@ items:
       - name: 每个子网上的 NSG X
         displayName: deny, all
         href: samples/nsg-on-subnet.md
-    - name: 快速路由
+    - name: ExpressRoute
       items:
-      - name: 允许的 Express Route 带宽
+      - name: 允许的 ExpressRoute 带宽
         displayName: deny
         href: samples/allowed-express-route-bandwidth.md
-      - name: 允许的 Express Route SKU
+      - name: 允许的 ExpressRoute SKU
         displayName: deny
         href: samples/allowed-express-route-skus.md
-      - name: 允许的 Express Route 对等位置
+      - name: 允许的 ExpressRoute 对等位置
         displayName: deny, Location
         href: samples/allowed-express-route-peering.md
     - name: 网络观察程序
@@ -327,9 +327,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: 9255a819340e2aa4e8f5af6752ddac3cd375705b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 840c9577da2ee29d77dc9ec36a7266f1469ce5ff
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867250"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734881"
