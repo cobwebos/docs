@@ -69,7 +69,7 @@ ms.locfileid: "56007505"
   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
   ```
 
-等待 30 分钟以将订阅加入白名单，然后开始使用 Azure 门户或 PowerShell 执行移动操作。
+等待 30 分钟以将订阅加入允许列表，然后开始使用 Azure 门户或 PowerShell 执行移动操作。
 
 ## <a name="use-azure-portal-to-move-a-recovery-services-vault-to-different-resource-group"></a>使用 Azure 门户将恢复服务保管库移到不同的资源组
 

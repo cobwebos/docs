@@ -99,7 +99,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 > 确保已安装 Azure CLI 2.0.57 或更高版本。 可以在 [此处](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)下载最新版本。
 > 
 
-## <a name="whitelist-device-streaming-endpoints"></a>将设备流式处理终结点加入白名单
+## <a name="whitelist-device-streaming-endpoints"></a>将设备流式处理终结点加入允许列表
 
 如[之前](#Overview)所述，设备在设备流启动过程中创建到 IoT 中心流式处理终结点的出站连接。 设备或其网络上的防火墙必须允许端口 443 上到流式传输网关的出站连接（请注意，通信发生在使用 TLS 加密的 WebSocket 连接上）。
 

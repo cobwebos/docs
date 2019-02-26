@@ -53,7 +53,7 @@ ms.locfileid: "55985375"
 
 
 
-&#42; 要复制到澳大利亚中部和澳大利亚中部 2，需要将订阅列入白名单。 要请求白名单，请转到： https://www.microsoft.com/en-au/central-regions-eligibility/
+&#42; 要复制到澳大利亚中部和澳大利亚中部 2，需要将订阅列入允许列表。 要请求允许列表，请转到： https://www.microsoft.com/en-au/central-regions-eligibility/
 
 ## <a name="scaling"></a>扩展
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。

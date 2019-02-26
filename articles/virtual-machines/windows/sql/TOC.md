@@ -35,13 +35,16 @@
 ## 配置高可用性
 ### [使用 Azure 存储进行备份和还原](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 ### Always On 可用性组
-#### [使用 Azure 门户模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-#### [使用快速入门模板](virtual-machines-windows-sql-availability-group-quickstart-template.md)
-#### [手动 - 先决条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
-#### [手动 - 教程](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [负载均衡器 - Azure 门户](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [负载均衡器 - Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md)
+#### [Azure 门户模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Azure 快速入门模板](virtual-machines-windows-sql-availability-group-quickstart-template.md)
 #### [多个区域](virtual-machines-windows-portal-sql-availability-group-dr.md)
+#### 手动配置    
+##### [先决条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+##### [教程](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+##### [负载均衡器 - Azure 门户](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+##### [负载均衡器 - Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+
 ### 故障转移群集实例
 #### [配置](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 

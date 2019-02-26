@@ -5,16 +5,12 @@ items:
   items:
   - name: 关于实验室服务
     href: lab-services-overview.md
-  - name: 比较实验室类型
-    href: compare-lab-types.md
+  - name: 关于教室实验室
+    href: classroom-labs/classroom-labs-overview.md
+  - name: 关于开发测试实验室
+    href: devtest-lab-overview.md
 - name: 教程
   items:
-  - name: 开发测试实验室
-    items:
-    - name: 1. 设置实验室
-      href: tutorial-create-custom-lab.md
-    - name: 2. 访问实验室
-      href: tutorial-use-custom-lab.md
   - name: 教室实验室
     items:
     - name: 1. 设置实验室帐户
@@ -25,6 +21,12 @@ items:
       href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
     - name: 4. 跟踪课堂实验室的使用情况
       href: classroom-labs/tutorial-track-usage.md
+  - name: 开发测试实验室
+    items:
+    - name: 1. 设置实验室
+      href: tutorial-create-custom-lab.md
+    - name: 2. 访问实验室
+      href: tutorial-use-custom-lab.md
 - name: 示例
   items:
   - name: 开发测试实验室
@@ -37,17 +39,26 @@ items:
       href: samples-cli.md
 - name: 概念
   items:
-  - name: 开发测试实验室
-    href: devtest-lab-concepts.md
+  - name: 教室实验室
     items:
-    - name: 使用开发人员实验室
-      href: devtest-lab-developer-lab.md
-    - name: 使用测试环境实验室
-      href: devtest-lab-test-env.md
-    - name: 使用训练实验室
-      href: devtest-lab-training-lab.md
-    - name: 开发测试实验室简介
-      href: devtest-lab-overview.md
+    - name: 教室实验室概念
+      href: classroom-labs/classroom-labs-concepts.md
+    - name: 方案
+      items:
+      - name: 将实验室用于上课
+        href: classroom-labs/classroom-labs-scenarios.md
+  - name: 开发测试实验室
+    items:
+    - name: 开发测试实验室概念
+      href: devtest-lab-concepts.md
+    - name: 方案
+      items:
+      - name: 使用开发人员实验室
+        href: devtest-lab-developer-lab.md
+      - name: 使用测试环境实验室
+        href: devtest-lab-test-env.md
+      - name: 使用训练实验室
+        href: devtest-lab-training-lab.md
 - name: 操作指南
   items:
   - name: 教室实验室
@@ -197,37 +208,47 @@ items:
       href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
 - name: 引用
   items:
-  - name: CLI
-    href: /cli/azure/lab
-  - name: PowerShell
-    href: /powershell/module/az.devtestlabs/#devtest_labs
-  - name: REST API
-    href: https://docs.microsoft.com/rest/api/dtl/
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.devtestlab/allversions
+  - name: 教室实验室
+    items:
+    - name: REST API
+      href: https://docs.microsoft.com/rest/api/labservices/
+  - name: 开发测试实验室
+    items:
+    - name: CLI
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: /powershell/module/azurerm.devtestlabs/#devtest_labs
+    - name: REST API
+      href: https://docs.microsoft.com/rest/api/dtl/
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.devtestlab/allversions
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=developer-tools
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 开发测试实验室 - 常见问题解答
-    href: devtest-lab-faq.md
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=devtest-lab
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs
-  - name: 团队博客
-    href: https://blogs.msdn.microsoft.com/devtestlab/
-  - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-devtest-labs
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 61d83d7d3e56abbb16e4d47dc1a7693707663c73
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+  - name: 教室实验室
+    items:
+    - name: Azure 更新
+      href: https://azure.microsoft.com/updates/?product=lab-services
+    - name: 定价
+      href: https://azure.microsoft.com/pricing/details/lab-services/
+    - name: 堆栈溢出
+      href: https://stackoverflow.com/questions/tagged/azure-lab-services
+  - name: 开发测试实验室
+    items:
+    - name: Azure 更新
+      href: https://azure.microsoft.com/updates/?product=devtest-lab
+    - name: 定价
+      href: https://azure.microsoft.com/pricing/details/devtest-lab/
+    - name: MSDN 论坛
+      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs
+    - name: 堆栈溢出
+      href: https://stackoverflow.com/questions/tagged/azure-devtest-labs
+    - name: 视频
+      href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
+    - name: 常见问题
+      href: devtest-lab-faq.md
+ms.openlocfilehash: f4a7e26be0bbb15631fd44bf38506d564d27f331
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736731"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805683"
