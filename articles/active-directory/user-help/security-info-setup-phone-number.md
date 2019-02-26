@@ -1,6 +1,6 @@
 ---
-title: 设置安全信息以使用电话呼叫 - Azure Active Directory | Microsoft Docs
-description: 设置安全信息，以使用移动设备或工作电话号码验证身份。
+title: 设置安全信息（预览版）以使用电话呼叫 - Azure Active Directory | Microsoft Docs
+description: 如何设置安全信息，以使用电话呼叫验证身份。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,50 +9,90 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c8daa50886c583f26a2d931854d7132eb2ece4b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf07541c23ba2295a367ac8ba6a514b7dee6ee9a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177200"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453828"
 ---
-# <a name="set-up-security-info-to-use-phone-calls-preview"></a>设置安全信息以使用电话呼叫（预览）
+# <a name="set-up-security-info-preview-to-use-phone-calls"></a>设置安全信息（预览版）以使用电话呼叫
+可以按照以下步骤添加双重验证和密码重置方法。 在第一次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
+
+如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-设置安全信息需要登录到工作或学校帐户，然后完成注册过程。 如果从未设置过安全信息，将提示你立即设置。
+>[!Note]
+>安全信息不支持使用电话分机。 即使添加正确的“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
 
-## <a name="set-up-phone-calls"></a>设置电话呼叫
+>如果看不到电话选项，则可能是因为组织不允许你使用电话号码进行验证。 在这种情况下，需选择另一种方法，或与管理员联系以获取进一步帮助。
 
-根据组织的设置，可能会在登录时提示你将电话号码添加到安全信息中。 否则，若要开始在安全信息中设置电话呼叫，请执行[管理安全信息](security-info-manage-settings.md)中的步骤。
+## <a name="set-up-phone-calls-from-the-security-info-page"></a>从“安全信息”页面设置电话呼叫
+也许可以使用电话呼叫作为安全信息方法之一，具体取决于组织的设置。
 
 >[!Note]
->安全信息不支持使用电话分机。 即使添加正确的“+1 4255551234X12345”格式，在拨出电话前也会删除分机。<br>如果看不到电话选项，则可能是因为组织不允许你使用电话呼叫进行验证。 如果是这样，则将需要选择另一种方法，或与管理员联系以获取进一步帮助。
+>如果想要接收短信而不是接听电话，请按照[设置安全信息以使用短信消息](security-info-setup-text-msg.md)一文中的步骤进行操作。
 
-### <a name="to-use-your-phone-number"></a>使用你的电话号码
+### <a name="to-set-up-phone-calls"></a>设置电话呼叫的步骤
 
-1. 选择“电话”选项。
+1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
 
-    将显示“设置电话”向导。
+    ![“我的个人资料”页面，显示突出显示的安全信息链接](media/security-info/securityinfo-myprofile.png)
 
-    ![设置国家或地区代码及电话号码](media/security-info/security-info-keep-secure-setup-phone.png)
+2. 从左侧导航窗格中或从“安全信息”块中的链接中选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-2. 从下拉框中选取“国家/地区或区域”，将电话号码（包括区域代码，如果适用）键入到“电话号码”框中，选择“呼叫我”选项，然后选择“下一步”。
+    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod.png)
 
-    你将接到电话呼叫，以确保键入正确的电话号码。 此时，系统将提示你按井号 (#) 键，确认并完成设置。
+3. 在“添加方法”页面上，从下拉列表中选择“电话”，然后选择“添加”。
 
-    ![验证手机屏幕，屏幕上显示已成功接听呼叫](media/security-info/security-info-keep-secure-verify-phone-call.png)
+    ![“添加方法”框，已选中“电话”](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-    在使用双重验证或自助密码重置时，安全信息会更新，以便使用电话号码验证身份。
+4. 在“电话”页上，键入移动设备的电话号码，选择“呼叫我”，然后选择“下一步”。
 
-    >[!Note]
-    >如果想要接收短信而不是通过移动设备接听电话，请按照[设置安全信息，以使用短信 (SMS)](security-info-setup-text-msg.md) 一文中的步骤进行操作。
+    ![添加电话号码并选择电话呼叫](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
-## <a name="additional-security-info-options"></a>其他安全信息选项
+5. 接听验证电话（打给你输入的电话号码），按指令操作。
 
+    此时，页面更改为显示成功。
+
+    ![成功通知、连接电话号码、接收电话呼叫的选择以及帐户](media/security-info/securityinfo-myprofile-phonetext-success.png)
+
+    安全信息已更新，你可以在使用双重验证或密码重置时通过电话呼叫验证身份。 如果要将电话呼叫用作默认方法，请参阅本文的[更改默认安全信息方法](#change-your-default-security-info-method)部分。
+
+## <a name="delete-phone-calls-from-your-security-info-methods"></a>从安全信息方法中删除电话呼叫
+如果不想再将电话呼叫用作安全信息方法，则可从“安全信息”页面将其删除。
+
+>[!Important]
+>如果错误地删除了电话呼叫，则无法撤消该操作。 必须按照本文的[设置电话呼叫](#set-up-phone-calls-from-the-security-info-page)部分的步骤再次添加该方法。
+
+### <a name="to-delete-phone-calls"></a>删除电话呼叫的步骤
+
+1. 在“安全信息”页面上，选择“电话”选项旁边的“删除”链接。
+
+    ![从安全信息中删除电话方法的链接](media/security-info/securityinfo-myprofile-phonetext-delete.png)
+
+2. 从确认框中选择“是”，以删除**电话**号码。 删除电话号码后，它就会从你的安全信息中删除，并从“安全信息”页面消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
+    
+## <a name="change-your-default-security-info-method"></a>更改默认的安全信息方法
+如果你在使用双重验证登录工作或学校帐户时希望电话呼叫成为默认使用的方法，或者希望电话呼叫成为默认用于密码重置请求的方法，则可以从“安全信息”页面对其进行设置。
+
+### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法的步骤
+
+1. 在“安全信息”页面上，选择“默认登录方法”信息旁边的“更改”链接。
+
+    ![更改默认登录方法的链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
+
+2. 从可用方法的下拉列表中选择“电话 - 呼叫 (*_your_phone_number_*)”，然后选择“确认”。
+
+    ![选择默认登录的方法](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
+
+    用于登录的默认方法更改为“电话 - 呼叫 (*_your_phone_number_*)”。
+
+## <a name="additional-security-info-methods"></a>其他安全信息方法
 基于你想要执行的操作，还可以选择组织如何联系你以验证你的身份的其他选项。 选项包括：
 
 - **Authenticator 应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
@@ -67,8 +107,6 @@ ms.locfileid: "56177200"
     >如果缺少其中某些选项，则很可能是因为组织不允许使用这些方法。 如果是这样，则将需要选择可用的方法，或与管理员联系以获取进一步帮助。
 
 ## <a name="next-steps"></a>后续步骤
-
-- 如需更新安全信息，请遵照[管理安全信息](security-info-manage-settings.md)一文中的说明。
 
 - 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](user-help-reset-password.md)一文中的步骤重置密码。
 
