@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/25/2018
+ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 9341eefdbe1eaa8e27394fd4b10f50b1a48bd4c6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/25/2019
+ms.openlocfilehash: 65894ccd9514bce1d429b336f8bd5e6674048e65
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247317"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820257"
 ---
 # <a name="what-is-azure-stack"></a>什么是 Azure Stack？
 
@@ -33,15 +33,15 @@ Microsoft Azure Stack 是一种混合云平台，用于在你的数据中心中�
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack 开发工具包
 
-Microsoft [Azure Stack 开发工具包 (ASDK)](./asdk/asdk-what-is.md) 是 Azure Stack 的单节点部署，可用于评估和了解 Azure Stack。  还可将 ASDK 用作开发人员环境，以使用与 Azure 一致的 API 和工具来构建应用。
+Microsoft [Azure Stack 开发工具包 (ASDK)](./asdk/asdk-what-is.md) 是 Azure Stack 的单节点部署，可用于评估和了解 Azure Stack。  此外可以使用 ASDK 作为开发人员环境构建应用程序使用的 Api 和工具与 Azure 一致的。
 
 >[!Note]
 >ASDK 不可用作生产环境。
 
 ASDK 具有以下限制：
 
-* ASDK 与单个 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 标识提供者相关联。 可在此目录中创建多个用户，并将订阅分配给每个用户。
-* 因为 Azure Stack 组件部署于一台主机计算机上，所以只有很有限的物理资源可用于租户资源。 此配置不适用于规模或性能评估。
+* ASDK 是与单个 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 标识提供者相关联。 可在此目录中创建多个用户，并将订阅分配给每个用户。
+* 由于 Azure Stack 组件部署在单个主机计算机上，有物理资源有限对租户资源可用。 此配置不是规模或性能评估。
 * 由于只有一台主机和 NIC 部署要求方面的原因，网络方案会受到限制。
 
 ## <a name="azure-stack-integrated-systems"></a>Azure Stack 集成系统

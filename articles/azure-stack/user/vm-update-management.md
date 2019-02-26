@@ -16,19 +16,19 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4683b6f63af9fe0081911db9914f04b1c90f9d23
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168131"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819439"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack VM 更新和管理
 以下 Azure 自动化解决方案功能可用于管理 Windows 和 Linux Vm 使用 Azure Stack 部署：
 
 - **[更新管理](https://docs.microsoft.com/azure/automation/automation-update-management)**。 使用更新管理解决方案中，可以快速评估所有代理计算机上的可用更新的状态和管理这些 Windows 和 Linux Vm 中安装所需的更新的过程。
 
-- **[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)**。 对受监视服务器上已安装的软件、Windows 服务、Windows 注册表和文件以及 Linux 守护程序进行的更改将发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松查看服务器基础结构中所做的更改。
+- **[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)**。 对已安装的软件、 Windows 服务、 Windows 注册表和文件，并受监视服务器上的 Linux 守护程序的更改发送到云中的 Azure Monitor 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松查看服务器基础结构中所做的更改。
 
 - **[库存](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**。 库存跟踪为 Azure Stack 虚拟机提供了用于设置和配置清单收集的基于浏览器的用户界面。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "56168131"
 > [!TIP]
 > 如果已为 Azure Vm 启用这些功能，可以使用预先存在的 LogAnalytics 工作区凭据。 如果已 LogAnalytics 工作区 Id 和你想要使用的主键，跳到[下一步部分](./vm-update-management.md#in-the-azure-stack-administration-portal)。 否则，继续在此部分中创建新的 LogAnalytics 工作区和自动化帐户。
 
-启用这些解决方案的第一步是向[创建 LogAnalytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)在 Azure 订阅中。 Log Analytics 工作区是一个具有其自己的数据存储库、 数据源和解决方案的独特 Log Analytics 环境。 创建一个工作区后，请注意工作区 Id 和密钥。 若要查看此信息，请转到工作区边栏选项卡，单击**高级设置**，并查看**工作区 ID**并**Primary Key**值。 
+启用这些解决方案的第一步是向[创建 LogAnalytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)在 Azure 订阅中。 Log Analytics 工作区是一个唯一的 Azure Monitor 日志环境具有其自己的数据存储库、 数据源和解决方案。 创建一个工作区后，请注意工作区 Id 和密钥。 若要查看此信息，请转到工作区边栏选项卡，单击**高级设置**，并查看**工作区 ID**并**Primary Key**值。 
 
 接下来，必须[创建自动化帐户](https://docs.microsoft.com/azure/automation/automation-create-standalone-account)。 自动化帐户是 Azure 自动化资源的容器。 它使您能够隔离环境，或者进一步组织您的自动化工作流和资源。 创建自动化帐户后，您需要以启用清单，更改跟踪，并更新管理功能。 若要执行此操作，请执行以下步骤启用每个功能：
 
@@ -52,7 +52,7 @@ ms.locfileid: "56168131"
 
 2. 选择要启用的解决方案 (任一**清单**，**更改跟踪**，或**更新管理**)。
 
-3. 使用**选择工作区...** 下拉列表选择要使用 Log Analytics 工作区。
+3. 使用**选择工作区...** 下拉列表选择要使用的 Log Analytics 工作区。
 
 4. 验证所有剩余信息是否正确，然后依次**启用**以启用此解决方案。
 

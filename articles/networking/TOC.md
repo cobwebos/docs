@@ -11,7 +11,7 @@
 ### [使用 Azure DNS 和流量管理器进行灾难恢复](disaster-recovery-dns-traffic-manager.md)
 ## 规划和设计
 ### [虚拟网络](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [跨界连接 - VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [跨界连接 - VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [跨界连接 - 专用私有连接](../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### 后端连接互操作性
 #### [前言和测试设置](connectivty-interoperability-preface.md?toc=%2fazure%2fnetworking%2ftoc.json)
