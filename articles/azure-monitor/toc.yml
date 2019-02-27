@@ -420,8 +420,6 @@ items:
         href: platform/collect-azure-metrics-logs.md
       - name: Azure 存储中的诊断或日志数据
         href: platform/azure-storage-iis-table.md
-      - name: Azure PaaS 资源
-        href: platform/collect-azurepass-posh.md
       - name: 关联自定义数据源
         href: app/custom-data-correlation.md
     - name: 收集自定义数据
@@ -448,10 +446,10 @@ items:
         href: platform/archive-diagnostic-logs.md
       - name: 存储诊断日志
         href: platform/diagnostic-logs-stream-log-store.md
+      - name: 将 Azure 资源数据流式传输到事件中心
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: 将活动日志流式传输到事件中心
         href: platform/activity-logs-stream-event-hubs.md
-      - name: 将日志和指标流式传输到事件中心
-        href: platform/stream-monitoring-data-event-hubs.md
       - name: 将诊断日志流式传输到事件中心
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: 将应用程序数据流式传输到 Log Analytics
@@ -636,8 +634,9 @@ items:
   - name: 可视化数据
     items:
     - name: 视图
-      href: platform/view-designer.md
       items:
+      - name: 视图设计器
+        href: platform/view-designer.md
       - name: 磁贴参考
         href: platform/view-designer-tiles.md
       - name: 可视化部分参考
@@ -916,7 +915,7 @@ items:
         href: insights/solutions-best-practices.md
       - name: 从 runbook 收集监视数据
         href: platform/runbook-datacollect.md
-- name: 参考
+- name: 引用
   items:
   - name: Application Insights
     items:
@@ -1031,9 +1030,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 519c8213c715995fea89475e81f8c63f41190d65
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7ca33f101a86f08ce8249bd43975d6ed2aab6141
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455392"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888162"

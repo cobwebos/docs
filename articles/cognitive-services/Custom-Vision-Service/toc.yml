@@ -31,6 +31,12 @@ items:
       href: node-tutorial.md
     - name: 对象检测
       href: node-tutorial-object-detection.md
+  - name: 使用 Go SDK
+    items:
+    - name: 图像分类
+      href: go-tutorial.md
+    - name: 对象检测
+      href: go-tutorial-object-detection.md
 - name: 教程
   items:
   - name: 适用于移动设备的徽标检测程序
@@ -93,9 +99,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
   - name: 发行说明
     href: release-notes.md
-ms.openlocfilehash: 1a98bec35cf86f1d1edef33781cb053a8843b5c9
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 6802ba56bba276e97bd624fd0da39a6146eb8238
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749862"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866804"

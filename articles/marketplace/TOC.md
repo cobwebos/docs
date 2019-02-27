@@ -1,5 +1,6 @@
 # [Azure 市场和 AppSource 文档](index.md)
 ## [Azure 市场和 AppSource 路线图](./marketplace-roadmap.md)
+## [Azure 市场策略和条款](./policies-terms.md)
 
 ## [Azure 市场和 AppSource 概述与权益](./marketplace-publishers-guide.md)  
 ### [成为市场上的发布者](./become-publisher.md)  
@@ -29,7 +30,6 @@
 #### [产品/服务列表最佳做法](./gtm-offer-listing-best-practices.md)
 #### [如何成为特别推荐的应用](./gtm-how-to-get-featured.md)
 #### [市场内容验证](./marketplace-criteria-content-validation.md)
-#### [分级和评审策略](./rating-review-policies.md)   
 
 ### [市场权益](./gtm-your-marketplace-benefits.md)
 #### [通过 Microsoft 促进业务发展](./gtm-promote-your-business.md)
@@ -37,9 +37,6 @@
 
 ### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)
 #### [市场常见问题解答](./marketplace-faq-publisher-guide.md)
-#### [市场条款](./marketplace-terms.md)
-#### [市场参与策略](./marketplace-participation-policy.md)
-
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 

@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概述
   items:
-  - name: 用于 MySQL 的 Azure DB
+  - name: 什么是用于 MySQL 的 Azure DB？
     href: overview.md
 - name: 快速入门
   items:
@@ -45,9 +45,11 @@ items:
   - name: 2 - 创建 Web 应用
     items:
     - name: 将 Wordpress 与 MySQL 配合使用创建多容器应用
-      href: ../app-service/containers/tutorial-multi-container-app.md?toc=%2fazure%2fmysql%2ftoc.json
+      href: ../app-service/containers/tutorial-multi-container-app.md
+      maintainContext: true
     - name: 将 PHP 与 MySQL 配合使用
-      href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+      href: ../app-service/app-service-web-tutorial-php-mysql.md
+      maintainContext: true
 - name: 示例
   items:
   - name: Azure CLI
@@ -242,9 +244,9 @@ items:
     href: partners-migration-mysql.md
   - name: 数据库迁移指南
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 1a4816724407eaa78fd8ab3984a21da00f0e1f04
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f32f4fa87e8d770875c06462c32e984a72afdb92
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568322"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887363"

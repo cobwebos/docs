@@ -229,6 +229,8 @@ items:
       href: how-to-connect-health-operations.md
     - name: 使用 Azure AD Connect Health 监视 AD FS
       href: how-to-connect-health-adfs.md
+    - name: 用于 AD FS 的 Azure AD Connect Health 的有风险 IP 报表
+      href: how-to-connect-health-adfs-risky-ip.md
     - name: 将 Azure AD Connect Health 用于同步
       href: how-to-connect-health-sync.md
     - name: 使用 Azure AD Connect Health 监视 AD DS
@@ -333,9 +335,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools 参考
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 3baf6790640a8504089fc47472f3f8a9fc22a873
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8eb252f12a4a1a66ba7e8bd5c584e7aad227e24c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765802"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889268"

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: d1127834732a6fc82e0331370a6c4173e9f61dcf
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0a0d003f3d78c6d18938e9c87dd4862f7429d55b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685406"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728686"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -57,7 +57,7 @@ FunctionsProject
 
 存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都具有自己的代码文件 (.csx) 和绑定配置文件 (function.json)。
 
-[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](functions-triggers-bindings.md#local-development-azure-functions-core-tools)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#local-development-azure-functions-core-tools)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 ## <a name="binding-to-arguments"></a>绑定到参数
 
@@ -224,7 +224,7 @@ public class Order
 
 ## <a name="binding-to-method-return-value"></a>绑定到方法返回值
 
-可通过在 *function.json* 中使用名称 `$return` 将方法返回值用于输出绑定。 有关示例，请参阅[触发器和绑定](functions-triggers-bindings.md#using-the-function-return-value)。
+可通过在 *function.json* 中使用名称 `$return` 将方法返回值用于输出绑定。 有关示例，请参阅[触发器和绑定](./functions-bindings-return-value.md)。
 
 仅当成功的函数执行始终将返回值传递给输出绑定时，才使用返回值。 否则，请使用 `ICollector` 或 `IAsyncCollector`，如以下部分所示。
 
@@ -376,12 +376,12 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 自动监视包含函数脚本文件的目录的程序集更改。 若要监视其他目录中的程序集更改，请将其添加到 [host.json](functions-host-json.md) 中的 `watchDirectories` 列表中。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 包
-要在 C# 函数中使用 NuGet 包，可将 *extensions.csproj* 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *extensions.csproj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
+若要在 C# 函数中使用 NuGet 包，请将 *function.proj* 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net46</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
     
     <ItemGroup>
@@ -399,20 +399,15 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 3. 上传完 *extensions.csproj* 文件后，将在函数的流日志中看到类似以下示例的输出：
 
 ```
-2016-04-04T19:02:48.745 Restoring packages.
-2016-04-04T19:02:48.745 Starting NuGet restore
-2016-04-04T19:02:50.183 MSBuild auto-detection: using msbuild version '14.0' from 'D:\Program Files (x86)\MSBuild\14.0\bin'.
-2016-04-04T19:02:50.261 Feeds used:
-2016-04-04T19:02:50.261 C:\DWASFiles\Sites\facavalfunctest\LocalAppData\NuGet\Cache
-2016-04-04T19:02:50.261 https://api.nuget.org/v3/index.json
-2016-04-04T19:02:50.261
+2018-12-14T22:00:48.658 [Information] Restoring packages.
+2018-12-14T22:00:48.681 [Information] Starting packages restore
+2018-12-14T22:00:57.064 [Information] Restoring packages for D:\local\Temp\9e814101-fe35-42aa-ada5-f8435253eb83\function.proj...
 2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\extensions.csproj...
-2016-04-04T19:02:52.800 Installing Newtonsoft.Json 6.0.8.
-2016-04-04T19:02:52.800 Installing Microsoft.ProjectOxford.Face 1.1.0.
-2016-04-04T19:02:57.095 All packages are compatible with .NETFramework,Version=v4.6.
-2016-04-04T19:02:57.189
-2016-04-04T19:02:57.189
-2016-04-04T19:02:57.455 Packages restored.
+2018-12-14T22:01:00.844 [Information] Installing Newtonsoft.Json 10.0.2.
+2018-12-14T22:01:01.041 [Information] Installing Microsoft.ProjectOxford.Common.DotNetStandard 1.0.0.
+2018-12-14T22:01:01.140 [Information] Installing Microsoft.ProjectOxford.Face.DotNetStandard 1.0.0.
+2018-12-14T22:01:09.799 [Information] Restore completed in 5.79 sec for D:\local\Temp\9e814101-fe35-42aa-ada5-f8435253eb83\function.proj.
+2018-12-14T22:01:10.905 [Information] Packages restored.
 ```
 
 ## <a name="environment-variables"></a>环境变量

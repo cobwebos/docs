@@ -1,0 +1,60 @@
+items:
+- name: Azure 应用配置文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: 关于 Azure 应用配置
+    href: overview.md
+- name: 快速入门
+  items:
+  - name: 创建 ASP.NET Core 应用
+    href: quickstart-aspnet-core-app.md
+  - name: 创建 .NET Core 应用
+    href: quickstart-dotnet-core-app.md
+  - name: 创建 .NET Framework 应用
+    href: quickstart-dotnet-app.md
+  - name: 创建 Azure 函数
+    href: quickstart-azure-function-csharp.md
+  - name: 创建 Java Spring 应用
+    href: quickstart-java-spring-app.md
+  expanded: true
+- name: 教程
+  items:
+  - name: 使用 ASP.NET Core 启用动态配置
+    href: enable-dynamic-configuration-aspnet-core.md
+  - name: 与 Azure 托管服务标识集成
+    href: integrate-azure-managed-service-identity.md
+- name: 示例
+  items:
+  - name: 代码示例
+    href: https://github.com/Azure/AppConfiguration/samples
+  - name: Azure CLI
+    href: cli-samples.md
+- name: 概念
+  items:
+  - name: 键值存储
+    href: concept-key-value.md
+  - name: 时间点快照
+    href: concept-point-time-snapshot.md
+- name: 操作指南
+  items:
+  - name: 导入或导出配置数据
+    href: howto-import-export-data.md
+  - name: 与 CI/CD 管道集成
+    href: howto-integrate-ci-cd-pipeline.md
+- name: 引用
+  items:
+  - name: .NET Core 配置提供程序
+    href: https://go.microsoft.com/fwlink/?linkid=2074664
+  - name: .NET Framework 配置生成器
+    href: https://go.microsoft.com/fwlink/?linkid=2074663
+  - name: Java Spring 配置提供程序
+    href: https://go.microsoft.com/fwlink/?linkid=2074659
+  - name: REST
+    href: https://docs.microsoft.com/rest/api/azure-app-configuration
+ms.openlocfilehash: c35296a6923e464ca20a873de4165ea20c08278f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56884128"

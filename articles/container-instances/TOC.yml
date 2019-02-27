@@ -62,7 +62,7 @@ items:
       href: container-instances-exec.md
     - name: 监视 CPU 和内存使用情况
       href: container-instances-monitor.md
-    - name: 使用 Azure Log Analytics 进行日志记录
+    - name: 使用 Azure Monitor 日志进行日志记录
       href: container-instances-log-analytics.md
   - name: 运行工作负荷
     items:
@@ -122,9 +122,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-instances
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 06c3fcccbc447945be6385303cdb4311125bf8e3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 062c4f2b196ab587577ef4703f79af2f7259c776
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835771"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871700"

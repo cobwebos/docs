@@ -4,45 +4,49 @@ items:
 - name: 概述
   items:
   - name: 什么是必应拼写检查 API？
-    href: proof-text.md
+    href: overview.md
   - name: 比较必应搜索 API
     href: ../Bing-Web-Search/bing-api-comparison.md
     maintainContext: true
-- name: REST API 快速入门
+- name: 快速入门
   items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: PHP
-    href: quickstarts/php.md
-  - name: Python
-    href: quickstarts/python.md
-  - name: Ruby
-    href: quickstarts/ruby.md
-  expanded: true
-- name: SDK 快速入门
-  items:
-  - name: SDK C# 快速入门
-    href: sdk-quickstart-spell-check.md
-  - name: SDK 示例概述
-    href: sdk.md
+  - name: REST API
+    items:
+    - name: 使用 C#
+      href: quickstarts/csharp.md
+    - name: 使用 Java
+      href: quickstarts/java.md
+    - name: 使用 Node.js
+      href: quickstarts/nodejs.md
+    - name: 使用 PHP
+      href: quickstarts/php.md
+    - name: 使用 Python
+      href: quickstarts/python.md
+    - name: 使用 Ruby
+      href: quickstarts/ruby.md
+    expanded: true
+  - name: SDK 中 IsInRole 中的声明
+    items:
+    - name: 使用 C#
+      href: sdk-quickstart-spell-check.md
 - name: 教程
   items:
   - name: 构建拼写检查 Web 应用
     href: tutorials/spellcheck.md
-  - name: 源代码：拼写检查 Web 应用
-    href: tutorials/spellcheck-source.md
 - name: 操作指南
   items:
   - name: 从 v5 升级到 v7
     href: bing-spell-check-upgrade-guide-v5-to-v7.md
+- name: 概念
+  items:
+  - name: 将请求发送到必应拼写检查 API
+    href: concepts/sending-requests.md
+  - name: 使用必应拼写检查 API
+    href: concepts/using-spell-check.md
 - name: 示例
   items:
   - name: 代码示例
-    href: sdk.md
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Spell+Check
 - name: 引用
   items:
   - name: 必应拼写检查 API v7
@@ -68,8 +72,6 @@ items:
   items:
   - name: 适用于必应拼写检查 API 的分析
     href: bing-spell-check-stats.md
-  - name: 常见问题解答
-    href: bing-spell-check-resource-faq.md
   - name: 语言和区域支持
     href: language-support.md
   - name: 定价
@@ -84,9 +86,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/spell-check/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/598195-bing-spell-check
-ms.openlocfilehash: a993da847ca775a18efba42a82045d450a1e9f59
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 132901c3bf159054519658893f1f05438852afcb
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512085"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890039"

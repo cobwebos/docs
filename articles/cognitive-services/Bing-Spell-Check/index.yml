@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 28172ed2309c1e97fe6dafa46cf055862a894cee
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: daf643a96195bc5f8f30652eaf1e7b071d63fa87
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730335"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888230"
 documentType: LandingData
 title: 必应拼写检查 API 文档
 metadata:
@@ -12,18 +12,39 @@ metadata:
   title: 必应拼写检查 API 文档 - 教程和 API 参考 - Azure 认知服务| Microsoft Docs
   description: 了解如何使用必应拼写检查 API 来获取建议的文本文档更正。 教程介绍了如何构建使用该 API 的应用。
   services: cognitive-services
-  author: noellelacharite
-  manager: nolachar
+  author: aahill
+  manager: cgronlun
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/09/2018
-  ms.author: nolachar
+  ms.date: 02/19/2019
+  ms.author: aahi
 abstract:
   description: 必应拼写检查 API 用于执行上下文语法和拼写检查。 必应开发的基于 Web 的拼写检查器充分利用了机器学习和统计性的机器翻译，可以动态训练一种不断发展且高度取决于上下文的算法。 此拼写检查器基于大量的 Web 搜索和文档。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-spell-check/overview
+      html: <p>了解必应拼写检查 API。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 什么是必应拼写检查 API？
+    - href: /azure/cognitive-services/bing-spell-check/concepts/sending-requests
+      html: <p>了解如何将拼写检查请求发送到必应拼写检查 API。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 拼写检查请求
+    - href: /azure/cognitive-services/bing-spell-check/concepts/using-spell-check
+      html: <p>了解如何使用 API 的不同拼写检查模式。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 图像搜索响应
 - title: 5 分钟快速入门
   items:
   - type: paragraph
@@ -63,7 +84,6 @@ sections:
     style: unordered
     items:
     - html: <a href="tutorials/spellcheck.md">单页 Web 应用</a>
-    - html: <a href="tutorials/spellcheck-source.md">单页 Web 应用（源代码）</a>
 - title: 示例
   items:
   - type: paragraph
