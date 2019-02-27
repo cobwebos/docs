@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: c28fce9c6c9d7b0ddeba54e1ba643817436adb4e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244957"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871037"
 ---
 # <a name="region-management-in-azure-stack"></a>Azure Stack 中的区域管理
 
@@ -39,7 +39,7 @@ Azure Stack 在“区域管理”磁贴中提供了一组区域管理功能。 A
 
 如果单击“区域管理”磁贴中的一个区域，可以访问以下信息：
 
-[ ![“区域管理”边栏选项卡上的窗格的说明](media/azure-stack-region-management/regionssm.png "“区域管理”边栏选项卡") ](media/azure-stack-region-management/regions.png#lightbox)
+[![区域管理边栏选项卡上的窗格的说明](media/azure-stack-region-management/regionssm.png "区域管理边栏选项卡")](media/azure-stack-region-management/regions.png#lightbox)
 
 1. **资源菜单**。 访问特定的基础结构管理领域，以及查看和管理用户资源，例如存储帐户和虚拟网络。
 

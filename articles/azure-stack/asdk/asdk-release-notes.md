@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 485d88a4765d7cedcb171a5b325fe5f366fff1f9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8268408137653e99863f7803300e6d843c1d9a47
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004739"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889301"
 ---
 # <a name="asdk-release-notes"></a>ASDK 发行说明
 
@@ -29,6 +29,8 @@ ms.locfileid: "56004739"
 请订阅 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [源](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
 
 ## <a name="build-11901095"></a>生成 1.1901.0.95
+
+请参阅[Azure Stack 发行说明中的重要的生成信息](../azure-stack-update-1901.md#build-reference)。
 
 ### <a name="changes"></a>更改
 

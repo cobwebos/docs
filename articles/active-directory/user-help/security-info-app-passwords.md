@@ -1,6 +1,6 @@
 ---
-title: 使用安全信息设置应用密码 - Azure Active Directory | Microsoft Docs
-description: 使用安全信息设置要在每个非浏览器应用中使用的、与普通密码不同的自动生成的密码（应用密码）。
+title: 从“安全信息”（预览版）页面设置应用密码 - Azure Active Directory | Microsoft Docs
+description: 设置自动生成的密码（应用密码）以用于组织中的任何非浏览器应用或不支持双重验证的任何应用。 此应用密码有别于普通密码，可以从“安全信息”页面进行设置。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,21 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62dcdfe3aef40942dd61fe604e179b61dbdd747c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fcf0e421572a9a698bcc68af47d8950795ac8791
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211880"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456803"
 ---
-# <a name="manage-app-passwords-using-security-info-preview"></a>使用安全信息管理应用密码（预览版）
+# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>从“安全信息”（预览版）页面管理应用密码
+某些应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，如果你在组织中使用双重验证，该应用将不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-某些非浏览器应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，使用双重验证时应用不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。
+>[!Important]
+>管理员可能不允许你使用应用密码。 如果你没有看到“应用密码”作为选项列出，则它们在你的组织中不可用。
 
 使用应用密码时，请务必记住：
 
@@ -36,52 +38,48 @@ ms.locfileid: "56211880"
     >[!Note]
     >Office 2013 客户端（包括 Outlook）支持新的身份验证协议，并可用于双重验证。 此支持意味着，在启用双重验证后，不再需要对 Office 2013 客户端使用应用密码。 有关详细信息，请参阅[如何对 Office 2013 和 Office 2016 客户端应用使用新式身份验证](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517)一文。
 
-## <a name="create-and-delete-app-passwords-using-security-info"></a>使用安全信息创建和删除应用密码
+## <a name="create-new-app-passwords"></a>创建新的应用密码
+如果对工作或学校帐户使用双重验证，并且管理员已启用安全信息体验，则你可以使用“安全信息”页面创建和删除应用密码。
 
-如果对工作或学校帐户使用双重验证，并且管理员已启用安全信息体验，则你可以使用“我的应用”门户创建和删除应用密码。
+>[!Note]
+>如果管理员尚未启用安全信息体验，则必须根据[管理双重验证的应用密码](multi-factor-authentication-end-user-app-passwords.md)部分中的说明和信息操作。
 
-如果管理员尚未启用安全信息体验，则必须根据[管理双重验证的应用密码](multi-factor-authentication-end-user-app-passwords.md)部分中的说明和信息操作。
+### <a name="to-create-a-new-app-password"></a>创建新的应用密码
+1. 登录到你的工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
 
-### <a name="to-create-app-passwords-using-the-my-apps-portal"></a>使用“我的应用”门户创建应用密码
+    ![“我的个人资料”页面，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile.png)
 
-1. 登录到工作或学校帐户。
+2. 从左侧导航窗格中或从“安全信息”块中的链接中选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-2. 转到 myapps.microsoft.com，在页面右上角选择自己的姓名，然后选择“个人资料”。
+    ![“安全信息”页面，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod.png)
 
-3. 在“管理帐户”区域，选择“编辑安全信息”。
+3. 在“添加方法”页面上，从下拉列表中选择“应用密码”，然后选择“添加”。
 
-    ![“个人资料”屏幕，其中已突出显示“编辑安全性信息”链接](media/security-info/security-info-profile.png)
+    ![“添加方法”框，其中选定了“应用密码”](media/security-info/securityinfo-myprofile-addpassword.png)
 
-4. 在“保护帐户安全”屏幕中，选择“添加安全信息”。
+4. 键入要求使用应用密码的应用的名称，然后选择“下一步”。
 
-    ![包含现有可编辑信息的安全信息屏幕](media/security-info/security-info-edit-add-info.png)
+    ![“应用密码”页面，其中显示了应用名称](media/security-info/securityinfo-myprofile-password-appname.png)
 
-5. 在“添加安全信息”屏幕中，选择“应用密码”。
+5. 复制“密码”框中的文本，将密码粘贴到应用（在本例中为 Outlook 2010）的密码区域，然后选择“完成”。
 
-6. 在“创建应用密码”屏幕中，键入应用密码的名称，然后选择“下一步”。
-
-    ![为应用密码命名的屏幕](media/security-info/security-info-name-app-password.png)
-
-7. 复制“复制”以将密码复制到剪贴板，然后选择“下一步”。
-
-    ![复制应用密码的屏幕](media/security-info/security-info-create-app-password.png)
+    ![“应用密码”页面，其中显示了应用名称](media/security-info/securityinfo-myprofile-password-copytext.png)
     
-8. 确保应用密码显示在“保护帐户安全”屏幕上。
+    密码已添加，你将可以成功登录到应用程序。
 
-    ![显示应用密码的“保护帐户安全”屏幕](media/security-info/security-info-keep-secure-app-password.png)
+## <a name="delete-your-app-passwords"></a>删除应用密码
+如果你不再需要使用要求使用应用密码的应用，则可以删除关联的应用密码。 删除应用密码将释放一个可用的应用密码位置点供将来使用。
 
-### <a name="to-delete-app-passwords-using-the-my-apps-portal"></a>使用“我的应用”门户删除应用密码
+>[!Important]
+>如果错误地删除了应用密码，则无法撤消该操作。 必须按照本文的[创建新的应用密码](#create-new-app-passwords)部分中的步骤创建新的应用密码并将其重新输入到应用中。
 
-1. 在“保护帐户安全”屏幕中，选择要删除的应用密码旁边的“X”。
+### <a name="to-delete-an-app-password"></a>删除应用密码
 
-    ![“保护帐户安全”屏幕，删除应用密码](media/security-info/security-info-keep-secure-delete-app-password.png)
+1. 在“安全信息”页面上，选择特定应用的“应用密码”选项旁边的“删除”链接。
 
-2. 在“删除应用程序密码”屏幕中，选择“删除”。
+    ![“安全信息”页面中用于删除应用密码方法的链接](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-    ![“删除应用密码”屏幕](media/security-info/security-info-keep-secure-delete-app-password2.png)
+2. 从确认框中选择“是”，以删除“应用密码”。 删除应用密码后，它将从你的安全信息中删除，并从“安全信息”页面中消失。
 
-## <a name="next-steps"></a>后续步骤
-
-- 如需更新安全信息，请遵照[管理安全信息](security-info-manage-settings.md)一文中的说明。
-
-- 有关安全信息和可执行的操作的更多一般信息，请参阅[安全信息概述](user-help-security-info-overview.md) 
+## <a name="for-more-information"></a>更多信息
+- 有关“安全信息”页面以及如何设置它的详细信息，请参阅[安全信息概述](user-help-security-info-overview.md)

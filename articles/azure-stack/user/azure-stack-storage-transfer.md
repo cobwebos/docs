@@ -14,12 +14,12 @@ ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: ea36dbe30eddc3d503631c31e46291101ea175d4
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f0860552f78e428f5b452aea6bcebe7f6a3a886a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239530"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881696"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>使用 Azure Stack 存储的数据传输工具
 
@@ -45,7 +45,7 @@ Microsoft Azure Stack 提供一组存储服务，适用于磁盘、 blob、 表�
 
     一个易于使用的独立应用，带有用户界面。
 
-* [Blobfuse ](#blobfuse)
+* [Blobfuse](#blobfuse)
 
     一个适用于 Azure Blob 存储的虚拟文件系统驱动程序，用于通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 
 

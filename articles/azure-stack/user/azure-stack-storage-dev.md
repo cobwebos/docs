@@ -4,18 +4,17 @@ description: 使用 Azure Stack 存储开发工具的入门指南
 services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 12/03/2018
+ms.date: 11/05/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 857e12664defb1fc0106dd0d3012b77a89f826c2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: aa044ba9a7fcb66b5314144dd77bdd3435488218
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495099"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877589"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack 存储开发工具入门
 
@@ -30,9 +29,9 @@ Microsoft Azure Stack 提供了一组存储服务包括 blob、 表和队列存�
 
 ## <a name="azure-client-libraries"></a>Azure 客户端库
 
-对于存储客户端库，请了解与 REST API 兼容的版本。 还必须在代码中指定 Azure Stack 终结点。
+Azure Stack 存储支持的 REST API 版本是 2017-04-17、2016-05-31、2015-12-11、2015-07-08、2015-04-05（适用于 1802 更新或更高版本），以及 2015-04-05（适用于以前的版本）。 Azure Stack 终结点并不完全等同于最新版的 Azure 存储 REST API。 对于存储客户端库，需要了解与 REST API 兼容的版本。
 
-### <a name="1811-update-or-newer-versions"></a>1811 更新或更高版本
+### <a name="1802-update-or-newer-versions"></a>1802 更新或更高版本
 
 | 客户端库 | Azure Stack 支持的版本 | 链接 | 终结点规范 |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -50,18 +49,18 @@ Microsoft Azure Stack 提供了一组存储服务包括 blob、 表和队列存�
 
 1. 在项目的根目录中，使用以下代码创建一个名为 **composer.json** 的文件：
 
-    ```json
+  ```php
     {
       "require": {
-      "Microsoft/azure-storage-blob":"1.2.0"
+      "Microsoft/azure-storage-blob":"1.0.0"
       }
     }
-    ```
+  ```
 
 2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到项目根目录。
 3. 运行：`php composer.phar install`。
 
-### <a name="previous-versions-1802-to-1809-update"></a>以前的版本（1802 到 1809 更新）
+### <a name="previous-versions"></a>以前的版本
 
 |客户端库|Azure Stack 支持的版本|链接|终结点规范|
 |---------|---------|---------|---------|
@@ -75,19 +74,19 @@ Microsoft Azure Stack 提供了一组存储服务包括 blob、 表和队列存�
 
 #### <a name="install-php-client-via-composer---previous"></a>通过编辑器安装 PHP 客户端 - 以前
 
-通过 Composer 安装：（以 blob 为例）。
+若要通过编辑器安装，请执行以下操作：
 
 1. 在项目的根目录中，使用以下代码创建一个名为 **composer.json** 的文件：
 
-  ```json
+  ```php
     {
-      "require": {
-      "Microsoft/azure-storage-blob":"1.0.0"
-      }
+          "require":{
+          "Microsoft/azure-storage":"0.15.0"
+          }
     }
   ```
 
-2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到项目根目录。
+2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到项目根目录中。
 3. 运行：`php composer.phar install`。
 
 ## <a name="endpoint-declaration"></a>终结点声明
@@ -102,7 +101,7 @@ Azure Stack 终结点包含两个部分：区域的名称和 Azure Stack 域。
 
 对于 Azure Stack，在 app.config 文件中指定终结点后缀：
 
-```xml
+```
 <add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
@@ -112,7 +111,7 @@ EndpointSuffix=local.azurestack.external;" />
 
 对于 Azure Stack，在连接字符串的设置中指定终结点后缀：
 
-```java
+```
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
@@ -124,7 +123,7 @@ public static final String storageConnectionString =
 
 对于 Azure Stack，在声明实例中指定终结点后缀：
 
-```javascript
+```
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
@@ -133,7 +132,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 对于 Azure Stack，在连接字符串的设置中指定终结点后缀：
 
-```cpp
+```
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
 AccountName=your_storage_account;
 AccountKey=your_storage_account_key;
@@ -144,7 +143,7 @@ EndpointSuffix=local.azurestack.external"));
 
 对于 Azure Stack，在连接字符串的设置中指定终结点后缀：
 
-```php
+```
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.local.azurestack.external/;
 QueueEndpoint=http:// <storage account name>.queue.local.azurestack.external/;
 TableEndpoint=http:// <storage account name>.table.local.azurestack.external/;
@@ -155,7 +154,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 对于 Azure Stack，在声明实例中指定终结点后缀：
 
-```python
+```
 block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
@@ -165,7 +164,7 @@ endpoint_suffix='local.azurestack.external')
 
 对于 Azure Stack，在连接字符串的设置中指定终结点后缀：
 
-```ruby
+```
 set
 AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;
 AccountName=myaccount;

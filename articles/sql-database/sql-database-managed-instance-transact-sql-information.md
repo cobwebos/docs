@@ -11,15 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 59599686b2a9ccee7250e33f0786d4c7af816983
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/20/2019
+ms.openlocfilehash: 942b1423583f663f22ced6ea8399409778b2f6de
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894303"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455121"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
+# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
 托管实例部署选项与本地 SQL Server 数据库引擎高度兼容。 托管实例支持大多数 SQL Server 数据库引擎功能。
 
@@ -37,7 +37,7 @@ ms.locfileid: "55894303"
 
 ### <a name="always-on-availability"></a>Always-On
 
-[高可用性](sql-database-high-availability.md)内置在托管实例中，用户无法控制。 不支持以下语句：
+[高可用性](sql-database-high-availability.md)内置在托管实例中，不能由用户控制。 不支持以下语句：
 
 - [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
 - [CREATE AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
@@ -124,10 +124,45 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="logins--users"></a>登录名/用户
 
 - 支持使用 `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY` 和 `FROM SID` 创建的 SQL 登录名。 请参阅 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql)。
-- 支持使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (AAD) 登录（公共预览版）。
+- 支持使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER FROM LOGIN [Azure AD 登录名]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (Azure AD) 服务器主体（登录名）（**公共预览版**）。 这些登录名是在服务器级别创建的。
+    - 托管实例支持使用语法 `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 的 Azure AD 数据库主体。 这也称为 Azure AD 包含的数据库用户。
 - 不支持使用 `CREATE LOGIN ... FROM WINDOWS` 语法创建的 Windows 登录名。 使用 Azure Active Directory 登录名和用户。
-- 创建实例的 Azure Active Directory (Azure AD) 用户具有[不受限制的管理特权](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
-- 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建非管理员 Azure Active Directory (Azure AD) 数据库级用户。 请参阅 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users)
+- 创建实例的 Azure AD 用户具有[不受限制的管理特权](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
+- 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建非管理员 Azure Active Directory (Azure AD) 数据库级用户。 请参阅 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users)。
+- Azure AD 服务器主体（登录名）仅支持一个 MI 实例中的 SQL 功能。 无论是在相同还是不同的 Azure AD 租户中，需要跨实例交互的功能都不支持 Azure AD 用户。 此类功能的示例包括：
+    - SQL 事务复制
+    - 链接服务器
+- 不支持设置映射到作为数据库所有者的 Azure AD 组的 Azure AD 登录名。
+- 支持使用其他 Azure AD 主体模拟 Azure AD 服务器级主体，例如 [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) 子句。 EXECUTE AS 限制：
+    - 当名称不同于登录名时，EXECUTE AS USER 不支持 Azure AD 用户。 例如，如果用户是通过语法 CREATE USER [myAadUser] FROM LOGIN [john@contoso.com] 创建的，则会尝试通过 EXEC AS USER = _myAadUser_ 进行模拟。 基于 Azure AD 服务器主体（登录名）创建 **USER** 时，请指定与 **LOGIN** 中的 login_name 相同的 user_name。
+    - 只有属于 `sysadmin` 角色的 SQL 服务器级主体（登录名）可以针对 Azure AD 主体执行以下操作： 
+        - EXECUTE AS USER
+        - EXECUTE AS LOGIN
+- Azure AD 服务器主体（登录名）的**公共预览版**限制：
+    - 托管实例的 Active Directory 管理员限制：
+        - 用于设置托管实例的 Azure AD 管理员不可用于在托管实例中创建 Azure AD 服务器主体（登录名）。 必须使用充当 `sysadmin` 的 SQL Server 帐户创建第一个 Azure AD 服务器主体（登录名）。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种暂时性限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+        - 目前，在 master 数据库中创建的第一个 Azure AD 登录名必须由充当 `sysadmin` 的标准 SQL Server 帐户（非 Azure AD）使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER 创建。 正式版推出后，将去除此限制，初始的 Azure AD 登录名可由托管实例的 Active Directory 管理员创建。
+    - 与 SQL Server Management Studio (SSMS) 或 SqlPackage 配合使用的 DacFx（导出/导入）不支持 Azure AD 登录名。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除此限制。
+    - 将 Azure AD 服务器主体（登录名）与 SSMS 配合使用
+        - 不支持编写 Azure AD 登录名的脚本（使用任何经过身份验证的登录名）。
+        - Intellisense 无法识别 **CREATE LOGIN FROM EXTERNAL PROVIDER** 语句，将显示红色下划线。
+- 只有服务器级主体登录名（由托管实例预配进程创建）、服务器角色的成员（`securityadmin` 或 `sysadmin`）或者在服务器级别拥有 ALTER ANY LOGIN 权限的其他登录名可以在托管实例的 master 数据库中创建 Azure AD 服务器主体（登录名）。
+- 如果登录名是 SQL 主体，则只有属于 `sysadmin` 角色的登录名才能使用 create 命令来为 Azure AD 帐户创建登录名。
+- Azure AD 登录名必须是用于 Azure SQL 托管实例的同一目录中的 Azure AD 成员。
+- 从 SSMS 18.0 预览版 5 开始，Azure AD 服务器主体（登录名）将显示在对象资源管理器中。
+- 允许 Azure AD 服务器主体（登录名）与 Azure AD 管理员帐户重叠。 解析主体以及将权限应用到托管实例时，Azure AD 服务器主体（登录名）优先于 Azure AD 管理员。
+- 在身份验证期间，将应用以下顺序来解析身份验证主体：
+    1. 如果 Azure AD 帐户存在并直接映射到 Azure AD 服务器主体（登录名）（以类型“E”的形式存在于 sys.server_principals 中），则授予访问权限并应用 Azure AD 服务器主体（登录名）的权限。
+    2. 如果 Azure AD 帐户是映射到 Azure AD 服务器主体（登录名）的 Azure AD 组的成员（以类型“X”的形式存在于 sys.server_principals 中），则授予访问权限并应用 Azure AD 组登录名的权限。
+    3. 如果 Azure AD 帐户是在门户中配置的、托管实例的特殊 Azure AD 管理员（不存在于托管实例系统视图中），则应用托管实例的 Azure AD 管理员的特殊固定权限（传统模式）。
+    4. 如果 Azure AD 帐户存在并直接映射到数据库中的 Azure AD 用户（以类型“E”的形式存在于 sys.database_principals 中），则授予访问权限并应用 Azure AD 数据库用户的权限。
+    5. 如果 Azure AD 帐户是映射到数据库中 Azure AD 用户的 Azure AD 组的成员（以类型“X”的形式存在于 sys.database_principals 中），则授予访问权限并应用 Azure AD 组登录名的权限。
+    6. 如果某个 Azure AD 登录映射到 Azure AD 用户帐户或 Azure AD 组帐户并解析为用户身份验证，则应用此 Azure AD 登录名中的所有权限。
+
+
+
+
+
 
 ### <a name="service-key-and-service-master-key"></a>服务密钥和服务主密钥
 
@@ -182,8 +217,8 @@ WITH PRIVATE KEY (<private_key_options>)
    > [!TIP]
    > 解决方法是在 `CREATE DATABASE` 后面使用 `ALTER DATABASE` 来设置数据库选项，以添加文件或设置包含。  
 
-- 不支持 `FOR ATTACH` 选项
-- 不支持 `AS SNAPSHOT OF` 选项
+- 不支持 `FOR ATTACH` 选项。
+- 不支持 `AS SNAPSHOT OF` 选项。
 
 有关详细信息，请参阅 [CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-sql-server-transact-sql)。
 
@@ -232,18 +267,18 @@ WITH PRIVATE KEY (<private_key_options>)
 - 作业
   - 支持 T-SQL 作业步骤。
   - 支持以下复制作业：
-    - 事务日志读取器。  
-    - 快照。
+    - 事务日志读取器
+    - 快照
     - 分发服务器
   - 支持 SSIS 作业步骤
-  - 目前不支持其他类型的工作步骤，包括：
+  - 目前不支持其他类型的作业步骤，包括：
     - 不支持合并复制作业步骤。  
     - 不支持队列读取器。  
-    - 尚不支持命令外壳
+    - 尚不支持命令外壳。
   - 托管实例无法访问外部资源（例如，通过 robocopy 访问网络共享）。  
   - 尚不支持 PowerShell。
-  - 不支持 Analysis Services
-- 部分支持通知
+  - 不支持 Analysis Services。
+- 部分支持通知。
 - 支持电子邮件通知，但需要配置数据库邮件配置文件。 公共预览版中只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`（暂时性的限制）。  
   - 不支持寻呼机。  
   - 不支持 NetSend。
@@ -315,9 +350,9 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="filestream-and-filetable"></a>文件流和文件表
 
 - 不支持文件流数据。
-- 数据库中不能有包含 `FILESTREAM` 数据的文件组
-- 不支持 `FILETABLE`
-- 表不能采用 `FILESTREAM` 类型
+- 数据库中不能有包含 `FILESTREAM` 数据的文件组。
+- 不支持 `FILETABLE`。
+- 表不能采用 `FILESTREAM` 类型。
 - 不支持以下函数：
   - `GetPathLocator()`
   - `GET_FILESTREAM_TRANSACTION_CONTEXT()`
@@ -392,13 +427,13 @@ WITH PRIVATE KEY (<private_key_options>)
 
 有关 Restore 语句的信息，请参阅 [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)。
 
-### <a name="service-broker"></a>服务代理
+### <a name="service-broker"></a>Service Broker
 
 不支持跨实例 Service Broker：
 
 - `sys.routes` - 先决条件：从 sys.routes 中选择地址。 地址必须在每个路由的本地。 请参阅 [sys.routes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-routes-transact-sql)。
 - `CREATE ROUTE` - 不能使用除 `LOCAL` 以外的 `ADDRESS` 执行 `CREATE ROUTE`。 请参阅 [CREATE ROUTE](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql)。
-- `ALTER ROUTE` - 不能使用除 `LOCAL` 以外的 `ADDRESS` 执行 `ALTER ROUTE`。 请参阅 [ALTER ROUTE](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql)。  
+- `ALTER ROUTE` 不能使用除 `LOCAL` 以外的 `ADDRESS` 执行 `ALTER ROUTE`。 请参阅 [ALTER ROUTE](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql)。  
 
 ### <a name="stored-procedures-functions-triggers"></a>存储过程、函数和触发器
 
@@ -407,7 +442,6 @@ WITH PRIVATE KEY (<private_key_options>)
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
-  - `max text repl size`
   - `remote data archive`
   - `remote proc trans`
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
@@ -425,7 +459,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - `@@SERVERNAME` 返回完整的 DNS“可连接”名称，例如 my-managed-instance.wcus17662feb9ce98.database.windows.net。 请参阅 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql)。  
 - `SYS.SERVERS` - 返回完整的 DNS“可连接”名称，例如，为属性“name”和“data_source”返回 `myinstance.domain.database.windows.net`。 请参阅 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql)。
 - `@@SERVICENAME` 返回 NULL，因为 SQL Server 存在的服务概念并不适用于托管实例。 请参阅 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql)。
-- 支持 `SUSER_ID`。 如果 AAD 登录名不在 sys.syslogins 中，则返回 NULL。 请参阅 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql)。  
+- 支持 `SUSER_ID`。 如果 Azure AD 登录名不在 sys.syslogins 中，则返回 NULL。 请参阅 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql)。  
 - 不支持 `SUSER_SID`。 返回错误数据（暂时性的已知问题）。 请参阅 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql)。
 - `GETDATE()` 和其他内置日期/时间函数始终返回采用 UTC 时区的时间。 请参阅 [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql)。
 
@@ -437,14 +471,14 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
-每个托管实例都为 Azure 高级磁盘空间保留了最高 35TB 存储空间，并且每个数据库文件都放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8TB 的托管实例可能会超过 35TB 的 Azure 存储大小限制。
+每个托管实例都为 Azure 高级磁盘空间保留了高达 35 TB 的存储空间，并且每个数据库文件都放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
 
-例如，托管实例可以将一个大小为 1.2TB 的文件放置在 4TB 磁盘上，并将 248 个文件（每个大小为 1GB）放置在单独的 128GB 磁盘上。 在本示例中：
+例如，托管实例可以将一个大小为 1.2 TB 的文件放在 4 TB 磁盘上，将 248 个文件（每个大小为 1 GB）放在单独的 128 GB 磁盘上。 在本示例中：
 
 - 分配的磁盘存储总大小为 1 x 4 TB + 248 x 128 GB = 35 TB。
 - 实例上的数据库的总预留空间为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。
 
-这说明在某些情况下，由于文件的具体分布，托管实例可能会出乎意料地达到为附加的 Azure 高级磁盘预留的 35TB 存储空间大小。
+这说明在某些情况下，由于文件分布很具体，托管实例可能会出乎意料地达到为附加的 Azure 高级磁盘预留的 35 TB。
 
 在此示例中，只要未添加新文件，现有数据库就会继续工作并且可以毫无问题地增长。 但是，由于没有足够的空间用于新磁盘驱动器，因此无法创建或还原新数据库，即使所有数据库的总大小未达到实例大小限制也是如此。 这种情况下返回的错误并不明确。
 
@@ -457,8 +491,8 @@ WITH PRIVATE KEY (<private_key_options>)
 
 访问托管实例时，SQL Server Management Studio (SSMS) 和 SQL Server Data Tools (SSDT) 可能会出现一些问题。
 
-- 目前不支持将 Azure AD 登录名和用户（公共预览版）用于 SSDT。
-- Azure AD 登录名和用户（公共预览版）的脚本在 SSMS 中不受支持。
+- 目前不支持将 Azure AD 服务器主体（登录名）和用户（**公共预览版**）用于 SSDT。
+- Azure AD 服务器主体（登录名）和用户（**公共预览版**）的脚本在 SSMS 中不受支持。
 
 ### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>在某些视图、日志和消息中，数据库名称不正确
 
@@ -478,7 +512,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 **解决方法**：使用自定义过程来读取错误日志，以便过滤掉某些不相关的条目。 有关详细信息，请参阅[托管实例 - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)。
 
-### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
+### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
 
 如果在同一事务范围中将两个查询发送到了同一实例内的两个数据库，则 .Net 中的 `TransactionScope` 类不会工作。
 
@@ -509,7 +543,7 @@ using (var scope = new TransactionScope())
 
 **解决方法**：使用 [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) 在连接上下文中使用其他数据库，而非使用两个连接。
 
-### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR 模块和链接的服务器有时无法引用本地 IP 地址
+### <a name="clr-modules-and-linked-servers-sometime-cant-reference-local-ip-address"></a>CLR 模块和链接的服务器有时无法引用本地 IP 地址
 
 放置在托管实例中的 CLR 模块，以及引用当前实例的链接服务器/分布式查询，有时可能无法解析本地实例的 IP。 此错误是暂时性问题。
 
@@ -525,4 +559,4 @@ using (var scope = new TransactionScope())
 
 - 若要详细了解托管实例，请参阅[什么是托管实例？](sql-database-managed-instance.md)
 - 有关功能和比较列表，请参阅 [SQL 常用功能](sql-database-features.md)。
-- 有关介绍了如何新建托管实例的快速入门，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
+- 有关演示了如何新建托管实例的快速入门，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。

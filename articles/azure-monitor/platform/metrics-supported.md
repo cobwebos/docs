@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: be2274b5d7a0e39733440379ce9678ab012d7d27
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8ee900554371644f374e4aeed51f1eeb0c18569e
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473820"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408861"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。 其他指标可在门户或旧版 API 中使用。 下面的此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -652,14 +652,52 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|指标|指标显示名称|单位|聚合类型|说明|维度|
-|---|---|---|---|---|---|
-|MetadataRequests|元数据请求|Count|Count|元数据请求的计数。 Cosmos DB 为每个帐户维护系统元数据集合，允许你免费枚举集合、数据库及其配置等等。|DatabaseName, CollectionName, Region, StatusCode|
-|MongoRequestCharge|Mongo 请求费用|Count|总计|Mongo 已消耗的请求单位|DatabaseName, CollectionName, Region, CommandName, ErrorCode|
-|MongoRequests|Mongo 请求|Count|Count|已发出的 Mongo 请求数|DatabaseName, CollectionName, Region, CommandName, ErrorCode|
-|TotalRequestUnits|总请求单位数|Count|总计|已消耗的请求单位|DatabaseName, CollectionName, Region, StatusCode|
-|TotalRequests|请求总数|Count|Count|已发出的请求数|DatabaseName, CollectionName, Region, StatusCode|
+### <a name="request-metrics"></a>请求指标
 
+|指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
+|---|---|---|---|---|---| ---| ---| ---|
+| TotalRequests |   请求总数| Count   | Count | 已发出的请求数|  DatabaseName, CollectionName, Region, StatusCode|   全部 |   TotalRequests、Http 2xx、Http 3xx、Http 400、Http 401、内部服务器错误、服务不可用、受限制的请求数、每秒平均请求数 |    用来按状态代码监视请求，以分钟为粒度进行收集。 若要获取每秒的平均请求数，请在分钟级别使用“计数”聚合并除以 60。 |
+| MetadataRequests |    元数据请求   |Count| Count   | 元数据请求的计数。 Azure Cosmos DB 为每个帐户维护系统元数据集合，允许你免费枚举集合、数据库及其配置等等。    | DatabaseName, CollectionName, Region, StatusCode| 全部|  |用于监视由于元数据请求而导致的限制。|
+| MongoRequests |   Mongo 请求| Count | Count|  已发出的 Mongo 请求数   | DatabaseName, CollectionName, Region, CommandName, ErrorCode| 全部 |Mongo 查询请求速率、Mongo 更新请求速率、Mongo 删除请求速率、Mongo 插入请求速率、Mongo 计数请求速率|   用于监视 Mongo 请求错误以及每个命令类型的使用情况。 |
+
+
+### <a name="request-unit-metrics"></a>请求单位指标
+
+|指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
+|---|---|---|---|---|---| ---| ---| ---|
+| MongoRequestCharge|   Mongo 请求费用 |  Count   |总计  |Mongo 已消耗的请求单位|  DatabaseName, CollectionName, Region, CommandName, ErrorCode|   全部 |Mongo 查询请求费用、Mongo 更新请求费用、Mongo 删除请求费用、Mongo 插入请求费用、Mongo 计数请求费用| 用于监视一分钟内的 Mongo 资源 RU。|
+| TotalRequestUnits |总请求单位数|   Count|  总计|  已消耗的请求单位| DatabaseName, CollectionName, Region, StatusCode    |全部|   TotalRequestUnits|  用于在分钟粒度监视总的 RU 使用量。 若要获取每秒平均使用的 RU，请在分钟级别使用“总计”聚合并除以 60。|
+| ProvisionedThroughput |预配的吞吐量|    Count|  最大值 |在集合粒度预配的吞吐量|  DatabaseName、CollectionName|   5M| |   用于监视每个集合的预配吞吐量。|
+
+### <a name="storage-metrics"></a>存储度量值
+
+|指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
+|---|---|---|---|---|---| ---| ---| ---|
+| AvailableStorage| 可用存储   |字节| 总计|  每个区域按 5 分钟粒度报告的可用存储总量|   DatabaseName、CollectionName、Region|   5M| 可用存储|   用于监视可用存储容量（仅适用于固定存储集合）。最小粒度应当为 5 分钟。| 
+| DataUsage |数据使用情况 |字节| 总计   |每个区域按 5 分钟粒度报告的可用存储总量|    DatabaseName、CollectionName、Region|   5M  |数据大小  | 用于在集合和区域级别监视总的数据使用情况，最小粒度应当为 5 分钟。|
+| IndexUsage|   索引使用情况|    字节|  总计   |每个区域按 5 分钟粒度报告的总的索引使用情况|    DatabaseName、CollectionName、Region|   5M| 索引大小| 用于在集合和区域级别监视总的数据使用情况，最小粒度应当为 5 分钟。 |
+| DocumentQuota|    文档配额| 字节|  总计|  每个区域按 5 分钟粒度报告的存储配额总量。 适用对象| DatabaseName、CollectionName、Region|   5M  |存储容量|  用于在集合和区域级别监视总的配额，最小粒度应当为 5 分钟。|
+| DocumentCount|    文档计数| Count   |总计  |每个区域按 5 分钟粒度报告的文档总数|  DatabaseName、CollectionName、Region|   5M  |文档计数|用于在集合和区域级别监视文档计数，最小粒度应当为 5 分钟。|
+
+### <a name="latency-metrics"></a>延迟指标
+
+|指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 使用情况 |
+|---|---|---|---|---|---| ---| ---| ---|
+| ReplicationLatency    | 复制延迟|  毫秒|   最小值、最大值、平均值 | 启用了异地复制的帐户的源和目标区域之间的 P99 复制延迟| SourceRegion、TargetRegion| 全部 | 用于监视异地复制帐户在任何两个区域之间的 P99 复制延迟。 |
+
+### <a name="availability-metrics"></a>可用性指标
+
+|指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
+|---|---|---|---|---|---| ---| ---| ---|
+| ServiceAvailability   | 服务可用性| 百分比 |最小值、最大值|   在一小时粒度内的帐户请求可用性|  |   1 小时  | 服务可用性  | 这是传递的请求总数的百分比。 如果状态代码为 410、500 或 503，则会认为请求因系统错误而失败。用于按小时粒度监视帐户的可用性。 |
+
+### <a name="cassandra-api-metrics"></a>Cassandra API 指标
+
+|指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 使用情况 |
+|---|---|---|---|---|---| ---| ---| ---|
+| CassandraRequests | Cassandra 请求数 |  Count|  Count|  发出的 Cassandra API 请求数|  DatabaseName、CollectionName、ErrorCode、Region、OperationType、ResourceType|   全部| 用于按分钟粒度监视 Cassandra 请求。 若要获取每秒的平均请求数，请在分钟级别使用“计数”聚合并除以 60。|
+| CassandraRequestCharges|  Cassandra 请求费用| Count|   合计、最小值、最大值、平均值| Cassandra API 请求已消耗的请求单位数|   DatabaseName、CollectionName、Region、OperationType、ResourceType|  全部| 用于监视 Cassandra API 帐户每分钟使用的 RU。|
+| CassandraConnectionClosures   | Cassandra 连接关闭数 |Count| Count   |关闭的 Cassandra 连接数|    ClosureReason、Region|  全部 | 用于监视客户端与 Azure Cosmos DB Cassandra API 之间的连接。|
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 

@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.lastreviewed: 11/08/2018
-ms.openlocfilehash: 92774592f86a71a8482fd3d44eca404fcf2d4e6e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.lastreviewed: 02/26/2019
+ms.openlocfilehash: 00fb888f201f4bb8d211050b288516021d837dc5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429547"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888757"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Azure Stack 用量 API 的常见问题解答
 
@@ -407,6 +407,10 @@ ms.locfileid: "56429547"
 | 400/错误的请求 |*SubscriptionIdMissingInRequest* |缺少调用方的订阅 ID。 |
 | 400/错误的请求 |*InvalidAggregationGranularity* |请求的聚合粒度无效。 有效值为 daily 和 hourly。 |
 | 503 |*ServiceUnavailable* |由于服务繁忙或调用受到限制，发生了可重试的错误。 |
+
+## <a name="what-is-the-policy-for-charging-for-vms"></a>针对向收费的 Vm 的策略是什么？
+
+正在运行的和已停止的 Vm 生成使用情况数据。 与 Azure 一致，解除分配需要停止句子的使用情况数据。 在该门户是不可用，但仍在运行计算资源提供程序的情况下，将发出使用情况。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Stack 中的客户计费和退款](azure-stack-billing-and-chargeback.md)

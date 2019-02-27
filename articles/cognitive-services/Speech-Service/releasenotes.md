@@ -8,17 +8,70 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: a5b8cd7da465bc2dc58c2b89852903669c18bf4b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871789"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446828"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="speech-sdk-130-2019-february-release"></a>语音 SDK 1.3.0：2019 年 2 月版本
+
+**新功能**
+
+* 语音 SDK 支持通过 AudioConfig 类来选择输入麦克风。 这允许将音频数据从非默认麦克风流式传输到语音服务。 有关更多详细信息，请参阅介绍[音频输入设备选择](how-to-select-audio-input-devices.md)的文档。 这在 JavaScript 中尚不可用。
+* 语音 SDK 目前在 beta 版本中支持 Unity。 请通过 [GitHub 示例存储库](https://aka.ms/csspeech/samples)中的问题部分来提供反馈。 此版本支持在 Windows x86 和 x64（桌面或通用 Windows 平台应用程序）以及 Android（ARM32/64，x86）上使用 Unity。 [Unity 快速入门](quickstart-csharp-unity.md)中提供了更多信息。
+
+**示例**
+
+[示例存储库](https://aka.ms/csspeech/samples)中提供了以下新内容：
+
+* 有关 AudioConfig.FromMicrophoneInput 的更多示例。
+* 有关意向识别和翻译的更多 Python 示例。
+* 有关在 iOS 中使用连接对象的更多示例。
+* 有关具有音频输出的翻译的更多 Java 示例。
+* 有关使用[批量听录 REST API](batch-transcription.md) 的新示例。
+
+**改进 / 更改**
+
+* Python
+  * 改进了 SpeechConfig 中的参数验证和错误消息。
+  * 增加了对连接对象的支持。
+  * 支持 Windows 上的 32 位 Python (x86)。
+  * 适用于 Python 的语音 SDK 已完成 beta 版本。
+* iOS
+  * SDK 现在是基于 iOS SDK 版本 12.1 构建的。
+  * SDK 现在支持 iOS 版本 9.2 及更高版本。
+  * 改进了参考文档并修复了多个属性名称。
+* JavaScript
+  * 增加了对连接对象的支持。
+  * 添加了捆绑的 JavaScript 的类型定义文件
+  * 首次支持并实现了短语提示。
+  * 随服务 JSON 返回属性集合以用于识别
+* Windows DLL 现在包含一个版本资源。
+
+**Bug 修复**
+
+* 过去无法正确处理空的代理用户名和代理密码。 在此版本中，如果将代理用户名和代理密码设置为空字符串，则在连接到代理时不会提交它们。
+* 对于某些语言&nbsp;/ 环境，由 SDK 创建的 SessionId 并非总是真正随机的。 已添加了随机生成器初始化来修复此问题。
+* 改进了对授权令牌的处理。 如果希望使用授权令牌，请在 SpeechConfig 中进行指定并将订阅密钥保留为空。 然后，像往常一样创建识别器。
+* 过去，在某些情况下，连接对象不能正确释放。 此问题已解决。
+* JavaScript 示例已修复，在 Safari 上也支持用于翻译合成的音频输出。
+
+## <a name="speech-sdk-121"></a>语音 SDK 1.2.1
+
+这是一个仅限 JavaScript 的版本。 未增加任何功能。 进行了以下修复：
+
+* 在 turn.end 处触发流结束，在 speech.end 处不触发。
+* 修复了音频泵中在当前发送失败时不安排下一次发送的 bug。
+* 修复了使用身份验证令牌进行的连续识别。
+* 对不同识别器 / 终结点的 bug 修复。
+* 文档改进。
 
 ## <a name="speech-sdk-120-2018-december-release"></a>语音 SDK 1.2.0：2018 年 12 月版本
 

@@ -15,12 +15,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 23adf2903a50727d920e4a20b8a325313fa39e2a
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d5463b495620e441ad5371b5859c9ab543e0e7c6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428001"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874658"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack 注册
 可将 Azure Stack 开发工具包 (ASDK) 安装注册到 Azure，以便从 Azure 下载市场项，并设置向 Microsoft 报告商务数据的功能。 需要注册才能支持完整的 Azure Stack 功能，包括市场联合。 注册需要，可以测试重要的 Azure Stack 功能，例如 marketplace 联合和使用情况报告。 注册 Azure Stack 之后，使用情况将报告给 Azure 商业组件。 用于注册的订阅下会显示此信息。 但是，ASDK 用户无需付费，不管他们报告的用量是多少。
@@ -38,7 +38,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 确保输出返回的是 **FullLanguageMode**。 如果返回了其他任何语言模式，则需要在另一台计算机上运行注册，或者将语言模式设置为 **FullLanguageMode**，然后才能继续。
 
-用于注册需要有权访问 Azure 订阅并且能在与该订阅相关联的目录中创建标识应用程序和服务主体的权限的 Azure AD 帐户。 我们建议将 Azure Stack 注册到 Azure 使用最低特权进行管理[创建服务帐户用于注册](..\azure-stack-registration-role.md)而不是使用全局管理员凭据。
+用于注册需要有权访问 Azure 订阅并且能在与该订阅相关联的目录中创建标识应用程序和服务主体的权限的 Azure AD 帐户。 我们建议通过[创建用于注册的服务帐户](..\azure-stack-registration-role.md)以使用最低特权管理将 Azure Stack 注册到 Azure，而不要使用全局管理员凭据。
 
 ## <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 遵循以下步骤将 ASDK 注册到 Azure。
@@ -214,7 +214,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 2. 在“仪表板”中，选择“区域管理”。
 
-    [ ![“区域管理”磁贴](media/asdk-register/admin1sm.png "“区域管理”磁贴") ](media/asdk-register/admin1.png#lightbox)
+    [![区域管理磁贴](media/asdk-register/admin1sm.png "区域管理磁贴")](media/asdk-register/admin1.png#lightbox)
 
 3. 选择“属性”。 此边栏选项卡显示环境的状态和详细信息。 状态可能是“已注册”，也可能是“未注册”。 如果是已注册，则还会显示用于注册 Azure Stack 的 Azure 订阅 ID，以及注册资源组和名称。
 

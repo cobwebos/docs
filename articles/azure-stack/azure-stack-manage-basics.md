@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2c4a95bddea85d298ff9343bfd813d0b79b24b51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba1e7d7f9226b3ca42d4117be33b9c236f0557b0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164016"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867314"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack 管理基础知识
 如果不熟悉 Azure Stack 管理，则需要了解几项事情。 本文提供 Azure Stack 操作员，你所担任的概述以及需要告知你用户，让他们快速提高工作效率。
@@ -119,7 +119,7 @@ Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组�
 
 在开发工具包环境中，如果不能通过远程桌面访问开发工具包主机，用户必须先配置虚拟专用网络 (VPN) 连接，然后才能访问 Azure Stack。 请参阅[连接到 Azure Stack](azure-stack-connect-azure-stack.md)。 
 
-用户需要知道如何[访问用户门户](user/azure-stack-use-portal.md)，或者如何通过 PowerShell 进行连接。 在集成系统环境中，用户门户地址随部署而变。 需向用户提供正确的 URL。
+你的用户会想要了解如何[访问用户门户](user/azure-stack-use-portal.md)或如何通过 PowerShell 进行连接。 在集成系统环境中，用户门户地址随部署而变。 需向用户提供正确的 URL。
 
 如果使用 PowerShell，用户可能需要先注册资源提供程序，然后才能使用服务。 （资源提供程序用于管理服务。 例如，网络资源提供程序用于管理虚拟网络、网络接口和负载均衡器之类的资源。）用户必须[安装](user/azure-stack-powershell-install.md) PowerShell，[下载](user/azure-stack-powershell-download.md)更多的模块，然后[配置](user/azure-stack-powershell-configure-user.md) PowerShell（包括资源提供程序注册）。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 1901 更新 |Microsoft Docs
-description: 了解有关 Azure Stack 集成系统，包括最新内容、 1901年更新的已知的问题，以及下载更新的位置。
+title: Azure Stack 1901 更新 | Microsoft Docs
+description: 了解 Azure Stack 集成系统的 1901 更新，包括新增功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,38 +12,45 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 2acc26fc473d0e8dcb93b1439de316fbef67ae98
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 77b3d8bd1d16e90e9929c41f0f28940694dc7906
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416507"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889828"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新
 
 *适用于：Azure Stack 集成系统*
 
-本文介绍 1901年更新包的内容。 更新包括改进、 修复程序和 Azure Stack 的此版本的新功能。 本文还介绍了此版本中的已知的问题，并包括用于下载更新的链接。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
+本文介绍 1901 更新包的内容。 该更新包含此版 Azure Stack 的改进、修复和新功能。 本文还描述了此版本中的已知问题，并包含一个用于下载该更新的链接。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]  
 > 此更新包仅适用于 Azure Stack 集成系统。 请勿将此更新包应用于 Azure Stack 开发工具包。
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure Stack 1901 更新内部版本号是**1.1901.0.95**。
+Azure Stack 1901 更新内部版本号是**1.1901.0.95**或**1.1901.0.99** 2019 年 2 月 26 日之后。 请参阅以下说明：
+
+> [!IMPORTANT]  
+> Microsoft 已发现可能会影响到 1901 年从 1811 (1.1811.0.101) 更新的客户的问题和已发布的更新的 1901年程序包来解决问题： 生成 1.1901.0.99，从 1.1901.0.95 更新。 已更新为 1.1901.0.95 的客户不需要采取进一步的措施。
+>
+> 1811 上的已连接的客户将会自动看到管理员门户中提供的新 1901 (1.1901.0.99) 包，并应将其准备就绪时安装。 断开连接的客户可以下载并导入新 1901年包使用相同的过程[此处所述](azure-stack-apply-updates.md)。
+>
+> 安装的下一个完整或修补程序包时，具有 1901年任一版本的客户不会受到影响。
 
 ## <a name="hotfixes"></a>修补程序
 
-Azure Stack 定期发布修补程序。 请务必安装[最新的 Azure Stack 修补程序](#azure-stack-hotfixes)为 1811 到 1901年更新 Azure Stack 之前。
+Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1901 之前，请务必先安装 1811 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)。
 
-Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在 ASDK 上安装修补程序。
+Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 ASDK 上安装修补程序。
 
 > [!TIP]  
-> 订阅以下*RSS*或*Atom*源，以保持与 Azure Stack 修补程序：
+> 订阅下述 *RSS* 或 *Atom* 源，了解 Azure Stack 修补程序的最新信息：
 > - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
 > - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
@@ -51,14 +58,14 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 
 - **1809**：[KB 4481548 – Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**：当前没有修补程序可用。
-- **1901**:当前没有修补程序可用。
+- **1901**：当前没有修补程序可用。
 
 ## <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
-- 安装[最新的 Azure Stack 修补程序](#azure-stack-hotfixes)为之前更新到 1901年 1811 （如果有）。
+- 在更新到 1901 之前，请先安装 1811 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)（如果有）。
 
-- 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 此外查看活动警报，并解决任何需要执行操作：
+- 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。
 
     ```PowerShell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
@@ -68,7 +75,7 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 
 此更新包含以下适用于 Azure Stack 的新功能和改进：
 
-- 在 Azure Stack 启用的托管的映像你只能创建托管的通用 VM （非托管和托管） 上创建托管的映像对象的磁盘今后的 Vm。 有关详细信息，请参阅[Azure Stack 托管磁盘](user/azure-stack-managed-disk-considerations.md#managed-images)。
+- 使用 Azure Stack 上的托管映像可以在通用化 VM（非托管和托管的 VM）上创建托管映像对象，以后只能创建托管磁盘 VM。 有关详细信息，请参阅 [Azure Stack 托管磁盘](user/azure-stack-managed-disk-considerations.md#managed-images)。
 
 - **AzureRm 2.4.0**
    * **AzureRm.Profile**  
@@ -84,9 +91,9 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
    * **AzureRm.Insights**  
          AzureRm 汇总模块现在包括已发布的版本 5.1.5 支持**api-version 2018-01-01**指标，指标定义资源类型。
 
-- **AzureStack 1.7.0**这一项重大更改的释放。 有关的重大更改的详细信息，请参阅 https://aka.ms/azspshmigration170
+- **AzureStack 1.7.0**这一项重大更改的释放。 有关中断性变更的详细信息，请参阅 https://aka.ms/azspshmigration170
    * **Azs.Backup.Admin 模块**  
-         重大更改：备份更改为基于证书的加密模式。 对对称密钥的支持已弃用。  
+         重大更改：备份对基于证书的加密模式的更改。 已弃用对对称密钥的支持。  
    * **Azs.Fabric.Admin Module**  
          `Get-AzsInfrastructureVolume` 已弃用。 使用新 cmdlet `Get-AzsVolume`。  
          `Get-AzsStorageSystem` 已弃用。  使用新 cmdlet `Get-AzsStorageSubSystem`。  
@@ -101,21 +108,21 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 
 ## <a name="fixed-issues"></a>修复的问题
 
-- 修复了在该门户展示了用于创建基于策略的 VPN 网关，这在 Azure Stack 中不受支持的选项。 此选项已从门户中删除。
+- 修复了以下问题：门户显示了创建基于策略的 VPN 网关的选项，但该选项在 Azure Stack 中不受支持。 已从门户中删除此选项。
 
 <!-- 16523695 – IS, ASDK -->
-- 修复了在其中从虚拟网络更新 DNS 设置后**使用 Azure Stack DNS**到**自定义 DNS**，实例已不使用新的设置更新。
+- 修复了以下问题：在将虚拟网络的 DNS 设置从“使用 Azure Stack DNS”更新为“自定义 DNS”之后，不使用新设置更新实例。
 
-- <!-- 3235634 – IS, ASDK --> 修复了问题的部署的 Vm 中包含的大小**v2**后缀; 例如， **Standard_A2_v2**，必需指定作为后缀**Standard_A2_v2** (小写字母 v)。 如使用全局 Azure，你现在可以使用**Standard_A2_V2** （大写 V）。
+- <!-- 3235634 – IS, ASDK -->修复了以下问题：部署包含 **v2** 后缀大小的 VM（例如 **Standard_A2_v2**）需要将后缀指定为 **Standard_A2_v2**（小写 v）。 使用全球 Azure 时，现在可以使用 **Standard_A2_V2**（大写 V）。
 
 <!-- 2869209 – IS, ASDK --> 
-- 修复了问题时使用[添加 AzsPlatformImage cmdlet](/powershell/module/azs.compute.admin/add-azsplatformimage)，在你必须使用 **-OsUri**参数作为存储帐户上传到磁盘的 URI。 现在还使用该磁盘的本地路径。
+- 修复了以下问题：使用 [Add-AzsPlatformImage cmdlet](/powershell/module/azs.compute.admin/add-azsplatformimage) 时必须使用 **-OsUri** 参数作为存储帐户 URI（磁盘将上传到该存储帐户）。 现在还可以使用磁盘的本地路径。
 
 <!--  2795678 – IS, ASDK --> 
-- 修复了在使用在门户中的高级 VM 大小 （DS、 Ds_v2、 FS、 FSv2） 创建虚拟机 (Vm) 时生成警告的问题。 标准存储帐户中创建了 VM。 虽然这样做不会影响就功能而言，IOPs 或计费，已修复此警告。
+- 修复了以下问题：使用门户创建高级 VM 大小（DS、Ds_v2、FS、FSv2）的虚拟机 (VM) 时生成警告。 VM 是在标准存储帐户中创建的。 尽管这不会影响功能、IOPs 或计费，但我们依然修复了警告。
 
 <!-- 1264761 - IS ASDK -->  
-- 修复了**运行状况控制器**已生成以下警报的组件。 无法安全地忽略，将发出警报：
+- 修复了以下问题：**运行状况控制器**组件生成以下警报。 可以放心忽略这些警报：
 
     - 警报 #1：
        - 名称：基础结构角色不正常
@@ -131,27 +138,27 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 
 
 <!-- 3507629 - IS, ASDK --> 
-- 修复了问题，设置下的托管磁盘配额值时[计算配额类型](azure-stack-quota-types.md#compute-quota-types)为 0，它相当于 GiB 的默认值。 零个配额值现在是需要遵守。
+- 修复了以下问题：将[计算配额类型](azure-stack-quota-types.md#compute-quota-types)下面的托管磁盘配额设置为 0 时，相当于使用默认值 2048 GiB。 现在遵循零配额值。
 
 <!-- 2724873 - IS --> 
 - 修复了问题时使用的 PowerShell cmdlet**开始 AzsScaleUnitNode**或**停止 AzsScaleUnitNode**来管理缩放单位，首次尝试启动或停止的缩放单位可能会失败。
 
 <!-- 2724961- IS ASDK --> 
-- 修复了在其中你注册的问题**Microsoft.Insight**订阅设置中的资源提供程序和创建 Windows VM 与来宾 OS 诊断已启用，但不是显示 VM 概述页中的 CPU 百分比图表度量值数据。 数据现在显示正确。
+- 修复了以下问题：尽管在订阅设置中注册了 **Microsoft.Insight** 资源提供程序并创建了支持来宾 OS 诊断的 Windows VM，但 VM 概述页中的“CPU 百分比”图表仍不显示指标数据。 现在会正常显示数据。
 
-- 修复了在哪些运行**Get-azurestacklog** cmdlet 失败后运行**Test-azurestack**相同的特权终结点 (PEP) 会话中。 现在可以使用同一个执行所在的 PEP 会话**Test-azurestack**。
+- 修复了以下问题：在相同的特权终结点 (PEP) 会话中运行 **Test-AzureStack** 之后，运行 **Get-AzureStackLog** cmdlet 失败。 现在可以使用用于执行 **Test-AzureStack** 的同一 PEP 会话。
 
 <!-- bug 3615401, IS -->
-- 自动备份计划程序服务会进入已修复的问题已意外禁用状态。 
+- 修复了自动备份中计划程序服务意外进入禁用状态的问题。 
 
 <!--2850083, IS ASDK -->
-- 删除**重置网关**从 Azure Stack 门户中，引发了错误，如果单击此按钮的按钮。 此按钮可用作没有函数在 Azure Stack 中 Azure Stack 有多租户网关而不是专用的 VM 实例为每个租户 VPN 网关，因此已将其删除以防止产生混乱。 
+- 已从 Azure Stack 门户中删除“重置网关”按钮，以前在单击该按钮时会引发错误。 此按钮在 Azure Stack 中不起任何作用，因为 Azure Stack 包含多租户网关，而不为每个租户 VPN 网关提供专用的 VM 实例，因此已将其删除以避免混淆。 
 
 <!-- 3209594, IS ASDK -->
-- 删除**有效安全规则**从链接**网络属性**边栏选项卡中的作为此功能不支持在 Azure Stack 中。 无存在的链接提供了支持此功能的印象，但不是起作用。 若要缓解混淆，我们删除链接。
+- 已从“网络属性”边栏选项卡中删除“有效安全规则”链接，因为此功能在 Azure Stack 中不受支持。 显示该链接会让人觉得此功能受支持，但其实它并不起作用。 为了避免混淆，我们已删除该链接。
 
 <!-- 3139614 | IS -->
-- 修复了在其中后从 OEM，更新应用到 Azure Stack**可用更新**通知不显示在 Azure Stack 管理员门户中。
+- 修复了以下问题：将更新从 OEM 应用到 Azure Stack 之后，“有可用的更新”通知不显示在 Azure Stack 管理员门户中。
 
 ## <a name="changes"></a>更改
 
@@ -162,7 +169,7 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 
    请注意，即使使用 AD FS 支持 Kubernetes 群集的部署需要 internet 访问权限。
 
-- 在安装之后更新或修补程序到 Azure Stack，新功能可能会引入需要新权限才能被授予一个或多个标识应用程序。 授予这些权限，还需要对主目录中，管理访问权限，因此它不能自动完成。 例如：
+- 在安装 Azure Stack 的更新或修补程序之后，可以引入新的功能，这需要将新权限授予一个或多个标识应用程序。 授予这些权限需要主目录的管理访问权限，因此无法自动完成授权。 例如：
 
    ```powershell
    $adminResourceManagerEndpoint = "https://adminmanagement.<region>.<domain>"
@@ -172,42 +179,15 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
      -DirectoryTenantName $homeDirectoryTenantName -Verbose
    ```
 
-- 目前在 Azure Stack 中，而无需显式无需下载通过 marketplace 联合扩展已成功部署的扩展插件。 正在删除以下版本的这些扩展。 Azure Stack 操作员现在必须显式联合 Azure Stack marketplace 中的这些扩展：
-
-   | Type                     | 版本        |
-   |--------------------------|----------------|
-   | DSC                      | 2.19.0.0       |
-   | IaaSAntimalware          | 1.4.0.0        |
-   | BGInfo                   | 2.1            |
-   | VMAccessAgent            | 2.0            |
-   | CustomScriptExtension    | 1.8            |
-   | MicrosoftMonitoringAgent | 1.0.10900.0    |
-   | IaaSDiagnostics          | 1.10.1.1       |
-   | VMAccessForLinux         | 1.4.0.0        |
-   | CustomScriptForLinux     | 1.5.2.0        |
-   | DockerExtension          | 1.1.1606092330 |
-   | JsonADDomainExtension    | 1.3            |
-   | OSPatchingForLinux       | 2.3.0.1        |
-   | WebRole                  | 4.3000.14.0    |
-
-   建议在部署扩展时，是否设置 Azure Stack 用户`autoUpgradeMinorVersion`到**true**。 例如：
-
-   ```json
-   "type": "Extension",
-           "publisher": "ExtensionPublisher",
-           "typeHandlerVersion": "1.2",
-           "autoUpgradeMinorVersion": "true"
-   ```
-
-- 没有准确地规划 Azure Stack 容量的新的考虑因素。 1901 更新是现在可以创建虚拟机的总数限制。  此限制旨在作为临时以免解决方案不稳定。 进行寻址的更多的 Vm 上的稳定性问题的源，但尚未确定具体的时间表以提高补救。 1901年更新后，现在有了每个服务器限制 60 台虚拟机的总体解决方案限制为 700。  例如，8 服务器的 Azure Stack VM 限制将 480 (8 * 60)。  对于 Azure Stack 解决方案的 12 到 16 服务器限制为 700。 已创建此限制，请记住所有计算资源容量注意事项例如保留的复原能力和 CPU 虚拟与物理运算符想要在标记上维护的比率。 有关详细信息，请参阅的容量规划器的新版本。  
+- 准确规划 Azure Stack 容量时需要考虑一个新的因素。 1901 更新是现在可以创建虚拟机的总数限制。  此限制旨在作为临时以免解决方案不稳定。 进行寻址的更多的 Vm 上的稳定性问题的源，但尚未确定具体的时间表以提高补救。 1901年更新后，现在有了每个服务器限制 60 台虚拟机的总体解决方案限制为 700。  例如，8 服务器的 Azure Stack VM 限制将 480 (8 * 60)。  对于 Azure Stack 解决方案的 12 到 16 服务器限制为 700。 已创建此限制，请记住所有计算资源容量注意事项例如保留的复原能力和 CPU 虚拟与物理运算符想要在标记上维护的比率。 有关详细信息，请参阅的容量规划器的新版本。  
 情况已达到虚拟机扩展限制，将作为结果返回以下错误代码：VMsPerScaleUnitLimitExceeded，VMsPerScaleUnitNodeLimitExceeded。 
  
 
-- 计算 API 版本为 2017年-12-01 增加。
+- 计算 API 版本已递增到 2017-12-01。
 
-- 基础结构备份现在仅公共密钥与需要的证书 (。CER) 备份的数据进行加密。 对称加密密钥支持已弃用从 1901 年开始。 如果基础结构备份配置到 1901年更新之前，加密密钥将保持不变。 必须至少为 2 的详细信息更新具有向后兼容性支持来更新备份设置。 有关详细信息，请参阅[Azure Stack 基础结构备份最佳实践](azure-stack-backup-best-practices.md)。
+- 基础结构备份现在要求使用仅包含公钥的证书 (.CER) 来加密备份数据。 从更新 1901 开始，将会终止对称加密密钥的支持。 如果基础结构备份在更新到 1901 之前已进行配置，则加密密钥仍旧可用。 必须至少有额外两个支持向后兼容的更新才能更新备份设置。 有关详细信息，请参阅 [Azure Stack 基础结构备份最佳做法](azure-stack-backup-best-practices.md)。
 
-## <a name="common-vulnerabilities-and-exposures"></a>通用漏洞和披露
+## <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
 
 此更新安装以下安全更新：  
 
@@ -237,11 +217,11 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 - [CVE-2019-0588](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0588)
 
 
-有关这些漏洞的详细信息，单击上面的链接，或请参阅 Microsoft 知识库文章[4480977](https://support.microsoft.com/en-us/help/4480977)。
+有关这些漏洞的详细信息，请单击上述链接，或者查看 Microsoft 知识库文章 [4480977](https://support.microsoft.com/en-us/help/4480977)。
 
 ## <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
-- 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，如果 **AzsInfraRoleSummary** 或 **AzsPortalApiSummary** 测试失败，系统会提示你结合 `-Repair` 标志运行 **Test-AzureStack**。  如果运行此命令，则将会失败并出现以下错误消息：  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`
+- 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，如果 **AzsInfraRoleSummary** 或 **AzsPortalApiSummary** 测试失败，系统会提示你结合 `-Repair` 标志运行 **Test-AzureStack**。  如果运行此命令，它会失败并显示以下错误消息：`Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`
 
 - 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，会显示基板管理控制器 (BMC) 中的一条警告消息。 可以放心地忽略此警告。
 
@@ -278,17 +258,17 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 
 ### <a name="compute"></a>计算
 
-- 当创建新的 Windows 虚拟机 (VM)，可能会显示以下错误：
+- 创建新的 Windows 虚拟机 (VM) 时，可能会显示以下错误：
 
    `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
 
-   如果 VM 上启用启动诊断，但删除启动诊断存储帐户后，将发生此错误。 若要解决此问题，请重新创建具有您之前从未使用过与同名的存储帐户。
+   如果在 VM 上启用了启动诊断，但删除了启动诊断存储帐户，则会发生该错误。 若要解决此问题，请使用以前所用的同一名称重新创建存储帐户。
 
 <!-- 2967447 - IS, ASDK, to be fixed in 1902 -->
 - 虚拟机规模集 (VMSS) 创建体验提供基于 CentOS 的 7.2 作为部署选项。 由于该映像在 Azure Stack 上不可用，因此请为部署选择另一操作系统，或者使用一个 Azure 资源管理器模板，指定另一个已在部署之前由操作员从市场下载的 CentOS 映像。  
 
 <!-- TBD - IS ASDK --> 
-- 更新应用 1901年后，部署包含托管磁盘的 Vm 时，您可能会遇到以下问题：
+- 应用 1901 更新后，在部署包含托管磁盘的 VM 时可能会遇到以下问题：
 
    - 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次选择“资源提供程序”、“Microsoft.Compute”、“重新注册”。
@@ -315,10 +295,10 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
   
     在 Azure Stack 中，不支持将其他选项用作源标记。 同样，如果添加出站安全规则并选择“服务标记”作为目标，则显示与“源标记”相同的选项列表。 仅有的有效选项与“源标记”的有效选项相同，如以上列表中所述。
 
-- 网络安全组 (Nsg) 在相同的方式为全球 Azure 中的 Azure Stack 中无效。 在 Azure 中，您可以在一个 NSG 规则中设置多个端口 (使用门户、 PowerShell 和 Resource Manager 模板)。 Azure Stack 中但不能设置多个端口上通过门户的一个 NSG 规则。 若要解决此问题，使用资源管理器模板或 PowerShell，若要设置这些其他规则。
+- 网络安全组 (NSG) 无法像在全球 Azure 中一样在 Azure Stack 中运行。 在 Azure 中，可以在一个 NSG 规则中设置多个端口（使用门户、PowerShell 和资源管理器模板）。 但是，在 Azure Stack 中，无法通过门户在一个 NSG 规则中设置多个端口。 若要解决此问题，请使用资源管理器模板或 PowerShell 设置这些附加的规则。
 
 <!-- 3203799 - IS, ASDK -->
-- Azure Stack 不支持 4 个以上的网络接口 (Nic) 现在，附加到 VM 实例而不考虑实例的大小。
+- 目前，无论实例大小是什么，Azure Stack 都不支持将 4 个以上的网络接口 (NIC) 附加到 VM 实例。
 
 <!-- ### SQL and MySQL-->
 
@@ -336,7 +316,7 @@ Azure Stack 修补程序都只适用于 Azure Stack 集成系统;不要尝试在
 
 ## <a name="download-the-update"></a>下载更新
 
-可以从 Azure Stack 1901 更新包下载[此处](https://aka.ms/azurestackupdatedownload)。 
+可从[此处](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1901 更新包。 
 
 只有在联网场景中，Azure Stack 部署才会定期检查安全的终结点，并在已发布云更新的情况下自动通知你。 有关详细信息，请参阅[管理 Azure Stack 的更新](azure-stack-updates.md#using-the-update-tile-to-manage-updates)。
 
