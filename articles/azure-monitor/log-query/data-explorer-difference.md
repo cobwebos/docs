@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 日志查询语言差异 | Microsoft Docs
-description: Azure Monitor 使用的数据资源管理器查询语言的参考信息。 包括特定于 Azure Monitor 的附加元素以及 Azure Monitor 日志查询中不支持的元素。
+description: Azure Monitor 使用的 Kusto 查询语言的参考信息。 包括特定于 Azure Monitor 的附加元素以及 Azure Monitor 日志查询中不支持的元素。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: bwren
-ms.openlocfilehash: 9c58796fa19ffb6d38582c809f7bb6ca948bd92c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1185f3f96fd39f168d138d7dbf66e7780884b1fa
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003614"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266724"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor 日志查询语言差异
 
-虽然 [Azure Monitor 中的日志](log-query-overview.md)是基于 [Azure 数据资源管理器](/azure/data-explorer)构建的并使用[相同的查询语言](/azure/kusto/query)，但该语言的版本确实有一些差异。 本文介绍了在数据资源管理器使用的语言版本与 Azure Monitor 日志查询使用的版本之间存在差异的元素。
+虽然 [Azure Monitor 中的日志](log-query-overview.md)是基于 [Azure 数据资源管理器](/azure/data-explorer)构建的并使用相同的 [Kusto 查询语言](/azure/kusto/query)，但该语言的版本确实有一些差异。 本文介绍了在数据资源管理器使用的语言版本与 Azure Monitor 日志查询使用的版本之间存在差异的元素。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="data-explorer-elements-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的数据资源管理器元素
-以下各部分介绍了 Azure Monitor 不支持的数据资源管理器查询语言的元素。
+## <a name="kql-elements-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的 KQL 元素
+以下各部分介绍了 Azure Monitor 不支持的 Kusto 查询语言的元素。
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的语句
 
@@ -64,4 +64,4 @@ ms.locfileid: "56003614"
 ## <a name="next-steps"></a>后续步骤
 
 - 获取[用于编写 Azure Monitor 日志查询的不同资源](query-language.md)的参考信息。
-- 访问完整的[数据资源管理器查询语言参考文档](/azure/kusto/query/)。
+- 访问完整的 [Kusto 查询语言的参考文档](/azure/kusto/query/)。

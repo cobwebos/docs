@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910260"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309111"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
 
@@ -119,9 +119,9 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
 
 创建群集后，还可向一个或多个 Data Lake Storage 帐户添加群集访问权限。 打开 Data Lake Storage 的 Azure 门户条目，转至“数据资源管理器”>“访问权限”>“添加”。 
 
-### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>如何从 ML Services on HDInsight 访问 Data Lake Storage
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>如何从 ML Services on HDInsight 访问 Data Lake Storage Gen1
 
-获得 Data Lake Storage 访问权限后，便可以在 HDInsight 上的 ML Services 群集中使用该存储，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：
+获得 Data Lake Storage Gen1 访问权限后，便可以在 HDInsight 上的 ML Services 群集中使用该存储，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：
 
 
     # Point to the ADL Storage (e.g. ADLtest)
@@ -143,7 +143,7 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-以下命令用于结合 RevoShare 目录配置 Data Lake Storage 帐户，并添加上述示例所述的示例 .csv 文件：
+以下命令用于结合 RevoShare 目录配置 Data Lake Storage Gen1 帐户，并添加上述示例所述的示例 .csv 文件：
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user

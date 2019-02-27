@@ -1,5 +1,5 @@
 ---
-title: 创建工作区
+title: 创建机器学习工作室工作区
 titleSuffix: Azure Machine Learning Studio
 description: '若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。 '
 services: machine-learning
@@ -10,24 +10,23 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 16c67c217c8ef33a360fd479a45317d6c42af494
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bcd5b377f00ad43ff727c581471aad3ac651bdbb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486311"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270081"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>创建并共享 Azure 机器学习工作室工作区
 
 若要使用 Azure 机器学习工作室，需要具有“机器学习工作室”工作区。 此工作区包含创建、管理和发布试验所需的工具。 
 
+## <a name="create-a-studio-workspace"></a>创建工作室工作区
 
-
-### <a name="to-create-a-workspace"></a>创建工作区
 1. 登录到 [Azure 门户](https://portal.azure.com/)
 
     > [!NOTE]
-    > 若要登录并创建工作区，需要是 Azure 订阅管理员。 
+    > 若要登录并创建工作室工作区，你需要是 Azure 订阅管理员。 
     >
     > 
 
@@ -40,9 +39,13 @@ ms.locfileid: "55486311"
     - *工作区名称*最多可以为 260 个字符，不能以空格结束。 该名称不能包含下列字符：`< > * % & : \ ? + /`
     - 如果从此工作区部署 Web 服务，将使用所选择（或创建）的 *Web 服务计划*以及所选的关联*定价层*。
 
-    ![创建新的工作区](./media/create-workspace/create-new-workspace.png)
+    ![创建新的工作室工作区](./media/create-workspace/create-new-workspace.png)
 
 5. 单击“创建”。
+
+> [!NOTE]
+> 在执行工作流时，机器学习工作室依赖用户提供的 Azure 存储帐户来保存中间数据。 创建工作区后，如果删除了存储帐户或如果更改了访问密钥，工作区将停止运行，该工作区中的所有试验会失败。
+如果意外删除了存储帐户，可在相同区域重新创建与删除的存储帐户同名的存储帐户，并重新同步访问密钥。 如果更改了存储帐户访问密钥，请使用 Azure 门户在工作区中重新同步访问密钥。
 
 部署工作区后，可以在机器学习工作室中打开它。
 
@@ -56,12 +59,12 @@ ms.locfileid: "55486311"
 
     ![打开试验](./media/create-workspace/my-experiments.png)
 
-有关管理工作区的信息，请参阅[管理 Azure 机器学习工作区](manage-workspace.md)。
-如果在创建工作区时遇到问题，请参阅[疑难解答指南：创建并连接到机器学习工作区](troubleshooting-creating-ml-workspace.md)。
+有关管理工作室工作区的信息，请参阅[管理 Azure 机器学习工作室工作区](manage-workspace.md)。
+如果在创建工作区时遇到问题，请参阅[疑难解答指南：创建、连接到机器学习工作室工作区](troubleshooting-creating-ml-workspace.md)。
 
 
-## <a name="sharing-an-azure-machine-learning-workspace"></a>共享 Azure 机器学习工作区
-创建机器学习工作区后，可以邀请用户进入工作区，以共享对工作区及其所有试验、数据集、笔记本等的访问权限。可以将用户添加到以下两个角色之一：
+## <a name="share-an-azure-machine-learning-studio-workspace"></a>共享 Azure 机器学习工作室工作区
+创建机器学习工作室工作区后，可以邀请用户进入工作区，以共享对工作区及其所有试验、数据集、笔记本等的访问权限。可以将用户添加到以下两个角色之一：
 
 * **用户** - 工作区用户可以在工作区中创建、打开、修改和删除试验、数据集等。
 * **所有者** - 除了指定用户可以执行的操作之外，所有者还可以邀请和删除工作区中的用户。
@@ -71,7 +74,7 @@ ms.locfileid: "55486311"
 > 
 > 
 
-### <a name="to-share-a-workspace"></a>共享工作区
+### <a name="to-share-a-studio-workspace"></a>共享工作室工作区
 
 1. 在 [https://studio.azureml.net/Home](https://studio.azureml.net/Home) 处登录到机器学习工作室
 

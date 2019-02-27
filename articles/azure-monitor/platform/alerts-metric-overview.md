@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005509"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342977"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
-Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是平台指标、[自定义指标](../../azure-monitor/platform/metrics-custom-overview.md)、[Azure Monitor 中已转换为指标的常用日志](../../azure-monitor/platform/alerts-metric-logs.md)，以及 Application Insights 标准指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
+Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是[平台指标](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[自定义指标](../../azure-monitor/platform/metrics-custom-overview.md)、[Azure Monitor 中已转换为指标的常用日志](../../azure-monitor/platform/alerts-metric-logs.md)，以及 Application Insights 指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
 
 ## <a name="how-do-metric-alerts-work"></a>指标警报的工作原理
 
@@ -65,8 +65,6 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 一段时间后，如果“myVM”上的用量回归正常，即低于阈值， 则警报规则将再监视条件两次，然后发出“已解决”通知。 如果在三个连续的期限内都不符合警报条件，则警报规则会发出“已解决”/“已停用”消息，以便在不稳定的环境中减少干扰。
 
 通过 Webhook 或电子邮件发出“已解决”通知后，Azure 门户中警报实例的状态（称为“监视状态”）也会设置为“已解决”。
-
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>使用 Azure Monitor 中的指标警报进行大规模监视
 
 ### <a name="using-dimensions"></a>使用维度
 
@@ -123,9 +121,9 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 增加回溯时段和违规次数还可以将警报筛选为针对重大偏差定义的警报。 [详细了解动态阈值高级选项](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean)。
 
-### <a name="monitoring-multiple-resources-using-metric-alerts"></a>使用指标警报监视多个资源
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>使用 Azure Monitor 中的指标警报进行大规模监视
 
-如前一部分中所述，可以使用单个指标警报规则来监视每个维度组合（即 指标时序）。 但是，以前还受限于每次只能对一个资源进行监视。 Azure Monitor 还支持使用一个指标警报规则监视多个资源。 此功能目前为预览版，并且仅在虚拟机上受支持。 此外，单个指标警报可以监视一个 Azure 区域中的资源。
+到目前为止，已了解了如何使用单个指标警报监视与单个 Azure 资源相关的一个或多个指标时序。 很多时候，你可能希望将同一预警规则应用于许多资源。 Azure Monitor 还支持使用一个指标警报规则监视多个资源。 目前仅虚拟机支持此功能。 此外，单个指标警报可以监视一个 Azure 区域中的资源。
 
 可以通过以下三种方式之一指定单个指标警报的监视范围：
 
@@ -133,7 +131,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 - 指定为单个订阅中一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）
 - 指定为单个订阅中的所有虚拟机（在单个 Azure 区域中）
 
-目前，不支持通过 Azure 门户创建用于监视多个资源的指标警报规则。 可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每台虚拟机，你将收到单独的通知。
+创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每台虚拟机，你将收到单独的通知。
 
 ## <a name="typical-latency"></a>典型延迟
 
@@ -149,7 +147,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 |-------------------------------------------------|----------------------------|
 | Microsoft.ApiManagement/service | 是 |
 | Microsoft.Batch/batchAccounts| 是|
-|Microsoft.Cache/redis| 是
+|Microsoft.Cache/redis| 是 |
 |Microsoft.ClassicCompute/virtualMachines | 否 |
 |Microsoft.ClassicCompute/domainNames/slots/roles | 否|
 |Microsoft.CognitiveServices/accounts | 否 |
@@ -160,7 +158,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 |Microsoft.DBforMySQL/servers| 是|
 |Microsoft.DBforPostgreSQL/servers| 是|
 |Microsoft.Devices/IotHubs | 否|
-|Microsoft.DocumentDB/databaseAccounts| 否|
+|Microsoft.DocumentDB/databaseAccounts| 是|
 |Microsoft.EventHub/namespaces | 是|
 |Microsoft.Logic/workflows | 是|
 |Microsoft.Network/loadBalancers |是|
@@ -168,16 +166,16 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 |Microsoft.Network/applicationGateways| 是|
 |Microsoft.Network/expressRouteCircuits| 是|
 |Microsoft.Network/trafficManagerProfiles | 是|
-|Microsoft.Search/searchServices | 否|
-|Microsoft.ServiceBus/namespaces| 否|
+|Microsoft.Search/searchServices | 是|
+|Microsoft.ServiceBus/namespaces| 是 |
 |Microsoft.Storage/storageAccounts | 是|
 |Microsoft.StreamAnalytics/streamingjobs| 是|
 |Microsoft.TimeSeriesInsights/environments | 是|
 |Microsoft. Web/serverfarms | 是 |
 |Microsoft. Web/sites（不包括函数） | 是|
 |Microsoft. Web/hostingEnvironments/multiRolePools | 否|
-|Microsoft. Web/hostingEnvironments/workerPools| 否
-|Microsoft.SQL/Servers | 否|
+|Microsoft. Web/hostingEnvironments/workerPools| 否 |
+|Microsoft.SQL/Servers | 否 |
 
 ## <a name="next-steps"></a>后续步骤
 

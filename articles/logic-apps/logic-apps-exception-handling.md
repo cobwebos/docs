@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686256"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308717"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -29,12 +29,12 @@ ms.locfileid: "51686256"
 
 重试策略类型如下所示： 
 
-| 类型 | Description | 
+| Type | 说明 | 
 |------|-------------| 
-| [默认](#default-retry) | 此策略可[按指数级增长](#exponential-retry)的间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 | 
-| [指数式时间间隔](#exponential-retry)  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 | 
-| [固定时间间隔](#fixed-retry)  | 此策略会等待指定的时间间隔，然后再发送下一个请求。 | 
-| [无](#no-retry)  | 不重新发送请求。 | 
+| **默认** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 | 
+| **指数间隔**  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 | 
+| **固定间隔**  | 此策略会等待指定的时间间隔，然后再发送下一个请求。 | 
+| 无  | 不重新发送请求。 | 
 ||| 
 
 要了解重试策略限制，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#request-limits)。 
@@ -71,7 +71,7 @@ ms.locfileid: "51686256"
 
 *必需*
 
-| 值 | 类型 | Description |
+| 值 | Type | 说明 |
 |-------|------|-------------|
 | <*retry-policy-type*> | String | 要使用的重试策略类型：`default`、`none`、`fixed` 或 `exponential` | 
 | <*retry-interval*> | String | 其中值必须使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔。 默认的最小时间间隔是 `PT5S`，而最大时间间隔是 `PT1D`。 如果使用指数式时间间隔策略，可更改最小值和最大值。 | 
@@ -80,7 +80,7 @@ ms.locfileid: "51686256"
 
 可选
 
-| 值 | 类型 | Description |
+| 值 | Type | 说明 |
 |-------|------|-------------|
 | <*minimum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
 | <*maximum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 

@@ -4,14 +4,14 @@ description: 解答有关 Azure Migrate 的常见问题
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 1e60ee5060f5f292ed6d03cf0680d9801a0c04f4
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746305"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416184"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -117,6 +117,10 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 收集器设备收集的数据存储在创建迁移项目时指定的 Azure 位置。 数据安全存储在 Microsoft 订阅中，当用户删除 Azure Migrate 项目时，会删除这些数据。
 
 对于依赖项可视化，如果在 VM 上安装了代理，则依赖项代理收集的数据将存储在美国的某个 Log Analytics 工作区中，该工作区是在用户的订阅中创建的。 在订阅中删除 Log Analytics 工作区时会删除此数据。 [了解详细信息](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization)。
+
+### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>在连续分析的情况下，Azure Migrate 上载的数据量是多少？
+
+发送到 Azure Migrate 的数据量取决于多个参数。 若要给出一个指示性数字，一个有 10 台计算机（每台有一个磁盘和一个 NIC）的项目每天将发送大约 50 MB。 这是一个近似值，将根据 NIC 和磁盘的数据点数而变化（如果计算机、NIC 或磁盘数量增加，则发送的数据将是非线性的）。 
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>数据是否经过静态加密和传输中加密？
 

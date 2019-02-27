@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/16/2018
+ms.date: 02/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2b26261fdbae07bf3eea793efe6ff0755ca3f577
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1383c59ca88400868f83d30d04d9b0e5f5401282
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895986"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268951"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -400,7 +400,7 @@ pageViews
 
 ## <a name="operation-context"></a>操作上下文
 
-可以通过将遥测项与操作上下文关联来将遥测项关联在一起。 标准的请求跟踪模块针对在处理 HTTP 请求时发送的异常和其他事件执行此操作。 在[搜索](../../azure-monitor/app/diagnostic-search.md)和[分析](analytics.md)中，可以使用此操作 ID 轻松找到与请求关联的任何事件。
+可以通过将遥测项与操作上下文关联来将遥测项关联在一起。 标准的请求跟踪模块针对在处理 HTTP 请求时发送的异常和其他事件执行此操作。 在[搜索](../../azure-monitor/app/diagnostic-search.md)和[分析](analytics.md)中，可以使用操作 ID 轻松找到与请求关联的任何事件。
 
 有关关联的更多详细信息，请参阅 [Application Insights 中的遥测关联](../../azure-monitor/app/correlation.md)。
 
@@ -508,7 +508,7 @@ catch (ex)
 SDK 会自动捕获许多异常，因此不一定需要显式调用 TrackException。
 
 * ASP.NET：[编写代码来捕获异常](../../azure-monitor/app/asp-net-exceptions.md)。
-* J2EE：[自动捕获异常](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
+* Java EE：[自动捕获异常](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
 * JavaScript：自动捕获异常。 若要禁用自动收集，请在插入网页的代码片段中添加一行：
 
 ```javascript
@@ -732,7 +732,7 @@ Thread.sleep(5000);
 telemetry.flush();
 ```
 
-请注意，[服务器遥测通道](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/)的函数是异步的。
+[服务器遥测通道](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/)的函数是异步的。
 
 理想情况下，应在应用程序的关闭活动中使用 flush() 方法。
 
@@ -1144,7 +1144,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 * **InstrumentationKey**：Azure 中显示遥测数据的 Application Insights 资源。 通常可从 ApplicationInsights.config 中选择。
 * **Location**：设备的地理位置。
 * **Operation**：在 Web 应用中，为当前的 HTTP 请求。 在其他应用类型中，可将此属性设置为将事件分组在一起。
-  * **Id**：一个生成的值，它将不同的事件关联在一起，以便在诊断搜索中检查任何事件时，可以发现相关项。
+  * **ID**：一个生成的值，它将不同的事件关联在一起，以便在诊断搜索中检查任何事件时，可以发现相关项。
   * **Name**：一个标识符，通常是 HTTP 请求的 URL。
   * **SyntheticSource**：如果不为 null 或空，则此字符串表示请求的源已标识为机器人或 Web 测试。 默认情况下，该属性会从指标资源管理器的计算中排除。
 * **Properties**：与所有遥测数据一起发送的属性。 可在单个 Track* 调用中重写。

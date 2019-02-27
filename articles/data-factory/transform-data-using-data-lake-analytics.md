@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: 1874473b3ad091ce1da0a48367548cd4432737a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9918dd55181eb82257f23f8974159ed5e762fedd
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016488"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268069"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -131,7 +131,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 | runtimeVersion      | 要使用的 U-SQL 引擎的运行时版本。 | 否       |
 | compilationMode     | <p>U-SQL 编译模式。 必须是这些值之一：**Semantic：** 只执行语义检查和必要的健全性检查；**Full：** 执行完整编译，包括语法检查、优化、代码生成等；**SingleBox：** 执行完整编译，且 TargetType 设置为 SingleBox。 如果该属性未指定值，则服务器将确定最佳编译模式。 | 否 |
 
-数据工厂将提交脚本，请参阅 [SearchLogProcessing.txt 脚本定义](#sample-u-sql-script)了解有关脚本定义的信息。 
+请参阅 [SearchLogProcessing.txt](#sample-u-sql-script) 了解有关脚本定义的信息。 
 
 ## <a name="sample-u-sql-script"></a>示例 U-SQL 脚本
 

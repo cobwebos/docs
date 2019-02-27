@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 5f448c1c66520a5941ad867eaf3c89c22693cc45
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235566"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313426"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何缩放 Azure Redis 缓存
 Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 如果创建缓存后，应用程序的要求发生更改，可以更改缓存的大小和定价层。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
@@ -115,7 +115,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * [在缩放过程中是否会丢失缓存中的数据？](#will-i-lose-data-from-my-cache-during-scaling)
 * [在缩放过程中，自定义数据库设置是否会受影响？](#is-my-custom-databases-setting-affected-during-scaling)
 * [在缩放过程中，缓存是否可用？](#will-my-cache-be-available-during-scaling)
-* [配置异地复制后，为什么我不能在群集中缩放缓存或更改分片？](#scaling-limitations-with-geo-relication)
+* 配置异地复制后，我为什么不能在群集中缩放缓存或更改分片？
 * [不支持的操作](#operations-that-are-not-supported)
 * [缩放需要多长时间？](#how-long-does-scaling-take)
 * [如何判断缩放何时完成？](#how-can-i-tell-when-scaling-is-complete)

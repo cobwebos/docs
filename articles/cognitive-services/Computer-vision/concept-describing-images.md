@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7919a84ffe948c9b6a8f68fc1372f1976c09bc79
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864275"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312185"
 ---
 # <a name="describe-images-with-human-readable-language"></a>使用人类可读语言描述图像
 
-计算机视觉的算法可分析图像中的内容。 此分析构成在完整句子中显示为用户可读语言的“说明”的基础。 该说明概述了图像中找到的内容。 计算机视觉的算法可根据图像中标识的视觉特征生成各种说明。 每项说明都经过评估并带有置信度分数。 然后将返回置信度分数从高到低的列表。
+计算机视觉可以分析图像并生成描述其内容的人工可读的句子。 该算法实际返回基于不同视觉功能的多个描述，且每个描述都有一个可信度分数。 最终输出是按可信度从高到低排列的描述的列表。
 
 ## <a name="image-description-example"></a>图像说明示例
 

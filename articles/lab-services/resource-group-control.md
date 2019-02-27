@@ -10,21 +10,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: ddda9ef2b9bb716f7cdd33aa8fe9233f6c7d8e82
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 94e5f5b29e93409df2373cf6c56e8185dc5373a2
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55748994"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312968"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中为实验室虚拟机指定资源组
-作为实验室所有者，你可以配置要在特定的资源组中创建的实验室虚拟机。 使用此功能，在 Azure 订阅中将不会达到资源组限制。 使用此功能还可以将实验室资源合并到单个资源组中。 它还简化了对这些资源进行跟踪以及应用[策略](../governance/policy/overview.md)以在资源组级别管理它们的操作。
+作为实验室所有者，你可以配置要在特定的资源组中创建的实验室虚拟机。 此功能在以下场景中很有用处： 
+
+- 订阅中的实验室创建的资源组较少。
+- 在你自己配置的一组固定资源组中运行实验室。
+- 处理在 Azure 订阅中创建资源组所需的限制和批准。
+- 将所有实验室资源整合到单个资源组中，以简化对这些资源的跟踪和应用[策略](../governance/policy/overview.md)在资源组级别管理这些资源。
 
 使用此功能，你可以使用脚本来为所有实验室 VM 指定 Azure 订阅中的新资源组或现有资源组。 当前，开发测试实验室通过一个 API 来支持此功能。 
 
-## <a name="api-to-configure-a-resource-group-for-labs-vms"></a>用于为实验室 VM 配置资源组的 API
+## <a name="api-to-configure-a-resource-group-for-lab-virtual-machines"></a>用于为实验室虚拟机配置资源组的 API
 现在，让我们看一下作为实验室所有者，你在使用此 API 时可以采用的选项： 
 
 - 可以为所有虚拟机选择**实验室的资源组**。
@@ -32,7 +37,7 @@ ms.locfileid: "55748994"
 - 可以为所有虚拟机输入一个**新资源组**名称。
 - 你可以继续遵循现有的行为，即为实验室中的每个 VM 创建一个资源组。
  
-此设置适用于在实验室中创建的新虚拟机。 实验室中已在相应资源组中创建的较旧 VM 将不受影响。 但是，你可以将这些虚拟机从其各自的资源组中迁移到公用资源组中，使所有实验室虚拟机位于一个公用资源组中。 有关详细信息，请参阅[将资源移动到新资源组](../azure-resource-manager/resource-group-move-resources.md)。 已在实验室中创建的环境将继续保留在其自己的资源组中。
+此设置适用于在实验室中创建的新虚拟机。 实验室中已在相应资源组中创建的较旧 VM 将不受影响。 已在实验室中创建的环境将继续保留在其自己的资源组中。
 
 ### <a name="how-to-use-this-api"></a>如何使用此 API：
 - 使用此 API 时请使用 API 版本 **2018_10_15_preview**。 
@@ -86,7 +91,7 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
                 "labStorageType": "Premium",
                 "premiumDataDisks": "Disabled",
                 "provisioningState": "Succeeded",
-                "uniqueIdentifier": "6e6f668f-992b-435c-bac3-d328b745cd25"
+                "uniqueIdentifier": "000000000f-0000-0000-0000-00000000000000"
             },
             "dependsOn": []
         },

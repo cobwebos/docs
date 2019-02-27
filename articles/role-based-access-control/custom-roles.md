@@ -1,6 +1,6 @@
 ---
-title: Azure 中的自定义角色 | Microsoft Docs
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 定义自定义角色，以便对 Azure 中的资源进行精细的访问权限管理。
+title: Azure 资源的自定义角色 | Microsoft Docs
+description: 了解如何使用基于角色的访问控制 (RBAC) 创建自定义角色，以便对 Azure 资源进行精细的访问权限管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d2e3dc989a44de0c7c091dfbe1254a0e204faae
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6307c57f32700c0c2dd2e5da15b98a2a54dbe9c4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697123"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339322"
 ---
-# <a name="custom-roles-in-azure"></a>Azure 中的自定义角色
+# <a name="custom-roles-for-azure-resources"></a>Azure 资源的自定义角色
 
-如果[内置角色](built-in-roles.md)不能满足组织的特定需求，你可以创建自己的自定义角色。 与内置角色一样，可以将自定义角色分配到订阅、资源组和资源范围内的用户、组和服务主体。 自定义角色存储在 Azure Active Directory (Azure AD) 目录中，可以在订阅之间共享。 每个目录最多可以有 2000 个自定义角色。 可以使用 Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
+如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 与内置角色一样，可以将自定义角色分配到订阅、资源组和资源范围内的用户、组和服务主体。 自定义角色存储在 Azure Active Directory (Azure AD) 目录中，可以在订阅之间共享。 每个目录最多可以有 2000 个自定义角色。 可以使用 Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
 
 ## <a name="custom-role-example"></a>自定义角色示例
 
@@ -107,7 +107,7 @@ ms.locfileid: "55697123"
 | 查看自定义角色 | `Microsoft.Authorization/ roleDefinition/read` | 在某个范围内被允许此操作的用户可以查看可在该范围内分配的自定义角色。 所有内置角色都允许自定义角色可用于分配。 |
 
 ## <a name="next-steps"></a>后续步骤
-- [使用 Azure PowerShell 创建自定义角色](custom-roles-powershell.md)
-- [使用 Azure CLI 创建自定义角色](custom-roles-cli.md)
-- [了解角色定义](role-definitions.md)
-- [对 Azure 中的 RBAC 进行故障排除](troubleshooting.md)
+- [使用 Azure PowerShell 为 Azure 资源创建自定义角色](custom-roles-powershell.md)
+- [使用 Azure CLI 为 Azure 资源创建自定义角色](custom-roles-cli.md)
+- [了解 Azure 资源的角色定义](role-definitions.md)
+- [ Azure 资源 RBAC 故障排除](troubleshooting.md)

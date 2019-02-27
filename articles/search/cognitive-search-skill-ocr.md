@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 485837d6235f4868665df2907c01fa1bd26db357
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6fa316452b5b9f56c33de00b96c2cf57c40edfcc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766361"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429649"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
@@ -53,7 +53,7 @@ OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 
 | 输入名称      | 说明                                          |
 |---------------|------------------------------------------------------|
-| 图像         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为 ```generateNormalizedImages``` 时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
+| 图像         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
 
 
 ## <a name="skill-outputs"></a>技能输出

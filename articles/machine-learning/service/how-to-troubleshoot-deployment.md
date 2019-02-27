@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 83ee548befdc7ef0a4e7ed2d4b4e61b42a217f12
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112fff011ebfedc1abf6981661da5fd4d97fc3d0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247062"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267132"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Azure 机器学习服务 AKS 和 ACI 部署故障排除
 
@@ -196,12 +196,15 @@ $ docker run -p 8000:5001 <image_id>
 通常情况下，在评分脚本的 `init()` 函数中，会调用 `Model.get_model_path()` 函数来定位容器中的模型文件或模型文件的文件夹。 如果无法找到模型文件或文件夹，则通常会导致故障。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
 
 ```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
 from azureml.core.model import Model
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
 这将打印容器中的本地路径（相对于 `/var/azureml-app`），其中评分脚本有望找到模型文件或文件夹。 然后可以验证文件或文件夹是否确实位于其应该在的位置。
 
+将日志记录级别设置为 DEBUG 可能会导致记录其他信息，这可能有助于识别故障。
 
 ## <a name="function-fails-runinputdata"></a>函数故障：run(input_data)
 如果服务部署成功，但在向评分终结点发布数据时崩溃，可在 `run(input_data)` 函数中添加错误捕获语句，以便转而返回详细的错误消息。 例如：

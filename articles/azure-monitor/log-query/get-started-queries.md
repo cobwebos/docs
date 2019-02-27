@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 52a441d5d8f3f44b35253e02786a033da5439597
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994869"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269850"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor 日志查询入门
 
@@ -43,7 +43,7 @@ ms.locfileid: "55994869"
 查询可以从表名或 *search* 命令开始。 首先应从表名开始，因为它为查询定义了明确的范围，并可以改善查询性能和结果的相关性。
 
 > [!NOTE]
-> Azure Monitor 使用的数据资源管理器查询语言区分大小写。 语言关键字通常以小写编写。 在查询中使用表或列名时，请确保使用正确的大小写，如架构窗格中所示。
+> Azure Monitor 使用的 Kusto 查询语言区分大小写。 语言关键字通常以小写编写。 在查询中使用表或列名时，请确保使用正确的大小写，如架构窗格中所示。
 
 ### <a name="table-based-queries"></a>基于表的查询
 Azure Monitor 在表中组织日志数据，每个表由多个列组成。 所有表和列都显示在 Analytics 门户中的 Log Analytics 中的架构窗格内。 找到所需的表，然后看看其中的一些数据：

@@ -1,7 +1,7 @@
 ---
 title: 向 Azure 搜索索引添加建议器
 description: 允许字段执行提前键入的查询操作，其中的建议查询由 Azure 搜索索引中各字段的文本组成。
-ms.date: 01/31/2019
+ms.date: 02/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 35025d69865aa6890e1cd921e31ac6c26c015789
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7128e4d3b0675775dc713451ef672b28a4991499
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007695"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269920"
 ---
 # <a name="add-suggesters-to-an-azure-search-index"></a>向 Azure 搜索索引添加建议器
 
@@ -34,9 +34,12 @@ ms.locfileid: "56007695"
 
 每个索引只能有一个**建议器**资源（具体说来，在**建议器**集合中只能有一个**建议器**）。
 
-可以随时创建**建议器**，但对索引的影响因字段而异。 在同一更新过程中添加到建议器的新字段是影响力最小的，因为不需重新生成索引。 但是，添加现有字段会更改字段定义，因此必须完完全全地重新生成索引。
+## <a name="creating-a-suggester"></a>创建建议器 
 
-## <a name="usage"></a>使用情况  
+可以随时创建**建议器**，但对索引的影响因字段而异。 
+
++ 在同一更新过程中添加到建议器的新字段是影响力最小的，因为不需重新生成索引。
++ 但是，现有字段添加到建议器时会更改字段定义，因此必须完完全全地重新生成索引。
 
  **建议器**最适用于建议特定的文档（而不是松散的字词或短语）。 最佳的候选字段是标题、名称和其他可标识某个项目的相对较短的短语。 效果较差的是重复性字段（如类别和标记）或非常长的字段（如说明或评论字段）。  
 

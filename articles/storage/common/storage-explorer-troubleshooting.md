@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: 180780c3a3a644a8da0fa544c37bc8cd252c982f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c192b3e995cacd3085f343d1f6b2c243f1531acc
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469492"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415504"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
@@ -28,7 +28,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 1. 应用通过“透明代理”连接，这意味着服务器（如公司服务器）在拦截 HTTPS 流量、对其解密，然后使用自签名证书对其加密。
 2. 正在运行的应用程序正在向收到的 HTTPS 消息注入自签名 SSL 证书。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
 
-当存储资源管理器看到自签名或不受信任的证书时，不再可以判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
+当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
 
 1. 获取证书的 Base-64 编码 X.509 (.cer) 副本
 2. 单击“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件
@@ -53,6 +53,20 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 如果通过上述步骤无法找到任何自签名证书，请通过反馈工具联系我们以获取更多帮助。 或者，可以选择通过命令行使用 `--ignore-certificate-errors` 标志启动存储资源管理器。 使用此标志启动后，存储资源管理器将忽略证书错误。
 
 ## <a name="sign-in-issues"></a>登录问题
+
+### <a name="blank-sign-in-dialog"></a>空白“登录”对话框
+空白“登录”对话框通常是由于 ADFS 要求存储资源管理器执行 Electron 不支持的重定向引起的。 若要解决此问题，可以尝试使用设备代码流进行登录。 为此，请执行以下步骤：
+1. “转到实验”->“使用设备代码登录”。
+2. 打开“连接”对话框（通过左侧垂直栏上的插头图标或“帐户”面板上的“添加帐户”）。
+3. 选择想要登录的环境。
+4. 单击“登录”按钮。
+5. 按照下一个面板上的说明进行操作。
+
+注意：此功能目前仅适用于 1.7.0 预览版。
+
+如果在登录要使用的帐户时，由于默认浏览器已经登录到其他帐户而遇到问题，可通过以下方法解决：
+1. 手动将链接和代码复制到浏览器的私有会话中。
+2. 手动将链接和代码复制到其他浏览器中。
 
 ### <a name="reauthentication-loop-or-upn-change"></a>重新验证循环或 UPN 更改
 如果你处于重新验证循环中，或者已更改其中一个帐户的 UPN，请尝试以下操作：
@@ -90,7 +104,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 如果成功登录后无法检索订阅，请尝试以下故障排除方法：
 
 * 验证你的帐户是否有权访问所需的订阅。 可以通过登录到尝试使用的 Azure 环境的门户，来验证是否能够访问这些订阅。
-* 请确保使用正确的 Azure 环境登录（Azure、Azure 中国、Azure 德国、Azure 美国政府或自定义环境）。
+* 请确保使用正确的 Azure 环境登录（Azure、Azure 中国 21Vianet、Azure 德国、Azure 美国政府或自定义环境）。
 * 如果使用代理，请确保已正确配置存储资源管理器代理。
 * 尝试移除并重新添加帐户。
 * 如果有“更多信息”链接，请查看针对失败的租户报告的错误消息。 如果不确定如何处理看到的错误消息，请随时[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
@@ -116,7 +130,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 * 代理 URL 和端口号
 * 用户名和密码（若代理需要）
 
-请注意，存储资源管理器不支持使用 .pac 文件来配置代理设置。
+请注意，存储资源管理器不支持使用 proxy auto-config 文件来配置代理设置。
 
 ### <a name="common-solutions"></a>常见解决方法
 

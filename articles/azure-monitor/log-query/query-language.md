@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: f2c4939436db5ae4c862cb311cc66a162ac716e3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 01d452f97134093e9b40b6ec32f1c9fed41564aa
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989236"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343045"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor 日志查询
-Azure Monitor 日志构建在 Azure 数据资源管理器的基础之上，Azure Monitor 日志查询使用相同查询语言的某个版本。 [Azure 数据资源管理器查询语言文档](/azure/kusto/query)提供了该语言的完整详细信息，在编写 Azure Monitor 日志查询时，应将此文档用作主要参考资源。 本页提供了用于学习编写查询，以及该语言的 Azure Monitor 实现差异的其他资源的链接。
+Azure Monitor 日志在 Azure 数据资源管理器之上构建，Azure Monitor 日志查询使用同一 Kusto 查询语言的某个版本。 [Kusto 查询语言文档](/azure/kusto/query)提供了该语言的完整详细信息，在编写 Azure Monitor 日志查询时，应将此文档用作主要参考资源。 本页提供了用于学习编写查询，以及该语言的 Azure Monitor 实现差异的其他资源的链接。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,8 +36,8 @@ Azure Monitor 日志构建在 Azure 数据资源管理器的基础之上，Azure
 
 ## <a name="reference"></a>引用
 
-- [查询语言参考](/azure/kusto/query)是数据资源管理器查询语言的完整语言参考。
-- [Azure Monitor 日志查询语言差异](data-explorer-difference.md)介绍了不同数据资源管理器查询语言版本之间的差异。
+- [查询语言参考](/azure/kusto/query)是 Kusto 查询语言的完整语言参考。
+- [Azure Monitor 日志查询语言差异](data-explorer-difference.md)介绍了不同 Kusto 查询语言版本之间的差异。
 - [Azure Monitor 日志记录中的标准属性](../../azure-monitor/platform/log-standard-properties.md)介绍了所有 Azure Monitor 日志数据的标准属性。
 - [在 Azure Monitor 中执行跨资源日志查询](../../azure-monitor/log-query/cross-workspace-query.md)介绍了如何编写使用多个 Log Analytics 工作区和 Application Insights 应用程序中的数据的日志查询。
 
@@ -65,4 +65,4 @@ Azure Monitor 日志构建在 Azure 数据资源管理器的基础之上，Azure
  
 ## <a name="next-steps"></a>后续步骤
 
-- 访问完整的[数据资源管理器查询语言参考文档](/azure/kusto/query/)。
+- 访问完整的 [Kusto 查询语言的参考文档](/azure/kusto/query/)。

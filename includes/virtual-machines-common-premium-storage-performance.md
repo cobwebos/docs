@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d16214bf08b0e0b5a95acae380f8d644fc4461ce
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e2dc82ee49b240fe562f02b38c4991c644c010d3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56212939"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333760"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -35,7 +35,7 @@ ms.locfileid: "56212939"
 > 有时，显示为磁盘性能问题的原因实际上是网络瓶颈。 在这些情况下，应优化[网络性能](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)。
 > 如果 VM 支持加速网络，则应确保它已启用。 如果未启用，则可以在 [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) 和 [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) 上已部署的 VM 上启用它。
 
-如果尚不熟悉高级存储，请在开始之前首先阅读[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/virtual-machines/windows/premium-storage.md)一文和 [Azure 存储可伸缩性和性能目标](../articles/storage/common/storage-scalability-targets.md)一文。
+如果尚不熟悉高级存储，请在开始之前首先阅读[为 IaaS VM 选择 Azure 磁盘类型](../articles/virtual-machines/windows/disks-types.md)一文和 [Azure 存储可伸缩性和性能目标](../articles/storage/common/storage-scalability-targets.md)一文。
 
 ## <a name="application-performance-indicators"></a>应用程序性能指标
 
@@ -45,7 +45,7 @@ ms.locfileid: "56212939"
 
 ## <a name="iops"></a>IOPS
 
-IOPS 是指应用程序在一秒内发送到存储磁盘的请求数。 可以按顺序或随机读取或写入输入/输出操作。 OLTP 应用程序（例如在线零售网站）需要即时处理多个并发用户请求。 用户请求是插入和更新操作密集型数据库事务，必须通过应用程序进行快速处理。 因此，OLTP 应用程序需要很高的 IOPS。 此类应用程序处理数百万个小型和随机的 IO 请求。 如果应用程序是这样的，则必须在设计应用程序基础结构时针对 IOPS 进行优化。 在后面的优化应用程序性能部分，我们会详细讨论获取高 IOPS 必须考虑的所有因素。
+IOPS，或每秒输入/输出操作，是指应用程序在一秒内发送到存储磁盘的请求数。 可以按顺序或随机读取或写入输入/输出操作。 联机事务处理 (OLTP) 应用程序（例如在线零售网站）需要即时处理多个并发用户请求。 用户请求是插入和更新操作密集型数据库事务，必须通过应用程序进行快速处理。 因此，OLTP 应用程序需要很高的 IOPS。 此类应用程序处理数百万个小型和随机的 IO 请求。 如果应用程序是这样的，则必须在设计应用程序基础结构时针对 IOPS 进行优化。 在后面的优化应用程序性能部分，我们会详细讨论获取高 IOPS 必须考虑的所有因素。
 
 将高级存储磁盘连接到高规格 VM 时，Azure 会根据磁盘规格预配保障数目的 IOPS。 例如，P50 磁盘预配 7500 IOPS。 每个大型 VM 还存在一个其所能承受的特定 IOPS 限制。 例如，标准 GS5 VM 的限制为 80,000 IOPS。
 
@@ -53,11 +53,11 @@ IOPS 是指应用程序在一秒内发送到存储磁盘的请求数。 可以�
 
 吞吐量或带宽是指应用程序在指定时间间隔内发送到存储磁盘的数据量。 如果应用程序执行的输入/输出操作使用的 IO 单位很大，则需要高吞吐量。 数据仓库应用程序往往会发出扫描密集型操作（这些操作一次就会访问大量的数据），并且通常会执行批处理操作。 换而言之，此类应用程序需要更高的吞吐量。 如果应用程序是这样的，则必须在设计其基础结构时针对吞吐量进行优化。 在下一部分，我们会详细讨论那些为了实现此目标而必须进行调整的因素。
 
-将高级存储磁盘连接到大型 VM 时，Azure 会根据磁盘规格预配吞吐量。 例如，P50 磁盘预配 250 MB/秒的磁盘吞吐量。 每个高规格 VM 还存在一个其所能承受的特定吞吐量限制。 例如，标准 GS5 VM 的最大吞吐量为 2,000 MB/秒。 
+将高级存储磁盘连接到大型 VM 时，Azure 会根据磁盘规格预配吞吐量。 例如，P50 磁盘预配 250 MB/秒的磁盘吞吐量。 每个高规格 VM 还存在一个其所能承受的特定吞吐量限制。 例如，标准 GS5 VM 的最大吞吐量为 2,000 MB/秒。
 
 吞吐量和 IOPS 之间存在一个关系，如以下公式所示。
 
-![](media/premium-storage-performance/image1.png)
+![IOPS 和吞吐量的关系](../articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
 
 因此，必须确定应用程序所需的最佳吞吐量和 IOPS 值。 尝试优化其中一个值时，另一个值也会受影响。 在后面的优化应用程序性能部分，我们会更详细地讨论如何优化 IOPS 和吞吐量。
 
@@ -67,15 +67,7 @@ IOPS 是指应用程序在一秒内发送到存储磁盘的请求数。 可以�
 
 对应用程序进行优化以获取更高的 IOPS 和吞吐量时，应用程序的延迟就会受到影响。 在优化应用程序性能以后，应始终评估应用程序的延迟，以免出现意外的高延迟行为。
 
-在托管磁盘上执行控制平面操作可能涉及将磁盘从某个存储位置移动到另一个存储位置的操作。 这是通过在后台复制数据来安排的，可能需要花费数个小时才能完成，通常少于 24 个小时，具体取决于磁盘中的数据量。 在此期间，由于一些读取可能被重定向到原始位置，所以应用程序可能会经历比平常更高的读取延迟，并且可能需要花费更长时间才能完成。 在此期间，对写入延迟没有影响。  
-
-1.  [更新存储类型](../articles/virtual-machines/windows/convert-disk-storage.md)
-2.  [分离磁盘并将其从一个 VM 附加到另一个 VM](../articles/virtual-machines/windows/attach-disk-ps.md)
-3.  [从 VHD 中创建托管磁盘](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
-4.  [从快照创建托管磁盘](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
-5.  [将非托管磁盘转换为托管磁盘](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
-
-## <a name="gather-application-performance-requirements"></a>收集应用程序性能要求
+# <a name="performance-application-checklist-for-disks"></a>磁盘性能应用程序清单
 
 设计在 Azure 高级存储上运行的高性能应用程序时，第一步是了解应用程序的性能要求。 收集性能要求后，即可优化应用程序，使性能得到最大优化。
 
@@ -83,7 +75,7 @@ IOPS 是指应用程序在一秒内发送到存储磁盘的请求数。 可以�
 
 接下来，请衡量一下应用程序在其整个生存期的最大性能要求。 一开始请使用下面的示例清单。 记录在正常工作负荷期间、高峰工作负荷期间、非工作时间工作负荷期间的最大性能要求。 确定所有工作负荷级别的要求以后，就能够确定应用程序的总体性能要求。 例如，电子商务网站的正常工作负荷是指该网站在一年中的多数日子需要处理的事务数。 网站的高峰工作负荷是指该网站在假日或进行特殊促销活动时候需要处理的事务数。 高峰工作负荷通常会在有限的时段内出现，但可能需要应用程序处理正常运行期间两倍或两倍以上的事务。 找出第 50 百分位数、第 90 百分位和第 99 百分位的要求。 这有助于筛选出性能要求中的任何离群值，让你能够专门针对正确的值进行优化。
 
-### <a name="application-performance-requirements-checklist"></a>应用程序性能要求清单
+## <a name="application-performance-requirements-checklist"></a>应用程序性能要求清单
 
 | **性能要求** | **第 50 百分位数** | **第 90 百分位数** | **第 99 百分位数** |
 | --- | --- | --- | --- |
@@ -106,9 +98,7 @@ IOPS 是指应用程序在一秒内发送到存储磁盘的请求数。 可以�
 > [!NOTE]
 > 应该根据应用程序未来的预期增长情况，考虑对这些数字进行缩放。 最好是预先对增长情况进行计划，因为以后可能更难通过更改基础结构来提高性能。
 
-如果在已经有一个应用程序的情况下想要转到高级存储，请首先构建一个针对现有应用程序的上述清单。 然后，在高级存储上生成应用程序的原型，根据本文档后面部分的“优化应用程序性能”中描述的准则设计应用程序。 下一部分说明那些可以用来收集性能度量的工具。
-
-针对与现有应用程序类似的原型创建一份清单。 使用各种能够用来模拟工作负荷并衡量原型应用程序性能的基准测试工具。 请参阅有关[基准测试](#benchmarking)的部分以了解更多信息。 这样做即可确定高级存储是否能够满足或超过应用程序性能要求。 然后，就可以将相同的准则实施到生产型应用程序中。
+如果在已经有一个应用程序的情况下想要转到高级存储，请首先构建一个针对现有应用程序的上述清单。 然后，在高级存储上生成应用程序的原型，根据本文档后面部分的“优化应用程序性能”中描述的准则设计应用程序。 下一篇文章说明那些可以用来收集性能度量的工具。
 
 ### <a name="counters-to-measure-application-performance-requirements"></a>用于衡量应用程序性能要求的计数器
 
@@ -129,13 +119,15 @@ PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘
 
 详细了解 [iostat](https://linux.die.net/man/1/iostat) 和 [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx)。
 
-## <a name="optimizing-application-performance"></a>优化应用程序性能
+
+
+## <a name="optimize-application-performance"></a>优化应用程序性能
 
 影响运行在高级存储上的应用程序的性能的主要因素包括：IO 请求的性质、VM 大小、磁盘大小、磁盘数目、磁盘缓存、多线程处理和队列深度。 可以使用系统提供的设置来控制其中部分因素。 大多数应用程序不会提供一个选项来直接更改 IO 大小和队列深度。 例如，如果使用的是 SQL Server，则不能选择 IO 大小和队列深度。 SQL Server 会选择最佳 IO 大小和队列深度值以获取最大性能。 必须了解两类因素对应用程序性能的影响，这样你才能根据性能需要预配相应的资源。
 
 此部分从始至终都需要参考你所创建的应用程序要求清单，以便确定相关需求以优化应用程序性能。 根据该清单，便可以确定此部分的哪些因素需要进行调整。 若要了解每个因素对应用程序性能的影响，可在应用程序安装以后运行基准测试工具。 请参阅本文末尾的[基准测试](#Benchmarking)部分，了解需要执行哪些步骤才能在 Windows 和 Linux VM 上运行常见的基准测试工具。
 
-### <a name="optimizing-iops-throughput-and-latency-at-a-glance"></a>迅速优化 IOPS、吞吐量和延迟
+### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>迅速优化 IOPS、吞吐量和延迟
 
 下表汇总了性能因素以及进行 IOPS、吞吐量和延迟优化所需的步骤。 此汇总以后的部分将更深入地介绍每个因素。
 
@@ -298,6 +290,46 @@ Azure 高级存储提供八种 GA 磁盘大小和三种磁盘大小，当前均�
 1. 在托管日志文件的高级存储磁盘上将缓存配置为“无”。  
    a.  日志文件主要是进行频繁的写入操作。 因此，将缓存设置为 ReadOnly 对其无用。
 
+### <a name="optimize-performance-on-linux-vms"></a>优化 Linux Vm 的性能
+
+对于缓存设置为 ReadOnly 或 None 的所有高级存储 SSD 或极致磁盘，必须在装入文件系统时禁用“屏障”。 在此方案中不需要屏障，因为写入高级存储磁盘对于这些缓存设置是持久性的。 成功完成写入请求时，数据已写入持久存储。 若要禁用“屏障”，请使用以下方法之一： 选择适用于文件系统的方法：
+  
+* 对于 reiserFS，请使用 `barrier=none` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier=flush`。）
+* 对于 ext3/ext4，请使用 `barrier=0` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier=1`。）
+* 对于 XFS，请使用 `nobarrier` 装入选项来禁用屏障。 （若要启用屏障，请使用 `barrier`。）
+* 对于缓存设置为 ReadWrite 的高级存储磁盘，请启用屏障来实现写入持久性。
+* 若要在重新启动 VM 后保留卷标，必须在 /etc/fstab 中更新对磁盘的全局唯一标识符 (UUID) 引用。 有关详细信息，请参阅[将托管磁盘添加到 Linux VM](../articles/virtual-machines/linux/add-disk.md)。
+
+下面是我们使用高级 SSD 验证过的 Linux 发行版。 为了高级 SSD 更好的性能和稳定性，建议将 VM 升级到其中至少一个版本（或更新版本）。 
+
+某些版本需要最新的适用于 Azure 的 Linux Integration Services (LIS) v4.0。 若要下载并安装某个发行版，请单击下表中所列的链接。 完成验证后，我们将陆续在该列表中添加映像。 我们的验证表明，性能根据每个映像的不同而异。 性能取决于工作负荷特征和映像设置。 不同的映像已针对不同种类的工作负荷进行优化。
+
+| 分发 | 版本 | 支持的内核 | 详细信息 |
+| --- | --- | --- | --- |
+| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
+| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
+| Debian | 7.x、8.x | 3.16.7-ckt4-1+ | &nbsp; |
+| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
+| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
+| CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
+| CentOS | 6.5、6.6、6.7、7.0 | &nbsp; | [需要 LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> 请参阅下一部分中的注释 |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [建议使用 LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> 请参阅下一部分中的注释 |
+| Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+ | &nbsp; | &nbsp; |
+| Oracle | 6.0+、7.2+ | &nbsp; | UEK4 或 RHCK |
+| Oracle | 7.0-7.1 | &nbsp; | UEK4 或 RHCK w/[LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 | &nbsp; | UEK4 或 RHCK w/[LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+
+## <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 的 LIS 驱动程序
+
+运行 OpenLogic CentOS VM 时，请运行以下命令来安装最新的驱动程序：
+
+```
+sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
+sudo yum install microsoft-hyper-v
+```
+
+若要激活新驱动程序，请重启 VM。
+
 ## <a name="disk-striping"></a>磁盘条带化
 
 当高规格 VM 与多个高级存储永久性磁盘连接时，可以将这些磁盘一起条带化，以便聚合其 IOPS、带宽和存储容量。
@@ -363,249 +395,11 @@ Azure 将高级存储平台设计为可以进行大规模并行处理。 因此�
 
 Azure 高级存储会预配指定数目的 IOPS 和吞吐量，具体取决于所选择的 VM 大小和磁盘大小。 任何时候，只要应用程序尝试实现的 IOPS 或吞吐量超出了这些限制（VM 或磁盘能够处理的量），高级存储就会对其进行限制。 这会以应用程序性能下降的方式体现出来。 具体表现为延迟增高、吞吐量下降或 IOPS 降低。 如果高级存储不对此进行限制，应用程序可能会超过其资源的处理能力，从而彻底崩溃。 因此，为了避免因限制而造成的性能问题，请始终为应用程序预配足够的资源。 请考虑一下我们在上面的 VM 大小和磁盘大小部分讨论过的内容。 要了解需要哪些资源来托管应用程序，最好的方式是进行基准测试。
 
-## <a name="benchmarking"></a>基准测试
-
-基准测试是指模拟应用程序的不同工作负荷，针对每个工作负荷来测量应用程序性能这样一个过程。 通过执行前面部分所描述的步骤，已经收集了应用程序的性能要求。 通过在托管应用程序的 VM 上运行基准测试工具，可以确定应用程序在高级存储中能够达到的性能级别。 在本部分，我们提供了如何对预配了 Azure 高级存储磁盘的标准 DS14 VM 进行基准测试的示例。
-
-我们使用了常见的基准测试工具 Iometer 和 FIO，分别适用于 Windows 和 Linux。 这些工具会生成多个线程，这些线程模拟类似生产的工作负荷，并测量系统性能。 使用这些工具还可以配置各种参数（例如块大小和队列深度），应用程序的这些参数通常无法更改。 这样便可以更灵活地在针对不同类型的应用程序工作负荷预配了高级磁盘的高规格 VM 上实现最大性能。 若要详细了解每种基准测试工具，请参阅 [Iometer](http://www.iometer.org/) 和 [FIO](http://freecode.com/projects/fio)。
-
-要按以下示例进行操作，请创建一个标准 DS14 VM，然后将 11 个高级存储磁盘连接到 VM。 在这 11 个磁盘中，将 10 个磁盘的主机缓存配置为“无”，并将它们条带化到名为 NoCacheWrites 的卷中。 将剩余磁盘上的主机缓存配置为“ReadOnly”，在该磁盘上创建名为 CacheReads 的卷。 进行这样的设置以后，便可以看到标准 DS14 VM 展现出最大的读写性能。 有关通过高级磁盘创建 DS14 VM 的详细步骤，请参阅[针对虚拟机数据磁盘创建和使用高级存储帐户](../articles/virtual-machines/windows/premium-storage.md)。
-
-预热缓存  
-启用 ReadOnly 主机缓存的磁盘能够提供比磁盘限制更高的 IOPS。 若要通过主机缓存来实现此最大读取性能，首先必须对此磁盘的缓存进行预热。 这样可确保需要通过基准测试工具在 CacheReads 卷上实现的读取 IO 实际上可以直接命中缓存而不是磁盘。 命中缓存导致单个启用缓存的磁盘可以实现额外的 IOPS。
-
-> **重要提示：**  
-> 每次重启 VM 后，运行基准测试之前必须对缓存进行预热。
-
-#### <a name="iometer"></a>Iometer
-
-在 VM 上[下载 Iometer 工具](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download)。
-
-测试文件  
-Iometer 使用一个测试文件，该文件存储在将要运行基准测试的卷上。 Iometer 会尝试完成此测试文件中的读取和写入，以便测量磁盘 IOPS 和吞吐量。 如果没有提供此测试文件，Iometer 会创建一个。 在 CacheReads 和 NoCacheWrites 卷上创建名为 iobw.tst 的 200GB 的测试文件。
-
-访问规范  
-规范、请求 IO 大小、读/写百分比、随机/顺序百分比都在 Iometer 中使用“访问规范”选项卡进行配置。 为下述每个方案创建一个访问规范。 创建访问规范，并使用合适的名称（例如 RandomWrites\_8K、RandomReads\_8K）进行“保存”。 在运行测试方案时，请选择相应的规范。
-
-最大写入 IOPS 方案的访问规范示例如下所示：  
-    ![](media/premium-storage-performance/image8.png)
-
-最大 IOPS 测试规范  
-若要演示最大 IOPS，请使用较小的请求大小。 使用 8k 请求大小，创建随机读写的规范。
-
-| 访问规范 | 请求大小 | 随机百分比 | 读取百分比 |
-| --- | --- | --- | --- |
-| RandomWrites\_8K |8K |100 |0 |
-| RandomReads\_8K |8K |100 |100 |
-
-最大吞吐量测试规范  
-若要演示最大吞吐量，请使用较大的请求大小。 使用 64k 请求大小，创建随机读写的规范。
-
-| 访问规范 | 请求大小 | 随机百分比 | 读取百分比 |
-| --- | --- | --- | --- |
-| RandomWrites\_64K |64K |100 |0 |
-| RandomReads\_64K |64K |100 |100 |
-
-运行 Iometer 测试  
-执行以下步骤来预热缓存
-
-1. 使用显示在下面的值创建两个访问规范：
-
-   | Name | 请求大小 | 随机百分比 | 读取百分比 |
-   | --- | --- | --- | --- |
-   | RandomWrites\_1MB |1MB |100 |0 |
-   | RandomReads\_1MB |1MB |100 |100 |
-1. 运行 Iometer 测试，以便使用以下参数初始化缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在"测试设置"选项卡上将测试的“运行时间”持续时间设置为 2 小时。
-
-   | 场景 | 目标卷 | Name | Duration |
-   | --- | --- | --- | --- |
-   | 初始化缓存磁盘 |CacheReads |RandomWrites\_1MB |2 小时 |
-1. 运行 Iometer 测试，以便使用以下参数预热缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在"测试设置"选项卡上将测试的“运行时间”持续时间设置为 2 小时。
-
-   | 场景 | 目标卷 | Name | 持续时间 |
-   | --- | --- | --- | --- |
-   | 预热缓存磁盘 |CacheReads |RandomReads\_1MB |2 小时 |
-
-预热缓存磁盘后，继续执行下面列出的测试方案。 若要运行 Iometer 测试，请为**每个**目标卷使用至少三个工作线程。 对于每个工作线程，请选择目标卷并设置队列深度，并选择一个保存的测试规范（如下表所示），以便运行相应的测试方案。 该表还显示了运行这些测试时 IOPS 和吞吐量的预期结果。 所有方案都使用 8KB 的较小 IO 大小，而队列深度则较高，为 128。
-
-| 测试方案 | 目标卷 | Name | 结果 |
-| --- | --- | --- | --- |
-| 最大 读取 IOPS |CacheReads |RandomWrites\_8K |50,000 IOPS |
-| 最大 写入 IOPS |NoCacheWrites |RandomReads\_8K |64,000 IOPS |
-| 最大 组合 IOPS |CacheReads |RandomWrites\_8K |100,000 IOPS |
-| NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
-| 最大 读取 MB/秒 |CacheReads |RandomWrites\_64K |524 MB/秒 |
-| 最大 写入 MB/秒 |NoCacheWrites |RandomReads\_64K |524 MB/秒 |
-| 组合 MB/秒 |CacheReads |RandomWrites\_64K |1000 MB/秒 |
-| NoCacheWrites |RandomReads\_64K | &nbsp; | &nbsp; |
-
-以下是组合型 IOPS 和吞吐量方案的 Iometer 测试结果的屏幕快照。
-
-读写组合最大 IOPS  
-![](media/premium-storage-performance/image9.png)
-
-读写组合最大吞吐量  
-![](media/premium-storage-performance/image10.png)
-
-### <a name="fio"></a>FIO
-
-FIO 是一种常用工具，可以在 Linux VM 上对存储进行基准测试。 它可以灵活地选择不同的 IO 大小、顺序或随机读取和写入。 它生成的工作线程或进程可以执行指定的 I/O 操作。 可以指定每个工作线程使用作业文件时必须执行的 I/O 操作类型。 我们根据以下示例所描述的方案创建了一个作业文件。 可以更改这些作业文件中的规范，以便对在高级存储上运行的不同工作负荷进行基准测试。 在这些示例中，我们将使用运行 **Ubuntu** 的标准 DS 14 VM。 运行基准测试之前，请使用[基准测试部分](#Benchmarking)开头所述的相同设置来预热缓存。
-
-开始之前，请[下载 FIO](https://github.com/axboe/fio) 并将其安装在虚拟机上。
-
-针对 Ubuntu 运行以下命令：
-
-```
-apt-get install fio
-```
-
-我们会在磁盘上使用 4 个工作线程来执行写入操作，4 个工作线程来执行读取操作。 写入工作线程将推动“nocache”卷上的流量，该卷有 10 个磁盘的缓存设置为“无”。 读取工作线程将推动“readcache”卷上的流量，该卷有 1 个磁盘的缓存设置为“ReadOnly”。
-
-最大写入 IOPS  
-使用以下规范创建作业文件，以便获得最大写入 IOPS。 将其命名为“fiowrite.ini”。
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=256
-ioengine=libaio
-bs=8k
-
-[writer1]
-rw=randwrite
-directory=/mnt/nocache
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-[writer4]
-rw=randwrite
-directory=/mnt/nocache
-```
-
-请注意以下重要事项，这些事项必须符合前面部分讨论的设计准则。 这些规范是实现最大 IOPS 所必需的。  
-
-* 较高的队列深度：256。  
-* 较小的块大小：8KB。  
-* 多个执行随机写入的线程。
-
-运行以下命令，开始进行 30 秒的 FIO 测试：  
-
-```
-sudo fio --runtime 30 fiowrite.ini
-```
-
-进行测试时，就能够看到 VM 和高级磁盘传送的写入 IOPS 数。 如以下示例所示，DS14 VM 传送的写入 IOPS 达到了最大限制：50,000 IOPS。  
-    ![](media/premium-storage-performance/image11.png)
-
-最大读取 IOPS  
-使用以下规范创建作业文件，以便获得最大读取 IOPS。 将其命名为“fioread.ini”。
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=256
-ioengine=libaio
-bs=8k
-
-[reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
-```
-
-请注意以下重要事项，这些事项必须符合前面部分讨论的设计准则。 这些规范是实现最大 IOPS 所必需的。
-
-* 较高的队列深度：256。  
-* 较小的块大小：8KB。  
-* 多个执行随机写入的线程。
-
-运行以下命令，开始进行 30 秒的 FIO 测试：
-
-```
-sudo fio --runtime 30 fioread.ini
-```
-
-进行测试时，就能够看到 VM 和高级磁盘传送的读取 IOPS 数。 如以下示例所示，DS14 VM 传送了 64,000 个以上的读取 IOPS。 这是磁盘和缓存性能的组合。  
-    ![](media/premium-storage-performance/image12.png)
-
-最大读取和写入 IOPS  
-使用以下规范创建作业文件，以便获得最大读写组合 IOPS。 将其命名为“fioreadwrite.ini”。
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=128
-ioengine=libaio
-bs=4k
-
-[reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
-
-[writer1]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer4]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-```
-
-请注意以下重要事项，这些事项必须符合前面部分讨论的设计准则。 这些规范是实现最大 IOPS 所必需的。
-
-* 较高的队列深度：128。  
-* 较小的块大小：4KB。  
-* 多个执行随机读取和写入的线程。
-
-运行以下命令，开始进行 30 秒的 FIO 测试：
-
-```
-sudo fio --runtime 30 fioreadwrite.ini
-```
-
-进行测试时，就能够看到 VM 和高级磁盘传送的组合型读取和写入 IOPS 数。 如以下示例所示，DS14 VM 传送了 100,000 个以上的组合型读取和写入 IOPS。 这是磁盘和缓存性能的组合。  
-    ![](media/premium-storage-performance/image13.png)
-
-最大组合吞吐量  
-若要获得最大读写组合吞吐量，请使用较大的块大小和大的队列深度，并通过多个线程执行读取和写入操作。 可以使用 64KB 的块大小，128 的队列深度。
-
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 Azure 高级存储的详细信息：
+了解有关可用磁盘类型的详细信息：
 
-* [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/virtual-machines/windows/premium-storage.md)  
+* [选择磁盘类型](../articles/virtual-machines/windows/disks-types.md)  
 
 SQL Server 用户请阅读有关 SQL Server 性能最佳实践的文章：
 

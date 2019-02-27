@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87d3a44b01dff81242f935c7737bd170fe744536
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 54511ac4dfdc05ec1880695b1ae2360f0b5e8162
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246868"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328361"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -106,12 +106,12 @@ ms.locfileid: "54246868"
 
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>用于 RDBMS 部署的 VM 的存储结构
-为了完成本章的学习，必须先了解[部署指南][deployment-guide]的[此][deployment-guide-3]章所提供的内容。 在阅读本章之前，必须先了解并熟悉不同的 VM 系列及其差异，以及 Azure 标准存储和[高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)的差异。
+为了完成本章的学习，必须先了解[部署指南][deployment-guide]的[此][deployment-guide-3]章所提供的内容。 在阅读本章之前，必须先了解并熟悉不同的 VM 系列及其差异，以及标准存储和高级存储的差异。 对于
 
 对于 Azure VM 的 Azure 存储，应熟悉以下文章：
 
-- [关于 Azure Windows VM 的磁盘存储](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds)
-- [关于用于 Azure Linux VM 的磁盘存储](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds)
+- [Azure Windows VM 的托管磁盘简介](../../windows/managed-disks-overview.md)
+- [Azure Linux VM 的托管磁盘简介](../../linux/managed-disks-overview.md)
 
 在基本配置中，我们通常推荐这种结构的部署：操作系统、DBMS 和最终的 SAP 二进制文件与数据库文件分开。 因此，我们建议在 Azure 虚拟机中运行的 SAP 系统将安装包含操作系统、数据库管理系统可执行文件和 SAP 可执行文件的基础 VHD（或磁盘）。 DBMS 数据和日志文件将存储在 Azure 存储（标准或高级存储）的独立磁盘中，并以逻辑磁盘形式附加到原始的 Azure 操作系统映像 VM。 尤其是在 Linux 部署中，可能记录有不同的建议。 尤其是 SAP HANA。
 
@@ -134,10 +134,8 @@ Azure 强制实施每个数据磁盘的 IOPS 配额。 对于 Azure 标准存储
 > [!NOTE]
 > 若要利用 Azure 的唯一[单个 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)，附加的所有磁盘的类型都需要是 Azure 高级存储，包括基础 VHD。
 
-
 > [!NOTE]
 > 不支持在位于与 Azure 数据中心相邻的并置第三方数据中心中的存储硬件上托管 SAP 数据库的主数据库文件（数据和日志文件）。 对于 SAP 工作负载，SAP 数据库的数据和事务日志文件仅支持表示为本机 Azure 服务的存储。
-> 
 
 数据库文件和日志/重做文件的放置以及所使用的 Azure 存储类型应该根据 IOPS、延迟和吞吐量需求来定义。 为了有足够的 IOPS，可能必须使用多个磁盘或使用更大的高级存储磁盘。 如果使用多个磁盘，需跨磁盘构建软件带区，其中包含数据文件或日志/重做文件。 在这种情况下，基础高级存储磁盘的 IOPS 和磁盘吞吐量 SLA 或 Azure 标准存储磁盘的最大可达到 IOPS 是针对生成的带区集累积的。
 

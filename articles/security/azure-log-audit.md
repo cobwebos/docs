@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 51376661530d5de67e0efeacbcfd0d3a56078511
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 492beba1040cef3d5a910cc9db3fe16b41c33cd6
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117946"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301581"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 
@@ -246,7 +246,7 @@ Azure 中的网络日志记录和监视是一个综合性的功能，包括两�
 
 Application Insights 旨在帮助持续提高性能与可用性。
 
-它适用于各种平台（包括 .NET、Node.js 和 J2EE）中的应用，不管这些应用是托管在本地还是云中。 它与 DevOps 流程集成，并具有与各种开发工具的连接点。
+它适用于各种平台（包括 .NET、Node.js 和 Java EE）中的应用，不管这些应用是托管在本地还是云中。 它与 DevOps 流程集成，并具有与各种开发工具的连接点。
 
 ![Application Insights 示意图](./media/azure-log-audit/azure-log-audit-fig6.png)
 

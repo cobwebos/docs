@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4f8929182995445ff0b327bc22a9cdf75ec5641b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262569"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312985"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的数据。
@@ -26,7 +26,7 @@ ms.locfileid: "54262569"
 
 * [**导出 Analytics 查询**](#export-analytics-queries)。 这是首选方法。 编写任何所需的查询，并将其导出到 Power BI。 可将此查询连同其他所有数据一起放置在仪表板上。
 * [**连续导出和 Azure 流分析**](../../azure-monitor/app/export-stream-analytics.md)。 如果希望长时间存储数据，则此方法非常有用。 如果没有较长的数据保留要求，请使用“导出 Analytics 查询”方法。 “连续导出和流分析”需要执行更多工作来进行设置，并且存储开销更大。
-* [**Power BI 适配器**](#power-pi-adapter)。 图表集是预定义的，但可以从其他源任何添加自己的查询。
+* **Power BI 适配器**。 图表集是预定义的，但可以从其他源任何添加自己的查询。
 
 > [!NOTE]
 > Power BI 适配器现在**已弃用**。 此解决方案的预定义图表是由静态的不可编辑查询填充的。 你无法编辑这些查询，到 Power BI 的连接可能会成功但不会填充数据，具体取决于你的数据的某些属性。 这是由硬编码的查询中设置的排除条件导致的。 虽然此解决方案仍然适用于某些客户，但是由于缺少适配器的灵活性，建议的解决方案是使用[**导出 Analytics 查询**](#export-analytics-queries)功能。

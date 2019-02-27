@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 77c4377afaff20e77e76c0a7389c79dfdce703ca
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509127"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327004"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
 Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访问数据。 本文介绍 Azure 文件、Blob 和磁盘，旨在帮助用户选择合适的功能。
@@ -56,7 +56,7 @@ Azure 文件是对 Azure 磁盘的补充。 一个磁盘每次只能附加到一
 |范围|专供单个虚拟机使用|可在多个虚拟机之间进行共享访问|  
 |快照和复制|是|是|  
 |配置|启动虚拟机时进行连接|启动虚拟机后进行连接|  
-|身份验证|内置|使用 net use 进行设置|  
+|Authentication|内置|使用 net use 进行设置|  
 |使用 REST 访问|无法访问 VHD 中的文件|可以访问共享中存储的文件|  
 |最大大小|4 TiB 磁盘|5 TiB 文件共享，共享中可保存 1 TiB 文件|  
 |最大 IOPS|500 IOps|1000 IOps|  
@@ -67,4 +67,4 @@ Azure 文件是对 Azure 磁盘的补充。 一个磁盘每次只能附加到一
   
 某些 SMB 功能不适用于云。 有关详细信息，请参阅 [Azure 文件服务不支持的功能](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)。
   
-有关磁盘的详细信息，请参阅[管理磁盘和映像](../../virtual-machines/windows/about-disks-and-vhds.md)以及[如何将数据磁盘附加到 Windows 虚拟机](../../virtual-machines/windows/attach-managed-disk-portal.md)。
+有关磁盘的详细信息，请参阅[托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)以及[如何将数据磁盘附加到 Windows 虚拟机](../../virtual-machines/windows/attach-managed-disk-portal.md)。

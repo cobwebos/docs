@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 511937fde859f47af2b7bc273daaab88bb8809c3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094523"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300255"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -41,7 +41,7 @@ Application Insights 服务存储并分析遥测数据。 若要查看分析或�
 
 可以从 Application Insights 服务导出数据，例如，导出到数据库或外部工具。 需要为每项工具提供从服务获取的特殊密钥。 如果需要，可以吊销该密钥。 
 
-Application Insights SDK 可用于多种应用程序类型：托管在自己的 J2EE 或 ASP.NET 服务器中或者 Azure 中的 Web 服务；Web 客户端 - 即网页中运行的代码；桌面应用和服务；设备应用，例如 Windows Phone、iOS 和 Android。 它们都将遥测数据发送到相同的服务。
+Application Insights SDK 可用于多种应用程序类型：托管在自己的 Java EE 或 ASP.NET 服务器中或者 Azure 中的 Web 服务；Web 客户端（即网页中运行的代码）；桌面应用和服务；设备应用，例如 Windows Phone、iOS 和 Android。 它们都将遥测数据发送到相同的服务。
 
 ## <a name="what-data-does-it-collect"></a>它收集哪些数据？
 ### <a name="how-is-the-data-is-collected"></a>它如何收集数据？
@@ -51,7 +51,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
   
   * 每个 SDK 有许多[模块](../../azure-monitor/app/configuration-with-applicationinsights-config.md)，这些模块使用不同的技术收集不同类型的遥测数据。
   * 如果在开发环境中安装 SDK，则除了使用标准模块发送自己的遥测数据以外，还可以使用 SDK 的 API 发送这些数据。 这些自定义遥测数据可以包含所要发送的任何数据。
-* 在某些 Web 服务器中，还装有与应用一起运行并发送有关 CPU、内存和网络占用量的遥测数据的代理。 例如，Azure VM、Docker 主机和 [J2EE 服务器](../../azure-monitor/app/java-agent.md)都可能有这种代理。
+* 在某些 Web 服务器中，还装有与应用一起运行并发送有关 CPU、内存和网络占用量的遥测数据的代理。 例如，Azure VM、Docker 主机和 [Java EE 服务器](../../azure-monitor/app/java-agent.md)都可能拥有此类代理。
 * [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)是 Microsoft 运行的过程，可定期将请求发送到 Web 应用。 结果将发送到 Application Insights 服务。
 
 ### <a name="what-kinds-of-data-are-collected"></a>收集哪些类型的数据？

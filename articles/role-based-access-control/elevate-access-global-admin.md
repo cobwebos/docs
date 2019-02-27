@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d6778e1749493a04a73d0ac210c1557b89343d00
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2a030daa8d9c30add1beb3a2628aa16b2da22dde
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695574"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338846"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -263,5 +263,5 @@ CanDelegate        : False
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解不同角色](rbac-and-directory-admin-roles.md)
-- [使用 REST 进行基于角色的访问控制](role-assignments-rest.md)
+- [了解 Azure 中的不同角色](rbac-and-directory-admin-roles.md)
+- [使用 RBAC 和 REST API 管理对 Azure 资源的访问权限](role-assignments-rest.md)

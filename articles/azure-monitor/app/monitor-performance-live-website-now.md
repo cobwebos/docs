@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3daa1c7b3594de227c43d7e722ee9c6cae0902f8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f7d7b7f470f43d8a7a1cd94b4b1ce79503f0dfca
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301605"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301020"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>在运行时使用 Application Insights 状态监视器检测 Web 应用
 
@@ -27,7 +27,7 @@ ms.locfileid: "55301605"
 
 - 如果应用部署在 Azure 应用服务中，请遵循[这些说明](azure-web-apps.md)。
 - 如果应用部署在 Azure VM 中，则可通过 Azure 控制面板启用 Application Insights 监视。
-- （我们还单独提供了有关检测[实时 J2EE Web 应用](java-live.md)和 [Azure 云服务](../../azure-monitor/app/cloudservices.md)的文章。）
+- （我们还单独提供了有关检测[实时 Java EE Web 应用](java-live.md)和 [Azure 云服务](../../azure-monitor/app/cloudservices.md)的文章。）
 
 
 ![包含失败请求、服务器响应时间和服务器请求信息的 App Insights 概览图屏幕截图](./media/monitor-performance-live-website-now/overview-graphs.png)

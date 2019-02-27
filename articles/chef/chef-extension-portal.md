@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 336ac6b81a56797ad1c1254322dbeec3e36914f3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358144"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327538"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>通过 Azure 门户安装 Chef 客户端
 可以从 Azure 门户将 Chef 客户端扩展直接添加到 Linux 或 Windows 计算机上。 本文逐步讲解如何使用新 Linux 虚拟机完成该过程。
@@ -53,7 +53,7 @@ ms.locfileid: "54358144"
 1. 在“基本信息”选项卡上指定以下值，然后选择“确定”。
 
     - **名称** - 输入新虚拟机的名称。
-    - **VM 磁盘类型** - 指定“SSD”或“HDD”作为存储磁盘类型。 有关 Azure 中虚拟机磁盘类型的详细信息，请参阅 [VM 的高性能高级存储和托管磁盘](/azure/virtual-machines/windows/premium-storage)一文。
+    - **VM 磁盘类型** - 指定“SSD”或“HDD”作为存储磁盘类型。 有关 Azure 上的虚拟机磁盘类型的详细信息，请参阅[选择磁盘类型](../virtual-machines/windows/disks-types.md)一文。
     - **用户名** - 输入在虚拟机上被授予了管理员特权的用户名。
     - **身份验证类型** - 选择“密码”。 也可以选择“SSH 公钥”并提供 SSH 公钥值。 本演示（以及屏幕截图中）选择了“密码”。
     - **密码**和**确认密码** - 输入用户的密码。

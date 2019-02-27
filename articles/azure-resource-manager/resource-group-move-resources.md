@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1902d00bc69fd12e7d424a2c2ab3bea562ff4e79
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ddbd77cbc199e78e74324c87d49155f27d6edeea
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108766"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417085"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -55,7 +55,7 @@ ms.locfileid: "56108766"
 * API 管理
 * 应用服务应用（Web 应用）- 请参阅[应用服务限制](#app-service-limitations)
 * 应用服务证书 - 请参阅[应用服务证书限制](#app-service-certificate-limitations)
-* 自动化
+* 自动化 - Runbook 必须与自动化帐户存在于同一资源组中。
 * Azure Active Directory B2C
 * Azure Cosmos DB
 * Azure 数据资源管理器
@@ -134,6 +134,7 @@ ms.locfileid: "56108766"
 * Azure 防火墙
 * Azure Migrate
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
+* 经典应用程序
 * 容器实例
 * 容器服务
 * Data Box

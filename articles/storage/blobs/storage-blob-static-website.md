@@ -62,7 +62,7 @@ https://contoso.z4.web.core.windows.net/image.png
 ## <a name="quickstart"></a>快速入门
 
 ### <a name="azure-portal"></a>Azure 门户
-首先打开 Azure 门户 (https://portal.azure.com)，然后在 GPv2 存储帐户中运行以下步骤：
+首先打开 Azure 门户 [https://portal.azure.com](https://portal.azure.com)，然后在 GPv2 存储帐户中运行以下步骤：
 
 1. 单击“设置”
 2. 单击“静态网站”

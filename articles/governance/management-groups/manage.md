@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure 中更改、删除或管理管理组
-description: 了解如何维护和更新管理组层次结构。
+title: 如何在 Azure 中更改、删除或管理管理组 - Azure 治理
+description: 了解如何查看、维护、更新和删除管理组层次结构。
 author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 10dfa9812a0546f3a8c57e28227851b6f72657fc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: dbfb6ecb9f29a82a8871922982a64dbefc338969
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582405"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342570"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -39,11 +39,11 @@ ms.locfileid: "52582405"
 
 1. 选择页面顶部的“重命名组”选项。
 
-   ![重命名组](./media/detail_action_small.png)
+   ![“重命名组”选项](./media/detail_action_small.png)
 
 1. 菜单打开后，请输入要显示的新名称。
 
-   ![重命名组](./media/rename_context.png)
+   ![“重命名组”窗格](./media/rename_context.png)
 
 1. 选择“保存”。
 
@@ -87,11 +87,11 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
    - 如果该图标已禁用，将鼠标指针悬停在该图标上可显示原因。
 
-   ![删除组](./media/delete.png)
+   ![“删除组”选项](./media/delete.png)
 
 1. 此时会打开一个窗口，让你确认是否要删除该管理组。
 
-   ![删除组](./media/delete_confirm.png)
+   ![“确认删除组”窗口](./media/delete_confirm.png)
 
 1. 请选择“是”。
 
@@ -195,13 +195,13 @@ az account management-group show --name 'Contoso'
 
 1. 在列表中，选择要移动的订阅所在行末尾的椭圆。
 
-   ![移动](./media/move_small.png)
+   ![“移动”选项](./media/move_small.png)
 
 1. 选择“移动”。
 
 1. 在打开的菜单中，选择“父管理组”。
 
-   ![移动](./media/move_small_context.png)
+   ![“移动”窗格](./media/move_small_context.png)
 
 1. 选择“保存”。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Active Directory B2C 设置通过 Google 帐户注册与登录 | Microsoft Docs
+title: 通过 Google 帐户设置注册与登录 - Azure Active Directory B2C | Microsoft Docs
 description: 使用 Azure Active Directory B2C 提供在应用程序中通过 Google 帐户注册与登录到客户的设置。
 services: active-directory-b2c
 author: davidmu1
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: af8a727bf9733b744b1ed429420cd8fde6e3e6f1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 29b988beff0f25bc0d4abcc1c95a70bccf9ba1cb
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176125"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427422"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Google 帐户注册与登录
 
 ## <a name="create-a-google-application"></a>创建 Google 应用程序
 
-要将 Google 帐户用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要在表示它的租户中创建一个应用程序。 如果还没有 Google 帐户，可以在 [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) 获取。
+要将 Google 帐户用作 Azure Active Directory (Azure AD) B2C 中的[标识提供者](active-directory-b2c-reference-oauth-code.md)，需要在表示它的租户中创建一个应用程序。 如果还没有 Google 帐户，可以在 [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) 获取。
 
 1. 使用 Google 帐户凭据登录 [Google 开发人员控制台](https://console.developers.google.com/)。
 2. 选择“创建项目”，然后单击“创建”。 如果之前已经创建了项目，则选择项目列表，然后选择“新项目”。

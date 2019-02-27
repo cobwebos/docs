@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6a568fa724d0d403833e938ae8b01556fe96cf1f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109311"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428631"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 Azure Service Fabric 群集是你拥有的资源。 你应保护群集，防止未经授权的用户与其连接。 当在群集上运行生产工作负荷时，安全的群集环境尤为重要。 尽管可以创建不安全的群集，但当该群集向公共 Internet 公开管理终结点时，匿名用户可与它建立连接。 生产工作负荷不支持不安全群集。 
@@ -73,7 +73,12 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 对在 Azure 上运行的群集，也可使用 Azure Active Directory (Azure AD) 来保护对管理终结点的访问。 若要了解如何创建所需的 Azure AD 项目以及如何在创建群集时填充项目，请参阅[设置 Azure AD 以对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 ## <a name="security-recommendations"></a>安全建议
-对于 Azure 群集，建议针对节点到节点安全性使用 Azure AD 安全性来验证客户端和证书。
+如果将 Service Fabric 群集部署在某个公共网络中，而该网络托管在 Azure 上，则对于客户端到节点型相互身份验证，建议如下：
+*   对客户端标识使用 Azure Active Directory
+*   对服务器标识使用证书，并对 http 通信进行 SSL 加密
+
+如果将 Service Fabric 群集部署在某个公共网络中，而该网络托管在 Azure 上，则对于节点到节点安全，建议使用群集证书对节点进行身份验证。 
+
 
 对于独立 Windows Server 群集，如果有 Windows Server 2012 R2 和 Windows Active Directory，建议结合使用 Windows 安全性和组托管服务帐户。 否则，可以结合使用 Windows 安全性和 Windows 帐户。
 

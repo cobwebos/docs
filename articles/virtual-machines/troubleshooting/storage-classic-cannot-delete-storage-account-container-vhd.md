@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 72493c6bba556314c3652be5251463d1d1e005bd
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 5d4d74d4c3b5ec6779458e84da07c03033c37935
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383740"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330607"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>排查经典存储资源删除错误
 请遵循本文中的指导排查在尝试删除 Azure 存储帐户、容器或 *.vhd 页 Blob 文件时发生的以下错误之一。 
@@ -21,10 +21,10 @@ ms.locfileid: "54383740"
 
 本文仅涵盖经典存储资源的问题。 如果用户使用 Azure 门户、PowerShell 或 CLI 删除经典虚拟机，则磁盘不会自动删除。 用户可以使用相应的选项来删除“磁盘”资源。 如果未选择该选项，则“磁盘”资源会阻止删除存储帐户、容器和实际的 *.vhd 页 Blob 文件。
 
-若要详细了解 Azure 磁盘，请单击[此处](../../virtual-machines/windows/about-disks-and-vhds.md)。 Azure 阻止删除附加到 VM 的磁盘，以防发生损坏。 它还会阻止删除包含附加到 VM 的页 Blob 的容器和存储帐户。 
+若要详细了解 Azure 磁盘，请单击[此处](../../virtual-machines/windows/managed-disks-overview.md)。 Azure 阻止删除附加到 VM 的磁盘，以防发生损坏。 它还会阻止删除包含附加到 VM 的页 Blob 的容器和存储帐户。 
 
 ## <a name="what-is-a-disk"></a>什么是“磁盘”？
-“磁盘”资源用于将 *.vhd 页 Blob 文件作为 OS 磁盘或数据磁盘装载到虚拟机。 OS 磁盘或数据磁盘资源在删除之前，会一直在 *.vhd 文件中保留一个租约。 如果“磁盘”资源指向上图所示路径中的任一存储资源，则无法删除此存储资源。
+“磁盘”资源用于将 *.vhd 页 Blob 文件作为 OS 磁盘或数据磁盘装载到虚拟机。 OS 磁盘或数据磁盘资源在删除之前，会一直在 *.vhd 文件中保留一个租约。 如果“磁盘”资源指向下图所示路径中的任一存储资源，则无法删除此存储资源。
 
 ![门户屏幕截图，其中显示（经典）磁盘的“属性”窗格已打开](./media/storage-classic-cannot-delete-storage-account-container-vhd/Disk_Lease_Illustration.jpg) 
 

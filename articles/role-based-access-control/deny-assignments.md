@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure RBAC 中的拒绝分配 | Microsoft 文档
-description: 了解针对 Azure 中的资源基于角色的访问控制 (RBAC) 中的拒绝分配。
+title: 了解 Azure 资源的拒绝分配 | Microsoft Docs
+description: 了解 Azure 资源基于角色的访问控制 (RBAC) 中的拒绝分配。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,27 +15,27 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: fa1a979c01999bd79c45d24e4c7771edaf346dd8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 53716fa343df25026dcc668ed8483673d934d1ad
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632409"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339118"
 ---
-# <a name="understand-deny-assignments"></a>了解拒绝分配
+# <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 资源的拒绝分配
 
-*拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组或服务主体，以便拒绝访问。 即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的操作。 Azure 中的某些资源提供程序现在包括了拒绝分配。 当前，拒绝分配为“只读”，且只能由 Azure 设置。
+*拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组或服务主体，以便拒绝访问。 即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的 Azure 资源操作。 Azure 中的某些资源提供程序现在包括了拒绝分配。 目前，拒绝分配为**只读**，且只能由 Microsoft 设置。
 
 在某些方面，拒绝分配不同于角色分配。 拒绝分配可以排除主体并阻止子范围进行继承。 拒绝分配也适用于[经典订阅管理员](rbac-and-directory-admin-roles.md)分配。
 
-本文介绍了如何定义拒绝分配。
+本文介绍如何定义拒绝分配。
 
 ## <a name="deny-assignment-properties"></a>拒绝分配属性
 
  拒绝分配具有以下属性：
 
 > [!div class="mx-tableFixed"]
-> | 属性 | 必需 | 类型 | 说明 |
+> | 属性 | 必选 | Type | 说明 |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | 是 | String | 拒绝分配的显示名称。 对于给定作用域，名称必须是唯一的。 |
 > | `Description` | 否 | String | 拒绝分配的说明。 |
@@ -60,5 +60,5 @@ ms.locfileid: "52632409"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 RBAC 和 REST API 列出拒绝分配](deny-assignments-rest.md)
-* [了解角色定义](role-definitions.md)
+* [使用 REST API 列出 Azure 资源的拒绝分配](deny-assignments-rest.md)
+* [了解 Azure 资源的角色定义](role-definitions.md)

@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 94482666d0db3157b0c18c0b47f9937457172521
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 18258bf8ac9d241fd8a01957d903b1db882c2d36
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115991"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326868"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
 
-Azure 托管磁盘提供三种存储选项：[高级 SSD](../windows/premium-storage.md)、[标准 SSD](../windows/disks-standard-ssd.md) 和[标准 HDD](../windows/standard-storage.md)。 可以根据性能需要，切换托管磁盘的存储类型，从而使故障时间最短。 非托管磁盘不支持切换存储类型；但是，可以轻松地[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)。
+Azure 托管磁盘提供四种存储类型选项：超级固态硬盘 (SSD)、高级 SSD、标准 SSD 和标准硬盘驱动器 (HDD)。 可以根据性能需要，切换托管磁盘的存储类型，从而使故障时间最短。 非托管磁盘不支持切换存储类型；但是，可以轻松地[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)。
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -35,6 +35,7 @@ Azure 托管磁盘提供三种存储选项：[高级 SSD](../windows/premium-sto
 * 如果使用的是非托管磁盘，请先[将其转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以便可以切换存储类型。 
 * 本文中的示例需要版本 6.0.0 或更高版本的 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 运行 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 与 Azure 建立连接。
 
+* 本文中的示例需要版本 6.0.0 或更高版本的 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 运行 [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount)创建与 Azure 的连接。
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>将 VM 的所有托管磁盘从标准存储切换为高级存储
 

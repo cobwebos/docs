@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700972"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301785"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -182,7 +182,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 用于监视实时 Web 应用程序，它将自动检测性能异常、分析性能、诊断问题以及了解用户与应用交互的方式。 Application Insights 可部署在本地或云中托管的各种平台上（包括 .NET、Node.js 和 J2EE）。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 用于监视实时 Web 应用程序，它将自动检测性能异常、分析性能、诊断问题以及了解用户与应用交互的方式。 Application Insights 可部署在本地或云中托管的各种平台上（包括 .NET、Node.js 和 Java EE）。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。
 
 #### <a name="application-insights-in-this-blueprint"></a>此蓝图中的 Application Insights
 
@@ -242,7 +242,7 @@ Crown Commercial Service（一家致力于改善政府商业和采购活动的�
 
 ### <a name="azure-b2c"></a>Azure B2C
 
-[Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)可以作为控件，允许用户注册、创建标识并启用公共 Web 应用程序的授权和访问控制。
+[Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) 可以作为控件，允许用户注册、创建标识并启用公共 Web 应用程序的授权和访问控制。
 
 ## <a name="disclaimer"></a>免责声明
 

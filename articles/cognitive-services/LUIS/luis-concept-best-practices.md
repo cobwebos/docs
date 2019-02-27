@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: ba51da8b71406cb1bf7446bd66818a6a74e61317
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243410"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428901"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>使用认知服务生成语言理解应用的最佳做法
 使用应用创作进程生成 LUIS 应用。 
@@ -77,23 +77,32 @@ ms.locfileid: "56243410"
 * 概念：[LUIS 应用的创作周期](luis-concept-app-iteration.md)
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>应在后续的迭代中添加短语列表和模式
-[短语列表](luis-concept-feature.md)可用于定义包含与应用域有关的字词的字典。 从几个字词开始创建短语列表，然后使用推荐功能，让 LUIS 了解词汇表中更多特定于应用的字词。 请勿将所有字词都添加到词汇表中，因为短语列表不是完全匹配的。 
+
+最佳做法是在测试应用之前不要应用这些做法。 在添加短语列表和模式之前，你应该了解应用的行为方式。 在了解没有这些项时你的应用的行为方式后，在这些功能适用于你的应用时再添加每个功能。 你不需要在每次[迭代](luis-concept-app-iteration.md)中都添加这些功能，也不需要在每个版本中都更改这些功能。 
+
+在设计模型之初就添加它们并没有什么坏处，但如果在使用言语测试模型之后再添加，则可以更容易地看出每个功能如何改变结果。 
+
+最佳做法是通过[终结点](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)进行测试，以便获得[主动学习](luis-concept-review-endpoint-utterances.md)的额外好处。 [交互式测试窗格](luis-interactive-test.md)也是有效的测试方法。 
+ 
+
+### <a name="phrase-lists"></a>短语列表
+
+[短语列表](luis-concept-feature.md)可用于定义包含与应用域有关的字词的字典。 从几个字词开始创建短语列表，然后使用推荐功能，让 LUIS 了解词汇表中更多特定于应用的字词。 短语列表通过增强与对应用而言有意义的字词或短语关联的信号，改进了意向检测和实体分类。 
+
+请勿将所有字词都添加到词汇表中，因为短语列表不是完全匹配的。 
+
+更多相关信息：
+* 概念：[LUIS 应用中的短语列表特征](luis-concept-feature.md)
+* 操作说明：[使用短语列表来增强字词列表的信号](luis-how-to-add-features.md)
+
+### <a name="patterns"></a>模式
 
 终结点中真实用户的话语之间非常类似，可能会体现出字词选择和位置放置的模式。 [模式](luis-concept-patterns.md)功能会同时考虑此字词选择和位置放置以及正则表达式，以提升预测的准确性。 模式中的正则表达式允许在忽略字词和标点的情况下依然与模式匹配。 
 
 在模式中为标点使用[可选语法](luis-concept-patterns.md)，以便忽略标点。 使用[显式列表](luis-concept-patterns.md#explicit-lists)来弥补 pattern.any 语法问题。 
 
-请勿在应用接收到终结点请求之前应用这些做法。 在添加短语列表和模式之前，你应该了解应用的行为方式。 在了解没有这些项时你的应用的行为方式后，在这些功能适用于你的应用时再添加每个功能。 
-
-在设计模型之初就添加它们并没有什么坏处，但如果在将应用用于真实流量之后再添加它们，则可以更容易地看出每个功能是如何改变结果的。 
-
-你不需要在每次迭代中都添加这些功能，也不需要在每个版本中都更改这些功能。 
-
 更多相关信息：
-* 概念：[LUIS 应用的创作周期](luis-concept-app-iteration.md)
-* 概念：[LUIS 应用中的短语列表特征](luis-concept-feature.md)
 * 概念：[模式可提高预测准确性](luis-concept-patterns.md)
-* 操作说明：[使用短语列表来增强字词列表的信号](luis-how-to-add-features.md)
 * 操作说明：[如何添加模式以提高预测准确性](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>跨所有意向来平衡话语

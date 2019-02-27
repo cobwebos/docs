@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Maps 中的消耗模型 | Microsoft Docs
 description: 了解 Azure Maps 中的消耗模型
 author: subbarayudukamma
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: cf20c7dbfbf7cd3f09579b03b835148c1c295137
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f75f656312c11a4668ca9ef9fe7b2a61a7d13e8
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600623"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301132"
 ---
 # <a name="consumption-model"></a>消耗模型
 
 联机路由提供了一组参数，可详细描述特定车辆的消耗模型。
-根据 vehicleEngineType 的值，支持以下两种主要消耗模型：燃烧和电气。 在同一请求中指定属于不同模型的参数是错误做法。
+支持以下两种主要消耗模型（具体取决于“vehicleEngineType”的值）：“燃烧”和“电气”。 在同一请求中指定属于不同模型的参数是错误做法。
 消耗模型不能与 travelMode 值 “bicycle”和“pedestrian”一起使用。
 
 ## <a name="parameter-constraints-for-consumption-model"></a>消耗模型的参数约束
 
 在两种消耗模型中，显式指定某些参数时，还需指定部分其他参数。 这些依赖关系是：
 
-* 所有参数均要求用户指定 constantSpeedConsumption。 如果未指定 constantSpeedConsumption*，则除 vehicleWeight 外，指定任何其他消耗模型参数都是错误的。
+* 所有参数均要求用户指定 constantSpeedConsumption。 如果未指定“constantSpeedConsumption”，则除“vehicleWeight”外，指定任何其他消耗模型参数都是错误的。
 * 始终必须一起指定（即指定两者或不指定）accelerationEfficiency 和 decelerationEfficiency。
 * 如果指定了 accelerationEfficiency 和 decelerationEfficiency，两者值的乘积不得大于 1（防止出现永恒运动）。
 * 始终必须一起指定（即指定两者或不指定）uphillEfficiency 和 downhillEfficiency。
 * 如果指定了 uphillEfficiency 和 downhillEfficiency，两者值的乘积不得大于 1（防止出现永恒运动）。
-* 如果用户指定了 \*Efficiency 参数，还必须指定 vehicleWeight 参数。 如果 vehicleEngineType 为燃料，则还必须指定 fuelEnergyDensityInMJoulesPerLiter。
+* 如果用户指定了 \*Efficiency 参数，还必须指定“vehicleWeight”参数。 如果 vehicleEngineType 为燃料，则还必须指定 fuelEnergyDensityInMJoulesPerLiter。
 * 始终必须一起指定（即指定两者或不指定） maxChargeInkWh 和 currentChargeInkWh。
 
 > [!NOTE]

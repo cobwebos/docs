@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: f7133ed74c9862a7e3d496a9093faaf3959e0d78
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: bcd4ae5b7092aafc452c5af3d17fd22c263b5d35
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993412"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270141"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿创建交互式报表
 
@@ -77,7 +77,7 @@ ms.locfileid: "55993412"
 
 * 使用率下降的同一时段内，网站引发了多少异常？
 * 用户查看某个页面的页面加载时间分布是什么样的？
-* 有多少用户在网站上查看了某组页面，而没有查看其它组页面？ 这有助于了解是否有使用不同站点功能子集的用户群集（在数据资源管理器查询语言中使用具有 `kind=leftanti` 修饰符的 `join` 运算符）。
+* 有多少用户在网站上查看了某组页面，而没有查看其它组页面？ 这有助于了解你是否有使用不同网站功能子集的用户群集（在 [Kusto 查询语言](/azure/kusto/query/)中使用具有 `kind=leftanti` 修饰符的 `join` 运算符）。
 
 此外，你还不仅限于通过工作簿启动的应用程序的上下文中进行查询。 只要你有权访问这些资源，就可跨多个受 Application Insights 监视的应用，以及 Log Analytics 工作区进行查询。
 

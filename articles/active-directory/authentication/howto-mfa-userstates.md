@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbfffa94c76de2c7c4e9f4f2e67c9744e52f22c7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 39659df99951850ced07be14f81348ae9c1c1be5
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194183"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428596"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
@@ -96,7 +96,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 > 不要忘记先使用 **Connect-MsolService** 进行连接
 
 
-当你需要批量启用用户时，使用 PowerShell 是一个不错的选择。 创建一个 PowerShell 脚本，它会循环访问用户列表并启用它们：
+ 此示例 PowerShell 脚本为单个用户启用 MFA：
 
         Import-Module MSOnline
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
@@ -105,7 +105,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
         $sta = @($st)
         Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 
-下面的脚本就是一个示例。
+当需要批量启用用户时，使用 PowerShell 是一个不错的选择。 例如，以下脚本循环访问用户列表并在其帐户上启用 MFA：
 
     $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
     foreach ($user in $users)
@@ -117,11 +117,11 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
         Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
     }
     
-若要禁用 MFA，请使用以下脚本：
+若要禁用 MFA，请使用此脚本：
 
     Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
     
-也可以缩短为：
+该脚本还可缩写为：
 
     Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 

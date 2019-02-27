@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 50f2c174f21243a70c830c1c30127e0629c81972
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c32dcbac8ebab5fb71839a4525163c0e6cf028ed
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110245"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310717"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -88,7 +88,7 @@ FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量
 4. 选择“应用文件完整性监视”以启用 FIM。
 
 > [!NOTE]
-> 随时可以更改设置。 请参阅下面的[编辑受监视的实体](security-center-file-integrity-monitoring.md#edit-monitored-items)来了解详细信息。
+> 随时可以更改设置。 有关详细信息，请参阅下面的“编辑受监视的实体”。
 >
 >
 

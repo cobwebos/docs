@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 9aff955a2ae0f40785036c2fee22804785e6526a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c428372868e3d3fac58bc851de8c59ad01d1d8f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002262"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269954"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>在 Azure Monitor 中分析日志数据
 
-Azure Monitor 收集的日志数据存储在 Log Analytics 工作区中，该工作区基于 [Azure 数据资源管理器](/azure/data-explorer)。 它从各种源收集遥测数据，并使用[数据资源管理器的查询语言](/azure/kusto/query)来检索和分析数据。
+Azure Monitor 收集的日志数据存储在 Log Analytics 工作区中，该工作区基于 [Azure 数据资源管理器](/azure/data-explorer)。 它从各种源收集遥测数据，并使用数据资源管理器所用的 [Kusto 查询语言](/azure/kusto/query)来检索和分析数据。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -47,7 +47,7 @@ Azure Monitor 收集的日志数据存储在 Log Analytics 工作区中，该工
 ![日志搜索](media/log-query-overview/queries-overview.png)
 
 ## <a name="write-a-query"></a>编写查询
-Azure Monitor 使用[数据资源管理器查询语言的一个版本](get-started-queries.md)以各种方式检索和分析日志数据。  通常先使用基本查询，随着要求变得复杂，逐渐开始使用更高级的功能。
+Azure Monitor 使用某个[查询语言版本](get-started-queries.md)以各种方式检索和分析日志数据。  通常先使用基本查询，随着要求变得复杂，逐渐开始使用更高级的功能。
 
 查询的基本结构是一个源表，后跟一系列以竖线字符 `|` 隔开的运算符。  可以将多个运算符链接起来以优化数据和执行高级函数。
 

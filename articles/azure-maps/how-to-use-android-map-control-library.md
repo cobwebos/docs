@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3f7579324e1218cc2e2c3594889db776da6e529
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 57cc585d621c71872a4b7658c74f581c8998b245
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56119031"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341073"
 ---
 # <a name="how-to-use-azure-maps-android-sdk"></a>如何使用 Azure Maps Android SDK
 
@@ -45,7 +45,7 @@ Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将引�
 
 ## <a name="set-up-a-virtual-device"></a>设置虚拟设备
 
-Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发期间，虚拟设备可帮助你测试应用程序。 若要设置虚拟设备，请单击项目屏幕右上角的“Android Virtual Device (AVD) Manager”图标。 然后单击“创建虚拟设备”按钮。 也可以通过工具栏中的“工具”>“Android”>“AVD Manager”转到该管理器。 在“手机”类别中选择“Nexus 5X”，然后单击“下一步”。
+Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发期间，虚拟设备可帮助你测试应用程序。 若要设置虚拟设备，请单击项目屏幕右上角的“Android 虚拟设备(AVD)管理器”图标。 然后单击“创建虚拟设备”按钮。 也可以通过工具栏中的“工具”>“Android”>“AVD 管理器”转到该管理器。 在“手机”类别中选择“Nexus 5X”，然后单击“下一步”。
 
 在 [Android Studio 文档](https://developer.android.com/studio/run/managing-avds)中详细了解如何设置 AVD。
 
@@ -55,7 +55,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发�
 
 在继续生成应用程序之前，请遵循以下步骤安装 Azure Maps Android SDK。 
 
-1. 将以下内容添加到 **build.gradle** 文件中的存储库块 **allprojects**。
+1. 将以下内容添加到“build.gradle”文件中的存储库块“所有项目”。
 
     ```
     maven {
@@ -90,7 +90,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发�
     </manifest>
     ```
 
-4. 编辑 **res > layout > activity_main.xml**，使其如以下 XML 所示：
+4. 编辑“res > layout > activity_main.xml”，使其如以下 XML 所示：
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -128,7 +128,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发�
 
     public class MainActivity extends AppCompatActivity {
         
-        static{
+        static {
             AzureMaps.setSubscriptionKey("{subscription-key}");
         }
 
@@ -187,7 +187,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发�
 
 ## <a name="import-classes"></a>导入类
 
-完成上述步骤后，Android Studio 很有可能会针对代码中的某些文本发出警告。 若要处理这种情况，必须导入 `MainActivity.java` 中引用的某些类。
+完成上述步骤后，Android Studio 很有可能会针对代码中的某些文本发出警告。 若要解决这些警告，请导入 `MainActivity.java` 中当前引用的类。
 
 可以按 `Alt`+`Enter`（在 Mac 上为 `Option`+`Return`）自动导入这些类。 
 
@@ -288,6 +288,6 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-重新运行应用程序，应会在地图上看到下面所示的标记。
+重新运行应用程序后，应会在地图上看到如下所示的标记。
 
 ![Android 地图图钉](./media/how-to-use-android-map-control-library/android-map-pin.png)

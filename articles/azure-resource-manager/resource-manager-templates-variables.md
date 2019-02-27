@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 50feca90d375d6afd3b04afe019ad9f9025f19dc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712740"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308564"
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Azure 资源管理器模板的变量部分
 在 variables 节中构造可在整个模板中使用的值。 不需要定义变量，但使用变量可以减少复杂的表达式，从而简化模板。
@@ -58,9 +58,7 @@ ms.locfileid: "53712740"
             {
                 "name": "<name-of-array-property>",
                 "count": <number-of-iterations>,
-                "input": {
-                    <properties-to-repeat>
-                }
+                "input": <object-or-value-to-repeat>
             }
         ]
     },
@@ -68,9 +66,7 @@ ms.locfileid: "53712740"
         {
             "name": "<variable-array-name>",
             "count": <number-of-iterations>,
-            "input": {
-                <properties-to-repeat>
-            }
+            "input": <object-or-value-to-repeat>
         }
     ]
 }
@@ -117,38 +113,45 @@ ms.locfileid: "53712740"
 
 ## <a name="use-copy-element-in-variable-definition"></a>在变量定义中使用 copy 元素
 
-你可以使用“copy”语法创建带有多个元素数组的变量。 为元素数量提供一个数字。 每个元素的属性都包含在 input 对象中。 你可以在变量中使用 copy，或用其创建变量。 定义变量并在该变量中使用 copy 时，会创建一个具有数组属性的对象。 在顶层使用 copy 并在其中定义一个或多个变量时，会创建一个或多个数组。 下例说明了这两种方法：
+若要创建变量的多个实例，请在变量部分中使用 `copy` 属性。 可以创建一个由 `input` 属性中的值构造的元素数组。 可以在变量中使用 `copy` 属性，或在变量部分的顶层使用该属性。 在变量迭代中使用 `copyIndex` 时，必须提供迭代的名称。
+
+以下示例演示如何使用该复制：
 
 ```json
 "variables": {
-    "disk-array-on-object": {
-        "copy": [
-            {
-                "name": "disks",
-                "count": 3,
-                "input": {
-                    "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('disks')]"
-                }
-            }
-        ]
-    },
+  "disk-array-on-object": {
     "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
+      {
+        "name": "disks",
+        "count": 3,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('disks')]"
         }
+      }
     ]
+  },
+  "copy": [
+    {
+      "name": "disks-top-level-array",
+      "count": 3,
+      "input": {
+        "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+        "diskSizeGB": "1",
+        "diskIndex": "[copyIndex('disks-top-level-array')]"
+      }
+    },
+    {
+      "name": "top-level-string-array",
+      "count": 5,
+      "input": "[concat('myDataDisk', copyIndex('top-level-string-array', 1))]"
+    }
+  ]
 },
 ```
 
-变量 disk-array-on-object 包含下面的对象，该对象具有名为“磁盘”的数组：
+评估复制表达式后，变量 disk-array-on-object 包含下面的对象，该对象具有名为“磁盘”的数组：
 
 ```json
 {
@@ -194,34 +197,19 @@ ms.locfileid: "53712740"
 ]
 ```
 
-使用 copy 创建变量时，还可以指定多个对象。 以下示例将两个数组定义为变量。 一个数组名为 **disks-top-level-array**，包含五个元素。 另一个数组名为 **a-different-array**，包含三个元素。
+变量 top-level-string-array 包含以下数组：
 
 ```json
-"variables": {
-    "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 5,
-            "input": {
-                "name": "[concat('oneDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
-        },
-        {
-            "name": "a-different-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('twoDataDisk', copyIndex('a-different-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('a-different-array')]"
-            }
-        }
-    ]
-},
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
-此方法适用于需要参数值并需确保其采用正确的模板值格式的情况。 以下示例对参数值进行格式设置，以便用于定义安全规则：
+需要获取参数值并将其映射到资源值时，使用副本将很有效。 以下示例对参数值进行格式设置，以便用于定义安全规则：
 
 ```json
 {
@@ -273,7 +261,7 @@ ms.locfileid: "53712740"
 
 这些示例模板演示了一些使用变量的情况。 部署这些模板，测试在不同情况下如何处理变量。 
 
-|模板  |Description  |
+|模板  |说明  |
 |---------|---------|
 | [变量定义](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 演示不同类型的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
 | [配置变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 演示如何使用定义配置值的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |

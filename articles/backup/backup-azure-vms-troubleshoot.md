@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: srinathv
-ms.openlocfilehash: 3b2c86783e20b76ccf27c30cee1eb2fa9aac676f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 19a0a899d552e1ea7b0dcb98e61edd3fa459af56
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811183"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430162"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 可使用下表中所列出的信息排查使用 Azure 备份时遇到的错误：
@@ -25,12 +25,12 @@ ms.locfileid: "55811183"
 | VM 处于失败的预配状态： <br>请重启 VM，并确保 VM 正在运行或已关闭。 | 当其中某个扩展失败将 VM 状态置于失败的预配状态时，会发生此错误。 请转到扩展列表，查看是否有失败的扩展，将其删除并尝试重启虚拟机。 如果所有扩展都处于运行状态，请检查 VM 代理服务是否正在运行。 如果未运行，请重启 VM 代理服务。 |
 | 由于存储帐户中的可用空间不足，备份无法复制虚拟机的快照： <br>请确保存储帐户的可用空间等于连接到虚拟机的高级存储磁盘上的数据。 | 对于 VM 备份堆栈 V1 上的高级 VM，我们将快照复制到存储帐户。 此步骤可确保在快照上运行的备份管理流量不会限制使用高级磁盘的应用程序的可用 IOPS 数。 <br><br>我们建议只分配总存储帐户空间的 50%（即 17.5 TB）。 这样，Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 |
 | 由于 VM 代理没有响应，因此备份无法执行操作。 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会发生此错误。 对于 Windows VM，请检查服务中的 VM 代理服务状态，以及代理是否显示在控制面板的程序中。 <br><br>请尝试从控制面板中删除程序，然后按照 [VM 代理](#vm-agent)中的说明重新安装代理。 重新安装代理后，将触发临时备份以进行验证。 |
-| 恢复服务扩展操作失败： <br>请确保虚拟机上有最新的 VM 代理，并且 VM 代理服务正在运行。 请重试备份操作。 如果备份操作失败，请联系 Microsoft 支持部门。 |VM 代理过期时会发生此错误。 请参阅“对 Azure 虚拟机备份进行故障排除”以更新 VM 代理。 |
+| 恢复服务扩展操作失败： <br>请确保虚拟机上有最新的 VM 代理，并且 VM 代理服务正在运行。 请重试备份操作。 如果备份操作失败，请联系 Microsoft 支持部门。 |VM 代理过期时会发生此错误。 请参阅[对 Azure 虚拟机备份进行故障排除](#updating-the-VM-agent)以更新 VM 代理。 |
 | 虚拟机不存在： <br>请确保该虚拟机存在，或选择其他虚拟机。 |删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤： <ol><li> 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>**or**<br></li><li>停止保护虚拟机，无需删除备份数据。 有关更多信息，请参阅[停止保护虚拟机](https://go.microsoft.com/fwlink/?LinkId=808124)。</li></ol> |
 | 命令运行失败： <br>此项上当前正在进行另一项操作。 等待前一项操作完成。 然后重试该操作。 |现有备份作业正在运行，当前作业结束前无法开始新的作业。 |
 | 从恢复服务保管库复制 VHD 时超时： <br>请在几分钟后重试该操作。 如果问题持续出现，请联系 Microsoft 支持。 | 如果存储端存在暂时性错误，或者备份服务未在超时期限内接收足够的存储帐户 IOPS 以将数据传输到保管库，则会发生此错误。 请确保按照 [VM 配置最佳做法](backup-azure-vms-introduction.md#best-practices)进行操作。 将 VM 移到未加载的其他存储帐户，然后重试备份作业。|
 | 备份失败并出现内部错误： <br>请在几分钟后重试该操作。 如果问题持续出现，请联系 Microsoft 支持。 |出现此错误的原因有两个： <ul><li> 在访问 VM 存储时存在暂时性问题。 请查看 [Azure 状态网站](https://azure.microsoft.com/status/)，检查区域中是否存在计算、存储或网路问题。 问题解决后，请重试备份作业。 <li> 已删除原始 VM，恢复点无法采用。 若要保留已删除 VM 的备份数据，但要删除备份错误，请取消保护 VM 并选择保留数据选项。 此操作可停止计划备份作业和阻止反复出现的错误消息。 |
-| 备份无法在所选项上安装 Azure 恢复服务扩展： <br>VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机代理并重启注册操作。 |<ol> <li>检查 VM 代理是否安装正确。 <li>确保已正确设置 VM 配置中的标志。</ol> 阅读有关安装 VM 代理以及如何验证 VM 代理安装的详细信息。 |
+| 备份无法在所选项上安装 Azure 恢复服务扩展： <br>VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机代理并重启注册操作。 |<ol> <li>检查 VM 代理是否安装正确。 <li>确保已正确设置 VM 配置中的标志。</ol> 阅读有关[安装 VM 代理](#validating-vm-agent-installation)以及如何验证 VM 代理安装的详细信息。 |
 | 扩展安装失败，出现错误“COM+ 无法与 Microsoft 分布式事务处理协调器通信”。 |此错误通常表示 COM+ 服务未运行。 请与 Microsoft 支持部门联系，以获取解决此问题所需的帮助。 |
 | 快照操作失败，出现卷影复制服务 (VSS) 操作错误“此驱动器已通过 BitLocker 驱动器加密锁定。必须通过控制面板解锁此驱动器”。 |关闭 VM 上的所有驱动器的 BitLocker，并检查 VSS 问题是否得到解决。 |
 | VM 未处于允许备份的状态。 |<ul><li>如果 VM 处于“运行”和“关闭”之间的瞬时状态，请等待状态更改。 然后触发备份作业。 <li> 如果 VM 是 Linux VM 并使用安全性增强的 Linux 内核模块，则需要从安全策略排除 Azure Linux 代理路径 (/var/lib/waagent)，确保已安装备份扩展。  |
@@ -71,9 +71,7 @@ ms.locfileid: "55811183"
 | 备份服务无权访问订阅中的资源。 |要修复此错误，请首先使用[还原备份磁盘](backup-azure-arm-restore-vms.md#create-new-restore-disks)中的步骤来还原磁盘。 然后使用[从已还原的磁盘创建 VM](backup-azure-vms-automation.md#restore-an-azure-vm) 中的 PowerShell 步骤。 |
 
 ## <a name="backup-or-restore-takes-time"></a>备份或还原需要一定时间
-如果备份时间超过 12 小时，或还原时间超过 6 小时：
-* 请了解[影响备份时间的因素](backup-azure-vms-introduction.md#time-considerations)和[影响还原时间的因素](backup-azure-vms-introduction.md#restore-considerations)。
-* 请务必遵循[备份最佳做法](backup-azure-vms-introduction.md#best-practices)。
+如果备份时间超过 12 小时，或者还原时间超过 6 小时，请查看[最佳做法](backup-azure-vms-introduction.md#best-practices)和[性能注意事项](backup-azure-vms-introduction.md#backup-performance)
 
 ## <a name="vm-agent"></a>VM 代理
 ### <a name="set-up-the-vm-agent"></a>设置 VM 代理

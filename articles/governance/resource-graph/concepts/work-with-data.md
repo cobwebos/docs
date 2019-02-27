@@ -1,6 +1,6 @@
 ---
 title: 处理大型数据集
-description: 了解如何从 Azure Resource Graph 收回大型数据集。
+description: 了解使用 Azure Resource Graph 时如何获取和控制大型数据集。
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ab24e2045dabf045f1879dd76e599f5ab344f07b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 8808f42cdd6fb547b70695278993faa0f52cdb61
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513192"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338387"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 

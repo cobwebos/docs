@@ -4,15 +4,15 @@ description: Azure Cosmos DB 中各种一致性级别的可用性和性能利弊
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/20/2018
+ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ee0dc1bec39bf95cbf4f3bf7ecea92b877a78b88
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 99b981e6b5c9bc56c10b0491474c0c8773291b7e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113747"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309193"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>一致性、可用性和性能权衡 
 
@@ -44,22 +44,23 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 
 - 对于给定类型的写入操作（例如插入、替换、更新插入和删除），所有一致性级别为请求单元提供的写入吞吐量是相同的。
 
-## <a name="consistency-levels-and-data-durability"></a>一致性级别和数据持续性
+## <a id="rto"></a>一致性级别和数据持续性
 
-在全球分布式数据库环境中，当发生区域范围的服务中断时，一致性级别与数据持续性之间存在直接关系。 此表定义了当发生区域范围的服务中断时，一致性模型与数据持续性之间的关系。 请务必注意，在分布式系统中，由于 CAP 定理的存在，即使具有非常一致性，也不可能存在 RPO 和 RTO 为零的分布式数据库。 若要详细了解原因，请参阅  [Azure Cosmos DB 中的一致性级别](consistency-levels.md)。
+在全球分布式数据库环境中，当发生区域范围的服务中断时，一致性级别与数据持续性之间存在直接关系。 制定业务连续性计划时，需了解应用程序在中断事件发生后完全恢复之前的最大可接受时间。 应用程序完全恢复所需的时间称为恢复时间目标 (RTO)。 此外，还需要了解从中断事件恢复时，应用程序可忍受最近数据更新丢失的最长期限。 可以承受更新丢失的时限称为恢复点目标 (RPO)。
+
+此表定义了当发生区域范围的服务中断时，一致性模型与数据持续性之间的关系。 请务必注意，在分布式系统中，由于 CAP 定理的存在，即使一致性较高，也不可能存在 RPO 和 RTO 为零的分布式数据库。 若要详细了解原因，请参阅  [Azure Cosmos DB 中的一致性级别](consistency-levels.md)。
 
 |**区域**|**复制模式**|**一致性级别**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|单主或多主数据库|任何一致性级别|< 240 分钟|<1 周|
 |>1|单主数据库|会话、一致的前缀或最终|< 15 分钟|< 15 分钟|
-|>1|单主数据库|有限过期|K & T*|< 15 分钟|
+|>1|单主数据库|有限过期|K & T|< 15 分钟|
 |>1|多主数据库|会话、一致的前缀或最终|< 15 分钟|0|
-|>1|多主数据库|有限过期|K & T*|0|
+|>1|多主数据库|有限过期|K & T|0|
 |>1|单主或多主数据库|非常|0|< 15 分钟|
 
-* K & T = 某个项的“K”版本（更新）的数目。 或“T”时间间隔。
-
-
+K = 某个项的“K”版本（更新）的数目。
+T =时间“T”，自上次更新以来的时间间隔。
 
 ## <a name="next-steps"></a>后续步骤
 

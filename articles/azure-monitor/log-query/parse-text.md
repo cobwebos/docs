@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002175"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268186"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的文本数据
 Azure Monitor 收集的某些日志数据会在单个属性中包括多条信息。 将此数据分析为多个属性可以更轻松地在查询中进行使用。 一个常见示例是收集在单个属性中包含多个值的整个日志项目的[自定义日志](../../log-analytics/log-analytics-data-sources-custom-logs.md)。 通过为不同值创建单独属性，可以对每个值进行搜索和聚合。
@@ -63,7 +63,7 @@ Azure Monitor 收集的某些日志数据会在单个属性中包括多条信息
 有关在收集时分析数据的详细信息，请参阅[在 Azure Monitor 中创建自定义字段](../platform/custom-fields.md)。 这会在表中创建可以由查询使用的自定义属性（就如同任何其他属性一样）。
 
 ## <a name="parse-data-in-query-using-patterns"></a>使用模式在查询中分析数据
-当要分析的数据可以通过在记录间重复的某种模式进行标识时，可以使用[数据资源管理器查询语言](/azure/kusto/query/)中的不同运算符将特定数据段提取到一个或多个新属性中。
+当要分析的数据可以通过在记录间重复的某种模式进行标识时，可以使用 [Kusto 查询语言](/azure/kusto/query/)中的不同运算符将特定数据段提取到一个或多个新属性中。
 
 ### <a name="simple-text-patterns"></a>简单文本模式
 
@@ -139,7 +139,7 @@ MyCustomCSVLog_CL
 ```
 
 ## <a name="parse-predefined-structures-in-a-query"></a>在查询中分析预定义结构
-如果数据采用已知结构设置格式，则可能能够使用[数据资源管理器查询语言](/azure/kusto/query/)中的一个函数来分析预定义结构：
+如果数据采用已知结构设置格式，则可能能够使用 [Kusto 查询语言](/azure/kusto/query/)中的一个函数来分析预定义结构：
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)

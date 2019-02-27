@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: e84f74fe4678a65a33c9cc728f290e7c905b2261
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d621afd682e6040179777f4cd6d991ff31acb5a3
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743729"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445485"
 ---
 # <a name="transforms-and-jobs"></a>转换和作业
  
@@ -27,6 +27,10 @@ ms.locfileid: "55743729"
 [作业](https://docs.microsoft.com/rest/api/media/jobs)是针对 Azure 媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 **作业**指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。 使用事件网格监视事件可以获取作业的进度和状态。 有关详细信息，请参阅[使用事件网格监视事件](job-state-events-cli-how-to.md)。
 
 对[作业](https://docs.microsoft.com/rest/api/media/jobs)实体进行的更新操作可以用于在作业提交之后修改说明或优先级。 仅当作业仍处于排队状态时，对优先级属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
+
+下面的关系图展示了转换/作业工作流。
+
+![转换](./media/encoding/transforms-jobs.png)
 
 > [!NOTE]
 > 属于日期/时间类型的转换和作业的属性始终采用 UTC 格式。
@@ -49,10 +53,21 @@ ms.locfileid: "55743729"
 
 **转换**可帮助你一次性创建脚本（步骤 1），然后使用该脚本提交作业（步骤 2）。
 
+## <a name="job-error-codes"></a>作业错误代码
+
+请参阅[错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+
 ## <a name="paging"></a>分页
 
 请参阅[媒体服务实体的筛选、排序、分页](entities-overview.md)。
 
+## <a name="configure-media-reserved-units"></a>配置媒体保留单位
+
+对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 个 S3 媒体保留单位 (MRU)。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.com/)打开一个支持票证。
+
+有关详细信息，请参阅[使用 CLI 调整媒体处理的规模](media-reserved-units-cli-how-to.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
-[对视频文件进行上传、编码和流式处理](stream-files-tutorial-with-api.md)
+- [教程：使用 .NET 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
+- [教程：通过 .NET 使用媒体服务 v3 来分析视频](analyze-videos-tutorial-with-api.md)

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7278eba1c9039c180f75cdd2dfd1e18a77baf423
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235999"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416779"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>管理前脚本和后脚本（预览版）
 
@@ -22,7 +22,7 @@ ms.locfileid: "56235999"
 
 ## <a name="runbook-requirements"></a>Runbook 要求
 
-要将某个 Runbook 用作前脚本或后脚本，需将该 Runbook 导入到自动化帐户中并发布它。 有关此过程的详细信息，请参阅[发布 Runbook](automation-creating-importing-runbook.md#publishing-a-runbook)。
+要将某个 Runbook 用作前脚本或后脚本，需将该 Runbook 导入到自动化帐户中并发布它。 有关此过程的详细信息，请参阅[发布 Runbook](manage-runbooks.md#publish-a-runbook)。
 
 ## <a name="using-a-prepost-script"></a>使用前脚本/后脚本
 
@@ -52,7 +52,19 @@ ms.locfileid: "56235999"
 
 ## <a name="passing-parameters"></a>传递参数
 
-配置前脚本和后脚本时，可以像计划 Runbook 时一样传入参数。 参数是在创建更新部署时定义的。 前脚本和后脚本需要 `String` 类型的参数。 如果需要其他对象类型，可以使用 `[System.Convert]` 将它强制转换为其他类型或者使用你自己的逻辑来处理它。
+配置前脚本和后脚本时，可以像计划 Runbook 时一样传入参数。 参数是在创建更新部署时定义的。 前脚本和后脚本支持以下类型：
+
+* [char]
+* [byte]
+* [int]
+* [long]
+* [decimal]
+* [single]
+* [double]
+* [DateTime]
+* [string]
+
+如果需要其他对象类型，可以在 runbook 中使用自己的逻辑将它强制转换为其他类型。
 
 除了标准的 Runbook 参数以外，还提供了一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串；如果在前脚本或后脚本中定义该参数，更新部署会自动传入该参数。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
 

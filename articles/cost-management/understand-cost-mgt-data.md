@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981751"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447457"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -61,6 +61,8 @@ ms.locfileid: "55981751"
 | **支持计划** | Azure 政府版标准支持 | MS-AZR-USGOV-0041P |
 | **支持计划** | Azure 政府版专业直接支持 | MS-AZR-USGOV-0042P |
 | **支持计划** | Azure 政府版开发人员支持 | MS-AZR-USGOV-0043P |
+
+对于使用即用即付、MSDN 和 Visual Studio 产品/服务类别的客户，从 2018 年 2 月 10 日起可在“成本管理”中使用数据。
 
 如果未看到订阅数据并想要确定你的订阅是否属于受支持的套餐，可以验证你的订阅是否受支持。 若要验证 Azure 订阅是否受支持，请登录到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“所有服务”。 在服务列表中选择“订阅”。 在订阅列表菜单中，单击要验证的订阅。 该订阅将显示在“概述”选项卡上，在其中可以看到“套餐”和“套餐 ID”。 下图显示了一个示例。
 

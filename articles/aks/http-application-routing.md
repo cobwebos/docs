@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 0bca7281c390388bd860219fb6f2eacb96b99df0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742382"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312271"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
@@ -38,6 +38,9 @@ HTTP 应用程序路由加载项可以在部署 AKS 群集时通过 Azure CLI �
 ```azurecli
 az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
+
+> [!TIP]
+> 如果要启用多个加载项，请以逗号分隔列表的形式提供。 例如，要启用 HTTP 应用程序路由和监视，请使用格式 `--enable-addons http_application_routing,monitoring`。
 
 还可以使用 [az aks enable-addons][az-aks-enable-addons] 命令在现有 AKS 群集上启用 HTTP 路由。 若要在现有群集上启用 HTTP 路由，请添加 `--addons` 参数并指定 *http_application_routing*，如以下示例所示：
 

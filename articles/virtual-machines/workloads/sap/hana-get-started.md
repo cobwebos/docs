@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: c1d9047de814b7a80210fe2502d219921f5829a4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 561eff75ef4268acd3f737f7aaa92ccaacfda7f3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976896"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328703"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>快速入门：在 Azure VM 上手动安装单实例 SAP HANA
 ## <a name="introduction"></a>介绍
@@ -195,7 +195,7 @@ Azure 上 Linux VM 中的根文件系统具有大小限制。 因此，有必要
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-在建议的磁盘配置中，将 HANA 数据卷和日志卷放置在使用 LVM 或 MDADM 进行条带化的同一组 Azure 高级存储磁盘上。 不需要定义任何 RAID 冗余级别，因为 Azure 高级存储会保留磁盘的三个映像用作冗余。 若要确保配置足够的存储，请参阅 [SAP HANA TDI 存储要求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)和 [SAP HANA 服务器安装和更新指南](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)。 此外应考虑不同 Azure 高级存储磁盘的不同虚拟硬盘 (VHD) 吞吐量卷，如 [VM 的高性能高级存储和托管磁盘](https://docs.microsoft.com/azure/storage/storage-premium-storage)中所述。 
+在建议的磁盘配置中，将 HANA 数据卷和日志卷放置在使用 LVM 或 MDADM 进行条带化的同一组 Azure 高级存储磁盘上。 不需要定义任何 RAID 冗余级别，因为 Azure 高级存储会保留磁盘的三个映像用作冗余。 若要确保配置足够的存储，请参阅 [SAP HANA TDI 存储要求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)和 [SAP HANA 服务器安装和更新指南](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)。 此外应考虑不同 Azure 高级存储磁盘的不同虚拟硬盘 (VHD) 吞吐量卷，如 [VM 的高性能高级存储和托管磁盘](../../windows/disks-types.md)中所述。 
 
 可将更多的高级存储磁盘添加到 HANA DBMS VM，用于存储数据库或事务日志备份。
 
@@ -206,9 +206,7 @@ Azure 上 Linux VM 中的根文件系统具有大小限制。 因此，有必要
 
 有关将磁盘附加到将 Linux 作为来宾 OS 运行 的 Azure VM 的详细信息，请参阅[将磁盘附加到 Linux VM](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-Azure 高级存储允许定义磁盘缓存模式。 对于保存 /hana/data 和 /hana/log 的条带化集，应禁用磁盘缓存。 对于其他卷（磁盘），缓存模式都应设置为“ReadOnly”。
-
-有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../../windows/premium-storage.md)。
+Azure 高级 SSD 允许定义磁盘缓存模式。 对于保存 /hana/data 和 /hana/log 的条带化集，应禁用磁盘缓存。 对于其他卷（磁盘），缓存模式都应设置为“ReadOnly”。
 
 要查找用于创建 VM 的示例 JSON 模板，请转到 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)。
 vm-simple-sles 模板是基本模板。 它包含具有额外 100-GB 数据磁盘的存储区。 此模板可以用作基类。 可将模板调整为特定配置。

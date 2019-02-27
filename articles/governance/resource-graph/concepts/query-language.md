@@ -1,6 +1,6 @@
 ---
 title: 理解查询语言
-description: 介绍 Azure Resource Graph 查询语言的工作原理。
+description: 介绍 Azure Resource Graph 使用的 Kusto 查询语言的工作原理。
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 62f61bfea3896fd3828253f5ec16cc38fe3ca007
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cc792d27890b5d994b62784eaa511df990f9b5ec
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316654"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339968"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 

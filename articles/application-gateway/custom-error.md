@@ -2,17 +2,17 @@
 title: 创建 Azure 应用程序网关自定义错误页
 description: 本文展示了如何创建 Azure 应用程序网关自定义错误页。
 services: application-gateway
-author: amitsriva
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 2/14/2019
 ms.author: victorh
-ms.openlocfilehash: 2f76347105743538e9fc1d7588ecb949f2675696
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070873"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301598"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>创建应用程序网关自定义错误页
 
@@ -34,6 +34,7 @@ ms.locfileid: "49070873"
 - **两者** - 在侦听器级别定义的自定义错误页会覆盖在全局级别设置的自定义错误页。
 
 若要创建自定义错误页，你必须具有：
+
 - HTTP 响应状态代码。
 - 错误页的相应位置。 
 - 该位置的可公开访问的 Azure 存储 blob。
@@ -59,5 +60,19 @@ ms.locfileid: "49070873"
 4. 为给定的错误状态代码指定一个可公开访问的 blob URL，然后单击“保存”。 现在，应用程序网关已经配置了自定义错误页。
 
    ![应用程序网关错误代码](media/custom-error/ag-error-codes.png)
+
+## <a name="azure-powershell-configuration"></a>Azure PowerShell 配置
+
+可使用 Azure PowerShell 来配置自定义缩放页。 例如，全局自定义错误页：
+
+`$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+或侦听器级别错误页：
+
+`$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+有关详细信息，请参阅 [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) 和 [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0)。
+
 ## <a name="next-steps"></a>后续步骤
+
 有关应用程序网关诊断的信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。

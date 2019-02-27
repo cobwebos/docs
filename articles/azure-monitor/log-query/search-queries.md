@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: cda66b91a0e829ec3bc84a82c190b9d856827ad3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2df4cf994e118fef9048504daf40fabc1625c375
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004445"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267677"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor 日志中的搜索查询
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[数据资源管理器查询语言站点](/azure/kusto/query/)上参阅其他教程。
+- 在 [Kusto 查询语言站点](/azure/kusto/query/)上参阅其他教程。

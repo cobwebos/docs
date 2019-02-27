@@ -7,16 +7,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: danlep
-ms.openlocfilehash: 8bae44215cdc17e9f1617c909ef197f2757fc114
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 42790905509e2ea8bbba87587ed01b1929221db5
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857748"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329313"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
 
-可以为容器注册表[配置 Webhook](container-registry-webhook.md)，以便对其执行某些操作时生成相应事件。 例如，可以启用在容器映像 `push` 和 `delete` 操作上触发的 Webhook。 触发 Webhook 后，Azure 容器注册表向指定的终结点发出 HTTP 或 HTTPS 请求并包含有关此事件的信息。 然后终结点处理相应的 Webhook 和操作。
+可以为容器注册表[配置 Webhook](container-registry-webhook.md)，以便对其执行某些操作时生成相应事件。 例如，启用在容器映像 `push` 和 `delete` 操作上触发的 Webhook。 触发 Webhook 后，Azure 容器注册表向指定的终结点发出 HTTP 或 HTTPS 请求并包含有关此事件的信息。 然后终结点处理相应的 Webhook 和操作。
 
 以下各部分详细介绍由受支持的事件生成的 Webhook 请求的架构。 事件部分包括事件类型的有效负载架构、示例请求有效负载以及触发 Webhook 的一个或多个示例命令。
 
@@ -40,7 +40,7 @@ ms.locfileid: "48857748"
 
 ### <a name="push-event-payload"></a>Push 事件负载
 
-|元素|类型|Description|
+|元素|Type|说明|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -50,7 +50,7 @@ ms.locfileid: "48857748"
 
 ### <a name="target"></a>目标
 
-|元素|类型|Description|
+|元素|Type|说明|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。 与 Length 字段相同。|
@@ -61,7 +61,7 @@ ms.locfileid: "48857748"
 
 ### <a name="request"></a>请求
 
-|元素|类型|Description|
+|元素|Type|说明|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
@@ -104,7 +104,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete-event-payload"></a>Delete 事件负载
 
-|元素|类型|Description|
+|元素|Type|说明|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -114,7 +114,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete_target"></a> 目标
 
-|元素|类型|Description|
+|元素|Type|说明|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
@@ -122,7 +122,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete_request"></a> 请求
 
-|元素|类型|Description|
+|元素|Type|说明|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
@@ -154,10 +154,10 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ```azurecli
 # Delete repository
-az acr repository delete -n MyRegistry --repository MyRepository
+az acr repository delete --name MyRegistry --repository MyRepository
 
-# Delete manifest
-az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --manifest
+# Delete image
+az acr repository delete --name MyRegistry --image MyRepository:MyTag
 ```
 
 ## <a name="next-steps"></a>后续步骤

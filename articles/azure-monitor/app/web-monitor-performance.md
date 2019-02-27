@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 6f34e1a611ddb477f38a703a49aeb8a178157671
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8f5a0a22ecea0b5df0f4108984b2a65d4add2bf8
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120268"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301768"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
@@ -35,7 +35,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 * [ASP.NET Web 应用](../../azure-monitor/app/asp-net.md)
   * [添加异常监视](../../azure-monitor/app/asp-net-exceptions.md)
   * [添加依赖项监视](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [J2EE Web 应用](../../azure-monitor/app/java-get-started.md)
+* [Java EE Web 应用](../../azure-monitor/app/java-get-started.md)
   * [添加依赖项监视](../../azure-monitor/app/java-agent.md)
 
 ## <a name="view"></a>探索性能指标

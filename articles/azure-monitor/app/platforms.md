@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/01/2016
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 825f51742a65ead545f7c7fcb0a53d1a82a08b1a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2a40249dc347b8ebac905c5e9b6557e6f00f238f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992800"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299439"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>开发人员分析：语言、平台和集成
 这些项是我们听说过的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的实现，包括第三方的一些实现。
@@ -51,8 +51,8 @@ ms.locfileid: "55992800"
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center)
-* [J2EE](../../azure-monitor/app/java-get-started.md)
-* [J2EE - 适用于已处于活动状态的应用](../../azure-monitor/app/java-live.md)
+* [Java EE](../../azure-monitor/app/java-get-started.md)
+* [ - 适用于已处于活动状态的应用](../../azure-monitor/app/java-live.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
 * [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 * [安全堆栈](https://safe-stack.github.io/docs/template-azure-ai/)

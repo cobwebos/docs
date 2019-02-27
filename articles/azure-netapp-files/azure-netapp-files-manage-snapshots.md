@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure NetApp 文件管理快照 | Microsoft Docs
-description: 介绍如何使用 Azure NetApp 文件为卷创建按需快照或从快照还原到新卷。
+description: 介绍如何使用 Azure NetApp 文件为卷创建快照或从快照还原到新卷。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,28 +12,39 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to-article
-ms.date: 03/28/2018
+ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: e3ae11adf84e858429cba4643802300f7915a166
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 3c69cb076b3b23cd5149e05f1b6ee9ae1ba170a6
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412924"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430193"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
+
 可以使用 Azure NetApp 文件为卷创建按需快照，或从快照还原到新卷。
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>为卷创建按需快照
-可以仅按需创建快照。  目前不支持快照策略。  
-1.  从“管理卷”边栏选项卡，单击“快照”，然后单击“+ 添加快照”为卷创建按需快照。
 
-2.  在“新建快照”窗口中，为要创建的新快照提供名称。   
+可以仅按需创建快照。 目前不支持快照策略。
 
-3. 单击“确定”。 
+1.  在“卷”边栏选项卡中，单击“快照”。
 
+    ![导航到快照](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
+
+2.  单击“+ 添加快照”，为卷创建按需快照。
+
+    ![添加快照](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
+
+3.  在“新建快照”窗口中，为要创建的新快照提供名称。   
+
+    ![新建快照](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
+
+4. 单击“确定”。 
 
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>将快照还原到新卷
+
 目前，只能将快照还原到新卷。 
 1. 从“卷”边栏选项卡转到“管理快照”边栏选项卡以显示快照列表。 
 2. 选择要还原的快照。  
@@ -61,7 +72,7 @@ ms.locfileid: "53412924"
 
     *   **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
-        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件服务。 还可以从本地网络通过 Express Route 来访问卷。 
+        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件。 可以从本地网络通过 Express Route 来访问卷。 
 
     * **子网**  
         指定要用于卷的子网。  
@@ -73,3 +84,6 @@ ms.locfileid: "53412924"
 5. 单击“确定”。   
     快照还原到的新卷将显示在“卷”边栏选项卡中。
 
+## <a name="next-steps"></a>后续步骤
+
+[了解 Azure NetApp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md)

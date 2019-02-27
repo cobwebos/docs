@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 4328a090478747e9acbfb25cca45b330cd4a300b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 84a949d0e8fc915441231e1d0b07c3492776cd41
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56212302"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327130"
 ---
-#<a name="data-factory-data-flow-move-nodes"></a>数据工厂数据流移动节点
+# <a name="mapping-data-flow-move-nodes"></a>映射数据流移动节点
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "56212302"
 
 Azure 数据工厂数据流设计界面是一个“构造”界面，可以在其中从上到下、从左到右构建数据流。 具有加号 (+) 符号的每个转换都附加有一个工具箱。 请专注于你的业务逻辑，而非在自由形式的 DAG 环境中通过边缘来连接节点。
 
-因此，在没有一个拖放范例的情况下，“移动”转换节点的方式是更改传入流。 你将通过更改“传入流”来四处移动转换。
+因此，在没有拖放范例的情况下，“移动”转换节点的方式是更改传入流。 你将通过更改“传入流”来四处移动转换。
 
 在 Azure 数据工厂数据流中，流表示数据的流动。 在“转换设置”窗格中，你会看到一个“传入流”字段。 它告诉你哪个传入数据流在为该转换提供数据。 可以通过单击传入流名称并选择另一个数据流在图形上更改转换节点的物理位置。 然后，该流上的当前转换以及所有后续转换都将移动到新位置。
 

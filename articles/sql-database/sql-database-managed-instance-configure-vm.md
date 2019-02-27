@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 79dbaf98f953a9cb72a7fa7cf9facc2b17fad504
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 02/18/2019
+ms.openlocfilehash: 640182b50492ed21cd604423fe1cef7301095941
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410052"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408793"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>快速入门：配置 Azure VM，以便连接到 Azure SQL 数据库托管实例
 
@@ -97,7 +97,8 @@ ms.locfileid: "53410052"
 4. 选择“购买”，在网络中部署 Azure VM。
 5. 选择“通知”图标，查看部署的状态。
 
-在创建好 Azure 虚拟机之前，请勿继续操作。 
+> [!IMPORTANT]
+> 创建虚拟机后约 15 分钟内，不要继续操作，以便创建后脚本有时间来安装 SQL Server Management Studio。
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
