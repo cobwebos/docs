@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 3b56097f8805b4c6d95256ae1753daf5ded266fb
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 86e690e5ff437d924b9c548c2d75afb1866b14aa
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888390"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446777"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
@@ -302,12 +302,118 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
             "category": "DirectMethods",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":\"<deviceId>\", \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
+            "properties": "{\"deviceId\":<messageSize>, \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
             "location": "Resource location"
         }
     ]
 }
 ```
+
+#### <a name="distributed-tracing-preview"></a>分布式跟踪（预览版）
+
+分布式跟踪类别跟踪执行跟踪上下文标头的消息的相关 ID。 若要完全启用这些日志，客户端代码必须按照[使用 IoT 中心分布式跟踪（预览版）对 IoT 应用程序进行端到端分析和诊断](iot-hub-distributed-tracing.md)进行更新。
+
+请注意，`correlationId` 符合 [W3C 跟踪上下文](https://github.com/w3c/trace-context)方案，其中包含 `trace-id` 以及 `span-id`。 
+
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT 中心 D2C（设备到云）日志
+
+当包含有效跟踪属性的消息到达 IoT 中心时，IoT 中心会记录此日志。 
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubD2C",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Receive message success",
+            "durationMs": "",
+            "properties": "{\"messageSize\": 1, \"deviceId\":\"<deviceId>\", \"callerLocalTimeUtc\": : \"2017-02-22T03:27:28.633Z\", \"calleeLocalTimeUtc\": \"2017-02-22T03:27:28.687Z\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+此时不会计算 `durationMs`，因为 IoT 中心的时钟可能不会与设备时钟同步，所以持续时间计算可能产生误导。 我们建议使用 `properties` 部分中的时间戳编写逻辑，以捕获设备到云延迟的峰值。
+
+| 属性 | Type | 说明 |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **messageSize** | Integer | 以字节为单位的设备到云消息的大小 |
+| **deviceId** | ASCII 7 位字母数字字符字符串 | 设备的标识 |
+| **callerLocalTimeUtc** | UTC 时间戳 | 设备本地时钟报告的消息创建时间 |
+| **calleeLocalTimeUtc** | UTC 时间戳 | IoT 中心服务端时钟报告的消息到达 IoT 中心网关的时间 |
+
+##### <a name="iot-hub-ingress-logs"></a>IoT 中心流入日志
+
+当包含有效跟踪属性的消息写入内部或内置事件中心时，IoT 中心会记录此日志。
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubIngress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Ingress message success",
+            "durationMs": "10",
+            "properties": "{\"isRoutingEnabled\": \"true\", \"parentSpanId\":\"0144d2590aacd909\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+在 `properties` 部分中，此日志包含有关消息流入的其他信息
+
+| 属性 | Type | 说明 |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **isRoutingEnabled** | String | True 或 false，指示 IoT 中心是否启用了消息路由 |
+| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
+
+##### <a name="iot-hub-egress-logs"></a>IoT 中心流出日志
+
+当[路由](iot-hub-devguide-messages-d2c.md)已启用且消息写入到[终结点](iot-hub-devguide-endpoints.md)时，IoT 中心会记录此日志。 如果未启用路由，IoT 中心不会记录此日志。
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubEgress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-98ac3578922acd26-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Egress message success",
+            "durationMs": "10",
+            "properties": "{\"endpointType\": \"EventHub\", \"endpointName\": \"myEventHub\", \"parentSpanId\":\"349810a9bbd28730\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+在 `properties` 部分中，此日志包含有关消息流入的其他信息
+
+| 属性 | Type | 说明 |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **endpointName** | String | 路由终结点的名称 |
+| **endpointType** | String | 路由终结点的类型 |
+| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
+
 
 ### <a name="read-logs-from-azure-event-hubs"></a>从 Azure 事件中心读取日志
 

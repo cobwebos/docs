@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 982ed4533c34cd4a6613d289ef4712001977538f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d67c3e452da05c626721d4c3144e612e6f9e0af4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436205"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338438"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>将 Apache DataFu Pig 与 Apache Pig on HDInsight 配合使用
 
@@ -90,7 +90,9 @@ Apache DataFu Pig 是适用于 Apache Hadoop 上的 Apache Pig 的开源库集�
 >
 > * 如果群集使用 Azure 存储，请使用 `wasb://` 路径。 例如，`register wasb:///example/jars/datafu-pig-1.4.0.jar`。
 >
-> * 如果群集使用 Azure Data Lake Store，请使用 `adl://` 路径。 例如，`register adl://home/example/jars/datafu-pig-1.4.0.jar`。
+> * 如果群集使用 Azure Data Lake Store Gen2，请使用 `abfs://` 路径。 例如，`register abfs://home/example/jars/datafu-pig-1.4.0.jar`。
+>
+> * 如果群集使用 Azure Data Lake Store Gen1，请使用 `adl://` 路径。 例如，`register adl://home/example/jars/datafu-pig-1.4.0.jar`。
 
 通常要为 DataFu 函数定义别名。 以下示例定义了 `SHA` 的别名：
 

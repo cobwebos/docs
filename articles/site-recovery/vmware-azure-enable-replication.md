@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 1/29/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 85c5947fa32751bd8381d6a1d59e91ba2026f5f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: be6823486490ca6bc414e89c62a22f996aa27089
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822776"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329941"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -88,7 +88,7 @@ ms.locfileid: "55822776"
 2. 在“属性”中，可以查看 VM 的复制和故障转移信息。
 3. 在“计算和网络” > “计算属性”中，可以更改多个 VM 属性：
 * Azure VM 名称 - 如有必要，请修改名称使其符合 Azure 要求
-* 目标 VM 大小或类型 - 默认 VM 大小是根据源 VM 大小选择的。 在故障转移之前，你随时可以根据需要选择不同的 VM 大小。 请注意，VM 磁盘大小也取决于源磁盘大小，并且它只能在故障转移后进行更改。 详细了解[标准](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets)与[高级](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)磁盘大小和 IOPS。
+* 目标 VM 大小或类型 - 默认 VM 大小是根据源 VM 大小选择的。 在故障转移之前，你随时可以根据需要选择不同的 VM 大小。 请注意，VM 磁盘大小也取决于源磁盘大小，并且它只能在故障转移后进行更改。 在我们的[磁盘可伸缩性目标](../virtual-machines/windows/disk-scalability-targets.md)文章中了解有关磁盘大小和 IOPS 的详细信息。
 
     ![“计算和网络”属性](./media/vmware-azure-enable-replication/vmproperties.png)
 

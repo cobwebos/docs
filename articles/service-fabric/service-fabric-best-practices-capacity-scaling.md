@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: d6f2ca53829642009adbc50061966c5a7e924f7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9de6cc224c82bb07fee4d62cd5de1d1964001bab
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240397"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446811"
 ---
 # <a name="capacity-planning-and-scaling"></a>容量规划和缩放
 
@@ -33,7 +33,7 @@ ms.locfileid: "55240397"
 * 每次只需水平缩放 1 个虚拟机规模集节点。
   * 若要一次性横向扩展 3 个或更多个节点，应该[通过添加虚拟机规模集来横向扩展 Service Fabric 群集](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)。最安全的做法是每次横向扩展或缩减虚拟机规模集的 1 个节点。
 * 对于 Service Fabric 群集，可以实现银级可靠性；对于配置了自动缩放规则的任何规模集，可以实现银级或更高的持久性。
-  * 自动缩放规则中的 capacity[minimum] 必须大于或等于 5 个虚拟机实例，并且必须大于或等于主节点类型的最低可靠性层。
+  * 自动缩放规则容量的 [minimum] 必须大于或等于 5 个虚拟机实例，并且必须大于或等于主节点类型的最低可靠性层。
 
 > [!NOTE]
 > Azure Service Fabric 有状态服务 fabric:/System/InfastructureService/<NODE_TYPE_NAME> 在具有银级或更高持久性的每个节点类型上运行，它是唯一支持在 Azure 中任何群集节点类型上运行的系统服务。 

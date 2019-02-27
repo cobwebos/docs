@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c37347928e75986fa8aee0d3d0a4db2667312f56
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3feb691f1f708452b6560dbe92b77ed0417ffb82
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984369"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329398"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>如何使用 Azure PowerShell 预配 SQL Server 虚拟机
 
@@ -57,7 +57,7 @@ $ResourceGroupName = "sqlvm2"
 ### <a name="storage-properties"></a>存储属性
 定义存储帐户，以及虚拟机使用的存储类型。
 
-根据需要进行修改，然后运行以下 cmdlet 以初始化这些变量。 建议对生产工作负荷使用[高级存储](../premium-storage.md)。
+根据需要进行修改，然后运行以下 cmdlet 以初始化这些变量。 我们建议将[高级 SSD](../disks-types.md#premium-ssd) 用于生产工作负载。
 
 ```PowerShell
 $StorageName = $ResourceGroupName + "storage"

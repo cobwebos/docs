@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e7cc1340a85e1d00c2f64abeb35a99052184c52
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f02a44f41eba8cc4298b9fc730354799ca0aad0c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100170"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446760"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -29,7 +29,7 @@ ms.locfileid: "56100170"
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.15
 
 + **新功能**
-  + Azure 机器学习管道增加了 AzureBatchStep ([notebook](https://aka.ms/pl-azbatch))、HyperDriveStep ([notebook](https://aka.ms/pl-hyperdrive)) 和基于时间的计划功能 ([notebook](https://aka.ms/pl-schedule))。
+  + Azure 机器学习管道增加了 AzureBatchStep（[笔记本](https://aka.ms/pl-azbatch)）、HyperDriveStep（[笔记本](https://aka.ms/pl-hyperdrive)）和基于时间的计划功能（[笔记本](https://aka.ms/pl-schedule)）。
   +  DataTranferStep 已更新，可以与 Azure SQL Server 和 Azure database for PostgreSQL ([notebook](https://aka.ms/pl-data-trans)) 配合使用。
 
 + **更改**

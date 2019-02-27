@@ -8,23 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 81e846c6ffc0361b7154c962dbc047b9e5ae55e7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1056b8be113d56342aea8f83d5325737f7ecb93b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872979"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308445"
 ---
 # <a name="face-detection-with-computer-vision"></a>使用计算机视觉进行人脸检测
 
-计算机视觉检测图片中的人脸，并为每个检测到的脸部生成年龄、性别和人脸边框。 计算机视觉提供可以在[人脸](/azure/cognitive-services/face/)中发现的部分功能。可以使用人脸服务进行更详细的分析，例如人脸识别和姿势检测。  
+计算机视觉可检测图像中的人脸，并为每个检测到的人脸生成年龄、性别和人脸边框。 
+
+> [!NOTE]
+> Azure [人脸](/azure/cognitive-services/face/)服务也提供此功能。 有关人脸分析（包括人脸识别和姿势检测）的详细信息，请参阅此替代方案。 
 
 ## <a name="face-detection-examples"></a>人脸检测示例
 
-第一个示例演示了计算机视觉为包含单个人脸的图像返回的 JSON 响应。
+以下示例演示了计算机视觉为包含单个人脸的图像返回的 JSON 响应。
 
 ![视觉分析女士屋顶人脸](./Images/woman_roof_face.png)
 
@@ -110,4 +113,4 @@ ms.locfileid: "55872979"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解关于[检测特定于域的内容](concept-detecting-domain-content.md)的概念。
+有关如何使用人脸检测功能的详细信息，请参阅[分析图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)参考文档。

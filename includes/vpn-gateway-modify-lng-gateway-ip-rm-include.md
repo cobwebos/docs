@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3e4f5c07602d5bc1b7760793664415f092301c20
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6505b12b35ee436930ba6571c27db30c12030041
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53443983"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418262"
 ---
 ### <a name="gwipnoconnection"></a> 修改本地网关的“GatewayIpAddress”- 无网关连接
 
@@ -22,7 +22,7 @@ ms.locfileid: "53443983"
 修改此值时，还可同时修改地址前缀。 请务必使用本地网关的现有名称来覆盖当前设置。 如果使用其他名称，请创建一个新的本地网关，而不是覆盖现有的。
 
 ```azurepowershell-interactive
-New-AzureRmLocalNetworkGateway -Name Site1 `
+New-AzLocalNetworkGateway -Name Site1 `
 -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName TestRG1
 ```
@@ -32,32 +32,33 @@ New-AzureRmLocalNetworkGateway -Name Site1 `
 如果要连接的 VPN 设备已更改其公共 IP 地址，则需根据该更改修改本地网关。 如果网关连接已存在，首先需要删除该连接。 删除连接后，可修改网关 IP 地址并重新创建一个新的连接。 此外可同时修改地址前缀。 这会导致 VPN 连接中断一段时间。 修改网关 IP 地址时，不需删除 VPN 网关。 只需删除连接。
  
 
-1. 删除连接。 可以使用“Get-AzureRmVirtualNetworkGatewayConnection”cmdlet 查找连接的名称。
+1. 删除连接。 可以使用“Get-AzVirtualNetworkGatewayConnection”cmdlet 查找连接的名称。
 
    ```azurepowershell-interactive
-   Remove-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+   Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
    -ResourceGroupName TestRG1
    ```
 2. 修改“GatewayIpAddress”值。 此外可同时修改地址前缀。 请务必使用本地网关的现有名称来覆盖当前设置。 如果不这样做，请创建一个新的本地网关，而不是覆盖现有的。
 
    ```azurepowershell-interactive
-   New-AzureRmLocalNetworkGateway -Name Site1 `
+   New-AzLocalNetworkGateway -Name Site1 `
    -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
    -GatewayIpAddress "104.40.81.124" -ResourceGroupName TestRG1
    ```
-3. 创建连接。 在此示例中，我们配置 IPsec 连接类型。 重新创建连接时，请使用针对配置指定的连接类型。 有关其他连接类型，请参阅 [PowerShell cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) 页面。  若要获取 VirtualNetworkGateway 名称，可运行“Get-AzureRmVirtualNetworkGateway”cmdlet。
+3. 创建连接。 在此示例中，我们配置 IPsec 连接类型。 重新创建连接时，请使用针对配置指定的连接类型。 有关其他连接类型，请参阅 [PowerShell cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) 页面。  若要获取 VirtualNetworkGateway 名称，可运行“Get-AzVirtualNetworkGateway”cmdlet。
    
     设置变量。
 
    ```azurepowershell-interactive
-   $local = Get-AzureRMLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
-   $vnetgw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
+   $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
+
+   $vnetgw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
    ```
    
     创建连接。
 
    ```azurepowershell-interactive 
-   New-AzureRmVirtualNetworkGatewayConnection -Name VNet1Site1 -ResourceGroupName TestRG1 `
+   New-AzVirtualNetworkGatewayConnection -Name VNet1Site1 -ResourceGroupName TestRG1 `
    -Location "East US" `
    -VirtualNetworkGateway1 $vnetgw `
    -LocalNetworkGateway2 $local `

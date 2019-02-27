@@ -1,26 +1,19 @@
 ---
-title: SQL Server VM 的 Azure 备份故障排除指南 | Microsoft Docs
-description: 有关将 SQL Server VM 备份到 Azure 的故障排除信息。
+title: 排查通过 Azure 备份进行 SQL Server数据库备份的问题 | Microsoft Docs
+description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 services: backup
-documentationcenter: ''
-author: rayne-wiselman
-manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
+author: anuragm
+manager: shivamg
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 02/19/2019
 ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296115"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428613"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>排查在 Azure 上备份 SQL Server 的问题
 
@@ -28,11 +21,11 @@ ms.locfileid: "55296115"
 
 ## <a name="public-preview-limitations"></a>公共预览版的限制
 
-若要查看公共预览版的限制，请参阅[在 Azure 中备份 SQL Server 数据库](backup-azure-sql-database.md#public-preview-limitations)一文。
+若要查看公共预览版的限制，请参阅[在 Azure 中备份 SQL Server 数据库](backup-azure-sql-database.md#preview-limitations)一文。
 
 ## <a name="sql-server-permissions"></a>SQL Server 权限
 
-若要在虚拟机上为 SQL Server 数据库配置保护，必须在该虚拟机上安装 **AzureBackupWindowsWorkload** 扩展。 如果收到错误 **UserErrorSQLNoSysadminMembership**，则表示 SQL 实例没有所需的备份权限。 若要解决此错误，请遵循[为非市场 SQL VM 设置权限](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms)中的步骤。
+若要在虚拟机上为 SQL Server 数据库配置保护，必须在该虚拟机上安装 **AzureBackupWindowsWorkload** 扩展。 如果收到错误 **UserErrorSQLNoSysadminMembership**，则表示 SQL 实例没有所需的备份权限。 若要解决此错误，请遵循[为非市场 SQL VM 设置权限](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)中的步骤。
 
 ## <a name="troubleshooting-errors"></a>排查错误
 
@@ -56,13 +49,13 @@ ms.locfileid: "55296115"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | 此 SQL 数据库不支持所请求的备份类型。 | 当数据库恢复模式不允许所请求的备份类型时，会发生此错误。 在以下情况下，可能会发生此错误： <br/><ul><li>使用简单恢复模式的数据库不允许日志备份。</li><li>不允许对 Master 数据库执行差异备份和日志备份。</li></ul>有关详细信息，请参阅 [SQL 恢复模式](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server)文档。 | 如果采用简单恢复模式的数据库的日志备份失败，请尝试以下选项之一：<ul><li>如果数据库处于简单恢复模式，请禁用日志备份。</li><li>使用 [SQL 文档](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)将数据库恢复模式更改为“完整”或“批量日志记录”。 </li><li> 如果不想要更改恢复模式，并使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份和差异备份会按计划进行。 在这种情况下，预期会跳过日志备份。</li></ul>如果备份的是 Master 数据库，并且已配置差异备份或日志备份，请使用以下任一步骤：<ul><li>使用门户将 Master 数据库的备份策略计划更改为“完整”。</li><li>如果使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份会按计划进行。 在这种情况下，预期不会发生差异备份或日志备份。</li></ul> |
-| 操作将被取消，因为已对同一个数据库运行了某个有冲突的操作。 | 请参阅[有关并行运行备份和还原时存在的限制的博客文章](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database)。| [使用 SQL Server Management Studio (SSMS) 监视备份作业。](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms) 有冲突的操作失败后，重启该操作。|
+| 操作将被取消，因为已对同一个数据库运行了某个有冲突的操作。 | 请参阅[有关并行运行备份和还原时存在的限制的博客文章](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database)。| [使用 SQL Server Management Studio (SSMS) 监视备份作业。](manage-monitor-sql-database-backup.md) 有冲突的操作失败后，重启该操作。|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| SQL 数据库不存在。 | 该数据库已被删除或重命名。 | <ul><li>检查是否意外删除或重命名了该数据库。</li><li>如果意外删除了该数据库，若要继续备份，请将该数据库还原到原始位置。</li><li>如果删除了该数据库，且将来不需要备份，请在恢复服务保管库中单击“停止备份 [和“删除/保留数据](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms) 。</li>|
+| SQL 数据库不存在。 | 该数据库已被删除或重命名。 | 检查是否意外删除或重命名了该数据库。<br/><br/> 如果意外删除了该数据库，若要继续备份，请将该数据库还原到原始位置。<br/><br/> 如果删除了该数据库，且将来不需要备份，请在恢复服务保管库中单击“停止备份 [和“删除/保留数据](manage-monitor-sql-database-backup.md) 。
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 

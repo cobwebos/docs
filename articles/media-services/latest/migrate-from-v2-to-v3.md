@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 02/04/2019
 ms.author: juliako
-ms.openlocfilehash: b05c174bf96e78efd66f2c673e46ab43700c09f9
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 4f67158c0de8cdd161bce269059af6d421bb68b5
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744157"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340342"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -45,11 +45,11 @@ ms.locfileid: "55744157"
 
 * 对于基于文件的作业处理，可以使用 HTTP(S) URL 作为输入。<br/>无需事先在 Azure 中存储内容，无需创建资产。
 * 为基于文件的作业处理引入了[转换](transforms-jobs-concept.md)的概念。 使用转换可以生成可重用的配置、创建 Azure 资源管理器模板，并隔离多个客户或租户之间的处理设置。
-* 一个资产可以有多个[流式处理定位符](streaming-locators-concept.md)，其中每个流式处理定位符有不同的动态打包和动态加密设置。
+* 一个资产可以有多个[流式处理定位符](streaming-locators-concept.md)，其中每个流式处理定位符有不同的[动态打包](dynamic-packaging-overview.md)和动态加密设置。
 * [内容保护](content-key-policy-concept.md)支持多密钥功能。
 * 使用媒体服务将单比特率贡献源转码为具有多比特率的输出流时，可以流式传输最长 24 小时的实时事件。
 * 实时事件支持新的低延迟实时传送视频流。 有关详细信息，请参阅[延迟](live-event-latency.md)。
-* 实时事件预览版支持动态打包和动态加密。 这样，用户便可以使用预览版中的内容保护以及 DASH 和 HLS 打包。
+* 实时事件预览版支持[动态打包](dynamic-packaging-overview.md)和动态加密。 这样，用户便可以使用预览版中的内容保护以及 DASH 和 HLS 打包。
 * 与 v2 API 中的节目实体相比，实时输出更易于使用。 
 * 改进的 RTMP 支持（提高了稳定性并提供了更多的源编码器支持）。
 * RTMPS 安全引入。<br/>创建实时事件时，将获得 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。   

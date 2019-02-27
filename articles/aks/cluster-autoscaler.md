@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: bfdea1d5380750ec23964cd8564db9b3a9539f15
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f8804a157c21f3c90c667646689eec0968bc9027
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754635"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452995"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
@@ -27,7 +27,9 @@ ms.locfileid: "55754635"
 
 本文要求运行 Azure CLI 2.0.55 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
-支持群集自动缩放程序的 AKS 群集必须使用虚拟机规模集并运行 Kubernetes 版本 1.12.4或更高版本。 此规模集支持处于预览状态。 若要选择加入并创建使用规模集的群集，请使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，如下面的示例中所示：
+### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
+
+支持群集自动缩放程序的 AKS 群集必须使用虚拟机规模集并运行 Kubernetes 版本 1.12.4或更高版本。 此规模集支持处于预览状态。 若要选择加入并创建使用规模集的群集，请先使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，如下面的示例中所示：
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -35,6 +37,26 @@ az extension add --name aks-preview
 
 > [!NOTE]
 > 安装 aks-preview 扩展时，创建的每个 AKS 群集都使用规模集预览版部署模型。 若要选择退出并创建完全支持的常规群集，请使用 `az extension remove --name aks-preview` 删除该扩展。
+
+### <a name="register-scale-set-feature-provider"></a>注册规模集功能提供程序
+
+要创建使用规模集的 AKS，还必须在订阅上启用功能标志。 若要注册 VMSSPreview 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
+
+```azurecli-interactive
+az feature register --name VMSSPreview --namespace Microsoft.ContainerService
+```
+
+状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
+```
+
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
 
 ## <a name="about-the-cluster-autoscaler"></a>关于群集自动缩放程序
 
@@ -149,6 +171,9 @@ az aks update \
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

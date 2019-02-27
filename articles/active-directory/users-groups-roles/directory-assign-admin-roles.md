@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 02/08/19
+ms.date: 02/16/19
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 199c0e53fb9462a121072dbea8c90928c0d75abf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c1496653c319b4732614cd1c8148afb5c5b06215
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178935"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456735"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
-使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 可以在 Azure AD 门户中指定管理员用于执行各种任务，例如，添加或更改用户、分配管理角色、重置用户密码、管理用户许可证，以及管理域名。
+使用 Azure Active Directory (Azure AD) 时，可以指定有限的管理员在权限较低的角色中提供相关功能。 可以在 Azure AD 门户中指定管理员用于执行各种任务，例如，添加或更改用户、分配管理角色、重置用户密码、管理用户许可证，以及管理域名。 只能在 Azure AD 的用户设置中更改默认用户权限。
 
 全局管理员有权使用所有管理功能。 默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 只有全局管理员和特权角色管理员可以委托管理员角色。 为了降低业务风险，我们建议仅将此角色分配给你的公司中的少数人。
 
@@ -42,7 +42,7 @@ ms.locfileid: "56178935"
 
 * **[应用程序开发人员](#application-developer)**：在将设置“用户可以注册应用程序”设置为“否”时，充当此角色的用户可以创建应用程序注册。 在设置“用户可以同意应用代表他们访问公司数据”设置为“否”时，此角色还使成员能够代表自己授予同意。 在创建新应用程序注册或企业应用程序时，会将此角色的成员添加为所有者。
 
-* **[身份验证管理员](#authentication-administrator)**：具有此角色的用户可以查看当前身份验证方法信息以及设置或重置非密码凭据。 身份验证管理员可以强制用户重新注册现有非密码凭据（例如 MFA、FIDO），以及撤销在作为非管理员或仅是以下角色成员的其他用户下次登录时针对 MFA 的提示“在设备上记住 MFA”：
+* **[身份验证管理员](#authentication-administrator)**：具有此角色的用户可以设置或重置非密码凭据。 身份验证管理员可以强制用户重新注册现有非密码凭据（例如 MFA、FIDO），以及撤销在作为非管理员或仅是以下角色成员的其他用户下次登录时针对 MFA 的提示“在设备上记住 MFA”：
   * 身份验证管理员
   * 目录读者
   * 来宾邀请者

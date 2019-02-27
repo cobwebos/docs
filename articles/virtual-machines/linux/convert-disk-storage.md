@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 42b0b7a1ca2767a7051a6c57ef2aeac8cf2bb64c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 10dc7a2c7e4de44979ec72b1d292c69866e1faae
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477397"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326402"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure 标准与高级托管磁盘存储的相互转换
 
-托管磁盘提供三个存储选项：[高级 SSD](../windows/premium-storage.md)、标准 SSD 和[标准 HDD](../windows/standard-storage.md)。 它支持基于性能需求在选项之间轻松切换，并保障最短停机时间。 非托管磁盘不支持此操作。 但可以轻松[转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以在这些磁盘类型之间轻松切换。
+托管磁盘提供四种[磁盘类型](disks-types.md)选项：超高的固态硬盘 (SSD)、高级 SSD、标准 SSD 和标准硬盘驱动器 (HDD)。 它支持基于性能需求在选项之间轻松切换，并保障最短停机时间。 非托管磁盘不支持此操作。 但可以轻松[转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以在这些磁盘类型之间轻松切换。
 
 本文介绍了如何使用 Azure CLI 实现 Azure 标准与高级托管磁盘存储的相互转换。 如果需要安装或升级它，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="before-you-begin"></a>开始之前
 
 * 该转换需要重启 VM，因此请在预先存在的维护时段内计划磁盘存储迁移。 
-* 如果使用非托管磁盘，请首先[转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，并按照本文说明在存储选项之间切换。 
+* 如果使用非托管磁盘，请首先[转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，并按照本文说明在存储选项之间切换。
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>实现 VM 所有标准与高级托管磁盘的相互转换

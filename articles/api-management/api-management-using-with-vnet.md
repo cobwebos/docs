@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: d0af6c098f68c23bf9ef6161bd307afec518ead7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: cc4893837feeec6116750a7e37e7621af11ab0a4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011670"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453913"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -126,11 +126,11 @@ ms.locfileid: "53011670"
 >[!IMPORTANT]
 > “用途”为**粗体**的端口是成功部署 API 管理服务所必需的。 不过，阻止其他端口将导致使用和监视运行中服务的能力降级。
 
-* **SSL 功能**：若要启用 SSL 证书链生成和验证，API 管理服务需要到 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的出站网络连接。 如果上传到 API 管理的任何证书包含指向 CA 根的完整链，则此依赖关系不是必需的。
++ **SSL 功能**：若要启用 SSL 证书链生成和验证，API 管理服务需要到 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的出站网络连接。 如果上传到 API 管理的任何证书包含指向 CA 根的完整链，则此依赖关系不是必需的。
 
-* **DNS 访问**：需要端口 53 上的出站访问权限才能与 DNS 服务器通信。 如果 VPN 网关的另一端存在自定义 DNS 服务器，则必须可从承载 API 管理的子网连接该 DNS 服务器。
++ **DNS 访问**：需要端口 53 上的出站访问权限才能与 DNS 服务器通信。 如果 VPN 网关的另一端存在自定义 DNS 服务器，则必须可从承载 API 管理的子网连接该 DNS 服务器。
 
-* **指标和运行状况监视**：到 Azure Monitor 终结点的出站网络连接，可在以下域中解析： 
++ **指标和运行状况监视**：到 Azure Monitor 终结点的出站网络连接，可在以下域中解析： 
 
     | Azure 环境 | 终结点                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -138,17 +138,22 @@ ms.locfileid: "53011670"
     | Azure Government   | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure 中国       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
-* **SMTP 中继**：在主机 `ies.global.microsoft.com` 下解析的 SMTP 中继的出站网络连接。
++ **SMTP 中继**：在主机 `ies.global.microsoft.com` 下解析的 SMTP 中继的出站网络连接。
 
-* **Azure 门户诊断**：若要在从虚拟网络内部使用 API 管理扩展时从 Azure 门户启用诊断日志流，需要允许在端口 443 上对 `dc.services.visualstudio.com` 进行出站访问。 这有助于排查使用扩展时可能遇到的问题。
++ **开发人员门户 CAPTCHA**：在主机 `client.hip.live.com` 下解析的开发人员门户 CAPTCHA 的出站网络连接。
 
-* **Express Route 设置**：常见客户配置为定义其自身的默认路由 (0.0.0.0/0)，以强制出站 Internet 流量改为流向本地。 此流量流一定会中断与 Azure API 管理的连接，因为已在本地阻止出站流量，或者已 NAT 到不再与各种 Azure 终结点一起工作的一组无法识别的地址。 解决方案是在包含 Azure API 管理的子网上定义一个（或多个）用户定义的路由 ([UDR][UDRs])。 UDR 定义了要遵循的子网特定路由，而不是默认路由。
-  如果可能，建议使用以下配置：
- * ExpressRoute 配置播发 0.0.0.0/0 并默认使用强制隧道将所有输出流量发送到本地。
- * 应用于包含 Azure API 管理的子网的 UDR 定义 0.0.0.0/0 以及 Internet 的下一个跃点类型。
- 这些步骤的组合效应是子网级 UDR 将优先于 ExpressRoute 强制隧道，从而确保来自 Azure API 管理的出站 Internet 访问。
++ **Azure 门户诊断**：若要在从虚拟网络内部使用 API 管理扩展时从 Azure 门户启用诊断日志流，需要允许在端口 443 上对 `dc.services.visualstudio.com` 进行出站访问。 这有助于排查使用扩展时可能遇到的问题。
 
-* **通过网络虚拟设备路由**：如果配置使用默认路由为 0.0.0.0/0 的 UDR，并通过在 Azure 中运行的网络虚拟设备从 API 管理子网路由发往 Internet 的流量，则此类配置将阻止来自 Internet 的管理流量进入在虚拟网络子网内部署的 API 管理服务实例。 不支持该配置。
++ **Express Route 设置**：常见客户配置为定义其自身的默认路由 (0.0.0.0/0)，以强制出站 Internet 流量改为流向本地。 此流量流一定会中断与 Azure API 管理的连接，因为已在本地阻止出站流量，或者已 NAT 到不再与各种 Azure 终结点一起工作的一组无法识别的地址。 解决方案是在包含 Azure API 管理的子网上定义一个（或多个）用户定义的路由 ([UDR][UDRs])。 UDR 定义了要遵循的子网特定路由，而不是默认路由。
+
+    如果可能，建议使用以下配置：
+
+     * ExpressRoute 配置播发 0.0.0.0/0 并默认使用强制隧道将所有输出流量发送到本地。
+     * 应用于包含 Azure API 管理的子网的 UDR 定义 0.0.0.0/0 以及 Internet 的下一个跃点类型。
+
+    这些步骤的组合效应是子网级 UDR 将优先于 ExpressRoute 强制隧道，从而确保来自 Azure API 管理的出站 Internet 访问。
+
++ **通过网络虚拟设备路由**：如果配置使用默认路由为 0.0.0.0/0 的 UDR，并通过在 Azure 中运行的网络虚拟设备从 API 管理子网路由发往 Internet 的流量，则此类配置将阻止来自 Internet 的管理流量进入在虚拟网络子网内部署的 API 管理服务实例。 不支持该配置。
 
 >[!WARNING]
 >**从公共对等路径到专用对等路径未正确交叉播发路由**的 ExpressRoute 配置不支持 Azure API 管理。 已配置公共对等互连的 ExpressRoute 配置将收到来自 Microsoft 的大量 Microsoft Azure IP 地址范围的路由播发。 如果这些地址范围在专用对等路径上未正确交叉播发，最后的结果是来自 Azure API 管理实例子网的所有出站网络数据包都不会正确地使用强制隧道发送到客户的本地网络基础结构。 此网络流会破坏 Azure API 管理。 此问题的解决方法是停止从公共对等路径到专用对等路径的交叉播发路由。

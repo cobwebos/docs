@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 121f9ff602907e64bba0c98342e38477109e9294
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76c9e143a4127807bfffa879103fca42d2d27e71
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993651"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268318"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>从 SQL 到 Azure Monitor 日志查询备忘单 
 
-下表可帮助熟悉 SQL 的用户学习数据资源管理器查询语言，用以在 Azure Monitor 中编写日志查询。 让我们看一下用于解决常见场景的 T-SQL 命令以及 Azure Monitor 日志查询中的等效命令。
+下表可帮助熟悉 SQL 的用户学习 Kusto 查询语言，用以在 Azure Monitor 中编写日志查询。 让我们看一下用于解决常见场景的 T-SQL 命令以及 Azure Monitor 日志查询中的等效命令。
 
 ## <a name="sql-to-azure-monitor"></a>从 SQL 到 Azure Monitor
 
@@ -45,9 +45,9 @@ Null 评估                         |`SELECT * FROM dependencies WHERE resultCod
 按度量值排序的前 n 条记录                |`SELECT TOP 100 name, COUNT(*) as Count FROM dependencies GROUP BY name ORDER BY Count asc`        |<code>dependencies <br>&#124; summarize Count=count() by name <br>&#124; top 100 by Count asc</code>
 联合                                   |`SELECT * FROM dependencies UNION SELECT * FROM exceptions`                                        |<code>union dependencies, exceptions</code>
 联合：带条件                  |`SELECT * FROM dependencies WHERE value > 4 UNION SELECT * FROM exceptions value < 5`              |<code>dependencies <br>&#124; where value > 4 <br>&#124; union (exceptions <br>&#124; where value < 5)</code>
-联接                                    |`SELECT * FROM dependencies JOIN exceptions ON dependencies.operation_Id = exceptions.operation_Id`|<code>dependencies <br>&#124; join (exceptions) on operation_Id == operation_Id</code>
+Join                                    |`SELECT * FROM dependencies JOIN exceptions ON dependencies.operation_Id = exceptions.operation_Id`|<code>dependencies <br>&#124; join (exceptions) on operation_Id == operation_Id</code>
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成关于[在 Azure Monitor 中编写日志查询](get-started-queries.md)的课程。
+- 完成关于[在 Azure Monitor 中编写日志查询](get-started-queries.md)的一课。

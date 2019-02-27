@@ -1,7 +1,7 @@
 ---
 title: 定义自定义 R 模块
 titleSuffix: Azure Machine Learning Studio
-description: 本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块， 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块，
+description: 本主题介绍如何在 Azure 机器学习工作室中创建和部署自定义 R 模块。 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块，
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0da5456845b940ef88ac40ffed1f53e84fe54080
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 43691988e3f4f253c642702ad19272a5267c14cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488299"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457024"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>定义 Azure 机器学习工作室的自定义 R 模块
 
@@ -24,9 +24,9 @@ ms.locfileid: "55488299"
 
 
 ## <a name="what-is-a-custom-r-module"></a>什么是自定义 R 模块？
-**自定义模块**是一种用户定义的模块，可上传至工作区并在 Azure 机器学习实验中运行。 **自定义 R 模块**是一种可执行用户定义的 R 函数的自定义模块。 **R** 是一种用于统计计算和图形的编程语言，统计和科学工作者将其广泛用于运行算法。 目前，R 是自定义模块支持的唯一语言；但根据计划，未来发布的版本会支持其他语言。
+自定义模块是用户定义的模块，可上传至工作区并在 Azure 机器学习工作室实验中运行。 **自定义 R 模块**是一种可执行用户定义的 R 函数的自定义模块。 **R** 是一种用于统计计算和图形的编程语言，统计和科学工作者将其广泛用于运行算法。 目前，R 是自定义模块支持的唯一语言；但根据计划，未来发布的版本会支持其他语言。
 
-自定义模型在 Azure 机器学习中具有优先地位，因为你可以像使用任何其他模块一样使用自定义模块。 它们可与其他模块一起运行，可包含在已发布实验或可视化中。 可控制模块实施的算法、使用的输入和输出端口、建模参数以及各种其他运行时行为。 包含自定义模块的实验也可发布到 Azure AI 库，以实现轻松共享。
+自定义模型在 Azure 机器学习工作室中具有优先地位，因为你可以像使用任何其他模块一样使用自定义模块。 它们可与其他模块一起运行，可包含在已发布实验或可视化中。 可控制模块实施的算法、使用的输入和输出端口、建模参数以及各种其他运行时行为。 包含自定义模块的实验也可发布到 Azure AI 库，以实现轻松共享。
 
 ## <a name="files-in-a-custom-r-module"></a>自定义 R 模块中的文件
 自定义 R 模块由 .zip 文件定义，该文件至少包含两个文件：
@@ -55,7 +55,7 @@ ms.locfileid: "55488299"
     } 
 
 ### <a name="the-xml-definition-file"></a>XML 定义文件
-要将此 `CustomAddRows` 函数作为 Azure 机器学习模块公开，必须创建 XML 定义文件来指定 **Custom Add Rows** 模块的外观和行为。 
+要将此 `CustomAddRows` 函数作为 Azure 机器学习工作室模块公开，必须创建 XML 定义文件来指定 Custom Add Rows 模块的外观和行为。 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -105,7 +105,7 @@ ms.locfileid: "55488299"
 
 ## <a name="elements-in-the-xml-definition-file"></a>XML 定义文件中的元素
 ### <a name="module-elements"></a>Module 元素
-**Module** 元素用于在 XML 文件中定义自定义模块。 可使用多个 **Module**  元素在一个 XML 文件中定义多个模块。 工作区中的每个模块必须具有唯一的名称。 如果使用与现有自定义模块相同的名称注册自定义模块，新的模块会替代现有模块。 但自定义模块可使用与现有 Azure 机器学习模块相同的名称进行注册。 此时模块会出现在模块面板的“自定义”类别中。
+**Module** 元素用于在 XML 文件中定义自定义模块。 可使用多个 **Module**  元素在一个 XML 文件中定义多个模块。 工作区中的每个模块必须具有唯一的名称。 如果使用与现有自定义模块相同的名称注册自定义模块，新的模块会替代现有模块。 但自定义模块可使用与现有 Azure 机器学习工作室模块相同的名称进行注册。 此时模块会出现在模块面板的“自定义”类别中。
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
@@ -330,7 +330,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
   * **default** - default 属性的值必须与一个 **Item** 元素中的 ID 值相对应。
 
 ### <a name="auxiliary-files"></a>辅助文件
-放置在自定义模块 ZIP 文件中的所有文件都可以在执行期间使用。 所有存在的目录结构都将保留。 这意味着本地和 Azure 机器学习执行中的文件寻源方式相同。 
+放置在自定义模块 ZIP 文件中的所有文件都可以在执行期间使用。 所有存在的目录结构都将保留。 这意味着本地和 Azure 机器学习工作室执行中的文件寻源方式相同。 
 
 > [!NOTE]
 > 请注意所有文件均被提取到了“src”目录，因此所有路径必须有“src”前缀。

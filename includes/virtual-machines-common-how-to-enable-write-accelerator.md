@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 6/8/2018
+ms.date: 02/20/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 733d2896ef15d2e78073268e263a144ea25846ec
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 98231ab55ce66f06d591dc9c933e4790460625c8
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985377"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56458470"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
 
@@ -42,17 +42,17 @@ ms.locfileid: "55985377"
 
 - 必须将高级磁盘缓存设置为“无”或“只读”。 不支持其他所有缓存模式。
 - 启用了写入加速器的磁盘当前不支持快照。 在备份期间，Azure 备份服务会自动排除连接到 VM 且启用了写入加速器的磁盘。
-- 仅较小的 I/O (<=32 KiB) 大小会采用加速路径。 在以下工作负荷情形下，I/O 写入到磁盘的更改不会采用加速路径：数据大容量加载或者数据在持久保存到存储之前，不同 DBMS 的事务日志缓冲区已较大程度上填满。
+- 仅较小的 I/O (<=512 KiB) 大小会采用加速路径。 在以下工作负荷情形下，I/O 写入到磁盘的更改不会采用加速路径：数据大容量加载或者数据在持久保存到存储之前，不同 DBMS 的事务日志缓冲区已较大程度上填满。
 
 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有限制。 当前限制为：
 
 | VM SKU | 写入加速器磁盘数 | 每个 VM 的写入加速器磁盘 IOPS |
 | --- | --- | --- |
-| M128ms、128s | 16 | 8000 |
-| M64ms、M64ls、M64s | 8 | 4000 |
-| M32ms、M32ls、M32ts、M32s | 4 | 2000 |
-| M16ms、M16s | 2 | 1000 |
-| M8ms、M8s | 1 | 500 |
+| M128ms、128s | 16 | 20000 |
+| M64ms、M64ls、M64s | 8 | 10000 |
+| M32ms、M32ls、M32ts、M32s | 4 | 5000 |
+| M16ms、M16s | 2 | 2500 |
+| M8ms、M8s | 1 | 1250 |
 
 IOPS 限制是针对每个 VM 而不是每个磁盘。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
 

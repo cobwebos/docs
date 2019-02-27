@@ -1,6 +1,6 @@
 ---
-title: 使用 Log Analytics（预览版）分析 Azure Active Directory 活动日志 | Microsoft Docs
-description: 了解如何使用 Log Analytics（预览版）分析 Azure Active Directory 活动日志
+title: 使用 Azure Monitor 日志（预览版）分析 Azure Active Directory 活动日志 | Microsoft Docs
+description: 了解如何使用 Azure Monitor 日志（预览版）分析 Azure Active Directory 活动日志
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ea13d08af924427b9e7dc5def72c19d560525b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2e565f5b9bcd9e3e79423c742b2c95c00abd97b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188250"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454752"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>如何使用 Log Analytics（预览版）分析 Azure AD 活动日志
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>使用 Azure Monitor 日志（预览版）分析 Azure AD 活动日志
 
-[将 Azure AD 活动日志与 Log Analytics 集成](howto-integrate-activity-logs-with-log-analytics.md)之后，可以使用 Log Analytics 的强大功能来深入了解自己的环境。 此外，可以安装 [Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)，访问有关环境中审核和登录事件的预建报表。
+[将 Azure AD 活动日志与 Azure Monitor 日志集成](howto-integrate-activity-logs-with-log-analytics.md)之后，可以使用 Azure Monitor 日志的强大功能来深入了解自己的环境。 此外，可以安装 [Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)，访问有关环境中审核和登录事件的预建报表。
 
 本文介绍如何在 Log Analytics 工作区中分析 Azure AD 活动日志。 
 
@@ -78,10 +78,12 @@ AuditLogs
 
 还可以针对查询设置警报。 例如，若要配置为当最近一周使用的应用程序超过 10 个时发出警报：
 
-1. 在工作区中，选择“设置警报”以打开“创建规则”页面。 
+1. 在工作区中，选择“设置警报”以打开“创建规则”页面。
+
     ![设置警报](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
 
-2. 选择警报中创建的默认“警报条件”，将默认指标中的“阈值”更新为 10。 
+2. 选择警报中创建的默认“警报条件”，将默认指标中的“阈值”更新为 10。
+
     ![警报条件](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
 3. 为警报输入名称和描述，然后选择严重级别。 示例中可将其设置为“信息性”。
@@ -98,11 +100,11 @@ AuditLogs
 * **登录事件**：此视图显示与监视登录活动最相关的报表，例如，分别按应用程序、用户、设备统计的登录情况，以及随时间推移跟踪登录情况的汇总视图。
 * **用户执行“同意”相关情况**：此视图显示与用户同意相关的报表，如由用户执行的“同意”操作、按执行“同意”操作的用户统计的登录情况，以及按所有基于同意操作的应用程序统计的登录情况。 
 
-了解如何[安装和使用 Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)。 
+了解如何[安装和使用用于 Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Log Analytics 中的查询入门](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
+* [Azure Monitor 日志查询入门](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
 * [在 Azure 门户中创建和管理器警报组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
 * [安装和使用用于 Azure Active Directory 的 Log Analytics 视图](howto-install-use-log-analytics-views.md)

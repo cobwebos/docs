@@ -4,14 +4,14 @@ description: 了解如何更改域委托并使用 Azure DNS 名称服务器提�
 services: dns
 author: vhorne
 ms.service: dns
-ms.date: 1/22/2019
+ms.date: 2/19/2019
 ms.author: victorh
-ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 85f7318ac584e324f58d2ad470dc896e79e416d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461019"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417882"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>使用 Azure DNS 委托 DNS 区域
 
@@ -27,7 +27,7 @@ ms.locfileid: "54461019"
 
 **域注册机构** - 域注册机构是可以提供 Internet 域名的公司。 它们会验证所要使用的 Internet 域是否可用，以及是否允许购买。 注册域名后，注册者即是该域名的合法所有者。 如果已有一个 Internet 域，将使用当前的域注册机构将该域委托给 Azure DNS。
 
-若要详细了解谁拥有指定的域名或如何购买域，请参阅 [Internet domain management in Azure AD](https://msdn.microsoft.com/library/azure/hh969248.aspx)（Azure AD 中的 Internet 域管理）。
+有关认证的域注册机构的详细信息，请参阅 [ICANN 认证的注册机构](https://www.icann.org/registrar-reports/accredited-list.html)。
 
 ### <a name="resolution-and-delegation"></a>解析和委托
 

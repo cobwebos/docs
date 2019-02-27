@@ -1,25 +1,22 @@
 ---
-title: 创建托管多个网站的应用程序网关 - Azure 门户 | Microsoft 文档
+title: 创建托管多个网站的应用程序网关 - Azure 门户
 description: 了解如何使用 Azure 门户创建托管多个网站的应用程序网关。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/28/2017
+ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: fc418f58b299dcba08fda65000c5356c51f471e6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 09bb81b0382f18c9cb94e5e4d0932dc6597ae73c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993313"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454279"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
-创建[应用程序网关](overview.md)时，可以使用 Azure 门户[配置多个网站的托管](multiple-site-overview.md)。 本教程使用虚拟机定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本教程假定你拥有多个域，并使用示例 *www.contoso.com* 和 *www.fabrikam.com*。
+创建[应用程序网关](overview.md)时，可以使用 Azure 门户[配置多个网站的托管](multiple-site-overview.md)。 本文使用虚拟机定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本文假定你拥有多个域，使用示例 www.contoso.com 和 www.fabrikam.com。
 
 在本文中，学习如何：
 
@@ -35,9 +32,9 @@ ms.locfileid: "52993313"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
+通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -141,6 +138,8 @@ ms.locfileid: "52993313"
 3. 单击“确定”。
 4. 使用名称 *fabrikamListener* 并使用第二个域名创建第二个侦听器。 在此示例中，使用 *www.fabrikam.com*。
 
+![多站点侦听器](media/create-multiple-sites-portal/be-listeners.png)
+
 ## <a name="create-routing-rules"></a>创建路由规则
 
 规则按其列出的顺序进行处理，并且流量使用匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
@@ -180,12 +179,4 @@ ms.locfileid: "52993313"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何执行以下操作：
-
-> [!div class="checklist"]
-> * 创建应用程序网关
-> * 为后端服务器创建虚拟机
-> * 使用后端服务器创建后端池
-> * 创建后端侦听器
-> * 创建路由规则
-> * 在域中创建 CNAME 记录
+[使用应用程序网关配置应用服务](create-web-app.md)

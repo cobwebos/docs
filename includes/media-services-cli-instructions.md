@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 06651b06ae84934c16e9f1ac9f604abda8b65615
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c13ba8ab42d949e5752bfefd9b792b14a5a5ce59
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648637"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56408216"
 ---
-## <a name="open-cli-shell"></a>打开 CLI Shell
+## <a name="cli-shell"></a>CLI Shell
 
 建议使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) 来执行 CLI 命令。 **Cloud Shell** 是免费的交互式 shell，可以使用它运行本文中的操作步骤。 Cloud Shell 中预安装并配置了常用的 Azure 工具以供你的帐户使用。 它使用户能够灵活选择最适合自己工作方式的 shell 体验。 Linux 用户可以选择 Bash 体验，Windows 用户可以选择 PowerShell。
 

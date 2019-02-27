@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 73df93345cf73939f33afedfd655cef847d895dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bd9e9d64849c90d23146b814d2d48a8400d069f0
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863561"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447950"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -65,7 +65,7 @@ Websocket 协议 | :heavy_check_mark: | :heavy_check_mark: | 语音服务 WebSoc
 
 语音服务 [REST API](rest-apis.md) 与必应语音 API 兼容。 如果当前正在使用必应语音 REST API，则只需要更改 REST 终结点并切换到语音服务订阅密钥。
 
-语音服务 Websocket 协议也与必应语音所使用的协议兼容。 对于新的开发，建议你使用语音服务 SDK 而不要使用 WebSocket。 同样，将现有代码迁移到该 SDK 也是一个好主意。 但是，与 REST API 一样，通过 Websocket 使用必应语音的现有代码只需要更改终结点和更新密钥。
+语音服务 Websocket 协议也与必应语音所使用的协议兼容。 对于新的开发，建议使用语音 SDK 而不要使用 WebSocket。 同样，将现有代码迁移到该 SDK 也是一个好主意。 但是，与 REST API 一样，通过 Websocket 使用必应语音的现有代码只需要更改终结点和更新密钥。
 
 如果使用特定编程语言的必应语音客户端库，则迁移到[语音 SDK](speech-sdk.md) 需要更改应用程序，因为 API 不同。 语音 SDK 可以简化代码，同时使你可以访问新功能。
 

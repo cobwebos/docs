@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b7515a5c22b98fb14499e07057ff52311fc6e67
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: acdd2f5cb345ca5c5462394ae5c6135ad43b2143
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744810"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415692"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>使用 Azure 承载和运行 SAP 工作负荷方案
 
-选择 Microsoft Azure，能够在可缩放、符合要求且经企业认证的平台上可靠运行任务关键型 SAP 工作负荷和方案。  可利用 Azure 的可伸缩性、灵活性和低成本特性。 由于 Microsoft 和 SAP 之间扩大了合作伙伴关系，因此，可以在 Azure 的各个开发/测试和生产方案中运行 SAP 应用程序 - 并且获得完全支持。 从 SAP NetWeaver 到 SAP S4/HANA、SAP BI，Linux 到 Windows，SAP HANA 到 SQL，我们都能满足客户的需求。
+选择 Microsoft Azure，能够在可缩放、符合要求且经企业认证的平台上可靠运行任务关键型 SAP 工作负荷和方案。  可利用 Azure 的可伸缩性、灵活性和低成本特性。 由于 Microsoft 和 SAP 之间扩大了合作伙伴关系，因此，可以在 Azure 的各个开发/测试和生产方案中运行 SAP 应用程序 - 并且获得完全支持。 从 SAP NetWeaver 到 SAP S/4HANA、SAP BI，Linux 到 Windows，SAP HANA 到 SQL，我们都能满足客户的需求。
 
 除了在 Azure 上承载具有不同 DBMS 的 SAP NetWeaver 方案，可以在 Azure 上承载其他不同的 SAP 工作负荷方案，如 SAP BI。 
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 RBAC 和 Azure PowerShell 管理访问权限 | Microsoft Docs
-description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 来管理用户、组和应用程序的访问权限。 这包括如何列出访问权限、授予访问权限以及删除访问权限。
+title: 使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限 | Microsoft Docs
+description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 管理用户、组和应用程序对 Azure 资源的访问权限。 这包括如何列出访问权限、授予访问权限以及删除访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4e4a920c47dc7f75dc4b6714f101d6cbda715a3a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84fd4262d3b64b369d6307a6a875e8a459324aaa
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106165"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343768"
 ---
-# <a name="manage-access-using-rbac-and-azure-powershell"></a>使用 RBAC 和 Azure PowerShell 管理访问权限
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限
 
-可以在 Azure 中通过[基于角色的访问控制 (RBAC)](overview.md) 这种方式管理对资源的访问。 本文介绍如何使用 RBAC 和 Azure PowerShell 来管理用户、组和应用程序的访问权限。
+可以通过[基于角色的访问控制 (RBAC)](overview.md) 管理对 Azure 资源的访问权限。 本文介绍如何使用 RBAC 和 Azure PowerShell 来管理用户、组和应用程序的访问权限。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -326,6 +326,6 @@ PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionNam
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：使用 RBAC 和 Azure PowerShell 授予对组的访问权限](tutorial-role-assignments-group-powershell.md)
-- [教程：使用 Azure PowerShell 创建自定义角色](tutorial-custom-role-powershell.md)
+- [教程：使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限](tutorial-role-assignments-group-powershell.md)
+- [教程：使用 Azure PowerShell 为 Azure 资源创建自定义角色](tutorial-custom-role-powershell.md)
 - [使用 Azure PowerShell 管理资源](../azure-resource-manager/powershell-azure-resource-manager.md)

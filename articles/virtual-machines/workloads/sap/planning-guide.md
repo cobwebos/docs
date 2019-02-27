@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f91ccc93dcd2ac9b96379c4aa94d1f430faaf66
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ac55d14f864698506610301ae46bd4b6573d4f92
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118286"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330658"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -248,7 +248,7 @@ ms.locfileid: "56118286"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
-[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -870,7 +870,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 * 包含操作系统的 VHD 的最大大小最初只能是 127GB。 此限制已在 2015 年 3 月底消除。 现在，包含操作系统的 VHD 可以有高达 1TB 的大小，Azure 存储托管任何其他 VHD 也是一样。
 * 它需要采用固定的 VHD 格式。 Azure 尚不支持动态 VHD 或采用 VHDx 格式的 VHD。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
-* 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 有关数据磁盘的大小限制，请参阅[此文 (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) 和[此文 (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows)。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
+* 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 有关数据磁盘的大小限制，请参阅[这篇文章 (Linux)](../../linux/managed-disks-overview.md) 和[这篇文章 (Windows)](../../windows/managed-disks-overview.md)。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
 * 使用管理员特权添加另一个本地帐户，该帐户可供 Microsoft 支持人员使用，或者在部署 VM 之前分配为上下文以供服务和应用程序短暂访问，并可供其他适当的用户使用。
 * 添加其他本地帐户，因为特定的部署方案可能需要这些帐户。
 
@@ -897,7 +897,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 * 包含操作系统的 VHD 的最大大小最初只能是 127GB。 此限制已在 2015 年 3 月底消除。 现在，包含操作系统的 VHD 可以有高达 1TB 的大小，Azure 存储托管任何其他 VHD 也是一样。
 * 它需要采用固定的 VHD 格式。 Azure 尚不支持动态 VHD 或采用 VHDx 格式的 VHD。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
-* 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 有关数据磁盘的大小限制，请参阅[此文 (Linux)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux) 和[此文 (Windows)](https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-windows)。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
+* 已装载到 VM、并且应该在 Azure 中再次装载到 VM 的 VHD 也需要采用固定的 VHD 格式。 有关数据磁盘的大小限制，请参阅[此文 (Linux)](../../windows/managed-disks-overview.md) 和[此文 (Windows)](../../linux/managed-disks-overview.md)。 当你使用 PowerShell cmdlet 或 CLI 上传 VHD 时，动态 VHD 将转换为静态 VHD
 * 添加其他本地帐户，因为特定的部署方案可能需要这些帐户。
 * 如果映像包含 SAP NetWeaver 的安装，并且可能在部署 Azure 时重命名主机名的原始名称，则建议将最新版 SAP Software Provisioning Manager DVD 复制到模板。 这样，便可以轻松地使用 SAP 提供的重命名功能来修改已更改的主机名，和/或在启动新副本之后，更改已部署 VM 映像中 SAP 系统的 SID。
 

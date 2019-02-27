@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244292"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455052"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>使用 PowerShell 从一个试验创建多个工作室模型和 Web 服务终结点
 
@@ -25,9 +25,9 @@ ms.locfileid: "56244292"
 
 只要使用所有位置间全部数据集的合并版本，就可以训练模型。 但是，每个位置的环境都是唯一的。 因此，更好的方法是使用每个位置的数据集单独训练回归模型。 这样一来，每个训练的模型都可以考虑不同的存储大小、体积、地理位置、人口数量、自行车友好型交通环境等。
 
-这可能是最好的方法，但是不想在 Azure 机器学习中创建 1,000 个训练实验，每一个都代表一个唯一位置。 除了是项艰巨的任务，它看起来效率也低，因为每个实验都具有全部相同的组件（除了训练数据集）。
+这可能是最好的方法，但不想在 Azure 机器学习工作室中创建 1,000 个训练实验，每个实验代表一个独特的位置。 除了是项艰巨的任务，它看起来效率也低，因为每个实验都具有全部相同的组件（除了训练数据集）。
 
-幸运的是，可以通过使用 [Azure 机器学习重新训练 API](retrain-models-programmatically.md) 和 [Azure 机器学习 PowerShell](powershell-module.md) 使任务自动化来完成此操作。
+幸运的是，可以使用 [Azure 机器学习工作室重新训练 API](retrain-models-programmatically.md) 并使用 [Azure 机器学习工作室 PowerShell](powershell-module.md) 自动完成任务以实现此目的。
 
 > [!NOTE]
 > 若要使示例运行更快，请将位置数从 1,000 减少到 10。 但是相同原则和过程可应用于 1,000 个位置。 但是，如果确实需要根据 1,000 个数据集进行训练，则可能需要并行运行以下 PowerShell 脚本。 本文不讨论如何执行此操作，但可在 Internet 上找到 PowerShell 多线程的示例。  

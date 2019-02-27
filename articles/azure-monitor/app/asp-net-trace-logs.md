@@ -10,17 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/03/2017
+ms.date: 02/19/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5c809153b3b86a5460bd2c235d9f6226fb50a024
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f89eca6fb8893210f4c65adc42598ab0e0b531f4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118789"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454300"
 ---
-# <a name="explore-net-trace-logs-in-application-insights"></a>在 Application Insights 中查看日志浏览 .NET 跟踪日志
-如果针对 ASP.NET 应用程序中的诊断跟踪使用了 NLog、log4Net 或 System.Diagnostics.Trace，请将日志发送到 [Azure Application Insights][start]，然后可在其中浏览和搜索日志。 日志将与来自应用程序的其他遥测合并，以便可以标识与处理每个用户请求关联的跟踪，并将它们与其他事件和异常报告相关联。
+# <a name="explore-netnet-core-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 .NET/.NET Core 跟踪日志
+
+如果针对 ASP.NET/ASP.NET Core 应用程序中的诊断跟踪使用 ILogger、NLog、log4Net 或 System.Diagnostics.Trace，可将日志发送到 [Azure Application Insights][start]，然后便可在其中浏览和搜索日志。 日志将与来自应用程序的其他遥测合并，以便可以标识与处理每个用户请求关联的跟踪，并将它们与其他事件和异常报告相关联。
 
 > [!NOTE]
 > 是否需要日志捕获模块？ 它是非常适用于第三方记录器的适配器，但是如果未使用 NLog、log4Net 或 System.Diagnostics.Trace，只需考虑直接调用 [Application Insights TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)。
@@ -30,23 +31,18 @@ ms.locfileid: "54118789"
 ## <a name="install-logging-on-your-app"></a>在应用上安装记录
 在项目中安装所选的记录框架。 这应使项目出现在 app.config 或 web.config 中。
 
-如果使用的是 System.Diagnostics.Trace，需要将项目添加到 web.config：
-
 ```XML
-
     <configuration>
-     <system.diagnostics>
-       <trace autoflush="false" indentsize="4">
-         <listeners>
-           <add name="myListener"
-             type="System.Diagnostics.TextWriterTraceListener"
-             initializeData="TextWriterOutput.log" />
-           <remove name="Default" />
-         </listeners>
-       </trace>
-     </system.diagnostics>
+      <system.diagnostics>
+    <trace autoflush="true" indentsize="0">
+      <listeners>
+        <add name="myAppInsightsListener" type="Microsoft.ApplicationInsights.TraceListener.ApplicationInsightsTraceListener, Microsoft.ApplicationInsights.TraceListener" />
+      </listeners>
+    </trace>
+  </system.diagnostics>
    </configuration>
 ```
+
 ## <a name="configure-application-insights-to-collect-logs"></a>配置 Application Insights 收集日志
 如果尚未执行此操作，**[向项目添加 Application Insights](../../azure-monitor/app/asp-net.md)**。 会看到一个选项以包括日志收集器。
 
@@ -60,15 +56,28 @@ ms.locfileid: "54118789"
 1. 如果计划使用 log4Net 或 NLog，请在项目中安装它。
 2. 在解决方案资源管理器中，右键单击项目并选择“管理 NuGet 包”。
 3. 搜索“Application Insights”
-4. 选择相应的程序包 - 以下各项之一：
+4. 选择以下包之一：
 
-   * Microsoft.ApplicationInsights.TraceListener（用于捕获 System.Diagnostics.Trace 调用）
-   * Microsoft.ApplicationInsights.EventSourceListener（用于捕获 EventSource 事件）
-   * Microsoft.ApplicationInsights.EtwCollector（用于捕获 ETW 事件）
-   * Microsoft.ApplicationInsights.NLogTarget
-   * Microsoft.ApplicationInsights.Log4NetAppender
+   - 对于 ILogger：[Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - 对于 NLog：[Microsoft.ApplicationInsights.NLogTarget](http://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - 对于 Log4Net：[Microsoft.ApplicationInsights.Log4NetAppender](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - 对于 System.Diagnostics：[Microsoft.ApplicationInsights.TraceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - [Microsoft.ApplicationInsights.DiagnosticSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+   - [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+   - [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
-NuGet 包安装必要的程序集，并且还修改 web.config 或 app.config。
+NuGet 包安装必要的程序集，并在适用情况下修改 web.config 或 app.config。
+
+## <a name="ilogger"></a>ILogger
+
+有关将 Azure Application Insights ILogger 实现与控制台应用程序及 ASP.NET Core 配合使用的示例，请参阅这篇[文章](ilogger.md)。
 
 ## <a name="insert-diagnostic-log-calls"></a>插入诊断日志调用
 如果使用 System.Diagnostics.Trace，则典型的调用将是：
@@ -185,7 +194,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 ### <a name="emptykey"></a>遇到错误“检测密钥不能为空”
 看起来你在未安装 Application Insights 的情况下安装了日志记录适配器 Nuget 包。
 
-在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。 这应当解决此问题。
+在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 你将得到一个对话框，该对话框邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。 这应当解决此问题。
 
 ### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>我可以看到诊断搜索中的跟踪，但看不到其他事件。
 有时，所有事件和请求都通过管道可能需要一些时间。

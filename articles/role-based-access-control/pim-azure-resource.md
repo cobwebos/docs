@@ -1,6 +1,6 @@
 ---
-title: 使用 Privileged Identity Management (PIM) 管理对 Azure 资源的访问
-description: 了解如何使用 Privileged Identity Management (PIM) 和基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问。
+title: 使用 Azure AD Privileged Identity Management (PIM) 管理对 Azure 资源的访问权限
+description: 了解如何使用 Azure Active Directory Privileged Identity Management (PIM) 和基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 141cba29f5027ce092775d97c1abe9ecf11badf5
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 757068034868744b408c9402b521a0e4c73950f7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436039"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338194"
 ---
-# <a name="manage-access-to-azure-resources-with-privileged-identity-management"></a>使用 Privileged Identity Management 管理对 Azure 资源的访问
+# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>使用 Azure AD Privileged Identity Management 管理对 Azure 资源的访问权限
 
 为了保护特权帐户免受恶意网络攻击，可以使用 Azure Active Directory Privileged Identity Management (PIM) 来降低权限的暴露时间，并通过报表和警报增加对使用的可见性。 PIM 通过限制用户仅采用“实时”(JIT) 权限，或通过在缩短的持续时间内分配权限（之后权限会自动撤销）来实现这一目的。 
 
@@ -33,4 +33,4 @@ ms.locfileid: "37436039"
 - 将对 Azure 资源的临时访问权限分配给快速任务或正在调用的计划
 - 在为新用户或组分配资源访问权限以及激活有资格的分配时获取警报
 
-有关详细信息，请参阅 [Azure PIM 中基于角色的访问控制概述](../active-directory/privileged-identity-management/azure-pim-resource-rbac.md)。
+有关详细信息，请参阅[什么是 Azure AD Privileged Identity Management？](../active-directory/privileged-identity-management/pim-configure.md)。

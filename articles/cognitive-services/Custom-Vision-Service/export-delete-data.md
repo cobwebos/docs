@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: pafarley
-ms.openlocfilehash: 7f27170a5e97d7860bcb059f16273b38757de747
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 01273ca241769c5e3bb7b7222355d32b29fd51b9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867029"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308496"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>在自定义视觉中导出或删除用户数据
 
-内容审查器收集用户数据来使服务运转，但客户拥有完全控制权限使用自定义影像服务[训练 API](https://go.microsoft.com/fwlink/?linkid=865446) 来查看、导出和删除其数据。
+自定义视觉收集用户数据来使服务运转，但客户拥有使用自定义视觉服务[训练 API](https://go.microsoft.com/fwlink/?linkid=865446) 来查看、导出和删除其数据的完全控制权限。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 02/20/2019
 ms.author: terrylan
-ms.openlocfilehash: af73225e08488d490e50456d235805af17ef0066
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 48a7e52d4284e5c2db1d77d24d91fd4701aad8d7
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112206"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455750"
 ---
 # <a name="azure-network-architecture"></a>Azure 网络体系结构
 Azure 网络体系结构遵循行业标准核心/分配/访问模型的修改版本，并使用不同的硬件层。 这些层包括：
@@ -28,7 +28,7 @@ Azure 网络体系结构遵循行业标准核心/分配/访问模型的修改版
 - 分配（接入路由器和 L2 聚合）。 分配层将 L3 路由与 L2 交换隔离开来。
 - 访问（L2 主机交换机）
 
-网络体系结构包含两个级别的第 2 层交换机。 一个层聚合来自另一个层的流量。 第二层循环整合冗余。 此体系结构提供更灵活的 VLAN 占用空间，并可以改善端口缩放度。 该体系结构保持 L2 和 L3 的独特性，允许在网络中的每个独特层上使用硬件，并尽量减少一个层中的故障影响到其他层。 使用中继可以实现资源共享，例如，与 L3 基础结构建立连接。
+网络体系结构包含两个级别的第 2 层交换机。 一个层聚合来自另一个层的流量。 第二层循环整合冗余。 此体系结构提供更灵活的 VLAN 占用空间，并可以改善端口缩放情况。 该体系结构保持 L2 和 L3 的独特性，允许在网络中的每个独特层上使用硬件，并尽量减少一个层中的故障影响到其他层。 使用中继可以实现资源共享，例如，与 L3 基础结构建立连接。
 
 ## <a name="network-configuration"></a>网络配置
 数据中心内 Azure 群集的网络体系结构包括以下设备：
@@ -64,7 +64,7 @@ Quantum 10 设计通过 Clos/mesh 设计中的多个设备执行第 3 层交换�
 为 L2Agg 到 L2Host 交换指定的编号是在 L2Agg 端使用的端口通道编号。 由于 L2Host 端的编号范围有更高的限制，因此，标准是在 L2Host 端使用编号 1 和 2。 这两个编号分别表示连接到“a”端和“b”端的端口通道。
 
 ### <a name="vlans"></a>VLAN
-网络体系结构使用 VLAN 将服务器统一分组成单个广播域。 VLAN 编号符合 802.1q 标准，该标准支持 VLAN 编号 1 - 4094。
+网络体系结构使用 VLAN 将服务器统一分组成单个广播域。 VLAN 编号符合 802.1q 标准，该标准支持 VLAN 编号 1-4094。
 
 ### <a name="customer-vlans"></a>客户 VLAN
 使用各种 VLAN 实施选项可以通过 Azure 门户进行部署，以满足解决方案的隔离和体系结构需求。 通过虚拟机部署这些解决方案。 有关客户参考体系结构的示例，请参阅 [Azure 参考体系结构](https://docs.microsoft.com/azure/architecture/reference-architectures/)。
@@ -72,23 +72,15 @@ Quantum 10 设计通过 Clos/mesh 设计中的多个设备执行第 3 层交换�
 ### <a name="edge-architecture"></a>边缘体系结构
 Azure 数据中心构建在高度冗余、适当预配的网络基础结构之上。 Microsoft 在 Azure 数据中心以“需求加一”(N+1) 冗余体系结构或更佳的方式实施网络。 数据中心内部和数据中心之间的完全故障转移功能有助于确保网络与服务的可用性。 从外部看，数据中心由专用的高带宽网络线路提供服务。 这些线路以冗余方式将资产连接到全球 1200 多个 Internet 服务提供商的多个对等连接点。 这在整个网络中提供超过 2,000 Gbps 的潜在边缘容量。
 
-位于 Azure 网络边缘和访问层的筛选路由器在数据包级别提供十分可靠的安全性。 这有助于防止未经授权的人员尝试连接到 Azure。 这些路由器有助于确保数据包的实际内容包含预期格式的数据，并符合预期的客户端/服务器通信方案。 Azure 实施分层体系结构，其中包括以下网络隔离和访问控制组件：
+位于 Azure 网络边缘和访问层的筛选路由器在数据包级别提供十分可靠的安全性，可帮助防止有人在未经授权的情况下尝试连接到 Azure。 这些路由器有助于确保数据包的实际内容包含预期格式的数据，并符合预期的客户端/服务器通信方案。 Azure 实施分层体系结构，其中包括以下网络隔离和访问控制组件：
 
 - **边缘路由器。** 这些路由器将应用程序环境与 Internet 隔离开来。 边缘路由器旨在提供反欺骗保护，并使用 ACL 来限制访问。
 - **分配（接入）路由器。** 这些路由器只允许 Microsoft 批准的 IP 地址，提供反欺骗功能，并使用 ACL 建立连接。
 
-### <a name="a10-ddos-mitigation-architecture"></a>A10 DDOS 缓解体系结构
-拒绝服务攻击持续对联机服务的可靠性造成实际威胁。 随着攻击变得更有针对性且更复杂，以及 Microsoft 服务的地理分布越来越广泛，识别这些攻击并尽量降低其影响就成了一项高优先级任务。 下面从网络体系结构的角度详细说明了如何实施 A10 DDOS 缓解系统。
+### <a name="ddos-mitigation"></a>DDoS 缓解措施
+分布式拒绝服务 (DDoS) 攻击持续对联机服务的可靠性造成实际威胁。 随着攻击变得更有针对性且更复杂，以及 Microsoft 服务的地理分布越来越广泛，识别这些攻击并尽量降低其影响就成了一项高优先级任务。
 
-Azure 在数据中心路由器 (DCR) 上使用 A10 网络设备来提供自动检测和缓解。 A10 解决方案使用 Azure 网络监视功能对流数据包采样，并确定是否存在攻击。 如果检测到攻击，A10 设备将会清理以缓解攻击。 只有在完成此过程后，才允许清理的流量直接从 DCR 进入 Azure 数据中心。 Microsoft 使用 A10 解决方案来保护 Azure 网络基础结构。
-
-A10 解决方案中的 DDoS 防护措施包括：
-
-- UDP IPv4 和 IPv6 泛洪防护
-- ICMP IPv4 和 IPv6 泛洪防护
-- TCP IPv4 和 IPv6 泛洪防护
-- 针对 IPv4 和 IPv6 的 TCP SYN 攻击防护
-- 碎片攻击
+[Azure DDoS 保护标准](../virtual-network/ddos-protection-overview.md)提供对 DDoS 攻击的防御。 有关详细信息，请参阅 [Azure DDoS 防护：最佳做法和参考体系结构](azure-ddos-best-practices.md)。
 
 > [!NOTE]
 > Microsoft 默认为所有 Azure 客户提供 DDoS 防护。

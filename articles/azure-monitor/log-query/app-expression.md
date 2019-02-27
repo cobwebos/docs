@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: db92db315875348ff05ec3a34b1a9fa946479c27
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0abe2c869a05d359f692db105eb647f9e6a69df8
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998529"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266418"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
@@ -80,4 +80,4 @@ union
 
 - 参阅 [workspace 表达式](workspace-expression.md)，以引用 Log Analytics 工作区。
 - 了解 [Azure Monitor 数据是如何存储的](../../azure-monitor/log-query/log-query-overview.md)。
-- 访问有关[数据资源管理器查询语言](/azure/kusto/query/)的完整文档。
+- 访问有关 [Kusto 查询语言](/azure/kusto/query/)的完整文档。

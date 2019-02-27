@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4a05b99cf0e40e63c01aee27bd745dd165dc23b8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998071"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452689"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>如何使用 Azure 机器学习工作室 Web 服务
 
-将 Azure 机器学习预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
+将 Azure 机器学习工作室预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
 
 可以在以下位置查找有关如何使用机器学习工作室创建和部署机器学习 Web 服务的详细信息：
 
@@ -32,14 +32,14 @@ ms.locfileid: "55998071"
 ## <a name="overview"></a>概述
 外部应用程序可使用 Azure 机器学习 Web 服务实时与机器学习服务工作流评分模型通信。 机器学习 Web 服务调用将预测结果返回到外部应用程序。 若要执行机器学习 Web 服务调用，可以传递部署 Web 服务时创建的 API 密钥。 机器学习 Web 服务基于 REST（流行的 Web 编程项目体系结构）。
 
-Azure 机器学习有两种类型的服务：
+Azure 机器学习工作室有两种类型的服务：
 
 * 请求响应服务 (RRS) - 低延迟、高度可缩放的服务，针对从机器学习工作室创建和部署的无状态模型提供接口。
 * 批处理执行服务 (BES) - 为一批数据记录进行评分的异步服务。
 
 有关机器学习 Web 服务的详细信息，请参阅 [Deploy a Machine Learning Web service](publish-a-machine-learning-web-service.md)（部署机器学习 Web 服务）。
 
-## <a name="get-an-azure-machine-learning-authorization-key"></a>获取 Azure 机器学习授权密钥
+## <a name="get-an-azure-machine-learning-studio-authorization-key"></a>获取 Azure 机器学习工作室授权密钥
 部署实验时，会为 Web 服务生成 API 密钥。 可从多个位置检索密钥。
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>从 Microsoft Azure 机器学习 Web 服务门户检索
@@ -103,7 +103,7 @@ Azure 机器学习有两种类型的服务：
 **运行代码示例**
 
 1. 发布“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验（机器学习示例集合的一部分）。
-2. 使用 Web 服务密钥分配 API 密钥。 请参阅上方的**获取 Azure 机器学习授权密钥**。
+2. 使用 Web 服务密钥分配 API 密钥。 请参阅前文的“获取 Azure 机器学习工作室授权密钥”部分。
 3. 使用请求 URI 分配服务 URI。
 
 以下是完整请求的示例。
@@ -199,7 +199,7 @@ namespace CallRequestResponseService
 **运行代码示例**
 
 1. 部署“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验（机器学习示例集合的一部分）。
-2. 使用 Web 服务密钥分配 API 密钥。 请参阅本文开始处附近的**获取 Azure 机器学习授权密钥**部分。
+2. 使用 Web 服务密钥分配 API 密钥。 请参阅本文开篇附近位置的“获取 Azure 机器学习工作室授权密钥”部分。
 3. 使用请求 URI 分配服务 URI。
 
 以下是完整请求的示例。

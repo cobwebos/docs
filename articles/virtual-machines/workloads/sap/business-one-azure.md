@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb3c2a9cfc1bccf4656be83c6babbe9c7ec139fb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: f0e96b87e46872bebe7563e08f0eb7a33b11015f
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745344"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329842"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP Business One
 本文档提供在 Azure 虚拟机上部署 SAP Business One 的指南。 本文档不能替代 SAP Business One 的安装文档。 本文档涵盖运行 Business One 应用程序所在的 Azure 基础结构的基本规划和部署指南。
@@ -119,7 +119,7 @@ Business One 是一个具有两层的应用程序：
 
 原则上应该：
 
-- 使用 [Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)，而不是[Azure 标准存储](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
+- 使用高级 SSD 而非标准 HDD。 若要详细了解可用的磁盘类型，请参阅我们的文章[选择磁盘类型](../../windows/disks-types.md)
 - 使用 Azure 托管磁盘而不是非托管磁盘
 - 确保通过磁盘配置来配置足够的 IOPS 和 I/O 吞吐量
 - 组合使用 /hana/data 和 /hana/log 卷，以便拥有具有成本效益的存储配置
@@ -138,7 +138,6 @@ SQL Server 的 DBMS 端的粗略大小估算值为：
 | 最多 150 个 | 32 | 128 GB | D32s_v3、E32s_v3 |
 
 通过上面列出的大小，你应该对从何处开始有了一些概念。 你可能需要更少或更多的资源，取决于在哪种情况下可在 Azure 上轻松进行调整。 只需重启 VM，便可在 VM 类型之间进行更改。
-
 
 #### <a name="sap-hana-as-dbms"></a>SAP HANA 作为 DBMS
 若将 SAP HANA 用作 DBMS，则应该在以下各节遵循文档 [Azure 上的 SAP HANA 操作指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)中的注意事项。

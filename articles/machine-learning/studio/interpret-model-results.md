@@ -10,19 +10,19 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0940cb9e42588990e2109d02fda462f343443876
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996999"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456072"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中解释模型结果
 本主题说明如何在 Azure 机器学习工作室中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
 
 
 
-Azure 机器学习中有四种主要的机器学习模型：
+Azure 机器学习工作室中有四种主要的机器学习模型：
 
 * 分类
 * 群集功能
@@ -35,11 +35,11 @@ Azure 机器学习中有四种主要的机器学习模型：
 * 用于聚类分析的[分配到群集][assign-to-clusters]模块
 * 用于推荐系统的[ Matchbox 推荐器评分][score-matchbox-recommender]
 
-文本档说明如何解释其中每个模块的预测结果。 有关这些模块的概述，请参阅[如何选择参数以优化 Azure 机器学习中的算法](algorithm-parameters-optimize.md)。
+文本档说明如何解释其中每个模块的预测结果。 有关这些模块的概述，请参阅[如何选择参数以优化 Azure 机器学习工作室中的算法](algorithm-parameters-optimize.md)。
 
-本主题介绍预测解释，而不是模型评估。 有关如何评估模型的详细信息，请参阅[如何在 Azure 机器学习中评估模型性能](evaluate-model-performance.md)。
+本主题介绍预测解释，而不是模型评估。 有关如何评估模型的详细信息，请参阅[如何在 Azure 机器学习工作室中评估模型性能](evaluate-model-performance.md)。
 
-如果不熟悉 Azure 机器学习，并需要创建简单实验的帮助以开始，请参阅 Azure 机器学习工作室中的[在 Azure 机器学习工作室中创建一个简单的实验](create-experiment.md)。
+如果不熟悉 Azure 机器学习工作室，并需要创建简单实验的帮助以开始，请参阅 Azure 机器学习工作室中的[在 Azure 机器学习工作室中创建一个简单的实验](create-experiment.md)。
 
 ## <a name="classification"></a>分类
 分类问题有两个子类别：
@@ -47,12 +47,12 @@ Azure 机器学习中有四种主要的机器学习模型：
 * 仅两个类的问题（双类或二元分类）
 * 多于两个类的问题（多类分类）
 
-Azure 机器学习具有不同的模块用于处理其中每一种分类，但用于解释其预测结果的方法都相似。
+Azure 机器学习工作室具有不同的模块用于处理其中每一种分类，但用于解释其预测结果的方法都相似。
 
 ### <a name="two-class-classification"></a>双类分类
 **示例实验**
 
-双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 Azure 机器学习中提供的鸢尾花数据集是流行的[鸢尾花数据集](http://en.wikipedia.org/wiki/Iris_flower_data_set)的子集，仅包含两种花卉种类（类 0 和类 1）的实例。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
+双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 Azure 机器学习工作室中提供的鸢尾花数据集是流行的[鸢尾花数据集](http://en.wikipedia.org/wiki/Iris_flower_data_set)的子集，仅包含两种花卉种类（类 0 和类 1）的实例。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
 
 ![鸢尾花实验的屏幕截图](./media/interpret-model-results/1.png)
 
@@ -226,7 +226,7 @@ Azure 机器学习具有不同的模块用于处理其中每一种分类，但�
 * 客户特征数据
 * 餐馆特色数据
 
-使用 Azure 机器学习中的 [Matchbox 推荐器定型][train-matchbox-recommender]模块，可以执行多个操作：
+使用 Azure 机器学习工作室中的 [Matchbox 推荐器定型][train-matchbox-recommender]模块，可以执行多个操作：
 
 * 预测给定用户和项目的评级
 * 向给定用户推荐项目
@@ -237,7 +237,7 @@ Azure 机器学习具有不同的模块用于处理其中每一种分类，但�
 
 ![Matchbox 推荐器](./media/interpret-model-results/19_1.png)
 
-推荐器系统的典型 Azure 机器学习实验类似于图 20。 有关如何使用这些推荐器系统模块的信息，请参阅 [Matchbox 推荐器定型][train-matchbox-recommender]和 [Matchbox 推荐器评分][score-matchbox-recommender]。
+推荐器系统的典型 Azure 机器学习工作室实验类似于图 20。 有关如何使用这些推荐器系统模块的信息，请参阅 [Matchbox 推荐器定型][train-matchbox-recommender]和 [Matchbox 推荐器评分][score-matchbox-recommender]。
 
 ![推荐器系统实验](./media/interpret-model-results/20.png)
 

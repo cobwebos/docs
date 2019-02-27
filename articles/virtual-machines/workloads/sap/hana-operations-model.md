@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 776057a177904d086974258b5221ab474f4b1bcb
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 36a648e2d46cce96a8ff663f45ccf45326898a84
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44030157"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417000"
 ---
 # <a name="operations-model-and-responsibilities"></a>操作模型和责任
 
@@ -33,9 +33,9 @@ Azure 上的 SAP HANA（大型实例）提供的服务与 Azure IaaS 服务相�
 
 下表提供了有关每个层和职责的更多详细信息：
 
-**网络**：运行 SAP HANA 的大型实例模具的所有内部网络。 你的责任包括对存储的访问、实例间的连接（用于扩展和其他功能）、与布局的连接以及与 Azure（其中的 SAP 应用层承载在 Azure 虚拟机中）的连接。 此外，还包括在 Azure 数据中心之间提供 WAN 连接，以便为灾难恢复目的而进行复制。 所有网络都按租户进行分区，并且应用了服务质量。
+**网络**：运行 SAP HANA 的大型实例标记的所有内部网络。 你的责任包括对存储的访问、实例间的连接（用于扩展和其他功能）、与布局的连接以及与 Azure（其中的 SAP 应用层承载在 Azure 虚拟机中）的连接。 此外，还包括在 Azure 数据中心之间提供 WAN 连接，以便为灾难恢复目的而进行复制。 所有网络都按租户进行分区，并且应用了服务质量。
 
-**存储**：用于 SAP HANA 服务器需要的所有卷的虚拟化已分区存储，以及用于快照的虚拟化已分区存储。 
+**存储**：用于 SAP HANA 服务器所需的全部卷的虚拟化已分区存储，以及用于快照的虚拟化已分区存储。 
 
 **服务器**：专用物理服务器，用于运行分配给租户的 SAP HANA 数据库。 I 类 SKU 的服务器已进行硬件抽象。 使用这些类型的服务器时，服务器配置是以配置文件方式收集和维护的，可以从一个物理硬件移至另一个物理硬件。 这种通过操作（手动）移动配置文件的方式在某种程度上可以与 Azure 服务修复相比。 II 类 SKU 的服务器不提供此类功能。
 
@@ -58,7 +58,7 @@ HANA 大型实例的底层基础结构提供了用于备份和还原 OS 卷的�
 
 **中间件**：主要是 SAP HANA 实例。 管理、操作和监视由你负责。 可以通过提供的功能使用存储快照来实现备份、还原和灾难恢复目的。 这些功能由基础结构提供。 但是，责任还包括利用这些功能设计高可用性或灾难恢复功能，利用它们，以及监视是否已成功执行存储快照。
 
-**数据**：由 SAP HANA 管理的数据，以及位于卷或文件共享上的其他数据（例如备份文件）。 你的责任包括监视磁盘可用空间、管理卷上的内容。 你还负责监视磁盘卷备份和存储快照的成功执行。 确保数据成功复制到灾难恢复站点是 Microsoft 的责任。
+**Data**：由 SAP HANA 管理的数据，以及位于卷或文件共享上的其他数据（例如备份文件）。 你的责任包括监视磁盘可用空间、管理卷上的内容。 你还负责监视磁盘卷备份和存储快照的成功执行。 确保数据成功复制到灾难恢复站点是 Microsoft 的责任。
 
 **应用程序：** SAP 应用程序实例；对于非 SAP 应用程序，则指那些应用程序的应用层。 你的责任包括这些应用程序的部署、管理、操作和监视。 你还负责与以下各项的容量规划相关的那些应用程序：CPU 资源消耗、内存消耗、Azure 存储消耗、虚拟网络内部的网络带宽消耗。 你还负责对虚拟网络到 Azure 上的 SAP HANA（大型实例）之间的网络带宽消耗进行容量规划。
 
@@ -66,7 +66,7 @@ HANA 大型实例的底层基础结构提供了用于备份和还原 OS 卷的�
 
 **存档**：你可能希望使用自己的方法在存储帐户中对数据副本进行存档。 存档涉及到管理、符合性、成本和操作。 你负责在 Azure 上生成存档副本和备份并以合规的方式存储它们。
 
-请参阅[Azure 上的 SAP HANA（大型实例）的 SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/v1_0/)。
+请参阅[Azure 上的 SAP HANA（大型实例）的 SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/)。
 
 **后续步骤**
 - 请参阅 [Azure 上的 SAP HANA（大型实例）体系结构](hana-architecture.md)

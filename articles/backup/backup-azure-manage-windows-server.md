@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 552ba28a9635cdd484ccd598726dcea0b3bcbc60
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261496"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268866"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
@@ -40,7 +40,7 @@ ms.locfileid: "54261496"
 
     ![创建恢复服务保管库步骤 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. 在保管库列表中，单击某个保管库打开其“概述”仪表板。 
+4. 在保管库列表中，单击某个保管库打开其“概述”仪表板。
 
     ![恢复服务保管库仪表板](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -75,7 +75,7 @@ ms.locfileid: "54261496"
 
 ![备份警报](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
-“备份警报”报告列出保管库的警报。 
+“备份警报”报告列出保管库的警报。
 
 ![备份警报](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
@@ -124,7 +124,7 @@ ms.locfileid: "54261496"
 
 ### <a name="change-the-filter-in-alerts-report"></a>更改警报报告中的筛选器
 
-使用“筛选器”菜单可以更改警报的“严重性”、“状态”、“开始时间”和“结束时间”。 
+使用“筛选器”菜单可以更改警报的“严重性”、“状态”、“开始时间”和“结束时间”。
 
 > [!NOTE]
 > 编辑“备份警报”筛选器不会更改保管库“概述”仪表板中的“严重”或“警告”警报。
@@ -184,7 +184,7 @@ ms.locfileid: "54261496"
 
 “备份作业”菜单显示有关“项类型”、“操作”、“状态”、“开始时间”和“持续时间”的信息。  
 
-若要打开“备份作业”菜单，请在保管库的主菜单中单击“备份作业”。 
+若要打开“备份作业”菜单，请在保管库的主菜单中单击“备份作业”。
 
 ![设置中的备份项](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
@@ -263,17 +263,14 @@ ms.locfileid: "54261496"
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-**问 1.多长时间后，门户中会反映 Azure 备份代理作业状态？**
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>多长时间后，门户中会反映 Azure 备份代理作业状态？
+最长可能需要 15 分钟，Azure 门户才会反映 Azure 备份代理作业状态。
 
-A1. 最长可能需要 15 分钟，Azure 门户才会反映 Azure 备份代理作业状态。
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>备份作业失败后，需要多长时间才会引发警报？
+Azure 备份失败后，会在 20 分钟内引发警报。
 
-**问 2.备份作业失败后，需要多长时间才会引发警报？**
-
-答 2. Azure 备份失败后，会在 20 分钟内引发警报。
-
-**问 3.是否存在配置了通知却不发送电子邮件的情况？**
-
-A3. 是的。 在以下情况下，不会发送通知：
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否存在配置了通知却不发送电子邮件的情况？
+是的。 在以下情况下，不会发送通知：
 
 * 已将通知配置为每小时发送，并且在一小时内引发并解决了警报
 * 取消了作业

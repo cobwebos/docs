@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: b368ef3b5503d90b0eb928113e8154aabca9c04a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7a090a068984a71c917cf5c33761dd78ac1ad2c8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157133"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453250"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关
 
@@ -130,7 +130,7 @@ ms.locfileid: "54157133"
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-在本教程中，应用程序网关使用存储帐户来存储用于检测和防范目的的数据。 也可以使用 Log Analytics 或事件中心来记录数据。
+在本教程中，应用程序网关使用存储帐户来存储用于检测和防范目的的数据。 也可以使用 Azure Monitor 日志或事件中心来记录数据。
 
 1. 单击 Azure 门户左上角的“新建”。
 2. 选择“存储”，然后选择“存储帐户 - blob、文件、表、队列”。

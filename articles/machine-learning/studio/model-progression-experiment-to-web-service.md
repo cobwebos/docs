@@ -1,7 +1,7 @@
 ---
 title: 机器学习模型如何变为 Web 服务
 titleSuffix: Azure Machine Learning Studio
-description: Azure 机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
+description: Azure 机器学习工作室模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 31005077c9c149f9aff055432d9577a63bac8e1c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 776f33e3e550ad9a711a90732c6c4526e647aa89
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992264"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456786"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>机器学习工作室模型如何从实验逐步变为运营 Web 服务
 Azure 机器学习工作室提供交互式画布，允许开发、运行、测试和迭代表示预测分析模型的***实验***。 有大量各种不同的模块可用于：
@@ -46,7 +46,7 @@ Azure 机器学习工作室提供交互式画布，允许开发、运行、测�
 *图 1 - 典型预测分析模型的各个阶段*
 
 ### <a name="the-training-experiment"></a>训练实验
-***训练实验***是在机器学习工作室中开发 Web 服务的初始阶段。 训练实验的目的是提供一个开发、测试、循环访问和最终定型机器学习模型的环境。 在寻找最佳解决方案时，甚至可以同时训练多个模型，但完成实验后，将选择一个定型模型，并去除实验中的其余部分。 有关开发预测分析实验的示例，请参阅 [在 Azure 机器学习中为信用风险评估开发预测分析解决方案](tutorial-part1-credit-risk.md)。
+***训练实验***是在机器学习工作室中开发 Web 服务的初始阶段。 训练实验的目的是提供一个开发、测试、循环访问和最终定型机器学习模型的环境。 在寻找最佳解决方案时，甚至可以同时训练多个模型，但完成实验后，将选择一个定型模型，并去除实验中的其余部分。 有关开发预测分析实验的示例，请参阅[在 Azure 机器学习工作室中为信用风险评估开发预测分析解决方案](tutorial-part1-credit-risk.md)。
 
 ### <a name="the-predictive-experiment"></a>预测性实验
 在训练实验中具有定型模型后，在机器学习工作室中单击“**设置 Web 服务**”，然后选择“**预测性 Web 服务**”，以启动将训练实验转换为***预测性实验***的过程。 预测性实验旨在使用定型模型对新数据进行评分，目的是为了最终变得如 Azure Web 服务一样具备可操作性。

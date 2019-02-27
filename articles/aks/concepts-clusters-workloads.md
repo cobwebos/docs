@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f964397b476d5a97ecdde0ae22bd6662a435e1a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998096"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456514"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -52,7 +52,7 @@ Kubernetes 群集分为两个组件：
 
 AKS 为单租户群集主机提供专用 API 服务器、计划程序等。定义节点的数量和大小，Azure 平台可以对群集主机和节点之间的安全通信进行配置。 通过 Kubernetes API（例如 `kubectl` 或 Kubernetes 仪表板）与群集主机进行交互。
 
-此托管群集主机意味着无需配置高可用性 etcd 存储等组件，但这也意味着无法直接访问群集主机。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，后者先升级群集主机，然后升级节点。 要解决可能出现的问题，可以通过 Azure Log Analytics 查看群集主日志。
+此托管群集主机意味着无需配置高可用性 etcd 存储等组件，但这也意味着无法直接访问群集主机。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，后者先升级群集主机，然后升级节点。 要解决可能出现的问题，可以通过 Azure Monitor 日志查看群集主日志。
 
 如果需要以特定方式配置群集主机或直接对其进行访问，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。
 
@@ -76,7 +76,7 @@ AKS 为单租户群集主机提供专用 API 服务器、计划程序等。定�
 
 你不需要在每个节点上管理核心 Kubernetes 组件（例如 *kubelet*、*kube-proxy* 和 *kube-dns*），但它们确实消耗某些可用的计算资源。 为保持节点性能和功能，每个节点上会预留以下计算资源：
 
-- **CPU** - 60 毫秒
+- **CPU** - 60 ms
 - **内存** - 20%，最多 4 GiB
 
 这些预留意味着你的应用程序的可用 CPU 和内存量可能显示为少于节点本身包含的数量。 如果由于你运行的应用程序数太多而存在资源约束，则这些预留可以确保 CPU 和内存保持可供核心 Kubernetes 组件使用。 资源预留无法更改。

@@ -8,19 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0793f572e043248af409e65cca4fd854f1371900
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6b25da9b2569b0185d41684c45a22a3eb3377511
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880864"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313069"
 ---
 # <a name="detect-color-schemes-in-images"></a>检测图像中的配色方案
 
-计算机视觉可从图像中提取颜色。 然后在三个不同的上下文中分析颜色：主导前景色、主导背景色和图像的整体主导色。 它们可分组为 12 种主导的主题色。 这些主题色为黑色、蓝色、棕色、灰色、绿色、橙色、粉红色、紫色、红色、青色、白色和黄色。 计算机视觉可分析从图像中提取的颜色，以通过主导色和饱和度的组合返回向观众呈现最鲜艳图像颜色的主题色。 根据图像中的颜色，可能会使用十六进制颜色代码返回简单的黑白或主题色。 计算机视觉还会返回一个布尔值，该值指示图像为黑色还是白色。
+计算机视觉分析图像中的颜色以便提供三种不同属性：主导前景色、主导背景色和图像的整体主导色的集。 返回色属于集：黑色、蓝色、棕色、灰色、绿色、橙色、粉红色、紫色、红色、青色、白色和黄色。 
+
+计算机视觉还提取了代表图像中最鲜艳颜色的主题色，其基于主色和饱和度的组合。 主题色作为十六进制 HTML 颜色代码返回。 
+
+计算机视觉还返回布尔值，该值指示图像为黑色或白色。
 
 ## <a name="color-scheme-detection-examples"></a>配色方案检测示例
 
@@ -48,7 +52,7 @@ ms.locfileid: "55880864"
 
 ### <a name="dominant-color-examples"></a>主导色示例
 
-下表描述计算机视觉所返回的每个示例图像的主导前景色、主导背景色和图像颜色。
+下表显示了针对每个示例图像返回的前景、背景和图像颜色。
 
 | 映像 | 主色 |
 |-------|-----------------|
@@ -57,7 +61,7 @@ ms.locfileid: "55880864"
 
 ### <a name="accent-color-examples"></a>主题色示例
 
- 下表描述计算机视觉所返回的十六进制 HTML 值形式的每个示例图像的主题色。
+ 下表显示返回的十六进制 HTML 值形式的每个示例图像的主题色。
 
 | 映像 | 主题色 |
 |-------|--------------|
@@ -67,7 +71,7 @@ ms.locfileid: "55880864"
 
 ### <a name="black--white-detection-examples"></a>黑白检测示例
 
-下表指示计算机视觉所返回的每个示例图像是为黑色还是白色。
+下表显示示例图像中的计算机视觉的黑色和白色计算。
 
 | 映像 | 黑色还是白色？ |
 |-------|----------------|

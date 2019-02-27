@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991321"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310926"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
 
@@ -100,20 +100,6 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
    > [!NOTE]
    > 在同一个维度上同时使用筛选和拆分，可以隐藏与你的方案无关的部分，使图表更易读取。
 
-### <a name="new-alert-rule"></a>新建警报规则
-
-还可以使用你设置的条件将指标可视化为基于指标的警报规则的底层逻辑的基础。 
-
-如果单击“新建警报规则”
-
-![以红色突出显示的“新建警报规则”按钮](./media/metrics-charts/015.png)
-
-则会转到警报规则创建窗格，其中预先填充了来自你的图表的底层指标维度，以便更轻松地生成自定义警报规则。
-
-![创建警报规则](./media/metrics-charts/016.png)
-
-若要详细了解如何设置指标警报，请查看此[文章](alerts-metric.md)。
-
 ## <a name="lock-boundaries-of-chart-y-axis"></a>锁定图表 y 轴的边界
 
 当图表显示较大值的较小波动时，锁定 y 轴的范围变得很重要。 
@@ -138,6 +124,20 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 配置图表后，单击图表右上角的“图表操作”菜单，然后单击“固定到仪表板”。
 
 ![图表上的](./media/metrics-charts/00013.png)
+
+## <a name="create-alert-rules"></a>创建警报规则
+
+可以使用设置的条件将指标可视化为基于指标的警报规则的基础。 新的警报规则将包括图表的目标资源、指标、拆分和筛选器维度。 稍后将能够在警报规则创建窗格上修改这些设置。
+
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>单击“新建警报规则”，创建新的警报规则
+
+![以红色突出显示的“新建警报规则”按钮](./media/metrics-charts/015.png)
+
+则会转到警报规则创建窗格，其中预先填充了来自你的图表的底层指标维度，以便更轻松地生成自定义警报规则。
+
+![创建警报规则](./media/metrics-charts/016.png)
+
+若要详细了解如何设置指标警报，请查看此[文章](alerts-metric.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 

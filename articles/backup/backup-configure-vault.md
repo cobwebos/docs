@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 73074898c29a240e31b181025f8cc92f25de5061
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 006d47d397bab0869ae8a75d6c17d239e71608c3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382742"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310569"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>通过 Resource Manager 部署模型将 Windows Server 或客户端备份到 Azure
 本文介绍如何通过 Resource Manager 部署模型使用 Azure 备份将 Windows Server（或 Windows 客户端）文件和文件夹备份到 Azure。
@@ -72,7 +72,7 @@ ms.locfileid: "54382742"
 
     ![在恢复服务保管库列表中选择新保管库](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
 
-    选择保管库时，“恢复服务保管库”边栏选项卡会缩窄，“概述”边栏选项卡（*顶部有保管库的名称*）和保管库详细信息边栏选项卡会打开。
+    选择保管库时，“恢复服务保管库”边栏选项卡会缩窄，“概述”边栏选项卡（顶部有保管库的名称）和保管库详细信息边栏选项卡会打开。
 
     ![查看新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
 

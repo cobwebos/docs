@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701914"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310051"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
 
@@ -32,7 +32,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 > [!NOTE]
 > -  Azure 门户支持运行 Update 5.0 或更高版本的设备。 如果设备不是最新的，请立即安装 Update 5。 有关详细信息，请转到[安装 Update 5](storsimple-8000-install-update-5.md)。 
 > - 如果使用的是 StorSimple 云设备 (8010/8020)，则无法更新云设备。 请使用最新版本的软件新建运行 Update 5.0 的云设备，然后故障转移到新建的云设备。 
-> - 运行 Update 4.0 或更早版本的所有设备将会体验[简化的管理功能](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0)。 
+> - 运行 Update 4.0 或更早版本的所有设备将会体验简化的管理功能。 
 
 ## <a name="create-a-service"></a>创建服务
 若要创建 StorSimple 设备管理器服务，需要具有：
@@ -176,7 +176,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>在物理设备上更新服务数据加密密钥
 1. 使用 Windows PowerShell for StorSimple 连接到控制台。 选择选项 1 以使用完全访问权限登录。
 2. 在命令提示符处，键入：`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. 提供在[步骤 2：使用 Windows PowerShell for StorSimple 启动服务数据加密密钥更改](#to-initiate-the-service-data-encryption-key-change)中所获取的服务数据加密密钥。
+3. 提供获取的服务数据加密密钥，该密钥的获取位置为[步骤 2：使用 Windows PowerShell for StorSimple 启动服务数据加密密钥更改](#to-initiate-the-service-data-encryption-key-change)。
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>更新所有 8010/8020 云设备上的服务数据加密密钥
 1. 下载和安装 [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell 脚本。 

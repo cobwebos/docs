@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/17/2019
 ms.author: juliako
-ms.openlocfilehash: b399e18aa3cdd83d0c6907999f6446fd566259a1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4127b6b2b2601b640a6fda4ccb60960d1762ee81
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998580"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414738"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -29,10 +29,10 @@ ms.locfileid: "55998580"
 视频上传以后，视频索引器会选择性地对视频进行编码（在本文中介绍）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以创建[连接到 Azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)的视频索引器帐户。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
 
 ## <a name="uploading-considerations"></a>上传注意事项
-    
+
 - 根据 URL（首选方式）上传视频时，必须使用 TLS 1.2（或更高版本）保护终结点
-- 对于 URL 选项，上传大小限制为 10GB
-- 对于字节数组选项，上传大小限制为 2GB 
+- 对于 URL 选项，上传大小限制为 25GB
+- 对于字节数组选项，上传大小限制为 2GB
 - 字节组选项会在 30 分钟后超时
 - 需要对 `videoURL` 参数中提供的 URL 进行编码
 

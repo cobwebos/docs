@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: bf807a4d24b72c948707ade28f06c4eb2a54c0a0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 321dfaa1a58cc806394f4807c38cbdc599cfd7a0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657019"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311557"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -27,6 +27,9 @@ ms.locfileid: "55657019"
 > * 使用托管标识从正在运行的容器访问 Key Vault
 
 调整示例，以启用并使用 Azure 容器实例中的标识来访问其他 Azure 服务。 这些示例是交互式的。 但实际上，容器映像将运行代码来访问 Azure 服务。
+
+> [!NOTE]
+> 目前不能在部署到虚拟网络的容器组中使用托管标识。
 
 ## <a name="why-use-a-managed-identity"></a>为什么使用托管标识？
 

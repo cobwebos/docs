@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 5ab0a9a92297c46a4090583d41f22f2035bd310c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 19a0e7f3317a5c4a87b2622de170b0fc2cc137be
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816180"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326817"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>排查存储资源删除错误
 
@@ -28,7 +28,7 @@ ms.locfileid: "55816180"
 
 >**无法删除 # 个 blob (共 # 个):<br>BlobName.vhd:Blob 中当前包含租约，但请求中未指定任何租约 ID。**
 
-Azure VM 中使用的 VHD 是在 Azure 的标准或高级存储帐户中作为页 Blob 存储的 .vhd 文件。 有关 Azure 磁盘的详细信息，请参阅[有关 Microsoft Azure Linux VM 的非托管和托管磁盘存储](../linux/about-disks-and-vhds.md)。 
+Azure VM 中使用的 VHD 是在 Azure 的标准或高级存储帐户中作为页 Blob 存储的 .vhd 文件。 有关 Azure 磁盘的详细信息，请参阅[托管磁盘简介](../linux/managed-disks-overview.md)。
 
 Azure 阻止删除附加到 VM 的磁盘，以防发生损坏。 它还会阻止删除包含附加到 VM 的页 blob 的容器和存储帐户。 
 

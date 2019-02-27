@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cb868da60d56728e5d0c450ab362d6f381b90ea
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6ef8498ae1aa9be0322f508b3723778311e2cdd5
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756557"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327776"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
 
@@ -249,7 +249,7 @@ ms.locfileid: "55756557"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -357,7 +357,7 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支持的操作�
 ### <a name="storage-configuration"></a>存储配置
 仅支持一个使用 NTFS 格式化磁盘的 Oracle 实例。 所有数据库文件都必须存储在托管磁盘（推荐）或 VHD 的 NTFS 文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)或 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 
 
-我们强烈建议使用 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 另外，我们强烈建议使用 [Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)进行 Oracle Database 部署。
+我们强烈建议使用 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 另外，我们强烈建议使用[高级 SSD](../../windows/disks-types.md) 进行 Oracle Database 部署。
 
 Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅：
 
@@ -444,11 +444,11 @@ SAP 应用程序使用 Oracle Database 的特定方案也受支持。 详细信�
 
 ### <a name="storage-configuration"></a>存储配置
 
-Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)或 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 
+Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)或 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。
 
-对于 Oracle Linux UEK 内核，支持 [Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms)至少需要 UEK 版本 4。
+对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching) 至少需要 UEK 版本 4。
 
-我们强烈建议使用 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 另外，我们强烈建议使用 [Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)进行 Oracle Database 部署。
+强烈建议使用 [Azure 托管磁盘](../../windows/managed-disks-overview.md)。 另外，还强烈建议使用 [Azure 高级 SSD](../../windows/disks-types.md) 进行 Oracle Database 部署。
 
 Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅以下主题： 
 

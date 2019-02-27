@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e56cc5a893c5a88a5b64466d6feceb20ccd8cdc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167841"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445536"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>教程：为 Zendesk 配置自动用户预配
 
@@ -118,7 +118,8 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
     *   在“域”字段中，填充 Zendesk 租户的子域。
     示例：对于租户 URL 为 https://my-tenant.zendesk.com 的帐户，子域为 **my-tenant**。
 
-6. Zendesk 帐户的“机密令牌”位于“管理”>“API”>“设置”中。 
+6. Zendesk 帐户的“机密令牌”位于“管理”>“API”>“设置”中。
+   确保“令牌访问”设置为“已启用”。
 
     ![Zendesk 预配](./media/zendesk-provisioning-tutorial/ZenDesk4.png) ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 

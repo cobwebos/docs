@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 00d29ac1938a1abb63fca50afe3d66253a1e29bf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bd6531bc950e006f15924bb9a0d6428f9e69d544
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460720"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330828"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 9 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 9 月发行的版本中所引入的新功能和所做的更改。
@@ -24,6 +24,9 @@ Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 9 月发行
 2018 年 4 月，[Microsoft 公布了](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL 数据仓库 Gen2，可提供 5 倍的性能、5 倍的计算规模、4 倍的并发，以及无限的存储空间。 如 Gigaom 撰写的[云基准中的数据仓库](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)中所述，SQL 数据仓库 Gen2 的性能比 Amazon Redshif 高 42%。
 
 Gen2 现在采用较低的入口点 DWU500c，使用户能够运行较小的数据仓库或包含所有最新服务改进的开发/测试环境。 新的入口点保留了所有 Gen2 功能，包括[自适应缓存](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/)、[极速数据缓冲](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/)和对[实时数据仓库](https://azure.microsoft.com/blog/enabling-real-time-data-warehousing-with-azure-sql-data-warehouse/)的支持。
+
+## <a name="sql-vulnerability-assessment"></a>SQL 漏洞评估
+[SQL 漏洞评估 (VA)](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/25/sql-vulnerability-assessment-now-supports-azure-sql-data-warehouse-and-azure-sql-database-managed-instance/) 是一项易于使用的服务，可持续监视数据仓库。 它可帮助始终确保高级别的安全性以及确保组织策略得到满足。 它为每个找到的问题提供全面的安全报表以及可操作的修正步骤。 此报表让你能够轻松地主动管理数据库安全态势，并将重点放在最高影响的操作上（即使你不是安全专家）。 对于更改频繁发生且难以跟踪的动态环境，VA 在检测使数据仓库容易遭受攻击的设置方面非常有用。
 
 ## <a name="improved-availability-with-query-restartability"></a>改进了查询可重启性的可用性
 查询执行期间，可能发生任意数量的问题，导致查询失败。 网络中断、硬件故障或其他连接断开都可能导致中断。 SQL 数据仓库现支持针对步骤或语句级别 SELECT 查询的查询可重启性。 

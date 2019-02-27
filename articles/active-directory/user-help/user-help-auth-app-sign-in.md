@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120e0f3c7e6af22210ba04565b86b8098851b26d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3974d1de2bd90049541dcc249f18346c9e48fd3d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186890"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456021"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用登录到帐户
 Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登录到帐户。 双重验证可帮助你更安全地访问帐户，尤其是在查看敏感信息时。 由于密码可能会遗忘、失窃或者泄露，双重验证作为一种附加的安全保障步骤，可帮助保护帐户的安全，因为其他人更难破解它。
@@ -62,7 +62,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
     键入用户名后，会出现一个“批准登录”屏幕，其中显示一个两位数的数字，并要求你通过 Microsoft Authenticator 应用登录。 如果不想要使用此登录方法，可以选择“改用密码”，并使用密码登录。
 
-    ![电脑中的“批准登录”框](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
+    ![计算机中的“批准登录”框](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
 
 2. 打开设备上的通知或 Microsoft Authenticator 应用，然后点击与电脑的“批准登录”屏幕上看到的数字匹配的数字。
 

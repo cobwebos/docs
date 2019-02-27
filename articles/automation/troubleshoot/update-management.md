@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 01f72b8d41c1a973c7d187f519a43ce62929a23e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 0b92d36287646038d9195f7ba39352d8ced9a3b6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359351"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270260"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -43,7 +43,11 @@ The components for the 'Update Management' solution have been enabled, and now t
 #### <a name="resolution"></a>解决方法
 
 1. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理正常工作。
-2. 如果使用克隆映像，请首先对映像进行系统准备，然后在事后安装 MMA 代理。
+2. 如果使用的是克隆的映像：
+   1. 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下。
+   2. 运行 `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`
+   3. 运行 `Restart-Service HealthService` 重新启动 `HealthService`。 这将重新创建密钥，并生成新的 UUID。
+   4. 如果此操作无效，请首先对映像进行系统准备，然后在事后安装 MMA 代理。
 
 ### <a name="multi-tenant"></a>场景：在为另一个 Azure 租户中的计算机创建更新部署时收到链接订阅错误。
 

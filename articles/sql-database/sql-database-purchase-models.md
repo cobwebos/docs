@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 80e8f0a627ea33881e21d45c8be0e8d1600e4e48
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0e7f941f9845ed7531f3adf03fbca9fbeb2787d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007725"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456684"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL 数据库购买模型
 
@@ -50,9 +50,11 @@ Azure SQL 数据库部署模型中提供了不同的购买模型：
 
 ## <a name="storage-costs"></a>存储成本
 
-不同存储类型的计费方式各不相同。 对于数据存储，你要根据所选的最大数据库或池大小支付预配存储的费用。 除非减小或增大该最大值，否则费用不会变化。 备份存储与实例的自动备份相关联，并动态分配。 延长备份保留期会使实例使用的备份存储空间增大。 如果备份存储空间未超过 100% 的总预配服务器存储空间，则无需额外付费。 超出此部分的其他备份存储空间按 GB/月收费。 例如，如果数据库存储空间大小为 100 GB，则可以获得 100 GB 的备份，无需额外付费。 但如果备份为 110 GB，则需额外支付 10 GB 存储空间的费用。
+不同存储类型的计费方式各不相同。 对于数据存储，你要根据所选的最大数据库或池大小支付预配存储的费用。 除非减小或增大该最大值，否则费用不会变化。 备份存储与实例的自动备份相关联，并动态分配。 延长备份保留期会使实例使用的备份存储空间增大。 
 
-对于单一数据库的备份存储，将会根据分配给数据库备份的存储减去数据库大小按比例计费。 对于弹性池的备份存储，将会根据分配给池中所有数据库的数据库备份的存储，减去弹性池最大数据大小按比例计费。 增加数据库大小或弹性池或者增加事务率都需要购买更多存储，因此会增加备份存储的费用。  增加最大数据大小时，会从计费备份存储大小中减去此新数量。
+默认情况下，数据库的 7 天自动备份会复制到 RA-GRS 标准 blob 存储。 存储由每周完整备份、每日差异备份和 5 分钟复制一次的事务日志备份使用。 事务日志的大小取决于数据库的变化率。 提供与 100% 数据库大小相等的最小存储量，不收取额外费用。 超出此部分的其他备份存储用量将以 GB 为单位每月进行收费。
+
+有关存储价格的详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/sql-database/single/)页。 
 
 ## <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 

@@ -10,21 +10,21 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/06/2017
-ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d4e267915338e8043138be0ca1a4922ac84d8eab
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822368"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456259"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>适用于 Azure 机器学习工作室的 R 编程语言快速入门教程
 
 <!-- Stephen F Elston, Ph.D. -->
 
 ## <a name="introduction"></a>介绍
-此快速入门教程有助于使用 R 编程语言快速开始扩展 Azure 机器学习的功能。 按照此 R 编程教程在 Azure 机器学习中创建、测试和执行 R 代码。 完成本教程时，会在 Azure 机器学习中使用 R 语言创建完整的预测解决方案。  
+此快速入门教程有助于快速开始使用 R 编程语言扩展 Azure 机器学习工作室。 按照此 R 编程教程在工作室中创建、测试和执行 R 代码。 在完成本教程的过程中，你会在工作室中使用 R 语言创建完整的预测解决方案。  
 
-Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操作模块。 功能强大的 R 语言已被描述为分析通用语言。 幸运的是，使用 R 可以扩展 Azure 机器学习中的分析和数据操作。依靠 R 的灵活性和深入分析，这种组合具有可扩展性和易于部署 Azure 机器学习的特征。
+Microsoft Azure 机器学习工作室包含许多功能强大的机器学习和数据操作模块。 功能强大的 R 语言已被描述为分析通用语言。 幸运的是，可使用 R 扩展工作室中的分析和数据操作。依靠 R 的灵活性和深入分析，这种组合为工作室提供了可伸缩性和易于部署的特征。
 
 
 
@@ -38,23 +38,23 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 可以在[此处下载](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv)本文使用的数据和 R 脚本。 此数据最初是从威斯康星州大学提供的信息中合成的，网址为 https://dairymarkets.com。
 
 ### <a name="organization"></a>组织
-我们将通过几个步骤来了解如何在 Azure 机器学习环境中创建、测试并执行分析和数据操作 R 代码。  
+我们将通过几个步骤来了解如何在 Azure 机器学习工作室环境中创建、测试并执行分析和数据操作 R 代码。  
 
 * 首先我们探讨在 Azure 机器学习工作室环境中使用 R 语言的基础知识。
-* 然后我们讨论 Azure 机器学习环境中数据、R 代码和图形的 I/O 的各个方面。
+* 然后，我们会讨论 Azure 机器学习工作室环境中数据 I/O、R 代码和图形的各个方面。
 * 接着我们通过创建用于数据清理和转换的代码来构建预测解决方案的第一部分。
 * 准备好数据之后，在数据集的几个变量之间执行相关性分析。
 * 最后，我们创建牛奶生产的季节性时序预测模型。
 
 ## <a id="mlstudio"></a>在机器学习工作室中与 R 语言交互
-本部分介绍在机器学习工作室环境中与 R 编程语言交互的一些基础知识。 R 语言提供了功能强大的工具用于在 Azure 机器学习环境中创建自定义的分析和数据操作模块。
+本部分介绍在机器学习工作室环境中与 R 编程语言交互的一些基础知识。 R 语言提供了功能强大的工具，可用于在 Azure 机器学习工作室环境中创建自定义的分析和数据操作模块。
 
 我将使用 RStudio 开发、测试和调试小规模的 R 代码。 之后将此代码剪切和粘贴到机器学习工作室中的[执行 R 脚本][execute-r-script]模块以供运行。  
 
 ### <a name="the-execute-r-script-module"></a>执行 R 脚本模块
 在机器学习工作室中，R 脚本在[执行 R 脚本][execute-r-script]模块中运行。 图 1 显示了机器学习工作室中的[执行 R 脚本][execute-r-script]模块的一个示例。
 
- ![R 编程语言：机器学习工作室中选择的执行 R 脚本模块][1]
+ ![R 编程语言：机器学习工作室中选择的执行 R 脚本模块](./media/r-quickstart/fig1.png)
 
 *图 1.显示选择的执行 R 脚本模块的机器学习工作室环境*
 
@@ -66,20 +66,20 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
 当然，我们会在本文的其余部分更详细地讨论[执行 R 脚本][execute-r-script]。
 
-使用复杂的 R 函数时，建议在 RStudio 中编辑、测试和调试。 与任何软件开发一样，逐步扩展代码，并在小型简单的测试用例上测试代码。 然后将函数剪切并粘贴到[执行 R 脚本][execute-r-script]模块的 R 脚本窗口中。 此方法允许利用 RStudio 集成开发环境 (IDE) 和 Azure 机器学习的强大功能。  
+使用复杂的 R 函数时，建议在 RStudio 中编辑、测试和调试。 与任何软件开发一样，逐步扩展代码，并在小型简单的测试用例上测试代码。 然后将函数剪切并粘贴到[执行 R 脚本][execute-r-script]模块的 R 脚本窗口中。 此方法允许利用 RStudio 集成开发环境 (IDE) 和 Azure 机器学习工作室的强大功能。  
 
 #### <a name="execute-r-code"></a>执行 R 代码
 单击“运行”按钮运行此试验时，将执行[执行 R 脚本][execute-r-script]模块中的任何 R 代码。 执行完成后，在[执行 R 脚本][execute-r-script]图标上会显示一个对勾。
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>适用于 Azure 机器学习的防御性 R 编码
-如果使用 Azure 机器学习为 Web 服务开发 R 代码，一定会对代码如何处理意外的数据输入和异常进行规划。 为了保持代码的清晰度，在显示的大部分代码示例中未包含太多检查或异常处理方面的代码。 但是，后面我会提供几个使用 R 的异常处理功能的函数示例。  
+如果使用 Azure 机器学习工作室为 Web 服务开发 R 代码，必须对代码如何处理意外的数据输入和异常进行规划。 为了保持代码的清晰度，在显示的大部分代码示例中未包含太多检查或异常处理方面的代码。 但是，后面我会提供几个使用 R 的异常处理功能的函数示例。  
 
 如果需要 R 异常处理的更全面的内容，我建议阅读[附录 B — 深入阅读](#appendixb)中列出的由 Wickham 创作的书籍中的相关部分。
 
 #### <a name="debug-and-test-r-in-machine-learning-studio"></a>在机器学习工作室中调试和测试 R
 重申一下，我建议在 RStudio 中测试和调试小规模的 R 代码。 但是，在某些情况下需要跟踪[执行 R 脚本][execute-r-script]本身的 R 代码问题。 此外，在机器学习工作室中检查结果是一个不错的做法。
 
-在 Azure 机器学习平台上执行 R 代码的输出结果主要在 output.log 文件中。 其他一些信息可在 error.log 中看到。  
+在 Azure 机器学习工作室平台上执行 R 代码的输出结果主要位于 output.log 文件中。 其他一些信息可在 error.log 中看到。  
 
 如果运行 R 代码时机器学习工作室发生错误，那么首先应该做的是查看 error.log 文件。 此文件包含有用的错误消息，可帮助你了解和纠正错误。 若要查看 error.log 文件，请单击包含错误的[执行 R 脚本][execute-r-script]的“属性”窗格上的“查看错误日志”。
 
@@ -90,7 +90,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
 此代码无法执行，导致出现错误。 单击“属性”窗格上的“查看错误日志”，弹出图 2 中显示的内容。
 
-  ![弹出错误消息][2]
+  ![弹出错误消息](./media/r-quickstart/fig2.png)
 
 *图 2.弹出错误消息*
 
@@ -109,12 +109,12 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 要检查 R 中的任何对象的值，可以将这些值打印到 output.log 文件。 检查对象的值的规则本质上与交互式 R 会话中的相同。 例如，如果在行上键入一个变量名，则该对象的值将打印到 output.log 文件。  
 
 #### <a name="packages-in-machine-learning-studio"></a>机器学习工作室中的包
-Azure 机器学习附带了超过 350 个预安装的 R 语言包。 可以在[执行 R 脚本][execute-r-script]模块中使用下面的代码来检索预安装的包列表。
+工作室附带了超过 350 个预安装的 R 语言包。 可以在[执行 R 脚本][execute-r-script]模块中使用下面的代码来检索预安装的包列表。
 
     data.set <- data.frame(installed.packages())
     maml.mapOutputPort("data.set")
 
-如果此时不了解此代码的最后一行，请继续阅读。 本文剩余部分将全面讨论在 Azure 机器学习环境中使用 R。
+如果此时不了解此代码的最后一行，请继续阅读。 本文剩余部分将全面讨论如何在工作室环境中使用 R。
 
 ### <a name="introduction-to-rstudio"></a>RStudio 简介
 RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使用 RStudio 编辑、测试和调试此快速入门指南中使用的一些 R 代码。 测试并准备好 R 代码后，可以简单地将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室的[执行 R 脚本][execute-r-script]模块中。  
@@ -157,14 +157,14 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 此时试验如图 3 所示。
 
-![具有数据集和执行 R 脚本模块的 CA 乳品分析试验][3]
+![具有数据集和执行 R 脚本模块的 CA 乳品分析试验](./media/r-quickstart/fig3.png)
 
 *图 3.具有数据集和执行 R 脚本模块的 CA 乳品分析试验*
 
 #### <a name="check-on-the-data"></a>查看数据
 让我们看看已加载到试验中的数据。 在该试验中，单击 **cadairydata.csv 数据集**的输出，并选择“可视化”。 可看到类似图 4 的内容。  
 
-![cadairydata.csv 数据集摘要][4]
+![cadairydata.csv 数据集摘要](./media/r-quickstart/fig4.png)
 
 *图 4.cadairydata.csv 数据集摘要*
 
@@ -200,7 +200,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
     load("src/yourData.rdata") # Reads a zipped R data file
 
 > [!NOTE]
-> Azure 机器学习认为 zip 中的文件位于 src / 目录中，因此文件名需要有目录名称前缀。 例如，如果 zip 包含位于该 zip 根目录下的文件 `yourfile.R` 和 `yourData.rdata`，那么在使用 `source` 和 `load` 时会这两个文件处理为 `src/yourfile.R` 和 `src/yourData.rdata`。
+> Azure 机器学习工作室将 zip 中的文件视为位于 src/ 目录中，因此文件名需要有此目录名称前缀。 例如，如果 zip 包含位于该 zip 根目录下的文件 `yourfile.R` 和 `yourData.rdata`，那么在使用 `source` 和 `load` 时会这两个文件处理为 `src/yourfile.R` 和 `src/yourData.rdata`。
 > 
 > 
 
@@ -227,7 +227,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 这些步骤完成后，运行试验时，[执行 R 脚本][execute-r-script]模块将执行 zip 文件中的 R 脚本。 此时试验如图 5 所示。
 
-![使用压缩的 R 脚本的试验][6]
+![使用压缩的 R 脚本的试验](./media/r-quickstart/fig6.png)
 
 *图 5.使用压缩的 R 脚本的试验*
 
@@ -289,7 +289,7 @@ Dataset2 的输入行为与 Dataset1 相同。 使用此输入可以将另一个
 
 运行试验之后，单击结果 Dataset1 输出端口，并单击“可视化”。 可看到类似图 6 的内容。
 
-![加利福尼亚州乳品数据输出的可视化][7]
+![加利福尼亚州乳品数据输出的可视化](./media/r-quickstart/fig7.png)
 
 *图 6.加利福尼亚州乳品数据输出的可视化*
 
@@ -300,13 +300,13 @@ Dataset2 的输入行为与 Dataset1 相同。 使用此输入可以将另一个
 
 要查看 R 设备输出，请单击该端口，并单击“可视化”。 在图 7 中可看到 R 脚本的标准输出和标准错误。
 
-![来自 R 设备端口的标准输出和标准错误][8]
+![来自 R 设备端口的标准输出和标准错误](./media/r-quickstart/fig8.png)
 
 *图 7.来自 R 设备端口的标准输出和标准错误*
 
 向下滚动页面可看到图 8 中显示的 R 脚本的图形输出。  
 
-![来自 R 设备端口的图形输出][9]
+![来自 R 设备端口的图形输出](./media/r-quickstart/fig9.png)
 
 *图 8.来自 R 设备端口的图形输出*  
 
@@ -689,7 +689,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 运行此代码，并看看结果。 R 设备端口生成的绘图如图 16 所示。
 
-![所选变量的散点图矩阵][17]
+![所选变量的散点图矩阵](./media/r-quickstart/fig17.png)
 
 *图 16.所选变量的散点图矩阵*
 
@@ -753,7 +753,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 最后一行代码创建了成对的散点图。 运行此 R 代码后，散点图的结果如图 17 所示。
 
-![去趋势和标准化时序的成对散点图][18]
+![去趋势和标准化时序的成对散点图](./media/r-quickstart/fig18.png)
 
 *图 17.去趋势和标准化时序的成对散点图*
 
@@ -856,7 +856,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 
     ## WARNING!
-    ## The following line works only in Azure Machine Learning
+    ## The following line works only in Azure Machine Learning Studio
     ## When running in RStudio, this code will result in an error
     #maml.mapOutputPort('outframe')
 
@@ -870,7 +870,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 运行此代码并**可视化**结果数据集端口的输出，可生成如图 19 所示的输出。 和预期的一样，行名在第一列中。
 
-![相关性分析的结果输出][20]
+![相关性分析的结果输出](./media/r-quickstart/fig20.png)
 
 *图 19.相关性分析的结果输出*
 
@@ -884,7 +884,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 ### <a name="creating-the-dataframe-for-analysis"></a>创建用于分析的数据框
 首先将新的[执行 R 脚本][execute-r-script]模块添加到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新的模块的 **Dataset1** 输入。 结果如图 20 所示。
 
-![已添加新执行 R 脚本模块的实验][21]
+![已添加新执行 R 脚本模块的实验](./media/r-quickstart/fig21.png)
 
 *图 20.已添加新执行 R 脚本模块的实验。*
 
@@ -954,7 +954,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 ### <a name="a-trend-model"></a>趋势模型
 创建时序对象和查看数据后，让我们开始构造加利福尼亚州牛奶生产数据的趋势模型。 我们可以使用时序回归来执行此操作。 但是，从图中可以清晰地看出，我们需要不止一个斜率和截距来精确地为训练数据中观察到的趋势建模。
 
-给定小规模的数据，我可以在 RStudio 中构建趋势模型，然后将生成的模型剪切并粘贴到 Azure 机器学习。 RStudio 为此类型的交互式分析提供了交互式环境。
+考虑到数据规模较小，我可以在 RStudio 中构建趋势模型，然后将生成的模型剪切并粘贴到 Azure 机器学习工作室。 RStudio 为此类型的交互式分析提供了交互式环境。
 
 在第一次尝试中，我使用 3 次多项式回归。 存在过拟合这些类型的模型的实际危险。 因此，最好避免使用高阶项。 `I()` 函数禁止解释内容（即“按原样”解释内容），并且允许在回归等式中编写按字面意思解释的函数。
 
@@ -1014,7 +1014,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 这个结果看起来好多了。 所有项都重要。 但是，2e-16 值是默认值，不必太关心。  
 
-在完好性测试中，创建加利福尼亚州乳品生产数据的带趋势曲线的时序图。 我在 Azure 机器学习的[执行 R 脚本][execute-r-script]模型（而不是 RStudio）中添加了以下代码，用于创建模型并绘图。 结果如图 23 所示。
+在完好性测试中，创建加利福尼亚州乳品生产数据的带趋势曲线的时序图。 我在 Azure 机器学习工作室的[执行 R 脚本][execute-r-script]模型（而不是 RStudio）中添加了以下代码，用于创建模型及绘图。 结果如图 23 所示。
 
     milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
 
@@ -1071,14 +1071,14 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 我们看到该模型不再具有截距项，并且有 12 个重要的月因子。 这正是我们想要看到的。
 
-让我们创建加利福尼亚州乳品生产数据的另一个时序图，以便了解季节性模型的运行情况。 我在 Azure 机器学习的[执行 R 脚本][execute-r-script]中添加了以下代码，用于创建模型并绘图。
+让我们创建加利福尼亚州乳品生产数据的另一个时序图，以便了解季节性模型的运行情况。 我在 Azure 机器学习工作室的[执行 R 脚本][execute-r-script]中添加了以下代码，用于创建模型及绘图。
 
     milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
 
     plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Milk Production 1000s lb", type = "l")
     lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 
-在 Azure 机器学习中运行此代码生成的图如图 24 所示。
+在 Azure 机器学习工作室中运行此代码生成的绘图如图 24 所示。
 
 ![包含季节性效应的加利福尼亚州牛奶生产模型](./media/r-quickstart/unnamed-chunk-20.png)
 
@@ -1198,7 +1198,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 
 运行此代码在结果数据集输出端口生成如图 27 所示的输出。
 
-![模型的 RMS 误差比较][26]
+![模型的 RMS 误差比较](./media/r-quickstart/fig26.png)
 
 *图 27.模型的 RMS 误差比较*
 
@@ -1246,31 +1246,6 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 * 有关 Kelly Black 编写的快速 R 教程，请访问 Clarkson 大学 http://www.cyclismo.org/tutorial/R/
 * http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html 中列出了 60 个以上的 R 资源
 
-<!--Image references-->
-[1]: ./media/r-quickstart/fig1.png
-[2]: ./media/r-quickstart/fig2.png
-[3]: ./media/r-quickstart/fig3.png
-[4]: ./media/r-quickstart/fig4.png
-[5]: ./media/r-quickstart/fig5.png
-[6]: ./media/r-quickstart/fig6.png
-[7]: ./media/r-quickstart/fig7.png
-[8]: ./media/r-quickstart/fig8.png
-[9]: ./media/r-quickstart/fig9.png
-[10]: ./media/r-quickstart/fig10.png
-[11]: ./media/r-quickstart/fig11.png
-[12]: ./media/r-quickstart/fig12.png
-[13]: ./media/r-quickstart/fig13.png
-[14]: ./media/r-quickstart/fig14.png
-[15]: ./media/r-quickstart/fig15.png
-[16]: ./media/r-quickstart/fig16.png
-[17]: ./media/r-quickstart/fig17.png
-[18]: ./media/r-quickstart/fig18.png
-[19]: ./media/r-quickstart/fig19.png
-[20]: ./media/r-quickstart/fig20.png
-[21]: ./media/r-quickstart/fig21.png
-[22]: ./media/r-quickstart/fig22.png
-
-[26]: ./media/r-quickstart/fig26.png
 
 <!--links-->
 [appendixa]: #appendixa

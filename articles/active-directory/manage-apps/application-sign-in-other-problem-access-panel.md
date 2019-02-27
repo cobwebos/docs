@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05efbe3feb81b11d547cd50d8ba3f87c2ff0e5b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 52f8e20cb66fb9c516435dd40ff7e362567bb338
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164713"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310853"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>从访问面板登录应用程序时出现的问题
 
@@ -250,13 +250,13 @@ ms.locfileid: "56164713"
 
 若要配置非库应用程序，需要拥有 Azure AD Premium 和支持 SAML 2.0 的应用程序。 有关 Azure AD 版本的详细信息，请访问 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
 
--   [在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）](#configuring-single-sign-on)
+-   在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）
 
 -   [选择用户标识符，并添加要发送给应用程序的用户属性](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [检索 Azure AD 元数据和证书](#download-the-azure-ad-metadata-or-certificate)
 
--   [在应用程序中配置 Azure AD 元数据值（登录 URL、颁发者、注销 URL 和证书）](#configuring-single-sign-on)
+-   在应用程序中配置 Azure AD 元数据值（登录 URL、颁发者、注销 URL 和证书）
 
 ### <a name="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）
 

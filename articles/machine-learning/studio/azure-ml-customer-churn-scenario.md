@@ -10,19 +10,19 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: dd65988146d3738d8540ddf4e54ed57813e10c16
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a00548bd5eb88c95ea83d492524e2ae10f274bba
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243529"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453981"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室分析客户流失
 ## <a name="overview"></a>概述
-本文介绍使用 Azure 机器学习生成的客户流失分析项目的参考实现。 本文讨论用于整体解决行业客户流失问题的关联通用模型。 还将衡量使用机器学习生成的模型的准确性，并对进一步开发方向进行评估。  
+本文介绍使用 Azure 机器学习工作室生成的客户流失分析项目的参考实现。 本文讨论用于整体解决行业客户流失问题的关联通用模型。 还将衡量使用机器学习生成的模型的准确性，并对进一步开发方向进行评估。  
 
 ### <a name="acknowledgements"></a>致谢
-Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azure 机器学习前产品经理）对此实验进行了开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
+Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azure 机器学习工作室前产品经理）对此试验进行了开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
 
 > [!NOTE]
 > 用于此实验的数据不会公开提供。 有关如何生成用于流失分析的机器学习模型示例，请参阅：[Azure AI 库](http://gallery.azure.ai/)中的[零售流失模型模板](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)
@@ -54,11 +54,11 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 2. 使用干预模型可考虑干预级别影响流失概率以及客户终身价值 (CLV) 的方式。
 3. 此分析有助于进行定性分析，将其升级为面向客户群的主动营销活动，以提供最佳提议。  
 
-![][1]
+![该图显示了风险承受能力和决策模型如何生成可操作见解](./media/azure-ml-customer-churn-scenario/churn-1.png)
 
 此前瞻方法是处理流失的最佳方式，但是它也具有复杂性：必须开发一个多模型原型并跟踪模型间的依赖关系。 模型间的交互可进行封装，如下图所示：  
 
-![][2]
+![流失模型交互图](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
 图 4：统一多模型原型  
 
@@ -71,13 +71,13 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
  
 
 ## <a name="implementing-the-modeling-archetype-in-machine-learning-studio"></a>在机器学习工作室中实现建模原型
-根据刚才描述的问题，实现集成建模和评分的最佳方式是什么？ 在本部分中，将演示如何使用 Azure 机器学习工作室完成操作。  
+根据描述的问题，实现集成建模和评分的最佳方式是什么？ 在本部分中，将演示如何使用 Azure 机器学习工作室完成操作。  
 
 多模型方法是为流失问题设计全局原型所必不可少的。 甚至方法的评分（预测）部分也应该是多模型。  
 
 下图显示了创建的原型，使用了四种机器学习工作室中的评分算法来预测流失。 使用多模型方法的原因不仅是为了创建集成分类器来提高准确性，还为了防止过度拟合，从而改善规范性功能选择。  
 
-![][3]
+![屏幕截图描绘了具有许多互连模块的复杂工作室工作区](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
 图 5：流失建模方法原型  
 
@@ -86,9 +86,9 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 ### <a name="data-selection-and-preparation"></a>数据选择和准备
 从 CRM 垂直解决方案中获取用于生成模型和对客户评分的数据，对数据进行模糊处理以保护客户隐私。 数据包括美国大约 8,000 个订阅的信息，其中包含三个源：预配数据（订阅源数据）、活动数据（系统的使用情况），以及客户支持数据。 数据不包括任何与客户信息相关的业务；例如，不包括会员元数据或信用评分。  
 
-为简单起见，ETL 和数据清理进程不在范围内，因为我们假定数据准备已在其他位置完成。   
+为简单起见，ETL 和数据清理进程不在范围内，因为我们假定数据准备已在其他位置完成。
 
-建模的功能选择基于因素集的初步意义评分，包括在使用随机林模型的进程中。 对于机器学习工作室中的实现，计算了具有代表性的功能的平均值、中间值和范围。 例如，为定型数据添加了聚合值，如用于用户活动的最小或最大值。    
+建模的功能选择基于因素集的初步意义评分，包括在使用随机林模型的进程中。 对于机器学习工作室中的实现，计算了具有代表性的功能的平均值、中间值和范围。 例如，为定型数据添加了聚合值，如用于用户活动的最小或最大值。
 
 还捕获了最近六个月的临时数据。 我们分析了一年的数据并确立了：即使有统计意义上的重要趋势，对流失的影响也会在六个月后大大降低。  
 
@@ -96,11 +96,11 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 下图显示了所使用的数据。  
 
-![][4]
+![屏幕截图显示了与原始值一起使用的数据示例](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
 图 6：数据源（模糊处理）摘录  
 
-![][5]
+![屏幕截图显示了从数据源提取的统计功能](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
 图 7：从数据源中提取的功能
  
@@ -122,7 +122,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 
 下图演示了实验设计图面的一部分，这指示模型在其中创建的序列：  
 
-![][6]  
+![工作室试验画布的一小部分的屏幕截图](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
 图 8：在机器学习工作室中创建模型  
 
@@ -135,18 +135,18 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
 在本部分中，会根据评分数据集，介绍关于模型的准确性的查找结果。  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>评分的准确性和精度
-通常情况下，Azure 机器学习中的实现的准确性比 SAS 低大约 10-15%（曲线下面积或 AUC）。  
+通常情况下，Azure 机器学习工作室中的实现在准确性方面比 SAS 低 10-15%左右（曲线下面积或 AUC）。  
 
 但是，流失中最重要的指标是错误分类率：即，根据分类器预测的前 N 个流失者，其中哪些实际**不会**流失，但尚未收到特殊处理方式？ 下图比较了所有模型的错误分类率：  
 
-![][7]
+![曲线下面积图比较了 4 种算法的性能](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
 图 9：Passau 原型的曲线下面积
 
 ### <a name="using-auc-to-compare-results"></a>使用 AUC 比较结果
 曲线下面积 (AUC) 是表示正值和负值的分数分布之间*可分性*的全局衡量指标。 它类似于传统的受试者工作特征 (ROC) 图，但一个重要的不同点是，AUC 指标不要求选择阈值。 相反，它会汇总**所有**可能选项的结果。 与此相反，传统的 ROC 图会显示垂直轴的阳性率和水平轴的阳性率，以及分类阈值变化。   
 
-AUC 通常用作不同算法（或不同系统）的价值衡量，因为其允许根据模型的 AUC 值进行比较。 在行业（如气象学和生物科学）中这是常用方法。 因此，AUC 表示评估分类器性能的常用工具。  
+AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根据模型的 AUC 值进行比较。 在行业（如气象学和生物科学）中这是常用方法。 因此，AUC 表示评估分类器性能的常用工具。  
 
 ### <a name="comparing-misclassification-rates"></a>比较错误分类率
 通过使用大约 8,000 个订阅的 CRM 数据，比较了正在讨论的数据集上的错误分类率。  
@@ -160,14 +160,14 @@ AUC 通常用作不同算法（或不同系统）的价值衡量，因为其允�
 
 下图来自 Wikipedia，使用生动、易于理解的图描绘了相关关系：  
 
-![][8]
+![两个目标。 其中一个目标显示的命中标记分组松散，但靠近标记为“准确率低：正确率高、精确率低”的靶心。 另一个目标分组紧密但远离标记为“准确率低：正确率低、精确率高”的靶心](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
 图 10：准确性和精度之间的权衡
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>提升决策树模型的准确性和精度结果
 下表显示使用提升决策树模型（恰巧是四种模型中最准确的）的机器学习原型的评分中的原始结果：  
 
-![][9]
+![表格片段显示了四种算法的准确率、精确率、召回率、F 值、AUC、平均对数损失和训练对数损失](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
 图 11：提升决策树模型特征
 
@@ -200,13 +200,13 @@ AUC 通常用作不同算法（或不同系统）的价值衡量，因为其允�
 
 但是，通过使用机器学习工作室实现的自服务分析的承诺是，通过分支机构或部门进行分级的四种信息成为了关于流失的机器学习的价值来源。  
 
-Azure 机器学习中即将推出的另一项令人兴奋的功能是，可将自定义模块添加到已有的预定义模块的存储库中。 从根本上来说，此功能创造了一种机会，可选择库并为垂直市场创建模板。 这是 Azure 机器学习在市场中的一项重要的区别。  
+Azure 机器学习工作室中即将推出的另一项令人兴奋的功能是，可将自定义模块添加到已有的预定义模块的存储库中。 从根本上来说，此功能创造了一种机会，可选择库并为垂直市场创建模板。 这是 Azure 机器学习工作室在市场中的一大特色。  
 
 希望将来能继续本主题，尤其是与大数据分析相关的部分。
   
 
 ## <a name="conclusion"></a>结束语
-此白皮书介绍了一种明智的方法，可通过使用通用框架来处理客户流失的常见问题。 确定了评分模型的原型，并通过使用 Azure 机器学习来实现它。 最后，评估了关于 SAS 中可比较算法的原型解决方案的准确性和性能。  
+此白皮书介绍了一种明智的方法，可通过使用通用框架来处理客户流失的常见问题。 确定了评分模型的原型，并使用 Azure 机器学习工作室来实现它。 最后，评估了关于 SAS 中可比较算法的原型解决方案的准确性和性能。  
 
  
 
@@ -223,17 +223,6 @@ Azure 机器学习中即将推出的另一项令人兴奋的功能是，可将�
  
 
 ## <a name="appendix"></a>附录
-![][10]
+![关于流失原型的演示文稿屏幕快照](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
 图 12：关于流失原型的演示文稿屏幕快照
-
-[1]: ./media/azure-ml-customer-churn-scenario/churn-1.png
-[2]: ./media/azure-ml-customer-churn-scenario/churn-2.png
-[3]: ./media/azure-ml-customer-churn-scenario/churn-3.png
-[4]: ./media/azure-ml-customer-churn-scenario/churn-4.png
-[5]: ./media/azure-ml-customer-churn-scenario/churn-5.png
-[6]: ./media/azure-ml-customer-churn-scenario/churn-6.png
-[7]: ./media/azure-ml-customer-churn-scenario/churn-7.png
-[8]: ./media/azure-ml-customer-churn-scenario/churn-8.png
-[9]: ./media/azure-ml-customer-churn-scenario/churn-9.png
-[10]: ./media/azure-ml-customer-churn-scenario/churn-10.png

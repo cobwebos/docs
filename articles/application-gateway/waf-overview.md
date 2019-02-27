@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 71990244db859a61885968a502d9849a36d81dce
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425148"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454253"
 ---
 # <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
 
@@ -93,7 +93,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 如下表中所示，提供的 3.0 核心规则集包含 13 个规则组。 每个规则组包含多个可以禁用的规则。
 
-|RuleGroup|Description|
+|RuleGroup|说明|
 |---|---|
 |**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|包含用于锁定方法（PUT、PATCH）的规则|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| 包含用于防范端口和环境扫描程序的规则。|
@@ -111,7 +111,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 如下表中所示，提供的 2.2.9 核心规则集包含 10 个规则组。 每个规则组包含多个可以禁用的规则。
 
-|RuleGroup|Description|
+|RuleGroup|说明|
 |---|---|
 |**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|包含用于防范协议冲突（无效字符、使用请求正文执行 GET 等等）的规则。|
 |**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|包含用于防范错误标头信息的规则。|
@@ -133,7 +133,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 ### <a name="application-gateway-waf-reports"></a>WAF 监视
 
-监视应用程序网关的运行状况非常重要。 借助日志记录以及与 Azure Monitor、Azure 安全中心和 Log Analytics 的集成，可以监视 Web 应用程序防火墙及其保护的应用程序的运行状况。
+监视应用程序网关的运行状况非常重要。 借助日志记录以及与 Azure Monitor、Azure 安全中心和 Azure Monitor 日志的集成，可以监视 Web 应用程序防火墙及其保护的应用程序的运行状况。
 
 ![诊断](./media/waf-overview/diagnostics.png)
 
@@ -149,7 +149,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 #### <a name="logging"></a>日志记录
 
-应用程序网关 WAF 提供有关检测到的每个威胁的详细报告。 日志记录与 Azure 诊断日志集成，警报以 JSON 格式记录。 这些日志可与 [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) 集成。
+应用程序网关 WAF 提供有关检测到的每个威胁的详细报告。 日志记录与 Azure 诊断日志集成，警报以 JSON 格式记录。 这些日志可与 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)集成。
 
 ![imageURLroute](./media/waf-overview/waf2.png)
 

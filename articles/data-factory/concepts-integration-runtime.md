@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 80d84fcede0d293b083ea75f24e9b0bd3125b265
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 82885c00557c85fefcf221789263632e21bd77da
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959660"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56344023"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -69,7 +69,7 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 自承载 IR 能够：
 
 - 在专用网络中的云数据存储和数据存储之间运行复制活动。
-- 对本地或 Azure 虚拟网络中的计算资源分派以下转换活动：HDInsight Hive 活动 (BYOC)、HDInsight Pig 活动 (BYOC)、HDInsight MapReduce 活动 (BYOC)、HDInsight Spark 活动 (BYOC)、HDInsight Streaming 活动 (BYOC)、Machine Learning Batch Execution 活动、Machine Learning Update Resource 活动、Stored Procedure 活动、Data Lake Analytics U-SQL 活动、.Net 自定义活动、Lookup 活动和 Get Metadata 活动。
+- 对本地或 Azure 虚拟网络中的计算资源分派以下转换活动：HDInsight Hive 活动 (BYOC-Bring Your Own Cluster)、HDInsight Pig 活动 (BYOC)、HDInsight MapReduce 活动 (BYOC)、HDInsight Spark 活动 (BYOC)、HDInsight Streaming 活动 (BYOC)、Machine Learning Batch Execution 活动、Machine Learning Update Resource 活动、Stored Procedure 活动、Data Lake Analytics U-SQL 活动、.Net 自定义活动、Lookup 活动和 Get Metadata 活动。
 
 > [!NOTE] 
 > 使用自承载集成运行时支持需要自带驱动程序（如 SAP Hana、MySQL 等）的数据存储。有关详细信息，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 90c508fb5ad3caf961747f2ac10bae42dd1f4c35
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114954"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343504"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
-本文介绍如何配置安全策略，以及如何在安全中心查看这些策略。 Azure 安全中心会自动在每个载入的订阅上分配其[内置安全策略](security-center-policy-definitions.md)。 可以在 [Azure Policy](../azure-policy/azure-policy-introduction.md) 中配置这些策略，由此也可跨管理组和跨多个订阅设置策略。
+本文介绍如何配置安全策略，以及如何在安全中心查看这些策略。 Azure 安全中心会自动在每个载入的订阅上分配其[内置安全策略](security-center-policy-definitions.md)。 可以在 [Azure Policy](../governance/policy/overview.md) 中配置这些策略，由此也可跨管理组和跨多个订阅设置策略。
 
-有关如何使用 PowerShell 设置策略的说明，请参阅[快速入门：使用 Azure RM PowerShell 模块创建策略分配以识别不合规资源](../azure-policy/assign-policy-definition-ps.md)。
+有关如何使用 PowerShell 设置策略的说明，请参阅[快速入门：使用 Azure PowerShell 模块创建策略分配以识别不合规资源](../governance/policy/assign-policy-powershell.md)。
 
 >[!NOTE]
 > 安全中心使用 Azure Policy 开始集成。 现有客户将自动迁移到 Azure Policy 中新的内置计划，而不是安全中心中的旧的安全策略。 除了 Azure Policy 中存在新计划外，此更改不会影响资源或环境。
 
 ## <a name="what-are-security-policies"></a>什么是安全策略？
-安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure Policy 中，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如，使用受管制数据（如个人身份信息）的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../azure-policy/azure-policy-introduction.md) 中进行设置。
+安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure Policy 中，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如，使用受管制数据（如个人身份信息）的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../governance/policy/overview.md) 中进行设置。
 
 安全策略驱动在 Azure 安全中心获得的安全建议。 可以使用它们监视符合性以帮助识别潜在漏洞和缓解威胁。 若要详细了解如何确定适合你的选项，请参阅[内置安全性策略](security-center-policy-definitions.md)列表。
 
@@ -52,7 +52,7 @@ ms.locfileid: "56114954"
 - 跨管理组和订阅分配策略，这些管理组和订阅可以代表整个组织，或者组织中的某个业务部门。
 - 监视策略符合性。
 
-有关 Azure Policy 的详细信息，请参阅[创建和管理策略以强制实施符合性](../azure-policy/create-manage-policy.md)。
+有关 Azure Policy 的详细信息，请参阅[创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)。
 
 Azure Policy 由以下组件构成：
 
@@ -236,4 +236,4 @@ Azure Policy 中的重要概念：
 * [Azure 安全中心常见问题解答](security-center-faq.md)：获取服务使用方面的常见问题解答。
 * [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)：查找关于 Azure 安全性及合规性的博客文章。
 
-若要了解有关 Azure Policy 的详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)
+若要了解有关 Azure Policy 的详细信息，请参阅[什么是 Azure Policy？](../governance/policy/overview.md)

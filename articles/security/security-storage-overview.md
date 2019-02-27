@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 5d8c9ae52152df6a0e016c12234afe4ae780b251
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ec0e8ae1bf657cda59f3d133db23106436e184e3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115430"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326750"
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
 
@@ -79,7 +79,7 @@ SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所
 
 了解有关存储服务加密的详细信息：
 
-* [Azure 存储服务加密](https://azure.microsoft.com/services/storage/)适用于 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)。 有关其他 Azure 存储类型的详细信息，请参阅 [Azure 文件](https://azure.microsoft.com/services/storage/files/)、[磁盘（高级存储）](https://azure.microsoft.com/services/storage/premium-storage/)、[表存储](https://azure.microsoft.com/services/storage/tables/)和[队列存储](https://azure.microsoft.com/services/storage/queues/)。
+* [Azure 存储服务加密](https://azure.microsoft.com/services/storage/)适用于 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)。 有关其他 Azure 存储类型的详细信息，请参阅 [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)、[表存储](https://azure.microsoft.com/services/storage/tables/)、[队列存储](https://azure.microsoft.com/services/storage/queues/)。
 * [静态数据的 Azure 存储服务加密](../storage/common/storage-service-encryption.md)
 
 ## <a name="azure-disk-encryption"></a>Azure 磁盘加密

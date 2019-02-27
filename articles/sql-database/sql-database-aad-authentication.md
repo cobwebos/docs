@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: 0bb7c047f6bd03a45aa6c5c6d07b8022ee59bec9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/20/2019
+ms.openlocfilehash: 4f8ee5a3a72fc143822a71bcb933f34e2f371019
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217155"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453131"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>使用 Azure Active Directory 身份验证进行 SQL 身份验证
 
@@ -101,16 +101,16 @@ Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) �
 
 ### <a name="manage-instances"></a>管理实例
 
-- Azure AD 登录名和用户作为[托管实例](sql-database-managed-instance.md)的预览功能受支持。
-- [托管实例](sql-database-managed-instance.md)中不支持将映射到 Azure AD 组的 Azure AD 登录名设置为数据库所有者。
+- Azure AD 服务器主体（登录名）和用户作为[托管实例](sql-database-managed-instance.md)的预览功能受支持。
+- [托管实例](sql-database-managed-instance.md)中不支持将映射到 Azure AD 组的 Azure AD 服务器主体（登录名）设置为数据库所有者。
     - 此情况的扩展是当将组添加为 `dbcreator` 服务器角色的一部分时，此组中的用户可以连接到托管实例并创建新数据库，但将不能访问数据库。 这是因为新的数据库所有者是 SA，而不是 Azure AD 用户。 如果将个体用户添加到 `dbcreator` 服务器角色，则不会出现此问题。
-- Azure AD 登录名支持 SQL 代理管理和作业执行。
-- Azure AD 登录名可以执行数据库备份和还原操作。
-- 支持审核与 Azure AD 登录名和身份验证事件相关的所有语句。
-- 支持为属于 sysadmin 服务器角色成员的 Azure AD 登录名建立专用管理员连接。
+- Azure AD 服务器主体（登录名）支持 SQL 代理管理和作业执行。
+- Azure AD 服务器主体（登录名）可以执行数据库备份和还原操作。
+- 支持审核与 Azure AD 服务器主体（登录名）和身份验证事件相关的所有语句。
+- 支持为属于 sysadmin 服务器角色成员的 Azure AD 服务器主体（登录名）建立专用管理员连接。
     - 可以通过 SQLCMD 实用工具和 SQL Server Management Studio 提供此支持。
-- 来自 Azure AD 登录名的登录事件支持登录触发器。
-- 可以使用 Azure AD 登录名设置 Service Broker 和数据库邮件。
+- 来自 Azure AD 服务器主体（登录名）的登录事件支持登录触发器。
+- 可以使用 Azure AD 服务器主体（登录名）设置 Service Broker 和数据库邮件。
 
 
 ## <a name="connecting-using-azure-ad-identities"></a>使用 Azure AD 标识进行连接
@@ -121,7 +121,7 @@ Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据�
 - 使用 Azure AD 主体名称和密码
 - 使用应用程序令牌身份验证
 
-Azure AD 登录名支持以下身份验证方法（**公共预览版**）：
+Azure AD 服务器主体（登录名）（**公共预览版**）支持以下身份验证方法：
 
 - Azure Active Directory 密码
 - 集成式 Azure Active Directory
@@ -133,7 +133,7 @@ Azure AD 登录名支持以下身份验证方法（**公共预览版**）：
 
 - 为了增强可管理性，建议将一个专用 Azure AD 组预配为管理员。   
 - 无论何时都仅可为 Azure SQL 数据库服务器或 Azure SQL 数据仓库配置一个 Azure AD 管理员（一个用户或组）。
-  - 为托管实例添加 Azure AD 登录名（**公共预览版**）允许创建可以添加到 `sysadmin` 角色的多个 Azure AD 登录名。
+  - 为托管实例添加 Azure AD 服务器主体（登录名）（**公共预览版**）允许创建可以添加到 `sysadmin` 角色的多个 Azure AD 服务器主体（登录名）。
 - 只有 SQL Server 的 Azure AD 管理员最初可以使用 Azure Active Directory 帐户连接到 Azure SQL 数据库服务器、托管实例或 Azure SQL 数据仓库。 Active Directory 管理员可以配置后续的 Azure AD 数据库用户。   
 - 我们建议将连接超时值设置为 30 秒。   
 - SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015（版本 14.0.60311.1（2016 年 4 月）或更高版本）支持 Azure Active Directory 身份验证。 （**用于 SqlServer 的 .NET Framework 数据提供程序**（.NET Framework 4.6 或更高版本）支持 Azure AD 身份验证）。 因此，这些工具和数据层应用程序（DAC 和 .BACPAC）的最新版本可以使用 Azure AD 身份验证。   
@@ -147,12 +147,12 @@ Azure AD 登录名支持以下身份验证方法（**公共预览版**）：
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解如何创建和填充 Azure AD，以及如何使用 Azure SQL 数据库或 Azure SQL 数据仓库配置 Azure AD，请参阅[使用 SQL 数据库、托管实例或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)。
-- 有关为托管实例使用 Azure AD 登录名的教程，请参阅[托管实例的 Azure AD 登录名](sql-database-managed-instance-aad-security-tutorial.md)
+- 有关将 Azure AD 服务器主体（登录名）与托管实例配合使用的教程，请参阅 [Azure AD 服务器主体（登录名）与托管实例](sql-database-managed-instance-aad-security-tutorial.md)
 - 有关 SQL 数据库中的访问和控制的概述，请参阅 [SQL 数据库访问和控制](sql-database-control-access.md)。
 - 有关 SQL 数据库中的登录名、用户和数据库角色的概述，请参阅[登录名、用户和数据库角色](sql-database-manage-logins.md)。
 - 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
-- 有关为托管实例创建 Azure AD 登录名的语法，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
+- 有关为托管实例创建 Azure AD 服务器主体（登录名）的语法，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](sql-database-firewall-configure.md)。
 
 <!--Image references-->

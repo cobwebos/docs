@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 2c6569d92913a3cff9ee51529dd381386ed2a792
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818985"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456497"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -24,7 +24,7 @@ ms.locfileid: "55818985"
 - [节点安全性](#node-security)
 - [群集升级](#cluster-upgrades)
 - [网络安全](#network-security)
-- Kubernetes 机密
+- [Kubernetes 机密](#kubernetes-secrets)
 
 ## <a name="master-security"></a>主组件安全
 
@@ -36,9 +36,9 @@ ms.locfileid: "55818985"
 
 AKS 节点是由你管理和维护的 Azure 虚拟机。 节点通过 Docker 容器运行时运行经过优化的 Ubuntu Linux 分发。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
 
-Azure 平台会在夜间自动将 OS 安全修补程序应用于节点。 如果 OS 安全更新需要重启主机，系统不会自动执行重启操作。 可以手动重启节点，或使用常用的方法，即使用 [Kured][kured]，这是一个适用于 Kubernetes 的开源重启守护程序。 Kured 作为 [DaemonSet][aks-daemonset] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
+Azure 平台会在夜间自动将 OS 安全修补程序应用于节点。 如果 OS 安全更新需要重启主机，系统不会自动执行重启操作。 可以手动重启节点，或使用常用的方法，即使用 [Kured][kured]，这是一个适用于 Kubernetes 的开源重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
 
-系统将节点部署到专用虚拟网络子网中，且不分配公共 IP 地址。 出于故障排除和管理的目的，会默认启用 SSH。 只能使用内部 IP 地址访问此 SSH。 可以使用 Azure 网络安全组规则进一步限制对 AKS 节点的 IP 范围访问权限。 如果删除默认网络安全组 SSH 规则并禁用节点上的 SSH 服务，会阻止 Azure 平台执行维护任务。
+系统将节点部署到专用虚拟网络子网中，且不分配公共 IP 地址。 出于故障排除和管理的目的，会默认启用 SSH。 只能使用内部 IP 地址访问此 SSH。
 
 为提供存储，节点使用 Azure 托管磁盘。 这些是由高性能固态硬盘支持的高级磁盘，适用于大多数规模的 VM 节点。 托管磁盘上存储的数据在 Azure 平台内会自动静态加密。 为提高冗余，还会在 Azure 数据中心内安全复制这些磁盘。
 
@@ -46,7 +46,7 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于节点。 如果
 
 ## <a name="cluster-upgrades"></a>群集升级
 
-为实现安全性和符合性及使用最新功能，Azure 提供相应工具来协调 AKS 群集和组件的升级。 此升级业务流程同时包括 Kubernetes 主组件和代理组件。 可查看适用于 AKS 群集的可用 Kubernetes 版本的列表。 若要开始进行升级，先指定一个可用版本（在上述版本中）。 接着 Azure 会安全隔离和排空每个 AKS 节点并执行升级。
+为实现安全性和符合性及使用最新功能，Azure 提供相应工具来协调 AKS 群集和组件的升级。 此升级业务流程同时包括 Kubernetes 主组件和代理组件。 可查看适用于 AKS 群集的[可用 Kubernetes 版本的列表](supported-kubernetes-versions.md)。 若要开始进行升级，先指定一个可用版本（在上述版本中）。 接着 Azure 会安全隔离和排空每个 AKS 节点并执行升级。
 
 ### <a name="cordon-and-drain"></a>隔离和排空
 
@@ -57,7 +57,7 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于节点。 如果
 - 重新在节点上安排和运行 pod。
 - 使用相同的过程隔离和排空群集中的下一个节点，直到成功升级所有节点。
 
-有关详细信息，请参阅[升级和 AKS 群集][aks-upgrade-cluster]。
+有关详细信息，请参阅[升级 AKS 群集][aks-upgrade-cluster]。
 
 ## <a name="network-security"></a>网络安全
 

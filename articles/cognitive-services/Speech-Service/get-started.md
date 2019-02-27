@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 203cb07c9450a590b45caa66092fe0199d985058
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d48ad97d50c413c4530e54f2538fda9cd0e31b8f
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978147"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342671"
 ---
-# <a name="try-the-speech-service-for-free"></a>免费试用语音服务
+# <a name="try-speech-services-for-free"></a>免费试用语音服务
 
 以简单、经济的方式开始使用语音服务。 可利用 30 天免费试用了解此服务的功能并确定它能否满足应用程序需求。
 
 如果需要更长时间，请注册 Microsoft Azure 帐户，其中附带 200 美元的服务额度，可用于支付长达 30 天的付费语音服务订阅。
 
-最后，语音服务提供适用于开发应用程序的免费、低容量层。 服务额度到期后，仍可以保留此免费订阅。
+最后，语音服务提供适合用于开发应用程序的免费、低容量层。 服务额度到期后，仍可以保留此免费订阅。
 
 ## <a name="free-trial"></a>免费试用
 
@@ -67,7 +67,7 @@ ms.locfileid: "55978147"
 
 ## <a name="create-a-speech-resource-in-azure"></a>在 Azure 中创建语音资源
 
-若要将语音服务资源（免费层或付费层）添加到 Azure 帐户，请执行以下步骤：
+若要将语音服务资源（免费层或付费层）添加到 Azure 帐户，请执行以下操作：
 
 1. 使用 Microsoft 帐户登录 [Azure 门户](https://portal.azure.com/)。
 
@@ -89,7 +89,7 @@ ms.locfileid: "55978147"
 
     * 新资源的名称。 名称有助于区分同一服务的多个订阅。
     * 选择新资源关联的 Azure 订阅，以确定计费方式。
-    * 选择将使用资源的区域。 目前在东亚、北欧和美国西部区域提供语音服务。
+    * 选择将使用资源的区域。 目前在东亚、欧洲北部和美国西部区域提供语音服务。
     * 选择免费或付费定价层。 单击“查看全部定价详细信息”，获取每个层的定价和用量配额的完整信息。
     * 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
     * 为了以后可便捷访问订阅，请选中“固定到仪表板”复选框。

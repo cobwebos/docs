@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 096f310b7c82718ea836d1b2048ca665a1e1e2f4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 49f045e8da5094f583c01c514bf92f6bf3fe1c09
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994938"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453352"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>从 Azure 机器学习工作室中导出和删除产品内用户数据
 
@@ -70,8 +70,8 @@ ms.locfileid: "55994938"
 ![删除机器学习工作室中的免费工作区](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-data-with-powershell"></a>使用 PowerShell 导出工作室数据
-可通过 PowerShell 使用命令将 Azure 机器学习工作室中的所有信息导出为可移植格式。 有关信息，请参阅 [Azure 机器学习 PowerShell 模块](powershell-module.md)一文。
+可通过 PowerShell 使用命令将 Azure 机器学习工作室中的所有信息导出为可移植格式。 有关信息，请参阅 [Azure 机器学习工作室 PowerShell 模块](powershell-module.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关介绍 Web 服务和承诺计划计费的文档，请参阅 [Azure 机器学习 REST API 参考](https://docs.microsoft.com/rest/api/machinelearning/)。 
+有关介绍 Web 服务和提交计划计费的文档，请参阅 [Azure 机器学习工作室 REST API 参考](https://docs.microsoft.com/rest/api/machinelearning/)。 

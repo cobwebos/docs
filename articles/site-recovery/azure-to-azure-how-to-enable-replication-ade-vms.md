@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5d992d13a67c7b01f82b615e7131a20b84dec9e8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f9abc6d79bd821ef612e9e7648b1b5af98bb5cf6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851005"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456225"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密 (ADE) 的虚拟机复制到另一个 Azure 区域
 
@@ -24,6 +24,7 @@ ms.locfileid: "52851005"
 >
 
 ## <a name="required-user-permissions"></a>所需的用户权限
+Azure Site Recovery 要求用户拥有在目标区域创建密钥保管库以及将密钥复制到该区域的权限。
 
 若要从门户启用 ADE VM 的复制，用户应当具有以下权限。
 - 密钥保管库权限
@@ -43,12 +44,22 @@ ms.locfileid: "52851005"
     - 加密
     - 解密
 
-可以通过以下方式管理权限：在门户中导航到密钥保管库资源，并为用户添加所需的权限。
+可以通过以下方式管理权限：在门户中导航到密钥保管库资源，并为用户添加所需的权限。 例如：以下分步指南演示如何为密钥保管库“ContosoWeb2Keyvault”（位于源区域中）启用它。
 
-![密钥保管库权限](./media/azure-to-azure-how-to-enable-replication-ade-vms/keyvaultpermissions.png)
+
+-  导航到“主文件夹”>“Keyvaults”>“ContosoWeb2KeyVault”>“访问策略”
+
+![keyvault 权限](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
+
+
+
+- 可以看到没有任何用户权限，因此，单击“添加新权限”以及用户和权限，添加上面提到的权限
+
+![keyvault 权限](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
 
 如果启用灾难恢复 (DR) 的用户没有必需的权限来复制密钥，则可以将以下脚本提供给具有相应权限的安全管理员来将加密机密和密钥复制到目标区域。
 
+如需了解如何进行权限问题故障排除，请参阅[这篇文章](#trusted-root-certificates-error-code-151066)。
 >[!NOTE]
 >若要从门户启用 ADE VM 的复制，至少需要对密钥保管库、机密和密钥的“列出”权限
 >
@@ -73,7 +84,7 @@ ms.locfileid: "52851005"
 
 1. 在保管库中，单击“+复制”。
 2. 指定以下字段：
-    - **源**：VM 的起始点，在本例中为 **Azure**。
+    - **源**：VM 的起始点，在本例中为 Azure。
     - **源位置**：要在其中保护虚拟机的 Azure 区域。 在本演示中，源位置为“东亚”
     - **部署模型**：源计算机的 Azure 部署模型。
     - **源订阅**：源虚拟机所属的订阅。 这可以是存在恢复服务保管库的同一 Azure Active Directory 租户中的任何订阅。
@@ -124,12 +135,26 @@ ms.locfileid: "52851005"
 
 ## <a name="update-target-vm-encryption-settings"></a>更新目标 VM 加密设置
 在以下场景中，将要求你更新目标 VM 加密设置。
-  - 你在 VM 上启用了 Site Recovery 复制，在之后的某个日期又在源 VM 上启用了 Azure 磁盘加密 (ADE)
-  - 你在 VM 上启用了 Site Recovery 复制，在之后的某个日期又在源 VM 上启用了磁盘加密密钥和/或密钥加密密钥
+  - 你在 VM 上启用了 Site Recovery 复制，并在之后又在源 VM 上启用了 Azure 磁盘加密 (ADE)
+  - 你在 VM 上启用了 Site Recovery 复制，并在之后又在源 VM 上启用了磁盘加密密钥和/或密钥加密密钥
 
 可以使用[此脚本](#copy-ade-keys-to-dr-region-using-powershell-script)将加密密钥复制到目标区域，然后在“恢复服务保管库”->“复制的项”->“属性”->“计算和网络”中更新目标加密设置。
 
 ![update-ade-settings](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
+
+## <a name="trusted-root-certificates-error-code-151066"></a>Azure 到 Azure VM 复制期间对密钥保管库权限问题进行故障排除
+
+**原因 1：** 可能从目标区域选择了不具有所需权限的已创建的密钥保管库。
+如果在目标区域中选择已创建的密钥保管库，而不是让 Azure Site Recovery 创建它。 请确保密钥保管库具有上文所述的所需权限。</br>
+例如：用户尝试复制 VM，其在源区域中拥有名为“ContososourceKeyvault”的密钥保管库。
+用户拥有源区域密钥保管库的所有权限，但他在保护期间选择了已创建的密钥保管库“ContosotargetKeyvault”，该密钥保管库没有权限，因此保护将会引发错误。</br>
+**如何修复：** 转到“主文件夹”>“Keyvaults”>“ContososourceKeyvault”>“访问策略”并添加权限，如上所示。 
+
+**原因 2：** 可能从目标区域选择了不具有解密/加密权限的已创建的密钥保管库。
+如果在目标区域中选择已创建的密钥保管库，而不是让 Azure Site Recovery 创建它。 请确保用户具有解密/加密权限，以防还需要在源区域中加密密钥。</br>
+例如：用户尝试复制 VM，其在源区域中拥有名为“ContososourceKeyvault”的密钥保管库。
+用户拥有源区域密钥保管库的所有权限，但他在保护期间选择了已创建的密钥保管库“ContosotargetKeyvault”，该密钥保管库没有解密和加密权限。</br>
+**如何修复：** 转到“主文件夹”>“Keyvaults”>“ContososourceKeyvault”>“访问策略”，并在“密钥权限”>“加密操作”下添加权限。
 
 ## <a name="next-steps"></a>后续步骤
 

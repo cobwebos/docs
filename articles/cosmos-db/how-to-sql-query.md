@@ -3,15 +3,15 @@ title: Azure Cosmos DB 的 SQL 查询
 description: 了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查询。 SQL 可在 Azure Cosmos DB 中作为 JSON 查询语言使用。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822402"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455953"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 SQL 查询示例
 
@@ -1369,13 +1369,13 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 | CEILING (num_expr) | 返回大于或等于指定数值表达式的最小整数值。 |
 | FLOOR (num_expr) | 返回小于或等于指定数值表达式的最大整数。 |
 | EXP (num_expr) | 返回指定数值表达式的指数。 |
-| [LOG (num_expr [,base])](#bk_log) | 返回指定数值表达式的自然对数，或使用指定底数的对数 |
+| LOG (num_expr ,base) | 返回指定数值表达式的自然对数，或使用指定底数的对数 |
 | LOG10 (num_expr) | 返回指定数值表达式以 10 为底的对数值。 |
 | ROUND (num_expr) | 返回一个数值，四舍五入到最接近的整数值。 |
 | TRUNC (num_expr) | 返回一个数值，截断到最接近的整数值。 |
 | SQRT (num_expr) | 返回指定数值表达式的平方根。 |
 | SQUARE (num_expr) | 返回指定数值表达式的平方。 |
-| [POWER (num_expr, num_expr)](#bk_power) | 返回指定数值表达式相对指定值的幂。 |
+| POWER (num_expr, num_expr) | 返回指定数值表达式相对指定值的幂。 |
 | SIGN (num_expr) | 返回指定数值表达式的符号值 (-1, 0, 1)。 |
 | ACOS (num_expr) | 返回角度（弧度），其余弦是指定的数值表达式；也被称为反余弦。 |
 | ASIN (num_expr) | 返回角度（弧度），其正弦是指定的数值表达式。 此函数也称为反正弦。 |

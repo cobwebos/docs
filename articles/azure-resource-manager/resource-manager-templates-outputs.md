@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2019
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: aadc92c232d32d827644caa52b3c362d9c8d4c9b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92e5dd5190a76bd09e33ea4c40a5b5cc2d66bc7b
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691025"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301122"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的 Outputs 节
 
-在 Outputs 节中，可以指定从部署返回的值。 例如，可能会返回用于访问已部署资源的 URI。
+在 Outputs 节中，可以指定从部署返回的值。 例如，可能会返回用于访问已部署资源的 URI。 使用可选的 `condition` 属性指定输出值是否返回。
 
 ## <a name="define-and-use-output-values"></a>定义和使用输出值
 
@@ -31,6 +31,18 @@ ms.locfileid: "55691025"
 ```json
 "outputs": {
   "resourceID": {
+    "type": "string",
+    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
+  }
+}
+```
+
+下一个示例显示如何根据是否部署了新的资源 ID 有条件地返回公共 IP 地址的资源 ID：
+
+```json
+"outputs": {
+  "resourceID": {
+    "condition": "[equals(parameters('publicIpNewOrExisting'), 'new')]",
     "type": "string",
     "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
   }
@@ -70,6 +82,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 ```json
 "outputs": {
     "<outputName>" : {
+        "condition": "<boolean-value-whether-to-output-value>",
         "type" : "<type-of-output-value>",
         "value": "<output-value-expression>"
     }
@@ -79,6 +92,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 | 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | outputName |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
+| 条件 |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 |
 | 值 |是 |评估并作为输出值返回的模板语言表达式。 |
 

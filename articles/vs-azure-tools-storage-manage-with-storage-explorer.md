@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9917901146eb0a050531a66ab24fbd88c91c02c9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756812"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311199"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -221,7 +221,7 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
 
 3. UserB 通过存储资源管理器使用所提供的 SAS 附加到属于 UserA 的帐户。
 
-### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>为要共享的帐户生成 SAS 连接字符串
+### <a name="generate-a-sas-query-string-for-the-account-you-want-to-share"></a>为要共享的帐户生成 SAS 查询字符串
 
 1. 在存储资源管理器中，右键单击要共享的存储帐户，并选择“获取共享访问签名...”。
 
@@ -231,7 +231,7 @@ Azure 订阅的管理员可以通过共享访问签名 ([SAS](storage/common/sto
 
     ![“获取 SAS”对话框][15]
 
-3. 选择“连接字符串”文本框旁边的“复制”，将其复制到剪贴板，然后单击“关闭”。
+3. 选择“查询字符串”文本框旁边的“复制”，将其复制到剪贴板，然后单击“关闭”。
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>使用 SAS 连接字符串附加到存储帐户
 

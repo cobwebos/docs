@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: bdd512972f1a684a3b76ae0323bbadd87bf0d659
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9ea9cc116a13aac2dca9edf8ba86c933310b5198
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238311"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269631"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
 
-Azure 流分析提供内置的机器学习异常情况检测功能用于监视两种最常见的异常情况：暂时性异常和永久性异常。 使用 **AnomalyDetection_SpikeAndDip** 和 **AnomalyDetection_ChangePoint** 函数可以直接在流分析作业中执行异常情况检测。
+Azure 流分析可在云和 Azure IoT Edge 中使用，它提供内置的机器学习异常情况检测功能，此功能可用于监视两种最常见的异常情况：暂时性异常和永久性异常。 使用 **AnomalyDetection_SpikeAndDip** 和 **AnomalyDetection_ChangePoint** 函数可以直接在流分析作业中执行异常情况检测。
 
 机器学习模型采用统一采样的时序。 如果时序不统一，你可以在调用异常情况检测之前使用翻转窗口插入一个聚合步骤。
 
@@ -36,7 +36,8 @@ Azure 流分析提供内置的机器学习异常情况检测功能用于监视�
 
 ## <a name="spike-and-dip"></a>高峰和低谷
 
-时序事件流中的暂时性异常称为高峰和低谷。 可以使用基于机器学习的运算符 **AnomalyDetection_SpikeAndDip** 来监视高峰和低谷。
+时序事件流中的暂时性异常称为高峰和低谷。 可以使用基于机器学习的运算符 [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+) 来监视高峰和低谷。
 
 ![高峰和低谷异常示例](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
@@ -67,9 +68,9 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>变化点
 
-时序事件流中的永久性异常是指事件流中的值分布变化，例如级别变化和趋势。 在流分析中，将使用基于机器学习的 **AnomalyDetection_ChangePoint** 运算符检测此类异常。
+时序事件流中的永久性异常是指事件流中的值分布变化，例如级别变化和趋势。 在流分析中，将使用基于机器学习的 [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) 运算符检测此类异常。
 
-永久性变化的持续时间比高峰和低谷要长得多，可能表示发生了灾难性事件。 通常肉眼很难观察到永久性变化，但可以使用 **AnomalyDetection_ChangePoint** 运算符来检测。
+永久性变化的持续时间比高峰和低谷要长得多，可能表示发生了灾难性事件。 通常肉眼很难观察到永久性变化，但可以使用“AnomalyDetection_ChangePoint”运算符来检测。
 
 下图是级别变化的示例：
 

@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ef791bdfafbbd49cacad1a75c7171b9a030df2a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456215"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342298"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的审核
 
@@ -74,10 +74,13 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
     ![导航窗格][8]
 
     > [!IMPORTANT]
-    > 服务器级审核日志会写入 Azure 订阅的 Azure Blob 存储中的**追加 Blob**。
+    > 审核日志会写入 Azure 订阅的 Azure Blob 存储中的**追加 Blob**。
     >
-    > * 追加 Blob 目前不支持高级存储。
-    > * 目前不支持 VNet 中的存储。
+    > - 支持所有存储类型（v1、v2、blob）。
+    > - 支持所有存储复制配置。
+    > - 目前不支持高级存储。
+    > - 目前不支持 VNet 中的存储。
+    > - 目前不支持有防火墙的存储
 
 8. 单击“ **保存**”。
 

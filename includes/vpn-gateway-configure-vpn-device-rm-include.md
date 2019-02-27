@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b5aea9d7fe54402693be095350f7c095334fd4b5
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 886fa6c088f2fbabb3d3ba1cd0b15bbc488784f3
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30198105"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418261"
 ---
 **下载 VPN 设备配置脚本：**
 
@@ -27,7 +27,7 @@ ms.locfileid: "30198105"
 
 - 有关设备配置设置的链接，请参阅[已验证的 VPN 设备](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)。 我们会尽力提供各种设备配置链接。 如需最新的配置信息，最好是咨询设备制造商。 列表中显示了我们已测试的版本。 如果你的 OS 不在该列表中，则仍有可能版本是兼容的。 请与设备制造商联系以验证 VPN 设备的 OS 版本是否兼容。
 
-- 有关 VPN 设备配置的概述，请参阅[第三方 VPN 设备配置概述](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md)。
+- 有关 VPN 设备配置的概述，请参阅 [VPN 设备配置概述](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md)。
 
 - 若要了解如何编辑设备配置示例，请参阅[编辑示例](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#editing)。
 

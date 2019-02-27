@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: b6cc65d10fc8924686d01c02177a9cb76f7a9571
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660905"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415725"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集
 
@@ -95,6 +95,10 @@ VNET 对等后，配置 HDInsight VNET 以使用自定义 DNS 服务器并输入
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>创建具有 ESP 的 HDInsight 群集
 
 正确设置前面的步骤后，下一步是创建启用了 ESP 的 HDInsight 群集。 创建 HDInsight 群集后，可以在“自定义”选项卡中启用企业安全性套餐。如果想要使用 Azure 资源管理器模板进行部署，使用门户体验一次，并下载最后“摘要”页上的预填写模板，供将来重复使用。
+
+> [!NOTE]  
+> ESP 群集名称的前六个字符在环境中必须是唯一的。 例如，如果在不同 VNET 中有多个 ESP 群集，则应选择一个命名约定，该命名约定确保群集名称上的前六个字符是唯一的。
+
 
 ![Azure HDInsight 企业安全性套餐域验证](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
 

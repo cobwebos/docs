@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 29e6215358eaf544f32f585744ed36f30822d134
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820778"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446743"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
-本教程将介绍如何通过在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 中创建（购买）应用服务证书来保护 Web 应用程序以及将其绑定到应用服务应用。
+本教程介绍如何通过在 [Azure 密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)中创建（购买）应用服务证书，然后将其绑定到应用服务应用来保护[应用服务应用](https://docs.microsoft.com/azure/app-service/)或[函数应用](https://docs.microsoft.com/azure/azure-functions/)。
 
 > [!TIP]
 > App Service 证书可用于任何 Azure 或非 Azure 服务，且不限于应用服务。 为此，需要创建应用服务证书的本地 PFX 副本，以便随时随地使用它。 有关详细信息，请参阅[创建应用服务证书的本地 PFX 副本](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)。
@@ -35,7 +35,7 @@ ms.locfileid: "54820778"
 按照本操作方法指南操作：
 
 - [创建应用服务应用](/azure/app-service/)
-- [将域名映射到 Web 应用](app-service-web-tutorial-custom-domain.md)或[在 Azure 中购买和配置](manage-custom-dns-buy-domain.md)
+- [将域名映射到应用](app-service-web-tutorial-custom-domain.md)或[在 Azure 中购买并配置](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -49,7 +49,7 @@ ms.locfileid: "54820778"
 
 | 设置 | 说明 |
 |-|-|
-| 名称 | 应用服务证书证书的友好名称。 |
+| Name | 应用服务证书证书的友好名称。 |
 | 裸域主机名 | 如果在此处指定根域，则会获得一个证书，该证书*同时*对根域和 `www` 子域提供保护。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。 |
 | 订阅 | 托管 Web 应用的数据中心。 |
 | 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
@@ -70,7 +70,7 @@ ms.locfileid: "54820778"
 
 | 设置 | 说明 |
 |-|-|
-| 名称 | 由字母数字字符和短划线组成的唯一名称。 |
+| Name | 由字母数字字符和短划线组成的唯一名称。 |
 | 资源组 | 建议选择与应用服务证书相同的资源组。 |
 | 位置 | 选择与应用服务应用相同的位置。 |
 | 定价层 | 有关信息，请参阅 [Azure Key Vault 定价详细信息](https://azure.microsoft.com/pricing/details/key-vault/)。 |

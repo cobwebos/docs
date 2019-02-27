@@ -5,15 +5,15 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 11/06/2018
+ms.date: 02/19/2019
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 104b4653e1be55c84182571a1e7f333d39f1639f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 619dd7f3b01e2e7ce71e945fce77aa73cb87f264
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263975"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443277"
 ---
 下面是 Azure Active Directory (Azure AD) 服务的使用限制和其他服务限制。
 
@@ -28,3 +28,4 @@ ms.locfileid: "51263975"
 | 访问面板 |<ul><li>对应用程序的数量没有限制，应用程序可在每位获得 Azure AD Premium 或企业移动套件许可的最终用户的“访问面板”中查看。</li><li>每位获得免费版或 Azure AD 基本版 Azure Active Directory 许可的最终用户最多可在“访问面板”中查看 10 个应用磁贴（例如：Box、Salesforce 或 Dropbox）。 此限制不适用于管理员帐户。</li></ul> |
 | 报告 | 在报告中最多可查看或下载 1,000 行。 系统会截断其他任何数据。 |
 | 管理单元 | 对象可以是不超过 30 个管理单位的成员。 |
+| 管理员角色和权限 | <li>无法将组添加为所有者<li>无法将组分配给角色<li>无法更改租户开关之外的默认用户权限（Azure AD 中的用户设置） |

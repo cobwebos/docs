@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/29/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 07fd8c41e7817e232513ed9a260c3722a1fdac11
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487228"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429258"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -180,6 +180,8 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 |Linux 包|1250||
 |服务|250||
 |守护程序|250||
+
+使用更改跟踪和库存的计算机的平均 Log Analytics 数据使用情况为每月使用大约 40 MB。 此值仅为近似值，且随时可能基于环境而更改。 建议监视环境以查看具体使用情况。
 
 ### <a name="windows-service-tracking"></a>Windows 服务跟踪
 

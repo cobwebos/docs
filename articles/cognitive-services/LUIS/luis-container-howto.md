@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a8251881b114d7b102481476d3e77923b34d34c7
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 99647770df9a8ca194559863a1d7212faf1c83a1
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982380"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328208"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -358,5 +358,5 @@ LUIS 容器使用 Azure 帐户中的语言理解资源向 Azure 发送账单信�
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[配置容器](luis-container-configuration.md)了解配置设置
-* 参阅[常见问题解答 (FAQ)](luis-resources-faq.md) 解决与 LUIS 功能相关的问题。
+* 若要解决与 LUIS 功能相关的问题，请参阅[故障排除](troubleshooting.md)。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)

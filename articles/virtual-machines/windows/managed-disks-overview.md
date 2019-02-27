@@ -1,20 +1,29 @@
 ---
-title: Windows VM 的 Azure 高级和标准托管磁盘概述 | Microsoft 文档
-description: 概述 Azure 托管磁盘，该磁盘在使用 Azure Windows VM 时处理存储帐户
+title: 适用于 Windows VM 的 Azure 磁盘存储托管磁盘概述 | Microsoft Docs
+description: 概要介绍 Azure 托管磁盘，该磁盘在使用 Azure Windows VM 时处理存储帐户
 services: virtual-machines-windows,storage
 author: roygara
 ms.service: virtual-machines-windows
 ms.workload: storage
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 02/11/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3c012db008755115d2f68572b1c29657ab0ac5d9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 85b2dcb73024ce786b78436b7070ad2e9a96e1d4
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459632"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328464"
 ---
+# <a name="introduction-to-azure-managed-disks"></a>Azure 托管磁盘简介
+
+Azure 托管磁盘是虚拟硬盘 (VHD)。 可以将其视为本地服务器中的物理磁盘，但其是虚拟化的。 Azure 托管磁盘作为页 blob 存储，后者是 Azure 中的随机 IO 存储对象。 我们之所以将托管磁盘称为“托管”是因为，它是对页 blob、blob 容器和 Azure 存储帐户的抽象。 对于托管磁盘，你所要做的就是预配磁盘，而 Azure 负责其余的工作。
+
+如果选择将 Azure 托管磁盘与工作负荷配合使用，Azure 将为你创建和管理该磁盘。 可用的磁盘类型包括超级固态硬盘 (SSD)（预览版）、高级 SSD、标准 SSD 和标准硬盘驱动器 (HDD)。 有关每种磁盘类型的详细信息，请参阅[选择适用于 IaaS VM 的磁盘类型](disks-types.md)。
+
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]
+
+> [!div class="nextstepaction"]
+> [选择适用于 IaaS VM 的磁盘类型](disks-types.md)

@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: cc4f559efecec3f024ce995dcf8f8757eb9cb4fb
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1a25a9c3e0d099349286476f0ae3791efee1642f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489678"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452808"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
@@ -23,10 +23,11 @@ ms.locfileid: "55489678"
 即时还原的新模型提供以下功能增强：
 
 * 可以使用执行备份作业期间创建的用于恢复的快照，而无需等待完成将数据传输到保管库的操作。 它缩短了快照在触发还原之前复制到保管库的等待时间。
-* 可将快照连同磁盘保留 7 天，缩短了备份和还原时间。
+* 通过在本地保留快照，缩短备份和还原时间，默认可在本地保留两天。 此默认保管库可配置为 1 到 5 天之间的任何值。
 * 最大支持 4 TB 的磁盘。
 * 支持标准 SSD 磁盘。
-* 还原时可以使用非托管 VM 的原始存储帐户（按磁盘）。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
+*   还原时可以使用非托管 VM 的原始存储帐户（按磁盘）。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作
+
 
 
 ## <a name="whats-new-in-this-feature"></a>功能亮点
@@ -47,6 +48,12 @@ ms.locfileid: "55489678"
 * 快照将连同磁盘一起存储，以提高恢复点的创建速度并加快还原操作。 因此，可以查看 7 天内创建的快照的相应存储成本。
 * 增量快照作为页 blob 存储。 使用非托管磁盘的所有用户需要为其本地存储帐户中存储的快照付费。 由于托管 VM 备份使用的还原点集合在基础存储级别使用 Blob 快照，因此对于托管磁盘，你将看到与 Blob 快照定价对应的成本，并且成本是递增的。
 * 对于高级存储帐户，为即时恢复点创建的快照计入分配空间的 10-TB 限制。
+* 获得根据还原需要配置快照保留期的能力。 根据要求，可以在备份策略边栏选项卡中将快照保留期设置为最少一天，如下所述。 如果不经常执行还原，这可帮助节省保留快照的成本。
+
+
+>[!NOTE]
+>使用此即时还原升级，所有客户（**包含新客户和现有客户**）的快照保留期都将设置为两天的默认值。 但是，可以根据需要将持续时间设置为 1 到 5 天之间的任意值。
+
 
 ## <a name="cost-impact"></a>成本影响
 
@@ -56,17 +63,25 @@ ms.locfileid: "55489678"
 ## <a name="upgrading-to-instant-restore"></a>升级到即时还原
 
 如果使用 Azure 门户，则会在保管库仪表板上看到通知。 此通知涉及对大磁盘的支持以及备份和还原速度的改进。
+若要打开相应的屏幕以升级到即时还原，请选择横幅。
 
 ![VM 备份堆栈资源管理器部署模型中的备份作业 - 支持通知](./media/backup-azure-vms/instant-rp-banner.png)
 
-若要打开相应的屏幕以升级到即时还原，请选择横幅。
+单击“升级”，如下面的屏幕截图所示：
 
 ![VM 备份堆栈资源管理器部署模型中的备份作业 - 升级](./media/backup-azure-vms/instant-rp.png)
 
-或者，也可以转到保管库的“属性”页以访问“VM Backup Stack”下的“升级”选项。
+或者，也可以转到保管库的“属性”页以访问“VM 备份堆栈”下的“升级”选项。
 
 ![VM Backup Stack 中的备份作业 -“属性”页](./media/backup-azure-vms/instant-restore-capability-properties.png)
 
+
+## <a name="configure-snapshot-retention-using-azure-portal"></a>使用 Azure 门户配置快照保留期
+此选项目前在美国中西部、印度南部和澳大利亚东部提供。
+
+对于已升级的用户，在 Azure 门户中可以看到“VM 备份策略”边栏选项卡下的“即时还原”部分中添加了一个字段。 可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期。
+
+![即时还原功能](./media/backup-azure-vms/instant-restore-capability.png)
 
 ## <a name="upgrade-to-instant-restore-using-powershell"></a>使用 PowerShell 升级到即时还原
 
@@ -151,7 +166,7 @@ az feature show --namespace Microsoft.RecoveryServices --name InstantBackupandRe
 如果恢复类型是“快照和保管库”，则会从本地快照自动执行还原，与从保管库执行还原相比，其速度要快得多。
 
 ### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>如果选择的还原点（第 2 层）保留期小于快照（第 1 层）保留期，会发生什么情况？
-除非删除快照（第 1 层），否则新模型不允许删除还原点（第 2 层）。 目前支持的快照（第 1 层）删除保留期为 7 天，因此不支持少于 7 天的还原点（第 2 层）保留期。 建议将还原点（第 2 层）保留期设置为大于 7 天。
+除非删除快照（第 1 层），否则新模型不允许删除还原点（第 2 层）。 建议将还原点（第 2 层）保留期设置为大于快照保留期。
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>为何我即使在备份策略中设置了保留期，我的快照也仍然存在？
-如果恢复点包含快照并且存在最新可用的 RP，则该快照会一直保留到下一次成功备份为止。 这符合当前设计的 GC 策略，该策略强制要求始终至少有一个最新的 RP，以防 VM 中的问题导致所有备份进一步出错。 正常情况下，在 RP 过期后，将在最多 48 小时内予以清理。
+如果恢复点包含快照并且存在最新可用的 RP，则该快照会一直保留到下一次成功备份为止。 这符合当前设计的 GC 策略，该策略强制要求始终至少有一个最新的 RP，以防 VM 中的问题导致所有备份进一步出错。 正常情况下，在 RP 过期后，将在最多 24 小时内予以清理。

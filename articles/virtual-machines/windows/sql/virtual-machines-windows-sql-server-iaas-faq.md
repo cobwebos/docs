@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 53c22222682e2a017f55cbd5af89671edb3eddaf
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 46d51e787a388f0963788c6419a2d9e3af89bc4f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767331"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456650"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -87,6 +87,9 @@ ms.locfileid: "55767331"
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
    是的。 如果最初是从即用即付库映像开始的，则可以轻松地在两个许可模式之间移动。 但是，如果最初是从 BYOL 映像开始的，则无法将许可证切换到 PAYG。 有关详细信息，请参阅[如何更改 SQL Server VM 的许可模型](virtual-machines-windows-sql-ahb.md)。
+
+   > [!Note]
+   > 目前，此功能仅面向公有云客户提供。
 
 1. **我应该使用 BYOL 映像还是 SQL VM RP 来创建新的 SQL VM？**
 

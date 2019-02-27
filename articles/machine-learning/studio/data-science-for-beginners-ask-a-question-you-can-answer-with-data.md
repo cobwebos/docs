@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/03/2018
-ms.openlocfilehash: bddb97083bd1d1538b9f60ec3c0798cf1e964b1e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7134a22532622d7de25a23897f83dc453d8a4344
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498142"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454049"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列
@@ -89,7 +89,7 @@ ms.locfileid: "55498142"
 
 我们已经探讨了一些有关如何提出可用数据回答的问题的基本原则。
 
-务必观看 Microsoft Azure 机器学习的“适合初学者的数据科学”中的其他视频。
+务必观看 Microsoft Azure 机器学习工作室“适合初学者的数据科学”中的其他视频。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室尝试第一个数据科学实验](create-experiment.md)

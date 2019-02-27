@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a882ad2bbb700c7d1a1c812d7a05aa14b8038f9a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 62b0f7adf0eb1dd3e3fd7493096c2261a1c1076d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359929"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328546"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -180,7 +180,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
    | SQL Server | 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。
    | 运行状况探测 | 59999 | 任何打开的 TCP 端口。 在后面的步骤中，需要将负载均衡器[运行状况探测](#probe)和群集配置为使用此端口。  
 
-1. 将存储添加到虚拟机。 有关详细信息，请参阅[添加存储](../premium-storage.md)。
+1. 将存储添加到虚拟机。 有关详细信息，请参阅[添加存储](../disks-types.md)。
 
    这两个虚拟机至少需要两个数据磁盘。
 
@@ -188,7 +188,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
       >[!NOTE]
       >如果附加 NTFS 格式化的磁盘，只能启用不带磁盘合格性检查的 S2D。  
 
-   将至少两个高级存储（SSD 磁盘）附加到每个 VM。 建议至少附加 P30 (1 TB) 磁盘。
+   将至少两个高级 SSD 附加到每个 VM。 建议至少附加 P30 (1 TB) 磁盘。
 
    将主机缓存设置为“只读”。
 

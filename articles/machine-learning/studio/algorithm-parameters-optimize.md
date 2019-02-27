@@ -10,20 +10,20 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0f324dec9349b44252a85b2f9334a1b6d847faae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 870345148b55bc6026202fbd433d8575e421faba
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247130"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456004"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>选择参数优化 Azure 机器学习工作室中的算法
 
-本主题说明如何为 Azure 机器学习中的算法选择正确的超参数集。 大多数机器学习算法使用参数来设置。 训练模型时，需要为这些参数提供值。 经过训练的模型效力取决于选择的模型参数。 查找最佳参数集的过程称为*模型选择*。
+本主题介绍如何为 Azure 机器学习工作室中的算法选择合适的超参数集。 大多数机器学习算法使用参数来设置。 训练模型时，需要为这些参数提供值。 经过训练的模型效力取决于选择的模型参数。 查找最佳参数集的过程称为*模型选择*。
 
 
 
-有多种方法可选择模型。 在机器学习中，交叉验证是模型选择中最常用的方法之一，而且它是 Azure 机器学习中的默认模型选择机制。 由于 Azure 机器学习支持 R 和 Python，因此可使用 R 或 Python 始终执行它们自己的模型选择机制。
+有多种方法可选择模型。 在机器学习中，交叉验证是模型选择中最常用的方法之一，而且它是 Azure 机器学习工作室中的默认模型选择机制。 由于 Azure 机器学习工作室支持 R 和 Python，始终可使用 R 或 Python 执行其自己的模型选择机制。
 
 查找最佳参数集有四个步骤：
 
@@ -32,7 +32,7 @@ ms.locfileid: "55247130"
 3. **定义指标**：决定用于确定最佳参数集的指标，例如准确性、均方根误差、精度、召回率或 F 分数。
 4. **训练、评估和比较**：对于每个独一无二的参数值组合，交叉验证基于定义的误差指标进行执行。 评估和比较后，可选择最佳模型。
 
-下图说明了如何在 Azure 机器学习中执行此操作。
+下图说明了如何在 Azure 机器学习工作室中执行此操作。
 
 ![查找最佳参数集](./media/algorithm-parameters-optimize/fig1.png)
 

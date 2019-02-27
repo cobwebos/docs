@@ -3,7 +3,7 @@ title: Azure AD v2.0 UWP 入门 | Microsoft Docs
 description: 通用 Windows 平台应用程序 (UWP) 如何通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
-ms.author: andret
+ms.date: 02/18/2019
+ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7d4e586dcb90153fb4d037c9c9821cd3ea3182
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e130da9bf12d25cc5c77c825512717bdf2ba5a1
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176707"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408810"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
@@ -74,14 +74,11 @@ ms.locfileid: "56176707"
 2. 在“包管理器控制台”窗口中复制并粘贴以下命令：
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
+    Install-Package Microsoft.Identity.Client
     ```
 
 > [!NOTE]
-> 此命令将安装 [Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)。 MSAL 获取、缓存和刷新用于访问受 Azure Active Directory v2.0 保护的 API 的用户令牌。
-
-> [!NOTE]
-> 本教程尚未使用最新版本的 MSAL.NET，但我们正在努力对它进行更新。
+> 此命令将安装 [Microsoft 身份验证库](https://aka.ms/msal-net)。 MSAL 获取、缓存和刷新用于访问受 Azure Active Directory v2.0 保护的 API 的用户令牌。
 
 ## <a name="initialize-msal"></a>初始化 MSAL
 此步骤帮助创建用于处理与 MSAL 的交互（例如处理令牌）的类。
@@ -159,7 +156,8 @@ ms.locfileid: "56176707"
     
             try
             {
-                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, App.PublicClientApp.Users.FirstOrDefault());
+                var accounts = await App.PublicClientApp.GetAccountsAsync();
+                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault());
             }
             catch (MsalUiRequiredException ex)
             {
@@ -203,15 +201,15 @@ ms.locfileid: "56176707"
 
 最终，`AcquireTokenSilentAsync` 方法会失败。 失败可能是因为用户已注销，或者在另一设备上更改了密码。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MsalUiRequiredException` 异常。 应用程序可以通过两种方式处理此异常：
 
-* 它可以立即调用 `AcquireTokenAsync`。 此调用会导致系统提示用户进行登录。 此模式通常用于联机应用程序，这类应用程序中没有可供用户使用的脱机内容。 此引导式设置生成的示例遵循此模式。 首次运行示例时可以看到其正在运行。 
-    * 由于没有用户使用过该应用程序，因此 `PublicClientApp.Users.FirstOrDefault()` 包含一个 null 值，并且引发 `MsalUiRequiredException` 异常。
-    * 此示例中的代码随后通过调用 `AcquireTokenAsync` 来处理此异常。 此调用会导致系统提示用户进行登录。
+* 它可以立即调用 `AcquireTokenAsync`。 此调用会导致系统提示用户进行登录。 此模式通常用于联机应用程序，这类应用程序中没有可供用户使用的脱机内容。 此引导式设置生成的示例遵循此模式。 首次运行示例时可以看到其正在运行。
+  * 由于没有用户使用过该应用程序，因此 `accounts.FirstOrDefault()` 包含一个 null 值，并且引发 `MsalUiRequiredException` 异常。
+  * 此示例中的代码随后通过调用 `AcquireTokenAsync` 来处理此异常。 此调用会导致系统提示用户进行登录。
 
 * 或者，它会向用户呈现视觉指示，要求用户进行交互式登录。 然后，用户可以选择适当的时间进行登录。 也可以让应用程序稍后重试 `AcquireTokenSilentAsync`。 当用户可以使用其他应用程序功能而不导致中断时，会频繁使用此模式。 例如，当脱机内容在应用程序中可用时。 在这种情况下，用户可以决定何时需要登录来访问受保护的资源或刷新过期信息。 或者，可让应用程序决定在网络临时不可用又还原后，是否重试 `AcquireTokenSilentAsync`。
 
 ## <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>使用刚获得的令牌调用 Microsoft 图形 API
 
-* 将以下新方法添加到 **MainPage.xaml.cs**。 此方法用于通过 [Authorize] 标头对图形 API 执行 `GET` 请求：
+* 将以下新方法添加到 **MainPage.xaml.cs**。 此方法用于通过 `Authorization` 标头对图形 API 执行 `GET` 请求：
 
     ```csharp
     /// <summary>
@@ -255,11 +253,12 @@ ms.locfileid: "56176707"
     /// </summary>
     private void SignOutButton_Click(object sender, RoutedEventArgs e)
     {
-        if (App.PublicClientApp.Users.Any())
+        var accounts = await App.PublicClientApp.GetAccountsAsync();
+        if (accounts.Any())
         {
             try
             {
-                App.PublicClientApp.Remove(App.PublicClientApp.Users.FirstOrDefault());
+                App.PublicClientApp.RemoveAsync(accounts.FirstOrDefault());
                 this.ResultText.Text = "User has signed-out";
                 this.CallGraphButton.Visibility = Visibility.Visible;
                 this.SignOutButton.Visibility = Visibility.Collapsed;
@@ -333,7 +332,7 @@ ms.locfileid: "56176707"
     ```
 
 > [!IMPORTANT]
-> 默认情况下，未为此示例配置 Windows 集成身份验证。 请求“企业身份验证”或“共享用户证书”功能的应用程序需要由 Windows 应用商店进行的更高级别的验证。 此外，并非所有开发人员都希望执行更高级别的验证。 仅当需要使用 Azure Active Directory 联合域进行 Windows 集成身份验证时，才启用此设置。
+> 默认情况下，未为此示例配置[集成 Windows 身份验证](https://aka.ms/msal-net-iwa)。 请求“企业身份验证”或“共享用户证书”功能的应用程序需要由 Windows 应用商店进行的更高级别的验证。 此外，并非所有开发人员都希望执行更高级别的验证。 仅当需要使用 Azure Active Directory 联合域进行 Windows 集成身份验证时，才启用此设置。
 
 ## <a name="test-your-code"></a>测试代码
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4a4b760652ce38e27e12e9eb73fbe7692eddbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8d39b614c373c63cf1405c5db0f64581c481d1f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204366"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417189"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>预览版：部署 Azure AD 密码保护
 
@@ -53,15 +53,18 @@ Microsoft 建议在审核模式下开始任何部署。 审核模式是默认的
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|
 
+* 托管 Azure AD 密码保护代理服务的所有计算机必须配置为允许出站 TLS 1.2 HTTP 流量。
 * 拥有全局管理员帐户，以用来向 Azure AD 注册 Azure AD 密码保护代理服务器服务和林。
 * 拥有在林根域中具有 Active Directory 域管理员权限的帐户，以用来向 Azure AD 注册 Windows Server Active Directory 林。
 * 运行 DC 代理服务软件的任何 Active Directory 域都必须使用 DFSR 进行 sysvol 复制。
 
 ## <a name="single-forest-deployment"></a>单林部署
 
-下图显示了 Azure AD 密码保护的基本组件如何在本地 Active Directory 环境中配合工作。  
+下图显示了 Azure AD 密码保护的基本组件如何在本地 Active Directory 环境中配合工作。
 
 ![Azure AD 密码保护组件如何配合工作](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
+
+部署之前，最好查看软件的工作原理；请参阅 [Azure AD 密码保护的概念性概述](concept-password-ban-bad-on-premises.md)。
 
 ### <a name="download-the-software"></a>下载软件
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 日志查询示例 | Microsoft Docs
-description: 使用数据资源管理器查询语言在 Azure Monitor 中进行日志查询的示例。
+description: 使用 Kusto 查询语言在 Azure Monitor 中进行日志查询的示例。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993191"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416643"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
-本文包含使用[数据资源管理器查询语言](https://docs.microsoft.com/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
+本文包含使用 [Kusto 查询语言](/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
 
 有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](https://docs.microsoft.com/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
 
@@ -38,7 +38,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>搜索拆收相关的事件
-在 **Event** 和 **SecurityEvents** 表中搜索提到了 _unmashaling_ 的记录。
+在 Event 和 SecurityEvents 表中搜索提到了 unmashaling 的记录。
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"

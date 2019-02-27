@@ -4,17 +4,17 @@ description: 介绍 Azure Policy 如何使用资源策略定义，通过描述�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/11/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1c65ea47f7dd091ea326d9300a8ef09208a03951
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237411"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447780"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -80,7 +80,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
-在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroup` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。
+在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。
 
 ## <a name="parameters"></a>parameters
 
@@ -215,7 +215,9 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - `"like": "value"`
 - `"notLike": "value"`
 - `"match": "value"`
+- `"matchInsensitively": "value"`
 - `"notMatch": "value"`
+- `"notMatchInsensitively": "value"`
 - `"contains": "value"`
 - `"notContains": "value"`
 - `"in": ["value1","value2"]`
@@ -227,7 +229,8 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 使用 like 和 notLike 条件时，请在值中指定通配符 `*`。
 值不应包含多个通配符 `*`。
 
-当使用 match 和 notMatch 条件时，请提供 `#` 来匹配数字，提供 `?` 来表示字母，提供 `.` 来匹配所有字符，并提供任何其他字符来匹配该实际字符。 例如，请参阅[允许多个名称模式](../samples/allow-multiple-name-patterns.md)。
+当使用 match 和 notMatch 条件时，请提供 `#` 来匹配数字，提供 `?` 来表示字母，提供 `.` 来匹配所有字符，并提供任何其他字符来匹配该实际字符。
+“match”和“notMatch”区分大小写。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案。 例如，请参阅[允许多个名称模式](../samples/allow-multiple-name-patterns.md)。
 
 ### <a name="fields"></a>字段
 
@@ -245,15 +248,41 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - `identity.type`
   - 返回在资源上启用的[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)类型。
 - `tags`
-- `tags.<tagName>`
+- `tags['<tagName>']`
+  - 此括号语法支持具有标点符号的标记名称，例如连字符、句点或空格。
   - 其中 **\<tagName\>** 是要验证其条件的标记的名称。
-  - 示例：`tags.CostCenter`，其中 **CostCenter** 是标记的名称。
-- `tags[<tagName>]`
-  - 此括号语法支持包含句点的标记名称。
-  - 其中 **\<tagName\>** 是要验证其条件的标记的名称。
-  - 示例：`tags[Acct.CostCenter]`，其中 **Acct.CostCenter** 是标记的名称。
-
+  - 示例：`tags['Acct.CostCenter']`，其中 Acct.CostCenter 是标记的名称。
+- `tags['''<tagName>''']`
+  - 此括号语法通过双撇号进行转义，可支持在其中包含撇号的标记名称。
+  - 其中“\<tagName\>”是要验证其条件的标记的名称。
+  - 示例：`tags['''My.Apostrophe.Tag''']`，其中“\<tagName\>”是标记的名称。
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
+
+> [!NOTE]
+> `tags.<tagName>``tags[tagName]` 和 `tags[tag.with.dots]` 仍然是可接受的用于声明标记字段的方式。
+> 但是，首选表达式是上面列出的那些。
+
+#### <a name="use-tags-with-parameters"></a>使用带参数的标记
+
+参数值可以传递给标记字段。 将参数传递给标记字段可在策略分配期间提高策略定义的灵活性。
+
+在以下示例中，`concat` 用于为名为 tagName 参数值的标记创建标记字段查找。 如果该标记不存在，则使用“追加”效果来添加该标记，该效果使用 `resourcegroup()` 查找函数在审计资源父资源组上使用同一命名标记集的值来添加该标记。
+
+```json
+{
+    "if": {
+        "field": "[concat('tags[', parameters('tagName'), ']')]",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "value": "[resourcegroup().tags[parameters('tagName')]]"
+        }]
+    }
+}
+```
 
 ### <a name="value"></a>值
 
@@ -341,7 +370,7 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 
 ### <a name="policy-functions"></a>策略函数
 
-所有[资源管理器模板函数](../../../azure-resource-manager/resource-group-template-functions.md)都可在策略规则中使用，以下部署和资源函数除外：
+除以下函数外，所有[资源管理器模板函数](../../../azure-resource-manager/resource-group-template-functions.md)均可在策略规则中使用：
 
 - copyIndex()
 - deployment()
@@ -353,7 +382,7 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 
 此外，`field` 函数可用于策略规则。 `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 
-#### <a name="policy-function-examples"></a>策略函数示例
+#### <a name="policy-function-example"></a>策略函数示例
 
 此策略规则示例使用 `resourceGroup` 资源函数获取 **name** 属性，并将该属性与 `concat` 数组和对象函数结合使用以构建 `like` 条件，该条件强制资源名称以资源组名称开头。
 
@@ -367,24 +396,6 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
     },
     "then": {
         "effect": "deny"
-    }
-}
-```
-
-此策略规则示例使用 `resourceGroup` 资源函数获取资源组上 **CostCenter** 标记的 **tags** 属性数组值，并将其附加到新资源上的  **CostCenter** 标记。
-
-```json
-{
-    "if": {
-        "field": "tags.CostCenter",
-        "exists": "false"
-    },
-    "then": {
-        "effect": "append",
-        "details": [{
-            "field": "tags.CostCenter",
-            "value": "[resourceGroup().tags.CostCenter]"
-        }]
     }
 }
 ```

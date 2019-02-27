@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f21f835ea50563497b73fb6e4505f60411029406
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cd24d4ad026af7d8bce70902376c3a31d659a203
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882992"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427865"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
 
@@ -24,11 +24,11 @@ ms.locfileid: "55882992"
 
 Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-get-started-custom.md)允许应用程序的用户通过标识提供者进行注册或登录。 当发生此行为时，Azure AD B2C 会从标识提供者收到一个[访问令牌](active-directory-b2c-reference-tokens.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 你在自定义策略中添加声明类型和输出声明来将该令牌传递给你在 Azure AD B2C 中注册的应用程序。 
 
-Azure AD B2C 当前仅支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) 标识提供者（这包括 Facebook 和 [Google](active-directory-b2c-custom-setup-goog-idp.md)）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
+Azure AD B2C 支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) 和 [OpenID Connect](active-directory-b2c-reference-oidc.md) 标识提供者的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 你的自定义策略是使用 OAuth 2.0 标识提供者配置的。
+- 自定义策略使用 OAuth 2.0 或 OpenID Connect 标识提供者进行配置。
 
 ## <a name="add-the-claim-elements"></a>添加声明元素 
 

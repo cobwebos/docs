@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 83a8a7f927e78f3524128338d874334ebf0b3df1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 77cd485b7ca7f9965a8baf9026b68060067d6ebe
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883995"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453930"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Azure 机器学习工作室机器学习算法备忘单
 
-“Azure 机器学习算法备忘单”可帮助为预测分析模型选择正确的算法。
+**Azure 机器学习工作室算法备忘单**可帮助为预测分析模型选择合适的算法。
 
 [Azure 机器学习工作室](https://studio.azureml.net/)拥有一个大型算法库，包括回归、分类、聚类分析和异常检测系列。 每一类算法都可用于解决一种类型的机器学习问题。
 
@@ -27,14 +27,12 @@ ms.locfileid: "55883995"
 
 **在此下载备忘单：[机器学习算法备忘单(11 x 17 英寸)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
-![机器学习算法备忘单：了解如何选择机器学习算法。][cheat-sheet]
-
-[cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
+![机器学习算法备忘单：了解如何选择机器学习算法。](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png)
 
 下载该机器学习工作室算法备忘单，并将其打印为 Tabloid 大小，既方便携带又可帮助你选择算法。
 
 > [!NOTE]
-> 如需如何使用此备忘单选择正确算法的帮助，以及不同类型的机器学习算法及其使用方式的深入探讨，请参阅 [How to choose algorithms for Microsoft Azure Machine Learning](algorithm-choice.md)（如何选择 Microsoft Azure 机器学习算法）。
+> 有关如何使用此备忘单选择合适算法的帮助，以及不同类型的机器学习算法及其使用方式的深入探讨，请参阅[如何选择 Microsoft Azure 机器学习工作室算法](algorithm-choice.md)。
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>机器学习工作室算法备忘单的说明和术语定义
 
@@ -44,7 +42,7 @@ ms.locfileid: "55883995"
 
 * 有三种主要类别的机器学习：**监督式学习**、**非监督式学习**和**强化学习**。
 
-  * 在**监督式学习**中，将标记每个数据点或将其与某个类别或相关值相关联。  分类标签的示例是将图像分配为“猫”或“狗”。  值标签的示例是与二手车关联的销售价格。 监督式学习的目的是研究大量类似这样的标记示例，并能够对未来的数据点进行预测。 例如，识别包含正确动物的新照片或为其他二手车指定准确的销售价格。 这是一种常用且有用的机器学习类型。 除了 [K-Means 群集][k-means-clustering]外，Azure 机器学习中的所有其他模块都是监督式学习算法。
+  * 在**监督式学习**中，将标记每个数据点或将其与某个类别或相关值相关联。  分类标签的示例是将图像分配为“猫”或“狗”。  值标签的示例是与二手车关联的销售价格。 监督式学习的目的是研究大量类似这样的标记示例，并能够对未来的数据点进行预测。 例如，识别包含正确动物的新照片或为其他二手车指定准确的销售价格。 这是一种常用且有用的机器学习类型。 除 [K-Means 群集][k-means-clustering]外，Azure 机器学习工作室中的所有其他模块都采用监督式学习算法。
 
   * 在**非监督式学习**中，数据点没有与其关联的标签。 相反，非监督式学习算法的目的是以某种方式组织数据或者说明其结构。 这意味着将其分组到群集（如 K-means 所实现）或查找不同的方法来查看复杂数据以使其显示更简单。
 

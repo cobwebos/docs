@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: c94a078e77f1e3e5b70d2d95016b8417fe2172d5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e7f8eef2c3422084846462e2f6159a8b8be7167f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118473"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301819"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -462,7 +462,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 Application Insights 内含强大的分析工具，有助于诊断问题并了解用户在应用中执行的操作。 Application Insights 有助于持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它与 devOps 流程集成，并具有与各种开发工具的连接点。
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 Application Insights 内含强大的分析工具，有助于诊断问题并了解用户在应用中执行的操作。 Application Insights 有助于持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 Java EE）中的应用。 它与 devOps 流程集成，并具有与各种开发工具的连接点。
 
 监视：
 

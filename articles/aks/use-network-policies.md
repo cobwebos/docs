@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: ade5a39273aa807f6c69f76342a0f715c7a96309
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 250c4fc6e51bacc68c965394b9fd430b1b75a52c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232168"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447168"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -27,21 +27,7 @@ ms.locfileid: "56232168"
 
 需要安装并配置 Azure CLI 2.0.56 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
-## <a name="overview-of-network-policy"></a>网络策略概述
-
-默认情况下，AKS 群集中的所有 Pod 都可以无限制地发送和接收流量。 为了提高安全性，可定义用来控制流量流的规则。 例如，后端应用程序通常只向所需的前端服务公开，或者数据库组件仅可由连接到它们的应用程序层访问。
-
-网络策略属于 Kubernetes 资源，可用于控制 Pod 之间的流量流。 可选择基于分配的标签、命名空间或流量端口等设置来允许或拒绝流量。 网络策略被定义为 YAML 清单，并可以作为也创建部署或服务的更大清单的一部分添加。
-
-要查看发挥作用的网络策略，让我们进行创建，然后展开按如下方式定义流量流的策略：
-
-* 拒绝流向 Pod 的所有流量。
-* 允许基于 Pod 标签的流量。
-* 允许基于命名空间的流量。
-
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>创建 AKS 群集并启用网络策略
-
-创建群集后，才能启用网络策略。 无法在现有 AKS 群集上启用网络策略。 要创建具有网络策略的 AKS，请先对订阅启用功能标志。 若要注册 EnableNetworkPolicy 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
+要创建具有网络策略的 AKS，请先对订阅启用功能标志。 若要注册 EnableNetworkPolicy 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
 
 ```azurecli-interactive
 az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
@@ -59,7 +45,25 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/E
 az provider register --namespace Microsoft.ContainerService
 ```
 
-若要对 AKS 使用网络策略，必须使用 [Azure CNI 插件][azure-cni]并定义自己的虚拟网络和子网。 如需详细了解如何规划所需的子网范围，请参阅[配置高级网络][use-advanced-networking]。 以下示例脚本：
+## <a name="overview-of-network-policy"></a>网络策略概述
+
+默认情况下，AKS 群集中的所有 Pod 都可以无限制地发送和接收流量。 为了提高安全性，可定义用来控制流量流的规则。 例如，后端应用程序通常只向所需的前端服务公开，或者数据库组件仅可由连接到它们的应用程序层访问。
+
+网络策略属于 Kubernetes 资源，可用于控制 Pod 之间的流量流。 可选择基于分配的标签、命名空间或流量端口等设置来允许或拒绝流量。 网络策略被定义为 YAML 清单，并可以作为也创建部署或服务的更大清单的一部分添加。
+
+要查看发挥作用的网络策略，让我们进行创建，然后展开按如下方式定义流量流的策略：
+
+* 拒绝流向 Pod 的所有流量。
+* 允许基于 Pod 标签的流量。
+* 允许基于命名空间的流量。
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>创建 AKS 群集并启用网络策略
+
+创建群集后，才能启用网络策略。 无法在现有 AKS 群集上启用网络策略。 
+
+若要对 AKS 使用网络策略，必须使用 [Azure CNI 插件][azure-cni]并定义自己的虚拟网络和子网。 如需详细了解如何规划所需的子网范围，请参阅[配置高级网络][use-advanced-networking]。
+
+以下示例脚本：
 
 * 创建虚拟网络和子网。
 * 创建用于 AKS 群集的 Azure Active Directory (AD) 服务主体。
@@ -86,7 +90,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 
 # Create a service principal and read in the application ID
-read SP_ID <<< $(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
 
 # Wait 15 seconds to make sure that service principal has propagated
 echo "Waiting for service principal to propagate..."
@@ -241,6 +245,9 @@ spec:
           app: webapp
           role: frontend
 ```
+
+> [!NOTE]
+> 此网络策略使用 namespaceSelector 和 podSelector 元素作为入口规则。 YAML 语法对于入口规则是否相加很重要。 在此示例中，两个元素必须匹配要应用的入口规则。 1.12 之前的 Kubernetes 版本可能无法正确解释这些元素并按预期限制网络流量。 有关详细信息，请参阅[针对选择器的行为和来自选择器的行为][policy-rules]。
 
 使用 [kubectl apply][kubectl-apply] 命令应用已更新的网络策略，并指定 YAML 清单的名称：
 
@@ -442,6 +449,7 @@ kubectl delete namespace development
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

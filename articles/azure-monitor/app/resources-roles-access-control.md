@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 023f0e560900aa582be1f28e553358adb0c87b1e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118466"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309244"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
@@ -113,6 +113,32 @@ ms.locfileid: "54118466"
 ## <a name="related-content"></a>相关内容
 
 * [Azure 中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)
+
+## <a name="powershell-query-to-determine-role-membership"></a>PowerShell 查询确定角色成员身份
+
+由于某些角色可以链接到通知和电子邮件警报，因此能够生成属于给定角色的用户列表会很有帮助。 为了帮助生成这些类型的列表，我们提供了以下示例查询，可以根据特定需求进行调整：
+
+### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>为管理员角色 + 参与者角色查询整个订阅
+
+```powershell
+(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>在所有者和参与者的特定 Application Insights 资源的上下文中进行查询
+
+```powershell
+$resourceGroup = “RGNAME”
+$resourceName = “AppInsightsName”
+$resourceType = “microsoft.insights/components”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>在所有者和参与者的特定资源组的上下文中进行查询
+
+```powershell
+$resourceGroup = “RGNAME”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
 
 <!--Link references-->
 

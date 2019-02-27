@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 921dfc12a7353725d3f9e05d7aa3245ec8ba6084
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 43094839c9da9b00c97d1dffd53f98a3acd119d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185979"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417136"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -44,14 +44,16 @@ ms.locfileid: "56185979"
 | B 系列 | All |
 | DC 系列 | All |
 | 最佳内存优化 | All |
-| Hb 系列 <sup>1</sup> | All |
-| Hc 系列 <sup>1</sup> | All |
+| Hb 系列<sup>1,2</sup> | All |
+| Hc 系列<sup>1,2</sup> | All |
 | Lsv2 系列 | All |
-| NDv2 系列 <sup>1</sup> | All |
-| NVv2 系列 | All |
+| NDv2 系列<sup>1,2</sup> | All |
+| NVv2 系列 <sup>1</sup> | All |
 | SAP HANA | All |
 
-<sup>1</sup> 可由批处理帐户在用户订阅模式下使用；批处理帐户需要设置核心配额的用户订阅模式。 有关详细信息，请参阅[用户订阅模式的配置](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
+
+<sup>1</sup>已计划支持。  
+<sup>2</sup> 可由批处理帐户在用户订阅模式下使用；批处理帐户需要设置核心配额的用户订阅模式。 有关详细信息，请参阅[用户订阅模式的配置](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
 
 仅低优先级节点支持以下 VM 大小：
 

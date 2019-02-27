@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: af6a32d7e32f23561b207c729402eaea7925f520
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389234"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453845"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -75,18 +75,18 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 ## <a name="logging"></a>日志记录 
 
-Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Log Analytics。 若要将应用与支持的任何目标相集成，请转到 Azure 防火墙门户 >“诊断日志”，并为所需目标启用日志。 与 Log Analytics 集成后，可以查看已发送到 Azure 防火墙的任何流量的日志。 若要查看被拒绝的流量，请打开 Log Analytics 门户 >“日志”，并输入如下所示的查询 
+Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monitor 日志。 若要将应用与支持的任何目标相集成，请转到 Azure 防火墙门户 >“诊断日志”，并为所需目标启用日志。 与 Azure Monitor 日志集成后，可以查看已发送到 Azure 防火墙的任何流量的日志记录。 若要查看被拒绝的流量，请打开 Log Analytics 工作区门户 >“日志”，并输入如下所示的查询 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-首次运行应用程序时，如果你不知道所有的应用程序依赖项，则将 Azure 防火墙与 Log Analytics 集成会很有用。 可以通过[在 Azure Monitor 中分析 Log Analytics 数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)详细了解 Log Analytics
+首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以通过[在 Azure Monitor 中分析日志数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)详细了解 Azure Monitor 日志
  
 ## <a name="dependencies"></a>依赖项
 
 仅当所要配置的防火墙设备不是 Azure 防火墙时，才需要以下信息。 
 
 - 应在支持服务终结点的服务中配置服务终结点。
-- IP 地址依赖项适用于非 HTTP/S 流量
+- IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 - 可将 FQDN HTTP/HTTPS 终结点放在防火墙设备中。
 - 通配符 HTTP/HTTPS 终结点是可以根据许多限定符随 ASE 一起变化的依赖项。 
 - 仅当要在 ASE 中部署 Linux 应用时，才需要考虑 Linux 依赖项。 如果不将 Linux 应用部署到 ASE，则不需要将这些地址添加到防火墙。 

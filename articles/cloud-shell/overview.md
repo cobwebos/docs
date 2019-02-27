@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 1ad85a57762ae4fba30e1699b38eaa52d45ab26e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4195016bb029d2cf8f5042a853fa591609bd486e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447201"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428527"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
@@ -53,7 +53,7 @@ Cloud Shell 由 Microsoft 管理，因此附带了常用的命令行工具和语
 查看[安装在 Cloud Shell 中的完整工具列表。](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>集成的 Cloud Shell 编辑器
-Cloud Shell 提供基于开源 Monaco Editor 的集成图形文本编辑器。 只需通过运行 `code .` 来创建和编辑配置文件，即可借助 Azure CLI 2.0 或 Azure PowerShell 进行无缝部署。
+Cloud Shell 提供基于开源 Monaco Editor 的集成图形文本编辑器。 只需通过运行 `code .` 来创建和编辑配置文件，即可借助 Azure CLI 或 Azure PowerShell 进行无缝部署。
 
 [详细了解 Cloud Shell 编辑器](using-cloud-shell-editor.md)。
 
@@ -68,7 +68,7 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 * [Azure CLI 文档](https://docs.microsoft.com/cli/azure)
 * [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)
-* [VS Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
+* [Visual Studio Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>连接 Microsoft Azure 文件存储
 Cloud Shell 计算机是临时的，需要将新的或现有 Azure 文件共享装载为 `clouddrive` 才能持久保存文件。

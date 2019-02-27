@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure RBAC 中的角色定义 | Microsoft Docs
-description: 了解基于角色的访问控制 (RBAC) 中的角色定义，以便对 Azure 中的资源进行精细的访问权限管理。
+title: 了解 Azure 资源的 RBAC 角色定义 | Microsoft Docs
+description: 了解基于角色的访问控制 (RBAC) 中的角色定义，以便对 Azure 资源进行精细的访问管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b7f4ce9508928ccc6ab766e7164c674511bcaa37
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991355"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342773"
 ---
-# <a name="understand-role-definitions"></a>了解角色定义
+# <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
 
-如果想要了解角色是如何工作的，或者要创建自己的[自定义角色](custom-roles.md)，那么了解角色的定义方法会很有帮助。 本文介绍角色定义的详细信息，并提供了一些示例。
+如果想要了解角色的工作原理，或者要创建自己的 [Azure 资源自定义角色](custom-roles.md)，那么了解角色的定义方法会很有帮助。 本文介绍角色定义的详细信息，并提供了一些示例。
 
 ## <a name="role-definition-structure"></a>角色定义结构
 
@@ -151,6 +151,8 @@ Alice 的[所有者](built-in-roles.md#owner)角色和 Bob 的[存储 Blob 数�
 
 Bob 的权限限制为[存储 Blob 数据参与者（预览版）](built-in-roles.md#storage-blob-data-contributor-preview)角色中指定的 `Actions` 和 `DataActions`。 Bob 可以基于角色执行管理和数据操作。 例如，Bob 可以读取、写入和删除指定存储帐户中的容器，并可以读取、写入和删除 Blob。
 
+有关存储的管理和数据平面安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/common/storage-security-guide.md)。
+
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>哪些工具支持使用 RBAC 进行数据操作？
 
 若要查看和处理数据操作，必须安装正确版本的工具或 SDK：
@@ -225,10 +227,10 @@ Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 
 | 角色只能在网络资源组中进行分配 | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
 | 角色可供在所有范围中进行分配 | `"/"` |
 
-有关自定义角色的 `AssignableScopes` 的信息，请参阅[自定义角色](custom-roles.md)。
+有关自定义角色的 `AssignableScopes` 的信息，请参阅 [Azure 资源的自定义角色](custom-roles.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [内置角色](built-in-roles.md)
-* [自定义角色](custom-roles.md)
+* [Azure 资源的内置角色](built-in-roles.md)
+* [Azure 资源的自定义角色](custom-roles.md)
 * [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)

@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 480d453cc906fa1b1d93e00bd4a6d2b080768a47
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9f9a6511d63e57c6cbfa5ee2453f8038bb259047
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105826"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428986"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
-监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 通过 [Azure 资源诊断日志记录](../azure-monitor/platform/diagnostic-logs-overview.md)，可监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式处理到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) 的服务之一 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)。 
+监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 通过 [Azure 资源诊断日志记录](../azure-monitor/platform/diagnostic-logs-overview.md)，可监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式处理到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure Monitor 日志](../azure-monitor/azure-monitor-log-hub.md)。
 
-![存储、事件中心或 Log Analytics 的诊断日志记录](./media/analysis-services-logging/aas-logging-overview.png)
+![存储、事件中心或 Azure Monitor 日志的诊断日志记录](./media/analysis-services-logging/aas-logging-overview.png)
 
 
 ## <a name="whats-logged"></a>会记录哪些内容？
@@ -82,7 +82,7 @@ ms.locfileid: "54105826"
 
     * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)。 按照说明创建一个资源管理器常规用途帐户，然后返回到门户中的此页面来选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 若要了解详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
-    * **发送到 Log Analytics**。 若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关在 Log Analytics 中查看日志的详细信息，请参阅本文中的[在 Log Analytics 中查看日志](#view-logs-in-log-analytics)。
+    * 发送到 Azure Monitor（Log Analytics 工作区）。 若要使用此选项，可以使用现有工作区或者在门户中[新建工作区](../azure-monitor/learn/quick-create-workspace.md)资源。 有关查看日志的详细信息，请参阅本文中的[在 Log Analytics 工作区中查看日志](#view-logs-in-log-analytics)。
 
     * **引擎** 选择此选项以记录 Xevent。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
     * **服务**。 选择此选项以记录服务级别事件。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
@@ -150,47 +150,43 @@ ms.locfileid: "54105826"
 * 删除不想继续保留在存储帐户中的日志。
 * 请务必设置保留期，以便从存储帐户中删除旧日志。
 
-## <a name="view-logs-in-log-analytics"></a>在 Log Analytics 中查看日志
+## <a name="view-logs-in-log-analytics-workspace"></a>在 Log Analytics 工作区中查看日志
 
-在 Log Analytics 中，指标和服务器事件与 Xevent 集成，以便并列分析。 Log Analytics 还可配置为接收来自其他 Azure 服务的事件，从而提供整个体系结构的诊断日志记录数据。
+在 Log Analytics 工作区资源中，指标和服务器事件与 Xevent 集成，以便并列分析。 Log Analytics 工作区还可配置为接收来自其他 Azure 服务的事件，从而提供整个体系结构的诊断日志记录数据。
 
-若要在 Log Analytics 中查看诊断数据，请从左侧菜单或“管理”区域打开“日志搜索”页，如下所示。
+若要查看诊断数据，请从 Log Analytics 工作区的左侧菜单中打开“日志”。
 
 ![Azure 门户中的“日志搜索”选项](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-启用数据收集后，请在“日志搜索”中单击“收集到的所有数据”。
+在查询生成器中，展开 LogManagement > AzureDiagnostics。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询。 请务必保存查询以便稍后重复使用。
 
-在“类型”中，单击“AzureDiagnostics”，然后单击“应用”。 AzureDiagnostics 包括引擎和服务事件。 请注意即时创建了 Log Analytics 查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。
+### <a name="example-query"></a>示例查询
+此查询对一个模型数据库和服务器的 每个查询结束/刷新结束事件计算并返回 CPU：
 
-单击“EventClass\_s”或某个事件名称，Log Analytics 将继续构造查询。 请务必保存查询以便稍后重复使用。
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+window
+| where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
+| where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
+| extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
+| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
+| join kind=leftouter (
+window
+    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
+    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
+    ) on RootActivityId_g
+| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
 
-请务必查看 Log Analytics，它为网站提供了针对收集的数据的增强查询、仪表板建设和警报功能。
-
-### <a name="queries"></a>查询
-
-有成百上千的查询可以使用。 以下查询可帮助你开始使用。
-若要详细了解如何使用新的日志搜索查询语言，请参阅[了解 Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-search-new.md)。 
-
-* 查询返回提交到 Azure Analysis Services 的完成时间超过五分钟（300,000 毫秒）的查询。
-
-    ```
-    search * | where ( Type == "AzureDiagnostics" ) | where ( EventClass_s == "QUERY_END" ) | where toint(Duration_s) > 300000
-    ```
-
-* 标识横向扩展副本。
-
-    ```
-    search * | summarize count() by ServerName_s
-    ```
-    使用横向扩展时，可以识别只读副本，因为 ServerName\_s 字段值名称中附加了副本实例编号。 资源字段包含 Azure 资源名称，它与用户所见的服务器名称匹配。 对于副本，IsQueryScaleoutReadonlyInstance_s 字段等于 true。
+```
 
 
-
-> [!TIP]
-> 拥有想要共享的 Log Analytics 查询？ 如果有 GitHub 帐户，可将其添加到本文。 在本页右上角单击“编辑”即可。
+有成百上千的查询可以使用。 若要了解有关查询的详细信息，请参阅 [Azure Monitor 日志查询入门](../azure-monitor/log-query/get-started-queries.md)。
 
 
-## <a name="tutorial---turn-on-logging-by-using-powershell"></a>教程 - 使用 PowerShell 启用日志记录
+## <a name="turn-on-logging-by-using-powershell"></a>使用 PowerShell 启用日志记录
+
 在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后通过 Set-AzureRmDiagnosticSetting 启用诊断日志记录，将输出发送到新的存储帐户。
 
 ### <a name="prerequisites"></a>先决条件
@@ -253,7 +249,7 @@ $account = Get-AzureRmResource -ResourceGroupName awsales_resgroup `
 Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
 ```
 
-输出应类似于：
+输出应该类似于以下示例：
 
 ```powershell
 StorageAccountId            : 

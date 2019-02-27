@@ -5,15 +5,15 @@ author: yossi-y
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 36be305e60806ba2cdea260fc46bc329c43284cb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429780"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447208"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor 中的日志警报
 [基于 Azure Monitor 日志的预警规则](alerts-unified-log.md)定期运行，因此应确保这些规则旨在将开销和延迟降至最低。 本文提供了有关编写日志警报的高效查询以及转换现有查询的过程的建议。 
@@ -31,16 +31,11 @@ SecurityEvent | where EventID == 4624
 
 ```Kusto
 search "Memory"
-
 search * | where == "Memory"
-
 search ObjectName: "Memory"
-
 search ObjectName == "Memory"
-
 union * | where ObjectName == "Memory"
 ```
- 
 
 尽管 `search` 和 `union` 在数据探索期间很有用，但是在整个数据模型上搜索术语时，其效率比使用表搜索更低，因为它们必须扫描多个表。 由于预警规则中的查询是定期运行的，因此可能会导致过多的开销，从而增加警报的延迟。 由于这种开销，Azure 中对日志预警规则的查询应始终以表开始，以定义明确的范围，从而提高查询性能和结果的相关性。
 
@@ -55,7 +50,9 @@ app('Contoso-app1').requests,
 app('Contoso-app2').requests, 
 workspace('Contoso-workspace1').Perf 
 ```
- 
+
+>[!NOTE]
+>新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的[跨资源查询](../log-query/cross-workspace-query.md)。 默认情况下，除非从[旧版日志警报 API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 ARM 模板](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)创建[跨资源查询](../log-query/cross-workspace-query.md)日志警报规则，而无需进行切换。但是，此警告规则可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
 
 ## <a name="examples"></a>示例
 以下示例包括使用 `search` 和 `union` 的日志查询，并提供可用于修改这些查询以与预警规则配合使用的步骤。

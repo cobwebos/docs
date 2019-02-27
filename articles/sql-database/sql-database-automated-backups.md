@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: af3a654010fa676096bfad895d5814b2cefa8e71
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7afc1170ba2503c8a8c97be9a19459c92e331449
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997112"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453573"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -85,6 +85,11 @@ PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/st
 类似于 PITR，LTR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护。
 
 有关详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
+
+## <a name="storage-costs"></a>存储成本
+默认情况下，数据库的 7 天自动备份会复制到 RA-GRS 标准 blob 存储。 存储由每周完整备份、每日差异备份和 5 分钟复制一次的事务日志备份使用。 事务日志的大小取决于数据库的变化率。 提供与 100% 数据库大小相等的最小存储量，不收取额外费用。 超出此部分的其他备份存储用量将以 GB 为单位每月进行收费。
+
+有关存储价格的详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/sql-database/single/)页。 
 
 ## <a name="are-backups-encrypted"></a>备份是否已加密
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: faeba611dfc55307f8f855ee45a1a8d37603f2f5
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0c7f248023a97bdad09c2c51e9e9a28073def086
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117378"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300119"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
 ## <a name="why-do-i-need-application-insights"></a>为什么需要 Application Insights？
-Application Insights 可以监视正在运行的 Web 应用。 它可以告知故障和性能方面的问题，帮助分析客户如何使用应用。 它适用于许多平台（ASP.NET、J2EE、Node.js ...）上运行的应用，可以托管在云中或本地。 
+Application Insights 可以监视正在运行的 Web 应用。 它可以告知故障和性能方面的问题，帮助分析客户如何使用应用。 它适用于许多平台（ASP.NET、Java EE、Node.js 等）上运行的应用，可以托管在云中或本地。 
 
 ![传递 Web 应用时面临的复杂性](./media/devops/010.png)
 

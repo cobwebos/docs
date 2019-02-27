@@ -1,6 +1,6 @@
 ---
 title: Web 服务日志记录 - Azure 机器学习工作室 | Microsoft Docs
-description: 了解如何为机器学习 Web 服务启用日志记录。 日志记录提供用于帮助对 API 进行故障排除的其他信息。
+description: 了解如何为机器学习工作室 Web 服务启用日志记录。 日志记录提供用于帮助对 API 进行故障排除的其他信息。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -15,21 +15,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 80a5ec64a2afd2367acaedd6e44ffe1a21e9c622
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 53eedd4d00b212879389d29541c4ca55ea1bfde6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474373"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270075"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>为 Azure 机器学习工作室 Web 服务启用日志记录
-本文档提供有关机器学习 Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习 API 进行故障排除。  
+本文档提供有关机器学习工作室 Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习工作室 API 进行故障排除。  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>如何为 Web 服务启用日志记录
 
-在 [Azure 机器学习 Web 服务](https://services.azureml.net)门户中启用日志记录。 
+在 [Azure 机器学习工作室 Web 服务](https://services.azureml.net)门户中启用日志记录。 
 
-1. 在 [https://services.azureml.net](https://services.azureml.net) 中登录到 Azure 机器学习 Web 服务门户。 若要在经典 Web 服务中到达此门户，可在机器学习工作室中单击机器学习 Web 服务页上的“新 Web 服务体验”。
+1. 在 [https://services.azureml.net](https://services.azureml.net) 登录到 Azure 机器学习工作室 Web 服务门户。 对于经典 Web 服务，还可通过在机器学习工作室中单击“机器学习工作室 Web 服务”页上的“新 Web 服务体验”，到达该门户。
 
    ![新 Web 服务体验链接](./media/web-services-logging/new-web-services-experience-link.png)
 

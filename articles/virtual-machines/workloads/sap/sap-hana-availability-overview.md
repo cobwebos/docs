@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7049a4b5159687ab928cda7ddc6b1a35959529ac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1db56ad31991b85ffad415818c7c67f0ee30808d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972101"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328072"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虚拟机的 SAP HANA 高可用性
 
@@ -61,7 +61,7 @@ Azure 针对不同组件（如网络、存储和 VM）提供了不同的可用�
 
 [虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) 介绍了针对以下两种不同配置的两个不同 SLA：
 
-- 为 OS 磁盘和所有数据磁盘使用 [Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)的单个 VM。 此选项提供每月 99.9% 的正常运行时间。
+- 将 [Azure 高级 SSD](../../windows/disks-types.md) 用于 OS 磁盘和所有数据磁盘的单个 VM。 此选项提供每月 99.9% 的正常运行时间。
 - 组织到 [Azure 可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中的多个（至少两个）VM。 此选项提供每月 99.95% 的正常运行时间。
 
 对照 Azure 组件可以提供的 SLA 度量你的可用性要求。 然后，选择你的 SAP HANA 方案来实现所需级别的可用性。

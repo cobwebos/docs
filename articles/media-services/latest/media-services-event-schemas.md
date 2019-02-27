@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 02/11/2019
+ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9748d61b1aa336c5300dd414d53388f48a41368
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8ad0efffc89a3c11f412d94b922401c23e84a3e5
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243979"
+ms.locfileid: "56268781"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>媒体服务事件的 Azure 事件网格架构
 
@@ -42,7 +42,7 @@ ms.locfileid: "56243979"
 | Microsoft.Media.JobCanceled| 获取当作业转换为已取消状态时的事件。 这是包含作业输出的最终状态。|
 | Microsoft.Media.JobErrored| 获取当作业转换为错误状态时的事件。 这是包含作业输出的最终状态。|
 
-[架构示例](#event-schema-examples)如下。
+请参阅后面的[架构示例](#event-schema-examples)。
 
 ### <a name="monitoring-job-output-state-changes"></a>监视作业输出状态更改
 
@@ -56,7 +56,15 @@ ms.locfileid: "56243979"
 | Microsoft.Media.JobOutputCanceled| 获取当作业输出转换为已取消状态时的事件。|
 | Microsoft.Media.JobOutputErrored| 获取当作业输出转换为错误状态时的事件。|
 
-[架构示例](#event-schema-examples)如下。
+请参阅后面的[架构示例](#event-schema-examples)。
+
+### <a name="monitoring-job-output-progress"></a>监视作业输出进度
+
+| 事件类型 | 说明 |
+| ---------- | ----------- |
+| Microsoft.Media.JobOutputProgress| 此事件反映了作业处理进度，从 0% 到 100%。 如果进度值增加了 5% 或更多，或者自上次事件（检测信号）以来已超过 30 秒，则服务会尝试发送事件。 无法保证进度值从 0% 开始或达到 100%，也无法保证其随时间推移而以恒定速率增加。 此事件不应用于确定是否已经完成处理 – 要实现此目的，请改用状态更改事件。|
+
+请参阅后面的[架构示例](#event-schema-examples)。
 
 ## <a name="live-event-types"></a>实时事件类型
 
@@ -72,7 +80,7 @@ ms.locfileid: "56243979"
 | Microsoft.Media.LiveEventEncoderConnected | 编码器与实时事件建立连接。 |
 | Microsoft.Media.LiveEventEncoderDisconnected | 编码器断开连接。 |
 
-[架构示例](#event-schema-examples)如下。
+请参阅后面的[架构示例](#event-schema-examples)。
 
 ### <a name="track-level-events"></a>轨迹级事件
 
@@ -87,7 +95,7 @@ ms.locfileid: "56243979"
 | Microsoft.Media.LiveEventIngestHeartbeat | 当实时事件正在运行时，每隔 20 秒为每个轨迹发布。 提供引入运行状况摘要。 |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | 媒体服务器检测到传入轨迹中存在不连续的情况。 |
 
-[架构示例](#event-schema-examples)如下。
+请参阅后面的[架构示例](#event-schema-examples)。
 
 ## <a name="event-schema-examples"></a>事件架构示例
 
@@ -245,6 +253,29 @@ ms.locfileid: "56243979"
       "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+### <a name="joboutputprogress"></a>JobOutputProgress
+
+示例架构类似如下：
+
+ ```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/belohGroup/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/job-5AB6DE32",
+  "eventType": "Microsoft.Media.JobOutputProgress",
+  "eventTime": "2018-12-10T18:20:12.1514867",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "data": {
+    "jobCorrelationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    },
+    "label": "VideoAnalyzerPreset_0",
+    "progress": 86
   },
   "dataVersion": "1.0",
   "metadataVersion": "1"

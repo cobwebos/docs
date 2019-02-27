@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 41a826304af338814666e80dfaf584021809dbb0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880040"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313354"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>将备份保管库升级到恢复服务保管库
 
@@ -98,13 +98,13 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 ![“快速启动”边栏选项卡中的帮助链接](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
 
 ## <a name="post-upgrade-steps"></a>升级后的步骤
-恢复服务保管库支持在备份策略中指定时区信息。 成功升级保管库后，转到保管库设置菜单中的备份策略，并更新保管库中配置的每个策略的时区信息。 此屏幕已显示根据创建策略时所用的每个本地时区指定的备份计划时间。 
+恢复服务保管库支持在备份策略中指定时区信息。 成功升级保管库后，转到保管库设置菜单中的备份策略，并更新保管库中配置的每个策略的时区信息。 此屏幕已显示根据创建策略时所用的每个本地时区指定的备份计划时间。
 
 ## <a name="enhanced-security"></a>增强的安全性
 
-备份保管库升级到恢复服务保管库后，将自动启用该保管库的安全设置。 启用安全设置后，某些操作（如删除备份或更改密码）需要 [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md) PIN。 关于增强的安全性的详细信息，请参阅[用于保护混合备份的安全性功能](backup-azure-security-feature.md)一文。 
+备份保管库升级到恢复服务保管库后，将自动启用该保管库的安全设置。 启用安全设置后，某些操作（如删除备份或更改密码）需要 [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md) PIN。 关于增强的安全性的详细信息，请参阅[用于保护混合备份的安全性功能](backup-azure-security-feature.md)一文。
 
-启用增强的安全性后，数据将在恢复点信息从保管库中删除之后至多保留 14 天。 为此安全数据的存储对客户计费。 安全数据保留期适用于针对 Azure 备份代理、Azure 备份服务器和 System Center Data Protection Manager 的恢复点。 
+启用增强的安全性后，数据将在恢复点信息从保管库中删除之后至多保留 14 天。 为此安全数据的存储对客户计费。 安全数据保留期适用于针对 Azure 备份代理、Azure 备份服务器和 System Center Data Protection Manager 的恢复点。
 
 ## <a name="gather-data-on-your-vault"></a>收集保管库中的数据
 
@@ -112,38 +112,38 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-**升级计划是否影响正在进行的备份？**</br>
+### <a name="does-the-upgrade-plan-affect-my-ongoing-backups"></a>升级计划是否影响正在进行的备份？
 不是。 升级期间和之后，正在进行的备份都会继续，而不会中断。
 
-如果不尽快规划升级，保管库会发生什么情况？</br>
+### <a name="if-i-dont-plan-on-upgrading-soon-what-happens-to-my-vaults"></a>如果不尽快计划升级，保管库会发生什么情况？
 由于所有新功能仅适用于恢复服务保管库，我们强烈建议升级保管库。 自 2017 年 9 月 1 日起，Microsoft 会将备份保管库自动升级为恢复服务保管库。 2017 年 11 月 30 日后，将不再能够使用 PowerShell 创建备份保管库。 保管库可在其间任何时间自动升级。 Microsoft 建议尽快升级保管库。
 
-对于现有的工具而言，此升级有何意义？</br>
-将工具更新为资源管理器部署模型。 恢复服务保管库是为在资源管理器部署模型使用而创建的。 规划资源管理器部署模型以及记录保管库中的差异十分重要。 
+### <a name="what-does-this-upgrade-mean-for-my-existing-tooling"></a>对于现有的工具而言，此升级有何意义？
+将工具更新为资源管理器部署模型。 恢复服务保管库是为在资源管理器部署模型使用而创建的。 规划资源管理器部署模型以及记录保管库中的差异十分重要。
 
-升级期间，是否会出现停机？</br>
+### <a name="during-the-upgrade-is-there-much-downtime"></a>升级期间，是否会出现停机？
 这取决于要升级的资源数量。 对于小型部署（几十个受保护的实例），整个升级过程应会不到 20 分钟内完成。 对于大型部署，最长需要一小时。
 
-**升级后是否可以回滚？**</br>
+### <a name="can-i-roll-back-after-upgrading"></a>升级后是否可以回滚？
 不是。 成功升级资源后，就不支持回滚。
 
-**是否可以验证订阅或资源，确定它们是否可升级？**</br>
+### <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-upgrade"></a>是否可以验证订阅或资源，确定它们是否可升级？
 是的。 升级过程的第一个步骤是验证资源是否可升级。 如果先决条件验证失败，会收到消息，其中包含无法完成升级的所有原因。
 
-**是否可以升级基于 CSP 的备份保管库？**</br>
+### <a name="can-i-upgrade-my-csp-based-backup-vault"></a>是否可以升级基于 CSP 的备份保管库？
 不是。 目前无法升级基于 CSP 的备份保管库。 我们将在下一版本中添加对升级基于 CSP 的备份保管库的支持。
 
-**升级后是否可以查看经典保管库？**</br>
+### <a name="can-i-view-my-classic-vault-post-upgrade"></a>升级后是否可以查看经典保管库？
 不是。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
 
-升级失败，但保存需要升级的代理的计算机不再存在。对于这种情况，该怎么办？</br>
+### <a name="my-upgrade-failed-but-the-machine-that-held-the-agent-requiring-updating-doesnt-exist-anymore-what-do-i-do-in-such-a-case"></a>升级失败，但保存需要升级的代理的计算机不再存在。 对于这种情况，该怎么办？
 如果需要存储此计算机的备份以便长期保留，则无法升级保管库。 在将来版本中，我们将添加对升级此类保管库的支持。
 如果不再需要存储此计算机的备份，请从保管库中注销此计算机，并重试升级。
 
-升级后为何看不到资源的作业信息？</br>
+### <a name="why-cant-i-see-the-jobs-information-for-my-resources-after-upgrade"></a>升级后为何看不到资源的作业信息？
 备份监视（MARS 代理 和 IaaS）是将备份保管库升级到恢复服务保管库后获得一项新功能。 监视信息最长需要 12 小时才能与服务同步。
 
-**如何报告问题？**</br>
+### <a name="how-do-i-report-an-issue"></a>如何报告问题？
 如果保管库升级的任何环节失败，请记下错误中列出的 OperationId。 Microsoft 支持部门将主动解决此问题。 可以联系支持部门，或者向 rsvaultupgrade@service.microsoft.com 发送电子邮件并提供订阅 ID、保管库名称和 OperationId。 我们将尝试尽快解决此问题。 除非 Microsoft 明确指示，否则请不要重试操作。
 
 

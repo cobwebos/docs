@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 87d15f7b351f2b8b6a8c010651d82faa66b28918
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: f8b0955afa1705dd8e3c01a943cc5e5d885f9c71
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276459"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456956"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
 
-将自定义脚本扩展与 Azure 资源管理器模板集成。 也可使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
+将自定义脚本扩展与 Azure 资源管理器模板集成。 也可使用 Azure CLI、PowerShell 或 Azure 虚拟机 REST API 来运行它。
 
 本文详细介绍如何使用 Azure CLI 中的自定义脚本扩展以及如何使用 Azure 资源管理器模板运行扩展。 本文还提供针对 Linux 系统的疑难解答步骤。
 

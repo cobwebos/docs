@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a4298a8bd78f178c56776e703e72ff99aac54207
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694374"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887891"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -50,7 +50,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 
 - 现在可以在 Azure 上的资源组之间[移动注册资源](azure-stack-registration.md#move-a-registration-resource)，而无需重新注册。 只要新旧订阅都映射到相同的 CSP 合作伙伴 ID，云解决方案商 (CSP) 也可以在订阅之间移动注册资源。 这不影响现有的客户租户映射。 
 
-- 添加了的对分配每个网络接口的多个 IP 地址。  有关更多详细信息，请参阅[将多个 IP 地址分配给虚拟机使用 PowerShell](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell)。
+- 增加了为每个网络接口分配多个 IP 地址的支持。  如需更多详细信息，请参阅[使用 PowerShell 将多个 IP 地址分配到虚拟机](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell)。
 
 ### <a name="fixed-issues"></a>修复的问题
 
@@ -77,12 +77,12 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 ### <a name="changes"></a>更改
 
 <!-- 2635202 - IS, ASDK -->
-- 基础结构备份服务已从[公共基础结构网络](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network)转移到[公共 VIP 网络](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network)。 客户需确保该服务有权访问公共 VIP 网络中的备份存储位置。  
+- 基础结构备份服务已从[公共基础结构网络](https://docs.microsoft.com/azure/azure-stack/azure-stack-network)转移到[公共 VIP 网络](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network)。 客户需确保该服务有权访问公共 VIP 网络中的备份存储位置。  
 
 > [!IMPORTANT]  
-> 如果防火墙不允许从公共 VIP 网络连接到文件服务器，此项更改会导致基础结构备份因“错误 53: 找不到网络路径”而失败。 这是一项重大更改具有合理的解决方法。 根据客户反馈，Microsoft 将恢复此修补程序中的更改。 请查看[更新后的步骤部分](#post-update-steps)，以获取有关 1809 可用的修补程序的详细信息。 可用修补程序后，请确保将其应用更新到 1809年，仅当您的网络策略不允许访问基础结构资源的公共 VIP 网络后。 在 1811 中，此项更改将应用到所有系统。 如果在 1809 中应用该修补程序，则无需采取进一步的措施。  
+> 如果防火墙不允许从公共 VIP 网络连接到文件服务器，此项更改会导致基础结构备份因“错误 53: 找不到网络路径”而失败。 这是一项重大更改具有合理的解决方法。 根据客户反馈，Microsoft 将恢复此修补程序中的更改。 请查看[更新后的步骤部分](#post-update-steps)，以获取有关 1809 可用的修补程序的详细信息。 发布修补程序后，请确保只在网络策略不允许公共 VIP 网络访问基础结构资源的情况下，才在更新到 1809 之后应用该修补程序。 在 1811 中，此项更改将应用到所有系统。 如果在 1809 中应用该修补程序，则无需采取进一步的措施。  
 
-### <a name="common-vulnerabilities-and-exposures"></a>通用漏洞和披露
+### <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
 
 此更新安装以下安全更新：  
 
@@ -253,7 +253,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 
 ### <a name="compute"></a>计算
 
-- 创建时[Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes)，D11 14v2 Vm，您可以分别创建 4、 8、 16 和 32 个数据磁盘。 但是，创建 VM 窗格将显示 8、 16、 32 和 64 个数据磁盘。
+- 创建 [Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) 时，可以通过 D11-14v2 VM 分别创建 4 个、8 个、16 个和 32 个数据磁盘。 不过，“创建 VM”窗格会显示 8 个、16 个、32 个和 64 个数据磁盘。
 
 <!-- 3235634 – IS, ASDK -->
 - 若要部署大小包含 **v2** 后缀的 VM（例如 **Standard_A2_v2**），请将后缀指定为 **Standard_A2_v2**（小写 v）。 请勿使用 **Standard_A2_V2**（大写 V）。 这适用于全球 Azure，Azure Stack 上的不一致。
@@ -297,7 +297,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 
    - 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
-      2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**客户端 DiskRP AzureStack**列出角色。
+      2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“AzureStack-DiskRP-Client”角色是否已列出。
    2. 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决错误，请执行[此文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤来重新配置每个来宾目录。
 
 - 如果使用创建时已启用 SSH 授权的 Ubuntu 18.04 VM，则无法使用 SSH 密钥登录。 若要解决此问题，请在预配后使用针对 Linux 扩展的 VM 访问权限来实现 SSH 密钥，或者使用基于密码的身份验证。

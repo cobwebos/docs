@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 53f81a06a0a10d4526816b5117eb12f01d75e25a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 301de81fc9b8bdb8b295700de33065d988379334
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819155"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428788"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>从 Apache Storm on HDInsight 写入到 Apache Hadoop HDFS
 
@@ -50,15 +50,18 @@ ms.locfileid: "55819155"
 HdfsBolt 使用提供的文件方案来了解如何写入 HDFS。 在 HDInsight 中，请使用以下方案之一：
 
 * `wasb://`：与 Azure 存储帐户配合使用。
-* `adl://`：与 Azure Data Lake Storage 配合使用。
+* `abfs://`：与 Azure Data Lake Storage Gen2 配合使用。
+* `adl://`：与 Azure Data Lake Storage Gen1 配合使用。
 
 下表提供针对不同方案使用文件方案的示例：
 
 | 方案 | 说明 |
 | ----- | ----- |
 | `wasb:///` | 默认存储帐户是 Azure 存储帐户中的某个 Blob 容器 |
-| `adl:///` | 默认存储帐户是 Azure Data Lake Storage 中的某个目录。 在创建群集期间，请指定在 Data Lake Storage 中充当群集 HDFS 根目录的目录。 例如 `/clusters/myclustername/` 目录。 |
+| `abfs:///` | 默认存储帐户是 Azure Data Lake Storage Gen2 帐户中的某个目录 |
+| `adl:///` | 默认存储帐户是 Azure Data Lake Storage Gen1 中的某个目录。 在创建群集期间，请指定在 Data Lake Storage 中充当群集 HDFS 根目录的目录。 例如 `/clusters/myclustername/` 目录。 |
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | 与群集关联的非默认（其他）Azure 存储帐户。 |
+| `abfs://CONTAINER@ACCOUNT.dfs.core.windows.net/` | 与群集关联的非默认（其他）Azure 存储帐户。 |
 | `adl://STORENAME/` | 群集使用的 Data Lake Storage 的根目录。 使用此方案可以访问包含群集文件系统的目录外部的数据。 |
 
 有关详细信息，请参阅 apache.org 上的 [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 参考文档。
@@ -180,7 +183,7 @@ bolts:
         hdfs.url: wasb:///
 
     > [!IMPORTANT]  
-    > 本示例假设群集将 Azure 存储帐户用作默认存储。 如果群集使用 Azure Data Lake Storage，请改用 `hdfs.url: adl:///`。
+    > 本示例假设群集将 Azure 存储帐户用作默认存储。 如果群集使用 Azure Data Lake Storage Gen2，请改用 `hdfs.url: abfs:///`。 如果群集使用 Azure Data Lake Storage Gen1，请改用 `hdfs.url: adl:///`。
     
     要保存文件，请使用 __Ctrl + X__，并输入 __Y__，最后按 __Enter__。 此文件中的值用于设置 Data Lake Storage URL 和数据写入到的目录名称。
 

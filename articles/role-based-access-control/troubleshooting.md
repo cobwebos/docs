@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure 中的 RBAC 问题 | Microsoft Docs
-description: 排查 Azure 基于角色的访问控制 (RBAC) 的问题。
+title: 对 Azure 资源的 RBAC 问题进行故障排除 | Microsoft Docs
+description: 对 Azure 资源基于角色的访问控制 (RBAC) 问题进行故障排除。
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7b27c811214def7f5646f886b955d035a50c0725
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411231"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342467"
 ---
-# <a name="troubleshoot-rbac-in-azure"></a>对 Azure 中的 RBAC 进行故障排除
+# <a name="troubleshoot-rbac-for-azure-resources"></a>对 Azure 资源的 RBAC 问题进行故障排除
 
-本文解答有关基于角色的访问控制 (RBAC) 的常见问题，以便你了解在 Azure 门户中使用角色时可能出现的情况，并可解决访问权限问题。
+本文解答有关 Azure 资源的基于角色的访问控制 (RBAC) 的常见问题，以便你了解在 Azure 门户中使用角色时可能出现的情况，并可对访问问题进行故障排除。
 
 ## <a name="problems-with-rbac-role-assignments"></a>RBAC 角色分配出现问题
 
@@ -119,6 +119,6 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 创建或�
 读者可单击“平台功能”选项卡，然后单击“所有设置”查看与函数应用（类似于 Web 应用）相关的一些设置，但无法修改任何这些设置。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)
-* [查看活动日志以了解 RBAC 更改](change-history-report.md)
+* [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](role-assignments-portal.md)
+* [查看 Azure 资源的 RBAC 更改的活动日志](change-history-report.md)
 

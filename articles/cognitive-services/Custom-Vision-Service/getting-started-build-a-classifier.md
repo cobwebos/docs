@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 6b39d01266cdde0316d1a660429d5ccab546dac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d91d62c387fc7bcaef8b7f2cb7e8d865c882aeed
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873625"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445451"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>如何使用自定义影像服务生成分类器
 
@@ -23,26 +23,28 @@ ms.locfileid: "55873625"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 有效的 [Microsoft 帐户](https://account.microsoft.com/account)或 Azure Active Directory (AAD) 帐户（“工作或学校帐户”）。
-
-    > [!IMPORTANT] 
-    > 目前不支持 AAD 用户从 [Microsoft 各国云端](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud)登录。
+- 有效的 Azure 订阅。 免费[创建一个帐户](https://azure.microsoft.com/free/)。
 - 一组用于训练分类器的图像。 有关选择图像的提示，请参阅下文。
-- 可选：与 Microsoft 帐户或 AAD 帐户关联的 Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 如果没有 Azure 订阅，则只能创建两个受限试用项目。
+
+
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>在 Azure 门户中创建自定义视觉资源
+若要使用自定义视觉服务，需要在 [Azure 门户](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision)中创建自定义视觉训练和预测资源。 这将创建训练和预测资源。 
 
 ## <a name="create-a-new-project"></a>创建新项目
 
-在 Web 浏览器中，导航到[自定义影像服务网页](https://customvision.ai)，然后选择“登录”。
+在 Web 浏览器中，导航到[自定义影像服务网页](https://customvision.ai)，然后选择“登录”。 使用用于登录 Azure 门户的帐户登录。
 
 ![“登录”页的图像](./media/browser-home.png)
 
-如果有 Azure 帐户，则会在创建项目期间提示用户在 [Azure 门户](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision)中创建自定义影像服务训练和预测资源。
 
 1. 若要创建首个项目，请选择“新建项目”。 将出现“创建新项目”对话框。
 
     ![“新建项目”对话框中包含名称、描述和域字段。](./media/getting-started-build-a-classifier/new-project.png)
 
-1. 输入项目名称和描述。 然后选择一个资源组。 如果登录帐户与 Azure 帐户相关联，则“资源组”下拉列表将显示包含自定义影像服务资源的所有 Azure 资源组。 在任何一种情况下，还可以从该下拉列表中选择“有限试用版”。
+1. 输入项目名称和描述。 然后选择一个资源组。 如果登录帐户与 Azure 帐户相关联，则“资源组”下拉列表将显示包含自定义影像服务资源的所有 Azure 资源组。 
+
+> [!NOTE]
+> 如果没有可用的资源组，请确认已使用登录 [Azure 门户](https://portal.azure.com/)时所用的同一帐户登录 [customvision.ai](https://customvision.ai)。 此外，请确认在自定义视觉门户中选择的“目录”与自定义视觉资源所在 Azure 门户中的目录相同。 在这两个站点中，可从屏幕右上角的下拉帐户菜单中选择目录。 
 
 1. 选择“项目类型”下的“分类”。 然后，在“分类类型”下，根据用例选择“多标签”或“多类”。 多标签分类将任意数量的标记应用于图像（零个或多个），而多类分类将图像分类为单个类别（提交的每个图像将被分类为最有可能的标记）。 将能够根据需要稍后更改分类类型。
 
@@ -95,6 +97,11 @@ ms.locfileid: "55873625"
     ![进度条显示已完成的所有任务。](./media/getting-started-build-a-classifier/add-images04.png)
 
 若要上传另一组图像，请返回到本部分顶部并重复上述步骤。 在项目中，有时可能需要添加负示例来使分类器更准确。 负示例是与任何其他标记不匹配的示例。 上传这些图像时，请向其添加特殊的负标签。
+
+> [!NOTE]
+> 自定义影像服务支持某些自动负片图像处理。 例如，如果要生成葡萄与香蕉的分类器并提交一张鞋子图像用于预测，则分类器对于该图像的葡萄与香蕉评分均应接近 0%。
+
+> 另一方面，如果负片图像仅仅是定型中使用的图像的变量，由于相似性很大，模型很可能将负片图像分类为标记类。 例如，如果具有一个橙子与葡萄柚分类器，并且输入克莱门氏小柑橘的图像，则它可能将克莱门氏小柑橘分类为橙子，因为克莱门氏的许多特征类似于橙子。 如果负片图像具有这种性质，建议在训练期间创建一个或多个单独的标签（例如，“其他”）并使用此标签标记负片图像，使模型更好地区分这些类。
 
 ## <a name="train-the-classifier"></a>训练分类器
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: 884f6a81796341e274027095691585212d5a3749
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54829923"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328021"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric 联盟网络
 
@@ -113,7 +113,7 @@ ms.locfileid: "54829923"
 | 参数名称 | 说明 | 允许的值 |
 |---|---|---|
 **缩放类型**|以下两种部署类型之一：具有多个容器的单个虚拟机或横向扩展模型中的多个虚拟机。|单 VM 或多 VM |
-**VM 磁盘类型**|支持每个已部署的节点的存储类型。 <br/> 若要了解有关存储的详细信息，请访问 [Microsoft Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction)和[高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)。|标准 SSD <br/> 高级·SSD |
+**VM 磁盘类型**|支持每个已部署的节点的存储类型。 <br/> 若要详细了解可用的磁盘类型，请访问[选择磁盘类型](../../virtual-machines/windows/disks-types.md)。|标准 SSD <br/> 高级·SSD |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>多 VM 部署（其他设置）
 

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 2/8/2019
 ms.author: moderakh
-ms.openlocfilehash: 88fcfec903dac9d939d658e5d06a51ab8ff1aba9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1a86ceefdc5c3b60dc4bca5a1ac659534653aa66
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979167"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416269"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Async Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -45,13 +45,12 @@ SQL API Async Java SDK 与 SQL API Java SDK 的区别在于，前者通过支持
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
-* 直接公开上市。
+* “直接模式连接”现已发布通用版本 (GA)。 关于使用“直接模式连接”的示例，请参阅 [azure-cosmosdb-java](https://github.com/Azure/azure-cosmosdb-java) GitHub 存储库。
 * 添加了对 QueryMetrics 的支持。
-* 将接受 java.util.Collection（顺序很重要）的 API 更改为接受 java.util.List。
-  现在 ConnectionPolicy#getPreferredLocations()、JsonSerialization 和 PartitionKey(.) 接受列表。
+* 将接受 java.util.Collection（顺序很重要）的 API 更改为接受 java.util.List。 现在 ConnectionPolicy#getPreferredLocations()、JsonSerialization 和 PartitionKey(.) 接受列表。
 
 ### <a name="a-name240-beta-1240-beta-1"></a><a name="2.4.0-beta-1"/>2.4.0-beta-1
-* 添加了对“直接”的支持。
+* 添加了对“直接模式连接”的支持。
 * 将接受 java.util.Collection（顺序很重要）的 API 更改为接受 java.util.List。
   现在 ConnectionPolicy#getPreferredLocations()、JsonSerialization 和 PartitionKey(.) 接受列表。
 * 修复了网关模式下文档查询的会话 Bug。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Active Directory B2C 设置通过 Microsoft 帐户注册与登录 | Microsoft Docs
+title: 设置通过 Microsoft 帐户注册与登录 - Azure Active Directory B2C | Microsoft Docs
 description: 使用 Azure Active Directory B2C，为应用程序中的客户提供通过 Microsoft 帐户注册与登录的功能。
 services: active-directory-b2c
 author: davidmu1
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 0565b9ec1e78a5ce1f40e4f2e1f46e84fbb53a94
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 13e199a56a3cdd4f8e5a21f162fe0397c6f397cd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172725"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428249"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Microsoft 帐户注册与登录
 
 ## <a name="create-a-microsoft-account-application"></a>创建 Microsoft 帐户应用程序
 
-要将 Microsoft 帐户用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要在表示它的租户中创建一个应用程序。 如果还没有 Microsoft 帐户，可以在 [https://www.live.com/](https://www.live.com/) 获取。
+若要在 Azure Active Directory (Azure AD) B2C 中将 Microsoft 帐户用作[标识提供者](active-directory-b2c-reference-oidc.md)，则需要在代表它的租户中创建应用程序。 如果还没有 Microsoft 帐户，可以在 [https://www.live.com/](https://www.live.com/) 获取。
 
 1. 使用 Microsoft 帐户凭据登录 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)。
 2. 在右上角，选择“添加应用”。

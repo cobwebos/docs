@@ -1,7 +1,7 @@
 ---
 title: 添加语言分析器 - Azure 搜索
 description: Azure 搜索中适用于非英语查询和索引的多语言词法文本分析。
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b5c562994c169a8c5d51ee31a9606c5c40162603
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007605"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328281"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加语言分析器
 
-语言分析器是[全文搜索引擎](https://docs.microsoft.com/azure/search/search-lucene-query-architecture)的一个特定组件，可以使用目标语言的语言规则执行词法分析。 每个可搜索的字段都有一个 `analyzer` 属性。 如果索引包含翻译的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。  
+语言分析器是特定类型的[文本分析器](search-analyzers.md)，可以使用目标语言的语言规则执行词法分析。 每个可搜索字段都有一个“分析器”属性。 如果索引包含翻译的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。  
 
 Azure 搜索支持 35 个受 Lucene 支持的分析器，以及 Office 和必应中使用的专有 Microsoft 自然语言处理技术支持的 50 个分析器。
 
-## <a name="compare-language-analyzer-types"></a>比较语言分析器类型 
+## <a name="comparing-analyzers"></a>比较分析器
 
 某些开发人员可能首选更熟悉、简单的开源 Lucene 解决方案。 Lucene 语言分析器更快，但 Microsoft 分析器具有高级功能，如词形还原、字词分解（在德语、丹麦语、荷兰语、瑞典语、挪威语、爱沙尼亚语、芬兰语、匈牙利语、斯洛伐克语中）和实体识别（URL、电子邮件、日期、数字）。 如果可能，应对 Microsoft 和 Lucene 分析器进行比较以确定哪一个更合适。 
 
@@ -49,15 +49,17 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
  > [!Tip]
  > [搜索分析器演示版](https://alice.unearth.ai/)可对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器生成的结果进行并排比较。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中。
 
-## <a name="analyzer-configuration"></a>分析器配置
+## <a name="configuring-analyzers"></a>配置分析器
 
-对于索引定义中的每个字段，可将 `analyzer` 属性设置为指定哪个语言和供应商的分析器名称。 将在为该字段编入索引和搜索时应用相同的分析器。 例如，可以为在同一个索引中并行存在的英语、法语和西班牙语酒店说明使用单独的字段。  
+语言分析器按原样使用。 对于索引定义中的每个字段，可将分析器属性设置为用于指定语言和语言学堆栈（Microsoft 或 Lucene）的分析器名称。 将在为该字段编入索引和搜索时应用相同的分析器。 例如，可以为在同一个索引中并行存在的英语、法语和西班牙语酒店说明使用单独的字段。 或者，可以使用 indexAnalyzer 和 searchAnalyzer 代替“分析器”，以在索引或查询时具有不同的分析规则。 
 
-使用 **searchFields** 查询参数指定在查询中针对哪个特定于语言的字段进行搜索。 可在搜索文档中查看包含分析器属性的查询示例。 
+使用 **searchFields** 查询参数指定在查询中针对哪个特定于语言的字段进行搜索。 可在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)中查看包含分析器属性的查询示例。 
 
 有关索引属性的详细信息，请参阅[创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。 若要详细了解 Azure 搜索中的分析，请参阅 [Azure 搜索中的分析器](https://docs.microsoft.com/azure/search/search-analyzers)。
 
-## <a name="analyzer-list"></a>分析器列表  
+<a name="language-analyzer-list"></a>
+
+## <a name="language-analyzer-list"></a>语言分析器列表 
  下面是受支持语言的列表以及 Lucene 和 Microsoft 分析器名称。  
 
 |语言|Microsoft 分析器名称|Lucene 分析器名称|  

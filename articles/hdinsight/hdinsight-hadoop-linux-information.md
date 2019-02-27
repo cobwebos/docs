@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: 95d8825b8359b0ba8649c4c4e145ef488a486b21
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c6763580a6693020c497c500342ff3ae4dc840d4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001917"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339222"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -126,7 +126,15 @@ Hadoop 相关文件可在群集节点上的 `/usr/hdp` 中找到。 此目录包
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`：与非默认存储帐户通信时使用。 例如，有额外的存储帐户时，或访问存储在可公开访问的存储帐户中的数据时。
 
-使用 __Data Lake Storage__ 时，可以使用以下 URI 方案之一：
+使用 __Azure Data Lake Storage Gen2__ 时，可以使用以下 URI 方案之一：
+
+* `abfs:///`：使用未加密通信访问默认存储。
+
+* `abfss:///`：使用加密通信访问默认存储。  仅 HDInsight 3.6 及以上版本支持 abfss 方案。
+
+* `abfs://<container-name>@<account-name>.dfs.core.windows.net/`：与非默认存储帐户通信时使用。 例如，有额外的存储帐户时，或访问存储在可公开访问的存储帐户中的数据时。
+
+使用 __Azure Data Lake Storage Gen1__ 时，可以使用以下 URI 方案之一：
 
 * `adl:///`：访问群集的默认 Data Lake Storage。
 

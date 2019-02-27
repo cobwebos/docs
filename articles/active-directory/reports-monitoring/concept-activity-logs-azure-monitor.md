@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e533f3db8a9d40ee062e65d96fa9bf33a366e3a8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb136391610035911af3614f88f5ea823f86922d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206338"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456314"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure AD 活动日志（预览版）
 
@@ -31,13 +31,13 @@ ms.locfileid: "56206338"
 * 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
 * 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
 * 将 Azure AD 活动日志流式传输到事件中心，以便与自定义日志解决方案集成。
-* 将 Azure AD 活动日志发送到 Log Analytics，以启用丰富的可视化效果以及对连接数据的监视和警报。
+* 将 Azure AD 活动日志发送到 Azure Monitor 日志，以启用丰富的可视化效果以及对连接数据的监视和警报。
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>支持的报表
 
-可以使用此功能将 Azure AD 活动日志和登录日志路由到 Azure 存储帐户、事件中心、Log Analytics 或自定义解决方案。 
+可以使用此功能将 Azure AD 活动日志和登录日志路由到 Azure 存储帐户、事件中心、Azure Monitor 日志或自定义解决方案。 
 
 * **审核日志**：可通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 * **登录日志**：可通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
@@ -60,7 +60,7 @@ ms.locfileid: "56206338"
 
 * 你对其拥有 *ListKeys* 权限的 Azure 存储帐户。 建议使用常规存储帐户而非 Blob 存储帐户。 有关存储定价信息，请查看 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/calculator/?service=storage)。 
 * 用于与第三方解决方案集成的 Azure 事件中心命名空间。
-* 用于将日志发送到 Log Analytics 的 Azure Log Analytics 工作区。
+* 用于将日志发送到 Azure Monitor 日志的 Azure Log Analytics 工作区。
 
 ## <a name="cost-considerations"></a>成本注意事项
 
@@ -94,9 +94,9 @@ ms.locfileid: "56206338"
 | 审核 | 1,000 | 0.1 | 52 | 104 KB | 1 | 8,640 | $10.80 |
 | 登录 | 1,000 | 178 | 53,400 | 106.8&nbsp;MB | 418 | 3,611,520 | $11.06 |  
 
-### <a name="log-analytics-cost-considerations"></a>Log Analytics 成本注意事项
+### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor 日志成本注意事项
 
-若要查看与管理 Log Analytics 工作区相关的成本，请参阅[通过在 Log Analytics 中控制数据量和保留期管理成本](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)。
+若要查看与管理 Azure Monitor 日志相关的成本，请参阅[通过在 Azure Monitor 日志中控制数据量和保留期管理成本](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -106,37 +106,37 @@ ms.locfileid: "56206338"
 
 **答**：登录活动日志和审核日志均可通过此功能进行路由，但与 B2C 相关的审核事件目前未包括在其中。 若要了解目前支持哪些类型的日志和哪些基于功能的日志，请参阅[审核日志架构](reference-azure-monitor-audit-log-schema.md)和[登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)。 
 
----
+-----
 
 **问：执行某项操作之后，相应的日志多快会在事件中心内显示？**
 
 **答**：日志会在执行操作后两到五分钟内在事件中心显示。 有关事件中心的详细信息，请参阅[什么是 Azure 事件中心？](../../event-hubs/event-hubs-about.md)。
 
----
+-----
 
 **问：执行某项操作之后，相应的日志多快会在存储帐户中显示？**
 
 **答**：就 Azure 存储帐户而言，执行操作之后，日志的显示会有 5-15 分钟的延迟。
 
----
+-----
 
 **问：如果管理员更改诊断设置的保持期，会发生什么情况？**
 
 **答**：新的保留策略将应用于更改后收集的日志。 策略更改前收集的日志将不会受到影响。
 
----
+-----
 
 **问：存储数据的费用是多少？**
 
 **答**：存储费用取决于日志大小以及所选保留期。 如需租户估算费用（取决于生成的日志量）的列表，请参阅[活动日志的存储大小](#storage-size-for-activity-logs)部分。
 
----
+-----
 
 **问：将数据流式传输到事件中心的费用是多少？**
 
 **答**：流式传输费用取决于每分钟收到的消息数。 本文介绍了费用计算方法并列出了根据消息数估算的费用。 
 
----
+-----
 
 **问：如何将 Azure AD 活动日志与 SIEM 系统集成？**
 
@@ -146,35 +146,35 @@ ms.locfileid: "56206338"
 
 - 使用[报告图形 API](concept-reporting-api.md) 访问数据，并使用自己的脚本将其推送到 SIEM 系统。
 
----
+-----
 
 **问：目前支持哪些 SIEM 工具？** 
 
 **答**：目前，[Splunk](tutorial-integrate-activity-logs-with-splunk.md)、QRadar 和 [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory) 支持 Azure Monitor。 若要详细了解连接器的工作方式，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 
----
+-----
 
 **问：如何将 Azure AD 活动日志与 Splunk 实例集成？**
 
 **答**：首先，[将 Azure AD 活动日志路由到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)，然后按照相关步骤[将活动日志与 Splunk 集成](tutorial-integrate-activity-logs-with-splunk.md)。
 
----
+-----
 
 **问：如何将 Azure AD 活动日志与 Sumo Logic 集成？** 
 
 **答**：首先，[将 Azure AD 活动日志路由到事件中心](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)，然后按照相关步骤[安装 Azure AD 应用程序并查看 SumoLogic 中的仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。
 
----
+-----
 
 **问：是否可以在不使用外部 SIEM 工具的情况下，从事件中心访问数据？** 
 
 **答**：是的。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
 
----
+-----
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [将活动日志存档到存储帐户](quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [将活动日志路由到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)
-* [将活动日志与 Log Analytics 集成](howto-integrate-activity-logs-with-log-analytics.md)
+* [将活动日志与 Azure Monitor 集成](howto-integrate-activity-logs-with-log-analytics.md)

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: dd9314b8c61a98e6bc080503bcdd6b5c6257bd49
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b7d498b34fa3e247d5d4688f8d87213e7707fd86
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750556"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408776"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 数据资源管理器中的时序分析
 
@@ -224,9 +224,9 @@ demo_many_series1
 |   |   |
 | --- | --- |
 |   | Count |
-|   | 23115 |
+|   | 18339 |
 
-现在，我们将创建由读取计数指标的 23115 个时序组成的集。 将 `by` 子句添加到 make-series 语句，应用线性回归，并选择具有最明显递减趋势的前两个时序：
+现在，我们将创建由读取计数指标的 18339 个时序组成的集。 将 `by` 子句添加到 make-series 语句，应用线性回归，并选择具有最明显递减趋势的前两个时序：
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -235,7 +235,7 @@ demo_many_series1
 | make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h) by Loc, Op, DB
 | extend (rsquare, slope) = series_fit_line(reads)
 | top 2 by slope asc 
-| render timechart with(title='Service Traffic Outage for 2 instances (out of 23115)')
+| render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
 ![前两个时序](media/time-series-analysis/time-series-top-2.png)
@@ -258,6 +258,6 @@ demo_many_series1
 |   | Loc 15 | 37 | 1151 | -102743.910227889 |
 |   | Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-在不到两分钟的时间内，ADX 分析了超过 20,000 个时序并检测到了读取计数骤然下降的两个异常时序。
+在不到两分钟的时间内，ADX 分析了接近 20,000 个时序并检测到了读取计数骤然下降的两个异常时序。
 
 将这些高级功能与 ADX 的高速性能相结合，可为时序分析提供独特且强大的解决方案。

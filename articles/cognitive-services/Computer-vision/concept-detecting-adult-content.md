@@ -8,27 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 64db05e5e40b76d219ea0e3214c20297f32da4b5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69a4c136e9c210dd40e004b8d5e1c1a2a8fceaa7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861266"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312514"
 ---
-# <a name="detecting-adult-and-racy-content"></a>检测成人和不雅内容
+# <a name="detect-adult-and-racy-content"></a>检测成人和不雅内容
 
-各种视觉类别中包含成人和不雅内容，可以检测成人材料检测并限制显示包含性内容的图像。 可以在滑尺上设置成人和不雅内容检测的筛选器以满足用户偏好。
+计算机视觉可以检测图像中的成人素材，以便开发人员可以限制此类图像显示在他们的软件中。 应用内容标记并使用评分（介于 0 和 1 之间），以便开发人员可以根据自己的偏好来解释结果。 
 
-## <a name="defining-adult-and-racy-content"></a>定义成人和不雅内容
+> [!NOTE]
+> [Azure 内容审查器](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview)服务也提供此功能。 有关更严格的内容审核方案（例如，文本审核和人工审核工作流）的解决方案，请参阅此替代方案。
 
-在[分析图像方法](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)所涵盖的各种视觉特征中，成人视觉特征可以检测成人和不雅图像。 “成人”图像定义为实质上淫秽并且通常描绘裸体和性行为的图像。 “不雅”图像定义为实际具有性暗示且往往包含一些性露骨内容（比“成人”图像少）的图像。 成人视觉特征类型通常用于限制包含性暗示和明确性内容的图像的显示。
+## <a name="content-flag-definitions"></a>内容标记定义
 
-## <a name="identifying-adult-and-racy-content"></a>标识成人和不雅内容
+“成人”图像的定义为实质上淫秽并且通常描绘裸体和性行为的图像。 
 
-分析图像方法在方法的 JSON 响应中返回两个属性（`isAdultContent` 和 `isRacyContent`），它们分别表示成人和不雅内容。 这两个属性都返回一个布尔值（true 或 false）。 该方法还返回两个属性 `adultScore` 和 `racyScore`，它们分别表示用于识别成人和不雅内容的置信度分数。 可以在滑尺上设置成人和不雅内容检测的置信度筛选器，从而根据具体情况调整偏好。
+“不雅”图像的定义为实际具有性暗示且往往包含露骨的描绘性内容（比“成人”图像少）的图像。 
+
+## <a name="identify-adult-and-racy-content"></a>标识成人和不雅内容
+
+[分析](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。
+
+分析图像方法在方法的 JSON 响应中返回两个布尔属性（`isAdultContent` 和 `isRacyContent`），分别表示成人和不雅内容。 该方法还返回 `adultScore` 和 `racyScore` 这两个属性，它们分别表示用于识别成人和不雅内容的置信度分数。
 
 ## <a name="next-steps"></a>后续步骤
 

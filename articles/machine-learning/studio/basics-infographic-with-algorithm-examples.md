@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: 2db14056b6b5ccf16c8009c21bfcff00954a7802
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 78daf4534334d56c962d97e7a9aac8a7910db34c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242884"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453590"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>可下载信息图：包含算法示例的机器学习基础知识
 
@@ -33,7 +33,7 @@ ms.locfileid: "56242884"
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>为初学者和高级用户提供的关于算法的更多帮助
 
-* 有关不同类型的机器学习算法及其使用方式，以及如何选择适合的解决方案的更深入讨论，请参阅[如何选择 Microsoft Azure 机器学习的算法](algorithm-choice.md)。
+* 有关不同类型的机器学习算法及其使用方式，以及如何选择适合的解决方案的更深入讨论，请参阅[如何选择 Microsoft Azure 机器学习工作室的算法](algorithm-choice.md)。
 * 有关机器学习工作室中所有可用的机器学习算法的种类列表，请参阅“机器学习工作室算法和模块帮助”中的[初始化模型][initialize-model]。
 * 有关机器学习工作室中算法和模块的完整列表（按字母顺序排列），请参阅“机器学习工作室算法和模块帮助”中的[机器学习工作室模块 A-Z 列表][a-z-list]。
 * 若要概括性了解 Azure AI 库以及其中提供的许多社区生成的资源，请参阅[在 Azure AI 库中共享和发现资源](gallery-how-to-use-contribute-publish.md)。

@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: f57f6bf93fce2526bdc478558551616ba1fa3c4c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 4f474fd6ac2fa6a4f44aacf0eacb85a92fdf1de9
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496017"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456463"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
 ## <a name="video-2-data-science-for-beginners-series"></a>视频 2：适合初学者的数据科学系列
@@ -100,7 +100,7 @@ ms.locfileid: "55496017"
 
 有了相关、连续、准确且充足的数据，就有了进行优质数据科学分析所需的全部要素。
 
-务必观看 Microsoft Azure 机器学习的“适合初学者的数据科学”中的其他视频。
+务必观看 Microsoft Azure 机器学习工作室“适合初学者的数据科学”中的其他四个视频。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室尝试第一个数据科学实验](create-experiment.md)

@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1967ba60088cae2b946cfcfe1467c2de5aebccdf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a85fb65ad971bfc70bdab0689e99921e616b56ac
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879945"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308853"
 ---
-# <a name="image-categorization-with-computer-vision"></a>使用计算机视觉进行图像分类
+# <a name="categorize-images"></a>对图像进行分类
 
-除了标记和说明以外，计算机视觉还返回早期版本中定义的基于分类的类别。 这些类别组织为具有父/子遗传的层次结构的分类。 所有类别均采用英语。 它们可单独使用或与我们的新标记模型结合使用。
+除了标记和说明以外，计算机视觉还返回图像中检测到的基于分类的类别。 不同于标记，类别是在父/子继承层次结构中组织的，并且数量更少（86 个，与数千个标记截然相反）。 所有类别名称均采用英语。 它可以单独完成分类，也可以与新的标记模型共同完成。
 
 ## <a name="the-86-category-concept"></a>86 类别概念
 
-根据下图中所示的包含 86 个概念的列表，可以对图像按广泛到具体进行分类。 有关文本格式的完整分类，请参阅[类别分类](category-taxonomy.md)。
+计算机视觉可以使用下表中 86 种类别广泛或具体地对图像进行分类。 有关文本格式的完整分类，请参阅[类别分类](category-taxonomy.md)。
 
 ![类别分类中所有类别的分组列表](./Images/analyze_categories-v2.png)
 

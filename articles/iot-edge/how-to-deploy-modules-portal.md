@@ -4,18 +4,18 @@ description: 使用 Azure 门户将模块部署到 IoT Edge 设备
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/03/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8b7327796cf29c8c234c0a750c90e0689f508f7e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969397"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430108"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 
@@ -51,6 +51,7 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
    * **IoT Edge 模块** - 默认选项。
    * **Azure 流分析模块** - 仅限通过 Azure 流分析工作负荷生成的模块。
+   * **Azure 机器学习模块** - 仅限从 Azure 机器学习工作区生成的模型映像。
 
 1. 选择“IoT Edge 模块”。
 
@@ -82,6 +83,29 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 ## <a name="view-modules-on-your-device"></a>查看设备上的模块
 
 将模块部署到设备之后，即可在门户的“设备详细信息”页中查看所有模块。 此页面显示每个已部署模块的名称，以及部署状态和退出代码等有用信息。
+
+## <a name="deploy-modules-from-azure-marketplace"></a>从 Azure 市场部署模块
+
+Azure 市场是一个应用程序和服务在线市场，可在其中浏览各种企业应用程序和解决方案，这些应用程序和解决方案针对在 Azure 上运行进行了认证和优化，包括 [IoT Edge 模块](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)。 还可以在“创建资源”下通过 Azure 门户访问 Azure 市场。
+
+可以从 Azure 市场或 Azure 门户安装 IoT Edge 模块：
+
+1. 查找模块并开始部署过程。
+
+   * Azure 门户：查找模块，然后选择“创建”。
+
+   * Azure 市场：
+
+     1. 查找模块，然后选择“立即获取”。
+     1. 通过选择“继续”，承认提供商的使用条款和隐私政策。
+
+1. 选择你的订阅和要将目标设备附加到的 IoT 中心。
+
+1. 选择“部署到设备”。
+
+1. 输入设备的名称，或选择“查找设备”以浏览注册到中心的设备。
+
+1. 选择“创建”以继续配置部署清单的标准过程，包括根据需要添加其他模块。 新模块的详细信息（例如映像 URI、创建选项以及所需的属性）已预定义，但可以更改。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: c36572230387ffc33a46913dbcc1259ea65f84f5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bd1761ecf16bbfb0d3fdc354ab1b9fa1f42f9c17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104227"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328570"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso - 到 Azure 的大规模迁移
 
@@ -292,11 +292,10 @@ Contoso 需要了解如何根据容量注意事项部署这些组件。
 **配置服务器** | 根据 Contoso 总共复制 100=200 VM 的估计和[配置服务器大小调整要求](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server)，Contoso 估计需要如下所示的配置服务器计算机：<br/><br/> CPU：16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz）<br/><br/> 内存: 32 GB<br/><br/> 缓存磁盘：1 TB<br/><br/> 数据更改率：1 TB 至 2 TB。<br/><br/> 除大小调整要求外，Contoso 还需要确保配置服务器处于最佳位置，即应位于与将迁移的 VM 相同的网络和 LAN 区段中。
 **进程服务器** | Contoso 将部署独立的专用进程服务器，使其能够复制 100-200 个 VM：<br/><br/> CPU：16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz）<br/><br/> 内存: 32 GB<br/><br/> 缓存磁盘：1 TB<br/><br/> 数据更改率：1 TB 至 2 TB。<br/><br/> 进程服务器将努力工作，并且在此情况下，它们应位于可以处理复制所需的磁盘 I/O、网络流量和 CPU 的 ESXi 主机。 为此，Contoso 将考虑使用专用主机。 
 **网络** | Contoso 检查了当前的站点到站点 VPN 基础结构，并决定实现 Azure ExpressRoute。 此实现至关重要，因为它可降低延迟，并将带宽提高到 Contoso 的美国东部 2 的主要 Azure 区域。<br/><br/> **监视**：Contoso 需要密切监视源自进程服务器的数据流。 如果数据使网络带宽过载，Contoso 将考虑[限制进程服务器带宽](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth)。
-**Azure 存储** | 对于迁移，Contoso 还需创建适当类型和数量的目标 Azure 存储帐户。  Site Recovery 将 VM 数据复制到 Azure 存储。<br/><br/> Site Recovery 可复制到标准或高级 (SSD) 存储帐户。<br/><br/> 若要确定存储，Contoso 必须检查[存储限制](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)，并随着时间的推移考虑预期的增长和使用量的增加。 鉴于速度和迁移优先级，Contoso 决定使用高级存储帐户。<br/><br/> 迁移过程期间，他们将创建并重复使用多个存储帐户。
-Contoso 已决定对要部署到 Azure 的所有 VM 使用托管磁盘。  所需的 IOPS 将确定磁盘为标准版 (HDD) 还是高级版 (SSD)。<br/>.<br/>
+**Azure 存储** | 对于迁移，Contoso 还需创建适当类型和数量的目标 Azure 存储帐户。  Site Recovery 将 VM 数据复制到 Azure 存储。<br/><br/> Site Recovery 可复制到标准或高级 (SSD) 存储帐户。<br/><br/> 若要确定存储，Contoso 必须检查[存储限制](../virtual-machines/windows/disks-types.md)，并随着时间的推移考虑预期的增长和使用量的增加。 鉴于迁移速度和优先级，Contoso 决定使用高级 SSD<br/><br/>
+Contoso 已决定对要部署到 Azure 的所有 VM 使用托管磁盘。  所需的 IOPS 将确定磁盘是标准 HDD、标准 SSD 还是高级 SSD。<br/><br/>
 
-
-#### <a name="data-migration-service"></a>数据迁移服务 
+#### <a name="data-migration-service"></a>数据迁移服务
 
 Azure 数据库迁移服务 (DMS) 是一项完全托管的服务，支持从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。
 

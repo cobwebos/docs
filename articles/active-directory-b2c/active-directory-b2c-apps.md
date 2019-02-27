@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7ea179ff7e4b525e86003faadfb92e090476bd81
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172640"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446369"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
@@ -91,10 +91,10 @@ Accept: application/json
 Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移动应用程序、单页应用程序、服务器端守护程序，甚至其他 Web API）接收令牌。 下面是 Web 应用程序调用 Web API 的完整流程示例：
 
 1. Web 应用程序执行策略，用户完成用户体验。
-2. Azure AD B2C 将 `access_token` 和授权代码返回到浏览器。
-3. 浏览器将 `access_token` 和授权代码发布到重定向 URI。
-4. Web 服务器验证 `access token` 并设置会话 Cookie。
-5. `access_token` 向 Azure AD B2C 提供授权代码、应用程序客户端 ID 和凭据。
+2. Azure AD B2C 将 (OpenID Connect) `id_token` 和授权代码返回到浏览器。
+3. 浏览器将 `id_token` 和授权代码发布到重定向 URI。
+4. Web 服务器验证 `id_token` 并设置会话 Cookie。
+5. Web 服务器通过提供授权代码、应用程序客户端 ID 和客户端凭据，请求 Azure AD B2C 提供 `access_token`。
 6. `access_token` 和 `refresh_token` 返回到 Web 服务器。
 7. 使用授权标头中的 `access_token` 调用 Web API。
 8. Web API 对令牌进行验证。

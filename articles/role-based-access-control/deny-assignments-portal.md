@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 门户查看拒绝分配 | Microsoft Docs
-description: 了解如何通过 Azure 门户查看已被拒绝在特定范围内访问特定操作的用户、组、服务主体和托管标识。
+title: 使用 Azure 门户查看 Azure 资源的拒绝分配 | Microsoft Docs
+description: 了解如何通过 Azure 门户查看已被拒绝在特定范围内访问特定 Azure 资源操作的用户、组、服务主体和托管标识。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5870ddbbb8be0ebbeae7656485521a327b86d5b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637722"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343232"
 ---
-# <a name="view-deny-assignments-using-the-azure-portal"></a>使用 Azure 门户查看拒绝分配
+# <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>使用 Azure 门户查看 Azure 资源的拒绝分配
 
-即使角色分配授予用户访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的操作。 即使无法自行创建拒绝分配，也仍然需要能够查看拒绝分配，因为它们可能会影响你的总体权限。 若要获取有关拒绝分配的信息，必须具有 `Microsoft.Authorization/denyAssignments/read` 权限，大部分[内置角色](built-in-roles.md)都包含该权限。
+即使角色分配向用户授予了访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 即使无法自行创建拒绝分配，也仍然需要能够查看拒绝分配，因为它们可能会影响你的总体权限。 若要获取有关拒绝分配的信息，必须具有 `Microsoft.Authorization/denyAssignments/read` 权限，大部分 [Azure 资源内置角色](built-in-roles.md)都包含该权限。
 
 本文介绍如何使用 Azure 门户来查看拒绝分配。
 
@@ -86,7 +86,7 @@ ms.locfileid: "52637722"
 
     ![拒绝分配 - 已拒绝权限](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | 操作类型 | Description |
+    | 操作类型 | 说明 |
     | --- | --- |
     | **操作**  | 已拒绝管理操作。 |
     | **不操作** | 从已拒绝管理操作中排除的管理操作。 |
@@ -105,5 +105,5 @@ ms.locfileid: "52637722"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解拒绝分配](deny-assignments.md)
-* [使用 RBAC 和 REST API 列出拒绝分配](deny-assignments-rest.md)
+* [了解 Azure 资源的拒绝分配](deny-assignments.md)
+* [使用 REST API 列出 Azure 资源的拒绝分配](deny-assignments-rest.md)

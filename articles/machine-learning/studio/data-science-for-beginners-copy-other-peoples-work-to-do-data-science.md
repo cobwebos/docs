@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 194f92b84b17fc2f2c9bc8f3aca6f6ad05f65d30
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 821ee126350d18102ec92de04436a76050734dc4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241438"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456820"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列
@@ -52,7 +52,7 @@ ms.locfileid: "56241438"
 
 Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习工作室](https://azure.microsoft.com/services/machine-learning-studio/)，欢迎免费进行试用。 它提供了一个工作区，可在其中使用不同的机器学习算法进行试验，并且在已制定出解决方案时，可以 Web 服务启动它。
 
-此服务的一部分被称为 **[Azure AI 库](https://gallery.azure.ai/)**。 它包含资源，包括 Azure 机器学习试验或模型（由用户生成并贡献给他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。 欢迎每个人前往浏览。
+此服务的一部分被称为 **[Azure AI 库](https://gallery.azure.ai/)**。 它包含资源，包括 Azure 机器学习工作室试验或模型（由用户生成并贡献给他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。 欢迎每个人前往浏览。
 
 ![Azure AI 库](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -88,8 +88,8 @@ Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习工作室](
 
 可在 [Azure AI 库](https://gallery.azure.ai)中查找工作试验，并将这些工作试验用作自己解决方案的起始点。
 
-务必观看 Microsoft Azure 机器学习的“适合初学者的数据科学”中的其他视频。
+务必观看 Microsoft Azure 机器学习工作室的“适合初学者的数据科学”中的其他视频。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Azure 机器学习尝试第一个数据科学实验](create-experiment.md)
+* [使用 Azure 机器学习工作室尝试第一个数据科学实验](create-experiment.md)
 * [在 Microsoft Azure 上获取机器学习简介](what-is-machine-learning.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: d4c0bbdfb1afcef33727ba4b5b432c5de79168d4
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 8241dc0303b7e60f9ce1e04e56d152c9a0b3906c
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495214"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327504"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -158,8 +158,6 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 ![“托管磁盘”页的屏幕截图](./media/oracle-design/premium_disk01.png)
 
-有关详细信息，请参阅 [VM 的高性能高级存储与托管磁盘](https://docs.microsoft.com/azure/storage/storage-premium-storage)。
-
 在虚拟机上配置存储后，可能需要在创建数据库前先对磁盘进行负载测试。 了解延迟和吞吐量的 I/O 速率有助于判断 VM 是否支持预计的吞吐量，并实现预期延迟目标。
 
 有多种工具可用于应用程序负载测试，包括 Oracle Orion、Sysbench 和 Fio。
@@ -192,15 +190,13 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - 只读：缓存所有请求，供将来读取。 将所有写入直接保存到 Azure Blob 存储。
 
-- 读取/写入：这是一种“预读”算法。 将缓存所有读取和写入，供将来读取。 非直写式写入首先会保存在本地缓存中。 对于 SQL Server，写入将保存到 Azure 存储，因为它使用直写。 它还为轻型工作负荷提供最低的磁盘延迟。
+- 读/写：这是一种“预读”算法。 将缓存所有读取和写入，供将来读取。 非直写式写入首先会保存在本地缓存中。 对于 SQL Server，写入将保存到 Azure 存储，因为它使用直写。 它还为轻型工作负荷提供最低的磁盘延迟。
 
 - 无（已禁用）：使用此选项可绕过缓存。 所有数据都传输到磁盘，并保存在 Azure 存储中。 此方法可为 I/O 密集型工作负荷提供最高的 I/O 速率。 此外，还需要考虑“事务成本”。
 
 **建议**
 
 要最大限度提高吞吐量，建议对主机缓存启用“无”选项。 请注意，对于高级存储，在使用“只读”或“无”选项来装载文件系统时，必须禁用“屏障”。 通过 UUID 将 /etc/fstab 文件更新到磁盘。
-
-有关详细信息，请参阅 [Linux VM 的高级存储](https://docs.microsoft.com/azure/storage/storage-premium-storage#premium-storage-for-linux-vms)。
 
 ![“托管磁盘”页的屏幕截图](./media/oracle-design/premium_disk02.png)
 
@@ -215,7 +211,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 设置并配置 Azure 环境后，下一步是保护网络的安全。 以下是一些建议：
 
-- NSG 策略：可使用子网或 NIC 定义 NSG。 对于诸如应用程序防火墙等内容，可更轻松地控制子网级别的访问，确保安全性和强制路由。
+- NSG 策略：NSG 可由子网或 NIC 定义。 对于诸如应用程序防火墙等内容，可更轻松地控制子网级别的访问，确保安全性和强制路由。
 
 - Jumpbox：为了提高访问的安全性，管理员不应直接连接到应用程序服务或数据库。 使用 Jumpbox 作为管理员计算机与 Azure 资源之间的媒介。
 ![“Jumpbox 拓扑”页屏幕截图](./media/oracle-design/jumpbox.png)
@@ -234,5 +230,5 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：创建具有高可用性的 VM](../../linux/create-cli-complete.md)
+- [教程：创建高度可用的 VM](../../linux/create-cli-complete.md)
 - [浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)

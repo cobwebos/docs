@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: hascipio; v-divte; v-miclar
-ms.openlocfilehash: 535a947f7a4b9c750d585ce854a14be80c4a135c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 381f88c4641417bceca0f988d4b1a187aedaa642
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638880"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327300"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>创建 VHD 期间出现的常见问题 (FAQ)
 
@@ -27,7 +27,7 @@ ms.locfileid: "49638880"
 
 ## <a name="how-do-you-create-a-vm-from-the-azure-portal-using-the-vhd-that-is-uploaded-to-premium-storage"></a>如何使用上传到高级存储的 VHD 在 Azure 门户中创建 VM？
 
-Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像创建 VM 套餐。  有关这些存储选项的详细信息，请参阅 [Azure 托管磁盘概述](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)和 [VM 的高性能高级存储和托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)。
+Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像创建 VM 套餐。  有关这些存储选项的详细信息，请参阅 [Azure 托管磁盘概述](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)。
 
 
 ## <a name="can-you-use-generation-2-vms-for-offers"></a>是否可将第 2 代 VM 用于套餐？
@@ -73,7 +73,7 @@ Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像�
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>在 VM 中如何管理启动任务中的自定义脚本扩展？
 
-以下文章详细介绍了如何通过 Azure PowerShell 模块、Azure 资源管理器模板使用自定义脚本扩展，并详细介绍了 Windows 系统上的故障排除步骤：[适用于 Windows 的自定义脚本扩展](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+下文详细说明如何通过 Azure PowerShell 模块、Azure 资源管理器模板使用自定义脚本扩展，同时详细说明 Windows 系统上的故障排除步骤：[适用于 Windows 的自定义脚本扩展](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Azure 市场是否支持 32 位应用程序或服务？

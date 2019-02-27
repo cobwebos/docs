@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de2aa262dff54f2b8e535aa646e9a8cac7719567
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7220fc6b239d20e9f1fc81e7d18b4d7ca6f0ded5
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165257"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453624"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的 Log Analytics 视图
 
@@ -33,7 +33,7 @@ Azure Active Directory Log Analytics 视图可以帮助你分析和搜索 Azure 
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用 Log Analytics 视图，需要：
+若要使用 Log Analytics 视图，需要执行以下操作：
 
 * 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 * 首先，完成[将 Azure AD 活动日志路由到 Log Analytics 工作区](howto-integrate-activity-logs-with-log-analytics.md)的相关步骤。
@@ -41,13 +41,13 @@ Azure Active Directory Log Analytics 视图可以帮助你分析和搜索 Azure 
 
 ## <a name="install-the-log-analytics-views"></a>安装 Log Analytics 视图
 
-1. 导航到 Log Analytics 工作区。 若要执行此操作，首先导航到 [Azure 门户](https://portal.azure.com)，然后选择“所有服务”。 在文本框中键入“Log Analytics”，然后选择“Log Analytics”。 选择要将活动日志路由到的工作区，作为必备项的一部分。
+1. 导航到 Log Analytics 工作区。 若要执行此操作，首先导航到 [Azure 门户](https://portal.azure.com)，然后选择“所有服务”。 在文本框中键入“Log Analytics”，然后选择“Log Analytics 工作区”。 选择要将活动日志路由到的工作区，作为必备项的一部分。
 2. 选择“视图设计器”，选择“导入”，然后选择“选择文件”，从本地计算机中导入视图。
 3. 选择从必备项中下载的视图，然后选择“保存”，以保存导入。 对“Azure AD 帐户预配事件”视图和“登录事件”视图执行此操作。
 
 ## <a name="use-the-views"></a>使用视图
 
-1. 导航到 Log Analytics 工作区。 若要执行此操作，首先导航到 [Azure 门户](https://portal.azure.com)，然后选择“所有服务”。 在文本框中键入“Log Analytics”，然后选择“Log Analytics”。 选择要将活动日志路由到的工作区，作为必备项的一部分。
+1. 导航到 Log Analytics 工作区。 若要执行此操作，首先导航到 [Azure 门户](https://portal.azure.com)，然后选择“所有服务”。 在文本框中键入“Log Analytics”，然后选择“Log Analytics 工作区”。 选择要将活动日志路由到的工作区，作为必备项的一部分。
 
 2. 位于工作区中时，选择“工作区摘要”。 应该会看到以下三个视图：
 
@@ -73,5 +73,5 @@ Azure Active Directory Log Analytics 视图可以帮助你分析和搜索 Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何在 Log Analytics 中分析活动日志](howto-analyze-activity-logs-log-analytics.md)
-* [在 Azure 门户中开始使用 Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [如何使用 Azure Monitor 日志分析活动日志](howto-analyze-activity-logs-log-analytics.md)
+* [Azure 门户中的 Azure Monitor 日志入门](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)

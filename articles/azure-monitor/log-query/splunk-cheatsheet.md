@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: d6065420b9081333fc257501ace868f64220ca63
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dafafa8ff5d721034b3b10bdeb1a2fc09cd32835
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005244"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267574"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>从 Splunk 到 Azure Monitor 日志查询
 
-本文旨在帮助熟悉 Splunk 的用户通过学习数据资源管理器查询语言，在 Azure Monitor 中编写日志查询。 其中将两者做了直接的比较，让用户了解它们的主要差异和相似之处，并抉机利用现有的知识。
+本文旨在帮助熟悉 Splunk 的用户通过学习 Kusto 查询语言，以在 Azure Monitor 中编写日志查询。 其中将两者做了直接的比较，让用户了解它们的主要差异和相似之处，并抉机利用现有的知识。
 
 ## <a name="structure-and-concepts"></a>结构和概念
 
@@ -218,4 +218,4 @@ Splunk 中的联接具有很强的限制。 子查询限制为 10000 条结果�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成关于如何[在 Azure Monitor 中编写日志查询](get-started-queries.md)的课程。
+- 完成关于[在 Azure Monitor 中编写日志查询](get-started-queries.md)的一课。

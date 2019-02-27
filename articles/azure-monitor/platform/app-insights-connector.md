@@ -11,21 +11,27 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 3013d8997660df95fb12c8b18c1120f726eead04
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8b1504961254fefcaafc22008b4cc5adaf77e9c4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216014"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447865"
 ---
-# <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版）
+# <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
 
 ![Application Insights 符号](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> 在[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)和[查看多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)的支持下，将不再需要 Application Insights 连接器管理解决方案。 Application Insights 连接器将被弃用并从 Azure 市场中删除；同时 Azure 商业云的 OMS 门户将于 2019 年 1 月 15 日正式弃用，Azure 美国政府云的 OMS 门户将于 2019 年 3 月 30 日正式弃用。 现有连接将继续运行到 2019 年 6 月 30 日为止。 随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 将支持使用 2019 年 1 月推出的 REST API 来执行上述操作，并且将在 [Azure 更新](https://azure.microsoft.com/updates/)中发布通知。 有关详细信息，请参阅 [OMS 门户即将转移到 Azure](../../azure-monitor/platform/oms-portal-transition.md)。
+> 在[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)的支持下，不再需要 Application Insights 连接器管理解决方案。 该解决方案已被弃用并从 Azure 市场中删除，同时 Azure 商业云的 OMS 门户将于 2019 年 1 月 15 日正式弃用。 Azure 美国政府云将于 2019 年 3 月 30 日停用该门户。
+>
+>现有连接将继续运行到 2019 年 6 月 30 日为止。  随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 有关使用 PowerShell 删除现有连接的脚本，请参阅下面的[使用 PowerShell 删除连接器](#removing-the-connector-with-powershell)。
+>
+>有关查询多个应用程序的 Application Insights 日志数据的指导，请参阅[统一多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)。 有关 OMS 门户弃用的详细信息，请参阅 [OMS 门户即将转移到 Azure](../../azure-monitor/platform/oms-portal-transition.md)。
+>
+> 
 
 可以借助 Application Insights 连接器解决方案诊断性能问题，以及了解用户在使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 监视的应用中执行的操作。 Log Analytics 中提供了 Application Insights 中向开发人员显示的相同应用程序遥测数据视图。 但是，将 Application Insights 应用与 Log Analytics 集成时，将操作和应用程序数据放在一个位置可以增强应用程序的可见性。 使用相同的视图有助于与应用开发人员协作。 常见的视图可帮助减少检测和解决应用程序与平台问题的时间。
 
@@ -262,6 +268,57 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 ## <a name="sample-log-searches"></a>示例日志搜索
 
 此解决方案不会在仪表板上显示一组示例日志搜索。 但是，[查看 Application Insights 连接器信息](#view-application-insights-connector-information)部分中显示了示例日志搜索查询与说明。
+
+## <a name="removing-the-connector-with-powershell"></a>使用 PowerShell 删除连接器
+随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 可使用以下 PowerShell 脚本删除现有连接。 必须是工作区的所有者或贡献者以及 Application Insights 资源的读者才能执行此操作。
+
+```PowerShell
+$Subscription_app = "App Subscription Name"
+$ResourceGroup_app = "App ResourceGroup"
+$Application = "Application Name"
+$Subscription_workspace = "Workspace Subscription Name"
+$ResourceGroup_workspace = "Workspace ResourceGroup"
+$Workspace = "Workspace Name"
+
+Connect-AzureRmAccount
+Set-AzureRmContext -SubscriptionId $Subscription_app
+$AIApp = Get-AzureRmApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
+Set-AzureRmContext -SubscriptionId $Subscription_workspace
+Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
+```
+
+你可以使用以下可调用 REST API 调用的 PowerShell 脚本来检索应用程序列表。 
+
+```PowerShell
+Connect-AzureRmAccount
+$Tenant = "TenantId"
+$Subscription_workspace = "Workspace Subscription Name"
+$ResourceGroup_workspace = "Workspace ResourceGroup"
+$Workspace = "Workspace Name"
+$AccessToken = "AAD Authentication Token" 
+
+Set-AzureRmContext -SubscriptionId $Subscription_workspace
+$LAWorkspace = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
+
+$Headers = @{
+    "Authorization" = "Bearer $($AccessToken)"
+    "x-ms-client-tenant-id" = $Tenant
+}
+
+$Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
+$ConnectionsJson = $Connections | ConvertTo-Json
+```
+此脚本需要持有者身份验证令牌才能对 Azure Active Directory 进行身份验证。 检索此令牌的一种方法是使用 [REST API 文档站点](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)中的文章。 单击“试用”，然后登录 Azure 订阅。 可从“请求预览”复制持有者令牌，如下图所示。
+
+
+![持有者令牌](media/app-insights-connector/bearer-token.png)
+
+
+还可使用日志查询检索应用程序列表：
+
+```Kusto
+ApplicationInsights | summarize by ApplicationName
+```
 
 ## <a name="next-steps"></a>后续步骤
 

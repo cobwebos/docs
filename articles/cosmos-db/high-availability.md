@@ -4,15 +4,15 @@ description: 本文介绍 Azure Cosmos DB 如何提供高可用性
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b5e99b421e66f087a1793f5301736e192ef75c08
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109752"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311233"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
 
@@ -64,19 +64,7 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 
 - 即使 Cosmos 帐户具有高可用性，应用程序也不一定能够正常保持高可用性。 若要测试应用程序的端到端高可用性，请在应用程序测试或灾难恢复 (DR) 演练过程中，定期[使用 Azure CLI 或 Azure 门户调用手动故障转移](how-to-manage-database-account.md#manual-failover)。
 
-
-制定业务连续性计划时，需了解应用程序在中断事件发生后完全恢复之前的最大可接受时间。 应用程序完全恢复所需的时间称为恢复时间目标 (RTO)。 此外，还需要了解从中断事件恢复时，应用程序可忍受最近数据更新丢失的最长期限。 可以承受更新丢失的时限称为恢复点目标 (RPO)。
-
-下表显示了最常见方案的 RPO 和 RTO。
-
-|区域数量 |配置 |一致性级别|RPO |RTO |
-|---------|---------|---------|-------|-------|
-|1    | *    |*   | < 240 分钟 | < 1 周 |
-|>1     | 单主数据库复制 | 会话、一致的前缀或最终 | < 15 分钟 | < 15 分钟 |
-|>1     | 单主数据库复制 | 有限过期 | K & T | < 15 分钟 |
-|>1     | 多主数据库复制 | 会话、一致的前缀或最终 | < 15 分钟 | 0 |
-|>1     | 多主数据库复制 | 有限过期 | K & T | 0 |
-|>1     | * | 非常 | 0 | < 15 分钟 |
+- 在全球分布式数据库环境中，当发生区域范围的服务中断时，一致性级别与数据持续性之间存在直接关系。 制定业务连续性计划时，需了解应用程序在中断事件发生后完全恢复之前的最大可接受时间。 应用程序完全恢复所需的时间称为恢复时间目标 (RTO)。 此外，还需要了解从中断事件恢复时，应用程序可忍受最近数据更新丢失的最长期限。 可以承受更新丢失的时限称为恢复点目标 (RPO)。 若要查看 Azure Cosmos DB 的 RPO 和 RTO，请参阅[一致性级别和数据持续性](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="next-steps"></a>后续步骤
 
