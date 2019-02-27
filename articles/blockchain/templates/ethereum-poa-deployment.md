@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 47f9dfea24dc3134e6a2f476affaaff7e60efe8c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3edd70d3012840bd66460219c32135666619a3bf
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260374"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313562"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum 权威证明联盟
 
@@ -81,7 +81,7 @@ ms.locfileid: "54260374"
 
 ### <a name="deployment-architecture"></a>部署体系结构
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>说明
 
 此解决方案可以部署基于单个或多个区域的多成员 Ethereum 联盟网络。 默认情况下，可以通过公共 IP 访问 RPC 和对等互连终结点，以简化订阅和云之间的连接。 建议利用[奇偶校验权限协议](https://wiki.parity.io/Permissioning)控制应用程序级访问。 我们还支持在 VPN 后方部署网络，利用 VNet 网关实现跨订阅连接。 这些部署更复杂，因此建议先从公共 IP 模型开始。
 
@@ -206,7 +206,7 @@ ms.locfileid: "54260374"
 
 每个参数的详细说明如下：
 
-参数名称|Description|允许的值|默认值
+参数名称|说明|允许的值|默认值
 ---|---|---|---
 新建网络还是加入现有网络？|新建网络或加入预先存在的联盟网络|新建 加入现有|新建
 电子邮件地址（可选）|部署完成后，可收到包含相关部署信息的电子邮件通知。|有效的电子邮件地址|NA
@@ -226,7 +226,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 
 每个参数的详细说明如下：
 
-  参数名称|Description|允许的值|默认值
+  参数名称|说明|允许的值|默认值
   ---|---|---|---
   区域数量|部署联盟网络的区域数量|1、2、3、4、5|1
   第一个区域|部署联盟网络的第一个区域|所有允许的 Azure 区域|NA
@@ -244,7 +244,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 
 每个参数的详细说明如下：
 
-  参数名称|Description|允许的值|默认值
+  参数名称|说明|允许的值|默认值
   ---|---|---|---
   负载均衡验证程序节点数|要预配为网络组成部分的验证程序节点数|2-15|2
   验证程序节点存储性能|支持每个已部署验证程序节点的托管磁盘的类型。|标准 SSD 或高级|标准 SSD
@@ -270,7 +270,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 
 每个参数的详细说明如下：
 
-  参数名称|Description|允许的值|默认值
+  参数名称|说明|允许的值|默认值
   ---|---|---|---
 联盟成员 ID|与参与联盟网络的每个成员相关联的 ID，用于配置 IP 地址空间以避免冲突。 在专用网络中，成员 ID 在同一网络中的不同组织之间应该是唯一的。  即使同一个组织部署到多个区域，也需要一个唯一的成员 ID。 记下此参数的值，因为需要与其他加入成员共享它，以确保不会产生冲突。|0-255|NA
 网络 ID|要部署的 Ethereum 联盟网络的网络 ID。  每个 Ethereum 网络都有自己的网络 ID，其中 1 是公共网络的 ID。|5 - 999,999,999|10101010
@@ -287,7 +287,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 
 “监视”边栏选项卡支持为网络配置 Log Analytics 资源。 监视代理从网络收集并显示有用的指标和日志，从而提供快速检查网络运行状况或调试问题的功能。
 
-  参数名称|Description|允许的值|默认值
+  参数名称|说明|允许的值|默认值
   ---|---|---|---
 监视|启用监视的选项|启用或禁用|启用
 连接到现有 Log Analytics|新建 Log Analytics 实例或加入现有实例|新建或加入现有|新建
@@ -359,7 +359,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 
     -  选择与网络上其他成员相同的验证程序节点数，以确保公平表示
 
-    -  使用[上一步](#step-1-add-the-new-admin)中提供的同一 Ethereum 地址
+    -  使用上一步中提供的同一 Ethereum 地址
 
     -  传入“Ethereum 设置”选项卡上提供的“联盟数据 URL”
 

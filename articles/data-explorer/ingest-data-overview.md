@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 1/14/2019
-ms.openlocfilehash: 8d5fc1c579fd09f1a71d63dce4d1673ef5a8652b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 2/18/2019
+ms.openlocfilehash: 4fd0f0990163963fc0cc3c7caf221609da487909
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354614"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340172"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -39,15 +39,21 @@ Azure 数据资源管理器数据管理服务负责数据引入的，该服务�
 
 Azure 数据资源管理器支持多种引入方法，每种方法都有自己的目标方案、优点和缺点。 Azure 数据资源管理器提供用于常见服务的管道和连接器、使用 SDK 的编程引入以及以探索为目的对引擎进行的直接访问。
 
-### <a name="ingestion-using-pipelines"></a>使用管道的引入
+### <a name="ingestion-using-pipelines-connectors-and-plugins"></a>使用管道、连接器和插件的引入
 
-Azure 数据资源管理器当前支持事件中心管道，该管道可以使用 Azure 门户中的管理向导进行管理。 有关详细信息，请参阅[快速入门：将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)。
+Azure 数据资源管理器目前支持：
 
-### <a name="ingestion-using-connectors-and-plugins"></a>使用连接器和插件的引入
+* 事件网格管道，该管道可以使用 Azure 门户中的管理向导进行管理。 有关详细信息，请参阅[将 Azure Blob 引入 Azure 数据资源管理器](ingest-data-event-grid.md)。
 
-* Azure 数据资源管理器支持 Logstash 插件。 有关详细信息，请参阅 [Azure 数据资源管理器的 Logstash 输出插件](https://github.com/Azure/logstash-output-kusto/blob/master/README.md)。
+* 事件中心管道，该管道可以使用 Azure 门户中的管理向导进行管理。 有关详细信息，请参阅[将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)。
 
-* Azure 数据资源管理器支持 Kafka 连接器。 有关详细信息，请参阅[快速入门：将数据从 Kafka 引入到 Azure 数据资源管理器](ingest-data-kafka.md)
+* Logstash 插件，请参阅[将数据从 Logstash 引入 Azure 数据资源管理器](ingest-data-logstash.md)。
+
+* Kafka 连接器，请参阅[将数据从 Kafka 引入到 Azure 数据资源管理器](ingest-data-kafka.md)。
+
+### <a name="ingestion-using-integration-services"></a>使用集成服务的引入
+
+* Azure 数据工厂 (ADF) 是 Azure 中分析工作负荷的完全托管数据集成服务，用于向/从 Azure 数据资源管理器复制数据。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](/azure/data-factory/connector-azure-data-explorer)。
 
 ### <a name="programmatic-ingestion"></a>编程引入
 
@@ -131,21 +137,27 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 架构映射有助于将源数据字段绑定到目标表列。
 
 * [CSV 映射](/azure/kusto/management/mappings?branch=master#csv-mapping)（可选）适用于所有基于序号的格式。 可以使用引入命令参数执行该功能，或者[在表中预创建](/azure/kusto/management/tables?branch=master#create-ingestion-mapping)并从引入命令参数进行引用。
-* [JSON 映射](/azure/kusto/management/mappings?branch=master#json-mapping)（必需）和 [Avro 映射](/azure/kusto/management/mappings?branch=master#avro-mapping)（必需）可以使用引入命令参数来执行，或者[在表中预创建](/azure/kusto/management/tables#create-ingestion-mapping)并从引入命令参数进行引用。
+* 可以使用引入命令参数执行 [JSON 映射](/azure/kusto/management/mappings?branch=master#json-mapping)（强制）和 [Avro 映射](/azure/kusto/management/mappings?branch=master#avro-mapping)（强制）。 可以](/azure/kusto/management/tables#create-ingestion-mapping)在表上预先创建[它们并从引入命令参数引用。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [快速入门：将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)
+> [将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [快速入门：将数据从 Kafka 引入到 Azure 数据资源管理器](ingest-data-kafka.md)
+> [使用事件网格订阅将数据引入到 Azure 数据资源管理器](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
-> [快速入门：使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)
+> [将数据从 Kafka 引入到 Azure 数据资源管理器](ingest-data-kafka.md)
 
 > [!div class="nextstepaction"]
-> [快速入门：使用 Azure 数据资源管理器 Node 库引入数据](node-ingest-data.md)
+> [使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [快速入门：使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据](net-standard-ingest-data.md)
+> [使用 Azure 数据资源管理器 Node 库引入数据](node-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据](net-standard-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [将数据从 Logstash 引入 Azure 数据资源管理器](ingest-data-logstash.md)

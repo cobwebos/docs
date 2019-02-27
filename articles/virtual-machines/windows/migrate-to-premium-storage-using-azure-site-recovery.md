@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 6db263dcfc3195c9b2ab3afe7587845a4632fd1b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f7c422d560341e51fad582439117533b7d9cd4c8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456521"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327657"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
-[Azure 高级存储](premium-storage.md)为运行 I/O 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 本指南帮助用户使用 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 将其 VM 磁盘从标准存储帐户迁移到高级存储帐户。
+[Azure 高级 SSD](disks-types.md) 为运行 I/O 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 本指南帮助用户使用 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 将其 VM 磁盘从标准存储帐户迁移到高级存储帐户。
 
 Site Recovery 是一个 Azure 服务，可通过协调从本地物理服务器和 VM 到云 (Azure) 或辅助数据中心的复制，来为业务连续性和灾难恢复策略提供辅助。 当主要位置发生故障时，可以故障转移到辅助位置，使应用程序和工作负荷保持可用。 当主要位置恢复正常时，可以故障转移回到主要位置。 
 
@@ -85,7 +85,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 ### <a name="step-2-choose-your-protection-goals"></a>步骤 2：选择保护目标 
 
 1. 在想要安装配置服务器的 VM 上，打开 [Azure 门户](https://portal.azure.com)。
-2. 转到“恢复服务保管库” > “设置” > “Site Recovery” > **步骤 1：** > “保护目标”。
+2. 转到“恢复服务保管库” > “设置” > “Site Recovery” > **步骤 1：****“保护目标” > **。
 
    ![浏览到“保护目标”窗格][2]
 
@@ -222,7 +222,6 @@ Site Recovery 将创建类型与支持高级存储的 VM 相同或类似的 VM �
 
 * [Azure 存储](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [高级存储：适用于 Azure 虚拟机工作负载的高性能存储](premium-storage.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png
