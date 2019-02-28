@@ -124,13 +124,13 @@ ms.locfileid: "56341328"
 
     可以通过最新版 Azure CLI 使用以下命令查看当前的 Azure 资源管理器配额。
 
-    **计算***（核心数、可用性集数）*
+    **计算** *（核心数、可用性集数）*
 
     ```bash
     az vm list-usage -l <azure-region> -o jsonc 
     ```
 
-    **网络***（虚拟网络、静态公共 IP、公共 IP、网络安全组、网络接口、负载均衡器和路由表）*
+    **网络** *（虚拟网络、静态公共 IP、公共 IP、网络安全组、网络接口、负载均衡器和路由表）*
     
     ```bash
     az network list-usages -l <azure-region> -o jsonc
