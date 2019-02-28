@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 869bee8fcd0d1c2876ac7317fb239a1d5c61cb87
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536519"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864543"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for PostgreSQL
 
@@ -78,7 +78,7 @@ Azure Database for PostgreSQL 服务在服务器级别使用防火墙。 默认�
 
 1.  部署完成后，请单击左侧菜单中的“所有资源”，并键入名称“mydemoserver”来搜索新创建的服务器。 单击搜索结果中列出的服务器名称。 服务器的“概述”页面随即打开，其中提供了用于进一步配置的选项。
 
-   ![用于 PostgreSQL 的 Azure 数据库 - 搜索服务器 ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   ![用于 PostgreSQL 的 Azure 数据库 - 搜索服务器](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2.  在服务器页中，选择“连接安全性”。 
 
@@ -98,7 +98,7 @@ Azure Database for PostgreSQL 服务在服务器级别使用防火墙。 默认�
 
 1. 在 Azure 门户中的左侧菜单中，单击“所有资源”，并搜索刚创建的服务器。
 
-   ![用于 PostgreSQL 的 Azure 数据库 - 搜索服务器 ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   ![用于 PostgreSQL 的 Azure 数据库 - 搜索服务器](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2. 单击服务器名称 **mydemoserver**。
 

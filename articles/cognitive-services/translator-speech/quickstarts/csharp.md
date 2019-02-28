@@ -10,14 +10,15 @@ ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: de0fbf7b273777672c95a3466405cef95da64353
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: a76c11341d0e145e6d2e9f86a7300ddb9319f6f5
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874288"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673881"
 ---
-# <a name="quickstart-translator-speech-api-with-c"></a>快速入门：将语音翻译 API 与 C# 配合使用 
+# <a name="quickstart-translator-speech-api-with-c"></a>快速入门：将语音翻译 API 与 C# 配合使用
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -157,7 +158,7 @@ namespace TranslateSpeechQuickStart
 > [!div class="nextstepaction"]
 > [语音翻译教程](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>另请参阅
 
 [语音翻译概述](../overview.md)
 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

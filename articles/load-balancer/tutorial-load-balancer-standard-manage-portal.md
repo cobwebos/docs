@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/18
+ms.date: 08/20/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: c22f69764447ffd4f8b67e9162fd8b45b40b175b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 7caddde5c7695d0c572dc139b52cd0743e39d778
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230027"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671993"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>教程：通过 Azure 门户对从 Internet 到 VM 的流量进行负载均衡
 
@@ -49,8 +49,8 @@ ms.locfileid: "54230027"
     
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 名称                   | *myLoadBalancer*                                   |
-    | 类型          | 公共                                        |
+    | Name                   | *myLoadBalancer*                                   |
+    | Type          | 公共                                        |
     | SKU           | 标准                          |
     | 公共 IP 地址 | 选择“新建”并在文本框中键入 *myPublicIP*。 默认情况下公共 IP 地址的标准 SKU 处于选中状态。 对于“可用性区域”，请选择“区域冗余”。 |
     | 订阅               | 选择订阅。    |
@@ -68,7 +68,7 @@ ms.locfileid: "54230027"
 1. 在 Azure 门户的左上方，选择“创建资源” > “网络” > “虚拟网络”，然后输入虚拟网络的以下值：
     |设置|值|
     |---|---|
-    |名称|输入 *myVNet*。|
+    |Name|输入 *myVNet*。|
     |订阅| 选择订阅。|
     |资源组| 选择“使用现有”，然后选择“myResourceGroupSLB”。|
     |子网名称| 输入 *myBackendSubnet*。|

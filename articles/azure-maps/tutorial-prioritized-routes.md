@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5458c7e74728952df89380a3649c6ed60eb6ea9a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0ec047f38596bed4d3f0bc5520dc9c7fc18b4c24
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749757"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585230"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>使用 Azure Maps 查找不同出行模式的路线
 
@@ -248,7 +248,7 @@ ms.locfileid: "55749757"
         datasource.add(routeLine, 0);
     });
     ```
-    上面的这个代码片段通过 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) 方法查询 Azure Maps 路线服务，然后使用 [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) 将响应分析成 GeoJSON 格式。 然后，它创建返回路线的坐标数组并将其添加到数据源，但同时也添加索引 0，确保将其呈现后再呈现数据源中的任何其他路线。 之所以这样做，是因为卡车路线的计算通常会慢于汽车路线的计算，如果卡车路线在汽车路线之后添加到数据源，则会在其上进行呈现。 将会向卡车路线添加两个属性，一个是蓝色的描边色，另一个是 9 像素的描边宽度。 
+    上面的这个代码片段通过 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) 方法查询 Azure Maps 路线服务，然后使用 [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routegeojson?view=azure-iot-typescript-latest) 将响应分析成 GeoJSON 格式。 然后，它创建返回路线的坐标数组并将其添加到数据源，但同时也添加索引 0，确保将其呈现后再呈现数据源中的任何其他路线。 之所以这样做，是因为卡车路线的计算通常会慢于汽车路线的计算，如果卡车路线在汽车路线之后添加到数据源，则会在其上进行呈现。 将会向卡车路线添加两个属性，一个是蓝色的描边色，另一个是 9 像素的描边宽度。 
 
 4. 添加下面的 JavaScript 代码，请求汽车路线并显示结果：
 
@@ -267,7 +267,7 @@ ms.locfileid: "55749757"
         datasource.add(routeLine);
     });
     ```
-    此代码片段对汽车使用相同的卡车路线查询。 它通过 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) 方法查询 Azure Maps 路线服务，然后使用 [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) 将响应分析为 GeoJSON 格式。 然后创建返回路线的坐标数组并将其添加到数据源。 将会向汽车路线添加两个属性，一个是紫色的描边色，另一个是 5 像素的描边宽度。 
+    此代码片段对汽车使用相同的卡车路线查询。 它通过 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) 方法查询 Azure Maps 路线服务，然后使用 [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routegeojson?view=azure-iot-typescript-latest) 将响应分析为 GeoJSON 格式。 然后创建返回路线的坐标数组并将其添加到数据源。 将会向汽车路线添加两个属性，一个是紫色的描边色，另一个是 5 像素的描边宽度。 
 
 5. 保存“MapTruckRoute.html”文件并刷新浏览器以查看结果。 要成功连接 Maps 的 API，应看到类似于以下内容的地图。
 

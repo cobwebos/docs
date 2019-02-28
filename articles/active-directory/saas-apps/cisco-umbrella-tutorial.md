@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 222ac0b5dede45b9ae2b6fe9ba464e738ea48b94
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4f51ade234c8792f235bd8c9218b3c6ef9f22de7
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194251"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870816"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>教程：Azure Active Directory 与 Cisco Umbrella 的集成
 
@@ -147,7 +147,7 @@ ms.locfileid: "56194251"
 
 6. 在“选项 A:上传 XML 文件”中，上传从 Azure 门户下载的**联合元数据 XML** 文件。在上传元数据后，系统会自动填充以下值，此时请单击“下一步”。
 
-    ![choosefile ](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
+    ![choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
 7. 在“验证 SAML 配置”部分，单击“测试 SAML 配置”。
 
@@ -247,6 +247,6 @@ ms.locfileid: "56194251"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: e2e7535476965258d02f3cd3db0126a0e8a486ab
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 2fde25e4d21081d350fb2a7ecf07b66f348e7ab1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963618"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736475"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-java"></a>快速入门：使用 Java 通过文本翻译 API 来翻译字符串
 

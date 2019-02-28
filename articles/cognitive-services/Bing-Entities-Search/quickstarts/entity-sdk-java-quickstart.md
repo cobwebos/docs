@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 1534b2a85067867800c147c86ee7d82374de8794
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ea13ae5bc649ae3a803fb8446fa009fac94874a8
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866189"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673558"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>快速入门：通过适用于 Java 的必应实体搜索 SDK 来发送搜索请求
 
@@ -145,10 +145,11 @@ ms.locfileid: "55866189"
             }
         }
     }
+    ```
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Build a single-page web app](../tutorial-bing-entities-search-single-page-app.md)
+> [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
-* [What is the Bing Entity Search API?](../overview.md )
+* [什么是必应实体搜索 API？](../overview.md )

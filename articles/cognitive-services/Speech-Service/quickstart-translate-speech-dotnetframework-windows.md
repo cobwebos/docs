@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: db0ff8b8cc305bb9f7b4625cf060de72a5c7d276
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bf7c92b0c9b143f9622cf1698fa39b0f45843f1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109786"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874522"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>快速入门：使用适用于 .NET Framework 的语音 SDK 翻译语音
 
@@ -32,7 +32,7 @@ ms.locfileid: "56109786"
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
-[!INCLUDE [Create project ](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
+[!INCLUDE [Create project](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
 ## <a name="add-sample-code"></a>添加示例代码
 

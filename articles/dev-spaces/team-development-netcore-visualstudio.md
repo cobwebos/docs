@@ -12,12 +12,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 7a77b8a1a2205465956d8c30a3fee6aec5e8428b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: af0a4a719f964e400119be313842f385b410406c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663785"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817416"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行团队开发
 
@@ -125,9 +125,9 @@ ms.locfileid: "55663785"
 使用 Azure Dev Spaces 的内置功能可在共享环境中对代码进行端到端测试，而无需每个开发人员在其空间中重新创建完整的服务堆栈。 如本指南的上一步骤中所示，此路由需要在应用代码中转发传播标头。
 
 ### <a name="test-code-running-in-the-devscott-space"></a>测试 _dev/scott_ 空间中运行的代码
-若要结合 *webfrontend* 测试 *mywebapi* 的新版本，请在浏览器中打开 *webfrontend* 的公共接入点 URL (例如 http://dev.webfrontend.123456abcdef.eastus.aksapp.io) 并转到“关于”页。 应会看到原始消息“Hello from webfrontend and Hello from mywebapi”。
+若要结合 *webfrontend* 测试 *mywebapi* 的新版本，请在浏览器中打开 *webfrontend* 的公共接入点 URL (例如 http://dev.webfrontend.123456abcdef.eus.azds.io) 并转到“关于”页。 应会看到原始消息“Hello from webfrontend and Hello from mywebapi”。
 
-现在，请将“scott.s.” 部分添加到 URL，使其类似于 http://scott.s.dev.webfrontend.123456abcdef.eastus.aksapp.io；然后刷新浏览器。 随后应会命中 *mywebapi* 项目中设置的断点。 按 F5 继续，浏览器中应会显示新消息“Hello from webfrontend and mywebapi now says something new”。 这是因为，_dev/scott_ 中已更新的代码的路径正在 *mywebapi* 空间中运行。
+现在，请将“scott.s.” 部分添加到 URL，使其类似于 http://scott.s.dev.webfrontend.123456abcdef.eus.azds.io；然后刷新浏览器。 随后应会命中 *mywebapi* 项目中设置的断点。 按 F5 继续，浏览器中应会显示新消息“Hello from webfrontend and mywebapi now says something new”。 这是因为，_dev/scott_ 中已更新的代码的路径正在 *mywebapi* 空间中运行。
 
 创建始终包含最新更改的 _dev_ 空间后，假设应用程序设计为利用 DevSpace 的基于空间的路由（如本教程部分中所述），则更容易发现，Dev Spaces 在较大应用程序的上下文中可为新功能的测试提供很大的帮助。 无需将所有服务部署到专用空间，可以创建派生自 _dev_ 的专用空间，并仅“启动”实际使用的服务。 Dev Spaces 路由基础结构将在专用空间中利用它所能找到的最多服务来处理剩余的工作，同时默认回到 _dev_ 空间中运行的最新版本。 更有利的是，多个开发人员可以同时在其自己的空间中积极开发不同的服务，而不会相互干扰。
 

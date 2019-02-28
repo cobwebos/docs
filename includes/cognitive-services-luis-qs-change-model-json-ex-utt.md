@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: 46b588d6977aa6ffeb9d473e6bfe149cde7147ba
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2317e0b8bfe01f94989412db7c0c4560b2ca728f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478726"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56741286"
 ---
 示例话语文件 **utterances.json** 遵循特定格式。 
 
