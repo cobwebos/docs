@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 09e1f99c7d0b56f5e2af893385dde19b8f358a19
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: 14e587276deab9656c3be04c96182942767ae0f2
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099133"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986016"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -41,7 +41,7 @@ Azure Stack 1811 更新内部版本号为 **1.1811.0.101**。
 Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，请务必先安装 1809 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)。
 
 > [!TIP]  
-> 订阅以下*RSS*或*Atom*源，以保持与 Azure Stack 修补程序：
+> 订阅下述 *RSS* 或 *Atom* 源，了解 Azure Stack 修补程序的最新信息：
 > - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
 > - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
@@ -86,6 +86,8 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
     正确导入必需的扩展主机证书后，可以从管理员门户恢复 1811 更新。 Azure Stack 操作员在更新过程中计划维护时段，Microsoft 建议，而失败的原因是缺少扩展主机证书不应影响现有工作负荷或服务。  
 
     在安装此更新的过程中，配置扩展主机时 Azure Stack 用户门户将不可用。 扩展主机的配置最长可能需要花费 5 小时。 在此期间，你可以检查更新状态，或者使用 [Azure Stack 管理员 PowerShell 或特权终结点](azure-stack-monitor-update.md)继续执行某个失败的更新安装。
+
+- 通过 System Center Operations Manager (SCOM) 管理 Azure Stack，请务必更新管理包为 Microsoft Azure Stack 为版本 10.0.3.11 应用 1811年之前。
 
 ## <a name="new-features"></a>新增功能
 
@@ -167,7 +169,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 - 修复了以下问题：生成的干扰性警报指示某个基础结构角色实例不可用或缩放单元节点已脱机。
 
 <!-- 2724961 - IS ASDK -->
-- 以固定了的问题 VM 的概述页无法正确显示 VM 指标图表。 
+- 修复了 VM 概述页无法正常显示 VM 指标图表的问题。 
 
 ## <a name="changes"></a>更改
 
@@ -178,7 +180,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 - 在 1811 中，用于检索 BitLocker 恢复密钥的现有 PEP cmdlet 已从 Get-AzsCsvsRecoveryKeys 重命名为 Get-AzsRecoveryKeys。 有关检索 BitLocker 恢复密钥的详细信息，请参阅[有关如何检索密钥的说明](azure-stack-security-bitlocker.md)。
 
-## <a name="common-vulnerabilities-and-exposures"></a>通用漏洞和披露
+## <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
 
 此更新安装以下安全更新：  
 
@@ -202,11 +204,11 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 - [CVE-2018-8566](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8566)
 - [CVE-2018-8584](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8584)
 
-有关这些漏洞的详细信息，单击上面的链接，或请参阅 Microsoft 知识库文章[4478877](https://support.microsoft.com/help/4478877)。
+有关这些漏洞的详细信息，请单击上述链接，或者查看 Microsoft 知识库文章 [4478877](https://support.microsoft.com/help/4478877)。
 
 ## <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
-- 在运行时**Get-azurestacklog** PowerShell cmdlet 运行之后**Test-azurestack**在相同的特权终结点 (PEP) 会话中， **Get-azurestacklog**失败。 若要解决此问题，请关闭 PEP 会话中执行所在**Test-azurestack**，然后打开一个新会话来运行**Get-azurestacklog**。
+- 在同一特权终结点 (PEP) 会话中运行 **Test-AzureStack** 之后，运行 **Get-AzureStackLog** PowerShell cmdlet 时，**Get-AzureStackLog** 失败。 若要解决此问题，请关闭用于执行 **Test-AzureStack** 的 PEP 会话，然后打开一个新的会话来运行 **Get-AzureStackLog**。
 
 - 在安装 1811 更新期间，请确保所有管理员门户实例都已关闭。 用户门户可以保持打开，但管理员门户必须关闭。
 
@@ -272,21 +274,21 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 - 创建新的 Windows 虚拟机 (VM) 时，“设置”边栏选项卡要求选择公共入站端口以继续操作。 在 1811 中，这是必需的设置，但不起作用。 这是因为，该功能依赖于 Azure 防火墙，但 Azure Stack 中并未实施该防火墙。 可以选择“无公共入站端口”或任何其他选项来继续创建 VM。 该设置不起作用。
 
-- 当创建新的 Windows 虚拟机 (VM)，可能会显示以下错误：
+- 创建新的 Windows 虚拟机 (VM) 时，可能会显示以下错误：
 
    `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
 
-   如果 VM 上启用启动诊断，但删除启动诊断存储帐户后，将发生此错误。 若要解决此问题，请重新创建具有您之前从未使用过与同名的存储帐户。
+   如果在 VM 上启用了启动诊断，但删除了启动诊断存储帐户，则会发生该错误。 若要解决此问题，请使用以前所用的同一名称重新创建存储帐户。
 
-- 创建时[Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes)，D11 14v2 Vm，您可以分别创建 4、 8、 16 和 32 个数据磁盘。 但是，创建 VM 窗格将显示 8、 16、 32 和 64 个数据磁盘。
+- 创建 [Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) 时，可以通过 D11-14v2 VM 分别创建 4 个、8 个、16 个和 32 个数据磁盘。 不过，“创建 VM”窗格会显示 8 个、16 个、32 个和 64 个数据磁盘。
 
-- Azure Stack 上的使用情况记录可能包含意外的大小写;例如：
+- Azure Stack 上的使用情况记录可能包含意外的大小写，例如：
 
    `{"Microsoft.Resources":{"resourceUri":"/subscriptions/<subid>/resourceGroups/ANDREWRG/providers/Microsoft.Compute/
    virtualMachines/andrewVM0002","location":"twm","tags":"null","additionalInfo":
    "{\"ServiceType\":\"Standard_DS3_v2\",\"ImageType\":\"Windows_Server\"}"}}`
 
-   在此示例中，资源组的名称应该是**AndrewRG**。 您可以放心地忽略此不一致。
+   在此示例中，资源组的名称应该是 **AndrewRG**。 可以放心忽略这种不一致情况。
 
 <!-- 3235634 – IS, ASDK -->
 - 若要部署大小包含 **v2** 后缀的 VM（例如 **Standard_A2_v2**），请将后缀指定为 **Standard_A2_v2**（小写 v）。 请勿使用 **Standard_A2_V2**（大写 V）。 这适用于全球 Azure，在 Azure Stack 上有不一致的问题。
@@ -324,7 +326,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
    - 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次选择“资源提供程序”、“Microsoft.Compute”、“重新注册”。
-      2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**客户端 DiskRP AzureStack**列出角色。
+      2. 在同一订阅下，转到“访问控制(IAM)”，检查“AzureStack-DiskRP-Client”角色是否已列出。
    - 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决错误，请执行[此文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤来重新配置每个来宾目录。
 
 - 如果使用创建时已启用 SSH 授权的 Ubuntu 18.04 VM，则无法使用 SSH 密钥登录。 若要解决此问题，请在预配后使用针对 Linux 扩展的 VM 访问权限来实现 SSH 密钥，或者使用基于密码的身份验证。
@@ -364,7 +366,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 - **New-AzureRmIpSecPolicy** PowerShell cmdlet 不支持为 `DHGroup` 参数设置 **DHGroup24**。
 
-- 网络安全组 (Nsg) 在相同的方式为全球 Azure 中的 Azure Stack 中无效。 在 Azure 中，您可以在一个 NSG 规则中设置多个端口 (使用门户、 PowerShell 和 Resource Manager 模板)。 在 Azure Stack 中，不能通过门户的一个 NSG 规则上设置多个端口。 若要解决此问题，请使用资源管理器模板设置下列附加规则。
+- 网络安全组 (NSG) 无法像在全球 Azure 中一样在 Azure Stack 中运行。 在 Azure 中，可以在一个 NSG 规则中设置多个端口（使用门户、PowerShell 和资源管理器模板）。 在 Azure Stack 中，无法通过门户在一个 NSG 规则中设置多个端口。 若要解决此问题，请使用资源管理器模板设置这些附加的规则。
 
 ### <a name="infrastructure-backup"></a>基础结构备份
 

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 77b3d8bd1d16e90e9929c41f0f28940694dc7906
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 18c4fd3fff244ac180ac0129f100a7d5b2472cab
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889828"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984826"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新
 
@@ -70,6 +70,8 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
     ```PowerShell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
+
+- 通过 System Center Operations Manager (SCOM) 管理 Azure Stack，请务必更新管理包为 Microsoft Azure Stack 为版本 10.0.3.11 应用 1901年之前。
 
 ## <a name="new-features"></a>新增功能
 

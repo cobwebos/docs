@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: a4298a8bd78f178c56776e703e72ff99aac54207
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: 251f61a0356f4e8f379c17b477e24a0cefce68e7
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887891"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984996"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -147,7 +147,9 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 
   ```PowerShell
   Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
-  ``` 
+  ```
+
+- 通过 System Center Operations Manager (SCOM) 管理 Azure Stack，请务必更新管理包为 Microsoft Azure Stack 为版本 10.0.3.11 应用 1809年之前。
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
