@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba77f79ad4625319a9b6e3eae46bf8470f43607
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67cb3d049cc2d2f26be6d62270e677a5cbcd39cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203771"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455035"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>添加 Microsoft 个人帐户
 将 Microsoft 个人帐户（如 Outlook.com 和 Xbox LIVE 帐户）添加到 Microsoft Authenticator 应用，以实现标准双因素验证流程和无密码电话登录方法。
@@ -37,7 +37,7 @@ ms.locfileid: "56203771"
 
 ### <a name="turn-on-two-factor-verification"></a>启用双因素验证
 
-1. 在电脑上，转到[安全基础](https://account.microsoft.com/security)页，并使用 Microsoft 个人帐户登录。 例如，alain@outlook.com。
+1. 在计算机上，转到[安全基础](https://account.microsoft.com/security)页，并使用 Microsoft 个人帐户登录。 例如，alain@outlook.com。
 
 2. 在“安全基础”页底部，选择“更多安全选项”链接。
 

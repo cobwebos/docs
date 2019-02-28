@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: c682bca1f3d4f0e2659ed107a2b15e4e4e28b0d9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1bf9889f601795c1ba70abdd17f6e8c9a01785f1
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492481"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453862"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>使用 Azure 机器学习工作室 Web 服务门户管理 Web 服务
 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
@@ -28,7 +28,8 @@ ms.locfileid: "55492481"
 * 创建、 删除或更新计费计划 （仅限于新的Web 服务）。
 * 添加和删除终结点（仅限于经典 Web 服务）
 
-
+>[!NOTE]
+>此外，还可以在“Web 服务”选项卡上的[机器学习工作室](http://studio.azureml.net)中管理经典 Web 服务。
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>用于管理基于资源管理器的新 Web 服务的权限
 
@@ -38,7 +39,7 @@ ms.locfileid: "55492481"
 
 *Web Service deployment failed.This account does not have sufficient access to the Azure subscription that contains the Workspace.In order to deploy a Web Service to Azure, the same account must be invited to the Workspace and be given access to the Azure subscription that contains the Workspace.*（Web 服务部署失败。此帐户没有足够的权限访问工作区所属的 Azure 订阅。若要将 Web 服务部署到 Azure，必须邀请同一帐户加入工作区并为其授予对工作区所属的 Azure 订阅的访问权限。）
 
-有关创建工作区的详细信息，请参阅[创建并共享 Azure 机器学习工作区](create-workspace.md)。
+有关创建工作区的详细信息，请参阅[创建并共享 Azure 机器学习工作室工作区](create-workspace.md)。
 
 有关设置访问权限的更多信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
@@ -107,7 +108,7 @@ ms.locfileid: "55492481"
 
 ## <a name="manage-classic-web-services"></a>管理经典 Web 服务
 > [!NOTE]
-> 此部分中的过程与通过 Azure 机器学习 Web 服务门户管理经典 Web 服务相关。 有关通过机器学习工作室和 Azure 门户管理经典 Web 服务的信息，请参阅[管理 Azure 机器学习工作区](manage-workspace.md)。
+> 此部分中的过程与通过 Azure 机器学习 Web 服务门户管理经典 Web 服务相关。 有关通过机器学习工作室和 Azure 门户管理经典 Web 服务的信息，请参阅[管理 Azure 机器学习工作室工作区](manage-workspace.md)。
 > 
 > 
 

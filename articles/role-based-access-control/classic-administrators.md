@@ -11,26 +11,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2019
+ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5049a5a829ce8e94b62409c9d3b1439e8431fb1
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f4838f688210f9017d691bd6a463217a75fc90d4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101295"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447508"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
-Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对资源的访问。 但是，如果你仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。 但是，如果你仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
 
 本文介绍如何添加或更改共同管理员和服务管理员角色，以及如何查看帐户管理员。
 
 ## <a name="add-a-co-administrator"></a>添加共同管理员
 
 > [!TIP]
-> 如果用户需要管理 Azure 经典部署，则你只需添加共同管理员。 建议使用 RBAC 实现所有其他目的。
+> 如果用户需要使用 [Azure 服务管理 PowerShell 模块](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure)管理 Azure 经典部署，则你只需添加共同管理员。 如果用户只使用 Azure 门户管理经典资源，则无需为该用户添加经典管理员。
 
 1. 以服务管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -155,4 +155,4 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对资源的访�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure 中的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)
+* [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-portal.md)
