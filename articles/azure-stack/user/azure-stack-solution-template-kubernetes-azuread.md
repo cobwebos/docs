@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b7214230d55831fa33d547ecf9e65051aa5bb4d9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a24ba9c0f19ce0a040671e4515dc2e7d2468fb5c
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891447"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985574"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>将 Kubernetes 部署到 Azure Stack 使用 Azure Active Directory
 
@@ -167,3 +167,5 @@ ms.locfileid: "55891447"
 ## <a name="next-steps"></a>后续步骤
 
 [连接到群集](azure-stack-solution-template-kubernetes-deploy.md#connect-to-your-cluster)
+
+[启用 Kubernetes 仪表板](azure-stack-solution-template-kubernetes-dashboard.md)

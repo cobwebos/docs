@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 5f6a66b4005a0fa7106830d7e53950a9902cd078
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 67acc7a074b26cb7614b5e08d25afd7b7c1caa74
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447236"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958501"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -35,7 +35,7 @@ ms.locfileid: "56447236"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.3.0`。
+认知服务语音 SDK 的当前版本是 `1.3.1`。
 
 用于 Mac 和 iOS 的认知服务语音 SDK 目前以 Cocoa Framework 形式发行。
 它可以从 https://aka.ms/csspeech/iosbinary 下载。 将文件下载到主目录。

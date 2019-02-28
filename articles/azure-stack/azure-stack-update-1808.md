@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: d23aab91df2d69850e8c3b80a1c12f49f2e7fcaa
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: b94d27e903fd01c3be029128a64c3e3369669bf7
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965165"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986136"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -100,7 +100,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 <!--  TBD – IS, ASDK --> 
 - 通过门户[创建虚拟机规模集](azure-stack-compute-add-scalesets.md) (VMSS) 时，不再使用“基本 A”虚拟机大小。 若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。  
 
-### <a name="common-vulnerabilities-and-exposures"></a>通用漏洞和披露
+### <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
 
 此更新安装以下更新：  
 
@@ -130,20 +130,21 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
 ### <a name="prerequisites"></a>必备组件
 
-- 应用 Azure Stack 1808 更新之前，请安装 Azure Stack 1807 更新。 
+- 在应用 Azure Stack 1808 更新之前安装 Azure Stack 1807 更新。 
 
-- 安装最新可用的更新或修补程序版本 1807年。  
+- 安装最近发布的 1807 版更新或修补程序。  
   > [!TIP]  
   > 订阅下述 *RRS* 或 *Atom* 源，了解 Azure Stack 修补程序的最新更新：
   > - RRS： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … 
   > - Atom： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …
 
-
 - 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。  
 
   ```PowerShell
   Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
-  ```   
+  ```
+
+- 通过 System Center Operations Manager (SCOM) 管理 Azure Stack，请务必更新管理包为 Microsoft Azure Stack 为版本 10.0.3.11 应用 1808年之前。
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
@@ -256,7 +257,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
 ### <a name="compute"></a>计算
 
-- 创建时[Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes)，D11 14v2 Vm，您可以分别创建 4、 8、 16 和 32 个数据磁盘。 但是，创建 VM 窗格将显示 8、 16、 32 和 64 个数据磁盘。
+- 创建 [Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) 时，可以通过 D11-14v2 VM 分别创建 4 个、8 个、16 个和 32 个数据磁盘。 不过，“创建 VM”窗格会显示 8 个、16 个、32 个和 64 个数据磁盘。
 
 <!-- 3164607 – IS, ASDK -->
 - 将分离的磁盘重新附加到具有相同名称和 LUN 的同一虚拟机 (VM) 失败，并发生类似于“无法将数据磁盘 'datadisk' 附加到 VM 'vm1'”的错误。 之所以发生该错误，是原因该磁盘目前已分离，或上次分离操作失败。 请等到磁盘完全分离后重试，或再次显式删除/分离磁盘。 解决方法是使用其他名称，或者在其他 LUN 上重新附加磁盘。 
@@ -269,7 +270,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
    1. 如果订阅是在 1808 更新之前创建的，通过托管磁盘部署 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
-      2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**客户端 DiskRP AzureStack**列出角色。
+      2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“AzureStack-DiskRP-Client”角色是否已列出。
    2. 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决该错误，请执行以下步骤：
       1. 应用 [1808 Azure Stack 修补程序](https://support.microsoft.com/help/4481066/)。
       2. 执行[此文](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤，重新配置每个来宾目录。

@@ -104,7 +104,7 @@ items:
           href: azure-stack-connect-vpn.md
         - name: 关于 VPN 网关
           href: azure-stack-vpn-gateway-about-vpn-gateways.md
-        - name: 配置 IPSec/IKE 连接策略
+        - name: 配置 IPsec/IKE 连接策略
           href: azure-stack-vpn-s2s.md
         - name: VPN 网关设置
           href: azure-stack-vpn-gateway-settings.md
@@ -124,7 +124,7 @@ items:
         href: azure-stack-key-vault-deploy-vm-with-secret.md
       - name: 使用证书创建 VM
         href: azure-stack-key-vault-push-secret-into-vm.md
-      - name: 在密钥保管库中存储凭据
+      - name: 在 Key Vault 中存储凭据
         href: azure-stack-key-vault-store-credentials.md
       - name: KeyVault 示例应用
         href: azure-stack-key-vault-sample-app.md
@@ -148,6 +148,8 @@ items:
           href: azure-stack-solution-template-kubernetes-azuread.md
         - name: 部署使用 AD FS 的 Kubernetes
           href: azure-stack-solution-template-kubernetes-adfs.md
+        - name: 启用 Kubernetes 仪表板
+          href: azure-stack-solution-template-kubernetes-dashboard.md
         - name: 对 Kubernetes 群集进行故障排除
           href: azure-stack-solution-template-kubernetes-trouble.md
       - name: 部署认知服务
@@ -233,9 +235,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: c9c4e0109df5880100956e167d17c61dfd001743
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: a06965bc494da93dfb945ccdfbbf10db310df48c
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450671"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986288"
