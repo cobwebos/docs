@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5c88bf00ed1f68e4ddab6175e86a46560c802744
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9f548fbb9611b6d4b16efe5c4d26db73d85c9654
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238209"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882291"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>教程：将 Azure 部署管理器与资源管理器模板配合使用（个人预览版）
 
@@ -300,10 +300,10 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
     
     # Create a resource group
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     
     # Create the service topology
-    New-AzResourceGroupDeployment `
+    New-AzureRmResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
@@ -319,7 +319,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 
     ```azurepowershell-interactive
     # Create the rollout
-    New-AzResourceGroupDeployment `
+    New-AzureRmResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMRollout.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMRollout.Parameters.json"
