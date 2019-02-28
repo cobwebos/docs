@@ -6,23 +6,23 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: e613f660d4d1abfd45b11d71c2abfda53331cc31
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c3f8d06cf68714f3a8abc203421ae3ff9b533ca6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211198"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737801"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
 [自定义翻译](https://portal.customtranslator.azure.ai)是 Microsoft Translator 服务的一项功能，允许翻译企业、应用开发人员和语言服务提供者生成自定义的神经机器翻译 (NMT) 系统。 自定义的翻译系统可无缝集成到现有的应用程序、工作流和网站中。 [自定义翻译](https://portal.customtranslator.azure.ai/)提供的功能类似于 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 为统计机器翻译 (SMT) 提供的功能，但专用于神经机器翻译 (NMT) 系统。
 
-使用[自定义翻译](https://portal.customtranslator.azure.ai)生成的翻译系统可以通过同一个基于云、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效且高度可缩放的 Microsoft 文本[翻译 API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 来使用，该 API 版本每天为数十亿条翻译提供支持。 
+使用[自定义翻译](https://portal.customtranslator.azure.ai)生成的翻译系统可以通过同一个基于云、[安全](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality)、高效且高度可缩放的 Microsoft 文本[翻译 API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 来使用，该 API 版本每天为数十亿条翻译提供支持。
 
-自定义翻译支持三十多种语言，可以直接映射到适用于 NMT 的语言。 如需完整的列表，请参阅 [Microsoft Translator 语言]( https://docs.microsoft.com/azure/cognitive-services/translator/language-support)。
+自定义翻译支持三十多种语言，可以直接映射到适用于 NMT 的语言。 如需完整的列表，请参阅 [Microsoft Translator 语言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
 
 ## <a name="features"></a>功能
 
@@ -48,7 +48,7 @@ Microsoft Translator 在 2016 年发布了[神经机器翻译 (NMT)](https://blo
 
 ## <a name="be-productive-and-cost-effective"></a>提高工作效率和成本效益
 
-使用[自定义翻译](https://portal.customtranslator.azure.ai)时，训练和部署自定义系统不需任何编程技能。 
+使用[自定义翻译](https://portal.customtranslator.azure.ai)时，训练和部署自定义系统不需任何编程技能。
 
 使用安全的[自定义翻译](https://portal.customtranslator.azure.ai)门户时，用户可以通过一个直观的用户界面来上传训练数据、训练系统和测试系统，并将其部署到生产环境。 然后，系统会在数小时内（实际时间取决于训练数据大小）可供大规模使用。
 
