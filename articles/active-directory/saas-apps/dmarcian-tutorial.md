@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4768c38b2e76bfa8cdff3187c32c03fdaaf57bbf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a2c6b95d62f6210ecfdd560bc1c00a3e055be3ee
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207647"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>教程：Azure Active Directory 与 dmarcian 集成
 
@@ -143,15 +143,15 @@ ms.locfileid: "56207647"
 
 2. 单击右上角的“配置文件”，并导航到“首选项”。
 
-    ![首选项 ](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
+    ![首选项](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
 3. 向下滚动并单击“单一登录”部分，然后单击“配置”。
 
-    ![单人 ](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
+    ![单人](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
 4. 在“SAML 单一登录”页上，将“状态”设置为“已启用”并执行以下步骤：
 
-    ![身份验证 ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
+    ![身份验证](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
     * 在“将 dmarcian 添加到标识提供者”部分，单击“复制”以复制实例的“断言使用者服务 URL”，并将其粘贴到 Azure 门户上“基本的 SAML 配置”部分的“回复 URL”文本框中。
 
@@ -229,15 +229,15 @@ ms.locfileid: "56207647"
 
 2. 单击右上角的“配置文件”，并导航到“管理用户”。
 
-    ![用户 ](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
+    ![用户](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
 3. 在“SSO 用户”部分的右侧，单击“添加新用户”。
 
-    ![添加用户 ](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
+    ![添加用户](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
 4. 在“添加新用户”弹出窗口中执行以下步骤：
 
-    ![新用户 ](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
+    ![新用户](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
     a. 在“新用户的电子邮件”文本框中，输入用户的电子邮件地址，例如 **brittasimon@contoso.com**。
 
@@ -255,7 +255,7 @@ ms.locfileid: "56207647"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

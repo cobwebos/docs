@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
-ms.openlocfilehash: 076a29de227447c75644bd3b59bda1053794d739
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: e739ed1f7cd1b832ffe11299d3444c9bf0ac99e9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191881"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874454"
 ---
-# <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MariaDB 服务器
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure Database for MariaDB 服务器
 
 Azure Database for MariaDB 是一种托管服务，可用于在云中运行、管理和缩放高可用性的 MariaDB 数据库。 本快速入门介绍了如何使用 Azure 门户在大约五分钟内创建 Azure Database for MariaDB 服务器。  
 
@@ -123,7 +123,7 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
     mysql --host mydemoserver.mariadb.database.azure.com --user myadmin@mydemoserver -p
     ```
 
-    mysql 参数 |建议的值|Description
+    mysql 参数 |建议的值|说明
     ---|---|---
     --host | 服务器名称 | 在创建 Azure Database for MariaDB 服务器时使用的服务器名称值。 示例服务器为 **mydemoserver.mariadb.database.azure.com**。 请使用完全限定的域名 (**\*.mariadb.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请完成上一部分的步骤，以便获取连接信息。
     --user | 服务器管理员登录名 |在创建 Azure Database for MariaDB 服务器时使用的服务器管理员登录用户名。 如果不记得用户名，请完成上一部分的步骤，以便获取连接信息。 格式为 username@servername。

@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 343baedb77eb5c8a250e2ab967332dc0905f5112
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743678"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804633"
 ---
 # <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>快速入门：通过订阅事件网格通知将 Azure Blob 引入 Azure 数据资源管理器
 
@@ -58,7 +58,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在 Azure 门户中的群集下，选择“查询”。
 
-    ![查询应用程序链接](media/ingest-data-event-hub/query-explorer-link.png)
+    ![查询应用程序链接](media/ingest-data-event-grid/query-explorer-link.png)
 
 1. 将以下命令复制到窗口中，然后选择“运行”以创建将接收引入数据的表 (TestTable)。
 
@@ -82,11 +82,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在创建的群集下，选择“数据库”，然后选择“TestDatabase”。
 
-    ![选择测试数据库](media/ingest-data-event-hub/select-test-database.png)
+    ![选择测试数据库](media/ingest-data-event-grid/select-test-database.png)
 
 1. 选择“数据引入”，然后选择“添加数据连接”。
 
-    ![数据引入](media/ingest-data-event-hub/data-ingestion-create.png)
+    ![数据引入](media/ingest-data-event-grid/data-ingestion-create.png)
 
 1. 选择连接类型：**Blob 存储**。
 
@@ -185,9 +185,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在 Azure 门户的最左侧选择“资源组”，，然后选择创建的资源组。  
 
-    如果左侧菜单处于折叠状态，请选择 ![“展开”按钮](media/ingest-data-event-hub/expand.png) 将其展开。
+    如果左侧菜单处于折叠状态，请选择 ![“展开”按钮](media/ingest-data-event-grid/expand.png) 将其展开。
 
-   ![选择要删除的资源组](media/ingest-data-event-hub/delete-resources-select.png)
+   ![选择要删除的资源组](media/ingest-data-event-grid/delete-resources-select.png)
 
 1. 在“test-resource-group”下，选择“删除资源组”。
 

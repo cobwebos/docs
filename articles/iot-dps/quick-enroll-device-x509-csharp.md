@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 34c303ef45c32d5b210b48a6de36589bcac5dacc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f20c62f574b22d55d2acd8f9c7b811067837adb7
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189110"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985931"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>快速入门：使用 C# 将 X.509 设备注册到设备预配服务
 
@@ -59,7 +59,7 @@ ms.locfileid: "53189110"
 
 2. 根据[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。 
 
-除了使用 C SDK 中的工具之外，*用于 .NET 的 Microsoft Azure SDK* 中的[组证书验证示例](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample)展示了如何使用现有的 X.509 中间或根 CA 证书采用 C# 执行所有权证明操作。 
+除了使用 C SDK 中的工具之外，*用于 .NET 的 Microsoft Azure SDK* 中的[组证书验证示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)展示了如何使用现有的 X.509 中间或根 CA 证书采用 C# 执行所有权证明操作。 
 
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>获取适用于预配服务的连接字符串

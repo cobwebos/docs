@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: b66d4c9fb3bce03248f5696d5a7b2b7b62b7ffd3
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 0ed30b9ad38db71798edd75ee133a08670fd33fe
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746364"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890192"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
 
@@ -304,7 +304,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 在 VS Code 中，打开 **SignalRInfo/function.json**。
 
-1. 将一个[绑定表达式](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings#binding-expressions-and-patterns)插入到 *SignalRConnectionInfo* 绑定的 *userId* 属性中：`{headers.x-ms-client-principal-name}`。 这会将值设置为经过身份验证的用户的用户名。 特性现在应如下所示。
+1. 将一个[绑定表达式](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings)插入到 *SignalRConnectionInfo* 绑定的 *userId* 属性中：`{headers.x-ms-client-principal-name}`。 这会将值设置为经过身份验证的用户的用户名。 特性现在应如下所示。
 
     ```json
     {
