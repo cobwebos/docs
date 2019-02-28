@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998512"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649574"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -69,10 +69,8 @@ ms.locfileid: "55998512"
 
     ![完成配置后的“配置模板”页](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. 在“配置模板”页上执行以下步骤：对于此教程来说，这些步骤是**可选**的。
-    1. 选择“启动”来启动模板 VM。
     2. 选择“连接”以连接到模板 VM。 
-    3. 在模板 VM 上安装并配置软件。 
-    4. **停止** VM。  
+    3. 在模板 VM 上安装并配置软件。     
     5. 输入模板的**说明**
 9. 在模板页上选择“下一步”。 
 10. 在“发布模板”页上执行以下操作。 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19039a6a1337c2ddc7494805b18f564466d4f1f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 85e773d74231b0b0847dad41a071be499724e2d4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168725"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>教程：Azure Active Directory 与 InstaVR Viewer 的集成
 
@@ -136,11 +136,11 @@ ms.locfileid: "56168725"
 
 2. 单击**用户图标**并选择“帐户”。
 
-    ![InstaVR Viewer 配置 ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![InstaVR Viewer 配置](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. 向下滚动到“SAML 身份验证”并执行以下步骤：
 
-    ![InstaVR Viewer 配置 ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![InstaVR Viewer 配置](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. 在“SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
@@ -215,15 +215,15 @@ ms.locfileid: "56168725"
 
 2. 在左侧导航面板中选择“打包”，然后选择“创建 Web 包”。
 
-    ![InstaVR Viewer 配置 ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![InstaVR Viewer 配置](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. 选择“下载”。
 
-    ![InstaVR Viewer 配置 ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![InstaVR Viewer 配置](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. 选择“打开托管页面”，然后会重定向到 Azure AD 进行登录。
 
-    ![InstaVR Viewer 配置 ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![InstaVR Viewer 配置](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. 输入 Azure AD 凭据可通过 SSO 成功登录到 Azure AD。
 
@@ -231,6 +231,6 @@ ms.locfileid: "56168725"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

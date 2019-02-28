@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 535dd04efd9f150365b24ae175ee90fbb247305f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 28b15e950aa4ebbfcb1b04bfd495b3accf13528e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846670"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586896"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
@@ -41,40 +41,11 @@ ms.locfileid: "54846670"
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.使用 Azure 门户创建命名空间
-
-> [!NOTE] 
-> 也可使用 [PowerShell](/powershell/azure/get-started-azureps) 创建服务总线命名空间和消息实体。 有关详细信息，请参阅[使用 PowerShell 管理服务总线资源](service-bus-manage-with-ps.md)。
-
-如果已创建服务总线消息传递命名空间，请跳转到[使用 Azure 门户创建主题](#2-create-a-topic-using-the-azure-portal)部分。
-
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a>2.使用 Azure 门户创建主题
+[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
 
-1. 登录到 [Azure 门户][azure-portal]。
-2. 在门户左侧的导航窗格中，单击“服务总线”（如果未看到“服务总线”，请单击“所有服务”或“所有资源”）。 单击要在其中创建主题的命名空间。 
-3. 此时会打开“命名空间概览”窗口。 单击“主题”：
-   
-    ![创建主题][createtopic1]
-4. 单击“+ 主题”：
-   
-    ![选择主题][createtopic2]
-5. 输入主题名称。 将其他选项保留默认值。
-   
-    ![选择“新建”][createtopic3]
-6. 单击对话框底部的“创建”。
-
-## <a name="3-create-a-subscription-to-the-topic"></a>3.创建主题的订阅
-
-1. 在门户资源窗格中，依次单击在步骤 1 中创建的命名空间、“主题”、在步骤 2 中创建的主题的名称。
-2. 在概览窗格顶部单击“+ 订阅”，以便添加该主题的订阅。
-
-    ![创建订阅][createtopic4]
-
-3. 输入订阅的名称。 将其他选项保留默认值。
-
-## <a name="4-send-messages-to-the-topic"></a>4.将消息发送到主题
+## <a name="send-messages-to-the-topic"></a>将消息发送到主题
 
 为了将消息发送到主题中，请使用 Visual Studio 编写一个 C# 控制台应用程序。
 
@@ -231,7 +202,7 @@ ms.locfileid: "54846670"
    
       ![消息大小][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a>5.从订阅接收消息
+## <a name="receive-messages-from-the-subscription"></a>从订阅接收消息
 
 若要接收刚发送的消息，请创建另一 .NET Core 控制台应用程序并安装 **Microsoft.Azure.ServiceBus** NuGet 包，类似于前面的发件人应用程序。
 

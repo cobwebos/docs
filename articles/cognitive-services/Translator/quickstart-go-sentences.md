@@ -8,14 +8,14 @@ manager: erhopf
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f4a4a4518eb973dc9d2c7cbcb34683fe0b3db08
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 66a07ea2d07b0978c5b94ef922e8fe0eb4d744e1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226836"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736509"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>快速入门：使用 Go 通过文本翻译 API 来确定句子长度
 

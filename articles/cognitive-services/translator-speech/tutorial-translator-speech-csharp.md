@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 383e17e0a9e60b52a63420af19c2bca4337083d4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: a3ed13cfe764c4f94dfa50fd096cfc7a8ac7656d
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876906"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673745"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>教程：以 C# 编写的语音翻译应用程序
 
@@ -33,7 +34,7 @@ ms.locfileid: "55876906"
 
 ## <a name="prerequisites"></a>先决条件
 
-对于本教程，需要任意版本的 Visual Studio 2017，包括社区版。 
+对于本教程，需要任意版本的 Visual Studio 2017，包括社区版。
 
 Visual Studio 解决方案还会生成应用程序安装程序。 需要 [WiX 工具集](http://wixtoolset.org/)和 [WiX 工具集 Visual Studio 扩展](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension)才能支持此功能。
 
@@ -63,7 +64,7 @@ Visual Studio 解决方案还会生成应用程序安装程序。 需要 [WiX �
 
 换言之，对于语音翻译，源语言必须是支持听录的语言。 假设需要文本结果，则输出语言可以是支持文本翻译的任意语言。 如需语音输出，则只能翻译成支持文本转语音的语言。
 
-Microsoft 可能会不时地添加对新语言的支持。 为此，不应在应用程序中对受支持语言的任何知识进行硬编码。 相反，语音翻译 API 提供了语言终结点，使你可以在运行时检索受支持的语言。 可以选择接收一个或多个语言列表： 
+Microsoft 可能会不时地添加对新语言的支持。 为此，不应在应用程序中对受支持语言的任何知识进行硬编码。 相反，语音翻译 API 提供了语言终结点，使你可以在运行时检索受支持的语言。 可以选择接收一个或多个语言列表：
 
 | | |
 |-|-|
@@ -73,7 +74,7 @@ Microsoft 可能会不时地添加对新语言的支持。 为此，不应在应
 
 语言终结点不需要订阅密匙，并且其使用情况不会影响配额。 其 URI 为 `https://dev.microsofttranslator.com/languages`，并且以 JSON 格式返回其结果。
 
-此处显示的 `MainWindow.xaml.cs` 中的 `UpdateLanguageSettingsAsync()` 方法调用语言终结点，获取受支持语言列表。 
+此处显示的 `MainWindow.xaml.cs` 中的 `UpdateLanguageSettingsAsync()` 方法调用语言终结点，获取受支持语言列表。
 
 ```csharp
 private async Task UpdateLanguageSettingsAsync()
@@ -193,9 +194,9 @@ private async Task UpdateLanguageSettingsAsync()
 
 语言终结点使用请求的 `Accept-Languages` 标头确定用于表述语言名称的语言。 例如，英语使用者称为“German”的语言在德语中称为“Deutsch”，在西班牙语中称为“Alemán”，语言列表会反映这些差异。 此标头使用系统的默认语言。
 
-发送请求并收到 JSON 响应后，系统会将响应解析为内部数据结构。 然后使用这些结构进行源语言和目标语言菜单的构建。 
+发送请求并收到 JSON 响应后，系统会将响应解析为内部数据结构。 然后使用这些结构进行源语言和目标语言菜单的构建。
 
-由于提供的声音取决于用户选择的目标语言，因此目前无法设置“声音”菜单。 但会存储每种语言的可用声音，供以后使用。 同一源文件中的 `ToLanguage_SelectionChanged` 处理程序稍后在用户选择目标语言时通过调用 `UpdateVoiceComboBox()` 更新“声音”菜单。 
+由于提供的声音取决于用户选择的目标语言，因此目前无法设置“声音”菜单。 但会存储每种语言的可用声音，供以后使用。 同一源文件中的 `ToLanguage_SelectionChanged` 处理程序稍后在用户选择目标语言时通过调用 `UpdateVoiceComboBox()` 更新“声音”菜单。
 
 为提高趣味性，如果用户之前未运行该应用程序，则随机选择目标语言。 （菜单设置在会话之间进行存储。）
 
@@ -281,7 +282,7 @@ private void Connect()
         TranslateTo = ((ComboBoxItem)this.ToLanguage.SelectedItem).Tag.ToString(),
         Voice = voicename,
     };
-    
+
     options.Hostname = baseUrl;
     options.AuthHeaderKey = "Authorization";
     options.AuthHeaderValue = ""; // set later in ConnectAsync.
@@ -368,11 +369,11 @@ private void Connect()
 private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAudioDuringTTS)
 {
     await ADMAuthenticate(options);
-    
+
     TextMessageDecoder textDecoder;
-    
+
     s2smtClient = new SpeechClient((SpeechTranslateClientOptions)options, CancellationToken.None);
-    
+
     s2smtClient.OnBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnEndOfBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnTextData += (c, a) => { textDecoder.AppendData(a); lastReceivedPacketTick = DateTime.Now.Ticks; };
@@ -410,7 +411,7 @@ private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAu
     {
         SafeInvoke(() =>
         {
-            // We only care to react to server disconnect when our state is Connected. 
+            // We only care to react to server disconnect when our state is Connected.
             if (currentState == UiState.Connected)
             {
                 Log("E: Connection has been lost.");

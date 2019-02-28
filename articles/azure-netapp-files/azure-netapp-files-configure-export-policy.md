@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 08de7e2ca8cd993a0931f5b16cb9d6c9a04e53dc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 115c6726ed150b9a76685bd5a558d547d215958f
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010950"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587729"
 ---
-# <a name="configure-export-policy-for-a-volume-optional"></a>为卷配置导出策略（可选）
+# <a name="configure-export-policy-for-a-volume"></a>为卷配置导出策略
 
 你可以配置导出策略来控制对 Azure NetApp 文件卷的访问。 
 
-## <a name="steps"></a>步骤 
+## <a name="steps"></a>Steps 
 
 1.  从“管理卷”边栏选项卡中单击“创建导出策略”边栏选项卡。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "39010950"
         * IPv4 地址，例如 `10.1.12.24` 
         * 带有以位数表示的子网掩码的 IPv4 地址，例如 `10.1.12.10/4`
 
-    * **访问权限**  
+    * **Access**  
         选择以下访问权限类型之一：  
         * 无访问权限 
         * 读取和写入

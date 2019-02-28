@@ -10,14 +10,15 @@ ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: b9a20439bd1c926753921e2ece5dfc083128be92
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: b56e4715e77129f228967ef595e506d26d33fc66
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869919"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674117"
 ---
-# <a name="quickstart-translator-speech-api-with-java"></a>快速入门：将语音翻译 API 与 Java 配合使用 
+# <a name="quickstart-translator-speech-api-with-java"></a>快速入门：将语音翻译 API 与 Java 配合使用
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -277,7 +278,7 @@ public class Speak {
 > [!div class="nextstepaction"]
 > [语音翻译教程](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>另请参阅
 
 [语音翻译概述](../overview.md)
 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

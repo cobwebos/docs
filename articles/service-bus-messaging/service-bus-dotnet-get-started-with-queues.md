@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 2075f8f83392c9ddd1761a96958fcb6cb12dc013
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3cf43de73fd06da6965d0baf17878c5fb10d7caf
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816418"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587168"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 
@@ -40,20 +40,10 @@ ms.locfileid: "55816418"
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="create-a-namespace-using-the-azure-portal"></a>使用 Azure 门户创建命名空间
-
-> [!NOTE] 
-> 也可使用 [PowerShell](/powershell/azure/get-started-azureps) 创建服务总线命名空间和消息实体。 有关详细信息，请参阅[使用 PowerShell 管理服务总线资源](service-bus-manage-with-ps.md)。
-
-如果已创建服务总线消息传递命名空间，请跳转到“使用 Azure 门户创建队列”部分。
-
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-a-queue-using-the-azure-portal"></a>使用 Azure 门户创建队列
-
-如果你已创建了服务总线队列，请跳转到“将消息发送到队列”部分。
-
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
+
 
 ## <a name="send-messages-to-the-queue"></a>将消息发送到队列
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 686e008a83924460b1f85212b5c06796b6bc8217
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e6a24bfe25513b1b4eacd8bc192caa5518c896c6
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354206"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593193"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -270,7 +270,7 @@ END
 1. 在“Integration Runtime 安装”窗口中，选择“执行数据移动并将活动分发到外部计算”，然后单击“下一步”。 
 
    ![选择 Integration Runtime 类型](./media/tutorial-incremental-copy-multiple-tables-portal/select-integration-runtime-type.png)
-1. 选择“专用网络”，然后单击“下一步”。**** 
+1. 选择“专用网络”，单击“下一步”。 
 
    ![选择专用网络](./media/tutorial-incremental-copy-multiple-tables-portal/select-private-network.png)
 1. 在“名称”中输入 **MySelfHostedIR**，然后单击“下一步”。 
@@ -508,7 +508,7 @@ END
     1. 选择“导入参数”。 
     1. 指定以下参数值： 
 
-        | 名称 | 类型 | 值 | 
+        | Name | 类型 | 值 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

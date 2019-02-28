@@ -12,12 +12,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 08903bcb15c69e3bc9a2b5435785d4a1ee8edb5c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f345ff2e64670536771a639a7619c6e1d4d2d82d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659042"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823937"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>在 .NET Core 和 Visual Studio 中开始使用 Azure Dev Spaces
 
@@ -52,13 +52,6 @@ ms.locfileid: "55659042"
 1. 为基于角色的访问控制 (RBAC) 选择所需设置。 Azure Dev Spaces 支持启用或禁用了 RBAC 的群集。
 
     ![RBAC 设置](media/common/k8s-RBAC.PNG)
-
-1. 请确保启用 Http 应用程序路由。
-
-   ![启用 Http 应用程序路由](media/common/Kubernetes-Create-Cluster-3.PNG)
-
-    > [!Note]
-    > 若要在现有群集上启用 [Http 应用程序路由](/azure/aks/http-application-routing)，请使用命令：`az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing`
 
 1. 完成时依次选择“评审 + 创建”、“创建”。
 

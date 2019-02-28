@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7bc6b57122072c2fe0c063c1278cf11d97469b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e86ede90a19d829e87b47d49fa4a12a17fe1d5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191310"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教程：Azure Active Directory 与 Snowflake 集成
 
@@ -141,7 +141,7 @@ ms.locfileid: "56191310"
     > [!NOTE]
     > 这与你在右上角“用户名”下选择的上下文不同
     
-    ![Snowflake 管理员 ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Snowflake 管理员](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 10. 在记事本中打开**下载的 Base 64 证书**。 复制“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”之间的值，并将其粘贴到下面**证书**旁边的引号中。 在 **ssoUrl** 中，粘贴从 Azure 门户复制的“登录 URL”值。 选择“所有查询”，然后单击“运行”。
 
@@ -219,11 +219,11 @@ ms.locfileid: "56191310"
 
 2. 通过单击页面右上方的“配置文件”，使用“切换角色”将角色切换为“ACCOUNTADMIN”。  
 
-    ![Snowflake 管理员 ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Snowflake 管理员](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 3. 通过运行以下 SQL 查询来创建用户，确保“登录名”设置为工作表上的 Azure AD 用户名，如下所示。
 
-    ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+    ![Snowflake adminsql](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
 
     ```
     use role accountadmin;
@@ -240,7 +240,7 @@ ms.locfileid: "56191310"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
