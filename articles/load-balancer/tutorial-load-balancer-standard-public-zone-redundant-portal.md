@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: d2e81e4f2eda730dc064699f42ba7bfb49648082
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e83991f553d00af11cfc275137f8e73ebab2098c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230826"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882631"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -177,7 +177,7 @@ ms.locfileid: "54230826"
 4. 单击“添加新后端资源”，将每个虚拟机（*myVM2* 和 *myVM3*）添加到负载均衡器的后端池。
 5. 单击“添加”。
 
-    ![添加到后端地址池 - ](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
+    ![添加到后端地址池 -](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
 3. 确保负载均衡器后端池设置显示所有三个 VM - **myVM1**、**myVM2** 和 **myVM3**。
 

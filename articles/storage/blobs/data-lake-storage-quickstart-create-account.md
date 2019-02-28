@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a4c3d952edd115748c6a63f031d9c8e115aedb1c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1af6214833109ad89e8b5f27eefc0c99cdaf2496
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884454"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984180"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>快速入门：创建 Azure Data Lake Storage Gen2 存储帐户
 
@@ -83,7 +83,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 
 > [!NOTE]
-> 分层命名空间目前在所有公共区域中提供。 它目前不在主权云中提供。
+> 分层命名空间目前在所有公共区域中提供。
 
 1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“所有服务”。 然后向下滚动到“存储”，接着选择“存储帐户”。 在显示的“存储帐户”窗口中，选择“添加”。
 2. 选择之前创建的订阅和资源组。
@@ -141,7 +141,7 @@ Login-AzAccount
 若要通过 PowerShell 创建新的资源组，请使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令： 
 
 > [!NOTE]
-> 分层命名空间目前在所有公共区域中提供。 它目前不在主权云中提供。
+> 分层命名空间目前在所有公共区域中提供。
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -201,7 +201,7 @@ az group create `
 ```
 
 > [!NOTE]
-> > 分层命名空间目前在所有公共区域中提供。 它目前不在主权云中提供。
+> > 分层命名空间目前在所有公共区域中提供。
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>创建常规用途 v2 存储帐户
 

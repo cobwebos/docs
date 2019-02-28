@@ -7,12 +7,12 @@ ms.service: batch-ai
 ms.topic: overview
 ms.date: 2/14/2019
 ms.author: garye
-ms.openlocfilehash: 87dcf18a2517561e3166726f8f1f1a70c2ec7713
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: fb1114e94c227ce6787532c6059186399d0f57f0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447797"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961342"
 ---
 # <a name="whats-happening-to-azure-batch-ai"></a>Azure Batch AI 将发生什么情况？
 
@@ -282,7 +282,7 @@ ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 ```
 
-在 [Azure 机器学习服务文档](../machine-learning/service/how-to-access-data.md#create-a-datastore)中详细了解如何注册其他存储帐户，或获取对另一个已注册的数据存储的引用。
+在 [Azure 机器学习服务文档](../machine-learning/service/how-to-access-data.md#access)中详细了解如何注册其他存储帐户，或获取对另一个已注册的数据存储的引用。
 
 
 #### <a name="downloading-and-uploading-data"></a>下载和上传数据 
@@ -434,7 +434,7 @@ estimator = TensorFlow(source_directory=project_folder,
                        use_gpu=True)
 ```
 
-在 [Azure 机器学习示例 Notebook github 存储库](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server)中可以找到有关此训练代码片段的完整信息（包括 tf_mnist_replica.py 文件）。 数据存储本身可以装载在单个节点上，或者，可以在节点本身上下载训练数据。 [Azure 机器学习服务文档](../machine-learning/service/how-to-access-data.md#access-datastores-for-training)中提供了有关在估算器中引用数据存储的更多详细信息。 
+在 [Azure 机器学习示例 Notebook github 存储库](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server)中可以找到有关此训练代码片段的完整信息（包括 tf_mnist_replica.py 文件）。 数据存储本身可以装载在单个节点上，或者，可以在节点本身上下载训练数据。 [Azure 机器学习服务文档](../machine-learning/service/how-to-access-data.md#access)中提供了有关在估算器中引用数据存储的更多详细信息。 
 
 在 Azure 机器学习中提交运行的过程是通过 submit 函数完成的。
 
