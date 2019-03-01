@@ -158,7 +158,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 * **--deployment-id** - IoT 中心存在的部署的名称。
 * **--hub-name** - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 
-在命令窗口中检查部署。 **metrics** 属性列出由每个中心评估的每个指标的计数：
+在命令窗口中检查部署。  **metrics** 属性列出由每个中心评估的每个指标的计数：
 
 * **targetedCount** - 一个系统指标，根据目标条件指定 IoT 中心的设备孪生数。
 * **appliedCount** - 一个系统指标，指定已在 IoT 中心将部署内容应用到其模块孪生的设备数。
