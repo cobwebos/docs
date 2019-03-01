@@ -4,17 +4,18 @@ description: 使用 Azure Stack 存储开发工具的入门指南
 services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/05/2018
+ms.date: 02/27/2019
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: aa044ba9a7fcb66b5314144dd77bdd3435488218
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.lastreviewed: 02/27/2019
+ms.openlocfilehash: 45bd47d0a55f447cc6222bb24de8eafcf37e263b
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877589"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010644"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack 存储开发工具入门
 
@@ -24,23 +25,23 @@ Microsoft Azure Stack 提供了一组存储服务包括 blob、 表和队列存�
 
 使用本文作为使用 Azure Stack 存储开发工具的入门指南。 可以在对应的 Azure 存储教程中，找到更多的详细信息和示例代码。
 
-> [!NOTE]
+> [!NOTE]  
 > Azure Stack 存储和 Azure 存储之间存在一些已知差异，包括每个平台的特定需求。 例如，Azure Stack 有特定的客户端库以及特定的终结点后缀需求。 有关详细信息，请参阅 [Azure Stack 存储：差异和注意事项](azure-stack-acs-differences.md)。
 
 ## <a name="azure-client-libraries"></a>Azure 客户端库
 
-Azure Stack 存储支持的 REST API 版本是 2017-04-17、2016-05-31、2015-12-11、2015-07-08、2015-04-05（适用于 1802 更新或更高版本），以及 2015-04-05（适用于以前的版本）。 Azure Stack 终结点并不完全等同于最新版的 Azure 存储 REST API。 对于存储客户端库，需要了解与 REST API 兼容的版本。
+对于存储客户端库，请了解与 REST API 兼容的版本。 还必须在代码中指定 Azure Stack 终结点。
 
-### <a name="1802-update-or-newer-versions"></a>1802 更新或更高版本
+### <a name="1811-update-or-newer-versions"></a>1811 更新或更高版本
 
 | 客户端库 | Azure Stack 支持的版本 | 链接 | 终结点规范 |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| .NET | 8.7.0 | Nuget 包：<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | app.config 文件 |
-| Java | 6.1.0 | Maven 包：<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | 连接字符串设置 |
-| Node.js | 2.7.0 | NPM 链接：<br>https://www.npmjs.com/package/azure-storage<br>（运行：`npm install azure-storage@2.7.0`）<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | 服务实例声明 |
-| C++ | 3.1.0 | Nuget 包：<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | 连接字符串设置 |
-| PHP | 1.0.0 | GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Blob： https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>队列：<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>表： https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>通过编辑器进行安装（若要了解更多内容，[请参阅下面的详细信息](#install-php-client-via-composer---current)。） | 连接字符串设置 |
-| Python | 1.0.0 | GitHub 版本：<br>常见：<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common<br>Blob：<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob<br>队列：<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-queue | 服务实例声明 |
+| .NET | 9.2.0 | Nuget 包：<br>https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0 | app.config 文件 |
+| Java | 7.0.0 | Maven 包：<br>https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/7.0.0<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0 | 连接字符串设置 |
+| Node.js | 2.8.3 | NPM 链接：<br>https://www.npmjs.com/package/azure-storage<br>（运行：`npm install azure-storage@2.8.3`）<br> <br>Github 版本：<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3 | 服务实例声明 |
+| C++ | 5.2.0 | Nuget 包：<br>https://www.nuget.org/packages/Microsoft.Azure.Storage.CPP.v140/5.2.0<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0 | 连接字符串设置 |
+| PHP | 1.2.0 | GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common<br>Blob： https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob<br>队列：<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.1.1-queue<br>表： https://github.com/Azure/azure-storage-php/releases/tag/v1.1.0-table<br> <br>通过编辑器安装 (若要了解更多信息，请[请参阅下面的详细信息](#install-php-client-via-composer---current)。) | 连接字符串设置 |
+| Python | 1.1.0 | GitHub 版本：<br>常见：<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-common<br>Blob：<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob<br>队列：<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-queue | 服务实例声明 |
 | Ruby | 1.0.1 | RubyGems 包：<br>常见：<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>Blob： https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>队列： https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>表： https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>Blob： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>队列： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>表： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | 连接字符串设置 |
 
 #### <a name="install-php-client-via-composer---current"></a>通过 Composer 安装 PHP 客户端 - 当前
@@ -49,7 +50,36 @@ Azure Stack 存储支持的 REST API 版本是 2017-04-17、2016-05-31、2015-12
 
 1. 在项目的根目录中，使用以下代码创建一个名为 **composer.json** 的文件：
 
-  ```php
+    ```json
+    {
+      "require": {
+      "Microsoft/azure-storage-blob":"1.2.0"
+      }
+    }
+    ```
+
+2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到项目根目录。
+3. 运行：`php composer.phar install`。
+
+### <a name="previous-versions-1802-to-1809-update"></a>以前的版本（1802 到 1809 更新）
+
+| 客户端库 | Azure Stack 支持的版本 | 链接 | 终结点规范 |
+|----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| .NET | 8.7.0 | Nuget 包：<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | app.config 文件 |
+| Java | 6.1.0 | Maven 包：<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | 连接字符串设置 |
+| Node.js | 2.7.0 | NPM 链接：<br>https://www.npmjs.com/package/azure-storage<br>（运行：`npm install azure-storage@2.7.0`）<br> <br>Github 版本：<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | 服务实例声明 |
+| C++ | 3.1.0 | Nuget 包：<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | 连接字符串设置 |
+| PHP | 1.0.0 | GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Blob： https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>队列：<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>表： https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>通过编辑器安装 （请参阅下面的详细信息）。) | 连接字符串设置 |
+| Python | 1.0.0 | GitHub 版本：<br>常见：<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common<br>Blob：<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob<br>队列：<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-queue | 服务实例声明 |
+| Ruby | 1.0.1 | RubyGems 包：<br>常见：<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>Blob： https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>队列： https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>表： https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>Blob： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>队列： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>表： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | 连接字符串设置 |
+
+#### <a name="install-php-client-via-composer---previous"></a>通过编辑器安装 PHP 客户端 - 以前
+
+通过 Composer 安装：（以 blob 为例）。
+
+1. 在项目的根目录中，使用以下代码创建一个名为 **composer.json** 的文件：
+
+  ```json
     {
       "require": {
       "Microsoft/azure-storage-blob":"1.0.0"
@@ -58,35 +88,6 @@ Azure Stack 存储支持的 REST API 版本是 2017-04-17、2016-05-31、2015-12
   ```
 
 2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到项目根目录。
-3. 运行：`php composer.phar install`。
-
-### <a name="previous-versions"></a>以前的版本
-
-|客户端库|Azure Stack 支持的版本|链接|终结点规范|
-|---------|---------|---------|---------|
-|.NET     |6.2.0|Nuget 包：<br>[https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0](https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0)<br><br>GitHub 版本：<br>[https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1](https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1)|app.config 文件|
-|Java|4.1.0|Maven 包：<br>[http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0)<br><br>GitHub 版本：<br> [https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0](https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0)|连接字符串设置|
-|Node.js     |1.1.0|NPM 链接：<br>[https://www.npmjs.com/package/azure-storage](https://www.npmjs.com/package/azure-storage)<br>（运行：`npm install azure-storage@1.1.0)`<br><br>GitHub 版本：<br>[https://github.com/Azure/azure-storage-node/releases/tag/1.1.0](https://github.com/Azure/azure-storage-node/releases/tag/1.1.0)|服务实例声明||C++|2.4.0|Nuget 包：<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>GitHub 版本：<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|连接字符串设置|
-|C++|2.4.0|Nuget 包：<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>GitHub 版本：<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|连接字符串设置|
-|PHP|0.15.0|GitHub 版本：<br>[https://github.com/Azure/azure-storage-php/releases/tag/v0.15.0](https://github.com/Azure/azure-storage-php/releases/tag/v0.15.0)<br><br>通过 Composer 安装（请参阅下面的详细信息）|连接字符串设置|
-|Python     |0.30.0|PIP 包：<br> [https://pypi.python.org/pypi/azure-storage/0.30.0](https://pypi.python.org/pypi/azure-storage/0.30.0)<br>（运行：`pip install -v azure-storage==0.30.0)`<br><br>GitHub 版本：<br> [https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0](https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0)|服务实例声明|
-|Ruby|0.12.1<br>预览|RubyGems 包：<br> [https://rubygems.org/gems/azure-storage/versions/0.12.1.preview](https://rubygems.org/gems/azure-storage/versions/0.12.1.preview)<br><br>GitHub 版本：<br> [https://github.com/Azure/azure-storage-ruby/releases/tag/v0.12.1](https://github.com/Azure/azure-storage-ruby/releases/tag/v0.12.1)|连接字符串设置|
-
-#### <a name="install-php-client-via-composer---previous"></a>通过编辑器安装 PHP 客户端 - 以前
-
-若要通过编辑器安装，请执行以下操作：
-
-1. 在项目的根目录中，使用以下代码创建一个名为 **composer.json** 的文件：
-
-  ```php
-    {
-          "require":{
-          "Microsoft/azure-storage":"0.15.0"
-          }
-    }
-  ```
-
-2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到项目根目录中。
 3. 运行：`php composer.phar install`。
 
 ## <a name="endpoint-declaration"></a>终结点声明
@@ -101,7 +102,7 @@ Azure Stack 终结点包含两个部分：区域的名称和 Azure Stack 域。
 
 对于 Azure Stack，在 app.config 文件中指定终结点后缀：
 
-```
+```xml
 <add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
@@ -111,7 +112,7 @@ EndpointSuffix=local.azurestack.external;" />
 
 对于 Azure Stack，在连接字符串的设置中指定终结点后缀：
 
-```
+```java
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
@@ -123,7 +124,7 @@ public static final String storageConnectionString =
 
 对于 Azure Stack，在声明实例中指定终结点后缀：
 
-```
+```nodejs
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
@@ -132,7 +133,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 对于 Azure Stack，在连接字符串的设置中指定终结点后缀：
 
-```
+```cpp
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
 AccountName=your_storage_account;
 AccountKey=your_storage_account_key;
@@ -143,7 +144,7 @@ EndpointSuffix=local.azurestack.external"));
 
 对于 Azure Stack，在连接字符串的设置中指定终结点后缀：
 
-```
+```php
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.local.azurestack.external/;
 QueueEndpoint=http:// <storage account name>.queue.local.azurestack.external/;
 TableEndpoint=http:// <storage account name>.table.local.azurestack.external/;
@@ -154,7 +155,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 对于 Azure Stack，在声明实例中指定终结点后缀：
 
-```
+```python
 block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
@@ -164,7 +165,7 @@ endpoint_suffix='local.azurestack.external')
 
 对于 Azure Stack，在连接字符串的设置中指定终结点后缀：
 
-```
+```ruby
 set
 AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;
 AccountName=myaccount;

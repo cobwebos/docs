@@ -201,7 +201,7 @@ items:
   - name: Azure IoT 中心
     href: https://azure.microsoft.com/services/iot-hub/
   - name: Azure IoT 已认证设备目录
-    href: https://catalog.azureiotsuite.com/
+    href: https://catalog.azureiotsolutions.com/
   - name: Azure IoT 开发人员中心
     href: https://azure.microsoft.com/develop/iot/
   - name: 客户数据请求
@@ -226,9 +226,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 1a47edb218cc07fe48ee64bd8d23cc167083935e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 2eac27d88f9467d5badf1050d6358af84d9a49d8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156399"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009828"

@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 02/19/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f9ed10c84be86304722020606873b0c7866df1e8
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: f5b884ddda292b1c523a5364d34753ccb3a5bbdf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594043"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194429"
 ---
 # <a name="validate-oem-packages"></a>验证 OEM 程序包
 
@@ -91,6 +91,9 @@ ms.locfileid: "56594043"
 ## <a name="apply-monthly-update"></a>应用每月更新
 
 [!INCLUDE [azure-stack-vaas-workflow-section_update-azs](includes/azure-stack-vaas-workflow-section_update-azs.md)]
+
+> [!NOTE]
+> 在应用每月的更新后，我们建议你运行 Test-azurestack 以验证更新已正确应用并处于正常状态。 如果 Test-azurestack 失败，请向 Microsoft 报告此问题。 不要继续执行测试轮次直到问题得到解决。 有关如何运行测试 Azure Stack 命令的信息可在此[一文](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)。
 
 ## <a name="create-a-package-validation-workflow"></a>创建包验证工作流
 

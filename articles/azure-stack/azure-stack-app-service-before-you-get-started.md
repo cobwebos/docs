@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 02/22/2019
-ms.openlocfilehash: 3b057e9c4a0fccb3f85ec237433e4020fd4a84da
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 01b0a86ede79187d8f180df0f2f71f6eaadb7428
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737478"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990512"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>在 Azure Stack 上开始使用应用服务之前
 
@@ -30,7 +30,7 @@ ms.locfileid: "56737478"
 在 Azure Stack 上部署 Azure 应用服务之前，必须完成本文中的先决条件步骤。
 
 > [!IMPORTANT]
-> 请将 1809 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.4。
+> 将 1901年更新应用于 Azure Stack 集成系统，或在部署 Azure 应用服务 1.5 之前部署最新 Azure Stack 开发工具包 (ASDK)。
 
 ## <a name="download-the-installer-and-helper-scripts"></a>下载安装程序与帮助器脚本
 
@@ -49,15 +49,7 @@ ms.locfileid: "56737478"
 
 ## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>从市场合成自定义脚本扩展版本
 
-Azure Stack 上的 Azure 应用服务需要自定义脚本扩展 v1.9.0。  开始部署或升级 Azure Stack 上的 Azure 应用服务之前，必须先[从市场合成](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)该扩展
-
-## <a name="high-availability"></a>高可用性
-
-Azure Stack 1802 更新增加了对容错域的支持。 Azure Stack 上新的 Azure 应用服务部署将分配到各个容错域并提供容错功能。
-
-对于 Azure Stack 上现有的 Azure 应用服务部署（部署时间在 1802 更新以前），请参阅[跨容错域重新均衡应用服务资源提供程序](azure-stack-app-service-fault-domain-update.md)一文。
-
-另外，请在高可用性配置中部署所需的文件服务器和 SQL Server 实例。
+Azure Stack 上的 azure 应用服务需要自定义脚本扩展 v1.9.1。  开始部署或升级 Azure Stack 上的 Azure 应用服务之前，必须先[从市场合成](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)该扩展
 
 ## <a name="get-certificates"></a>获取证书
 
