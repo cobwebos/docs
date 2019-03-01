@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 711da2d16ad70bdcc954cfbc70daa2505da7f676
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: afb2cae4875b198c6da8ce6568ac5039520b4b27
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884094"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193919"
 documentType: LandingData
-title: Azure 应用配置文档
+title: Azure 应用配置（预览版）文档
 metadata:
   title: Azure 应用配置文档 - 教程和 API 参考
   meta.description: Azure App Configuration is an Azure managed service that helps developers centralize their application configurations simply and securely.
@@ -56,13 +56,12 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/azure-app-configuration/integrate-with-azure-managed-service-identity">与 Azure 托管服务标识集成</a>
-    - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-in-aspnet-core">使用 ASP.NET Core 启用动态配置</a>
+    - html: <a href="/azure/azure-app-configuration/integrate-azure-managed-service-identity">与 Azure 托管服务标识集成</a>
+    - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core">使用 ASP.NET Core 启用动态配置</a>
 - title: 示例
   items:
   - type: list
     style: unordered
     className: spaced noBullet
     items:
-    - html: <a href="https://github.com/azure/AzureAppConfiguration-samples">代码示例</a>
     - html: <a href="/azure/azure-app-configuration/cli-samples">Azure CLI</a>
