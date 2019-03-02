@@ -59,22 +59,17 @@ items:
     - name: parameters
       href: resource-manager-templates-parameters.md
     - name: 变量
-      href: resource-manager-templates-variables.md
+      href: resource-group-authoring-templates.md#variables
     - name: 函数
       href: resource-group-authoring-templates.md#functions
     - name: 资源
       href: resource-manager-templates-resources.md
     - name: Outputs
-      href: resource-manager-templates-outputs.md
-  - name: 指南
-    items:
-    - name: 模板最佳实践
-      href: template-best-practices.md
-    - name: 订阅监管
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold
-      maintainContext: true
-    - name: 用于提供云一致性的模板
-      href: templates-cloud-consistency.md
+      href: resource-group-authoring-templates.md#outputs
+  - name: 模板最佳实践
+    href: template-best-practices.md
+  - name: 用于提供云一致性的模板
+    href: templates-cloud-consistency.md
   - name: 资源提供程序和类型
     href: resource-manager-supported-services.md
   - name: 管理组
@@ -265,9 +260,9 @@ items:
     href: resource-manager-personal-data.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 061f23dd0f25fccdbcfe459dc71f998319b06d58
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: cb2e9b6d12acfb6fff514fc5e2603d9531acd76f
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886683"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241676"

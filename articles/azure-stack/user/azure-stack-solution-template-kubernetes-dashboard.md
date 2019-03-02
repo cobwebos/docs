@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 197e79c2674d314c178444cc1f0d685503425031
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdc1be0c0274977fe14ef704fbb74fa955ad7e11
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986942"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242405"
 ---
 # <a name="enable-the-kubernetes-dashboard-in-azure-stack"></a>启用 Azure Stack 中的 Kubernetes 仪表板 
 
@@ -107,7 +107,6 @@ Kubernetes 包括可用于基本的管理操作的 web 仪表板。 使用此仪
 3. 记下文件位置。 更新脚本的位置，并使用提升的提示符打开 PowerShell。 运行更新的脚本：  
 
     ```PowerShell   
-    Import  /etc/kubernetes/certs/ca.crt -CertStoreLocation cert:\LocalMachine\Root 
     Import-Certificate -Filepath "ca.crt" -CertStoreLocation cert:\LocalMachine\Root 
     $pfxpwd = Get-Credential -UserName 'Enter password below' -Message 'Enter password below' 
     Import-PfxCertificate -Filepath "client.pfx" -CertStoreLocation cert:\CurrentUser\My -Password $pfxpwd.Password 
@@ -121,9 +120,11 @@ Kubernetes 包括可用于基本的管理操作的 web 仪表板。 使用此仪
 3.  选择客户端证书。
 4.  输入的令牌。 
 5. 重新连接到主节点上的 bash 命令行并对其授予权限`kubernetes-dashboard`。 运行以下命令：
-    ```Bash   
+
+    ```Bash  
     kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard 
     ``` 
+
     脚本将向提供`kubernetes-dashboard`云管理员权限。 有关详细信息，请参阅[有关 RBAC 启用群集](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)。
 
 可以使用仪表板。 有关 Kubernetes 仪表板的详细信息，请参阅[Kubernetes Web UI 仪表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 
