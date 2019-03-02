@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fb2260d844e82632fd54cea27acc07b226b83a50
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e437d1767fba01a75852bedc5a89de94c222d4f5
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446454"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195058"
 documentType: LandingData
 title: Azure Resource Graph 文档
 metadata:
@@ -41,17 +41,15 @@ sections:
   items:
   - type: paragraph
     text: 若要提供有关此功能的反馈或使用查询获得帮助，请从 Azure 门户中的 <b>Azure Policy</b> 访问<b>资源图表（预览版）</b>页，并单击“反馈”。 还可以在 <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice</a> 上向我们发送建议。
-- title: 参考
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: 命令行
-      html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p>
-    - title: PowerShell
-      html: <p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
-    - title: REST API
-      html: <p><a href="/rest/api/azureresourcegraph/resources/resources">资源</a></p>
-    - title: OpenAPI (Swagger)
-      html: <p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview</a></p>
+      html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
+    - title: Languages
+      html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">用于 .NET 的 Azure SDK</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/azureresourcegraph/resources/resources">API 参考</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>

@@ -211,6 +211,8 @@ items:
       href: how-to-connect-fed-ssl-update.md
     - name: 使用 Azure AD 管理 AD FS 信任
       href: how-to-connect-azure-ad-trust.md
+    - name: 配置应用程序的组声明
+      href: how-to-connect-fed-group-claims.md
     - name: 更改 O365 RP 的哈希算法
       href: how-to-connect-fed-sha256-guidance.md
     - name: 使用 SAML 2.0 服务器作为 Idp
@@ -243,8 +245,8 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: 管理 Azure AD Connect Sync
     items:
-    - name: 管理操作任务
-      href: how-to-connect-sync-operations.md
+    - name: 暂存服务器和灾难恢复
+      href: how-to-connect-sync-staging-server.md
     - name: 更改默认配置的最佳做法
       href: how-to-connect-sync-best-practices-changing-default-configuration.md
     - name: 更改默认配置
@@ -335,9 +337,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools 参考
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 8eb252f12a4a1a66ba7e8bd5c584e7aad227e24c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 613adb5c19c3ca7fa2f47700a0358a51beac98e4
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889268"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193698"

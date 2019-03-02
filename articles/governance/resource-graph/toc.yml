@@ -36,15 +36,17 @@ items:
     displayName: page, first, skip, token
     href: ./concepts/work-with-data.md
   expanded: true
-- name: 参考
+- name: 引用
   items:
   - name: Azure PowerShell
     href: /powershell/module/az.resourcegraph/
   - name: Azure CLI
     href: /cli/azure/ext/resource-graph/graph
-  - name: REST API
+  - name: 用于 .NET 的 Azure SDK
+    href: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
+  - name: REST
     href: /rest/api/azureresourcegraph/resources/resources
-  - name: OpenAPI (Swagger)
+  - name: OpenAPI
     href: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview
 - name: 资源
   items:
@@ -56,9 +58,9 @@ items:
     href: https://feedback.azure.com/forums/915958-azure-governance
   - name: 治理 YouTube 频道
     href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: 875da35a22e4ac5483a09938cf3be850c4ab112d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 91b9d159bf1de2cdaa3d16838266f41e992957fa
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446981"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191266"
