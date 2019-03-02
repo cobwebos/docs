@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2105919e0c21ef57ae2cd19450110df384252e97
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 43d28cde7e4287b5394087000b5e730a94748713
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730930"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010627"
 documentType: LandingData
 title: 必应自动建议文档
 metadata:
@@ -12,18 +12,39 @@ metadata:
   title: 必应自动建议文档 - 教程、快速入门和 API 参考 | Microsoft Docs
   description: 了解如何使用必应自动建议 API 基于部分查询获取建议的查询。 教程介绍了如何构建使用该服务的应用。
   services: cognitive-services
-  author: v-jaswel
-  manager: kamrani
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/10/2017
-  ms.author: v-jaswel
+  ms.date: 02/20/2019
+  ms.author: aahi
 abstract:
-  description: 通过必应自动建议 API，可向必应发送部分搜索查询词，并取回其他用户已搜索的建议查询列表。  例如，当用户输入其搜索词的每个字符时，便会调用此 API 并使用建议的查询字符串填充搜索框的下拉列表。 使用我们的快速入门、教程和示例了解如何使用自动建议 API。
+  description: 通过必应自动建议 API，可向必应发送部分搜索查询词，并取回其他用户已搜索的建议查询列表。  例如，当用户键入其搜索词的每个字符时，可以调用此 API，以便使用建议词填充搜索框的下拉列表。 使用我们的快速入门、教程和示例了解如何使用自动建议 API。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-autosuggest/overview
+      html: <p>了解必应自动建议 API</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 什么是必应自动建议 API？
+    - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
+      html: <p>了解如何实时获取搜索建议</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 从必应自动建议 API 获取建议
+    - href: /azure/cognitive-services/bing-autosuggest/language-support
+      html: <p>找出 API 支持的语言。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 支持的语言
 - title: 5 分钟快速入门
   items:
   - type: paragraph
@@ -60,7 +81,7 @@ sections:
   - type: paragraph
     text: 了解如何使用必应自动建议 API 开发应用程序：
   - type: paragraph
-    text: <a href="tutorials/autosuggest.md">单页 Web 应用</a> &#124; <a href="tutorials/autosuggest-source.md">源代码</a>
+    text: <a href="tutorials/autosuggest.md">单页 Web 应用</a>
 - title: 引用
   items:
   - type: list
