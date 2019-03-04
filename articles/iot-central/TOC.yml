@@ -105,10 +105,12 @@ items:
       href: howto-manage-iot-central-from-powershell.md
     - name: 以 CSP 身份创建和管理应用程序
       href: howto-create-and-manage-applications-as-CSP.md
-    - name: 配置主页
+    - name: 配置应用程序仪表板
       href: howto-configure-homepage.md
   - name: 个性化
     items:
+    - name: 创建个人仪表板
+      href: howto-personalize-dashboard.md
     - name: 管理首选项
       href: howto-manage-preferences.md
 - name: 相关内容
@@ -143,9 +145,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: 支持的浏览器
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: 95702f9255bfe02aec5c5770d06021aa3b28148c
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 4843570f131b06657df1770060b95622fde43cc0
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806872"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216809"

@@ -14,6 +14,7 @@
 #### [潜在客户管理](./lead-management-for-cloud-marketplace.md)
 #### [在 Azure 市场中交易](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 #### [专用产品/服务](./private-offers.md)
+#### [标准合同](./standard-contract.md)
 
 ### [按产品/服务类型提供的发布指南](./publisher-guide-by-offer-type.md)
 #### [虚拟机](./marketplace-virtual-machines.md)
@@ -30,13 +31,16 @@
 #### [产品/服务列表最佳做法](./gtm-offer-listing-best-practices.md)
 #### [如何成为特别推荐的应用](./gtm-how-to-get-featured.md)
 #### [市场内容验证](./marketplace-criteria-content-validation.md)
+#### [云解决方案提供商](./cloud-solution-providers.md)
 
 ### [市场权益](./gtm-your-marketplace-benefits.md)
 #### [通过 Microsoft 促进业务发展](./gtm-promote-your-business.md)
 #### [首选解决方案](./preferred-solutions.md) 
+#### [集成的解决方案](./integrated-solutions.md)
 
 ### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)
 #### [市场常见问题解答](./marketplace-faq-publisher-guide.md)
+#### [上市地区和货币](./marketplace-geo-availability-currencies.md)
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
