@@ -1314,7 +1314,7 @@ Azure DevOps Projects </a>
                                         <li>
                                             <a href="/azure/iot-fundamentals">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>IoT 基础</p>
+                                                <p>Azure IoT</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3929,12 +3929,12 @@ Azure DevOps Projects </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/iothub.svg" alt="" />
+                                                        <img src="media/index/question-mark-grey.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>IoT 基础</h3>
-                                                    <p>开始连接设备</p>
+                                                    <h3>Azure IoT 新手？</h3>
+                                                    <p>从这里开始了解哪些服务满足你的需求</p>
                                                 </div>
                                             </div>
                                         </div>

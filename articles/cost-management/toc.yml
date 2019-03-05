@@ -25,6 +25,10 @@ items:
       href: cost-mgt-best-practices.md
     - name: 了解成本管理数据
       href: understand-cost-mgt-data.md
+    - name: 了解并使用范围
+      href: understand-work-scopes.md
+    - name: 从 EA 迁移到 Microsoft 客户协议 API
+      href: migrate-cost-management-api.md
   - name: 操作指南
     items:
     - name: 向数据分配访问权限
@@ -113,9 +117,9 @@ items:
         href: cost-mgt-faq.md
       - name: 联系 Cloudyn 支持人员
         href: support-request-cost-management.md
-ms.openlocfilehash: ae9155548a839db18fc80f40c12e5264643cea9d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: deec8d274f50f2fad6b18141ec924245c3c2f5ec
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769009"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337849"
