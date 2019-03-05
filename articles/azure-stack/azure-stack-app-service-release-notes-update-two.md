@@ -16,12 +16,12 @@ ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 0fa938b02b24bd79017bede5346b882e6587bd5d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8126397dfb3b02778413ab6ee696a8138c792c15
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766918"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342558"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>基于 Azure Stack 的应用服务 Update 2 发行说明
 
@@ -38,7 +38,7 @@ ms.locfileid: "55766918"
 
 基于 Azure Stack 的应用服务 Update 2 的生成号为 **72.0.13698.10**
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
 > 基于 Azure Stack 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为目前在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新的使用者是 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
@@ -56,7 +56,7 @@ ms.locfileid: "55766918"
 - 针对核心服务的更新，用于提高可靠性和错误消息传递，以便更轻松地诊断常见问题。
 
 - **针对以下应用程序框架和工具的更新**：
-  - 添加了 .Net Framework 4.7.1
+  - 添加了的.NET Framework 4.7.1
   - 增加了 **Node.JS** 版本：
     - NodeJS 6.12.3
     - NodeJS 8.9.4
@@ -84,15 +84,15 @@ ms.locfileid: "55766918"
 - 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。
 
 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
- * 源:任何
- * 源端口范围：*
- * 目标：IP 地址
- * 目标 IP 地址范围：文件服务器的 IP 范围
- * 目标端口范围：445
- * 协议：TCP
- * 操作：允许
- * 优先级：700
- * 名称:Outbound_Allow_SMB445
+* 源：任意
+* 源端口范围：*
+* 目标：IP 地址
+* 目标 IP 地址范围：文件服务器的 IP 范围
+* 目标端口范围：445
+* 协议：TCP
+* 操作：允许
+* 优先级：700
+* 姓名：Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
 
