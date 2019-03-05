@@ -22,7 +22,7 @@ items:
   items:
   - name: 最新版本
     href: release-notes-10-0-10106-0.md
-  - name: Gen2 区域迁移计划
+  - name: 第 2 代区域升级计划
     href: gen2-migration-schedule.md
   - name: 已存档的发行说明
     items:
@@ -311,9 +311,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: 数据管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 90b07d04766a1add27383ff3eca5cb30b25c057e
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e3eab380b4f8234c50376899bcd0af8492337999
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243121"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217710"
