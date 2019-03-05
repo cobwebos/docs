@@ -16,12 +16,12 @@ ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: def9026fb0422d8868af098f12180617aefe7eff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4499424ef25e7d2ba32b691cce6d5d3d1face0d0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877939"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308459"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack 中的配额类型
 
@@ -44,7 +44,7 @@ ms.locfileid: "56877939"
 
 | **Item** | **默认值** | **说明** |
 | --- | --- | --- |
-| 最大容量 (GB) |2048 |可供此位置的订阅使用的总存储容量。 |
+| 最大容量 (GB) |2048 |总存储容量 （包括 blob 和所有 assiociated 快照、 表、 队列） 可供此位置中的订阅。 |
 | 存储帐户的总数 |20 |订阅可以在此位置创建的存储帐户数目上限。 |
 
 > [!NOTE]  
