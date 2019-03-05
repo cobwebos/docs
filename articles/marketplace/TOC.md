@@ -199,7 +199,9 @@
 ##### [“联系人”选项卡](./cloud-partner-portal/saas-app/cpp-contacts-tab.md)
 #### [发布产品/服务](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 #### [更新现有产品/服务](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
-#### [SaaS API](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+#### [SaaS 履行 API](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md)
+##### [SaaS V1 API](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md) 
+##### [SaaS V2 API](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md) 
 
 ### [虚拟机产品/服务](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 #### [先决条件](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
