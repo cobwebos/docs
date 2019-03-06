@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: rezas
 ms.custom: include file
-ms.openlocfilehash: 53d8df7e2366cfbf2f62e79fc99c8ef2f9b48ba1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ea82bdca23d8b34898261eb60fd908d281451fd0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830807"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825658"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
@@ -29,7 +29,7 @@ ms.locfileid: "54830807"
 
    **订阅**：请选择要用于 IoT 中心的订阅。
 
-   **资源组**：可创建新的资源组或使用现有资源组。 若要新建一个，请单击“新建”，并填写要使用的名称。 若要使用现有资源组，请单击“使用现有资源组”并从下拉列表中选择该组。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../articles/azure-resource-manager/resource-group-portal.md)。
+   **资源组**：可创建新的资源组或使用现有资源组。 若要新建一个，请单击“新建”，并填写要使用的名称。 若要使用现有资源组，请单击“使用现有资源组”并从下拉列表中选择该组。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](../articles/azure-resource-manager/manage-resource-groups-portal.md)。
 
    **区域**：这是要在其中设置中心的区域。 确保选择受支持的区域（例如，美国中部或美国中部 EUAP）。
 

@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 04/12/2018
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: a635766c1a7fb9ae10a651d09ecd7da9a5f01e51
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2159e594f0cc6a43905f3562c0ad6f3e3c9984fe
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763130"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867501"
 ---
 # <a name="use-azure-cli-to-start-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>使用 Azure CLI 在 Azure 开发测试实验室的实验室中启动虚拟机
 
@@ -40,7 +40,7 @@ ms.locfileid: "34763130"
 
 | 命令 | 说明 |
 |---|---|
-| [az lab vm start ](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-start) | 在实验室中启动虚拟机 (VM)。 此操作可能需要一段时间才能完成。 |
+| [az lab vm start](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-start) | 在实验室中启动虚拟机 (VM)。 此操作可能需要一段时间才能完成。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 8738ac52eeaf1f27df5f9cc21ffb0c683a912195
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0eb27e997d39ceb82098b63de607d3529ccc53b4
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427015"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984377"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure 网络观察程序是什么？
 
@@ -97,7 +97,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>查看网络资源的诊断日志
 
-可以针对网络安全组、公共 IP 地址、负载均衡器、虚拟网络网关和应用程序网关等 Azure 网络资源启用诊断日志记录。 诊断日志功能提供单个界面，用于针对生成诊断日志的任何现有网络资源启用和禁用网络资源诊断日志。 可以使用 Microsoft Power BI 和 Azure Log Analytics 等工具查看诊断日志。 若要详细了解如何分析 Azure 网络诊断日志，请参阅 [Log Analytics 中的 Azure 网络解决方案](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+可以针对网络安全组、公共 IP 地址、负载均衡器、虚拟网络网关和应用程序网关等 Azure 网络资源启用诊断日志记录。 诊断日志功能提供单个界面，用于针对生成诊断日志的任何现有网络资源启用和禁用网络资源诊断日志。 可使用 Microsoft Power BI 和 Azure Monitor 日志等工具查看诊断日志。 若要详细了解如何分析 Azure 网络诊断日志，请参阅 [Azure Monitor 日志中的 Azure 网络解决方案](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
 ## <a name="network-watcher-automatic-enablement"></a>网络观察程序自动启用
 在订阅中创建或更新虚拟网络时，将在虚拟网络的区域中自动启用网络观察程序。 自动启用网络观察程序对资源或相关费用没有任何影响。 有关详细信息，请参阅[网络观察程序 - 创建](network-watcher-create.md)。

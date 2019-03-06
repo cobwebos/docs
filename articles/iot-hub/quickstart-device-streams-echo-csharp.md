@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: edd3912b3674f3a80a81fd47ed490479f663852c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7b3a8ac0500652b8c4250b4bc3b4f5514b62c4aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830820"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816924"
 ---
 # <a name="quickstart-communicate-to-device-applications-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 C# 中与设备应用程序通信（预览）
 
@@ -39,8 +39,7 @@ ms.locfileid: "54830820"
 dotnet --version
 ```
 
-从 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下载示例 C# 项目并提取 ZIP 存档。
-
+从 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下载示例 C# 项目并提取 ZIP 存档。 设备和服务端上都需要它。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -86,18 +85,17 @@ dotnet --version
     记下返回的值，如下所示：
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
-    
 
 ## <a name="communicate-between-device-and-service-via-device-streams"></a>通过设备流在设备和服务之间通信
 
 ### <a name="run-the-service-side-application"></a>运行服务端应用程序
 
-导航到解压缩的项目文件夹中的 `device-streams-echo/service`。 需要准备好以下信息：
+导航到解压缩的项目文件夹中的 `iot-hub/Quickstarts/device-streams-echo/service`。 需要准备好以下信息：
 
 | 参数名称 | 参数值 |
 |----------------|-----------------|
-| `ServiceConnectionString` | IoT 中心的服务连接字符串。 |
-| `DeviceId` | 前面创建的设备标识符。 |
+| `ServiceConnectionString` | 提供 IoT 中心的服务连接字符串。 |
+| `DeviceId` | 提供之前创建的设备（例如，MyDevice）的 ID。 |
 
 按如下所示编译并运行代码：
 
@@ -109,19 +107,22 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $ServiceConnectionString MyDevice
+dotnet run "<ServiceConnectionString>" "<MyDevice>"
 
 # In Windows
-dotnet run %ServiceConnectionString% MyDevice
+dotnet run <ServiceConnectionString> <MyDevice>
 ```
+
+> [!NOTE]
+> 如果设备端应用程序未及时响应，则会发生超时。
 
 ### <a name="run-the-device-side-application"></a>运行设备端应用程序
 
-导航到解压缩的项目文件夹中的 `device-streams-echo/device` 目录。 需要准备好以下信息：
+导航到解压缩的项目文件夹中的 `iot-hub/Quickstarts/device-streams-echo/device` 目录。 需要准备好以下信息：
 
 | 参数名称 | 参数值 |
 |----------------|-----------------|
-| `DeviceConnectionString` | 前面创建的设备的连接字符串。 |
+| `DeviceConnectionString` | 提供 IoT 中心的设备连接字符串。 |
 
 按如下所示编译并运行代码：
 
@@ -133,28 +134,23 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $DeviceConnectionString
+dotnet run "<DeviceConnectionString>"
 
 # In Windows
-dotnet run %DeviceConnectionString%
+dotnet run <DeviceConnectionString>
 ```
 
 在最后一步结束时，服务端程序会启动一个发往设备的流，在该流建立后就会通过其将字符串缓冲区发送到服务。 在此示例中，服务端程序直接将相同的数据回显到设备，表明已成功地在两个应用程序之间建立双向通信。 见下图。
 
 设备端的控制台输出：![alt 文本](./media/quickstart-device-streams-echo-csharp/device-console-output.png "设备端的控制台输出")
 
-
 服务端的控制台输出：![alt 文本](./media/quickstart-device-streams-echo-csharp/service-console-output.png "服务端的控制台输出")
 
-
-
 通过该流发送的流量将通过 IoT 中心以隧道方式进行传输，而不是直接发送。 这就带来了[这些优势](./iot-hub-device-streams-overview.md#benefits)。
-
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
-
 
 ## <a name="next-steps"></a>后续步骤
 

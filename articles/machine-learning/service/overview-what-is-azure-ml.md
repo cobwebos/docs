@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 36e0ca360cfbdfc77ce0a1768222f43f8864537c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fd6ecb6cb45aef399a137c9eac2c8c6f845b610b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267251"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872482"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -32,7 +32,7 @@ Azure 机器学习服务是一项云服务，可以使用它来训练、部署�
 
 Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来准备数据、培训、测试、部署、管理和跟踪机器学习模型。
 
-[ ![Azure 机器学习服务工作流](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Azure 机器学习服务工作流](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Azure 机器学习服务完全支持开源技术。 因此，你可以使用几万个包含机器学习组件的开源 Python 包， 例如 PyTorch、TensorFlow 和 scikit-learn。
 它支持丰富的工具，可让你以交互方式轻松浏览和准备数据，然后开发和测试模型。 工具示例包括 [Jupyter Notebook](http://jupyter.org) 或[适用于 Visual Studio Code 的 Azure 机器学习](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview)扩展。
@@ -70,7 +70,7 @@ Azure 机器学习服务还可以自动训练模型和自动优化模型。
 
 ## <a name="how-is-azure-machine-learning-service-different-from-machine-learning-studio"></a>Azure 机器学习服务与机器学习工作室有何不同？
 
-Azure 机器学习工作室是一个协作式拖放可视化工作区，无需编写代码即可生成、测试和部署机器学习解决方案。 它使用预生成和预配置的机器学习算法与数据处理模块。 
+[Azure 机器学习工作室](../studio/what-is-ml-studio.md)是一个协作式拖放可视化工作区，无需编写代码即可生成、测试和部署机器学习解决方案。 它使用预生成和预配置的机器学习算法与数据处理模块。
 
 如果想要快速轻松地试验机器学习模型，请使用机器学习工作室，并且内置的机器学习算法足以供你的解决方案使用。
 

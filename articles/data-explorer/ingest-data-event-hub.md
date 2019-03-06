@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 5d9819d60e21c80b882db1d12b0318599fa54095
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/2/2018
+ms.openlocfilehash: 7b724219750154c5ec1410af64175bc70f5cbd6c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729728"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805809"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>快速入门：将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -103,11 +103,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     ![选择测试数据库](media/ingest-data-event-hub/select-test-database.png)
 
-1. 选择“数据引入”，然后选择“添加数据连接”。
-
-    ![数据引入](media/ingest-data-event-hub/data-ingestion-create.png)
-
-1. 使用以下信息填写窗体，然后选择“创建”。
+1. 选择“数据引入”，然后选择“添加数据连接”。 然后使用以下信息填写窗体。 完成后，选择“创建”。
 
     ![事件中心连接](media/ingest-data-event-hub/event-hub-connection.png)
 

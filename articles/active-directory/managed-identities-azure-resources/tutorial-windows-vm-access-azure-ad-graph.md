@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed94b7571acb0ced124644dafc59d805d5112e8a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 10b74b85235cc47375f6289b52371bc588105ad9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268560"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890090"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure AD 图形 API
 
@@ -43,10 +43,14 @@ ms.locfileid: "56268560"
 
 ## <a name="connect-to-azure-ad"></a>连接到 Azure AD
 
-需要连接到 Azure AD 才能将 VM 分配到组，以及授予 VM 检索其组成员身份的权限。
+需要连接到 Azure AD 才能将 VM 分配到组，以及授予 VM 检索其组成员身份的权限。 如果你有多个租户，可以直接使用 Connect-AzureAD cmdlet，也可以使用 Tenant Id 参数。
 
 ```powershell
 Connect-AzureAD
+```
+或
+```powershell
+Connect-AzureAD -TenantId "Object Id of the tenant"
 ```
 
 ## <a name="add-your-vm-identity-to-a-group-in-azure-ad"></a>将 VM 标识添加到 Azure AD 中的某个组
@@ -79,7 +83,13 @@ Azure AD Graph：
    ```powershell
    Connect-AzureAD
    ```
+   若要连接到特定 Azure Active Directory，请使用 TenantId 参数，如下所示：
 
+   ```PowerShell
+   Connect-AzureAD -TenantId "Object Id of the tenant"
+   ```
+
+   
 2. 运行以下 PowerShell 命令，将 ``Directory.Read.All`` 应用程序权限分配到表示 VM 标识的服务主体。
 
    ```powershell

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c5bf56482534a55d24d8ca043e36c39cec99b1f0
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: be1249969fc50f5305dc5844f2578f8a24a6a220
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267523"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817943"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：创建包含依赖的资源的 Azure 资源管理器模板
 
@@ -122,22 +122,10 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
     ![Azure 门户 - Cloud Shell - 上传文件](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 4. 选择前面在本教程中保存的模板。 默认名称为 **azuredeploy.json**。  如果某个文件的文件名相同，则会覆盖旧文件，没有任何通知。
-5. 在 Cloud Shell 中运行以下命令，验证是否已成功上传文件。 
 
-    ```bash
-    ls
-    ```
+    还可以选择使用 ls $HOME 命令和 cat $HOME/azuredeploy.json 命令来验证文件是否已成功上传。 
 
-    ![Azure 门户 - Cloud Shell - 列出文件](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-list-file.png)
-
-    屏幕截图上显示的文件名为 azuredeploy.json。
-
-6. 在 Cloud Shell 中运行以下命令，验证 JSON 文件的内容。
-
-    ```bash
-    cat azuredeploy.json
-    ```
-7. 在 Cloud Shell 中运行以下 PowerShell 命令。 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
+5. 在 Cloud Shell 中运行以下 PowerShell 命令。 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -146,17 +134,14 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
     $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
 
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -adminUsername $adminUsername `
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
-        -TemplateFile azuredeploy.json
+        -TemplateFile "$HOME/azuredeploy.json"
     ```
-
-    > [!NOTE]
-    > 在云 shell 中使用 Azure PowerShell 时存在文件 IO 问题。  错误消息为“无法检索 cmdlet 的动态参数。找不到路径‘Azure:/azuredeploy.json’，因为它不存在”。  临时解决方法是不在 `New-AzResourceGroupDeploy` 命令中包含 **-TemplateFile** 开关。 该命令将提示你输入文件名。
 
 8. 运行以下 PowerShell 命令，列出新建的虚拟机：
 

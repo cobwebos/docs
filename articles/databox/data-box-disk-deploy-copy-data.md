@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 97c33a5dc2eb43644081579b5d1c0172ce953906
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 75a78e303991e5426c97b8ceb0eb1375e03be2a2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449344"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868181"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box Disk 并进行验证
 
@@ -178,20 +178,20 @@ ms.locfileid: "54449344"
 1. 在 Windows 计算机上，请确保将 Data Box 拆分复制工具下载并提取到某个本地文件夹中。 下载适用于 Windows 的 Data Box Disk 工具集时已下载此工具。
 2. 打开文件资源管理器。 记下分配给 Data Box Disk 的数据源驱动器和驱动器号。 
 
-     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+     ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-1.png)
  
 3. 标识要复制的源数据。 例如，在本例中：
     - 标识了以下块 Blob 数据。
 
-         ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+         ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
 
     - 标识了以下页 Blob 数据。
 
-         ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+         ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
 4. 转到该软件已提取到的文件夹。 在该文件夹中找到 `SampleConfig.json` 文件。 这是一个可以修改和保存的只读文件。
 
-   ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+   ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. 修改 `SampleConfig.json` 文件。
  
@@ -200,27 +200,27 @@ ms.locfileid: "54449344"
     - 输入对应于目标磁盘的驱动器号。 数据取自源路径，并在多个磁盘之间复制。
     - 提供日志文件的路径。 默认情况下，日志文件将发送到 `.exe` 所在的当前目录中。
 
-     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+     ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
 6. 若要验证文件格式，请转到 `JSONlint`。 将文件另存为 `ConfigFile.json`。 
 
-     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+     ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. 打开命令提示符窗口。 
 
-8. 运行 `DataBoxDiskSplitCopy.exe`。 类型
+8. 运行 `DataBoxDiskSplitCopy.exe`。 Type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
-     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+     ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-7.png)
  
 9. 按 Enter 继续运行脚本。
 
-    ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+    ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-8.png)
   
 10. 拆分并复制数据集后，会显示拆分复制工具的复制会话摘要。 下面显示了示例输出。
 
-    ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+    ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-9.png)
  
 11. 验证是否在目标磁盘之间拆分了数据。 
  
@@ -229,7 +229,7 @@ ms.locfileid: "54449344"
      
     如果进一步检查 `n:` 驱动器的内容，将会看到已创建了对应于块 Blob 和页 Blob 格式数据的两个子文件夹。
     
-     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+     ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
 12. 如果复制会话失败，可使用以下命令予以恢复：
 

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: ebce27f3558661aca9e1bd6e7130c96c396d33ee
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb173981e3f06c923fa7357eb64777493bd17b8c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257116"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958263"
 ---
 # <a name="what-is-azure-data-explorer"></a>什么是 Azure 数据资源管理器？
 
@@ -45,9 +45,9 @@ Azure 数据资源管理器支持多个引入方法，包括连接到常见服�
 
 Azure 数据资源管理器中的工作通常遵循以下模式：
 
-1. **创建数据库**：创建群集，然后在该群集中创建一个或多个数据库。 [快速入门：创建 Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)
+1. **创建数据库：** 创建群集，然后在该群集中创建一个或多个数据库。 [快速入门：创建 Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)
 
-1. **引入数据**：将数据加载到数据库表，以便你可以对其运行查询。 [快速入门：将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)
+1. **引入数据：** 将数据加载到数据库表，以便对其运行查询。 [快速入门：将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)
 
 1. **查询数据库**：使用 Web 应用程序来运行、查看以及共享查询和结果。 它可在 Azure 门户中使用，也可作为独立的应用程序使用。 此外可以以编程方式（使用 SDK）或向 REST API 终结点发送查询。 [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)
 
@@ -57,7 +57,7 @@ Azure 数据资源管理器中的查询是只读的请求，用于处理数据�
 
 Azure 数据资源管理器同样可以处理大量的结构化、半结构化（类似于 JSON 的嵌套类型）和非结构化（自由文本）数据。 这允许你搜索特定文本术语、查找特定事件，以及对结构化数据执行指标式的计算。 Azure 数据资源管理器通过从自由格式文本字段中提取运行时中的值，来桥接非结构化文本日志和结构化数字以及维度。 通过将快速文本索引、列存储和时间序列操作相结合，简化了数据探索。
 
-一系列其他服务建立在其强大的查询语言之上，包括 [Log Analytics](/azure/log-analytics/)、[Application Insights](/azure/application-insights/)、[时序见解](/azure/time-series-insights/)以及 [Windows Defender 高级威胁防护](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/)，扩展了 Azure 数据资源管理器的功能。
+依托 Azure 数据资源管理器强大的查询语言，构建了一系列其他服务，包括 [Azure Monitor 日志](/azure/log-analytics/)、[Application Insights](/azure/application-insights/)、[时序见解](/azure/time-series-insights/)以及 [Windows Defender 高级威胁防护](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/)，从而进一步扩展了其功能。
 
 ## <a name="feedback"></a>反馈
 

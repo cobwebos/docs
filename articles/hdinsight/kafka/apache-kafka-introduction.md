@@ -1,6 +1,6 @@
 ---
 title: Apache Kafka on HDInsight 简介 - Azure
-description: 了解 Apache Kafka on HDInsight：它的涵义和用途以及在何处可找到示例和入门信息。
+description: 了解 Apache Kafka on HDInsight：了解它的涵义和用途以及在何处可找到示例和入门信息。
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: 587279d247b945b787051721d256f00a090d56db
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 4d054542d600f2569170f40b8f6c053e005fc8af
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313956"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889182"
 ---
 # <a name="what-is-apache-kafka-on-hdinsight"></a>什么是 Apache Kafka on HDInsight？
 
@@ -38,7 +38,7 @@ Kafka on HDInsight 的具体特征如下：
 
     有关详细信息，请参阅[使用 Apache Kafka on HDInsight 实现高可用性](apache-kafka-high-availability.md)。
 
-* Azure Log Analytics 可用于监视 Kafka on HDInsigh。 Log Analytics 可以显示虚拟机级别的信息，例如磁盘和 NIC 指标，以及 Kafka 中的 JMX 指标。
+* Azure Monitor 日志可用于监视 Kafka on HDInsight。 Azure Monitor 日志可以显示虚拟机级别的信息，例如磁盘和 NIC 指标，以及 Kafka 中的 JMX 指标。
 
     有关详细信息，请参阅[分析 Apache Kafka on HDInsight 的日志](apache-kafka-log-analytics-operations-management.md)。
 
@@ -82,11 +82,11 @@ Kafka 将记录（数据）存储在主题中。 记录由生成者生成，由�
 
 ## <a name="use-cases"></a>用例
 
-* **消息传送**：由于 Kafka 支持发布-订阅消息模式，因此它通常用作消息中转站。
+* **消息传送**：由于 Kafka 支持发布-订阅消息模式，因此它经常用作消息中转站。
 
 * **活动跟踪**：由于 Kafka 提供按顺序进行日志记录的记录，因此它还可用于跟踪和重新创建活动。 例如，网站上或应用程序内的用户操作。
 
-* **聚合**：使用流处理可从不同的流中聚合信息，将信息合并和集中到操作数据中。
+* **聚合**：使用流处理可从不同的流中聚合信息，将信息合并和集中到运营数据中。
 
 * **转换**：使用流处理可将多个输入主题中的数据合并到一个或多个输出主题中，丰富其内容。
 
@@ -96,6 +96,6 @@ Kafka 将记录（数据）存储在主题中。 记录由生成者生成，由�
 
 * [快速入门：创建 Apache Kafka on HDInsight](apache-kafka-get-started.md)
 
-* [教程：将 Apache Spark 与 Apache Kafka on HDInsight 结合使用](../hdinsight-apache-spark-with-kafka.md)
+* [教程：将 Apache Spark 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)
 
-* [教程：将 Apache Storm 与 Apache Kafka on HDInsight 结合使用](../hdinsight-apache-storm-with-kafka.md)
+* [教程：将 Apache Storm 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-storm-with-kafka.md)

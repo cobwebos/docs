@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上创建 .NET Core 应用 - Azure 应用服务 | Microsoft Docs
+title: 在 Linux 上创建 ASP.NET Core 应用 - Azure 应用服务 | Microsoft Docs
 description: 在数分钟内将第一个 .NET Core Hello World 应用部署到 Linux 应用服务。
 keywords: azure 应用服务、web 应用、dotnet、core、linux、oss
 services: app-service
@@ -16,14 +16,14 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 047ed6026412cac7fc7c51135e1837a20decd910
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: af22473e0c9b56210b720ee5d122d96566689158
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633923"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889709"
 ---
-# <a name="create-a-net-core-app-in-app-service-on-linux"></a>在 Linux 上的应用服务中创建 .NET Core 应用
+# <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>在 Linux 上的应用服务中创建 ASP.NET Core 应用
 
 > [!NOTE]
 > 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 Windows 的应用服务，请参阅[在 Azure 中创建 ASP.NET Core 应用](../app-service-web-get-started-dotnet.md)。

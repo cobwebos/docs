@@ -11,22 +11,20 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0b00bff2b32ac9dd16d4d38ee35be006c0247bb8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 246ee5f8360869c1b0f901ee54d56e017ac8aeb7
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493415"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649673"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 
 使用 Visual Studio 可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，并将该基础结构与代码一起部署。 Visual Studio 许多不同的入门模板用于部署常见方案。 本文部署 Web 应用和 SQL 数据库。  
 
 本文介绍如何使用[装有 Azure 开发和 ASP.NET 工作负荷的 Visual Studio 2017](/dotnet/azure/dotnet-tools)。 如果使用 Visual Studio 2015 Update 2 以及用于 .NET 的 Microsoft Azure SDK 2.9，或者将 Visual Studio 2013 与 Azure SDK 2.9 配合使用，则体验大致相同。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-azure-resource-group-project"></a>创建 Azure 资源组项目
 
@@ -101,7 +99,7 @@ Visual Studio 编辑器提供了工具来帮助编辑资源管理器模板。 �
 }
 ```
 
-Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些属性可用。 例如，若要编辑应用服务计划的属性，请导航到 **HostingPlan** 资源，并为 **properties** 添加值。 请注意，Intellisense 显示可用的值，并提供该值的说明。
+Visual Studio 还提供 intellisense，帮助你了解在编辑模板时可用的属性。 例如，若要编辑应用服务计划的属性，请导航到 **HostingPlan** 资源，并为 **properties** 添加值。 请注意，Intellisense 显示可用的值，并提供该值的说明。
 
 ![显示 Intellisense](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
 
@@ -148,7 +146,9 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些�
 5. 选择“部署”按钮将项目部署到 Azure。 PowerShell 控制台会在 Visual Studio 实例外部打开。 出现密码输入提示时，在 PowerShell 控制台中输入 SQL Server 管理员密码。 **PowerShell 控制台可能隐藏在其他项目后面或最小化到任务栏。** 查找此控制台，选择它以提供密码。
    
    > [!NOTE]
-   > Visual Studio 可能会要求安装 Azure PowerShell cmdlet。 需要安装 Azure PowerShell cmdlet 才能成功部署资源组。 如果出现提示，请安装 Azure PowerShell cmdlet。 有关详细信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-az-ps)。
+   > Visual Studio 可能会要求安装 Azure PowerShell cmdlet。 如果出现提示，请安装 Azure PowerShell cmdlet。 需要安装 Azure PowerShell 模块才能成功部署资源组。 项目中的 PowerShell 脚本不使用新的 [Azure PowerShell Az 模块](/powershell/azure/new-azureps-module-az)。 
+   >
+   > 有关详细信息，请参阅[安装和配置 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
    > 
    > 
 6. 该部署可能需要几分钟时间。 在“输出”窗口中可查看部署状态。 完成部署后，最后一条消息指示部署成功，其内容与下面的消息类似：

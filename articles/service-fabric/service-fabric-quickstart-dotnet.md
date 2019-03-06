@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 3b7b70a5ac0c74cc920df823d1f9ae1152f86bff
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561189"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736577"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
 
@@ -55,10 +55,10 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 安装运行时、SDK、Visual Studio 工具、Docker 并运行 Docker 之后，创建一个五节点本地开发群集。
 
-> [!IMPORTANT]
-> 在生成群集之前，Docker **必须**正在运行。
+> [!Note]
+> 在创建群集时运行 Docker 是为了创建启用了容器功能的群集。 如果未运行 Docker，则需要重新创建群集以启用容器功能。
+> 尽管这在此特定快速入门中并非必要，但在创建群集时运行 Docker 是一种最佳做法。
 > 若要测试 Docker 是否正在运行，请打开一个终端窗口，运行 `docker ps` 并查看是否出错。 如果响应中未指示错误，则表示 Docker 正在运行，可以生成群集。
-
 
 1. 以管理员身份打开权限提升的新 PowerShell 窗口。
 2. 运行以下 PowerShell 命令创建开发群集：

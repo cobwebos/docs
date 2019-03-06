@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/07/2019
+ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: de1bd8599682baae860737401d02c7c1dec9e223
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337555"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960643"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
 
@@ -88,7 +88,7 @@ V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不在 **Get** 
 | 快速入门 | 向新客户展示基本的第 1 天使用说明，以便快速试用媒体服务。|
 | 教程 | 显示一些顶级媒体服务任务的基于方案的过程。|
 | 示例 | 代码示例的链接。 |
-| 概念 | 包含对媒体服务 v3 功能和图表的深入说明。 在开始开发之前，应该复习这些主题中所述的基本概念。<br/><br/>* 云上传和存储<br/>* 编码<br/>* 媒体分析<br/>* 打包、传送、保护<br/>* 实时传送视频流<br/>* 持续监视<br/>* 播放器客户端<br/><br/>等等。 |
+| 概念 | 包含对[媒体服务 v3 概念和功能](concepts-overview.md)的深入说明。 在开始开发之前，应该复习这些主题中所述的基本概念。<br/><br/>* 云上传和存储<br/>* 编码<br/>* 媒体分析<br/>* 打包、传送、保护<br/>* 实时传送视频流<br/>* 监视<br/>* 播放器客户端<br/><br/>等等。 |
 | 操作指南 | 演示如何完成某项任务。|
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,41 +1,45 @@
 ---
-title: 有关创建和使用适用于 Windows 的 Azure 文件共享的快速入门 | Microsoft Docs
-description: 参考本快速入门创建和使用适用于 Windows 的 Azure 文件共享。
+title: Azure 快速入门 - 在 Windows VM 上创建和使用 Azure 文件存储共享 | Microsoft Docs
+description: 在此快速入门中，在 Azure 门户中设置 Azure 文件存储共享，并将其连接到 Windows 虚拟机。 连接到文件共享，将文件上传到文件共享。 然后拍摄文件共享的快照、修改文件共享中的文件并还原文件共享的前一个快照。
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/01/2019
-ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 141a8c9d63d3f0fd615ec0648b15c669f28f7118
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.author: rogarana
+ms.subservice: files
+ms.openlocfilehash: 12dea044dab2aafad1d7597214d159011b5ab536
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663989"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652461"
 ---
-# <a name="quickstart-create-and-use-an-azure-file-share-for-windows"></a>快速入门：创建和使用适用于 Windows 的 Azure 文件共享
-本文演示创建和使用 Azure 文件共享的基本步骤。 本快速入门重点介绍如何快速设置 Azure 文件共享，以便可以体验该服务的工作原理。 如需有关在自己环境中创建和使用 Azure 文件共享的更多详细说明，请参阅[在 Windows 中使用 Azure 文件共享](storage-how-to-use-files-windows.md)。
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>快速入门：使用 Windows 虚拟机创建和管理 Azure 文件存储共享
+
+本文演示创建和使用 Azure 文件存储共享的基本步骤。 本快速入门重点介绍如何快速设置 Azure 文件存储共享，以便可以体验该服务的工作原理。 如需有关在自己环境中创建和使用 Azure 文件共享的更多详细说明，请参阅[在 Windows 中使用 Azure 文件共享](storage-how-to-use-files-windows.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
+
 登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="prepare-your-environment"></a>准备环境
-创建 Azure 文件共享之前，需要为本快速入门设置以下各项：
+
+在本快速入门中，你将设置以下项：
 
 - Azure 存储帐户和 Azure 文件共享
 - Windows Server 2016 Datacenter VM
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-在使用 Azure 文件共享之前，必须创建 Azure 存储帐户。 存储帐户是一个共享的存储池，可以在其中部署 Azure 文件共享或其他存储资源，例如 Blob 或队列。 一个存储帐户可以包含无数个共享。 一个共享可以存储无数个文件，直至达到存储帐户的容量限制为止。
+在使用 Azure 文件共享之前，必须创建 Azure 存储帐户。 可以使用常规用途 v2 存储帐户访问所有 Azure 存储服务：Blob、文件、队列、表。 本快速入门创建常规用途 v2 存储帐户，但创建任何类型的存储帐户的步骤都相似。 一个存储帐户可以包含无数个共享。 一个共享可以存储无数个文件，直至达到存储帐户的容量限制为止。
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ### <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
+
 接下来，创建文件共享。
 
 1. Azure 存储帐户部署完成后，请选择“转到资源”。
@@ -58,6 +62,7 @@ ms.locfileid: "55663989"
 目前已在 Azure 中创建 Azure 存储帐户和包含一个文件的文件共享。 接下来，请创建 Azure VM，其中的 Windows Server 2016 Datacenter 代表本快速入门中的本地服务器。
 
 ### <a name="deploy-a-vm"></a>部署 VM
+
 1. 接下来，请展开 Azure 门户左侧的菜单，然后在左上角选择“创建资源”。
 1. 在 **Azure 市场**资源列表上方的搜索框中，搜索并选择“Windows Server 2016 Datacenter”，然后选择“创建”。
 1. 在“基本信息”选项卡的“项目详细信息”下，选择为本快速入门创建的资源组。
@@ -112,6 +117,7 @@ ms.locfileid: "55663989"
       ![Azure 文件“连接”窗格中的 UNC 路径](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
 
 ## <a name="create-a-share-snapshot"></a>创建共享快照
+
 映射驱动器后，可以创建快照。
 
 1. 在门户中，导航到你的文件共享并选择“创建快照”。
@@ -132,7 +138,7 @@ ms.locfileid: "55663989"
 
 ## <a name="restore-from-a-snapshot"></a>从快照还原
 
-1. 在门户中选择“qsTestFile”，然后选择“还原”按钮。
+1. 从文件共享快照边栏选项卡，右键单击 qsTestFile，然后选择“还原”按钮。
 1. 选择“覆盖原始文件”。
 
    ![“下载”和“还原”按钮](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
@@ -147,6 +153,7 @@ ms.locfileid: "55663989"
    ![“删除”按钮](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>在 Windows 中使用共享快照
+
 与使用本地 VSS 快照时一样，可以使用“以前的版本”选项卡通过装载的 Azure 文件共享查看快照。
 
 1. 在文件资源管理器中找到装载的共享。

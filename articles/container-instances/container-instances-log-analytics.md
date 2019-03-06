@@ -1,24 +1,26 @@
 ---
-title: 使用 Azure Log Analytics 进行容器实例日志记录
-description: 了解如何将容器输出（STDOUT 和 STDERR）发送到 Azure Log Analytics。
+title: 使用 Azure Monitor 日志进行容器实例日志记录
+description: 了解如何将容器输出（STDOUT 和 STDERR）发送到 Azure Monitor 日志。
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 4dbcccc1a4b23ca37918495dc536df08a70cade7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337880"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879698"
 ---
-# <a name="container-instance-logging-with-azure-log-analytics"></a>使用 Azure Log Analytics 进行容器实例日志记录
+# <a name="container-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器实例日志记录
 
-Log Analytics 工作区可以集中存储和查询来自 Azure 资源、本地资源以及其他云中的资源的日志数据。 Azure 容器实例提供内置支持，支持将数据发送到 Log Analytics。
+Log Analytics 工作区可以集中存储和查询来自 Azure 资源、本地资源以及其他云中的资源的日志数据。 Azure 容器实例提供内置支持，支持将数据发送到 Azure Monitor 日志。
 
-若要将容器实例数据发送到 Log Analytics，必须使用 Azure CLI（或 Cloud Shell）和 YAML 文件创建容器组。 以下部分介绍如何创建启用了日志记录的容器组和查询日志。
+若要将容器实例数据发送到 Azure Monitor 日志，必须使用 Azure CLI（或 Cloud Shell）和 YAML 文件创建容器组。 以下部分介绍如何创建启用了日志记录的容器组和查询日志。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -96,7 +98,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 在发出命令以后，很快就会收到来自 Azure 的响应，其中包含部署详细信息。
 
-## <a name="view-logs-in-log-analytics"></a>在 Log Analytics 中查看日志
+## <a name="view-logs-in-azure-monitor-logs"></a>查看 Azure Monitor 日志中的日志
 
 部署容器组以后，可能需要等待数分钟（最多 10 分钟），第一个日志条目才会显示在 Azure 门户中。 若要查看容器组的日志，请先打开 Log Analytics 工作区，然后执行以下操作：
 
@@ -109,7 +111,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 ## <a name="query-container-logs"></a>查询容器日志
 
-Log Analytics 包含全面的[查询语言][query_lang]，用于从可能多达数千行的日志输出中拉取信息。
+Azure Monitor 日志包含全面的[查询语言][query_lang]，用于从可能多达数千行的日志输出中拉取信息。
 
 Azure 容器实例日志记录代理将条目发送到 Log Analytics 工作区中的 `ContainerInstanceLog_CL` 表。 查询的基本结构是一个源表 (`ContainerInstanceLog_CL`)，后跟一系列以竖线字符 (`|`) 隔开的运算符。 可以将多个运算符链接起来以优化结果和执行高级函数。
 
@@ -130,11 +132,11 @@ ContainerInstanceLog_CL
 
 ## <a name="next-steps"></a>后续步骤
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-若要详细了解如何在 Azure Log Analytics 中查询日志和配置警报，请参阅：
+若要详细了解如何在 Azure Monitor 日志中查询日志和配置警报，请参阅：
 
-* [了解 Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-search.md)
+* [了解 Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-search.md)
 * [Azure Monitor 中的统一警报](../azure-monitor/platform/alerts-overview.md)
 
 

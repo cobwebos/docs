@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0a41f038595524a9ffaa5134ca2fe53fc0ae83af
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7aeb3cf2d56dbe20c85adca2243f5830575693e3
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338370"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818657"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>在门户中定义和分配 Azure 蓝图
 
@@ -34,7 +34,7 @@ ms.locfileid: "56338370"
 
 定义符合性的标准模式的第一步是根据可用资源编写蓝图。 在此示例中，创建名为“MyBlueprint”的新蓝图，以配置订阅的角色和策略分配，添加新资源组，并在新资源组上创建资源管理器模板和角色分配。
 
-1. 单击“所有服务”，然后在左窗格中搜索并选择“策略”。 在“策略”页上，单击“蓝图”。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 从左侧页面选择“蓝图定义”，然后单击页面顶部的“+ 创建蓝图”按钮。
 
@@ -42,9 +42,9 @@ ms.locfileid: "56338370"
 
    ![创建蓝图](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. 提供“蓝图名称”，例如“MyBlueprint”（字母和数字 - 最多 48 个字符，但不包含空格或特殊字符），但暂时将“蓝图说明”保留为空。  在“定义位置”框中，单击右侧的省略号，选择要在其中保存蓝图的[管理组](../management-groups/overview.md)或订阅，然后单击“选择”。
+1. 提供“蓝图名称”，例如“MyBlueprint”（字母和数字 - 最多 48 个字符，但不包含空格或特殊字符），但暂时将“蓝图描述”保留为空。  在“定义位置”框中，单击右侧的省略号，选择要在其中保存蓝图的[管理组](../management-groups/overview.md)或订阅，然后单击“选择”。
 
-1. 验证信息是否正确（稍后无法更改“蓝图名称”和“定义位置”字段）并单击页面底部的“下一步:项目”或页面顶部的“项目”选项卡。
+1. 验证信息是否正确（稍后无法更改“蓝图名称”和“定义位置”字段）并单击页面底部的“下一步：项目”或页面顶部的“项目”选项卡。
 
 1. 在订阅中添加角色分配：左键单击“订阅”下的“+ 添加项目...”行，随即会在浏览器右侧打开“添加项目”窗口。 为“项目类型”选择“角色分配”。 在“角色”下，选择“参与者”，保留“添加用户、应用或组”字段，并使用复选框指示动态参数。 单击“添加”将此项目添加到蓝图中。
 
@@ -53,13 +53,13 @@ ms.locfileid: "56338370"
    > [!NOTE]
    > 大多数项目支持参数。 在蓝图创建期间为其分配值的参数是静态参数。 如果在蓝图分配期间分配参数，则该参数是动态参数。 有关更多信息，请参阅[蓝图参数](./concepts/parameters.md)。
 
-1. 在订阅中添加策略分配：在“订阅”下直接左键单击“+ 添加项目...”行。 为“项目类型”选择“策略分配”。 将“类型”更改为“内置”，然后在“搜索”中输入“tag”。 单击“搜索”以进行筛选。 单击选择“对资源组应用标记及其默认值”。 单击“添加”将此项目添加到蓝图中。
+1. 在订阅中添加策略分配：左键单击角色分配项目下的“+ 添加项目...”行。 为“项目类型”选择“策略分配”。 将“类型”更改为“内置”，然后在“搜索”中输入“tag”。 单击“搜索”以进行筛选。 单击选择“对资源组应用标记及其默认值”。 单击“添加”将此项目添加到蓝图中。
 
 1. 单击策略分配行“对资源组应用标记及其默认值”。 随即将打开作为蓝图定义一部分的向项目提供参数的窗口，并允许基于此蓝图而不是在分配期间（动态参数）设置所有分配的参数（静态参数）。 此示例在蓝图分配期间使用动态参数，因此请保留默认值并单击“取消”。
 
-1. 在订阅中添加资源组订阅：在“订阅”下左键单击“+ 添加项目...”行。 为“项目类型”选择“资源组”。 将“资源组名称”和“位置”字段保留为空，但请确保在每个属性上选中该复选框，以使其成为动态参数。 单击“添加”将此项目添加到蓝图中。
+1. 在订阅中添加资源组订阅：在“订阅”下左键单击“+ 添加项目...”行。 为“项目类型”选择“资源组”。 将“项目显示名称”、“资源组名称”和“位置”字段保留为空，但请确保在每个参数属性上选中该复选框，以使其成为动态参数。 单击“添加”将此项目添加到蓝图中。
 
-1. 在资源组下添加模板：左键单击“+ 添加项目...” “ResourceGroup”条目下方的行。 为“项目类型”选择“Azure 资源管理器模板”，将“项目显示名称”设置为“StorageAccount”，并将“说明”保留为空。 在编辑器框的“模板”选项卡上，粘贴以下资源管理器模板。 粘贴模板后，单击“参数”选项卡，请注意模板参数“storageAccountType”默认值“Standard_LRS”已自动检测并填充，但配置为动态参数。 取消选中该复选框，并请注意，下拉列表仅包含 allowedValues 下的资源管理器模板中包含的值。 选中此框将其重新设置为动态参数。 单击“添加”将此项目添加到蓝图中。
+1. 在资源组下添加模板：左键单击“+ 添加项目...” “ResourceGroup”条目下方的行。 为“项目类型”选择“Azure 资源管理器模板”，将“项目显示名称”设置为“StorageAccount”，并将“说明”保留为空。 在编辑器框的“模板”选项卡上，粘贴以下资源管理器模板。 粘贴模板后，选择“参数”选项卡，并注意已检测到模板参数 storageAccountType 和 location。 将自动检测并填充每个参数，但将其配置为“动态参数”。 取消选中该 storageAccountType 复选框，并请注意，下拉列表仅包含 allowedValues 下的资源管理器模板中包含的值。 选中此框将其重新设置为动态参数。 单击“添加”将此项目添加到蓝图中。
 
    > [!IMPORTANT]
    > 如果导入模板，请确保该文件仅为 JSON 且不包含 HTML。 当指向 GitHub 上的 URL 时，请确保已单击“RAW”以获取纯 JSON 文件，而不是用 HTML 包装在 GitHub 上显示的文件。 如果导入的模板不是纯 JSON，则会出现错误。
@@ -81,20 +81,27 @@ ms.locfileid: "56338370"
                "metadata": {
                    "description": "Storage Account type"
                }
+           },
+           "location": {
+               "type": "string",
+               "defaultValue": "[resourceGroup().location]",
+               "metadata": {
+                   "description": "Location for all resources."
+               }
            }
        },
        "variables": {
-           "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
+           "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
        },
        "resources": [{
            "type": "Microsoft.Storage/storageAccounts",
            "name": "[variables('storageAccountName')]",
-           "apiVersion": "2016-01-01",
-           "location": "[resourceGroup().location]",
+           "location": "[parameters('location')]",
+           "apiVersion": "2018-07-01",
            "sku": {
                "name": "[parameters('storageAccountType')]"
            },
-           "kind": "Storage",
+           "kind": "StorageV2",
            "properties": {}
        }],
        "outputs": {
@@ -155,9 +162,26 @@ ms.locfileid: "56338370"
 
 1. 从左侧页面中选择“蓝图定义”。
 
-1. 在蓝图列表中，右键单击之前创建的蓝图（或左键单击省略号），然后选择“分配蓝图”。
+1. 在蓝图列表中，右键单击之前创建的蓝图（或选择省略号），然后选择“分配蓝图”。
 
 1. 在“分配蓝图”页面上，从“订阅”下拉列表中选择要将此蓝图部署到的订阅。
+
+   - 如果 [Azure 计费](../../billing/index.md)中提供了受支持的企业产品/服务，则会在“订阅”框下激活“新建”链接。
+
+     1. 选择“新建”链接以创建新订阅，而不是选择现有订阅。
+
+        ![蓝图分配 - 创建订阅](./media/create-blueprint-portal/assignment-create-subscription.png)
+
+     1. 提供新订阅的“显示名称”。
+
+     1. 从下拉列表中选择可用“产品/服务”。
+
+     1. 使用省略号选择[管理组](../management-groups/index.md)，订阅将是其子级。
+
+     1. 在页面底部选择“创建”。
+
+     > [!IMPORTANT]
+     > 选择“创建”后，将立即创建新订阅。
 
    > [!NOTE]
    > 通过为所选的每个订阅创建一个分配，可以在以后对单个订阅分配进行更改，而不强制对所选订阅的其余部分进行更改。
@@ -187,7 +211,7 @@ ms.locfileid: "56338370"
 
 将蓝图分配给一个或多个订阅时，会发生以下两种情况：
 
-- 将蓝图添加到分配给每个订阅的分配蓝图页面
+- 将蓝图添加到分配给每个订阅的“分配的蓝图”页面
 - 开始部署蓝图定义的所有项目的过程
 
 现在已将蓝图分配给订阅，请验证部署的进度。
@@ -198,7 +222,7 @@ ms.locfileid: "56338370"
 
    ![查看分配详细信息](./media/create-blueprint-portal/view-assignment-details.png)
 
-1. 在“部署详细信息”页面上，验证是否已成功部署所有项目，以及在部署期间是否未出现任何错误。 如果发生错误，请参阅[蓝图故障排除](./troubleshoot/general.md)，了解确定错误原因的操作步骤。
+1. 在“蓝图分配”页面上，验证是否已成功部署所有项目，以及在部署期间是否未出现任何错误。 如果发生错误，请参阅[蓝图故障排除](./troubleshoot/general.md)，了解确定错误原因的操作步骤。
 
 ## <a name="unassign-a-blueprint"></a>取消分配蓝图
 

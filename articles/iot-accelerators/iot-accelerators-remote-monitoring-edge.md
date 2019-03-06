@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 2f6e8b40907d02e62ede95a44fa10168f7590bd5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d28a88efc1a9f980d74737936bb960ba13573fa3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606242"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675086"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>教程：使用远程监视解决方案加速器检测边缘异常情况
 
@@ -55,12 +55,12 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 需要执行两个步骤将 IoT Edge 设备添加到远程监视解决方案加速器。 本部分介绍以下操作：
 
-* 在远程监视 Web UI 中的“设备”页上添加 IoT Edge 设备。
+* 在远程监视 Web UI 中的“设备资源管理器”页上添加 IoT Edge 设备。
 * 在 Linux 虚拟机 (VM) 中安装 IoT Edge 运行时。
 
 ### <a name="add-an-iot-edge-device-to-your-solution"></a>将 IoT Edge 设备添加到解决方案
 
-若要将 IoT Edge 设备添加到远程监视解决方案加速器，请在 Web UI 中导航到“设备”页，然后单击“+ 新建设备”。
+若要将 IoT Edge 设备添加到远程监视解决方案加速器，请在 Web UI 中导航到“设备资源管理器”页，然后单击“+ 新建设备”。
 
 在“新建设备”面板中选择“IoT Edge 设备”，然后输入 **oil-pump** 作为设备 ID。 对于其他设置，可以保留默认值。 然后单击“应用”：
 
@@ -68,13 +68,13 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 记下设备连接字符串，因为本教程的下一部分需要用到。
 
-将设备注册到远程监视解决方案加速器中的 IoT 中心后，该设备将列在 Web UI 的“设备”页上：
+将设备注册到远程监视解决方案加速器中的 IoT 中心后，该设备将列在 Web UI 的“设备资源管理器”页上：
 
 [![新建 IoT Edge 设备](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
 为了便于在解决方案中管理 IoT Edge 设备，请创建一个设备组并添加 IoT Edge 设备：
 
-1. 在“设备”页上的列表中选择“oil-pump”设备，然后单击“作业”。
+1. 在“设备资源管理器”页上的列表中选择“oil-pump”设备，然后单击“作业”。
 
 1. 使用以下设置创建一个作业，用于将 **IsEdge** 标记添加到设备：
 
@@ -90,7 +90,7 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 1. 依次单击“应用”、“关闭”。
 
-1. 在“设备”页上，单击“管理设备组”。
+1. 在“设备资源管理器”页上，单击“管理设备组”。
 
 1. 单击“创建新的设备组”。 使用以下设置创建新的设备组：
 
@@ -300,7 +300,7 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 可在远程监视 Web UI 中查看油泵设备发出的温度遥测数据：
 
-1. 导航到“设备”页并选择油泵设备。
+1. 导航到“设备资源管理器”页并选择油泵设备。
 1. 在“设备详细信息”面板中的“遥测”部分，单击“温度”：
 
     [![查看遥测数据](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 60876cb95e6efe4fbde55bd8a224eab658b10d66
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608351"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749981"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>快速入门：尝试基于云的远程监视解决方案
 
@@ -45,7 +45,7 @@ ms.locfileid: "53608351"
 选择要用于部署解决方案加速器的**订阅**和**区域**。 通常，我们会选择离自己最近的区域。 对于本快速入门，我们将使用“美国东部”。
 可以选择 **Visual Studio Enterprise**，但必须是[全局管理员或用户](iot-accelerators-permissions.md)才能这样做。
 
-若要开始部署，请单击“创建解决方案”。 此过程至少需要五分钟才能完成运行：
+若要开始部署，请单击“创建”。 此过程至少需要五分钟才能完成运行：
 
 ![远程监视解决方案详细信息](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "53608351"
 
 ![选择新解决方案](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-可以在显示的面板中查看有关远程监视解决方案加速器的信息。 选择“解决方案仪表板”，查看远程监视解决方案加速器：
+可以在显示的面板中查看有关远程监视解决方案加速器的信息。 选择“转到解决方案加速器”，查看远程监视解决方案加速器：
 
 ![解决方案面板](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
@@ -134,6 +134,9 @@ Contoso 的操作员可以通过解决方案仪表板监视设备。 “设备�
 如果不再需要该解决方案加速器，请从[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中选择它，然后单击“删除解决方案”以将其删除：
 
 ![删除解决方案](media/quickstart-remote-monitoring-deploy/deletesolution.png)
+
+
+![删除解决方案](media/quickstart-remote-monitoring-deploy/deletesolution-page.png)
 
 ## <a name="next-steps"></a>后续步骤
 

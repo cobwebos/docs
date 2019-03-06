@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 8e31717f9fd232a7c256b65d044a97396af8f960
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448583"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878007"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>快速入门：使用适用于 Unity 的语音 SDK (Beta) 识别语音
 
@@ -74,7 +74,7 @@ ms.locfileid: "56448583"
 
 完成后，UI 应如以下屏幕截图所示：
 
-[ ![Unity 编辑器中快速入门用户界面的屏幕截图](media/sdk/qs-csharp-unity-02-ui-inline.png) ](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
+[![Unity 编辑器中快速入门用户界面的屏幕截图](media/sdk/qs-csharp-unity-02-ui-inline.png)](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
 
 ## <a name="add-the-sample-code"></a>添加示例代码
 
@@ -111,7 +111,7 @@ ms.locfileid: "56448583"
 
 * 启动应用后，请单击创建的按钮，对着计算机的麦克风讲出英语短语或句子。 你的语音将传输到语音服务并转录为文本，该文本将显示在窗口中。
 
-  [ ![Unity 游戏窗口中运行的快速入门应用程序的屏幕截图](media/sdk/qs-csharp-unity-03-output-inline.png) ](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
+  [![Unity 游戏窗口中运行的快速入门应用程序的屏幕截图](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
 
 * 在[控制台窗口](https://docs.unity3d.com/Manual/Console.html)中检查调试消息。
 

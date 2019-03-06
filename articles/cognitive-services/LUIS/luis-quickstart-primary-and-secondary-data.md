@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 9da2f8fa345ad3447d7c3344772458c451cf427e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d333eb6baa41321fdf7daca3c545d5d5e3ed5fe4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867233"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732697"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>教程：通过简单实体和短语列表提取名称
 
@@ -233,7 +233,9 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
     [![“新建短语列表”弹出对话框的屏幕截图](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot of create new phrase list dialog pop-up")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    如果需要将更多词汇添加到短语列表中，请查看“相关值”，然后添加相关值。 
+    如果需要将更多词汇添加到短语列表中，请选择“建议”，查看新的“相关值”，然后添加任何相关值。 
+
+    确保选中“这些值可互换”，因为这些值应全都被视为作业的同义词。 了解有关可互换和不可互换[短语列表概念](luis-concept-feature.md#how-to-use-phrase-lists)的更多信息。
 
 1. 选择“保存”，激活短语列表。
 

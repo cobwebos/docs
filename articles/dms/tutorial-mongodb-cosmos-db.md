@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/11/2018
-ms.openlocfilehash: b4f8d2bdbce20fc7a932280edc26cb3ddfbe6471
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 5fd3200ab787a26b11feb121b5db125e4a79365c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247599"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960371"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 可以使用 Azure 数据库迁移服务将数据库从 MongoDB 的本地或云实例脱机（一次性）迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。
@@ -100,7 +100,7 @@ ms.locfileid: "54247599"
 ## <a name="specify-source-details"></a>指定源详细信息
 1. 在“源详细信息”屏幕上，指定源 MongoDB 服务器的连接详细信息。
     
-   也可使用连接字符串模式，为在其中转储了要迁移的集合数据的博客存储文件容器提供一个位置。
+   也可使用连接字符串模式，为在其中转储了要迁移的集合数据的 blob 存储文件容器提供一个位置。
 
    > [!NOTE]
    > Azure 数据库迁移服务也可将 bson 文档或 json 文档迁移到 Azure Cosmos DB 的用于 MongoDB 的 API 集合。

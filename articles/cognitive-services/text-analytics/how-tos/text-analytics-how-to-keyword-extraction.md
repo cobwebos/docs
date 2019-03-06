@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: bbf72847dd9d9a29bf1f2fa0574b83194d07a5c6
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a427910c598ce7a93dd1b74fb4297d9825ba14ca
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245603"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887380"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>示例：如何使用文本分析提取关键短语
 
@@ -33,7 +33,7 @@ ms.locfileid: "56245603"
 
 必须拥有以下格式的 JSON 文档：ID、文本、语言
 
-每个文档的大小必须少于 5,000 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 以下示例例举了可能提交以进行关键短语提取的内容。
+每个文档的大小必须少于 5,120 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 以下示例例举了可能提交以进行关键短语提取的内容。
 
 ```json
     {

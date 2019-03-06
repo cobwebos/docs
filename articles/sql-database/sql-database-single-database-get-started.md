@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 66640bd60f6ba8c2f612a6bc9b88a07b13012997
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/25/2019
+ms.openlocfilehash: 64d16073062c0fd7f0b97a64950ceab9efc0eacf
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990028"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984877"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库
 
@@ -29,7 +29,7 @@ ms.locfileid: "55990028"
 
 ## <a name="create-a-single-database"></a>创建单一数据库
 
-单一数据库有一组通过两个[购买模型] (sql-database-purchase-models.md)中的一个定义的计算、内存和存储资源。 创建单一数据库时，也定义一个 [SQL 数据库服务器](sql-database-servers.md)来管理它并将它放置在指定区域的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中。
+单一数据库有一组通过两个[购买模型](sql-database-purchase-models.md)中的一个定义的计算、内存和存储资源。 创建单一数据库时，也定义一个 [SQL 数据库服务器](sql-database-servers.md)来管理它并将它放置在指定区域的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中。
 
 若要创建包含 Adventure Works LT 示例数据的单一数据库，请执行以下操作：
 
@@ -42,8 +42,8 @@ ms.locfileid: "55990028"
    - **资源组**：选择“新建”，键入 myResourceGroup，然后选择“确定”。
    - **选择源**：下拉列表并选择“示例(AdventureWorksLT)”。
 
-    >[!IMPORTANT]
-    >确保选择“示例(AdventureWorksLT)”数据，这样就可以轻松地按照本指南以及使用此数据的其他 Azure SQL 数据库快速入门进行操作。
+    > [!IMPORTANT]
+    > 确保选择“示例(AdventureWorksLT)”数据，这样就可以轻松地按照本指南以及使用此数据的其他 Azure SQL 数据库快速入门进行操作。
   
    ![创建单一数据库](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -56,18 +56,18 @@ ms.locfileid: "55990028"
    - **确认密码**：重新键入密码。
    - **位置**：下拉列表并选择任何有效位置。  
 
-   >[!IMPORTANT]
-   >请记得记录服务器管理员登录名和密码，以便可以登录服务器和数据库以获取此快速入门和其他快速入门。 如果忘记了登录名或密码，可在“SQL 服务器”页上获取登录名或重置密码。 若要打开“SQL 服务器”页，请在创建数据库后在数据库“概述”页上选择服务器名称。
+   > [!IMPORTANT]
+   > 请记得记录服务器管理员登录名和密码，以便可以登录服务器和数据库以获取此快速入门和其他快速入门。 如果忘记了登录名或密码，可在“SQL 服务器”页上获取登录名或重置密码。 若要打开“SQL 服务器”页，请在创建数据库后在数据库“概述”页上选择服务器名称。
 
     ![创建服务器](./media/sql-database-get-started-portal/create-database-server.png)
 
 6. 选择“选择”。
 7. 在“SQL 数据库”窗体中，选择“定价层”。 浏览每个服务层可用的 DTU 数和存储量。
 
-   >[!NOTE]
-   >本快速入门使用的是[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)，但[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)也可用。
-   >[!IMPORTANT]
-   >除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：英国北部、美国中西部、英国南部 2、中国东部、USDoDCentral、德国中部、USDoDEast、US Gov 西南部、US Gov 中南部、德国东北部、中国北部和 US Gov 东部。 在这些区域，高级层中的最大存储限制为 1 TB。 有关详细信息，请参阅[P11-P15 当前限制](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+   > [!NOTE]
+   > 本快速入门使用的是[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)，但[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)也可用。
+   > [!IMPORTANT]
+   > 除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：中国东部、中国北部、德国中部、德国东北部、美国中西部、US DoD 区域和美国政府中部。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
 
 8. 对于本快速入门，请选择“标准”服务层，然后使用滑块选择“10 DTU (S0)”和 1 GB 存储。
 9. 选择“应用”。  

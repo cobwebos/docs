@@ -7,12 +7,12 @@ ms.service: terraform
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: nepeters
-ms.openlocfilehash: 408e07e9b6214dbd223bd4ec7959b00ecc414f1e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b3d872008c95d94a8401e6f38665c3c88616a168
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869171"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736917"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>创建适用于 Azure 的 Terraform 配置
 

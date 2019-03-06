@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 CLI 创建 Azure 数据资源管理器群集和数据库
-description: 本快速入门介绍如何使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
+description: 了解如何使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 services: data-explorer
 author: radennis
 ms.author: radennis
@@ -8,14 +8,14 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 2/4/2019
-ms.openlocfilehash: 9e0ae547df34594674dc03702310a1537717a4ed
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 357f0efcf7300545d10113c92702d9fed4aad049
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881110"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958008"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-using-cli"></a>使用 CLI 创建 Azure 数据资源管理器群集和数据库
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>使用 CLI 创建 Azure 数据资源管理器群集和数据库
 
 本快速入门介绍如何使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库。
 
@@ -25,11 +25,11 @@ ms.locfileid: "55881110"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 Azure CLI，本快速入门要求 Azure CLI 2.0.4 或更高版本。 请运行 `az --version` 检查版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 Azure CLI，本快速入门要求 Azure CLI 2.0.4 或更高版本。 请运行 `az --version` 检查版本。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="configure-the-cli-parameters"></a>配置 CLI 参数
 
-如果在 Cloud Shell 中运行命令，则不需要执行以下步骤。 如果在本地运行 CLI，请按以下步骤登录到 Azure 并设置当前订阅：
+如果在 Azure Cloud Shell 中运行命令，则不需要执行以下步骤。 如果在本地运行 CLI，请按以下步骤登录到 Azure 并设置当前订阅：
 
 1. 运行以下命令来登录到 Azure：
 
@@ -54,7 +54,7 @@ ms.locfileid: "55881110"
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
    | 名称 | *azureclitest* | 所需的群集名称。|
-   | sku | *D13_v2* | 适用于群集的 SKU。 |
+   | sku | *D13_v2* | 将用于群集的 SKU。 |
    | resource-group | *testrg* | 将在其中创建群集的资源组名称。 |
 
     可以使用其他可选参数，例如群集的容量。
@@ -65,7 +65,7 @@ ms.locfileid: "55881110"
     az kusto cluster show --name azureclitest --resource-group testrg
     ```
 
-如果结果包含“provisioningState”与“Succeeded”值，则表示已成功创建群集。
+如果结果包含带 `Succeeded` 值的 `provisioningState`，则表示已成功创建群集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 数据资源管理器群集中创建数据库
 
@@ -77,11 +77,11 @@ ms.locfileid: "55881110"
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | cluster-name | *azureclitest* | 应在其中创建数据库的群集的名称。|
-   | 名称 | *clidatabase* | 所需的数据库名称。|
+   | cluster-name | *azureclitest* | 将在其中创建数据库的群集的名称。|
+   | 名称 | *clidatabase* | 数据库名称。|
    | resource-group | *testrg* | 将在其中创建群集的资源组名称。 |
-   | soft-delete-period | *3650:00:00:00* | 数据应保存的时间，以便可以查询。 |
-   | hot-cache-period | *3650:00:00:00* | 数据应保存在缓存中的时间。 |
+   | soft-delete-period | *3650:00:00:00* | 供查询使用的数据的保留时间。 |
+   | hot-cache-period | *3650:00:00:00* | 数据将在缓存中保留的时间。 |
 
 2. 若要查看已创建的数据库，请运行以下命令：
 
@@ -94,7 +94,7 @@ ms.locfileid: "55881110"
 ## <a name="clean-up-resources"></a>清理资源
 
 * 如果计划学习其他快速入门和教程，请保留创建的资源。
-* 若要清理资源，请删除群集。 删除群集时，也会删除其中的所有数据库。 使用以下命令可删除群集：
+* 若要清理资源，请删除群集。 删除群集时，也会删除其中的所有数据库。 使用以下命令删除群集：
 
     ```azurecli-interactive
     az kusto cluster delete --name azureclitest --resource-group testrg

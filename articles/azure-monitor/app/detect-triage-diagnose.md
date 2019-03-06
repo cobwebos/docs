@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 91814579675882ba969f5903ebeddcebbcbd6616
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 45824ba93e86622b1bbd92aae01f18f89bee6adf
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301530"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673336"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Application Insights for DevOps 概述
 
@@ -230,6 +230,7 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 * [ASP.NET Web 应用程序](../../azure-monitor/app/asp-net.md)
 * [Java Web 应用程序](../../azure-monitor/app/java-get-started.md)
 * [Node.js Web 应用程序](../../azure-monitor/app/nodejs.md)
-* 在 [IIS](../../azure-monitor/app/monitor-web-app-availability.md)、[Java EE](../../azure-monitor/app/java-live.md) 或 [Azure](../../azure-monitor/app/app-insights-overview.md) 上托管的已部署的应用。
+* 在 [IIS](../../azure-monitor/app/monitor-web-app-availability.md) 上托管的已部署应用
+* [Azure](../../azure-monitor/app/app-insights-overview.md)。
 * [网页](../../azure-monitor/app/javascript.md) - 单页应用或普通网页 - 单独使用此方法，或者将它与任何服务器选项结合使用。
 * [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)：通过公共 Internet 测试应用。

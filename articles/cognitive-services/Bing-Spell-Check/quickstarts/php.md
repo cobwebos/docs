@@ -1,31 +1,32 @@
 ---
-title: 快速入门：必应拼写检查 API，PHP
+title: 快速入门：使用必应拼写检查 REST API 和 PHP 检查拼写
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
+description: 开始使用必应拼写检查 API 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: abce882edb9b6c97ea3b8a91219f8e2887cfb78d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bb952a9169710a7ba8248293e1eab30c7a2da6c0
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862303"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888927"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-php"></a>通过 PHP 使用必应拼写检查 API 快速入门 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>快速入门：使用必应拼写检查 REST API 和 PHP 检查拼写
 
-本文展示了如何通过 PHP 使用[必应拼写检查 API](https://azure.microsoft.com/services/cognitive-services/spell-check/)。 拼写检查 API 返回它无法识别的单词和建议的替换的列表。 通常，你将向此 API 提交文本，然后在文本中进行建议的替换，或者向应用程序的用户显示这些替换，以便他们可以决定是否进行替换。 本文介绍如何发送包含文本“Hollo, wrld!”的请求 建议的替换为“Hello”和“world”。
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 Python 应用程序将向 API 发送请求并返回一系列建议的更正。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [PHP 5.6.x](http://php.net/downloads.php) 来运行此代码。
+* [PHP 5.6.x](http://php.net/downloads.php)
 
-必须创建一个使用必应拼写检查 API v7 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#lang)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
+
 
 ## <a name="get-spell-check-results"></a>获取拼写检查结果
 
@@ -130,13 +131,10 @@ echo $json;
    ]
 }
 ```
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应拼写检查教程](../tutorials/spellcheck.md)
+> [创建单页 Web 应用](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>另请参阅
-
-- [必应拼写检查概述](../proof-text.md)
+- [什么是必应拼写检查 API？](../overview.md)
 - [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

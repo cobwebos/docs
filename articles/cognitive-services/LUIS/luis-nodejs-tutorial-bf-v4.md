@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8a24ffa4717244d8ce2ef507183cff06cbea5797
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 852cc5e5b3b018d871bd40775dce64d669fb3011
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492226"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880608"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>教程：使用 Bot Framework 4.x 和 Azure Web 应用机器人的 Node.js 中的 LUIS 机器人
 使用 Node.js 可以生成与语言理解 (LUIS) 相集成的聊天机器人。 此机器人使用 HomeAutomation 应用来实现机器人解决方案。 此机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-js) v4 构建的。
@@ -66,7 +66,7 @@ ms.locfileid: "55492226"
     
 5. 选择“创建”。 随即会创建机器人服务并将其部署到 Azure。 在此过程中，会创建名为 `luis-nodejs-bot-XXXX` 的 LUIS 应用。 此名称基于上一部分所述的机器人名称和应用名称。
 
-    [ ![创建 Web 应用机器人](./media/bfv4-nodejs/create-web-app-service.png) ](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    [![创建 Web 应用机器人](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
 6. 请将此浏览器标签页保持打开状态。 对于 LUIS 门户中的任何步骤，都需要打开新的浏览器标签页。部署新机器人服务后，转到下一部分。
 

@@ -10,18 +10,22 @@ ms.topic: overview
 ms.date: 05/29/2018
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: f6a2f89828dbc13ca716ccb40bb05234b7e31464
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 01e35ed32be8b28f291cc2be69a8b2d71c3acab2
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418800"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806634"
 ---
 # <a name="what-is-azure-databricks"></a>什么是 Azure Databricks？
 
 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。 我们与 Apache Spark 的创建者一起设计了 Databricks，并将其与 Azure 集成以提供一键式安装程序、简化的工作流程以及交互式工作区，从而使数据科学家、数据工程师和业务分析员之间可以进行合作。
 
 ![什么是 Azure Databricks？](./media/what-is-azure-databricks/azure-databricks-overview.png "什么是 Azure Databricks？")
+
+Azure Databricks 是基于Apache Spark 的快速、简单、协作型分析服务。 使用大数据管道时，原始或结构化的数据将通过 Azure 数据工厂以批的形式引入 Azure，或者通过 Kafka、事件中心或 IoT 中心进行准实时的流式传输。 此数据将驻留在 Data Lake（长久存储）、Azure Blob 存储或 Azure Data Lake Storage 中。 在运行分析工作流的过程中，可以使用 Azure Databricks 从 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.md)、[Azure Cosmos DB](../cosmos-db/index.yml) 或 [Azure SQL 数据仓库](../sql-data-warehouse/index.md)等多个数据源读取数据，并使用 Spark 将数据转化为前所未有的见解。
+
+![Databricks 管道](./media/what-is-azure-databricks/databricks-pipeline.png)
 
 ## <a name="apache-spark-based-analytics-platform"></a>基于 Apache Spark 的分析平台
 
@@ -33,7 +37,7 @@ Azure Databricks 包括配套的开源 Apache Spark 群集技术和功能。 Azu
 
 * **流式处理**：针对分析与交互式应用程序的实时数据处理和分析。 与 HDFS、Flume 和 Kafka 集成。
 
-* **MLib**：由常见学习算法和实用工具（包括分类、回归、聚集、协作筛选、维数约简以及底层优化基元）组成的机器学习库。
+* **MLib**：由常见学习算法和实用工具（包括分类、回归、群集、协作筛选、维数约简以及底层优化基元）组成的机器学习库。
 
 * **GraphX**：针对从认知分析到数据浏览的广泛范围显示图形和执行图形计算。
 

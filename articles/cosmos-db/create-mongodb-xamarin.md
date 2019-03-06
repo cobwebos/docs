@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 9236a340c05bc5e342b9fc2c377d6d8eacb94f7d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c7a80ae704d13934a5d51bc5538bc28693b49e5b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036406"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588086"
 ---
-# <a name="quickstart-quickstart-build-a-xamarinforms-app-with-net-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：快速入门：使用 .NET 和 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Xamarin.Forms 应用
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Xamarin.Forms 应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

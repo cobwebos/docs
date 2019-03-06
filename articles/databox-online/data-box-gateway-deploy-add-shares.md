@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 02/04/2019
+ms.date: 02/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 0ceff87cd3075d517ee1c0027e19dbf423e44f5c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f36e13ccf91c983c54897dcff7e1c02689fb055c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108749"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592649"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>教程：使用 Azure Data Box Gateway（预览版）传输数据
 
@@ -133,6 +133,7 @@ ms.locfileid: "56108749"
 > 以下注意事项适用于预览版：
 > - 在共享中创建文件以后，不允许重命名文件。 
 > - 从共享中删除文件并不删除存储帐户中的条目。
+> - 如果使用 `rsync` 复制数据，则不支持 `rsync -a` 选项。
 
 ## <a name="next-steps"></a>后续步骤
 

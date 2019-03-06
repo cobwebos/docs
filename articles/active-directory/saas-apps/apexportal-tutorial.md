@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a494e403b8afa1424640ac2e24d0f832b3de02dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89b264c35d7dc269252a156aad6a24a565dbd6ea
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210605"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872669"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>教程：Azure Active Directory 与 Apex Portal 集成
 
@@ -217,8 +217,8 @@ ms.locfileid: "56210605"
 
 在本部分，我们将在 Apex Portal 中创建名为 Britta Simon 的用户。 Apex Portal 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Apex Portal 中尚不存在用户，身份验证后会创建一个新用户。
 
-> [!NOTE]
-> 如果需要手动创建用户，请联系  [Apex Portal 支持团队](mailto:support@apexanalytix.com)。
+> [!NOTE]
+> 如果需要手动创建用户，请联系  [Apex Portal 支持团队](mailto:support@apexanalytix.com)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
@@ -230,7 +230,7 @@ ms.locfileid: "56210605"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

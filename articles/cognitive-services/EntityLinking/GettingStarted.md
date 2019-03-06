@@ -10,12 +10,12 @@ ms.subservice: entity-linking-intelligence
 ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: c3e7d27fa0e62c1dcc92e7eac7ddb56a1de5ba49
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fc1bdd5c6ad4829e22af9922c6749e60f842abaf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857800"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594026"
 ---
 # <a name="tutorial-build-an-entity-linking-app-with-c"></a>教程：使用 C# 构建实体链接应用
 
@@ -55,7 +55,7 @@ Microsoft 实体链接是一款自然语言处理工具，可用于分析文本�
  ![项目中包含的 nuget 库](./Images/NugetLibraryInProject.png)
  
 ### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">步骤 4：向应用的 XAML 添加输入和输出文本块</a>
-转到“解决方案资源管理器”中的 **MainPage.xaml**，并双击此文件，在新窗口中打开它。 为方便起见，可以双击“设计器”选项卡中的“XAML”按钮，这会隐藏“可视化设计器”，并保留代码视图的所有空间。
+导航到“解决方案资源管理器”中的 MainPage.xaml，并双击此文件，在新窗口中打开它。 为方便起见，可以双击“设计器”选项卡中的“XAML”按钮，这会隐藏“可视化设计器”，并保留代码视图的所有空间。
 
  ![项目中包含的 nuget 库](./Images/UWPMainPage.png)
  

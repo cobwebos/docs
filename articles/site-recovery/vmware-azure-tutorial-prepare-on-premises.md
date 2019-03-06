@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bee9d2f823fe46d81550ea5090222f491562d636
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ea67c19beeb2fa52b77b04913aee1838569c4ac6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700105"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675018"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 
@@ -80,7 +80,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 3. 检查本地[网络](vmware-physical-azure-support-matrix.md#network)和[存储](vmware-physical-azure-support-matrix.md#storage)支持。 
 4. 故障转移后，检查 [Azure 网络](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[存储](vmware-physical-azure-support-matrix.md#azure-storage)和[计算](vmware-physical-azure-support-matrix.md#azure-compute)支持的功能。
 5. 复制到 Azure 的本地 VM 必须符合 [Azure VM 要求](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。
-6. 在 Linux 虚拟机中，设备名称或装入点名称都应具有唯一性。 请确保两个设备/装入点的名称不仅仅是只区分大小写。 例如，同一虚拟机中的两个设备不能命名为“device1”和“Device1”。
+6. 在 Linux 虚拟机中，设备名称或装入点名称都应具有唯一性。 请确保没有两个设备/装入点具有相同名称。 请注意，名称不区分大小写。 例如，不允许将同一 VM 的两个设备命名为 device1 和 Device1。
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>准备在故障转移后连接到 Azure VM

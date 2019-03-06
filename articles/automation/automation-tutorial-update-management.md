@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: bd7072ce8212366bf3d8a0a9e0a30000debea2ea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fbca620fca1aeb53acc9bd70561e783b49ff1a60
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434608"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822339"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -66,7 +66,7 @@ ms.locfileid: "54434608"
 
 ![“启用更新管理解决方案”窗口](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-启用解决方案最多可能需要几分钟时间。 在此期间，请勿关闭浏览器窗口。 启用该解决方案后，VM 中缺少的更新信息会流向 Log Analytics。 这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
+启用解决方案最多可能需要几分钟时间。 在此期间，请勿关闭浏览器窗口。 启用该解决方案后，VM 中缺少的更新信息会流向 Azure Monitor 日志。 这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
 
 ## <a name="view-update-assessment"></a>查看更新评估
 
@@ -137,7 +137,7 @@ ms.locfileid: "54434608"
 
 * **要更新的组（预览）**：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)
 
-* **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../azure-monitor/platform/computer-groups.md)
+* **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)
 
 * **更新分类**：选择更新部署包含在部署中的软件类型。 对于本教程，请保留所有选定的类型。
 

@@ -2,19 +2,19 @@
 title: 快速入门：向 Azure IoT 中心发送遥测数据 | Microsoft Docs
 description: 在本快速入门中，请运行一个示例 iOS 应用程序，以便向 IoT 中心发送模拟遥测数据，以及从 IoT 中心读取需在云中处理的遥测数据。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/20/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: c2cfe40afb2c855e600e103fc8b9bb0845b09aa3
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 05ae99425bbe16c27ca7efd475757499996e06b9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515108"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672111"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>快速入门：将遥测数据从设备发送到 IoT 中心 (iOS)
 

@@ -1,183 +1,142 @@
 ---
-title: 快速入门：必应拼写检查 API，C#
+title: 快速入门：使用必应拼写检查 REST API 和 C# 检查拼写
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
+description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 8d97627d398e3e09fe4cf580fe42fdfec278ec7f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a33dfe2e20cdb6c1944d4be89692ec1da5a5482e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861207"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889658"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-c"></a>通过 C# 使用必应拼写检查 API 快速入门
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>快速入门：使用必应拼写检查 REST API 和 C# 检查拼写
 
-本文展示了如何通过 C# 使用[必应拼写检查 API](https://azure.microsoft.com/services/cognitive-services/spell-check/)。 拼写检查 API 返回它无法识别的单词和建议的替换的列表。 通常，你将向此 API 提交文本，然后在文本中进行建议的替换，或者向应用程序的用户显示这些替换，以便他们可以决定是否进行替换。 本文介绍如何发送包含文本“Hollo, wrld!”的请求 建议的替换为“Hello”和“world”。
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 C# 应用程序将向 API 发送请求并返回一系列建议的更正。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上提供了此应用程序的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以）。 另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
+* 如果使用的是 Linux/MacOS，则可使用 [Mono](http://www.mono-project.com/) 运行此应用程序。
 
-必须创建一个使用必应拼写检查 API v7 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#lang)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>获取拼写检查结果
+## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在喜欢使用的 IDE 中新建一个 C# 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+1. 在 Visual Studio 中创建一个名为 `SpellCheckSample` 的新控制台解决方案。 然后将以下命名空间添加到主代码文件。
+    
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
+    using Newtonsoft.Json;
+    ```
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
+2. 为 API 终结点、订阅密钥和要进行拼写检查的文本创建变量。
 
-namespace SpellCheckSample1
-{
-    class Program
+    ```csharp
+    namespace SpellCheckSample
     {
-        static string host = "https://api.cognitive.microsoft.com";
-        static string path = "/bing/v7.0/spellcheck?";
-
-        // For a list of available markets, go to:
-        // https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes
-        static string params_ = "mkt=en-US&mode=proof";
-
-        // NOTE: Replace this example key with a valid subscription key.
-        static string key = "ENTER KEY HERE";
-
-        static string text = "Hollo, wrld!";
-
-        // These properties are used for optional headers (see below).
-        // static string ClientId = "<Client ID from Previous Response Goes Here>";
-        //static string ClientId = "2325577A61966D252A475CD760C96C03";
-        // static string ClientIp = "999.999.999.999";
-        // static string ClientLocation = "+90.0000000000000;long: 00.0000000000000;re:100.000000000000";
-
-        async static void SpellCheck()
+        class Program
         {
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-
-            // The following headers are optional, but it is recommended they be treated as required.
-            // These headers help the service return more accurate results.
-            //client.DefaultRequestHeaders.Add("X-Search-Location", ClientLocation);
-            //client.DefaultRequestHeaders.Add("X-MSEdge-ClientID", ClientId);
-            //client.DefaultRequestHeaders.Add("X-MSEdge-ClientIP", ClientIp);
-
-            HttpResponseMessage response = new HttpResponseMessage();
-            string uri = host + path + params_;
-
-            List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
-            values.Add(new KeyValuePair<string, string>("text", text));
-
-            using (FormUrlEncodedContent content = new FormUrlEncodedContent(values))
-            {
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-                response = await client.PostAsync(uri, content);
-            }
-
-            string client_id;
-            if (response.Headers.TryGetValues("X-MSEdge-ClientID", out IEnumerable<string> header_values))
-            {
-                client_id = header_values.First();
-                Console.WriteLine("Client ID: " + client_id);
-            }
-
-            string contentString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(JsonPrettyPrint(contentString));
-
-        }
-
-        static void Main(string[] args)
-        {
-            SpellCheck();
-            Console.ReadLine();
-        }
-
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-            {
-                return string.Empty;
-            }
-
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
-
-            StringBuilder sb = new StringBuilder();
-            bool quote = false;
-            bool ignore = false;
-            char last = ' ';
-            int offset = 0;
-            int indentLength = 3;
-
-            foreach (char ch in json)
-            {
-                switch (ch)
-                {
-                    case '"':
-                        if (!ignore) quote = !quote;
-                        break;
-                    case '\\':
-                        if (quote && last != '\\') ignore = true;
-                        break;
-                }
-
-                if (quote)
-                {
-                    sb.Append(ch);
-                    if (last == '\\' && ignore) ignore = false;
-                }
-                else
-                {
-                    switch (ch)
-                    {
-                        case '{':
-                        case '[':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', ++offset * indentLength));
-                            break;
-                        case '}':
-                        case ']':
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', --offset * indentLength));
-                            sb.Append(ch);
-                            break;
-                        case ',':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', offset * indentLength));
-                            break;
-                        case ':':
-                            sb.Append(ch);
-                            sb.Append(' ');
-                            break;
-                        default:
-                            if (quote || ch != ' ') sb.Append(ch);
-                            break;
-                    }
-                }
-                last = ch;
-            }
-
-            return sb.ToString().Trim();
+            static string host = "https://api.cognitive.microsoft.com";
+            static string path = "/bing/v7.0/spellcheck?";
+            static string key = "enter your key here";
+            //text to be spell-checked
+            static string text = "Hollo, wrld!";
         }
     }
+    ```
+
+3. 为搜索参数创建变量。 将市场代码追加​​到 `mkt=`，并将拼写检查模式追加​​到 `&mode=`。
+    
+    ```csharp
+    static string params_ = "mkt=en-US&mode=proof";
+    ```
+
+## <a name="create-and-send-a-spell-check-request"></a>创建和发送拼写检查请求
+
+1. 创建名为 `SpellCheck()` 的异步函数，以便向 API 发送请求。 创建 `HttpClient`，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。 然后在函数中执行以下步骤。
+
+    ```csharp
+    async static void SpellCheck()
+    {
+        HttpClient client = new HttpClient();
+        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+
+        HttpResponseMessage response = new HttpResponseMessage();
+        //...
+    }
+
+2. Create the URI for your request by appending your host, path, and parameters. 
+    
+    ```csharp
+    string uri = host + path + params_;
+    ```
+
+3. 创建含有 `KeyValuePair` 对象（其中包含文本）的列表，并将其用于创建 `FormUrlEncodedContent` 对象。 设置标头信息，并使用 `PostAsync()` 发送请求。
+
+    ```csharp
+    List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
+    values.Add(new KeyValuePair<string, string>("text", text));
+    
+    using (FormUrlEncodedContent content = new FormUrlEncodedContent(values))
+    {
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+        response = await client.PostAsync(uri, content);
+    }
+    ```
+
+## <a name="get-and-print-the-api-response"></a>获取和打印 API 响应
+
+### <a name="get-the-client-id-header"></a>获取客户端 ID 标头
+
+如果响应包含 `X-MSEdge-ClientID` 标头，获取该值并将其打印。
+
+``` csharp
+string client_id;
+if (response.Headers.TryGetValues("X-MSEdge-ClientID", out IEnumerable<string> header_values))
+{
+    client_id = header_values.First();
+    Console.WriteLine("Client ID: " + client_id);
 }
 ```
 
-**响应**
+### <a name="get-the-response"></a>获取响应
+
+从 API 获取响应。 反序列化 JSON 对象，并将其打印到控制台。
+
+```csharp
+string contentString = await response.Content.ReadAsStringAsync();
+
+dynamic jsonObj = JsonConvert.DeserializeObject(contentString);
+Console.WriteLine(jsonObj);
+```
+
+## <a name="call-the-spell-check-function"></a>调用拼写检查函数
+
+在项目的主函数中，调用 `SpellCheck()`。
+
+```csharp
+static void Main(string[] args)
+{
+    SpellCheck();
+    Console.ReadLine();
+}
+```
+
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -222,9 +181,7 @@ namespace SpellCheckSample1
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应拼写检查教程](../tutorials/spellcheck.md)
+> [创建单页 Web 应用](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>另请参阅
-
-- [必应拼写检查概述](../proof-text.md)
+- [什么是必应拼写检查 API？](../overview.md)
 - [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

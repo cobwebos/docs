@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 10/19/2018
+ms.date: 02/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: d35e7cfbf55d0dc53214bbb7b1153c3270c611c2
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7b2b5c7201fe45fb52eb333b9e32b4996e00df9b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471316"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822917"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 
@@ -57,7 +57,7 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 
 ## <a name="diagrams"></a>连接拓扑示意图
 
-必须知道，VPN 网关连接可以使用不同的配置。 必须确定哪种配置最适合自己的需要。 在下面的部分中，可以查看有关以下 VPN 网关连接的信息和拓扑示意图：以下部分包含一些表格，其中列出了：
+必须知道，VPN 网关连接可以使用不同的配置。 必须确定哪种配置最适合自己的需要。 在下面的部分中，可以查看有关以下 VPN 网关连接的信息和拓扑示意图：以下部分包含的表列出了：
 
 * 可用的部署模型
 * 可用的配置工具
@@ -152,7 +152,6 @@ ExpressRoute 是从 WAN （不通过公共 Internet）到 Microsoft 服务（包
 
 ## <a name="next-steps"></a>后续步骤
 
-- 规划 VPN 网关配置。 请参阅 [VPN 网关规划和设计](vpn-gateway-plan-design.md)。
 - 有关更多信息，请查看 [VPN 网关常见问题](vpn-gateway-vpn-faq.md)。
 - 查看[订阅和服务限制](../azure-subscription-service-limits.md#networking-limits)。
 - 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。

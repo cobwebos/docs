@@ -13,14 +13,14 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5d42135c538ca3d0a63252805efb44cef7e8b0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 536edcf74bff6f89dade4a713c40c9bef12e18af
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190460"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881798"
 ---
-# <a name="what-is-hybrid-identity"></a>什么是混合标识？ 
+# <a name="what-is-hybrid-identity"></a>什么是混合标识？
 
 如今，企业和公司越来越成为本地应用程序和云应用程序的混合体。  用户需要同时访问位于本地和云中的这些应用程序。 此要求已成为具有挑战性的方案。 
 
@@ -30,7 +30,7 @@ Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  �
 
 - **[密码哈希同步 (PHS)](whatis-phs.md)**  
 - **[直通身份验证 (PTA)](how-to-connect-pta.md)**  
-- **[联合身份验证](whatis-fed.md)** 
+- **[联合 (AD FS)](whatis-fed.md)** 
 
 这些身份验证方法还提供[单一登录](how-to-connect-sso.md)功能。  单一登录可使连接到企业网络的企业设备上的用户自动登录。
 
@@ -47,7 +47,7 @@ Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  �
 |使用户能够使用其本地密码登录并访问云服务。|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
 |使用公司凭据实现单一登录。|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)|  
 |确保未在云中存储密码哈希。| |![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)| 
-|启用云多重身份验证解决方案。| |![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)| 
+|启用基于云的多重身份验证解决方案。|![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)| 
 |启用本地多重身份验证解决方案。| | |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
 |支持用户使用智能卡身份验证。<sup>4</sup>| | |![建议](./media/whatis-hybrid-identity/ic195031.png)| 
 |在 Office 门户和 Windows 10 桌面上显示密码到期通知。| | |![建议](./media/whatis-hybrid-identity/ic195031.png)| 

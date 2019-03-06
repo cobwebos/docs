@@ -11,16 +11,16 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f6c1af2051d946b29e2022c90d0ad9820b4d283
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1d483d14a08f589fc8d014a13a47008b9fb59690
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823495"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984945"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
-本教程介绍如何准备数据，以便使用 Azure 机器学习数据准备 SDK 进行回归建模。 运行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。
+本教程介绍如何准备数据，以便使用[适用于 Python 的 Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk) 进行回归建模。 运行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。
 
 本教程是由两个部分构成的系列教程的第一部分。 完成这一系列的教程以后，即可根据数据特性训练一个模型，以便预测出租车打车费用。 这些特性包括上车日期和时间、乘客数和上车位置。
 
@@ -48,7 +48,7 @@ ms.locfileid: "56823495"
 
 ### <a name="azure"></a>使用 Azure Notebooks：云中免费的 Jupyter Notebook
 
-Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks.azure.com/) 上安装并配置了[适用于 Python 的 Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk)。 安装和未来的更新通过 Azure 服务自动管理。
+Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks.azure.com/) 上安装并配置了 Azure 机器学习数据准备 SDK。 安装和未来的更新通过 Azure 服务自动管理。
 
 完成以下步骤后，运行**入门**项目中的 **tutorials/regression-part1-data-prep.ipynb** Notebook。
 
@@ -662,7 +662,7 @@ latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
 replaced_stfor_vals_df = latlong_filtered_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-执行 `distance` 字段上的 `replace` 函数。 此函数将重新格式化错误标记为 `.00` 的距离值，并用 0 填充任何 null 值。 将 `distance` 字段转换为数值格式。 这些错误的数据点可能是出租车内部数据收集系统中的异常。
+执行 `distance` 字段上的 `replace` 函数。 此函数将重新格式化错误标记为 `.00` 的距离值，并用 0 填充任何 null 值。 将 `distance` 字段转换为数值格式。 这些错误的数据点可能是出租车内部数据收集系统中的异常导致。
 
 
 ```python

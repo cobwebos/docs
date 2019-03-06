@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 16c9eea61391511f7515308131b3541e186cd7ae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b8600ed03140e302c730d44c6410d2020b7c48a3
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232611"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983177"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>教程：在 Azure 门户中通过基本负载均衡器对内部流量负载进行均衡
 
@@ -61,7 +61,7 @@ ms.locfileid: "54232611"
      1. 在下拉列表中选择“可用性集”。 
      2. 选择“新建”，键入 *MyAvailabilitySet*，然后选择“确定”。
    
-1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”**。 
+1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**
@@ -87,20 +87,23 @@ ms.locfileid: "54232611"
 
 1. 在门户的左上方，选择“创建资源” > “网络” > “负载均衡器”。
    
-1. 在“创建负载均衡器”窗格中，键入或选择以下值：
+2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”：
+
+    | 设置                 | 值                                              |
+    | ---                     | ---                                                |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB。|
+    | 名称                   | *myLoadBalancer*                                   |
+    | 区域         | 选择“西欧”。                                        |
+    | 类型          | 选择“公共”。                                        |
+    | SKU           | 选择“基本”。                          |
+    | 虚拟网络           | 选择“MyVNet”。                          |    
+| 公共 IP 地址 | 选择“新建”。 |
+    | 公共 IP 地址分配              | 选择“静态”。   |
+    | 专用 IP 地址|键入一个位于虚拟网络和子网地址空间中的地址，例如 *10.3.0.7*。  |
+
+3. 在“查看 + 创建”选项卡中，单击“创建”。 
    
-   - **名称**：键入 *MyLoadBalancer*。
-   - **类型**：选择“内部”。 
-   - **SKU**：选择“基本”。
-   - **虚拟网络**：选择“选择虚拟网络”，然后选择“MyVNet”。
-   - **子网**：选择“选择子网”，然后选择“MyBackendSubnet”。
-   - **IP 地址分配**：选择“静态”（如果未选择）。
-   - **专用 IP 地址**：键入一个位于虚拟网络和子网地址空间中的地址，例如 *10.3.0.7*。
-   - **资源组**：下拉“选择现有”列表并选择“MyResourceGroupLB”。 
-   
-1. 选择“创建”。
-   
-![创建负载均衡器](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
 
 ## <a name="create-basic-load-balancer-resources"></a>创建基本负载均衡器资源
 

@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.openlocfilehash: 5f9af39616e45983a7ec592f33c3f2ffd34ea34f
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/26/2019
+ms.openlocfilehash: 4f72def4d81f51fcf1bedbeb83798b16ebb6eb32
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233392"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888655"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
 
@@ -324,6 +324,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
     ![指定仪表板磁贴标题和副标题的屏幕截图。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
+    > [!IMPORTANT]
+    > 运行示例应用程序并将数据流式传输到事件中心时，此磁贴上的数字将迅速更改（每秒）。 这是因为流分析查询实际上会每秒更新值。 将查询更新为 3 分钟翻转窗口，以查看过去几分钟内的总和。 
 11. 添加另一种可视化效果。 再次重复前几个步骤：
 
    * 单击“添加磁贴”。

@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5ba555ad31545e1ae1aa822ec58b0bd22ef486ac
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 12da1b20c5e4e6299445b8ec8ec90eeec6711e2c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295145"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805512"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>使用 Jupyter 笔记本探索 Azure 机器学习服务
 
@@ -48,6 +48,8 @@ Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks
 执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+快速入门说明会安装运行快速入门和教程笔记本所需的程序包。  其他示例笔记本可能需要安装附加组件。  有关这些组件的详细信息，请参阅[安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install)。
 
 <a name="automated-ml-setup"></a>
 

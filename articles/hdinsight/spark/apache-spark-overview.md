@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 01/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: c08672b178a9327b39414ca1c0e71653f62d1d07
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 264faaf0168d1604668e3358b1d99bc169d7e2f0
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295791"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985166"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 是什么
 
@@ -38,7 +38,7 @@ HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出�
 | 支持 Azure Data Lake Storage | HDInsight 中的 Spark 群集可使用 Azure Data Lake Storage 作为主存储或附加存储。 有关 Data Lake Storage 的详细信息，请参阅 [Azure Data Lake Storage 概述](../../data-lake-store/data-lake-store-overview.md)。 |
 | 与 Azure 服务集成 |HDInsight 中的 Spark 群集随附了 Azure 事件中心的连接器。 除了 Spark 中提供的 [Apache Kafka](https://kafka.apache.org/) 之外，还可以使用事件中心来生成流式处理应用程序。 |
 | 对 ML Server 的支持 | HDInsight 中对 ML Server 的支持是作为 **ML Services** 群集类型提供的。 可以将 ML Services 群集设置为以 Spark 群集承诺的速度运行分布式 R 计算。 有关详细信息，请参阅[开始使用 HDInsight 中的 ML Server](../r-server/r-server-get-started.md)。 |
-| 与第三方 IDE 集成 | HDInsight 提供多个 IDE 插件，这些插件可用于创建应用程序，并将应用程序提交到 HDInsight Spark 群集。 有关详细信息，请参阅[使用用于 IntelliJ IDEA 的 Azure 工具包](apache-spark-intellij-tool-plugin.md)、[将 HDInsight 用于 VSCode] 和[使用用于 Eclipse 的 Azure 工具包](apache-spark-eclipse-tool-plugin.md)。|
+| 与第三方 IDE 集成 | HDInsight 提供多个 IDE 插件，这些插件可用于创建应用程序，并将应用程序提交到 HDInsight Spark 群集。 有关详细信息，请参阅[使用用于 IntelliJ IDEA 的 Azure 工具包](apache-spark-intellij-tool-plugin.md)、[将 HDInsight 用于 VSCode](../hdinsight-for-vscode.md) 和[使用用于 Eclipse 的 Azure 工具包](apache-spark-eclipse-tool-plugin.md)。|
 | 并发查询 |HDInsight 中的 Spark 群集支持并发查询。 此功能允许一个用户运行多个查询，或者不同的用户运行多个查询，以及让应用程序共享相同的群集资源。 |
 | SSD 缓存 |可以选择将数据缓存在内存中，或缓存在已附加到群集节点的 SSD 中。 内存缓存提供最佳的查询性能，但可能费用不菲。 SSD 缓存是改善查询性能的绝佳选项，而且不需要根据内存中的整个数据集创建满足其需求的群集规模。 |
 | 与 BI 工具集成 |HDInsight 中的 Spark 群集提供 BI 工具（如 [Power BI](https://www.powerbi.com/)）的连接器，用于数据分析。 |

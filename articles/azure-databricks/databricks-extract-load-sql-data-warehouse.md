@@ -7,13 +7,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 01/24/2019
-ms.openlocfilehash: b48ac9cf8eff001e62f54e41b5f76a9d006bc5ba
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.workload: Active
+ms.date: 02/15/2019
+ms.openlocfilehash: 6ec32a40cea4f95d9225134cfb36d4930245d1c5
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328922"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750593"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -21,14 +22,19 @@ ms.locfileid: "56328922"
 
 本教程中的步骤使用 Azure Databricks 的 SQL 数据仓库连接器将数据传输到 Azure Databricks。 而此连接器又使用 Azure Blob 存储来临时存储在 Azure Databricks 群集和 Azure SQL 数据仓库之间传输的数据。
 
+下图演示了应用程序流：
+
+![Azure Databricks 与 Data Lake Store 和 SQL 数据仓库](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks 与 Data Lake Store 和 SQL 数据仓库")
+
 本教程涵盖以下任务：
 
 > [!div class="checklist"]
 > * 创建 Azure Databricks 服务。
 > * 在 Azure Databricks 中创建 Spark 群集。
-> * 创建文件系统并将数据上传到 Azure Data Lake Storage Gen2。
+> * 在 Data Lake Storage Gen2 帐户中创建文件系统。
+> * 上传示例数据到 Azure Data Lake Storage Gen2 帐户。
 > * 创建服务主体。
-> * 从 Data Lake Store 提取数据。
+> * 从 Azure Data Lake Storage Gen2 帐户中提取数据。
 > * 在 Azure Databricks 中转换数据。
 > * 将数据载入 Azure SQL 数据仓库。
 
@@ -42,11 +48,40 @@ ms.locfileid: "56328922"
 
 * 为 Azure SQL 数据仓库创建数据库主密钥。 请参阅[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)。
 
-* 创建 Azure Data Lake Storage Gen2 帐户。 请参阅[创建 Azure Data Lake Storage Gen2 帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
-
 * 创建 Azure Blob 存储帐户并在其中创建容器。 另外，请检索用于访问该存储帐户的访问密钥。 请参阅[快速入门：创建 Azure Blob 存储帐户](../storage/blobs/storage-quickstart-blobs-portal.md)中的说明。
 
+* 创建 Azure Data Lake Storage Gen2 存储帐户。 请参阅[创建 Azure Data Lake Storage Gen2 帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
+
+*  创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+
+   在执行该文中的步骤时，需要完成一些特定的事项。
+
+   * 执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给服务主体。
+
+     > [!IMPORTANT]
+     > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
+
+   * 在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
+
 * 登录到 [Azure 门户](https://portal.azure.com/)。
+
+## <a name="gather-the-information-that-you-need"></a>收集所需信息
+
+确保完成本教程的先决条件。
+
+   在开始之前，应具有以下这些信息项：
+
+   :heavy_check_mark:Azure SQL 数据仓库的数据库名称、数据库服务器名称、用户名和密码。
+
+   :heavy_check_mark:blob 存储帐户的访问密钥。
+
+   :heavy_check_mark:Data Lake Storage Gen2 存储帐户的名称。
+
+   :heavy_check_mark:订阅的租户 ID。
+
+   :heavy_check_mark:向 Azure Active Directory (Azure AD) 注册的应用的应用程序 ID。
+
+   :heavy_check_mark:向 Azure AD 注册的应用的身份验证密钥。
 
 ## <a name="create-an-azure-databricks-service"></a>创建 Azure Databricks 服务
 
@@ -94,40 +129,9 @@ ms.locfileid: "56328922"
 
     * 选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
-## <a name="create-a-file-system-and-upload-sample-data"></a>创建文件系统并上传示例数据
+## <a name="create-a-file-system-in-the-azure-data-lake-storage-gen2-account"></a>在 Azure Data Lake Storage Gen2 帐户中创建文件系统
 
-首先，在 Data Lake Storage Gen2 帐户中创建一个文件系统。 然后就可以将示例数据文件上传到 Data Lake Store。 稍后需在 Azure Databricks 中使用此文件来运行一些转换操作。
-
-1. 将 [small_radio_json.json](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 示例数据文件下载到本地文件系统。
-
-2. 从 [Azure 门户](https://portal.azure.com/)导航到 Data Lake Storage Gen2 帐户，该帐户是你为了遵循本教程的先决条件而创建的。
-
-3. 在存储帐户的“概览”页中，选择“在资源管理器中打开”。
-
-   ![打开存储资源管理器](./media/databricks-extract-load-sql-data-warehouse/data-lake-storage-open-storage-explorer.png "打开存储资源管理器")
-
-4. 选择“打开 Azure 存储资源管理器”，打开存储资源管理器。
-
-   ![打开存储资源管理器第二个提示符](./media/databricks-extract-load-sql-data-warehouse/data-lake-storage-open-storage-explorer-2.png "打开存储资源管理器第二个提示符")
-
-   此时会打开存储资源管理器。 可以根据本主题中的指导创建文件系统并上传示例数据：[快速入门：使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 帐户中管理数据](../storage/blobs/data-lake-storage-explorer.md)。
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>创建服务主体
-
-遵循以下主题中的指导创建服务主体：[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
-
-在执行该文中的步骤时，需要完成几项操作。
-
-:heavy_check_mark:在执行文章的[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分的步骤时，请确保将应用程序分配给“Blob 存储参与者”角色。
-
-:heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
-首先在 Azure Databricks 工作区中创建一个笔记本，然后运行代码片段，以便在存储帐户中创建文件系统。
-
-## <a name="extract-data-from-the-data-lake-store"></a>从 Data Lake Store 提取数据
-
-在此部分，请先在 Azure Databricks 工作区中创建一个笔记本，然后运行代码片段，以便将数据从 Data Lake Store 提取到 Azure Databricks 中。
+在本部分中，你将在 Azure Databricks 工作区中创建一个 Notebook，然后运行代码片段来配置存储帐户
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到你创建的 Azure Databricks 服务，然后选择“启动工作区”。
 
@@ -149,13 +153,40 @@ ms.locfileid: "56328922"
    spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. 在此代码块中，请将 `application-id`、`authentication-id`、`tenant-id` 占位符的值替换为你在完成“保存存储帐户配置”中的步骤时收集的值。 将 `storage-account-name` 占位符值替换为存储帐户的名称。
+6. 在此代码块中，请将 `application-id`、`authentication-id`、`tenant-id` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `file-system-name` 占位符值替换为你想要为文件系统指定的任何名称。
+
+   * `application-id` 和 `authentication-id` 来自在创建服务主体的过程中向 active directory 注册的应用。
+
+   * `tenant-id` 来自你的订阅。
+
+   * `storage-account-name` 是 Azure Data Lake Storage Gen2 存储帐户的名称。
 
 7. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 
-8. 现在可以将示例 json 文件加载为 Azure Databricks 中的数据帧。 将以下代码粘贴到新单元格中。 将括号中显示的占位符替换为你的值。
+## <a name="ingest-sample-data-into-the-azure-data-lake-storage-gen2-account"></a>将示例数据引入 Azure Data Lake Storage Gen2 帐户
+
+开始学习本部分之前，必须完成以下先决条件：
+
+将以下代码输入到 Notebook 单元格中：
+
+    %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
+
+在单元格中，按 SHIFT + ENTER 来运行代码。
+
+现在，请在此单元格下方的新单元格中输入以下代码，将括号中出现的值替换为此前使用的相同值：
+
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+
+在单元格中，按 SHIFT + ENTER 来运行代码。
+
+## <a name="extract-data-from-the-azure-data-lake-storage-gen2-account"></a>从 Azure Data Lake Storage Gen2 帐户中提取数据
+
+1. 现在可以将示例 json 文件加载为 Azure Databricks 中的数据帧。 将以下代码粘贴到新单元格中。 将括号中显示的占位符替换为你的值。
 
    ```scala
    val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
@@ -165,9 +196,9 @@ ms.locfileid: "56328922"
 
    * 将 `storage-account-name` 占位符替换为存储帐户的名称。
 
-9. 按 **SHIFT + ENTER** 键，运行此块中的代码。
+2. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 
-10. 运行以下代码来查看数据帧的内容：
+3. 运行以下代码来查看数据帧的内容：
 
     ```scala
     df.show()
@@ -300,8 +331,8 @@ ms.locfileid: "56328922"
    val dwPass = "<password>"
    val dwJdbcPort =  "1433"
    val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
-   val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
-   val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
+   val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
+   val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
 5. 运行以下代码片段来加载转换的 dataframe **renamedColumnsDF**，在 SQL 数据仓库中作为表来存储。 此代码片段在 SQL 数据库中创建名为 **SampleTable** 的表。

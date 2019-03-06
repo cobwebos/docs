@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a2dc5653b7579d9c5db4667d84e6e5b5082abaab
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 869f6d2391632c77e01e4383c1457f88b9171c8b
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448068"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651186"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>教程：配置连接到监视解决方案的设备
 
@@ -36,7 +36,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 ## <a name="add-a-simulated-device"></a>添加模拟设备
 
-在解决方案中导航到“设备”页，然后单击“+ 新建设备”：
+在解决方案中导航到“设备资源管理器”页，然后单击“+ 新建设备”：
 
 [![预配模拟设备](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
@@ -46,7 +46,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 ## <a name="test-the-simulated-device"></a>测试模拟设备
 
-若要测试模拟引擎设备是否发送遥测数据并报告属性值，请在“设备”页上的设备列表中选择该模拟设备。 有关引擎的实时信息显示在“设备详细信息”面板中：
+若要测试模拟引擎设备是否发送遥测数据并报告属性值，请在“设备资源管理器”页上的设备列表中选择该模拟设备。 有关引擎的实时信息显示在“设备详细信息”面板中：
 
 [![查看新的模拟引擎设备](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
@@ -60,7 +60,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 ## <a name="reconfigure-a-device"></a>重新配置设备
 
-若要测试是否可以更新引擎的配置属性，请在“设备”页上的设备列表中选择该引擎。 接着单击“作业”，然后选择“属性”。 作业面板显示选定设备的可更改属性值：
+若要测试是否可以更新引擎的配置属性，请在“设备资源管理器”页上的设备列表中选择该引擎。 接着单击“作业”，然后选择“属性”。 作业面板显示选定设备的可更改属性值：
 
 [![重新配置设备](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -83,7 +83,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 * 智能车辆团队管理卡车和原型制作设备。
 * 智能建筑团队管理冷却器、升降机和引擎。
 
-若要显示所有设备，请导航到“设备”页，选择“所有设备”筛选器：
+若要显示所有设备，请导航到“设备资源管理器”页，选择“所有设备”筛选器：
 
 [![显示所有设备](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
@@ -103,7 +103,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 ### <a name="create-filters"></a>创建筛选器
 
-现在，可以使用标记值创建筛选器。 在“设备”页上，单击“管理设备组”：
+现在，可以使用标记值创建筛选器。 在“设备资源管理器”页上，单击“管理设备组”：
 
 [![管理设备组](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
 

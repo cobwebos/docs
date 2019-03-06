@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 5591e8174f15d552bf7295d1c3fe9cb5257c0f2e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b79800f9a9f0eb44c16c7f45fa97c55eca8ecd1a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438892"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737937"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -23,40 +23,42 @@ Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 A
 
 ## <a name="before-you-begin"></a>开始之前
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/)。  
 
-* 本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
+* 本快速入门需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
 * 某些 IoT 中心操作不受 Azure PowerShell 的支持，必须使用 Azure CLI 2.0.24 或更高版本以及 Azure CLI 的 IoT 扩展来完成。 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并使用 `az extension add --name azure-cli-iot-ext` 来安装 IoT 扩展。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-使用 `Connect-AzureRmAccount` 命令登录到 Azure 订阅，然后在弹出的浏览器中输入 Azure 凭据：
+使用 `Connect-AzAccount` 命令登录到 Azure 订阅，然后在弹出的浏览器中输入 Azure 凭据：
 
 ```powershell
 # Connect to your Azure account
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 如果有多个订阅，请运行以下 cmdlet，选择要用于本快速入门的订阅。 请确保将 `<your subscription name>` 替换为订阅的名称：  
 
 ```powershell
 # List all available subscriptions.
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Select the Azure subscription you want to use to create the resource group and resources.
-Get-AzureRmSubscription -SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
+Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
 $location = "WestUS2"
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
    -Name $resourceGroup `
    -Location $location 
 ```
@@ -111,17 +113,17 @@ New-AzureRmResourceGroup `
 
 以下 Azure PowerShell 代码块使用命令来创建用于作业输出的 Blob 存储。 查看介绍代码的部分。
 
-1. 使用 [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount) cmdlet 创建标准的常规用途存储帐户。  本示例创建一个名为 **myasaquickstartstorage** 的存储帐户，该帐户默认启用本地冗余存储 (LRS) 和 Blob 加密。  
+1. 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) cmdlet 创建标准的常规用途存储帐户。  本示例创建一个名为 **myasaquickstartstorage** 的存储帐户，该帐户默认启用本地冗余存储 (LRS) 和 Blob 加密。  
    
 2. 检索存储帐户上下文 `$storageAccount.Context`，该上下文定义要使用的存储帐户。 使用存储帐户时，请引用上下文而不是重复提供凭据。 
 
-3. 使用 [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) 创建存储容器。
+3. 使用 [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer) 创建存储容器。
 
 4. 复制代码所输出的存储密钥，然后保存该密钥，以便稍后创建流式处理作业的输出。
 
    ```powershell
    $storageAccountName = "myasaquickstartstorage"
-   $storageAccount = New-AzureRmStorageAccount `
+   $storageAccount = New-AzStorageAccount `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName `
      -Location $location `
@@ -131,11 +133,11 @@ New-AzureRmResourceGroup `
    $ctx = $storageAccount.Context
    $containerName = "container1"
    
-   New-AzureStorageContainer `
+   New-AzStorageContainer `
      -Name $containerName `
      -Context $ctx
    
-   $storageAccountKey = (Get-AzureRmStorageAccountKey `
+   $storageAccountKey = (Get-AzStorageAccountKey `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName).Value[0]
    
@@ -145,7 +147,7 @@ New-AzureRmResourceGroup `
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-请使用 [New-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsjob?view=azurermps-5.4.0) cmdlet 创建流分析作业。 此 cmdlet 使用作业名称、资源组名称和作业定义作为参数。 作业名称可以是用于标识作业的任何友好名称， 但只能包含字母数字字符、连字符和下划线，且其长度必须介于 3 到 63 个字符之间。 作业定义是一个 JSON 文件，其中包含创建作业所需的属性。 在本地计算机上创建名为 `JobDefinition.json` 的文件，并向其添加以下 JSON 数据：
+请使用 [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob?view=azurermps-5.4.0) cmdlet 创建流分析作业。 此 cmdlet 使用作业名称、资源组名称和作业定义作为参数。 作业名称可以是用于标识作业的任何友好名称， 但只能包含字母数字字符、连字符和下划线，且其长度必须介于 3 到 63 个字符之间。 作业定义是一个 JSON 文件，其中包含创建作业所需的属性。 在本地计算机上创建名为 `JobDefinition.json` 的文件，并向其添加以下 JSON 数据：
 
 ```json
 {    
@@ -161,12 +163,12 @@ New-AzureRmResourceGroup `
 }
 ```
 
-接下来运行 `New-AzureRmStreamAnalyticsJob` cmdlet。 将 `jobDefinitionFile` 变量的值替换为在其中存储了作业定义 JSON 文件的路径。 
+接下来运行 `New-AzStreamAnalyticsJob` cmdlet。 将 `jobDefinitionFile` 变量的值替换为在其中存储了作业定义 JSON 文件的路径。 
 
 ```powershell
 $jobName = "MyStreamingJob"
 $jobDefinitionFile = "C:\JobDefinition.json"
-New-AzureRmStreamAnalyticsJob `
+New-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -File $jobDefinitionFile `
   -Name $jobName `
@@ -175,7 +177,7 @@ New-AzureRmStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>配置作业输入
 
-使用 [New-AzureRmStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsinput?view=azurermps-5.4.0) cmdlet 添加作业的输入。 此 cmdlet 使用作业名称、作业输入名称、资源组名称和作业输入定义作为参数。 作业输入定义是一个 JSON 文件，其中包含配置作业的输入所需的属性。 在此示例中，需将 Blob 存储创建为输入。 
+使用 [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput?view=azurermps-5.4.0) cmdlet 将输入添加到作业。 此 cmdlet 使用作业名称、作业输入名称、资源组名称和作业输入定义作为参数。 作业输入定义是一个 JSON 文件，其中包含配置作业的输入所需的属性。 在此示例中，需将 Blob 存储创建为输入。 
 
 在本地计算机上创建名为 `JobInputDefinition.json` 的文件，并向其添加以下 JSON 数据。 确保将 `accesspolicykey` 的值替换为在上一部分保存的 IoT 中心设备连接字符串的 `SharedAccessKey` 部分。
 
@@ -208,12 +210,12 @@ New-AzureRmStreamAnalyticsJob `
 }
 ```
 
-接下来运行 `New-AzureRmStreamAnalyticsInput` cmdlet，确保将 `jobDefinitionFile` 变量的值替换为在其中存储了作业输入定义 JSON 文件的路径。 
+接下来运行 `New-AzStreamAnalyticsInput` cmdlet，确保将 `jobDefinitionFile` 变量的值替换为在其中存储了作业输入定义 JSON 文件的路径。 
 
 ```powershell
 $jobInputName = "IoTHubInput"
 $jobInputDefinitionFile = "C:\JobInputDefinition.json"
-New-AzureRmStreamAnalyticsInput `
+New-AzStreamAnalyticsInput `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobInputDefinitionFile `
@@ -222,7 +224,7 @@ New-AzureRmStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>配置作业输出
 
-使用 [New-AzureRmStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsoutput?view=azurermps-5.4.0) cmdlet 添加作业的输出。 此 cmdlet 使用作业名称、作业输出名称、资源组名称和作业输出定义作为参数。 作业输出定义是一个 JSON 文件，其中包含配置作业的输出所需的属性。 此示例使用 Blob 存储作为输出。 
+使用 [New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput?view=azurermps-5.4.0) cmdlet 将输出添加到作业。 此 cmdlet 使用作业名称、作业输出名称、资源组名称和作业输出定义作为参数。 作业输出定义是一个 JSON 文件，其中包含配置作业的输出所需的属性。 此示例使用 Blob 存储作为输出。 
 
 在本地计算机上创建名为 `JobOutputDefinition.json` 的文件，并向其添加以下 JSON 数据。 确保将 `accountKey` 的值替换为存储帐户的访问密钥，该密钥是存储在 $storageAccountKey 值中的值。 
 
@@ -256,12 +258,12 @@ New-AzureRmStreamAnalyticsInput `
 }
 ```
 
-接下来运行 `New-AzureRmStreamAnalyticsOutput` cmdlet。 确保将 `jobOutputDefinitionFile` 变量的值替换为在其中存储了作业输出定义 JSON 文件的路径。 
+接下来运行 `New-AzStreamAnalyticsOutput` cmdlet。 确保将 `jobOutputDefinitionFile` 变量的值替换为在其中存储了作业输出定义 JSON 文件的路径。 
 
 ```powershell
 $jobOutputName = "BlobOutput"
 $jobOutputDefinitionFile = "C:\JobOutputDefinition.json"
-New-AzureRmStreamAnalyticsOutput `
+New-AzStreamAnalyticsOutput `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobOutputDefinitionFile `
@@ -270,7 +272,7 @@ New-AzureRmStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>定义转换查询
 
-使用 [New-AzureRmStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticstransformation?view=azurermps-5.4.0) cmdlet 添加作业的转换。 此 cmdlet 使用作业名称、作业转换名称、资源组名称和作业转换定义作为参数。 在本地计算机上创建名为 `JobTransformationDefinition.json` 的文件，并向其添加以下 JSON 数据。 此 JSON 文件包含一个查询参数，用于定义转换查询：
+使用 [New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation?view=azurermps-5.4.0) cmdlet 将转换添加到作业。 此 cmdlet 使用作业名称、作业转换名称、资源组名称和作业转换定义作为参数。 在本地计算机上创建名为 `JobTransformationDefinition.json` 的文件，并向其添加以下 JSON 数据。 此 JSON 文件包含一个查询参数，用于定义转换查询：
 
 ```json
 {     
@@ -284,12 +286,12 @@ New-AzureRmStreamAnalyticsOutput `
 }
 ```
 
-接下来运行 `New-AzureRmStreamAnalyticsTransformation` cmdlet。 确保将 `jobTransformationDefinitionFile` 变量的值替换为在其中存储了作业转换定义 JSON 文件的路径。 
+接下来运行 `New-AzStreamAnalyticsTransformation` cmdlet。 确保将 `jobTransformationDefinitionFile` 变量的值替换为在其中存储了作业转换定义 JSON 文件的路径。 
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"
 $jobTransformationDefinitionFile = "C:\JobTransformationDefinition.json"
-New-AzureRmStreamAnalyticsTransformation `
+New-AzStreamAnalyticsTransformation `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobTransformationDefinitionFile `
@@ -307,12 +309,12 @@ New-AzureRmStreamAnalyticsTransformation `
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>启动流分析作业并检查输出
 
-请使用 [Start-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0) cmdlet 启动作业。 此 cmdlet 使用作业名称、资源组名称、输出启动模式和启动时间作为参数。 `OutputStartMode` 接受的值为 `JobStartTime`、`CustomTime` 或 `LastOutputEventTime`。 若要详细了解每个值是指什么，请参阅 PowerShell 文档中的[参数](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0)部分。 
+请使用 [Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob?view=azurermps-5.4.0) cmdlet 启动作业。 此 cmdlet 使用作业名称、资源组名称、输出启动模式和启动时间作为参数。 `OutputStartMode` 接受的值为 `JobStartTime`、`CustomTime` 或 `LastOutputEventTime`。 若要详细了解每个值是指什么，请参阅 PowerShell 文档中的[参数](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob?view=azurermps-5.4.0)部分。 
 
 以下 cmdlet 在运行以后会返回 `True` 作为输出（如果作业启动）。 在存储容器中，创建的输出文件夹包含已转换的数据。 
 
 ```powershell
-Start-AzureRmStreamAnalyticsJob `
+Start-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -Name $jobName `
   -OutputStartMode 'JobStartTime'
@@ -323,7 +325,7 @@ Start-AzureRmStreamAnalyticsJob `
 若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以跳过删除它的操作，暂时只需停止该作业。 如果不打算继续使用该作业，请运行以下 cmdlet，删除本快速入门创建的所有资源：
 
 ```powershell
-Remove-AzureRmResourceGroup `
+Remove-AzResourceGroup `
   -Name $resourceGroup 
 ```
 

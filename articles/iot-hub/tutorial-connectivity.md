@@ -6,15 +6,15 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ebd206f6de031ea73d621568e091632e2e8123b9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745803"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674492"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 
@@ -122,7 +122,7 @@ node SimulatedDevice-1.js "{your device connection string}"
 
 如果设备使用某个 IoT 中心设备 SDK，SDK 库代码会生成用于通过中心进行身份验证的 SAS 令牌。 可以通过中心名称、设备名称和设备密钥生成 SAS 令牌。
 
-在某些情况下，例如在云协议网关中或使用自定义身份验证方案的情况下，可能需要自行生成 SAS 令牌。 若要排查 SAS 生成代码的问题，必须能够生成可以在测试过程中使用的已知良好的 SAS 令牌。
+在某些情况下，例如在云协议网关中或使用自定义身份验证方案的情况下，可能需要自行生成 SAS 令牌。 若要排查 SAS 生成代码的问题，必须生成可以在测试过程中使用的已知良好的 SAS 令牌。
 
 > [!NOTE]
 > SimulatedDevice-2.js 示例包括使用 SDK 和不使用 SDK 生成 SAS 令牌的示例。
@@ -133,7 +133,7 @@ node SimulatedDevice-1.js "{your device connection string}"
 az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubName}
 ```
 
-记下已生成的 SAS 令牌的完整文本。 SAS 令牌如下所示：`'SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307'`
+记下已生成的 SAS 令牌的完整文本。 SAS 令牌如下所示：`SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
 在开发计算机的终端窗口中，导航到下载的示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Tutorials\ConnectivityTests\simulated-device** 文件夹。
 
@@ -189,13 +189,9 @@ node SimulatedDevice-3.js "{your device connection string}"
 
 ![发送消息的模拟设备](media/tutorial-connectivity/sim-3-sending.png)
 
-可以使用门户中的“指标”来验证遥测消息是否已到达 IoT 中心：
+可以使用门户中的“指标”来验证遥测消息是否已到达 IoT 中心。 在“资源”下拉列表中选择 IoT 中心，选择“发送的遥测消息数”作为指标，然后将时间范围设置为“过去一小时”。 图表显示模拟设备发送的消息的聚合计数：
 
-![导航到 IoT 中心指标](media/tutorial-connectivity/metrics-portal.png)
-
-在“资源”下拉列表中选择 IoT 中心，选择“发送的遥测消息数”作为指标，然后将时间范围设置为“过去一小时”。 图表显示模拟设备发送的消息的聚合计数：
-
-![显示 IoT 中心指标](media/tutorial-connectivity/metrics-active.png)
+![显示 IoT 中心指标](media/tutorial-connectivity/metrics-portal.png)
 
 启动模拟设备后，指标在数分钟后才会变得可用。
 

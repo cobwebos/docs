@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 92441e55d0a423e1e716d15166791c85fcf5d8ec
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 70159b975fd38c918f0b21a384b76666957f058b
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434217"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593142"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -410,7 +410,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. 选择“导入参数”。 
     3. 在“存储过程参数”部分，指定以下参数值： 
 
-        | 名称 | 类型 | 值 | 
+        | Name | 类型 | 值 | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
@@ -464,10 +464,10 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 
     
 ## <a name="next-steps"></a>后续步骤
-请转到下一篇教程，了解如何在 Azure 上使用 Spark 群集转换数据：
+继续查看以下教程，了解如何仅基于 LastModifiedDate 来复制新的和更改的文件：
 
 > [!div class="nextstepaction"]
->[在云中使用 Spark 群集转换数据](tutorial-transform-data-spark-portal.md)
+>[按 lastmodifieddate 复制新文件](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 
 

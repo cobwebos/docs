@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8d7bd808540ac697bde073201e88f49ace8b527a
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 917243ccaf4ef3759e02bb92cad6f9ef04514e4a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308666"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650506"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -112,11 +112,11 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ### <a name="set-nodejs-runtime"></a>设置 Node.js 运行时
 
-将 Node 运行时设置为 8.11.1。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)。
+将 Node 运行时设置为 10.14.1。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)。
 
 ```azurecli-interactive
 # Bash and Powershell
-az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
+az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=10.14.1
 ```
 
 浏览到新建的 Web 应用。 将 `<app_name>` 替换为唯一应用名称。
@@ -149,13 +149,13 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 
 使用文本编辑器在 Node.js 应用中打开 `index.js` 文件，然后对 `response.end` 调用中的文本稍微进行更改：
 
-```nodejs
+```javascript
 response.end("Hello Azure!");
 ```
 
 在本地终端窗口中，导航到应用程序的根目录，为更新的项目创建新的 ZIP 文件。
 
-```
+```azurecli-interactive
 # Bash
 zip -r myUpdatedAppFiles.zip .
 

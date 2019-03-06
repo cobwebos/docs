@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: b5d7be25ba18e256352d8793689bcb63a013e20b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 14e8d54b7b9cf579bb5dcbce595e2591c158b841
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452589"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585418"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 数据
 
@@ -146,6 +146,9 @@ ms.locfileid: "56452589"
    * `tenant-id` 来自你的订阅。
 
    * `storage-account-name` 是 Azure Data Lake Storage Gen2 存储帐户的名称。
+
+    > [!NOTE]
+    > 在生产设置中，请考虑将身份验证密钥存储在 Azure Databricks 中。 然后，将查找密钥（而不是身份验证密钥）添加到代码块。 完成了本快速入门之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文以查看此方法的示例。
 
 19. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: e14da7dff62d85c730034b620a6168b3d9b3dde7
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: d08fb915870355b49fafa91752cdd4264cbe6ad8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752684"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887533"
 ---
 # <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
 
@@ -76,11 +76,18 @@ Azure 流分析在云和智能边缘上采用同一种查询语言，让开发�
 
 流分析已作为云服务进行成本优化。 没有前期费用，只需根据[所使用的流单元](stream-analytics-streaming-unit-consumption.md)和已处理的数据量付费。 不需承诺使用量，也不需群集预配。 可以根据业务需求纵向缩放流作业。 
 
-## <a name="reliability"></a>可靠性 
+## <a name="mission-critical-ready"></a>关键任务就绪
+Azure 流分析可在全球多个地区使用，旨在通过支持可靠性、安全性和符合性要求来运行关键任务工作负载。
+### <a name="reliability"></a>可靠性
+Azure 流分析保证刚好进行一次事件处理，以及至少进行一次事件传送，因此事件不会丢失。 使用[事件传递保证](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)中所述的选定输出保证刚好处理一次。 Azure 流分析有内置的恢复功能，可以在事件传送失败时发挥作用。 它还提供内置的检查点来维护作业的状态，并提供可重复的结果。
 
-流分析保证刚好进行一次事件处理，以及至少进行一次事件传送，因此事件不会丢失。 它有内置的恢复功能，可以在事件传送失败时发挥作用。 它还提供内置的检查点来维护作业的状态，并提供可重复的结果。
+作为一项托管服务，流分析可保证事件处理在分钟级别具备 99.9% 的可用性。 有关详细信息，请参阅[流分析 SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)。 
 
-作为一项托管服务，流分析可保证事件处理具备 99.9% 的可用性。 有关详细信息，请参阅[流分析 SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)。 
+### <a name="security"></a>安全
+在安全性方面，Azure 流分析会加密所有传入和传出通信，并支持 TLS 1.2。 内置检查点也是加密的。 流分析不存储传入数据，因为所有处理都在内存中完成。 
+
+### <a name="compliance"></a>合规性
+Azure 流分析遵循多个符合性认证，如 [Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)中所述。 
 
 ## <a name="performance"></a>性能
 

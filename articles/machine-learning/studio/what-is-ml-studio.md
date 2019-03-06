@@ -2,7 +2,6 @@
 title: 什么是
 titleSuffix: Azure Machine Learning Studio
 description: Azure 机器学习工作室是一个拖放式工具，可以通过现成可用的算法库和模块快速构建模型。
-keywords: azure 机器学习,azure ml, 机器学习工作室
 services: machine-learning
 documentationcenter: ''
 author: garyericson
@@ -16,19 +15,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 4f69de744be3a9926e1c5d3e674966e24c3020dc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 44f2c24f1fe53b6fadabf23f03a6feda75c87883
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455647"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738277"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
 
 机器学习工作室中融合了数据科学、预测分析、云资源和数据。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>机器学习工作室交互式工作区
 要开发预测分析模型，通常需要使用一个或多个源中的数据，通过各种数据操作和统计函数来转换及分析数据，并生成一组结果。 开发此类模型是一个迭代过程。 在修改各种函数及其参数时，结果会不断趋于一致，直到已训练的有效模型令人满意。
@@ -39,14 +37,16 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 ![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、编写评分的数据、编写模型。](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
+## <a name="download-the-machine-learning-studio-overview-diagram"></a>下载机器学习工作室概述示意图
+下载 **Microsoft Azure 机器学习工作室功能概述** 示意图，并获取机器学习工作室功能的高级视图。 若要随时随地查看，可以打印卡片大小（11 x 17 英寸）的示意图。
+
+**此处下载关系图：[Microsoft Azure 机器学习工作室功能概述](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+![Microsoft Azure Machine Learning Studio Capabilities Overview](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
+
 ## <a name="get-started-with-machine-learning-studio"></a>机器学习工作室入门
 首次进入[机器学习工作室](https://studio.azureml.net)时，会看到“主页”。 可在此处查看文档、视频、网络研讨会，以及查找其他重要资源。
 
 单击左上方的菜单 ![菜单](./media/what-is-ml-studio/menu.png) 将看到多个选项。
-
-### <a name="cortana-intelligence"></a>Cortana Intelligence
-单击“Cortana Intelligence”，会转到 [Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) 的主页。 Cortana Intelligence Suite 是一个完全托管的大数据和高级分析套件，用于将数据转换为智能操作。 有关完整文档（包括客户案例分享），请参阅套件主页。
-
 ### <a name="azure-machine-learning-studio"></a>Azure 机器学习工作室
 此处有两个选项：**主页**（开始的页面）和**工作室**。
 
@@ -78,7 +78,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 有关创建简单试验的示例，请参阅 [Create a simple experiment in Azure Machine Learning Studio](create-experiment.md)（在 Azure 机器学习工作室中创建简单试验）。
 
-有关创建预测分析解决方案的更完整演练，请参阅 [Develop a predictive solution with Azure Machine Learning](tutorial-part1-credit-risk.md)（使用 Azure 机器学习开发预测解决方案）。
+有关创建预测分析解决方案的更完整演练，请参阅 [Develop a predictive solution with Azure Machine Learning Studio](tutorial-part1-credit-risk.md)（使用 Azure 机器学习工作室开发预测解决方案）。
 
 ### <a name="datasets"></a>数据集
 数据集是指已上传到机器学习工作室，可在建模过程中使用的数据。 机器学习工作室提供了许多示例数据集供试验，可以根据需要上传更多的数据集。 下面是随附数据集的一些例子：
@@ -103,59 +103,30 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来调整模型。
 
-在浏览可用的机器学习算法大型库时如需帮助，请参阅 [How to choose algorithms for Microsoft Azure Machine Learning](algorithm-choice.md)（如何选择 Microsoft Azure 机器学习的算法）。
+在浏览可用的机器学习算法大型库时如需帮助，请参阅 [How to choose algorithms for Microsoft Azure Machine Learning Studio](algorithm-choice.md)（如何选择 Microsoft Azure 机器学习工作室的算法）。
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>部署预测分析 Web 服务
 准备好预测分析模型后，可以从机器学习工作室将它部署为 Web 服务。 有关此过程的详细信息，请参阅 [Deploy an Azure Machine Learning web service](publish-a-machine-learning-web-service.md)（部署 Azure 机器学习 Web 服务）。
 
 
-## <a name="key-machine-learning-terms-and-concepts"></a>机器学习的重要术语和概念
-机器学习的术语有点难懂。 下面提供了重要术语的定义。 可以使用下面的“评论”部分告诉我们还要阐释哪些术语。
+## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>机器学习工作室与 Azure 机器学习服务有什么区别？
 
-### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>数据探索、描述性分析和预测分析
+[Azure 机器学习服务](../service/overview-what-is-azure-ml.md)提供了 SDK 和服务，以用于快速准备数据并训练和部署机器学习模型。 可通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 
 
-**数据探索** 是收集大量的、通常是非结构化的数据集的相关信息的过程，目的是找到要集中分析的特征。
+如果想要快速轻松地试验机器学习模型，请使用机器学习工作室，并且内置的机器学习算法足以供你的解决方案使用。
 
-**数据挖掘** 指自动化的数据探索。
+如果你在 Python 环境中工作并且希望更好地控制机器学习算法，或者你想使用开放源代码机器学习库，那么机器学习服务将是你的最佳选择。
 
-**描述性分析** 是分析数据集以汇总事件的过程。 大多数商业分析（例如销售报表、Web 指标和社交网络分析）都具有描述性。
+> [!NOTE]
+> Azure 机器学习服务无法部署或管理在 Azure 机器学习工作室中创建的模型。
 
-**预测分析** 是从历史数据或当前数据构建模型，以预测将来结果的过程。
+## <a name="free-trial"></a>免费试用
 
-### <a name="supervised-and-unsupervised-learning"></a>监督式和非监督式学习
- **监督式学习** 算法使用带有标签的数据（即，包含所需示例答案的数据）进行训练。 例如，识别信用卡盗用的模型，是通过包含已知诈骗收费和有效收费标记数据点的数据集训练的。 大多数机器学习都是监督式的。
+[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
- **非监督式学习** 用于不带标签的数据，目标是查找数据中的关系。 例如，可以查找具有类似消费习惯的客户群。
-
-### <a name="model-training-and-evaluation"></a>模型训练和评估
-机器学习模型将尝试回答的问题或要预测的结果抽象化。 模型是通过现有数据训练和评估的。
-
-#### <a name="training-data"></a>训练数据
-通过数据训练模型时，将使用已知数据集并基于数据特征对模型进行调整，以求获得最准确的结果。 在 Azure 机器学习中，模型是由处理训练数据的算法模块和功能模块（例如评分模块）构建的。
-
-在监督式学习中，如果要训练诈骗检测模型，可以使用一组标记为诈骗或有效的交易。 随机拆分数据集，并使用一部分数据训练模型，使用另一部分测试或评估模型。
-
-#### <a name="evaluation-data"></a>评估数据
-训练模型后，使用剩余测试数据来评估模型。 使用已经知道结果的数据，判断模型的预测是否准确。
-
-## <a name="other-common-machine-learning-terms"></a>其他常见的机器学习术语
-* **算法**：通过数据处理、数学计算或自动推理来解决问题的一组独立规则。
-* **异常检测**：标记异常事件或值，帮助发现问题的模型。 例如，信用卡诈骗检测可以查找异常的购买活动。
-* **分类数据**：按类别组织的、可分组的数据。 例如，汽车的分类数据集可以指定年份、制造商、车型和价格。
-* **分类**：根据类别分组已知的数据集，将数据点组织成不同类别的模型。
-* **特征工程**：提取或选择与数据集相关的特征，以便增强数据集并改善结果的过程。 例如，机票价格数据可通过星期几和假日来增强。 请参阅 [Feature selection and engineering in Azure Machine Learning](../team-data-science-process/create-features.md)（Azure 机器学习中的特征选择和工程）。
-* **模块**：机器学习工作室模型中的功能组件，例如，用于输入和编辑小型数据集的“输入数据”模块。 算法也是机器学习工作室中的一种模块。
-* **模型**：监督式学习模型是机器学习试验的产物，其中包含训练数据、算法模块，以及功能模块（例如“评分模型”模块）。
-* **数值数据**：表示度量值（连续数据）或计数（离散数据）的数据。 也名为 *量化数据*。
-* **分区**：将数据拆分成多个样本的方法。 有关详细信息，请参阅 [Partition and Sample](https://msdn.microsoft.com/library/azure/dn905960.aspx) （分区和采样）。
-* **预测**：预测是来自机器学习模型的一个或多个预测值。 有时称为“预测评分”。 但是，预测评分不是模型的最终输出。 评分之后还要评估模型。
-* **回归**：根据独立变量预测值的模型，例如根据汽车的年份和制造商预测汽车价格。
-* **评分**：使用机器学习工作室中的[“评分模型”模块](https://msdn.microsoft.com/library/azure/dn905995.aspx)，从训练分类或回归模型生成的预测值。 分类模型也返回预测值的机率评分。 从模型生成分数之后，即可使用 [“评估模型”模块](https://msdn.microsoft.com/library/azure/dn905915.aspx)来评估模型的准确性。
-* **样本**：用于代表整体的一部分数据集。 可以随机采样，或根据数据集的具体特征采样。
 
 ## <a name="next-steps"></a>后续步骤
 可以使用[分步快速入门](create-experiment.md)和[基于样本的构建](sample-experiments.md)了解预测分析和机器学习的基础知识。
-
 
 <!-- Module References -->
 [convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/

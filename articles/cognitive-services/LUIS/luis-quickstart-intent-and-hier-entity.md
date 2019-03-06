@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: dea623684454d4b14a370251df10599eb03bbb34
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c17a74c81d9c9d2ac3f585ab17f0b7d2acc628f6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856914"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873910"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>教程：从陈述中提取上下文相关的数据
 
@@ -74,7 +74,7 @@ ms.locfileid: "55856914"
     |将 Steve Standish 从圣地亚哥调至贝尔维尤 |
     |将 Tanner Thompson 从堪萨斯城派往芝加哥|
 
-    [ ![LUIS 的屏幕截图，在 MoveEmployee 意向中有新陈述](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+    [![LUIS 的屏幕截图，在 MoveEmployee 意向中有新陈述](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
 
 ## <a name="create-a-location-entity"></a>创建位置实体
 LUIS 需要通过在陈述中标记原始位置和目标位置来了解什么是位置。 如需在令牌（原始）视图中查看陈述，请在标记为“实体视图”的陈述上方的栏中选择切换。 切换开关以后，此控件会被标记为“令牌视图”。
@@ -91,7 +91,7 @@ move John W. Smith leaving Seattle headed to Dallas
 
 1. 在陈述 `move John W. Smith leaving Seattle headed to Dallas` 中，选择单词 `Seattle`。 此时会出现下拉菜单，其顶部有一个文本框。 在文本框中输入实体名称 `Location`，然后在下拉菜单中选择“创建新实体”。 
 
-    [![在意向页上创建新实体的屏幕截图](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png "Screenshot of creating new entity on intent page")](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png#lightbox)
+    [![在意向页上创建新实体的屏幕截图](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png "Screenshot of creating new entity on intent page")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png#lightbox)
 
 1. 在弹出窗口中，选择包含 `Origin` 和 `Destination` 子实体的“分层”实体类型。 选择“完成”。
 
@@ -99,7 +99,7 @@ move John W. Smith leaving Seattle headed to Dallas
 
 1. `Seattle` 的标签已标记为 `Location`，因为 LUIS 不知道名词是出发地还是目的地，或者两者都不是。 依次选择 `Seattle`、“位置”，遵循菜单操作，然后选择 `Origin`。
 
-    [![实体标签弹出对话框的屏幕截图，该对话框用于更改位置实体子级](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png "Screenshot of entity labeling pop-up dialog to change locations entity child")](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png#lightbox)
+    [![实体标签弹出对话框的屏幕截图，该对话框用于更改位置实体子级](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png "Screenshot of entity labeling pop-up dialog to change locations entity child")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png#lightbox)
 
 1. 在其他所有陈述中标记其他位置。 所有位置都标记以后，陈述开始显示出某种模式。 
 

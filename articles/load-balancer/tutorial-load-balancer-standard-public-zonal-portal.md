@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 76e55c643378e689f12d485100a81ccefa4196f4
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5f3b9b48fc5f15738c3de9928ca0bb220a66db12
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229806"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985982"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>教程：通过 Azure 门户使用标准负载均衡器对可用性区域中的 VM 进行负载均衡
 
@@ -48,18 +48,22 @@ ms.locfileid: "54229806"
 标准负载均衡器仅支持标准公共 IP 地址。 在创建负载均衡器过程中创建新的公共 IP 时，该负载均衡器会自动配置为标准 SKU 版本， 并自动实现区域冗余。
 
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”。
-2. 在“创建负载均衡器”页中，为负载均衡器输入以下值：
-    - **myLoadBalancer**：负载均衡器的名称。
-    - **公共**：负载均衡器的类型。
-      - **myPublicIPZonal**：创建的新公共 IP 地址。 选择“选择公共 IP 地址”。 然后选择“新建”。 对于“名称”，请输入 **myPublicIP**。 SKU 默认为“标准”。 对于“可用性区域”，请选择“区域 1”。
-    - **myResourceGroupZLB**：所创建的新资源组的名称。
-    - **westeurope**：位置。
-3. 选择“创建”以创建负载均衡器。
-   
-    ![使用 Azure 门户创建区域标准负载均衡器实例](./media/tutorial-load-balancer-standard-zonal-portal/create-load-balancer-zonal-frontend.png)
+2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”：
 
+    | 设置                 | 值                                              |
+    | ---                     | ---                                                |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupZLB。|
+    | Name                   | *myLoadBalancer*                                   |
+    | 区域         | 选择“西欧”。                                        |
+    | Type          | 选择“公共”。                                        |
+    | SKU           | 选择“标准”。                          |
+    | 公共 IP 地址 | 选择“新建”。 |
+    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP。   |
+    |可用性区域| 选择“1”。    |
+3. 在“查看 + 创建”选项卡中，单击“创建”。   
 
-## <a name="create-backend-servers"></a>创建后端服务器
+ ## <a name="create-backend-servers"></a>创建后端服务器
 
 在本部分，请创建虚拟网络。 另请在该地区的同一区域（即区域 1）中创建两个要添加到负载均衡器后端池的虚拟机， 然后在虚拟机上安装 IIS，以便对区域冗余的负载均衡器进行测试。 如果一个 VM 发生故障，则同一区域中 VM 的运行状况探测将会失败， 而流量可继续由同一区域中的其他 VM 处理。
 

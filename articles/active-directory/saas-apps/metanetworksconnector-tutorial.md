@@ -1,135 +1,133 @@
 ---
-title: 教程：Azure Active Directory 与 Meta Networks 连接器集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Meta Networks 连接器之间配置单一登录。
+title: 教程：Azure Active Directory 与 Meta Networks Connector 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Meta Networks Connector 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 4ae5f30d-113b-4261-b474-47ffbac08bf7
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/26/2018
+ms.topic: tutorial
+ms.date: 02/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4d702a33742da5501be208154cbdd593fa0524
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a510fcce6b004e8384ce888ad421802bc144e73f
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199702"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985965"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>教程：Azure Active Directory 与 Meta Networks 连接器集成
+# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>教程：Azure Active Directory 与 Meta Networks Connector 集成
 
-本教程介绍如何将 Meta Networks 连接器与 Azure Active Directory (Azure AD) 集成。
+本教程介绍如何将 Meta Networks Connector 与 Azure Active Directory (Azure AD) 集成。
+将 Meta Networks Connector 与 Azure AD 集成可提供以下优势：
 
-将 Meta Networks 连接器与 Azure AD 集成可提供以下优势：
+* 可在 Azure AD 中控制谁有权限访问 Meta Networks Connector。
+* 可让用户使用其 Azure AD 帐户自动登录 Meta Networks Connector（单一登录）。
+* 可在中心位置（即 Azure 门户）管理帐户。
 
-- 可以在 Azure AD 中控制谁有权限访问 Meta Networks 连接器。
-- 你可以让用户使用其 Azure AD 帐户自动登录到 Meta Networks 连接器（单一登录）。
-- 可在中心位置（即 Azure 门户）管理帐户。
-
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Meta Networks 连接器的集成，需要具备以下条件：
+若要配置 Azure AD 与 Meta Networks Connector 的集成，需要具备以下条件：
 
-- Azure AD 订阅
-- 启用了 Meta Networks 连接器单一登录的订阅
-
-> [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
-
-测试本教程中的步骤应遵循以下建议：
-
-- 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 已启用 Meta Networks Connector 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 空库中添加 Meta Networks 连接器
-1. 配置和测试 Azure AD 单一登录
+本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-## <a name="adding-meta-networks-connector-from-the-gallery"></a>空库中添加 Meta Networks 连接器
-若要配置 Meta Networks 连接器与 Azure AD 的集成，需要从库中将 Meta Networks 连接器添加到托管 SaaS 应用列表。
+* Meta Networks Connector 支持 SP 和 IDP 发起的 SSO
+ 
+* Meta Networks Connector 支持即时用户预配
 
-**若要从库中添加 Meta Networks 连接器，请执行以下步骤：**
+## <a name="adding-meta-networks-connector-from-the-gallery"></a>空库中添加 Meta Networks Connector
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
-    
-    ![“Azure Active Directory”按钮][1]
-    
-1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
-    
-    ![“企业应用程序”边栏选项卡][2]
-    
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
-    
-    ![“新增应用程序”按钮][3]
-    
-1. 在搜索框中，键入“Meta Networks 连接器”，从结果面板中选择“Meta Networks 连接器”，然后单击“添加”按钮添加该应用程序。
-    
-    ![结果列表中的 Meta Networks 连接器](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_addfromgallery.png)
+若要配置 Meta Networks Connector 与 Azure AD 的集成，需要从库中将 Meta Networks Connector 添加到托管 SaaS 应用列表。
+
+若要从库中添加 Meta Networks Connector，请执行以下步骤：
+
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
+
+2. 转到“企业应用”，并选择“所有应用”选项。
+
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+
+    ![“新增应用程序”按钮](common/add-new-app.png)
+
+4. 在搜索框中，键入“Meta Networks Connector”，在结果面板中选择“Meta Networks Connector”，然后单击“添加”按钮以添加该应用程序。
+
+     ![结果列表中的 Meta Networks Connector](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Meta Networks 连接器的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Meta Networks Connector 的 Azure AD 单一登录。
+若要运行单一登录，需要在 Azure AD 用户与 Meta Networks Connector 中的相关用户之间建立链接关系。
 
-若要使用单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Meta Networks 连接器用户。 换句话说，需要在 Azure AD 用户与 Meta Networks 连接器中的相关用户之间建立链接关系。
-
-若要配置和测试 Meta Networks 连接器的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 Meta Networks Connector 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 Meta Networks 连接器测试用户](#create-a-meta-networks-connector-test-user)** - 在 Meta Networks 连接器中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+2. **[配置 Meta Networks Connector 单一登录](#configure-meta-networks-connector-single-sign-on)** - 在应用程序端配置单一登录。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 Meta Networks Connector 测试用户](#create-meta-networks-connector-test-user)** - 在 Meta Networks Connector 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Meta Networks 连接器应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-**若要配置 Meta Networks 连接器的 Azure AD 单一登录，请执行以下步骤：**
+若要配置 Meta Networks Connector 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 Azure 门户中的“Meta Networks 连接器”应用程序集成页上，单击“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 Meta Networks Connector 应用程序集成页上，选择“单一登录”。
 
-    ![配置单一登录链接][4]
+    ![配置单一登录链接](common/select-sso.png)
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
-    ![“单一登录”对话框](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_samlbase.png)
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
-1. 在“Meta Networks 连接器域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+    ![单一登录选择模式](common/select-saml-option.png)
 
-    ![Meta Networks 连接器域和 URL 单一登录信息](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_url.png)
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    1. 在“标识符”文本框中，使用以下模式键入 URL：`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
-    
-    1. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
-    
-1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-    ![Meta Networks 连接器域和 URL 单一登录信息](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_url1.png)
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    1. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
-    
-    1. 在“中继状态”文本框中，使用以下格式键入 URL：`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
-    
+    ![Meta Networks Connector 域和 URL 单一登录信息](common/idp-intiated.png)
+
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
+
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
+
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+
+    ![Meta Networks Connector 域和 URL 单一登录信息](common/both-advanced-urls.png)
+
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`。
+
+    b. 在“中继状态”文本框中，使用以下格式键入 URL：`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
+
     > [!NOTE]
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的标识符、回复 URL 和登录 URL 来更新这些值。
+
+6. Meta Networks Connector 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****  **** 。
+
+    ![图像](common/edit-attribute.png)
     
-1. Meta Networks 连接器应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+7. 除了上述属性，Meta Networks Connector 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
-    ![配置单一登录](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_attribute.png)
-    
-1. 在“单一登录”对话框的“用户属性”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
-    
-    | 属性名称 | 属性值 | 命名空间|
+    | Name | 源属性 | 命名空间|
     | ---------------| --------------- | -------- |
     | 名 | user.givenname | |
     | 姓 | user.surname | |
@@ -137,165 +135,150 @@ ms.locfileid: "56199702"
     | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | phone | user.telephonenumber | |
 
-    1. 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-        ![配置单一登录](./media/metanetworksconnector-tutorial/tutorial_attribute_04.png)
-    
-        ![配置单一登录](./media/metanetworksconnector-tutorial/tutorial_attribute_05.png)   
-    
-    1. 在“名称”文本框中，键入为该行显示的属性名称。
-    
-    1. 在“值”列表中，选择为该行显示的属性值。
-    
-    1. 在“命名空间”文本框中，键入为该行显示的命名空间值。
-    
-    1. 单击“确定”
-    
-1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
-    
-    ![证书下载链接](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_certificate.png)
-    
-1. 在“Meta Networks 连接器配置”部分中，单击“配置 Meta Networks 连接器”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
-    
-    ![配置单一登录](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_configure.png)
-    
-1. 单击“保存”按钮。
-    
-    ![配置单一登录“保存”按钮](./media/metanetworksconnector-tutorial/tutorial_general_400.png)
-    
-1. 在浏览器中打开新选项卡并登录到 Meta Networks 连接器管理员帐户。
+    ![图像](common/new-save-attribute.png)
+
+    ![图像](common/new-attribute-details.png)
+
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
+
+    c. 将“命名空间”留空。
+
+    d. 选择“源”作为“属性”。
+
+    e. 在“源属性”列表中，键入为该行显示的属性值。
+
+    f. 单击“确定”
+
+    g. 单击“ **保存**”。
+
+8. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+
+    ![证书下载链接](common/certificatebase64.png)
+
+9. 在“设置 Meta Networks Connector”部分中，根据要求复制相应的 URL。
+
+    ![复制配置 URL](common/copy-configuration-urls.png)
+
+    a. 登录 URL
+
+    b. Azure AD 标识符
+
+    c. 注销 URL
+
+### <a name="configure-meta-networks-connector-single-sign-on"></a>配置 Meta Networks Connector 单一登录
+
+1. 在浏览器中打开新选项卡并登录到 Meta Networks Connector 管理员帐户。
     
     > [!NOTE]
-    > Meta Networks 连接器是一个安全的系统。 因此在访问对方门户之前，需首先获取对方列入白名单的公共 IP 地址。 访问[此处](https://whatismyipaddress.com/)给出的链接可获取公共 IP 地址。 将 IP 地址发送到 [Meta Networks 连接器客户端支持团队](mailto:support@metanetworks.com)可将 IP 地址列入白名单。
+    > Meta Networks Connector 是一个安全的系统。 因此在访问对方门户之前，需首先获取对方列入白名单的公共 IP 地址。 访问[此处](https://whatismyipaddress.com/)给出的链接可获取公共 IP 地址。 将 IP 地址发送到 [ 客户端支持团队](mailto:support@metanetworks.com)可将 IP 地址列入白名单。
     
-1. 转到“管理员”，然后选择“设置”。
+2. 转到“管理员”，然后选择“设置”。
     
     ![配置单一登录](./media/metanetworksconnector-tutorial/configure3.png)
     
-1. 请确保“记录 Internet 流量”和“强制开启 VPN MFA”设置为关闭。
+3. 请确保“记录 Internet 流量”和“强制开启 VPN MFA”设置为关闭。
     
     ![配置单一登录](./media/metanetworksconnector-tutorial/configure1.png)
     
-1. 转到“管理员”，然后选择“SAML”。
+4. 转到“管理员”，然后选择“SAML”。
     
     ![配置单一登录](./media/metanetworksconnector-tutorial/configure4.png)
     
-1. 在“详细信息”页面上执行以下步骤：
+5. 在“详细信息”页面上执行以下步骤：
     
     ![配置单一登录](./media/metanetworksconnector-tutorial/configure2.png)
     
-    1. 复制“SSO URL”值并将其粘贴到“Meta Networks 连接器域和 URL”部分中的“登录 URL”文本框中。
+    a. 复制“SSO URL”值并将其粘贴到“Meta Networks Connector 域和 URL”部分中的“登录 URL”文本框中。
     
-    1. 复制“收件人 URL”值并将其粘贴到“Meta Networks 连接器域和 URL”部分中的“回复 URL”文本框中。
+    b. 复制“收件人 URL”值并将其粘贴到“Meta Networks Connector 域和 URL”部分中的“回复 URL”文本框中。
     
-    1. 复制“受众 URI (SP 实体 ID)”值并将其粘贴到“Meta Networks 连接器域和 URL”部分中的“标识符(实体 ID)”文本框中。
+    c. 复制“受众 URI (SP 实体 ID)”值并将其粘贴到“Meta Networks Connector 域和 URL”部分中的“标识符(实体 ID)”文本框中。
     
-    1. 启用 SAML
+    d. 启用 SAML
     
-1. 在“常规”选项卡中，执行以下步骤：
+6. 在“常规”选项卡中，执行以下步骤：
 
     ![配置单一登录](./media/metanetworksconnector-tutorial/configure5.png)
 
-    1. 在“标识提供者登录 URL”中，粘贴从 Azure 门户中复制的“SAML 单一登录服务 URL”值。
+    a. 在“标识提供者单一登录 URL”中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    1. 在“标识提供者颁发者”中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+    b. 在“标识提供者颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
-    1. 在记事本中打开从 Azure 门户下载的证书，将其粘贴到“X.509 证书”文本框中。
+    c. 在记事本中打开从 Azure 门户下载的证书，将其粘贴到“X.509 证书”文本框中。
 
-    1. 启用“实时预配”。
+    d. 启用“实时预配”。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
-    
-![创建 Azure AD 测试用户][100]
-    
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
-    
-    ![“Azure Active Directory”按钮](./media/metanetworksconnector-tutorial/create_aaduser_01.png)
-    
-1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
-    
-    ![“用户和组”以及“所有用户”链接](./media/metanetworksconnector-tutorial/create_aaduser_02.png)
-    
-1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
-    
-    ![“添加”按钮](./media/metanetworksconnector-tutorial/create_aaduser_03.png)
-    
-1. 在“用户”对话框中，执行以下步骤：
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-    ![“用户”对话框](./media/metanetworksconnector-tutorial/create_aaduser_04.png)
-    
-    1. 在“姓名”框中，键入“BrittaSimon”。
+    ![“用户和组”以及“所有用户”链接](common/users.png)
 
-    1. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
-    
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-    
-    1. 单击“创建”。
-    
-### <a name="create-a-meta-networks-connector-test-user"></a>创建 Meta Networks 连接器测试用户
+2. 选择屏幕顶部的“新建用户”。
 
-本部分的目的是在 Meta Networks 连接器中创建名为 Britta Simon 的用户。 Meta Networks 连接器支持实时预配，该设置默认开启。 此部分不存在任何操作项。 尝试访问 Meta Networks 连接器期间，如果尚不存在用户，则将创建一个新用户。
+    ![“新建用户”按钮](common/new-user.png)
 
->[!Note]
->如果需要手动创建用户，请联系  [Meta Networks 连接器客户端支持团队](mailto:support@metanetworks.com)。
+3. 在“用户属性”中，按照以下步骤操作。
+
+    ![“用户”对话框](common/user-properties.png)
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    例如： BrittaSimon@contoso.com
+
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Meta Networks 连接器的权限，允许其使用 Azure 单一登录。
+在本部分中，通过授予 Britta Simon 访问 Meta Networks Connector 的权限，允许其使用 Azure 单一登录。
 
-![分配用户角色][200]
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Meta Networks Connector”。
 
-**若要将 Britta Simon 分配到 Meta Networks 连接器，请执行以下步骤：**
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
-    
-    ![分配用户][201]
-    
-1. 在应用程序列表中，选择“Meta Networks 连接器”。
-    
-    ![应用程序列表中的 Meta Networks 连接器链接](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_app.png)  
-    
-1. 在左侧菜单中，单击“用户和组”。
-    
-    ![“用户和组”链接][202]
-    
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
-    
-    ![“添加分配”窗格][203]
-    
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
-    
-1. 在“用户和组”对话框中单击“选择”按钮。
-    
-1. 在“添加分配”对话框中单击“分配”按钮。
-    
-### <a name="test-single-sign-on"></a>测试单一登录
+2. 在应用程序列表中，选择“Meta Networks Connector”。
+
+    ![应用程序列表中的 Meta Networks Connector 链接](common/all-applications.png)
+
+3. 在左侧菜单中，选择“用户和组”。
+
+    ![“用户和组”链接](common/users-groups-blade.png)
+
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+
+    ![“添加分配”窗格](common/add-assign-user.png)
+
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+
+7. 在“添加分配”对话框中，单击“分配”按钮。
+
+### <a name="create-meta-networks-connector-test-user"></a>创建 Meta Networks Connector 测试用户
+
+在本部分，我们会在 Meta Networks Connector 中创建一个名为 Britta Simon 的用户。 Meta Networks Connector 支持默认启用的即时预配。 此部分不存在任何操作项。 尝试访问 Meta Networks Connector 时，如果该应用中尚不存在用户，则系统会创建一个新用户。
+
+>[!Note]
+>如果需要手动创建用户，请联系 [Meta Networks Connector 客户端支持团队](mailto:support@metanetworks.com)。
+
+### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Meta Networks 连接器”磁贴时，应会自动登录到 Meta Networks 连接器应用程序。
-有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。
+单击访问面板中的 Meta Networks Connector 磁贴时，应会自动登录到为其设置了 SSO 的 Meta Networks Connector。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/metanetworksconnector-tutorial/tutorial_general_01.png
-[2]: ./media/metanetworksconnector-tutorial/tutorial_general_02.png
-[3]: ./media/metanetworksconnector-tutorial/tutorial_general_03.png
-[4]: ./media/metanetworksconnector-tutorial/tutorial_general_04.png
-
-[100]: ./media/metanetworksconnector-tutorial/tutorial_general_100.png
-
-[200]: ./media/metanetworksconnector-tutorial/tutorial_general_200.png
-[201]: ./media/metanetworksconnector-tutorial/tutorial_general_201.png
-[202]: ./media/metanetworksconnector-tutorial/tutorial_general_202.png
-[203]: ./media/metanetworksconnector-tutorial/tutorial_general_203.png
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

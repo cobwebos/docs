@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2B 协作代码和 PowerShell 示例 | Microsoft 文档
+title: B2B 协作代码和 PowerShell 示例 - Azure Active Directory | Microsoft Docs
 description: 有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88b4300db6ef70b0a727b18e50fcbc269dd7ed15
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 01e91797fea785d5e5e065bc77c102254a32ca5f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172886"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670275"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B 协作代码和 PowerShell 示例
 

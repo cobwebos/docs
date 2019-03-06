@@ -7,18 +7,20 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1354faad4abf9a8a4b56414628d39d9a6f90d721
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426161"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958966"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>教程：监视 Azure 防火墙日志和指标
 
 可以使用防火墙日志来监视 Azure 防火墙。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。 使用指标，可以在门户中查看性能计数器。 
 
-可通过门户访问其中部分日志。 可将日志发送到 [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)、存储和事件中心，并使用 Log Analytics 或其他工具（例如 Excel 和 Power BI）对其进行分析。
+可通过门户访问其中部分日志。 可将日志发送到 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)、存储和事件中心，并使用 Azure Monitor 日志或其他工具（例如 Excel 和 Power BI）对其进行分析。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 本教程介绍如何执行下列操作：
 
@@ -48,7 +50,7 @@ ms.locfileid: "52426161"
 
 3. 若要开始收集数据，请单击“启用诊断”。
 4. “诊断设置”页提供用于诊断日志的设置。 
-5. 在此示例中，Log Analytics 存储日志，因此请键入“防火墙日志分析”作为名称。
+5. 在此示例中，Azure Monitor 日志存储日志，因此请键入“防火墙日志分析”作为名称。
 6. 单击“发送到 Log Analytics”以配置工作区。 也可使用事件中心和存储帐户保存诊断日志。
 7. 在“Log Analytics”下面，单击“配置”。
 8. 在“Log Analytics 工作区”页中，单击“创建新工作区”。
@@ -89,12 +91,12 @@ ms.locfileid: "52426161"
 
 可使用以下任一方法查看和分析活动日志数据：
 
-* Azure 工具：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 活动操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
-* Power BI：如果尚无 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可免费试用。 使用[适用于 Power BI 的 Azure 活动日志内容包](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)，可以借助预配置的仪表板（可直接使用或进行自定义）分析数据。
+* **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 活动操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
+* **Power BI**：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 使用[适用于 Power BI 的 Azure 活动日志内容包](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)，可以借助预配置的仪表板（可直接使用或进行自定义）分析数据。
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>查看和分析网络与应用程序规则日志
 
-Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) 收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
+[Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
 
 如需 Azure 防火墙 Log Analytics 示例查询，请参阅 [Azure 防火墙 Log Analytics 示例](log-analytics-samples.md)。
 
@@ -108,10 +110,10 @@ Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) �
 
 ## <a name="next-steps"></a>后续步骤
 
-将防火墙配置为收集日志后，可以浏览 Log Analytics 以查看数据。
+将防火墙配置为收集日志后，可以浏览 Azure Monitor 日志以查看数据。
 
 > [!div class="nextstepaction"]
-> [Log Analytics 中的网络监视解决方案](../azure-monitor/insights/azure-networking-analytics.md)
+> [Azure Monitor 日志中的网络监视解决方案](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

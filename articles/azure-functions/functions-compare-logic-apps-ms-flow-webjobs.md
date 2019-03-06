@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2c0eb50e962af5b67ef9c01588df42f74dd44368
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: de83cc80d64fb1862f1fdec32b704d0948ef9fc8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100289"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820512"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>什么是 Microsoft Flow、逻辑应用、Functions 和 WebJobs？
 
@@ -62,7 +62,7 @@ Microsoft Flow 构建在逻辑应用的基础之上。 它们有相同的工作�
 | 开发 | 代码优先（命令性） | 设计器优先（声明性） |
 | 连接 | [有关十多个内置的绑定类型](functions-triggers-bindings.md#supported-bindings)，为自定义绑定编写代码 | [大型连接器集合](../connectors/apis-list.md)、[适用于 B2B 方案的 Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)、[构建自定义连接器](../logic-apps/custom-connector-overview.md) |
 | 操作 | 每个活动都是一个 Azure 函数；为活动函数编写代码 |[现成操作的大型集合](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| 监视 | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| 监视 | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Azure Monitor 日志](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | 管理 | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](https://docs.microsoft.com/rest/api/logic/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | 执行上下文 | 可以[在本地](functions-runtime-overview.md)或在云中运行 | 只能在云中运行|
 

@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: ed4240b23aa7f7d2dd2365ba646b8f67ecc9f351
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7f6108a5d1e8ee386641c6d1f7c09ea96e12458c
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039514"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587594"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>快速入门：使用 Java 和 Azure Cosmos DB 生成 Cassandra 应用
+# <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>快速入门：使用 Java SDK 和 Azure Cosmos DB 生成 Cassandra
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)

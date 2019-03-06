@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 64c0a42ac3cc074e5fd9e2824180009431b11e1e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3ec4b8fb9ebb7a03983ce5da3dad56e0fe9917e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231965"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986322"
 ---
-# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共基本负载均衡器
+# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建基本负载均衡器
 
 负载均衡将传入请求分布到虚拟机 (VM)，以便提供更高级别的可用性和可伸缩性。 可以使用 Azure 门户创建负载均衡器，并在 VM 之间对流量进行均衡。 本快速入门介绍如何创建并配置负载均衡器、后端服务器以及“基本”定价层的网络资源。
 
@@ -34,21 +34,23 @@ ms.locfileid: "54231965"
 
 首先，使用门户创建公共基本负载均衡器。 创建的名称和公共 IP 地址自动配置为负载均衡器的前端。
 
-1. 在门户的左上方，选择“创建资源” > “网络” > “负载均衡器”。
-   
-1. 在“创建负载均衡器”窗格中，键入或选择以下值：
-   
-   - **名称**：键入 *MyLoadBalancer*。
-   - **类型**：选择“公共”。 
-   - **SKU**：选择“基本”。
-   - **公共 IP 地址**：选择“新建”。 
-     - “公共 IP 地址”字段：键入 *MyPublicIP*。
-     - “配置公共 IP 地址” > “分配”：选择“动态”。
-   - **资源组**：选择“新建”，输入“MyResourceGroupLB”，然后选择“确定”。 
-   
-1. 选择“创建”。
-   
-![创建负载均衡器](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
+1. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
+2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”：
+
+    | 设置                 | 值                                              |
+    | ---                     | ---                                                |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB。|
+    | Name                   | *myLoadBalancer*                                   |
+    | 区域         | 选择“西欧”。                                        |
+    | Type          | 选择“公共”。                                        |
+    | SKU           | 选择“基本”。                          |
+    | 公共 IP 地址 | 选择“新建”。 |
+    | 公共 IP 地址名称              | *MyPublicIP*   |
+    | 分配| 静态|
+
+3. 在“查看 + 创建”选项卡中，单击“创建”。   
+
 
 ## <a name="create-back-end-servers"></a>创建后端服务器
 
@@ -79,7 +81,7 @@ ms.locfileid: "54231965"
      1. 在下拉列表中选择“可用性集”。 
      2. 选择“新建”，键入 *MyAvailabilitySet*，然后选择“确定”。
   
-1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”**。 
+1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVnet**

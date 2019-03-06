@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 3b09af19bd25ea3c64375869cd7db7f2b65923f6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a7dd8cd349703fc9009695e570b66c3a3e626d15
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423761"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593176"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -232,7 +232,7 @@ ms.locfileid: "54423761"
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 在此步骤中，将 Azure SQL 数据库链接到数据工厂。
 
-1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 server、database name **、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
+1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 **&lt;server&gt;、&lt;database name **、&lt;user id&gt; 和 &lt;password&gt;** 分别替换为自己的 Azure SQL Server 名称、数据库名称、用户 ID 和密码，然后保存文件。 
 
     ```json
     {
@@ -661,10 +661,10 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 
     
 ## <a name="next-steps"></a>后续步骤
-请转到下一篇教程，了解如何在 Azure 上使用 Spark 群集转换数据：
+继续查看以下教程，了解如何仅基于 LastModifiedDate 来复制新的和更改的文件：
 
 > [!div class="nextstepaction"]
->[在云中使用 Spark 群集转换数据](tutorial-transform-data-spark-powershell.md)
+>[按 lastmodifieddate 复制新文件](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 
 

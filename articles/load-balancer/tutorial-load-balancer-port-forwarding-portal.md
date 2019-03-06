@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/18
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: da41b33f3e5d24c0391c8486d9c0b372877eff21
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6cb9e839b1fffd29ce1d78e82fb4ab054b92efc6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232186"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959114"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教程：使用门户在 Azure 负载均衡器中配置端口转发
 
@@ -44,25 +44,26 @@ ms.locfileid: "54232186"
 
 首先，创建公共标准负载均衡器，以便均衡 VM 上的流量负载。 标准负载均衡器仅支持标准公共 IP 地址。 创建标准负载均衡器时，还要创建配置为负载均衡器前端且默认情况下命名为“LoadBalancerFrontEnd”的新的标准公用 IP 地址。 
 
-1. 在门户的左上方，选择“创建资源” > “网络” > “负载均衡器”。
-   
-1. 在“创建负载均衡器”窗格中，键入或选择以下值：
-   
-   - **名称**：键入 *MyLoadBalancer*。
-   - **类型**：选择“公共”。 
-   - **SKU**：选择“标准”。
-   - **公共 IP 地址**：选择“新建”并在字段中键入“MyPublicIP”。
-   - **配置公共 IP 地址** > **可用性区域**：选择“区域冗余”。
-   - **ResourceGroup**：选择“新建”，输入“MyResourceGroupLB”，然后选择“确定”。 
-   - **位置**：选择“西欧”。 
-     
-     >[!NOTE]
-     >确保在支持可用性区域的位置为其创建负载均衡器和所有资源。 有关详细信息，请参阅[支持可用性区域的区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)。 
-   
-1. 选择“创建”。
-   
-![创建负载均衡器](./media/tutorial-load-balancer-port-forwarding-portal/1-load-balancer.png)
+1. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
+2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”：
 
+    | 设置                 | 值                                              |
+    | ---                     | ---                                                |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB。|
+    | Name                   | *myLoadBalancer*                                   |
+    | 区域         | 选择“西欧”。                                        |
+    | Type          | 选择“公共”。                                        |
+    | SKU           | 选择“标准”。                          |
+    | 公共 IP 地址 | 选择“新建”。 |
+    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP。   |
+    |可用性区域| 选择“区域冗余”。    |
+     
+    >[!NOTE]
+     >确保在支持可用性区域的位置为其创建负载均衡器和所有资源。 有关详细信息，请参阅[支持可用性区域的区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)。 
+
+3. 在“查看 + 创建”选项卡中，单击“创建”。  
+  
 ## <a name="create-and-configure-back-end-servers"></a>创建并配置后端服务器
 
 使用两台虚拟机创建虚拟网络，并将 VM 添加到负载均衡器的后端池。 
@@ -93,7 +94,7 @@ ms.locfileid: "54232186"
    - **密码**：键入“Azure1234567”。 
      在“确认密码”字段中，重新键入该密码。
    
-1. 选择“网络”选项卡，或选择“下一步:磁盘”，然后选择“下一步:网络”**。 
+1. 选择“网络”选项卡，或选择“下一步:磁盘”，然后选择“下一步:网络”。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**

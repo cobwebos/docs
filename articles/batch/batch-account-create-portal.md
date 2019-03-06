@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/25/2019
+ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04631431c03f6fdd378bfa99edb9b67f8d6a0cad
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf47e3b48f1047af88a19c59459c19c078f71a63
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193911"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984469"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -42,19 +42,21 @@ ms.locfileid: "56193911"
 
     ![创建批处理帐户][account_portal]
 
-    a. **帐户名**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
+    a. **订阅**：要在其中创建 Batch 帐户的订阅。 如果只有一个订阅，则默认选择此项。
 
-    b. **订阅**：要在其中创建 Batch 帐户的订阅。 如果只有一个订阅，则默认选择此项。
+    b. **资源组**：为新 Batch 帐户选择现有的资源组，或选择创建一个新组。
 
-    c. **资源组**：为新 Batch 帐户选择现有的资源组，或选择创建一个新组。
+    c. **帐户名**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
 
     d. **位置**：要在其中创建 Batch 帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
 
-    e. **存储帐户**（可选）：与 Batch 帐户关联的 Azure 存储帐户。 建议大多数批处理帐户采用此设置。 有关 Batch 中的存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。 在门户中，选择一个现有存储帐户，或者选择创建一个新帐户。
+    e. **存储帐户**：与 Batch 帐户关联的可选 Azure 存储帐户。 为获得最佳性能，建议使用常规用途 v2 存储帐户。 有关 Batch 中的所有存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。 在门户中选择现有存储帐户，或者创建一个新帐户。
 
       ![创建存储帐户][storage_account]
 
-    f. **池分配模式**：对于大多数情况，请接受默认值“Batch 服务”。
+    f. **池分配模式**：在“高级”设置选项卡中，可将池分配模式指定为“Batch 服务”或“用户订阅”。 对于大多数情况，请接受默认值“Batch 服务”。
+
+      ![Batch 池分配模式][pool_allocation]
 
 1. 选择“创建”可创建帐户。
 
@@ -115,7 +117,7 @@ ms.locfileid: "56193911"
 
 ### <a name="configure-subscription-quotas"></a>配置订阅配额
 
-默认情况下，不在用户订阅 Batch 帐户上设置核心配额。 核心配额必须手动设置，因为常规 Batch 核心配额不适用于用户订阅模式下的帐户。
+默认情况下，不在用户订阅 Batch 帐户上设置核心配额。 核心配额必须手动设置，因为标准 Batch 核心配额不适用于用户订阅模式下的帐户。
 
 1. 在 [Azure 门户][azure_portal]中选择用户订阅模式 Batch 帐户，以便显示其设置和属性。
 
@@ -142,8 +144,8 @@ ms.locfileid: "56193911"
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace-batch.png
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
+[pool_allocation]: ./media/batch-account-create-portal/batch-pool-allocation.png
 [account_keys]: ./media/batch-account-create-portal/batch-account-keys.png
-[account_url]: ./media/batch-account-create-portal/account_url.png
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png

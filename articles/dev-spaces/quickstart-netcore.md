@@ -10,12 +10,12 @@ ms.date: 09/26/2018
 ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: e176da3b9f015d3f1e9c8759ff45007ddbe4bdc8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 98c6d092f7c0a2310745496d95cf45d60ea26c7e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656492"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817620"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes dev 空间（.NET Core 和 VS Code）
 
@@ -33,11 +33,11 @@ ms.locfileid: "55656492"
 - Azure 订阅。 如果没有帐户，可以[创建一个免费帐户](https://azure.microsoft.com/free)。
 - [Visual Studio Code](https://code.visualstudio.com/download)。
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 版本 2.0.43 或更高版本。
-- 在 EastUS、EastUS2、CentralUS、WestUS2、WestEurope、SoutheastAsia、CanadaCentral 或 CanadaEast 区域中运行 Kubernetes 1.9.6 或更高版本且已启用“Http 应用程序路由”的 Kubernetes 群集。
+- 在 EastUS、EastUS2、CentralUS、WestUS2、WestEurope、SoutheastAsia、CanadaCentral 或 CanadaEast 区域中运行 Kubernetes 1.9.6 或更高版本的 Kubernetes 群集。
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
+    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>设置 Azure Dev Spaces

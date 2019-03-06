@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 88ac9f07fb8791ca3d64123663b0380a56220cdd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 25841971a2e7921c89c63032e8fd48bc528263aa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865942"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878162"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教程：通过查看终结点话语来修复不确定的预测
 在本教程中，你将通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。 你应当在计划的 LUIS 维护中定期评审终结点陈述。 
@@ -50,11 +50,13 @@ ms.locfileid: "55865942"
 
 1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json)。
 
-2. 将 JSON 导入到新应用中。
+1. 将 JSON 导入到新应用中。
 
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `review`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+1. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `review`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
 
-    如果将本教程作为新导入的应用使用，则还需训练和发布表述，然后通过[脚本](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)或浏览器中的终结点将其添加到终结点。 要添加的表述如下：
+1. 训练并发布新应用。
+
+1. 使用终结点添加以下言语。 可以使用[脚本](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)或从浏览器的终结点中执行此操作。 要添加的表述如下：
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
@@ -64,13 +66,13 @@ ms.locfileid: "55865942"
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. 从左侧导航栏中选择“审核终结点表述”。 列表会筛选出 **ApplyForJob** 意向。 
+1. 从左侧导航栏中选择“审核终结点表述”。 列表会筛选出 **ApplyForJob** 意向。 
 
-    [ ![左侧导航栏中“审核终结点表述”按钮的屏幕截图](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    [![左侧导航栏中“审核终结点表述”按钮的屏幕截图](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
-3. 切换“实体”视图，查看标记的实体。 
+1. 切换“实体”视图，查看标记的实体。 
     
-    [ ![“审核终结点表述”的屏幕截图，突出显示了“实体”视图切换](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    [![“审核终结点表述”的屏幕截图，突出显示了“实体”视图切换](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
     |话语|正确的意向|缺失的实体|
     |:--|:--|:--|
@@ -78,29 +80,29 @@ ms.locfileid: "55865942"
 
     此表述的意向不正确，其分数低于 50%。 **ApplyForJob** 意向有 21 个表述，而 **GetJobInformation** 意向则有 7 个表述。 除了应正确匹配终结点表述，还应向 **GetJobInformation** 意向添加更多的表述。 这是一项练习，需要你自行完成。 每个意向（**None** 意向除外）的示例表述数目应该基本相同。 **None** 意向应包含应用中总表述数的 10%。 
 
-4. 对于表述 `I'm looking for a job with Natual Language Processing`，请在“匹配的意向”列中选择正确的意向 **GetJobInformation**。 
+1. 对于表述 `I'm looking for a job with Natual Language Processing`，请在“匹配的意向”列中选择正确的意向 **GetJobInformation**。 
 
-    [ ![“审核终结点表述”的屏幕截图，将表述与意向进行了匹配](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
+    [![“审核终结点表述”的屏幕截图，将表述与意向进行了匹配](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
 
-5. 在同一表述中，`Natural Language Processing` 的实体为 keyPhrase。 这本应是“工作”实体。 选择 `Natural Language Processing`，然后从列表选择“工作”实体。
+1. 在同一表述中，`Natural Language Processing` 的实体为 keyPhrase。 这本应是“工作”实体。 选择 `Natural Language Processing`，然后从列表选择“工作”实体。
 
-    [ ![“审核终结点表述”的屏幕截图，已在表述中对实体进行了标记](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
+    [![“审核终结点表述”的屏幕截图，已在表述中对实体进行了标记](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
 
-6. 在同一行的“添加到匹配的意向”列中选择画圈的复选标记。 
+1. 在同一行的“添加到匹配的意向”列中选择画圈的复选标记。 
 
-    [ ![在意向中确定表述匹配项的屏幕截图](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
+    [![在意向中确定表述匹配项的屏幕截图](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
 
     此操作将表述从“审核终结点表述”移到 **GetJobInformation** 意向。 此终结点表述现在是该意向的一个示例表述。 
 
-7. 审核此意向中的剩余表述，标记不正确的表述并纠正“匹配的意向”。
+1. 审核此意向中的剩余表述，标记不正确的表述并纠正“匹配的意向”。
 
-8. 如果所有表述都正确，请选择每一行的复选框，然后选择“添加所选项”，以便正确匹配这些表述。 
+1. 如果所有表述都正确，请选择每一行的复选框，然后选择“添加所选项”，以便正确匹配这些表述。 
 
-    [ ![确定剩余表述与匹配的意向的关系的屏幕截图](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
+    [![确定剩余表述与匹配的意向的关系的屏幕截图](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
-9. 此列表应该再也不会有这些表述。 如果出现更多的表述，请继续完成列表中的项目，纠正意向并标记缺失的实体，直至此列表为空。 
+1. 此列表应该再也不会有这些表述。 如果出现更多的表述，请继续完成列表中的项目，纠正意向并标记缺失的实体，直至此列表为空。 
 
-10. 选择“筛选器”列表中的下一意向，然后继续纠正表述并对实体进行标记。 请记住，每个意向的最后一步是选择表述行中的“添加到匹配的意向”，或者勾选每个意向的框，然后选择表上面的“添加所选项”。
+1. 选择“筛选器”列表中的下一意向，然后继续纠正表述并对实体进行标记。 请记住，每个意向的最后一步是选择表述行中的“添加到匹配的意向”，或者勾选每个意向的框，然后选择表上面的“添加所选项”。
 
     继续操作，直到筛选器列表中的所有意向和实体都具有空列表。 这是一个很小的应用。 审核过程只需数分钟。 
 

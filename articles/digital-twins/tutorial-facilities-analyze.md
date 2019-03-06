@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 488b97074d74650ecf5602d25e2a90a1998e5585
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8f8bdb4d601e35cf489c1c4c1db3574fb8c8f18f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883868"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730779"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>教程：使用时序见解直观显示和分析 Azure 数字孪生空间中的事件
 
@@ -90,13 +90,13 @@ ms.locfileid: "54883868"
       - UdfCustom
       connectionString: Primary_connection_string_for_your_event_hub
       secondaryConnectionString: Secondary_connection_string_for_your_event_hub
-      path: Name_of_your_Event_Hubs_namespace
+      path: Name_of_your_Event_Hub
     - type: EventHub
       eventTypes:
       - DeviceMessage
       connectionString: Primary_connection_string_for_your_event_hub
       secondaryConnectionString: Secondary_connection_string_for_your_event_hub
-      path: Name_of_your_Event_Hubs_namespace
+      path: Name_of_your_Event_Hub
     ```
 
 1. 将占位符 `Primary_connection_string_for_your_event_hub` 替换为事件中心的“连接字符串--主键”的值。 确保此连接字符串的格式如下：
@@ -111,7 +111,7 @@ ms.locfileid: "54883868"
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. 将占位符 `Name_of_your_Event_Hubs_namespace` 替换为事件中心命名空间的名称。
+1. 将占位符 `Name_of_your_Event_Hub` 替换为事件中心的名称。
 
     > [!IMPORTANT]
     > 输入所有值，不带任何引号。 在 YAML 文件中，请确保在冒号之后至少有一个空格字符。 也可使用任何联机 YAML 验证程序（例如[此工具](https://onlineyamltools.com/validate-yaml)）来验证 YAML 文件内容。

@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 添加来宾用户以实现 Azure Active Directory B2B 协作的快速入门 |Microsoft Docs
+title: 使用 PowerShell 添加来宾用户的快速入门 - Azure Active Directory | Microsoft Docs
 description: 本快速入门介绍如何使用 PowerShell 向外部 Azure AD B2B 协作用户发送邀请。
 services: active-directory
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb34fa0552eaa8f0d567ff85843e4b7df3fa967
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8417e2118de01d00e8b0450374a9b10bff40221f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205369"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675137"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>快速入门：使用 PowerShell 添加来宾用户
 

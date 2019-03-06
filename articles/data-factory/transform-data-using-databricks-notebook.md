@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 7035035823e00fb0c12de3f4eeae11d8b3e1d54d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 181e2c1d1a9758d6f196c9cb2b281eefa141d81a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016905"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984758"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
 
@@ -109,7 +109,7 @@ ms.locfileid: "54016905"
 
     1.  至于“访问令牌”，请从 Azure Databricks 工作区生成。 可以在[此处](https://docs.databricks.com/api/latest/authentication.html#generate-token)找到步骤。
 
-    1.  对于“群集版本”，请选择 **4.0**（包含 Apache Spark 2.3.0、Scala 2.11）
+    1.  对于群集版本，请选择 4.2（带有 Apache Spark 2.3.1、Scala 2.11）
 
     1.  对于“群集节点类型”，请在本教程的“常规用途(HDD)”类别下选择“Standard\_D3\_v2”。 
     

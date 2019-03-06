@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e83991f553d00af11cfc275137f8e73ebab2098c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2b37d77e00595be125490431694f4549f61fced6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882631"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56982787"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -50,16 +50,20 @@ ms.locfileid: "56882631"
 标准负载均衡器仅支持标准公共 IP 地址。 在创建负载均衡器过程中创建新的公共 IP 时，该负载均衡器会自动配置为标准 SKU 版本，并自动实现区域冗余。
 
 1. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
-2. 在“创建负载均衡器”页中，输入负载均衡器的以下值：
-    - *myLoadBalancer* - 负载均衡器的名称。
-    - **公共** - 负载均衡器的类型。
-     - *myPublicIP* - 创建的新公共 IP 地址。 为此，请依次单击“选择公共 IP 地址”、“新建”。 键入 *myPublicIP* 作为名称，SKU 默认为 Standard，为“可用性区域”选择“区域冗余”。
-    - *myResourceGroupLBAZ* - 创建的新资源组的名称。
-    - **westeurope** - 位置。
-3. 单击“创建”以创建负载均衡器。
-   
-    ![创建负载均衡器](./media/load-balancer-standard-public-availability-zones-portal/1a-load-balancer.png)
+2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”：
 
+    | 设置                 | 值                                              |
+    | ---                     | ---                                                |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLBAZ。|
+    | Name                   | *myLoadBalancer*                                   |
+    | 区域         | 选择“西欧”。                                        |
+    | Type          | 选择“公共”。                                        |
+    | SKU           | 选择“标准”。                          |
+    | 公共 IP 地址 | 选择“新建”。 |
+    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP。   |
+    |可用性区域| 选择“区域冗余”。    |
+   
 
 ## <a name="create-backend-servers"></a>创建后端服务器
 

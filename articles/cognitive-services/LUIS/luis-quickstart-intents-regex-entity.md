@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 5ebd8875f14eef9a5febaf5356f0d2fadb0828bd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 012d77227e7c0283b565361dda32cb77e12fc62b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869630"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867263"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>教程：从话语中获取格式正确的数据
 在此教程中，创建使用“正则表达式”实体从话语中提取带有一致格式的数据的应用。

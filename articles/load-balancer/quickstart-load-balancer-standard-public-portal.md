@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/21/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 1395c79b9c39d7376f39446eac6da8ee80b2ef18
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 97d1cf2817ebfbf2eb1a6ba5a4d20d457b6369c6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232662"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961731"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建标准负载均衡器以对 VM 进行负载均衡
 
@@ -40,21 +40,20 @@ ms.locfileid: "54232662"
 在本部分，请创建一个公共负载均衡器，以帮助对虚拟机进行负载均衡。 标准负载均衡器仅支持标准公共 IP 地址。 创建标准负载均衡器时，还必须为该标准负载均衡器创建一个配置为前端（默认情况下命名为 *LoadBalancerFrontend*）的新的标准公共 IP 地址。 
 
 1. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
-2. 在“创建负载均衡器”页中输入或选择以下信息，接受剩下的默认设置，然后选择“创建”：
+2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”：
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 名称                   | *myLoadBalancer*                                   |
-    | 类型          | 公共                                        |
-    | SKU           | 标准                          |
-    | 公共 IP 地址 | 选择“新建”并在文本框中键入 *myPublicIP*。 默认情况下公共 IP 地址的标准 SKU 处于选中状态。 对于“可用性区域”，请选择“区域冗余”。 |
-    | 订阅               | 选择订阅。    |
-    |资源组 | 选择“新建”，然后键入 *myResourceGroupSLB*。    |
-    | 位置           | 选择“西欧”。                          |
-    
-
-![创建负载均衡器](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupSLB。|
+    | Name                   | *myLoadBalancer*                                   |
+    | 区域         | 选择“西欧”。                                        |
+    | Type          | 选择“公共”。                                        |
+    | SKU           | 选择“标准”。                          |
+    | 公共 IP 地址 | 选择“新建”。 |
+    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP。   |
+    |可用性区域| 选择“区域冗余”。    |
+3. 在“查看 + 创建”选项卡中，单击“创建”。   
 
 ## <a name="create-backend-servers"></a>创建后端服务器
 
@@ -84,7 +83,7 @@ ms.locfileid: "54232662"
         2. 在“创建网络安全组”页中，对于**名称**，输入 *myNetworkSecurityGroup*，然后选择“确定”。
 5. 单击“禁用”以禁用启动诊断。
 6. 创建“确定”，检查“摘要”页上的设置，然后单击“创建”。
-7. 通过步骤 1-6 创建名为 *VM2* 的另一个 VM（将 *myAvailibilityset* 作为其可用性集，将 *myVnet* 作为其虚拟网络，将 *myBackendSubnet* 作为其子网，将 *myNetworkSecurityGroup* 作为其网络安全组）。 
+7. 使用步骤 1-6，创建第二个名为 VM2 的另一个 VM，将 myVnet 作为其虚拟网络，将 myBackendSubnet 作为其子网，将 *myNetworkSecurityGroup 作为其网络安全组。 
 
 ### <a name="create-nsg-rule"></a>创建 NSG 规则
 

@@ -1,74 +1,77 @@
 ---
-title: 快速入门：必应拼写检查 API，Node.js
+title: 快速入门：使用必应拼写检查 REST API 和 Node.js 检查拼写
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
+description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 0fea6f163e6d977f26e13c816c4eaa514eea676b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8e3379a086eb09745142f4e3997ed195eb4d1de5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864887"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56885901"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-nodejs"></a>通过 Node.js 使用必应拼写检查 API 快速入门 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>快速入门：使用必应拼写检查 REST API 和 Node.js 检查拼写
 
-本文展示了如何通过 Node.js 使用[必应拼写检查 API](https://azure.microsoft.com/services/cognitive-services/spell-check/)。 拼写检查 API 返回它无法识别的单词和建议的替换的列表。 通常，你将向此 API 提交文本，然后在文本中进行建议的替换，或者向应用程序的用户显示这些替换，以便他们可以决定是否进行替换。 本文介绍如何发送包含文本“Hollo, wrld!”的请求。 建议的替换将为“Hello”和“world”。
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单 Python 应用程序将向 API 发送请求并返回无法识别的单词列表，后跟建议的更正。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js) 上提供了此应用程序的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Node.js 6](https://nodejs.org/en/download/) 来运行此代码。
+* [Node.js 6](https://nodejs.org/en/download/) or later.
 
-必须创建一个使用必应拼写检查 API v7 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#lang)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>获取拼写检查结果
 
-1. 在喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下方提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-```nodejs
-'use strict';
+1. 在你喜欢使用的 IDE 或编辑器中新建一个 Java 脚本文件。 设置严格性，并且需要 https。 然后为 API 终结点主机、路径和订阅密钥创建变量。
 
-let https = require ('https');
+    ```javascript
+    'use strict';
+    let https = require ('https');
+    
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/spellcheck';
+    let key = 'ENTER KEY HERE';
+    ```
 
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/spellcheck';
+2. 为市场、拼写检查模式和要检查的文本创建变量。 然后创建一个字符串，它将 `?mkt=` 参数追加到市场，将 `&mode=` 追加到模式。
 
-/* NOTE: Replace this example key with a valid subscription key (see the Prequisites section above). Also note v5 and v7 require separate subscription keys. */
-let key = 'ENTER KEY HERE';
+    ```javascript
+    let mkt = "en-US";
+    let mode = "proof";
+    let text = "Hollo, wrld!";
+    let query_string = "?mkt=" + mkt + "&mode=" + mode;
+    ```
 
-// These values are used for optional headers (see below).
-// let CLIENT_ID = "<Client ID from Previous Response Goes Here>";
-// let CLIENT_IP = "999.999.999.999";
-// let CLIENT_LOCATION = "+90.0000000000000;long: 00.0000000000000;re:100.000000000000";
+## <a name="create-the-request-parameters"></a>创建请求参数
 
-let mkt = "en-US";
-let mode = "proof";
-let text = "Hollo, wrld!";
-let query_string = "?mkt=" + mkt + "&mode=" + mode;
+通过使用 `POST` 方法创建新对象，来创建请求参数。 通过追加终结点路径和查询字符串来添加路径。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
 
+```javascript
 let request_params = {
-    method : 'POST',
-    hostname : host,
-    path : path + query_string,
-    headers : {
-        'Content-Type' : 'application/x-www-form-urlencoded',
-        'Content-Length' : text.length + 5,
-        'Ocp-Apim-Subscription-Key' : key,
-//        'X-Search-Location' : CLIENT_LOCATION,
-//        'X-MSEdge-ClientID' : CLIENT_ID,
-//        'X-MSEdge-ClientIP' : CLIENT_ID,
-    }
+   method : 'POST',
+   hostname : host,
+   path : path + query_string,
+   headers : {
+   'Content-Type' : 'application/x-www-form-urlencoded',
+   'Content-Length' : text.length + 5,
+      'Ocp-Apim-Subscription-Key' : key,
+   }
 };
+```
 
+## <a name="create-a-response-handler"></a>创建响应处理程序
+
+创建一个名为 `response_handler` 的函数，从 API 获取 JSON 响应，并进行打印。 为响应正文创建变量。 在收到 `data` 标志时使用 `response.on()` 附加响应。 收到 `end` 标志时，将 JSON 正文打印到控制台。
+
+```javascript
 let response_handler = function (response) {
     let body = '';
     response.on ('data', function (d) {
@@ -81,13 +84,19 @@ let response_handler = function (response) {
         console.log ('Error: ' + e.message);
     });
 };
+```
 
+## <a name="send-the-request"></a>发送请求
+
+通过将 `https.request()` 与请求参数和响应处理程序结合使用，来调用 API。 将文本写入 API，并在之后结束请求。
+
+```javascript
 let req = https.request (request_params, response_handler);
 req.write ("text=" + text);
 req.end ();
 ```
 
-**响应**
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -132,9 +141,7 @@ req.end ();
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应拼写检查教程](../tutorials/spellcheck.md)
+> [创建单页 Web 应用](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>另请参阅
-
-- [必应拼写检查概述](../proof-text.md)
+- [什么是必应拼写检查 API？](../overview.md)
 - [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

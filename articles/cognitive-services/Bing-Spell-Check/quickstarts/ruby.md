@@ -1,80 +1,88 @@
 ---
-title: 快速入门：必应拼写检查 API，Ruby
+title: 快速入门：使用必应拼写检查 REST API 和 Ruby 检查拼写
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
+description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: d3c273c7e5774e4f6d5b6984b77ff76bfb041343
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d488923f38a9c65cb117b4535b50bb9fdff2dbfc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873166"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888842"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-ruby"></a>通过 Ruby 使用必应拼写检查 API 快速入门 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>快速入门：使用必应拼写检查 REST API 和 Ruby 检查拼写
 
-本文展示了如何通过 Ruby 使用[必应拼写检查 API](https://azure.microsoft.com/services/cognitive-services/spell-check/) 。 拼写检查 API 返回它无法识别的单词和建议的替换的列表。 通常，你将向此 API 提交文本，然后在文本中进行建议的替换，或者向应用程序的用户显示这些替换，以便他们可以决定是否进行替换。 本文介绍如何发送包含文本“Hollo, wrld!”的请求 建议的替换为“Hello”和“world”。
+根据此快速入门中的说明对使用 Ruby 的必应拼写检查 REST API 进行第一次调用。 此简单的应用程序将向 API 发送请求并返回无法识别的单词列表，后跟建议的更正。 虽然此应用程序是使用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb) 上提供了此应用程序的源代码
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) 或更高版本来运行此代码。
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) 或更高版本。
 
-必须创建一个使用必应拼写检查 API v7 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#lang)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。 另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>获取拼写检查结果
 
-1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `key` 值。
-4. 运行该程序。
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-```ruby
-require 'net/http'
-require 'uri'
-require 'json'
+1. 在你喜欢的编辑器或 IDE 中创建新的 Ruby 文件，并添加以下要求。 
 
-uri = 'https://api.cognitive.microsoft.com'
-path = '/bing/v7.0/spellcheck?'
-params = 'mkt=en-us&mode=proof'
+    ```javascript
+    require 'net/http'
+    require 'uri'
+    require 'json'
+    ```
 
-uri = URI(uri + path + params)
-uri.query = URI.encode_www_form({
-    # Request parameters
-    'text' => 'Hollo, wrld!'
-})
+2. 为订阅密钥、终结点 URI 和路径创建变量。 通过将 `mkt=` 参数追加到市场并将 `&mode` 追加到 `proof` 证明模式创建请求参数。
 
-# NOTE: Replace this example key with a valid subscription key.
-key = 'ENTER KEY HERE'
+    ```ruby
+    key = 'ENTER YOUR KEY HERE'
+    uri = 'https://api.cognitive.microsoft.com'
+    path = '/bing/v7.0/spellcheck?'
+    params = 'mkt=en-us&mode=proof'
+    ```
 
-# The headers in the following example 
-# are optional but should be considered as required:
-#
-# X-MSEdge-ClientIP: 999.999.999.999  
-# X-Search-Location: lat: +90.0000000000000;long: 00.0000000000000;re:100.000000000000
-# X-MSEdge-ClientID: <Client ID from Previous Response Goes Here>
-#
-# See below for more information.
+## <a name="send-a-spell-check-request"></a>发送拼写检查请求
 
-request = Net::HTTP::Post.new(uri)
-request['Content-Type'] = "application/x-www-form-urlencoded"
+1. 从主机 uri、路径和参数字符串创建 URI。 将查询设置为包含要进行拼写检查的文本。
 
-request['Ocp-Apim-Subscription-Key'] = key
+   ```ruby
+   uri = URI(uri + path + params)
+   uri.query = URI.encode_www_form({
+      # Request parameters
+   'text' => 'Hollo, wrld!'
+   })
+   ```
 
-response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-    http.request(request)
-end
+2. 使用以上构造的 URI 创建请求。 将密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
 
-result = JSON.pretty_generate(JSON.parse(response.body))
-puts result
-```
+    ```ruby
+    request = Net::HTTP::Post.new(uri)
+    request['Content-Type'] = "application/x-www-form-urlencoded"
+    request['Ocp-Apim-Subscription-Key'] = key
+    ```
 
-**响应**
+3. 发送请求。
+
+    ```ruby
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+        http.request(request)
+    end
+    ```
+
+4. 获取 JSON 响应，并将其打印到控制台。 
+
+    ```ruby
+    result = JSON.pretty_generate(JSON.parse(response.body))
+    puts result
+    ```
+
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -119,9 +127,7 @@ puts result
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应拼写检查教程](../tutorials/spellcheck.md)
+> [创建单页 Web 应用](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>另请参阅
-
-- [必应拼写检查概述](../proof-text.md)
+- [什么是必应拼写检查 API？](../overview.md)
 - [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

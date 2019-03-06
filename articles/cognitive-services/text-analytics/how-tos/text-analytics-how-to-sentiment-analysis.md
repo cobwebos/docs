@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: add284a3a001d5bc2e756f9ad4a2a3b9550b212c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7287a9ddbd84960dcde790d813a6204e9e790094
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242119"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887414"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>示例：如何使用文本分析检测情绪
 
@@ -39,7 +39,7 @@ ms.locfileid: "56242119"
 
 必须拥有以下格式的 JSON 文档：ID、文本、语言
 
-每个文档的大小必须少于 5,000 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 下面是可能提交用于情绪分析的内容示例。
+每个文档的大小必须少于 5,120 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 下面是可能提交用于情绪分析的内容示例。
 
 ```
     {

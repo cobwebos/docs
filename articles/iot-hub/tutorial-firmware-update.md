@@ -9,15 +9,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
+ms.date: 02/22/2019
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 20891b0d73783c9b68a42ecfed130e377b6f8eab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c387a7c10b962cfd27a7563c00ce58f58e97b9d5
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729806"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671822"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
 
@@ -94,7 +94,8 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ```
 
-如果在 Windows 命令提示符或 Powershell 提示符处运行这些命令，请查看 [azure-iot-cli-extension 提示](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
+> [!TIP]
+> 如果在 Windows 命令提示符或 Powershell 提示符处运行这些命令，请查看 [azure-iot-cli-extension 提示](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
 )页，了解如何引用 JSON 字符串。
 
 ## <a name="start-the-firmware-update"></a>启动固件更新

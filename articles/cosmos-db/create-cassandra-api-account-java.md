@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: fc1505526ddff33c68b6d7a4030338dd7d712598
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b6876bf8210d47729ad8e765ccffe709a0fccacc
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994466"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958688"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
 
@@ -43,7 +43,7 @@ ms.locfileid: "55994466"
 
 1. 登录  [Azure 门户](https://portal.azure.com/)。 
 
-2. 单击  **“创建资源”**   >  **“数据库”**   >  **“Azure Cosmos DB”** 。 
+2. 选择“创建资源” > “数据库” > “Azure Cosmos DB”。 
 
 3. 在“新建帐户”窗格上，输入新 Azure Cosmos 帐户的设置。 
 
@@ -52,12 +52,12 @@ ms.locfileid: "55994466"
    |ID   |   输入唯一的名称    | 输入标识此 Azure Cosmos 帐户的唯一名称。 <br/><br/>由于 cassandra.cosmosdb.azure.com 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。         |
    |API    |  Cassandra   |  API 确定要创建的帐户的类型。 <br/> 选择“Cassandra”，因为在本文中，你将创建可使用 Cassandra 查询语言 (CQL) 语法查询的宽列数据库。  |
    |订阅    |  订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
-   |资源组   | 输入名称    |  选择“新建”，然后输入帐户的新资源组名称。 **** 为简单起见，可以使用与 ID 相同的名称。    |
+   |资源组   | 输入名称    |  选择“新建”，然后输入帐户的新资源组名称。 为简单起见，可以使用与 ID 相同的名称。    |
    |位置    |  选择离用户最近的区域    |  选择要在其中托管 Azure Cosmos 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。    |
 
    ![使用门户创建帐户](./media/create-cassandra-api-account-java/create-account.png)
 
-4. 选择“创建” ****。 <br/>创建帐户需要几分钟时间。 创建资源后，可以在门户右侧看到“部署成功”通知。
+4. 选择“创建”。 <br/>创建帐户需要几分钟时间。 创建资源后，可以在门户右侧看到“部署成功”通知。
 
 ## <a name="get-the-connection-details-of-your-account"></a>获取帐户的连接详细信息  
 

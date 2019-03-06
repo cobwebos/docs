@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7623f98b9fd6c4bad8a41050e39b6e0e8650dccc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242918"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889270"
 ---
 # <a name="what-is-text-analytics"></a>什么是文本分析？
 
@@ -64,11 +64,11 @@ ms.locfileid: "56242918"
 
 ## <a name="data-limits"></a>数据限制
 
-所有的文本分析 API 终结点都接受原始文本数据。 当前限制为每个文档最多包含 5,000 个字符；如果需要分析更大的文档，可将它们分解成较小的区块。 如果仍然需要提高限制，请[联系我们](https://azure.microsoft.com/overview/sales-number/)讨论具体要求。
+所有的文本分析 API 终结点都接受原始文本数据。 当前限制为每个文档最多包含 5,120 个字符；如果需要分析更大的文档，可将它们分解成较小的区块。 如果仍然需要提高限制，请[联系我们](https://azure.microsoft.com/overview/sales-number/)讨论具体要求。
 
 | 限制 | 值 |
 |------------------------|---------------|
-| 单个文档的最大大小 | 5,000 个字符，由 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 度量。 |
+| 单个文档的最大大小 | 5,120 个字符，由 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 度量。 |
 | 整个请求的最大大小 | 1 MB |
 | 一个请求中的文档数上限 | 1,000 个文档 |
 
@@ -80,7 +80,7 @@ ms.locfileid: "56242918"
 
 ## <a name="next-steps"></a>后续步骤
 
-首先请尝试[交互式演示](https://azure.microsoft.com/services/cognitive-services/text-analytics/)。 可以粘贴一段文本输入（最多 5,000 个字符）来检测语言（最多 120 种）、计算情绪评分，或提取关键短语。 不需要注册。
+首先请尝试[交互式演示](https://azure.microsoft.com/services/cognitive-services/text-analytics/)。 可以粘贴一段文本输入（最多 5,120 个字符）来检测语言（最多 120 种）、计算情绪评分，或提取关键短语。 不需要注册。
 
 准备好直接调用 API 时：
 

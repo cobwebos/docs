@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5174bb696b456a66cfc0666ac5c475437e441d82
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d4f530e38b6fd69d814765f4133201dd12a87f22
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848846"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668576"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>教程：删除在 Azure 中运行的 Service Fabric 群集
 
@@ -34,7 +34,7 @@ ms.locfileid: "54848846"
 
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]
-> * 使用模板在 Azure 上创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)或 [Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+> * 使用模板在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 > * [缩小或扩大群集](service-fabric-tutorial-scale-cluster.md)
 > * [升级群集的运行时](service-fabric-tutorial-upgrade-cluster.md)
 > * 删除群集
@@ -45,7 +45,7 @@ ms.locfileid: "54848846"
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * 安装 [Azure Powershell 模块版本 4.1 或更高版本](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)或者 [Azure CLI](/cli/azure/install-azure-cli)。
-* 在 Azure 上创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)或 [Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+* 在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>删除包含 Service Fabric 群集的资源组
 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
@@ -115,5 +115,5 @@ az resource delete --name "<name of the Resource>" --resource-type "Microsoft.Se
 
 现在你已完成了本教程，请尝试执行以下任务：
 * 了解如何使用 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 检查和管理 Service Fabric 群集。
-* 了解如何为群集节点[修补 Windows 操作系统](service-fabric-patch-orchestration-application.md)或[修补 Linux 操作系统](service-fabric-patch-orchestration-application-linux.md)。
-* 了解如何为 [Windows 群集](service-fabric-diagnostics-event-aggregation-wad.md)或 [Linux 群集](service-fabric-diagnostics-event-aggregation-lad.md)聚合和收集事件以及如何[设置 Log Analytics](service-fabric-diagnostics-oms-setup.md) 来监视群集事件。
+* 了解如何为群集节点[修补 Windows 操作系统](service-fabric-patch-orchestration-application.md)。
+* 了解如何为 [Windows 群集](service-fabric-diagnostics-event-aggregation-wad.md)聚合和收集事件以及如何[设置 Log Analytics](service-fabric-diagnostics-oms-setup.md) 来监视群集事件。

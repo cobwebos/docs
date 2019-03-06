@@ -11,12 +11,12 @@ ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ffa14e3fb3fd41d6a30e1cf30713b26d7ecd255a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2cce925f4b3e1acc6c93019615b81983a5c95f6f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436002"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56815886"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>发现在 Azure 计算机和非 Azure 计算机上安装的软件
 
@@ -58,8 +58,10 @@ ms.locfileid: "54436002"
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区用于收集由功能和服务（如清单）生成的数据。
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 启用解决方案最多可能需要 15 分钟。 在此期间，不应关闭浏览器窗口。
-启用该解决方案后，VM 中有关已安装软件和更改的信息会流向 Log Analytics。
+启用该解决方案后，VM 中有关已安装软件和更改的信息会流向 Azure Monitor 日志。
 这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
 
 ## <a name="onboard-a-vm"></a>载入 VM
@@ -101,7 +103,7 @@ ms.locfileid: "54436002"
 
 ## <a name="search-inventory-logs-for-installed-software"></a>在清单日志中搜索已安装软件
 
-清单生成发送到 Log Analytics 的日志数据。 若要通过运行查询来搜索日志，请选择“清单”窗口顶部的“Log Analytics”。
+清单生成发送到 Azure Monitor 日志的日志数据。 若要通过运行查询来搜索日志，请选择“清单”窗口顶部的“Log Analytics”。
 
 清单数据存储在 **ConfigurationData** 类型下。
 以下示例 Log Analytics 查询返回 Publisher 等于“Microsoft Corporation”的清单结果。
@@ -113,11 +115,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-若要详细了解如何在 Log Analytics 中运行和搜索日志文件，请参阅 [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md)。
+若要详细了解如何在 Azure Monitor 日志中运行和搜索日志文件，请参阅 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)。
 
 ### <a name="single-machine-inventory"></a>单个计算机的清单
 
-若要查看单个计算机的软件清单，可以访问 Azure VM 资源页中的“清单”，也可以使用 Log Analytics 筛选出相应的计算机。
+若要查看单个计算机的软件清单，可以访问 Azure VM 资源页中的“清单”，也可以使用 Azure Monitor 日志筛选出相应的计算机。
 以下 Log Analytics 查询示例返回名为 ContosoVM 的计算机的软件列表。
 
 ```loganalytics

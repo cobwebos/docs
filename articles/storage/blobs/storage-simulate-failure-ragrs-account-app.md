@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
-ms.openlocfilehash: 2d86c0c4838fb2ae9d839e64a067824019133d8b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0cbb4d2bc6449dc1cf12a374085b429743224995
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024427"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872873"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>教程：模拟访问读取访问冗余存储时发生的故障
 
@@ -75,7 +75,7 @@ ms.locfileid: "54024427"
 
 ### <a name="interrupting-the-application"></a>中断应用程序
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7](#tab/dotnet-python-java-v7)
 
 在 IDE 或 shell 中运行应用程序。
 
@@ -83,7 +83,7 @@ ms.locfileid: "54024427"
 
 ![方案应用程序](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 在 IDE 或 shell 中运行应用程序。
 
@@ -113,7 +113,7 @@ ms.locfileid: "54024427"
          }
 ```
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7](#tab/dotnet-python-java-v7)
 
 若要恢复应用程序，请按任意键。
 
@@ -123,7 +123,7 @@ ms.locfileid: "54024427"
 
 ![粘贴自定义规则](media/storage-simulate-failure-ragrs-account-app/figure3.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 引入故障以后，请输入 **G** 来测试故障。
 
@@ -133,7 +133,7 @@ ms.locfileid: "54024427"
 
 ### <a name="simulate-primary-endpoint-restoration"></a>模拟主终结点还原
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7](#tab/dotnet-python-java-v7)
 
 借助上一步中设置的 Fiddler 自定义规则，向主终结点发出的请求失败。
 
@@ -153,7 +153,7 @@ ms.locfileid: "54024427"
 
 ![恢复应用程序](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 借助上一步中设置的 Fiddler 自定义规则，向主终结点发出的请求失败。
 
@@ -173,11 +173,11 @@ ms.locfileid: "54024427"
 
 ### <a name="start-and-pause-the-application"></a>启动和暂停应用程序
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7](#tab/dotnet-python-java-v7)
 
 在 IDE 或 shell 中运行应用程序。 在应用程序开始从主终结点读取内容后，立即按控制台窗口中的任意键，暂停应用程序。
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 由于你可以控制示例，因此不需中断它即可测试故障。
 
@@ -210,13 +210,13 @@ nslookup STORAGEACCOUNTNAME.blob.core.windows.net
 
 将 `<destination_ip>` 替换为存储帐户 IP 地址，将 `<gateway_ip>` 替换为本地主机 IP 地址。
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7](#tab/dotnet-python-java-v7)
 
 若要恢复应用程序，请按任意键。
 
 当应用程序再次开始运行后，向主终结点发出的请求失败。 应用程序尝试重新连接到主终结点 5 次。 达到 5 次故障重试阈值后，便会从只读辅助终结点请求获取映像。 从辅助终结点成功检索映像 20 次后，应用程序便会尝试连接到主终结点。 如果仍无法访问主终结点，应用程序会继续从辅助终结点读取内容。 这种模式就是上一教程中介绍的[断路器](/azure/architecture/patterns/circuit-breaker)模式。
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 引入故障以后，请输入 **G** 来测试故障。 它会告知你，它使用的是辅助管道而不是主管道。
 
@@ -236,14 +236,14 @@ nslookup STORAGEACCOUNTNAME.blob.core.windows.net
 
 `route delete <destination_ip>`
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python 和 Java v7](#tab/dotnet-python-java-v7)
 
 若要恢复应用程序，请按任意键。 应用程序会继续从主终结点读取内容，直到达到 999 次读取上限为止。
 
 ![恢复应用程序](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 输入 **G** 来测试下载。 应用程序会报告，它现在再次使用主管道。
 

@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 9fa1e3ffd92b3c375837c7b9a4a0e7fd1a80893a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 77dda5f113a10f0bfb59457b1059563c58db0dde
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433673"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816925"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
@@ -62,12 +62,14 @@ ms.locfileid: "54433673"
 此代理用于与 VM 通信并获取有关已安装软件的信息。
 
 启用解决方案最多可能需要 15 分钟。 在此期间，不应关闭浏览器窗口。
-启用该解决方案后，VM 中有关已安装软件和更改的信息会流向 Log Analytics。
+启用该解决方案后，VM 中有关已安装软件和更改的信息会流向 Azure Monitor 日志。
 这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
 
-## <a name="using-change-tracking-in-log-analytics"></a>在 Log Analytics 中使用更改跟踪
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-更改跟踪生成发送到 Log Analytics 的日志数据。
+## <a name="using-change-tracking-in-azure-monitor-logs"></a>使用 Azure Monitor 日志中的更改跟踪
+
+更改跟踪生成发送到 Azure Monitor 日志的日志数据。
 若要通过运行查询来搜索日志，请选择“更改跟踪”窗口顶部的“Log Analytics”。
 更改跟踪数据存储在 **ConfigurationChange** 类型下。
 以下示例 Log Analytics 查询返回所有已停止的 Windows 服务。
@@ -77,7 +79,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-若要详细了解如何在 Log Analytics 中运行和搜索日志文件，请参阅 [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md)。
+若要详细了解如何在 Azure Monitor 日志中运行和搜索日志文件，请参阅 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="configure-change-tracking"></a>配置更改跟踪
 

@@ -1,72 +1,92 @@
 ---
-title: 快速入门：必应拼写检查 API，Python
+title: 快速入门：使用必应拼写检查 REST API 和 Python 检查拼写
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
+description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 5aa67c0e582d64f258da7abd01a9492daaf91efd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e95006c6448bf1179d33bcd00c16d6e4246db148
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882278"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887312"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-python"></a>通过 Python 使用必应拼写检查 API 快速入门 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>快速入门：使用必应拼写检查 REST API 和 Python 检查拼写
 
-本文展示了如何通过 Python 使用[必应拼写检查 API](https://azure.microsoft.com/services/cognitive-services/spell-check/)。 拼写检查 API 返回它无法识别的单词和建议的替换的列表。 通常，你将向此 API 提交文本，然后在文本中进行建议的替换，或者向应用程序的用户显示这些替换，以便他们可以决定是否进行替换。 本文介绍如何发送包含文本“Hollo, wrld!”的请求 建议的替换为“Hello”和“world”。
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 Python 应用程序将向 API 发送请求并返回一系列建议的更正。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) 上提供了此应用程序的源代码
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Python 3.x](https://www.python.org/downloads/) 来运行此代码。
+* Python [3.x](https://www.python.org)
 
-必须创建一个使用必应拼写检查 API v7 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#lang)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。 另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>获取拼写检查结果
 
-1. 在喜欢使用的 IDE 中创建新的 Python 项目。
-2. 添加下方提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+## <a name="initialize-the-application"></a>初始化应用程序
 
-```python
-import http.client, urllib.parse, json
+1. 在偏好的 IDE 或编辑器中创建新的 Python 文件，然后添加以下 import 语句。
 
-text = 'Hollo, wrld!'
+   ```python
+   import requests
+   import json
+   ```
 
-data = {'text': text}
+2. 为要进行拼写检查的文本、订阅密钥和必应拼写检查终结点创建变量。
 
-# NOTE: Replace this example key with a valid subscription key.
-key = 'ENTER KEY HERE'
+    ```python
+    api_key = "enter-your-key-here"
+    example_text = "Hollo, wrld" # the text to be spell-checked
+    endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/SpellCheck"
+    ```
 
-host = 'api.cognitive.microsoft.com'
-path = '/bing/v7.0/spellcheck?'
-params = 'mkt=en-us&mode=proof'
+## <a name="create-the-parameters-for-the-request"></a>为请求创建参数
 
-headers = {'Ocp-Apim-Subscription-Key': key,
-'Content-Type': 'application/x-www-form-urlencoded'}
+1. 新建以 `text` 为密钥、以文本为值的字典。
 
-# The headers in the following example 
-# are optional but should be considered as required:
-#
-# X-MSEdge-ClientIP: 999.999.999.999  
-# X-Search-Location: lat: +90.0000000000000;long: 00.0000000000000;re:100.000000000000
-# X-MSEdge-ClientID: <Client ID from Previous Response Goes Here>
+    ```python
+    data = {'text': example_text}
+    ```
 
-conn = http.client.HTTPSConnection(host)
-body = urllib.parse.urlencode (data)
-conn.request ("POST", path + params, body, headers)
-response = conn.getresponse ()
-output = json.dumps(json.loads(response.read()), indent=4)
-print (output)
-```
+2. 为请求添加参数。 将 `mkt` 参数设置为你的市场，`mode` 设置为 `proof`。 
 
-**响应**
+    ```python
+    params = {
+        'mkt':'en-us',
+        'mode':'proof'
+        }
+    ```
+
+3. 添加 `Content-Type` 标头，并向 `Ocp-Apim-Subscription-Key` 标头添加订阅密钥。
+
+    ```python
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Ocp-Apim-Subscription-Key': api_key,
+        }
+    ```
+
+## <a name="send-the-request-and-read-the-response"></a>发送请求并读取响应
+
+1. 使用请求库发送 POST 请求。
+
+    ```python
+    response = requests.post(endpoint, headers=headers, params=params, data=data)
+    ```
+
+2. 获取 JSON 响应，并将其打印。
+    
+    ```python
+    json_response = response.json()
+    print(json.dumps(json_response, indent=4))
+    ```
+
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -111,9 +131,7 @@ print (output)
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应拼写检查教程](../tutorials/spellcheck.md)
+> [创建单页 Web 应用](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>另请参阅
-
-- [必应拼写检查概述](../proof-text.md)
+- [什么是必应拼写检查 API？](../overview.md)
 - [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1962cef85c5e663de640f296a6e8e9efd5a1f4d6
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 513df9f68fdd54b5dc90e57bd8389688c46bf615
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310349"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804240"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Python SDK 开始使用 Azure 机器学习
 
@@ -60,16 +60,18 @@ ms.locfileid: "56310349"
 
 在安装该 SDK 之前，建议创建一个隔离的 Python 环境。 尽管本文使用 [Miniconda](https://docs.conda.io/en/latest/miniconda.html)，但也可以使用完整安装的 [Anaconda](https://www.anaconda.com/)，或使用 [Python virtualenv](https://virtualenv.pypa.io/en/stable/)。
 
+此快速入门中的说明会安装运行快速入门和教程笔记本所需的所有程序包。  其他示例笔记本可能需要安装附加组件。  有关这些组件的详细信息，请参阅[安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install)。
+
 ### <a name="install-miniconda"></a>安装 Miniconda
 
-[下载并安装 Miniconda](https://docs.conda.io/en/latest/miniconda.html)。 选择要安装的 Python 3.7 或更高版本。 请勿选择 Python 2.x 版本。  
+[下载并安装 Miniconda](https://docs.conda.io/en/latest/miniconda.html)。 选择 Python 3.7 版本进行安装。 请勿选择 Python 2.x 版本。  
 
 ### <a name="create-an-isolated-python-environment"></a>创建隔离的 Python 环境
 
-1. 打开命令行窗口，然后创建名为 *myenv* 的新 conda 环境，并安装 Python 3.6。 Azure 机器学习 SDK 可与 Python 3.5.2 或更高版本配合工作，但自动化机器学习组件不能在 Python 3.7 上完全正常运行。
+1. 打开命令行窗口，然后创建名为 myenv 的新 conda 环境，并安装 Python 3.6.5。 Azure 机器学习 SDK 可与 Python 3.5.2 或更高版本配合工作，但自动化机器学习组件不能在 Python 3.7 上完全正常运行。  下载组件和包时，创建环境需要花费几分钟。
 
     ```shell
-    conda create -n myenv -y Python=3.6
+    conda create -n myenv python=3.6.5
     ```
 
 1. 激活该环境。
@@ -78,18 +80,24 @@ ms.locfileid: "56310349"
     conda activate myenv
     ```
 
+1. 启用特定于环境的 ipython 内核：
+
+    ```shell
+    conda install notebook ipykernel
+    ```
+
+    创建内核：
+
+    ```shell
+    ipython kernel install --user
+    ```
+
 ### <a name="install-the-sdk"></a>安装 SDK
 
 1. 在已激活的 conda 环境中，安装机器学习 SDK 的核心组件以及 Jupyter Notebook 功能。  安装需要数分钟才能完成，取决于计算机的配置。
 
   ```shell
     pip install --upgrade azureml-sdk[notebooks]
-    ```
-
-1. 在 conda 环境中安装 Jupyter Notebook 服务器。
-
-  ```shell
-    conda install -y nb_conda
     ```
 
 1. 若要在 Azure 机器学习教程中使用此环境，请安装这些包。

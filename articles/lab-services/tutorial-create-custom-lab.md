@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 0530dbac88fcfbfb05ab29d1c5934a468f263034
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: aff92e8dd45fecc3fabd005e8921eda7add07fb4
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096630"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804945"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教程：使用 Azure 开发测试实验室设置实验室
 在此教程中，使用 Azure 门户创建实验室。 实验室管理员在组织中设置实验室、创建实验室中的 VM 并配置策略。 实验室用户（例如：开发人员和测试人员）认领、连接到并使用实验室中的 VM。 
@@ -80,7 +80,7 @@ ms.locfileid: "55096630"
 1. 创建 VM 之后，可在列表中的“可认领的虚拟机”列表中进行查看。 
 
     > [!NOTE] 
-    > 向实验室添加 Linux VM 时，可以允许通过 SSH 和 RDP 方式访问 VM。 如果在创建 VM 时未启用此访问权限，可以手动在与该 VM 关联的网络安全组中添加规则，为 SSH 和 RDP 打开端口。
+    > 在“高级设置”页面上，可以为 VM 配置公共、专用或共享 IP 地址。 启用了“共享 IP”时，Azure 开发测试实验室会自动为 Windows VM 启用 RDP，为 Linux VM 启用 SSH。 如果使用公共 IP 地址创建 VM，则会启用 RDP 和 SSH，而无需开发测试实验室进行任何更改。  
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>将用户添加到实验室用户角色
 

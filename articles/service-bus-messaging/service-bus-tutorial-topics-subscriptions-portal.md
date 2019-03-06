@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: fb3358775881f102ecea62fbd20a1e4d85dda308
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 10f3f7d6b878e8f1d4efee360e0f8a9967ac07bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001628"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886428"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教程：使用 Azure 门户和主题/订阅更新清单
 
@@ -45,49 +45,11 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
 
 每个[对主题的订阅](service-bus-messaging-overview.md#topics)都可以接收每条消息的副本。 主题在协议和语义方面与服务总线队列完全兼容。 服务总线主题支持一系列选择规则，这些规则具有筛选条件和用来设置或修改消息属性的可选操作。 规则每次匹配时，都会生成一条消息。 若要深入了解规则、筛选器和操作，请单击此[链接](topic-filters.md)。
 
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-首先转到 [Azure 门户][Azure portal]，使用 Azure 订阅登录。 第一步是创建类型为“消息传送”的服务总线命名空间。
+[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
-## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-服务总线消息传送命名空间提供唯一的作用域容器，可以通过其[完全限定域名][]进行引用，而在该域名中，可以创建一个或多个队列、主题和订阅。 以下示例在新的或现有的[资源组](/azure/azure-resource-manager/resource-group-portal)中创建一个服务总线消息传送命名空间：
-
-1. 在门户的左侧导航窗格中，依次单击“+ 创建资源”、“企业集成”和“服务总线”。
-2. 在“创建命名空间”  对话框中，输入命名空间名称。 系统会立即检查该名称是否可用。
-3. 在确保命名空间名称可用后，请选择定价层（标准或高级）。
-4. 在“订阅”  字段中，选择要创建命名空间的 Azure 订阅。
-5. 在“资源组”字段中，选择将保留命名空间的现有资源组，或者创建一个新资源组。      
-6. 在“位置” 中，选择应托管命名空间的国家或地区。
-7. 单击“创建”。 系统现已创建命名空间并已将其启用。 可能需要等待几分钟，因为系统将为帐户配置资源。
-
-  ![命名空间](./media/service-bus-tutorial-topics-subscriptions-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>获取管理凭据
-
-创建新的命名空间时，会自动生成一项初始的共享访问签名 (SAS) 规则，将一对主密钥和辅助密钥关联到一起，向每个密钥授予对命名空间的所有资产的完全控制权限。 若要复制初始规则，请执行以下步骤：
-
-1. 单击“所有资源”，然后单击新创建的命名空间名称。
-2. 在命名空间窗口中，单击“共享访问策略”。
-3. 在“共享访问策略”屏幕中，单击“RootManageSharedAccessKey”。
-4. 在“策略: RootManageSharedAccessKey”窗口中，单击“主连接字符串”旁边的“复制”按钮，将连接字符串复制到剪贴板供以后使用。 将此值粘贴到记事本或其他某个临时位置。
-
-    ![connection-string][connection-string]
-5. 重复上述步骤，将**主键**的值复制和粘贴到临时位置，供以后使用。
-
-## <a name="create-a-topic-and-subscriptions"></a>创建主题和订阅
-
-若要创建服务总线主题，请指定要在其中创建该主题的命名空间。 以下示例演示如何在门户中创建主题：
-
-1. 在门户左侧的导航窗格中，单击“服务总线”（如果未看到“服务总线”，请单击“所有服务”）。
-2. 单击要在其中创建主题的命名空间。
-3. 在命名空间窗口中单击“主题”，然后在“主题”窗口中单击“+ 主题”。
-4. 输入主题**名称**，其他值则保留默认值。
-5. 在窗口底部，单击“创建”。
-6. 记下主题名称。
-7. 选择刚创建的主题。
-8. 单击“+ 订阅”，输入订阅名称 **S1**，所有其他值则保留默认值。
-9. 再重复上述步骤两次，创建名为 **S2** 和 **S3** 的订阅。
 
 ## <a name="create-filter-rules-on-subscriptions"></a>在订阅上创建筛选规则
 
@@ -105,7 +67,7 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
 
 2. 导航到示例文件夹 `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters`。
 
-3. 在本教程的[获取管理凭据](#obtain-the-management-credentials)部分获取复制到记事本的连接字符串。 此外还需要在上一部分创建的主题的名称。
+3. 在本教程的“获取管理凭据”部分获取复制到记事本的连接字符串。 此外还需要在上一部分创建的主题的名称。
 
 4. 在命令提示符窗口中键入以下命令：
 
@@ -451,7 +413,7 @@ private async Task ReceiveMessages(string subscription)
 > [使用 PowerShell 和主题/订阅更新库存](service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [免费帐户]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[完全限定域名]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
 [connection-string]: ./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png

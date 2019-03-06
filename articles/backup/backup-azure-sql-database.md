@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec7723044cec391ebe390bbcfba3aa6f2f29ca
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 61219fc4e1fc329708a7e58ee6a293e4e25cca31
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446845"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887805"
 ---
 # <a name="back-up-sql-server-databases-on-azure-vms"></a>备份 Azure VM 上的 SQL Server 数据库 
 
@@ -52,8 +52,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 - 不支持对 FCI 镜像数据库、数据库快照和数据库执行备份和还原操作。
 - 无法保护包含大量文件的数据库。 支持的最大文件数不确定。 这不仅仅取决于文件的数量，而且还取决于文件的路径长度。 
 
-有关支持/不支持的方案的详细信息，请参阅[常见问题解答部分](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq)。
-
+查看有关备份 SQL Server 数据库的[常见问题](faq-backup-sql-server.md)。
 ## <a name="scenario-support"></a>方案支持
 
 **支持** | **详细信息**
@@ -69,9 +68,9 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 在备份 SQL Server 数据库之前，请检查以下条件：
 
 1. 在托管 SQL Server 实例的 VM 所在的同一区域或位置标识或[创建](backup-azure-sql-database.md#create-a-recovery-services-vault)一个恢复服务保管库。
-2. 检查备份 SQL 数据库所需的 [VM 权限](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms)。
+2. 检查备份 SQL 数据库所需的 [VM 权限](#fix-sql-sysadmin-permissions)。
 3. 验证 VM 是否已建立[网络连接](backup-azure-sql-database.md#establish-network-connectivity)。
-4. 检查是否根据 Azure 备份的[命名准则](backup-azure-sql-database.md#sql-database-naming-guidelines-for-azure-backup)命名了 SQL Server 数据库。
+4. 检查是否根据 Azure 备份的[命名准则](backup-azure-sql-database.md)命名了 SQL Server 数据库。
 5. 验证是否未为该数据库启用了其他任何备份解决方案。 在设置此方案之前，请禁用其他所有 SQL Server 备份。 可以同时针对某个 Azure VM 以及该 VM 上运行的 SQL Server 数据库启用 Azure 备份，而不会发生任何冲突。
 
 
@@ -197,7 +196,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
     - 选择默认策略：**HourlyLogBackup**。
     - 选择前面为 SQL 创建的现有备份策略。
-    - 根据 RPO 和保留范围[定义新策略](backup-azure-sql-database.md#define-a-backup-policy)。
+    - 根据 RPO 和保留范围[定义新策略](backup-azure-sql-database.md#configure-a-backup-policy)。
     - 在预览期无法编辑现有的备份策略。
     
 9. 在“备份”菜单中，选择“启用备份”。
@@ -326,7 +325,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
     ![部署成功消息](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-或者，可以通过在“自动保护”列中的相应下拉列表内选择“打开”选项，针对整个实例或 Always On 可用性组启用[自动保护](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)。 [自动保护](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)功能不仅可以一次性针对所有现有数据库启用保护，而且还会自动保护将来要添加到该实例或可用性组的所有新数据库。  
+或者，可以通过在“自动保护”列中的相应下拉列表内选择“打开”选项，针对整个实例或 Always On 可用性组启用[自动保护](backup-azure-sql-database.md#enable-auto-protection)。 [自动保护](backup-azure-sql-database.md#enable-auto-protection)功能不仅可以一次性针对所有现有数据库启用保护，而且还会自动保护将来要添加到该实例或可用性组的所有新数据库。  
 
    ![针对 Always On 可用性组启用自动保护](./media/backup-azure-sql-database/enable-auto-protection.png)
 

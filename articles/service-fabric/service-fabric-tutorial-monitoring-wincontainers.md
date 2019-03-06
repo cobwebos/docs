@@ -3,7 +3,7 @@ title: 在 Azure 中监视和诊断 Service Fabric 上的 Windows 容器 |Micros
 description: 本教程介绍如何配置 Log Analytics 以便监视和诊断 Azure Service Fabric 上的 Windows 容器。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2018
-ms.author: twhitney, dekapur
+ms.author: aljo, dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9249c0bb559328c878d784b54af5117b785daffe
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: f6aa0dcfa4a4f9e2780c8fb886523da347eeaa31
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300619"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806447"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>教程：使用 Log Analytics 监视 Service Fabric 上的 Windows 容器
 
@@ -225,7 +225,7 @@ ms.locfileid: "51300619"
 
 几分钟后刷新容器监视解决方案，应开始看到计算机性能数据出现。 此数据将有助于你了解的资源的使用情况。 此外，还可以使用这些指标做出适当的群集缩放决策，或者使用它们确认群集是否正在按照预期方式平衡负载。
 
-注意：请确保已正确设置时间筛选器，以便于使用这些指标。
+*注意：请确保已正确设置时间筛选器，以便于使用这些指标。*
 
 ![性能计数器 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 

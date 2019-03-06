@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 11/28/2018
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b01e16f85eaccee4d765b4985769df670d4d35ca
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 003b43760b4c0ae5785315e6acf0ed9982d9b1fe
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413024"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960838"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -56,14 +56,14 @@ FQDN 标记使你可以轻松地允许已知的 Azure 服务网络流量通过�
 
 ### <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
-所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Log Analytics。
+所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。
 
 ## <a name="known-issues"></a>已知问题
 
 Azure 防火墙存在以下已知问题：
 
 
-|问题  |Description  |缓解措施  |
+|问题  |说明  |缓解措施  |
 |---------|---------|---------|
 |与 Azure 安全中心 (ASC) 实时 (JIT) 功能冲突|如果使用 JIT 访问虚拟机，并且虚拟机位于具有用户定义路由的子网中，而该路由指向用作默认网关的 Azure 防火墙，则 ASC JIT 不起作用。 这种结果是非对称路由造成的 – 数据包通过虚拟机公共 IP 传入（JIT 开放了访问权限），但返回路径是通过防火墙形成的，因此丢弃了数据包，因为防火墙上未建立会话。|若要解决此问题，请将 JIT 虚拟机放置在未与防火墙建立用户定义的路由的独立子网中。|
 |不支持使用全局对等互连的中心辐射模型|使用中心辐射模型时，中心和防火墙部署在一个 Azure 区域，分支部署在另一个 Azure 区域。 不支持通过全局 VNet 对等互连连接到中心。|这是设计使然。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md#azure-firewall-limits)|

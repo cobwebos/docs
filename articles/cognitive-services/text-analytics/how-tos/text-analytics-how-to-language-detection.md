@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 549ef0d073a740edf700c54d02a0d9ef247db0b7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8197d091763709282c42379a7ca0ea802e5c6fdf
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245080"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886758"
 ---
 # <a name="example-how-to-detect-language-with-text-analytics"></a>示例：如何通过文本分析检测语言
 
@@ -29,7 +29,7 @@ ms.locfileid: "56245080"
 
 必须拥有以下格式的 JSON 文档：ID、文本
 
-每个文档的大小必须少于 5,000 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 下面是可能提交用于语言检测的内容示例。
+每个文档的大小必须少于 5,120 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 下面是可能提交用于语言检测的内容示例。
 
    ```
     {

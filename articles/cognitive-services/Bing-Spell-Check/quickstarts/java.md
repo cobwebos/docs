@@ -1,92 +1,121 @@
 ---
-title: 快速入门：必应拼写检查 API，Java
+title: 快速入门：使用必应拼写检查 REST API 和 Java 进行拼写检查
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
+description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4a61e2a1c1457e0f64f4d1e1b11b98c26827481a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d2905d05dce48b705de44780425ed2b55b02555c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854874"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888978"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-java"></a>通过 Java 使用必应拼写检查 API 快速入门 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>快速入门：使用必应拼写检查 REST API 和 Java 进行拼写检查
 
-本文展示了如何通过 Java 使用[必应拼写检查 API](https://azure.microsoft.com/services/cognitive-services/spell-check/)。 拼写检查 API 返回它无法识别的单词和建议的替换的列表。 通常，你将向此 API 提交文本，然后在文本中进行建议的替换，或者向应用程序的用户显示这些替换，以便他们可以决定是否进行替换。 本文介绍如何发送包含文本“Hollo, wrld!”的请求。 建议的替换将为“Hello”和“world”。
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 Java 应用程序将向 API 发送请求并返回一系列建议的更正。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java) 上提供了此应用程序的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 可使用喜欢的 Java IDE（如果有）操作，但文本编辑器足以满足要求。
+Java 开发工具包 (JDK) 7 或更高版本。
 
-必须创建一个使用必应拼写检查 API v7 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#lang)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>获取拼写检查结果
 
-1. 在喜欢使用的 IDE 中新建一个 Java 项目。
-2. 添加下方提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+## <a name="create-and-initialize-an-application"></a>创建并初始化应用程序
 
-```java
-import java.io.*;
-import java.net.*;
-import javax.net.ssl.HttpsURLConnection;
+1. 在惯用的 IDE 或编辑器中新建一个 Java 项目，并导入以下包。
 
-public class HelloWorld {
+    ```java
+    import java.io.*;
+    import java.net.*;
+    import javax.net.ssl.HttpsURLConnection;
+    ```
 
+2. 为 API 终结点主机、路径和订阅密钥创建变量。 然后，创建市场变量、要进行拼写检查的文本和拼写检查模式的字符串。
+
+    ```java
     static String host = "https://api.cognitive.microsoft.com";
     static String path = "/bing/v7.0/spellcheck";
 
-    // NOTE: Replace this example key with a valid subscription key.
-    static String key = "ENTER KEY HERE";
+    static String key = "ENTER YOUR KEY HERE";
 
     static String mkt = "en-US";
     static String mode = "proof";
     static String text = "Hollo, wrld!";
+    ```
 
-    public static void check () throws Exception {
-        String params = "?mkt=" + mkt + "&mode=" + mode;
-        URL url = new URL(host + path + params);
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("Content-Length", "" + text.length() + 5);
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", key);
-        connection.setDoOutput(true);
+## <a name="create-and-send-an-api-request"></a>创建和发送 API 请求
 
+1. 创建名为 `check()` 的函数，用于创建和发送 API 请求。 在其中，执行以下步骤。 创建请求参数的字符串。 向市场字符串追加 `?mkt=` 参数，向拼写检查模式追加 `&mode=` 参数。  
+
+   ```java
+   public static void check () throws Exception {
+       String params = "?mkt=" + mkt + "&mode=" + mode;
+   //...
+   }
+   ```
+
+2. 通过组合终结点主机、路径和参数字符串，创建 URL。 创建新的 `HttpsURLConnection` 对象。
+
+    ```java
+    URL url = new URL(host + path + params);
+    HttpsURLConnection connection = (HttpsURLConnection) 
+    ```
+
+3. 与 URL 建立连接。 将请求方法设置为 `POST`。 添加请求参数。 请务必将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头中。 
+
+    ```java
+    url.openConnection();
+    connection.setRequestMethod("POST");
+    connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+    connection.setRequestProperty("Ocp-Apim-Subscription-Key", key);
+    connection.setDoOutput(true);
+    ```
+
+4. 创建新的 `DataOutputStream` 对象并向 API 发送请求。
+
+    ```java
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
         wr.writeBytes("text=" + text);
         wr.flush();
         wr.close();
+    ```
 
-        BufferedReader in = new BufferedReader(
-        new InputStreamReader(connection.getInputStream()));
-        String line;
-        while ((line = in.readLine()) != null) {
-            System.out.println(line);
-        }
-        in.close();
+## <a name="read-the-response"></a>读取响应
+
+1. 创建 `BufferedReader` 并读取来自该 API 的响应。 打印到控制台。
+    
+    ```java
+    BufferedReader in = new BufferedReader(
+    new InputStreamReader(connection.getInputStream()));
+    String line;
+    while ((line = in.readLine()) != null) {
+        System.out.println(line);
     }
+    in.close();
+    ```
 
+2. 在应用程序的主函数中，调用上面创建的函数。 
+
+    ```java
     public static void main(String[] args) {
         try {
-            check ();
+            check();
         }
         catch (Exception e) {
             System.out.println (e);
         }
     }
-}
-```
-
-**响应**
+    ```
+    
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -131,9 +160,7 @@ public class HelloWorld {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应拼写检查教程](../tutorials/spellcheck.md)
+> [创建单页 Web 应用](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>另请参阅
-
-- [必应拼写检查概述](../proof-text.md)
+- [什么是必应拼写检查 API？](../overview.md)
 - [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

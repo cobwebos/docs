@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 88e55573e88a45d7733e12c3bb8751763a0ef901
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0885671d777d79c6f8a9fc993aa1224312705bce
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113356"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650897"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -199,6 +199,15 @@ ms.locfileid: "56113356"
 | - | - | - |
 | A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
+
+> [!NOTE]
+> 若要使用 A 记录（而不是建议的 [CNAME 记录](#map-a-cname-record)）添加子域（如 `www.contoso.com`），A 记录和 TXT 记录应改为类似于下表：
+>
+> | 记录类型 | 主机 | 值 |
+> | - | - | - |
+> | A | `www` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
+> | TXT | `www` | `<app_name>.azurewebsites.net` |
+>
 
 添加记录后，DNS 记录页与以下示例相似：
 

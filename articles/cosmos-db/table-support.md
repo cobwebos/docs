@@ -8,12 +8,12 @@ ms.date: 11/15/2017
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: b105cf6c220534927a16be83ca5db8801c88f6c0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 31072be9ae73791e6458b0aee4490ac90df44d94
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035587"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957957"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>使用 Azure 表存储 API 和 Azure Cosmos DB 进行开发
 
@@ -24,10 +24,15 @@ Azure Cosmos DB 表 API 和 Azure 表存储通过其 SDK 共享相同的表数�
 ## <a name="developing-with-the-azure-cosmos-db-table-api"></a>使用 Azure Cosmos DB 表 API 进行开发
 
 当前，[Azure Cosmos DB 表 API](table-introduction.md) 具有四个可用于进行开发的 SDK： 
-- [Microsoft.Azure.CosmosDB.Table](https://aka.ms/tableapinuget) .NET SDK。 此库不仅与公共 [Microsoft Azure 存储 SDK](https://www.nuget.org/packages/WindowsAzure.Storage) 具有相同的类和方法签名，而且还可以使用表 API 连接到 Azure Cosmos DB 帐户。 请注意，`Microsoft.Azure.CosmosDB.Table` 库目前仅适用于 .NET Standard，尚不可用于 .NET Core。
-- [Python SDK](table-sdk-python.md)。 新的 Azure Cosmos DB Python SDK 是在 Python 中唯一支持 Azure 表存储的 SDK。 此 SDK 与 Azure 表存储和 Azure Cosmos DB 表 API 连接。
-- [Java SDK](table-sdk-java.md)。 此 Azure 存储 SDK 能够使用表 API 连接到 Azure Cosmos DB 帐户。
-- [Node.js SDK](table-sdk-nodejs.md)。 此 Azure 存储 SDK 能够使用表 API 连接到 Azure Cosmos DB 帐户。
+
+* [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table): .NET SDK. 此库面向 .NET Standard，不仅与公共 [Microsoft Azure 存储 SDK](https://www.nuget.org/packages/WindowsAzure.Storage) 具有相同的类和方法签名，而且还可以使用表 API 连接到 Azure Cosmos DB 帐户。 或者，可以使用此 SDK 的以前版本（即 [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table/)，它仅适用于 .NET Framework）。
+
+* [Python SDK](table-sdk-python.md)：新的 Azure Cosmos DB Python SDK 是在 Python 中唯一支持 Azure 表存储的 SDK。 此 SDK 与 Azure 表存储和 Azure Cosmos DB 表 API 连接。
+
+* [Java SDK](table-sdk-java.md)：此 Azure 存储 SDK 能够使用表 API 连接到 Azure Cosmos DB 帐户。
+
+* [Node.js SDK](table-sdk-nodejs.md)：此 Azure 存储 SDK 能够使用表 API 连接到 Azure Cosmos DB 帐户。
+
 
 有关使用表 API 的其他信息可在[常见问题解答：使用表 API 进行开发](faq.md#table)一文中找到。
 

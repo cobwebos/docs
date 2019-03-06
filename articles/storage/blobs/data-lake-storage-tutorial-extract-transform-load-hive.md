@@ -6,14 +6,14 @@ author: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/07/2019
+ms.date: 02/21/2019
 ms.author: jamesbak
-ms.openlocfilehash: cfe06720d0afa0f9f5cf22552ba7ab21d4e617c0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 566af5d42b1b5b778db0a2014b238657ace7db5c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993140"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672621"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
 
@@ -49,24 +49,22 @@ ms.locfileid: "55993140"
 
 ## <a name="download-the-flight-data"></a>下载航班数据
 
-本教程使用美国运输统计局的航班数据，演示如何执行 ETL 操作。 必须下载该数据才能完成本教程。
+1. 浏览到[美国研究与技术创新管理部门、运输统计局](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)。
 
-1. 转到[美国运输统计局的研究与技术创新管理部门](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)。
-
-1. 在该页面上，选择以下值：
+2. 在该页面上，选择以下值：
 
    | 名称 | 值 |
    | --- | --- |
-   | **筛选期间** |1 月 |
-   | **字段** |FlightDate、OriginCityName、WeatherDelay |
+   | 筛选年份 |2013 |
+   | 筛选期间 |1 月 |
+   | 字段 |Year、FlightDate、Reporting_Airline、IATA_CODE_Reporting_Airline、Flight_Number_Reporting_Airline、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
+   清除所有其他字段。
 
-1. 清除所有其他字段。
-
-1. 选择“下载”。 你将得到一个具有所选数据字段的 zip 文件。
+3. 选择“下载”。 你将得到一个具有所选数据字段的 zip 文件。
 
 ## <a name="extract-and-upload-the-data"></a>提取并上传数据
 
-在此部分，需将数据上传到 HDInsight 群集。 
+在此部分中，会将数据上传到 HDInsight 群集，然后将该数据复制到 Data Lake Storage Gen2 帐户。
 
 1. 打开命令提示符，使用以下安全负责 (Scp) 命令将 zip 文件上传到 HDInsight 群集头节点：
 
@@ -134,25 +132,67 @@ ms.locfileid: "55993140"
 
 2. 修改以下文本，将 `<file-system-name>` 和 `<storage-account-name>` 占位符值替换为文件系统名称和存储帐户名称。 然后将文本复制并粘贴到 nano 控制台中，方法是同时按 SHIFT 键和鼠标右键单击按钮。
 
-   ```hiveql
-   DROP TABLE delays_raw;
+    ```hiveql
+    DROP TABLE delays_raw;
+    -- Creates an external table over the csv file
     CREATE EXTERNAL TABLE delays_raw (
-       FL_DATE string,
-       ORIGIN_CITY_NAME string,
-       WEATHER_DELAY float)
+        YEAR string,
+        FL_DATE string,
+        UNIQUE_CARRIER string,
+        CARRIER string,
+        FL_NUM string,
+        ORIGIN_AIRPORT_ID string,
+        ORIGIN string,
+        ORIGIN_CITY_NAME string,
+        ORIGIN_CITY_NAME_TEMP string,
+        ORIGIN_STATE_ABR string,
+        DEST_AIRPORT_ID string,
+        DEST string,
+        DEST_CITY_NAME string,
+        DEST_CITY_NAME_TEMP string,
+        DEST_STATE_ABR string,
+        DEP_DELAY_NEW float,
+        ARR_DELAY_NEW float,
+        CARRIER_DELAY float,
+        WEATHER_DELAY float,
+        NAS_DELAY float,
+        SECURITY_DELAY float,
+        LATE_AIRCRAFT_DELAY float)
+    -- The following lines describe the format and location of the file
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
     LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
-   DROP TABLE delays;
-   CREATE TABLE delays
-   LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
-   AS
-   SELECT FL_DATE AS FlightDate,
-       substring(ORIGIN_CITY_NAME, 2) AS OriginCityName,
-       WEATHER_DELAY AS WeatherDelay
-   FROM delays_raw;
-   ```
+
+    -- Drop the delays table if it exists
+    DROP TABLE delays;
+    -- Create the delays table and populate it with data
+    -- pulled in from the CSV file (via the external table defined previously)
+    CREATE TABLE delays
+    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+    AS
+    SELECT YEAR AS year,
+        FL_DATE AS flight_date,
+        substring(UNIQUE_CARRIER, 2, length(UNIQUE_CARRIER) -1) AS unique_carrier,
+        substring(CARRIER, 2, length(CARRIER) -1) AS carrier,
+        substring(FL_NUM, 2, length(FL_NUM) -1) AS flight_num,
+        ORIGIN_AIRPORT_ID AS origin_airport_id,
+        substring(ORIGIN, 2, length(ORIGIN) -1) AS origin_airport_code,
+        substring(ORIGIN_CITY_NAME, 2) AS origin_city_name,
+        substring(ORIGIN_STATE_ABR, 2, length(ORIGIN_STATE_ABR) -1)  AS origin_state_abr,
+        DEST_AIRPORT_ID AS dest_airport_id,
+        substring(DEST, 2, length(DEST) -1) AS dest_airport_code,
+        substring(DEST_CITY_NAME,2) AS dest_city_name,
+        substring(DEST_STATE_ABR, 2, length(DEST_STATE_ABR) -1) AS dest_state_abr,
+        DEP_DELAY_NEW AS dep_delay_new,
+        ARR_DELAY_NEW AS arr_delay_new,
+        CARRIER_DELAY AS carrier_delay,
+        WEATHER_DELAY AS weather_delay,
+        NAS_DELAY AS nas_delay,
+        SECURITY_DELAY AS security_delay,
+        LATE_AIRCRAFT_DELAY AS late_aircraft_delay
+    FROM delays_raw;
+    ```
 
 3. 保存文件，方法是使用 CTRL+X，然后根据提示键入 `Y`。
 
@@ -170,15 +210,15 @@ ms.locfileid: "55993140"
 
 6. 收到 `jdbc:hive2://localhost:10001/>` 提示时，使用以下查询从导入的航班延误数据中检索数据：
 
-   ```hiveql
-   INSERT OVERWRITE DIRECTORY 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output'
-   ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-   SELECT regexp_replace(OriginCityName, '''', ''),
-       avg(WeatherDelay)
-   FROM delays
-   WHERE WeatherDelay IS NOT NULL
-   GROUP BY OriginCityName;
-   ```
+    ```hiveql
+    INSERT OVERWRITE DIRECTORY '/tutorials/flightdelays/output'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+    SELECT regexp_replace(origin_city_name, '''', ''),
+        avg(weather_delay)
+    FROM delays
+    WHERE weather_delay IS NOT NULL
+    GROUP BY origin_city_name;
+    ```
 
    此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
 
@@ -209,7 +249,7 @@ ms.locfileid: "55993140"
 6. 安装完成后，使用以下命令连接到 SQL 数据库服务器。
 
    ```bash
-   TDSVER=8.0 tsql -H <server-name>.database.windows.net -U <admin-login> -p 1433 -D <database-name>
+   TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
    * 将 `<server-name>` 占位符替换为 SQL 数据库服务器名称。
 
