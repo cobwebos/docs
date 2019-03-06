@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 03/04/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 1fb9917e30a88cf5a68c9e170d66eeaa1d477deb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 12edea505ba3b0c8009512a52e3eea9ecea5bb26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877140"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405192"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
-将 Azure Stack 注册到 Azure 即可从 Azure 下载市场项，并设置向 Microsoft 报告商业数据的功能。 注册 Azure Stack 后，使用情况报告给 Azure 商业组件，并可以用于注册 Azure 计费的订阅 ID 下看到它。
+将 Azure Stack 注册到 Azure 即可从 Azure 下载市场项，并设置向 Microsoft 报告商业数据的功能。 注册 Azure Stack 之后，使用情况会报告给 Azure 商业组件，然后你就可以在用于注册的 Azure 计费订阅 ID 下查看它。
 
 本文中的信息介绍了向 Azure 注册 Azure Stack 集成系统。 有关向 Azure 注册 ASDK 的信息，请参阅 ASDK 文档中的 [Azure Stack 注册](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-register)。
 
@@ -53,13 +53,13 @@ ms.locfileid: "56877140"
 
 - 订阅所有者的帐户用户名和密码。
 
-- 用户帐户必须有权访问 Azure 订阅并且有权在与该订阅关联的目录中创建标识应用程序和服务主体。 我们建议将 Azure Stack 注册到 Azure 使用最低特权管理。 有关如何创建自定义角色定义，用于限制为注册到你的订阅的访问权限的详细信息，请参阅[适用于 Azure Stack 中创建注册角色](azure-stack-registration-role.md)。
+- 用户帐户必须有权访问 Azure 订阅并且有权在与该订阅关联的目录中创建标识应用程序和服务主体。 建议使用最低特权管理将 Azure Stack 注册到 Azure。 若要详细了解如何创建自定义角色定义，以便限制进行注册时对订阅的访问，请参阅[为 Azure Stack 创建注册角色](azure-stack-registration-role.md)。
 
 - 已注册 Azure Stack 资源提供程序（请参阅下面的“注册 Azure Stack 资源提供程序”部分了解详细信息）。
 
 注册后，不需要 Azure Active Directory 全局管理员权限。 但是，某些操作可能需要全局管理员凭据。 例如，资源提供程序安装程序脚本或需要授予权限的新功能。 你可以暂时恢复该帐户的全局管理员权限或使用单独的全局管理员帐户的所有者*默认提供商订阅*。
 
-注册 Azure Stack 的用户是服务主体在 Azure Active Directory 中的所有者。 只有已注册 Azure Stack 的用户可以修改 Azure Stack 注册。 如果不是注册服务主体的所有者的非管理员用户尝试注册，或者重新注册 Azure Stack，它们可能会遇到 403 响应。 403 响应指示用户没有足够的权限才能完成该操作。
+注册 Azure Stack 的用户是 Azure Active Directory 中服务主体的所有者。 只有注册了 Azure Stack 的用户可以修改 Azure Stack 注册。 如果某位非管理员用户不是注册服务主体的所有者，则该用户在尝试注册或重新注册 Azure Stack 时，可能会遇到 403 响应。 403 响应表明用户权限不足，无法完成此操作。
 
 如果没有符合这些要求的 Azure 订阅，则可以[创建免费的 Azure 帐户此处](https://azure.microsoft.com/free/?b=17.06)。 注册 Azure Stack 不会对 Azure 订阅收取任何费用。
 
@@ -77,7 +77,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 使用适用于 Azure Stack 的最新 PowerShell 来注册到 Azure。
 
-如果尚未安装最新版本，请参阅[安装适用于 Azure Stack PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)。
+如果最新版本尚未安装，请参阅[安装适用于 Azure Stack 的 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install)。
 
 ### <a name="download-the-azure-stack-tools"></a>下载 Azure Stack 工具
 
@@ -303,7 +303,7 @@ Run: Get-AzureStackStampInformation
 
 ## <a name="verify-azure-stack-registration"></a>验证 Azure Stack 注册
 
-可以使用“区域管理”磁贴，验证 Azure Stack 注册是否成功。 可在管理员门户的默认仪表板上使用此磁贴。 状态可能是已注册，也可能是未注册。 如果是已注册，则还会显示用于注册 Azure Stack 的 Azure 订阅 ID，以及注册资源组和名称。
+可以使用“区域管理”磁贴，验证 Azure Stack 注册是否成功。 此磁贴是可在管理门户的默认仪表板上。 状态可能是已注册，也可能是未注册。 如果是已注册，则还会显示用于注册 Azure Stack 的 Azure 订阅 ID，以及注册资源组和名称。
 
 1. 登录到 [Azure Stack 管理门户](https://adminportal.local.azurestack.external)。
 
@@ -325,7 +325,7 @@ Run: Get-AzureStackStampInformation
 
     Azure Stack 应用注册带有 **Azure Stack** 前缀。
 
-或者，可以使用“市场管理”功能来验证注册是否成功。 如果在“市场管理”边栏选项卡中看到市场项列表，即表示注册成功。 但是，在离线环境中，无法在“市场管理”中看到市场项。 不过，可以使用脱机工具来验证注册。
+或者，可以使用“市场管理”功能来验证注册是否成功。 如果在“市场管理”边栏选项卡中看到市场项列表，即表示注册成功。 但是，在离线环境中，无法在“市场管理”中看到市场项。
 
 > [!NOTE]
 > 完成注册后，将不再显示提示未注册的活动警告。 在离线场景中，即使注册成功，“市场管理”中也仍会显示一条消息，要求你注册并激活 Azure Stack。
@@ -483,11 +483,11 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 ## <a name="registration-failures"></a>注册失败
 
-尝试注册 Azure Stack 时，你可能会看到下列错误之一：
-1. 无法为 $hostName 检索必需的硬件信息。 请检查物理主机和连接，然后尝试重新运行注册。
-2. 无法连接到 $hostName 获取硬件信息-请检查物理主机和连接，然后尝试重新运行注册。
+在尝试注册 Azure Stack 时，可能会看到以下错误之一：
+1. 无法检索 $hostName 的必需硬件信息。 请检查物理主机和连接性，然后尝试重新运行注册。
+2. 无法连接到 $hostName 以获取硬件信息 - 请检查物理主机和连接性，然后尝试重新运行注册。
 
-原因：这通常是因为我们尝试从主机尝试激活获取硬件详细信息，例如 UUID、 Bios 和 CPU，都不能为由于无法连接到物理主机。
+原因：这通常是因为我们尝试从主机获取硬件详细信息（例如 UUID、Bios 和 CPU）以尝试激活，但却无法完成它，因为无法连接到物理主机。
 
 ## <a name="next-steps"></a>后续步骤
 

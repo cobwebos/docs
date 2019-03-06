@@ -15,23 +15,23 @@ ms.date: 01/08/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 898fb12c4e38804cca71be6ef08b078f92633e32
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9300e60902b9234af01a64173eefcfb1bc033c61
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240147"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410190"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>验证 Azure Stack PKI 证书
 
-可[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)获取本文所述的 Azure Stack 就绪性检查器工具。 使用该工具可以验证[生成的 PKI 证书](azure-stack-get-pki-certs.md)是否适用于前期部署。 通过保留足够的时间来测试并根据需要重新颁发的证书来验证证书。
+可[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)获取本文所述的 Azure Stack 就绪性检查器工具。 使用该工具可以验证[生成的 PKI 证书](azure-stack-get-pki-certs.md)是否适用于前期部署。 请留出足够的时间来验证证书，以测试证书并在必要时重新颁发证书。
 
 就绪性检查器工具执行以下证书验证：
 
 - **读取 PFX**  
-    检查有效的 PFX 文件，正确的密码，并公开信息不受到密码。 
+    检查 PFX 文件是否有效且密码正确，以及公开的信息是否受密码保护。 
 - **签名算法**  
-    检查签名算法不是 SHA1。
+    检查签名算法是否不是 SHA1。
 - **私钥**  
     检查私钥是否存在，并且已连同“本地计算机”属性一起导出。 
 - **证书链**  
@@ -83,7 +83,11 @@ ms.locfileid: "55240147"
     ```
     
     > [!Note]  
-    > 如果使用 AD FS 作为标识系统，则需要 AD FS 和 Graph。
+    > 如果使用 AD FS 作为标识系统，则需要 AD FS 和 Graph。 例如：
+    >
+    > ```PowerShell  
+    > $directories = 'ADFS','Graph','ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    > ```
     
      - 将证书放入上一步骤中创建的相应目录。 例如：  
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`

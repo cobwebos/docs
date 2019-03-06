@@ -16,15 +16,15 @@ ms.date: 01/21/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 9157acc7517aea56f087a3dbff0fe7114f8b4c87
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c69b124f84e87e8f0b937dfa275378c376894f9b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55958799"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447194"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack 开发工具包体系结构
-Azure Stack 开发工具包 (ASDK) 是在单个主机计算机上运行的 Azure Stack 的单节点部署。 若要为 Azure Stack 提供 NAT 和 VPN 功能在主计算机上安装 edge 路由 compontents。 在物理主机计算机的 Hyper-v 的目标层中运行 azure Stack 基础结构角色。
+Azure Stack 开发工具包 (ASDK) 是在单个主计算机上运行的 Azure Stack 的单节点部署。 若要为 Azure Stack 提供 NAT 和 VPN 功能在主计算机上安装 edge 路由组件。 Azure Stack 基础结构角色在物理主计算机的 Hyper-V 层中运行。
 
 
 ## <a name="virtual-machine-roles"></a>虚拟机角色

@@ -16,12 +16,12 @@ ms.date: 1/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 1/09/2019
-ms.openlocfilehash: aaa4dc48f237a4647cfde330e40eda91eeb1388d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 176cf22957725927f9705985bf5471a1c5e4caad
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768726"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436317"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>SQL 资源提供程序 1.1.30.0 发行说明
 
@@ -49,7 +49,7 @@ ms.locfileid: "55768726"
 
 ### <a name="fixes"></a>修复项
 
-- **SQL 资源提供程序 Azure Stack PowerShell 兼容性**。 SQL 资源提供程序经过更新，可与 Azure Stack 2018-03-01-hybrid PowerShell 配置文件配合运行，并与 AzureRM 1.3.0 和更高版本兼容。
+- **SQL 资源提供程序兼容性 Azure Stack PowerShell**。 SQL 资源提供程序经过更新，可与 Azure Stack 2018-03-01-hybrid PowerShell 配置文件配合运行，并与 AzureRM 1.3.0 和更高版本兼容。
 
 - **SQL 登录 - 更改密码边栏选项卡**。 修复了无法在“更改密码”边栏选项卡上更改密码的问题。 删除了密码更改通知中的链接。
 
@@ -82,9 +82,9 @@ ms.locfileid: "55768726"
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
-- **SQL 资源提供程序无法添加 SQL Server Always On 侦听器**。 使用侦听器 IP 地址的 SQL Server Always On 侦听器时，SQL 资源提供程序 VM 无法解析该侦听器的主机名。
+- **SQL 资源提供程序无法添加 SQL Server Always On 侦听器**。 使用 SQL Server Always On 侦听器的 IP 地址时，SQL 资源提供程序 VM 无法解析侦听器的主机名。
 
-    **解决方法**：确保 DNS 正常将侦听器 IP 解析为侦听器主机名称。
+    **解决方法**：确保 DNS 正常运行，以便将侦听器 IP 解析为侦听器主机名。
     
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>云管理员操作 Azure Stack 时的已知问题
 请参阅 [Azure Stack 发行说明](azure-stack-servicing-policy.md)中的文档。

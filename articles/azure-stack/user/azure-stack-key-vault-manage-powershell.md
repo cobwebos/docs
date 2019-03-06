@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 4ec662cd60e2ca8e5db76a3fda4c68df6f3164e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b5c43215ce1800ac162c8b5d19ba4d4c987a3bac
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893675"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445800"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>使用 PowerShell 管理 Azure Stack 中的 Key Vault
 
@@ -33,7 +33,7 @@ ms.locfileid: "55893675"
 * 授权用户或应用程序调用保管库中的操作。
 
 >[!NOTE]
->本文中介绍的 Key Vault PowerShell cmdlet 在 Azure PowerShell SDK 中提供。
+>Azure PowerShell SDK 中提供了本文中所述的密钥保管库 PowerShell cmdlet。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -51,7 +51,7 @@ Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 
 **输出**
 
-如果为保管库操作启用你的订阅，则输出会显示"RegistrationState"为"已注册"的所有资源类型的密钥保管库。
+如果订阅可以进行保管库操作，则输出会显示某个密钥保管库的所有资源类型的“RegistrationState”为“已注册”。
 
 ![密钥保管库注册状态](media/azure-stack-key-vault-manage-powershell/image1.png)
 
@@ -65,7 +65,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 如果注册成功，则返回以下输出：
 
-![注册](media/azure-stack-key-vault-manage-powershell/image2.png) 调用密钥保管库密钥时，可能会遇到错误，例如“该订阅未注册为使用命名空间 'Microsoft.KeyVault'。”如果遇到错误，确认你已按照前面所述的说明启用密钥保管库资源提供程序。
+![注册](media/azure-stack-key-vault-manage-powershell/image2.png) 调用密钥保管库密钥时，可能会遇到错误，例如“该订阅未注册为使用命名空间 'Microsoft.KeyVault'。”如果遇到错误，请确认已按以前提到过的说明启用 Key Vault 资源提供程序。
 
 ## <a name="create-a-key-vault"></a>创建 key vault
 
@@ -96,7 +96,7 @@ New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location 
 
 ### <a name="active-directory-federation-services-ad-fs-deployment"></a>Active Directory 联合身份验证服务 (AD FS) 部署
 
-在 AD FS 部署中，可能会收到此警告："未设置访问策略。 没有用户或应用程序具有使用此保管库所需的访问权限。” 若要解决此问题，请通过 [Set-AzureRmKeyVaultAccessPolicy](#authorize-an-application-to-use-a-key-or-secret) 命令设置保管库的访问策略：
+在 AD FS 部署中，可能会收到此警告：“未设置访问策略。 没有用户或应用程序具有使用此保管库所需的访问权限。” 若要解决此问题，请通过 [Set-AzureRmKeyVaultAccessPolicy](#authorize-an-application-to-use-a-key-or-secret) 命令设置保管库的访问策略：
 
 ```PowerShell
 # Obtain the security identifier(SID) of the active directory user

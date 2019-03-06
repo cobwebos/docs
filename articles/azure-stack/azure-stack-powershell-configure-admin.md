@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 03/04/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: d5b2b1a73a15874072caacd7549c1c328e7edb26
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 5a959cdf15371aeda20df3796f31919484da11c5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116552"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409952"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>以操作员身份使用 PowerShell 连接到 Azure Stack
 
@@ -30,7 +30,7 @@ ms.locfileid: "56116552"
 
 ## <a name="prerequisites"></a>必备组件
 
-运行以下先决条件[开发工具包](./asdk/asdk-connect.md#connect-with-rdp)或基于 Windows 的外部客户端如果[连接到通过 VPN ASDK](./asdk/asdk-connect.md#connect-with-vpn)。 
+如果已[通过 VPN 连接到 ASDK](./asdk/asdk-connect.md#connect-with-vpn)，请通过[开发工具包](./asdk/asdk-connect.md#connect-with-rdp)或基于 Windows 的外部客户端运行以下先决条件操作。 
 
  - 安装 [Azure Stack 兼容的 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
  - 下载[使用 Azure Stack 所需的工具](azure-stack-powershell-download.md)。  
@@ -68,7 +68,7 @@ Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanage
   ```
 
 > [!Note]  
-> AD FS 仅支持交互式身份验证的用户标识。 如果是必需的凭据对象，则必须使用服务主体 (SPN)。 设置服务主体与 Azure Stack 和 AD FS 作为标识管理服务的详细信息，请参阅[适用于 AD FS 管理服务主体](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)。
+> AD FS 仅支持通过用户标识进行交互式身份验证。 如果需要凭据对象，则必须使用服务主体 (SPN)。 若要详细了解如何在设置服务主体时将 Azure Stack 和 AD FS 作为标识管理服务，请参阅[管理 AD FS的服务主体](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)。
 
 ## <a name="test-the-connectivity"></a>测试连接
 
@@ -82,3 +82,4 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
  - [为 Azure Stack 开发模板](user/azure-stack-develop-templates.md)
  - [通过 PowerShell 部署模板](user/azure-stack-deploy-template-powershell.md)
+- [Azure Stack 模块参考](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)  
