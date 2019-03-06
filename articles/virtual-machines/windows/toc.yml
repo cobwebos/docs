@@ -193,16 +193,12 @@ items:
         href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       - name: 将 VM 故障转移到另一个区域
         href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: 将 VM 移到另一个区域
-      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
   - name: 管理 VM
     items:
     - name: VM 使用情况
       href: vm-usage.md
     - name: 常见 PowerShell 任务
       href: ps-common-ref.md
-    - name: 移动 VM
-      href: move-vm.md
     - name: 更改 VM 大小
       href: resize-vm.md
     - name: 交换 OS 磁盘
@@ -391,8 +387,14 @@ items:
       href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
   - name: 使用 VM 扩展
     href: ../extensions/overview.md
-  - name: 迁移 VM
+  - name: 移动和迁移 VM
     items:
+    - name: 更改订阅或资源组
+      href: move-vm.md
+    - name: 移动区域
+      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: 移动到可用性区域
+      href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: 迁移 AWS 和本地 VM
       href: on-prem-to-azure.md
       items:
@@ -459,9 +461,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: 常见问题解答
     href: faq.md
-ms.openlocfilehash: 909c367475f5c41f03f7a30bb68bfc365dde581b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 3ddf84852fee0dc30aa9bc7e9d49f06493f6b0cc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889727"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448435"

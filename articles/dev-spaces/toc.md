@@ -25,6 +25,9 @@
 #### [2 - 多服务开发](multi-service-nodejs.md)
 #### [3 - 团队开发](team-development-nodejs.md)
 
+## 概念
+### [Dev Spaces 工作原理](how-dev-spaces-works.md)
+
 ## 如何
 ### [使用 Azure Cloud Shell 创建 Kubernetes 群集](how-to/create-cluster-cloud-shell.md)
 ### [共享 Azure Dev Spaces](how-to/share-dev-spaces.md)
