@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8784acc0180be1c3e0ac277b7c2a21d422ebccd0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d4854bd623bb11d50a712be3a5aea07db24c2951
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341045"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432237"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>监视和管理 VaaS 门户中的测试
 
@@ -140,7 +140,7 @@ ms.locfileid: "57341045"
 
 #### <a name="cancel-a-test-instance"></a>取消测试实例
 
-计划的测试可能会被取消，如果其状态是`Pending`或`Running`。  
+如果其状态是可能会取消的计划的测试`Pending`或`Running`。  
 
 1. 选择**取消**从上下文菜单打开提示符取消测试实例。
 

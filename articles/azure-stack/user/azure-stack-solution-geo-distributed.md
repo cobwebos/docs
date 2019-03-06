@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7c7279f1895764c2a3ed73e824d44c2eed68240c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 299ea79a7a344a57bf302aae049ba87234427343
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244566"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442777"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>教程：使用 Azure 和 Azure Stack 创建异地分布式应用解决方案
 
@@ -42,7 +42,7 @@ ms.locfileid: "55244566"
 
 #### <a name="scalability-considerations"></a>可伸缩性注意事项
 
-在本教程中构建的解决方案无法处理可伸缩性。 但是，如果与其他 Azure 和本地技术以及解决方案结合使用，则可以满足可伸缩性方面的要求。 有关自动缩放通过流量管理器创建混合解决方案的信息，请参阅[使用 Azure 创建跨云缩放解决方案](azure-stack-solution-cloud-burst.md)。
+在本教程中构建的解决方案无法处理可伸缩性。 但是，如果与其他 Azure 和本地技术以及解决方案结合使用，则可以满足可伸缩性方面的要求。 有关通过流量管理器创建可自动缩放的混合解决方案的信息，请参阅[在 Azure 中创建跨云缩放解决方案](azure-stack-solution-cloud-burst.md)。
 
 #### <a name="availability-considerations"></a>可用性注意事项
 
@@ -107,7 +107,7 @@ ms.locfileid: "55244566"
 设置混合 CI/CD，以将 Web 应用部署到 Azure 和 Azure Stack，并自动将更改推送到这两个云中。
 
 > [!Note]  
-> 需要在 Azure Stack 上创建适当的合成映像用于运行 Windows Server 和 SQL，并需要部署应用服务。 查看应用服务文档[开始使用 Azure Stack 上的应用服务之前](../azure-stack-app-service-before-you-get-started.md)部分，了解 Azure Stack 操作员。
+> 需要在 Azure Stack 上创建适当的合成映像用于运行 Windows Server 和 SQL，并需要部署应用服务。 查看应用服务文档中面向 Azure Stack 操作员的[开始使用 Azure Stack 上的应用服务之前](../azure-stack-app-service-before-you-get-started.md)部分。
 
 #### <a name="add-code-to-azure-repos"></a>向 Azure Repos 中添加代码
 
@@ -274,7 +274,7 @@ Azure DevOps 和 Azure DevOps Server 提供高度可配置、可管理的管道�
 
 -   通过添加 Azure AD 提供的 DNS 条目来更新域的 DNS 区域文件。
 
-例如，若要添加的 northwindcloud.com 和 www.northwindcloud.com DNS 条目，请配置 northwindcloud.com 根域的 DNS 设置。
+例如，若要添加 northwindcloud.com 和 www.northwindcloud.com 的 DNS 条目，请配置 northwindcloud.com 根域的 DNS 设置。
 
 > [!Note]  
 >  可使用购买的域名[Azure 门户](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)。  
@@ -533,7 +533,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 #### <a name="test-https"></a>测试 HTTPS
 
-在不同的浏览器中浏览到 https://<your.custom.domain>，以确保可以访问 Web 应用。
+在各种浏览器，浏览到 https://<your.custom.domain>to 确保 web 应用提供服务。
 
 ![Alt text](media/azure-stack-solution-geo-distributed/image42.png)
 

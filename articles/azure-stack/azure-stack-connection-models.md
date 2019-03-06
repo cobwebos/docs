@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 9760e6b9cdcd6f03f4377277f3426189b1fe0a61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/21/2019
+ms.openlocfilehash: f58d4e4f8b0e095fe64489fb42f78ef82c5af359
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182011"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407810"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure Stack 集成系统连接模型
-如果有兴趣购买 Azure Stack 集成系统，您需要了解[多个数据中心集成注意事项](azure-stack-datacenter-integration.md)为 Azure Stack 部署确定系统将如何适应你的数据中心。 此外，你将需要决定如何将将 Azure Stack 集成到混合云环境。 本文概述了这些主要决策，包括 Azure 连接决策、标识存储决策和计费模型决策。
+如果你有兴趣购买 Azure Stack 集成系统，则需要了解[几个数据中心集成注意事项](azure-stack-datacenter-integration.md)，以便 Azure Stack 部署确定系统将如何适应数据中心。 此外，还需要确定如何将 Azure Stack 集成到混合云环境。 本文概述了这些主要决策，包括 Azure 连接决策、标识存储决策和计费模型决策。
 
 如果你决定购买一个集成系统，原始设备制造商 (OEM) 硬件供应商可帮助更详细地指导你完成大部分规划过程。 他们还将执行实际部署。
 
@@ -38,12 +38,14 @@ ms.locfileid: "56182011"
 
 
 |选项|已连接到 Azure|已与 Azure 断开连接|
-|-----|-----|-----|
+|-----|:-----:|:-----:|
 |Azure AD|![支持](media/azure-stack-connection-models/check.png)| |
 |AD FS|![支持](media/azure-stack-connection-models/check.png)|![支持](media/azure-stack-connection-models/check.png)|
 |基于使用的计费|![支持](media/azure-stack-connection-models/check.png)| |
 |基于容量的计费|![支持](media/azure-stack-connection-models/check.png)|![支持](media/azure-stack-connection-models/check.png)|
-|将更新包直接下载到 Azure Stack|![支持](media/azure-stack-connection-models/check.png)|  |
+|许可| 企业协议或云解决方案提供商 | 企业协议 |
+|修补和更新|更新包可以直接从 Internet 下载到 Azure Stack |  需要<br><br>此外需要使用可移动媒体<br> 和独立的连接的设备 |
+| 注册 | 自动 | 需要<br><br>此外需要使用可移动媒体<br> 和独立的连接的设备 |
 
 选定 Azure Stack 部署要使用的 Azure 连接模型后，必须对标识存储和计费方法做出其他与连接相关的决策。 
 
