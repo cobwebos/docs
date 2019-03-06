@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 44fc096fa95be3a469ada7c7dc212ce4fc04e83b
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: ff07d2197f1a0bd67a3c152941e7c9f466e5e414
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57218050"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441519"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack 存储：差异和注意事项
 
@@ -35,13 +35,13 @@ Azure Stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Az
 | Feature | Azure（公有云） | Azure Stack |
 | --- | --- | --- |
 |文件存储|支持基于云的 SMB 文件共享|尚不支持
-|静态数据的 Azure 存储服务加密|256 位 AES 加密。 支持使用 Key Vault 中客户托管密钥的加密。|BitLocker 128 位 AES 加密。 不支持使用客户托管密钥的加密。
-|存储帐户类型|常规用途 V1 和 V2，Blob 存储帐户|仅常规用途 V1。
+|静态数据的 Azure 存储服务加密|256 位 AES 加密。 支持在密钥保管库中使用客户管理的密钥进行加密。|BitLocker 128 位 AES 加密。 不支持使用客户托管密钥的加密。
+|存储帐户类型|常规用途 V1、V2 和 Blob 存储帐户|仅常规用途 V1。
 |复制选项|本地冗余存储、异地冗余存储、读取访问异地冗余存储和区域冗余存储|本地冗余存储。
 |高级存储|完全支持|可预配，但无性能限制或保证。
 |托管磁盘|支持高级和标准版|使用版本 1808 或更高版本时支持。
 |Blob 名称|1024 个字符（2048 个字节）|880 个字符（1,760 字节）
-|块 Blob 大小上限|4.75 TB（100 MB X 50,000 块）|4.75 TB（100 MB x 50,000 块），适用于 1802 更新或更高版本。 50,000 X 4 MB（约 195 GB），适用于以前的版本。
+|块 Blob 大小上限|4.75 TB（100 MB X 50,000 块）|4.75 TB（100 MB x 50,000 块），适用于 1802 更新或更高版本。 50,000 x 4 MB (约 195 GB)，对于以前的版本。
 |页 Blob 快照复制|支持备份已附加到运行中 VM 的 Azure 非托管 VM 磁盘|尚不支持。
 |页 Blob 增量快照复制|支持高级和标准 Azure 页 Blob|尚不支持。
 |页 blob 计费|无论它们是在 blob 还是快照中，对于唯一页面，会产生费用。 将不会产生附加费用与 blob 关联，直到更新基本 blob 的快照。|基本 blob 和 assiociated 快照会产生费用。 将会产生额外的费用为每个单个快照。
@@ -51,8 +51,8 @@ Azure Stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Az
 |页 blob 页面大小|512 字节|4 KB
 |表分区键和行键大小|1,024 个字符（2,048 字节）|400 个字符（800 字节）
 |Blob 快照|一个 blob 的最大快照数不受限制。|一个 blob 的最大快照数为 1,000。
-|有关存储的 azure AD 身份验证|预览中|尚不支持。
-|不可变的 Blob|公开发布|尚不支持。
+|用于存储的 Azure AD 身份验证|处于预览状态|尚不支持。
+|不可变 Blob|公开发布|尚不支持。
 |针对存储的防火墙和虚拟网络规则|公开发布|尚不支持。|
 
 存储指标也有一些差异：
@@ -102,10 +102,10 @@ Azure 存储服务管理 API：
 - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
-有关支持的 Azure Stack 存储客户端库的详细信息，请参阅：[开始使用 Azure Stack 存储开发工具](azure-stack-storage-dev.md)。
+有关 Azure Stack 支持的存储客户端库的详细信息，请参阅：[Azure Stack 存储开发工具入门](azure-stack-storage-dev.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Stack 存储开发工具入门](azure-stack-storage-dev.md)
-* [用于 Azure Stack 存储的数据传输工具](azure-stack-storage-transfer.md)
+* [使用 Azure Stack 存储的数据传输工具](azure-stack-storage-transfer.md)
 * [Azure Stack 存储简介](azure-stack-storage-overview.md)

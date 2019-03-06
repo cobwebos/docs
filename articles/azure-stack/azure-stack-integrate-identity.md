@@ -6,29 +6,19 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 01/23/19
-ms.openlocfilehash: 86a7f98f8232d4fb3e915efee6d9b53f1fae6e7e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 65e5a678b4619897930873e77208005e14c054d2
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737699"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410275"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
-可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
-
-下表显示了这两个标识之间的差别：
-
-||从 Internet 断开连接|连接到 Internet|
-|---------|---------|---------|
-|计费|必须是“容量”<br> 仅限企业协议 (EA)|“容量”或“即用即付”<br>“EA”或“云解决方案提供商”(CSP)|
-|标识|必须是“AD FS”|“Azure AD”或“AD FS”|
-|市场 |支持<br>BYOL 许可|支持<br>BYOL 许可|
-|注册|必需选项，需要使用可移动媒体<br> 和独立的连接设备。|自动|
-|修补和更新|必需选项，需要使用可移动媒体<br> 和独立的连接设备。|可以直接从 Internet<br> 将更新包下载到 Azure Stack。|
+可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 在已连接方案中，可以选择 Azure AD 或 AD FS。 对于断开连接的情况下，AD FS 仅支持。
 
 > [!IMPORTANT]
 > 如果不重新部署整个 Azure Stack 解决方案，则无法切换标识提供者。
@@ -43,7 +33,7 @@ ms.locfileid: "56737699"
 
 现有 AD FS 是将声明发送到 Azure Stack AD FS（资源 STS）的帐户安全令牌服务 (STS)。 在 Azure Stack 中，自动化功能将与现有 AD FS 的元数据终结点建立声明提供程序信任关系。
 
-在现有 AD FS 中，必须配置信赖方信任。 此步骤不是由自动化执行的，而必须由操作员配置。 Azure Stack 元数据终结点在 AzureStackStampDeploymentInfo.JSON 文件中阐述，或者可以运行命令 `Get-AzureStackInfo` 通过特权终结点来阐述。
+在现有 AD FS 中，必须配置信赖方信任。 此步骤不是由自动化执行的，而必须由操作员配置。 可以使用该模式创建适用于 AD FS 的 Azure Stack VIP 终结点`https://adfs.<Region>.<ExternalFQDN>/`。
 
 配置信赖方信任还需要配置 Microsoft 提供的声明转换规则。
 
@@ -73,7 +63,7 @@ Graph 仅支持与单个 Active Directory 林集成。 如果存在多个林，�
 
 如果 Active Directory 部署包含多个站点，请配置最靠近 Azure Stack 部署的 Active Directory 站点。 这种配置可以避免让 Azure Stack Graph 服务使用全局目录服务器从远程站点解析查询。
 
-添加 Azure Stack[公共 VIP 网络](azure-stack-network.md#public-vip-network)到 Azure Stack 与最接近的 Active Directory 站点的子网。 例如，如果你的 Active Directory 具有两个站点西雅图和雷德蒙德西雅图站点上部署 Azure stack，可将 Azure Stack 公共 VIP 网络子网到 Active Directory 站点为西雅图。
+将 Azure Stack [公共 VIP 网络](azure-stack-network.md#public-vip-network)子网添加到最靠近 Azure Stack 的 Active Directory 站点。 例如，如果 Active Directory 包含 Seattle 和 Redmond 两个站点，且 Azure stack 部署在 Seattle 站点，则应将 Azure Stack 公共 VIP 网络子网添加到 Seattle 的 Active Directory 站点。
 
 有关 Active Directory 站点的详细信息，请参阅[设计站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。
 
@@ -283,7 +273,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    > [!IMPORTANT]  
    > 使用 Windows Server 2012 或 2012 R2 AD FS 时，必须使用 AD FS MMC 管理单元来配置颁发授权规则。
 
-4. 当您使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
+4. 使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
 
    > [!note]  
    > 使用 Windows Server 2012 或 2012 R2 AD FS 时，此步骤不适用。 可以放心跳过此命令并继续集成。
