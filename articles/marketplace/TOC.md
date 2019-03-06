@@ -99,12 +99,12 @@
 #### [删除产品/服务](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
 
 ### 体验版
-#### [什么是体验版？](./cloud-partner-portal-orig/what-is-test-drive.md)
-#### [Azure 资源管理器体验版](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
-#### [托管的体验版](./cloud-partner-portal-orig/hosted-test-drive.md)
-#### [逻辑应用体验版](./cloud-partner-portal-orig/logic-app-test-drive.md)
-#### [体验版转换示例](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
-#### [市场营销和最佳做法](./cloud-partner-portal-orig/marketing-and-best-practices.md)
+#### [什么是体验版？](./cloud-partner-portal/test-drive/what-is-test-drive.md)
+#### [Azure 资源管理器体验版](./cloud-partner-portal/test-drive/azure-resource-manager-test-drive.md)
+#### [托管的体验版](./cloud-partner-portal/test-drive/hosted-test-drive.md)
+#### [逻辑应用体验版](./cloud-partner-portal/test-drive/logic-app-test-drive.md)
+#### [体验版转换示例](./cloud-partner-portal/test-drive/transforming-examples-for-test-drive.md)
+#### [市场营销和最佳做法](./cloud-partner-portal/test-drive/marketing-and-best-practices.md)
 
 ### [Azure 应用程序产品/服务](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 #### [先决条件](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)

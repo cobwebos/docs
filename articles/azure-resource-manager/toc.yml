@@ -52,20 +52,9 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: 概念
   items:
-  - name: 模板
-    items:
-    - name: 模板文件结构
-      href: resource-group-authoring-templates.md
-    - name: parameters
-      href: resource-group-authoring-templates.md#parameters
-    - name: 变量
-      href: resource-group-authoring-templates.md#variables
-    - name: 函数
-      href: resource-group-authoring-templates.md#functions
-    - name: 资源
-      href: resource-manager-templates-resources.md
-    - name: Outputs
-      href: resource-group-authoring-templates.md#outputs
+  - name: 模板文件结构
+    displayName: parameters,variables,resources,outputs
+    href: resource-group-authoring-templates.md
   - name: 模板最佳实践
     href: template-best-practices.md
   - name: 用于提供云一致性的模板
@@ -260,9 +249,9 @@ items:
     href: resource-manager-personal-data.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 60d7bdba8bcaedd229a3ad1170b88906383fb74e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5fe3392efaab14730468841e078c73b13040594d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311655"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404597"
