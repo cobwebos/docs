@@ -39,7 +39,7 @@ ms.locfileid: "56878959"
 
 安装扩展以后，请登录 Azure DevOps 帐户，从项目仪表板中找到项目。 可以向项目添加[生成管道](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)，也可以修改现有的生成管道。 如果已经有生成管道，则可跳转到[向生成定义添加模拟器生成任务](#addEmulatorBuildTaskToBuildDefinition)。
 
-1. 若要创建新的生成定义，请导航到 Azure DevOps 中的“生成”选项卡。 选择“+新建”。 > **新建生成管道**
+1. 若要创建新的生成定义，请导航到 Azure DevOps 中的 **“生成”** 选项卡。 选择 **“+新建”**。 > **新建生成管道**
 
    ![创建新的生成管道](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
