@@ -50,7 +50,7 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
   
    首先，[将认知服务资源附加到](cognitive-search-attach-cognitive-services.md) Azure 搜索技能集。
   
-   其次，选择要包含在技能集中的 AI 扩充。 有关演练演示，请参阅此[快速入门](cognitive-search-quickstart-blob.md)。
+   其次，选择要包含在技能集里的 AI 扩充。 有关演练演示，请参阅此[快速入门](cognitive-search-quickstart-blob.md)。
 
    如果只想导入数据，请跳过此步骤，直接转到索引定义。
 

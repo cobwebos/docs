@@ -72,7 +72,7 @@ ms.locfileid: "56172108"
 
     ![应用程序][3]
 
-1. 在搜索框中，键入“O.C. Tanner - AppreciateHub”。**
+1. 在搜索框中，键入 **“O.C. Tanner - AppreciateHub”。**
 
     ![创建 Azure AD 测试用户](./media/oc-tanner-tutorial/tutorial_octannerappreciatehub_search.png)
 
