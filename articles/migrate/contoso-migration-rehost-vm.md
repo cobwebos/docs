@@ -408,7 +408,7 @@ Contoso 管理员运行快速测试故障转移，然后运行完整故障转移
     ![恢复计划](./media/contoso-migration-rehost-vm/recovery-plan.png)
 
 2. 创建计划后，进行自定义（“恢复计划” > “SmartHotelMigrationPlan” > “自定义”）。
-2.  从“组 1:启动”中删除 WEBVM**。 这可确保第一次启动操作只影响 SQLVM。
+2.  从“组 1:启动”中删除 WEBVM 。 这可确保第一次启动操作只影响 SQLVM。
 3.  在“+组” > “添加受保护的项”中，向“组 2:启动”添加 WEBVM。 VM 需要位于两个不同的组中。
 
 
