@@ -481,7 +481,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 3. 检查逻辑应用是否已将电子邮件保存到正确的存储容器。 
 
    1. 在存储资源管理器中展开“(**本地和附加**)”> 
-   “存储帐户”****>“attachmentstorageacct (**外部**)”> 
+   “**存储帐户**”>“attachmentstorageacct (**外部**)”> 
    “**Blob 容器**”> **attachments**。
 
    2. 检查 **attachments** 容器中是否有电子邮件。 
@@ -563,9 +563,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 3. 检查逻辑应用是否已将电子邮件和附件保存到正确的存储容器。 
 
-   1. 在存储资源管理器中展开“(本地和附加)”****> 
-   “存储帐户”****>“attachmentstorageacct (外部)”****> 
-   “Blob 容器”****> **attachments**。
+   1. 在存储资源管理器中展开“**(本地和附加)**”> 
+   “**存储帐户**”>“**attachmentstorageacct (外部)**”> 
+   “**Blob 容器**”> **attachments**。
 
    2. 检查 **attachments** 容器中是否有电子邮件和附件。
 
