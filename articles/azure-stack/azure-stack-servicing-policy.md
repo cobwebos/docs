@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 0f1eac5b8052d1b96576699d12fc2c6ccd5a5724
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: b358609526c61b5acab83c02bdedd8cc06721425
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960796"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536474"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack 服务策略
 
@@ -52,10 +52,11 @@ Microsoft 预期每月发布软件更新包。 但是，可能一个月内发布
 在[管理更新概述](azure-stack-updates.md)文档中，可以了解如何规划和管理更新，以及如何确定当前版本。
 
 有关特定更新（包括其下载方法）的信息，请参阅该更新的发行说明：
-- [Azure Stack 1901 更新](azure-stack-update-1901.md)(请参阅[重要生成请注意，这里](azure-stack-update-1901.md#build-reference)。)
+
+- [Azure Stack 1902 更新](azure-stack-update-1902.md)
+- [Azure Stack 1901 更新](azure-stack-update-1901.md)
 - [Azure Stack 1811 更新](azure-stack-update-1811.md)
 - [Azure Stack 1809 更新](azure-stack-update-1809.md)
-- [Azure Stack 1808 更新](azure-stack-update-1808.md)
 
 ## <a name="hotfixes"></a>修补程序
 

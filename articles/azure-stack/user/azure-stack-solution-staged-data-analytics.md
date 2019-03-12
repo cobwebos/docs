@@ -15,12 +15,12 @@ ms.date: 03/04/2018
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 0261dff10e553ecbd39d394eb19e7ad3dd76f0a2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1115e11d6bf830afad3746eb41d6368cb89bdbf3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340960"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534364"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>教程：使用 Azure 和 Azure Stack 创建临时数据分析解决方案 
 
@@ -54,7 +54,7 @@ ms.locfileid: "57340960"
 
 -   Azure 订阅。 (创建[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
 
--   下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
+-   下载并安装 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。
 
 -   需提供自己的由函数处理的数据。 必须生成数据并确保其能够上传到 Azure Stack 存储 Blob 容器。
 
