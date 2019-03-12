@@ -10,17 +10,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 97cdae49b4676500e29ac25b12712c94e575e5f8
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: f20d51905d90f9f80007dcaa39cf978c7100026d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960558"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762883"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure Stack 的存储容量 
 
@@ -51,7 +51,7 @@ ms.locfileid: "55960558"
 
 卷上的共享保存租户数据。 租户数据包括页 Blob、块 Blob、追加 Blob、表、队列、数据库和相关的元数据存储。 由于存储对象（Blob 等）各自包含在单个共享中，因此每个对象的大小上限不能超过共享大小。 新对象的大小上限取决于创建新对象时共享中仍未使用的空间容量。
 
-共享较低时的可用空间和操作[回收](#reclaim-capacity)空间不成功或不可用，Azure Stack 云操作员可以迁移 blob 容器从一个共享到另一个。
+当共享的可用空间不足且[回收](#reclaim-capacity)空间的操作不成功或不可用时，Azure Stack 云操作人员可以将 blob 容器从一个共享迁移到另一个共享。
 
 - 有关容器和 Blob 的详细信息，请参阅“Azure Stack 中的重要功能和概念”中的 [Blob 存储](azure-stack-key-features.md#blob-storage)。
 - 有关租户用户如何使用 Azure Stack 中的 Blob 存储的详细信息，请参阅 [Azure Stack 存储服务](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services)。
@@ -102,12 +102,12 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 > [!IMPORTANT]
 > 云操作员可以避免共享达到用完状态。 当共享利用率达到 100% 时，不再能够针对该共享运行存储服务。 若要在共享利用率达到 100% 时恢复可用空间和执行还原操作，必须联系 Microsoft 支持部门。
 
-警告：当超过利用率的 80%时的文件共享时，您收到*警告*警报在管理门户中：![示例：警告性警报](media/azure-stack-manage-storage-shares/alert-warning.png)
+警告：当文件共享利用率超过 80% 时，管理门户中会显示“警告”警报：![示例：警告警报](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 
-**严重**：当超过利用率的 90%时的文件共享时，您收到*严重*警报在管理门户中：![示例：严重警报](media/azure-stack-manage-storage-shares/alert-critical.png)
+**严重**：当文件共享利用率超过 90% 时，管理门户中会显示“严重”警报：![示例：严重警报](media/azure-stack-manage-storage-shares/alert-critical.png)
 
-**查看详细信息**:在管理门户中可以打开警报以查看缓解选项的详细信息：![示例：查看警报详细信息](media/azure-stack-manage-storage-shares/alert-details.png)
+**查看详细信息**：在管理门户中，可以打开警报详细信息来查看缓解选项：![示例：查看警报详细信息](media/azure-stack-manage-storage-shares/alert-details.png)
 
 
 ## <a name="manage-available-space"></a>管理可用空间
@@ -197,11 +197,11 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
   ```
 
-  ![示例：回滚状态](media/azure-stack-manage-storage-shares/rollback.png)
+  ![示例：回退状态](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. 可以再次运行步骤 6 中的命令，直到系统确认迁移作业的状态为 **Canceled**：  
 
-    ![示例：已取消的状态](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![示例：“已取消”状态](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>移动 VM 磁盘
 *此选项仅适用于多节点部署。*

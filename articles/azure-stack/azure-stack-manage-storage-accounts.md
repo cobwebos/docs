@@ -10,17 +10,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: aa88c2c63d348d0c82e0ad93115ea49437a63567
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: bce00300e62b3ea04331530bbda2c16f0ddd2ab3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895052"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759366"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure Stack 中的存储帐户
 
@@ -31,7 +31,7 @@ ms.locfileid: "55895052"
 
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
 
-2. 选择**所有服务** > **存储帐户**。
+2. 选择“所有服务” > “存储帐户”。
 
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "55895052"
 
 在 Azure Stack 中，可通过一种简单的方法实现此目的：
 
-1. 浏览到存储帐户列表。 请参阅查找此文章了解详细信息中的存储帐户。
+1. 浏览到存储帐户列表。 有关详细信息，请参阅本文中的“查找存储帐户”。
 2. 在列表中找到该特定帐户。 可能需要执行筛选。
 3. 检查帐户的状态。 状态应显示为“已删除”。
 4. 选择该帐户，这会打开帐户详细信息窗格。
@@ -76,7 +76,7 @@ ms.locfileid: "55895052"
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. 恢复过程随即显示“正在处理...请稍候”，表示恢复成功。
-   此外可以选择查看进度指示在门户顶部的铃铛图标。
+   也可以选择门户顶部的“铃铛”图标查看进度指示。
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
@@ -91,7 +91,7 @@ ms.locfileid: "55895052"
   删除的帐户已作为垃圾回收后，该帐户可能不会显示在帐户列表中。 在此情况下，无法恢复该帐户。 请参阅本文中的[回收容量](#reclaim)。
 
 ## <a name="set-the-retention-period"></a>设置保留期
-云操作员可以使用保留期设置来指定时间间隔天数（0 到 9999 天），在此期间，任何已删除的帐户都有可能能够恢复。 默认保留期设置为 0 天。 将值设置为"0"表示任何已删除的帐户会立即超出保留期并标记为定期进行垃圾回收。
+云操作员可以使用保留期设置来指定时间间隔天数（0 到 9999 天），在此期间，任何已删除的帐户都有可能能够恢复。 默认保留期设置为 0 天。 将值设置为“0”表示任何已删除的帐户会立即超出保留期，并标记为定期进行垃圾回收。
 
 **更改保留期：**
 
@@ -113,7 +113,7 @@ ms.locfileid: "55895052"
 可以使用门户或 PowerShell 来回收容量。
 
 **使用门户回收容量：**
-1. 导航到存储帐户窗格。 请参阅查找存储帐户。
+1. 导航到存储帐户窗格。 请参阅“查找存储帐户”。
 2. 选择窗格顶部的“回收空间”。
 3. 阅读消息，并选择“确定”。
 
@@ -140,7 +140,7 @@ ms.locfileid: "55895052"
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ```
 
-有关详细信息，请参阅[Azure Stack PowerShell 文档](https://docs.microsoft.com/powershell/azure/azure-stack/overview)。
+有关详细信息，请参阅 [Azure Stack PowerShell 文档](https://docs.microsoft.com/powershell/azure/azure-stack/overview)。
  
 
 ## <a name="next-steps"></a>后续步骤

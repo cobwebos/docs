@@ -40,5 +40,5 @@
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [发行说明](../active-directory/fundamentals/whats-new.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-catalog)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-catalog)
 ## [术语](data-catalog-terminology.md)

@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: fd7dd06692e20eb0e7cc02af8d2f36c4dad8b597
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e6afea414ed632dead97a4b9adc7c623e48bd7ef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251922"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766693"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 PowerShell 创建 Linux 服务器虚拟机
 
@@ -390,7 +390,7 @@ New-AzureRmVM `
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-从安装有 SSH 的客户端系统中，使用以下命令连接到虚拟机。 如果在 Windows 上操作，可以使用 [Putty](http://www.putty.org/) 创建连接。
+从安装有 SSH 的客户端系统中，使用以下命令连接到虚拟机。 如果在 Windows 上操作，可以使用 [Putty](https://www.putty.org/) 创建连接。
 
 ```
 ssh <Public IP Address>
