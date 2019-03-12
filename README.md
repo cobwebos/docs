@@ -1,6 +1,14 @@
+---
+ms.openlocfilehash: 2690a01535365ba097e0c058858f24e8c9d80aac
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588731"
+---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure 文档
 
-> 在 2019年 3 月 5 日到 3 月 9 日之间，MicrosoftDocs/azure docs 存储库将进行从其当前 Markdown 引擎到 [Markdig](https://github.com/lunet-io/markdig) markdown 引擎的迁移。 在此期间，我们将关闭该功能以暂停合并公共拉取请求，以便完成迁移。
+> 在 2019年 3 月 5 日到 3 月 9 日之间，MicrosoftDocs/azure docs 存储库将进行从其当前 Markdown 引擎到 [Markdig](https://github.com/lunet-io/markdig) markdown 引擎的迁移。 在此期间，我们将挂起合并公共拉取请求的功能，以便完成迁移。
 
 欢迎使用 [Microsoft Azure](https://azure.microsoft.com) 的开源[文档](https://docs.microsoft.com/azure)。 请查看此自述文件以了解如何帮助参与撰写 Microsoft Azure 文档。
 

@@ -15,39 +15,37 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: ef46df4d5162a08d9dc4d8674cf5867f863ce332
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ad97381d983446dfcc32dd1ba82af587a500b9da
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342473"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762137"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>教程：设置验证为服务资源
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-您需要创建一个解决方案。 验证服务 (VaaS) 解决方案作为表示与特定硬件清单的材料的 Azure Stack 解决方案。 该解决方案将用于检查你的硬件可以支持运行的 Azure Stack。 按照本教程，若要准备好将服务用于在你的解决方案。
+作为一项服务 (VaaS) 验证是一项 Azure 服务，用于验证和市场上支持 Azure Stack 解决方案。 使用服务来验证解决方案前将遵循此篇文章。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 准备好供 VaaS 设置 Azure AD (Azure AD) 实例。
+> * 准备好使用 VaaS 通过设置 Azure Active Directory (AD) 注册。
 > * 创建存储帐户。
 
 ## <a name="configure-an-azure-ad-tenant"></a>配置 Azure AD 租户
 
-Azure AD 租户是进行身份验证和注册 VaaS 所必需的。 合作伙伴将使用租户的基于角色的访问控制 (RBAC) 功能来管理合作伙伴组织中的哪些人员可以使用 VaaS。
-
-注册你组织的 Azure AD 租户目录 （而不是用于 Azure Stack 的 Azure AD 租户目录），并建立用于管理中它的用户帐户的策略。 有关详细信息，请参阅[管理 Azure AD 目录](https://docs.microsoft.com/azure/active-directory/active-directory-administer)。
+使用 Azure AD 租户进行注册，组织和 VaaS 与用户进行身份验证。 合作伙伴将使用租户的基于角色的访问控制 (RBAC) 功能来管理合作伙伴组织中的哪些人员可以使用 VaaS。 有关详细信息，请参阅[什么是 Azure Active Directory？](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis)。
 
 ### <a name="create-a-tenant"></a>创建租户
 
-创建租户专门用于与 VaaS 具有说明性的名称，例如， `ContosoVaaS@onmicrosoft.com`。
+创建你的组织将用于访问 VaaS 服务的租户。 例如，使用描述性的名称， `ContosoVaaS@onmicrosoft.com`。
 
 1. 创建一个可在 Azure AD 租户[Azure 门户](https://portal.azure.com)，或使用现有租户。 <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). -->
 
 2. 将你的组织的成员添加到租户。 这些用户将负责使用服务来查看或计划测试。 一旦完成注册后，您将定义用户的访问级别。
- 
+
     为你的租户在 VaaS 中执行操作，通过将分配以下角色之一的用户授权：
 
     | 角色名称 | 描述 |
@@ -63,7 +61,7 @@ Azure AD 租户是进行身份验证和注册 VaaS 所必需的。 合作伙伴�
     3. 选择“企业应用程序” > “Azure Stack 验证服务”应用程序。
     4. 选择“用户和组”。 “Azure Stack 验证服务 - 用户和组”边栏选项卡会列出有权使用应用程序的用户。
     5. 选择 **+ 添加用户**若要从你的租户添加用户并分配角色。
-   
+
     如果你想要隔离 VaaS 资源和组织内不同的组的操作，可以创建多个 Azure AD 租户目录。
 
 ### <a name="register-your-tenant"></a>注册你的租户
@@ -102,10 +100,7 @@ Azure AD 租户是进行身份验证和注册 VaaS 所必需的。 合作伙伴�
 
 3. 下**资源组**，选择**新建**。 输入新的资源组的名称。
 
-4. 输入存储帐户的名称。 你选择的名称必须是：
-    - 在 Azure 内唯一
-    - 介于 3 到 24 个字符之间
-    - 只能包含数字和小写字母
+4. 审阅[命名约定](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions#storage)的 Azure 存储器帐户。 输入存储帐户的名称。
 
 5. 选择**美国西部**为存储帐户的区域。
 
@@ -119,7 +114,7 @@ Azure AD 租户是进行身份验证和注册 VaaS 所必需的。 合作伙伴�
     - **复制字段**设置为**本地冗余存储 (LRS)** 默认情况下。
     - “访问层”默认设置为“热”。
 
-7. 单击“查看+创建”可查看存储帐户设置并创建帐户。
+7. 选择“查看+创建”可查看存储帐户设置并创建帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,12 +16,12 @@ ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 09/28/2018
-ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c7a6330f8e0197092f4c581f46c3cc6e68dba247
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246358"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540189"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Java 配合使用
 
@@ -64,7 +64,7 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
 
 1.  按照正式说明安装 Git。 有关说明，请参阅[入门 - 安装 Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
 
-2.  按照正式说明安装 [Java SDK](http://zulu.org/download/) 和 [Maven](https://maven.apache.org/)。 正确的版本是 Java 开发人员工具包的版本 8。 正确的 Apache Maven 是 3.0 或更高版本。 JAVA_HOME 环境变量必须设置为 Java 开发人员工具包的安装位置，以完成本快速入门。 有关详细信息，请参阅[使用 Java 和 Maven 创建第一个函数](../../azure-functions/functions-create-first-java-maven.md)。
+2.  按照正式说明安装 [Java SDK](https://zulu.org/download/) 和 [Maven](https://maven.apache.org/)。 正确的版本是 Java 开发人员工具包的版本 8。 正确的 Apache Maven 是 3.0 或更高版本。 JAVA_HOME 环境变量必须设置为 Java 开发人员工具包的安装位置，以完成本快速入门。 有关详细信息，请参阅[使用 Java 和 Maven 创建第一个函数](../../azure-functions/functions-create-first-java-maven.md)。
 
 3.  若要安装正确的依赖项包，请在 Java 应用程序中打开 Pom.xml 文件。 按以下代码所示添加依赖项：
 

@@ -53,8 +53,16 @@ items:
     href: concept-accelerate-with-fpgas.md
   - name: 机器学习管道
     href: concept-ml-pipelines.md
-  - name: 企业安全性
-    href: concept-enterprise-security.md
+  - name: 安全
+    items:
+    - name: 企业安全概述
+      displayName: authorization authentication encryption
+      href: concept-enterprise-security.md
+    - name: 使用虚拟网络
+      displayName: vnet
+      href: how-to-enable-virtual-network.md
+    - name: 使用 SSL 保护 Web 服务
+      href: how-to-secure-web-service.md
 - name: 操作指南
   items:
   - name: 管理工作区
@@ -113,6 +121,8 @@ items:
     - name: 使用远程计算目标
       displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
+    - name: 自动训练预测模型
+      href: how-to-auto-train-forecast.md
   - name: ONNX 模型
     href: how-to-build-deploy-onnx.md
   - name: 部署模型
@@ -139,13 +149,6 @@ items:
       href: how-to-enable-data-collection.md
     - name: 使用 Application Insights 进行监视
       href: how-to-enable-app-insights.md
-  - name: 安全
-    items:
-    - name: 使用虚拟网络
-      displayName: vnet
-      href: how-to-enable-virtual-network.md
-    - name: 使用 SSL 保护 Web 服务
-      href: how-to-secure-web-service.md
   - name: 创建第一个管道
     href: how-to-create-your-first-pipeline.md
   - name: 启用日志记录
@@ -189,9 +192,9 @@ items:
     href: support-for-aml-services.md
   - name: 比较我们的 ML 产品
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 5d7cdcec4e0b855f509539a1fc79015793efc404
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 19a26ea88ba8c8e820e838a7c96a802180129dd7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192125"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766251"

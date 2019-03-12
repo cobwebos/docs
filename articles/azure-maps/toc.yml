@@ -63,33 +63,41 @@ items:
       href: how-to-search-for-address.md
     - name: 在静态地图上呈现自定义数据
       href: how-to-render-custom-data.md
-  - name: 创建 JavaScript 地图
+  - name: 使用 Web SDK 进行开发
     items:
-    - name: 使用地图控件
-      href: how-to-use-map-control.md
-    - name: 创建地图
-      href: map-create.md
-    - name: 选择地图样式
-      href: choose-map-style.md
-    - name: 添加地图控件
-      href: map-add-controls.md
-    - name: 添加符号层
-      href: map-add-pin.md
-    - name: 添加弹出项
-      href: map-add-popup.md
-    - name: 添加气泡层
-      href: map-add-bubble-layer.md
-    - name: 添加形状
-      href: map-add-shape.md
-    - name: 添加热度地图层
-      href: map-add-heat-map-layer.md
-    - name: 添加图像层
-      href: map-add-image-layer.md
-    - name: 添加图块层
-      href: map-add-tile-layer.md
-    - name: 添加 HTML 标记
-      href: map-add-custom-html.md
-    - name: 服务
+    - name: 地图控件
+      items:
+      - name: 使用地图控件
+        href: how-to-use-map-control.md
+      - name: 创建地图
+        href: map-create.md
+      - name: 选择地图样式
+        href: choose-map-style.md
+      - name: 将控件添加到地图
+        href: map-add-controls.md
+      - name: 添加符号层
+        href: map-add-pin.md
+      - name: 添加弹出项
+        href: map-add-popup.md
+      - name: 添加气泡层
+        href: map-add-bubble-layer.md
+      - name: 添加形状
+        href: map-add-shape.md
+      - name: 添加热度地图层
+        href: map-add-heat-map-layer.md
+      - name: 覆盖图像
+        href: map-add-image-layer.md
+      - name: 添加图块层
+        href: map-add-tile-layer.md
+      - name: HTML 标记
+        href: map-add-custom-html.md
+      - name: 显示交通情况
+        href: map-show-traffic.md
+      - name: 与鼠标事件交互
+        href: map-events.md
+      - name: 使应用可供访问
+        href: map-accessibility.md
+    - name: 服务模块
       items:
       - name: 显示搜索结果
         href: map-search-location.md
@@ -97,13 +105,7 @@ items:
         href: map-get-information-from-coordinate.md
       - name: 显示从 A 到 B 的路线
         href: map-route.md
-    - name: 显示交通情况
-      href: map-show-traffic.md
-    - name: 与鼠标事件交互
-      href: map-events.md
-    - name: 可访问的地图应用程序
-      href: map-accessibility.md
-  - name: 创建 Android 地图
+  - name: 使用 Android SDK 进行开发
     items:
     - name: 如何使用 Android 地图控件
       href: how-to-use-android-map-control-library.md
@@ -150,7 +152,7 @@ items:
 - name: 资源
   items:
   - name: Azure Maps 使用条款
-    href: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
+    href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/azure-maps
   - name: 定价计算器
@@ -197,9 +199,9 @@ items:
       href: /azure/iot-edge
     - name: IoT 设备 SDK
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: b0584c77ed7d8b3ed6c6962d02b75e061a97bf14
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2d974c96dd953c7a2727bcd5b1bcc3b60ad807a0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336727"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569223"

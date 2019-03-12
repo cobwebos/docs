@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 20a48e67a24763af7bcce9e8831e2a1d1846d094
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d3db8ea8639f73f3522ddaa358195e7c9ef2f9a9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594298"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765996"
 ---
 # <a name="interactive-feature-verification-testing"></a>交互式功能验证测试  
 
@@ -35,13 +35,13 @@ ms.locfileid: "56594298"
 
 ## <a name="overview-of-interactive-testing"></a>交互式测试的概述
 
-有关磁盘更换的测试是一种常见方案。 在此示例中，测试具有七个步骤：
+有关磁盘更换的测试是一种常见方案。 在此示例中，测试具有五个步骤：
 
-1. 创建一个新**测试轮次**工作流
-1. 选择**磁盘标识测试**
-1. 完成手动步骤出现提示时
-1. 该方案对结果进行检查
-1. 将测试结果发送给 Microsoft
+1. 创建一个新**测试轮次**工作流。
+2. 选择**磁盘标识测试**。
+3. 完成手动步骤出现提示时。
+4. 检查的方案的结果。
+5. 将测试结果发送给 Microsoft。
 
 ## <a name="create-a-new-test-pass"></a>创建新的测试流程
 

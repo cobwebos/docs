@@ -7,17 +7,17 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: ef2d59393902194af3e257ce0fd5bf403b293af1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d9a17bdad0bfa4965d36fbe2a2cf3a7890060e98
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245417"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772557"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>快速入门：使用 Azure Stack 门户创建 Linux 服务器虚拟机
 
@@ -43,7 +43,7 @@ ms.locfileid: "55245417"
 
    如果使用 Azure Stack 开发工具包 (ASDK)，可能无法访问 SSH 客户端。 如果需要一个客户端，有多个包含 SSH 客户端的包可供使用。 例如，PuTTY 包含 SSH 客户端和 SSH 密钥生成器 (puttygen.exe)。 有关可用包的详细信息，请阅读以下 Azure 文章：[如何在 Azure 上的 Windows 中使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients)。
 
-   本快速入门使用 PuTTY 生成 SSH 密钥并连接到 Linux 服务器虚拟机。 若要下载并安装 PuTTY，请转到 [http://www.putty.org/](http://www.putty.org)。
+   本快速入门使用 PuTTY 生成 SSH 密钥并连接到 Linux 服务器虚拟机。 若要下载并安装 PuTTY，请转到 [https://www.putty.org/](http://www.putty.org)。
 
 ## <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
 

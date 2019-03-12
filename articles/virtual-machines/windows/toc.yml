@@ -124,8 +124,6 @@ items:
     href: monitor.md
   - name: 备份和恢复
     href: backup-recovery.md
-  - name: 高性能计算
-    href: high-performance-computing.md
   - name: 基础结构示例
     href: infrastructure-example.md
 - name: 操作指南
@@ -313,43 +311,46 @@ items:
         href: excel-cluster-hpcpack.md
   - name: 管理存储
     items:
-    - name: 磁盘常见问题解答
-      href: faq-for-disks.md
     - name: 添加磁盘
       items:
       - name: Azure Powershell
         href: attach-disk-ps.md
       - name: Azure 门户
         href: attach-managed-disk-portal.md
-    - name: 对磁盘进行基准检验
-      href: disks-benchmarks.md
     - name: 分离磁盘
       href: detach-disk.md
+    - name: 使用模板部署磁盘
+      href: using-managed-disks-template-deployments.md
     - name: 调整磁盘大小
       href: expand-os-disk.md
     - name: 拍摄磁盘快照
       href: snapshot-copy-managed-disk.md
     - name: 备份非托管磁盘
       href: incremental-snapshots.md
-    - name: 在“标准”和“高级”之间转换磁盘
-      href: convert-disk-storage.md
-    - name: 使用 Azure Site Recovery 迁移到高级存储
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
+    - name: 迁移和转换
+      items:
+      - name: 在“标准”和“高级”之间转换磁盘
+        href: convert-disk-storage.md
+      - name: 使用 Azure Site Recovery 迁移到高级存储
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: 迁移到托管磁盘
+        href: migrate-to-managed-disks.md
+      - name: 非托管 VM 到托管磁盘
+        href: convert-unmanaged-to-managed-disks.md
+    - name: 性能
+      items:
+      - name: 启用写入加速器
+        href: how-to-enable-write-accelerator.md
+      - name: 启用超级 SSD
+        href: disks-enable-ultra-ssd.md
+      - name: 对磁盘进行基准检验
+        href: disks-benchmarks.md
     - name: 查找未附加的磁盘
       href: find-unattached-disks.md
     - name: 使用文件存储
-      href: mount-azure-file-storage.md
-    - name: 使用模板部署磁盘
-      href: using-managed-disks-template-deployments.md
-    - name: 启用写入加速器
-      href: how-to-enable-write-accelerator.md
-    - name: 启用超级 SSD
-      href: disks-enable-ultra-ssd.md
-    - name: 迁移到托管磁盘
-      href: migrate-to-managed-disks.md
-      items:
-      - name: 非托管 VM 到托管磁盘
-        href: convert-unmanaged-to-managed-disks.md
+      href: ../../storage/files/storage-files-quick-create-use-windows.md
+    - name: 磁盘常见问题解答
+      href: faq-for-disks.md
   - name: 管理网络
     href: ps-common-network-ref.md
     items:
@@ -461,9 +462,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: 常见问题解答
     href: faq.md
-ms.openlocfilehash: 3ddf84852fee0dc30aa9bc7e9d49f06493f6b0cc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 78a321bbf5bbf3c970d7b6caef3409d55d33c808
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448435"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732522"

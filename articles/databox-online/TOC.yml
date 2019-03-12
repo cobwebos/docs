@@ -40,6 +40,8 @@ items:
         href: data-box-gateway-manage-bandwidth-schedules.md
       - name: 访问、开/关、连接
         href: data-box-gateway-manage-access-power-connectivity-mode.md
+      - name: 通过 PowerShell
+        href: data-box-gateway-connect-powershell-interface.md
     - name: 故障排除
       href: data-box-gateway-troubleshoot.md
   - name: 发行说明
@@ -74,6 +76,8 @@ items:
     items:
     - name: 开发 C# 模块
       href: data-box-edge-create-iot-edge-module.md
+    - name: 通过 PowerShell 进行管理
+      href: data-box-edge-connect-powershell-interface.md
 - name: 资源
   items:
   - name: Data Box Edge C# 模块示例 (.NET)
@@ -82,9 +86,9 @@ items:
     href: https://azure.microsoft.com/services/storage/databox/edge/
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: 447696a07ca7decc2d07d3752e3e6dfe6b6c688b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 0ce74b9b3000c04c7e94358c8c93bade74cfd81f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963737"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551309"

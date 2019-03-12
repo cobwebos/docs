@@ -10,36 +10,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c7bf766dc0f73b37fc7de537537c7a885a50c30a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 09b8556a83dec286ce8d67fa5fd6d27e027325bf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339566"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769210"
 ---
 # <a name="deploy-the-local-agent"></a>部署本地代理
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-了解如何使用服务 (VaaS) 本地代理作为验证检查您的硬件。 在运行验证测试之前，必须在 Azure Stack 解决方案上部署本地代理。
+了解如何使用验证为服务 (VaaS) 本地代理来运行验证测试。 运行验证测试之前，必须部署本地代理。
 
 > [!Note]  
-> 必须确保在其运行本地代理的计算机不会失去对 internet 的出站访问权限。 此计算机必须是仅供有权使用 VaaS 代表你的租户的用户访问。
+> 请确保在其运行本地代理的计算机不会失去对 internet 的出站访问权限。 此计算机应仅供有权使用 VaaS 代表你的租户的用户访问。
 
 若要部署本地代理：
 
-1. 安装本地代理
-2. 执行健全性检查
-3. 运行本地代理
+1. 安装本地代理。
+2. 执行完整性检查。
+3. 运行本地代理。
 
 ## <a name="download-and-start-the-local-agent"></a>下载并启动本地代理
 
-将代理下载到数据中心的符合先决条件的计算机，该数据中心不是 Azure Stack 系统的一部分，但是能够访问所有 Azure Stack 终结点。
+将代理下载到满足您的数据中心中的先决条件并有权访问所有 Azure Stack 终结点的计算机。 此计算机不应为 Azure Stack 系统的一部分或托管在 Azure Stack 云中。
 
 ### <a name="machine-prerequisites"></a>计算机先决条件
 
@@ -51,8 +51,6 @@ ms.locfileid: "57339566"
 - 至少为 8 核处理器
 - 至少 200 GB 的磁盘空间
 - 能够稳定地连接到 Internet
-
-Azure Stack 是接受测试的系统。 计算机不应是 Azure Stack 的一部分，也不应托管在 Azure Stack 云中。
 
 ### <a name="download-and-install-the-agent"></a>下载并安装代理
 

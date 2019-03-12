@@ -124,8 +124,6 @@ items:
     href: monitor.md
   - name: 备份和恢复
     href: backup-recovery.md
-  - name: 高性能计算
-    href: high-performance-computing.md
   - name: 部署注意事项
     items:
     - name: 基础结构指南
@@ -398,7 +396,7 @@ items:
       - name: Linux 上的 MS SQL
         href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: 高性能计算 (HPC)
-      href: https://docs.microsoft.com/powershell/high-performance-computing/overview
+      href: https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/
     - name: IBM Db2 pureScale
       items:
       - name: 体系结构
@@ -407,49 +405,52 @@ items:
         href: deploy-ibm-db2-purescale-azure.md
   - name: 管理存储
     items:
-    - name: 磁盘常见问题解答
-      href: faq-for-disks.md
     - name: 添加磁盘
       items:
       - name: Azure CLI
         href: add-disk.md
       - name: Azure 门户
         href: attach-disk-portal.md
-    - name: 对磁盘进行基准检验
-      href: disks-benchmarks.md
     - name: 分离磁盘
       href: detach-disk.md
+    - name: 使用模板部署磁盘
+      href: using-managed-disks-template-deployments.md
     - name: 调整磁盘大小
       href: expand-disks.md
     - name: 拍摄磁盘快照
       href: snapshot-copy-managed-disk.md
     - name: 备份非托管磁盘
       href: incremental-snapshots.md
-    - name: 转换为托管磁盘
-      href: convert-unmanaged-to-managed-disks.md
-    - name: 在“标准”和“高级”之间转换磁盘
-      href: convert-disk-storage.md
+    - name: 迁移和转换
+      items:
+      - name: 使用 Azure Site Recovery 迁移到高级存储
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: 转换为托管磁盘
+        href: convert-unmanaged-to-managed-disks.md
+      - name: 在“标准”和“高级”之间转换磁盘
+        href: convert-disk-storage.md
     - name: 将文件复制到 VM
       href: copy-files-to-linux-vm-using-scp.md
-    - name: 使用 Azure Site Recovery 迁移到高级存储
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
-    - name: 查找未附加的磁盘
-      href: find-unattached-disks.md
-    - name: 使用文件存储
-      href: mount-azure-file-storage-on-linux-using-smb.md
-    - name: 使用模板部署磁盘
-      href: using-managed-disks-template-deployments.md
-    - name: 使用写入加速器
-      href: how-to-enable-write-accelerator.md
-    - name: 启用超级 SSD
-      href: disks-enable-ultra-ssd.md
-    - name: 优化性能
-      href: optimization.md
+    - name: 性能
       items:
+      - name: 使用写入加速器
+        href: how-to-enable-write-accelerator.md
+      - name: 启用超级 SSD
+        href: disks-enable-ultra-ssd.md
+      - name: 对磁盘进行基准检验
+        href: disks-benchmarks.md
+      - name: 优化性能
+        href: optimization.md
       - name: 配置软件 RAID
         href: configure-raid.md
       - name: 配置 LVM
         href: configure-lvm.md
+    - name: 查找未附加的磁盘
+      href: find-unattached-disks.md
+    - name: 使用文件存储
+      href: mount-azure-file-storage-on-linux-using-smb.md
+    - name: 磁盘常见问题解答
+      href: faq-for-disks.md
   - name: 管理网络
     items:
     - name: 创建虚拟网络
@@ -559,9 +560,9 @@ items:
     href: faq.md
 - name: 故障排除
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 776adc5310db7c4a7762409a53c57e896cc95360
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ade43488288949aa22942c8df2d6900e4522615a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438283"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732024"

@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: aa467910cfa2dad84af3905db3592657cae85be9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d2766416c84233281e55ff6f8be8519b7aadfb8c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594349"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763548"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>使用 VPN 将 Azure Stack 连接到 Azure
 
@@ -74,7 +74,7 @@ ms.locfileid: "56594349"
 
 1. 从仪表板打开刚创建的虚拟网络资源 (**AzureVNet**)。
 2. 在“设置”部分中选择“子网”。
-3. 选择**网关子网**若要将网关子网添加到虚拟网络。
+3. 选择“网关子网”，将网关子网添加到虚拟网络。
 4. 默认情况下，子网的名称设置为 **GatewaySubnet**。
 
    >[!IMPORTANT]

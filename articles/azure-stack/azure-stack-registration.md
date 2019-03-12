@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 12edea505ba3b0c8009512a52e3eea9ecea5bb26
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2ed9598ecfb45323505e8527cfb3ab9fe7d8b58e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405192"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764721"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -483,11 +483,18 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 ## <a name="registration-failures"></a>注册失败
 
-在尝试注册 Azure Stack 时，可能会看到以下错误之一：
+尝试注册 Azure Stack 时，你可能会看到下列错误之一：
 1. 无法检索 $hostName 的必需硬件信息。 请检查物理主机和连接性，然后尝试重新运行注册。
+
 2. 无法连接到 $hostName 以获取硬件信息 - 请检查物理主机和连接性，然后尝试重新运行注册。
 
-原因：这通常是因为我们尝试从主机获取硬件详细信息（例如 UUID、Bios 和 CPU）以尝试激活，但却无法完成它，因为无法连接到物理主机。
+> 原因： 这通常是因为我们尝试从主机尝试激活获取硬件详细信息，例如 UUID、 Bios 和 CPU，并且都不能为由于无法连接到物理主机。
+
+在尝试访问 Marketplace 管理，尝试联合产品时，就会出错。 
+> 原因： 这通常发生在 Azure Stack 是无法访问注册资源。 一个常见的原因是 Azure 订阅的目录租户发生更改时它重置注册。 如果你已更改订阅的目录租户，则无法访问 Azure Stack marketplace 或报表使用情况。 需要重新注册以解决此问题。
+
+Marketplace 管理仍会要求您注册和激活 Azure Stack，即使您已经注册了时间戳使用断开连接的过程。 
+> 原因： 这是断开连接的环境的已知的问题。 你可以通过以下验证您的注册状态[这些步骤](azure-stack-registration.md#verify-azure-stack-registration)。 若要使用 Marketplace 管理，你将需要使用[脱机工具](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)。 
 
 ## <a name="next-steps"></a>后续步骤
 

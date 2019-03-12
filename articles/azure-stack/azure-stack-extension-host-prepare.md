@@ -1,26 +1,26 @@
 ---
 title: 为 Azure Stack 准备扩展主机 | Microsoft Docs
-description: 了解如何准备扩展主机，它是通过将来的一个 Azure Stack 更新程序包自动启用的。
+description: 了解如何准备扩展主机，会自动启用与将来的 Azure Stack 更新包。
 services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 02/07/2019
+ms.date: 03/07/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: b0d3b3e4901fbcece13c201938be8bccb1bb9c82
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 03/07/2019
+ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962360"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731924"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>为 Azure Stack 准备扩展主机
 
-扩展主机通过减少所需的 TCP/IP 端口数来保护 Azure Stack。 本文讨论了为 Azure Stack 准备扩展主机，扩展主机是通过 1808 更新之后的一个 Azure Stack 更新程序包自动启用的。 本文适用于 Azure Stack 更新 1808年、 1809 和 1811年。
+扩展主机通过减少所需的 TCP/IP 端口数来保护 Azure Stack。 此文章讨论了 1808年更新后的 Azure Stack 更新包通过自动启用的扩展主机准备 Azure Stack。 本文适用于 Azure Stack 更新 1808、1809 和 1811。
 
 ## <a name="certificate-requirements"></a>证书要求
 
@@ -66,15 +66,14 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
     > [!Note]  
     > 如果使用 Azure Active Directory 联合身份验证服务 (AD FS) 进行部署，则必须在脚本中的 **$directories** 中添加以下目录：`ADFS`、`Graph`。
 
-4. 运行以下 cmdlet 来启动证书检查：
+4. 将当前使用 Azure Stack 中，现有证书放在相应的目录。 例如，将放**管理员 ARM**中的证书`Arm Admin`文件夹。 然后将新创建的托管证书放`Admin extension host`和`Public extension host`目录。
+5. 运行以下 cmdlet，以启动证书检查：
 
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
-
-5. 将证书放在合适的目录中。
 
 6. 检查输出和所有证书是否通过所有测试。
 
@@ -141,7 +140,7 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 
 ### <a name="publish-new-endpoints"></a>发布新的终结点
 
-需要通过防火墙发布两个新的终结点。 可以使用下面的代码必须通过在 Azure Stack 运行检索从公共 VIP 池已分配的 Ip[环境的特权终结点](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)。
+需要通过防火墙发布两个新的终结点。 可以使用下面的代码必须从 Azure Stack 运行检索从公共 VIP 池已分配的 Ip[环境的特权终结点](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)。
 
 ```PowerShell
 # Create a PEP Session
@@ -187,7 +186,7 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 
 | 终结点 (VIP) | 协议 | 端口 |
 |----------------|----------|-------|
-| 管理托管 | HTTPS | 443 |
+| 管理员托管 | HTTPS | 443 |
 | Hosting | HTTPS | 443 |
 
 ### <a name="update-existing-publishing-rules-post-enablement-of-extension-host"></a>更新现有的发布规则（在启用扩展主机后）

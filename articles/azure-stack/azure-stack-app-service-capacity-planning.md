@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 20b79b3c2581db94627746f52ed6837aa80b6be5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 2c726675d799a8bb5f9ed1d1dd595aa7f4700036
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447730"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774586"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>针对 Azure Stack 中的 Azure 应用服务服务器角色的容量计划
 
@@ -52,7 +52,7 @@ Azure 应用服务控制器通常消耗较少的 CPU、内存和网络资源。 
 
 **建议的最小值**：两个 A1 Standard 实例
 
-前端根据 Web 辅助角色可用性将请求路由到 Web 辅助角色。 为实现高可用性，应配备一个以上前端，并且可以配备两个以上。 对于容量计划用途，请考虑每个核心每秒可以处理大约 100 个请求。
+具体取决于 web 辅助角色可用性的 web 辅助进程的前端路由请求。 为实现高可用性，应配备一个以上前端，并且可以配备两个以上。 对于容量计划用途，请考虑每个核心每秒可以处理大约 100 个请求。
 
 ## <a name="management-role"></a>管理角色
 
