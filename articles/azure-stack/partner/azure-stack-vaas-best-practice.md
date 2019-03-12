@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 验证的最佳做法。 | Microsoft Docs
-description: 这篇文章具有作为服务的验证的最佳做法。
+description: 本文讨论为作为服务的验证的最佳做法。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b61c4a22d0c5343d41e35f2bbd66829b2b9e8d48
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 30b7a5327a709fb35c3c3360f4bb0246e9a5f75f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336966"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771219"
 ---
 # <a name="best-practices-for-validation-as-a-service"></a>作为一项服务验证的最佳做法
 
@@ -46,7 +46,7 @@ ms.locfileid: "57336966"
 
 ### <a name="naming-convention-for-vaas-workflows"></a>VaaS 工作流的命名约定
 
-用于所有 VaaS 工作流运行一致的命名约定。 例如，构造工作流的名称从下面的生成属性，如下所示：
+用于所有 VaaS 工作流运行一致的命名约定。 例如，按如下所示构造从下面的生成属性的工作流名称：
 
 |内部版本号 （主要） | 日期 | 解决方案大小 | 工作流名称
 |---|---|---| ---|

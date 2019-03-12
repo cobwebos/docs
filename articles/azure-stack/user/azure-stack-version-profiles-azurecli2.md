@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: fe5e998b919a3e2a876ef943424bd7161b71b5d4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 261efda18b7cecc6370743c604622a8884ff8364
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241198"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732318"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 配合使用
 
@@ -39,7 +39,7 @@ ms.locfileid: "57241198"
 
 ### <a name="export-the-azure-stack-ca-root-certificate"></a>导出 Azure Stack CA 根证书
 
-如果使用的集成的系统，不需要导出 CA 根证书。 您需要导出 ASDK 上的 CA 根证书。
+如果使用的是集成系统，则无需导出 CA 根证书。 您需要导出 ASDK 上的 CA 根证书。
 
 若要导出 PEM 格式的 ASDK 根证书：
 
@@ -69,15 +69,15 @@ ms.locfileid: "57241198"
 
 ### <a name="set-up-the-virtual-machine-aliases-endpoint"></a>设置虚拟机别名终结点
 
-您可以设置一个可公开访问的终结点承载虚拟机别名文件。 虚拟机别名文件是一个 JSON 文件，提供映像的公用名称。 在部署 VM 作为一个参数，Azure CLI 时，将使用名称。
+您可以设置一个可公开访问的终结点承载虚拟机别名文件。 虚拟机别名文件是一个 JSON 文件，提供映像的公用名称。 以 Azure CLI 参数形式部署 VM 时，将使用该名称。
 
-1. 如果发布自定义映像，请记下发布过程中指定的发布者、产品/服务、SKU 和版本信息。 如果它是从 marketplace 映像，可以通过查看信息```Get-AzureVMImage```cmdlet。  
+1. 如果发布自定义映像，请记下发布过程中指定的发布者、产品/服务、SKU 和版本信息。 如果映像来自市场，可以使用 ```Get-AzureVMImage``` cmdlet 查看信息。  
 
 2. 从 GitHub 下载[示例文件](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json)。
 
-4. 在 Azure Stack 中创建存储帐户。 完成后，创建 blob 容器。 将访问策略设置为“公开”。  
+4. 在 Azure Stack 中创建存储帐户。 完成该操作后，将创建 Blob 容器。 将访问策略设置为“公开”。  
 
-3. 将 JSON 文件上传到新容器。 完成后，你可以查看 blob 的 URL。 选择 blob 名称，然后从 blob 属性中选择该 URL。
+3. 将 JSON 文件上传到新容器。 完成该操作后，可以查看 blob 的 URL。 选择 blob 名称，然后从 blob 属性中选择该 URL。
 
 ### <a name="install-or-ugrade-cli"></a>安装或将 CLI
 
@@ -151,6 +151,8 @@ az --version
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
 
+如果使用 ASDK，您将需要信任远程计算机上的 CA 根证书。 不需要使用 intregrated 系统执行此操作。
+
 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
 
 1. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 打开命令提示符处或提升的 PowerShell 提示符，并键入以下命令：
@@ -196,14 +198,21 @@ az --version
 
 1. 运行 `az cloud register` 命令注册 Azure Stack 环境。
 
-    在某些情况下，通过代理或防火墙，这会强制执行 SSL 截获路由直接出站 internet 连接。 在这些情况下，`az cloud register`命令可能会失败并出现错误，如"无法从云中获取终结点"。 若要解决此错误，可以设置以下环境变量：
+    在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，`az cloud register` 命令可能会失败并显示错误，如“无法从云中获取终结点”。 若要解决此错误，可以设置以下环境变量：
 
     ```shell  
     set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
     set ADAL_PYTHON_SSL_NO_VERIFY=1
     ```
 
-    通过指定名称注册你的环境。 指定的名称之后的环境`-n`切换。 使用`AzureStackUser`针对用户环境。 如果您是操作员，指定`AzureStackAdmin`。
+2. 注册你的环境。 在运行时使用以下参数`az cloud register`。
+    | 值 | 示例 | 描述 |
+    | --- | --- | --- |
+    | 环境名称 | AzureStackUser | 使用`AzureStackUser`针对用户环境。 如果您是操作员，指定`AzureStackAdmin`。 |
+    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/` **ResourceManagerUrl**集成系统中是：`https://management.<region>.<fqdn>/` 若要检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果您有关于集成的系统终结点的问题，请联系云操作员。 |
+    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于 intregrated 系统，您将想要为您的系统使用终结点。  |
+    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
+    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 包含虚拟机映像别名的文档的 URI。 有关详细信息，请参阅[# # # 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
@@ -235,7 +244,7 @@ az --version
     ```
 
     > [!NOTE]
-    > 如果您的用户帐户已启用多重身份验证，则可以使用`az login`命令而无需提供`-u`参数。 运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
+    > 如果用户帐户已启用多重身份验证，则可以使用不带 `-u` 参数的 `az login` 命令。 运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
 
   - 以服务主体身份登录： 
     
@@ -262,6 +271,8 @@ az group create -n MyResourceGroup -l local
 本部分将引导你完成设置 CLI 如果你使用 Active Directory 联合身份验证服务 (AD FS) 作为标识管理服务，并将 Windows 计算机上使用 CLI。
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
+
+如果使用 ASDK，您将需要信任远程计算机上的 CA 根证书。 不需要使用 intregrated 系统执行此操作。
 
 1. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 打开命令提示符处或提升的 PowerShell 提示符，并键入以下命令：
 
@@ -306,14 +317,21 @@ az group create -n MyResourceGroup -l local
 
 1. 运行 `az cloud register` 命令注册 Azure Stack 环境。
 
-    在某些情况下，通过代理或防火墙，这会强制执行 SSL 截获路由直接出站 internet 连接。 在这些情况下，`az cloud register`命令可能会失败并出现错误，如"无法从云中获取终结点"。 若要解决此错误，可以设置以下环境变量：
+    在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，`az cloud register` 命令可能会失败并显示错误，如“无法从云中获取终结点”。 若要解决此错误，可以设置以下环境变量：
 
     ```shell  
     set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
     set ADAL_PYTHON_SSL_NO_VERIFY=1
     ```
 
-    通过指定名称注册你的环境。 指定的名称之后的环境`-n`切换。 使用`AzureStackUser`针对用户环境。 如果您是操作员，指定`AzureStackAdmin`。
+2. 注册你的环境。 在运行时使用以下参数`az cloud register`。
+    | 值 | 示例 | 描述 |
+    | --- | --- | --- |
+    | 环境名称 | AzureStackUser | 使用`AzureStackUser`针对用户环境。 如果您是操作员，指定`AzureStackAdmin`。 |
+    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/` **ResourceManagerUrl**集成系统中是：`https://management.<region>.<fqdn>/` 若要检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果您有关于集成的系统终结点的问题，请联系云操作员。 |
+    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于 intregrated 系统，您将想要为您的系统使用终结点。  |
+    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
+    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 包含虚拟机映像别名的文档的 URI。 有关详细信息，请参阅[# # # 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
@@ -336,26 +354,26 @@ az group create -n MyResourceGroup -l local
 
 1. 使用 `az login` 命令登录到 Azure Stack 环境。 可以用户身份或以[服务主体](../../active-directory/develop/app-objects-and-service-principals.md)的形式登录到 Azure Stack 环境。 
 
-  - 以用户身份登录： 
+  - 以用户身份登录：
 
     可以直接在 `az login` 命令中指定用户名和密码，或使用浏览器进行身份验证。 如果帐户已启用多重身份验证，则必须采用后一种方法。
 
     ```azurecli
     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/" --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2018-03-01-hybrid"
-    ``
+    ```
 
     > [!NOTE]
-    > If your user account has multi-factor authentication enabled, you can use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
+    > 如果用户帐户已启用多重身份验证，则可以使用不带 `-u` 参数的 `az login` 命令。 运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
 
-  - Sign in as a *service principal*: 
+  - 以服务主体身份登录： 
     
-    Prepare the .pem file to be used for service principal login.
+    准备要用于服务主体登录的 .pem 文件。
 
-    On the client machine where the principal was created, export the service principal certificate as a pfx with the private key located at `cert:\CurrentUser\My`; the cert name has the same name as the principal.
+    在创建主体的客户端计算机上，使用私钥（位于 `cert:\CurrentUser\My` 证书名称与主体名称相同）将服务主体证书导出为 pfx。
 
-    Convert the pfx to pem (use the OpenSSL utility).
+    将 pfx 转换为 pem（使用 OpenSSL 实用工具）。
 
-    Sign in to the CLI:
+    登录到 CLI：
   
     ```azurecli  
     az login --service-principal \
@@ -383,6 +401,8 @@ az group create -n MyResourceGroup -l local
 本部分将引导你完成设置 CLI 如果使用 Azure AD 作为标识管理服务，并使用 CLI 在 Linux 计算机上。
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
+
+如果使用 ASDK，您将需要信任远程计算机上的 CA 根证书。 不需要使用 intregrated 系统执行此操作。
 
 将它追加到现有的 Python 证书信任 Azure Stack CA 根证书。
 
@@ -412,18 +432,25 @@ az group create -n MyResourceGroup -l local
 
 使用以下步骤连接到 Azure Stack：
 
-1. 运行 `az cloud register` 命令注册 Azure Stack 环境。 在某些情况下，通过代理或防火墙，这会强制执行 SSL 截获路由直接出站 internet 连接。 在这些情况下，`az cloud register`命令可能会失败并出现错误，如"无法从云中获取终结点"。 若要解决此错误，可以设置以下环境变量：
+1. 运行 `az cloud register` 命令注册 Azure Stack 环境。 在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，`az cloud register` 命令可能会失败并显示错误，如“无法从云中获取终结点”。 若要解决此错误，可以设置以下环境变量：
 
    ```shell
    set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
    set ADAL_PYTHON_SSL_NO_VERIFY=1
    ```
 
-2. 通过指定名称注册你的环境。 指定的名称之后的环境`-n`切换。 使用`AzureStackUser`针对用户环境。 如果您是操作员，指定`AzureStackAdmin`。
+2. 注册你的环境。 在运行时使用以下参数`az cloud register`。
+    | 值 | 示例 | 描述 |
+    | --- | --- | --- |
+    | 环境名称 | AzureStackUser | 使用`AzureStackUser`针对用户环境。 如果您是操作员，指定`AzureStackAdmin`。 |
+    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/` **ResourceManagerUrl**集成系统中是：`https://management.<region>.<fqdn>/` 若要检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果您有关于集成的系统终结点的问题，请联系云操作员。 |
+    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于 intregrated 系统，您将想要为您的系统使用终结点。  |
+    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
+    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 包含虚拟机映像别名的文档的 URI。 有关详细信息，请参阅[# # # 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
 
-      ```azurecli  
-      az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
-      ```
+    ```azurecli  
+    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
+    ```
 
 3. 设置活动环境。 
 
@@ -453,7 +480,7 @@ az group create -n MyResourceGroup -l local
       ```
 
     > [!NOTE]
-    > 如果您的用户帐户已启用多重身份验证，则可以使用`az login`命令而无需提供`-u`参数。 运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
+    > 如果用户帐户已启用多重身份验证，则可以使用不带 `-u` 参数的 `az login` 命令。 运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
    
     * 以登录*服务主体*
     
@@ -485,6 +512,8 @@ az group create -n MyResourceGroup -l local
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
 
+如果使用 ASDK，您将需要信任远程计算机上的 CA 根证书。 不需要使用 intregrated 系统执行此操作。
+
 将它追加到现有的 Python 证书信任 Azure Stack CA 根证书。
 
 1. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 将需要具有 pip 和 certifi[安装模块](#install-python-on-linux)。 可在 bash 提示符下使用以下 Python 命令：
@@ -513,18 +542,25 @@ az group create -n MyResourceGroup -l local
 
 使用以下步骤连接到 Azure Stack：
 
-1. 运行 `az cloud register` 命令注册 Azure Stack 环境。 在某些情况下，通过代理或防火墙，这会强制执行 SSL 截获路由直接出站 internet 连接。 在这些情况下，`az cloud register`命令可能会失败并出现错误，如"无法从云中获取终结点"。 若要解决此错误，可以设置以下环境变量：
+1. 运行 `az cloud register` 命令注册 Azure Stack 环境。 在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，`az cloud register` 命令可能会失败并显示错误，如“无法从云中获取终结点”。 若要解决此错误，可以设置以下环境变量：
 
    ```shell
    set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
    set ADAL_PYTHON_SSL_NO_VERIFY=1
    ```
 
-2. 通过指定名称注册你的环境。 指定的名称之后的环境`-n`切换。 使用`AzureStackUser`针对用户环境。 如果您是操作员，指定`AzureStackAdmin`。
+2. 注册你的环境。 在运行时使用以下参数`az cloud register`。
+    | 值 | 示例 | 描述 |
+    | --- | --- | --- |
+    | 环境名称 | AzureStackUser | 使用`AzureStackUser`针对用户环境。 如果您是操作员，指定`AzureStackAdmin`。 |
+    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/` **ResourceManagerUrl**集成系统中是：`https://management.<region>.<fqdn>/` 若要检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果您有关于集成的系统终结点的问题，请联系云操作员。 |
+    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于 intregrated 系统，您将想要为您的系统使用终结点。  |
+    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
+    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 包含虚拟机映像别名的文档的 URI。 有关详细信息，请参阅[# # # 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
 
-      ```azurecli  
-      az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
-      ```
+    ```azurecli  
+    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
+    ```
 
 3. 设置活动环境。 
 
@@ -547,12 +583,12 @@ az group create -n MyResourceGroup -l local
 
   *  作为**用户**设备代码中使用 web 浏览器：  
 
-    ```azurecli  
+  ```azurecli  
     az login --use-device-code
-    ```
+  ```
 
-    > [!NOTE]  
-    >运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
+  > [!NOTE]  
+  >运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
 
   * 作为服务主体：
         
@@ -577,9 +613,9 @@ az group create -n MyResourceGroup -l local
 完成所有设置后，使用 CLI 在 Azure Stack 中创建资源。 例如，可以为应用程序创建资源组并添加虚拟机。 使用以下命令创建名为“MyResourceGroup”的资源组：
 
 ```azurecli
-az group create \
-  -n MyResourceGroup -l local
+  az group create -n MyResourceGroup -l local
 ```
+
 如果成功创建了资源组，则上述命令会输出新建资源的以下属性：
 
 ![资源组创建输出](media/azure-stack-connect-cli/image1.png)

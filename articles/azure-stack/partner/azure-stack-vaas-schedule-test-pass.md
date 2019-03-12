@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: How to
-ms.date: 03/04/2019
+ms.topic: conceptual
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: 4cd94a0d5891c2d34e152dad87d21cbb45a2ec39
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3fb5c3deeddb6f3ee381ca45df76feebf3405b21
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336863"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766558"
 ---
 # <a name="scheduling-a-test"></a>计划测试
 
@@ -53,7 +53,7 @@ ms.locfileid: "57336863"
 
 ![替换文字](media/vaas_test_pass_parameters.png)
 
-定义你的解决方案的工作流。 工作流具有用于测试你的解决方案的过程步骤。
+提供应用于工作流中的所有测试的参数。
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 2. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
@@ -63,22 +63,23 @@ ms.locfileid: "57336863"
 
 ## <a name="select-tests-to-run"></a>选择要运行的测试
 
-选择你想要在工作流中运行的测试。
+创建工作流后，将计划选择的测试。
 
 1. 选择你想要在工作流中运行的测试。
 
     如果您想要的任何测试覆盖的常见参数 （即，在上一节中提供的参数），选择上**编辑**链接接下来，若要指定新值。
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
 1. 选择**下一步**若要检查的工作流。
 
 ## <a name="review-and-submit"></a>查看和提交
 
-查看、 创建和计划您的工作流。
+完成工作流创建。
 
 1. 查看显示的信息。
 
-    服务使用所提供的信息创建工作流并将计划选定的测试。
+    该服务将使用所提供的信息创建工作流并将计划选定的测试。
 
     如果任何内容显示不正确，请使用**上一步**按钮转到前面的部分。
 
