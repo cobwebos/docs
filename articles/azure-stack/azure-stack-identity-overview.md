@@ -11,23 +11,23 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 9fc53fd2539a39de4f01758704765392cc7e98a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e548188f1fc44ec32b90d0eaaa4154602e3e51c4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246960"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764075"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure Stack 的标识概述
 
 Azure Stack 要求使用 Active Directory 所支持的 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者。 提供者的选择是首次部署 Azure Stack 时做出的一次性决定。 本文中的概念和授权详细信息可帮助你选择适当的标识提供者。
 
-Azure Stack 部署的模式取决于所选的 Azure AD 或 AD FS:
+选择 Azure AD 还是 AD FS 取决于 Azure Stack 的部署模式：
 
 - 在连接模式下部署时，可以使用 Azure AD 或 AD FS。
 - 在未建立 Internet 连接的离线模式下部署时，仅支持 AD FS。
@@ -35,7 +35,7 @@ Azure Stack 部署的模式取决于所选的 Azure AD 或 AD FS:
 若要详细了解依赖于 Azure Stack 环境的选项，请参阅以下文章：
 
 - Azure Stack 部署工具包：[标识注意事项](azure-stack-datacenter-integration.md#identity-considerations)。
-- Azure Stack 集成系统：[部署规划决策适用于 Azure Stack 集成系统](azure-stack-deployment-decisions.md)。
+- Azure Stack 集成系统：[Azure Stack 集成系统的部署规划决策](azure-stack-deployment-decisions.md)。
 
 ## <a name="common-concepts-for-identity"></a>标识的一般概念
 
@@ -81,17 +81,17 @@ Azure Stack 部署的模式取决于所选的 Azure AD 或 AD FS:
 
 应用程序包括：
 
-- **Web 应用程序**:示例包括 Azure 门户和 Azure 资源管理器。 它们支持 Web API 调用。
-- **本机客户端**:示例包括 Azure PowerShell、 Visual Studio 和 Azure CLI。
+- **Web 应用程序**：示例包括 Azure 门户和 Azure 资源管理器。 它们支持 Web API 调用。
+- **本机客户端**：示例包括 Azure PowerShell、Visual Studio 和 Azure CLI。
 
 应用程序可支持两种租户：
 
-- **单租户**:用户和服务应用程序注册所在的同一目录中只支持。
+- **单租户**：仅支持应用程序注册时所在的目录中的用户和服务。
 
   > [!NOTE]
   > 由于 AD FS 仅支持单个目录，因此在 AD FS 拓扑中创建的应用程序设计为单租户应用程序。
 
-- **多租户**:支持使用通过注册应用程序目录和其他租户目录中用户和服务。 另一个租户目录（另一个 Azure AD 租户）的用户可以使用多租户应用程序登录到应用程序。 
+- **多租户**：支持应用程序注册时所在目录以及其他租户目录中的用户和服务使用。 另一个租户目录（另一个 Azure AD 租户）的用户可以使用多租户应用程序登录到应用程序。 
 
   有关多租户的详细信息，请参阅[启用多租户](azure-stack-enable-multitenancy.md)。
 
@@ -99,9 +99,9 @@ Azure Stack 部署的模式取决于所选的 Azure AD 或 AD FS:
 
 注册应用程序时，请创建两个对象：
 
-- **应用程序对象**:在所有租户的应用程序的全局表示形式。 此关系是与软件应用程序的一对一关系，且只存在于应用程序首先注册到的目录中。
+- **应用程序对象**：应用程序在所有租户中的全局表示形式。 此关系是与软件应用程序的一对一关系，且只存在于应用程序首先注册到的目录中。
 
-- **服务主体对象**:为第一次注册该应用程序所在的目录中的应用程序创建一个凭据。 服务主体也是在使用该应用程序的其他每个租户的目录中创建的。 此关系可以是与软件应用程序的一对多关系。
+- **服务主体对象**：在首先注册应用程序的目录中针对应用程序创建的凭据。 服务主体也是在使用该应用程序的其他每个租户的目录中创建的。 此关系可以是与软件应用程序的一对多关系。
 
 有关应用程序和服务主体的详细信息，请参阅 [Azure Active Directory 中的应用程序和服务主体对象](/azure/active-directory/develop/active-directory-application-objects)。
 
@@ -156,10 +156,10 @@ Azure Stack 的标识包括用户帐户、组和服务主体。
 
 若要在标识提供者中进行身份验证并接收 JSON Web 令牌，必须提供以下信息：
 
-1. **标识系统 （颁发机构） 的 URL**:可用于访问标识提供程序的 URL。 例如，*https://login.windows.net*。
-2. **应用程序 ID URI 为 Azure 资源管理器**:唯一标识符的 Azure 资源管理器注册到标识提供程序。 也是每个 Azure Stack 安装中的唯一标识符。
-3. **凭据**：用于与标识提供者进行身份验证凭据。
-4. **Azure 资源管理器的 URL**:URL 是 Azure 资源管理器服务的位置。 例如，*https://management.azure.com* 或 *https://management.local.azurestack.external*。
+1. **标识系统（颁发机构）的 URL**：可用于访问标识提供者的 URL。 例如，*https://login.windows.net*。
+2. **Azure 资源管理器的应用 ID URI**：已向标识提供者注册的 Azure 资源管理器的唯一标识符， 也是每个 Azure Stack 安装中的唯一标识符。
+3. **凭据**：用于在标识提供者中进行身份验证的凭据。
+4. **Azure 资源管理器 的 URL**：该 URL 是 Azure 资源管理器服务的位置。 例如，*https://management.azure.com* 或 *https://management.local.azurestack.external*。
 
 当主体（客户端、应用程序或用户）发出访问资源所需的身份验证请求时，该请求必须包含：
 

@@ -5,17 +5,17 @@ services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
 ms.date: 02/27/2019
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 45bd47d0a55f447cc6222bb24de8eafcf37e263b
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: c1f210f7007426114c30e792186010b8905b1d15
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010644"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764585"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack 存储开发工具入门
 
@@ -58,7 +58,7 @@ Microsoft Azure Stack 提供了一组存储服务包括 blob、 表和队列存�
     }
     ```
 
-2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到项目根目录。
+2. 将 [composer.phar](https://getcomposer.org/composer.phar) 下载到项目根目录。
 3. 运行：`php composer.phar install`。
 
 ### <a name="previous-versions-1802-to-1809-update"></a>以前的版本（1802 到 1809 更新）
@@ -87,7 +87,7 @@ Microsoft Azure Stack 提供了一组存储服务包括 blob、 表和队列存�
     }
   ```
 
-2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到项目根目录。
+2. 将 [composer.phar](https://getcomposer.org/composer.phar) 下载到项目根目录。
 3. 运行：`php composer.phar install`。
 
 ## <a name="endpoint-declaration"></a>终结点声明

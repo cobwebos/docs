@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/19/2018
-ms.openlocfilehash: 0a5c0204909a3fa6730a5e852fb24b2213e093a1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 009eb56621f7cd395c3d2eefb29b9fa624af888b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650574"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778189"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>修复 Azure Stack PKI 证书的常见问题
 
@@ -53,7 +53,7 @@ ms.locfileid: "56650574"
 
 **失败** - 私钥缺失或者不包含本地计算机属性。  
 
-**修正**-从生成 CSR 的计算机的重新导出的证书中的步骤[为部署准备 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)。 这些步骤包括从本地计算机证书存储进行导出。
+**修复** - 在生成 CSR 的计算机中，使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书。 这些步骤包括从本地计算机证书存储进行导出。
 
 ## <a name="certificate-chain"></a>证书链
 
@@ -63,7 +63,7 @@ ms.locfileid: "56650574"
 
 ## <a name="dns-names"></a>DNS 名称
 
-**失败**-针对证书的 DNSNameList 不包含 Azure Stack 服务终结点名称或有效的通配符匹配。 通配符匹配项仅适用于 DNS 名称最左侧的命名空间。 例如，_*.region.domain.com_ 仅适用于 *portal.region.domain.com*，不适用于 _*.table.region.domain.com_。
+**失败** - 证书上的 DNSNameList 不包含 Azure Stack 服务终结点名称或有效的通配符匹配项。 通配符匹配项仅适用于 DNS 名称最左侧的命名空间。 例如，_*.region.domain.com_ 仅适用于 *portal.region.domain.com*，不适用于 _*.table.region.domain.com_。
 
 **修复** - 执行“生成 Azure Stack 证书签名请求”中的步骤，以便使用为 Azure Stack 终结点提供支持所需的正确 DNS 名称重新生成 CSR。 将 CSR 重新提交给证书颁发机构，然后执行[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤，以便从生成了 CSR 的计算机导出证书。  
 
@@ -95,7 +95,7 @@ ms.locfileid: "56650574"
 
 **AzsReadinessChecker** 包含名为 `Repair-AzsPfxCertificate` 的帮助程序 cmdlet，它可以通过导入和导出 PFX 文件来修复常见的打包问题，其中包括：
 
-- *PFX 加密*是否不是 TripleDES SHA1。
+- *PFX 加密*不是 TripleDES-SHA1。
 - 私钥缺少本地计算机属性。
 - 证书链不完整或错误。 如果 PFX 包不包含证书链，则本地计算机必须包含。
 - *其他证书*
@@ -118,13 +118,13 @@ ms.locfileid: "56650574"
 
 ### <a name="import-and-export-an-existing-pfx-file"></a>导入和导出现有的 PFX 文件
 
-1. 满足的先决条件的计算机上, 打开管理 PowerShell 提示符，并运行以下命令以安装 AzsReadinessChecker:
+1. 在满足先决条件的计算机上，打开一个管理性的 PowerShell 提示符，然后运行以下命令来安装 AzsReadinessChecker：
 
    ```powershell
    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
    ```
 
-2. 在 PowerShell 提示符下，运行以下 cmdlet 来设置 PFX 密码。 替换为`PFXpassword`使用实际密码：
+2. 在 PowerShell 提示符下，运行以下 cmdlet 来设置 PFX 密码。 请将 `PFXpassword` 替换为实际密码：
 
    ```powershell
    $password = Read-Host -Prompt PFXpassword -AsSecureString
@@ -154,4 +154,4 @@ ms.locfileid: "56650574"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [若要了解有关 Azure Stack 安全性的详细信息，转到此处](azure-stack-rotate-secrets.md)。
+- [转到此处了解有关 Azure Stack 安全性的更多信息](azure-stack-rotate-secrets.md)。

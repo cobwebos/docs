@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7d675eb55e7ecda1dcf79859e85821c4e86ccbdd
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 7f9a4ce4f1e16f69a1d8998e24c1bfe955d17d92
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338512"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767101"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>自动执行使用 PowerShell 的 Azure Stack 验证
 
@@ -29,12 +29,12 @@ ms.locfileid: "57338512"
 > [!NOTE]  
 > 自动化功能仅适用于测试通过工作流。 通过 VaaS 门户仅支持在包验证和解决方案验证工作流。
 
-在本教程中，学习如何创建脚本的：
+此脚本可用于：
 
 > [!div class="checklist"]
 > * 安装必备组件
 > * 安装并启动本地代理
-> * 启动类集成，功能，可靠性测试类别
+> * 启动类别的测试，如*集成*，*功能*，*可靠性*
 > * 报告测试结果
 
 ## <a name="launch-the-test-pass-workflow"></a>启动测试通过工作流
@@ -89,7 +89,7 @@ ms.locfileid: "57338512"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure Stack 上的 PowerShell 的详细信息，请查看最新模块。
+若要了解有关 Azure Stack 上的 PowerShell 的详细信息，请查看最新的模块。
 
 > [!div class="nextstepaction"]
 > [Azure Stack 模块](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0)

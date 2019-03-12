@@ -1,6 +1,6 @@
 ---
-title: 启用 Azure Stack 中的 Kubernetes 仪表板 |Microsoft Docs
-description: 了解如何启用 Azure Stack 中的 Kubernetes 仪表板
+title: 访问 Azure Stack 中的 Kubernetes 仪表板 |Microsoft Docs
+description: 了解如何访问 Azure Stack 中的 Kubernetes 仪表板
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,24 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: cdc1be0c0274977fe14ef704fbb74fa955ad7e11
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 243fb01a5c8112afaf310f616b93c2667ac6f19d
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242405"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729855"
 ---
-# <a name="enable-the-kubernetes-dashboard-in-azure-stack"></a>启用 Azure Stack 中的 Kubernetes 仪表板 
+# <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>访问 Azure Stack 中的 Kubernetes 仪表板 
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包* 
 > [!Note]   
 > Azure Stack 上的 Kubernetes 现为预览版。 在预览目前不支持 azure Stack 离线的场景中。 
 
-Kubernetes 包括可用于基本的管理操作的 web 仪表板。 使用此仪表板，可以查看应用程序的基本运行状况状态和指标，创建并部署服务，以及编辑现有应用程序。 本文介绍如何启用 Azure Stack 上的 Kubernetes 仪表板。
+Kubernetes 包括可用于基本的管理操作的 web 仪表板。 使用此仪表板，可以查看应用程序的基本运行状况状态和指标，创建并部署服务，以及编辑现有应用程序。 本文介绍如何设置 Azure Stack 上的 Kubernetes 仪表板。
 
 ## <a name="prerequisites-for-kubernetes-dashboard"></a>Kubernetes 仪表板的先决条件
 

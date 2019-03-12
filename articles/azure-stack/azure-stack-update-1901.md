@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 18c4fd3fff244ac180ac0129f100a7d5b2472cab
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 0bbf76e16334ae4847ec6f7fbf3aa88fb508e84d
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984826"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731144"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新
 
@@ -71,7 +71,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
-- 通过 System Center Operations Manager (SCOM) 管理 Azure Stack，请务必更新管理包为 Microsoft Azure Stack 为版本 10.0.3.11 应用 1901年之前。
+- 通过 System Center Operations Manager (SCOM) 管理 Azure Stack，请务必更新管理包为 Microsoft Azure Stack 为版本 1.0.3.11 应用 1901年之前。
 
 ## <a name="new-features"></a>新增功能
 
@@ -81,32 +81,32 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - **AzureRm 2.4.0**
    * **AzureRm.Profile**  
-         Bug 修复-`Import-AzureRmContext`以正确反序列化已保存的令牌。  
+         Bug 修复 - `Import-AzureRmContext` 可正确反序列化已保存的令牌。  
    * **AzureRm.Resources**  
-         Bug 修复-`Get-AzureRmResource`为查询大小写，不区分大小按资源类型。  
+         Bug 修复 - `Get-AzureRmResource` 可按资源类型进行不区分大小写的查询。  
    * **Azure.Storage**  
-         AzureRm 汇总模块现在包括已发布的版本 4.5.0 支持**api 版本 2017年-07-29**。  
+         AzureRm 汇总模块现在包含已发布的 4.5.0 版，支持 **api-version 2017-07-29**。  
    * **AzureRm.Storage**  
-         AzureRm 汇总模块现在包括 5.0.4 已发布的版支持**api 版本 2017年-10-01**。  
+         AzureRm 汇总模块现在包含已发布的 5.0.4 版，支持 **api-version 2017-10-01**。  
    * **AzureRm.Compute**  
-         添加了简单的参数设置`New-AzureRMVM`并`NewAzureRMVMSS`，`-ImageName`参数支持指定的用户映像。  
+         在 `New-AzureRMVM` 和 `NewAzureRMVMSS` 中添加了简单参数集，`-ImageName` 参数支持指定用户映像。  
    * **AzureRm.Insights**  
-         AzureRm 汇总模块现在包括已发布的版本 5.1.5 支持**api-version 2018-01-01**指标，指标定义资源类型。
+         AzureRm 汇总模块现在包含已发布的 5.1.5 版，支持适用于指标、指标定义资源类型的 **api-version 2018-01-01**。
 
-- **AzureStack 1.7.0**这一项重大更改的释放。 有关中断性变更的详细信息，请参阅 https://aka.ms/azspshmigration170
+- **AzureStack 1.7.0** 这是一个有中断性变更的版本。 有关中断性变更的详细信息，请参阅 https://aka.ms/azspshmigration170
    * **Azs.Backup.Admin 模块**  
          重大更改：备份对基于证书的加密模式的更改。 已弃用对对称密钥的支持。  
-   * **Azs.Fabric.Admin Module**  
-         `Get-AzsInfrastructureVolume` 已弃用。 使用新 cmdlet `Get-AzsVolume`。  
-         `Get-AzsStorageSystem` 已弃用。  使用新 cmdlet `Get-AzsStorageSubSystem`。  
-         `Get-AzsStoragePool` 已弃用。 `StorageSubSystem`对象包含容量属性。  
+   * **Azs.Fabric.Admin 模块**  
+         `Get-AzsInfrastructureVolume` 已弃用。 使用新的 cmdlet `Get-AzsVolume`。  
+         `Get-AzsStorageSystem` 已弃用。  使用新的 cmdlet `Get-AzsStorageSubSystem`。  
+         `Get-AzsStoragePool` 已弃用。 `StorageSubSystem` 对象包含容量属性。  
    * **Azs.Compute.Admin 模块**  
-         Bug 修复- `Add-AzsPlatformImage`， `Get-AzsPlatformImage`:调用`ConvertTo-PlatformImageObject`仅在成功的路径中。  
-         Bug 修复- `Add-AzsVmExtension`， `Get-AzsVmExtension`:仅在成功的路径中调用 ConvertTo VmExtensionObject。  
+         Bug 修复 - `Add-AzsPlatformImage`、`Get-AzsPlatformImage`：仅在成功路径中调用 `ConvertTo-PlatformImageObject`。  
+         Bug 修复 - `Add-AzsVmExtension`、`Get-AzsVmExtension`：仅在成功路径中调用 ConvertTo-VmExtensionObject。  
    * **Azs.Storage.Admin 模块**  
-         新的存储配额的 bug 修复-如果没有提供，则使用默认值。
+         Bug 修复 - 在不提供值的情况下，新的存储配额使用默认值。
 
-若要查看已更新的模块的引用，请参阅[Azure Stack 模块参考](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0)。
+若要查看已更新模块的参考，请参阅 [Azure Stack 模块参考](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0)。
 
 ## <a name="fixed-issues"></a>修复的问题
 
@@ -143,7 +143,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - 修复了以下问题：将[计算配额类型](azure-stack-quota-types.md#compute-quota-types)下面的托管磁盘配额设置为 0 时，相当于使用默认值 2048 GiB。 现在遵循零配额值。
 
 <!-- 2724873 - IS --> 
-- 修复了问题时使用的 PowerShell cmdlet**开始 AzsScaleUnitNode**或**停止 AzsScaleUnitNode**来管理缩放单位，首次尝试启动或停止的缩放单位可能会失败。
+- 修复了以下问题：使用 PowerShell cmdlet **Start-AzsScaleUnitNode** 或 **Stop-AzsScaleUnitNode** 管理缩放单元时，首次尝试启动或停止缩放单元可能会失败。
 
 <!-- 2724961- IS ASDK --> 
 - 修复了以下问题：尽管在订阅设置中注册了 **Microsoft.Insight** 资源提供程序并创建了支持来宾 OS 诊断的 Windows VM，但 VM 概述页中的“CPU 百分比”图表仍不显示指标数据。 现在会正常显示数据。
@@ -181,8 +181,8 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
      -DirectoryTenantName $homeDirectoryTenantName -Verbose
    ```
 
-- 准确规划 Azure Stack 容量时需要考虑一个新的因素。 1901 更新是现在可以创建虚拟机的总数限制。  此限制旨在作为临时以免解决方案不稳定。 进行寻址的更多的 Vm 上的稳定性问题的源，但尚未确定具体的时间表以提高补救。 1901年更新后，现在有了每个服务器限制 60 台虚拟机的总体解决方案限制为 700。  例如，8 服务器的 Azure Stack VM 限制将 480 (8 * 60)。  对于 Azure Stack 解决方案的 12 到 16 服务器限制为 700。 已创建此限制，请记住所有计算资源容量注意事项例如保留的复原能力和 CPU 虚拟与物理运算符想要在标记上维护的比率。 有关详细信息，请参阅的容量规划器的新版本。  
-情况已达到虚拟机扩展限制，将作为结果返回以下错误代码：VMsPerScaleUnitLimitExceeded，VMsPerScaleUnitNodeLimitExceeded。 
+- 准确规划 Azure Stack 容量时需要考虑一个新的因素。 使用 1901 更新时，现在可创建的虚拟机总数有限制。  此限制是暂时性的，目的是避免解决方案不稳定。 我们已解决大量 VM 的稳定性问题根源，但尚未确定补救措施的具体时间表。 使用 1901 更新时，现在每台服务器存在 60 个 VM 的限制，解决方案总体限制为 700 个。  例如，8 个服务器的 Azure Stack VM 数目限制是 480 (8 * 60)。  对于包含 12 到 16 个服务器的 Azure Stack 解决方案，限制为 700 个 VM。 确定此限制时，我们考虑到了所有计算容量，例如复原能力，以及运营商想要在阵列上保持的虚拟与物理 CPU 之比。 有关详细信息，请参阅新版容量规划器。  
+如果达到了 VM 规模限制，将返回以下错误代码：VMsPerScaleUnitLimitExceeded、VMsPerScaleUnitNodeLimitExceeded。 
  
 
 - 计算 API 版本已递增到 2017-12-01。
@@ -274,7 +274,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
    - 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次选择“资源提供程序”、“Microsoft.Compute”、“重新注册”。
-      2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**客户端 DiskRP AzureStack**列出。
+      2. 在同一订阅下，转到“访问控制(IAM)”，检查“AzureStack-DiskRP-Client”是否已列出。
    - 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决错误，请执行[此文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤来重新配置每个来宾目录。
 
 - 如果使用创建时已启用 SSH 授权的 Ubuntu 18.04 VM，则无法使用 SSH 密钥登录。 若要解决此问题，请在预配后使用针对 Linux 扩展的 VM 访问权限来实现 SSH 密钥，或者使用基于密码的身份验证。

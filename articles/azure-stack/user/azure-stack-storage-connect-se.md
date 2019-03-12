@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 9debcd121cbbde626758abccfe838abda12ad840
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822827"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763361"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>将存储资源管理器连接到 Azure Stack 订阅或存储帐户
 
@@ -30,7 +30,7 @@ ms.locfileid: "55822827"
 > [!NOTE]  
 > 有几个工具可用于将数据移进/移出 Azure Stack 存储。 有关详细信息，请参阅[适用于 Azure Stack 存储的数据传输工具](azure-stack-storage-transfer.md)。
 
-如果尚未安装存储资源管理器，请[下载存储资源管理器](http://www.storageexplorer.com/)并安装它。
+如果尚未安装存储资源管理器，请[下载存储资源管理器](https://www.storageexplorer.com/)并安装它。
 
 连接到 Azure Stack 订阅或存储帐户后，可以使用 [Azure 存储资源管理器文章](../../vs-azure-tools-storage-manage-with-storage-explorer.md)处理 Azure Stack 数据。 
 
@@ -38,20 +38,20 @@ ms.locfileid: "55822827"
 
 需要可以直接访问 Azure Stack 或 VPN 连接，存储资源管理器才能访问 Azure Stack 订阅。 若要了解如何设置到 Azure Stack 的 VPN 连接，请参阅[使用 VPN 连接到 Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)。
 
-为 Azure Stack 开发工具包 (ASDK)，您需要导出 Azure Stack 颁发机构的根证书。
+对于 Azure Stack 开发工具包 (ASDK)，需要导出 Azure Stack 颁发机构根证书。
 
 > [!Note]  
-> 对于 ASDK 中，如果您要连接到通过 VPN 将 ASDK，不使用 VPN 安装过程中创建的根证书 (CA.cer)。  这是 DER 编码的证书，并且不允许存储资源管理器来检索 Azure Stack 订阅。 请按照以下步骤来导出 Base-64 编码证书，用于存储资源管理器。
+> 对于 ASDK，如果要通过 VPN 连接到 ASDK，请不要使用在 VPN 设置过程中创建的根证书 (CA.cer)。  这是 DER 编码的证书，不允许存储资源管理器检索 Azure Stack 订阅。 请按照以下步骤导出 Base-64 编码证书，以用于存储资源管理器。
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>导出然后导入 Azure Stack 证书
 
-导出并为 ASDK 然后导入 Azure Stack 证书。 对于集成系统，可公开签名证书。 因此，此步骤并不是必要时设置存储资源管理器连接到 Azure Stack 集成系统。
+导出然后导入 ASDK 的 Azure Stack 证书。 对于集成系统，证书是公开签名的。 因此，在设置存储资源管理器与 Azure Stack 集成系统的连接时，不需要执行此步骤。
 
 1. 在 Azure Stack 主机或已与 Azure Stack 建立 VPN 连接的本地计算机上打开 `mmc.exe`。 
 
 2. 在“文件”中选择“添加/删除管理单元”，并添加“证书”以管理“我的用户帐户”。
 
-3.  在 **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 下。 查找**AzureStackSelfSignedRootCert**。
+3.  在 **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 下。 找到 **AzureStackSelfSignedRootCert**。
 
     ![通过 mmc.exe 加载 Azure Stack 根证书](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "55822827"
 
 4. 输入 Azure Stack 自定义环境的所需信息。 
 
-    | 字段 | 注意 |
+    | 字段 | 说明 |
     | ---   | ---   |
     | 环境名称 | 用户可以自定义此字段。 |
     | Azure 资源管理器终结点 | Azure Stack 开发工具包的 Azure 资源管理器资源终结点示例。<br>对于运营商： https://adminmanagement.local.azurestack.external <br> 对于用户： https://management.local.azurestack.external |
@@ -152,7 +152,7 @@ ms.locfileid: "55822827"
 
     ![附加名称和密钥](./media/azure-stack-storage-connect-se/azure-stack-attach-name-and-key.png)
 
-5. 选择“连接” 。
+5. 选择“连接”。
 6. 成功附加存储帐户后，会显示该存储帐户，其名称后面追加了“(外部、其他)”字样。
 
     ![VMWINDISK](./media/azure-stack-storage-connect-se/azure-stack-vmwindisk.png)

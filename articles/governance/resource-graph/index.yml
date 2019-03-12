@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e437d1767fba01a75852bedc5a89de94c222d4f5
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: b79f900c9d1fa78c131b132975f9352c4696b201
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195058"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726900"
 documentType: LandingData
 title: Azure Resource Graph 文档
 metadata:
@@ -15,7 +15,7 @@ metadata:
   manager: carmonm
   ms.service: resource-graph
   ms.topic: landing-page
-  ms.date: 02/15/2019
+  ms.date: 03/11/2019
   ms.author: dacoulte
 abstract:
   description: Azure Resource Graph 文档可帮助你配置和学习查询语言，以便大规模发现和探索资源。
@@ -50,6 +50,6 @@ sections:
     - title: 命令行
       html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
     - title: Languages
-      html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">用于 .NET 的 Azure SDK</a></p>
+      html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">用于 .NET 的 Azure SDK</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Azure SDK for Python</a></p>
     - title: REST
       html: <p><a href="/rest/api/azureresourcegraph/resources/resources">API 参考</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>

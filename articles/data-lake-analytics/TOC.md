@@ -85,6 +85,6 @@
 ## [定价](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

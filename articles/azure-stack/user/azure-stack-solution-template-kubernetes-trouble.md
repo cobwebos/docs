@@ -1,5 +1,5 @@
 ---
-title: 排查 Kubernetes 部署到 Azure Stackk |Microsoft Docs
+title: 排查 Kubernetes 部署到 Azure Stack |Microsoft Docs
 description: 了解如何排查 Kubernetes 部署到 Azure Stack。
 services: azure-stack
 documentationcenter: ''
@@ -11,16 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: mabrigg
+ms.author: mabvrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5436b562b4f9054e0e00e3cc6abb1724797437db
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752290"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729646"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>排查 Kubernetes 部署到 Azure Stack
 
@@ -87,7 +86,7 @@ ms.locfileid: "55752290"
 可以在支持 Kubernetes 群集的 VM 上收集日志。 还可以查看部署日志。 可能还需要与 Azure Stack 管理员联系，以便验证你需要使用的 Azure Stack 版本并从与部署相关的 Azure Stack 获取日志。
 
 1. 从 Kubernetes 群集中的主节点查看[部署状态](#review-deployment-status)并[检索日志](#get-logs-from-a-vm)。
-2. 确保使用最新版本的 Azure Stack。 如果不确定使用的是哪个版本，请与 Azure Stack 管理员联系。 Kubernetes 群集市场项 0.3.0 需要 Azure Stack 版本 1808 或更高版本。
+2. 确保使用最新版本的 Azure Stack。 如果不确定使用的是哪个版本，请与 Azure Stack 管理员联系。
 3.  查看 VM 创建文件。 可能遇到了以下问题：  
     - 公钥可能无效。 查看创建的密钥。  
     - 创建 VM 可能触发了内部错误或触发了创建错误。 许多因素（包括 Azure Stack 订阅的容量限制）都可能导致错误。
@@ -148,21 +147,26 @@ ms.locfileid: "55752290"
 3. 在同一会话中，使用已更新为与你的环境匹配的参数运行以下命令：
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmd-host 192.168.102.37
     ```
 
 4. 检查参数并基于环境设置值。
     | 参数           | 描述                                                                                                      | 示例                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -i、--identity-file | 用于连接 kubernetes 主 VM 的 RSA 私钥文件。 该密钥必须以 `-----BEGIN RSA PRIVATE KEY-----` 开头 | C:\data\privatekey.pem                                                        |
-    | -h、--host          | Kubernetes 群集主 VM 的公共 IP 或完全限定的域名 (FQDN)。 该 VM 名称以 `k8s-master-` 开头。                       | IP：192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -d, --vmd-host       | DVM 的公共 IP 或 FQDN。 该 VM 名称以 `vmd-` 开头。                                                       | IP：192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+    | -f, --force | 上传专用密钥之前进行提示。 | |
+    | -i、--identity-file | 用于连接 kubernetes 主 VM 的 RSA 私钥文件。 密钥必须首先具有： <br>`-----BEGIN RSA PRIVATE KEY-----` | C:\data\id_rsa.pem                                                        |
+    | -h、--help  | 打印有关命令的用法`getkuberneteslogs.sh`脚本。 | |
+    | -m, --master-host          | Kubernetes 群集主 VM 的公共 IP 或完全限定的域名 (FQDN)。 该 VM 名称以 `k8s-master-` 开头。                       | IP：192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u、--user          | Kubernetes 群集主 VM 的用户名。 在配置市场项时设置此名称。                                                                    | azureuser                                                                     |
-    | -d、--vmdhost       | DVM 的公共 IP 或 FQDN。 该 VM 名称以 `vmd-` 开头。                                                       | IP：192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+
+
+
 
    添加参数值时，它可能类似于以下代码：
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file "C:\secretsecret.pem" --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmdhost 192.168.102.37
      ```
 
     如果运行成功，则会创建日志。

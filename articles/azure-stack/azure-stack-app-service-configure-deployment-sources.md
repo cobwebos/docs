@@ -1,6 +1,6 @@
 ---
 title: 为 Azure Stack 上的应用服务配置部署源 | Microsoft Docs
-description: 服务管理员如何为 Azure Stack 上的应用服务配置部署源（Git、GitHub、BitBucket、DropBox 和 OneDrive）
+description: 服务管理员如何为 Azure Stack 上的应用服务配置部署源 （Git、 GitHub、 BitBucket、 DropBox 和 OneDrive）
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: f2101c685ff7b3820f826da1d2e1d52b687d26c6
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 776648fd5bab2dd4ef51ff4c26936f38d9987e94
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446625"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769806"
 ---
 # <a name="configure-deployment-sources"></a>配置部署源
 
@@ -104,7 +104,7 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 ![OneDrive 应用程序 - 添加 Web 平台][12]
 8. 添加“Microsoft Graph 权限 - 委派权限”
     - **Files.ReadWrite.AppFolder**
-    - **User.Read**  
+    - **用户。读取**  
       ![OneDrive 应用程序 - Graph 权限][13]
 9. 单击“ **保存**”。
 10.  在新的浏览器标签页或窗口中，以服务管理员身份登录到 Azure Stack 管理员门户 (https://adminportal.local.azurestack.external)。

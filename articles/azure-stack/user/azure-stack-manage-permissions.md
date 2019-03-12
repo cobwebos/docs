@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 03/11/2019
 ms.author: patricka
-ms.reviewer: unknown
-ms.lastreviewed: 12/06/2018
-ms.openlocfilehash: 03c1879c34a00bb09b5a4dee6af7da7b984045fc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.reviewer: fiseraci
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3565bf4c4a19bcf1b136b4cbb781006658865a1c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241179"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767203"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>使用 Azure Stack 基于角色的访问控制管理对资源的访问权限
 
@@ -93,8 +93,8 @@ Azure [角色分配](https://docs.microsoft.com/azure/role-based-access-control/
 2. 在左侧导航窗格中，选择“资源组”。
 3. 选择要针对其设置权限的资源组的名称。
 4. 在资源组的导航窗格中，选择“访问控制(标识和访问管理)”。 “角色分配”视图会列出对该资源组具有访问权限的项。 可以对结果进行筛选和分组。
-5. 在“访问控制”菜单栏上，选择“添加角色分配”。
-6. 在“添加角色分配”窗格上：
+5. 上**访问控制**菜单栏上，选择**添加**。
+6. 上**添加权限**窗格：
 
    * 从“角色”下拉列表中选择要分配的角色。
    * 从“将访问权限分配到”下拉列表中选择要分配的资源。
