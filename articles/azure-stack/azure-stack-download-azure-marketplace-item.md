@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: c3c577ce2483c5de3aa458c7fe4b6fced418f684
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2f51ab51cc352c5f3d95ac1a35a1cbf918899753
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882937"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768393"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将市场项从 Azure 下载到 Azure Stack
 
@@ -169,7 +169,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -AzsCredential $credential
    ```
 
-   `-origin`参数指定的最上层文件夹包含所有已下载的产品; 例如， `"D:\downloadfolder"`。
+   `-origin` 参数指定包含所有已下载产品的顶级文件夹；例如，`"D:\downloadfolder"`。
 
    `-AzsCredential` 参数是可选的。 该参数用于续订访问令牌（如果已过期）。 如果未指定 `-AzsCredential` 参数且令牌已过期，则你会收到输入操作员凭据的提示。
 

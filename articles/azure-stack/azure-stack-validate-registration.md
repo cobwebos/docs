@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 614f8a3e3738e1c99f5a089410814765d278d3fe
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 9dc2facbcae5ced1328d5488e533239a6a5627cf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743831"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776472"
 ---
 # <a name="validate-azure-registration"></a>验证 Azure 注册
  
@@ -68,7 +68,7 @@ ms.locfileid: "55743831"
    $registrationCredential = Get-Credential subscriptionowner@contoso.onmicrosoft.com -Message "Enter Credentials for Subscription Owner"
    ```
 > [!NOTE]
-  > 作为 CSP，使用共享服务或 IUR 订阅时，需要从该各自 AAD 提供的用户的凭据。 通常这将类似于`subscriptionowner@iurcontoso.onmicrosoft.com`。 该用户必须具有相应的凭据，如上文所述。
+  > 作为 CSP，在使用共享服务或 IUR 订阅时，你需要提供来自相应 AAD 的用户的凭据。 通常这将类似于 `subscriptionowner@iurcontoso.onmicrosoft.com`。 该用户必须具有相应的凭据，如上文所述。
 
 3. 从 PowerShell 提示符下，运行以下命令将 `$subscriptionID` 设置为你将使用的 Azure 订阅。 将 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 替换为你自己的订阅 ID：
    ```powershell

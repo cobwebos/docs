@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: bb0eac4f7de11c2b80412319227a00d5dbe6d8c6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b3fbd91ddf06d4515ee55d24ba9330d0af6dc124
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243396"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540208"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 Azure CLI 创建 Linux 服务器虚拟机
 
@@ -82,7 +82,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="use-ssh-to-connect-to-the-virtual-machine"></a>使用 SSH 连接到虚拟机
 
-从安装了 SSH 的客户端计算机连接到虚拟机。 如果在 Windows 客户端上操作，请使用 [Putty](http://www.putty.org/) 创建连接。 若要连接到虚拟机，请使用以下命令：
+从安装了 SSH 的客户端计算机连接到虚拟机。 如果在 Windows 客户端上操作，请使用 [Putty](https://www.putty.org/) 创建连接。 若要连接到虚拟机，请使用以下命令：
 
 ```bash
 ssh <publicIpAddress>

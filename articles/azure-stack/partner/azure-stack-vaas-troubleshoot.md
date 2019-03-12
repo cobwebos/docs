@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 615ce7ca5fbd14ee636a21bfc7184f0f8ccbc9f6
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4b212ae884b184ffc60cdc0b3a2181a59efa3904
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341572"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760862"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>对验证作为服务进行故障排除
 
@@ -39,7 +39,7 @@ ms.locfileid: "57341572"
 
 ### <a name="agent-process-on-machine-was-shut-down-while-executing-test-what-to-expect"></a>在执行测试时，计算机上的代理进程已关闭。 要发生的情况
 
-如果代理进程是非正常关闭的，例如计算机重启、进程被终止（在代理窗口上按 CTRL+C 被视为正常关闭），则之前正在其上运行的测试将继续显示为**正在运行**。 如果重新启动代理，则代理将更新到测试的状态**取消**。 如果不重新启动代理，则该测试显示为**运行**并且您必须手动取消测试。
+如果代理进程是非正常关闭的，例如计算机重启、进程被终止（在代理窗口上按 CTRL+C 被视为正常关闭），则之前正在其上运行的测试将继续显示为**正在运行**。 如果代理重启，则代理会将测试状态更新为**已取消**。 如果不重新启动代理，则该测试显示为**运行**并且您必须手动取消测试。
 
 > [!Note]
 > 工作流中的测试安排为按顺序运行。 在同一工作流中处于**正在运行**状态的测试完成之前，**挂起的**测试不会执行。

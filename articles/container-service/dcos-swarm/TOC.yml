@@ -87,12 +87,12 @@ items:
   - name: 上市区域
     href: https://azure.microsoft.com/regions/services/
   - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-container-service
+    href: https://stackoverflow.com/questions/tagged/azure-container-service
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
-ms.openlocfilehash: fad8742bf5c0dd530665cdadbfdfbd9c246bead8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e692dba1603f91ae82e0d3c4dcbf9643edacdec8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300879"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532620"

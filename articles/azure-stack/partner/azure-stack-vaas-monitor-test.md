@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d4854bd623bb11d50a712be3a5aea07db24c2951
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9b64631b274423edda35189a942e2f142ae591f1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432237"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761160"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>监视和管理 VaaS 门户中的测试
 
@@ -40,7 +40,7 @@ ms.locfileid: "57432237"
 
 ## <a name="change-workflow-parameters"></a>更改工作流参数
 
-每个工作流类型可让你编辑[测试参数](azure-stack-vaas-parameters.md#test-parameters)工作流创建过程中指定。
+您可以编辑[测试参数](azure-stack-vaas-parameters.md#test-parameters)任何类型的工作流的工作流创建过程中指定。
 
 1. 在测试摘要页上，选择**编辑**按钮。
 
@@ -77,11 +77,11 @@ ms.locfileid: "57432237"
 | 代理名称 | 运行测试代理的名称。 |
 | 总操作数 | 尝试在测试期间的操作的总数。 |
 | 通过的操作数 | 已成功在测试期间的操作数目。 |
-|  失败的操作数 | 在测试期间失败的操作数目。 |
+|  失败的操作 | 在测试期间失败的操作数目。 |
 
 ### <a name="actions"></a>操作
 
-每个测试实例列出了其上下文菜单上单击时可以执行的可用操作 **[...]** 测试实例表中。
+每个测试实例会列出可用的操作时选择其上下文菜单，可以采用 **[...]** 测试实例表中。
 
 #### <a name="view-information-about-the-test-definition"></a>查看有关测试定义的信息
 
@@ -118,7 +118,7 @@ ms.locfileid: "57432237"
 
 #### <a name="download-logs-for-a-completed-test-instance"></a>下载已完成的测试实例的日志
 
-选择**下载日志**从上下文菜单下载`.zip`测试执行过程中的日志输出的文件。 此操作是仅供测试已完成，即，包含的状态的测试`Cancelled`， `Failed`， `Aborted`，或`Succeeded`。
+选择**下载日志**从上下文菜单下载`.zip`测试执行过程中的日志输出的文件。 此操作是仅适用于已完成，即，包含的状态的测试的测试`Cancelled`， `Failed`， `Aborted`，或`Succeeded`。
 
 #### <a name="reschedule-a-test-instance-or-schedule-a-test"></a>重新计划测试实例，或计划测试
 
@@ -142,7 +142,7 @@ ms.locfileid: "57432237"
 
 如果其状态是可能会取消的计划的测试`Pending`或`Running`。  
 
-1. 选择**取消**从上下文菜单打开提示符取消测试实例。
+1. 选择**取消**从上下文菜单打开的提示的取消测试实例。
 
 1. 选择**提交**取消测试实例。
 
