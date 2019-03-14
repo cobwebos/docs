@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f7225fece81672e539858567039e1ff086d97c2c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ca77662e7756d74f8f939e78af626b7f2da2a3c4
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197719"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792712"
 documentType: LandingData
 title: “Azure 上的 Ansible”文档
 metadata:
   title: “Azure 上的 Ansible”文档 - 教程、示例、参考和资源
   description: 了解如何使用 Ansible 自动执行云预配、配置管理和应用程序部署。
-  ms.service: ansible
+  ms.service: azure
   keywords: ansible, azure, devops, 教程, 示例, 参考
   author: tomarchermsft
   manager: jeconnoc

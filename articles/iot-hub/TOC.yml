@@ -274,19 +274,14 @@ items:
         href: iot-hub-configure-file-upload-powershell.md
       - name: 使用 Azure CLI
         href: iot-hub-configure-file-upload-cli.md
-    - name: 使用诊断进行监视
+    - name: Azure Monitor 中的指标
+      href: iot-hub-metrics.md
+    - name: 设置诊断日志
       href: iot-hub-monitor-resource-health.md
-      items:
-      - name: 迁移到诊断设置
-        href: iot-hub-migrate-to-diagnostics-settings.md
-      - name: 操作监视
-        href: iot-hub-operations-monitoring.md
     - name: 使用 X.509 证书来保护中心
       href: iot-hub-security-x509-get-started.md
     - name: 升级 IoT 中心
       href: iot-hub-upgrade.md
-    - name: 使用指标
-      href: iot-hub-metrics.md
     - name: 启用消息跟踪
       href: iot-hub-distributed-tracing.md
     - name: 配置 IP 筛选
@@ -378,6 +373,12 @@ items:
     href: https://docs.microsoft.com/rest/api/iothub/certificates
   - name: 资源管理器模板
     href: /azure/templates/microsoft.devices/iothub-allversions
+  - name: 功能和 API 停用
+    items:
+    - name: 操作监视
+      href: iot-hub-operations-monitoring.md
+    - name: 迁移到诊断设置
+      href: iot-hub-migrate-to-diagnostics-settings.md
 - name: 相关内容
   items:
   - name: 解决方案
@@ -444,9 +445,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: cdeb8f013ee8a0dff212d5fc9facc199ed81828e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3bde9a6b9abcb5b99224ae9397756fe410cc0708
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530869"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791862"

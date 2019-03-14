@@ -16,12 +16,12 @@ ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 9bad9b6fb285c27264c8c0567aebd4d4f2850582
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 66dfdf3a88a4bacdc118fed00d79f02b22da7869
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731342"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792457"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 更新
 
@@ -73,9 +73,34 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 <!-- ## Fixed issues -->
 
-## <a name="changes"></a>更改
+## <a name="improvements"></a>改进
 
 - 1902 版本引入了用于创建计划、 产品/服务、 配额和加载项计划在 Azure Stack 管理员门户上的新用户界面。 有关详细信息，包括屏幕截图，请参阅[创建计划、 产品/服务和配额](azure-stack-create-plan.md)。
+
+<!--
+1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
+1399240 3322580: [PNU] Optimize the DSC resource execution on the Host  PNU
+1398846 Bug 3751038: ECEClient.psm1 should provide cmdlet to resume action plan instance    PNU
+1398818 3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context   PNU
+1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
+-->
+- 若要提高包的完整性和安全性，以及用于脱机引入更轻松地管理，Microsoft 已更改的更新包的格式从.exe 和.bin 文件到一个.zip 文件。 新的格式添加其他有时，可能会导致更新的准备，以停止正在解包过程的可靠性。 相同的包格式也适用于更新您的 OEM 中的包。
+- 若要提高 Azure Stack 运营商体验运行 Test-azurestack 时，运算符现在只需使用，"Test-azurestack-组 UpdateReadiness"而不是将十个附加参数传递后一个 Include 语句。
+
+  ```powershell
+    Test-AzureStack -Group UpdateReadiness  
+  ```  
+  
+- 若要在更新过程中改进的整体可靠性和可用性的核心基础结构服务，作为更新操作计划的一部分的本机更新资源提供程序将检测并调用根据需要自动全局修正。 全局修正"修复"工作流包括：
+    - 检查处于非最佳状态并尝试修复它们所需的基础结构虚拟机 
+    - 作为控制计划的一部分的 SQL 服务问题，检查并尝试修复它们根据需要
+    - 检查作为一部分的网络控制器 (NC) 软件负载均衡器 (SLB) 服务的状态并尝试修复它们根据需要
+    - 检查网络控制器 (NC) 服务的状态并尝试修复它根据需要
+    - 检查紧急恢复控制台服务 (ERCS) service fabric 节点的状态并根据需要修复它们
+    - 检查 XRP service fabric 节点的状态并根据需要修复它们
+    - 检查 Azure 一致的存储 (ACS) service fabric 节点的状态并根据需要修复它们
+
+
 
 ## <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
 
