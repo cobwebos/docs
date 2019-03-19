@@ -3,21 +3,20 @@ title: 在 Azure 数据工厂中监视集成运行时 | Microsoft Docs
 description: 了解如何在 Azure 数据工厂中监视不同类型的集成运行时。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
-ms.author: douglasl
-ms.openlocfilehash: 8c3883ae6dd2928fb6cc4f22510e7992daac7793
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015298"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576322"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -26,21 +25,23 @@ ms.locfileid: "54015298"
 - 自承载集成运行时
 - Azure-SSIS 集成运行时
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 若要获取集成运行时 (IR) 实例的状态，请运行以下 PowerShell 命令： 
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
 ``` 
 
 该 cmdlet 返回不同类型的集成运行时的不同信息。 本文解释每种类型的集成运行时的属性和状态。  
 
 ## <a name="azure-integration-runtime"></a>Azure 集成运行时
-Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管理。 下表提供了 **Get-AzureRmDataFactoryV2IntegrationRuntime** 命令返回的属性的说明：
+Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管理。 下表提供了返回的属性的说明**Get AzDataFactoryV2IntegrationRuntime**命令：
 
 ### <a name="properties"></a>属性
 下表说明该 cmdlet 针对 Azure 集成运行时返回的属性：
 
-| 属性 | Description |
+| 属性 | 描述 |
 -------- | ------------- | 
 | 名称 | Azure 集成运行时的名称。 |  
 | State | Azure 集成运行时的状态。 | 
@@ -58,7 +59,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | 脱机 | 由于内部错误，Azure 集成运行时处于脱机状态。 |
 
 ## <a name="self-hosted-integration-runtime"></a>自承载集成运行时
-以下部分提供了 Get-AzureRmDataFactoryV2IntegrationRuntime cmdlet 返回的属性的说明。 
+本部分提供有关 Get AzDataFactoryV2IntegrationRuntime cmdlet 返回的属性的说明。 
 
 > [!NOTE] 
 > 返回的属性和状态包含有关整个自承载集成运行时和运行时中每个节点的信息。  
@@ -67,7 +68,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 下表提供了**每个节点**的监视属性的说明：
 
-| 属性 | Description | 
+| 属性 | 描述 | 
 | -------- | ----------- | 
 | 名称 | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
 | 状态 | 整个自承载集成运行时和每个节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅下一个部分。 | 
@@ -86,12 +87,12 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 可以通过增加节点数进行横向扩展。 增加节点数时，并发作业限制为所有可用节点的并发作业限制值的总和。  例如，如果一个节点允许运行最多 12 个并发作业，那么再添加三个类似节点将允许运行最多 48 个并发作业（即 4 x 12）。 建议仅在以下情况下提高并发作业限制：在每个节点上使用默认值时，资源使用率较低。
 
-可以在 Azure 门户中覆盖计算得出的默认值。 选择“创建者”>“连接”>“集成运行时”>“编辑”>“节点”>“修改每个节点的并发作业值”。 也可以使用 PowerShell [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) 命令。
+可以在 Azure 门户中覆盖计算得出的默认值。 选择“创建者”>“连接”>“集成运行时”>“编辑”>“节点”>“修改每个节点的并发作业值”。 此外可以使用 PowerShell[更新 Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples)命令。
   
 ### <a name="status-per-node"></a>状态（每个节点）
 下表提供了自承载集成运行时节点的可能状态：
 
-| 状态 | Description |
+| 状态 | 描述 |
 | ------ | ------------------ | 
 | 联机 | 节点已连接到数据工厂服务。 |
 | 脱机 | 节点处于脱机状态。 |
@@ -104,17 +105,17 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 ### <a name="status-overall-self-hosted-integration-runtime"></a>状态（整个自承载集成运行时）
 下表提供了自承载集成运行时的可能状态： 此状态取决于属于运行时的所有节点的状态。 
 
-| 状态 | Description |
+| 状态 | 描述 |
 | ------ | ----------- | 
 | 需要注册 | 尚未将任何节点注册到此自承载集成运行时。 |
 | 联机 | 所有节点处于联机状态。 |
 | 脱机 | 没有任何节点处于联机状态。 |
 | 受限制 | 此自承载集成运行时中的所有节点并非全都处于正常状态。 此状态是一种警告，表示某些节点可能已关闭。 此状态的可能原因是调度程序/辅助角色节点上出现凭据同步问题。 |
 
-使用 **Get-AzureRmDataFactoryV2IntegrationRuntimeMetric** cmdlet 提取包含详细自承载集成运行时属性，以及执行该 cmdlet 期间这些属性的快照值的 JSON 有效负载。
+使用**Get AzDataFactoryV2IntegrationRuntimeMetric** cmdlet 来提取 JSON 有效负载包含详细自承载集成运行时属性和快照的 cmdlet 执行的时间内的值。
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
+Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
 ```
 
 示例输出（假设有两个节点与此自承载集成运行时关联）：
@@ -156,7 +157,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="properties"></a>属性
 
-| 属性/状态 | Description |
+| 属性/状态 | 描述 |
 | --------------- | ----------- |
 | CreateTime | Azure-SSIS 集成运行时的创建时间（UTC 时间）。 |
 | Nodes | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
@@ -174,16 +175,16 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | VNetId | Azure-SSIS 集成运行时要加入的虚拟网络资源 ID。 |
 | 子网 | Azure-SSIS 集成运行时要加入的子网名称。 |
 | ID | Azure-SSIS 集成运行时的资源 ID。 |
-| 类型 | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
+| Type | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
 | ResourceGroupName | 在其中创建了数据工厂和 Azure-SSIS 集成运行时的 Azure 资源组的名称。 |
 | DataFactoryName | Azure 数据工厂的名称。 |
 | 名称 | Azure-SSIS 集成运行时的名称。 |
-| Description | Azure-SSIS 集成运行时的说明。 |
+| 描述 | Azure-SSIS 集成运行时的说明。 |
 
   
 ### <a name="status-per-node"></a>状态（每个节点）
 
-| 状态 | Description |
+| 状态 | 描述 |
 | ------ | ----------- | 
 | 正在启动 | 正在准备此节点。 |
 | 可用 | 此节点已准备就绪，可在其中部署/执行 SSIS 包。 |
@@ -192,7 +193,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>状态（整个 Azure-SSIS 集成运行时）
 
-| 总体状态 | Description | 
+| 总体状态 | 描述 | 
 | -------------- | ----------- | 
 | Initial | 尚未分配/准备 Azure-SSIS 集成运行时的节点。 | 
 | 正在启动 | 正在分配/准备 Azure-SSIS 集成运行时的节点，计费已开始。 |
@@ -213,7 +214,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 使用类似以下示例的脚本来检查 Azure-SSIS IR 的状态。
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>有关 Azure-SSIS 集成运行时的详细信息

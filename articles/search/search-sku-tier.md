@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: d325a5dfd57bb6b69e6cf171487adfa8d374512f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467435"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762919"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -32,30 +32,57 @@ ms.locfileid: "55467435"
 > 功能奇偶一致性的例外情况是[索引器](search-indexer-overview.md)，它们不可用于 S3HD。
 >
 
-在某个层中，可以[调整副本和分区资源](search-capacity-planning.md)以优化性能。 可以从两个或三个资源着手，然后暂时提高重度索引工作负荷的计算能力。 在层中优化资源级别的功能可以增大灵活性，但也会略微增大分析的复杂性。 可能需要进行试验，以确定资源/副本数更多的较低层所提供的性价比，是否高于资源数更少的较高层。 若要详细了解何时以及为何调整容量，请参阅[性能和优化注意事项](search-performance-optimization.md)。
+在层中，你可以[调整副本和分区资源](search-capacity-planning.md)来增大或减小规模。 无法开始使用一个或两个各自的则暂时提出繁重的索引工作负荷对计算能力。 在层中优化资源级别的功能可以增大灵活性，但也会略微增大分析的复杂性。 可能需要进行试验，以确定资源/副本数更多的较低层所提供的性价比，是否高于资源数更少的较高层。 若要详细了解何时以及为何调整容量，请参阅[性能和优化注意事项](search-performance-optimization.md)。
 
-<!---
-The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
---->
+## <a name="tiers-for-azure-search"></a>Azure 搜索的层
+
+下表列出了可用的层。 其他源层的信息包括[定价页](https://azure.microsoft.com/pricing/details/search/)，[服务和数据限制](search-limits-quotas-capacity.md)，并在门户页时预配服务。
+
+|层 | 容量 |
+|-----|-------------|
+|免费 | 与其他订阅者共享。 非可缩放的限制为 3 个索引和 50MB 存储空间。 |
+|基本 | 对于规模较小的生产工作负荷的专用计算资源。 一个 2 GB 的分区和最多三个副本。 |
+|标准 1 (S1) | 从 S1 上向上专用计算机具有的每个级别的更多存储和处理容量。 分区大小是 25 GB/分区 （每个服务的最大 300 GB 文档） 适用于 S1。 |
+|标准 2 (S2) | 类似于 S1，但具有 100 个 GB/分区 （每个服务的最大 1.2 TB 文档） |
+|标准 3 (S3) | 200 GB/分区 （最大每个服务 2.4 TB 文档）。 |
+|标准 3 高密度 (S3-HD) | 高密度就*托管模式下*适用于 S3。 针对大量的较小的索引，适用于多租户方案进行优化的基础硬件。 S3 HD 具有相同的每个单位费用，因为 S3，但在硬件上大量的较小索引的文件快速读取针对进行了优化。|
+
 
 ## <a name="how-billing-works"></a>计费原理
 
-在门户中创建搜索资源时，有四个方面会产生 Azure 搜索费用：
+在 Azure 搜索中，有三种方法产生费用在 Aure 搜索中，并且没有固定和可变的组件。 反过来，本部分介绍在每个计费组件。
 
-* 添加用于常规索引和查询任务的副本与分区。 可以从一个副本与分区着手，但也可以通过选择并支付更多的资源级别，来增加副本和/或分区以提高容量。 
-* 索引期间的数据流出费用。 从 Azure SQL 数据库或 Cosmos DB 数据源提取数据时，在这些资源的帐单中可以看到事务费用。
-* （仅适用于[认知搜索](cognitive-search-concept-intro.md)）文档破解期间的图像提取费用根据从文档中提取的图像数量计算。 文本提取目前是免费的。
-* （仅适用于[认知搜索](cognitive-search-concept-intro.md)）基于[内置认知技能](cognitive-search-predefined-skills.md)的扩充费用是针对认知服务资源计算的。 扩充费率与直接使用认知服务执行任务的费率相同。
+### <a name="1-core-service-costs-fixed-and-variable"></a>1.核心服务成本 （固定和可变）
+
+服务自身的最小的费用是第一个搜索单位 （1 个副本 x 1 分区） 和此数量是常量的服务的生存期，因为服务不能运行任何小于此配置。 
+
+在以下屏幕截图中，每个单位定价表示为免费、 基本版和 S1 （S2 和 S3 未显示）。 如果您创建一个基本的服务或标准服务，你每月的成本会平均为显示的值*价格 1*并*价格 2*分别。 由于计算能力和存储容量大于在每个连续层上时，为每个层中转单位成本。
+
+![每单位定价](./media/search-sku-tier/per-unit-pricing.png "每单位定价")
+
+提供额外的副本和分区的初始费用的附加内容。 搜索服务需要的副本和分区，因此最小配置各项之一。 超出最小值，您添加副本和分区独立。 例如，可以添加仅副本或仅分区。 
+
+提供额外的副本和分区的收费依据[公式](#search-units)。 成本不是线性的 （容量超过双精度型值成本加倍）。 有关如何使用公式的工作原理的示例，请参阅["如何分配副本和分区"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)
+
+### <a name="2-data-egress-charges-during-indexing"></a>2.在索引期间的数据传出费用
+
+从 Azure SQL 数据库或 Cosmos DB 数据源提取数据时，在这些资源的帐单中可以看到事务费用。 这些费用不是 Azure 搜索指标，但它们此处所述，因为如果索引器将从 Azure SQL 数据库或 Azure Cosmos DB 提取数据，您将看到该费用在帐单中。
+
+### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3.AI 强化索引使用认知服务
+
+（仅适用于[认知搜索](cognitive-search-concept-intro.md)）文档破解期间的图像提取费用根据从文档中提取的图像数量计算。 文本提取目前是免费的。 其他正基于[内置认知技能](cognitive-search-predefined-skills.md)针对认知服务资源计费。 扩充费率与直接使用认知服务执行任务的费率相同。
 
 如果未使用[认知搜索](cognitive-search-concept-intro.md)或 [Azure 搜索索引器](search-indexer-overview.md)，则费用只与用于常规索引和查询工作负荷的实际使用的副本与分区相关。
 
-### <a name="billing-for-general-purpose-indexing-and-queries"></a>常规用途索引和查询的计费
+<a name="search-units"></a>
+
+### <a name="billing-based-on-search-units"></a>计费基于搜索单位
 
 对于 Azure 搜索操作，要了解的最重要计费概念是搜索单位 (SU)。 由于 Azure 搜索必须同时使用副本和分区进行索引编制和查询，因此无法按其中的一个进行计费。 相反，应基于两者的组合来计费。 
 
 SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 
-每个服务至少从 1 个 SU（1 个分区乘以 1 个副本）开始。 所有服务的最大 SU 值均为 36，这可以通过多种方式来实现：6 个分区 x 6 个副本，或 3 个分区 x 12 个副本，等等。 通常使用小于总容量的值。 例如，3 副本、3 分区的服务按 9 个 SU 计费。 
+每个服务至少从 1 个 SU（1 个分区乘以 1 个副本）开始。 所有服务的最大 SU 值均为 36，这可以通过多种方式来实现：6 个分区 x 6 个副本，或 3 个分区 x 12 个副本，等等。 通常使用小于总容量的值。 例如，3 副本、3 分区的服务按 9 个 SU 计费。 你可以查看[此图表](search-capacity-planning.md#chart)若要查看一眼的有效组合。
 
 费率**按每个 SU 每小时**计算，每个层的费率渐进式提高。 层越高，分区越大且速度越快，因此，每小时的总费率更高。 有关每层的费率，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。 
 

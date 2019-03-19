@@ -3,21 +3,21 @@ title: 使用 Databricks Notebook 转换数据 - Azure | Microsoft Docs
 description: 了解如何通过运行 Databricks Notebook 处理或转换数据。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 8ab6dad36bf47430a925d21ca2464286e7e70002
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: 8036a8694bb8c8d0db236eba831f13dc2bf47d0a
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022064"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576814"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
 
@@ -57,7 +57,7 @@ ms.locfileid: "54022064"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|必选|
+|属性|说明|需要|
 |---|---|---|
 |名称|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
@@ -96,7 +96,7 @@ ms.locfileid: "54022064"
         {
             "cran": {
                 "package": "ada",
-                "repo": "http://cran.us.r-project.org"
+                "repo": "https://cran.us.r-project.org"
             }
         }
     ]
