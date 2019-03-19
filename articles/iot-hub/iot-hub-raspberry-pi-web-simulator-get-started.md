@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 6844fb9b6e85e77ad9c7a869a989214fffd05ece
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438738"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58115793"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 联机模拟器连接到 Azure IoT 中心 (Node.js)
 
@@ -56,7 +56,7 @@ ms.locfileid: "53438738"
 单击用于启动 Raspberry Pi 联机模拟器的按钮。
 
 > [!div class="button"]
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">启动 Raspberry Pi 模拟器</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">启动 Raspberry Pi 模拟器</a>
 
 Web 模拟器中有三个区域。
 
@@ -70,8 +70,8 @@ Web 模拟器中有三个区域。
    * 重置 - 将编码区域重置为默认示例应用程序。
    * 折叠/展开 - 可使用右侧的按钮折叠/展开控制台窗口。
 
-> [!NOTE] 
-目前 Raspberry Pi Web 模拟器在预览版中可用。 请通过 [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator) 向我们提供意见和建议。 源代码在 [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator) 上是公开的。
+> [!NOTE]
+> 目前 Raspberry Pi Web 模拟器在预览版中可用。 请通过 [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator) 向我们提供意见和建议。 源代码在 [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator) 上是公开的。
 
 ![Pi 联机模拟器概述](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 
@@ -99,6 +99,6 @@ Web 模拟器中有三个区域。
 
 ## <a name="next-steps"></a>后续步骤
 
-此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。
+此时已运行示例应用程序，收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

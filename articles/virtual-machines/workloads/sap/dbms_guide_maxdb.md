@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d770e091c8786972e3f15a03fc5af9ec9445002
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 36534388b02a283db744c6ef362878f6232c5ecb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327793"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990689"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上的 SAP MaxDB、liveCache 和内容服务器部署
 
@@ -158,7 +158,7 @@ ms.locfileid: "56327793"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56327793"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -440,7 +440,7 @@ SAP 目前支持：
 强烈建议使用最新版本的 Microsoft Windows Server。
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 SAP 内容服务器配置准则
-#### <a name="storage-configuration-foir-content-server-in-azure"></a>Azure 中内容服务器的存储配置
+#### <a name="storage-configuration-for-content-server-in-azure"></a>在 Azure 中的内容服务器的存储配置
 如果将 SAP 内容服务器配置为将文件存储在 SAP MaxDB 数据库中，那么，本文档中针对 SAP MaxDB 提出的所有 Azure 存储最佳做法建议也适用于 SAP 内容服务器方案。 
 
 如果将 SAP 内容服务器配置为将文件存储在文件系统中，则建议使用专用的逻辑驱动器。 如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，通过使用 Windows 存储空间，还可以增加逻辑磁盘的大小和 IOPS 吞吐量。 
@@ -457,7 +457,7 @@ SAP 缓存服务器是一个基于服务器的附加组件，可在本地提供�
 可以使用以下两个选项：
 
 1. **客户端是后端 SAP 系统**：如果将后端 SAP 系统配置为访问 SAP 内容服务器，则该 SAP 系统就是客户端。 由于 SAP 系统和 SAP 内容服务器部署在同一个 Azure 区域（在相同的 Azure 数据中心），它们在物理上是彼此靠近的。 因此，不需要专用的 SAP 缓存服务器。 SAP UI 客户端（SAP GUI 或 Web 浏览器）可直接访问 SAP 系统，而 SAP 系统会从 SAP 内容服务器检索文档。
-2. **客户端是本地 Web 浏览器**：SAP 内容服务器可配置为由 Web 浏览器直接访问。 在此情况下，本地运行的 Web 浏览器就是 SAP 内容服务器的客户端。 本地数据中心与 Azure 数据中心位于不同的物理位置（理想情况下相邻）。 本地数据中心通过 Azure 站点到站点 VPN 或 ExpressRoute 连接到 Azure。 虽然这两个选项均提供到 Azure 的安全 VPN 网络连接，但站点到站点网络连接不会在本地数据中心与 Azure 数据中心之间提供网络带宽和延迟 SLA。 若要加快对文档的访问，可以执行以下操作之一：
+2. **客户端是本地 Web 浏览器** ：SAP 内容服务器可配置为由 Web 浏览器直接访问。 在此情况下，本地运行的 Web 浏览器就是 SAP 内容服务器的客户端。 本地数据中心与 Azure 数据中心位于不同的物理位置（理想情况下相邻）。 本地数据中心通过 Azure 站点到站点 VPN 或 ExpressRoute 连接到 Azure。 虽然这两个选项均提供到 Azure 的安全 VPN 网络连接，但站点到站点网络连接不会在本地数据中心与 Azure 数据中心之间提供网络带宽和延迟 SLA。 若要加快对文档的访问，可以执行以下操作之一：
    1. 在本地安装 SAP 缓存服务器，靠近本地 Web 浏览器（下图中的选项）
    2. 配置 Azure ExpressRoute，以便在本地数据中心与 Azure 数据中心之间提供高速且低延迟的专用网络连接。
 

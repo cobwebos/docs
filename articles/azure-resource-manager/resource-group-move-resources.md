@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: ddbd77cbc199e78e74324c87d49155f27d6edeea
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417085"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081247"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -57,6 +57,7 @@ ms.locfileid: "56417085"
 * 应用服务证书 - 请参阅[应用服务证书限制](#app-service-certificate-limitations)
 * 自动化 - Runbook 必须与自动化帐户存在于同一资源组中。
 * Azure Active Directory B2C
+* Azure Redis 缓存 - 如果 Azure Redis 缓存实例配置了虚拟网络，则实例无法被移动到其他订阅。 请参阅[虚拟网络限制](#virtual-networks-limitations)。
 * Azure Cosmos DB
 * Azure 数据资源管理器
 * Azure Database for MariaDB
@@ -64,6 +65,7 @@ ms.locfileid: "56417085"
 * Azure Database for PostgreSQL
 * Azure DevOps - 具有非 Microsoft 扩展购买的 Azure DevOps 组织必须先[取消其购买](https://go.microsoft.com/fwlink/?linkid=871160)，然后才能跨订阅移动帐户。
 * Azure Maps
+* Azure Monitor 日志
 * Azure 中继
 * Azure Stack - 注册
 * Batch
@@ -89,10 +91,9 @@ ms.locfileid: "56417085"
 * IoT 中心
 * Key Vault - 用于磁盘加密的 Key Vault 不能移动到同一订阅中的资源组，也不能跨订阅移动。
 * 负载均衡器 - 可以移动基本 SKU 负载均衡器。 不能移动标准 SKU 负载均衡器。
-* Log Analytics
 * 逻辑应用
 * 机器学习 - 机器学习工作室 Web 服务可以移动到同一订阅中的资源组，但不能移动到不同订阅中。 其他机器学习资源可以跨订阅进行移动。
-* 托管磁盘 - 请参阅[虚拟机针对约束的限制](#virtual-machines-limitations)
+* 托管磁盘-托管磁盘的可用性区域不能移动到其他订阅
 * 托管标识 - 用户分配
 * 媒体服务
 * 监视器 - 确保移动到新订阅时，不会超出[订阅配额](../azure-subscription-service-limits.md#monitor-limits)
@@ -103,7 +104,6 @@ ms.locfileid: "56417085"
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 可以移动基本 SKU 公共 IP。 不能移动标准 SKU 公共 IP。
 * 恢复服务保管库 - 注册[预览版](#recovery-services-limitations)。
-* Azure Redis 缓存 - 如果 Azure Redis 缓存实例配置了虚拟网络，则实例无法被移动到其他订阅。 请参阅[虚拟网络限制](#virtual-networks-limitations)。
 * 计划程序
 * 搜索 - 不能一次性移动不同区域中的多个搜索资源。 只能通过多个单独的操作移动它们。
 * 服务总线
@@ -116,7 +116,7 @@ ms.locfileid: "56417085"
 * SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
 * 时序见解
 * 流量管理器
-* 虚拟机 - 针对使用托管磁盘的虚拟机，请参阅[虚拟机限制](#virtual-machines-limitations)
+* 虚拟机-请参阅[虚拟机限制](#virtual-machines-limitations)
 * 虚拟机（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 虚拟机规模集 - 请参阅[虚拟机限制](#virtual-machines-limitations)
 * 虚拟网络 - 请参阅[虚拟网络限制](#virtual-networks-limitations)
@@ -133,6 +133,7 @@ ms.locfileid: "56417085"
 * Azure Databricks
 * Azure 防火墙
 * Azure Migrate
+* Azure NetApp 文件
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
 * 经典应用程序
 * 容器实例
@@ -145,7 +146,6 @@ ms.locfileid: "56417085"
 * 实验室服务 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * 托管应用程序
 * Microsoft 基因组学
-* NetApp
 * Azure 上的 SAP HANA
 * 安全
 * Site Recovery
@@ -166,13 +166,12 @@ ms.locfileid: "56417085"
 
 ### <a name="virtual-machines-limitations"></a>虚拟机限制
 
-从 2018 年 9 月 24 日起，可以移动托管磁盘。 此支持意味着，可以移动包含托管磁盘、托管映像和托管快照的虚拟机，以及移动所含虚拟机使用托管磁盘的可用性集。
+您可以移动虚拟机使用托管的磁盘、 托管的映像、 托管的快照和可用性集与使用托管的磁盘的虚拟机。 可用性区域中的托管的磁盘不能移动到其他订阅。
 
 以下方案尚不受支持：
 
 * 证书存储在 Key Vault 中的虚拟机可以移动到同一订阅中的新资源组，但无法跨订阅进行移动。
-* 可用性区域中的托管磁盘不能移到其他订阅
-* 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集
+* 不能移动标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
 * 无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 
 若要移动使用 Azure 备份配置的虚拟机，请使用以下解决方法：
@@ -190,6 +189,8 @@ ms.locfileid: "56417085"
 ### <a name="virtual-networks-limitations"></a>虚拟网络限制
 
 移动虚拟网络时，还必须移动其从属资源。 对于 VPN 网关，必须移动 IP 地址、虚拟网络网关和所有关联的连接资源。 本地网络网关可以位于不同的资源组中。
+
+若要与网络接口卡一起移动虚拟机，必须移动所有从属资源。 你必须移动网络接口卡的虚拟网络、 虚拟网络和 VPN 网关中的所有其他网络接口卡。
 
 若要移动对等的虚拟网络，必须首先禁用虚拟网络对等互连。 在禁用后，可以移动虚拟网络。 在移动后，重新启用虚拟网络对等互连。
 
@@ -254,58 +255,58 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 1. 检查源订阅是否可以参与跨订阅移动。 使用以下操作：
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
-     在请求正文中包含以下内容：
+     在请求正文中包括：
 
-  ```json
-  {
+   ```json
+   {
     "role": "source"
-  }
-  ```
+   }
+   ```
 
      验证操作的响应采用以下格式：
 
-  ```json
-  {
+   ```json
+   {
     "status": "{status}",
     "reasons": [
       "reason1",
       "reason2"
     ]
-  }
-  ```
+   }
+   ```
 
 2. 检查目标订阅是否可以参与跨订阅移动。 使用以下操作：
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
      在请求正文中包含以下内容：
 
-  ```json
-  {
+   ```json
+   {
     "role": "target"
-  }
-  ```
+   }
+   ```
 
      响应的格式与源订阅验证相同。
 3. 如果两个订阅都通过了验证，可使用以下操作将所有经典资源从一个订阅移到另一个订阅：
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
+   ```
 
     在请求正文中包含以下内容：
 
-  ```json
-  {
+   ```json
+   {
     "target": "/subscriptions/{target-subscription-id}"
-  }
-  ```
+   }
+   ```
 
 运行该操作可能需要几分钟。
 
@@ -344,52 +345,52 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 1. 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../active-directory/develop/quickstart-create-new-tenant.md)中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 Azure PowerShell 或 Azure CLI。
 
-  对于 Azure PowerShell，请使用：
+   对于 Azure PowerShell，请使用：
 
-  ```azurepowershell-interactive
-  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
-  ```
+   ```azurepowershell-interactive
+   (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+   (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
+   ```
 
-  对于 Azure CLI，请使用：
+   对于 Azure CLI，请使用：
 
-  ```azurecli-interactive
-  az account show --subscription <your-source-subscription> --query tenantId
-  az account show --subscription <your-destination-subscription> --query tenantId
-  ```
+   ```azurecli-interactive
+   az account show --subscription <your-source-subscription> --query tenantId
+   az account show --subscription <your-destination-subscription> --query tenantId
+   ```
 
-  如果源订阅和目标订阅的租户 ID 不相同，可使用以下方法协调租户 ID：
+   如果源订阅和目标订阅的租户 ID 不相同，可使用以下方法协调租户 ID：
 
-  * [将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
-  * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+   * [将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
+   * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。 将资源移到新的订阅时，可能会看到此错误，但该订阅从未配合该资源类型使用。
 
-  对于 PowerShell，请使用以下命令来获取注册状态：
+   对于 PowerShell，请使用以下命令来获取注册状态：
 
-  ```azurepowershell-interactive
-  Set-AzContext -Subscription <destination-subscription-name-or-id>
-  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
-  ```
+   ```azurepowershell-interactive
+   Set-AzContext -Subscription <destination-subscription-name-or-id>
+   Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+   ```
 
-  若要注册资源提供程序，请使用：
+   若要注册资源提供程序，请使用：
 
-  ```azurepowershell-interactive
-  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
-  ```
+   ```azurepowershell-interactive
+   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+   ```
 
-  对于 Azure CLI，请使用以下命令来获取注册状态：
+   对于 Azure CLI，请使用以下命令来获取注册状态：
 
-  ```azurecli-interactive
-  az account set -s <destination-subscription-name-or-id>
-  az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
-  ```
+   ```azurecli-interactive
+   az account set -s <destination-subscription-name-or-id>
+   az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
+   ```
 
-  若要注册资源提供程序，请使用：
+   若要注册资源提供程序，请使用：
 
-  ```azurecli-interactive
-  az provider register --namespace Microsoft.Batch
-  ```
+   ```azurecli-interactive
+   az provider register --namespace Microsoft.Batch
+   ```
 
 1. 移动资源的帐户至少需要具备下列权限：
 
@@ -513,7 +514,7 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要了解管理订阅所需的 PowerShell cmdlet，请参阅[将 Azure PowerShell 与 Resource Manager 配合使用](powershell-azure-resource-manager.md)。
-* 要了解管理订阅所需的 Azure CLI 命令，请参阅[将 Azure CLI 与 Resource Manager 配合使用](xplat-cli-azure-resource-manager.md)。
+* 若要了解有关用于管理你的资源的 PowerShell cmdlet 的信息，请参阅[使用 Azure PowerShell 与 Resource Manager](manage-resources-powershell.md)。
+* 若要了解有关 Azure CLI 命令用于管理资源的信息，请参阅[使用 Azure CLI 使用资源管理器](manage-resources-cli.md)。
 * 若要了解管理订阅所需的门户功能，请参阅[使用 Azure 门户管理资源](resource-group-portal.md)。
 * 若要了解如何向资源应用逻辑组织，请参阅[使用标记组织资源](resource-group-using-tags.md)。

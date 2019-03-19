@@ -16,18 +16,18 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 97fcfa20e474edb8108474ef02c6542688d627ff
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 3705b2dda7da8df2e6e3c98d5f6003bd3d771daf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243479"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098570"
 ---
 # <a name="network-connectivity"></a>网络连接
 本文提供 Azure Stack 网络基础架构信息，可帮助你确定如何以最佳方式将 Azure Stack 集成到现有的网络环境。 
 
 > [!NOTE]
-> 若要从 Azure Stack 解析外部 DNS 名称（例如 www.bing.com），必须提供 DNS 服务器来转发 DNS 请求。 有关 Azure Stack DNS 要求的详细信息，请参阅 [Azure Stack 数据中心集成 - DNS](azure-stack-integrate-dns.md)。
+> 若要解决从 Azure Stack 外部 DNS 名称 (例如，www\.bing.com)，你需要提供 DNS 服务器来转发 DNS 请求。 有关 Azure Stack DNS 要求的详细信息，请参阅 [Azure Stack 数据中心集成 - DNS](azure-stack-integrate-dns.md)。
 
 ## <a name="physical-network-design"></a>物理网络设计
 Azure Stack 解决方案需要一个可复原且具有高可用性的物理基础设施来支持其操作和服务。 从 ToR 到边界交换机的上行链路仅限于 SFP+ 或 SFP28 介质以及 1 GB、10 GB 或 25 GB 的速度。 请咨询原始设备制造商 (OEM) 硬件供应商以了解可用性。 下图显示了建议的设计：

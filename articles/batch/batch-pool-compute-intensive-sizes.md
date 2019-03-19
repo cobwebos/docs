@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 3c3d534392431e79feabe37fe940ea87f586c660
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 3974be886b57fbf685b211369094edf844d96ab6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051690"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57975553"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>在 Batch 池中使用 RDMA 或 GPU 实例
 
@@ -48,6 +48,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS 或<br/>基于 CentO 的 HPC<br/>（Azure 市场） | Intel MPI 5<br/><br/>Linux RDMA 驱动程序 | 启用节点间通信，禁用并发任务执行 |
 | [NC、NCv2、NCv3、NDv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS 或<br/>CentOS 7.3 或 7.4<br/>（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序 | 不适用 | 
 | [NV、NVv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS 或<br/>CentOS 7.3<br/>（Azure 市场） | NVIDIA GRID 驱动程序 | 不适用 |
+
 <sup>*</sup>支持 RDMA 的 N 系列大小还包含 NVIDIA Tesla GPU
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows 池 - 虚拟机配置
@@ -57,6 +58,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016、2012 R2 或<br/>2012（Azure 市场） | Microsoft MPI 2012 R2 或更高版本，或<br/> Intel MPI 5<br/><br/>Windows RDMA 驱动程序 | 启用节点间通信，禁用并发任务执行 |
 | [NC、NCv2、NCv3、ND、NDv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Windows Server 2016 或 <br/>2012 R2（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序| 不适用 | 
 | [NV、NVv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2（Azure 市场） | NVIDIA GRID 驱动程序 | 不适用 |
+
 <sup>*</sup>支持 RDMA 的 N 系列大小还包含 NVIDIA Tesla GPU
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows 池 - 云服务配置
@@ -100,7 +102,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 
 若要在 Windows NC 节点的池上运行 CUDA 应用程序，需要安装 NVDIA GPU 驱动程序。 以下示例步骤使用应用程序包来安装 NVIDIA GPU 驱动程序。 如果工作负载取决于特定的 GPU 驱动程序版本，则可以选择此选项。
 
-1. 从 [NVIDIA 网站](https://www.nvidia.com/Download/index.aspx)下载 Windows Server 2016 上的 GPU 驱动程序的安装程序包 - 例如，[版本 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe)。 使用短名称（如 GPUDriverSetup.exe）在本地保存文件。
+1. 从 [NVIDIA 网站](https://www.nvidia.com/Download/index.aspx)下载 Windows Server 2016 上的 GPU 驱动程序的安装程序包 - 例如，[版本 411.82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe)。 使用短名称（如 GPUDriverSetup.exe）在本地保存文件。
 2. 为程序包创建 zip 文件。
 3. 将程序包上载到 Batch 帐户。 有关详细步骤，请参阅[应用程序包](batch-application-packages.md)指南。 指定应用程序 ID（如 GPUDriver）和版本（如 411.82）。
 1. 通过 Batch API 或 Azure 门户，在虚拟机配置中创建具有所需节点数和规模的池。 下表显示了使用启动任务静默安装 NVIDIA GPU 驱动程序的示例设置：
@@ -152,7 +154,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | **节点代理 SKU** | batch.node.windows amd64 |
 | **节点大小** | H16r 标准 |
 | **启用了节点间通信** | True |
-| **每个节点的任务上限** | 1 |
+| **每个节点的任务上限** | 第 |
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>示例：Linux H16r VM 池上的 Intel MPI
 
@@ -168,7 +170,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | **Sku** | 7.4 |
 | **节点大小** | H16r 标准 |
 | **启用了节点间通信** | True |
-| **每个节点的任务上限** | 1 |
+| **每个节点的任务上限** | 第 |
 
 ## <a name="next-steps"></a>后续步骤
 

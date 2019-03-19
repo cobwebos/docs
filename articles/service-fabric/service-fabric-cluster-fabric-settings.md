@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: dc0e326cf3b188a51708115e5496cfbb52a95611
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57836957"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -33,11 +33,12 @@ ms.locfileid: "55210372"
 以下为可自定义的 Fabric 设置列表（按分区排序）。
 
 ## <a name="applicationgatewayhttp"></a>ApplicationGateway/Http
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ApplicationCertificateValidationPolicy|string，默认值为“None”|静态| 不会验证服务器证书；请求成功。 请参阅配置 ServiceCertificateThumbprints，获取反向代理可以信任的远程证书的指纹列表（以逗号分隔）。 请参阅配置 ServiceCommonNameAndIssuer，获取反向代理可以信任的远程证书的使用者名称和证书颁发者指纹。 若要了解详细信息，请参阅[反向代理安全连接](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)。 |
 |BodyChunkSize |Uint，默认值为 16384 |动态| 提供用于读取正文的区块大小（以字节为单位）。 |
-|CrlCheckingFlag|uint，默认值为 0x40000000 |动态| 应用程序/服务证书链验证的标记；例如 CRL 检查 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 设置为 0 会禁用 CRL 检查，支持值的完整列表由 CertGetCertificateChain 的 dwFlags 记录： http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
+|CrlCheckingFlag|uint，默认值为 0x40000000 |动态| 应用程序/服务证书链验证的标记；例如 CRL 检查 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 设置为 0 会禁用 CRL 检查，支持值的完整列表由 CertGetCertificateChain 的 dwFlags 记录： https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |DefaultHttpRequestTimeout |以秒为单位的时间。 默认值为 120 |动态|指定以秒为单位的时间范围。  提供用于 http 应用网关中正在处理的 http 请求的默认请求超时时间。 |
 |ForwardClientCertificate|bool，默认值为 FALSE|动态|如果设置为 false，反向代理不会请求客户端证书。如果设置为 true，反向代理将在 SSL 握手期间请求客户端证书，并将 base64 编码的 PEM 格式字符串转发到名为 X-Client-Certificate 的标头中的服务。检查证书数据后，服务可能无法处理请求，并返回相应的状态代码。 如果此参数为 true 并且客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。 反向代理将充当透明层。 若要了解详细信息，请参阅[设置客户端证书身份验证](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)。 |
 |GatewayAuthCredentialType |string，默认值为“None” |静态| 指示在 http 应用网关终结点处使用的安全凭据的类型，有效值为 "None/X509。 |
@@ -55,11 +56,13 @@ ms.locfileid: "55210372"
 |ServiceCertificateThumbprints|string，默认值为“”|动态|反向代理可以信任的远程证书的指纹的逗号分隔列表。 若要了解详细信息，请参阅[反向代理安全连接](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)。 |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>ApplicationGateway/Http/ServiceCommonNameAndIssuer
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap，默认值为 None|动态| 反向代理可以信任的远程证书的使用者名称和颁发者指纹。 若要了解详细信息，请参阅[反向代理安全连接](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)。 |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int，默认值为 0|静态|BackupRestoreService 的 MinReplicaSetSize |
@@ -69,6 +72,7 @@ ms.locfileid: "55210372"
 |TargetReplicaSetSize|int，默认值为 0|静态| The TargetReplicaSetSize for BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |EnableDefaultServicesUpgrade | Bool，默认值为 false |动态|在应用程序升级期间启用升级默认服务。 升级后，会覆盖默认服务说明。 |
@@ -97,6 +101,7 @@ ms.locfileid: "55210372"
 |UpgradeStatusPollInterval |以秒为单位的时间，默认值为 60 |动态|轮询应用程序升级状态的频率。 此值确定任何 GetApplicationUpgradeProgress 调用的更新速率 |
 
 ## <a name="common"></a>常见
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PerfMonitorInterval |以秒为单位的时间，默认值为 1 |动态|指定以秒为单位的时间范围。 性能监视时间间隔。 设置为 0 或负值，将禁用监视。 |
@@ -117,6 +122,7 @@ ms.locfileid: "55210372"
 |PropertyGroup|KeyDoubleValueMap，默认值为 None|动态|通过在范围 [0.0 - 1.0) 中指定百分比或将空节点数指定为 >= 1.0 的数，确定需考虑进行群集碎片整理的可用节点数 |
 
 ## <a name="diagnostics"></a>诊断
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |AppDiagnosticStoreAccessRequiresImpersonation |Bool，默认值为 true | 动态 |代表应用程序访问诊断存储时是否需要模拟。 |
@@ -140,6 +146,7 @@ ms.locfileid: "55210372"
 |PartitionSuffix|string，默认值为“”|静态|控制对分区服务的 DNS 查询中的分区后缀字符串值。值： <ul><li>应符合 RFC，因为它将是 DNS 查询的一部分。</li><li>不能包含句点“.”，因为句点会干扰 DNS 后缀行为。</li><li>长度不能超过 5 个字符。</li><li>如果重写 PartitionPrefix 设置，则必须重写 PartitionSuffix，反之亦然。</li></ul>有关详细信息，请参阅 [Service Fabric DNS 服务](service-fabric-dnsservice.md)。 |
 
 ## <a name="eventstore"></a>EventStore
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int，默认值为 0|静态|EventStore 服务的 MinReplicaSetSize |
@@ -147,6 +154,7 @@ ms.locfileid: "55210372"
 |TargetReplicaSetSize|int，默认值为 0|静态| EventStore 服务的 TargetReplicaSetSize |
 
 ## <a name="fabricclient"></a>FabricClient
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ConnectionInitializationTimeout |以秒为单位的时间，默认值为 2 |动态|指定以秒为单位的时间范围。 每次客户端尝试打开网关连接时的连接超时间隔。|
@@ -161,6 +169,7 @@ ms.locfileid: "55210372"
 |ServiceChangePollInterval |以秒为单位的时间，默认值为 120 |动态|指定以秒为单位的时间范围。 服务的连续轮询之间的间隔从客户端更改为用于注册服务更改通知回调的网关。 |
 
 ## <a name="fabrichost"></a>FabricHost
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |Int，默认值为 10 |动态|这是系统在放弃前重试失败的激活的最大计数。 |
@@ -173,6 +182,7 @@ ms.locfileid: "55210372"
 |StopTimeout |以秒为单位的时间，默认值为 300 |动态|指定以秒为单位的时间范围。 托管服务激活、停用和升级的超时时间。 |
 
 ## <a name="fabricnode"></a>FabricNode
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ClientAuthX509FindType |string，默认值为“FindByThumbprint” |动态|指示如何在由 ClientAuthX509StoreName（FindByThumbprint；FindBySubjectName）支持的值指定的存储中搜索证书：。 |
@@ -196,6 +206,7 @@ ms.locfileid: "55210372"
 |UserRoleClientX509StoreName |string，默认值为“My” |动态|X.509 证书存储的名称，包含默认用户角色 FabricClient 的证书。 |
 
 ## <a name="failovermanager"></a>FailoverManager
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |BuildReplicaTimeLimit|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(3600)|动态|指定以秒为单位的时间范围。 生成监控状态副本的时间限制。超出该时间范围后会启动警告运行状况报告 |
@@ -219,6 +230,7 @@ ms.locfileid: "55210372"
 |UserStandByReplicaKeepDuration |以秒为单位的时间，默认值为 3600.0 * 24 * 7 |动态|指定以秒为单位的时间范围。 持久化副本从不可用状态恢复时，可能已被替换为另一副本。 此定时器决定 FM 在放弃备用副本之前保留其多长时间。 |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | Int，默认值为 604800 |静态| 这是处于终态的操作的大致保留时长。 这也取决于 StoredActionCleanupIntervalInSeconds，因为仅在此间隔时间内执行清理工作。 604800 秒是 7 天。 |
@@ -235,12 +247,14 @@ ms.locfileid: "55210372"
 |TargetReplicaSetSize |Int，默认值为 0 |静态|NOT_PLATFORM_UNIX_START，FaultAnalysisService 的 TargetReplicaSetSize。 |
 
 ## <a name="federation"></a>联合
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |LeaseDuration |以秒为单位的时间，默认值为 30 |动态|节点与其邻居之间的租约持续时间。 |
 |LeaseDurationAcrossFaultDomain |以秒为单位的时间，默认值为 30 |动态|所有容错域中的节点与其邻居之间的租约持续时间。 |
 
 ## <a name="filestoreservice"></a>FileStoreService
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |AcceptChunkUpload|Bool，默认值为 TRUE|动态|用于确定文件存储服务在复制应用程序包期间是否接受基于区块的文件上传的配置。 |
@@ -278,11 +292,14 @@ ms.locfileid: "55210372"
 |UseChunkContentInTransportMessage|bool，默认值为 TRUE|动态|一个标志，表示使用在 v6.4 中引入的新版上传协议。 此协议版本使用 Service Fabric 传输将文件上传到映像存储，其性能高于以前版本中使用的 SMB 协议。 |
 
 ## <a name="healthmanager"></a>HealthManager
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-| EnableApplicationTypeHealthEvaluation |Bool，默认值为 false |静态|群集运行状况评估策略：启用按应用程序类型的运行状况评估。 |
+|EnableApplicationTypeHealthEvaluation |Bool，默认值为 false |静态|群集运行状况评估策略：启用按应用程序类型的运行状况评估。 |
+|MaxSuggestedNumberOfEntityHealthReports|Int，默认值为 500 |动态|在对监视器的运行状况报告逻辑提出担忧之前，实体可以拥有的最大健康报告数。 每个运行状况实体应具有相对较少的运行状况报告。 如果报告计数高于此数字，则监视器的实现可能存在问题。 如果某个实体具有过多的报告，则评估该实体时，将通过警告运行状况报告来标记该实体。 |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ConsiderWarningAsError |Bool，默认值为 false |静态|群集运行状况评估策略：警告视为错误。 |
@@ -290,12 +307,14 @@ ms.locfileid: "55210372"
 |MaxPercentUnhealthyNodes | Int，默认值为 0 |静态|群集运行状况评估策略：为确保群集运行正常，可允许的最高运行不正常节点百分比。 |
 
 ## <a name="healthmanagerclusterupgradehealthpolicy"></a>HealthManager/ClusterUpgradeHealthPolicy
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |MaxPercentDeltaUnhealthyNodes|int，默认值为 10|静态|群集升级运行状况评估策略：为确保群集运行正常，可允许的最高增量不正常节点百分比 |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int，默认值为 15|静态|群集升级运行状况评估策略：为确保群集运行正常，升级域中可允许的最高增量不正常节点百分比 |
 
 ## <a name="hosting"></a>Hosting
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |整数，默认值为 10 |动态|系统在放弃之前重试失败激活的次数 |
@@ -326,7 +345,7 @@ ms.locfileid: "55210372"
 |EndpointProviderEnabled| bool，默认值为 FALSE|静态| 启用 Fabric 终结点资源管理。 需要指定 FabricNode 中开始和结尾应用程序端口范围。 |
 |FabricContainerAppsEnabled| bool，默认值为 FALSE|静态| |
 |FirewallPolicyEnabled|bool，默认值为 FALSE|静态| 允许为具有 ServiceManifest 中指定的显式端口的终结点资源打开防火墙端口 |
-|GetCodePackageActivationContextTimeout|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(120)|动态|指定以秒为单位的时间范围。 CodePackageActivationContext 调用的超时时间。 这不适用于临时服务。 |
+|GetCodePackageActivationContextTimeout|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(120)|动态|指定以秒为单位的时间范围。 CodePackageActivationContext 调用的超时时间。 这不是适用于临时服务。 |
 |GovernOnlyMainMemoryForProcesses|bool，默认值为 FALSE|静态|资源治理的默认行为是对进程使用的总内存量（RAM + 交换）施加限制（在 MemoryInMB 中指定）。 如果超出限制，进程会收到 OutOfMemory 异常。 如果此参数设置为 true，则限制只会应用到进程将使用的 RAM 内存量。 如果超出该限制，且此设置为 true，则 OS 会将主内存切换到磁盘。 |
 |IPProviderEnabled|bool，默认值为 FALSE|静态|启用 IP 地址的管理。 |
 |IsDefaultContainerRepositoryPasswordEncrypted|bool，默认值为 FALSE|静态|DefaultContainerRepositoryPassword 是否已加密。|
@@ -346,6 +365,7 @@ ms.locfileid: "55210372"
 |UseContainerServiceArguments|bool，默认值为 TRUE|静态|此配置指示承载跳过将参数（在配置 ContainerServiceArguments 中指定）传递到 Docker 守护程序。|
 
 ## <a name="httpgateway"></a>HttpGateway
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ActiveListeners |Uint，默认值为 50 |静态| 要发布到 http 服务器队列的读取数。 此配置控制 HttpGateway 可以满足的并发请求数。 |
@@ -355,6 +375,7 @@ ms.locfileid: "55210372"
 |MaxEntityBodySize |Uint，默认值为 4194304 |动态|提供可预期的 http 请求正文的最大大小。 默认值为 4MB。 如果请求的正文大小大于此值，Httpgateway 将无法满足该请求。 最小读取块区大小为 4096 个字节。 因此，该值必须 > = 4096。 |
 
 ## <a name="imagestoreservice"></a>ImageStoreService
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |已启用 |Bool，默认值为 false |静态|ImageStoreService 的已启用标志。 默认值：false |
@@ -366,6 +387,7 @@ ms.locfileid: "55210372"
 |TargetReplicaSetSize | Int，默认值为 7 |静态|ImageStoreService 的 TargetReplicaSetSize。 |
 
 ## <a name="ktllogger"></a>KtlLogger
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |AutomaticMemoryConfiguration |Int，默认值为 1 |动态|该标志指示是否应自动且动态地配置内存设置。 如果设置为 0，则根据系统条件直接使用内存配置设置而不进行任何更改。 如果设置为 1，则自动配置内存设置，并可根据系统条件进行更改。 |
@@ -373,11 +395,12 @@ ms.locfileid: "55210372"
 |SharedLogId |string，默认值为“” |静态|共享日志容器的唯一 guid。 若要使用 Fabric 数据根目录下的默认路径，请设置为“”。 |
 |SharedLogPath |string，默认值为“” |静态|要放置共享日志容器的位置的路径和文件名。 设置为“”表示使用 Fabric 数据根目录下的默认路径。 |
 |SharedLogSizeInMB |Int，默认值为 8192 |静态|共享日志容器中要分配的 MB 数。 |
-|SharedLogThrottleLimitInPercentUsed|int，默认值为 0 | 静态 | 将引发限制的共享日志使用百分比。 值应当介于 0 和 100 之间。 值为 0 表示使用默认百分比值。 值为 100 表示根本不进行限制。 1 到 99 之间的值指定一个日志使用百分比，高于该百分比将进行限制；例如，如果共享日志为 10GB 并且该值为 90，则在使用 9GB 后将进行限制。 建议使用默认值。|
+|SharedLogThrottleLimitInPercentUsed|int，默认值为 0 | 静态 | 将引发限制的共享日志使用百分比。 值应当介于 0 和 100 之间。 值为 0 表示使用默认百分比值。 值为 100 表示根本不进行限制。 介于 1 和 99 之间的值指定的日志使用率更高版本会发生哪些限制; 的百分比例如如果共享的日志是 10 GB 和值为 90，然后使用为 9 GB 后会发生限制。 建议使用默认值。|
 |WriteBufferMemoryPoolMaximumInKB | Int，默认值为 0 |动态|允许写入缓冲区内存池增长到的 KB 数。 使用 0 表示没有限制。 |
 |WriteBufferMemoryPoolMinimumInKB |Int，默认值为 8388608 |动态|最初为写入缓冲区内存池分配的 KB 数。 设置为 0 表示没有限制，默认值应与以下 SharedLogSizeInMB 值保持一致。 |
 
 ## <a name="management"></a>管理
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |AzureStorageMaxConnections | Int，默认值为 5000 |动态|最大并发 Azure 存储连接数。 |
@@ -401,17 +424,18 @@ ms.locfileid: "55210372"
 |PropertyGroup|KeyDoubleValueMap，默认值为 None|动态|为群集中的指标确定一组 MetricBalancingThresholds。 如果 maxNodeLoad/minNodeLoad 大于 MetricBalancingThresholds，则均衡会起作用。 如果至少一个 FD 或 UD 上的 maxNodeLoad/minNodeLoad 小于 MetricBalancingThresholds，则碎片整理会起作用。 |
 
 ## <a name="namingservice"></a>NamingService
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |GatewayServiceDescriptionCacheLimit |Int，默认值为 0 |静态|命名网关处的 LRU 服务说明缓存中可维持的最大条目数（设置为 0 表示无限制）。 |
 |MaxClientConnections |Int，默认值为 1000 |动态|每个网关允许的最大客户端连接数。 |
 |MaxFileOperationTimeout |以秒为单位的时间，默认值为 30 |动态|指定以秒为单位的时间范围。 文件存储服务操作的最大超时时间。 将拒绝指定更长超时时间的请求。 |
-|MaxIndexedEmptyPartitions |Int，默认值为 1000 |动态|将在通知缓存中保持被索引状态以同步重新连接的客户端的最大空分区数。 将按查找版本的升序顺序，从索引中删除超出此数目的所有空分区。 重新连接的客户端仍然可以同步并接收错过的空分区更新，但是同步协议会更昂贵。 |
+|MaxIndexedEmptyPartitions |Int，默认值为 1000 |动态|将在通知缓存中保持被索引状态以同步重新连接的客户端的最大空分区数。 会按查找版本的升序顺序，从索引中删除超出此数目的所有空分区。 重新连接的客户端仍然可以同步并接收错过的空分区更新，但是同步协议会更昂贵。 |
 |MaxMessageSize |Int，默认值为 4\*1024\*1024 |静态|使用命名时客户端节点通信的最大消息大小。 DOS 攻击缓解，默认值为 4MB。 |
 |MaxNamingServiceHealthReports | Int，默认值为 10 |动态|命名存储服务一次所报告的运行不正常的最大慢速操作数量。 如果设置为 0，则将发送所有慢速操作。 |
 |MaxOperationTimeout |以秒为单位的时间，默认值为 600 |动态|指定以秒为单位的时间范围。 所允许的客户端操作的最大超时时间。 将拒绝指定更长超时时间的请求。 |
 |MaxOutstandingNotificationsPerClient |Int，默认值为 1000 |动态|网关强行关闭客户端注册前的最大未完成通知数。 |
-|MinReplicaSetSize | Int，默认值为 3 |不允许| 完成更新所需写入的最少命名服务副本数。 如果系统中的活动副本数少于此数量，则可靠性系统将拒绝对命名服务存储执行的更新操作，直到副本还原为止。 此值不应超过 TargetReplicaSetSize 的值。 |
+|MinReplicaSetSize | Int，默认值为 3 |不允许| 完成更新所需写入的最少命名服务副本数。 如果系统中的活动副本数少于此数量，则可靠性系统会拒绝对命名服务存储执行的更新操作，直到副本还原为止。 此值不应超过 TargetReplicaSetSize 的值。 |
 |PartitionCount |Int，默认值为 3 |不允许|要创建的命名服务存储的分区数。 每个分区都拥有与其索引相对应的单个分区键，因此存在分区键 [0; PartitionCount)。 增加命名服务分区数可减少由任何备份副本集保持的数据的平均量，从而增加命名服务可以执行的规模；其代价是增加资源的利用（因为必须维护 PartitionCount*ReplicaSetSize 服务副本）。|
 |PlacementConstraints | string，默认值为“” |不允许| 命名服务的放置约束。 |
 |QuorumLossWaitDuration | 以秒为单位的时间，默认值为 MaxValue |不允许| 指定以秒为单位的时间范围。 命名服务进入仲裁丢失状态时，此计时器将启动。 指定时间到期后，FM 将不可用副本视为丢失，并尝试恢复仲裁。 请注意，这可能导致数据丢失。 |
@@ -428,27 +452,32 @@ ms.locfileid: "55210372"
 |PropertyGroup|KeyDoubleValueMap，默认值为 None|动态|每个指标名称的节点容量百分比；用作缓冲区，以便在故障转移的情况下在节点上保留一些可用空间。 |
 
 ## <a name="nodecapacities"></a>NodeCapacities
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodeCapacityCollectionMap |静态|不同指标的节点容量集合。 |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodeFaultDomainIdCollection |静态|描述节点所属的容错域。 通过用于描述数据中心中节点所在位置的 URI 定义容错域。  容错域 URI 的格式是 fd:/fd/，后跟 URI 路径段。|
 |UpgradeDomainId |string，默认值为“” |静态|描述节点所属的升级域。 |
 
 ## <a name="nodeproperties"></a>NodeProperties
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodePropertyCollectionMap |静态|节点属性的字符串键值对的集合。 |
 
 ## <a name="paas"></a>Paas
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ClusterId |string，默认值为“” |不允许|由 Fabric 用于配置保护的 X509 证书存储。 |
 
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |计数器 |String | 动态 |要收集的性能计数器的逗号分隔列表。 |
@@ -458,6 +487,7 @@ ms.locfileid: "55210372"
 |SamplingIntervalInSeconds |Int，默认值为 60 | 动态 |正在收集的性能计数器的采样间隔。 |
 
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |AffinityConstraintPriority | Int，默认值为 0 | 动态|确定相关性约束的优先级：0：硬；1：软；负值：忽略。 |
@@ -485,7 +515,7 @@ ms.locfileid: "55210372"
 |InBuildThrottlingAssociatedMetric | string，默认值为“” |静态| 此限制的关联指标名称。 |
 |InBuildThrottlingEnabled | Bool，默认值为 false |动态| 决定是否启用内置限制。 |
 |InBuildThrottlingGlobalMaxValue | Int，默认值为 0 |动态|全局范围内所允许的最大内置副本数。 |
-|InterruptBalancingForAllFailoverUnitUpdates | Bool，默认值为 false | 动态|决定是否有任何类型的故障转移单元更新应中断快速或慢速平衡运行。 如果指定为“false”，则会在 FailoverUnit 出现以下情况时中断均衡运行：被创建/删除、缺少副本、更改了主副本位置或更改了副本数量。 在其他情况下不会中断均衡运行，包括 FailoverUnit 具有额外副本、更改了任何副本标志、仅更改了分区版本或任何其他情况。 |
+|InterruptBalancingForAllFailoverUnitUpdates | Bool，默认值为 false | 动态|决定是否有任何类型的故障转移单元更新应中断快速或慢速平衡运行。 如果指定为“false”，则在 FailoverUnit 出现以下情况时中断均衡运行：被创建/删除、缺少副本、更改了主副本位置或更改了副本数量。 在其他情况下不会中断均衡运行，包括 FailoverUnit 具有额外副本、更改了任何副本标志、仅更改了分区版本或任何其他情况。 |
 |MinConstraintCheckInterval | 以秒为单位的时间，默认值为 1 |动态| 指定以秒为单位的时间范围。 定义在两个连续的约束检查循环之前必须经过的最短时间。 |
 |MinLoadBalancingInterval | 以秒为单位的时间，默认值为 5 |动态| 指定以秒为单位的时间范围。 定义在两个连续平衡循环之前必须经过的最短时间。 |
 |MinPlacementInterval | 以秒为单位的时间，默认值为 1 |动态| 指定以秒为单位的时间范围。 定义在两个连续的放置循环之前必须经过的最短时间。 |
@@ -514,6 +544,7 @@ ms.locfileid: "55210372"
 |VerboseHealthReportLimit | Int，默认值为 20 | 动态|定义副本进入未放置状态的次数超过多少次后，便报告副本运行状况警告（如果已启用详细运行状况报告）。 |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ApplicationUpgradeMaxReplicaCloseDuration | 以秒为单位的时间，默认值为 900 |动态|指定以秒为单位的时间范围。 在应用程序升级过程中，如果服务主机具有进入关闭状态的副本，系统在终止这类服务主机前所等待的时间。|
@@ -549,6 +580,7 @@ ms.locfileid: "55210372"
 |IsEnabled|bool，默认值为 FALSE |静态|控制是否在群集中启用该服务。 |
 
 ## <a name="runas"></a>RunAs
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string，默认值为“” |动态|指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或“user@domain”。 |
@@ -556,6 +588,7 @@ ms.locfileid: "55210372"
 |RunAsPassword|string，默认值为“” |动态|指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
 
 ## <a name="runasdca"></a>RunAs_DCA
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string，默认值为“” |动态|指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或“user@domain”。 |
@@ -563,6 +596,7 @@ ms.locfileid: "55210372"
 |RunAsPassword|string，默认值为“” |动态|指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
 
 ## <a name="runasfabric"></a>RunAs_Fabric
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string，默认值为“” |动态|指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或“user@domain”。 |
@@ -570,6 +604,7 @@ ms.locfileid: "55210372"
 |RunAsPassword|string，默认值为“” |动态|指示 RunAs 帐户密码。 仅需用于“DomainUser”帐户类型。 |
 
 ## <a name="runashttpgateway"></a>RunAs_HttpGateway
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string，默认值为“” |动态|指示 RunAs 帐户名称。 仅需用于“DomainUser”或“ManagedServiceAccount”帐户类型。 有效值为“domain\user”或“user@domain”。 |
@@ -600,7 +635,7 @@ ms.locfileid: "55210372"
 |ClusterCredentialType|string，默认值为“None”|不允许|指示为保护群集安全而使用的安全凭据的类型。 有效值为 "None/X509/Windows" |
 |ClusterIdentities|string，默认值为“”|动态|群集节点的 Windows 标识；用于群集成员身份授权。 该参数是以逗号分隔的列表；每个条目是域帐户名或组名称 |
 |ClusterSpn|string，默认值为“”|不允许|群集的服务主体名称；结构以单个域用户（gMSA/域用户帐户）运行。 该参数是租用侦听器和 fabric.exe 中的侦听器的 SPN：联合侦听器、内部复制侦听器、运行时服务侦听器和命名网关侦听器。 结构以计算机帐户运行时该参数应留空；在这种情况下从侦听器传输地址连接端计算侦听器 SPN。 |
-|CrlCheckingFlag|uint，默认值为 0x40000000|动态|默认证书链验证标记；可能被特定于组件的标记重写；例如 Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 设置为 0 会禁用 CRL 检查，支持值的完整列表由 CertGetCertificateChain 的 dwFlags 记录： http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
+|CrlCheckingFlag|uint，默认值为 0x40000000|动态|默认证书链验证标记；可能被特定于组件的标记重写；例如 Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 设置为 0 会禁用 CRL 检查，支持值的完整列表由 CertGetCertificateChain 的 dwFlags 记录： https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
 |CrlDisablePeriod|TimeSpan，默认值为 Common::TimeSpan::FromMinutes(15)|动态|指定以秒为单位的时间范围。 遇到脱机错误后给定证书的 CRL 检查的禁用时间；是否可以忽略 CRL 脱机错误。 |
 |CrlOfflineHealthReportTtl|TimeSpan，默认值为 Common::TimeSpan::FromMinutes(1440)|动态|指定以秒为单位的时间范围。 |
 |DisableFirewallRuleForDomainProfile| bool，默认值为 TRUE |静态| 指示是否不应对域配置文件启用防火墙规则 |
@@ -616,11 +651,13 @@ ms.locfileid: "55210372"
 |X509Folder|string，默认值为 /var/lib/waagent|静态|X509 证书和私钥所在的文件夹 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为管理员客户端操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则管理员客户端证书的直接颁发者必须在列表中。 |
 
 ## <a name="securityclientaccess"></a>Security/ClientAccess
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ActivateNode |string，默认值为“Admin” |动态| 用于激活节点的安全性配置。 |
@@ -670,7 +707,7 @@ ms.locfileid: "55210372"
 |InvokeInfrastructureCommand |string，默认值为“Admin” |动态| 用于基础结构任务管理命令的安全性配置。 |
 |InvokeInfrastructureQuery |string，默认值为“Admin\|\|User” | 动态|用于查询基础结构任务的安全性配置。 |
 |列出 |string，默认值为“Admin\|\|User” | 动态|用于映像存储客户端文件列表操作的安全性配置。 |
-|MoveNextFabricUpgradeDomain |string，默认值为“Admin” |动态| 用于使用显式升级域恢复群集升级的安全性配置。 |
+|MoveNextFabricUpgradeDomain |string，默认值为“Admin” |动态| 用于恢复群集升级，具有显式升级域的安全配置。 |
 |MoveNextUpgradeDomain |string，默认值为“Admin” |动态| 用于使用显式升级域恢复应用程序升级的安全性配置。 |
 |MoveReplicaControl |string，默认值为“Admin” | 动态|移动副本。 |
 |NameExists |string，默认值为“Admin\|\|User” | 动态|用于检查命名 URI 存在的安全性配置。 |
@@ -722,36 +759,43 @@ ms.locfileid: "55210372"
 |上载 |string，默认值为“Admin” | 动态|用于映像存储客户端上传操作的安全性配置。 |
 
 ## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap，默认值为 None |动态|客户端证书的 X509 颁发者证书存储；名称 = clientIssuerCN；值 = 逗号分隔的存储列表 |
 
 ## <a name="securityclientx509names"></a>Security/ClientX509Names
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为客户端操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则客户端证书的直接颁发者必须在列表中。|
 
 ## <a name="securityclustercertificateissuerstores"></a>Security/ClusterCertificateIssuerStores
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap，默认值为 None |动态|群集证书的 X509 颁发者证书存储；名称 = clusterIssuerCN；值 = 逗号分隔的存储列表 |
 
 ## <a name="securityclusterx509names"></a>Security/ClusterX509Names
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为群集操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则群集证书的直接颁发者必须在列表中。|
 
 ## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap，默认值为 None |动态|服务器证书的 X509 颁发者证书存储；名称 = serverIssuerCN；值 = 逗号分隔的存储列表 |
 
 ## <a name="securityserverx509names"></a>Security/ServerX509Names
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为服务器操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则服务器证书的直接颁发者必须在列表中。|
 
 ## <a name="setup"></a>设置
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|string，默认值为“”| 静态 |设置容器网络时要使用的网络名称。|
@@ -764,16 +808,19 @@ ms.locfileid: "55210372"
 |SkipFirewallConfiguration |Bool，默认值为 false | 不允许 |指定是否需要由系统设置防火墙设置。 仅当使用 Windows 防火墙时适用。 如果使用第三方防火墙，则必须打开端口以供系统和应用程序使用 |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |提供程序 |string，默认值为“DSTS” |静态|要启用的令牌验证提供程序的逗号分隔列表（有效的提供程序是：DSTS、AAD）。 目前只能在任何时候启用单个提供程序。 |
 
 ## <a name="traceetw"></a>Trace/Etw
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |级别 |Int，默认值为 4 | 动态 |跟踪 etw 级别可以采用值 1、2、3、4。 必须使跟踪级别保持在 4 才可受到支持 |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval | 时间以秒为单位，默认值为 0.015 | 静态 | 指定以秒为单位的时间范围。 确定接收到操作后到发送回确认之前，复制器等待的时间。 在该时间段期间接收的其他操作将通过一条消息发送回其确认 -> 减少网络流量，同时可能降低复制器的吞吐量。 |
@@ -795,6 +842,7 @@ ms.locfileid: "55210372"
 |SendTimeout|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(300)|动态|指定以秒为单位的时间范围。 检测停滞连接时的发送超时。 某个环境中的 TCP 故障报告不可靠。 可能需要根据可用网络带宽和出站数据大小 (\*MaxMessageSize\/\*SendQueueSizeLimit) 调整此值。 |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |AutoupgradeEnabled | Bool，默认值为 true |静态| 基于目标状态文件的自动轮训和升级操作。 |
@@ -809,6 +857,7 @@ ms.locfileid: "55210372"
 |UpgradeApprovalRequired | Bool，默认值为 false | 静态|此设置可让升级代码需要管理员批准才能继续操作。 |
 
 ## <a name="upgradeservice"></a>UpgradeService
+
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
 |BaseUrl | string，默认值为“” |静态|UpgradeService 的 BaseUrl。 |

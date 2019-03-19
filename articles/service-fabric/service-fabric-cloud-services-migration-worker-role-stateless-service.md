@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4eed3825d52fe52025077980e21f3763cc5751ac
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: f23f29d15c4c8f05551b20d42b92dda5632cde08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078731"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
 本文说明如何将云服务的 Web 角色和辅助角色迁移到 Service Fabric 无状态服务。 对于整体体系结构大致保持相同的应用程序来说，这是最简单的云服务到 Service Fabric 迁移路径。
@@ -110,8 +110,8 @@ namespace Stateless1
 
 辅助角色和 Service Fabric 服务的生命周期与生存期之间有几个主要差异：
 
-* **生命周期：** 最大的差异为辅助角色是 VM，因此其生命周期绑定到 VM，且包含 VM 启动和停止时的事件。 Service Fabric 服务的生命周期与 VM 的生命周期不同，因此不包含主机 VM 或计算机启动和停止时的事件，因为它们彼此不相关。
-* **生存期：** 如果 `Run` 方法退出，辅助角色实例将回收。 但是，Service Fabric 服务中的 `RunAsync` 方法可以运行到完成为止，服务实例将保持运行状态。 
+* **生命周期：** 最大的区别是辅助角色是 VM，因此其生命周期绑定到 VM，且包含 VM 启动和停止时的事件。 Service Fabric 服务的生命周期与 VM 的生命周期不同，因此不包含主机 VM 或计算机启动和停止时的事件，因为它们彼此不相关。
+* **生存期：** 如果辅助角色实例将回收`Run`方法退出。 但是，Service Fabric 服务中的 `RunAsync` 方法可以运行到完成为止，服务实例将保持运行状态。 
 
 Service Fabric 为侦听客户端请求的服务提供可选的通信设置入口点。 RunAsync 和通信入口点都是 Service Fabric 服务中的可选重写（服务可选择只侦听客户端请求和/或只运行处理循环），这就是 RunAsync 方法无需重新启动服务实例就可退出的原因，因为它可以继续侦听客户端请求。
 
@@ -209,7 +209,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 启动任务是应用程序启动前执行的操作。 启动任务通常用于以提升的权限运行设置脚本。 云服务和 Service Fabric 均支持启动任务。 两者的主要差异是，云服务中的启动任务绑定到 VM，因为 VM 是角色实例的一部分；而 Service Fabric 中的启动任务则绑定到服务，而不绑定到任何特定 VM。
 
 | Service Fabric | 云服务 |
-| --- | --- | --- |
+| --- | --- |
 | 配置位置 |ServiceDefinition.csdef |
 | 特权 |“受限”或“提升” |
 | 序列 |“简单”、“后台”、“前台” |

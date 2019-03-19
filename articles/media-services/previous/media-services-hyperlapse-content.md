@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: adsolank
-ms.openlocfilehash: c3ef977e7e8742f4d6de0f85d2d1684aa7eaa887
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 6179d9eba43498ec8c101cb10a922d5bad332772
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993752"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877332"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapse 媒体文件与 Azure Media Hyperlapse
 
@@ -39,9 +39,9 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
 首先，请将所需的输入文件上传到 Azure 媒体服务。  若要深入了解有关上传和管理内容的概念，请阅读[内容管理文章](media-services-portal-vod-get-started.md)。
 
 ### <a id="configuration"></a>Hyperlapse 的配置预设
-将内容上传到媒体服务帐户后，需要构造配置预设。  下表说明了用户指定的字段：
+内容上传到媒体服务帐户后，需要构造配置预设。  下表说明了用户指定的字段：
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
 | StartFrame |开始 Microsoft Hyperlapse 处理时所在的帧。 |
 | NumFrames |要处理的帧数 |
@@ -52,7 +52,7 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
 **XML 预设：**
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
         <Sources>
             <Source StartFrame="0" NumFrames="10000" />
         </Sources>
@@ -79,8 +79,8 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
     }
 ```
 
-### <a id="sample_code"></a>包含 AMS .NET SDK 的 Microsoft Hyperlapse
-以下方法将媒体文件上传为资产，然后使用 Azure Media Hyperlapse 媒体处理器来创建作业。
+### <a id="sample_code"></a> 包含 AMS .NET SDK 的 Microsoft Hyperlapse
+以下方法将媒体文件上传为资产，并使用 Azure Media Hyperlapse 媒体处理器来创建作业。
 
 > [!NOTE]
 > 为了使代码正常工作，应该事先在名为“context”的作用域中创建 CloudMediaContext。  若要了解详细信息，请阅读[内容管理文章](media-services-dotnet-get-started.md)。
@@ -219,5 +219,5 @@ Azure Media Hyperlapse 作业接受输入 MP4、MOV 或 WMV 资产文件以及�
 ## <a name="related-links"></a>相关链接
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
-[Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

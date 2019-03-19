@@ -7,14 +7,14 @@ manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 02/12/2019
+ms.date: 03/13/2019
 ms.author: harelbr
-ms.openlocfilehash: 4bcbed82a78caff62a9459ecb44c6513f367f6b7
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: f984a34be1c5d5fdd18a00812107318df8f5d9bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458194"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889278"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>智能检测电子邮件通知更改
 
@@ -34,7 +34,7 @@ ms.locfileid: "56458194"
 
 ## <a name="how-to-prepare-for-this-change"></a>如何为此更改做准备？
 
-若要确保来自智能检测的电子邮件通知发送给相关用户，必须将这些用户分配到[监视读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)角色。 应在订阅级别（影响订阅中的所有 Application Insights 资源）或 Application Insights 资源级别（仅影响该特定资源）执行分配。
+若要确保从智能检测电子邮件通知将发送到相关的用户，必须将这些用户分配给[监视查阅者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)或[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)订阅的角色。
 
 若要通过 Azure 门户将用户分配到“监视读者”或“监视参与者”角色，请按照[添加角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)一文中所述的步骤执行操作。 确保选择_监视读者_或_监视参与者_作为用户分配到的角色。
 

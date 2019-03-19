@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: d684ec56c7dfcc28d1057d0b20905db49bce9723
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498057"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099978"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,6 +34,7 @@ ms.locfileid: "55498057"
 除使用证书加密的云数据存储的链接服务凭据外，Azure 数据工厂不存储任何其他数据。 使用数据工厂可以创建数据驱动的工作流，协调[受支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间的数据移动，以及使用[计算服务](compute-linked-services.md)在其他区域或本地环境中处理数据。 还可以使用 SDK 与 Azure Monitor 来监视和管理工作流。
 
 数据工厂已获得以下认证：
+
 | **[CSA STAR 认证](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
@@ -45,12 +46,14 @@ ms.locfileid: "55498057"
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - http://aka.ms/AzureCompliance。
+如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - https://aka.ms/AzureCompliance。
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
 - **云场景**：在此场景中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务（如 Azure 存储、Azure SQL 数据仓库、Azure SQL 数据库、Azure Data Lake Store、Amazon S3 和 Amazon Redshift）、SaaS 服务（如 Salesforce）以及 Web 协议（如 FTP 和 OData）。 可以在[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到受支持数据源的完整列表。
 - **混合场景**：在此场景中，源或目标位于防火墙之后或本地公司网络中。 或者，数据存储位于专用网络或虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>云方案
 
@@ -89,10 +92,10 @@ Azure Data Lake Store 还为存储在帐户中的数据提供加密。 启用后
 Azure Blob 存储和 Azure 表存储支持存储服务加密 (SSE)，它会在将数据保存到存储中前进行自动加密，在检索前进行自动解密。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../storage/common/storage-service-encryption.md)。
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 支持静态数据的客户端和服务器加密。 有关详细信息，请参阅[使用加密保护数据](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)。
+Amazon S3 支持静态数据的客户端和服务器加密。 有关详细信息，请参阅[使用加密保护数据](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)。
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift 支持静态数据的群集加密。 有关详细信息，请参阅 [Amazon Redshift 数据库加密](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)。 
+Amazon Redshift 支持静态数据的群集加密。 有关详细信息，请参阅 [Amazon Redshift 数据库加密](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)。 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和自定义字段。 有关详细信息，请参阅 [Understanding the Web Server OAuth Authentication Flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)（了解 Web 服务器 OAuth 身份验证流）。  
@@ -109,9 +112,9 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 
 - **在本地存储凭据**。 如果想要在自承载集成运行时本地加密并存储凭据，请遵循[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。 
 
-   使用 **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 可加密链接服务凭据和链接服务中的敏感详细信息。 然后，可以通过 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 使用返回的 JSON（结合连接字符串中的 **EncryptedCredential** 元素）创建链接服务。  
+   使用**新建 AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 可加密链接的服务凭据和链接服务中的敏感详细信息。 然后，可以使用返回的 JSON (使用**EncryptedCredential**连接字符串中的元素) 若要使用创建的链接的服务**集 AzDataFactoryV2LinkedService** cmdlet。  
 
-- **在 Azure 数据工厂托管存储中存储**。 如果结合 JSON 中内联的连接字符串和凭据直接使用 **Set-AzureRmDataFactoryV2LinkedService** cmdlet，则链接服务会在 Azure 数据工厂托管存储中加密并存储。 敏感信息仍由证书加密，这些证书由 Microsoft 管理。
+- **在 Azure 数据工厂托管存储中存储**。 如果直接使用**集 AzDataFactoryV2LinkedService** cmdlet 与连接字符串和凭据 JSON 中的内联、 加密并存储在 Azure 数据工厂托管存储链接的服务。 敏感信息仍由证书加密，这些证书由 Microsoft 管理。
 
 
 
@@ -155,7 +158,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表提供了企业防火墙的出站端口和域要求：
 
-| 域名                  | 出站端口 | 说明                              |
+| 域名                  | 出站端口 | 描述                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443            | 自承载集成运行时连接到数据工厂中的数据移动服务时需要此端口。 |
 | `*.frontend.clouddatahub.net` | 443            | 自承载集成运行时连接到数据工厂服务时需要此端口。 |
@@ -169,7 +172,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表提供了 Windows 防火墙的入站端口要求：
 
-| 入站端口 | 说明                              |
+| 入站端口 | 描述                              |
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | PowerShell 加密 cmdlet（参阅[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)）和凭据管理器应用程序需要使用此端口在自承载集成运行时中安全设置本地数据存储的凭据。 |
 
@@ -184,7 +187,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 - [Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

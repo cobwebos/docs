@@ -8,18 +8,21 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 7b95c8b230714e1ba9306620e58628104cd676c9
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
-ms.translationtype: HT
+ms.openlocfilehash: 2e33454ac0ee97385386043706f4b8b73090f57a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401635"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112545"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>将 ExpressRoute 关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型
 
 本文介绍如何在移动 ExpressRoute 线路后将 ExpressRoute 关联的虚拟网络从经典部署模型迁移到 Azure 资源管理器部署模型。 
 
 ## <a name="before-you-begin"></a>开始之前
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * 验证是否安装了最新版本的 Azure PowerShell 模块。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。 请确保完全了解限制和局限性。
@@ -27,7 +30,7 @@ ms.locfileid: "54401635"
 * 确保拥有一个在 Resource Manager 部署模型中创建的资源组。
 * 查看以下资源迁移文档：
 
-    * [平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [平台支持的从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [有关平台支持的从经典部署模型到 Azure 资源管理器部署模型的迁移的技术深入探讨](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
     * [常见问题解答：平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [查看最常见的迁移错误和缓解措施](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -41,7 +44,7 @@ ms.locfileid: "54401635"
 * 不支持 ExpressRoute 线路跨订阅迁移。 有关详细信息，请参阅[无法移动的服务](../azure-resource-manager/resource-group-move-resources.md#services-that-cannot-be-moved)。
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
-必须先将 ExpressRoute 线路从经典环境转移到 Resource Manager 环境，然后才能尝试迁移附加到 ExpressRoute 线路的资源。 若要完成此任务，请参阅以下文章：
+必须先将 ExpressRoute 线路从经典环境转移到 Resource Manager 环境，才能尝试迁移附加到 ExpressRoute 线路的资源。 若要完成此任务，请参阅以下文章：
 
 * 查看[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-move.md)中提供的信息。
 * [使用 Azure PowerShell 将线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-howto-move-arm.md)。
@@ -60,24 +63,24 @@ ms.locfileid: "54401635"
 2. 确保已针对迁移进行了相应的虚拟网络准备。
 3. 注册订阅，以便进行资源迁移。 若要针对资源迁移来注册订阅，请使用以下 PowerShell 代码片段：
 
-  ```powershell 
-  Select-AzureRmSubscription -SubscriptionName <Your Subscription Name>
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
-  Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
-  ```
+   ```powershell 
+   Select-AzSubscription -SubscriptionName <Your Subscription Name>
+   Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+   Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+   ```
 4. 验证、准备和迁移。 若要转移虚拟网络，请使用以下 PowerShell 代码片段：
 
-  ```powershell
-  Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
-  Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
-  Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
-  ```
+   ```powershell
+   Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
+   Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
+   Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
+   ```
 
-  也可通过运行以下 PowerShell cmdlet 来中止迁移：
+   也可通过运行以下 PowerShell cmdlet 来中止迁移：
 
-  ```powershell
-  Move-AzureVirtualNetwork -Abort $vnetName
-  ```
+   ```powershell
+   Move-AzureVirtualNetwork -Abort $vnetName
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 * [平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)

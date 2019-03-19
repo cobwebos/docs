@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: ddb999c252f0802ef57942de694340ae29f2d8ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240352"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005481"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "51240352"
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>在新 VM 上安装 Deep Security Agent
 
-使用**市场**中的映像创建虚拟机时，[Azure 门户](http://portal.azure.com)允许安装 Trend Micro 安全扩展。 如果要创建的是单个虚拟机，则可通过此门户轻松地添加来自 Trend Micro 的保护。
+使用**市场**中的映像创建虚拟机时，[Azure 门户](https://portal.azure.com)允许安装 Trend Micro 安全扩展。 如果要创建的是单个虚拟机，则可通过此门户轻松地添加来自 Trend Micro 的保护。
 
 使用**市场**中的某个条目会打开一个向导，帮助用户设置虚拟机。 使用该向导的第三个面板“设置”边栏选项卡安装 Trend Micro 安全扩展。  有关常规说明，请参阅[在 Azure 门户中创建运行 Windows 的虚拟机](../windows/classic/tutorial.md)。
 
@@ -94,4 +94,4 @@ ms.locfileid: "51240352"
 
 <!-- Link references -->
 [如何登录到运行 Windows Server 的虚拟机]:../windows/classic/connect-logon.md
-[Azure VM 扩展和功能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Azure VM 扩展和功能]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

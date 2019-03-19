@@ -9,19 +9,19 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8ae55028bbc44a9383be6723f9bc6d39787cca45
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767297"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898867"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 本文将介绍适用于 Azure 流分析作业的不同类型的输出。 输出可帮助存储和保存流分析作业的结果。 使用输出数据，可进一步进行业务分析和数据的数据仓储。
 
 设计流分析查询时，使用 [INTO 子句](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics)引用输出的名称。 可针对每个作业使用单个输出，如果需要，也可通过在查询中提供多个 INTO 子句，针对每个流式处理作业使用多个输出。
 
-要创建、编辑和测试流分析作业输出，可使用 [Azure 门户](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) 和 [Visual Studio](stream-analytics-quick-create-vs.md)。
+若要创建、 编辑和测试 Stream Analytics 作业输出，可以使用[Azure 门户](stream-analytics-quick-create-portal.md#configure-job-output)， [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)， [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)， [REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)，并[Visual Studio](stream-analytics-quick-create-vs.md)。
 
 部分输出类型支持[分区](#partitioning)，并且[输出批大小](#output-batch-size)可变化以优化吞吐量。
 
@@ -56,7 +56,7 @@ ms.locfileid: "55767297"
 | 格式 | 仅适用于 JSON 序列化。 分隔行指定通过新行分隔各个 JSON 对象，从而格式化输出。 数组指定输出会被格式化为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 一般而言，最好使用分隔行 JSON，因为在继续写入输出文件时，无需任何特殊处理。|
 
 ### <a name="renew-data-lake-store-authorization"></a>续订 Data Lake Store 授权
-如果自作业创建后或上次身份验证后更改了密码，则需要重新对 Data Lake Store 帐户进行身份验证。 如果不重新进行身份验证，作业不会输出结果，并在操作日志中显示一个错误，指示需要重新授权。 目前，有一个限制：即需要每隔 90 天手动刷新身份验证令牌，适用于使用 Data Lake Store 输出的所有作业。
+如果自作业创建后或上次身份验证后更改了密码，则需要重新对 Data Lake Store 帐户进行身份验证。 如果不重新进行身份验证，作业不会输出结果，并在操作日志中显示一个错误，指示需要重新授权。 目前，有一个限制：即需要每隔 90 天手动刷新身份验证令牌，适用于使用 Data Lake Store 输出的所有作业。 但是，可以克服此限制由[进行身份验证使用托管标识 （预览）](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls)。
 
 若要续订授权，请“停止”作业，转到 Data Lake Store 输出，单击“续订授权”链接，在很短的时间内会弹出一个页面，指示“正在重定向到授权...”。该页会自动关闭，成功后指示“授权已成功续订”。 然后需要单击该页底部的“保存”，并通过从“上次停止的时间”重新启动作业来继续，以避免数据丢失。
 
@@ -169,7 +169,7 @@ Azure 流分析会代表用户创建一个 Power BI 数据集和表（如果不�
 此表介绍了在不存在 POWER BI 数据集和表的情况下，如何将数据类型从[流分析数据类型](https://msdn.microsoft.com/library/azure/dn835065.aspx)转换为 Power BI 的[实体数据模型 (EDM) 类型](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/)。
 
 从流分析 | 到 Power BI
------|-----|------------
+-----|-----
 bigint | Int64
 nvarchar(max) | String
 datetime | Datetime
@@ -186,8 +186,8 @@ float | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | String | String | Double
 Double | Double | String | String | Double
-String | String | String | String |  | String |
-Datetime | String | String |  Datetime | String
+String | String | String | String | String 
+datetime | String | String |  datetime | String
 
 
 ### <a name="renew-power-bi-authorization"></a>续订 Power BI 授权
@@ -261,6 +261,7 @@ Datetime | String | String |  Datetime | String
 > 尚不支持使用其他 Azure Cosmos DB API。 如果使用其他 API 将 Azure 流分析指向 创建的 Azure Cosmos DB 帐户，则可能无法正确存储数据。
 
 下表描述了用于创建 Azure Cosmos DB 输出的属性。
+
 | 属性名称 | description |
 | --- | --- |
 | 输出别名 | 用于在流分析查询中引用此输出的别名。 |
@@ -331,7 +332,7 @@ Azure 流分析使用大小可变的批来处理事件和写入到输出。 通�
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-
+> 
 > [快速入门：使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

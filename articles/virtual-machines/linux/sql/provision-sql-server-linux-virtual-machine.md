@@ -5,20 +5,19 @@ services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
 ms.date: 12/5/2018
-ms.topic: hero-article
+ms.topic: conceptual
 tags: azure-service-management
 ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
-ms.technology: database-engine
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d6a82414974c00d5fa2a7cfe5c1dd00ceaeb3bfa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729459"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011721"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Linux SQL Server 虚拟机
 
@@ -35,7 +34,7 @@ ms.locfileid: "55729459"
 * [更改 SA 密码](#password)
 * [针对远程连接进行配置](#remote)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
@@ -77,23 +76,23 @@ ms.locfileid: "55729459"
 
 1. 在“虚拟机名称”中，输入新 Linux VM 的名称。
 1. 然后键入或选择以下值：
-    * **区域**：选择合适的 Azure 区域。
-    * **可用性选项**：选择最适合应用和数据的可用性与冗余选项。
-    * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)。
+   * **区域**：选择合适的 Azure 区域。
+   * **可用性选项**：选择最适合应用和数据的可用性与冗余选项。
+   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)。
 
-    ![选择 VM 大小](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
+     ![选择 VM 大小](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
    > 对于开发和功能测试，请使用 **DS2** 或更大的 VM 大小。 若要进行性能测试，则至少使用“DS13”。
 
-    * **身份验证类型**：选择“SSH 公钥”。
+   * **身份验证类型**：选择“SSH 公钥”。
 
-    > [!Note]
-    > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
+     > [!Note]
+     > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
 
-    * **用户名**：输入 VM 的管理员名称。
-    * **SSH 公钥**：输入 RSA 公钥。
-    * **公共入站端口**：选择“允许所选的端口”，然后在“选择公共入站端口”列表中选择“SSH (22)”端口。 在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果想要远程连接到 SQL Server，还选择“MS SQL (1433)”以通过 Internet 打开端口 1433 进行连接。
+   * **用户名**：输入 VM 的管理员名称。
+   * **SSH 公钥**：输入 RSA 公钥。
+   * **公共入站端口**：选择“允许所选的端口”，然后在“选择公共入站端口”列表中选择“SSH (22)”端口。 在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果想要远程连接到 SQL Server，还选择“MS SQL (1433)”以通过 Internet 打开端口 1433 进行连接。
 
    ![入站端口](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
@@ -121,7 +120,7 @@ ssh azureadmin@40.55.55.555
 
 如果在 Windows 上运行且没有 BASH shell，请安装 SSH 客户端，例如 PuTTY。
 
-1. [下载并安装 PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
+1. [下载并安装 PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
 
 1. 运行 PuTTY。
 

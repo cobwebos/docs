@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+ms.openlocfilehash: 8dc3dcbe3a84a0c35c1e3fc6e367c63393bebb70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215110"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003134"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
@@ -58,7 +58,7 @@ ms.locfileid: "54215110"
 
 - TermService 服务设置为“已禁用”。 
 - TermService 服务崩溃或挂起。 
-- 错误的配置导致 TermService 不启动。
+- 不开始 TermService 由于配置不正确。
 
 ## <a name="solution"></a>解决方案
 
@@ -99,7 +99,8 @@ ms.locfileid: "54215110"
 
     |  错误 |  建议 |
     |---|---|
-    |5- 访问被拒绝 |请参阅 [TermService 服务由于访问被拒绝错误而停止](#termService-service-is-stopped-because-of-an-access-denied-problem)。 |   |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅 [TermService 服务已禁用](#termService-service-is-disabled)。  |  
+    |5- 访问被拒绝 |请参阅 [TermService 服务由于访问被拒绝错误而停止](#termService-service-is-stopped-because-of-an-access-denied-problem)。 |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅 [TermService 服务已禁用](#termService-service-is-disabled)。  |  
     |1058 - ERROR_SERVICE_DISABLED  |请参阅 [TermService 服务崩溃或挂起](#termService-service-crashes-or-hangs)。  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。|
     |1067 - ERROR_PROCESS_ABORTED  |请参阅 [TermService 服务崩溃或挂起](#termService-service-crashes-or-hangs)。  |
@@ -108,7 +109,7 @@ ms.locfileid: "54215110"
     |1070 - ERROR_SERVICE_START_HANG   | 请参阅 [TermService 服务崩溃或挂起](#termService-service-crashes-or-hangs)。 |
     |1077 - ERROR_SERVICE_NEVER_STARTED   | 请参阅 [TermService 服务已禁用](#termService-service-is-disabled)。  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 |
-    |1753   |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。   |   |5- 访问被拒绝 |请参阅 [TermService 服务由于访问被拒绝错误而停止](#termService-service-is-stopped-because-of-an-access-denied-error)。 |
+    |1753   |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService 服务由于访问被拒绝问题而停止
 
@@ -205,7 +206,7 @@ ms.locfileid: "54215110"
 
 1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。 请注意分配给附加的 OS 磁盘的驱动器号。
-3.  打开权限提升的命令提示符实例（“以管理员身份运行”）。 然后运行以下脚本。 假设分配给附加的 OS 磁盘的驱动器号为 **F**。请将它替换为 VM 中的相应值。 
+3. 打开权限提升的命令提示符实例（“以管理员身份运行”）。 然后运行以下脚本。 假设分配给附加的 OS 磁盘的驱动器号为 **F**。请将它替换为 VM 中的相应值。 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

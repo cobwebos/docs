@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 169638fed9a513b8ed835076c049ee21979085fe
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 56667b9a47411b2abae30ff159fa6bc555fec070
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966452"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104618"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>使用 REST API 进行 Azure NetApp 文件开发 
 
@@ -29,23 +29,23 @@ ms.locfileid: "55966452"
 
 1. [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（如果尚未这样做）。
 2. 在 Azure Active Directory (Azure AD) 中创建服务主体：
-    1. 验证你是否拥有[足够的权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+   1. 验证你是否拥有[足够的权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
 
-    1. 在 Azure CLI 中输入以下命令：  
+   1. 在 Azure CLI 中输入以下命令：  
 
-            az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
+           az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
 
-    该命令的输出类似于以下示例：  
+      该命令的输出类似于以下示例：  
 
-            { 
-                "appId": "appIDgoeshere", 
-                "displayName": "APPNAME", 
-                "name": "http://APPNAME", 
-                "password": "supersecretpassword", 
-                "tenant": "tenantIDgoeshere" 
-            } 
+           { 
+               "appId": "appIDgoeshere", 
+               "displayName": "APPNAME", 
+               "name": "http://APPNAME", 
+               "password": "supersecretpassword", 
+               "tenant": "tenantIDgoeshere" 
+           } 
 
-    请保存命令输出。  需要 `appId`、`password` 和 `tenant` 值。 
+      请保存命令输出。  需要 `appId`、`password` 和 `tenant` 值。 
 
 3. 请求 OAuth 访问令牌：
 

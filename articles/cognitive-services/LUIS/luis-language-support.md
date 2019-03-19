@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 81684031ddaa1ca8fa63a6c7e512f3fe6769a639
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 98df1d9612d18e4ab5044bd92822b2df76286b12
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859804"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340846"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -30,7 +30,7 @@ LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各�
 
 LUIS 理解以下语言：
 
-| 语言 |区域设置  |  预生成域 | 预生成实体 | 短语建议 | \**[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
+| 语言 |区域设置  |  预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
 | 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -53,7 +53,7 @@ LUIS 理解以下语言：
 
  - 在 `zh-cn` 区域性中，LUIS 要求简体中文字符集，而不是繁体字符集。
  - 意向、实体、功能和正则表达式的名称可采用中文或罗马字符。
- - 请参阅[预生成域参考](luis-reference-prebuilt-domains.md)，了解 `zh-cn` 区域性支持的预生成域。
+ - 请参阅[预生成的域引用](luis-reference-prebuilt-domains.md)有关中支持预生成的域的信息`zh-cn`区域性。
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>*日语支持说明

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 03920bc3ed17eac9d76cea78877f1f008e83f4dd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: bcaf470fae34056fe932cf8b5fd3076899f895ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195378"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880273"
 ---
 # <a name="create-a-new-saas-application-offer"></a>创建新的 SaaS 应用程序产品/服务
 
@@ -34,6 +34,7 @@ ms.locfileid: "53195378"
 ## <a name="offer-components"></a>产品/服务组件
 
 SaaS 应用产品/服务包含 5 个部分，如下表所述：
+
 |  **资产组**   |  **说明**  |
 |  ---------------   |  ---------------  |
 |    产品/服务设置  |  用于为 SaaS 应用配置唯一标识。                 |
@@ -45,7 +46,7 @@ SaaS 应用产品/服务包含 5 个部分，如下表所述：
 
 ## <a name="new-offer-form"></a>“新建套餐”窗体
 
-登录到[云合作伙伴门户](http://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”。 在“新建产品/服务”菜单中，选择“SaaS 应用”以显示“新建产品/服务”表单，并开始为新 SaaS 应用程序产品/服务定义资产的过程。
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”。 在“新建产品/服务”菜单中，选择“SaaS 应用”以显示“新建产品/服务”表单，并开始为新 SaaS 应用程序产品/服务定义资产的过程。
 
 ![适用于 SaaS 应用的新产品/服务菜单](./media/azure-new-saas-offer.png)
 

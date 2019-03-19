@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 77eaa6a642e02206eac319b76666bed8ae1fd165
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 72e93b99783441bda97c52ff295a89b0fcf4e629
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822419"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995897"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 > [!NOTE]
@@ -310,11 +310,11 @@ ms.locfileid: "55822419"
      {
          "name": "ADFTutorialPipelineOnPrem",
          "properties": {
-         "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
+         "description": "This pipeline has one Copy activity that copies data from an on premises SQL to Azure blob",
          "activities": [
            {
              "name": "CopyFromSQLtoBlob",
-             "description": "Copy data from on-prem SQL server to blob",
+             "description": "Copy data from on premises SQL server to blob",
              "type": "Copy",
              "inputs": [
                {
@@ -359,10 +359,10 @@ ms.locfileid: "55822419"
 
    * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
    * 活动的 **Input** 设置为 **EmpOnPremSQLTable**，**output** 设置为 **OutputBlobTable**。
-   * 在 **typeProperties** 节中，将 **SqlSource** 指定为**源类型**，将“BlobSink”指定为**接收器类型**。
+   * 在中**typeProperties**部分中， **SqlSource**指定为**源类型**并**BlobSink**指定为**接收器类型**。
    * 为 **SqlSource** 的 **sqlReaderQuery** 属性指定 SQL 查询 `select * from emp`。
 
-   开始和结束日期时间必须采用 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。
+   开始和结束日期时间必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。
 
    如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9/9/9999** 作为 **end** 属性的值。
 
@@ -407,7 +407,7 @@ ms.locfileid: "55822419"
 6. 单击 X 关闭所有页面，直到
 7. 返回到 ADFTutorialOnPremDF 的主页。
 8. （可选）单击“管道”，再单击“ADFTutorialOnPremDF”，钻取输入表 (**Consumed**) 或输出数据集 (**Produced**)。
-9. 使用工具（例如 [Microsoft 存储资源管理器](http://storageexplorer.com/)）验证是否每小时创建一个 blob/文件。
+9. 使用工具（例如 [Microsoft 存储资源管理器](https://storageexplorer.com/)）验证是否每小时创建一个 blob/文件。
 
    ![Azure 存储资源管理器](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 

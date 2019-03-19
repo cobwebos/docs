@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: shlo
-ms.openlocfilehash: 68cdabd8d6e5921eabaa200169c0523352461733
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: c5c12a66e8f66195a096588d779648d7486ab47b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856938"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091998"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
 ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
@@ -69,7 +69,7 @@ ForEach 活动在管道中定义重复的控制流。 此活动用于循环访�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
 名称 | For-Each 活动的名称。 | String | 是
 type | 必须设置为 **ForEach** | String | 是
@@ -474,7 +474,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 
 ## <a name="aggregating-outputs"></a>聚合输出
 
-若要聚合 foreach 活动的输出，请使用 _Variable_s 和追加变量活动。
+聚合输出的__foreach__活动，请利用_变量_并_追加变量_活动。
 
 首先，在管道中声明 `array` 变量。 然后，在每个 foreach 循环内调用追加变量活动。 随后，你可以从数组中检索聚合。
 

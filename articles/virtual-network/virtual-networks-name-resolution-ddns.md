@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: bbbce45b7c321fd4934374c76f2a4421b125d46f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600948"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994686"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>使用动态 DNS 在自己的 DNS 服务器中注册主机名
 
@@ -63,7 +63,7 @@ fi
 
 还可以使用 `nsupdate` 命令来执行安全的 DDNS 更新。 例如，在使用 Bind DNS 服务器时，将[生成](http://linux.yyz.us/nsupdate/)公钥-私钥对。 已为 DNS 服务器[配置](http://linux.yyz.us/dns/ddns-server.html)密钥的公共部分，所以它可以验证请求中的签名。 若要为 `nsupdate` 提供密钥对，请使用 `-k` 选项，以便对 DDNS 更新请求进行签名。
 
-如果使用 Windows DNS 服务器，可以使用 `nsupdate` 中包含 `-g` 参数的 Kerberos 身份验证，但它在 `nsupdate` 的 Windows 版本中不可用。 若要使用 Kerberos，请使用 `kinit` 来加载凭据。 例如，可以从 [keytab 文件](http://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)加载凭据，然后 `nsupdate -g` 就可以从缓存拾取该凭据。
+如果使用 Windows DNS 服务器，可以使用 `nsupdate` 中包含 `-g` 参数的 Kerberos 身份验证，但它在 `nsupdate` 的 Windows 版本中不可用。 若要使用 Kerberos，请使用 `kinit` 来加载凭据。 例如，可以从 [keytab 文件](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)加载凭据，然后 `nsupdate -g` 就可以从缓存拾取该凭据。
 
 如果需要，可以将 DNS 搜索后缀添加到 VM。 DNS 后缀在 */etc/resolv.conf* 文件中指定。 大多数 Linux 发行版自动管理此文件中的内容，因此通常不能对其进行编辑。 但是，可以通过使用 DHCP 客户端的 `supersede` 命令重写该后缀。 若要重写该后缀，请将以下行添加到 */etc/dhcp/dhclient.conf* 文件：
 

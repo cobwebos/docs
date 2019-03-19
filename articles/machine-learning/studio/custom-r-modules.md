@@ -5,17 +5,17 @@ description: 本主题介绍如何在 Azure 机器学习工作室中创建和部
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 43691988e3f4f253c642702ad19272a5267c14cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 0dec86eff9b9df70514be6f32f3aad60bfb311ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457024"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120374"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>定义 Azure 机器学习工作室的自定义 R 模块
 
@@ -123,7 +123,7 @@ ms.locfileid: "56457024"
 * **Description** 元素的内容长度不能超过 128 个字符。
 * **Owner** 元素的内容长度不能超过 32 个字符。
 
-模块结果可以是确定或不确定的。**默认情况下，所有模块都被视为是确定的。 也就是说，给定一组不变的输入参数和数据，模块应返回相同的结果 eacRAND 或返回其运行的时间。 考虑到此种情况，只有在参数或输入数据发生改变时，Azure 机器学习工作室才会重新运行标记为确定的模块。 通过返回已缓存的结果，实验执行速度也可以得到大幅提高。
+模块结果可以是确定或不确定的。**默认情况下，所有模块都被视为是确定的。 即，给定一组不变的输入的参数和数据，该模块应返回相同的结果 eacRAND 或次运行时函数。 考虑到此种情况，只有在参数或输入数据发生改变时，Azure 机器学习工作室才会重新运行标记为确定的模块。 通过返回已缓存的结果，实验执行速度也可以得到大幅提高。
 
 有一些函数是不确定的，例如 RAND 或返回当前日期或时间的函数。 如果模块使用不确定的函数，则可将可选 **isDeterministic** 属性设置为 **FALSE**，将模块指定为不确定。 这可确保无论何时运行实验，模块都会重新运行，即使模块输入和参数没有发生改变。 
 

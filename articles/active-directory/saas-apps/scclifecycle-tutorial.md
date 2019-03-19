@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8f682e0795f8f732805e817e4498cc486bbb2c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6376a479d2e6969505310de0e8e73e74738a04c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178458"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881312"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>教程：Azure Active Directory 与 SCC LifeCycle 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56178458"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 SCC LifeCycle 的集成，需要以下项：
 
@@ -117,6 +117,7 @@ ms.locfileid: "56178458"
     a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|--|
     | `https://bs1.scc.com/<entity>`|
@@ -135,8 +136,8 @@ ms.locfileid: "56178458"
 
 1. 若要在 SCC LifeCycle 端配置单一登录，需将下载的元数据 XML 发送给[ SCC LifeCycle 支持团队](mailto:lifecycle.support@scc.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
-  >[!NOTE]
-  >单一登录必须由 SCC LifeCycle 支持团队来启用。
+   >[!NOTE]
+   >单一登录必须由 SCC LifeCycle 支持团队来启用。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)

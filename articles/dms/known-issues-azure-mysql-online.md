@@ -3,20 +3,20 @@ title: 有关联机迁移到 Azure Database for MySQL 时存在的已知问题/�
 description: 了解在联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制。
 services: database-migration
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: ebe2af858aafaff62a7e3b629c0a8c84bbf49584
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: e2b82c8a7bcdc1982ed4489e9422a4a0efd64f3c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721642"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58175093"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>联机迁移到 Azure DB for MySQL 时存在的已知问题/迁移限制
 
@@ -80,7 +80,7 @@ ms.locfileid: "53721642"
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **解决方法**：如果 LOB 对象大于 32 KB，请通过 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) 联系工程团队。 
+    **解决方法**：如果必须大于 32 KB 的 LOB 对象，请联系工程团队[让 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。 
 
 ## <a name="other-limitations"></a>其他限制
 - 不支持在开头和末尾包含左右大括号 {  } 的密码字符串。 连接到源 MySQL 和目标 Azure Database for MySQL 时，都存在这种限制。

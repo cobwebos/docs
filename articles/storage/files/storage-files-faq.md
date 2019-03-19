@@ -7,12 +7,13 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 2a3c26c6a815cf934724fba4e8e0f9637803a4ce
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 561c8c9d942210a9bbdc70feff9bc468fa69967e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562379"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995866"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -26,19 +27,19 @@ ms.locfileid: "55562379"
 
 ## <a name="general"></a>常规
 * <a id="why-files-useful"></a>
-**Azure 文件如何发挥作用？**  
+  **Azure 文件如何发挥作用？**  
    你可以使用 Azure 文件在云中创建文件共享，而无需应对物理服务器、设备或装置的开销。 诸如应用操作系统更新和更换损坏的磁盘等琐碎枯燥的工作，我们可为你逐一代劳。 若要详细了解 Azure 文件适用的应用场景，请参阅[为何 Azure 文件很有用](storage-files-introduction.md#why-azure-files-is-useful)。
 
 * <a id="file-access-options"></a>
-**访问 Azure 文件中的文件有哪些不同方式？**  
-    可以使用 SMB 3.0 协议将文件共享装载到本地计算机上，也可以使用[存储资源管理器](http://storageexplorer.com/)等工具访问文件共享中的文件。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
+  **访问 Azure 文件中的文件有哪些不同方式？**  
+    可以使用 SMB 3.0 协议将文件共享装载到本地计算机上，也可以使用[存储资源管理器](https://storageexplorer.com/)等工具访问文件共享中的文件。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
 
 * <a id="what-is-afs"></a>
-**什么是 Azure 文件同步？**  
+  **什么是 Azure 文件同步？**  
     你可以使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可以将 Windows Server 计算机转换为 Azure 文件共享的快速缓存。 你可以使用 Windows Server 上的任何可用的协议本地访问你的数据，包括 SMB、网络文件系统 (NFS) 和文件传输协议服务 (FTPS)， 并且可以根据需要在世界各地具有多个缓存。
 
 * <a id="files-versus-blobs"></a>
-**相对于 Azure Blob 存储，我为什么要对数据使用 Azure 文件共享？**  
+  **相对于 Azure Blob 存储，我为什么要对数据使用 Azure 文件共享？**  
     Azure 文件和 Azure Blob 存储均提供在云中存储大量数据的方法，但是用途略有不同。 
     
     Azure Blob 存储适用于需要存储非结构化数据且具有大规模缩放性的云本机应用程序。 为了更大程度地提升性能和可缩放性，相对于真实的文件系统而言，Azure Blob 存储是更简单的存储抽象。 此外，只可通过基于 REST 的客户端库访问 Azure Blob 存储（或直接通过基于 REST 的协议访问）。
@@ -57,42 +58,42 @@ ms.locfileid: "55562379"
     有关在 Azure 中设置高性能和高可用性文件服务器的选项的信息，请参阅[在 Microsoft Azure 中部署 IaaS VM 来宾群集](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)。 有关 Azure 文件和 Azure 磁盘之间差异的深入描述，请参阅[确定何时使用 Azure Blob 存储、Azure 文件或 Azure 磁盘](../common/storage-decide-blobs-files-disks.md)。 若要详细了解 Azure 磁盘，请参阅 [Azure 托管磁盘概述](../../virtual-machines/windows/managed-disks-overview.md)。
 
 * <a id="get-started"></a>
-**如何开始使用 Azure 文件？**  
+  **如何开始使用 Azure 文件？**  
    开始使用 Azure 文件非常简单。 首先，[创建文件共享](storage-how-to-create-file-share.md)，然后再将其装载到首选操作系统中： 
 
-    * [在 Windows 中装载](storage-how-to-use-files-windows.md)
-    * [在 Linux 中装载](storage-how-to-use-files-linux.md)
-    * [在 macOS 中装载](storage-how-to-use-files-mac.md)
+  * [在 Windows 中装载](storage-how-to-use-files-windows.md)
+  * [在 Linux 中装载](storage-how-to-use-files-linux.md)
+  * [在 macOS 中装载](storage-how-to-use-files-mac.md)
 
-   有关部署 Azure 文件共享以替换组织中生产文件共享的详细指南，请参阅[规划 Azure 文件部署](storage-files-planning.md)。
+    有关部署 Azure 文件共享以替换组织中生产文件共享的详细指南，请参阅[规划 Azure 文件部署](storage-files-planning.md)。
 
 * <a id="redundancy-options"></a>
-**Azure 文件支持哪些存储冗余选项？**  
+  **Azure 文件支持哪些存储冗余选项？**  
     目前，Azure 文件支持本地冗余存储 (LRS)、区域冗余存储 (ZRS) 和异地冗余存储 (GRS)。 将来我们计划支持读取访问权限异地冗余存储 (RA-GRS)，但目前还没有可分享的日程表。
 
 * <a id="tier-options"></a>
-**Azure 文件支持哪些存储层？**  
+  **Azure 文件支持哪些存储层？**  
     Azure 文件目前仅支持标准存储层。 当前我们暂无有关高级存储和冷存储支持的日程表可供分享。 
     
     > [!NOTE]
     > 你无法使用仅限 Blob 存储帐户或高级存储帐户创建 Azure 文件共享。
 
 * <a id="give-us-feedback"></a>
-**我非常希望可以将某项特定功能添加到 Azure 文件。你们会添加它吗？**  
+  **我非常希望可以将某项特定功能添加到 Azure 文件。你们会添加它吗？**  
     Azure 文件团队非常乐于听取你针对我们服务提供的任何反馈。 请在 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 上进行功能请求投票！ 希望我们提供的众多新功能能够满足你的需求。
 
 ## <a name="azure-file-sync"></a>Azure 文件同步
 
 * <a id="afs-region-availability"></a>
-**Azure 文件同步支持哪些区域？**  
+  **Azure 文件同步支持哪些区域？**  
     可以在 Azure 文件同步规划指南的[区域可用性](storage-sync-files-planning.md#region-availability)部分中找到可用区域列表。 我们将继续添加对其他区域的支持，包括非公共区域。
 
 * <a id="cross-domain-sync"></a>
-**是否可以在同一个同步组中同时包含已加入域的服务器和未加入域的服务器？**  
+  **是否可以在同一个同步组中同时包含已加入域的服务器和未加入域的服务器？**  
     是的。 同步组可以包含具有不同的 Active Directory 成员身份的服务器终结点，即使它们未加入域。 虽然从严格意义上讲这种配置可用，但不建议将此作为常规配置，因为在某个服务器上为文件和文件夹定义的访问控制列表 (ACL) 可能无法由同步组中的其他服务器实施。 为获得最佳结果，建议在同一个 Active Directory 林中的服务器之间、在不同 Active Directory 林中但已建立信任关系的服务器之间，或未加入域的服务器之间进行同步。 我们建议你避免混合使用这些配置。
 
 * <a id="afs-change-detection"></a>
-**我通过 SMB 或门户在 Azure 文件共享中直接创建了一个文件。多久后该文件才会同步到同步组中的服务器上？**  
+  **我通过 SMB 或门户在 Azure 文件共享中直接创建了一个文件。多久后该文件才会同步到同步组中的服务器上？**  
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
 * <a id="afs-conflict-resolution"></a>**如果在两个服务器上几乎同时对同一文件进行了更改后，会发生什么情况？**  
@@ -103,66 +104,66 @@ ms.locfileid: "55562379"
     例如，如果 CentralServer 是较早写入的位置，则 CompanyReport.docx 的第一个冲突将变为 CompanyReport-CentralServer.docx。 第二个冲突将被命名为 CompanyReport-CentralServer-1.docx。
 
 * <a id="afs-storage-redundancy"></a>
-**Azure 文件同步是否支持异地冗余存储？**  
+  **Azure 文件同步是否支持异地冗余存储？**  
     是的，Azure 文件支持本地冗余存储 (LRS) 和异地冗余存储 (GRS)。 如果通过为 GRS 配置的帐户发起配对区域之间的存储帐户故障转移，Microsoft 建议仅将新区域视为数据的备份。 Azure 文件同步不会自动开始与新的主区域进行同步。 
 
 * <a id="sizeondisk-versus-size"></a>
-**使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？**  
- 请参阅[了解云分层](storage-sync-cloud-tiering.md#sizeondisk-versus-size)。
+  **使用 Azure 文件共享后，为什么文件的占用空间属性与大小属性不一致？**  
+  请参阅[了解云分层](storage-sync-cloud-tiering.md#sizeondisk-versus-size)。
 
 * <a id="is-my-file-tiered"></a>
-**如何分辨文件是否已被分层？**  
- 请参阅[了解云分层](storage-sync-cloud-tiering.md#is-my-file-tiered)。
+  **如何分辨文件是否已被分层？**  
+  请参阅[了解云分层](storage-sync-cloud-tiering.md#is-my-file-tiered)。
 
 * <a id="afs-recall-file"></a>**我想要使用的一个文件已被分层。如何将文件召回到磁盘以在本地使用？**  
- 请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-recall-file)。
+  请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-recall-file)。
 
 * <a id="afs-force-tiering"></a>
-**如何强制将文件或目录分层？**  
- 请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-force-tiering)。
+  **如何强制将文件或目录分层？**  
+  请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-force-tiering)。
 
 * <a id="afs-effective-vfs"></a>
-**当卷上有多个服务器终结点时，如何解释卷可用空间？**  
- 请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-effective-vfs)。
+  **当卷上有多个服务器终结点时，如何解释卷可用空间？**  
+  请参阅[了解云分层](storage-sync-cloud-tiering.md#afs-effective-vfs)。
 
 * <a id="afs-files-excluded"></a>
-**会被 Azure 文件同步自动排出的文件或文件夹有哪些？**  
+  **会被 Azure 文件同步自动排出的文件或文件夹有哪些？**  
     默认情况下，Azure 文件同步会排除以下文件：
-    * desktop.ini
-    * thumbs.db
-    * ehthumbs.db
-    * ~$\*.\*
-    * \*.laccdb
-    * \*.tmp
-    * 635D02A9D91C401B97884B82B3BCDAEA.\*
+  * desktop.ini
+  * thumbs.db
+  * ehthumbs.db
+  * ~$\*.\*
+  * \*.laccdb
+  * \*.tmp
+  * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
     默认情况下，还会排除以下文件夹：
 
-    * \系统卷信息
-    * \$RECYCLE.BIN
-    * \SyncShareState
+  * \系统卷信息
+  * \$RECYCLE.BIN
+  * \SyncShareState
 
 * <a id="afs-os-support"></a>
-**我是否可以将 Azure 文件同步与 Windows Server 2008 R2、Linux 或我的网络连接存储 (NAS) 设备一起使用？**  
+  **我是否可以将 Azure 文件同步与 Windows Server 2008 R2、Linux 或我的网络连接存储 (NAS) 设备一起使用？**  
     Azure 文件同步当前仅支持 Windows Server 2016 和 Windows Server 2012 R2。 目前，我们暂无可分享的其他计划，但我们愿意根据客户需求支持其他平台。 请在 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 上告知你想要我们支持的平台。
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
-**为什么分层文件存在于服务器终结点命名空间之外？**  
+  **为什么分层文件存在于服务器终结点命名空间之外？**  
     在 Azure 文件同步代理版本 3 之前，Azure 文件同步阻止将分层文件移到服务器终结点之外但位于服务器终结点所在卷上的其他位置。 复制操作、非分层文件的移动操作以及将分层文件移到其他卷的操作不受影响。 这种行为的原因在于以下隐含假设：文件资源管理器和其他 Windows API 在同一卷上的移动操作是（近乎）即时重命名操作。 这意味着，移动会使文件资源管理器或其他移动方法（如命令行或 PowerShell）看起来没有响应，而 Azure 文件同步会从云中召回数据。 从 [Azure 文件同步代理版本 3.0.12.0](storage-files-release-notes.md#supported-versions) 开始，Azure 文件同步将允许将分层文件移到服务器终结点之外。 我们通过允许分层文件作为服务器终结点之外的分层文件存在，然后在后台召回该文件以避免前面提到的负面影响。 这意味着在同一卷上的移动是即时的，在移动完成后，我们要完成将文件召回到磁盘的所有工作。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
-**我在服务器上遇到 Azure 文件同步问题（同步、云分层等）。是否应删除并重新创建服务器终结点？**  
+  **我在服务器上遇到 Azure 文件同步问题（同步、云分层等）。是否应删除并重新创建服务器终结点？**  
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
-**存储同步服务和/或存储帐户是否可以移动到不同的资源组或订阅？**  
+  **存储同步服务和/或存储帐户是否可以移动到不同的资源组或订阅？**  
    是的，可以将存储同步服务和/或存储帐户移到现有 Azure AD 租户中的其他资源组或订阅。 如果移动了存储帐户，则需要向混合文件同步服务授予对存储帐户的访问权限（请参阅[确保 Azure 文件同步可以访问存储帐户](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)）。
 
     > [!Note]  
     > Azure 文件同步不支持将订阅移到其他 Azure AD 租户。
     
 * <a id="afs-ntfs-acls"></a>
-**Azure 文件同步是否会保留目录/文件级别 NTFS ACL 以及存储在 Azure 文件中的数据？**
+  **Azure 文件同步是否会保留目录/文件级别 NTFS ACL 以及存储在 Azure 文件中的数据？**
 
     Azure 文件同步将转自本地文件服务器的 NTFS ACL 作为元数据保留。 Azure 文件不支持使用 Azure AD 凭据进行身份验证，以访问由 Azure 文件同步服务管理的文件共享。
     
@@ -244,6 +245,12 @@ ms.locfileid: "55562379"
    Azure 文件所依据的存储体系结构与 Azure 存储中的其他存储服务使用的相同。 Azure 文件实施的数据符合性策略也与其他 Azure 存储服务使用的相同。 有关 Azure 存储数据符合性的详细信息，可参阅 [Azure 存储符合性产品/服务](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)和转到 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
 
 ## <a name="on-premises-access"></a>本地访问
+
+* <a id="port-445-blocked"></a>
+**我的 ISP 或 IT 块端口 445 失败的 Azure 文件装载。我该怎样做？**
+
+    您可以了解[不同的方法来解决方法阻止端口 445 此处](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。 Azure 文件仅允许从连接使用 SMB 3.0 （具有加密支持） 之外的区域或数据中心。 SMB 3.0 协议引入了许多安全功能，包括通道加密，这是非常安全，若要通过 internet 使用。 但由于历史原因的较低的 SMB 版本中发现漏洞，端口 445 其可能已被阻止。 在理想情况下，该端口应被阻止的仅为 SMB 1.0 通信和 SMB 1.0 应关闭所有客户端上。
+
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c29cf0604e651902474d85dbd6edd3208e6b5944
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 55a829f2ed32152d14ef637c8079f7af8c487bea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811288"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097638"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +50,7 @@ ms.locfileid: "55811288"
 下表提供 FTP 链接服务专属的 JSON 元素描述。
 
 | 属性 | 说明 | 必选 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | type | type 属性必须设置为 `Sftp`。 |是 |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
 | port |SFTP 服务器侦听的端口。 默认值为：21 |否 |
@@ -64,8 +64,8 @@ ms.locfileid: "55811288"
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `Basic`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 说明 | 必选 |
-| --- | --- | --- | --- |
+| 属性 | 说明 | 需要 |
+| --- | --- | --- |
 | username | 有权访问 SFTP 服务器的用户。 |是 |
 | password | 用户 (username) 的密码。 | 是 |
 
@@ -114,8 +114,8 @@ ms.locfileid: "55811288"
 
 若要使用 SSH 公钥身份验证，请将 `authenticationType` 设置为`SshPublicKey`，并且除上一部分所述 SFTP 连接器泛型属性外，还需指定下列属性：
 
-| 属性 | 说明 | 必选 |
-| --- | --- | --- | --- |
+| 属性 | 说明 | 需要 |
+| --- | --- | --- |
 | username |有权访问 SFTP 服务器的用户 |是 |
 | privateKeyPath | 指定网关可以访问的私钥文件的绝对路径。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 <br><br> 仅当从本地 SFTP 服务器复制数据时才适用。 |
 | privateKeyContent | 私钥内容的序列化字符串。 复制向导可以读取私钥文件，并自动提取私钥的内容。 如果使用其他任何工具/SDK，请改用 privateKeyPath 属性。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 |
@@ -170,7 +170,7 @@ ms.locfileid: "55811288"
 
 每个数据集类型的 **typeProperties** 节都不同。 它提供特定于数据集类型的信息。 **FileShare** 数据集类型的 typeProperties 节具有以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>Data.<Guid>.txt（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |

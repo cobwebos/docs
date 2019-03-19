@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3d13082e3c076061b8d343827266ec04ae80646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: ac11244b87c87285722b4922da69530fab98c299
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180681"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117602"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>配置从 Azure AD 到托管域的范围内同步
 本文介绍了如何仅将特定用户帐户配置为从 Azure AD 目录同步到 Azure AD 域服务托管域。
@@ -39,12 +39,10 @@ ms.locfileid: "55180681"
 
 > [!WARNING]
 > **更改同步范围会导致托管域进行重新同步。**
->
- * 如果你更改托管域的同步范围，便会发生完全重新同步。
- * 托管域中不再需要的对象会遭删除。 托管域中会新建对象。
- * 重新同步可能需要很长时间才能完成，具体视托管域和 Azure AD 目录中的对象（用户、组和组成员身份）数而定。 对于包含数十万个对象的大型目录，重新同步可能需要几天时间才能完成。
->
->
+> 
+>  * 如果你更改托管域的同步范围，便会发生完全重新同步。
+>  * 托管域中不再需要的对象会遭删除。 托管域中会新建对象。
+>  * 重新同步可能需要很长时间才能完成，具体视托管域和 Azure AD 目录中的对象（用户、组和组成员身份）数而定。 对于包含数十万个对象的大型目录，重新同步可能需要几天时间才能完成。
 
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>使用 Azure 门户新建托管域并启用基于组的范围内同步
@@ -58,46 +56,46 @@ ms.locfileid: "55180681"
 若要向托管域配置基于组的范围内同步，请完成以下步骤：
 
 1. 完成以下任务：
-  * [任务 1：安装所需的 PowerShell 模块](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules)。
-  * [任务 2：在 Azure AD 目录中创建所需的服务主体](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)。
-  * [任务 3：创建并配置“AAD DC 管理员”组](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group)。
-  * [任务 4：注册 Azure AD 域服务资源提供程序](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider)。
-  * [任务 5：创建资源组](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group)。
-  * [任务 6：创建并配置虚拟网络](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network)。
+   * [任务 1：安装所需的 PowerShell 模块](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules)。
+   * [任务 2：在 Azure AD 目录中创建所需的服务主体](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)。
+   * [任务 3：创建并配置“AAD DC 管理员”组](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group)。
+   * [任务 4：注册 Azure AD 域服务资源提供程序](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider)。
+   * [任务 5：创建资源组](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group)。
+   * [任务 6：创建并配置虚拟网络](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network)。
 
 2. 选择要同步的组，并提供要同步到托管域的组的显示名称。
 
 3. 将[以下部分中的脚本](active-directory-ds-scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1)保存到 ```Select-GroupsToSync.ps1``` 文件中。 运行如下脚本：
 
-  ```powershell
-  .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
-  ```
+   ```powershell
+   .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
+   ```
 
-  > [!WARNING]
-  > **请务必添加“AAD DC 管理员”组。**
-  >
-  > 必须在已配置范围内同步的组列表中添加“AAD DC 管理员”组。 如果未添加此组，将无法使用托管域。
-  >
+   > [!WARNING]
+   > **请务必添加“AAD DC 管理员”组。**
+   >
+   > 必须在已配置范围内同步的组列表中添加“AAD DC 管理员”组。 如果未添加此组，将无法使用托管域。
+   >
 
 4. 现在，创建托管域，并为托管域启用基于组的范围内同步。 在 ```Properties``` 参数中添加属性 ```"filteredSync" = "Enabled"```。 例如，请参阅以下复制自[任务 7：预配 Azure AD 域服务托管域](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain)的脚本片段。
 
-  ```powershell
-  $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-  $ManagedDomainName = "contoso100.com"
-  $ResourceGroupName = "ContosoAaddsRg"
-  $VnetName = "DomainServicesVNet_WUS"
-  $AzureLocation = "westus"
+   ```powershell
+   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
+   $ManagedDomainName = "contoso100.com"
+   $ResourceGroupName = "ContosoAaddsRg"
+   $VnetName = "DomainServicesVNet_WUS"
+   $AzureLocation = "westus"
 
-  # Enable Azure AD Domain Services for the directory.
-  New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -Location $AzureLocation `
-  -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
+   # Enable Azure AD Domain Services for the directory.
+   New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+   -Location $AzureLocation `
+   -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -ApiVersion 2017-06-01 -Force -Verbose
-  ```
+   -ApiVersion 2017-06-01 -Force -Verbose
+   ```
 
-  > [!TIP]
-  > 请务必在 ```-Properties``` 参数中添加 ```"filteredSync" = "Enabled"```，这样才能为托管域启用范围内同步。
+   > [!TIP]
+   > 请务必在 ```-Properties``` 参数中添加 ```"filteredSync" = "Enabled"```，这样才能为托管域启用范围内同步。
 
 
 ## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>用于选择要同步到托管域的组的脚本 (Select-GroupsToSync.ps1)

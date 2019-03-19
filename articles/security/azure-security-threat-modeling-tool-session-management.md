@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 18dfc6badf640afb418e661e6c464442fbb41945
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232736"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875163"
 ---
 # <a name="security-frame-session-management"></a>安全框架：会话管理
 | 产品/服务 | 文章 |
@@ -270,7 +270,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
-| **参考**              | [ASP.NET MVC 和网页中的 XSRF/CSRF 预防](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
+| **参考**              | [ASP.NET MVC 和网页中的 XSRF/CSRF 预防](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
 | **步骤** | 反 CSRF 和 ASP.NET MVC 窗体 - 例如，在视图中使用 `AntiForgeryToken` 帮助器方法；将 `Html.AntiForgeryToken()` 放入窗体。|
 
 ### <a name="example"></a>示例
@@ -304,7 +304,7 @@ public ViewResult SubmitUpdate()
 * 这些 Cookie 是否与 `Request.Form` 值匹配。假设一切正常，则请求可以顺利传输。 否则，授权会失败并出现消息“未提供所需的防伪令牌或者该令牌无效”。 
 
 ### <a name="example"></a>示例
-反 CSRF 和 AJAX：窗体令牌可能对 AJAX 请求造成问题，因为 AJAX 请求可以发送 JSON 数据，但不能发送 HTML 窗体数据。 一种解决方法是在自定义 HTTP 标头中发送令牌。 以下代码使用 Razor 语法生成令牌，然后将令牌添加到 AJAX 请求。 
+反 CSRF 和 AJAX:窗体令牌可能对 AJAX 请求问题，因为 AJAX 请求可能会发送 JSON 数据，不是 HTML 窗体数据。 一种解决方法是在自定义 HTTP 标头中发送令牌。 以下代码使用 Razor 语法生成令牌，然后将令牌添加到 AJAX 请求。 
 ```csharp
 <script>
     @functions{
@@ -377,7 +377,7 @@ void Page_Init (object sender, EventArgs e) {
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [HttpSessionState.Timeout 属性](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
-| **步骤** | 会话超时是指由于用户在某个间隔时间（由 Web 服务器定义）内未在网站上执行任何操作而发生的事件。 服务器端发生该事件时，会将用户会话的状态更改为“invalid”（即，“不再使用”），并指示 Web 服务器销毁该会话（删除其中包含的所有数据）。 以下代码示例在 Web.config 文件中将超时会话特性设置为 15 分钟。|
+| **步骤** | 会话超时是指用户不会在未执行任何操作 web 站点上 （定义 web 服务器） 的间隔发生的事件。 服务器端发生该事件时，会将用户会话的状态更改为“invalid”（即，“不再使用”），并指示 Web 服务器销毁该会话（删除其中包含的所有数据）。 以下代码示例在 Web.config 文件中将超时会话特性设置为 15 分钟。|
 
 ### <a name="example"></a>示例
 ```XML 
@@ -467,8 +467,8 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
-| **参考**              | [防止 ASP.NET Web API 中的跨站点请求伪造 (CSRF) 攻击](http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
-| **步骤** | 反 CSRF 和 AJAX：窗体令牌可能对 AJAX 请求造成问题，因为 AJAX 请求可以发送 JSON 数据，但不能发送 HTML 窗体数据。 一种解决方法是在自定义 HTTP 标头中发送令牌。 以下代码使用 Razor 语法生成令牌，然后将令牌添加到 AJAX 请求。 |
+| **参考**              | [防止 ASP.NET Web API 中的跨站点请求伪造 (CSRF) 攻击](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
+| **步骤** | 反 CSRF 和 AJAX:窗体令牌可能对 AJAX 请求问题，因为 AJAX 请求可能会发送 JSON 数据，不是 HTML 窗体数据。 一种解决方法是在自定义 HTTP 标头中发送令牌。 以下代码使用 Razor 语法生成令牌，然后将令牌添加到 AJAX 请求。 |
 
 ### <a name="example"></a>示例
 ```Javascript
@@ -554,7 +554,7 @@ public ViewResult SubmitUpdate()
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 标识提供者 - ADFS，标识提供者 - Azure AD |
-| **参考**              | [在 ASP.NET Web API 2.2 中使用单个帐户和本地登录名保护 Web API](http://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
+| **参考**              | [在 ASP.NET Web API 2.2 中使用单个帐户和本地登录名保护 Web API](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
 | **步骤** | 如果 Web API 是使用 OAuth 2.0 保护的，则它需要在授权请求标头中包含一个持有者令牌，仅当该令牌有效时，才向请求授予访问权限。 与基于 Cookie 的身份验证不同，浏览器不会将持有者令牌附加到请求。 请求方客户端需要在请求标头中显式附加持有者令牌。 因此，对于使用 OAuth 2.0 保护的 ASP.NET Web API，持有者令牌被视为一种防范 CSRF 攻击的措施。 请注意，如果应用程序的 MVC 部分使用窗体身份验证（即，使用 Cookie），则 MVC Web 应用必须使用防伪令牌。 |
 
 ### <a name="example"></a>示例

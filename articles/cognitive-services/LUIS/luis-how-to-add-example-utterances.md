@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 3f08e2b2fab03ed7f2cccfe251e125033d55b30a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 1dac87ae07fac6a997cfd8e83c1e47ff39a91a83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860620"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096684"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>将实体添加到示例话语 
 
@@ -35,21 +35,17 @@ ms.locfileid: "55860620"
 在以下过程中，请在意向页的以下话语中创建并标记自定义实体：
 
 ```text
-Does John Smith work in Seattle?
+Are there any SQL server jobs?
 ```
 
-1. 在话语中选择 `Seattle`，将其标记为简单实体。
+1. 在话语中选择 `SQL server`，将其标记为简单实体。 在显示的实体下拉框中，可以选择现有的实体，也可以添加新的实体。 若要添加新实体，请键入其名称`Job`在文本框中，然后选择**创建新实体**。
 
-    [![在话语中选择要标记为简单实体的文本的屏幕截图](./media/luis-how-to-add-example-utterances/hr-create-simple-1.png)](./media/luis-how-to-add-example-utterances/hr-create-simple-1.png)
+    ![输入实体名称的屏幕截图](./media/luis-how-to-add-example-utterances/create-simple-entity.png)
 
     > [!NOTE]
     > 选择要标记为实体的单词时：
     > * 如果是单个单词，请直接将其选中。 
     > * 如果是至少包含两个单词的组合，请先选择组合的开头，然后选择其结尾。
-
-1. 在显示的实体下拉框中，可以选择现有的实体，也可以添加新的实体。 若要添加新的实体，请在文本框中键入其名称，然后选择“创建新实体”。 
-
-    ![输入实体名称的屏幕截图](./media/luis-how-to-add-example-utterances/hr-create-simple-2.png)
 
 1. 在“需要创建什么类型的实体?”弹出对话框中，验证实体名称并选择简单实体类型，然后选择“完成”。
 
@@ -57,14 +53,11 @@ Does John Smith work in Seattle?
 
 ## <a name="add-a-list-entity"></a>添加列表实体
 
-列表实体表示系统中一组固定、封闭（文本完全匹配）的相关单词。 
+列表实体在系统中表示一组完全匹配文本的相关字词的匹配项。 
 
 对于公司的部门列表，可以使用规范化值：`Accounting` 和 `Human Resources`。 每个规范化的名称都有同义词。 对于部门，这些同义词可以包含任何部门首字母缩写、编号或俚语。 创建实体时，不需了解所有值。 可以在查看真实的用户表述后使用同义词添加更多值。
 
-1. 在示例话语列表中，对于特定的话语，请选择要包含在新列表中的单词或短语。 然后在顶部文本框中输入该列表的名称，并选择“创建新实体”。   
-
-    ![输入列表实体名称的屏幕截图](./media/luis-how-to-add-example-utterances/hr-create-list-1.png)
-
+1. 在上的示例查询文本**意向**页上，新列表中选择的单词或短语所需。 实体下拉列表出现时，在顶部文本框中，输入新的列表中实体的名称，然后选择**创建新实体**。   
 
 1. 在“要创建哪种类型的实体?”弹出框中，为实体命名并选择“列表”作为类型。 添加此列表项的同义词，然后选择“完成”。 
 
@@ -76,21 +69,15 @@ Does John Smith work in Seattle?
 
 复合实体是在父实体中基于现有**实体**创建的。 
 
-假设话语为 `Does John Smith work in Seattle?`，则复合话语可以在单个父实体中返回员工姓名和位置的实体信息。 
+假设将语音样本`Does John Smith work in Seattle?`，复合语句可以返回实体信息的员工姓名`John Smith`，和位置`Seattle`复合实体中。 子实体必须已存在于应用程序和标记中创建复合实体之前将示例语音样本。
 
-员工姓名 John Smith 是预生成的 [personName](luis-reference-prebuilt-person.md) 实体。 位置 Seattle 是自定义的简单实体。 创建这两个实体并在示例话语中标记它们后，可在复合实体中包装这些实体。 
+1. 若要将子实体包装到一个复合实体，请选择**第一个**标记 （左） 的复合实体查询文本中的实体。 下拉列表将出现以显示此选择的选项。
 
-1. 若要将单个实体包装到复合实体中，请在复合实体的话语中选择**第一个**标记的实体（最左侧）。 此时会出现一个下拉列表，显示该选择操作所做的选择。
+1. 选择**将包装在复合实体**从下拉列表。 
 
-1. 从下拉列表中选择“包装复合实体”。 
-
-    ![选择“在复合实体中包装”的屏幕截图](./media/luis-how-to-add-example-utterances/hr-create-composite-1.png)
-
-1. 选择复合实体的最后一个单词（最右侧）。 请注意，复合实体带有绿线。
+1. 选择复合实体的最后一个单词（最右侧）。 请注意，复合实体带有绿线。 这是一个复合实体的可视指示器，应从最左边的子实体到最右边的子实体的复合实体中的所有单词下。
 
 1. 输入下拉列表中的复合实体名称。
-
-    ![输入下拉列表中的复合实体名称的屏幕截图](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     正确包装实体后，会在整个短语下显示绿线。
 
@@ -110,15 +97,11 @@ Does John Smith work in Seattle?
 
 1. 在“意向”页上的话语中选择 `Seattle`，输入实体名称 `Location`，然后按 Enter 键。
 
-    ![“创建分层实体标签”对话框的屏幕截图](./media/luis-how-to-add-example-utterances/hr-hier-1.png)
-
 1. 在“要创建哪种类型的实体?”弹出框中，选择“分层”作为“实体类型”，添加 `Origin` 和 `Destination` 作为子项，然后选择“完成”。
 
     ![“意向详细信息”页的屏幕截图，突出显示了“ToLocation”实体](./media/luis-how-to-add-example-utterances/create-location-hierarchical-entity.png)
 
-1. 表述中的单词已用父分层实体标记。 需将单词分配给子实体。 返回到意向详细信息页上的话语。 选择单词，然后从下拉列表中选择所创建的实体名称，再按照右侧菜单的提示选择正确的子实体。
-
-    ![Intents 详细信息页的屏幕截图，需要将文字分配给子实体](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
+1. 表述中的单词已用父分层实体标记。 需将单词分配给子实体。 意向的详细信息页上返回到查询文本。 选择单词，然后从下拉列表中选择所创建的实体名称，再按照右侧菜单的提示选择正确的子实体。
 
     >[!CAUTION]
     >子实体名称在单个应用的所有实体中必须唯一。 两个不同的分层实体不得包含同一名称的子实体。 
@@ -135,7 +118,7 @@ Does John Smith work in Seattle?
 
 实体框将显示“实体状态”，如果出现预测差异，则会显示一个红色感叹号。 若要在“实体状态”中查看有关标记实体与预测实体之间的差异的信息，请选择“实体状态”，然后选择右侧的项。
 
-![选择正确项以修复预测差异的屏幕截图](./media/luis-how-to-add-example-utterances/entity-status.png)
+![屏幕截图的实体状态选择](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
 
 红线可以出现在任何以下时间：
 
@@ -153,6 +136,9 @@ Does John Smith work in Seattle?
 |正确标记的文本|蓝色实体突出显示，带红色下划线|错误的预测|在各种位置和用法中提供包含正确标记的实体的更多话语。 当前话语不足，无法告知 LUIS 此实体是或者类似于同一上下文中显示的实体。 类似实体应组合成单个实体，以免给 LUIS 造成混淆。 另一种解决方法是添加一个短语列表，以提升单词的重要性。 |
 |错误标记的文本|蓝色实体突出显示，带红色下划线|正确的预测| 在各种位置和用法中提供包含正确标记的实体的更多话语。 
 
+> [!Note]
+> 红色框后标记为目的的示例查询文本，行中围绕[意向预测误差](luis-how-to-add-intents.md#intent-prediction-discrepancy-errors)已发生。 您需要更正它。 
+
 ## <a name="other-actions"></a>其他操作
 
 可以针对示例话语（选定组或单个项的形式）执行操作。 选定的示例话语组会更改列表上方的上下文菜单。 单个项可以使用列表上方的上下文菜单，以及每个话语行末尾的相应上下文省略号。 
@@ -162,8 +148,6 @@ Does John Smith work in Seattle?
 可以在“意向”页的表述中删除机器学习的实体标签。 如果实体不是机器学习的，则不能将其从表述中删除。 如果需要从表述中删除非机器学习实体，则需从整个应用中删除实体。 
 
 如果需要从表述中删除机器学习实体标签，请在表述中选择实体。 然后，在显示的实体下拉框中选择“删除标签”。
-
-![“意向详细信息”页的屏幕截图，其中突出显示了“删除标签”](./media/luis-how-to-add-example-utterances/remove-label.png) 
 
 ### <a name="add-prebuilt-entity-label"></a>添加预置实体标签
 
@@ -181,7 +165,7 @@ Does John Smith work in Seattle?
 
 ### <a name="add-patternany-entity"></a>添加 pattern.any 实体
 
-如果向 LUIS 应用添加 pattern.any 实体，则不能通过这些实体来标记表述。 它们只在模式中有效。 若要详细了解 pattern.any 实体以及添加它们的方法，请参阅[添加实体](luis-how-to-add-entities.md#add-patternany-entities)。
+如果向 LUIS 应用添加 pattern.any 实体，则不能通过这些实体来标记表述。 它们只在模式中有效。 若要详细了解 pattern.any 实体以及添加它们的方法，请参阅[添加实体](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities)。
 
 ## <a name="train-your-app-after-changing-model-with-utterances"></a>通过表述更改模型后对应用进行训练
 

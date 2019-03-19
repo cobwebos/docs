@@ -11,23 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: 5fd51e2d847b540d2eb8c17c2bc31f4e162a21ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567003"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904620"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>弹性数据库作业入门
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
 使用 Azure SQL 数据库的弹性数据库作业（预览版），可以跨多个数据库可靠执行 T-SQL 脚本，同时自动重试并提供最终完成保证。 有关弹性数据库作业功能的详细信息，请参阅[弹性作业](sql-database-elastic-jobs-overview.md)。
 
 本文对[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例进行了扩展。 完成本主题后，将学会如何创建和管理用于管理一组相关数据库的作业。 无需使用弹性缩放工具即可利用弹性作业的优势。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
 
 下载并运行[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
 
@@ -50,12 +52,12 @@ ms.locfileid: "55567003"
 
 ## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>创建自定义集合，并将服务器中的所有数据库添加到 master 以外的自定义集合目标
 
-   ```Powershell
+   ```PowerShell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
     $ServerName = "samples"
-    $dbsinserver = Get-AzureRMSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName
+    $dbsinserver = Get-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName
     $dbsinserver | %{
     $currentdb = $_.DatabaseName
     $ErrorActionPreference = "Stop"
@@ -314,7 +316,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 若要提交取消请求，请使用 **Stop-AzureSqlJobExecution** cmdlet 并设置 **JobExecutionId** 参数。
 
-   ```Powershell
+   ```PowerShell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
@@ -389,7 +391,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
    ```
 
 ## <a name="data-collection-across-databases"></a>跨数据库收集数据
-**弹性数据库作业**支持跨数据库组执行查询，并将结果发送到指定的数据库表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步机制。 例如其中一个数据库暂时不可用的失败案例是通过重试自动处理。
+**弹性数据库作业**支持跨数据库组执行查询，并将结果发送到指定的数据库表。 可以在事实之后查询该表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步机制。 例如其中一个数据库暂时不可用的失败案例是通过重试自动处理。
 
 如果不存在与返回的结果集架构相符的指定目标表，则自动创建该表。 如果脚本执行返回多个结果集，弹性数据库作业只将第一个结果集发送到提供的目标表。
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2006b025c4bcf54ee2ab131e0d6a105f9f4e9f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: fa740a558015b28e6d3fa7245c9041dc4167f832
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110352"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教程：为 BlueJeans 配置自动用户预配
 
@@ -30,7 +30,7 @@ ms.locfileid: "56178169"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程中所述的方案假定你已具备以下项：
 
@@ -107,9 +107,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分下，输入 BlueJeans 帐户的“管理员用户名”和“管理员密码”。 这些值的示例如下：
 
-    *   在“管理员用户名”字段中，填入 BlueJeans 租户上管理员帐户的用户名。 示例：admin@contoso.com。
+   * 在“管理员用户名”字段中，填入 BlueJeans 租户上管理员帐户的用户名。 示例：admin@contoso.com。
 
-    *   在“管理员密码”字段中，填入管理员用户名所对应的密码。
+   * 在“管理员密码”字段中，填入管理员用户名所对应的密码。
 
 6. 填入步骤 5 中所示的字段后，请单击“测试连接”以确保 Azure AD 可以连接到 BlueJeans。 如果连接失败，请确保 BlueJeans 帐户具有管理员权限，然后重试。
 

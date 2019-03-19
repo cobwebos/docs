@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 日志查询中的 app() 表达式 | Microsoft Docs
-description: app 表达式用于 Azure Monitor 日志查询中，可从特定 Application Insights 应用中的同一资源组、另一个资源组或另一个订阅中检索数据。
+description: Azure Monitor 日志查询中使用应用表达式来检索同一资源组、 另一个资源组或另一个订阅中特定 Application Insights 应用程序中的数据。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: 0abe2c869a05d359f692db105eb647f9e6a69df8
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: a1a605bc733597430f64dceeb6c485db0abf657b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266418"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889448"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
@@ -35,7 +35,7 @@ ms.locfileid: "56266418"
 
 - 标识符：使用下表中的某种格式标识应用。
 
-| 标识符 | 说明 | 示例
+| 标识符 | 描述 | 示例
 |:---|:---|:---|
 | 资源名称 | 人工可读的应用名称（又称“组件名称”） | app("fabrikamapp") |
 | 限定的名称 | 窗体中应用的完整名称：“subscriptionName/resourceGroup/componentName” | app('AI-Prototype/Fabrikam/fabrikamapp') |

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: bddfccaf0749bbb5eaf206e5961c713efa5eea17
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732152"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311893"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>如何排查“Azure Functions 运行时无法访问”的问题
 
@@ -55,7 +55,7 @@ ms.locfileid: "55732152"
 
 ### <a name="required-application-settings"></a>必需的应用程序设置
 
-* 必选
+* 需要
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * 消耗计划函数需要
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#websitecontentazurefileconnectionstring)
@@ -66,7 +66,7 @@ ms.locfileid: "55732152"
 ### <a name="guidance"></a>指南
 
 * 对于这些设置中的任何设置，不要选中“插槽设置”。 当交换部署槽位时，Function 将中断。
-* 如果使用自动部署，则不要设置这些设置。
+* 不要修改这些设置作为自动部署的一部分。
 * 必须在创建时提供这些设置并使其有效。 不包含这些设置的自动部署将导致应用程序无法运行，即使事后添加了这些设置也是如此。
 
 ## <a name="storage-account-credentials-invalid"></a>存储帐户凭据无效

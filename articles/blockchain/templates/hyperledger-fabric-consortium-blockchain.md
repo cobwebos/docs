@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328021"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005820"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric 联盟网络
 
@@ -76,13 +76,13 @@ ms.locfileid: "56328021"
 
 ![基础](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
-| 参数名称 | 说明 | 允许的值 |
+| 参数名称 | 描述 | 允许的值 |
 |---|---|---|
-**资源前缀**| 在部署过程中预配的资源的名称前缀 |6 个字符或更少 |
-**用户名**| 为此成员部署的每个虚拟机的管理员用户名 |1 - 64 个字符 |
-**身份验证类型**| 向虚拟机进行身份验证的方法 |密码或 SSH 公钥|
-**密码（身份验证类型 = 密码）**|部署的每个虚拟机的管理员帐户密码。 密码必须包含以下三种字符类型：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符<br /><br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码|12 - 72 个字符|
-**SSH 密钥（身份验证类型 = SSH 公钥）**|用于远程登录的安全 shell 密钥 ||
+**资源前缀** | 在部署过程中预配的资源的名称前缀 |6 个字符或更少 |
+**用户名** | 为此成员部署的每个虚拟机的管理员用户名 |1 - 64 个字符 |
+**身份验证类型** | 向虚拟机进行身份验证的方法 |密码或 SSH 公钥|
+**密码（身份验证类型 = 密码）** |部署的每个虚拟机的管理员帐户密码。 密码必须包含以下三种字符类型：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符<br /><br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码|12 - 72 个字符|
+**SSH 密钥（身份验证类型 = SSH 公钥）** |用于远程登录的安全 shell 密钥 ||
 **订阅** |要部署到的订阅 ||
 **资源组** |要将联盟网络部署到的资源组 ||
 **位置** |要部署第一个成员的 Azure 区域 ||
@@ -95,12 +95,12 @@ ms.locfileid: "56328021"
 
 ![联盟网络设置](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
-| 参数名称 | 说明 | 允许的值 |
+| 参数名称 | 描述 | 允许的值 |
 |---|---|---|
-**网络配置**|可以选择创建新网络或加入现有网络。 如果选择“加入现有网络”，则需要提供其他值。 |新建网络 <br/> 加入现有网络 |
-**HLF CA 密码**|用于由证书颁发机构生成的证书的密码，在部署过程中创建。 密码必须包含以下三种字符类型：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。<br /><br />虽然所有虚拟机最初都有相同的密码，但可以在预配后更改密码。|1 - 25 个字符 |
+**网络配置** |可以选择创建新网络或加入现有网络。 如果选择“加入现有网络”，则需要提供其他值。 |新建网络 <br/> 加入现有网络 |
+**HLF CA 密码** |用于由证书颁发机构生成的证书的密码，在部署过程中创建。 密码必须包含以下三种字符类型：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。<br /><br />虽然所有虚拟机最初都有相同的密码，但可以在预配后更改密码。|1 - 25 个字符 |
 **组织设置** |可以自定义组织的名称和证书，也可以使用默认值。|默认 <br/> 高级 |
-**VPN 网络设置**| 预配 VPN 隧道网关以访问 VM | 是 <br/> 否 |
+**VPN 网络设置** | 预配 VPN 隧道网关以访问 VM | 是 <br/> 否 |
 
 选择“确定”。
 
@@ -110,21 +110,21 @@ ms.locfileid: "56328021"
 
 ![Fabric 设置](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
-| 参数名称 | 说明 | 允许的值 |
+| 参数名称 | 描述 | 允许的值 |
 |---|---|---|
-**缩放类型**|以下两种部署类型之一：具有多个容器的单个虚拟机或横向扩展模型中的多个虚拟机。|单 VM 或多 VM |
-**VM 磁盘类型**|支持每个已部署的节点的存储类型。 <br/> 若要详细了解可用的磁盘类型，请访问[选择磁盘类型](../../virtual-machines/windows/disks-types.md)。|标准 SSD <br/> 高级·SSD |
+**缩放类型** |以下两种部署类型之一：具有多个容器的单个虚拟机或横向扩展模型中的多个虚拟机。|单 VM 或多 VM |
+**VM 磁盘类型** |支持每个已部署的节点的存储类型。 <br/> 若要详细了解可用的磁盘类型，请访问[选择磁盘类型](../../virtual-machines/windows/disks-types.md)。|标准 SSD <br/> 高级·SSD |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>多 VM 部署（其他设置）
 
 ![有关多 VM 部署的 Fabric 设置](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-| 参数名称 | 说明 | 允许的值 |
+| 参数名称 | 描述 | 允许的值 |
 |---|---|---|
 **排序节点数** |将事务排序（整理）为块的节点数。 <br />有关排序服务的其他详细信息，请访问 Hyperledger [文档](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1-4 |
 **排序节点虚拟机大小** |用于网络中排序节点的虚拟机大小|标准 Bs、<br />标准 Ds、<br />标准 FS |
-**对等节点数**| 归联盟成员所有，执行事务并保持状态和账本副本的节点数。<br />有关排序服务的其他详细信息，请访问 Hyperledger [文档](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html)。|1-4 |
-**节点状态持久性** |对等节点使用的持久性引擎。 可以为每个对等节点配置此引擎。 请参阅下面有关多对等节点的详细信息。|CouchDB </br>LevelDB |
+**对等节点数** | 归联盟成员所有，执行事务并保持状态和账本副本的节点数。<br />有关排序服务的其他详细信息，请访问 Hyperledger [文档](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html)。|1-4 |
+**节点状态持久性** |对等节点使用的持久性引擎。 可以为每个对等节点配置此引擎。 请参阅下面有关多对等节点的详细信息。|CouchDB <br />LevelDB |
 **对等节点虚拟机大小** |用于网络中所有节点的虚拟机大小|标准 Bs、<br />标准 Ds、<br />标准 FS |
 
 ### <a name="multiple-peer-node-configuration"></a>多对等节点配置

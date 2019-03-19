@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: a95b781d0d08cdca96cf4e98ac9dce43da535d13
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888915"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116094"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>从 Azure 门户安装更新
 
@@ -35,7 +35,7 @@ ms.locfileid: "55888915"
    * **硬件组件运行状况检查**：验证 StorSimple 设备上的所有硬件组件是否状况良好。
    * **DATA 0 检查**：验证设备上是否已启用 DATA 0。 如果未启用此接口，必须将它启用，然后重试。
 
-    只有所有检查都成功完成后才会下载并安装更新。 在进行检查的同时，系统会通知你。 如果预检查失败，系统会提供失败原因。 请解决这些问题，然后重试操作。 如果无法自行解决这些问题，可能需要联系 Microsoft 支持人员。
+     只有所有检查都成功完成后才会下载并安装更新。 在进行检查的同时，系统会通知你。 如果预检查失败，系统会提供失败原因。 请解决这些问题，然后重试操作。 如果无法自行解决这些问题，可能需要联系 Microsoft 支持人员。
 
 7. 预检查成功完成后，将创建更新作业。 成功创建更新作业后，系统会发出通知。
    
@@ -53,5 +53,5 @@ ms.locfileid: "55888915"
 
 10. 在作业完成后，导航到“设备设置”>“设备更新”。 软件版本现在应当已更新。
 
-    ![创建更新作业](./media/storsimple-8000-install-update4-via-portal/update9.png)
+   ![创建更新作业](./media/storsimple-8000-install-update4-via-portal/update9.png)
 

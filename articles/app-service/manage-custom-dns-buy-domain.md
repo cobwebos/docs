@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d47c560515a13efa8346974e828f14f9a15f0e4a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729798"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121530"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -28,7 +28,7 @@ ms.locfileid: "53729798"
 
 对于 Azure VM 或 Azure 存储，请查看[Assign App Service domain to Azure VM or Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/)（将应用服务分配到 Azure VM 或 Azure 存储）。 对于云服务，请查看[为 Azure 云服务配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成本教程：
 
@@ -102,7 +102,7 @@ ms.locfileid: "53729798"
 ### <a name="configure-the-domain-purchase"></a>配置域购买
 
 在“应用服务域”页上的“搜索域”框中，键入要购买的域名并按 `Enter`。 文本框的正下方会显示建议的可用域。 选择要购买的一个或多个域。
-   
+
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
@@ -111,22 +111,22 @@ ms.locfileid: "53729798"
 >
 
 单击“联系人信息”，并填写域的联系人信息表单。 完成后，单击“确定”返回“应用服务域”页。
-   
-请务必尽量准确填写所有必填字段。 如果联系人信息数据不正确，可能会导致无法购买域。 
+
+请务必尽量准确填写所有必填字段。 如果联系人信息数据不正确，可能会导致无法购买域。
 
 接下来，选择域的所需选项。 参阅下表中的说明：
 
-| 设置 | 建议的值 | Description |
+| 设置 | 建议的值 | 描述 |
 |-|-|-|
 |隐私保护 | 启用 | 选择“隐私保护”，已在采购价免费包含。 某些顶级域由不支持隐私保护的注册机构托管，并在“隐私保护”页上列出。 |
-| 分配默认主机名 | **www** 和 **@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的应用。 如果应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |
+| 分配默认主机名 | **www** 和 **\@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的应用。 如果应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |
 
 ### <a name="accept-terms-and-purchase"></a>接受条款并购买
 
 单击“法律条款”查看条款和费用，再单击“购买”。
 
 > [!NOTE]
-> 应用服务域使用 Azure DNS 来托管域。 除了域注册费以外，还会产生 Azure DNS 的使用费。 有关信息，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
+> 应用服务域使用 GoDaddy 域注册和 Azure DNS 来托管域。 除了域注册费以外，还会产生 Azure DNS 的使用费。 有关信息，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
 >
 >
 
@@ -146,7 +146,7 @@ ms.locfileid: "53729798"
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
-若要测试主机名，请在浏览器中导航到列出的主机名。 在上面屏幕截图所示的示例中，请尝试导航到 _kontoso.net_ 和 _www.kontoso.net_。
+若要测试主机名，请在浏览器中导航到列出的主机名。 在上面的屏幕截图中的示例，请尝试导航到_kontoso.net_并_www\.kontoso.net_。
 
 ## <a name="assign-hostnames-to-app"></a>将主机名分配到应用
 
@@ -177,7 +177,7 @@ ms.locfileid: "53729798"
 在“添加主机名”对话框中，键入应用服务域或任何子域的完全限定域名。 例如：
 
 - kontoso.net
-- www.kontoso.net
+- www\.kontoso.net
 - abc.kontoso.net
 
 完成后，选择“验证”。 系统会自动选择主机名记录类型。

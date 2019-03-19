@@ -16,18 +16,18 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: d5ed8da4ea527e350b1ff73d0bd188cdad2caf71
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ad58b8f1034a0e2818d3aca53c023736da9370cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189202"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119915"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Azure Stack 数据中心集成
 
-本指南介绍了从采购到成功的现场部署解决方案提供商通过集成的系统的端到端 Azure Stack 客户体验。 简化之旅并帮助设置为你的 Azure Stack 客户的预期，请使用此信息。
+本文介绍从采购集成的系统到解决方案提供商成功完成现场部署在内的端到端 Azure Stack 客户体验。 使用此信息可以简化旅程，并帮助 Azure Stack 客户设置预期。
 
-作为 Azure Stack 客户，应预计到以下几个阶段：
+Azure Stack 客户应该为以下阶段做好准备：
 
 |     |规划阶段|订单处理|部署前|工厂处理|硬件交付|现场部署|
 |-----|-----|-----|-----|-----|-----|-----|
@@ -63,7 +63,7 @@ Microsoft 或 Azure Stack 解决方案合作伙伴，将工作与你一同评估
 [一般数据中心集成注意事项](azure-stack-datacenter-integration.md)一文提供的信息可帮助你完成该模板（名为“部署工作表”）。 
 
 > [!IMPORTANT]
-> 在此阶段，必须先调查并确定所有必要信息，然后再订购解决方案。 请注意，此步骤相当耗时，需要与组织中的多个专业单位协调，并从中收集数据。 信息不正确或不完整可能会导致更长的部署。 
+> 在此阶段，必须先调查并确定所有必要信息，然后再订购解决方案。 请注意，此步骤相当耗时，需要与组织中的多个专业单位协调，并从中收集数据。 信息不正确或不完整可能导致部署时间延长。 
 
 在部署前的阶段，需要确定以下事宜：
 
@@ -90,7 +90,7 @@ Microsoft 或 Azure Stack 解决方案合作伙伴，将工作与你一同评估
 
 -   必须购买并准备好所有证书。
 
--   必须确定区域名称。
+-   必须确定区域名。
 
 -   所有网络集成参数都已确认，且符合你向解决方案提供商提出的要求。
 
@@ -102,46 +102,46 @@ Microsoft 或 Azure Stack 解决方案合作伙伴，将工作与你一同评估
 
 下面是在部署体验期间，现场工程师应执行的操作：
 
-- 检查所有电缆连接的边界连接以确保解决方案正确结合在一起并满足你的要求。
-- 如果存在，请配置解决方案 HLH （硬件生命周期主机）。
+- 检查所有布线和边界连接，确保解决方案正确定位在一起，且符合要求。
+- 配置解决方案的 HLH（硬件生命周期主机，如果存在的话）。
 - 检查并确保所有 BMC、BIOS 和网络设置正确。
-- 请确保所有组件的固件是由该解决方案的最新已批准版本。
-- 启动部署。
+- 确保所有组件的固件使用解决方案批准的最新版本。
+- 开始部署。
 
 > [!NOTE]
 > 现场工程师可能需要一个工作周的时间来完成部署过程。
 
-## <a name="post-deployment-phase"></a>后期部署阶段
+## <a name="post-deployment-phase"></a>部署后阶段
 在集成后的阶段，合作伙伴必须先执行几个步骤，然后才能将解决方案移交给客户。 在此阶段，验证非常重要，它可以确保系统部署正确且运行正常。 
 
 OEM 合作伙伴应执行的操作包括：
 
--   [运行 test-azurestack](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
+- [运行 test-azurestack](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
 
--   [注册到 Azure](azure-stack-registration.md)
+- [注册到 Azure](azure-stack-registration.md)
 
--   [市场联合](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
+- [市场联合](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
 
--   备份配置交换机和 HLH 配置文件
+- 备份交换机配置文件和 HLH 配置文件
 
--   去除 DVM
+- 去除 DVM
 
--   为客户准备部署摘要
+- 为客户准备部署摘要
 
--   [检查更新以确保解决方案软件已更新到最新版本](.\azure-stack-updates.md)
+- [检查更新以确保解决方案软件已更新到最新版本](./azure-stack-updates.md)
 
 有几个步骤是必需或可选的，具体取决于安装类型。
 
--   如果部署是使用 [AD FS](azure-stack-integrate-identity.md) 完成的，则 Azure Stack 阵列需要与客户自己的 AD FS 相集成。
+- 如果部署是使用 [AD FS](azure-stack-integrate-identity.md) 完成的，则 Azure Stack 阵列需要与客户自己的 AD FS 相集成。
 
   > [!NOTE]
   > 此步骤由客户负责，不过，合作伙伴可以选择性地提供相关服务。
 
--   与相关合作伙伴的现有监视系统相集成。
+- 与相关合作伙伴的现有监视系统相集成。
 
-    -   [System Center Operations Manager 集成](azure-stack-integrate-monitor.md)也支持机群管理功能。
+  -   [System Center Operations Manager 集成](azure-stack-integrate-monitor.md)也支持机群管理功能。
 
-    -   [Nagios 集成](azure-stack-integrate-monitor.md#integrate-with-nagios)
+  -   [Nagios 集成](azure-stack-integrate-monitor.md#integrate-with-nagios)
 
 ## <a name="overall-timeline"></a>整体时间表
 

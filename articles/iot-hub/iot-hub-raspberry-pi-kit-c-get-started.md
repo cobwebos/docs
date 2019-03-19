@@ -8,18 +8,18 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 4f092f2d290138e48068141113b184d8e856bee7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327233"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103207"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-在本教程中，用户首先将学习使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](http://www.windowsondevices.com/)。
+在本教程中，首先学习有关使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](https://www.windowsondevices.com/)。
 
 还没有工具包？ 请尝试 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)。 或在[此处](https://azure.microsoft.com/develop/iot/starter-kits)购买新工具包。
 
@@ -30,7 +30,7 @@ ms.locfileid: "56327233"
 * 设置 Raspberry Pi。
 * 在 Pi 上运行示例应用程序，以将传感器数据发送到 IoT 中心。
 
-将 Raspberry Pi 连接到创建的 IoT 中心。 然后，在 Pi 上运行示例应用程序，以从 BME280 传感器收集温度和湿度数据。 最后，将传感器数据发送到 IoT 中心。
+将 Raspberry Pi 连接到所创建的 IoT 中心。 然后，在 Pi 上运行示例应用程序，以从 BME280 传感器收集温度和湿度数据。 最后，将传感器数据发送到 IoT 中心。
 
 ## <a name="what-you-learn"></a>学习内容
 
@@ -82,7 +82,7 @@ ms.locfileid: "56327233"
 准备用于安装 Raspbian 映像的 microSD 卡。
 
 1. 下载 Raspbian。
-   1. [下载 Raspbian Jessie with Desktop](https://www.raspberrypi.org/downloads/raspbian/)（.zip 文件）。
+   1. [下载 Raspbian Stretch with Desktop](https://www.raspberrypi.org/downloads/raspbian/)（.zip 文件）。
    1. 将 Raspbian 映像提取到计算机上的一个文件夹中。
 1. 将 Raspbian 安装到 microSD 卡。
    1. [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
@@ -94,12 +94,12 @@ ms.locfileid: "56327233"
 
 ### <a name="enable-ssh-and-spi"></a>启用 SSH 和 SPI
 
-1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
+1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，然后通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
 1. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
    ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
 
-1. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，并单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
+1. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，并单击“确定”。 如果没有物理传感器，但希望使用模拟传感器数据，可选择执行此步骤。
 
    ![在 Raspberry Pi 上启用 SPI 和 SSH](./media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 
@@ -136,7 +136,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 ### <a name="connect-pi-to-the-network"></a>将 Pi 连接到网络
 
-通过使用微型 USB 电缆和电源为 Pi 通电。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
+使用 USB 微电缆和电源开启 Pi。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
 
 ![已连接到有线网络](./media/iot-hub-raspberry-pi-kit-c-get-started/5_power-on-pi.jpg)
 
@@ -148,7 +148,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 1. 使用主计算机的以下任一 SSH 客户端连接到 Raspberry Pi。
    
    **Windows 用户**
-   1. 下载并安装 [PuTTY](http://www.putty.org/) for Windows。 
+   1. 下载并安装 [PuTTY](https://www.putty.org/) for Windows。 
    1. 将 Pi 的 IP 地址复制到主机名（或 IP 地址）部分，并选择 SSH 作为连接类型。
    
    ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
@@ -156,8 +156,8 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
    **Mac 和 Ubuntu 用户**
    
    使用 Ubuntu 或 macOS 上的内置 SSH 客户端。 可能需要运行 `ssh pi@<ip address of pi>`，以通过 SSH 连接 Pi。
-   > [!NOTE] 
-   默认用户名是 `pi`，密码是 `raspberry`。
+   > [!NOTE]
+   > 默认用户名是 `pi`，密码是 `raspberry`。
 
 
 ### <a name="configure-the-sample-application"></a>配置示例应用程序

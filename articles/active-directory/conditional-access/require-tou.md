@@ -17,12 +17,12 @@ ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bea60b0de0cf21c1d23669543f3c1daa367aea7c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 5375f86e9ac9c26646e6e8560775d2dea3a2d1ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197925"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170966"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款 
 
@@ -40,7 +40,7 @@ ms.locfileid: "56197925"
 
 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 若要完成本快速入门中的方案，你需要：
 
@@ -136,7 +136,7 @@ ms.locfileid: "56197925"
 
 1. 在“新建”页上的“名称”文本框中，键入“要求 Isabella 接受 TOU”。
 
-    ![Name](./media/require-tou/71.png)
+    ![名称](./media/require-tou/71.png)
 
 2. 在“分配”部分中，单击“用户和组”。
 

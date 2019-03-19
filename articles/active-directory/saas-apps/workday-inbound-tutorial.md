@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e209fe0486b72c14912fd0af1b29c878e4b4545
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340104"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897616"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -93,7 +93,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 * [与多个 Active Directory 域集成](#integrating-with-multiple-active-directory-domains)
 * [计划 Workday 到 Active Directory 的用户属性映射和转换](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 在本教程中概述的方案假定已有以下各项：
 
@@ -153,7 +153,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 |   |   |
 | - | - |
 | 不是。 预配代理数 | 3（针对高可用性和故障转移） |
-| 不是。 Workday 到 AD 用户预配应用数 | 1 |
+| 不是。 Workday 到 AD 用户预配应用数 | 第 |
 
   ![方案 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -257,13 +257,13 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
     ![创建安全组](./media/workday-inbound-tutorial/wd_isu_03.png "创建安全组")
 2. 完成“创建安全组”任务。 
 
-  * Workday 中有两种类型的安全组：
-    * **不受约束：** 安全组的所有成员均可访问受该安全组保护的所有数据实例。
-    * **受约束：** 所有安全组成员均可对该安全组能访问的部分数据实例（行）进行基于上下文的访问。
-  * 请咨询 Workday 集成合作伙伴，从而为集成选择适当的安全组类型。
-  * 在知道组类型之后，请从“租户安全组类型”的下拉列表中选择“集成系统安全组(不受约束)”或“集成系统安全组(受约束)”。
+   * Workday 中有两种类型的安全组：
+     * **不受约束：** 安全组的所有成员均可访问受该安全组保护的所有数据实例。
+     * **受约束：** 所有安全组成员均可对该安全组能访问的部分数据实例（行）进行基于上下文的访问。
+   * 请咨询 Workday 集成合作伙伴，从而为集成选择适当的安全组类型。
+   * 在知道组类型之后，请从“租户安全组类型”的下拉列表中选择“集成系统安全组(不受约束)”或“集成系统安全组(受约束)”。
 
-    ![创建安全组](./media/workday-inbound-tutorial/wd_isu_04.png "创建安全组")
+     ![创建安全组](./media/workday-inbound-tutorial/wd_isu_04.png "创建安全组")
 
 3. 安全组创建成功后，将显示可以为安全组分配成员的页面。 将在上一步中新建的集成系统用户添加到此安全组中。 如果要使用受约束的安全组，则还需要选择相应的组织范围。
 
@@ -286,11 +286,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
    * 工作人员数据：当前人员配备信息
    * 工作人员数据：工作人员个人资料中的职称
 
-    ![域安全策略](./media/workday-inbound-tutorial/wd_isu_07.png "域安全策略")  
+     ![域安全策略](./media/workday-inbound-tutorial/wd_isu_07.png "域安全策略")  
 
-    ![域安全策略](./media/workday-inbound-tutorial/wd_isu_08.png "域安全策略") 
+     ![域安全策略](./media/workday-inbound-tutorial/wd_isu_08.png "域安全策略") 
 
-    单击“确定”。
+     单击“确定”。
 
 3. 在显示的报表中，选择“外部帐户预配”旁边显示的省略号 (...)，然后单击菜单选项“域”->“编辑安全策略权限”
 
@@ -428,7 +428,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 8. 按如下所述完成“管理员凭据”部分：
 
-   * **管理员用户名** - 输入 Workday 集成系统帐户的用户名并附加租户域名。 该值应类似于：username@tenant_name
+   * **管理员用户名** - 输入 Workday 集成系统帐户的用户名并附加租户域名。 它应类似于：**用户名\@租户名称**
 
    * **管理员密码 -** 输入 Workday 集成系统帐户的密码
 
@@ -438,8 +438,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
    * Active Directory 容器 - 输入默认情况下代理应在其中创建用户帐户的容器 DN。
         示例：OU=Standard Users,OU=Users,DC=contoso,DC=test
-> [!NOTE]
-> 如果未在属性映射中配置 parentDistinguishedName 属性，则此设置仅对用户帐户创建起作用。 此设置不用于用户搜索或更新操作。 整个域子树属于搜索操作的范围。
+     > [!NOTE]
+     > 如果未在属性映射中配置 parentDistinguishedName 属性，则此设置仅对用户帐户创建起作用。 此设置不用于用户搜索或更新操作。 整个域子树属于搜索操作的范围。
 
    * **通知电子邮件 -** 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
@@ -477,11 +477,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 > [!TIP]
 > 首次配置预配应用时，需要测试和验证属性映射和表达式，以确保它提供所需的结果。 Microsoft 建议使用“源对象范围”下的范围筛选器来测试 Workday 中少量测试用户的映射。 验证确保映射正常工作后，可删除筛选器，也可逐渐扩大范围以包含更多用户。
 
-3. 在“目标对象操作”字段中，可全局筛选要对 Active Directory 执行的操作。 “创建”和“更新”是最常见的操作。
+1. 在“目标对象操作”字段中，可全局筛选要对 Active Directory 执行的操作。 “创建”和“更新”是最常见的操作。
 
-4. 在“属性映射”部分中，可以定义 Workday 属性到 Active Directory 属性的各个映射。
+1. 在“属性映射”部分中，可以定义 Workday 属性到 Active Directory 属性的各个映射。
 
-5. 单击现有的属性映射可将其更新，单击屏幕底部的“添加新映射”可添加新的映射。 单个属性映射支持以下属性：
+1. 单击现有的属性映射可将其更新，单击屏幕底部的“添加新映射”可添加新的映射。 单个属性映射支持以下属性：
 
       * **映射类型**
 
@@ -508,7 +508,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
          * 仅创建期间 - 仅对用户创建操作应用此映射
 
-6. 要保存映射，请单击“属性-映射”部分顶部的“保存”。
+1. 要保存映射，请单击“属性-映射”部分顶部的“保存”。
 
    ![Azure 门户](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -524,8 +524,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **是** | 仅在创建时写入 |
 | **PreferredNameData**    |  cn    |   |   仅在创建时写入 |
-| **SelectUniqueValue( Join("@", Join(".",  \[FirstName\], \[LastName\]), "contoso.com"), Join("@", Join(".",  Mid(\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Join("@", Join(".",  Mid(\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | 仅在创建时写入 
-| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
+| **SelectUniqueValue (Join ("\@"，加入 ("。"， \[FirstName\]， \[LastName\])，"contoso.com")，联接 ("\@"，加入 ("。"、 Mid (\[FirstName\]，1，1(）， \[LastName\])，"contoso.com")，联接 ("\@"，加入 ("。"、 Mid (\[FirstName\]、 1、 2)， \[LastName\])，"contoso.com"))**   | userPrincipalName     |     | 仅在创建时写入 
+| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
 | **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | 创建 + 更新 |
 | **名字**   | givenName       |     |    创建 + 更新 |
 | **姓氏**   |   sn   |     |  创建 + 更新 |
@@ -677,7 +677,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 8. 按如下所述完成“管理员凭据”部分：
 
-   * **管理员用户名** – 输入 Workday 集成系统帐户的用户名，并附加租户域名。 此值应类似于：username@contoso4
+   * **管理员用户名** – 输入 Workday 集成系统帐户的用户名，并附加租户域名。 应如下所示：*用户名\@contoso4*
 
    * **管理员密码 -** 输入 Workday 集成系统帐户的密码
 
@@ -853,12 +853,12 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>如何确保预配代理能够与 Azure AD 租户进行通信且防火墙不阻止代理所需的端口？
 
-还可以通过从本地网络打开[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)，检查是否已打开所需的全部端口。 绿色复选标记越多表示复原能力越强。
+您还可以检查是否具有所需的端口打开通过打开的所有[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)从本地网络。 绿色复选标记越多表示复原能力越强。
 
 为了确保工具提供正确的结果，请务必：
 
 * 在浏览器中通过安装有预配代理的服务器打开该工具。
-* 确保适用于预配代理的所有代理或防火墙也应用到该页面。 为此，可在 Internet Explorer 中转到“设置”->“Internet 选项”->“连接”->“LAN 设置”。 在该页面上，你会看到“为 LAN 使用代理服务器”字段。 选中此框，将代理地址输入“地址”字段。
+* 确保适用于预配代理的所有代理或防火墙也应用到该页面。 这通过转到可以在 Internet Explorer**设置-> Internet 选项-> 连接-> LAN 设置**。 在该页面上，你会看到“为 LAN 使用代理服务器”字段。 选中此框，将代理地址输入“地址”字段。
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>能否将一个预配代理配置为预配多个 AD 域？
 
@@ -1064,7 +1064,7 @@ SelectUniqueValue(
 
 当检测到 Workday 中存在新员工时（假设使用员工 ID 21023），Azure AD 预配服务会尝试为该员工创建一个新的 AD 用户帐户，并在此过程中如下创建 4 个审核日志记录，：
 
-  [ ![审核日志创建操作](media/workday-inbound-tutorial/wd_audit_logs_02.png) ](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
+  [![审核日志创建 ops](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 单击任意审核日志记录时，会打开“活动详细信息”页面。 下面是“活动详细信息”页面上显示的每个日志记录类型的相关内容。
 
@@ -1132,7 +1132,7 @@ SelectUniqueValue(
 
 manager 属性是 AD 中的引用属性。 预配服务不会将 manager 属性设置为用户创建操作的一部分。 而是在为用户创建 AD 帐户之后，将 manager 属性设置为“更新”操作的一部分。 扩充上述示例，假设在 Workday 中激活了员工 ID 为“21451”的新员工，且新员工的经理 (21023) 已拥有 AD 帐户。 在该场景中，搜索用户 21451 的审核日志会显示 5 个条目。
 
-  [ ![经理更新](media/workday-inbound-tutorial/wd_audit_logs_03.png) ](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
+  [![管理器更新](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
 前 4 条记录与在用户创建操作期间介绍的记录类似。 第 5 条记录是与 manager 属性更新相关的导出。 日志记录显示 AD 帐户经理更新操作的结果，该操作通过经理的 objectGuid 属性执行。
 
@@ -1226,7 +1226,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 7. 将“操作”设置为 **Get_Workers**
 
-8.  单击“请求/响应”窗格下面的“配置”链接设置 Workday 凭据。 选中“身份验证”，并输入 Workday 集成系统帐户的用户名和密码。 请务必将用户名格式设置为 name@tenant，并保留选中“WS-Security UsernameToken”选项。
+8.  单击“请求/响应”窗格下面的“配置”链接设置 Workday 凭据。 选中“身份验证”，并输入 Workday 集成系统帐户的用户名和密码。 请务必设置名称作为用户名的格式\@租户，并保留**Ws-security UsernameToken**选项处于选中状态。
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 

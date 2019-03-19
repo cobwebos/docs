@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec119c9e11b21828b1b056fb97598ca7434cfc68
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9f987c6803f6ca538f4ae7470caaff597c9596c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197703"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>教程：Azure Active Directory 与 IMPAC Risk Manager 集成
 
@@ -35,7 +35,7 @@ IMPAC Risk Manager 与 Azure AD 的集成可提供以下优势：
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 IMPAC Risk Manager 的集成，需要以下各项：
 
@@ -114,6 +114,7 @@ IMPAC Risk Manager 与 Azure AD 的集成可提供以下优势：
     a. 在“标识符”文本框中，键入 IMPAC 提供的值
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：
+
     | 环境 | URL 模式 |
     | ---------------|--------------- |    
     | 生产 |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
@@ -127,6 +128,7 @@ IMPAC Risk Manager 与 Azure AD 的集成可提供以下优势：
     ![IMPAC Risk Manager 域和 URL 单一登录信息](./media/impacriskmanager-tutorial/tutorial_impacriskmanager_url1_new.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：
+    
     | 环境 | URL 模式 |
     | ---------------|--------------- |    
     | 生产 |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|

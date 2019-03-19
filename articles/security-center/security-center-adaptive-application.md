@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2019
 ms.author: monhaber
-ms.openlocfilehash: d92d9c444985989cdec3e94840ff21f4a79fe3ad
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: cbda94b8ceeaf7a225117e1ca73445135a32a243
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104918"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088989"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure 安全中心的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
@@ -60,33 +60,33 @@ ms.locfileid: "56104918"
 ### <a name="configure-a-new-application-control-policy"></a>配置新的应用程序控制策略
 1. 单击“已建议”选项卡会出现一个列表，其中列出了具有应用程序控制建议的组：
 
-  ![建议](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
+   ![建议](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
-  此列表包括：
+   此列表包括：
 
-  - 名称：订阅和组的名称。
-  - VM 数：组中虚拟机的数目
-  - **状态**：该建议的状态
-  - 严重性：建议的严重性级别
+   - 名称：订阅和组的名称。
+   - VM 数：组中虚拟机的数目
+   - **状态**：该建议的状态
+   - 严重性：建议的严重性级别
 
 2. 单击一个组，打开“创建应用程序控制规则”选项。
 
-  ![应用程序控制规则](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
+   ![应用程序控制规则](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
 
 3. 在“选择 VM”中查看建议的 VM 的列表，取消选中不需向其应用应用程序允许列表策略的 VM。 接下来，你将看到两个列表：
 
-  - **建议的应用程序**：此列表中的应用程序在此组中的 VM 上频繁出现，建议允许其运行。
-  - **更多应用程序**：此列表中的应用程序在此组中的 VM 上不太频繁地出现（这类应用程序也称为“可利用项”，详见下文），因此建议对其进行复查。
+   - **建议的应用程序**：此列表中的应用程序在此组中的 VM 上频繁出现，建议允许其运行。
+   - **更多应用程序**：此列表中的应用程序在此组中的 VM 上不太频繁地出现（这类应用程序也称为“可利用项”，详见下文），因此建议对其进行复查。
 
 4. 复查每个列表中的应用程序，并取消选中不希望应用规则的任何应用程序。 每个列表包括：
 
-  - **名称**：应用程序的证书信息或其完整路径
-  - **文件类型**：应用程序文件类型。 可以是 EXE、脚本、MSI 或这些类型的任意排列。
-  - **可利用**：一个警告图标，表示攻击者可能会利用特定应用程序绕过应用程序允许列表解决方案。 建议在这些应用程序审批前查看它们。
-  - **用户**：建议允许其运行应用程序的用户
+   - **名称**：应用程序的证书信息或其完整路径
+   - **文件类型**：应用程序文件类型。 可以是 EXE、脚本、MSI 或这些类型的任意排列。
+   - **可利用**：一个警告图标，表示攻击者可能会利用特定应用程序绕过应用程序允许列表解决方案。 建议在这些应用程序审批前查看它们。
+   - **用户**：建议允许其运行应用程序的用户
 
 5. 选择完以后，请选择“创建”。 <br>
-选择“创建”后，Azure 安全中心会自动基于 Windows 服务器 (AppLocker) 上可用的内置应用程序允许列表解决方案创建相应的规则。
+   选择“创建”后，Azure 安全中心会自动基于 Windows 服务器 (AppLocker) 上可用的内置应用程序允许列表解决方案创建相应的规则。
 
 > [!NOTE]
 > - 安全中心需要至少两周的数据才能创建基线并根据 VM 组填充唯一建议。 安全中心标准层的新客户会遇到一种行为，即 VM 组首先显示在“无建议”选项卡下。
@@ -98,23 +98,23 @@ ms.locfileid: "56104918"
 
 1. 若要编辑和监视使用应用程序允许列表策略配置的组，请返回到“自适应应用程序控制”页，在“VM 组”下选择“已配置”：
 
-  ![组](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
+   ![组](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
 
-  此列表包括：
+   此列表包括：
 
-  - **名称**：订阅和组的名称
-  - VM 数：组中虚拟机的数目
-  - **模式**：“审核”模式将记录运行未加入允许列表的应用程序的尝试；“强制”模式将阻止未加入允许列表的应用程序运行
-  - **警报**：任何当前的冲突
+   - **名称**：订阅和组的名称
+   - VM 数：组中虚拟机的数目
+   - **模式**：“审核”模式将记录运行未加入允许列表的应用程序的尝试；“强制”模式将阻止未加入允许列表的应用程序运行
+   - **警报**：任何当前的冲突
 
 2. 单击一个组，可在“编辑应用程序控制策略”页中进行更改。
 
-  ![保护](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
+   ![保护](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
 
 3. 在“保护模式”下，可以在以下选项之间进行选择：
 
-  - **审核**：在此模式下，应用程序控制解决方案不强制实施规则，只审核受保护 VM 上的活动。 如果在阻止应用在目标 VM 中运行之前需先观察总体行为，建议使用此模式。
-  - **强制**：在此模式下，应用程序控制解决方案强制实施规则，确保阻止不允许运行的应用程序。
+   - **审核**：在此模式下，应用程序控制解决方案不强制实施规则，只审核受保护 VM 上的活动。 如果在阻止应用在目标 VM 中运行之前需先观察总体行为，建议使用此模式。
+   - **强制**：在此模式下，应用程序控制解决方案强制实施规则，确保阻止不允许运行的应用程序。
 
    > [!NOTE]
    > -  在进一步通知之前，禁用“强制”保护模式。
@@ -124,14 +124,14 @@ ms.locfileid: "56104918"
 4. 可以在“策略扩展”下添加需要允许的任何应用程序路径。 添加这些路径后，除了已有的规则之外，安全中心还会更新所选 VMS 组中 VM 上的应用程序允许列表策略，并为这些应用程序创建适当的规则。
 
 5. 查看“最近警报”部分中列出的当前冲突。 单击要重定向到 Azure 安全中心内“警报”页面的每一行，并查看 Azure 安全中心在关联的 VM 上检测到的所有警报。
-  - **警报**：已记录的任何冲突。
-  - **VM 数量**：带有此类警报的虚拟机数量。
+   - **警报**：已记录的任何冲突。
+   - **VM 数量**：带有此类警报的虚拟机数量。
 
 6. 在“发布者允许列表规则”、“路径允许列表规则”和“哈希允许列表规则”下，可以根据规则集合类型，查看当前在组内的 VM 上配置了哪些应用程序允许列表规则。 对于每条规则，可以查看：
 
-  - **规则**：AppLocker 根据此参数检查应用程序是否能运行。
-  - **文件类型**：特定规则涵盖的文件类型。 可以是以下任意一种类型：EXE、脚本、MSI 或这些文件类型的任意排列。
-  - **用户**：允许运行应用程序允许列表规则所涵盖的应用程序的用户的名称或数量。
+   - **规则**：AppLocker 根据此参数检查应用程序是否能运行。
+   - **文件类型**：特定规则涵盖的文件类型。 可以是以下任意一种类型：EXE、脚本、MSI 或这些文件类型的任意排列。
+   - **用户**：允许运行应用程序允许列表规则所涵盖的应用程序的用户的名称或数量。
 
    ![允许列表规则](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 

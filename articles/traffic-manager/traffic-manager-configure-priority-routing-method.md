@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 52bfc73ad586bb3852e30a850d4ba50a113183d3
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 66c5bd9390d6fe0f26af66e18aed22c07a7da3e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140411"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003111"
 ---
 # <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>在流量管理器中配置优先级流量路由方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "50140411"
 
 ## <a name="to-configure-the-priority-traffic-routing-method"></a>配置优先级流量路由方法
 
-1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
+1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
 2. 在门户的搜索栏中，搜索“流量管理器配置文件”，并单击要为其配置路由方法的配置文件名称。
 3. 在“流量管理器配置文件”边栏选项卡中，检查要包含在配置中的云服务和网站是否都存在。
 4. 在“设置”部分，单击“配置”，并在“配置”边栏选项卡中完成如下操作：

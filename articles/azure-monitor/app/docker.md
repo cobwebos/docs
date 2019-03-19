@@ -10,16 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3ea7d6562965debda2c146fedab2ea9ab19f6cc8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 115e2d6b041ecc3f38a2a6438d90777da9660221
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077447"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996467"
 ---
-# <a name="monitor-docker-applications-in-application-insights"></a>在 Application Insights 中监视 Docker 应用程序
+# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>在 Application Insights （已弃用） 中监视 Docker 应用程序
+
+> [!NOTE]
+> 此解决方案已弃用。 若要深入了解我们当前对容器监控的投资，建议查看[适用于容器的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)。
 
 [Docker](https://www.docker.com/) 容器中的生命周期事件和性能计数器可以在 Application Insights 上绘制成图表。 在主机的容器中安装 [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) 映像，该映像会显示主机及其他映像的性能计数器。
 
@@ -29,10 +32,7 @@ ms.locfileid: "54077447"
 
 * 获取主机上运行的所有容器的相关生命周期遥测数据 - 启动、停止等。
 * 获取所有容器的性能计数器。 CPU、内存、网络使用量等。
-* 如果针对容器中运行的应用程序[安装了 Application Insights SDK](../../azure-monitor/app/java-live.md)，这些应用程序的所有遥测数据可用于识别容器和主机计算机的其他属性。 例如，如果在多台主机上运行某应用的多个实例，则可按主机轻松筛选应用遥测数据。
-
-> [!NOTE]
-> 此解决方案已弃用。 若要深入了解我们当前对容器监控的投资，建议查看[适用于容器的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)。
+* 如果针对容器中运行的应用程序[安装了 Application Insights SDK](../../azure-monitor/app/java-get-started.md)，这些应用程序的所有遥测数据可用于识别容器和主机计算机的其他属性。 例如，如果在多台主机上运行某应用的多个实例，则可按主机轻松筛选应用遥测数据。
 
 ## <a name="set-up-your-application-insights-resource"></a>设置 Application Insights 资源
 
@@ -40,7 +40,7 @@ ms.locfileid: "54077447"
    
     *应该使用哪种资源？* 如果主机上运行的应用由其他人开发，则需要[创建新的 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。 这是查看和分析遥测数据的位置。 （选择“常规”作为应用类型。）
    
-    但如果是应用的开发人员，我们建议[将 Application Insights SDK 添加到](../../azure-monitor/app/java-live.md)每个应用。 如果这些应用实际上都是单个业务应用程序的组件，则可以将所有应用配置为向一个资源发送遥测数据，并使用相一资源显示 Docker 生命周期和性能数据。 
+    但如果是应用的开发人员，我们建议[将 Application Insights SDK 添加到](../../azure-monitor/app/java-get-started.md)每个应用。 如果这些应用实际上都是单个业务应用程序的组件，则可以将所有应用配置为向一个资源发送遥测数据，并使用相一资源显示 Docker 生命周期和性能数据。 
    
     第三种情况是你开发了大多数应用，但使用不同的资源来显示其遥测数据。 此情况下，可能还需要为 Docker 数据创建不同的资源。
 

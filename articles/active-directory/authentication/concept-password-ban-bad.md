@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e2c3cfd509c9b0b77d0db00add31b58a07ce6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ccad4f9aaa85d528697c1bcf34e1b034eeabe9e1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206542"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996009"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
 
@@ -60,7 +60,7 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 | “0”  | “o” |
 | '1'  | “l” |
 | “$”  | “s” |
-| “@”  | “a” |
+| '\@'  | “a” |
 
 示例：假定已禁止密码“blank”，并且用户尝试将密码更改为“Bl@nK”。 即使未专门禁止“Bl@nk”，规范化过程也会将此密码转换为“blank”，这是一个禁止的密码。
 
@@ -96,7 +96,7 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 
 经过规范化处理后，此密码变为“contosoblank12”。 匹配过程发现此密码包含两个禁止密码：contoso 和 blank。 然后为此密码提供一个分数：
 
-[contoso] + [blank] = [1] + [2] = 4 分，由于此密码低于 5 分，因此将被拒绝。
+[contoso] + [空白] + [1] + [2] = 4 个点由于此密码是在 5 个点，将被拒绝。
 
 示例：用户将其密码更改为“ContoS0Bl@nkf9!”。
 

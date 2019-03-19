@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 48da92be0eef1154b490fb4829363598d6d66569
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 82183cefc11a1f3c39fadd639c988d8bf83fc109
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211423"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116583"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>群集 Resource Manager 体系结构概述
 Service Fabric 群集资源管理器是在群集中运行的中心服务。 它管理群集中服务所需的状态，对资源消耗和任何放置规则而言尤其如此。 
@@ -51,14 +51,16 @@ Service Fabric 群集资源管理器是在群集中运行的中心服务。 它�
 请看以下示意图：
 
 <center>
+
 ![资源平衡器体系结构][Image1]
 </center>
 
 在运行时，有很多更改可能会发生。 例如，假设某些服务使用的资源量发生更改，某些服务出现故障，某些节点加入和离开群集。 节点上的所有更改进行汇总，并定期发送到群集 Resource Manager 服务（1，2），它们在其中再次聚合、分析和存储。 每隔几秒钟，服务就查看更改，并确定是否需要任何操作 (3)。 例如，它可能注意到某些空节点已添加到群集。 因此，确定要将某些服务移到这些节点。 群集资源管理器可能还注意到特定节点已超载，或者某些服务已失败或删除，在其他位置释放资源。
 
-让我们看看下图，了解接下来发生的情况。 假设群集 Resource Manager 确定需要更改。 它与其他系统服务（尤其是故障转移管理器）进行协调，以进行必要的更改。 然后将所需命令发送到相应节点 (4)。 例如，假设资源管理器注意到 Node5 已超载，因此确定要将服务 B 从 Node5 移到 Node4。 重新配置 (5) 结束时，群集看起来像这样：
+让我们看看下图，了解接下来发生的情况。 假设群集 Resource Manager 确定需要更改。 它与其他系统服务（尤其是故障转移管理器）进行协调，进行必要的更改。 然后将所需命令发送到相应节点 (4)。 例如，假设资源管理器注意到 Node5 已超载，因此确定要将服务 B 从 Node5 移到 Node4。 重新配置 (5) 结束时，群集看起来像这样：
 
 <center>
+
 ![资源平衡器体系结构][Image2]
 </center>
 

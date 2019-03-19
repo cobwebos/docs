@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c09df2a15fbd0bdfdd1478fad587e6a18695002c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2c40a25cd2baebaaeedc012e8e9faff91b297f57
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207494"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082494"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -33,19 +33,19 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 ## <a name="how-to-find-license-assignment-errors"></a>如何查找许可证分配错误
 **查找许可证分配错误**
 
-   1. 若要查找特定组中处于错误状态的用户，请打开相应组的窗格。 如果有任何用户处于错误状态，会在“许可证”下显示通知。
+1. 若要查找特定组中处于错误状态的用户，请打开相应组的窗格。 如果有任何用户处于错误状态，会在“许可证”下显示通知。
 
    ![组，错误通知](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
-   2. 选择通知以打开所有受影响的用户列表。 可以分别选择每个用户以查看更多详细信息。
+2. 选择通知以打开所有受影响的用户列表。 可以分别选择每个用户以查看更多详细信息。
 
    ![组，处于错误状态的用户的列表](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-   3. 若要查找包含至少一个错误的所有组，请在“Azure Active Directory”边栏选项卡上，选择“许可证”，再选择“概述”。 如果有一些组需要关注，则会显示信息框。
+3. 若要查找包含至少一个错误的所有组，请在“Azure Active Directory”边栏选项卡上，选择“许可证”，再选择“概述”。 如果有一些组需要关注，则会显示信息框。
 
    ![概览，有关处于错误状态的组的信息](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
-   4. 选中该框可查看具有错误的所有组的列表。 可以选择每个组以了解更多详细信息。
+4. 选中该框可查看具有错误的所有组的列表。 可以选择每个组以了解更多详细信息。
 
    ![概览，具有错误的组的列表](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
 
@@ -104,9 +104,9 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 > [!TIP]
 > 若要查看是否有重复的代理地址，请针对 Exchange Online 执行以下 PowerShell cmdlet：
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
+> ```
+> Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> ```
 > 有关此问题的详细信息，请参阅 [Exchange Online 中的“代理地址已被使用”错误消息](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)。 此文还包含有关[如何使用远程 PowerShell 连接到 Exchange Online](https://technet.microsoft.com/library/jj984289.aspx) 的信息。 有关[如何在 Azure AD 中填充 proxyAddresses 属性](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)的详细信息，请参阅此文。
 
 为受影响的用户解决代理地址问题之后，请确保强制对组进行许可证处理，确保现在可以应用许可证。

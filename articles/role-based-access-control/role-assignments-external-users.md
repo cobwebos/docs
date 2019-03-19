@@ -16,19 +16,19 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 770a5e61f549a10c8b313ed4d137f56dda45769e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343854"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012021"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>使用 RBAC 管理外部用户对 Azure 资源的访问
 
 基于角色的访问控制 (RBAC) 可以为大型组织和中小企业提供更好的安全管理，与中小企业合作的外部协作者、供应商或自由职业者需要访问你环境中的特定资源，但不一定需要访问整个基础架构或任何与计费相关的区域。 RBAC 允许灵活拥有管理员帐户（订阅级别的服务管理员角色）管理的 Azure 订阅，并邀请多个用户在同一个订阅下工作，但不为他们分配任何管理权限。
 
 > [!NOTE]
-> 从 Office 365 管理员中心预配的 Office 365 订阅或 Azure Active Directory 许可证（例如：Azure Active Directory 访问权限）不符合 RBAC 的使用条件。
+> 从 Office 365 管理员中心预配的 Office 365 订阅或 Azure Active Directory 许可证（例如：从 Microsoft 365 管理中心内不符合 RBAC 的使用预配到 Azure Active Directory 的访问权限）。
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>在订阅范围分配 RBAC 角色
 

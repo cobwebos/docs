@@ -1,7 +1,7 @@
 ---
 title: 部署故障排除指南
 titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务规避、解决以及排除 AKS 和 ACI 的常见 Docker 部署错误。
+description: 了解如何解决和解决，并进行故障排除与 AKS 和 ACI 使用 Azure 机器学习服务的常见 Docker 部署错误。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 112fff011ebfedc1abf6981661da5fd4d97fc3d0
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 815be7400e0a0560ace7e07b317aeb25c2feacd5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267132"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450968"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Azure 机器学习服务 AKS 和 ACI 部署故障排除
 
@@ -43,7 +43,7 @@ ms.locfileid: "56267132"
 
 如果遇到任何问题，首先需要将部署任务（上述）分解为单独的步骤，以查出问题所在。 
 
-如果使用 `Webservice.deploy` API 或 `Webservice.deploy_from_model` API，该操作特别有用，因为这些功能可将上述步骤合并成单个操作。 通常这些 API 非常方便，但在通过将其替换为下述 API 调用进行故障排除时，分解步骤非常有用。
+此功能非常有用，如果使用的`Webservice.deploy`API，或`Webservice.deploy_from_model`API，因为这些功能组合在一起的上述步骤转换为单一操作。 通常这些 Api 非常方便，但它可帮助分解步骤，通过将它们替换为进行故障排除时以下 API 调用。
 
 1. 注册模型。 下面是一些示例代码：
 
@@ -101,9 +101,54 @@ for name, img in ws.images.items():
 ```
 此映像日志 URI 是指向 Azure blob 存储中存储的日志文件的 SAS URL. 只需复制 URI 并将其粘贴到浏览器窗口，即可下载和查看日志文件。
 
+### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure 密钥保管库访问策略和 Azure 资源管理器模板
+
+图像生成也可能因 Azure 密钥保管库上的访问策略的问题。 这可以使用 Azure 资源管理器模板创建工作区和关联的资源 （包括 Azure 密钥保管库），多个时间时发生。 例如，使用模板多次使用相同的参数作为持续集成和部署管道的一部分。
+
+通过模板的大多数资源创建操作是幂等的但密钥保管库中清除的访问策略每次使用模板。 这将中断访问到密钥保管库的任何现有的工作区与正在使用它。 这会导致错误时尝试创建新的映像。 可以收到的错误的示例如下：
+
+__门户__：
+```text
+Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
+```
+
+__SDK__:
+```python
+image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
+Creating image
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
+    resp.raise_for_status()
+  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
+    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
+azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
+Response Code: 500
+Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
+Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
+```
+
+__CLI__：
+```text
+ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
+GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
+\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
+b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
+```
+
+若要避免此问题，我们建议以下方法之一：
+
+* 不会部署该模板不止一次为相同的参数。 或使用模板来重新创建它们之前删除现有的资源。
+* 检查密钥保管库访问策略和用于设置`accessPolicies`模板的属性。
+* 检查是否已存在的密钥保管库资源。 如果是这样，不重新创建它通过模板。 例如，添加一个参数，可用于禁用创建密钥保管库资源，如果它已存在。
 
 ## <a name="service-launch-fails"></a>服务启动失败
-成功生成映像后，系统会尝试启动 ACI 或 AKS 中的容器，具体取决于你的部署配置。 通常建议先尝试 ACI 部署，因为它是更简单的单容器部署。 通过这种方式，可以排除任何特定于 AKS 的问题。
+成功生成映像后，系统会尝试启动 ACI 或 AKS 中的容器，具体取决于你的部署配置。 建议先尝试使用 ACI 部署，因为它是更简单的单容器部署。 通过这种方式，可以排除任何特定于 AKS 的问题。
 
 作为容器启动过程的一部分，评分脚本中的 `init()` 函数由系统调用。 如果 `init()` 函数中存在未捕获的异常，则可能在错误消息中看到 CrashLoopBackOff 错误。 以下是一些有助于解该问题的提示。
 
@@ -222,6 +267,47 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 **注意**：通过 `run(input_data)` 调用返回错误消息应仅用于调试目的。 出于安全原因，在生产环境中执行此操作可能并非上策。
+
+## <a name="http-status-code-503"></a>HTTP 状态代码 503
+
+Azure Kubernetes 服务部署支持自动缩放，允许的副本，以添加以支持额外的负载。 但是，自动缩放程序设计为处理**逐步**负载中的更改。 如果每秒的请求中收到较大的峰值，客户端可能会收到 HTTP 状态代码 503。
+
+有两件事情可以帮助防止 503 状态代码：
+
+* 更改的自动缩放的利用率级别创建新的副本。
+    
+    默认情况下，设置自动缩放目标利用率为 70%，这意味着该服务可以处理剧增的每秒 (RPS) 最多 30%的请求数。 可以通过设置调整利用率目标`autoscale_target_utilization`到较低的值。
+
+    > [!IMPORTANT]
+    > 此更改不会导致要创建的副本*更快地*。 相反，它们是在较低的利用率阈值创建。 而不是等待，直到服务利用率的 70%时，将值更改为 30%会导致副本以 30%的利用率发生时创建。
+    
+    如果 web 服务已在使用当前的最大副本，并且你仍看到 503 状态代码，增加`autoscale_max_replicas`值以增加最大副本数。
+
+* 更改副本的最小数目。 增加最小副本提供了更大的池来处理传入的负载高峰。
+
+    若要增加的最小副本数，请设置`autoscale_min_replicas`到较高的值。 您可以通过使用下面的代码，计算所需的副本到你的项目将值替换特定的值：
+
+    ```python
+    from math import ceil
+    # target requests per second
+    targetRps = 20
+    # time to process the request (in seconds)
+    reqTime = 10
+    # Maximum requests per container
+    maxReqPerContainer = 1
+    # target_utilization. 70% in this example
+    targetUtilization = .7
+
+    concurrentRequests = targetRps * reqTime / targetUtilization
+
+    # Number of container replicas
+    replicas = ceil(concurrentRequests / maxReqPerContainer)
+    ```
+
+    > [!NOTE]
+    > 如果收到请求的峰值不是新的最小副本可以处理更大，可能会再次收到 503s年。 例如，与服务增加的流量，你可能需要增加最小副本。
+
+有关详细信息设置`autoscale_target_utilization`， `autoscale_max_replicas`，并`autoscale_min_replicas`有关，请参阅[AksWebservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py)模块引用。
 
 
 ## <a name="next-steps"></a>后续步骤

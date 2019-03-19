@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 02/08/2019
+ms.topic: conceptual
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 34a6676444c4723f64264e41cb0e3c4842486bf6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 2d55af3e9ed3ad64f9ba7726799b31acb6b48580
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003085"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884466"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容  
 
@@ -27,7 +27,7 @@ ms.locfileid: "56003085"
 
 本教程介绍了在 Azure 媒体服务 .NET SDK 中使用 Azure 媒体服务 (AMS) 应用程序实施基本的视频点播 (VoD) 内容传送服务的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 以下是完成本教程所需具备的条件：
 
@@ -38,7 +38,7 @@ ms.locfileid: "56003085"
 
 本教程包括以下任务：
 
-1. 启动流式处理终结点（使用 Azure 门户）
+1. 启动流式处理终结点（使用 Azure 门户）。
 2. 创建和配置 Visual Studio 项目。
 3. 连接到媒体服务帐户。
 2. 上传视频文件。
@@ -47,7 +47,7 @@ ms.locfileid: "56003085"
 5. 播放内容。
 
 ## <a name="overview"></a>概述
-本教程会引导完成使用用于 .NET 的 Azure 媒体服务 (AMS) SDK 实施视频点播 (VoD) 内容传送应用程序的步骤。
+本教程将引导你完成使用用于 .NET 的 Azure 媒体服务 (AMS) SDK 实施视频点播 (VoD) 内容传送应用程序的步骤。
 
 本教程介绍了基本的媒体服务工作流，以及进行媒体服务开发需要用到的最常见编程对象和任务。 完成本教程后，你就能够流式传输或渐进下载你已上传、编码和下载的示例媒体文件。
 
@@ -59,7 +59,7 @@ ms.locfileid: "56003085"
 
 <a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
 
-可以在[此处](https://media.windows.net/API/$metadata?api-version=2.15)查看整个模型。  
+可在 [此处](https://media.windows.net/API/$metadata?api-version=2.15)查看完整模型。  
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>使用 Azure 门户启动流式处理终结点
 
@@ -81,8 +81,8 @@ ms.locfileid: "56003085"
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
-2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），并复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\VideoFiles”路径。
+1. 设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），并复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，使用了“C:\VideoFiles”路径。
 
 ## <a name="connect-to-the-media-services-account"></a>连接到媒体服务帐户
 
@@ -371,7 +371,7 @@ MPEG DASH
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
 
-要流式传输视频，请将 URL 粘贴到 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)的 URL 文本框中。
+要流式传输视频，请将 URL 粘贴到 [Azure 媒体服务播放器](https://amsplayer.azurewebsites.net/azuremediaplayer.html)的 URL 文本框中。
 
 要测试渐进式下载，请将 URL 粘贴到浏览器（例如 Internet Explorer、Chrome 或 Safari）中。
 
@@ -397,5 +397,5 @@ MPEG DASH
 
 
 <!-- URLs. -->
-[Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
-[Portal]: http://portal.azure.com/
+[Web Platform Installer]: https://go.microsoft.com/fwlink/?linkid=255386
+[Portal]: https://portal.azure.com/

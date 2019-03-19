@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: fa51290623f68e94db9cb1b28cd69c88b5d5cf18
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 19708e5e7d55073da5afb6b3751c96e587faf2c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000057"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877439"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒体分析检测面部和情绪
 ## <a name="overview"></a>概述
@@ -53,14 +53,14 @@ ms.locfileid: "56000057"
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
-人脸检测器使用分片（元数据可以分解为基于时间的区块，可以只下载需要的部分）和分段（可以在事件数过于庞大的情况下对事件进行分解）技术。 一些简单的计算可帮助你转换数据。 例如，如果事件从 6300（刻度）开始，其时间刻度为 2997（刻度/秒），帧速率为 29.97（帧/秒），那么：
+人脸检测器使用分片（元数据可以分解为基于时间的区块，可以只下载需要的部分）和分段（可以在事件数过于庞大的情况下对事件进行分解）技术。 一些简单的计算可帮助转换数据。 例如，如果事件从 6300（刻度）开始，其时间刻度为 2997（刻度/秒），帧速率为 29.97（帧/秒），那么：
 
 * 开始时间/时间刻度 = 2.1 秒
 * 秒数 x 帧速率 = 63 帧
 
 ## <a name="face-detection-input-and-output-example"></a>人脸检测输入和输出示例
 ### <a name="input-video"></a>输入视频
-[输入视频](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[输入视频](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>任务配置（预设）
 使用 **Azure Media Face Detector** 创建任务时，必须指定配置预设。 以下配置预设仅适用于人脸检测。
@@ -75,7 +75,7 @@ ms.locfileid: "56000057"
 ```
 
 #### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 说明 |
+| 属性名称 | 描述 |
 | --- | --- |
 | Mode |快速 - 处理速度快，但准确度较低（默认）。|
 
@@ -132,7 +132,7 @@ ms.locfileid: "56000057"
 
 ## <a name="emotion-detection-input-and-output-example"></a>情绪检测输入和输出示例
 ### <a name="input-video"></a>输入视频
-[输入视频](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[输入视频](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>任务配置（预设）
 使用 **Azure Media Face Detector** 创建任务时，必须指定配置预设。 以下配置预设指定基于情绪检测创建 JSON。
@@ -150,7 +150,7 @@ ms.locfileid: "56000057"
 
 
 #### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 说明 |
+| 属性名称 | 描述 |
 | --- | --- |
 | Mode |Faces：仅人脸检测。<br/>PerFaceEmotion：独立返回每个人脸检测的情绪。<br/>AggregateEmotion：返回帧中所有面部的平均情绪值。 |
 | AggregateEmotionWindowMs |在已选择 AggregateEmotion 模式时使用。 指定用于生成每个聚合结果的视频的长度，以毫秒为单位。 |
@@ -162,7 +162,7 @@ ms.locfileid: "56000057"
 || 默认值 | 最大值 | 最小值 |
 |--- | --- | --- | --- |
 | AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |1 |0.25|
+| AggregateEmotionIntervalMs |0.5 |第 |0.25|
 
 ### <a name="json-output"></a>JSON 输出
 聚合情绪的 JSON 输出（已截断）：
@@ -522,5 +522,5 @@ namespace FaceDetection
 ## <a name="related-links"></a>相关链接
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
-[Azure 媒体分析演示](http://amslabs.azurewebsites.net/demos/Analytics.html)
+[Azure 媒体分析演示](https://amslabs.azurewebsites.net/demos/Analytics.html)
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: b35bec31035c0219bf34a31cb34e20f7dc3a72c5
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
-ms.translationtype: HT
+ms.openlocfilehash: b9c707dcc1628f685661f88aaed29612465a5469
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397023"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010074"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>如何通过 Xamarin 使用 Blob 存储
 
@@ -24,19 +24,19 @@ Xamarin 使开发人员能够通过共享的 C# 代码库来使用其本机用�
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="create-a-new-xamarin-application"></a>创建新的 Xamarin 应用程序
-对于本教程，我们将创建面向 Android、iOS 和 Windows 的应用。 此应用只需将创建一个容器，并将 Blob 上传到此容器中。 我们将使用 Windows 上的 Visual Studio，这些知识同样适用于通过 macOS 上的 Xamarin Studio 创建应用的情况。
+本教程创建面向 Android、iOS 和 Windows 的应用。 此应用只需将创建一个容器，并将 Blob 上传到此容器中。 我们会使用 Windows 上的 Visual Studio，这些知识同样适用于通过 macOS 上的 Xamarin Studio 创建应用的情况。
 
 请按以下步骤创建应用程序：
 
 1. 下载并安装 [Xamarin for Visual Studio](https://www.xamarin.com/download)（如果尚未这样做）。
-2. 打开 Visual Studio，创建空白应用（本机可移植）：“文件”>“新建”>“项目”>“跨平台”>“空白应用(本机可移植)”。
+2. 打开 Visual Studio 中，并创建空白应用 （本机可移植）：**文件 > 新建 > 项目 > 跨平台 > 空白应用 （本机可移植）**。
 3. 右键单击“解决方案资源管理器”窗格中的解决方案，并选择“为解决方案管理 NuGet 包”。 搜索 **WindowsAzure.Storage**，并将最新稳定版本安装到解决方案中的所有项目。
 4. 生成并运行项目。
 
 现在，应该有了这样一个应用程序：单击某个按钮即可让计数器递增。
 
 ## <a name="create-container-and-upload-blob"></a>创建容器并上传 Blob
-接下来，需要在 `(Portable)` 项目中，向 `MyClass.cs` 添加一些代码。 此代码将创建一个容器并在其中上传 Blob。 `MyClass.cs` 应如下所示：
+接下来，需要在 `(Portable)` 项目中，向 `MyClass.cs` 添加一些代码。 此代码创建一个容器并在其中上传 Blob。 `MyClass.cs` 应如下所示：
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -77,7 +77,7 @@ namespace XamarinApp
 
 请确保将“your_account_name_here”和“your_account_key_here”替换为实际帐户名和帐户密钥。 
 
-iOS、Android 和 Windows Phone 项目都包含对可移植项目的引用 - 这意味着，可在一个位置编写所有共享代码，并在所有项目之间使用该代码。 现在，可将以下代码行添加到每个项目，开始利用此功能：`MyClass.performBlobOperation()`
+iOS、Android 和 Windows Phone 项目都包含对可移植项目的引用 - 这意味着，可在一个位置编写所有共享代码，并在所有项目之间使用该代码。 现在可以向每个项目添加以下代码行，进行充分利用： `MyClass.performBlobOperation()`
 
 ### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
@@ -155,7 +155,7 @@ namespace XamarinApp.iOS
             public override void DidReceiveMemoryWarning ()
             {
                 base.DidReceiveMemoryWarning ();
-                // Release any cached data, images, etc that aren't in use.
+                // Release any cached data, images, etc. that aren't in use.
             }
         }
     }
@@ -168,7 +168,7 @@ namespace XamarinApp.iOS
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace XamarinApp.WinPhone
 {
@@ -229,9 +229,9 @@ namespace XamarinApp.WinPhone
 ```
 
 ## <a name="run-the-application"></a>运行应用程序
-现在可以在 Android 或 Windows Phone 仿真程序中运行此应用程序。 还可以在 iOS 仿真程序中运行此应用程序，但需要一台 Mac。 有关如何执行此操作的具体说明，请阅读[将 Visual Studio 连接到 Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/) 文档
+现在可以在 Android 或 Windows Phone 仿真程序中运行此应用程序。 还可以在 iOS 仿真程序中运行此应用程序，但需要一台 Mac。 有关如何执行此操作的具体说明，请阅读 [connecting Visual Studio to a Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-运行应用后，会在存储帐户中创建容器 `mycontainer`。 它应该包含 Blob `myblob`，Blob 中包含文本 `Hello, world!`。 可以使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)对此进行验证。
+运行应用后，会在存储帐户中创建容器 `mycontainer`。 它应该包含 Blob `myblob`，Blob 中包含文本 `Hello, world!`。 可以使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)对此进行验证。
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了如何在 Xamarin 中创建使用 Azure 存储的跨平台应用程序，特别介绍了 Blob 存储中的一个方案。 但是，还可以进行更多操作，不光是使用 Blob 存储，还可以使用表、文件和队列存储。 请参阅以下文章以了解更多信息：

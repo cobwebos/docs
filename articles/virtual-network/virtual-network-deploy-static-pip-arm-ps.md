@@ -15,32 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: jdial
-ms.openlocfilehash: f5ddc4a85148cee3e8c8b4d2bf1955f233ebdbc1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 422a48a3671974248e9e3258be16d3537713f762
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089992"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>使用 PowerShell 创建具有静态公用 IP 地址的虚拟机
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 可以创建具有静态公用 IP 地址的虚拟机。 使用公共 IP 地址可以通过 Internet 来与虚拟机通信。 分配静态公共 IP 地址而非动态地址可以确保地址永远不会改变。 详细了解[静态公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#allocation-method)。 若要将分配给现有虚拟机的公共 IP 地址从动态更改为静态，或者要使用专用 IP 地址，请参阅[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)。 公共 IP 地址会产生[少许费用](https://azure.microsoft.com/pricing/details/ip-addresses)，可为每个订阅使用的公共 IP 地址数有[限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-可以从本地计算机或通过使用 Azure Cloud Shell 完成以下步骤。 若要使用本地计算机，请确保[安装了 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure Cloud Shell，请在接下来出现的任何命令框的右上角选择“试用”。 Cloud Shell 会将你登录到 Azure。
+可以从本地计算机或通过使用 Azure Cloud Shell 完成以下步骤。 若要使用本地计算机，请确保[安装了 Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure Cloud Shell，请在接下来出现的任何命令框的右上角选择“试用”。 Cloud Shell 会将你登录到 Azure。
 
-1. 如果使用 Cloud Shell，请跳到步骤 2。 打开命令会话并使用 `Connect-AzureRmAccount` 登录到 Azure。
-2. 使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：
+1. 如果使用 Cloud Shell，请跳到步骤 2。 打开命令会话并使用 `Connect-AzAccount` 登录到 Azure。
+2. 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：
 
    ```azurepowershell-interactive
-   New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+   New-AzResourceGroup -Name myResourceGroup -Location EastUS
    ```
 
-3. 使用 [New-AzureRmVM](/powershell/module/AzureRM.Compute/New-AzureRmVM) 命令创建虚拟机。 `-AllocationMethod "Static"` 选项向虚拟机分配静态公用 IP 地址。 以下示例使用名为 *myPublicIpAddress* 的静态、基本 SKU 公用 IP 地址创建 Windows Server 虚拟机。 出现提示时，提供要用作虚拟机的登录凭据的用户名和密码：
+3. 创建具有的虚拟机[New-azvm](/powershell/module/az.Compute/New-azVM)命令。 `-AllocationMethod "Static"` 选项向虚拟机分配静态公共 IP 地址。 以下示例使用名为 *myPublicIpAddress* 的静态、基本 SKU 公用 IP 地址创建 Windows Server 虚拟机。 出现提示时，提供要用作虚拟机的登录凭据的用户名和密码：
 
    ```azurepowershell-interactive
-   New-AzureRmVm `
+   New-AzVm `
      -ResourceGroupName "myResourceGroup" `
      -Name "myVM" `
      -Location "East US" `
@@ -50,10 +52,10 @@ ms.locfileid: "54426516"
 
    如果公用 IP 地址必须是标准 SKU，则必须在单独的步骤中[创建公用 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)、[创建网络接口](virtual-network-network-interface.md#create-a-network-interface)、[向网络接口分配公用 IP 地址](virtual-network-network-interface-addresses.md#add-ip-addresses)，然后[使用网络接口创建虚拟机](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)。 详细了解[公用 IP 地址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虚拟机将添加到公共 Azure 负载均衡器的后端池，则虚拟机公共 IP 地址的 SKU 必须与负载均衡器的公共 IP 地址的 SKU 相匹配。 有关详细信息，请参阅 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus)。
 
-4. 使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 查看分配的公用 IP 地址并确认它创建为静态地址：
+4. 查看分配的公共 IP 地址，并确认它与创建静态地址，作为[Get AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 
    ```azurepowershell-interactive
-   Get-AzureRmPublicIpAddress `
+   Get-AzPublicIpAddress `
      -ResourceGroupName "myResourceGroup" `
      -Name "myPublicIpAddress" `
      | Select "IpAddress", "PublicIpAllocationMethod" `
@@ -63,14 +65,14 @@ ms.locfileid: "54426516"
    Azure 从你在其中创建虚拟机的区域使用的地址中分配了一个公共 IP 地址。 对于 Azure [公有](https://www.microsoft.com/download/details.aspx?id=56519)云、[美国政府](https://www.microsoft.com/download/details.aspx?id=57063)云、[中国](https://www.microsoft.com/download/details.aspx?id=57062)云和[德国](https://www.microsoft.com/download/details.aspx?id=57064)云，可以下载范围（前缀）的列表。
 
 > [!WARNING]
-不要修改虚拟机操作系统中的 IP 地址设置。 操作系统不知道 Azure 公共 IP 地址。 虽然可以向操作系统添加专用 IP 地址设置，但除非必要，否则我们建议不要这样做，而只能阅读[向操作系统添加专用 IP 地址](virtual-network-network-interface-addresses.md#private)之后才执行此操作。
+> 不要修改虚拟机操作系统中的 IP 地址设置。 操作系统不知道 Azure 公共 IP 地址。 虽然可以向操作系统添加专用 IP 地址设置，但除非必要，否则我们建议不要这样做，而只能阅读[向操作系统添加专用 IP 地址](virtual-network-network-interface-addresses.md#private)之后才执行此操作。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 将其删除：
+如果不再需要可以使用[删除 AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除资源组和所有它包含的资源：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤

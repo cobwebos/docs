@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: d496801894560310a4225eae8a32fced52bcc428
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.openlocfilehash: 0a2d964d60d13f0e71de5776112a4edbe3cdcc45
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993912"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "47063534"
 
 ## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
 
-安全身份验证要求为应用定义新的 URL 方案。 这允许身份验证系统在身份验证过程完成后，重定向回应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
+安全身份验证要求为应用定义新的 URL 方案。 此方案允许在完成身份验证过程后，身份验证系统重定向到应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
 1. 在 [Azure 门户]中，选择应用服务。
 
@@ -45,10 +45,10 @@ ms.locfileid: "47063534"
 
 5. 单击“ **保存**”。
 
-## <a name="permissions"></a>将权限限制为已经过身份验证的用户
+## <a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目。 验证在应用程序启动后是否引发状态代码为 401（“未授权”）的未处理异常。 发生此异常的原因是应用尝试以未经身份验证的用户身份访问移动应用后端。 *TodoItem* 表现在要求身份验证。
+在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目。 验证在应用启动后是否引发状态代码为 401（“未授权”）的未处理异常。 发生此异常的原因是应用尝试以未经身份验证的用户身份访问移动应用后端。 *TodoItem* 表现在要求身份验证。
 
 接下来，更新客户端应用，以使用经过身份验证的用户从移动应用后端请求资源。
 
@@ -57,7 +57,7 @@ ms.locfileid: "47063534"
 
 1. 将以下代码添加到 **TodoActivity** 类：
    
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
         private async Task<bool> Authenticate()
         {
@@ -96,7 +96,7 @@ ms.locfileid: "47063534"
     此代码创建一个对用户进行身份验证的新方法和一个针对新“登录”按钮的方法处理程序。 上面示例代码中的用户使用 Facebook 登录进行身份验证。 对话框用于在进行身份验证后显示用户 ID。
    
    > [!NOTE]
-   > 如果使用的标识提供程序不是 Facebook，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：*MicrosoftAccount*、*Twitter*、*Google* 或 *WindowsAzureActiveDirectory*。
+   > 如果使用的 Facebook 以外的其他标识提供程序，将更改传递给的值**LoginAsync**上面为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory。
    > 
    > 
 2. 在 **OnCreate** 方法中，删除或注释掉以下代码行：

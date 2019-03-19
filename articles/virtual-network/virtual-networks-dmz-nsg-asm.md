@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: HT
+ms.openlocfilehash: 115a459c6a9e4ea96931c89272a49396f0656258
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23125495"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993348"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>示例 1 - 将 NSG 与经典 PowerShell 配合使用构建简单的外围网络
 [返回安全边界最佳实践页面][HOME]
@@ -30,7 +30,7 @@ ms.locfileid: "23125495"
 > 
 >
 
-本示例创建一个基本的外围网络，其中包含四个 Windows 服务器和网络安全组。 本示例将说明每个相关 PowerShell 命令，让读者更加深入地了解每个步骤。 另外还提供了“流量方案”部分，让你逐步深入了解流量如何流经外围网络的各个防御层。 最后的“参考”部分提供了完整的代码，并说明如何构建此环境来测试和试验各种方案。 
+本示例创建一个基本的外围网络，其中包含四个 Windows 服务器和网络安全组。 本示例介绍了每个相关的 PowerShell 命令，帮助用户更好地理解每一步。 另外还提供了“流量方案”部分，让你逐步深入了解流量如何流经外围网络的各个防御层。 最后的“参考”部分提供了完整的代码，并说明如何构建此环境来测试和试验各种方案。 
 
 ![使用 NSG 的入站外围网络][1]
 
@@ -98,15 +98,15 @@ ms.locfileid: "23125495"
    * “优先级”设置流量的评估顺序。 编号越低，优先级越高。 将某个规则应用于特定的流量后，不再处理其他规则。 因此，如果优先级为 1 的规则允许流量，优先级为 2 的规则拒绝流量，并将这两个规则同时应用于流量，则允许流量流动（规则 1 的优先级更高，因此将发生作用，并且不再应用其他规则）。
    * “Action”表示是要阻止还是允许受此规则影响的流量。
 
-    ```PowerShell    
-    Get-AzureNetworkSecurityGroup -Name $NSGName | `
+     ```PowerShell    
+     Get-AzureNetworkSecurityGroup -Name $NSGName | `
         Set-AzureNetworkSecurityRule -Name "Enable Internal DNS" `
         -Type Inbound -Priority 100 -Action Allow `
         -SourceAddressPrefix VIRTUAL_NETWORK -SourcePortRange '*' `
         -DestinationAddressPrefix $VMIP[4] `
         -DestinationPortRange '53' `
         -Protocol *
-    ```
+     ```
 
 3. 此规则允许 RDP 流量从 Internet 发往绑定的子网中任一服务器上的 RDP 端口。 此规则使用两种特殊地址前缀：“VIRTUAL_NETWORK”和“INTERNET”。 使用这些标记可以轻松处理较大类别的地址前缀。
 
@@ -257,7 +257,7 @@ ms.locfileid: "23125495"
 ## <a name="conclusion"></a>结束语
 本示例是一种隔离后端子网与输入流量的方式，相当直截了当。
 
-可以在[此处][HOME]找到更多示例和网络安全边界的概述。
+可以在 [此处][HOME]找到更多示例和网络安全边界的概述。
 
 ## <a name="references"></a>参考
 ### <a name="main-script-and-network-config"></a>主脚本和网络配置
@@ -544,7 +544,7 @@ Else { Write-Host "Validation passed, now building the environment." -Foreground
 使用更新的位置保存此 xml 文件，并将此文件的链接添加到上述脚本中的 $NetworkConfigFile 变量。
 
 ```XML
-<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
   <VirtualNetworkConfiguration>
     <Dns>
       <DnsServers>
@@ -576,7 +576,7 @@ Else { Write-Host "Validation passed, now building the environment." -Foreground
 ```
 
 #### <a name="sample-application-scripts"></a>示例应用程序脚本
-如果需要为其安装示例应用程序和其他外围网络示例，以下链接提供了所需示例：[应用程序脚本示例][SampleApp]
+如果希望为此外围网络示例以及其他外围网络示例安装一个示例应用程序，可以使用以下链接上提供的应用程序：[示例应用程序脚本][SampleApp]
 
 ## <a name="next-steps"></a>后续步骤
 * 更新并保存 XML 文件

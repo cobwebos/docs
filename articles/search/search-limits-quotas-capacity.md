@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5187052316e229273aa49eb784bf200c0f16a0f7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: b97c84a7a5d7732c8c895fd3074734762e5e040c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165381"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780399"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
@@ -46,7 +46,7 @@ ms.locfileid: "55165381"
 | -------- | ---- | ------------------- | --- | --- | --- | --- |
 | 最大索引数 |3 |5 或 15 |50 |200 |200 |每个分区 1000，或者每个服务 3000 |
 | 每个索引的最大字段 |1000 |100 |1000 |1000 |1000 |1000 |
-| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |1 |1 |1 |1 |1 |1 |
+| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |第 |1 |1 |1 |1 |第 |
 | 每个索引的最大[计分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)数 |100 |100 |100 |100 |100 |100 |
 | 每个配置文件的最大函数数量 |8 |8 |8 |8 |8 |8 |
 

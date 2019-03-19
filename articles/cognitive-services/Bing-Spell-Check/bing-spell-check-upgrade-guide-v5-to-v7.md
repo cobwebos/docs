@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: conceptual
-ms.date: 06/21/2016
+ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 402fabc41908afc35396064ef4e518fc3c231052
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: b19681fd1ad70985bccd375931f5d5801f153aa8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866349"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886343"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>拼写检查 API 升级指南
 
@@ -38,7 +38,7 @@ ms.locfileid: "55866349"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。  
   
-|代码|SubCode|说明
+|代码|SubCode|描述
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，响应就会包含这些错误。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。

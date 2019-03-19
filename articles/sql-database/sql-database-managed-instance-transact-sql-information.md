@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 942b1423583f663f22ced6ea8399409778b2f6de
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.date: 03/13/2019
+ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455121"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903124"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -26,6 +26,7 @@ ms.locfileid: "56455121"
 ![迁移](./media/sql-database-managed-instance/migration.png)
 
 由于两者的语法和行为仍有一些差异，本文汇总并解释了这些差异。 <a name="Differences"></a>
+
 - [可用性](#availability)包括 [Always-On](#always-on-availability) 和[备份](#backup)方面的差异
 - [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credential)、[加密提供程序](#cryptographic-providers)、[登录名/用户名](#logins--users)、[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异
 - [配置](#configuration)包括[缓冲池扩展](#buffer-pool-extension)、[排序规则](#collation)、[兼容性级别](#compatibility-levels)、[数据库镜像](#database-mirroring)、[数据库选项](#database-options)、[SQL Server 代理](#sql-server-agent)、[表选项](#tables)方面的差异
@@ -61,10 +62,16 @@ ms.locfileid: "56455121"
 限制：  
 
 - 使用托管实例，可以将实例数据库备份到最多包含 32 个带区的备份（如果使用备份压缩，这种方法对不超过 4TB 的数据库够用）。
-- 最大备份条带大小为 195 GB（最大 Blob 大小）。 在 backup 命令中增加条带数目可以减小单个条带的大小，并保持在此限制范围内。
+- 最大备份条带大小使用`BACKUP`托管实例中的命令为 195 GB （最大 blob 大小）。 在 backup 命令中增加条带数目可以减小单个条带的大小，并保持在此限制范围内。
 
-> [!TIP]
-> 若要在本地解决此限制，请备份到 `DISK` 而不是 `URL`，将备份文件上传到 Blob，然后还原。 由于使用了不同的 Blob 类型，因此还原操作支持较大的文件。  
+    > [!TIP]
+    > 若要解决此限制，从 SQL Server 的本地环境中或在虚拟机中备份数据库时，请执行以下操作：
+    >
+    > - 备份到`DISK`而不是备份到 `URL`
+    > - 备份文件上传到 Blob 存储
+    > - 还原到托管实例
+    >
+    > `Restore`托管实例中的命令在因为不同的 blob 类型用于上传备份文件存储在备份文件中支持更大 blob 大小。
 
 有关使用 T-SQL 进行备份的信息，请参阅 [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql)。
 
@@ -125,44 +132,51 @@ WITH PRIVATE KEY (<private_key_options>)
 
 - 支持使用 `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY` 和 `FROM SID` 创建的 SQL 登录名。 请参阅 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql)。
 - 支持使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER FROM LOGIN [Azure AD 登录名]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (Azure AD) 服务器主体（登录名）（**公共预览版**）。 这些登录名是在服务器级别创建的。
-    - 托管实例支持使用语法 `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 的 Azure AD 数据库主体。 这也称为 Azure AD 包含的数据库用户。
+
+    托管实例支持使用语法 `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 的 Azure AD 数据库主体。 这也称为 Azure AD 包含的数据库用户。
+
 - 不支持使用 `CREATE LOGIN ... FROM WINDOWS` 语法创建的 Windows 登录名。 使用 Azure Active Directory 登录名和用户。
 - 创建实例的 Azure AD 用户具有[不受限制的管理特权](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
 - 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建非管理员 Azure Active Directory (Azure AD) 数据库级用户。 请参阅 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users)。
 - Azure AD 服务器主体（登录名）仅支持一个 MI 实例中的 SQL 功能。 无论是在相同还是不同的 Azure AD 租户中，需要跨实例交互的功能都不支持 Azure AD 用户。 此类功能的示例包括：
-    - SQL 事务复制
-    - 链接服务器
+
+  - SQL 事务复制
+  - 链接服务器
+
 - 不支持设置映射到作为数据库所有者的 Azure AD 组的 Azure AD 登录名。
 - 支持使用其他 Azure AD 主体模拟 Azure AD 服务器级主体，例如 [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) 子句。 EXECUTE AS 限制：
-    - 当名称不同于登录名时，EXECUTE AS USER 不支持 Azure AD 用户。 例如，如果用户是通过语法 CREATE USER [myAadUser] FROM LOGIN [john@contoso.com] 创建的，则会尝试通过 EXEC AS USER = _myAadUser_ 进行模拟。 基于 Azure AD 服务器主体（登录名）创建 **USER** 时，请指定与 **LOGIN** 中的 login_name 相同的 user_name。
-    - 只有属于 `sysadmin` 角色的 SQL 服务器级主体（登录名）可以针对 Azure AD 主体执行以下操作： 
-        - EXECUTE AS USER
-        - EXECUTE AS LOGIN
+
+  - 当名称不同于登录名时，EXECUTE AS USER 不支持 Azure AD 用户。 例如，如果用户是通过语法 CREATE USER [myAadUser] FROM LOGIN [john@contoso.com] 创建的，则会尝试通过 EXEC AS USER = _myAadUser_ 进行模拟。 基于 Azure AD 服务器主体（登录名）创建 **USER** 时，请指定与 **LOGIN** 中的 login_name 相同的 user_name。
+  - 只有属于 `sysadmin` 角色的 SQL 服务器级主体（登录名）可以针对 Azure AD 主体执行以下操作：
+
+    - EXECUTE AS USER
+    - EXECUTE AS LOGIN
+
 - Azure AD 服务器主体（登录名）的**公共预览版**限制：
-    - 托管实例的 Active Directory 管理员限制：
-        - 用于设置托管实例的 Azure AD 管理员不可用于在托管实例中创建 Azure AD 服务器主体（登录名）。 必须使用充当 `sysadmin` 的 SQL Server 帐户创建第一个 Azure AD 服务器主体（登录名）。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种暂时性限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-        - 目前，在 master 数据库中创建的第一个 Azure AD 登录名必须由充当 `sysadmin` 的标准 SQL Server 帐户（非 Azure AD）使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER 创建。 正式版推出后，将去除此限制，初始的 Azure AD 登录名可由托管实例的 Active Directory 管理员创建。
+
+  - 托管实例的 Active Directory 管理员限制：
+
+    - 用于设置托管实例的 Azure AD 管理员不可用于在托管实例中创建 Azure AD 服务器主体（登录名）。 必须使用充当 `sysadmin` 的 SQL Server 帐户创建第一个 Azure AD 服务器主体（登录名）。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种暂时性限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+      - 目前，在 master 数据库中创建的第一个 Azure AD 登录名必须由充当 `sysadmin` 的标准 SQL Server 帐户（非 Azure AD）使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER 创建。 正式版推出后，将去除此限制，初始的 Azure AD 登录名可由托管实例的 Active Directory 管理员创建。
     - 与 SQL Server Management Studio (SSMS) 或 SqlPackage 配合使用的 DacFx（导出/导入）不支持 Azure AD 登录名。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除此限制。
     - 将 Azure AD 服务器主体（登录名）与 SSMS 配合使用
-        - 不支持编写 Azure AD 登录名的脚本（使用任何经过身份验证的登录名）。
-        - Intellisense 无法识别 **CREATE LOGIN FROM EXTERNAL PROVIDER** 语句，将显示红色下划线。
+
+      - 不支持编写 Azure AD 登录名的脚本（使用任何经过身份验证的登录名）。
+      - Intellisense 无法识别 **CREATE LOGIN FROM EXTERNAL PROVIDER** 语句，将显示红色下划线。
+
 - 只有服务器级主体登录名（由托管实例预配进程创建）、服务器角色的成员（`securityadmin` 或 `sysadmin`）或者在服务器级别拥有 ALTER ANY LOGIN 权限的其他登录名可以在托管实例的 master 数据库中创建 Azure AD 服务器主体（登录名）。
 - 如果登录名是 SQL 主体，则只有属于 `sysadmin` 角色的登录名才能使用 create 命令来为 Azure AD 帐户创建登录名。
 - Azure AD 登录名必须是用于 Azure SQL 托管实例的同一目录中的 Azure AD 成员。
 - 从 SSMS 18.0 预览版 5 开始，Azure AD 服务器主体（登录名）将显示在对象资源管理器中。
 - 允许 Azure AD 服务器主体（登录名）与 Azure AD 管理员帐户重叠。 解析主体以及将权限应用到托管实例时，Azure AD 服务器主体（登录名）优先于 Azure AD 管理员。
 - 在身份验证期间，将应用以下顺序来解析身份验证主体：
+
     1. 如果 Azure AD 帐户存在并直接映射到 Azure AD 服务器主体（登录名）（以类型“E”的形式存在于 sys.server_principals 中），则授予访问权限并应用 Azure AD 服务器主体（登录名）的权限。
     2. 如果 Azure AD 帐户是映射到 Azure AD 服务器主体（登录名）的 Azure AD 组的成员（以类型“X”的形式存在于 sys.server_principals 中），则授予访问权限并应用 Azure AD 组登录名的权限。
     3. 如果 Azure AD 帐户是在门户中配置的、托管实例的特殊 Azure AD 管理员（不存在于托管实例系统视图中），则应用托管实例的 Azure AD 管理员的特殊固定权限（传统模式）。
     4. 如果 Azure AD 帐户存在并直接映射到数据库中的 Azure AD 用户（以类型“E”的形式存在于 sys.database_principals 中），则授予访问权限并应用 Azure AD 数据库用户的权限。
     5. 如果 Azure AD 帐户是映射到数据库中 Azure AD 用户的 Azure AD 组的成员（以类型“X”的形式存在于 sys.database_principals 中），则授予访问权限并应用 Azure AD 组登录名的权限。
     6. 如果某个 Azure AD 登录映射到 Azure AD 用户帐户或 Azure AD 组帐户并解析为用户身份验证，则应用此 Azure AD 登录名中的所有权限。
-
-
-
-
-
 
 ### <a name="service-key-and-service-master-key"></a>服务密钥和服务主密钥
 
@@ -257,8 +271,6 @@ WITH PRIVATE KEY (<private_key_options>)
 - `SINGLE_USER`
 - `WITNESS`
 
-不支持修改名称。
-
 有关详细信息，请参阅 [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options)。
 
 ### <a name="sql-server-agent"></a>SQL Server 代理
@@ -322,7 +334,6 @@ WITH PRIVATE KEY (<private_key_options>)
 - 仅支持 `CREATE ASSEMBLY FROM BINARY`。 请参阅 [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。  
 - 不支持 `CREATE ASSEMBLY FROM FILE`。 请参阅 [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。
 - `ALTER ASSEMBLY` 不能引用文件。 请参阅 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql)。
-
 
 ### <a name="dbcc"></a>DBCC
 
@@ -427,7 +438,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 有关 Restore 语句的信息，请参阅 [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)。
 
-### <a name="service-broker"></a>Service Broker
+### <a name="service-broker"></a>服务代理
 
 不支持跨实例 Service Broker：
 
@@ -437,7 +448,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="stored-procedures-functions-triggers"></a>存储过程、函数和触发器
 
-- 目前不支持 `NATIVE_COMPILATION`。
+- 常规用途层中不支持 `NATIVE_COMPILATION`。
 - 不支持以下 [sp_configure](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) 选项：
   - `allow polybase export`
   - `allow updates`
@@ -448,7 +459,6 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持 `xp_cmdshell`。 请参阅 [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql)。
 - 不支持 `Extended stored procedures`，包括 `sp_addextendedproc`  和 `sp_dropextendedproc`。 请参阅[扩展存储过程](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
-- 不支持 `sp_renamedb`。 请参阅 [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql)。
 
 ## <a name="Changes"></a>行为更改
 
@@ -467,7 +477,11 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="tempdb-size"></a>TEMPDB 大小
 
-`tempdb` 拆分为 12 个文件，每个文件的最大大小为 14 GB。 无法更改每个文件的最大大小，并且无法将新文件添加到 `tempdb`。 很快将会去除此限制。 如果某些查询需要 `tempdb` 中 168 GB 以上的空间，这些查询可能返回错误。
+最大文件大小`tempdb`不能大于 24 GB/core 常规用途层上。 最大`tempdb`业务关键层上的大小是与实例存储大小。 `tempdb` 始终为 12 个数据文件拆分。 无法更改每个文件的最大大小，并且无法将新文件添加到 `tempdb`。 某些查询可能会返回错误，如果需要超过 24 GB / 核心中`tempdb`。
+
+### <a name="cannot-restore-contained-database"></a>无法还原包含的数据库
+
+无法还原托管的实例[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)。 托管实例无法运行现有包含数据库的时点还原。 很快将删除此问题，并在此期间，我们建议从您放置在托管实例，请不要用于生产数据库的包含关系选项的数据库中删除包含关系选项。
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
@@ -500,7 +514,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="database-mail-profile"></a>数据库邮件配置文件
 
-只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`。
+SQL 代理使用的数据库邮件配置文件必须在调用`AzureManagedInstance_dbmail_profile`。
 
 ### <a name="error-logs-are-not-persisted"></a>错误日志不会持久保留
 
@@ -514,7 +528,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
 
-如果在同一事务范围中将两个查询发送到了同一实例内的两个数据库，则 .Net 中的 `TransactionScope` 类不会工作。
+`TransactionScope` 如果两个查询发送到同一个事务范围内的相同实例中的两个数据库，在.NET 中的类不起作用：
 
 ```C#
 using (var scope = new TransactionScope())

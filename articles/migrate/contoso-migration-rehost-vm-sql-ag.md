@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 84a2ef60c9f6aa4270c3fc4f83327070b298b8b2
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 535ba0049e91e09de3d1dcf05fc8ede80ef403ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697181"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088054"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso 迁移：在 Azure VM 和 SQL Server AlwaysOn 可用性组上重新托管本地应用
 
@@ -135,7 +135,7 @@ Contoso 管理员将应用 VM 迁移到 Azure。
 
 ![迁移过程](media/contoso-migration-rehost-vm-sql-ag/migration-process.png) 
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要运行此方案，Contoso 需具备以下项。
 
@@ -704,10 +704,10 @@ Contoso 安全团队会审查 Azure VMs WEBVM、SQLAOG1 和 SQLAOG2，确定是�
 ## <a name="bcdr"></a>BCDR
 
  对于业务连续性和灾难恢复 (BCDR)，Contoso 采取了以下措施：
- - 确保数据安全：Contoso 使用 Azure 备份服务来备份 WEBVM、SQLAOG1 和 SQLAOG2 VM 上的数据。 [了解详情]。
-(https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- Contoso 还将了解如何使用 Azure 存储将 SQL Server 直接备份到 Blob 存储。 [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore)。
-- 使应用保持正常运行：Contoso 使用 Site Recovery 将 Azure 中的应用 VM 复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
+- 确保数据安全：Contoso 使用 Azure 备份服务来备份 WEBVM、SQLAOG1 和 SQLAOG2 VM 上的数据。 [了解详情]。
+  (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+  - Contoso 还将了解如何使用 Azure 存储将 SQL Server 直接备份到 Blob 存储。 [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore)。
+  - 使应用保持正常运行：Contoso 使用 Site Recovery 将 Azure 中的应用 VM 复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
 
 
 ### <a name="licensing-and-cost-optimization"></a>许可和成本优化

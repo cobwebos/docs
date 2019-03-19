@@ -1,25 +1,25 @@
 ---
 title: Azure IoT 中心内的 X.509 安全性教程 | Microsoft Docs
 description: 在模拟环境中开始体验 Azure IoT 中心内的基于 X.509 的安全性。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: dobett
-ms.openlocfilehash: b190390840a765953a2125348c3c9188f6bf7d37
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 80d3d3cf5f386c5f21e1e8fed1071a12c10235cd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452017"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091607"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 
 本教程模拟使用 *X.509 证书身份验证*保护 Azure IoT 中心所要执行的步骤。 我们将演示如何使用开源工具 OpenSSL 在 Windows 计算机本地创建证书。 我们建议仅将本教程用于测试目的。 对于生产环境，应该从*根证书颁发机构 (CA)* 购买证书。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本教程要求准备好以下资源：
 
 - 已使用 Azure 订阅创建一个 IoT 中心。 有关详细步骤，请参阅[通过门户创建 IoT 中心](iot-hub-create-through-portal.md)。 
@@ -65,7 +65,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
 10. 成功上传证书后，单击“验证”。 在“证书”边栏选项卡中，证书的“状态”会更改为“已验证”。 如果状态未自动更新，请单击“刷新”。
 
-   ![上传证书验证](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
+    ![上传证书验证](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
 
 
 <a id="createdevice"></a>

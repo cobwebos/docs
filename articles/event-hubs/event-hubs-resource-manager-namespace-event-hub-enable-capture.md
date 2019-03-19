@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 8bdda6a2-5ff1-45e3-b696-c553768f1090
 ms.service: event-hubs
 ms.devlang: tbd
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 26e248590ab6a5aa84da36abe1f1c3fb0a3dc35f
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 804ef04f0066a8b8dd9df82aef03fcfc32d7cb43
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238039"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776489"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
@@ -53,7 +53,7 @@ ms.locfileid: "56238039"
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数。
 

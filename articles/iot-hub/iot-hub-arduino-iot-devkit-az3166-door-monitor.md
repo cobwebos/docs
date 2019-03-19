@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 293c2325f57f04c3a77b0b2b8ec2ef30e8c912b8
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: a620b592a33f9de11de53d623d257f203da2157b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156232"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547695"
 ---
 # <a name="door-monitor"></a>门监视器          
 
@@ -66,7 +66,7 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 
 完成注册表单：
 
-   * **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有资源组。 请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
+   * **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有资源组。 请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/manage-resource-groups-portal.md)。
 
    * **名称**：SendGrid 服务的名称。 选择一个不同于你的其他服务的唯一名称。
 
@@ -106,7 +106,7 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 
 填充注册表单上的字段。
 
-   * **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有资源组。 请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
+   * **资源组**：创建用于托管 SendGrid 服务的资源组，或使用现有资源组。 请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/manage-resource-groups-portal.md)。
 
    * **IoT 中心名称**：IoT 中心的名称。 选择一个不同于你的其他服务的唯一名称。
 
@@ -193,7 +193,7 @@ DevKit 将重新启动并开始运行代码。
 
 如果遇到问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)或通过以下渠道进行联系：
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>后续步骤

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 893113b5383cfc2904a053b49edee19cb39f443c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e82dd76c456f463666bc17bfda9664cf24012eed
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166234"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170201"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>教程：Azure Active Directory 与 InTime 集成
 
@@ -35,12 +35,12 @@ ms.locfileid: "56166234"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 InTime 的集成，需要以下项：
 
 - Azure AD 订阅
-- 已启用 InTime 单一登录的订阅
+- 启用 InTime 单一登录的订阅
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -89,7 +89,7 @@ ms.locfileid: "56166234"
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 InTime 测试用户](#create-a-intime-test-user) - 在 InTime 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[创建 InTime 测试用户](#create-a-intime-test-user)** -Britta Simon 的对应在 InTime 链接到用户的 Azure AD 表示形式。
 1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
@@ -169,7 +169,7 @@ ms.locfileid: "56166234"
 
     d. 单击“创建”。
  
-### <a name="create-a-intime-test-user"></a>创建 InTime 测试用户
+### <a name="create-an-intime-test-user"></a>创建 InTime 测试用户
 
 在本部分中，将在 InTime 中创建一个名为“Britta Simon”的用户。 请与 [InTime 支持团队](mailto:hdollard@intimesoft.com)协作，将用户添加到 InTime 平台中。 使用单一登录前，必须先创建并激活用户。
 

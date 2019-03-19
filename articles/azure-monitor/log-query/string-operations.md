@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995401"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012220"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
 
 > [!NOTE]
-> 完成本教程之前，应先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和 [Azure Monitor 日志查询入门](get-started-queries.md)。
+> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)并[开始使用 Azure Monitor 日志查询](get-started-queries.md)之前完成本教程。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -49,7 +49,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>字符串比较
 
-运算符       |说明                         |区分大小写|示例（生成 `true`）
+运算符       |描述                         |区分大小写|示例（生成 `true`）
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |等于                              |是           |`"aBc" == "aBc"`
 `!=`           |不等于                          |是           |`"abc" != "ABC"`
@@ -64,9 +64,9 @@ print @"C:\backslash\not\escaped\with @ prefix"
 `hasprefix_cs`    |右侧是左侧的字词前缀         |是            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |右侧不是左侧的字词前缀     |是            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |右侧是左侧的字词后缀         |否            |`"North America" hassuffix "ica"`
-`!hassuffix`   |右侧不是左侧的字词后缀     |否            |`"North America" !hassuffix "americ"
+`!hassuffix`   |右侧不是左侧的字词后缀     |否            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |右侧是左侧的字词后缀         |是            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |右侧不是左侧的字词后缀     |是            |`"North America" !hassuffix_cs "icA"
+`!hassuffix_cs`   |右侧不是左侧的字词后缀     |是            |`"North America" !hassuffix_cs "icA"`
 `contains`     |右侧作为左侧的子序列出现  |否            |`"FabriKam" contains "BRik"`
 `!contains`    |右侧不会在左侧出现           |否            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |右侧作为左侧的子序列出现  |是           |`"FabriKam" contains_cs "Kam"`
@@ -259,6 +259,7 @@ SecurityEvent
 ```
 
 可能返回以下结果：
+
 活动                                        |替换的内容
 ------------------------------------------------|----------------------------------------------------------
 4663 - 尝试访问某个对象  |活动 ID 4663：尝试访问某个对象。

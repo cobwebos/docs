@@ -1,90 +1,57 @@
 ---
-title: 管理和监视 Azure VM 上通过 Azure 备份进行备份的 SQL Server 数据库 | Microsoft Docs
-description: 本文介绍了如何使用 Azure 备份还原在 Azure VM 上运行的 SQL Server 数据库
+title: 管理和监视由 Azure 备份备份 Azure VM 上的 SQL Server 数据库 |Microsoft Docs
+description: 本文介绍如何管理和监视 Azure VM 运行的 SQL Server 数据库。
 services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/19/2018
+ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: 1c2ce0ba42f0bc3efd1dcc951113b05ab6941b98
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 500986478e554a3a114d11ee4b25ea40b5decd97
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430951"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004131"
 ---
-# <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库 
+# <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
 
-本文介绍了对在 Azure VM 上运行且通过 [Azure 备份](backup-overview.md)服务备份到 Azure 备份恢复服务保管库的 SQL Server 数据库进行管理和监视时的常见任务。 这些任务包括监视作业和警报，停止和恢复数据库保护，运行备份作业，以及从备份中取消注册 VM。
+本指南介绍了常见任务的管理和监视 SQL Server 数据库的 Azure 虚拟机 (VM) 上运行，并且，备份到 Azure 备份恢复服务保管库[Azure 备份](backup-overview.md)服务。 您将了解如何监视作业和警报、 停止和恢复数据库的保护、 运行备份作业，并取消注册从备份 VM。
 
+如果你尚未配置备份的 SQL Server 数据库，请参阅[备份 Azure Vm 上的 SQL Server 数据库](backup-azure-sql-database.md)
 
-> [!NOTE]
-> 目前可以使用 Azure 备份（公共预览版）来备份在 Azure VM 上运行的 SQl Server 数据库。
+## <a name="monitor-manual-backup-jobs-in-the-portal"></a>监视在门户中的手动备份作业
 
+Azure 备份显示中的所有手动触发的作业**备份作业**门户。 请参阅此门户包含数据库发现和注册，以及备份和还原操作的作业。
 
-如果尚未配置 SQL Server 数据库的备份，请按[此文章](backup-azure-sql-database.md)中的说明进行操作
-
-## <a name="monitor-backup-jobs"></a>监视备份作业
-
-###  <a name="monitor-ad-hoc-jobs-in-the-portal"></a>在门户中监视即席作业
-
-Azure 备份会在**备份作业**门户中显示所有手动触发的作业，包括发现和注册数据库，以及备份和还原操作。
-
-![“备份作业”门户](./media/backup-azure-sql-database/jobs-list.png)
+![备份作业门户](./media/backup-azure-sql-database/jobs-list.png)
 
 > [!NOTE]
-> 计划的备份作业不会显示在**备份作业**门户中。 可按下一部分所述，使用 SQL Server Management Studio 来监视计划的备份作业。
+> **备份作业**门户不显示计划的备份作业。 可按下一部分所述，使用 SQL Server Management Studio 来监视计划的备份作业。
 >
 
-### <a name="monitor-backup-jobs-with-sql-server-management-studio"></a>使用 SQL Server Management Studio 监视备份作业 
+有关监视方案的详细信息，请转到[在 Azure 门户中监视](backup-azure-monitoring-built-in-monitor.md)并[监视使用 Azure Monitor](backup-azure-monitoring-use-azuremonitor.md)。  
 
-Azure 备份使用 SQL 本机 API 执行所有备份操作。
-
-使用本机 API 可从 msdb 数据库中的 [SQL backupset 表](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017)提取所有作业信息。
-
-以下示例是用于获取名为 **DB1** 的数据库的所有备份作业的查询。 自定义查询以进行高级监视。
-
-```
-select CAST (
-Case type
-                when 'D' 
-                                 then 'Full'
-                when  'I'
-                               then 'Differential' 
-                ELSE 'Log'
-                END         
-                AS varchar ) AS 'BackupType',
-database_name, 
-server_name,
-machine_name,
-backup_start_date,
-backup_finish_date,
-DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
-backup_size AS BackupSizeInBytes
-  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
-
-```
 
 ## <a name="view-backup-alerts"></a>查看备份警报
 
-由于日志备份每隔 15 分钟就会发生一次，因此，监视备份作业可能很繁琐。 Azure 备份通过电子邮件警报简化了监视工作。
+由于日志备份每隔 15 分钟就会发生一次，因此，监视备份作业可能很繁琐。 Azure 备份中可以简化监视通过发送电子邮件警报。 电子邮件警报包括：
 
-- 会针对所有备份失败触发警报。
-- 警报按错误代码在数据库级别合并。
-- 只针对数据库的首次备份失败发送电子邮件警报。 
+- 为所有备份失败触发。
+- 在数据库级别合并错误代码。
+- 仅针对数据库的第一次备份失败发送。
 
-监视备份警报：
+若要监视数据库的备份警报：
 
-1. 在 [Azure 门户](https://portal.azure.com)中登录到你的 Azure 订阅来监视数据库警报。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 在保管库仪表板中，选择“警报和事件”。
 
    ![选择“警报和事件”](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-4. 在“警报和事件”中，选择“备份警报”。
+3. 在“警报和事件”中，选择“备份警报”。
 
    ![选择“备份警报”](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -93,49 +60,45 @@ backup_size AS BackupSizeInBytes
 可以通过两种方式来停止备份 SQL Server 数据库：
 
 * 停止所有将来的备份作业，并删除所有恢复点。
-* 停止所有将来的备份作业，但将恢复点保留不变。
+* 停止所有将来的备份作业，并保留恢复点保持不变。
 
-请注意：
+如果选择保留恢复点，请记住这些详细信息：
 
-如果保留恢复点，则将根据备份策略清理恢复点。 在清理所有恢复点之前，你需要为受保护的实例和消耗的存储支付费用。 [详细了解](https://azure.microsoft.com/pricing/details/backup/)定价情况。
-- 将恢复点保留不变时，尽管它们根据保留策略过期，但 Azure 备份始终会保留一个最后的恢复点，直至你显式删除备份数据。
-- 如果在不停止备份的情况下删除数据源，则新备份将会失败。 同样，旧恢复点将根据策略过期，但始终会保留一个最后的恢复点，直至你显式停止备份并删除数据。
-- 在禁用自动保护之前，无法为启用了自动保护的数据库停止备份。
+* 所有恢复点不限次数将都保持不变，所有修剪应都停止在都停止保护保留数据。
+* 你将为受保护的实例占用的存储空间付费。 有关详细信息，请参阅[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
+* 如果无需停止备份删除数据源，新备份将失败。
 
 停止数据库的保护：
 
-1. 在保管库仪表板中，在“使用情况”下，选择“备份项”。
+1. 在保管库仪表板中，选择**备份项**。
 
-    ![打开“备份项”菜单](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
-
-2. 在“备份管理类型”中，选择“Azure VM 中的 SQL”。
+2. 下**备份管理类型**，选择**在 Azure VM 中的 SQL**。
 
     ![选择“Azure VM 中 SQL”](./media/backup-azure-sql-database/sql-restore-backup-items.png)
-
 
 3. 选择要停止保护的数据库。
 
     ![选择要停止保护的数据库](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-
-5. 在数据库菜单中，选择“停止备份”。
+4. 在数据库菜单中，选择“停止备份”。
 
     ![选择“停止备份”](./media/backup-azure-sql-database/stop-db-button.png)
 
 
-6. 在“停止备份”菜单中，选择是保留还是删除数据。 （可选）提供原因和注释。
+5. 上**停止备份**菜单中，选择是保留还是删除数据。 如果你想提供的原因和注释。
 
-    ![“停止备份”菜单](./media/backup-azure-sql-database/stop-backup-button.png)
+    ![保留或删除在停止备份菜单上的数据](./media/backup-azure-sql-database/stop-backup-button.png)
 
-7. 单击“停止备份”。
+6. 选择**停止备份**。
 
-  
 
-### <a name="resume-protection-for-a-sql-database"></a>恢复 SQL 数据库的保护
+## <a name="resume-protection-for-a-sql-database"></a>恢复 SQL 数据库的保护
 
-如果在停止 SQL 数据库的保护时选择了“保留备份数据”选项，则可以恢复保护。 如果未保留备份数据，则无法恢复保护。
+何时停止对 SQL 数据库的保护，如果您选择**保留备份数据**选项，您可以继续保护。 如果不保留备份数据，则不能恢复保护。
 
-1. 若要恢复 SQL 数据库的保护，请打开备份项并选择“恢复备份”。
+若要恢复对 SQL 数据库的保护：
+
+1. 打开备份项，然后选择**恢复备份**。
 
     ![选择“恢复备份”以恢复数据库保护](./media/backup-azure-sql-database/resume-backup-button.png)
 
@@ -150,13 +113,13 @@ backup_size AS BackupSizeInBytes
 * 差异备份
 * 日志备份
 
-[详细了解](backup-architecture.md#sql-server-backup-types) SQL Server 备份类型。
+有关详细信息，请参阅[SQL Server 的备份类型](backup-architecture.md#sql-server-backup-types)。
 
 ## <a name="unregister-a-sql-server-instance"></a>取消注册 SQL Server 实例
 
-在禁用保护之后但删除保管库之前取消注册 SQL Server 实例：
+禁用保护之后，但之前删除该保管库撤消注册 SQL Server 实例：
 
-1. 在保管库仪表板上，在“管理”下，选择“备份基础结构”。  
+1. 在保管库仪表板下**管理**，选择**备份基础结构**。  
 
    ![选择“备份基础结构”。](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
@@ -164,14 +127,18 @@ backup_size AS BackupSizeInBytes
 
    ![选择“受保护的服务器”](./media/backup-azure-sql-database/protected-servers.png)
 
-
 3. 在“受保护的服务器”中，选择要取消注册的服务器。 若要删除保管库，必须取消注册所有服务器。
 
-4. 右键单击受保护的服务器，然后单击“删除”。
+4. 右键单击受保护的服务器，然后选择**删除**。
 
    ![选择“删除”](./media/backup-azure-sql-database/delete-protected-server.png)
 
+## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM 上重新注册扩展
+
+有时，在 VM 上的工作负荷扩展可能会受到影响的原因之一或其他。 在这种情况下，在 VM 上触发的所有操作将都开始失败。 然后，您可能需要重新注册该扩展在 VM 上。 **重新注册**操作操作继续在 VM 上重新安装工作负荷备份扩展。  <br>
+
+建议使用此选项时要注意;具有已正常扩展的 VM 上触发，此操作将导致要获取重新启动的扩展。 这可能会导致所有正在进行中作业失败。 请检查为一个或多个[症状](backup-sql-server-azure-troubleshoot.md#symptoms)之前触发重新注册操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-[查看](backup-sql-server-azure-troubleshoot.md) SQL Server 数据库备份的故障排除信息。
+有关详细信息，请参阅[进行故障排除 SQL Server 数据库上的备份](backup-sql-server-azure-troubleshoot.md)。

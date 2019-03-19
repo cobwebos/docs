@@ -5,22 +5,22 @@ description: 如何在自定义翻译中创建项目？
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 9886ba39846d9489a66c57bcc614f90e2bf70d4e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 2e49a8c40396b03c231fa7fd484331b0e28d4cf6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218098"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762698"
 ---
 # <a name="create-a-project"></a>创建一个项目
 
-项目是模型、文档和测试的容器。 每个项目自动包含所有上传到该工作区的、具有正确语言对的文档。 
+项目是模型、文档和测试的容器。 每个项目自动包含所有上传到该工作区的、具有正确语言对的文档。
 
-创建项目是生成模型的第一步。 
+创建项目是生成模型的第一步。
 
 ## <a name="create-a-project"></a>创建项目：
 

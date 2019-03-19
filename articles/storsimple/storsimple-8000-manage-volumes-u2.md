@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: b748e203e3bf769eef8ce728bbb9471b8d13fb9a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822300"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093324"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 设备管理器服务管理卷（Update 3 或更高版本）
 
@@ -235,7 +235,7 @@ StorSimple 卷可以是：
    * 如果将类型更改为“分层”，且此卷用于存档数据，请选中“将此卷用于不常访问的存档数据”复选框。
    * 将本地固定卷配置为分层卷时（反之亦然），会显示以下消息。
    
-    ![更改卷类型消息](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![更改卷类型消息](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
 7. 单击“保存”以保存更改。 系统提示确认时，请单击“是”开始转换过程。 
 

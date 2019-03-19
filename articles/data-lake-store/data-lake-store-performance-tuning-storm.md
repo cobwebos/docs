@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: aa4d42a53e6fb8ea236a9d544102aab3dff19013
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129227"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084804"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
 了解在优化 Azure Storm 拓扑的性能时应该考虑的因素。 例如，必须了解 Spout 和 Bolt 的工作特征（这种工作是 I/O 密集型还是内存密集型的）。 本文介绍一系列性能优化指南，包括如何排查常见问题。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
@@ -82,7 +82,7 @@ ms.locfileid: "46129227"
 
 - **最大 Spout 挂起时间：topology.max.spout.pending**。 此设置确定任意时间每个 Spout 线程的进行中元组数（尚未在拓扑中的所有节点上确认）。
 
- 一种不错的计算方式是评估每个元组的大小。 然后算出一个 Spout 线程具有的内存量。 将分配给线程的总内存量除以此值，即可得出最大 Spout 挂起时间参数的上限。
+  一种不错的计算方式是评估每个元组的大小。 然后算出一个 Spout 线程具有的内存量。 将分配给线程的总内存量除以此值，即可得出最大 Spout 挂起时间参数的上限。
 
 ## <a name="tune-the-bolt"></a>优化 Bolt
 向 Data Lake Storage Gen1 写入数据时，请将大小同步策略（客户端的缓冲区）设置为 4 MB。 仅当缓冲区大小达到此值时，才执行刷新或 hsync()。 除非显式执行 hsync()，否则辅助角色 VM 上的 Data Lake Storage Gen1 驱动程序会自动执行这种缓冲。
@@ -98,7 +98,7 @@ ms.locfileid: "46129227"
 若要在 Data Lake Storage Gen1 中获得最佳性能，可为元组数据提供 4 MB 的 Bolt 缓冲区。 然后以一个 4-MB 写入的方式将数据写入 Data Lake Storage Gen1 后端。 成功将数据写入存储（通过调用 hflush()）后，Bolt 可以向 Spout 确认数据。 这就是此处提供的示例 Bolt 的作用。 在发出 hflush() 调用和确认元组之前，还接受保存更大数量的元组。 但是，这会增加 Spout 需要保存的进行中元组数量，因此也会增加每个 JVM 所需的内存量。
 
 > [!NOTE]
-出于其他与性能无关的原因，应用程序可能要求更频繁地确认元组（以小于 4 MB 的数据大小）。 但是，这可能会影响存储后端的 I/O 吞吐量。 应该针对 Bolt 的 I/O 性能认真权衡这种利弊。
+> 出于其他与性能无关的原因，应用程序可能要求更频繁地确认元组（以小于 4 MB 的数据大小）。 但是，这可能会影响存储后端的 I/O 吞吐量。 应该针对 Bolt 的 I/O 性能认真权衡这种利弊。
 
 如果元组的传入速率不高，使得 4-MB 缓冲区需要很长时间才能填满，请考虑以下缓解措施：
 * 减少 Bolt 数量，从而减少要填充的缓冲区。

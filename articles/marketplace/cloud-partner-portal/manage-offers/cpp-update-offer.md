@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 690ce08aa15a9677b04931ed1965ef819614ee84
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: 76b607502324c3ca25b3536d5197a97dbb80399d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355002"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102139"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>更新 Azure 市场和 AppSource 套餐
 
@@ -68,19 +68,19 @@ ms.locfileid: "54355002"
 
 对于 Azure 市场套餐：
 
-2. 选择“SKU”选项卡。选择要修改的 SKU。
-3. 单击“适用国家/地区”字段下的“选择国家/地区”按钮。
-4. 在“适用区域”对话框中，添加或删除此 SKU 的适用区域。
+1. 选择“SKU”选项卡。选择要修改的 SKU。
+1. 单击“适用国家/地区”字段下的“选择国家/地区”按钮。
+1. 在“适用区域”对话框中，添加或删除此 SKU 的适用区域。
 
 对于 AppSource 套餐：
 
-2. 选择“店面详细信息”选项卡。
-3. 在“支持的国家/地区”标签旁边，单击“支持的国家/地区”。 
-4. 在“支持的国家/地区”对话框中，添加或删除此套餐的适用区域。
+1. 选择“店面详细信息”选项卡。
+1. 在“支持的国家/地区”标签旁边，单击“支持的国家/地区”。 
+1. 在“支持的国家/地区”对话框中，添加或删除此套餐的适用区域。
 
 对于任一市场：
 
-5. 单击“发布”启动发布过程。 
+1. 单击“发布”启动发布过程。 
 
 如果要在新区域中提供 SKU，可通过“导出定价数据”功能对此特定区域指定定价。 如果加回以前适用的区域，则无法更新其定价，因为不允许更改定价。
 

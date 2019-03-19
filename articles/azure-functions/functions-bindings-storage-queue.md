@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 61752ad9feda7ad6b8d91f1b996b68f27f24b2c6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: f54bec9c328893d1d579bff3313f126dbc1178de
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821977"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728023"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -274,9 +274,9 @@ module.exports = async function (context, message) {
 
 ## <a name="trigger---message-metadata"></a>触发器 - 消息元数据
 
-[队列触发器提供了数个元数据属性。](functions-triggers-bindings.md#binding-expressions---trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) 类的属性。
+[队列触发器提供了数个元数据属性。](./functions-bindings-expressions-patterns.md#trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) 类的属性。
 
-|属性|Type|说明|
+|属性|Type|描述|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是字符串，则 `QueueTrigger` 包含的值与 *function.json* 中 `name` 属性命名的变量的值相同。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
@@ -536,7 +536,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 
-| 绑定 |  引用 |
+| 绑定 |  参考 |
 |---|---|
 | 队列 | [队列错误代码](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
 | Blob、表、队列 | [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -567,7 +567,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 ```  
 
 
-|属性  |默认 | 说明 |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
 |maxPollingInterval|00:00:02|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒）。 | 
 |visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 | 

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 29208bcbdbe6ad01d0e1ac7343bd921f3287260a
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
-ms.translationtype: HT
+ms.openlocfilehash: 8cd50cab555755a137114bf871cad57ddf7a9db5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580050"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872974"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>在 Linux 上创建运行 Apache Tomcat 服务器的 Service Fabric 容器
 Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 本文介绍如何使用 Apache Tomcat 和简单的 Web 应用程序生成容器，然后将该容器部署到运行 Linux 的 Service Fabric 群集并连接到 Web 应用程序。  
 
-若要了解有关 Apache Tomcat 的详细信息，请参阅 [Apache Tomcat 主页](http://tomcat.apache.org/)。 
+若要了解有关 Apache Tomcat 的详细信息，请参阅 [Apache Tomcat 主页](https://tomcat.apache.org/)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * 一台运行以下软件的开发计算机：
   * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
@@ -95,9 +95,9 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
 
 1. 若要测试容器，请打开浏览器并输入以下任一 URL。 将看到“Hello World!”的变体 每个 URL 的欢迎屏幕。
 
-   - http://localhost:8080/hello 
-   - http://localhost:8080/hello/sayhello 
-   - http://localhost:8080/hello/sayhi 
+   - `http://localhost:8080/hello` 
+   - `http://localhost:8080/hello/sayhello` 
+   - `http://localhost:8080/hello/sayhi` 
 
    ![Hello world /sayhi](./media/service-fabric-get-started-tomcat/hello.png)
 
@@ -141,82 +141,82 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
    ```
    系统提示时输入以下值：
 
-   * 命名应用程序：ServiceFabricTomcat
-   * 应用程序服务名称：TomcatService
-   * 输入映像名称：提供容器注册表中容器映像的 URL（例如，myregistry.azurecr.io/samples/tomcattest）。
-   * 命令：将此选项留空。 此映像中定义了一个工作负荷入口点，因此不需显式指定输入命令（命令在容器中运行，这可以在启动后使容器保持运行）。
-   * 来宾容器应用程序的实例数：1
+   * 命名你的应用程序：ServiceFabricTomcat
+   * 应用程序服务的名称：TomcatService
+   * 输入映像名称：容器注册表; 中的容器映像中提供的 URL例如，myregistry.azurecr.io/samples/tomcattest。
+   * 命令：将此项留空。 此映像中定义了一个工作负荷入口点，因此不需显式指定输入命令（命令在容器中运行，这可以在启动后使容器保持运行）。
+   * 来宾容器应用程序的实例数：第
 
    ![适用于容器的 Service Fabric Yeoman 生成器](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
 10. 在服务清单 (ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml) 中的根 ServiceManfest 标记下添加以下 XML，打开应用程序侦听其请求的端口。 Endpoint 标记声明终结点的协议和端口。 本文所述的容器化服务侦听端口 8080： 
 
-    ```xml
-    <Resources>
-      <Endpoints>
-        <!-- This endpoint is used by the communication listener to obtain the port on which to 
-         listen. Please note that if your service is partitioned, this port is shared with 
-         replicas of different partitions that are placed in your code. -->
-        <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
-      </Endpoints>
-    </Resources>
-    ```
+   ```xml
+   <Resources>
+     <Endpoints>
+       <!-- This endpoint is used by the communication listener to obtain the port on which to 
+        listen. Please note that if your service is partitioned, this port is shared with 
+        replicas of different partitions that are placed in your code. -->
+       <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
+     </Endpoints>
+   </Resources>
+   ```
 
 11. 在应用程序清单 (ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml) 中的 ServiceManifestImport 标记下，添加以下 XML。 将 RepositoryCredentials 标记中的 AccountName 和 Password 替换为所需的容器注册表名称和密码，以便登录。
 
-    ```xml
-    <Policies>
-      <ContainerHostPolicies CodePackageRef="Code">
-        <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-      </ContainerHostPolicies>
-    </Policies>
-    ```
+   ```xml
+   <Policies>
+     <ContainerHostPolicies CodePackageRef="Code">
+       <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
+       <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
+     </ContainerHostPolicies>
+   </Policies>
+   ```
 
-    ContainerHostPolicies 标记指定用于激活容器主机的策略。
+   ContainerHostPolicies 标记指定用于激活容器主机的策略。
     
-    * PortBinding 标记配置容器端口到主机端口映射策略。 将 ContainerPort 属性设置为 8080，因为容器将公开端口 8080，如 Dockerfile 中所述。 将 EndpointRef 属性设置为上一步骤中的服务清单中定义的终结点“endpointTest”。 因此，传入到端口 8080 上的服务的请求将映射到容器上的端口 8080。 
-    * RepositoryCredentials 标记指定容器从中拉取映像的（私有）存储库进行身份验证所需的凭据。 如果将从公共存储库拉取映像，则不需要此策略。
+   * PortBinding 标记配置容器端口到主机端口映射策略。 将 ContainerPort 属性设置为 8080，因为容器将公开端口 8080，如 Dockerfile 中所述。 将 EndpointRef 属性设置为上一步骤中的服务清单中定义的终结点“endpointTest”。 因此，传入到端口 8080 上的服务的请求将映射到容器上的端口 8080。 
+   * RepositoryCredentials 标记指定容器从中拉取映像的（私有）存储库进行身份验证所需的凭据。 如果将从公共存储库拉取映像，则不需要此策略。
     
 
 12. 在 ServiceFabricTomcat 文件夹中，请连接到 Service Fabric 群集。 
 
-    * 若要连接到本地 Service Fabric 群集，请运行：
+   * 若要连接到本地 Service Fabric 群集，请运行：
 
-       ```bash
-       sfctl cluster select --endpoint http://localhost:19080
-       ```
+      ```bash
+      sfctl cluster select --endpoint http://localhost:19080
+      ```
     
-    * 若要连接到安全的 Azure 群集，请确保客户端证书以 .pem 文件的形式存在于 ServiceFabricTomcat 目录中，并运行： 
+   * 若要连接到安全的 Azure 群集，请确保客户端证书以 .pem 文件的形式存在于 ServiceFabricTomcat 目录中，并运行： 
 
-       ```bash
-       sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
-       ```
-       在上述命令中，将 `your-certificate.pem` 替换为客户端证书文件的名称。 在开发和测试环境中，群集证书通常用作客户端证书。 如果你的证书未自签名，则忽略 `-no-verify` 参数。 
+      ```bash
+      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
+      ```
+      在上述命令中，将 `your-certificate.pem` 替换为客户端证书文件的名称。 在开发和测试环境中，群集证书通常用作客户端证书。 如果你的证书未自签名，则忽略 `-no-verify` 参数。 
        
-       群集证书通常本地下载为 .pfx 文件。 如果你还没有 PEM 格式的证书，可以运行以下命令，通过 .pfx 文件创建 .pem 文件：
+      群集证书通常本地下载为 .pfx 文件。 如果你还没有 PEM 格式的证书，可以运行以下命令，通过 .pfx 文件创建 .pem 文件：
 
-       ```bash
-       openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
-       ```
+      ```bash
+      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
+      ```
 
-       如果 .pfx 文件不受密码保护，请对最后一个参数使用 `-passin pass:`。
+      如果 .pfx 文件不受密码保护，请对最后一个参数使用 `-passin pass:`。
 
 
 13. 运行模板中提供的安装脚本，将应用程序部署到群集中。 该脚本将应用程序包复制到群集映像存储区，注册应用程序类型并创建应用程序的实例。
 
-       ```bash
-       ./install.sh
-       ```
+      ```bash
+      ./install.sh
+      ```
 
-    运行安装脚本后，打开浏览器并导航到 Service Fabric Explorer：
+   运行安装脚本后，打开浏览器并导航到 Service Fabric Explorer：
     
-    * 在本地群集上，请使用 http://localhost:19080/Explorer（如果在 Mac OS X 上使用 Vagran，将 localhost 替换为 VM 的私有 IP）。
-    * 在安全的 Azure 群集上，请使用 https://PublicIPorFQDN:19080/Explorer。 
+   * 在本地群集上，请使用 `http://localhost:19080/Explorer`（如果在 Mac OS X 上使用 Vagran，将 localhost 替换为 VM 的私有 IP）。
+   * 在安全的 Azure 群集上，请使用 `https://PublicIPorFQDN:19080/Explorer`。 
     
-    展开应用程序节点，注意现在有一个条目是用于应用程序类型 (ServiceFabricTomcatType)，另一个条目用于该类型的第一个实例。 可能需要几分钟时间才能完全部署应用程序，因此请耐心等待。
+   展开应用程序节点，注意现在有一个条目是用于应用程序类型 (ServiceFabricTomcatType)，另一个条目用于该类型的第一个实例。 可能需要几分钟时间才能完全部署应用程序，因此请耐心等待。
 
-    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
+   ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
 1. 若要访问 Tomcat 服务器上的应用程序，请打开浏览器窗口并输入以下任一 URL。 如果部署到本地群集，则对 PublicIPorFQDN 使用 localhost。 将看到“Hello World!”的变体 每个 URL 的欢迎屏幕。

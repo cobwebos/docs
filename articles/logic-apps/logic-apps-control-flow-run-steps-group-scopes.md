@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: d73a43aedde9a88e009ddca1f0363dbcd92e1379
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233066"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080448"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>基于组状态，在 Azure 逻辑应用中的范围内运行操作
 
@@ -27,7 +27,7 @@ ms.locfileid: "50233066"
 
 ![设置“计划 - 定期”触发器](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本文中的示例，需要具有以下各项：
 
@@ -54,7 +54,7 @@ ms.locfileid: "50233066"
 
 1. 如果尚未登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>，请进行登录。 创建空白逻辑应用。
 
-1. 使用以下设置添加**计划 - 定期**触发器：**时间间隔** = 1 并且**频率** =“Minute”
+1. 添加**日程安排-定期**触发器使用这些设置：**间隔**="1"和**频率**="Minute"
 
    ![设置“计划 - 定期”触发器](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "50233066"
 
    1. 如果尚没有必应地图连接，则会要求你创建一个连接。
 
-      | 设置 | 值 | Description |
+      | 设置 | 值 | 描述 |
       | ------- | ----- | ----------- |
       | **连接名称** | BingMapsConnection | 提供连接的名称。 | 
       | **API 密钥** | <*your-Bing-Maps-key*> | 输入以前接收的必应地图密钥。 | 
@@ -77,21 +77,22 @@ ms.locfileid: "50233066"
 
       有关这些参数的详细信息，请参阅 [Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx)（计算路线）。
 
-      | 设置 | 值 | Description |
+      | 设置 | 值 | 描述 |
       | ------- | ----- | ----------- |
       | **路标 1** | <*起点*> | 输入路线的起点。 | 
       | **路标 2** | <*终点*> | 输入路线的目的地。 | 
       | **避免** | 无 | 输入路线上需要避免的项目，例如高速公路、收费站等。 有关可能的值，请参阅[计算路由](https://msdn.microsoft.com/library/ff701717.aspx)。 | 
       | **优化** | timeWithTraffic | 选择一个参数来优化路线，例如距离、时间（在使用当前交通信息的情况下），等等。 此示例使用以下值：timeWithTraffic | 
-      | **距离单位** | <*your-preference*> | 输入要用来计算路线的距离单位。 此示例使用以下值：Mile | 
+      | **距离单位** | <*your-preference*> | 输入要用来计算路线的距离单位。 此示例使用以下值："英里" | 
       | **旅行模式** | 驾车 | 输入路线的旅行模式。 此示例使用以下值：Driving | 
       | **运输日期/时间** | 无 | 仅适用于运输模式。 | 
       | **运输日期/时间类型** | 无 | 仅适用于运输模式。 | 
       ||||  
 
-1. [添加条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)，检查当前交通状况下的旅行时间是否超出了指定时间。 对于本示例，请遵循以下步骤：
+1. [添加条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)，检查当前交通状况下的旅行时间是否超出了指定时间。 
+   对于本示例，请遵循以下步骤：
 
-   1. 重命名条件并提供以下说明：交通时间是否超过指定时间
+   1. 重命名条件并提供此说明：**如果流量时间超过指定的时间**
 
    1. 在最左侧的列中，单击“选择值”框内部，会显示动态内容列表。 从该列表中，选择“旅行期间 - 交通”字段（以秒为单位）。 
 
@@ -99,13 +100,14 @@ ms.locfileid: "50233066"
 
    1. 在中间的框中选择此运算符：大于
 
-   1. 在最右侧的列中，输入此比较值（以秒为单位，相当于 10 分钟）：600
+   1. 在最右侧列中，输入此比较值，这是秒数，等于 10 分钟：**600**
 
       完成后，条件如以下示例所示：
 
       ![已完成的条件](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
 
-1. 在“If true”分支中，为电子邮件提供程序添加一个“发送电子邮件”操作。 按照此图像下的步骤设置此操作：
+1. 在“If true”分支中，为电子邮件提供程序添加一个“发送电子邮件”操作。 
+   按照此图像下的步骤设置此操作：
 
    ![向“If true”分支添加“发送电子邮件”操作](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
 
@@ -124,7 +126,7 @@ ms.locfileid: "50233066"
    1. 在动态内容列表中，选择“表达式”。
 
    1. 查找并选择“div()”函数。 
-   将游标置于函数的括号内。
+      将游标置于函数的括号内。
 
    1. 游标位于函数的括号内时，选择“动态内容”，以便显示动态内容列表。 
    
@@ -144,11 +146,11 @@ ms.locfileid: "50233066"
 
    1. 完成后，选择“确定”。
 
-  1. 在表达式解析后，添加带有前导空格的以下文本：``` minutes```
+   1. 表达式求值后，添加带有前导空格的以下文本： ``` minutes```
   
-     “正文”字段现在如下例所示：
+       “正文”字段现在如下例所示：
 
-     ![完成的“正文”字段](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![完成的“正文”字段](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
 
 1. 保存逻辑应用。
 
@@ -179,7 +181,7 @@ ms.locfileid: "50233066"
 
    ![添加的作用域](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. 在作用域下，添加一个条件，用以检查作用域的状态。 重命名条件并提供以下说明：**If scope failed**
+1. 在作用域下，添加一个条件，用以检查作用域的状态。 重命名条件并提供此说明：**如果作用域已失败**
 
    ![添加用以检查作用域状态的条件](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 88dcc7110acaf42243d0ebb3c1ae25aa6d0bca46
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
+ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257959"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004093"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
@@ -26,7 +26,7 @@ ms.locfileid: "53257959"
 
 ## <a name="how-does-it-work"></a>工作原理
 
-Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md) 中的[服务映射](../operations-management-suite/operations-management-suite-service-map.md)解决方案来实现依赖项可视化。
+Azure Migrate 使用[服务映射](../operations-management-suite/operations-management-suite-service-map.md)中的解决方案[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)为依赖项可视化。
 - 若要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。
 - 只能在创建迁移项目的同一订阅中创建或附加工作区。
 - 若要将 Log Analytics 工作区附加到项目，请转到项目“概述”页的“Essentials”部分，单击“需要配置”
@@ -34,8 +34,8 @@ Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md)
     ![关联 Log Analytics 工作区](./media/concepts-dependency-visualization/associate-workspace.png)
 
 - 关联一个工作区时，可以选择是创建新的工作区还是附加现有工作区：
-      - 创建新工作区时，需要指定工作区的名称。 然后在与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
-      - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 请注意，只有在[服务映射受支持](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)的区域中创建的那些工作区才会列出。 为了能够附加工作区，请确保对该工作区有“读取者”访问权限。
+  - 创建新工作区时，需要指定工作区的名称。 然后在与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
+  - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 请注意，只有在[服务映射受支持](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)的区域中创建的那些工作区才会列出。 为了能够附加工作区，请确保对该工作区有“读取者”访问权限。
 
   > [!NOTE]
   > 工作区附加到一个项目后，你将无法再对其进行更改。

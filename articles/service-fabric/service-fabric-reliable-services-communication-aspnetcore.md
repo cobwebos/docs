@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 71d5b0e8156710e2f82ac76d3187ba1ddba46936
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: d74cee712b33f8d8d9924b9b8906ccd97e0b1756
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151084"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902988"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -333,6 +333,123 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
 在此配置中，`KestrelCommunicationListener` 会自动从应用程序端口范围中选择未使用的端口。
+
+## <a name="service-fabric-configuration-provider"></a>Service Fabric 配置提供程序
+ASP.NET Core 中的应用程序配置基于键-值对来配置提供程序，读取建立[ASP.NET Core 中的配置](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/)若要了解更多在常规 ASP.NET Core 配置支持。
+
+本部分介绍了 Service Fabric 配置提供程序与 ASP.NET Core 配置集成，通过导入`Microsoft.ServiceFabric.AspNetCore.Configuration`NuGet 包。
+
+### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration 启动扩展
+已导入后`Microsoft.ServiceFabric.AspNetCore.Configuration`NuGet 包，你需要使用 ASP.NET Core 配置 API 通过注册 Service Fabric 配置源**AddServiceFabricConfiguration**中的扩展`Microsoft.ServiceFabric.AspNetCore.Configuration`命名空间针对 `IConfigurationBuilder`
+
+```csharp
+using Microsoft.ServiceFabric.AspNetCore.Configuration;
+
+public Startup(IHostingEnvironment env)
+{
+    var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+        .AddServiceFabricConfiguration() // Add Service Fabric configuration settings.
+        .AddEnvironmentVariables();
+    Configuration = builder.Build();
+}
+
+public IConfigurationRoot Configuration { get; }
+```
+
+现在的 ASP.NET Core 服务可以访问 Service Fabric 配置设置，就像任何其他应用程序设置。 例如，可以使用选项模式来加载到强类型化对象的设置。
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure<MyOptions>(Configuration);  // Strongly typed configuration object.
+    services.AddMvc();
+}
+```
+### <a name="default-key-mapping"></a>映射的默认密钥
+默认情况下，Service Fabric 配置提供程序包括包名称、 部分名称和属性名称一起以形成的 asp.net core 配置密钥使用以下函数：
+```csharp
+$"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
+```
+
+例如，如果您的名为配置包`MyConfigPackage`与以下内容，然后配置值可在 ASP.NET Core`IConfiguration`通过密钥*MyConfigPackage:MyConfigSection:MyParameter*
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">  
+  <Section Name="MyConfigSection">
+    <Parameter Name="MyParameter" Value="Value1" />
+  </Section>  
+</Settings>
+```
+### <a name="service-fabric-configuration-options"></a>Service Fabric 配置选项
+Service Fabric 配置提供程序还支持`ServiceFabricConfigurationOptions`若要更改键映射的默认行为。
+
+#### <a name="encrypted-settings"></a>加密的设置
+Service Fabric 支持加密设置，Service Fabric 配置提供程序还支持此模式。 若要按默认原则，默认情况下，ASP.NET Core 到加密的设置 are't descrypted 遵循安全`IConfiguration`，而是那里存储的加密的值。 但是，如果你想要解密的值将存储在 ASP.NET Core IConfiguration 您无法 DecryptValue 标志设置为 false 在`AddServiceFabricConfiguration`扩展，如下所示：
+
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    var builder = new ConfigurationBuilder()        
+        .AddServiceFabricConfiguration(activationContext, (options) => options.DecryptValue = true); // set flag to decrypt the value
+    Configuration = builder.Build();
+}
+```
+#### <a name="multiple-configuration-packages"></a>多个配置包
+Service Fabric 支持多个配置包。 默认情况下，配置密钥中包含包名称。 无法设置`IncludePackageName`标志来更改默认行为。
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    var builder = new ConfigurationBuilder()        
+        // exclude package name from key.
+        .AddServiceFabricConfiguration(activationContext, (options) => options.IncludePackageName = false); 
+    Configuration = builder.Build();
+}
+```
+#### <a name="custom-key-mapping-value-extraction-and-data-population"></a>自定义密钥映射、 值提取和数据填充
+除了以上标志 2，若要更改默认行为，Service Fabric 配置提供程序还支持更高级的方案自定义通过密钥映射`ExtractKeyFunc`并为自定义提取的值通过`ExtractValueFunc`。 您甚至可以更改整个过程，以便将数据从 Service Fabric 配置 ASP.NET Core 配置通过填充`ConfigAction`。
+
+下面的示例演示使用`ConfigAction`自定义数据填充。
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    
+    this.valueCount = 0;
+    this.sectionCount = 0;
+    var builder = new ConfigurationBuilder();
+    builder.AddServiceFabricConfiguration(activationContext, (options) =>
+        {
+            options.ConfigAction = (package, configData) =>
+            {
+                ILogger logger = new ConsoleLogger("Test", null, false);
+                logger.LogInformation($"Config Update for package {package.Path} started");
+
+                foreach (var section in package.Settings.Sections)
+                {
+                    this.sectionCount++;
+
+                    foreach (var param in section.Parameters)
+                    {
+                        configData[options.ExtractKeyFunc(section, param)] = options.ExtractValueFunc(section, param);
+                        this.valueCount++;
+                    }
+                }
+
+                logger.LogInformation($"Config Update for package {package.Path} finished");
+            };
+        });
+  Configuration = builder.Build();
+}
+```
+### <a name="configuration-update"></a>配置更新
+Service Fabric 配置提供程序还支持配置更新，您可以使用 ASP.NET Core`IOptionsMonitor`以接收更改通知以及`IOptionsSnapshot`重新加载配置数据。 有关详细信息，请参阅[ASP.NET Core 选项](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options)。
+
+这默认情况下支持和不能进一步编码启用所需配置更新。
 
 ## <a name="scenarios-and-configurations"></a>方案和配置
 本部分介绍以下方案，并提供 Web 服务器、端口配置、Service Fabric 集成选项和其他设置的建议组合方式，以使服务正常工作：

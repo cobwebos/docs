@@ -1,5 +1,5 @@
 ---
-title: Conversation Learner 模型中的实体解析程序 - Microsoft 认知服务 | Microsoft Docs
+title: 对话学习器模型-Microsoft 认知服务中的实体冲突解决程序 |Microsoft Docs
 titleSuffix: Azure
 description: 了解如何在 Conversation Learner 中使用实体解析程序。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e6a671470a87f4509e466bcdfe7845b7bf7ec8dc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: cca78e2536a922165f40bbcbabcae005021aa70b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209139"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167841"
 ---
 # <a name="entity-resolvers"></a>实体解析程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "55209139"
 [![实体解析程序教程预览](https://aka.ms/cl_Tutorial_v3_EntityResolvers_Preview)](https://aka.ms/cl_Tutorial_v3_EntityResolvers)
 
 ## <a name="requirements"></a>要求
-本教程要求运行常规教程机器人
+本教程要求常规教程机器人处于运行状态
 
     npm run tutorial-general
 
@@ -37,39 +37,44 @@ ms.locfileid: "55209139"
 
 ## <a name="steps"></a>Steps
 
-### <a name="create-a-new-model"></a>创建新模型
+从 Web UI 的主页开始。
 
-1. 在 Web UI 中，单击“新建模型”按钮。
-2. 在“名称”字段中键入“实体解析程序”，然后按 Enter 或单击“创建”按钮。
+### <a name="create-the-model"></a>创建模型
+
+1. 选择**新的模型**。
+2. 输入**实体解决**有关**名称**。
+3. 选择“创建”。
 
 ### <a name="create-a-pair-of-entities"></a>创建一对实体
 
-1. 在左侧面板中单击“实体”，然后单击“新建实体”按钮。
-2. 在“实体名称”字段中键入“离开”。
-3. 在“解析程序类型”下拉列表中，选择“datetimeV2”。
-4. 单击“创建”按钮。
-5. 在阅读弹出的信息后，单击“确定”按钮。
-6. 执行相同的步骤，创建另一个名为“返回”的实体，该实体的解析程序类型也为“datetimeV2”。
+1. 选择**实体**在左侧的窗格中，然后**新实体**。
+2. 输入**出发**有关**实体名称**。
+3. 选择**datetimeV2**有关**冲突解决程序类型**。
+4. 选择“创建”。 通过选择关闭信息性弹出项**确定**。
+5. 重复步骤 1-4，创建名为的第二个实体**返回**与**datetimeV2**冲突解决程序类型。
+
+![](../media/T09_entities.png)
 
 ### <a name="create-a-pair-of-actions"></a>创建一对操作
 
-1. 在左面板中单击“操作”，然后单击“新建操作”按钮。
-2. 在“机器人的响应”字段中，键入“你在 $departure 离开，在 $return 返回”。
-    - 重要说明 - 键入“$[entityName]”时需按 Enter 或单击下拉列表中的实体，否则 Conversation Learner 会将其视为文本而非实体。
-    - 请注意，“所需实体”字段也会获得这些实体，这些实体不能删除。 这样会导致此操作不可用，直至两个所需的实体都存在。
-3. 单击“创建”按钮。
-4. 再次单击“新建操作”按钮，创建第二个操作。
-5. 在“机器人的响应”字段中，键入“你打算何时旅行？”。
-6. 在“取消实体资格”字段中键入“离开”，同时键入“返回”。
-    - 这是告知机器人，如果这两个实体中的任一个包含值，则不执行此操作。
-7. 单击“创建”按钮。
+1. 选择**操作**在左侧的窗格中，然后**新操作**。
+2. 输入**都将保留上 $departure 和返回上 $return**为**智能机器人应用程序的响应...**.
+    - 重要-键入 [entityName] 需要按输入或单击下拉列表否则为对话学习器中的实体将认为这是文本而不是实体时。
+    - 请注意，**所需实体**字段还将获得这些实体并且不能删除它们。 这样会导致此操作不可用，直至两个所需的实体都存在。
+3. 选择“创建”。
+4. 选择**新的操作**若要创建第二个操作。
+5. 输入**当你是否打算旅行？** 为**智能机器人应用程序的响应...**.
+6. 输入**出发**并**返回**有关**取消实体**。 这是告知机器人，如果这两个实体中的任一个包含值，则不执行此操作。
+7. 选择“创建”。
 
+![](../media/T09_actions.png)
 
 ### <a name="training"></a>培训
 
-1. 观察页面左上部分的“训练: [状态]”，等待它变为“已完成”。
+1. 观看**定型: [状态]** 中的左上角**已完成**。
     - 如果等待时间过长，可以单击“刷新”链接。
     - 训练状态必须是“已完成”，否则在训练模型时实体解析程序将无法运行。
+
 2. 在左侧面板上单击“训练对话”，然后单击“新建训练对话”按钮。
 3. 键入第一个用户话语“为我预订航班”。 
 4. 单击“对操作打分”按钮。
@@ -80,9 +85,11 @@ ms.locfileid: "55209139"
 8. 另请将文本“下周日”标记为“返回”
 9. 单击“对操作打分”按钮。
     - 注意“备忘”窗格包含离开和返回日期的情况。
-    - 将鼠标悬停在每个实体上面，观察这些实体作为日期对象的情况。这些对象会明确地捕获实际的日历日期，而不是“星期天”或“明天”。
+    - 悬停在每个并观察如何将实体是清楚地捕获实际的日历日期而不是"Sunday"或"tomorrow"的日期对象。
 10. 选择“你的离开日期为...”机器人响应。
 11. 单击“保存”按钮。
+
+![](../media/T09_training.png)
 
 ## <a name="next-steps"></a>后续步骤
 

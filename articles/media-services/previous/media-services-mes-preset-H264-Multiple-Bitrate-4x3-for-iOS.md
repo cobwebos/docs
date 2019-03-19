@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ca88af6b62b984e0a61326cdebcb2d7411e49ed3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: e4564b8844337335dcc016522a351e2496feb579
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998461"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57833701"
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>H264 多比特率 4x3 (iOS)
 `Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
   
- 本主题介绍 XML 和 JSON 格式的 `H264 Multiple Bitrate 4x3 for iOS` 预设。  
+ 本主题演示 XML 和 JSON 格式的 `H264 Multiple Bitrate 4x3 for iOS` 预设。  
   
  此预设产生一组 8 GOP 对齐的 MP4 文件，范围从 8500 kbps 到 200 kbps，以及立体声 AAC 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
   
@@ -35,7 +35,7 @@ ms.locfileid: "55998461"
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
-<Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">  
+<Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">  
   <Encoding>  
     <H264Video>  
       <KeyFrameInterval>00:00:03</KeyFrameInterval>  

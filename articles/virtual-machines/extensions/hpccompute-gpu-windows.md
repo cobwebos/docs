@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 4d3e77ab2ee7f25c9155feb9d40c0870103320d3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977620"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007913"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>适用于 Windows 的 NVIDIA GPU 驱动程序扩展
 
 ## <a name="overview"></a>概述
 
-此扩展在 Windows N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=874330)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
+此扩展在 Windows N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://developer.download.nvidia.com/compute/cuda/5_5/rel/docs/EULA.pdf)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
 此扩展也可用于在 [Linux N 系列 VM](hpccompute-gpu-linux.md) 上安装 NVIDIA GPU 驱动程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -71,7 +71,7 @@ ms.locfileid: "55977620"
 
 ### <a name="properties"></a>属性
 
-| Name | 值/示例 | 数据类型 |
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | 日期 |
 | 发布者 | Microsoft.HpcCompute | 字符串 |
@@ -162,7 +162,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | 错误代码 | 含义 | 可能的操作 |
 | :---: | --- | --- |
 | 0 | 操作成功 |
-| 1 | 操作成功。 需要重新启动。 |
+| 第 | 操作成功。 需要重新启动。 |
 | 100 | 操作不受支持或无法完成。 | 可能的原因：不支持 PowerShell 版本、VM 大小不是 N 系列 VM、下载数据失败。 请检查日志文件，以确定错误原因。 |
 | 240、840 | 操作超时。 | 请重试操作。 |
 | -1 | 发生异常。 | 请检查日志文件，以确定异常原因。 |

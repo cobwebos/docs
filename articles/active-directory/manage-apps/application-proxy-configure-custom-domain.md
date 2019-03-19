@@ -16,16 +16,16 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3918030925022ac20144f9adac6e7683bac64aa4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 05c537b061619aa458663a9dcfcc97155d8a6614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181756"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106791"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
-通过 Azure Active Directory 应用程序代理发布应用程序时，会创建可让用户在远程工作时访问的外部 URL。 此 URL 的默认域为 yourtenant.msappproxy.net。 例如，如果发布了一个名为 Expenses 的应用且租户名为 Contoso，则外部 URL 为 https://expenses-contoso.msappproxy.net。 如果想要使用自己的域名，请为应用程序配置自定义域。 
+通过 Azure Active Directory 应用程序代理发布应用程序时，会创建可让用户在远程工作时访问的外部 URL。 此 URL 的默认域为 yourtenant.msappproxy.net。 例如，如果发布了一个名为 Expenses 的应用且租户名为 Contoso，则外部 URL 为 `https://expenses-contoso.msappproxy.net`。 如果想要使用自己的域名，请为应用程序配置自定义域。 
 
 我们建议尽可能地为应用程序设置自定义域。 自定义域的部分优点包括：
 
@@ -36,7 +36,7 @@ ms.locfileid: "56181756"
 
 ## <a name="configure-a-custom-domain"></a>配置自定义域
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 配置自定义域之前，请确保根据以下要求做好准备： 
 - 一个[已添加到 Azure Active Directory 的经验证的域](../fundamentals/add-custom-domain.md)。

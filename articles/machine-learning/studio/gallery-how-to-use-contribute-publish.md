@@ -5,21 +5,21 @@ description: 在 Azure AI 库中共享和发现分析资源以及更多内容。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 48bb9b24901cd07891f3d52bcd916f95bc2801f4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885413"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 
-**[Azure AI 库](http://gallery.azure.ai)** 是一个社区驱动的站点，用于发现和共享使用 Azure AI 构建的解决方案。
+**[Azure AI 库](https://gallery.azure.ai)** 是一个社区驱动的站点，用于发现和共享使用 Azure AI 构建的解决方案。
 该库包含各种可用于开发自己的分析解决方案的资源。
 
 ## <a name="what-can-i-find-in-the-gallery"></a>可以在库中查找哪些内容？
@@ -201,4 +201,4 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 ![反馈](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[将我转到库 >>](http://gallery.azure.ai)**
+**[将我转到库 >>](https://gallery.azure.ai)**

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51daf3b9553babb5fc627c02d79914c68c318145
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 941a02ef9ab3d623d34c8dc6996040f6d9e44859
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190817"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>教程：Azure Active Directory 与 Screencast-O-Matic 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56190817"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Screencast-O-Matic 的集成，需备齐以下项目：
 
@@ -133,17 +133,17 @@ ms.locfileid: "56190817"
 
 9. 在“设置访问页”上，执行以下步骤：
 
-    * 在“访问 URL”部分的指定文本框中，键入实例名。
+   * 在“访问 URL”部分的指定文本框中，键入实例名。
 
-    ![访问](./media/screencast-tutorial/tutorial_screencast_access.png)
+     ![访问](./media/screencast-tutorial/tutorial_screencast_access.png)
 
-    * 在“SAML 用户限制(可选)”部分选择“需要域用户”。
+   * 在“SAML 用户限制(可选)”部分选择“需要域用户”。
 
-    * 在“上传 IDP 元数据 XML 文件”下单击“选择文件”，以便上传已从 Azure 门户下载的元数据。
+   * 在“上传 IDP 元数据 XML 文件”下单击“选择文件”，以便上传已从 Azure 门户下载的元数据。
 
-    * 单击“确定”。 
+   * 单击“确定”。 
 
-    ![访问](./media/screencast-tutorial/tutorial_screencast_save.png)
+     ![访问](./media/screencast-tutorial/tutorial_screencast_save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

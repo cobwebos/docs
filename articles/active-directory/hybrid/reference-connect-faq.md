@@ -15,16 +15,33 @@ ms.date: 11/02/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 594fb736b8ec4b49cf1525047ff8a7ce5e5dc959
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194965"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840896"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
 ## <a name="general-installation"></a>常规安装
+
+**问：如何强制执行我的 Azure AD Connect 服务器以减少安全攻击面？**
+
+Microsoft 建议强化你的 Azure AD Connect 服务器以减少您的 IT 环境的此关键组件的安全攻击面。  遵循以下建议将降低你的组织的安全风险。
+
+* 部署在加入域的服务器上的 Azure AD Connect，并向域管理员或其他受到严格控制的安全组限制管理访问权限
+
+若要了解更多信息，请参阅以下文章： 
+
+* [保护管理员组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+
+* [确保内置管理员帐户的安全](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+
+* [安全改进并减少攻击面 sustainment](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+
+* [减少 Active Directory 攻击面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+
 **问：如果 Azure Active Directory (Azure AD) 全局管理员已启用双重身份验证 (2FA)，安装是否能够正常进行？**  
 2016 年 2 月版开始支持此方案。
 

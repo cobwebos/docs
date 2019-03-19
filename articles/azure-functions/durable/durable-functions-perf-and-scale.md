@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.openlocfilehash: 170f20ae65a8ba58291a630dc76496cbdcdb36de
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341162"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138110"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -48,6 +48,15 @@ Durable Functions 中的每个任务中心都有一个工作项队列。 它是�
 Durable Functions 中的每个任务中心有多个控制队列。 与较为简单的工作项队列相比，控制队列更加复杂。 控制队列用于触发有状态的业务流程协调程序函数。 由于业务流程协调程序函数实例是有状态的单一实例，无法使用竞争性使用者模型在 VM 之间分配负载。 业务流程协调程序消息会在控制队列之间进行负载均衡。 后续部分将会更详细地介绍此行为。
 
 控制队列包含各种业务流程生命周期消息类型。 示例包括[业务流程协调程序控制消息](durable-functions-instance-management.md)、活动函数响应消息和计时器消息。 在单次轮询中，最多会从一个控制队列中取消 32 条消息的排队。 这些消息包含有效负载数据以及元数据，包括适用的业务流程实例。 如果将多个取消排队的消息用于同一业务流程实例，将会批处理这些消息。
+
+### <a name="queue-polling"></a>队列轮询
+
+Durable task 扩展实现了随机指数退让算法，以降低空闲队列轮询对存储事务成本的影响。 当找到消息时，则运行时会立即检查另一条消息;未找到消息，它将等待一段时间，然后重试。 后续尝试失败后以获取队列消息，等待时间将继续增加，直到达到的最长等待时间，默认为 30 秒。
+
+是通过可配置的最大轮询延迟`maxQueuePollingInterval`中的属性[host.json 文件](../functions-host-json.md#durabletask)。 此值设置为较高的值可能导致更高版本的消息处理延迟。 在处于非活动状态的时间段后才应在更高的延迟。 此值设置为较低的值可能导致由于更高的存储事务的存储成本较高。
+
+> [!NOTE]
+> Azure Functions 消耗计划和高级计划，在运行时[Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-plan-works)将轮询每个控件和工作项队列一次每隔 10 秒。 此附加的轮询有必要确定何时激活函数应用实例并做出缩放决策。 在撰写本文时，此 10 的第二个间隔保持不变，并且无法进行配置。
 
 ## <a name="storage-account-selection"></a>存储帐户的选择
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: bd12aabf0ca8f82261e6b3c677d7306ee46c4171
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308611"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990567"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
@@ -112,8 +112,8 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](lifecycle.md)
-- 了解如何使用[静态和动态参数](parameters.md)
-- 了解如何使用[蓝图资源锁定](resource-locking.md)
-- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)
-- 使用[常规疑难解答](../troubleshoot/general.md)在蓝图分配期间解决问题
+- 了解如何[蓝图生命周期](lifecycle.md)。
+- 了解如何使用[静态和动态参数](parameters.md)。
+- 了解如何使利用[蓝图资源锁定](resource-locking.md)。
+- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
+- 使用蓝图赋值的过程中解决的问题[常规故障排除](../troubleshoot/general.md)。

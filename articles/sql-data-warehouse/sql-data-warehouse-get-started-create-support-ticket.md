@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4761a50905f28c215a47d579b931ab5db9d7e424
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: b3ffc9794967f44708d8330d4dc5d5de11b794d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468064"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079173"
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>如何创建 SQL 数据仓库的支持票证
 如果在 SQL 数据仓库方面遇到任何问题，请创建支持票证，让我们的工程支持团队帮助你。
@@ -35,8 +35,8 @@ ms.locfileid: "55468064"
      
      如果购买了顶级支持计划，还可以在 [Microsoft Premier 在线门户][Microsoft Premier online portal]中报告 SQL 数据仓库的相关问题。  若要深入了解各种支持计划（包括范围、响应时间、定价等），请参阅 [Azure 支持计划][Azure support plan]。有关 Azure 支持的常见问题，请参阅 [Azure 支持常见问题][Azure support FAQs]。  
         
-    ![“基本信息”边栏选项卡](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_1.PNG)
-    ![“基本信息”边栏选项卡 1](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_2.PNG)
+     ![“基本信息”边栏选项卡](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_1.PNG)
+     ![“基本信息”边栏选项卡 1](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_2.PNG)
 4. 填写“问题”边栏选项卡。
     ![Problem_blade](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_3.PNG)
    
@@ -46,7 +46,7 @@ ms.locfileid: "55468064"
    > 
    
 5. 填写**联系信息**。
-![Contact_information](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_4.PNG)
+   ![Contact_information](./media/sql-data-warehouse-get-started-create-support-ticket/Create_ticket_4.PNG)
 
     
 6. 单击“创建”提交支持请求。

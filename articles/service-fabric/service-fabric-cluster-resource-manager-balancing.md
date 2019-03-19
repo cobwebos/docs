@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5d2f195c50750a5c7685f62c909f77b2960613e6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 9a124bd9a52e22c359fb771e4d4c8714bd1dbe2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213140"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123226"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>均衡 Service Fabric 群集
 Service Fabric 群集资源管理器支持动态负载更改、对添加或删除节点或服务做出反应。 还会自动更正约束冲突和主动重新均衡群集。 但这些操作的执行频率是多少，又是什么触发了这些操作？
@@ -85,7 +85,7 @@ ClusterManifest.xml：
 
 例如，节点出现故障时，它们可以一次性地对整个容错域执行这样的操作。 会在 PLBRefreshGap 后的下一个状态更新过程中捕获所有这些故障。 在以下放置、约束检查和均衡运行的过程中，确定要修正的内容。 默认情况下，群集 Resource Manager 不会扫描群集中数小时的更改，也不会尝试同时处理所有更改。 这会导致大量改动。
 
-群集 Resource Manager 还需要一些其他信息以确定群集是否不均衡。 为此，我们设置了其他两项配置：BalancingThresholds 和 ActivityThresholds。
+群集 Resource Manager 还需要一些其他信息以确定群集是否不均衡。 为此，我们还提供了另外两个配置：*BalancingThresholds* 和 *ActivityThresholds*。
 
 ## <a name="balancing-thresholds"></a>均衡阈值
 均衡阈值是触发重新均衡的主要控件。 指标的均衡阈值是一个比率。 如果负载最重的节点上某个指标的负载除以负载最轻的节点的负载量超过指标的 BalancingThreshold，群集是不均衡的。 因此，群集 Resource Manager 下次检查时会触发均衡。 MinLoadBalancingInterval 计时器定义群集资源管理器应检查是否需要重新均衡的频率。 检查并不代表发生任何事件。 
@@ -122,7 +122,8 @@ ClusterManifest.xml
 ```
 
 <center>
-![均衡阈值示例][Image1]
+
+![平衡阈值示例][Image1]
 </center>
 
 在此示例中，每个服务使用一个单位的指标。 在顶部的示例中，节点的最大负载为 5，最小负载为 2。 假设此指标的均衡阈值为 3。 由于群集中的比率是 5/2 = 2.5，小于指定的均衡阈值 3，所以群集是均衡的。 群集 Resource Manager 执行检查时，不会触发均衡。
@@ -130,7 +131,8 @@ ClusterManifest.xml
 在底部的示例中，节点的最大负载为 10，最小负载为 2，因此比率为 5。 5 大于该指标的指定均衡阈值 3。 因此，下一次引发均衡计时器时，将计划运行重新均衡。 在此类似情况下，一些负载通常会分配到 Node3。 因为 Service Fabric 群集资源管理器不使用贪婪方法，所以一些负载也可能分配到 Node2。 
 
 <center>
-![均衡阈值示例操作][Image2]
+
+![平衡阈值示例操作][Image2]
 </center>
 
 > [!NOTE]
@@ -145,6 +147,7 @@ ClusterManifest.xml
 假设我们为此指标保留三个均衡阈值。 另外假设具有 1536 个活动阈值。 在第一种情况下，虽然根据均衡阈值，群集为不均衡状态，但没有任何节点满足活动阈值，因此不会发生任何事件。 在底部的示例中，Node1 超过活动阈值。 由于同时超过了指标的均衡阈值和活动阈值，所以计划进行均衡。 有关示例，请看下图： 
 
 <center>
+
 ![活动阈值示例][Image3]
 </center>
 
@@ -191,10 +194,11 @@ ClusterManifest.xml
 - Service3 报告指标 Metric3 和 Metric4。
 - Service4 报告指标 Metric99。 
 
-可以看到此处的运行情况：这里是一个链条！ 我们没有 4 个独立的服务，我们拥有 3 个相关的服务以及 1 个独立的服务。
+可以看到，我们的现状：这里是一个链条！ 我们没有 4 个独立的服务，我们拥有 3 个相关的服务以及 1 个独立的服务。
 
 <center>
-![一起均衡服务][Image4]
+
+![一起平衡服务][Image4]
 </center>
 
 由于此链条，指标 1-4 不均衡可能会导致属于服务 1-3 的副本或实例四处移动。 此外，指标 1、2 或 3 不均衡一定不会在 Service4 中引起移动。 因为移动属于 Service4 的副本或实例绝对不会影响指标 1-3 的均衡，所以这样做毫无意义。
@@ -202,7 +206,8 @@ ClusterManifest.xml
 群集资源管理器会自动计算出哪些服务是相关的。 添加、移除或更改服务的指标会影响服务间的关系。 例如，在两次运行均衡之间，Service2 可能已经更新为删除 Metric2。 这会中断 Service1 和 Service2 之间的链接。 现在有三组相关服务，而不是两组：
 
 <center>
-![一起均衡服务][Image5]
+
+![一起平衡服务][Image5]
 </center>
 
 ## <a name="next-steps"></a>后续步骤

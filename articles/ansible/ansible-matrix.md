@@ -1,19 +1,19 @@
 ---
 title: 适用于 Azure 的 Ansible 模块和版本矩阵
 description: 适用于 Azure 的 Ansible 模块和版本矩阵
-ms.service: ansible
+ms.service: azure
 keywords: ansible, 角色, 矩阵, 版本, azure, devops
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: 149f37d0231ecc0547e8dc7937d22a9cc38b7df3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: f2f1dccfd5b91205d0673c2b82ad7cfa673f61f6
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810212"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791811"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible 模块和版本矩阵
 

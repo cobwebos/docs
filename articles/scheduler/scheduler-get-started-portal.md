@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: f1f7e67fbd5d8a9ebfae03c00eb0de36e86d9a97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949581"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887215"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>使用 Azure 计划程序创建和计划第一个作业 - Azure 门户
 
@@ -34,24 +34,24 @@ ms.locfileid: "46949581"
 
    ![创建计划程序资源](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
-   现在，创建一个将 GET 请求发送到此 URL 的作业：`http://www.microsoft.com/` 
+   现在，创建一个将 GET 请求发送到此 URL 的作业：`https://www.microsoft.com/` 
 
 1. 在“计划程序作业”下，输入这些信息：
 
-   | 属性 | 示例值 | Description |
+   | 属性 | 示例值 | 描述 |
    |----------|---------------|-------------| 
-   | **Name** | getMicrosoft | 作业的名称 | 
+   | **名称** | getMicrosoft | 作业的名称 | 
    | **作业集合** | <job-collection-name> | 创建一个作业集合，或选择现有的集合。 | 
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称 | 
    |||| 
 
 1. 选择“操作设置 - 配置”，提供此信息，完成后选择“确定”：
 
-   | 属性 | 示例值 | Description |
+   | 属性 | 示例值 | 描述 |
    |----------|---------------|-------------| 
    | **Action** | Http | 要运行的操作类型 | 
    | **方法** | Get | 要调用的方法 | 
-   | **URL** | **http://www.microsoft.com** | 目标 URL | 
+   | **URL** | **https://www.microsoft.com** | 目标 URL | 
    |||| 
    
    ![定义作业](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)
@@ -60,7 +60,7 @@ ms.locfileid: "46949581"
 
    尽管可以创建一次性作业，但此示例设置的是定期计划。
 
-   | 属性 | 示例值 | Description |
+   | 属性 | 示例值 | 描述 |
    |----------|---------------|-------------| 
    | **定期** | 定期 | 一次性或定期作业 | 
    | **Start on** | <今天的日期> | 作业的开始日期 | 
@@ -107,7 +107,7 @@ ms.locfileid: "46949581"
 
 ![查看操作设置](./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png)
 
-| 操作类型 | Description | 
+| 操作类型 | 描述 | 
 |-------------|-------------| 
 | 所有类型 | 可以更改“重试策略”和“错误操作”设置。 | 
 | HTTP 和 HTTPS | 可以将“方法”更改为任何允许的方法。 还可以添加、删除或更改标头及基本身份验证信息。 | 

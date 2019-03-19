@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 954a57bb9253e4f18d61c3a699b6e721568da292
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: ae8dc263e08528c6e3b3bae8c779162c96d51f43
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157393"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100779"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>将 MXChip IoT DevKit 连接到 Azure IoT 远程监视解决方案加速器
 
@@ -76,8 +76,8 @@ ms.locfileid: "54157393"
 
 3. 将 DevKit 连接到计算机。 VS Code 将自动检测 DevKit 并打开以下页面：
 
-  * DevKit 简介页面。
-  * Arduino 示例：DevKit 入门练习示例。
+   * DevKit 简介页面。
+   * Arduino 示例：DevKit 入门练习示例。
 
 4. 展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > AzureIoT”，然后选择“RemoteMonitoring”。 它将打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
 
@@ -126,7 +126,7 @@ DevKit 将重新启动并开始运行代码。
 
 如果遇到问题，请参阅 [IoT 开发人员工具包常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或通过以下渠道联系我们：
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>后续步骤

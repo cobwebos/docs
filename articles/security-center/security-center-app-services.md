@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: monhaber
-ms.openlocfilehash: f90ad2707e42c4b5b2c4188d7f0f18bb9c5ea31b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105020"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878624"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>使用 Azure 安全中心保护应用服务
 本文帮助你使用 Azure 安全中心来监视和保护在应用服务上运行的应用程序。
@@ -32,7 +32,7 @@ Azure 安全中心可以在 VM 或按需实例的沙盒中运行评估，并针�
 
 安全中心利用云的规模来识别应用服务应用程序受到的攻击，并专注于新兴攻击；当攻击者处于侦测阶段时，它会执行扫描来识别 Azure 中托管的多个网站上的漏洞。 安全中心使用分析和机器学习模型来全面检测所有接口，使客户能够与其应用程序交互（不管是通过 HTTP 还是管理方法）。 此外，作为 Azure 中的第一方服务，安全中心还在独特的立场提供基于主机的安全分析（涵盖此 PaaS 的底层计算节点），因此，安全中心可以检测已遭恶意利用的 Web 应用程序受到的攻击。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要监视和保护应用服务，必须创建一个与专用计算机关联的应用服务计划。 这些计划包括：“基本”、“标准”、“高级”、“独立”或“Linux”。 Azure 安全中心不支持“免费”、“共享”或“消耗”计划。 有关详细信息，请参阅[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 
@@ -68,4 +68,4 @@ Azure 安全中心保护运行应用服务的 VM 实例以及管理接口。 此
 * [应用服务](security-center-virtual-machine-protection.md#app-services)：查看包含运行状况摘要的应用服务环境列表。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状况。
 * [Azure 安全中心常见问题解答](security-center-faq.md)：查找有关如何使用服务的常见问题。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/)：查找关于 Azure 安全性及合规性的博客文章。
+* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)：查找关于 Azure 安全性及合规性的博客文章。

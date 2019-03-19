@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
-Customer intent: As a IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: b58cbcdccced3952c3171daa14f80986e473c5dd
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
+ms.openlocfilehash: 29c04fc04b5d277e982a37402a128b2dbe787e2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898493"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
@@ -67,7 +67,7 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 
 ## <a name="reverse-proxy"></a>反向代理
 
-使用 Azure AD 应用程序代理可以在专用网络内部发布本地应用程序（例如 [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) 站点、[Outlook Web 应用](https://technet.microsoft.com/library/jj657718.aspx)和基于 [IIS](http://www.iis.net/) 的应用），并网络之外的用户提供安全访问。 应用程序代理为许多类型的本地 Web 应用程序和 Azure AD 支持的数以千计的 SaaS 应用程序提供远程访问和 SSO。 员工可以从家中他们自己的设备登录到应用，并通过此基于云的代理进行身份验证。
+使用 Azure AD 应用程序代理可以在专用网络内部发布本地应用程序（例如 [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) 站点、[Outlook Web 应用](https://technet.microsoft.com/library/jj657718.aspx)和基于 [IIS](https://www.iis.net/) 的应用），并网络之外的用户提供安全访问。 应用程序代理为许多类型的本地 Web 应用程序和 Azure AD 支持的数以千计的 SaaS 应用程序提供远程访问和 SSO。 员工可以从家中他们自己的设备登录到应用，并通过此基于云的代理进行身份验证。
 
 了解更多：
 

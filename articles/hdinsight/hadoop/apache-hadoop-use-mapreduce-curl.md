@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: ff905f34ab63027e9708082c4690e4275220854f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: HT
+ms.openlocfilehash: b422074c33f52a6819d2a05144a85768a2e484a0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406787"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011917"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
-了解如何使用 Apache Hive WebHCat REST API 在 Apache Hadoop on HDInsight 群集上运行 MapReduce 作业。 本文档使用 Curl 演示如何通过使用原始 HTTP 请求来与 HDInsight 交互，以便运行 MapReduce 作业。
+了解如何使用 Apache Hive WebHCat REST API 在 HDInsight 群集上的 Apache Hadoop 上运行 MapReduce 作业。 本文档使用 Curl 演示如何通过使用原始 HTTP 请求来与 HDInsight 交互，以便运行 MapReduce 作业。
 
 > [!NOTE]  
 > 如果已熟悉如何使用基于 Linux 的 Hadoop 服务器，但刚接触 HDInsight，请参阅 [HDInsight 上的基于 Linux 的 Apache Hadoop 须知信息](../hdinsight-hadoop-linux-information.md)文档。
@@ -107,12 +107,12 @@ ms.locfileid: "53406787"
     URI 的末尾 (/mapreduce/jar) 告知 WebHCat，此请求从 jar 文件中的类启动 MapReduce 作业。 此命令中使用的参数如下：
 
    * **-d**：由于不使用 `-G`，因此请求默认为使用 POST 方法。 `-d` 指定与请求一起发送的数据值。
-    * **user.name**：正在运行命令的用户
-    * **jar**：包含要运行的类的 jar 文件所在位置
-    * **class**：包含 MapReduce 逻辑的类
-    * **arg**：要传递到 MapReduce 作业的参数。 在此示例中是用于输出的输入文本文件和目录
+     * **user.name**：正在运行命令的用户
+     * **jar**：包含要运行的类的 jar 文件所在位置
+     * **class**：包含 MapReduce 逻辑的类
+     * **arg**：要传递到 MapReduce 作业的参数。 在此示例中是用于输出的输入文本文件和目录
 
-   此命令应会返回可用来检查作业状态的作业 ID：
+   此命令应返回可用来检查作业状态的作业 ID：
 
        job_1415651640909_0026
 

@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 92b7714e9f6635cf0b44a98a16ddb4616643ba81
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103066"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544556"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
@@ -48,7 +48,7 @@ IaaS 解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure�
 
 -   **体系结构图。** 此图显示了用于蓝图和示例用例方案的引用体系结构。
 
--   [IaaS 扩展](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) 此解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure，以及如何实现特权访问工作站以安全地管理基于云的服务和解决方案。 
+-   [IaaS 扩展](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md)此解决方案将演示如何将本地基于 SQL 解决方案迁移到 Azure，以及如何实现特权访问工作站安全地管理基于云的服务和解决方案。 
 
 ## <a name="solution-components"></a>解决方案组件
 
@@ -93,7 +93,7 @@ IaaS 解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure�
 
 -   范围：resourceGroup
 
- ### <a name="data-scientist"></a>数据科学家
+### <a name="data-scientist"></a>数据科学家
 
 
 数据科学家操作 Azure 机器学习工作室。 他们可以导入、导出和管理数据，并且可以运行报表。 数据科学家有权访问病人数据，但没有管理员权限。
@@ -272,7 +272,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 **2.Key Vault** 请求获取与请求的令牌关联的机密。
 
-**3. Azure 角色验证请求，并对向 Key Vault 发出的访问请求授权。
+**3.Azure 角色**验证请求，并授予对 Key Vault 的访问请求。
 
 **4.Key Vault** 返回机密。在此示例中，该机密为 SQL DB 连接字符串。
 
@@ -361,8 +361,8 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 ### <a name="azure-alerts"></a>Azure 警报
 - 可以通过警报这种方法来监视 Azure 服务并根据数据来配置条件。 当警报条件与监视的数据匹配时，警报还会提供通知。
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) 是管理服务的集合。
+### <a name="azure-monitor-logs"></a>Azure Monitor 日志
+[Azure Monitor 日志](/azure/operations-management-suite/operations-management-suite-overview)是管理服务的集合。
 
 -   已为安全中心启用工作区
 

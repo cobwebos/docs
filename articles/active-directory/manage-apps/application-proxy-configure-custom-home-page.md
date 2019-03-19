@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc6b9ad5227bc5bffd1f44f664351843896aec
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e8017049218bed5a1b1bd86b68dc4342b4044723
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181603"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109774"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理为发布的应用设置自定义主页
 
@@ -30,10 +30,10 @@ ms.locfileid: "56181603"
 当用户启动应用时，他们默认会定向到已发布应用的根域 URL。 登陆页通常设置为主页 URL。 如果希望应用用户登录到应用中的特定页面，请使用 Azure AD PowerShell 模块来定义自定义主页 URL。 
 
 下面通过一个示例解释了公司为什么要设置自定义主页：
-- 在公司网络内，用户转到 *https://ExpenseApp/login/login.aspx* 来登录并访问你的应用。
-- 因为你有应用程序代理需要在文件夹结构顶层访问的其他资产（如映像），因此，你需要使用 *https://ExpenseApp* 作为内部 URL 发布应用。
-- 默认的外部 URL 是 *https://ExpenseApp-contoso.msappproxy.net*，无法将用户转到登录页。  
-- 请将 *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* 设置为主页 URL。 
+- 在公司网络，请转到的用户`https://ExpenseApp/login/login.aspx`登录并访问你的应用。
+- 由于你有其他资产，例如应用程序代理需要访问的文件夹结构的顶层的图像，发布应用程序与`https://ExpenseApp`作为内部 URL。
+- 默认外部 URL 是`https://ExpenseApp-contoso.msappproxy.net`，不会将用户用于登录页。  
+- 设置`https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`为主页 URL。 
 
 >[!NOTE]
 >向用户提供对已发布应用的访问权限时，会在 [Azure AD 访问面板](../user-help/active-directory-saas-access-panel-introduction.md)和 [Office 365 应用启动器](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher)中显示这些应用。
@@ -113,7 +113,7 @@ ms.locfileid: "56181603"
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
- 确认应用后，便可以按如下所述更新主页。
+   确认应用后，便可以按如下所述更新主页。
 
 2. 创建一个空白应用程序对象用于保存想要做出的更改。 此变量包含你想要更新的值。 在此步骤中没有创建任何内容。
 

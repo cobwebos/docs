@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 9a76ad219e538874af04a72c9aa64e87a35bc53d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: c1618d3402b37e91b3cf17365d6ccbf1285f4847
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434879"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993778"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 群集的日志
 
@@ -77,7 +77,7 @@ HDInsight 日志管理的典型步骤如下：
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>使用 Ambari UI 查看群集配置设置
 
-Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、配置和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户的“HDInsight”页上选择“群集仪表板”窗格，打开“群集仪表板”链接页。  接下来，选择“HDInsight 群集仪表板”窗格打开 Ambari UI。  系统会提示输入群集登录凭据。
+Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、配置和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 选择**群集仪表板**在 Azure 门户 HDInsight 上打开的窗格**群集仪表板**链接页。  接下来，选择“HDInsight 群集仪表板”窗格打开 Ambari UI。  系统会提示输入群集登录凭据。
 
 若要打开服务视图列表，请在 Azure 门户页上选择 HDInsight 对应的“Ambari 视图”窗格。  此列表的内容根据安装的库而异。  例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择任一服务链接以查看配置和服务信息。  Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。 若要导航到 Ambari UI 的此部分，请选择“管理”菜单，然后选择“堆栈和版本”。  选择“版本”选项卡查看服务版本信息。
 

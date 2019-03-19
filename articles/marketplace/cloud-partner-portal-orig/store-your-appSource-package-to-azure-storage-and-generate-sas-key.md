@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 335590cc616035020f66cfc5208e21d4c5128fe6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: ad0e6eaae5c0fad74ea484827e0f8d535cfbf579
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884653"
 ---
 <a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>将 AppSource 包存储到 Azure 存储中并使用 SAS 密钥生成 URL
 =============================================================================
@@ -28,39 +28,39 @@ ms.locfileid: "48805784"
 
 使用以下步骤将你的包上传到 Blob 存储：
 
-1.  转到 <http://azure.microsoft.com> 并创建一个免费试用版或收费帐户。
+1. 转到 <https://azure.microsoft.com> 并创建一个免费试用版或收费帐户。
 
-2.  登录到 [Azure 门户](http://portal.azure.com/)。
+2. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-3.  通过单击“+ 新建”并转到“数据 + 存储”帐户来创建一个新的存储帐户。
+3. 通过单击“+ 新建”并转到“数据 + 存储”帐户来创建一个新的存储帐户。
 
-  ![Microsoft Azure 门户中的“数据 + 存储”边栏选项卡](media/CRMScreenShot7.png)
+   ![Microsoft Azure 门户中的“数据 + 存储”边栏选项卡](media/CRMScreenShot7.png)
 
 4. 输入**名称**和**资源组**名称，然后单击“创建”按钮。
 
-  ![在 Microsoft Azure 门户中创建存储帐户](media/CRMScreenShot8.png)
+   ![在 Microsoft Azure 门户中创建存储帐户](media/CRMScreenShot8.png)
 
 5. 导航到新创建的资源组并创建一个新的 blob 容器。
 
-  ![使用 Microsoft Azure 门户将包上传为 blob](media/CRMScreenShot9.png)
+   ![使用 Microsoft Azure 门户将包上传为 blob](media/CRMScreenShot9.png)
 
-6.  下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)（如果尚未执行此操作）。
+6. 下载并安装 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)（如果尚未执行此操作）。
 
-7.  打开存储资源管理器，并使用图标来连接到你的 Azure 存储帐户。
+7. 打开存储资源管理器，并使用图标来连接到你的 Azure 存储帐户。
 
-8.  导航到你创建的 blob 容器，然后单击“上传”来添加包 zip 文件。
+8. 导航到你创建的 blob 容器，然后单击“上传”来添加包 zip 文件。
 
-  ![使用 Microsoft 存储资源管理器上传包](media/CRMScreenShot10.png)
+   ![使用 Microsoft 存储资源管理器上传包](media/CRMScreenShot10.png)
 
-9.  右键单击你的文件，并选择“获取共享访问签名”。
+9. 右键单击你的文件，并选择“获取共享访问签名”。
 
-  ![获取 Azure 文件的共享访问签名](media/CRMScreenShot11.png)
+   ![获取 Azure 文件的共享访问签名](media/CRMScreenShot11.png)
 
-10.  修改“到期时间”以使 SAS 在一个月内保持活动状态，然后单击“创建”。
+10. 修改“到期时间”以使 SAS 在一个月内保持活动状态，然后单击“创建”。
 
-  ![修改 Azure 文件的 SAS 到期日期](media/CRMScreenShot12.png)
+    ![修改 Azure 文件的 SAS 到期日期](media/CRMScreenShot12.png)
 
-11.  复制 URL 字段并保存它供以后使用。 在创建关联的产品/服务时需要输入此 URL。 
+11. 复制 URL 字段并保存它供以后使用。 在创建关联的产品/服务时需要输入此 URL。 
 
-  ![复制 Azure 文件的 SAS URL](media/CRMScreenShot13.png)
+    ![复制 Azure 文件的 SAS URL](media/CRMScreenShot13.png)
 

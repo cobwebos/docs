@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 2e68ad6d999a5ff003abe35a0cce75bc5f2cebef
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723920"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104448"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
 
@@ -75,17 +75,17 @@ ms.locfileid: "53723920"
 1. 通过克隆预定义的“只读”角色创建新角色，然后为其提供一个方便的名称（例如此示例中显示的 Azure_Site_Recovery）。
 2. 将以下权限分配给该角色：
 
-    * **数据存储**：分配空间、浏览数据存储、降低文件操作级别、删除文件、更新虚拟机文件
-    * **网络**：网络分配
-    * **资源**：将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM
-    * **任务**：创建任务、更新任务
-    * **VM - 配置**：All
-    - **VM - 交互**>回答问题、设备连接、配置 CD 介质、配置软盘介质、关机、开机、VMware 工具安装
-    - **VM - 清单**> 从现有项创建、新建、注册、注销
-    - **VM - 预配**>允许虚拟机下载、允许虚拟机文件上传
-    - **VM - 快照管理**>删除快照
+   * **数据存储**：分配空间、浏览数据存储、降低文件操作级别、删除文件、更新虚拟机文件
+   * **网络**：网络分配
+   * **资源**：将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM
+   * **任务**：创建任务、更新任务
+   * **VM - 配置**：All
+   * **VM - 交互**>回答问题、设备连接、配置 CD 介质、配置软盘介质、关机、开机、VMware 工具安装
+   * **VM - 清单**> 从现有项创建、新建、注册、注销
+   * **VM - 预配**>允许虚拟机下载、允许虚拟机文件上传
+   * **VM - 快照管理**>删除快照
 
-        ![“编辑角色”对话框](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
+       ![“编辑角色”对话框](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
 3. 将访问级别分配给各种对象的 vCenter 帐户（在租户配置服务器中使用），如下所示：
 

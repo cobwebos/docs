@@ -1,8 +1,7 @@
 ---
 title: 连接到 MQ server - Azure 逻辑应用 | Microsoft Docs
 description: 使用 Azure 或本地 MQ 服务器和 Azure 逻辑应用发送和检索消息
-author: valthom
-manager: jeconnoc
+author: valrobb
 ms.author: valthom
 ms.date: 06/01/2017
 ms.topic: article
@@ -11,52 +10,52 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 6b34bd7b286ca3b206c611343217c90e0d57fbfb
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 9e6ae5cb0afd75a1e87fe4d4d0cf307abab5a02a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295904"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167875"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>使用 MQ 连接器从逻辑应用连接到 IBM MQ 服务器 
+# <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>使用 MQ 连接器从逻辑应用连接到 IBM MQ 服务器
 
-Microsoft Connector for MQ 会发送和检索存储在 MQ 服务器本地或 Azure 中的消息。 此连接器包括要在 TCP/IP 网络上与远程 IBM MQ 服务器计算机通信的 Microsoft MQ 客户端。 本文档是使用 MQ 连接器的初学者指南。 建议首先浏览队列中的单个消息，然后尝试其他操作。    
+Microsoft Connector for MQ 会发送和检索存储在 MQ 服务器本地或 Azure 中的消息。 此连接器包括要在 TCP/IP 网络上与远程 IBM MQ 服务器计算机通信的 Microsoft MQ 客户端。 本文档是使用 MQ 连接器的初学者指南。 建议首先浏览队列中的单个消息，然后尝试其他操作。
 
 MQ 连接器包括以下操作。 没有任何触发器。
 
--   浏览单个消息，而不从 IBM MQ 服务器中删除该消息
--   浏览一批消息，而不从 IBM MQ 服务器中删除这些消息
--   接收单个消息，并从 IBM MQ 服务器中删除该消息
--   接收一批消息，并从 IBM MQ 服务器中删除这些消息
--   将单个消息发送到 IBM MQ 服务器 
+- 浏览单个消息，而不从 IBM MQ 服务器中删除该消息
+- 浏览一批消息，而不从 IBM MQ 服务器中删除这些消息
+- 接收单个消息，并从 IBM MQ 服务器中删除该消息
+- 接收一批消息，并从 IBM MQ 服务器中删除这些消息
+- 将单个消息发送到 IBM MQ 服务器
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果使用本地 MQ 服务器，则在网络中的服务器上[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 如果 MQ 服务器公开可用，或在 Azure 中可用，则不使用或无需数据网关。
 
     > [!NOTE]
-    > 安装本地数据网关的服务器还必须安装 .Net Framework 4.6，才能使 MQ 连接器正常运行。
+    > 安装本地数据网关的服务器还必须具有为 MQ 连接器正常安装.NET Framework 4.6。
 
 * 为本地数据网关创建 Azure 资源 - [设置数据网关连接](../logic-apps/logic-apps-gateway-connection.md)。
 
 * 官方支持的 IBM WebSphere MQ 版本：
-   * MQ 7.5
-   * MQ 8.0
+    * MQ 7.5
+    * MQ 8.0
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。 
+1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
 2. 输入“名称”（如 MQTestApp）、“订阅”、“资源组”和“位置”（使用在其中配置本地数据网关连接的位置）。 选择“固定到仪表板”，并选择“创建”。  
 ![创建逻辑应用](media/connectors-create-api-mq/Create_Logic_App.png)
 
 ## <a name="add-a-trigger"></a>添加触发器
 
 > [!NOTE]
-> MQ 连接器没有任何触发器。 因此，使用另一个触发器启动逻辑应用，如“重复”触发器。 
+> MQ 连接器没有任何触发器。 因此，使用另一个触发器启动逻辑应用，如“重复”触发器。
 
 1. “逻辑应用设计器”随即打开，在常用触发器列表中选择“重复”。
-2. 在重复触发器中选择“编辑”。 
-3. 将“频率”设置为“天”，并将“间隔”设置为 **7**。 
+2. 在重复触发器中选择“编辑”。
+3. 将“频率”设置为“天”，并将“间隔”设置为 **7**。
 
 ## <a name="browse-a-single-message"></a>浏览单个消息
 1. 选择“+ 新步骤”，然后选择“添加操作”。
@@ -66,9 +65,9 @@ MQ 连接器包括以下操作。 没有任何触发器。
 3. 如果没有现有 MQ 连接，则创建连接：  
 
     1. 选择“通过本地数据网关连接”，然后输入 MQ 服务器的属性。  
-    对于“服务器”，可以输入 MQ 服务器名称，或输入后跟冒号和端口号的 IP 地址。 
+    对于“服务器”，可以输入 MQ 服务器名称，或输入后跟冒号和端口号的 IP 地址。
     2. “网关”下拉列表会列出已配置的所有现有网关连接。 选择你的网关。
-    3. 完成后，选择“创建”。 你的连接会类似于以下内容：   
+    3. 完成后，选择“创建”。 你的连接会类似于以下内容：  
     ![连接属性](media/connectors-create-api-mq/Connection_Properties.png)
 
 4. 在操作属性中，可以：  

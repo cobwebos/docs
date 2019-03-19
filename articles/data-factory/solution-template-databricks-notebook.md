@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 3d7fd9b3e7ab8e5f193fd3b34a804b9ed0780d66
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 884a13df23fd0cc1103b6a73fad26f2099e3bfd7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105682"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074686"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Databricks 转换数据
 
@@ -31,9 +31,9 @@ ms.locfileid: "56105682"
 
 模板不会创建计划的触发器，以确保此模板简单好用。 如有必要，可添加触发器。
 
-![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
+![第](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 1.  创建一个“blob 存储帐户”和一个将用作“接收器”的名为 `sinkdata` 的容器。 记下“存储帐户名称”、“容器名称”和“访问密钥”，因为稍后将在模板中引用它们。
 
@@ -54,9 +54,9 @@ ms.locfileid: "56105682"
 
     try:  
       dbutils.fs.mount(  
-        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
-        mount_point = "/mnt/Data Factorydata",  
-        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
+        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
+        mount_point = "/mnt/Data Factorydata",  
+        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
 
     except Exception as e:  
       # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.

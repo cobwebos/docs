@@ -6,12 +6,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3c59b96146928a066c70113cb3fb1cd1915d9c8b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 6902b1a26d02efbf1a31fe9a3a25253a6b5a5604
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034006"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100337"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB：在 Azure 平台上实现 lambda 体系结构 
 
@@ -258,14 +258,14 @@ var streamingQuery = streamingQueryWriter.start()
 
 ### <a name="resources"></a>资源
 
- * **新数据**：[将源从 Twitter 流式传输到 CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed)，这是将新数据推送到 Azure Cosmos DB 的机制。
- * **批处理层：** 批处理层由主数据集（不可变、仅限追加的原始数据集）组成，可以预先计算已推送到服务层的数据的批处理视图。
-    * **重建的 Lambda 体系结构 - 批处理层** Notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) 查询批处理视图的主数据集。
- * **服务层：** 服务层由预先计算的数据组成，这些数据生成用于快速查询的批处理视图（例如聚合、特定的切片器等等）。
-    * **重建的 Lambda 体系结构 - 批处理层到服务层** Notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) 将批处理数据推送到服务层；即，Spark 将查询推文的批处理集合、对其进行处理，然后将其存储到另一个集合（计算的批处理）中。
-* **速度层：** 速度层由利用 Azure Cosmos DB 更改源读取并立即处理数据的 Spark 组成。 还可以将数据保存到计算的 RT 中，使其他系统可以查询已处理的实时数据，而无需自行运行实时查询。
-    * [Cosmos DB 更改源中的流查询](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) scala 脚本执行 Azure Cosmos DB 更改源中的流查询，通过 spark-shell 计算间隔计数。
-    * [Cosmos DB 更改源中的流标记查询](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) scala 脚本执行 Azure Cosmos DB 更改源中的流查询，通过 spark-shell 计算标记的间隔计数。
+* **新数据**：[将源从 Twitter 流式传输到 CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed)，这是将新数据推送到 Azure Cosmos DB 的机制。
+* **批处理层：** 批处理层由主数据集（不可变、仅限追加的原始数据集）组成，可以预先计算已推送到服务层的数据的批处理视图。
+   * **重建的 Lambda 体系结构 - 批处理层** Notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) 查询批处理视图的主数据集。
+* **服务层：** 服务层由预先计算的数据组成，这些数据生成用于快速查询的批处理视图（例如聚合、特定的切片器等等）。
+  * **重建的 Lambda 体系结构 - 批处理层到服务层** Notebook [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) 将批处理数据推送到服务层；即，Spark 将查询推文的批处理集合、对其进行处理，然后将其存储到另一个集合（计算的批处理）中。
+    * **速度层：** 速度层由利用 Azure Cosmos DB 更改源读取并立即处理数据的 Spark 组成。 还可以将数据保存到计算的 RT 中，使其他系统可以查询已处理的实时数据，而无需自行运行实时查询。
+  * [Cosmos DB 更改源中的流查询](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) scala 脚本执行 Azure Cosmos DB 更改源中的流查询，通过 spark-shell 计算间隔计数。
+  * [Cosmos DB 更改源中的流标记查询](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Tags%20Query%20from%20Cosmos%20DB%20Change%20Feed%20.scala) scala 脚本执行 Azure Cosmos DB 更改源中的流查询，通过 spark-shell 计算标记的间隔计数。
   
 ## <a name="next-steps"></a>后续步骤
 从 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub 存储库下载 Spark 到 Azure Cosmos DB 的连接器（如果尚未下载），并浏览该存储库中的其他资源：

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 23fa146b7bdaef0451984d0fbc638c57691cf259
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 4b7e2a8d5eb981fc30dd14fed8f7efcfc094af0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201714"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110879"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
@@ -46,7 +46,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
   > [!IMPORTANT]  
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-* SSH 客户端或本地 Beeline 客户端。 本文档中的大多数步骤都假定从与群集的 SSH 会话中使用 Beeline。 有关从群集外部运行 Beeline 的信息，请参阅[远程使用 Beeline](#remote) 部分。
+* SSH 客户端或本地 Beeline 客户端。 本文档中的大多数步骤都假定从与群集的 SSH 会话使用 Beeline。 有关从群集外部运行 Beeline 的信息，请参阅[远程使用 Beeline](#remote) 部分。
 
     有关使用 SSH 的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -136,7 +136,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
     这些语句将执行以下操作：
 
-    * `DROP TABLE` -如果表存在，则将其删除。
+    * `DROP TABLE` - 如果表存在，则将其删除。
 
     * `CREATE EXTERNAL TABLE` - 在 Hive 中创建一个**外部**表。 外部表只会在 Hive 中存储表定义。 数据将保留在原始位置。
 
@@ -148,10 +148,10 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
     * `INPUT__FILE__NAME LIKE '%.log'` - Hive 会尝试向目录中的所有文件应用架构。 在这种情况下，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。
 
-  > [!NOTE]  
-  > 如果希望通过外部源更新基础数据，应使用外部表。 例如，自动化数据上传进程或 MapReduce 操作。
-  >
-  > 删除外部表**不会**删除数据，只会删除表定义。
+   > [!NOTE]  
+   > 如果希望通过外部源更新基础数据，应使用外部表。 例如，自动化数据上传进程或 MapReduce 操作。
+   >
+   > 删除外部表**不会**删除数据，只会删除表定义。
 
     此命令的输出类似于以下文本：
 
@@ -198,12 +198,12 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
     这些语句将执行以下操作：
 
-    * **CREATE TABLE IF NOT EXISTS** - 创建表（如果该表尚不存在）。 因为未使用 **EXTERNAL** 关键字，此语句创建内部表。 内部表存储在 Hive 数据仓库中，由 Hive 全权管理。
-    * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 ORC 格式是高度优化且有效的 Hive 数据存储格式。
-    * **INSERT OVERWRITE ...SELECT**- 从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
+   * **CREATE TABLE IF NOT EXISTS** - 创建表（如果该表尚不存在）。 因为未使用 **EXTERNAL** 关键字，此语句创建内部表。 内部表存储在 Hive 数据仓库中，由 Hive 全权管理。
+   * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 ORC 格式是高度优化且有效的 Hive 数据存储格式。
+   * **INSERT OVERWRITE ...SELECT**- 从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
 
-    > [!NOTE]  
-    > 与外部表不同，删除内部表会同时删除基础数据。
+     > [!NOTE]  
+     > 与外部表不同，删除内部表会同时删除基础数据。
 
 3. 要保存文件，请使用 **Ctrl**+**_X**，并输入 **Y**，最后按 **Enter**。
 

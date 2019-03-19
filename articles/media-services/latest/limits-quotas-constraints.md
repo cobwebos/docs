@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 9f5cf0e8be0529ce59edc9aa4cd33d470415c8a6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 694c56cf52cb7a15230b9a2cdd34642c7820b407
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190953"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897549"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的配额和限制
 
@@ -37,10 +37,11 @@ ms.locfileid: "56190953"
 | 单个订阅中的媒体服务帐户数 | 25（固定） |
 | 每个实时事件处于运行状态的实时输出 |3|
 | 存储帐户 | 100<sup>(4)</sup>（固定） |
-| 每个媒体服务帐户的流式处理终结点（已停止或正在运行）|2|
+| 每个媒体服务帐户的流式处理端点（已停止或正在运行）|2 （固定）|
 | 流式处理策略 | 100 <sup>(3)</sup> |
 | 每个媒体服务帐户的转换数 | 100（固定）|
 | 一次与一个资产关联的唯一流式处理定位符 | 100<sup>(5)</sup>（固定） |
+| 内容密钥的策略 |30 | 
 
 <sup>1</sup> 在 Azure Blob 存储中，单个 Blob 目前支持的最大大小为 5 TB。 但是，Azure 媒体服务会根据服务使用的 VM 大小应用其他限制。 如果源文件大于 260 GB，作业可能会失败。 如果你有 4K 内容（超过了 260 GB 的限制），请通过 amshelp@microsoft.com 联系我们，我们会提供可能的缓解措施来支持你的方案。
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: fb12fe381cb4df6139fae7289279220f72984484
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078008"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000405"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure 市场列表准则
 
@@ -32,7 +32,7 @@ ms.locfileid: "54078008"
 
 |  | 列表元素 | 基本要求 | 最佳要求 |
 |:--- |:--- |:--- |:--- |
-| 1 | 潜在客户目标 | 已配置潜在顾客目标| 合作伙伴解决方案选项卡中还列出了 OCP 目录的潜在顾客目标 CRM 信息 | 
+| 第 | 潜在客户目标 | 已配置潜在顾客目标| 合作伙伴解决方案选项卡中还列出了 OCP 目录的潜在顾客目标 CRM 信息 | 
 | 2 | 套餐标题 | 描述解决方案套餐。 匹配合作伙伴网站中的解决方案在线促销 | 包含搜索关键字 |
 | 3 | 徽标 | 徽标正常显示 | 徽标正常显示，并包含[大图](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish)（Azure 门户中的大格式图像） |
 | 4 |  套餐说明 | <br>• 2-3 个段落 <br>• 能够快速轻松地了解解决方案套餐 <br>• 套餐说明不存在拼写和语法错误 <br>• 套餐说明内容全面且突出重点：目标受众、用户类型、有价值的原因（价值主张） <br>• 套餐说明采用叙述性的段落，包含易于理解的短句 | <br>• 概述目标行业（如果相关） <br>• 每个段落标题采用适当的格式，后接一句话或短语式的汇总内容，并通过概括性的要点（如果适用）强调重要优势。 此处的目标是使读者无需阅读整个段落，就能通过格式快速轻松地了解套餐。 <br>• 采用类似于汽车销售手册的格式，在段落之间保留间距。 这意味着不需要插入技术特性或代码术语，而只是以简单的字词全面描述套餐。 | 
@@ -57,7 +57,7 @@ ms.locfileid: "54078008"
 
 |  | 列表元素 | 基本要求 | 最佳要求 | 
 |:--- |:--- |:--- |:--- |
-| 1 | 套餐标题 |<br>• 只能包含小写的字母数字字符、短划线或下划线。 一经发布不可修改。 <br>• 描述解决方案套餐。<br>• 匹配合作伙伴网站中的解决方案在线促销。 | 包含搜索关键字 |
+| 第 | 套餐标题 |<br>• 只能包含小写的字母数字字符、短划线或下划线。 一经发布不可修改。 <br>• 描述解决方案套餐。<br>• 匹配合作伙伴网站中的解决方案在线促销。 | 包含搜索关键字 |
 | 2 | 技术信息：配置 |<br>• 对于 SaaS 应用，请选择是只想列出应用，还是要让客户通过 Azure 购买应用。<br>• 选择要在套餐购买按钮上显示的相应文本：“免费”、“免费试用”或“与我联系”<br>• 如果应用利用相应的技术，请只选择（在弹出框中）以下适用产品之一：Cortana Intelligence、Power BI 解决方案模板、Power Apps |  |
 | 3 | 体验版 | 选择：是或否 | 客户马上能够了解后续步骤是什么： <br>1.试用 <br>2.立即购买 <br>3.通过电子邮件或电话号码取得联系，以安排概念证明、评估或简报。 |
 | 4 | 店面详细信息：产品/服务摘要 | 此信息将显示在应用的搜索页上，最多包含 100 个字符 | |
@@ -72,19 +72,21 @@ ms.locfileid: "54078008"
 ----
 
 ## <a name="container-offer-requirements"></a>容器套餐要求
+
 |  | 列表元素 | 基本要求 | 最佳要求 | 
 |:--- |:--- |:--- |:--- |
-|1 |产品/服务设置 | <br>• 产品/服务 ID：最多 50 个字符 <br>• 发布者 ID：请从下拉列表中选择 <br>•   名称：最多 50 个字符 | 采用说明中所用的相同标题样式 - 标题不需要太长。 | 
-| 2 | SKU | 合作伙伴单击新 SKU| 采用说明中所用的相同标题样式 - 标题不需要太长。  |  |
+|第 |产品/服务设置 | <br>• 产品/服务 ID：最多 50 个字符 <br>• 发布者 ID：请从下拉列表中选择 <br>•   名称：最多 50 个字符 | 采用说明中所用的相同标题样式 - 标题不需要太长。 | 
+| 2 | SKU | 合作伙伴单击新 SKU| 采用说明中所用的相同标题样式 - 标题不需要太长。  |
 | 3 | 市场项目 | 徽标正常显示 |<br>• 徽标包含“大图”（Azure 门户中的大格式图像） <br>• 徽标：要求提供小型 (48x48) 和大型 (216x216) 图像 <br>• 大图要求： https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• 屏幕截图（最多 5 个）：CPP 需要分辨率为 1280 x 720 的 .png 图像。|
 | 4 | 线索管理 |<br>•    潜在顾客管理：选择用于存储潜在顾客的系统。 <br>• 在[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)了解如何连接 CRM 系统 | |
 
 ----
 
 ## <a name="consulting-offer-requirements"></a>咨询套餐要求
+
 |  | 列表元素 | 基本要求 | 最佳要求 |
 |:--- |:--- |:--- |:--- |
-| 1 | 套餐标题  |  <br>• 必须使用以下格式明确列出服务类型和持续时间：名称：持续时间类型。 （例如，“Offer Engagement：1 周概念证明”）  | <br>• 不要重复输入发布者名称 <br>• 采用说明中所用的相同标题样式 - 标题不需要太长。 | 
+| 第 | 套餐标题  |  <br>• 必须使用以下格式明确列出服务类型和持续时间：名称：持续时间类型。 （例如，“Offer Engagement：1 周概念证明”）  | <br>• 不要重复输入发布者名称 <br>• 采用说明中所用的相同标题样式 - 标题不需要太长。 | 
 | 2 | 产品/服务描述  |<br>• 确保正确使用 [Microsoft 产品名称](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx) <br>• 标价的套餐：估价必须在套餐顶部或底部提供一条注释来解释变数（出差客户、要迁移的服务器数等等。） <br>• 每种套餐类型必须提供如下所述的说明： <ul><br>o 简报至少需要包含 4 到 5 条要点，其中提供有关简报中所述主题的信息 </ul> <ul><br>o 所有研讨会需要议程 </ul><ul><br>o 所有议程必须根据研讨会的持续时间按日期或周划分 </ul><ul><br>o 评估、概念证明、非培训研讨会、实施套餐需要交付件 </ul><ul><br>o 培训研讨会不需要交付件，但需要更详细的议程以及涵盖的主题。 | <br>• 任何套餐都有议程和交付件 <br>• 套餐在第一个部分包含一个段落，描述公司在哪种环境下提供服务 <br>• 套餐在第一个部分包含一个段落，描述服务本身的价值 |
 | 3 | Markdown 格式  | 所有套餐必须使用 Markdown 格式，以便在转换为 HTML 后套餐能够正常显示  |  |
 | 4 | 类别和行业 | 不相关的类别 |  | 
@@ -103,4 +105,4 @@ ms.locfileid: "54078008"
 *   [确定解决方案的列表类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
 
  
----  
+---

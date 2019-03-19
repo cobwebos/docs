@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3aba118354c51285d714bb127e6f5984f8a50057
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329746"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096293"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机（经典）中对 SQL Server 进行自动备份
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "54329746"
 > [!IMPORTANT] 
 > Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文中的 Resource Manager 版本，请参阅[在 Azure 虚拟机 Resource Manager 中对 SQL Server 进行自动备份](../sql/virtual-machines-windows-sql-automated-backup.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要使用自动备份，请考虑以下先决条件：
 
 **操作系统**：
@@ -67,13 +67,14 @@ ms.locfileid: "54329746"
 ## <a name="settings"></a>设置
 下表描述了可为自动备份配置的选项。 对于经典 VM，必须使用 PowerShell 配置以下设置。
 
-| 设置 | 范围（默认值） | Description |
+| 设置 | 范围（默认值） | 描述 |
 | --- | --- | --- |
 | **自动备份** |启用/禁用（已禁用） |为运行 SQL Server 2014 Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** |1-30 天（30 天） |保留备份的天数。 |
 | **存储帐户** |Azure 存储帐户（为指定的 VM 创建的存储帐户） |用于在 Blob 存储中存储自动备份文件的 Azure 存储帐户。 在此位置创建容器，用于存储所有备份文件。 备份文件命名约定包括日期、时间和计算机名称。 |
 | **加密** |启用/禁用（已禁用） |启用或禁用加密。 启用加密时，用于还原备份的证书使用相同的命名约定存放在同一 automaticbackup 容器中的指定存储帐户内。 如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
-| **密码** |密码文本（无） |加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 | **备份系统数据库** | 启用/禁用（已禁用） | 完整备份 Master、Model 和 MSDB |
+| **密码** |密码文本（无） |加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 |
+| **备份系统数据库** | 启用/禁用（已禁用） | 完整备份 Master、Model 和 MSDB |
 | **配置备份计划** | 手动/自动（自动） | 选择“自动”可根据日志增长自动进行完整备份和日志备份。 选择“手动”可指定完整备份和日志备份的计划。 |
 
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 进行配置
@@ -88,7 +89,7 @@ ms.locfileid: "54329746"
 
 可能需要花费几分钟来安装和配置 SQL Server IaaS 代理。
 
-要启用加密，请修改上述脚本，使其将 EnableEncryption 参数连同 CertificatePassword 参数的密码（安全字符串）一起传递。 以下脚本启用上一示例中的自动备份设置，并添加加密。
+若要启用加密，请修改上述脚本，使其将 EnableEncryption 参数连同 CertificatePassword 参数的密码（安全字符串）一起传递。 以下脚本启用上一示例中的自动备份设置，并添加加密。
 
     $storageaccount = "<storageaccountname>"
     $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary

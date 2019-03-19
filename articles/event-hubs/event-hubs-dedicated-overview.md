@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 2a1785b9c749a8c413987974446190aafc08ed3a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237121"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105584"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>专用事件中心概述
 
@@ -29,8 +29,8 @@ ms.locfileid: "56237121"
 下表比较了事件中心的各可用服务层。 不同于标准事件中心中大部分功能的使用定价，专用事件中心产品每月价格是固定的。 专用层提供标准计划的所有功能，但具有企业规模容量，以满足客户的工作负荷需求。 
 
 | Feature | 标准 | 专用 |
-| --- |:---:|:---:|:---:|
-| 入口事件 | 按每百万个事件支付 | 附送 |
+| --- |:---:|:---:|
+| 入口事件 | 按每百万个事件支付 | 已含 |
 | 吞吐量单位（传入为 1 MB/秒，传出为 2 MB/秒） | 按每小时支付 | 附送 |
 | 消息大小 | 1 MB | 1 MB |
 | 发布者策略 | 是 | 是 |   
@@ -73,5 +73,5 @@ ms.locfileid: "56237121"
 
 请与 Microsoft 销售代表或 Microsoft 支持部门联系，以获其他关于事件中心专用容量的详细信息。 还可访问以下链接，了解有关事件中心定价层的详细信息：
 
-- [专用事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。 还可以联系 Microsoft 销售代表或 Microsoft 支持部门，获取关于专用事件中心容量的其他详细信息。
+- [专用事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。 还可以联系 Microsoft 销售代表或 Microsoft 支持部门，获取有关专用事件中心容量的其他详细信息。
 - [事件中心常见问题解答](event-hubs-faq.md)中包含了定价信息并解答了一些有关事件中心的常见问题。 

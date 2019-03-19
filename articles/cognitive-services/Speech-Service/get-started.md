@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d48ad97d50c413c4530e54f2538fda9cd0e31b8f
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 09cc38cd5343e8b01b3e704191ea40c133d724f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342671"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103717"
 ---
 # <a name="try-speech-services-for-free"></a>免费试用语音服务
 
@@ -87,19 +87,19 @@ ms.locfileid: "56342671"
 
 1. 在“创建”下输入：
 
-    * 新资源的名称。 名称有助于区分同一服务的多个订阅。
-    * 选择新资源关联的 Azure 订阅，以确定计费方式。
-    * 选择将使用资源的区域。 目前在东亚、欧洲北部和美国西部区域提供语音服务。
-    * 选择免费或付费定价层。 单击“查看全部定价详细信息”，获取每个层的定价和用量配额的完整信息。
-    * 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
-    * 为了以后可便捷访问订阅，请选中“固定到仪表板”复选框。
-    * 选择“创建”。
+   * 新资源的名称。 名称有助于区分同一服务的多个订阅。
+   * 选择新资源关联的 Azure 订阅，以确定计费方式。
+   * 选择将使用资源的区域。 目前在东亚、欧洲北部和美国西部区域提供语音服务。
+   * 选择免费或付费定价层。 单击“查看全部定价详细信息”，获取每个层的定价和用量配额的完整信息。
+   * 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
+   * 为了以后可便捷访问订阅，请选中“固定到仪表板”复选框。
+   * 选择“创建”。
 
-    ![选择“创建”按钮](media/index/try-speech-api-create-speech4.png)
+     ![选择“创建”按钮](media/index/try-speech-api-create-speech4.png)
 
-    创建和部署新语音资源需要一些时间。 选择“快速入门”，查看新资源的信息。
+     创建和部署新语音资源需要一些时间。 选择“快速入门”，查看新资源的信息。
 
-    ![“快速启动”面板](media/index/try-speech-api-create-speech5.png)
+     ![“快速启动”面板](media/index/try-speech-api-create-speech5.png)
 
 1. 在“快速入门”下，单击步骤 1 中的“密钥”链接，以显示订阅密钥。 每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 选择每个密钥旁的按钮，可将其复制到剪贴板以粘贴到代码中。
 

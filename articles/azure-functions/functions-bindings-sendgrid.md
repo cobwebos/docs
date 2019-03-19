@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 6c3312b43ef8c0a72b505fb9bc21236f15a79052
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 663283c4dff16194dea78afbf5dd393f1fa833b1
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313188"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823801"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -42,6 +42,7 @@ ms.locfileid: "56313188"
 * [C#](#c-example)
 * [C# 脚本 (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
+* [Java](#java-example)
 
 ### <a name="c-example"></a>C# 示例
 
@@ -161,6 +162,33 @@ public class Message
 }
 ```
 
+### <a name="java-example"></a>Java 示例
+
+下面的示例使用`@SendGridOutput`批注[Java 函数运行时库](/java/api/overview/azure/functions/runtime)发送电子邮件使用 SendGrid 输出绑定。
+
+```java
+@FunctionName("SendEmail")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @SendGridOutput(
+                name = "email", dataType = "String", apiKey = "SendGridConnection", to = "test@example.com", from = "test@example.com",
+                subject= "Sending with SendGrid", text = "Hello from Azure Functions"
+                ) OutputBinding<String> email
+            )
+    {
+        String name = request.getBody().orElse("World");
+
+        final String emailBody = "{\"personalizations\":" +
+                                    "[{\"to\":[{\"email\":\"test@example.com\"}]," +
+                                    "\"subject\":\"Sending with SendGrid\"}]," +
+                                    "\"from\":{\"email\":\"test@example.com\"}," +
+                                    "\"content\":[{\"type\":\"text/plain\",\"value\": \"Hello" + name + "\"}]}";
+
+        email.setValue(emailBody);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+    }
+```
+
 ### <a name="javascript-example"></a>JavaScript 示例
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
@@ -258,7 +286,7 @@ public static void Run(
 }
 ```  
 
-|属性  |默认 | 说明 |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
 |from|不适用|所有函数的发件人电子邮件地址。| 
 

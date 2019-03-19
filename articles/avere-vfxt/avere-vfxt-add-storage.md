@@ -3,15 +3,15 @@ title: 配置 Avere vFXT 存储 - Azure
 description: 如何为 Avere vFXT for Azure 添加后端存储系统
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: procedural
+ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 13084ac21315d725df3f0913583fff3e64ee5c4a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 6d35d5cdeafb80a36f910d71393802a3affb4df8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813222"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078800"
 ---
 # <a name="configure-storage"></a>配置存储
 
@@ -72,7 +72,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 要将 Azure Blob 存储用作 vFXT 群集的后端存储，需要将一个空容器添加为核心文件管理器。
 
 > [!TIP] 
-> 如果你选择在创建 Avere vFXT 群集的同时创建 blob 容器，则在创建 vFXT 群集的过程中，部署模板或脚本将创建一个存储容器，将其定义为核心文件管理器，并创建命名空间交接点。 
+> 如果你选择在创建 Avere vFXT 群集的同时创建 blob 容器，则在创建 vFXT 群集的过程中，部署模板或脚本将创建一个存储容器，将其定义为核心文件管理器，并创建命名空间交接点。 此模板还创建群集的虚拟网络中的存储服务终结点。 
 
 将 Blob 存储添加到群集需要执行以下任务：
 
@@ -149,7 +149,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
    * （可选）将“加密类型”设置为“无”。  Azure 存储默认已加密。
    * 单击“添加文件管理器”。
 
-  有关更多详细信息，请阅读 Avere 群集配置指南中的 [Adding a new cloud core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>)（添加新的云核心文件管理器）。 
+   有关更多详细信息，请阅读 Avere 群集配置指南中的 [Adding a new cloud core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>)（添加新的云核心文件管理器）。 
 
 页面将刷新，或者你可以刷新页面以显示新的核心文件管理器。
 

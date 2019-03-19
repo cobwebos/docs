@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 15d85d30f73a9880a6a68a62ab208bb0bdbf5402
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 84b1cfd54f5ff9e6a29c975622847e3ae6304bf8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788032"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107145"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -33,7 +33,7 @@ ms.locfileid: "53788032"
 
 **服务器** | **要求** | **详细信息**
 --- | --- | ---
-Hyper-V（不使用 Virtual Machine Manager 运行） | Windows Server 2016 （包括服务器核心安装），最新更新的 Windows Server 2012 R2 | 对于位于运行 Windows Server 2016 的主机上的 VM，不支持恢复到备用位置。<br/><br/> 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。 
+Hyper-V（不使用 Virtual Machine Manager 运行） | Windows Server 2016 （包括服务器核心安装），最新更新的 Windows Server 2012 R2 | 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。 
 Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。<br/><br/>
 
 
@@ -91,7 +91,7 @@ Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是 
 ## <a name="hyper-v-host-storage"></a>Hyper-V 主机存储
 
 **存储** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
---- | --- | --- | ---
+--- | --- | --- 
 NFS | NA | NA
 SMB 3.0 | 是 | 是
 SAN (ISCSI) | 是 | 是
@@ -153,7 +153,7 @@ HUB | 是 | 是
 来宾操作系统 | Site Recovery 支持 [Azure 支持的](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)所有操作系统。  | 如果不支持，先决条件检查会失败。
 来宾操作系统体系结构 | 64 位 | 如果不支持，先决条件检查会失败。
 操作系统磁盘大小 | 第 1 代 VM 最大 2,048 GB。<br/><br/> 第 2 代 VM 最大 300 GB。  | 如果不支持，先决条件检查会失败。
-操作系统磁盘计数 | 1 | 如果不支持，先决条件检查会失败。
+操作系统磁盘计数 | 第 | 如果不支持，先决条件检查会失败。
 数据磁盘计数 | 16 个或更少  | 如果不支持，先决条件检查会失败。
 数据磁盘 VHD 大小 | 最大 4,095 GB | 如果不支持，先决条件检查会失败。
 网络适配器 | 支持多个适配器 |
@@ -180,7 +180,7 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 要确保部署与本文的设置兼容，请确保正在运行最新的提供程序和代理版本。
 
 **名称** | **说明** | **详细信息**
---- | --- | --- | --- | ---
+--- | --- | --- 
 Azure Site Recovery 提供程序 | 协调本地服务器与 Azure 之间的通信 <br/><br/> 使用 Virtual Machine Manager 的 Hyper-V：安装在 Virtual Machine Manager 服务器上<br/><br/> 不使用 Virtual Machine Manager 的 Hyper-V：安装在 Hyper-V 主机上| 最新版本：5.1.2700.1（可从 Azure 门户获取）<br/><br/> [最新功能和修复](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure 恢复服务代理 | 协调 Hyper-V VM 与 Azure 之间的复制<br/><br/> 在本地 Hyper-V 服务器（使用或不使用 Virtual Machine Manager）上安装 | 可从门户获取最新代理
 

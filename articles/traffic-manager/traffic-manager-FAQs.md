@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 309c69862d475a0ef76ab0a24ed804b363ba33c0
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: c26117bf298d5fe7fd8a14e0aa2b14834e412328
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696789"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009927"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -59,14 +59,7 @@ ms.locfileid: "55696789"
 如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 完成 DNS 查找以后，客户端会直接连接到应用程序终结点，不通过流量管理器进行连接。 因此，连接可以使用任何应用程序协议。 如果选择 TCP 作为监视协议，则无需使用任何应用程序协议，就可以完成对流量管理器终结点运行状况的监视。 如果选择使用应用程序协议来验证运行状况，则要求终结点能够响应 HTTP 或 HTTPS GET 请求。
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>是否可以对“裸”域名使用流量管理器？
-
-不是。 DNS 标准不允许 CNAME 与其他同名的 DNS 记录共存。 DNS 区域的顶点（或根）始终包含两条预先存在的 DNS 记录：SOA 和权威 NS 记录。 这意味着在不违反 DNS 标准的情况下，无法在区域顶点位置创建 CNAME 记录。
-
-流量管理器需要使用一条 DNS CNAME 记录来映射虚构 DNS 名称。 例如，将 `www.contoso.com` 映射到流量管理器配置文件 DNS 名称 `contoso.trafficmanager.net`。 此外，流量管理器配置文件还会返回另一条 DNS CNAME 来指示客户端应连接到的终结点。
-
-要解决此问题，我们建议使用 HTTP 重定向将流量从裸域名定向到不同的 URL，然后即可使用流量管理器。 例如，裸域“contoso.com”可将用户重定向到指向流量管理器 DNS 名称的 CNAME“www.contoso.com”。
-
-在流量管理器中实现对裸域的完全支持已列入我们的待开发功能中。 请[在我们的社区反馈站点上投票](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly)，表达对此项功能的支持。
+是的。 若要了解如何创建域名称顶点处以引用 Azure 流量管理器配置文件的别名记录，请参阅[配置以支持顶点域名使用流量管理器的别名记录](../dns/tutorial-alias-tm.md)。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
 会，除了其收到的 DNS 查询的源 IP 地址（通常是 DNS 解析器的 IP 地址）以外，在执行地理、性能和子网路由方法的查找时，流量管理器还会考虑客户端子网地址（如果它通过代表最终用户发起请求的解析器包含在查询中）。  
@@ -276,7 +269,7 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 不能对 Azure Web 应用使用多个订阅中的终结点。 Web 应用要求其所用的任何自定义域名只能在单个订阅中使用。 无法对多个订阅中的 Web 应用使用同一个域名。
 
-对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 资源管理器基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。
+对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure Resource Manager 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。
 
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
@@ -347,6 +340,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 当收到针对配置文件的查询时，流量管理器首先会根据指定的路由方法和终结点的运行状况查找需要返回的终结点。 然后，在根据下表返回响应之前，它会查看传入查询中请求的记录类型以及与终结点关联的记录类型。
 
 对于使用多值路由以外的任何路由方法的配置文件：
+
 |传入的查询请求|    终结点类型|  提供的响应|
 |--|--|--|
 |任意 |  A/AAAA/CNAME |  目标终结点| 
@@ -357,6 +351,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 |CNAME |    CNAME | 目标终结点|
 |CNAME  |A/AAAA | 无数据 |
 |
+
 对于将路由方法设置为多值路由的配置文件：
 
 |传入的查询请求|    终结点类型 | 提供的响应|

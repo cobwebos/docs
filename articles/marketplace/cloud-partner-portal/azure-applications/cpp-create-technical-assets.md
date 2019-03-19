@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 78aa65614920d093b6ba0b8fa43614fd7f3c5176
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: a498fb2bc3efcc3a081a0ab854df107135a4e008
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100425"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104686"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>准备 Azure 应用程序技术资产
 
@@ -48,11 +48,11 @@ ms.locfileid: "56100425"
   - [创建定义文件](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
   - [发布市场应用程序](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
- - 示例：
+  - 示例：
 
-   - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-   - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-   - [托管应用程序解决方案](https://docs.microsoft.com/azure/managed-applications/sample-projects)
+    - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
+    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
+    - [托管应用程序解决方案](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
 ## <a name="fundamental-technical-knowledge"></a>基础技术知识
 

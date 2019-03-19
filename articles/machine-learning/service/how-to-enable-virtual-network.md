@@ -10,18 +10,27 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 60a76df6360ca66e8f55b03d5914283f669eb402
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: a83661a63f784f62bf46ce75b8b4f47c57c87b19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118099"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840437"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>在 Azure 虚拟网络中安全运行试验和推理
 
 本文介绍如何在虚拟网络中运行试验和推理。 虚拟网络充当安全边界，可将 Azure 资源与公共 Internet 相隔离。 你也可以将 Azure 虚拟网络加入本地网络。 在虚拟网络中可以安全训练模型，以及访问用于推断的已部署模型。
 
 Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算资源（计算目标）用于训练和部署模型。 可在虚拟网络中创建这些计算目标。 例如，可以使用 Microsoft Data Science Virtual Machine 来训练模型，然后将该模型部署到 Azure Kubernetes 服务 (AKS)。 有关虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
+
+## <a name="prerequisites"></a>必备组件
+
+本文档假定您熟悉 Azure 虚拟网络和 IP 网络一般情况下。 本文档还假定你已创建的虚拟网络和子网将用于你的计算资源。 如果您不熟悉 Azure 虚拟网络，阅读以下文章以了解该服务：
+
+* [IP 寻址](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
+* [安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)
+* [快速入门：创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [筛选网络流量](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 ## <a name="storage-account-for-your-workspace"></a>工作区的存储帐户
 
@@ -51,15 +60,17 @@ Azure 机器学习服务依赖于其他 Azure 服务提供计算资源。 计算
 
     - 一个负载均衡器
 
-   这些资源受订阅的[资源配额](https://docs.microsoft.com/azure/azure-subscription-service-limits)限制。
+  这些资源受订阅的[资源配额](https://docs.microsoft.com/azure/azure-subscription-service-limits)限制。
 
 ### <a id="mlcports"></a>所需的端口
 
 机器学习计算目前使用 Azure Batch 服务在指定的虚拟网络中预配 VM。 子网必须允许来自 Batch 服务的入站通信。 这种通信用于在机器学习计算节点上计划运行，以及与 Azure 存储和其他资源进行通信。 Batch 在附加到 VM 的网络接口 (NIC) 级别添加 NSG。 这些 NSG 自动配置允许以下流量的入站和出站规则：
 
-- 端口 29876 和 29877 上来自 Batch 服务角色 IP 地址的入站 TCP 流量。
+- 入站 TCP 流量，端口 29876 和 29877 从上的__服务标记__的__BatchNodeManagement__。
+
+    ![显示使用 BatchNodeManagement 服务标记的入站的规则的 Azure 门户的映像](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- 端口 22 上允许远程访问的入站 TCP 流量。
+- （可选）在端口 22，以允许远程访问的入站的 TCP 流量。 仅当你想要在公共 IP 上使用 ssh 建立连接，才需要此是。
  
 - 任何端口上通往虚拟网络的出站流量。
 

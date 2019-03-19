@@ -1,19 +1,19 @@
 ---
 title: 了解 Azure IoT 中心安全性 | Microsoft Docs
 description: 开发人员指南 - 如何控制设备应用和后端应用对 IoT 中心的访问。 其中包括安全令牌和 X.509 证书支持的相关信息。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: f347c9ca3d56bedcc838d72ca15793bd13ee19ad
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563926"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534355"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -57,7 +57,7 @@ ms.locfileid: "55563926"
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#iot-hub-permissions)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验证令牌，以授予对终结点的访问权限。
 
@@ -74,7 +74,7 @@ Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验�
 
 使用 MQTT 时，CONNECT 包将 deviceId 用作 ClientId，“用户名”字段中为 `{iothubhostname}/{deviceId}`；在“密码”字段中为 SAS 令牌。 `{iothubhostname}` 应为 IoT 中心的完整 CName（例如，contoso.azure-devices.net）。
 
-使用 [AMQP](https://www.amqp.org/) 时，IoT 中心支持 [SASL PLAIN](http://tools.ietf.org/html/rfc4616) 和 [AMQP 基于声明的安全性](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc)。
+使用 [AMQP](https://www.amqp.org/) 时，IoT 中心支持 [SASL PLAIN](https://tools.ietf.org/html/rfc4616) 和 [AMQP 基于声明的安全性](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc)。
 
 如果使用 AMQP 基于声明的安全性，标准将指定如何传输这些令牌。
 
@@ -134,10 +134,10 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 
 以下是预期值：
 
-| 值 | 说明 |
+| 值 | 描述 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。 |
-| {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如： `myHub.azure-devices.net/devices/device1` |
+| {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如 `myHub.azure-devices.net/devices/device1` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
 | {policyName} |此令牌所引用的共享访问策略名称。 如果此令牌引用设备注册表凭据，则空缺。 |
@@ -253,7 +253,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 例如，创建的用于访问所有设备功能的令牌应具有以下参数：
 
-* 资源 URI：`{IoT hub name}.azure-devices.net/devices/{device id}`，
+* 资源 URI： `{IoT hub name}.azure-devices.net/devices/{device id}`，
 * 签名密钥：`{device id}` 标识的任何对称密钥，
 * 无策略名称；
 * 任何过期时间。
@@ -287,7 +287,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 
 例如，使用名为 **device** 的预创建共享访问策略的令牌服务会使用以下参数创建令牌：
 
-* 资源 URI：`{IoT hub name}.azure-devices.net/devices/{device id}`，
+* 资源 URI： `{IoT hub name}.azure-devices.net/devices/{device id}`，
 * 签名密钥：`device` 策略的密钥之一，
 * 策略名称：`device`，
 * 任何过期时间。

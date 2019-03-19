@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: cb2c548a94a91fe9126f684e382e9626adb93dd6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
+ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319056"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853063"
 ---
-# <a name="enable-or-disable-a-firewall-rule-on-a-azure-vm-guest-os"></a>在 Azure VM 来宾 OS 中启用或禁用防火墙规则
+# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>启用或禁用 Azure VM 来宾 OS 上的防火墙规则
 
 本文为排查以下问题提供参考：你怀疑来宾操作系统防火墙正在筛选虚拟机 (VM) 上的部分流量。 使用这些参考信息的原因如下：
 
@@ -53,7 +53,7 @@ ms.locfileid: "52319056"
 
 #### <a name="mitigation-2-remote-powershell"></a>缓解措施 2：远程 PowerShell
 
-如果该 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以使用另一个 VM 执行以下缓解措施。
+如果 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以使用另一个 VM 执行以下缓解措施。
 
 1.  在故障排除 VM 上，打开 PowerShell 控制台窗口。
 
@@ -107,7 +107,7 @@ ms.locfileid: "52319056"
     
         然后，将字符串中的 **Active=FALSE** 更改为 **Active=TRUE**：
 
-        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22 |操作 = 允许 |Active = TRUE |Dir = In |协议 = 6 |配置文件 = Domain |配置文件 = 专用 |配置文件 = 公用 |LPort = 3389 |App=%SystemRoot%\system32\svchost.exe|Svc = termservice |名称 =\@用 FirewallAPI.dll-28775 |Desc =\@用 FirewallAPI.dll-28756 |EmbedCtxt =\@用 FirewallAPI.dll-28752 |**
     
     * 若要禁用规则，请打开以下注册表值：
     
@@ -115,7 +115,7 @@ ms.locfileid: "52319056"
 
         然后，将 **Active=TRUE** 更改为 **Active=FALSE**：
         
-        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22 |操作 = 允许 |Active = FALSE |Dir = In |协议 = 6 |配置文件 = Domain |配置文件 = 专用 |配置文件 = 公用 |LPort = 3389 |App=%SystemRoot%\system32\svchost.exe|Svc = termservice |名称 =\@用 FirewallAPI.dll-28775 |Desc =\@用 FirewallAPI.dll-28756 |EmbedCtxt =\@用 FirewallAPI.dll-28752 |**
 
 3.  重启 VM 以应用更改。
 
@@ -154,7 +154,7 @@ ms.locfileid: "52319056"
         
         然后，将 **Active=FALSE** 更改为 **Active=True**。
         
-        **v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22 |操作 = 允许 |Active = TRUE |Dir = In |协议 = 6 |配置文件 = Domain |配置文件 = 专用 |配置文件 = 公用 |LPort = 3389 |App=%SystemRoot%\system32\svchost.exe|Svc = termservice |名称 =\@用 FirewallAPI.dll-28775 |Desc =\@用 FirewallAPI.dll-28756 |EmbedCtxt =\@用 FirewallAPI.dll-28752 |**
 
     3.  若要禁用规则，请打开以下注册表项：
 
@@ -162,7 +162,7 @@ ms.locfileid: "52319056"
 
         然后，将 **Active=True** 更改为 **Active=FALSE**。
         
-        **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
+        **v2.22 |操作 = 允许 |Active = FALSE |Dir = In |协议 = 6 |配置文件 = Domain |配置文件 = 专用 |配置文件 = 公用 |LPort = 3389 |App=%SystemRoot%\system32\svchost.exe|Svc = termservice |名称 =\@用 FirewallAPI.dll-28775 |Desc =\@用 FirewallAPI.dll-28756 |EmbedCtxt =\@用 FirewallAPI.dll-28752 |**
 
 9.  突出显示“BROKENSYSTEM”，然后从菜单中选择“文件” > “卸载配置单元”。  **** **** 
 

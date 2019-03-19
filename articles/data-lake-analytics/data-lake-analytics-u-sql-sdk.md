@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238788"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089958"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 运行和测试 U-SQL
 
@@ -32,11 +32,11 @@ Data Lake U-SQL SDK 需要以下依赖项：
 - [Microsoft .NET Framework 4.6 或更高版本](https://www.microsoft.com/download/details.aspx?id=17851)。
 - Microsoft Visual C++ 14 和 Windows SDK 10.0.10240.0 或更高版本（在本文中称为 CppSDK）。 可通过两种方式来获取 CppSDK：
 
-    - 安装 [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou)。 Program Files 文件夹下面有一个 \Windows Kits\10 文件夹，例如 C:\Program Files (x86)\Windows Kits\10\。 也可在 \Windows Kits\10\Lib 下找到 Windows 10 SDK 版本。 如果看不到这些文件夹，请重新安装 Visual Studio，并确保在安装期间选择 Windows 10 SDK。 如果已与 Visual Studio 一起安装了它，U-SQL 本地编译器则会自动发现它。
+  - 安装 [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou)。 Program Files 文件夹下面有一个 \Windows Kits\10 文件夹，例如 C:\Program Files (x86)\Windows Kits\10\。 也可在 \Windows Kits\10\Lib 下找到 Windows 10 SDK 版本。 如果看不到这些文件夹，请重新安装 Visual Studio，并确保在安装期间选择 Windows 10 SDK。 如果已与 Visual Studio 一起安装了它，U-SQL 本地编译器则会自动发现它。
 
     ![用于 Visual Studio 的 Data Lake 工具本地运行 Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - 安装[用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)。 可在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK 中找到预打包的 Visual C++ 和 Windows SDK 文件。 在本例中，U-SQL 本地编译器无法自动查找依赖项。 需要为它指定 CppSDK 路径。 可将文件复制到其他位置，或按原样使用。
+  - 安装[用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)。 可在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK 中找到预打包的 Visual C++ 和 Windows SDK 文件。 在本例中，U-SQL 本地编译器无法自动查找依赖项。 需要为它指定 CppSDK 路径。 可将文件复制到其他位置，或按原样使用。
 
 ## <a name="understand-basic-concepts"></a>了解基本概念
 
@@ -63,7 +63,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 
 本地运行 U-SQL 脚本时，在编译期间，会在当前运行目录下创建一个工作目录。 除编译输出外，本地执行所需的运行时文件也以卷影形式复制到此工作目录。 工作目录根文件夹名为“ScopeWorkDir”，该工作目录下的文件如下所示：
 
-|目录/文件|目录/文件|目录/文件|定义|Description|
+|目录/文件|目录/文件|目录/文件|定义|描述|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |运行时版本的哈希字符串|本地执行所需的运行时文件卷影副本|
 | |Script_66AE4909AA0ED06C| |脚本名称 + 脚本路径的哈希字符串|编译输出和执行步骤日志记录|
@@ -137,13 +137,13 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 以下是 **run** 的可选参数：
 
 
-|参数|默认值|Description|
+|参数|默认值|描述|
 |--------|-------------|-----------|
 |-CodeBehind|False|该脚本具有 .cs 代码隐藏|
 |-CppSDK| |CppSDK 目录|
 |-DataRoot| DataRoot 环境变量|用于本地运行的 DataRoot，默认为“LOCALRUN_DATAROOT”环境变量|
 |-MessageOut| |将控制台上的消息转储到文件中|
-|-Parallel|1|使用指定的并行度运行计划|
+|-Parallel|第|使用指定的并行度运行计划|
 |-References| |代码隐藏的额外引用数据集或数据文件的路径列表，列表由“;”分隔|
 |-UdoRedirect|False|生成 Udo 程序集重定向配置|
 |-UseDatabase|master|用于代码隐藏临时程序集注册的数据库|
@@ -169,7 +169,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 以下是用于 **compile** 的可选参数：
 
 
-|参数|Description|
+|参数|描述|
 |--------|-----------|
 | -CodeBehind [default value 'False']|该脚本具有 .cs 代码隐藏|
 | -CppSDK [default value '']|CppSDK 目录|
@@ -207,7 +207,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 
 以下是用于 **execute** 的可选参数：
 
-|参数|默认值|Description|
+|参数|默认值|描述|
 |--------|-------------|-----------|
 |-DataRoot | '' |元数据执行的数据根。 默认为 **LOCALRUN_DATAROOT** 环境变量。|
 |-MessageOut | '' |将控制台上的消息转储到文件。|
@@ -223,7 +223,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 
 所有的编程接口都位于 LocalRunHelper.exe 中。 可以使用这些接口来集成 U-SQL SDK 和 C# 测试框架的功能，以缩放 U-SQL 脚本本地测试。 在本文中，将使用标准 C# 单元测试项目演示如何使用这些接口来测试 U-SQL 脚本。
 
-### <a name="step-1-create-c-unit-test-project-and-configuration"></a>步骤 1：创建 C# 单元测试项目和配置
+### <a name="step-1-create-c-unit-test-project-and-configuration"></a>步骤 1：创建C#单元测试项目和配置
 
 - 通过“文件”>“新建”>“项目”>“Visual C#”>“测试”>“单元测试项目”来创建 C# 单元测试项目。
 - 添加 LocalRunHelper.exe 作为项目的引用。 LocalRunHelper.exe 位于 Nuget 包中的 \build\runtime\LocalRunHelper.exe 处。
@@ -332,13 +332,13 @@ LocalRunHelper.exe 为 U-SQL 本地编译和运行等提供编程接口。以下
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|参数|类型|Description|
+|参数|Type|描述|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|对于输出消息，设置为 null 以使用控制台|
 
 **属性**
 
-|属性|类型|Description|
+|属性|Type|描述|
 |--------|----|-----------|
 |AlgebraPath|字符串|代数文件的路径（代数文件是某个编译结果）|
 |CodeBehindReferences|字符串|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|
@@ -364,7 +364,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
 **方法**
 
-|方法|Description|返回|参数|
+|方法|描述|返回|参数|
 |------|-----------|------|---------|
 |public bool DoCompile()|编译 U-SQL 脚本|如果成功，则返回 true| |
 |public bool DoExec()|执行编译结果|如果成功，则返回 true| |
@@ -375,11 +375,11 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 ## <a name="faq-about-common-issue"></a>常见问题
 
 ### <a name="error-1"></a>错误 1：
-E_CSC_SYSTEM_INTERNAL：内部错误！ 无法加载文件或程序集“ScopeEngineManaged.dll”或其某个依赖项。 找不到指定的模块。
+E_CSC_SYSTEM_INTERNAL:内部错误 ！ 无法加载文件或程序集“ScopeEngineManaged.dll”或其某个依赖项。 找不到指定的模块。
 
 请检查以下事项：
 
-- 请确保具有 x64 环境。 生成目标平台和测试环境应为 x64，请参阅上面的**步骤 1：创建 C# 单元测试项目和配置**。
+- 请确保具有 x64 环境。 生成目标平台和测试环境应为 x64，请参阅**步骤 1:创建C#单元测试项目和配置**上面。
 - 请确保已将 NugetPackage\build\runtime\ 下的所有依赖项文件都复制到了项目工作目录。
 
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26fd70b80dd512b530d367d57cd9fc04ec28f27b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8bbb307654d4aaf753a4a3284875dee4f5707f2a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211693"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901708"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教程：Azure Active Directory 与 HubSpot 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56211693"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 HubSpot 的集成，需要以下项：
 
@@ -187,7 +187,7 @@ ms.locfileid: "56211693"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在中**用户名**字段中，键入**brittasimon\@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -215,7 +215,7 @@ ms.locfileid: "56211693"
 
     ![配置单一登录](./media/hubspot-tutorial/user2.png)
 
-5. 在“添加电子邮件地址”文本框中输入用户的电子邮件地址（如，**brittasimon@contoso.com**），然后单击“下一步”。
+5. 输入类似用户的电子邮件地址**brittasimon\@contoso.com**中**添加电子邮件 addess(es)** 文本框中，单击**下一步**。
 
     ![配置单一登录](./media/hubspot-tutorial/user3.png)
 

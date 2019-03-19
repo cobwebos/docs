@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af01d924036e5d31de5498e51b56efdf1defc9f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 5217f21449efeb2086770f040fb781765ea819eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201442"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083931"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：技术深入了解
 
@@ -60,7 +60,7 @@ ms.locfileid: "56201442"
 3. 用户在 Azure AD 登录页键入其用户名。
 
    >[!NOTE]
-   >对于[某些应用程序](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso)，可跳过步骤 2 和 3。
+   >对于[某些应用程序](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domain_hint-or-login_hint-parameter-capability-of-seamless-sso)，可跳过步骤 2 和 3。
 
 4. Azure AD 在后台使用 JavaScript，通过“401 未授权”响应质询浏览器，以提供 Kerberos 票证。
 5. 然后，浏览器请求从 Active Directory 获取用于 `AZUREADSSOACC` 计算机帐户（表示 Azure AD）的票证。
@@ -99,6 +99,6 @@ ms.locfileid: "56201442"
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
-- [**常见问题**](how-to-connect-sso-faq.md) - 常见问题解答。
+- [**常见问题**](how-to-connect-sso-faq.md) - 常见问题的解答。
 - [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 6e5e8597ef5f080f557e40d9f053f13daee1ffd0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: ef7a4ce26e9117e28a00f417a1368e1edca6851e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989349"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863213"
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述
 Azure 媒体服务现在提供了用于交付 PlayReady 许可证的服务。 当播放器（例如 Silverlight）尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
@@ -44,7 +44,7 @@ Azure 媒体服务现在提供了用于交付 PlayReady 许可证的服务。 �
 下例演示了配置基本的流式处理许可证的最简单（也是最常见的）模板。 使用此许可证时，客户端可以播放受 PlayReady 保护的内容。
 
     <?xml version="1.0" encoding="utf-8"?>
-    <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
+    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
                                       xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
       <LicenseTemplates>
         <PlayReadyLicenseTemplate>
@@ -85,7 +85,7 @@ XML 遵循“PlayReady 许可证模板 XML 架构”部分中定义的 PlayReady
 
 ## <a id="schema"></a>PlayReady 许可证模板 XML 架构
     <?xml version="1.0" encoding="utf-8"?>
-    <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xs:complexType name="AgcAndColorStripeRestriction">
         <xs:sequence>

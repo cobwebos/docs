@@ -8,12 +8,12 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 47646a1593f01c4ea695b549bbde22260ffaf2f7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 83e2f6f42de5c729667f366a6e068f1c8bd71f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011072"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob FileSystem 驱动程序 (ABFS)：用于 Hadoop 的专用 Azure 存储驱动程序
 
@@ -21,7 +21,7 @@ ms.locfileid: "55962428"
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>之前的功能：Windows Azure 存储 Blob 驱动程序
 
-Windows Azure 存储 Blob 驱动程序或 [WASB 驱动程序](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)提供了对 Azure Blob 存储的原始支持。 此驱动程序执行复杂任务，即将文件系统语义（根据 Hadoop FileSystem 接口的要求）映射到 Azure Blob 存储公开的对象存储样式接口的语义中。 此驱动程序继续支持此模型，提供对 Blob 中存储的数据的高性能访问，但包含大量执行此映射的代码，因此很难维护。 此外，由于对象存储缺少对目录的支持，某些操作（如 [FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) 和 [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive)）在应用到目录时需要驱动程序执行大量操作，这通常导致性能下降。 ABFS 驱动程序旨在克服 WASB 的固有缺陷。
+Windows Azure 存储 Blob 驱动程序或 [WASB 驱动程序](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)提供了对 Azure Blob 存储的原始支持。 此驱动程序执行复杂任务，即将文件系统语义（根据 Hadoop FileSystem 接口的要求）映射到 Azure Blob 存储公开的对象存储样式接口的语义中。 此驱动程序继续支持此模型，提供对 Blob 中存储的数据的高性能访问，但包含大量执行此映射的代码，因此很难维护。 此外，由于对象存储缺少对目录的支持，某些操作（如 [FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) 和 [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive)）在应用到目录时需要驱动程序执行大量操作，这通常导致性能下降。 ABFS 驱动程序旨在克服 WASB 的固有缺陷。
 
 ## <a name="the-azure-blob-file-system-driver"></a>Azure Blob 文件系统驱动程序
 
@@ -52,13 +52,13 @@ ABFS 驱动程序支持两种形式的身份验证，以便 Hadoop 应用程序�
 
 ### <a name="configuration"></a>配置
 
-ABFS 驱动程序的所有配置均存储在 <code>core-site.xml</code> 配置文件中。 在带有 [Ambari](http://ambari.apache.org/) 的 Hadoop 分发上，还可使用 Web 门户或 Ambari REST API 管理配置。
+ABFS 驱动程序的所有配置均存储在 <code>core-site.xml</code> 配置文件中。 在带有 [Ambari](https://ambari.apache.org/) 的 Hadoop 分发上，还可使用 Web 门户或 Ambari REST API 管理配置。
 
-要详细了解所有受支持的配置条目，请参阅[官方 Hadoop 文档](http://hadoop.apache.org/docs/current/hadoop-azure/index.html)。
+要详细了解所有受支持的配置条目，请参阅[官方 Hadoop 文档](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)。
 
 ### <a name="hadoop-documentation"></a>Hadoop 文档
 
-要完整了解 ABFS 驱动程序，请参阅[官方 Hadoop 文档](http://hadoop.apache.org/docs/current/hadoop-azure/index.html)
+要完整了解 ABFS 驱动程序，请参阅[官方 Hadoop 文档](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)
 
 ## <a name="next-steps"></a>后续步骤
 

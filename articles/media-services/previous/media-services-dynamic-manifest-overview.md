@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 4f72738d0ca9b8c6dc170892a985d821923a4405
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000001"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894013"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
@@ -34,7 +34,7 @@ ms.locfileid: "56000001"
 ## <a name="overview"></a>概述
 将内容传送到客户（流式传输实时事件或视频点播）时，目标是：将优质视频传递到处于不同网络条件下的各种设备。 若要实现此目标，请执行以下操作：
 
-* 将流编码成多比特率（[自适应比特率](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)）视频流（这会负责处理质量和网络条件），并 
+* 将流编码成多比特率（[自适应比特率](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)）视频流（这将会负责处理质量和网络条件），并 
 * 使用媒体服务[动态打包](media-services-dynamic-packaging-overview.md)将流动态地重新打包成不同的协议（这会负责不同设备上的流式处理）。 媒体服务支持以下自适应比特率流式处理技术的传送：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。 
 
 ### <a name="manifest-files"></a>清单文件
@@ -114,23 +114,23 @@ ms.locfileid: "56000001"
 * 调整 DVR 演播窗口。
 
 ## <a name="rendition-filtering"></a>再现内容筛选
-可以选择将资产编码成多个编码配置文件（H.264 Baseline、H.264 High、AACL、AACH、Dolby Digital Plus），以及多个优质比特率。 不过，并非所有的客户端设备都支持资产的所有配置文件和比特率。 例如，早期的 Android 设备只支持 H.264 Baseline+AACL。 将较高的比特率发送到不能利用这些优势的设备会浪费带宽及设备计算资源。 此类设备必须解码所有给定信息，而目的仅仅是为了缩小信号以便能够显示。
+可选择将资产编码成多个编码配置文件（H.264 Baseline、H.264 High、AACL、AACH、Dolby Digital Plus），以及多个优质比特率。 不过，并非所有的客户端设备都支持资产的所有配置文件和比特率。 例如，早期的 Android 设备只支持 H.264 Baseline+AACL。 将较高的比特率发送到不能利用这些优势的设备会浪费带宽及设备计算资源。 此类设备必须解码所有给定信息，而目的仅仅是为了缩小信号以便能够显示。
 
 有了动态清单，可以创建设备配置文件（例如移动配置文件、控制台、HD/SD 等），并包含你想要纳入配置文件中的轨迹与质量。
 
 ![再现内容筛选示例][renditions2]
 
-以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可以动态打包成以下任一流式处理协议：HLS、Smooth 和 MPEG DASH。  图表顶部显示了不包含筛选器的资产的 HLS 清单（包含全部七个再现内容）。  左下角显示名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有不低于 1Mbps 的比特率，因此将最差的两个质量级别从响应中剥除。 在右下角显示已应用名为“mobile”的筛选器的 HLS 清单。 “mobile”筛选器指定要删除分辨率大于 720p 的再现内容，因此将剥除两个 1080p 再现内容。
+以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可动态打包成以下任一流协议：HLS、Smooth 和 MPEG DASH。  图表顶部显示了不包含筛选器的资产的 HLS 清单（包含全部七个再现内容）。  左下角显示名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有不低于 1Mbps 的比特率，因此将最差的两个质量级别从响应中剥除。 右下角显示名为“mobile”的筛选器已应用到 HLS 清单。 “mobile”筛选器指定删除分辨率大于 720p 的再现内容，因此会剥除两个 1080p 再现内容。
 
 ![再现内容筛选][renditions1]
 
 ## <a name="removing-language-tracks"></a>删除语言轨迹
-资产可能包含多种音频语言，例如英语、西班牙语、法语等。通常，播放器 SDK 管理器会按默认选择音频轨迹，并根据用户的选择来选择可用音频轨迹。 开发此类播放器 SDK 相当有挑战性，因为各个设备特定的播放器框架之间需要不同的实现。 此外，播放器 API 在某些平台上受到限制，且不包含音频选择功能，因此用户无法选择或更改默认的音频轨迹。使用资产筛选器，可以通过创建只包含所需音频语言的筛选器来控制行为。
+你的资产可能包含多种音频语言，例如英语、西班牙语、法语等。通常，播放器 SDK 管理器会按默认选择音频轨迹，并根据用户的选择来选择可用音频轨迹。 开发此类播放器 SDK 相当有挑战性，因为各个设备特定的播放器框架之间需要不同的实现。 此外，播放器 API 在某些平台上受到限制，且不包含音频选择功能，因此用户无法选择或更改默认的音频轨迹。使用资产筛选器，可以通过创建只包含所需音频语言的筛选器来控制行为。
 
 ![语言轨迹筛选][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>修剪资产开头
-在大多数实时流事件中，操作员必须在发生实际事件之前进行某些测试。 例如，他们可以在事件开始之前包含如下静态内容：“节目即将开始”。 如果节目正在存档，则测试和静态数据也会一并存档并包含在演播中。 但是，此信息不应向客户端显示。 通过动态清单，可以创建开始时间筛选器，并从清单中删除不需要的数据。
+在大多数实时流事件中，操作员必须在发生实际事件之前进行某些测试。 例如，他们可以在事件开始之前包含如下静态内容：“节目即将开始”。 如果节目正在存档，则测试和静态数据也会一并存档并包含在演播中。 但是，此信息不应向客户端显示。 借助动态清单，可以创建开始时间筛选器，并从清单中删除不需要的数据。
 
 ![剪裁开始][trim_filter]
 
@@ -168,15 +168,15 @@ ms.locfileid: "56000001"
 [使用 REST API 创建筛选器](media-services-rest-dynamic-manifest.md)。
 
 ## <a name="combining-multiple-filters-filter-composition"></a>组合多个筛选器（筛选器组合）
-也可以在一个 URL 中组合多个筛选器。 
+也可以在单个 URL 中组合多个筛选器。 
 
-以下方案演示为何需要组合多个筛选器：
+以下方案演示了可能需要组合多个筛选器的原因：
 
 1. 需要筛选视频质量（目的是限制视频质量）以供 Android 或 iPAD 之类的移动设备使用。 要删除其质量不符合需要的视频，可创建一个适合设备配置文件的全局筛选器。 如本文之前所述，全局筛选器可以用于在同一媒体服务帐户下的所有资产，这些资产并没有更多的其他联系。 
 2. 还可以修改资产的开始时间和结束时间。 为此，可以创建一个本地筛选器并设置开始/结束时间。 
 3. 希望能够将这些筛选器组合起来（如果不组合的话，则需要将质量筛选添加到进行修改的筛选器上，这会导致筛选器的使用更加困难）。
 
-为了组合筛选器，需要在清单/播放列表 URL 中设置筛选器名称，用分号对名称进行分隔。 假设有一个名为 *MyMobileDevice* 的筛选器用于筛选质量，另外还有一个名为 *MyStartTime* 的筛选器用于设置具体的开始时间。 可以将它们组合成下面这样：
+为了组合筛选器，需要在清单/播放列表 URL 中设置筛选器名称，用分号对名称进行分隔。 假设你有一个名为 MyMobileDevice 的筛选器，用于筛选质量，另外还有一个名为 MyStartTime 的筛选器，用于设置具体的开始时间。 可以将它们组合成下面这样：
 
     http://teststreaming.streaming.mediaservices.windows.net/3d56a4d-b71d-489b-854f-1d67c0596966/64ff1f89-b430-43f8-87dd-56c87b7bd9e2.ism/Manifest(filter=MyMobileDevice;MyStartTime)
 

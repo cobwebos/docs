@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2018
 ms.author: banders
-ms.openlocfilehash: a71c456f017e80da85f27437738aa963ec967a3c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: 7e5697073b9406d915eda99a5e71e3123c48073a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904144"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880206"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>适用于 Azure 预留自动化的 API
 
@@ -29,7 +29,7 @@ ms.locfileid: "54904144"
 
 使用预留建议 API 获取根据组织的使用情况购买预留计划的建议。 有关详细信息，请参阅[获取预留建议](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)。
 
-也可通过“消耗 API 使用情况详细信息”分析资源使用情况。 有关详细信息，请参阅[使用情况详细信息 - 按计费帐户划分的计费期间的列表](/rest/api/consumption/usagedetails/listforbillingperiodbybillingaccount)。 始终使用的 Azure 资源通常是最适合预留的。
+也可通过“消耗 API 使用情况详细信息”分析资源使用情况。 有关详细信息，请参阅[使用情况详细信息 - 按计费帐户划分的计费期间的列表](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod)。 始终使用的 Azure 资源通常是最适合预留的。
 
 ## <a name="buy-a-reservation"></a>购买预留项
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fb263819a5bb96175f636f53a16c28649a3f39
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: b006a4fbb8d1059f5096f5c1585853953b69042f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339543"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082137"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -94,18 +94,18 @@ ms.locfileid: "56339543"
 了解你在中断期间可能面临的风险有助于降低风险，是规划过程中的关键环节。 若要创建应急计划，请首先确定组织的以下业务要求：
 
 1. 提前确定你的任务关键应用：即使风险较高/安全状况较差，仍必须提供对哪些应用的访问权限？ 为这些应用生成一个列表，确保你的其他利益干系人（业务部门、安全部门、法律部门、领导层）都同意：即使所有访问控制都失效，这些应用仍必须继续运行。 你最终可能会对应用进行以下分类：
-  * **类别 1 任务关键应用**：不可用时间不能超过几分钟，例如直接影响组织收入的应用。
-  * **类别 2 重要应用**：需要在几小时内访问其业务。
-  * **类别 3 低优先级应用**：可以承受几天的中断。
+   * **类别 1 任务关键应用**：不可用时间不能超过几分钟，例如直接影响组织收入的应用。
+   * **类别 2 重要应用**：需要在几小时内访问其业务。
+   * **类别 3 低优先级应用**：可以承受几天的中断。
 2. 对于类别 1 和 2 的应用，Microsoft 建议你预先规划要允许的访问级别类型：
-  * 是允许完全访问还是会话受限（例如限制下载）？
-  * 是否允许访问应用的一部分，而不是整个应用？
-  * 是否允许信息工作者访问而阻止管理员访问，直到访问控制恢复为止？
+   * 是允许完全访问还是会话受限（例如限制下载）？
+   * 是否允许访问应用的一部分，而不是整个应用？
+   * 是否允许信息工作者访问而阻止管理员访问，直到访问控制恢复为止？
 3. 对于这些应用，Microsoft 还建议你对慎重开放哪些访问途径以及关闭哪些访问途径做好规划：
-  * 是否仅允许浏览器访问，而阻止可以保存脱机数据的富客户端访问？
-  * 是否仅允许公司网络内部的用户访问，而阻止外部用户访问？
-  * 在中断期间，是否仅允许从某些国家或地区进行访问？
-  * 如果没有替代访问控制，你希望应急策略（尤其是对于任务关键应用）失败还是成功？
+   * 是否仅允许浏览器访问，而阻止可以保存脱机数据的富客户端访问？
+   * 是否仅允许公司网络内部的用户访问，而阻止外部用户访问？
+   * 在中断期间，是否仅允许从某些国家或地区进行访问？
+   * 如果没有替代访问控制，你希望应急策略（尤其是对于任务关键应用）失败还是成功？
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
@@ -251,7 +251,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 如果你的组织使用的是每用户 MFA 旧策略，则可以考虑以下替代方法：
 
 1. 如果有公司网络出站 IP 地址，则可以将它们添加为受信任的 IP，以便仅对公司网络启用身份验证。
- 2. 如果没有出站 IP 地址清单，或需要在公司网络内外均启用访问，则可通过指定 0.0.0.0/1 和 128.0.0.0/1 将整个 IPv4 地址空间添加为可信 IP。
+   1. 如果没有出站 IP 地址清单，或需要在公司网络内外均启用访问，则可通过指定 0.0.0.0/1 和 128.0.0.0/1 将整个 IPv4 地址空间添加为可信 IP。
 
 >[!IMPORTANT]
  > 如果通过扩大受信任 IP 地址的范围来取消阻止访问，则不会生成与 IP 地址关联的风险事件（例如，无法实现的行程或不熟悉的位置）。
@@ -264,9 +264,9 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 * [Azure AD 身份验证文档](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [在 Azure AD 中管理紧急访问管理账户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [在 Azure Active Directory 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
- * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [如何配置联接到混合 Azure Active Directory 的设备](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Windows Hello for Business 部署指南](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
- * [密码指南 - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+  * [密码指南 - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Azure Active Directory 条件访问中的条件是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Azure Active Directory 条件访问中的访问控制是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
-ms.date: 09/24/2018
+ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6deeabfe57f946a9c31548791c00ee70ecd9f2d6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 8c392e1df1b3a42256bc89cabcfa1506a4b4e83b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251242"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117789"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX 和 Azure 机器学习：创建和部署可互操作的 AI 模型
 
@@ -36,7 +36,7 @@ Microsoft 跨其产品（包括 Azure 和 Windows）支持 ONNX 以帮助实现�
 
 可以使用 Azure 机器学习和 ONNX 运行时将 [ONNX 模型部署](#deploy)到云中。 还可以使用 [Windows 机器学习](https://docs.microsoft.com/windows/ai/)将它们部署到 Windows 10 设备。 甚至可以使用 ONNX 社区中提供的转换器将它们部署到其他平台。 
 
-[ ![显示定型、转换器和部署的 ONNX 流程图](media/concept-onnx/onnx.png) ] (./media/concept-onnx/onnx.png#lightbox)
+[![ONNX 数据流关系图显示培训、 转换器和部署](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>获取 ONNX 模型
 
@@ -69,7 +69,7 @@ Microsoft 跨其产品（包括 Azure 和 Windows）支持 ONNX 以帮助实现�
 
 ### <a name="install-and-configure-onnx-runtime"></a>安装并配置 ONNX 运行时
 
-ONNX 运行时是 ONNX 模型的开源高性能推理引擎。 它通过可用于 Python、C# 和 C 的 API 在 CPU 和 GPU 上提供硬件加速。ONNX 运行时支持 ONNX 1.2+ 模型并可在 Linux、Windows 和 Mac 上运行。 Python 程序包在 [PyPi.org](https://pypi.org)（[CPU](https://pypi.org/project/onnxruntime)、[GPU](https://pypi.org/project/onnxruntime-gpu)）上提供，[C# 程序包](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/)位于 [Nuget.org](https://www.nuget.org) 上。可以在 [GitHub](https://github.com/Microsoft/onnxruntime) 上查看有关该项目的更多内容。 
+ONNX 运行时是 ONNX 模型的开源高性能推理引擎。 它通过可用于 Python、C# 和 C 的 API 在 CPU 和 GPU 上提供硬件加速。ONNX 运行时支持 ONNX 1.2+ 模型并可在 Linux、Windows 和 Mac 上运行。 Python 程序包在 [PyPi.org](https://pypi.org)（[CPU](https://pypi.org/project/onnxruntime)、[GPU](https://pypi.org/project/onnxruntime-gpu)）上提供，[C# 程序包](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/)位于 [Nuget.org](https://www.nuget.org) 上。可以在 [GitHub](https://github.com/Microsoft/onnxruntime) 上查看有关该项目的更多内容。 请阅读[系统要求](https://github.com/Microsoft/onnxruntime#system-requirements)之前安装。
 
 若要安装适用于 Python 的 ONNX 运行时，请使用：
 ```python
@@ -127,7 +127,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
    ```python
    from azureml.core.image import ContainerImage
-   
+
    image_config = ContainerImage.image_configuration(execution_script = "score.py",
                                                      runtime = "python",
                                                      conda_file = "myenv.yml",
@@ -161,10 +161,10 @@ results = session.run([], {"input1": indata1, "input2": indata2})
        try:
            data = json.loads(raw_data)['data']
            data = np.array(data)
-        
+
            sess = onnxruntime.InferenceSession(model_path)
            result = sess.run(["outY"], {"inX": data})
-        
+
            return json.dumps({"result": result.tolist()})
        except Exception as e:
            result = str(e)
@@ -189,9 +189,9 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 
 ## <a name="examples"></a>示例
- 
+
 有关创建和部署 ONNX 模型的示例笔记本，请参阅 [how-to-use-azureml/deployment/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx)。
- 
+
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="more-info"></a>更多信息

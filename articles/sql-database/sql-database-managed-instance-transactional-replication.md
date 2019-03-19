@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993803"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852746"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一、入池和实例数据库进行事务复制
 
@@ -26,7 +26,6 @@ ms.locfileid: "55993803"
 ## <a name="when-to-use-transactional-replication"></a>何时使用事务复制
 
 在以下情况下，事务复制非常有用：
-
 - 发布数据库的一个或多个表中所做的更改，并将其分发到订阅了更改的一个或多个 SQL Server 或 Azure SQL 数据库。
 - 将多个分布式数据库保持同步状态。
 - 通过持续发布更改，将数据库从一个 SQL Server 或托管实例迁移到另一个数据库。
@@ -53,13 +52,16 @@ ms.locfileid: "55993803"
 
 | 角色 | 单一数据库和入池数据库 | 实例数据库 |
 | :----| :------------- | :--------------- |
-| **发布服务器** | 否 | 是 | 
+| **发布者** | 否 | 是 | 
 | **分发服务器** | 否 | 是|
 | **提取订阅服务器** | 否 | 是|
 | **推送订阅服务器**| 是 | 是|
 | &nbsp; | &nbsp; | &nbsp; |
 
-有不同的[复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017)：
+  >[!NOTE]
+  > 分发服务器是一种实例数据库和订阅服务器时，不支持请求订阅。 
+
+有不同的[复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)：
 
 
 | 复制 | 单一数据库和入池数据库 | 实例数据库|
@@ -75,14 +77,37 @@ ms.locfileid: "55993803"
 
   >[!NOTE]
   > - 尝试使用旧版来配置复制可能导致错误 MSSQL_REPL20084（过程无法连接到订阅服务器）和 MSSQ_REPL40532（无法打开登录名所请求的服务器 \<name>。 登录失败。）
-  > - 若要使用 Azure SQL 数据库的所有功能，必须使用最新版本的 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) 和 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)。
+  > - 若要使用 Azure SQL 数据库的所有功能，必须使用最新版本的 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
+  
+  ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>实例数据库和本地系统的 Supportabilty 矩阵
+  复制可支持性矩阵数据库对于实例是一个用于本地 SQL Server 相同。 
+  
+  | **发布者**   | **分发服务器** | **订阅服务器** |
+| :------------   | :-------------- | :------------- |
+| SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
+| SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
+| SQL Server 2014 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
+| SQL Server 2012 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
+| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
+| &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="requirements"></a>要求
 
 - 连接时，在复制参与者之间使用 SQL 身份验证。 
 - 复制功能使用的工作目录的 Azure 存储帐户共享。 
-- 需要在托管实例子网的安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。 
-- 如果发布服务器/分发服务器位于托管实例上，而订阅服务器位于本地，则需要打开端口 1433（TCP 出站）。 
+- 需要在要访问 Azure 文件共享的托管实例子网的安全规则中打开端口 445(tcp 出站)。 
+- 如果发布服务器/分发服务器位于托管实例上，而订阅服务器位于本地，则需要打开端口 1433（TCP 出站）。
+
+  >[!NOTE]
+  > 如果出站网络安全组 (NSG) 端口 445 被阻止时分发服务器是一种实例数据库和订阅服务器是在本地连接到 Azure 存储文件时，可能会遇到错误 53。 [更新 vNet NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)若要解决此问题。 
+
+### <a name="compare-data-sync-with-transactional-replication"></a>将数据同步与事务复制进行比较
+
+| | 数据同步 | 事务复制 |
+|---|---|---|
+| 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 |
+| 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库单一数据库或入池数据库发布<br/>- 维护成本高 |
+| | | |
 
 ## <a name="common-configurations"></a>常用配置
 
@@ -90,7 +115,7 @@ ms.locfileid: "55993803"
 
 ### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>带本地分发服务器的发布服务器位于托管实例上
 
-![用作发布服务器和分发服务器的单个实例 ](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
+![用作发布服务器和分发服务器的单个实例](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
 发布服务器和分发服务器在单个托管实例中配置，并将更改分发到本地的其他托管实例、单一数据库、入池数据库或 SQL Server。 在此配置中，不能使用[异地复制和自动故障转移组](sql-database-auto-failover-group.md)来配置发布服务器/分发服务器托管实例。
 
@@ -112,11 +137,13 @@ ms.locfileid: "55993803"
  
 在此配置中，Azure SQL 数据库（单一、入池和实例数据库）是订阅服务器。 此配置支持从本地迁移到 Azure。 如果订阅服务器位于单一或入池数据库上，则它必须处于推送模式。  
 
+
 ## <a name="next-steps"></a>后续步骤
 
 1. [为托管实例配置事务复制](replication-with-sql-database-managed-instance.md#configure-publishing-and-distribution-example)。 
 1. [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
 1. 使用 Azure SQL 数据库服务器名称作为订阅服务器（例如 `N'azuresqldbdns.database.windows.net`）并使用 Azure SQL 数据库名称作为目标数据库（例如 **Adventureworks**）来[创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
+
 
 
 ## <a name="see-also"></a>另请参阅  

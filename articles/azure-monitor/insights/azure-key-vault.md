@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 785ccba6766b6a4f7400f3fdacf7ac24a234adf5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: b2c43ff2ae45b4adccb8f19873070a4c3a9dbe99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192764"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078751"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure Key Vault 分析解决方案
 
 ![Key Vault 符号](media/azure-key-vault/key-vault-analytics-symbol.png)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。
 
@@ -55,13 +57,13 @@ ms.locfileid: "53192764"
 8. 单击“保存”，启用在 Log Analytics 中记录诊断日志
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>使用 PowerShell 启用 Key Vault 诊断
-以下 PowerShell 脚本提供如何使用 `Set-AzureRmDiagnosticSetting` 为 Key Vault 启用诊断日志记录的示例：
+以下 PowerShell 脚本提供如何使用 `Set-AzDiagnosticSetting` 为 Key Vault 启用诊断日志记录的示例：
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
-$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+$kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
 
@@ -103,7 +105,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 类型 |AzureDiagnostics |
+| Type |AzureDiagnostics |
 | SourceSystem |*Azure* |
 | CallerIpAddress |发出请求的客户端 IP 地址 |
 | 类别 | AuditEvent |
@@ -136,13 +138,13 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 1. [将诊断配置为直接从 Key Vault 发送到 Log Analytics](#enable-key-vault-diagnostics-in-the-portal)  
 2. 使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Azure Key Vault 解决方案
 3. 更新所有已保存的查询、仪表板或警报，以使用的新数据类型
-  + 类型从KeyVaults 更改为 AzureDiagnostics。 可以使用 ResourceType 筛选 Key Vault 日志。
-  - 不要使用 `KeyVaults`，应使用 `AzureDiagnostics | where ResourceType'=="VAULTS"`
-  + 字段：（字段名称区分大小写）
-  - 对于名称中包含 \_s、\_d 或 \_g 后缀的任何字段，请将第一个字符更改为小写
-  - 对于名称中包含 \_o 后缀的任何字段，数据会根据嵌套的字段名称拆分为单个字段。 例如，调用方的 UPN 存储在字段 `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` 中
-   - 字段 CallerIpAddress 已更改为 CallerIPAddress
-   - 字段 RemoteIPCountry 不再存在
+   + 类型从KeyVaults 更改为 AzureDiagnostics。 可以使用 ResourceType 筛选 Key Vault 日志。
+   + 不要使用 `KeyVaults`，应使用 `AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + 字段：（字段名称区分大小写）
+   + 对于名称中包含 \_s、\_d 或 \_g 后缀的任何字段，请将第一个字符更改为小写
+   + 对于名称中包含 \_o 后缀的任何字段，数据会根据嵌套的字段名称拆分为单个字段。 例如，调用方的 UPN 存储在字段 `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` 中
+   + 字段 CallerIpAddress 已更改为 CallerIPAddress
+   + 字段 RemoteIPCountry 不再存在
 4. 删除“Key Vault Analytics (已弃用)”解决方案。 如果使用的是 PowerShell，请使用 `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 在发生此项更改之前收集的数据不会显示在新解决方案中。 可以继续使用旧类型和字段名称查询此数据。

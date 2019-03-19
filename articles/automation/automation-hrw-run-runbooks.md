@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 35367a9ebc9ff09f40defd444f6ceb8ff54efe07
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: fab886de55cc524390093f7e7913c79f7af3fe78
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430278"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858128"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -307,12 +307,8 @@ gpg –-clear-sign <runbook name>
 
 已签名 runbook 现在可上传到 Azure 自动化中，并且可以像常规 runbook 一样执行。
 
-## <a name="troubleshoot"></a>故障排除
-
-如果 runbook 未成功完成，请查看 [runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
-
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解其他可用于启动 Runbook 的方法，请参阅[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md)。
 * 若要了解如何通过不同过程使用文本编辑器在 Azure 自动化中处理 PowerShell runbook，请参阅[在 Azure 自动化中编辑 runbook](automation-edit-textual-runbook.md)
-
+* 如果 runbook 未成功完成，请查看 [runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。

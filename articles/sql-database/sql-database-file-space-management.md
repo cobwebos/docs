@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: 043ceb6c46155ed169c080d08f37688b47e3e4b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110143"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881157"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的单一和池化数据库的文件空间
 
@@ -27,6 +27,10 @@ ms.locfileid: "56110143"
 > 本文不适用于 Azure SQL 数据库中的托管实例部署选项。
 
 ## <a name="overview"></a>概述
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
 
 使用 Azure SQL 数据库中的单一和池化数据库时，可能存在如下所述的工作负荷模式：其中数据库基础数据文件的分配可能会大于已使用数据页的数量。 如果使用的空间不断增大，并且后续删除了数据，则可能会出现这种情况。 这是因为分配的文件空间不会自动回收。
 
@@ -40,7 +44,7 @@ ms.locfileid: "56110143"
 
 Azure 门户和以下 API 中显示的大多数存储空间指标仅度量已用数据页面的大小：
 
-- 基于 Azure 资源管理器的指标 API，包括 PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
+- 基于 Azure 资源管理器的指标 API，包括 PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
 - T-SQL：[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 但是，以下 API 还度量分配给数据库和弹性池的空间大小：
@@ -162,7 +166,7 @@ $userName = "name"
 $password = "password"
 
 # Get list of databases in elastic pool
-$databasesInPool = Get-AzureRmSqlElasticPoolDatabase `
+$databasesInPool = Get-AzSqlElasticPoolDatabase `
     -ResourceGroupName $resourceGroupName `
     -ServerName $serverName `
     -ElasticPoolName $poolName
@@ -237,7 +241,7 @@ DBCC SHRINKDATABASE (N'db1')
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-有关此命令的详细信息，请参阅 [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017) 选项。 
+有关此命令的详细信息，请参阅 [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 选项。 
 
 ### <a name="rebuild-indexes"></a>重建索引
 

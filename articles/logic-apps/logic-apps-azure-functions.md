@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb00ef0f76b71d0a4748a319c9f2a5d64dffa251
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 2bec33a4a8540f9599cf1d479f1f59c4cde39bd2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233304"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861581"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>使用 Azure Functions 在 Azure 逻辑应用中添加并运行自定义代码片段
 
@@ -27,7 +27,7 @@ ms.locfileid: "50233304"
 
 还能[从 Azure Functions 内部调用逻辑应用](#call-logic-app)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要按本文中所述进行操作，需具备以下各项：
 
@@ -44,7 +44,7 @@ ms.locfileid: "50233304"
     此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 
     将 Azure 函数添加到逻辑应用中时，逻辑应用设计器在 Azure 订阅内显示基于此模板创建的自定义函数。 
 
-  * 函数不会使用自定义路由，除非定义了 [OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（以前称为 [Swagger 文件](http://swagger.io/)）。 
+  * 函数不会使用自定义路由，除非定义了 [OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（以前称为 [Swagger 文件](https://swagger.io/)）。 
   
   * 如果已对函数定义了 OpenAPI 定义，逻辑应用设计器会提供更丰富的函数参数使用体验。 在逻辑应用查找并访问具有 OpenAPI 定义的函数之前，请先[按以下步骤设置函数应用](#function-swagger)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "50233304"
 
 <a name="function-swagger"></a>
 
-* （可选）若为函数[生成了 API 定义](../azure-functions/functions-openapi-definition.md)（以前称为 [Swagger 文件](http://swagger.io/)），则在逻辑应用设计器中使用函数参数时能得到更丰富的体验。 若要设置函数应用以使其可查找和使用具备 Swagger 描述的函数，请按照以下步骤操作：
+* （可选）若为函数[生成了 API 定义](../azure-functions/functions-openapi-definition.md)（以前称为 [Swagger 文件](https://swagger.io/)），则在逻辑应用设计器中使用函数参数时能得到更丰富的体验。 若要设置函数应用以使其可查找和使用具备 Swagger 描述的函数，请按照以下步骤操作：
 
   1. 确保函数应用正在运行。
 
@@ -125,11 +125,11 @@ function convertToDateString(request, response){
    * 如果介于逻辑应用工作流中现有步骤之间，请将鼠标移至箭头上，选择加号 (+)，然后选择“添加操作”。
 
 3. 在搜索框中输入“Azure Functions”作为筛选器。
-从操作列表选择此操作：“选择 Azure 函数 - Azure Functions” 
+在操作列表中选择此操作：**选择 Azure 函数 - Azure Functions** 
 
    ![找到“Azure Functions”](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-4. 从函数应用列表中选择自己的函数应用。 在操作列表打开后，选择此操作：“Azure Functions - 新建函数”
+4. 从函数应用列表中选择自己的函数应用。 操作列表打开后，选择此操作：**Azure 函数-创建新的函数**
 
    ![选择函数应用](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -181,7 +181,7 @@ function convertToDateString(request, response){
 2. 在要添加函数的步骤下，选择“新建步骤” > “添加操作”。 
 
 3. 在搜索框中输入“Azure Functions”作为筛选器。
-从操作列表选择此操作：“选择 Azure 函数 - Azure Functions” 
+在操作列表中选择此操作：**选择 Azure 函数 - Azure Functions** 
 
    ![找到“Azure Functions”](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d61b39eb0a7b6a35330e0cde2142029b8eb7ce03
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 5f98cf51b618686e3c608535667993e9d5f9e939
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512204"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852910"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -97,9 +97,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ### <a name="hybrid-worker-role"></a>混合辅助角色
 
-要使混合 Runbook 辅助角色连接并注册到 Log Analytics，必须让其有权访问此部分所述的端口号和 URL。 除了这些端口和 URL 以外，还需要有权访问 [Microsoft Monitoring Agent 连接到 Log Analytics 时要使用的端口和 URL](../azure-monitor/platform/agent-windows.md)。
+若要连接到并使用 Azure Monitor 日志注册混合 Runbook 辅助角色，它必须有权访问的端口号和此部分所述的 Url。 此访问权限是到顶部[端口和 Url 所需的 Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md)以连接到 Azure Monitor 日志。
 
-如果使用代理服务器在代理与 Log Analytics 服务之间通信，请确保能够访问相应的资源。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合辅助角色配置 Log Analytics 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 Log Analytics 网关](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers)。
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+如果代理与 Azure Monitor 服务之间的通信使用代理服务器，请确保相应的资源是否可访问。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合辅助角色配置 Log Analytics 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 Log Analytics 网关](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)。
 
 混合 Runbook 辅助角色与自动化通信时需要以下端口和 URL：
 
@@ -147,11 +149,8 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
-## <a name="troubleshoot"></a>故障排除
-
-若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅[混合 Runbook 辅助角色的故障排除](troubleshoot/hybrid-runbook-worker.md#general)
-
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何配置 Runbook，使本地数据中心或其他云环境中的过程自动化，请参阅[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)。
+* 若要了解如何配置 Runbook，使本地数据中心或其他云环境中的过程自动化，请参阅[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)。
+* 若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅[混合 Runbook 辅助角色的故障排除](troubleshoot/hybrid-runbook-worker.md#general)
 

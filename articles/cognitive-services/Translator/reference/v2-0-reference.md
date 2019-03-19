@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: f8d57723f6e51fb392e4fdbfb2b2a445d48635e3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 4f08b728198d6ee508cbd8267c593abc59e4cb37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861708"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075247"
 ---
 # <a name="translator-text-api-v20"></a>文本翻译 API v2.0
 
@@ -76,7 +76,7 @@ ms.locfileid: "55861708"
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明    |参数类型|数据类型|
+|参数|值|描述    |参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid  |(empty)    |必需。 如果使用了 Authorization 或 Ocp-Apim-Subscription-Key 标头，请将 appid 字段留空，否则请包括一个包含 "Bearer" + " " + "access_token" 的字符串。|query|字符串|
 |text|(empty)   |必需。 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|query|字符串|
@@ -157,7 +157,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 
 ```
 <ArrayOfTranslateArrayResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2"
-  xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
   <TranslateArrayResponse>
     <From>language-code</From>
     <OriginalTextSentenceLengths xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -181,7 +181,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |授权|(empty) |必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
@@ -205,7 +205,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 请求正文包括一个字符串数组，该数组代表需检索其友好名称的语言所对应的 ISO 639-1 语言代码。 例如：
 
 ```
-<ArrayOfstring xmlns:i="http://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+<ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
     <string>zh</string>
     <string>en</string>
 </ArrayOfstring>
@@ -222,7 +222,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |区域设置|(empty) |必需。 一个表示组合的字符串，该组合包含一个与某种语言关联的 ISO 639 双字母小写区域性代码，以及一个用于将语言名称本地化的 ISO 3166 双字母大写子区域性代码，或者一个单纯的 ISO 639 小写区域性代码。|query|字符串|
@@ -256,7 +256,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |授权|(empty)  |必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
@@ -289,7 +289,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
@@ -321,13 +321,13 @@ binary
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |text|(empty)   |必需。 一个字符串，包含 wave 流对应的指定要朗读的语言的一个或多个句子。 要朗读的文本的大小不得超过 2000 个字符。|query|字符串|
 |语言|(empty)   |必需。 一个字符串，表示要朗读的文本所采用语言的受支持语言代码。 此代码必须存在于从 `GetLanguagesForSpeak` 方法返回的代码的列表中。|query|字符串|
 |格式|(empty)|可选。 一个字符串，指定 content-type ID。 目前，`audio/wav` 和 `audio/mp3` 可用。 默认值为 `audio/wav`。|query|字符串|
-|options|(empty)    |<ul><li>可选。 一个字符串，指定已合成语音的属性：<li>`MaxQuality` 和 `MinSize` 可以用来指定音频信号的质量。 使用 `MaxQuality` 可以获取质量最高的语音，而使用 `MinSize` 则可获取大小最小的语音。 默认为 `MinSize`。</li><li>`female` 和 `male` 可以用来指定语音的所需性别。 默认为 `female`。 使用垂直条 `|` 包含多个选项。 例如 `MaxQuality|Male`。</li></li></ul> |query|字符串|
+|options|(empty)    |<ul><li>可选。 一个字符串，指定已合成语音的属性：<li>`MaxQuality` 和 `MinSize` 可以用来指定音频信号的质量。 使用 `MaxQuality` 可以获取质量最高的语音，而使用 `MinSize` 则可获取大小最小的语音。 默认为 `MinSize`。</li><li>`female` 和 `male` 可以用来指定语音的所需性别。 默认为 `female`。 使用垂直条 <code>\|</code> 包含多个选项。 例如 `MaxQuality|Male`。</li></li></ul> |query|字符串|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
 
@@ -357,7 +357,7 @@ binary
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)  |必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |text|(empty)|必需。 一个字符串，所包含的一些文本需标识其语言。 文本大小不得超过 10000 个字符。|query| 字符串|
@@ -397,7 +397,7 @@ binary
 响应正文的格式如下所示。
 
 ```
-<ArrayOfstring xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<ArrayOfstring xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
   <string>language-code-1</string>
   <string>language-code-2</string>
 </ArrayOfstring>
@@ -412,7 +412,7 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
@@ -446,7 +446,7 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型   |
+|参数|值|描述|参数类型|数据类型   |
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |originalText|(empty)|必需。 一个字符串，包含要翻译的文本。 字符串的最大长度为 1000 个字符。|query|字符串|
@@ -523,7 +523,7 @@ AddTranslationArray 方法成功。 2018 年 1 月 31 日以后，不接受句�
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |授权|(empty)|必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
@@ -556,7 +556,7 @@ integer
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)  |必需。 如果使用了 Authorization 或 Ocp-Apim-Subscription-Key 标头，请将 appid 字段留空，否则请包括一个包含 "Bearer" + " " + "access_token" 的字符串。|query| 字符串|
 |text|(empty)   |必需。 一个字符串，表示要拆分成句子的文本。 文本大小不得超过 10000 个字符。|query|字符串|
@@ -612,7 +612,7 @@ integer
 
 ```
 <GetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2"
-  xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
   <From>Two character language code</From>
   <State/>
   <Translations>
@@ -651,7 +651,7 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |text|(empty)|必需。 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|query|字符串|
@@ -725,7 +725,7 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
 **返回值：** 响应的格式如下所示。
 
 ```
-<ArrayOfGetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<ArrayOfGetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
   <GetTranslationsResponse>
     <From>language-code</From>
     <State/>
@@ -772,7 +772,7 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |授权  |(empty)    |必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|

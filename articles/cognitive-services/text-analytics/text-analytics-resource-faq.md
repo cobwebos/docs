@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: bdc8549f5f72d6098bf132d8395c9892170be9b0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: a85fa543a6b26a5ea6452ce99fb91dc1ce465db7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245450"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545288"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>有关文本分析认知服务的常见问题解答 (FAQ)
 
@@ -53,5 +53,5 @@ ms.locfileid: "56245450"
 
 ## <a name="see-also"></a>另请参阅
 
- [StackOverflow：文本分析 API   
- [StackOverflow：认知服务](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow：文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow：认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

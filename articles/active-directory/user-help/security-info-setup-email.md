@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c6bf2c8ea6a2526f8548a785706e5ed3a7460ff
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 720aafac79a67f64b0974dba0dd60c6aa24a8c54
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455205"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342065"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>设置安全信息（预览）以使用电子邮件地址
 可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
@@ -36,11 +36,11 @@ ms.locfileid: "56455205"
 
 1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
-    ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile.png)
+    ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“电子邮件”，然后选择“添加”。
 

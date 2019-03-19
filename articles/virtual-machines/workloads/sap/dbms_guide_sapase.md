@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/1/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b93c6ebdc29429920096245c74c71b7918c095c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 9c37c5339dedb3db68ed9bd23cd28e16a195bbde
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330675"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005781"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
 
@@ -158,7 +158,7 @@ ms.locfileid: "56330675"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56330675"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -401,8 +401,6 @@ SAP ASE 可执行文件应位于或安装在 VM 的 OS 磁盘的系统驱动器�
 > https://mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http://mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
-> 
-> 
 
 在此情况下，需要确保：
 
@@ -467,7 +465,7 @@ SAP ASE HADR 不需要 Azure 内部负载均衡器，并且不依赖于 OS 级�
 
 若要部署 Azure VM，请务必熟悉可在此处找到的官方 SLA：<https://azure.microsoft.com/support/legal/sla>
 
-SAP 说明 [1928533] 将提供 SAP 大小调整信息以及经过 SAP 认证的 VM SKU 列表。 其他适用于 Azure 虚拟机的 SAP 大小调整文档可以在 <http://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> 和 <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx> 中找到
+SAP 说明 [1928533] 将提供 SAP 大小调整信息以及经过 SAP 认证的 VM SKU 列表。 其他适用于 Azure 虚拟机的 SAP 大小调整文档可以在 <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> 和 <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx> 中找到
 
 有关 Azure 存储使用情况、SAP VM 部署或 SAP 监视的表述与建议适用于 SAP ASE 与 SAP 应用程序的联合部署，如本文档前四章所述。
 
@@ -556,8 +554,6 @@ SAP ASE 可执行文件应位于或安装在 VM 的根文件系统 ( /sybase ) �
 > https://mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http://mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
-> 
-> 
 
 在此情况下，需要确保：
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 78370b004d18f70ae4d485f3ad7cfd910e6dd70a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045660"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100303"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>排查常见的路由问题
 本文介绍如何排查在使用 Azure Front Door 服务配置时可能会遇到的一些常见路由问题。 
@@ -28,7 +28,7 @@ ms.locfileid: "47045660"
 ### <a name="symptom"></a>症状
 - 你已创建一个 Front Door，但对前端主机的请求返回了 HTTP 400 状态代码。
 
- - 你已创建从自定义域到所配置的前端主机的 DNS 映射。 但是，向自定义域主机名发送请求时返回了 HTTP 400 状态代码，并且该请求似乎未路由到所配置的后端。
+  - 你已创建从自定义域到所配置的前端主机的 DNS 映射。 但是，向自定义域主机名发送请求时返回了 HTTP 400 状态代码，并且该请求似乎未路由到所配置的后端。
 
 ### <a name="cause"></a>原因
 - 如果尚未针对添加为前端主机的自定义域配置路由规则，则可能会出现这种症状。 需要为前端主机显式添加路由规则，即使已经在自定义域已 DNS 映射到的 Front Door 子域 (*.azurefd.net) 下面为前端主机配置了一个路由规则，也是如此。
@@ -54,11 +54,11 @@ ms.locfileid: "47045660"
     - 请务必等待大约 10 分钟来部署配置。
 
 2. 检查后端设置
-     - 导航至请求应路由到的后端池（取决于路由规则的配置方式），并检查后端主机类型和后端主机名是否正确。 如果后端是自定义主机，请确保拼写正确。 
+   - 导航至请求应路由到的后端池（取决于路由规则的配置方式），并检查后端主机类型和后端主机名是否正确。 如果后端是自定义主机，请确保拼写正确。 
 
-     - 检查 HTTP 和 HTTPS 端口。 在大多数情况下，80 和 443（分别为 HTTP 和 HTTPS 端口）是正确的，无需更改。 但是，你的后端可能并未采用这种配置，而是侦听另一个端口。
+   - 检查 HTTP 和 HTTPS 端口。 在大多数情况下，80 和 443（分别为 HTTP 和 HTTPS 端口）是正确的，无需更改。 但是，你的后端可能并未采用这种配置，而是侦听另一个端口。
 
-    - 检查为前端主机应路由到的后端配置的后端主机标头。 在大多数情况下，此标头应与后端主机名相同。 但是，如果后端需要某种不同的配置，则错误的值可能导致不同的 HTTP 4xx 状态代码。 输入后端的 IP 地址时，可能需要将后端主机标头设置为后端的主机名。
+     - 检查为前端主机应路由到的后端配置的后端主机标头。 在大多数情况下，此标头应与后端主机名相同。 但是，如果后端需要某种不同的配置，则错误的值可能导致不同的 HTTP 4xx 状态代码。 输入后端的 IP 地址时，可能需要将后端主机标头设置为后端的主机名。
 
 
 3. 检查路由规则设置

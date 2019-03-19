@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: 548c05963b0b99ba3434d600b19f80cef6a09d6a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 1d0a0c2c6a965ac14002257484c5f840666e6fc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813341"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885260"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services 应用程序和服务清单示例
 下面是包含 ASP.NET Core Web 前端和有状态后端的 Service Fabric 应用程序的应用程序和服务清单示例。 这些示例的用途是展示有哪些设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Service Fabric .NET 快速入门](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)清单。
 
 展示了以下功能：
+
 |清单|功能|
 |---|---|
 |[应用程序清单](#application-manifest)| [资源监管](service-fabric-resource-governance.md)、[以本地管理员帐户运行服务](service-fabric-application-runas-security.md)、[将默认策略应用到所有服务代码包](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[创建用户和组主体](service-fabric-application-runas-security.md)、在服务实例之间共享数据包、[重写服务终结点](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
@@ -37,7 +38,7 @@ ms.locfileid: "55813341"
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="VotingData_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="VotingData_PartitionCount" DefaultValue="1" />
@@ -174,8 +175,8 @@ ms.locfileid: "55813341"
 <ServiceManifest Name="VotingWebPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType. 
          This name must match the string used in RegisterServiceType call in Program.cs. -->
@@ -238,8 +239,8 @@ ms.locfileid: "55813341"
 <ServiceManifest Name="VotingDataPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType. 
          This name must match the string used in RegisterServiceType call in Program.cs. -->

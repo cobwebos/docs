@@ -8,44 +8,44 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: e0513bc18f1cf14beb4c1becfc1835235a5ddc96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731388"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092219"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导出作业
 使用 REST API 为 Microsoft Azure 导入/导出服务创建导出作业的过程包括以下步骤：
 
--   选择要导出的 Blob。
+- 选择要导出的 Blob。
 
--   获取寄送位置。
+- 获取寄送位置。
 
--   创建导出作业。
+- 创建导出作业。
 
--   通过支持的承运人将空驱动器寄送到 Microsoft。
+- 通过支持的承运人将空驱动器寄送到 Microsoft。
 
--   使用包裹信息更新导出作业。
+- 使用包裹信息更新导出作业。
 
--   接收从 Microsoft 寄回的驱动器。
+- 接收从 Microsoft 寄回的驱动器。
 
- 有关导入/导出服务的概述以及演示如何使用 [Azure 门户](https://portal.azure.com/)创建和管理导入和导出作业的教程，请参阅[使用 Windows Azure 导入/导出服务将数据传输到 Blob 存储](storage-import-export-service.md)。
+  有关导入/导出服务的概述以及演示如何使用 [Azure 门户](https://portal.azure.com/)创建和管理导入和导出作业的教程，请参阅[使用 Windows Azure 导入/导出服务将数据传输到 Blob 存储](storage-import-export-service.md)。
 
 ## <a name="selecting-blobs-to-export"></a>选择要导出的 Blob
  若要创建导出作业，需提供要从存储帐户导出的 Blob 的列表。 可通过多种方法选择要导出的 Blob：
 
--   可以使用相对 Blob 路径选择单个 Blob 及其所有快照。
+- 可以使用相对 Blob 路径选择单个 Blob 及其所有快照。
 
--   可以使用相对 Blob 路径选择单个 Blob（不包括其快照）。
+- 可以使用相对 Blob 路径选择单个 Blob（不包括其快照）。
 
--   可以使用相对 Blob 路径和快照时间选择单个快照。
+- 可以使用相对 Blob 路径和快照时间选择单个快照。
 
--   可以使用 Blob 前缀选择具有给定前缀的所有 Blob 和快照。
+- 可以使用 Blob 前缀选择具有给定前缀的所有 Blob 和快照。
 
--   可以导出存储帐户中的所有 Blob 和快照。
+- 可以导出存储帐户中的所有 Blob 和快照。
 
- 有关指定要导出的 Blob 的详细信息，请参阅[放置作业](/rest/api/storageimportexport/jobs)操作。
+  有关指定要导出的 Blob 的详细信息，请参阅[放置作业](/rest/api/storageimportexport/jobs)操作。
 
 ## <a name="obtaining-your-shipping-location"></a>获取寄送位置
 在创建导出作业之前，需要通过调用[获取位置](https://portal.azure.com)或[列出位置](https://docs.microsoft.com/rest/api/storageimportexport/locations/list)操作获取寄送位置名称和地址。 `List Locations` 返回位置及其邮寄地址的列表。 可以从返回的列表中选择一个位置，然后将硬盘驱动器寄送到该地址。 也可以使用“`Get Location`”操作直接获取特定位置的寄送地址。

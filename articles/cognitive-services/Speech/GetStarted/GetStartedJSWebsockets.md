@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: c5869133d94f73e1d463a176614617df2587bdfb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 17901ad40a48e9ee8d1a8b872b04ad52b75b3a52
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226098"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672400"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>开始使用 JavaScript 中的语音识别 API
 
@@ -23,7 +24,7 @@ ms.locfileid: "55226098"
 
 通过使用语音识别 API，可以开发将语音音频转换为文本的应用程序。 JavaScript 客户端库使用[语音服务 WebSocket 协议](../API-Reference-REST/websocketprotocol.md)，通过它可以同时探讨和接收转录文本。 本文有助于开始使用 JavaScript 中的语音识别 API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>订阅语音识别 API，并获得免费试用的订阅密钥
 

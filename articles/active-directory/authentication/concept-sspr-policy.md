@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fed31d07f4bbe9fc47ce0d2c31f45fed288c4c4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6888a8787856ef23c459c7ffc18f8e2b4de17f6f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56218017"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901128"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -36,20 +36,22 @@ ms.locfileid: "56218017"
   * 计费管理员
   * 合作伙伴一线支持人员
   * 合作伙伴二线支持人员
-  * Exchange 服务管理员
-  * Lync 服务管理员
-  * 用户帐户管理员
+  * Exchange 管理员
+  * Skype for Business 管理员
+  * 用户管理员
   * 目录写入者
   * 全局管理员或公司管理员
-  * SharePoint 服务管理员
+  * SharePoint 管理员
   * 法规管理员
   * 应用程序管理员
   * 安全管理员
   * 特权角色管理员
-  * Microsoft Intune 服务管理员
+  * Intune 管理员
   * 应用程序代理服务器管理员
-  * CRM 服务管理员
+  * Dynamics 365 管理员
   * Power BI 服务管理员
+  * 身份验证管理员
+  * 特权身份验证管理员
 
 * 如果在试用订阅中已过 30 天；或
 * 虚域存在（例如 contoso.com）；或
@@ -75,13 +77,13 @@ ms.locfileid: "56218017"
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>仅适用于云用户帐户的密码策略
 
-下表介绍了可应用于在 Azure AD 中创建和管理的用户帐户的可用密码策略设置：
+下表描述了应用于创建和管理在 Azure AD 中的用户帐户的密码策略设置：
 
 | 属性 | 要求 |
 | --- | --- |
-| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
-| 不允许的字符 |<ul><li>Unicode 字符。</li><li>空格。</li><li> 仅限强密码：不能包含圆点字符 "."紧接在“\@\"符号”之前。</li></ul> |
-| 密码限制 |<ul><li>至少 8 个字符，最多包含 16 个字符。</li><li>仅限强密码：需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
+| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> |
+| 不允许的字符 |<ul><li>Unicode 字符。</li><li>空格。</li><li> 不能包含圆点字符"。"上一页"\@ \"符号"。</li></ul> |
+| 密码限制 |<ul><li>至少 8 个字符，最多包含 16 个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
 | 密码过期期限 |<ul><li>默认值：“90”天。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
 | 密码过期通知 |<ul><li>默认值：“14”天（密码到期前）。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
 | 密码到期 |<ul><li>默认值：**false** 天（指示已启用密码到期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
@@ -108,7 +110,7 @@ Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Micr
 1. 使用公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
-   * 若要查看单个用户的密码是否已设置为永不过期，请使用要查看的用户的 UPN（例如 *aprilr@contoso.onmicrosoft.com*）或用户 ID 运行以下 cmdlet：`Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * 若要查看单个用户的密码已设置为永不过期，运行以下 cmdlet 使用的 UPN (例如， *aprilr\@contoso.onmicrosoft.com*) 或你想要检查的用户的用户 ID: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * 若要查看所有用户的“密码永不过期”设置，请运行以下 cmdlet：`Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
 
 ### <a name="set-a-password-to-expire"></a>设置密码过期

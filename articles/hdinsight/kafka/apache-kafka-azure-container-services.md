@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: b8995436677c195317b9ac304fe8c52cc2fcfc80
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: b9b4af353e5bbd36f1f8d7468c38542a0fabda85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602063"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112171"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Apache Kafka on HDInsight 配合使用
 
@@ -25,7 +25,7 @@ ms.locfileid: "53602063"
 > [!NOTE]  
 > 本文重点讲解需要执行哪些步骤才能让 Azure Kubernetes 服务与 Kafka on HDInsight 通信。 示例本身只是一个用于演示配置工作原理的基本 Kafka 客户端。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Azure 订阅
@@ -81,17 +81,17 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 5. 若要在 HDInsight 网络与 AKS 群集网络之间配置对等互连，请选择虚拟网络，然后选择“对等互连”。 选择“+ 添加”，然后使用以下值填充表单：
 
-    * __名称__：输入此对等互连配置的唯一名称。
-    * __虚拟网络__：使用此字段选择 **AKS 群集**的虚拟网络。
+   * __名称__：输入此对等互连配置的唯一名称。
+   * __虚拟网络__：使用此字段选择 **AKS 群集**的虚拟网络。
 
-    将其他所有字段保留默认值，然后选择“确定”以配置对等互连。
+     将其他所有字段保留默认值，然后选择“确定”以配置对等互连。
 
 6. 若要在 AKS 群集网络与 HDInsight 网络之间配置对等互连，请选择“AKS 群集虚拟网络”，然后选择“对等互连”。 选择“+ 添加”，然后使用以下值填充表单：
 
-    * __名称__：输入此对等互连配置的唯一名称。
-    * __虚拟网络__：使用此字段选择 __HDInsight 群集__的虚拟网络。
+   * __名称__：输入此对等互连配置的唯一名称。
+   * __虚拟网络__：使用此字段选择 __HDInsight 群集__的虚拟网络。
 
-    将其他所有字段保留默认值，然后选择“确定”以配置对等互连。
+     将其他所有字段保留默认值，然后选择“确定”以配置对等互连。
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>安装 Apache Kafka on HDInsight
 
@@ -142,7 +142,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
     ![服务操作，其中已突出显示“打开维护”](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
 
-10. 要重启 Kafka，请使用“重启”按钮，并选择“重启所有受影响的项”。 确认重启，在操作完成后再使用“确定”按钮。
+10. 要重启 Kafka，请使用“重启”按钮，然后选择“重启所有受影响的项”。 确认重启，在操作完成后再使用“确定”按钮。
 
     ![重启按钮，其中突出显示了所有受影响的重启项](./media/apache-kafka-azure-container-services/restart-button.png)
 

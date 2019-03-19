@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 71a69a8c299d4469c151102b0dbd5cdb70c296ec
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: 3b2a34a5ed2c6b57bfce0b9a4cf35cdf14cff9c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980117"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900074"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>使用云合作伙伴门户创建新的容器产品/服务
 
@@ -34,7 +34,7 @@ ms.locfileid: "50980117"
 
 ## <a name="new-offer-form"></a>“新建套餐”窗体 
 
-登录到[云合作伙伴门户](http://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”。 在“新建产品/服务”菜单中，选择“容器”以显示“新建产品/服务”表单，并开始为新容器产品/服务定义资产。
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”。 在“新建产品/服务”菜单中，选择“容器”以显示“新建产品/服务”表单，并开始为新容器产品/服务定义资产。
 
 ![为“新建产品/服务”选择“容器”选项](./media/azure-container-offer.png)
 

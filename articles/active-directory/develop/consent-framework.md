@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbac6fe421864f9479c9a4ee7eecde97c13f6052
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0200aa917894f4b7f1a45a9d3bd15b128aaf27a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200524"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124170"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 许可框架
 
@@ -58,14 +58,14 @@ ms.locfileid: "56200524"
 
     **同意应用的委托权限**
 
-    1. 转到应用程序的“设置”页
-    1. 选择“所需权限”。
-    1. 单击“授予权限”按钮。
+   1. 转到应用程序的“设置”页
+   1. 选择“所需权限”。
+   1. 单击“授予权限”按钮。
 
-    ![授予显式管理许可权限](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![授予显式管理许可权限](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
 
-  > [!IMPORTANT]
-  > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。
+   > [!IMPORTANT]
+   > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 9d72bc885bdaaed521042df236dd722b80533186
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
-ms.translationtype: HT
+ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866995"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013345"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA 备份指南
 
@@ -63,8 +63,8 @@ _目前不可以，只能在主端创建数据和日志的备份。如果已启�
 
 - [SAP HANA 管理简介](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US)
 - [规划备份和恢复策略](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)
-- [使用 ABAP DBACOCKPIT 计划 HANA 备份](http://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
-- [计划数据备份（SAP HANA 考核中心）](http://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
+- [使用 ABAP DBACOCKPIT 计划 HANA 备份](https://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
+- [计划数据备份（SAP HANA 考核中心）](https://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
 - [SAP 说明 1642148](https://launchpad.support.sap.com/#/notes/1642148) 中有关 SAP HANA 备份的常见问题解答
 - [SAP 说明 2039883](https://launchpad.support.sap.com/#/notes/2039883) 中有关 SAP HANA 数据库和存储快照的常见问题解答
 - [SAP 说明 1820529](https://launchpad.support.sap.com/#/notes/1820529) 中所述的不适用于备份和恢复的网络文件系统
@@ -80,7 +80,7 @@ Azure 存储原生提供高可用性和可靠性（有关 Azure 存储的详细�
 
 请注意，执行简单的还原并检查 HANA 是否正常运行并不足够。 理想情况下，应该运行表一致性的检查，确保还原的数据库正常。 SAP HANA 提供 [SAP 说明 1977584](https://launchpad.support.sap.com/#/notes/1977584) 中所述的多种一致性检查。
 
-在 SAP 网站上的 [Table and Catalog Consistency Checks](http://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b)（表和目录一致性检查）中也能找到有关表一致性检查的信息。
+在 SAP 网站上的 [Table and Catalog Consistency Checks](https://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b)（表和目录一致性检查）中也能找到有关表一致性检查的信息。
 
 对于标准文件备份，不需要执行测试还原。 可以借助两个 SAP HANA 工具来检查哪个备份可用于还原：hdbbackupdiag 和 hdbbackupcheck。 有关这些工具的详细信息，请参阅[手动检查是否可以恢复](https://help.sap.com/saphelp_hanaplatform/helpdata/en/77/522ef1e3cb4d799bab33e0aeb9c93b/content.htm)。
 
@@ -90,7 +90,7 @@ SAP 不会在 HANA 备份与存储快照之间做出优先选择， 而是列出
 
 在 Azure 上，请注意这样一个事实：Azure Blob 快照功能无法保证文件系统一致性（请参阅[通过 PowerShell 使用 Blob 快照](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)）。 下一部分_创建存储快照时保持 SAP HANA 数据一致性_介绍了有关此功能的一些注意事项。
 
-此外，必须了解频繁使用 Blob 快照产生的计费影响，如以下文章中所述：[Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)（了解快照计费方式）— 与使用 Azure 虚拟磁盘时相比，快照产生的费用不是很明显。
+此外，必须了解对计费产生影响时经常使用 blob 快照在本文中所述：[了解快照如何产生费用](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)— 它并不是&#39;t 明显，使用 Azure 虚拟磁盘。
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>创建存储快照时保持 SAP HANA 数据一致性
 
@@ -137,7 +137,7 @@ HANA 管理指南提供了示例列表。 建议使用以下备份序列将 SAP 
 在特定备份类型的执行时间和执行频率方面，我们无法针对明确的计划提供总体准则 — 这在很大程度上具体于不同的客户，以及系统中发生的数据更改量。 SAP 方面提供的一项基本建议是，每周创建一个完整的 HANA 备份，可将这项建议视为总体准则。
 有关日志备份，请参阅 SAP HANA 文档[日志备份](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm)。
 
-SAP 还建议针对备份目录执行一些清理，使它能够无限保持增长（请参阅 [Housekeeping for Backup Catalog and Backup Storage](http://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)（备份目录和备份存储的清理））。
+SAP 还建议针对备份目录执行一些清理，使它能够无限保持增长（请参阅 [Housekeeping for Backup Catalog and Backup Storage](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)（备份目录和备份存储的清理））。
 
 ### <a name="sap-hana-configuration-files"></a>SAP HANA 配置文件
 

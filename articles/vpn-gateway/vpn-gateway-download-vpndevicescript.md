@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: d13e0ea365b25bc17ff2d23dfaf86bc057774744
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415487"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996319"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下载用于 S2S VPN 连接的 VPN 设备配置脚本
 
@@ -53,7 +53,7 @@ ms.locfileid: "56415487"
 
 创建连接资源后，遵照以下说明下载 VPN 设备配置脚本：
 
-1. 在浏览器中导航到 [Azure 门户](http://portal.azure.com)，并根据需要使用 Azure 帐户登录。
+1. 在浏览器中导航到 [Azure 门户](https://portal.azure.com)，并根据需要使用 Azure 帐户登录。
 2. 转到创建的连接资源。 依次单击“所有服务”、“网络”和“连接”可以找到所有连接资源的列表。
 
     ![connection-list](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)

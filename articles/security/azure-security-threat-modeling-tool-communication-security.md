@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: be0dd7147e3864befa90434ade86b4032cd45cc3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: HT
+ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013179"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897293"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
 | --------------- | ------- |
 | **Azure 事件中心** | <ul><li>[使用 SSL/TLS 保护与事件中心之间的通信](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[检查服务帐户特权，并检查自定义服务或 ASP.NET 页面是否遵循 CRM 的安全性](#priv-aspnet)</li></ul> |
-| **Azure 数据工厂** | <ul><li>[将本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关](#sqlserver-factory)</li></ul> |
+| **Azure 数据工厂** | <ul><li>[在本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关](#sqlserver-factory)</li></ul> |
 | **标识服务器** | <ul><li>[确保发往标识服务器的所有流量都通过 HTTPS 连接传输](#identity-https)</li></ul> |
 | **Web 应用程序** | <ul><li>[验证用于对 SSL、TLS 和 DTLS 连接进行身份验证的 X.509 证书](#x509-ssltls)</li><li>[在 Azure 应用服务中为自定义域配置 SSL 证书](#ssl-appservice)</li><li>[强制要求发往 Azure 应用服务的所有流量都通过 HTTPS 连接传输](#appservice-https)</li><li>[启用 HTTP 严格传输安全性 (HSTS)](#http-hsts)</li></ul> |
 | **数据库** | <ul><li>[确保加密 SQL Server 连接并验证证书](#sqlserver-validation)</li><li>[强制以加密形式来与 SQL Server 通信](#encrypted-sqlserver)</li></ul> |
@@ -60,15 +60,15 @@ ms.locfileid: "53013179"
 | **参考**              | 不适用  |
 | **步骤** | 检查服务帐户特权，并检查自定义服务或 ASP.NET 页面是否遵循 CRM 的安全性 |
 
-## <a id="sqlserver-factory"></a>将本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关
+## <a id="sqlserver-factory"></a>在本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 数据工厂 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
-| **属性**              | 链接服务类型 - Azure 和本地 |
-| **参考**              |[在本地与 Azure 数据工厂之间移动数据](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)、[数据管理网关](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **属性**              | 链接的服务类型-Azure 和本地 |
+| **参考**              |[在本地和 Azure 数据工厂之间移动数据](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)，[数据管理网关](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **步骤** | <p>需要使用数据管理网关 (DMG) 工具连接到受企业网络或防火墙保护的数据源。</p><ol><li>锁定计算机可以隔离 DMG 工具，防止不正常的程序损坏源计算机或者窥视其数据。 （例如， 必须安装最新的更新、启用所需的最少量端口、预配受控帐户、审核启用、启用磁盘加密，等等。）</li><li>必须经常或者每当 DMG 服务帐户密码续订时轮替数据网关密钥</li><li>通过链接服务传输的数据必须加密</li></ol> |
 
 ## <a id="identity-https"></a>确保发往标识服务器的所有流量都通过 HTTPS 连接传输
@@ -146,7 +146,7 @@ ms.locfileid: "53013179"
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [OWASP HTTP 严格传输安全性速查表](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **步骤** | <p>HTTP 严格传输安全性 (HSTS) 是 Web 应用程序使用特殊响应标头指定的一个选用的安全增强功能。 支持的浏览器收到此标头后，将阻止通过 HTTP 将任何通信发送到指定的域，并改为通过 HTTPS 发送所有通信。 它还可以防止浏览器中出现 HTTPS 点击提示。</p><p>若要实现 HSTS，必须在代码或配置中为网站全局配置以下响应标头。Strict-Transport-Security: max-age=300; includeSubDomains。HSTS 可解决以下威胁：</p><ul><li>用户将 http://example.com 加入书签或手动键入时容易受到中间人攻击者的攻击：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>纯粹只进行 HTTPS 通信的 Web 应用程序无意中包含 HTTP 链接或通过 HTTP 提供内容：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>中间人攻击者试图使用无效的证书来截获受害用户发送的流量，并希望此用户接受错误的证书：HSTS 不允许用户替代无效的证书消息</li></ul>|
+| **步骤** | <p>HTTP 严格传输安全性 (HSTS) 是 Web 应用程序使用特殊响应标头指定的一个选用的安全增强功能。 支持的浏览器收到此标头后，将阻止通过 HTTP 将任何通信发送到指定的域，并改为通过 HTTPS 发送所有通信。 它还可以防止浏览器中出现 HTTPS 点击提示。</p><p>若要实现 HSTS，必须在代码或配置中为网站全局配置以下响应标头。Strict-Transport-Security: max-age=300; includeSubDomains。HSTS 可解决以下威胁：</p><ul><li>用户将 https://example.com 加入书签或手动键入时容易受到中间人攻击者的攻击：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>纯粹只进行 HTTPS 通信的 Web 应用程序无意中包含 HTTP 链接或通过 HTTP 提供内容：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>中间人攻击者试图使用无效的证书来截获受害用户发送的流量，并希望此用户接受错误的证书：HSTS 不允许用户替代无效的证书消息</li></ul>|
 
 ## <a id="sqlserver-validation"></a>确保加密 SQL Server 连接并验证证书
 
@@ -339,7 +339,7 @@ string GetData(int value);
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
-| **参考**              | [在 Web API 控制器中强制 SSL](http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
+| **参考**              | [在 Web API 控制器中强制 SSL](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
 | **步骤** | 如果应用程序同时使用 HTTPS 和 HTTP 绑定，则客户端仍可使用 HTTP 访问站点。 为了防止这种问题，请使用操作筛选器来确保始终通过 HTTPS 向受保护 API 传输请求。|
 
 ### <a name="example"></a>示例 

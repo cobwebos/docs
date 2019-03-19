@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 43992d25590a58b24c48aad8bfbf6f91b17699ee
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 33ec96b3708bc89f3fbd415f892e0810fc468876
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098075"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092661"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -34,7 +34,7 @@ Azure Functions 工具提供以下优势：
 > [!IMPORTANT]
 > 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目发布到函数应用时，部署过程会覆盖在门户中开发的任何函数。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 Azure Functions 工具包含在 [Visual Studio 2017 版本 15.5](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保你在安装 Visual Studio 2017 时随附了Azure 开发工作负荷：
 
@@ -143,7 +143,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 1. 确保已[为本地开发配置项目](#configure-the-project-for-local-development)。
 
-2. 为特定绑定添加适当的 NuGet 扩展包。 有关详细信息，请参阅“触发器和绑定”一文中的[使用 Visual Studio 进行本地 C# 开发](functions-triggers-bindings.md#local-csharp)。 特定于绑定的 NuGet 包要求位于绑定的参考文章中。 例如，可以在[事件中心绑定参考文章](functions-bindings-event-hubs.md)中找到事件中心触发器的包要求。
+2. 为特定绑定添加适当的 NuGet 扩展包。 有关详细信息，请参阅“触发器和绑定”一文中的[使用 Visual Studio 进行本地 C# 开发](./functions-bindings-register.md#local-csharp)。 特定于绑定的 NuGet 包要求位于绑定的参考文章中。 例如，可以在[事件中心绑定参考文章](functions-bindings-event-hubs.md)中找到事件中心触发器的包要求。
 
 3. 如果有绑定需要的应用设置，请将其添加到[本地设置文件](functions-run-local.md#local-settings-file)中的 **Values** 集合。 当函数在本地运行时，会使用这些值。 当函数在 Azure 的函数应用中运行时，会使用[函数应用设置](#function-app-settings)。
 
@@ -163,7 +163,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
         }
     }
     ```
-到队列存储的连接从 `AzureWebJobsStorage` 设置获取。 有关详细信息，请参阅特定绑定的参考文章。 
+   到队列存储的连接从 `AzureWebJobsStorage` 设置获取。 有关详细信息，请参阅特定绑定的参考文章。 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
@@ -220,8 +220,6 @@ For an example of how to test a queue triggered function, see the [queue trigger
 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 ## <a name="next-steps"></a>后续步骤
-
-有关 Azure Functions 工具的详细信息，请参阅 [Visual Studio 2017 Tools for Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/)（用于 Azure Functions 的 Visual Studio 2017 工具）博客文章中的“Common Questions”（常见问题）部分。
 
 若要详细了解 Azure Functions 核心工具，请参阅[在本地编写 Azure 函数代码并对其进行测试](functions-run-local.md)。
 

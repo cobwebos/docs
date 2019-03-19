@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7054946a15ca27f4b5a36d3d2ac712cba2fd68d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6e79b0fc0ef23287c8871b7a7634d28d129b900e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185122"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101136"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -85,19 +85,19 @@ ms.locfileid: "56185122"
 
     ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-    - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 可能的原因如下：AD FS 缺少或配置不当（对于联合域）、Azure AD 无缝单一登录缺少或配置不当（对于托管域）或者网络存在问题。 
+  - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 可能的原因如下：AD FS 缺少或配置不当（对于联合域）、Azure AD 无缝单一登录缺少或配置不当（对于托管域）或者网络存在问题。 
     
-     - 还可能是由于为用户启用/配置了多重身份验证 (MFA)，但没有在 AD FS 服务器上配置 WIAORMUTLIAUTHN。 
+    - 还可能是由于为用户启用/配置了多重身份验证 (MFA)，但没有在 AD FS 服务器上配置 WIAORMUTLIAUTHN。 
      
-     - 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 **autoworkplace.exe** 以无提示方式请求令牌。
+    - 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 **autoworkplace.exe** 以无提示方式请求令牌。
      
-     - 客户端的 IE 的 intranet 区域中可能缺少 AD FS 和 Azure AD URL。
+    - 客户端的 IE 的 intranet 区域中可能缺少 AD FS 和 Azure AD URL。
      
-     - 网络连接问题可能阻止 **autoworkplace.exe** 访问 AD FS 或 Azure AD URL。 
+    - 网络连接问题可能阻止 **autoworkplace.exe** 访问 AD FS 或 Azure AD URL。 
      
-     - **Autoworkplace.exe** 要求客户端能够直接从客户端看到组织的本地 AD 域控制器，这意味着只有当客户端已连接到组织的 intranet 时混合 Azure AD 加入才会成功。
+    - **Autoworkplace.exe**要求客户端具有直接视距从客户端到组织的本地 AD 域控制器，这意味着该混合 Azure AD 联接成功仅客户端连接到组织的 intranet。
      
-     - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”。
+    - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”。
 
 - 登录身份不是域用户
 

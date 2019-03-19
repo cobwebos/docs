@@ -5,30 +5,29 @@ description: 机器学习工作室中包含的示例模型中使用的数据集�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 55cf124baf7614813620602212856cc586b721df
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244328"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880987"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
 [top]: #machine-learning-sample-datasets
 
-在 Azure 机器学习中创建新工作区时，默认包含大量的示例数据集和实验。 其中许多示例数据集由 [Azure AI 库](http://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
+在 Azure 机器学习工作室中创建新的工作区时，默认情况下包含大量的示例数据集和实验。 其中许多示例数据集由 [Azure AI 库](https://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
 
 一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 可以在实验中通过使用[导入数据][import-data]模块使用这些数据集。
 
 余下的这些示例数据集可在“保存的数据集”下的工作区中使用。 可以在机器学习工作室中试验画布左侧的模块调色板中找到此项。
 通过将其中的任何数据集拖放到实验画布中，即可在自己的实验中使用它们。
 
-
-
+## <a name="datasets"></a>数据集
 
 <table>
 
@@ -44,7 +43,7 @@ ms.locfileid: "56244328"
 <p></p>
 <b>用途：</b>使用人口统计信息对人员分类，预测某人的年收入是否超过 5 万。
 <p></p>
-<b>相关研究：</b>Kohavi, R.、Becker, B.（1996 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Kohavi, R.、Becker, B.（1996 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -65,7 +64,7 @@ ms.locfileid: "56244328"
 <p></p>
 <b>用途：</b>按特性、使用回归或多元分类预测风险评分。 
 <p></p>
-<b>相关研究：</b>Schlimmer, J.C. （1987 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Schlimmer, J.C. （1987 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -96,9 +95,9 @@ UCI 自行车租赁数据集基于 Capital Bikeshare 公司的实际数据，该
 <p></p>
 <b>用途：</b>目标是通过分类预测 2007 年 3 月是否会有献血者，其中 1 表示目标期间有献血者，0 表示没有献血者。 
 <p></p>
-<b>相关研究：</b>Yeh, I.C.（2008 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
+<b>相关研究：</b>Yeh, I.C.（2008 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
-Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM model using Bernoulli sequence”, 专家系统及其应用, 2008 年, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
+Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM model using Bernoulli sequence”, 专家系统及其应用, 2008 年, <a href="https://dx.doi.org/10.1016/j.eswa.2008.07.018">https://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
 </tr>
 
@@ -109,7 +108,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>基于 9 种属性（其中有一些是线性的，一些是无条件的）对癌症类型分类。 
 <p></p>
-<b>相关研究：</b>Wohlberg, W.H.、Street, W.N. 和 Mangasarian, O.L. （1995 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Wohlberg, W.H.、Street, W.N. 和 Mangasarian, O.L. （1995 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -162,13 +161,13 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>使用回归或分类来预测基于两个实值响应之一的能效等级。 对于多类分类，将响应变量舍入为最接近的整数。 
 <p></p>
-<b>相关研究：</b>Xifara, A. & Tsanas, A.（2012 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Xifara, A. & Tsanas, A.（2012 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
   <td>航班延误数据</td>
   <td>
-从美国的 TranStats 数据收集中获得的客运航班正常率数据。交通部（<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">准时</a>）。
+从美国的 TranStats 数据收集中获得的客运航班正常率数据。交通部（<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">准时</a>）。
 <p></p>
 数据集涵盖 2013 年 4 月到 10 月的时间段。 在上传到 Azure 机器学习工作室之前，数据集的处理如下所示：
 <ul>
@@ -187,7 +186,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>预测航班延误。 
 <p></p>
-<b>相关研究：</b>来自美国运输部 <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>。
+<b>相关研究：</b>来自美国运输部 <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>。
   </td>
 </tr>
 
@@ -198,7 +197,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>这项回归任务非常难，其目的是预测森林火灾的焚毁面积。 
 <p></p>
-<b>相关研究：</b>Cortez, P. 和 Morais, A.（2008 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
+<b>相关研究：</b>Cortez, P. 和 Morais, A.（2008 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
 [Cortez 和 Morais，2007 年] P. Cortez 和 A. Morais。 使用气象数据预测森林火灾的数据挖掘方法。 在 J. Neves, M. F. Santos 和 J. Machado 编辑，“人工智能新趋势”，2007 年第 13 届 EPIA 会议记录 - 有关人工智能的葡萄牙会议于 2007 年 12 月在葡萄牙吉马良斯召开，第 512-523 页。 APPIA, ISBN-13 978-989-95618-0-9。 如需获取，请访问 <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>。
   </td>
@@ -207,7 +206,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <tr>
   <td>德国信用卡 UCI 数据集</td>
   <td>
-使用 german.data 文件的 UCI Statlog（德国信用卡）数据集 (<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog+German+Credit+Data</a>)。
+使用 german.data 文件的 UCI Statlog（德国信用卡）数据集 (<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog+German+Credit+Data</a>)。
 <p></p>
 数据集将用户（由一组属性描述）分为两类：低信用风险或高信用风险。 每个示例表示一位用户。 有 20 个特征，包括数值和分类，以及二进制标签（信用风险值）。 高信用风险条目具有标签 = 2，低信用风险条目具有标签 = 1。 将低风险示例错误分类为高的成本是 1，反之将高风险示例错误分类为低的成本是 5。
   </td>
@@ -227,13 +226,13 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>通过测量值预测鸢尾花类型。  
 <p></p>
-<b>相关研究：</b>Fisher, R.A. （1988 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Fisher, R.A. （1988 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
   <td>电影推文</td>
   <td>
-该数据集是电影迷你推文数据集的扩展版本。 数据集中具有 170K 个电影评分，从 Twitter 上结构良好的推文中提取。 每个实例标识一篇推文和如下元组：用户 ID、IMDB 电影 ID、评分、时间戳、收藏此推文的数目和转发此推文的数目。 数据集由 A. Said、S. Dooms、B. Loni 和 D. Tikk 提供，用于 Recommender Systems Challenge 2014。
+该数据集是电影迷你推文数据集的扩展版本。 数据集中具有 170K 个电影评分，从 Twitter 上结构良好的推文中提取。 每个实例表示推文，并为一个元组： 用户 ID、 IMDB 电影 ID、 分级、 时间戳、 收藏此推文的数目和数篇此推文的转推会。 数据集由 A. Said、S. Dooms、B. Loni 和 D. Tikk 提供，用于 Recommender Systems Challenge 2014。
   </td>
 </tr>
 
@@ -246,7 +245,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>基于 3 个多值离散属性和 5 个连续属性预测燃料经济性。 
 <p></p>
-<b>相关研究：</b>StatLib，美国卡内基梅隆大学（1993 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>StatLib，美国卡内基梅隆大学（1993 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -256,7 +255,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>预测观察对象是否患有糖尿病（二元分类）。 
 <p></p>
-<b>相关研究：</b>Sigillito, V.（1990 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml"</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Sigillito, V.（1990 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml"</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -266,7 +265,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 
 <p></p>
-<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
@@ -277,7 +276,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 
 <p></p>
-<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
@@ -288,7 +287,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 
 <p></p>
-<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
@@ -301,7 +300,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 钢种遵循由 SAE 和其他组织定义的一组标准。 正在寻找特定“种类”（类变量），并想要了解所需值。 
 <p></p>
-<b>相关研究：</b>Sterling, D. 和 Buntine, W.(NA)。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
+<b>相关研究：</b>Sterling, D. 和 Buntine, W.(NA)。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
 可访问此处获取有关钢等级的帮助指南：<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
@@ -322,13 +321,13 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 另请注意，背景事件的数目（h 表示强子淋浴）被低估。 在实际测量中，h 或噪声类代表大部分事件。 
 <p></p>
-<b>相关研究：</b>Bock, R.K. （1995 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息学院 </td>
+<b>相关研究：</b>Bock, R.K. （1995 年）。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息学院 </td>
 </tr>
 
 <tr>
   <td>天气数据集</td>
   <td>
-美国国家海洋和大气局每小时发布的陆基天气观测（<a href="http://az754797.vo.msecnd.net/data/WeatherDataset.csv">从 201304 到 201310 的合并数据</a>）。
+美国国家海洋和大气局每小时发布的陆基天气观测（<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">从 201304 到 201310 的合并数据</a>）。
 <p></p>
 该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 在上传到 Azure 机器学习工作室之前，数据集的处理如下所示：
 <ul>
@@ -343,7 +342,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <tr>
   <td>维基百科 SP 500 数据集</td>
   <td>
-数据来自维基百科 (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>)，基于每个标准普尔 500 强公司的文章，存储为 XML 数据。
+数据来自维基百科 (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>)，基于每个标准普尔 500 强公司的文章，存储为 XML 数据。
 <p></p>
 在上传到 Azure 机器学习工作室之前，数据集的处理如下所示：
 <ul>
@@ -382,7 +381,7 @@ RCV1-V2 路透社新闻数据集中训练示例的特征。 该数据集中具�
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
-来自 KDD Cup 1999 知识发现和数据挖掘工具竞赛 (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>) 的数据集。
+来自 KDD Cup 1999 知识发现和数据挖掘工具竞赛 (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>) 的数据集。
 <p></p>
 该数据集已下载并存储在 Azure Blob 存储 (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) 中，包含训练和测试数据集。 训练数据集大约有 12.6 万行和 43 列，包括标签。 3 列是标签信息的组成部分，40 列由数字和字符串/分类特征组成，可用于训练模型。 测试数据具有大约 22.5K 个测试示例，具有与训练数据相同的 43 列。
   </td>
@@ -398,7 +397,7 @@ RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配�
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-此数据来自 KDD Cup 2010 学生成绩评估挑战赛（<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">学生成绩评估</a>）。 使用的数据为 Algebra_2008_2009 训练集 (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. （2010 年）。 代数 I 2008-2009。 来自 KDD Cup 2010 教育数据挖掘挑战赛的挑战数据集。 可在 <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 中找到该数据。
+此数据来自 KDD Cup 2010 学生成绩评估挑战赛（<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">学生成绩评估</a>）。 使用的数据为 Algebra_2008_2009 训练集 (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. （2010 年）。 代数 I 2008-2009。 来自 KDD Cup 2010 教育数据挖掘挑战赛的挑战数据集。 可在 <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 中找到该数据。
 <p></p>
 该数据集已下载并存储在 Azure Blob 存储 (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) 中，包含学生辅导系统中的日志文件。 提供的特征包含问题 ID 及其简要描述、学生 ID、时间戳以及学生在正确解决该问题之前尝试的次数。 原始数据集具有 890 万条记录，此数据集已降低取样为前 10 万行。 该数据集具有 23 个制表符分隔的各种类型的列：数值、分类和时间戳。
   </td>
@@ -406,6 +405,10 @@ RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配�
 
 </table>
 
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [启动示例试验](sample-experiments.md)
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/

@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: 9a96f80c609f446dcc1fea2a87925dec3dadfedd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 0a2088e603828a7850cb250c1874008d63fe9c89
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471889"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992456"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Java 的客户端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>概述
-[用于 Java 的 Azure 存储客户端库](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)支持在上传到 Azure 存储之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。 此库还支持与 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)集成，以便管理存储帐户密钥。
+[用于 Java 的 Azure 存储客户端库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)支持在上传到 Azure 存储之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。 此库还支持与 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)集成，以便管理存储帐户密钥。
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>通过信封技术加密和解密
 加密和解密的过程遵循信封技术。  
@@ -43,7 +43,7 @@ ms.locfileid: "55471889"
 4. 然后，使用内容加密密钥 (CEK) 解密已加密的用户数据。
 
 ## <a name="encryption-mechanism"></a>加密机制
-存储客户端库使用 [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 来加密用户数据。 具体而言，是使用 AES 的[加密块链接 (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式。 每个服务的工作方式都稍有不同，因此我们会在此讨论其中每个服务。
+存储客户端库使用 [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 来加密用户数据。 具体而言，是使用 AES 的[加密块链接 (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式。 每个服务的工作方式都稍有不同，因此我们会在此讨论其中每个服务。
 
 ### <a name="blobs"></a>Blob
 目前，客户端库仅支持整个 Blob 的加密。 具体而言，当用户使用 **upload*** 方法或 **openOutputStream** 方法时支持加密。 对于下载，支持完整下载和范围下载。  
@@ -55,9 +55,9 @@ ms.locfileid: "55471889"
 > 
 > 
 
-下载已加密的 Blob 需要使用 **download*/openInputStream** 便捷方法检索整个 Blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
+下载已加密的 blob 需要检索整个 blob 使用的内容**下载**/**openInputStream**便捷方法。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
-下载已加密的 Blob 中的任意范围（**downloadRange*** 方法）涉及调整用户提供的范围以获取少量的可用于成功解密所请求的范围的附加数据。  
+下载的任意范围 (**downloadRange**方法) 加密的 blob 中涉及调整用户提供的以获取少量可用于成功解密所请求的其他数据的范围范围。  
 
 所有 Blob 类型（块 Blob、页 Blob 和追加 Blob）都可以使用此方案进行加密/解密。
 
@@ -98,8 +98,8 @@ ms.locfileid: "55471889"
 > [!NOTE]
 > 由于实体已加密，因此不能运行根据已加密属性进行筛选的查询。  如果尝试运行，结果将会不正确，因为该服务会尝试将已加密的数据与未加密的数据进行比较。
 > 
->
-若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库将引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2）。
+> 
+> 若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库将引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2）。
 
 ## <a name="azure-key-vault"></a>Azure 密钥保管库
 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Azure 密钥保管库，用户可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 有关详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-whatis.md)。
@@ -248,9 +248,9 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 注意，加密存储数据会导致额外的性能开销。 必须生成内容密钥和 IV，内容本身必须进行加密，并且其他元数据必须进行格式化并上传。 此开销将因所加密的数据量而有所变化。 我们建议客户在开发过程中始终测试其应用程序的性能。
 
 ## <a name="next-steps"></a>后续步骤
-* 下载[适用于 Java 的 Azure 存储客户端库 Maven 程序包](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
+* 下载[适用于 Java 的 Azure 存储客户端库 Maven 程序包](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
 * 从 GitHub 下载[适用于 Java 的 Azure 存储客户端库源代码](https://github.com/Azure/azure-storage-java)   
 * 下载适用于 Java 的 Azure 密钥保管库 Maven 程序包：
-  * [核心](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core)程序包
-  * [客户端](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)程序包
+  * [核心](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core)程序包
+  * [客户端](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)程序包
 * 访问 [Azure 密钥保管库文档](../../key-vault/key-vault-whatis.md)

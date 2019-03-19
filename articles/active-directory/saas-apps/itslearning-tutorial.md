@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1b1020e66cd794ffd6e51f4af697fa79e0ae20
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 1a12fb0123e96c592a8af9fe04f6ff17f8fea62a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167161"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>教程：Azure Active Directory 与 itslearning 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56167161"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 itslearning 的集成，需要具有以下项：
 
@@ -114,6 +114,7 @@ ms.locfileid: "56167161"
     ![配置单一登录](./media/itslearning-tutorial/tutorial_itslearning_url.png)
 
     a. 在“登录 URL”文本框中，键入 URL：
+    
     | |
     |--| 
     | `https://www.itslearning.com/index.aspx`|

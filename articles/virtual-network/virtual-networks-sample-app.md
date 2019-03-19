@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: a8e52af1a1feb8a01ed5556efb6e153c56b25cca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: ca111623f6d3d7c61b1bfc4e1af328f9599c2440
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700581"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884500"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>用于 DMZ 的示例应用程序
 [返回安全边界最佳实践页面][HOME]
@@ -42,7 +42,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 此脚本将：
 
 1. 打开本地服务器 Windows 防火墙上的 IMCPv4 (Ping) 以简化测试
-2. 安装 IIS 和.Net Framework v4.5
+2. 安装 IIS 和.NET Framework v4.5
 3. 创建 ASP.NET 网页和 Web.config 文件
 4. 更改默认应用程序池以简化文件访问
 5. 将匿名用户设置为管理员帐户和密码
@@ -61,7 +61,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 
 # Install IIS
-    Write-Host "Installing IIS and .Net 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
+    Write-Host "Installing IIS and .NET 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
     add-windowsfeature Web-Server, Web-WebServer, Web-Common-Http, Web-Default-Doc, Web-Dir-Browsing, Web-Http-Errors, Web-Static-Content, Web-Health, Web-Http-Logging, Web-Performance, Web-Stat-Compression, Web-Security, Web-Filtering, Web-App-Dev, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Net-Ext, Web-Net-Ext45, Web-Asp-Net45, Web-Mgmt-Tools, Web-Mgmt-Console
 
 # Create Web App Pages
@@ -105,7 +105,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
             <b>Image File Linked from the Internet</b>:<br />
             <br />
-            <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
+            <img src="https://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
         </div>
       </form>
     </body>
@@ -152,12 +152,12 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 2. 为网站创建一个目录
 3. 创建一个通过 Web 页面远程访问的文本文件
 4. 将目录和文件上的权限设置为“匿名”以允许访问
-5. 关闭 IE Enhanced Security 以允许更轻松地从此服务器浏览 
+5. 关闭 IE Enhanced Security 以允许更轻松地从此服务器浏览
 
 > [!IMPORTANT]
 > **最佳做法**：绝不会关闭生产服务器上的 IE Enhanced Security，而且从生产服务器在 Web 上冲浪通常不是个好主意。 另外，打开文件共享以进行匿名访问不是个好主意，但在此处为简单起见进行了此操作。
-> 
-> 
+>
+>
 
 当 RDP 进入 AppVM01 时，应在本地运行此 PowerShell 脚本。 需要以管理员身份运行 PowerShell 以确保成功执行。
 
@@ -193,7 +193,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 ```
 
 ## <a name="dns01---dns-server-installation-script"></a>DNS01 - DNS 服务器安装脚本
-此示例应用程序中没有包括设置 DNS 服务器的脚本。 如果防火墙规则、NSG 或 UDR 测试需要包括 DNS 流量，则需要手动设置 DNS01 服务器。 两个示例的网络配置 xml 文件和 Resource Manager 模板都包括 DNS01（作为主 DNS 服务器）和由级别 3 托管的公共 DNS 服务器（作为备份 DNS 服务器）。 级别 3 DNS 服务器会成为用作非本地流量的实际 DNS 服务器，由于未设置 DNS01，因此不会发生本地网络 DNS。
+此示例应用程序中没有包括设置 DNS 服务器的脚本。 如果防火墙规则、NSG 或 UDR 测试需要包括 DNS 流量，则需要手动设置 DNS01 服务器。 两个示例的网络配置 xml 文件和 Resource Manager 模板都包括 DNS01（作为主 DNS 服务器）和由级别 3 托管的公共 DNS 服务器（作为备份 DNS 服务器）。 第 3 级 DNS 服务器是非本地流量使用的实际 DNS 服务器，若未安装 DNS01，就不会有本地网络 DNS。
 
 ## <a name="next-steps"></a>后续步骤
 * 在 IIS 服务器上运行 IIS01 脚本

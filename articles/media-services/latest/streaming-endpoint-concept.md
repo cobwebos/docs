@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 18c5e48b5f7dbf664b607b8b83473a914256590b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: eb7f368100269c4e47076bb6b78bafc23e7a6089
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845597"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点
 
@@ -33,13 +33,13 @@ ms.locfileid: "55104539"
 
 ## <a name="types"></a>类型  
 
-有两种类型的 StreamingEndpoint：标准和高级。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。 
+有两个**流式处理终结点**类型：标准和高级。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。 
 
 下表描述了类型：  
 
-|Type|缩放单元|说明|
+|Type|缩放单元|描述|
 |--------|--------|--------|  
-|**标准流式处理终结点**（推荐）|0|标准类型是适用于几乎所有流式处理环境和受众规模的推荐选项。 标准类型会自动缩放出站带宽。 <br/>对于要求极高的客户，媒体服务提供高级流式处理终结点，可用于横向扩展适用于最大规模的 Internet 受众的容量。 如果你希望拥有大量受众和并发观看者，请通过 amsstreaming@microsoft.com 与我们联系，获取有关你是否需要转到高级类型的指导。 |
+|**标准流式处理终结点**（推荐）|0|标准类型是适用于几乎所有流式处理环境和受众规模的推荐选项。 标准类型会自动缩放出站带宽。 <br/>媒体服务提供具有极其苛刻的要求的客户**高级**流式处理终结点，可以使用横向扩展的最大的 internet 访问者的容量。 如果您希望大型受众需求和并发查看器，请联系我们在 amsstreaming\@有关指导您是否需要将移动到 microsoft.com**高级**类型。 |
 |**高级流式处理终结点**|>0|高级流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 可以通过调整 `scaleUnits` 移至高级类型。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |
 
 ## <a name="working-with-cdn"></a>配合 CDN 使用
@@ -57,19 +57,58 @@ ms.locfileid: "55104539"
  
 ## <a name="properties"></a>属性 
 
-本部分提供了一些 StreamingEndpoint 属性的详细信息。 有关如何创建新流式处理终结点和所有属性描述的示例，请参阅[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。 
+本部分提供有关的某些流式处理终结点的属性的详细信息。 有关如何创建新流式处理终结点和所有属性描述的示例，请参阅[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。 
 
-|属性|说明|  
-|--------------|----------|
-|`accessControl`|用于为此流式处理终结点配置以下安全设置：Akamai 签名标头身份验证密钥和允许连接到此终结点的 IP 地址。<br />当 `cdnEnabled` 设置为 false 时，可以设置此属性。|  
-|`cdnEnabled`|指示是否启用此流式处理终结点的 Azure CDN 集成（默认情况下禁用）。<br /><br /> 如果将 `cdnEnabled` 设置为 true，则会禁用以下配置：`customHostNames` 和 `accessControl`。<br /><br />并非所有数据中心都支持 Azure CDN 集成。 要检查数据中心是否具有 Azure CDN 集成，请执行以下操作：<br /><br /> - 尝试将 `cdnEnabled` 设置为 true。<br /><br /> - 检查返回的结果是否为 `HTTP Error Code 412` (PreconditionFailed)，并显示消息“无法将流式处理终结点 CdnEnabled 属性设置为 true，因为当前区域中没有 CDN 功能。”<br /><br /> 如果出现此错误，则数据中心不支持 Azure CDN 集成。 你应该尝试其他数据中心。|  
-|`cdnProfile`|在将 `cdnEnabled` 设置为 true 后，还可以传递 `cdnProfile` 值。 `cdnProfile` 是将在其中创建 CDN 终结点的 CDN 配置文件的名称。 可以提供现有的 cdnProfile 或使用新的 cdnProfile。 如果值为 NULL 且 `cdnEnabled` 为 true，则使用默认值“AzureMediaStreamingPlatformCdnProfile”。 如果提供的 `cdnProfile` 已经存在，则在其下创建一个终结点。 如果配置文件不存在，则会自动创建新配置文件。|
-|`cdnProvider`|启用 CDN 后，还可以传递 `cdnProvider` 值。 `cdnProvider` 控制将使用哪个提供程序。 目前，支持三个值：“StandardVerizon”、“PremiumVerizon”和“StandardAkamai”。 如果未提供任何值且 `cdnEnabled` 为 true，则使用“StandardVerizon”（即默认值）。|
-|`crossSiteAccessPolicies`|用于为各种客户端指定跨站点访问策略。 有关详细信息，请参阅[跨域策略文件规范](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[提供跨域边界的服务](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)。|  
-|`customHostNames`|用于配置流式处理终结点以接受定向到自定义主机名的流量。 这样可以通过全局流量管理器 (GTM) 更轻松地进行流量管理配置，也可以将品牌域名用作流式处理终结点名称。<br /><br /> 域名的所有权必须由 Azure 媒体服务进行确认。 Azure 媒体服务通过要求将包含 Azure 媒体服务帐户 ID 的 `CName` 记录作为组件添加到正在使用的域来验证域名所有权。 例如，要将“sports.contoso.com”用作流式处理终结点的自定义主机名，则必须将 `<accountId>.contoso.com` 的记录配置为指向其中一个媒体服务验证主机名。 验证主机名由 verifydns.\<mediaservices-dns-zone> 组成。 下表包含要在不同 Azure 区域的验证记录中使用的预期 DNS 区域。<br /><br /> 北美、欧洲、新加坡、香港特别行政区、日本：<br /><br /> - mediaservices.windows.net<br /><br /> - verifydns.mediaservices.windows.net<br /><br /> 中国：<br /><br /> - mediaservices.chinacloudapi.cn<br /><br /> - verifydns.mediaservices.chinacloudapi.cn<br /><br /> 例如，将“945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com”映射到“verifydns.mediaservices.windows.net”的 `CName` 记录证明 Azure 媒体服务 ID 945a4c4e-28ea-45cd-8ccb- a519f6b700ad 拥有 contoso.com 域的所有权，因此可以将 contoso.com 下的任何名称用作该帐户下的流式处理终结点的自定义主机名。<br /><br /> 若要查找媒体服务 ID 值，请转至 [Azure 门户](https://portal.azure.com/)，然后选择你的媒体服务帐户。 媒体服务 ID 显示在仪表板页的右侧。<br /><br /> 警告：如果尝试在没有正确验证 `CName` 记录的情况下设置自定义主机名，则 DNS 响应将失败，然后缓存一段时间。 拥有适当的记录后，可能需要一段时间才能重新验证缓存的响应。 根据自定义域的 DNS 提供程序，重新验证记录可能需要几分钟到一个小时的时间。<br /><br /> 除了将 `<accountId>.<parent domain>` 映射到 `verifydns.<mediaservices-dns-zone>` 的 `CName`，还必须创建另一个 `CName`，以将自定义主机名（例如 `sports.contoso.com`）映射到媒体服务 StreamingEndpont 的主机名（例如 `amstest.streaming.mediaservices.windows.net`）。<br /><br /> **注意**：位于同一数据中心的流式处理终结点不能共享相同的自定义主机名。<br /> 此属性适用于标准和高级流式处理终结点，可在“cdnEnabled”：false 时设置<br/><br/> 目前，AMS 对自定义域不支持 SSL。  |  
-|`maxCacheAge`|替代媒体片段和按需清单上的流式处理终结点设置的默认 max-age HTTP 缓存控制标头。 该值以秒为单位进行设置。|
-|`resourceState`|属性的值包括：<br /><br /> - 已停止。 创建后的流式处理终结点的初始状态。<br /><br /> - 正在启动。 正在将流式处理终结点转换到运行状态。<br /><br /> - 正在运行。 流式处理终结点能够将内容流式传输到客户端。<br /><br /> - 正在缩放。 缩放单元正在增加或减少。<br /><br /> - 正在停止。 正在将流式处理终结点转换到停止状态。<br/><br/> - 正在删除。 正在删除流式处理终结点。|
-|`scaleUnits `|scaleUnits 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 如果需要转到高级类型，请调整 `scaleUnits`。 |
+- `accessControl` -用于配置此流式处理终结点的以下安全设置：Akamai 签名标头身份验证密钥和允许连接到此终结点的 IP 地址。<br />此属性时可以设置`cdnEnabled`设置为 false。
+- `cdnEnabled` -指示此流式处理终结点的 Azure CDN 集成已启用 （默认情况下禁用）。 如果将 `cdnEnabled` 设置为 true，则会禁用以下配置：`customHostNames` 和 `accessControl`。
+  
+    并非所有数据中心都支持 Azure CDN 集成。 若要检查你的数据中心有可用的 Azure CDN 集成，请执行以下操作：
+ 
+  - 尝试设置`cdnEnabled`为 true。
+  - 检查返回的结果为`HTTP Error Code 412`(PreconditionFailed) 的消息的"流式处理终结点 CdnEnabled 属性不能设置为 true，因为 CDN 功能在当前区域中不可用。" 
+
+    如果出现此错误，则数据中心不支持 Azure CDN 集成。 你应该尝试其他数据中心。
+- `cdnProfile` -当`cdnEnabled`设置为 true，你还可以传递`cdnProfile`值。 `cdnProfile` 是将在其中创建 CDN 终结点的 CDN 配置文件的名称。 可以提供现有的 cdnProfile 或使用新的 cdnProfile。 如果值为 NULL 且 `cdnEnabled` 为 true，则使用默认值“AzureMediaStreamingPlatformCdnProfile”。 如果提供的 `cdnProfile` 已经存在，则在其下创建一个终结点。 如果该配置文件不存在，新的配置文件会自动创建。
+- `cdnProvider` -启用 CDN 后，你还可以传递`cdnProvider`值。 `cdnProvider` 控制将使用哪个提供程序。 目前，支持三个值：“StandardVerizon”、“PremiumVerizon”和“StandardAkamai”。 如果未不提供任何值和`cdnEnabled`为 true，"StandardVerizon"使用 （这是默认值）。
+- `crossSiteAccessPolicies` -用于为各种客户端指定跨站点访问策略。 有关详细信息，请参阅[跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[提供跨域边界的服务](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)。
+- `customHostNames` -用于配置流式处理终结点以接受定向到自定义主机名的流量。  此属性适用于标准和高级流式处理终结点和时可以设置`cdnEnabled`: false。
+    
+    通过媒体服务，必须确认域名的所有权。 媒体服务通过要求验证域名所有权`CName`作为组件添加到使用中的域中包含的媒体服务帐户 ID 的记录。 例如，要将“sports.contoso.com”用作流式处理终结点的自定义主机名，则必须将 `<accountId>.contoso.com` 的记录配置为指向其中一个媒体服务验证主机名。 验证主机名由 verifydns.\<mediaservices-dns-zone> 组成。 
+
+    以下是预期的 DNS 区域，要用于的验证记录中不同 Azure 区域。
+  
+  - 北美、欧洲、新加坡、香港特别行政区、日本：
+      
+    - `media.azure.net`
+    - `verifydns.media.azure.net`
+      
+  - 中国：
+        
+    - `mediaservices.chinacloudapi.cn`
+    - `verifydns.mediaservices.chinacloudapi.cn`
+        
+    例如，`CName`映射"945a4c4e-28ea-45 cd-8ccb-a519f6b700ad 拥有"到"verifydns.media.azure.net"的记录可证明 Media Services ID 945a4c4e-28ea-45cd-8ccb-a519f6b700ad 因此具有 contoso.com 域的所有权启用 contoso.com 用作该帐户下的流式处理终结点的自定义主机名称下的任何名称。 若要查找媒体服务 ID 值，请转至 [Azure 门户](https://portal.azure.com/)，然后选择你的媒体服务帐户。 **帐户 ID**显示于顶部页面右上角。
+        
+    如果尝试在没有正确验证 `CName` 记录的情况下设置自定义主机名，则 DNS 响应将失败，然后缓存一段时间。 拥有适当的记录后，可能需要一段时间才能重新验证缓存的响应。 根据自定义域的 DNS 提供程序，重新验证记录可能需要几分钟到一个小时的时间。
+        
+    除了`CName`，它映射`<accountId>.<parent domain>`到`verifydns.<mediaservices-dns-zone>`，你必须创建另一个`CName`，它映射自定义主机名 (例如， `sports.contoso.com`) 到你的媒体服务流式处理终结点的主机名 (例如， `amstest-usea.streaming.media.azure.net`).
+ 
+    > [!NOTE]
+    > 流式处理终结点位于同一数据中心中，不能共享相同的自定义主机名。
+
+    目前，媒体服务不支持的自定义域的 SSL。 
+    
+- `maxCacheAge` -重写默认的最大期限 HTTP 缓存控制标头已设置的媒体片段和点播清单上的流式处理终结点。 该值以秒为单位进行设置。
+- `resourceState` -
+
+    - 已停止的流式处理终结点创建后的初始状态
+    - 正在启动-转换到正在运行状态
+    - 正在运行的是能够将向客户端的流内容
+    - 缩放-的规模单元正在增加或减少
+    - 停止-正在过渡到停止状态
+    - Deleting-正在删除
+    
+- `scaleUnits ` -为您提供可按照 200 Mbps 的增量购买的专用的出口容量。 如果需要转到高级类型，请调整 `scaleUnits`。
 
 ## <a name="next-steps"></a>后续步骤
 

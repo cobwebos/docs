@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 810ccae08b540c417a0e7dfecb6ad5a8b110cd7b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045042"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108519"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
@@ -105,16 +105,16 @@ ms.locfileid: "54045042"
     ![空白用户队列](./media/usage-cohorts/001.png)
 
     有三个部分：
-    * 一个 Markdown 文本部分，可在其中为其他团队成员更详细地描述该队列。
+   * 一个 Markdown 文本部分，可在其中为其他团队成员更详细地描述该队列。
 
-    * 一个参数部分，可在其中创建自己的参数，例如 **Activities**，以及前面两个示例中的其他下拉框。
+   * 一个参数部分，可在其中创建自己的参数，例如 **Activities**，以及前面两个示例中的其他下拉框。
 
-    * 一个查询部分，可在其中使用分析查询定义队列。
+   * 一个查询部分，可在其中使用分析查询定义队列。
 
-    在查询部分[编写一个分析查询](/azure/kusto/query)。 该查询选择描述所要定义的队列的行集。 然后，“队列”工具将在查询中隐式添加一个“| summarize by user_Id”子句。 表中查询的下面提供了此数据的预览，使你能够确保查询返回结果。
+     在查询部分[编写一个分析查询](/azure/kusto/query)。 该查询选择描述所要定义的队列的行集。 然后，“队列”工具将在查询中隐式添加一个“| summarize by user_Id”子句。 表中查询的下面提供了此数据的预览，使你能够确保查询返回结果。
 
-    > [!NOTE]
-    > 如果看不到查询，请尝试调整部分的大小，以增加其高度并显示查询。 本部分开头的 .gif 动画演示了大小调整行为。
+     > [!NOTE]
+     > 如果看不到查询，请尝试调整部分的大小，以增加其高度并显示查询。 本部分开头的 .gif 动画演示了大小调整行为。
 
 2. 将以下文本复制并粘贴到查询编辑器中：
 
