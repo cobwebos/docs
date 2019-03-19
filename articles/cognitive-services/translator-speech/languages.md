@@ -10,18 +10,19 @@ ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 482968af53694f7d40a7077435d33a83884c8808
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 63592a0afc7e5da0a37c25c226b92b587aa5f886
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873036"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673686"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>语音翻译 API 支持的语言
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-语音翻译支持以下语言。 如果两种语言都支持语音翻译，则语音到语音翻译和语音到文本翻译都可用。 如果目标语言不支持语音转换，则只有语音到文本翻译可用。 
+语音翻译支持以下语言。 如果两种语言都支持语音翻译，则语音到语音翻译和语音到文本翻译都可用。 如果目标语言不支持语音转换，则只有语音到文本翻译可用。
 
 | 语音语言    |
 |:----------- |
@@ -34,9 +35,9 @@ ms.locfileid: "55873036"
 | 日语      |
 | 葡萄牙语(巴西)     |
 | 俄语      |
-| 西班牙语      | 
+| 西班牙语      |
 
-语音翻译 API 支持以下列语言作为目标语言进行语音到文本翻译。 
+语音翻译 API 支持以下列语言作为目标语言进行语音到文本翻译。
 
 | 文本语言    | 语言代码 |
 |:----------- |:-------------:|
@@ -47,7 +48,7 @@ ms.locfileid: "55873036"
 | 保加利亚语      | `bg`          |
 | 粤语(繁体)      | `yue`          |
 | 加泰罗尼亚语      | `ca`          |
-| 中文(简体)      | `zh-Hans`          | 
+| 中文(简体)      | `zh-Hans`          |
 | 中文(繁体)      | `zh-Hant`          |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
@@ -116,4 +117,4 @@ ms.locfileid: "55873036"
 
 若要快速查看语言，Microsoft Translator 网站上显示了文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
 
-[查看语言列表](https://www.microsoft.com/translator/languages.aspx) 
+[查看语言列表](https://www.microsoft.com/translator/languages.aspx)

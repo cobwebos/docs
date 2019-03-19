@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8295c149d513f89318aa63ddd7f4236013923203
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: f1e2b9dfc329e67d94fba998a01d593b992ba90f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433996"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886802"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 体系结构最佳做法
 
@@ -105,7 +105,7 @@ HDInsight 对 Hive 和 Oozie 元存储使用 Azure SQL 数据库。 可通过两
 - 不要将为一个 HDInsight 群集版本创建的元存储与不同版本的群集共享。 不同的 Hive 版本使用不同的架构。 例如，不能同时与 Hive 1.2 和 Hive 2.1 群集共享某个元存储。
 - 定期备份自定义元存储。
 - 将元存储和 HDInsight 群集保留在同一区域。
-- 使用 Azure SQL 数据库监视工具（例如 Azure 门户或 Azure Log Analytics）监视元存储的性能和可用性。
+- 监视元存储的性能和使用 Azure 门户或 Azure Monitor 日志等 Azure SQL 数据库监视工具的可用性。
 - 根据需要执行 **ANALYZE TABLE** 命令，以生成表和列的统计信息。 例如，`ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作负荷的最佳做法

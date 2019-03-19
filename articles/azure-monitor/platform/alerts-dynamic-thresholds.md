@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097803"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008899"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Azure Monitor 中具有动态阈值的指标警报（公共预览版）
 
@@ -79,7 +79,11 @@ ms.locfileid: "55097803"
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>需要使用多少数据来预览再计算阈值？
 
-基于指标创建警报规则之前，图表中显示的阈值是根据过去 10 天的历史数据计算得到的，一旦创建警报规则，动态阈值就会获取更多可用的历史数据，并根据新数据不断学习，使自身更加准确。
+计算显示在图中之前此度量值，在创建警报规则, 的阈值是基于足够历史数据来计算小时或每日季节性模式 （10 天）。 按显示每周模式上将获取历史数据不足，无法计算每周季节性模式 （第 28 天）。 创建警报规则后，动态阈值将全部所需的历史数据，并且可将持续学习和擅长基于新数据以便更准确的阈值。
+
+## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>需要多少数据以便在触发警报？
+
+动态阈值要求至少三天的数据，以触发警报之前确保准确的阈值。
 
 ## <a name="dynamic-thresholds-best-practices"></a>动态阈值最佳做法
 

@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e6da35eeb98d4017baae6aa2c8e19fa3f9d5ac1b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 5e7e405bdb251bbebc5da81253eea2414b434cb8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752562"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838301"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
@@ -23,10 +23,10 @@ ms.locfileid: "55752562"
 
 使用 Visual Studio Code 中的 Azure 机器学习扩展，通过 Azure 机器学习服务在本地和远程计算目标上准备数据、培训和测试机器学习模型，部署这些模型并跟踪自定义指标和试验。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 
-+ 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
++ 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 + 必须安装 Visual Studio Code。 VS Code 是一个轻量级但功能强大的源代码编辑器，可在桌面上运行。 它内置了对 Python 等的支持。  [了解如何安装 VS Code](https://code.visualstudio.com/docs/setup/setup-overview)。
 

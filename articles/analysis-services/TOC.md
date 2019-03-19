@@ -43,8 +43,6 @@
 ### [将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)
 
 ## 模型
-### [导入 Power BI Desktop 文件](analysis-services-import-pbix.md)
-### [在 Azure 门户（预览）中创建模型](analysis-services-create-model-portal.md)
 ### [从 Visual Studio (SSDT) 部署](analysis-services-deploy.md)
 ### [使用 REST API 进行刷新](analysis-services-async-refresh.md)
 ### [Visual Studio 中的数据建模 - Adventure Works (1400) 教程](tutorials/aas-adventure-works-tutorial.md)
@@ -97,13 +95,3 @@
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
-
-
-
-
-
-
-
-
-
-

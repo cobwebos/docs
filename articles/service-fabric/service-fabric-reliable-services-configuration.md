@@ -7,19 +7,19 @@ author: sumukhs
 manager: timlt
 editor: vturecek
 ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: ee8010fbbadc011e04d6d43599d671a1f926bb5f
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: c131cf96f11dcddfb0de87ccf47f2d2c8a99617d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049650"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850796"
 ---
 # <a name="configure-stateful-reliable-services"></a>配置有状态 Reliable Services
 有两组配置设置可供 Reliable Services 使用。 一组适用于群集中的所有 Reliable Services，而另一组特定于特定的 Reliable Services。
@@ -36,7 +36,7 @@ ms.locfileid: "44049650"
 | SharedLogPath |完全限定的路径名 |"" |指定完全限定的路径，该路径中的共享日志文件用于群集中所有节点上的所有 Reliable Services（不会在其服务特定配置中指定 SharedLogPath）。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
 | SharedLogSizeInMB |兆字节 |8192 |指定以静态方式分配给共享日志的磁盘空间 MB 数。 此值必须为 2048 或更大。 |
 
-在 Azure ARM 或本地 JSON 模板中，以下示例演示如何更改创建的共享事务日志，以备份有状态服务的任何可靠集合。
+在 Azure ARM 或本地 JSON 模板中，以下示例说明如何更改为支持有状态服务的任何可靠集合而创建的共享事务日志。
 
     "fabricSettings": [{
         "name": "KtlLogger",
@@ -113,12 +113,12 @@ ReplicatorConfig
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
 | ReplicatorEndpoint |不适用 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
-| MaxPrimaryReplicationQueueSize |操作的数量 |8192 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。 此值必须大于 64 和 2 的幂。 |
-| MaxSecondaryReplicationQueueSize |操作的数量 |16384 |辅助队列中的操作的最大数目。 将在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
+| MaxPrimaryReplicationQueueSize |操作的数量 |8192 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，释放一个操作。 此值必须大于 64 和 2 的幂。 |
+| MaxSecondaryReplicationQueueSize |操作的数量 |16384 |辅助队列中的操作的最大数目。 会在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
 | CheckpointThresholdInMB |MB |50 |创建状态检查点后的日志文件空间量。 |
 | MaxRecordSizeInKB |KB |1024 |复制器可以在日志中写入的最大记录大小。 此值必须是 4 的倍数，且大于 16。 |
-| MinLogSizeInMB |MB |0（系统确定） |事务日志的最小大小。 不允许将日志截断到此设置以下的大小。 0 指示复制器将确定最小日志大小。 由于减少了截断相关日志记录的可能性，所以增加此值会增加执行部分副本和增量备份的可能性。 |
-| TruncationThresholdFactor |因素 |2 |确定将触发的截断日志大小。 截断阈值由 MinLogSizeInMB 乘以 TruncationThresholdFactor 确定的。 TruncationThresholdFactor 必须是大于 1。 MinLogSizeInMB * TruncationThresholdFactor 必须小于 MaxStreamSizeInMB。 |
+| MinLogSizeInMB |MB |0（系统确定） |事务日志的最小大小。 不允许将日志截断到此设置以下的大小。 0 表示复制器会确定最小日志大小。 由于减少了截断相关日志记录的可能性，所以增加此值会增加执行部分副本和增量备份的可能性。 |
+| TruncationThresholdFactor |因子 |2 |确定会触发截断的日志的大小。 截断阈值由 MinLogSizeInMB 乘以 TruncationThresholdFactor 确定的。 TruncationThresholdFactor 必须是大于 1。 MinLogSizeInMB * TruncationThresholdFactor 必须小于 MaxStreamSizeInMB。 |
 | ThrottlingThresholdFactor |系数 |4 |确定开始限制副本的日志大小。 限制阈值（以 MB 为单位）由 Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) 确定。 限制阈值（以 MB 为单位）必须大于截断阈值（以 MB 为单位）。 截断阈值（以 MB 为单位）必须小于 MaxStreamSizeInMB。 |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |给定备份日志链中备份日志的最大累积大小（以 MB 为单位）。 如果增量备份生成的备份日志将导致从相关完整备份以来累积的备份日志大于此大小，则增量备份请求会失败。 在这种情况下，用户需要执行完整备份。 |
 | SharedLogId |GUID |"" |指定要用于标识与此副本一起使用的共享日志文件的唯一 GUID。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogId，则也必须指定 SharedLogPath。 |
@@ -161,7 +161,7 @@ class MyStatefulService : StatefulService
 ### <a name="sample-configuration-file"></a>示例配置文件
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Section Name="ReplicatorConfig">
       <Parameter Name="ReplicatorEndpoint" Value="ReplicatorEndpoint" />
       <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>

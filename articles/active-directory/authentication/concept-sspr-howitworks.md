@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d1c2a35a6ad246eea593990c485181aa776594
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 76af36de833bc496df7c24ddb1cbfd75c91c7976
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175077"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214745"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -59,7 +59,7 @@ ms.locfileid: "56175077"
 
 ## <a name="authentication-methods"></a>身份验证方法
 
-如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议**选择两种或更多种身份验证方法**，以便在用户无法使用所需的方法时，能够更灵活地选择其他方法。
+如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议**选择两种或更多种身份验证方法**，以便在用户无法使用所需的方法时，能够更灵活地选择其他方法。 可以在文章中找到下面列出的方法的更多详情[什么是身份验证方法？](concept-authentication-methods.md)。
 
 * 移动应用通知（预览版）
 * 移动应用代码（预览版）
@@ -69,6 +69,9 @@ ms.locfileid: "56175077"
 * 安全提问
 
 仅当用户在管理员已启用的身份验证方法中输入了数据时，他们才能重置其密码。
+
+> [!IMPORTANT]
+> 开始在 2019 年 3 月中的电话呼叫选项将不能向免费/试用 Azure AD 租户中用户的 MFA 和 SSPR 的用户。 此更改不会影响短信。 电话呼叫将继续可供用户在付费 Azure AD 租户。 此更改只会影响免费/试用 Azure AD 租户。
 
 > [!WARNING]
 > 要使用[管理员重置策略差异](concept-sspr-policy.md#administrator-reset-policy-differences)中定义的方法，将需要具有分配了帐户的 Azure 管理员角色。
@@ -105,8 +108,8 @@ ms.locfileid: "56175077"
 
 | 注册的方法数 | 必选方法数 | 结果 |
 | :---: | :---: | :---: |
-| 大于等于 1 | 1 | 能够重置或解锁 |
-| 1 | 2 | 不可重置或解锁 |
+| 大于等于 1 | 第 | 能够重置或解锁 |
+| 第 | 2 | 不可重置或解锁 |
 | 2 或更大 | 2 | 能够重置或解锁 |
 
 如果更改了用户可用的身份验证方法类型，则可能会在无意间阻止用户使用 SSPR（如果不具有可用的最小数据量）。

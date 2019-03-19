@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 554171e02a369905bcf9cd4aa7bfa2e59ab46336
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229751"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193443"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
 
@@ -23,7 +23,7 @@ ms.locfileid: "50229751"
 
 此处有一些模板类别：
 
-| 模板类型 | Description | 
+| 模板类型 | 描述 | 
 | ------------- | ----------- | 
 | 企业云模板 | 用于集成 Azure Blob、Dynamics CRM、Salesforce、Box 以及其他连接器来满足企业云需求。 例如，可以使用这些模板组织业务领导方式或备份公司文件数据。 | 
 | 个人工作效率模板 | 通过设置日常提醒、将重要工作项目添加为待办事项，以及通过自动化将耗时较长的任务缩减为单个用户同意的步骤，有助于提高个人工作效率。 | 
@@ -52,7 +52,7 @@ ms.locfileid: "50229751"
    | **订阅** | your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 
    | **资源组** | your-Azure-resource-group-name | 创建或选择一个用于此逻辑应用的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，以便组织与此应用相关联的所有资源。 | 
    | **位置** | your-Azure-datacenter-region | 选择用于部署逻辑应用的数据中心区域，例如“美国西部”。 | 
-   | **Log Analytics** | 关闭（默认）或者打开 | 通过 [Azure 日志分析](../log-analytics/log-analytics-overview.md)打开逻辑应用的[诊断日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)。 需要已具有 Log Analytics 工作区。 | 
+   | **Log Analytics** | 关闭（默认）或者打开 | 开启[诊断日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)通过逻辑应用[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)。 需要已具有 Log Analytics 工作区。 | 
    |||| 
 
 4. 准备就绪后，请选择“固定到仪表板”。 这样一来，逻辑应用就会自动显示在 Azure 仪表板上，并在部署后打开。 选择“创建”。

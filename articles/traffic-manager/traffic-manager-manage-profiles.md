@@ -1,23 +1,23 @@
 ---
 title: 管理 Azure 流量管理器配置文件 | Microsoft Docs
-description: 本文帮助你创建、禁用、启用和删除 Azure 流量管理器配置文件。
+description: 本文可帮助您创建、 禁用、 启用和删除 Azure 流量管理器配置文件。
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: 01c295ac12886e9a3a93cfbf5f4f3e96545cd5ec
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.openlocfilehash: 7b52d07db076b62845465ee9f22a3d794c8cdf76
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229501"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839519"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>管理 Azure 流量管理器配置文件
 
@@ -29,7 +29,7 @@ ms.locfileid: "54229501"
 
 ### <a name="to-create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
-1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
+1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
 2. 单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 4. 在“创建流量管理器配置文件”中，按如下所示完成操作：
     1. 在**名称**中，提供配置文件的名称。 此名称必须在 trafficmanager.net 区域中唯一，并将生成 DNS 名称（<name>,trafficmanager.net），该名称用于访问流量管理器配置文件。
@@ -48,14 +48,14 @@ ms.locfileid: "54229501"
 
 1. 如果使用自定义域名，请更改 Internet DNS 服务器上的 CNAME 记录，使它不再指向流量管理器配置文件。
 2. 流量不再通过流量管理器配置文件设置定向到终结点。
-3. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
+3. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，并在显示的结果中单击该流量管理器配置文件。
 3. 单击“概览” > “禁用”。
 4. 确认禁用流量管理器配置文件。
 
 ### <a name="to-enable-a-profile"></a>启用配置文件
 
-1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
+1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，并在显示的结果中单击该流量管理器配置文件。
 3. 单击“概览” > “启用”。
 1. 如果使用自定义域名，请在 Internet DNS 服务器上创建一条指向流量管理器配置文件域名的 CNAME 资源记录。

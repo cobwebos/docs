@@ -3,17 +3,17 @@ title: 在 Azure IoT Central 应用程序中使用设备集 | Microsoft Docs
 description: 如何以操作员的身份在 Azure IoT Central 应用程序中使用设备集。
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/21/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: a5dd018197ff78ff0563349fd941308c3684a456
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004113"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759809"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中使用设备集
 
@@ -27,7 +27,7 @@ ms.locfileid: "51004113"
 
 1. 在左侧导航菜单中选择“设备集”。
 
-1. 单击“+ 新建”。
+1. 选择 **+ 新**。
 
     ![新建设备集](media/howto-use-device-sets/image1.png)
 
@@ -48,9 +48,11 @@ ms.locfileid: "51004113"
 
 1. 在左侧导航菜单中选择“设备集”。
 
-1. 选择“仪表板”选项卡。
+1. 选择设备集。
 
-1. 单击“编辑模板”。
+1. 选择“仪表板”选项卡  。
+
+1. 选择“编辑”。
 
     ![设计模式已打开](media/howto-use-device-sets/image3.png)
 
@@ -59,7 +61,7 @@ ms.locfileid: "51004113"
 1. 添加链接磁贴：
     1. 在右窗格中选择“链接”。
     1. 为链接指定**标题**。
-    1. 选择单击该链接时要打开的 URL。
+    1. 选择要在选定该链接时打开的 URL。
     1. 为链接提供说明，该说明将显示在**标题**下面。
     1. 选择“保存”。
 
@@ -69,9 +71,6 @@ ms.locfileid: "51004113"
 
 1. 添加网格。 网格是设备集中的设备表格，其中包含所选的列。
     1. 在右窗格中选择“网格”。
-
-        ![选择网格](media/howto-use-device-sets/image8.png)
-
     1. 为网格指定**标题**。
     1. 选择按下“添加/删除”按钮时要显示的列。 在弹出的面板中，选择要显示的列，并使用右箭头将其选中。
     1. 选择“确定”。
@@ -81,31 +80,24 @@ ms.locfileid: "51004113"
 
     1. 将网格拖放到**仪表板**。
 
-    > [!NOTE]
-    > 可以添加多个图像、链接和网格。
+        > [!NOTE]
+        > 可以添加多个图像、链接和网格。
   
-    1. 单击“完成”。
+    1. 选择“完成”。
 
-    ![设计模式已关闭](media/howto-use-device-sets/image10.png)
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>在设备集仪表板中配置位置地图
 
-
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>在设备集仪表板中配置位置地图 
 可以添加位置地图，在地图中直观呈现设备集的位置。
 
 若要向设备集仪表板添加位置地图，必须在设备模板中配置位置属性（请参阅[创建由 Azure Maps 提供技术支持的位置属性](howto-set-up-template.md)）。
 
-
 1. 在设备集仪表板中，选择库中的“地图”。
-
-    ![设备集仪表板地图](media/howto-use-device-sets/LocationMaps1.png)
-
 2. 指定标题，并选择之前已配置为设备属性的一部分的位置属性。
 3. 保存设置，此时会看到显示设备集中设备的位置的地图图块。
-4. 现在，当操作者查看设备集仪表板时，他可以看到你已配置的所有磁贴（包括位置地图），所有设备位置一目了然！ 
-    
-> [!NOTE] 
-> 可以根据需要重设地图大小。 单击地图中的图钉将显示设备信息、名称和位置。 可以单击弹出项，以转到设备属性页。  
+4. 现在，当操作者查看设备集仪表板时，他可以看到你已配置的所有磁贴（包括位置地图），所有设备位置一目了然！
 
+> [!NOTE]
+> 可以根据需要重设地图大小。 在映射中选择一个 pin 将显示的设备信息、 名称和位置。 您可以选择弹出窗口，转到设备属性页。
 
 ## <a name="configure-the-list-for-your-device-set"></a>配置设备集的列表
 
@@ -127,7 +119,7 @@ ms.locfileid: "51004113"
 
 ## <a name="analytics"></a>分析
 
-设备集中的分析功能与左侧导航菜单中的主要分析选项卡相同。 可以在有关[如何创建分析](howto-create-analytics.md)的文章中详细了解分析。
+设备集中的分析功能与左侧导航菜单中的主要分析选项卡相同。 可以在有关[如何创建分析](howto-use-device-sets.md)的文章中详细了解分析。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,7 +1,7 @@
 ---
-title: 使用 TensorFlow 训练模型
+title: 使用 TensorFlow 和 Keras 的训练模型
 titleSuffix: Azure Machine Learning service
-description: 了解如何使用 TensorFlow 估算器运行 TensorFlow 模型的单节点和分布式训练
+description: 了解如何使用 TensorFlow 和 Keras 房产运行单节点和分布式的 TensorFlow 和 Keras 模型定型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 02/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: c76a94695114888ca8946106528fe179ff81c811
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: b41098907f801f7dae839a470249834b02c8d519
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244719"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338546"
 ---
-# <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务训练 TensorFlow 模型
+# <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务的训练 TensorFlow 和 Keras 模型
 
-对于使用 TensorFlow 的深度神经网络 (DNN) 训练，Azure 机器学习提供了 `Estimator` 的自定义 `TensorFlow` 类。 Azure SDK 的 `TensorFlow` 估算器（不与 [`tf.estimator.Estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) 类合并）可使你轻松地为 Azure 计算上的单节点和分布式运行提交 TensorFlow 训练作业。
+对于使用 TensorFlow 的深度神经网络 (DNN) 训练，Azure 机器学习提供了 `Estimator` 的自定义 `TensorFlow` 类。 Azure SDK [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)估计器 (不以与交织[ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator)类)，可轻松地提交 Azure 上运行的单节点和分布式 TensorFlow 培训作业计算。
 
 ## <a name="single-node-training"></a>单节点训练
 使用 `TensorFlow` 估算器进行训练与使用[基础 `Estimator`](how-to-train-ml-models.md) 类似，因此，请首先阅读操作说明文章并确保你了解其中介绍的概念。
@@ -39,13 +39,13 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
                     script_params=script_params,
                     compute_target=compute_target,
                     entry_script='train.py',
-                    conda_packages=['scikit-learn'],
+                    conda_packages=['scikit-learn'], # in case you need scikit-learn in train.py
                     use_gpu=True)
 ```
 
 此处，我们为 TensorFlow 构造函数指定以下参数：
 
-参数 | 说明
+参数 | 描述
 --|--
 `source_directory` | 包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算
 `script_params` | 指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
@@ -60,6 +60,21 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```Python
 run = exp.submit(tf_est)
 ```
+
+## <a name="keras-support"></a>Keras 支持
+[Keras](https://keras.io/)是一个受欢迎的高级别 DNN Python API，支持 TensorFlow、 CNTK 或作为后端 Theano。 如果 TensorFlow 用作后端，可轻松用于 TensFlow 估算器 Keras 模型定型。 下面是通过添加到其中的 Keras TensorFlow 估算器示例：
+
+```Python
+from azureml.train.dnn import TensorFlow
+
+keras_est = TensorFlow(source_directory='./my-keras-proj',
+                       script_params=script_params,
+                       compute_target=compute_target,
+                       entry_script='keras_train.py',
+                       pip_packages=['keras'], # just add keras through pip
+                       use_gpu=True)
+```
+上述 TensorFlow 估算器构造函数指示 Azure 机器学习服务通过对执行环境的 pip 安装 Keras。 和您`keras_train.py`然后导入 Keras API Keras 模型进行定型。 有关完整示例，探索[此 Jupyter notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)。
 
 ## <a name="distributed-training"></a>分布式训练
 此外，使用 TensorFlow 估算器，你还能够在 Azure VM 的 CPU 和 GPU 群集中大规模地训练模型。 你可以通过一些 API 调用轻松运行分布式 TensorFlow 训练，而 Azure 机器学习将在后台管理执行这些工作负载所需的所有基础结构和业务流程。
@@ -88,15 +103,15 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 
 上述代码显示了 TensorFlow 构造函数的以下新参数：
 
-参数 | 说明 | 默认
+参数 | 描述 | 默认
 --|--|--
 `node_count` | 要用于训练作业的节点数。 | `1`
 `process_count_per_node` | 要在每个节点上运行的进程（或“工作线程”）数。|`1`
-`distributed_backend` | 用于启动由估算器通过 MPI 提供的分布式训练的后端。 如果要使用 MPI（和 Horovod）执行并行或分布式训练（例如，`node_count`>1 或 `process_count_per_node`>1，或两者），请设置 `distributed_backend='mpi'`。 Azure 机器学习使用的 MPI 实现是 [Open MPI](https://www.open-mpi.org/)。 | `None`
+`distributed_backend` | 用于启动由估算器通过 MPI 提供的分布式训练的后端。 如果你想要执行并行或分布式定型 (例如， `node_count`> 1 或`process_count_per_node`> 1 或两个) 使用 MPI （和 Horovod），设置`distributed_backend='mpi'`。 Azure 机器学习使用的 MPI 实现是 [Open MPI](https://www.open-mpi.org/)。 | `None`
 
 上述示例将使用两个工作线程（每个节点一个工作线程）来运行分布式训练。
 
-将为你安装 Horovod 及其依赖项，因此，你只需将其导入训练脚本 `train.py`，如下所示：
+Horovod 和及其依赖项将安装，以便它导入训练脚本`train.py`，如下所示：
 
 ```Python
 import tensorflow as tf
@@ -129,7 +144,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 
 请注意，上述代码中 TensorFlow 构造函数的以下参数：
 
-参数 | 说明 | 默认
+参数 | 描述 | 默认
 --|--|--
 `worker_count` | 工作线程数。 | `1`
 `parameter_server_count` | 参数服务器数。 | `1`
@@ -150,7 +165,7 @@ TF_CONFIG='{
 }'
 ```
 
-如果使用的是 TensorFlow 的高级 [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) API，TensorFlow 将分析此 `TF_CONFIG` 变量并为你生成群集规范。 
+如果使用 TensorFlow 的高级别[ `tf.estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator) API，TensorFlow 将分析这`TF_CONFIG`变量和生成群集为您的规范。 
 
 如果改为使用 TensorFlow 的低级核心 API 进行训练，则需要分析 `TF_CONFIG` 变量并在训练代码中自行生成 `tf.train.ClusterSpec`。 在[此示例](https://aka.ms/aml-notebook-tf-ps)中，你将在训练脚本中执行此操作，如下所示：
 
@@ -173,8 +188,7 @@ run = exp.submit(tf_est)
 
 ## <a name="examples"></a>示例
 
-有关分布式深度学习的笔记本，请参阅：
-* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
+探索各种[笔记本在 Github 上的分布式深度学习](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

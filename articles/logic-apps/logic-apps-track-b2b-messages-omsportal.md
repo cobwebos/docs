@@ -1,5 +1,5 @@
 ---
-title: 使用 Log Analytics 跟踪 B2B 消息 - Azure 逻辑应用 | Microsoft Docs
+title: 跟踪与 Azure Monitor 日志-Azure 逻辑应用 B2B 消息 |Microsoft Docs
 description: 使用 Azure Log Analytics 跟踪集成帐户和 Azure 逻辑应用的 B2B 通信
 services: logic-apps
 ms.service: logic-apps
@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996549"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193205"
 ---
-# <a name="track-b2b-messages-with-azure-log-analytics"></a>使用 Azure Log Analytics 跟踪 B2B 消息
+# <a name="track-b2b-messages-with-azure-monitor-logs"></a>使用 Azure Monitor 日志跟踪 B2B 消息
 
-在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议交换消息。 若要检查是否正确处理了这些消息，可使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 跟踪这些消息。 例如，可以使用下面这些 Web 跟踪功能来跟踪消息：
+在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议交换消息。 若要检查这些消息得到正确处理，可以跟踪与这些消息[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)。 例如，可以使用下面这些 Web 跟踪功能来跟踪消息：
 
 * 消息计数和状态
 * 确认状态
@@ -29,19 +29,21 @@ ms.locfileid: "52996549"
 > [!NOTE]
 > 此页面之前描述了如何使用 Microsoft Operations Management Suite (OMS) 执行这些任务的步骤，该解决方案将[在 2019 年 1 月停用](../azure-monitor/platform/oms-portal-transition.md)，取而代之的将是使用 Azure Log Analytics 执行这些步骤的内容。 
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="prerequisites"></a>必备组件
 
 * 已设置诊断日志记录的逻辑应用。 了解[如何创建逻辑应用](quickstart-create-first-logic-app-workflow.md)以及[如何为逻辑应用设置日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
 * 已设置监视和日志记录的集成帐户。 了解[如何创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)以及[如何为集成帐户设置监视和日志记录](../logic-apps/logic-apps-monitor-b2b-message.md)。
 
-* [将诊断数据发布到 Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)（如果尚未发布）。
+* 如果你尚未准备好，[诊断数据发布到 Azure Monitor 日志](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
 
 * 满足上述要求后，还需要 Log Analytics 工作区，用于通过 Log Analytics 来跟踪 B2B 通信。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 ## <a name="install-logic-apps-b2b-solution"></a>安装逻辑应用 B2B 解决方案
 
-请先将逻辑应用 B2B 解决方案添加到 Log Analytics，方可让 Log Analytics 跟踪逻辑应用的 B2B 消息。 详细了解如何[将解决方案添加到 Log Analytics](../azure-monitor/learn/quick-create-workspace.md)。
+Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应用 B2B**解决方案添加到 Azure Monitor 日志。 详细了解如何[将解决方案添加到 Azure Monitor 日志](../azure-monitor/learn/quick-create-workspace.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中查找“log analytics”，并选择“Log Analytics”。
 
@@ -128,7 +130,7 @@ ms.locfileid: "52996549"
    * 若要使用预生成查询搜索结果，请选择“收藏夹”。
 
    * 了解[如何通过添加筛选器生成查询](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)。 
-   或详细了解[如何在 Log Analytics 中使用日志搜索查找数据](../log-analytics/log-analytics-log-searches.md)。
+   或者详细了解如何[如何在 Azure Monitor 日志中查找使用日志搜索数据](../log-analytics/log-analytics-log-searches.md)。
 
    * 若要更改搜索框中的查询，请使用要用作筛选器的列和值来更新查询。
 
@@ -144,7 +146,7 @@ ms.locfileid: "52996549"
 
 下面列出了各个 AS2 消息的属性说明。
 
-| 属性 | Description |
+| 属性 | 描述 |
 | --- | --- |
 | 发送方 | “接收设置”中指定的来宾合作伙伴，或 AS2 协议的“发送设置”中指定的托管合作伙伴 |
 | 接收方 | “接收设置”中指定的托管合作伙伴，或 AS2 协议的“发送设置”中指定的来宾合作伙伴 |
@@ -175,7 +177,7 @@ ms.locfileid: "52996549"
 
 下面列出了各个 X12 消息的属性说明。
 
-| 属性 | Description |
+| 属性 | 描述 |
 | --- | --- |
 | 发送方 | “接收设置”中指定的来宾合作伙伴，或 X12 协议的“发送设置”中指定的托管合作伙伴 |
 | 接收方 | “接收设置”中指定的托管合作伙伴，或 X12 协议的“发送设置”中指定的来宾合作伙伴 |
@@ -208,7 +210,7 @@ ms.locfileid: "52996549"
 
 下面列出了各个 EDIFACT 消息的属性说明。
 
-| 属性 | Description |
+| 属性 | 描述 |
 | --- | --- |
 | 发送方 | “接收设置”中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”中指定的托管合作伙伴 |
 | 接收方 | “接收设置”中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”中指定的来宾合作伙伴 |
@@ -237,7 +239,7 @@ ms.locfileid: "52996549"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Log Analytics 中查询 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [查询 Azure 监视器日志中的 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2 跟踪架构](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12 跟踪架构](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

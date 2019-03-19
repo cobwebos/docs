@@ -1,19 +1,19 @@
 ---
 title: 了解 Azure IoT 中心作业 | Microsoft Docs
 description: 开发人员指南 - 计划要在连接到 IoT 中心的多个设备上运行的作业。 作业可以更新标记和所需属性，并可在多个设备上调用直接方法。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: dobett
-ms.openlocfilehash: b9ad7a0e1947c9ca95b343a443688e976c306f95
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: c2b05b1854b4f1d7ee4ac65ebe635330ba8c604e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884218"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011358"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>在多个设备上计划作业
 
@@ -113,28 +113,28 @@ User-Agent: <sdk-name>/<sdk-version>
 
 以下列表显示了属性和相应说明，在查询作业或作业结果时可使用这些属性。
 
-| 属性 | Description |
+| 属性 | 描述 |
 | --- | --- |
 | **jobId** |应用程序提供的作业 ID。 |
 | **startTime** |应用程序提供的作业开始时间(ISO-8601)。 |
 | **endTime** |IoT 中心提供的作业完成时的日期(ISO-8601)。 只有在作业达到“完成”状态后才有效。 |
-| type |作业的类型： |
-| | **scheduledUpdateTwin**：用于更新一组所需属性或标记的作业。 |
-| | **scheduledDeviceMethod**：用于对一组设备孪生调用设备方法的作业。 |
-| **状态** |作业的当前状态。 可能的状态值： |
-| | **挂起**：已计划并等待作业服务选取。 |
-| | **已计划**：计划在将来某个时间。 |
-| | **正在运行**：当前活动的作业。 |
-| | **已取消**：已取消作业。 |
-| | **失败**：作业失败。 |
-| | **完成**：作业已完成。 |
+| **type** |作业的类型： |
+| | **scheduledUpdateTwin**:用于更新一组所需的属性或标记的作业。 |
+| | **scheduledDeviceMethod**:用于调用设备方法对一组设备孪生的作业。 |
+| **status** |作业的当前状态。 可能的状态值： |
+| | **挂起**:计划并等待作业服务选取。 |
+| | **计划**:计划在将来某个时间。 |
+| | **运行**:当前活动的作业。 |
+| | **取消**:作业已取消。 |
+| | **失败**:作业失败。 |
+| | **完成**:作业已完成。 |
 | **deviceJobStatistics** |有关作业执行的统计信息。 |
 | | **deviceJobStatistics** 属性： |
-| | **deviceJobStatistics.deviceCount**：作业中的设备数。 |
-| | **deviceJobStatistics.failedCount**：作业失败的设备数。 |
-| | **deviceJobStatistics.succeededCount**：作业成功的设备数。 |
-| | **deviceJobStatistics.runningCount**：当前正在运行作业的设备数。 |
-| | **deviceJobStatistics.pendingCount**：等待运行作业的设备数。 |
+| | **deviceJobStatistics.deviceCount**:作业中的设备数。 |
+| | **deviceJobStatistics.failedCount**:作业失败的设备数。 |
+| | **deviceJobStatistics.succeededCount**:作业成功的设备数。 |
+| | **deviceJobStatistics.runningCount**:当前正在运行作业的设备数。 |
+| | **deviceJobStatistics.pendingCount**:等待运行作业的设备数。 |
 
 ### <a name="additional-reference-material"></a>其他参考资料
 

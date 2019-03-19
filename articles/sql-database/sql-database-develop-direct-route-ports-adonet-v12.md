@@ -12,16 +12,16 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: b6fbb71a827c90abd1fac58d7975ab2f7b2a5674
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 96b6b4866b17e15f544a10124d07e651d747b58b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560883"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306436"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
 
-本主题介绍使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为。 
+本主题介绍使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为。
 
 > [!IMPORTANT]
 > 有关连接体系结构的信息，请参阅 [Azure SQL 数据库连接体系结构](sql-database-connectivity-architecture.md)。
@@ -31,18 +31,18 @@ ms.locfileid: "55560883"
 
 对于 Azure SQL 数据库的连接，首先必须询问客户端程序是在 Azure 云边界*外部*还是*内部*运行。 以下小节讨论了两种常见方案。
 
-#### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部：* 客户端在台式机上运行
+### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部：* 客户端在台式机上运行
 
 端口 1433 是托管 SQL 数据库客户端应用程序的台式机上唯一必须打开的端口。
 
-#### <a name="inside-client-runs-on-azure"></a>*内部：* 客户端在 Azure 上运行
+### <a name="inside-client-runs-on-azure"></a>*内部：* 客户端在 Azure 上运行
 
 如果客户端在 Azure 云边界内部运行，则它使用我们所谓的直接路由来与 SQL 数据库服务器交互。 建立连接后，客户端与数据库之间的进一步交互不涉及到任何 Azure SQL 数据库网关。
 
 顺序如下：
 
 1. ADO.NET 4.5（或更高版本）发起与 Azure 云的简短交互，并接收动态识别的端口号。
-   
+
    * 动态识别的端口号范围为 11000-11999 或 14000-14999。
 2. 然后，ADO.NET 不通过任何中间件直接连接到 SQL 数据库服务器。
 3. 查询直接发送到数据库，结果直接返回到客户端。
@@ -55,27 +55,31 @@ ms.locfileid: "55560883"
   * 可以使用[防火墙的用户界面](https://msdn.microsoft.com/library/cc646023.aspx)为指定 **TCP** 协议以及语法类似于 **11000-11999** 的端口范围添加规则。
 
 ## <a name="version-clarifications"></a>版本澄清
+
 本部分澄清引用产品版本的 Moniker。 此外还列出了产品之间的版本配对。
 
-#### <a name="adonet"></a>ADO.NET
+### <a name="adonet"></a>ADO.NET
+
 * ADO.NET 4.0 支持 TDS 7.3 协议，但不支持 7.4。
 * ADO.NET 4.5 和更高版本支持 TDS 7.4 协议。
 
-#### <a name="odbc"></a>ODBC
+### <a name="odbc"></a>ODBC
+
 * Microsoft SQL Server ODBC 11 或更高版本
 
-#### <a name="jdbc"></a>JDBC
+### <a name="jdbc"></a>JDBC
+
 * Microsoft SQL Server JDBC 4.2 或更高版本（JDBC 4.0 实际上支持 TDS 7.4，但未实现“重定向”）
 
-
 ## <a name="related-links"></a>相关链接
-* ADO.NET 4.6 已于 2015 年 7 月 20 日发布。 可以在[这里](https://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)访问 .NET 团队的博客通告。
-* ADO.NET 4.5 已于 2012 年 8 月 15 日发布。 可以在[这里](https://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)访问 .NET 团队的博客通告。 
-  * 可以在[这里](https://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx)访问有关 ADO.NET 4.5.1 的博客文章。
+
+* ADO.NET 4.6 已于 2015 年 7 月 20 日发布。 可以在[这里](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx)访问 .NET 团队的博客通告。
+* ADO.NET 4.5 已于 2012 年 8 月 15 日发布。 可以在[这里](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)访问 .NET 团队的博客通告。
+  * 可以在[这里](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-net-framework-4-5-1-preview.aspx)访问有关 ADO.NET 4.5.1 的博客文章。
 
 * Microsoft® ODBC Driver 17 for SQL Server® - Windows、Linux 和 macOS https://www.microsoft.com/download/details.aspx?id=56567
 
-* 通过重定向连接到 Azure SQL 数据库 V12 https://blogs.msdn.microsoft.com/sqlcat/2016/09/08/connect-to-azure-sql-database-v12-via-redirection/
+* 通过重定向连接到 Azure SQL 数据库 V12 https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [TDS 协议版本列表](http://www.freetds.org/userguide/tdshistory.htm)
 * [SQL 数据库开发概述](sql-database-develop-overview.md)

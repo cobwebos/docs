@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 8c913d618313a72f6fb05ea45847a220f6070d42
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: b06bc6b41081f05a7067f82f46affc37d21f50b1
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765732"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213290"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Linux 虚拟机
 
@@ -55,7 +55,7 @@ ms.locfileid: "55765732"
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
 大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括：D/DSv2 和 F/Fs
 
-在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括：D/DSv3、E/ESv3、Fsv2 和 Ms/Mms。
+在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括：D/Dsv3、 E/Esv3、 Fsv2、 Lsv2、 Ms/Mms 和 Ms/Mmsv2。
 
 有关 VM 实例的详细信息，请参阅[Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -71,9 +71,14 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 虚拟机（经典）无法部署加速网络。
 
 ## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>创建具有 Azure 加速网络的 Linux VM
+## <a name="portal-creation"></a>在门户中创建
+尽管本文提供了使用 Azure CLI 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在创建虚拟机在门户中，当**创建虚拟机**边栏选项卡中，选择**网络**选项卡。在此选项卡上，没有适合**加速网络**。  如果已选择[受支持的操作系统](#supported-operating-systems)并[的 VM 大小](#supported-vm-instances)，此选项将自动填充为"开启"。  如果没有，它将填充加速网络的"关闭"选项，并为用户提供的原因未启用它的原因。   
 
-尽管本文提供了使用 Azure CLI 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在门户中创建虚拟机时，请在“设置”的“加速网络”下选择“启用”。 除非选择了[支持的操作系统](#supported-operating-systems)和 [VM 大小](#supported-vm-instances)，否则启用加速网络的选项不会显示在门户中。 创建虚拟机后，需要按照[确认已启用加速网络](#confirm-that-accelerated-networking-is-enabled)中的说明完成操作。
+* *注意：* 可以通过门户启用仅支持的操作系统。  如果正在使用自定义映像，并且你的映像支持加速网络，请使用创建 VM CLI 或 Powershell。 
 
+创建虚拟机后，您可以确认按照中的说明启用了加速网络[确认已启用加速的网络](#confirm-that-accelerated-networking-is-enabled)。
+
+## <a name="cli-creation"></a>CLI 创建
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
 安装最新的 [Azure CLI](/cli/azure/install-azure-cli) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。

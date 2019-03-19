@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d364421794452f8ccf95a60ec86a161934c87528
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a29a00c34d4c60e6ba2b4fd6b0b413873301af5c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167977"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888366"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提�
 
 |主要优势|最佳实践|
 |-----|-----|
-|增强的安全性|[Extranet 锁定趋势](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[失败的登录报告](how-to-connect-health-adfs.md#risky-ip-report-public-preview)</br>[符合隐私标准](reference-connect-health-user-privacy.md)|
+|增强的安全性|[Extranet 锁定趋势](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[失败的登录报告](how-to-connect-health-adfs-risky-ip.md)</br>[符合隐私标准](reference-connect-health-user-privacy.md)|
 |[出现严重 ADFS 系统问题](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)时会收到通知|服务器配置和可用性</br>[性能和连接](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>定期维护|
 |易于部署和管理|[快速的代理安装](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>代理自动升级到最新版本</br>数据在几分钟后便可出现在门户中|
 丰富的[使用情况指标](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|排名靠前的应用程序使用情况</br>网络位置和 TCP 连接</br>每个服务器的令牌请求|

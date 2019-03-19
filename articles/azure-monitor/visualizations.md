@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 1daae81f0f642275e1ded20eb29f1e3145463db8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 55aed5d1133756789c3ed8979f0a9599f465e5d9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990166"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315089"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -32,9 +32,9 @@ ms.locfileid: "55990166"
 ![仪表板](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>优点
-- 深度集成到 Azure 中。 可视化效果可以固定到多个 Azure 页面的仪表板，包括指标资源管理器、Log Analytics 和 Application Insights。
+- 深度集成到 Azure 中。 可视化效果可以从多个包括指标资源管理器、 Log Analytics 和 Application Insights 的 Azure 页面固定到仪表板。
 - 支持指标和日志。
-- 合并来自多个源的数据，包括来自[指标资源管理器](platform/metrics-charts.md)、[日志查询](log-query/log-query-overview.md)以及 Application Insights 中的[映射](app/app-map.md)和[可用性]()的输出。
+- 合并来自多个源包括来自输出的数据[指标资源管理器](platform/metrics-charts.md)，[记录查询](log-query/log-query-overview.md)，并[映射](app/app-map.md)和 Application Insights 中的可用性。
 - 包含个人或共享仪表板的选项。 与 Azure [基于角色的身份验证 (RBAC)](../role-based-access-control/overview.md) 集成。
 - 自动刷新。 指标刷新的时间范围至少为 5 分钟。 以 1 分钟为间隔刷新日志。
 - 带有时间戳和自定义参数的参数化指标仪表板。
@@ -71,9 +71,8 @@ ms.locfileid: "55990166"
 - 查询的响应大小限制为 8MB，查询的执行时间限制为 110 秒。
 
 
-
-## <a name="application-insights-workbooks"></a>Application Insights 工作簿
-[工作簿](../application-insights/app-insights-usage-workbooks.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
+## <a name="workbooks"></a>工作簿
+[工作簿](../azure-monitor/app/usage-workbooks.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
 
 ![工作簿](media/visualizations/workbook.png)
 
@@ -122,7 +121,6 @@ ms.locfileid: "55990166"
 - 支持参数。
 
 ### <a name="limitations"></a>限制
-- 支持指标，但不支持日志。
 - 无 Azure 集成。 无法通过 Azure 资源管理器管理仪表板和模型。
 - 支持额外 Grafana 基础结构的成本或用于 Grafana Cloud 的额外成本。
 
@@ -142,6 +140,7 @@ ms.locfileid: "55990166"
 - 了解[由 Azure Monitor 收集的数据](platform/data-collection.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
-- 了解 [Application Insights 中的工作簿](app/usage-workbooks.md)。
-- 了解如何[将日志数据导入 Power BI](platform/powerbi.md)。
-- 了解 [Grafana Azure Monitor 数据源插件](platform/grafana-plugin.md)。
+- 了解如何[工作簿](../azure-monitor/app/usage-workbooks.md)。
+- 了解如何[将日志数据导入 Power BI](../azure-monitor/platform/powerbi.md)。
+- 了解 [Grafana Azure Monitor 数据源插件](../azure-monitor/platform/grafana-plugin.md)。
+

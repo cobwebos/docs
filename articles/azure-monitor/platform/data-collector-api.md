@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: d2bf55129465a607fdc3bce3bd1735642c64e428
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 7942b4eb5788357a807911d3eb89d1054a92c3eb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237920"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449353"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
 本文介绍如何使用 HTTP 数据收集器 API 从 REST API 客户端将日志数据发送到 Azure Monitor。  其中说明了对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Azure Monitor 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -49,14 +49,14 @@ Log Analytics 工作区中的所有数据都存储为具有某种特定记录类
 | 内容类型 |application/json |
 
 ### <a name="request-uri-parameters"></a>请求 URI 参数
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:--- |:--- |
 | CustomerID |Log Analytics 工作区的唯一标识符。 |
 | 资源 |API 资源名称: /api/logs。 |
 | API 版本 |用于此请求的 API 版本。 目前，API 版本为 2016-04-01。 |
 
 ### <a name="request-headers"></a>请求标头
-| 标头 | 说明 |
+| 标头 | 描述 |
 |:--- |:--- |
 | 授权 |授权签名。 在本文的后面部分，可以了解有关如何创建 HMAC-SHA256 标头的信息。 |
 | Log-Type |指定正在提交的数据的记录类型。 此参数的大小限制为 100 个字符。 |
@@ -181,7 +181,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 
 此表列出了服务可能返回的完整状态代码集：
 
-| 代码 | 状态 | 错误代码 | 说明 |
+| 代码 | 状态 | 错误代码 | 描述 |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |已成功接受请求。 |
 | 400 |错误的请求 |InactiveCustomer |工作区已关闭。 |
@@ -465,6 +465,15 @@ def post_data(customer_id, shared_key, body, log_type):
 
 post_data(customer_id, shared_key, body, log_type)
 ```
+## <a name="alternatives-and-considerations"></a>替代方法和注意事项
+虽然数据收集器 API 应涵盖了大多数的需求收集到 Azure 日志的自由格式的数据，但在的实例可能需要一种替代方法来克服的一些 API 的限制。 所有选项，如下所示，都是主要考虑事项包括：
+
+| 替代方法 | 描述 | 最适合用于 |
+|---|---|---|
+| [自定义事件](https://docs.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties):在 Application Insights 中的本机 SDK 基于引入 | Application Insights 中，通常通过应用程序中的 SDK 检测提供的功能，以便将通过自定义事件的自定义数据发送。 | <ul><li> 应用程序中生成但不是提取 SDK 通过默认数据类型之一的数据 (即： 请求时，依赖项、 异常等)。</li><li> 最常与 Application Insights 中的其他应用程序数据相关的数据 </li></ul> |
+| [数据收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)中 Azure Monitor 日志 | Azure Monitor 日志中的数据收集器 API 是完全开放式办法引入数据。 可以在此处发送格式化的 JSON 对象中的任何数据。 发送后，它将处理和日志为中可用相关联与其他数据在日志中或针对其他 Application Insights 数据。 <br/><br/> 它是相当轻松地将数据上传文件到 Azure Blob blob，从将处理并上传到 Log Analytics 这些文件。 请参阅[这](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)一文，了解此类管道的示例实现。 | <ul><li> 不一定是生成 Application Insights 中检测应用程序中的数据。</li><li> 示例包括查找和事实数据表、 引用数据、 预先聚合的统计信息等。 </li><li> 适用于将针对 （例如，Application Insights，其他日志数据类型，安全中心、 Azure Monitor 容器/Vm 等） 的其他 Azure Monitor 数据交叉引用的数据。 </li></ul> |
+| [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Azure 数据资源管理器 (ADX) 是为 Application Insights Analytics 和 Azure Monitor 日志提供支持的数据平台。 现在的正式版 ("GA") 在其原始窗体中使用的数据平台提供完整的灵活性 （但所需的管理开销） 转移群集 (RBAC，保有率、 架构等)。 ADX 提供了许多[的引入选项](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods)包括[CSV、 TSV 和 JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master)文件。 | <ul><li> 不会为 Application Insights 或日志下的任何其他数据相关的数据。 </li><li> 数据需要高级引入或处理功能在 Azure Monitor 日志中目前不可用。 </li></ul> |
+
 
 ## <a name="next-steps"></a>后续步骤
 - 使用[日志搜索 API](../log-query/log-query-overview.md) 从 Log Analytics 工作区中检索数据。

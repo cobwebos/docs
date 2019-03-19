@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c38b28a247feb94efd5f4b73e690d30aac9ed73a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: 4857b1771ae66cbee25765bb5173a638cbcd223e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900232"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008587"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -138,3 +138,25 @@ C:\ az managementpartner delete --partner-id 12345
 **其他合作伙伴或客户是否可以编辑或删除合作伙伴 ID 的链接？**
 
 该链接在用户帐户级别关联。 只有你可以编辑或删除合作伙伴 ID 的链接。 客户和其他合作伙伴无法更改合作伙伴 ID 的链接。 
+
+
+**如果我的公司有多个应使用哪个 MPN ID？**
+
+可以使用任何有效的 MPN ID 除外虚拟 orgnization(v-org) MPN id。 大多数合作伙伴选择地理位置基于客户或服务的交付使用 MPN ID。
+
+**在哪里可以找到受影响的收入报告的链接的合作伙伴 ID？**
+
+您可以找到影响收入的报告[我见解仪表板](https://partner.microsoft.com/membership/reports/myinsights)。 您需要选择合作伙伴管理员链接作为合作伙伴关联类型。
+
+**为何看不到我在报告中的客户？**
+
+您不能看到以下原因造成的报表中的客户
+
+1. 链接的用户帐户不具备[基于角色的访问](https://docs.microsoft.com/azure/role-based-access-control/overview)上的任何客户的 Azure 订阅或资源。
+
+2. 用户在其上的 Azure 订阅[基于角色的访问](https://docs.microsoft.com/azure/role-based-access-control/overview)访问没有任何使用情况。
+
+**链接的合作伙伴 ID 适用于 Azure Stack？**
+
+是的可以将你的合作伙伴 ID 链接适用于 Azure Stack。
+

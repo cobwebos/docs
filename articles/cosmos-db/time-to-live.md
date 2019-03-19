@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 9b5054da56bdc6a88642ea7860702b280a76dbb1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: f9dec5b3aeb951316985c965de70a372f55b8225
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461162"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549181"
 ---
 # <a name="time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB 中的生存时间 
 
@@ -30,7 +30,7 @@ ms.locfileid: "55461162"
 
    - 如果存在且值设置为某个数字（“n”），则项将在上次修改“n”秒后过期。
 
-2. **项的生存时间**（使用 `TimeToLive` 设置）：
+2. **项的生存时间**（使用 `ttl` 设置）：
 
    - 仅当父容器的 `DefaultTimeToLive` 存在且不是设置为 null 时，此属性才适用。
 
@@ -48,6 +48,6 @@ ms.locfileid: "55461162"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过以下文章了解如何配置生存时间：
+了解如何在以下文章中配置生存时间：
 
 * [如何配置生存时间](how-to-time-to-live.md)

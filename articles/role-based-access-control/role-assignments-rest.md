@@ -1,5 +1,5 @@
 ---
-title: 使用 RBAC 和 REST API 管理对 Azure 资源的访问 - Azure | Microsoft Docs
+title: 访问管理对 Azure 资源使用 RBAC 和 REST API-Azure |Microsoft Docs
 description: 了解如何使用基于角色的访问控制 (RBAC) 和 REST API 来管理用户、组和应用程序对 Azure 资源的访问。 这包括如何列出访问权限、授予访问权限以及删除访问权限。
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c2ef9b0070cc9ac190b773f023ffc18d1b251a41
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: a66969504dee5ba526cdccbbb39471ef5af971c0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338404"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439326"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>使用 RBAC 和 REST API 管理对 Azure 资源的访问权限
 
@@ -46,7 +46,7 @@ ms.locfileid: "56338404"
 
 1. 将“{filter}”替换为筛选角色分配列表时要应用的条件。
 
-    | 筛选器 | 说明 |
+    | 筛选器 | 描述 |
     | --- | --- |
     | `$filter=atScope()` | 只列出指定范围内的角色分配，而不包括子范围内的角色分配。 |
     | `$filter=principalId%20eq%20'{objectId}'` | 列出特定用户、组或服务主体的角色分配。 |

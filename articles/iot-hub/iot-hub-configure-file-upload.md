@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 门户配置文件上传 | Microsoft Docs
 description: 如何使用 Azure 门户配置 IoT 中心，以便从连接的设备上传文件。 包括有关配置目标 Azure 存储帐户的信息。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
-ms.author: dobett
-ms.openlocfilehash: a9f9eeaed2716c5d492099568fd6f90080471af2
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
-ms.translationtype: HT
+ms.author: robin.shahan
+ms.openlocfilehash: 04f3f05c8c18a3356c282144cda62d1f980362fe
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141440"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008435"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>使用 Azure 门户配置 IoT 中心文件上传
 
@@ -21,15 +21,15 @@ ms.locfileid: "42141440"
 
 ## <a name="file-upload"></a>文件上传
 
-要使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)，必须先将 Azure 存储帐户与中心关联。 选择“文件上传”，以显示正在修改的 IoT 中心的文件上传属性列表。
+若要使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)，必须先将 Azure 存储帐户与中心关联。 选择“文件上传”，以显示正在修改的 IoT 中心的文件上传属性列表。
 
 ![在门户中查看 IoT 中心文件上传设置](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **存储容器**：使用 Azure 门户在当前 Azure 订阅中选择 Azure 存储帐户中的 blob 容器，以便与 IoT 中心关联。 如有必要，可以在“存储帐户”边栏选项卡上创建 Azure 存储帐户，并在“容器”边栏选项卡上创建 blob 容器。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
+* **存储容器**：使用 Azure 门户中当前的 Azure 订阅以便与 IoT 中心关联的 Azure 存储帐户中选择的 blob 容器。 如有必要，可以在“存储帐户”边栏选项卡上创建 Azure 存储帐户，并在“容器”边栏选项卡上创建 blob 容器。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
 
    ![在门户中查看用于文件上传的存储容器](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-* **接收已上传文件的通知**：通过切换来启用或禁用文件上传通知。
+* **接收已上传文件的通知**：启用或禁用通过切换文件上传通知。
 
 * **SAS TTL**：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时，但可以使用滑块自定义为其他值。
 
@@ -41,7 +41,7 @@ ms.locfileid: "42141440"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 IoT 中心文件上传功能的详细信息，请参阅 IoT 中心开发人员指南中的[从设备上传文件](iot-hub-devguide-file-upload.md)。
+有关 IoT 中心的文件上传功能的详细信息，请参阅 IoT 中心开发人员指南中的[从设备上传文件](iot-hub-devguide-file-upload.md)。
 
 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 

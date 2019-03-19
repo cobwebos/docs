@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74f6d5989d86cc92371b060caf164f895b75511f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: 9d8b425ff73672ce8989e235c4a2c130c763716c
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263622"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213545"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS 应用程序产品/服务
 
@@ -36,6 +36,9 @@ ms.locfileid: "54263622"
 - 扩展你的销售团队：接触世界各地的业务用户并获得能够吸引最终用户的销售渠道，帮助开发潜在顾客，并与各个行业的新客户进行聊天。
 
 - 获取可操作的见解：我们将就你的应用在 AppSource 上的表现、有效的方法以及如何进一步改进销售过程共享见解。
+ 
+>[!Note]
+>云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
 
 ## <a name="publishing-process-workflow"></a>发布过程工作流 
 

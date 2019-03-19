@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36b717bfd05a71639c5d1f467af8e9238474160d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: f1f34796a98acb3ed4241edff57e506990479d1a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170188"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443260"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory v2.0 和 OAuth 2.0 设备代码流
 
@@ -32,7 +32,7 @@ ms.locfileid: "56170188"
 Azure AD 支持[设备代码授予](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12)，可让用户登录到智能电视、IoT 设备或打印机等输入受限的设备。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。  
 
 > [!Important] 
-> 目前，v2.0 终结点仅支持 Azure AD 租户的设备流，而不支持个人帐户的设备流。  这意味着，必须使用租户终结点或组织终结点。  
+> 目前，v2.0 终结点仅支持 Azure AD 租户的设备流，而不支持个人帐户的设备流。  这意味着，必须使用将设置为一个租户的终结点或组织终结点。  
 >
 > 受邀加入 Azure AD 租户的个人帐户可以使用设备流授予，但只能在该租户的上下文中使用。
 
@@ -61,17 +61,17 @@ scope=user.read%20openid%20profile
 
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| tenant |必选 |要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。  |
-| client_id |必选 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
+| tenant |需要 |要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。  |
+| client_id |需要 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) 为应用分配的应用程序 ID。 |
 | 作用域 | 建议 | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  |
 
 ### <a name="device-authorization-response"></a>设备授权响应
 
 成功响应是一个 JSON 对象，其中包含允许用户登录所需的信息。  
 
-| 参数 | 格式 | 说明 |
+| 参数 | 格式 | 描述 |
 | ---              | --- | --- |
 |`device_code`     |String| 一个长字符串，用于验证客户端与授权服务器之间的会话。  客户端使用此字符串从授权服务器请求访问令牌。 |
 |`user_code`       |String| 向用户显示的短字符串，用于标识辅助设备上的会话。|
@@ -96,17 +96,17 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-|参数 | 必选 | 说明|
+|参数 | 需要 | 描述|
 | -------- | -------- | ---------- |
-|`grant_type` | 必选| 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
-|`client_id`  | 必选| 必须与初始请求中使用的 `client_id` 匹配。 |
-|`device_code`| 必选| 设备授权请求中返回的 `device_code`。  |
+|`grant_type` | 需要| 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
+|`client_id`  | 需要| 必须与初始请求中使用的 `client_id` 匹配。 |
+|`device_code`| 需要| 设备授权请求中返回的 `device_code`。  |
 
 ### <a name="expected-errors"></a>预期错误
 
 由于设备代码流是一个轮询协议，因此，客户端必须预料到在用户完成身份验证之前会收到错误。  
 
-| 错误 | 说明 | 客户端操作 |
+| 错误 | 描述 | 客户端操作 |
 |------ | ----------- | -------------|
 | `authorization_pending` |  用户尚未完成身份验证，但未取消流。 | 在至少 `interval` 秒之后重复请求。 |
 | `authorization_declined`|  最终用户拒绝了授权请求。| 停止轮询，并恢复到未经过身份验证状态。  |
@@ -129,7 +129,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 }
 ```
 
-| 参数 | 格式 | 说明 |
+| 参数 | 格式 | 描述 |
 | --------- | ------ | ----------- |
 |`token_type` | String| 始终为“Bearer”。 |
 |`scope` | 空格分隔的字符串 | 如果返回了访问令牌，则会列出该访问令牌的有效范围。 |

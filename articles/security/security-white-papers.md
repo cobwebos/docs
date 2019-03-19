@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 01688c120a8302da4903302ab8bcd2d1fa4ab351
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 3fb6e42e55119684ace8547a55297d38dbb9a26e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113407"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57402370"
 ---
 # <a name="azure-security-white-papers"></a>Azure 安全性白皮书
 | | |
@@ -42,4 +42,4 @@ ms.locfileid: "56113407"
 |[Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|本可下载的白皮书讨论 Azure 符合性产品/服务，包括独立的第三方审核企业生成的正式认证、证明、验证、授权和评估，以及 Microsoft 生成的合同修正、自我评估和客户指南文档。 <br/> 每个产品/服务说明均论述哪些 Azure 面向客户的服务在评估范围内，并提供指向可下载资源的链接以帮助客户履行自己的符合性义务。|
 |[Azure 中的安全管理](azure-security-management.md)|讨论在远程访问 Azure 资源时遇到的问题。 云的性质需要远程访问管理功能，因此，安全性极其重要。 涵盖了常规安全准则、客户端配置、最佳做法，以及操作原理和过程。 |
 |[Azure AD 数据和安全性](https://aka.ms/aaddatawhitepaper) | 该可下载文档介绍了 Azure Active Directory 的不同组件及其相互之间的交互。 它概述了各种组件如何保护、加密传输中的数据（例如，通过 Internet）或对其执行哈希算法以及如何对其进行静态保护。 它介绍了各种 Azure AD 数据中心位置及其与本地目录的交互，以及进出 Azure AD 的流。 最后，它描述了 Azure AD 工程团队用于管理和保护服务的操作过程。|
-
+|[无密码身份验证的概述](https://aka.ms/pwdless-whitepaper)|本文档是无密码身份验证使用 Windows Hello for Business、 FIDO2 安全密钥和 Microsoft Authenticator 应用的关键优势的概述。 建议的安全专业人员和 Ciso 还为有兴趣了解 Microsoft 如何帮助，打破密码并部署下一代身份验证凭据。|

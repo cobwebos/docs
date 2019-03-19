@@ -12,16 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: a2b4f85ac9c62c93e06f73090b6b144ff79319d1
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561869"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217030"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
-本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
+本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可以将发送到此诊断日志[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)， [Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)， [Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)，或自定义 DevOps 警报和报告的第三方解决方案功能。
 
 ## <a name="log-header"></a>日志标头
 
@@ -135,7 +135,7 @@ Intelligent Insights 性能日志的最后部分是对已确定的性能下降�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Intelligent Insights 性能日志可与 [Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) 或第三方解决方案结合使用，以用于自定义 DevOps 警报和报告功能。
+可以使用在 Intelligent Insights 性能日志[Azure Monitor 日志]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)或自定义 DevOps 警报和报告功能的第三方解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解有关 [Intelligent Insights](sql-database-intelligent-insights.md) 的概念。

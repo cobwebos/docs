@@ -4,7 +4,7 @@ description: 用于监视 Service Fabric 群集和应用程序的最佳做法。
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: jeanpaul.connock
+manager: chackdan
 editor: ''
 ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 5e3cfad70dd0cc0c53f6971c9ddce44f0ca25ecd
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: d90daaf18e5161053e00671b7667d05ec8e5db76
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104291"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242915"
 ---
 # <a name="monitoring-and-diagnostics"></a>监视和诊断
 
@@ -33,13 +33,13 @@ ms.locfileid: "55104291"
 
 Service Fabric 的目标之一是使应用程序能够灵活应对硬件故障。 为了实现此目的，可以通过平台的系统服务功能检测基础结构问题，并快速将工作负荷故障转移到群集中的其他节点。 但是，系统服务本身出现问题该怎么办？ 或者，在尝试部署或移动工作负荷时，如果违反服务位置的规则该怎么办？ Service Fabric 为这些问题以及其他问题提供诊断，确保你了解 Service Fabric 平台与应用程序、服务、容器和节点的交互情况。
 
-对于 Windows 群集，建议使用[诊断代理](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad)和 [Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup) 来设置群集监视。
+对于 Windows 群集，建议您设置了群集监视与[诊断代理](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad)并[Azure Monitor 日志](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)。
 
-对于 Linux 群集，Log Analytics 也是建议用于 Azure 平台和基础结构监视的工具。 Linux 平台诊断要求不同的配置，详见 [Syslog 中的 Service Fabric Linux 群集事件](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-syslog)。
+对于 Linux 群集，Azure Monitor 日志也是 Azure 平台和基础结构监控功能的推荐的工具。 Linux 平台诊断要求不同的配置，详见 [Syslog 中的 Service Fabric Linux 群集事件](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-syslog)。
 
 ## <a name="infrastructure-monitoring"></a>基础结构监视
 
-若要监视群集级别的事件，建议使用 [Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)。 使用上一链接中介绍的工作区配置 Log Analytics 代理以后，即可收集性能指标，例如：CPU 使用率、.NET 性能计数器（例如进程级别的 CPU 使用率）、Service Fabric 性能计数器（例如来自 Reliable Service 的异常数），以及容器指标（例如 CPU 使用率）。  需将容器日志写入 stdout 或 stderr，使之在 Log Analytics 中可用。
+[Azure Monitor 日志](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)建议用于监视群集级别的事件。 使用上一链接中介绍的工作区配置 Log Analytics 代理以后，即可收集性能指标，例如：CPU 使用率、.NET 性能计数器（例如进程级别的 CPU 使用率）、Service Fabric 性能计数器（例如来自 Reliable Service 的异常数），以及容器指标（例如 CPU 使用率）。  你将需要向 stdout 或 stderr 写入容器日志，以便它们可在 Azure Monitor 日志中。
 
 ## <a name="watchdogs"></a>监视器
 
@@ -50,7 +50,7 @@ Service Fabric 的目标之一是使应用程序能够灵活应对硬件故障�
 * 开始检测应用程序：[应用程序级别事件和日志生成](service-fabric-diagnostics-event-generation-app.md)。
 * 通过[在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序](service-fabric-tutorial-monitoring-aspnet.md)，完成为应用程序设置 Application Insights 的步骤。
 * 详细了解如何监视平台以及 Service Fabric 提供的事件：[平台级别事件和日志生成](service-fabric-diagnostics-event-generation-infra.md)。
-* 配置 Log Analytics 与 Service Fabric 的集成：[为群集设置 Log Analytics](service-fabric-diagnostics-oms-setup.md)
-* 了解如何设置用于监视容器的 Log Analytics：[监视和诊断 Azure Service Fabric 中的 Windows 容器](service-fabric-tutorial-monitoring-wincontainers.md)。
+* 配置与 Service Fabric 的 Azure Monitor 日志集成：[设置群集的 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)
+* 了解如何设置 Azure Monitor 日志，以便监视容器：[监视和诊断 Azure Service Fabric 中的 Windows 容器](service-fabric-tutorial-monitoring-wincontainers.md)。
 * 查看 Service Fabric 的示例诊断问题和解决方案：[诊断常见方案](service-fabric-diagnostics-common-scenarios.md)
 * 了解适用于 Azure 资源的一般性监视建议：[最佳做法 - 监视和诊断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。

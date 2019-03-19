@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 1a21ab5af8c0dc5fbbe2c1dbab8931bd903df4ff
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 121226ad9ca1ea0c29dd192ed69797b37245da46
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235982"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213919"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -84,7 +84,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
 SQL 数据库通过提供审核和威胁检测功能来保护客户数据。
 
-### <a name="sql-auditing-in-log-analytics-and-event-hubs"></a>Log Analytics 和事件中心的 SQL 审核
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>SQL 审核在 Azure Monitor 日志和事件中心
 
 SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到客户所有的 Azure 存储帐户中的审核日志，帮助用户保持符合安全标准。 用户可以通过审核监视正在进行的数据库活动，以及分析和调查历史活动，以标识潜在威胁或可疑的滥用行为和安全违规。 有关详细信息，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。  
 

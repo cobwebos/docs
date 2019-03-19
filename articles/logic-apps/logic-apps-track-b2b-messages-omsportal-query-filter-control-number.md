@@ -1,5 +1,5 @@
 ---
-title: 在 Log Analytics 中针对 B2B 消息创建跟踪查询 - Azure 逻辑应用 | Microsoft Docs
+title: 在 Azure Monitor 日志-Azure 逻辑应用中创建跟踪查询 B2B 消息 |Microsoft Docs
 description: 使用 Azure Log Analytics 为 Azure 逻辑应用创建用于跟踪 AS2、X12 和 EDIFACT 消息的查询
 services: logic-apps
 ms.service: logic-apps
@@ -9,27 +9,29 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 5cfab07e19e543b7a46fcce8f449a46395c144d6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: d4a94e75de34bbafd3bc8f1c1a0d1a6817245e5f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995316"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194905"
 ---
-# <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>在 Azure Log Analytics 中为 Azure 逻辑应用创建 B2B 消息跟踪查询
+# <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>为 Azure 逻辑应用在 Azure Monitor 日志中创建 B2B 消息的跟踪查询
 
-若要查找使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 跟踪的 AS2、X12 或 EDIFACT 消息，可以创建基于具体情况筛选操作的查询。 例如，你可以根据特定的交换控制编号查找消息。
+若要查找 AS2，X12 或 EDIFACT 消息与跟踪[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，可以创建筛选器操作根据特定条件的查询。 例如，你可以根据特定的交换控制编号查找消息。
 
 > [!NOTE]
 > 此页面之前描述了如何使用 Microsoft Operations Management Suite (OMS) 执行这些任务的步骤，该解决方案将[在 2019 年 1 月停用](../azure-monitor/platform/oms-portal-transition.md)，取而代之的将是使用 Azure Log Analytics 执行这些步骤的内容。 
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="prerequisites"></a>必备组件
 
 * 已设置诊断日志记录的逻辑应用。 了解[如何创建逻辑应用](quickstart-create-first-logic-app-workflow.md)以及[如何为逻辑应用设置日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
 * 已设置监视和日志记录的集成帐户。 了解[如何创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)以及[如何为集成帐户设置监视和日志记录](../logic-apps/logic-apps-monitor-b2b-message.md)。
 
-* [将诊断数据发布到 Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)并[在 Log Analytics 中设置消息跟踪](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)（如果尚未执行这些操作）。
+* 如果你尚未准备好，[诊断数据发布到 Azure Monitor 日志](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)并[设置消息在 Azure Monitor 日志中跟踪](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
 
 ## <a name="create-queries-with-filters"></a>创建使用筛选器的查询
 
@@ -53,7 +55,7 @@ ms.locfileid: "52995316"
 1. 在查询编辑框中，开始键入想要查找的字段名称。 开始键入时，查询编辑器将显示可能的匹配项和可用的操作。 创建查询后，选择“运行”或按 Enter 键。
 
    本示例在 **LogicAppB2B** 中搜索匹配项。 
-   详细了解[如何在 Log Analytics 中查找数据](../log-analytics/log-analytics-log-searches.md)。
+   详细了解如何[如何在 Azure Monitor 日志中查找数据](../log-analytics/log-analytics-log-searches.md)。
 
    ![开始键入查询字符串](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/create-query.png)
 

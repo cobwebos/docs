@@ -12,27 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 03/01/2019
 ms.author: alleonar
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 567ea09a50edc043f2022a47d08576720550e750
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 47233d593e9539e5755daf331ce9dbff73207942
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448086"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213477"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory 图形 API
 
 > [!IMPORTANT]
 >
-> 截至 2019 年 2 月，不推荐使用 Azure Active Directory Graph API，而是使用 Microsoft Graph API。  
+> 截至 2019 年 2 月，我们开始不推荐使用的某些早期版本的 Azure Active Directory 图形 API，以便 Microsoft Graph API 支持。 
 >
-> 为了便于转换，早期版本的 Azure AD Graph API 将在更新版本之前解除授权。  
->
-> 有关详细信息、更新和期限，请查看 Office 开发人员中心中的 [Microsoft Graph 或 Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) 博客文章。
+> 有关详细信息、 更新和时间范围，请参阅[Microsoft Graph 或 Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) Office 开发人员中心中。
 >
 > 展望未来，应用程序将使用 Microsoft Graph API。 
 

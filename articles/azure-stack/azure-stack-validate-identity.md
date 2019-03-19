@@ -16,12 +16,12 @@ ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 880c44530a33918f9526e4a7d805f094cfbf0c90
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b43fb3ff158a7df609d7a828192815db6b15963b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772647"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850054"
 ---
 # <a name="validate-azure-identity"></a>验证 Azure 标识 
 使用 Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 验证 Azure Active Directory (Azure AD) 是否已准备好与 Azure Stack 配合使用。 在开始 Azure Stack 部署之前，请验证 Azure 标识解决方案。  
@@ -56,7 +56,7 @@ ms.locfileid: "57772647"
 
    > `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
 
-2. 从 PowerShell 提示符下，运行以下命令将 *$serviceAdminCredential* 设置为你的 Azure AD 租户的服务管理员。  将 *serviceadmin@contoso.onmicrosoft.com* 替换为你的帐户和租户。 
+2. 从 PowerShell 提示符下，运行以下命令将 *$serviceAdminCredential* 设置为你的 Azure AD 租户的服务管理员。  替换*serviceadmin\@contoso.onmicrosoft.com*与你的帐户和租户。 
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. 从 PowerShell 提示符下，运行以下命令来启动对 Azure AD 的验证。 

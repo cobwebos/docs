@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbfade56ff12aa719927d496606a6ce4b4fe5a38
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 07e98d5a93b8576c06e9be8274a974b1b574da4b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167144"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217729"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>部署基于云的 Azure 多重身份验证
 
@@ -42,6 +42,9 @@ Azure 多重身份验证 (Azure MFA) 入门是一个直截了当的过程。
 ## <a name="choose-authentication-methods"></a>选择身份验证方法
 
 根据组织的要求至少为用户启用一种身份验证方法。 我们发现，如果为用户启用了身份验证，则 Microsoft Authenticator 应用可提供最佳用户体验。 如需了解哪些方法可用及其设置方法，请参阅[有哪些身份验证方法](concept-authentication-methods.md)一文。
+
+> [!IMPORTANT]
+> 开始在 2019 年 3 月中的电话呼叫选项将不能向免费/试用 Azure AD 租户中用户的 MFA 和 SSPR 的用户。 此更改不会影响短信。 电话呼叫将继续可供用户在付费 Azure AD 租户。 此更改只会影响免费/试用 Azure AD 租户。
 
 ## <a name="get-users-to-enroll"></a>让用户注册
 

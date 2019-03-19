@@ -10,22 +10,25 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3e877733d473993a5acd2f44e088b8b0b4fe130
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 8ec6ffaba8056eacf44d8e1bd911eb1f22daad84
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447253"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314834"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
+
 将 Azure SQL 数据仓库升级到最新一代 Azure 硬件和存储体系结构。
 
 ## <a name="why-upgrade"></a>为什么升级？
+
 现在可以在 Azure 门户中为[受支持的区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)无缝地升级到 SQL 数据仓库“计算优化第 2 代”层级。 如果你的区域不支持自助升级，则可以升级到受支持的区域，或者等待你的区域支持自助升级。 请立即升级来利用最新一代 Azure 硬件和增强的存储体系结构，包括更快的性能、更高的可伸缩性以及无限的列式存储。 
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>适用于
+
 此升级适用于[受支持的区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)中的“计算优化第 1 代”层级数据仓库。
 
 ## <a name="before-you-begin"></a>开始之前
@@ -49,13 +52,18 @@ ms.locfileid: "56447253"
    |           DW2000            |           DW2000c           |
    |           DW3000            |           DW3000c           |
    |           DW6000            |           DW6000c           |
->[!Note]
->建议的性能级别不是直接转换。 例如，我们建议从 DW600 转换到 DW500c。
+
+> [!Note]
+> 建议的性能级别不是直接转换。 例如，我们建议从 DW600 转换到 DW500c。
 
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>使用 Azure 门户在受支持的区域中进行升级
 
+## <a name="before-you-begin"></a>开始之前
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!NOTE]
-> 通过 Azure 门户从第 1 代迁移到第 2 代是永久性的。 无法通过任何流程返回到第 1 代。  
+> 从 Gen1 到第 2 代的通过 Azure 门户迁移，以及是永久性的。 不返回到 Gen1 的过程。  
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -73,13 +81,13 @@ ms.locfileid: "56447253"
    原始 Gen1 PowerShell 命令：
 
    ```powershell
-   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
+   Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
    ```
 
    修改为：
 
    ```powershell
-   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
+   Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
    ```
 
    > [!NOTE] 
@@ -100,8 +108,6 @@ ms.locfileid: "56447253"
    > [!NOTE] 
    > SERVICE_OBJECTIVE = “DW300”更改为 SERVICE_OBJECTIVE = “DW300c”
 
-
-
 ## <a name="start-the-upgrade"></a>开始升级
 
 1. 在 Azure 门户中转到你的“计算优化第 1 代”层级数据仓库。 如果要升级的“计算优化第 1 代”层级数据仓库已暂停，请[恢复数据仓库](pause-and-resume-compute-portal.md)。 
@@ -110,7 +116,6 @@ ms.locfileid: "56447253"
     > [!NOTE]
     > 如果在“任务”选项卡下未看到“升级到第 2 代”卡，则你的订阅类型在当前区域中受到限制。
     > [提交支持票证](sql-data-warehouse-get-started-create-support-ticket.md)以便将你的订阅列入允许列表。
-
 
 3. 在升级之前，请确保工作负荷已完成运行并处于静止状态。 在数据仓库作为“计算优化第 2 代”数据仓库回到联机状态之前，会出现几分钟的停机时间。 选择“升级”：
 
@@ -173,6 +178,7 @@ FROM   sys.indexes idx
                        AND idx.object_id = part.object_id 
 WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE'; 
 ```
+
 ## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>通过 Azure 门户使用还原从 Azure 地理区域进行升级
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>使用 Azure 门户创建用户定义的还原点
@@ -190,6 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
     ![还原点的名称](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>使用 Azure 门户还原活动或暂停的数据库
+
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 导航到要从中进行还原的 SQL 数据仓库。
 3. 在“概述”部分的顶部，选择“还原”。
@@ -205,11 +212,13 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
     ![用户定义的还原点](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
 ## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>使用 PowerShell 从 Azure 地理区域还原
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 若要恢复数据库，请使用 [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) cmdlet。
 
 > [!NOTE]
 > 可以执行到第 2 代的异地还原！ 若要执行此操作，请将一个第 2 代 ServiceObjectiveName（例如 DW1000**c**）指定为可选参数。
->
 
 1. 打开 Windows PowerShell。
 2. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
@@ -235,7 +244,6 @@ $GeoRestoredDatabase.status
 
 > [!NOTE]
 > 若要在完成还原后配置数据库，请参阅 [在恢复后配置数据库](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)。
->
 
 如果源数据库启用了 TDE，则已恢复的数据库将启用 TDE。
 
@@ -243,4 +251,5 @@ $GeoRestoredDatabase.status
 如果遇到与数据仓库相关的任何问题，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)并指出可能的原因是“Gen2 升级”。
 
 ## <a name="next-steps"></a>后续步骤
+
 升级后的数据仓库已联机。 若要利用增强的体系结构，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。

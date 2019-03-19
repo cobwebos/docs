@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015486"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445137"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -35,6 +35,8 @@ ms.locfileid: "54015486"
 
 > [!IMPORTANT]
 > Azure 数据工厂版本 1 现在使用新的 [Azure Monitor 警报基础结构](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。 旧警报基础结构已弃用。 因此，为版本 1 数据工厂配置的现有警报不再有效。 v1 数据工厂的现有警报不会自动迁移。 你必须在新的警报基础结构上重新创建这些警报。 登录到 Azure门户并选择“监视器”，针对指标（如失败的运行或成功的运行）为版本 1 数据工厂创建新的警报。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="understand-pipelines-and-activity-states"></a>了解管道和活动状态
 使用 Azure 门户，可以：
@@ -87,7 +89,7 @@ ms.locfileid: "54015486"
 
 <table>
 <tr>
-    <th align="left">状态</th><th align="left">子状态</th><th align="left">Description</th>
+    <th align="left">状态</th><th align="left">子状态</th><th align="left">描述</th>
 </tr>
 <tr>
     <td rowspan="8">等待</td><td>ScheduleTime</td><td>未到运行切片的时间。</td>
@@ -173,26 +175,26 @@ ms.locfileid: "54015486"
 > [!NOTE] 
 > 图示视图不可用于暂停和恢复管道。 若想要使用用户界面，请使用监视和管理应用程序。 有关使用此应用的详细信息，请参阅文章[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
 
-还可以使用 **Suspend-AzureRmDataFactoryPipeline** PowerShell cmdlet 暂停/挂起管道。 如果问题得以解决之前不准备运行管道，此 cmdlet 非常有用。 
+你可以暂停/挂起管道通过使用**挂起 AzDataFactoryPipeline** PowerShell cmdlet。 如果问题得以解决之前不准备运行管道，此 cmdlet 非常有用。 
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 例如：
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 修复管道相关问题后，可通过运行下列 PowerShell 命令恢复挂起的管道：
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 例如：
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 ## <a name="debug-pipelines"></a>调试管道
@@ -217,29 +219,29 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 
 #### <a name="use-powershell-to-debug-an-error"></a>使用 PowerShell 调试错误
 1. 启动 **PowerShell**。
-2. 运行 **Get-AzureRmDataFactorySlice** 命令查看切片及其状态。 应看到“失败”状态的切片。        
+2. 运行**Get AzDataFactorySlice**命令查看切片及其状态。 应看到“失败”状态的切片。        
 
     ```powershell   
-    Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+    Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
    例如：
 
     ```powershell   
-    Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
+    Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
    将“StartDateTime”替换为管道的开始时间。 
-3. 现在，运行 **Get-AzureRmDataFactoryRun** cmdlet 以获取有关切片活动运行的详细信息。
+3. 现在，运行**Get AzDataFactoryRun**切片运行 cmdlet 来获取活动的详细信息。
 
     ```powershell   
-    Get-AzureRmDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
+    Get-AzDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
     例如：
 
     ```powershell   
-    Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+    Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
     ```
 
     StartDateTime 的值是上一步中记下的错误/问题切片的开始时间。 date-time 应括在双引号内。
@@ -267,10 +269,10 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
-5. 可使用从输出中看到的 ID 值运行 **Save-AzureRmDataFactoryLog** cmdlet，并通过对 cmdlet 使用 **-DownloadLogsoption** 下载日志文件。
+5. 你可以运行**保存 AzDataFactoryLog** cmdlet 在输出中，请参阅，并使用下载的日志文件的 Id 值与 **-DownloadLogsoption** cmdlet。
 
     ```powershell
-    Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
+    Save-AzDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
     ```
 
 ## <a name="rerun-failures-in-a-pipeline"></a>管道中的重新运行故障
@@ -288,7 +290,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 ![修复错误并验证](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>使用 Azure PowerShell
-通过使用 **Set-AzureRmDataFactorySliceStatus** cmdlet，可以重新运行失败命令。 有关该 cmdlet 的语法和其他详细信息，请参阅 [Set-AzureRmDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus) 主题。
+可以通过重新运行失败**集 AzDataFactorySliceStatus** cmdlet。 请参阅[集 AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus)语法和有关该 cmdlet 的其他详细信息的主题。
 
 **示例：**
 
@@ -297,7 +299,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 将“UpdateType”设置为“UpstreamInPipeline”，这意味着表中每个切片和所有相关（上游）表的状态都将设置为“等待”。 此参数的其他可能值为“Individual”。
 
 ```powershell
-Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
+Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
 ## <a name="create-alerts-in-the-azure-portal"></a>在 Azure 门户中创建警报
 

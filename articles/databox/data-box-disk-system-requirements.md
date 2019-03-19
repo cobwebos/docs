@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 0effc6af1ddc3273f0c6e2bf9cbfd0f2ecadf0a2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747316"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407615"
 ---
 # <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk 系统要求
 
@@ -52,7 +52,7 @@ ms.locfileid: "55747316"
 
 ## <a name="supported-connection"></a>支持的连接
 
-包含数据的客户端计算机必须拥有 USB 3.0 或更高版本的端口。 磁盘使用提供的数据线连接到此客户端。 
+包含数据的客户端计算机必须拥有 USB 3.0 或更高版本的端口。 磁盘使用提供的数据线连接到此客户端。
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 
@@ -62,19 +62,22 @@ ms.locfileid: "55747316"
 | --- | --- |
 | 经典 | 标准 |
 | 常规用途  |标准；同时支持 V1 和 V2。 同时支持热层和冷层。 |
+| Blob 存储帐户 | |
 
 >[!NOTE]
 > 不支持 Azure Data Lake Storage Gen 2 帐户。
 
 
-## <a name="supported-storage-types"></a>支持的存储类型
+## <a name="supported-storage-types-for-upload"></a>上传的受支持的存储类型
 
-下面是 Data Box 磁盘支持的存储类型列表。
+下面是上传到 Azure 中使用 Data Box 磁盘支持的存储类型的列表。
 
 | **文件格式** | **说明** |
 | --- | --- |
 | Azure 块 blob | |
 | Azure 页 blob  | |
+| Azure 文件  | |
+| 托管磁盘 | |
 
 
 ## <a name="next-step"></a>后续步骤

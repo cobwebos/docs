@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d8f42b49fe3dbdecec163ab47579346b71f0bf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b4be5087af70e10e5a73ea2a183a25b326aea664
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190494"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>教程：Azure Active Directory 与 ServiceChannel 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56190494"
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 ServiceChannel 的集成，需要具有以下项：
 
@@ -155,7 +155,7 @@ ms.locfileid: "56190494"
 
     ![配置单一登录](./media/servicechannel-tutorial/tutorial_general_400.png)
 
-1. 在“ServiceChannel 配置”部分中，单击“配置 ServiceChannel”以打开“配置登录”窗口。 请记下“快速参考”部分中的 **SAML 实体 ID**。
+1. 在“ServiceChannel 配置”部分中，单击“配置 ServiceChannel”以打开“配置登录”窗口。 请注意**SAML 实体 ID**从**快速参考**部分。
 
 1. 要在 **ServiceChannel** 端配置单一登录，需要将下载的**证书 (Base64)** 和 **SAML 实体 ID** 发送给 [ServiceChannel 支持团队](https://servicechannel.zendesk.com/hc/en-us)。 他们会进行此设置，以便同时在两端正确设置 SAML SSO 连接。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 07592c6852a7fce057381cb9086baedc9d2b1bd6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: f1e238890b777e2816648ec407e2581f636d1c12
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111741"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57239821"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>安全警报地图和威胁智能
 本文可帮助你使用 Azure 安全中心安全警报冲突和基于安全事件的威胁智能地图来解决与安全相关的问题。
@@ -62,7 +62,7 @@ ms.locfileid: "56111741"
 4. 在映射的顶部，选择“查看经典威胁智能”。 此时将打开“威胁智能”仪表板。
 
    > [!NOTE]
-   > 如果最右侧的栏显示“升级计划”，则该工作区是在使用免费订阅。 升级到“标准”即可使用此功能。 如果最右侧的栏显示“需要更新”，则更新 [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 即可使用此功能。 有关定价计划的详细信息，请阅读“Azure 安全中心定价”。
+   > 如果最右侧的栏显示“升级计划”，则该工作区是在使用免费订阅。 升级到“标准”即可使用此功能。 如果最右侧的栏显示**需要更新**，更新[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)才能使用此功能。 有关定价计划的详细信息，请阅读“Azure 安全中心定价”。
    >
 5. 如果有多个工作区需要调查，则根据“恶意 IP”栏来确定调查的优先级。 该栏显示此工作区中恶意 IP 的当前数目。 选择要使用的工作区，将显示“威胁智能”仪表板。
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: a7461f6160c4c848106b16b1a9eaacb96ddf7499
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699136"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443464"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure 安全性和符合性蓝图 - 适用于英国官方的三层 IaaS Web 应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "55699136"
 
  NCSC 建议客户使用“云安全原则”评估服务的安全属性，并帮助了解客户与供应商之间的责任划分。 我们提供了有关其中每项原则的信息，以帮助读者了解责任的划分。
 
- Microsoft 白皮书[使用 Microsoft Azure 的英国云的 14 项云安全控制措施](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)支持此体系结构和相应的 Azure 资源管理器模板。 此白皮书全面阐述了如何使 Azure 服务适应英国 NCSC 的 14 项云安全原则，使各组织能够审视自身的能力，在短时间内达到有关在本地以及在英国的 Microsoft Azure 云中使用基于云的服务所要满足的法规要求。
+ Microsoft 白皮书[使用 Microsoft Azure 的英国云的 14 项云安全控制措施](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)支持此体系结构和相应的 Azure 资源管理器模板。 本白皮书目录 Azure 服务如何与英国 NCSC 14 项云安全原则，从而使组织能够快速跟踪其能够满足在 Microsoft Azure 上使用基于云的服务以及在英国的法规要求保持一致云。
 
  此模板会部署工作负荷的基础结构。 必须安装并配置应用程序代码和支持性的业务层与数据层软件。 [此处](https://aka.ms/ukwebappblueprintrepo)提供了详细的部署说明。
 
@@ -176,7 +176,7 @@ ms.locfileid: "55699136"
 
 **防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志可用于已启用 WAF 的应用程序网关资源。
 
-**日志存档**：可将日志数据存储配置为写入集中式 Azure 存储帐户，以根据定义的保留期存档。 可以使用 Azure Log Analytics 或第三方 SIEM 系统处理日志。
+**日志存档**：日志数据存储可以配置为写入到集中式 Azure 存储帐户，存档和一个定义的保留期的。 可以使用 Azure Monitor 日志处理日志或由第三方 SIEM 系统。
 
 ### <a name="identity"></a>标识
 
@@ -208,7 +208,7 @@ ms.locfileid: "55699136"
 
 **访问控制限制**：使用[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) 管理应用程序中的资源；可以使用[自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC 来限制 DevOps 可在每个层上执行的操作。 授予权限时，请使用[最低特权原则](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)。 记录所有管理操作并执行定期审核，确保所有配置更改按计划进行。
 
-**Internet 访问**：此参考体系结构利用 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)作为面向 Internet 的网关和负载均衡器。 某些客户还可以考虑使用第三方网络虚拟设备作为附加的网络安全层，取代 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)。
+**Internet 访问**：此参考体系结构利用[Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)作为面向 internet 网关和负载均衡器。 某些客户还可以考虑使用第三方网络虚拟设备作为附加的网络安全层，取代 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)。
 
 **Azure 安全中心**：[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)在一个中心视图中提供订阅中资源的安全状态，并提供建议帮助避免资源泄密。 此外，它还可用于启用更精细的策略。 例如，可将策略应用到特定的资源组，使企业能够根据风险调整方向。 建议客户在其 Azure 订阅中启用 Azure 安全中心。
 
@@ -226,7 +226,7 @@ Crown Commercial Service（一家致力于改善政府商业和采购活动的�
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-部署用户可使用两种方法部署此蓝图自动化。 第一种方法使用 PowerShell 脚本，而第二种方法使用 Azure 门户部署参考体系结构。 [此处](https://aka.ms/ukofficial-iaaswa-repo)提供了详细的部署说明。
+部署用户可使用两种方法部署此蓝图自动化。 第一种方法使用的 PowerShell 脚本，而第二种方法使用 Azure 门户部署参考体系结构。 [此处](https://aka.ms/ukofficial-iaaswa-repo)提供了详细的部署说明。
 
 ## <a name="disclaimer"></a>免责声明
 

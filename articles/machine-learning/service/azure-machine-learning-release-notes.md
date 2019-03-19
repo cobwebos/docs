@@ -6,23 +6,78 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: hning86
-ms.author: haining
-ms.reviewer: j-martens
-ms.date: 12/20/2018
+ms.author: larryfr
+author: Blackmist
+ms.date: 03/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: f02a44f41eba8cc4298b9fc730354799ca0aad0c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 2a2817501628d55d7ccc84979700ea53e4114eed
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860629"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。  有关每个 SDK 的完整说明，请访问以下内容的参考文档：
 + Azure 机器学习[适用于 Python 的主 SDK](https://aka.ms/aml-sdk)
 + Azure 机器学习[数据准备 SDK](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-03-11"></a>2019-03-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Azure Machine Learning SDK for Python v1.0.18
+
+ + **更改**
+   + Azureml tensorboard 程序包将取代 azureml contrib tensorboard。
+   + 此版本中，可以创建它时，用户帐户上托管的计算群集 (amlcompute) 设置。 这可以通过只需将这些属性传递设置配置中。 您可以找到更多详细信息中的[SDK 参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-)。
+
+### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure 机器学习数据准备 SDK v1.0.17
+
++ **新功能**
+  + 现在支持添加两个数值列来生成结果的列使用表达式语言。
+
++ **Bug 修复和改进**
+  + 改进的文档和参数检查 random_split。
+  
+## <a name="2019-02-27"></a>2019-02-27
+
+### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Azure 机器学习数据准备 SDK v1.0.16
+
++ **Bug 修复**
+  + 修复了导致的身份验证问题的服务主体的 API 更改。
+
+## <a name="2019-02-25"></a>2019-02-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Azure Machine Learning SDK for Python v1.0.17
+
++ **新功能**
+
+  + Azure 机器学习现在为常用的 DNN 框架，链接器提供一流的支持。 使用[ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类用户可以轻松地训练和部署链接器模型。
+    + 了解如何[使用 ChainerMN 运行分布式的培训](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
+    + 了解如何[运行链接器使用 HyperDrive 与超参数优化](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
+  + Azure 机器学习管道添加管道运行基于数据存储的修改可以触发。 管道[计划 notebook](https://aka.ms/pl-schedule)会更新，以展示此功能。
+
++ **Bug 修复和改进**
+  + 我们添加了支持 Azure 机器学习管道为 source_directory_data_store 属性设置为的所需的数据存储 （如 blob 存储） 上[RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)提供给[PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)。 默认情况下步骤作为后备数据存储，可能会遇到限制问题，同时执行大量的步骤时使用 Azure 文件存储。
+
+### <a name="azure-portal"></a>Azure 门户
+
++ **新功能**
+  + 新的拖放功能表报表编辑器的体验。 用户可以将列从井中到表的预览将显示其中的表区域。 可以重新排列列。
+  + 新的日志文件查看器
+  + 尝试运行、 计算、 模型、 图像和从活动选项卡的部署的链接
+
+### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Azure 机器学习数据准备 SDK v1.0.15
+
++ **新功能**
+  + 数据准备现在支持从数据流写入文件流。 此外提供的功能来处理要创建新的文件名称的文件流名称。
+    + 操作方法指南：[使用与文件流 notebook](https://aka.ms/aml-data-prep-file-stream-nb)
+
++ **Bug 修复和改进**
+  + 改进了的 t-Digest 对大型数据集的性能。
+  + 数据准备现在支持从数据路径的读取数据。
+  + 一种热编码现在适用于布尔值和数字列。
+  + 其他杂项的 bug 修复。
 
 ## <a name="2019-02-11"></a>2019-02-11
 
@@ -85,7 +140,7 @@ ms.locfileid: "56446760"
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure 机器学习数据准备 SDK v1.0.7
 
 + **新功能**
-  + 数据存储改进（记录在[数据存储区操作指南](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb)中）
+  + 数据存储改进（记录在[数据存储区操作指南](https://aka.ms/aml-data-prep-datastore-nb)中）
     + 添加了在扩展中读取和写入 Azure 文件共享和 ADLS 数据存储的功能。
     + 使用数据存储时，数据准备现在支持使用服务主体身份验证而不是交互式身份验证。
     + 添加了的对 wasb 和 wasbs url 的支持。

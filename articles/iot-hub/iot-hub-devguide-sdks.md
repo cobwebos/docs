@@ -1,19 +1,19 @@
 ---
 title: 了解 Azure IoT SDK | Microsoft Docs
 description: 开发人员指南 - 介绍了相关链接，其指向可用于构建设备应用和后端应用的各种 Azure IoT 设备和服务 SDK。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: dobett
-ms.openlocfilehash: 3bdb09de04ec5041d671f5af709a1a1e7133d141
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: fcb6f564c97632e4d62f7f052ec5ecc35a9e479a
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199504"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011239"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -37,7 +37,7 @@ ms.locfileid: "54199504"
 
 有关受支持的 SDK 平台，可访问 [Azure IoT SDK 平台支持](iot-hub-device-sdk-platform-support.md)。
 
-若要详细了解 SDK 与特定硬件设备的兼容性，请参阅 [Azure IoT 认证设备目录](https://catalog.azureiotsuite.com/)或各个存储库。
+若要详细了解 SDK 与特定硬件设备的兼容性，请参阅 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)或各个存储库。
 
 ## <a name="azure-iot-hub-device-sdks"></a>Azure IoT 中心设备 SDK
 

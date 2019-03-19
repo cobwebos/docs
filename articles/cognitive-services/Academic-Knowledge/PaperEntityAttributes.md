@@ -10,19 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 240541dd76221ee19c96b162da02ced90fb0ad90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873081"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437456"
 ---
 # <a name="paper-entity"></a>论文实体
 
 <sub> *以下属性特定于论文实体。(Ty = '0') </sub>
 
 
-Name    |说明                                        |Type       | 操作
+名称    |描述                                        |Type       | 操作
 ------- | ------------------------------------------------- | --------- | ----------------------------
 ID      |实体 ID                                          |Int64      |等于
 Ti      |论文标题                                        |String     |Equals、<br/>-StartsWith
@@ -50,7 +50,7 @@ E       |扩展的元数据（请参阅下表）                |String     |无
 
 ## <a name="extended-metadata-attributes"></a>扩展的元数据属性 ##
 
-Name    | 说明               
+名称    | 描述               
 --------|---------------------------    
 DN      | 论文的显示名称 
 S       | 来源 - 论文的 Web 来源列表，按静态排名排序
@@ -61,7 +61,7 @@ VSN     | 场馆短名称 - 期刊或会议的短名称
 V       | 卷 - 期刊卷
 BV      | 期刊名称
 BT      | 
-PB      | 期刊缩写
+PB      | 日记本缩写
 I       | 刊号 - 期刊刊号
 FP      | FirstPage - 论文第一页
 LP      | LastPage - 论文最后一页

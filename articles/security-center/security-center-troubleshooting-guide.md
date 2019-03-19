@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: af85600593e725f1d90d5fbb3aae2aab6dd3f367
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 658f38e32c2680e7c538147154a004359e431027
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114444"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246740"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 本指南适用于信息技术 (IT) 专业人员、信息安全分析人员，以及那些组织中正在使用 Azure 安全中心并需要进行排除安全中心相关问题的云管理员。
@@ -40,7 +40,7 @@ ms.locfileid: "56114444"
 审核日志包含针对资源执行的所有写入操作（PUT、POST、DELETE），但它不包含读取属性 (GET)。
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
-安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样使用此代理）从 Azure 虚拟机中收集安全数据。 启用数据收集并在目标计算机中正确安装代理后，应执行以下进程：
+安全中心使用 Microsoft Monitoring Agent-这是 Azure Monitor 服务 – 用于从 Azure 虚拟机中收集安全数据的同一代理。 启用数据收集并在目标计算机中正确安装代理后，应执行以下进程：
 
 * HealthService.exe
 
@@ -67,7 +67,7 @@ ms.locfileid: "56114444"
 ## 监视代理运行状况问题 <a name="mon-agent"></a>
 “监视状态”定义安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因。 下表显示了“监视状态”的值、说明和解决步骤。
 
-| 监视状态 | 说明 | 解决步骤 |
+| 监视状态 | 描述 | 解决步骤 |
 |---|---|---|
 | 代理待安装 | Microsoft Monitoring Agent 安装仍在运行。  安装可能需要长达数小时的时间。 | 等待自动安装完成。 |
 | 电源状态为关闭 | VM 已停止。  Microsoft Monitoring Agent 只能安装在正在运行的 VM 上。 | 重启 VM。 |
