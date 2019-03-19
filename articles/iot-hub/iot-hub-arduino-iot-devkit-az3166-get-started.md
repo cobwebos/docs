@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: wesmc
-ms.openlocfilehash: 2f480fd4d5d7d6261776660f1a7eab587320c849
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: e35e669c4abc4815b932e09d369af28e42617e8c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052498"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535667"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -88,10 +88,10 @@ IoT 项目依赖 Internet 连接。 使用以下说明配置 DevKit 连接到 Wi
 
 ![Wi-Fi 名称和 IP 地址](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/wifi-ip.jpg)
 
-> [!NOTE] 
-> 照片中显示的 IP 地址可能与 DevKit 屏幕上分配和显示的实际 IP 地址不匹配。 这是正常的，因为 Wi-Fi 使用 DHCP 动态分配 IP。
+> [!NOTE]
+> 你将需要 IoT DevKit 使用 2.4 GHz 网络。 将 IoT DevKit 上的 WiFi 模块不兼容使用 5 GHz 网络。 有关详细信息，请查阅 [FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration)。
 
-配置 Wi-Fi 后，即使拔下设备插头，该连接的凭据也会保留在设备上。 例如，如果在家中为 DevKit 配置了 Wi-Fi，之后将 DevKit 带到办公室，则需要重新配置 AP 模式（从“进入 AP 模式”部分中的步骤开始），将 DevKit 连接到办公室 Wi-Fi。 
+配置 Wi-Fi 后，即使拔下设备插头，该连接的凭据也会保留在设备上。 例如，如果在家中为 DevKit 配置了 Wi-Fi，之后将 DevKit 带到办公室，则需要重新配置 AP 模式（从“进入 AP 模式”部分中的步骤开始），将 DevKit 连接到办公室 Wi-Fi。
 
 ## <a name="start-using-the-devkit"></a>开始使用 DevKit
 
@@ -175,9 +175,9 @@ DevKit 上运行的默认应用会检查固件的最新版本，并显示某些�
 
 ### <a name="install-st-link-drivers"></a>安装 ST-Link 驱动程序
 
-[ST-Link/V2](http://www.st.com/en/development-tools/st-link-v2.html) 是 IoT DevKit 用来与开发计算机通信的 USB 接口。 遵循 OS 特定的步骤，使计算机能够访问你的设备。
+[ST-Link/V2](https://www.st.com/en/development-tools/st-link-v2.html) 是 IoT DevKit 用来与开发计算机通信的 USB 接口。 需要在其上安装 Windows 以启用 flash 编译的设备代码到 DevKit。 遵循 OS 特定的步骤，使计算机能够访问你的设备。
 
-* Windows：从 [STMicroelectronics 网站](http://www.st.com/en/development-tools/stsw-link009.html)下载并安装 USB 驱动程序。
+* Windows：从 [STMicroelectronics 网站](https://www.st.com/en/development-tools/stsw-link009.html)下载并安装 USB 驱动程序。
 * **macOS**：macOS 无需驱动程序。
 * **Ubuntu**：在终端中运行以下命令，然后注销并登录，使组更改生效：
     ```bash
@@ -197,7 +197,7 @@ DevKit 上运行的默认应用会检查固件的最新版本，并显示某些�
 1. 确保 IoT DevKit **未连接**到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
 
 
-1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:打开示例...”。然后选择“IoT DevKit”作为开发板。
+1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:**打开示例...”** 。然后选择“IoT DevKit”作为开发板。
 
 1. 在 IoT Workbench 的“示例”页中，找到“入门”并单击“打开示例”。 然后选择用于下载示例代码的默认路径。
     ![打开示例](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)

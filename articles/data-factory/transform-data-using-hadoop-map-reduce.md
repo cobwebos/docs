@@ -3,20 +3,20 @@ title: 在 Azure 数据工厂中使用 Hadoop MapReduce 活动转换数据 | Mic
 description: 了解如何通过从 Azure 数据工厂在 Azure HDInsight 群集上运行 Hadoop MapReduce 程序来处理数据。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: douglasl
-ms.openlocfilehash: 4543982f731feb44a8f02581c11714dec2b206f9
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: ccc194dd4120762a30da3ad28cdabed6faf53ba2
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214498"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576389"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop MapReduce 活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +60,7 @@ ms.locfileid: "54214498"
 
 ## <a name="syntax-details"></a>语法详细信息
 
-| 属性          | 说明                              | 必选 |
+| 属性          | 说明                              | 需要 |
 | ----------------- | ---------------------------------------- | -------- |
 | 名称              | 活动名称                     | 是      |
 | description       | 描述活动用途的文本 | 否       |

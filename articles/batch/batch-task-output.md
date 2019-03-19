@@ -14,14 +14,14 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff7224b342aa421c576c170f3c23ac64cad9f161
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: bc579cd372616563b61e5ba04fe32612f3efb1c7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474337"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541241"
 ---
-# <a name="persist-job-and-task-output"></a>持久性作业和任务输出
+# <a name="persist-job-and-task-output"></a>持久保存作业和任务输出
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
@@ -70,7 +70,7 @@ Batch 服务支持在[向作业添加任务](https://docs.microsoft.com/rest/api
 也可实现自己的完整文件移动解决方案。 在以下情况下使用此方法：
 
 - 想要将任务数据保存到除 Azure 存储之外的数据存储。 若要将文件上传到 Azure SQL 或 Azure Data Lake 等数据存储，可以创建自定义脚本或可执行文件来上传到该位置。 然后，在运行主要的可执行文件后，可在命令行上调用它。 例如，在 Windows 节点上，可以调用以下两个命令：`doMyWork.exe && uploadMyFilesToSql.exe`
-- 想要执行检查点或初始结果的早期上传。
+- 需对初始结果执行检查点或提前上传操作。
 - 想要维持对错误处理的具体控制。 例如，在想要使用任务相关性操作根据特定任务退出代码执行某些上传操作时，可能需要实现自己的解决方案。 有关任务相关性操作的详细信息，请参阅[创建任务相关性以运行依赖于其他任务的任务](batch-task-dependencies.md)。
 
 ## <a name="design-considerations-for-persisting-output"></a>保存输出的设计注意事项
@@ -93,5 +93,5 @@ Batch 服务支持在[向作业添加任务](https://docs.microsoft.com/rest/api
 
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com
-[storage_explorer]: http://storageexplorer.com/
+[storage_explorer]: https://storageexplorer.com/
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs 

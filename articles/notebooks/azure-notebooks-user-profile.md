@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 7d069d86-660f-4c94-b6e3-0c0f38c52d0e
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 18b698861a791174f2e254543d5d3b7a54052574
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 4186abd215509e0ae9ced50340fb1f3d3b5f9676
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854153"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765911"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>用于 Azure Notebooks 的个人资料和用户 ID
 
@@ -46,7 +46,7 @@ ms.locfileid: "54854153"
 
 还可以随时更改个人资料页上的用户 ID。
 
-用户 ID 必须至少由四个字母、数字和连字符组成。 不能使用其他字符，且用户 ID 不能以连字符开头或结尾，也不能在一行中使用多个连字符。
+用户 ID 必须之间四个和十六个字母、 数字和连字符组成。 不能使用其他字符，且用户 ID 不能以连字符开头或结尾，也不能在一行中使用多个连字符。 Azure Notebook 的所有帐户间是唯一的用户 Id，因为可能会看到以下消息:"用户 ID 已在使用。" （还将显示消息如果尝试使用 Microsoft 商标作为用户 id。）在这些情况下，选择一个不同的用户 id。
 
 > [!Important]
 > 更改 ID 会导致之前使用旧 ID 共享的任何 URL 无效。 可以将 ID 更改为以前的 ID，使链接重新生效。 但是，其他用户可以在此期间声明未使用的 ID。

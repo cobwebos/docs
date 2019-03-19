@@ -7,28 +7,30 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 70343c0d66eb2a00ff2245b7e4876c2e94a96855
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314476"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775588"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
 > [!div class="op_single_selector"]
-> * [门户](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
+> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [门户](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自定义应用中生成丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
 
-* 管理对用于服务读取或写入的 api-keys 的访问。
-* 通过更改分区和副本的分配以调整服务容量。
-* 根据服务层的最大限制，监视资源使用情况。
+> [!div class="checklist"]
+> * 管理对用于服务读取或写入的 api-keys 的访问。
+> * 通过更改分区和副本的分配以调整服务容量。
+> * 根据服务层的最大限制，监视资源使用情况。
 
 请注意，“升级”未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 搜索服务](search-create-service-portal.md)。
 
@@ -58,7 +60,7 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
-在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。
+在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果你想要捕获和保存已记录的事件，可以预配外部资源，例如 Azure 监视。 有关详细信息，请参阅[监视 Azure 搜索](search-monitor-usage.md)。
 
 使用搜索服务 REST API，可以通过编程方式获取文档和索引的计数： 
 

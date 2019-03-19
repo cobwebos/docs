@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: 1319c44dab465ec2d1fa5ead99e7f3cba8965850
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: 52612419599ef69e7476c660b52f9e6e36946825
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265628"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535393"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>面向企业客户的报告 API 概述
 报告 API 使企业 Azure 客户能够以编程方式将消耗数据和计费数据提取到首选的数据分析工具。 企业客户与 Azure 签订了[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)，以达成协商的货币承诺并获取自定义 Azure 资源定价的访问权限。
@@ -34,7 +34,7 @@ ms.locfileid: "54265628"
 |授权| 用以下格式指定该值：bearer {API_KEY} <br/> 示例：bearer eyr....09| 
 
 ## <a name="consumption-apis"></a>消耗量 API
-可在[此处](https://consumption.azure.com/swagger/ui/index)找到为下面所述的 API 提供的 Swagger 终结点，该终结点可以使用 [AutoRest](https://github.com/Azure/AutoRest) 或 [Swagger CodeGen](http://swagger.io/swagger-codegen/) 进行简单的 API 自检并生成客户端 SDK。 2014 年 5 月 1 日开始的数据就是通过此 API 提供的。 
+可在[此处](https://consumption.azure.com/swagger/ui/index)找到为下面所述的 API 提供的 Swagger 终结点，该终结点可以使用 [AutoRest](https://github.com/Azure/AutoRest) 或 [Swagger CodeGen](https://swagger.io/swagger-codegen/) 进行简单的 API 自检并生成客户端 SDK。 2014 年 5 月 1 日开始的数据就是通过此 API 提供的。 
 
 * **余额和摘要** - [余额和摘要 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) 提供关于余额、新购买、Azure 市场服务费用、调整和超额费用信息的每月摘要。
 
@@ -52,7 +52,7 @@ ms.locfileid: "54265628"
 
 
 ## <a name="api-response-codes"></a>API 响应代码   
-|响应状态代码|消息|Description|
+|响应状态代码|消息|描述|
 |-|-|-|
 |200| OK|无错误|
 |401| 未授权| API 密钥找不到、无效、已过期等。|

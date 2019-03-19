@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: 4a9a1b5599468df6bc85cc1d535b577c508dd0a9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: e162d838cb4895841428a827b56bec28e3e16b8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995640"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533131"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
 
@@ -252,7 +252,7 @@ FQDN 以正向顺序指定，且必须以点号结尾（例如“app1.contoso.co
 
 ## <a name="next-steps"></a>后续步骤
 
-有关反向 DNS 的详细信息，请参阅[反向 DNS 查找](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)。
+有关反向 DNS 的详细信息，请参阅[反向 DNS 查找](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)。
 <br>
 了解如何[在 Azure DNS 中为 ISP 分配的 IP 范围托管反向查找区域](dns-reverse-dns-for-azure-services.md)。
 

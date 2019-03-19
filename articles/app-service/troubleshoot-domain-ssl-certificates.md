@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 6f88079c5baac8cef677fd3afc5696cec5c00d92
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653656"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730095"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
@@ -88,13 +88,84 @@ ms.locfileid: "53653656"
 - 订阅已达到允许的购买限制。
 
     **解决方案**；对于即用即付和 EA 订阅类型，可购买的应用服务证书限制为 10 个。 对于其他订阅类型，限制为 3 个。 若要提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- 应用服务证书标记为欺诈。 收到以下错误消息：“你的证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果证书未在 24 小时内变为可用，请联系 Azure 支持部门。”
+- 应用服务证书标记为欺诈。 收到以下错误消息：“你的证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果证书不会不能使用 24 小时内，请联系 Azure 支持。"
 
     **解决方案**；如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)。
     2. 转到“应用服务证书”，选择该证书。
     3. 选择“证书配置” > “步骤 2:验证” > “域验证”。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
+
+## <a name="custom-domain-problems"></a>自定义域问题
+
+### <a name="a-custom-domain-returns-a-404-error"></a>自定义域返回 404 错误 
+
+#### <a name="symptom"></a>症状
+
+使用自定义域名浏览到站点时，收到以下错误消息：
+
+“错误 404 - 找不到 Web 应用”。
+
+#### <a name="cause-and-solution"></a>原因和解决方法
+
+**原因 1** 
+
+配置的自定义域缺少 CNAME 或 A 记录。 
+
+**原因 1 的解决方法**
+
+- 如果添加了 A 记录，请确保同时添加 TXT 记录。 有关详细信息，请参阅[创建 A 记录](./app-service-web-tutorial-custom-domain.md#create-the-a-record)。
+- 如果不需要对应用使用根域，我们建议使用 CNAME 记录，而不要使用 A 记录。
+- 不要对同一个域同时使用 CNAME 记录和 A 记录。 此问题可能会导致冲突，并防止域正在被解析。 
+
+**原因 2** 
+
+Internet 浏览器可能仍在缓存域的旧 IP 地址。 
+
+**原因 2 的解决方法**
+
+清除浏览器缓存。 对于 Windows 设备，可以运行命令 `ipconfig /flushdns`。 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向应用的 IP 地址。 
+
+### <a name="you-cant-add-a-subdomain"></a>无法添加子域 
+
+#### <a name="symptom"></a>症状
+
+无法将新主机名添加到应用，因此无法分配子域。
+
+#### <a name="solution"></a>解决方案
+
+- 咨询订阅管理员，确保有权将主机名添加到应用。
+- 如果需要多个子域，我们建议您更改域托管到 Azure 域服务 (DNS)。 使用 Azure DNS 可将 500 个主机名添加到应用。 有关详细信息，请参阅[添加子域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
+
+### <a name="dns-cant-be-resolved"></a>无法解析 DNS
+
+#### <a name="symptom"></a>症状
+
+收到以下错误消息：
+
+“找不到 DNS 记录。”
+
+#### <a name="cause"></a>原因
+此问题是由以下原因之一导致的：
+
+- 生存期 (TTL) 未过。 检查域的 DNS 配置以确定 TTL 值，然后等到期限已过。
+- DNS 配置不正确。
+
+#### <a name="solution"></a>解决方案
+- 等待 48 小时，让此问题自行解决。
+- 如果可以在 DNS 配置中更改 TTL 设置，请将值更改为 5 分钟，然后看看是否能解决问题。
+- 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向应用的 IP 地址。 如果不是，请将 A 记录配置为应用的正确 IP 地址。
+
+### <a name="you-need-to-restore-a-deleted-domain"></a>需要还原已删除的域 
+
+#### <a name="symptom"></a>症状
+域不再显示在 Azure 门户中。
+
+#### <a name="cause"></a>原因 
+订阅所有者可能意外删除了该域。
+
+#### <a name="solution"></a>解决方案
+如果域的删除时间不超过七天，则尚未对该域启动删除过程。 在这种情况下，可以在 Azure 门户中的同一个订阅下购买同一个域。 （请务必在搜索框中键入确切的域名。）此域不会重复产生费用。 如果在域中删除超过七天前，请联系[Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)有关还原域的帮助。
 
 ## <a name="domain-problems"></a>域问题
 
@@ -199,102 +270,59 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
     |TXT|@|<应用名称>.azurewebsites.net|
     |CNAME|www|<应用名称>.azurewebsites.net|
 
-### <a name="dns-cant-be-resolved"></a>无法解析 DNS
+## <a name="faq"></a>常见问题解答
 
-#### <a name="symptom"></a>症状
+**我是否必须购买它进行配置我的网站的自定义域？**
 
-收到以下错误消息：
+当你购买的域在 Azure 门户中时，应用服务应用程序自动配置为使用该自定义域。 您无需执行任何其他步骤。 有关详细信息，观看[Azure 应用服务自助帮助：自定义域名添加](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)第 9 频道上。
 
-“找不到 DNS 记录。”
+**可以使用 Azure 门户中购买的域以改为指向 Azure VM？**
 
-#### <a name="cause"></a>原因
-此问题是由以下原因之一导致的：
+是的你可以指向 VM、 存储等域。有关详细信息，请参阅[在 Azure 门户中为 Windows VM 创建自定义的 FQDN](../virtual-machines/windows/portal-create-fqdn.md)。
 
-- 生存期 (TTL) 未过。 检查域的 DNS 配置以确定 TTL 值，然后等到期限已过。
-- DNS 配置不正确。
+**通过 GoDaddy 或 Azure DNS 托管我的域？**
 
-#### <a name="solution"></a>解决方案
-- 等待 48 小时，让此问题自行解决。
-- 如果可以在 DNS 配置中更改 TTL 设置，请将值更改为 5 分钟，然后看看是否能解决问题。
-- 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向应用的 IP 地址。 如果不是，请将 A 记录配置为应用的正确 IP 地址。
+应用服务域使用 GoDaddy 域注册和 Azure DNS 来托管域。 
 
-### <a name="you-need-to-restore-a-deleted-domain"></a>需要还原已删除的域 
+**我有自动续订已启用，但仍收到通过电子邮件向我的域一份续订通知。我该怎样做？**
 
-#### <a name="symptom"></a>症状
-域不再显示在 Azure 门户中。
+如果有自动续订已启用，你不需要执行任何操作。 请注意，电子邮件提供以通知您域是即将到期，并手动续订，如果自动续订未启用。
 
-#### <a name="cause"></a>原因 
-订阅所有者可能意外删除了该域。
+**将收取 Azure DNS 托管我的域？**
 
-#### <a name="solution"></a>解决方案
-如果域的删除时间不超过七天，则尚未对该域启动删除过程。 在这种情况下，可以在 Azure 门户中的同一个订阅下购买同一个域。 （请务必在搜索框中键入确切的域名。）此域不会重复产生费用。 如果该域的删除时间超过七天，请求助 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来还原该域。
+域购买的初始成本适用于仅域注册。 除了注册成本，还有免费的 Azure DNS 根据使用情况。 有关详细信息，请参阅[Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)的更多详细信息。
 
-### <a name="a-custom-domain-returns-a-404-error"></a>自定义域返回 404 错误 
+**我购买我前面在 Azure 门户中的域，并且想要将从 GoDaddy 托管到 Azure DNS 托管移。如何执行此操作？**
 
-#### <a name="symptom"></a>症状
+不一定要迁移到 Azure DNS 托管。 如果确实想要有关迁移到 Azure DNS 中，在 Azure 门户中的域管理体验提供了到 Azure DNS 所需的步骤信息。 如果域通过应用服务购买的从 GoDaddy 托管到 Azure DNS 的迁移是相对无缝的过程。
 
-使用自定义域名浏览到站点时，收到以下错误消息：
+**我想要购买我从应用服务域的域，但可以托管我的域上 GoDaddy 而不是 Azure DNS？**
 
-“错误 404 - 找不到 Web 应用”。
+自 2017 年 7 月 24 日，在门户中购买的应用服务域托管在 Azure DNS。 如果想要使用其他托管提供商，则必须转到其网站，以获取域托管解决方案。
 
+**我是否需要支付我的域保护隐私？**
 
-#### <a name="cause-and-solution"></a>原因和解决方法
+当你购买域通过 Azure 门户时，可以选择要添加隐私在无需额外付费。 这是购买通过 Azure 应用服务域的优势之一。
 
-**原因 1** 
+**如果我决定我不再想要我的域，可以获取我的钱返回？**
 
-配置的自定义域缺少 CNAME 或 A 记录。 
+当你购买域时，您无需支付 5 天，在此期间您可以决定不希望域一段。 如果您决定不想在域内的五天内，你不会收费。 （.uk 域是一种例外。 如果购买.uk 域中，会立即产生费用且不能退还帐户）。
 
-**原因 1 的解决方法**
+**可以在我的订阅中使用的域中另一个 Azure 应用服务应用程序？**
 
-- 如果添加了 A 记录，请确保同时添加 TXT 记录。 有关详细信息，请参阅[创建 A 记录](./app-service-web-tutorial-custom-domain.md#create-the-a-record)。
-- 如果不需要对应用使用根域，我们建议使用 CNAME 记录，而不要使用 A 记录。
-- 不要对同一个域同时使用 CNAME 记录和 A 记录。 这可能会导致冲突，并阻止域解析。 
+是的。 在访问 Azure 门户中的自定义域和 SSL 边栏选项卡时，您将看到已购买的域。 您可以将应用配置为使用任何这些域。
 
-**原因 2** 
+**可以将传输域从一个订阅到另一个订阅？**
 
-Internet 浏览器可能仍在缓存域的旧 IP 地址。 
+可以将一个域移到另一个订阅/资源组使用[Move-azurermresource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource?view=azurermps-6.13.0) PowerShell cmdlet。
 
-**原因 2 的解决方法**
+**如果当前没有对 Azure 应用服务应用程序如何管理我的自定义域？**
 
-清除浏览器缓存。 对于 Windows 设备，可以运行命令 `ipconfig /flushdns`。 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向应用的 IP 地址。 
+即使没有应用服务 Web 应用，你可以管理你的域。 域可以用于 Azure 服务，例如虚拟机、 存储等等。如果你想要用于应用服务 Web 应用的域，然后您需要包括免费应用服务计划，以便将其绑定到 web 应用的域不是一个 Web 应用。
 
-### <a name="you-cant-add-a-subdomain"></a>无法添加子域 
+**可以将使用自定义域的 web 应用到另一个订阅或从应用服务环境 v1 到 V2？**
 
-#### <a name="symptom"></a>症状
+是的可以在订阅之间移动你的 web 应用。 遵循中的指导[如何在 Azure 中移动资源](../azure-resource-manager/resource-group-move-resources.md)。 移动 web 应用时，有一些限制。 有关详细信息，请参阅[移动应用服务资源的限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
+)。
 
-无法将新主机名添加到应用，因此无法分配子域。
-
-#### <a name="solution"></a>解决方案
-
-- 咨询订阅管理员，确保有权将主机名添加到应用。
-- 如果需要更多子域，我们建议将域托管服务更改为 Azure DNS。 使用 Azure DNS 可将 500 个主机名添加到应用。 有关详细信息，请参阅[添加子域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+移动 web 应用之后, 设置的自定义的域中的域主机名绑定应保持不变。 配置主机名绑定所不需执行任何额外步骤。

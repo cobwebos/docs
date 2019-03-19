@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: d93ebb01c905be6bf799ed6e4a037e3ddfdc2430
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 527ab4ee0edaf3ac2048403d7063edef8fc58ae8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094166"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451971"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>缩放 Azure Service Fabric 群集
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 群集可以包含数千个节点。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
@@ -81,7 +81,7 @@ Azure API 可让应用程序以编程方式使用虚拟机规模集和 Service F
 根据节点类型是非主节点类型还是主节点类型，其纵向缩放过程有所不同。
 
 ### <a name="scaling-non-primary-node-types"></a>缩放非主节点类型
-使用所需的资源创建新节点类型。  更新运行中服务的位置约束，以包含新节点类型。  将旧节点类型的实例计数逐渐（一次一个）减少至零，以免影响群集的可靠性。  在解除旧节点类型的过程中，服务会逐渐迁移到新节点类型。
+使用所需的资源创建新节点类型。  更新运行中服务的位置约束，以包含新节点类型。  将旧节点类型的实例计数逐渐（一次一个）减少至零，以免影响群集的可靠性。  为旧节点类型已解除授权，服务会逐渐迁移到新的节点类型。
 
 ### <a name="scaling-the-primary-node-type"></a>缩放主节点类型
 我们建议不要更改主节点类型的 VM SKU。 如果需要更多群集容量，我们建议添加更多实例。 

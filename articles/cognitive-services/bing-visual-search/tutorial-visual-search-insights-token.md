@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 5b1fc44b06dde7c7aa28a251b7250515998ac604
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: c3ceb8f130118ee7abdbe801cd3931e9f870ec4c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857244"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538878"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>使用 ImageInsightsToken 在前面的搜索结果中查找类似的图像
 
@@ -23,10 +23,10 @@ ms.locfileid: "55857244"
 
 在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInisghtsTokens.cs) 上可以找到此示例的完整源代码，以及附加的错误处理方法和注释。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
-* 如果使用的是 Linux/MacOS，则可使用 [Mono](http://www.mono-project.com/) 运行此应用程序。
+* 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 * NuGet 视觉搜索和图像搜索包。 
     - 在 Visual Studio 中的解决方案资源管理器中，右键单击项目并从菜单中选择 `Manage NuGet Packages`。 安装 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 包和 `Microsoft.Azure.CognitiveServices.Search.ImageSearch` 包。 安装 NuGet 包还会安装以下程序：
         - Microsoft.Rest.ClientRuntime

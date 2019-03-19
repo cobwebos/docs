@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01cc85f7eba2aefd08192c4e3f4e5151e7645238
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269104"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535036"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
 本文档旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本文档是特定领域的深入探讨，其他文档中也简要描述了这些概念。
@@ -36,7 +36,7 @@ sourceAnchor 属性定义为*在对象生存期内不会变化的属性*。 它�
 
 * 构建新的同步引擎服务器，或者在灾难恢复方案后进行重建时，此属性会将 Azure AD 中的现有对象链接到本地对象。
 * 如果从仅限云的标识转移到已同步的标识模型，则此属性可让对象将 Azure AD 中的现有对象与本地对象进行“硬匹配”。
-* 如果使用联合，此属性将与 **userPrincipalName** 一起在声明中使用，以唯一标识用户。
+* 如果使用联合，此属性与 **userPrincipalName** 一起在声明中使用，以唯一标识用户。
 
 本主题只讨论与用户相关的 sourceAnchor。 相同的规则适用于所有对象类型，但只有用户才需要考虑这个问题。
 
@@ -69,7 +69,7 @@ sourceAnchor 属性区分大小写。 “JohnDoe”与“johndoe”是不同的�
 
 出于此原因，Azure AD Connect 实施以下限制：
 
-* 只能在初始安装期间设置 sourceAnchor 属性。 如果重新运行安装向导，此选项是只读的。 如果需要更改此设置，必须卸载然后重新安装。
+* 只能在初始安装期间设置 sourceAnchor 属性。 如果重新运行安装向导，此选项是只读的。 如果需要更改此设置，则必须卸载并重新安装。
 * 如果要安装其他 Azure AD Connect 服务器，则必须选择以前所用的同一 sourceAnchor 属性。 如果以前使用 DirSync，现在想要迁移到 Azure AD Connect，则必须使用 **objectGUID**，因为这是 DirSync 所用的属性。
 * 如果 sourceAnchor 值在对象导出到 Azure AD 之后发生更改，Azure AD Connect Sync 将引发错误，并且不允许在更正问题且在源目录中改回 sourceAnchor 之前，对此对象进行任何其他更改。
 
@@ -120,9 +120,9 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 
 ![自定义安装 - sourceAnchor 配置](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 | --- | --- |
-| 让 Azure 为我管理源定位点 | 如果想要 Azure AD 选取属性，请选择此选项。 如果选择此选项，Azure AD Connect 向导会应用[在快速安装时使用的 sourceAnchor 属性选择逻辑](#express-installation)。 与快速安装类似，自定义安装完成后，向导会通知你已选取哪个属性作为“源定位点”属性。 |
+| 让 Azure 为我管理源定位点 | 如果想要 Azure AD 选取属性，请选择此选项。 如果选择此选项，Azure AD Connect 向导会应用[在快速安装时使用的 sourceAnchor 属性选择逻辑](#express-installation)。 与快速安装类似，自定义安装完成后，向导会告知你已选取哪个属性作为“源定位点”属性。 |
 | 特定的属性 | 如果希望指定现有的 AD 属性作为 sourceAnchor 属性，请选择此选项。 |
 
 ### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>如何启用 ConsistencyGuid 功能 - 现有部署
@@ -141,7 +141,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 
 3. 输入 Azure AD 管理员凭据，然后单击“下一步”。
 
-4. Azure AD Connect 向导会分析本地 Active Directory 中 ms-DS-ConsistencyGuid 属性的状态。 如果未在目录中的任何对象上配置该属性，Azure AD Connect 可以确定任何其他应用程序当前均未使用该属性，可以安全地将其用作 Source Anchor 属性。 单击“下一步”以继续。
+4. Azure AD Connect 向导会分析本地 Active Directory 中 ms-DS-ConsistencyGuid 属性的状态。 如果未在目录中的任何对象上配置该属性，Azure AD Connect 可以确定任何其他应用程序当前均未使用该属性，可以安全地将其用作 Source Anchor 属性。 单击“下一步”以继续操作。
 
    ![为现有部署启用 ConsistencyGuid - 步骤 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -157,7 +157,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 
 ![为现有部署启用 ConsistencyGuid - 错误](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- 如果确定其他现有应用程序不使用该属性，则可以通过在指定“/SkipLdapSearchcontact”的情况下重启 Azure AD Connect 向导来取消显示该错误。 为此，请在命令提示符下运行以下命令：
+ 如果确定该属性未由其他现有应用程序，您可以通过重新启动与 Azure AD Connect 向导来取消显示错误 **/SkipLdapSearch**开关指定。 为此，请在命令提示符下运行以下命令：
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
@@ -171,7 +171,7 @@ Azure AD Connect（1.1.524.0 及更高版本）现可帮助你将 ms-DS-Consiste
 ![第三方联合身份验证配置](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>将新目录添加到现有部署
-假设你在部署 Azure AD Connect 时启用了 ConsistencyGuid 功能，现在要将另一目录添加到部署中。 尝试添加目录时，Azure AD Connect 向导会检查目录中 ms-DS-ConsistencyGuid 属性的状态。 如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，于是返回一个错误，如下图所示。 如果确定现有应用程序不使用该属性，则可以通过使用前文所述的指定 /SkipLdapSearchcontact 的情况下重启 Azure AD Connect 向导来取消显示该错误或者需要联系支持人员以获得更多信息。
+假设你在部署 Azure AD Connect 时启用了 ConsistencyGuid 功能，现在要将另一目录添加到部署中。 尝试添加目录时，Azure AD Connect 向导会检查目录中 ms-DS-ConsistencyGuid 属性的状态。 如果该属性已在目录中的一个或多个对象上配置，向导就会认为该属性正由其他应用程序使用，于是返回一个错误，如下图所示。 如果确定该属性未由现有的应用程序，您可以通过重新启动与 Azure AD Connect 向导来取消显示错误 **/SkipLdapSearch**指定上文所述的交换机或您需要联系有关详细信息的支持。
 
 ![将新目录添加到现有部署](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 

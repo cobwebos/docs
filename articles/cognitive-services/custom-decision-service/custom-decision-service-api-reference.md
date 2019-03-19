@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.openlocfilehash: 2feaa6fa87b6e788683ad543bfb7780b0e517506
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: be9966f5d8e8d94aa3f49aac91b35b105195b108
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867335"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552055"
 ---
 # <a name="api"></a>API
 
@@ -44,7 +44,7 @@ Azure 自定义 AI 决策服务提供两种可以根据每种决策进行调用�
 > 在调用排名 API 之前，必须先定义回调函数。
 
 > [!TIP]
-> 为了改善延迟情况，请通过 HTTP 而非 HTTPS 来公开排名 API，如 `http://ds.microsoft.com/api/v2/<appId>/rank/*` 中所示。
+> 为了改善延迟情况，请通过 HTTP 而非 HTTPS 来公开排名 API，如 `https://ds.microsoft.com/api/v2/<appId>/rank/*` 中所示。
 > 不过，如果主页是通过 HTTPS 提供的，则必须使用 HTTPS 终结点。
 
 不使用参数时，来自排名 API 的 HTTP 响应是 JSONP 格式的字符串：

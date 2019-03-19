@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 中“无法从此处访问”错误消息的潜在原因 | Microsoft Docs
+title: "\"你不能那里从此处获取\"错误-Azure Active Directory 进行故障排除 |Microsoft Docs"
 description: 排查收到“无法从此处访问”错误消息的潜在原因。
 services: active-directory
 author: eross-msft
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7cd67a9a7027e8567e470acab006fd09748de54
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181705"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452014"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>“无法从此处访问”错误消息的潜在原因
 访问组织的内部 Web 应用或服务时，可能会收到以下错误消息：无法从此处访问。 此消息表示组织已使阻止设备访问组织的资源的策略就位。 虽然你可能不必联系支持人员来解决此问题，但可以先尝试执行以下操作。

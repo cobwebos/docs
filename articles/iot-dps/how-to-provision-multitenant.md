@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.openlocfilehash: ea071b704c58383ce52615bb1dfd88df8017ef7f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344085"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544437"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -37,7 +37,7 @@ ms.locfileid: "53344085"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
 
@@ -86,7 +86,7 @@ ms.locfileid: "53344085"
 
 为简单起见，本文将在注册中使用[对称密钥证明](concepts-symmetric-key-attestation.md)。 对于更安全的解决方案，请考虑使用具有信任链的 [X.509 证书证明](concepts-security.md#x509-certificates)。
 
-1. 登录到 [Azure 门户](http://portal.azure.com)，并打开你的设备预配服务实例。
+1. 登录到 [Azure 门户](https://portal.azure.com)，并打开你的设备预配服务实例。
 
 2. 选择“管理注册”选项卡，然后单击页面顶部的“添加注册组”按钮。 
 
@@ -421,7 +421,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解有关重新设置的详细信息，请参阅 [IoT 中心设备重新设置概念](concepts-device-reprovision.md) 
-- 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
+- 若要了解更多取消设置，请参阅[如何取消预配了以前自动预配的设备](how-to-unprovision-devices.md) 
 
 
 

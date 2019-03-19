@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: f595fbb6571c3deaaa0644ba9d62f598181592e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 4c933145c54c47b5af083edd593ecb66b089f9c9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106305"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769142"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>快速入门：登录并设置用户 ID
 
@@ -51,6 +51,9 @@ ms.locfileid: "53106305"
 1. 成功登录后，Azure Notebooks 导航到你的公用个人资料页面，你可以在此页上选择“编辑个人资料信息”填写你的其余信息（有关详细信息，请参阅[你的个人资料和用户 ID](azure-notebooks-user-profile.md)）：
 
     ![Azure Notebooks 个人资料页的初始视图](media/accounts/profile-page-new.png)
+
+> [!NOTE]
+> 如果看到消息"用户 ID 已在使用中，"请尝试不同的 id。 用户 Id 是唯一的所有 Azure Notebooks 帐户，以及 Azure 笔记本也会保留某些用户 Id，例如 Microsoft 品牌名称。
 
 ## <a name="sign-out"></a>注销
 

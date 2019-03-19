@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: f06dd47a519d992e52ac0010c0ae7d81870a4842
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015077"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544511"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,7 +37,7 @@ ms.locfileid: "54015077"
 
 Salesforce 连接器构建于 Salesforce REST API 之上，其中 [v39](https://developer.salesforce.com/docs/atlas.en-us.206.0.api_rest.meta/api_rest/resources_list.htm) 用于从中复制数据，而 [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 用于接收复制数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在 Salesforce 中，必须启用 API 权限。 有关详细信息，请参阅[通过权限集启用 Salesforce 中的 API 访问权限](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 
@@ -48,7 +48,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 - 如果并发请求数超过限制，则将进行限制并且会看到随机失败。
 - 如果请求总数超过限制，会阻止 Salesforce 帐户 24 小时。
 
-在这两种情况下，还可能会收到“REQUEST_LIMIT_EXCEEDED”错误消息。 有关详细信息，请参阅 [Salesforce 开发人员限制](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)中的“API 请求限制”部分。
+在这两种情况下，还可能会收到“REQUEST_LIMIT_EXCEEDED”错误消息。 有关详细信息，请参阅 [Salesforce 开发人员限制](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)中的“API 请求限制”部分。
 
 ## <a name="get-started"></a>入门
 
@@ -291,7 +291,7 @@ Salesforce 链接服务支持以下属性。
 
 | 语法 | SOQL 模式 | SQL 模式 |
 |:--- |:--- |:--- |
-| 列选择 | 需要枚举要在查询中复制的字段，例如 `SELECT field1, filed2 FROM objectname` | 除了列选择之外，还支持 `SELECT *`。 |
+| 列选择 | 需要枚举要在查询中，例如复制的字段 `SELECT field1, filed2 FROM objectname` | 除了列选择之外，还支持 `SELECT *`。 |
 | 引号 | 字段/对象名称不能用引号引起来。 | 字段/对象名称可以用引号引起来，例如 `SELECT "id" FROM "Account"` |
 | 日期时间格式 |  请参考[此处的](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)详细信息和下一部分中的示例。 | 请参考[此处的](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017)详细信息和下一部分中的示例。 |
 | 布尔值 | 表示为 `False` 和 `True`，例如 `SELECT … WHERE IsDeleted=True`。 | 表示为 0 或 1，例如 `SELECT … WHERE IsDeleted=1`。 |
@@ -313,15 +313,15 @@ Salesforce 链接服务支持以下属性。
 |:--- |:--- |
 | 自动编号 |String |
 | 复选框 |Boolean |
-| 货币 |小数 |
+| 货币 |Decimal |
 | 日期 |DateTime |
 | 日期/时间 |DateTime |
 | 电子邮件 |String |
 | ID |String |
 | 查找关系 |String |
 | 多选择列表 |String |
-| Number |小数 |
-| 百分比 |小数 |
+| Number |Decimal |
+| 百分比 |Decimal |
 | 电话 |String |
 | 选择列表 |String |
 | 文本 |String |

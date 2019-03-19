@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: dc0f4bd1e5b07e30f3c89807fbbbc908b3149810
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
-ms.translationtype: HT
+ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542525"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571212"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
-[OpenFaaS][open-faas] 是一个用于基于容器构建无服务器函数的框架。 作为一个开源项目，它在社区中大规模采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
+[OpenFaaS] [ open-faas]是用于构建无服务器函数通过使用容器的框架。 作为一个开源项目，它在社区中大规模采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,43 +29,48 @@ ms.locfileid: "45542525"
 * 已在开发系统上安装 Azure CLI。
 * 已在系统上安装 Git 命令行工具。
 
-## <a name="get-openfaas"></a>获取 OpenFaaS
+## <a name="add-the-openfaas-helm-chart-repo"></a>将 OpenFaaS helm 图表存储库添加
 
-将 OpenFaaS 项目存储库克隆到开发系统。
-
-```azurecli-interactive
-git clone https://github.com/openfaas/faas-netes
-```
-
-更改到已克隆的存储库的目录。
+OpenFaaS 维护其自己的 helm 图表，以保持最新的所有最新更改。
 
 ```azurecli-interactive
-cd faas-netes
+helm repo add openfaas https://openfaas.github.io/faas-netes/
+helm repo update
 ```
 
 ## <a name="deploy-openfaas"></a>部署 OpenFaaS
 
 作为一种良好做法，OpenFaaS 和 OpenFaaS 函数应分别存储在其自己的 Kubernetes 命名空间中。
 
-为 OpenFaaS 系统创建一个命名空间。
+创建的 OpenFaaS 系统和函数的命名空间：
 
 ```azurecli-interactive
-kubectl create namespace openfaas
+kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-为 OpenFaaS 函数创建另一个命名函数。
+为 OpenFaaS UI 门户和 REST API 生成密码：
 
 ```azurecli-interactive
-kubectl create namespace openfaas-fn
+# generate a random password
+PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
+
+kubectl -n openfaas create secret generic basic-auth \
+--from-literal=basic-auth-user=admin \
+--from-literal=basic-auth-password="$PASSWORD"
 ```
+
+你可以获取与机密的值`echo $PASSWORD`。
+
+我们在这里创建的密码将 helm 图表，用于启用基本身份验证在 OpenFaaS 网关，它通过云负载均衡器向 Internet 公开。
 
 克隆的存储库中包括了 OpenFaaS 的一个 Helm chart。 可以使用此图表将 OpenFaaS 部署到 AKS 群集。
 
 ```azurecli-interactive
-helm install --namespace openfaas -n openfaas \
-  --set functionNamespace=openfaas-fn, \
-  --set serviceType=LoadBalancer, \
-  --set rbac=false chart/openfaas/
+helm upgrade openfaas --install openfaas/openfaas \
+    --namespace openfaas  \
+    --set basic_auth=true \
+    --set functionNamespace=openfaas-fn \
+    --set serviceType=LoadBalancer
 ```
 
 输出：
@@ -104,7 +109,7 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-若要测试 OpenFaaS 系统，请在端口 8080 上浏览到外部 IP 地址，在本例中为 `http://52.186.64.52:8080`。
+若要测试 OpenFaaS 系统，请在端口 8080 上浏览到外部 IP 地址，在本例中为 `http://52.186.64.52:8080`。 系统将提示您登录。 若要提取你的密码，输入`echo $PASSWORD`。
 
 ![OpenFaaS UI](media/container-service-serverless/openfaas.png)
 
@@ -112,6 +117,15 @@ gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP  
 
 ```console
 brew install faas-cli
+```
+
+设置`$OPENFAAS_URL`到上面找到的公共 IP。
+
+Azure CLI 登录：
+
+```azurecli-interactive
+export OPENFAAS_URL=http://52.186.64.52:8080
+echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
 
 ## <a name="create-first-function"></a>创建第一个函数
@@ -233,10 +247,11 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 
 ## <a name="next-steps"></a>后续步骤
 
-需要针对 OpenFaaS 网关和函数锁定 OpenFaas 的默认部署。 [Alex Ellis 的博客文章](https://blog.alexellis.io/lock-down-openfaas/)介绍了有关安全的配置选项的更多详细信息。
+您可以继续使用通过一系列动手实验，涵盖了主题，如如何创建你自己的 GitHub 机器人，OpenFaaS 研讨会了解使用机密，查看度量值，并自动缩放。
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [open-faas]: https://www.openfaas.com/
 [open-faas-cli]: https://github.com/openfaas/faas-cli
+[openfaas-workshop]: https://github.com/openfaas/workshop

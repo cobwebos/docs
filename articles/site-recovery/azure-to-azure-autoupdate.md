@@ -1,6 +1,6 @@
 ---
-title: Azure 到 Azure 灾难恢复中的移动服务自动更新 | Microsoft Docs
-description: 提供在通过 Azure Site Recovery 复制 Azure VM 时使用的移动服务自动更新概述。
+title: Azure 到 Azure 灾难恢复中的移动服务的自动更新 |Microsoft Docs
+description: 使用 Azure Site Recovery 复制 Azure Vm 时的移动服务的自动更新的概述。
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,61 +8,61 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 3f0f28ca22321b537ab7e8911c5cbb513a1ade81
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: f2467314a4f131b88fc1baf2233ca8ce74d488cb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818917"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548943"
 ---
-# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务自动更新
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务的自动更新
 
-Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增强功能，并对已知问题（如果存在）进行修复。 这就意味着，若要使服务保持最新状态，需每月计划这些修补程序的部署。 为避免产生与升级相关的开销，用户可改为选择允许 Site Recovery 管理组件更新。 如 Azure 到 Azure 灾难恢复的[体系结构参考](azure-to-azure-architecture.md)中所述，如果 Azure 虚拟机在将虚拟机从一个 Azure 区域复制到另一个 Azure 区域的同时启用了复制，则在所有此类 Azure 虚拟机上安装移动服务。 启用自动更新后，移动服务扩展将随每个新版本更新。 本文档详述了以下内容：
+Azure Site Recovery 使用每月的发布节奏以修复任何问题和增强现有功能或添加新的。 若要保持最新的服务，必须规划的修补程序部署每个月。 若要避免每次升级与关联的开销，您可以改为允许 Site Recovery 来管理组件的更新。
 
-- 自动更新的工作原理
-- 启用自动更新
-- 常见问题与故障排除
+如中所述[Azure 到 Azure 灾难恢复体系结构](azure-to-azure-architecture.md)，移动服务安装在所有 Azure 虚拟机 (Vm) 为其启用复制后，将 Vm 从一个 Azure 区域复制到另一个时。 当你使用自动更新时，每个新版本更新的移动服务扩展。
  
-## <a name="how-does-automatic-update-work"></a>自动更新的工作原理
+## <a name="how-automatic-updates-work"></a>自动更新工作原理
 
-一旦允许 Site Recovery 管理更新，则将通过自动化帐户（与保管库在同一订阅中创建）部署 Azure 服务使用的全局 runbook。 一个自动化帐户用于一个特定保管库。 runbook 检查保管库中每个已启用自动更新的 VM，并在新版本可用时启动移动服务拓展升级。 根据复制虚拟机地区的时区，runbook 默认计划在每天上午 12:00 重复运行。 如有必要，用户还可通过自动化帐户修改 runbook 计划。 
+当你使用 Site Recovery 管理更新时，它将部署通过与保管库位于同一订阅中创建的自动化帐户 （由 Azure 服务） 的全局 runbook。 每个保管库使用一个自动化帐户。 Runbook 检查活动的自动更新的保管库的每个 VM，并升级移动服务扩展，如果较新版本可用。
+
+默认 runbook 计划在每天上午 12:00 异地复制的 VM 的时区中重现。 此外可以更改通过自动化帐户 runbook 日程安排。
 
 > [!NOTE]
-> 启用自动更新不需要重新启动 Azure VM，并且不影响正在进行的复制。
+> 启用自动更新不需要重启 Azure Vm，或会影响正在进行的复制。
 
 > [!NOTE]
-> 自动化帐户使用的作业账单基于当月使用的作业运行时间分钟数，默认情况下，自动化帐户有 500 分钟的免费单位数。 每天执行的作业量为几秒至大约一分钟，并且将包含在免费额度中。
+> 作业中的自动化帐户的计费基于月份中使用作业运行时分钟数。 默认情况下，500 分钟是作为免费单位数的自动化帐户。 作业执行需要大约一分钟每一天到几秒钟，并介绍作为免费单位数。
 
-包含的免费单位数（每月）**   价格作业运行时间    500 分钟 ₹0.14/分钟
+| 附免费单位数 （每个月） | 价格 |
+|---|---|
+| 作业运行时 500 分钟 | ₹0.14 / 分钟
 
 ## <a name="enable-automatic-updates"></a>启用自动更新
 
-可选择允许 Site Recovery 通过以下方式管理更新：
+您可以允许 Site Recovery 中通过以下方式管理更新。
 
-- [作为启用复制步骤的一部分](#as-part-of-the-enable-replication-step)
-- [在保管库内切换扩展更新设置](#toggle-the-extension-update-settings-inside-the-vault)
+### <a name="manage-as-part-of-the-enable-replication-step"></a>作为启用复制步骤的一部分进行管理
 
-### <a name="as-part-of-the-enable-replication-step"></a>作为启用复制步骤的一部分：
+如果启用了 VM 的复制任一启动[从 VM 视图](azure-to-azure-quickstart.md)或[从恢复服务保管库](azure-to-azure-how-to-enable-replication.md)，你可以允许 Site Recovery，以管理 Site Recovery 扩展的更新或对其进行管理手动。
 
-[从虚拟机](azure-to-azure-quickstart.md)或[从恢复服务保管库](azure-to-azure-how-to-enable-replication.md)启用虚拟机复制时，可选择允许 Site Recovery 管理 Site Recovery 扩展更新或手动管理更新。
-
-![enable-replication-auto-update](./media/azure-to-azure-autoupdate/enable-rep.png)
+![扩展设置](./media/azure-to-azure-autoupdate/enable-rep.png)
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>在保管库内切换扩展更新设置
 
-1. 在保管库中，导航到“管理”-> “Site Recovery 基础结构”
-2. 在“用于 Azure 虚拟机”-> “扩展更新设置”下，单击切换按钮，选择允许 ASR 管理更新或手动管理。 单击“ **保存**”。
+1. 在保管库中，转到**管理** > **Site Recovery 基础结构**。
+2. 下**适用于 Azure 虚拟机** > **扩展更新设置**，打开**允许 Site Recovery 管理**切换。 若要手动管理，将其关闭。 
+3. 选择“保存”。
 
-![vault-toggle-auto-update](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![扩展更新设置](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
-> [!Important] 
-> 如果选择“允许 ASR 管理”，该设置会应用到相应保管库中的所有虚拟机。
+> [!Important]
+> 当你选择**允许 Site Recovery 管理**，设置应用于相应的保管库中的所有 Vm。
 
 
-> [!Note] 
-> 两个选项均会就用于管理更新的自动化帐户通知用户。 如果是首次在保管库中启用此功能，将创建新的自动化帐户。 同一个保管库中的所有后续启用复制将使用之前创建的帐户。
+> [!Note]
+> 任一选项会通知你用于管理更新的自动化帐户。 如果第一次，在保管库中使用此功能，创建新的自动化帐户。 在同一个保管库中的所有后续启用复制使用以前创建的一个。
 
-**如果要使用自定义自动化帐户，请使用以下脚本：**
+对于自定义自动化帐户，使用以下脚本：
 
 ```azurepowershell
 param(
@@ -452,7 +452,7 @@ try
                 $JobsInProgressListInternal += $JobAsyncUrl
             }
 
-            # Rate controlling the get calls to maximum 120 calls per minute.
+            # Rate controlling the get calls to maximum 120 calls each minute.
             # ASR throttling for get calls is 10000 in 60 minutes.
             Start-Sleep -Milliseconds 500
         }
@@ -499,38 +499,35 @@ elseif($JobsCompletedSuccessList.Count -ne $ContainerMappingList.Count)
 Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -DisplayMessageToUser
 ```
 
-### <a name="manage-manually"></a>手动管理
+### <a name="manage-updates-manually"></a>手动管理更新
 
-1. 如果 Azure VM 上安装的移动服务有可用的新更新，则会显示“新 Site Recovery 复制代理更新可用”的通知。 单击可安装。”
+1. 如果在 Vm 上安装移动服务的新更新，你将看到以下通知："新的 Site recovery 复制代理更新已可用。 单击此项可安装"
 
      ![“复制的项”窗口](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
-3. 选择通知以打开虚拟机选择页面。
-4. 选择要升级移动服务的虚拟机，然后选择“确定”。
+2. 选择通知以打开 VM 选择页。
+3. 选择你想要升级，然后选择的 Vm**确定**。 更新移动服务将开始为每个所选的 VM。
 
      ![“复制的项”VM 列表](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-将为所选的每个虚拟机启动“更新移动服务”作业。
 
+## <a name="common-issues-and-troubleshooting"></a>常见的问题和故障排除
 
-## <a name="common-issues--troubleshooting"></a>常见问题与故障排除
+如果没有自动更新出现问题，您将看到错误通知下的**配置问题**保管库仪表板中。
 
-如果自动更新出现问题，将会在保管库仪表板的“配置问题”下收到相同通知。 
+如果无法启用自动更新，请参阅以下常见错误和建议的操作：
 
-如果尝试启用自动更新但操作失败，请参阅以下内容进行故障排除。
+- **错误**：你没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。
 
-**错误**：你没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。 
-- 建议的操作：请确保已为登录的帐户分配“参与者”角色，然后重试操作。 有关分配正确权限的详细信息，请参阅[此](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)文档。
+   **建议的操作**:请确保登录的帐户被指定为参与者，然后重试。 中的所需的权限部分，请参阅[使用门户创建 Azure AD 应用程序和服务主体可访问资源的](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)有关分配权限的详细信息。
  
-启用自动更新后，Site Recovery 服务可修复大部分问题，这需要单击“修复”按钮。
+   若要启用自动更新后，请解决大多数问题，请选择**修复**。 如果修复按钮不可用，请参阅扩展更新设置窗格中显示的错误消息。
 
-![repair-button](./media/azure-to-azure-autoupdate/repair.png)
+   ![站点恢复服务修复按钮在扩展更新设置](./media/azure-to-azure-autoupdate/repair.png)
 
-如果修复按钮不可用，请参阅扩展设置窗格中显示的错误消息。
+- **错误**：运行方式帐户没有访问恢复服务资源的权限。
 
- - **错误**：运行方式帐户没有访问恢复服务资源的权限。
-
-    **推荐的操作**：删除该帐户，然后[重新创建运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)，或确保自动化运行方式帐户的 Azure Active Directory 应用程序有权访问恢复服务资源。
+    **建议的操作**:删除，然后[重新创建运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。 或者，请确保该自动化运行方式帐户的 Azure Active Directory 应用程序有权访问恢复服务资源。
 
 - **错误**：找不到运行方式帐户。 以下某一内容已删除或未创建 - Azure Active Directory 应用程序、服务主体、角色、自动化证书资产、自动化连接资产；或者证书和连接的指纹不同。 
 
-    **推荐的操作**：删除该帐户，然后[重新创建运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。
+    **建议的操作**:删除，然后[重新创建运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。

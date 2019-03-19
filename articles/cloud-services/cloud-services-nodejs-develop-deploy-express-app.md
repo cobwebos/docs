@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 260c63ed55b5cb2535567038f27626aa7a085550
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.openlocfilehash: b212eaffb977846d40270a5f2abc76192aee4c0d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574600"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550614"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>使用 Express 在 Azure 云服务中生成并部署 Node.js Web 应用程序
 
@@ -38,7 +38,7 @@ Node.js 包含核心运行时中最小的一个功能集。
 1. 在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。 最后，右键单击“Windows PowerShell”并选择“以管理员身份运行”。
    
     ![Azure PowerShell 图标](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
-2. 将目录切换到 **c:\\node** 目录，然后输入下列命令以新建一个名为 **expressapp** 的解决方案和名为 **WebRole1** 的 Web 角色：
+2. 将目录切换到 c:\\node 目录，然后输入下列命令，新建一个名为 expressapp 的解决方案和名为 WebRole1 的 Web 角色：
    
         PS C:\node> New-AzureServiceProject expressapp
         PS C:\Node\expressapp> Add-AzureNodeWebRole
@@ -57,7 +57,7 @@ Node.js 包含核心运行时中最小的一个功能集。
     npm 命令的输出应与以下结果类似。 
    
     ![Windows PowerShell 显示 npm install express 命令的输出。](./media/cloud-services-nodejs-develop-deploy-express-app/express-g.png)
-2. 将目录切换到 **WebRole1** 目录，然后使用 express 命令生成一个新的应用程序：
+2. 将目录切换到 **WebRole1** 目录，并使用 express 命令生成一个新的应用程序：
    
         PS C:\node\expressapp\WebRole1> express
    
@@ -69,7 +69,7 @@ Node.js 包含核心运行时中最小的一个功能集。
        PS C:\node\expressapp\WebRole1> npm install
    
    ![npm install 命令的输出](./media/cloud-services-nodejs-develop-deploy-express-app/node26.png)
-4. 使用以下命令将 **bin/www** 文件复制到 **server.js**。 这样，云服务便可以找到此应用程序的入口点。
+4. 使用以下命令将 bin/www 文件复制到 server.js。 这样，云服务便可以找到此应用程序的入口点。
    
        PS C:\node\expressapp\WebRole1> copy bin/www server.js
    
@@ -82,7 +82,7 @@ Node.js 包含核心运行时中最小的一个功能集。
    
        var app = require('./app');
    
-   之所以需要进行此更改，是因为我们已将文件（以前的 **bin/www**）移到了所需应用文件所在的同一个目录。 完成此更改后，请保存 **server.js** 文件。
+   之所以需要进行此更改，是因为我们已将文件（以前的 bin/www）移到了所需应用文件所在的同一个目录。 完成此更改后，请保存 **server.js** 文件。
 6. 使用以下命令以在 Azure 模拟器中运行应用程序：
    
        PS C:\node\expressapp\WebRole1> Start-AzureEmulator -launch
@@ -90,7 +90,7 @@ Node.js 包含核心运行时中最小的一个功能集。
     ![包含 Welcome to Express 的网页。](./media/cloud-services-nodejs-develop-deploy-express-app/node28.png)
 
 ## <a name="modifying-the-view"></a>修改视图
-现在，将修改视图以显示消息“Welcome to Express in Azure”。
+现在，修改视图以显示消息“Welcome to Express in Azure”。
 
 1. 请输入以下命令来打开 index.jade 文件：
    
@@ -103,7 +103,7 @@ Node.js 包含核心运行时中最小的一个功能集。
    
    ![index.jade 文件，最后一行的内容为：p Welcome to \#{title} in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 3. 保存文件并退出记事本。
-4. 刷新浏览器，会看到所做的更改。
+4. 刷新浏览器即可看到所做的更改。
    
    ![浏览器窗口，其中的页面包含 Welcome to Express in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node32.png)
 
@@ -121,8 +121,8 @@ Node.js 包含核心运行时中最小的一个功能集。
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)。
 
-[Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
-[Express]: http://expressjs.com/
+[Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
+[Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
 
 

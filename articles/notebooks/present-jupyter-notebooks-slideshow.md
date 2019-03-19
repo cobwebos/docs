@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: d29aac52948cddf9d7e274d28735e2c12143b5ca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d36cbe50ab040549353efd19dd794ec7fab51b7b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081415"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774398"
 ---
 # <a name="run-a-notebook-slideshow"></a>运行笔记本幻灯片放映
 

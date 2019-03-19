@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 7e08076364cef87ec27ad34ee9af17242245bbc6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455987"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537756"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -88,7 +88,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>查看收集的日志
 
-可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组（例如 *myResourceGroup*），然后选择 Log Analytics 资源（例如 *myAKSLogs*）。
+可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组如*myResourceGroup*，然后选择 log analytics 资源，如*myAKSLogs*。
 
 ![选择 AKS 群集的 Log Analytics 工作区](media/view-master-logs/select-log-analytics-workspace.png)
 
@@ -121,7 +121,7 @@ AzureDiagnostics
 
 为帮助分析日志数据，下表详细说明了用于每个事件的架构：
 
-| 字段名               | 说明 |
+| 字段名               | 描述 |
 |--------------------------|-------------|
 | *resourceId*             | 生成日志的 Azure 资源 |
 | *time*                   | 上传日志的时间戳 |

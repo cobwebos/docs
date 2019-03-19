@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 79d10a02b02ecb69f656e5b3d7b0c9ae986504d1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 0ea34fe4862941bde882b3ea8ed5dbaa111ac742
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438960"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731507"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -146,7 +146,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
                     "currentHealthStatus": "Unavailable",
                     "previousHealthStatus": "Available",
                     "type": "Downtime",
-                    "cause": "PlatformInitiated",
+                    "cause": "PlatformInitiated"
                 },
                 "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
                 "resourceGroupName": "<resource group>",
@@ -165,7 +165,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 
 有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)。
 
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | status |用于度量值警报。 对于活动日志警报，始终设置为“已激活”。 |
 | 上下文 |事件的上下文。 |

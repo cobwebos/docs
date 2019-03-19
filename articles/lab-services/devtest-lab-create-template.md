@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 9d009847856936d14a182b234910fb717c084d11
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248055"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550099"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>从 VHD 文件创建自定义映像
 
@@ -60,9 +60,9 @@ ms.locfileid: "51248055"
 
 1. 如果用于创建自定义映像的映像不是已授权映像（由 Microsoft 发布），还可以输入计划名称、计划套餐和计划发布服务器。
 
-   - **计划名称：** 输入从中创建此自定义映像的市场映像 (SKU) 的名称 
-   - **计划产品/服务：** 输入从中创建此自定义映像的市场映像的产品（服务） 
-   - **计划发布服务器：** 输入从中创建此自定义映像的市场映像的发布服务器
+   - **计划名称：** 输入从中创建此自定义映像的 Marketplace 映像 (SKU) 的名称 
+   - **计划产品/服务：** 输入从中创建此自定义映像的 Marketplace 映像的产品 （产品/服务） 
+   - **计划发布服务器：** 输入从中创建此自定义映像的 Marketplace 映像的发布服务器
 
    > [!NOTE]
    > 如果要用于创建自定义映像的映像**不**是已授权映像，则这些字段为空并且在你选择时可以填写。 如果该映像**是**已授权映像，则可以使用计划信息自动填充这些字段。 如果在这种情况下尝试更改这些字段，将显示一条警告消息。
@@ -81,7 +81,7 @@ ms.locfileid: "51248055"
 ## <a name="related-blog-posts"></a>相关的博客文章
 
 - [自定义映像或公式吗？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [复制 Azure 开发测试实验室间的自定义映像](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [复制 Azure 开发测试实验室间的自定义映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>后续步骤
 

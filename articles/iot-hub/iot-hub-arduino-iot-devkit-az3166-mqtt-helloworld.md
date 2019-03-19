@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 8959c1d773a7e4ea79c7a7531c2bba578f2801e2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158476"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552004"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
 
 物联网 (IoT) 系统经常要处理断断续续的、质量不佳的或低速的 Internet 连接。 MQTT 是一种机器到机器 (M2M) 连接协议，它是为了应对此类难题而开发的。 
 
-此处使用的 MQTT 客户端库是 [Eclipse Paho](http://www.eclipse.org/paho/) 项目的一部分，该项目提供了用于通过多种传输方式使用 MQTT 的 API。
+此处使用的 MQTT 客户端库是 [Eclipse Paho](https://www.eclipse.org/paho/) 项目的一部分，该项目提供了用于通过多种传输方式使用 MQTT 的 API。
 
 ## <a name="what-you-learn"></a>学习内容
 
@@ -77,7 +77,7 @@ ms.locfileid: "54158476"
 
 如果遇到问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)或通过以下渠道进行联系：
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>另请参阅

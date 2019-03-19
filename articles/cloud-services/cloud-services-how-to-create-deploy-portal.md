@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: ece3511d0d3c12be13a649385ea9b6dd5c75bfe0
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: a6cf2276da463f71f008c4bfb6eee4c232b18308
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303696"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551690"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
-Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*自定义创建*。
+在 Azure 门户提供了两种方法来创建和部署云服务：*快速创建*并*自定义创建*。
 
 本文介绍如何使用“快速创建”方法创建新的云服务，并使用“**上载**”在 Azure 中上载和部署云服务包。 使用此方法时，Azure 门户在进行操作时会提供方便的链接供你完成所有要求。 如果在创建云服务时还准备部署该云服务，则可以使用“自定义创建”同时执行这两项操作。
 
@@ -44,7 +44,7 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 可以通过[此处](cloud-services-model-and-package.md)了解有关这些内容以及如何创建包的详细信息。
 
 ## <a name="prepare-your-app"></a>准备应用程序
-在可以部署云服务之前，必须根据应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。 Azure SDK 提供了用于准备这些必需的部署文件的工具。 可以从 [Azure 下载](https://azure.microsoft.com/downloads/)页安装 SDK，并使用选择用于开发应用程序代码的语言。
+部署云服务之前，必须根据应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。 Azure SDK 提供了用于准备这些必需的部署文件的工具。 可以从 [Azure 下载](https://azure.microsoft.com/downloads/)页安装 SDK，并使用选择用于开发应用程序代码的语言。
 
 在导出服务包之前，三种云服务功能需要特殊的配置：
 
@@ -52,7 +52,7 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 * 如果要配置与角色实例的远程桌面连接，请[为这些角色配置](cloud-services-role-enable-remote-desktop-new-portal.md)远程桌面。
 * 如果要为云服务配置详细监视，请为云服务启用 Azure 诊断。 *最少监视*（默认监视级别）使用从角色实例（虚拟机）的主机操作系统中收集到的性能计数器。 *详细监视*根据角色实例中的性能数据收集其他度量信息，以便对处理应用程序期间出现的问题做进一步分析。 若要了解如何启用 Azure 诊断，请参阅[在 Azure 中启用诊断](cloud-services-dotnet-diagnostics.md)。
 
-要使用 Web 角色或辅助角色创建云服务，必须[创建服务包](cloud-services-model-and-package.md#servicepackagecspkg)。
+要使用 Web 角色或辅助角色创建云服务，必须 [创建服务包](cloud-services-model-and-package.md#servicepackagecspkg)。
 
 ## <a name="before-you-begin"></a>开始之前
 * 如果尚未安装 Azure SDK，请单击“**安装 Azure SDK**”以打开 [Azure 下载页](https://azure.microsoft.com/downloads/)，然后下载你选择用于开发代码的相应语言的 SDK。 （也可以稍后执行此操作。）
@@ -82,7 +82,7 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 
     ![发布云服务](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
-## <a name="verify-your-deployment-completed-successfully"></a>验证确认部署已成功完成
+## <a name="verify-your-deployment-completed-successfully"></a>确认部署已成功完成
 1. 单击云服务实例。
 
     该状态应该显示该服务“**正在运行**”。
@@ -90,7 +90,7 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 
     ![云服务_速览](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
-[TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
 
 ## <a name="next-steps"></a>后续步骤
 * [云服务的常规配置](cloud-services-how-to-configure-portal.md)。

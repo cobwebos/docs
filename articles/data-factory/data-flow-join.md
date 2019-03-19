@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 517afe21fbf9241e2b2423525e9caee12a5603f6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270897"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726866"
 ---
-# <a name="azure-data-factory-data-flow-join-transformation"></a>Azure 数据工厂数据流“联接”转换
+# <a name="mapping-data-flow-join-transformation"></a>映射数据流联接转换
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -24,11 +24,11 @@ ms.locfileid: "56270897"
 
 ## <a name="join-types"></a>联接类型
 
-必须为“联接”转换选择联接类型
+选择联接类型是必需的联接转换。
 
 ### <a name="inner-join"></a>内部联接
 
-内部联接仅传递与两个表中的列条件都匹配的行
+内部联接将通过与两个表中的列条件匹配的行。
 
 ### <a name="left-outer"></a>左外部
 
@@ -40,11 +40,11 @@ ms.locfileid: "56270897"
 
 ### <a name="full-outer"></a>完全外部
 
-对于另一个表中不存在的列，完全外部联接会生成两端中具有 NULL 值的所有列和行
+完全外部生成的所有列和行与列的 NULL 值两侧不存在其他表中。
 
 ### <a name="cross-join"></a>交叉联接
 
-通过表达式指定两个流的叉积
+使用表达式指定的两个流的叉积。 您可以用于创建自定义联接条件。
 
 ## <a name="specify-join-conditions"></a>指定联接条件
 
@@ -67,3 +67,7 @@ ms.locfileid: "56270897"
 ![自联接](media/data-flow/selfjoin.png "自联接")
 
 在上面的关系图中，“选择”转换位于顶部。 它所做的所有工作就是将原始流的别名指定为“OrigSourceBatting”。 在它下方突出显示的“联接”转换中，你可以看到我们将此“选择别名”流用作右侧联接，以便可以在内部联接的左侧和右侧引用同一个键。
+
+## <a name="next-steps"></a>后续步骤
+
+加入后的数据，然后，可以[创建新列](data-flow-derived-column.md)并[到目标数据存储接收器数据](data-flow-sink.md)。

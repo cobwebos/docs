@@ -11,25 +11,25 @@ ms.service: app-service-mobile
 ms.workload: na
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 69a11c615a2809d4d4180f0c4bd10a9dbeebc084
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 805868617fe7161159c72ba53ac0c94247722ac9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488766"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765954"
 ---
 # <a name="create-an-android-app"></a>创建 Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>概述
-本教程说明如何使用 Azure 移动应用后端向 Android 移动应用添加基于云的后端服务。  将创建一个新的移动应用后端以及一个简单的 *待办事项列表* Android 应用，此应用将应用数据存储在 Azure 中。
+本教程说明如何使用 Azure 移动应用后端向 Android 移动应用添加基于云的后端服务。  将创建一个新的移动应用后端和一个简单的 *待办事项列表* Android 应用，此应用将应用数据存储在 Azure 中。
 
 只有在完成本教程后，才可以学习有关使用 Azure 应用服务中的移动应用功能的所有其他 Android 教程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 要完成本教程，需要以下各项：
 
 * [Android 开发人员工具](https://developer.android.com/sdk/index.html)，其中包含 Android Studio 集成开发环境和最新的 Android 平台。

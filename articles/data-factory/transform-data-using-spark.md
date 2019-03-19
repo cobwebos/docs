@@ -3,20 +3,20 @@ title: 在 Azure 数据工厂中使用 Spark 活动转换数据 | Microsoft Docs
 description: 了解如何通过使用 Spark 活动从 Azure 数据工厂管道运行 Spark 程序来转换数据。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2018
-ms.author: douglasl
-ms.openlocfilehash: a25505a976be9d9ae38f562591d86ca9b56b8859
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: cdf4dba3996668b3c9fe31df10050ff2cbff6cb3
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025600"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576194"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +60,7 @@ ms.locfileid: "54025600"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-| 属性              | 说明                              | 必选 |
+| 属性              | 说明                              | 需要 |
 | --------------------- | ---------------------------------------- | -------- |
 | 名称                  | 管道中活动的名称。    | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -80,7 +80,7 @@ ms.locfileid: "54025600"
 
 在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Azure Blob 存储中的以下文件夹结构：     
 
-| 路径                  | Description                              | 必选 | 类型   |
+| 路径                  | 描述                              | 需要 | Type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.`（根）            | Spark 作业在存储链接服务中的根路径 | 是      | Folder |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径 | 是      | 文件   |

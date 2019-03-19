@@ -12,12 +12,12 @@ ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 16032ec5ba1e613462f92b86281ce93153b70923
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: HT
+ms.openlocfilehash: 1f9bd8503c2e8f2aa3c54d41b8585c6fbf81c92b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409711"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542076"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>Batch AI 服务配额和限制
 
@@ -49,7 +49,7 @@ ms.locfileid: "53409711"
 | 每个节点的最大 GPU MPI 进程数 | 1-4 |
 | 每个节点的最大 GPU 辅助角色数 | 1-4 |
 | 最长作业生存期 | 7 天<sup>1</sup> |
-| 每个节点的最大参数服务器数 | 1 |
+| 每个节点的最大参数服务器数 | 第 |
 
 <sup>1</sup> 最长生存期是指作业开始运行的时间及其完成的时间。 已完成的作业会无限期保存；最长生存期内未完成的作业的数据不可访问。
 
@@ -69,7 +69,7 @@ ms.locfileid: "53409711"
 2. 在 Batch AI 菜单上单击“新建支持请求”。
 3. 在“基本信息”中：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 “问题类型” > “配额”
+    a. “问题类型” > “配额”
    
     b. **订阅** > 选择自己的订阅。
    
@@ -80,7 +80,7 @@ ms.locfileid: "53409711"
     单击“下一步”。
 4. 在“问题”中：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 根据[业务影响情况][support_sev]选择“严重性”。
+    a. 根据[业务影响情况][support_sev]选择“严重性”。
    
     b. 在“配额详细信息”中，指定位置、配额类型和资源类型。 指定要请求的新限制。 单击“保存并继续”。
 
@@ -89,7 +89,7 @@ ms.locfileid: "53409711"
     单击“下一步”。
 5. 在“联系人信息”中：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“首选联系方法”。
+    a. 选择“首选联系方法”。
    
     b. 输入并确认所需的联系人详细信息。
    
@@ -108,4 +108,4 @@ ms.locfileid: "53409711"
 > [详细了解 Batch AI 资源](resource-concepts.md)
 
 [portal]: https://portal.azure.com
-[support_sev]: http://aka.ms/supportseverity
+[support_sev]: https://aka.ms/supportseverity

@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 108fd47eea88e4fe0bd8e3eb22cb03e1a092a29e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: cd77f13b12fa2f8557ef0d32841ed6a9dbfda8df
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999141"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778750"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>设置媒体服务开发环境  
 

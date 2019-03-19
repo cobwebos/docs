@@ -3,7 +3,7 @@ title: 在 Azure 门户中使用 Linux 故障排除 VM | Microsoft Docs
 description: 了解如何通过使用 Azure 门户将 OS 磁盘连接到恢复 VM 来排查 Linux 虚拟机问题
 services: virtual-machines-linux
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: genli
-ms.openlocfilehash: 817a3465c3e9f5d43bb49e20a443b8cf88293abd
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 65187c3ef6debfa27c8c4fea62bcd31b857b4171
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411201"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776746"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
 如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Linux VM 来修复所有错误，然后重新创建原始 VM。
@@ -37,7 +37,7 @@ ms.locfileid: "47411201"
 ## <a name="determine-boot-issues"></a>确定启动问题
 检查启动诊断信息和 VM 屏幕截图，确定 VM 不能正常启动的原因。 一个常见的例子是 `/etc/fstab` 中存在无效条目，或底层虚拟硬盘已删除或移动。
 
-在门户中选择 VM，并向下滚动到“支持 + 故障排除”部分。 单击“启动诊断”，查看从 VM 流式传输的控制台消息。 检查控制台日志，看看是否能够判断出 VM 遇到问题的原因。 以下示例显示某个 VM 停滞在维护模式，需要人工干预：
+在门户中选择 VM，然后向下滚动到“支持 + 故障排除”部分。 单击“启动诊断”，查看从 VM 流式传输的控制台消息。 检查控制台日志，看看是否能够判断出 VM 遇到问题的原因。 以下示例显示某个 VM 停滞在维护模式，需要人工干预：
 
 ![查看 VM 启动诊断控制台日志](./media/troubleshoot-recovery-disks-portal-linux/boot-diagnostics-error.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "47411201"
 
 恢复 VM 的第一步是删除 VM 资源本身。 删除 VM 时会将虚拟硬盘留在存储帐户中。 删除 VM 后，可将虚拟硬盘附加到另一个 VM，以排查和解决这些错误。
 
-在门户中选择 VM，并单击“删除”：
+在门户中选择用户的 VM，并单击“删除”： 
 
 ![显示启动错误的 VM 启动诊断屏幕截图](./media/troubleshoot-recovery-disks-portal-linux/stop-delete-vm.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "47411201"
 
     ![在门户中附加现有磁盘](./media/troubleshoot-recovery-disks-portal-linux/attach-existing-disk.png)
 
-2. 若要选择现有的虚拟硬盘，请单击“VHD 文件”：
+2. 若要选择现有的虚拟硬盘，请单击“VHD 文件”： 
 
     ![浏览现有 VHD](./media/troubleshoot-recovery-disks-portal-linux/select-vhd-location.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "47411201"
 
     ![确认附加现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal-linux/attach-disk-confirm.png)
 
-5. 几秒钟后，VM 的“磁盘”窗格将列出作为数据磁盘连接的现有虚拟硬盘：
+5. 几秒钟后，VM 的“磁盘”窗格列出作为数据磁盘连接的现有虚拟硬盘： 
 
     ![现有虚拟硬盘已附加为数据磁盘](./media/troubleshoot-recovery-disks-portal-linux/attached-disk.png)
 
@@ -183,4 +183,4 @@ ms.locfileid: "47411201"
 ## <a name="next-steps"></a>后续步骤
 如果在连接到 VM 时遇到问题，请参阅[排查 Azure VM 的 SSH 连接问题](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果在访问 VM 上运行的应用时遇到问题，请参阅 [Troubleshoot application connectivity issues on a Linux VM](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（排查 Linux VM 上的应用程序连接问题）。
 
-有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

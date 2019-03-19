@@ -2,19 +2,19 @@
 title: Azure IoT 中心设备孪生入门 (Python) | Microsoft Docs
 description: 如何使用 Azure IoT 中心设备孪生添加标记，并使用 IoT 中心查询。 使用用于 Python 的 Azure IoT SDK 来实现一个模拟设备应用，并实现可添加标记和运行 IoT 中心查询的一个服务应用。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 12/04/2017
+ms.date: 02/21/2019
 ms.author: kgremban
-ms.openlocfilehash: 5086c831f45fd9c8e411fb02b21d03795d747c8a
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: HT
+ms.openlocfilehash: edf6fa98224613ba31eeed871cbb0eaf4e614600
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514173"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535291"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -25,18 +25,16 @@ ms.locfileid: "51514173"
 * **ReportConnectivity.py**，这是一个 .Python 应用，用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
 
 > [!NOTE]
-> [Azure IoT SDK][lnk-hub-sdks] 文章介绍了可用于构建设备和后端应用的 Azure IoT SDK。
-> 
-> 
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
 
 要完成本教程，需要以下各项：
 
-* [Python 2.x 或 3.x][lnk-python-download]。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统][lnk-install-pip]。
-* 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包][lnk-visual-c-redist]，以便使用 Python 中的本机 DLL。
-* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
+* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
+* 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包](https://www.microsoft.com/download/confirmation.aspx?id=48145)，以便使用 Python 中的本机 DLL。
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 > [!NOTE]
-> 适用于 `azure-iothub-service-client` 和 `azure-iothub-device-client` 的 pip 包目前仅供 Windows OS 使用。 对于 Linux/Mac OS，请参阅[准备适用于 Python 的开发环境][lnk-python-devbox]一文中特定于 Linux 和 Mac OS 的部分。
+> 适用于 `azure-iothub-service-client` 和 `azure-iothub-device-client` 的 pip 包目前仅供 Windows OS 使用。 对于 Linux/Mac OS，请参阅于 Linux 和 Mac OS 特定部分，在[准备开发环境以便使用 Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)发布。
 > 
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -52,7 +50,7 @@ ms.locfileid: "51514173"
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-the-service-app"></a>创建服务应用
-在本部分中，将创建一个 Python 控制台应用，该应用将位置元数据添加到与 **{Device Id}** 关联的设备孪生。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
+在本部分中，您可以创建一个 Python 控制台应用，将位置元数据添加到关联的设备孪生你 **{Device ID}**。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
 1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
 
@@ -70,7 +68,7 @@ ms.locfileid: "51514173"
     from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
     from iothub_service_client import IoTHubDeviceTwin, IoTHubError
     ```
-2. 添加以下代码，将 `[IoTHub Connection String]` 和 `[Device Id]` 的占位符替换为在前面的部分中创建的 IoT 中心的连接字符串和设备 ID。
+2. 将占位符替换为以下代码添加`[IoTHub Connection String]`和`[Device Id]`使用 IoT 中心和在前面几节中创建的设备 ID 的连接字符串。
    
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -152,7 +150,7 @@ ms.locfileid: "51514173"
 在下一部分中，创建的设备应用将报告连接信息，并更改上一部分中查询的结果。
 
 ## <a name="create-the-device-app"></a>创建设备应用
-在本部分中，将创建一个 Python 控制台应用，该应用以你的 **{Device Id}** 身份连接到中心，然后更新其设备孪生的报告属性，来说明它是使用手机网络进行连接的。
+在本部分中，您可以创建一个 Python 控制台应用，连接到作为中心你 **{Device ID}**，然后更新设备孪生的报告属性，以包含它已连接移动电话网络使用的信息。
 
 1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
 
@@ -259,7 +257,7 @@ ms.locfileid: "51514173"
     python AddTagsAndQuery.py
     ```
    
-    这一次，两个查询结果中应当都会显示你的 **{Device Id}**。
+    这一次你 **{Device ID}** 应出现在两个查询结果。
    
     ![第二个查询][3]
 
@@ -268,37 +266,11 @@ ms.locfileid: "51514173"
 
 使用下列资源了解如何执行以下操作：
 
-* 通过 [IoT 中心入门][lnk-iothub-getstarted]教程学习如何从设备发送遥测数据，
-* 通过[使用所需属性配置设备][lnk-twin-how-to-configure]教程学习如何使用设备孪生的所需属性配置设备，
-* 通过[使用直接方法][lnk-methods-tutorial]教程学习如何以交互方式控制设备（例如从用户控制的应用打开风扇）。
+* 从使用的设备发送遥测[IoT 中心入门](quickstart-send-telemetry-python.md)教程中，
+* 配置设备使用设备孪生的所需的属性与[使用所需属性配置设备](tutorial-device-twins.md)教程中，
+* 控制设备以交互方式 （例如打开风扇从用户控制的应用），与[使用直接方法](quickstart-control-device-python.md)教程。
 
 <!-- images -->
 [1]: media/iot-hub-python-twin-getstarted/1.png
 [2]: media/iot-hub-python-twin-getstarted/2.png
 [3]: media/iot-hub-python-twin-getstarted/3.png
-
-<!-- links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: http://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
-[lnk-python-devbox]: https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md
-
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
-[lnk-methods]: iot-hub-devguide-direct-methods.md
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-query]: iot-hub-devguide-query-language.md
-[lnk-identity]: iot-hub-devguide-identity-registry.md
-
-[lnk-iothub-getstarted]: quickstart-send-telemetry-python.md
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/quickstart-linux.md
-[lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-
-[lnk-twin-how-to-configure]: tutorial-device-twins.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-
-[lnk-methods-tutorial]: quickstart-control-device-node.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md

@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: ad8a01ecccd7af15686c449b17cd5f014450b015
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: bc89b8d830e364c70fef5a5959d4da85c517a5ee
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734430"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764927"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -115,7 +115,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-要将资源组中的所有标记应用于其资源，并且*不保留资源上的现有标记*，请使用以下脚本：
+若要将资源组中的所有标记都应用于其资源，并*不在资源上保留现有标记*，使用以下脚本：
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -125,7 +125,7 @@ foreach ($g in $groups)
 }
 ```
 
-要将资源组中的所有标记应用于其资源，并且*保留资源上不重复的现有标记*，请使用以下脚本：
+若要将资源组中的所有标记都应用于其资源，并*不是重复项的资源上保留现有标记*，使用以下脚本：
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -222,7 +222,7 @@ rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-要将资源组中的所有标记应用于其资源，并且*不保留资源上的现有标记*，请使用以下脚本：
+若要将资源组中的所有标记都应用于其资源，并*不在资源上保留现有标记*，使用以下脚本：
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -238,7 +238,7 @@ do
 done
 ```
 
-若要将资源组中的所有标记应用于其资源，并且*保留资源上的现有标记*，请使用以下脚本：
+若要将资源组中的所有标记都应用于其资源，并*保留现有标记的资源*，使用以下脚本：
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -279,4 +279,4 @@ Azure 门户和 PowerShell 均在后台使用[资源管理器 REST API](https://
 ## <a name="next-steps"></a>后续步骤
 
 * 并非所有资源类型都支持标记。 若要确定是否可以将标记应用到资源类型，请参阅 [Azure 资源的标记支持](tag-support.md)。
-* 有关使用门户的说明，请参阅[使用 Azure 门户管理 Azure 资源](resource-group-portal.md)。  
+* 有关使用门户的说明，请参阅[使用 Azure 门户管理 Azure 资源](manage-resource-groups-portal.md)。  

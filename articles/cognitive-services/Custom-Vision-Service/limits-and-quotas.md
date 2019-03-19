@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: anroth
-ms.openlocfilehash: 8e96447f2a1b5b68ebf99ab4006fe43937f4c75f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 58109e17ed33e6af8dedf3ed8c1cc9ddf546a05e
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884420"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588663"
 ---
 # <a name="pricing-and-limits"></a>定价和限制
 
 自定义影像服务有三个密钥层。 有限试用版项目资源会附加到你的自定义视觉登录名（即 Azure Active Directory 帐户或 MSA 帐户）。 它们专用于服务的短期试用。 可以通过 Azure 门户注册 F0（免费）或 S0（标准）订阅。 有关定价和事务的详细信息，请参阅相应的[认知服务定价页](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)。
 
-在引入 Azure 预览版（2018 年 3 月 1 日）之前在早期免费预览期间创建的帐户将保持有限试用版的以前配额。 
+在引入 Azure 预览版（2018 年 3 月 1 日）之前在早期免费预览期间创建的帐户将保持有限试用版的以前配额。
 
 对于 S0 项目，预计每个项目训练图像数和每个项目的标记数量将随着时间的推移而增加。
 

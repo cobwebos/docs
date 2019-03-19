@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 731e8453c9735ef1e7819f1b851d0a13ceaec43a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: f62e2d482ca6258821cb800d2650a5f0c6a27e7c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996196"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762514"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -30,9 +30,9 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="overview"></a>概述
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
-要开始使用 Azure 媒体服务，应该具备以下条件：
+若要开始使用 Azure 媒体服务，应该具备以下条件：
 
 * 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
@@ -68,7 +68,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](#availability)部分。
 
-## <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>在存储中保护内容，并以动态方式传送加密的流媒体
+## <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>在存储中保护内容，并以动态方式交付加密的流媒体
 
 ![使用 PlayReady 进行保护](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
@@ -88,7 +88,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 1. 将优质媒体文件上传到资产中。
 2. 使用[媒体分析概述](media-services-analytics-overview.md)部分介绍的媒体分析服务之一来处理视频。
-3. 媒体分析媒体处理器会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，可以采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，可以从 Azure Blob 存储下载该文件。
+3. 媒体分析媒体处理器会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，可采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，可以从 Azure Blob 存储下载该文件。
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](#availability)部分。
 
@@ -98,10 +98,10 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 2. 编码为单个 MP4 文件。
 3. 通过创建 OnDemand 或 SAS 定位符来发布资产。
 
-    如果使用 SAS 定位符，将从 Azure blob 存储中下载内容。 在这种情况下，流式处理终结点不需要处于已启动状态。
+    如果使用 SAS 定位符，将从 Azure Blob 存储中下载内容。 在这种情况下，流式处理终结点不需要处于已启动状态。
 4. 渐进式下载内容。
 
-## <a id="live_scenarios"></a>传送实时流式处理事件 
+## <a id="live_scenarios"></a>传送实时传送视频流事件 
 
 1. 使用多种实时流式处理协议（例如 RTMP 或平滑流式处理）引入实时内容。
 2. （可选）将流编码为自适应比特率流。
@@ -134,11 +134,11 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="consuming-content"></a>使用内容
 
-Azure 媒体服务提供所需的工具，以便用户创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 以下主题提供了可用来开发自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。 有关详细信息，请参阅[开发视频播放器应用程序](media-services-develop-video-players.md)
+Azure 媒体服务提供所需的工具，以便创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 以下主题提供了可用于开发客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。 有关详细信息，请参阅[开发视频播放器应用程序](media-services-develop-video-players.md)
 
 ## <a name="enabling-azure-cdn"></a>启用 Azure CDN
 
-媒体服务支持与 Azure CDN 集成。 有关如何启用 Azure CDN 的信息，请参阅 [如何在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。
+媒体服务支持与 Azure CDN 集成。 有关如何启用 Azure CDN 的信息，请参阅[如何在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。
 
 ## <a id="scaling"></a>缩放媒体服务帐户
 
@@ -158,7 +158,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
     有关详细信息，请参阅[缩放媒体处理](media-services-portal-scale-media-processing.md)。
 * 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。 每个存储帐户大小限制为 500 TB。 要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。 有关详细信息，请参阅[管理存储帐户](meda-services-managing-multiple-storage-accounts.md)。
 
-## <a id="availability"></a> 媒体服务功能的跨数据中心可用性
+## <a id="availability"></a>媒体服务功能的跨数据中心可用性
 
 本部分详细说明了媒体服务功能的跨数据中心可用性。
 
@@ -174,7 +174,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-|Name|状态|数据中心
+|名称|状态|数据中心
 |---|---|---|
 |标准|GA|All|
 |高级|GA|All|

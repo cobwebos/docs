@@ -13,17 +13,17 @@ caps.latest.revision: 42
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 9cb78362b5c0613d6ed6820bbf8e6d3275ab4787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5f1084090561d3233d0587cf426581ab6ef0ab94
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250656"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532994"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure 云服务定义架构（.csdef 文件）
 服务定义文件定义应用程序的服务模型。 该文件包含可供云服务使用的角色的定义，指定服务终结点，并建立服务的配置设置。 配置设置值是在服务配置文件中设置的，如[云服务（经典）配置架构](https://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35)所述。
 
-默认情况下，Azure 诊断配置架构文件将安装到 `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` 目录。 将 `<version>` 替换为 [Azure SDK](http://www.windowsazure.com/develop/downloads/) 的已安装版本。
+默认情况下，Azure 诊断配置架构文件将安装到 `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` 目录。 将 `<version>` 替换为 [Azure SDK](https://www.windowsazure.com/develop/downloads/) 的已安装版本。
 
 服务定义文件的默认扩展名为 .csdef。
 
@@ -67,7 +67,7 @@ ms.locfileid: "51250656"
 
 下表介绍了 `ServiceDefinition` 元素的属性。
 
-| 属性               | Description |
+| 属性               | 描述 |
 | ----------------------- | ----------- |
 | 名称                    |必需。 服务的名称。 该名称在服务帐户中必须是唯一的。|
 | topologyChangeDiscovery | 可选。 指定拓扑更改通知的类型。 可能的值包括：<br /><br /> -   `Blast` - 将更新尽早发送到所有角色实例。 如果选择此选项，则角色应该能够在不重启的情况下处理拓扑更新。<br />-   `UpgradeDomainWalk` – 在前一个实例成功接受更新后，按顺序将更新发送到每个角色实例。|

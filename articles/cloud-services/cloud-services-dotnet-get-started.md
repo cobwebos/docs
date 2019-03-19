@@ -11,20 +11,20 @@ ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 966536b7129a91f4c6fd8dd7bf0270be660bdf81
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: aa62db0948ffa036b37736477b872d694d14836b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332058"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762582"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
 ## <a name="overview"></a>概述
-本教程演示如何使用 ASP.NET MVC 前端创建多层.NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](https://msdn.microsoft.com/library/azure/ee336279)、[Azure Blob 服务](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
+本教程演示如何使用 ASP.NET MVC 前端创建多层.NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](https://msdn.microsoft.com/library/azure/ee336279)、[Azure Blob 服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
 
 本教程介绍如何在本地生成并运行应用程序、如何将其部署到 Azure 并在云中运行，以及如何从头构建。 可以从头构建并进行测试，之后根据喜好部署步骤。
 
@@ -33,7 +33,7 @@ ms.locfileid: "54332058"
 
 ![广告列表](./media/cloud-services-dotnet-get-started/list.png)
 
-应用程序使用 [以队列为中心的工作模式](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
+应用程序使用 [以队列为中心的工作模式](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>替代体系结构：应用服务和 WebJobs
 本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure 应用服务](/azure/app-service/)中运行前端，并对后端使用 [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务的信息，请参阅 [Azure 应用服务、云服务和虚拟机比较](../app-service/overview-compare.md)。
@@ -46,8 +46,8 @@ ms.locfileid: "54332058"
 * 如何上传文件并将其存储在 Azure Blob 服务中。
 * 如何将 Azure 队列服务用于各层之间的通信。
 
-## <a name="prerequisites"></a>先决条件
-本教程假定用户了解[有关 Azure 云服务的基本概念](cloud-services-choose-me.md)，例如 *Web 角色*和*辅助角色*这样的术语。  此外，还假定用户知道如何处理 Visual Studio 中的 [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) 或 [Web 窗体](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)项目。 示例应用程序使用 MVC，但在本教程的大部分也适用于 Web 窗体。
+## <a name="prerequisites"></a>必备组件
+本教程假定用户了解[有关 Azure 云服务的基本概念](cloud-services-choose-me.md)，例如 *Web 角色*和*辅助角色*这样的术语。  此外，还假定用户知道如何处理 Visual Studio 中的 [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) 或 [Web 窗体](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)项目。 示例应用程序使用 MVC，但在本教程的大部分也适用于 Web 窗体。
 
 在没有 Azure 订阅的情况下可以本地运行应用，但要将应用程序部署到云中，则需要一个 Azure 订阅。 如果没有帐户，则可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)或[注册获取免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "54332058"
 
 ![广告表](./media/cloud-services-dotnet-get-started/adtable.png)
 
-当用户上传一个图像时，Web 角色中运行的前端在 [Azure Blob](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)中存储图像，并将广告信息存储在带有指向 Blob 的 URL 的数据库中。 同时，它将一条消息写入 Azure 队列。 在辅助角色中定期运行的后端进程轮询队列是否有新消息。 显示新消息时，辅助角色将创建该图像的缩略图，并为该广告更新缩略图 URL 数据库字段。 下图演示了应用程序各部分之间如何交互：
+当用户上传一个图像时，Web 角色中运行的前端在 [Azure Blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) 中存储图像，并将广告信息存储在带有指向 Blob 的 URL 的数据库中。 同时，它将一条消息写入 Azure 队列。 在辅助角色中定期运行的后端进程轮询队列是否有新消息。 显示新消息时，辅助角色将创建该图像的缩略图，并为该广告更新缩略图 URL 数据库字段。 下图演示了应用程序各部分之间如何交互：
 
 ![Contoso 广告体系结构](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
@@ -122,7 +122,7 @@ Azure 云服务是该应用程序将运行的环境。
 3. 在 DNS 名称输入框中，输入云服务的 URL 前缀。
 
     此 URL 必须是唯一的。  如果所选前缀已被使用，则会获得一条错误消息。
-4. 为服务指定新的资源组。 单击“新建”，并在资源组输入框中键入一个名称，例如 CS_contososadsRG。
+4. 为服务指定新的资源组。 单击“新建”，然后在资源组输入框中键入一个名称，例如 CS_contososadsRG。
 
 5. 选择要在其中部署该应用程序的区域。
 
@@ -173,7 +173,7 @@ Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
 
     为存储帐户启用异地复制时，会将存储内容复制到辅助数据中心，这样就能够在主要位置发生重大灾难时进行故障转移。 异地复制可能会产生额外的成本。 对于测试和开发帐户，你通常不希望因为异地复制而付款。 有关详细信息，请参阅[创建、管理或删除存储帐户](../storage/common/storage-create-storage-account.md)。
 
-5. 在“资源组”中，单击“使用现有资源组”，并选择用于云服务的资源组。
+5. 在“资源组”中，单击“使用现有资源组”，然后选择用于云服务的资源组。
 6. 将“位置”下拉列表设置为为云服务选择的同一区域。
 
     当云服务和存储帐户位于不同的数据中心（不同区域）时，延迟将增加，并且需要为数据中心外的带宽付费。 数据中心内的带宽是免费的。
@@ -188,10 +188,10 @@ Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
 ### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>配置解决方案，以便在 Azure 中运行时使用 Azure SQL 数据库
 Web 项目和辅助角色项目自身具有数据库连接字符串，并且当应用程序在 Azure 运行时指向 Azure SQL 数据库。
 
-将为 Web 角色使用 [Web.config 转换](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)，为辅助角色使用云服务环境设置。
+将为 Web 角色使用 [Web.config 转换](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)，为辅助角色使用云服务环境设置。
 
 > [!NOTE]
-> 在本部分和下一部分，会在项目文件中存储凭据。 [不要将敏感数据存储在公共源代码存储库中](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets)。
+> 在本部分和下一部分，会在项目文件中存储凭据。 [不要将敏感数据存储在公共源代码存储库中](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets)。
 >
 >
 
@@ -278,7 +278,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 </Role>
 ```
 
-`<Instances>` 设置指定 Azure 会在其上运行辅助角色代码的虚拟机的数量。 [后续步骤](#next-steps) 部分包括有关向外缩放云服务的详细信息的链接。
+`<Instances>` 设置指定 Azure 要在其上运行辅助角色代码的虚拟机的数量。 [后续步骤](#next-steps) 部分包括有关向外缩放云服务的详细信息的链接。
 
 ### <a name="deploy-the-project-to-azure"></a>将项目部署到 Azure
 1. 在“解决方案资源管理器”中，右键单击“ContosoAdsCloudService”云项目并选择“发布”。
@@ -296,7 +296,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
     ![摘要步骤](./media/cloud-services-dotnet-get-started/pubsummary.png)
 
-   “Azure 活动日志”窗口会在 Visual Studio 中打开。
+   “Azure 活动日志”窗口会在 Visual Studio 中打开  。
 5. 单击右箭头图标以展开部署详细信息。
 
     部署可能需要 5 分钟或更长时间。
@@ -306,7 +306,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 7. 就像在本地运行应用程序一样，现在可以通过创建、查看和编辑一些广告测试应用程序。
 
 > [!NOTE]
-> 完成测试后，删除或停止云服务。 即使不使用云服务，也会产生费用，因为需为其保留虚拟机资源。 如果保持运行云服务，找到 URL 的任何人都可以创建和查看广告。 在 [Azure 门户](https://portal.azure.com)中，转到云服务的“概览”选项卡，并单击页面顶部的“删除”按钮。 如果只是想要暂时防止其他人访问站点，请单击“停止”。 在这种情况下，会继续产生费用。 不再需要 SQL 数据库和存储帐户时，可以遵循类似的过程将其删除。
+> 完成测试后，删除或停止云服务。 即使不使用云服务，也会产生费用，因为需为其保留虚拟机资源。 如果保持运行云服务，找到 URL 的任何人都可以创建和查看广告。 在 [Azure 门户](https://portal.azure.com)中，转到云服务的“概览”选项卡，然后单击页面顶部的“删除”按钮。  。 在这种情况下，会继续产生费用。 不再需要 SQL 数据库和存储帐户时，可以遵循类似的过程将其删除。
 >
 >
 
@@ -353,7 +353,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
     存储客户端库更新频率高于 Visual Studio 项目模板，因此经常会发现新创建项目中的版本需要更新。
 4. 在窗口顶部，选择“浏览” 。
 5. 找到 *EntityFramework* NuGet 包，并将其安装在所有三个项目中。
-6. 查找 *Microsoft.WindowsAzure.ConfigurationManager* NuGet 包，然后将它安装在辅助角色项目中。
+6. 查找 *Microsoft.WindowsAzure.ConfigurationManager* NuGet 包，并将它安装在辅助角色项目中。
 
 ### <a name="set-project-references"></a>设置项目引用
 1. 在 ContosoAdsWeb 项目中，设置对 ContosoAdsCommon 项目的引用。 右键单击 ContosoAdsWeb 项目，并单击“引用” - “添加引用”。 在“引用管理器”对话框中，选择左窗格中的“解决方案 - 项目”，选择 **ContosoAdsCommon**，并单击“确定”。
@@ -365,7 +365,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
     后端使用此程序集将图像转换为缩略图。
 
 ### <a name="configure-connection-strings"></a>配置连接字符串
-在本部分，将为本地测试配置 Azure 存储和 SQL 连接字符串。 本教程前面的部署说明解释如何当应用程序在云中运行时设置连接字符串。
+在本部分，你将为本地测试配置 Azure 存储和 SQL 连接字符串。 本教程前面的部署说明解释如何当应用程序在云中运行时设置连接字符串。
 
 1. 在 ContosoAdsWeb 项目中，打开应用程序 Web.config 文件，并在 `configSections` 元素后面插入以下 `connectionStrings` 元素。
 
@@ -392,16 +392,16 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
    * 姓名：ContosoAdsDbConnectionString
    * 键入：String
-   * 值：粘贴用于 Web 角色项目的相同连接字符串。 （以下示例适用于 Visual Studio 2013。 如果使用 Visual Studio 2015 或更高版本并想要复制此示例，请记得更改数据源。）
+   * 值：粘贴用于 Web 角色项目的相同连接字符串。 （以下示例适用于 Visual Studio 2013。 如果你使用 Visual Studio 2015 或更高版本并想要复制此示例，请记得更改数据源。）
 
        ```
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
        ```
 
 ### <a name="add-code-files"></a>添加代码文件
-在本部分，将代码文件从已下载的解决方案复制到新的解决方案。 以下各节会显示并解释此代码的关键部分。
+在本部分，你要将代码文件从已下载的解决方案复制到新的解决方案。 以下各节会显示并解释此代码的关键部分。
 
-要将文件添加到某个项目或文件夹，请右键单击该项目或文件夹，然后单击“添加”现有项” - 。 选择所需的文件，并单击“添加” 。 如果询问你是否想要替换现有文件，请单击“是”。
+要将文件添加到某个项目或文件夹，请右键单击该项目或文件夹，并单击“添加” - “现有项”。 选择所需的文件，并单击“添加” 。 如果询问你是否想要替换现有文件，请单击“是”。
 
 1. 在 ContosoAdsCommon 项目中，删除 *Class1.cs* 文件，并在其原位置添加来自下载项目的 *Ad.cs* 和 *ContosoAdscontext.cs* 文件。
 2. 在 ContosoAdsWeb 项目中，从下载的项目添加以下文件。
@@ -417,9 +417,9 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 以下部分介绍与使用 Azure 环境、Blob 和队列相关的代码。 本教程未说明如何使用基架创建 MVC 控制器和视图，如何编写适用于 SQL Server 数据库的实体框架代码，或者在 ASP.NET 4.5 中的异步编程基础知识。 有关这些主题的信息，请参阅以下资源：
 
-* [MVC 5 入门](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
-* [EF 6 和 MVC 5 入门](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
-* [.NET 4.5 中的异步编程简介](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async)。
+* [MVC 5 入门](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
+* [EF 6 和 MVC 5 入门](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
+* [.NET 4.5 中的异步编程简介](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async)。
 
 ### <a name="contosoadscommon---adcs"></a>ContosoAdsCommon - Ad.cs
 Ad.cs 文件为 ad 类别定义一个枚举，为 ad 信息定义一个 POCO 实体类。
@@ -482,7 +482,7 @@ public class ContosoAdsContext : DbContext
 }
 ```
 
-类具有两个构造函数。 其中第一个由 web 项目使用，并指定存储在 Web.config 文件中的连接字符串的名称。 第二个构造函数用于传入辅助角色项目所使用的实际连接字符串，因为没有 Web.config 文件。 以前看到存储此连接字符串的位置，并且稍后会看到连接字符串在实例化 DbContext 类时代码如何检索它。
+类具有两个构造函数。 其中第一个由 web 项目使用，并指定存储在 Web.config 文件中的连接字符串的名称。 第二个构造函数用于传入辅助角色项目所使用的实际连接字符串，因为没有 Web.config 文件。 之前看到存储此连接字符串的位置，稍后会看到在实例化 DbContext 类时代码如何检索连接字符串。
 
 ### <a name="contosoadsweb---globalasaxcs"></a>ContosoAdsWeb - Global.asax.cs
 从 `Application_Start` 方法调用的代码创建*图像* Blob 容器和*图像*队列（如果它们尚不存在）。 这确保只要开始使用新的存储帐户，或在新的计算机上开始使用存储模拟器，就自动创建所需的 Blob 容器和队列。
@@ -533,7 +533,7 @@ imagesQueue.CreateIfNotExists();
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
 在 *AdController.cs* 文件中，构造函数调用 `InitializeStorage` 方法来创建 Azure 存储客户端库对象，此类对象提供一个用于处理 Blob 和队列的 API。
 
-然后，代码获取对图像 Blob 容器的引用，正如之前在 Global.asax.cs 中所见。 在执行该操作时，它设置适用于 Web 应用程序的默认 [重试策略](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) 。 对于超过暂时性故障反复重试超过一分钟的 Web 应用程序，默认指数回退重试策略将其可能挂起。 此处指定的重试策略会在每次尝试后等待三秒，最多可尝试三次。
+然后，代码获取对图像 Blob 容器的引用，正如之前在 Global.asax.cs 中所见。 在执行该操作时，它设置适用于 Web 应用程序的默认 [重试策略](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) 。 对于超过暂时性故障反复重试超过一分钟的 Web 应用程序，默认指数回退重试策略将其可能挂起。 此处指定的重试策略将在每次尝试后等待三秒，最多可尝试三次。
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -737,7 +737,7 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 此代码读取数据库以获取图像 URL、将图像转换为一个缩略图、在 blob 中保存缩略图、用缩略图 blob URL 更新数据库并删除队列消息。
 
 > [!NOTE]
-> 为简单起见，`ConvertImageToThumbnailJPG` 方法中的代码使用 System.Drawing 命名空间中的类。 但是，此命名空间中的类已设计用于 Windows 窗体。 不支持在 Windows 或 ASP.NET 服务中使用。 有关图像处理选项的详细信息，请参阅[动态图像生成](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)和[深入学习图像大小调整](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na)。
+> 为简单起见，`ConvertImageToThumbnailJPG` 方法中的代码使用 System.Drawing 命名空间中的类。 但是，此命名空间中的类已设计用于 Windows 窗体。 不支持在 Windows 或 ASP.NET 服务中使用。 有关图像处理选项的详细信息，请参阅[动态图像生成](https://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)和[深入学习图像大小调整](https://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na)。
 >
 >
 
@@ -762,20 +762,20 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 要使用完整仿真程序运行该应用程序，必须使用管理员权限打开 Visual Studio。
 
 ## <a name="next-steps"></a>后续步骤
-Contoso 广告应用程序有意保持入门教程的简单性。 例如，它没有实施[依赖关系注入](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection)或[存储库和单元的工作模式](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo)，它不[使用日志记录接口](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log)，它不使用 [EF Code First 迁移](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application)来管理数据模型更改，或使用 [EF 连接复原](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application)管理暂时性的网络错误等。
+Contoso 广告应用程序有意保持入门教程的简单性。 例如，它没有实施[依赖关系注入](https://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection)或[存储库和单元的工作模式](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo)，它不[使用日志记录接口](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log)，它不使用 [EF Code First 迁移](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application)来管理数据模型更改，或使用 [EF 连接复原](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application)管理暂时性的网络错误等。
 
 下面是演示更实际编码方法的一些云服务示例应用程序，从不太复杂到更复杂排列：
 
 * [PhluffyFotos](https://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。 在概念上与 Contoso 广告类似，但实施更多的功能和详细的实际编码做法。
 * [带有表、队列和 Blob 的 Azure 云服务多层应用程序](https://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。 引入了 Azure 存储表以及 Blob 和队列。 基于旧版 Azure SDK for .NET，需做一些修改才能配合当前版本。
 
-有关云开发的常规信息，请参阅 [使用 Azure 生成实际的云应用](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)。
+有关云开发的常规信息，请参阅 [使用 Azure 生成实际的云应用](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)。
 
-有关 Azure 存储最佳实践和模式的视频介绍，请参阅 [Microsoft Azure 存储 – 新增功能、最佳实践和模式](http://channel9.msdn.com/Events/Build/2014/3-628)。
+有关 Azure 存储最佳实践和模式的视频介绍，请参阅 [Microsoft Azure 存储 – 新增功能、最佳实践和模式](https://channel9.msdn.com/Events/Build/2014/3-628)。
 
 有关详细信息，请参阅以下资源：
 
-* [Azure 云服务第 1 部分：简介](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Azure 云服务第 1 部分：简介](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [如何管理云服务](cloud-services-how-to-manage-portal.md)
 * [Azure 存储](https://docs.microsoft.com/azure/storage/)
 * [如何选择云服务提供商](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

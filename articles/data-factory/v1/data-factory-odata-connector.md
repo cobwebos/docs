@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 73cba950a159bd1f70fc231f0923e55332af0199
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 63f26c8a4a0a9195083386b18c0fff9439428bf0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108800"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546188"
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -69,7 +69,7 @@ ms.locfileid: "56108800"
 | username |如果使用基本身份验证，请指定用户名。 |是（仅在使用基本身份验证时适用） |
 | password |指定为用户名指定的用户帐户的密码。 |是（仅在使用基本身份验证时适用） |
 | authorizedCredential |如果使用 OAuth，请在数据工厂复制向导或编辑器中单击“授权”按钮，并输入凭据，此时会自动生成此属性的值。 |是（仅在使用 OAuth 身份验证时适用） |
-| gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅在从本地 OData 源复制数据时指定。 |否 |
+| gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅指定是否要将数据从本地 OData 源上的进行复制。 |否 |
 
 ### <a name="using-basic-authentication"></a>使用基本身份验证
 ```json
@@ -80,7 +80,7 @@ ms.locfileid: "56108800"
         "type": "OData",
         "typeProperties":
         {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
             "username": "username",
             "password": "password"
@@ -98,7 +98,7 @@ ms.locfileid: "56108800"
         "type": "OData",
         "typeProperties":
         {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         }
     }
@@ -146,7 +146,7 @@ ms.locfileid: "56108800"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **ODataResource** 类型数据集（包括 OData 数据集）的 typeProperties 节具有以下属性
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | 路径 |OData 资源路径 |否 |
 
@@ -157,7 +157,7 @@ ms.locfileid: "56108800"
 
 源属于 **RelationalSource** 类型（包括 OData）时，以下属性在 typeProperties 节可用：
 
-| 属性 | 说明 | 示例 | 必选 |
+| 属性 | 描述 | 示例 | 需要 |
 | --- | --- | --- | --- |
 | query |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 
@@ -211,7 +211,7 @@ ms.locfileid: "56108800"
         "type": "OData",
         "typeProperties":
         {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         }
     }

@@ -1,19 +1,19 @@
 ---
 title: 了解 Azure IoT 中心终结点 | Microsoft Docs
 description: 开发人员指南 - 有关 IoT 中心面向设备和面向服务的终结点的参考信息。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 28019163cfec1a9d2e3c12346a6aba2bd00b30b1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251434"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539541"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -53,7 +53,7 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
 
   * *接收直接方法请求*。 设备使用此终结点侦听[直接方法](iot-hub-devguide-direct-methods.md)的请求。
 
-    这些终结点使用 [MQTT v3.1.1](http://mqtt.org/)、HTTPS 1.1 和 [AMQP 1.0](https://www.amqp.org/) 协议进行公开。 还可通过端口 443 上的 [WebSocket](https://tools.ietf.org/html/rfc6455) 来实现 AMQP。
+    这些终结点使用 [MQTT v3.1.1](https://mqtt.org/)、HTTPS 1.1 和 [AMQP 1.0](https://www.amqp.org/) 协议进行公开。 还可通过端口 443 上的 [WebSocket](https://tools.ietf.org/html/rfc6455) 来实现 AMQP。
 
 * **服务终结点**。 每个 IoT 中心公开一组终结点，供解决方案后端用于与设备通信。 除了一个例外，这些终结点只使用 [AMQP](https://www.amqp.org/) 协议进行公开。 方法调用终结点通过 HTTPS 协议进行公开。
   
@@ -83,6 +83,15 @@ IoT 中心当前支持将以下 Azure 服务作为附加终结点：
 * 服务总线主题
 
 有关可添加的终结点的数量限制，请参阅[配额和限制](iot-hub-devguide-quotas-throttling.md)。
+
+可以使用 REST API[获取终结点运行状况](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)来获取终结点的运行状况状态。 我们建议使用[IoT 中心度量值](iot-hub-metrics.md)与相关的路由的消息延迟，以识别和调试错误终结点运行状况时出现故障或不正常。
+
+|运行状况状态|描述|
+|---|---|
+|healthy|终结点按预期方式接受消息。|
+|不正常|终结点按预期方式不接受消息，IoT 中心正在重试将数据发送到此终结点。 IoT 中心已建立的最终一致的运行状况状态时，不正常的终结点的状态将更新为正常。|
+|未知|IoT 中心未建立与该终结点的连接。 已传递到任何消息或拒绝此终结点。|
+|死信|终结点不接受消息，IoT 中心 retrial 时间重试发送消息之后。|
 
 ## <a name="field-gateways"></a>现场网关
 

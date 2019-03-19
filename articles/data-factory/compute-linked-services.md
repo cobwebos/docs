@@ -3,20 +3,20 @@ title: Azure 数据工厂支持的计算环境 | Microsoft Docs
 description: 了解可在 Azure 数据工厂管道（例如 Azure HDInsight）中用于转换或处理数据的计算环境。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: douglasl
-ms.openlocfilehash: 5e620b03f5588369fc73a62f2019d857766596fd
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: b4078303a0fabf70fe8bda82875dd312714f73de
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321936"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576882"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
@@ -91,7 +91,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 > [!IMPORTANT]
 > HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。 
 >
-> 随着运行的活动越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
+> 随着运行的活动越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 >
 > 
 
@@ -146,7 +146,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必选 |
+| 属性                | 说明                              | 需要 |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | 指定应用程序的客户端 ID。     | 是      |
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
@@ -156,7 +156,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 也可以为按需 HDInsight 群集的粒度配置指定以下属性。
 
-| 属性               | 说明                              | 必选 |
+| 属性               | 说明                              | 需要 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为待创建的 HDInsight 群集指定核心配置参数（如在 core-site.xml 中）。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -224,7 +224,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ### <a name="node-sizes"></a>节点大小
 可使用以下属性指定头节点、数据节点和 Zookeeper 节点的大小： 
 
-| 属性          | 说明                              | 必选 |
+| 属性          | 说明                              | 需要 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 指定头节点的大小。 默认值为：Standard_D3。 有关详细信息，请参阅**指定节点大小**部分。 | 否       |
 | dataNodeSize      | 指定数据节点的大小。 默认值为：Standard_D3。 | 否       |
@@ -304,13 +304,15 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 可以创建 Azure Batch 链接服务，以向数据工厂注册虚拟机 (VM) 的 Batch 池。 你可以使用 Azure Batch 运行自定义活动。
 
 如果不熟悉 Azure Batch 服务，请参阅以下主题：
 
 * [Azure Batch 基础知识](../batch/batch-technical-overview.md) - Azure Batch 服务的概述。
-* [New-AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1) cmdlet - 创建 Azure Batch 帐户（或）[Azure 门户](../batch/batch-account-create-portal.md) - 使用 Azure 门户创建 Azure Batch 帐户。 请参阅 [Using PowerShell to manage Azure Batch Account](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)（使用 Azure PowerShell 管理 Azure Batch 帐户）主题，以了解有关使用此 cmdlet 的详细信息。
-* [New-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) cmdlet - 创建 Azure Batch 池。
+* [新 AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) cmdlet 创建 Azure Batch 帐户 （或） [Azure 门户](../batch/batch-account-create-portal.md)若要创建使用 Azure 门户的 Azure Batch 帐户。 请参阅 [Using PowerShell to manage Azure Batch Account](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)（使用 Azure PowerShell 管理 Azure Batch 帐户）主题，以了解有关使用此 cmdlet 的详细信息。
+* [新 AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 来创建 Azure Batch 池。
 
 ### <a name="example"></a>示例
 
@@ -378,9 +380,9 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 说明                              | 必选                                 |
+| 属性               | 说明                              | 需要                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
+| Type                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
 | apiKey                 | 已发布的工作区模型的 API。     | 是                                      |
 | updateResourceEndpoint | Azure ML Web 服务终结点的更新资源 URL 用于使用经过训练的模型文件更新预测性 Web 服务 | 否                                       |
@@ -481,7 +483,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必选                                 |
+| 属性             | 说明                              | 需要                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | 名称                 | 链接服务的名称               | 是   |
 | type                 | 类型属性应设置为：AzureDatabricks。 | 是                                      |

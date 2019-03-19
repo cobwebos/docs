@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 5e905168ab2c2f10bcfadfc605fdcaa800e70332
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 02b3f4b0db46d05751569d465abf09310be91e8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982001"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549762"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 以下步骤演示了如何使用 Azure PowerShell 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。
@@ -28,7 +28,7 @@ ms.locfileid: "55982001"
 也可根据需要通过 [Azure 命令行接口 (Azure CLI)](../linux/migration-classic-resource-manager-cli.md) 迁移资源。
 
 * 如需了解受支持的迁移方案的背景信息，请参阅[平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移](migration-classic-resource-manager-overview.md)。
-* 如需详细的指南和迁移演练，请参阅[从技术方面深入探讨如何在支持的平台上完成从经典部署模型到 Azure 资源管理器部署模型的迁移](migration-classic-resource-manager-deep-dive.md)。
+* 如需详细的指南和迁移演练，请参阅 [Technical deep dive on platform-supported migration from classic to Azure Resource Manager](migration-classic-resource-manager-deep-dive.md)（从技术方面深入探讨如何在支持的平台上完成从经典部署模型到 Azure Resource Manager 部署模型的迁移）。
 * [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)
 
 <br>
@@ -45,7 +45,7 @@ ms.locfileid: "55982001"
 * 如果通过自动化脚本来部署目前的基础结构和应用程序，则可尝试使用这些脚本进行迁移，以便创建类似的测试性设置。 也可以使用 Azure 门户设置示例环境。
 
 > [!IMPORTANT]
-> 目前不支持将应用程序网关从经典部署迁移到 Resource Manager。 要迁移带应用程序网关的经典虚拟网络，请先删除该网关，然后运行准备操作来移动网络。 完成迁移后，在 Azure 资源管理器中重新连接该网关。
+> 目前不支持通过应用程序网关从经典部署模型迁移到 Resource Manager 部署模型。 要迁移带应用程序网关的经典虚拟网络，请先删除该网关，然后运行准备操作来移动网络。 完成迁移后，在 Azure 资源管理器中重新连接该网关。
 >
 >无法自动迁移其他订阅中连接到 ExpressRoute 线路的 ExpressRoute 网关。 此类情况下，请删除 ExpressRoute 网关、迁移虚拟网络并重新创建网关。 有关详细信息，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../../expressroute/expressroute-migration-classic-resource-manager.md)。
 
@@ -126,7 +126,7 @@ ms.locfileid: "55982001"
 <br>
 
 ## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>步骤 5：确保在当前部署或 VNET 的 Azure 区域中有足够的 Azure 资源管理器虚拟机 vCPU
-可以使用以下 PowerShell 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)。
+可以使用以下 PowerShell 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager)。
 
 此示例检查在“美国西部”区域中的可用性。 将示例区域名称替换成自己的名称。
 
@@ -150,7 +150,7 @@ Get-AzVMUsage -Location "West US"
     Get-AzureService | ft Servicename
 ```
 
-获取云服务的部署名称。 在此示例中，服务名称是“我的服务”。 将示例服务名称替换成自己的服务名称。
+获取云服务的部署名称。 在此示例中，服务名称是“我的服务”。 使用自己的服务名称替换示例名称。
 
 ```powershell
     $serviceName = "My Service"
@@ -234,7 +234,7 @@ Get-AzVMUsage -Location "West US"
 > [!NOTE]
 > 虚拟网络名称可能和新门户中显示的名称不同。 新的 Azure 门户显示名称为 `[vnet-name]`，但实际的虚拟网络名称的类型是 `Group [resource-group-name] [vnet-name]`。 迁移之前，使用命令 `Get-AzureVnetSite | Select -Property Name` 查找实际的虚拟网络名称，或者在旧版 Azure 门户中查看它。 
 
-此示例将虚拟网络名称设置为 **myVnet**。 将示例虚拟网络名称替换成自己的名称。
+此示例将虚拟网络名称设置为 **myVnet**。 使用自己的虚拟网络名称替换示例名称。
 
 ```powershell
     $vnetName = "myVnet"

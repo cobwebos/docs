@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2effd6c067a1378d9f774f282f6cea69a50596c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d522b0740b144c39da81a9838f9d6e259fe62d22
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204434"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532773"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的密码哈希同步
 
@@ -139,9 +139,9 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 |-|-|
 | 打算对其他这些应用程序（非 Azure AD 和 Office 365）保留使用 AD FS。 | 转换域后，将同时使用 AD FS 和 Azure AD。 考虑用户体验。 在某些情况下，用户可能需要进行身份验证两次，一次是针对 Azure AD（然后用户可以通过 SSO 访问 Office 365 等其他应用程序），另一次是针对仍以信赖方信任方式绑定到 AD FS 的任何应用程序再次进行身份验证。 |
 | AD FS 实例经过重度的自定义，并依赖于 onload.js 文件中的特定自定义设置（例如，你已更改登录体验，使用户只需以 **SamAccountName** 格式输入其用户名而不是用户主体名称 (UPN)；或者组织在登录体验中使用了众多的品牌设计）。 不能在 Azure AD 中复制 onload.js 文件。 | 在继续之前，必须验证 Azure AD 是否可以满足当前自定义要求。 如需更多信息和指导，请参阅有关 AD FS 品牌和 AD FS 自定义的部分。|
-| 使用 AD FS 阻止旧版身份验证客户端。| 考虑将用于阻止旧版身份验证客户端的 AD FS 控制机制替换为[条件访问控制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)和 [Exchange Online 客户端访问规则](http://aka.ms/EXOCAR)的组合。 |
+| 使用 AD FS 阻止旧版身份验证客户端。| 考虑将用于阻止旧版身份验证客户端的 AD FS 控制机制替换为[条件访问控制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)和 [Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)的组合。 |
 | 要求用户在 AD FS 中进行身份验证时对本地多重身份验证服务器解决方案执行多重身份验证。| 在托管标识域中，无法通过本地多重身份验证解决方案将多重身份验证质询注入到身份验证流。 但是，在转换域后，可以使用 Azure 多重身份验证服务进行多重身份验证。<br /><br /> 如果用户当前未使用 Azure 多重身份验证，则需要执行一次性的用户注册步骤。 必须准备好将规划的注册过程传达给用户。 |
-| 目前在 AD FS 中使用访问控制策略（AuthZ 规则）来控制对 Office 365 的访问。| 考虑将这些策略替换为等效的 Azure AD [条件访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)和 [Exchange Online 客户端访问规则](http://aka.ms/EXOCAR)。|
+| 目前在 AD FS 中使用访问控制策略（AuthZ 规则）来控制对 Office 365 的访问。| 考虑将这些策略替换为等效的 Azure AD [条件访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)和 [Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)。|
 
 ### <a name="common-ad-fs-customizations"></a>常见的 AD FS 自定义项
 
@@ -319,7 +319,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    * “无缝单一登录”设置为“已启用”。
    * “密码同步”设置为“已启用”。<br /> 
 
-   ![显示“用户登录”部分中的设置的屏幕截图 ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![显示“用户登录”部分中的设置的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 跳到[测试和后续步骤](#testing-and-next-steps)。
 
@@ -337,7 +337,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
    在启用密码哈希同步之前：![显示“用户登录”页上的“不要配置”选项的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   在启用密码哈希同步之后：![显示“用户登录”页上的新选项的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   在启用密码哈希同步之后：![显示用户在登录页上的新选项的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > 从 Azure AD Connect 版本 1.1.880.0 开始，默认会选中“无缝单一登录”复选框。
@@ -400,7 +400,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 测试密码哈希同步：
 
 1. 在 InPrivate 模式下打开 Internet Explorer，以避免无缝 SSO 自动将你登录。
-2. 转到 Office 365 登录页 ([http://portal.office.com](http://portal.office.com/))。
+2. 转到 Office 365 登录页 ([https://portal.office.com](https://portal.office.com/))。
 3. 输入用户 UPN，然后选择“下一步”。 请务必输入已从本地 Active Directory 实例同步的，并且事先已使用联合身份验证的混合用户的 UPN。 此时会显示一个页面，可在其中输入用户名和密码：
 
    ![显示用于输入用户名的登录页的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)

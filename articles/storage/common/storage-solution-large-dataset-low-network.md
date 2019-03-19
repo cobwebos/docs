@@ -4,16 +4,16 @@ description: 了解如何在环境中限制到无网络带宽且想要传输大�
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 54a51f5f124857419727ed7ca574f717e17b125a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
+ms.openlocfilehash: a6505232066d7a2e63c3e9508cb16cb9a31f8e35
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263212"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776659"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>具有低或无网络宽带的大型数据集的数据传输
  
@@ -59,7 +59,7 @@ ms.locfileid: "53263212"
 |    合作伙伴集成              |    部分                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    部分                                |
 |    寄送                         |    Microsoft 托管            |    Microsoft 托管                             |    Microsoft 托管                     |    由客户管理                    |
 | 数据移动时使用         |在商务区域内|在商务区域内|在商务区域内|跨地理区域，例如美国到欧洲|
-|    定价                          |    [定价](https://azure.microsoft.com/pricing/details/storage/databox/disk/)                    |   [定价](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定价](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定价](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    定价                          |    [定价](https://azure.microsoft.com/pricing/details/storage/databox/disk/)                    |   [价格](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [价格](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定价](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>后续步骤

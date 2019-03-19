@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 827990e03ca1bbb4bfd2ca9cf8bf0a9ceccfb51b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 136b819f6bbbc1b546b66f54e771dbec8c71202c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719381"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548143"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -118,7 +118,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 
 业务流程协调程序函数可接收提供的电话号码，并立即向其发送一条短信，其中包含随机生成的 4 位数验证代码 &mdash; 例如，2168。 然后函数等待 90 秒，获取响应。
 
-若要使用该代码进行答复，可使用另一函数中的 [`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript)](durable-functions-instance-management.md#sending-events-to-instances)，或调用上面的 202 响应中引用的 **sendEventUrl** HTTP POST webhook，同时将 `{eventName}` 替换为事件的名称 `SmsChallengeResponse`：
+若要使用该代码进行答复，可使用另一函数中的 [`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript)](durable-functions-instance-management.md)，或调用上面的 202 响应中引用的 **sendEventUrl** HTTP POST webhook，同时将 `{eventName}` 替换为事件的名称 `SmsChallengeResponse`：
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -157,7 +157,7 @@ Content-Length: 145
 下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 
 > [!NOTE]
-> 将需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行下面的示例代码。
+> 需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行下面的示例代码。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 

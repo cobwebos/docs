@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 70bae1558860b763d17d04e10d5d926b39300101
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.openlocfilehash: 48a84520a61d19968b467091871459e21898dd5e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321239"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548637"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "54321239"
 
 可以使用[适用于 Node.js 的 Azure CDN SDK](https://www.npmjs.com/package/azure-arm-cdn) 来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 Node.js 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 Node.js 的 Azure CDN SDK 的所有方面。
 
-要完成本教程，应已安装并配置了 [Node.js](http://www.nodejs.org)**4.x.x** 或更高版本。  可以使用任何需要的文本编辑器创建 Node.js 应用程序。  为了编写本教程，我使用了 [Visual Studio Code](https://code.visualstudio.com)。  
+要完成本教程，应已安装并配置了 [Node.js](https://www.nodejs.org)**4.x.x** 或更高版本。  可以使用任何需要的文本编辑器创建 Node.js 应用程序。  为了编写本教程，我使用了 [Visual Studio Code](https://code.visualstudio.com)。  
 
 > [!TIP]
 > 可在 MSDN 上下载[本教程中已完成的项目](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)。
@@ -363,9 +363,9 @@ function cdnDelete() {
 ## <a name="next-steps"></a>后续步骤
 要从本演练中查看完成的项目，请[下载示例](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)。
 
-要查看有关适用于 Node.js 的 Azure CDN SDK 的参考，请查看[引用](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)。
+要查看有关适用于 Node.js 的 Azure CDN SDK 的参考，请查看[引用](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)。
 
-要查找有关适用于 Node.js 的 Azure CDN SDK 的其他文档，请查看[完整引用](http://azure.github.io/azure-sdk-for-node/)。
+要查找有关适用于 Node.js 的 Azure CDN SDK 的其他文档，请查看[完整引用](https://azure.github.io/azure-sdk-for-node/)。
 
 使用 [PowerShell](cdn-manage-powershell.md) 管理 CDN 资源。
 

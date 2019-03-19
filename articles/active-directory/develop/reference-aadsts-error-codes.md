@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4ad41992b2ac0dfc98303601060ed299e75ddfc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 16f7dc81d8174e3d8da39d3af95b945f8034cecd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234282"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452005"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>身份验证和授权错误代码
 
@@ -68,7 +68,7 @@ ms.locfileid: "56234282"
 | AADSTS50032 | WeakRsaKey - 指示错误的用户尝试使用弱 RSA 密钥。 |
 | AADSTS50033 | RetryableError - 指示与数据库操作不相关的暂时性错误。 |
 | AADSTS50034 | UserAccountNotFound - 若要登录到此应用程序，必须将帐户添加到目录中。 |
-| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt - 主体中缺少用于生成成对标识符的盐。 请联系租户管理员。 |
+| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt-生成成对标识符所需的 salt 原则上缺少。 请联系租户管理员。 |
 | AADSTS50043 | UnableToGeneratePairwiseIdentifierWithMultipleSalts |
 | AADSTS50048 | SubjectMismatchesIssuer - 使用者与客户端断言中的颁发者声明不匹配。 请联系租户管理员。 |
 | AADSTS50049 | NoSuchInstanceForDiscovery - 未知或无效的实例。 |
@@ -140,7 +140,7 @@ ms.locfileid: "56234282"
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - 用户或管理员尚未许可将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 |
 | AADSTS65004 | UserDeclinedConsent - 用户已拒绝许可访问该应用。 让用户重试登录并许可应用|
-| AADSTS65005 | MisconfiguredApplication - 应用所需的资源访问列表不包含可以通过资源来发现的应用，或者客户端应用请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用。 使用以下链接，尝试针对 SAML 列出的解决方法：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list) |
+| AADSTS65005 | MisconfiguredApplication - 应用所需的资源访问列表不包含可以通过资源来发现的应用，或者客户端应用请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用。 使用以下链接，尝试针对 SAML 列出的解决方法：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 身份验证失败。 刷新令牌无效。 该错误的可能原因如下：<ul><li>令牌绑定标头为空</li><li>令牌绑定哈希不匹配</li></ul> |
 | AADSTS70001 | UnauthorizedClient - 应用程序处于禁用状态。 |
@@ -255,6 +255,7 @@ ms.locfileid: "56234282"
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource - 资源未配置为接受仅限设备的令牌。 |
 | AADSTS240001 | BulkAADJTokenUnauthorized - 未授权用户在 Azure AD 中注册设备。 |
 | AADSTS240002 | RequiredClaimIsMissing - 无法将 id_token 用作 `urn:ietf:params:oauth:grant-type:jwt-bearer` 授予。|
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy - 租户管理员已配置了阻止此请求的安全策略。 检查在租户级别定义的安全策略来确定你的请求是否满足策略要求。 |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest - 应用程序中找不到目录/租户。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能错误配置了应用程序的标识符值，或者将身份验证请求发送到了错误的租户。 |
 | AADSTS700020 | InteractionRequired - 访问权限授予需要交互。 |
 | AADSTS700022 | InvalidMultipleResourcesScope - 为输入参数范围提供的值无效，因为它包含多个资源。 |

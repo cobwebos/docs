@@ -9,18 +9,18 @@ editor: amsriva
 ms.assetid: 3976399b-25ad-45eb-8eb3-fdb736a598c5
 ms.service: application-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: amsriva
-ms.openlocfilehash: 689ee54dc1db2ea371b08270718278fd98c65bb5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 856f23de8a8772255f570a923ecf1708dc819bb5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22704704"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778342"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>应用程序网关的端到端 SSL 概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "22704704"
 
 端到端 SSL 允许安全地将敏感数据以加密方式传输到后端，同时仍可利用应用程序网关提供的第 7 层负载均衡功能的好处。 部分功能包括：基于 Cookie 的会话相关性、基于 URL 的路由、基于站点的路由支持，或注入 X-Forwarded-* 标头。
 
-如果配置为端到端 SSL 通信模式，应用程序网关会在网关上终止 SSL 会话，并解密用户流量。 然后，它会应用配置的规则，以选择要将流量路由到的适当后端池实例。 应用程序网关接下来会初始化到后端服务器的新 SSL 连接，并先使用后端服务器的公钥证书重新加密数据，然后再将请求传输到后端。 要启用端到端 SSL，请将 BackendHTTPSetting 中的协议设置设为 HTTPS，然后再将其应用到后端池。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
+如果配置为端到端 SSL 通信模式，应用程序网关会在网关上终止 SSL 会话，并解密用户流量。 然后，它会应用配置的规则，以选择要将流量路由到的适当后端池实例。 应用程序网关接下来会初始化到后端服务器的新 SSL 连接，并先使用后端服务器的公钥证书重新加密数据，此后再将请求传输到后端。 要启用端到端 SSL，请将 BackendHTTPSetting 中的协议设置设为 HTTPS，然后再将其应用到后端池。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
 
 ![端到端 ssl 方案][1]
 

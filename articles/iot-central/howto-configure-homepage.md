@@ -1,45 +1,50 @@
 ---
-title: 配置 Azure IoT Central 应用程序的主页 | Microsoft Docs
-description: 作为构建者，了解如何配置 Azure IoT Central 应用程序的主页。
+title: 配置 Azure IoT Central 应用程序仪表板 |Microsoft Docs
+description: 作为生成器中，将了解如何配置默认 Azure IoT Central 应用程序仪表板。
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2018
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a03ac0ef66f4ffdce53d0bd2a35839bbe1615d0b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: 3168bbbf70c1ffeb3827482459febbcea256eda6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199079"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773140"
 ---
-# <a name="configuring-homepage"></a>配置主页
+# <a name="configure-the-application-dashboard"></a>配置应用程序仪表板
 
-主页是当有权访问应用程序的用户导航到应用程序的 URL 时加载的页面。 如果在创建应用程序时选择了“示例 Contoso”或“示例 Devkits”应用程序模板，则应用程序将具有预定义的主页。 另一方面，如果选择了“自定义应用程序”应用程序模板，则主页将为空白。
+**仪表板**是有权访问该应用程序的用户导航到应用程序的 URL 时将加载的页。 如果选择了任一**示例 Contoso**或**示例 Devkits**应用程序模板创建应用程序中，你的应用程序具有预定义仪表板。 如果选择了**自定义应用程序**应用程序模板，你的仪表板为空。
 
-例如，下面是基于“示例 Contoso”模板的应用程序的主页。 若要为应用程序自定义主页，请先在右上角选择“编辑”。 
+> [!NOTE]
+> 用户还可以[创建其自己的个人仪表板](howto-personalize-dashboard.md)使用而不是默认应用程序仪表板。
 
-![基于“示例 Contoso”模板的应用程序的主页](media/howto-configure-homepage/image1.png)
+## <a name="add-tiles"></a>添加磁贴
 
-选择“编辑”将在左侧面板中打开仪表板库。 可以添加许多类型的磁贴和仪表板基元来自定义主页。
+下面的屏幕截图显示在从创建的应用程序中的仪表板**示例 Contoso**模板。 若要自定义应用程序的默认仪表板，请选择**编辑**顶部页面右上角。
+
+![基于"示例 Contoso"模板的应用程序的仪表板](media/howto-configure-homepage/image1.png)
+
+选择**编辑**，将打开仪表板库面板。 库中包含的磁贴和仪表板基元可用于自定义仪表板。
 
 ![仪表板库](media/howto-configure-homepage/image2.png)
 
-例如，可以添加“设置和属性”磁贴，以显示所选的当前设置和属性值。 为此，请先选择“设备模板”，然后选择“设备实例”。 之后，为磁贴添加标题，然后选择要显示的**设置**或**属性**。 在此示例中，我们已选择了“设置温度”。 单击“完成”将导致此磁贴显示在主页上。
+例如，您可以添加**的设备设置和属性**磁贴以显示选择的设备的当前设置和属性值。 为此，请先选择“设备模板”，然后选择“设备实例”。 之后，为磁贴添加标题，然后选择要显示的**设置**或**属性**。 以下屏幕截图显示了设置和选择要添加到磁贴的属性。 选择**完成**若要将更改保存到仪表板。
 
 ![带有设置和属性详细信息的“配置设备详细信息”窗体](media/howto-configure-homepage/image3.png)
 
-现在，当操作员查看主页时，可以看到此磁贴，其中显示了设备的属性或设置：
+现在，当操作员查看默认应用程序仪表板时，他们将看到的新磁贴**设置温度**为设备设置：
 
 ![带有显示的磁贴设置和属性的“仪表板”选项卡](media/howto-configure-homepage/image4.png)
 
-使用库中的各种其他磁贴类型来发现如何更深入地自定义应用程序的主页。
+你可以浏览库中的其他磁贴类型，若要了解如何进一步自定义默认应用程序仪表板。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已了解了如何配置 Azure IoT Central 主页，你可以：
+现在，已了解如何配置 Azure IoT Central 的默认应用程序仪表板，你可以：
 
 > [!div class="nextstepaction"]
 > [了解如何准备和上传图像](howto-prepare-images.md)

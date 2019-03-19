@@ -2,19 +2,19 @@
 title: Azure IoT 中心设备管理入门 (Python) | Microsoft Docs
 description: 如何使用 IoT 中心设备管理进行远程设备重启。 使用适用于 Python 的 Azure IoT SDK 实现包含直接方法的模拟设备应用和调用直接方法的服务应用。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 01/02/2018
+ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 36514fe321fa352c2526db5a18ac8618d7af713e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 80091adaa364289ec9cddf6e259242e376b76b37
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756761"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549606"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
 
@@ -34,11 +34,11 @@ ms.locfileid: "55756761"
 
 要完成本教程，需要以下各项：
 
-* [Python 2.x 或 3.x][lnk-python-download]。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统][lnk-install-pip]。
+* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
     * 使用命令 `pip install azure-iothub-device-client` 安装 [azure-iothub-device-client](https://pypi.org/project/azure-iothub-device-client/) 包
     * 使用命令 `pip install azure-iothub-service-client` 安装 [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) 包
-* 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包][lnk-visual-c-redist]，以便使用 Python 中的本机 DLL。
-* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
+* 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包](https://www.microsoft.com/download/confirmation.aspx?id=48145)，以便使用 Python 中的本机 DLL。
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -253,21 +253,3 @@ ms.locfileid: "55756761"
 1. 可在控制台查看对直接方法的设备响应。
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
-
-<!-- images and links -->
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: http://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
-
-[img-output]: media/iot-hub-get-started-with-dm/image6.png
-[img-dm-ui]: media/iot-hub-get-started-with-dm/dmui.png
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[Azure portal]: https://portal.azure.com/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
-[lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-
-[lnk-devtwin]: iot-hub-devguide-device-twins.md
-[lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

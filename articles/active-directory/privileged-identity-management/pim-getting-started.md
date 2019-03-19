@@ -14,12 +14,12 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09914de48df09dabd4069cd33e7acbea328fa89d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 26e94c9b56ba65e3a7c51c1a85e97f7521377bae
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193146"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546851"
 ---
 # <a name="start-using-pim"></a>开始使用 PIM
 
@@ -27,7 +27,7 @@ ms.locfileid: "56193146"
 
 本文介绍了如何启用并开始使用 PIM。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用 PIM，必须具有以下许可证之一：
 
@@ -102,11 +102,10 @@ ms.locfileid: "56193146"
 
 ![PIM 的顶级任务 - 屏幕快照](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| 任务 + 管理 | 说明 |
+| 任务 + 管理 | 描述 |
 | --- | --- |
 | **我的角色**  | 显示已向你分配的符合条件的活动角色列表。 可以在此处激活任何符合条件的已分配角色。 |
 | **我的请求** | 显示要激活符合条件的角色分配的挂起的请求。 |
-| **应用程序访问** | 使你能够减少潜在延迟，并在激活后立即使用角色。 |
 | **审批请求** | 按用户显示你的目录中指定由你进行审批的要激活符合条件的角色的请求列表。 |
 | **审阅访问权限** | 列出指定要由你完成的活动访问审阅（无论你是审阅自己还是审阅其他人的访问权限）。 |
 | **Azure AD 角色** | 为特权角色管理员显示用来管理 Azure AD 目录角色分配的仪表板和设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 “我的视图”仪表板仅显示正在访问此仪表板的用户的相关信息，而非整个租户的相关信息。 |

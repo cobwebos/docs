@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/07/2019
 ms.author: diberry
-ms.openlocfilehash: 093c60287b16073a6c04e824dc439f5dc069ec96
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863663"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765164"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
 
@@ -95,6 +95,9 @@ LUIS 当前具有 2 个终结点：一个用于创作，一个用于文本分析
 |appID|在 URL 路由中使用的 LUIS 应用 ID，可在应用仪表板上找到|
 |q|从客户端应用程序（如聊天机器人）发送的话语文本|
 
+## <a name="failover-regions"></a>故障转移区域
+
+每个区域的故障转移到次要区域。 在欧洲和澳大利亚的转移故障转移的欧洲失败在澳大利亚。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 751b8b72683d9c7e779191511cb2824d34997c32
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: b46acb2f0fe04c37e73a69a09ee6ede9110864ca
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244309"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543536"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>适用于文本分析认知服务的外部和社区内容
 
@@ -50,4 +50,4 @@ ms.locfileid: "56244309"
 ## <a name="see-also"></a>另请参阅
 
  [StackOverflow：Azure 文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow：Azure 认知服务](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow：Azure 认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

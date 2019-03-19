@@ -1,22 +1,21 @@
 ---
-title: Azure Dev Spaces 的业务连续性和灾难恢复 | Microsoft Docs
+title: Azure Dev Spaces 的业务连续性和灾难恢复
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
-ms.topic: article
+ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
+keywords: 'Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，Helm，服务网格，服务网格路由、 kubectl，k8s '
 manager: jeconnoc
-ms.openlocfilehash: 877d49a49333d70ac7660900e49e7c588f52756c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 7b463be143ed3f89c1b10424dafc7a0e841ecbfc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451556"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775631"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 的业务连续性和灾难恢复
 
@@ -93,7 +92,7 @@ azds space select -n <space name>
 
 ## <a name="access-a-service-on-a-backup-cluster"></a>访问备份群集上的服务
 
-如果已将服务配置为使用公共 DNS 名称，那么在备份群集上运行该服务时，它将具有不同的 URL。 公共 DNS 名称始终采用 `<space name>.s.<service name>.<cluster GUID>.<region>.aksapp.io` 格式。 如果切换到不同群集，群集 GUID 和区域可能会发生变化。
+如果已将服务配置为使用公共 DNS 名称，那么在备份群集上运行该服务时，它将具有不同的 URL。 公共 DNS 名称始终采用 `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io` 格式。 如果切换到不同群集，群集 GUID 和区域可能会发生变化。
 
 在运行 `azds up` 时，或者在 Visual Studio“Azure Dev Spaces”下的“输出”窗口中，Dev Spaces 始终显示正确的服务 URL。
 
@@ -102,7 +101,7 @@ azds space select -n <space name>
 $ azds list-uris
 Uri                                                     Status
 ------------------------------------------------------  ---------
-http://mywebapi.d05afe7e006a4fddb73c.eastus.aksapp.io/  Available
+http://default.mywebapi.d05afe7e006a4fddb73c.eus.azds.io/  Available
 ```
 
 请在访问服务时使用此 URL。

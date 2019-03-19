@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a21c9682cfeaa7421d089bf75eb9d8b45e1d3d46
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 68376751a3c673b2d89d028312f992aec40d4dee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982754"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534610"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "55982754"
 > 
 > 
 
-本文演示如何为预先存在的 VNet 添加虚拟网络网关。 本文将演示为预先存在的 VNet 添加虚拟网络 (VNet) 网关、重设其大小并进行删除的步骤。 此配置的步骤专用于使用 Resource Manager 部署模型创建的、会在 ExpressRoute 配置中使用的 VNet。 有关 ExpressRoute 的虚拟网络网关和网关配置设置的详细信息，请参阅[关于 ExpressRoute 的虚拟网络网关](expressroute-about-virtual-network-gateways.md)。 
+本文演示如何为预先存在的 VNet 添加虚拟网络网关。 本文将演示为预先存在的 VNet 添加虚拟网络 (VNet) 网关、重设其大小并进行删除的步骤。 此配置的步骤专用于使用 Resource Manager 部署模型创建的、将在 ExpressRoute 配置中使用的 VNet。 有关 ExpressRoute 的虚拟网络网关和网关配置设置的详细信息，请参阅[关于 ExpressRoute 的虚拟网络网关](expressroute-about-virtual-network-gateways.md)。 
 
 
 ## <a name="before-beginning"></a>开始之前
@@ -49,7 +49,7 @@ ms.locfileid: "55982754"
 
 ## <a name="create-the-gateway-subnet"></a>创建网关子网
 
-1. 在[门户](http://portal.azure.com)中，导航到要为其创建虚拟网关的 Resource Manager 虚拟网络。
+1. 在[门户](https://portal.azure.com)中，导航到要为其创建虚拟网关的 Resource Manager 虚拟网络。
 2. 在 VNet 边栏选项卡的“设置”部分中，单击“子网”以展开“子网”边栏选项卡。
 3. 在“子网”边栏选项卡中，单击“+网关子网”打开“添加子网”边栏选项卡。 
    

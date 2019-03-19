@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
 ms.service: service-bus-relay
 ms.devlang: tbd
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 9bdf3d319735d8d4ca85235dfb949d440bba9a02
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
+ms.openlocfilehash: b4864673e25ba4f5a1f2e8629e0889863051bc07
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615069"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764857"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>开始在 Node.js 中使用中继混合连接 WebSocket
 
@@ -35,7 +35,7 @@ ms.locfileid: "51615069"
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 5. 运行应用程序。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - [Node.js](https://nodejs.org/en/)。
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
