@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 56dab93087249082330c0f685e5457bc2585664c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: ae984cc2e0f43b81b8aa2f08b3944886733c9054
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55237925"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994643"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>如何部署对话学习器机器人
 
@@ -45,7 +45,7 @@ ms.locfileid: "55237925"
     npm run ui
     ```
 
-2. 打开浏览器，转到 http://localhost:5050 
+2. 打开浏览器，转到 `http://localhost:5050` 
 
 3. 单击要为之获取 ID 的对话学习器模型
 
@@ -94,7 +94,7 @@ ms.locfileid: "55237925"
 
 采用与发布其他机器人类似的方式发布对话学习器机器人。 在较高级别，将代码上传到托管网站，设置相应配置值，然后使用各种渠道注册机器人。 本视频详细介绍了如何使用 Azure 机器人服务发布机器人。
 
-部署机器人并开始运行后，即可使用 Azure 机器人渠道注册将机器人连接到不同渠道，如 Facebook、Teams、Skype 等。 有关该过程，请参阅文档： https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
+一旦部署智能机器人应用程序并运行状态，你可以连接不同的通道向其如 Facebook、 Teams、 Skype 等。 使用 Azure 机器人频道注册。 有关该过程，请参阅文档： https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
 
 以下是将对话学习器机器人部署到 Azure 的分步说明。  这些说明假定可从基于云的源（如 Azure DevOps Services、GitHub、BitBucket 或 OneDrive）获得机器人源，并配置机器人以实现持续部署。
 
@@ -109,20 +109,20 @@ ms.locfileid: "55237925"
 
 3. 在 Azure 门户中，编辑刚刚创建的 Web 应用机器人资源。
 
-    1. 单击左侧的“应用程序设置”导航项
-    1. 向下滚动到“应用设置”部分
-    2. 添加这些设置：
+   1. 单击左侧的“应用程序设置”导航项
+   1. 向下滚动到“应用设置”部分
+   2. 添加这些设置：
 
-        环境变量 | 值
-        --- | --- 
-        CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
-        CONVERSATION_LEARNER_MODEL_ID      | 应用程序 ID GUID，通过模型“设置”下的对话学习器 UI 获取
-        LUIS_AUTHORING_KEY               | 此模型的 LUIS 创作密钥
-        LUIS_SUBSCRIPTION_KEY            | 不需要，但建议用于已发布的机器人，以避免使用创作配额。
+       环境变量 | 值
+       --- | --- 
+       CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
+       CONVERSATION_LEARNER_MODEL_ID      | 应用程序 ID GUID，通过模型“设置”下的对话学习器 UI 获取
+       LUIS_AUTHORING_KEY               | 此模型的 LUIS 创作密钥
+       LUIS_SUBSCRIPTION_KEY            | 不需要，但建议用于已发布的机器人，以避免使用创作配额。
     
-    4. 单击页面顶部附近的“保存”
-    5. 打开左侧的“生成”导航项
-    6. 单击“配置连续部署” 
-    7. 单击部署下的“设置”图标
-    8. 单击“所需设置”
-    9. 选择可用于获取机器人代码的源，并配置该源。
+   4. 单击页面顶部附近的“保存”
+   5. 打开左侧的“生成”导航项
+   6. 单击“配置连续部署” 
+   7. 单击部署下的“设置”图标
+   8. 单击“所需设置”
+   9. 选择可用于获取机器人代码的源，并配置该源。

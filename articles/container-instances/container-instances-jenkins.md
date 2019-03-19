@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: 85b67fb4fa474bb00b5b7ca66580273671081cdf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 2687a64bfd952888086862d929a3e5869aee5a4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478180"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003433"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>使用 Azure 容器实例作为 Jenkins 生成代理
 
@@ -73,7 +73,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. 让 SSH 会话和隧道保持运行，在浏览器中转到 http://localhost:8080。 将初始管理员密码粘贴到字段中，然后选择“继续”。
+5. 让 SSH 会话和隧道保持运行，在浏览器中转到 `http://localhost:8080`。 将初始管理员密码粘贴到字段中，然后选择“继续”。
 
    ![包含管理员密码输入框的“解锁 Jenkins”屏幕](./media/container-instances-jenkins/jenkins-portal-05.png)
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: fdbbfaf4a4c3df90302b0b69e4964b7a073f2fa4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 222c2983d83fe2373159ea542260be7b5a8d8ce5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237954"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885175"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI 工作区集合入门示例
 
@@ -28,7 +28,7 @@ ms.locfileid: "56237954"
 
 * [示例工作区 Web 应用](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Power BI 工作区集合 API 参考](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [Power BI .NET SDK](https://go.microsoft.com/fwlink/?LinkId=746472)（通过 NuGet 提供）
+* [Power BI.NET SDK](https://go.microsoft.com/fwlink/?LinkId=746472) （可通过 NuGet）
 * [JavaScript 报表嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
@@ -93,7 +93,7 @@ Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入
 
 ## <a name="explore-the-sample-code"></a>探索示例代码
 
-**Microsoft Power BI 工作区集合**示例是一个 Web 应用示例，演示了如何将 **Power BI** 报表集成到应用中。 它采用模型-视图-控制器 (MVC) 设计模式来演示最佳做法。 本部分重点介绍可以在 **PowerBI Embedded** Web 应用解决方案中浏览的示例代码。 模型-视图-控制器 (MVC) 模式将域、表示和基于用户输入的操作的建模分为三个单独的类：模型、视图和控制。 若要了解关于 MVC 的详细信息，请参阅 [Learn About ASP.NET](http://www.asp.net/mvc)（了解 ASP.NET）。
+**Microsoft Power BI 工作区集合**示例是一个 Web 应用示例，演示了如何将 **Power BI** 报表集成到应用中。 它采用模型-视图-控制器 (MVC) 设计模式来演示最佳做法。 本部分重点介绍可以在 **PowerBI Embedded** Web 应用解决方案中浏览的示例代码。 模型-视图-控制器 (MVC) 模式将域、表示和基于用户输入的操作的建模分为三个单独的类：模型、视图和控制。 若要了解关于 MVC 的详细信息，请参阅 [Learn About ASP.NET](https://www.asp.net/mvc)（了解 ASP.NET）。
 
 **Microsoft Power BI 工作区集合**示例代码分隔方式如下所示。 每个部分在 PowerBI embedded.sln 解决方案中都包括了文件名称，以便轻松查找示例中的代码。
 
@@ -140,7 +140,7 @@ Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 
 **Reports.cshtml**：循环访问 **Model.Reports** 以创建 **ActionLink**。 **ActionLink** 包含以下内容：
 
-| 部分 | 说明 |
+| 部分 | 描述 |
 | --- | --- |
 | 标题 |报表的名称。 |
 | QueryString |指向报表 ID 的链接。 |
@@ -270,4 +270,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-有更多问题？ [尝试 Power BI 社区](http://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

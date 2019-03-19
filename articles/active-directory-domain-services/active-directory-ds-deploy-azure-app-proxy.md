@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: e787d946aa62f0bcb6615d89192e7d9e4d91ffe4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 867d061e46494e5ef65340ce325a71638acc8dfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197031"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099621"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域上部署 Azure AD 应用程序代理
 Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问的本地应用程序，帮助用户为远程辅助角色提供支持。 使用 Azure AD 域服务，现在可以将本地运行的旧版应用程序提升并转移到 Azure 基础结构服务。 然后，可以使用 Azure AD 应用程序代理发布这些应用程序，以允许组织中的用户进行安全远程访问。
@@ -75,12 +75,12 @@ Azure Active Directory (AD) 应用程序代理可发布要通过 Internet 访问
 
     ![接受条款以安装](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. 在安装期间，系统会提示将连接器注册到 Azure AD 目录的应用程序代理。
-    * 提供 **Azure AD 全局管理员凭据**。 全局管理员租户可能不同于 Microsoft Azure 凭据。
-    * 用于注册连接器的管理员帐户必须属于已启用应用程序代理服务的同一目录。 例如，如果租户域为 contoso.com，则管理员应该为 admin@contoso.com 或该域上的任何其他有效别名。
-    * 如果已为要安装连接器的服务器启用“IE 增强的安全配置”，则可能无法显示注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作。 确保 Internet Explorer 增强的安全性已关闭。
-    * 如果连接器注册不成功，请参阅 [故障排除应用程序代理](../active-directory/manage-apps/application-proxy-troubleshoot.md)。
+   * 提供 **Azure AD 全局管理员凭据**。 全局管理员租户可能不同于 Microsoft Azure 凭据。
+   * 用于注册连接器的管理员帐户必须属于已启用应用程序代理服务的同一目录。 例如，如果租户域为 contoso.com，则管理员应该为 admin@contoso.com 或该域上的任何其他有效别名。
+   * 如果已为要安装连接器的服务器启用“IE 增强的安全配置”，则可能无法显示注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作。 确保 Internet Explorer 增强的安全性已关闭。
+   * 如果连接器注册不成功，请参阅 [故障排除应用程序代理](../active-directory/manage-apps/application-proxy-troubleshoot.md)。
 
-    ![已安装的连接器](./media/app-proxy/app-proxy-connector-installed.png)
+     ![已安装的连接器](./media/app-proxy/app-proxy-connector-installed.png)
 4. 若要确保连接器正常工作，请运行 Azure AD 应用程序代理连接器疑难解答程序。 运行疑难解答程序后，应看到成功的报告。
 
     ![疑难解答程序成功](./media/app-proxy/app-proxy-connector-troubleshooter.png)

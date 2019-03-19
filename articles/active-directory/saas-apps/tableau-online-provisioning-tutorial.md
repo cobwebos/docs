@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a81754b9b95c7cc6e257707aec188abf1dab58c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077813"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>教程：为 Tableau Online 配置自动用户预配
 
@@ -29,7 +29,7 @@ ms.locfileid: "56194863"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程中所述的方案假定你已具备以下项：
 
@@ -106,13 +106,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分下，输入 Tableau Online 帐户的“域”、“管理员用户名”、“管理员密码”和“内容 URL”：
 
-    *   在“域”字段中，基于步骤 6 填充子域。
+   * 在“域”字段中，基于步骤 6 填充子域。
 
-    *   在“管理员用户名”字段中，填入 Clarizen 租户的管理员帐户的用户名。 示例：admin@contoso.com。
+   * 在“管理员用户名”字段中，填入 Clarizen 租户的管理员帐户的用户名。 示例：admin@contoso.com。
 
-    *   在“管理员密码”字段中，填入管理员用户名所对应的管理员帐户的密码。
+   * 在“管理员密码”字段中，填入管理员用户名所对应的管理员帐户的密码。
 
-    *   在“内容 URL”字段中，基于步骤 6 填充子域。
+   * 在“内容 URL”字段中，基于步骤 6 填充子域。
 
 6. 登录到 Tableau Online 的管理帐户以后，即可从“管理员”页的 URL 中提取“域”和“内容 URL”的值。
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: b94d6bd9cc129d80f3ece82c13df375abecafd26
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493402"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075606"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "55493402"
 >
 >
 
-部署在 Azure VM 中的 MABS 可以备份 Azure 中的 VM，但它们应位于同一域中以启用备份操作。 备份 Azure VM 的过程与在本地备份 VM 的过程相同，但在 Azure 中部署 MABS 有一些限制。 有关限制的详细信息，请参阅 [DPM 作为 Azure 虚拟机](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
+部署在 Azure VM 中的 MABS 可以备份 Azure 中的 VM，但它们应位于同一域中以启用备份操作。 备份 Azure VM 的过程会一直保持与在本地备份 Vm 相同，但是部署在 Azure 中的 MABS 具有一些限制。 有关限制的详细信息，请参阅 [DPM 作为 Azure 虚拟机](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
 
 > [!NOTE]
 > Azure 有两种用于创建和使用资源的部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文提供有关还原使用 Resource Manager 模型部署的 VM 的信息和过程。
@@ -128,7 +128,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![快速启动向导更改](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. 在打开的“准备基础结构”边栏选项卡中，单击用于安装 Azure 备份服务器和下载保管库凭据的“下载”链接。 在将 Azure 备份服务器注册到恢复服务保管库期间，请使用保管库凭据。 使用此链接，会转到“下载中心”，可以从中下载软件包。
+6. 在打开的“准备基础结构”边栏选项卡中，单击用于安装 Azure 备份服务器和下载保管库凭据的“下载”链接。 在将 Azure 备份服务器注册到恢复服务保管库期间，请使用保管库凭据。 使用此链接转到“下载中心”，可从中下载软件包。
 
     ![为 Azure 备份服务器准备基础结构](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
@@ -231,16 +231,16 @@ MABS 使用 System Center Data Protection Manager 保护代理。 [此处](https
 
 2. 在显示窗格中，选择要为其更新保护代理的客户端计算机。
 
-  > [!NOTE]
-  > “代理更新”列指示每个受保护计算机何时有保护代理更新可用。 在“操作”窗格中，仅当选择了受保护计算机并且有可用更新时，“更新”操作才可用。
-  >
-  >
+   > [!NOTE]
+   > “代理更新”列指示每个受保护计算机何时有保护代理更新可用。 在“操作”窗格中，仅当选择了受保护计算机并且有可用更新时，“更新”操作才可用。
+   >
+   >
 
 3. 要在所选计算机上安装更新的保护代理，请在“操作”窗格中，选择“更新”。
 
 4. 对于未连接到网络的客户端计算机，在计算机连接到网络之前，“代理状态”列会显示“挂起更新”状态。
 
-  在客户端计算机连接到网络之后，客户端计算机的“代理更新”列会显示“正在更新”状态。
+   在客户端计算机连接到网络之后，客户端计算机的“代理更新”列会显示“正在更新”状态。
 
 ## <a name="move-mabs-to-a-new-server"></a>将 MABS 移到新服务器
 
@@ -262,10 +262,11 @@ MABS 使用 System Center Data Protection Manager 保护代理。 [此处](https
 9. 从 SQL 还原 DPMDB
 10. 从新服务器 cd 的管理员命令行到 Microsoft Azure 备份安装位置和 bin 文件夹
 
-路径示例：C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
-到 Azure 备份运行 DPMSYNC - SYNC
+    路径示例：C:\windows\system32 > cd"c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\" 
 
-10) 运行 DPMSYNC - SYNC 时请注意，如果已将新磁盘添加到 DPM 存储池（而不是移动旧磁盘），请运行 DPMSYNC -Reallocatereplica
+11. Azure 备份，运行 DPMSYNC-SYNC
+
+    如果新磁盘添加到 DPM 存储池而不是移动旧方案，然后运行 DPMSYNC-Reallocatereplica
 
 ## <a name="network-connectivity"></a>网络连接
 Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若要验证计算机是否已连接到 Azure，请在 Azure 备份服务器 PowerShell 控制台中使用 ```Get-DPMCloudConnection``` cmdlet。 如果该 cmdlet 的输出为 TRUE，则表示已建立连接，否则表示未建立连接。
@@ -280,7 +281,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连续 |已过期 |已停止 |已停止 |允许 |允许 |
 | 连续 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 | 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
-| 连接断开超过 15 天 |已过期 |已停止 |已停止 |允许 |允许 |
+| 连接断开超过 15 天 |Expired |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>连接断开后进行恢复
@@ -306,33 +307,33 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>从 MABS V2 升级到 V3
 
 > [!NOTE]
-
+> 
 > MABS V2 不是安装 MABS V3 的先决条件。 但是，只能从 MABS V2 升级到 MABS V3。
 
 使用以下步骤升级 MABS：
 
 1. 若要从 MABS V2 升级到 MABS V3，请根据需要将 OS 升级到 Windows Server 2016 或 Windows Server 2019。
 
-2.  升级服务器。 这些步骤类似于[安装](#install-and-upgrade-azure-backup-server)。 但是，在进行 SQL 设置时，可以通过一个选项将 SQL 实例升级到 SQL 2017，或使用自己的 SQL Server 2017 实例。
+2. 升级服务器。 这些步骤类似于[安装](#install-and-upgrade-azure-backup-server)。 但是，在进行 SQL 设置时，可以通过一个选项将 SQL 实例升级到 SQL 2017，或使用自己的 SQL Server 2017 实例。
 
-  > [!NOTE]
+   > [!NOTE]
+   > 
+   > 升级 SQL 实例期间请不要退出，否则会卸载 SQL 报告实例，导致重新升级 MABS 的尝试失败。
 
-  > 升级 SQL 实例期间请不要退出，否则会卸载 SQL 报告实例，导致重新升级 MABS 的尝试失败。
+   需要注意的几个要点：
 
-  需要注意的几个要点：
-
-  > [!IMPORTANT]
-
-  >  在升级到 SQL 2017 的过程中，我们会备份 SQL 加密密钥并卸载报告服务。 升级 SQL Server 后，将安装报告服务 (14.0.6827.4788) 并还原加密密钥。
-
- > 手动配置 SQL 2017 时，请参阅“安装说明”下的“使用 SQL 2017 时的 SSRS 配置”部分。
+   > [!IMPORTANT]
+   > 
+   >  在升级到 SQL 2017 的过程中，我们会备份 SQL 加密密钥并卸载报告服务。 升级 SQL Server 后，将安装报告服务 (14.0.6827.4788) 并还原加密密钥。
+   > 
+   > 手动配置 SQL 2017 时，请参阅“安装说明”下的“使用 SQL 2017 时的 SSRS 配置”部分。
 
 3. 在受保护的服务器上更新保护代理。
 4. 备份应会继续，而无需重启生产服务器。
 5. 现在，可以开始保护数据。 如果在保护状态下升级到新式备份存储，则还可以选择备份要存储到的卷，并检查预配不足的空间。 [了解详细信息](backup-mabs-add-storage.md)。
 
 > [!NOTE]
-
+> 
 > 如果从 MABS V1 升级到 V2，请确保 OS 是 Windows Server 2016 或 Windows Server 2012 R2。 若要利用新功能（例如 System Center 2016 Data Protection Manager 新式备份存储），必须在 Windows Server 2016 上安装备份服务器 V2。 升级到或安装备份服务器 V2 之前，请阅读适用于 MABS 的[安装先决条件](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)。
 
 ## <a name="troubleshooting"></a>故障排除

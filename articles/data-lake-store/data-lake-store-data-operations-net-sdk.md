@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 929ce0d984e53586c46f15f21b9e5c90c6a34771
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
-ms.translationtype: HT
+ms.openlocfilehash: 0a6cfc5ca9a0b788075f4472649a6e1bcdf87637
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402296"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119490"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的文件系统操作
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "54402296"
 
 若要了解如何使用 .NET SDK 对 Data Lake Storage Gen1 执行帐户管理操作，请参阅[使用 .NET SDK 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-net-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -62,7 +62,7 @@ ms.locfileid: "54402296"
       * `Microsoft.Azure.DataLake.Store` - 本教程使用 v1.0.0。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.3.1。
     
-    关闭“NuGet 包管理器”。
+      关闭“NuGet 包管理器”。
 
 6. 打开“Program.cs” ，删除现有代码，并包含以下语句，添加对命名空间的引用。
 
@@ -90,7 +90,7 @@ ms.locfileid: "54402296"
 
 本文的剩余部分介绍如何使用现有的 .NET 方法来执行操作，例如身份验证和文件上传等。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 * 若要了解应用程序的最终用户身份验证，请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)。
 * 若要了解应用程序的服务到服务身份验证，请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: d7f832164a41c2107a2cb9fdca3530b1f5d785cb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9f1ef06e0275954343c548d0f6937b9c6fbcfd18
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012114"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -32,7 +32,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
 * 有关以编程方式操作 Blob 的详细信息，请参阅 [Get started with Azure Blob storage using .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)（通过 .NET 开始使用 Azure Blob 存储）。
 * 有关 Azure 存储的常规信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。
 * 有关 Azure 云服务的常规信息，请参阅[云服务文档](https://azure.microsoft.com/documentation/services/cloud-services/)。
-* 有关编写 ASP.NET 应用程序的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
+* 有关编写 ASP.NET 应用程序的详细信息，请参阅 [ASP.NET](https://www.asp.net)。
 
 ## <a name="access-blob-containers-in-code"></a>使用代码访问 blob 容器
 若要以编程方式访问云服务项目中的 Blob，需要添加以下项（如果尚未存在）。
@@ -87,7 +87,7 @@ Internet 中的所有人都可以查看公共容器中的 Blob，但是，仅在
 ## <a name="upload-a-blob-into-a-container"></a>将 Blob 上传到容器中
 Azure 存储支持块 Blob 和页 Blob。 大多数情况下，推荐使用块 Blob。
 
-要将文件上传到块 Blob，请获取容器引用，并使用它获取块 Blob 引用。 获取 Blob 引用后，可以通过调用 **UploadFromStream** 方法，将任何数据流上传到该 Blob。 如果之前不存在 Blob，此操作将创建一个；如果存在 Blob，此操作将覆盖它。 下面的示例演示了如何将 Blob 上传到容器中，并假定已创建容器。
+要将文件上传到块 Blob，请获取容器引用，并使用它获取块 Blob 引用。 获取 Blob 引用后，可以通过调用 **UploadFromStream** 方法将任何数据流上传到该 Blob。 如果之前不存在 Blob，此操作将创建一个；如果存在 Blob，此操作将覆盖它。 下面的示例演示了如何将 Blob 上传到容器中，并假定已创建容器。
 
     // Retrieve a reference to a blob named "myblob".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
@@ -166,7 +166,7 @@ Azure 存储支持块 Blob 和页 Blob。 大多数情况下，推荐使用块 B
 有关详细信息，请参阅 [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx)。
 
 ## <a name="download-blobs"></a>下载 Blob
-要下载 Blob，请首先检索 Blob 引用，然后调用 **DownloadToStream** 方法。 以下示例使用 **DownloadToStream** 方法将 Blob 内容传输到一个流对象，然后可以将该对象保存到本地文件。
+要下载 Blob，请首先检索 Blob 引用，然后调用 **DownloadToStream** 方法。 以下示例使用 **DownloadToStream** 方法将 Blob 内容传输到一个流对象，用户可以将该对象保存到本地文件。
 
     // Get a reference to a blob named "photo1.jpg".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");

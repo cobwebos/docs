@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: 1287df97f10033472c9717309688cf89887a66ed
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
-ms.translationtype: HT
+ms.openlocfilehash: 387877efea4df30685fcf443a4d114c4feb66401
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54242958"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098264"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>使用 Azure 门户设置针对 Azure Database for MySQL 指标的警报 
 
@@ -60,21 +60,21 @@ ms.locfileid: "54242958"
 
 10. 配置“电子邮件/短信/推送/语音”操作类型。
     
-   选择“电子邮件 Azure 资源管理器角色”以选择订阅所有者、参与者和读取器来接收通知。
+    选择“电子邮件 Azure 资源管理器角色”以选择订阅所有者、参与者和读取器来接收通知。
    
-   （可选）如果希望在警报触发时调用有效的 URI，请将其放入“Webhook”字段。
+    （可选）如果希望在警报触发时调用有效的 URI，请将其放入“Webhook”字段。
 
-   完成后选择“确定”。
+    完成后选择“确定”。
 
-   ![操作组](./media/howto-alert-on-metric/10-action-group-type.png)
+    ![操作组](./media/howto-alert-on-metric/10-action-group-type.png)
 
 11. 指定预警规则名称、说明和严重性。
 
-   ![操作组](./media/howto-alert-on-metric/11-name-description-severity.png) 
+    ![操作组](./media/howto-alert-on-metric/11-name-description-severity.png) 
 
 12. 选择“创建警报规则”可以创建警报。
 
-   几分钟后，警报将处于活动状态，并按前面所述进行触发。
+    几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 ## <a name="manage-your-alerts"></a>管理警报
 创建警报后，可选择它并执行以下操作：
@@ -86,4 +86,4 @@ ms.locfileid: "54242958"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
-* 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
+* [大致了解指标收集](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 04bb32abf7100975d72e5782b79b44006f1ac965
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 01edd378ee85a3e209892250788fd3a26c628648
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567921"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090825"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>教程：设置 Azure SQL 数据库和本地 SQL Server 之间的 SQL 数据同步
 
@@ -45,21 +45,21 @@ ms.locfileid: "55567921"
 
 1. 在“同步到其他数据库”页中，选择“新建同步组”。 “新建同步组”页随即打开，其中突出显示“创建同步组(步骤 1)”。
 
-  ![步骤 1 设置](media/sql-database-get-started-sql-data-sync/stepone.png)
+   ![步骤 1 设置](media/sql-database-get-started-sql-data-sync/stepone.png)
 
-  在“创建数据同步组”页中，请更改以下设置：
+   在“创建数据同步组”页中，请更改以下设置：
 
-  | 设置                        | 说明 |
-  | ------------------------------ | ------------------------------------------------- |
-  | **同步组名称** | 输入新同步组的名称。 此名称不同于数据库本身的名称。 |
-  | **同步元数据数据库** | 选择创建数据库（推荐）或使用现有数据库。<br/><br/>如果选择“新建数据库”，请选择“创建新数据库”。 然后在“SQL 数据库”页中，命名并配置新数据库，再选择“确定”。<br/><br/>如果选择“使用现有数据库”，请从列表中选择数据库。 |
-  | **自动同步** | 选择“开”或“关”。<br/><br/>如果选择“开”，请在“同步频率”部分中输入数字，然后选择“秒”、“分钟”、“小时”或“天”。 |
-  | **冲突解决方法** | 选择“中心胜出”或“成员胜出”。<br/><br/>“中心胜出”表示发生冲突时，中心数据库中的数据将覆盖成员数据库中的冲突数据。<br/><br/>“成员胜出”表示发生冲突时，成员数据库中的数据将覆盖中心数据库中的冲突数据。 |
+   | 设置                        | 描述 |
+   | ------------------------------ | ------------------------------------------------- |
+   | **同步组名称** | 输入新同步组的名称。 此名称不同于数据库本身的名称。 |
+   | **同步元数据数据库** | 选择创建数据库（推荐）或使用现有数据库。<br/><br/>如果选择“新建数据库”，请选择“创建新数据库”。 然后在“SQL 数据库”页中，命名并配置新数据库，再选择“确定”。<br/><br/>如果选择“使用现有数据库”，请从列表中选择数据库。 |
+   | **自动同步** | 选择“开”或“关”。<br/><br/>如果选择“开”，请在“同步频率”部分中输入数字，然后选择“秒”、“分钟”、“小时”或“天”。 |
+   | **冲突解决方法** | 选择“中心胜出”或“成员胜出”。<br/><br/>“中心胜出”表示发生冲突时，中心数据库中的数据将覆盖成员数据库中的冲突数据。<br/><br/>“成员胜出”表示发生冲突时，成员数据库中的数据将覆盖中心数据库中的冲突数据。 |
 
-  > [!NOTE]
-  > Microsoft 建议新建空的数据库，以用作“同步元数据数据库”。 SQL 数据同步在此数据库中创建表，并经常运行工作负载。 此数据库作为所选区域中所有同步组的“同步元数据数据库”共享，如果不删除该区域中的所有同步组和同步代理，则无法更改数据库或数据库名称。
+   > [!NOTE]
+   > Microsoft 建议新建空的数据库，以用作“同步元数据数据库”。 SQL 数据同步在此数据库中创建表，并经常运行工作负载。 此数据库作为所选区域中所有同步组的“同步元数据数据库”共享，如果不删除该区域中的所有同步组和同步代理，则无法更改数据库或数据库名称。
 
-  选择“确定”，并等待创建和部署同步组。
+   选择“确定”，并等待创建和部署同步组。
 
 ## <a name="add-sync-members"></a>添加同步成员
 
@@ -77,7 +77,7 @@ ms.locfileid: "55567921"
 
   在“配置 Azure SQL 数据库”页中，更改以下设置：
 
-  | 设置                       | 说明 |
+  | 设置                       | 描述 |
   | ----------------------------- | ------------------------------------------------- |
   | **同步成员名称** | 提供新同步成员的名称。 此名称不同于数据库本身的名称。 |
   | **订阅** | 选择关联的 Azure 订阅，以用于计费。 |
@@ -95,28 +95,28 @@ ms.locfileid: "55567921"
 
 1. 选择“选择同步代理网关”。 “选择同步代理”页随即打开。
 
-  ![创建同步代理](media/sql-database-get-started-sql-data-sync/steptwo-agent.png)
+   ![创建同步代理](media/sql-database-get-started-sql-data-sync/steptwo-agent.png)
 
 1. 在“选择同步代理”页中，选择是使用现有代理还是创建代理。
 
-  如果选择“现有代理”，请从列表中选择现有代理。
+   如果选择“现有代理”，请从列表中选择现有代理。
 
-  如果选择“新建代理”，请执行以下操作：
+   如果选择“新建代理”，请执行以下操作：
 
-    1. 通过提供的链接下载 Data Sync Agent，并将其安装在 SQL Server 所在的计算机上。 还可以直接从 [SQL Azure Data Sync Agent](https://www.microsoft.com/download/details.aspx?id=27693) 下载代理。
+   1. 通过提供的链接下载 Data Sync Agent，并将其安装在 SQL Server 所在的计算机上。 还可以直接从 [SQL Azure Data Sync Agent](https://www.microsoft.com/download/details.aspx?id=27693) 下载代理。
 
       > [!IMPORTANT]
       > 必须在防火墙中打开出站 TCP 端口 1433，以便客户端代理能够与服务器进行通信。
 
-    1. 输入代理名称。
+   1. 输入代理名称。
 
-    1. 选择“创建并生成密钥”并将代理密钥复制到剪贴板。
+   1. 选择“创建并生成密钥”并将代理密钥复制到剪贴板。
 
-    1. 选择“确定”，关闭“选择同步代理”页。
+   1. 选择“确定”，关闭“选择同步代理”页。
 
 1. 在 SQL Server 计算机上，找到并运行客户端同步代理应用程序。
 
-  ![数据同步客户端代理应用程序](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
+   ![数据同步客户端代理应用程序](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
 
     1. 在同步代理应用程序中，选择“提交代理密钥”。 此时，“同步元数据数据库配置”对话框打开。
 
@@ -230,9 +230,9 @@ SQL 数据同步是否能完全创建表？
 
 有关 SQL 数据同步的详细信息，请参阅：
 
-- [Azure SQL 数据同步的数据同步代理](sql-database-data-sync-agent.md)
+- [Azure SQL 数据同步的 Data Sync Agent](sql-database-data-sync-agent.md)
 - [最佳做法](sql-database-best-practices-data-sync.md)和[如何解决 Azure SQL 数据同步问题](sql-database-troubleshoot-data-sync.md)
-- [使用 Log Analytics 监视 SQL 数据同步](sql-database-sync-monitor-oms.md)
+- [使用 Azure Monitor 监视 SQL 数据同步日志](sql-database-sync-monitor-oms.md)
 - [使用 Transact-SQL 更新同步架构](sql-database-update-sync-schema.md) 或使用 [PowerShell](scripts/sql-database-sync-update-schema.md) 更新同步架构
 
 有关 SQL 数据库的详细信息，请参阅：

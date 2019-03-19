@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653809"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112528"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -39,7 +39,7 @@ ms.locfileid: "53653809"
 
 可以使用 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 中的[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)脚本复制群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="set-up-the-environments"></a>设置环境
@@ -136,7 +136,7 @@ ms.locfileid: "53653809"
     sudo apt-get install bind9 -y
     ```
 
-3. 配置 Bind 以将名称解析请求转发到本地 DNS 服务器。 为此，请使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
+3. 配置 Bind，以便将转发到你本地 DNS 服务器的名称解析请求。 为此，请使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
 
     ```
     acl goodclients {
@@ -288,21 +288,21 @@ sudo service bind9 status
 4. 在页面顶部，选择“提交新项”。
 5. 选择或输入以下信息：
 
-  1. **名称**：输入“启用复制”。
-  2. **Bash 脚本 URL**：输入 https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**。
-  3.  **头**：确保已选定。 清除其他节点类型。
-  4. **参数**：以下示例参数将对所有现有表启用复制，并将源群集中的所有数据复制到目标群集：
+   1. **名称**：输入“启用复制”。
+   2. **Bash 脚本 URL**：输入 **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**。
+   3. **头**：确保已选定。 清除其他节点类型。
+   4. **参数**：以下示例参数将对所有现有表启用复制，并将源群集中的所有数据复制到目标群集：
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    > [!NOTE]
-    > 对源和目标群集 DNS 名称使用主机名而不是 FQDN。
+      > [!NOTE]
+      > 对源和目标群集 DNS 名称使用主机名而不是 FQDN。
 
 6. 选择“创建”。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 
-|名称|Description|
+|名称|描述|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -311,7 +311,7 @@ sudo service bind9 status
 
 可选参数：
 
-|名称|Description|
+|名称|描述|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |

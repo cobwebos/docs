@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.subservice: common
-ms.openlocfilehash: 51ee5362a01a846378228a42343cc0e2b9f72497
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 13ddb4d64908421e999174623003acd2fb24024d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470206"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014889"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>使用 C++ 列出 Azure 存储资源
 使用 Azure 存储进行开发时，很多情况下列表操作很重要。 本文介绍如何使用用于 C++ 的 Microsoft Azure 存储客户端库中提供的列表 API 最有效率地枚举 Azure 存储中的对象。
 
 > [!NOTE]
-> 本指南主要面向适用于 C++ 版本 2.x 的 Azure 存储客户端库，该库可通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp) 获取。
+> 本指南主要面向适用于 C++ 版本 2.x 的 Azure 存储客户端库，该库可通过 [NuGet](https://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp) 获取。
 > 
 > 
 
@@ -31,10 +31,10 @@ ms.locfileid: "55470206"
 * 列出帐户中的表
 * 查询表中的实体
 
-将使用不同的重载针对不同的方案演示上述每种方法。
+使用不同的重载针对不同的方案演示上述每种方法。
 
 ## <a name="asynchronous-versus-synchronous"></a>异步与同步
-由于 C++ 的存储客户端库是在 [C++ REST 库](https://github.com/Microsoft/cpprestsdk)基础上构建的，因此我们实际上也支持使用 [pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) 进行异步操作。 例如：
+由于 C++ 的存储客户端库是在 [C++ REST 库](https://github.com/Microsoft/cpprestsdk)基础上构建的，因此我们实际上也支持使用 [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) 进行异步操作。 例如：
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -59,7 +59,7 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 分段列表操作的响应包括：
 
 * <i>_segment</i>，其中包含针对列表 API 进行单个调用时返回的结果集。
-* *continuation_token*，会传递给下一个调用，以获取下一页结果。 当不再有需要返回的结果时，继续标记为 null。
+* continuation_token，将传递给下一个调用，以获取下一页结果。 当不再有需要返回的结果时，继续标记为 null。
 
 例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码段可能如下所示。 我们的[示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)中提供了该代码：
 
@@ -180,7 +180,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 延迟列表 API 包括在用于 C++ 的存储客户端库的 2.2.0 版中。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 在本文中，我们针对用于 C++ 的存储客户端库中的各种对象，对列表 API 的不同重载进行了讨论。 总结：
 
 * 在出现多个线程的情况下，强烈建议使用异步 API。
@@ -194,7 +194,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 * [如何通过 C++ 使用 Blob 存储](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [如何通过 C++ 使用表存储](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [如何通过 C++ 使用队列存储](../storage-c-plus-plus-how-to-use-queues.md)
-* [适用于 C++ 的 Azure 存储客户端库 API 文档。](http://azure.github.io/azure-storage-cpp/)
+* [适用于 C++ 的 Azure 存储客户端库 API 文档。](https://azure.github.io/azure-storage-cpp/)
 * [Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)
 

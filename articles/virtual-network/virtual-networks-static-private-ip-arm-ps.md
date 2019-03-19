@@ -1,11 +1,11 @@
 ---
-title: 为 VM 配置专用 IP 地址 - Azure PowerShell | Microsoft 文档
-description: 了解如何使用 PowerShell 为虚拟机配置专用 IP 地址。
+title: 创建具有静态专用 IP 地址-Azure PowerShell 的 VM |Microsoft Docs
+description: 了解如何使用专用 IP 地址使用 PowerShell 创建虚拟机。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: tysonn
+manager: twooley
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
 ms.service: virtual-network
@@ -13,209 +13,100 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/23/2016
+ms.date: 02/07/2019
 ms.author: jdial
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0e8153f1d0cecd4efe66dc7cce64addd6ed62aa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.custom: ''
+ms.openlocfilehash: 812b3752bfffd16c09b466b036fb0ac91e77d5a4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307663"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104346"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-powershell"></a>使用 PowerShell 为虚拟机配置专用 IP 地址
+# <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>使用静态专用 IP 地址使用 PowerShell 创建虚拟机
 
-[!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
+具有静态专用 IP 地址，可以创建虚拟机 (VM)。 如果你想要选择从子网的地址分配给 VM，分配静态专用 IP 地址，而不是动态地址。 详细了解如何[静态专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#allocation-method)。 若要更改在动态与静态的分配到现有 VM 的专用 IP 地址或使用公共 IP 地址，请参阅[添加、 更改或删除 IP 地址](virtual-network-network-interface-addresses.md)。
 
-Azure 有两个部署模型：Azure 资源管理器模型和经典模型。 Microsoft 建议通过 Resource Manager 部署模型创建资源。 若要详细了解这两个模型之间的差别，请阅读 [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md)（了解 Azure 部署模型）一文。 本文介绍 Resource Manager 部署模型。 还可以[管理经典部署模型中的静态专用 IP 地址](virtual-networks-static-private-ip-classic-ps.md)。
+## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-[!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
+可以从本地计算机或通过使用 Azure Cloud Shell 完成以下步骤。 若要使用本地计算机，请确保[安装了 Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure Cloud Shell，请在接下来出现的任何命令框的右上角选择“试用”。 Cloud Shell 会将你登录到 Azure。
 
-下面的示例 PowerShell 命令需要基于上述方案创建的简单环境。 若要运行本文档中所显示的命令，请先构建[创建虚拟网络](quick-create-powershell.md)中所述的测试环境。
+1. 如果使用 Cloud Shell，请跳到步骤 2。 打开命令会话并使用 `Connect-AzAccount` 登录到 Azure。
+2. 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：
 
-## <a name="create-a-vm-with-a-static-private-ip-address"></a>创建具有静态专用 IP 地址的 VM
-若要在名为 *TestVNet* 的 VNet 的 *FrontEnd* 子网中使用静态专用 IP *192.168.1.101* 创建名为 *DNS01* 的 VM，请按照以下步骤进行操作：
+   ```azurepowershell-interactive
+   $RgName = "myResourceGroup"
+   $Location = "eastus"
+   New-AzResourceGroup -Name $RgName -Location $Location
+   ```
 
-1. 为要使用的存储帐户、位置、资源组和凭据设置变量。 需要为 VM 输入用户名和密码。 存储帐户和资源组必须已存在。
+3. 创建子网配置和使用虚拟网络[新建 AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)并[新建 AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)命令：
 
-    ```powershell
-    $stName  = "vnetstorage"
-    $locName = "Central US"
-    $rgName  = "TestRG"
-    $cred    = Get-Credential -Message "Type the name and password of the local administrator account."
-    ```
+   ```azurepowershell-interactive
+   # Create a subnet configuration
+   $SubnetConfig = New-AzVirtualNetworkSubnetConfig `
+   -Name MySubnet `
+   -AddressPrefix 10.0.0.0/24
 
-2. 检索要在其中创建 VM 的虚拟网络和子网。
+   # Create a virtual network
+   $VNet = New-AzVirtualNetwork `
+   -ResourceGroupName $RgName `
+   -Location $Location `
+   -Name MyVNet `
+   -AddressPrefix 10.0.0.0/16 `
+   -Subnet $subnetConfig
 
-    ```powershell
-    $vnet   = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
-    $subnet = $vnet.Subnets[0].Id
-    ```
+   # Get the subnet object for use in a later step.
+   $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
+   ```
 
-3. 如有必要，创建用于从 Internet 访问 VM 的公共 IP 地址。
+4. 在虚拟网络中创建网络接口并将从子网的专用 IP 地址分配给网络接口[新建 AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig)并[新建 AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)命令：
 
-    ```powershell
-    $pip = New-AzureRmPublicIpAddress -Name TestPIP -ResourceGroupName $rgName `
-    -Location $locName -AllocationMethod Dynamic
-    ```
+   ```azurepowershell-interactive
+   $IpConfigName1 = "IPConfig-1"
+   $IpConfig1     = New-AzNetworkInterfaceIpConfig `
+     -Name $IpConfigName1 `
+     -Subnet $Subnet `
+     -PrivateIpAddress 10.0.0.4 `
+     -Primary
 
-4. 使用要分配给 VM 的静态专用 IP 地址创建 NIC。 确保 IP 在要将 VM 添加到的子网范围中。 这是本文的主要步骤，在本文中将专用 IP 设为静态。
+   $NIC = New-AzNetworkInterface `
+     -Name MyNIC `
+     -ResourceGroupName $RgName `
+     -Location $Location `
+     -IpConfiguration $IpConfig1
+   ```
 
-    ```powershell
-    $nic = New-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName $rgName `
-    -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id `
-    -PrivateIpAddress 192.168.1.101
-    ```
+5. 创建 VM 配置与[新建 AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig)，然后创建与 VM [New-azvm](/powershell/module/az.Compute/New-azVM)。 出现提示时，提供用户名和密码以用作 VM 登录凭据：
 
-5. 使用 NIC 创建 VM：
+   ```azurepowershell-interactive
+   $VirtualMachine = New-AzVMConfig -VMName MyVM -VMSize "Standard_DS3"
+   $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName MyServerVM -ProvisionVMAgent -EnableAutoUpdate
+   $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+   $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+   New-AzVM -ResourceGroupName $RgName -Location $Location -VM $VirtualMachine -Verbose
+   ```
 
-    ```powershell
-    $vm = New-AzureRmVMConfig -VMName DNS01 -VMSize "Standard_A1"
-    $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName DNS01 `
-    -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-    $vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer `
-    -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
-    $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-    $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/WindowsVMosDisk.vhd"
-    $vm = Set-AzureRmVMOSDisk -VM $vm -Name "windowsvmosdisk" -VhdUri $osDiskUri `
-    -CreateOption fromImage
-    New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm 
-    ```
+> [!WARNING]
+> 尽管可以将专用 IP 地址设置添加到操作系统，我们建议不执行此操作在读取之前[将专用 IP 地址添加到操作系统](virtual-network-network-interface-addresses.md#private)。
+> 
+> 
+> <a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
+> 
+> [!IMPORTANT]
+> 若要从 internet 访问 VM，必须将公共 IP 地址分配到 VM。 您还可以更改为静态分配的动态专用 IP 地址分配。 有关详细信息，请参阅[添加或更改 IP 地址](virtual-network-network-interface-addresses.md)。 此外，建议通过将相关联的网络接口，创建在中，网络接口的子网和 / 或网络安全组将网络流量限制到 VM。 有关详细信息，请参阅[管理网络安全组](manage-network-security-group.md)。
 
-我们建议，除非有必要（例如，[为 Windows VM 分配多个 IP 地址](virtual-network-multiple-ip-addresses-powershell.md)时），否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。 切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。
+## <a name="clean-up-resources"></a>清理资源
 
-## <a name="retrieve-static-private-ip-address-information-for-a-network-interface"></a>检索网络接口的静态专用 IP 地址信息
-若要查看使用上述脚本创建的 VM 的静态专用 IP 地址信息，请运行以下 PowerShell 命令并注意 *PrivateIpAddress* 和 *PrivateIpAllocationMethod* 的值：
+如果不再需要可以使用[删除 AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除资源组和所有它包含的资源：
 
-```powershell
-Get-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName TestRG
-```
-
-预期输出：
-
-    Name                 : TestNIC
-    ResourceGroupName    : TestRG
-    Location             : centralus
-    Id                   : /subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNIC
-    Etag                 : W/"[Id]"
-    ProvisioningState    : Succeeded
-    Tags                 : 
-    VirtualMachine       : {
-                             "Id": "/subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/DNS01"
-                           }
-    IpConfigurations     : [
-                             {
-                               "Name": "ipconfig1",
-                               "Etag": "W/\"[Id]\"",
-                               "Id": "/subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNIC/ipConfigurations/ipconfig1",
-                               "PrivateIpAddress": "192.168.1.101",
-                               "PrivateIpAllocationMethod": "Static",
-                               "Subnet": {
-                                 "Id": "/subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd"
-                               },
-                               "PublicIpAddress": {
-                                 "Id": "/subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/TestPIP"
-                               },
-                               "LoadBalancerBackendAddressPools": [],
-                               "LoadBalancerInboundNatRules": [],
-                               "ProvisioningState": "Succeeded"
-                             }
-                           ]
-    DnsSettings          : {
-                             "DnsServers": [],
-                             "AppliedDnsServers": [],
-                             "InternalDnsNameLabel": null,
-                             "InternalFqdn": null
-                           }
-    EnableIPForwarding   : False
-    NetworkSecurityGroup : null
-    Primary              : True
-
-## <a name="remove-a-static-private-ip-address-from-a-network-interface"></a>从网络接口中删除静态专用 IP 地址
-若要删除使用上述脚本添加到 VM 的静态专用 IP 地址，请运行以下 PowerShell 命令：
-
-```powershell
-$nic=Get-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName TestRG
-$nic.IpConfigurations[0].PrivateIpAllocationMethod = "Dynamic"
-Set-AzureRmNetworkInterface -NetworkInterface $nic
-```
-
-预期输出：
-
-    Name                 : TestNIC
-    ResourceGroupName    : TestRG
-    Location             : centralus
-    Id                   : /subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNIC
-    Etag                 : W/"[Id]"
-    ProvisioningState    : Succeeded
-    Tags                 : 
-    VirtualMachine       : {
-                             "Id": "/subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/WindowsVM"
-                           }
-    IpConfigurations     : [
-                             {
-                               "Name": "ipconfig1",
-                               "Etag": "W/\"[Id]\"",
-                               "Id": "/subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNIC/ipConfigurations/ipconfig1",
-                               "PrivateIpAddress": "192.168.1.101",
-                               "PrivateIpAllocationMethod": "Dynamic",
-                               "Subnet": {
-                                 "Id": "/subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd"
-                               },
-                               "PublicIpAddress": {
-                                 "Id": "/subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/TestPIP"
-                               },
-                               "LoadBalancerBackendAddressPools": [],
-                               "LoadBalancerInboundNatRules": [],
-                               "ProvisioningState": "Succeeded"
-                             }
-                           ]
-    DnsSettings          : {
-                             "DnsServers": [],
-                             "AppliedDnsServers": [],
-                             "InternalDnsNameLabel": null,
-                             "InternalFqdn": null
-                           }
-    EnableIPForwarding   : False
-    NetworkSecurityGroup : null
-    Primary              : True
-
-## <a name="add-a-static-private-ip-address-to-a-network-interface"></a>向网络接口添加静态专用 IP 地址
-若要向使用上述脚本创建的 VM 添加静态专用 IP 地址，请运行以下命令：
-
-```powershell
-$nic=Get-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName TestRG
-$nic.IpConfigurations[0].PrivateIpAllocationMethod = "Static"
-$nic.IpConfigurations[0].PrivateIpAddress = "192.168.1.101"
-Set-AzureRmNetworkInterface -NetworkInterface $nic
-```
-
-我们建议，除非有必要（例如，[为 Windows VM 分配多个 IP 地址](virtual-network-multiple-ip-addresses-powershell.md)时），否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。 切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。
-
-## <a name="change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>更改分配给网络接口的专用 IP 地址的分配方法
-
-专用 IP 地址通过静态或动态分配方法分配给 NIC。 在启动之前处于已停止（已解除分配）状态的 VM 后，动态 IP 地址可能会改变。 如果 VM 托管着需要同一 IP 地址的服务，则这可能会导致问题，即使在从已停止（已解除分配）状态重新启动后也是如此。 静态 IP 地址会一直保留，直到 VM 被删除。 要更改 IP 地址的分配方法，请运行以下脚本，这会将分配方法从动态更改为静态。 如果当前专用 IP 地址的分配方法为静态，请在执行脚本前将*静态*更改为*动态*。
-
-```powershell
-$RG = "TestRG"
-$NIC_name = "testnic1"
-
-$nic = Get-AzureRmNetworkInterface -ResourceGroupName $RG -Name $NIC_name
-$nic.IpConfigurations[0].PrivateIpAllocationMethod = 'Static'
-Set-AzureRmNetworkInterface -NetworkInterface $nic 
-$IP = $nic.IpConfigurations[0].PrivateIpAddress
-
-Write-Host "The allocation method is now set to"$nic.IpConfigurations[0].PrivateIpAllocationMethod"for the IP address" $IP"." -NoNewline
-```
-
-如果不知道 NIC 的名称，可以通过输入以下命令来查看资源组中 NIC 的列表：
-
-```powershell
-Get-AzureRmNetworkInterface -ResourceGroupName $RG | Where-Object {$_.ProvisioningState -eq 'Succeeded'} 
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何管理 [IP 地址设置](virtual-network-network-interface-addresses.md)。
+- 详细了解如何[专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)并分配[静态专用 IP 地址](virtual-network-network-interface-addresses.md#add-ip-addresses)到 Azure 虚拟机。
+- 详细了解如何创建[Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)并[Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)虚拟机。

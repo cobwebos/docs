@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: anshan
 ms.custom: include file
-ms.openlocfilehash: fb45ea02f365cf4e7b394e249f9b91a784e5469f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: c9daa86bf36b260001d9969385b9e8a98a8ac0cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369816"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125324"
 ---
 ## <a name="grant-data-access"></a>授予数据访问权限
 
@@ -33,12 +33,12 @@ ms.locfileid: "46369816"
     ![管理时序见解源 - 添加](media/iot-tsi-data-access/getstarted-grant-data-access2.png)
 
 6. 选择“选择角色”。 为用户选择相应的访问角色：
-    - 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”。 
-    - 否则请选择“读取者”，允许用户查询环境中的数据，以及在环境中保存个人（非共享）查询。
+   - 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”。 
+   - 否则请选择“读取者”，允许用户查询环境中的数据，以及在环境中保存个人（非共享）查询。
 
-    选择“确定”确认角色选择。
+     选择“确定”确认角色选择。
 
-    ![管理时序见解源 - 选择用户](media/iot-tsi-data-access/getstarted-grant-data-access3.png)
+     ![管理时序见解源 - 选择用户](media/iot-tsi-data-access/getstarted-grant-data-access3.png)
 
 7. 在“选择用户角色”页中，选择“确定”。
 

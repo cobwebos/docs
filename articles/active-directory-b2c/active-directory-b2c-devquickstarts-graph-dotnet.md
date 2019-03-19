@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d1f1ec45e1d4fc2fc6091a2f946caf6bc59441a9
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417051"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075895"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD 图形 API
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 3. 在左侧导航窗格中，选择“所有服务”，单击“应用注册”，并单击“添加”。
 4. 根据提示创建新的应用程序。 
     1. 选择“Web 应用/API”作为应用程序类型。    
-    2. 提供任一登录 URL（例如 https://B2CGraphAPI) ，它与此示例不相关）。  
+    2. 提供**任何单一登录 URL** (例如`https://B2CGraphAPI`) 因为它不是与此示例。  
 5. 应用程序现在会显示在应用程序列表中，单击它以获取**应用程序 ID**（也称为客户端 ID）。 复制它，因为会在后面的部分用到它。
 6. 在“设置”菜单中，单击“密钥”。
 7. 在“密码”部分输入密钥说明，并选择持续时间，然后单击“保存”。 复制该密钥值（也称为客户端密码），便于在之后的章节中使用。

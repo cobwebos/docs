@@ -1,7 +1,7 @@
 ---
 title: Azure HDInsight 工具 -将 Visual Studio Code 用于 Hive、LLAP 或 PySpark | Microsoft Docs
 description: 了解如何使用用于 Visual Studio Code 的 Azure HDInsight 工具来创建、提交查询和脚本。
-Keywords: Visual Studio Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
+Keywords: Visual Studio Code、 Azure HDInsight 工具、 Hive、 Python、 PySpark、 Spark、 HDInsight、 Hadoop，LLAP，交互式 Hive、 交互式查询
 services: HDInsight
 documentationcenter: ''
 author: hrasheed-msft
@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 3301f3cdea1795db3b17bc2fa7da05bf362c744d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 71e12e661c704af028ac4dc48f255bdee980619c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895062"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100320"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -24,7 +24,7 @@ ms.locfileid: "55895062"
 可以在 Visual Studio Code 支持的平台（包括 Windows、Linux 和 macOS）上安装 Azure HDInsight 工具。 可以在下面找到不同平台的必备组件。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成本文中的步骤需要具有以下项：
 
@@ -68,12 +68,12 @@ ms.locfileid: "55895062"
 
 将脚本从 Visual Studio Code 提交到 HDInsight 群集之前，需要连接到 Azure 帐户，或链接群集（使用 Ambari 用户名/密码或已加入域的帐户）。  完成以下步骤以连接到 Azure：
 
-1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 **HDInsight:Login**。
+1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入 **HDInsight:** Login”。
 
     ![用于 Visual Studio Code 的 HDInsight 工具 - 登录](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
 2. 遵照“输出”窗格中的登录说明操作。
-    + 对于 Azure 全局环境，可使用“HDInsight:Login”命令在 HDInsight 资源管理器中触发“登录 Azure”操作，反之亦然。
+    + 对于 Azure 全局环境，可使用“**HDInsight:Login”命令在 HDInsight 资源管理器中触发“登录 Azure”操作，反之亦然**。
 
         ![适用于 Azure 的登录说明](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "55895062"
 
         ![适用于其他环境的登录说明](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
- 连接后，Visual Studio Code 窗口左下角的状态栏上会显示 Azure 帐户名称。  
+   连接后，Visual Studio Code 窗口左下角的状态栏上会显示 Azure 帐户名称。  
   
 
 <h2 id="linkcluster">创建链接：Azure HDInsight</h2>

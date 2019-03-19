@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 84e0d02f2608a6ee94ee409345e530357d394671
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233178"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096565"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>创建与 Azure 兼容的 VHD
 
@@ -48,25 +48,25 @@ Azure 还提供一系列已批准的 Linux 分发版。  有关最新列表，�
 在 Microsoft [Azure 门户](https://ms.portal.azure.com/)中，使用以下步骤创建基础映像。
 
 1. 使用要在其中发布 VM 套餐的 Azure 订阅的 Microsoft 帐户登录到门户。
-2. 创建新资源组，并提供**资源组名称**、**订阅**和**资源组位置**。  有关更多指导，请参阅[管理资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups)。
+2. 创建新资源组，并提供**资源组名称**、**订阅**和**资源组位置**。  有关更多指导，请参阅[管理资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)。
 3. 在左侧菜单栏中单击“虚拟机”，显示“虚拟机详细信息”页。 
 4. 在此新页中，单击“+添加”显示“计算”边栏选项卡。  如果初始屏幕上未显示 VM 类型，可以搜索基础 VM 的名称，例如：
 
     ![新 VM 的“计算”边栏选项卡](./media/publishvm_014.png)
 
 5. 选择适当的虚拟映像后，提供以下值：
-  * 在“基本信息”边栏选项卡中，输入虚拟机的**名称**（1-15 个字母数字字符）。 （本示例使用 `DemoVm009`。）
-  * 输入**用户名**和强**密码**，用于在 VM 上创建本地帐户。  （此处使用了 `adminUser`。）密码长度必须为 8 到 123 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 有关详细信息，请参阅[用户名和密码要求](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm)。
-  * 选择创建的资源组（此处为 `DemoResourceGroup`）。
-  * 选择 Azure 数据中心的**位置**（此处为 `West US`）。
-  * 单击“确定”以保存这些值。 
+   * 在“基本信息”边栏选项卡中，输入虚拟机的**名称**（1-15 个字母数字字符）。 （本示例使用 `DemoVm009`。）
+   * 输入**用户名**和强**密码**，用于在 VM 上创建本地帐户。  （此处使用了 `adminUser`。）密码长度必须为 8 到 123 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 有关详细信息，请参阅[用户名和密码要求](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm)。
+   * 选择创建的资源组（此处为 `DemoResourceGroup`）。
+   * 选择 Azure 数据中心的**位置**（此处为 `West US`）。
+   * 单击“确定”以保存这些值。 
 
-6.  根据以下建议选择要部署的 VM 的大小：
-  * 如果计划在本地开发 VHD，大小则无关紧要。 请考虑使用一个较小的 VM。
-  * 如果计划在 Azure 中开发映像，请考虑对所选映像使用一个建议的 VM 大小。
-  * 有关定价信息，请参阅门户上显示的“建议定价层”选择器。 其中会显示发布者提供的三个建议大小。 （此处的发布者为 Microsoft。）
+6. 根据以下建议选择要部署的 VM 的大小：
+   * 如果计划在本地开发 VHD，大小则无关紧要。 请考虑使用一个较小的 VM。
+   * 如果计划在 Azure 中开发映像，请考虑对所选映像使用一个建议的 VM 大小。
+   * 有关定价信息，请参阅门户上显示的“建议定价层”选择器。 其中会显示发布者提供的三个建议大小。 （此处的发布者为 Microsoft。）
 
-    ![新 VM 的“大小”边栏选项卡](./media/publishvm_015.png)
+   ![新 VM 的“大小”边栏选项卡](./media/publishvm_015.png)
 
 7. 在“设置”边栏选项卡中，将“使用托管磁盘”选项设置为“否”。  这样，便可以手动管理新 VHD。 （在“设置”边栏选项卡中，还可以更改其他存储和网络选项，例如，在“磁盘类型”中选择“高级(SSD)”。）单击“确定”以继续。
 

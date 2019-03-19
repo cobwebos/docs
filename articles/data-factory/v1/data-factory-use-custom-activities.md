@@ -3,22 +3,22 @@ title: 在 Azure 数据工厂管道中使用自定义活动
 description: 了解如何创建自定义活动并在 Azure 数据工厂管道中使用。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 25592f80abc8aea338679f199f03114c2d0785f6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
-ms.translationtype: HT
+ms.openlocfilehash: 1341a8fce95dff0499a698fcddf8d048f3628dba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077482"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108222"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +43,7 @@ ms.locfileid: "55077482"
 > - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 * Visual Studio 2012/2013/2015
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
@@ -52,7 +52,7 @@ ms.locfileid: "55077482"
 
 本教程会创建一个包含 VM 池的 Azure Batch 帐户。 下面是相关步骤：
 
-1. 使用 [Azure 门户](http://portal.azure.com)创建 **Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
+1. 使用 [Azure 门户](https://portal.azure.com)创建 **Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
     1. 在 Azure Batch 帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure Batch 帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：`https://<region>.batch.azure.com`。
     2. 在左侧菜单中单击“密钥”并复制“主访问密钥”。
@@ -421,7 +421,7 @@ test custom activity Microsoft test custom activity Microsoft
    2. 单击“新建”边栏选项卡中的“数据 + 分析”。
    3. 单击“数据分析”边栏选项卡中的“数据工厂”。
 
-    ![“新建 Azure 数据工厂”菜单](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
+      ![“新建 Azure 数据工厂”菜单](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
 2. 在“新建数据工厂”边栏选项卡中，输入 **CustomActivityFactory** 作为“名称”。 Azure 数据工厂的名称必须全局唯一。 如果收到错误：数据工厂名称“CustomActivityFactory”不可用，请更改数据工厂名称（例如改为 yournameCustomActivityFactory），并再次尝试创建。
 
     ![“新建 Azure 数据工厂”边栏选项卡](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
@@ -480,7 +480,7 @@ test custom activity Microsoft test custom activity Microsoft
 在此步骤中，创建表示输入和输出数据的数据集。
 
 #### <a name="create-input-dataset"></a>创建输入数据集
-1. 在数据工厂的“编辑器”中，单击命令栏上的“...**更多”**，单击“新建数据集”，并从下拉菜单中选择“Azure Blob 存储”。
+1. 在数据工厂的“编辑器”中，单击命令栏上的“...**更多”，单击“新建数据集”，并从下拉菜单中选择“Azure Blob 存储”。**
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段：
 
     ```json
@@ -513,7 +513,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 单击工具栏上的“部署”，创建并部署 **InputDataset**。 确认编辑器标题栏中显示了“已成功创建表”消息。
 
 #### <a name="create-an-output-dataset"></a>创建输出数据集
-1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”**，单击“新建数据集”，并选择“Azure Blob 存储”。
+1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”，单击“新建数据集”，并选择“Azure Blob 存储”。**
 2. 将右窗格中的 JSON 脚本替换为以下 JSON 脚本：
 
     ```JSON
@@ -550,7 +550,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    | 切片 | 开始时间 | 输出文件 |
    |:--- |:--- |:--- |
-   | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
+   | 第 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
    | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
@@ -1040,15 +1040,15 @@ GitHub 上的 [Azure 数据工厂 - 本地环境](https://github.com/gbrueckl/Az
 [azure-powershell-install]: https://github.com/Azure/azure-sdk-tools/releases
 
 
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
+[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 [new-azure-batch-account]: https://msdn.microsoft.com/library/mt125880.aspx
 [new-azure-batch-pool]: https://msdn.microsoft.com/library/mt125936.aspx
-[azure-batch-blog]: http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx
+[azure-batch-blog]: https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx
 
-[nuget-package]: http://go.microsoft.com/fwlink/?LinkId=517478
-[adf-developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
+[nuget-package]: https://go.microsoft.com/fwlink/?LinkId=517478
+[adf-developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
 [azure-preview-portal]: https://portal.azure.com/
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md

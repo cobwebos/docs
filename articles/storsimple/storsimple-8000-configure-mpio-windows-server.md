@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4f2b094604f486d283574f4669fcad6f72bd4431
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30245731"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078136"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>为 StorSimple 设备配置多路径 I/O
 
@@ -35,14 +35,14 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 
 执行以下步骤在 StorSimple 设备上配置 MPIO：
 
-* 步骤 1：在 Windows Server 主机上安装 MPIO
+* 步骤 1：Windows Server 主机上安装 MPIO
 * 步骤 2：为 StorSimple 卷配置 MPIO
 * 步骤 3：在主机上装载 StorSimple 卷
-* 步骤 4：配置 MPIO 以实现高可用性和负载均衡
+* 步骤 4：配置 MPIO 以实现高可用性和负载平衡
 
 以下各部分讨论了上述每个步骤。
 
-## <a name="step-1-install-mpio-on-the-windows-server-host"></a>步骤 1：在 Windows Server 主机上安装 MPIO
+## <a name="step-1-install-mpio-on-the-windows-server-host"></a>步骤 1：Windows Server 主机上安装 MPIO
 
 若要在 Windows Server 主机上安装此功能，请完成以下过程。
 
@@ -58,10 +58,10 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 3. 在“添加角色和功能”向导中，执行以下步骤：
    
    1. 在“开始之前”页上，单击“下一步”。
-   2. 在“选择安装类型”页上，接受“基于角色或基于功能的安装”的默认设置。 单击“资源组名称” 的 Azure 数据工厂。
+   2. 在“选择安装类型”页上，接受“基于角色或基于功能的安装”的默认设置。 单击“下一步”。
    
        ![添加角色和功能向导 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
-   3. 在“选择目标服务器”页上，选择“从服务器池中选择服务器”。 主机服务器应该会被自动发现。 单击“资源组名称” 的 Azure 数据工厂。
+   3. 在“选择目标服务器”页上，选择“从服务器池中选择服务器”。 主机服务器应该会被自动发现。 单击“下一步”。
    4. 在“选择服务器角色”页上，单击“下一步”。
    5. 在“选择功能”页上，选择“多路径 I/O”，并单击“下一步”。
    
@@ -104,8 +104,8 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
    1. 输入 StorSimple 设备的 DATA 端口的 IP 地址（例如，输入 DATA 0）。
    2. 单击“确定”返回到“iSCSI 发起程序属性”对话框。
      
-     > [!IMPORTANT]
-     > **如果为 iSCSI 连接使用专用网络，请输入连接到专用网络的数据端口的 IP 地址。**
+      > [!IMPORTANT]
+      > **如果为 iSCSI 连接使用专用网络，请输入连接到专用网络的数据端口的 IP 地址。**
     
 4. 针对设备上的第二个网络接口（例如 DATA 1）重复步骤 2-3。 请记住，这些接口应该启用 iSCSI。 有关详细信息，请参阅[修改网络接口](storsimple-8000-modify-device-config.md#modify-network-interfaces)。
 5. 在“iSCSI 发起程序属性”对话框中选择“目标”选项卡。 应会在“发现的目标”下面看到 StorSimple 设备目标 IQN。
@@ -148,7 +148,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 > **不要修改默认参数。**
 
 
-## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>步骤 4：配置 MPIO 以实现高可用性和负载均衡
+## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>步骤 4：配置 MPIO 以实现高可用性和负载平衡
 
 为了实现基于多路径的高可用性和负载均衡，必须手动添加多个会话以声明多个可用路径。 例如，如果主机有两个接口连接到 iSCSI 网络，设备有两个接口连接到 iSCSI 网络，则需要配置具有正确路径排列的四个会话（如果每个 DATA 接口和主机接口在不同的 IP 子网上并且不可路由，则只需两个会话）。
 

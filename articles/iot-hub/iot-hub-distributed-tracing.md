@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: d97171003507ea0d7412c0706f9deea02fe06c0d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418344"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100354"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -30,7 +30,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 本文将[适用于 C 的 Azure IoT 设备 SDK](./iot-hub-device-sdk-c-intro.md) 与分布式跟踪配合使用。 对其他 SDK 的分布式跟踪支持仍在开发中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 分布式跟踪预览版目前仅支持在以下区域中创建的 IoT 中心：
 
@@ -214,7 +214,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
     ![更新采样模式](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
-    ![更新采样率 ](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
+    ![更新采样率](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
 
 ### <a name="bulk-update-for-multiple-devices"></a>针对多个设备进行批量更新
 
@@ -233,7 +233,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 }
 ```
 
-| 元素名称 | 必选 | Type | 说明 |
+| 元素名称 | 需要 | Type | 描述 |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | 是 | Integer | 目前支持使用两个模式值来启用和禁用采样。 `1` 表示启用，`2` 表示禁用。 |
 | `sampling_rate` | 是 | Integer | 此值是百分比。 只允许使用从 `0` 到 `100`（含）的值。  |
@@ -264,12 +264,12 @@ Log Analytics 显示的示例日志：
 
 若要了解不同类型的日志，请参阅 [Azure IoT 中心诊断日志](iot-hub-monitor-resource-health.md#distributed-tracing-preview)。
 
-### <a name="application-map"></a>应用程序映射
+### <a name="application-map"></a>应用程序地图
 
 若要可视化 IoT 消息流，请设置应用程序映射示例应用。 该示例应用使用 Azure 函数和事件中心将分布式跟踪日志发送到[应用程序映射](../application-insights/app-insights-app-map.md)。
 
 > [!div class="button"]
-<a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">在 GitHub 上获取示例</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">在 GitHub 上获取示例</a>
 
 下图显示了应用映射中的分布式跟踪，其中包含三个路由终结点：
 

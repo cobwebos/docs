@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73fffda6ec0ae0a65af9b5aa8505e3b9551bd3b4
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995112"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
 
@@ -32,7 +32,7 @@ ms.locfileid: "53558169"
 
 电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或关闭特定数目的服务。 有这样一种 SIM 欺诈，即在同一时间出现多个同一身份发起的呼叫，但这些呼叫却位于不同的地理位置。 若要检测此类型的欺诈，公司需要检查来电记录，并查找特定模式 - 在本例中，即查找在不同国家/地区同时发起的呼叫。 任何属于此类别的电话记录都将写入存储，以供后续分析。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程将通过使用生成示例电话呼叫元数据的客户端应用来模拟电话呼叫数据。 应用生成的某些记录看起来类似欺诈呼叫。 
 
@@ -68,9 +68,9 @@ ms.locfileid: "53558169"
 
 5. 单击新的命名空间，然后在“命名空间”窗格中，单击“事件中心”。
 
-   ![用于创建新事件中心的“添加事件中心”按钮 ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
+   ![用于创建新事件中心的“添加事件中心”按钮](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
+6. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可以使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
@@ -114,20 +114,20 @@ ms.locfileid: "53558169"
 
 ### <a name="configure-the-telcogenerator-app"></a>配置 TelcoGenerator 应用
 
-1.  在复制连接字符串的编辑器中，记下 `EntityPath` 值，然后删除 `EntityPath` 对（不要忘了删除它前面的分号）。 
+1. 在复制连接字符串的编辑器中，记下 `EntityPath` 值，然后删除 `EntityPath` 对（不要忘了删除它前面的分号）。 
 
-2.  在解压缩 TelcoGenerator.zip 文件的文件夹中，在编辑器中打开 telcodatagen.exe.config 文件。 （该文件夹中有多个 .config 文件，因此请确保打开正确的文件。）
+2. 在解压缩 TelcoGenerator.zip 文件的文件夹中，在编辑器中打开 telcodatagen.exe.config 文件。 （该文件夹中有多个 .config 文件，因此请确保打开正确的文件。）
 
-3.  在 `<appSettings>` 元素中：
+3. 在 `<appSettings>` 元素中：
 
-    * 将 `EventHubName` 键的值设置为事件中心名称（即实体路径的值）。
-    * 将 `Microsoft.ServiceBus.ConnectionString` 键的值设置为连接字符串。 
+   * 将 `EventHubName` 键的值设置为事件中心名称（即实体路径的值）。
+   * 将 `Microsoft.ServiceBus.ConnectionString` 键的值设置为连接字符串。 
 
-    `<appSettings>` 部分与以下示例类似。 （为清楚起见，包装这些行，并从授权令牌中删除一些字符。）
+   `<appSettings>` 部分与以下示例类似。 （为清楚起见，包装这些行，并从授权令牌中删除一些字符。）
 
    ![TelcoGenerator 配置文件显示事件中心名称和连接字符串](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
-4.  保存文件。 
+4. 保存文件。 
 
 ### <a name="start-the-app"></a>启动应用
 1.  打开命令窗口，然后切换到解压缩 TelcoGenerator 应用的文件夹。
@@ -191,6 +191,7 @@ ms.locfileid: "53558169"
    |事件中心命名空间  |  asa-eh-ns-demo |  输入事件中心命名空间的名称。   |
    |事件中心名称  | asa-eh-frauddetection-demo | 选择事件中心的名称。   |
    |事件中心策略名称  | asa-policy-manage-demo | 选择之前创建的访问策略。   |
+
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
@@ -359,6 +360,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
    |订阅   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
    |存储帐户  |  asaehstorage |  输入创建的存储帐户的名称。 |
    |容器  | asa-fraudulentcalls-demo | 选择“创建新名称”并输入容器名称。 |
+
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     

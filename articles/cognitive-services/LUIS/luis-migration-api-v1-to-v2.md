@@ -1,7 +1,7 @@
 ---
 title: v1 到 v2 API 迁移
 titleSuffix: Azure Cognitive Services
-description: 第 1 版终结点和创作 API 已弃用。 使用此指南了解如何迁移至第 2 版终结点和创作 API。
+description: 版本 1 终结点和创作语言理解 Api 已弃用。 使用此指南了解如何迁移至第 2 版终结点和创作 API。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: dfd30ce148002e32986c58aff607e182033e02b3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859858"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087918"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 应用的 API v1 到 v2 迁移指南
 第 1 版[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs) API 已弃用。 使用此指南学习如何迁移至第 2 版[终结点](https://aka.ms/luis-endpoint-apis)和[创作](https://aka.ms/luis-authoring-apis) API。 
 
 ## <a name="new-azure-regions"></a>新的 Azure 区域
-LUIS 为 LUIS API 提供新的[区域](https://aka.ms/LUIS-regions)。 LUIS 为区域组提供另一个网站。 必须在要用于查询的区域中编写应用程序。 应用程序不会自动迁移区域。 若要在新区域中使用应用，请从一个区域中将其导出，再将其导入到另一个区域。
+LUIS 为 LUIS API 提供新的[区域](https://aka.ms/LUIS-regions)。 LUIS 提供区域组的另一个门户。 必须在要用于查询的区域中编写应用程序。 应用程序不会自动迁移区域。 若要在新区域中使用应用，请从一个区域中将其导出，再将其导入到另一个区域。
 
 ## <a name="authoring-route-changes"></a>创作路由的更改
 创作 API 路由从使用 prog 路由改为使用 api 路由。
@@ -30,16 +30,16 @@ LUIS 为 LUIS API 提供新的[区域](https://aka.ms/LUIS-regions)。 LUIS 为�
 
 | 版本 | 路由 |
 |--|--|
-|1|/luis/v1.0/prog/apps|
+|第|/luis/v1.0/prog/apps|
 |2|/luis/api/v2.0/apps|
 
 
 ## <a name="endpoint-route-changes"></a>终结点路由的更改
-终结点 API 具有新的 queryString 参数以及不同的响应。 如果详细标志为 true，包括 topScoringIntent 在内的所有意向（不考虑分数）都将返回到一个名为意向的数组中。
+终结点 API 有新的查询字符串参数，以及不同的响应。 如果详细标志为 true，包括 topScoringIntent 在内的所有意向（不考虑分数）都将返回到一个名为意向的数组中。
 
 | 版本 | GET 路由 |
 |--|--|
-|1|/luis/v1/application?ID={appId}&q={q}|
+|第|/luis/v1/application?ID={appId}&q={q}|
 |2|/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]|
 
 
@@ -109,8 +109,8 @@ v2 终结点成功响应：
 
 | 版本 | 路由 |
 |--|--|
-|1|/luis/v1.0/prog/subscriptions|
-|1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
+|第|/luis/v1.0/prog/subscriptions|
+|第|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
 在 Azure 门户中生成了 Azure [终结点密钥](luis-how-to-azure-subscription.md)。 可在[发布](luis-how-to-azure-subscription.md)页上将密钥分配至 LUIS 应用。 不需要知道实际的密钥值。 LUIS 使用订阅名称来进行分配。 
 
@@ -119,7 +119,7 @@ v2 终结点成功响应：
 
 | 版本 | 路由 |
 |--|--|
-|1|/luis/v1.0/prog/apps/{appId}/entities|
+|第|/luis/v1.0/prog/apps/{appId}/entities|
 |2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities|
 
 ## <a name="metadata-renamed"></a>重命名元数据
@@ -138,8 +138,8 @@ LUIS 会从现有[终结点话语](luis-how-to-review-endoint-utt.md)中推荐�
 
 | 版本 | 路由 |
 |--|--|
-|1|/luis/v1.0/prog/apps/{appId}/entities/{entityId}/sample|
-|1|/luis/v1.0/prog/apps/{appId}/intents/{intentId}/sample|
+|第|/luis/v1.0/prog/apps/{appId}/entities/{entityId}/sample|
+|第|/luis/v1.0/prog/apps/{appId}/intents/{intentId}/sample|
 |2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities/{entityId}/suggest|
 |2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/intents/{intentId}/suggest|
 

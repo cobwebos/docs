@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7763807fdb5fcff7e93d54bf5a851cd4443427d3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107185"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107468"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>调查 Azure 安全中心的事件和警报（预览版）
 本文档介绍如何使用 Azure 安全中心的调查功能调查安全事件和警报。
@@ -29,10 +29,10 @@ ms.locfileid: "56107185"
 
 这样做的目的是将所有涉及所调查事件的实体（[安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)、用户、计算机和事件）关联到一起，加快调查过程。  为此，可以通过安全中心将相关数据和所涉及的实体关联在一起，并通过实时图公开这种关联性。你可以通过实时图来浏览对象并将相关信息可视化。
 
+
 > [!NOTE]
-> 安全中心的调查功能不支持[自定义警报](security-center-custom-alert.md)。
->
->
+> * 安全中心的调查功能不支持[自定义警报](security-center-custom-alert.md)。
+> * 基于从 Windows 服务器收集的数据警报仅支持调查。
 
 
 ## <a name="how-investigation-works"></a>如何进行调查？
@@ -96,7 +96,7 @@ ms.locfileid: "56107185"
 
 ## <a name="how-to-perform-an-investigation"></a>如何进行调查？
 
-可以从安全事件或警报开始调查，所选选项视需求而变。 以下步骤用于从警报开始调查：
+可以从安全事件或警报开始调查，所选选项视需求而变。 遵循的步骤用于从警报开始调查：
 
 1.  打开“安全中心”仪表板。
 2.  单击“安全警报”，选择要调查的事件。

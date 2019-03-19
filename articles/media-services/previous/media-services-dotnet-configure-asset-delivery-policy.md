@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ac8596fd20802ccf487899de2c7d4c62ad6c552a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: b5e733c93fef8920c73c8cf460dac7a7051fddb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003561"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180664"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>使用 .NET SDK 配置资产传送策略
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -34,9 +34,9 @@ ms.locfileid: "56003561"
 >
 >此外，要使用动态打包和动态加密，资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 
-可以将不同的策略应用到同一个资产。 例如，可以将 PlayReady 加密应用到平滑流，将 AES 信封应用到 MPEG DASH 和 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果根本没有定义任何资产传送策略，则属例外。 此时，将允许所有明文形式的协议。
+可以将不同的策略应用到同一个资产。 例如，可以将 PlayReady 加密应用到平滑流式处理，将 AES 信封加密应用到 MPEG DASH 和 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果根本没有定义任何资产传送策略，则属例外。 此时，将允许所有明文形式的协议。
 
-如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为 **DynamicEnvelopeEncryption**。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 **NoDynamicEncryption**。 下面是演示如何配置这些策略类型的示例。
+如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，再使用指定的传送策略流式传输用户的内容。 例如，若要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为“DynamicEnvelopeEncryption”。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设置为 **NoDynamicEncryption**。 下面是演示如何配置这些策略类型的示例。
 
 根据配置资产传送策略的方式，可以动态打包、加密和流式传输以下流式处理协议：平滑流式处理、HLS 和 MPEG DASH。
 
@@ -58,7 +58,7 @@ MPEG DASH
 * 删除 AssetDeliveryPolicy 之前，应删除所有与此资产关联的流式处理定位符。 如果需要，可稍后使用新的 AssetDeliveryPolicy 创建新的流式处理定位符。
 * 如果未设置资产传送策略，则无法在存储加密的资产上创建流式处理定位符。  如果资产未经过存储加密，则即使未设置资产传送策略，系统也可让你顺利地创建定位符和流式处理资产。
 * 可将多个资产传送策略关联到单个资产，但只能指定一种方法来处理给定的 AssetDeliveryProtocol。  也就是说，如果尝试链接两个指定 AssetDeliveryProtocol.SmoothStreaming 协议的传送策略，则会导致出错，因为当客户端发出平滑流请求时，系统不知道要应用哪个策略。
-* 如果资产包含现有的流式处理定位符，则不能将新策略链接到该资产（可以取消现有策略与资产的链接，或者更新与该资产关联的传送策略）。  必须先删除流式传输定位符，再调整策略，然后重新创建流式传输定位符。  在重新创建流式处理定位符时可以使用同一个 locatorId，但应确保该操作不会导致客户端出现问题，因为内容可能已被来源或下游 CDN 缓存。
+* 如果资产包含现有的流式处理定位符，则不能将新策略链接到该资产（可以取消现有策略与资产的链接，或者更新与该资产关联的传送策略）。  必须先删除流式处理定位符，调整策略，再重新创建流式处理定位符。  在重新创建流式处理定位符时可以使用同一个 locatorId，但应确保该操作不会导致客户端出现问题，因为内容可能已被来源或下游 CDN 缓存。
 
 ## <a name="clear-asset-delivery-policy"></a>清除资产传送策略
 
@@ -203,7 +203,7 @@ Azure 媒体服务还允许添加 Widevine 加密。 以下示例演示将 PlayR
 
 ### <a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
 
-以下枚举说明可以为资产传递协议设置的值。
+以下枚举说明可以为资产传送协议设置的值。
 
 ```csharp
     [Flags]
@@ -272,7 +272,7 @@ Azure 媒体服务还允许添加 Widevine 加密。 以下示例演示将 PlayR
 ```
 ### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
-以下枚举说明可用于配置到客户端的内容密钥传递方法的值。
+以下枚举说明可用于配置将内容密钥传送到客户端的方法的值。
   ```csharp  
     public enum ContentKeyDeliveryType
     {

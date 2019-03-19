@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbd8ff1e8574b9465d4acc366bf0b64bbfd11e20
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9cfff565dec0d6f9d2bbea8edf39f180d4b63fd9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993170"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -38,7 +38,7 @@ ms.locfileid: "56179716"
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Azure 资源托管标识能否用于 Active Directory 身份验证库 (ADAL) 或 Microsoft 身份验证库 (MSAL)？
 
-否，Azure 资源托管标识尚未与 ADAL 或 MSAL 集成。 有关使用 REST 终结点获取 Azure 资源托管标识的令牌的详细信息，请参阅[如何在 Azure VM 上使用 Azure 资源托管标识来获取访问令牌](how-to-use-vm-token.md)。
+否，Azure 资源托管标识尚未与 ADAL 或 MSAL 集成。 获取有关使用 REST 终结点的 Azure 资源管理的标识令牌的详细信息，请参阅[如何使用 Azure VM 上的 Azure 资源管理的标识获取访问令牌](how-to-use-vm-token.md)。
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>什么是 Azure 资源托管标识的安全边界？
 
@@ -50,42 +50,37 @@ ms.locfileid: "56179716"
 - 如果未启用系统分配的托管标识并且仅存在一个用户分配的托管标识，则 IMDS 将默认采用该单一用户分配的托管标识。 
 - 如果未启用系统分配的托管的标识，并且存在多个用户分配的托管标识，则必须在请求中指定一个托管标识。
 
-### <a name="should-i-use-the-managed-identities-for-azure-resources-vm-imds-endpoint-or-the-vm-extension-endpoint"></a>我应该使用 Azure 资源托管标识 VM IMDS 终结点还是 VM 扩展终结点？
+### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>应为 Azure 资源 IMDS 终结点或 VM 扩展终结点使用托管的标识？
 
-将 Azure 资源托管标识与 VM 一起使用时，我们建议使用 Azure 资源托管标识 IMDS 终结点。 Azure 实例元数据服务是一个 REST 终结点，可供通过 Azure 资源管理器创建的所有 IaaS VM 使用。 通过 IMDS 使用 Azure 资源托管标识的好处包括：
-    - 所有 Azure IaaS 支持的操作系统都可以通过 IMDS 使用 Azure 资源托管标识。
-    - 不再需要在 VM 上安装扩展即可启用 Azure 资源托管标识。 
-    - Azure 资源托管标识使用的证书将不再出现在 VM 中。
-    - IMDS 终结点是一个已知不可路由的 IP 地址，该地址只能在 VM 中访问。
+当使用创建 vm 的 Azure 资源管理的标识，我们建议使用 IMDS 终结点。 Azure 实例元数据服务是一个 REST 终结点，可供通过 Azure 资源管理器创建的所有 IaaS VM 使用。 
 
-Azure 资源托管标识 VM 扩展目前仍可使用；但在以后，我们会默认使用 IMDS 终结点。 Azure 资源托管标识 VM 扩展将于 2019 年 1 月弃用。 
+通过 IMDS 使用 Azure 资源托管标识的好处包括：
+- 所有 Azure IaaS 支持的操作系统都可以通过 IMDS 使用 Azure 资源托管标识。
+- 不再需要在 VM 上安装扩展即可启用 Azure 资源托管标识。 
+- Azure 资源托管标识使用的证书将不再出现在 VM 中。
+- IMDS 终结点是一个已知不可路由的 IP 地址，该地址只能在 VM 中访问。
+- 可以分配给单个 VM 1000 用户分配托管的身份。 
+
+VM 扩展 Azure 资源管理的标识仍然可用，但是，我们不会再开发新功能。 我们建议切换到使用 IMDS 终结点。 
+
+下面是一些使用 VM 扩展终结点的限制：
+- 对于 Linux 分发版的有限的支持：CoreOS 稳定、 CentOS 7.1、 Red Hat 7.2、 Ubuntu 15.04、 Ubuntu 16.04
+- 只有 32 用户分配管理的标识可以分配给 VM。
+
+
+注意：VM 扩展 Azure 资源管理的标识将不支持在 2019 年 1 月。 
 
 有关 Azure 实例元数据服务的详细信息，请参阅 [IMDS 文档](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我将订阅移动到另一个目录中，是否会自动重新创建托管标识？
 
 不是。 如果你将订阅移动到另一个目录中，则必须手动重新创建标识并重新向它们授予 Azure RBAC 角色分配。
-    - 对于系统分配的托管标识：禁用并重新启用。
-    - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
+- 对于系统分配的托管标识：禁用并重新启用。 
+- 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>是否可以使用托管标识来访问不同目录/租户中的资源？
 
 不是。 托管标识当前不支持跨目录方案。 
-
-### <a name="what-are-the-supported-linux-distributions"></a>有哪些受支持的 Linux 发行版？
-
-Azure IaaS 支持的所有 Linux 发行版都可以通过 IMDS 终结点与 Azure 资源托管标识配合使用。 
-
-Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）仅支持以下 Linux 发行版：
-- CoreOS Stable
-- CentOS 7.1
-- Red Hat 7.2
-- Ubuntu 15.04
-- Ubuntu 16.04
-
-目前不支持其他 Linux 发行版，该扩展在不受支持的发行版上运行可能会失败。
-
-该扩展适用于 CentOS 6.9。 但是，由于在 6.9 中缺少系统支持，该扩展如果发生故障或停止，将不会自动重启。 当 VM 重启时，它会重启。 要手动重启该扩展，请参阅[如何重启 Azure 资源托管标识扩展？](#how-do-you-restart-the-managed-identities-for-Azure-resources-extension)
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>如何重启 Azure 资源托管标识扩展？
 在 Windows 和某些 Linux 版本中，如果该扩展停止，可使用以下 cmdlet 手动重启该扩展：
@@ -109,14 +104,6 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）当前不支持将其架构导出到资源组模板的功能。 因此，生成的模板不显示用于在资源上启用 Azure 资源托管标识的配置参数。 按照[使用模板在 Azure VM 上配置 Azure 资源托管标识](qs-configure-template-windows-vm.md)中的示例，可以手动添加这些部分。
 
 当架构导出功能可用于 Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）时，它将在[导出包含 VM 扩展的资源组](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions)中列出。
-
-### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>Azure 门户中不显示“配置”边栏选项卡
-
-如果 VM 中不显示“VM 配置”边栏选项卡，表明所在区域的门户中尚未启用 Azure 资源托管标识。  请稍后再看看。  还可以使用 [PowerShell](qs-configure-powershell-windows-vm.md) 或 [Azure CLI](qs-configure-cli-windows-vm.md) 为 VM 启用 Azure 资源托管标识。
-
-### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>无法在“访问控制(IAM)”边栏选项卡中向虚拟机授予访问权限
-
-如果在 Azure 门户中依次转到“访问控制(IAM)” > “添加角色分配”后，“将访问权限分配给”中没有“虚拟机”选项，表明所在区域的门户中尚未启用 Azure 资源托管标识。 请稍后再看看。  仍可以通过搜索 Azure 资源托管标识服务主体，选择用于角色分配的 VM 的标识。  在“选择”字段中输入 VM 名称，服务主体就会出现在搜索结果中。
 
 ### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>从资源组或订阅迁移后无法启动 VM
 
@@ -151,12 +138,11 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 将订阅移动/转移到另一个目录时，托管标识不会更新。 因此，任何现存的系统分配的或用户分配的托管标识将被破坏。 
 
-作为一种解决方法，在订阅移动后，你可以禁用系统分配的托管标识并重新启用它们。 类似地，你可以删除并重新创建用户分配的任何托管标识。 
+订阅已被移动到另一个目录中管理的标识的解决方法：
 
-## <a name="known-issues-with-user-assigned-managed-identities"></a>用户分配的托管标识的已知问题
+ - 对于系统分配的托管标识：禁用并重新启用。 
+ - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
 
-- 用户分配的标识名称限制为最少 3 个字符及最多 128 个字符。 如果名称超过 128 个字符，则无法将该标识分配给资源（即虚拟机）。
-- 用户分配的标识名称可以包含以下字符：a-z、A-Z、-、\_、0-9。 不支持创建名称中包含超出此字符集的字符（即星号）的用户分配托管标识。
-- 如果使用的是托管标识虚拟机扩展（计划在 2019 年 1 月弃用），则支持的限制为 32 个用户分配托管标识。 如果不使用托管标识虚拟机扩展，支持的限制为 512 个。  
-- 将用户分配的托管标识移动到另一个资源组将导致标识被破坏。 因此，你将无法请求该标识的令牌。 
-- 将订阅转移到另一个目录将破坏任何现存的用户分配的托管标识。 
+### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>将用户分配的托管身份信息移到不同的资源组/订阅
+
+将用户分配的托管标识移动到另一个资源组将导致标识被破坏。 因此，使用该标识的资源 (例如 VM) 将无法再为其请求令牌。 

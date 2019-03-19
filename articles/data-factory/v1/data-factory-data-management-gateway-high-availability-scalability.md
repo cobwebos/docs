@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016761"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092185"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
 > [!NOTE]
@@ -29,8 +29,8 @@ ms.locfileid: "54016761"
 
 > [!NOTE]
 > 若要更好地理解本文，需要事先熟悉 Integration Runtime（旧版数据管理网关）的基础知识。 如不熟悉，请参阅[数据管理网关](data-factory-data-management-gateway.md)。
-
->**数据管理网关版本 2.12.xxxx.x 及更高版本正式支持此预览功能**。 请确保你使用的是版本 2.12.xxxx.x 或更高版本。 在[此处](https://www.microsoft.com/download/details.aspx?id=39717)下载最新版本的数据管理网关。
+> 
+> **数据管理网关版本 2.12.xxxx.x 及更高版本正式支持此预览功能**。 请确保你使用的是版本 2.12.xxxx.x 或更高版本。 在[此处](https://www.microsoft.com/download/details.aspx?id=39717)下载最新版本的数据管理网关。
 
 ## <a name="overview"></a>概述
 可将安装于多台本地计算机上的数据管理网关与门户中的单个逻辑网关相关联。 这些计算机称为节点。 至多可将 4 个节点与一个逻辑网关相关联。 一个逻辑网关配多个节点（已安装网关的本地计算机）的好处如下：  
@@ -163,8 +163,8 @@ ms.locfileid: "54016761"
 
 - 证书必须是公共可信的 X509 v3 证书。 建议使用公共（即第三方）证书颁发机构 (CA) 颁发的证书。
 - 每个集成运行时节点都必须信任此证书，以及运行凭据管理器应用程序的客户端计算机。 
-> [!NOTE]
-> 通过复制向导/Azure 门户安全设置凭据时，使用凭据管理器应用程序。 这可能是从与本地/专用数据存储位于同一网络的任何一台计算机触发。
+  > [!NOTE]
+  > 通过复制向导/Azure 门户安全设置凭据时，使用凭据管理器应用程序。 这可能是从与本地/专用数据存储位于同一网络的任何一台计算机触发。
 - 支持通配符证书。 如果 FQDN 名称为 **node1.domain.contoso.com** ，可以使用 ***.domain.contoso.com** 作为证书的使用者名称。
 - 不建议使用 SAN 证书，因为鉴于当前限制，只会使用使用者可选名称的最后一项，其他所有项都会遭忽略。 例如 有一个 SAN 证书，其中 SAN 为 node1.domain.contoso.com 和 node2.domain.contoso.com，那么只能在 FQDN 为 node2.domain.contoso.com 的计算机上使用此证书。
 - 针对 SSL 证书支持受 Windows Server 2012 R2 支持的任何密钥大小。
@@ -184,7 +184,7 @@ ms.locfileid: "54016761"
 
 可在“网关”页中启用“高级设置”以查看网络（进/出）、角色和凭据状态等高级指标，这有助于调试网关问题以及并发作业数（运行中/上限），可在性能优化期间相应地更改并发作业数。 下表介绍“网关节点”列表中的列：  
 
-监视属性 | Description
+监视属性 | 描述
 :------------------ | :---------- 
 名称 | 逻辑网关和与网关关联的节点的名称。  
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 

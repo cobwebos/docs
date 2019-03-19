@@ -3,20 +3,20 @@ title: 将 SQL Server Integration Services 包迁移到 Azure | Microsoft Docs
 description: 了解如何将 SQL Server Integration Services 包迁移到 Azure。
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 1113e203f92c2362d0a7a5da002179a8c3ebb793
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 884af4624c1e92ee765353c90fd189220664381d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791828"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183418"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-azure"></a>将 SQL Server Integration Services 包迁移到 Azure
 如果使用 SQL Server Integration Services (SSIS) 并想将 SSIS 项目/包从 SQL Sever 托管的源 SSISDB 迁移到 Azure SQL 数据库服务器或 Azure SQL 数据库托管实例托管的目标 SSISDB，可以使用 Integration Services 部署向导来部署它们。 可以从 SQL Server Management Studio (SSMS) 中启动向导。

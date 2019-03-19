@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: fa433f55839db66bcf8245fe058ac56702af3d6e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888558"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125302"
 ---
 #### <a name="to-create-a-volume"></a>创建卷
 1. 从“设备”边栏选项卡中的设备列表中，选择设备。 单击“+ 添加卷”。
@@ -22,7 +22,7 @@ ms.locfileid: "55888558"
 
    2. 从下拉列表中，选择要在其中添加卷的卷容器。 
 
-   3.  键入卷的“名称”  。 创建卷后，无法重命名卷。
+   3. 键入卷的“名称”  。 创建卷后，无法重命名卷。
 
    4. 在下拉列表中，选择卷的“类型”。 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定”  卷。 对于所有其他数据，请选择“分层”  卷。 如果将此卷用于存档数据，请选中“将此卷用于不常访问的存档数据”。
       
@@ -36,19 +36,19 @@ ms.locfileid: "55888558"
       
        如果在 8100 设备预配 8.5 TB（允许的最大大小）的本地固定卷，则已用尽设备上的所有可用本地空间。 由于设备上没有本地空间可用于托管分层卷的工作集，因此从这一刻起无法再创建任何分层卷。 现有分层卷也会影响可用的空间。 例如，如果 8100 设备上的分层卷已占用大约 106 TB 的空间，那么本地固定卷只有 4 TB 的空间可用。
 
-    6. 在“连接的主机”字段中，单击箭头。 
+      1. 在“连接的主机”字段中，单击箭头。 
 
-        ![连接的主机](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
+         ![连接的主机](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
 
-    7. 在“连接的主机”边栏选项卡中，选择某个现有 ACR 或通过执行以下步骤添加一个新的 ACR：
+      1. 在“连接的主机”边栏选项卡中，选择某个现有 ACR 或通过执行以下步骤添加一个新的 ACR：
 
-       1. 为 ACR 提供“名称”。
-       2. 在“iSCSI 发起程序名称” 下，提供 Windows 主机的 iSCSI 限定名称 (IQN)。 如果没有 IQN，请转到 [获取 Windows Server 主机的 IQN](#get-the-iqn-of-a-windows-server-host)。
+         1. 为 ACR 提供“名称”。
+         2. 在“iSCSI 发起程序名称” 下，提供 Windows 主机的 iSCSI 限定名称 (IQN)。 如果没有 IQN，请转到 [获取 Windows Server 主机的 IQN](#get-the-iqn-of-a-windows-server-host)。
 
-    9. 单击“创建”。 使用指定的设置创建卷。
+      1. 单击“创建”。 使用指定的设置创建卷。
 
-        ![单击“法律条款” ](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+         ![单击“法律条款” ](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 
-        > [!NOTE]
-        > 请注意，你在此处创建的卷不受保护。 需要创建备份策略并将其与此卷相关联，然后才能进行计划的备份。 
+         > [!NOTE]
+         > 请注意，你在此处创建的卷不受保护。 需要创建备份策略并将其与此卷相关联，然后才能进行计划的备份。 
 

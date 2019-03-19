@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051384"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108352"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#)
 
@@ -68,13 +68,13 @@ ms.locfileid: "54051384"
 
 1. 若要初始化 .NET 项目并添加所需的 NuGet 包，请运行以下命令：
 
-  ```cmd/sh
-  mkdir pisample
-  cd pisample
-  dotnet new console
-  dotnet add package Microsoft.Azure.Devices.Client
-  dotnet restore
-  ```
+   ```cmd/sh
+   mkdir pisample
+   cd pisample
+   dotnet new console
+   dotnet add package Microsoft.Azure.Devices.Client
+   dotnet restore
+   ```
 
 1. 在 Visual Studio Code 中打开 `pisample` 文件夹， 然后打开 **pisample.csproj** 项目文件。 添加 `<RuntimeIdentifiers>` 标记，如以下代码片段所示：
 
@@ -275,16 +275,16 @@ ms.locfileid: "54051384"
 将特定于设备的连接字符串添加到代码中，以便设备使用 Azure IoT Central 进行身份验证。 你已经在将真实设备添加到 Azure IoT Central 应用程序时记下此连接字符串。
 
   > [!NOTE]
-   > Azure IoT Central 已转换为对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)，请按照以下说明[获取设备连接字符串](concepts-connectivity.md#getting-device-connection-string)并继续执行教程的剩余部分。
+   > Azure IoT 中心已转换为使用 Azure IoT 中心设备预配服务 (DPS) 的所有设备连接，请按照这些说明[获取设备连接字符串](concepts-connectivity.md#get-a-connection-string)和继续本教程的余下部分。
 
 1. 将 **Program.cs** 文件中的 `{your device connection string}` 替换为此前记下的连接字符串。
 
 1. 在命令行环境中运行以下命令：
 
-  ```cmd/sh
-  dotnet restore
-  dotnet publish -r linux-arm
-  ```
+   ```cmd/sh
+   dotnet restore
+   dotnet publish -r linux-arm
+   ```
 
 1. 将 `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` 文件夹复制到 Raspberry Pi 设备。 可以使用 **scp** 命令来复制文件，例如：
 
@@ -313,13 +313,13 @@ ms.locfileid: "54051384"
 
 1. 在 Azure IoT Central 应用程序中，可以看到在 Raspberry Pi 上运行的代码如何与应用程序交互：
 
-    * 在真实设备的“度量”页上，可以看到遥测数据。
-    * 在“属性”页上，可以看到报告的“模具编号”属性的值。
-    * 在“设置”页中，可以更改 Raspberry Pi 上的各种设置，例如电压和风扇速度。
+   * 在真实设备的“度量”页上，可以看到遥测数据。
+   * 在“属性”页上，可以看到报告的“模具编号”属性的值。
+   * 在“设置”页中，可以更改 Raspberry Pi 上的各种设置，例如电压和风扇速度。
 
-    以下屏幕截图显示 Raspberry Pi 接收设置更改：
+     以下屏幕截图显示 Raspberry Pi 接收设置更改：
 
-    ![Raspberry Pi 接收设置更改](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+     ![Raspberry Pi 接收设置更改](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry PI 设备模板详细信息

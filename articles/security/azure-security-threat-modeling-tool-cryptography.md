@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824620"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887096"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
+
 | 产品/服务 | 文章 |
 | --------------- | ------- |
 | **Web 应用程序** | <ul><li>[只使用批准的对称块加密法和密钥长度](#cipher-length)</li><li>[为对称加密法使用批准的块加密法模式和初始化向量](#vector-ciphers)</li><li>[使用批准的非对称算法、密钥长度和填充](#padding)</li><li>[使用批准的随机数生成器](#numgen)</li><li>[不要使用对称流加密法](#stream-ciphers)</li><li>[使用批准的 MAC/HMAC/键控哈希算法](#mac-hash)</li><li>[只使用批准的加密哈希函数](#hash-functions)</li></ul> |
@@ -96,7 +97,7 @@ ms.locfileid: "54824620"
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | <p>产品必须只使用批准的消息身份验证代码 (MAC) 或基于哈希的消息身份验证代码 (HMAC) 算法。</p><p>消息身份验证代码 (MAC) 是附加到消息的信息片段，可让其接收方使用机密密钥来验证发送方的真实性和消息的完整性。 允许使用基于哈希的 MAC ([HMAC](http://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) 或[基于块加密法的 MAC](http://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf)，前提是所有底层哈希或对称加密算法的使用也已获批准；目前，这些算法包括 HMAC SHA2 函数（HMAC-SHA256、HMAC SHA384 和 HMAC SHA512），以及 CMAC/OMAC1 和 OMAC2 基于块加密法的 MAC（基于 AES）。</p><p>出于平台兼容性目的，允许使用 HMAC-SHA1，但需要对此过程申请例外处理，并接受组织加密委员会的评审。 不允许截断小于 128 位的 HMAC。 使用客户方法来哈希处理密钥和数据的措施未获批准，在使用之前必须接受组织加密委员会的评审。</p>|
+| **步骤** | <p>产品必须只使用批准的消息身份验证代码 (MAC) 或基于哈希的消息身份验证代码 (HMAC) 算法。</p><p>消息身份验证代码 (MAC) 是附加到消息的信息片段，可让其接收方使用机密密钥来验证发送方的真实性和消息的完整性。 允许使用基于哈希的 MAC ([HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) 或[基于块加密法的 MAC](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf)，前提是所有底层哈希或对称加密算法的使用也已获批准；目前，这些算法包括 HMAC SHA2 函数（HMAC-SHA256、HMAC SHA384 和 HMAC SHA512），以及 CMAC/OMAC1 和 OMAC2 基于块加密法的 MAC（基于 AES）。</p><p>出于平台兼容性目的，允许使用 HMAC-SHA1，但需要对此过程申请例外处理，并接受组织加密委员会的评审。 不允许截断小于 128 位的 HMAC。 使用客户方法来哈希处理密钥和数据的措施未获批准，在使用之前必须接受组织加密委员会的评审。</p>|
 
 ## <a id="hash-functions"></a>只使用批准的加密哈希函数
 
@@ -107,7 +108,7 @@ ms.locfileid: "54824620"
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | <p>产品必须使用 SHA-2 系列的哈希算法（SHA256、SHA384 和 SHA512）。 如果需要更短的哈希（例如 128 位输出长度）来适应出于缩短 MD5 哈希目的而设计的数据结构，产品团队可以截断 SHA2 哈希之一（通常为 SHA256）。 请注意，SHA384 是 SHA512 的截断版本。 不允许出于安全目的将加密哈希截断至 128 位以下。 新代码必须使用 MD2、MD4、MD5、SHA-0、 SHA-1 或 RIPEMD 哈希算法。 对于这些算法，哈希冲突在计算上是可行的，这会有效地破解这些算法。</p><p>为使加密灵活可控而允许的 .NET 哈希算法（按优先顺序列出）：</p><ul><li>SHA512Cng（符合 FIPS）</li><li>SHA384Cng（符合 FIPS）</li><li>SHA256Cng（符合 FIPS）</li><li>SHA512Managed（不符合 FIPS）（在对 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 的调用中使用 SHA512 作为算法名称）</li><li>SHA384Managed（不符合 FIPS）（在对 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 的调用中使用 SHA384 作为算法名称）</li><li>SHA256Managed（不符合 FIPS）（在对 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 的调用中使用 SHA256 作为算法名称）</li><li>SHA512CryptoServiceProvider（符合 FIPS）</li><li>SHA256CryptoServiceProvider（符合 FIPS）</li><li>SHA384CryptoServiceProvider（符合 FIPS）</li></ul>| 
+| **步骤** | <p>产品必须使用 SHA-2 系列的哈希算法（SHA256、SHA384 和 SHA512）。 如果需要更短的哈希（例如 128 位输出长度）来适应出于缩短 MD5 哈希目的而设计的数据结构，产品团队可以截断 SHA2 哈希之一（通常为 SHA256）。 请注意，SHA384 是 SHA512 的截断版本。 不允许出于安全目的将加密哈希截断至 128 位以下。 新代码必须使用 MD2、MD4、MD5、SHA-0、 SHA-1 或 RIPEMD 哈希算法。 对于这些算法，哈希冲突在计算上是可行的，这会有效地破解这些算法。</p><p>为使加密灵活可控而允许的 .NET 哈希算法（按优先顺序列出）：</p><ul><li>SHA512Cng（符合 FIPS）</li><li>SHA384Cng（符合 FIPS）</li><li>SHA256Cng（符合 FIPS）</li><li>SHA512Managed (非 fips) （使用 SHA512 作为算法名称在 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中）</li><li>SHA384Managed (非 fips) （使用 SHA384 作为算法名称在 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中）</li><li>SHA256Managed (非 fips) （使用 SHA256 作为算法名称在 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 调用中）</li><li>SHA512CryptoServiceProvider（符合 FIPS）</li><li>SHA256CryptoServiceProvider（符合 FIPS）</li><li>SHA384CryptoServiceProvider（符合 FIPS）</li></ul>| 
 
 ## <a id="strong-db"></a>使用强加密算法加密数据库中的数据
 
@@ -228,7 +229,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [标识服务器 - 密钥、签名和加密](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
+| **参考**              | [标识服务器-密钥、 签名和加密](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
 | **步骤** | 使用标识服务器时确保滚动更新签名密钥。 参考部分中的链接说明了如何在不中断依赖于标识服务器的应用程序的情况下规划密钥滚动更新。 |
 
 ## <a id="client-server"></a>确保在标识服务器中使用强加密型客户端 ID 和客户端密码

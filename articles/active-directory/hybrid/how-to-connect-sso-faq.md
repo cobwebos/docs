@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c15b42572648f875ac4bda2eae5813f0cf6b17ef
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8de47aab231c66f3539c2d2f0f0e4c535a04038a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187179"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085365"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -47,9 +47,9 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 | -- | -- |
 | 访问面板 | https://myapps.microsoft.com/contoso.com |
 | Outlook 网页版 | https://outlook.office365.com/contoso.com |
-| Office 365 门户 | https://portal.office.com?domain_hint=contoso.com、 https://www.office.com?domain_hint=contoso.com |
+| Office 365 门户 | <https://portal.office.com?domain_hint=contoso.com>、<https://www.office.com?domain_hint=contoso.com> |
 
-此外，如果应用程序向 Azure AD 的租用终结点（即 https://login.microsoftonline.com/contoso.com/<..> 或 https://login.microsoftonline.com/<tenant_ID>/<..>）而不是 Azure AD 的普通终结点（即 https://login.microsoftonline.com/common/<...>）发送登录请求，用户可获得无提示登录体验。 以下为提出此类登录请求的应用程序的非详尽列表。
+此外，用户时会获得静默登录体验应用程序将登录请求发送到 Azure AD 终结点将设置为租户-也就是说，如果 https://login.microsoftonline.com/contoso.com/<..>或 https://login.microsoftonline.com/<tenant_ID>/<..>-而不是 Azure AD 的普通终结点-即， https://login.microsoftonline.com/common/<...>。 以下为提出此类登录请求的应用程序的非详尽列表。
 
 | 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
@@ -95,8 +95,8 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 AD 林的域管理员凭据。
 
-    >[!NOTE]
-    >我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
+   > [!NOTE]
+   > 我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
 
 2. 调用 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令会在此特定 AD 林中更新 `AZUREADSSOACC` 计算机帐户的 Kerberos 解密密钥，并在 Azure AD 中对其进行更新。
 3. 针对已设置了此功能的每个 AD 林重复上述步骤。
@@ -146,7 +146,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
+- [**快速入门**](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
 - [深入技术探究](how-to-connect-sso-how-it-works.md) - 了解此功能如何运作。
-- [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [**故障排除**](tshoot-connect-sso.md) - 了解如何解决此功能的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

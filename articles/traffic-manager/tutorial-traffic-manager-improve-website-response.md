@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: c9524396376f3de7d9468d94e3236929aadd374c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 6dea36afd3a426bbbd0c28a96f21ccad1a82ea88
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463909"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997994"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教程：使用流量管理器改善网站响应
 
@@ -34,7 +34,7 @@ ms.locfileid: "54463909"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 为了查看流量管理器的运作方式，本教程要求部署以下各项：
 - 在不同 Azure 区域（“美国东部”和“西欧”）运行的基本网站的两个实例。
 - 用于测试流量管理器的两个测试 VM - 一个 VM 位于“美国东部”，另一个 VM 位于“西欧”。 测试 VM 用于演示流量管理器如何将用户流量路由到同一区域中运行的网站，并提供最低的延迟。
@@ -63,6 +63,7 @@ ms.locfileid: "54463909"
     |资源组| 选择“新建”，然后键入 *myResourceGroupTM1*。|
     |位置| 选择“美国东部”。|
     |||
+
 4. 在“选择大小”下选择 VM 大小。
 5. 对于“设置”选择以下值，然后选择“确定”：
     
@@ -72,6 +73,7 @@ ms.locfileid: "54463909"
     |网络安全组|选择“基本”，在“选择公共入站端口”下拉列表中选择“HTTP”和“RDP” |
     |启动诊断|选择“已禁用”。|
     |||
+
 6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署。
 
 7. 再次完成步骤 1-6，并做出以下更改：
@@ -83,6 +85,7 @@ ms.locfileid: "54463909"
     |VM 名称 | myIISVMWEurope|
     |虚拟网络 | 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet2*，为“子网”输入 *mySubnet*。|
     |||
+
 8. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
 
    ![创建 VM](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -139,6 +142,7 @@ ms.locfileid: "54463909"
 
 4. 在“选择大小”下选择 VM 大小。
 5. 对于“设置”选择以下值，然后选择“确定”：
+
     |设置|值|
     |---|---|
     |虚拟网络| 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet3*，为“子网”输入 *mySubnet*。|
@@ -164,6 +168,7 @@ ms.locfileid: "54463909"
 
 1. 在屏幕左上方，选择“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受剩下的默认设置，然后选择“创建”：
+
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
@@ -177,7 +182,7 @@ ms.locfileid: "54463909"
 
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 
-添加两个运行 IIS 服务器的 VM（*myIISVMEastUS* 和 *myIISVMWEurope*），以便将用户流量路由到最靠近用户的终结点。
+添加两个运行 IIS 服务器的 VM（*myIISVMEastUS* &  (和) *myIISVMWEurope*），以便将用户流量路由到最靠近用户的终结点。
 
 1. 在门户的搜索栏中，搜索在前面部分创建的流量管理器配置文件名称，并在显示的结果中选择该配置文件。
 2. 在“流量管理器配置文件”的“设置”部分单击“终结点”，然后单击“添加”。
@@ -185,7 +190,7 @@ ms.locfileid: "54463909"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 类型                    | Azure 终结点                                   |
+    | Type                    | Azure 终结点                                   |
     | 名称           | myEastUSEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。 这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|

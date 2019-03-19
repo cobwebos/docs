@@ -1,21 +1,21 @@
 ---
-title: 在机器学习工作室中解释模型结果
+title: 解释模型结果
 titleSuffix: Azure Machine Learning Studio
 description: 如何为使用并可视化评分模型输出的算法选择最佳的参数集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 0940cb9e42588990e2109d02fda462f343443876
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456072"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877269"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中解释模型结果
 本主题说明如何在 Azure 机器学习工作室中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
@@ -52,7 +52,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 ### <a name="two-class-classification"></a>双类分类
 **示例实验**
 
-双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 Azure 机器学习工作室中提供的鸢尾花数据集是流行的[鸢尾花数据集](http://en.wikipedia.org/wiki/Iris_flower_data_set)的子集，仅包含两种花卉种类（类 0 和类 1）的实例。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
+双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 Azure 机器学习工作室中提供的鸢尾花数据集是流行的[鸢尾花数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)的子集，仅包含两种花卉种类（类 0 和类 1）的实例。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
 
 ![鸢尾花实验的屏幕截图](./media/interpret-model-results/1.png)
 

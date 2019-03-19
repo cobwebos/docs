@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: e175f603e97ccf51e1e13d9c2fc42ba7ed1a475f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: c28441b6fe25b3480a55b79682d5067b19e3023a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246726"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051837"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
 Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始启动时，Cloud Shell 会提示关联新的或现有的文件共享，以便在会话之间持久保存文件。
@@ -48,6 +48,7 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 关联的 Azure 存储帐户必须与其装载到的 Cloud Shell 计算机位于同一区域。 若要查找当前区域，可以在 Bash 中运行 `env` 并找到变量 `ACC_LOCATION`。 文件共享会收到系统创建的 5-GB 映像，用于保存 `$Home` 目录。
 
 Cloud Shell 计算机位于以下区域中：
+
 |区域|区域|
 |---|---|
 |美洲|美国东部、美国中南部、美国西部|

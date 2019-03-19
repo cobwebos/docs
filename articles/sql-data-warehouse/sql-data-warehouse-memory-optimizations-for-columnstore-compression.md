@@ -2,24 +2,24 @@
 title: 提高列存储索引的性能 - Azure SQL 数据仓库 | Microsoft Docs
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: sql-data-warehouse
-author: ckarst
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 03/18/2019
+ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d956322233cb6b4f8502775dcf2f89d96fd5cafe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463355"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189557"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
-行组质量由行组中的行数决定。 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
+行组质量由行组中的行数决定。 增加可用内存可以最大化列存储索引将压缩到每个行组的行数。  使用这些方法来提高列存储索引的压缩率和请求性能。
 
 ## <a name="why-the-rowgroup-size-matters"></a>行组大小之所以重要的原因
 由于列存储索引会通过扫描单个行组的列段来扫描表，所以，使每个行组的行数最大化可增强查询性能。 如果行组具有的行数较多，则会增强数据压缩，这意味着需要从磁盘读取的数据变少。
@@ -35,11 +35,11 @@ ms.locfileid: "55463355"
 
 如果内存不足，无法将至少 10,000 个行压缩到每个行组中，SQL 数据仓库将生成错误。
 
-有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index)（批量加载到聚集列存储索引中）。
+有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](https://msdn.microsoft.com/library/dn935008.aspx#Bulk )（批量加载到聚集列存储索引中）。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 
-DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats) 会公开一些有用信息，例如行组中的行数，以及修整原因（如果有修整）。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)包含视图定义匹配到 SQL 数据仓库的 SQL DB) 的公开一些有用信息例如，行组和修整如果那里修整原因中的行数。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -95,7 +95,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 使用以下技巧来减少内存需求，以便能将行组压缩到列存储索引中。
 
 ### <a name="use-fewer-columns"></a>减少所用列数
-设计表时尽可能减少所用列数。 如果行组已压缩到列存储中，列存储索引将单独压缩每个列段。 因此，用于压缩行组的内存需求将随列数的增加而增加。
+设计表时尽可能减少所用列数。 如果行组已压缩到列存储中，列存储索引会单独压缩每个列段。 因此，用于压缩行组的内存需求将随列数的增加而增加。
 
 
 ### <a name="use-fewer-string-columns"></a>减少字符串列数
@@ -116,7 +116,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 数据库会在查询的所有运算符之间共享查询的内存授予。 如果加载查询的排序和联接复杂，可用于压缩的内存将减少。
 
-请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，然后将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
+请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，然后将临时表加载到列存储索引中。 也可先加载数据，并使用 MPP 系统来转换数据。
 
 ### <a name="adjust-maxdop"></a>调整 MAXDOP
 
@@ -137,14 +137,6 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 
 - 若要增加 DWU，请参阅[如何进行性能缩放？](quickstart-scale-compute-portal.md)
 - 若要更改查询的资源类，请参阅[更改用户资源类示例](resource-classes-for-workload-management.md#change-a-users-resource-class)。
-
-例如，使用 DWU 100 时，smallrc 资源类中的用户在每次分发时可使用 100 MB 的内存。 有关详细信息，请参阅 [SQL 数据仓库中的并发](resource-classes-for-workload-management.md)。
-
-假设需要 700 MB 的内存以获取优质行组大小。 以下示例演示可如何使用足够的内存来运行加载查询。
-
-- 使用 DWU 1000 和 mediumrc，则内存授予为 800 MB
-- 使用 DWU 600 和 largerc，则内存授予为 800 MB。
-
 
 ## <a name="next-steps"></a>后续步骤
 

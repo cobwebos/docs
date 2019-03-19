@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 2/18/2019
-ms.openlocfilehash: 4fd0f0990163963fc0cc3c7caf221609da487909
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: c4db658db3d32905368390826e5531ca31525486
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340172"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58133121"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -53,7 +53,7 @@ Azure 数据资源管理器目前支持：
 
 ### <a name="ingestion-using-integration-services"></a>使用集成服务的引入
 
-* Azure 数据工厂 (ADF) 是 Azure 中分析工作负荷的完全托管数据集成服务，用于向/从 Azure 数据资源管理器复制数据。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](/azure/data-factory/connector-azure-data-explorer)。
+* Azure 数据工厂 (ADF)，一个完全托管的数据集成服务，在 Azure 中，若要向 / 从 Azure 数据资源管理器使用复制数据的分析工作负荷[支持的数据存储和格式](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](/azure/data-factory/connector-azure-data-explorer)。
 
 ### <a name="programmatic-ingestion"></a>编程引入
 
@@ -81,7 +81,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 
 * 直接将数据引入到 Azure 数据资源管理器引擎（最适合用于探索和原型制作）：
 
-  * **内联引入**：包含带内数据的控制命令 (.ingest inline) 用于临时测试目的。
+  * **内联引入**： 包含带内数据的控制命令 （.ingest 内联） 用于即席测试目的。
 
   * **从查询引入**：指向查询结果的控制命令 (.set、.set-or-append、.set-or-replace) 用于生成报表或小型临时表。
 
@@ -137,7 +137,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 架构映射有助于将源数据字段绑定到目标表列。
 
 * [CSV 映射](/azure/kusto/management/mappings?branch=master#csv-mapping)（可选）适用于所有基于序号的格式。 可以使用引入命令参数执行该功能，或者[在表中预创建](/azure/kusto/management/tables?branch=master#create-ingestion-mapping)并从引入命令参数进行引用。
-* 可以使用引入命令参数执行 [JSON 映射](/azure/kusto/management/mappings?branch=master#json-mapping)（强制）和 [Avro 映射](/azure/kusto/management/mappings?branch=master#avro-mapping)（强制）。 可以](/azure/kusto/management/tables#create-ingestion-mapping)在表上预先创建[它们并从引入命令参数引用。
+* 可以使用引入命令参数执行 [JSON 映射](/azure/kusto/management/mappings?branch=master#json-mapping)（强制）和 [Avro 映射](/azure/kusto/management/mappings?branch=master#avro-mapping)（强制）。 可以在表上预先创建[它们并从](/azure/kusto/management/tables#create-ingestion-mapping)引入命令参数引用。
 
 ## <a name="next-steps"></a>后续步骤
 

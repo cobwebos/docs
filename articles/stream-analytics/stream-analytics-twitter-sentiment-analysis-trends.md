@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 86fa7fab6897802fd4f18936f2d7bb0700829837
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.openlocfilehash: b5ad1a790f79b11b978c32c5751a6b9333f24c85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231132"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994932"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
@@ -30,7 +30,7 @@ ms.locfileid: "54231132"
 
 若要标识 Twitter 上的实时热门话题，公司需要关于关键主题推文量及情绪的实时分析。 换而言之，需要一个基于该社交媒体源的情绪分析分析引擎。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本教程将使用客户端应用程序连接到 Twitter，并查找具有特定井号标签（可设置）的推文。 为了运行应用程序并使用 Azure 流分析来分析推文，必须具备以下内容：
 
 * Azure 订阅
@@ -58,9 +58,9 @@ ms.locfileid: "54231132"
 
 5. 单击新的命名空间，然后在“命名空间”边栏选项卡中，单击“+&nbsp;事件中心”。 
 
-    ![用于创建新事件中心的“添加事件中心”按钮 ](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
+    ![用于创建新事件中心的“添加事件中心”按钮](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
-6. 将新事件中心命名为 `socialtwitter-eh`。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要为事件中心设置任何其他选项。
+6. 将新事件中心命名为 `socialtwitter-eh`。 可以使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要为事件中心设置任何其他选项。
 
     ![用于创建新事件中心的边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
@@ -119,10 +119,10 @@ ms.locfileid: "54231132"
 
 2. 创建新应用程序。 
 
-    * 对于网站 URL，请指定有效的 URL。 它不必是活动站点。 （不能仅指定 `localhost`。）
-    * 将回叫字段留空。 本教程使用的客户端应用程序不需要回叫。
+   * 对于网站 URL，请指定有效的 URL。 它不必是活动站点。 （不能仅指定 `localhost`。）
+   * 将回叫字段留空。 本教程使用的客户端应用程序不需要回叫。
 
-    ![在 Twitter 中创建应用程序](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
+     ![在 Twitter 中创建应用程序](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
 
 3. （可选）将应用程序的权限更改为只读。
 
@@ -167,19 +167,19 @@ ms.locfileid: "54231132"
 
 3. 若要永久设置值，请使用文本编辑器打开 TwitterWpfClient.exe.config 文件。 然后在 `<appSettings>` 元素中，执行此操作：
 
-    * 将 `oauth_consumer_key` 设置为 Twitter 使用者密钥（API 密钥）。 
-    * 将 `oauth_consumer_secret` 设置为Twitter 使用者机密（API 机密）。
-    * 将 `oauth_token` 设置为 Twitter 访问令牌。
-    * 将 `oauth_token_secret` 设置为 Twitter 访问令牌机密。
+   * 将 `oauth_consumer_key` 设置为 Twitter 使用者密钥（API 密钥）。 
+   * 将 `oauth_consumer_secret` 设置为Twitter 使用者机密（API 机密）。
+   * 将 `oauth_token` 设置为 Twitter 访问令牌。
+   * 将 `oauth_token_secret` 设置为 Twitter 访问令牌机密。
 
-    然后在 `<appSettings>` 元素中，执行以下更改：
+     然后在 `<appSettings>` 元素中，执行以下更改：
 
-    * 将 `EventHubName` 设置为事件中心名称（即实体路径的值）。
-    * 将 `EventHubNameConnectionString` 设置为连接字符串。 请务必使用从中删除 `EntityPath` 键值对的连接字符串。
+   * 将 `EventHubName` 设置为事件中心名称（即实体路径的值）。
+   * 将 `EventHubNameConnectionString` 设置为连接字符串。 请务必使用从中删除 `EntityPath` 键值对的连接字符串。
 
-    `<appSettings>` 部分如以下示例所示。 （为清楚和安全起见，我们包装了一些行并删除了一些字符。）
+     `<appSettings>` 部分如以下示例所示。 （为清楚和安全起见，我们包装了一些行并删除了一些字符。）
 
-    ![文本编辑器中的 TwitterWpfClient 应用程序配置文件，其中显示 Twitter 密钥和机密，以及事件中心连接字符串信息](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
+     ![文本编辑器中的 TwitterWpfClient 应用程序配置文件，其中显示 Twitter 密钥和机密，以及事件中心连接字符串信息](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
  
 4. 如果尚未启动应用程序，请立即运行 TwitterWpfClient.exe。 
 
@@ -214,15 +214,15 @@ ms.locfileid: "54231132"
 
 2. 在“输入”边栏选项卡中，单击“+&nbsp;添加”，然后在边栏选项卡中填写以下值：
 
-    * **输入别名**：使用名称 `TwitterStream`。 如果使用其他名称，请将其记录下来，因为稍后需要该名称。
-    * **源类型**：选择“数据流”。
-    * **源**：选择“事件中心”。
-    * **导入选项**：选择“从当前订阅使用事件中心”。 
-    * **服务总线命名空间**：选择之前创建的事件中心命名空间 (`<yourname>-socialtwitter-eh-ns`)。
-    * **事件中心**：选择之前创建的事件中心 (`socialtwitter-eh`)。
-    * **事件中心策略名称**：选择之前创建的访问策略 (`socialtwitter-access`)。
+   * **输入别名**：使用名称 `TwitterStream`。 如果使用其他名称，请将其记录下来，因为稍后需要该名称。
+   * **源类型**：选择“数据流”。
+   * **源**：选择“事件中心”。
+   * **导入选项**：选择“从当前订阅使用事件中心”。 
+   * **服务总线命名空间**：选择之前创建的事件中心命名空间 (`<yourname>-socialtwitter-eh-ns`)。
+   * **事件中心**：选择之前创建的事件中心 (`socialtwitter-eh`)。
+   * **事件中心策略名称**：选择之前创建的访问策略 (`socialtwitter-access`)。
 
-    ![为流分析作业创建新输入](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
+     ![为流分析作业创建新输入](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
 3. 单击“创建”。
 
@@ -297,17 +297,17 @@ ms.locfileid: "54231132"
 
 2. 在“输出”边栏选项卡中，单击“+&nbsp;添加”，然后在边栏选项卡中填写以下值：
 
-    * **输出别名**：使用名称 `TwitterStream-Output`。 
-    * **接收器**：选择“Blob 存储”。
-    * **导入选项**：选择“从当前订阅使用 blob 存储”。
-    * **存储帐户**： 选择“创建新存储帐户”。
-    * “存储帐户”（第二个框）。 输入 `YOURNAMEsa`，其中 `YOURNAME` 是你的姓名或另一唯一字符串。 该名称只能使用小写字母和数字，并且在 Azure 中必须唯一。 
-    * “容器”。 输入 `socialtwitter` 。
-    存储帐户名称和容器名称结合使用，以便为 Blob 存储提供 URI，如下所示： 
+   * **输出别名**：使用名称 `TwitterStream-Output`。 
+   * **接收器**：选择“Blob 存储”。
+   * **导入选项**：选择“从当前订阅使用 blob 存储”。
+   * **存储帐户**： 选择“创建新存储帐户”。
+   * “存储帐户”（第二个框）。 输入 `YOURNAMEsa`，其中 `YOURNAME` 是你的姓名或另一唯一字符串。 该名称只能使用小写字母和数字，并且在 Azure 中必须唯一。 
+   * “容器”。 输入 `socialtwitter`。
+     存储帐户名称和容器名称结合使用，以便为 Blob 存储提供 URI，如下所示： 
 
-    `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
+     `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
     
-    ![流分析作业的“新建输出”边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
+     ![流分析作业的“新建输出”边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
 4. 单击“创建”。 
 
@@ -338,7 +338,7 @@ ms.locfileid: "54231132"
 
 作业已经开始运行，并开始处理实时 Twitter 流后，即可查看情绪分析的输出。
 
-可使用 [Azure 存储资源管理器](https://storageexplorer.com/)或 [Azure 资源管理器](http://www.cerebrata.com/products/azure-explorer/introduction)之类的工具实时查看作业输出。 在这里，可以使用 [Power BI](https://powerbi.com/) 扩展应用程序以包括自定义仪表板，如以下屏幕截图所示：
+可使用 [Azure 存储资源管理器](https://storageexplorer.com/)或 [Azure 资源管理器](https://www.cerebrata.com/products/azure-explorer/introduction)之类的工具实时查看作业输出。 在这里，可以使用 [Power BI](https://powerbi.com/) 扩展应用程序以包括自定义仪表板，如以下屏幕截图所示：
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 

@@ -3,17 +3,17 @@ title: 将 DevKit 设备连接到 Azure IoT Central 应用程序 | Microsoft Doc
 description: 了解如何以设备开发人员的身份将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序。
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/16/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6d2cb95efbff223aecf1f0525dbb93698639d41a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: 44af0ccab45f1335d9dfec06287303a34391eded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198722"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113191"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -26,48 +26,42 @@ ms.locfileid: "54198722"
 1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 1. DevKit 设备。 若要购买 DevKit 设备，请访问 [MXChip IoT DevKit](http://mxchip.com/az3166)。
 
+## <a name="sample-devkits-application"></a>示例 Devkits 应用程序
 
-## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
+基于“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **MXChip** 设备模板：
 
-基于“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **MXChip** 设备模板： 
-
-- 包含设备**湿度**、**温度**、**压力**、**磁力计**（沿 X、Y、Z 轴度量）、**加速计**（沿 X、Y、Z 轴度量）和**陀螺仪**（沿 X、Y、Z 轴度量）度量值的遥测数据。
+- 包含设备湿度、温度、压力、磁力计（沿 X、Y、Z 轴度量）、加速计（沿 X、Y、Z 轴度量）和陀螺仪（沿 X、Y、Z 轴度量）度量的遥测数据。
 - 包含**设备状态**的示例度量值的状态。
 - “按钮 B 已按下”事件的事件度量值。 
 - 显示**电压**、**电流**、**风扇速度**和 **IR** 切换的设置。
 - 包含设备属性“模板号”和“设备位置”（也是“制造于”云属性中的位置属性）的属性。 
 
-
-有关该配置的完整详细信息，请参阅 [MXChip 设备模板详细信息](howto-connect-devkit.md#mxchip-device-template-details)
+有关该配置的完整详细信息，请参阅 [MXChip 设备模板详细信息](#mxchip-device-template-details)
 
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
 在 Azure IoT Central 应用程序中，从 MXChip 设备模板添加真实设备，并记下设备连接详细信息（作用域 ID、设备 ID 和主键）。
 
-1. 在 Device Explorer 中添加真实设备，单击“+新增”>“真实设备”以添加真实设备。
-    * 输入设备 ID<span style="color:Red">（须小写）</span>或使用所建议的设备 ID。
-    * 输入设备名或使用建议名称
-    
-    ![添加设备](media/concepts-connectivity/add-device.png)
+1. 添加**真实的设备**从 Device Explorer 中，选择 **+ 新建 > 实际**添加真实的设备。
 
+   * 输入设备 ID<span style="color:Red">（须小写）</span>或使用所建议的设备 ID。
+   * 输入设备名或使用建议名称
 
-1. 通过单击设备页上的“连接”，获取已添加设备的作用域 ID、设备 ID 和主键等连接详细信息。
- 
-    ![连接详细信息](media/concepts-connectivity/device-connect.PNG)
+     ![添加设备](media/howto-connect-devkit/add-device.png)
 
-3. 确保保存这些详细信息，因为在准备 DevKit 设备时，将临时断开与 Internet 的连接。 
+1. 获取连接详细信息，如**作用域 ID、 设备 ID 和主要密钥**为通过选择添加的设备**Connect**设备页上。
 
+    ![连接详细信息](media/howto-connect-devkit/device-connect.png)
+
+1. 确保保存这些详细信息，因为在准备 DevKit 设备时，将临时断开与 Internet 的连接。
 
 ### <a name="prepare-the-devkit-device"></a>准备 DevKit 设备
 
 > [!NOTE]
 > 如果以前使用过该设备且已存储 wifi 凭据，并且想要重新配置该设备以使用其他 WiFi 网络、连接字符串或遥测度量，请在开发板上同时按 **A** 和 **B** 按钮。 如果这不起作用，请按“重置”按钮并重试。
 
-
-
-#### <a name="to-prepare-the-devkit-device"></a>若要准备 DevKit 设备：
-
+#### <a name="to-prepare-the-devkit-device"></a>准备 DevKit 设备
 
 1. 从 GitHub 上的[发布](https://aka.ms/iotcentral-docs-MXChip-releases)页下载 MXChip 的最新预建 Azure IoT Central 固件。
 1. 使用 USB 线缆将 DevKit 设备连接到开发计算机。 在 Windows 中，已映射到 DevKit 设备上的存储的驱动器中会打开一个文件资源管理器窗口。 例如，该驱动器可能名为 **AZ3166 (D:)**。
@@ -78,12 +72,12 @@ ms.locfileid: "54198722"
     ```
     Connect HotSpot:
     AZ3166_??????
-    go-> 192.168.0.1 
+    go-> 192.168.0.1
     PIN CODE xxxxx
     ```
 
     > [!NOTE]
-    > 如果屏幕显示任何其他内容，请重置设备并同时按设备上的 A 和 B 按钮以重启设备。 
+    > 如果屏幕显示任何其他内容，请重置设备并同时按设备上的 A 和 B 按钮以重启设备。
 
 1. 现在，设备处于接入点 (AP) 模式。 可以从计算机或移动设备连接到此 WiFi 接入点。
 
@@ -178,7 +172,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 有关如何修改、生成示例代码并将其上传到设备的信息，请参阅 `AZ3166` 文件夹中的 **readme.md** 文件。
 
-## <a name="mxchip-device-template-details"></a>MXChip 设备模板详细信息 
+## <a name="mxchip-device-template-details"></a>MXChip 设备模板详细信息
 
 基于“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 MXChip 设备模板：
 

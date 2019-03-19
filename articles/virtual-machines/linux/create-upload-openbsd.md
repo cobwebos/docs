@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 332382282c2b55b52bb23f278a25868c09360619
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: d8640881e83084dac7f4725115f48dcf7d29e787
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729347"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007607"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并上传到 Azure
 本文说明如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 将其上传后，可以通过 Azure CLI 使用它作为你自己的映像在 Azure 中创建虚拟机 (VM)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本文假设拥有以下项目：
 
 * **Azure 订阅** - 如果没有帐户，只需几分钟即可创建一个。 如果有 MSDN 订阅，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 否则，请了解如何[创建一个免费试用帐户](https://azure.microsoft.com/pricing/free-trial/)。  
@@ -56,7 +56,7 @@ ms.locfileid: "55729347"
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. 默认情况下，禁止在 Azure 中的虚拟机上使用 `root` 用户。 用户可以在 OpenBSD VM 上通过 `doas` 命令使用提升的权限运行各种命令。 Doas 在默认情况下处于启用状态。 有关详细信息，请参阅 [doas.conf](http://man.openbsd.org/doas.conf.5)。 
+4. 默认情况下，禁止在 Azure 中的虚拟机上使用 `root` 用户。 用户可以在 OpenBSD VM 上通过 `doas` 命令使用提升的权限运行各种命令。 Doas 在默认情况下处于启用状态。 有关详细信息，请参阅 [doas.conf](https://man.openbsd.org/doas.conf.5)。 
 
 5. 按如下所示为 Azure 代理安装和配置先决条件：
 
@@ -86,7 +86,7 @@ ms.locfileid: "55729347"
     > cat /var/log/waagent.log
     > ```
 
-7. 取消预配系统以清除系统并使其适用于重新预配。 以下命令还会删除上次预配的用户帐户和关联数据：
+7. 取消设置系统可清除系统并使其适用于重新设置。 以下命令还会删除上次预配的用户帐户和关联数据：
 
     ```sh
     waagent -deprovision+user -force
@@ -175,6 +175,6 @@ ssh azureuser@<ip address>
 
 
 ## <a name="next-steps"></a>后续步骤
-如果要了解有关 OpenBSD6.1 上的 Hyper-V 支持的详细信息，请阅读 [OpenBSD 6.1](https://www.openbsd.org/61.html) 和 [hyperv.4](http://man.openbsd.org/hyperv.4)。
+如果要了解有关 OpenBSD6.1 上的 Hyper-V 支持的详细信息，请阅读 [OpenBSD 6.1](https://www.openbsd.org/61.html) 和 [hyperv.4](https://man.openbsd.org/hyperv.4)。
 
 如果要通过托管磁盘创建 VM，请阅读 [az disk](/cli/azure/disk)。 

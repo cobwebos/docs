@@ -14,20 +14,20 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b20b1506dfcd32ea7d5bfca0847393d1652afb78
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: HT
+ms.openlocfilehash: cdee17185b7051220f66ede3b9da50a333409e6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638886"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119255"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>常见的 SAS URL 问题和修复
 
 下表列出了使用共享访问签名（它们用来标识和共享解决方案的已上传 VHD）时遇到的一些常见问题以及建议的解决方法。
 
-| **问题** | **失败消息** | **修复** | 
+| **问题** | **失败消息** | **修补程序** | 
 | --------- | ------------------- | ------- | 
-| &emsp;  *复制映像时失败* |  |  |  |
+| &emsp;  *复制映像时失败* |  |  |
 | 在 SAS URL中未找到 "?" | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | 使用建议的工具更新 SAS URL。 |
 | SAS URL 中不存在“st”和“se”参数 | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | 更新 SAS URL，在其中设置正确的**开始日期**和**结束日期**值。 | 
 | SAS URL 中不存在“sp=rl” | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | 更新 SAS URL，将权限设置为 `Read` 和 `List`。 | 

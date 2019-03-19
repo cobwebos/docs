@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 0e14e7eb20e87f5555fa6b494c0d09ccde08d2dd
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: ddcf3428f32698c9825f13975929bc4677139acf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731651"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081043"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -122,13 +122,13 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 - 此版本为 Azure Stack 操作员引入了警报“修复”操作。 1811 中的某些警报在警报中提供一个“修复”按钮用于解决问题。 有关详细信息，请参阅[在 Azure Stack 中监视运行状况和警报](azure-stack-monitor-health.md)。
 
 - 更新到 Azure Stack 中的更新体验。 更新增强功能包括： 
-    - 用于将“更新”与“更新历史记录”拆分开来的选项卡，这样可以更好地跟踪正在进行的更新与已完成的更新。
-    - “概要”部分的增强的状态可视化效果，其中的新图标和布局对应于“当前版本和 OEM 版本”以及“上次更新的日期”。
-    - “发行说明”列的“查看”链接直接将用户转到特定于该更新的文档，而不是转到常规更新页。
-    - “更新历史记录”选项卡，用于确定每项更新的运行时间以及增强的筛选功能。  
-    - 连接的 Azure Stack 缩放单元仍会自动接收已发布的**可用更新**。
-    - 未连接的 Azure Stack 缩放单元可以导入更新，就像以前一样。 
-    - 从门户下载 JSON 日志的过程没有任何变化。 Azure Stack 操作员会看到表示进度的扩展步骤。
+  - 用于将“更新”与“更新历史记录”拆分开来的选项卡，这样可以更好地跟踪正在进行的更新与已完成的更新。
+  - “概要”部分的增强的状态可视化效果，其中的新图标和布局对应于“当前版本和 OEM 版本”以及“上次更新的日期”。
+  - “发行说明”列的“查看”链接直接将用户转到特定于该更新的文档，而不是转到常规更新页。
+  - “更新历史记录”选项卡，用于确定每项更新的运行时间以及增强的筛选功能。  
+  - 连接的 Azure Stack 缩放单元仍会自动接收已发布的**可用更新**。
+  - 未连接的 Azure Stack 缩放单元可以导入更新，就像以前一样。 
+  - 从门户下载 JSON 日志的过程没有任何变化。 Azure Stack 操作员会看到表示进度的扩展步骤。
 
     有关详细信息，请参阅[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)。
 
@@ -220,9 +220,9 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 - 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，会显示基板管理控制器 (BMC) 中的一条警告消息。 可以放心地忽略此警告。
 
-- <!-- 2468613 - IS -->在安装此更新的过程中，可能会看到标题为 `Error – Template for FaultType UserAccounts.New is missing.` 的警报。可以放心忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
+- <!-- 2468613 - IS --> 此更新的安装期间，可能会看到警报标题`Error – Template for FaultType UserAccounts.New is missing.`可以放心地忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
 
-- <!-- 3139614 | IS -->如果已从 OEM 应用 Azure Stack 更新，则“有可用的更新”通知可能不会显示在 Azure Stack 管理员门户中。 若要安装 Microsoft 更新，请遵照[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)中的说明手动下载并导入该更新。
+- <!-- 3139614 | IS --> 如果已从您的 OEM，对 Azure Stack 应用更新**可用更新**通知可能不会显示在 Azure Stack 管理员门户中。 若要安装 Microsoft 更新，请遵照[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)中的说明手动下载并导入该更新。
 
 ## <a name="post-update-steps"></a>更新后步骤
 
@@ -256,17 +256,17 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 <!-- 1264761 - IS ASDK -->  
 - 可能会看到包含以下详细信息的“运行状况控制器”组件的警报：  
 
-    - 警报 #1：
-       - 名称：基础结构角色不正常
-       - 严重性：警告
-       - 组件：运行状况控制器
-       - 说明：运行状况控制器检测信号扫描仪不可用。 这可能会影响运行状况报告和指标。  
+  - 警报 #1：
+     - 名称：基础结构角色不正常
+     - 严重性：警告
+     - 组件：运行状况控制器
+     - 说明：运行状况控制器检测信号扫描仪不可用。 这可能会影响运行状况报告和指标。  
 
-    - 警报 #2：
-       - 名称：基础结构角色不正常
-       - 严重性：警告
-       - 组件：运行状况控制器
-       - 说明：运行状况控制器故障扫描程序不可用。 这可能会影响运行状况报告和指标。
+  - 警报 #2：
+     - 名称：基础结构角色不正常
+     - 严重性：警告
+     - 组件：运行状况控制器
+     - 说明：运行状况控制器故障扫描程序不可用。 这可能会影响运行状况报告和指标。
 
     可以放心地忽略这两个警报。 它们将随着时间的推移自动关闭。  
 
@@ -346,7 +346,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 - 在 Azure Stack 机密轮换期间，有一个时段（两到五分钟）会无法访问公共 IP 地址。
 
 <!-- 2664148 - IS ASDK --> 
--   租户通过 S2S VPN 隧道访问虚拟机时，可能会遇到这样的情况：如果在创建网关后向本地网络网关添加本地子网，连接尝试会失败。 
+- 租户通过 S2S VPN 隧道访问虚拟机时，可能会遇到这样的情况：如果在创建网关后向本地网络网关添加本地子网，连接尝试会失败。 
 
 - 在 Azure Stack 门户中，对于已附加到 VM 实例的网络适配器，在更改与其绑定的 IP 配置的静态 IP 地址时，会看到一条警告消息，其中指出 
 
@@ -358,9 +358,9 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 - 在门户中，如果添加入站安全规则并选择“服务标记”作为源，“服务标记”列表中会显示多个不适用于 Azure Stack 的选项。 在 Azure Stack 中有效的选项仅限以下几个：
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     在 Azure Stack 中，不支持将其他选项用作源标记。 同样，如果添加出站安全规则并选择“服务标记”作为目标，则显示与“源标记”相同的选项列表。 仅有的有效选项与“源标记”的有效选项相同，如以上列表中所述。
 

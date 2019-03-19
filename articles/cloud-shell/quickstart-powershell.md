@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: df9dc7d25ff0304effadbf27751042e9961c75c0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 5b4f9715e47483fa64840c521620bec79f3041cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106400"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -34,11 +34,11 @@ ms.locfileid: "55562022"
 
 1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮
 
-  ![](media/quickstart-powershell/shell-icon.png)
+   ![](media/quickstart-powershell/shell-icon.png)
 
 2. 在下拉列表中选择 PowerShell 环境，随后会进入 Azure 驱动器 `(Azure:)`
 
-  ![](media/quickstart-powershell/environment-ps.png)
+   ![](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>运行 PowerShell 命令
 
@@ -105,7 +105,7 @@ PS Azure:\MySubscriptionName> dir AllResources
 
  可以转到 `ResourceGroups` 目录，并在特定的资源组中查找虚拟机。
 
-```azureowershell-interactive
+```azurepowershell-interactive
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
 
 PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines> dir
@@ -129,7 +129,7 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 
 进入 `StorageAccounts` 目录可以轻松浏览你的所有存储资源
 
-```azureowershell-interactive
+```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
 
     Directory: Azure:\MySubscriptionNameStorageAccounts\MyStorageAccountName\Files

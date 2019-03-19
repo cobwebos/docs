@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cd3f506205a3ee4f4435b16fd2185eeb20aef3c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447218"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895458"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的警报
 
@@ -39,7 +39,7 @@ StorSimple Device Manager 服务中的警报功能提供了一种实时查看和
 > [!NOTE]
 > 最多可为每个虚拟阵列输入 20 个电子邮件地址。
 
-为虚拟阵列启用电子邮件通知后，每次发生关键警报时，通知列表成员都将收到电子邮件消息。 消息将从 *storsimple-alerts-noreply@mail.windowsazure.com* 发出，并描述警报条件。 收件人可以单击“取消订阅”将自己从电子邮件通知列表中删除。
+为虚拟阵列启用电子邮件通知后，每次发生关键警报时，通知列表成员都将收到电子邮件消息。 将从发送消息*storsimple 警报 noreply\@mail.windowsazure.com*并描述警报条件。 收件人可以单击“取消订阅”将自己从电子邮件通知列表中删除。
 
 #### <a name="to-enable-email-notification-for-alerts"></a>为警报启用电子邮件通知
 
@@ -53,7 +53,7 @@ StorSimple Device Manager 服务中的警报功能提供了一种实时查看和
    
    1. 在“启用电子邮件通知”字段中，选择“是”。
    2. 如果希望服务管理员和所有协同管理员接收警报通知，请在“电子邮件服务管理员”字段中选择“是”。
-   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以 *someone@somewhere.com* 格式输入名称。 使用分号分隔电子邮件地址。 对于每个虚拟设备，最多可以配置 20 个电子邮件地址。
+   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 输入名称的格式*有人\@somewhere.com*。 使用分号分隔电子邮件地址。 对于每个虚拟设备，最多可以配置 20 个电子邮件地址。
       
        ![警报通知配置](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. 若要发送测试电子邮件通知，请单击“发送测试电子邮件”。 StorSimple Device Manager 服务在转发测试通知时会显示状态消息。
@@ -147,6 +147,7 @@ StorSimple 虚拟阵列可在响应各种条件时生成警报。 以下是最�
 | 无法完成 <设备名\> 的克隆。 |克隆作业失败。 |无法创建克隆。 考虑以下操作之一：<ul><li>备份列表可能无效。 刷新列表以验证它是否仍然有效。</li><li>连接问题可能正在阻止克隆操作成功完成。 请确保没有任何连接问题。</li><li>已达到可用存储限制。 若要释放空间，请考虑删除不再需要的所有备份。</li></ul>解决问题、清除警报并重试操作。 |
 
 ### <a name="networking-alerts"></a>网络警报
+
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
 | 无法连接到身份验证服务。 |数据路径错误 |用于身份验证的 URL 不可访问。 请确保防火墙规则包括为 StorSimple 设备指定的 URL 模式。 有关 Azure 门户中 URL 模式的详细信息，请参阅 [StorSimple 虚拟数组网络需求](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules)。|

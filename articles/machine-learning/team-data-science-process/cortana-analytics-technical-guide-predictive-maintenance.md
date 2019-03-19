@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: dad97fab8c4c8fe997ee9b8d9ac8c7dc6c0d1e48
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454464"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885430"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>在航天工业中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
->[!Important]
-此文已弃用。 讨论仍与航天工业的预测性维护相关，但如果需要最新信息，请参阅[面向商业受众的解决方案概述](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)。
+> [!Important]
+> 此文已弃用。 讨论仍与航天工业的预测性维护相关，但如果需要最新信息，请参阅[面向商业受众的解决方案概述](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)。
 
 
 解决方案模板可加速在 Cortana Intelligence Suite 上构建 E2E 演示的过程。 已部署的模板使用所需的 Cortana Intelligence 组件预配订阅，并在两者之间建立关系。 它还使用从数据生成器应用程序中的数据示例来设定数据管道的种子（会在部署解决方案模板后在本地计算机上下载和安装数据生成器应用程序）。 生成器中的数据将生成数据管道，并开始生成机器学习预测，然后可在 Power BI 仪表板上将其可视化。
@@ -51,7 +51,7 @@ ms.locfileid: "55454464"
 ### <a name="synthetic-data-source"></a>综合数据源
 对于此模板，使用的数据源是从桌面应用程序生成的，将下载应用程序并于部署成功后在本地运行。
 
-若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) 由 [NASA 数据存储库](https://c3.nasa.gov/dashlink/resources/139/)中的公开可用数据派生的。
+若要查找有关下载及安装此应用程序的说明，请在解决方案模板图表上选择第一个节点“预测性维护数据生成器”。 可在“属性”栏中找到说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。 此数据源是使用 [Turbofan 引擎下降模拟数据集](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) 由 [NASA 数据存储库](https://c3.nasa.gov/dashlink/resources/139/)中的公开可用数据派生的。
 
 仅当它在计算机上运行时，事件生成应用程序才填充 Azure 事件中心。  
 
@@ -79,7 +79,7 @@ ms.locfileid: "55454464"
 ## <a name="how-to-bring-in-your-own-data"></a>如何输入自己的数据
 本部分说明如何将自己的数据输入 Azure，以及对于放入此体系结构的数据，需要更改哪些方面。
 
-你的数据集不可能符合用于此解决方案模板的 [Turbofan 引擎降级模拟数据集](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)所使用的数据集。 了解数据与需求对于如何修改此模板以配合自己的数据非常重要。 
+你的数据集不可能符合用于此解决方案模板的 [Turbofan 引擎降级模拟数据集](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)所使用的数据集。 了解数据与需求对于如何修改此模板以配合自己的数据非常重要。 
 
 以下部分介绍引入新数据集需要修改的模板部分。
 
@@ -143,7 +143,7 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 用于此解决方案模板的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验提供了飞机引擎的剩余使用寿命 (RUL)。 该试验因使用的数据集而有所不同，需要专门针对引入的数据进行修改或替换。
 
-有关 如何创建 Azure 机器学习试验的信息，请参阅[预见性维护：步骤 1（共 3 步），数据准备和特征设计](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)。
+有关 如何创建 Azure 机器学习试验的信息，请参阅[预见性维护：步骤 1（共 3 步），数据准备和特征设计](https://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)。
 
 ## <a name="monitor-progress"></a>监视进度
 启动数据生成器后，管道将开始冻结，解决方案的不同组件遵循数据工厂发出的命令开始操作。 可通过两种方式监视管道。
@@ -186,7 +186,7 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
    * 下一个弹出窗口的左侧窗格中出现了两个选项（“Windows”和“数据库”）。 单击“数据库”，填充“用户名”和“密码”（这是首次部署解决方案和创建 Azure SQL 数据库时输入的用户名与密码）。 在“选择要将这些设置应用到的级别”中，选中数据库级别选项。 然后单击“连接”。
    * 单击第二个表 **PMResult**，在右侧“查询设置”面板的“应用的步骤”下的“源”旁边单击![导航图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png)，根据以上步骤更新服务器和数据库名称并单击“确定”。
    * 返回上一页后，请关闭窗口。 此时会显示一条消息 - 单击“应用”。 最后，单击“保存”保存更改。 Power BI 文件现在已与服务器建立连接。 如果可视化效果是空的，请务必单击图例右上角的橡皮擦图标清除可视化效果中的选择内容，这样即可查看所有数据。 使用刷新按钮显示可视化效果中的新数据。 最初，只会在可视化效果中看到种子数据，因为数据工厂计划为每隔 3 小时刷新一次。 3 小时后，刷新数据时，可以看到新预测数据反映在可视化效果中。
-3. （可选）将冷路径仪表板发布到 [Power BI online](http://www.powerbi.com/)。 请注意，此步骤需要 Power BI 帐户（或 Office 365 帐户）。
+3. （可选）将冷路径仪表板发布到 [Power BI online](https://www.powerbi.com/)。 请注意，此步骤需要 Power BI 帐户（或 Office 365 帐户）。
    
    * 单击“发布”，几秒钟后会出现一个窗口，显示“发布到 Power BI 成功!” 和一个绿色的复选标记。 单击以下链接“在 Power BI 中 打开 PredictiveMaintenanceAerospace.pbix”。 若要查找详细说明，请参阅[从 Power BI Desktop 发布](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)。
    * 若要创建新仪表板，请在左侧窗格中单击“仪表板”部分旁边的 **+** 号。 为新仪表板输入名称“Predictive Maintenance Demo”。
@@ -195,7 +195,7 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
      <br/>
      ![最终视图](./media/cortana-analytics-technical-guide-predictive-maintenance/final-view.png)
      <br/>
-   * 要计划数据刷新，请将鼠标悬停在 **PredictiveMaintenanceAerospace** 数据集上，单击![省略号图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png)，然后选择“计划刷新”。
+   * 计划刷新的数据，请将鼠标悬停**PredictiveMaintenanceAerospace**数据集，单击![省略号图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png)，然后选择**计划刷新**。
      <br/>
      **注意：** 如果看到警告消息，请单击“编辑凭据”，确保数据库凭据与步骤 1 中所述相同。
      <br/>
@@ -206,13 +206,13 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
    * 根据需要计划刷新。 若要查找详细信息，请参阅 [Power BI 中的数据刷新](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi)。
 
 ### <a name="setup-hot-path-dashboard"></a>设置热路径仪表板
-以下步骤逐步说明如何可视化部署解决方案时生成的流分析作业的数据输出。 若要执行以下步骤，需要一个 [Power BI online](http://www.powerbi.com/) 帐户。 如果没有帐户，可以[创建一个](https://powerbi.microsoft.com/pricing)。
+以下步骤逐步说明如何可视化部署解决方案时生成的流分析作业的数据输出。 若要执行以下步骤，需要一个 [Power BI online](https://www.powerbi.com/) 帐户。 如果没有帐户，可以[创建一个](https://powerbi.microsoft.com/pricing)。
 
 1. 在 Azure 流分析 (ASA) 中添加 Power BI 输出。
    
    * 必须按照 [Azure 流分析和 Power BI：用于实时查看流数据的分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)中的说明操作，将 Azure 流分析作业的输出设置为 Power BI 仪表板。
    * ASA 查询具有三个输出，分别为 **aircraftmonitor**、**aircraftalert** 和 **flightsbyhour**。 可通过单击查询选项卡查看查询。需要根据相应的表将输出添加到 ASA。 添加第一个输出时 (**aircraftmonitor**)，请确保“输出别名”、“数据集名称”和“表名称”都相同 (**aircraftmonitor**)。 重复以上步骤为 **aircraftalert** 和 **flightsbyhour** 添加输出。 将三个输出表全部添加完成并启动 ASA 作业后，应收到一条确认消息（“成功启动流分析作业 maintenancesa02asapbi”）。
-2. 登录到 [Power BI online](http://www.powerbi.com)
+2. 登录到 [Power BI online](https://www.powerbi.com)
    
    * 在左侧面板“我的工作区”中的“数据集”部分，会显示数据集名称 **aircraftmonitor**、**aircraftalert** 和 **flightsbyhour**。 这是在上一步骤中从 Azure 流分析推送的流数据。 数据集 **flightsbyhour** 可能不与其他两个数据集同时显示，因为其后的 SQL 查询的性质不同。 但它会在一小时后显示。
    * 确保“可视化效果”窗格已打开，并显示在屏幕的右侧。

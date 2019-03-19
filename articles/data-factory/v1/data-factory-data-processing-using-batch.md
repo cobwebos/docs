@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822742"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124144"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -26,9 +26,12 @@ ms.locfileid: "55822742"
 
 本文介绍示例解决方案的体系结构，该解决方案通过计划的自动方式移动并处理大规模数据集。 它还提供使用数据工厂和 Azure Batch 来实现此解决方案的端到端演练。
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 本文比一般文章更长，因为其中包含了整个示例解决方案的演练。 如果不熟悉 Batch 和数据工厂，可以了解这些服务以及如何将其结合使用。 如果你了解有关这些服务的一些信息，并且在设计/构建解决方案，则可以重点了解本文的体系结构部分。 如果要开发原型或解决方案，则可能要尝试演练中的分步说明。 欢迎你对此内容进行评论以及说明使用情况。
 
 首先来了解一下数据工厂和 Batch 服务如何帮助处理云中的大型数据集。     
+
 
 ## <a name="why-azure-batch"></a>为什么使用 Azure Batch？
  可以使用 Batch 在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 它是一种平台服务，该服务计划在虚拟机 (VM) 托管集合上运行的计算密集型工作。 它可以自动缩放计算资源以满足作业的需求。
@@ -40,7 +43,7 @@ ms.locfileid: "55822742"
 * [Batch 基本信息](../../batch/batch-technical-overview.md)
 * [批处理功能概述](../../batch/batch-api-basics.md)
 
-（可选）若要了解有关 Batch 的详细信息，请参阅 [Batch 文档](https://docs.microsoft.com/azure/batch/)。
+（可选） 若要了解有关批处理的详细信息，请参阅[Batch 文档](https://docs.microsoft.com/azure/batch/)。
 
 ## <a name="why-azure-data-factory"></a>为什么使用 Azure 数据工厂？
 数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。 可以使用数据工厂创建将数据从本地和云数据存储移动到集中数据存储的托管数据管道。 Azure Blob 存储是一个示例。 可以使用数据工厂，通过 Azure HDInsight 和 Azure 机器学习等服务来处理/转换数据。 还可以计划数据管道，以便按计划方法（例如每小时、每天和每周）运行。 可以一目了然地监视和管理管道，以便确定问题和采取措施。
@@ -85,7 +88,7 @@ ms.locfileid: "55822742"
 
 **时间：** 如果熟悉 Azure、数据工厂和 Batch 的基础知识，且已完成以下先决条件，则完成此解决方案需要一到两小时。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 #### <a name="azure-subscription"></a>Azure 订阅
 如果没有 Azure 订阅，可以快速创建免费试用帐户。 有关详细信息，请参阅[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -93,7 +96,7 @@ ms.locfileid: "55822742"
 可使用存储帐户存储本教程中的数据。 如果还没有存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)。 示例解决方案使用 Blob 存储。
 
 #### <a name="azure-batch-account"></a>Azure Batch 帐户
-使用 [Azure 门户](http://portal.azure.com/)创建 Batch 存储帐户。 有关详细信息，请参阅[创建和管理 Batch 帐户](../../batch/batch-account-create-portal.md)。 请注意 Batch 帐户名称和帐户密钥。 还可使用 [New-AzureRmBatchAccount](https://docs.microsoft.com/powershell/module/azurerm.batch/new-azurermbatchaccount) cmdlet 创建 Batch 帐户。 有关如何使用此 cmdlet 的说明，请参阅 [Batch PowerShell cmdlet 入门](../../batch/batch-powershell-cmdlets-get-started.md)。
+使用 [Azure 门户](https://portal.azure.com/)创建 Batch 存储帐户。 有关详细信息，请参阅[创建和管理 Batch 帐户](../../batch/batch-account-create-portal.md)。 请注意 Batch 帐户名称和帐户密钥。 您还可以使用[新建 AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) cmdlet 创建 Batch 帐户。 有关如何使用此 cmdlet 的说明，请参阅 [Batch PowerShell cmdlet 入门](../../batch/batch-powershell-cmdlets-get-started.md)。
 
 该示例解决方案使用 Batch（通过数据工厂管道间接使用）以并行方式在计算节点池（托管 VM 集合）上处理数据。
 
@@ -201,7 +204,7 @@ public IDictionary<string, string> Execute(
 1. 将 **Azure 存储** NuGet 包导入项目。 因为此示例中使用了 Blob 存储 API，因此需要此包：
 
     ```powershell
-    Install-Package Azure.Storage
+    Install-Package Az.Storage
     ```
 1. 将以下 using 指令添加到项目中的源文件：
 
@@ -666,7 +669,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **切片** | **开始时间**          |
     |-----------|-------------------------|
-    | 1         | 2015-11-16T**00**:00:00 |
+    | 第         | 2015-11-16T**00**:00:00 |
     | 2         | 2015-11-16T**01**:00:00 |
     | 3         | 2015-11-16T**02**:00:00 |
     | 4         | 2015-11-16T**03**:00:00 |
@@ -676,7 +679,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **切片** | **开始时间**          | **输入文件夹**  |
     |-----------|-------------------------|-------------------|
-    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
+    | 第         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
     | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02** |
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
@@ -723,7 +726,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **切片** | **开始时间**          | **输出文件**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
+    | 第         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
     | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02.txt** |
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
@@ -799,8 +802,8 @@ test custom activity Microsoft test custom activity Microsoft
    * 自定义活动的 **linkedServiceName** 属性指向 **AzureBatchLinkedService**，它将告诉数据工厂自定义活动需要在 Batch 上运行。
    * **并发**设置十分重要。 如果使用默认值 1，即使 Batch 池中存在两个或两个以上的计算节点，也只能逐个处理切片。 因此，无法利用 Batch 的并行处理功能。 如果将**并发**设置为更高的值，比如说 2，这表示可同时处理两个切片（对应 Batch 中的两个任务）。 在这种情况下，Batch 池中的两个 VM 都得以利用。 将并发属性设置为合适的值。
    * 默认情况下，无论何时，一台 VM 上只执行一个任务（切片）。 默认情况下，对于 Batch 池，**每个 VM 的最大任务数**设置为 1。 作为先决条件的一部分，需要创建此属性设置为 2 的池。 因此，两个数据工厂切片可以同时在 VM 上运行。
-    - **isPaused** 属性默认设置为 false。 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 **true** 以暂停管道，然后将其设置回 **false** 以重新启动。
-    -   **开始**和**结束**时间相差五小时。 切片会每小时生成，因此管道会生成五个切片。
+     - **isPaused** 属性默认设置为 false。 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 **true** 以暂停管道，然后将其设置回 **false** 以重新启动。
+     -   **开始**和**结束**时间相差五小时。 切片会每小时生成，因此管道会生成五个切片。
 
 1. 选择命令栏中的“部署”来部署管道。
 
@@ -977,4 +980,4 @@ test custom activity Microsoft test custom activity Microsoft
   * [适用于 .NET 的 Batch 客户端库入门](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: d751d4898be3fd19f9e6f5d03e9313e9d98e9dd2
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 6c5e0e47f006c6be170bdbf6fee431bfd3b6df0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446086"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105050"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS 别名记录概述
 
@@ -58,7 +58,7 @@ DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的�
 
 可以使用别名记录来解决此问题。 与 CNAME 记录不同，别名记录可以在区域顶点创建，应用程序所有者可以使用它来将其区域顶点记录指向具有外部端点的流量管理器配置文件。 应用程序所有者可以指向用于其 DNS 区域中任何其他域的相同流量管理器配置文件。
 
-例如，contoso.com 和 www.contoso.com 可以指向同一流量管理器配置文件。 若要详细了解如何将别名记录与 Azure 流量管理器配置文件配合使用，请参阅“后续步骤”部分。
+例如，contoso.com 和 www\.contoso.com 可以指向同一个流量管理器配置文件。 若要详细了解如何将别名记录与 Azure 流量管理器配置文件配合使用，请参阅“后续步骤”部分。
 
 ## <a name="next-steps"></a>后续步骤
 

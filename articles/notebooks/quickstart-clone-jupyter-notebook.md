@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 6f36879828f5927cbb5477b32cdb6b4832010d4c
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
-ms.translationtype: HT
+ms.openlocfilehash: cfce5765cda1e3a1dfb7eb073719191b13b0696e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413126"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089193"
 ---
 # <a name="quickstart-clone-a-notebook"></a>快速入门：克隆笔记本
 
@@ -28,7 +28,7 @@ ms.locfileid: "53413126"
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>克隆 Azure 认知服务笔记本
 
-1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录到 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
+1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
 
 1. 在公用个人资料页面中，选择页面顶部的“我的项目”：
 
@@ -40,13 +40,13 @@ ms.locfileid: "53413126"
 
 1. 在出现的“上传 GitHub 存储库”中，输入或设置以下详细信息，然后选择“导入”：
 
-    - **GitHub 存储库**：Microsoft/cognitive-services-notebooks（此名称在 [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) 上克隆适用于 Azure 认知服务的 Jupyter 笔记本）。
-    - **以递归方式克隆**：（已清除）
-    - **项目名称**：认知服务克隆
-    - **项目 ID**：cognitive-services-clone
-    - **公共**：（已清除）
+   - **GitHub 存储库**：Microsoft/cognitive-services-notebooks（此名称在 [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) 上克隆适用于 Azure 认知服务的 Jupyter 笔记本）。
+   - **以递归方式克隆**：（已清除）
+   - **项目名称**：认知服务克隆
+   - **项目 ID**：cognitive-services-clone
+   - **公共**：（已清除）
 
-    ![“上传 GitHub 存储库”弹出窗口，用于收集存储库信息](media/quickstarts/upload-github-repo-popup.png)
+     ![“上传 GitHub 存储库”弹出窗口，用于收集存储库信息](media/quickstarts/upload-github-repo-popup.png)
 
 1. 请耐心等待此过程完成；克隆一个存储库可能需要数分钟。
 
@@ -77,4 +77,4 @@ ms.locfileid: "53413126"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：创建并运行 Jupyter 笔记本以执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)

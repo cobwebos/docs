@@ -9,18 +9,18 @@ manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 3ec4b8fb9ebb7a03983ce5da3dad56e0fe9917e8
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: HT
+ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986322"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57869806"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建基本负载均衡器
 
@@ -28,7 +28,7 @@ ms.locfileid: "56986322"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-若要执行本快速入门中的任务，请登录 [Azure 门户](http://portal.azure.com)。
+若要执行本快速入门中的任务，请登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-basic-load-balancer"></a>创建基本负载均衡器
 
@@ -41,7 +41,7 @@ ms.locfileid: "56986322"
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”。                                        |
     | Type          | 选择“公共”。                                        |
     | SKU           | 选择“基本”。                          |
@@ -81,7 +81,7 @@ ms.locfileid: "56986322"
      1. 在下拉列表中选择“可用性集”。 
      2. 选择“新建”，键入 *MyAvailabilitySet*，然后选择“确定”。
   
-1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”。 
+1. 选择“网络”选项卡，或选择“下一步: **磁盘”，然后选择“下一步:****网络”。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVnet**
@@ -207,7 +207,7 @@ ms.locfileid: "56986322"
    
 1. 选择“确定”。
    
-  ![添加负载均衡器规则](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
+   ![添加负载均衡器规则](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>测试负载均衡器
 
@@ -259,6 +259,7 @@ ms.locfileid: "56986322"
 
 ![IIS Web 服务器](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 
+若要查看负载均衡器如何在运行应用的所有 3 个 VM 之间分配流量，可强制刷新 web 浏览器。
 ## <a name="clean-up-resources"></a>清理资源
 
 若要在不再需要的情况下删除负载均衡器和所有相关的资源，请打开 **MyResourceGroupLB** 资源组，然后选择“删除资源组”。

@@ -3,7 +3,7 @@ title: 载入到 Azure 安全中心标准层以增强安全性 | Microsoft Docs
 description: " 了解如何载入到 Azure 安全中心标准层以增强安全性。 "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9d95503e4b17124d1d027a90a21869ef65831654
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.date: 19/02/2019
+ms.author: monhaber
+ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114410"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100064"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>载入到 Azure 安全中心标准层以增强安全性
 升级到安全中心标准层后，可以将增强的安全管理和威胁防护功能用于混合云工作负载。  可以免费试用标准层。 请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)了解详细信息。
@@ -33,7 +33,7 @@ ms.locfileid: "56114410"
 ## <a name="detecting-unprotected-resources"></a>检测未受保护的资源     
 安全中心将自动检测未启用安全中心标准层的所有 Azure 订阅或工作区。 其中包括使用安全中心免费层的 Azure 订阅和未启用安全解决方案的工作区。
 
-可以将整个 Azure 订阅升级到标准层，这样此订阅中的所有资源均将继承此层，或者可以定义唯一的策略来仅升级特定的资源组。 如果该资源组的策略设置是唯一的，则将订阅升级到标准层时安全中心不会重写定价策略。 将标准层应用到订阅仅适用于订阅中向安全中心创建的工作区报告的 VM。 将标准层应用到工作区适用于向工作区报告的所有资源。
+可以将整个 Azure 订阅升级到标准层，这样此订阅中的所有资源均将继承此层，或者可以定义唯一的策略来仅升级特定的资源组。 如果该资源组的策略设置是唯一的，则将订阅升级到标准层时安全中心不会重写定价策略。 将标准层应用到订阅层适用于订阅中所有受支持的资源。 将标准层应用到工作区层适用于向工作区报告的所有资源。
 
 > [!NOTE]
 > 你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)使用户可以向解决方案应用一个范围，并可将目标设定为工作区中的一个计算机子集。  如果使用解决方案目标功能，安全中心会将工作区列为没有解决方案。
@@ -53,7 +53,7 @@ ms.locfileid: "56114410"
 
 
    > [!NOTE]
-   > 安全中心的免费层功能将仅应用到 Azure VM。 免费层功能不会应用到非 Azure 计算机。 如果选择标准层，标准层功能将应用到向工作区报告的所有 Azure VM 和非 Azure 计算机。 建议应用标准层，以便为 Azure 和非 Azure 资源提供高级安全功能。
+   > 安全中心免费层功能将仅应用于你的 Azure Vm 和 VMSS。 免费层功能不会应用到非 Azure 计算机。 如果选择标准层，标准功能将应用到所有 Azure Vm、 VM 规模集和非 Azure 计算机向工作区报告。 建议应用标准层，以便为 Azure 和非 Azure 资源提供高级安全功能。
    >
    >
 
@@ -65,11 +65,11 @@ ms.locfileid: "56114410"
 1. 返回到“入门”。   
 2. 选择“入门”选项卡。
 
-  ![非 Azure](./media/security-center-onboarding/non-azure.png)
+   ![非 Azure](./media/security-center-onboarding/non-azure.png)
 
 3. 单击“添加新的非 Azure 计算机”下的“配置”。 此时将显示 Log Analytics 工作区的列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
 
-  ![添加非 Azure 计算机][7]
+   ![添加非 Azure 计算机][7]
 
 如果已有工作区，则会将它们列在“添加新的非 Azure 计算机”下。 可以将计算机添加到现有的工作区，也可以新建一个工作区。 若要新建一个工作区，请选择“添加新工作区”链接。
 
@@ -82,8 +82,8 @@ ms.locfileid: "56114410"
    ![添加新工作区][4]
 
 2. 在“安全和审核”下，选择“OMS 工作区”以新建工作区。
-> [!NOTE]
-> OMS 工作区现在称为 Log Analytics 工作区。
+   > [!NOTE]
+   > OMS 工作区现在称为 Log Analytics 工作区。
 3. 在“OMS 工作区”下，输入工作区的相关信息。
 4. 在“OMS 工作区”下，选择“确定”。  选择“确定”后，将获取一个用于下载 Windows 或 Linux 代理的链接和工作区 ID 的密钥（用于配置此代理）。
 5. 在“安全和审核”下，选择“确定”。
@@ -105,7 +105,7 @@ ms.locfileid: "56114410"
 
    ![添加计算机][7]
 
- “直接代理”边栏选项卡会提供一个用于下载 Windows 或 Linux 代理的链接，以及要在配置此代理时使用的工作区 ID 和密钥。   
+   “直接代理”边栏选项卡会提供一个用于下载 Windows 或 Linux 代理的链接，以及要在配置此代理时使用的工作区 ID 和密钥。   
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已了解如何载入 Azure 和非 Azure 资源，以便利用安全中心的高级安全功能的优势。  若要对载入资源执行更多操作，请参阅

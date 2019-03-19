@@ -4,17 +4,17 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 01/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 24810e67610a0c0855d5efb1f141a3324b7c75ca
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 6efcd46b174d34670a01bb7d5c440559bf0f116a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54457113"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553331"
 ---
-| 层：              | 免费         | 基本      | 标准   |
+| 层              | 免费         | 基本    | 标准   |
 | ------------------ | ------------ | ---------- | ---------- |
-| 包括的推送数    | 100 万    | 1000 万 | 1000 万 |
-| 活动设备数     | 500          | 200,000    | 1 千万 |
-| 每次安装/注册的标记配额 | 60  | 60 |  60 |
+| 包括的推送数    | 1 百万    | 1 千万 | 1 千万 |
+| 活动设备     | 500          | 200,000    | 1 千万 |
+| 每个安装或注册的标记配额 | 60  | 60 |  60 |
 
-有关这些限制的更多详细信息以及有关定价的信息，请参阅[通知中心定价](https://azure.microsoft.com/pricing/details/notification-hubs/)。
+有关限制和定价的详细信息，请参阅[通知中心定价](https://azure.microsoft.com/pricing/details/notification-hubs/)。

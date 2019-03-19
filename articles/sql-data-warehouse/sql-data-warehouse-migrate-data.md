@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 77e4500b20be844dfad31db284a9c77ad7ec6bb7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 6a2acf602252ee4319f9a5eccef53a25d8e2dd7f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118116"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014266"
 ---
 # <a name="migrate-your-data"></a>迁移数据
 数据可以使用各种工具从不同源移动到 SQL 数据仓库中。  ADF 复制、SSIS 和 bcp 都可用来实现此目标。 但是，随着数据量的增加，应该考虑将数据迁移过程划分成多个步骤。 这样，便有机会优化每个步骤以提高性能和弹性，确保顺利迁移数据。
@@ -172,7 +172,7 @@ PolyBase 还支持名为“递归文件夹遍历”的功能。 可以使用此�
 
 ## <a name="next-steps"></a>后续步骤
 有关迁移的详细信息，请参阅[将解决方案迁移到 SQL 数据仓库][Migrate your solution to SQL Data Warehouse]。
-有关更多开发技巧，请参阅[开发概述][development overview]。
+有关更多开发技巧，请参阅 [开发概述][development overview]。
 
 <!--Image references-->
 
@@ -191,11 +191,11 @@ PolyBase 还支持名为“递归文件夹遍历”的功能。 可以使用此�
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Azure Data Factory]: http://azure.microsoft.com/services/data-factory/
-[ExpressRoute]: http://azure.microsoft.com/services/expressroute/
-[ExpressRoute documentation]: http://azure.microsoft.com/documentation/services/expressroute/
+[Azure Data Factory]: https://azure.microsoft.com/services/data-factory/
+[ExpressRoute]: https://azure.microsoft.com/services/expressroute/
+[ExpressRoute documentation]: https://azure.microsoft.com/documentation/services/expressroute/
 
-[production version]: http://aka.ms/downloadazcopy/
-[preview version]: http://aka.ms/downloadazcopypr/
+[production version]: https://aka.ms/downloadazcopy/
+[preview version]: https://aka.ms/downloadazcopypr/
 [ADO.NET destination adapter]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS documentation]: https://msdn.microsoft.com/library/ms141026.aspx

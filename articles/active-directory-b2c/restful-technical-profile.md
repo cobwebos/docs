@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9eb60f9581099813d96cecb9cb88155e64b7caa8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 7ff14af756a55ccc6bbf40dd39d49c5168f4af1f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154314"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076320"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -83,7 +83,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 终结点的 URL。 | 
 | AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic` 或 `ClientCertificate`。 `None` 值表示 REST API 不是匿名的。 `Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）能够访问你的服务。 | 
@@ -109,7 +109,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 如果身份验证类型设置为 `Basic`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | 是 | 用于身份验证的用户名。 | 
 | BasicAuthenticationPassword | 是 | 用于身份验证的密码。 |
@@ -134,7 +134,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 如果身份验证类型设置为 `ClientCertificate`，则 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ClientCertificate | 是 | 用于身份验证的 X509 证书（RSA 密钥集）。 | 
 
@@ -157,7 +157,7 @@ Azure Active Directory (Azure AD) B2C 为你自己的 RESTful 服务提供支持
 
 REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 发生错误时，REST API 应返回包含以下属性的 HTTP 409 错误消息（冲突响应状态代码）：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | 版本 | 是 | 1.0.0 | 
 | status | 是 | 409 | 
@@ -171,13 +171,13 @@ REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该
 
 ```JSON
 {
-  "version": "1.0.0",
-  "status": 409,
-  "code": "API12345",
-  "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
-  "userMessage": "Message for the user", 
-  "developerMessage": "Verbose description of problem and how to fix it.", 
-  "moreInfo": "https://restapi/error/API12345/moreinfo" 
+  "version": "1.0.0",
+  "status": 409,
+  "code": "API12345",
+  "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
+  "userMessage": "Message for the user", 
+  "developerMessage": "Verbose description of problem and how to fix it.", 
+  "moreInfo": "https://restapi/error/API12345/moreinfo" 
 }
 ```
 

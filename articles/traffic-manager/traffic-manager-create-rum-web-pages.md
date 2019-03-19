@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c994190ed4ccbd8e5b90f17b70ec6b65477fb0d8
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231999"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117262"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用网页将实际用户度量发送到 Azure 流量管理器
 
@@ -34,7 +34,7 @@ ms.locfileid: "54231999"
 3. 在“流量管理器配置文件”边栏选项卡中，单击“设置”下的“实际用户度量”。
 4. 单击“生成密钥”新建 RUM 密钥。
  
-  ![生成实际用户度量密钥](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![生成实际用户度量密钥](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    图 1：生成真实用户度量密钥
 
@@ -44,7 +44,7 @@ ms.locfileid: "54231999"
 
     图 2：真实用户度量密钥和度量 JavaScript
  
-6.  单击“复制”按钮复制 JavaScript 代码。 
+6. 单击“复制”按钮复制 JavaScript 代码。 
 
 >[!IMPORTANT]
 > 使用生成的 JavaScript 使“实际用户度量”功能正常工作。 对此脚本或“实际用户度量”使用的脚本进行任何更改可能会导致不可预知的行为。

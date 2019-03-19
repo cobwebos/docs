@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/14/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: a27cd45ebec41a90a1627bff157c1058b83a25e6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 6ebd25dc65f86e5e028c1c56943756b46d0db9a8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098077"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011808"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>有关 Cloudyn 的常见问题解答
 
@@ -75,7 +75,7 @@ ms.locfileid: "53098077"
 首先，让我们来看一下导致用户帐户初始挂起的常见应用场景。
 
 > 管理员 1 可能是 Microsoft 云解决方案提供商或企业协议用户。 他的组织已准备好开始使用 Cloudyn。  他通过 Azure 门户注册并登录到 Cloudyn 门户。 作为注册 Cloudyn 服务并登录到 Cloudyn 门户的人员，他成为主要管理员。 管理员 1 不创建任何用户帐户。 但是，通过使用 Cloudyn 门户，他的确创建 Azure 帐户并设置实体层次结构。 管理员 1 通知管理员 2（即租户管理员），告知他需要注册 Cloudyn 并登录到 Cloudyn 门户。
-
+> 
 > 管理员 2 通过 Azure 门户进行注册。 但是，当他尝试登录到 Cloudyn 门户时，他收到一条错误消息，指明他的帐户已被挂起。 主要管理员（管理员 1）将收到帐户挂起的通知。 管理员 1 需要激活管理员 2 的帐户并针对相应的实体授予管理员实体访问权限，并允许用户管理访问和激活用户帐户。
 
 

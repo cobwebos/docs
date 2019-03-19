@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: df65c29b39921eda6ba2bd682e5938f58a9e4de7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 15d9210e356da6d7757582dc4dad25cb2882ccfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964571"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003225"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -32,7 +32,7 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 
 下图提供了使用 Azure 存储时的 HDInsight 存储体系结构的抽象视图：
 
-![Hadoop 群集使用 HDFS API 来访问 Blob 存储中的结构化和非结构化数据，并在其中存储这些数据。](./media/data-lake-storage-use-hdi-cluster/HDI.ABFS.Arch.png "HDInsight 存储体系结构")
+![Hadoop 群集使用 HDFS API 来访问 Blob 存储中的结构化和非结构化数据，并在其中存储这些数据。](./media/data-lake-storage-use-hdi-cluster/HDI.ABFS.Arch.png "HDInsight Storage Architecture")
 
 HDInsight 提供对在本地附加到计算节点的分布式文件系统的访问。 可使用完全限定 URI 访问该文件系统，例如：
 
@@ -153,9 +153,6 @@ az storage account create \
     --Enable-hierarchical-namespace true
 ```
 
-> [!NOTE]
-> 在 Data Lake Storage Gen2 公共版推出期间，仅支持 `--sku Standard_LRS`。
-
 系统会提示指定创建存储帐户的地理区域。 在打算创建 HDInsight 群集的同一区域中创建存储帐户。
 
 创建存储帐户后，使用以下命令检索存储帐户密钥：
@@ -214,7 +211,7 @@ URI 方案提供了使用 *abfs:* 前缀的未加密访问和使用 *abfss* 的 
 [powershell-install]: /powershell/azure/install-az-ps
 [hdinsight-creation]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md
 
-[blob-storage-restAPI]: http://msdn.microsoft.com/library/windowsazure/dd135733.aspx
+[blob-storage-restAPI]: https://msdn.microsoft.com/library/windowsazure/dd135733.aspx
 [azure-storage-create]: ../common/storage-create-storage-account.md
 
 [img-hdi-powershell-blobcommands]: ./media/data-lake-storage-use-hdi-cluster/HDI.PowerShell.BlobCommands.png
