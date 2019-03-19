@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 3541a5b33aa0bb98d9381b51caefc63b6aa677ad
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377542"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850898"
 ---
 # <a name="handling-event-grid-events"></a>处理事件网格事件
 
@@ -24,26 +24,9 @@ ms.locfileid: "49377542"
 
 媒体服务事件的可用性与事件网格[可用性](../../event-grid/overview.md)相关联，当事件网格在其他地区可用时，媒体服务事件也同样可用。  
 
-## <a name="available-media-services-events"></a>可用的媒体服务事件
+## <a name="media-services-events-and-schemas"></a>媒体服务事件和架构
 
-事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。  目前，媒体服务事件订阅可包括以下事件：  
-
-|事件名称|Description|
-|----------|-----------|
-| Microsoft.Media.JobStateChange| 作业状态更改时引发。 |
-| Microsoft.Media.LiveEventConnectionRejected | 编码器的连接尝试被拒绝。 |
-| Microsoft.Media.LiveEventEncoderConnected | 编码器与实时事件建立连接。 |
-| Microsoft.Media.LiveEventEncoderDisconnected | 编码器断开连接。 |
-| Microsoft.Media.LiveEventIncomingDataChunkDropped | 媒体服务器删除了数据区块，因为该区块的抵达时间过迟，或者带有重叠的时间戳（新数据区块的时间戳小于前一数据区块的结束时间）。 |
-| Microsoft.Media.LiveEventIncomingStreamReceived | 媒体服务器收到流或连接中每个轨迹的第一个数据区块。 |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | 媒体服务器检测到音频和视频流不同步。用作警告，因为用户体验可能不受影响。 |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 媒体服务器检测到来自外部编码器的任意两个视频流不同步。用作警告，因为用户体验可能不受影响。 |
-| Microsoft.Media.LiveEventIngestHeartbeat | 当实时事件正在运行时，每隔 20 秒为每个轨迹发布。 提供引入运行状况摘要。 |
-| Microsoft.Media.LiveEventTrackDiscontinuityDetected | 媒体服务器检测到传入轨迹中存在不连续的情况。 |
-
-## <a name="event-schema"></a>事件架构
-
-媒体服务事件包含响应数据中的更改所需的所有信息。  可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。
+事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。
 
 有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
 

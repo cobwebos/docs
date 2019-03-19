@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: 00a5e888961a9712db0cd509a39fb0367895ac3f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
+ms.openlocfilehash: 0d7c792c5230a5d82e97f4598a5dcfb864cead74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164120"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847138"
 ---
-# <a name="log-analytics-for-public-basic-load-balancer"></a>适用于公共基本负载均衡器的 Log Analytics
+# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公共基本负载均衡器的 azure Monitor 日志
 
 >[!IMPORTANT] 
 >Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)，该概述通过 Azure Monitor 中的多维指标公开遥测数据。
@@ -32,13 +32,13 @@ ms.locfileid: "53164120"
 * **运行状况探测日志：** 可以使用此日志查看运行状况探测器检测到的问题，例如后端池中由于运行状况探测失败未从负载均衡器接收请求的实例数。 当运行状况探测状态发生更改时，将写入此日志。
 
 > [!IMPORTANT]
-> Log Analytics 当前仅适用于公共基本负载均衡器。 日志仅适用于 Resource Manager 部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+> Azure 监视器将记录当前仅适用于公共基本负载均衡器。 日志仅适用于 Resource Manager 部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
 
 ## <a name="enable-logging"></a>启用日志记录
 
 每个 Resource Manager 资源都会自动启用审核日志记录。 需启用事件和运行状况探测日志记录才能开始收集通过这些日志提供的数据。 使用以下步骤启用日志记录。
 
-登录到 [Azure 门户](http://portal.azure.com)。 如果还没有负载均衡器，请先[创建负载均衡器](load-balancer-get-started-internet-arm-ps.md)，再继续。
+登录到 [Azure 门户](https://portal.azure.com)。 如果还没有负载均衡器，请先[创建负载均衡器](load-balancer-get-started-internet-arm-ps.md)，再继续。
 
 1. 在门户中，单击“浏览”。
 2. 选择“负载均衡器”。
@@ -64,7 +64,7 @@ ms.locfileid: "53164120"
 
 ## <a name="audit-log"></a>审核日志
 
-默认情况下会生成审核日志。 日志在 Azure 的事件日志存储区中保留 90 天。 通过阅读[查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)一文可了解有关这些日志的详细信息。
+默认情况下会生成审核日志。 日志在 Azure 的事件日志存储区中保留 90 天。 通过阅读 [查看事件和审核日志](../monitoring-and-diagnostics/insights-debugging-with-events.md) 一文可了解有关这些日志的详细信息。
 
 ## <a name="alert-event-log"></a>警报事件日志
 
@@ -87,7 +87,7 @@ ms.locfileid: "53164120"
 }
 ```
 
-JSON 输出中显示的 *eventname* 属性将说明负载均衡器创建警报的原因。 在本示例中，生成警报是因为源 IP NAT 限制 (SNAT) 导致 TCP 端口耗竭。
+JSON 输出显示的 *eventname* 属性说明负载均衡器创建警报的原因。 在本示例中，生成警报是因为源 IP NAT 限制 (SNAT) 导致 TCP 端口耗竭。
 
 ## <a name="health-probe-log"></a>运行状况探测日志
 
@@ -146,7 +146,7 @@ JSON 输出在属性字段显示了探测运行状况的基本信息。 *dipDown
 ## <a name="additional-resources"></a>其他资源
 
 * [使用 Power BI 直观显示 Azure 审核日志](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)博客文章。
-* [查看和分析 Power BI 中的 Azure 审核日志及更多内容](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)博客文章。
+* [查看和分析 Power BI 中的 Azure 审核日志及更多内容](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) 博客文章。
 
 ## <a name="next-steps"></a>后续步骤
 

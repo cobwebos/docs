@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300466"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856835"
 ---
 # <a name="access-the-vfxt-cluster"></a>访问 vFXT 群集
 
@@ -31,7 +31,7 @@ ms.locfileid: "55300466"
 
 如果使用基于 Linux 的客户端，请通过以下形式使用 SSH 隧道： 
 
-ssh -L local_port:cluster_mgmt_ip:443 controller_username@controller_public_IP
+ssh -L local_port:cluster_mgmt_ip:443 controller_username\@controller_public_IP
 
 此命令通过群集控制器的 IP 地址连接到群集的管理 IP 地址。
 
@@ -47,7 +47,7 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 此示例使用常见的基于 Windows 的终端实用工具 PuTTY。
 
-使用群集控制器用户名及其 IP 地址填写 PuTTY **主机名**字段：*your_username*@*controller_public_IP*。
+使用群集控制器用户名及其 IP 地址填写 PuTTY **主机名**字段：*your_username*\@*controller_public_IP*。
 
 示例： ``azureuser@203.0.113.51``
 
@@ -69,7 +69,7 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 此步骤使用 Web 浏览器以连接到 vFXT 集群上运行的配置实用程序。
 
-* 对于 SSH 隧道连接，请打开 Web 浏览器并导航到 https://127.0.0.1:8443 。 
+* 对于 SSH 隧道连接，请打开 Web 浏览器并导航到 `https://127.0.0.1:8443` 。 
 
   你在创建隧道时已连接到群集 IP 地址，因此只需要在浏览器中使用 localhost IP 地址。 如果你使用了 8443 之外的本地端口，请改用你的端口号。
 

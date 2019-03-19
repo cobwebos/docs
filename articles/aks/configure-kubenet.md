@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6d2b6ce2804fce35af9c184c4a7c72c0b332f6fb
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: b80177d17e0dc5a4e54396907ecee61890ec523f
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701492"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011341"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
 默认情况下，AKS 群集使用 [kubenet][kubenet]，系统会为你创建 Azure 虚拟网络和子网。 节点使用 *kubenet* 从 Azure 虚拟网络子网获取 IP 地址。 Pod 接收从逻辑上不同的地址空间到节点的 Azure 虚拟网络子网的 IP 地址。 然后配置网络地址转换 (NAT)，以便 Pod 可以访问 Azure 虚拟网络上的资源。 流量的源 IP 地址通过 NAT 转换为节点的主 IP 地址。 这种方法大大减少了需要在网络空间中保留供 Pod 使用的 IP 地址数量。
 
-借助 [Azure 容器网络接口 (CNI)][cni-networking]，每个 Pod 都可以从子网获取 IP 地址，并且可供直接访问。 这些 IP 地址在网络空间必须唯一，并且必须事先计划。 每个节点的某个配置参数指定了其支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，并且经常会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
+借助 [Azure 容器网络接口 (CNI)][cni-networking]，每个 Pod 都可以从子网获取 IP 地址，并且可供直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，并且经常会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
 
 本文介绍如何使用 *kubenet* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项的详细信息和注意事项，请参阅 [Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
 
@@ -78,6 +78,9 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 - 你不想要管理 UDR。
 - 需要虚拟节点或网络策略等高级功能。
 
+> [!NOTE]
+> Kuberouter 即可启用网络策略在使用 kubenet 和可作为 daemonset 在 AKS 群集安装。 请注意 kube 路由器仍处于 beta 版本并且不支持由 Microsoft 提供的项目。
+
 ## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
 
 若要开始使用 *kubenet* 和自己的虚拟网络子网，请先使用 [az group create][az-group-create] 命令创建一个资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
@@ -126,7 +129,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-现在，使用 [az role assignment create][az-role-assignment-create] 命令为 AKS 群集的服务主体分配虚拟网络中的“参与者”权限。 根据上一命令的输出中所示，提供自己的 */<appId/>* 来创建服务主体：
+现在，使用 [az role assignment create][az-role-assignment-create] 命令为 AKS 群集的服务主体分配虚拟网络中的“参与者”权限。 根据上一命令的输出所示，提供自己的 \<appId> 来创建服务主体：
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -134,7 +137,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>在虚拟网络中创建 AKS 群集
 
-现已创建虚拟网络和子网、已创建服务主体并为其分配了这些网络资源的使用权限。 现在，请使用 [az aks create][az-aks-create] 命令在虚拟网络和子网中创建 AKS 群集。 根据上一命令的输出中所示，定义自己的服务主体 */<appId/>* 和 */<password/>* 来创建服务主体。
+现已创建虚拟网络和子网、已创建服务主体并为其分配了这些网络资源的使用权限。 现在，请使用 [az aks create][az-aks-create] 命令在虚拟网络和子网中创建 AKS 群集。 根据上一命令的输出所示，定义自己的服务主体 \<appId> 和 \<password> 来创建服务主体。
 
 在创建群集的过程中还定义了以下 IP 地址范围：
 

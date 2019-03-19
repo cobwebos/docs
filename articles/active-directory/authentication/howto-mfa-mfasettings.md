@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6c6559b5dd6c6a6e357ff2f258bad79d57205c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9809993d47141b70484892103e318a6f55381a2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192636"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856254"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -30,7 +30,7 @@ ms.locfileid: "56192636"
 
 这些设置中的一部分适用于 MFA 服务器和/或 Azure MFA。
 
-| Feature | 说明 |
+| Feature | 描述 |
 | ------- | ----------- |
 | 帐户锁定 | 如果连续有过多的身份验证尝试遭到拒绝，则将暂时在多重身份验证服务中锁定帐户。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
 | [阻止/解除阻止用户](#block-and-unblock-users) | 用于阻止 MFA 服务器（本地）上的特定用户，使之无法接收多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户将在阻止日起 90 天内受到阻止。 |
@@ -44,7 +44,7 @@ ms.locfileid: "56192636"
 
 此部分的设置仅适用于 MFA 服务器。
 
-| Feature | 说明 |
+| Feature | 描述 |
 | ------- | ----------- |
 | 服务器设置 | 下载 MFA 服务器并生成激活凭据，以便初始化环境 |
 | [免验证一次](#one-time-bypass) | 在有限的时间内，允许用户在不执行双重验证的情况下进行身份验证。 |
@@ -64,7 +64,7 @@ ms.locfileid: "56192636"
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 浏览到“Azure Active Directory” > “MFA” > “阻止/解除阻止用户”。
 3. 选择“添加”以阻止用户。
-4. 选择“复制组”。 以 **username@domain.com** 格式输入受阻用户的用户名。 在“原因”字段输入注释。
+4. 选择“复制组”。 作为被阻止的用户输入的用户名**用户名\@domain.com**。 在“原因”字段输入注释。
 5. 选择“添加”，完成阻止用户操作。
 
 ### <a name="unblock-a-user"></a>解除阻止用户
@@ -154,7 +154,7 @@ ms.locfileid: "56192636"
 2. 浏览到“Azure Active Directory” > “MFA” > “免验证一次”。
 3. 选择 **添加** 。
 4. 如有必要，可选择要免验证的复制组。
-5. 以 **username@domain.com** 格式输入用户名。 输入免验证应持续的秒数。 输入免验证的原因。
+5. 输入用户名**用户名\@domain.com**。 输入免验证应持续的秒数。 输入免验证的原因。
 6. 选择 **添加** 。 时间限制将立即生效。 用户需在免验证一次过期前登录。
 
 ### <a name="view-the-one-time-bypass-report"></a>查看免验证一次报告
@@ -252,7 +252,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 用户可以在最初注册时创建应用密码。 用户可在注册过程结束时选择创建应用密码。
 
-用户还可以在注册后创建应用密码。 可通过 Azure 门户或 Office 365 门户中的设置来更改应用密码。 有关适用于用户的详细信息和详细步骤，请参阅 [Azure 多重身份验证中的应用密码是什么？](../user-help/multi-factor-authentication-end-user-app-passwords.md)。
+用户还可以在注册后创建应用密码。 有关适用于用户的详细信息和详细步骤，请参阅 [Azure 多重身份验证中的应用密码是什么？](../user-help/multi-factor-authentication-end-user-app-passwords.md)。
 
 ## <a name="trusted-ips"></a>受信任的 IP
 
@@ -333,7 +333,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 用户为其帐户注册 Azure 多重身份验证时，可从你启用的选项中选择其首选验证方法。 [为我的帐户设置双重验证帐户](../user-help/multi-factor-authentication-end-user-first-time.md)中提供了用户注册过程指导。
 
-| 方法 | 说明 |
+| 方法 | 描述 |
 |:--- |:--- |
 | 拨打电话 |拨打自动语音电话。 用户接听电话，并按电话键盘上的 # 进行身份验证。 此电话号码不会同步到本地 Active Directory。 |
 | 向手机发送短信 |发送包含验证码的短信。 系统会提示用户在登录界面中输入验证代码。 此过程称为单向短信。 双向短信意味着用户必须短信回复一个特定代码。 已弃用双向短信，2018 年 11 月 14 日后不再受到支持。 届时，配置为使用双向短信的用户会自动切换到“电话呼叫”验证。|

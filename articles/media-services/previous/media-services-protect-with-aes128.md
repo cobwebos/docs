@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 357cf832f8878364965c8d8a85d7af8c5a2bc21c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: a0ec87f2afb8e2a18727fe6dd62547e6ad6ecfac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992070"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841049"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ ms.locfileid: "55992070"
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-可以使用 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)来测试流。
+可以使用 [Azure 媒体服务播放器](https://amsplayer.azurewebsites.net/azuremediaplayer.html)来测试流。
 
 ## <a id="client_request"></a>客户端如何从密钥传送服务请求密钥？
 在上一步骤中，构造了指向清单文件的 URL。 客户端需要从流清单文件提取必要的信息，以便向密钥传送服务发出请求。

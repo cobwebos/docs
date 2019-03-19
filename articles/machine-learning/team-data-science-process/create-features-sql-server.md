@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ce3fdef6429452eeee522896b47ed71de6a10201
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 2d01b74e7db275f4b2e3933415bbae40911b114b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451727"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854885"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
 本文档演示如何在 Azure 上为存储于 SQL Server VM 中的数据生成功能，用于帮助算法更有效地从数据中进行学习。 可以使用 SQL 或 Python 等编程语言来完成此任务。 下面演示了这两种方法。
@@ -24,11 +24,11 @@ ms.locfileid: "55451727"
 此任务是[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
 > [!NOTE]
-> 有关实际的示例，可以参阅 [NYC 出租车数据集](http://www.andresmh.com/nyctaxitrips/) [使用 IPython Notebook 和 SQL Server 处理 NYC 数据](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)获取端到端的演练。
+> 有关实际的示例，可以参阅 [NYC 出租车数据集](https://www.andresmh.com/nyctaxitrips/) [使用 IPython Notebook 和 SQL Server 处理 NYC 数据](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)获取端到端的演练。
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)
@@ -63,7 +63,7 @@ ms.locfileid: "55451727"
 ### <a name="sql-featurerollout"></a>从单个列推出功能
 在此部分中，将演示如何在表格中推出单列以生成其他功能。 该示例假定用户尝试在其中生成功能的表中，具有一个纬度或经度列。
 
-下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源`http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`）。 下面是一些有用的信息，可帮助在从字段创建特征之前，了解位置数据：
+下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源`https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`）。 下面是一些有用的信息，可帮助在从字段创建特征之前，了解位置数据：
 
 * 符号指示我们在地球上的北部还是南部、东部还是西部。
 * 非零百位数指示使用的是经度，而不是纬度。
@@ -111,7 +111,7 @@ ms.locfileid: "55451727"
     import pyodbc
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码读取从 SQL Server 数据库返回到 Pandas 数据帧的结果：
+Python 中的 [Pandas 库](https://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码读取从 SQL Server 数据库返回到 Pandas 数据帧的结果：
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)

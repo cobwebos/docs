@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure IoT 中心消息格式 | Microsoft Docs
-description: 开发人员指南 - 描述 IoT 中心消息的格式和预期内容。
+description: 开发人员指南-介绍的格式和预期的 IoT 中心的消息的内容。
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 164f3b8ef42d07606d98d200fa9bebcd0add3d38
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 08eb7171249c42348877afedc80c6c6338265422
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319568"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861718"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -31,7 +31,7 @@ IoT 中心消息由以下部分组成：
 
 * 不透明的二进制正文。
 
-使用 HTTPS 协议发送设备到云的消息或发送云到设备的消息时，属性名称和值只能包含 ASCII 字母数字字符加上 `{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`。
+使用 HTTPS 协议发送设备到云的消息或发送云到设备的消息时，属性名称和值只能包含 ASCII 字母数字字符加上 ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}``。
 
 使用 IoT 中心进行的设备到云消息传递具有以下特征：
 
@@ -47,7 +47,7 @@ IoT 中心消息由以下部分组成：
 
 下表列出 IoT 中心消息中的系统属性集。
 
-| 属性 | Description | 用户可设置吗？ |
+| 属性 | 描述 | 用户可设置吗？ |
 | --- | --- | --- |
 | message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。 | 是 |
 | sequence-number |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 | 对于 C2D 消息为否；对于其他情况则为是。 |
@@ -56,8 +56,7 @@ IoT 中心消息由以下部分组成：
 | iothub-enqueuedtime |IoT 中心收到[云到设备](iot-hub-devguide-c2d-guidance.md)消息的日期和时间。 | 对于 C2D 消息为否；对于其他情况则为是。 |
 | correlation-id |响应消息中的字符串属性，通常包含采用“请求-答复”模式的请求的 MessageId。 | 是 |
 | user-id |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 | 否 |
-| iothub-ack |反馈消息生成器。 此属性在云到设备的消息中用于请求 IoT 中心因为设备使用消息而生成反馈消息。 可能的值：**none**（默认值）：不生成任何反馈消息；**positive**：如果消息已完成，则接收反馈消息；**negative**：如果消息未由设备完成就过期（或已达到最大传送计数），则收到反馈消息；**full**：positive 和 negative。 
-<!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | 是 |
+| iothub-ack |反馈消息生成器。 此属性在云到设备的消息中用于请求 IoT 中心因为设备使用消息而生成反馈消息。 可能的值：**none**（默认值）：不生成任何反馈消息；**positive**：如果消息已完成，则接收反馈消息；**negative**：如果消息未由设备完成就过期（或已达到最大传送计数），则收到反馈消息；**full**：positive 和 negative。 <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | 是 |
 | iothub-connection-device-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId**。 | 对于 D2C 消息为否；对于其他情况则为是。 |
 | iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 generationId（根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 对于 D2C 消息为否；对于其他情况则为是。 |
 | iothub-connection-auth-method |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。 <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | 对于 D2C 消息为否；对于其他情况则为是。 |

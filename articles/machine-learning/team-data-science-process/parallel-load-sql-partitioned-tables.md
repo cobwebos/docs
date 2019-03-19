@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f1a5f54e520cdabd49e1ca69626e1c693bc1ee19
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 253f73cc58292778d88417b693c157fcbd7d92bd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470019"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853029"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>生成并优化表以便快速将数据并行导入到 Azure VM 上的 SQL Server
 
@@ -95,7 +95,7 @@ ms.locfileid: "55470019"
 
 ## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>批量导入每个分区表的数据
 
-* 可以使用 BCP、BULK INSERT 或其他方法（如 [SQL Server 迁移向导](http://sqlazuremw.codeplex.com/)）。 提供的示例使用 BCP 方法。
+* 可以使用 BCP、BULK INSERT 或其他方法（如 [SQL Server 迁移向导](https://sqlazuremw.codeplex.com/)）。 提供的示例使用 BCP 方法。
 * [更改数据库](https://msdn.microsoft.com/library/bb522682.aspx)，以将事务日志记录方案更改为 BULK_LOGGED 以最大限度降低日志记录开销，例如：
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED

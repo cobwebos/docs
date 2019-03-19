@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: 7bfed1144ebfc69ed51b7bbc1adf78538ed28425
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301921"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861071"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -129,6 +129,18 @@ ms.locfileid: "56301921"
 
   > [!IMPORTANT]
   > 托管实例不支持多个故障转移组。
+  
+## <a name="permissions"></a>权限
+故障转移组的权限通过管理[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md)。 [SQL Server 参与者](../role-based-access-control/built-in-roles.md#sql-server-contributor)角色具有所有必需的权限来管理故障转移组。 
+
+### <a name="create-failover-group"></a>创建故障转移组
+若要创建故障转移组，需要 RBAC 写访问这两个主要和辅助服务器，以及故障转移组中的所有数据库。 对于托管实例，你需要 RBAC 写访问权限这两个主要和次要托管实例，但对单个数据库的权限不相关，因为不能添加到各个托管的实例数据库，或将其从故障转移组中删除。 
+
+### <a name="update-a-failover-group"></a>更新故障转移组
+若要更新的故障转移组，您需要 RBAC 故障转移组和当前的主服务器或托管的实例上的所有数据库写入访问权限。  
+
+### <a name="failover-a-failover-group"></a>故障转移组进行故障转移
+若要故障转移的故障转移组，你需要 RBAC 到新的主服务器上的故障转移组的写访问权限或托管实例。 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>有关将故障转移组与单一数据库和弹性池配合使用的最佳做法
 
@@ -203,7 +215,7 @@ ms.locfileid: "56301921"
   > [!NOTE]
   > 在某些服务层中，Azure SQL 数据库支持通过[只读副本](sql-database-read-scale-out.md)使用只读副本的容量和连接字符串中的 `ApplicationIntent=ReadOnly` 参数对只读查询工作负荷进行负载均衡。 如果配置了异地复制的辅助节点，则可以使用此功能连接到主要位置或异地复制位置中的只读副本。
   > - 若要连接到主要位置中的只读副本，请使用 `failover-group-name.zone_id.database.windows.net`。
-  > - 若要连接到主要位置中的只读副本，请使用 `failover-group-name.secondary.zone_id.database.windows.net`。
+  > - 若要连接到辅助位置中的只读副本，请使用`failover-group-name.secondary.zone_id.database.windows.net`。
 
 - **可应对性能下降的问题**
 
@@ -270,7 +282,9 @@ ms.locfileid: "56301921"
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>升级或降级主数据库
 
-无需断开连接任何辅助数据库，即可将主数据库升级或降级到不同的计算大小（在相同的服务层中，但不在“常规用途”与“业务关键”类型之间）。 升级时，建议先升级辅助数据库，再升级主数据库。 降级时，应反转顺序：先降级主数据库，再降级辅助数据库。 将数据库升级或降级到不同服务层时，将强制执行此建议操作。
+无需断开连接任何辅助数据库，即可将主数据库升级或降级到不同的计算大小（在相同的服务层中，但不在“常规用途”与“业务关键”类型之间）。 在升级时，我们建议您首先，升级所有辅助数据库，再升级主。 降级时，反转顺序： 首先，降级主数据库和再降级的所有辅助数据库。 将数据库升级或降级到不同服务层时，将强制执行此建议操作。
+
+此序列建议专门来避免此问题，在更低版 SKU 辅助数据库变得超负荷，并且在升级或降级过程必须可重新设定种子。 您可以通过使主只读的代价是会影响对主数据库的所有读写工作负荷来避免此问题。 
 
 > [!NOTE]
 > 如果辅助数据库是作为故障转移组配置的一个部分创建的，则不建议对辅助数据库进行降级。 这是为了确保激活故障转移后，数据层有足够的容量来处理常规工作负荷。
@@ -292,14 +306,14 @@ ms.locfileid: "56301921"
 
 ### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>PowerShell：使用单一数据库和弹性池管理 SQL 数据库故障转移
 
-| Cmdlet | 说明 |
+| Cmdlet | 描述 |
 | --- | --- |
-| [New-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
-| [Remove-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqldatabasefailovergroup) | 从服务器中移除故障转移组，并删除组中包含的所有辅助数据库 |
-| [Get-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | 检索故障转移组配置 |
-| [Set-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |修改故障转移组的配置 |
-| [Switch-AzureRMSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | 触发故障转移组到辅助服务器的故障转移 |
-| [Add-AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|将一个或多个数据库添加到 Azure SQL 数据库故障转移组|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
+| [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | 从服务器中移除故障转移组，并删除组中包含的所有辅助数据库 |
+| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 检索故障转移组配置 |
+| [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |修改故障转移组的配置 |
+| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | 触发故障转移组到辅助服务器的故障转移 |
+| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|将一个或多个数据库添加到 Azure SQL 数据库故障转移组|
 |  | |
 
 > [!IMPORTANT]
@@ -308,36 +322,36 @@ ms.locfileid: "56301921"
 
 ### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell：使用托管实例管理故障转移组（预览版）
 
-#### <a name="install-the-newest-pre-release-version-of-powershell"></a>安装 Powershell 的最新预发行版
+#### <a name="install-the-newest-pre-release-version-of-powershell"></a>安装最新的预发行版本的 PowerShell
 
 1. 将 PowerShellGet 模块更新到 1.6.5（或最新预览版）。 请参阅 [PowerShell 预览版站点](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview)。
 
-   ```Powershell
+   ```PowerShell
       install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. 在新的 PowerShell 窗口中执行以下命令：
 
-   ```Powershell
+   ```PowerShell
       import-module PowerShellGet
       get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
       import-module azurerm.sql
    ```
 
-#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>用于创建实例故障转移组的 Powershell cmdlet
+#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>PowerShell commandlet 创建实例故障转移组
 
-| API | 说明 |
+| API | 描述 |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |修改故障转移组的配置|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |检索故障转移组配置|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |触发故障转移组到辅助服务器的故障转移|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | 删除故障转移组|
+| New-AzSqlDatabaseInstanceFailoverGroup |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
+| Set-AzSqlDatabaseInstanceFailoverGroup |修改故障转移组的配置|
+| Get-AzSqlDatabaseInstanceFailoverGroup |检索故障转移组配置|
+| Switch-AzSqlDatabaseInstanceFailoverGroup |触发故障转移组到辅助服务器的故障转移|
+| Remove-AzSqlDatabaseInstanceFailoverGroup | 删除故障转移组|
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API：使用单个数据库和入池数据库管理 SQL 数据库故障转移组
 
-| API | 说明 |
+| API | 描述 |
 | --- | --- |
 | [创建或更新故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 创建或更新故障转移组 |
 | [删除故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 从服务器中删除故障转移组 |
@@ -350,7 +364,7 @@ ms.locfileid: "56301921"
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances-preview"></a>REST API：使用托管实例管理故障转移组（预览版）
 
-| API | 说明 |
+| API | 描述 |
 | --- | --- |
 | [创建或更新故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 创建或更新故障转移组 |
 | [删除故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 从服务器中删除故障转移组 |

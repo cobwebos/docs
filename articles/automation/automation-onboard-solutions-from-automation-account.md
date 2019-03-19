@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 0d67571024c9ace3618f7ae6172122ac48b57faa
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 0f5d36dfbe614e35256231a91a9e15055e2e81cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106710"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843617"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -28,11 +28,11 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 导航到你的自动化帐户，在“配置管理”下选择“清单”或“更改跟踪”。
 
-选择 Log Analytics 工作区和自动化帐户，然后单击“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
+选择 Log Analytics 工作区和自动化帐户，然后单击**启用**以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 ![载入清单解决方案](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+在启用解决方案时，只有特定区域支持链接的 Log Analytics 工作区和自动化帐户。
 
 下表显示了受支持的映射：
 
@@ -41,14 +41,19 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 |AustraliaSoutheast|AustraliaSoutheast|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |西欧|西欧|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP 和 EastUS 映射到自动化帐户的 Log Analytics 工作区不精确的区域到另一个区域映射，但是正确的映射。
+
+> [!NOTE]
+> 由于需求，而区域可能不可用时创建自动化帐户或 Log Analytics 工作区。  如果是这种情况，请确保使用在上表中，可以创建中的资源的区域。
 
 更改跟踪和清单解决方案提供针对虚拟机的[跟踪更改](automation-vm-change-tracking.md)和[清单](automation-vm-inventory.md)功能。 在此步骤中，在虚拟机上启用解决方案。
 
@@ -56,7 +61,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 使用更新管理解决方案可以管理 Azure Windows VM 的更新和修补程序。 可评估可用更新的状态、计划所需更新的安装以及查看部署结果，验证更新是否已成功应用到 VM。 此操作已为你的 VM 启用了此解决方案。
 
-在“更新管理”下选择“更新管理”。 选定的日志分析工作区即为上一步骤中使用的工作区。 单击“启用”以载入更新管理解决方案。 启用此解决方案最长需要 15 分钟的时间。
+在“更新管理”下选择“更新管理”。 所选的 Log Analytics 工作区是在前面步骤中使用的相同工作区。 单击“启用”以载入更新管理解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 ![载入更新解决方案](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
@@ -78,7 +83,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 导航到你的自动化帐户并在“常规”下选择“保存的搜索”。 可以在下表中看到这些解决方案使用的两个已保存搜索：
 
-|Name     |类别  |别名  |
+|名称     |类别  |别名  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |
@@ -91,7 +96,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
 
-单击“+ 添加 Azure VM”，从列表中选择一个或多个 VM。 无法启用的虚拟机为灰显，无法选择。 在“启用更新管理”页上，单击“启用”。 此操作会将选定 VM 添加到计算机组“为此解决方案保存的搜索结果”。
+单击“+ 添加 Azure VM”，从列表中选择一个或多个 VM。 无法启用的虚拟机为灰显，无法选择。 Azure Vm 可以位于任何区域，无论你的自动化帐户的位置。 在“启用更新管理”页上，单击“启用”。 此操作会将选定 VM 添加到计算机组“为此解决方案保存的搜索结果”。
 
 ![启用 Azure VM](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
@@ -129,7 +134,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 * [更改跟踪](automation-change-tracking.md)
 * [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
 
-如果决定不再想要会自动化帐户与 Log Analytics 集成，可以直接从 Azure 门户取消链接帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
+如果你决定不再想要将你的自动化帐户与 Log Analytics 工作区相集成，您可以取消链接你直接从 Azure 门户的帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
 
 删除这些解决方案后，可以完成以下步骤取消链接自动化帐户。
 

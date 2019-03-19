@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: e7f8eef2c3422084846462e2f6159a8b8be7167f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: 76944d98d6a5fe7c3f83ce12bb2fdf1a34d5e234
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301819"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839094"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -75,7 +75,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 - 通过 Azure AD 应用程序代理预配对本地 Web 应用程序的安全远程访问。
 
-[Azure Active Directory 门户](http://aad.portal.azure.com/)作为 Azure 门户的一部分提供。 通过此仪表板，可以大致了解组织的状态，轻松地深入管理目录、用户或应用程序访问。
+[Azure Active Directory 门户](https://aad.portal.azure.com/)作为 Azure 门户的一部分提供。 通过此仪表板，可以大致了解组织的状态，轻松地深入管理目录、用户或应用程序访问。
 
 ![Azure Active Directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -113,7 +113,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 安全监控、警报和基于机器学习的报告（它们识别不一致的访问模式）可以帮助保护业务。 可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。 使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
 
-在 Azure 门户或 [Azure Active Directory 门户](http://aad.portal.azure.com/)中，[报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)按以下方式分类：
+在 Azure 门户或 [Azure Active Directory 门户](https://aad.portal.azure.com/)中，[报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)按以下方式分类：
 
 - 异常报告 - 包含我们发现存在异常的登录事件。 我们的目标是让用户知道这类活动并使用户能够就事件是否可疑做出决定。
 
@@ -169,9 +169,9 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成工作。 [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 通过对 Azure 提供细致的访问管理帮助解决此问题。
 
-![受保护的资源访问 ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
+![受保护的资源访问](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
+使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。 不是在 Azure 订阅或资源中给每个人无限制的权限，只能允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
 
 ![Azure 中受保护的资源访问 (RBAC)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
@@ -192,8 +192,8 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 | 加密模型 |  |  |  |
 | ----------------  | ----------------- | ----------------- | --------------- |
 | 服务器加密 | 服务器加密 | 服务器加密 | 客户端加密
-| 使用服务托管密钥的服务器端加密 | 使用 Azure Key Vault 中客户托管密钥的服务器端加密 | 使用本地客户托管密钥的服务器端加密 |
-| • Azure 资源提供程序执行加密和解密操作 <br> •    Microsoft 管理密钥 <br>•    完整云功能 | •    Azure 资源提供程序执行加密和解密操作<br>•  客户通过 Azure Key Vault 控制密钥<br>• 完整云功能 | •    Azure 资源提供程序执行加密和解密操作 <br>• 客户在本地控制密钥 <br> •   完整云功能| • Azure 服务无法看到已解密的数据 <br>•  客户将密钥保留在本地（或其他安全存储中）。 Azure 服务无法使用密钥 <br>• 精简云功能|
+| 使用服务托管密钥的服务器端加密 | 使用 Azure Key Vault 中客户托管密钥的服务器端加密 | 服务器端使用在本地客户托管密钥加密 |
+| • Azure 资源提供程序执行加密和解密操作 <br> •    Microsoft 管理密钥 <br>•    完整云功能 | •    Azure 资源提供程序执行加密和解密操作<br>•  客户通过 Azure Key Vault 控制密钥<br>• 完整云功能 | •    Azure 资源提供程序执行加密和解密操作 <br>• 客户控制本地密钥 <br> •   完整云功能| • Azure 服务无法看到已解密的数据 <br>•  客户将密钥保留在本地（或其他安全存储中）。 Azure 服务无法使用密钥 <br>• 精简云功能|
 
 ### <a name="enabling-encryption-at-rest"></a>启用静态加密
 
@@ -274,7 +274,7 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) 使用加密、标识和授权策略帮助保护文件与电子邮件。 Azure RMS 可跨多个设备工作 — 手机、平板电脑和台式电脑保护组织内部和外部的数据。 因为 Azure RMS 添加了数据所属的保护级别，所以即使数据离开组织边界，此功能仍然可行。
 
-使用 Azure RMS 保护文件时，意味着使用行业标准加密并配合 [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html) 的完全支持。 使用 Azure RMS 进行数据保护时，即使文件被复制到不受 IT 控制的存储（例如云存储服务），也可保证该文件持续受到保护。 同样的情况将出现在通过电子邮件共享的文件，文件以电子邮件的附件形式受到保护，并提供如何打开受保护附件的说明。
+使用 Azure RMS 保护文件时，意味着使用行业标准加密并配合 [FIPS 140-2](https://csrc.nist.gov/groups/STM/cmvp/standards.html) 的完全支持。 使用 Azure RMS 进行数据保护时，即使文件被复制到不受 IT 控制的存储（例如云存储服务），也可保证该文件持续受到保护。 同样的情况出现在通过电子邮件共享的文件，文件将以电子邮件的附件形式受到保护，并提供如何打开受保护附件的说明。
 规划 Azure RMS 采用时，建议执行以下操作：
 
 - 安装 [RMS 共享应用](https://technet.microsoft.com/library/dn339006.aspx)。 此应用通过安装 Office 外挂程序来与 Office 应用程序集成，使用户可以轻松地直接保护文件。
@@ -398,19 +398,19 @@ Microsoft 制定了[云服务审慎调查清单](https://aka.ms/cloudchecklist.d
 
 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是混合云的 IT 管理解决方案。 Log Analytics 可单独使用，也可用于扩展现有 System Center 部署，为用户基于云管理基础结构提供了最大的灵活性和控制度。
+[Azure 监视器](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)是混合云的 IT 管理解决方案。 单独使用或扩展现有 System Center 部署时，Azure Monitor 日志为您提供最大的灵活性和控制基于云的基础结构管理。
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Azure Monitor](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-使用 Log Analytics，可以在任何云中（包括本地、Azure、AWS、Windows Server、Linux、VMware 和 OpenStack）管理任何实例，且成本低于其他有竞争力的解决方案。 Log Analytics 专为云优先的环境而构建，为管理企业提供了一种新方法，能最快且最经济高效地应对新的业务挑战并适应新的工作负载、应用程序和云环境。
+通过 Azure Monitor，可以管理任何云，包括本地、 Azure、 AWS、 Windows Server、 Linux、 VMware 和 OpenStack，较低的成本比竞争对手解决方案中的任何实例。 为云优先世界上生成的 Azure Monitor 提供了为管理企业的速度最快、 最具成本效益的方式以满足新的业务挑战并适应新的工作负荷，应用程序和云环境的一种新方法。
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
+[Azure Monitor 日志](https://azure.microsoft.com/documentation/services/log-analytics)通过托管资源的数据收集到中央存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
+![Azure Monitor 日志](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
 使用这种方法可以整合来自各种来源的数据，因此可将 Azure 服务中的数据合并到现有的本地环境。 此外，它还能将数据收集与针对该数据执行的操作明确区分开来，以便能够针对所有类型的数据执行所有操作。
 

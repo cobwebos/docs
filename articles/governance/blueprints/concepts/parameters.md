@@ -4,17 +4,17 @@ description: 了解有关静态和动态参数以及如何使用它们创建动�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9166d5d552df4854a4d00c2211a273a06198877a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567479"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838011"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -41,8 +41,13 @@ ms.locfileid: "55567479"
 - Key Vault 机密名称
 - Key Vault 机密版本
 
-引用的 Key Vault 必须与所要分配到的蓝图位于同一订阅中。
-此外，它还必须在 Key Vault 的“访问策略”页上配置“启用对 Azure 资源管理器的访问以部署模板”。 有关如何启用此功能的说明，请参阅 [Key Vault - 启用模板部署](../../../managed-applications/key-vault-access.md#enable-template-deployment)。 有关 Azure Key Vault 的详细信息，请参阅 [ 概述](../../../key-vault/key-vault-overview.md)。
+如果使用蓝图分配**系统分配的托管标识**，则引用 Key Vault_必须_蓝图定义分配给同一订阅中。
+
+如果使用蓝图分配**用户分配托管标识**，则引用 Key Vault_可能_集中式订阅中存在。 托管的标识必须授予密钥保管库之前蓝图分配适当的权限。
+
+在这两种情况下，密钥保管库必须具有**启用为模板部署到 Azure 资源管理器中访问**上配置**访问策略**页。 有关如何启用此功能的说明，请参阅 [Key Vault - 启用模板部署](../../../managed-applications/key-vault-access.md#enable-template-deployment)。
+
+有关 Azure Key Vault 的详细信息，请参阅 [ 概述](../../../key-vault/key-vault-overview.md)。
 
 ## <a name="parameter-types"></a>参数类型
 
@@ -52,13 +57,13 @@ ms.locfileid: "55567479"
 
 #### <a name="setting-static-parameters-in-the-portal"></a>在门户中设置静态参数
 
-1. 单击“所有服务”，然后在左窗格中搜索并选择“策略”。 在“策略”页上，单击“蓝图”。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 从左侧页面中选择“蓝图定义”。
 
-1. 单击现有蓝图，然后单击“编辑蓝图”或单击“+ 创建蓝图”，并在“基本信息”选项卡上填写信息。
+1. 单击现有蓝图，然后单击**编辑蓝图**或单击 **+ 创建蓝图**上填写信息并**基础知识**选项卡。
 
-1. 单击“下一步: 项目”或单击“项目”选项卡。
+1. 单击“下一步:项目”或单击“项目”选项卡。
 
 1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”。 单击项目行，编辑项目参数。
 
@@ -169,13 +174,13 @@ ms.locfileid: "55567479"
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在门户中设置动态参数
 
-1. 单击“所有服务”，然后在左窗格中搜索并选择“策略”。 在“策略”页上，单击“蓝图”。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 从左侧页面中选择“蓝图定义”。
 
-1. 右键单击要分配的蓝图。 选择“分配蓝图”，或单击想要分配的蓝图，然后单击“分配蓝图”按钮。
+1. 右键单击要分配的蓝图。 选择**分配蓝图**或单击你想要分配的蓝图，然后单击**分配蓝图**按钮。
 
-1. 在“分配蓝图”页上，查找“项目参数”部分。 具有至少一个“动态参数”的每个项目会显示项目和配置选项。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配。
+1. 上**分配蓝图**页上，找到**项目参数**部分。 具有至少一个“动态参数”的每个项目会显示项目和配置选项。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配。
 
    ![蓝图动态参数](../media/parameters/dynamic-parameter.png)
 
@@ -236,8 +241,8 @@ ms.locfileid: "55567479"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](lifecycle.md)
-- 了解如何自定义[蓝图排序顺序](sequencing-order.md)
-- 了解如何使用[蓝图资源锁定](resource-locking.md)
-- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)
-- 使用[常规疑难解答](../troubleshoot/general.md)在蓝图分配期间解决问题
+- 了解如何[蓝图生命周期](lifecycle.md)。
+- 了解如何自定义[蓝图先后顺序](sequencing-order.md)。
+- 了解如何使利用[蓝图资源锁定](resource-locking.md)。
+- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
+- 使用蓝图赋值的过程中解决的问题[常规故障排除](../troubleshoot/general.md)。

@@ -1,72 +1,80 @@
 ---
-title: 关于文本转语音 - 语音服务
+title: 文本到语音转换与 Azure 的语音服务
 titleSuffix: Azure Cognitive Services
-description: 文本转语音 API 提供超过 45 种语言和区域设置中的 75 种以上语音。 若要使用标准语音字体，只需在调用语音服务时使用几个其他参数指定语音名称。
+description: 文本到语音转换从 Azure 语音服务是一种基于 REST 的服务，使你的应用程序、 工具或设备，将文本转换为自然人合成语音。 从标准和神经声音，选择或创建你自己的自定义语音唯一的产品或品牌。 75 标准语音可在多个 45 语言和区域设置，以及 5 神经语音有 4 个语言和区域设置。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0836ae4a9041db27cfed35dd0f1fc0df6e541aff
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 39d500e2ceee71bdabb198d0dc7672b113a4c1af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859328"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853338"
 ---
-# <a name="about-the-text-to-speech-api"></a>关于文本转语音 API
+# <a name="what-is-text-to-speech"></a>文本到语音转换是什么？
 
-文本转语音 (TTS) API 将输入文本转换为自然语音（也称为“语音合成”）。
+文本到语音转换从 Azure 语音服务是一种基于 REST 的服务，使你的应用程序、 工具或设备，将文本转换为自然人合成语音。 从标准和神经语音中进行选择或创建你自己[自定义语音](#custom-voice-fonts)唯一的产品或品牌。 75 标准语音可在多个 45 语言和区域设置，以及 5 神经语音有 4 个语言和区域设置。 有关完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
-若要生成语音，应用程序需要将 HTTP POST 请求发送到文本转语音 API。 其中，文本将合成为人工语音，并作为音频文件返回。 支持各种语音和语言。
-
-采用语音合成的场景包括：
-
-* *提高可访问性：* 文本转语音技术使内容所有者和发布者响应人员与其内容进行交互的不同方式。 有视觉障碍或阅读困难的人士会非常感谢能够以听觉的方式使用内容。 此外，语音输出使人们可以在上下班或健身时更加轻松地享用文本内容，如报纸或博客。
-
-* *在多任务方案中响应：* 文本转语音让人们在驾车或在不便阅读的环境下快速而轻松地汲取重要信息。 导航是这一领域的常见应用。
-
-* *使用多种模式增强学习：* 不同的人有不同的学习方法。 在线学习专家已经证明，同时提供语音和文本可帮助更轻松地了解和保留信息。
-
-* *提供直观机器人或助手：* 对话功能可以是智能聊天机器人或虚拟助手的必要组成部分。 越来越多的公司正在开发聊天机器人，为客户提供具备吸引力的客户服务体验。 语音通过允许以听觉方式接收机器人响应（例如，通过电话）来添加另一个维度。
-
-## <a name="voice-support"></a>语音支持
-
-Microsoft 文本转语音服务提供超过 45 种语言和区域设置的 75 种以上语音。 若要使用这些标准的“语音字体”，只需在调用服务的 REST API 时使用几个其他参数指定语音名称。 若要详细了解支持的语言、区域设置和语音，请参阅[支持的语言](language-support.md#text-to-speech)。
-
-> [!IMPORTANT]
-> 标准语音、自定义语音和神经语音的费用各不相同。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+文本到语音转换技术，使内容创建者可以以不同方式与他们的用户交互。 通过为用户提供用于呼叫与内容进行交互的选项，文本到语音转换可以提高可访问性。 无论用户有视觉障碍者，学习为残疾人士，还是需要导航信息，同时还能降低，文本到语音转换可以提高现有体验。 文本到语音转换也是有价值的语音机器人和虚拟助手外接程序。
 
 ### <a name="neural-voices"></a>神经语音
 
-使用神经版文本转语音可使与聊天机器人和虚拟助手的交流更加自然和专注、可将数字文本（如电子书）转换为有声读物以及可增强车载导航系统。 随着类人的自然韵律和字词的清晰发音，在与 AI 系统交互时，神经 TTS 显著减轻了听力疲劳。 有关神经语音的详细信息，请参阅[支持的语言](language-support.md#text-to-speech)。
+可以使用神经语音使与聊天机器人和虚拟助手的交流更加自然和专注、可将数字文本（如电子书）转换为有声读物以及可增强车载导航系统。 使用类似于人类的自然诗体论和明确的单词，神经语音显著减少侦听疲劳与 AI 系统进行交互时。 有关神经语音的详细信息，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 ### <a name="custom-voices"></a>自定义语音
 
-使用文本转语音自定义功能可以创建可识别的特色语音，该语音带有你的特色：语音字体。 若要创建语音字体，请先进行录音，然后将关联的脚本以训练数据的形式上传。 然后，此服务会根据你的录音创建唯一的语音模型。 然后，就可以使用此语音字体来合成语音。 有关更多信息，请参阅[自定义语音字体](how-to-customize-voice-font.md)。
+语音自定义项，可以创建自己的品牌的可识别的、 独一无二的声音：*语音字体。* 若要创建语音字体，请先进行录音，然后将关联的脚本以训练数据的形式上传。 然后，此服务会根据你的录音创建唯一的语音模型。 可以使用此语音字体合成语音。 有关详细信息，请参阅[自定义语音](how-to-customize-voice-font.md)。
 
-## <a name="api-capabilities"></a>API 功能
+## <a name="core-features"></a>核心功能
 
-文本转语音 API 的许多功能（特别是围绕自定义的功能）可以通过 REST 获得。 下表总结了每种访问 API 的方法的功能。 有关功能和 API 详细信息的完整列表，请参阅 [Swagger 参考](https://westus.cris.ai/swagger/ui/index)。
+此表列出了文本到语音转换的核心功能：
 
-| 使用案例 | REST | SDK |
-|-----|-----|-----|----|
-| 上传数据集以进行语音适应 | 是 | 否 |
-| 创建和管理语音字体模型 | 是 | 否 |
-| 创建和管理语音字体部署 | 是 | 否 |
-| 创建和管理语音字体测试| 是 | 否 |
-| 管理订阅 | 是 | 否 |
+| 使用案例 | SDK 中 IsInRole 中的声明 | REST |
+|----------|-----|------|
+| 将文本到语音转换。 | 否 | 是 |
+| 上传为语音适配的数据集。 | 否 | 是\* |
+| 创建和管理语音字体模型。 | 否 | 是\* |
+| 创建和管理语音字体部署。 | 否 | 是\* |
+| 创建和管理语音字体测试。 | 否 | 是\* |
+| 管理订阅。 | 否 | 是\* |
+
+\* *这些服务可使用 cris.ai 终结点。请参阅[Swagger 引用](https://westus.cris.ai/swagger/ui/index)。*
 
 > [!NOTE]
-> API 实现限制，将 API 请求限制为每 5 秒 25 次。 消息标头将通知限制。
+> 文本到语音转换的终结点实现限制，限制为 25 个每 5 秒的请求。 当出现阻止情况，则会通知您通过消息标头。
+
+## <a name="get-started-with-text-to-speech"></a>开始使用文本到语音转换
+
+我们提供了快速入门旨在让您在 10 分钟内运行代码。 此表包含一系列按语言的文本到语音转换快速入门。
+
+| 快速入门 | 平台 | API 参考 |
+|------------|----------|---------------|
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows、 macOS、 Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | 窗口中，macOS、 Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [Python](quickstart-python-text-to-speech.md) | 窗口中，macOS、 Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+
+## <a name="sample-code"></a>代码示例
+
+文本到语音转换的示例代码位于 GitHub 上提供。 这些示例涉及最常用编程语言中的文本到语音转换。
+
+* [文本到语音转换示例 (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+
+## <a name="reference-docs"></a>参考文档
+
+* [语音 SDK](speech-sdk-reference.md)
+* [语音设备 SDK](speech-devices-sdk.md)
+* [REST API：语音到文本](rest-speech-to-text.md)
+* [REST API：Text-to-speech](rest-text-to-speech.md)
+* [REST API：批处理脚本和自定义](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取免费语音服务订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [快速入门：将文本转换到语音，Python](quickstart-python-text-to-speech.md)
-* [快速入门：将文本转换到语音，.NET Core](quickstart-dotnet-text-to-speech.md)
-* [REST API 参考](rest-apis.md)
+* [获取免费语音服务订阅](get-started.md)
+* [创建自定义语音字体](how-to-customize-voice-font.md)

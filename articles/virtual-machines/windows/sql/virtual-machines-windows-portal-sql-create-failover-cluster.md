@@ -3,7 +3,7 @@ title: SQL Server FCI - Azure 虚拟机 | Microsoft 文档
 description: 本文介绍如何在 Azure 虚拟机上创建 SQL Server 故障转移群集实例。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 62b0f7adf0eb1dd3e3fd7493096c2261a1c1076d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 19910782142bf78c10dda155f40a5c41bdd64958
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328546"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842747"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -74,12 +74,12 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 - [Windows 群集技术](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server 故障转移群集实例](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
-一个重要的差别在于，在 Azure IaaS VM 来宾故障转移群集上，我们建议每个服务器（群集节点）使用一个 NIC 和一个子网。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 虽然群集验证报告将发出警告，指出节点只能在单个网络上访问，但在 Azure IaaS VM 来宾故障转移群集上可以安全地忽略此警告。 
+一个重要区别是 Azure IaaS VM 来宾故障转移群集，我们建议每个服务器 （群集节点） 和单个子网的单个 NIC。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 虽然群集验证报告将发出警告，指出节点只能在单个网络上访问，但在 Azure IaaS VM 来宾故障转移群集上可以安全地忽略此警告。 
 
 另外，应该对以下技术有大致的了解：
 
 - [Windows Server 2016 中使用存储空间直通的超聚合解决方案](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
-- [Azure 资源组](../../../azure-resource-manager/resource-group-portal.md)
+- [Azure 资源组](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > 目前，Azure 上的 SQL Server FCI 不支持 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 我们建议你从参与 FCI 的 VM 中卸载扩展。 此扩展支持自动备份和修补等功能，以及 SQL 的一些门户功能。 卸载代理后，这些功能对 SQL VM 不起作用。
@@ -101,7 +101,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 ## <a name="step-1-create-virtual-machines"></a>步骤 1：创建虚拟机
 
-1. 使用订阅登录到 [Azure 门户](http://portal.azure.com)。
+1. 使用订阅登录到 [Azure 门户](https://portal.azure.com)。
 
 1. [创建 Azure 可用性集](../tutorial-availability-sets.md)。
 
@@ -239,7 +239,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 1. 在“服务器管理器”中单击“工具”，并单击“故障转移群集管理器”。
 1. 在“故障转移群集管理器”中单击“操作”，并单击“验证配置...”。
-1. 单击“下一步”。
+1. 单击“资源组名称” 的 Azure 数据工厂。
 1. 在“选择服务器或群集”中，键入两个虚拟机的名称。
 1. 在“测试选项”中，选择“仅运行选择的测试”。 单击“下一步”。
 1. 在“测试选择”中，包含除“存储”以外的所有测试。 参阅下图：

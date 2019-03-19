@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 9a5e75b762c2ab0591212ce0bc3d7fac42132f8a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 3cffd09a54b09a425f3b7f3519b4ceb7a04a6d08
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116909"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855344"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
 
@@ -28,7 +28,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 在 Azure 门户中，导航到“虚拟机”。
 
-使用复选框，选择要载入“更改跟踪”和“清单”或“更新管理”功能的虚拟机。 载入一次最多可用于三个不同的资源组。
+使用复选框，选择要载入“更改跟踪”和“清单”或“更新管理”功能的虚拟机。 载入一次最多可用于三个不同的资源组。 Azure Vm 可以位于任何区域，无论你的自动化帐户的位置。
 
 ![VM 列表](media/automation-onboard-solutions-from-browse/vmlist.png)
 > [!TIP]
@@ -51,7 +51,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ![载入更新管理解决方案](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-复查针对 Log Analytics 工作区和自动化帐户所做的选择。 默认情况下会选择一个现有的工作区和自动化帐户。 如果希望使用不同的 Log Analytics 工作区和自动化帐户，请单击“自定义”来从“自定义配置”页面选择它们。 当你选择 Log Analytics 工作区时，将会进行检查来确定它是否与某个自动化帐户相链接。 如果找到了链接的自动化帐户，则会看到以下屏幕。 完成后单击“确定”。
+查看 Log Analytics 工作区和自动化帐户的选项。 默认情况下会选择一个现有的工作区和自动化帐户。 如果希望使用不同的 Log Analytics 工作区和自动化帐户，请单击“自定义”来从“自定义配置”页面选择它们。 当你选择 Log Analytics 工作区时，将会进行检查来确定它是否与某个自动化帐户相链接。 如果找到了链接的自动化帐户，则会看到以下屏幕。 完成后单击“确定”。
 
 ![选择工作区和帐户](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
 
@@ -59,7 +59,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ![无工作区](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+在启用解决方案时，只有特定区域支持链接的 Log Analytics 工作区和自动化帐户。
 
 下表显示了受支持的映射：
 
@@ -68,14 +68,19 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 |AustraliaSoutheast|AustraliaSoutheast|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |西欧|西欧|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP 和 EastUS 映射到自动化帐户的 Log Analytics 工作区不精确的区域到另一个区域映射，但是正确的映射。
+
+> [!NOTE]
+> 由于需求，而区域可能不可用时创建自动化帐户或 Log Analytics 工作区。  如果是这种情况，请确保使用在上表中，可以创建中的资源的区域。
 
 取消选择不想启用的任何虚拟机旁边的复选框。 无法启用的虚拟机已被取消选择。
 
@@ -89,7 +94,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 * [更改跟踪](automation-change-tracking.md)
 * [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
 
-如果决定不再想要会自动化帐户与 Log Analytics 集成，可以直接从 Azure 门户取消链接帐户。 在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
+如果你决定不再想要将你的自动化帐户与 Log Analytics 工作区相集成，您可以取消链接你直接从 Azure 门户的帐户。 在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
 
 删除这些解决方案后，可以执行以下步骤取消链接自动化帐户。
 

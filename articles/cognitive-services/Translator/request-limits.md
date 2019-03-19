@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: f89e7e674efe3a823b7c969840772565650d8d07
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 97b0b6256b7aaf7b42565fe9453fb87a0c414569
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859464"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861564"
 ---
 # <a name="request-limits-for-translator-text"></a>文本翻译的请求限制
 
@@ -43,7 +43,7 @@ ms.locfileid: "55859464"
 
 ## <a name="latency"></a>Latency
 
-文本翻译的最大延迟为 13 秒。 此时你将收到结果或超时响应。 通常，将在 150 毫秒至 300 毫秒内返回响应。 响应时间将根据大小或请求和语言对而有所不同。
+文本翻译 API 具有最大延迟为 15 秒使用标准的模型。 使用自定义模型的转换具有 25 秒的最大延迟。 此时你将收到结果或超时响应。 通常，将在 150 毫秒至 300 毫秒内返回响应。 响应时间将因请求和语言对的大小。 如果未收到翻译或[错误响应](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)中该时间范围内，您应检查网络连接，然后重试。
 
 ## <a name="sentence-length-limits"></a>句子长度限制
 
