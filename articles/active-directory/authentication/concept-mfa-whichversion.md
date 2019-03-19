@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fb7785487fc79daca56e35ce0c6a19efd5b0605
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: edfc26355933db549b735c4baf9744744f46734c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195747"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870460"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>哪个版本的 Azure MFA 适合我的组织？
 
@@ -38,7 +38,7 @@ ms.locfileid: "56195747"
 | 应用库中的 SaaS 应用 |● |  |
 | 通过 Azure AD 应用代理发布的 Web 应用程序 |● |  |
 | 不是通过 Azure AD 应用代理发布的 IIS 应用程序 | |● |
-| VPN、RDG 等远程访问系统 | ● | ● |
+| 例如，VPN、 RDG 使用 NPS 扩展或现有的 NPS 服务器的远程访问 | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>用户位于何处
 

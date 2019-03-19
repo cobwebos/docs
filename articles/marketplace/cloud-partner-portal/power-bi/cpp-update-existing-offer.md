@@ -1,5 +1,5 @@
 ---
-title: 更新现有 Power BI 应用套餐 - Azure 市场 | Microsoft Docs
+title: 更新 Power BI 应用产品/服务的 Azure Marketplace |Microsoft Docs
 description: 在 Microsoft AppSource 市场上发布 Power BI 应用套餐后对其进行更新。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 documentationcenter: ''
@@ -14,69 +14,61 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 635e2e71bb952aaee761df6a1d5d87c46db531f6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: 953c53b4ef2244b3444abb745f52e125306468f2
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55665698"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807110"
 ---
-# <a name="update-an-existing-power-bi-app-offer"></a>更新现有 Power BI 应用套餐
+# <a name="update-a-power-bi-app-offer"></a>更新 Power BI 应用产品/服务
 
-本文从不同的方面指导你在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新 Power BI 应用套餐，然后重新发布该套餐。  你可能出于多种原因更新套餐，常见的原因包括：
+本文介绍如何更新在 Microsoft Power BI 应用产品/服务[云合作伙伴门户](https://cloudpartner.azure.com/)，然后重新发布产品/服务。 下面是一些常见的原因，若要更新产品/服务：
 
-- 更新 Power BI 中应用的内容，并从新打包的应用中获取新的安装 URL
-- 更新套餐的市场元数据：销售、市场营销或支持信息和资产
+- 若要更新 Power BI 中的应用程序的内容，并从新打包的应用程序获取安装 URL
+- 若要更新产品/服务的 Azure 应用商店元数据 （销售、 市场营销，或支持信息和资产）
  
-为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。
-
-
-## <a name="unpermitted-changes-to-offer"></a>不允许对套餐进行的更改
-
-Power BI 应用套餐在 AppSource 中上线后，无法修改该套餐的某些属性，主要包括“套餐 ID”和“发布者 ID”。
-
+使用门户的**比较**并**历史记录**像这样的功能，可跟踪的更改。
 
 ## <a name="common-update-operations"></a>常见更新操作
 
-可对 Power BI 应用套餐的各种特征进行更改，下面是一些常见的操作。
-
+在 AppSource 中发布产品/服务后，无法更改 Power BI 应用产品/服务的某些属性。 不允许的更改包括**产品/服务 ID**并**发布服务器 ID**。 但你仍可更改范围广泛的特征。 以下是一些常见的更改。
 
 ### <a name="update-app-content-in-power-bi"></a>更新 Power BI 中的应用内容
 
-我们经常会使用新内容、安全修补程序、其他功能等定期更新 Power BI 中的应用。 在这种情况下，需要按照以下步骤来更新新应用内容安装的 URL：
+Power BI 应用通常定期更新与新内容、 安全修补程序、 功能和等等。 应用更改时，通过执行以下步骤更新其安装 URL:
 
-1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
+1.  登录[云合作伙伴平台](https://cloudpartner.azure.com/)。
 2.  在“所有套餐”下，找到要更新的套餐。
-3.  在“技术信息”选项卡中，输入新的安装程序 URL。
-4.  单击“发布”，启动将新应用的版本发布到 AppSource 的工作流。
+3.  上**技术信息**选项卡上，输入新的安装 URL。
+4.  选择**发布**启动工作流以将新的应用程序版本发布到 AppSource。
 
 
-### <a name="update-offer-marketplace-metadata"></a>更新套餐市场元数据
+### <a name="update-the-offers-marketplace-metadata"></a>更新产品/服务的应用商店元数据
 
-使用以下步骤更新与套餐关联的市场元数据 — 公司名称、徽标等：
+产品/服务的应用商店元数据包括你的公司名称、 徽标和其他信息。 若要更新的元数据，请按照下列步骤：
 
-1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
+1.  登录[云合作伙伴平台](https://cloudpartner.azure.com/)。
 2.  在“所有套餐”下，找到要更新的套餐。
-3.  转到“店面详细信息”选项卡，然后按照 [Power BI 应用“店面详细信息”选项卡](./cpp-storefront-details-tab.md)中的说明进行元数据更改。
-4.  单击“发布”，启动发布更改的工作流。
+3.  上**店面详细信息**选项卡上，按照以下文章中的说明，更改元数据[Power BI 应用店面详细信息选项卡](./cpp-storefront-details-tab.md)。
+4.  选择“发布”，启动发布更改的工作流。
 
 
-## <a name="compare-feature"></a>“比较”功能
+## <a name="the-compare-feature"></a>比较功能
 
-对已发布的套餐进行更改时，可以使用“比较”功能来审核所做的更改。 若要使用此功能：
+更新已发布产品/服务，可以检查所做的更改。 若要使用**比较**功能：
 
-1.  在编辑过程中的任意时间点，单击套餐旁边的“比较”按钮。
+1.  在编辑过程中的任何点，选择产品/服务的**比较**按钮。
 
-    ![“比较”功能按钮](./media/compare-feature-button.png)
+    ![比较按钮](./media/compare-feature-button.png)
 
 2.  并列查看营销资产和元数据的版本。
 
 
 ## <a name="history-of-publishing-actions"></a>发布操作的历史记录
 
-若要查看任何历史发布活动，请单击云合作伙伴门户左侧导航菜单栏中的“历史记录”选项卡。 在此处可以查看 AppSource 套餐生存期内执行的带时间戳的操作。
-
+若要查看产品/服务的发布历史记录，在左侧和右侧的云合作伙伴门户上，打开**历史记录**选项卡。这里，您将看到你在 AppSource 上加盖时间戳操作的历史记录提供了。
 
 ## <a name="next-steps"></a>后续步骤
 
-应定期使用[云合作伙伴门户](https://cloudpartner.azure.com/#insights)的 [Seller Insights](../../cloud-partner-portal-orig/si-getting-started.md) 功能来提供有关市场客户和使用情况的见解。  
+在云合作伙伴门户中，定期使用[卖方 Insights](../../cloud-partner-portal-orig/si-getting-started.md)若要查找有关你的 Marketplace 客户和使用情况的有用信息。  

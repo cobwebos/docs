@@ -3,7 +3,7 @@ title: Azure AD v2.0 iOS 入门 | Microsoft Docs
 description: iOS (Swift) 应用程序如何通过 Azure Active Directory v2.0 终结点调用需访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: andret
+ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a10af1286dd571a4b1b10521d1558ce3ac043dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 372d55aaeb8c346019289db844890e64880dd886
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208395"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726757"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-ios-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-ios-setup.md)]

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 中的 B2B 协作用户声明映射 | Microsoft 文档
+title: B2B 协作用户声明映射-Azure Active Directory |Microsoft Docs
 description: 为 Azure Active Directory (Azure AD) B2B 用户自定义在 SAML 令牌中颁发的用户声明。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461476cea7b8551d5ae548ccd84a5333c21cf432
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 445d6c8b527b56f63a1156a39ac07393b4ffe115
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202566"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668541"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 中的 B2B 协作用户声明映射
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ed0912e8d4705b6cbefa9eb8f7a712a37d8b0be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8d2001e221ef9c02ee2ab80b647a9bafe6490432
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183169"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882138"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>教程：Azure Active Directory 与 TINFOIL SECURITY 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56183169"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 TINFOIL SECURITY 的集成，需要以下项：
 
@@ -186,7 +186,7 @@ ms.locfileid: "56183169"
 
 1. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
     
-    ![“用户和组”->“所有用户” ](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
+    ![“用户和组”->“所有用户”](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
 
 1. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
  

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: bf9e83a1dfed0aac7f48cd47dc12bf56c7cb1b64
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 47d2e051cf3eeebbfaea95cfc16f5077559e6847
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38481696"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807127"
 ---
 # <a name="about-azure-devtest-labs"></a>关于 Azure 开发测试实验室
 ## <a name="overview"></a>概述
@@ -44,6 +44,7 @@ Azure 开发测试实验室是一项可帮助开发人员和测试人员在 Azur
 
 ## <a name="integrates-with-your-existing-toolchain"></a>与现有工具链进行集成
 利用预先做好的插件或 API 直接从喜欢的持续集成 (CI) 工具、集成开发环境 (IDE) 或自动发布管道设置开发/测试环境。 还可以使用综合命令行工具。
+
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

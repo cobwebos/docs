@@ -8,21 +8,19 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: c55783e9b209a1280a21edca34b75e72481f4cb6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410109"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806979"
 ---
 #   <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
-整形程序技能可创建复杂类型，支持复合字段（也称为多部分字段）。 复杂类型字段包含多个部分，但在 Azure 搜索索引中将其视为单个项目。 搜索方案中有用的合并字段示例包括将姓和名合并成单个字段、将城市和州合并成单个字段、或者将姓名和出生日期合并成单个字段，从而建立唯一标识。
-
-借助整形程序技能，可实质上创建结构、定义该结构的成员名称，并为每个成员分配值。
+**整形程序**技能将多个输入合并到更高版本中扩充管道，可以引用的复杂类型。 借助整形程序技能，可实质上创建结构、定义该结构的成员名称，并为每个成员分配值。 合并字段搜索方案中有用的示例包括组合到单个结构、 城市和到单个结构或名称的状态和出生日期来唯一标识的单个结构的第一个和最后一个名称。
 
 默认情况下，此技术支持一个级别深度的对象。 对于更复杂的对象，可链接多个整形程序步骤。
 
@@ -58,7 +56,7 @@ Microsoft.Skills.Util.ShaperSkill
   "outputs": [
     {
       "name": "output",
-      "targetName": analyzedText"
+      "targetName": "analyzedText"
     }
   ]
 }
@@ -125,8 +123,8 @@ Microsoft.Skills.Util.ShaperSkill
     ],
     "outputs": [
         {
-            "output": "titlesAndChapters",
-            "targetName": "analyzedText"
+            "name": "output",
+            "targetName": "titlesAndChapters"
         }
     ]
 }

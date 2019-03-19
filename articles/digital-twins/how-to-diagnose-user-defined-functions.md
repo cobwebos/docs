@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: ebeed6d2a52937a6e80dfe28574ad854643fa7f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119199"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961408"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中调试用户定义的函数
 
@@ -29,10 +29,10 @@ ms.locfileid: "54119199"
 
 ### <a name="enable-log-analytics-for-your-instance"></a>为实例启用 Log Analytics
 
-Azure 数字孪生实例的日志和指标显示在 Azure Monitor 中。 本文档假设你已通过 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md)、通过 [Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md) 或通过 [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) 创建了 [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) 工作区。
+Azure 数字孪生实例的日志和指标显示在 Azure Monitor 中。 本文档假定已创建[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)工作区中的通过[Azure 门户](../azure-monitor/learn/quick-create-workspace.md)，通过[Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md)，或通过[PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md)。
 
 > [!NOTE]
-> 首次向 Azure Log Analytics 发送事件时，可能会出现 5 分钟的延迟。
+> 第一次将事件发送到 Azure Monitor 日志时，可能会遇到 5 分钟的延迟。
 
 若要为 Azure 数字孪生资源配置监视和日志记录，请阅读[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
 
@@ -43,11 +43,11 @@ Azure 数字孪生实例的日志和指标显示在 Azure Monitor 中。 本文�
 
 ### <a name="trace-sensor-telemetry"></a>跟踪传感器遥测数据
 
-若要跟踪传感器遥测数据，请验证为 Azure 数字孪生实例启用了诊断设置。 然后，确保选择所需的全部日志类别。 最后，确认将所需的日志发送到 Azure Log Analytics。
+若要跟踪传感器遥测数据，请验证为 Azure 数字孪生实例启用了诊断设置。 然后，确保选择所需的全部日志类别。 最后，确认所需的日志发送到 Azure Monitor 日志。
 
 要将传感器遥测数据消息与其各自的日志进行匹配，可以在要发送的事件数据上指定相关 ID。 为此，请将 `x-ms-client-request-id` 属性设置为 GUID。
 
-发送遥测数据之后, 打开 Azure Log Analytics 并使用集相关 ID 查询日志：
+发送遥测数据之后, 打开 log analytics 中使用的日志查询到相关 ID:
 
 ```Kusto
 AzureDiagnostics
@@ -58,7 +58,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | 已在事件数据中指定的相关 ID |
 
-如果为用户定义的函数启用了日志记录，这些日志将显示在 Azure Log Analytics 实例中，类别为 `UserDefinedFunction`。 若要检索这些日志，请在 Azure Log Analytics 中输入以下查询条件：
+如果为用户定义函数启用日志记录，这些日志显示在 log analytics 实例类别`UserDefinedFunction`。 若要检索它们，请在 log analytics 中输入以下查询条件：
 
 ```Kusto
 AzureDiagnostics

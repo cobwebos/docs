@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8bcb00029acbe8c64e29addbc9291a694f1de98b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 4aa18ae791e5fa573eae76d5bdb9c45b9311e6b5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267711"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888077"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
 *依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以度量应用程序等待依赖项的时长以及依赖项调用失败的频率。 可以调查特定的调用，并将其与请求和异常相关联。
@@ -50,7 +50,7 @@ ms.locfileid: "56267711"
 
 ## <a name="where-to-find-dependency-data"></a>在何处查找依赖项数据
 * [应用程序地图](#application-map)直观显示应用与相邻组件之间的依赖关系。
-* [性能、浏览器和失败边栏选项卡](#performance-and-blades)显示服务器依赖性数据。
+* [性能、浏览器和失败边栏选项卡](#performance-and-failure-blades)显示服务器依赖性数据。
 * [浏览器边栏选项卡](#ajax-calls)显示从用户浏览器发出的 AJAX 调用。
 * 单击缓慢或失败的请求可以检查其依赖性调用。
 * [Analytics](#analytics) 可用于查询依赖性数据。

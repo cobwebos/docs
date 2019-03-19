@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cd6927cccfa85c8409d612a40a4e708e81af746a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413543"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875780"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>使用 Azure Maps 搜索服务查找地址
 
 Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点、兴趣点、商家列表和其他地理信息。 该服务将纬度/经度分配到特定的地址、十字路口、地理特征或兴趣点 (POI)。 在诸如路线和交通流之类的其他 Maps 服务中，可将搜索返回的纬度和经度值用作参数。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要调用任何 Maps 服务 API，需要具有 Maps 帐户和密钥。 有关创建帐户和检索密钥的信息，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。
 
@@ -37,7 +37,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。
 
-    ![模糊搜索 ](./media/how-to-search-for-address/fuzzy_search_url.png)
+    ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_url.png)
 
     | 参数 | 建议的值 |
     |---------------|------------------------------------------------|
@@ -49,7 +49,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：
 
-    ![模糊搜索 ](./media/how-to-search-for-address/fuzzy_search_params.png)
+    ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_params.png)
 
     | 密钥 | 值 |
     |------------------|-------------------------|
@@ -75,7 +75,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
   
 6. 在“参数”中，输入以下键值对并单击“发送”：
 
-    ![模糊搜索 ](./media/how-to-search-for-address/fuzzy_search_latlon.png)
+    ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
     | 密钥 | 值 |
     |-----|------------|
@@ -89,7 +89,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“地址搜索”。
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL，并选择授权协议（如果有）。
 
-    ![地址搜索 ](./media/how-to-search-for-address/address_search_url.png)
+    ![地址搜索](./media/how-to-search-for-address/address_search_url.png)
   
     | 参数 | 建议的值 |
     |---------------|------------------------------------------------|
@@ -99,7 +99,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：
   
-    ![地址搜索 ](./media/how-to-search-for-address/address_search_params.png)
+    ![地址搜索](./media/how-to-search-for-address/address_search_params.png)
   
     | 密钥 | 值 |
     |------------------|-------------------------|
@@ -130,7 +130,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。
   
-    ![反向地址搜索 URL ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![反向地址搜索 URL](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | 参数 | 建议的值 |
     |---------------|------------------------------------------------|
@@ -140,7 +140,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
   
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：
   
-    ![反向地址搜索参数 ](./media/how-to-search-for-address/reverse_address_search_params.png)
+    ![反向地址搜索参数](./media/how-to-search-for-address/reverse_address_search_params.png)
   
     | 密钥 | 值 |
     |------------------|-------------------------|
@@ -190,7 +190,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。
   
-    ![反向地址十字路口搜索 ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![反向地址十字路口搜索](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | 参数 | 建议的值 |
     |---------------|------------------------------------------------|

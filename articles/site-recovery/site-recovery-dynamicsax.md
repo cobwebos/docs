@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: c2151be1644cde0e737be7f026bdf63cef0b3686
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221957"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879775"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复   
 
@@ -27,7 +27,7 @@ ms.locfileid: "55221957"
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 使用 Site Recovery 为 Dynamics AX 应用程序实现灾难恢复需以下先决条件：
 
@@ -92,7 +92,7 @@ ms.locfileid: "55221957"
 
 * 如果使用静态 IP，请在“目标 IP”文本框中指定希望 VM 采用的 IP。
 
-    ![网络设置 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
+    ![网络设置](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5.创建恢复计划

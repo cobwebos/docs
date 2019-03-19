@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: c68d9c3d40ffa3d4a5a5ae635fbc0ea0a010239c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874730"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675103"
 ---
 # <a name="translator-speech-api"></a>语音翻译 API
 
@@ -76,8 +77,8 @@ GET /speech/translate 建立用于语音翻译的会话
 |8 - 11|"WAVE"|
 |12 - 15|"fmt"|
 |16 - 19|16|
-|20 - 21|1|
-|22 - 23|1|
+|20 - 21|第|
+|22 - 23|第|
 |24 - 27|16000|
 |28 - 31|32000|
 |32 - 33|2|
@@ -90,7 +91,7 @@ GET /speech/translate 建立用于语音翻译的会话
 发送 WAV (RIFF) 标头以后，客户端发送音频数据区块。 客户端通常会流式传输固定大小的区块，这里的固定大小代表固定时长（例如，一次流式传输 100 毫秒的音频）。
 
 ### <a name="signal-the-end-of-the-utterance"></a>陈述结束时发出信号
-发送音频时，语音翻译 API 将返回音频流的脚本和翻译。 仅在陈述结束时，才会向你返回最终脚本、最终翻译和翻译后的音频。 在某些情况下，你可能想要强制结束陈述。 请发送 2.5 秒的无声状态以强制结束陈述。 
+发送音频时，语音翻译 API 将返回音频流的脚本和翻译。 仅在陈述结束时，才会向你返回最终脚本、最终翻译和翻译后的音频。 在某些情况下，你可能想要强制结束陈述。 请发送 2.5 秒的无声状态以强制结束陈述。
 
 ### <a name="final-result"></a>最终结果
 表述结束时会生成最终的语音识别结果。 结果使用类型为“文本”的 WebSocket 消息从服务传输到客户端。 消息内容是使用以下属性对对象进行的 JSON 序列化：
@@ -112,7 +113,7 @@ GET /speech/translate 建立用于语音翻译的会话
 {
   type: "final"
   id: "23",
-  recognition: "what was said", 
+  recognition: "what was said",
   translation: "translation of what was said",
   audioStreamPosition: 319680,
   audioSizeBytes: 35840,
@@ -143,7 +144,7 @@ GET /speech/translate 建立用于语音翻译的会话
 {
   type: "partial"
   id: "23.2",
-  recognition: "what was", 
+  recognition: "what was",
   translation: "translation of what was",
   audioStreamPosition: 319680,
   audioSizeBytes: 25840,
@@ -165,7 +166,7 @@ GET /speech/translate 建立用于语音翻译的会话
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|描述|参数类型|数据类型|
 |:---|:---|:---|:---|:---|
 |api-version|1.0|客户端所请求的 API 的版本。 允许值包括：`1.0`。|query   |字符串|
 |from|(empty)   |指定传入语音的语言。 值为一种语言标识符，来自语言 API 的响应中的 `speech` 范围。|query|字符串|
@@ -193,46 +194,3 @@ GET /speech/translate 建立用于语音翻译的会话
 |401    |未授权。 确保凭据已设置并有效，同时你的 Azure 数据市场订阅处于正常状态并有余额可用。|||
 |500    |发生错误。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|||
 |503    |服务器暂不可用。 请重试请求。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|||
-
-    
-
-
-    
-
-
-
-
-
-    
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-            
-
-
-
-
-        
-
-
-
-
-
-
-
-
-

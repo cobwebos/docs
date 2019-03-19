@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: d48a1a1c9e220690649bbf60e9909a38d575c156
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559070"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651952"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>保护 Azure Kubernetes 服务 (AKS) 中的 Pod 的最佳做法
 
@@ -70,7 +70,7 @@ spec:
 
 要避免凭据在应用程序代码中暴露，请勿使用固定或共享凭据。 不应直接在代码中包含凭证或密钥。 如果凭据暴露，则需更新并重新部署应用程序。 更好的做法是，为 Pod 提供自己的标识，让它自行进行身份验证，或自动从数字保管库中检索凭据。
 
-AKS 包括两种自动验证 Pod 或从数字保管卡中请求凭据和密钥的方法：
+以下[关联的 AKS 开放源代码项目][aks-associated-projects]可让你自动验证 Pod 或请求凭据和数字保管库中的密钥：
 
 * Azure 资源的托管标识，以及
 * Azure Key Vault FlexVol 驱动程序
@@ -83,7 +83,7 @@ Azure 资源的托管标识允许 Pod 针对支持的 Azure 服务（如存储�
 
 使用托管标识，应用程序代码无需包含凭据即可访问 Azure 存储等服务。 由于每个 Pod 都使用自己的标识进行身份验证，因此可审核并评价访问权限。 如果应用程序与其他 Azure 服务连接，请使用托管标识来限制凭据重用，避免凭据暴露。
 
-有关 Pod 标识的详细信息，请参阅[配置 AKS 群集以使用 Pod 托管标识][aad-pod-identity]和[在代码中分配和使用 Pod 托管标识][aad-pod-identity]。
+有关 Pod 标识的详细信息，请参阅[配置 AKS 群集以通过应用程序使用 Pod 托管标识][aad-pod-identity]
 
 ### <a name="use-azure-key-vault-with-flexvol"></a>将 Azure Key Vault 与 FlexVol 一起使用
 
@@ -107,6 +107,7 @@ Azure 资源的托管标识允许 Pod 针对支持的 Azure 服务（如存储�
 [aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
+[aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects
 
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e9c1b2513f769b065883dc98b649a68d565ccc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 7d8259cdb61d2481805dd2e07c11b539e057215c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456480"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817059"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>将 Azure AD 日志与 Azure Monitor 日志集成（预览版）
 
@@ -38,6 +38,8 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 本文介绍如何将 Azure Active Directory (Azure AD) 日志与 Azure Monitor 集成。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="supported-reports"></a>支持的报表
 
 可以将审核活动日志和登录活动日志路由到 Azure Monitor 日志以供进一步分析。 
@@ -49,7 +51,7 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 若要使用此功能，需满足以下条件：
 

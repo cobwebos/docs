@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 98ab9b25c59af194a1a81c600c373b2180272e10
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106947"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882682"
 ---
 # <a name="handling-review-feedback"></a>处理评审反馈
 
@@ -58,14 +58,14 @@ ms.locfileid: "56106947"
 
 1. 在“发布步骤”窗体中的“Microsoft 评审”部分，单击某个 PR 链接以启动浏览器，并导航到此 PR 的“概述”页（主页）。  下图描绘了 Contoso 示例应用套餐的严重问题主页示例。  此页包含有关在 Azure 应用中找到的评审问题的有用摘要信息。  
 
-    [ ![拉取请求主页](./media/pr-home-page-thumb.png) ](./media/pr-home-page.png)
+    [![拉取请求主页](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> 单击图像展开内容。
     
 2. （可选）在窗口右侧的“策略”部分，单击问题消息（在此示例为“策略验证失败”）以调查该问题的低级别详细信息，包括关联的日志文件。  错误通常显示在日志文件的底部。
 
 3. 在主页左侧的菜单中，选择“文件”以显示构成此套餐的技术资产的列表文件。  Microsoft 评审者应已添加了备注来描述所发现的严重问题。  在以下示例中发现了两个问题。 
 
-    [ ![拉取请求主页](./media/pr-files-page-thumb.png) ](./media/pr-files-page.png)
+    [![拉取请求主页](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> 单击图像展开内容。
 
 4. 单击左侧树中的每个备注节点导航到周围代码上下文中的备注。  在团队项目中修复源代码，以更正备注中所述的问题。

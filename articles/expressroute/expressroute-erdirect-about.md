@@ -1,21 +1,21 @@
 ---
 title: 关于 ExpressRoute Direct - Azure | Microsoft Docs
-description: 本页概述了 ExpressRoute Direct（预览版）
+description: 本页提供 ExpressRoute 直接的概述
 services: expressroute
-author: mialdrid
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 3124e98dd035080c2989849232b978c5d4a563ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100730"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881594"
 ---
-# <a name="about-expressroute-direct-preview"></a>关于 ExpressRoute Direct（预览版）
+# <a name="about-expressroute-direct"></a>关于 ExpressRoute Direct
 
 使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 ExpressRoute Direct 提供双 100 Gbps 连接，支持大规模的主动/主动连接。
 
@@ -25,14 +25,9 @@ ExpressRoute Direct 提供的主要功能包括但不限于：
 * 针对受监管和需要专用和独立连接的行业的物理隔离，例如：银行、政府和零售
 * 根据业务部门，细化控制线路分布
 
-> [!IMPORTANT]
-> ExpressRoute Direct 目前为预览版。
->
-> 此公共预览版在提供时没有附带服务级别协议，不应该用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+## <a name="onboard-to-expressroute-direct"></a>载入到 ExpressRoute 直接
 
-## <a name="enroll-in-the-preview"></a>在预览版中注册
-
-在使用 ExpressRoute Direct 之前，必须先在预览版中注册订阅。 若要注册，请使用你的订阅 ID 向 <ExpressRouteDirect@microsoft.com> 发送一封电子邮件，其中包括以下详细信息：
+使用 ExpressRoute 直接之前, 必须先注册你的订阅。 若要注册，请使用你的订阅 ID 向 <ExpressRouteDirect@microsoft.com> 发送一封电子邮件，其中包括以下详细信息：
 
 * 需通过 **ExpressRoute Direct** 完成的方案
 * 位置首选项 - 请参阅[合作伙伴和对等互连位置](expressroute-locations-providers.md)，获取包含所有位置的完整列表
@@ -70,11 +65,11 @@ ExpressRoute Direct 同时支持 QinQ 和 Dot1Q VLAN 标记。
 
 ## <a name="workflow"></a>工作流
 
-[ ![工作流](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[![workflow](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 
-ExpressRoute Direct 提供相同的企业级 SLA，并且可以通过主动/主动冗余连接连接到 Microsoft 全球网络中。 ExpressRoute 基础设施是冗余的，连接到 Microsoft 全球网络的功能也是冗余的，并且具有多样性，可以根据客户需求进行相应的缩放。 预览版没有 SLA，只能用于非生产性工作负荷。
+ExpressRoute Direct 提供相同的企业级 SLA，并且可以通过主动/主动冗余连接连接到 Microsoft 全球网络中。 ExpressRoute 基础设施是冗余的，连接到 Microsoft 全球网络的功能也是冗余的，并且具有多样性，可以根据客户需求进行相应的缩放。 
 
 ## <a name="next-steps"></a>后续步骤
 

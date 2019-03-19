@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/14/2019
-ms.openlocfilehash: 76fe764d828a7fa6e4ebb015f98b9af485d5df5f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.date: 02/25/2019
+ms.openlocfilehash: 2c95ec4d88e55af0becc73719bcc6126501267db
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567074"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866821"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL 数据库 - 针对表审核的下层客户端支持和 IP 终结点更改
 
@@ -28,6 +28,7 @@ ms.locfileid: "55567074"
 对于支持 TDS 重定向的 SQL 客户端，可以自动使用[数据库审核](sql-database-auditing.md)。 请注意，使用 Blob 审核方法时，重定向不适用。
 
 ## <a id="subheading-1"></a>下层客户端支持
+
 任何实现了 TDS 7.4 的客户端同样应当支持重定向。 例外情况包括不完全支持重定向功能的 JDBC 4.0 以及未实现重定向的 Tedious（适用于 Node.JS）。
 
 对于“下层客户端”，即支持 TDS 7.3 版和更低版本的客户端 — 应修改连接字符串中的服务器 FQDN：
@@ -46,6 +47,7 @@ ms.locfileid: "55567074"
 **注释：** 上面的服务器 FQDN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。
 
 ## <a id="subheading-2"></a>启用审核时的 IP 终结点变化
+
 请注意，启用表审核时，数据库的 IP 终结点将发生更改。 如果有严格的防火墙设置，请相应地更新这些防火墙设置。
 
 新的数据库 IP 终结点将取决于数据库区域：
@@ -78,5 +80,4 @@ ms.locfileid: "55567074"
 | 美国中西部 |52.161.29.186, 52.161.27.213 |
 | 加拿大中部 |13.88.248.106, 13.88.248.110 |
 | 加拿大东部 |40.86.227.82, 40.86.225.194 |
-| 英国北部 |13.87.101.18, 13.87.100.232 |
-| 英国南部 2 |13.87.32.202, 13.87.32.226 |
+| 英国南部 |13.87.32.202, 13.87.32.226 |

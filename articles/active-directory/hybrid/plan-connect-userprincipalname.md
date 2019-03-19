@@ -7,15 +7,15 @@ ms.author: billmath
 ms.date: 06/26/2018
 ms.topic: conceptual
 ms.workload: identity
-ms.service: active-Directory
+ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2040248bfd9ac2defde9bfa90a6b876b133aec64
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185530"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672842"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填充
 
@@ -25,7 +25,7 @@ UserPrincipalName 属性值是用户帐户的 Azure AD 用户名。
 ## <a name="upn-terminology"></a>UPN 术语
 本文使用了以下术语：
 
-|术语|说明|
+|术语|描述|
 |-----|-----|
 |初始域|Azure AD 租户中的默认域 (onmicrosoft.com)。 例如 contoso.onmicrosoft.com。|
 |Microsoft 联机电子邮件路由地址 (MOERA)|Azure AD 基于 Azure AD MailNickName 属性和 &lt;MailNickName&gt;&#64;&lt;初始域&gt; 形式的 Azure AD 初始域计算 MOERA。|

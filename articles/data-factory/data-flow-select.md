@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 6b33568354653e2b222dd99d7a933de252646f9e
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: bc83b41067d587adce41658a2c4b3d68969750ba
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270885"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729332"
 ---
 # <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Azure 数据工厂映射数据流选择转换
 

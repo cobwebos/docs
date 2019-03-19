@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
-ms.openlocfilehash: b9524f7aff7ae9de37835985787b5d4d9c3cf9b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: c45061db77c21b82744f69f00265870d5e1a8d00
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478230"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883835"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
 ## <a name="overview"></a>概述
@@ -193,7 +193,7 @@ catch (StorageException ex)
 
 * [Specifying Conditional Headers for Blob Service Operations](https://msdn.microsoft.com/library/azure/dd179371.aspx)（为 Blob 服务操作指定条件标头）
 * [Lease Container](https://msdn.microsoft.com/library/azure/jj159103.aspx)（租赁容器）
-* [Lease Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)（租用 Blob）
+* [租赁 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>在表服务中管理并发
 在处理实体时，表服务使用乐观并发检查作为默认行为，而 Blob 服务不同，必须明确选择执行乐观并发检查。 表服务与 Blob 服务之间的另一个区别在于，使用表服务，只能管理实体的并发行为，而使用 Blob 服务，既可以管理容器的并发，又可以管理 Blob 的并发。  
@@ -277,7 +277,7 @@ customer.ETag = "*";
 
 对于本博客中引用的完整示例应用程序：  
 
-* [Managing Concurrency using Azure Storage - Sample Application](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)（使用 Azure 存储管理并发 - 示例应用程序）  
+* [使用 Azure 存储管理并发 - 示例应用程序](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
 
 有关 Azure 存储的详细信息，请参阅：  
 

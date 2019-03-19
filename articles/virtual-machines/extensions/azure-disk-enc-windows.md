@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 355fa90113e931fa3e21df1ccca5736622475bb3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: 46699fb1add42d23a11234d5cd05e4a9627a91fd
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810374"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983457"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>适用于 Windows 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -27,7 +27,7 @@ ms.locfileid: "54810374"
 
 Azure 磁盘加密利用 BitLocker 在运行 Windows 的 Azure 虚拟机上提供完全磁盘加密。  此解决方案与 Azure Key Vault 集成，以管理 Key Vault 订阅中的磁盘加密密钥和机密。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 有关先决条件的完整列表，请参阅 [Azure 磁盘加密先决条件](
 ../../security/azure-security-disk-encryption-prerequisites.md)。
@@ -58,8 +58,14 @@ Azure 磁盘加密需要 Internet 连接才能访问 Active Directory、Key Vaul
       "AADClientID": "[aadClientID]",
       "EncryptionOperation": "[encryptionOperation]",
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KekVaultResourceId": "[keyVaultResourceID]",
+      
       "KeyVaultURL": "[keyVaultURL]",
+          "KeyVaultResourceId": "[keyVaultResourceID]",
+
+      "EncryptionOperation": "[encryptionOperation]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     },
@@ -76,13 +82,15 @@ Azure 磁盘加密需要 Internet 连接才能访问 Active Directory、Key Vaul
 | apiVersion | 2015-06-15 | 日期 |
 | 发布者 | Microsoft.Azure.Security | 字符串 |
 | type | AzureDiskEncryptionForWindows| 字符串 |
-| typeHandlerVersion | 1.0, 2.2 (VMSS) | int |
+| typeHandlerVersion | 1.0、 1.1，2.2 (VMSS) | int |
 | （可选）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | （可选）AADClientSecret | password | 字符串 |
 | （可选）AADClientCertificate | thumbprint | 字符串 |
 | EncryptionOperation | EnableEncryption | 字符串 | 
-| KeyEncryptionAlgorithm | RSA-OAEP | 字符串 |
+| KeyEncryptionAlgorithm | RSA-OAEP, RSA1_5 | 字符串 |
 | KeyEncryptionKeyURL | url | 字符串 |
+| KeyVaultResourceId | 资源 uri | 字符串 |
+| KekVaultResourceId | 资源 uri | 字符串 |
 | KeyVaultURL | url | 字符串 |
 | SequenceVersion | uniqueidentifier | 字符串 |
 | VolumeType | OS, Data, All | 字符串 |

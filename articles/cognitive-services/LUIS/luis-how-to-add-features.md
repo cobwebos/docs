@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: f3376b8077302eb6bd9a96710f92d692b641cac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866774"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874879"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>使用短语列表来增强字词列表的信号
 
@@ -44,7 +44,7 @@ LUIS 允许每个应用最多有 10 个短语列表。
 
 5. 如果添加的短语列表值是可交换使用的替代值，则单击“这些值可以交换”。
 
-    ![短语列表建议的值 - 选择可互换框 ](./media/luis-add-features/interchangeable.png)
+    ![短语列表建议的值 - 选择可互换框](./media/luis-add-features/interchangeable.png)
 
 6. 单击“ **保存**”。 将“城市”短语列表添加到“短语列表”页。
 

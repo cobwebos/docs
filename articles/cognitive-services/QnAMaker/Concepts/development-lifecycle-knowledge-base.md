@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: f0b2e1afdc42d8aaa0ab8d3af76f51fb6ded24e0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: bacfb5fed4d72a7be2239ba97a68f15766b3ff59
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857760"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650439"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知识库生命周期
 QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。 
@@ -27,9 +27,15 @@ QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查�
 QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供匹配度最高的答案。 创建知识库是向问题、答案和相关元数据设置内容存储库的一次性操作。 可以通过提取预先存在的内容（例如常见问题解答页面、产品手册或结构化问-答对）创建知识库。 了解如何[创建知识库](../How-To/create-knowledge-base.md)。
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>测试和更新知识库
-知识库只要填充了内容（无论是以编辑方式填充还是通过自动提取填充），就可以用于测试。 若要通过“测试”面板进行测试，请输入常见的用户查询，然后验证是否返回了预期的响应并具备足够的置信度分数。 可以添加替代问题来改善置信度分数较低的情况。 还可以在查询返回默认响应“未在知识库中找到匹配内容”时，添加新的答案。 测试更新这一紧凑周期会持续至得到满意的结果为止。 了解如何[测试知识库](../How-To/test-knowledge-base.md)。
 
-对于大型知识库，可通过 generateAnswer API 自动进行测试工作。 
+知识库只要填充了内容（无论是以编辑方式填充还是通过自动提取填充），就可以用于测试。 交互式测试可以在通过 QnA Maker 门户完成**测试**通过输入常见用户查询并验证响应返回正确的响应和足够的置信度得分的面板。 
+
+* **若要解决低置信度得分**： 添加备用的问题。 
+* **查询错误地返回[默认响应](confidence-score.md#change-default-answer)**： 添加新的答案正确的问题。 
+
+测试更新这一紧凑周期会持续至得到满意的结果为止。 了解如何[测试知识库](../How-To/test-knowledge-base.md)。
+
+对于大型的知识库，使用自动化与测试[generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api)并`isTest=true`查询字符串参数的查询`test`而不是已发布的知识库的知识库。 
 
 ## <a name="publish-the-knowledge-base"></a>发布知识库
 完成知识库的测试后，即可发布此知识库。 发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。

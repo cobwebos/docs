@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 7a3468d9a0d128bd51ae742189e60bb8e2af6c0e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.openlocfilehash: 96d88fafd6824ed85f1d91bab59374b3490a55b2
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50128745"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736492"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure 函数事件网格触发器本地调试
 
 本文演示如何调试一个用于处理存储帐户所引发 Azure 事件网格事件的本地函数。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 创建或使用现有的函数应用
 - 创建或使用现有的存储帐户
@@ -62,7 +62,7 @@ ngrok http -host-header=localhost 7071
 
 复制运行 *ngrok* 时生成的 **HTTPS** URL。 配置事件网格事件终结点时将使用此值。
 
- ## <a name="add-a-storage-event"></a>添加存储事件
+## <a name="add-a-storage-event"></a>添加存储事件
 
 打开 Azure 门户并导航到存储帐户，然后单击“事件”选项。
 

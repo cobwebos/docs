@@ -1,32 +1,19 @@
 ---
-title: 自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure CLI | Microsoft Docs
+title: 自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure CLI
 description: 本文将介绍如何使用 Azure CLI 自定义应用程序网关的 Web 应用程序防火墙规则。
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: 95eb0ef48f3e0cb6e835dc0582cc652f06315d44
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 5e364c597b8c524e95297f279003462f2d16abe1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992851"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726255"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>通过 Azure CLI 自定义 Web 应用程序防火墙规则
-
-> [!div class="op_single_selector"]
-> * [Azure 门户](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
 Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 这些保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 某些规则可能会导致误报，并会阻止实际流量。 出于此原因，应用程序网关提供了自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请参阅 [Web 应用程序防火墙 CRS 规则组和规则列表](application-gateway-crs-rulegroups-rules.md)。
 
@@ -133,6 +120,19 @@ az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP
 ```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
+
+## <a name="mandatory-rules"></a>强制性规则
+
+以下列表包含导致 WAF 在防护模式下阻止请求的条件（在检测模式下，它们作为异常记录）。 无法配置或禁用这些规则：
+
+* 除非关闭正文检查（XML、JSON、表单数据），否则无法分析请求正文会导致请求被阻止
+* 请求正文（不带文件）数据长度大于配置的限制
+* 请求正文（包括文件）大于限制
+* WAF 引擎发生内部错误
+
+CRS 3.x 特定：
+
+* 入站异常分数超出阈值
 
 ## <a name="next-steps"></a>后续步骤
 

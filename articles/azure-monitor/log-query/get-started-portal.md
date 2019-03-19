@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor Log Analytics 入门 | Microsoft Docs
+title: 开始使用 Azure 监视器 Log Analytics |Microsoft Docs
 description: 本文提供有关在 Azure 门户中使用 Log Analytics 编写查询的教程。
 services: log-analytics
 author: bwren
@@ -8,18 +8,18 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 2adb23b63c3a8be56dc55293c7bb06534d9305c4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: ec6f3884504c94b7669df21882aeb2a1eb9d7220
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242101"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750576"
 ---
-# <a name="get-started-with-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics 入门
+# <a name="get-started-with-azure-monitor-log-analytics"></a>开始使用 Azure 监视器 Log Analytics
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-在本教程中，你将了解如何使用 Azure 门户中的 Azure Monitor Log Analytics 来编写 Azure Monitor 日志查询。 具体内容包括：
+在本教程中，您将学习如何在 Azure 门户中使用 Azure 监视器 Log Analytics 编写 Azure Monitor 日志查询。 具体内容包括：
 
 - 编写简单的查询
 - 了解数据的架构
@@ -30,8 +30,8 @@ ms.locfileid: "56242101"
 - 导出和共享查询
 
 
-## <a name="meet-log-analytics"></a>初识 Log Analytics
-Log Analytics 是用来编写和执行 Azure Monitor 日志查询的 Web 工具。 可以通过在 Azure Monitor 菜单中选择“日志”来将其打开。 它将启动并显示一个新的空白查询。
+## <a name="meet-log-analytics"></a>满足日志分析
+Log Analytics 是一种用于编写和执行 Azure Monitor 日志查询的 web 工具。 可以通过在 Azure Monitor 菜单中选择“日志”来将其打开。 它将启动并显示一个新的空白查询。
 
 ![主页](media/get-started-portal/homepage.png)
 
@@ -78,7 +78,7 @@ search in (Event) "error"
 Event
 ```
 
-Log Analytics 会按以下依据自动限定结果的范围：
+日志分析自动范围的结果：
 
 - 时间范围：默认情况下，查询限制为过去 24 小时。
 - 结果数：结果数限制为最多 10,000 条记录。
@@ -116,7 +116,7 @@ Log Analytics 会按以下依据自动限定结果的范围：
 
 
 ## <a name="select-a-time-range"></a>选择时间范围
-默认情况下，Log Analytics 应用“过去 24 小时”时间范围。 若要使用不同的范围，请通过时间选取器选择另一个值，然后单击“运行”。 除预设值以外，还可以使用“自定义时间范围”选项来选择查询的绝对范围。
+默认情况下，Log Analytics 适用_过去 24 小时内_时间范围。 若要使用不同的范围，请通过时间选取器选择另一个值，然后单击“运行”。 除预设值以外，还可以使用“自定义时间范围”选项来选择查询的绝对范围。
 
 ![时间选取器](media/get-started-portal/time-picker.png)
 
@@ -178,7 +178,7 @@ Log Analytics 查询始终保存到选定的工作区中，并与该工作区的
 ![查询资源管理器](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>作为链接导出和共享
-Log Analytics 支持多种导出方法：
+Log Analytics 支持多个导出的方法：
 
 - Excel：将结果保存为 CSV 文件。
 - Power BI：将结果导出到 Power BI。 有关详细信息，请参阅[将 Azure Monitor 日志数据导入到 Power BI 中](../../azure-monitor/platform/powerbi.md)。

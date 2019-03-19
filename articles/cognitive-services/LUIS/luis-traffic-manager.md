@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 89778375c6362007a81eab72663f56492f4fe206
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: a71b09ba8b3e7fa7299c34c3cdc64503ae4e9857
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997900"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736543"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>使用 Microsoft Azure 流量管理器管理密钥之间的终结点配额
 语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序。 
@@ -25,20 +25,22 @@ ms.locfileid: "55997900"
 
 本文介绍如何使用 Azure [流量管理器][traffic-manager-marketing]管理密钥之间的流量。 必须具有已训练和已发布的 LUIS 应用。 如果还没有，请按照预生成的域[快速入门](luis-get-started-create-app.md)操作。 
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="connect-to-powershell-in-the-azure-portal"></a>在 Azure 门户中连接到 PowerShell
 在 [Azure][azure-portal] 门户中，打开 PowerShell 窗口。 PowerShell 窗口的图标是顶部导航栏中的“>_”。 从门户中使用 PowerShell，即表示已获得最新 PowerShell 版本并且通过了身份验证。 门户中的 PowerShell 需要 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户。 
 
 ![打开 Powershell 窗口的 Azure 门户的屏幕截图](./media/traffic-manager/azure-portal-powershell.png)
 
-以下各节使用[流量管理器 PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/?view=azurermps-6.2.0#traffic_manager)。
+以下各节使用[流量管理器 PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager)。
 
 ## <a name="create-azure-resource-group-with-powershell"></a>使用 PowerShell 创建 Azure 资源组
 创建 Azure 资源前，请创建包含所有资源的资源组。 将资源组命名为 `luis-traffic-manager`，并使用区域 `West US`。 资源组的区域可存储有关组的元数据。 如果它们位于另一区域，则不会拖慢资源。 
 
-使用 [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.2.0) cmdlet 创建资源组：
+创建与资源组**[新建 AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)**  cmdlet:
 
 ```powerShell
-New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
+New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 ```
 
 ## <a name="create-luis-keys-to-increase-total-endpoint-quota"></a>创建 LUIS 密钥以增加总终结点配额
@@ -66,12 +68,12 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 ### <a name="create-the-east-us-traffic-manager-profile-with-powershell"></a>使用 PowerShell 创建美国东部流量管理器配置文件
 若要创建美国东部流量管理器配置文件，其步骤如下：创建配置文件、添加终结点，然后设置终结点。 流量管理器配置文件可具有多个终结点，但每个终结点的验证路径相同。 由于东部和西部订阅的 LUIS 终结点 URL 因区域和终结点密钥而异，因此每个 LUIS 终结点必须是配置文件中的单个终结点。 
 
-1. 使用 [New-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerprofile?view=azurermps-6.2.0) cmdlet 创建配置文件
+1. 创建配置文件与**[新建 AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile)**  cmdlet
 
     使用以下 cmdlet 创建配置文件。 请确保更改 `appIdLuis` 和 `subscriptionKeyLuis`。 subscriptionKey 用于美国东部 LUIS 密钥。 如果路径（包括 LUIS 应用 ID 和终结点密钥）不正确，则流量管理器轮询的状态为 `degraded`，因为流量管理无法成功请求 LUIS 终结点。 请确保 `q` 的值为 `traffic-manager-east`，以便在 LUIS 终结点日志中查看此值。
 
     ```powerShell
-    $eastprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-eastus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-eastus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appID>?subscription-key=<subscriptionKey>&q=traffic-manager-east"
+    $eastprofile = New-AzTrafficManagerProfile -Name luis-profile-eastus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-eastus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appID>?subscription-key=<subscriptionKey>&q=traffic-manager-east"
     ```
     
     此表介绍了 cmdlet 中的每个变量：
@@ -88,10 +90,10 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
     
     成功请求没有响应。
 
-2. 使用 [Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/add-azurermtrafficmanagerendpointconfig?view=azurermps-6.2.0) cmdlet 添加美国东部终结点
+2. 添加美国东部终结点**[添加 AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig)**  cmdlet
 
     ```powerShell
-    Add-AzureRmTrafficManagerEndpointConfig -EndpointName luis-east-endpoint -TrafficManagerProfile $eastprofile -Type ExternalEndpoints -Target eastus.api.cognitive.microsoft.com -EndpointLocation "eastus" -EndpointStatus Enabled
+    Add-AzTrafficManagerEndpointConfig -EndpointName luis-east-endpoint -TrafficManagerProfile $eastprofile -Type ExternalEndpoints -Target eastus.api.cognitive.microsoft.com -EndpointLocation "eastus" -EndpointStatus Enabled
     ```
     此表介绍了 cmdlet 中的每个变量：
 
@@ -123,10 +125,10 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
     Endpoints                        : {luis-east-endpoint}
     ```
 
-3. 使用 [Set-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/set-azurermtrafficmanagerprofile?view=azurermps-6.2.0) cmdlet 设置美国东部终结点
+3. 设置与美国东部终结点**[集 AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile)**  cmdlet
 
     ```powerShell
-    Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $eastprofile
+    Set-AzTrafficManagerProfile -TrafficManagerProfile $eastprofile
     ```
 
     成功响应与步骤 2 的响应相同。
@@ -134,12 +136,12 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 ### <a name="create-the-west-us-traffic-manager-profile-with-powershell"></a>使用 PowerShell 创建美国西部流量管理器配置文件
 若要创建美国西部流量管理器配置文件，请按照相同的步骤操作：创建配置文件、添加终结点，然后设置终结点。
 
-1. 使用 [New-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/New-AzureRmTrafficManagerProfile?view=azurermps-6.2.0) cmdlet 创建配置文件
+1. 创建配置文件与**[新建 AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)**  cmdlet
 
     使用以下 cmdlet 创建配置文件。 请确保更改 `appIdLuis` 和 `subscriptionKeyLuis`。 subscriptionKey 用于美国东部 LUIS 密钥。 如果路径（包括 LUIS 应用 ID 和终结点密钥）不正确，则流量管理器轮询的状态为 `degraded`，因为流量管理无法成功请求 LUIS 终结点。 请确保 `q` 的值为 `traffic-manager-west`，以便在 LUIS 终结点日志中查看此值。
 
     ```powerShell
-    $westprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-westus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-westus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west"
+    $westprofile = New-AzTrafficManagerProfile -Name luis-profile-westus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-westus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west"
     ```
     
     此表介绍了 cmdlet 中的每个变量：
@@ -156,10 +158,10 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
     
     成功请求没有响应。
 
-2. 使用 [Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0) cmdlet 添加美国西部终结点
+2. 添加美国西部终结点**[添加 AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)**  cmdlet
 
     ```powerShell
-    Add-AzureRmTrafficManagerEndpointConfig -EndpointName luis-west-endpoint -TrafficManagerProfile $westprofile -Type ExternalEndpoints -Target westus.api.cognitive.microsoft.com -EndpointLocation "westus" -EndpointStatus Enabled
+    Add-AzTrafficManagerEndpointConfig -EndpointName luis-west-endpoint -TrafficManagerProfile $westprofile -Type ExternalEndpoints -Target westus.api.cognitive.microsoft.com -EndpointLocation "westus" -EndpointStatus Enabled
     ```
 
     此表介绍了 cmdlet 中的每个变量：
@@ -192,10 +194,10 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
     Endpoints                        : {luis-west-endpoint}
     ```
 
-3. 使用 [Set-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Set-AzureRmTrafficManagerProfile?view=azurermps-6.2.0) cmdlet 设置美国西部终结点
+3. 设置与美国西部终结点**[集 AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)**  cmdlet
 
     ```powerShell
-    Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $westprofile
+    Set-AzTrafficManagerProfile -TrafficManagerProfile $westprofile
     ```
 
     成功响应与步骤 2 的响应相同。
@@ -203,10 +205,10 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 ### <a name="create-parent-traffic-manager-profile"></a>创建父流量管理器配置文件
 创建父流量管理器配置文件，并将两个子流量管理器配置文件链接到该父级。
 
-1. 使用 [New-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/New-AzureRmTrafficManagerProfile?view=azurermps-6.2.0) cmdlet 创建父配置文件
+1. 创建具有父配置文件**[新建 AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)**  cmdlet
 
     ```powerShell
-    $parentprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-parent -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-parent -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/"
+    $parentprofile = New-AzTrafficManagerProfile -Name luis-profile-parent -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-parent -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/"
     ```
 
     此表介绍了 cmdlet 中的每个变量：
@@ -223,10 +225,10 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     成功请求没有响应。
 
-2. 使用 [Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0) 和 NestedEndpoints 类型将美国东部子配置文件添加到父级
+2. 将美国东部子配置文件添加到父**[添加 AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** 并**NestedEndpoints**类型
 
     ```powerShell
-    Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint-useast -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $eastprofile.Id -EndpointStatus Enabled -EndpointLocation "eastus" -MinChildEndpoints 1
+    Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-useast -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $eastprofile.Id -EndpointStatus Enabled -EndpointLocation "eastus" -MinChildEndpoints 1
     ```
 
     此表介绍了 cmdlet 中的每个变量：
@@ -235,7 +237,7 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
     |--|--|--|
     |-EndpointName|child-endpoint-useast|东部配置文件|
     |-TrafficManagerProfile|$parentprofile|要向其分配此终结点的配置文件|
-    |-Type|NestedEndpoints|有关详细信息，请参阅 [Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)。 |
+    |-Type|NestedEndpoints|有关详细信息，请参阅[添加 AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig)。 |
     |-TargetResourceId|$eastprofile.Id|子配置文件的 ID|
     |-EndpointStatus|已启用|添加到父级后的终结点状态|
     |-EndpointLocation|“eastus”|资源的 [Azure 区域名称](https://azure.microsoft.com/global-infrastructure/regions/)|
@@ -260,10 +262,10 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
     Endpoints                        : {child-endpoint-useast}
     ```
 
-3. 使用 [Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0) cmdlet 和 NestedEndpoints 类型将美国西部子配置文件添加到父级
+3. 将美国西部子配置文件添加到父**[添加 AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)**  cmdlet 和**NestedEndpoints**类型
 
     ```powerShell
-    Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint-uswest -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $westprofile.Id -EndpointStatus Enabled -EndpointLocation "westus" -MinChildEndpoints 1
+    Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-uswest -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $westprofile.Id -EndpointStatus Enabled -EndpointLocation "westus" -MinChildEndpoints 1
     ```
 
     此表介绍了 cmdlet 中的每个变量：
@@ -272,7 +274,7 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
     |--|--|--|
     |-EndpointName|child-endpoint-uswest|西部配置文件|
     |-TrafficManagerProfile|$parentprofile|要向其分配此终结点的配置文件|
-    |-Type|NestedEndpoints|有关详细信息，请参阅 [Add-AzureRmTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/Add-AzureRmTrafficManagerEndpointConfig?view=azurermps-6.2.0)。 |
+    |-Type|NestedEndpoints|有关详细信息，请参阅[添加 AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig)。 |
     |-TargetResourceId|$westprofile.Id|子配置文件的 ID|
     |-EndpointStatus|已启用|添加到父级后的终结点状态|
     |-EndpointLocation|“westus”|资源的 [Azure 区域名称](https://azure.microsoft.com/global-infrastructure/regions/)|
@@ -297,21 +299,21 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
     Endpoints                        : {child-endpoint-useast, child-endpoint-uswest}
     ```
 
-4. 使用 [Set-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Set-AzureRmTrafficManagerProfile?view=azurermps-6.2.0) cmdlet 设置终结点 
+4. 设置使用的终结点**[集 AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)**  cmdlet 
 
     ```powerShell
-    Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $parentprofile
+    Set-AzTrafficManagerProfile -TrafficManagerProfile $parentprofile
     ```
 
     成功响应与步骤 3 的响应相同。
 
 ### <a name="powershell-variables"></a>PowerShell 变量
-在前面各节中，创建了三个 PowerShell 变量：`$eastprofile`、`$westprofile`、`$parentprofile`。 流量管理器配置要结束时会使用这些变量。 如果选择不创建变量、忘记创建变量，或 PowerShell 窗口超时，则可以使用 PowerShell cmdlet [Get AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/Get-AzureRmTrafficManagerProfile?view=azurermps-6.2.0) 再次获取配置文件，并将其分配给变量。 
+在前面各节中，创建了三个 PowerShell 变量：`$eastprofile`、`$westprofile`、`$parentprofile`。 流量管理器配置要结束时会使用这些变量。 如果选择不创建变量，或忘记了，或者在 PowerShell 窗口将会超时，则可以使用 PowerShell cmdlet  **[Get AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** 以再次获取配置文件并将其分配给变量。 
 
 将尖括号 `<>` 中的项目替换为所需三个配置文件中每个文件的正确值。 
 
 ```powerShell
-$<variable-name> = Get-AzureRmTrafficManagerProfile -Name <profile-name> -ResourceGroupName luis-traffic-manager
+$<variable-name> = Get-AzTrafficManagerProfile -Name <profile-name> -ResourceGroupName luis-traffic-manager
 ```
 
 ## <a name="verify-traffic-manager-works"></a>验证流量管理器的工作

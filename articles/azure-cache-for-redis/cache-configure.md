@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 67a093068df30460a1b2cf17c04164bf8b1dc6a0
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 5e4fc40a9b6cfc945670bcd497d4b13af61f2f2f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234894"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817756"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -42,7 +42,7 @@ ms.locfileid: "56234894"
 * [活动日志](#activity-log)
 * [访问控制 (IAM)](#access-control-iam)
 * [标记](#tags)
-* [诊断并解决问题](#diagnose-and-solve-problems)
+* [诊断和解决问题](#diagnose-and-solve-problems)
 * [设置](#settings)
     * [访问密钥](#access-keys)
     * [高级设置](#advanced-settings)
@@ -55,7 +55,7 @@ ms.locfileid: "56234894"
     * [虚拟网络](#virtual-network)
     * [防火墙](#firewall)
     * [属性](#properties)
-    * [锁](#locks)
+    * [锁定](#locks)
     * [自动化脚本](#automation-script)
 * 管理
     * [导入数据](#importexport)
@@ -107,7 +107,7 @@ ms.locfileid: "56234894"
 * [虚拟网络](#virtual-network)
 * [防火墙](#firewall)
 * [属性](#properties)
-* [锁](#locks)
+* [锁定](#locks)
 * [自动化脚本](#automation-script)
 
 
@@ -359,7 +359,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 默认情况下，Azure Monitor 中的缓存指标会[存储 30 天](../azure-monitor/platform/data-collection.md#metrics)，之后将被删除。 若要将缓存指标保留超过 30 天，请单击“诊断”，[配置存储帐户](cache-how-to-monitor.md#export-cache-metrics)以用于存储缓存诊断。
 
 >[!NOTE]
->除了将缓存指标存档到存储中外，还可以[将其流式传输到事件中心或将其发送到 Log Analytics](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+>除了存档到存储缓存指标，还可以[流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 >
 >
 
@@ -398,13 +398,13 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 > 
 > 
 
-| 设置 | 默认值 | 说明 |
+| 设置 | 默认值 | 描述 |
 | --- | --- | --- |
 | `databases` |16 |默认的数据库数为 16，但可以根据定价层配置不同数目。<sup>1</sup> 默认数据库是 DB 0，可以基于每个连接使用 `connection.GetDatabase(dbid)`（其中 `dbid` 是介于 `0` 和 `databases - 1` 之间的数字）选择其他数据库。 |
 | `maxclients` |取决于定价层<sup>2</sup> |该值是同一时间内允许的最大已连接客户端数。 一旦达到该限制，Redis 会在关闭所有新连接的同时返回“达到客户端最大数量”的错误。 |
 | `maxmemory-policy` |`volatile-lru` |Maxmemory 策略是达到 `maxmemory`（创建缓存时所选缓存服务的大小）时，Redis 根据它选择要删除内容的设置。 Azure Redis 缓存的默认设置为 `volatile-lru`，此设置使用 LRU 算法删除具有过期设置的密钥。 可以在 Azure 门户中配置此设置。 有关详细信息，请参阅[内存策略](#memory-policies)。 |
 | `maxmemory-samples` |3 |为了节省内存，LRU 和最小 TTL 算法是近似算法而不是精确算法。 默认情况下，Redis 会检查三个密钥并选取最近使用较少的一个。 |
-| `lua-time-limit` |5,000 |Lua 脚本的最大执行时间（以毫秒为单位）。 如果达到最大执行时间，Redis 将记录脚本在达到最大允许时间后仍在执行，并开始以错误响应查询。 |
+| `lua-time-limit` |5,000 |Lua 脚本的最大执行时间（以毫秒为单位）。 如果达到最大执行时间，Redis 会记录达到最大允许时间后仍继续执行的脚本，并开始在查询答复时出现错误。 |
 | `lua-event-limit` |500 |脚本事件队列的最大大小。 |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |客户端输出缓冲区限制可用于强制断开处于某种原因（一个常见原因是发布/订阅客户端处理消息的速度慢于发布者提供消息的速度）而未从服务器快速读取数据的客户端的连接。 有关详细信息，请参阅 [https://redis.io/topics/clients](https://redis.io/topics/clients)。 |
 

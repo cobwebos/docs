@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: ae3716654f40322205212ca02a99993326a1cf35
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 196ad39b8b2430ed060ede032f72092b9cfd3fdb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073350"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727428"
 ---
 # <a name="support-for-the-marketplace"></a>市场的支持  
 以下是市场的支持选项列表。  
@@ -32,13 +32,13 @@ ms.locfileid: "54073350"
 
 ## <a name="cloud-partner-portal"></a>云合作伙伴门户  
 
-| 支持渠道 | Description | 可用性 |  
+| 支持渠道 | 描述 | 可用性 |  
 |:--- |:--- |:--- |  
 | 如需帮助，请访问位于[市场支持](https://go.microsoft.com/fwlink/?linkid=844975)中的“创建事件”页</li> </ul> | 支持使用云合作伙伴门户。 | 太平洋标准时间上午 6 点至下午 6 点提供支持。 |  
 
 ## <a name="technical"></a>技术方面  
 
-| 支持渠道 | Description |  
+| 支持渠道 | 描述 |  
 |:--- |:--- |  
 | Slack：[join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | 在环境出留出空间用于为存在技术问题的合作伙伴提供支持。 目前有超过 350 个合作伙伴使用此环境。 |  
 | MSDN 论坛：市场位于 [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network 论坛。 |  
@@ -47,7 +47,7 @@ ms.locfileid: "54073350"
 
 ## <a name="marketing-resources"></a>市场营销资源  
 
-| 支持渠道 | Description | 可用性 |  
+| 支持渠道 | 描述 | 可用性 |  
 |:--- |:--- |:--- |  
 | 电子邮件： [cosell@microsoft.com](mailto:cosell@microsoft.com) | 针对载入流程以及与共同销售计划相关的问题提供支持。 | 基于太平洋时区。 |  
 | 电子邮件： [gtm@microsoft.com](mailto:gtm@microsoft.com) | 支持享受 GTM 权益和提出程序问题。 | 营业时间基于太平洋时区。 |  
@@ -57,4 +57,4 @@ ms.locfileid: "54073350"
 ## <a name="next-steps"></a>后续步骤
 访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页。  
  
----  
+---

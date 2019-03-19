@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 368e1f6b9501c677eca1cf80d24a06c0a6533e86
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811454"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817348"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -91,7 +91,7 @@ ms.locfileid: "55811454"
 
 * 将 Batch 诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 数据中心每秒可以接受数百万事件，然后可以使用任何实时分析提供程序转换并存储这些事件。 
 
-* 将诊断日志发送到 [Azure Log Analytics](../log-analytics/log-analytics-overview.md)，可以在其中分析这些日志，或者导出诊断日志以在 Power BI 或 Excel 中进行分析。
+* 发送到诊断日志[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，可以在其中对其进行分析或将其导出以在 Power BI 或 Excel 中分析。
 
 > [!NOTE]
 > 使用 Azure 服务存储或处理诊断日志数据可能会产生额外的费用。 
@@ -101,7 +101,7 @@ ms.locfileid: "55811454"
 
 1. 在门户中，单击“所有服务” > “Batch 帐户”，然后单击 Batch 帐户的名称。
 2. 在“监视”下，单击“诊断日志” > “启用诊断”。
-3. 在“诊断设置”中，输入设置的名称，并选择日志目标（现有存储帐户、事件中心或 Log Analytics）。 选择“ServiceLog”和/或“AllMetrics”。
+3. 在中**诊断设置**，输入设置的名称并选择日志目标 （现有存储帐户、 事件中心或 Azure Monitor 日志）。 选择“ServiceLog”和/或“AllMetrics”。
 
     选择存储帐户时，请选择性地设置保留策略。 如果未指定保留天数，则数据在存储帐户的生存期内会一直保留。
 

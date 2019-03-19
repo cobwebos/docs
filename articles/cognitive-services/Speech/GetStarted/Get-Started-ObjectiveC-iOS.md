@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: f8bc13aa2adad5c27b1754303ea30304c491f7ca
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 09b7e8961e59bd6fad49408c28e9ee9a4a209cae
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211791"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669425"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>快速入门：在 iOS 上的 Objective-C 中使用必应语音识别 API
 
@@ -25,7 +26,7 @@ ms.locfileid: "55211791"
 
 本文使用一个示例应用程序演示如何开始使用语音识别 API 开发 iOS 应用程序的基础知识。 有关完整的 API 参考，请参阅[语音 SDK 客户端库参考](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="platform-requirements"></a>平台要求
 

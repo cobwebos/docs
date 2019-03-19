@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 25636cad514df18a289c9c81ea95bc53e6ec203c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861317"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738719"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>必应搜索 API 使用和显示要求
 
@@ -34,7 +34,7 @@ ms.locfileid: "55861317"
 ## <a name="definitions"></a>定义
 
 
-|术语  |说明  |
+|术语  |描述  |
 |---------|---------|
 |Answer     | 响应中返回的一类结果。 例如，从必应 Web 搜索 API 返回的响应可能包括网页结果、图片、视频、视觉对象和新闻类别的答复。 |
 |响应     | 在响应针对搜索 API 的单个调用时收到的任何答复和关联的数据。 |

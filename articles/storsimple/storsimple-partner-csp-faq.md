@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: f2c726fd4159bcb47088e814fd60e054e50a1315
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 4750ba55c08ebac244e7515cae4e998155a79599
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814276"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870613"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>适用于云解决方案提供商计划的 StorSimple：常见问题
 
@@ -63,7 +63,7 @@ StorSimple 是基于使用情况的服务。 通过 CSP 渠道采购 StorSimple 
 - 他们还可以通过提供托管服务发现新的业务模式。
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>为 StorSimple CSP 合作伙伴提供的奖励有哪些？ 我有资格获得 CSP 计划奖励吗？
-有关奖励的信息，请转到 [CSP 计划奖励](https://partner.microsoft.com/en-US/cloud-solution-provider/program-details)。
+有关奖励的信息，请转到[CSP 计划奖励](https://partner.microsoft.com/en-US/cloud-solution-provider/program-details)。
 
 
 ## <a name="deploy-and-manage-storsimple-as-a-partner"></a>以合作伙伴身份部署和管理 StorSimple

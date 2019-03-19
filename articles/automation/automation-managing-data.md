@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b133947a7daf1977f084ee4008599882b51d9e8b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 3e217e0e3367c6e1200567f589749fec9e626da8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428471"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817450"
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
 本文包含管理 Azure 自动化环境的多个主题。
@@ -33,13 +33,13 @@ Azure 自动化会自动删除并永久移除 90 天之前的作业。
 | 模块 |在模块被用户删除 90 天后或者在包含该模块的帐户被用户删除 90 天后将其永久移除。 |
 | Runbook |在资源被用户删除 90 天后或者在包含该资源的帐户被用户删除 90 天后将其永久移除。 |
 | 作业 |在上次修改 90 天后删除并永久移除。 这可能发生在作业已完成、已停止或已暂停之后。 |
-| 节点配置/MOF 文件 |生成新节点配置 90 天后，将永久删除旧节点配置。 |
+| 节点配置/MOF 文件 |生成新节点配置 90 天后，会永久删除旧节点配置。 |
 | DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzureRMAutomationDscNode cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) 从自动化帐户中取消注册节点 90 天后，永久删除该节点。 在用户删除保存节点的帐户 90 天后，也会永久删除该节点。 |
 | 节点报告 |在生成该节点的新报告 90 天后永久删除 |
 
 保留策略应用于所有用户并且当前无法自定义。
 
-但是，如果你需要将数据保留更长一段时间，可以将 runbook 作业日志转发到 Log Analytics。  有关详细信息，请参阅[将 Azure 自动化作业数据转发到 Log Analytics](automation-manage-send-joblogs-log-analytics.md)。   
+但是，如果你需要将数据保留更长一段时间，可以转发 runbook 作业的日志传输到 Azure Monitor 日志。  有关详细信息，查看[将 Azure Monitor 日志到 Azure 自动化作业数据转发](automation-manage-send-joblogs-log-analytics.md)。   
 
 ## <a name="backing-up-azure-automation"></a>备份 Azure 自动化
 删除 Microsoft Azure 中的某个自动化帐户时，该帐户中的所有对象都会被删除，包括 Runbook、模块、配置、设置、作业和资产。 在删除帐户后，这些对象不可恢复。  在删除自动化帐户之前，可以参考以下信息来备份该帐户的内容。 
@@ -63,7 +63,7 @@ Azure 自动化会自动删除并永久移除 90 天之前的作业。
 可以使用 Azure 门户或 Windows PowerShell 中的 [Export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) cmdlet 将配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure 自动化中的异地复制
-Azure 自动化帐户中标配的异地复制可将帐户数据备份到其他地理区域以实现冗余。 可以在设置帐户时选择主要区域，然后会自动向它分配次要区域。 从主要区域复制的辅助数据将持续更新，以防数据丢失。  
+Azure 自动化帐户中标配的异地复制可将帐户数据备份到其他地理区域以实现冗余。 用户可以在设置帐户时选择主要区域，会自动向它分配次要区域。 从主要区域复制的辅助数据会持续更新，以防数据丢失。  
 
 下表显示了可用的主要区域和次要区域配对。
 
@@ -71,7 +71,7 @@ Azure 自动化帐户中标配的异地复制可将帐户数据备份到其他�
 | --- | --- |
 | 美国中南部 |美国中北部 |
 | 美国东部 2 |美国中部 |
-| 西欧 |北欧 |
+| 欧洲西部 |欧洲北部 |
 | 东南亚 |东亚 |
 | 日本东部 |日本西部 |
 

@@ -9,12 +9,12 @@ ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: e5262de518e6cdf5a131fa9a84a3aa8ce9ce9236
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: f65f389d93a90df1bc16d2228586beead5f96a73
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213678"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728737"
 ---
 # <a name="use-the-anomaly-finder-api-with-php"></a>将异常查找器 API 与 PHP 配合使用
 
@@ -22,7 +22,7 @@ ms.locfileid: "55213678"
 
 本文提供了相关信息和示例代码，帮助用户快速开始将异常查找器 API 与 PHP 配合使用，从而获取时序数据异常结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 

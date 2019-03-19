@@ -1,27 +1,28 @@
 ---
-title: 快速入门：使用多个输入提交工作流 - Microsoft 基因组学
+title: 使用多个输入-Microsoft 基因组学提交工作流
 titleSuffix: Azure
-description: 本快速入门假定你已安装 msgen 客户端并已通过服务成功运行示例数据。
+description: 本文演示如何在输入的文件为多个 FASTQ 或 BAM 文件来自同一示例提交到 Microsoft 基因组学服务工作流。 已安装 msgen 客户端并成功运行了通过服务的示例数据。
 services: genomics
+ms.service: genomics
 author: grhuynh
 manager: cgronlund
 ms.author: grhuynh
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 1007d81a73ce9f183f997354188e534274b2fe95
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 399b1ed735ce1b7a3fca1d27155863f6bfa18776
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730356"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791352"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>使用来自同一示例的多个输入提交工作流
 
-本快速入门演示了在输入文件为多个**来自同一示例**的 FASTQ 或 BAM 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。 例如，如果在顺序器的多个通道中运行了**同一示例**，顺序器可能会为每个通道输出一组 FASTQ 文件。 可以不在比对与变体识别之前将这些 FASTQ 文件串联在一起，而是直接将所有这些输入提交到 `msgen` 客户端。 来自 `msgen` 客户端的输出将是**一组**文件，包括 .bam、.bai、.vcf 文件。 
+本文演示如何在输入的文件为多个 FASTQ 或 BAM 文件提交到 Microsoft 基因组学服务工作流**来自同一示例**。 例如，如果在顺序器的多个通道中运行了**同一示例**，顺序器可能会为每个通道输出一组 FASTQ 文件。 可以不在比对与变体识别之前将这些 FASTQ 文件串联在一起，而是直接将所有这些输入提交到 `msgen` 客户端。 来自 `msgen` 客户端的输出将是**一组**文件，包括 .bam、.bai、.vcf 文件。 
 
 但请记住，**不能**在同一提交中混合 FASTQ 和 BAM 文件。 另外，**不能**从多个个体提交多个 FASTQ 或 BAM 文件。 
 
-本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果你已成功使用提供的示例数据提交工作流，则可开始学习本教程。 
+本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果您已成功提交使用提供的示例数据的工作流，你现可继续执行本文。 
 
 
 ## <a name="multiple-bam-files"></a>多个 BAM 文件
@@ -52,7 +53,7 @@ msgen submit ^
 ```
 
 
-对于 Unix：
+对于 Unix
 
 ```
 msgen submit \
