@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: b99197f44961bdfa23050e9481e290e6c3d24845
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844052"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759079"
 ---
 # <a name="create-and-clone-projects"></a>创建和克隆项目
 
@@ -34,7 +34,7 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 可在仪表板上执行的操作取决于你是否使用拥有用户 ID 的帐户登录：
 
-| 命令 | 适用对象 | 说明 |
+| 命令 | 适用对象 | 描述 |
 | --- | --- | --- |
 | **Run** | 所有者 | 启动项目服务器并在 Jupyter 中打开项目文件夹。 （更常见的是：先导航到项目文件夹中，然后从中启动一个笔记本。） |
 | **下载** | 所有人 | 将选定项目的副本下载到一个 ZIP 文件中。 |
@@ -49,7 +49,7 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 使用“共享”命令再选择“嵌入”选项卡，即可复制创建“启动笔记本”徽章的 HTML 或 Markdown 代码：
 
-![启动笔记本徽章 ](https://notebooks.azure.com/launch.png)
+![启动笔记本徽章](https://notebooks.azure.com/launch.png)
 
 如果没有 Azure Notebooks 项目，可以使用以下模板，替换相应的用户名和存储库名称，创建一个直接从 GitHub 进行克隆的链接：
 
@@ -65,23 +65,39 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 使用“+ 新建项目”命令时，Azure Notebooks 显示一个“新建项目”弹出窗口。 在其中输入以下信息，然后选择“创建”：
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
-| 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如“我的笔记本项目”。 |
-| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 只可使用字母、数字和连字符，长度限制为 30 个字符。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
+| 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如，"我的笔记本的项目"。 |
+| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 可以使用字母、 数字和连字符，限制为 30 个字符，且不能为[保留项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
 | 公共 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
 | 使用自述文件初始化此项目 | 如果这样设置，会在项目中创建一个默认的“README.md”文件。 README.md 文件用于根据需要提供项目相关文档。 |
+
+### <a name="reserved-project-ids"></a>保留的项目 Id
+
+在以下保留的字不能用作单独项目 Id。 但是，可以这些保留的字用作更长的项目 Id 的一部分。
+
+| | | | | | |
+| --- | --- | --- | --- | --- | --- |
+| about | 帐户 | 管理 | api | 博客 | 教室 |
+| 内容 | 仪表板 | 浏览 | faq | help | html |
+| 主页 | 进口 | 图书馆 | 管理 | 新的 | Notebook |
+| 笔记本 | pdf | 预览 | 定价 | 个人资料 | 搜索 |
+| status | support | 测试 | | | |
+
+如果你尝试使用这些单词之一的项目 ID，作为**创建新项目**并**项目设置**指示弹出窗口，"库 id 是保留的标识符。"
+
+由于项目 ID 也是项目的 URL 的一部分，ad 阻止程序软件可能会阻止使用某些关键字，如"广告"。 在这种情况下，使用的另一个词中项目 id。
 
 ## <a name="import-a-project-from-github"></a>从 GitHub 导入项目
 
 可轻松将整个公共 GitHub 存储库作为项目（包括任何数据和 README.md 文件）导入。 使用“上传 GitHub 存储库”命令，在弹出窗口中提供以下详细信息，然后选择“导入”：
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
 | GitHub 存储库 | github.com 上的源存储库的名称。 例如，若要克隆 Azure 认知服务的 Jupyter 笔记本（位于 [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)），请输入“Microsoft/cognitive-services-notebooks”。  |
 | 以递归方式克隆 | GitHub 存储库可以包含多个子存储库。 如果希望克隆父存储库及其所有子存储库，请设置此选项。 一个存储库可能拥有许多子存储库，除非需要这样设置，否则请勿勾选此选项。 |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 |
-| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 只能使用字母、数字和连字符。 |
+| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 可以使用字母、 数字和连字符，限制为 30 个字符，且不能为[保留项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
 | 公共 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
 
 从 GitHub 导入存储库还会导入其历史记录。 可以使用标准的 Git 命令执行从终端提交新更改、从 GitHub 拉取更改等操作。

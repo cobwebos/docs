@@ -3,7 +3,7 @@ title: Azure VM 启动在更新 Windows 时停滞 | Microsoft Docs
 description: 了解如何解决 Azure VM 启动在更新 Windows 时停滞的问题。
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genli
+author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: d56e96ca1fbc96261f6f526c792b0a53c74718ef
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: HT
+ms.openlocfilehash: 7c516781f7d0c80dc7185585a29278820ab9a46e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063654"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777560"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM 启动在更新 Windows 时停滞
 
@@ -27,7 +27,7 @@ ms.locfileid: "54063654"
 > [!NOTE] 
 > Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。 建议为新部署使用此模型，而不是使用经典部署模型。
 
- ## <a name="symptom"></a>症状
+## <a name="symptom"></a>症状
 
  Windows VM 不启动。 检查[启动诊断](../troubleshooting/boot-diagnostics.md)窗口中的屏幕截图时，看到启动停滞在更新进程。 下面是可能收到的消息示例：
 

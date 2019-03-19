@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 68f3fe0dbd16d3d71dc66af05de6f90156d67dfa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: fb4b5dde63d8c7c75419d3202d9848cd6fde8b8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246355"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547633"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务应用程序和服务可用性问题：常见问题解答 (FAQ)
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>应用程序和 Azure 云服务的服务可用性问题：常见问题 (FAQ)
 
 本文包括关于 [Microsoft Azure 云服务](https://azure.microsoft.com/services/cloud-services)应用程序和服务可用性问题的常见问题解答。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 
@@ -41,8 +41,8 @@ Microsoft 大约每月一次为 Microsoft Azure PaaS VM 发布新的来宾 OS �
 Internet Information Services (IIS) 应用程序池可定期进行回收，以避免可能导致应用程序故障、挂起或内存泄漏的不稳定状态。
 
 以下文档将帮助你了解并缓解此问题：
-* [修复 IIS 初始加载很慢问题](http://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
-* [在应用池回收后，IIS 7.5 Web 应用程序第一个请求速度很慢](http://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
+* [修复 IIS 初始加载很慢问题](https://stackoverflow.com/questions/13386471/fixing-slow-initial-load-for-iis)
+* [在应用池回收后，IIS 7.5 Web 应用程序第一个请求速度很慢](https://stackoverflow.com/questions/13917205/iis-7-5-web-application-first-request-after-app-pool-recycle-very-slow)
 
 如果要更改 IIS 的默认行为，则需要使用启动任务，因为如果手动将更改应用于 Web 角色实例，更改将最终丢失。
 
