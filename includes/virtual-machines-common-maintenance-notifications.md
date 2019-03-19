@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 609389460ab18ba947130e64dbe7b599574816a5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 50a215175d7305834a64b7e0cfbc153431b10b7c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53215992"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56739195"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>在门户中查看计划用于维护的虚拟机
 
@@ -31,7 +31,7 @@ ms.locfileid: "53215992"
 
    **维护**：显示 VM 的维护状态。 下面是可能的值：
       
-      | 值 | Description |
+      | 值 | 说明 |
       |-------|-------------|
       | 立即启动 | 虚拟机位于自助维护窗口中，用户可以自行启动维护。 请参阅以下内容，了解如何在虚拟机上启动维护。 | 
       | 计划 | 已安排虚拟机进行维护，无需用户启动维护。 若要了解维护时段，可以在此视图中选择“维护 - 计划”时段，也可以单击 VM。 | 
