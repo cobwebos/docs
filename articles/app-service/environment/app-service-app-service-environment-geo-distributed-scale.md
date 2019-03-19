@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2a2fafb5da50dbd26786284592cd330df7f5557a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 769e6b9936ad6d3cb963e208cec4c49813f2b6d3
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113684"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188316"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>应用服务环境的异地分布式缩放
 ## <a name="overview"></a>概述
@@ -46,7 +46,7 @@ ms.locfileid: "56113684"
 ## <a name="planning-the-topology"></a>规划拓扑
 在规划分布式应用的占用空间之前，最好先准备好几项信息。
 
-* **应用的自定义域：** 客户访问应用时使用的自定义域名是什么？  示例应用的自定义域名是 *www.scalableasedemo.com*
+* **应用的自定义域：** 客户访问应用时使用的自定义域名是什么？  对于示例应用程序是自定义域名 `www.scalableasedemo.com`
 * **流量管理器域：** 创建 [Azure 流量管理器配置文件][AzureTrafficManagerProfile]时需要选择域名。  此名称与 *trafficmanager.net* 后缀相结合，以注册流量管理器所管理的域条目。  就示例应用而言，选择的名称是 *scalable-ase-demo*。  因此，流量管理器所管理的完整域名是 *scalable-ase-demo.trafficmanager.net*。
 * **缩放应用占用空间的策略：** 应用程序占用空间是否分布到单个区域中的多个应用服务环境？  是多个区域吗？  两种方法要混搭使用吗？  决策依据应来自于客户流量的来源位置，以及其余应用的支持后端基础结构的伸缩性。  例如，对于 100% 无状态的应用程序，可以使用每一 Azure 区域多个应用服务环境的组合，乘以跨多个 Azure 区域部署的应用服务环境数，来大幅缩放应用。  由于有 15 个以上的公用 Azure 区域可供选择，客户将可真正构建全球性超高缩放性的应用程序占用空间。  在本文所使用的示例应用中，有三个应用服务环境创建在单个 Azure 区域（美国中南部）。
 * **应用服务环境的命名约定：** 每个应用服务环境都需要具有一个唯一名称。  有两个或更多应用服务环境时，命名约定将有助于标识每个应用服务环境。  示例应用中使用了简单的命名约定。  三个应用服务环境的名称分别是 *fe1ase*、*fe2ase* 和 *fe3ase*。
@@ -87,7 +87,7 @@ ms.locfileid: "56113684"
 所有三个终结点对 *Weight* 参数使用了相同的值 (10)。  这使流量管理器将客户请求较平均地分散到所有三个应用实例。 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>将应用的自定义域指向流量管理器域
-最后一个必要步骤是将应用的自定义域指向流量管理器域。  就示例应用而言，这意味着将 *www.scalableasedemo.com* 指向 *scalable-ase-demo.trafficmanager.net*。  此步骤必须以管理自定义域的域注册机构来完成。  
+最后一个必要步骤是将应用的自定义域指向流量管理器域。  示例应用程序而言，这意味着`www.scalableasedemo.com`在`scalable-ase-demo.trafficmanager.net`。  此步骤必须以管理自定义域的域注册机构来完成。  
 
 如果使用注册机构的域管理工具，则需要创建一条将自定义域指向流量管理器域的 CNAME 记录。  下图显示了此 CNAME 配置的示例：
 
@@ -95,16 +95,16 @@ ms.locfileid: "56113684"
 
 尽管本主题并未说明，但请记住，每个应用实例也都需要注册其自定义域。  否则，在对应用实例发出请求时，如果应用程序并未注册应用的自定义域，请求会失败。  
 
-在本示例中，自定义域是 *www.scalableasedemo.com*，且每个应用程序实例都有其关联的自定义域。
+在此示例中，自定义域是`www.scalableasedemo.com`，并且每个应用程序实例具有与之关联的自定义域。
 
 ![自定义域][CustomDomain] 
 
 有关在 Azure 应用服务应用中注册自定义域的汇总信息，请参阅以下有关[注册自定义域][RegisterCustomDomain]的文章。
 
 ## <a name="trying-out-the-distributed-topology"></a>试用分布式拓扑
-使用流量管理器及 DNS 配置的最终结果是 *www.scalableasedemo.com* 的请求经历以下顺序的流程：
+流量管理器和 DNS 配置的最终结果是，请求`www.scalableasedemo.com`将流经以下序列：
 
-1. 浏览器或设备执行 *www.scalableasedemo.com* 的 DNS 查找
+1. 浏览器或设备也将在 DNS 查找 `www.scalableasedemo.com`
 2. 域注册机构上的 CNAME 条目使 DNS 查找重定向到 Azure 流量管理器。
 3. 对某个 Azure 流量管理器 DNS 服务器执行 *scalable-ase-demo.trafficmanager.net* 的 DNS 查找。
 4. 根据负载均衡策略（前面创建流量管理器配置文件时所用的 *TrafficRoutingMethod* 参数），流量管理器选择其中一个已配置的终结点，并将该终结点的 FQDN 返回到浏览器或设备。

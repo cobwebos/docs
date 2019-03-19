@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 993a8ca48df40b400c21852d3d28941d9d62affb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5b958a8d7aa8566c62d5fdaf6b5b51064e4e5123
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549011"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183741"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -230,7 +230,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ## <a name="office-365-activity-logs"></a>Office 365 活动日志
 
-可以从 [Office 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，但只有 Office 365 管理中心提供 Office 365 活动日志的完整视图。 
+您可以查看从 Office 365 活动日志[Microsoft 365 管理中心内](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)。 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，仅 Microsoft 365 管理中心内提供了 Office 365 活动日志的完整视图。 
 
 此外可以使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
 

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 9a9fe0a92f8a8eadbd72ae56303348413a9d10c3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 1f90ce71084ba3acbf5a0aec5c7b8e9683323766
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140636"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011623"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>如何开始使用 Azure 表存储和 Visual Studio 连接服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "42140636"
 
 Azure 表存储服务使用户可以存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。 有关使用 Azure 表存储的更多常规信息，请参阅 [Get started with Azure Table storage using .NET](../storage/storage-dotnet-how-to-use-tables.md)（通过 .NET 开始使用 Azure 表存储）。
 
-若要开始，首先在你的存储帐户中创建一个表。 然后本文将演示如何运用 C# 创建表，以及如何执行基本的表操作，如添加、修改、读取和删除表项。  代码使用适用于 .NET 的 Azure 存储客户端库。 有关 ASP.NET 的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
+若要开始，首先在你的存储帐户中创建一个表。 然后本文将演示如何运用 C# 创建表，以及如何执行基本的表操作，如添加、修改、读取和删除表项。  代码使用适用于 .NET 的 Azure 存储客户端库。 有关 ASP.NET 的详细信息，请参阅 [ASP.NET](https://www.asp.net)。
 
 某些 Azure 存储 API 为异步，而本文中的代码假定正在使用异步方法。 有关详细信息，请参阅[异步编程](https://docs.microsoft.com/dotnet/csharp/async)。
 

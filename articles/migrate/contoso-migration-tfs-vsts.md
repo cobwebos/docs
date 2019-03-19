@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 20c1e2a4394c249b410a1253356d0ef96c30e970
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: 8098196abc415dedba392737fc17a4de5739339d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818891"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100234"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-azure-devops-services"></a>Contoso 迁移：将 Team Foundation Server 部署重构到 Azure DevOps Services
 
@@ -225,11 +225,11 @@ Contoso 管理员在迁移之前针对 ContosoDev 集合数据库运行 TFS 迁�
 
 6. 审查标识映射日志文件，其中显示了在导入期间将被置于 Azure DevOps Services 中的帐户。 
 
-    - 活动标识指的是在导入后将成为 Azure DevOps Services 中的用户的标识。
-    - 在 Azure DevOps Services 上，迁移后，这些标识将获得许可并显示为组织中的用户。
-    - 这些标识在文件中的 **Expected Import Status** 列中被标记为 **Active**。
+   - 活动标识指的是在导入后将成为 Azure DevOps Services 中的用户的标识。
+   - 在 Azure DevOps Services 上，迁移后，这些标识将获得许可并显示为组织中的用户。
+   - 这些标识在文件中的 **Expected Import Status** 列中被标记为 **Active**。
 
-    ![准备](./media/contoso-migration-tfs-vsts/prep6.png)
+     ![准备](./media/contoso-migration-tfs-vsts/prep6.png)
 
 
 

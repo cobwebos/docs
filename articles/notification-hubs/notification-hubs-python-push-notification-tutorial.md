@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.author: jowargo
 ms.date: 01/04/2019
-ms.openlocfilehash: 10bc12879ea30f75ee5af3bd9226ff1626b72ae3
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 43a691ff9025cdb39786f965be6a2fca1b33bd3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962734"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883570"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 
@@ -36,7 +36,7 @@ ms.locfileid: "55962734"
 - 使用 Python 接口发送通知到通知中心 REST API。
 - 获取 HTTP REST 请求/响应的转储以进行调试/培训。
 
-可以按照所选定的移动平台的[入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)，以 Python 实现后端部分。
+可按照所选定移动平台的[入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)，以 Python 实现后端部分。
 
 > [!NOTE]
 > 该示例仅限于发送通知，并不执行任何注册管理操作。
@@ -73,7 +73,7 @@ hub.send_windows_notification(wns_payload)
 
 ### <a name="parse-the-connection-string"></a>解析连接字符串
 
-下面是实现客户端的主类，其构造函数将解析连接字符串：
+下面是实现客户端的主类，其构造函数解析连接字符串：
 
 ```python
 class NotificationHub:
@@ -374,7 +374,7 @@ hub.send_baidu_notification(baidu_payload)
     ```
 - 如果没有找到任何推送通知的目标，则可能出现以下输出作为响应（这表明可能没有找到传递通知的注册，因为这些注册具有一些不匹配的标记）
     ```xml
-    '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
+    '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="https://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
     ```
 
 ### <a name="broadcast-toast-notification-to-windows"></a>将 toast 通知广播到 Windows
@@ -437,9 +437,9 @@ hub.send_template_notification(template_payload)
 
 <!-- URLs -->
 [Python REST 包装器示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[入门教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[突发新闻教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[本地化新闻教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[入门教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[突发新闻教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[本地化新闻教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

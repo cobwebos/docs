@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: a22dd1114b6ad49695b1ce7cab2ff26f23b7e1be
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 8fa3cd79011ab31349ec44edf52b8fd9048d0d37
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447848"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077966"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -24,10 +24,10 @@ ms.locfileid: "56447848"
 * 访问 Azure HDInsight Spark 群集资源。
 * 本地开发和运行 Scala Spark 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-* [Oracle Java 开发工具包](https://www.azul.com/downloads/azure-only/zulu/)。  本教程使用 Java 版本 8.0.202。
+* [Oracle Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  本教程使用 Java 版本 8.0.202。
 * IntelliJ IDEA。 本文使用 [IntelliJ IDEA Community 版本2018.3.4](https://www.jetbrains.com/idea/download/)。
 * Azure Toolkit for IntelliJ。  请参阅[安装 Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable)。
 * WINUTILS.EXE。  请参阅[在 Windows 上运行 Hadoop 时遇到的问题](https://wiki.apache.org/hadoop/WindowsProblems)。
@@ -57,16 +57,16 @@ ms.locfileid: "56447848"
 3. 在主窗口中选择“Spark 项目(Scala)”。
 
 4. 在“生成工具”下拉列表中选择下列其中一项：
-      * **Maven**：支持 Scala 项目创建向导。
-      * **SBT**：用于管理依赖项和生成 Scala 项目。
+   * **Maven**：支持 Scala 项目创建向导。
+   * **SBT**：用于管理依赖项和生成 Scala 项目。
 
-    ![“新建项目”对话框](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
+     ![“新建项目”对话框](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 5. 选择“**下一步**”。
 
 6. 在“新建项目”窗口中提供以下信息：  
 
-    |  属性   | 说明   |  
+    |  属性   | 描述   |  
     | ----- | ----- |  
     |项目名称| 输入名称。  本教程使用 `myApp`。|  
     |项目位置&nbsp;| 输入所需的位置用于保存项目。|
@@ -209,7 +209,7 @@ ms.locfileid: "56447848"
     |Spark 群集（仅限 Linux）|选择要在其上运行应用程序的 HDInsight Spark 群集。|
     |选择要提交的项目|保留默认设置。|
     |Main 类名|默认值是所选文件中的主类。 可选择省略号 (...) 并选择其他类来更改类。|
-    |作业配置|可以更改默认的键和/或值。 有关详细信息，请参阅 [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)。|
+    |作业配置|可以更改默认的键和/或值。 有关详细信息，请参阅 [Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html)。|
     |命令行参数|如果需要，可为 main 类输入参数并以空格分隔。|
     |引用的 Jar 和引用的文件|（如果有的话）可以输入引用的 Jar 和文件的路径。 更多相关信息：[Apache Spark 配置](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)。  另请参阅[如何将资源上传到群集](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)。|
     |作业上传存储|展开以显示其他选项。|

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: ec1727926f6dbfeead9932004715a8bb1dfbb0cd
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
-ms.translationtype: HT
+ms.openlocfilehash: 7679bbc450e5fa0761860aedbb37ed02b27ec828
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36964529"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58115247"
 ---
 ## <a name="os-config"></a>将 IP 地址添加到 VM 操作系统
 
@@ -27,11 +27,11 @@ ms.locfileid: "36964529"
 4. 双击“Internet 协议版本 4 (IPv4)”。
 5. 单击“使用下面的 IP 地址”并输入以下值：
 
-    * **IP 地址**：输入*主要*专用 IP 地址
-    * **子网掩码**：根据子网设置此值。 例如，如果子网为 /24 子网，则子网掩码为 255.255.255.0。
-    * **默认网关**：子网中的第一个 IP 地址。 如果子网为 10.0.0.0/24，则网关 IP 地址为 10.0.0.1。
+    * **IP 地址**：输入*主*专用 IP 地址
+    * **子网掩码**:基于你的子网设置。 例如，如果子网为 /24 子网，则子网掩码为 255.255.255.0。
+    * **默认网关**:第一个子网中的 IP 地址。 如果子网为 10.0.0.0/24，则网关 IP 地址为 10.0.0.1。
     * 选择“使用下面的 DNS 服务器地址”并输入以下值：
-        * **首选 DNS 服务器**：如果不使用自己的 DNS 服务器，请输入 168.63.129.16。  如果使用自己的 DNS 服务器，请输入服务器的 IP 地址。
+        * **首选的 DNS 服务器**:如果不使用你自己的 DNS 服务器，请输入 168.63.129.16。  如果使用自己的 DNS 服务器，请输入服务器的 IP 地址。
     * 选择“高级”按钮，并添加其他 IP 地址。 将在前面的步骤中添加到 Azure 网络接口的每个辅助专用 IP 地址添加到分配有分配给 Azure 网络接口的主 IP 地址的 Windows 网络接口。
 
         切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。 在操作系统中手动设置该 IP 地址时，请确保它与分配给 Azure [网络接口](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](../articles/virtual-network/virtual-network-network-interface-addresses.md#private)设置。 绝不要在操作系统中分配 Azure 公用 IP 地址。
@@ -62,15 +62,15 @@ ping -S 10.0.0.5 hotmail.com
 
 3. 更新网络接口（假设为“eth0”）的配置文件。
 
-    * 保留 dhcp 的现有行项。 主要 IP 地址将保留以前的配置。
-    * 使用以下命令添加其他静态 IP 地址的配置：
+   * 保留 dhcp 的现有行项。 主 IP 地址会保留之前的配置。
+   * 使用以下命令添加其他静态 IP 地址的配置：
 
-        ```bash
-        cd /etc/network/interfaces.d/
-        ls
-        ```
+       ```bash
+       cd /etc/network/interfaces.d/
+       ls
+       ```
 
-    应会看到一个 .cfg 文件。
+     应会看到一个 .cfg 文件。
 4. 打开 文件。 该文件的末尾应会显示以下命令行：
 
     ```bash
@@ -145,7 +145,7 @@ ping -S 10.0.0.5 hotmail.com
     vi ifcfg-eth0:0
     ```
 
-7. 使用以下命令将内容添加到该文件（此示例中为 *eth0:0*）。 请务必更新基于 IP 地址的信息。
+7. 在此示例中，请使用以下命令向文件 *eth0:0* 添加内容。 请务必更新基于 IP 地址的信息。
 
     ```bash
     DEVICE=eth0:0
@@ -178,7 +178,7 @@ ping -S 10.0.0.5 hotmail.com
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->对于辅助 IP 配置，仅当该配置存在关联的 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
+>对于辅助 IP 配置，仅当该配置具有与之关联的公共 IP 地址的情况下，才能 ping 到 Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping 到 Internet。
 
 对于 Linux VM，在尝试验证来自辅助 NIC 的出站连接时，可能需要添加适当的路由。 可通过多种方式来执行此操作。 请参阅针对 Linux 分发的相应文档。 下面是实现此目的的一种方法：
 
@@ -189,7 +189,7 @@ ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
 
 ```
-- 确保将
+- 确保执行以下替换：
     - **10.0.0.5** 替换为专用 IP 地址，该地址有一个与之关联的公共 IP 地址。
     - **10.0.0.1** 替换为默认网关
     - **eth2** 替换为辅助 NIC 的名称

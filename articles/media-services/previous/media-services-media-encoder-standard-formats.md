@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/18/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 27e9a5b33170855455e8906b659e0f0c009e42d3
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: c862de2eec4e6c116218457a20b567dc02778685
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984097"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190016"
 ---
-# <a name="media-encoder-standard-formats-and-codecs-legacy"></a>Media Encoder Standard 格式和编解码器（旧版）
+# <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
 > * [第 2 版](media-services-media-encoder-standard-formats.md)
@@ -30,7 +30,7 @@ ms.locfileid: "55984097"
 
 ## <a name="input-containerfile-formats"></a>输入容器/文件格式
 | 文件格式（文件扩展名） | 支持 |
-| --- | --- | --- | --- |
+| --- | --- |
 | FLV（使用 H.264 和 AAC 编解码器）(.flv) |是 |
 | MXF    (.mxf) |是 |
 | GXF    (.gxf) |是 |
@@ -59,7 +59,7 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 
 ## <a name="input-video-codecs"></a>输入视频编解码器
 | 输入视频编解码器 | 支持 |
-| --- | --- | --- | --- |
+| --- | --- |
 | AVC 8 位/10 位，最高支持 4:2:2，包括 AVCIntra |8 位 4:2:0 和 4:2:2 |
 | Avid DNxHD（MXF 格式） |是 |
 | DVCPro/DVCProHD（MXF 格式） |是 |
@@ -82,8 +82,8 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 
 ## <a name="input-audio-codecs"></a>输入音频编解码器
 | 输入音频编解码器 | 支持 |
-| --- | --- | --- | --- |
-| AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
+| --- | --- |
+| AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
 | MPEG Layer 2 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |是 |
 | Windows Media 音频 |是 |

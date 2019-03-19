@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f367d6e1b1c545bcad0faf030a56fdec2ffafca2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: f09391bf18910bf9151c99b8df91f92b2582e823
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189829"
 ---
-# <a name="implement-failover-streaming-with-media-services-legacy"></a>使用媒体服务实现故障转移流式处理（旧版）
+# <a name="implement-failover-streaming-with-media-services"></a>实现故障转移使用媒体服务流式处理 
 
 本演练演示如何将内容 (Blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 如果想要将 Azure 内容分发网络设置为当某个数据中心发生中断时在两个数据中心之间故障转移，则很适合采用此方案。 本演练使用 Azure 媒体服务 SDK、Azure 媒体服务 REST API 和 Azure 存储 SDK 来演示以下任务：
 
@@ -50,7 +50,7 @@ ms.locfileid: "55989059"
 * 不支持使用存储加密资产 (AssetCreationOptions.StorageEncrypted) 进行复制（因为两个媒体服务帐户中的加密密钥不同）。 
 * 若要使用动态打包，请确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * 在新的或现有的 Azure 订阅中拥有两个媒体服务帐户。 请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 操作系统：Windows 7、Windows 2008 R2 或 Windows 8。
 * .NET Framework 4.5 或 .NET Framework 4。
@@ -60,7 +60,7 @@ ms.locfileid: "55989059"
 在本部分，将要创建并设置一个 C# 控制台应用程序项目。
 
 1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 输入 **HandleRedundancyForOnDemandStreaming** 作为名称，并单击“确定”。
-2. 在与 **HandleRedundancyForOnDemandStreaming.csproj** 项目文件相同的级别创建 **SupportFiles** 文件夹。 在 **SupportFiles** 文件夹下创建 **OutputFiles** 和 **MP4Files** 文件夹。 将一个 .mp4 文件复制到 **MP4Files** 文件夹。 （本示例使用 **BigBuckBunny.mp4** 文件。） 
+2. 在与 **HandleRedundancyForOnDemandStreaming.csproj** 项目文件相同的级别创建 **SupportFiles** 文件夹。 在 **SupportFiles** 文件夹下创建 **OutputFiles** 和 **MP4Files** 文件夹。 将一个 .mp4 文件复制到 MP4Files 文件夹。 （本示例使用 **BigBuckBunny.mp4** 文件。） 
 3. 使用 **Nuget** 添加对媒体服务相关 DLL 的引用。 在 **Visual Studio 主菜单**中，选择“工具” > “库包管理器” > “包管理器控制台”。 在控制台窗口中键入 **Install-Package windowsazure.mediaservices**，并按 Enter。
 4. 添加此项目所需的其他引用：System.Configuration、System.Runtime.Serialization 和 System.Web。
 5. 将默认添加到 **Programs.cs** 文件中的 **using** 语句替换为以下语句：
@@ -82,7 +82,7 @@ ms.locfileid: "55989059"
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. 将 **appSettings** 节添加到 **.config** 文件，并根据媒体服务和存储密钥与名称值更新值。 
+6. 将 appSettings 节添加到 .config 文件，并根据媒体服务和存储密钥与名称值更新值。 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>

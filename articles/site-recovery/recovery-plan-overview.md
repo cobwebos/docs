@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
+ms.openlocfilehash: 053d400a9986d0997344b2be09140d8afb0e1faf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975655"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996368"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 
@@ -29,7 +29,7 @@ ms.locfileid: "53975655"
 
 * 基于应用的依赖项对应用进行建模。
 * 自动执行大多数的恢复任务来降低 RTO。
-- 通过确保你的应用是恢复计划的一部分来验证你已做好了迁移或灾难恢复准备工作。
+* 通过确保你的应用是恢复计划的一部分来验证你已做好了迁移或灾难恢复准备工作。
 * 按恢复计划运行测试故障转移，以确保灾难恢复或迁移按预期工作。
 
 
@@ -42,10 +42,10 @@ ms.locfileid: "53975655"
     - 此顺序可以确保当中间件启动并尝试连接到 SQL Server 层时，SQL Server 层已在运行。 
     - 此顺序还可帮助确保前端服务器最后启动，从而确保在所有组件已启动并运行并且应用已准备好接受请求之前，最终用户不会连接到应用 URL。
 
-若要创建此顺序，请向恢复组中添加组，然后向组中添加计算机。 
-    - 如果指定了顺序，则会使用序列。 操作会根据情况并行运行，从而改进应用程序恢复 RTO。
-    - 单个组中的计算机将并行进行故障转移。
-    - 不同组中的计算机将按组顺序进行故障转移，因此，只有当组 1 中的计算机已进行故障转移并启动后，组 2 中的计算机才会启动。
+若要创建此顺序，请向恢复组中添加组，然后向组中添加计算机。
+- 如果指定了顺序，则会使用序列。 操作会根据情况并行运行，从而改进应用程序恢复 RTO。
+- 单个组中的计算机将并行进行故障转移。
+- 不同组中的计算机将按组顺序进行故障转移，因此，只有当组 1 中的计算机已进行故障转移并启动后，组 2 中的计算机才会启动。
 
     ![示例恢复计划](./media/recovery-plan-overview/rp.png)
 
@@ -93,4 +93,4 @@ ms.locfileid: "53975655"
 ## <a name="next-steps"></a>后续步骤
 
 - [创建](site-recovery-create-recovery-plans.md)恢复计划。
-* 了解如何[运行故障转移](site-recovery-failover.md)。  
+- 了解如何[运行故障转移](site-recovery-failover.md)。  

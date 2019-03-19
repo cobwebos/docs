@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: f21d92dabfcfbe51cf8135388a1ab489c20593a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537539"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880919"
 ---
 # <a name="azure-networking"></a>Azure 网络
 
@@ -136,7 +136,7 @@ Azure 创建默认的路由表，使用这些路由表可让连接到 VNet 中�
 
 Azure 提供以下工具用于监视和管理网络：
 - **活动日志：** 所有 Azure 资源都会生成活动日志，其中提供有关执行的操作、操作状态以及操作发起者的信息。 若要详细了解活动日志，请参阅[活动日志概述](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
-- **诊断日志：** 定期和自发性事件由网络资源创建，记录在 Azure 存储帐户中并发送到事件中心或 Azure Log Analytics。 诊断日志提供资源运行状况的见解。 诊断日志是针对负载均衡器（面向 Internet）、网络安全组、路由和应用程序网关提供的。 若要详细了解诊断日志，请参阅[诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
+- **诊断日志：** 定期和自发性事件由网络资源创建和记录在 Azure 存储帐户，发送到 Azure 事件中心，或者发送到 Azure Monitor 日志中。 诊断日志提供资源运行状况的见解。 诊断日志是针对负载均衡器（面向 Internet）、网络安全组、路由和应用程序网关提供的。 若要详细了解诊断日志，请参阅[诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **指标：** 指标是在一段时间内从资源收集的性能度量值与计数器。 使用指标可以基于阈值触发警报。 指标目前适用于应用程序网关。 若要详细了解指标，请参阅[指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **故障排除：** 可直接在 Azure 门户中访问故障排除信息。 这些信息可帮助诊断 ExpressRoute、VPN 网关、应用程序网关、网络安全日志、路由、DNS、负载均衡器和流量管理器的常见问题。
 - **基于角色的访问控制 (RBAC)：** 控制谁可以使用基于角色的访问控制 (RBAC) 创建和管理网络资源。 请参阅 [RBAC 入门](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 RBAC 的详细信息。 
@@ -149,7 +149,7 @@ Azure 提供以下工具用于监视和管理网络：
 
 可使用以下任何工具来部署和配置 Azure 网络资源：
 
-- **Azure 门户：** 在浏览器中运行的图形用户界面。 打开 [Azure 门户](http://portal.azure.com)。
+- **Azure 门户：** 在浏览器中运行的图形用户界面。 打开 [Azure 门户](https://portal.azure.com)。
 - **Azure PowerShell：** 用于在 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure PowerShell 概述](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure PowerShell 的详细信息。
 - **Azure 命令行界面 (CLI)：** 用于在 Linux、macOS 或 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure CLI 概述](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure CLI 的详细信息。
 - **Azure 资源管理器模板：** 用于定义 Azure 解决方案的基础结构和配置的文件（采用 JSON 格式）。 使用模板，可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解如何创作模板，请参阅[有关创作模板的最佳做法](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。 可以使用 Azure 门户、CLI 或 PowerShell 部署模板。 若要立即开始使用模板，请部署 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=network)库中预配置的众多模板之一。 

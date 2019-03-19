@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c2b0343ff472fe380750152712ca88d9ebb404e2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: aae3ec8ff713959c5cc2485951aba025a6f89a1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782779"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113276"
 ---
 # <a name="validate-oem-packages"></a>验证 OEM 程序包
 
@@ -185,30 +185,30 @@ VaaS 所需的最低访问级别取决于是否创建包验证工作流或调度
 
     OEM 扩展包验证拆分为两个手动步骤：Azure Stack 更新和 OEM 更新。
 
-    1. **选择**"运行"用户界面来执行预检查脚本中。 这是自动的测试，需要大约 5 分钟才能完成，并且不需要执行任何操作。
+   1. **选择**"运行"用户界面来执行预检查脚本中。 这是自动的测试，需要大约 5 分钟才能完成，并且不需要执行任何操作。
 
-    1. 预检查脚本完成后，请执行手动步骤：**安装**的最新可用 Azure Stack 更新使用 Azure Stack 门户。
+   1. 预检查脚本完成后，请执行手动步骤：**安装**的最新可用 Azure Stack 更新使用 Azure Stack 门户。
 
-    1. **运行**Test-azurestack 在标记上。 如果发生任何故障，不会继续使用测试和联系人[ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)。
+   1. **运行**Test-azurestack 在标记上。 如果发生任何故障，不会继续使用测试和联系人[ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)。
 
-        有关如何运行 Test-azurestack 命令的信息，请参阅[验证 Azure Stack 系统状态](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)。
+       有关如何运行 Test-azurestack 命令的信息，请参阅[验证 Azure Stack 系统状态](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)。
 
-    1. **选择**"下一步"以执行 postcheck 脚本。 这是自动的测试，表示 Azure Stack 更新过程的结尾。
+   1. **选择**"下一步"以执行 postcheck 脚本。 这是自动的测试，表示 Azure Stack 更新过程的结尾。
 
-    1. **选择**"运行"OEM 更新执行预检查的脚本。
+   1. **选择**"运行"OEM 更新执行预检查的脚本。
 
-    1. 完成预检查后，执行手动步骤：**安装**通过门户将 OEM 扩展包。
+   1. 完成预检查后，执行手动步骤：**安装**通过门户将 OEM 扩展包。
 
-    1. **运行**Test-azurestack 在标记上。
+   1. **运行**Test-azurestack 在标记上。
 
-        > [!NOTE]
-        > 与前面一样，不会继续使用测试和联系人[ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)失败。 此步骤非常重要，因为它可以节省重新部署。
+      > [!NOTE]
+      > 与前面一样，不会继续使用测试和联系人[ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)失败。 此步骤非常重要，因为它可以节省重新部署。
 
-    1. **选择**"下一步"以执行 postcheck 脚本。 这会标记 OEM 更新步骤结束时。
+   1. **选择**"下一步"以执行 postcheck 脚本。 这会标记 OEM 更新步骤结束时。
 
-    1. 回答测试结束时的任何剩余问题并**选择**"提交"。
+   1. 回答测试结束时的任何剩余问题并**选择**"提交"。
 
-    1. 这表示交互式测试的结尾。
+   1. 这表示交互式测试的结尾。
 
 5. 查看 OEM 扩展包验证结果。 成功测试之后，计划云模拟引擎执行。
 

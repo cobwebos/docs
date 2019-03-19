@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: bd2b28a7f8d0a765e10ffa58b5a72b4bd5bc47b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 543135db8df69db7e0e6182c9d52b9c956ee80b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228175"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996979"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>保留 IP 地址（经典部署）
 
@@ -28,7 +28,7 @@ ms.locfileid: "51228175"
 要防止 IP 地址更改，可将其设置为保留 IP 地址。 保留 IP 只能用作 VIP，可确保云服务的 IP 地址即使在关闭资源或停止（释放）资源的情况下也保持不变。 此外，还可以将用作 VIP 的现有动态 IP 转换为保留 IP 地址。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何使用 [Resource Manager 部署模型](virtual-network-ip-addresses-overview-arm.md)保留静态公共 IP 地址。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何使用 [Resource Manager 部署模型](virtual-network-ip-addresses-overview-arm.md)保留静态公共 IP 地址。
 
 若要详细了解 Azure 中的 IP 地址，请阅读 [IP 地址](virtual-network-ip-addresses-overview-classic.md)一文。
 
@@ -61,7 +61,7 @@ ms.locfileid: "51228175"
   ```powershell
     New-AzureReservedIP –ReservedIPName MyReservedIP –Location "Central US"
   ```
-但请注意，不能指定要保留的具体 IP。 要查看订阅中哪些 IP 地址为保留 IP 地址，请运行以下 PowerShell 命令，并查看 *ReservedIPName* 和 *Address* 的值：
+但请注意，不能指定要保留的具体 IP。 如果要查看订阅中哪些 IP 地址为保留 IP 地址，请运行以下 PowerShell 命令，并查看 *ReservedIPName* 和 *Address* 的值：
 
 ```powershell
 Get-AzureReservedIP
@@ -83,7 +83,7 @@ Get-AzureReservedIP
     OperationStatus      : Succeeded
 
 >[!NOTE]
->使用 PowerShell 创建保留 IP 地址时，不能指定要在其中创建保留 IP 的资源组。 Azure 将其自动放置于名为默认网络的资源组中。 如果使用 [Azure 门户](http://portal.azure.com)创建保留 IP，可指定所选的任何资源组。 但是，如果在默认网络以外的资源组中创建保留 IP，每当使用 `Get-AzureReservedIP` 和 `Remove-AzureReservedIP` 等命令引用保留 IP 时，必须引用名称“Group resource-group-name reserved-ip-name”。  例如，如果在名为 myResourceGroup 的资源组中创建名为 myReservedIP 的保留 IP，必须将保留 IP 的名称引用为“Group myResourceGroup myReservedIP”。   
+>使用 PowerShell 创建保留 IP 地址时，不能指定要在其中创建保留 IP 的资源组。 Azure 将其自动放置于名为默认网络的资源组中。 如果使用 [Azure 门户](https://portal.azure.com)创建保留 IP，可指定所选的任何资源组。 但是，如果在默认网络以外的资源组中创建保留 IP，每当使用 `Get-AzureReservedIP` 和 `Remove-AzureReservedIP` 等命令引用保留 IP 时，必须引用名称“Group resource-group-name reserved-ip-name”。  例如，如果在名为 myResourceGroup 的资源组中创建名为 myReservedIP 的保留 IP，必须将保留 IP 的名称引用为“Group myResourceGroup myReservedIP”。   
 
 
 某个 IP 成为保留 IP 后，它就会始终与订阅相关联，直至将它删除。 删除保留 IP，如下所示：

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822249"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084600"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
@@ -42,7 +42,7 @@ ms.locfileid: "55822249"
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 数据工厂支持通过数据管理网关连接到本地 Oracle 源。 若要详细了解数据管理网关，请参阅[数据管理网关](data-factory-data-management-gateway.md)。 有关如何在数据管道中设置网关以便移动数据的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)。
 
@@ -56,11 +56,11 @@ ms.locfileid: "55822249"
 Oracle 连接器支持两个版本的驱动程序：
 
 - **适用于 Oracle 的 Microsoft 驱动程序（推荐）**：从数据管理网关 2.7 版开始，随网关自动安装适用于 Oracle 的 Microsoft 驱动程序。 无需安装或更新该驱动程序即可建立与 Oracle 的连接。 还可以通过此驱动程序体验更好的复制性能。 支持以下版本的 Oracle 数据库：
-    - Oracle 12c R1 (12.1)
-    - Oracle 11g R1, R2 (11.1, 11.2)
-    - Oracle 10g R1, R2 (10.1, 10.2)
-    - Oracle 9i R1, R2 (9.0.1, 9.2)
-    - Oracle 8i R3 (8.1.7)
+  - Oracle 12c R1 (12.1)
+  - Oracle 11g R1, R2 (11.1, 11.2)
+  - Oracle 10g R1, R2 (10.1, 10.2)
+  - Oracle 9i R1, R2 (9.0.1, 9.2)
+  - Oracle 8i R3 (8.1.7)
 
     > [!NOTE]
     > 不支持 Oracle 代理服务器。
@@ -69,7 +69,7 @@ Oracle 连接器支持两个版本的驱动程序：
     > 目前，适用于 Oracle 的 Microsoft 驱动程序仅支持从 Oracle 复制数据。 该驱动程序不支持写入 Oracle。 数据管理网关“诊断”选项卡中的测试连接功能不支持此驱动程序。 或者，可以使用复制向导验证连接。
     >
 
-- **适用于 .NET 的 Oracle 数据提供程序**：可以使用 Oracle 数据提供程序在 Oracle 中复制或粘贴数据。 该组件包含在[适用于 Windows 的 Oracle 数据访问组件](http://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在装有网关的计算机上安装相关版本（32 位或 64 位）。 [Oracle 数据提供程序 .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可访问 Oracle Database 10g 版本 2 及更高版本。
+- **适用于 .NET 的 Oracle 数据提供程序**：可以使用 Oracle 数据提供程序在 Oracle 中复制或粘贴数据。 该组件包含在[适用于 Windows 的 Oracle 数据访问组件](https://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在装有网关的计算机上安装相关版本（32 位或 64 位）。 [Oracle 数据提供程序 .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可访问 Oracle Database 10g 版本 2 及更高版本。
 
     如果选择“XCopy 安装”，请完成 readme.htm 文件中所述的步骤。 我们建议选择具有 UI 的安装程序（而不是 XCopy 安装程序）。
 
@@ -151,7 +151,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **OracleTable** 类型的数据集的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **oracleReaderQuery** 或 **OracleSource**） |
 
@@ -170,7 +170,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 在复制活动中，如果源的类型为 **OracleSource**，则可以在 **typeProperties** 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：“select \* from **MyTable**”。 <br/><br/>如果未指定，则执行此 SQL 语句：“select \* from **MyTable**” |否<br />（如果指定了**数据集**的 **tableName**） |
 
@@ -178,12 +178,12 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **OracleSink** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时前等待批插入操作完成的时间。 |**timespan**<br/><br/> 示例：00:30:00（30 分钟） |否 |
 | writeBatchSize |当缓冲区大小达到 **writeBatchSize** 值时，向 SQL 表插入数据。 |整数（行数） |否（默认值：100） |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 |查询语句。 |否 |
-| sliceIdentifierColumnName |指定要使用自动生成的切片标识符填充的复制活动列名称。  **sliceIdentifierColumnName** 的值用于在重新运行时清除特定切片的数据。 |数据类型为 **binary(32)** 的列的列名称。 |否 |
+| sliceIdentifierColumnName |指定要使用自动生成的切片标识符填充的复制活动列名称。 **sliceIdentifierColumnName** 的值用于在重新运行时清除特定切片的数据。 |数据类型为 **binary(32)** 的列的列名称。 |否 |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>在 Oracle 数据库中复制和粘贴数据的 JSON 示例
 
@@ -557,7 +557,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **错误消息**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
 
 **可能的原因**
 
@@ -566,10 +566,10 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **解决方法**
 
-* 如果未安装适用于 Oracle 的 .NET 提供程序，请先[安装](http://www.oracle.com/technetwork/topics/dotnet/downloads/)，再重试此方案。
+* 如果未安装适用于 Oracle 的 .NET 提供程序，请先[安装](https://www.oracle.com/technetwork/topics/dotnet/downloads/)，再重试此方案。
 * 如果安装此提供程序后仍出现此错误消息，请完成以下步骤：
-   1. 从文件夹 <system disk\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config 中打开 .NET 2.0 的计算机配置文件。
-   2. 搜索**用于 .NET 的 Oracle 数据提供程序**。 应该能够在 **system.data** > **DbProviderFactories** 下找到以下示例中所示的条目：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+    1. 从文件夹 <system disk\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config 中打开 .NET 2.0 的计算机配置文件。
+    2. 搜索**用于 .NET 的 Oracle 数据提供程序**。 应该能够在 **system.data** > **DbProviderFactories** 下找到以下示例中所示的条目：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * 将此条目复制到以下 .NET 4.0 文件夹中的 machine.config 文件：<system disk\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然后将版本更改为 4.xxx.x.x。
 * 通过运行 **gacutil /i [provider path]**，在全局程序集缓存 (GAC) 中安装 <ODP.NET Installed Path\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll。
 

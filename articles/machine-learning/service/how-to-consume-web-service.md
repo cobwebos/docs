@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 03340dc8f3be2465f20756dc9799b9c1e4293521
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: a862c920f1e070ab1bbb8af2546bc3d4350347b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417119"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889941"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
@@ -128,7 +128,7 @@ Web 服务可以接受一个请求中的多个数据集。 它会返回包含响
 
 ### <a name="binary-data"></a>二进制数据
 
-如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 下面是 `score.py` 的一个示例，它接受二进制数据，并返回 POST 请求的反向字节。 对于 GET 请求，它在响应正文中返回完整 URL：
+如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 下面是示例的`score.py`接受二进制数据：
 
 ```python 
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -142,14 +142,16 @@ def run(request):
     print("This is run()")
     print("Request: [{0}]".format(request))
     if request.method == 'GET':
+        # For this example, just return the URL for GETs
         respBody = str.encode(request.full_path)
         return AMLResponse(respBody, 200)
     elif request.method == 'POST':
         reqBody = request.get_data(False)
-        respBody = bytearray(reqBody)
-        respBody.reverse()
-        respBody = bytes(respBody)
-        return AMLResponse(respBody, 200)
+        # For a real world solution, you would load the data from reqBody 
+        # and send to the model. Then return the response.
+        
+        # For demonstration purposes, this example just returns the posted data as the response.
+        return AMLResponse(reqBody, 200)
     else:
         return AMLResponse("bad request", 500)
 ```
