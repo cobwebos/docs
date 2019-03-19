@@ -1,5 +1,5 @@
 ---
-title: 指南：使用 Azure BizTalk 服务处理 EDIFACT 发票 | Microsoft Docs
+title: 教程：处理 EDIFACT 发票，使用 Azure BizTalk 服务 |Microsoft Docs
 description: 如何创建并配置 Box 连接器或 API 应用，以及在 Azure 应用服务中的逻辑应用中使用它
 services: biztalk-services
 documentationcenter: .net,nodejs,java
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: bb07e3ab8043aab24d6d8c3e3db3f3674b28c6f3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5eb9740bdd0543556265f54a1a37b632f79ac861
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244485"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550116"
 ---
-# <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>指南：使用 Azure BizTalk 服务处理 EDIFACT 发票
+# <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>教程：使用 Azure BizTalk 服务处理 EDIFACT 发票
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -54,12 +54,12 @@ ms.locfileid: "51244485"
 
 为完成该方案，我们使用服务总线队列将发票从 Contoso 发送到 Northwind 或接收来自 Northwind 的回单。 可使用客户端应用程序创建这些队列，此应用程序可供下载且包含在作为本教程一部分的示例包中。  
 
-## <a name="prerequisites"></a>先决条件
-* 必须具有一个服务总线命名空间。 有关创建命名空间的说明，请参阅[操作方法：创建或修改服务总线服务命名空间](https://msdn.microsoft.com/library/azure/hh674478.aspx)。 假定已预配服务总线命名空间，名为 **edifactbts**。
+## <a name="prerequisites"></a>必备组件
+* 必须具有一个服务总线命名空间。 有关创建命名空间的说明，请参阅[How To:创建或修改服务总线服务 Namespace](https://msdn.microsoft.com/library/azure/hh674478.aspx)。 假定已预配服务总线命名空间，名为 **edifactbts**。
 * 必须具有 BizTalk 服务订阅。 本教程假定用户已拥有 BizTalk 服务订阅，名为 **contosowabs**。
 * 在 BizTalk 服务门户中注册 BizTalk 服务订阅。 有关说明，请参阅[在 BizTalk 服务门户中注册 BizTalk 服务部署](https://msdn.microsoft.com/library/hh689837.aspx)
 * 必须安装 Visual Studio。
-* 必须安装 BizTalk 服务 SDK。 可以从 [http://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057) 下载 SDK  
+* 必须安装 BizTalk 服务 SDK。 可以从 [https://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057) 下载 SDK  
 
 ## <a name="step-1-create-the-service-bus-queues"></a>步骤 1：创建服务总线队列
 此解决方案使用服务总线队列在贸易合作伙伴之间交换消息。 Contoso 和 Northwind 从 EAI 和/或 EDI 桥使用消息的位置将消息发送到队列。 此解决方案需要三个服务总线队列：
@@ -106,7 +106,7 @@ ms.locfileid: "51244485"
    3. 在“协议”选项卡上的“架构”部分下，上传“EFACT_D93A_INVOIC.xsd”架构。 示例包中提供此架构。
       
       ![][4]  
-   4. 在“传输”选项卡上，指定服务总线队列的详细信息。 发送端协议使用 **northwindreceive** 队列向 Northwind 发送 EDIFACT 发票，并使用 **suspended** 队列来路由处理期间失败且已挂起的任何消息。 已在本主题的“步骤 1：创建服务总线队列”中创建了这些队列。
+   4. 在“传输”选项卡上，指定服务总线队列的详细信息。 发送端协议使用 **northwindreceive** 队列向 Northwind 发送 EDIFACT 发票，并使用 **suspended** 队列来路由处理期间失败且已挂起的任何消息。 创建这些队列中的**步骤 1:创建服务总线队列**（在本主题中）。
       
       ![][5]  
       
@@ -128,7 +128,7 @@ ms.locfileid: "51244485"
    * 在“发送设置”选项卡上，注意“入站 URL”下的终结点。 要使用 EDI 发送桥将消息从 Contoso 发送到 Northwind，必须向此终结点发送消息。
    * 在“接收设置”选项卡上，注意“传输”下的终结点。 要使用 EDI 接收桥将消息从 Northwind 发送到 Contoso，则必须向此终结点发送一条消息。  
 
-## <a name="step-3-create-and-deploy-the-biztalk-services-project"></a>步骤 3：创建并部署 BizTalk 服务项目
+## <a name="step-3-create-and-deploy-the-biztalk-services-project"></a>步骤 3：创建和部署 BizTalk 服务项目
 在上一步中，部署了用于处理 EDIFACT 发票和回单的 EDI 发送和接收协议。 这些协议仅能处理符合标准 EDIFACT 消息架构的消息。 但是，此解决方案的情况是，Contoso 通过内部专有架构将发票发送到 Northwind。 因此，在消息发送到 EDI 发送桥之前，必须先将其从内部架构转换为标准 EDIFACT 发票架构。 BizTalk 服务 EAI 项目将执行此操作。
 
 用于转换消息的 BizTalk 服务项目 **InvoiceProcessingBridge** 也包含在下载的示例中。 该项目包括以下项目：
@@ -223,7 +223,7 @@ ms.locfileid: "51244485"
    
    从输出窗格中，复制在其中部署 EAI 桥的终结点，例如 `https://contosowabs.biztalk.windows.net/default/ProcessInvoiceBridge`。 稍后需要此终结点 URL。  
 
-## <a name="step-4-test-the-solution"></a>步骤 4：测试此解决方案
+## <a name="step-4-test-the-solution"></a>步骤 4：测试解决方案
 在本主题中，我们了解了如何使用示例中提供的“教程客户端”应用程序测试解决方案。  
 
 1. 在 Visual Studio 中，按 F5 启动“教程客户端”。

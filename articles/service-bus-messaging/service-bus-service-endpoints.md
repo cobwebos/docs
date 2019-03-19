@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234061"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843555"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 
@@ -48,7 +48,7 @@ ms.locfileid: "56234061"
 
 ## <a name="enable-service-endpoints-with-service-bus"></a>在服务总线中启用服务终结点
 
-在服务总线中使用 VNet 服务终结点的一个重要考虑因素是，不应在将标准层服务总线命名空间和高级层服务总线命名空间混合使用的应用程序中启用这些终结点。 因为标准层不支持 VNet，所以终结点将被限制为仅用于高级层命名空间。 VNet 将阻止到标准命名空间的通信。
+在服务总线中使用 VNet 服务终结点的一个重要考虑因素是，不应在将标准层服务总线命名空间和高级层服务总线命名空间混合使用的应用程序中启用这些终结点。 因为标准层不支持 VNet，所以终结点将被限制为仅用于高级层命名空间。
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>通过 VNet 集成启用的高级安全方案 
 

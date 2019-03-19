@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 897a350c345e6e284f30040c0d4fcf07d5a6f466
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.openlocfilehash: 4db515a931bc7f423eb11ae31b7304a602f0da46
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106835"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531723"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>数据处理和用户定义的函数
 
@@ -40,7 +40,7 @@ Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、
 
 ### <a name="matchers"></a>匹配程序
 
-匹配程序定义一组条件，用于评估将根据传入的传感器遥测数据执行的操作。 用于确定匹配项的条件可能包括来自传感器、传感器父设备和传感器父空间的属性。 这些条件表示为根据 [JSON 路径](http://jsonpath.com/)进行的比较，如以下示例所述：
+匹配程序定义一组条件，用于评估将根据传入的传感器遥测数据执行的操作。 用于确定匹配项的条件可能包括来自传感器、传感器父设备和传感器父空间的属性。 这些条件表示为根据 [JSON 路径](https://jsonpath.com/)进行的比较，如以下示例所述：
 
 - 所有数据类型为 **Temperature** 的传感器，由转义的字符串值 `\"Temperature\"` 表示
 - 其端口中包含 `01`

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473340"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847359"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>机器学习和数据科学工具
 Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工具和库，这些工具和库以 Python、R 和 Julia 等热门语言提供。 
@@ -71,7 +71,7 @@ Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | 常规 ML 工具     |
 | 如何使用或运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上，使用 X2Go 进行登录，然后转到“应用程序” > “开发” > “Weka”。 |
-| 指向示例的链接      | [Weka 示例](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| 指向示例的链接      | [Weka 示例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | 相关工具      |LightGBM、Rattle、XGBoost   |
 
 ## <a name="rattle"></a>Rattle

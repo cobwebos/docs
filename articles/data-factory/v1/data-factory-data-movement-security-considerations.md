@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 197762255a1a693821b8416227b4abf52755eb31
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015740"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539609"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[数据工厂的数据移动安全注意事项](../data-movement-security-considerations.md)。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 本文介绍了 Azure 数据工厂中数据移动服务用于保护数据的基本安全基础结构。 Azure 数据工厂管理资源建立在 Azure 安全基础结构上，并使用 Azure 提供的所有可能的安全措施。
 
 在数据工厂解决方案中，可以创建一个或多个数据[管道](data-factory-create-pipelines.md)。 “管道”是共同执行一项任务的活动的逻辑分组。 这些管道位于创建数据工厂的区域。 
@@ -45,6 +45,8 @@ ms.locfileid: "54015740"
 
 - 云方案 - 在这种方案中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务（如 Azure 存储、Azure SQL 数据仓库、Azure SQL 数据库、Azure Data Lake Store、Amazon S3 和 Amazon Redshift）、SaaS 服务（如 Salesforce）以及 Web 协议（如 FTP 和 OData）。 可以在[这里](data-factory-data-movement-activities.md#supported-data-stores-and-formats)找到受支持数据源的完整列表。
 - 混合方案 - 在这种方案中，源或目标位于防火墙之后或本地公司网络中，数据存储位于专用网络/虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>云方案
 ### <a name="securing-data-store-credentials"></a>保护数据存储凭据
@@ -72,10 +74,10 @@ Azure Data Lake Store 还为存储在帐户中的数据提供加密。 启用后
 Azure Blob 存储和 Azure 表存储支持存储服务加密 (SSE)，它会在将数据保存到存储中前进行自动加密，在检索前进行自动解密。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)。
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 支持静态数据的客户端和服务器加密。 有关详细信息，请参阅[使用加密保护数据](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)。 目前，数据工厂不支持虚拟私有云 (VPC) 中的 Amazon S3。
+Amazon S3 支持静态数据的客户端和服务器加密。 有关详细信息，请参阅[使用加密保护数据](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)。 目前，数据工厂不支持虚拟私有云 (VPC) 中的 Amazon S3。
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift 支持静态数据的群集加密。 有关详细信息，请参阅 [Amazon Redshift 数据库加密](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)。 目前，数据工厂不支持 VPC 中的 Amazon Redshift。 
+Amazon Redshift 支持静态数据的群集加密。 有关详细信息，请参阅 [Amazon Redshift 数据库加密](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)。 目前，数据工厂不支持 VPC 中的 Amazon Redshift。 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、自定义字段。 有关详细信息，请参阅 [Understanding the Web Server OAuth Authentication Flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)（了解 Web 服务器 OAuth 身份验证流）。  
@@ -93,7 +95,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 - 从 Azure 门户/复制向导通过 HTTPS 使用纯文本（较不安全）。 凭据以纯文本形式传递到本地网关。
 - 使用复制向导中的 JavaScript 加密库。
 - 使用一键式凭据管理器应用。 一键式应用程序在有权访问网关的本地计算机上执行，并为数据存储设置凭据。 此选项与下一选项是最安全的选项。 默认情况下，凭据管理器应用在计算机上使用端口 8050，借助网关确保安全通信。  
-- 使用 [New-AzureRmDataFactoryEncryptValue](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue) PowerShell cmdlet 加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 可以使用此 cmdlet 返回的加密凭据，并将其添加到 JSON 文件中 connectionString 的 EncryptedCredential 元素内（该文件将与 [New-AzureRmDataFactoryLinkedService](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) cmdlet 一起使用），或者将其添加到门户网站的数据工厂编辑器的 JSON 代码片段中。 此选项与一键式应用程序是最安全的选项。 
+- 使用[新建 AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 可以使用此 cmdlet 返回的加密的凭据并将其添加到**EncryptedCredential**的元素**connectionString**与使用的 JSON 文件中[新 AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 或 JSON 代码段中在门户中的数据工厂编辑器中。 此选项与一键式应用程序是最安全的选项。 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>基于 JavaScript 加密库的加密
 可以使用[复制向导](data-factory-copy-wizard.md)中的 [JavaScript 加密库](https://www.microsoft.com/download/details.aspx?id=52439)对数据存储凭据加密。 选择此选项时，复制向导将检索网关的公共密钥，并将其用于加密数据存储凭据。 凭据由网关计算机解密，并受 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 保护。
@@ -148,7 +150,7 @@ IPSec VPN：
 
 下表提供了企业防火墙的出站端口和域要求。
 
-| 域名 | 出站端口 | Description |
+| 域名 | 出站端口 | 描述 |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | 用于将网关连接到数据工厂中的数据移动服务 |
 | `*.core.windows.net` | 443 | 使用[暂存复制](data-factory-copy-activity-performance.md#staged-copy)功能时，由网关用于连接到 Azure 存储帐户。 | 
@@ -161,7 +163,7 @@ IPSec VPN：
 
 下表提供了 Windows 防火墙的入站端口要求。
 
-| 入站端口 | Description | 
+| 入站端口 | 描述 | 
 | ------------- | ----------- | 
 | 8050 (TCP) | 由凭据管理器应用程序用于为网关上的本地数据存储安全地设置凭据。 | 
 
@@ -176,7 +178,7 @@ IPSec VPN：
 - [Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9f818715895c2ff2c5d0e1758aaf17a2393287d2
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 70ac4319e2ea0081f7805c2fb936af1310d57d8f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050638"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534934"
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理器流量视图
 
@@ -35,6 +35,8 @@ ms.locfileid: "54050638"
 
 流量管理器的工作原理是根据已启用此功能的配置文件，查看在过去七天内收到的传入查询。 流量视图从传入查询信息提取 DNS 解析程序的源 IP，使用该 IP 作为用户位置的表示形式。 然后以 DNS 解析程序级别粒度将这些 IP 组合在一起，以使用流量管理器维护的 IP 地址的地理信息创建用户群区域。 然后，流量管理器查找查询所路由到的 Azure 区域，并为这些区域中的用户构造流量流映射。  
 在下一步中，流量管理器使用它为不同最终用户网络维护的网络智能延迟表将用户群区域关联到 Azure 区域映射，以了解这些区域中的用户在连接到 Azure 区域时所经历的平均延迟。 然后按每个本地 DNS 解析程序 IP 级别将所有这些计算组合起来，再向你显示。 可以通过各种方式来使用信息。
+
+流量视图数据更新的频率取决于多个内部服务变量。 但是，数据通常被更新每 24 小时一次。
 
 >[!NOTE]
 >流量视图中描述的延迟是最终用户和其所连接到的 Azure 区域之间的代表性延迟，不是 DNS 查找延迟。 流量视图对本地 DNS 解析程序与查询被路由到的 Azure 区域之间的延迟进行了最佳估算，如果可用数据不足，返回的延迟将为 NULL。 

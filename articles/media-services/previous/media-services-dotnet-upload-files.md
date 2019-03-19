@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: a07c4f285b2bb2d74b580648a3aad6a550766828
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: d03a4081e0dcc164530e5ac0a0472edbddc3c727
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984216"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845507"
 ---
-# <a name="upload-files-into-a-media-services-account-using-net-legacy"></a>使用 .NET 将文件上传到媒体服务帐户（旧版）
+# <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 将文件上传到媒体服务帐户 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
@@ -36,7 +36,7 @@ ms.locfileid: "55984216"
 > [!NOTE]
 > 请注意以下事项：
 > 
-> * 生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
+> * 生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
 > * 名称长度不应超过 260 个字符。
 > * 支持在媒体服务中处理的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
 > * 不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
@@ -48,7 +48,7 @@ ms.locfileid: "55984216"
   如果计划使用渐进式下载传送 MP4，则使用此选项： 
 * **CommonEncryption** - 上传经过通用加密或 PlayReady DRM 加密并保护的内容（例如，受 PlayReady DRM 保护的平滑流式处理）时使用此选项。
 * **EnvelopeEncrypted** - 如果要上传使用 AES 加密的 HLS，请使用此选项。 请注意，Transform Manager 必须已对文件进行编码和加密。
-* **StorageEncrypted** - 使用 AES-256 位加密在本地加密明文内容，然后将其上传到 Azure 存储以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
+* **StorageEncrypted** - 使用 AES-256 位加密在本地加密明文内容，并将其上传到 Azure Storage 中以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
   
     媒体服务为资产提供磁盘上的存储加密，而不是通过数字权限管理器 (DRM) 等线路提供加密。
   
@@ -90,7 +90,7 @@ ms.locfileid: "55984216"
 ## <a name="upload-multiple-files-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 上传多个文件
 以下代码演示如何创建资产及上传多个文件。
 
-代码将执行以下操作：
+代码执行以下操作：
 
 * 使用上一步中定义的 CreateEmptyAsset 方法创建一个空资产。
 * 创建用于定义权限以及资产访问持续时间的 **AccessPolicy** 实例。
@@ -166,7 +166,7 @@ ms.locfileid: "55984216"
 上传大量资产时，请注意以下事项：
 
 * 每个线程创建一个新的 **CloudMediaContext** 对象。 **CloudMediaContext** 类不是线程安全的。
-* 将 NumberOfConcurrentTransfers 从默认值 2 增加到更高的值（如 5）。 设置此属性将影响 **CloudMediaContext** 的所有实例。 
+* 将 NumberOfConcurrentTransfers 从默认值 2 增加到更高的值（如 5）。 设置此属性会影响 **CloudMediaContext**的所有实例。 
 * 将 ParallelTransferThreadCount 保留为默认值 10。
 
 ## <a id="ingest_in_bulk"></a>使用媒体服务 .NET SDK 批量引入资产
@@ -295,7 +295,7 @@ ms.locfileid: "55984216"
     }
 ```
 
-以下示例将调用 UploadFile 函数，并指定存储加密作为资产创建选项。  
+以下示例调用 UploadFile 函数，并指定存储加密作为资产创建选项。  
 
 ```csharp
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);

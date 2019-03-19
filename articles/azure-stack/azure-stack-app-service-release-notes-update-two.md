@@ -16,12 +16,12 @@ ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 8126397dfb3b02778413ab6ee696a8138c792c15
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d57b06a33421a94c4f849a1c1fd7cd6f1f4248dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342558"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848892"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>基于 Azure Stack 的应用服务 Update 2 发行说明
 
@@ -64,7 +64,7 @@ ms.locfileid: "57342558"
     - NodeJS 8.11.1
   - 增加了 **NPM** 版本：
     - 5.6.0
-  - 更新了 .Net Core 组件，使其与公有云中的 Azure 应用服务保持一致。
+  - 更新的.NET Core 的组件与 Azure 应用服务的公有云保持一致。
   - 更新了 Kudu
 
 - 启用了部署槽位自动交换功能 - [配置自动交换](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)

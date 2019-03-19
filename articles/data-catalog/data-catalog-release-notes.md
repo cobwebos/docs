@@ -8,12 +8,12 @@ ms.assetid: 3aca9c49-45a4-4352-92e6-bd25ee3eacf7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 12b8161cc5845bca749c34188835cef1d92b299a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 60c5b7b55e417a5703010ea34cf75dcb20146c37
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404545"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531673"
 ---
 # <a name="azure-data-catalog-release-notes"></a>Azure 数据目录发行说明
 ## <a name="notes-for-the-november-20-2015-release-of-azure-data-catalog"></a>Azure 数据目录 2015 年 11 月 20 日发行说明
@@ -29,7 +29,7 @@ ms.locfileid: "47404545"
 ### <a name="registering-and-connecting-to-teradata"></a>注册并连接到 Teradata
 连接到 Teradata 数据源时，用户必须已安装与所用软件的位数（32 位或 64 位）相匹配的正确 Teradata ODBC 驱动程序。
 
-截至此 ADC 发布日期，最新[适用于 Windows 的 Teradata ODBC 驱动程序（版本 15.10）](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) 兼容 Office 2013，但不兼容 Office 2016。
+截至此 ADC 发布日期，最新[适用于 Windows 的 Teradata ODBC 驱动程序（版本 15.10）](https://downloads.teradata.com/download/connectivity/odbc-driver/windows) 兼容 Office 2013，但不兼容 Office 2016。
 
 ## <a name="notes-for-the-july-13-2015-release-of-azure-data-catalog"></a>Azure 数据目录 2015 年 7 月 13 日发行说明
 ### <a name="registering-and-connecting-to-oracle-database"></a>注册并连接到 Oracle 数据库
@@ -53,13 +53,13 @@ ms.locfileid: "47404545"
 
 对于此问题行为有两种可能原因：
 
-**原因 1：Active Directory 联合身份验证服务配置** 数据源注册工具使用窗体身份验证针对 Active Directory 验证用户登录。 若要成功登录，Active Directory 管理员必须在全局身份验证策略中启用窗体身份验证。
+**原因 1：Active Directory 联合身份验证服务配置**数据源注册工具使用窗体身份验证针对 Active Directory 验证用户登录。 若要成功登录，Active Directory 管理员必须在全局身份验证策略中启用窗体身份验证。
 
 在某些情况下，只有在用户处于公司网络时，或者从公司外部网络进行连接时才可能出现这样的错误行为。 使用全局验证策略，可以单独为 Intranet 和 Extranet 连接启用身份验证方法。 如果用户连接的网络未启用窗体身份验证，可能会发生登录错误。
 
 有关详细信息，请参阅 [Configuring Authentication Policies](https://technet.microsoft.com/library/dn486781.aspx)（配置身份验证策略）。
 
-**原因 2：网络代理配置** 如果公司网络使用代理服务器，注册工具可能无法通过代理连接到 Azure Active Directory。 通过编辑工具的配置文件，将此部分添加到文件，用户可以确保注册工具不出现上述问题：
+**原因 2：网络代理配置**如果公司网络使用代理服务器，注册工具可能不能通过代理连接到 Azure Active Directory。 通过编辑工具的配置文件，将此部分添加到文件，用户可以确保注册工具不出现上述问题：
 
       <system.net>
         <defaultProxy useDefaultCredentials="true" enabled="true">

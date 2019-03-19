@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/12/2019
 ms.author: celested
-ms.reviewer: arvindh
+ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6984307dda58aeba840f2b6d08e84fb4f60cacc8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 84f1b7c9461d2eba5e13be8b15b2cbcc62715c23
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163064"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792032"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>单一登录到 Azure Active Directory 中的应用程序
 当用户在 Azure Active Directory (Azure AD) 中登录到应用程序时，单一登录 (SSO) 可以增加安全性和便利性。 本文介绍单一登录方法，并帮助你选择在配置应用程序时最适合的 SSO 方法。
@@ -35,14 +35,14 @@ ms.locfileid: "56163064"
 
 此流程图有助于确定哪种单一登录方法最适合你的情况。 
 
-![选择单一登录方法](./media/what-is-single-sign-on/choose-single-sign-on-method.png)
+![选择单一登录方法](./media/what-is-single-sign-on/choose-single-sign-on-method-updated.png)
 
 下表总结了单一登录方法，并提供了更多详细信息的链接。 
 
 | 单一登录方法 | 应用程序类型 | 使用时机 |
 | :------ | :------- | :----- |
 | [OpenID Connect 和 OAuth](#openid-connect-and-oauth) | 仅限云 | 在开发新应用程序时使用 OpenID Connect 和 OAuth。 此协议简化应用程序配置，有易用的 SDK，并且允许应用程序使用 MS Graph。
-| [SAML](#saml-sso) | 仅限云 | 尽可能为不使用 OpenID Connect 或 OAuth 的现有应用程序选择 SAML。 SAML 适用于使用某个 SAML 协议进行身份验证的应用程序。|
+| [SAML](#saml-sso) | 云和本地 | 尽可能为不使用 OpenID Connect 或 OAuth 的现有应用程序选择 SAML。 SAML 适用于使用某个 SAML 协议进行身份验证的应用程序。|
 | [基于密码](#password-based-sso) | 云和本地 | 在应用程序使用用户名和密码进行身份验证时选择“基于密码”。 基于密码的单一登录允许使用 Web 浏览器扩展插件或移动应用安全存储和重放应用程序的密码。 此方法使用应用程序提供的现有登录过程，但允许管理员管理密码。 |
 | [链接](#linked-sso) | 云和本地 | 当应用程序配置为在其他标识提供者服务中进行单一登录时，请选择关联的单一登录。 此选项不会向应用程序添加单一登录。 不过，应用程序可能已经使用其他服务（如 Active Directory 联合身份验证服务）实现了单一登录。|
 | [已禁用](#disabled-sso) | 云和本地 | 当应用尚未准备好配置为单一登录时，请使用已禁用的单一登录。 用户每次启动此应用程序时都需要输入其用户名和密码。|
@@ -69,7 +69,9 @@ ms.locfileid: "56163064"
 - SAML 2.0
 - WS 联合身份验证
 
-要将应用程序配置为基于 SAML 的单一登录，请参阅[配置基于 SAML 的单一登录](configure-single-sign-on-portal.md)。 此外，许多软件即服务 (SaaS) 应用程序都有[特定于应用程序的教程](../saas-apps/tutorial-list.md)，可以让用户详细了解基于 SAML 的单一登录的配置。 
+要将应用程序配置为基于 SAML 的单一登录，请参阅[配置基于 SAML 的单一登录](configure-single-sign-on-portal.md)。 此外，许多软件即服务 (SaaS) 应用程序都有[特定于应用程序的教程](../saas-apps/tutorial-list.md)，可以让用户详细了解基于 SAML 的单一登录的配置。
+
+若要配置 WS 联合身份验证应用程序，按照相同的指南来配置应用程序的基于 SAML 的单一登录，请参阅[配置基于 SAML 的单一登录的登录](configure-single-sign-on-portal.md)。 在要配置要使用 Azure AD 的应用程序的步骤，你将需要 WS 联合身份验证终结点的 Azure AD 登录 URL 替换为`https://login.microsoftonline.com/<tenant-ID>/wsfed`。
 
 有关 SAML 协议的详细信息，请参阅[单一登录 SAML 协议](../develop/single-sign-on-saml-protocol.md)。
 
@@ -151,11 +153,11 @@ Azure AD 管理员管理凭据时：
 
 ![Microsoft AAD 身份验证流程示意图](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. 用户输入 URL，通过应用程序代理访问本地应用程序。
+1. 用户输入用于通过应用程序代理访问本地应用程序的 URL。
 2. 应用程序代理将请求重定向到 Azure AD 身份验证服务，以进行预身份验证。 此时，Azure AD 将应用所有适用的身份验证和授权策略，例如多重身份验证。 如果用户通过验证，Azure AD 将创建令牌并将其发送给用户。
 3. 用户将令牌传递给应用程序代理。
 4. 应用程序代理对令牌进行验证并从令牌中检索用户主体名称 (UPN)。 然后，它通过双重身份验证的安全通道将请求、UPN 和服务主体名称 (SPN) 发送到连接器。
-5. 连接器使用 Kerberos 约束委托 (KCD) 与本地 AD 进行协商，模拟用户以获取应用程序的 Kerberos 令牌。
+5. 连接器与本地 AD，模拟用户以获取应用程序的 Kerberos 令牌将使用 Kerberos 约束委派 (KCD) 协商。
 6. Active Directory 域服务将应用程序的 Kerberos 令牌发送到连接器。
 7. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。
 8. 应用程序将响应发送到连接器，该响应随后返回到应用程序代理服务，最后返回到用户。

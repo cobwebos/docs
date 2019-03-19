@@ -5,16 +5,16 @@ description: 提供有关自定义翻译的常见问题的解答。
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 4d63eb817f7dc1ff957223cb5e9181fbc441fe29
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: d3e3d12e572c939fb2ddd5bc671aede434ca7d8a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227482"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760318"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -25,7 +25,6 @@ ms.locfileid: "55227482"
 在文件大小、模型训练和模型部署方面没有限制。 设置训练以便在自定义翻译中构建模型时，请记住以下限制。
 
 - 提交的文件大小必须小于 100 MB。
-
 - 不支持单语数据。
 
 ## <a name="when-should-i-request-deployment-for-a-translation-system-that-has-been-trained"></a>何时应该请求部署已训练的翻译系统？

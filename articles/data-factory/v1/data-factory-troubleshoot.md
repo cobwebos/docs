@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: c41f03494720c9283bb3ce91fda6e3981f305084
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 5b9e0a30658e1cb8fe0f83d55c04f120637babaf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023013"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549198"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>排查数据工厂问题
 > [!NOTE]
 > 本文适用于 Azure 数据工厂版本 1。 
 
 本文提供有关 Azure 数据工厂使用问题的故障排除提示。 本文未列出使用该服务时可能出现的所有问题，但涵盖了部分问题和常见故障排除的提示。   
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 ### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>错误：该订阅未注册，无法使用命名空间 'Microsoft.DataFactory'
@@ -34,20 +36,20 @@ ms.locfileid: "54023013"
 2. 使用以下命令登录到 Azure 帐户。
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. 运行以下命令来注册 Azure 数据工厂提供程序。
 
     ```powershell        
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>问题：运行数据工厂 cmdlet 时出现未授权错误
 可能未在 Azure PowerShell 中使用正确的 Azure 帐户或订阅。 使用以下 cmdlet 选择要在 Azure PowerShell 中使用的正确 Azure 帐户和订阅。
 
-1. Connect-AzureRmAccount - 使用正确的用户 ID 和密码
-2. Get-AzureRmSubscription - 查看帐户的所有订阅。
-3. Select-AzureRmSubscription &lt;订阅名称&gt; - 选择正确的订阅。 使用在 Azure 门户中创建数据工厂时所用的同一个订阅。
+1. 连接 AzAccount-使用正确的用户 ID 和密码
+2. Get-AzSubscription-查看帐户的所有订阅。
+3. 选择 AzSubscription&lt;订阅名称&gt;-选择正确的订阅。 使用在 Azure 门户中创建数据工厂时所用的同一个订阅。
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>问题：无法从 Azure 门户启动数据管理网关快速安装
 快速安装数据管理网关需要使用 Internet Explorer 或者与 Microsoft ClickOnce 兼容的 Web 浏览器。 如果快速安装无法启动，请执行以下操作之一：
@@ -128,9 +130,9 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
-[json-scripting-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
+[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
+[json-scripting-reference]: https://go.microsoft.com/fwlink/?LinkId=516971
 
 [azure-portal]: https://portal.azure.com/
 

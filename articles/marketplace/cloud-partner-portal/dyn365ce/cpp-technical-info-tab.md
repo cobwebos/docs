@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 214abd64232130dd3fd5fdde510f7545732ac82e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 1dd488c2eb419b5e210a48d7a94f7d0bb423a2b1
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081584"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731479"
 ---
 # <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Dynamics 365 for Customer Engagement 技术信息选项卡
 
@@ -34,7 +34,7 @@ ms.locfileid: "54081584"
 
 下表描述了这些字段。
 
-|      字段                    |    Description                  |
+|      字段                    |    描述                  |
 |    ---------                  |  ---------------                |
 |   基本许可模型          |  许可模型确定如何在 Dynamics 365 管理中心将客户分配到应用程序。 “资源”许可模型基于实例，而“用户”许可证是按每个租户分配的。  |
 |  S2S 出站和 CRM 安全存储访问 |  用于配置 CRM 安全存储或服务器间 (S2S) 出站访问。 *此功能要求遵循 Dynamics 365 团队在认证阶段专业提出的注意事项。* Microsoft 将与你取得联系，以完成附加的步骤来支持此功能。  |
@@ -53,12 +53,12 @@ ms.locfileid: "54081584"
 
 下表描述了这些字段。
 
-|      字段                    |    Description                  |
+|      字段                    |    描述                  |
 |    ---------                  |  ---------------                |
 |  包的文件名     |  包的文件名 (.zip)。  此名称不是公开的，由 Dynamics 365 认证团队在内部使用。  |
 |  URL                          |  包含已上传包文件的 Azure 存储帐户的 URL。 此 URL 应该包含只读的 SAS 密钥，使我们的团队能够选取要验证的包。  |
 | 多个 CRM 包     | 仅当支持多个版本的、包含不同包的 CRM 时，才选择“是”。  每个版本包含必须单独创建的相应包文件。  |
-| 方案和用例资产   | 用于上传应用程序的功能规范文档，供 Dynamics 365 验证团队使用。  此规范的首选格式是 [E2E 用户方案模板](http://download.microsoft.com/download/5/1/8/51812AC9-BCD8-489F-937C-5D439C494EC1/E2E%20User%20Scenario%20Template.docx)。  |
+| 方案和用例资产   | 用于上传应用程序的功能规范文档，供 Dynamics 365 验证团队使用。  此规范的首选格式是 [E2E 用户方案模板](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx)。  |
 |  |  |
 
 

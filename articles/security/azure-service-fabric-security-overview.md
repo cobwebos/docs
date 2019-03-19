@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: c5b5f80a43530fe6d0b90e65c3aef89a815157e4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116214"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241385"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric 安全性概述
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序的难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放且可靠的工作负荷。
@@ -87,7 +87,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 2.  **事件聚合**：需要先收集和聚合生成的事件才能显示这些事件。 通常建议使用 [Azure 诊断](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad)（类似于基于代理的日志集合）或 [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow)（进程内日志集合）。
 
-3.  **分析**：需可视化事件并能够以某种格式访问事件，以便进行分析和显示。 有多个平台可用于监视和诊断数据的分析和可视化。 我们建议使用 [Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) 和 [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights)，因为它们能与 Service Fabric 完美集成。
+3.  **分析**：需可视化事件并能够以某种格式访问事件，以便进行分析和显示。 有多个平台可用于监视和诊断数据的分析和可视化。 我们建议[Azure Monitor 日志](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms)并[Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights)因为他们更好地与 Service Fabric 集成。
 
 还可使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) 来监视构建 Service Fabric 群集时所在的许多 Azure 资源。
 
@@ -102,7 +102,7 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 
 下表列出了在设置群集时所需的证书：
 
-|证书信息设置 |说明|
+|证书信息设置 |描述|
 |-------------------------------|-----------|
 |ClusterCertificate|    需要使用此证书来保护群集节点之间的通信。 可以使用两个群集证书：一个主要证书，一个用于升级的辅助证书。|
 |ServerCertificate| 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 可以使用两个服务器证书：一个主要证书，一个用于升级的辅助证书。|

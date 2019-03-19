@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 8f2a7a953ce2964645c281d9454a73b0cf1a8ff6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747182"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531634"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "55747182"
 可以将数据从任何受支持的源数据存储复制到 Azure 数据资源管理器。 可以将数据从 Azure 数据资源管理器复制到任何受支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md)表。
 
 >[!NOTE]
->目前，尚不支持使用自承载集成运行时在 Azure 数据资源管理器与本地数据存储之间复制数据。
+>版本 3.14 起支持向/从 Azure 数据资源管理器从/向上使用自承载集成运行时的本地数据存储复制数据。
 
 Azure 数据资源管理器连接器可用来执行以下操作：
 
@@ -45,16 +45,32 @@ Azure 数据资源管理器连接器可用来执行以下操作：
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
+Azure 数据资源管理器连接器将使用服务主体身份验证。 请按照下列步骤以获取服务主体并授予权限：
+
+1. 遵循[将应用程序注册到 Azure AD 租户](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)，在 Azure Active Directory (Azure AD) 中注册一个应用程序实体。 记下下面的值，这些值用于定义链接服务：
+
+    - 应用程序 ID
+    - 应用程序密钥
+    - 租户 ID
+
+2. 授予服务主体适当的权限在 Azure 数据资源管理器。 请参阅[管理 Azure 数据资源管理器数据库权限](../data-explorer/manage-database-permissions.md)的角色和权限，以及演练管理权限的详细信息。 一般情况下，需要
+
+    - **作为源**，请至少授予**数据库查看器**到你的数据库角色。
+    - **作为接收器**，请至少授予**数据库引入器**到你的数据库角色。
+
+>[!NOTE]
+>当使用 ADF UI 创作，列出链接服务上的数据库或列出数据集上的表的操作可能需要更高特权的权限授予服务主体。 或者，您可以选择手动输入数据库名称和表名称。 只要具有读/写数据的适当权限授予服务主体，将复制活动执行的工作原理。
+
 Azure 数据资源管理器链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **AzureDataExplorer** | 是 |
 | endpoint | Azure 数据资源管理器群集的终结点 URL，格式为 `https://<clusterName>.<regionName>.kusto.windows.net `。 | 是 |
 | database | 数据库的名称。 | 是 |
-| tenant | 指定应用程序的租户信息（域名或租户 ID）。 可以将鼠标指针悬停在 Azure 门户右上角来检索它。 | 是 |
-| servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
-| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| tenant | 指定应用程序的租户信息（域名或租户 ID）。 这是您通常称为"**颁发机构 ID**"中[Kusto 连接字符串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)。 可以将鼠标指针悬停在 Azure 门户右上角来检索它。 | 是 |
+| servicePrincipalId | 指定应用程序的客户端 ID。 这是您通常称为"**AAD 应用程序客户端 ID**"中[Kusto 连接字符串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)。 | 是 |
+| servicePrincipalKey | 指定应用程序的密钥。 这是您通常称为"**AAD 应用程序密钥**"中[Kusto 连接字符串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 
 **链接服务属性示例：**
 
@@ -85,10 +101,10 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **AzureDataExplorerTable** | 是 |
-| table | 链接服务引用的表的名称。 | 对于接收器为必需的，对于源不是必需的 |
+| 表 | 链接服务引用的表的名称。 | 对于接收器为必需的，对于源不是必需的 |
 
 **数据集属性示例**
 
@@ -116,11 +132,14 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 若要从 Azure 数据资源管理器复制数据，请将复制活动源中的 **type** 属性设置为 **AzureDataExplorerSource**。 复制活动源部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为：**AzureDataExplorerSource** | 是 |
 | query | 以 [KQL 格式](/azure/kusto/query/)指定的只读请求。 使用自定义 KQL 查询作为参考。 | 是 |
 | queryTimeout | 查询请求超时前的等待时间。默认值是 10 分钟 (00:10:00)；允许的最大值是 1 小时 (01:00:00)。 | 否 |
+
+>[!NOTE]
+>默认情况下的 azure 资源管理器中的数据源有 500,000 记录或 64 MB 的大小限制。 若要检索而无需截断的所有记录，可以指定`set notruncation;`查询的开始处。 请参阅[查询限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)上更多详细信息。
 
 **示例：**
 
@@ -159,10 +178,10 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 若要将数据复制到 Azure 数据资源管理器，请将复制活动接收器中的 type 属性设置为 **AzureDataExplorerSink**。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为：**AzureDataExplorerSink** | 是 |
-| ingestionMappingName | 基于 Kusto 表预先创建的 [csv 映射](/azure/kusto/management/mappings#csv-mapping)的名称。 若要将源中的列映射到 Azure 数据资源管理器，还可以使用复制活动[列映射](copy-activity-schema-and-type-mapping.md)。 | 否 |
+| ingestionMappingName | 预先创建的名称**[映射](/azure/kusto/management/mappings#csv-mapping)** Kusto 表。 若要将映射到 Azure 数据资源管理器-适用于源中的列**[支持的源存储/格式](copy-activity-overview.md#supported-data-stores-and-formats)** 包括 CSV/JSON/Avro 格式等，则可以使用复制活动[列映射](copy-activity-schema-and-type-mapping.md)（按名称的隐式或显式配置） 和/或 Azure 数据资源管理器映射。 | 否 |
 
 **示例：**
 
@@ -177,7 +196,7 @@ Azure 数据资源管理器链接服务支持以下属性：
             },
             "sink": {
                 "type": "AzureDataExplorerSink",
-                "ingestionMappingName": "<optional csv mapping name>"
+                "ingestionMappingName": "<optional Azure Data Explorer mapping name>"
             }
         },
         "inputs": [

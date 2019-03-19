@@ -2,7 +2,7 @@
 title: 常见问题 - Azure 专用 HSM | Microsoft Docs
 description: 涵盖了有关 Azure 专用 HSM 的各种主题的常见问题
 services: dedicated-hsm
-author: barclayn
+author: johndaw
 manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
@@ -10,15 +10,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: concepts
-ms.date: 12/11/2018
+ms.topic: conceptual
+ms.date: 3/11/2019
 ms.author: barclayn
-ms.openlocfilehash: 5ea98f96fe10337e905270cf5da4847d825d6eb4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: cd3228b66dbbf19b574c390733340c0ea2fb5a78
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107797"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57846882"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -164,19 +164,19 @@ Microsoft 对 HSM 没有任何管理或加密控制权。 但 Microsoft 确实�
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>问：是否可在同一区域或跨多个区域配置高可用性？
 
-是的。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 可将相同区域或跨区域的相同 VNET 或其他 VNET 中的 HSM，或者使用站点到站点或点到点 VPN 连接到 VNET 的本地 HSM 添加到相同的高可用性配置。
+是的。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 从同一个 VNET 或其他 Vnet 位于同一区域或跨区域，或在本地 Hsm Hsm 连接到 VNET 使用站点到站点或点到点 VPN 可以添加到相同的高可用性配置。
 
-### <a name="can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>是否可将本地网络中的 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：是否可将本地网络中的 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
 
 是的。 这些 HSM 必须符合 SafeNet Luna Network HSM 7 的高可用性要求。
 
-### <a name="can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>是否可将本地网络中的 Luna 5/6 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
+### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：是否可将本地网络中的 Luna 5/6 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
 
 不是。
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>问：在一个应用程序中可将多少个 HSM 添加到相同的高可用性配置？
 
-16.
+16\.
 
 ## <a name="support"></a>支持
 
@@ -246,7 +246,7 @@ Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和�
 
 专用 HSM 服务将预配 SafeNet Luna Network HSM 7 设备。 这些设备使用 FIPS 140-2 级别 3 验证的 HSM。 默认部署的配置、操作系统和固件也已通过 FIPS 验证。 无需采取任何措施即可符合 FIPS 140-2 级别 3 的要求。
 
-### <a name="how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>客户如何确保在取消预配 HSM 时擦除所有密钥材料？
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>问：客户如何确保在取消预配 HSM 时擦除所有密钥材料？
 
 在请求取消预配之前，客户必须使用 Gemalto 提供的 HSM 客户端工具将 HSM 归零。
 

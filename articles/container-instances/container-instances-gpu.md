@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: 2cbfb21469df45f29a70b5d10d8c99ecd894c30c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
-ms.translationtype: HT
+ms.openlocfilehash: f35b2cd8d360bd46913eaa34b91e1fd19bc1ba9b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755013"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533589"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
 
@@ -28,15 +28,7 @@ ms.locfileid: "53755013"
 
 在预览版中，在容器组中使用 GPU 资源时应用下列限制。 
 
-**支持的区域**：
-
-* 美国东部 (eastus)
-* 美国西部 2 (westus2)
-* 美国中南部 (southcentralus)
-* 西欧 (westeurope)
-* 北欧 (northeurope)
-* 东亚 (eastasia)
-* 印度中部 (centralindia)
+[!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 
 以后还会不断增添对其他区域的支持。
 
@@ -59,21 +51,9 @@ ms.locfileid: "53755013"
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
   | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
 
-### <a name="cpu-and-memory"></a>CPU 和内存
+[!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-部署 GPU 资源时，请设置适合工作负载的 CPU 和内存资源，最多可设置为下表所示的最大值。 这些值当前大于容器实例（不含 GPU 资源）中的 CPU 和内存限制。  
-
-| GPU SKU | GPU 计数 | CPU |  内存 (GB) |
-| --- | --- | --- | --- |
-| K80 | 1 | 6 | 56 |
-| K80 | 2 | 12 | 112 |
-| K80 | 4 | 24 | 224 |
-| P100 | 1 | 6 | 112 |
-| P100 | 2 | 12 | 224 |
-| P100 | 4 | 24 | 448 |
-| V100 | 1 | 6 | 112 |
-| V100 | 2 | 12 | 224 |
-| V100 | 4 | 24 | 448 |
+部署 GPU 资源时，设置适合工作负荷，最前面的表中显示的最大值多 CPU 和内存资源。 这些值是当前大于容器组，而无需 GPU 资源中可用的 CPU 和内存资源。  
 
 ### <a name="things-to-know"></a>使用须知
 
@@ -85,6 +65,10 @@ ms.locfileid: "53755013"
 
 * **CUDA 驱动程序** - 具有 GPU 资源的容器实例使用 NVIDIA CUDA 驱动程序和容器运行时进行预配，因此可以使用专为 CUDA 工作负载开发的容器映像。
 
+  在此阶段，我们支持 CUDA 9.0。 例如，可以使用以下 Docker 文件的基础映像：
+  * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
+  * [tensorflow/tensorflow:1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+    
 ## <a name="yaml-example"></a>YAML 示例
 
 添加 GPU 资源的一种方式就是使用 [YAML 文件](container-instances-multi-container-yaml.md)部署容器组。 将以下 YAML 复制到名为 gpu-deploy-aci.yaml 的新文件中，然后保存该文件。 此 YAML 创建名为 gpucontainergroup 的容器组并使用 K80 GPU 指定容器实例。 该实例运行示例 CUDA 矢量添加应用程序。 请求的资源足以运行工作负载。

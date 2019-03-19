@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 1a25a9c3e0d099349286476f0ae3791efee1642f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: a618482b73e8e423bc00b7c9010c9282da69cd3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452808"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844699"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
 > [!NOTE]
 > 根据用户的反馈，我们正在将“VM 备份堆栈 V2”重命名为“即时还原”，以减少与 Azure Stack 功能的混淆。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 即时还原的新模型提供以下功能增强：
 
@@ -29,7 +31,6 @@ ms.locfileid: "56452808"
 *   还原时可以使用非托管 VM 的原始存储帐户（按磁盘）。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作
 
 
-
 ## <a name="whats-new-in-this-feature"></a>功能亮点
 
 目前，备份作业包括两个阶段：
@@ -37,11 +38,11 @@ ms.locfileid: "56452808"
 1.  获取 VM 快照。
 2.  将 VM 快照传输到 Azure 恢复服务保管库。
 
-只有在完成阶段 1 和 2 之后，才认为已创建恢复点。 在执行此项升级的过程中，完成快照后会立即创建恢复点，可以在相同的还原流中，使用此快照恢复点类型执行还原。 可以在 Azure 门户中使用“快照”作为恢复点类型来识别此恢复点，快照传输到保管库后，恢复点类型将更改为“快照和保管库”。
+只有在完成阶段 1 和 2 之后，才认为已创建恢复点。 在执行此项升级的过程中，完成快照后会立即创建恢复点，可以在相同的还原流中，使用此快照恢复点类型执行还原。 你可以通过使用"快照"作为恢复点类型，确定在 Azure 门户中的此恢复点和快照传输到保管库后，恢复点类型更改为"快照和保管库"。
 
 ![VM 备份堆栈资源管理器部署模型中的备份作业 - 存储和保管库](./media/backup-azure-vms/instant-rp-flow.png)
 
-快照保留 7 天。 此功能允许从保管库中的这些快照执行还原操作，并可缩短还原时间。 对于非托管磁盘方案，此功能减少了转换数据并将数据从保管库复制回到用户存储帐户所需的时间；对于托管磁盘用户，它可以基于备份数据创建托管磁盘。
+默认情况下，快照将保留两天。 此功能允许从保管库中的这些快照执行还原操作，并可缩短还原时间。 对于非托管磁盘方案，此功能减少了转换数据并将数据从保管库复制回到用户存储帐户所需的时间；对于托管磁盘用户，它可以基于恢复服务数据创建托管磁盘。
 
 ## <a name="feature-considerations"></a>功能注意事项
 
@@ -49,6 +50,7 @@ ms.locfileid: "56452808"
 * 增量快照作为页 blob 存储。 使用非托管磁盘的所有用户需要为其本地存储帐户中存储的快照付费。 由于托管 VM 备份使用的还原点集合在基础存储级别使用 Blob 快照，因此对于托管磁盘，你将看到与 Blob 快照定价对应的成本，并且成本是递增的。
 * 对于高级存储帐户，为即时恢复点创建的快照计入分配空间的 10-TB 限制。
 * 获得根据还原需要配置快照保留期的能力。 根据要求，可以在备份策略边栏选项卡中将快照保留期设置为最少一天，如下所述。 如果不经常执行还原，这可帮助节省保留快照的成本。
+* 这是一个方向升级，即时还原到升级后，您不能再返回。
 
 
 >[!NOTE]
@@ -77,7 +79,7 @@ ms.locfileid: "56452808"
 
 
 ## <a name="configure-snapshot-retention-using-azure-portal"></a>使用 Azure 门户配置快照保留期
-此选项目前在美国中西部、印度南部和澳大利亚东部提供。
+在所有的所有用户**公共地域**已升级到即时还原。
 
 对于已升级的用户，在 Azure 门户中可以看到“VM 备份策略”边栏选项卡下的“即时还原”部分中添加了一个字段。 可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期。
 
@@ -90,19 +92,19 @@ ms.locfileid: "56452808"
 1.  请登录到 Azure 帐户：
 
     ```
-    PS C:> Connect-AzureRmAccount
+    PS C:> Connect-AzAccount
     ```
 
 2.  选择要注册的订阅：
 
     ```
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    PS C:>  Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
     ```
 
 3.  注册此订阅：
 
     ```
-    PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
+    PS C:>  Register-AzProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
 ## <a name="upgrade-to-instant-restore-using-cli"></a>使用 CLI 升级到即时还原
@@ -133,7 +135,7 @@ ms.locfileid: "56452808"
 在权限提升的 PowerShell 终端中运行以下 cmdlet：
 
 ```
-Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
+Get-AzProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
 ```
 
 ### <a name="cli"></a>CLI

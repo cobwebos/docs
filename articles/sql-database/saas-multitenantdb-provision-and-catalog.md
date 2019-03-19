@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562889"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835775"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>在使用分片多租户 Azure SQL 数据库的 SaaS 应用程序中预配和编录新租户
 
@@ -123,7 +123,7 @@ ms.locfileid: "55562889"
 > * 将一批租户同时预配到多租户和单租户数据库中
 > * 在目录中注册数据库和租户映射
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备组件
 
 若要完成本教程，请确保已完成了以下先决条件：
 
@@ -237,7 +237,7 @@ ms.locfileid: "55562889"
 - 租户名称存储在“租户”表中。
 - 数据库名称存储在“分片管理”表中。
 
-1. 在 SQL Server Management Studio (SSMS) 中，使用登录名 **developer** 和密码 **P@ssword1** 连接到位于 **catalog-mt.\<USER\>.database.windows.net** 的租户服务器
+1. 在 SQL Server Management Studio (SSMS)，连接到租户服务器处**catalog-mt\<用户\>。 database.windows.net**，与登录名 =**开发人员**，和密码 = **P\@ssword1**
 
     ![“SSMS 连接”对话框](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

@@ -2,16 +2,17 @@
 title: 用于渲染的存储和数据移动选项 - Azure Batch
 description: 用于渲染工作负荷的存储和数据移动选项
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0d343ff5d7513500fa7803495dd42eb94b772935
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 5a0d4dc82995e63697cc673bc54695c9c6d586df
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546090"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790240"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>用于渲染资产和输出文件的存储与数据移动选项
 
@@ -25,7 +26,7 @@ ms.locfileid: "53546090"
   * 此选项的优势在于，它极其经济高效，文件系统不需要任何 VM，此外，VM 上的 blobfuse 缓存可避免重复为多个作业和任务下载相同的文件。  数据移动也很简单，因为文件只是一些 Blob，可以使用标准的 API 和工具（例如 azcopy）在本地文件系统与 Azure 存储之间复制文件。
 * 文件系统或文件共享：
   * 根据 VM 操作系统和性能/规模要求，选项包括 [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)、使用附有 NFS 磁盘的 VM、使用附有分布式文件系统（例如 GlusterFS）磁盘的多个 VM，或使用第三方产品/服务。
-  * [Avere Systems](http://www.averesystems.com/) 已由 Microsoft 收购，在不久的将来，将会推出理想的解决方案进行大规模的高性能渲染。  借助 Avere 解决方案能够创建可与 Blob 存储或本地 NAS 设备配合工作的基于 Azure 的 NFS 或 SMB 缓存。
+  * [Avere Systems](https://www.averesystems.com/) 已由 Microsoft 收购，在不久的将来，将会推出理想的解决方案进行大规模的高性能渲染。  借助 Avere 解决方案能够创建可与 Blob 存储或本地 NAS 设备配合工作的基于 Azure 的 NFS 或 SMB 缓存。
   * 使用文件系统可以直接在文件系统中读取或写入文件，或者在文件系统与池 VM 之间复制文件。
   * 使用共享文件系统可以在要使用的项目与作业之间共享大量的资产，而渲染任务只需访问所需的内容。
 
