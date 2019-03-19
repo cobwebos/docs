@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2289fc143abfde0aaaf2bcb079a6d24b74d57975
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 41eed6bc878bff4c9d847f9a449ca693274bf234
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564436"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195500"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -75,12 +75,11 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
     # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
     # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
     Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
-  
     
 如果连接成功，则会看到以下输出：
     
   
-    ComputerName     : <storage-account-host-name>
+    ComputerName     : <your-storage-account-name>
     RemoteAddress    : <storage-account-ip-address>
     RemotePort       : 445
     InterfaceAlias   : <your-network-interface>
@@ -93,7 +92,19 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
-配合 IT 部门打开端口 445 到 [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的出站通信。
+#### <a name="solution-1---use-azure-file-sync"></a>解决方案 1-使用 Azure 文件同步
+Azure 文件同步可以将你的本地 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 Azure 文件同步可通过端口 443，并因此可作为一种解决方法从端口 445 被阻止的客户端访问 Azure 文件。 [了解如何设置 Azure 文件同步](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-extend-servers)。
+
+#### <a name="solution-2---use-vpn"></a>解决方案 2-使用 VPN
+通过设置 VPN 连接到特定存储帐户，流量会通过安全隧道而不是通过 internet。 请按照[有关安装 VPN 的说明](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
+)从 Windows 访问 Azure 文件。
+
+#### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>解决方案 3-取消阻止端口 445 帮助您的 ISP / IT 管理员
+使用你的 IT 部门或打开端口 445(tcp 出站到 ISP [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+
+#### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>解决方案 4-使用 REST API 基于存储资源管理器/Powershell 等工具
+Azure 文件也支持除 SMB 以外的其余部分。 通过端口 443 (标准 tcp) 适用的 REST 访问。 有各种工具编写使用 REST API 启用丰富的 UI 体验。 [存储资源管理器](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)是其中之一。 [下载并安装存储资源管理器](https://azure.microsoft.com/en-us/features/storage-explorer/)并连接到 Azure 文件支持的文件共享。 此外可以使用[PowerShell](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-powershell)这还用户 REST API。
+
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>原因 2：NTLMv1 已启用
 
@@ -240,7 +251,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
   - Path = HKLM\Software\Policies\Microsoft\Windows\System
   - Value type = DWORD
   - 名称 = CopyFileAllowDecryptedRemoteDestination
-  - 值 = 1
+  - 值= 1
 
 请注意，设置注册表项会影响对网络共享进行的所有复制操作。
 

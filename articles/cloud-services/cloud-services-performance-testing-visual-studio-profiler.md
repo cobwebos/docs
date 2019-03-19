@@ -15,23 +15,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ea46039583681bd89e254d153997e3a300041d4e
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
-ms.translationtype: HT
+ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341348"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546241"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务的性能
 可通过各种工具和技术来测试云服务的性能。
-在将云服务发布到 Azure 后，可以让 Visual Studio 收集分析数据，然后在本地进行分析，如[分析 Azure 应用程序][1]中所述。
+在将云服务发布到 Azure 后，可以让 Visual Studio 收集分析数据，并在本地进行分析，如 [分析 Azure 应用程序][1]中所述。
 也可以使用诊断来跟踪各种性能计数器，如[在 Azure 中使用性能计数器][2]中所述。
 此外，在将应用程序部署到云之前，可能需要在计算模拟器中本地分析应用程序。
 
 本文包含了 CPU 采样分析方法，可在模拟器中本地执行该方法。 CPU 采样是一种干预性不是很强的分析方法。 探查器将按照指定的采样时间间隔拍摄调用堆栈的快照。 将收集一段时间内的数据并将其显示在报告中。 此分析方法倾向于指示在具有大量计算的应用程序中执行大多数 CPU 工作的位置。  这使你能够侧重于应用程序在其上花费最多时间的“热路径”。
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1：配置 Visual Studio 以进行分析
-首先，提供了几个 Visual Studio 配置选项，这些选项在分析时可能会有用。 要使分析报告变得有意义，需要应用程序的符号（.pdb 文件）与系统库的符号。 需要确保引用可用的符号服务器。 为此，请在 Visual Studio 中的“**工具**”菜单上，依次选择“**选项**”、“**调试**”和“**符号**”。 确保**符号文件 (.pdb) 位置**下方列出了 Microsoft 符号服务器。  还可以引用 http://referencesource.microsoft.com/symbols，它可能具有附加的符号文件。
+## <a name="1-configure-visual-studio-for-profiling"></a>1:配置 Visual Studio 以进行分析
+首先，提供了几个 Visual Studio 配置选项，这些选项在分析时可能会有用。 为便于理解分析报表，需要应用程序的符号（.pdb 文件）与系统库的符号。 需确保引用可用的符号服务器。 为此，请在 Visual Studio 中的“**工具**”菜单上，依次选择“**选项**”、“**调试**”和“**符号**”。 确保**符号文件 (.pdb) 位置**下方列出了 Microsoft 符号服务器。  还可以引用 https://referencesource.microsoft.com/symbols，它可能具有附加的符号文件。
 
 ![“符号”选项][4]
 
@@ -75,12 +75,12 @@ private async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-本地生成并运行云服务且不进行调试 (Ctrl+F5)，并将解决方案配置设置为 **Release**。 这会确保创建的所有文件和文件夹都用于本地运行应用程序，并确保启动所有仿真程序。 从任务栏启动计算模拟器 UI，以验证辅助角色是否正在运行。
+本地生成并运行云服务且不进行调试 (Ctrl+F5)，并将解决方案配置设置为“发布”。 这会确保创建的所有文件和文件夹都用于本地运行应用程序，并确保启动所有仿真程序。 从任务栏启动计算模拟器 UI，以验证辅助角色是否正在运行。
 
-## <a name="2-attach-to-a-process"></a>2：附加到进程
+## <a name="2-attach-to-a-process"></a>2:附加到进程
 必须将探查器附加到正在运行的进程，而不是通过从 Visual Studio 2010 IDE 中启动应用程序来分析该应用程序。 
 
-要将探查器附加到进程，请在“**分析**”菜单上选择“**探查器**”和“**附加/分离**”。
+若要将探查器附加到进程，请在“分析”菜单上选择“探查器”和“附加/分离”。
 
 ![“附加配置文件”选项][6]
 
@@ -122,7 +122,7 @@ Trace.WriteLine(message, "Information");
 
 如果在热路径中看到 String.wstrcpy，请单击“仅我的代码”以将视图更改为仅显示用户代码。  如果看到 String.Concat，请尝试按“显示所有代码”按钮。
 
-会看到占用大部分执行时间的 Concatenate 方法和 String.Concat。
+您会看到占用大部分执行时间的 Concatenate 方法和 String.Concat。
 
 ![报告分析][12]
 
@@ -162,14 +162,14 @@ public static string Concatenate(int number)
 * 使用计算模拟器 UI 来查看应用程序的状态。 
 * 如果在模拟器中启动应用程序时或附加探查器时出现问题，请关闭并重新启动计算模拟器。 如果这样做无法解决问题，请尝试重新启动。 如果使用计算模拟器挂起或删除正在运行的部署，则会出现此问题。
 * 如果已从命令行使用任一分析命令（尤其是全局设置），请确保已调用 VSPerfClrEnv /globaloff 并已关闭 VsPerfMon.exe。
-* 如果采样时显示了消息“PRF0025: 未收集数据”，请检查附加的进程是否有 CPU 活动。 未执行任何计算工作的应用程序将无法生成任何采样数据。  此外，在执行任何采样前可能会退出进程。 查看以验证正在分析的角色的 Run 方法是否已终止。
+* 如果采样时看到消息"PRF0025:未收集数据”，请检查附加的进程是否有 CPU 活动。 未执行任何计算工作的应用程序将无法生成任何采样数据。  此外，在执行任何采样前可能会退出进程。 查看以验证正在分析的角色的 Run 方法是否已终止。
 
 ## <a name="next-steps"></a>后续步骤
-Visual Studio 探查器不支持在模拟器中检测 Azure 二进制文件，但要测试内存分配，可以在分析时选择该选项。 此外，可以选择并发分析，这会帮助你确定线程是否正在浪费时间竞争锁；也可以选择层交互分析，这会帮助你跟踪在应用程序的各个层之间（最常见的是数据层和辅助角色之间）进行交互时的性能问题。  可以查看应用程序生成的数据库查询并使用分析数据来改进对数据库的使用。 有关层交互分析的信息，请参阅博客文章[演练：在 Visual Studio Team System 2010 中使用层交互探查器][3]。
+Visual Studio 探查器不支持在模拟器中检测 Azure 二进制文件，但要测试内存分配，可以在分析时选择该选项。 此外，可以选择并发分析，这有助于确定线程是否正在浪费时间竞争锁；也可以选择层交互分析，这有助于跟踪在应用程序的各个层之间（最常见的是数据层和辅助角色之间）进行交互时的性能问题。  可以查看应用程序生成的数据库查询并使用分析数据来改进对数据库的使用。 有关层交互分析的信息，请参阅博客文章[演练：在 Visual Studio 中使用层交互 Profiler Team System 2010][3]。
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
-[2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
-[3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
+[2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
+[3]: https://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
 [6]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

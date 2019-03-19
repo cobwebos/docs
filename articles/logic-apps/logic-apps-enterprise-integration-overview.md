@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 8c0e47f5bed0799b8536cecb38a85ed76185d0cd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243104"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194922"
 ---
 # <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概述：带有 Enterprise Integration Pack 的 Azure 逻辑应用中的 B2B 企业集成方案
 
@@ -70,5 +70,5 @@ ms.locfileid: "56243104"
 * [企业集成连接器](../connectors/apis-list.md "了解 Enterprise Integration Pack 连接器")
 * [集成帐户元数据](../logic-apps/logic-apps-enterprise-integration-metadata.md "了解集成帐户元数据")
 * [监视 B2B 消息](logic-apps-monitor-b2b-message.md "深入了解 B2B 消息")
-* [在 Azure Log Analytics 中跟踪 B2B 消息](logic-apps-track-b2b-messages-omsportal.md "详细了解如何在 Azure Log Analytics 中跟踪 B2B 消息")
+* [Azure Monitor 日志中跟踪 B2B 消息](logic-apps-track-b2b-messages-omsportal.md "了解有关 Azure Monitor 日志中跟踪 B2B 消息的详细信息")
 

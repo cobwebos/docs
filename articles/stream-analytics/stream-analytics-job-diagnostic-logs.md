@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34f994bfca8bdeaffde6732572f47aeaa86b2ac5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818925"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247148"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
@@ -29,7 +29,9 @@ ms.locfileid: "54818925"
 * [诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)（可配置），可详细了解作业发生的所有情况。 诊断日志在创建作业时开始，并在删除作业时结束。 日志中包含了作业更新和运行期间的事件。
 
 > [!NOTE]
-> 可以使用 Azure 存储、Azure 事件中心和 Azure Log Analytics 等服务分析不一致的数据。 将根据这些服务的定价模式进行收费。
+> 可以使用服务，如 Azure 存储，Azure 事件中心和 Azure Monitor 日志，以分析不一致的数据。 将根据这些服务的定价模式进行收费。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="debugging-using-activity-logs"></a>使用活动日志调试
 
@@ -51,11 +53,11 @@ ms.locfileid: "54818925"
 
 5. 可以根据 JSON 中的错误消息采取纠正措施。 在本示例中，检查以确保纬度值介于 -90 度到 90 度之间，并需要将其添加到查询中。
 
-6. 如果活动日志中的错误消息对于确定根本原因没有帮助，请启用诊断日志并使用 Log Analytics。
+6. 活动日志中的错误消息不是有助于识别根本原因，如果启用诊断日志，并使用 Azure Monitor 日志。
 
-## <a name="send-diagnostics-to-log-analytics"></a>将诊断数据发送到 Log Analytics
+## <a name="send-diagnostics-to-azure-monitor-logs"></a>诊断数据发送到 Azure Monitor 日志
 
-强烈建议打开诊断日志并将它们发送到 Log Analytics。 诊断日志默认已**禁用**。 若要启用诊断日志，请完成以下步骤：
+强烈建议启用诊断日志，并将它们发送到 Azure Monitor 日志。 诊断日志默认已**禁用**。 若要启用诊断日志，请完成以下步骤：
 
 1.  登录 Azure 门户，导航到流分析作业。 在“监视”下，选择“诊断日志”。 然后选择“启用诊断”。
 
@@ -67,7 +69,7 @@ ms.locfileid: "54818925"
 
 3. 流分析作业开始时，诊断日志会被路由到 Log Analytics 工作区。 导航到 Log Analytics 工作区，并选择“常规”部分下的“日志”。
 
-   ![“常规”部分下的 Log Analytics 日志](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![在常规部分下的 azure Monitor 日志](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
 4. 可以[编写自己的查询](../azure-monitor/log-query/get-started-portal.md)，以搜索字词、识别趋势、分析模式，以及基于数据提供见解。 例如，可以编写查询，仅筛选出具有“The streaming job failed”（流式传输作业已失败）消息的诊断日志。 来自 Azure 流分析的诊断日志存储在“AzureDiagnostics”表中。
 
@@ -96,7 +98,7 @@ ms.locfileid: "54818925"
 
 所有日志均以 JSON 格式存储。 每个项目均具有以下常见字符串字段：
 
-名称 | 说明
+名称 | 描述
 ------- | -------
 time | 日志时间戳（采用 UTC）。
 resourceId | 发生操作的资源的 ID，采用大写格式。 其中包括订阅 ID、资源组和作业名称。 例如，**/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**。
@@ -114,11 +116,11 @@ status | 操作的状态。 例如，“失败”或“成功”。
 
 作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。
 
-名称 | 说明
+名称 | 描述
 ------- | -------
 源 | 发生错误的作业输入或输出的名称。
 消息 | 与错误关联的消息。
-类型 | 错误类型。 例如，DataConversionError、CsvParserError 和 ServiceBusPropertyColumnMissingError 。
+Type | 错误类型。 例如，DataConversionError、CsvParserError 和 ServiceBusPropertyColumnMissingError 。
 数据 | 包含用于准确找到错误起源的数据。 会根据数据大小截断数据。
 
 数据错误根据 operationName 值采用以下架构：
@@ -131,11 +133,11 @@ status | 操作的状态。 例如，“失败”或“成功”。
 
 泛型事件包含其他所有情况。
 
-名称 | 说明
+名称 | 描述
 -------- | --------
 错误 | （可选）错误信息。 通常情况下，这是异常信息（如果存在）。
 消息| 日志消息。
-类型 | 消息类型。 映射到错误的内部分类。 例如，JobValidationError 或 BlobOutputAdapterInitializationFailure。
+Type | 消息类型。 映射到错误的内部分类。 例如，JobValidationError 或 BlobOutputAdapterInitializationFailure。
 相关性 ID | 用于唯一标识作业执行的 [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 从作业开始到作业停止期间所有的执行日志条目具有相同的“相关 ID”值。
 
 ## <a name="next-steps"></a>后续步骤

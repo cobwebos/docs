@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 095aff293b23f4589dce9f71890b5e9bfd8636d4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 4091b20e97ca76629260a7420beecb77412b0d39
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201850"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>教程：Azure Active Directory 与 Shmoop For Schools 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56201850"
 
 有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Shmoop For Schools 的集成，需备齐以下项目：
 
@@ -47,7 +47,7 @@ ms.locfileid: "56201850"
 
 若要测试本教程中的步骤，我们建议：
 
-- 仅在必要时才使用生产环境。
+- 仅当有必要，请使用你的生产环境。
 - 如果没有 Azure AD 试用环境，可以获取[一个月试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
@@ -131,7 +131,7 @@ ms.locfileid: "56201850"
 
     a. 若要打开“添加属性”对话框，请选择“添加属性”。
     
-    ![配置单一登录 ](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
+    ![配置单一登录](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
     
     ![配置单一登录](./media/shmoopforschools-tutorial/tutorial_attribute_05.png)
     

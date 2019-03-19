@@ -1,19 +1,19 @@
 ---
 title: 了解 Azure IoT 中心云到设备的消息传送 | Microsoft Docs
 description: 开发人员指南 - 如何使用 IoT 中心进行云到设备的消息传送。 包括有关消息生命周期和配置选项的信息。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: dobett
-ms.openlocfilehash: 3f137ea80dc67bb075f34846e5563fb72c72b69a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
-ms.translationtype: HT
+ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585639"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010236"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -83,7 +83,7 @@ ms.locfileid: "47585639"
 
 如[终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 (**/messages/servicebound/feedback**) 以消息方式传送反馈。 接收反馈的语义与云到设备消息的语义相同。 可能的话，消息反馈将放入单个消息中，其格式如下：
 
-| 属性     | Description |
+| 属性     | 描述 |
 | ------------ | ----------- |
 | EnqueuedTime | 指示中心收到反馈消息时的时间戳。 |
 | UserId       | `{iot hub name}` |
@@ -91,12 +91,12 @@ ms.locfileid: "47585639"
 
 正文是记录的 JSON 序列化数组，每条记录具有以下属性：
 
-| 属性           | Description |
+| 属性           | 描述 |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | 指示消息结果出现时的时间戳。 例如，中心收到了已过期的反馈消息或原始消息。 |
 | OriginalMessageId  | 此反馈信息相关的从云到设备的消息的 "MessageId"。 |
 | StatusCode         | 必需的字符串。 在 IoT 中心生成的反馈消息中使用。 <br/> “Success” <br/> “Expired” <br/> “DeliveryCountExceeded” <br/> “Rejected” <br/> “Purged” |
-| Description        | **StatusCode** 的字符串值。 |
+| 描述        | **StatusCode** 的字符串值。 |
 | DeviceId           | 此反馈信息相关的从云到设备的消息的目标设备的 "DeviceId"。 |
 | DeviceGenerationId | 此反馈信息相关的从云到设备的消息的目标设备的 "DeviceGenerationId"。 |
 
@@ -125,10 +125,10 @@ ms.locfileid: "47585639"
 
 每个 IoT 中心都针对云到设备的消息传送公开以下配置选项：
 
-| 属性                  | Description | 范围和默认值 |
+| 属性                  | 描述 | 范围和默认值 |
 | ------------------------- | ----------- | ----------------- |
 | defaultTtlAsIso8601       | 云到设备消息的默认 TTL。 | ISO_8601 间隔高达 2D（最小为 1 分钟）。 默认值：1 小时。 |
-| maxDeliveryCount          | 每个设备队列的云到设备最大传送计数。 | 1 到 100。 默认值：10。 |
+| maxDeliveryCount          | 每个设备队列的云到设备最大传送计数。 | 1 到 100。 默认值：10. |
 | feedback.ttlAsIso8601     | 服务绑定反馈消息的保留时间。 | ISO_8601 间隔高达 2D（最小为 1 分钟）。 默认值：1 小时。 |
 | feedback.maxDeliveryCount |反馈队列的最大传送计数。 | 1 到 100。 默认值：100。 |
 

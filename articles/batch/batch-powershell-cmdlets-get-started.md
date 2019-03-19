@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: batch
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 01/15/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5f0358bf58e61632fdeef8363d24b39c2cf2ebf0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 10d8683724622f164299016a801e1960e0a868c7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811420"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770032"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
@@ -30,7 +30,7 @@ ms.locfileid: "55811420"
 
 本文基于 Az Batch 模块 1.0.0 中的 cmdlet。 建议经常更新 Azure PowerShell 模块以利用服务更新和增强功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * [下载并配置 Azure PowerShell 模块](/powershell/azure/overview)。 若要安装特定的 Azure Batch 模块，例如预发行模块，请参阅 [PowerShell 库](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)。
 
@@ -242,7 +242,7 @@ Remove-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_gr
 ```
 
 > [!NOTE]
-> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除当前具有应用程序包的应用程序，会发生“冲突”错误。
+> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除的应用程序当前存在应用程序包，则会收到“冲突”错误。
 
 ### <a name="deploy-an-application-package"></a>部署应用程序包
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 717b895696ca93444744955937c6de23626c7835
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: d5d7f45b4833bb535e98542ee513e9ea8bf0f9e5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234742"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432985"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -59,7 +59,10 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 > [!NOTE]
 > 修补业务流程应用使用 Service Fabric“修复管理器系统服务”来禁用/启用节点和执行运行状况检查。 修补业务流程应用创建的修复任务跟踪每个节点的 Windows 更新进度。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
+
+> [!NOTE]
+> 所需的最低.NET framework 版本为 4.6。
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>启用修复管理器服务（如果尚未运行）
 
@@ -154,7 +157,7 @@ POA 是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集�
 |LogsDiskQuotaInMB   |Long  <br> （默认值：1024）               |可在节点本地持久保存的修补业务流程应用日志的最大大小，以 MB 为单位。
 | WUQuery               | 字符串<br>（默认值："IsInstalled=0"）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
 | InstallWindowsOSOnlyUpdates | Boolean <br> （默认值：false）                 | 使用此标志来控制应当下载并安装哪些更新。 允许以下值 <br>true - 仅安装 Windows 操作系统更新。<br>false - 在计算机上安装所有可用的更新。          |
-| WUOperationTimeOutInMinutes | Int <br>（默认值：90%）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
+| WUOperationTimeOutInMinutes | Int <br>（默认值：90%）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作将被中止。       |
 | WURescheduleCount     | Int <br> （默认值：5）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
 | WURescheduleTimeInMinutes | Int <br>（默认值：30） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
 | WUFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>-   Monthly, DD, HH:MM:SS，例如：Monthly, 5,12:22:32。<br>字段 DD（天）允许的值为范围 1-28 中的数字和“last”。 <br> -   Weekly, DAY, HH:MM:SS，例如：Weekly, Tuesday, 12:22:32。  <br> -   Daily, HH:MM:SS，例如：Daily, 12:22:32。  <br> - None 表示不应执行 Windows 更新。  <br><br> 请注意，时间采用 UTC。|
@@ -272,7 +275,7 @@ RebootRequired | true - 需要重新启动<br> false - 无需重新启动 | 指�
 
 如果某个节点上的 Windows 更新操作失败，将会针对节点代理服务生成运行状况报告。 运行状况报告的详细信息将包含有问题的节点名称。
 
-在有问题的节点上成功完成修补后，会自动清除该报告。
+在有问题的节点上成功完成修补后，将自动清除该报告。
 
 #### <a name="the-node-agent-ntservice-is-down"></a>节点代理 NTService 关闭
 
@@ -415,4 +418,4 @@ A. 否，修补业务流程应用不能用来修补单节点群集。 此限制�
 - 将 InstallWindowsOSOnlyUpdates 的默认值更改为 False。
 
 ### <a name="version-132"></a>版本 1.3.2
-- 修复了一个问题，当存在其名称属于当前节点名称子集的节点时，此问题会影响节点上的修补生命周期。 对于此类节点，可能会出现修补缺失或重启操作挂起的情况。 
+- 修复了会影响修补的生命周期在节点上，以防其中是当前的节点名称的子集名称的节点的问题。 对于此类节点，可能会出现修补缺失或重启操作挂起的情况。 

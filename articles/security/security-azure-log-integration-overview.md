@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 7b06d7bb85e7445f50956a003e46542062b09165
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: c644d81b647fc1151b10a94fb636e3eeaba1ce5c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118269"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245040"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Azure 日志集成简介
 
@@ -61,7 +61,7 @@ Azure 日志集成支持 ArcSight、QRadar 和 Splunk。 与你的 SIEM 供应�
 |---------|--------------------------|-------------------------------------------|
 |**Splunk** | 开始迁移到[适用于 Splunk 的 Azure Monitor 加载项](https://splunkbase.splunk.com/app/3534/)。 | 使用 [Splunk 连接器](https://splunkbase.splunk.com/app/3534/)。 |
 |**QRadar** | 迁移到或开始使用[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)的最后一部分中提到的 QRadar 连接器。 | 使用[将 Azure 监视数据流式传输到事件中心以便外部工具使用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)的最后一部分中提到的 QRadar 连接器。 |
-|**ArcSight** | 继续使用 Azure 日志集成器，直到有连接器可用，然后迁移到基于连接器的解决方案。  | 考虑使用 Azure Log Analytics 作为替代方法。 除非你愿意在有连接器变得可用时经历迁移过程，否则不要采用 Azure 日志集成。 |
+|**ArcSight** | 继续使用 Azure 日志集成器，直到有连接器可用，然后迁移到基于连接器的解决方案。  | 请考虑使用 Azure Monitor 日志作为一种替代方法。 除非你愿意在有连接器变得可用时经历迁移过程，否则不要采用 Azure 日志集成。 |
 
 > [!NOTE]
 > 虽然 Azure 日志集成是免费解决方案，但是存在与日志文件信息存储相关的 Azure 存储费用。

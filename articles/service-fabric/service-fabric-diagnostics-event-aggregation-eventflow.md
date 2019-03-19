@@ -3,7 +3,7 @@ title: 使用 EventFlow 进行Azure Service Fabric 事件聚合 |Microsoft Docs
 description: 了解通过使用 EventFlow 集合和收集事件来监视和诊断 Azure Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 829d1ffd1ef75d18f0d87a127c43666703e8a756
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.date: 2/25/2019
+ms.author: srrengar
+ms.openlocfilehash: eee5e71863f9a9195dc1f6f711cbacbc95ab84f2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497360"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246757"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 进行事件聚合和收集
 
@@ -27,7 +27,7 @@ ms.locfileid: "55497360"
 
 ## <a name="set-up-eventflow"></a>设置 EventFlow
 
-EventFlow 二进制文件都可用作一组 NuGet 包。 要将 EventFlow 添加到 Service Fabric 服务项目中，右键单击解决方案资源管理器中的项目，并选择“管理 NuGet 包”。 切换到“浏览”选项卡，搜索“`Diagnostics.EventFlow`”：
+EventFlow 二进制文件都可用作一组 NuGet 包。 如果要将 EventFlow 添加到某个 Service Fabric 服务项目，请在解决方案资源管理器中右键单击该项目，并选择“管理 NuGet 包”。 切换到“浏览”选项卡，搜索“`Diagnostics.EventFlow`”：
 
 ![Visual Studio NuGet 包管理器 UI 中的 EventFlow NuGet 包](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
@@ -38,7 +38,7 @@ EventFlow 二进制文件都可用作一组 NuGet 包。 要将 EventFlow 添加
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric`（允许初始化来自 Service Fabric 服务配置的 EventFlow 管道，并以 Service Fabric 运行状况报表的形式报告发送诊断数据的任何相关问题）
 
 >[!NOTE]
->`Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 包要求服务项目面向.NET Framework 4.6 或更高版本。 请确保在项目属性中设置相应的目标框架，再安装此包。
+>`Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 包要求服务项目面向.NET Framework 4.6 或更高版本。 在安装此包之前，请确保在项目属性中设置相应的目标框架。
 
 安装所有的包后，下一步是在服务中配置和启用 EventFlow。
 
@@ -157,5 +157,5 @@ servicefabric:/<section-name>/<setting-name>
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Application Insights 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [使用 Log Analytics 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)
+* [使用 Azure Monitor 日志事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow 文档](https://github.com/Azure/diagnostics-eventflow)

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: cce3ea06ebd7d3469dad14e491124f81567610ea
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: c4be56b3ee32a5177c66353ba45c6b3647c732f2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894045"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240076"
 ---
 # <a name="live-events-and-live-outputs"></a>实时事件和实时输出
 
@@ -42,7 +42,7 @@ ms.locfileid: "55894045"
 
 ### <a name="pass-through"></a>直通
 
-![直通](./media/live-streaming/pass-through.png)
+![直通](./media/live-streaming/pass-through.svg)
 
 使用直通**实时事件**，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 然后，实时事件会接受无需进一步处理的传入视频流。 此类直通 LiveEvent 已针对长时间运行的实时事件或 24x365 线性实时传送视频流进行优化。 创建此类实时事件时，请指定 None (LiveEventEncodingType.None)。
 
@@ -56,11 +56,16 @@ ms.locfileid: "55894045"
 
 ### <a name="live-encoding"></a>实时编码  
 
-![实时编码](./media/live-streaming/live-encoding.png)
+![实时编码](./media/live-streaming/live-encoding.svg)
 
 将实时编码与媒体服务配合使用时，需配置本地实时编码器，以便将单比特率视频作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 实时事件会将该传入的单比特率流编码为[多比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，使其可通过 MPEG-DASH、HLS 和平滑流式处理等协议传送到播放设备。 创建此类实时事件时，请将编码类型指定为“标准”(LiveEventEncodingType.Standard)。
 
 发送的贡献源的最高分辨率可为 1080p，帧速率可为 30 帧/秒，采用 H.264/AVC 视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。 有关详细信息，请参阅[实时事件类型比较](live-event-types-comparison.md)一文。
+
+使用实时编码时 (实时事件设置为**标准**)，编码预设定义如何将传入流编码为多个比特率或图层。 有关信息，请参阅[系统预设](live-event-types-comparison.md#system-presets)。
+
+> [!NOTE]
+> 目前，唯一允许的预设的值的实时事件的标准类型为*Default720p*。 如果您需要使用自定义的实时编码预设，请联系amshelp@microsoft.com。 您应指定所需的表的分辨率和比特率。 不要验证只有一个图层 720p 和最多 6 层。
 
 ## <a name="live-event-creation-options"></a>实时事件创建选项
 

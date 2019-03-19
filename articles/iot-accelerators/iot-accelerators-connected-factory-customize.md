@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: e91f36c9d6f0cb3195e6903d55cd676f1e9ccf5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626544"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010066"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自定义连接的工厂解决方案如何显示来自 OPC UA 服务器的数据
 
@@ -81,7 +81,7 @@ azure-iot-connected-factory 存储库包含 build.ps1 PowerShell 脚本，该脚
 
 * [连接的工厂解决方案加速器演练][lnk-rm-walkthrough]
 * [为连接的工厂部署网关][lnk-connect-cf]
-* [azureiotsuite.com 站点权限][lnk-permissions]
+* [Azureiotsolutions.com 站点权限][lnk-permissions]
 * [连接的工厂常见问题解答](iot-accelerators-faq-cf.md)
 * [常见问题解答][lnk-faq]
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 767021772fc86013cd8192216eb03840f1160807
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 0260ecbf23e0240b836f6d6004959a9604085fc1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878691"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194956"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -41,7 +41,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 
 
 若要强制特定数据中心处理该请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
 
-|说明|区域|基 URL|
+|描述|区域|基 URL|
 |:--|:--|:--|
 |Azure|全局|  api.cognitive.microsofttranslator.com|
 |Azure|北美|   api-nam.cognitive.microsofttranslator.com|
@@ -51,7 +51,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 
 
 ## <a name="authentication"></a>Authentication
 
-在 Microsoft 认知服务中订阅文本翻译 API 或[认知服务一体化](https://azure.microsoft.com/pricing/details/cognitive-services/)并使用订阅密钥（Azure 门户中提供）进行身份验证。 
+文本翻译 API 订阅或[认知服务多服务](https://azure.microsoft.com/pricing/details/cognitive-services/)在 Microsoft 认知服务，并使用你的订阅密钥 （可在 Azure 门户中） 进行身份验证。 
 
 有三个标头可用于对你的订阅进行身份验证。 下表介绍了每个标头的使用方式：
 
@@ -59,7 +59,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 
 |:----|:----|
 |Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
 |授权|如果要传递身份验证令牌，请与认知服务订阅一起使用。<br/>该值是持有者令牌：`Bearer <token>`。|
-|Ocp-Apim-Subscription-Region|如果要传递一体化密钥，请与认知服务一体化订阅一起使用。<br/>值为该一体化订阅所在的区域。 不使用一体化订阅时，此值是可选的。|
+|Ocp-Apim-Subscription-Region|*使用认知服务多服务订阅，如果要传递多服务的机密密钥。*<br/>值是多服务订阅的区域。 不使用多服务订阅时，此值是可选的。|
 
 ###  <a name="secret-key"></a>密钥
 第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 只需将 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` 标头添加到你的请求。
@@ -89,21 +89,22 @@ Authorization: Bearer <Base64-access_token>
 
 身份验证令牌的有效期为 10 分钟。 在对翻译 API 进行多次调用时，应重新使用该令牌。 但是，如果程序在很长一段时间内向翻译 API 发出请求，则程序必须定期（例如每 8 分钟）请求一个新的访问令牌。
 
-### <a name="all-in-one-subscription"></a>一体化订阅
+### <a name="multi-service-subscription"></a>多服务订阅
 
-最后一个身份验证选项是使用认知服务的一体化订阅。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
+最后一个身份验证选项是使用认知服务的多服务订阅。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
 
-使用一体化密钥时，必须将两个身份验证标头包含在你的请求中。 第一个标头可传递密钥，第二个标头可指定与你的订阅关联的区域。 
-* `Ocp-Api-Subscription-Key`
+当使用多服务的机密密钥时，必须在您的请求包含两个身份验证标头。 第一个标头可传递密钥，第二个标头可指定与你的订阅关联的区域。 
+* `Ocp-Apim-Subscription-Key`
 * `Ocp-Apim-Subscription-Region`
+
+区域是必需的多服务的文本 API 订阅。 所选的区域是使用多服务的订阅密钥，可以使用文本翻译的唯一区域，并且必须通过 Azure 门户在多服务订阅注册时选择的相同区域。
+
+可用区域包括 `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`japaneast`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus` 和 `westus2`。
 
 如果使用参数 `Subscription-Key` 传递查询字符串中的密钥，则必须使用查询参数 `Subscription-Region` 指定区域。
 
 如果使用持有者令牌，则必须从区域终结点中获取令牌：`https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`。
 
-可用区域包括 `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`japaneast`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus` 和 `westus2`。
-
-一体化文本 API 订阅需要指定区域。
 
 ## <a name="errors"></a>错误
 
@@ -125,7 +126,7 @@ Authorization: Bearer <Base64-access_token>
 ```
 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码包括：
 
-| 代码 | 说明 |
+| 代码 | 描述 |
 |:----|:-----|
 | 400000| 某个请求输入无效。|
 | 400001| “scope”参数无效。|

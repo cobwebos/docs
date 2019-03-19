@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a769a71fe1e99467121eb49a490fa2d0ab4339d3
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: ceda22394aab27f27740bb999b36e2cc46a6bd06
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446404"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568870"
 ---
 #    <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
@@ -32,7 +32,7 @@ Microsoft.Skills.Text.MergeSkill
 
 参数区分大小写。
 
-| 参数名称     | 说明 |
+| 参数名称     | 描述 |
 |--------------------|-------------|
 | insertPreTag  | 每次插入之前要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
 | insertPostTag | 每次插入后要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
@@ -43,17 +43,17 @@ Microsoft.Skills.Text.MergeSkill
 
 ```json
 {
-    "values": [
+  "values": [
+    {
+      "recordId": "1",
+      "data":
       {
-        "recordId": "1",
-        "data":
-           {
-             "text": "The brown fox jumps over the dog" ,
-             "itemsToInsert": ["quick", "lazy"],
-             "offsets": [3, 28],
-           }
+        "text": "The brown fox jumps over the dog",
+        "itemsToInsert": ["quick", "lazy"],
+        "offsets": [3, 28],
       }
-    ]
+    }
+  ]
 }
 ```
 
@@ -62,15 +62,15 @@ Microsoft.Skills.Text.MergeSkill
 
 ```json
 {
-    "values": [
+  "values": [
+    {
+      "recordId": "1",
+      "data":
       {
-        "recordId": "1",
-        "data":
-           {
-             "mergedText": "The quick brown fox jumps over the lazy dog" 
-           }
+        "mergedText": "The quick brown fox jumps over the lazy dog"
       }
-    ]
+    }
+  ]
 }
 ```
 
@@ -86,22 +86,22 @@ Microsoft.Skills.Text.MergeSkill
   "skills":
   [
     {
-        "description": "Extract text (plain and structured) from image.",
-        "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
-        "context": "/document/normalized_images/*",
-        "defaultLanguageCode": "en",
-        "detectOrientation": true,
-        "inputs": [
-          {
-            "name": "image",
-            "source": "/document/normalized_images/*"
-          }
-        ],
-        "outputs": [
-          {
-            "name": "text"
-          }
-        ]
+      "description": "Extract text (plain and structured) from image.",
+      "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
+      "context": "/document/normalized_images/*",
+      "defaultLanguageCode": "en",
+      "detectOrientation": true,
+      "inputs": [
+        {
+          "name": "image",
+          "source": "/document/normalized_images/*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text"
+        }
+      ]
     },
     {
       "@odata.type": "#Microsoft.Skills.Text.MergeSkill",
@@ -132,14 +132,14 @@ Microsoft.Skills.Text.MergeSkill
 以上示例假设存在规范化的图像字段。 要获取规范化的图像字段，请将索引器定义中的 imageAction 配置设置为 generateNormalizedImages，如下所示：
 
 ```json
-{  
-   //...rest of your indexer definition goes here ... 
-  "parameters":{  
-      "configuration":{  
-         "dataToExtract":"contentAndMetadata",
-         "imageAction":"generateNormalizedImages"
-      }
-   }
+{
+  //...rest of your indexer definition goes here ...
+  "parameters":{
+    "configuration":{
+        "dataToExtract":"contentAndMetadata",
+        "imageAction":"generateNormalizedImages"
+    }
+  }
 }
 ```
 
