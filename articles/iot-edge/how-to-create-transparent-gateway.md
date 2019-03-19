@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a42f4ce85214ad2a8c5692736b7d36101ccb62ed
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: c769ae8e684a94e60f6a2e31ba404a0593f7aa78
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556214"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096701"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
@@ -38,14 +38,17 @@ ms.locfileid: "53556214"
 
 以下步骤将演示创建证书并将它们安装在正确位置的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要配置为网关的 Azure IoT Edge 设备。 可以执行适用于以下操作系统的步骤，将开发计算机或虚拟机用作 IoT Edge 设备：
 * [Windows](./how-to-install-iot-edge-windows.md)
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
-可以使用任一计算机生成证书，然后将其复制到 IoT Edge 设备。 
+可以使用任一计算机生成证书，然后将其复制到 IoT Edge 设备。
+
+>[!NOTE]
+>用于此指令，来创建证书的"网关名称"必须是使用同一名作为 IoT Edge config.yaml 文件中的主机名和 GatewayHostName 下游设备的连接字符串中。 "网关名称"必须是解析为 IP 地址，使用 DNS 或主机文件条目。 根据使用的协议通信 (MQTTS:8883 / AMQPS:5671 / HTTPS:433) 必须能下游设备和透明 IoT Edge 之间。 如果防火墙之间，需要打开相应的端口。
 
 ## <a name="generate-certificates-with-windows"></a>在 Windows 中生成证书
 
@@ -60,7 +63,7 @@ ms.locfileid: "53556214"
    >[!NOTE]
    >如果已在 Windows 设备上安装 OpenSSL，则可以跳过此步骤，但请确保 PATH 环境变量中包含 openssl.exe。
 
-* **更轻松：** 下载并安装任何第三方 OpenSSL 二进制文件，例如从 [SourceForge 上的此项目](https://sourceforge.net/projects/openssl/)下载并安装。 将 openssl.exe 的完整路径添加到 PATH 环境变量。 
+* **更轻松：** 下载并安装任何[第三方 OpenSSL 二进制文件](https://wiki.openssl.org/index.php/Binaries)，例如从 [SourceForge 上的此项目](https://sourceforge.net/projects/openssl/)下载并安装。 将 openssl.exe 的完整路径添加到 PATH 环境变量。 
    
 * **推荐：** 在计算机上下载 OpenSSL 源代码并自行生成二进制文件，或者通过 [vcpkg](https://github.com/Microsoft/vcpkg) 生成。 下面列出的说明使用 vcpkg 下载源代码，并在 Windows 计算机上编译和安装 OpenSSL，所用的步骤都很简单。
 
@@ -178,7 +181,7 @@ ms.locfileid: "53556214"
 
 在本部分，我们将创建三个证书，然后将它们连接起来以形成一个链。 将证书放入链文件可在 IoT Edge 网关设备和任何下游设备上轻松安装这些证书。  
 
-1.  创建所有者 CA 证书和一个中间证书。 这些证书位于 *\<WRKDIR>* 中。
+1. 创建所有者 CA 证书和一个中间证书。 这些证书位于 *\<WRKDIR>* 中。
 
    ```bash
    ./certGen.sh create_root_and_intermediate
@@ -190,7 +193,7 @@ ms.locfileid: "53556214"
    * `<WRKDIR>/private/azure-iot-test-only.root.ca.key.pem`
    * `<WRKDIR>/private/azure-iot-test-only.intermediate.key.pem`
 
-2.  使用以下命令创建 Edge 设备 CA 证书和私钥。 提供网关设备的名称，在生成证书期间，此名称将用来为文件命名。 
+2. 使用以下命令创建 Edge 设备 CA 证书和私钥。 提供网关设备的名称，在生成证书期间，此名称将用来为文件命名。 
 
    ```bash
    ./certGen.sh create_edge_device_certificate "<gateway name>"

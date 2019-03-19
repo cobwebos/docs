@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 55e8f536419f102f8f0fe69773ed486407c50cfb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 12a21f4fdfb279df154b4995b6191aa0ed54ab43
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328854"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894472"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
 
@@ -31,7 +31,7 @@ ms.locfileid: "56328854"
 
 以下步骤将引导完成使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将 VHD 文件上传到开发测试实验室。
 
-1. [下载并安装最新版本的 Microsoft Azure 存储资源管理器](http://www.storageexplorer.com)。
+1. [下载并安装最新版本的 Microsoft Azure 存储资源管理器](https://www.storageexplorer.com)。
 
 1. 使用 Azure 门户获取实验室的存储帐户名称：
 
@@ -113,7 +113,7 @@ ms.locfileid: "56328854"
     
     1. 返回到“上传文件”对话框时，将“Blob 类型”更改为“页 Blob”。
     
-    1. 选择“上传”。
+    1. 选择 **“上传”**。
 
         ![选择文件][9]  
     
