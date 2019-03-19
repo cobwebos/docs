@@ -11,9 +11,9 @@ ms.date: 02/21/2019
 ms.topic: hub-page
 ---
 
+<div id="main" class="v2">
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
-
 <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
         <li>
             <a href="/azure/cognitive-services/welcome/">
@@ -386,3 +386,4 @@ ms.topic: hub-page
         </div>
     </li>
 </ul>
+</div>

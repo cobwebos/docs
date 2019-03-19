@@ -5,20 +5,15 @@ services: media-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: ''
+ms.assetid: null
 ms.service: media-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 02/08/2018
+ms.date: 03/14/2019
 ms.author: carolz
-ms.openlocfilehash: dce69041176840765817d561f61a0d5f3d2b9a66
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998019"
 ---
+
 # <a name="media-services-documentation"></a>媒体服务文档  
 
 了解如何使用媒体服务（一个可缩放的云平台）流式传输广播质量的视频。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。

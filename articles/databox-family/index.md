@@ -11,16 +11,10 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157099"
 ---
+<div id="main" class="v2">
 <h1>Azure Data Box</h1>
 <p>Azure Data Box 系列提供不同存储容量的产品，可帮助以快速、廉价且可靠的方式将数 TB 的数据发送到 Azure。 Microsoft 提供支持脱机或网络数据传输的专有存储设备，从而加快安全数据传输速度。</p>
-
 <h2>脱机数据传输</h2>
 <p>限于无网络带宽的情况</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -79,7 +73,6 @@ ms.locfileid: "54157099"
         </a>
     </li>
 </ul>
-
 <h2>联机数据传输</h2>
 <p>通过网络传输</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -120,3 +113,4 @@ ms.locfileid: "54157099"
         </a>
     </li>
 </ul>
+</div>

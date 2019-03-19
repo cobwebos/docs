@@ -5,17 +5,17 @@ description: 可打印的机器学习算法备忘单可帮助在 Azure 机器学
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
-ms.date: 12/18/2017
-ms.openlocfilehash: 77cd485b7ca7f9965a8baf9026b68060067d6ebe
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.date: 03/04/2019
+ms.openlocfilehash: 51a743e7578ea5bbc2acb9094bbf704a09f3cd6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453930"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858782"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Azure 机器学习工作室机器学习算法备忘单
 
@@ -36,9 +36,9 @@ ms.locfileid: "56453930"
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>机器学习工作室算法备忘单的说明和术语定义
 
-* 此算法备忘单中提供的建议近似于经验法则。 一些可以不完全照做，一些可以大胆地违反。 它旨在建议一个起点。 不要担心几种算法之间对数据运行正面竞争。 只需了解每种算法的原理和了解生成数据的系统，此外别无选择。
+* 此算法备忘单中提供的建议近似于经验法则。 一些可以不完全照做，一些可以大胆地违反。 它旨在建议一个起点。 不要担心几种算法之间对数据运行正面竞争。 没有只是没有什么可以替代理解每种算法并生成你的数据的系统的原则。
 
-* 每种机器学习算法都有自己的样式或*归纳偏差*。 对于特定问题，可能有几种算法合适，但会有一种算法可能比其他算法更合适。 但并非总是可以预先知道哪种是最合适的。 在这些情况下，会在备忘单中列出几种算法。 适当的策略是尝试一种算法，如果结果尚不令人满意，则尝试其他算法。 下面是 [Azure AI 库](http://gallery.azure.ai/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92)。
+* 每种机器学习算法都有自己的样式或*归纳偏差*。 对于特定问题，可能有几种算法合适，但会有一种算法可能比其他算法更合适。 但并非总是可以预先知道哪种是最合适的。 在这些情况下，会在备忘单中列出几种算法。 适当的策略是尝试一种算法，如果结果尚不令人满意，则尝试其他算法。 下面是 [Azure AI 库](https://gallery.azure.ai/)中的一个试验示例。该试验对相同数据尝试多种算法并对结果进行比较：[比较多类分类器：字母识别](https://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92)。
 
 * 有三种主要类别的机器学习：**监督式学习**、**非监督式学习**和**强化学习**。
 
@@ -52,7 +52,7 @@ ms.locfileid: "56453930"
 
 * **提升决策树回归**利用了功能重叠或功能间的交互。 这意味着，在任何给定的数据点，在某种程度上能够根据一个功能的值预测另一个功能的值。 例如，在每日高/低温度数据中，知道一天的低温度让可以合理地猜测该天的高温度。 这两个功能中包含的信息在某种程度上是冗余的。
 
-* 对数据分类到两个以上的类别可以使用多类分类器本身，或通过将一组双类分类器组合为**集合**来完成。 在集合方法中，每个类有一个单独的双类分类器 - 每个分类器将数据分成两个类别：“此类”和“非此类”。 然后，这些分类器为数据点是否正确分配投票。 这是 [One-vs-All Multiclass][one-vs-all-multiclass] 背后的操作原理。
+* 对数据分类到两个以上的类别可以使用的本质上是多类分类器，或通过将一组双类分类器组合完成**系综**。 在集合方法中，每个类有一个单独的双类分类器 - 每个分类器将数据分成两个类别：“此类”和“非此类”。 然后，这些分类器为数据点是否正确分配投票。 这是 [One-vs-All Multiclass][one-vs-all-multiclass] 背后的操作原理。
 
 * 包括逻辑回归和贝叶斯点机在内的多种方法都假定**线性类边界**。 也就是说，它们假设类之间的边界近似于直线（或在更普遍的情况下是超平面）。 通常这是在尝试分隔它之后才知道的数据特征，但这通常可以通过事先进行可视化来了解。 如果类边界看起来非常不规则，可继续使用决策树、决策森林、支持向量机或神经网络。
 
@@ -69,7 +69,7 @@ ms.locfileid: "56453930"
 
 
 <!-- Module References -->
-[a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list
-[initialize-model]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model
-[k-means-clustering]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/k-means-clustering
-[one-vs-all-multiclass]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/one-vs-all-multiclass
+[a-z-list]: /azure/machine-learning/studio-module-reference/a-z-module-list
+[initialize-model]: /azure/machine-learning/studio-module-reference/machine-learning-initialize-model
+[k-means-clustering]: /azure/machine-learning/studio-module-reference/k-means-clustering
+[one-vs-all-multiclass]: /azure/machine-learning/studio-module-reference/one-vs-all-multiclass

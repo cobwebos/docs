@@ -4326,6 +4326,49 @@ Azure DevOps Projects </a>
                         </ul>
                     </li>
                     <li>
+                        <a href="#mixed">混合现实</a>
+                        <ul id="mixed" class="cardsA">
+                            <li>
+                                <a href="/azure/digital-twins/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/digital_twin.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure 数字孪生</h3>
+                                                    <p>构建下一代 IoT 空间智能解决方案</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/spatial-anchors/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/spatial_anchors.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure 空间定位点</h3>
+                                                    <p>创建多用户的、具有空间感的混合现实体验</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#integration">集成</a>
                         <ul id="integration" class="cardsA">
                             <li>
@@ -5828,49 +5871,6 @@ Azure DevOps Projects </a>
                                                 <div class="cardText">
                                                     <h3>Microsoft Azure 中国世纪互联</h3>
                                                     <p>遵照中国政府制定的政策和数据处理法规生成和托管应用程序</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#mixed">混合现实</a>
-                        <ul id="mixed" class="cardsA">
-                            <li>
-                                <a href="/azure/digital-twins/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/digital_twin.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure 数字孪生</h3>
-                                                    <p>构建下一代 IoT 空间智能解决方案</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/spatial-anchors/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/spatial_anchors.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure 空间定位点</h3>
-                                                    <p>创建多用户的、具有空间感的混合现实体验</p>
                                                 </div>
                                             </div>
                                         </div>

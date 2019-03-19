@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf0eb7a0b9e38397034c03ef2b4310ed67c6e6dd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: a7181c91424e1d905329eefd13f926d0b2700081
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980374"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864968"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>如何从 Azure VM 创建非托管 VM 映像
 
@@ -41,7 +41,7 @@ ms.locfileid: "55980374"
 > 
 > 
 
-还可以使用 `sudo waagent -deprovision+user` 通用化 Linux VM，并使用 PowerShell 捕获该 VM。 有关使用 CLI 捕获 VM 的信息，请参阅[如何使用 Azure CLI 对 Linux 虚拟机进行通用化和捕获](../linux/capture-image.md)。
+还可以使用 `sudo waagent -deprovision+user` 通用化 Linux VM，并使用 PowerShell 捕获该 VM。 有关使用 CLI 捕获 VM 的信息，请参阅[如何通用化和捕获使用 Azure CLI 为 Linux 虚拟机](../linux/capture-image.md)。
 
 
 1. 登录到 Windows 虚拟机。
@@ -104,7 +104,7 @@ ms.locfileid: "55980374"
 
 ## <a name="create-the-image"></a>创建映像
 
-使用此命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板的副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统会自动创建。
+使用此命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板的副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统自动创建。
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `

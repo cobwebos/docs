@@ -11,21 +11,21 @@ ms.service: storage
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 194b13e889de4bc1c5938a6ce9cfded6fe2c88c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768228"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847291"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>将存储资源管理器与 Azure 文件存储配合使用
 
 Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中提供文件共享的服务。 支持 SMB 2.1 和 SMB 3.0。 通过 Azure 文件存储，可以将依赖文件共享的旧版应用程序快速迁移到 Azure 且无成本高昂的重写。 可以使用文件存储向外公开数据，或者私下存储应用程序数据。 本文介绍如何使用存储资源管理器处理文件共享和文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本文中的步骤，需要满足以下先决条件：
 

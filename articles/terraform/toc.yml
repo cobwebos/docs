@@ -81,16 +81,16 @@ items:
   - name: Azure 模块注册表
     href: https://registry.terraform.io/modules/Azure
   - name: Terraform 参考
-    href: http://aka.ms/terraform
+    href: https://aka.ms/terraform
 - name: 资源
   items:
   - name: Azure 与 Terraform
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: f37cb15bccf0fe07ace24d3277015a69b9881091
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d83e1cbd4f3cd5d8a0a9ec167e197b53f20e0630
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999445"

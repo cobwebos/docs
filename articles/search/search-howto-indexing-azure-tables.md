@@ -1,7 +1,7 @@
 ---
 title: 为 Azure 表存储中的内容编制索引，以便进行全文搜索 - Azure 搜索
 description: 了解如何使用 Azure 搜索索引器为 Azure 表存储中存储的数据编制索引。
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9532f4331b4dbbc8d687778b29f63179cca6b4d4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632953"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306878"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>使用 Azure 搜索编制 Azure 表存储的索引
 本文介绍如何使用 Azure 搜索对 Azure 表存储中存储的数据编制索引。

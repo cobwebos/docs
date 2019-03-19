@@ -11,15 +11,15 @@ ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 00b635853d0dfad73a258ddc8ef9b168559fc5df
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 289d50fc9d71ee5ea8960fd077e91ef6f68027cb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098419"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771304"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>通过 Azure 后端创建 Windows 应用
 
@@ -33,7 +33,7 @@ ms.locfileid: "56098419"
 
 只有在完成本教程后，才可以学习有关 UWP 应用的所有其他移动应用教程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要完成本教程，需要以下各项：
 

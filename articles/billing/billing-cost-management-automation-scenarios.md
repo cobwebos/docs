@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: a20ec22bee17bd73df24a6a0653e458241f90cfc
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 8b42361e7b94bf017dde4eaec882f9fed4d42ed6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746432"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861989"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>计费和成本管理自动化方案
 
@@ -143,4 +143,4 @@ ms.locfileid: "55746432"
 
 - 若要比较发票与 Azure 门户中的每日使用情况明细文件和成本管理报告，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
 
-- 如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+- 如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 9610256ac68b6c1be12ca22220e317752c068b85
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 9d98a060033674a53c8ac5390bc40d10b0fbe69b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730827"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882495"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>排查在 Azure 中部署 Windows 虚拟机时遇到的问题
 
@@ -37,7 +37,7 @@ supportTopicIds="123456789"
 resourceTags="windows"
 productPesIds="1234, 5678"
 />
-- 以更小的 VM 大小重试请求。
+- 使用更小的 VM 大小来重试请求。
 - 如果无法更改请求的 VM 大小：
     - 停止可用性集中的所有 VM。 依次单击“资源组”> 资源组 >“资源”> 可用性集 >“虚拟机”> 虚拟机 >“停止”。
     - 在所有 VM 都停止后，创建相应大小的 VM。

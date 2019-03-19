@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 478034d1c9f99f40a4827515433357c76235e9ee
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.openlocfilehash: 7d846f28e78959b6962add51070f04857f6463d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52430522"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852801"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -64,7 +64,7 @@ rules:
   verbs: ["*"]
 ```
 
-然后创建一个角色绑定，用于将 Azure AD 用户 *developer1@contoso.com* 绑定到该角色绑定，如以下 YAML 清单中所示：
+绑定的 Azure AD 用户，然后会创建 RoleBinding *developer1\@contoso.com*到 RoleBinding，如下面的 YAML 清单中所示：
 
 ```yaml
 ind: RoleBinding
@@ -82,7 +82,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-*developer1@contoso.com* 对 AKS 群集进行身份验证后，便对 *finance-app* 命名空间中的资源拥有了完全权限。 这样，即可以逻辑方式隔离和控制对资源的访问权限。 应根据上一部分中所述，将 Kubernetes RBAC 与 Azure AD 集成结合使用。
+当*developer1\@contoso.com*进行身份验证必须针对 AKS 群集中的资源的完全权限*财务应用*命名空间。 这样，即可以逻辑方式隔离和控制对资源的访问权限。 应根据上一部分中所述，将 Kubernetes RBAC 与 Azure AD 集成结合使用。
 
 ## <a name="use-pod-identities"></a>使用 pod 标识
 
