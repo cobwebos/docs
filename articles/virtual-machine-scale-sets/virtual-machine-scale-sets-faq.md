@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 924ed7c2a253ab74a4807559d190218d3125b92c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978589"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999565"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -233,8 +233,8 @@ az sf cluster create -h
 }
 ```
 
-linuxConfiguration 元素名称 | 必选 | Type | 说明
---- | --- | --- | --- |  ---
+linuxConfiguration 元素名称 | 需要 | Type | 描述
+--- | --- | --- | --- 
 ssh | 否 | 集合 | 指定 Linux OS 的 SSH 密钥配置
 路径 | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
 keyData | 是 | String | 指定 base64 编码的 SSH 公钥
@@ -309,7 +309,7 @@ CRP 组件不会持久保留客户机密。 如果对虚拟机规模集中的所
 
 方法 | 代码
 --- | ---
-GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
+GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
 
 请将 {secret-name} 替换为具体名称，将 {secret-version} 替换为要检索的机密的版本。 机密版本可能被排除。 在这种情况下，将检索当前的版本。
 
@@ -374,9 +374,9 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 可以在 `$vmss` 中找到 extensionName 值。
 
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>与 Log Analytics 集成的虚拟机规模集模板是否有任何示例可供参考？
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>是否有虚拟机规模集模板示例，它与 Azure Monitor 日志集成？
 
-有关与 Log Analytics 集成的虚拟机规模集模板示例，请参阅 [Deploy an Azure Service Fabric cluster and enable monitoring by using Log Analytics](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)（部署 Azure Service Fabric 群集，并通过使用 Log Analytics 来启用监视）中的第二个示例。
+有关虚拟机规模集模板示例，它与 Azure Monitor 日志集成，请参阅中的第二个示例[部署 Azure Service Fabric 群集，并通过使用 Azure Monitor 日志来启用监视](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)。
 
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>扩展似乎在虚拟机规模集上并行运行。 这导致我的自定义脚本扩展失败。 如何进行修复？
 
@@ -535,7 +535,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>如何将虚拟机规模集中第一个 VM 的 IP 地址添加到模板的输出中？
 
-要将虚拟机规模集中第一个 VM 的 IP 地址添加到模板的输出中，请参阅 [Azure 资源管理器：获取虚拟机规模集的专用 IP](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)。
+要将虚拟机规模集中第一个 VM 的 IP 地址添加到模板的输出中，请参阅 [Azure 资源管理器：获取虚拟机规模集的专用 IP](https://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)。
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>能否将规模集与加速网络结合使用？
 
@@ -658,15 +658,18 @@ IP 地址是从指定的子网中选择的。
 
 有关详细信息，请参阅[管理虚拟机规模集中的所有 VM](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)。
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>是否可以将规模集与 Azure Log Analytics 集成？
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>是否可以将规模集与 Azure Monitor 日志集成？
 
-可以，可在规模集 VM 上安装 Log Analytics 扩展。 Azure CLI 示例如下：
+是的您可以通过 Azure Monitor 扩展安装在刻度上设置 Vm。 Azure CLI 示例如下：
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
 可在 Azure 门户的 Log Analytics 工作区中查找所需的 workspaceId 和 workspaceKey。 在“概述”页面上，单击“设置”磁贴。 单击顶部的“相连的源”选项卡。
 
-注意：如果规模集 _upgradePolicy_ 设置为“手动”，则需要通过对 VM 调用升级将扩展应用到集中的所有 VM。 在 CLI 中，这将为“az vmss update-instances”。
+> [!NOTE]
+> 如果规模集_upgradePolicy_设置为手动，您需要通过在其上调用升级将扩展应用到集中的所有 Vm。 在 CLI 中，这将为“az vmss update-instances”。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -718,3 +721,26 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 - 想要更快速地启动一组 VM，而不是扩大虚拟机规模集。
   - 出于这种方案，可能创建了自己的自动缩放引擎，并希望以更快的速度完成端到端缩放。
 - 虚拟机规模集未均匀分布在容错域或更新域。 这可能是由于有选择地删除了 VM，或者因为过度预配后，VM 被删除。 在虚拟机规模集上先运行 `stop deallocate`，然后运行 `start`，可以将 VM 均匀地分布到容错域或更新域。
+
+### <a name="how-do-i-take-a-snapshot-of-a-vmss-instance"></a>如何取得 VMSS 实例的快照？
+VMSS 的实例中创建快照。
+
+```azurepowershell-interactive
+$rgname = "myResourceGroup"
+$vmssname = "myVMScaleSet"
+$Id = 0
+$location = "East US"
+ 
+$vmss1 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $Id     
+$snapshotconfig = New-AzSnapshotConfig -Location $location -AccountType Standard_LRS -OsType Windows -CreateOption Copy -SourceUri $vmss1.StorageProfile.OsDisk.ManagedDisk.id
+New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $snapshotconfig
+``` 
+ 
+从快照创建托管的磁盘。
+
+```azurepowershell-interactive
+$snapshotName = "myShapshot"
+$snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
+$diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk') 
+```

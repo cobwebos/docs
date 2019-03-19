@@ -17,7 +17,7 @@ ms.date: 03/14/2019
 ms.author: kaanan
 ms.openlocfilehash: dd99e1376eb0589fc8cb8404d557c9ebddd45fd6
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57992053"
