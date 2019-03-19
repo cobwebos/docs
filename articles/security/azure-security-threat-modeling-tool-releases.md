@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: c8a852e4e69ccfed0e8210bf6872c891b017a046
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: 06fd659df1ec12bd6d5a7b8fb2ee94ca27d6a87c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496629"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834364"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool 发行版
 
@@ -30,7 +30,7 @@ Microsoft Threat Modeling Tool 目前作为免费的[单击下载](https://aka.m
 - 支持的操作系统
   - Microsoft Windows 10 周年更新或更高版本
 - 所需的 .NET 版本
-  - .Net 4.7.1 或更高版本
+  - .NET 4.7.1 或更高版本
 - 其他要求
   - 需要建立 Internet 连接才能接收工具和模板的更新。
 
