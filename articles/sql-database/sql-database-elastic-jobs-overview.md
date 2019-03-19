@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 396e8a487feb2f7a7cb45f3713e641b5ebc6abcd
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 8abb2e3ac4f62a3ea51cc686bbf23260fccc4077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565235"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441366"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>管理扩大的云数据库
 
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
-**弹性数据库作业**是一个由客户托管的 Azure 云服务，可让你执行临时和计划的管理任务，称为“作业”。 使用作业可以通过运行 Transact-SQL 脚本来执行管理操作，从而轻松可靠地管理大型 Azure SQL 数据库组。
+**弹性数据库作业**是客户托管 Azure 云服务，可以让你执行即席任务和计划管理任务，称为**作业**。 使用作业可以通过运行 Transact-SQL 脚本来执行管理操作，从而轻松可靠地管理大型 Azure SQL 数据库组。
 
 若要管理扩大的分区数据库，可使用**弹性数据库作业**功能（预览版）在一组数据库中可靠地执行 Transact-SQL (T-SQL) 脚本，这些数据库包括：
 
@@ -114,7 +114,7 @@ ms.locfileid: "55565235"
 
 ## <a name="components-and-pricing"></a>组件和定价
 
-以下组件配合工作可以创建支持即席执行管理作业的 Azure 云服务。 在安装期间，订阅会自动安装和配置这些组件。 可以识别这些服务，因为它们具有相同的自动生成名称。 名称是唯一的，包括前缀“edj”后接 21 个随机生成的字符。
+以下组件协同工作以创建支持即席执行管理作业的 Azure 云服务。 在安装期间，订阅会自动安装和配置这些组件。 可以识别这些服务，因为它们具有相同的自动生成名称。 名称是唯一的，包括前缀“edj”后接 21 个随机生成的字符。
 
 - Azure 云服务
 
@@ -164,7 +164,7 @@ ms.locfileid: "55565235"
 
 1. 使用门户或 PowerShell API 将作业插入**控制数据库**。 作业将使用特定的凭据，请求针对一组数据库执行 Transact-SQL 脚本。
 2. 控制器将识别新作业。 创建并执行作业任务，以拆分脚本并刷新组的数据库。 最后，将创建并执行新的作业以扩展该作业，并创建新的作业，其中指定了每个子作业针对据组中的单个数据库执行 Transact-SQL 脚本。
-3. 控制器将识别创建的子作业。 对于每个作业，控制器将创建并触发作业任务，以针对数据库执行脚本。
+3. 控制器会识别创建的子作业。 对于每个作业，控制器将创建并触发作业任务，以针对数据库执行脚本。
 4. 完成所有作业任务后，控制器会将作业更新为已完成状态。
    在作业执行期间，可以随时使用 PowerShell API 来查看作业执行的当前状态。 PowerShell API 返回的所有时间都以 UTC 表示。 如果需要，可以启动取消请求来停止作业。
 

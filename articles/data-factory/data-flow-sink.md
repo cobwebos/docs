@@ -3,16 +3,15 @@ title: Azure 数据工厂映射数据流接收器转换
 description: Azure 数据工厂映射数据流接收器转换
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 381dc2f9f6d3a074af00ba047472719c086f5811
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
-ms.translationtype: HT
+ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408402"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852434"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>映射数据流接收器转换
 
@@ -35,27 +34,17 @@ ms.locfileid: "56408402"
 
 ![接收器选项](media/data-flow/opt001.png "接收器选项")
 
-### <a name="output-settings"></a>输出设置
-
-覆盖操作会截断表（如果存在），然后重新创建表并加载数据。 追加操作会插入新行。 如果“数据集表名”中的表在目标 ADW 中根本不存在，则数据流将创建该表，然后加载数据。
-
-如果取消选择“自动映射”，可以手动将字段映射到目标表。
-
-![接收器 ADW 选项](media/data-flow/adw2.png "ADW 接收器")
-
-#### <a name="field-mapping"></a>字段映射
+## <a name="field-mapping"></a>字段映射
 
 在接收器转换的“映射”选项卡上，可将传入（左侧）列映射到目标（右侧）。 将数据流沉积到文件时，ADF 始终会将新文件写入某个文件夹。 映射到数据库数据集时，可以选择使用此架构生成新表（将“保存策略”设置为“覆盖”），或者将新行插入到现有表，并将字段映射到现有架构。
 
-可以使用映射表中的多项选择功能一键式链接多个列、取消链接多个列，或者将多个行映射到相同的列名。
+可以使用映射表中多选要链接多个列单击一次，解除链接多个列或映射到相同的列名称的多个行。
+
+当你希望始终采用传入的字段集，并将它们映射到作为目标的，将"允许架构偏差"设置。
 
 ![字段映射](media/data-flow/multi1.png "多个选项")
 
 若要重置列映射，请按“重新映射”按钮以重置映射。
-
-![连接](media/data-flow/maxcon.png "连接")
-
-### <a name="updates-to-sink-transformation-for-adf-v2-ga-version"></a>ADF V2 正式版的接收器转换更新
 
 ![接收器选项](media/data-flow/sink1.png "接收器 1")
 
@@ -65,7 +54,7 @@ ms.locfileid: "56408402"
 
 * 清除文件夹。 ADF 在该目标文件夹中写入目标文件之前，会截断接收器文件夹的内容。
 
-* 文件名选项
+## <a name="file-name-options"></a>文件名选项
 
    * 默认值：允许 Spark 根据 PART 默认值为文件命名
    * 模式：输入输出文件的名称
@@ -75,14 +64,19 @@ ms.locfileid: "56408402"
 > [!NOTE]
 > 仅当正在运行“执行数据流”活动且不处于“数据流调试”模式时，才会执行文件操作
 
-使用 SQL 接收器类型可以设置：
+## <a name="database-options"></a>数据库选项
 
-* 截断表
-* 重新创建表（执行删除/创建）
-* 较大数据负载的批大小。 输入一个数字以将写入内容装桶成区块。
+* 允许插入、 更新、 删除、 更新插入。 默认值是允许插入。 如果您希望更新、 插入更新或插入行，必须首先将 alter 行转换添加到这些特定操作的标记行。
+* 截断的表 （删除所有行从您的目标表前完成流的数据）
+* 重新创建的表 （删除/创建目标表之前执行完成流的数据）
+* 较大数据负载的批大小。 分解成多存储桶写入到输入的数字
+* 启用暂存：这将指示 ADF Polybase 加载时要使用 Azure 数据仓库作为接收器数据集
 
-![字段映射](media/data-flow/sql001.png "SQL 选项")
+![SQL 接收器选项](media/data-flow/alter-row2.png "SQL 选项")
+
+> [!NOTE]
+> 在更新或删除数据库接收器中的行，必须设置的键列。 这样一来，Alter 行是能够确定在 DML 中唯一的行。
 
 ## <a name="next-steps"></a>后续步骤
 
-创建数据流后，请[将“执行数据流”活动添加到管道](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview)。
+创建数据流后，请[将“执行数据流”活动添加到管道](concepts-data-flow-overview.md)。

@@ -3,7 +3,7 @@ title: 使用 Azure Cloud Shell 编辑器 | Microsoft Docs
 description: 概述如何使用 Azure Cloud Shell 编辑器。
 services: azure
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
-ms.author: juluk
-ms.openlocfilehash: caf6e18a9a30654710f5445ed6ab957a5253d62e
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
-ms.translationtype: HT
+ms.author: damaerte
+ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259437"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243153"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>使用 Azure Cloud Shell 编辑器
 

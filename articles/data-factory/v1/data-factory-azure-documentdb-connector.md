@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 54e78496b98fffefd2932a2ce7625f8b325fb32a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812644"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437422"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Cosmos DB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -139,7 +139,7 @@ ms.locfileid: "55812644"
 使用此 Cosmos DB 连接器，可以轻松地
 
 * 将各种源中的 JSON 文档导入 Cosmos DB，包括 Azure Blob、Azure Data Lake、本地文件系统或 Azure 数据工厂所支持的其他基于文件的存储。
-* 将 JSON 文档从 Cosmos DB 集合导出到各种基于文件的存储。
+* 将 JSON 文档从 Cosmos DB 集合到各种基于文件的存储。
 * 在两个 Cosmos DB 集合之间按原样迁移数据。
 
 若要实现此类“架构不可知”复制：

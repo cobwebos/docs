@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: 此置信度分数指明了答案是给定用户查询的正确匹配答案的置信度。
 services: cognitive-services
 author: tulasim88
-manager: pchoudh
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 757ef07c1268cbf159ce98dfb8ba1980616e4a3a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: bf254d661f7819114d34631359aaecb97e9d0e0d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245127"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403730"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的置信度分数
 如果用户查询的匹配依据为知识库，QnA Maker 会返回相关答案和置信度分数。 此分数指明了答案是给定用户查询的正确匹配答案的置信度。 
@@ -72,9 +72,9 @@ ms.locfileid: "56245127"
 
 
 ## <a name="no-match-found"></a>找不到匹配项
-当排名程序找不到良好匹配时，将返回置信度分数 0.0 或“None”，并且默认响应为“在知识库中找不到良好匹配”。 可以在调用终结点的机器人或应用程序代码中重写此默认响应。 或者，也可以在 Azure 中设置重写响应，这将更改在特定 QnA Maker 服务中部署的所有知识库的默认值。
+当排名程序找不到良好匹配时，将返回置信度分数 0.0 或“None”，并且默认响应为“在知识库中找不到良好匹配”。 您可以覆盖此[默认响应](#change-default-answer)在智能机器人应用程序或应用程序代码中调用终结点。 或者，也可以在 Azure 中设置重写响应，这将更改在特定 QnA Maker 服务中部署的所有知识库的默认值。
 
-### <a name="change-default-answer"></a>更改默认答案
+## <a name="change-default-answer"></a>更改默认答案
 
 1. 转到 [Azure 门户](https://portal.azure.com)并导航到表示所创建的 QnA Maker 服务的资源组。
 
@@ -94,5 +94,4 @@ ms.locfileid: "56245127"
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [支持的数据源](./data-sources-supported.md)
-## <a name="see-also"></a>另请参阅 
-[QnA Maker 概述](../Overview/overview.md)
+

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8927213dc4f1cf01eccdd8f54a946f9dbbaaa04d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: c173152d0a59e391fe77ee855311a867a1b2b6c0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869953"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338427"
 ---
 # <a name="model-and-usage-statistics-in-the-dashboard"></a>仪表板中的模型和使用情况统计信息
 应用仪表板可让你一目了然地监视应用。 通过单击“我的应用”页中的应用程序名称打开应用，然后选择顶部面板中的“仪表板”，仪表板将随即显示。 
@@ -69,21 +69,8 @@ ms.locfileid: "55869953"
 
 ![意向细分](./media/luis-how-to-use-dashboard/intent-breakdown.png)
 
-若要控制是否基于已标记表述数或终结点命中数进行细分：
-
-1. 单击“其他设置”![用于访问列表的“其他设置”按钮](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png)以访问列表，如下图所示：
-
-    ![意向细分列表](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
-2. 从列表中选择一个值，然后单击返回箭头 ![返回箭头](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) 以显示图表。
-
 ## <a name="entity-breakdown"></a>实体细分
 仪表板显示基于已标记表述数或终结点命中数的实体细分。 此摘要图显示应用中每个实体的相对重要性。 将鼠标指针悬停在切片上时，可看到实体名称及其占已标记表述数/终结点命中数的百分比。 
 
 ![实体细分](./media/luis-how-to-use-dashboard/entity-breakdown.png)
 
-若要控制是否基于已标记表述数或终结点命中数进行细分：
-
-1. 单击“其他设置”![用于获取列表的“其他设置”按钮](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png)以访问列表，如下图所示：
-
-    ![实体细分列表](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
-2. 从列表中选择一个值，然后单击返回箭头 ![返回箭头](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) 以显示相应图表。

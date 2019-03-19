@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 734889905719e0b15b32988e90b48721372076cc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 70a6845349b90cf614a84e13680ebb6fc6b3e2a9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329143"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433155"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
 
@@ -102,7 +102,7 @@ Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少�
 
 在少数情况下，Azure 运营团队可能需要执行维护活动，确保 Azure 平台总体上正常运行。 此行为可能会影响 VM 可用性，并且通常会导致相同的自动恢复操作，如前所述。  
 
-计划外维护包括以下情况：
+计划外的维护包括：
 
 - 紧急节点碎片整理
 - 紧急网络交换机更新

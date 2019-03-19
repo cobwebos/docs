@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7278eba1c9039c180f75cdd2dfd1e18a77baf423
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: dc30b28203ad416370f1304436e7e6e642921be9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416779"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441502"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>管理前脚本和后脚本（预览版）
 
-在执行更新部署之前（前任务）和之后（后任务），可以使用前脚本和后脚本在自动化帐户中运行 PowerShell Runbook。 前脚本和后脚本在 Azure 上下文中运行，而不是在本地运行。 前脚本在更新部署开始时运行。 后脚本在部署结束时以及在配置的任何重新启动之后运行。
+在执行更新部署之前（前任务）和之后（后任务），可以使用前脚本和后脚本在自动化帐户中运行 PowerShell Runbook。 前脚本和后脚本在 Azure 上下文中运行，而不是在本地运行。 操作前脚本运行更新部署的开始处。 后脚本在部署结束时以及在配置的任何重新启动之后运行。
 
 ## <a name="runbook-requirements"></a>Runbook 要求
 
@@ -70,7 +70,7 @@ ms.locfileid: "56416779"
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
-|属性  |说明  |
+|属性  |描述  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | 软件更新配置的名称        |
 |SoftwareUpdateConfigurationRunId     | 运行的唯一 ID。        |

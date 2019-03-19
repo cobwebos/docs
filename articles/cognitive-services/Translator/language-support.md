@@ -7,19 +7,19 @@ author: Jann-Skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.topic: article
-ms.date: 09/25/2018
+ms.topic: reference
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: d0ab683ac59c17cbae1e0947cd2acd785b0365d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: aed3d08f96265736889deccf51d427a6631e1ea9
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884965"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241559"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
-文本翻译 API 支持对以下语言进行文本到文本翻译。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准，当神经系统可用时，其可使用文本翻译 API 的 V3 版作为默认值。 
+文本翻译 API 支持对以下语言进行文本到文本翻译。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准，当神经系统可用时，其可使用文本翻译 API 的 V3 版作为默认值。
 
 [详细了解机器翻译的工作原理](https://www.microsoft.com/translator/mt.aspx)
 
@@ -33,7 +33,7 @@ ms.locfileid: "55884965"
 * 神经默认：神经是默认的翻译系统。 使用参数 `category=smt` 可访问适用于 Microsoft Translator Hub 的统计系统。
 * 仅神经：只有神经翻译可用。
 
-**V3 Translator API** V3 Translator API 在默认情况下为神经，统计系统仅在没有神经系统时才可用。 自定义翻译器仅可用于神经语言。 
+**V3 Translator API** V3 Translator API 在默认情况下为神经，统计系统仅在没有神经系统时才可用。 自定义翻译器仅可用于神经语言。 [查看自定义转换器中的当前可用的语言](#customization)。
 
 |语言|  语言代码|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
@@ -268,7 +268,7 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 
 ## <a name="customization"></a>自定义
 
-以下语言可以使用[自定义翻译器](http://aka.ms/CustomTranslator)进行自定义。
+以下语言版本是可自定义英语使用进出[自定义转换器](http://aka.ms/CustomTranslator)。
 
 | 语言    | 语言代码 |
 |:----------- |:-------------:|

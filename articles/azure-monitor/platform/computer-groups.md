@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: 7e5d04f3ead4353c88a6b56ab530f41ff15022d1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 0a29e453c723ecc9ac378ee337365525587aaef2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005379"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444117"
 ---
-# <a name="computer-groups-in-azure-monitor-log-quereies"></a>Azure Monitor 日志查询中的计算机组
+# <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
 使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](../log-query/log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "56005379"
 ## <a name="creating-a-computer-group"></a>创建计算机组
 可以使用下表中的任一方法在 Azure Monitor 中创建计算机组。  在以下各节中提供了每个方法的详细信息。 
 
-| 方法 | 说明 |
+| 方法 | 描述 |
 |:--- |:--- |
 | 日志查询 |创建将返回计算机列表的日志查询。 |
 | 日志搜索 API |使用日志搜索 API 基于日志查询结果以编程方式创建计算机组。 |
@@ -53,9 +53,9 @@ ms.locfileid: "56005379"
 
 下表介绍了用于定义计算机组的属性。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:---|:---|
-| Name   | 要在门户中显示的查询名称。 |
+| 名称   | 要在门户中显示的查询名称。 |
 | 函数别名 | 查询中用于标识计算机组的唯一别名。 |
 | 类别       | 用于在门户中对查询进行组织的类别。 |
 

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 857aa71a4812534030ca638fd8bab11f60535ea0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536940"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860578"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>教程：使用 Azure 和 Azure Stack 创建异地分布式应用解决方案
 
@@ -135,7 +135,7 @@ ms.locfileid: "57536940"
 
 1. **登录到 Azure Pipelines** 以确认能够创建生成定义。
 
-2. 添加 **-r win10-x64** 代码。 在 .Net Core 中触发独立部署时需要此代码。
+2. 添加 **-r win10-x64** 代码。 这是触发使用.NET Core 的独立的部署所必需的。
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image4.png)
 
@@ -154,9 +154,9 @@ Azure DevOps 和 Azure DevOps Server 提供高度可配置、可管理的管道�
 
 ![Alt text](media/azure-stack-solution-geo-distributed/image5.png)
 
-1.  在 Visual Studio Online (VSO) 的“生成和发布”页的“发布”选项卡下，选择**加号**按钮以添加新的发布。
+1. 在 Visual Studio Online (VSO) 的“生成和发布”页的“发布”选项卡下，选择**加号**按钮以添加新的发布。
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image6.png)
+   ![Alt text](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. 应用“Azure 应用服务部署”模板。
 
@@ -210,7 +210,7 @@ Azure DevOps 和 Azure DevOps Server 提供高度可配置、可管理的管道�
 
 14. 选择 Azure Stack 终结点的**订阅**。
 
-  ![Alt text](media/azure-stack-solution-geo-distributed/image20.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. 将 Azure Stack Web 应用名称设置为**应用服务名称**。
 
@@ -299,11 +299,11 @@ Azure DevOps 和 Azure DevOps Server 提供高度可配置、可管理的管道�
 
 ![示例 DNS 记录页](media/azure-stack-solution-geo-distributed/image28.png)
 
-1.  在“域名注册机构”中，选择“添加或创建”以创建记录。 某些提供商提供了不同的链接来添加不同的记录类型。 查阅提供商的文档。
+1. 在“域名注册机构”中，选择“添加或创建”以创建记录。 某些提供商提供了不同的链接来添加不同的记录类型。 查阅提供商的文档。
 
-2.  添加一条 CNAME 记录来将子域映射到应用的默认主机名。
+2. 添加一条 CNAME 记录来将子域映射到应用的默认主机名。
 
-  Www.northwindcloud.com 域示例中，将添加 CNAME 记录映射到名称 < 应用\_名称 >。 azurewebsites.net。
+   Www.northwindcloud.com 域示例中，将添加 CNAME 记录映射到名称 < 应用\_名称 >。 azurewebsites.net。
 
 添加 CNAME 后，DNS 记录页类似于以下示例：
 
@@ -311,47 +311,47 @@ Azure DevOps 和 Azure DevOps Server 提供高度可配置、可管理的管道�
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>在 Azure 中启用 CNAME 记录映射
 
-1.  在新选项卡中登录到 Azure 门户。
+1. 在新选项卡中登录到 Azure 门户。
 
-2.  导航到“应用服务”。
+2. 导航到“应用服务”。
 
-3.  选择 Web 应用。
+3. 选择 Web 应用。
 
-4.  在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
+4. 在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
-5.  选择“添加主机名”旁边的 **+** 图标。
+5. 选择“添加主机名”旁边的 **+** 图标。
 
-1.  键入完全限定的域名，例如 `www.northwindcloud.com`。
+1. 键入完全限定的域名，例如 `www.northwindcloud.com`。
 
-2.  选择“验证”。
+2. 选择“验证”。
 
-3.  如有出现提示，请将其他类型的记录（`A` 或 `TXT`）添加到域名注册机构 DNS 记录。 Azure 将提供这些记录的值和类型：
+3. 如有出现提示，请将其他类型的记录（`A` 或 `TXT`）添加到域名注册机构 DNS 记录。 Azure 将提供这些记录的值和类型：
 
-    a.  要映射到应用 IP 地址的 A 记录。
+   a.  要映射到应用 IP 地址的 A 记录。
 
-    b.  一个**TXT**记录映射到应用的默认主机名 < a p p _ >。 azurewebsites.net。 应用服务仅在配置时使用此记录来验证自定义域所有权。 验证后，删除 TXT 记录。
+   b.  一个**TXT**记录映射到应用的默认主机名 < a p p _ >。 azurewebsites.net。 应用服务仅在配置时使用此记录来验证自定义域所有权。 验证后，删除 TXT 记录。
 
-4.  在域注册机构选项卡中完成此任务并重新验证，直到“添加主机名”按钮激活为止。
+4. 在域注册机构选项卡中完成此任务并重新验证，直到“添加主机名”按钮激活为止。
 
-5.  确保“**主机名记录类型”设置为“CNAME (www.example.com 或任何子域)”。
+5. 确保“**主机名记录类型”设置为“CNAME (www.example.com 或任何子域)”。
 
-6.  选择“添加主机名”。
+6. 选择“添加主机名”。
 
-7.  键入完全限定的域名，例如 `northwindcloud.com`。
+7. 键入完全限定的域名，例如 `northwindcloud.com`。
 
-8.  选择“验证”。
+8. 选择“验证”。
 
-9.  “添加”按钮将会激活。
+9. “添加”按钮将会激活。
 
 10. 确保“**主机名记录类型”设置为“A 记录(example.com)”。
 
 11. **添加主机名**。
 
-  新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
+    新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
   
-  ![Alt text](media/azure-stack-solution-geo-distributed/image31.png) 
+    ![Alt text](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  如果发生错误，页面底部会显示验证错误通知。 ![验证错误](media/azure-stack-solution-geo-distributed/image32.png)
+    如果发生错误，页面底部会显示验证错误通知。 ![验证错误](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  可以重复上述步骤以映射通配符域（\*.northwindcloud.com）。 如此可以直接将其他子域添加到此应用服务，而无需为每个子域单独创建 CNAME 记录。 请遵照注册机构的说明配置此设置。
@@ -482,15 +482,15 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 #### <a name="upload-the-ssl-certificate"></a>上传 SSL 证书
 
-1.  在 Web 应用的左侧导航窗格中选择“SSL 设置”。
+1. 在 Web 应用的左侧导航窗格中选择“SSL 设置”。
 
-2.  选择“上传证书”。
+2. 选择“上传证书”。
 
-3.  在“PFX 证书文件”中选择 PFX 文件。
+3. 在“PFX 证书文件”中选择 PFX 文件。
 
-4.  4. 在“证书密码”中，键入导出 PFX 文件时创建的密码。
+4. 1. 在“证书密码”中，键入导出 PFX 文件时创建的密码。
 
-5.  选择 **“上传”**。
+5. 选择 **“上传”**。
 
 ![上传证书](media/azure-stack-solution-geo-distributed/image38.png)
 
@@ -588,23 +588,23 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ### <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 
-1.  在门户的搜索栏中，搜索在前面部分创建的**流量管理器配置文件**名称，并在显示的结果中选择该流量管理器配置文件。
+1. 在门户的搜索栏中，搜索在前面部分创建的**流量管理器配置文件**名称，并在显示的结果中选择该流量管理器配置文件。
 
-2.  在“流量管理器配置文件”的“设置”部分，选择“终结点”。
+2. 在“流量管理器配置文件”的“设置”部分，选择“终结点”。
 
-3.  选择 **添加** 。
+3. 选择 **添加** 。
 
-4.  添加 Azure Stack 终结点。
+4. 添加 Azure Stack 终结点。
 
-5.  对于“类型”，请选择“外部终结点”。
+5. 对于“类型”，请选择“外部终结点”。
 
-6.  提供此终结点的**名称**，最好是 Azure Stack 的名称。
+6. 提供此终结点的**名称**，最好是 Azure Stack 的名称。
 
-7.  对于完全限定的域名 (**FQDN**)，请使用 Azure Stack Web 应用的外部 URL。
+7. 对于完全限定的域名 (**FQDN**)，请使用 Azure Stack Web 应用的外部 URL。
 
-8.  在异地映射下选择资源所在的位置，例如，一个区域/大陆**欧洲。**
+8. 在异地映射下选择资源所在的位置，例如，一个区域/大陆**欧洲。**
 
-9.  在国家/地区下拉列表显示，下选择将应用到此终结点，例如，国家/地区**德国**。
+9. 在国家/地区下拉列表显示，下选择将应用到此终结点，例如，国家/地区**德国**。
 
 10. 使“添加为已禁用”保持未选中状态。
 
@@ -628,12 +628,12 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 16. 选择“确定”
 
-  > [!Note]  
-  >  创建至少一个地理范围为“全部(全球)”的终结点，作为资源的默认终结点。
+    > [!Note]  
+    >  创建至少一个地理范围为“全部(全球)”的终结点，作为资源的默认终结点。
 
-1.  添加完这两个终结点后，这两个终结点会显示在“流量管理器配置文件”中，并且其监视状态为“联机”。
+1. 添加完这两个终结点后，这两个终结点会显示在“流量管理器配置文件”中，并且其监视状态为“联机”。
 
-  ![Alt text](media/azure-stack-solution-geo-distributed/image46.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image46.png)
 
 **全球企业依赖于 Azure 异地分布功能**
 

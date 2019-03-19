@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ff45ecc00d1c5c810015c8007d194b882f32f3da
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: 85fba27c856561eb1270e719dcf24b88d2d5a01f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412562"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309904"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -51,7 +51,7 @@ ms.locfileid: "54412562"
 在 Azure IoT Central 应用程序中，从 Windows IoT Core 设备模板添加真实设备，并记下设备连接详细信息（作用域 ID、设备 ID 和主键）。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
 
  > [!NOTE]
-   > Azure IoT Central 已转换为对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)，请按照以下说明[获取设备连接字符串](concepts-connectivity.md#getting-device-connection-string)并继续执行教程的剩余部分。
+   > Azure IoT 中心已转换为使用 Azure IoT 中心设备预配服务 (DPS) 的所有设备连接，请按照这些说明[获取设备连接字符串](concepts-connectivity.md#get-a-connection-string)和继续本教程的余下部分。
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>准备 Windows 10 IoT Core 设备
 
@@ -72,10 +72,10 @@ ms.locfileid: "54412562"
 完成后，需在任意浏览器中键入 http://[device-IP-address]:8080，以便打开 [Windows 设备门户](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal)。
 
 在该处，需按照下图所示执行相关操作：
-1. 展开左侧的“应用”节点。
-2. 单击“快速运行示例”。
-3. 单击“Azure IoT 中心客户端”。
-4. 单击“部署并运行”。
+1. 展开**应用**在左侧的节点。
+2. 选择**快速运行示例**。
+3. 选择**Azure IoT 中心客户端**。
+4. 选择**部署并运行**。
 
 ![Windows 设备门户中 Azure IoT 中心客户端的 Gif](./media/howto-connect-windowsiotcore/iothubapp.gif)
 

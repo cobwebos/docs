@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: e0c1ec55a7f21ad223629d6d478cbd97c7974abb
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: f00a8a02ac7f9468516506b6e6a376209d24c270
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237971"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448877"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>从门户调用必应自定义搜索实例
 
@@ -31,7 +31,7 @@ ms.locfileid: "56237971"
 一些重要参数如下所述：
 
 
-|参数  |说明  |
+|参数  |描述  |
 |---------|---------|
 |Query     | 要搜索的搜索词。 仅适用于 Web 终结点、图像终结点、视频终结点和自动建议终结点 |
 |自定义配置 ID | 所选自定义搜索实例的配置 ID。 该字段是只读字段。 |
@@ -40,7 +40,7 @@ ms.locfileid: "56237971"
 
 单击“其他参数”可显示以下参数：  
 
-|参数  |说明  |
+|参数  |描述  |
 |---------|---------|
 |安全搜索     | 用于筛选成人内容网页的筛选器。 仅适用于 Web 终结点、图像终结点、视频终结点和托管 UI 终结点。        |
 |用户界面语言    | 用于用户界面字符串的语言。 例如，如果你在托管 UI 中启用图像和视频，“图像”和“视频”选项卡使用指定的语言。        |

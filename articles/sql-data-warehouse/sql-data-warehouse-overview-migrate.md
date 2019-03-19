@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 464f3768ec6bd679513e7817d1b5185787094044
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 04c921282d3591e7326d326c230bf72e7f5c1812
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461299"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313007"
 ---
 # <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>将解决方案迁移到 Azure SQL 数据仓库
 请参阅将现有数据库解决方案迁移到 Azure SQL 数据仓库所涉及的内容。 
@@ -63,7 +63,7 @@ ms.locfileid: "55461299"
 -->
 
 ## <a name="next-steps"></a>后续步骤
-CAT（客户顾问团队）也有一些很好的通过博客发布的 SQL 数据仓库指南。  请参阅他们的[在实践中将数据迁移到 Azure SQL 数据仓库][Migrating data to Azure SQL Data Warehouse in practice]一文，了解有关迁移的更多指南。
+CAT（客户顾问团队）也有一些很好的通过博客发布的 SQL 数据仓库指南。  有关迁移的其他指南，请参阅他们的[在实践中将数据迁移到 Azure SQL 数据仓库][Migrating data to Azure SQL Data Warehouse in practice] 一文。
 
 <!--Image references-->
 
@@ -72,4 +72,4 @@ CAT（客户顾问团队）也有一些很好的通过博客发布的 SQL 数据
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/

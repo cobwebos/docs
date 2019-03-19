@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 045f2d12eb6836d14a09ea96c8eca3cad0e5246d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458207"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863291"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
 
@@ -28,7 +28,7 @@ Azure DevOps Services 提供了一种将工作项（情景或任务）与 Git �
 
 若要将工作项与新分支连接，请双击工作项，然后在弹出窗口中的“+ 添加链接”下单击“创建新分支”。  
 
-![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
+![第](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
 提供该新分支的相关信息，例如分支名称、基 Git 存储库和分支。 所选的 Git 存储库必须是该工作项隶属的同一个项目下的存储库。 基分支可以是主分支或某个其他现有分支。
 
@@ -36,7 +36,7 @@ Azure DevOps Services 提供了一种将工作项（情景或任务）与 Git �
 
 好的做法是分别为每个情景工作项创建一个 Git 分支。 然后，根据情景分支分别为每个任务工作项创建一个分支。 有多个人在参与同一个项目的不同情景或有多个人在参与同一个情景的不同任务时，以这种与情景任务关系相对应的分层方式组织分支将很有帮助。 每个团队成员使用不同的分支，共享一个分支时每个成员使用不同的代码或其他项目，这种情况下可以最大限度地减少冲突。 
 
-下图说明了 TDSP 的建议分支策略。 你可能并不需要此处所示的许多分支，尤其是在只有一个或两个人参与同一个项目或者只有一个人参与某个情景的所有任务的情况下。 但将开发分支与主分支区分开来始终是不错的做法。 这样有助于防止开发活动中断发布分支。 可在[成功的 Git 分支模型](http://nvie.com/posts/a-successful-git-branching-model/)中查看 git 分支模型的完整说明。
+下图说明了 TDSP 的建议分支策略。 你可能并不需要此处所示的许多分支，尤其是在只有一个或两个人参与同一个项目或者只有一个人参与某个情景的所有任务的情况下。 但将开发分支与主分支区分开来始终是不错的做法。 这样有助于防止开发活动中断发布分支。 可在[成功的 Git 分支模型](https://nvie.com/posts/a-successful-git-branching-model/)中查看 git 分支模型的完整说明。
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 

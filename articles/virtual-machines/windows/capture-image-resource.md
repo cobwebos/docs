@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 48aa634ad28236564223c1a78a2e190cd2a0e668
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: b0dc587035509606059e3620201b2061bbe4d6a0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107457"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341759"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
@@ -143,7 +143,6 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
     $vmName = "myVM"
     $rgName = "myResourceGroup"
     $location = "EastUS"
-    $snapshotName = "mySnapshot"
     $imageName = "myImage"
     ```
 

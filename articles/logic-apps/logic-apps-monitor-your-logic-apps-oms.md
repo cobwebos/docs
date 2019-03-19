@@ -1,5 +1,5 @@
 ---
-title: 使用 Log Analytics 监视逻辑应用 - Azure 逻辑应用 | Microsoft Docs
+title: 监视逻辑应用与 Azure Monitor 日志-Azure 逻辑应用 |Microsoft Docs
 description: 使用 Azure Log Analytics 获取见解和调试数据，以对逻辑应用运行进行故障排除和诊断
 services: logic-apps
 ms.service: logic-apps
@@ -9,23 +9,25 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 70242de62e976b05e2708dfd4991915c854d4bb4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 3f890e6cabd757fdd38374befaaccd1a10c9bd96
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995644"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192456"
 ---
-# <a name="monitor-logic-apps-with-azure-log-analytics"></a>使用 Azure Log Analytics 监视逻辑应用
+# <a name="monitor-logic-apps-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视逻辑应用
 
-要监控并获得有关逻辑应用的更丰富的调试详细信息，请在创建逻辑应用时启用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md)。 在 Azure 门户中安装逻辑应用管理解决方案时，Log Analytics 可为逻辑应用提供诊断日志记录和监视。 此解决方案还为逻辑应用运行提供聚合信息，其中包含状态、执行时间、重新提交状态和相关 ID 等特定的详细信息。 本文介绍了如何启用 Log Analytics，以便查看逻辑应用运行的运行时事件和数据。
+若要监视并获取有关逻辑应用更丰富的调试详细信息，开启[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)创建逻辑应用时。 Azure Monitor 日志提供了诊断日志记录和监视逻辑应用的 Azure 门户中安装逻辑应用管理解决方案时。 此解决方案还为逻辑应用运行提供聚合信息，其中包含状态、执行时间、重新提交状态和相关 ID 等特定的详细信息。 本文介绍如何启用 Azure Monitor 日志，以便可以查看运行时事件和运行逻辑应用的数据。
 
-若要为现有逻辑应用启用 Azure Log Analytics，请按照这些步骤[启用诊断日志记录并将逻辑应用运行时数据发送到 Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
+若要打开现有逻辑应用的 Azure Monitor 日志，请按照这些步骤[启用诊断日志记录并将逻辑应用运行时数据发送到 Azure Monitor 日志](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
 > [!NOTE]
 > 此页面之前描述了如何使用 Microsoft Operations Management Suite (OMS) 执行这些任务的步骤，该解决方案将[在 2019 年 1 月停用](../azure-monitor/platform/oms-portal-transition.md)，取而代之的将是使用 Azure Log Analytics 执行这些步骤的内容。 
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，需要一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。 
 
@@ -56,7 +58,7 @@ ms.locfileid: "52995644"
 
 ## <a name="install-logic-apps-management-solution"></a>安装逻辑应用管理解决方案
 
-如果在创建逻辑应用时已启用了 Log Analytics，可跳过此步骤。 你已经安装了逻辑应用管理解决方案。
+如果已启用了 Azure Monitor 日志创建逻辑应用时，跳过此步骤。 你已经安装了逻辑应用管理解决方案。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中查找“log analytics”，并选择“Log Analytics”。
 
@@ -149,9 +151,9 @@ ms.locfileid: "52995644"
 
      ![查看逻辑应用运行的操作和详细信息](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
      
-     在 Azure Log Analytics 页上，可以更新查询并查看表中的结果。 此查询使用 [Kusto 查询语言](https://aka.ms/LogAnalyticsLanguageReference)，如果希望查看不同的结果，可对其进行编辑。 
+     在 log analytics 页上，您可以更新查询并查看表的结果。 此查询使用 [Kusto 查询语言](https://aka.ms/LogAnalyticsLanguageReference)，如果希望查看不同的结果，可对其进行编辑。 
 
-     ![Azure Log Analytics - 查询视图](media/logic-apps-monitor-your-logic-apps-oms/query.png)
+     ![log analytics-查询视图](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 
 ## <a name="next-steps"></a>后续步骤
 

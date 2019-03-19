@@ -1,19 +1,18 @@
 ---
 title: 概述 - 适用于 IaaS VM 的 Azure 磁盘加密 | Microsoft Docs
 description: 本文概述适用于 IaaS VM 的 Microsoft Azure 磁盘加密。
-author: mestew
+author: msmbaldwin
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.author: mstewart
-ms.date: 12/07/2018
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1674a54ea78e7fea2cc39cb26fefc52b8764bc4c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: a7dd061d84167b172aff52e8a62ed6d43fddc108
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200847"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862006"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>适用于 IaaS VM 的 Azure 磁盘加密
 
@@ -72,7 +71,7 @@ Azure 磁盘加密是用于帮助加密 Windows 和 Linux IaaS VM 磁盘的功�
    > [!NOTE]
    > 不支持对某些 Linux 分发版进行 OS 驱动器加密。 有关详细信息，请参阅 [Azure 磁盘加密常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)一文。
    
-* 在使用 Windows 存储空间配置的 Windows VM 上启用加密。
+* 使用 Windows 存储空间开始 Windows Server 2016 中配置的 Vm 上启用加密。
 * 更新现有加密的高级和非高级存储 VM 的加密设置。
 * 针对密钥加密密钥 (KEK) 和非 KEK 方案备份和还原加密的 VM。
 * 支持所有 Azure 公共区域和 Azure 政府区域。
