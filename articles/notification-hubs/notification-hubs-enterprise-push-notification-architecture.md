@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: c8e204aef8bea26394c7180a72eb8ed8f62bbdc4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 369f3ebca0ca2f5862d8300934dee57a73d8bada
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447252"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903396"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
 
@@ -56,7 +56,7 @@ ms.locfileid: "54447252"
 
 ## <a name="sample"></a>示例
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 完成以下教程，熟悉相关概念以及常见的创建和配置步骤：
 
@@ -284,9 +284,9 @@ ms.locfileid: "54447252"
 
 <!-- Links -->
 [通知中心示例]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure 移动服务]: http://azure.microsoft.com/documentation/services/mobile-services/
-[Azure 服务总线]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[服务总线 Pub/Sub 编程]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure 移动服务]: https://azure.microsoft.com/documentation/services/mobile-services/
+[Azure 服务总线]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
+[服务总线 Pub/Sub 编程]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJob]: ../app-service/webjobs-create.md
-[通知中心 - Windows 通用教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[通知中心 - Windows 通用教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure 门户]: https://portal.azure.com/

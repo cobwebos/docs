@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: c734c8033947c4f4d5636bc8d82d38a3d871bdbd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998563"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890043"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 编码器发送单比特率实时流 
 > [!div class="op_single_selector"]
@@ -29,11 +29,11 @@ ms.locfileid: "55998563"
 >
 >
 
-本文说明如何配置 [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) 实时编码器，以便将单比特率流发送到用于实时编码的 AMS 频道。  有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
+本文说明如何配置 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 实时编码器，以便将单比特率流发送到用于实时编码的 AMS 频道。  有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
@@ -109,7 +109,7 @@ ms.locfileid: "55998563"
    * 配置文件：主要
    * 关键帧间隔：60 帧
 
-    **音频**
+     **音频**
 
    * 目标比特率：192 kbits/秒
    * 采样率：44.100 kHz
@@ -134,7 +134,7 @@ ms.locfileid: "55998563"
 1. 选择“确定”。
 2. 在“Wirecast”主屏幕上，确认视频和音频的输入源已就绪，并单击左上角的“流”。
 
-   ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
 > 在单击“流”之前，**必须**确保频道已就绪。
@@ -158,7 +158,7 @@ ms.locfileid: "55998563"
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
 2. 为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。  
 3. 选中“立即启动节目”框。
-4. 单击“创建节目”。  
+4. 单击“创建节目” 。  
 
    >[!NOTE]
    >创建节目需要的时间比创建频道需要的时间少。

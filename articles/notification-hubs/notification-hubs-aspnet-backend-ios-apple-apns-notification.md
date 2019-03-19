@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 23c532f6c344f8be37c3bf3d77f30effa4ec17e8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 9b6c0715cb85e245aba94adfb8b33d0d07ece9a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227703"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084406"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户推送通知
 
@@ -38,7 +38,7 @@ ms.locfileid: "55227703"
 > * 修改 iOS 应用
 > * 测试应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程假设已根据[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 中所述创建并配置了通知中心。 此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教程。
 如果要使用移动应用作为后端服务，请参阅[移动应用中的推送通知入门](../app-service-mobile/app-service-mobile-ios-get-started-push.md)。
@@ -54,7 +54,7 @@ ms.locfileid: "55227703"
 
 2. 在 `Main.storyboard` 文件中，添加屏幕截图中显示的对象库中的组件。
 
-    ![在 Xcode 接口生成器中编辑情节提要][1]
+    ![编辑在 Xcode 接口生成器中的情节提要][1]
 
    * **用户名**：包含占位符文本“*输入用户名*”的 UITextField，直接位于发送结果标签的下面并受左右边距的限制。
    * **密码**：包含占位符文本“*输入密码*”的 UITextField，直接位于用户名文本字段的下面并受左右边距的限制。 选中属性检查器中“*返回密钥*”下的“**安全文本输入**”选项。
@@ -64,7 +64,7 @@ ms.locfileid: "55227703"
    * **APNS**：标签和开关，用于启用将通知发送到 Apple 平台通知服务。
    * **收件人用户名**：包含占位符文本“收件人用户名标记”的 UITextField，直接位于 GCM 标签下，受左右边距限制。
 
-    某些组件已在[通知中心入 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中添加。
+     某些组件已在[通知中心入 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中添加。
 
 3. 按 **Ctrl** 的同时从视图中的组件拖至 `ViewController.h` 并添加这些新插座。
 

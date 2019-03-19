@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b35060aec8d9d040777fda247c798a42533b2ea4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 3c5cad3f735494ee74156e22a9bf150911c36eb0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182674"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091471"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
 在此任务中，会根据规定的业务要求，为混合标识解决方案定义数据保护策略。
@@ -119,9 +119,9 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
 
 图 X 中显示的每个交互分别代表一个可在 Azure AD 中引入的访问控制方案。 每种方案的说明如下：
 
-  1. 对在本地托管的应用程序的条件性访问：可以将已注册的设备与配置为将 AD FS 与 Windows Server 2012 R2 一起使用的应用程序的访问策略一起使用。
+1. 对在本地托管的应用程序的条件性访问：可以将已注册的设备与配置为将 AD FS 与 Windows Server 2012 R2 一起使用的应用程序的访问策略一起使用。
 
-  2. 对 Azure 门户的访问控制：Azure 还允许通过使用基于角色的访问控制 (RBAC) 来控制对门户的访问。 公司可以使用此方法限制个人可以在 Azure 门户中执行的操作数量。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方法委派访问权限：
+2. 对 Azure 门户的访问控制：Azure 还允许通过使用基于角色的访问控制 (RBAC) 来控制对门户的访问。 公司可以使用此方法限制个人可以在 Azure 门户中执行的操作数量。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方法委派访问权限：
 
    - 基于组的角色分配：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这样，便可以充分利用组织在工具和组管理过程中已有的现有投资。 也可以使用 Azure AD 高级版中的委派组管理功能。
    - 使用 Azure 中的内置角色：可以使用三个角色 - 所有者、参与者和阅读者，以确保用户和组仅具有完成工作所需任务的权限。
@@ -131,9 +131,9 @@ Azure Active Directory 为数千种 SaaS 应用程序与本地 Web 应用程序�
    > 如果要构建应用程序并且要自定义其访问控制，还可以使用 Azure AD 应用程序角色进行授权。 请参阅 [WebApp-RoleClaims-DotNet 示例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)，了解如何构建使用此功能的应用。
 
 
-  3. 使用 Microsoft Intune 的 Office 365 应用程序的条件访问：IT 管理员可以预配条件访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 
+3. 使用 Microsoft Intune 的 Office 365 应用程序的条件访问：IT 管理员可以预配条件访问设备策略来保护公司资源，同时允许信息工作者在符合条件的设备上访问服务。 
   
-  4. 适用于 SaaS 应用的条件访问：使用[此功能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)可以配置基于应用程序的多重身份验证访问规则，并可以阻止不在受信任网络中的用户的访问。 可以将多重身份验证规则应用于已分配给该应用程序的所有用户，或者仅应用于指定安全组中的用户。 如果用户是从组织网络内部的 IP 地址访问应用程序，则可能不需要进行多重身份验证。
+4. 适用于 SaaS 应用的条件访问：使用[此功能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)可以配置基于应用程序的多重身份验证访问规则，并可以阻止不在受信任网络中的用户的访问。 可以将多重身份验证规则应用于已分配给该应用程序的所有用户，或者仅应用于指定安全组中的用户。 如果用户是从组织网络内部的 IP 地址访问应用程序，则可能不需要进行多重身份验证。
 
 由于访问控制选项采用多层方式，因此在运行此任务时无法比较这些选项。 请确保针对每个要求控制资源访问权限的方案使用所有适用的选项。
 

@@ -7,22 +7,22 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 64f02b1165d014a0eaa89dae64a7d9aa283cac32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: 810388a85e4ad339ff1444d21ac231fe4c00aeac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834581"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120527"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>描述 Service Fabric 群集
-Service Fabric 群集 Resource Manager 提供多种机制用于描述群集。 在运行时，群集 Resource Manager 使用此信息来确保群集中运行的服务的高可用性。 实施这些重要规则时，群集资源管理器还会尝试优化群集中的资源消耗。
+Service Fabric 群集 Resource Manager 提供多种用于描述群集的的机制。 在运行时，群集 Resource Manager 使用此信息来确保群集中运行的服务的高可用性。 实施这些重要规则时，群集资源管理器还会尝试优化群集中的资源消耗。
 
 ## <a name="key-concepts"></a>关键概念
 群集 Resource Manager 支持多种用于描述群集的功能：
@@ -47,6 +47,7 @@ Service Fabric 群集 Resource Manager 提供多种机制用于描述群集。 �
 在下图中，我们已将构成容错域的所有实体着色，并列出了生成的所有不同容错域。 本示例列出了数据中心 (DC)、机架 (R) 和刀片服务器 (B)。 可以想象，如果每个刀片服务器包含多个虚拟机，则容错域层次结构中可能有另一个层。
 
 <center>
+
 ![通过容错域组织的节点][Image1]
 </center>
 
@@ -59,7 +60,8 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 失衡的域是什么样子？ 下图显示了两种不同的群集布局。 在第一个示例中，节点均匀分散到容错域。 在第二个示例中，某一容错域包含的节点比其他容错域多出许多。 
 
 <center>
-![两种不同的群集布局][Image2]
+
+![两个不同的群集布局][Image2]
 </center>
 
 在 Azure 中，系统将做出哪个节点位于哪个容错域的选择。 但是，根据预配的节点数目，某些容错域包含的节点可能仍然比其他容错域要多。 例如，假设群集中有 5 个容错域，但针对给定的 NodeType 预配了 7 个节点。 在这种情况下，前两个容错域最终包含的节点要比其他容错域多。 如果继续部署更多的、只包含几个实例的 NodeType，问题会变得更糟。 因此，建议将每个节点类型中的节点数配置为容错域数的倍数。
@@ -72,7 +74,8 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 下图显示了在三个容错域之间条带化的三个升级域。 该图还显示了有状态服务的三个不同副本的一种可能的放置方式，这些副本最终位于不同的容错域和升级域。 这种放置方式容许在服务升级过程中丢失一个容错域，在这种情况下仍可运行一个代码和数据副本。  
 
 <center>
-![包含容错域和升级域的布局][Image3]
+
+![包含容错域和升级域布局][Image3]
 </center>
 
 使用大量升级域既有利也有弊。 更多升级域意味着升级的每个步骤更细微，因此会给较少的节点或服务造成影响。 这样一来，每次只需移动较少的服务，进而降低系统中的流动。 这往往会提高可靠性，因为在升级过程中发生的任何问题所影响到的服务更少。 更多升级域也意味着处理升级的影响时，在其他节点上占用的缓冲区更少。 例如，如果有 5 个升级域，每个升级域中的节点要处理大约 20% 的流量。 如果需要关闭升级域进行升级，则通常需要将负载转移到某个位置。 由于剩余有 4 个升级域，因此每个升级域必须具有可供 5% 的总流量使用的空间。 更多升级域意味着群集中节点上所需占用的缓冲区更少。 例如，考虑一下有 10 个升级域的情况。 在此情况下，每个 UD 仅处理约 10% 的总流量。 当开始升级群集时，每个域只需具有约 1.1% 的总流量空间即可。 使用更多升级域通常能够以更高的利用率运行节点，因为需要保留的容量更少。 这同样适用于容错域。  
@@ -88,6 +91,7 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 - “条带化”或“矩阵”模型，其中的容错域和升级域构成了沿对角线分布的计算机矩阵。
 
 <center>
+
 ![容错域和升级域布局][Image4]
 </center>
 
@@ -117,12 +121,12 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1 |
-| **UD1** | |R2 | | | |1 |
-| **UD2** | | |R3 | | |1 |
-| **UD3** | | | |R4 | |1 |
-| **UD4** | | | | |R5 |1 |
-| **FDTotal** |1 |1 |1 |1 |1 |- |
+| **UD0** |R1 | | | | |第 |
+| **UD1** | |R2 | | | |第 |
+| **UD2** | | |R3 | | |第 |
+| **UD3** | | | |R4 | |第 |
+| **UD4** | | | | |R5 |第 |
+| **FDTotal** |第 |1 |1 |1 |第 |- |
 
 *布局 1*
 
@@ -133,12 +137,12 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1 |
-| **UD1** |R5 | | | | |1 |
-| **UD2** | | |R2 | | |1 |
-| **UD3** | | | |R3 | |1 |
-| **UD4** | | | | |R4 |1 |
-| **FDTotal** |2 |0 |1 |1 |1 |- |
+| **UD0** |R1 | | | | |第 |
+| **UD1** |R5 | | | | |第 |
+| **UD2** | | |R2 | | |第 |
+| **UD3** | | | |R3 | |第 |
+| **UD4** | | | | |R4 |第 |
+| **FDTotal** |2 |0 |1 |1 |第 |- |
 
 *布局 2*
 
@@ -149,10 +153,10 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
-| **UD2** | | |R2 | | |1 |
-| **UD3** | | | |R3 | |1 |
-| **UD4** | | | | |R4 |1 |
-| **FDTotal** |1 |1 |1 |1 |1 |- |
+| **UD2** | | |R2 | | |第 |
+| **UD3** | | | |R3 | |第 |
+| **UD4** | | | | |R4 |第 |
+| **FDTotal** |第 |1 |1 |1 |第 |- |
 
 *布局 3*
 
@@ -190,9 +194,9 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 由于这两种方法都有优缺点，现在我们将介绍结合了两种策略的自适应方法。
 
 > [!NOTE]
->从 Service Fabric 版本 6.2 起，这将成为默认行为。 
->
-自适应方法默认使用“最大差值”逻辑，并且仅在必要时切换为“仲裁安全”逻辑。 群集资源管理器通过查看群集和服务的配置方式，自动辨别必要的策略。 对于给定的服务：如果 TargetReplicaSetSize 能被故障域数和升级域数整除，并且节点数少于或等于容错域数乘以升级域数的积，群集资源管理器则应针对该服务使用“基于仲裁”逻辑**。 请注意，群集资源管理器对无状态和有状态服务都将使用此方法，尽管仲裁丢失与无状态服务无关。
+> 从 Service Fabric 版本 6.2 起，这将成为默认行为。 
+> 
+> 自适应方法默认使用“最大差值”逻辑，并且仅在必要时切换为“仲裁安全”逻辑。 群集资源管理器通过查看群集和服务的配置方式，自动辨别必要的策略。 对于给定的服务：如果 TargetReplicaSetSize 能被故障域数和升级域数整除，并且节点数少于或等于容错域数乘以升级域数的积，群集资源管理器则应针对该服务使用“基于仲裁”逻辑**。 请注意，群集资源管理器对无状态和有状态服务都将使用此方法，尽管仲裁丢失与无状态服务无关。
 
 返回上一个示例，假设群集现在有 8 个节点（群集仍然配置了 5 个故障域和 5 个升级域，在群集上托管的服务的 TargetReplicaSetSize 仍为 5）。 
 
@@ -210,12 +214,12 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1 |
-| **UD1** |R2 | | | | |1 |
+| **UD0** |R1 | | | | |第 |
+| **UD1** |R2 | | | | |第 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | | | |0 |
-| **UD4** | | | | |R5 |1 |
-| **FDTotal** |2 |1 |1 |0 |1 |- |
+| **UD4** | | | | |R5 |第 |
+| **FDTotal** |2 |第 |第 |0 |第 |- |
 
 *布局 4*
 
@@ -226,11 +230,11 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |不适用 |不适用 |不适用 |不适用 |不适用 |不适用 |
-| **UD1** |R2 | | | | |1 |
+| **UD1** |R2 | | | | |第 |
 | **UD2** | |R3 |R4 | | |2 |
-| **UD3** | | | |R1 | |1 |
-| **UD4** | | | | |R5 |1 |
-| **FDTotal** |1 |1 |1 |1 |1 |- |
+| **UD3** | | | |R1 | |第 |
+| **UD4** | | | | |R5 |第 |
+| **FDTotal** |第 |1 |1 |1 |第 |- |
 
 *布局 5*
 
@@ -338,19 +342,21 @@ ClusterManifest.xml
 有时（事实上是大多数情况下），需要确保只在群集中特定类型的节点上运行某些工作负荷。 例如，某些工作负荷可能需要 GPU 或 SSD，而有些则不用。 一个有说服力的示例就是，几乎在每个 n 层体系结构，都有专门的硬件来处理特定的工作负荷。 某些计算机充当应用程序的前端或 API 服务端，并向客户端或在 Internet 上公开。 其他一些计算机（通常具有不同的硬件资源）处理计算或存储层的工作。 通常不会直接向客户端或 Internet 公开这些计算机。 Service Fabric 预期存在特定工作负荷需要在特定硬件配置上运行的情况。 例如：
 
 * 现有的 n 层应用程序已“提升并迁移”到 Service Fabric 环境
-* 出于性能、缩放或安全性隔离原因，某个工作负荷需要在特定硬件上运行
+* 出于性能、规模或安全性隔离原因，某个工作负荷需要在特定硬件上运行
 * 出于策略或资源消耗原因，某个工作负荷应与其他工作负荷隔离
 
 为了支持这种配置，Service Fabric 提供先进的标记概念，可将其应用到节点。 这些标记称为节点属性。 放置约束是附加到单个服务的语句，这些服务专供 1 个或多个节点属性选择。 放置约束定义服务运行的位置。 约束集可扩展 - 可以使用任何键/值对。 
 
 <center>
-![群集布局中的不同工作负荷][Image5]
+
+![群集布局不同工作负荷][Image5]
 </center>
 
 ### <a name="built-in-node-properties"></a>内置节点属性
 Service Fabric 定义了一些默认节点属性，无需用户进行定义，系统即会自动使用这些属性。 在每个节点上定义的默认属性是 NodeType 和 NodeName。 因此举例而言，可以将放置约束编写为 `"(NodeType == NodeType03)"`。 通常，我们认为 NodeType 是最常用的属性之一。 它很有用，因为它与计算机的类型之间存在一一对应关系。 每种计算机类型都与一种传统 n 层应用程序的工作负荷类型相对应。
 
 <center>
+
 ![放置约束和节点属性][Image6]
 </center>
 
@@ -474,6 +480,7 @@ Service Fabric 使用 `Metrics` 表示资源。 指标是你想要向 Service Fa
 在运行时，群集资源管理器会跟踪群集中和节点上的剩余容量。 群集资源管理器通过从运行服务的节点容量中减去每个服务的使用量来跟踪容量。 使用此信息，Service Fabric 群集 Resource Manager 可找出要放置或移动副本的位置，使节点不会超过容量。
 
 <center>
+
 ![群集节点和容量][Image7]
 </center>
 
@@ -496,7 +503,7 @@ Powershell：
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)
 ```
 
-可以查看群集清单中定义的容量：
+可以在群集清单中看到定义的容量：
 
 ClusterManifest.xml
 
@@ -603,7 +610,7 @@ LoadMetricInformation     :
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 有关群集 Resource Manager 中的体系结构和信息流的信息，请参阅[此文](service-fabric-cluster-resource-manager-architecture.md)
+* 有关群集资源管理器中的体系结构和信息流的信息，请参阅[这篇文章](service-fabric-cluster-resource-manager-architecture.md)
 * 定义重整指标是合并（而不是分散）节点上负载的一种方式。若要了解如何配置重整，请参阅[此文](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * 从头开始并[获取 Service Fabric 群集 Resource Manager 简介](service-fabric-cluster-resource-manager-introduction.md)
 * 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章

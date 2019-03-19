@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111282"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121581"
 ---
 # <a name="azure-network-security"></a>Azure 网络安全
 
@@ -90,7 +90,7 @@ VNet 之间可相互连接，因此，连接到任意一个 VNet 的资源都可
 
 - **对等互连：** 使连接到相同 Azure 位置中不同 Azure VNet 的资源可相互进行通信。 VNet 之间的带宽和延迟相同，就像资源是连接到同一个 VNet 一样。 若要详细了解对等互连，请阅读[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。
 
- ![对等互连](media/azure-network-security/azure-network-security-fig-3.png)
+  ![对等互连](media/azure-network-security/azure-network-security-fig-3.png)
 
 - **VNet 到 VNet连接：** 可使资源连接到相同或不同 Azure 位置中的不同 Azure VNet。 与对等互连不同，VNet 之间的带宽有一定限制，因为流量必须流经 Azure VPN 网关。
 
@@ -318,19 +318,19 @@ NSG 附带了一些应当注意的内置规则。 其中包括：
 
 以下部分列出了 Azure 虚拟网络路由和路由表的当前限制：
 
--   每个虚拟网络子网具有内置的系统路由表。 系统路由表具有以下三组路由：
+- 每个虚拟网络子网具有内置的系统路由表。 系统路由表具有以下三组路由：
 
- -  **本地 VNet 路由：** 直接路由到同一个虚拟网络中的目标 VM
+  -  **本地 VNet 路由：** 直接路由到同一个虚拟网络中的目标 VM
 
- - **本地路由：** 路由到 Azure VPN 网关
+  - **本地路由：** 路由到 Azure VPN 网关
 
- -  **默认路由：** 直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包会被删除。
+  -  **默认路由：** 直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包会被删除。
 
--   在发布的用户定义路由中，可以创建路由表来添加默认路由，然后将路由表关联到 VNet 子网，在这些子网上启用强制隧道。
+- 在发布的用户定义路由中，可以创建路由表来添加默认路由，然后将路由表关联到 VNet 子网，在这些子网上启用强制隧道。
 
--   需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
+- 需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
 
--   强制隧道必须关联到具有动态路由 VPN 网关的 VNet，不能是静态网关。
+- 强制隧道必须关联到具有动态路由 VPN 网关的 VNet，不能是静态网关。
 
 - ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。
 
@@ -393,7 +393,7 @@ Azure 网络安全设备可增强 VNet 安全性和网络功能。众多供应�
 
 JSON 格式化的日志直接进入客户的存储帐户。 你对这些日志具有完全控制权，并且可以应用自己的保留策略。
 
-还可以使用 [Azure 日志集成](https://aka.ms/AzLog)将这些日志引入自己的分析系统。 WAF 日志还与 [Log Analytics](../log-analytics/log-analytics-overview.md) 集成，因此可以使用 Log Analytics 执行复杂的细化查询。
+还可以使用 [Azure 日志集成](https://aka.ms/AzLog)将这些日志引入自己的分析系统。 WAF 日志还集成在一起[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)以便可以使用 Azure Monitor 日志来执行复杂的细化查询。
 
 #### <a name="azure-web-application-firewall-waf"></a>Azure Web 应用程序防火墙 (WAF)
 
@@ -428,7 +428,7 @@ JSON 格式化的日志直接进入客户的存储帐户。 你对这些日志�
 
 -   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[面向 Internet 的负载均衡](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)。
 
--   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为[内部负载均衡](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)。
+-   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为 [负载均衡](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)。
 
 -   将外部流量转发到特定的虚拟机。
 
@@ -507,7 +507,7 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 
 -   网络资源级监视
 
--   Log Analytics
+-   Azure Monitor 日志
 
 ### <a name="network-watcher"></a>网络观察程序
 
@@ -597,17 +597,17 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 
 #### <a name="diagnostic-logs"></a>诊断日志
 
-定期和自发性事件由网络资源创建，记录在存储帐户中并发送到事件中心或 Log Analytics。 这些日志提供资源运行状况的见解。 可在 Power BI 和 Log Analytics 等工具中查看这些日志。 若要了解如何查看诊断日志，请访问 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)。
+定期和自发性事件由网络资源创建和记录在存储帐户中，发送到事件中心或 Azure Monitor 日志。 这些日志提供资源运行状况的见解。 可以在 Power BI 和 Azure Monitor 日志等工具中查看这些日志。 若要了解如何查看诊断日志，请访问[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)。
 
 诊断日志适用于[负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)、[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)、路由和[应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。
 
 网络观察程序提供诊断日志视图。 此视图包含所有支持诊断日志记录的网络资源。 从此视图中，可以快速方便地启用和禁用网络资源。
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 是 Azure 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
+[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)是一项服务在 Azure 中监视你的云，并在本地环境，以保持其可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
 
-Log Analytics 提供了用来监视网络的以下解决方案：
+Azure Monitor 日志提供了以下解决方案来监视网络：
 
 -   网络性能监视器 (NPM)
 
@@ -627,7 +627,7 @@ Log Analytics 提供了用来监视网络的以下解决方案：
 -   托管着多层应用程序的各个层次的子网。
 
 
-#### <a name="azure-application-gateway-analytics-in-log-analytics"></a>Log Analytics 中的 Azure 应用程序网关分析
+#### <a name="azure-application-gateway-analytics-in-azure-monitor-logs"></a>Azure Monitor 日志中的 azure 应用程序网关分析
 
 应用程序网关支持以下日志：
 
@@ -641,7 +641,7 @@ Log Analytics 提供了用来监视网络的以下解决方案：
 
 -   5 分钟吞吐量
 
-#### <a name="azure-network-security-group-analytics-in-log-analytics"></a>Log Analytics 中的 Azure 网络安全组分析
+#### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Azure Monitor 日志中的 azure 网络安全组分析
 
 [网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)支持以下日志：
 
@@ -652,7 +652,7 @@ Log Analytics 提供了用来监视网络的以下解决方案：
 ## <a name="next-steps"></a>后续步骤
 阅读一些深度安全性主题，了解有关安全性的更多信息：
 
--   [网络安全组 (NSG) 的 Log Analytics](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [网络安全组 (Nsg) 的 azure Monitor 日志](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
 
 -   [推动云瓦解的网络创新](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 2ed9598ecfb45323505e8527cfb3ab9fe7d8b58e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1f6edd871d6815dab93bf9e8d582b0cb1ba6c78f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764721"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109233"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -173,7 +173,7 @@ Run: Get-AzureStackStampInformation
    ```
    有关 Set-AzsRegistration cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
 
-  该过程需要花费 10 到 15 分钟。 命令完成后，会显示以下消息：“现已使用提供的参数注册并激活环境”。
+   该过程需要花费 10 到 15 分钟。 命令完成后，会显示以下消息：“现已使用提供的参数注册并激活环境”。
 
 ## <a name="register-connected-with-capacity-billing"></a>使用容量计费模型注册连接的 Azure Stack
 
@@ -210,20 +210,20 @@ Run: Get-AzureStackStampInformation
 
 5. 以管理员身份启动 PowerShell ISE，并导航到下载 Azure Stack 工具时所创建的 **AzureStack-Tools-master** 目录中的 **Registration** 文件夹。 使用 PowerShell 导入 **RegisterWithAzure.psm1** 模块：
 
-  ```PowerShell  
-  $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
-  $RegistrationName = "<unique-registration-name>"
-  Set-AzsRegistration `
+   ```PowerShell  
+   $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+   $RegistrationName = "<unique-registration-name>"
+   Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
       -AgreementNumber <EA agreement number> `
       -BillingModel Capacity `
       -RegistrationName $RegistrationName
-  ```
+   ```
    > [!Note]  
    > 可以通过将参数设置为 false 来使用 **Set-AzsRegistration** cmdlet 的 UsageReportingEnabled 参数禁用使用情况报告。 
    
-  有关 Set-AzsRegistration cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
+   有关 Set-AzsRegistration cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
 
 ## <a name="register-disconnected-with-capacity-billing"></a>使用容量计费模型注册断开连接的 Azure Stack
 

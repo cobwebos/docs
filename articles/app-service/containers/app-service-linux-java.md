@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 0d24fbe075316e492b638a2877439af270250d70
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: d944a51f7e0ee24d5a3768ba28d7a8294c30b99b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234625"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118759"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -28,7 +28,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 ## <a name="deploying-your-app"></a>部署应用
 
-可以使用 Maven 插件部署 .jar 和 .war 文件。 有关 Maven 插件的详细信息，请参阅[此文档](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable)。 
+可以使用 Maven 插件部署 .jar 和 .war 文件。 有关 Maven 插件的详细信息，请参阅[此文档](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable)。
 
 如果不使用 Maven，则部署方法将取决于存档类型：
 
@@ -45,9 +45,9 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 有关使用 Linux 版应用服务上运行的 Java 应用配置 New Relic 和 AppDynamics 的操作说明，请参阅[在 Linux 版 Azure 应用服务上使用 Java 应用的应用程序性能监视工具](how-to-java-apm-monitoring.md)。
 
-### <a name="ssh-console-access"></a>SSH 控制台访问 
+### <a name="ssh-console-access"></a>SSH 控制台访问
 
-可与运行应用的 Linux 环境建立 SSH 连接。 请参阅 [Linux 上的 Azure 应用服务的 SSH 支持](/azure/app-service/containers/app-service-linux-ssh-support)，获取有关通过 Web 浏览器或本地终端连接到 Linux 系统的完整说明。
+提供 SSH 连接到运行您的应用程序的 Linux 环境。 请参阅 [Linux 上的 Azure 应用服务的 SSH 支持](/azure/app-service/containers/app-service-linux-ssh-support)，获取有关通过 Web 浏览器或本地终端连接到 Linux 系统的完整说明。
 
 ### <a name="streaming-logs"></a>流式传输日志
 
@@ -71,7 +71,7 @@ az webapp log tail --name webappname --resource-group myResourceGroup
 
 通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](/azure/app-service/troubleshoot-diagnostic-logs#enablediag)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。
 
-如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。 
+如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
 
 ## <a name="customization-and-tuning"></a>自定义和优化
 
@@ -91,12 +91,12 @@ az webapp log tail --name webappname --resource-group myResourceGroup
 若要通过 Azure 应用服务 Linux Maven 插件配置应用设置，请在 Azure 插件部分中添加设置/值标记。 以下示例设置特定的最小和最大 Java 堆大小：
 
 ```xml
-<appSettings> 
-    <property> 
-        <name>JAVA_OPTS</name> 
-        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value> 
-    </property> 
-</appSettings> 
+<appSettings>
+    <property>
+        <name>JAVA_OPTS</name>
+        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value>
+    </property>
+</appSettings>
 ```
 
 在应用服务计划中运行包含一个部署槽位的单个应用程序的开发人员可以使用以下选项：
@@ -104,7 +104,6 @@ az webapp log tail --name webappname --resource-group myResourceGroup
 - B1 和 S1 实例：-Xms1024m -Xmx1024m
 - B2 和 S2 实例：-Xms3072m -Xmx3072m
 - B3 和 S3 实例：-Xms6144m -Xmx6144m
-
 
 优化应用程序堆设置时，请查看应用服务计划详细信息，并考虑多个应用程序和部署槽位方面的需求，以得出最佳内存分配。
 
@@ -115,34 +114,34 @@ az webapp log tail --name webappname --resource-group myResourceGroup
 在 Azure CLI 中使用以下命令启用 Web 套接字支持：
 
 ```azurecli-interactive
-az webapp config set -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME} --web-sockets-enabled true 
+az webapp config set -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME} --web-sockets-enabled true
 ```
 
 然后重启应用程序：
 
 ```azurecli-interactive
-az webapp stop -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME} 
+az webapp stop -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}  
 ```
 
-### <a name="set-default-character-encoding"></a>设置默认的字符编码 
+### <a name="set-default-character-encoding"></a>设置默认的字符编码
 
 在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `$JAVA_OPTS -Dfile.encoding=UTF-8` 的新应用设置。
 
-或者，可以使用应用服务 Maven 插件配置应用设置。 在插件配置中添加设置名称和值标记： 
+或者，可以使用应用服务 Maven 插件配置应用设置。 在插件配置中添加设置名称和值标记：
 
 ```xml
-<appSettings> 
-    <property> 
-        <name>JAVA_OPTS</name> 
-        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value> 
-    </property> 
-</appSettings> 
+<appSettings>
+    <property>
+        <name>JAVA_OPTS</name>
+        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value>
+    </property>
+</appSettings>
 ```
 
 ## <a name="secure-applications"></a>安全应用程序
 
-在适用于 Linux 应用服务中运行的 Java 应用程序实施与其他应用程序相同的一套[安全最佳做法](/azure/security/security-paas-applications-using-app-services)。 
+在适用于 Linux 应用服务中运行的 Java 应用程序实施与其他应用程序相同的一套[安全最佳做法](/azure/security/security-paas-applications-using-app-services)。
 
 ### <a name="authenticate-users"></a>对用户进行身份验证
 
@@ -150,18 +149,15 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)一文中的说明。
 
-Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 通过熟悉的 Spring Security 注释和 API 来保护应用程序。 请务必增加 `application.properties` 文件中的最大标头大小。 我们建议值为 `16384`。 
+Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 通过熟悉的 Spring Security 注释和 API 来保护应用程序。 请务必增加 `application.properties` 文件中的最大标头大小。 我们建议值为 `16384`。
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
 遵照[绑定现有的自定义 SSL 证书](/azure/app-service/app-service-web-tutorial-custom-ssl)中的说明上传现有的 SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
 
-## <a name="tomcat"></a>Tomcat 
+## <a name="data-sources"></a>数据源
 
-### <a name="connecting-to-data-sources"></a>连接到数据源
-
->[!NOTE]
-> 如果应用程序使用 Spring Framework 或 Spring Boot，你可以在 [应用程序的 properties 文件] 中将 Spring Data JPA 的数据库连接信息设置为环境变量。 然后在 Azure 门户或 CLI 中使用[应用设置](/azure/app-service/web-sites-configure#app-settings)来为应用程序定义这些值。
+### <a name="tomcat"></a>Tomcat
 
 这些说明适用于所有数据库连接。 你需要使用你选择的数据库的驱动程序类名称和 JAR 文件来填充占位符。 下面提供了一个表，其中包含了常见数据库的类名称和驱动程序下载。
 
@@ -174,19 +170,19 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 若要将 Tomcat 配置为使用 Java 数据库连接 (JDBC) 或 Java 持久性 API (JPA)，请先自定义在启动时由 Tomcat 读取的 `CATALINA_OPTS` 环境变量。 在[应用服务 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)中通过某个应用设置来设置这些值：
 
 ```xml
-<appSettings> 
-    <property> 
-        <name>CATALINA_OPTS</name> 
-        <value>"$CATALINA_OPTS -Ddbuser=${DBUSER} -Ddbpassword=${DBPASSWORD} -DconnURL=${CONNURL}"</value> 
-    </property> 
-</appSettings> 
+<appSettings>  
+    <property>  
+        <name>CATALINA_OPTS</name>  
+        <value>"$CATALINA_OPTS -Ddbuser=${DBUSER} -Ddbpassword=${DBPASSWORD} -DconnURL=${CONNURL}"</value>  
+    </property>  
+</appSettings>  
 ```
 
 或者在 Azure 门户中的“应用程序设置”边栏选项卡中设置环境变量。
 
 接下来，确定数据源应当供一个应用程序使用，还是供在 Tomcat servlet 上运行的所有应用程序使用。
 
-#### <a name="for-application-level-data-sources"></a>对于应用程序级的数据源： 
+#### <a name="application-level-data-sources"></a>应用程序级别的数据源
 
 1. 在项目的 `META-INF/` 目录中创建 `context.xml` 文件。 如果 `META-INF/` 目录不存在，则创建它。
 
@@ -195,11 +191,11 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
     ```xml
     <Context>
         <Resource
-            name="jdbc/dbconnection" 
+            name="jdbc/dbconnection"
             type="javax.sql.DataSource"
             url="${dbuser}"
             driverClassName="<insert your driver class name>"
-            username="${dbpassword}" 
+            username="${dbpassword}"
             password="${connURL}"
         />
     </Context>
@@ -214,10 +210,11 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
     </resource-env-ref>
     ```
 
-#### <a name="for-shared-server-level-resources"></a>对于共享服务器级的资源：
+#### <a name="shared-server-level-resources"></a>共享的服务器级别的资源
 
 1. 如果尚未进行相关的配置，请使用 SSH 将 `/usr/local/tomcat/conf` 的内容复制到应用服务 Linux 实例上的 `/home/tomcat/conf` 中。
-    ```
+
+    ```bash
     mkdir -p /home/tomcat
     cp -a /usr/local/tomcat/conf /home/tomcat/conf
     ```
@@ -229,11 +226,11 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
     ...
     <Context>
         <Resource
-            name="jdbc/dbconnection" 
+            name="jdbc/dbconnection"
             type="javax.sql.DataSource"
             url="${dbuser}"
             driverClassName="<insert your driver class name>"
-            username="${dbpassword}" 
+            username="${dbpassword}"
             password="${connURL}"
         />
     </Context>
@@ -250,26 +247,45 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
     </resource-env-ref>
     ```
 
-#### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>最后，将驱动程序 JAR 放置在 Tomcat 类路径中并重启你的应用服务： 
+#### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>最后，将驱动程序 jar 文件放在 Tomcat classpath，然后重新启动你的应用服务
 
 1. 将 JDBC 驱动程序文件放入 `/home/tomcat/lib` 目录，确保它们可供 Tomcat 类加载器使用。 （如果此目录尚未存在，请创建它。）若要将这些文件上传到应用服务实例，请执行以下步骤：  
-    1. 安装 Azure 应用服务 webpp 扩展：
+   1. 安装 Azure 应用服务 webpp 扩展：
 
       ```azurecli-interactive
       az extension add –name webapp
       ```
 
-    2. 运行以下 CLI 命令，创建从本地系统到应用服务的 SSH 隧道：
+   1. 运行以下 CLI 命令，创建从本地系统到应用服务的 SSH 隧道：
 
       ```azurecli-interactive
       az webapp remote-connection create –g [resource group] -n [app name] -p [local port to open]
       ```
 
-    3. 使用 SFTP 客户端连接到本地隧道端口，并将文件上传到 `/home/tomcat/lib` 文件夹。
+   1. 使用 SFTP 客户端连接到本地隧道端口，并将文件上传到 `/home/tomcat/lib` 文件夹。
 
-    另外，也可以使用某个 FTP 客户端上传 JDBC 驱动程序。 请遵循这些[用于获取 FTP 凭据的说明](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)。
+      另外，也可以使用某个 FTP 客户端上传 JDBC 驱动程序。 请遵循这些[用于获取 FTP 凭据的说明](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)。
 
 2. 如果你创建了服务器级数据源，请重启应用服务 Linux 应用程序。 Tomcat 会将 `CATALINA_HOME` 重置为 `/home/tomcat/conf`，并使用更新后的配置。
+
+### <a name="spring-boot"></a>Spring Boot
+
+若要连接到 Spring Boot 应用程序中的数据源，我们建议创建的连接字符串并将其注入您`application.properties`文件。
+
+1. 在应用服务边栏选项卡的"应用程序设置"部分中，设置字符串的名称，将 JDBC 连接字符串粘贴到值字段中，并设置为"Custom"的类型。 槽设置为，可以选择性地设置此连接字符串。
+
+    ![在门户中创建的连接字符串。][1]
+
+    此连接字符串都可以访问我们的应用程序为环境变量名为`CUSTOMCONNSTR_<your-string-name>`。 例如，我们在上面创建的连接字符串将被命名为`CUSTOMCONNSTR_exampledb`。
+
+2. 在你`application.properties`文件中，引用环境变量名称与此连接字符串。 对于我们的示例，我们将使用以下命令。
+
+    ```yml
+    app.datasource.url=${CUSTOMCONNSTR_exampledb}
+    ```
+
+请参阅[Spring Boot 文档数据的访问权限](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html
+)并[外部化配置](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)有关本主题的详细信息。
 
 ## <a name="docker-containers"></a>Docker 容器
 
@@ -282,7 +298,7 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 - [Tomcat servlet 容器](https://tomcat.apache.org/)：用于运行打包为 Web 存档 (WAR) 文件的应用程序。 支持的版本为 8.5 和 9.0。
 - Java SE 运行时环境：用于运行打包为 Java 存档 (JAR) 文件的应用程序。 唯一支持的主版本为 Java 8。
 
-## <a name="java-runtime-statement-of-support"></a>Java 运行时支持声明 
+## <a name="java-runtime-statement-of-support"></a>Java 运行时支持声明
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和维护
 
@@ -315,3 +331,6 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 ## <a name="next-steps"></a>后续步骤
 
 请访问[面向 Java 开发人员的 Azure](/java/azure/) 中心查找 Azure 快速入门、教程和 Java 参考文档。
+
+<!--Image references-->
+[1]: ./media/app-service-linux-java/connection-string.png

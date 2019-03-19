@@ -5,17 +5,17 @@ description: 了解如何更新 Web 服务以在 Azure 机器学习工作室中�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: b57dd40c8610953563a3d5b8861e144d775b4eb7
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: ea73c16687d393cd1e61c4aee83fbf74cc4ae9a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330505"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108114"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
 
@@ -42,7 +42,7 @@ ms.locfileid: "56330505"
 
     运行实验之后，生成的工作流应当类似于下图：
 
-    ![生成的工作流](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png)
+    ![生成的工作流](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
     现在，将训练实验部署为重新训练 Web 服务，用于输出经过训练的模型和模型评估结果。
 
@@ -68,7 +68,7 @@ ms.locfileid: "56330505"
 
 以下屏幕截图显示 Azure 机器学习 Web 服务门户中的“使用”页。
 
-![使用页](media/retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png)
+![使用页](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
 ### <a name="update-the-apikey-declaration"></a>更新 apiKey 声明
 
@@ -114,7 +114,7 @@ BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.cs
 
 下面是重新训练输出的示例：
 
-![重新训练输出](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![重新训练输出](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
 ### <a name="evaluate-the-retraining-results"></a>评估重新训练结果
 

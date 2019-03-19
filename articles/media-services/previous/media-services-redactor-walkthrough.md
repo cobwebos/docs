@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: rli; juliako;
-ms.openlocfilehash: 14a274dbbc45f00ecf914d5bb0a3e1c040fb3a89
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 70cd93e4f7984e938a67c799d632f653745a6c62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994517"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870022"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
 
@@ -77,7 +77,7 @@ ms.locfileid: "55994517"
 
 5. 下载或共享最终修正的输出资产。 
 
-    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![面部修正](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Visualizer 开源工具
 
@@ -130,6 +130,6 @@ ms.locfileid: "55994517"
 ## <a name="related-links"></a>相关链接
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
-[Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 [宣布推出 Azure 媒体分析的面部修订](https://azure.microsoft.com/blog/azure-media-redactor/)

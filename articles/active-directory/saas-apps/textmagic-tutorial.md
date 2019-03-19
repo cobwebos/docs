@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec8085d2d3ac4cc338ab9c0c36eec481a5d4fbc9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a91d6878f509f47f029a3b8aaf7bbbe4e6f35435
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200337"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57869789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>教程：Azure Active Directory 与 TextMagic 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56200337"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 TextMagic 的集成，需要以下项：
 
@@ -123,7 +123,7 @@ ms.locfileid: "56200337"
 
 6. 在“用户属性和声明”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
-    | Name  | 源属性  | 命名空间 |
+    | 名称  | 源属性  | 命名空间 |
     | --------------- | --------------- | --------------- |
     | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | firstName               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
@@ -202,7 +202,7 @@ ms.locfileid: "56200337"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在中**用户名**字段中，键入**brittasimon\@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。

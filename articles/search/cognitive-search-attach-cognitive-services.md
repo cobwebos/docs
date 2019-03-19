@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bfa9bbb9816148182b79a8231f2ddb3e46433804
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: d5fdae09055f922fe9783f6eb074457af12c60df
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413237"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880409"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>将认知服务资源与 Azure 搜索中的技能集联系起来 
 
@@ -60,21 +60,7 @@ AI 算法会驱动用于在 Azure 搜索编制索引操作过程中处理非结�
 
 1. 如果选择“创建新的认知服务资源”，则会打开一个新的选项卡用于创建资源。 为资源指定唯一名称。
 
-1. 选择 Azure 搜索所在的同一位置。 目前，以下区域支持认知技能索引编制：
-
-  * 美国中西部
-  * 美国中南部
-  * 美国东部
-  * 美国东部 2
-  * 美国西部 2
-  * 加拿大中部
-  * 西欧
-  * 英国南部
-  * 北欧
-  * 巴西南部
-  * 东南亚
-  * 印度中部
-  * 澳大利亚东部
+1. 创建新的认知服务资源，如果 **，选择同一区域**为 Azure 搜索资源。
 
 1. 选择一体化定价层 **S0**。 此层提供视觉和语言功能，认知搜索中的预定义技能基于这些功能。
 

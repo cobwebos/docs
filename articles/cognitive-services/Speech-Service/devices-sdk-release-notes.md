@@ -10,16 +10,30 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 2e51bdd24f33789a95017c9fe5df88b0bb55de26
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 4d802b9f71edee1eec4b2c92881e2a8796db2865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870701"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005503"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>认知服务语音设备 SDK 发行说明
 
 以下部分列出了最新版本中的更改。
+
+## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>认知服务语音设备 SDK 1.3.1:2019 年 3 月版本 
+
+* 更新[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 1.3.1 版的组件。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。 
+*   更新的唤醒文字处理，请参阅的重大更改。
+*   示例应用程序添加语音识别和翻译的语言的选择。
+
+**重大更改** 
+
+*   [安装唤醒文字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application)已简化，现在是应用程序的一部分并且不需要单独安装在设备上的。
+*   唤醒单词标识已更改，并支持两个事件。
+    - RecognizingKeyword，指示语音结果包含 （未验证） 关键字的文本。
+    - RecognizedKeyword，指示完成该关键字识别识别给定的关键字。
+
 
 ## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>认知服务语音设备 SDK 1.1.0：2018 年 11 月版本 
 

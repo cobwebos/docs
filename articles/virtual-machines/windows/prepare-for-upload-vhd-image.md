@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: b5e3e84ce8f8b4b364b2fa69dda0b0091db25b6d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329773"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093797"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 在将 Windows 虚拟机 (VM) 从本地上传到 Microsoft Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 仅支持采用 VHD 文件格式且具有固定大小磁盘的**第 1 代 VM**。 VHD 允许的最大大小为 1,023 GB。 可以将第 1 代 VM 从 VHDX 文件系统转换成 VHD 文件系统，以及从动态扩展磁盘转换成固定大小磁盘， 但无法更改 VM 的代次。 有关详细信息，请参阅 [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)（我应该在 Hyper-V 中创建第 1 代还是第 2 代 VM？）。
@@ -31,7 +31,7 @@ ms.locfileid: "56329773"
 > 本文中的说明适用于 64 位版本的 Windows Server 2008 R2 以及更高版本的 Windows Server 操作系统。 若要了解如何在 Azure 中运行 32 位版本的操作系统，请参阅 [Azure 虚拟机支持 32 位操作系统](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)。
 
 ## <a name="convert-the-virtual-disk-to-vhd-and-fixed-size-disk"></a>将虚拟磁盘转换为 VHD 和固定大小磁盘 
-如果要将虚拟磁盘转换为 Azure 所需的格式，请使用本部分中所述的方法之一。 运行虚拟磁盘转换过程之前，请备份 VM，并确保 Windows VHD 在本地服务器上正常工作。 在尝试转换磁盘或将其上传到 Azure 之前，请解决 VM 本身内部的所有错误。
+如果要将虚拟磁盘转换为 Azure 所需的格式，请使用本部分中所述的方法之一。 运行虚拟磁盘转换过程之前，请备份 VM，并确保 Windows VHD 在本地服务器上正常工作。 尝试转换磁盘或将其上传到 Azure 之前，先解决 VM 本身内部的所有错误。
 
 转换磁盘后，创建使用转换后磁盘的 VM。 启动并登录到该 VM，完成要上传的 VM 的准备工作。
 
@@ -320,14 +320,14 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 
 9. 检查以下 AD 策略，以确保没有删除以下任何所需的访问帐户：
 
-    - 计算机配置\Windows 设置\安全设置\本地策略\用户权限分配\从网络访问这台计算机
+   - 计算机配置\Windows 设置\安全设置\本地策略\用户权限分配\从网络访问这台计算机
 
-    此策略应列出以下组：
+     此策略应列出以下组：
 
-    - 管理员
-    - 备份操作员
-    - 所有人
-    - 用户
+   - 管理员
+   - 备份操作员
+   - 所有人
+   - 用户
 
 10. 重启 VM，确保 Windows 仍可正常运行，并可使用 RDP 连接来访问。 此时，可能需要在本地 Hyper-V 中创建一个 VM，确保该 VM 完全启动，然后测试是否可以通过 RDP 来访问它。
 
@@ -338,7 +338,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 ### <a name="install-windows-updates"></a>安装 Windows 更新
 理想的配置是让计算机的修补程序级别处于最新。 如果这不可能，请确保安装以下更新：
 
-| 组件               | 二进制         | Windows 7 SP1、Windows Server 2008 R2 SP1 | Windows 8、Windows Server 2012               | Windows 8.1、Windows Server 2012 R2 | Windows 10 版本 1607、Windows Server 2016 版本 1607 | Windows 10 版本 1703    | Windows 10 1709、Windows Server 2016 版本 1709 | Windows 10 1803、Windows Server 2016 版本 1803 |
+| 组件               | 二进制         | Windows 7 SP1、Windows Server 2008 R2 SP1 | Windows 8、Windows Server 2012               | Windows 8.1、Windows Server 2012 R2 | Windows 10 版本 1607 Windows Server 2016 版本 1607 | Windows 10 版本 1703    | Windows 10 1709、Windows Server 2016 版本 1709 | Windows 10 1803 Windows Server 2016 版本 1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | 存储                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -415,17 +415,13 @@ Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置
 ## <a name="complete-recommended-configurations"></a>完成建议的配置
 以下设置不影响 VHD 上传。 但是，我们强烈建议配置这些设置。
 
-* 安装 [Azure VM 代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 然后即可启用 VM 扩展。 VM 扩展实现了可能需要用于 VM 的大多数关键功能，例如重置密码、配置 RDP 等。 有关详细信息，请参阅：
+* 安装 [Azure VM 代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 然后即可启用 VM 扩展。 VM 扩展实现了可能需要用于 VM 的大多数关键功能，例如重置密码、配置 RDP 等。 有关详细信息，请参阅[Azure 虚拟机代理概述](../extensions/agent-windows.md)。
+* 在 Azure 中创建 VM 以后，建议将 pagefile 置于“临时驱动器”卷以改进性能。 可以将其设置如下：
 
-    - [VM Agent and Extensions – Part 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)（VM 代理和扩展 – 第 1 部分）
-    - [VM Agent and Extensions – Part 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)（VM 代理和扩展 – 第 2 部分）
-
-*  在 Azure 中创建 VM 以后，建议将 pagefile 置于“临时驱动器”卷以改进性能。 可以将其设置如下：
-
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
-    ```
-如果有数据磁盘附加到了 VM，则临时驱动器卷的驱动器号通常为“D”。 此指定可能会有所不同，具体取决于可用驱动器数以及所做的设置。
+   ```PowerShell
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
+   ```
+  如果有数据磁盘附加到了 VM，则临时驱动器卷的驱动器号通常为“D”。 此指定可能会有所不同，具体取决于可用驱动器数以及所做的设置。
 
 ## <a name="next-steps"></a>后续步骤
 * [将 Windows VM 映像上传到 Azure 以进行 Resource Manager 部署](upload-generalized-managed.md)

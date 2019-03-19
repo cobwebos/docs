@@ -11,16 +11,16 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e5528cdfc2efa2d5c257732c8b6b6df117421839
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: a5ddc17f6200ba2d43d67fcd2e4bcc35c224e6cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250021"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004057"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务训练 PyTorch 模型
 
-对于使用 PyTorch 的深度神经网络 (DNN) 训练，Azure 机器学习提供了 `Estimator` 的自定义 `PyTorch` 类。 Azure SDK 的 `PyTorch` 估算器使你能够轻松为 Azure 计算上的单节点和分布式运行提交 PyTorch 训练作业。
+对于使用 PyTorch 深度神经网络 (DNN) 培训，Azure 机器学习提供了一个自定义[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)类的`Estimator`。 Azure SDK 的 `PyTorch` 估算器使你能够轻松为 Azure 计算上的单节点和分布式运行提交 PyTorch 训练作业。
 
 ## <a name="single-node-training"></a>单节点训练
 使用 `PyTorch` 估算器进行训练与使用[基础 `Estimator`](how-to-train-ml-models.md) 类似，因此，请首先阅读操作说明文章并确保你了解其中介绍的概念。
@@ -42,7 +42,8 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 此处，我们为 PyTorch 构造函数指定以下参数：
-参数 | 说明
+
+参数 | 描述
 --|--
 `source_directory` |  包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算
 `script_params` |  指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
@@ -82,7 +83,8 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
 ```
 
 该代码显示了 PyTorch 构造函数的以下新参数：
-参数 | 说明 | 默认
+
+参数 | 描述 | 默认
 --|--|--
 `node_count` |  要用于训练作业的节点数。 | `1`
 `process_count_per_node` |  要在每个节点上运行的进程（或“工作线程”）数。 | `1`

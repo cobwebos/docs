@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.openlocfilehash: 53859f5a81cf1d797ec93e83d75df5a329590dce
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
-ms.translationtype: HT
+ms.openlocfilehash: 6c234ad6756f4e65e172bf0ffc0ae5a1d35d109b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051626"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087476"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>在 Visual Studio Code 中使用 Python、R 和 C# 开发用于 Azure Data Lake Analytics 的 U-SQL
 了解如何使用 Visual Studio Code (VSCode) 来编写 U-SQL 的 Python、R 和 C# 隐藏代码，并将作业提交到 Azure Data Lake 服务。 有关 VSCode 的 Azure Data Lake 工具的详细信息，请参阅[使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)。
@@ -30,10 +30,10 @@ ms.locfileid: "43051626"
 3. 选择“安装 U-SQL 扩展”。 
 4. 安装 U-SQL 扩展后，将显示确认消息。 
 
-  ![设置 python 和 R 环境](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
+   ![设置 python 和 R 环境](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
 
-  > [!Note]
-  > 为了获得 Python 和 R 语言服务的最佳体验，请安装 VSCode Python 和 R 扩展。 
+   > [!Note]
+   > 为了获得 Python 和 R 语言服务的最佳体验，请安装 VSCode Python 和 R 扩展。 
 
 ## <a name="develop-python-file"></a>开发 Python 文件
 1. 单击工作区中的“新文件”。
@@ -58,7 +58,7 @@ ms.locfileid: "43051626"
         USING Outputters.Csv();
     ```
     
-3. 右键单击脚本文件，并选择“ADL: 生成 Python 代码隐藏文件”。 
+3. 右键单击脚本文件，然后选择**ADL:生成 Python 代码隐藏文件**。 
 4. xxx.usql.py 文件将在工作文件夹中生成。 在 Python 文件中编写代码。 下面就是一个代码示例。
 
     ```Python
@@ -115,7 +115,7 @@ ms.locfileid: "43051626"
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. 右键单击 USQL 文件，并选择“ADL: 生成 R 代码隐藏文件”。 
+3. 在中右击**USQL**文件，并选择**ADL:生成 R 代码隐藏文件**。 
 4. xx.usql.r 文件将在工作文件夹中生成。 在 R 文件中编写代码。 下面就是一个代码示例。
 
     ```R
@@ -125,7 +125,7 @@ ms.locfileid: "43051626"
 5. 右键单击 USQL 文件，可以单击“编译脚本”或“提交作业”以运行作业。
 
 ## <a name="develop-c-file"></a>开发 C# 文件
-代码隐藏文件是与单个 U-SQL 脚本关联的 C# 文件。 可在代码隐藏文件中定义 UDO、UDA、UDT 和 UDF 专用的脚本。 无需事先注册程序集，即可直接在脚本中使用 UDO、UDA、UDT 和 UDF。 代码隐藏文件放置在其对等 U-SQL 脚本文件所在的文件夹中。 如果脚本名为 xxx.usql，则代码隐藏文件命名为 xxx.usql.cs。 如果手动删除代码隐藏文件，会对关联的 U-SQL 脚本禁用代码隐藏功能。 有关为 U-SQL 脚本编写自定义代码的详细信息，请参阅[在 U-SQL 中编写和使用自定义代码：用户定义的函数]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/)。
+代码隐藏文件是与单个 U-SQL 脚本关联的 C# 文件。 可在代码隐藏文件中定义 UDO、UDA、UDT 和 UDF 专用的脚本。 无需事先注册程序集，即可直接在脚本中使用 UDO、UDA、UDT 和 UDF。 代码隐藏文件放置在其对等 U-SQL 脚本文件所在的文件夹中。 如果脚本名为 xxx.usql，则代码隐藏文件命名为 xxx.usql.cs。 如果手动删除代码隐藏文件，会对关联的 U-SQL 脚本禁用代码隐藏功能。 有关编写 U-SQL 脚本的客户代码的详细信息，请参阅[写入和在 U-SQL 中使用自定义代码：用户定义的函数]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/)。
 
 1. 单击工作区中的“新文件”。
 2. 在 U-SQL 文件中编写代码。 下面就是一个代码示例。
@@ -157,7 +157,7 @@ ms.locfileid: "43051626"
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. 右键单击 USQL 文件，并选择“ADL: 生成 CS 代码隐藏文件”。 
+3. 在中右击**USQL**文件，并选择**ADL:生成 CS 代码隐藏文件**。 
 4. xxx.usql.cs 文件将在工作文件夹中生成。 在 CS 文件中编写代码。 下面就是一个代码示例。
 
     ```CS
@@ -179,9 +179,9 @@ ms.locfileid: "43051626"
 5. 右键单击 USQL 文件，可以单击“编译脚本”或“提交作业”以运行作业。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用用于 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)
+* [使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)
 * [使用 Visual Studio Code 进行 U-SQL 本地运行和本地调试](data-lake-tools-for-vscode-local-run-and-debug.md)
 * [通过 PowerShell 实现 Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [通过 Azure 门户实现 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
-* [使用适用于 Visual Studio 的工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)
+* [使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)
 * [使用 Data Lake Analytics(U-SQL) 目录](data-lake-analytics-use-u-sql-catalog.md)

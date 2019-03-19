@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 02/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d57e3d647acfe9400d7b575f5635e2ab5254352
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 09f61f60a3885fbc58cddc4b46df11014057f54e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162214"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999492"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
@@ -149,6 +149,8 @@ Microsoft Authenticator 应用或其他第三方应用可用作生成 OATH 验�
 > 对于自助密码重置，如果只需使用一种方法来执行重置，则验证码是可供用户确保最高级别的安全性的唯一选项。
 >
 
+用户可以具有最多 5 个 OATH 硬件令牌或验证器应用程序（如配置为可随时使用的 Microsoft Authenticator 应用）的组合。
+
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH 硬件令牌（公共预览版）
 
 OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 请注意，密钥限制为 128 个字符，可能不会与所有令牌兼容。
@@ -196,6 +198,9 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 
 向提供的电话号码发起自动语音呼叫。 接听电话，并按电话键盘上的 # 进行身份验证
 
+> [!IMPORTANT]
+> 开始在 2019 年 3 月中的电话呼叫选项将不能向免费/试用 Azure AD 租户中用户的 MFA 和 SSPR 的用户。 此更改不会影响短信。 电话呼叫将继续可供用户在付费 Azure AD 租户。 此更改只会影响免费/试用 Azure AD 租户。
+
 ## <a name="office-phone"></a>办公电话
 
 向提供的电话号码发起自动语音呼叫。 接听电话，并按电话键盘上的 # 进行身份验证。
@@ -203,6 +208,9 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 若要正常工作，电话号码必须采用“+国家/地区代码 电话号码”格式，例如，+1 4255551234。
 
 办公电话属性由管理员管理。
+
+> [!IMPORTANT]
+> 开始在 2019 年 3 月中的电话呼叫选项将不能向免费/试用 Azure AD 租户中用户的 MFA 和 SSPR 的用户。 此更改不会影响短信。 电话呼叫将继续可供用户在付费 Azure AD 租户。 此更改只会影响免费/试用 Azure AD 租户。
 
 > [!NOTE]
 > 在国家/地区代码和电话号码之间需要有一个空格。
@@ -229,6 +237,6 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 
 [为组织启用 Azure 多重身份验证](howto-mfa-getstarted.md)
 
-[针对 Azure 多重身份验证和 Azure AD 自助密码重置启用聚合注册](concept-registration-mfa-sspr-converged.md)
+[启用你的租户中的组合的注册](howto-registration-mfa-sspr-combined.md)
 
 [最终用户身份验证方法配置文档](https://aka.ms/securityinfoguide)

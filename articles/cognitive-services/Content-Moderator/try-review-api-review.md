@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d963cdd484727ac46aed1915643dd92462e2c643
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 2e40165bde7f3ce2eabd91b55c5bbc8139282b60
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857799"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101459"
 ---
 # <a name="create-reviews-from-the-api-console"></a>从 API 控制台中创建审查
 
@@ -33,35 +33,35 @@ ms.locfileid: "55857799"
 
 从“凭据”窗口访问是访问测试工作台的最简单的方法。
 
-1.  在“凭据”窗口中，选择[审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)。
+1. 在“凭据”窗口中，选择[审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)。
 
-  “审查 - 创建”页面打开。
+   “审查 - 创建”页面打开。
 
-2.  若要打开 API 测试控制台，选择最贴切地描述你所在位置的区域。
+2. 若要打开 API 测试控制台，选择最贴切地描述你所在位置的区域。
 
-  ![审查 - 创建页面区域选择](images/test-drive-region.png)
+   ![审查 - 创建页面区域选择](images/test-drive-region.png)
 
-  “审查 - 创建”API 控制台打开。
+   “审查 - 创建”API 控制台打开。
   
-3.  为需要的查询参数、内容类型和订阅密钥输入值。 在“请求正文”框中，指定内容（例如图像位置）、元数据以及与内容关联的其他信息。
+3. 为需要的查询参数、内容类型和订阅密钥输入值。 在“请求正文”框中，指定内容（例如图像位置）、元数据以及与内容关联的其他信息。
 
-  ![审查 - 创建控制台查询参数、标头和请求正文框](images/test-drive-review-1.PNG)
+   ![审查 - 创建控制台查询参数、标头和请求正文框](images/test-drive-review-1.PNG)
   
-4.  选择“发送”。 创建审查 ID。 复制此 ID，然后在以下步骤中使用它。
+4. 选择“发送”。 创建审查 ID。 复制此 ID，然后在以下步骤中使用它。
 
-  ![审查 - 创建控制台响应内容框显示审查 ID](images/test-drive-review-2.PNG)
+   ![审查 - 创建控制台响应内容框显示审查 ID](images/test-drive-review-2.PNG)
   
-5.  选择“获取”，然后通过选择匹配区域的按钮打开 API。 在结果页面上，为“teamName”、“ReviewID”和“订阅密钥”输入值。 选择页面上的“发送”按钮。 
+5. 选择“获取”，然后通过选择匹配区域的按钮打开 API。 在结果页面上，为“teamName”、“ReviewID”和“订阅密钥”输入值。 选择页面上的“发送”按钮。 
 
-  ![审查 - 创建控制台获取结果](images/test-drive-review-3.PNG)
+   ![审查 - 创建控制台获取结果](images/test-drive-review-3.PNG)
   
-6.  会看到扫描的结果。
+6. 会看到扫描的结果。
 
-  ![审查 - 创建控制台响应内容框](images/test-drive-review-4.PNG)
+   ![审查 - 创建控制台响应内容框](images/test-drive-review-4.PNG)
   
-7.  在内容审查器仪表板上，选择“审查” > “图像”。 出现已扫描图像，可供人工审查。
+7. 在内容审查器仪表板上，选择“审查” > “图像”。 出现已扫描图像，可供人工审查。
 
-  ![足球的审查工具图像](images/test-drive-review-5.PNG)
+   ![足球的审查工具图像](images/test-drive-review-5.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 

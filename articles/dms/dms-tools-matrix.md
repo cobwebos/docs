@@ -2,7 +2,7 @@
 title: 数据迁移服务和工具矩阵 - Azure | Microsoft Docs
 description: 了解可用来迁移数据库以及为迁移流程的各个阶段提供支持的服务和工具。
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/13/2018
-ms.openlocfilehash: 9887860470632c37a586cb3029e2ef7d455a3a9c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: f62c3105674f741702c35e50ce4afe436f67918d
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713274"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792083"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>可用于数据迁移方案的服务和工具
 

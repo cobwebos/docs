@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: f6d5f2d7df483e0884779c3eac6a77f976e173c3
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567022"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58164453"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
 本文是对主要 Azure 数据工厂 - Azure 机器学习集成文章的补充：[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
@@ -57,7 +57,7 @@ ms.locfileid: "55567022"
 }
 ```
 
-| 属性                      | 说明                              | 必选 |
+| 属性                      | 说明                              | 需要 |
 | :---------------------------- | :--------------------------------------- | :------- |
 | 名称                          | 管道中活动的名称     | 是      |
 | description                   | 描述活动用途的文本。  | 否       |
@@ -71,7 +71,7 @@ ms.locfileid: "55567022"
 
 对模型进行重新训练以及更新预测性 Web 服务的整个操作过程涉及以下步骤：
 
-- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用训练 Web 服务与[使用 Azure 机器学习和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中所述的调用预测性 Web 服务相同。 训练 Web 服务的输出是一个 iLearner 文件，可以用来更新预测性 Web 服务。
+- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用训练 Web 服务与[使用 Azure 机器学习和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中所述的调用预测性 Web 服务相同。 训练 Web 服务的输出是一个可用于更新预测 Web 服务的 iLearner 文件。
 - 通过使用 **“更新资源”活动**调用**预测性 Web 服务**的**更新资源终结点**来使用新训练的模型更新 Web 服务。
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure 机器学习链接服务

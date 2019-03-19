@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730894"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002274"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
 你现在可以使用 [Azure Monitor 数据源插件](https://grafana.com/plugins/grafana-azure-monitor-datasource)从 [Grafana](https://grafana.com/) 监控 Azure 服务和应用程序。 该插件收集 Azure Monitor 所收集的应用程序性能数据，包括各种日志和指标。 随后，可以在 Grafana 仪表板上显示此数据。
@@ -26,7 +26,8 @@ ms.locfileid: "55730894"
 ## <a name="set-up-a-grafana-server"></a>设置 Grafana 服务器
 
 ### <a name="set-up-grafana-locally"></a>本地设置 Grafana
-若要设置本地的 Grafana 服务器，请[在本地环境下载并安装 Grafana](https://grafana.com/grafana/download)。 若要使用插件的 Log Analytics 集成，请安装 Grafana 5.3 或更高版本。
+若要设置本地的 Grafana 服务器，请[在本地环境下载并安装 Grafana](https://grafana.com/grafana/download)。 若要使用插件的 Azure Monitor 集成，请安装 Grafana 5.3 或更高版本。
+
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>通过 Azure 市场在 Azure 上设置 Grafana
 1. 转到 Azure 市场并选取 Grafana Labs 的 Grafana。
 
@@ -70,15 +71,15 @@ ms.locfileid: "55730894"
     Log Analytics API 需要 [Log Analytics 读者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader)，其中包括读者角色权限并向其添加。
 
 4. 为要使用的 API 提供连接详细信息。 可以连接到所有或其中部分。 
-    * 如果同时连接到 Azure Monitor（以收集指标）和 Azure Log Analytics（针对日志数据），可以通过选择“与 Azure Monitor API 相同的详细信息”重复使用相同的凭据。
+    * 如果连接到指标和 Azure Monitor 中的日志，可以通过选择重用相同的凭据**相同的详细信息，作为 Azure Monitor API**。
     * 配置插件时，可以指示插件要监控哪个 Azure 云（公共、Azure 美国政府、Azure 德国或 Azure 中国）。
     * 如果使用 Application Insights，还可以包含Application Insights API 和应用程序 ID，以收集基于 Application Insights 的指标。 有关详细信息，请参阅[获取 API 密钥和应用程序 ID](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 
         > [!NOTE]
         > 某些数据源字段的命名方式不同于其关联的 Azure 设置：
-        >     * 租户 ID 是 Azure 目录 ID
-        >     * 客户端 ID 是 Azure Active Directory 应用程序 ID
-        >     * 客户端密钥是 Azure Active Directory 应用程序密钥值
+        > * 租户 ID 是 Azure 目录 ID
+        > * 客户端 ID 是 Azure Active Directory 应用程序 ID
+        > * 客户端密钥是 Azure Active Directory 应用程序密钥值
 
 5. 如果使用 Application Insights，还可以包含Application Insights API 和应用程序 ID，以收集基于 Application Insights 的指标。 有关详细信息，请参阅[获取 API 密钥和应用程序 ID](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 
@@ -95,16 +96,16 @@ ms.locfileid: "55730894"
     ![Grafana 新图形](./media/grafana-plugin/grafana-new-graph-dark.png)
 
 4. 选择已配置的 Azure Monitor 数据源。
-    * 收集 Azure Monitor 指标 - 在服务下拉列表中选择“Azure Monitor”。 随即将显示选择器列表，可在其中选择此图表中要监视的资源和指标。 若要收集 VM 的指标，请使用命名空间 Microsoft.Compute/VirtualMachines。 选择 VM 和指标后，即可开始在仪表板中查看其数据。
-    ![适用于 Azure Monitor 的 Grafana 图形配置](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-    * 收集 Azure Log Analytics 数据 - 在下拉列表中选择“Azure Log Analytics”。 选择要查询的工作区并设置查询文本。 可在此处复制已有的任何 Log Analytics 查询，或新建一个查询。 在查询中键入时，IntelliSense 将显示并建议自动完成选项。 选择可视化类型“时间序列表”，并运行查询。
+   * 收集 Azure Monitor 指标 - 在服务下拉列表中选择“Azure Monitor”。 随即将显示选择器列表，可在其中选择此图表中要监视的资源和指标。 若要收集 VM 的指标，请使用命名空间 Microsoft.Compute/VirtualMachines。 选择 VM 和指标后，即可开始在仪表板中查看其数据。
+     ![适用于 Azure Monitor 的 Grafana 图形配置](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
+   * Azure Monitor 收集日志数据-选择**Azure Log Analytics**服务下拉列表中。 选择要查询的工作区并设置查询文本。 您可以将复制到此处你已拥有或创建一个新的任何日志查询。 在查询中键入时，IntelliSense 将显示并建议自动完成选项。 选择可视化类型“时间序列表”，并运行查询。
     
-    > [!NOTE]
-    >
-    > 插件提供的默认查询使用两个宏："$__timeFilter() 和 $__interval。 
-    > 这些宏允许 Grafana 在你放大某部分图表时动态计算时间范围和时间粒度。 可以删除这些宏并使用标准时间筛选器（如 TimeGenerated > ago(1h)），但这意味着未来图形将不支持放大功能。
+     > [!NOTE]
+     >
+     > 插件提供的默认查询使用两个宏："$__timeFilter() 和 $__interval。 
+     > 这些宏允许 Grafana 在你放大某部分图表时动态计算时间范围和时间粒度。 可以删除这些宏并使用标准时间筛选器（如 TimeGenerated > ago(1h)），但这意味着未来图形将不支持放大功能。
     
-    ![适用于 Azure Log Analytics 的 Grafana 图形配置](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
+     ![适用于 Azure Log Analytics 的 Grafana 图形配置](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. 下面是一个简单的包含两个图表的仪表板。 左图显示两个 VM 的 CPU 百分比。 右图显示 Azure 存储帐户中的事务（按事务 API 类型分解）。
     ![Grafana 两个图表示例](media/grafana-plugin/grafana6.png)

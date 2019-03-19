@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0b99c3a388dcfd0dabaf874e03f276c494553
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176860"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082613"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 
@@ -218,15 +218,15 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
 
 1. 验证是否允许非管理员用户创建组：
    
-  ```
-  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ```
+   ```
+   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+   ```
   
 2. 如果它返回 `UsersPermissionToCreateGroupsEnabled : True`，则非管理员用户可以创建组。 若要禁用此功能，请执行以下操作：
   
-  ``` 
-  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ```
+   ``` 
+   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+   ```
   
 ## <a name="manage-owners-of-groups"></a>管理组的所有者
 若要向组添加所有者，请使用 Add-AzureADGroupOwner cmdlet：
@@ -251,7 +251,7 @@ ObjectId 参数是要将所有者添加到的组的 ObjectID，-RefObjectId 是�
 
 ## <a name="reserved-aliases"></a>保留的别名 
 创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。 仅 Azure AD 全局管理员可以创建具有以下权限较高的电子邮件别名的组。 
-  
+  
 * abuse 
 * admin 
 * administrator 

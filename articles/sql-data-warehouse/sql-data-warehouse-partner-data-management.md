@@ -10,18 +10,18 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 6e58fa83bfdce5e5363ef61d1e3deaa61397301a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: f8692bac271c2b0a51fef358d2fc73d6cfc8fe97
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461927"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004397"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>SQL 数据仓库数据管理合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍其数据管理工具和解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
 
 ## <a name="data-management-partners"></a>数据管理合作伙伴
-| 合作伙伴 | 说明 | 链接 | 视频 |
+| 合作伙伴 | 描述 | 链接 | 视频 |
 | --- | --- | --- | --- |
 | ![Coffing Data Warehousing][1] |**Coffing Data Warehousing**<br>Coffing Data Warehousing 提供 Nexus Chameleon（专门用于查询系统的工具），已有 10 多年的历史。 Nexus 可用作 SQL 数据仓库的查询工具。 使用 Nexus 可以查询本地和云计算机，并联接不同平台的数据。 点击式报告！ |[网站][coffing_website]<br>[新闻稿][coffing_press]<br>[Twitter][coffing_twitter]<br>[YouTube][coffing_youtube] |[![coffing 视频](./media/sql-data-warehouse-partner-data-management/coffing_video.jpg)](https://www.youtube.com/watch?v=N5GSxBEySFc) |
 | ![Inbrein][2] |**MicroERD**<br>Inbrein MicroERD 提供创建准确的数据模型、减少数据冗余、提升产能及遵守标准所必需的工具。 根据广泛的用户体验所开发的 UI，可让模型塑造者轻松又方便地处理 DB 模型。 通过及时的功能改进和更新，可以持续享有 MicroERD 最新改善的功能。 |[网站][inbrein_website]<br>[数据表][inbrein_datasheet]<br>[Twitter][inbrein_twitter]<br>[YouTube][inbrein_youtube] |[![inbrein 视频](./media/sql-data-warehouse-partner-data-management/inbrein_video.jpg)](https://www.youtube.com/watch?v=IGHSAk4bxdE) |
@@ -49,7 +49,7 @@ ms.locfileid: "55461927"
 
 <!--Website links -->
 
-[coffing_website]:http://www.coffingdw.com/software/nexus/
+[coffing_website]:https://www.coffingdw.com/software/nexus/
 [inbrein_website]:http://microerd.com/
 [infolibrarian_website]:http://www.infolibcorp.com/metadata-management/software-tools
 [redpoint_it_website]:http://www.redpoint.net/products/customer-interaction-management/
@@ -84,7 +84,7 @@ ms.locfileid: "55461927"
 
 <!--Press links-->
 
-[coffing_press]:http://www.coffingdw.com/press-release-nexus-tuned-for-azure-sql-data-warehouse/
+[coffing_press]:https://www.coffingdw.com/press-release-nexus-tuned-for-azure-sql-data-warehouse/
 
 <!--[inbrein_press]:-->
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 60bd3aef20e39a9f451f54164ef3fb8ef682bc3e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: 4ff3f129838a43bd7684dc10e1653dab969e9c1e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809679"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087000"
 ---
 # <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Contoso 迁移：使用 Azure 应用服务、流量管理器和 Azure MySQL 将 Contoso Linux 服务台应用重构到多个区域
 
@@ -109,11 +109,11 @@ Contoso 将按如下方式完成迁移进程：
 **服务** | **说明** | **成本**
 --- | --- | ---
 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) | 该服务使用 Azure PaaS 服务为网站运行和缩放应用程序。  | 定价基于实例大小和所需的功能。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/windows/)。
-[流量管理器](https://azure.microsoft.com/services/traffic-manager/) | 一个负载均衡器，它使用 DNS 将用户定向到 Azure 或外部网站和服务。 | 定价基于收到的 DNS 查询数以及所监视的终结点数。 | [了解详细信息](https://azure.microsoft.com/pricing/details/traffic-manager/)。
+[流量管理器](https://azure.microsoft.com/services/traffic-manager/) | 一个负载均衡器，它使用 DNS 将用户定向到 Azure 或外部网站和服务。 | 定价基于收到的 DNS 查询数以及所监视的终结点数。 [了解详细信息](https://azure.microsoft.com/pricing/details/traffic-manager/)。
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) | 数据库基于开放源代码 MySQL 服务器引擎。 它提供完全托管的可供企业使用的社区 MySQL 数据库即服务，用于应用开发和部署。 | 定价基于计算、存储和备份要求。 [了解详细信息](https://azure.microsoft.com/pricing/details/mysql/)。
 
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要运行此方案，Contoso 需具备以下项。
 

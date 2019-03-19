@@ -4,7 +4,7 @@ description: 有关规划和缩放 Service Fabric 群集与应用程序的最佳
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: jeanpaul.connock
+manager: chackdan
 editor: ''
 ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9de6cc224c82bb07fee4d62cd5de1d1964001bab
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 425154958e4c60902b56f320f714a011b9095830
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446811"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997347"
 ---
 # <a name="capacity-planning-and-scaling"></a>容量规划和缩放
 
@@ -40,7 +40,7 @@ ms.locfileid: "56446811"
 
 ## <a name="vertical-scaling-considerations"></a>垂直缩放注意事项
 
-[垂直缩放](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out#upgrade-the-size-and-operating-system-of-the-primary-node-type-vms) Azure Service Fabric 中的节点类型需要执行许多步骤并考虑多种因素。 例如：
+[垂直缩放](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out) Azure Service Fabric 中的节点类型需要执行许多步骤并考虑多种因素。 例如：
 * 在缩放之前，群集必须处于正常状态。 否则，只会进一步破坏群集的稳定性。
 * 托管有状态服务的所有 Service Fabric 群集节点类型需要**银级或更高级别的持久性**。
 
@@ -159,6 +159,13 @@ var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Che
 
 scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
+
+> [!NOTE]
+> 缩放时缩减您群集会显示在 Service Fabric Explorer 中的不正常状态的已删除的节点 /VM 实例。 此行为的说明，请参阅[您可能会在 Service Fabric Explorer 中观察到的行为](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer)。
+> 
+> 可以：
+> * 调用[Remove-servicefabricnodestate cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)具有相应的节点名称。
+> * 部署[service fabric 自动缩放帮助器应用程序](https://github.com/Azure/service-fabric-autoscale-helper/)这样可以确保节点下的缩放群集上清除从 Service Fabric Explorer。
 
 ## <a name="reliability-levels"></a>可靠性级别
 

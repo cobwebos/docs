@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b7c10884682b6537bbfcbb1b1f8b89b38751d05b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478043"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835078"
 ---
 # <a name="feature-engineering-in-data-science"></a>数据科学中的特征工程
 本文章解释特征工程的目的，并提供其在机器学习的数据增强过程中的作用的相关示例。 用于说明此过程的示例来自 Azure 机器学习工作室。 
@@ -46,7 +46,7 @@ ms.locfileid: "55478043"
 
 开始 Azure 机器学习时，若要具体掌握此过程，最简单的方法是使用 Studio 中提供的示例。 这里介绍了两个示例：
 
-* 一个回归示例，目标值已知的监督实验中的[预测自行车租赁数量](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4)
+* 一个回归示例，目标值已知的监督实验中的[预测自行车租赁数量](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4)
 * 一个使用[特征哈希](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)的文本挖掘分类示例
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>示例 1：为回归模型添加临时特征

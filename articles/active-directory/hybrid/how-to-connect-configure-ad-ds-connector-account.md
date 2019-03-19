@@ -11,12 +11,12 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d39305b4a8fafbd2fe2f1ac101f92597d6a3e4a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189035"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000864"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
 
@@ -37,7 +37,7 @@ ms.locfileid: "56189035"
 | ms DS ConsistencyGuid 功能 |对[设计概念 - 使用 ms-DS-ConsistencyGuid 作为 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 中所述的 ms-DS-ConsistencyGuid 属性的写入权限。 | 
 | 密码哈希同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
 | Exchange 混合部署 |针对用户、组和联系人的属性的写入权限，详见[Exchange 混合写回](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
-| Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
+| Exchange 邮件公共文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
 | 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../authentication/howto-sspr-writeback.md)。 |
 | 设备写回 |写入[设备写回](how-to-connect-device-writeback.md)中记录的设备对象和容器的权限。 |
 | 组写回 |读取、创建、更新和删除同步的 **Office 365 组**的组对象。  有关详细信息，请参阅[组写回](how-to-connect-preview.md#group-writeback)。|
@@ -104,7 +104,7 @@ Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -Obje
 ```
  
 ### <a name="view-ad-ds-permissions-of-an-object"></a>查看对象的 AD DS 权限 
-可以使用以下 cmdlet 来查看当前对 Active Directory 对象设置的权限列表，只需提供其 DistinguishedName 即可： 
+可以使用以下 cmdlet 查看当前 Active Directory 对象上设置通过提供其可分辨名称的权限的列表： 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
@@ -130,7 +130,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 此 cmdlet 将设置以下权限： 
  
 
-|Type |Name |Access |应用于| 
+|Type |名称 |Access |应用于| 
 |-----|-----|-----|-----|
 |允许 |AD DS 连接器帐户 |读取所有属性 |后代设备对象| 
 |允许 |AD DS 连接器帐户|读取所有属性 |后代 InetOrgPerson 对象| 
@@ -156,9 +156,9 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 此 cmdlet 将设置以下权限： 
 
-|Type |Name |Access |应用于|
+|Type |名称 |Access |应用于|
 |-----|-----|-----|-----| 
-|允许|AD DS 连接器帐户|读取/写入属性|MS-DS-Consistency-Guid|后代用户对象|
+|允许|AD DS 连接器帐户|读取/写入属性|后代用户对象|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>密码哈希同步的权限 
 若要在使用密码哈希同步时为 AD DS 连接器帐户设置权限，请运行： 
@@ -176,7 +176,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 此 cmdlet 将设置以下权限： 
 
-|Type |Name |Access |应用于|
+|Type |名称 |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |AD DS 连接器帐户 |复制目录更改 |仅限此对象（域根）| 
 |允许 |AD DS 连接器帐户 |复制所有目录更改 |仅限此对象（域根）| 
@@ -196,7 +196,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 此 cmdlet 将设置以下权限： 
 
-|Type |Name |Access |应用于|
+|Type |名称 |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |AD DS 连接器帐户 |重置密码 |后代用户对象| 
 |允许 |AD DS 连接器帐户 |写入 lockoutTime 属性 |后代用户对象| 
@@ -216,7 +216,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 此 cmdlet 将设置以下权限： 
 
-|Type |Name |Access |应用于|
+|Type |名称 |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |AD DS 连接器帐户 |一般读取/写入 |对象类型组和子对象的所有属性| 
 |允许 |AD DS 连接器帐户 |创建/删除子对象 |对象类型组和子对象的所有属性| 
@@ -239,7 +239,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 此 cmdlet 将设置以下权限：  
  
 
-|Type |Name |Access |应用于|
+|Type |名称 |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |AD DS 连接器帐户 |读取/写入所有用户属性 |后代用户对象| 
 |允许 |AD DS 连接器帐户 |读取/写入所有用户属性 |后代 InetOrgPerson 对象| 
@@ -261,7 +261,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 此 cmdlet 将设置以下权限： 
 
-|Type |Name |Access |应用于|
+|Type |名称 |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |AD DS 连接器帐户 |读取所有属性 |后代 PublicFolder 对象| 
 
@@ -271,7 +271,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 - 在指定对象上禁用继承 
 - 删除特定对象上的所有 ACE（特定于 SELF 的 ACE 除外），因为对于 SELF，我们希望默认权限保持不变。 
  
- -ADConnectorAccountDN 参数是需要限制权限的 AD 帐户。 这通常是在 AD DS 连接器中配置的 MSOL_nnnnnnnnnnnn 域帐户（请参阅“确定 AD DS 连接器帐户”）。 若要指定具有必要权限以限制目标 AD 对象的 Active Directory 权限的管理员帐户，则必需使用 -Credential 参数。 这通常为企业或域管理员。  
+  -ADConnectorAccountDN 参数是需要限制权限的 AD 帐户。 这通常是在 AD DS 连接器中配置的 MSOL_nnnnnnnnnnnn 域帐户（请参阅“确定 AD DS 连接器帐户”）。 若要指定具有必要权限以限制目标 AD 对象的 Active Directory 权限的管理员帐户，则必需使用 -Credential 参数。 这通常为企业或域管理员。  
 
 ``` powershell
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
@@ -286,7 +286,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 此 cmdlet 将设置以下权限： 
 
-|Type |Name |Access |应用于|
+|Type |名称 |Access |应用于|
 |-----|-----|-----|-----| 
 |允许 |SYSTEM |完全控制 |此对象 
 |允许 |企业管理员 |完全控制 |此对象 

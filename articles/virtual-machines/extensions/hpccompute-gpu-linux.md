@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: d8b2b10f9a12fb32a522a9c87c67bb24d6d4475e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100255"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991844"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
 ## <a name="overview"></a>概述
 
-此扩展在 Linux N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=874330)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
+此扩展在 Linux N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://developer.download.nvidia.com/compute/cuda/5_5/rel/docs/EULA.pdf)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
 此扩展也可用于在 [Windows N 系列 VM](hpccompute-gpu-windows.md) 上安装 NVIDIA GPU 驱动程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -71,7 +71,7 @@ ms.locfileid: "56100255"
 
 ### <a name="properties"></a>属性
 
-| Name | 值/示例 | 数据类型 |
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | 日期 |
 | 发布者 | Microsoft.HpcCompute | 字符串 |
@@ -82,7 +82,7 @@ ms.locfileid: "56100255"
 
 所有设置都是可选的。 默认行为是，如果安装驱动程序时不要求更新内核，则不进行更新，请安装最新的受支持驱动程序和 CUDA 工具包（根据情况）。
 
-| Name | 说明 | 默认值 | 有效值 | 数据类型 |
+| 名称 | 描述 | 默认值 | 有效值 | 数据类型 |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | 布尔值 |
 | driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | GRID：“410.92”、“410.71”、“390.75”、“390.57”、“390.42”<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | 字符串 |
@@ -177,7 +177,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 退出代码 | 含义 | 可能的操作 |
 | :---: | --- | --- |
 | 0 | 操作成功 |
-| 1 | 扩展的用法不正确 | 检查执行输出日志 |
+| 第 | 扩展的用法不正确 | 检查执行输出日志 |
 | 10 | 用于 Hyper-V 和 Azure 的 Linux Integration Services 不可用或未安装 | 检查 lspci 的输出 |
 | 11 | 在此 VM 大小上找不到 NVIDIA GPU | 使用[受支持的 VM 大小和 OS](../linux/n-series-driver-setup.md) |
 | 12 | 不支持的映像产品/服务 |

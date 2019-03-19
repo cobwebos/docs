@@ -4,16 +4,16 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/22/2019
-ms.openlocfilehash: 5228e4986993f792dceb7324bb6ba9f836f29aea
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: ed512c0f56d8da5cb8e47b20f2495054fdedf020
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56212945"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56740734"
 ---
 此容器具有以下配置设置：
 
-|必选|设置|目的|
+|需要|设置|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|

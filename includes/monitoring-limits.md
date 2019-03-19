@@ -1,27 +1,36 @@
 ---
 title: include 文件
 description: include 文件
-services: monitoring-and-diagnostics
+services: azure-monitor
 author: rboucher
-manager: carmonm
 tags: azure-service-management
-ms.service: monitoring-and-diagnostics
-ms.devlang: dotnet
 ms.topic: include
-ms.date: 09/13/2018
+ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 3901ad2ce883f8257a74ddd2a931947624977184
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: 4360196a33381d1a9c8316430339b9a80cb0dba3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45636965"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58016480"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 自动缩放设置 |每个区域每个订阅的 100 个数目 | 与默认值相同 |
-| 指标警报（经典） |每个订阅 100 个活动警报规则 | 致电支持人员 |
-| 指标警报 |每个订阅 100 个活动警报规则 | 致电支持人员 |
-| 操作组 |每个订阅 2000 个操作组 | 致电支持人员 |
+| 自动缩放设置 |每个区域每个订阅 100。 | 默认值相同。 |
+| 指标警报 （经典） |每个订阅 100 活动警报规则。 | 致电支持人员。 |
+| 指标警报 |每个订阅 100 活动警报规则。 | 致电支持人员。 |
+| 操作组 |每个订阅的 2,000 个操作组。 | 致电支持人员。 |
 
+**操作组特定的限制**
+
+| 资源 | 默认限制 | 最大限制 |
+| --- | --- | --- |
+| Azure 应用推送 | 每个操作组的 10 个 azure 应用操作。 | 致电支持人员。 |
+| 电子邮件 | 一个操作组中的 1,000 电子邮件操作。 另请参阅[速率限制信息](../articles/azure-monitor/platform/alerts-rate-limiting.md)。 | 致电支持人员。 |
+| ITSM | 一个操作组中的 10 个 ITSM 操作。 | 致电支持人员。 | 
+| 逻辑应用 | 一个操作组中的 10 个逻辑应用操作。 | 致电支持人员。 |
+| Runbook | 一个操作组中的 10 个 runbook 操作。 | 致电支持人员。 |
+| SMS | 一个操作组中的 10 个短信操作。 另请参阅[速率限制信息](../articles/azure-monitor/platform/alerts-rate-limiting.md)。 | 致电支持人员。 |
+| 语音 | 一个操作组中的 10 个语音操作。 另请参阅[速率限制信息](../articles/azure-monitor/platform/alerts-rate-limiting.md)。 | 致电支持人员。 |
+| Webhook | 一个操作组中的 10 个 webhook 操作。 其他限制目前[特定于操作的信息](../articles/azure-monitor/platform/action-groups.md#action-specific-information)。  | 致电支持人员。 |

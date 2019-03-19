@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 0ffb9b9105ee455d35d080bb45063c158cadce1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463389"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852604"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 5 月 
 Azure SQL 数据仓库持续得到改进。 本文介绍 2018 年 5 月发行的版本中所引入的新功能和所做的更改。 
@@ -26,7 +26,7 @@ Azure SQL 数据仓库持续得到改进。 本文介绍 2018 年 5 月发行的
 请参阅 Azure 数据部门企业副总裁 Rohan Kumar 撰写的博客通告 [Turbocharge cloud analytics with Azure SQL Data Warehouse](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/)（使用 Azure SQL 数据仓库推进云分析）。
 
 ## <a name="auto-statistics"></a>自动统计
-在基于现代成本的优化器（例如 SQL 数据仓库中的引擎）中，统计对于优化查询计划生成是至关重要的。 如果事先已知道所有查询，则可以确定需要创建哪些统计对象。 但是，如果系统面对临时查询和随机查询（对于数据仓库工作负荷很常见），则系统管理员可能很难预测需要创建哪些统计，从而可能导致查询执行计划的性能欠佳，并延长查询响应时间。 缓解此问题的方法之一是提前在所有表列中创建统计对象。 但是，由于在加载表的过程中需要维护统计对象，导致加载时间变长，因此，这种过程也会造成代价。
+在基于现代成本的优化器（例如 SQL 数据仓库中的引擎）中，统计对于优化查询计划生成是至关重要的。 如果事先已知道所有查询，则可以确定需要创建哪些统计对象。 但是，系统将面临即席和随机查询针对数据仓库工作负荷通常这样做，系统管理员可能会争取确定预测时则需要创建从而导致可能并非最佳的查询执行计划和长时间统计信息查询响应时间。 缓解此问题的方法之一是提前在所有表列中创建统计对象。 但是，由于在加载表的过程中需要维护统计对象，导致加载时间变长，因此，这种过程也会造成代价。
 
 SQL 数据仓库现在支持自动创建统计对象，为系统管理员和开发人员提供更高的灵活性、工作效率和易用性，同时可确保系统继续提供优质的执行计划和最佳响应时间。
 
@@ -44,7 +44,7 @@ ALTER DATABASE { database_name } SET { AUTO_CREATE_STATISTICS { OFF | ON } } [;]
 有关更多详细信息，请参阅 [ALTER DATABASE SET 选项](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)一文。
 
 ## <a name="rejected-row-support"></a>拒绝行支持
-由于数据加载的高性能和并行性，客户往往使用 [PolyBase（外部表）将数据载入](design-elt-data-loading.md) SQL 数据仓库。 通过 [Azure 数据工厂](http://azure.com/adf)加载数据时，PolyBase 也是默认的加载模型。 
+由于数据加载的高性能和并行性，客户往往使用 [PolyBase（外部表）将数据载入](design-elt-data-loading.md) SQL 数据仓库。 通过 [Azure 数据工厂](https://azure.com/adf)加载数据时，PolyBase 也是默认的加载模型。 
 
 SQL 数据仓库添加了在 [CREATE EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) 语句中通过 `REJECTED_ROW_LOCATION` 参数定义拒绝行位置的功能。 从外部表执行 [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 后，无法加载的所有行将存储在靠近源的某个文件中，供进一步调查。 
 
@@ -144,7 +144,7 @@ The ORDER BY clause is invalid in views, CREATE TABLE AS SELECT, INSERT SELECT, 
 [客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [客户成功案例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[堆栈溢出论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[堆栈溢出论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

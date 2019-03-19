@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8881582eac47e31b20e9eb96effea254b821ba34
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 34d8eb976a2a1e173f234be214799832dae7e9ca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417289"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079599"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件
 
@@ -48,14 +48,27 @@ P2S RADIUS 身份验证的配置工作流如下：
 
 ### <a name="usernamefiles"></a> 1.生成 VPN 客户端配置文件
 
+使用 Azure 门户中，或使用 Azure PowerShell，可以生成 VPN 客户端配置文件。
+
+#### <a name="azure-portal"></a>Azure 门户
+
+1. 导航到虚拟网络网关。
+2. 单击**点到站点配置**。
+3. 单击**下载 VPN 客户端**。
+4. 选择客户端，并填写请求的任何信息。
+5. 单击**下载**生成的.zip 文件。
+6. 该.zip 文件将下载，通常到 Downloads 文件夹。
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+
 生成 VPN 客户端配置文件来用于用户名/密码身份验证。 可以使用以下命令生成 VPN 客户端配置文件：
 
-```powershell 
+```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
- 
+ 
 运行该命令将返回一个链接。 请将该链接复制并粘贴到 Web 浏览器，下载 **VpnClientConfiguration.zip**。 解压缩该文件，查看以下文件夹： 
- 
+ 
 * **WindowsAmd64** 和 **WindowsX86**：这些文件夹分别包含 Windows 64 位和 32 位安装程序包。 
 * **Generic**：此文件夹包含可用于创建自己的 VPN 客户端配置的常规信息。 对于用户名/密码身份验证配置，不需要此文件夹。
 * **Mac**：如果在创建虚拟网络网关时已配置了 IKEv2，则会看到名为 **Mac** 的文件夹，其中包含 **mobileconfig** 文件。 可以使用该文件配置 Mac 客户端。
@@ -64,7 +77,7 @@ New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -Authen
 
 若要检索以前生成的客户端配置文件，请使用以下命令：
 
-```powershell
+```azurepowershell-interactive
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
@@ -75,7 +88,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 * [Windows](#adwincli)
 * [Mac (OS X)](#admaccli)
 * [使用 strongSwan 的 Linux](#adlinuxcli)
- 
+ 
 #### <a name="adwincli"></a>设置 Windows VPN 客户端
 
 只要版本与 Windows 客户端的体系结构匹配，就可以在每台客户端计算机上使用相同的 VPN 客户端配置包。 有关支持的客户端操作系统的列表，请参阅[常见问题解答](vpn-gateway-vpn-faq.md#P2S)。
@@ -96,7 +109,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 
 3. 可选步骤 - 若要指定自定义 DNS，请将以下行添加到 **mobileconfig** 文件中：
 
-  ```xml
+   ```xml
     <key>DNS</key>
     <dict>
       <key>ServerAddresses</key>
@@ -108,7 +121,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
             <string>TestDomain.com</string>
         </array>
     </dict> 
-  ```
+   ```
 4. 双击该配置文件以进行安装，然后选择“继续”。 配置文件名称与虚拟机的名称相同。
 
    ![安装消息](./media/point-to-site-vpn-client-configuration-radius/adinstall.png)
@@ -129,10 +142,10 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
    ![“系统首选项”中的图标](./media/point-to-site-vpn-client-configuration-radius/adnetwork.png)
 10. VPN 连接显示为“IkeV2-VPN”。 可以通过更新 **mobileconfig** 文件来更改该名称。
 
-   ![VPN 连接的详细信息](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
+    ![VPN 连接的详细信息](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. 选择“身份验证设置”。 在列表中选择“用户名”，并输入凭据。 如果此前已输入凭据，系统会在列表中自动选择“用户名”，并预填充用户名和密码。 选择“确定”以保存设置。
 
-   ![身份验证设置](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![身份验证设置](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. 返回到“网络”对话框，选择“应用”以保存更改。 若要启动连接，请选择“连接”。
 
 #### <a name="adlinuxcli"></a>通过 strongSwan 设置 Linux VPN 客户端
@@ -165,7 +178,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
    ![网络管理器中的“VPN Radius”连接](./media/point-to-site-vpn-client-configuration-radius/ConnectRADIUS.png)
 
 ## <a name="certeap"></a>证书身份验证
- 
+ 
 可以创建适用于 RADIUS 证书身份验证的 VPN 客户端配置文件，该身份验证使用 EAP-TLS 协议。 通常情况下，企业颁发的证书用于对 VPN 用户进行身份验证。 请确保所有进行连接的用户均已在其设备上安装了证书，并且你的 RADIUS 服务器可以验证该证书。
 
 >[!NOTE]
@@ -181,8 +194,8 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ### <a name="certfiles"></a>1.生成 VPN 客户端配置文件
 
 生成 VPN 客户端配置文件来用于证书身份验证。 可以使用以下命令生成 VPN 客户端配置文件：
- 
-```powershell
+ 
+```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
 
@@ -195,10 +208,10 @@ New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -Authen
 
 若要检索以前生成的客户端配置文件，请使用以下命令：
 
-```powershell
+```azurepowershell-interactive
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
- 
+ 
 ### <a name="setupusername"></a> 2.配置 VPN 客户端
 
 可配置以下 VPN 客户端：
@@ -258,7 +271,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 1. 使用 `Get-AzVpnClientConfiguration` cmdlet 生成适用于 EapMSChapv2 的 VPN 客户端配置。
 
 2. 解压缩 VpnClientConfiguration.zip 文件，查找 GenericDevice 文件夹。 忽略包含适用于 64 位和 32 位体系结构的 Windows 安装程序的文件夹。
- 
+ 
 3. GenericDevice 文件夹包含名为 VpnSettings 的 XML 文件。 此文件包含所有必需的信息：
 
    * **VpnServer**：Azure VPN 网关的 FQDN。 这是客户端连接到的地址。

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 3ca3222f47b6a728905f895007269e3c22acd66d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789936"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009964"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>为 Hyper-V VM 灾难恢复到 Azure 准备网络映射
 
@@ -24,8 +24,8 @@ ms.locfileid: "53789936"
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>为复制到 Azure 准备网络映射
 
 复制到 Azure 时，网络映射在源 VMM 服务器上的 VM 网络与目标 Azure 虚拟网络之间进行映射。 映射可执行以下操作：
-    -  **网络连接**：确保复制的 Azure VM 连接到映射的网络。 在同一网络上进行故障转移的所有计算机都可互相连接，即使这些计算机在不同的恢复计划中进行故障转移。
-    - **网络网关**：如果在目标 Azure 网络上设置了网络网关，VM 可连接到其他本地虚拟机。
+-  **网络连接**：确保复制的 Azure VM 连接到映射的网络。 在同一网络上进行故障转移的所有计算机都可互相连接，即使这些计算机在不同的恢复计划中进行故障转移。
+- **网络网关**：如果在目标 Azure 网络上设置了网络网关，VM 可连接到其他本地虚拟机。
 
 网络映射的工作原理如下所述：
 
@@ -89,7 +89,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 
 根据这些设置，选择目标 VM 网络时，下表显示将可用的选项。
 
-**Select** | **受保护的云** | **提供保护的云** | **可用目标网络**
+**选择** | **受保护的云** | **提供保护的云** | **可用目标网络**
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | 可用
  | GoldCloud1 | GoldCloud2 | 可用

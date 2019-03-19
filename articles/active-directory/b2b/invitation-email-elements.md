@@ -1,5 +1,5 @@
 ---
-title: B2B 协作邀请电子邮件的元素 - Azure Active Directory | Microsoft Docs
+title: B2B 邀请电子邮件-Azure Active Directory 中的元素 |Microsoft Docs
 description: Azure Active Directory B2B 协作邀请电子邮件模板
 services: active-directory
 ms.service: active-directory
@@ -9,14 +9,15 @@ ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eaab50360269ac1231db2696ba095b6d8841f74
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 43fa8148fff1389982d967b2e69f4a9425841c91
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014921"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
@@ -31,7 +32,7 @@ ms.locfileid: "56162996"
 电子邮件的主题遵循以下模式：诚邀你加入 &lt;tenantname&gt; 组织
 
 ### <a name="from-address"></a>发件人地址
-对“发件人地址”使用类似于 LinkedIn 的模式。  应明确邀请方是谁，来自哪家公司，同时澄清该电子邮件发自某个 Microsoft 电子邮件地址。 格式为：&lt;tenantname&gt; 的&lt;邀请者显示名称&gt;（通过 Microsoft）<invites@microsoft.com>
+对“发件人地址”使用类似于 LinkedIn 的模式。  应明确邀请方是谁，来自哪家公司，同时澄清该电子邮件发自某个 Microsoft 电子邮件地址。 格式为：Microsoft 邀请<invites@microsoft.com>或&lt;邀请方显示名称&gt;从&lt;tenantname&gt; （通过 Microsoft) <invites@microsoft.com>。
 
 ### <a name="reply-to"></a>回复
 回复电子邮件设置为邀请方的电子邮件（如果适用），以便在回复该电子邮件后可将电子邮件发回给邀请方。
@@ -55,8 +56,12 @@ ms.locfileid: "56162996"
 ### <a name="body"></a>Body
 正文包含邀请者在[使用邀请 API](customize-invitation-api.md) [邀请来宾用户访问目录、组或应用](add-users-administrator.md)时撰写的消息。 这是文本区域，因此出于安全原因不会处理 HTML 标记。
 
+  ![电子邮件正文的图片](media/invitation-email-elements/invitation-email-body.png)
+
 ### <a name="footer-section"></a>页脚部分
-页脚包含 Microsoft 公司品牌徽标，告知收件人该电子邮件是否从未受监视的别名中发出。 特殊情况：
+页脚包含 Microsoft 公司品牌徽标，告知收件人该电子邮件是否从未受监视的别名中发出。 
+
+特殊情况：
 
 - 邀请方在邀请租户中没有电子邮件地址
 

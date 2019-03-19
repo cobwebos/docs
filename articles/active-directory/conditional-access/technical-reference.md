@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/30/2019
+ms.date: 03/12/2019
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7687cb4eb6cacd604a05a820e04f71755e0b66b1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b475eae337b7e6a7e26b3e5a7518be0e461c9fa4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201408"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170609"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -51,25 +51,43 @@ ms.locfileid: "56201408"
 
 可以从 Microsoft 为以下云应用分配条件性访问策略：
 
-- Azure 信息保护 - [了解详细信息](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 
-- Azure RemoteApp
-
-- Azure SQL 数据库 - [了解详情](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
-
-- Microsoft Dynamics 365
-
-- Microsoft Office 365 Yammer
-
-- Microsoft Office 365 Exchange Online
-
-- Microsoft Office 365 SharePoint Online（包括 OneDrive for Business 和 Project Online）
-
-- Microsoft Power BI 
-
+- Azure Analysis Services
 - Azure DevOps
+- Azure SQL 数据库和数据仓库-[了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
+- Dynamics CRM Online
+- Microsoft Application Insights 分析
+- Microsoft Azure 信息保护-[了解详细信息](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- Microsoft Azure 管理-[了解详细信息](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- Microsoft Azure RemoteApp
+- Microsoft Azure 订阅管理
+- Microsoft Cloud App Security
+- Microsoft Commerce 工具访问控制门户
+- Microsoft Commerce 工具身份验证服务
+- Microsoft Flow
+- Microsoft Forms
+- Microsoft Intune
+- Microsoft Intune 注册
+- Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerApps
+- Microsoft 在必应中搜索
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams 
+- Office 365 Exchange Online
+- Office 365 SharePoint Online
+- Office 365 Yammer
+- Office Delve
+- Office Sway 
+- Outlook 组
+- Project Online
+- Skype for Business Online
+- 虚拟专用网络 (VPN)
+- Visual Studio App Center
+- Windows Defender ATP
 
-- Microsoft Teams
+
 
 
 ### <a name="other-applications"></a>其他应用程序 
@@ -151,7 +169,7 @@ ms.locfileid: "56201408"
 |    |    |
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-|Name | 1 |
+|名称 | 第 |
 |Type | REG_SZ (String) |
 |数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
@@ -160,7 +178,7 @@ ms.locfileid: "56201408"
 |    |    |
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-|Name | 1 |
+|名称 | 第 |
 |Type | REG_SZ (String) |
 |数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 

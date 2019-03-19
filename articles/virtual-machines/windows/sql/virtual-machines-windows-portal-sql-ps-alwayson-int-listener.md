@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: b412d2b054fc8703c7524479359a3670782fd646
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 1b15a3966c6e408fb17655b112c1ec900bd86c5f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980885"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999781"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
 本主题说明如何：
@@ -48,7 +48,7 @@ ms.locfileid: "55980885"
 
 请验证你的 PowerShell 模块是否为 5.4.1 或更高版本。
 
-请参阅[安装 Azure PowerShell 模块](http://docs.microsoft.com/powershell/azure/install-az-ps)。
+请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 ## <a name="configure-the-windows-firewall"></a>配置 Windows 防火墙
 
@@ -193,7 +193,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. 现在应看到在故障转移群集管理器中创建的侦听器名称。 右键单击侦听器名称，并单击“属性”。
 
-1. 在“端口”框中，通过使用先前使用过的 $EndpointPort 为可用性组侦听器指定端口号（默认值为 1433），并单击“确定”。
+1. 在“端口”框中，通过使用先前使用过的 $EndpointPort 为可用性组侦听器指定端口号（默认值为 1433），然后单击“确定”。
 
 ## <a name="test-the-connection-to-the-listener"></a>测试与侦听器的连接
 

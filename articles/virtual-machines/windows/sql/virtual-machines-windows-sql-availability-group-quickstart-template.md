@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 快速入门模板在 SQL Server VM 上为 Always On 可用性组创建 WSFC、侦听程序和配置 ILB
-description: 使用 Azure 快速入门模板可以创建群集、将 SQL VM 加入群集、创建侦听程序和配置 ILB，并以此简化在 Azure 中为 SQL Server VM 创建可用性组的过程。
+title: 使用 Azure 快速入门模板为 Azure VM 上的 SQL Server 中配置 Always On 可用性组
+description: 使用 Azure 快速入门模板创建 Windows 故障转移群集、 SQL Server Vm 加入到群集、 创建侦听器，并在 Azure 中配置内部负载均衡器。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/04/2018
+ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 093fa1414ec624f66bc7cb4559fa8c0535834c10
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 4b4527bfaacc592c13552e362de0cba620314cd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981921"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122040"
 ---
-# <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>使用 Azure 快速入门模板在 SQL Server VM 上为 Always On 可用性组创建 WSFC、侦听程序和配置 ILB
+# <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>使用 Azure 快速入门模板为 Azure VM 上的 SQL Server 中配置 Always On 可用性组
 本文介绍如何使用 Azure 快速入门模板来部分自动化在 Azure 中为 SQL Server 虚拟机部署 Always On 可用性组配置的过程。 此过程使用两个 Azure 快速入门模板。 
 
-   | 模板 | 说明 |
+   | 模板 | 描述 |
    | --- | --- |
    | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | 创建 Windows 故障转移群集并将 SQL Server VM 加入其中。 |
    | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | 创建可用性组侦听程序并配置内部负载均衡器。 使用此模板的前提是，Windows 故障转移群集是使用 **101-sql-vm-ag-setup** 模板创建的。 |
@@ -34,11 +34,18 @@ ms.locfileid: "55981921"
 其他可用性组配置部分（例如创建可用性组，以及创建内部负载均衡器）必须手动完成。 本文提供自动和手动步骤的顺序。
  
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 若要使用快速入门模板自动设置 Always On 可用性组，必须满足以下先决条件： 
 - 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
 - 一个具有域控制器的资源组。 
-- Azure 中的一个或多个已加入域的 VM，它们[运行 SQL Server 2016 Enterprise Edition（或更高版本）](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)，位于[已注册到 SQL VM 资源提供程序](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider)的同一个可用性集或可用性区域中。  
+- Azure 中的一个或多个已加入域的 VM，它们[运行 SQL Server 2016 Enterprise Edition（或更高版本）](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)，位于[已注册到 SQL VM 资源提供程序](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)的同一个可用性集或可用性区域中。  
+- 两个可用 （未由任何实体） IP 地址，一个内部负载均衡器，一个用于可用性组位于同一子网中的可用性组侦听器。 如果正在使用现有的负载均衡器，则需要一个可用的 IP 地址。  
+
+## <a name="permissions"></a>权限
+以下权限所需配置 Always On 可用性组使用 Azure 快速入门模板： 
+
+- 现有的域用户帐户的域中有权创建计算机对象。  例如，域管理员帐户通常有足够的权限（如 account@domain.com）。 该帐户还应该属于每个 VM 上负责创建群集的本地管理员组。
+- 域用户帐户控制 SQL Server 服务。 
 
 
 ## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>步骤 1 - 使用快速入门模板创建 WSFC 并将 SQL Server VM 加入群集 
@@ -69,18 +76,18 @@ ms.locfileid: "55981921"
 1. 如果你同意条款和条件，请选中“我同意上述条款和条件”旁边的复选框，然后选择“购买”以完成快速入门模板部署。 
 1. 若要监视部署，请通过顶部导航标题中的“通知”钟形图标选择部署，或者在 Azure 门户中导航到你的**资源组**，在“设置”字段中选择“部署”，然后选择“Microsoft.Template”部署。 
 
-  >[!NOTE]
-  > 在模板部署过程中提供的凭据仅在部署期间存储。 部署完成后，系统会删除这些密码。如果要向群集添加更多的 SQL Server VM，系统会要求你再次提供密码。 
+   >[!NOTE]
+   > 在模板部署过程中提供的凭据仅在部署期间存储。 部署完成后，系统会删除这些密码。如果要向群集添加更多的 SQL Server VM，系统会要求你再次提供密码。 
 
 
 ## <a name="step-2---manually-create-the-availability-group"></a>步骤 2 - 手动创建可用性组 
-像平时一样使用 [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell?view=sql-server-2017)、[SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio?view=sql-server-2017) 或 [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql?view=sql-server-2017) 手动创建可用性组。 
+像通常那样，使用手动创建可用性组[SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio)， [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)，或[TRANSACT-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql)。 
 
   >[!IMPORTANT]
   > 此时请**不要**创建侦听程序，因为在步骤 4 中，**101-sql-vm-aglistener-setup** 快速入门模板会自动创建侦听程序。 
 
 ## <a name="step-3---manually-create-the-internal-load-balancer-ilb"></a>步骤 3 - 手动创建内部负载均衡器 (ILB)
-Always On 可用性组 (AG) 侦听程序需要一个内部 Azure 负载均衡器 (ILB)。 ILB 为 AG 侦听程序提供“浮动”IP 地址，可以加快故障转移和重新连接的速度。 如果可用性组中的 SQL Server VM 属于同一个可用性集，则你可以使用基本负载均衡器；否则，需要使用标准负载均衡器。  **ILB 应与 SQL Server VM 实例位于同一 vNet 中。** 只需创建 ILB，剩余的配置（例如后端池、运行状况探测和负载均衡规则）将在步骤 4 中由 **101-sql-vm-aglistener-setup** 快速入门模板进行处理。 
+Always On 可用性组 (AG) 侦听器都需要内部 Azure 负载均衡器 (ILB)。 ILB 为 AG 侦听程序提供“浮动”IP 地址，可以加快故障转移和重新连接的速度。 如果可用性组中的 SQL Server VM 属于同一个可用性集，则你可以使用基本负载均衡器；否则，需要使用标准负载均衡器。  **ILB 应与 SQL Server VM 实例位于同一 vNet 中。** 只需创建 ILB，剩余的配置（例如后端池、运行状况探测和负载均衡规则）将在步骤 4 中由 **101-sql-vm-aglistener-setup** 快速入门模板进行处理。 
 
 1. 在 Azure 门户中，打开包含 SQL Server 虚拟机的资源组。 
 2. 在资源组中，单击“添加”。
@@ -104,7 +111,7 @@ Always On 可用性组 (AG) 侦听程序需要一个内部 Azure 负载均衡器
 6. 选择“创建”。 
 
 
-  >[!NOTE]
+  >[!IMPORTANT]
   > 每个 SQL Server VM 的公共 IP 资源应有一个与标准负载均衡器兼容的标准 SKU。 若要确定 VM 公共 IP 资源的 SKU，请导航到你的**资源组**，选择所需 SQL Server VM 的“公共 IP 地址”资源，并在“概述”窗格的“SKU”下面找到该值。 
 
 ## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>步骤 4 - 使用快速入门模板创建 AG 侦听程序并配置 ILB
@@ -143,8 +150,8 @@ Always On 可用性组 (AG) 侦听程序需要一个内部 Azure 负载均衡器
 1. 如果你同意条款和条件，请选中“我同意上述条款和条件”旁边的复选框，然后选择“购买”以完成快速入门模板部署。 
 1. 若要监视部署，请通过顶部导航标题中的“通知”钟形图标选择部署，或者在 Azure 门户中导航到你的**资源组**，在“设置”字段中选择“部署”，然后选择“Microsoft.Template”部署。 
 
-  >[!NOTE]
-  >如果部署中途失败，则需要使用 PowerShell 手动[删除新建的侦听程序](#remove-availability-group-listener)，然后重新部署 **101-sql-vm-aglistener-setup** 快速入门模板。 
+   >[!NOTE]
+   >如果部署中途失败，则需要使用 PowerShell 手动[删除新建的侦听程序](#remove-availability-group-listener)，然后重新部署 **101-sql-vm-aglistener-setup** 快速入门模板。 
 
 ## <a name="remove-availability-group-listener"></a>删除可用性组侦听程序
 如果以后需要删除该模板配置的可用性组侦听程序，则必须通过 SQL VM 资源提供程序执行整个操作。 因为侦听程序是通过 SQL VM 资源提供程序注册的，仅仅通过 SQL Server Management Studio 删除它是不够的。 实际上，应该使用 PowerShell 通过 SQL VM 资源提供程序来删除它。 这样会从 SQL VM 资源提供程序中删除 AG 侦听程序元数据，并将侦听程序从可用性组中实际删除。 
@@ -176,17 +183,17 @@ AG 侦听程序 Azure 快速入门模板中使用的选定可用性组已包含�
 
  验证帐户是否存在。 如果帐户存在，则你遇到的是第二种情况。 若要解决此问题，请执行以下操作：
 
- 1. 在域控制器上，通过“服务器管理器”中的“工具”选项打开“Active Directory 用户和计算机”窗口。 
- 2. 在左侧窗格中选择“用户”，导航到帐户。
- 3. 右键单击所需帐户，然后选择“属性”。
- 4. 选择“帐户”选项卡，验证“用户登录名”是否为空。 如果为空，则这是出错的原因。 
+1. 在域控制器上，通过“服务器管理器”中的“工具”选项打开“Active Directory 用户和计算机”窗口。 
+2. 在左侧窗格中选择“用户”，导航到帐户。
+3. 右键单击所需帐户，然后选择“属性”。
+4. 选择“帐户”选项卡，验证“用户登录名”是否为空。 如果为空，则这是出错的原因。 
 
-     ![用户帐户为空表明 UPN 缺失](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
+    ![用户帐户为空表明 UPN 缺失](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
- 5. 填充与用户名称匹配的“用户登录名”，然后从下拉列表中选择适当的域。 
- 6. 选择“应用”以保存所做的更改，然后选择“确定”，将对话框关闭。 
+5. 填充与用户名称匹配的“用户登录名”，然后从下拉列表中选择适当的域。 
+6. 选择“应用”以保存所做的更改，然后选择“确定”，将对话框关闭。 
 
- 完成这些更改后，尝试再次部署 Azure 快速入门模板。 
+   完成这些更改后，尝试再次部署 Azure 快速入门模板。 
 
 
 

@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8881a0c5e809dc75d1b9f4b6f6bd3af7142333cb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: cea8522a9f3eb8fa98821c1cb08d92a9524d5ce4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884624"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876793"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>使用计算机视觉生成智能裁剪的缩略图
 
 缩略图是图像的缩减表示形式。 缩略图用于以更加经济且更适合布局的方式表示图像及其他数据。 计算机视觉 API 利用智能裁剪及图像大小调整，来创建给定图像的直观缩略图。
 
 计算机视觉缩略图生成算法的工作原理如下：
+
 1. 从图像中删除让人分散注意力的元素并识别感兴趣区域&mdash;显示主要对象的图像区域。
 1. 基于所识别的感兴趣区域裁剪图像。
 1. 更改纵横比以适应目标缩略图尺寸。

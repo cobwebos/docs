@@ -10,21 +10,21 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 3ad657fb695d88ffc75a37ee566ce59126906748
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038426"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108063"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
 Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是在 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 中提供的。 此扩展必须安装在函数应用中。 本文介绍如何安装此包，以便在 Azure 门户中开发 Durable Functions。
 
->[!NOTE]
->
->* 如果在 C# 中开发 Durable Functions，则应改为考虑 [Visual Studio 2017 开发](durable-functions-create-first-csharp.md)。
-* 如果在 JavaScript 中开发 Durable Functions，则应改为考虑 [Visual Studio Code 开发](./quickstart-js-vscode.md)。
+> [!NOTE]
+> 
+> * 如果在 C# 中开发 Durable Functions，则应改为考虑 [Visual Studio 2017 开发](durable-functions-create-first-csharp.md)。
+> * 如果在 JavaScript 中开发 Durable Functions，则应改为考虑 [Visual Studio Code 开发](./quickstart-js-vscode.md)。
 
 ## <a name="create-a-function-app"></a>创建函数应用
 

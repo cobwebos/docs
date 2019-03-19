@@ -10,18 +10,18 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 5393e202c7b5005552f164c9c6f55da92fc82572
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448714"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104431"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>使用 SQL Server Integration Services (SSIS) 计划 U-SQL 作业
 
 本文介绍如何使用 SQL Server Integration Service (SSIS) 安排和创建 U-SQL 作业。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [用于 Integration Services 的 Azure 功能包](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)提供 [Azure Data Lake Analytics 任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)和 [Azure Data Lake Analytics 连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)，该管理器可帮助连接 Azure Data Lake Analytics 服务。 若要使用此任务，请务必：
 
@@ -93,16 +93,16 @@ Azure Data Lake Analytics 任务允许用户向 Azure Data Lake Analytics 帐户
     
     创建此文件连接：
 
-    1. 在 FileConnection 设置中选择 <New Connection...>。
-    2. 将“使用类型”设置为“现有文件”，并将“文件”设置为任何现有文件的文件路径。
+   1. 在 FileConnection 设置中选择 <New Connection...>。
+   2. 将“使用类型”设置为“现有文件”，并将“文件”设置为任何现有文件的文件路径。
 
-        ![配置 Foreach 循环容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![配置 Foreach 循环容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-    3. 在“连接管理器”视图中，右键单击刚才创建的文件连接，选择“属性”。
+   3. 在“连接管理器”视图中，右键单击刚才创建的文件连接，选择“属性”。
 
-    4. 在“属性”窗口中，展开“表达式”，并将“ConnectionString”设置为 Foreach 循环容器中定义的变量，例如 `@[User::FileName]`。
+   4. 在“属性”窗口中，展开“表达式”，并将“ConnectionString”设置为 Foreach 循环容器中定义的变量，例如 `@[User::FileName]`。
 
-        ![配置 Foreach 循环容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
+       ![配置 Foreach 循环容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
 3. 将“AzureDataLakeAnalyticsConnection”设置为要向其提交作业的 Azure Data Lake Analytics 帐户。 详细了解 [Azure Data Lake Analytics 连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)。
 

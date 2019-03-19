@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: 62683aaf7dda048b5828e9494ba8cafe6c8b8f9f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 012a352b00de2e2d1bf64fd18125ddd10faba5cd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417933"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122801"
 ---
 # <a name="assessment-calculations"></a>评估计算
 
@@ -118,14 +118,14 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 
    下面是关于为什么评估可能会获得较低置信度分级的原因：
 
-   - 在创建评估的过程中，你没有对环境进行分析。 例如，如果创建性能持续时间设置为 1 天的评估，则在对所有数据点启用发现之后，需要等待至少一天才能收集。
+- 在创建评估的过程中，你没有对环境进行分析。 例如，如果创建性能持续时间设置为 1 天的评估，则在对所有数据点启用发现之后，需要等待至少一天才能收集。
 
-   - 一些 VM 在进行评估计算期间关闭。 如果某些 VM 停机了一段时间，则无法收集该时段的性能数据。
+- 一些 VM 在进行评估计算期间关闭。 如果某些 VM 停机了一段时间，则无法收集该时段的性能数据。
 
-   - 在进行评估计算期间创建了一些 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 则在这种情况下，新建 VM 的性能历史记录并非在整个期间都有。
+- 在进行评估计算期间创建了一些 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 则在这种情况下，新建 VM 的性能历史记录并非在整个期间都有。
 
-   > [!NOTE]
-   > 如果任何评估的置信度评级低于五星，我们建议等待至少一天以便设备对环境进行分析，然后重新计算评估。 如果前述操作无法完成，则基于性能的大小调整可能不可靠，建议通过更改评估属性切换到“按本地大小调整”。
+  > [!NOTE]
+  > 如果任何评估的置信度评级低于五星，我们建议等待至少一天以便设备对环境进行分析，然后重新计算评估。 如果前述操作无法完成，则基于性能的大小调整可能不可靠，建议通过更改评估属性切换到“按本地大小调整”。
 
 ## <a name="monthly-cost-estimation"></a>每月成本估计
 

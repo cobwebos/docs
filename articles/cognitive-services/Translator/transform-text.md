@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 8d82a561102d0616ca4e66258ee439acbe2aa148
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 85e5f5bab6edff2a97f08f2d4df613c446039ee3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866264"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099393"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
 
@@ -28,7 +28,7 @@ TransformText 方法是用于社交媒体的文本规范化函数，它返回输
 
 ## <a name="parameters"></a>parameters
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:---|:---|
 | 授权标头 | **必需**：用于标识应用程序的 HTTP 标头。 使用密钥：“授权”和值：“持有者” + “ ” + 访问令牌。 有关详细信息，请转到此处。|
 | 语言 | **必需**：一个表示语言代码的字符串。 此参数仅支持以 **en** 作为语言名称的英语。|
@@ -40,14 +40,14 @@ TransformText 方法是用于社交媒体的文本规范化函数，它返回输
 返回值提供转换后的句子。
 
 > [!div class="tabbedCodeSnippets"]
-```json
-GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); TransformTextResponse
-{
-int ec;            // A positive number representing an error condition
-string em;         // A descriptive error message
-string sentence;   // transformed text
-}
-```
+> ```json
+> GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); TransformTextResponse
+> {
+> int ec;            // A positive number representing an error condition
+> string em;         // A descriptive error message
+> string sentence;   // transformed text
+> }
+> ```
 
 ## <a name="example"></a>示例
 
@@ -72,7 +72,7 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             AdmAccessToken admToken;
             string headerValue;
             //Get Client Id and Client Secret from https://datamarket.azure.com/developer/applications/
-            //Refer obtaining AccessToken (http://msdn.microsoft.com/library/hh454950.aspx)
+            //Refer obtaining AccessToken (https://msdn.microsoft.com/library/hh454950.aspx)
             AdmAuthentication admAuth = new AdmAuthentication("clientID", "client secret");
 
             try
@@ -104,7 +104,7 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             string language = "en";
             string domain = "general";
             //Keep appId parameter blank as we are sending access token in authorization header.
-            string url = string.Format("http://api.microsofttranslator.com/V3/json/TransformText?sentence={0}&category={1}&language={2}",textToTransform,domain,language); ;
+            string url = string.Format("https://api.microsofttranslator.com/V3/json/TransformText?sentence={0}&category={1}&language={2}",textToTransform,domain,language); ;
             TransformTextResponse transformTextResponse= new TransformTextResponse();
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.Headers.Add("Authorization", authToken);

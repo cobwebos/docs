@@ -16,20 +16,20 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07912dab52cb0569428d070282551eebbdb1c7bc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191439"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082936"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的开放源代码技术常见问题解答
 
-本文包含有关针对 [Azure 应用服务的 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的开放源代码技术问题的常见问题 (FAQ) 解答。
+本文对 [Azure App Service Web 应用功能](https://azure.microsoft.com/services/app-service/web/)开源技术常见问题 (FAQ) 进行了解答。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>如何打开 PHP 日志记录以对 PHP 问题进行故障排除？
+## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>如何启用 PHP 日志记录以便对 PHP 问题进行故障排除？
 
 打开 PHP 日志记录：
 
@@ -42,12 +42,12 @@ ms.locfileid: "54191439"
 7. 选择 **.user.ini** 旁的铅笔图标。
 8. 在文件中，添加以下代码：`log_errors=on`
 9. 选择“保存”。
-10. 选择 **wp-config.php** 旁的铅笔图标。
+10. 选择“wp-config.php”旁边的铅笔图标。
 11. 将文本更改为以下代码：
-   ```php
-   //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
-   ```
+    ```php
+    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
+    //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
+    ```
 12. 在 Azure 门户中的 web 应用菜单中，重新启动你的 Web 应用。
 
 有关详细信息，请参阅[启用 WordPress 错误日志](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)。
@@ -59,31 +59,31 @@ ms.locfileid: "54191439"
 
 若要更改 Node.js 应用程序的版本，可以使用以下选项之一：
 
-*   在 Azure 门户中，使用“应用设置”。
-    1. 在 Azure 门户中，转到你的 Web 应用。
-    2. 在“设置”边栏选项卡中，选择“应用程序设置”。
-    3. 在“应用设置”中，可以包含 WEBSITE_NODE_DEFAULT_VERSION 作为键，并将所需 Node.js 版本作为值。
-    4. 转到 [Kudu 控制台](https://*yourwebsitename*.scm.azurewebsites.net)。
-    5. 若要检查 Node.js 版本，请输入以下命令：  
-   ```
-   node -v
-   ```
-*   修改 iisnode.yml 文件。 在 iisnode.yml 文件中更改 Node.js 版本只会设置 iisnode 使用的运行时环境。 Kudu cmd 和其他对象仍使用在 Azure 门户的“应用设置”中设置的 Node.js 版本。
+* 在 Azure 门户中，使用“应用设置”。
+  1. 在 Azure 门户中，转到你的 Web 应用。
+  2. 在“设置”边栏选项卡中，选择“应用程序设置”。
+  3. 在“应用设置”中，可以包含 WEBSITE_NODE_DEFAULT_VERSION 作为键，并将所需 Node.js 版本作为值。
+  4. 转到 [Kudu 控制台](https://*yourwebsitename*.scm.azurewebsites.net)。
+  5. 若要检查 Node.js 版本，请输入以下命令：  
+     ```
+     node -v
+     ```
+* 修改 iisnode.yml 文件。 在 iisnode.yml 文件中更改 Node.js 版本只会设置 iisnode 使用的运行时环境。 Kudu cmd 和其他对象仍使用在 Azure 门户的“应用设置”中设置的 Node.js 版本。
 
-    若要手动设置 iisnode.yml，请在应用根文件夹中创建 iisnode.yml 文件。 在该文件中，包含以下行：
-   ```yml
-   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-   ```
+  若要手动设置 iisnode.yml，请在应用根文件夹中创建 iisnode.yml 文件。 在该文件中，包含以下行：
+  ```yml
+  nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+  ```
    
-*   在源控件部署过程中使用 package.json 设置 iisnode.yml 文件。
-    Azure 源控件部署过程涉及以下步骤：
-    1. 将内容移动到 Azure Web 应用。
-    2. 如果在 Web 应用根文件夹中没有默认部署脚本，则创建一个（deploy.cmd、.deployment 文件）。
-    3. 运行部署脚本，如果在 package.json 文件 > 引擎中涉及到 Node.js 版本，则它会创建 iisnode.yml 文件 `"engines": {"node": "5.9.1","npm": "3.7.3"}`
-    4. iisnode.yml 文件具有以下代码行：
-        ```yml
-        nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-        ```
+* 在源控件部署过程中使用 package.json 设置 iisnode.yml 文件。
+  Azure 源控件部署过程涉及以下步骤：
+  1. 将内容移动到 Azure Web 应用。
+  2. 如果在 Web 应用根文件夹中没有默认部署脚本，则创建一个（deploy.cmd、.deployment 文件）。
+  3. 运行部署脚本，如果在 package.json 文件 > 引擎中涉及到 Node.js 版本，则它会创建 iisnode.yml 文件 `"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  4. iisnode.yml 文件具有以下代码行：
+      ```yml
+      nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+      ```
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>我在应用服务中承载的 WordPress 应用中看到消息“建立数据库连接时出错”。 如何对此错误进行故障排除？
 
@@ -217,6 +217,6 @@ WordPress Buddy+ 是一个 Azure 站点扩展，可以用于直接在数据库�
 
 确保 MySQL 应用内正在运行之后，尝试使用 PHPMyAdmin。
 
-## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>我在尝试使用 PHPMyadmin 导入或导出 MySQL 应用内数据库时遇到 HTTP 403 错误。 如何解决此问题？
+## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>在尝试使用 PHPMyadmin 导入或导出 MySQL 应用内数据库时，收到了 HTTP 403 错误。 如何解决此问题？
 
 如果使用较旧版本的 Chrome，则可能会遇到一个已知 bug。 若要解决该问题，请升级到较新版本的 Chrome。 另请尝试使用不会出现该问题的不同浏览器，如 Internet Explorer 或 Microsoft Edge。

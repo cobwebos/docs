@@ -1,19 +1,19 @@
 ---
 title: Azure 事件网格容器注册表事件架构
-description: 介绍为 Azure 事件网格中的容器注册表事件提供的属性
+description: 介绍使用 Azure 事件网格的容器注册表事件提供的属性
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/13/2019
+ms.date: 03/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 6f00d4f249543ece0eb8db4a8e040300d55b2de8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462838"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084321"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>容器注册表的 Azure 事件网格事件架构
 
@@ -21,12 +21,14 @@ ms.locfileid: "54462838"
 
 ## <a name="available-event-types"></a>可用事件类型
 
-Blob 存储发出以下事件类型：
+Azure 容器注册表发出以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.ContainerRegistry.ImagePushed | 推送映像时引发。 |
 | Microsoft.ContainerRegistry.ImageDeleted | 删除映像时引发。 |
+| Microsoft.ContainerRegistry.ChartPushed | 当推送 Helm 图表时引发。 |
+| Microsoft.ContainerRegistry.ChartDeleted | 删除一个 Helm 图表时引发。 |
 
 ## <a name="example-event"></a>示例事件
 
@@ -93,11 +95,67 @@ Blob 存储发出以下事件类型：
 }]
 ```
 
+图表推送事件的架构类似于制作映像已推送事件的架构，但它不包含请求对象：
+
+```json
+[{
+  "id": "ea3a9c28-5b17-40f6-a500-3f02b6829277",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<name>",
+  "subject": "mychart:1.0.0",
+  "eventType": "Microsoft.ContainerRegistry.ChartPushed",
+  "eventTime": "2019-03-12T22:16:31.5164086Z",
+  "data": {
+    "id":"ea3a9c28-5b17-40f6-a500-3f02b682927",
+    "timestamp":"2019-03-12T22:16:31.0087496+00:00",
+    "action":"chart_push",
+    "target":{
+      "mediaType":"application/vnd.acr.helm.chart",
+      "size":25265,
+      "digest":"sha256:7f060075264b5ba7c14c23672698152ae6a3ebac1c47916e4efe19cd624d5fab",
+      "repository":"repo",
+      "tag":"mychart-1.0.0.tgz",
+      "name":"mychart",
+      "version":"1.0.0"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+图表中删除事件的架构类似于映像化的已删除事件的架构，但它不包含请求对象：
+
+```json
+[{
+  "id": "39136b3a-1a7e-416f-a09e-5c85d5402fca",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<name>",
+  "subject": "mychart:1.0.0",
+  "eventType": "Microsoft.ContainerRegistry.ChartDeleted",
+  "eventTime": "019-03-12T22:42:08.7034064Z",
+  "data": {
+    "id":"ea3a9c28-5b17-40f6-a500-3f02b682927",
+    "timestamp":"2019-03-12T22:42:08.3783775+00:00",
+    "action":"chart_delete",
+    "target":{
+      "mediaType":"application/vnd.acr.helm.chart",
+      "size":25265,
+      "digest":"sha256:7f060075264b5ba7c14c23672698152ae6a3ebac1c47916e4efe19cd624d5fab",
+      "repository":"repo",
+      "tag":"mychart-1.0.0.tgz",
+      "name":"mychart",
+      "version":"1.0.0"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
 ## <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -110,7 +168,7 @@ Blob 存储发出以下事件类型：
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | id | 字符串 | 事件 ID。 |
 | timestamp | 字符串 | 发生事件的时间。 |
@@ -120,7 +178,7 @@ Blob 存储发出以下事件类型：
 
 目标对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | mediaType | 字符串 | 引用对象的 MIME 类型。 |
 | size | integer | 内容的字节数。 与 Length 字段相同。 |
@@ -128,10 +186,12 @@ Blob 存储发出以下事件类型：
 | length | integer | 内容的字节数。 与 Size 字段相同。 |
 | repository | 字符串 | 存储库名称。 |
 | 标记 | 字符串 | 标记名称。 |
+| 名称 | 字符串 | 图表的名称。 |
+| 版本 | 字符串 | 图表版本。 |
 
 请求对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | id | 字符串 | 启动事件的请求 ID。 |
 | addr | 字符串 | 启动事件的客户端连接的 IP 或主机名可能还有端口。 此值是标准 http 请求中的 RemoteAddr。 |

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 159ce1b565068e2cfdb3cb1cb2e5b5f72ff6848f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
-ms.translationtype: HT
+ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451351"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089159"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Chef VM 扩展
 
 Chef Software 为 Linux 和 Windows 提供了一个 DevOps 自动化平台，用于管理物理服务器配置和虚拟服务器配置。 Chef VM 扩展是一个用于在虚拟机上启用 Chef 的扩展。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -69,7 +69,7 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 ### <a name="core-property-values"></a>核心属性值
 
 | 名称 | 值/示例 | 数据类型
-| ---- | ---- | ---- | ----
+| ---- | ---- | ---- 
 | apiVersion | `2017-12-01` | 字符串（日期） |
 | 发布者 | `Chef.Bootstrap.WindowsAzure` | 字符串 |
 | type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | 字符串 |

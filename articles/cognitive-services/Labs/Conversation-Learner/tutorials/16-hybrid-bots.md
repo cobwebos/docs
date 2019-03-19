@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 17be364959c5cdc1beaf48aa86966ede5c7c7309
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: b90fc42aa56bfc813ec464670336dea75cff0f0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219356"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117432"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>如何将对话学习器与其他机器人构建技术结合使用
 
@@ -119,11 +119,11 @@ ms.locfileid: "55219356"
 2. 输入“hello”。  由于未设置 `isOpen` 值，机器人会说：“I’m sorry we’re closed”，然后关闭会话。
 
 #### <a name="scenario-2-store-is-open"></a>方案 2：商店正在营业
-3. 输入“open store”。  这会将 `isOpen` 设置为 true。
-4. 输入“shop”。
-5. 输入“hello”。  由于 `isOpen` 实体设置为 true，机器人会说：“What would you like to buy?”
-6. 输入“chair”。 “chair”将在 CL 内存中保存为 `purchaseItem` 实体。 调用的结束会话回调会将此值复制到会话存储中。
-7. 输入“history”。  机器人会说：“'You bought chair”（因为这是你最近一次购买的商品）`purchaseItem`。
+1. 输入“open store”。  这会将 `isOpen` 设置为 true。
+1. 输入“shop”。
+1. 输入“hello”。  由于 `isOpen` 实体设置为 true，机器人会说：“What would you like to buy?”
+1. 输入“chair”。 “chair”将在 CL 内存中保存为 `purchaseItem` 实体。 调用的结束会话回调会将此值复制到会话存储中。
+1. 输入“history”。  机器人会说：“'You bought chair”（因为这是你最近一次购买的商品）`purchaseItem`。
 
 ## <a name="conclusion"></a>结束语
 

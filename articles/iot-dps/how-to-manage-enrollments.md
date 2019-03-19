@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0970131c4b674fd864ad574b0f749cd6d7f6f2a2
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
-ms.translationtype: HT
+ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140019"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089380"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>如何通过 Azure 门户管理设备注册
 
@@ -28,15 +28,15 @@ ms.locfileid: "42140019"
 
     执行以下步骤可在门户中为一组设备创建注册组。
 
-    1. 登录 Azure 门户，单击左侧菜单中的“所有资源”。  
-    1. 从资源列表中单击要向其注册设备的设备预配服务。  
-    1. 在预配服务中：  
-       a. 单击“管理注册”，然后选择“注册组”选项卡。  
-       b. 单击顶部的“添加”按钮。  
-       c. 当“添加注册组”面板出现时，输入注册列表项的信息。  **组名**是必需的。 另外，对于“证书类型”，请选择“CA 证书”或“中间证书”，并为设备组上传根**主证书**。  
-       d. 单击“ **保存**”。 注册组创建成功后，应可在“注册组”选项卡下看到组名称。  
+  1. 登录 Azure 门户，单击左侧菜单中的“所有资源”。  
+  1. 从资源列表中单击要向其注册设备的设备预配服务。  
+  1. 在预配服务中：  
+     a. 单击“管理注册”，然后选择“注册组”选项卡。  
+     b. 单击顶部的“添加”按钮。  
+     c. 当“添加注册组”面板出现时，输入注册列表项的信息。  **组名**是必需的。 另外，对于“证书类型”，请选择“CA 证书”或“中间证书”，并为设备组上传根**主证书**。  
+     d. 单击“ **保存**”。 注册组创建成功后，应可在“注册组”选项卡下看到组名称。  
 
-       [![门户中的注册组](./media/how-to-manage-enrollments/group-enrollment.png)]  (./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+     [![在门户中的注册组](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
 * 单独注册是用于单个设备注册的条目。 个人注册可使用 x509 证书或 SAS 令牌（来自物理或虚拟 TPM）作为证明机制。 对于需要唯一初始配置的设备或仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备，建议使用单独注册。 单独注册可能会指定所需 IoT 中心设备 ID。

@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 7e135432ce8490c505e7d3a1022407dd5d9b9776
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
+ms.openlocfilehash: 6c57dff2e0f0c1edb887ddd8f0e5ca206ba8b912
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584388"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110386"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
 
-本文介绍如何管理 Azure HDInsight 上的现有 ML Services 群集，以执行如下任务：添加多个并发用户、远程连接到 ML Services 群集、更改计算上下文等。
+在本文中，您将了解如何管理 Azure HDInsight，以执行任务，例如添加多个并发用户，远程连接到机器学习服务的群集中，更改计算上下文等上的现有机器学习服务群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **HDInsight 上的 ML 服务群集**：有关说明，请参阅 [HDInsight 上的 ML 服务入门](r-server-get-started.md)。
 
@@ -310,7 +310,7 @@ ms.locfileid: "53584388"
 
    * 对于“名称”，为脚本操作提供一个名称。
 
-    * 对于“Bash 脚本 URI”，输入 `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`。 此脚本会在工作节点上安装其他 R 包
+     * 对于“Bash 脚本 URI”，输入 `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`。 此脚本会在工作节点上安装其他 R 包
 
    * 仅选中“辅助角色”所对应的复选框。
 

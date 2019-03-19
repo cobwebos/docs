@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: fd1e49a8bab3b6133a476bbafaa45e0e61fe1f1b
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 58117bce8de667c9750b2e0c19992b99716945cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124195"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -42,7 +42,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 
 - 在此版本中，Azure Stack 集成系统支持 4-16 个节点的配置。 可以使用 [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) 来帮助规划 Azure Stack 容量与配置。
 
-- <!--  2712869   | IS  ASDK --> **Azure Stack syslog 客户端（正式版）** 此客户端允许将与 Azure Stack 基础结构相关的审核、警报和安全日志转发到 Azure Stack 外部的 syslog 服务器或安全信息与事件管理 (SIEM) 软件。 syslog 客户端现在支持指定 syslog 服务器侦听的端口。
+- <!--  2712869   | IS  ASDK -->  **Azure Stack syslog 客户端（正式版）** 此客户端允许将与 Azure Stack 基础结构相关的审核、警报和安全日志转发到 Azure Stack 外部的 syslog 服务器或安全信息与事件管理 (SIEM) 软件。 syslog 客户端现在支持指定 syslog 服务器侦听的端口。
 
    此版本意味着 syslog 客户端已正式发布，可以用于生产环境。
 
@@ -63,16 +63,16 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 - 以下托管磁盘问题已在 1809 中修复，同时已在 1808 [Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/) 中修复： 
 
    <!--  2966665 – IS, ASDK --> 
-   - 修复了以下问题：将 SSD 数据磁盘附加到高级大小的托管磁盘虚拟机（DS、DSv2、Fs、Fs_V2）失败并出现以下错误：无法更新虚拟机 ‘vmname’ 的磁盘。错误:由于 VM 大小 ‘Standard_DS/Ds_V2/FS/Fs_v2’ 不支持存储帐户类型 ‘Premium_LRS’，因此请求的操作无法执行。 
+  - 修复了以下问题：将 SSD 数据磁盘附加到高级大小的托管磁盘虚拟机（DS、DSv2、Fs、Fs_V2）失败并出现以下错误：无法更新虚拟机 ‘vmname’ 的磁盘。错误:由于 VM 大小 ‘Standard_DS/Ds_V2/FS/Fs_v2’ 不支持存储帐户类型 ‘Premium_LRS’，因此请求的操作无法执行。 
    
-   - 使用 **createOption**:**Attach** 创建托管磁盘 VM 失败并出现以下错误：长时间运行的操作失败，状态为 'Failed'。其他信息:“发生内部执行错误。”
-   ErrorCode:InternalExecutionError ErrorMessage:发生内部执行错误。
+  - 使用 **createOption**:**Attach** 创建托管磁盘 VM 失败并出现以下错误：长时间运行的操作失败，状态为 'Failed'。其他信息:“发生内部执行错误。”
+    ErrorCode:InternalExecutionError ErrorMessage:发生内部执行错误。
    
-   现已修复此问题。
+    现已修复此问题。
 
-- <!-- 2702741 -  IS, ASDK --> 修复了在发出“停止-解除分配”命令后，无法保证系统会保留使用动态分配方法部署的公共 IP 的问题。 它们现在已保留。
+- <!-- 2702741 -  IS, ASDK --> 方法未在部署的使用动态分配的公共 Ip 的已修复的问题后发出停止-解除分配保留保证。 它们现在已保留。
 
-- <!-- 3078022 - IS, ASDK -->如果 VM 在 1808 之前已停止-解除分配，则该 VM 在 1808 更新之后无法重新分配。  此问题已在 1809 中解决。 处于这种状态且无法启动的实例可以在已应用此修复的 1809 中启动。 此修复还可以防止该问题反复发生。
+- <!-- 3078022 - IS, ASDK --> 如果 VM 在 1808 之前已停止-解除分配，则该 VM 在 1808 更新之后无法重新分配。  此问题已在 1809 中解决。 处于这种状态且无法启动的实例可以在已应用此修复的 1809 中启动。 此修复还可以防止该问题反复发生。
 
 ### <a name="changes"></a>更改
 
@@ -159,7 +159,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 
 - <!-- 2489559 - IS --> 在安装此更新的过程中，请勿尝试创建虚拟机。 有关如何管理更新的详细信息，请参阅[在 Azure Stack 中管理更新的概述](azure-stack-updates.md#plan-for-updates)。
 
-- <!-- 3139614 | IS --> 如果已从您的 OEM，对 Azure Stack 应用更新**可用更新**通知可能不会显示在 Azure Stack 管理门户中。 若要安装 Microsoft 更新，请下载并导入它使用位于此处的说明手动[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)。
+- <!-- 3139614 | IS --> 如果已从您的 OEM，对 Azure Stack 应用更新**可用更新**通知可能不会显示在 Azure Stack 管理门户中。 若要安装 Microsoft 更新，请遵照[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)中的说明手动下载并导入该更新。
 
 ### <a name="post-update-steps"></a>更新后步骤
 
@@ -297,10 +297,10 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 <!-- TBD - IS ASDK --> 
 - 应用 1809 更新后，在部署带托管磁盘的 VM 时可能会遇到以下问题：
 
-   - 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
-      1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
-      2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“AzureStack-DiskRP-Client”角色是否已列出。
-   2. 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决错误，请执行[此文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤来重新配置每个来宾目录。
+  - 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
+     1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
+     2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“AzureStack-DiskRP-Client”角色是否已列出。
+  - 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决错误，请执行[此文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤来重新配置每个来宾目录。
 
 - 如果使用创建时已启用 SSH 授权的 Ubuntu 18.04 VM，则无法使用 SSH 密钥登录。 若要解决此问题，请在预配后使用针对 Linux 扩展的 VM 访问权限来实现 SSH 密钥，或者使用基于密码的身份验证。
 

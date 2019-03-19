@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cebbc8b61a806663e7cb58e0bf7fbdd589f46cca
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 3621ca198ec2bac24791a2515ade51b990194bf2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343300"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003857"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
@@ -24,11 +24,11 @@ ms.locfileid: "56343300"
 
 将蓝图分配到作用域是许多错误产生的原因。 分配失败时，蓝图会提供失败部署的详细信息。 此信息会指出存在的问题，以便可以修复问题并确保后续部署成功进行。
 
-1. 单击“所有服务”，然后在左窗格中搜索并选择“策略”。 在“策略”页上，单击“蓝图”。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 选择左侧页面上的“已分配蓝图”，然后使用搜索框筛选分配的蓝图以找到失败的分配项。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
+1. 选择**分配蓝图**的页面上的左侧和使用的搜索框进行筛选以查找失败的分配的蓝图分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
 
-1. 使用鼠标左键单击状态为“失败”的蓝图，或者右键单击然后选择“查看分配详细信息”。
+1. 左键单击与蓝图_失败_状态或右键单击并选择**查看分配的详细信息**。
 
 1. 蓝图分配页面顶部有一个红色横幅警告，指出此分配已失败。 单击横幅任意位置可获取更多详细信息。
 
@@ -65,12 +65,12 @@ ms.locfileid: "56343300"
 
 #### <a name="resolution"></a>解决方法
 
-若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。
+若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 有关详细信息，请参阅[模板文件结构-语法](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax)。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
+- 从通过 Azure 专家那里获得答案[Azure 论坛](https://azure.microsoft.com/support/forums/)。
 - 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
 - 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

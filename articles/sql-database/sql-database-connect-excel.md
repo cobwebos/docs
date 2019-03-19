@@ -12,12 +12,12 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237004"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103394"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库中的单一数据库并创建报表
 
@@ -43,10 +43,10 @@ ms.locfileid: "56237004"
 
 4. 在“SQL Server 数据库”对话框中，选择左侧的“数据库”，然后输入要连接到的 SQL 数据库服务器的用户名和密码。 选择“连接”以打开“导航器”。 
 
-  ![键入服务器名称和登录凭据](./media/sql-database-connect-excel/connect-to-server.png)
+   ![键入服务器名称和登录凭据](./media/sql-database-connect-excel/connect-to-server.png)
 
-  > [!TIP]
-  > 根据网络环境，可能无法连接；如果 SQL 数据库服务器不允许来自客户端 IP 地址的流量，可能会断开连接。 转到 [Azure 门户](https://portal.azure.com/)，依次单击“SQL 服务器”、服务器、“设置”下面的“防火墙”，然后添加客户端 IP 地址。 有关详细信息，请参阅 [如何配置防火墙设置](sql-database-configure-firewall-settings.md) 。
+   > [!TIP]
+   > 根据网络环境，可能无法连接；如果 SQL 数据库服务器不允许来自客户端 IP 地址的流量，可能会断开连接。 转到 [Azure 门户](https://portal.azure.com/)，依次单击“SQL 服务器”、服务器、“设置”下面的“防火墙”，然后添加客户端 IP 地址。 有关详细信息，请参阅 [如何配置防火墙设置](sql-database-configure-firewall-settings.md) 。
 
 5. 在“导航器”中，从列表中选择想要使用的数据库，选择想要使用的表格或视图（我们选择的是“vGetAllCategories”），然后选择“加载”以将数据从数据库移至 Excel 电子表格。
 
@@ -75,17 +75,17 @@ ms.locfileid: "56237004"
 若要永久保存连接详细信息，可以创建一个 .odc 文件，并将此连接作为“现有连接”对话框中的一个选项。 
 
 1. 在页面顶部的菜单栏中选择“数据”选项卡，然后选择“现有连接”以启动“现有连接”对话框。 
-    1. 选择“浏览更多”以打开“选择数据源”对话框。   
-    2. 选择“+NewSqlServerConnection.odc”文件并选择“打开”以打开“数据连接向导”。
+   1. 选择“浏览更多”以打开“选择数据源”对话框。   
+   2. 选择“+NewSqlServerConnection.odc”文件并选择“打开”以打开“数据连接向导”。
 
-    ![新建连接](media/sql-database-connect-excel/new-connection.png)
+      ![新建连接](media/sql-database-connect-excel/new-connection.png)
 
 2. 在“数据连接向导”中键入服务器名称和 SQL 数据库凭据。 选择“**下一步**”。 
-    1. 从下拉列表中选择包含数据的数据库。 
-    2. 选择感兴趣的表格或视图。 我们选择的是“vGetAllCategories”。
-    3. 选择“**下一步**”。 
+   1. 从下拉列表中选择包含数据的数据库。 
+   2. 选择感兴趣的表格或视图。 我们选择的是“vGetAllCategories”。
+   3. 选择“**下一步**”。 
 
-    ![数据连接向导](media/sql-database-connect-excel/data-connection-wizard.png) 
+      ![数据连接向导](media/sql-database-connect-excel/data-connection-wizard.png) 
 
 3. 在数据连接向导的下一个屏幕中选择文件位置、文件名以及友好名称。 还可以选择将密码保存在文件中，但这样做可能会将数据泄露给未经允许的访问。 准备就绪后，选择“完成”。 
 

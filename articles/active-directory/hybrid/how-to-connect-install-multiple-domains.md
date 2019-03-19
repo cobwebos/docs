@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00cde6f9d17eb44fefae10d8694a89abf51540a5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9e822906a072ec8244c7108e98289482adebb5a7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182046"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098672"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
 以下文档提供了有关与 Office 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
@@ -69,7 +69,7 @@ ms.locfileid: "56182046"
 
 因此，在 Azure AD 或 Office 365 上进行身份验证期间，将使用用户令牌中的 IssuerUri 元素来查找 Azure AD 中的域。  如果找不到匹配项，身份验证将会失败。
 
-例如，如果用户的 UPN 是 bsimon@bmcontoso.com，则 AD FS 颁发的令牌中的 IssuerUri 元素将设置为 http://bmcontoso.com/adfs/services/trust。 此元素将匹配 Azure AD 配置，并且身份验证会成功。
+例如，如果用户的 UPN 是 bsimon@bmcontoso.com，则 AD FS 颁发的令牌中的 IssuerUri 元素将设置为 <http://bmcontoso.com/adfs/services/trust>。 此元素将匹配 Azure AD 配置，并且身份验证会成功。
 
 以下是实现此逻辑的自定义声明规则：
 
@@ -154,7 +154,7 @@ ms.locfileid: "56182046"
 1. 打开“AD FS 管理”
 2. 右键单击 Microsoft Online RP 信任，并选择“编辑声明规则”
 3. 选择第三个声明规则并替换![编辑声明](./media/how-to-connect-install-multiple-domains/sub1.png)
-4. 将当前的声明：
+4. 替换当前声明：
 
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 63b1e850cbcea089a6a115f53ea1ef579a16886f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: ee7c471cdd76829abc03fa4578d09b8a7303cb38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744974"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891427"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure 虚拟机预留实例未包含的软件成本
 
@@ -80,4 +80,4 @@ ms.locfileid: "55744974"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

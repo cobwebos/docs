@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: c4f32113c0750b825f217330f94b45484dc3be29
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313460"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101085"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
 
@@ -31,7 +31,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 >[!TIP]
 >要将 Azure Data Lake Storage Gen1 中的数据复制到 Gen2，请参阅[此特定演练](load-azure-data-lake-storage-gen2-from-gen1.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 启用了 Data Lake Storage Gen2 的 Azure 存储帐户：如果没有存储帐户，请单击[此处](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)创建一个。
@@ -77,12 +77,12 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
     
 4. 在“指定 Amazon S3 连接”页中，执行以下步骤：
 
-    1. 指定“访问密钥 ID”值。
-    2. 指定“机密访问密钥”值。
-    3. 单击“测试连接”以验证设置，然后选择“完成”。
-    4. 随即会显示新创建的连接。 选择“**下一步**”。
+   1. 指定“访问密钥 ID”值。
+   2. 指定“机密访问密钥”值。
+   3. 单击“测试连接”以验证设置，然后选择“完成”。
+   4. 随即会显示新创建的连接。 选择“**下一步**”。
    
-    ![指定 Amazon S3 帐户](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      ![指定 Amazon S3 帐户](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       
 5. 在“选择输入文件或文件夹”页上，浏览到要复制的文件夹和文件。 选择文件夹/文件，选择“选择”：
 

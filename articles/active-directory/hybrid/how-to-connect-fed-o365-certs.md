@@ -16,18 +16,18 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037c5210f73899483bebf131efce0d5f61a847c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: fae036a0860ddb5ee2776f7ed4734492741907f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200354"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177715"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
 为使 Azure Active Directory (Azure AD) 与 Active Directory 联合身份验证服务 (AD FS) 之间能够成功联合，AD FS 用来为 Azure AD 签名安全令牌的证书应该匹配 Azure AD 中所配置的证书。 任何不匹配情况都可能导致信任破坏。 Azure AD 可确保此信息在部署 AD FS 和 Web 应用程序代理（用于 Extranet 访问）时保持同步。
 
-本文提供一些附加信息，帮助你在以下情况下管理令牌签名证书，并使证书能够与 Azure AD 保持同步：
+本文提供了一些附加信息，帮助在以下情况下管理令牌签名证书，并使证书与 Azure AD 保持同步：
 
 * 未部署 Web 应用程序代理，因此无法在 Extranet 中获取联合元数据。
 * 未对令牌签名证书使用默认的 AD FS 配置。
@@ -36,7 +36,7 @@ ms.locfileid: "56200354"
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>令牌签名证书的默认 AD FS 配置
 令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover** 的自动续订进程。 如果使用的是 AD FS 2.0 或更高版本，Office 365 和 Azure AD 会在证书过期之前自动对其进行更新。
 
-### <a name="renewal-notification-from-the-office-365-portal-or-an-email"></a>从 Office 365 门户或电子邮件续订通知
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>从 Microsoft 365 管理中心内或电子邮件的续订通知
 > [!NOTE]
 > 若收到电子邮件或门户通知，要求续订 Office 证书，请参阅[管理对令牌签名证书的更改](#managecerts)，检查是否需要采取任何操作。 Microsoft 已知可能有问题会导致发送证书续订通知，即使并不需要用户采取任何操作。
 >
@@ -44,8 +44,8 @@ ms.locfileid: "56200354"
 
 Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新令牌签名证书。 在令牌签名证书过期前 30 天，Azure AD 会通过轮询联合元数据，检查是否已有新的证书。
 
-* 如果它能成功轮询联合元数据并检索到新证书，则不会向用户发送电子邮件通知，或者在 Office 365 门户中显示警告。
-* 如果由于无法访问联合元数据或者未启用自动证书滚动更新而无法检索新的令牌签名证书，Azure AD 将发出电子邮件通知，并在 Office 365 门户中显示警告。
+* 如果成功，它可以轮询联合元数据和检索新证书，向用户颁发任何电子邮件通知或 Microsoft 365 管理中心内的警告。
+* 如果它不能检索新令牌签名证书，或者因为联合身份验证元数据不可访问或未启用自动证书滚动更新，Azure AD 颁发的电子邮件通知和 Microsoft 365 管理中心中的警告。
 
 ![Office 365 门户通知](./media/how-to-connect-fed-o365-certs/notification.png)
 
@@ -108,17 +108,17 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 如果同时满足以下两个条件，则不需要执行任何手动步骤：
 
 * 已部署 Web 应用程序代理，能够从 Extranet 访问联合元数据。
-* 使用的是 AD FS 默认配置（已启用 AutoCertificateRollover）。
+* 所使用的是 AD FS 默认配置（已启用 AutoCertificateRollover）。
 
 检查以下事项以确认能够自动更新证书。
 
 **1.AD FS 属性 AutoCertificateRollover 必须设置为 True。** 这表示 AD FS 会在旧证书到期之前，自动生成新的令牌签名证书和令牌解密证书。
 
-**2.可公开访问 AD FS 联盟元数据。** 从公共 Internet（企业网络之外）上的计算机导航到以下 URL，查看联合身份验证元数据是否可以公开访问：
+**2.可公开访问 AD FS 联盟元数据。** 从公共 Internet（企业网络之外）上的计算机导航到以下 URL，查看你的联合元数据是否可以公开访问：
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-其中，`(your_FS_name) ` 将替换成组织使用的联合身份验证服务主机名，例如 fs.contoso.com。  如果能够成功验证这两项设置，则无需执行任何其他操作。  
+其中，`(your_FS_name) `将替换成组织使用的联合身份验证服务主机名，例如 fs.contoso.com。  如果能够成功验证这两项设置，则无需执行任何其他操作。  
 
 示例： https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## 手动续订令牌签名证书 <a name="manualrenew"></a>
@@ -132,7 +132,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>步骤 1：确保 AD FS 具有新的令牌签名证书
 **非默认配置**
 
-若使用 AD FS 的非默认配置（其中 **AutoCertificateRollover** 设置为 **False**），则很可能使用的是自定义证书（非自签名）。 有关如何续订 AD FS 令牌签名证书的详细信息，请阅读 [Guidance for customers not using AD FS self-signed certificates](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)（针对未使用 AD FS 自签名证书的客户的指南）。
+若使用 AD FS 的非默认配置（即 **AutoCertificateRollover** 设置为 **False**），则很有可能你使用的是自定义证书（非自签名）。 有关如何续订 AD FS 令牌签名证书的详细信息，请阅读 [Guidance for customers not using AD FS self-signed certificates](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)（针对未使用 AD FS 自签名证书的客户的指南）。
 
 **无法公开获取联合元数据**
 

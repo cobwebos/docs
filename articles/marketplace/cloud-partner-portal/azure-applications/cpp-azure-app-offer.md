@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 82d072cc6f86ae758bd0fdd4d02b68b1ac1de53a
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 9faa38a23b2039902366e5b885ab73c68a2a3d80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097144"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076014"
 ---
 # <a name="azure-application-offer"></a>Azure 应用程序产品/服务
 
@@ -44,6 +44,9 @@ ms.locfileid: "56097144"
 
 除了 Azure 市场之外，还可在服务目录中提供托管应用程序。 服务目录是为组织中的用户提供的已批准解决方案内部目录。 可使用该目录来确保满足组织标准，同时为组织中的团体提供解决方案。 员工可以使用目录轻松找到 IT 部门推荐和批准的应用程序。
 
+>[!Note]
+>云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
+
 有关托管应用程序的优点和类型的详细信息，请参阅 [Azure 托管应用程序概述](https://docs.microsoft.com/azure/managed-applications/overview)。
 
 
@@ -55,16 +58,15 @@ ms.locfileid: "56097144"
 
 概括而言，发布 Azure 应用程序产品/服务的步骤包括：
 
-0. 满足[先决条件](./cpp-prerequisites.md)（未显示）- 验证是否已满足将 Azure 应用发布到 Azure 市场的业务和技术要求。 
+1. 满足[先决条件](./cpp-prerequisites.md)（未显示）- 验证是否已满足将 Azure 应用发布到 Azure 市场的业务和技术要求。 
 
 1. [创建产品/服务](./cpp-create-offer.md) - 提供有关产品/服务的详细信息。 此信息包括：产品/服务说明、营销材料、支持信息和资产规范。
 
-2. [创建或收集现有的业务和技术资产](./cpp-create-technical-assets.md) - 为关联的解决方案创建业务资产（法律文档和营销材料）及技术资产。
+1. [创建或收集现有的业务和技术资产](./cpp-create-technical-assets.md) - 为关联的解决方案创建业务资产（法律文档和营销材料）及技术资产。
 
-3. [创建 SKU](./cpp-skus-tab.md) - 创建与产品/服务关联的 SKU。 必须为要发布的每个映像指定唯一的 SKU。
+1. [创建 SKU](./cpp-skus-tab.md) - 创建与产品/服务关联的 SKU。 必须为要发布的每个映像指定唯一的 SKU。
 
-4. 认证并[发布产品/服务](./cpp-publish-offer.md) - 填写产品/服务和技术资产后，可以提交该产品/服务。 提交后会启动发布过程。 在此过程中，将会测试、验证并认证该解决方案，然后在 Azure 市场中将其“推出”。
-
+1. 认证并[发布产品/服务](./cpp-publish-offer.md) - 填写产品/服务和技术资产后，可以提交该产品/服务。 提交后会启动发布过程。 在此过程中，将会测试、验证并认证该解决方案，然后在 Azure 市场中将其“推出”。
 
 ## <a name="next-steps"></a>后续步骤
 

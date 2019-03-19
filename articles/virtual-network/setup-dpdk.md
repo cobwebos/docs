@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 34647c218bd5fd2eec775599a4d2f10373dbd2fd
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
-ms.translationtype: HT
+ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268270"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993872"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虚拟机中设置 DPDK
 
@@ -33,7 +33,7 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 
 ## <a name="benefit"></a>优势
 
-**提高每秒包数 (PPS)**：绕过内核并控制用户空间中的包可消除上下文切换，从而减少周期计数。 同时，这还会提高 Azure Linux 虚拟机中每秒处理的包比率。
+**较高每秒数据包数 (PPS)**:跳过内核和控制用户空间中的数据包的上下文切换，从而减少周期计数。 同时，这还会提高 Azure Linux 虚拟机中每秒处理的包比率。
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
@@ -56,7 +56,7 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 
 所有 Azure 区域都支持 DPDK。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 必须在 Linux 虚拟机上启用加速网络。 虚拟机应至少有两个网络接口，其中一个接口用于管理。 了解如何[创建启用加速网络的 Linux 虚拟机](create-vm-accelerated-networking-cli.md)。
 
@@ -126,14 +126,14 @@ zypper \
      /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   *  使用 `mkdir /mnt/huge` 创建用于装载的目录。
-   *  使用 `mount -t hugetlbfs nodev /mnt/huge` 装载巨页。
-   *  运行 `grep Huge /proc/meminfo` 检查巨页是否已保留。
+   * 使用 `mkdir /mnt/huge` 创建用于装载的目录。
+   * 使用 `mount -t hugetlbfs nodev /mnt/huge` 装载巨页。
+   * 运行 `grep Huge /proc/meminfo` 检查巨页是否已保留。
 
      > [!NOTE]
-     > 可以将 grub 文件修改为，在启动时保留巨页，具体是按照适用于 DPDK 的[说明](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)操作。 页面底部提供了这些说明。 如果使用的是 Azure Linux 虚拟机，请改为将 /etc/config/grub.d 下的文件修改为跨重启保留巨页。
+     > 可以将 grub 文件修改为，在启动时保留巨页，具体是按照适用于 DPDK 的[说明](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)操作。 页面底部提供了这些说明。 如果使用的是 Azure Linux 虚拟机，请改为将 /etc/config/grub.d 下的文件修改为跨重启保留巨页。
 
-2. MAC 和 IP 地址：使用 `ifconfig –a` 查看网络接口的 MAC 和 IP 地址。 *VF* 网络接口和 *NETVSC* 网络接口具有相同的 MAC 地址，但只有 *NETVSC* 网络接口具有 IP 地址。 VF 接口以 NETVSC 接口的从属接口形式运行。
+2. MAC 和 IP 地址：使用`ifconfig –a`若要查看网络接口的 MAC 和 IP 地址。 *VF* 网络接口和 *NETVSC* 网络接口具有相同的 MAC 地址，但只有 *NETVSC* 网络接口具有 IP 地址。 VF 接口以 NETVSC 接口的从属接口形式运行。
 
 3. PCI 地址
 
@@ -146,13 +146,13 @@ zypper \
 
 DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果应用程序直接通过 VF PMD 运行，它不会收到发往 VM 的所有包，因为一些包通过综合接口显示。 
 
-通过防故障 PMD 运行 DPDK 应用程序，可保证应用程序收到发往 VM 的所有包。 此外，还能确保应用程序继续以 DPDK 模式运行，即使在为主机提供服务时撤销了 VF，也不例外。 若要详细了解防故障 PMD，请参阅[防故障轮询模式驱动程序库](http://doc.dpdk.org/guides/nics/fail_safe.html)。
+通过防故障 PMD 运行 DPDK 应用程序，可保证应用程序收到发往 VM 的所有包。 此外，还能确保应用程序继续以 DPDK 模式运行，即使在为主机提供服务时撤销了 VF，也不例外。 若要详细了解防故障 PMD，请参阅[防故障轮询模式驱动程序库](https://doc.dpdk.org/guides/nics/fail_safe.html)。
 
 ## <a name="run-testpmd"></a>运行 testpmd
 
 若要在根模式下运行 testpmd，请在 testpmd 命令前面使用 `sudo`。
 
-### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>基本：健全性检查、防故障适配器初始化
+### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>基本：健全性检查，防故障适配器初始化
 
 1. 运行以下命令启动单端口 testpmd 应用程序：
 
@@ -180,7 +180,7 @@ DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果�
 
 上面的命令在交互模式下启动 testpmd，这是建议用于试用 testpmd 命令的模式。
 
-### <a name="basic-single-sendersingle-receiver"></a>基本：单个发送端/单个接收端
+### <a name="basic-single-sendersingle-receiver"></a>基本：单个发件人/单一接收方
 
 以下命令定期列显每秒数据包数的统计信息：
 
@@ -216,7 +216,7 @@ DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果�
 
 若要在虚拟机上运行上面的命令，请先将 `app/test-pmd/txonly.c` 中的 IP_SRC_ADDR 和 IP_DST_ADDR 更改为与虚拟机的实际 IP 地址一致，再进行编译。 否则，数据包在抵达接收端之前将被丢弃。
 
-### <a name="advanced-single-sendersingle-forwarder"></a>高级：单个发送端/单个转发端
+### <a name="advanced-single-sendersingle-forwarder"></a>高级：单个发件人/单转发器
 以下命令定期列显每秒数据包数的统计信息：
 
 1. 在 TX 端运行以下命令：

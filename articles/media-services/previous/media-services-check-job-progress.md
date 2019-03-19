@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 3175bc2210bda47bb647cfc5341ea237b8253f6e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 73c9fa82cefc192b237e3880c1e745b2412a323a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990183"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990675"
 ---
 # <a name="monitor-job-progress-using-net"></a>使用 .NET 监视作业进度 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "55990183"
 运行作业时，通常需要采用某种方式来跟踪作业进度。 可以通过定义 StateChanged 事件处理程序（如本主题中所述）或使用 Azure 队列存储监视媒体服务作业通知（如[此](media-services-dotnet-check-job-progress-with-queues.md)主题中所述）来检查进度。
 
 ## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>定义 StateChanged 事件处理程序以监视作业进度
-以下代码示例定义了 StateChanged 事件处理程序。 此事件处理程序将跟踪作业进度，并根据现状提供更新的状态。 该代码还定义了 LogJobStop 方法。 此帮助器方法将记录错误详细信息。
+以下代码示例定义了 StateChanged 事件处理程序。 此事件处理程序跟踪作业进度，并根据现状提供更新的状态。 该代码还定义了 LogJobStop 方法。 此帮助器方法将记录错误详细信息。
 
 ```csharp
     private static void StateChanged(object sender, JobStateChangedEventArgs e)

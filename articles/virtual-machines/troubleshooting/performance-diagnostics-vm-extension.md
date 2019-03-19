@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 415cf34a8b19400091807005e1e9943aa025f244
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980017"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002732"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
 
@@ -28,7 +28,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 > [!NOTE]
 > 如果要从 Azure 门户为非经典 VM 运行 VM 上的诊断，建议使用新体验。 有关详细信息，请参阅 [Azure 虚拟机的性能诊断](performance-diagnostics.md) 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 此扩展可以安装在 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 上。 它还可以安装在 Windows 8.1 和 Windows 10 上。
 
@@ -89,7 +89,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 
 请按照这些说明在 Windows 虚拟机上安装扩展：
 
-1. 登录到 [Azure 门户](http://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择你想要安装此扩展的虚拟机。
 
     ![Azure 门户的屏幕截图，其中突出显示了虚拟机](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -112,7 +112,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 ## <a name="remove-the-extension"></a>删除扩展
 若要从虚拟机中删除该扩展，请按照下列步骤操作：
 
-1. 登录到 [Azure 门户](http://portal.azure.com)，选择要在其中删除此扩展的虚拟机，然后选择“扩展”边栏选项卡。 
+1. 登录到 [Azure 门户](https://portal.azure.com)，选择要在其中删除此扩展的虚拟机，然后选择“扩展”边栏选项卡。 
 2. 选择 (...)，从列表中找到“性能诊断扩展”条目，然后选择“卸载”。
 
     ![“扩展”边栏选项卡的屏幕截图，其中突出显示了“卸载”](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
@@ -125,7 +125,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 
 ```
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {

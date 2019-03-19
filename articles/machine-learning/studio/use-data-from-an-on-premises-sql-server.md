@@ -5,23 +5,23 @@ description: 在 Azure 机器学习工作室中使用本地 SQL Server 数据库
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 61feb1365a5007a55d18f0f4366bd5c69148e88d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511150"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888342"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>在 Azure 机器学习工作室中使用本地 SQL Server 数据库执行分析
 
-通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 Azure 机器学习现在支持从本地 SQL Server 数据库读取数据，并使用该数据训练和评分模型。 再也不必在云和本地服务器之间手动复制并同步数据。 相反，Azure 机器学习工作室中的**导入数据**模块现在可以为训练和评分作业直接从本地 SQL Server 数据库中读取。
+通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 Azure 机器学习工作室现在支持从本地 SQL Server 数据库读取数据，然后训练和评分与此数据模型。 再也不必在云和本地服务器之间手动复制并同步数据。 相反，Azure 机器学习工作室中的**导入数据**模块现在可以为训练和评分作业直接从本地 SQL Server 数据库中读取。
 
-本文概述了如何将本地 SQL Server 数据引入到 Azure 机器学习工作室中。 假定用户熟悉工作区、模块、数据集、实验*等* Azure 机器学习概念。
+本文概述了如何将本地 SQL Server 数据引入到 Azure 机器学习工作室中。 它假定您熟悉 Studio 概念，如工作区、 模块、 数据集、 试验*等*。
 
 > [!NOTE]
 > 此功能不适用于免费工作区。 有关机器学习定价和层级的详细信息，请参阅 [Azure 机器学习定价](https://azure.microsoft.com/pricing/details/machine-learning/)。
@@ -33,7 +33,7 @@ ms.locfileid: "55511150"
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>安装数据工厂自承载集成运行时
-若要在 Azure 机器学习中访问本地 SQL Server 数据库，需要下载并安装数据工厂自承载集成运行时（之前称为数据管理网关）。 在机器学习工作室中配置连接时，将有机会使用如下所述的“下载并注册数据网关”对话框下载并安装集成运行时 (IR)。
+若要访问 Azure 机器学习工作室中的本地 SQL Server 数据库，您需要下载并安装数据工厂自承载集成运行时，以前称为数据管理网关。 在机器学习工作室中配置连接时，将有机会使用如下所述的“下载并注册数据网关”对话框下载并安装集成运行时 (IR)。
 
 
 还可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 安装包来提前安装 IR。MSI 也可用于将现有 IR 升级至最新版本，并会保留所有设置。
@@ -51,21 +51,21 @@ ms.locfileid: "55511150"
 * 一台计算机上只能安装一个 IR 实例。
 * 可以将单个 IR 用于多个本地数据源。
 * 可以将不同计算机上的多个 IR 连接到同一个本地数据源。
-* 一次只能为一个工作区配置 IR。 目前不能跨工作区共享 IR。
-* 可以为单个工作区配置多个 IR。 例如，在开发期间可能希望使用与测试数据源连接的 IR，而在准备实施时则希望使用生产 IR。
+* 一次配置只能有一个工作区 IRs。 目前不能跨工作区共享 IR。
+* 可以为单个工作区配置多个 IR。 例如，你可能想要使用连接到测试数据源在开发和生产红外线 （ir） 期间如果你已准备好实施红外线 （ir）。
 * IR 不需要位于数据源所在的计算机上。 但是，如果离数据源较近，可以减少网关连接到数据源的时间。 建议不要在托管本地数据源的计算机上安装 IR，从而避免 IR 和数据源之间的资源争用。
-* 如果已在计算机中安装了服务于 Power BI 或 Azure 数据工厂方案的 IR，请在其他计算机上安装用于 Azure 机器学习的独立 IR。
+* 如果已为 Power BI 或 Azure 数据工厂方案提供服务在计算机上安装的 IR，请安装 Azure 机器学习工作室单独红外线 （ir） 在另一台计算机上。
 
   > [!NOTE]
   > 数据工厂自承载集成运行时和 Power BI Gateway 不能在同一台计算机上运行。
   >
   >
-* 即使对其他数据使用 Azure ExpressRoute，也需要将数据工厂自承载集成运行时用于 Azure 机器学习。 即使使用 ExpressRoute，也应将数据源视为本地数据源（位于防火墙之后）。 使用数据工厂自承载集成运行时建立机器学习和数据源之间的连接性。
+* 您需要为 Azure 机器学习工作室中使用数据工厂自承载集成运行时，即使针对其他数据使用 Azure ExpressRoute。 即使使用 ExpressRoute，也应将数据源视为本地数据源（位于防火墙之后）。 使用数据工厂自承载集成运行时建立机器学习和数据源之间的连接性。
 
 若要详细了解安装先决条件、安装步骤和故障排除提示，请参阅[数据工厂中的集成运行时](../../data-factory/concepts-integration-runtime.md)一文。
 
 ## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-idtoc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>将本地 SQL Server 数据库中的数据导入 Azure 机器学习
-在本演练中，会在 Azure 机器学习工作区中安装 Azure 数据工厂集成运行时、配置该集成运行时并从本地 SQL Server 数据库中读取数据。
+在本演练中，将在 Azure 机器学习工作区中设置 Azure 数据工厂集成运行时、 其进行配置，然后从本地 SQL Server 数据库读取数据。
 
 > [!TIP]
 > 开始之前，请在浏览器中禁用 `studio.azureml.net` 的弹出窗口阻止程序。 如果使用的是 Google Chrome 浏览器，请下载并安装 Google Chrome WebStore [ClickOnce 应用扩展](https://chrome.google.com/webstore/search/clickonce?_category=extensions)中提供的几个插件中的一个。
@@ -115,17 +115,17 @@ ms.locfileid: "55511150"
 
     ![启用详细日志记录](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
-这完成了 Azure 机器学习中的网关设置过程。
+这将完成 Azure 机器学习工作室中的网关安装过程。
 现在，已可以使用本地数据。
 
-可以在工作室中为每个工作区创建并设置多个网关。 例如，可能希望开发期间某个网关与测试数据源连接，而其他网关用于生产数据源。 Azure 机器学习使你可以灵活地设置多个网关，具体取决于企业环境。 目前，不能在工作区之间共享网关，一台计算机上只能安装一个网关。 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)。
+可以在工作室中为每个工作区创建并设置多个网关。 例如，可能希望开发期间某个网关与测试数据源连接，而其他网关用于生产数据源。 Azure 机器学习工作室可以灵活地设置取决于您的企业环境的多个网关。 目前，不能在工作区之间共享网关，一台计算机上只能安装一个网关。 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>步骤 2：使用网关从本地数据源读取数据
 在完成设置网关后，可以将“导入数据”模块添加到从本地 SQL Server 数据库输入数据的实验。
 
 1. 在机器学习工作室中，选择“实验”选项卡、单击左下角的“+新建”，并选择“空白实验”（或选择提供的多个实验示例中的一个）。
 2. 找到“导入数据”模块并将其拖动到试验画布上。
-3. 单击画布下方的“另存为”。 输入“Azure 机器学习本地 SQL Server 教程”作为实验名称、选择工作区，并单击“确定”核选标记。
+3. 单击画布下方的“另存为”。 输入"Azure 机器学习 Studio 在本地 SQL Server 教程"作为实验名称，选择工作区，并单击**确定**复选标记。
 
    ![使用新名称保存实验](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
 4. 单击要选取的“导入数据”模块，并在画布右侧的“属性”窗格中，选择“数据源”下拉列表中的“本地 SQL 数据库”。
@@ -137,7 +137,7 @@ ms.locfileid: "55511150"
 
    ![输入数据库凭据](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
-   消息“必填值”将更改为带有绿色复选标记的“值已设置”。 只需输入凭据一次，除非数据库信息或密码发生更改。 Azure 机器学习使用在安装网关时提供的证书，来加密云中的凭据。 Azure 从不存储未加密的本地凭据。
+   消息“必填值”将更改为带有绿色复选标记的“值已设置”。 只需输入凭据一次，除非数据库信息或密码发生更改。 Azure 机器学习工作室使用安装网关来加密在云中的凭据时所提供的证书。 Azure 从不存储未加密的本地凭据。
 
    ![导入数据模块属性](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. 若要运行实验，请单击“运行”。

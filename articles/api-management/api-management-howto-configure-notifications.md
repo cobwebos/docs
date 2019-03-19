@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 16beaadae36dfc7445a88875d36786bd97889599
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.openlocfilehash: 2a959c9d131c6aa0bdc99450cf2b6f09a5d8bfa7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445067"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102343"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>如何在 Azure API 管理中配置通知和电子邮件模板
 API 管理提供的功能为特定事件配置通知，以及配置用于和 API 管理实例的管理员及开发人员通信的电子邮件模板。 本文演示如何为可用事件配置通知，并提供配置用于这些事件的电子邮件模板的概述。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-如果没有 API 管理服务实例，请完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
+如果没有 API 管理服务实例，请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -38,15 +38,15 @@ API 管理提供的功能为特定事件配置通知，以及配置用于和 API
 
     为通知可以配置以下事件的列表。
 
-    * **订阅请求（需要批准）** - 指定的电子邮件收件人和用户将收到关于需要批准的 API 产品的订阅请求的电子邮件通知。
-    * **新订阅** - 指定的电子邮件收件人和用户将收到关于新 API 产品订阅的电子邮件通知。
-    * **应用程序库请求** - 指定电子邮件收件人和用户会在新的应用程序提交到应用程序库时收到电子邮件通知。
-    * **BCC** - 指定电子邮件收件人和用户将收到发送给开发人员的所有电子邮件的电子邮件密件副本。
-    * **新的问题或评论** - 在开发人员门户上提交新问题或注释时，指定电子邮件收件人和用户将收到电子邮件通知。
-    * **关闭帐户消息** - 指定电子邮件收件人和用户会在关闭帐户时收到电子邮件通知。
-    * **接近订阅配额限制** - 以下电子邮件收件人和用户会在订阅使用量接近使用量配额时收到电子邮件通知。
+   * **订阅请求(需要批准)** - 指定的电子邮件收件人和用户将收到关于需要批准的 API 产品的订阅请求的电子邮件通知。
+   * **新订阅** - 指定的电子邮件收件人和用户将收到关于新 API 产品订阅的电子邮件通知。
+   * **应用程序库请求** - 指定的电子邮件收件人和用户会在新的应用程序提交到应用程序库时收到电子邮件通知。
+   * **BCC** - 指定的电子邮件收件人和用户将收到发送给开发人员的所有电子邮件的电子邮件密件副本。
+   * **新的问题或评论** - 在开发人员门户上提交新问题或评论时，指定的电子邮件收件人和用户将收到电子邮件通知。
+   * **关闭帐户消息** - 指定的电子邮件收件人和用户会在关闭帐户时收到电子邮件通知。
+   * **接近订阅配额限制** - 以下电子邮件收件人和用户会在订阅使用量接近使用量配额时收到电子邮件通知。
 
-    对于每个事件，可以指定电子邮件收件人使用电子邮件地址文本框，或从列表中选择用户。
+     对于每个事件，可以指定电子邮件收件人（使用电子邮件地址文本框，或从列表中选择用户）。
 
 3. 要指定被通知的电子邮件地址，请在电子邮件地址文本框中输入。 如果有多个电子邮件地址，使用逗号分隔它们。
 

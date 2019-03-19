@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213615"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078749"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -41,12 +41,12 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 
 基于 Microsoft Dynamics 365、Office 365 和 Power BI 的服务产品可以列在 AppSource 中。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)。 
 
->[!Note]
->Azure 市场中的咨询服务应利用为**技术人员提供的产品，着重于 Azure 技术解决方案和服务。 ** AppSource 中的咨询服务应利用面向其在为 Dynamics 365、Power BI 或 PowerApps 提供高质量解决方案方面的专业知识的产品，在 AppSource 上列出其咨询服务
-
-
->[!TIP]
->若要发布到 Azure 市场店面，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Azure”。 若要发布到 AppSource，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Dynamics 365”、“Power BI”或“Power Apps”。
+> [!Note]
+> Azure 市场中的咨询服务应利用为**技术人员提供的产品，着重于 Azure 技术解决方案和服务。 ** AppSource 中的咨询服务应利用面向其在为 Dynamics 365、Power BI 或 PowerApps 提供高质量解决方案方面的专业知识的产品，在 AppSource 上列出其咨询服务
+> 
+> 
+> [!TIP]
+> 若要发布到 Azure 市场店面，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Azure”。 若要发布到 AppSource，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Dynamics 365”、“Power BI”或“Power Apps”。
 
 ## <a name="eligible-partners-and-supported-countries"></a>符合条件的合作伙伴和受支持的国家/地区
 
@@ -156,7 +156,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 
 在审核“产品/服务说明”和“产品/服务摘要”时，审核团队会应用以下标准：
 
-|产品/服务类型  |必选 |建议  |
+|产品/服务类型  |需要 |建议  |
 |---------|---------|---------|
 |**评估**    |   包括一个详细的适用于多日或多周评估的议程，并说明客户预期可以获得的可交付结果      |    使用最常用的搜索引擎优化关键字来优化产品/服务摘要     |
 |**简报**    |   说明客户预期可以获得的可交付结果。 请记住，简报必须面对面提供。 如果提供的是虚拟服务，请选择另一产品/服务类型    |  使用最常用的搜索引擎优化关键字来优化产品/服务摘要       |

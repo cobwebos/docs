@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 2255f14d026d406dc41802c321d0a673ee2f2f23
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766854"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000917"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
@@ -28,8 +28,8 @@ Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 
 > * 实施建议，以将虚拟机的大小调整为更具成本效益的选项
 > * 验证操作，确保成功调整虚拟机的大小
 
-## <a name="prerequisites"></a>先决条件
-针对各种 Azure 帐户类型提供了建议，包括[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。
+## <a name="prerequisites"></a>必备组件
+建议是可用于多个作用域和 Azure 帐户类型，包括[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。 有关作用域的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
 
 - 订阅
 - 资源组
@@ -41,7 +41,9 @@ Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 
 
 ## <a name="view-cost-optimization-recommendations"></a>查看成本优化建议
 
-在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。 然后，在“成本管理”下面的列表中，选择“顾问建议”。 此时会显示顾问成本建议。
+若要查看订阅的成本优化建议，可在 Azure 门户并选择中打开所需的范围**顾问建议**。
+
+若要查看管理组的建议，可在 Azure 门户并选择中打开所需的范围**成本分析**菜单中。 使用**作用域**药丸切换到不同的作用域，例如管理组。 选择**顾问建议**菜单中。 有关作用域的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
 
 ![在 Azure 门户中显示的成本管理顾问建议](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 

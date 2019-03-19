@@ -16,12 +16,12 @@ ms.date: 09/20/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b683abbba2013fef47f648c11a52d7767d7cdf08
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 5a68a4caf3d32aa88a61a8e1639bdd08d67599d4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206321"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083294"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>预配到 Azure AD 库应用程序的用户组错误
 
@@ -33,25 +33,25 @@ ms.locfileid: "56206321"
 
 若要直接将一个或多个用户分配到应用程序，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  从列表中选择要向其分配用户的应用程序。
+6. 从列表中选择要向其分配用户的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。
+8. 若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。
 
-9.  在“添加分配”窗格中，单击“用户和组”选择器。
+9. 在“添加分配”窗格中，单击“用户和组”选择器。
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
 
@@ -71,25 +71,25 @@ ms.locfileid: "56206321"
 
 若要直接将一个或多个组分配到应用程序，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  从列表中选择要向其分配用户的应用程序。
+6. 从列表中选择要向其分配用户的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。
+8. 若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。
 
-9.  在“添加分配”窗格中，单击“用户和组”选择器。
+9. 在“添加分配”窗格中，单击“用户和组”选择器。
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的组的**完整组名**。
 

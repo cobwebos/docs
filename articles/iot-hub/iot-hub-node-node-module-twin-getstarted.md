@@ -1,20 +1,20 @@
 ---
 title: Azure IoT 中心模块标识和模块孪生 (Node.js) 入门 | Microsoft Docs
 description: 了解如何使用用于 Node.js 的 IoT SDK 创建模块标识和更新模块孪生。
-author: chrissie926
-manager: ''
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.author: menchi
-ms.openlocfilehash: ae798ecf2ba5f53cdfdef45b74677615d2e0a06d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 80132a2d15333308766b62e89262133b1f05b394
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446997"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888717"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>使用 Node.js 后端和 Node.js 设备创建 IoT 中心模块标识和模块孪生入门
 
@@ -43,7 +43,7 @@ ms.locfileid: "54446997"
 
 1. 创建目录以保存代码。
 2. 在该目录中，首先运行“npm init -y” ，使用默认值创建一个空的 package.json ****。 这是代码的项目文件。
-3. 运行“npm install -S azure-iothub@modules-preview”，在“node_modules” 子目录中安装服务 SDK **** ****。
+3. 运行 **npm 安装-S 的 azure iot 中心\@模块预览**若要安装的服务 SDK 内 **node_modules** 子目录。
 
     > [!NOTE]
     > 子目录名称 node_modules 使用字“模块”来表示“节点库”。 此处的术语与 IoT 中心模块无关。
@@ -107,7 +107,7 @@ ms.locfileid: "54446997"
 
 此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
 
-5. 使用节点 add.js 运行它。 它将为设备标识提供一个连接字符串，并为模块标识提供另一个连接字符串。
+1. 使用节点 add.js 运行它。 它将为设备标识提供一个连接字符串，并为模块标识提供另一个连接字符串。
 
     > [!NOTE]
     > IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]。
@@ -120,7 +120,7 @@ ms.locfileid: "54446997"
 
     ![Azure 门户模块详细信息][15]
 
-2. 与上面步骤中的操作类似，为设备代码创建一个目录，使用 NPM 对它进行初始化并安装设备 SDK (npm install -S azure-iot-device-amqp@modules-preview)。
+2. 类似于你未在前面步骤中，为设备代码创建一个目录并使用 NPM 来对其进行初始化和安装的设备 SDK (**npm 安装-S azure iot-设备的 amqp\@模块预览**)。
 
     > [!NOTE]
     > npm install 命令可能有点慢。 请耐心等待，它正在从包存储库中提取大量代码。
@@ -203,7 +203,7 @@ ms.locfileid: "54446997"
 [15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md

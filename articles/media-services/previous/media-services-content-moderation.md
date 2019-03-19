@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: aba7d2ff73fc1fdca6f57742582b38662177012d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995112"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899557"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 
 
@@ -44,7 +44,7 @@ ms.locfileid: "55995112"
 
 ### <a name="root-json-elements"></a>根 JSON 元素
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | --- | --- |
 | 版本 |内容审查器的版本。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
@@ -57,7 +57,7 @@ ms.locfileid: "55995112"
 
 ### <a name="fragments-json-elements"></a>片段 JSON 元素
 
-|元素|说明|
+|元素|描述|
 |---|---|
 | start |第一个事件的开始时间（以“刻度”为单位）。 |
 | duration |片段的长度（以“刻度”为单位）。 |
@@ -66,7 +66,7 @@ ms.locfileid: "55995112"
 
 ### <a name="events-json-elements"></a>事件 JSON 元素
 
-|元素|说明|
+|元素|描述|
 |---|---|
 | reviewRecommended | `true` 或 `false`，具体取决于 **adultScore** 或 **racyScore** 是否超出了内部阈值。 |
 | adultScore | 可能的成人内容的可信度分数，范围为 0.00 到 0.99。 |
@@ -226,7 +226,7 @@ The following example of a Content Moderator JSON output was truncated.
 ## <a name="related-links"></a>相关链接
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
-[Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 ## <a name="next-steps"></a>后续步骤
 

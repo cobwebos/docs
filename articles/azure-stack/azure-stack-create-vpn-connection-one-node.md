@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1d66ca49db097eebd4c8fb5663f63e0db7460ad6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e038afe27718dcbd407e83b5c9190606e6b917c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782864"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004651"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>在不同 Azure Stack 开发工具包环境中的两个虚拟网络之间创建站点到站点 VPN 连接
 ## <a name="overview"></a>概述
@@ -52,6 +52,7 @@ ms.locfileid: "57782864"
 下表汇总了这两个 Azure Stack 开发工具包环境的网络配置。 使用此表格后面提供的过程来添加网络特定的外部 BGPNAT 地址。
 
 **网络配置表**
+
 |   |POC1|POC2|
 |---------|---------|---------|
 |虚拟网络名称     |VNET-01|VNET-02 |

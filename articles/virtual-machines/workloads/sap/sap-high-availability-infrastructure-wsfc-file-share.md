@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf0f06528b3571ce8307a2fed2fb9c43f608d15d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 064daa7ed8fb5be34524d9ea27cfa6c22b9c3e66
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656707"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008367"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
 
@@ -46,7 +46,7 @@ ms.locfileid: "34656707"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -213,7 +213,7 @@ ms.locfileid: "34656707"
 
 在开始安装之前，请查看以下文章：
 
-* [体系结构指南：使用文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-file-share]
+* [体系结构指南：通过使用文件共享在 Windows 故障转移群集的群集 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>主机名和 IP 地址
@@ -226,13 +226,13 @@ ms.locfileid: "34656707"
 | SAP PR1 ASCS 群集网络名称 |pr1-ascs | 10.0.6.7 | 不适用 |
 
 
-**表 1**：ASCS/SCS 群集
+**表 1**:ASCS/SCS 群集
 
 | SAP \<SID> | SAP ASCS/SCS 实例编号 |
 | --- | --- |
 | PR1 | 00 |
 
-**表 2**：SAP ASCS/SCS 实例详细信息
+**表 2**:SAP ASCS/SCS 实例详细信息
 
 
 | 虚拟主机名角色 | 虚拟主机名 | 静态 IP 地址 | 可用性集 |
@@ -243,7 +243,7 @@ ms.locfileid: "34656707"
 | 群集网络名称 | sofs-cl | 10.0.6.13 | 不适用 |
 | SAP 全局主机名 | sapglobal | 使用所有群集节点的 IP | 不适用 |
 
-**表 3**：横向扩展文件服务器群集
+**表 3**:横向扩展文件服务器群集
 
 
 ## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>为 SAP ASCS/SCS 群集、数据库管理系统 (DBMS) 群集和 SAP 应用程序服务器实例部署 VM
@@ -271,9 +271,9 @@ ms.locfileid: "34656707"
 * 使用 Windows Server 2016 时，我们建议配置 [Azure 云见证][deploy-cloud-witness]。
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>手动部署横向扩展文件服务器群集 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>手动部署横向扩展文件服务器群集 
 
-可以按博客 [Azure 中的存储空间直通][ms-blog-s2d-in-azure]中所述，通过执行以下代码手动部署 Microsoft 横向扩展文件服务器群集：  
+可以按博客 [Azure 中的存储空间直通][ms-blog-s2d-in-azure]中所述，通过执行以下代码手动部署 Microsoft 横向扩展文件服务器群集：  
 
 
 ```PowerShell
@@ -322,9 +322,9 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 我们建议使用托管磁盘。
 
-![图 1：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8010]
+![图 1：使用托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8010]
 
-_**图 1**：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕_
+_**图 1**:使用托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕_
 
 在模板中，执行以下操作：
 1. 在“Vm 计数”框中，输入最小计数 **2**。
@@ -338,7 +338,7 @@ _**图 1**：带托管磁盘的横向扩展文件服务器资源管理器模板�
 
 ![图 2：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8011]
 
-_**图 2**：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
+_**图 2**:不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
 
 在“存储帐户类型”框中，选择“高级存储”。 其他所有设置与托管磁盘的设置相同。
 

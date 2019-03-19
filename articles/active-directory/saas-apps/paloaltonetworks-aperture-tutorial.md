@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61603ad5920b6242c3e36429173744125b9eb59e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 41c514706a671f755eb5b0efd5e3eefa5052c6e2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206731"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450016"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>教程：Azure Active Directory 与 Palo Alto Networks - Aperture 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56206731"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Palo Alto Networks - Aperture 的集成，需具有以下项目：
 
@@ -149,7 +149,7 @@ ms.locfileid: "56206731"
     
     ![身份验证选项卡](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
 
-    a. 在“单一登录”字段中选中“启用单一登录(支持的 SSP 提供者为 Okta, Onelogin)”。
+    a. 检查**启用单一登录-On(Supported SSP Providers are Okta, One login)** 从**单一登录**字段。
 
     b. 在“标识提供者 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 

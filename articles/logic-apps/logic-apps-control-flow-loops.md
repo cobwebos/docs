@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 7237a9a6a99b57401af40512a6d2e21a3fe49e53
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: b2e8d629f4007729ad0538aee9bdb8e67747b026
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159479"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015124"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
@@ -26,7 +26,7 @@ ms.locfileid: "54159479"
 > [!TIP]
 > 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用 [**SplitOn** 触发器属性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)“分离”该数组。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 
 
@@ -166,7 +166,8 @@ ms.locfileid: "54159479"
 > 这些步骤使用 Office 365 Outlook，但也可以使用逻辑应用支持的任何电子邮件提供商。 
 > [检查此处的连接器列表](https://docs.microsoft.com/connectors/)。 如果使用其他电子邮件帐户，则常规步骤保持不变，但 UI 外观可能稍有不同。 
 
-1. 创建空白逻辑应用。 在逻辑应用设计器的搜索框下，选择“全部”。 搜索“定期”。 从触发器列表中选择此触发器：“定期 - 计划”
+1. 创建空白逻辑应用。 在逻辑应用设计器的搜索框下，选择“全部”。 搜索“定期”。 
+   从触发器列表中选择此触发器：“定期 - 计划”
 
    ![添加“定期 - 计划”触发器](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
@@ -181,7 +182,8 @@ ms.locfileid: "54159479"
    | **在这些小时** | 8 |
    ||| 
 
-1. 在触发器下，选择“新建步骤”。 搜索“变量”，然后选择以下操作：“初始化变量 - 变量”
+1. 在触发器下，选择“新建步骤”。 
+   搜索“变量”，然后选择以下操作：“初始化变量 - 变量”
 
    ![添加“初始化变量 - 变量”操作](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
@@ -202,7 +204,8 @@ ms.locfileid: "54159479"
 
    ![添加“Until”循环](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
-1. 通过选择 **Limit** 变量和**等于**运算符构建循环的退出条件。 输入 **10** 作为比较值。
+1. 通过选择 **Limit** 变量和**等于**运算符构建循环的退出条件。 
+   输入 **10** 作为比较值。
 
    ![构建用于停止循环的退出条件](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
@@ -214,32 +217,33 @@ ms.locfileid: "54159479"
 
 1. 对于“名称”，选择 **Limit** 变量。 对于“值”，输入“1”。 
 
-   ![按增幅 1 递增“Limit”](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+    ![按增幅 1 递增“Limit”](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
 1. 在循环外部和循环下，选择“新建步骤”。 
 
-1. 在搜索框下，选择“所有”。 查找并添加发送电子邮件的操作，例如： 
+1. 在搜索框下，选择“所有”。 
+    查找并添加发送电子邮件的操作，例如： 
 
-   ![添加用于发送电子邮件的操作](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+    ![添加用于发送电子邮件的操作](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
 1. 根据提示登录到电子邮件帐户。
 
 1. 设置电子邮件操作的属性。 将 **Limit** 变量添加到主题。 这样，你可以确认变量的当前值满足你指定的条件，例如：
 
-    ![设置电子邮件属性](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+     ![设置电子邮件属性](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-    | 属性 | 值 | 说明 |
-    | -------- | ----- | ----------- | 
-    | **收件人** | *<email-address@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
-    | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
-    | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
-    |||| 
+     | 属性 | 值 | 说明 |
+     | -------- | ----- | ----------- | 
+     | **收件人** | *<email-address\@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
+     | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
+     | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
+     |||| 
 
 1. 保存逻辑应用。 若要手动测试逻辑应用，请在设计器工具栏上选择“运行”。
 
-    在你的逻辑开始运行后，你将收到一封包含指定内容的电子邮件：
+     在你的逻辑开始运行后，你将收到一封包含指定内容的电子邮件：
 
-    ![收到的电子邮件](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+     ![收到的电子邮件](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
 ## <a name="prevent-endless-loops"></a>防止无限循环
 

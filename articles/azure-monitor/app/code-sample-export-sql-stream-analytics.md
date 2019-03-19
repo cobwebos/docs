@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 502ccf15fe3e2f803febb711d4ea8850abbaea85
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.openlocfilehash: 0166622539a439a99aef7e476519881518baa0b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116579"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106332"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
@@ -181,8 +181,8 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 > 使用示例函数检查是否已正确设置输入路径。 如果检查失败：请检查在所选的示例时间范围内，存储中是否有数据。 编辑输入定义，检查是否已正确设置存储帐户、路径前缀和日期格式。
 > 
 > 
-## <a name="set-query"></a>设置查询
-打开查询部分：
+> ## <a name="set-query"></a>设置查询
+> 打开查询部分：
 
 将默认查询替换为以下内容：
 

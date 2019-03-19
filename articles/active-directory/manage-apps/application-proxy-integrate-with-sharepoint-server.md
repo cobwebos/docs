@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3f0d7907fa755483ef5a92b3376c18d54467cc7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7dc80b78bbba369e0ddb5c2c1e9fd90834dc0148
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191191"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120408"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
 
@@ -29,7 +29,7 @@ ms.locfileid: "56191191"
 
 若要通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问，请一步步完成本文各部分的操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设已在环境中安装 SharePoint 2013 或更高版本。 此外，请注意以下先决条件：
 
@@ -50,7 +50,7 @@ ms.locfileid: "56191191"
 首先，请确保 SharePoint Web 应用程序在域帐户下运行，而不是在本地系统、本地服务或网络服务下运行。 这样做是为了能够将服务主体名称 (SPN) 附加到此帐户。 Kerberos 协议使用 SPN 来识别不同的服务。 稍后需要使用该帐户来配置 KCD。
 
 > [!NOTE]
-需要为服务预先创建一个 Azure AD 帐户。 建议允许自动密码更改。 有关整套步骤和排查问题的详细信息，请参阅[在 SharePoint 中配置自动密码更改](https://technet.microsoft.com/library/ff724280.aspx)。
+> 需要为服务预先创建一个 Azure AD 帐户。 建议允许自动密码更改。 有关整套步骤和排查问题的详细信息，请参阅[在 SharePoint 中配置自动密码更改](https://technet.microsoft.com/library/ff724280.aspx)。
 
 若要确保站点在定义的服务帐户下运行，请执行以下步骤：
 
@@ -58,7 +58,7 @@ ms.locfileid: "56191191"
 2. 转到“安全”并选择“配置服务帐户”。
 3. 选择“Web 应用程序池 - SharePoint - 80”。 这些选项可能因 Web 池名称的不同或者 Web 池是否默认使用 SSL 而略有不同。
 
-  ![用于配置服务帐户的选项](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
+   ![用于配置服务帐户的选项](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
 
 4. 如果“为该组件选择帐户”字段设置为“本地服务”或“网络服务”，则需创建一个帐户。 否则，此步骤即告完成，可以转到下一部分。
 5. 选择“注册新的托管帐户”。 创建帐户后，必须先设置“Web 应用程序池”，才能使用该帐户。
@@ -108,7 +108,7 @@ setspn -S HTTP/SharePoint demo\spAppPoolAccount
 6. 在 SPN 列表中，选择此前为服务帐户创建的 SPN。
 7. 单击“确定”。 再次单击“确定”保存更改。
   
-  ![委派设置](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
+   ![委派设置](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
 
 ## <a name="step-2-configure-azure-ad-proxy"></a>步骤 2：配置 Azure AD 代理
 
@@ -142,18 +142,18 @@ setspn -S HTTP/SharePoint demo\spAppPoolAccount
 1. 启动 **SharePoint 命令行管理程序**。
 2. 运行以下脚本，以便将 Web 应用程序扩展到 Extranet 区域并启用 Kerberos 身份验证：
 
-  ```powershell
-  # Replace "http://spsites/" with the URL of your web application
-  # Replace "https://sharepoint-f128.msappproxy.net/" with the External URL in your Azure AD proxy application
-  $winAp = New-SPAuthenticationProvider -UseWindowsIntegratedAuthentication -DisableKerberos:$false
-  Get-SPWebApplication "http://spsites/" | New-SPWebApplicationExtension -Name "SharePoint - AAD Proxy" -SecureSocketsLayer -Zone "Extranet" -Url "https://sharepoint-f128.msappproxy.net/" -AuthenticationProvider $winAp
-  ```
+   ```powershell
+   # Replace "http://spsites/" with the URL of your web application
+   # Replace "https://sharepoint-f128.msappproxy.net/" with the External URL in your Azure AD proxy application
+   $winAp = New-SPAuthenticationProvider -UseWindowsIntegratedAuthentication -DisableKerberos:$false
+   Get-SPWebApplication "http://spsites/" | New-SPWebApplicationExtension -Name "SharePoint - AAD Proxy" -SecureSocketsLayer -Zone "Extranet" -Url "https://sharepoint-f128.msappproxy.net/" -AuthenticationProvider $winAp
+   ```
 
 3. 打开 **SharePoint 管理中心**站点。
 4. 在“系统设置”下，选择“配置备用访问映射”。 将打开“备用访问映射”框。
 5. 选择站点，例如 **SharePoint - 80**。 目前，Extranet 区域尚未正确设置内部 URL：
 
-  ![“备用访问映射”框](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
+   ![“备用访问映射”框](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
 
 6. 单击“添加内部 URL”。
 7. 在“URL 协议、主机和端口”文本框中，键入在 Azure AD 代理中配置的“内部 URL”，例如 <https://SharePoint/>。
@@ -161,7 +161,7 @@ setspn -S HTTP/SharePoint demo\spAppPoolAccount
 9. 单击“ **保存**”。
 10. 备用访问映射现在应如下所示：
 
-  ![正确的备用访问映射](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
+    ![正确的备用访问映射](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
 
 ## <a name="step-4-ensure-that-an-https-certificate-is-configured-for-the-iis-site-of-the-extranet-zone"></a>步骤 4：确保为 Extranet 区域的 IIS 站点配置 HTTPS 证书
 
@@ -170,13 +170,13 @@ SharePoint 配置现已完成，但由于 Extranet 区域的内部 URL 为 <http
 1. 打开 Windows PowerShell 控制台。
 2. 运行以下脚本，以便生成自签名的证书并将其添加到计算机的 MY 存储：
 
-  ```powershell
-  # Replace "SharePoint" with the actual hostname of the Internal URL of your Azure AD proxy application
-  New-SelfSignedCertificate -DnsName "SharePoint" -CertStoreLocation "cert:\LocalMachine\My"
-  ```
+   ```powershell
+   # Replace "SharePoint" with the actual hostname of the Internal URL of your Azure AD proxy application
+   New-SelfSignedCertificate -DnsName "SharePoint" -CertStoreLocation "cert:\LocalMachine\My"
+   ```
 
-  > [!NOTE]
-  自签名证书仅适用于测试目的。 在生产环境中，强烈建议改用由证书颁发机构颁发的证书。
+   > [!NOTE]
+   > 自签名证书仅适用于测试目的。 在生产环境中，强烈建议改用由证书颁发机构颁发的证书。
 
 3. 打开“Internet Information Services 管理器”控制台。
 4. 在树视图中展开服务器，展开“站点”，选择“SharePoint - AAD 代理”站点，然后单击“绑定”。

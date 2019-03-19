@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1133bdb3c5d708710a556f68e4ac5c57d2dc3dc9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: a6ec4c7d239754fe3211b528dd0ac64ee150ad3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153240"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089363"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C：收集日志
 
@@ -44,31 +44,31 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
 1. 打开 RP 文件（例如 SignUpOrSignin.xml）。
 1. 将以下属性添加到 `<TrustFrameworkPolicy>` 元素：
 
-  ```XML
-  DeploymentMode="Development"
-  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-  ```
+   ```XML
+   DeploymentMode="Development"
+   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
+   ```
 
 1. 如果该元素尚未存在，请将子节点 `<UserJourneyBehaviors>` 添加到 `<RelyingParty>` 节点。 它必须紧接在 `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` 的后面
 2. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。 确保将 `{Your Application Insights Key}` 替换为上一部分中从 Application Insights 获取的**检测密钥**。
 
-  ```XML
-  <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
-  ```
+   ```XML
+   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+   ```
 
-  * `DeveloperMode="true"` 告知 ApplicationInsights 通过处理管道加快遥测，这样有利于开发，但在量大时会受到约束。
-  * `ClientEnabled="true"` 发送用于跟踪页面视图和客户端错误的 ApplicationInsights 客户端脚本（不需要）。
-  * `ServerEnabled="true"` 将现有 UserJourneyRecorder JSON 作为自定义事件发送到 Application Insights。
-示例：
+   * `DeveloperMode="true"` 告知 ApplicationInsights 通过处理管道加快遥测，这样有利于开发，但在量大时会受到约束。
+   * `ClientEnabled="true"` 发送用于跟踪页面视图和客户端错误的 ApplicationInsights 客户端脚本（不需要）。
+   * `ServerEnabled="true"` 将现有 UserJourneyRecorder JSON 作为自定义事件发送到 Application Insights。
+   示例：
 
-  ```XML
-  <TrustFrameworkPolicy
+   ```XML
+   <TrustFrameworkPolicy
     ...
     TenantId="fabrikamb2c.onmicrosoft.com"
     PolicyId="SignUpOrSignInWithAAD"
     DeploymentMode="Development"
     UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-  >
+   >
     ...
     <RelyingParty>
       <DefaultUserJourney ReferenceId="UserJourney ID from your extensions policy, or equivalent (for example: SignUpOrSigninWithAzureAD)" />
@@ -76,8 +76,8 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
       ...
-  </TrustFrameworkPolicy>
-  ```
+   </TrustFrameworkPolicy>
+   ```
 
 3. 上传该策略。
 
@@ -91,7 +91,7 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
 1. 在 Application Insights 中打开新选项卡。
 1. 下面是可用于查看日志的查询列表
 
-| Query | 说明 |
+| Query | 描述 |
 |---------------------|--------------------|
 traces | 查看 Azure AD B2C 生成的所有日志 |
 traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的所有日志

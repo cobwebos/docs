@@ -3,23 +3,23 @@ title: Azure 安全中心内的文件完整性监视 | Microsoft Docs
 description: " 了解如何在 Azure 安全中心启用文件完整性监视。 "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
-editor: ''
+editor: monhaber
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
-ms.author: rkarlin
-ms.openlocfilehash: c32dcbac8ebab5fb71839a4525163c0e6cf028ed
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.date: 03/13/2019
+ms.author: monhaber
+ms.openlocfilehash: f8bc10edcdc31dd2ae3995dcb8321a5523e1e51c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310717"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901571"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -36,15 +36,12 @@ ms.locfileid: "56310717"
 安全中心会建议要监视的、可以轻松对其启用 FIM 的实体。 你也可以定义自己的 FIM 策略或要监视的实体。 本演练会演示这些操作。
 
 > [!NOTE]
-> 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机与 VM，已在安全中心的标准层上提供。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
-FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
->
->
+> 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机与 VM，已在安全中心的标准层上提供。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
+
+FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视后，必须**更改跟踪**类型的资源**解决方案**。 数据收集频率详细信息，请参阅[更改跟踪数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)用于 Azure 更改跟踪。
 
 > [!NOTE]
-> FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视后，会获得一个“解决方案”类型的“更改跟踪”资源。 如果删除该“更改跟踪”资源，则会禁用安全中心内的文件完整性监视功能。
->
->
+> 如果删除**更改跟踪**资源，您还将禁用文件完整性监视安全中心中的新功能。
 
 ## <a name="which-files-should-i-monitor"></a>应监视哪些文件？
 在选择要监视的文件时，应考虑对系统和应用程序至关重要的文件。 考虑选择预期不会在计划外发生更改的文件。 选择应用程序或操作系统经常更改的文件（例如日志文件和文本文件）会造成很多的干扰，使攻击识别变得很困难。
@@ -134,15 +131,15 @@ FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量
 
 1. 返回到“文件完整性监视”仪表板并选择“设置”。
 
-  ![设置][11]
+   ![设置][11]
 
-  此时将打开“工作区配置”，其中显示三个选项卡：**Windows 注册表**、**Windows 文件**和 **Linux 文件**。 每个选项卡列出可在该类别中编辑的实体。 对于列出的每个实体，安全中心会指出是已启用 (true) 还是未启用 (false) FIM。  编辑实体可以启用或禁用 FIM。
+   此时将打开“工作区配置”，其中显示三个选项卡：**Windows 注册表**、**Windows 文件**和 **Linux 文件**。 每个选项卡列出可在该类别中编辑的实体。 对于列出的每个实体，安全中心会指出是已启用 (true) 还是未启用 (false) FIM。  编辑实体可以启用或禁用 FIM。
 
-  ![工作区配置][12]
+   ![工作区配置][12]
 
-2. 选择一个 identityprotection。 在此示例中，我们选择了“Windows 注册表”下的某个项。 此时会打开“更改跟踪的编辑”。
+2. 选择一种标识的保护。 在此示例中，我们选择了“Windows 注册表”下的某个项。 此时会打开“更改跟踪的编辑”。
 
-  ![编辑或更改跟踪][13]
+   ![编辑或更改跟踪][13]
 
 在“更改跟踪的编辑”下，可以：
 
@@ -155,11 +152,11 @@ FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量
 1. 返回到“文件完整性监视”仪表板并选择顶部的“设置”。 此时会打开“工作区配置”。
 2. 在“工作区配置”下，选择要添加的实体类型对应的选项卡：“Windows 注册表”、“Windows 文件”或“Linux 文件”。 在此示例中，我们选择了“Linux 文件”。
 
-  ![添加要监视的新项][14]
+   ![添加要监视的新项][14]
 
 3. 选择 **添加** 。 此时会打开“更改跟踪的添加”。
 
-  ![输入请求的信息][15]
+   ![输入请求的信息][15]
 
 4. 在“添加”页上，键入请求的信息并选择“保存”。
 
@@ -167,19 +164,19 @@ FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量
 1. 返回到“文件完整性监视”仪表板。
 2. 选择当前已启用 FIM 的工作区。 如果某个工作区缺少“启用”按钮或“升级计划”按钮，则表示该工作区已启用 FIM。
 
-  ![选择已启用 FIM 的工作区][16]
+   ![选择已启用 FIM 的工作区][16]
 
 3. 在“文件完整性监视”下，选择“设置”。
 
-  ![选择设置][17]
+   ![选择设置][17]
 
 4. 在“工作区配置”下，选择“已启用”设置为 true 的某个组。
 
-  ![工作区配置][18]
+   ![工作区配置][18]
 
 5. 在“更改跟踪的编辑”窗口中，将“已启用”设置为 False。
 
-  ![将“已启用”设置为 false][19]
+   ![将“已启用”设置为 false][19]
 
 6. 选择“保存”。
 
@@ -198,7 +195,7 @@ FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量
 2. 选择工作区。
 3. 在“文件完整性监视”下，选择“禁用”。
 
-  ![禁用 FIM][20]
+   ![禁用 FIM][20]
 
 4. 选择“删除”以禁用 FIM。
 

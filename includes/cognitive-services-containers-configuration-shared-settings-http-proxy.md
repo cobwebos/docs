@@ -4,18 +4,18 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/22/2019
-ms.openlocfilehash: 98a6eb024e723e0225711adaccf385a2790e5bc8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 0745e4987ca602a41f2d93ddc0a93cb061ce127d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302778"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58052059"
 ---
 如果需要配置 HTTP 代理以发出出站请求，请使用以下两个参数：
 
-| Name | 数据类型 | 说明 |
+| 名称 | 数据类型 | 描述 |
 |--|--|--|
-|HTTP_PROXY|字符串|要使用的代理，例如 http://proxy:8888|
+|HTTP_PROXY|字符串|要使用的代理，例如 `http://proxy:8888`|
 |HTTP_PROXY_CREDS|字符串|向代理验证身份所需的任何凭据，例如 username:password。|
 
 ```bash

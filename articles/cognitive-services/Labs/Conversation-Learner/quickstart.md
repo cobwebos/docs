@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0990ae2c21017c0d6ff25478eb4b5e3bfb4f0d11
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 743b4d4888738579a023e879dc7b6e95cd23ccc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994374"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>使用 Node.js 创建对话学习器模型
 
@@ -27,13 +27,13 @@ ms.locfileid: "55251429"
 
 项目对话学习器包括一个添加到机器人的 SDK，以及该 SDK 在执行机器学习时需要访问的一个云服务。  目前，访问项目对话学习器云服务需要邀请。  如果尚未收到邀请，请[请求邀请](https://aka.ms/conversation-learner-request-invite)。  在未收到邀请的情况下，无法访问云 API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Node 8.5.0 或更高版本，以及 NPM 5.3.0 或更高版本。 从 [https://nodejs.org](https://nodejs.org) 安装。
   
 - LUIS 创作密钥：
 
-  1. 登录到 [http://www.luis.ai](http://www.luis.ai)。
+  1. 登录到 [https://www.luis.ai](https://www.luis.ai)。
 
   2. 在右上角单击自己的姓名，然后单击“设置”
 
@@ -78,35 +78,35 @@ ms.locfileid: "55251429"
 
     这会在 `cl-bot-01/src/app.ts` 中运行一个泛型空机器人。
 
-3. 打开浏览器，转到 http://localhost:3978
+3. 打开浏览器，转到 `http://localhost:3978`
 
 现在，你正在使用对话学习器，可以创建和训练对话学习器模型。  
 
 > [!NOTE]
-> 启动时，可以根据邀请使用项目对话学习器。  如果 http://localhost:3978/ui 显示 HTTP `403` 错误，则表示你的帐户未收到邀请。  请[请求邀请](https://aka.ms/conversation-learner-request-invite)。
+> 启动时，可以根据邀请使用项目对话学习器。  如果 `http://localhost:3978/ui` 显示 HTTP `403` 错误，则表示你的帐户未收到邀请。  请[请求邀请](https://aka.ms/conversation-learner-request-invite)。
 
 ## <a name="tutorials-demos-and-switching-between-bots"></a>教程、演示以及在机器人之间切换
 
 上述指令启动了泛型空机器人。  若要改为运行教程或演示机器人：
 
-1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:3978/ui/home 处的模型列表。
+1. 如果已打开对话学习器 Web UI，请返回到 `http://localhost:3978/ui/home` 处的模型列表。
     
 2. 如果另一个机器人（例如 `npm start` 或 `npm run demo-pizza`）正在运行，请将其停止。  不需要停止 UI 进程或关闭 Web 浏览器。
 
 3. 从命令行运行演示机器人（上述步骤 2）。  演示包括：
 
-  ```bash
-  npm run tutorial-general
-  npm run tutorial-entity-detection
-  npm run tutorial-session-callbacks
-  npm run tutorial-api-calls
-  npm run tutorial-hybrid
-  npm run demo-password
-  npm run demo-pizza
-  npm run demo-storage
-  ```
+   ```bash
+   npm run tutorial-general
+   npm run tutorial-entity-detection
+   npm run tutorial-session-callbacks
+   npm run tutorial-api-calls
+   npm run tutorial-hybrid
+   npm run demo-password
+   npm run demo-pizza
+   npm run demo-storage
+   ```
 
-4. 在 Chrome 中通过加载 http://localhost:3978/ui/home 切换到对话学习器 Web UI（如果尚未这样做）。 
+4. 在 Chrome 中通过加载 `http://localhost:3978/ui/home` 切换到对话学习器 Web UI（如果尚未这样做）。 
 
 5. 单击“导入教程”，然后在 Conversation Learner UI 中选择对应于已启动的演示的演示模型。
 
@@ -114,7 +114,7 @@ ms.locfileid: "55251429"
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>创建包含后端代码的机器人
 
-1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:3978/ui/home 处的模型列表。
+1. 如果已打开对话学习器 Web UI，请返回到 `http://localhost:3978/ui/home` 处的模型列表。
     
 2. 如果某个机器人（例如 `npm run demo-pizza`）正在运行，请将其停止。  不需要停止 UI 进程或关闭 Web 浏览器。
 
@@ -127,7 +127,7 @@ ms.locfileid: "55251429"
     npm start
     ```
 
-5. 在 Chrome 中通过加载 http://localhost:3978/ui/home 切换到对话学习器 Web UI（如果尚未这样做）。 
+5. 在 Chrome 中通过加载 `http://localhost:3978/ui/home` 切换到对话学习器 Web UI（如果尚未这样做）。 
 
 6. 在 UI 中创建新的对话学习器模型，并开始训练。
 

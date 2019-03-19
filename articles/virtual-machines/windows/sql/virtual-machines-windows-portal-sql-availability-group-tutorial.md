@@ -3,7 +3,7 @@ title: SQL Server 可用性组 - Azure 虚拟机 -教程 | Microsoft 文档
 description: 本教程说明如何在 Azure 虚拟机上创建 SQL Server Always On 可用性组。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359708"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003449"
 ---
-# <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
+# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>教程：在 Azure VM 中手动配置 Always On 可用性组
 
 本教程说明如何在 Azure 虚拟机上创建 SQL Server Always On 可用性组。 完整教程将创建一个数据库副本位于两个 SQL Server 上的可用性组。
 
@@ -53,7 +53,7 @@ ms.locfileid: "54359708"
 开始本教程之前，需要[完成先决条件以便在 Azure 虚拟机中创建 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-prereq.md)。 如果已完成这些先决条件，可跳到[创建群集](#CreateCluster)。
 
   >[!NOTE]
-  > 本教程中的许多步骤都可以使用 Azure 快速入门模板自动执行。 有关详细信息，请参阅[使用 Azure 快速入门模板在 SQL Server VM 上为 Always On 可用性组创建 WSFC、侦听器和配置 ILB](virtual-machines-windows-sql-availability-group-quickstart-template.md)。
+  > 现在可以使用自动化许多在本教程中提供的步骤[Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md)并[Azure 快速入门模板](virtual-machines-windows-sql-availability-group-quickstart-template.md)。
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -61,7 +61,7 @@ ms.locfileid: "54359708"
 <a name="CreateCluster"></a>
 ## <a name="create-the-cluster"></a>创建群集
 
-完成先决条件后，首先要创建包含两个 SQL Sever 和一个见证服务器的 Windows Server 故障转移群集。
+满足先决条件后，第一步是创建包含两个 SQL Sever 和一个见证服务器的 Windows Server 故障转移群集。
 
 1. 第一个 SQL Server 的 RDP 使用的是域账户，该域账户在 SQL Server 和见证服务器上都是管理员。
 
@@ -415,6 +415,7 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 1. 单击负载均衡器，单击“负载均衡规则”，并单击“+添加”。
 
 1. 对侦听器负载均衡器规则进行如下设置。
+
    | 设置 | 说明 | 示例
    | --- | --- |---
    | 名称 | 文本 | SQLAlwaysOnEndPointListener |
@@ -455,6 +456,7 @@ WSFC IP 地址也必须在负载均衡器上。
 1. 设置负载均衡规则。 单击“负载均衡规则”，并单击“+添加”。
 
 1. 将群集核心 IP 地址负载均衡规则进行如下设置。
+
    | 设置 | 说明 | 示例
    | --- | --- |---
    | 名称 | 文本 | WSFCEndPoint |
@@ -505,15 +507,15 @@ WSFC IP 地址也必须在负载均衡器上。
 
 1. 使用 sqlcmd 实用工具测试连接。 例如，以下脚本通过侦听器与 Windows 身份验证来与主副本建立 sqlcmd 连接：
 
-  ```cmd
-  sqlcmd -S <listenerName> -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName> -E
+   ```
 
-  如果侦听器使用的端口不是默认端口 (1433)，请在连接字符串中指定该端口。 例如，以下 sqlcmd 命令连接到位于端口 1435 的侦听器：
+   如果侦听器使用的端口不是默认端口 (1433)，请在连接字符串中指定该端口。 例如，以下 sqlcmd 命令连接到位于端口 1435 的侦听器：
 
-  ```cmd
-  sqlcmd -S <listenerName>,1435 -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName>,1435 -E
+   ```
 
 SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 

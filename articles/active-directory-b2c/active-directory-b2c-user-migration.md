@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5a168ca3aafc171e4ed9b9f7572ee60b2ac7c350
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 0ca35c5d7a882a67bdce5e006b94d1f16daf9130
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182262"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893198"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 将标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C)C 时，可能还需要迁移用户帐户。 本文介绍如何将现有用户帐户从任何标识提供者迁移到 Azure AD B2C。 本文并未阐述约定俗成的内容，而只是介绍了几种方案。 开发人员负责判断每种方法是否适用。
@@ -63,7 +63,7 @@ ms.locfileid: "55182262"
 1. 执行以下操作，创建新应用程序：
    - 对于“名称”，请使用 **B2CUserMigration** 或所需的其他任何名称。
    - 对于“应用程序类型”，使用“Web 应用/API”。
-   - 在“登录 URL”中填写 https://localhost（因为它与此应用程序无关）。
+   - 有关**单一登录 URL**，使用`https://localhost`（因为它不是此应用程序无关）。
    - 选择“创建”。
    
 1. 创建应用程序后，请在“应用程序”列表中选择新建的 **B2CUserMigration** 应用程序。
@@ -94,7 +94,7 @@ ms.locfileid: "55182262"
 “读取和写入目录数据”权限不包括删除用户的权限。 如果想要为应用程序提供删除用户（以清理环境）的功能，必须执行额外的步骤，这涉及到运行 PowerShell 来设置“用户帐户管理员”权限。 否则，可以跳到下一部分。
 
 > [!IMPORTANT]
-> 必须使用 B2C 租户本地的 B2C 租户管理员帐户。 帐户名称的语法为 *admin@contosob2c.onmicrosoft.com*。
+> 必须使用 B2C 租户本地的 B2C 租户管理员帐户。 帐户名称的语法是*管理员\@contosob2c.onmicrosoft.com*。
 
 >[!NOTE]
 > 以下 PowerShell 脚本需要 [Azure Active Directory PowerShell 版本 2][AD-Powershell]。
@@ -370,4 +370,4 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration
+[UserMigrationSample]: https://github.com/yoelhor/Azure-AD-B2C-UserMigration

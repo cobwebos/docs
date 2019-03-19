@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a86ce8c061450fd66b31a81ec00e51f98a39646
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: abfdad1db655c102dbfb300434eac952fe2154dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415640"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095886"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -120,8 +120,8 @@ ms.locfileid: "56415640"
 
 1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
 
-    >[!NOTE]
-    >我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
+   > [!NOTE]
+   > 我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
 
 2. 调用 `Disable-AzureADSSOForest -OnPremCredentials $creds`。 此命令将从本地域控制器删除此特定 Active Directory 林的 `AZUREADSSOACC` 计算机帐户。
 3. 为在其中设置了该功能的每个 Active Directory 林重复上述步骤。
@@ -130,8 +130,8 @@ ms.locfileid: "56415640"
 
 1. 调用 `Enable-AzureADSSOForest`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
 
-   >[!NOTE]
-   >我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
+   > [!NOTE]
+   > 我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
 
 2. 为你要在其中设置该功能的每个 Active Directory 林重复上述步骤。
 

@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
+ms.openlocfilehash: 474048bc9f31e4630110ea099f3e0b375ad74e51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968802"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087578"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML Services 入门
 
 可以使用 Azure HDInsight 创建 ML Services 群集。 此选项允许 R 脚本使用 [Apache Spark](https://spark.apache.org/) 和 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 运行分布式计算。 在本文中，你将学习如何在 HDInsight 上创建 ML Services 群集，以及如何运行演示了使用 Spark 进行分布式 R 计算的一个 R 脚本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **Azure 订阅**：在开始学习本教程之前，必须有一个 Azure 订阅。 有关详细信息，请参阅[获取 Microsoft Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **安全外壳 (SSH) 客户端**：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
@@ -79,16 +79,16 @@ ms.locfileid: "53968802"
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 * **选项 2** - 使用 Azure 门户。
-在门户中：
+  在门户中：
   1. 在左侧菜单中，选择“所有服务”。
   2. 在“ANALYTICS”下，选择“HDInsight 群集”。
   3. 从“HDInsight 群集”页选择群集名称。
   4. 从“ML 服务仪表板”中，选择“R Studio 服务器”。 
 
-    ![设置 HDInsight 的存储帐户设置](./media/r-server-get-started/r-studio-server-dashboard.png)
+     ![设置 HDInsight 的存储帐户设置](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]  
-   > 无论使用哪种方法，首次登录时都需进行两次身份验证。  第一次出现身份验证的提示时，请提供群集管理员用户 ID 和密码。 第二次出现身份验证的提示时，请提供 SSH 用户 ID 和密码。 后续登录只需提供 SSH 凭据。
+     > [!IMPORTANT]  
+     > 无论使用哪种方法，首次登录时都需进行两次身份验证。  第一次出现身份验证的提示时，请提供群集管理员用户 ID 和密码。 第二次出现身份验证的提示时，请提供 SSH 用户 ID 和密码。 后续登录只需要 SSH 凭据。
 
 连接后，屏幕应如以下屏幕截图所示：
 

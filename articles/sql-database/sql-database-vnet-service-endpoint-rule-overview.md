@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 6ded590ac5a9c30655d8ed19c370ce476d1c9631
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: 4af27ad4fb5096f3ccac5de901c76e8d7464e1f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456276"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887113"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>为数据库服务器使用虚拟网络服务终结点和规则
 
@@ -172,59 +172,63 @@ Azure 存储已实现相同的功能，允许限制到 Azure 存储帐户的连�
 
 PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据仓库中。 如果正从 Azure 存储帐户加载数据，而该帐户只允许一组 VNet-子网的访问，则会断开从 PolyBase 到该帐户的连接。 对于连接到 Azure 存储（已通过安全方式连接到 VNet）的 Azure SQL 数据仓库，若要启用 PolyBase 导入和导出方案，请执行如下所示的步骤：
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备组件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
 
 1.  按照此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安装 Azure PowerShell。
 2.  如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户升级到常规用途 v2 帐户。
 3.  必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下启用“允许受信任的 Microsoft 服务访问此存储帐户”。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
  
 #### <a name="steps"></a>Steps
-1.  在 PowerShell 中，向 Azure Active Directory (AAD) 注册 SQL 数据库服务器：
+1. 在 PowerShell 中，向 Azure Active Directory (AAD) 注册 SQL 数据库服务器：
 
-    ```powershell
-    Add-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-    ```
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
     
- 1. 按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)创建**常规用途 v2 存储帐户**。
+   1. 按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)创建**常规用途 v2 存储帐户**。
 
-    > [!NOTE]
-    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
-    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
+   > [!NOTE]
+   > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
+   > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
     
-1.  在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。 向 SQL 数据库服务器分配“存储 Blob 数据参与者(预览版)”RBAC 角色。
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。 向 SQL 数据库服务器分配“存储 Blob 数据参与者(预览版)”RBAC 角色。
 
-    > [!NOTE] 
-    > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+   > [!NOTE] 
+   > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
   
-1.  **通过 Polybase 连接到 Azure 存储帐户：**
+1. **通过 Polybase 连接到 Azure 存储帐户：**
 
-    1. 创建数据库**[主密钥](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)**（如果此前尚未创建）：
-        ```SQL
-        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
-        ```
+   1. 创建数据库**[主密钥](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)**（如果此前尚未创建）：
+       ```SQL
+       CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+       ```
     
-    1. 使用 **IDENTITY = '托管服务标识'** 创建数据库范围的凭据：
+   1. 使用 **IDENTITY = '托管服务标识'** 创建数据库范围的凭据：
 
-        ```SQL
-        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-        ```
-        > [!NOTE] 
-        > - 使用 Azure 存储访问密钥时，不需指定 SECRET，因为此机制在后台使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
-        > - 使用 Azure 存储帐户以安全方式连接到 VNet 时，IDENTITY 名称应该为 **'托管服务标识'**，以便通过 PolyBase 进行连接。    
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - 使用 Azure 存储访问密钥时，不需指定 SECRET，因为此机制在后台使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+       > - 使用 Azure 存储帐户以安全方式连接到 VNet 时，IDENTITY 名称应该为 **'托管服务标识'**，以便通过 PolyBase 进行连接。    
     
-    1. 使用 abfss:// 方案创建外部数据源，以便通过 PolyBase 连接到常规用途 v2 存储帐户：
+   1. 使用 abfss:// 方案创建外部数据源，以便通过 PolyBase 连接到常规用途 v2 存储帐户：
 
-        ```SQL
-        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
-        ```
-        > [!NOTE] 
-        > - 如果已经有外部表关联到常规用途 v1 或 Blob 存储帐户，则应先删除这些外部表，然后删除相应的外部数据源。 然后，使用 abfss:// 方案按照上面的步骤创建连接到常规用途 v2 存储帐户的外部数据源，并使用该新建的外部数据源重新创建所有外部表。 可以通过[生成和发布脚本向导](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017)为所有外部表生成 create-script，以方便使用。
-        > - 有关 abfss:// 方案的详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)。
-        > - 有关 CREATE EXTERNAL DATA SOURCE 的详细信息，请参阅此[指南](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)。
+       ```SQL
+       CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+       ```
+       > [!NOTE] 
+       > - 如果已经有外部表关联到常规用途 v1 或 Blob 存储帐户，则应先删除这些外部表，然后删除相应的外部数据源。 然后，使用 abfss:// 方案按照上面的步骤创建连接到常规用途 v2 存储帐户的外部数据源，并使用该新建的外部数据源重新创建所有外部表。 可以通过[生成和发布脚本向导](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)为所有外部表生成 create-script，以方便使用。
+       > - 有关 abfss:// 方案的详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)。
+       > - 有关 CREATE EXTERNAL DATA SOURCE 的详细信息，请参阅此[指南](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)。
         
-    1. 使用[外部表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)进行正常查询。
+   1. 使用[外部表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)进行正常查询。
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL 数据库 Blob 审核
 
@@ -273,7 +277,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 ## <a name="powershell-alternative"></a>PowerShell 备用
 
-PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmSqlServerVirtualNetworkRule。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
+PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet**新建 AzSqlServerVirtualNetworkRule**。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
 
 ## <a name="rest-api-alternative"></a>REST API 替代项
 
@@ -281,7 +285,7 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
 
 - [虚拟网络规则：操作][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 必须有一个子网已经使用特定的虚拟网络服务终结点类型名称进行标记，且该名称必须与 Azure SQL 数据库相关。
 

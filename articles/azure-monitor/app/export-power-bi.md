@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 13156b3419d961850c8e4e408a9cf565a5f957ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312985"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086388"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的数据。
@@ -96,7 +96,7 @@ ms.locfileid: "56312985"
 1. 登录到 Azure 门户，确保可访问资源。
 2. 尝试刷新仪表板的凭据。
 
- 如果具有访问权限且刷新凭据不起作用，请开具支持票证。
+   如果具有访问权限且刷新凭据不起作用，请开具支持票证。
 
 ### <a name="bad-gateway-502"></a>错误的网关 (502)
 这通常由返回过多数据的分析查询导致。 尝试使用较小的时间范围执行查询。 

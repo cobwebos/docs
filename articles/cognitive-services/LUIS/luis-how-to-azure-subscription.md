@@ -9,43 +9,29 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 03/01/2019
 ms.author: diberry
-ms.openlocfilehash: 3fd05e2dd5b55dd590af24f0757229bead041b6d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859107"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781691"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>将订阅密钥与 LUIS 应用配合使用
 
-无需创建订阅密钥即可免费使用前 1000 个终结点查询。 使用这些终结点查询后，在 [Azure 门户](http://portal.azure.com)中创建一个 Azure 资源，然后在 [LUIS 门户](https://www.luis.ai)中将该资源分配到 LUIS 应用。
+无需创建订阅密钥即可免费使用前 1000 个终结点查询。 使用这些终结点查询后，在 [Azure 门户](https://portal.azure.com)中创建一个 Azure 资源，然后在 [LUIS 门户](https://www.luis.ai)中将该资源分配到 LUIS 应用。
 
 如果收到 HTTP 403 或 429 形式的“超出配额”错误，则需要创建密钥并将其分配到应用。 
 
 如果仅用于测试和原型，请使用免费 (F0) 层。 对于生产系统，请使用[付费](https://aka.ms/luis-price-tier)层。 不要将[创作密钥](luis-concept-keys.md#authoring-key)用于生产中的终结点查询。
 
 <a name="create-luis-service"></a>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
-## <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>在 Azure 门户中创建语言理解终结点密钥
+## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>在 Azure 门户中创建预测终结点运行时资源
 
-此过程将创建一个**语言理解**资源。 如果希望某个资源可在不同的认知服务中使用，请创建一体化的**[认知服务](../cognitive-services-apis-create-account.md)** 密钥，而不要创建语言理解资源。 
-
-此密钥应该仅用于终结点预测查询。 更改模型或应用时，请不要使用此密钥。 
-
-1. 登录到 **[Azure 门户](https://ms.portal.azure.com/)**。 
-1. 选择左上角面板中的绿色 **+** 符号，在市场中搜索 `Language Understanding`，然后选择“语言理解”，并遵循**创建体验**创建 LUIS 订阅帐户。 
-
-    ![Azure 搜索](./media/luis-azure-subscription/azure-search.png) 
-
-1. 为订阅配置帐户名、定价层等设置。 
-
-    ![Azure API 选择](./media/luis-azure-subscription/azure-api-choice.png) 
-
-1. 创建语言理解资源后，可以在“资源管理”->“密钥”中查看生成的密钥。 下一部分会介绍如何在 LUIS 门户中将此新资源连接到 LUIS 应用。 到时需要使用在步骤 3 中指定的 LUIS 资源名称。
-
-    ![Azure 密钥](./media/luis-azure-subscription/azure-keys.png)
+通过了解更多信息[生成的应用程序](get-started-portal-build-app.md)快速入门。
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -63,23 +49,7 @@ ms.locfileid: "55859107"
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>在 LUIS 门户中将资源密钥分配到 LUIS 应用
 
-1. 登录到 LUIS 门户，选择要将新密钥添加到的应用，在右上角菜单中选择“管理”，然后选择“密钥和终结点”。
-
-    [ ![密钥和终结点页面](./media/luis-manage-keys/keys-and-endpoints.png) ](./media/luis-manage-keys/keys-and-endpoints.png#lightbox)
-
-1. 若要添加 LUIS，请选择“分配资源 +”。
-
-    ![将资源分配给应用](./media/luis-manage-keys/assign-key.png)
-
-1. 在对话框中选择与用来登录 LUIS 网站的电子邮件地址关联的租户。  
-
-1. 选择与要添加的 Azure 资源关联的**订阅名称**。
-
-1. 选择 **LUIS 资源名称**。 
-
-1. 选择“分配资源”。 
-
-1. 在表中找到新行并复制终结点 URL。 它构造正确，用以针对用于预测的 LUIS 终结点发出 HTTP GET 请求。 
+通过了解更多信息[部署](get-started-portal-deploy-app.md)快速入门。
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>

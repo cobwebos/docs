@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9c5f32bb1b4f335fab11f0fd865421f2eec5eee9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 5dcb9f16b589b8332d5fcf35c9d8b4cd914460f2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244906"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012549"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>共享访问签名，第 2 部分：创建 SAS 并将其用于 Blob 存储
 
-本教程的[第 1 部分](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)介绍了共享访问签名 (SAS) 并说明了使用共享访问签名的最佳做法。 第 2 部分将演示如何生成共享访问签名以及如何将共享访问签名用于 Blob 存储。 示例是用 C# 编写的，并使用了用于 .NET 的 Azure 存储客户端库。 本教程中的示例使用：
+本教程的[第 1 部分](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)介绍了共享访问签名 (SAS) 并说明了使用共享访问签名的最佳做法。 第 2 部分将演示如何生成共享访问签名以及如何将共享访问签名用于 Blob 存储。 示例是用 C# 编写的并使用了 Azure .NET 存储客户端库。 本教程中的示例使用：
 
 * 在容器上生成共享访问签名
 * 在 Blob 上生成共享访问签名
@@ -33,7 +33,7 @@ ms.locfileid: "55244906"
 **应用程序 2**：客户端应用程序。 使用第一个应用程序创建的共享访问签名访问容器和 Blob 资源。 仅使用共享访问签名来访问容器和 Blob 资源 – 它*不*知道存储帐户访问密钥。
 
 ## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>第 1 部分：创建控制台应用程序以便生成共享访问签名
-首先，确保安装了用于 .NET 的 Azure 存储客户端库。 可以安装包含该客户端库最新程序集的 [NuGet 包](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet 包")。 这是确保具有最新修补程序的建议方法。 还可以下载作为客户端库组成部分的[用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/) 最新版本。
+首先，确保安装了用于 .NET 的 Azure 存储客户端库。 可以安装包含该客户端库最新程序集的 [NuGet 包](https://nuget.org/packages/WindowsAzure.Storage/ "NuGet 包")。 这是确保具有最新修补程序的建议方法。 还可以下载作为客户端库组成部分的[用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/) 最新版本。
 
 在 Visual Studio 中，创建一个新的 Windows 控制台应用程序并将其命名为 **GenerateSharedAccessSignatures**。 使用以下方法之一添加对 [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) 和 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) 的引用：
 
@@ -65,7 +65,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 ```
 
 ### <a name="generate-a-shared-access-signature-uri-for-a-container"></a>为容器生成共享访问签名 URI
-开始时，我们将添加一个方法以便在新容器上生成共享访问签名。 在这个例子中，该签名不与某一存储访问策略相关联，因此，它在 URI 上携带信息，指示其到期时间以及将授予的权限。
+首先添加一个方法，用于在新容器上生成共享访问签名。 在这个例子中，该签名不与某一存储访问策略相关联，因此，它在 URI 上携带信息，指示其到期时间以及将授予的权限。
 
 首先，向 **Main()** 方法中添加代码，以便授权访问存储帐户并创建新容器：
 
@@ -125,7 +125,7 @@ https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-
 在运行代码后，在容器上创建的共享访问签名会在接下来的 24 个小时内有效。 该签名向客户端授予列出容器中的 Blob 以及将新 Blob 写入容器的权限。
 
 ### <a name="generate-a-shared-access-signature-uri-for-a-blob"></a>为 Blob 生成共享访问签名 URI
-接下来，我们将编写类似的代码，以便在容器内创建新 Blob 并且为其生成共享访问签名。 该共享访问签名不与某一存储访问策略相关联，因此，它包含有关 URI 的开始时间、到期时间和权限。
+接下来编写类似的代码，用于在容器内创建新 Blob 并为其生成共享访问签名。 该共享访问签名不与某一存储访问策略相关联，因此，它包含有关 URI 的开始时间、到期时间和权限。
 
 添加一个新方法，该方法创建一个新 Blob 并且向其写入一些文本，然后生成共享访问签名并且返回签名 URI：
 
@@ -173,7 +173,7 @@ https://storageaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02
 ### <a name="create-a-stored-access-policy-on-the-container"></a>在容器上创建存储访问策略
 现在来在容器上创建一个存储访问策略，该策略定义与其相关联的任何共享访问签名的约束。
 
-在前面的示例中，我们指定了开始时间（隐式或显式的）、到期时间以及共享访问签名 URI 本身的权限。 在接下来的示例中，我们会在存储访问策略上指定它们，而不是在共享访问签名上指定它们。 这样做将使我们不必重新发布共享访问签名即可更改这些约束。
+在前面的示例中，我们指定了开始时间（隐式或显式）、到期时间以及共享访问签名 URI 本身的权限。 在接下来的示例中，我们会在存储访问策略上指定它们，而不是在共享访问签名上指定它们。 这样做将使我们不必重新发布共享访问签名即可更改这些约束。
 
 可以使一个或多个约束作用于共享访问签名上，使其余的约束作用于存储访问策略上。 但是，只能在这两者之一中指定开始时间、到期时间和权限。 例如，不能对共享访问签名指定权限，同时也对存储访问策略指定权限。
 
@@ -234,7 +234,7 @@ static string GetContainerSasUriWithPolicy(CloudBlobContainer container, string 
 }
 ```
 
-调用 **Console.ReadLine()** 之前，在 **Main()** 方法的底部，添加以下代码行以调用 **GetContainerSasUriWithPolicy** 方法：
+调用 Console.ReadLine() 之前，在 Main() 方法的底部，添加以下代码行以调用 GetContainerSasUriWithPolicy 方法：
 
 ```csharp
 //Generate a SAS URI for the container, using a stored access policy to set constraints on the SAS.
@@ -243,7 +243,7 @@ Console.WriteLine();
 ```
 
 ### <a name="generate-a-shared-access-signature-uri-on-the-blob-that-uses-an-access-policy"></a>在使用访问策略的 Blob 上生成共享访问签名 URI
-最后，我们将添加一个类似方法，以便创建另一个 Blob 并且生成与某一存储访问策略相关联的共享访问签名。
+最后，添加一个类似方法，创建另一个 Blob 并生成与某一存储访问策略相关联的共享访问签名。
 
 添加一个新方法以便创建 Blob 并且生成共享访问签名：
 
@@ -367,7 +367,7 @@ static void Main(string[] args)
 ```
 
 ### <a name="add-a-method-to-try-container-operations-using-a-shared-access-signature"></a>添加方法以便尝试使用共享访问签名执行容器操作
-接下来，我们将添加一个方法，该方法会在容器上使用共享访问签名测试一些容器操作。 使用共享访问签名返回对容器的引用，并且单独基于该签名验证对容器的访问。
+接下来添加一个方法，该方法使用共享访问签名为容器测试一些容器操作。 使用共享访问签名返回对容器的引用，并且单独基于该签名验证对容器的访问。
 
 将以下方法添加到 Program.cs：
 
@@ -474,7 +474,7 @@ static void Main(string[] args)
 ```
 
 ### <a name="add-a-method-to-try-blob-operations-using-a-shared-access-signature"></a>添加方法以便尝试使用共享访问签名执行 Blob 操作
-最后，我们将添加一个方法，该方法会在 Blob 上使用共享访问签名测试一些 Blob 操作。 在这个例子中，我们使用在共享访问签名中传入的构造函数 **CloudBlockBlob(String)** 返回对该 Blob 的引用。 无需其他身份验证；它仅基于签名。
+最后，添加一个方法，该方法在 Blob 上使用共享访问签名测试一些 Blob 操作。 在这个例子中，我们使用在共享访问签名中传入的构造函数 **CloudBlockBlob(String)** 返回对该 Blob 的引用。 无需其他身份验证；它仅基于签名。
 
 将以下方法添加到 Program.cs：
 

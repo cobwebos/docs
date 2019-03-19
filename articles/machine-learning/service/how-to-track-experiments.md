@@ -8,20 +8,19 @@ ms.author: hshapiro
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2d528d26fa2597c35c16e50cecffcd10971bdcd5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 79247c4c1f26fadcd5f0291b55c9dd8d4d9aa2af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447110"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008818"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>跟踪试验和训练指标 - Azure 机器学习
 
-在 Azure 机器学习服务中，可通过跟踪试验和监视指标来改进模型创建过程。 本文介绍向训练脚本添加日志记录的不同方法、如何使用 start_logging 和 ScriptRunConfig 提交实验、如何检查正在运行的作业的进度以及如何查看运行结果。 
-
+在 Azure 机器学习服务中，可通过跟踪试验和监视指标来改进模型创建过程。 在本文中，了解如何将日志记录添加到训练脚本、 提交试验运行、 监视运行和查看运行结果。
 
 ## <a name="list-of-training-metrics"></a>训练指标列表 
 
@@ -31,7 +30,7 @@ ms.locfileid: "56447110"
 |----|:----|:----|
 |标量值 |函数：<br>`run.log(name, value, description='')`<br><br>示例：<br>run.log("accuracy", 0.95) |使用给定名称将数值或字符串值记录到运行中。 在运行中记录某个指标会导致在试验中的运行记录中存储该指标。  可在一次运行中多次记录同一指标，其结果被视为该指标的一个矢量。|
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
-|行|函数：<br>`run.log_row(name, description=None, **kwargs)<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row 创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row 一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
+|行|函数：<br>`run.log_row(name, description=None, **kwargs)`<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row 创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row 一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
 |表|函数：<br>`run.log_table(name, value, description='')`<br><br>示例：<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 使用给定名称将字典对象记录到运行中。 |
 |映像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>run.log_image("ROC", plt) | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
 |标记一个运行|函数：<br>`run.tag(key, value=None)`<br><br>示例：<br>run.tag("selected", "yes") | 使用一个字符串键和可选字符串值标记运行。|
@@ -51,11 +50,11 @@ ms.locfileid: "56447110"
 
 1. 加载工作区。 若要详细了解如何设置工作区配置，请参阅[快速入门](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started)。
 
-  ```python
-  from azureml.core import Experiment, Run, Workspace
-  import azureml.core
+   ```python
+   from azureml.core import Experiment, Run, Workspace
+   import azureml.core
   
-  ws = Workspace(workspace_name = <<workspace_name>>,
+   ws = Workspace(workspace_name = <<workspace_name>>,
                subscription_id = <<subscription_id>>,
                resource_group = <<resource_group>>)
    ```
@@ -68,95 +67,95 @@ ms.locfileid: "56447110"
 
 1. 在本地 Jupyter 笔记本中创建训练脚本。 
 
-  ``` python
-  # load diabetes dataset, a well-known small dataset that comes with scikit-learn
-  from sklearn.datasets import load_diabetes
-  from sklearn.linear_model import Ridge
-  from sklearn.metrics import mean_squared_error
-  from sklearn.model_selection import train_test_split
-  from sklearn.externals import joblib
+   ``` python
+   # load diabetes dataset, a well-known small dataset that comes with scikit-learn
+   from sklearn.datasets import load_diabetes
+   from sklearn.linear_model import Ridge
+   from sklearn.metrics import mean_squared_error
+   from sklearn.model_selection import train_test_split
+   from sklearn.externals import joblib
 
-  X, y = load_diabetes(return_X_y = True)
-  columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-  data = {
+   X, y = load_diabetes(return_X_y = True)
+   columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+   data = {
       "train":{"X": X_train, "y": y_train},        
       "test":{"X": X_test, "y": y_test}
-  }
-  reg = Ridge(alpha = 0.03)
-  reg.fit(data['train']['X'], data['train']['y'])
-  preds = reg.predict(data['test']['X'])
-  print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
-  joblib.dump(value = reg, filename = 'model.pkl');
-  ```
+   }
+   reg = Ridge(alpha = 0.03)
+   reg.fit(data['train']['X'], data['train']['y'])
+   preds = reg.predict(data['test']['X'])
+   print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
+   joblib.dump(value = reg, filename = 'model.pkl');
+   ```
 
 2. 使用 Azure 机器学习服务 SDK 添加试验跟踪并将持久化模型上传到试验运行记录。 以下代码添加标记、日志并将模型文件上传到试验运行。
 
-  ```python
-  # Get an experiment object from Azure Machine Learning
-  experiment = Experiment(workspace = ws, name = "train-within-notebook")
+   ```python
+   # Get an experiment object from Azure Machine Learning
+   experiment = Experiment(workspace = ws, name = "train-within-notebook")
   
-  # Create a run object in the experiment
-  run = experiment.start_logging()# Log the algorithm parameter alpha to the run
-  run.log('alpha', 0.03)
+   # Create a run object in the experiment
+   run = experiment.start_logging()# Log the algorithm parameter alpha to the run
+   run.log('alpha', 0.03)
 
-  # Create, fit, and test the scikit-learn Ridge regression model
-  regression_model = Ridge(alpha=0.03)
-  regression_model.fit(data['train']['X'], data['train']['y'])
-  preds = regression_model.predict(data['test']['X'])
+   # Create, fit, and test the scikit-learn Ridge regression model
+   regression_model = Ridge(alpha=0.03)
+   regression_model.fit(data['train']['X'], data['train']['y'])
+   preds = regression_model.predict(data['test']['X'])
 
-  # Output the Mean Squared Error to the notebook and to the run
-  print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
-  run.log('mse', mean_squared_error(data['test']['y'], preds))
+   # Output the Mean Squared Error to the notebook and to the run
+   print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
+   run.log('mse', mean_squared_error(data['test']['y'], preds))
 
-  # Save the model to the outputs directory for capture
-  joblib.dump(value=regression_model, filename='outputs/model.pkl')
+   # Save the model to the outputs directory for capture
+   joblib.dump(value=regression_model, filename='outputs/model.pkl')
 
-  # Take a snapshot of the directory containing this notebook
-  run.take_snapshot('./')
+   # Take a snapshot of the directory containing this notebook
+   run.take_snapshot('./')
 
-  # Complete the run
-  run.complete()
+   # Complete the run
+   run.complete()
   
-  ```
+   ```
 
 脚本以 ```run.complete()``` 结束，将运行标记为已完成。  此函数通常用于交互式 Notebook 方案。
 
 ## <a name="option-2-use-scriptrunconfig"></a>选项 2：使用 ScriptRunConfig
 
-**ScriptRunConfig** 是用于设置脚本运行配置的一个类。 使用此选项，可添加监视代码，在运行完成时发出通知，或让视觉小组件执行监视操作。
+[**ScriptRunConfig** ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py)设置的脚本配置运行的是一个类。 使用此选项，可添加监视代码，在运行完成时发出通知，或让视觉小组件执行监视操作。
 
 此示例在上面的基本 sklearn 岭模型的基础上进行扩展。 它会对模型的 alpha 值执行简单的参数扫描以捕获指标，并通过在实验中运行来训练模型。 该示例在一个用户管理的环境中执行本地运行。 
 
 1. 创建定型脚本 `train.py`。
 
-  ```python
-  # train.py
+   ```python
+   # train.py
 
-  import os
-  from sklearn.datasets import load_diabetes
-  from sklearn.linear_model import Ridge
-  from sklearn.metrics import mean_squared_error
-  from sklearn.model_selection import train_test_split
-  from azureml.core.run import Run
-  from sklearn.externals import joblib
+   import os
+   from sklearn.datasets import load_diabetes
+   from sklearn.linear_model import Ridge
+   from sklearn.metrics import mean_squared_error
+   from sklearn.model_selection import train_test_split
+   from azureml.core.run import Run
+   from sklearn.externals import joblib
 
-  import numpy as np
+   import numpy as np
 
-  #os.makedirs('./outputs', exist_ok = True)
+   #os.makedirs('./outputs', exist_ok = True)
 
-  X, y = load_diabetes(return_X_y = True)
+   X, y = load_diabetes(return_X_y = True)
 
-  run = Run.get_context()
+   run = Run.get_context()
 
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-  data = {"train": {"X": X_train, "y": y_train},
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+   data = {"train": {"X": X_train, "y": y_train},
           "test": {"X": X_test, "y": y_test}}
 
-  # list of numbers from 0.0 to 1.0 with a 0.05 interval
-  alphas = mylib.get_alphas()
+   # list of numbers from 0.0 to 1.0 with a 0.05 interval
+   alphas = mylib.get_alphas()
 
-  for alpha in alphas:
+   for alpha in alphas:
       # Use Ridge algorithm to create a regression model
       reg = Ridge(alpha = alpha)
       reg.fit(data["train"]["X"], data["train"]["y"])
@@ -180,43 +179,43 @@ ms.locfileid: "56447110"
 
       print('alpha is {0:.2f}, and mse is {1:0.2f}'.format(alpha, mse))
   
-  ```
+   ```
 
 2. `train.py` 脚本引用 `mylib.py`，通过后者，可获取要在岭模型中使用的 alpha 值的列表。
 
-  ```python
-  # mylib.py
+   ```python
+   # mylib.py
   
-  import numpy as np
+   import numpy as np
 
-  def get_alphas():
+   def get_alphas():
       # list of numbers from 0.0 to 1.0 with a 0.05 interval
       return np.arange(0.0, 1.0, 0.05)
-  ```
+   ```
 
 3. 配置用户管理的本地环境。
 
-  ```python
-  from azureml.core.runconfig import RunConfiguration
+   ```python
+   from azureml.core.runconfig import RunConfiguration
 
-  # Editing a run configuration property on-fly.
-  run_config_user_managed = RunConfiguration()
+   # Editing a run configuration property on-fly.
+   run_config_user_managed = RunConfiguration()
 
-  run_config_user_managed.environment.python.user_managed_dependencies = True
+   run_config_user_managed.environment.python.user_managed_dependencies = True
 
-  # You can choose a specific Python environment by pointing to a Python path 
-  #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
-  ```
+   # You can choose a specific Python environment by pointing to a Python path 
+   #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
+   ```
 
 4. 提交要在用户管理的环境中运行的 ```train.py``` 脚本。 整个脚本文件夹都要提交以进行训练，包括 ```mylib.py``` 文件。
 
-  ```python
-  from azureml.core import ScriptRunConfig
+   ```python
+   from azureml.core import ScriptRunConfig
   
-  experiment = Experiment(workspace=ws, name="train-on-local")
-  src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
-  run = experiment.submit(src)
-  ```
+   experiment = Experiment(workspace=ws, name="train-on-local")
+   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
+   run = experiment.submit(src)
+   ```
 
 ## <a name="cancel-a-run"></a>取消运行
 提交某个运行后，只要知道实验名称和运行 id，即使已丢失对象引用，仍可将其取消。 
@@ -255,12 +254,12 @@ az ml run cancel -r <run_id> -p <project_path>
 
 1. 在等待运行完成的期间查看 Jupyter 小组件。
 
-  ```python
-  from azureml.widgets import RunDetails
-  RunDetails(run).show()
-  ```
+   ```python
+   from azureml.widgets import RunDetails
+   RunDetails(run).show()
+   ```
 
-  ![Jupyter 笔记本小组件的屏幕截图](./media/how-to-track-experiments/widgets.PNG)
+   ![Jupyter 笔记本小组件的屏幕截图](./media/how-to-track-experiments/widgets.PNG)
 
 2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 请将 `<<experiment_name>>` 替换为相应的试验名称：
 
@@ -274,7 +273,7 @@ az ml run cancel -r <run_id> -p <project_path>
    RunDetails(run).show()
    ```
 
-  ![自动化机器学习的 Jupyter Notebook 小组件](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+   ![自动化机器学习的 Jupyter Notebook 小组件](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
 若要查看某个管道的其他详细信息，请在表中单击要探索的管道，随后，图表将在 Azure 门户上的弹出窗口中呈现。
@@ -329,17 +328,17 @@ az ml run cancel -r <run_id> -p <project_path>
 
 1. 在工作区的最左侧面板中选择“试验”。
 
-  ![试验菜单的屏幕截图](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
+   ![试验菜单的屏幕截图](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
 
 1. 选择所需的试验。
 
-  ![试验列表](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+   ![试验列表](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
 
 1. 在表中选择“运行编号”。
 
    ![试验运行](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
 
-1.  在表中，选择要进一步探索的模型的“迭代编号”。
+1. 在表中，选择要进一步探索的模型的“迭代编号”。
 
    ![试验模型](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
 
@@ -449,7 +448,7 @@ az ml run cancel -r <run_id> -p <project_path>
 
 ## <a name="example-notebooks"></a>示例笔记本
 下面的笔记本展示了本文中的概念：
-* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training\train-within-notebook)
+* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/training/logging-api/logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 

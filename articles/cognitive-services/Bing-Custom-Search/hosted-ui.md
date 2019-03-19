@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fbe865a5d9ef6c44b80c811a023c86f6446c3bb8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233874"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084126"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>配置托管 UI 体验
 
@@ -43,10 +43,10 @@ ms.locfileid: "56233874"
     
 5. 选择颜色主题。 可以通过单击“自定义主题”来自定义适合应用程序的颜色。 若要更改颜色，请输入颜色的 RGB HEX 值（例如 `#366eb8`），或者单击颜色预览。
 
-  可以在门户右侧预览所做的更改。 单击“重置为默认值”就会将所做的更改还原为所选主题的默认颜色。
+   可以在门户右侧预览所做的更改。 单击“重置为默认值”就会将所做的更改还原为所选主题的默认颜色。
 
-  > [!NOTE]
-  > 选择颜色时需考虑到辅助功能。
+   > [!NOTE]
+   > 选择颜色时需考虑到辅助功能。
 
 6. 在“其他配置”下，根据应用提供相应的值。 这些设置是可选的。 若要查看应用或删除设置后的效果，请查看右侧的预览窗格。 可用配置有：  
 

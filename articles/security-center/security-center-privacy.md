@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8cbe391f756dab35abda411c3a6c943a51eae302
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: fcec410df631a58b76878a4cb327ca2fb04a2105
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115974"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117841"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>在 Azure 安全中心内管理用户数据
 本文提供了有关如何在 Azure 安全中心内管理用户数据的信息。 管理用户数据包括访问、删除或导出数据的能力。
@@ -68,25 +68,25 @@ ms.locfileid: "56115974"
 
 - 从 Azure 门户中执行复制
 - 执行 Azure REST API 调用、GET HTTP：
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
+  ```
 
 分配有帐户管理员角色的安全中心用户可以通过以下方式导出包含 IP 地址的[实时策略](security-center-just-in-time.md)：
 
 - 从 Azure 门户中执行复制
 - 执行 Azure REST API 调用、GET HTTP：
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
+  ```
 
 帐户管理员可以通过以下方式导出警报详细信息：
 
 - 从 Azure 门户中执行复制
 - 执行 Azure REST API 调用、GET HTTP：
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
+  ```
 
 有关详细信息，请参阅[获取安全警报（获取集合）](https://msdn.microsoft.com/library/mt704050.aspx)。
 

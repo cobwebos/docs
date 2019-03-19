@@ -8,12 +8,12 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 9c0874199a21f7357ae387e7ac4a26267c6635fc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 6f042b9bc971498310ec51d07a1eba7193b21b00
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56078491"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554662"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>设置适用于 Azure DNS 的 Azure PowerShell
 
@@ -21,7 +21,7 @@ ms.locfileid: "56078491"
 
 [!INCLUDE [requires-azurerm](requires-azurerm.md)]
 
-在开始配置之前，请确认你具备以下项。
+在开始配置之前，请确保具备以下各项。
 
 * Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * 需安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
-打开 PowerShell 控制台并连接到帐户。 有关详细信息，请参阅[将 PowerShell 与 Resource Manager 配合使用](../articles/azure-resource-manager/powershell-azure-resource-manager.md)。
+打开 PowerShell 控制台并连接到帐户。 有关详细信息，请参阅[登录](/powershell/azure/install-az-ps?view=azps-1.4.0#sign-in)。
 
 ```powershell
 Connect-AzureRmAccount

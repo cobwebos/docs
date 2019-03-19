@@ -3,23 +3,23 @@ title: 使用可靠集合 | Microsoft 文档
 description: 了解有关使用可靠集合的最佳实践。
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
-manager: jeanpaul.connock
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/12/2019
-ms.author: twhitney
-ms.openlocfilehash: e7f0219919fe0569633cc85b89a1a91b1704b269
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.date: 02/22/2019
+ms.author: aljo
+ms.openlocfilehash: bb99e5984f91edb0cf40f3bdc485624b9ec59833
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114818"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872681"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠集合
 Service Fabric 通过可靠集合向 .NET 开发人员提供有状态的编程模型。 具体而言，Service Fabric 提供可靠字典和可靠队列类。 使用这些类时，状态是分区的（实现伸缩性）、复制的（实现可用性），并在分区内进行事务处理（实现 ACID 语义）。 让我们看一下可靠字典对象的典型用法，并看一看它究竟做些什么。
@@ -57,7 +57,7 @@ catch (TimeoutException)
 
 获取锁后，AddAsync 会在与 ITransaction 对象关联的内部临时字典中添加键和值对象引用。 这就完成了读取自己编写的语义。 也就是说，在调用 AddAsync 之后，稍后对 TryGetValueAsync 的调用（使用相同的 ITransaction 对象）将返回值，即使尚未提交事务。 接下来，AddAsync 将键和值对象序列化为字节数组，并将这些字节数组附加到本地节点的日志文件。 最后，AddAsync 将字节数组发送给所有辅助副本，使其具有相同的键/值信息。 即使键/值信息已写入日志文件，在提交其关联的事务之前，这些信息不被视为字典的一部分。
 
-在上述代码中，调用 CommitAsync 会提交所有事务操作。 具体而言，它将提交信息附加到本地节点的日志文件，同时将提交记录发送给所有辅助副本。 回复副本的仲裁（多数）后，所有数据更改会被视为永久性，并释放通过 ITransaction 对象操作的任何键关联锁，使其他线程/事务可以操作相同的键及其值。
+在上述代码中，调用 CommitAsync 会提交所有事务操作。 具体而言，它将提交信息附加到本地节点的日志文件，同时将提交记录发送给所有辅助副本。 回复副本的仲裁（多数）后，所有数据更改将被视为永久性，并释放通过 ITransaction 对象操作的任何键关联锁，使其他线程/事务可以操作相同的键及其值。
 
 如果未调用 CommitAsync（通常是因为引发了异常），则会释放 ITransaction 对象。 在释放未提交的 ITransaction 对象时，Service Fabric 会将中止信息附加到本地节点的日志文件，且不需要将任何信息发送到任何辅助副本。 然后将释放通过事务操作的任何与键关联的锁。
 
@@ -112,7 +112,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 }
 ```
 
-同样地，使用常规 .NET 字典时，以上代码以常见的模式正常运行：开发人员使用键查询值。 如果值存在，开发人员将更改属性的值。 不过，使用可靠集合时，此代码将出现前面所述的相同问题：**将对象分配给可靠集合后，不得修改该对象**
+同样地，使用常规 .NET 字典时，以上代码以常见的模式正常运行：开发人员使用键查询值。 如果值存在，开发人员将更改属性的值。 不过，使用可靠集合时，此代码将出现前面所述的相同问题：将对象分配给可靠集合后，你不得修改该对象。
 
 在可靠集合中更新值的正确方式是获取对现有值的引用，并将此引用所引用的对象视为不可变。 然后创建新的对象，即原始对象的完全相同副本。 现在，可以修改此新对象的状态，将新对象写入集合，以便将它序列化为字节数组、附加到本地文件并发送到副本。 提交更改之后，内存中的对象、本地文件和所有副本都处于完全一致的状态。 大功告成！
 
@@ -143,7 +143,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>定义不可变的数据类型以防止编程器错误
-理想情况下，我们希望编译器能够在意外生成改变对象状态的代码、而此对象又不该改变时报告错误。 但是 C# 编译器做不到这一点。 因此，为了避免潜在的编程器错误，我们强烈建议将可靠集合使用的类型定义为不可变类型。 具体而言，这意味着要坚持使用核心值类型（例如数字 [Int32、UInt64 等]、DateTime、Guid、TimeSpan 等）。 也可以使用 String。 最好是避免集合属性，因为将其序列化和反序列化经常会降低性能。 但是，如果希望使用集合属性，强烈建议使用 .NET 的不可变集合库 ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/))。 可以从 http://nuget.org 下载此库。此外，我们建议尽可能地密封类，并将字段设为只读。
+理想情况下，我们希望编译器能够在意外生成改变对象状态的代码、而此对象又不该改变时报告错误。 但是 C# 编译器做不到这一点。 因此，为了避免潜在的编程器错误，我们强烈建议将可靠集合使用的类型定义为不可变类型。 具体而言，这意味着要坚持使用核心值类型（例如数字 [Int32、UInt64 等]、DateTime、Guid、TimeSpan 等）。 也可以使用 String。 最好是避免集合属性，因为将其序列化和反序列化经常会降低性能。 但是，如果希望使用集合属性，强烈建议使用 .NET 的不可变集合库 ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/))。 可以从 https://nuget.org 下载此库。此外，我们建议尽可能地密封类，并将字段设为只读。
 
 以下 UserInfo 类型演示如何利用上述建议定义不可变类型。
 
@@ -207,8 +207,7 @@ public struct ItemId
 
 > [!WARNING]
 > 尽管可以修改键的架构，但必须确保键哈希代码和相等算法是稳定的。 如果更改其中任一算法的工作方式，再也无法在可靠字典中查询键。
->
->
+> .NET 字符串可以用作键，但请使用字符串本身作为键，不要使用 String.GetHashCode 的结果作为键。
 
 另外，也可以执行通称为两阶段升级的功能。 通过两阶段升级，可以将服务从 V1 升级到 V2：V2 包含知道如何处理新架构更改的代码，但此代码不会执行。 当 V2 代码读取 V1 数据时，它在其上操作并写入 V1 数据。 然后，在跨所有升级域的升级都完成之后，就可以通知运行中的 V2 实例，升级已完成。 （通知方式之一是推出配置升级；这就是两阶段升级。）现在，V2 实例可以读取 V1 数据，将它转换成 V2 数据、操作它，然后写出为 V2 数据。 当其他实例读取 V2 数据时，不需要转换它，只要操作并写出 V2 数据即可。
 

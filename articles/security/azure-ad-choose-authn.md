@@ -9,18 +9,18 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a05874e28c08087b6f82c3aa5a02e83d2629ffe5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 585a5878ce50a5c64c3eb90593de4ff8df5a09d1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694680"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091267"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
 本文是本系列文章中的第一篇，旨在帮助组织实现完整的 Azure Active Directory (Azure AD) 混合标识解决方案。 此解决方案已概述为[混合标识数字转换框架](https://aka.ms/aadframework)。 它涵盖了组织可为实现可靠且安全的混合标识解决方案而关注的业务成果和目标。 
 
-框架的第一个业务成果阐述在用户访问云应用时对组织确保身份验证过程安全的要求。 身份验证保护的业务成果的第一个业务目标是，用户可以使用其本地用户名和密码登录云应用。 有了此登录过程以及用户进行身份验证的方式，才有可能实现云中的一切。
+框架的第一个业务成果阐述在用户访问云应用时对组织确保身份验证过程安全的要求。 身份验证保护的业务成果的第一个业务目标是，用户可以使用其本地用户名和密码登录云应用。 此登录和身份验证过程使所有内容在云中可能。
 
 对于希望将应用移动到云的组织来说，应首先考虑选择正确的身份验证方式。 请不要轻易做出此决策，原因如下：
 
@@ -135,10 +135,10 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **高级方案**。 客户有 Azure AD 本身不支持的身份验证要求时通常需要联合身份验证解决方案。 请参阅详细信息以帮助你[选择正确的登录选项](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/)。 请考虑以下常见要求：
 
-    * 需要智能卡或证书的身份验证。
-    * 本地 MFA 服务器或第三方多重提供程序。
-    * 使用第三方身份验证解决方案的身份验证。 请参阅[Azure AD 联合身份验证兼容性列表](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility)。
-    * 需要 sAMAccountName（例如 DOMAIN\username）而不是用户主体名称 (UPN)（例如 user@domain.com）的登录。
+  * 需要智能卡或证书的身份验证。
+  * 本地 MFA 服务器或第三方多重提供程序。
+  * 使用第三方身份验证解决方案的身份验证。 请参阅[Azure AD 联合身份验证兼容性列表](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility)。
+  * 需要 sAMAccountName（例如 DOMAIN\username）而不是用户主体名称 (UPN)（例如 user@domain.com）的登录。
 
 * **业务连续性**。 联合身份验证系统通常需要负载均衡的服务器阵列（称为场）。 此场在内部网络和外围网络拓扑中配置，以便为身份验证请求确保高可用性。
 
@@ -161,7 +161,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
     ![使用密码哈希同步的 Azure AD 混合标识](media/azure-ad/azure-ad-authn-image2.png)
 
-* 直通身份验证的代理要求：
+* 直通身份验证，以实现冗余使用两个代理的代理要求：
 
     ![使用直通身份验证的 Azure AD 混合标识](media/azure-ad/azure-ad-authn-image3.png)
 
@@ -204,7 +204,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
    * 先前已启用密码哈希同步的组织更改了其身份验证方法以使用密码哈希同步。 它们在数小时内即可重新联机。 通过 Office 365 使用对电子邮件的访问权限，可以解决问题并访问其他基于云的工作负荷。
 
-   * 之前未启用密码哈希同步的组织必须依靠不受信任的外部使用者电子邮件系统进行通信和解决问题。 在这些情况下，需要几周甚至更多的时间才能再次启动并运行。
+   * 之前未启用密码哈希同步的组织必须依靠不受信任的外部使用者电子邮件系统进行通信以解决问题。 在这些情况下，它需要对其的数周之前用户能够登录到基于云的应用再次还原其本地标识基础结构。
 
 3. **标识保护**。 在云中保护用户的最佳方法之一是将 Azure AD Identity Protection 与 Azure AD Premium P2 配合使用。 Microsoft 不断扫描 Internet 以查找歹徒在暗网上销售和提供的用户和密码列表。 Azure AD 可以用此信息验证组织的任意用户名和密码是否泄漏。 所以，无论使用哪种身份验证方法（无论其是联合身份验证还是直通身份验证），启用密码哈希同步都至关重要。 泄漏的凭据将以报表形式提供。 使用此信息可阻止或强制用户在尝试使用泄漏的密码登录时更改其密码。
 

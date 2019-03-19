@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: eb924bcfe3e2545cf6666a19bbb3494c11bc3a48
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 28a7de1b43d793641237197aea841022996b07e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143983"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994037"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "42143983"
 * 有关以代码方式操作队列的详细信息，请参阅[通过 .NET 开始使用 Azure 队列存储](../storage/queues/storage-dotnet-how-to-use-queues.md)。
 * 有关 Azure 存储的常规信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。
 * 有关 Azure 云服务的常规信息，请参阅[云服务文档](https://azure.microsoft.com/documentation/services/cloud-services/)。
-* 有关编写 ASP.NET 应用程序的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
+* 有关编写 ASP.NET 应用程序的详细信息，请参阅 [ASP.NET](https://www.asp.net)。
 
 Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。 一条队列消息的大小最多可为 64 KB，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。
 
@@ -57,7 +57,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**注意：** 在下列示例中，请在代码的前面使用上述全部代码。
+**注意：** 在下列示例中，在代码的前面使用上述全部代码。
 
 ## <a name="create-a-queue-in-code"></a>使用代码创建队列
 若要在代码中创建队列，只需添加对 **CreateIfNotExists** 的调用。
@@ -88,7 +88,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 1. 调用 **GetMessage** 可获取队列中的下一条消息。 从 **GetMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息将持续 30 秒不可见。
 2. 若要完成从队列中删除消息，请调用 **DeleteMessage**。
 
-此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 以下代码会在处理消息后立即调用 **DeleteMessage**。
+此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 以下代码在处理消息后立即调用 **DeleteMessage** 。
 
     // Get the next message in the queue.
     CloudQueueMessage retrievedMessage = messageQueue.GetMessage();

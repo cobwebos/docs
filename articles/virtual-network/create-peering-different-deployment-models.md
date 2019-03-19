@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 1c3a98e6c1aebb497514c074eb66f8cf30e91228
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 4aa6fe901a49f4618b4844f9f5d2a94903d49cbd
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819563"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652359"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>创建虚拟网络对等互连 - 不同部署模型，相同订阅
 
@@ -76,8 +76,8 @@ ms.locfileid: "55819563"
 12. 在上一步骤中单击“确定”后，“添加对等互连”边栏选项卡将会关闭，并再次出现“myVnet1 - 对等互连”边栏选项卡。 几秒钟后，创建的对等互连将显示在该边栏选项卡中。 创建的 myVnet1ToMyVnet2 对等互连的“对等互连状态”列中列出了“已连接”。
 
     现已建立对等互连。 在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
-13. 可选：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
-14. 可选：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-portal)部分中所述的步骤。
+13. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
+14. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-portal)部分中所述的步骤。
 
 ## <a name="cli"></a>创建对等互连 - Azure CLI
 
@@ -139,12 +139,12 @@ ms.locfileid: "55819563"
    该输出将在 PeeringState 列中显示“已连接”。
 
    在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
-7. 可选：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
-8. 可选：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-cli)中所述的步骤。
+7. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
+8. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-cli)中所述的步骤。
 
 ## <a name="powershell"></a>创建对等互连 - PowerShell
 
-1. 安装最新版本的 PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) 和 [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+1. 安装最新版本的 PowerShell [Azure](https://www.powershellgallery.com/packages/Azure)并[Az](https://www.powershellgallery.com/packages/Az/)模块。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 2. 启动 PowerShell 会话。
 3. 在 PowerShell 中，输入 `Add-AzureAccount` 命令登录 Azure。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#requirements-and-constraints)。
 4. 若要通过 PowerShell 创建虚拟网络（经典），必须新建网络配置文件，或修改现有网络配置文件。 了解如何[导出、更新和导入网络配置文件](virtual-networks-using-network-configuration-file.md)。 该文件应包括本教程中使用的虚拟网络的以下 VirtualNetworkSite 元素：
@@ -164,35 +164,35 @@ ms.locfileid: "55819563"
 
     > [!WARNING]
     > 导入更改的网络配置文件会导致订阅中现有虚拟网络（经典）发生变化。 请确保只添加之前的虚拟网络，且不会从订阅中更改或删除任何现有虚拟网络。
-5. 输入 `Connect-AzureRmAccount` 命令，登录 Azure，创建虚拟网络（资源管理器）。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#requirements-and-constraints)。
+5. 输入 `Connect-AzAccount` 命令，登录 Azure，创建虚拟网络（资源管理器）。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#requirements-and-constraints)。
 6. 创建资源组和虚拟网络 (Resource Manager)。 复制该脚本，将其粘贴到 PowerShell，然后按 `Enter`。
 
     ```powershell
     # Create a resource group.
-      New-AzureRmResourceGroup -Name myResourceGroup -Location eastus
+      New-AzResourceGroup -Name myResourceGroup -Location eastus
 
     # Create the virtual network (Resource Manager).
-      $vnet1 = New-AzureRmVirtualNetwork `
+      $vnet1 = New-AzVirtualNetwork `
       -ResourceGroupName myResourceGroup `
       -Name 'myVnet1' `
       -AddressPrefix '10.0.0.0/16' `
       -Location eastus
     ```
 
-7. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到计算机上的文本编辑器。 将 `<subscription id>` 替换为订阅 ID。 如果不知道订阅 ID，请输入 `Get-AzureRmSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 若要执行该脚本，请从文本编辑器中复制修改后的脚本，然后在 PowerShell 会话中右键单击，然后按 `Enter`。
+7. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到计算机上的文本编辑器。 将 `<subscription id>` 替换为订阅 ID。 如果不知道订阅 ID，请输入 `Get-AzSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 若要执行该脚本，请从文本编辑器中复制修改后的脚本，然后在 PowerShell 会话中右键单击，然后按 `Enter`。
 
     ```powershell
     # Peer VNet1 to VNet2.
-    Add-AzureRmVirtualNetworkPeering `
+    Add-AzVirtualNetworkPeering `
       -Name myVnet1ToMyVnet2 `
       -VirtualNetwork $vnet1 `
       -RemoteVirtualNetworkId /subscriptions/<subscription Id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnet2
     ```
 
-8. 执行该脚本后，请检查虚拟网络 (Resource Manager) 的对等互连。 复制以下命令，将其粘贴到 PowerShell 会话，然后按 `Enter`：
+8. 执行该脚本后，请检查虚拟网络（资源管理器）的对等互连。 复制以下命令，将其粘贴到 PowerShell 会话，然后按 `Enter`：
 
     ```powershell
-    Get-AzureRmVirtualNetworkPeering `
+    Get-AzVirtualNetworkPeering `
       -ResourceGroupName myResourceGroup `
       -VirtualNetworkName myVnet1 `
       | Format-Table VirtualNetworkName, PeeringState
@@ -202,8 +202,8 @@ ms.locfileid: "55819563"
 
     在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
-9. 可选：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
-10. 可选：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-powershell)中所述的步骤。
+9. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
+10. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-powershell)中所述的步骤。
 
 ## <a name="delete"></a>删除资源
 
@@ -236,7 +236,7 @@ ms.locfileid: "55819563"
 1. 输入以下命令，删除虚拟网络 (Resource Manager)：
 
     ```powershell
-    Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+    Remove-AzResourceGroup -Name myResourceGroup -Force
     ```
 
 2. 若要通过 PowerShell 删除虚拟网络（经典），必须修改现有网络配置文件。 了解如何[导出、更新和导入网络配置文件](virtual-networks-using-network-configuration-file.md)。 删除本教程中使用的虚拟网络的以下 VirtualNetworkSite 元素：

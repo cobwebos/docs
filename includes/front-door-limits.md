@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 9/17/2018
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: f0c2d1501b9aa19dec8c4ad157e004a57e0e5070
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: e3fa5616518675d8475937ec63afdd8e1742e8c6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47006470"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553287"
 ---
 | 资源 | 默认限制 |
 | --- | --- |
-| 每个订阅的 Front Door资源数 | 100 |
-| 每个资源的前端主机（包括自定义域）数 | 100 |
+| 每个订阅的 azure 第一道防线服务资源 | 100 |
+| 前端主机，其中包括每个资源的自定义域 | 100 |
 | 每个资源的路由规则数 | 100 |
-| 每个资源的后端池数 | 50 |
-| 每个后端池的后端数 | 100 |
+| 每个资源的后端池 | 50 |
+| 每个后端池的后端 | 100 |
 | 要匹配路由规则的路径模式数 | 25 |
 | 每个策略的自定义 Web 应用程序防火墙规则数 | 10 |
 | 每个资源的 Web 应用程序防火墙策略数 | 100 |
@@ -29,15 +29,16 @@ ms.locfileid: "47006470"
 ### <a name="timeout-values"></a>超时值
 #### <a name="client-to-front-door"></a>客户端到 Front Door
 - Front Door 的空闲 TCP 连接超时为 61 秒。
-#### <a name="front-door-to-application-backend"></a>Front Door 到应用程序后端
-- 如果响应是分块响应，则在收到第一个区块时返回 200。
-- 在 HTTP 请求转发到后端之后，Front Door 将等待后端的第一个数据包 30 秒，然后向客户端返回 503 错误。
-- 在从后端收到第一个数据包之后，Front Door 等待 30秒（空闲超时），然后向客户端返回 503 错误。
-- Front Door 到后端的 TCP 会话超时为 30 分钟。
 
-### <a name="upload--download-data-limit"></a>上载/下载数据限制
+#### <a name="front-door-to-application-back-end"></a>到应用程序后端的第一道防线
+- 如果分块的响应进行响应，或如果收到第一个区块后返回 200。
+- HTTP 请求转发到后端后，第一道防线等待 30 秒钟，从后端的第一个数据包。 然后它将 503 错误返回到客户端。
+- 从后端收到的第一个数据包后，等待第一道防线的空闲超时 30 秒。 然后它将 503 错误返回到客户端。
+- 第一道防线到后端 TCP 会话超时为 30 分钟。
 
-|  | 使用分块传输编码 (CTE) | 不使用 HTTP 分块 |
+### <a name="upload-and-download-data-limit"></a>上传和下载数据限制
+
+|  | 使用 chunked 传输编码 (CTE) | 不 HTTP 分块 |
 | ---- | ------- | ------- |
-| **下载** | 下载大小没有限制 | 下载大小没有限制 |
-| **上载** |  只要每个 CTE 上载都小于 28.6 MB，就没有限制 | 大小不得大于 28.6 MB。 |
+| **下载** | 对下载大小没有任何限制。 | 对下载大小没有任何限制。 |
+| **上载** |  只要每个 CTE 上传小于 28.6 MB，没有任何限制。 | 大小不能大于 28.6。 MB。 |

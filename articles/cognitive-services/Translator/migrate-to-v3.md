@@ -10,17 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: 1857cd7c4fe6102f94487dbb2cc5ad5c43c18f99
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301870"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101170"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
 
 > [!NOTE]
 > V2 已于 2018 年 4 月 30 日弃用，并将在 2019 年 4 月 30 日彻底淘汰。
+> 
+> Microsoft Translator 中心将在 2019 年 4 月 30 日停用。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 
 
@@ -49,8 +51,8 @@ Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本�
 | `Speak`     | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | `Detect`     | [Detect](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
-| `AddTranslation`     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| `AddTranslationArray`    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `AddTranslation`     | 不再支持的功能       |
+| `AddTranslationArray`    | 不再支持的功能          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | `GetTranslations`      | 不再支持的功能         |
 | `GetTranslationsArray`      | 不再支持的功能         |
@@ -106,6 +108,10 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 
 ## <a name="compatibility-and-customization"></a>兼容性和自定义
 
+> [!NOTE]
+> 
+> Microsoft Translator 中心将在 2019 年 4 月 30 日停用。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。   
+
 Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 Microsoft Translator Hub 一起使用。 Translator Hub 仅支持传统的统计机器翻译。 现在，可以使用 Custom Translator 对神经翻译进行自定义。 [详细了解如何自定义神经机器翻译](custom-translator/overview.md)
 
 使用 V3 文本 API 的神经翻译不支持使用标准类别（SMT、语音、技术、generalnn）。
@@ -130,13 +136,13 @@ Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 
 * 提供对使用 Microsoft Translator Hub 创建的自定义翻译系统的访问权限。
 * 如果正在使用 api.microsofttranslator.com 终结点，则使用的是文本翻译 API 版本 2。
 
-任何版本的 Translator API 都不会创建翻译的记录。 永远不会与任何人共享你的翻译。 有关详细信息，请参阅 [Translator 无跟踪](http://www.aka.ms/NoTrace)网页。
+任何版本的 Translator API 都不会创建翻译的记录。 永远不会与任何人共享你的翻译。 有关详细信息，请参阅 [Translator 无跟踪](https://www.aka.ms/NoTrace)网页。
 
 ## <a name="links"></a>链接
 
 * [Microsoft 隐私政策](https://privacy.microsoft.com/privacystatement)
 * [Microsoft Azure 法律信息](https://azure.microsoft.com/support/legal)
-* [联机服务术语](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [联机服务术语](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>后续步骤
 

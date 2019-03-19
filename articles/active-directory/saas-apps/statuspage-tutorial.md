@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e940d7593b6760a81a781fd72c0bb45347b00c2a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 912bc9fea7b721b9a74198572bbf916ee0ebe6cd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168134"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>教程：Azure Active Directory 与 StatusPage 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56168134"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 StatusPage 的集成，需备齐以下项目：
 
@@ -114,23 +114,25 @@ ms.locfileid: "56168134"
     ![配置单一登录](./media/statuspage-tutorial/tutorial_statuspage_url.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：
+
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/` |
     | `https://<subdomain>.statuspage.io/` |
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
+    
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/sso/saml/consume` |
     | `https://<subdomain>.statuspage.io/sso/saml/consume` |
 
-    > [!NOTE]
-    > 通过 [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io) 联系 StatusPage 支持团队，请求配置单一登录所需的元数据。 
-    >
-    >a. 从元数据复制“颁发者”值，并将其粘贴到“标识符”文本框中。
-    >
-    >b. 从元数据复制回复 URL，并将其粘贴到“回复 URL”文本框中。
+   > [!NOTE]
+   > 通过 [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io) 联系 StatusPage 支持团队，请求配置单一登录所需的元数据。 
+   > 
+   > a. 从元数据复制“颁发者”值，并将其粘贴到“标识符”文本框中。
+   > 
+   > b. 从元数据复制回复 URL，并将其粘贴到“回复 URL”文本框中。
 
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -156,15 +158,15 @@ ms.locfileid: "56168134"
 
 1. 在“SSO 设置”页上，执行以下步骤：
    
-    ![配置单一登录](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
+     ![配置单一登录](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-    ![配置单一登录](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
+     ![配置单一登录](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
-    a. 在“SSO 目标 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+     a. 在“SSO 目标 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
-    b. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“证书”文本框中。 
+     b. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“证书”文本框中。 
 
-    c. 单击“保存配置”。
+     c. 单击“保存配置”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)

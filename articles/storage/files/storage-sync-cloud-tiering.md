@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.subservice: files
-ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: fe363bd6d16d7beea1c8f1e6ec17710975a80924
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470444"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652554"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
@@ -21,9 +21,12 @@ ms.locfileid: "55470444"
 如果用户打开分层文件，Azure 文件同步会从 Azure 文件中无缝召回文件数据，而用户无需知道文件实际存储在 Azure 中。 
  
  > [!Important]  
-    > 重要说明：Windows 系统卷上的服务器终结点不支持云分层，只有大小超过 64 KiB 的文件才能分层到 Azure 文件中。
+ > Windows 系统卷上的服务器终结点不支持云分层，只有大小超过 64 KiB 的文件才能分层到 Azure 文件中。
     
 Azure 文件同步不支持对小于 64 KiB 的文件进行分层，因为分层和召回此类小文件的性能开销超过了节省的空间。
+
+ > [!Important]  
+ > 若要重新调用文件被分层，网络带宽应至少 1 Mbps。 如果网络带宽是小于 1 Mbps，文件可能无法撤回出现超时错误。
 
 ## <a name="cloud-tiering-faq"></a>云分层 FAQ
 

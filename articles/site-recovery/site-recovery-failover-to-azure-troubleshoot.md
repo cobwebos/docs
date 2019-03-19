@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 1/29/2019
+ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 75c97a7feb63a100d322610b7e6d2e5c57bebda2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207490"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889686"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 
@@ -24,7 +24,7 @@ ms.locfileid: "55207490"
 
 Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 以下其中一个原因也可能导致此情况的发生：
 
-* 没有足够的可用配额来创建虚拟机：可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](http://aka.ms/getazuresupport) 来增加此配额。
+* 没有足够的可用配额来创建虚拟机：可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](https://aka.ms/getazuresupport) 来增加此配额。
 
 * 尝试在同一个可用性集中故障转移不同大小系列的虚拟机。 确保在同一个可用性集中选择相同大小系列的所有虚拟机。 可以转到虚拟机的“计算和网络”设置来更改大小，然后重试故障转移。
 
@@ -32,7 +32,7 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 以下其中�
 
 ## <a name="failover-failed-with-error-id-28092"></a>故障转移失败，错误 ID 为 28092
 
-Site Recovery 无法为故障转移的虚拟机创建网络接口。 请确保订阅中有足够的配额来创建网络接口。 可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](http://aka.ms/getazuresupport) 来增加此配额。 如果你拥有足够的配额，则这可能是一个间歇性的问题，请重试该操作。 如果即使在重试后问题仍然存在，请在本文档结尾处留下注释。  
+Site Recovery 无法为故障转移的虚拟机创建网络接口。 请确保订阅中有足够的配额来创建网络接口。 可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](https://aka.ms/getazuresupport) 来增加此配额。 如果你拥有足够的配额，则这可能是一个间歇性的问题，请重试该操作。 如果即使在重试后问题仍然存在，请在本文档结尾处留下注释。  
 
 ## <a name="failover-failed-with-error-id-70038"></a>故障转移失败，错误 ID 为 70038
 
@@ -48,7 +48,7 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 若要手动更改 **Windows 来宾 OS** 的驱动程序的启动类型，请执行以下步骤：
 
-1. [下载](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1)“非混合”脚本并如下所述运行脚本。 此脚本检查 VM 是否需要混合。
+1. [下载](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1)“非混合”脚本并如下所述运行脚本。 此脚本检查 VM 是否需要混合。
 
     `.\Script-no-hydration.ps1`
 
@@ -110,7 +110,50 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 在故障转移后启动 Windows VM 时，如果在恢复的 VM 上收到一条有关意外关闭的消息，则表明在用于故障转移的恢复点中未捕获 VM 关闭状态。 如果恢复到某个点，在这个点 VM 尚未完全关闭，则会发生这种情况。
 
-对于计划外故障转移，这通常不需要担心，通常可以忽略。 对于计划内故障转移，请确保在故障转移之前 VM 正常关闭，并提供足够的时间让待发送的本地复制数据发送到 Azure。 然后使用[“故障转移”屏幕](site-recovery-failover.md#run-a-failover)上的“最新”选项，将 Azure 上的任何待处理数据处理到一个恢复点中，随后用于 VM 故障转移。
+对于计划外故障转移，这通常不需要担心，通常可以忽略。 如果计划在故障转移，确保 VM 在故障转移之前正确关闭，并提供足够的时间挂起的复制在本地数据发送到 Azure。 然后使用[“故障转移”屏幕](site-recovery-failover.md#run-a-failover)上的“最新”选项，将 Azure 上的任何待处理数据处理到一个恢复点中，随后用于 VM 故障转移。
+
+## <a name="unable-to-select-the-datastore"></a>无法选择的数据存储
+
+无法尝试遇到故障转移虚拟机重新保护时看到的数据存储在 Azure 门户时，指示此问题。 这是因为主目标未被识别为虚拟机添加到 Azure Site Recovery 的 Vcenter 下。
+
+重新保护虚拟机的详细信息，请参阅[重新保护和机故障回复到本地站点故障转移到 Azure 后](vmware-azure-reprotect.md)。
+
+若要解决问题，请执行以下操作：
+
+手动创建主目标在 vCenter，用于管理源计算机。 下一步的 vCenter 发现和刷新结构操作后，数据存储将可用。
+
+> [!Note]
+> 
+> 发现和刷新结构操作可能需要 30 分钟才能完成。 
+
+## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>使用 CS Linux 主目标注册失败并出现 SSL 错误 35 
+
+与配置服务器的 Azure Site Recovery 主目标注册主目标上启用身份验证代理导致失败。 
+ 
+此错误指示通过安装日志中的以下字符串： 
+
+RegisterHostStaticInfo 遇到异常 config/talwrapper.cpp(107) [文章] CurlWrapper 文章失败： 服务器：10.38.229.221，端口：443，phpUrl: request_handler.php，安全： 为 true，ignoreCurlPartialError: false 出现错误: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231] 未能 post 请求：(35)-SSL 连接错误。 
+ 
+若要解决问题，请执行以下操作：
+ 
+1. 在配置服务器 VM 上，打开命令提示符并验证的代理设置，使用以下命令：
+
+    cat /etc/environment echo $http_proxy 回显 $https_proxy 
+
+2. 如果上一命令的输出所示定义 http_proxy 或 https_proxy 设置，使用以下方法之一来取消阻止与配置服务器的主目标通信：
+   
+   - 下载[PsExec 工具](https://aka.ms/PsExec)。
+   - 使用工具来访问系统用户上下文并确定是否为配置了代理地址。 
+   - 如果配置代理，则打开 IE 在系统用户上下文中使用的 PsExec 工具。
+  
+     **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
+
+   - 若要确保主目标服务器可以与配置服务器通信：
+  
+     - 修改在 Internet Explorer 中绕过主目标服务器的 IP 地址通过代理的代理设置。   
+     或
+     - 禁用主目标服务器上的代理。 
+
 
 ## <a name="next-steps"></a>后续步骤
 - 排查[通过 RDP 连接到 Windows VM](../virtual-machines/windows/troubleshoot-rdp-connection.md) 的问题

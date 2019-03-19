@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: e948ee943db646ca83d39510485849b3c9956e90
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 4739308d301291bf88e8ae547ba85f9648339c4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697443"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118453"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -86,11 +86,11 @@ Contoso 云团队制定了迁移评估的目标：
 
 Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的目标，并能为 Contoso 提供所需的所有信息。
 
-技术 | 说明 | 成本
+技术 | 描述 | 成本
 --- | --- | ---
 [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso 使用数据迁移助手评估和检测可能影响其在 Azure 中数据库功能的兼容性问题。 数据迁移助手评估 SQL 源和目标之间的功能奇偶一致性。 它针对性能和可靠性提升提供建议。 | 数据迁移助手是一个可以免费下载的工具。
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso 使用 Azure Migrate 服务评估其 VMware VM。 Azure Migrate 评估计算机是否适合迁移。 它对在 Azure 中运行时的大小和成本进行估算。  | 截至 2018 年 5 月，使用 Azure Migrate 无需付费。
-[服务地图](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate 使用服务映射来显示公司要迁移的计算机之间的依赖关系。 | 服务映射是 Azure Log Analytics 的一部分。 目前，Contoso 可以免费使用服务映射 180 天。
+[服务地图](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate 使用服务映射来显示公司要迁移的计算机之间的依赖关系。 | 服务映射是 Azure Monitor 日志的一部分。 目前，Contoso 可以免费使用服务映射 180 天。
 
 在此场景中，Contoso 下载并运行数据迁移助手，以评估其旅行应用的本地 SQL Server 数据库。 Contoso 结合使用 Azure Migrate 与依赖关系映射来评估应用 VM，然后再迁移到 Azure。
 
@@ -113,7 +113,7 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
     - **OSTICKETWEB** 运行 Apache 2 和 PHP 7.0。
     - **OSTICKETMYSQL** 运行 MySQL 5.7.22。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在本评估中，Contoso 以及其他用户必须满足以下先决条件：
 
@@ -159,15 +159,15 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 
     ![数据迁移助手 - 选择源](./media/contoso-migration-assessment/dma-assessment-1.png)
 
-    > [!NOTE]
-      目前，数据迁移助手不支持迁移到 Azure SQL 数据库托管实例所需的评估。 为了解决此问题，Contoso 将 Azure VM 上的 SQL Server 用作评估的假定目标。
+   > [!NOTE]
+   >    目前，数据迁移助手不支持迁移到 Azure SQL 数据库托管实例所需的评估。 为了解决此问题，Contoso 将 Azure VM 上的 SQL Server 用作评估的假定目标。
 
 3. 在“选择目标版本”中，Contoso 选择 SQL Server 2017 作为目标版本。 Contoso 需要选择此版本，因为这是 SQL 数据库托管实例使用的版本。
 4. Contoso 选择报告，以帮助它发现有关兼容性和新功能的信息：
-    - “兼容性问题”会指出那些可能会妨碍迁移的更改，或者需要在迁移之前进行微小调整的更改。 此报告会始终告知 Contoso 任何当前所用功能已弃用的情况。 问题按兼容性级别进行组织。
-    - “新功能的建议”会指出目标 SQL Server 平台中可以在迁移后用于数据库的新功能。 新功能建议按标题“性能”、“安全性”和“存储”进行整理。
+   - “兼容性问题”会指出那些可能会妨碍迁移的更改，或者需要在迁移之前进行微小调整的更改。 此报告会始终告知 Contoso 任何当前所用功能已弃用的情况。 问题按兼容性级别进行组织。
+   - “新功能的建议”会指出目标 SQL Server 平台中可以在迁移后用于数据库的新功能。 新功能建议按标题“性能”、“安全性”和“存储”进行整理。
 
-    ![数据迁移助手 - 兼容性问题和新功能](./media/contoso-migration-assessment/dma-assessment-2.png)
+     ![数据迁移助手 - 兼容性问题和新功能](./media/contoso-migration-assessment/dma-assessment-2.png)
 
 2. 在“连接到服务器”中，Contoso 输入运行数据库的 VM 名称和凭据来进行访问。 Contoso 选择“信任服务器证书”，确保该 VM 可访问 SQL Server。 然后，Contoso 选择“连接”。
 
@@ -186,13 +186,13 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 
 1. 在“兼容性问题”报告中，Contoso 检查每个兼容性级别的任何问题。 兼容性级别会映射到 SQL Server 版本，如下所示：
 
-    - 100：SQL Server 2008/Azure SQL 数据库
-    - 110：SQL Server 2012/Azure SQL 数据库
-    - 120：SQL Server 2014/Azure SQL 数据库
-    - 130：SQL Server 2016/Azure SQL 数据库
-    - 140：SQL Server 2017/Azure SQL 数据库
+   - 100：SQL Server 2008/Azure SQL 数据库
+   - 110：SQL Server 2012/Azure SQL 数据库
+   - 120：SQL Server 2014/Azure SQL 数据库
+   - 130：SQL Server 2016/Azure SQL 数据库
+   - 140：SQL Server 2017/Azure SQL 数据库
 
-    ![数据迁移助手 - 兼容性问题报告](./media/contoso-migration-assessment/dma-assessment-5.png)
+     ![数据迁移助手 - 兼容性问题报告](./media/contoso-migration-assessment/dma-assessment-5.png)
 
 2. 在“功能建议”报告中，Contoso 可查看此评估建议的迁移后的性能、安全性和存储功能。 建议的功能多种多样，其中包括：内存中 OLTP、列存储索引、Stretch Database、Always Encrypted、动态数据掩码和透明数据加密。
 
@@ -403,14 +403,14 @@ Contoso 在每个 VM 上运行安装。
 
     `sudo -i`
 3. Contoso 安装 MMA：
-    - Contoso 在命令中输入工作区 ID 和密钥。
-    - 这些命令适用于 64 位。
-    - 工作区 ID 和主密钥位于 Azure 门户的 Log Analytics 工作区中。 依次选择“设置”和“连接的源”选项卡。
-    - 运行以下命令以下载 Log Analytics 代理，验证校验和，并安装和载入代理：
+   - Contoso 在命令中输入工作区 ID 和密钥。
+   - 这些命令适用于 64 位。
+   - 工作区 ID 和主密钥位于 Azure 门户的 Log Analytics 工作区中。 依次选择“设置”和“连接的源”选项卡。
+   - 运行以下命令以下载 Log Analytics 代理，验证校验和，并安装和载入代理：
 
-    ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
-    ```
+     ```
+     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
+     ```
 
 #### <a name="install-the-dependency-agent-on-linux-vms"></a>在 Linux VM 上安装 Dependency Agent
 

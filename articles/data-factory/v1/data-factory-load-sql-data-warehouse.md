@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 145a1d24e877cc4083706310694005c01c8c8fbf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020143"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077014"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
 > [!NOTE]
@@ -41,11 +41,11 @@ ms.locfileid: "54020143"
 > [!NOTE]
 >  有关数据工厂将数据移入/移出 Azure SQL 数据仓库的功能的一般信息，请参阅[使用 Azure 数据工厂将数据移入和移出 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。
 >
-> 还可以使用 Azure 门户、Visual Studio、PowerShell 等生成管道。有关在 Azure 数据工厂中使用复制活动的分步说明的快速演练，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。  
+> 还可以使用 Azure 门户、Visual Studio、PowerShell 等生成管道。有关分步说明，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。  
 >
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * Azure Blob 存储：此试验使用 Azure Blob 存储 (GRS) 来存储 TPC-H 测试数据集。  如果还没有 Azure 存储帐户，请参阅[如何创建存储帐户](../../storage/common/storage-quickstart-create-account.md)。
 * [TPC-H](http://www.tpc.org/tpch/) 数据：我们将使用 TPC-H 作为测试数据集。  为此，需要使用 TPC-H 工具包中的 `dbgen`，它将有助于生成数据集。  可以从 [TPC 工具](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp)下载 `dbgen` 的源代码，并自己进行编译，或从 [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools) 下载已编译的二进制。  使用以下命令运行 dbgen.exe，为分布在 10 个文件中的 `lineitem` 表生成 1 TB 的平面文件：
 
@@ -109,7 +109,7 @@ ms.locfileid: "54020143"
         CLUSTERED COLUMNSTORE INDEX
     )
     ```
-完成必需的步骤后，现在可以准备使用复制向导配置复制活动。
+  完成必需的步骤后，现在可以准备使用复制向导配置复制活动。
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
 1. 登录到 [Azure 门户](https://portal.azure.com)。
@@ -199,7 +199,7 @@ ms.locfileid: "54020143"
 
     可以在右侧面板中的“活动窗口资源管理器”中查看副本运行的详细信息，包括从源中读取和写入到目标中的数据量、持续时间以及运行的平均吞吐量。
 
-    如以下屏幕截图所示，将 1 TB 数据从 Azure Blob 存储复制到 SQL 数据仓库花费 14 分钟，从而有效地实现了 1.22 GBps 的吞吐量！
+    您可以看到以下屏幕截图中，将 1 TB 从 Azure Blob 存储复制到 SQL 数据仓库花费 14 分钟，有效地实现了 1.22 GBps 的吞吐量 ！
 
     ![复制向导 - “成功”对话框](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 

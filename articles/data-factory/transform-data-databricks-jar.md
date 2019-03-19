@@ -3,21 +3,21 @@ title: 使用 Databricks Jar 转换数据 - Azure | Microsoft Docs
 description: 了解如何通过运行 Databricks Jar 处理或转换数据。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 8a271359f09ca63e1a0c3a143994739ee7db8aab
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014176"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575862"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Jar 活动转换数据
 
@@ -56,7 +56,7 @@ ms.locfileid: "54014176"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|必选|
+|属性|说明|需要|
 |:--|---|:-:|
 |名称|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
@@ -94,7 +94,7 @@ ms.locfileid: "54014176"
         {
             "cran": {
                 "package": "ada",
-                "repo": "http://cran.us.r-project.org"
+                "repo": "https://cran.us.r-project.org"
             }
         }
     ]

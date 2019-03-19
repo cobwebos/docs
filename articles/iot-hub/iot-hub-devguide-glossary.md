@@ -1,21 +1,21 @@
 ---
 title: Azure IoT 中心术语词汇表 | Microsoft Docs
 description: 开发人员指南 - 与 Azure IoT 中心相关的常用术语的术语表。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: dobett
-ms.openlocfilehash: d815f980a0583058957b7d87b6c99df59e9a4821
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: ac7043d2967fcf3f083c09622c39f4649f04f6e7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817371"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551664"
 ---
-# <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语词汇表
+# <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语表
 本文列出了一些在 IoT 中心文章中使用的常用术语。
 
 ## <a name="advanced-message-queueing-protocol"></a>高级消息队列协议
@@ -62,7 +62,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 在 [IoT 中心](#iot-hub)环境中，后端应用是指连接到 IoT 中心的一个面向服务的终结点的应用。 例如，后端应用可能检索[设备到云](#device-to-cloud)的消息或管理[标识注册表](#identity-registry)。 通常，后端应用在云中运行，但在许多教程中，后端应用是在本地开发计算机上运行的控制台应用。
 
 ## <a name="built-in-endpoints"></a>内置终结点
-每个 IoT 中心都包括一个与事件中心兼容的内置[终结点](iot-hub-devguide-endpoints.md)。 可使用任何适用于事件中心的机制从该终结点读取设备到云的消息。
+每个 IoT 中心都包括一个与事件中心兼容的内置[终结点](iot-hub-devguide-endpoints.md)。 可以使用任何适用于事件中心的机制从此终结点读取设备到云消息。
 
 ## <a name="cloud-gateway"></a>云网关
 云网关使不能直接连接到 [IoT 中心](#iot-hub)的设备能建立连接。 与在设备本地运行的[现场网关](#field-gateway)相反，云网关在云中托管。 云网关的一个典型用例是实现设备的协议转换。
@@ -76,7 +76,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 ## <a name="connection-string"></a>连接字符串
 使用应用程序代码中的连接字符串来封装连接到终结点所需的信息。 连接字符串通常包含终结点的地址和安全信息，但连接字符串的格式因服务而异。 与 IoT 中心服务关联的连接字符串有两种：
 - 设备连接字符串使设备能够连接到 IoT 中心上面向设备的终结点。
-- IoT 中心连接字符串使后端应用能够连接到 IoT 中心上面向服务的终结点。
+- *IoT 中心连接字符串* 使后端应用能够连接到 IoT 中心上面向服务的终结点。
 
 ## <a name="custom-endpoints"></a>自定义终结点
 可在 IoT 中心创建自定义[终结点](iot-hub-devguide-endpoints.md)传递由[路由规则](#routing-rules)调度的消息。 自定义终结点直接连接事件中心、服务总线队列或服务总线主题。
@@ -97,7 +97,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 指从已连接设备发送到 [IoT 中心](#iot-hub)的消息。 这些消息可能是[数据点](#data-point-message)或[交互式](#interactive-message)消息。 有关详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
 
 ## <a name="device"></a>设备
-在 IoT 上下文中，设备通常是可以收集数据或控制其他设备的小型独立计算设备。 例如，设备可以是环境监视设备，也可以是控制器，控制温室中的浇水和通风系统。 [设备目录](https://catalog.azureiotsuite.com/)提供经过认证的可用于 [IoT 中心](#iot-hub)的硬件设备列表。
+在 IoT 上下文中，设备通常是指小型、独立的计算设备，可用于收集数据或控制其他设备。 例如，设备可以是环境监视设备，也可以是控制器，控制温室中的浇水和通风系统。 [设备目录](https://catalog.azureiotsolutions.com/)提供经过认证的可用于 [IoT 中心](#iot-hub)的硬件设备列表。
 
 ## <a name="device-app"></a>设备应用
 设备应用在用户的[设备](#device)上运行，处理与 [IoT 中心](#iot-hub)的通信。 通常情况下，实现设备应用时会使用一个 [Azure IoT 设备 SDK](#azure-iot-device-sdks)。 在许多 IoT 教程中，为方便起见使用[模拟设备](#simulated-device)。
@@ -130,7 +130,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 [设备孪生](iot-hub-devguide-device-twins.md)是存储设备状态信息（如元数据、配置和条件）的 JSON 文档。 [IoT 中心](#iot-hub)为在 IoT 中心预配的每台设备保留一个设备孪生。 借助设备孪生可以在设备和解决方案后端之间同步[设备条件](#device-condition)和配置。 可以通过查询设备孪生来定位特定设备和查询长时间运行的操作状态。
 
 ## <a name="direct-method"></a>直接方法
-[直接方法](iot-hub-devguide-direct-methods.md)可让你通过在 IoT 中心调用 API 触发在设备上执行的方法。
+[直接方法](iot-hub-devguide-direct-methods.md)可让你通过在 IoT 中心上调用 API来触发在设备上执行的方法。
 
 ## <a name="endpoint"></a>终结点
 IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使应用能够连接到 IoT 中心。 有面向设备的终结点，通过此终结点设备可以执行一些操作，例如发送[设备到云](#device-to-cloud)的消息和接收[云到设备](#cloud-to-device)的消息。 有面向服务的管理终结点，通过此终结点[后端应用](#back-end-app)可执行一些操作，如[设备标识](#device-identity)管理和设备孪生管理。 还有面向服务的[内置终结点](#built-in-endpoints)，用于读取设备到云的消息。 可创建[自定义终结点](#custom-endpoints)，接收由[路由规则](#routing-rules)调度的设备到云消息。
@@ -154,7 +154,7 @@ IoT 中心公开了多个[终结点](iot-hub-devguide-endpoints.md)，以便使�
 [标识注册表](iot-hub-devguide-identity-registry.md)是 IoT 中心的内置组件，用于存储允许连接到 IoT 中心的单个设备的信息。
 
 ## <a name="interactive-message"></a>交互式消息
-交互式消息是[云到设备](#cloud-to-device)的消息，可在解决方案后端触发即时操作。 例如，设备可能会发送故障警报，而该故障会自动记录到 CRM 系统中。
+交互式消息是 [云到设备](#cloud-to-device) 的消息，可在解决方案后端触发即时操作。 例如，设备可能会发送故障警报，而该故障会自动记录到 CRM 系统中。
 
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
@@ -191,7 +191,7 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 与设备孪生类似，模块孪生是存储模块状态信息（如元数据、配置和条件）的 JSON 文档。 IoT 中心为在 IoT 中心的设备标识下预配的每个模块实体保留一个模块孪生。 可以借助模块孪生在模块和解决方案后端之间同步模块条件和配置。 可以通过查询模块孪生来定位特定模块和查询长时间运行的操作状态。
 
 ## <a name="mqtt"></a>MQTT
-[MQTT](http://mqtt.org/) 是 [IoT 中心](#iot-hub)支持与设备进行通信的消息传递协议之一。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
+[MQTT](https://mqtt.org/) 是 [IoT 中心](#iot-hub)支持与设备进行通信的消息传递协议之一。 有关 IoT 中心支持的消息传递协议的详细信息，请参阅[使用 IoT 中心发送和接收消息](iot-hub-devguide-messaging.md)。
 
 ## <a name="operations-monitoring"></a>操作监视
 使用 IoT 中心[操作监视](iot-hub-operations-monitoring.md)可实时监视其 IoT 中心上的操作状态。 [IoT 中心](#iot-hub)可以跨多个类别的操作跟踪事件。 可以选择将一个或多个类别的事件发送到 IoT 中心终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。

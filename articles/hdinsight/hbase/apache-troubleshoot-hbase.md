@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: 4dc50de7a97055e336627e34f747a17fcedc7e58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651599"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091539"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache HBase 进行故障排除
 
@@ -367,7 +367,7 @@ HMaster 超时时出现类似于“java.io.IOException:超时 300000 毫秒，�
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-由于这种突然关闭，尽管区域服务器进程已停止，但与该进程关联的端口可能没有释放。 此状况可能会导致在启动区域服务器时发生 AddressBindException，如以下日志中所示。 可以在区域服务器启动失败的工作节点上的 /var/log/hbase 目录中的 region-server.log 内对此进行验证。 
+   由于这种突然关闭，尽管区域服务器进程已停止，但与该进程关联的端口可能没有释放。 此状况可能会导致在启动区域服务器时发生 AddressBindException，如以下日志中所示。 可以在区域服务器启动失败的工作节点上的 /var/log/hbase 目录中的 region-server.log 内对此进行验证。 
 
    ```apache
 

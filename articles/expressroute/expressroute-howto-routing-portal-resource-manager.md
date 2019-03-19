@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 0cc0068f9e1d836800aa77b3057815962581d47b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 401827f3fa5eb6d364d0f133d8cd672cf8968031
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243362"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103173"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的对等互连
 
@@ -57,37 +57,37 @@ ms.locfileid: "55243362"
 
 1. 配置 ExpressRoute 线路。 在进一步继续之前，请确保线路完全由连接提供商设置。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Microsoft 对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。
 
-  ![列出 Microsoft 对等互连](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![列出 Microsoft 对等互连](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. 配置线路的 Microsoft 对等互连。 在继续下一步之前，请确保已准备好以下信息。
 
-  * 主链路的 /30 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
-  * 辅助链路的 /30 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
-  * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。 主要链接和次要链接必须使用相同的 VLAN ID。
-  * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
-  * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
-  * “可选”- 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
-  * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
-  * **可选** - MD5 哈希（如果选择使用）。
+   * 主链路的 /30 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
+   * 辅助链路的 /30 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
+   * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。 主要链接和次要链接必须使用相同的 VLAN ID。
+   * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
+   * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
+   * “可选”- 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
+   * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
+   * **可选** - MD5 哈希（如果选择使用）。
 3. 可以选择想要配置的对等互连，如以下示例中所示。 选择 Microsoft 对等互连行。
 
-  ![选择 Microsoft 对等互连行](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
+   ![选择 Microsoft 对等互连行](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
 4. 配置 Microsoft 对等互连。 下图显示了一个配置示例：
 
-  ![配置 Microsoft 对等互连](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
+   ![配置 Microsoft 对等互连](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
 5. 指定所有参数后，请保存配置。
 
-  如果线路到达需要验证的状态（如下图中所示），则必须打开支持票证以向我们的支持团队显示前缀所有权的证明。
+   如果线路到达需要验证的状态（如下图中所示），则必须打开支持票证以向我们的支持团队显示前缀所有权的证明。
 
-  ![保存 Microsoft 对等互连配置](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
+   ![保存 Microsoft 对等互连配置](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
 
-  可以直接从门户中打开支持票证，如以下示例中所示：
+   可以直接从门户中打开支持票证，如以下示例中所示：
 
-  ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
+   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
 
 
 1. 成功接受配置后，会看到类似于下图中的内容：
 
-  ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
+   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
 ### <a name="getmsft"></a>查看 Microsoft 对等互连详细信息
 
@@ -115,23 +115,23 @@ ms.locfileid: "55243362"
 
 1. 配置 ExpressRoute 线路。 在继续之前，请确保线路完全由连接提供商设置。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。
 
-  ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. 配置线路的 Azure 专用对等互连。 在继续执行后续步骤之前，请确保已准备好以下各项：
 
-  * 主链路的 /30 子网。 此子网不能是保留给虚拟网络使用的任何地址空间的一部分。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
-  * 辅助链路的 /30 子网。 此子网不能是保留给虚拟网络使用的任何地址空间的一部分。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
-  * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。 主要链接和次要链接必须使用相同的 VLAN ID。
-  * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以使用专用 AS 编号建立对等互连（65515 到 65520 之间的数字除外）。
-  * **可选** - MD5 哈希（如果选择使用）。
+   * 主链路的 /30 子网。 此子网不能是保留给虚拟网络使用的任何地址空间的一部分。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
+   * 辅助链路的 /30 子网。 此子网不能是保留给虚拟网络使用的任何地址空间的一部分。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
+   * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。 主要链接和次要链接必须使用相同的 VLAN ID。
+   * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以使用专用 AS 编号建立对等互连（65515 到 65520 之间的数字除外）。
+   * **可选** - MD5 哈希（如果选择使用）。
 3. 选择 Azure 专用对等行，如以下示例中所示：
 
-  ![专用](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
+   ![专用](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
 4. 配置专用对等互连。 下图显示了一个配置示例：
 
-  ![配置专用对等互连](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
+   ![配置专用对等互连](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
 5. 指定所有参数后，请保存配置。 成功接受配置后，会看到类似于以下示例的内容：
 
-  ![保存专用对等互连](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+   ![保存专用对等互连](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
 
 ### <a name="getprivate"></a>查看 Azure 专用对等互连详细信息
 
@@ -164,23 +164,23 @@ ms.locfileid: "55243362"
 
 1. 配置 ExpressRoute 线路。 在进一步继续之前，请确保线路完全由连接提供商设置。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。
 
-  ![列出公共对等互连](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![列出公共对等互连](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. 配置线路的 Azure 公共对等互连。 在继续执行后续步骤之前，请确保已准备好以下各项：
 
-  * 主链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。 
-  * 辅助链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
-  * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。 主要链接和次要链接必须使用相同的 VLAN ID。
-  * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
-  * **可选** - MD5 哈希（如果选择使用）。
+   * 主链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。 
+   * 辅助链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。 在此子网中，Microsoft 将第二个可用的 IP 用于其路由器时，你将为你的路由器分配第一个可用的 IP 地址。
+   * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。 主要链接和次要链接必须使用相同的 VLAN ID。
+   * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
+   * **可选** - MD5 哈希（如果选择使用）。
 3. 选择 Azure 专用对等行，如下图中所示：
 
-  ![选择公共对等互连行](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
+   ![选择公共对等互连行](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
 4. 配置公共对等互连。 下图显示了一个配置示例：
 
-  ![配置公共对等互连](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
+   ![配置公共对等互连](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
 5. 指定所有参数后，请保存配置。 成功接受配置后，会看到类似于以下示例的内容：
 
-  ![保存公共对等互连配置](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
+   ![保存公共对等互连配置](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
 
 ### <a name="getpublic"></a>查看 Azure 公共对等互连详细信息
 

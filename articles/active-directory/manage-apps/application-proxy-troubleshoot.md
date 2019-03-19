@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee78516cbed46174e98c483970a21d740eac6829
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 32d218e057fa040eded07f0adc813485ddaa52fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209619"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080093"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>应用程序代理问题和错误消息故障排除
 如果在访问已发布应用程序或发布应用程序时出现错误，请检查以下选项，查看 Microsoft Azure AD 应用程序代理是否正确工作：
@@ -36,7 +36,7 @@ ms.locfileid: "56209619"
 ## <a name="the-page-is-not-rendered-correctly"></a>页面未正确呈现
 即使没有收到特定的错误消息，应用程序也可能存在绘制或运行不正常的问题。 如果发布了文章路径，但应用程序需要存在于该路径外的内容时，可能发生此情况。
 
-例如，如果发布路径 https://yourapp/app，但应用程序调用 https://yourapp/media 中的图像，则这些图像无法呈现。 确保使用包含所有相关内容所需的最高级路径发布应用程序。 在此示例中，它是 http://yourapp/。
+例如，如果发布路径 `https://yourapp/app`，但应用程序调用 `https://yourapp/media` 中的图像，则这些图像无法呈现。 确保使用包含所有相关内容所需的最高级路径发布应用程序。 在此示例中，它是 `http://yourapp/`。
 
 如果更改路径以包含引用内容，但仍然需要用户登陆路径中更深的链接，请参阅博客文章 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)（在 Azure AD 访问面板和 Office 365 应用启动器中为应用程序代理应用程序设置正确的链接）。
 
@@ -77,9 +77,9 @@ ms.locfileid: "56209619"
 | 错误 | 建议的步骤 |
 | ----- | ----------------- |
 | 网站无法显示页面。 | 如果应用程序是 IWA 应用程序，用户可能在尝试访问已发布的应用时得到此错误。 为此应用程序定义的 SPN 可能不正确。 对于 IWA 应用，确保为此应用程序配置的 SPN 正确。 |
-| 网站无法显示页面。 | 如果应用程序是 OWA 应用程序，用户可能在尝试访问已发布的应用时得到此错误。 这可能由以下原因之一导致：<br><li>为此应用程序定义的 SPN 不正确。 确保针对此应用程序配置的 SPN 正确。</li><li>尝试访问应用程序的用户正在使用 Microsoft 帐户（而不是正确的公司帐户）登录，或者该用户是来宾用户。 确保用户使用与已发布应用程序的域匹配的公司帐户登录。 Microsoft 帐户用户和来宾无法访问 IWA 应用程序。</li><li>尝试访问应用程序的用户未针对本地端的此应用程序正确定义。 确保此用户在本地计算机上具有针对此后端应用程序定义的正确权限。 |
+| 网站无法显示页面。 | 如果应用程序是 OWA 应用程序，用户可能在尝试访问已发布的应用时得到此错误。 这可能由以下原因之一导致：<br><li>为此应用程序定义的 SPN 不正确。 确保针对此应用程序配置的 SPN 正确。</li><li>尝试访问应用程序的用户正在使用 Microsoft 帐户（而不是正确的公司帐户）登录，或者该用户是来宾用户。 确保用户使用与已发布应用程序的域匹配的公司帐户登录。 Microsoft 帐户用户和来宾无法访问 IWA 应用程序。</li><li>用户尝试访问应用程序未正确定义此应用程序上的本地端。 请确保此用户具有针对此后端应用程序在本地机器上定义适当的权限。 |
 | 无法访问此公司应用。 无权访问此应用程序。 授权失败。 确保向用户分配此应用程序的访问权限。 | 如果用户使用 Microsoft 帐户而不是公司帐户登录，则用户可能在尝试访问已发布的应用时得到此错误。 来宾用户也可能得到此错误。 Microsoft 帐户用户和来宾无法访问 IWA 应用程序。 确保用户使用与已发布应用程序的域匹配的公司帐户登录。<br><br>可能未针对此应用程序分配用户。 转到“应用程序”选项卡，并在“用户和组”下将此用户或用户组分配到此应用程序。 |
-| 当前无法访问此公司应用。 请稍后重试…连接器已超时。 | 如果用户未在本地端针对此应用程序正确定义，则用户可能在尝试访问已发布的应用时得到此错误。 确保用户在本地计算机上具有针对此后端应用程序定义的正确权限。 |
+| 当前无法访问此公司应用。 请稍后重试…连接器已超时。 | 尝试访问发布如果它们未正确定义此应用程序上的本地端的应用时，用户可能会收到此错误。 请确保你的用户具有适当的权限，为在本地机器上此后端应用程序定义的一样。 |
 | 无法访问此公司应用。 无权访问此应用程序。 授权失败。 确保用户具有 Azure Active Directory Premium 或 Basic 的许可证。 | 如果订阅方管理员未向用户显式分配 Premium/Basic 许可证，用户可能在尝试访问你发布的应用时得到此错误。 转到订阅方的 Active Directory“许可证”选项卡并确保向此用户或用户组分配 Premium 或 Basic 许可证。 |
 
 ## <a name="my-error-wasnt-listed-here"></a>此处未列出我遇到的错误

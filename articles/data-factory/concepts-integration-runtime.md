@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 82885c00557c85fefcf221789263632e21bd77da
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: ab6da597457fa94c171a1e2547c1d48cf35cd0f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344023"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893044"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -51,7 +51,7 @@ Azure-SSIS | SSIS 包执行 | SSIS 包执行
 Azure 集成运行时能够：
 
 - 在云数据存储之间运行复制活动
-- 在公用网络中分派以下转换活动：HDInsight Hive 活动、HDInsight Pig 活动、HDInsight MapReduce 活动、HDInsight Spark 活动、HDInsight Streaming 活动、Machine Learning Batch Execution 活动、Machine Learning Update Resource 活动、Stored Procedure 活动、Data Lake Analytics U-SQL 活动、Net 自定义活动、Web 活动、Lookup 活动和 Get Metadata 活动。
+- 在公用网络中分派以下转换活动：HDInsight Hive 活动、 HDInsight Pig 活动、 HDInsight MapReduce 活动、 HDInsight Spark 活动、 HDInsight Streaming 活动、 机器学习批处理执行活动、 Machine Learning Update Resource 活动、 存储过程活动Data Lake Analytics U-SQL 活动、.NET 自定义活动、 Web 活动、 Lookup 活动和 Get Metadata 活动。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR 网络环境
 Azure 集成运行时支持使用可公开访问的终结点连接到公用网络中的数据存储和计算服务。 为 Azure 虚拟网络环境使用自承载集成运行时。
@@ -69,7 +69,7 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 自承载 IR 能够：
 
 - 在专用网络中的云数据存储和数据存储之间运行复制活动。
-- 对本地或 Azure 虚拟网络中的计算资源分派以下转换活动：HDInsight Hive 活动 (BYOC-Bring Your Own Cluster)、HDInsight Pig 活动 (BYOC)、HDInsight MapReduce 活动 (BYOC)、HDInsight Spark 活动 (BYOC)、HDInsight Streaming 活动 (BYOC)、Machine Learning Batch Execution 活动、Machine Learning Update Resource 活动、Stored Procedure 活动、Data Lake Analytics U-SQL 活动、.Net 自定义活动、Lookup 活动和 Get Metadata 活动。
+- 对本地或 Azure 虚拟网络中的计算资源分派以下转换活动：HDInsight Hive 活动 （BYOC 使自己的群集）、 HDInsight Pig 活动 (BYOC)、 HDInsight MapReduce 活动 (BYOC)、 HDInsight Spark 活动 (BYOC)、 HDInsight Streaming 活动 (BYOC)，机器学习批处理执行活动，机器学习更新资源活动、 存储过程活动、 Data Lake Analytics U-SQL 活动、.NET 自定义活动、 Lookup 活动和 Get Metadata 活动。
 
 > [!NOTE] 
 > 使用自承载集成运行时支持需要自带驱动程序（如 SAP Hana、MySQL 等）的数据存储。有关详细信息，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

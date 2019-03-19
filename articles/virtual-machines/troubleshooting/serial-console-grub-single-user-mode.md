@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 135741a8bf385388fa1b3ac75a45e4c4678bf196
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: ca2523a1101a21740a318a304f9bec491d4de2f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814458"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106230"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 是指 GRand 统一引导加载程序，它可能是你在启动 VM 时看到的第一个事物。 因为它是在操作系统启动之前显示的，因此无法通过 SSH 进行访问。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -187,7 +187,7 @@ CoreOS 中的单用户模式要求启用 GRUB。
 1. 查找以 `linux` 开头的内核行
 1. 在行尾追加 `systemd.unit=emergency.target`
 1. 按 Ctrl + X 使用这些设置重新启动，并进入紧急 shell
-> 请注意，系统会将你置于采用只读文件系统的紧急 shell。 若要对任何文件进行任何编辑，需要使用读写权限重新装载文件系统。 为此，请在 shell 中输入 `mount -o remount,rw /`
+   > 请注意，系统会将你置于采用只读文件系统的紧急 shell。 若要对任何文件进行任何编辑，需要使用读写权限重新装载文件系统。 为此，请在 shell 中输入 `mount -o remount,rw /`
 
 ## <a name="access-for-oracle-linux"></a>在 Oracle Linux 中访问
 与 Red Hat Enterprise Linux 中的情况非常类似，Oracle Linux 中的单用户模式也要求启用 GRUB 和 root 用户。

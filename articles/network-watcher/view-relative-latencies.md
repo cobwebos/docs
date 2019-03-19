@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 6ac37c3a53b0cc71bdab85fb86e0e85d998867aa
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: HT
+ms.openlocfilehash: 0b6baec08470754c04aaa0bea2a3e6defe7fd91f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300602"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117845"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>查看从特定位置到 Azure 区域的相对延迟
 
@@ -119,8 +119,8 @@ Get-AzureRmNetworkWatcherReachabilityReport `
   -EndTime "2017-12-15"
 ```
 
->[!NOTE]
-与指定单个位置时不同，如果未指定位置，或指定了多个位置（例如“美国西部 2”、“美国西部”），则运行该命令时，必须指定 Internet 服务提供商。 
+> [!NOTE]
+> 与指定单个位置时不同，如果未指定位置，或指定了多个位置（例如“美国西部 2”、“美国西部”），则运行该命令时，必须指定 Internet 服务提供商。 
 
 ## <a name="view-available"></a>查看可用的国家/地区、州/省、城市和提供商
 
@@ -138,7 +138,7 @@ Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWa
 Get-AzureRmNetworkWatcherReachabilityProvidersList `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
-  -City seattle `
+  -City Seattle `
   -Country "United States" `
   -State washington
 ```

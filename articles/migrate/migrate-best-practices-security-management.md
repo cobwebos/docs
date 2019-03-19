@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: eaef1c904b5404339c476d86c5b8c2a1740e5a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 0bd19492c844e217dc520ae0c189ca467bb7ac0a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700071"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011084"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>有关保护和管理已迁移到 Azure 的工作负荷的最佳做法
 
@@ -267,7 +267,7 @@ Azure 中的其他许多安全功能可以提供高级安全选项。 其中的�
 
 - [了解](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)标记和标记限制。
 - [查看](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#powershell)有关设置标记，以及将资源组中的标记应用到其资源的 PowerShell 和 CLI 示例。
-- [阅读](http://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/) Azure 标记最佳做法。
+- [阅读](https://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/) Azure 标记最佳做法。
 
 
 ## <a name="best-practice-implement-blueprints"></a>最佳做法：实施蓝图
@@ -588,7 +588,7 @@ Azure 资源会生成相当多的日志记录指标和遥测数据。
 
 - 默认情况下，大多数资源类型并未启用诊断日志记录。
 - 为各个资源启用诊断日志记录后，可以查询日志记录数据，并基于该数据生成警报和 Playbook。
-- 启用诊断日志记录时，每个资源具有一组特定的类别。 请选择一个或多个日志记录类别，以及日志数据的位置。 可将日志发送到存储帐户、事件中心或 Log Analytics。 
+- 启用诊断日志记录时，每个资源具有一组特定的类别。 请选择一个或多个日志记录类别，以及日志数据的位置。 可以将日志发送到存储帐户，事件中心或 Azure Monitor 日志。 
 
 
 ![诊断日志记录](./media/migrate-best-practices-security-management/diagnostics.png)
@@ -679,7 +679,7 @@ Azure 门户是一个基于 Web 的统一控制台，用于生成、管理和监
 Azure 在 Azure 自动化中提供更改跟踪解决方案：
 
 - 该解决方案跟踪对 Windows 和 Linux 软件与文件、Windows 注册表项、Windows 服务及 Linux 守护程序的更改。
-- 受监视服务器上的更改将发送到云中的 Log Analytics 服务进行处理。
+- 受监视服务器上的更改发送到的云中的 Azure Monitor 服务处理。
 - 逻辑应用于接收的数据，云服务则记录数据。
 - 在“更改跟踪”仪表板上，可以轻松查看服务器基础结构中所做的更改。
 

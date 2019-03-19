@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b7f7fa4889742989a61f8cc076224d46f8eac2
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 018281406bb810f6357ad00948060cedae57fc6d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234096"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003814"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -37,10 +37,12 @@ ms.locfileid: "56234096"
 如果你有本地 Active Directory 环境，并且想要将已加入域的设备联接到 Azure AD，则可以通过配置联接到混合 Azure AD 的设备来实现。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设读者已阅读 [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)。
 
+>[!NOTE]
+>  所需的最低所需 Windows 10 混合 Azure AD join 是 Windows Server 2008 R2 域功能和林功能级别。 在较低版本中，用户可能无法获得主刷新令牌在由于 LSA 问题的 Windows 登录过程 
 
 ## <a name="plan-your-implementation"></a>规划实施
 
@@ -92,7 +94,7 @@ ms.locfileid: "56234096"
 
 如果环境中包含已将标识数据同步到多个 Azure AD 租户的单个林，则你无法使用混合 Azure AD 加入。
 
-如果依赖系统准备工具 (Sysprep)，请确保从尚未针对混合 Azure AD 加入进行配置的 Windows 安装创建映像。
+如果依赖于系统准备工具 (Sysprep)，请确保从 Windows 10 1803年的安装创建的映像或前面未配置为混合 Azure AD 联接。
 
 如果依赖于使用虚拟机 (VM) 快照来创建更多的 VM，请确保使用尚未针对混合 Azure AD 加入进行配置的 VM 快照。
 
@@ -116,6 +118,7 @@ Windows 下层设备的混合 Azure AD 加入：
  - 在设备加入混合 Azure AD 后，会自动删除任何现有的已注册 Azure AD 状态。 
  - 可以通过添加以下注册表项阻止将已加入域的设备注册到 Azure AD - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001
 
+混合 Azure AD 加入不支持与 FIPS 兼容的 Tpm。 如果你的设备具有与 FIPS 兼容的 Tpm，则必须在继续进行混合 Azure AD 加入之前禁用它们。 禁用 FIPS 模式下的 Tpm，因为它是依赖于 TPM 制造商，Microsoft 不提供任何工具。 请联系您的硬件 OEM 获取支持。
 
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>查看如何控制设备的混合 Azure AD 加入
 
@@ -159,7 +162,7 @@ Windows 下层设备的混合 Azure AD 加入：
  
 下表提供了 Windows 10 混合 Azure AD 加入中对这些本地 AD UPN 的支持情况的详细信息
 
-|本地 AD UPN 类型|域类型|Windows 10 版本|说明|
+|本地 AD UPN 类型|域类型|Windows 10 版本|描述|
 |-----|-----|-----|-----|
 |可路由的|联合 |从 1703 版本开始|正式发布|
 |可路由的|托管|从 1709 版本开始|当前为个人预览版。 不支持 Azure AD SSPR |

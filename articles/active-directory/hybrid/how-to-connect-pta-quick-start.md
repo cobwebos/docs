@@ -16,12 +16,12 @@ ms.date: 02/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a282ef88a5112593d4d8b9e304ec6ad03f44787c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415861"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101000"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 传递身份验证：快速入门
 
@@ -68,7 +68,7 @@ ms.locfileid: "56415861"
      如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
    - 如果防火墙或代理允许执行 DNS 允许列表，可以将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入允许列表。  否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 身份验证代理首次注册需要访问 login.windows.net 和 login.microsoftonline.net。 另外，还请为这些 URL 打开防火墙。
-   - 为验证证书，请取消阻止以下 URL：mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80 和 www.microsoft.com:80。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
+   - 验证证书，请取消阻止以下 Url: **mscrl.microsoft.com:80**， **crl.microsoft.com:80**， **ocsp.msocsp.com:80**，和**www\.microsoft.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
 
 ## <a name="step-2-enable-the-feature"></a>步骤 2：启用功能
 

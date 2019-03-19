@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 295ca353530fb438d0bd77a9144813543102b997
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 31f0be804085643d048a35dd61da9156f291f7da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472705"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006467"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>如何通过 Node.js 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -71,7 +71,7 @@ Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
 var queueSvc = azure.createQueueService();
 ```
 
-使用 **createQueueIfNotExists** 方法，该方法将返回指定的队列（如果已存在），或创建具有指定名称的新队列（如果尚不存在）。
+使用 **createQueueIfNotExists** 方法，该方法返回指定的队列（如果已存在），或创建具有指定名称的新队列（如果尚不存在）。
 
 ```javascript
 queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
@@ -157,7 +157,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 ```
 
 > [!NOTE]
-> 默认情况下，一条消息只会隐藏 30 秒，其他客户端就可以看见它。 可将 `options.visibilityTimeout` 与 **getMessages** 配合使用，以指定其他值。
+> 默认情况下，一条消息只会隐藏 30 秒，其他客户端就可以看见它。 可以将 `options.visibilityTimeout` 与 **getMessages** 配合使用，以指定其他值。
 > 
 > [!NOTE]
 > 在队列中没有消息时使用 **getMessages** 不会返回错误，但也不会返回消息。
@@ -335,7 +335,7 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 
-[using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
+[using the REST API]: https://msdn.microsoft.com/library/azure/hh264518.aspx
 
 [Azure Portal]: https://portal.azure.com
 
@@ -343,6 +343,6 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
 [生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
 
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
 
 [Build and deploy a Node.js web app to Azure using Web Matrix]: https://www.microsoft.com/web/webmatrix/

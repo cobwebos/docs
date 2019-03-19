@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: f1f4cb036f4df226d651f8f4d0f5c7492f453a0a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: c77981574ff2e507af7012f26f742dda62d952fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269734"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991967"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
 
-使用 Azure Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 无论你是附加 HDInsight 群集还是使用 Azure Databricks 运行 Apache Spark 作业来对 Azure 存储帐户中存储的数据执行分析，都可以使用命令行接口 (CLI) 来检索和操作所加载的数据。
+使用 Azure Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 无论你是附加 HDInsight 群集还是使用 Azure Databricks 运行 Apache Spark 作业来对 Azure 存储帐户中存储的数据执行分析，都可以使用命令行接口 (CLI) 来检索和操作所加载的数据。
 
 ## <a name="hdfs-cli-with-hdinsight"></a>将 HDFS CLI 与 HDInsight 配合使用
 
@@ -77,10 +77,6 @@ hdfs dfs -mkdir /samplefolder
 ## <a name="hdfs-cli-with-azure-databricks"></a>将 HDFS CLI 与 Azure Databricks 配合使用
 
 Databricks 提供了基于 Databricks REST API 构建的易于使用的 CLI。 此开放源代码项目承载在 [GitHub](https://github.com/databricks/databricks-cli) 上。 下面是常用的命令。
-
-### <a name="create-a-file-system"></a>创建文件系统
-
-在此处放置指南。
 
 ### <a name="get-a-list-of-files-or-directories"></a>获取文件或目录列表
 

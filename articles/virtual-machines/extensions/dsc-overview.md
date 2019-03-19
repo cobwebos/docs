@@ -16,24 +16,28 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: e5e134fa7dd08bad4220866dd4f5bd9b788e624e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: ba5baa928e60729aa128ca5097646768cf5656e8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980595"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441912"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
 Azure VM 代理和关联的扩展是 Microsoft Azure 基础结构服务的一部分。 VM 扩展是软件组件，可以扩展 VM 功能并简化各种 VM 管理操作。
 
-Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到 [Azure Automation DSC 服务](../../automation/automation-dsc-overview.md)。 启动 VM 带来的[好处](/powershell/dsc/metaconfig#pull-service)包括：持续管理 VM 的配置，并与其他操作工具（例如 Azure 监视）集成。
+Azure Desired State Configuration (DSC) 扩展的 VM 启动到主要用例[Azure 自动化状态配置 (DSC) 服务](../../automation/automation-dsc-overview.md)。
+该服务提供[优势](/powershell/dsc/metaconfig#pull-service)包括持续管理 VM 配置以及与其他操作的工具，例如 Azure 监视集成。
+使用扩展向服务注册虚拟机的提供了一个灵活的解决方案，甚至跨 Azure 订阅。
 
-可以独立于 Automation DSC 服务使用 DSC 扩展。 但是，这涉及到在部署期间执行单个操作。 系统不会提供持续的报告或配置管理，只能在 VM 本地执行此类操作。
+可以独立于 Automation DSC 服务使用 DSC 扩展。
+但是，这将仅将配置推送到 VM。
+已发布，而不在 VM 本地没有正在进行报告。
 
 本文提供有关两种方案的信息：使用 DSC 扩展进行自动化加入，以及使用 DSC 扩展作为工具，通过 Azure SDK 将配置分配给 VM。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - **本地计算机**：若要与 Azure VM 扩展交互，必须使用 Azure 门户或 Azure PowerShell SDK。
 - **来宾代理**：使用 DSC 配置进行配置的 Azure VM 必须采用支持 Windows Management Framework (WMF) 4.0 或更高版本的 OS。 有关支持的 OS 版本的完整列表，请参阅 [DSC 扩展版本历史记录](/powershell/dsc/azuredscexthistory)。
@@ -61,6 +65,25 @@ Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM
 ### <a name="default-configuration-script"></a>默认配置脚本
 
 Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Automation DSC 服务载入 VM 时使用。 脚本参数符合[本地配置管理器](/powershell/dsc/metaconfig)的可配置属性。 有关脚本参数，请参阅 [Desired State Configuration 扩展与 Azure 资源管理器模板](dsc-template.md)中的[默认配置脚本](dsc-template.md#default-configuration-script)。 有关完整脚本，请参阅 [GitHub 中的 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)。
+
+## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>注册到 Azure 自动化状态配置 (DSC) 服务的信息
+
+当使用 DSC 扩展状态配置服务注册节点时，将需要提供三个值。
+
+- RegistrationUrl-Azure 自动化帐户的 https 地址
+- RegistrationKey-若要向服务注册节点时使用的共享机密
+- NodeConfigurationName-名称的节点配置 (MOF) 可供抽取要配置的服务器角色的服务
+
+此信息所示[Azure 门户](../../automation/automation-dsc-onboarding.md#azure-portal)或者可以使用 PowerShell。
+
+```PowerShell
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
+```
+
+对于节点配置名称，请确保使用的名称*节点配置*和不包含配置。
+在使用的脚本中定义配置[将节点配置 （MOF 文件） 编译](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile)。
+名称始终为句点后, 跟的配置`.`并且`localhost`或特定的计算机名。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>资源管理器模板中的 DSC 扩展
 
@@ -120,6 +143,34 @@ $storageName = 'demostorage'
 Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+```
+
+## <a name="azure-cli-deployment"></a>Azure CLI 部署
+
+Azure CLI 可用于将 DSC 扩展部署到现有的虚拟机。
+
+对于运行 Windows 的虚拟机：
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name Microsoft.Powershell.DSC \
+  --publisher Microsoft.Powershell \
+  --version 2.77 --protected-settings '{}' \
+  --settings '{}'
+```
+
+对于运行 Linux 的虚拟机：
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name DSCForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 2.7 --protected-settings '{}' \
+  --settings '{}'
 ```
 
 ## <a name="azure-portal-functionality"></a>Azure 门户功能

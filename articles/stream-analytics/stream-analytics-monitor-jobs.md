@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: fac56117c4c70e2735580abb52d05e008d660003
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: be86287f8341b6b86064e51f8a26a8c7f97e867e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089407"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100796"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
 
 本文说明如何为流分析作业启用监视功能。 通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业默认不启用监视功能。 可以在 Azure 门户中手动启用此功能，只需转到作业的“监视”页并单击“启用”按钮即可；也可以按本文中所述步骤自动化此过程。 流分析作业的监视数据会显示在 Azure 门户的“指标”区域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始进行此流程前，必须满足以下条件：
 
@@ -31,7 +31,7 @@ ms.locfileid: "53089407"
 ## <a name="create-a-project"></a>创建一个项目
 
 1. 创建 Visual Studio C# .NET 控制台应用程序。
-2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
+2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，将用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
    
    ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
@@ -142,23 +142,23 @@ ms.locfileid: "53089407"
 
 以下代码为现有流分析作业启用监视功能。 代码的第一部分针对流分析服务执行 GET 请求，目的是检索特定流分析作业的信息。 它使用“Id”属性（从 GET 请求检索而得）作为代码第二部分中 Put 方法的参数，目的是将 PUT 请求发送到 Insights 服务以为流分析作业启用监视功能。
 
->[!WARNING]
->如果此前为其他流分析作业启用了监视功能，那么不管是通过 Azure 门户进行还是通过以下代码以编程方式完成，我们都建议提供在之前启用监视功能时所使用的同一个存储帐户名称。
+> [!WARNING]
+> 如果此前为其他流分析作业启用了监视功能，那么不管是通过 Azure 门户进行还是通过以下代码以编程方式完成，我们都建议提供在之前启用监视功能时所使用的同一个存储帐户名称。
 > 
 > 存储帐户将链接到创建流分析作业时所在的区域，并不特定于作业本身。
 > 
-> 该同一区域中的所有流分析作业（以及所有其他的 Azure 资源）在存储监视数据时会共享此存储帐户。 如果提供其他的存储帐户，则可能会产生意想不到的副作用，这会影响对其他流分析作业或其他 Azure 资源的监视。
+> 该同一区域中的所有流分析作业（以及所有其他 Azure 资源）在存储监视数据时将共享此存储帐户。 如果提供其他存储帐户，则可能会产生意想不到的副作用，这将影响对其他流分析作业或其他 Azure 资源的监视。
 > 
 > 用于替换以下代码中的 `<YOUR STORAGE ACCOUNT NAME>` 的存储帐户名称应该是与为其启用监视功能的流分析作业所在的同一订阅中的存储帐户。
 > 
 > 
-```csharp
-    // Get an existing Stream Analytics job
-    JobGetParameters jobGetParameters = new JobGetParameters()
-    {
-        PropertiesToExpand = "inputs,transformation,outputs"
-    };
-    JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
+> ```csharp
+>     // Get an existing Stream Analytics job
+>     JobGetParameters jobGetParameters = new JobGetParameters()
+>     {
+>         PropertiesToExpand = "inputs,transformation,outputs"
+>     };
+>     JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
 
     // Enable monitoring
     ServiceDiagnosticSettingsPutParameters insightPutParameters = new ServiceDiagnosticSettingsPutParameters()
@@ -172,15 +172,15 @@ ms.locfileid: "53089407"
 ```
 
 
-## <a name="get-support"></a>获取支持
+## Get support
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>后续步骤
+## Next steps
 
-* [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Introduction to Azure Stream Analytics](stream-analytics-introduction.md)
+* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Management REST API Reference](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

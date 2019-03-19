@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 5770cd9a4955013100b7e58698eed77da10c0583
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752766"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012257"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box Blob 存储要求
 
@@ -53,7 +53,7 @@ Data Box Blob 存储支持以下版本的 Azure 存储服务 API：
 |     客户端库     |     Data Box Blob 存储支持的版本     |     链接             |     终结点规范         |
 |------------------------|-------------------------------------------------|---------------------------------------------|------------------------------------|
 |    .NET                |    从 6.2.0 至 8.7.0。                         |    Nuget 包： https://www.nuget.org/packages/WindowsAzure.Storage/ <br>GitHub 版本： https://github.com/Azure/azure-storage-net/releases                                                                      |    app.config 文件                 |
-|    Java                |    从 4.1.0 至 6.1.0                          |    Maven 包： http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>GitHub 版本： https://github.com/Azure/azure-storage-java/releases                                                      |    连接字符串设置         |
+|    Java                |    从 4.1.0 至 6.1.0                          |    Maven 包： https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>GitHub 版本： https://github.com/Azure/azure-storage-java/releases                                                      |    连接字符串设置         |
 |    Node.js             |    从 1.1.0 至 2.7.0                          |    NPM 链接： https://www.npmjs.com/package/azure-storage（例如：运行“npm install azure-storage@2.7.0”）   <br>GitHub 版本： https://github.com/Azure/azure-storage-node/releases                            |    服务实例声明    |
 |    C++                 |    从 2.4.0 至 3.1.0                          |    Nuget 包： https://www.nuget.org/packages/wastorage.v140/   <br>GitHub 版本： https://github.com/Azure/azure-storage-cpp/releases                                                                            |    连接字符串设置         |
 |    PHP                 |    从 0.15.0 至 1.0.0                         |    GitHub 版本： https://github.com/Azure/azure-storage-php/releases   <br>通过 Composer 安装（请参阅下面的详细信息）                                                                                                   |    连接字符串设置         |
@@ -69,7 +69,7 @@ Data Box Blob 存储支持以下版本的 Azure 存储服务 API：
 | 客户端库     |Data Box Blob 存储支持的版本     | 链接   |     终结点规范      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
 |    .NET                |    8.7.0                                           |    Nuget 包： https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0    <br>GitHub 版本： https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0                                                                                                                                                                                               |    app.config 文件                 |
-|    Java                |    6.1.0                                           |    Maven 包： http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub 版本： https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    连接字符串设置         |
+|    Java                |    6.1.0                                           |    Maven 包： https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub 版本： https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    连接字符串设置         |
 |    Node.js             |    2.7.0                                           |    NPM 链接： https://www.npmjs.com/package/azure-storage（运行：npm install azure-storage@2.7.0）   <br>GitHub 版本： https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0                                                                                                                                                                        |    服务实例声明    |
 |    C++                 |    3.1.0                                           |    Nuget 包： https://www.nuget.org/packages/wastorage.v140/3.1.0   <br>GitHub 版本： https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0                                                                                                                                                                                                     |    连接字符串设置         |
 |    PHP                 |    1.0.0                                           |    GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common   <br>Blob： https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob      <br>通过 Composer 安装（请参阅下面的详细信息）。                                                                                                             |    连接字符串设置         |
@@ -96,7 +96,7 @@ Data Box Blob 存储支持以下版本的 Azure 存储服务 API：
 
 ### <a name="endpoint-declaration"></a>终结点声明
 
-Azure Data Box Blob 存储终结点包括两部分：区域名称和 Data Box 域。 在 Data Box Blob 存储 SDK 中，默认终结点为 <serial no. of the device>.microsoftdatabox.com。  有关 blob 服务终结点的更多信息，请转至[通过 Data Box Blob 存储连接](data-box-deploy-copy-data-via-rest.md)。
+Azure Data Box Blob 存储终结点包括两部分：区域名称和 Data Box 域。 在数据框 Blob 存储 SDK 中，默认终结点是\<序列号。设备的 >。 microsoftdatabox.com。  有关 blob 服务终结点的更多信息，请转至[通过 Data Box Blob 存储连接](data-box-deploy-copy-data-via-rest.md)。
  
 ## <a name="examples"></a>示例
 

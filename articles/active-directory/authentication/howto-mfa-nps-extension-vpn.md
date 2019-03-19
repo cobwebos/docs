@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe77602d138224c848cc915bbba5a7084c29650
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c22b035b325582cf4a12ff10a9abbedb8837229b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170051"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117874"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -30,20 +30,20 @@ ms.locfileid: "56170051"
 
 * 分配一个用于网络请求管理和控制的集中位置以指定：
 
-    * 谁可以连接 
+  * 谁可以连接 
     
-    * 允许什么时间进行连接 
+  * 允许什么时间进行连接 
     
-    * 连接持续时间
+  * 连接持续时间
     
-    * 客户端连接时须使用的安全级别
+  * 客户端连接时须使用的安全级别
 
     不是在每个 VPN 或远程桌面网关服务器上指定策略，而是在位于中心位置后指定。 RADIUS 协议用于提供集中身份验证、授权和计帐 (AAA)。 
 
 * 建立和强制执行网络访问保护 (NAP) 客户端健康策略，可确定是授予设备对网络资源的无限制还是受限制的访问权限。
 
 * 提供一种强制进行身份验证和授权，以访问支持 802.1x 无线访问点和以太网交换机的方式。   
-有关详细信息，请参阅[网络策略服务器](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)。 
+  有关详细信息，请参阅[网络策略服务器](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)。 
 
 若要增强安全性，并提供高级别的符合性，组织可以将 NPS 与 Azure 多重身份验证集成，以确保用户使用双重验证连接到 VPN 服务器上的虚拟端口。 已授予访问权限的用户，他们必须提供其用户名和密码组合与他们控制的其他信息。 此信息必须受信任且不易复制。 可以包括手机号码、座机号码或者移动设备上的应用程序。
 
@@ -80,7 +80,7 @@ ms.locfileid: "56170051"
 
 8. 用户被授予对 VPN 服务器上虚拟端口的访问权限，并建立加密的 VPN 隧道。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 此部分详细介绍集成 MFA 与远程桌面网关之前必须满足的先决条件。 开始集成之前，必须具备以下先决条件：
 
 * VPN 基础结构

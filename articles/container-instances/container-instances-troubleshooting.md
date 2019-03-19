@@ -2,19 +2,19 @@
 title: Azure 容器实例故障排除
 description: 了解如何排查 Azure 容器实例问题
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/08/2019
-ms.author: seanmck
+ms.date: 02/15/2019
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.openlocfilehash: c90041f54fc9b4b57885083ec94843b596f48b79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119044"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123260"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "54119044"
 定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关 Azure 命名约定的详细信息，请参阅 Azure 体系结构中心中的[命名约定][azure-name-restrictions]。
 
 | 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | 容器组名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | 容器名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | 容器端口 | 介于 1 和 65535 之间 |Integer |一个介于 1 和 65535 之间的整数 |`<port-number>` |`443` |
@@ -66,7 +66,7 @@ Azure 容器实例目前支持仅基于 **Windows Server 2016 长期服务频道
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "pulling image \"microsoft/aci-hellowrld\"",
+    "message": "pulling image \"microsoft/aci-helloworld\"",
     "name": "Pulling",
     "type": "Normal"
   },
@@ -74,7 +74,7 @@ Azure 容器实例目前支持仅基于 **Windows Server 2016 长期服务频道
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
+    "message": "Failed to pull image \"microsoft/aci-helloworld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
     "name": "Failed",
     "type": "Warning"
   },
@@ -82,7 +82,7 @@ Azure 容器实例目前支持仅基于 **Windows Server 2016 长期服务频道
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:20+00:00",
     "lastTimestamp": "2017-12-21T22:57:16+00:00",
-    "message": "Back-off pulling image \"microsoft/aci-hellowrld\"",
+    "message": "Back-off pulling image \"microsoft/aci-helloworld\"",
     "name": "BackOff",
     "type": "Normal"
   }
@@ -93,7 +93,7 @@ Azure 容器实例目前支持仅基于 **Windows Server 2016 长期服务频道
 
 容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
-在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题，请在容器组部署中包含如下所示的启动命令，以使容器保持运行。
+在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题，包括如下所示与容器组部署 start 命令，以使容器保持运行。
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -178,11 +178,11 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 
 ### <a name="cached-windows-images"></a>缓存的 Windows 映像
 
-对于基于某些 Windows 映像的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。
+Azure 容器实例使用一种缓存机制来帮助加快容器启动时间的基于常见的 Windows 和 Linux 映像的映像。 有关缓存的映像和标记的详细列表，使用[列出缓存映像][ list-cached-images] API。
 
 若要确保最快的 Windows 容器启动时间，请使用以下**两个映像**的**三个最新**版本之一作为基础映像：
 
-* [Windows Server 2016][docker-hub-windows-core]（仅限 LTS）
+* [Windows Server 核心 2016年][ docker-hub-windows-core] (仅 LTSC)
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows 容器慢速网络准备情况
@@ -197,7 +197,7 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 
 此错误指示由于尝试部署的区域中负载较重，无法在此时为容器分配指定的资源。 使用以下一个或多个缓解步骤来帮助解决此问题。
 
-* 验证容器部署设置是否位于 [Azure 容器实例的配额和区域可用性](container-instances-quotas.md#region-availability)中定义的参数内
+* 验证容器部署设置是否位于 [Azure 容器实例的区域可用性](container-instances-region-availability.md)中定义的参数内
 * 为容器指定较低的 CPU 和内存设置
 * 部署到其他 Azure 区域
 * 稍后部署
@@ -207,9 +207,11 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 Azure 容器实例不公开对托管容器组的底层基础结构的直接访问。 这包括访问运行在容器主机上的 Docker API 和运行特权容器。 如果需要 Docker 交互，请查看 [REST 参考文档](https://aka.ms/aci/rest)以了解 ACI API 支持的内容。 如果缺少某些内容，请在 [ACI 反馈论坛](https://aka.ms/aci/feedback)上提交请求。
 
 ## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>IP 可能会由于端口不匹配而无法访问
+
 Azure 容器实例目前不支持具有常规 docker 配置的端口映射，但此修复已在规划中。 如果发现 IP 在你认为应该可以访问的情况下无法访问，请确保已使用 `ports` 属性将容器映像配置为侦听在容器组中公开的相同端口。
 
 ## <a name="next-steps"></a>后续步骤
+
 了解如何[检索容器日志和事件](container-instances-get-logs.md)来帮助调试你的容器。
 
 <!-- LINKS - External -->
@@ -221,3 +223,4 @@ Azure 容器实例目前不支持具有常规 docker 配置的端口映射，但
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
+[list-cached-images]: /rest/api/container-instances/listcachedimages

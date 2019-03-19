@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 03/14/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: 73175b326c25d5d9a78155d0d9d888b655da1bfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191592"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124127"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -54,6 +54,7 @@ ms.locfileid: "54191592"
 |  HTTP/HTTPS  | 用户可配置 |  80、443 |
 |  FTP/FTPS    | 用户可配置 |  21, 990, 10001-10020 |
 |  Visual Studio 远程调试  |  用户可配置 |  4020, 4022, 4024 |
+|  Web 部署服务 | 用户可配置 | 8172 |
 
 如果在外部 ASE 或 ILB ASE 上操作，就会使用这些端口。 如果在外部 ASE 上操作，将在公共 VIP 上命中这些端口。 如果在 ILB ASE 上操作，则将在 ILB 上命中这些端口。 如果锁定端口 443，则在门户中公开的某些功能可能会收到影响。 有关详细信息，请参阅[门户依赖项](#portaldep)。
 

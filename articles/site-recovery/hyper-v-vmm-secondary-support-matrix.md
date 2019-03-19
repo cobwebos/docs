@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4fa8e28d9ccc16482ca937a220eae83e282da7e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 2b801df6036566840dd96bde0801ab018d0614b5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210023"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103088"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>将 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵
 
@@ -109,7 +109,7 @@ RDM | 不适用
 该提供程序协调 VMM 服务器之间的通信。 
 
 **最新** | **更新**
---- | --- | --- | --- | ---
+--- | --- 
 5.1.19（[可从门户获取](https://aka.ms/downloaddra)） | [最新功能和修复](https://support.microsoft.com/kb/3155002)
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: b280c86b15f7af01b04d41b4c2d625ea4ec4a398
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 57b20f9d694ae0581988762735c35cb65012fd8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104301"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992377"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>适用于 Windows 的虚拟机串行控制台
 
@@ -31,7 +31,7 @@ ms.locfileid: "55104301"
 > 虚拟机串行控制台已在全球 Azure 区域中正式发布。 串行控制台目前不可用于 Azure 政府云或 Azure 中国云。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 你要在其中访问串行控制台的 VM 必须使用资源管理部署模型。 不支持经典部署。
 
@@ -196,14 +196,14 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 ### <a name="audit-logs"></a>审核日志
 对串行控制台的所有访问目前都会记录在虚拟机的[启动诊断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)日志中。 Azure 虚拟机管理员拥有并可控制这些日志的访问权限。
 
->[!CAUTION]
-不会记录控制台的访问密码。 但是，如果在控制台中运行的命令包含或输出密码、机密、用户名或其他任何形式的个人身份信息 (PII)，则这些信息将写入到 VM 启动诊断日志。 这些信息是在实现串行控制台的回滚功能过程中连同其他所有可见文本一起写入的。 这些日志不断循环，只有对诊断存储帐户拥有读取权限的个人才能访问它们。 但是，我们建议遵循有关将远程桌面用于涉及机密和/或 PII 的任何操作的最佳做法。
+> [!CAUTION]
+> 不会记录控制台的访问密码。 但是，如果在控制台中运行的命令包含或输出密码、机密、用户名或其他任何形式的个人身份信息 (PII)，则这些信息将写入到 VM 启动诊断日志。 这些信息是在实现串行控制台的回滚功能过程中连同其他所有可见文本一起写入的。 这些日志不断循环，只有对诊断存储帐户拥有读取权限的个人才能访问它们。 但是，我们建议遵循有关将远程桌面用于涉及机密和/或 PII 的任何操作的最佳做法。
 
 ### <a name="concurrent-usage"></a>并发使用
 如果某个用户已连接到串行控制台，而另一个用户已成功请求访问同一个虚拟机，则第一个用户将断开连接，第二用户此时已连接到同一会话。
 
->[!CAUTION]
-这意味着，断开连接的用户尚未注销。断开连接后强制注销（使用 SIGHUP 或类似机制）的功能目前仍在规划中。 对于 Windows，SAC 中会启用自动超时；对于 Linux，可以配置终端超时设置。
+> [!CAUTION]
+> 这意味着，断开连接的用户尚未注销。断开连接后强制注销（使用 SIGHUP 或类似机制）的功能目前仍在规划中。 对于 Windows，SAC 中会启用自动超时；对于 Linux，可以配置终端超时设置。
 
 ## <a name="accessibility"></a>可访问性
 可访问性是 Azure 串行控制台的重点。 为此，我们已确保视听障碍者以及可能无法使用鼠标的用户能够访问串行控制台。
@@ -215,6 +215,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 串行控制台内置了屏幕阅读器支持。 在打开屏幕阅读器的情况下导航，屏幕阅读器可大声读出当前所选按钮的替换文字。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>要访问串行控制台的常见场景
+
 场景          | 串行控制台中的操作
 :------------------|:-----------------------------------------
 错误的防火墙规则 | 访问串行控制台，并修复 Windows 防火墙规则。
@@ -254,7 +255,7 @@ Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.c
 
 **问：如何发送反馈？**
 
-A. 可以通过在 https://aka.ms/serialconsolefeedback 中创建 GitHub 问题来提供反馈。 也可以通过 azserialhelp@microsoft.com，或者 http://feedback.azure.com 上的虚拟机类别发送反馈（不太建议）。
+A. 可以通过在 https://aka.ms/serialconsolefeedback 中创建 GitHub 问题来提供反馈。 也可以通过 azserialhelp@microsoft.com，或者 https://feedback.azure.com 上的虚拟机类别发送反馈（不太建议）。
 
 **问：串行控制台是否支持复制/粘贴？**
 

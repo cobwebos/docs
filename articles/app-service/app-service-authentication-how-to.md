@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: da3c90579dafebf1b5b362c7129e681663a0a7ab
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 97764db40807214e756f119ca95fd640164f0cf2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891872"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877296"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -202,7 +202,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 ```JavaScript
 function refreshTokens() {
-  var refreshUrl = "/.auth/refresh";
+  let refreshUrl = "/.auth/refresh";
   $.ajax(refreshUrl) .done(function() {
     console.log("Token refresh completed successfully.");
   }) .fail(function() {

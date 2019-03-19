@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2187d0e986a173e1b8dc37fd0abdfa3bfd9e9505
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 64aebaedd9221b2570b66bdb8550bff36b54492c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168981"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084753"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教程：Azure Active Directory 与 SpringCM 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56168981"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 SpringCM 的集成，需要具有以下项：
 
@@ -212,9 +212,9 @@ ms.locfileid: "56168981"
 
 1. 单击“ **保存**”。
 
-  >[!NOTE]
-  >可以使用 SpringCM 提供的任何其他 SpringCM 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。  
-  > 
+   >[!NOTE]
+   >可以使用 SpringCM 提供的任何其他 SpringCM 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。  
+   > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -249,7 +249,7 @@ ms.locfileid: "56168981"
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
- 
+ 
 单击访问面板中的 SpringCM 磁贴时，应当会自动登录到 SpringCM 应用程序。
 
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 2b73deb18b518f257e1de6125ef6d4e35eb0e7b7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236272"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881123"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -35,7 +35,7 @@ ms.locfileid: "56236272"
 
 - 将数据导出到 Blob 存储、导出为CSV，并在 Excel 中生成图形。
 - 将数据导出到事件中心，并关联到其他 Azure 服务的数据。
-- 将数据导出到 Log Analytics，并在自己的 Log Analytics 工作区中查看数据
+- 将数据导出到 Azure Monitor 日志并在自己的 Log Analytics 工作区中查看数据
 
 下图显示了一个典型的 CDN 核心分析数据视图。
 
@@ -45,11 +45,13 @@ ms.locfileid: "56236272"
 
 有关诊断日志的详细信息，请参阅[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="enable-logging-with-the-azure-portal"></a>使用 Azure 门户启用日志记录
 
 遵循以下步骤使用 CDN 核心分析启用日志记录：
 
-登录到 [Azure 门户](http://portal.azure.com)。 如果还没有为工作流启用 CDN，请在继续操作之前[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
+登录到 [Azure 门户](https://portal.azure.com)。 如果还没有为工作流启用 CDN，请在继续操作之前[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
 1. 在 Azure 门户中，导航到“CDN 配置文件”。
 
@@ -85,15 +87,15 @@ ms.locfileid: "56236272"
 
 5. 完成诊断日志设置后，选择“保存”。
 
-### <a name="logging-with-log-analytics"></a>使用 Log Analytics 进行日志记录
+### <a name="logging-with-azure-monitor"></a>使用 Azure Monitor 的日志记录
 
-若要使用 Log Analytics 来存储日志，请执行以下步骤：
+若要使用 Azure Monitor 来存储日志，请执行以下步骤：
 
 1. 从“诊断日志”页面中，选择“发送到 Log Analytics”。 
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. 选择“配置”以配置 Log Analytics 日志记录。 
+2. 选择**配置**若要配置 Azure Monitor 日志记录。 
 
    此时将显示“Log Analytics 工作区”页。
 
@@ -133,7 +135,7 @@ ms.locfileid: "56236272"
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    Log Analytics 工作区现在已经可以用来记录数据日志。 为了使用该数据，必须使用本文下文中提供的 [Log Analytics 解决方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)。
+    Log Analytics 工作区现在已经可以用来记录数据日志。 若要使用该数据，必须使用[Azure Monitor 日志解决方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)后面这篇文章所述。
 
 有关日志数据延迟的详细信息，请参阅[日志数据延迟](#log-data-delays)。
 
@@ -168,7 +170,7 @@ ms.locfileid: "56236272"
 本部分介绍 CDN 核心分析的架构及其在 Azure 存储帐户中的组织方式，并提供用于将日志下载到 CSV 文件的示例代码。
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器
-首先需要一款可访问存储帐户内容的工具，才可从 Azure 存储帐户访问核心分析数据。 市场上有多种可用的工具，但推荐使用 Microsoft Azure 存储资源管理器。 若要下载该工具，请参阅 [Azure 存储资源管理器](http://storageexplorer.com/)。 下载并安装软件后，请将其配置为使用配置为 CDN 诊断日志目标的同一 Azure 存储帐户。
+首先需要一款可访问存储帐户内容的工具，才可从 Azure 存储帐户访问核心分析数据。 市场上有多种可用的工具，但推荐使用 Microsoft Azure 存储资源管理器。 若要下载该工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。 下载并安装软件后，请将其配置为使用配置为 CDN 诊断日志目标的同一 Azure 存储帐户。
 
 1.  打开 Microsoft Azure 存储资源管理器
 2.  找到存储帐户
@@ -187,7 +189,7 @@ ms.locfileid: "56236272"
 
 字段说明：
 
-|值|说明|
+|值|描述|
 |-------|---------|
 |订阅 ID    |Azure 订阅的 ID，采用 GUID 格式。|
 |资源组名称 |CDN 资源所属资源组的名称。|
@@ -204,16 +206,16 @@ ms.locfileid: "56236272"
 
 该工具的使用方式如下：
 
-1.  访问 GitHub 链接：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  请访问 GitHub 链接： [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  下载代码。
 3.  遵照说明进行编译和配置。
 4.  运行工具。
 5.  生成的 CSV 文件以简单的平面层次结构显示分析数据。
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>从 Log Analytics 工作区使用诊断日志
-Log Analytics 是一项 Azure 服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
+Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境，以保持其可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
 
-若要使用 Log Analytics，必须在 Azure Log Analytics 工作区中[启用日志记录](#enable-logging-with-azure-storage)，本文上文中已经对此进行了讨论。
+若要使用 Azure Monitor，您必须[启用日志记录](#enable-logging-with-azure-storage)到 Azure Log Analytics 工作区中，对其进行讨论本文前面部分中。
 
 ### <a name="using-the-log-analytics-workspace"></a>使用 Log Analytics 工作区
 
@@ -225,11 +227,11 @@ Log Analytics 是一项 Azure 服务，用于监视云和本地环境，使其�
 
 使用管理解决方案可通过各种方式显示数据。 可从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)获取管理解决方案。
 
-可以通过选择每个解决方案底部的“立即获取”链接从 Azure 市场安装管理解决方案。
+你可以从 Azure marketplace 安装监视解决方案，通过选择**立即获取**每个解决方案底部的链接。
 
-### <a name="add-a-log-analytics-cdn-management-solution"></a>添加 Log Analytics CDN 管理解决方案
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>添加 Azure 监视器 CDN 监视解决方案
 
-请按照下列步骤添加 Log Analytics 管理解决方案：
+请执行以下步骤添加 Azure 监视器监视解决方案：
 
 1.   使用你的 Azure 订阅登录到 Azure 门户并转到你的仪表板。
     ![Azure 仪表板](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
@@ -321,7 +323,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 下表显示了 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 标准/高级版**的核心分析日志中提供的一系列指标。 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | 说明 | Microsoft | Verizon | Akamai |
+|指标                     | 描述 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
 | RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |
@@ -443,7 +445,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 
 * [Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [通过 Azure CDN 补充门户进行核心分析](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

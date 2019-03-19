@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 567890f3beec1eff30effeec0ce23284c5fee141
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52991719"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109284"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>（已弃用）通过 Marathon REST API 管理 DC/OS 容器
 
@@ -22,7 +22,7 @@ ms.locfileid: "52991719"
 
 DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，以及底层硬件的抽象化。 DC/OS 上方是一种管理计划和执行计算工作负荷的框架。 尽管框架可用于许多常见的工作负荷，本文档逐步讲解如何使用 Marathon REST API 创建和缩放容器部署。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 开始了解这些示例之前，需要一个在 Azure 容器服务中配置的 DC/OS 群集。 还需要具有到此群集的远程连接。 有关这些项目的详细信息，请参阅以下文章：
 
@@ -124,8 +124,6 @@ Nginx 服务器的输出与下面类似：
 
 > [!NOTE]
 > URI 为 http://localhost/marathon/v2/apps/，后接要缩放的应用程序 ID。 如果使用此处提供的 Nginx 示例，URI 将为 http://localhost/marathon/v2/apps/nginx。
-> 
-> 
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -183,14 +181,12 @@ Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentTy
 
 > [!NOTE]
 > URI 为 http://localhost/marathon/v2/apps/，后接要缩放的应用程序 ID。 如果使用此处提供的 Nginx 示例，URI 将为 http://localhost/marathon/v2/apps/nginx。
-> 
-> 
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [阅读有关 Mesos HTTP 终结点的详细信息](http://mesos.apache.org/documentation/latest/endpoints/)
+* [阅读有关 Mesos HTTP 终结点的详细信息](https://mesos.apache.org/documentation/latest/endpoints/)
 * [阅读有关 Marathon REST API 的详细信息](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

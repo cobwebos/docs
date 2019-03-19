@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 5e3ef7782f805e07e24783a987f2753e4e889946
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313027"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002335"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 
@@ -69,7 +72,7 @@ Azure 门户中的新的日志体验基于高级分析门户，但是仍然可�
 答：视图设计器在日志中仅供分配了“参与者”权限或更高权限的用户使用。
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>问： 我仍可以在 Azure 之外使用分析门户吗？
-A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代码。 Log Analytics 作为一项功能集成到 Azure Monitor 中，目的是提供更统一的监视体验。 仍可以使用以下 URL 访问分析门户： https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}。
+A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代码。 Log Analytics 作为一项功能集成到 Azure Monitor 中，目的是提供更统一的监视体验。 你仍可以访问分析门户使用的 URL: https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}。
 
 
 
@@ -168,7 +171,7 @@ Log Analytics 通信流量使用的是公共对等 ExpressRoute 线路。
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>问： 有没有简单易用的方法将现有的 Log Analytics 工作区移到另一个 Log Analytics 工作区/Azure 订阅？
 
-A. `Move-AzureRmResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动化帐户从一个 Azure 订阅移到另一个订阅。 有关详细信息，请参阅[移动 - AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx)。
+A. `Move-AzResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动化帐户从一个 Azure 订阅移到另一个订阅。 有关详细信息，请参阅[移动 AzResource](https://msdn.microsoft.com/library/mt652516.aspx)。
 
 也可在 Azure 门户中进行此更改。
 

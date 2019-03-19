@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c4537709181398e401ade67b831bc2d26a99221f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: 31a800e851eb8a2f533cc8170856b16cd43c21cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193580"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850711"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Azure 表的潜在客户管理说明
 
@@ -38,7 +38,7 @@ ms.locfileid: "53193580"
     
     ![Azure 存储密钥](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 
-可以使用 [Azure 存储资源管理器](http://azurestorageexplorer.codeplex.com/)或任何其他工具来查看存储表中的数据。 此外可以导出 Azure 表中的数据。
+可以使用 [Azure 存储资源管理器](https://azurestorageexplorer.codeplex.com/)或任何其他工具来查看存储表中的数据。 此外可以导出 Azure 表中的数据。
 数据。
 
 ## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>（可选）将 Microsoft Flow 与 Azure 表配合使用

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: b3fbd91ddf06d4515ee55d24ba9330d0af6dc124
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 84f9472618322111ad2f669ebb172258837620fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540208"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106060"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 Azure CLI 创建 Linux 服务器虚拟机
 
@@ -46,8 +46,8 @@ ms.locfileid: "57540208"
 
 资源组是一个逻辑容器，可以在其中部署和管理 Azure Stack 资源。 在开发工具包或 Azure Stack 集成系统中，运行 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。
 
->[!NOTE]
- 代码示例中为所有变量都分配了值。 但是，如果愿意，也可以分配新值。
+> [!NOTE]
+>  代码示例中为所有变量都分配了值。 但是，如果愿意，也可以分配新值。
 
 以下示例在本地位置创建名为 myResourceGroup 的资源组。
 

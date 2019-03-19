@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33e968ac608c393d65f69bfd6abbc0d205fb9bd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718871"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078782"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>使用适用于 Azure 移动应用的 .NET 后端服务器 SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "53718871"
 本主题说明如何在关键的 Azure 应用服务移动应用方案中使用 .NET 后端服务器 SDK。 借助 Azure 移动应用 SDK 可从 ASP.NET 应用程序使用移动客户端。
 
 > [!TIP]
-> [适用于 Azure 移动应用的 .NET 服务器 SDK][2] 是 GitHub 上的开放源代码。 该存储库包含所有源代码，包括整个服务器 SDK 单元测试套件以及一些示例项目。
+> [适用于 Azure 移动应用的 .NET 服务器 SDK][2] 是 GitHub 上的开放源代码。 存储库包含所有源代码，包括整个服务器 SDK 单元测试套件以及一些示例项目。
 >
 >
 
@@ -77,9 +77,9 @@ ms.locfileid: "53718871"
 ### <a name="install-the-sdk"></a>安装 SDK
 要安装该 SDK，请在 Visual Studio 中右键单击服务器项目，选择“管理 NuGet 包”，搜索 [Microsoft.Azure.Mobile.Server] 包，并单击“安装”。
 
-### <a name="server-project-setup"></a>初始化服务器项目
-初始化 .NET 后端服务器项目的方式类似其他 ASP.NET 项目，可通过包含 OWIN 启动类来完成。 确保已引用 NuGet 包 `Microsoft.Owin.Host.SystemWeb`。 要在 Visual Studio 中添加此类，请右键单击服务器项目，选择“添加” >
-“新建项”，并选择“Web” > “常规” > “OWIN Startup 类”。  将生成具有以下属性的类：
+### <a name="server-project-setup"></a> 初始化服务器项目
+初始化 .NET 后端服务器项目的方式类似其他 ASP.NET 项目，可通过包含 OWIN 启动类来完成。 确保已引用 NuGet 包 `Microsoft.Owin.Host.SystemWeb`。 若要在 Visual Studio 中添加此类，请右键单击服务器项目，选择 **“添加”** >
+ **“新建项”**，然后选择 **“Web”** > **“常规”** > **“OWIN 启动类”**。  将生成具有以下属性的类：
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
@@ -174,7 +174,7 @@ Azure 门户中的服务器快速启动代码调用 **UseDefaultConfiguration()*
         public bool Complete {get; set;}
     }
 
-DTO 用于定义 SQL 数据库中的表。  要创建数据库条目，请将 `DbSet<>` 属性添加到正在使用的 DbContext 中。  在 Azure 移动应用的默认项目模板中，DbContext 称为 `Models\MobileServiceContext.cs`：
+DTO 用于定义 SQL 数据库中的表。  要创建数据库项，请将 `DbSet<>` 属性添加到正在使用的 DbContext。  在 Azure 移动应用的默认项目模板中，DbContext 称为 `Models\MobileServiceContext.cs`：
 
     public class MobileServiceContext : DbContext
     {
@@ -217,7 +217,7 @@ DTO 用于定义 SQL 数据库中的表。  要创建数据库条目，请将 `D
 ## <a name="how-to-define-a-custom-api-controller"></a>如何：定义自定义 API 控制器
 自定义 API 控制器通过公开终结点，向移动应用后端提供最基本的功能。 可以使用 [MobileAppController] 属性注册移动设备特定的 API 控制器。 `MobileAppController` 属性将注册路由、设置移动应用 JSON 序列化程序，并打开[客户端版本检查](app-service-mobile-client-and-server-versioning.md)。
 
-1. 在 Visual Studio 中，右键单击“控制器”文件夹，单击“添加” > “控制器”，选择“Web API 2 控制器 &mdash; 空白”，并单击“添加”。
+1. 在 Visual Studio 中，右键单击“控制器”文件夹，单击“添加” > “控制器”，选择“Web API 2 控制器 &mdash; 空白”，然后单击“添加”。
 2. 提供**控制器名称**（例如 `CustomController`），并单击“添加”。
 3. 在新控制器类文件中添加以下 using 语句：
 
@@ -263,7 +263,7 @@ Azure 移动应用使用应用服务身份验证/授权保护移动后端。  �
 > 若要启用自定义身份验证，必须先启用应用服务身份验证，而不必在 Azure 门户中为应用服务选择提供程序。 托管时这将启用 WEBSITE_AUTH_SIGNING_KEY 环境变量。
 > 
 > 
-如果不想使用某个应用服务身份验证/授权提供程序，可以实现自己的登录系统。 安装 [Microsoft.Azure.Mobile.Server.Login] 包以协助生成身份验证令牌。  提供自己的代码验证用户凭据。 例如，可以针对数据库中的加盐密码和哈希密码进行检查。 在以下示例中，`isValidAssertion()` 方法（在其他位置定义）负责这些检查。
+> 如果不想使用某个应用服务身份验证/授权提供程序，可以实现自己的登录系统。 安装 [Microsoft.Azure.Mobile.Server.Login] 包以协助生成身份验证令牌。  提供自己的代码用于验证用户凭据。 例如，可以针对数据库中的加盐密码和哈希密码进行检查。 在以下示例中，`isValidAssertion()` 方法（在其他位置定义）负责这些检查。
 
 通过创建 ApiController 并公开 `register` 和 `login` 操作，可以公开自定义身份验证。 客户端应使用自定义 UI 从用户处收集信息。  随后再通过标准 HTTP POST 调用将信息提交到 API。 服务器验证断言后，便可以使用 `AppServiceLoginHandler.CreateToken()` 方法颁发令牌。  ApiController **不可**使用 `[MobileAppController]` 属性。
 
@@ -408,7 +408,7 @@ SID 派生自提供程序特定的用户 ID，对于给定的用户和登录提�
         }
     });
 
-创建安装时，后端将忽略客户端在推送通知注册期间提供的任何标记。 要使客户端能够将标记添加到安装，必须创建一个自定义 API，此 API 可以使用上述模式添加标记。
+创建安装时，后端会忽略客户端在推送通知注册期间提供的任何标记。 要使客户端能够将标记添加到安装，必须创建一个自定义 API，此 API 可以使用上述模式添加标记。
 
 有关示例，请参阅应用服务移动应用的完整快速入门示例中的[客户端添加的推送通知标记][5]。
 

@@ -11,15 +11,15 @@ ms.service: service-bus-relay
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 2972d04d1617b755bb6c2ff60d9922accdd09f2a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
+ms.openlocfilehash: 145960db27247a8535eb96640000b86d810619c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614831"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838402"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 中继向云中的 Web 应用程序公开本地 WCF 服务 
 本文演示如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 创建一个使用多个 Azure 资源的应用程序，让其在云中启动并运行。
@@ -38,12 +38,12 @@ ms.locfileid: "51614831"
 > * 将 Web 应用部署到 Azure
 > * 在 Azure 上运行应用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要具备以下先决条件：
 
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-- [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+- [Visual Studio 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
 - 用于 .NET 的 Azure SDK。 从 [SDK 下载页](https://azure.microsoft.com/downloads/)安装它。
 
 ## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Azure 中继功能将为混合解决方案带来哪些帮助
@@ -58,7 +58,7 @@ ms.locfileid: "51614831"
 
 ![场景][0]
 
-本教程假定产品信息位于现有的本地系统中，而且你使用 Azure 中继来访问该系统。 这是由在简单的控制台应用程序中运行的 Web 服务模拟的，并由一系列内存中产品提供支持。 将能够在自己的计算机上运行此控制台应用程序并将 Web 角色部署到 Azure 中。 通过此操作，会看到在 Azure 数据中心运行的 Web 角色确实会调入计算机，即使计算机几乎肯定会驻留在至少一个防火墙和一个网络地址转换 (NAT) 层后面，情况也是如此。
+本教程假定产品信息位于现有的本地系统中，而且你使用 Azure 中继来访问该系统。 这是由在简单的控制台应用程序中运行的 Web 服务模拟的，并由一系列内存中产品提供支持。 将能够在自己的计算机上运行此控制台应用程序并将 Web 角色部署到 Azure 中。 通过此操作，将会看到在 Azure 数据中心运行的 Web 角色确实会调入你的计算机，即使你的计算机几乎肯定会驻留在至少一个防火墙和一个网络地址转换 (NAT) 层后面，情况也是如此。
 
 ## <a name="set-up-the-development-environment"></a>设置开发环境
 
@@ -79,13 +79,13 @@ ms.locfileid: "51614831"
 首先，生成一个模拟的本地产品目录系统。  此项目是一个 Visual Studio 控制台应用程序，它使用 [Azure 服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 来包含服务总线库和配置设置。
 
 ### <a name="create-the-project"></a>创建项目
-1. 使用管理员特权启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，并单击“以管理员身份运行”。
+1. 使用管理员特权启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，然后单击“以管理员身份运行”。
 2. 在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。
 3. 从“已安装的模板”的“Visual C#”下，单击“控制台应用(.NET Framework)”。 在“名称”框中，键入名称“ProductsServer”：
 
    ![“新建项目”对话框][11]
 4. 单击“确定”以创建“ProductsServer”项目。
-5. 如果已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，并单击[“安装 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)”。 按照提示操作以安装 NuGet 包管理器，然后重启 Visual Studio。
+5. 如果已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，并单击[“安装 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)”。 按照提示操作以安装 NuGet 包管理器，然后重启 Visual Studio。
 6. 在解决方案资源管理器中，右键单击“ProductsServer”项目，并单击“管理 NuGet 程序包”。
 7. 单击“浏览”选项卡，然后搜索“WindowsAzure.ServiceBus”。 选择“WindowsAzure.ServiceBus”包。
 8. 单击“安装” 并接受使用条款。
@@ -185,7 +185,7 @@ ms.locfileid: "51614831"
         }
     }
     ```
-12. 在“解决方案资源管理器”中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。 在 `<system.ServiceModel>` 元素底部（但仍在 `<system.ServiceModel>` 中），添加以下 XML 代码：确保将 *yourServiceNamespace* 替换为命名空间的名称，并将 *yourKey* 替换为之前从门户中检索到的 SAS 密钥：
+12. 在“解决方案资源管理器”中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。 在底部`<system.ServiceModel>`元素 (但仍在`<system.ServiceModel>`)，添加以下 XML 代码：确保将 yourServiceNamespace 替换为命名空间的名称，并将 yourKey 替换为之前从门户中检索到的 SAS 密钥：
 
     ```xml
     <system.serviceModel>
@@ -350,7 +350,7 @@ ms.locfileid: "51614831"
 
    ![添加为链接][24]
 
-6. 现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码：确保将 *yourServiceNamespace* 替换为服务命名空间的名称，将 *yourKey* 替换为 SAS 密钥。 这会使客户端能够调用本地服务，并返回调用的结果。
+6. 现在，打开**HomeController.cs**文件在 Visual Studio 编辑器中，命名空间定义替换为以下代码：确保将 yourServiceNamespace 替换为服务命名空间的名称，并将 yourKey 替换为 SAS 密钥。 这会使客户端能够调用本地服务，并返回调用的结果。
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -392,7 +392,7 @@ ms.locfileid: "51614831"
    }
    ```
 7. 在解决方案资源管理器中，右键单击 **productsportal** 解决方案（确保右键单击解决方案，而不是项目）。 单击“添加”，并单击“现有项目”。
-8. 导航到 **ProductsServer** 项目，然后双击“ProductsServer.csproj”解决方案文件以将其添加。
+8. 导航到 **ProductsServer** 项目，然后双击“ProductsServer.csproj”解决方案文件将其添加。
 9. **ProductsServer** 必须正在运行，才能在 **ProductsPortal** 上显示数据。 在解决方案资源管理器中，右键单击“ProductsPortal”解决方案并单击“属性”。 **属性页** ”对话框。
 10. 在左侧，单击“启动项目”。 在右侧，单击“多个启动项目”。 确保 **ProductsServer** 和 **ProductsPortal** 按此顺序显示，并且将“启动”设置为两者的操作。
 
@@ -422,14 +422,14 @@ ms.locfileid: "51614831"
 
 1. 在“解决方案资源管理器”中，右键“ProductsPortal”项目并单击“发布”。 然后，在发布页中单击“发布”。
 
-  > [!NOTE]
-  > 在部署后自动启动 **ProductsPortal** Web 项目时，可能会在浏览器窗口中看到错误消息。 这在意料之中，因为 **ProductsServer** 应用程序尚未运行。
->
->
+   > [!NOTE]
+   > 在部署后自动启动 **ProductsPortal** Web 项目时，可能会在浏览器窗口中看到错误消息。 这在意料之中，因为 **ProductsServer** 应用程序尚未运行。
+   >
+   >
 
 2. 复制已部署 Web 应用的 URL，你在下一个步骤中需要用到该 URL。 也可以从 Visual Studio 的“Azure 应用服务活动”窗口中获取此 URL：
 
-  ![已部署应用的 URL][9]
+   ![已部署应用的 URL][9]
 
 3. 关闭浏览器窗口，停止正在运行的应用程序。
 
@@ -448,7 +448,7 @@ ms.locfileid: "51614831"
 
 ## <a name="run-the-application"></a>运行应用程序
 
-1. 按 F5 生成并运行应用程序。 本地服务器（**ProductsServer** 控制台应用程序）应该会先启动，然后 **ProductsPortal** 应用程序会在浏览器窗口中启动，如以下屏幕截图所示：请再次注意，产品清单列出了从产品服务本地系统检索的数据，并将该数据显示在 Web 应用中。 请检查 URL，确保 **ProductsPortal** 正在云中以 Azure Web 应用的形式运行。
+1. 按 F5 生成并运行应用程序。 在本地服务器 ( **ProductsServer**控制台应用程序) 应该会先启动，则**ProductsPortal**应用程序应该在浏览器窗口中，启动，如以下屏幕截图中所示：再次提请注意，产品库存列表会列出从产品服务本地系统检索到的数据，并在 Web 应用中显示该数据。 请检查 URL，确保 **ProductsPortal** 正在云中以 Azure Web 应用的形式运行。
 
    ![在 Azure 上运行 Web 应用][1]
 
@@ -470,7 +470,7 @@ ms.locfileid: "51614831"
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
-[NuGet]: http://nuget.org
+[NuGet]: https://nuget.org
 
 [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
 [13]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-13.png

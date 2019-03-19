@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 7bac115ab3215a7dde625f194bdf325f9e0af318
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
-ms.translationtype: HT
+ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392850"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118129"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 语法
 
@@ -154,7 +154,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
     2  
     ```  
   
--   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。  
+-   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
   
      在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
   
@@ -223,29 +223,29 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ### <a name="property-evaluation-semantics"></a>属性求值语义  
   
--   尝试对不存在的系统属性求值会引发 [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 异常。  
+- 尝试对不存在的系统属性求值会引发 [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 异常。  
   
--   不存在的属性在进行内部求值时会被视为**未知**。  
+- 不存在的属性在进行内部求值时会被视为**未知**。  
   
- 算术运算符中的未知求值：  
+  算术运算符中的未知求值：  
   
--   对于二元运算符，如果操作数的左侧和/或右侧的求值结果为**未知**，则结果为**未知**。  
+- 对于二元运算符，如果操作数的左侧和/或右侧的求值结果为**未知**，则结果为**未知**。  
   
--   对于一元运算符，如果操作数的求值结果为**未知**，则结果为**未知**。  
+- 对于一元运算符，如果操作数的求值结果为**未知**，则结果为**未知**。  
   
- 二进制比较运算符中的未知求值：  
+  二进制比较运算符中的未知求值：  
   
--   如果操作数的左侧和/或右侧的求值结果为**未知**，则结果为**未知**。  
+- 如果操作数的左侧和/或右侧的求值结果为**未知**，则结果为**未知**。  
   
- `[NOT] LIKE` 中的未知求值：  
+  `[NOT] LIKE` 中的未知求值：  
   
--   如果任何操作数的求值结果为“未知”，则结果为“未知”。  
+- 如果任何操作数的求值结果为“未知”，则结果为“未知”。  
   
- `[NOT] IN` 中的未知求值：  
+  `[NOT] IN` 中的未知求值：  
   
--   如果左侧操作数的求值结果为“未知”，则结果为“未知”。  
+- 如果左侧操作数的求值结果为“未知”，则结果为“未知”。  
   
- **AND** 运算符中的未知求值：  
+  **AND** 运算符中的未知求值：  
   
 ```  
 +---+---+---+---+  

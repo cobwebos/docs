@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: 7932d057a348957d369ba325044055ac8dfe3428
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170184"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>使用指标警报监视 Runbook
 
@@ -36,6 +36,9 @@ ms.locfileid: "53185850"
 2. 可在“配置信号逻辑”页中定义触发警报的逻辑。 历史图表下面显示了两个维度：“Runbook 名称”和“状态”。 维度是某个指标的、可用于筛选结果的不同属性。 对于“Runbook 名称”，请选择要对其发出警报的 Runbook，或者留空，以针对所有 Runbook 发出警报。 对于“状态”，请从下拉列表中选择要监视的状态。 下拉列表中显示的 Runbook 名称和状态值仅适用于在过去一周已运行的作业。
 
    如果想要针对下拉列表中未显示的状态或 Runbook 发出警报，请单击维度旁边的 **\+**。 此操作会打开一个对话框，用于输入最近未针对该维度发出过的自定义值。 如果输入的值未在某个属性中出现过，则不会触发警报。
+
+   > [!NOTE]
+   > 如果没有应用的名称**RunbookName**维度，如果有任何 runbook 的符合状态条件时，其中包括隐藏的系统的 runbook，你将收到警报。
 
 3. 在“警报逻辑”下，定义警报的条件和阈值。 下面会显示定义的条件预览。
 

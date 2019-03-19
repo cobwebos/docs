@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: 91cabd6601ca8d0c0eabfdb5726d4bd6b37492a6
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+ms.openlocfilehash: dc84d5850656a0898fba328b652d86f3d8995bef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54216079"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118368"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 将数据发送到合适的 Azure 存储 Blob 层
 
@@ -109,8 +109,8 @@ Data Box 中的数据上传到默认层后，可能需要将数据移到非默�
     >> }
     PS C:\WINDOWS\system32>
     ```
-> [!TIP]
-> 如果想要将数据引入到存档存储层，请将默认帐户层设置为热存储层。 如果默认层为冷存储层，同时数据要立即移动到存档存储层，则会对提前 30 天删除进行惩罚。
+   > [!TIP]
+   > 如果想要将数据引入到存档存储层，请将默认帐户层设置为热存储层。 如果默认层为冷存储层，同时数据要立即移动到存档存储层，则会对提前 30 天删除进行惩罚。
 
 ## <a name="next-steps"></a>后续步骤
 

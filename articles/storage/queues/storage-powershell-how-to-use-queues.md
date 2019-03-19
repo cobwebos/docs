@@ -4,16 +4,16 @@ description: 如何使用 PowerShell 对 Azure 队列存储执行操作
 services: storage
 author: roygara
 ms.service: storage
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.subservice: queues
-ms.openlocfilehash: dddd82cd80d853607b28db906d298d5c301ab9df
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 7f317c061c66a344731172f83e1c85dc5487379d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770697"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005184"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
@@ -122,7 +122,7 @@ $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQ
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
-如果使用 [Azure 存储资源管理器](http://storageexplorer.com)，可以连接到 Azure 帐户并查看存储帐户中的队列，然后在队列中向下钻取以查看队列中的消息。 
+如果使用 [Azure 存储资源管理器](https://storageexplorer.com)，可以连接到 Azure 帐户并查看存储帐户中的队列，然后在队列中向下钻取以查看队列中的消息。 
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>从队列中读取一条消息，然后删除该消息
 

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 01/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4e9e9b76469554f5519626eed37a5b64586f5eb4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: eaade5f9ec9db7e8d224305147dafc264916d9c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265390"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995599"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -105,18 +105,39 @@ ms.locfileid: "54265390"
 
 若要获取有关 API 中的具体操作的详细信息，请在 ApplicationInsights.xml 配置文件的根节点下添加 `<SDKLogger/>`。
 
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
+
 也可以指示记录器将信息输出到某个文件：
 
 ```XML
-
-    <SDKLogger type="FILE">
-      <enabled>True</enabled>
-      <UniquePrefix>JavaSDKLog</UniquePrefix>
-    </SDKLogger>
+  <SDKLogger type="FILE">
+    <Level>TRACE</Level>
+    <UniquePrefix>AI</UniquePrefix>
+    <BaseFolderPath>C:/agent/AISDK</BaseFolderPath>
+</SDKLogger>
 ```
 
-可以在 `%temp%\javasdklogs` 下找到该文件，对于 Tomcat 服务器，则可以在 `java.io.tmpdir` 下找到该文件。
+### <a name="spring-boot-starter"></a>Spring Boot 起动器
 
+若要使用 Spring Boot 应用使用应用程序见解 Spring Boot 起动器启用 SDK 日志记录，将以下代码添加到`application.properties`文件。:
+
+```yaml
+azure.application-insights.logger.type=file
+azure.application-insights.logger.base-folder-path=C:/agent/AISDK
+azure.application-insights.logger.level=trace
+```
+
+### <a name="java-agent"></a>Java 代理
+
+若要启用日志记录 JVM 代理更新[Ai-agent.xml 文件](java-agent.md)。
+
+```xml
+<AgentLogger type="FILE">
+    <Level>TRACE</Level>
+    <UniquePrefix>AI</UniquePrefix>
+    <BaseFolderPath>C:/agent/AIAGENT</BaseFolderPath>
+</AgentLogger>
+```
 
 ## <a name="the-azure-start-screen"></a>Azure 开始屏幕
 **我正在查看 [Azure 门户](https://portal.azure.com)。地图是否告知有关应用的信息？**

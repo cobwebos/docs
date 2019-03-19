@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e499a0f7bec47e672c599c729a15cc3e3d04a28a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 690e0da160042b7ac432b1a36c024a8a8f439823
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471598"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125132"
 ---
 ## <a name="create-a-storage-account-for-event-processor-host"></a>为事件处理程序主机创建存储帐户
 事件处理程序主机是一个智能代理，它通过管理持久性检查点和并行接收操作，来简化从事件中心接收事件的过程。 对于检查点，事件处理程序主机需要一个存储帐户。 以下示例演示如何创建存储帐户，以及如何获取其密钥以进行访问：
@@ -26,18 +26,18 @@ ms.locfileid: "49471598"
 
 3. 在“创建存储帐户”页中执行以下步骤： 
 
-    1. 输入存储帐户的名称。 
-    2. 选择包含事件中心的 Azure 订阅。
-    3. 选择包含事件中心的资源组。
-    4. 选择可在其中创建资源的位置。 
-    5. 然后单击“查看 + 创建”。
+   1. 输入存储帐户的名称。 
+   2. 选择包含事件中心的 Azure 订阅。
+   3. 选择包含事件中心的资源组。
+   4. 选择可在其中创建资源的位置。 
+   5. 然后单击“查看 + 创建”。
    
-    ![创建存储帐户 - 页面](./media/event-hubs-create-storage/create-storage2.png)
+      ![创建存储帐户 - 页面](./media/event-hubs-create-storage/create-storage2.png)
 
 4. 在“查看 + 创建”页上查看值，然后选择“创建”。 
 
     ![查看存储帐户设置，然后执行创建操作](./media/event-hubs-create-storage/review-create-storage-account.png)
-5. 看到“部署成功”消息后，选择页面顶部的“访问资源”。 还可以通过从资源列表中选择存储帐户来启动“存储帐户”页。  
+5. 在看到后**部署成功**消息中，选择**转到资源**页的顶部。 还可以通过从资源列表中选择存储帐户来启动“存储帐户”页。  
 
     ![从部署中选择存储帐户](./media/event-hubs-create-storage/select-storage-deployment.png) 
 7. 在“概要”窗口中选择“Blob”。 

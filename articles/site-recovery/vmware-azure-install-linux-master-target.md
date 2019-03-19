@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217979"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099046"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -29,7 +29,7 @@ ms.locfileid: "55217979"
 
 请在本文末尾或者在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)中发表任何评论或问题。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 若要选择用于部署主目标的主机，请确定是要故障回复到现有的本地虚拟机还是新的虚拟机。 
     * 对于现有虚拟机，主目标的主机应有权访问虚拟机的数据存储。
@@ -62,7 +62,7 @@ ms.locfileid: "55217979"
 
 按下列步骤安装 Ubuntu 16.04.2 64 位操作系统。
 
-1.   转至[下载链接](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)，并选择最接近的镜像，从中下载 Ubuntu 16.04.2 最简版 64 位 ISO。
+1.   转到[下载链接](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)、 选择最接近的镜像和下载 Ubuntu 16.04.2 最简版 64 位 ISO。
 将 Ubuntu 16.04.2 最简版 64 位 ISO 保存在 DVD 驱动器中，并启动系统。
 
 1.  选择“英语”作为首选语言，再按 Enter。
@@ -168,15 +168,15 @@ ms.locfileid: "55217979"
 
 5. 查看是否存在包含 **disk.EnableUUID** 的行。
 
-    - 如果该值存在且设置为 False，请将它更改为 True。 （值不区分大小写。）
+   - 如果该值存在且设置为 False，请将它更改为 True。 （值不区分大小写。）
 
-    - 如果该值存在且设置为 True，请选择“取消”。
+   - 如果该值存在且设置为 True，请选择“取消”。
 
-    - 如果该值不存在，请选择“添加行”。
+   - 如果该值不存在，请选择“添加行”。
 
-    - 在名称列中，添加“disk.EnableUUID”，然后将值设置为 TRUE。
+   - 在名称列中，添加“disk.EnableUUID”，然后将值设置为 TRUE。
 
-    ![检查 disk.EnableUUID 是否存在](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![检查 disk.EnableUUID 是否存在](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>禁用内核升级
 
@@ -287,7 +287,6 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 2. 记下配置服务器的 IP 地址， 运行以下命令安装主目标服务器并将它注册到配置服务器。
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 

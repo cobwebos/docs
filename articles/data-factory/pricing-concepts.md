@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: ec5ebfa29af13b5a34617be7f423fd7bc220636b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 80b1f90ee0d9f5003c39eb6a853a07d2d64ca482
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017746"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085331"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
@@ -33,7 +33,7 @@ ms.locfileid: "54017746"
 
 3. 一个计划触发器，用于每隔一小时执行一次管道。
 
- ![方案 1](media/pricing-concepts/scenario1.png)
+   ![方案 1](media/pricing-concepts/scenario1.png)
 
 | **操作** | **类型和单元** |
 | --- | --- |

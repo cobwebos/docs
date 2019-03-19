@@ -2,27 +2,27 @@
 title: 准备目标环境以便将 VMware 复制到 Azure | Microsoft Docs
 description: 本文介绍如何准备目标 Azure 环境，以便将 VMware VM 复制到 Azure。
 services: site-recovery
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
-ms.author: ramamill
-ms.openlocfilehash: cbf9c1a49481de49fb8d9c6599acec7bc3600df3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.date: 03/03/2019
+ms.author: mayg
+ms.openlocfilehash: e75d4b1701944e206fcf6ded2dcb6d1e1fbc77cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837505"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900550"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>准备目标环境，以便将 VMware VM 或物理服务器灾难恢复到 Azure
 
 本文介绍如何准备目标 Azure 环境，以便开始将 VMware 虚拟机或物理服务器复制到 Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设：
-- 已在 [Azure 门户](http://portal.azure.com "Azure 门户")上创建恢复服务保管库，用于保护源计算机
+- 已在 [Azure 门户](https://portal.azure.com "Azure 门户")上创建恢复服务保管库，用于保护源计算机
 - 已设置本地环境，用于将源 [VMware 虚拟机](vmware-azure-set-up-source.md)或[物理服务器](physical-azure-set-up-source.md)复制到 Azure。
 
 ## <a name="prepare-target"></a>准备目标
@@ -34,11 +34,11 @@ ms.locfileid: "52837505"
 1. **订阅：** 从下拉菜单中，选择要将虚拟机或物理服务器复制到的“订阅”。
 2. **部署模型：** 选择部署模型（“经典”或“资源管理器”）
 
-根据选择的部署模型，运行验证以确保目标订阅中至少具有一个兼容的存储帐户和虚拟网络，以将虚拟机或物理服务器复制并故障转移到此目标订阅中。
+根据选择的部署模型，运行验证，以确保虚拟机或物理服务器到，对复制和故障转移的目标订阅中有至少一个虚拟网络。
 
 成功完成验证后，单击“确定”转到下一步。
 
-如果你没有兼容的资源管理器存储帐户或虚拟网络，则可单击页面顶部的“+ 存储帐户”或“+ 网络”按钮来创建一个。
+如果没有虚拟网络，则可以创建一个通过单击 **+ 网络**在页面顶部的按钮。
 
 ## <a name="next-steps"></a>后续步骤
 [配置复制设置](vmware-azure-set-up-replication.md)。

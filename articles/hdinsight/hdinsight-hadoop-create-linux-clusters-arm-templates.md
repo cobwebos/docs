@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: d40d3b32f3af8e50079de0a5988584427ea6777c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: cd02930394fd4cd09808a808765e54ff9ea6b4ea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819801"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434295"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 本文介绍几种使用 Azure 资源管理器模板创建 Azure HDInsight 群集的方式。 有关详细信息，请参阅[使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)。 若要了解其他群集创建工具和功能，请在本页顶部单击选项卡选择器，或参阅[群集创建方法](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 要按照本文中的说明进行操作，需要：
@@ -30,7 +30,7 @@ ms.locfileid: "55819801"
 * Azure PowerShell 和/或 Azure 经典 CLI。
 
 ### <a name="resource-manager-templates"></a>资源管理器模板
-通过资源管理器模板，可轻松地通过单个协调操作为应用程序创建以下资源：
+资源管理器模板可以轻松在单个协调的操作中创建你的应用程序的以下资源：
 * HDInsight 群集及其依赖资源（例如默认存储帐户）。
 * 其他资源（例如要使用 [Apache Sqoop](https://sqoop.apache.org/) 的 Azure SQL 数据库）。
 
@@ -47,11 +47,7 @@ ms.locfileid: "55819801"
 
 ## <a name="generate-templates"></a>生成模板
 
-使用资源管理器可利用不同工具从订阅中的现有资源导出资源管理器模板。 可以使用该生成的模板了解模板语法，或根据需要自动重新部署解决方案。
-
-- Azure 门户：请参阅[从现有资源导出 Azure 资源管理器模板](../azure-resource-manager/resource-manager-export-template.md)。
-- Azure PowerShell：请参阅[使用 PowerShell 导出 Azure 资源管理器模板](../azure-resource-manager/resource-manager-export-template-powershell.md)。
-- Azure 经典 CLI：请参阅[使用 Azure 经典 CLI 导出 Azure 资源管理器模板](../azure-resource-manager/resource-manager-export-template-cli.md)。
+使用资源管理器可利用不同工具从订阅中的现有资源导出资源管理器模板。 可以使用该生成的模板了解模板语法，或根据需要自动重新部署解决方案。 有关详细信息，请参阅[导出模板](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)。
 
 ## <a name="deploy-using-the-portal"></a>使用门户进行部署
 

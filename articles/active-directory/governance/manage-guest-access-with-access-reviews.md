@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 访问评审管理来宾访问权限 | Microsoft Docs
-description: 使用 Azure Active Directory 访问评审管理属于组的成员或已分配到应用程序的来宾用户
+title: 管理使用 Azure AD 访问评审的来宾访问权限 |Microsoft Docs
+description: 管理来宾用户作为一个组的成员或分配给应用程序使用 Azure Active Directory 访问评审
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63acf3a91e7e121a807a44bed8506d05e71899d2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 3bed8a5d20b50fd90922730c958cb1a36933776f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881038"
 ---
-# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理来宾访问权限
+# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>管理使用 Azure AD 访问评审的来宾访问权限
 
 
 使用 Azure Active Directory (Azure AD)，可以借助 [Azure AD B2B 功能](../b2b/what-is-b2b.md)轻松实现跨组织边界的协作。 [管理员](../b2b/add-users-administrator.md)或[其他用户](../b2b/what-is-b2b.md)可以邀请其他租户中的来宾用户。 此功能也适用于 Microsoft 帐户等社交标识。
@@ -35,7 +35,7 @@ ms.locfileid: "56175177"
 >
 >
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 
 访问评审在 Azure AD 的 Premium P2 版本中提供，后者随附在 Microsoft 企业移动性 + 安全性的 E5 中。 有关详细信息，请参阅 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。 与此功能交互的每个用户，无论是创建评审、填写评审还是确认评审，都需要许可证。 
@@ -44,7 +44,7 @@ ms.locfileid: "56175177"
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>创建和执行来宾的访问评审
 
-首先，作为全局管理员或用户帐户管理员，请转到[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)，确保访问评审已为你的组织准备就绪。 
+首先，作为全局管理员或用户管理员，请转到[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)确保访问评审为你的组织已准备就绪。
 
 Azure AD 支持采用多种方案评审来宾用户。
 
@@ -61,11 +61,11 @@ Azure AD 支持采用多种方案评审来宾用户。
 
 可以使用访问评审确保受邀并已添加到组中的用户需要持续提供访问权限。 可以轻松让来宾自我评审他们在组中的成员身份。
 
-1. 若要针对组启动访问评审，选择仅包括来宾用户成员的评审，然后，这些成员会自我评审。 有关详细信息，请参阅[创建访问评审](create-access-review.md)。
+1. 若要创建组的访问评审，选择要包括来宾用户成员和成员评审自己的评审。 有关详细信息，请参阅[创建组或应用程序的访问评审](create-access-review.md)。
 
-2. 让每个来宾自我评审其成员身份。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件，其中包含访问评审的链接。 Azure AD 为来宾提供了有关[如何评审其访问权限](perform-access-review.md)的说明。
+2. 让每个来宾自我评审其成员身份。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件，其中包含访问评审的链接。 Azure AD 中的来宾说明了如何[评审为组或应用程序的访问权限](perform-access-review.md)。
 
-3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成访问评审](complete-access-review.md)。
+3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成组或应用程序的访问评审](complete-access-review.md)。
 
 4. 除了表明自己不需要持续访问权限的这些用户以外，还可以删除未做出答复的用户。 未做出答复的用户可能不会再收到电子邮件。
 
@@ -75,21 +75,21 @@ Azure AD 支持采用多种方案评审来宾用户。
 
 可以让发起人（例如组的所有者）评审来宾是否持续需要获得组中的成员身份。
 
-1. 若要针对组启动访问评审，选择仅包括来宾用户成员的评审。 然后指定一个或多个审阅者。 有关详细信息，请参阅[创建访问评审](create-access-review.md)。
+1. 若要创建组的访问评审，选择仅包括来宾用户成员的评审。 然后指定一个或多个审阅者。 有关详细信息，请参阅[创建组或应用程序的访问评审](create-access-review.md)。
 
-2. 要求审阅者提供输入。 默认情况下，他们会收到来自 Azure AD 的电子邮件（其中包含访问面板的链接），他们将在该访问面板中[执行访问评审](perform-access-review.md)。
+2. 要求审阅者提供输入。 默认情况下，他们会收到一封电子邮件从包含链接的 Azure AD 访问面板中，其中它们[评审为组或应用程序的访问权限](perform-access-review.md)。
 
-3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成访问评审](complete-access-review.md)。
+3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成组或应用程序的访问评审](complete-access-review.md)。
 
 ### <a name="ask-guests-to-review-their-own-access-to-an-application"></a>让来宾自我评审他们对应用程序的访问权限
 
 可以使用访问评审确保受邀参与特定应用程序的用户需要持续提供访问权限。 可以轻松让来宾自己评审他们的访问权限需求。
 
-1. 若要针对应用程序启动访问评审，选择仅包括来宾的评审，然后，这些用户会评审自己的访问权限。 有关详细信息，请参阅[创建访问评审](create-access-review.md)。
+1. 若要创建应用程序的访问权限评审，选择包括仅来宾和用户评审其自己的访问权限的评审。 有关详细信息，请参阅[创建组或应用程序的访问评审](create-access-review.md)。
 
-2. 让每个来宾自我评审他们对应用程序的访问权限。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件。 该电子邮件中包含指向组织访问面板中访问评审的链接。 Azure AD 为来宾提供了有关[如何评审其访问权限](perform-access-review.md)的说明。
+2. 让每个来宾自我评审他们对应用程序的访问权限。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件。 该电子邮件中包含指向组织访问面板中访问评审的链接。 Azure AD 中的来宾说明了如何[评审为组或应用程序的访问权限](perform-access-review.md)。
 
-3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成访问评审](complete-access-review.md)。
+3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成组或应用程序的访问评审](complete-access-review.md)。
 
 4. 除了表明自己不需要持续访问权限的用户以外，还可以删除未做出答复的来宾用户。 未做出答复的用户可能不会再收到电子邮件。 还可以删除未选择让其参与的来宾用户，尤其是最近未邀请其参与的用户。 这些用户未接受其邀请，因此没有应用程序的访问权限。 
 
@@ -97,11 +97,11 @@ Azure AD 支持采用多种方案评审来宾用户。
 
 可以让发起人（例如应用程序的所有者）评审来宾是否需要持续获得应用程序的访问权限。
 
-1. 若要针对应用程序启动访问评审，选择仅包括来宾的评审。 然后指定一个或多个用户作为审阅者。 有关详细信息，请参阅[创建访问评审](create-access-review.md)。
+1. 若要创建应用程序的访问权限评审，选择仅包括来宾的评审。 然后指定一个或多个用户作为审阅者。 有关详细信息，请参阅[创建组或应用程序的访问评审](create-access-review.md)。
 
-2. 要求审阅者提供输入。 默认情况下，他们会收到来自 Azure AD 的电子邮件（其中包含访问面板的链接），他们将在该访问面板中[执行访问评审](perform-access-review.md)。
+2. 要求审阅者提供输入。 默认情况下，他们会收到一封电子邮件从包含链接的 Azure AD 访问面板中，其中它们[评审为组或应用程序的访问权限](perform-access-review.md)。
 
-3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成访问评审](complete-access-review.md)。
+3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成组或应用程序的访问评审](complete-access-review.md)。
 
 ### <a name="ask-guests-to-review-their-need-for-access-in-general"></a>让来宾评审访问权限的一般需求
 
@@ -112,17 +112,17 @@ Azure AD 支持采用多种方案评审来宾用户。
 
 1. 如果尚不存在适当的组，请在 Azure AD 中创建一个安全组并在其中以成员的形式包含来宾。 例如，可以创建一个组并在其中包含手动维护的来宾成员身份。 或者，可以针对 Contoso 租户中 UserType 属性值为“来宾”的用户，以类似于“Guests of Contoso”的名称创建一个动态组。  为了提高效率，请确保该组主要是来宾 - 不要选择包含成员用户的组，因为成员用户不需要进行评审。  另外，请记住，作为组成员的来宾用户可以看到该组的其他成员。
 
-2. 若要针对该组启动访问评审，请将成员自己选择为评审者。 有关详细信息，请参阅[创建访问评审](create-access-review.md)。
+2. 若要创建该组的访问权限评审，选择为评审者成员本身。 有关详细信息，请参阅[创建组或应用程序的访问评审](create-access-review.md)。
 
-3. 让每个来宾自我评审其成员身份。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件，其中包含组织访问面板中访问评审的链接。 Azure AD 为来宾提供了有关[如何评审其访问权限](perform-access-review.md)的说明。  未接受其邀请的这些来宾将在评审结果中显示为“未通知”。
+3. 让每个来宾自我评审其成员身份。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件，其中包含组织访问面板中访问评审的链接。 Azure AD 中的来宾说明了如何[评审为组或应用程序的访问权限](perform-access-review.md)。  未接受其邀请的这些来宾将在评审结果中显示为“未通知”。
 
-4. 审阅者提供输入后，将停止访问评审。 有关详细信息，请参阅[完成访问评审](complete-access-review.md)。
+4. 审阅者提供输入后，将停止访问评审。 有关详细信息，请参阅[完成组或应用程序的访问评审](complete-access-review.md)。
 
 5. 删除已拒绝评审、未完成评审或者事先未接受邀请的来宾的来宾访问权限。 如果某些来宾是已被选择参加评审或以前未接受邀请的联系人，则可以使用 Azure 门户或 PowerShell 禁用其帐户。 如果来宾不再需要访问权限并且不是联系人，则可以使用 Azure 门户或 PowerShell 从目录中删除其来宾用户对象。
 
 ## <a name="next-steps"></a>后续步骤
 
-[创建对组成员的访问评审或对应用程序的访问](create-access-review.md)
+[创建组或应用程序的访问评审](create-access-review.md)
 
 
 

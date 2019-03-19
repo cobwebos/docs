@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 565b5bcce114ab5ebd2169ece11a958013cf2ee5
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: eadff8e2db6e5b8ea19b041614e0d1f3908da8a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338897"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876878"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 配置网络安全组流日志
 
@@ -209,7 +209,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="download-a-flow-log"></a>下载流日志
 
-流日志的存储位置是在创建时定义的。 用于访问这些保存到存储帐户的流日志的便利工具是 Microsoft Azure 存储资源管理器，下载地址为： http://storageexplorer.com/
+流日志的存储位置是在创建时定义的。 用于访问这些保存到存储帐户的流日志的便利工具是 Microsoft Azure 存储资源管理器，下载地址为： https://storageexplorer.com/
 
 如果指定了存储帐户，则数据包捕获文件将保存到以下位置的存储帐户：
 

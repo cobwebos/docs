@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jegeib
-ms.openlocfilehash: 55c781d0c6284de1382c9d3e614621c40963194b
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: c96b924294286be57de90dae7e6534b5ed9306ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302904"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874566"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool 更新版 7.1.60126.1 - 2019 年 1 月 29 日
 
 Microsoft Threat Modeling Tool 7.1.60126.1 版已于 2019 年 1 月 29 日发布，包含以下更改：
 
-- .NET 所需的最低版本已增至 [.Net 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262)。
+- 要求的最低版本的.NET 已增至[.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)。
 - 由于 .NET 依赖关系，Windows 所需的最低版本已增至 [Windows 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)。
 - 模型验证切换功能已添加到此工具的“选项”菜单中。
 - 威胁属性中的多个链接已更新。
@@ -47,7 +47,7 @@ Microsoft Threat Modeling Tool 7.1.60126.1 版已于 2019 年 1 月 29 日发布
 - 支持的操作系统
   - [Microsoft Windows 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更高版本
 - 所需的 .NET 版本
-  - [.Net 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262) 或更高版本
+  - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)或更高版本
 - 其他要求
   - 需要建立 Internet 连接才能接收工具和模板的更新。
 

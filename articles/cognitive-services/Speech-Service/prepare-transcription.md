@@ -1,7 +1,7 @@
 ---
-title: 用于语音服务培训的听录指南
+title: 脚本用于训练的语音服务模型的指导原则
 titleSuffix: Azure Cognitive Services
-description: 了解如何准备文本以自定义语音服务的声学和语言模型以及语音字体。
+description: 了解如何准备要为语音服务自定义声学和语言模型和语音文本。
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 31813cbbe4bdb647d43e99e7585d1eb3bb6e8a5c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 0d7508ed9cf1807fa05c57a1d60c804af7d2244f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857169"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897208"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>使用语音服务的听录指南
 
 若要自定义“语音转文本”或“文本转语音”，则必须提供文本和语音。 文本中的每一行对应一个陈述。 文本应尽可能与语音匹配。 文本称为一个脚本，必须按特定格式进行创建。
 
-语音服务使输入规范化，从而让文本保持一致。 
+语音服务规范化输入，以使文本保持一致。
 
 本文介绍两种类型的规范化操作。 不同语言的指南略有不同。
 
@@ -39,7 +39,7 @@ ms.locfileid: "55857169"
 
 ### <a name="text-normalization-rules-for-english"></a>英语的文本规范化规则
 
-语音服务执行以下规范化规则：
+语音服务执行以下的规范化规则：
 
 * 对所有文本使用小写字母
 * 移除除单词内撇号外的所有标点
@@ -64,7 +64,7 @@ ms.locfileid: "55857169"
 * 非标准数值字符串（例如某些日期或账目格式）应写成字词。
 * 应按照发音听录包含非字母字符或字母数字字符的字词。
 * 将发音未变的单词的缩写词（例如，“radar”、“laser”、“RAM”或“NATO”）保留下来。
-* 输入按单个字母发音的缩写词（例如，“IBM”、“CPU”、“FBI”、“TBD”或“NaN”）时，用空格分隔字母。 
+* 输入按单个字母发音的缩写词（例如，“IBM”、“CPU”、“FBI”、“TBD”或“NaN”）时，用空格分隔字母。
 
 下面是一些示例：
 
@@ -83,7 +83,7 @@ ms.locfileid: "55857169"
 
 ## <a name="chinese-zh-cn"></a>中文 (zh-cn)
 
-上传到自定义语音服务的文本数据应使用带字节顺序标记的 UTF-8 编码。 文件应每行写一条语句。
+文本数据上传到自定义语音服务应使用 utf-8 编码的字节顺序标记。 文件应每行写一条语句。
 
 避免使用半角标点字符。 在文字处理程序中准备数据或从网页报废数据时，可能会无意中包括这些字符。 将它们替换为相应的全角字符。 例如：
 
@@ -94,7 +94,7 @@ ms.locfileid: "55857169"
 
 ### <a name="text-normalization-rules-for-chinese"></a>中文文本规范化规则
 
-语音服务执行以下规范化规则：
+语音服务执行以下的规范化规则：
 
 * 删除所有标点
 * 将数字扩展为口语形式
@@ -134,7 +134,7 @@ ms.locfileid: "55857169"
 
 ### <a name="text-normalization-rules-for-german"></a>德语文本规范化规则
 
-语音服务执行以下规范化规则：
+语音服务执行以下的规范化规则：
 
 * 对所有文本使用小写字母
 * 删除所有标点，包括多种引号（可以保留 "test"、'test'、"test„ 以及 «test»）
@@ -162,10 +162,10 @@ ms.locfileid: "55857169"
 
 下面是一些示例：
 
-| 原始文本 | 用户规范化后 | 系统规范化后
+| 原始文本 | 用户规范化后 | 系统规范化后 |
 |--------  | ----- | -------- |
 | Es ist 12.23 Uhr | Es ist 12:23 Uhr | es ist zwölf uhr drei und zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf ||
+| {12.45} | {12,45} | zwölf komma vier fünf |
 | 2 + 3 - 4 | 2 plus 3 minus 4 | zwei plus drei minus vier|
 
 ## <a name="next-steps"></a>后续步骤

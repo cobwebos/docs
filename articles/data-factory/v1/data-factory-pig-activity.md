@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fe1ef8c141c4a4daa443f800181f8e6e3199d0cc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331293"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997012"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Pig 活动转换数据
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -82,7 +82,8 @@ ms.locfileid: "54331293"
 ```
 
 ## <a name="syntax-details"></a>语法详细信息
-| 属性 | 说明 | 必选 |
+
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | 名称 |活动名称 |是 |
 | description |描述活动用途的文本 |否 |
@@ -124,7 +125,7 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 1. 创建链接服务以注册[自己的 HDInsight 计算群集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或配置[按需 HDInsight 计算群集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。 将此链接服务称作 **HDInsightLinkedService**。
 2. 创建[链接服务](data-factory-azure-blob-connector.md)以配置托管数据的 Azure Blob 存储的连接。 将此链接服务称作 **StorageLinkedService**。
 3. 创建指向输入和输出数据的[数据集](data-factory-create-datasets.md)。 将输入数据集称作 **PigSampleIn**，输出数据集称作 **PigSampleOut**。
-4. 将文件中的 Pig 查询复制到步骤 #2 中配置的 Azure Blob 存储。 如果托管数据的 Azure 存储与托管查询文件的 Azure 存储不同，请创建单独的 Azure 存储链接服务。 请参考活动配置中的链接服务。 使用 **scriptPath** 指定 pig 脚本文件和“scriptLinkedService”的路径。 
+4. 将文件中的 Pig 查询复制到步骤 #2 中配置的 Azure Blob 存储。 如果托管数据的 Azure 存储与托管查询文件的 Azure 存储不同，请创建单独的 Azure 存储链接服务。 请参考活动配置中的链接服务。 使用**scriptPath**若要指定 pig 脚本文件的路径和**scriptLinkedService**。 
    
    > [!NOTE]
    > 还可以使用 **script** 属性在活动定义中提供 Pig 脚本内联。 但不建议使用此方法，因为这需转义脚本中的所有特殊字符，并且可能导致调试问题。 最佳做法是遵循步骤 #4。

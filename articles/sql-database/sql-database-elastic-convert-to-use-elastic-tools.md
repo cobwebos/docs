@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 8449462f144590e4fe7048366a21090c95a303cb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 49686e407b2d733c04bad31706c6c4f315bf28bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008675"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>迁移要扩展的现有数据库
 使用 Azure SQL 数据库数据库工具（例如[弹性数据库客户端库](sql-database-elastic-database-client-library.md)）轻松管理现有的扩展共享数据库。 先转换现有数据库集，再使用[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)。 
@@ -30,7 +30,7 @@ ms.locfileid: "55455586"
 3. 准备各个分片。  
 4. 将映射添加到分片映射。
 
-可以使用 [.NET Framework 客户端库](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)或者 [Azure SQL DB - 弹性数据库工具脚本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)中提供的 PowerShell 脚本来实现这些技巧。 以下示例使用 PowerShell 脚本。
+可以使用 [.NET Framework 客户端库](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)或者 [Azure SQL DB - 弹性数据库工具脚本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)中提供的 PowerShell 脚本来实现这些技巧。 以下示例使用 PowerShell 脚本。
 
 有关 ShardMapManager 的详细信息，请参阅[分片映射管理](sql-database-elastic-scale-shard-map-management.md)。 有关弹性数据库工具的概述，请参[阅弹性数据库功能概述](sql-database-elastic-scale-introduction.md)。
 
@@ -112,7 +112,7 @@ ms.locfileid: "55455586"
 
 
 ## <a name="step-4-add-mappings"></a>步骤 4：添加映射
-添加映射的操作取决于创建的分片映射种类。 如果已创建列表映射，请添加列表映射。 如果已创建范围映射，请添加范围映射。
+添加映射的操作取决于创建的分片映射种类。 如果创建的是列表映射，则添加列表映射。 如果创建的是范围映射，则添加范围映射。
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>选项 1：映射列表映射的数据
 通过为每个租户添加列表映射来映射数据。  

@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 10c5dc5614731b247b917b68307f6a2d11663461
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 1298e7d7ed9c3760ff5022b5b97e8444eb1bcad1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510470"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007061"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
 
@@ -25,7 +25,7 @@ ms.locfileid: "55510470"
 
 **错误代码**：AllocationFailed 或 ZonalAllocationFailed
 
-**错误消息**：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 http://aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
+**错误消息**：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 `https://aka.ms/allocation-guidance` 阅读有关提高分配成功可能性的详细信息”
 
 本文说明一些常见分配故障的原因，并建议可能的补救方法。
 
@@ -86,7 +86,7 @@ ms.locfileid: "55510470"
 |旧版 VM 系列/大小|建议使用新版 VM 系列/大小|详细信息|
 |----------------------|----------------------------|--------------------|
 |Av1 系列|[Av2 系列](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 DSv3 系列](../windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 DSv3 系列](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
 |Dv1 或 DSv1 系列（D11 到 D14）|[Ev3 或 ESv3 系列](../windows/sizes-memory.md#ev3-series)|
 |D15v2 或 DS15v2|如果你使用资源管理器部署模型以便充分利用更大的 VM 大小，请考虑移动到 D16v3/DS16v3 或 D32v3/DS32v3。 这些为在最新硬件上运行而设计。 如果使用资源管理器部署模型以确保你的 VM 实例独立于单个客户专用的硬件，请考虑移动到新的独立 VM 大小 E64i_v3 或 E64is_v3，它们为在最新硬件上运行而设计。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 

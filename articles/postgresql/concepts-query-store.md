@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/01/2019
-ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: db62c1ec03ae9005f33a09010486b04ac6976742
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660718"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005909"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
@@ -32,12 +32,18 @@ Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时�
 ### <a name="enable-query-store-using-the-azure-portal"></a>使用 Azure 门户启用查询存储
 1. 登录到 Azure 门户，选择 Azure Database for PostgreSQL 服务器。
 2. 在菜单的“设置”部分中选择“服务器参数”。
-3. 搜索 pg_qs.query_capture_mode 参数。
-4. 将值从 NONE 更新为 TOP 并保存。
+3. 搜索 `pg_qs.query_capture_mode` 参数。
+4. 将值设置为`TOP`并**保存**。
 
-或者，可使用 Azure CLI 设置此参数。
+若要启用查询存储中的等待统计信息： 
+1. 搜索 `pgms_wait_sampling.query_capture_mode` 参数。
+1. 将值设置为`ALL`并**保存**。
+
+
+或者，您可以设置这些参数使用 Azure CLI。
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
+az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
 ```
 
 允许第一批数据在 azure_sys 数据库中最多保留 20 分钟。
@@ -81,6 +87,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 启用查询存储时，它会在 15 分钟的聚合时段内保存数据，每个时段最多可存储 500 个不同查询。 
 
 以下选项可用于配置查询存储参数。
+
 | **Parameter** | **说明** | **默认** | **范围**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | 设置跟踪哪些语句。 | 无 | none, top, all |
@@ -89,6 +96,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 | pg_qs.track_utility | 设置是否跟踪实用程序命令 | on | on, off |
 
 以下选项专用于等待统计信息。
+
 | **Parameter** | **说明** | **默认** | **范围**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | 设置跟踪哪些语句以获取等待统计信息。 | 无 | none, all|

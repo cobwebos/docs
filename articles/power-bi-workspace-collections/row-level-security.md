@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: f8a5c12bb57a8f59960320c6227174b240bcbc3d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 1f9d012754cdfa5b0f4c4e7a102d826080166484
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892229"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864620"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>将行级别安全性用于 Power BI 工作区集合
 
@@ -96,7 +96,7 @@ RLS 是在 Power BI Desktop 中编写的。 打开数据集和报表时，可以
 
 使用 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) 方法创建令牌。 如果提供 username 属性，则也必须在角色中至少传递一个值。
 
-例如，可以更改 EmbedSample。 可以将 DashboardController 第 55 行内容从
+例如，可以更改 EmbedSample。 DashboardController 第 55 行无法执行以下更新：从
 
     var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
 
@@ -119,4 +119,4 @@ to
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-有更多问题？ [尝试 Power BI 社区](http://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

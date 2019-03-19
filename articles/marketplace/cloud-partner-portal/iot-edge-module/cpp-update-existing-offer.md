@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 071837aac9fce405fcc5ef92e044a0265e0e5969
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: ca7bed26d91c28304638e85d6da93708bfcfcada
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432361"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170303"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>更新现有的 IoT Edge 模块套餐
 
@@ -36,7 +36,7 @@ ms.locfileid: "49432361"
 
 ## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>不允许对 IoT Edge 模块套餐或 SKU 进行的更改
 
-在 Azure 市场中将套餐上线后，不能更改 IoT Edge 模块套餐或 SKU 的某些属性。 不能更改以下设置：
+有 IoT Edge 模块产品/服务或 SKU 在 Azure Marketplace 上实时产品/服务后无法更改的属性。 不能更改以下设置：
 
 -  套餐的“套餐 ID”和“发布者 ID”
 -  现有 SKU 的“SKU ID”
@@ -49,7 +49,7 @@ ms.locfileid: "49432361"
 
 ### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>更新 SKU 的 IoT Edge 模块映像版本
 
-我们经常会使用安全修补程序、其他功能等定期更新 IoT Edge 模块映像。 在这种情况下，需要使用以下步骤来更新 SKU 引用的 IoT Edge 模块映像：
+它是常见的 IoT Edge 模块映像的安全修补程序、 其他功能等进行定期更新。 在这种情况下，需要使用以下步骤来更新 SKU 引用的 IoT Edge 模块映像：
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 
@@ -73,7 +73,7 @@ ms.locfileid: "49432361"
 
 3.  在“SKU”选项卡下，选择“添加新 SKU”并在弹出窗口中提供一个 **SKU ID**。
 
-4.  使用[将 IoT Edge 模块发布到 Azure 市场](./cpp-publish-offer.md)中所述的步骤重新发布 IoT Edge 模块。
+4.  重新发布使用的步骤中所述的 IoT Edge 模块[将 IoT Edge 模块发布到 Azure Marketplace](./cpp-publish-offer.md)。
 
 5.  选择“发布”，启动发布新 SKU 的工作流。
 
@@ -86,7 +86,7 @@ ms.locfileid: "49432361"
 
 2.  在“所有套餐”下，找到要更新的套餐。
 
-3.  转到“市场”选项卡。遵照[将 IoT Edge 模块发布到 Azure 市场](./cpp-publish-offer.md)一文中的说明进行元数据更改。
+3.  转到“市场”选项卡。使用中的说明[将 IoT Edge 模块发布到 Azure Marketplace](./cpp-publish-offer.md)文章进行元数据更改。
 
 4.  选择“发布”，启动发布更改的工作流。
 

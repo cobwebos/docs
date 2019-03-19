@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 访问评审管理已从条件访问策略中排除的用户 | Microsoft Docs
-description: 使用 Azure Active Directory (Azure AD) 访问评审管理已从条件访问策略中排除的用户
+title: 使用 Azure AD 访问评审管理用户从条件性访问策略中排除 |Microsoft Docs
+description: 了解如何使用 Azure Active Directory (Azure AD) 访问评审管理用户已从条件性访问策略中排除
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82fdfe598e11415130950443fb0d3e27f5d9d01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892706"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>使用 Azure AD 访问评审管理已从条件访问策略中排除的用户
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>使用 Azure AD 访问评审管理用户从条件性访问策略中排除
 
-在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 本文介绍可能需要创建排除项的某些示例，以及 IT 管理员如何管理此任务，以避免监督策略例外项，并向审核员证明已使用 Azure Active Directory (Azure AD) 定期评审这些例外项。
+在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 本指南介绍了排除项可能需要一些示例和如何您作为 IT 管理员，可以管理此任务，避免监督策略例外情况，并审核员提供使用 Azure 定期查看这些异常的概念Active Directory (Azure AD) 访问评审。
 
 > [!NOTE]
 > 使用 Azure AD 访问评审需要有效的 Azure AD Premium P2、企业移动性 + 安全性 E5 付费版或试用版许可证。 有关详细信息，请参阅 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
@@ -102,7 +102,7 @@ ms.locfileid: "56168534"
 假设某个条件访问策略会阻止来自特定国家/地区的访问。 该策略排除了某个组。 下面是评审该组成员的建议访问评审方法。
 
 > [!NOTE]
-> 全局管理员或用户帐户管理员角色需要创建访问评审。
+> 创建访问评审需全局管理员或用户管理员角色。
 
 1. 评审每隔一周重复进行。
 
@@ -158,5 +158,5 @@ IT 管理员知道，管理策略的排除组有时不可避免。 但是，如�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure AD 针对组成员或应用程序访问权限创建访问评审](create-access-review.md)
+- [创建组或应用程序的访问评审](create-access-review.md)
 - [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)

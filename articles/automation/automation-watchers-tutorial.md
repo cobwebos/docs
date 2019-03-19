@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 7870aca696ec61e707c5c774fd43e6d64c0cab82
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 7d7ebc7493ff8e272e35abafeedd8fbc52b986ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436750"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002161"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>创建 Azure 自动化观察程序任务来跟踪本地计算机上的文件更改
 
@@ -29,7 +29,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 > * 触发观察程序
 > * 检查输出
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成本教程需要以下各项：
 
@@ -89,8 +89,8 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 1. 选择“配置操作”，然后选择“Process-NewFile”runbook。
 1. 输入以下参数值：
 
-   ***EVENTDATA** - 保留为空。 从观察程序 runbook 传入数据。  
-   ***运行设置** - 当此 Runbook 在自动化服务中运行时保留为 Azure。
+   * **事件数据** - 保留为空。 从观察程序 runbook 传入数据。  
+   * **运行设置** - 当此 runbook 在自动化服务中运行时保留为 Azure。
 
 1. 单击“确定”，然后选择返回到观察程序页。
 1. 单击“确定”创建观察程序任务。

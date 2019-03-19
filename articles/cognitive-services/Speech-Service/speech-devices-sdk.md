@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d7ef018b376b96f967a065857839761fc5822239
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: cb0e079eee78f865d472b55b162fb65b5eadaf44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876288"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900482"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>关于语音设备 SDK（预览）
 
-[语音服务](overview.md)适用于多种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
+[语音服务](overview.md)适用于各种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
 
 语音设备 SDK 有助于：
 * 快速测试新的语音方案。
-* 更轻松地将基于云的语音服务集成到设备中。
+* 更轻松地将基于云的语音服务集成到你的设备。
 * 为客户创建出色的用户体验。
 
-语音设备 SDK 使用[语音 SDK](speech-sdk.md)。 它使用语音 SDK 将我们的高级音频处理算法处理的音频从设备的麦克风阵列发送到[语音服务](overview.md)。 它使用多声道音频，通过噪声抑制、回音消除、波束赋形和残响消除来提供更准确的远场[语音识别](speech-to-text.md)。
+语音设备 SDK 使用[语音 SDK](speech-sdk.md)。 它使用语音 SDK 将发送从设备的麦克风阵列分区到我们的高级音频处理算法可处理的音频[语音服务](overview.md)。 它使用多声道音频，通过噪声抑制、回音消除、波束赋形和残响消除来提供更准确的远场[语音识别](speech-to-text.md)。
 
 你还可以使用语音设备 SDK 来构建具有你自己的[自定义唤醒字](speech-devices-sdk-create-kws.md)的环境设备 - 因此启动用户交互的提示词将为品牌特有。
 
@@ -39,7 +39,7 @@ ms.locfileid: "55876288"
 
 |||
 |-|-|
-|[![ROOBO 徽标](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO 提供面向家用电器、汽车、机器人、玩具和其他行业的完整人工智能 (AI) 系统解决方案。 通过与 Microsoft 语音服务集成，ROOBO 的参考设计大大缩短了从开发到上市的时间。 [访问 ROOBO](http://ddk.roobo.com/)。|
+|[![ROOBO 徽标](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO 提供面向家用电器、汽车、机器人、玩具和其他行业的完整人工智能 (AI) 系统解决方案。 ROOBO 的参考设计大大减少了通过与 Azure 语音服务集成的开发市场的时间。 [访问 ROOBO](http://ddk.roobo.com/)。|
 
 ## <a name="next-steps"></a>后续步骤
 

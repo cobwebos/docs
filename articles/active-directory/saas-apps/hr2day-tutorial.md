@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e932fd59fb888d73fb2ad9aee3f440b4aca3e662
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 378aab82fac5298c3785f752478e3bfc3c6e325b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180567"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56180567"
 
 有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 HR2day by Merces 的集成，需要以下项：
 
@@ -132,8 +132,8 @@ ms.locfileid: "56180567"
 
     ![配置单一登录](./media/hr2day-tutorial/tutorial_hr2day_00.png)
     
-    > [!NOTE] 
-    在配置 SAML 断言前，必须联系 [HR2day by Merces 客户端支持团队](mailto:servicedesk@merces.nl)，并为租户请求唯一标识符属性值。 需要此值才能完成下一部分中的步骤。 
+   > [!NOTE]
+   >  在配置 SAML 断言前，必须联系 [HR2day by Merces 客户端支持团队](mailto:servicedesk@merces.nl)，并为租户请求唯一标识符属性值。 需要此值才能完成下一部分中的步骤。 
 
 1. 在“单一登录”对话框的“用户属性”部分中，按下图所示配置 SAML 令牌属性。 然后执行以下步骤。
     
@@ -174,7 +174,7 @@ ms.locfileid: "56180567"
 
     > [!TIP]
     >之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory” > “企业应用程序”部分添加此应用后，请选择“单一登录”选项卡。然后通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
-> 
+   > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。

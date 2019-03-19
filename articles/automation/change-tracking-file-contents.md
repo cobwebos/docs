@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ad011d778ab575c146c202a7940e03a4451979fb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437995"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074737"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>查看“更改跟踪”跟踪的文件的内容
 
@@ -62,11 +62,11 @@ ms.locfileid: "54437995"
 
 1. 在“更改详细信息”页面上，能看到文件信息前后的标准，单击左上角的“查看文件内容更改”可以查看文件的内容。
 
-  ![更改详细信息](./media/change-tracking-file-contents/change-details.png)
+   ![更改详细信息](./media/change-tracking-file-contents/change-details.png)
 
 1. 该新页面会以对比视图显示文件内容。 也可选择“内联”，以内联视图查看这些更改。
 
-  ![查看文件更改](./media/change-tracking-file-contents/view-file-changes.png)
+   ![查看文件更改](./media/change-tracking-file-contents/view-file-changes.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -75,5 +75,5 @@ ms.locfileid: "54437995"
 > [!div class="nextstepaction"]
 > [故障排除环境中的更改](automation-tutorial-troubleshoot-changes.md)
 
-* 使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)以查看详细的更改跟踪数据。
+* 使用[Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)若要查看详细的更改跟踪数据。
 

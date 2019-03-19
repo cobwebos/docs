@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a52b78b62395f571e448a73b8c34847ef16b2613
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 6d6e453819ad749972de89658fa695d803d8e222
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429530"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898816"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 本文档逐步讲解如何安装和配置 Azure AD Connect Health 代理。 可以从 [此处](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)下载代理。
@@ -28,7 +28,7 @@ ms.locfileid: "56429530"
 ## <a name="requirements"></a>要求
 下表是使用 Azure AD Connect Health 的要求列表。
 
-| 要求 | 说明 |
+| 要求 | 描述 |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health 是 Azure AD Premium 的一个功能，它需要与 Azure AD Premium 配合使用。 <br /><br />有关详细信息，请参阅 [Getting started with Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)（Azure AD Premium 入门） <br />若要免费试用 30 天，请参阅 [Start a trial](https://azure.microsoft.com/trial/get-started-active-directory/)（开始试用）。 |
 | 必须是 Azure AD 的全局管理员才能开始使用 Azure AD Connect Health |默认情况下，只有全局管理员才能安装和配置运行状况代理、访问信息，以及在 Azure AD Connect Health 中执行任何操作。 有关详细信息，请参阅 [Administering your Azure AD directory](../fundamentals/active-directory-administer.md)（管理 Azure AD 目录）。 <br /><br /> 使用基于角色的访问控制可以允许组织中的其他用户访问 Azure AD Connect Health。 有关详细信息，请参阅 [Role Based Access Control for Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)（Azure AD Connect Health 基于角色的访问控制）。 <br /><br />**重要提示：** 在安装代理时使用的帐户必须是工作帐户或学校帐户， 而不能是 Microsoft 帐户。 有关详细信息，请参阅 [Sign up for Azure as an organization](../fundamentals/sign-up-organization.md)（以组织身份注册 Azure） |
@@ -119,7 +119,7 @@ ms.locfileid: "56429530"
 1. 单击“开始”，指向“程序”，指向“管理工具”，并单击“本地安全策略”。
 2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
 3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 2.0 服务帐户。 如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。
-4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable</code>。
+4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>。
 5. 关闭“本地安全策略”。
 <br />   -- **仅主 AD FS 服务器需要执行以下步骤。** -- <br />
 6. 打开“AD FS 管理”管理单元。 若要打开“AD FS 管理”管理单元，请单击“开始”，指向“程序”，指向“管理工具”，然后单击“AD FS 2.0 管理”。
@@ -132,7 +132,7 @@ ms.locfileid: "56429530"
 1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。
 2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
 3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。
-4. 要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：```auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable```。
+4. 要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```。
 5. 关闭“本地安全策略”。
 <br />   -- **仅主 AD FS 服务器需要执行以下步骤。** -- <br />
 6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
@@ -144,7 +144,7 @@ ms.locfileid: "56429530"
 1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。
 2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
 3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”将 AD FS 服务帐户添加到列表中，然后单击“确定”。
-4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable.</code>
+4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable.</code>
 5. 关闭“本地安全策略”。
 <br />   -- **仅主 AD FS 服务器需要执行以下步骤。** -- <br />
 6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
@@ -235,6 +235,28 @@ ms.locfileid: "56429530"
 
 ![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
+### <a name="quick-agent-installation-in-multiple-servers"></a>多个服务器中的快速代理安装
+1. 使用密码的 Azure AD 中创建用户帐户。
+2. 将分配**所有者**为 Azure AD Connect Health 中通过门户此本地 AAD 帐户的角色。 请按照步骤[此处](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)。 将角色分配给所有服务实例。 
+3. 下载安装本地域控制器中的.exe MSI 的文件。
+4. 运行以下脚本到注册。 参数替换为创建的新用户帐户并将其密码。 
+
+```
+AdHealthAddsAgentSetup.exe /quiet
+sleep 30
+$userName = "NEWUSER@DOMAIN"
+$secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
+$myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
+import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
+ 
+Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $password
+
+```
+1. 一旦完成后，可以通过执行一个或多项操作来删除本地帐户的访问权限： 
+    * 删除角色分配的本地帐户的 AAD 连接运行状况
+    * 旋转本地帐户的密码。 
+    * 禁用 AAD 本地帐户
+    * 删除 AAD 本地帐户  
 
 ## <a name="agent-registration-using-powershell"></a>使用 PowerShell 进行的代理注册
 在安装适当的代理 setup.exe 后，可以根据角色使用以下 PowerShell 命令执行代理注册步骤。 打开 PowerShell 窗口并执行相应的命令：

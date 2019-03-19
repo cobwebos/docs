@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fd01fdd3f7f8803dc7221bd0bd6c993120a83d44
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: ee6c05b2da4347ed034ae6e7318d6f5d90ea7884
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330885"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099638"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中预配 Windows SQL Server 虚拟机
 
@@ -74,7 +74,7 @@ ms.locfileid: "54330885"
 ## <a id="configure"></a> 配置选项
 有五个用于配置 SQL Server 虚拟机的窗口。
 
-| 步骤 | Description |
+| 步骤 | 描述 |
 | --- | --- |
 | **基础知识** |[配置基本设置](#1-configure-basic-settings) |
 | **大小** |[选择虚拟机大小](#2-choose-virtual-machine-size) |
@@ -178,7 +178,7 @@ ms.locfileid: "54330885"
 
 一般情况下，选择方案允许的最严格连接可提高安全性。 但是，通过网络安全组规则和 SQL/Windows 身份验证的所有选项都是安全的。 可以在创建 VM 后编辑“网络安全组”。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的安全注意事项](virtual-machines-windows-sql-security.md)。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 如果需要 SQL Server 身份验证，请在“ **启用** under **启用**。
 
@@ -237,7 +237,7 @@ ms.locfileid: "54330885"
 
  有关详细信息，请参阅 [针对 Azure 虚拟机中 SQL Server 的自动备份](virtual-machines-windows-sql-automated-backup.md)。
 
-### <a name="azure-key-vault-integration"></a>Azure 密钥保管库集成
+### <a name="azure-key-vault-integration"></a>Azure Key Vault 集成
 
 要将安全密码存储在 Azure 中进行加密，请先单击“Azure 密钥保管库集成”，然后单击“启用”。
 
@@ -247,7 +247,7 @@ ms.locfileid: "54330885"
 
 | 参数 | 说明 | 示例 |
 | --- | --- | --- |
-| **密钥保管库 URL** |密钥保管库的位置。 |https://contosokeyvault.vault.azure.net/ |
+| **密钥保管库 URL** |密钥保管库的位置。 |<https://contosokeyvault.vault.azure.net/> |
 | **主体名称** |Azure Active Directory 服务主体名称。 该名称也称为客户端 ID。 |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **主体密码** |Azure Active Directory 服务主体密码。 该密码也称为客户端密码。 |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **凭据名称** |**凭据名称**：AKV 集成在 SQL Server 内创建一个凭据，使 VM 具有对密钥保管库的访问权限。 为此凭据选择一个名称。 |mycred1 |

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 9740de34fe7cf7d06af1803cc6d77d7e89bbb73f
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
-ms.translationtype: HT
+ms.openlocfilehash: 5c3f393278d3d51dd3a53cd19335cd242c15c6d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391515"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168701"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>使用 Distcp 在 Azure 存储 Blob 与 Data Lake Storage Gen1 之间复制数据
 > [!div class="op_single_selector"]
@@ -28,14 +28,11 @@ ms.locfileid: "44391515"
 
 如果 HDInsight 群集有权访问 Azure Data Lake Storage Gen1，则可以使用 Distcp 等 Hadoop 生态系统工具**在 HDInsight 群集存储 (WASB) 与 Data Lake Storage Gen1 帐户之间**复制数据。 本文提供如何使用 Distcp 工具的说明。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* 具有 Data Lake Storage Gen1 帐户访问权限的 **Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
-
-## <a name="do-you-learn-fast-with-videos"></a>通过视频学得更快？
-[观看此视频](https://mix.office.com/watch/1liuojvdx6sie)，了解如何使用 DistCp 在 Azure 存储 Blob 和 Data Lake Storage Gen1 之间复制数据。
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>从 HDInsight Linux 群集使用 Distcp
 
@@ -81,7 +78,7 @@ HDInsight 群集附带 Distcp 实用工具，该实用工具可用于从不同�
 
 * **步骤 1：确定总 YARN 内存** - 第一步是确定可供运行 DistCp 作业的群集使用的 YARN 内存。 可在与群集关联的 Ambari 门户中获取此信息。 导航到 YARN 并查看“配置”选项卡可看到 YARN 内存。 要获取总 YARN 内存，可将每个节点的 YARN 内存与你在群集中拥有的节点数相乘。
 
-* **步骤 2：计算映射器数** - **m** 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
+* **步骤 2：计算映射器数** - m 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -116,5 +113,5 @@ HDInsight 群集附带 Distcp 实用工具，该实用工具可用于从不同�
 ## <a name="see-also"></a>另请参阅
 * [将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)

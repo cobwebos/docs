@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56c992b1cc0e8f1d9743ff8226ab48852afc1168
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: d6e502ed1e0865aca167915493eca400ce026f0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313120"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096140"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的联合单一登录
 
@@ -43,41 +43,41 @@ ms.locfileid: "56313120"
 
 若要为不在 Azure AD 库中的应用程序配置单一登录，请按照以下步骤操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  在“企业应用程序”窗格的右上角，单击“添加”按钮。
+5. 在“企业应用程序”窗格的右上角，单击“添加”按钮。
 
-6.  在“添加自己的应用”部分中，单击“非库应用程序”
+6. 在“添加自己的应用”部分中，单击“非库应用程序”
 
-7.  在“名称”文本框中输入应用程序的名称。
+7. 在“名称”文本框中输入应用程序的名称。
 
-8.  单击“添加”按钮，添加该应用程序。
+8. 单击“添加”按钮，添加该应用程序。
 
-9.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
+9. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
 10. 在“模式”下拉列表中选择“基于 SAML 的登录”。
 
 11. 在“域和 URL”中输入所需的值。 应从应用程序供应商处获取这些值。
 
-   1. 要将应用程序配置为 IdP 启动的 SSO，请输入“回复 URL”和“标识符”。
+    1. 要将应用程序配置为 IdP 启动的 SSO，请输入“回复 URL”和“标识符”。
 
-   2. **可选：** 要将应用程序配置为 SP 启动的 SSO，则“登录 URL”是必需值。
+    2. **可选：** 要将应用程序配置为 SP 启动的 SSO，则“登录 URL”是必需值。
 
 12. 在“用户属性”的“用户标识符”下拉列表中，为用户选择唯一标识符。
 
 13. **可选：** 单击“查看和编辑其他所有用户属性”，以编辑在用户登录时要发送至应用程序（位于 SAML 令牌中）的属性。
 
-   若要添加属性：
+    若要添加属性：
 
-   1. 单击“添加属性”。 输入“名称”，并从下拉列表中选择“值”。
+    1. 单击“添加属性”。 输入“名称”，并从下拉列表中选择“值”。
 
-   2. 单击“保存”。 然后就能在表中看到新属性了。
+    2. 单击“保存”。 然后就能在表中看到新属性了。
 
 14. 单击“配置 &lt;应用程序名称&gt;”以访问关于了解如何在应用程序中配置单一登录的文档。 此外，还具有应用程序要求的 Azure AD URL 和证书。
 
@@ -87,30 +87,30 @@ ms.locfileid: "56313120"
 
 若要选择用户标识符或添加用户属性，请按照以下步骤操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  选择已配置单一登录的应用程序。
+6. 选择已配置单一登录的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8.  在“用户属性”部分的“用户标识符”下拉列表中，为用户选择唯一标识符。 所选项需与应用程序中的期望值匹配，以便对用户进行身份验证。
+8. 在“用户属性”部分的“用户标识符”下拉列表中，为用户选择唯一标识符。 所选项需与应用程序中的期望值匹配，以便对用户进行身份验证。
 
- >[!NOTE]
- >Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式，为 NameID 属性（用户标识符）选择格式。 有关详细信息，请参阅 NameIDPolicy 部分下的[单一登录 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)文章。
- >
- >
+   >[!NOTE]
+   >Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式，为 NameID 属性（用户标识符）选择格式。 有关详细信息，请参阅 NameIDPolicy 部分下的[单一登录 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)文章。
+   >
+   >
 
-9.  若要添加用户属性，请单击“查看和编辑所有其他用户属性”，以编辑在用户登录时要发送至应用程序（位于 SAML 令牌中）的属性。
+9. 若要添加用户属性，请单击“查看和编辑所有其他用户属性”，以编辑在用户登录时要发送至应用程序（位于 SAML 令牌中）的属性。
 
    若要添加属性：
 
@@ -122,23 +122,23 @@ ms.locfileid: "56313120"
 
 若要从 Azure AD 下载应用程序元数据或证书，请按照以下步骤操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
    * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  选择已配置单一登录的应用程序。
+6. 选择已配置单一登录的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8.  转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
+8. 转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
 
 Azure AD 还提供用于获取元数据的 URL。 按照以下模式获取特定于应用程序的元数据 URL： https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>。
 
@@ -146,25 +146,25 @@ Azure AD 还提供用于获取元数据的 URL。 按照以下模式获取特定
 
 要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  从列表中选择要向其分配用户的应用程序。
+6. 从列表中选择要向其分配用户的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  单击“用户和组”列表顶部的“添加”按钮，以打开“添加分配”窗格。
+8. 单击“用户和组”列表顶部的“添加”按钮，以打开“添加分配”窗格。
 
-9.  在“添加分配”窗格中，单击“用户和组”选择器。
+9. 在“添加分配”窗格中，单击“用户和组”选择器。
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
 

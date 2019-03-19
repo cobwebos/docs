@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 4875464d7e7a7f49c1532871a69f4d2224b271a6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: cc0eee9dc36878f7a02b97453c859d94ea99b901
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108239"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217132"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>加密 Windows VM 上的虚拟磁盘
 为了增强虚拟机 (VM) 的安全性以及符合性，可以加密 Azure 中的虚拟磁盘。 磁盘是使用 Azure Key Vault 中受保护的加密密钥加密的。 可以控制这些加密密钥，以及审核对它们的使用。 本文介绍如何使用 Azure PowerShell 加密 Windows VM 上的虚拟磁盘。 还可[使用 Azure CLI 加密 Linux VM](../linux/encrypt-disks.md)。
@@ -120,7 +120,7 @@ New-AzVm `
 $keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $rgName;
 $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
 $keyVaultResourceId = $keyVault.ResourceId;
-$keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name myKey).Key.kid;
+$keyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $keyVaultName -Name myKey).Key.kid;
 
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgName `
     -VMName "myVM" `

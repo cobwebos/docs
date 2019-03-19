@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/10/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feb6cebca0fe165315215813eb939dc2d5d120cf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6794d7eaccb488bb345227161f0bca02f14bc518
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177314"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852545"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>教程：Azure Active Directory 与 Salesforce 沙盒集成
 
@@ -38,7 +38,7 @@ ms.locfileid: "56177314"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Salesforce 沙盒的集成，需要以下项：
 
@@ -259,7 +259,7 @@ ms.locfileid: "56177314"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在中**用户名**字段中，键入**brittasimon\@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。

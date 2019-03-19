@@ -8,23 +8,23 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: b4ed878b19b2eebe01c9888388949600e85c56e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 536b7ed21e7dd54fcbea97951330b08925961713
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792964"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884959"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>设置源环境以便从 VMware 复制到 Azure
 
 本文介绍如何设置源本地环境，以便将 VMware VM 复制到 Azure。 它包括以下相关步骤：选择复制方案、将本地计算机设置为 Site Recovery 配置服务器和自动发现本地 VM。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设已完成以下操作：
 
 - 借助 [Azure Site Recovery 部署规划器](site-recovery-deployment-planner.md)规划了你的部署。 这可以帮助你根据每日数据更改率分配足够的带宽以满足你需要的恢复点目标 (RPO)。
-- 在 [Azure 门户](http://portal.azure.com)中[设置资源](tutorial-prepare-azure.md)。
+- 在 [Azure 门户](https://portal.azure.com)中[设置资源](tutorial-prepare-azure.md)。
 - [设置本地 VMware](vmware-azure-tutorial-prepare-on-premises.md)，包括用于自动发现的专用帐户。
 
 ## <a name="choose-your-protection-goals"></a>选择保护目标
@@ -41,7 +41,7 @@ ms.locfileid: "53792964"
 
 1. 了解配置服务器部署的[先决条件](vmware-azure-deploy-configuration-server.md#prerequisites)。
 2. [检查容量数字](vmware-azure-deploy-configuration-server.md#capacity-planning)以便进行部署。
-3. [下载](vmware-azure-deploy-configuration-server.md#download-the-template)并[导入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVA 模板，设置运行配置服务器的本地 VMware VM。 通过模板提供的许可证是评估许可证，有效期为 180 天。 超过有效期之后，客户需要使用购买的许可证来激活 Windows。
+3. [下载](vmware-azure-deploy-configuration-server.md#download-the-template)并[导入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVA 模板，设置运行配置服务器的本地 VMware VM。 模板一起提供的许可证是评估许可证，有效期为 180 天。 发布此期间，客户需要激活 windows 的已采购的许可证。
 4. 打开 VMware VM，并将其[注册](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services)到恢复服务保管库中。
 
 ## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>从防病毒程序中排除 Azure Site Recovery 文件夹
@@ -58,18 +58,18 @@ ms.locfileid: "53792964"
 - C:\Program Files\Microsoft Azure Site Recovery Provider
 - C:\Program Files\Microsoft Azure Site Recovery Configuration Manager 
 - C:\Program Files\Microsoft Azure Site Recovery Error Collection Tool 
- - C:\thirdparty
- - C:\Temp
- - C:\strawberry
- - C:\ProgramData\MySQL
- - C:\Program Files (x86)\MySQL
- - C:\ProgramData\ASR
- - C:\ProgramData\Microsoft Azure Site Recovery
- - C:\ProgramData\ASRLogs
- - C:\ProgramData\ASRSetupLogs
- - C:\ProgramData\LogUploadServiceLogs
- - C:\inetpub
- - ASR 服务器安装目录。 例如：E:\Program Files (x86)\Microsoft Azure Site Recovery
+  - C:\thirdparty
+  - C:\Temp
+  - C:\strawberry
+  - C:\ProgramData\MySQL
+  - C:\Program Files (x86)\MySQL
+  - C:\ProgramData\ASR
+  - C:\ProgramData\Microsoft Azure Site Recovery
+  - C:\ProgramData\ASRLogs
+  - C:\ProgramData\ASRSetupLogs
+  - C:\ProgramData\LogUploadServiceLogs
+  - C:\inetpub
+  - ASR 服务器安装目录。 例如：E:\Program Files (x86)\Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>如果防病毒软件在横向扩展流程服务器/主目标上处于活动状态
 

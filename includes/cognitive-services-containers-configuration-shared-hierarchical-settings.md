@@ -4,12 +4,12 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/02/2019
-ms.openlocfilehash: e2c8b4e74933df593dbc023dcb886dff80554a1a
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
+ms.openlocfilehash: 03ec8740a4cf36bf3d09dade8a24b155c09d1299
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53977332"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56740985"
 ---
 容器的设置是分层的，主计算机上的所有容器都使用共享层次结构。
 
@@ -22,7 +22,7 @@ ms.locfileid: "53977332"
 
 |优先级|正在设置位置|
 |--|--|
-|1|环境变量| 
+|第|环境变量| 
 |2|命令行|
 |3|容器映像默认值|
 

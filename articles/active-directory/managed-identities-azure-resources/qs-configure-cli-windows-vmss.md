@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/15/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6457a04419012ef80432d8603caae21bbacde59b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 34cd03ad6640ac809ce8ac2e8f4fc1070246df27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170952"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886858"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>使用 Azure CLI 在虚拟机规模集上配置 Azure 资源托管标识
 
@@ -33,7 +33,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 在 Azure VMSS 上添加和删除用户分配托管标识
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
@@ -168,13 +168,10 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
 
 1. 使用 [az identity create](/cli/azure/identity#az-identity-create) 创建用户分配托管标识。  `-g` 参数指定要创建用户分配托管标识的资源组，`-n` 参数指定其名称。 请务必将 `<RESOURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 参数值替换为自己的值：
 
-    > [!IMPORTANT]
-    > 目前不支持创建名称中具有特殊字符（即下划线）的用户分配托管标识。 请使用字母数字字符。 稍后返回查看更新。  有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
-
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
     ```
-响应包含所创建的用户分配托管标识的详细信息，与以下示例类似。
+   响应包含所创建的用户分配托管标识的详细信息，与以下示例类似。
 
    ```json
    {

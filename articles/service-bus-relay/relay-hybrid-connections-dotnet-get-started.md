@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
 ms.service: service-bus-relay
 ms.devlang: tbd
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 63961e978056a20e697872c0c1d892efaadcc627
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
+ms.openlocfilehash: 88d540f274d8b07bfbdbb566c670adf6ddfefd74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878692"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>开始在 .NET 中使用中继混合连接 WebSocket
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -34,11 +34,11 @@ ms.locfileid: "51612061"
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 5. 运行应用程序。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要具备以下先决条件：
 
-* [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+* [Visual Studio 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
 * Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-namespace"></a>创建命名空间

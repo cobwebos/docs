@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: ebb6fe9f583c2658f187d3cca1185f1525fb1bf5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: c2b0c52ca78f2b9c4273280aa9da16a5ef1bbc00
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811029"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003238"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -43,12 +43,23 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="a-name210213"></a><a name="2.1.0"/>2.1.3
+* 修复了 bug 哈希 V2 的 PartitionKey。
+
+### <a name="a-name210212"></a><a name="2.1.0"/>2.1.2
+* 添加了的对组合索引。
+* 若要强制刷新的全局终结点管理器中修复了 bug。
+* 修复了与在直接模式下的前置条件 upsert 的 bug。
+
+### <a name="a-name210211"></a><a name="2.1.0"/>2.1.1
+* 修复了网关地址缓存中的 bug。
+
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * 为直接模式添加了多区域写入支持。
 * 添加了对处理从代理作为 ServiceUnavailable 异常引发的 IOExceptions 的支持。
 * 修复了终结点发现重试策略中的 bug。
 * 修复了 bug，以确保 BaseDatabaseAccountConfigurationProvider 不会引发空指针异常。
-* 修复了 bug，以确保查询迭代器不会返回 null 值。
+* 修复了 bug，以确保 QueryIterator 不会返回 null 值。
 * 修复了 bug，以确保允许较大的 PartitionKey
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
@@ -150,7 +161,7 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 * 添加了对强一致性的支持。
 * 添加了对使用直接连接时基于名称的请求的支持。
 * 修复问题，以便使所有请求重试上的 ActivityId保持一致。
-* 修复了重新创建具有相同名称的集合期间与会话缓存相关的 bug。
+* 修复了在重新创建同名集合时与会话缓存相关的 bug。
 * 为地域隔离的空间查询指定集合索引策略的同时，已添加多边形和 LineString 数据类型。
 * 解决 Java 文档中的 Java 1.8 的问题。
 
@@ -212,7 +223,10 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| 2.1.1 |2018 年 11 月 21 日 |--- |
+| [2.1.3](#2.1.3) |2018 年 3 月 13日日 |--- |
+| [2.1.2](#2.1.2) |2018 年 3 月 9 日， |--- |
+| [2.1.1](#2.1.1) |2018 年 12 月 13日日 |--- |
+| [2.1.0](#2.1.0) |2018 年 11 月 20日日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 21 日 |--- |
 | [1.16.4](#1.16.4) |2018 年 9 月 10 日 |--- |
 | [1.16.3](#1.16.3) |2018 年 9 月 9 日 |--- |

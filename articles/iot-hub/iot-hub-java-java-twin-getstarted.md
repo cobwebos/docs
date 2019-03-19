@@ -1,25 +1,26 @@
 ---
 title: Azure IoT 中心设备孪生入门 (Java) | Microsoft Docs
 description: 如何使用 Azure IoT 中心设备孪生添加标记，并使用 IoT 中心查询。 使用适用于 Java 的 Azure IoT 设备 SDK 实现设备应用，并使用适用于 Java 的 Azure IoT 服务 SDK 实现可添加标记并运行 IoT 中心查询的服务应用。
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
-ms.author: dobett
-ms.openlocfilehash: a938e5d872d2c1602f7ce898f0d14e3e04feb759
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: bfb111b07db105190fc59f21b3255c2ea2b1471c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312555"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081009"
 ---
 # <a name="get-started-with-device-twins-java"></a>设备孪生入门 (Java)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-在本教程中，将创建两个 Java 控制台应用：
+在本教程中，你将创建两个 Java 控制台应用：
 
 * **add-tags-query**：一个 Java 后端应用，用于添加标记并查询设备孪生。
 * **simulated-device**：Java 设备应用，它连接到 IoT 中心，并使用报告的属性报告其连接状态。
@@ -73,7 +74,7 @@ ms.locfileid: "53312555"
     ```
 
     > [!NOTE]
-    > 可以使用 [Maven 搜索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-service-client**。
+    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-service-client**。
 
 5. 在 **dependencies** 节点后添加以下 **build** 节点。 此配置指示 Maven 使用 Java 1.8 来生成应用：
 
@@ -233,7 +234,7 @@ ms.locfileid: "53312555"
     ```
 
     > [!NOTE]
-    > 可以使用 [Maven 搜索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-device-client**。
+    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-device-client**。
 
 4. 在 **dependencies** 节点后添加以下 **build** 节点。 此配置指示 Maven 使用 Java 1.8 来生成应用：
 
@@ -293,18 +294,18 @@ ms.locfileid: "53312555"
     * 创建用来与 IoT 中心通信的设备客户端。
     * 创建一个 **Device** 对象用于存储设备孪生属性。
 
-    ```java
-    DeviceClient client = new DeviceClient(connString, protocol);
+      ```java
+      DeviceClient client = new DeviceClient(connString, protocol);
 
-    // Create a Device object to store the device twin properties
-    Device dataCollector = new Device() {
+      // Create a Device object to store the device twin properties
+      Device dataCollector = new Device() {
       // Print details when a property value changes
       @Override
       public void PropertyCall(String propertyKey, Object propertyValue, Object context) {
         System.out.println(propertyKey + " changed to " + propertyValue);
       }
-    };
-    ```
+      };
+      ```
 
 10. 将以下代码添加到 **main** 方法，创建 **connectivityType** 报告属性并将其发送到 IoT 中心：
 
@@ -340,9 +341,9 @@ ms.locfileid: "53312555"
 
 1. 修改 **main** 方法的签名，包含如下所示的异常：
 
-    ```java
-    public static void main(String[] args) throws URISyntaxException, IOException
-    ```
+     ```java
+     public static void main(String[] args) throws URISyntaxException, IOException
+     ```
 
 1. 保存并关闭 `simulated-device\src\main\java\com\mycompany\app\App.java` 文件。
 

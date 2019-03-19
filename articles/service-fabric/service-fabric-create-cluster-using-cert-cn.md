@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: a6607fa91d9c8556881a5532527a63b6f21ad4d1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: f6f4858740288facb1e206eed3a8cd4ee1854daa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977450"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111440"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>部署使用证书公用名称而非指纹的 Service Fabric 群集
 两个证书不能具有相同的指纹，具有相同的指纹会使群集证书滚动更新或管理变得困难。 但是，多个证书可以具有相同的公用名称或使用者。  使用证书公用名称会使群集的证书管理更加简单。 本文介绍了如何部署 Service Fabric 群集来使用证书公用名称而非证书指纹。
@@ -158,36 +158,36 @@ Write-Host "Common Name              :"  $CommName
           },
     ```
 
-4.  在 **Microsoft.ServiceFabric/clusters** 资源中，将 API 版本更新为“2018-02-01”。  另请添加包含 **commonNames** 属性的 **certificateCommonNames** 设置，并删除 **certificate** 设置（包含指纹属性），如以下示例中所示：
-    ```json
-    {
-        "apiVersion": "2018-02-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-        "addonFeatures": [
-            "DnsService",
-            "RepairManager"
-        ],        
-        "certificateCommonNames": {
-            "commonNames": [
-            {
-                "certificateCommonName": "[parameters('certificateCommonName')]",
-                "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
-            }
-            ],
-            "x509StoreName": "[parameters('certificateStoreValue')]"
-        },
-        ...
-    ```
-> [!NOTE]
-> 可以使用“certificateIssuerThumbprint”字段通过给定的使用者公用名指定证书的预期颁发者。 此字段接受以逗号分隔的 SHA1 指纹枚举。 请注意，这是对证书验证的加强 - 在未指定颁发者或颁发者为空的情况下，如果可以构建证书的链并最终得到验证程序信任的根证书，则会接受该证书以用于身份验证。 当指定了颁发者时，如果直接颁发者的指纹与此字段中指定的任意值匹配，则无论根证书是否受信任，都会接受该证书。 请注意，PKI 可以使用不同的证书颁发机构来为同一使用者颁发证书，因此，为给定的使用者指定所有预期的颁发者指纹非常重要。
->
-> 指定颁发者被认为是最佳做法，但对于可以链接成受信任的根证书的证书，省略颁发者也是可行的，此行为存在限制，在不久的将来可能会被淘汰。 另请注意，如果在 Azure 中部署的群集受由某个专用 PKI 颁发且通过使用者声明的 X509 证书保护，并且该 PKI 的证书策略不可发现、不可用且无法访问，则 Azure Service Fabric 服务可能无法对群集进行验证（对于群集到服务通信）。 
+4. 在 **Microsoft.ServiceFabric/clusters** 资源中，将 API 版本更新为“2018-02-01”。  另请添加包含 **commonNames** 属性的 **certificateCommonNames** 设置，并删除 **certificate** 设置（包含指纹属性），如以下示例中所示：
+   ```json
+   {
+       "apiVersion": "2018-02-01",
+       "type": "Microsoft.ServiceFabric/clusters",
+       "name": "[parameters('clusterName')]",
+       "location": "[parameters('clusterLocation')]",
+       "dependsOn": [
+       "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+       ],
+       "properties": {
+       "addonFeatures": [
+           "DnsService",
+           "RepairManager"
+       ],        
+       "certificateCommonNames": {
+           "commonNames": [
+           {
+               "certificateCommonName": "[parameters('certificateCommonName')]",
+               "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
+           }
+           ],
+           "x509StoreName": "[parameters('certificateStoreValue')]"
+       },
+       ...
+   ```
+   > [!NOTE]
+   > 可以使用“certificateIssuerThumbprint”字段通过给定的使用者公用名指定证书的预期颁发者。 此字段接受以逗号分隔的 SHA1 指纹枚举。 请注意，这是对证书验证的加强 - 在未指定颁发者或颁发者为空的情况下，如果可以构建证书的链并最终得到验证程序信任的根证书，则会接受该证书以用于身份验证。 当指定了颁发者时，如果直接颁发者的指纹与此字段中指定的任意值匹配，则无论根证书是否受信任，都会接受该证书。 请注意，PKI 可以使用不同的证书颁发机构来为同一使用者颁发证书，因此，为给定的使用者指定所有预期的颁发者指纹非常重要。
+   >
+   > 指定颁发者被认为是最佳做法，但对于可以链接成受信任的根证书的证书，省略颁发者也是可行的，此行为存在限制，在不久的将来可能会被淘汰。 另请注意，如果在 Azure 中部署的群集受由某个专用 PKI 颁发且通过使用者声明的 X509 证书保护，并且该 PKI 的证书策略不可发现、不可用且无法访问，则 Azure Service Fabric 服务可能无法对群集进行验证（对于群集到服务通信）。 
 
 ## <a name="deploy-the-updated-template"></a>部署已更新的模板
 在进行更改后，重新部署已更新的模板。

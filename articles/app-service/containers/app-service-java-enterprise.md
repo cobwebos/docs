@@ -1,7 +1,7 @@
 ---
 title: Linux 上的 Java 企业支持 - Azure 应用服务 | Microsoft Docs
 description: 在 Linux 上使用 Wildfly 和 Azure 应用服务部署 Java 企业应用的开发人员指南。
-keywords: Azure 应用服务, Web 应用, linux, oss, java, wildfly, 企业
+keywords: azure 应用服务、 web 应用、 linux、 os、 java、 wildfly、 企业和 java ee jee，javaee
 services: app-service
 author: rloutlaw
 manager: angerobe
@@ -13,16 +13,19 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 408141650a11a81f0c6000c6e7927af8333e2afe
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 98e00eb382962d2364adda93b1a5b24fdef832eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548470"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101765"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Linux 上应用服务的 Java 企业指南
 
-Linux 上的Azure 应用服务使 Java 开发人员能够在完全托管的基于 Linux 的服务上构建、部署和缩放 Java 企业 (JEE) 应用程序。  基础 Java 企业运行时环境是开源 [Wildfly](https://wildfly.org/) 应用程序服务器。
+> [!NOTE] 
+> 应用服务 Linux 上的 Java 企业版目前处于预览状态。 此堆栈**不**建议用于面向生产的工作。 请参阅[Java 开发人员指南](app-service-linux-java.md)我们 Java SE 和 Tomcat 在堆栈上的信息。
+
+Linux 上的 azure 应用服务允许 Java 开发人员能够生成、 部署和缩放 Java 企业 (Java EE) 应用程序上完全托管的基于 Linux 的服务。  基础 Java 企业运行时环境是开源 [Wildfly](https://wildfly.org/) 应用程序服务器。
 
 本指南提供 Java 企业开发人员可在适用于 Linux 的应用服务中使用的重要概念和说明。 如果从未使用适用于 Linux 的 Azure 应用服务部署 Java 应用程序，则应先完成 [Java 快速入门](quickstart-java.md)。 有关 Java 应用的应用服务的问题，请参阅 [Java 开发人员指南](app-service-linux-java.md)和 [Linux 应用服务常见问题解答](app-service-linux-faq.md)。
 
@@ -41,7 +44,7 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 - 配置消息提供程序
 - 将其他模块和依赖项添加到 Wildfly 服务器配置中。
 
- 脚本会在启动并运行 Wildfly 时（但需在应用程序启动前）运行。 该脚本应使用从 `/opt/jboss/wildfly/bin/jboss-cli.sh` 调用的 [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) 来配置应用程序服务器，其中包含服务器启动后所需的任何配置或更改。 
+  脚本会在启动并运行 Wildfly 时（但需在应用程序启动前）运行。 该脚本应使用从 `/opt/jboss/wildfly/bin/jboss-cli.sh` 调用的 [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) 来配置应用程序服务器，其中包含服务器启动后所需的任何配置或更改。 
 
 请勿使用 CLI 的交互模式配置 Wildfly。 相反，可使用 `--file` 命令向 JBoss CLI 提供命令脚本，例如：
 

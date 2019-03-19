@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053187"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669357"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK 平台支持
 
@@ -83,6 +83,7 @@ Microsoft 支持各种操作系统/平台/框架，后者可以通过 Azure IoT 
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
 | Android API 28 | X64  | Java 8       |
+| Android Things | X64  | Java 8      |
 
 ## <a name="partner-supported-platforms"></a>合作伙伴支持的平台
 

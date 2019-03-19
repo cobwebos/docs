@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0fd2cd0250e3b3074e5632f30c8dbcc8db41e6e
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 3e5d1546c658631911f25c43e94275f00c7a5140
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455018"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901876"
 ---
 # <a name="set-up-security-info-preview-to-use-security-questions"></a>设置安全信息（预览版）以使用安全性问题
-可以按照以下步骤添加密码重置方法。 在第一次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
+可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
 设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)、[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
 
@@ -31,20 +31,22 @@ ms.locfileid: "56455018"
 
 如果使用安全提问，我们建议结合另一种方法使用这些提问。 因为某些人可能知道问题的答案，因此这安全性问题可能比其他方法更不安全。
 
->[!Note]
->安全问题以专用、安全的方式存储在目录的用户对象上，并且只能由用户在注册期间回答。 管理员无法读取或修改用户的问题或答案。
-
->如果看不到安全性问题选项，可能是因为组织不允许你使用安全性问题进行验证。 如果是这样，则将需要选择另一种方法，或与管理员联系以获取进一步帮助。
+> [!Note]
+> 安全问题以专用、安全的方式存储在目录的用户对象上，并且只能由用户在注册期间回答。 管理员无法读取或修改用户的问题或答案。
+> 
+> 如果看不到安全性问题选项，可能是因为组织不允许你使用安全性问题进行验证。 如果是这样，则将需要选择另一种方法，或与管理员联系以获取进一步帮助。
+> 
+> 管理员帐户不能使用安全问题，如密码重置方法。 如果您将看不到这些选项的管理员级帐户登录。
 
 ### <a name="to-set-up-your-security-questions"></a>设置安全性问题
 
 1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
 
-    ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile.png)
+    ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“安全性问题”，然后选择“添加”。
 

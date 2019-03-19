@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 14bbb77678a70b51c7f640b501827c5618cce606
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: c14b6e16a16f325681722203eaa05a435b141208
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978921"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990629"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何连接并登录到运行 Windows 的 Azure 虚拟机
 可以从 Windows 桌面使用 Azure 门户中的“连接”按钮来启动远程桌面 (RDP) 会话。 首先连接到虚拟机，然后登录。
@@ -32,7 +32,7 @@ ms.locfileid: "55978921"
 2. 在左侧菜单中，选择“虚拟机”。
 3. 从列表中选择虚拟机。
 4. 在虚拟机页顶部，选择“连接”。
-2. 在“连接到虚拟机”页上，选择相应的 IP 地址和端口。 在大多数情况下，应使用默认的 IP 地址和端口。 选择“下载 RDP 文件”下载 RDP 文件**。 如果 VM 具有实时策略集，则首先需要选择“请求访问”按钮来请求访问，然后才能下载 RDP 文件。 有关实时策略的详细信息，请参阅[使用实时策略管理虚拟机访问](../../security-center/security-center-just-in-time.md)。
+2. 在“连接到虚拟机”页上，选择相应的 IP 地址和端口。 在大多数情况下，应使用默认的 IP 地址和端口。 选择“下载 RDP 文件”。 如果 VM 具有实时策略集，则首先需要选择“请求访问”按钮来请求访问，然后才能下载 RDP 文件。 有关实时策略的详细信息，请参阅[使用实时策略管理虚拟机访问](../../security-center/security-center-just-in-time.md)。
 2. 打开下载的 RDP 文件，然后在出现提示时选择“连接”。 
 2. 将收到 `.rdp` 文件来自未知发布服务器的警告。 这是正常情况。 在“远程桌面连接”窗口中，选择“连接”以继续。
    

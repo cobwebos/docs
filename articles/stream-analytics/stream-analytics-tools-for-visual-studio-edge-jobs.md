@@ -9,18 +9,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 886cae572ee651efd217e9a87b935918eebe8b13
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 684690baa63f5ccd65c69e3a1b7e310c2f809e59
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558815"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735552"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>使用 Visual Studio 工具开发流分析 Edge 作业
 
 本教程介绍如何开发用于创建和调试流分析 Edge 作业的、适用于 Visual Studio 的流分析工具。 创建并测试作业后，可以转到 Azure 门户，将该作业部署到设备中。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要具备以下先决条件：
 

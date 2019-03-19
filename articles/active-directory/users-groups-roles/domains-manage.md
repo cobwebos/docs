@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797ac714d3205a271fe6590a3a320e1b9e2a073e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a8792c568622931bfae517b96cdec7d4cc0683ac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194727"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997243"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
@@ -88,13 +88,13 @@ ms.locfileid: "56194727"
 ### <a name="frequently-asked-questions"></a>常见问题
 
 **问：为何域删除操作失败，并显示错误“此域名包含 Exchange 主控的组”？** <br>
-**答：** 目前，某些组（例如，支持邮件的安全组和分发列表）由 Exchange 预配，需要手动在 [Exchange 管理中心 (EAC)](https://outlook.office365.com/ecp/) 清理这些组。 可能有遗留的 ProxyAddresses 依赖于自定义域名，需要手动将其更新为另一个域名。 
+**答:** 目前，某些组（例如，支持邮件的安全组和分发列表）由 Exchange 预配，需要手动在 [Exchange 管理中心 (EAC)](https://outlook.office365.com/ecp/) 清理这些组。 可能有遗留的 ProxyAddresses 依赖于自定义域名，需要手动将其更新为另一个域名。 
 
-**问：我以 admin@contoso.com 身份登录，但无法删除域名“contoso.com”，为什么？**<br>
-**答：** 无法引用你尝试在用户帐户名中删除的自定义域名。 请确保全局管理员帐户使用初始默认域名 (.onmicrosoft.com)，例如 admin@contoso.onmicrosoft.com。 使用不同的全局管理员帐户（例如 admin@contoso.onmicrosoft.com），或帐户为 admin@fabrikam.com 的另一个自定义域名（例如“fabrikam.com”）登录。
+**问：我以管理员身份登录\@contoso.com，但我不能删除域名称"contoso.com"？**<br>
+**答:** 无法引用你尝试在用户帐户名中删除的自定义域名。 请确保全局管理员帐户使用初始默认域名 (.onmicrosoft.com)，例如 admin@contoso.onmicrosoft.com。 使用不同的全局管理员帐户（例如 admin@contoso.onmicrosoft.com），或帐户为 admin@fabrikam.com 的另一个自定义域名（例如“fabrikam.com”）登录。
 
 **问：我单击了“删除域”按钮，但看到删除操作的状态为 `In Progress`。需要多长时间？如果该操作失败，会发生什么情况？**<br>
-**答：** 域删除操作是一个异步后台任务，会重命名对域名的所有引用。 它在一两分钟内应会完成。 如果域删除失败，请确保不存在以下情况：
+**答:** 域删除操作是一个异步后台任务，会重命名对域名的所有引用。 它在一两分钟内应会完成。 如果域删除失败，请确保不存在以下情况：
 
 * 使用 appIdentifierURI 在域名中配置了应用
 * 有任何支持邮件的组引用了自定义域名

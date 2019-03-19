@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: aeea0a0b00ceaa936352d549a86040c2cc460167
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: f044aa006727fafb52c2c5e6c015c3e4cc70edf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57882007"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "55153856"
 
 Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务的 SDK。 本教程介绍如何在 .NET Core 2.0 中使用 C# 创建适用于 Linux 的应用程序和生成服务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 开始之前，请确保已[设置 Linux 开发环境](service-fabric-get-started-linux.md)。 如果使用的是 Mac OS X，则可以[使用 Vagrant 在虚拟机中设置 Linux 单机环境](service-fabric-get-started-mac.md)。
 
 还需要安装 [Service Fabric CLI](service-fabric-cli.md)
@@ -44,22 +44,22 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
    nvm install node 
    ```
-2. 通过 NPM 在计算机上安装 [Yeoman](http://yeoman.io/) 模板生成器
+2. 通过 NPM 在计算机上安装 [Yeoman](https://yeoman.io/) 模板生成器
 
-  ```bash
-  npm install -g yo
-  ```
+   ```bash
+   npm install -g yo
+   ```
 3. 通过 NPM 安装 Service Fabric Yeoman C# 应用程序生成器
 
-  ```bash
-  npm install -g generator-azuresfcsharp
-  ```
+   ```bash
+   npm install -g generator-azuresfcsharp
+   ```
 
 ## <a name="create-the-application"></a>创建应用程序
-Service Fabric 应用程序可以包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 用于 C# 的 Service Fabric [Yeoman](http://yeoman.io/) 生成器是在上一步安装的，利用它可以轻松地创建第一个服务，以及在以后添加其他服务。 让我们使用 Yeoman 来创建具有单项服务的应用程序。
+Service Fabric 应用程序可以包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 用于 C# 的 Service Fabric [Yeoman](https://yeoman.io/) 生成器是在上一步安装的，利用它可以轻松地创建第一个服务，以及在以后添加其他服务。 让我们使用 Yeoman 来创建具有单项服务的应用程序。
 
 1. 在终端中键入以下命令以开始生成基架：`yo azuresfcsharp`
-2. 命名应用程序。
+2. 为应用程序命名。
 3. 选择第一个服务的类型并将其命名。 对于本教程，我们会选择“可靠角色服务”。
 
    ![适用于 C# 的 Service Fabric Yeoman 生成器][sf-yeoman]

@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/25/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 01273ca241769c5e3bb7b7222355d32b29fd51b9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 4c395a062b1132710f888cc5a315529db082a805
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308496"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850020"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>在自定义视觉中导出或删除用户数据
 
-自定义视觉收集用户数据来使服务运转，但客户拥有使用自定义视觉服务[训练 API](https://go.microsoft.com/fwlink/?linkid=865446) 来查看、导出和删除其数据的完全控制权限。
+自定义影像收集用户数据，以运行本服务，但客户可以完全控制查看、 导出和删除其数据使用自定义视觉[培训 Api](https://go.microsoft.com/fwlink/?linkid=865446)。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-有关如何在自定义视觉中导出和删除用户数据的详细信息，请参阅下表。
+若要了解如何导出和删除自定义影像中的用户数据，请参阅下表。
 
 | 数据 | 导出操作 | 删除操作 |
 | ---- | ---------------- | ---------------- |
@@ -34,4 +34,4 @@ ms.locfileid: "56308496"
 | 项目和项目详细信息 | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) 和 [GetProjects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | 图像标记 | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) 和 [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | 映像 | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446)（提供用于图像下载的 URI）和 [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446)（提供用于图像下载的 URI） | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| 导出的模型 | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | 在删除帐户时删除 | 
+| 导出的模型 | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | 在删除帐户时删除 |

@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
-ms.translationtype: HT
+ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391281"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887079"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
-本文介绍如何使用 SAP ERP Central Component (ECC) 连接器在逻辑应用内部访问本地 SAP 资源。 SAP ECC 连接器支持通过中间文档 (IDoc)、业务应用程序编程接口 (BAPI) 或远程函数调用 (RFC) 来与基于 SAP Netweaver 的系统相互进行消息或数据集成。
+本文介绍如何使用 SAP ERP Central Component (ECC) 连接器在逻辑应用内部访问本地 SAP 资源。 连接器适用于 ECC 和 S/4 HANA 系统的本地。 SAP ECC 连接器支持通过中间文档 (IDoc)、业务应用程序编程接口 (BAPI) 或远程函数调用 (RFC) 来与基于 SAP Netweaver 的系统相互进行消息或数据集成。
 
-SAP ECC 连接器使用 <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .Net 连接器 (NCo) 库</a>，并提供以下操作：
+SAP ECC 连接器使用<a href="https://support.sap.com/en/product/connectors/msnet.html">SAP.NET 连接器 (NCo) 库</a>，并提供了这些操作:
 
 - **发送到 SAP**：在 SAP 系统中通过 tRFC 发送 IDoc 或调用 BAPI 函数。
 - **从 SAP 接收**：通过 tRFC 从 SAP 系统接收 IDoc 或 BAPI 函数调用。
@@ -32,7 +32,7 @@ SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/detai
 
 本文介绍如何创建与 SAP 集成的示例逻辑应用，并阐述以前已介绍过的集成方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要遵循本文中的步骤，需准备好以下各项：
 

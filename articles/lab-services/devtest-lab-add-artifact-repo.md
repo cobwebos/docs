@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c7b9921d7eacb9b40e39f8e68d13357ce6bcfd78
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241542"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852485"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>添加 Git 存储库以存储自定义项目和资源管理器模板
 
@@ -30,7 +30,7 @@ ms.locfileid: "51241542"
 创建 VM 时，可以保存资源管理器模板，根据需要对其进行自定义，并在以后使用它创建更多 VM。 必须创建自己的专用存储库来存储自定义资源管理器模板。  
 
 * 若要了解如何创建 GitHub 存储库，请参见 [GitHub Bootcamp ](https://help.github.com/categories/bootcamp/)。
-* 要了解如何创建含 Git 存储库的 Azure DevOps Services 项目，请参阅[连接到 Azure DevOps Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)。
+* 若要了解如何创建具有 Git 存储库的 Azure DevOps 服务项目，请参阅[连接到 Azure DevOps 服务](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)。
 
 下图是一个示例，展示了包含项目的存储库在 GitHub 中的显示方式：  
 
@@ -78,18 +78,18 @@ ms.locfileid: "51241542"
 
     ![“添加存储库”按钮](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. 在第二个“存储库”页上，指定以下信息：
-  1. **名称**。 输入存储库的名称。
-  2. **Git 克隆 URL**。 输入之前从 GitHub 或 Azure DevOps Services 复制的 Git HTTPS 克隆 URL。
-  3. **分支**。 输入分支以获取定义。
-  4. **个人访问令牌**。 输入之前从 GitHub 或 Azure DevOps Services 获取的个人访问令牌。
-  5. **文件夹路径**。 输入至少一个与包含项目定义或资源管理器模板定义的克隆 URL 有关的文件夹路径。 指定子目录时，请确保在文件夹路径中包含正斜杠。
+   1. **名称**。 输入存储库的名称。
+   2. **Git 克隆 URL**。 输入之前从 GitHub 或 Azure DevOps Services 复制的 Git HTTPS 克隆 URL。
+   3. **分支**。 输入分支以获取定义。
+   4. **个人访问令牌**。 输入之前从 GitHub 或 Azure DevOps Services 获取的个人访问令牌。
+   5. **文件夹路径**。 输入至少一个与包含项目定义或资源管理器模板定义的克隆 URL 有关的文件夹路径。 指定子目录时，请确保在文件夹路径中包含正斜杠。
 
-     ![“存储库”区域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+      ![“存储库”区域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. 选择“保存”。
 
 ### <a name="related-blog-posts"></a>相关的博客文章
 * [对开发测试实验室中的失败项目进行故障排除](devtest-lab-troubleshoot-artifact-failure.md)
-* [使用开发测试实验室中的资源管理器模板将 VM 加入到现有 Active Directory 域中](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [使用开发测试实验室中的资源管理器模板将 VM 加入到现有 Active Directory 域中](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

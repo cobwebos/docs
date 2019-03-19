@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999294"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996716"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -31,7 +31,9 @@ ms.locfileid: "55999294"
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
 - 通过对组织的 Office 365 活动数据使用[日志查询](../log-query/log-query-overview.md)，执行操作故障排除。
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+## <a name="prerequisites"></a>必备组件
 需要以下各项才能安装和配置此解决方案。
 
 - 组织的 Office 365 订阅。
@@ -69,7 +71,7 @@ ms.locfileid: "55999294"
 1. 单击“新建应用程序注册”。
 
     ![添加应用注册](media/solution-office-365/add-app-registration.png)
-1. 输入应用程序名称和登录 URL。  名称应是描述性的。  使用 _http://localhost_ 作为 URL，将“应用程序类型”保留为“Web 应用/ API”
+1. 输入应用程序名称和登录 URL。  名称应是描述性的。  使用`http://localhost`URL 和保持_Web 应用 / API_为**应用程序类型**
     
     ![创建应用程序](media/solution-office-365/create-application.png)
 1. 单击“创建”并验证应用程序信息。
@@ -89,11 +91,11 @@ ms.locfileid: "55999294"
     ![选择 API](media/solution-office-365/select-api.png)
 
 1. 在“选择权限”下，为“应用程序权限”和“委派的权限”选择以下选项：
-    - 读取组织的服务运行状况信息
-    - 读取组织的活动数据
-    - 读取组织的活动报表
+   - 读取组织的服务运行状况信息
+   - 读取组织的活动数据
+   - 读取组织的活动报表
 
-    ![选择 API](media/solution-office-365/select-permissions.png)
+     ![选择 API](media/solution-office-365/select-permissions.png)
 
 1. 依次单击“选择”、“完成”。
 1. 单击“授予权限”，然后在要求确认时单击“是”。
@@ -123,10 +125,10 @@ ms.locfileid: "55999294"
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
     
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $WorkspaceLocation= $Workspace.Location
     $WorkspaceLocation
     
@@ -190,11 +192,11 @@ ms.locfileid: "55999294"
     $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
     $line
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     $OfficeClientSecret =[uri]::EscapeDataString($OfficeClientSecret)
@@ -365,12 +367,12 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 如果提供了无效的参数值，则会出现以下错误。
 
 ```
-Select-AzureRmSubscription : Please provide a valid tenant or a valid subscription.
+Select-AzSubscription : Please provide a valid tenant or a valid subscription.
 At line:12 char:18
-+ ... cription = (Select-AzureRmSubscription -SubscriptionId $($Subscriptio ...
++ ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
 +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzureRmContext], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzureRMContextCommand
+    + CategoryInfo          : CloseError: (:) [Set-AzContext], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzContextCommand
 
 ```
 
@@ -390,11 +392,11 @@ At line:12 char:18
     
     $line
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -703,7 +705,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | 查询 | 说明 |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
-|SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | sort by Count asc|
+|SharePoint 网站的使用情况|OfficeActivity&#124;其中 OfficeWorkload = ~"sharepoint"&#124;汇总 count （） by SiteUrl\|按计数升序排序|
 |文件访问操作数（按用户类型）|search in (OfficeActivity) OfficeWorkload =~ "azureactivedirectory" and "MyTest"|
 |使用特定关键字搜索|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
 |监视 Exchange 上的外部操作|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|

@@ -16,12 +16,12 @@ ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: f874be6081a1ea01ecf616c9b97db878554d441c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f3fdfcc6a2fbb527582d4bf242c039a778b84ed1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242410"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877983"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack 部署规划注意事项
 在部署 Azure Stack 开发工具包 (ASDK) 之前，请确保开发工具包主机满足本文中所述的要求。
@@ -77,13 +77,13 @@ ms.locfileid: "55242410"
 
 如果环境未连接到 Internet，或者不希望使用 Azure AD，则可使用 Active Directory 联合身份验证服务 (AD FS) 来部署 Azure Stack。 开发工具包包含自己的 AD FS 和 Active Directory 域服务实例。 如果使用此选项进行部署，则不需提前设置帐户。
 
->[!NOTE]
-如果使用 AD FS 选项进行部署，则必须重新部署 Azure Stack，以便切换到 Azure AD。
+> [!NOTE]
+> 如果使用 AD FS 选项进行部署，则必须重新部署 Azure Stack，以便切换到 Azure AD。
 
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory 帐户
 若要使用 Azure AD 帐户来部署 Azure Stack，必须先准备 Azure AD 帐户，然后再运行 PowerShell 部署脚本。 此帐户成为 Azure AD 租户的全局管理员。 对于所有与 Azure Active Directory 和图形 API 交互的 Azure Stack 服务，可以使用它来预配和委托应用程序和服务主体。 也可将它用作默认提供商订阅（可以稍后更改）的所有者。 可以使用此帐户登录到 Azure Stack 系统的管理员门户。
 
-1. 创建一个 Azure AD 帐户，该帐户是至少一个 Azure AD 的目录管理员。 如果已经有一个这样的帐户，则可以使用该帐户。 否则，可以通过 [https://azure.microsoft.com/free/](https://azure.microsoft.com/pricing/free/)（中国用户请访问 <https://go.microsoft.com/fwlink/?LinkID=717821>）创建一个免费帐户。 如果打算以后[将 Azure Stack 注册到 Azure](asdk-register.md)，则还必须在这个新创建的帐户中有一个订阅。
+1. 创建一个 Azure AD 帐户，该帐户是至少一个 Azure AD 的目录管理员。 如果已经有一个这样的帐户，则可以使用该帐户。 否则，可以通过 [https://azure.microsoft.com/free/](https://azure.microsoft.com/free/)（中国用户请访问 <https://go.microsoft.com/fwlink/?LinkID=717821>）创建一个免费帐户。 如果打算以后[将 Azure Stack 注册到 Azure](asdk-register.md)，则还必须在这个新创建的帐户中有一个订阅。
    
     保存这些以服务管理员身份使用的凭据。 此帐户可以配置和管理资源云、用户帐户、租户计划、配额和定价。 在门户中，该帐户可以创建网站云和虚拟机专用云、创建计划，以及管理用户订阅。
 1. 在 Azure AD 中至少创建一个测试用户帐户，以便以租户身份登录到开发工具包。

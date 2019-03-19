@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6444d2ab5265fffd4e3c956a2eec29437911b0e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 73f962cc8e0d4605c0c5f0bace79553033ebe082
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876702"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110896"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>使用版本进行编辑和测试，而不会影响暂存应用或生产应用
 
@@ -39,7 +39,7 @@ ms.locfileid: "55876702"
      > [!NOTE]
      > 版本 ID 可以仅包含字符、数字或“.”，长度不得超过 10 个字符。
  
- 此时，指定名称的新版本已创建，且设置为活动版本。
+   此时，指定名称的新版本已创建，且设置为活动版本。
 
 ## <a name="set-active-version"></a>设置活动版本
 

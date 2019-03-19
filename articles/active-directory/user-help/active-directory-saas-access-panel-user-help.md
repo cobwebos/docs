@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中访问和使用 MyApps 门户时获得帮助 | Microsoft Docs
+title: 获取有关访问和使用 MyApps 门户-Azure Active Directory 帮助 |Microsoft Docs
 description: 获得有关在访问面板中登录和执行常见任务的帮助。
 services: active-directory
 author: eross-msft
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64090e67c7bdc019498d35d7e9f5dfc8402ea57e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: cad68afd02694ec471d032a554ed468691ff914b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175756"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105465"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>排查有关访问和使用 MyApps 门户的问题
 
@@ -95,8 +96,8 @@ MyApps 门户要求浏览器支持 JavaScript 并且已启用 CSS。 如果使�
 
 ## <a name="how-do-i-add-a-new-app"></a>如何添加新应用？
 
-1.  在“应用”页上，选择“添加应用”。
-2.  搜索要添加的应用，然后选择“添加”。
+1. 在“应用”页上，选择“添加应用”。
+2. 搜索要添加的应用，然后选择“添加”。
 
    > [!NOTE]
    > * 仅当管理员为你的帐户启用了此选项的访问权限时，你才可以访问此选项。

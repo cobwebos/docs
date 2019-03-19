@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118014"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084304"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>对 Azure 流分析作业使用 SQL 数据库中的参考数据（预览）
 
@@ -134,21 +134,46 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 使用增量查询时，建议使用 [Azure SQL 数据库中的时态表](../sql-database/sql-database-temporal-tables.md)。
 
-1. 创作快照查询。 
+1. 在 Azure SQL 数据库中创建的临时表。
+   
+   ```SQL 
+      CREATE TABLE DeviceTemporal 
+      (  
+         [DeviceId] int NOT NULL PRIMARY KEY CLUSTERED 
+         , [GroupDeviceId] nvarchar(100) NOT NULL
+         , [Description] nvarchar(100) NOT NULL 
+         , [ValidFrom] datetime2 (0) GENERATED ALWAYS AS ROW START
+         , [ValidTo] datetime2 (0) GENERATED ALWAYS AS ROW END
+         , PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+      )  
+      WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.DeviceHistory));  -- DeviceHistory table will be used in Delta query
+   ```
+2. 创作快照查询。 
 
-   使用 **@snapshotTime** 参数指示流分析运行时从在当前系统时间有效的 SQL 数据库时态表中获取参考数据集。 如果不提供此参数，可能会出于时钟偏差的原因获取不准确的基本参考数据集。 完整的快照查询示例如下所示：
-
-   ![流分析快照查询](./media/sql-reference-data/snapshot-query.png)
+   使用 **\@snapshotTime**参数指示要从 SQL 数据库临时表的系统时间有效获取参考数据集的 Stream Analytics 运行时。 如果不提供此参数，可能会出于时钟偏差的原因获取不准确的基本参考数据集。 完整的快照查询示例如下所示：
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, [Description]
+      FROM dbo.DeviceTemporal
+      FOR SYSTEM_TIME AS OF @snapshotTime
+   ```
  
 2. 创作增量查询。 
    
-   此查询检索从开始时间 **@deltaStartTime** 到结束时间 **@deltaEndTime** 范围内，在 SQL 数据库中插入或删除的所有行。 增量查询必须返回与快照查询以及列**操作**相同的列。 此列定义在 **@deltaStartTime** 到 **@deltaEndTime** 时间范围内是否插入或删除了行。 如果插入了记录，则生成的行将标记为 **1**；如果删除了记录，则标记为 **2**。 
+   此查询检索所有已插入，或在开始时间内删除的 SQL 数据库中的行 **\@deltaStartTime**，和结束时间 **\@deltaEndTime**。 增量查询必须返回与快照查询以及列**操作**相同的列。 此列定义如果行是插入或删除之间 **\@deltaStartTime**并 **\@deltaEndTime**。 如果插入了记录，则生成的行将标记为 **1**；如果删除了记录，则标记为 **2**。 
 
    对于更新的记录，时态表将通过捕获插入和删除操作来执行簿记。 然后，流分析运行时将增量查询的结果应用到前一快照，以保持参考数据的最新状态。 下面显示了增量查询的示例：
 
-   ![流分析增量查询](./media/sql-reference-data/delta-query.png)
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      FROM dbo.DeviceTemporal
+      WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
+      UNION
+      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      FROM dbo.DeviceHistory   -- table we created in step 1
+      WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
+   ```
  
-  请注意，除了运行用于存储检查点的增量查询以外，流分析运行时还可以定期运行快照查询。
+   请注意，除了运行用于存储检查点的增量查询以外，流分析运行时还可以定期运行快照查询。
 
 ## <a name="faqs"></a>常见问题解答
 
@@ -158,7 +183,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 **如何知道参考数据快照是从 SQL DB 查询的并在 Azure 流分析作业中使用？**
 
-可以使用两个按“逻辑名称”筛选的指标（在指标 Azure 门户中）来监视 SQL 数据库参考数据输入的运行状况。
+有两个指标筛选可用于监视 SQL 数据库引用数据输入的运行状况的逻辑名称 （在指标 Azure 门户）。
 
    * InputEvents：此指标度量从 SQL 数据库参考数据集载入的记录数。
    * InputEventBytes：此指标度量流分析作业内存中载入的参考数据快照大小。 

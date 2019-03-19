@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: d3127b7f9bea9a35d9ac25d0724700cad72fa509
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 9b04ca359a0c71a04e762452fa33345201f37e84
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54857142"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124314"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
@@ -92,7 +92,7 @@ ms.locfileid: "54857142"
 
     ![在 Visual Studio Enterprise 版中，基于“Web 性能测试和负载测试”模板创建项目。](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
- * *看不到 Web 性能与负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。
+   * *看不到 Web 性能与负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。
 
 2. 打开 .webtest 文件并开始录制。
 
@@ -329,7 +329,8 @@ Web 测试插件提供时间参数化方式。
 
 * *是否支持 HTTPS？*
 
-    支持 TLS 1.1 和 TLS 1.2。
+    支持 TLS 1.1 和 TLS 1.2。 我们目前不会检查有 HTTPS 证书错误。  
+
 * *“Web 测试”与“可用性测试”之间是否有差异？*
 
     这两个术语可以互换引用。 可用性测试是更通用的术语，其中除了包含多步骤 Web 测试外，还包含单 URL ping 测试。
@@ -368,7 +369,7 @@ Web 测试插件提供时间参数化方式。
 * 对于有关可用性指标（或任何相关 Application Insights 指标）的警报，如果启用“批/组”复选框选项，则会发送给订阅中具有所有者、参与者或读者角色的用户。 实际上，可以访问订阅 Application Insights 资源的_所有_用户均会接收到通知。 
 
 > [!NOTE]
-> 如果当前使用“批/组”复选框选项并将其禁用，则将无法还原更改。
+> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
 
 如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../platform/action-groups.md)，可以为具有任何参与者/所有者/读者角色的用户配置电子邮件通知（不作为单一选项组合在一起）。
 

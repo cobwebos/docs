@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: f19693853672b6274265c95b851f478b4f3ef4a2
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: a3778a0b0e5b4b59eb29cb67c0596d9636eb3ccb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961884"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58166695"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>升级和更新 Azure Service Fabric 群集
 
@@ -29,7 +29,7 @@ ms.locfileid: "55961884"
 
 确保始终让群集运行[受支持的结构版本](service-fabric-versions.md)。 当我们公布新版本的 Service Fabric 发布后，则标志着自该日期起至少 60 天以后结束对旧版本的支持。 新版本在 Service Fabric 团队博客上公布。 之后新版本则可供选择。
 
-群集运行的版本到期之前的 14 天内，生成运行状况事件，将群集置于警告运行状况状态。 群集将继续处于警告状态，直至升级至支持的结构版本。
+群集运行的版本过期前 14 天，系统会生成运行状况事件，使群集进入警告运行状况状态。 群集将继续处于警告状态，直至升级至支持的结构版本。
 
 可以将群集设置为 Microsoft 发布结构升级时自动接收该升级，或可以选择想要群集安装的受支持结构版本。  若要了解详细信息，请参阅[升级群集的 Service Fabric 版本](service-fabric-cluster-upgrade-version-azure.md)。
 
@@ -50,7 +50,7 @@ Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们会�
 如果符合群集运行状况策略，则升级被视为成功并标记为完成。 在此阶段进行初始升级或重新运行任何升级期间，可能发生这种情形。 如果运行成功，将不发送任何电子邮件确认。 这是为了避免发送过多的电子邮件。收到电子邮件则表示出现异常。 大多数群集升级预期都会成功，且不影响应用程序可用性。
 
 ### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>阶段 2：仅使用默认运行状况策略执行升级
-在此阶段设置好运行状况策略，以便在升级开始时运行正常的应用程序数目在升级程序期间保持不变。 与阶段 1 一样，阶段 2 升级过程将每次升级一个升级域，已在群集中运行的应用程序继续运行，而不会造成任何停机时间。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
+在此阶段设置好运行状况策略，以便在升级开始时运行正常的应用程序数目在升级程序期间保持不变。 与阶段 1 一样，阶段 2 升级过程将每次升级一个升级域，已在群集中运行的应用程序将继续运行，而不会造成任何停机时间。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
 
 如果不符合现行的群集运行状况策略，则回滚升级。 然后，系统会向订阅所有者发送一封电子邮件。 电子邮件中包含以下信息：
 
@@ -101,8 +101,6 @@ Service Fabric 使用创建群集时指定的 [X.509 服务器证书](service-fa
 ## <a name="patch-the-os-in-the-cluster-nodes"></a>修补群集节点的操作系统
 修补业务流程应用程序 (POA) 是一个 Service Fabric 应用程序，可在 Service Fabric 群集中自动修补操作系统，而无需停机。 可在群集上部署[适用于 Windows 的修补业务流程应用程序](service-fabric-patch-orchestration-application.md)或[适用于 Linux 的修补业务流程应用程序](service-fabric-patch-orchestration-application-linux.md)，以便以协调一致的方式安装修补程序，同时使服务始终可用。 
 
-## <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>构成群集的 VM 上的操作系统升级
-如果必须升级群集虚拟机上的操作系统映像，必须一次升级一个 VM。 需要自行负责这种升级 - 目前没有自动化的功能用于实现此目的。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容

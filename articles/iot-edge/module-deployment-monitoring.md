@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100100"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107808"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>了解单设备或大规模的 IoT Edge 自动部署
 
@@ -32,7 +32,7 @@ Azure IoT Edge 提供两种方法来配置在 IoT Edge 设备上运行的模块�
 2. IoT 中心服务与所有目标设备通信，为其配置所需模块。 
 3. IoT 中心服务从 IoT Edge 设备检索状态，然后将这些状态提供给操作员。  例如，如果某个 Edge 设备配置不成功，或者某个模块在运行时发生故障，操作员就会看到。 
 4. 随时对新的符合目标条件的 IoT Edge 设备进行部署配置。 例如，如果某个部署的目标是华盛顿州的所有 IoT Edge 设备，则当某个新的 IoT Edge 设备完成预配并添加到华盛顿州设备组时，该部署会自动配置此设备。 
- 
+ 
 本文将介绍配置和监视部署过程中涉及的每个组件。 如需创建和更新部署的详细介绍，请参阅[大规模部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)。
 
 ## <a name="deployment"></a>部署
@@ -52,7 +52,7 @@ loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT
 每个模块的配置元数据包括： 
 
 * 版本 
-* 类型 
+* Type 
 * 状态（例如，正在运行或已停止） 
 * 重启策略 
 * 映像和容器注册表
@@ -62,7 +62,7 @@ loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT
 
 ### <a name="target-condition"></a>目标条件
 
-在部署的整个生存期内会持续对目标条件进行评估。 将包括满足要求的任何新设备，并删除不再满足要求的任何现有设备。 如果服务检测到任何目标条件更改，则会重新激活部署。 
+部署的整个生存期持续评估目标条件。 将包括满足要求的任何新设备，并删除不再满足要求的任何现有设备。 如果服务检测到任何目标条件更改，则会重新激活部署。 
 
 例如，部署 A 具有目标条件 tags.environment = 'prod'。 启动该部署时，共有 10 个生产设备。 这 10 个设备都成功安装了模块。 IoT Edge 代理状态显示为总共 10 个设备，10 个成功响应，0 个失败响应，以及 0 个挂起响应。 现在，又添加 5 个 tags.environment = 'prod' 的设备。 服务检测到更改，当它尝试部署到这 5 个新设备时，IoT Edge 代理状态变为总共 15 个设备，10 个成功响应，0 个失败响应，以及 5 个挂起响应。
 

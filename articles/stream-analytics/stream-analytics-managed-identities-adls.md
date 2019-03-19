@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 194f43a0005f17a22b3a60d6decd049444e56c20
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 43947413f061ec8b366392b676e848ebf5e6484e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745770"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570107"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>使用托管标识在 Azure Data Lake Storage Gen1 中对流分析进行身份验证（预览）
 
@@ -23,13 +23,15 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
 本文将介绍下面三种方法，用于为输出到 Azure Data Lake Storage Gen1 的 Azure 流分析作业启用托管标识：通过 Azure 门户、Azure 资源管理器模板部署以及适用于 Visual Studio 的 Azure 流分析工具。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="azure-portal"></a>Azure 门户
 
 1. 首先创建新的流分析作业，或在 Azure 门户中打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识(预览版)”。
 
    ![配置流分析托管标识预览版](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. 在右侧显示的窗口中选择“使用系统分配的托管标识(预览版)”。 单击“保存”，为 Azure Active Directory 中的流分析作业标识创建服务主体。 新建标识的生命周期将由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。
+2. 在右侧显示的窗口中选择“使用系统分配的托管标识(预览版)”。 单击**保存**到 Stream Analytics 作业在 Azure Active Directory 中的标识的服务主体。 新建标识的生命周期将由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。
 
    保存配置后，服务主体的对象 ID (OID) 将列为主体 ID，如下所示：
 
@@ -91,62 +93,61 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
 1. 可以通过在资源管理器模板的 resource 节中包含以下属性，来创建带有托管标识的 *Microsoft.StreamAnalytics/streamingjobs* 资源：
 
-   ```json
-   "Identity": {
-   "Type": "SystemAssigned",
-   },
-   ```
+    ```json
+    "Identity": {
+      "Type": "SystemAssigned",
+    },
+    ```
 
    此属性告知 Azure 资源管理器为你的 Azure 流分析作业创建和管理标识。
 
    **示例作业**
 
-   ```json
-   { 
-   "Name": "AsaJobWithIdentity", 
-   "Type": "Microsoft.StreamAnalytics/streamingjobs", 
-   "Location": "West US",
-   "Identity": {
-     "Type": "SystemAssigned", 
-     }, 
-   "properties": {
-      "sku": {
-       "name": "standard"
-       },
-   "outputs": [
-         {
-           "name": "string",
-           "properties":{
-             "datasource": {        
-               "type": "Microsoft.DataLake/Accounts",
-               "properties": {
-                 "accountName": “myDataLakeAccountName",
-                 "filePathPrefix": “cluster1/logs/{date}/{time}",
-                 "dateFormat": "YYYY/MM/DD",
-                 "timeFormat": "HH",
-                 "authenticationMode": "Msi"
-                 }
-                 
-   }
+    ```json
+    {
+      "Name": "AsaJobWithIdentity",
+      "Type": "Microsoft.StreamAnalytics/streamingjobs",
+      "Location": "West US",
+      "Identity": {
+        "Type": "SystemAssigned",
+      },
+      "properties": {
+        "sku": {
+          "name": "standard"
+        },
+        "outputs": [
+          {
+            "name": "string",
+            "properties":{
+              "datasource": {
+                "type": "Microsoft.DataLake/Accounts",
+                "properties": {
+                  "accountName": "myDataLakeAccountName",
+                  "filePathPrefix": "cluster1/logs/{date}/{time}",
+                  "dateFormat": "YYYY/MM/DD",
+                  "timeFormat": "HH",
+                  "authenticationMode": "Msi"
+                }
+              }
    ```
   
    **示例作业响应**
 
    ```json
-   { 
-   "Name": "mySAJob", 
-   "Type": "Microsoft.StreamAnalytics/streamingjobs", 
-   "Location": "West US",
-   "Identity": {
-   "Type": "SystemAssigned",
-    "principalId": "GUID", 
-    "tenantId": "GUID", 
-   }, 
-   "properties": {
-           "sku": {
-             "name": "standard"
-           },
-   }
+   {
+    "Name": "mySAJob",
+    "Type": "Microsoft.StreamAnalytics/streamingjobs",
+    "Location": "West US",
+    "Identity": {
+      "Type": "SystemAssigned",
+        "principalId": "GUID",
+        "tenantId": "GUID",
+      },
+      "properties": {
+        "sku": {
+          "name": "standard"
+        },
+      }
    ```
 
    记下作业响应中的主体 ID，以授予对所需 ADLS 资源的访问权限。
@@ -158,7 +159,7 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 2. 使用 PowerShell 提供对服务主体的访问权限。 若要通过 PowerShell 授予对服务主体的访问权限，请执行以下命令：
 
    ```powershell
-   Set-AzureRmDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
+   Set-AzDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
    ```
 
    **PrincipalId** 是服务主体的对象 ID，创建服务主体后，会在门户屏幕上列出此 ID。 如果使用资源管理器模板部署创建了作业，则对象 ID 将列在作业响应的标识属性中。
@@ -166,11 +167,19 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
    **示例**
 
    ```powershell
-   PS > Set-AzureRmDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
+   PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   若要详细了解上述 PowerShell 命令，请参阅 [Set-AzureRmDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemaclentry?view=azurermps-6.8.1&viewFallbackFrom=azurermps-4.2.0#optional-parameters) 文档。
+   若要了解有关上述 PowerShell 命令的详细信息，请参阅[集 AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry)文档。
+
+## <a name="limitations"></a>限制
+此功能不支持以下功能：
+
+1.  **多租户访问**:为给定的 Stream Analytics 作业创建的服务主体将驻留在 Azure Active Directory 租户的作业创建，且不能使用对驻留在不同的 Azure Active Directory 租户的资源。 因此，仅可以在同一 Azure Active Directory 租户与 Azure Stream Analytics 作业中的第 1 代 ADLS 资源上使用 MSI。 
+
+2.  **[用户分配标识](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**： 不支持这意味着用户不能输入他们自己的服务主体，以供其 Stream Analytics 作业。 由 Azure Stream Analytics 生成的服务主体。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

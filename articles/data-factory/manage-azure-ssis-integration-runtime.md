@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d0022ee46049181ed15e6b3968b9b952483c7fba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 3c1178a20debc36fbdbbd374eaf9adb6005a93a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016013"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454929"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>重新配置 Azure-SSIS 集成运行时
 本文介绍如何重新配置现在的 Azure-SSIS 集成运行时。 若要在 Azure 数据工厂中创建 Azure-SSIS 集成运行时 (IR)，请参阅[创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。  
@@ -40,51 +40,54 @@ ms.locfileid: "54016013"
 3. 若要重新启动 IR，请单击“操作”列中的“启动”按钮。     
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 预配并启动 Azure-SSIS 集成运行时的实例后，可以通过连续运行 `Stop` - `Set` - `Start` PowerShell cmdlet 序列来重新配置该实例。 例如，以下 PowerShell 脚本将分配给 Azure-SSIS 集成运行时实例的节点数更改为 5。
 
 ### <a name="reconfigure-an-azure-ssis-ir"></a>重新配置 Azure-SSIS IR
 
-1. 首先，使用 [Stop-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/stop-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1) cmdlet 停止 Azure-SSIS 集成运行时。 此命令释放该运行时的所有节点并停止计费。
+1. 首先，使用停止 Azure SSIS 集成运行时[停止 AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/stop-Azdatafactoryv2integrationruntime) cmdlet。 此命令释放该运行时的所有节点并停止计费。
 
     ```powershell
-    Stop-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName 
+    Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName 
     ```
-2. 接下来，使用 [Set-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1) cmdlet 重新配置 Azure-SSIS IR。 以下示例命令将 Azure-SSIS 集成运行时横向扩展到五个节点。
+2. 接下来，通过使用来重新配置 AZURE-SSIS IR[集 AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) cmdlet。 以下示例命令将 Azure-SSIS 集成运行时横向扩展到五个节点。
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -NodeCount 5
+    Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -NodeCount 5
     ```  
-3. 然后，使用 [Start-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/start-azurermdatafactoryv2integrationruntime?view=azurermps-4.4.1) cmdlet 启动 Azure-SSIS 集成运行时。 此命令分配该运行时的所有节点来运行 SSIS 包。   
+3. 然后，使用启动 Azure SSIS 集成运行时[开始 AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) cmdlet。 此命令分配该运行时的所有节点来运行 SSIS 包。   
 
     ```powershell
-    Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName
+    Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName
     ```
 
 ### <a name="delete-an-azure-ssis-ir"></a>删除 Azure-SSIS IR
 1. 首先，列出数据工厂下的所有现有 Azure SSIS IR。
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName -Status
+    Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName -Status
     ```
 2. 接下来，停止数据工厂中的所有现有 Azure SSIS IR。
 
     ```powershell
-    Stop-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+    Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
     ```
 3. 接下来，逐个删除数据工厂中的所有现有 Azure SSIS IR。
 
     ```powershell
-    Remove-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+    Remove-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
     ```
 4. 最后，删除数据工厂。
 
     ```powershell
-    Remove-AzureRmDataFactoryV2 -Name $DataFactoryName -ResourceGroupName $ResourceGroupName -Force
+    Remove-AzDataFactoryV2 -Name $DataFactoryName -ResourceGroupName $ResourceGroupName -Force
     ```
 5. 如果已创建了新的资源组，请删除该资源组。
 
     ```powershell
-    Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force 
+    Remove-AzResourceGroup -Name $ResourceGroupName -Force 
     ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,15 +6,15 @@ keywords: 剪辑;子剪辑;编码;媒体
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 9d306bc3b9e206e5f21f9c16c0cd32bc599f1b6d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 35f1f359b44af00000ccd9047673b80ca541d376
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003153"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998206"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>使用 Azure 媒体剪辑器创建剪辑 
 
