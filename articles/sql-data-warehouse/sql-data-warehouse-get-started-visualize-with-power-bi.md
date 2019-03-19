@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: df1fe833a5b0cb65372f8df73fb17231463d4d64
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: b2377466ba830eed9fed0e9a4033b3eca3d351c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466262"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834592"
 ---
 # <a name="visualize-data-with-power-bi"></a>使用 Power BI 可视化数据
 本教程说明如何使用 Power BI 连接到 SQL 数据仓库，并创建一些基本的视觉效果。
@@ -24,7 +24,7 @@ ms.locfileid: "55466262"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 要逐步完成本教程，需要：
 
 * 已随 AdventureWorksDW 数据库预先加载的 SQL 数据仓库。 若要完成数据仓库预配，请参阅[创建 SQL 数据仓库](create-data-warehouse-portal.md)，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以[加载 WideWorldImportersDW](load-data-wideworldimportersdw.md)。
@@ -93,4 +93,4 @@ ms.locfileid: "55466262"
 随着体验的改善，这些限制和说明可能会更改。
 
 ## <a name="next-steps"></a>后续步骤
-使用示例数据进行练习后，接下来请了解如何[开发](sql-data-warehouse-overview-develop.md)、[加载](design-elt-data-loading.md)或[迁移](sql-data-warehouse-overview-migrate.md)。 也可浏览 [Power BI 网站](http://www.powerbi.com/)。
+使用示例数据进行练习后，接下来请了解如何[开发](sql-data-warehouse-overview-develop.md)、[加载](design-elt-data-loading.md)或[迁移](sql-data-warehouse-overview-migrate.md)。 也可浏览 [Power BI 网站](https://www.powerbi.com/)。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c09947e6d34c5314e8ed4bc2744f07b199278a6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0f1d1667b580becad501fd029652ed011f190343
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188097"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842271"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>教程：Azure Active Directory 与 SD Elements 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56188097"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 SD Elements 的集成，需备齐以下项目：
 
@@ -231,7 +231,7 @@ ms.locfileid: "56188097"
    
     ![创建 SD Elements 测试用户](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
    
-    a. 在“电子邮件”文本框中，输入用户的电子邮件地址（例如 brittasimon@contoso.com）。
+    a. 在中**电子邮件**文本框中，输入类似的用户的电子邮件**brittasimon\@contoso.com**。
    
     b. 在“名字”文本框中，输入用户的名字（如“Britta”）。
    

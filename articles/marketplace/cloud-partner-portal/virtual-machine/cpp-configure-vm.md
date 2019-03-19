@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183465"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833495"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>配置 Azure 托管的 VM
 
@@ -28,7 +28,8 @@ ms.locfileid: "53183465"
 
 ## <a name="sizing-the-vhds"></a>调整 VHD 大小
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> 如果选择了一个已预配置操作系统（以及可选的其他服务）的 VM，则已经选取了[虚拟机“SKU”选项卡](./cpp-skus-tab.md)中所述的一种标准 Azure VM 大小。使用预先配置的 OS 启动解决方案是建议的方法。  但是，若要手动安装 OS，则必须在 VM 映像中调整主要 VHD 的大小：
+<!--TD: Check if the following assertion is true. I didn't understand the original content. -->
+如果选择了某一操作系统 （和可选的其他服务），使用预配置的 Vm，则已选取的标准 Azure VM 大小，如中所述[虚拟机 Sku 选项卡](./cpp-skus-tab.md)。使用预先配置的 OS 启动解决方案是建议的方法。  但是，若要手动安装 OS，则必须在 VM 映像中调整主要 VHD 的大小：
 
 - 对于 Windows，操作系统 VHD 应创建为 127-128 GB 的固定格式 VHD。 
 - 对于 Linux，此 VHD 应创建为 30-50 GB 的固定格式 VHD。
@@ -44,7 +45,7 @@ ms.locfileid: "53183465"
 
 对于 Windows Server 2016，请运行“检查更新”命令。  对于旧版 Windows，请参阅[如何通过 Windows 更新获取更新](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update)。  Windows 更新将自动安装最新的关键/重要安全更新。
 
-对于 Linux 分发版，通常可以通过命令行工具或图形实用工具来下载和安装更新。  例如，Ubuntu Linux 提供 [apt-get](http://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) 命令和[更新管理器](http://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html)工具用于更新 OS。
+对于 Linux 分发版，通常可以通过命令行工具或图形实用工具来下载和安装更新。  例如，Ubuntu Linux 提供 [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) 命令和[更新管理器](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html)工具用于更新 OS。
 
 
 ## <a name="perform-additional-security-checks"></a>执行附加的安全检查
@@ -72,7 +73,7 @@ Windows OS 磁盘已使用 [sysprep 工具](https://docs.microsoft.com/windows-h
 > [!WARNING]
 >  由于运行 sysprep 后更新可能自动运行，因此，在部署 VM 之前应将其关闭。  此关闭操作可避免后续更新对 VHD OS 或安装的服务做出特定于实例的更改。
 
-有关运行 sysprep 的详细信息，请参阅 [通用化 VHD 的步骤] (https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
+有关运行 sysprep 的详细信息，请参阅[通用化 VHD 的步骤](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
 
 ### <a name="linux"></a>Linux
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25711bd09adf17fa82f9177f4badad723e590b12
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6c8cd7a2cfc96af791e4b07ae4c6d35b645acba0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184187"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835792"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>教程：Azure Active Directory 与 iQualify LMS 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56184187"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 iQualify LMS 的集成，需要以下项：
 
@@ -112,12 +112,14 @@ ms.locfileid: "56184187"
     ![iQualify LMS 域和 URL 单一登录信息](./media/iqualify-tutorial/tutorial_iqualify_url.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
+
     | |
     |--|--|
     | 生产环境：`https://<yourorg>.iqualify.com/`|
     | 测试环境：`https://<yourorg>.iqualify.io`|
     
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
+
     | |
     |--|--|
     | 生产环境：`https://<yourorg>.iqualify.com/auth/saml2/callback` |
@@ -128,6 +130,7 @@ ms.locfileid: "56184187"
     ![iQualify LMS 域和 URL 单一登录信息](./media/iqualify-tutorial/tutorial_iqualify_url1.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|--|
     | 生产环境：`https://<yourorg>.iqualify.com/login` |

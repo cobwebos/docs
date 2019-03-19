@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 11/19/2018
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338ae760aae90131a7353f990e1014aa714faa0f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8ab3570cb7e3e8b09425bf4c05f7f5725fd21d4f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177897"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845148"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>什么是 Azure AD 访问评审？
 
@@ -42,12 +42,12 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 
 ## <a name="when-to-use-access-reviews"></a>何时使用访问评审？
 
-- **特权角色用户过多：** 建议检查多少用户具有管理访问权限，其中有多少用户是全局管理员，以及检查是否存在向其分配管理任务后未将其删除的受邀来宾和合作伙伴。 可以重新验证 [Azure AD 目录角色](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)（例如全局管理员）或 [Azure 资源角色](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)（例如 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 体验中的用户访问权限管理员）中的角色分配用户。
+- **特权角色用户过多：** 它是一个好办法检查多少用户具有管理访问权限，其中的多少一些全球管理员，并且如果有任何受邀来宾或分配来执行管理任务后尚未删除的合作伙伴。 可以重新验证 [Azure AD 目录角色](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)（例如全局管理员）或 [Azure 资源角色](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)（例如 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 体验中的用户访问权限管理员）中的角色分配用户。
 - **自动化不可行：** 可针对安全组或 Office 365 组中的动态成员资格创建规则，但如果人力资源数据不在 Azure AD 中或者如果用户在离开组后仍需访问权限来培训其接任者应该怎么办？ 对于此类情况，可以对该组创建评审，确保仍需访问权限的用户能够继续获得访问权限。
 - **将组用于新用途：** 如果要将组同步到 Azure AD，或计划为所有销售团队组成员启用 Salesforce 应用程序，则要求组所有者在将组用于其他风险内容前评审组成员资格会非常有用。
 - **业务关键数据访问权限：** 对于特定资源，可能出于审核目的要求 IT 以外的人员定期注销并提供需要访问权限的正当理由。
 - **要维护策略的例外列表：** 在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 IT 管理员可以管理此任务、避免忽视策略例外情况，为审核员提供定期评审这些例外情况的证明。
-- **要求组所有者确认他们在组中是否仍需要来宾：** 员工访问可能会通过一些本地 IAM 自动执行，但不会邀请来宾。 如果组为来宾授予了业务敏感内容的访问权限，则由组所有者负责确认来宾是否仍有对访问权限的合法业务需求。
+- **要求组所有者确认他们在组中是否仍需要来宾：** 员工的访问权限可能会使用一些本地 IAM，但不是受邀来宾自动执行。 如果组为来宾授予了业务敏感内容的访问权限，则由组所有者负责确认来宾是否仍有对访问权限的合法业务需求。
 - **定期重复评审：** 可以设置按设定频率（例如每周、每月、每季度或每年）定期对用户进行访问评审，审阅者将在每次评审开始前收到通知。 审阅者可以借助友好界面和智能建议的帮助，批准或拒绝访问权限。
 
 ## <a name="where-do-you-create-reviews"></a>在哪里创建评审？
@@ -61,7 +61,7 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 | Azure AD 目录角色 | 指定的审阅者</br>自我评审 | Azure AD PIM | Azure 门户 |
 | Azure 资源角色 | 指定的审阅者</br>自我评审 | Azure AD PIM | Azure 门户 |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用访问评审，必须具有以下许可证之一：
 
@@ -84,27 +84,29 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 
 若要启用访问评审，请执行以下步骤。
 
-1. 以全局管理员或用户帐户管理员身份登录到要在其中使用访问评审的 [Azure 门户](https://portal.azure.com)。
+1. 作为全局管理员或用户管理员，登录到[Azure 门户](https://portal.azure.com)你想要使用访问评审。
 
 1. 单击“所有服务”并查找访问评审服务。
 
-    ![所有服务 - 访问评审](./media/access-reviews-overview/all-services-access-reviews.png)
-
 1. 单击“访问评审”。
 
-    ![访问评审载入](./media/access-reviews-overview/onboard-button.png)
+    ![所有服务 - 访问评审](./media/access-reviews-overview/all-services-access-reviews.png)
 
 1. 在导航列表中，单击“载入”，打开“载入访问评审”页。
 
+    ![访问评审载入](./media/access-reviews-overview/onboard-button.png)
+
+1. 单击“创建”，以在当前目录中启用访问评审。
+
     ![载入访问评审](./media/access-reviews-overview/onboard-access-reviews.png)
 
-1. 单击“创建”，以在当前目录中启用访问评审。 下次启动访问评审时，会启用这些选项。
+    下次启动访问评审，将启用访问权限审查选项。
 
     ![访问评审已启用](./media/access-reviews-overview/access-reviews-enabled.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建对组成员的访问评审或对应用程序的访问](create-access-review.md)
+- [创建组或应用程序的访问评审](create-access-review.md)
 - [针对充当 Azure AD 管理角色的用户创建访问评审](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)
-- [使用 Azure AD 访问评审来执行访问评审](perform-access-review.md)
-- [在 Azure AD 中完成组成员或用户对应用程序进行访问的访问评审](complete-access-review.md)
+- [评审访问权限给组或应用程序](perform-access-review.md)
+- [完成访问评审的组或应用程序](complete-access-review.md)
