@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 4dac40e9fad8361c0e6c8a8758028743f2506f56
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 95d7fc55accb163e07dcb7d103cc896794720cf4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428085"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845444"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "56428085"
 
 可以使用 Mac OS X 生成在 Linux 群集上运行的 Azure Service Fabric 应用程序。本文档介绍了如何设置用于开发的 Mac。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
 
 * 至少 4 GB 的 RAM。
@@ -152,7 +152,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
     node -v
     npm -v
     ```
-2. 通过 NPM 在计算机上安装 [Yeoman](http://yeoman.io/) 模板生成器：
+2. 通过 NPM 在计算机上安装 [Yeoman](https://yeoman.io/) 模板生成器：
 
     ```bash
     npm install -g yo

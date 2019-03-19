@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: e0f85e11b2be8a615f949e0d37325dbd748f728a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103269"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847960"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF 中继 REST 教程
 本教程介绍如何生成简单的服务总线主机应用程序，该应用程序公开基于 REST 的接口。 REST 使 Web 客户端（例如 Web 浏览器）可通过 HTTP 请求访问服务总线 API。
@@ -35,12 +35,12 @@ ms.locfileid: "55103269"
 > * 托管并运行基于 REST 的 WCF 服务
 > * 运行和测试服务
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要具备以下先决条件：
 
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-- [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+- [Visual Studio 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
 - 用于 .NET 的 Azure SDK。 从 [SDK 下载页](https://azure.microsoft.com/downloads/)安装它。
 
 ## <a name="create-a-relay-namespace"></a>创建中继命名空间
@@ -49,13 +49,13 @@ ms.locfileid: "55103269"
 
 ## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>定义基于 REST 的 WCF 服务约定以用于 Azure 中继
 
-创建创建 WCF REST 样式的服务时，必须定义约定。 约定指定主机支持的操作。 服务操作可以看作是 Web 服务方法。 约定通过定义 C++、C# 或 Visual Basic 接口来创建。 接口中的每个方法都对应一个特定的服务操作。 必须将 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) 属性应用到每个接口，且必须将 [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) 属性应用到每个操作。 如果具有 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) 的接口中的方法没有 [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute)，则该方法是不公开的。 该过程后面的示例中显示了这些任务所用的代码。
+创建创建 WCF REST 样式的服务时，必须定义约定。 约定指定主机支持的操作。 服务操作可以看作是 Web 服务方法。 协定通过定义 C++、C# 或 Visual Basic 接口来创建。 接口中的每个方法都对应一个特定的服务操作。 必须将 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) 属性应用到每个接口，且必须将 [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) 属性应用到每个操作。 如果具有 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) 的接口中的方法没有 [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute)，则该方法是不公开的。 该过程后面的示例中显示了这些任务所用的代码。
 
 WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) 添加一个属性：[WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute)。 此属性允许将接口中的方法映射到该接口另一侧的方法。 此示例使用 [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) 属性将一个方法链接到 HTTP GET。 这会使服务总线可以准确地检索并解释发送到接口的命令。
 
 ### <a name="to-create-a-contract-with-an-interface"></a>使用接口创建协定
 
-1. 以管理员身份打开 Visual Studio：在“开始”菜单中右键单击该程序，并选择“以管理员身份运行”。
+1. 以管理员身份打开 Visual Studio：在“开始”菜单中右键单击该程序，然后选择“以管理员身份运行”。
 2. 创建新的控制台应用程序项目。 单击“文件”菜单并选择“新建”，并单击“项目”。 在“新建项目”对话框中，单击“Visual C#”，选择“控制台应用程序”模板，并将其命名为“ImageListener”。 使用默认“位置”。 单击“确定”以创建该项目  。
 3. 对于 C# 项目，Visual Studio 会创建 `Program.cs` 文件。 此类包含一个空的 `Main()` 方法，需要此方法才能正确生成控制台应用程序项目。
 4. 通过安装服务总线 NuGet 包，向项目添加对服务总线和 **System.ServiceModel.dll** 的引用。 该包自动添加对服务总线库和 WCF **System.ServiceModel**的引用。 在“解决方案资源管理器”中，右键单击“ImageListener”项目，并单击“管理 NuGet 包”。 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。
@@ -81,15 +81,15 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
     {
         ...
     ```
-8. 在命名空间声明的左大括号后面，紧接着定义一个名为 **IImageContract** 的新接口，然后将 **ServiceContractAttribute** 属性应用于该接口，其值为 `http://samples.microsoft.com/ServiceModel/Relay/`。 该命名空间值不同于在整个代码范围内使用的命名空间。 该命名空间值将用作此约定的唯一标识符，并应有版本控制信息。 有关详细信息，请参阅 [服务版本控制](https://go.microsoft.com/fwlink/?LinkID=180498)。 显式指定命名空间可防止将默认的命名空间值添加到约定名称中。
+8. 在命名空间声明的左大括号后面，紧接着定义一个名为 **IImageContract** 的新接口，然后将 **ServiceContractAttribute** 属性应用于该接口，其值为 `https://samples.microsoft.com/ServiceModel/Relay/`。 该命名空间值不同于在整个代码范围内使用的命名空间。 该命名空间值将用作此约定的唯一标识符，并应有版本控制信息。 有关详细信息，请参阅 [服务版本控制](https://go.microsoft.com/fwlink/?LinkID=180498)。 显式指定命名空间可防止将默认的命名空间值添加到约定名称中。
    
     ```csharp
-    [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
+    [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
     public interface IImageContract
     {
     }
     ```
-9. 在 `IImageContract` 接口中，为 `IImageContract` 约定在接口中公开的单个操作声明一个方法，并将 `OperationContractAttribute` 属性应用到希望将其作为公共服务总线约定的一部分进行公开的方法中。
+9. 在 `IImageContract` 接口中，为 `IImageContract` 协定在接口中公开的单个操作声明一个方法，然后将 `OperationContractAttribute` 属性应用到你希望将其作为公共服务总线协定的一部分进行公开的方法中。
    
     ```csharp
     public interface IImageContract
@@ -134,7 +134,7 @@ using System.IO;
 namespace Microsoft.ServiceBus.Samples
 {
 
-    [ServiceContract(Name = "IImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
@@ -169,7 +169,7 @@ namespace Microsoft.ServiceBus.Samples
 2. 将 [ServiceBehaviorAttribute](/dotnet/api/system.servicemodel.servicebehaviorattribute) 属性应用到 **IImageService** 类，以指示该类是 WCF 协定的实现。
    
     ```csharp
-    [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
     }
@@ -178,7 +178,7 @@ namespace Microsoft.ServiceBus.Samples
     如前所述，此命名空间不是传统的命名空间， 而是用于标识约定的 WCF 体系结构的一部分。 有关详细信息，请参阅 WCF 文档中的[数据协定名称](https://msdn.microsoft.com/library/ms731045.aspx)一文。
 3. 将一幅 .jpg 图像添加到项目中。  
    
-    这是服务在接收浏览器中显示的图片。 右键单击项目，并单击“添加”。 然后，单击“现有项”。 使用“添加现有项”对话框浏览到相应的 .jpg，并单击“添加”。
+    这是服务在接收浏览器中显示的图片。 右键单击项目，并单击“添加”。 然后单击“现有项”。 使用“添加现有项”对话框浏览到相应的 .jpg，并单击“添加”。
    
     添加文件时，请确保在“文件名:”字段旁的下拉列表中选择“所有文件”。 本教程的余下部分假定图像的名称为“image.jpg”。 如果 .jpg 文件名不是这样，则必须重命名图像，或更改代码进行弥补。
 4. 为确保正在运行的服务可以找到该图像文件，请在“解决方案资源管理器”中右键单击该图像文件，并单击“属性”。 在“属性”窗格中，将“复制到输出目录”设置为“如果较新则复制”。
@@ -311,7 +311,7 @@ namespace Microsoft.ServiceBus.Samples
 {
 
 
-    [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
@@ -320,7 +320,7 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IImageChannel : IImageContract, IClientChannel { }
 
-    [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
         const string imageFileName = "image.jpg";
@@ -512,7 +512,7 @@ using Microsoft.ServiceBus.Web;
 namespace Microsoft.ServiceBus.Samples
 {
 
-    [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "ImageContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IImageContract
     {
         [OperationContract, WebGet]
@@ -521,7 +521,7 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IImageChannel : IImageContract, IClientChannel { }
 
-    [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "ImageService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class ImageService : IImageContract
     {
         const string imageFileName = "image.jpg";

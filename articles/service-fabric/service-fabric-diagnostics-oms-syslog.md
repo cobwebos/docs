@@ -14,18 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 30b064e3c20b184023cb6ada25d673f5cab6597c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 25452d3d65518511c47087d1cb712d0a512416fc
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297661"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245550"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 中的 Service Fabric Linux 群集事件
 
 Service Fabric 公开一组平台事件，告知你群集中的重要活动。 点击[此处](service-fabric-diagnostics-event-generation-operational.md)查看公开的完整事件列表。 可通过多种方式使用这些事件。 在本文中，我们将讨论如何配置 Service Fabric，以便将这些事件写入 Syslog。
 
-## <a name="introduction"></a>介绍
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="introduction"></a>简介
 
 在 6.4 版中就已引入了 SyslogConsumer，用于将 Service Fabric 平台事件发送到 Linux 群集的 Syslog。 开启后，事件将自动传递到可通过 Log Analytics 代理收集和发送的 Syslog。
 
@@ -93,8 +95,8 @@ SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 更改 config �
     }
 ```
 
-## <a name="log-analytics-integration"></a>Log Analytics 集成
-可以使用 Log Analytics 等监视工具来读取这些 Syslog 事件。 你可以按照[说明].(../azure-monitor/learn/quick-create-workspace.md)，使用 Azure 市场创建一个 Log Analytics 工作区。还需向群集添加 Log Analytics 代理，以向该工作区收集和发送该数据。 这正是用于收集性能计数器的同一个代理。 
+## <a name="azure-monitor-logs-integration"></a>Azure 监视器日志集成
+你可以读取 Azure Monitor 日志之类的监视工具中的这些 Syslog 事件。 你可以按照[说明].(../azure-monitor/learn/quick-create-workspace.md)，使用 Azure 市场创建一个 Log Analytics 工作区。还需向群集添加 Log Analytics 代理，以向该工作区收集和发送该数据。 这正是用于收集性能计数器的同一个代理。 
 
 1. 导航到`Advanced Settings`边栏选项卡
 
@@ -120,6 +122,6 @@ SyslogConsumer 使用 `Local0` 设施写入所有平台事件。 更改 config �
 
 ## <a name="next-steps"></a>后续步骤
 * [将 Log Analytics 代理部署到节点上](service-fabric-diagnostics-oms-agent.md)，以收集性能计数器、docker 统计信息和容器日志
-* 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
-* [使用视图设计器在 Log Analytics 中创建自定义视图](../log-analytics/log-analytics-view-designer.md)
-* 参考如何将 [Syslog 与 Log Analytics 集成](../log-analytics/log-analytics-data-sources-syslog.md)。
+* 掌握[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)作为 Azure Monitor 日志的一部分提供的功能
+* [使用视图设计器在 Azure Monitor 日志中创建自定义视图](../log-analytics/log-analytics-view-designer.md)
+* 有关如何为引用[Azure Monitor 记录与 Syslog 集成](../log-analytics/log-analytics-data-sources-syslog.md)。

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077549"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842441"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
@@ -28,7 +28,7 @@ ms.locfileid: "54077549"
 
 |  | 注册步骤 | Duration | 详细信息 |  
 |:--- |:--- |:--- |:--- |  
-| 1 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
+| 第 | 在 Microsoft 合作伙伴网络中注册 | 15 分钟 | [在 Microsoft 合作伙伴网络中注册](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
 | 2 | 创建 Microsoft 帐户 <ul>（Azure 市场交易套餐的必需步骤，其他的建议步骤）</ul> | 15 分钟 | [创建 Microsoft ID](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
 | 3 | 提交市场注册表 | 15 分钟 | [提交市场提名表格](https://docs.microsoft.com/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
 | 4 |  登录到云合作伙伴门户 | 1-3 天 | [登录到云合作伙伴门户](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
@@ -45,23 +45,23 @@ ms.locfileid: "54077549"
 *   了解 [Microsoft 合作伙伴网络](https://partner.microsoft.com/commercial)的优势
 *   如果组织已有成员资格，则可在注册过程中加入组织。 如果使用[合作伙伴中心](https://partnercenter.microsoft.com/partner/home)，则可在合作伙伴中心帐户中看到此 ID。 如果使用 [Partner Membership Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx)，则可在 Partner Membership Center 帐户中看到此 ID。 
 
----  
+---
 
 ## <a name="2-create-a-microsoft-account"></a>2.创建 Microsoft 帐户  
 | 15 分钟 |  
-Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Microsoft 设备和服务。 它是 Azure 市场交易套餐所必需的，建议所有云发布者都使用它。 若要详细了解 Microsoft 帐户的优势和使用方式，请[访问此页](https://account.microsoft.com/account/)。 你将使用个人 Microsoft 帐户来访问云合作伙伴门户，这是一个发布平台，用于创建和管理市场套餐。 
+Microsoft 帐户，例如 *\@outlook.com 或\@live.com*，用于访问许多 Microsoft 设备和服务。 它是 Azure 市场交易套餐所必需的，建议所有云发布者都使用它。 若要详细了解 Microsoft 帐户的优势和使用方式，请[访问此页](https://account.microsoft.com/account/)。 你将使用个人 Microsoft 帐户来访问云合作伙伴门户，这是一个发布平台，用于创建和管理市场套餐。 
 
 [! IMPORTANT] 请注意，不能使用与工作电子邮件关联的 Microsoft 帐户来访问门户。
 
->[!Note]
->如果已经有 Microsoft 帐户，请查看[有关创建 Microsoft ID 来管理市场帐户的准则](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)，以便确定其能否用于市场发布。 
-
->使用 Azure Active Directory 联合公司帐户的用户在尝试创建或使用现有 Microsoft 帐户之前，应该阅读[此文](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)。
+> [!Note]
+> 如果已经有 Microsoft 帐户，请查看[有关创建 Microsoft ID 来管理市场帐户的准则](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)，以便确定其能否用于市场发布。 
+> 
+> 使用 Azure Active Directory 联合公司帐户的用户在尝试创建或使用现有 Microsoft 帐户之前，应该阅读[此文](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)。
 
 *   若需创建或管理 Microsoft 帐户的帮助，请访问 [Microsoft 帐户帮助支持页](https://support.microsoft.com/products/microsoft-account?category=manage-account)。
 
 
----  
+---
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3.提交市场注册表  
 | 15 分钟 |  
@@ -72,7 +72,7 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 *   要发布的初始应用或咨询服务套餐的简要说明，包括与套餐最接近的 Microsoft 产品或服务
 *   应用或服务的目标受众 
 
----  
+---
 ## <a name="4-sign-into-cloud-partner-portal"></a>4.登录到云合作伙伴门户
 | 1-3 天 | <br>
 我们的市场上架团队会验证你在步骤 3 提供的市场注册详细信息。 获得批准后，你会收到一封欢迎电子邮件，其中包含帐户凭据以及登录[云合作伙伴门户](https://cloudpartner.azure.com)的指南。
@@ -108,4 +108,4 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 *   [确定解决方案的列表类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
 
  
----  
+---

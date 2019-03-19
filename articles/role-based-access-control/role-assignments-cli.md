@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/20/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 751f582e2cfc39b62194ec55efa5cd8580c001e3
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 8e75a6344e517fb0343343f557cb7211f49cfed8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341703"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838302"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问权限
 
 可以通过[基于角色的访问控制 (RBAC)](overview.md) 方式管理对 Azure 资源的访问权限。 本文介绍如何使用 RBAC 和 Azure CLI 来管理用户、组和应用程序的访问权限。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要管理访问权限，需要以下项之一：
 
@@ -89,9 +89,9 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role"></a>列出角色的操作
+## <a name="list-a-role-definition"></a>列出角色定义
 
-若要列出角色定义的操作，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)：
+若要列出角色定义，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)：
 
 ```azurecli
 az role definition list --name <role_name>
@@ -104,6 +104,7 @@ az role definition list --name "Contributor"
 ```
 
 ```Output
+[
   {
     "additionalProperties": {},
     "assignableScopes": [
@@ -134,7 +135,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-以下示例列出了“参与者”角色的 *actions* 和 *notActions*：
+### <a name="list-actions-of-a-role"></a>列出角色的操作
+
+以下示例仅列出了“参与者”角色的 actions 和 notActions：
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -153,7 +156,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-以下示例列出了“虚拟机参与者”角色的 actions：
+以下示例仅列出了“虚拟机参与者”角色的 actions：
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -191,7 +194,7 @@ az role assignment list --assignee <assignee>
 
 默认情况下，只会列出局限于订阅的分配。 若要查看按资源或组来确定范围的分配，请使用 `--all`。
 
-以下示例列出的角色分配是直接分配给 *patlong@contoso.com* 用户的：
+以下示例列出了直接分配给角色分配*patlong\@contoso.com*用户：
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -249,7 +252,7 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-以下示例将“虚拟机参与者”角色分配给 *pharma-sales-projectforecast* 资源组范围内的 *patlong@contoso.com* 用户：
+以下示例将分配*虚拟机参与者*角色*patlong\@contoso.com*用户*医药销售 projectforecast*资源组范围内：
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
@@ -297,7 +300,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-以下示例在 *pharma-sales-projectforecast* 资源组上从 *patlong@contoso.com* 用户删除“虚拟机参与者”角色分配：
+下面的示例移除*虚拟机参与者*角色分配从*patlong\@contoso.com*上的用户*医药销售 projectforecast*资源组：
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast

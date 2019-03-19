@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 0f2e4ee393c07e6b15f128ed60922b8a280cabb5
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: b17706b09ce64735cd9d68ace579fd7f5b366dc3
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984658"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244462"
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal-legacy"></a>使用 Azure 门户管理流式处理终结点（旧版）
+# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点 
 
 本文说明如何使用 Azure 门户管理流式处理终结点。 
 
@@ -50,11 +50,11 @@ ms.locfileid: "55984658"
 
 若要使用 Azure 门户添加/删除流式处理终结点，请执行以下操作：
 
-1. 若要添加流式处理终结点，请单击页面顶部的“+ 终结点”。 
+1. 若要添加流式处理终结点，请单击页面顶部的“+ 终结点”  。 
 
     如果想要使用不同的 CDN 并直接访问，可能需要多个流式处理终结点。
 
-2. 若要删除流式处理终结点，请按“删除”按钮。      
+2. 若要删除流式处理终结点，请按“删除”  按钮。      
 3. 单击“启动”按钮以启动流式处理终结点。
    
     ![流式处理终结点](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)

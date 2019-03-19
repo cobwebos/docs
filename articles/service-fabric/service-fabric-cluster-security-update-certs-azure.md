@@ -4,7 +4,7 @@ description: 介绍如何向 Service Fabric 群集添加新的证书、滚动更
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chakdan
 editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
 ms.service: service-fabric
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
-ms.author: aljo-microsoft
-ms.openlocfilehash: aa5096b84f9bfe97784d6f80e4c203a1d8384404
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
-ms.translationtype: HT
+ms.author: aljo
+ms.openlocfilehash: 534335b15d61d1e411ec2e7fb96123eb4701878e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687412"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315261"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
 
-Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日期最远的已定义证书，而不管其主要或次要配置定义如何。 回退到经典行为是非推荐的高级操作，需要在 Fabric.Code 配置内将“UseSecondaryIfNever”设置参数的值设置为 false。
+Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日期最远的已定义证书，而不管其主要或次要配置定义如何。 回退到的经典行为是非推荐的高级的操作，需要将"UseSecondaryIfNewer"设置参数值设置为 false Fabric.Code 配置中。
 
 在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure 资源管理器创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果创建时只指定了一个群集证书，将使用该证书作为主要证书。 在创建群集后，可以添加一个新证书作为辅助证书。
 
@@ -114,7 +114,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
          }
     ``` 
 
-4. 对**所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 滚动到 "publisher": "Microsoft.Azure.ServiceFabric"，位于 "virtualMachineProfile" 下。
+4. 对**所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 在“virtualMachineProfile”下，滚动到“publisher”：“Microsoft.Azure.ServiceFabric”。
 
     在 Service Fabric 发布服务器设置中，应看到类似如下的内容。
     
@@ -229,7 +229,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateP
 
 ```
 
-部署完成后，使用新证书连接到群集，并执行一些查询。 如果能够执行这些查询， 然后便可删除旧证书。 
+部署完成后，使用新证书连接到群集，并执行一些查询。 如果能够执行这些查询， 则可以删除旧证书。 
 
 如果使用自签名证书，请务必将它们导入本地 TrustedPeople 证书存储。
 
@@ -259,7 +259,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
 Get-ServiceFabricClusterHealth 
 ```
 
-## <a name="deploying-application-certificates-to-the-cluster"></a>将应用程序证书部署到群集中。
+## <a name="deploying-client-certificates-to-the-cluster"></a>将客户端证书部署到群集。
 
 可以使用与上述步骤 5 相同的步骤，将证书从 keyvault 部署到节点。 只需定义并使用不同的参数。
 

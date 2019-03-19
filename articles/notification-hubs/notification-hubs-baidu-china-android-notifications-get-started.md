@@ -9,17 +9,17 @@ editor: spelluru
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 3ff0d0db554fe514fdd6be6383b6d1a19f1c39ec
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: c9aadb0dcd5adabed6a6490760282c5201a79000
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451453"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848671"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
 
@@ -29,7 +29,7 @@ ms.locfileid: "54451453"
 
 由于 Google Play 和 FCM (Firebase Cloud Messaging) 在中国不可用，必须使用其他的应用商店和推送服务。 百度就是其中的一个，也是通知中心目前所使用的。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程需要：
 
@@ -132,8 +132,8 @@ ms.locfileid: "54451453"
 5. 然后添加 Azure 通知中心库。 在应用的 `Build.Gradle` 文件中，在 dependencies 节添加以下行。
 
     ```javascript
-    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
     在 dependencies 节的后面添加以下存储库。
@@ -141,7 +141,7 @@ ms.locfileid: "54451453"
     ```javascript
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -161,7 +161,7 @@ ms.locfileid: "54451453"
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6. 下载并解压缩[百度推送 Android SDK](http://push.baidu.com/doc/android/api)。 复制 libs 文件夹中的 `pushservice-x.y.z jar` 文件。 然后复制 Android 应用程序的 `src/main/jniLibs`（创建新文件夹）文件夹中的 `.so` 文件。
+6. 下载并解压缩[百度推送 Android SDK](https://push.baidu.com/doc/android/api)。 复制 libs 文件夹中的 `pushservice-x.y.z jar` 文件。 然后复制 Android 应用程序的 `src/main/jniLibs`（创建新文件夹）文件夹中的 `.so` 文件。
 
     ![Azure 通知中心 - 百度 SDK Libs](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
@@ -497,7 +497,7 @@ ms.locfileid: "54451453"
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-    此指令会使用 [Microsoft.Azure.Notification Hubs NuGet 包](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)添加对 Azure 通知中心 SDK 的引用。
+    此指令会使用 [Microsoft.Azure.Notification Hubs NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)添加对 Azure 通知中心 SDK 的引用。
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
@@ -537,6 +537,6 @@ ms.locfileid: "54451453"
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[百度推送 Android SDK]: http://push.baidu.com/sdk/push_client_sdk_for_android
+[百度推送 Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
 [Azure 门户]: https://portal.azure.com/
-[百度门户]: http://www.baidu.com/
+[百度门户]: https://www.baidu.com/

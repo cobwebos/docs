@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8438bfa567c207e543ed716a2940bce991cc19
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 78b069e6534d8394de1f9a9fcdf51b871441c386
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196036"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>教程：Azure Active Directory 与 Questetra BPM Suite 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56196036"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Questetra BPM Suite 的集成，需备齐以下项目：
 
@@ -210,9 +210,9 @@ ms.locfileid: "56196036"
    
     ![创建测试用户][300] 
    
-    a. 在“名称”文本框中，键入用户的**名称** **britta.simon@contoso.com**。
+    a. 在中**名称**文本框中，键入**名称**的用户**britta.simon\@contoso.com**。
    
-    b. 在“电子邮件”文本框中，键入用户的电子邮件地址**britta.simon@contoso.com**。
+    b. 在中**电子邮件**文本框中，键入**电子邮件**的用户**britta.simon\@contoso.com**
    
     c. 在“密码”文本框中，键入用户的密码。
     

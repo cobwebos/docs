@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 2b898a9228e251003a049b2d82c0b1039eb54114
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
-ms.translationtype: HT
+ms.openlocfilehash: 448ae5f8a615a526460ac92eaaf6c7d16761aec2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247429"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845490"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>使用 Azure 门户通过区域冗余的前端创建标准负载均衡器
 
@@ -28,7 +28,7 @@ ms.locfileid: "54247429"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
- 选择 Azure 资源、区域和 VM 大小系列时可使用可用性区域支持。 有关如何开始使用以及可以尝试将可用性区域用于哪些 Azure 资源、区域和 VM 大小系列的详细信息，请参阅[可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。 若需支持，可以在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) 上寻求帮助或者 [open an Azure support ticket](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（创建 Azure 支持票证）。  
+>  选择 Azure 资源、区域和 VM 大小系列时可使用可用性区域支持。 有关如何开始使用以及可以尝试将可用性区域用于哪些 Azure 资源、区域和 VM 大小系列的详细信息，请参阅[可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。 若需支持，可以在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) 上寻求帮助或者 [open an Azure support ticket](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（创建 Azure 支持票证）。  
 
 ## <a name="log-in-to-azure"></a>登录 Azure 
 
@@ -36,7 +36,7 @@ ms.locfileid: "54247429"
 
 ## <a name="create-a-zone-redundant-load-balancer"></a>创建区域冗余的负载均衡器
 
-1. 从浏览器导航到 Azure 门户：[http://portal.azure.com](http://portal.azure.com) 并使用 Azure 帐户登录。
+1. 从浏览器导航到 Azure 门户：[https://portal.azure.com](https://portal.azure.com) 并使用 Azure 帐户登录。
 2. 在屏幕的左上方，选择**创建资源** > **网络** > **负载均衡器**。
 3. 在“创建负载均衡器”页面中，在“名称”下，键入 **myLoadBalancer**。
 4. 在“类型”下，选择“公共”。

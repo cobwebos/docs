@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2f47a145f00748a3366ea5bd1aa961f4b556a08f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474660"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835220"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科学：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。
@@ -40,7 +40,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 ### <a name="scripts"></a>脚本
 本演练中仅概述了主要步骤。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本**和 **Jupyter Notebook**。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始阅读这些主题前，必须具有：
 
 * Azure 订阅。 如果还没有 Azure 订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
@@ -72,17 +72,17 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 ### <a name="create-an-azure-data-lake-store"></a>创建 Azure Data Lake Store
 
 
-从 [Azure 门户](http://portal.azure.com)创建 ADLS。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。 请务必在此处所述的“可选配置”边栏选项卡的“DataSource”边栏选项卡中设置群集 AAD 标识。
+从 [Azure 门户](https://portal.azure.com)创建 ADLS。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。 请务必在此处所述的“可选配置”边栏选项卡的“DataSource”边栏选项卡中设置群集 AAD 标识。
 
  ![3](./media/data-lake-walkthrough/3-create-ADLS.PNG)
 
 ### <a name="create-an-azure-data-lake-analytics-account"></a>创建 Azure Data Lake Analytics 帐户
-从 [Azure 门户](http://portal.azure.com)创建 ADLA 帐户。 有关详细信息，请参阅[教程：通过 Azure 门户开始使用 Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
+从 [Azure 门户](https://portal.azure.com)创建 ADLA 帐户。 有关详细信息，请参阅[教程：通过 Azure 门户开始使用 Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>创建 Azure Blob 存储帐户
-从 [Azure 门户](http://portal.azure.com)创建 Azure Blob 存储帐户。 有关详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)中的“创建存储帐户”部分。
+从 [Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。 有关详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)中的“创建存储帐户”部分。
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -99,7 +99,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
  ![7](./media/data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
 ## <a name="the-nyc-taxi-trips-dataset"></a>NYC 出租车行程数据集
-此处使用的示例为公开发布的数据集 - [NYC 出租车行程数据集](http://www.andresmh.com/nyctaxitrips/)。 NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证号和车牌号（出租车的唯一 ID）。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
+此处使用的示例为公开发布的数据集 - [NYC 出租车行程数据集](https://www.andresmh.com/nyctaxitrips/)。 NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证号和车牌号（出租车的唯一 ID）。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 'trip_data' CSV 包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
 
@@ -147,7 +147,8 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>数据引入：从公共 Blob 读入数据
-将 Azure blob 中数据的位置引用为 **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**，且可以使用 **Extractors.Csv()** 进行提取。 将以下脚本中的 wasb 地址 container_name@blob_storage_account_name 替换为自己的容器名和存储帐户名。 由于文件名的格式都相同，因此可使用 **trip\_data_{\*\}.csv** 读入所有的 12 个行程文件。
+
+Azure blob 中的数据的位置引用为**wasb://container\_名称\@blob\_存储\_帐户\_name.blob.core.windows.net/blob_name**，可以使用提取**extractors.csv （)**。 替换为你自己的容器名称和在下面的脚本中的容器的存储帐户名称\_名称\@blob\_存储\_帐户\_名称中的 wasb 地址。 由于文件名称都相同的格式，则可以使用**行程\_数据\_\{\*\}.csv**读入所有的 12 个行程文件。
 
     ///Read in Trip data
     @trip0 =
@@ -170,7 +171,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-由于第一行中存在标题，因此需移除标题，并将列类型更改为合适的类型。 可使用 **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ 将已处理的数据保存到 Azure Data Lake 存储，或使用 **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** 将已处理的数据保存到 Azure Blob 存储帐户。
+由于第一行中存在标题，因此需移除标题，并将列类型更改为合适的类型。 您可将 Azure Data Lake 存储使用已处理的数据保存**swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ 或 Azure Blob 存储帐户使用**wasb: / /container_name\@blob_storage_account_name.blob.core.windows.net/blob_name**。
 
     // change data types
     @trip =
@@ -596,7 +597,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 Azure 机器学习工作室可直接从 Azure Data Lake Store 中读取数据，然后将其用于创建和部署模型。 此方法使用指向 Azure Data Lake Store 的 Hive 表。 使用此方法需要预配单独的 Azure HDInsight 群集，并在其中创建 Hive 表。 以下部分介绍了如何执行该操作。
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>创建 HDInsight Linux 群集
-从 [Azure 门户](http://portal.azure.com)创建 HDInsight 群集 (Linux)。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的**创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集**部分。
+从 [Azure 门户](https://portal.azure.com)创建 HDInsight 群集 (Linux)。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的**创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集**部分。
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 

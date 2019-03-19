@@ -3,20 +3,20 @@ title: 使用 Azure 数据工厂创建预测数据管道 | Microsoft Docs
 description: 了解如何使用 Azure 机器学习创建预测管道 - Azure 数据工厂中的批处理执行活动。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: douglasl
-ms.openlocfilehash: a5ba45b8a7bd507552b49b6a18582c393ad07ff5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840556"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ ms.locfileid: "56446029"
 3. **将其部署为 Web 服务**。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。
 
 ### <a name="data-factory-and-machine-learning-together"></a>结合数据工厂和机器学习
-借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 [Azure 机器学习][azure-machine-learning] Web 服务进行预测分析。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。
+Azure 数据工厂，可轻松地创建使用已发布的管道[Azure 机器学习](https://azure.microsoft.com/documentation/services/machine-learning)web 服务进行预测分析。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。
 
 随着时间推移，需要使用新的输入数据集重新训练 Azure 机器学习工作室评分实验中的预测模型。 可以通过执行以下步骤来重新训练数据工厂管道中的模型：
 
@@ -124,7 +124,7 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 }
 ```
 
-| 属性          | 说明                              | 必选 |
+| 属性          | 说明                              | 需要 |
 | :---------------- | :--------------------------------------- | :------- |
 | 名称              | 管道中活动的名称     | 是      |
 | description       | 描述活动用途的文本。  | 否       |

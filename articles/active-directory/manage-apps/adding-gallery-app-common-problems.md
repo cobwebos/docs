@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237861"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853165"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>添加 Azure AD 库应用程序时的问题
 
@@ -38,7 +38,7 @@ ms.locfileid: "56237861"
 
 如果单击“添加”按钮时遇到错误，将看到一个处于“错误”状态的**通知**。 如果想要了解有关错误的详细信息或将其与支持工程师共享，请按照[如何查看门户通知的详细信息](#how-to-see-the-details-of-a-portal-notification)部分中的步骤进行操作。
 
- ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>添加应用程序后不知道如何进行设置
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>添加应用程序后不知道如何进行设置
 
 如果需要有关应用程序的帮助，可先行参阅[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)一文。
 
@@ -73,41 +73,41 @@ ms.locfileid: "56237861"
 
 ### <a name="essential-notification-items"></a>基本通知项
 
--   **标题** – 通知的描述性标题
+- **标题** – 通知的描述性标题
 
   * 示例 – **应用程序代理设置**
 
--   **说明** – 由操作导致的所发生情况的说明
+- **说明** – 由操作导致的所发生情况的说明
 
-    -   示例 – **输入的内部 URL 已被其他应用程序使用**
+  -   示例 – **输入的内部 URL 已被其他应用程序使用**
 
--   **通知 ID** – 通知的唯一 ID
+- **通知 ID** – 通知的唯一 ID
 
-    -   示例 - **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  -   示例 - **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **客户端请求 ID** – 由浏览器发出的特定请求 ID
+- **客户端请求 ID** – 由浏览器发出的特定请求 ID
 
-    -   示例 – **302fd775-3329-4670-a9f3-bea37004f0bc**
+  -   示例 – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **时间戳 UTC** – 在通知发生期间的时间戳 (UTC)
+- **时间戳 UTC** – 在通知发生期间的时间戳 (UTC)
 
-    -   示例 – **2017-03-23T19:50:43.7583681Z**
+  -   示例 – **2017-03-23T19:50:43.7583681Z**
 
--   **内部事务 ID** – 可用于在我们系统中查找错误的内部 ID
+- **内部事务 ID** – 可用于在我们系统中查找错误的内部 ID
 
-    -   示例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  -   示例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **UPN** – 执行操作的用户
+- **UPN** – 执行操作的用户
 
-    -   示例 – **tperkins@f128.info**
+  -   示例 – **tperkins\@f128.info**
 
--   **租户 ID** – 执行操作的用户所属的租户的唯一 ID
+- **租户 ID** – 执行操作的用户所属的租户的唯一 ID
 
-    -   示例 – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  -   示例 – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **用户对象 ID** – 执行操作的用户的唯一 ID
+- **用户对象 ID** – 执行操作的用户的唯一 ID
 
-    -   示例 – **17f84be4-51f8-483a-b533-383791227a99**
+  -   示例 – **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>详细通知项
 
@@ -125,7 +125,7 @@ ms.locfileid: "56237861"
 
 -   **详细信息** – 由操作导致的所发生情况的详细说明
 
-    -   示例 - **内部 URL“https://bing.com/”无效，因为它已在使用中**
+    -   示例 –**内部 url`https://bing.com/`无效，因为它已在使用**
 
 -   **复制错误** – 单击“复制错误”文本框右侧的复制图标，可复制所有通知详细信息以便与支持小组或产品小组共享 
 -   工程师

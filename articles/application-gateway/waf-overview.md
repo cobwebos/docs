@@ -4,14 +4,15 @@ description: 本文概述应用程序网关的 Web 应用程序防火墙 (WAF)
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/16/2018
+ms.date: 2/22/2019
 ms.author: amsriva
-ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 914583747d4e0e045d5023d9072451983037e57f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454253"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790351"
 ---
 # <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
 
@@ -58,19 +59,8 @@ WAF 基于 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWAS
 - 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）
 - 防止自动程序、爬网程序和扫描程序
 - 检测常见应用程序错误配置（例如 Apache、IIS 等）
-
-### <a name="public-preview-features"></a>公共预览版功能
-
-当前的 WAF 公共预览版 SKU 包括以下功能：
-
-- **请求大小限制** - Web 应用程序防火墙允许用户在下限和上限内配置请求大小限制。
-- **排除列表** - WAF 排除列表允许用户忽略 WAF 评估中的某些请求属性。 常见示例是 Active Directory 插入的令牌，这些令牌用于身份验证或密码字段。
-
-有关 WAF 公共预览版的详细信息，请参阅 [Web 应用程序防火墙请求大小限制和排除列表（公共预览版）](application-gateway-waf-configuration.md)。
-
-
-
-
+- 请求大小限制 - Web 应用程序防火墙允许用户在下限和上限内配置请求大小限制。
+- 排除列表 - WAF 排除列表允许用户忽略 WAF 评估中的某些请求属性。 常见示例是 Active Directory 插入的令牌，这些令牌用于身份验证或密码字段。
 
 ### <a name="core-rule-sets"></a>核心规则集
 
@@ -88,12 +78,11 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 有关规则及其保护措施的更详细列表，请参阅[核心规则集](#core-rule-sets)。
 
-
 #### <a name="owasp30"></a>OWASP_3.0
 
 如下表中所示，提供的 3.0 核心规则集包含 13 个规则组。 每个规则组包含多个可以禁用的规则。
 
-|RuleGroup|说明|
+|RuleGroup|描述|
 |---|---|
 |**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|包含用于锁定方法（PUT、PATCH）的规则|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| 包含用于防范端口和环境扫描程序的规则。|
@@ -111,7 +100,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 如下表中所示，提供的 2.2.9 核心规则集包含 10 个规则组。 每个规则组包含多个可以禁用的规则。
 
-|RuleGroup|说明|
+|RuleGroup|描述|
 |---|---|
 |**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|包含用于防范协议冲突（无效字符、使用请求正文执行 GET 等等）的规则。|
 |**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|包含用于防范错误标头信息的规则。|
@@ -131,6 +120,16 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 * **检测模式** - 配置为在检测模式下运行时，应用程序网关 WAF 将监视所有威胁警报并将其记录到日志文件中。 应使用“诊断”部分打开应用程序网关的日志记录诊断。 还需确保已选择并打开 WAF 日志。 在检测模式下运行时，Web 应用程序防火墙不会阻止传入的请求。
 * **阻止模式** - 配置为在阻止模式下运行时，应用程序网关主动阻止其规则检测到的入侵和攻击。 攻击者会收到 403 未授权访问异常，且连接会终止。 阻止模式会继续在 WAF 日志中记录此类攻击。
 
+### <a name="anomaly-scoring-mode"></a>异常评分模式 
+ 
+OWASP 使用两种模式来确定是否阻止流量： 传统模式和异常评分模式。 在传统模式下，将独立评估与任何规则匹配的流量，无论是否也匹配其他规则。 尽管这种模式更易于理解，但它存在一种限制：不知道特定的请求激发的多少个规则。 针对这种局限，我们引入了异常评分模式，它已成为 OWASP 3.x 中的默认模式。 
+
+在异常评分模式下，上一部分所述的某个规则与流量匹配这一事实并不直接意味着将要阻止该流量（假设防火墙处于“阻止”模式）。 规则采用特定的严重性（严重、错误、警告和通知），并根据该严重性增大调用异常评分的请求的数值。 例如，一个匹配的“警告”规则的评分值为 3，而一个匹配的“严重”规则的评分值为 5。 
+
+异常评分有一个设置为 5 的阈值，低于该阈值的流量不会删除。 这意味着，单个匹配的“严重”规则就足以让处于“阻止”模式的 Azure WAF 阻止请求（因为根据上一段落所述，“关键”规则会将异常评分增加 5）。 但是，一个“警告”级别的匹配规则只会将异常评分增加 3。 由于 3 仍低于阈值 5，因此不会阻止流量，即使 WAF 处于“阻止”模式。 
+
+请注意，当 WAF 规则与流量匹配时记录的消息会包含值为“Blocked”的 action_s 字段，但这不一定意味着真正阻止了流量。 若要真正阻止流量，异常评分必须至少达到 5。  
+
 ### <a name="application-gateway-waf-reports"></a>WAF 监视
 
 监视应用程序网关的运行状况非常重要。 借助日志记录以及与 Azure Monitor、Azure 安全中心和 Azure Monitor 日志的集成，可以监视 Web 应用程序防火墙及其保护的应用程序的运行状况。
@@ -139,7 +138,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-每个应用程序网关日志与 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 集成。  这样，便可以跟踪包括 WAF 警报和日志在内的诊断信息。  门户中“诊断”选项卡上的“应用程序网关”资源中提供了此功能，也可以通过 Azure Monitor 服务直接访问此功能。 若要详细了解如何为应用程序网关启用诊断日志，请参阅[应用程序网关诊断](application-gateway-diagnostics.md)
+每个应用程序网关日志与 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 集成。  这样，你便可以跟踪包括 WAF 警报和日志在内的诊断信息。  门户中“诊断”选项卡上的“应用程序网关”资源中提供了此功能，也可以通过 Azure Monitor 服务直接访问此功能。 若要详细了解如何为应用程序网关启用诊断日志，请参阅[应用程序网关诊断](application-gateway-diagnostics.md)
 
 #### <a name="azure-security-center"></a>Azure 安全中心
 

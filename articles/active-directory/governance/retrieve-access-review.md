@@ -1,6 +1,6 @@
 ---
-title: 检索 Azure AD 访问评审结果 | Microsoft Docs
-description: 如何检索 Azure Active Directory 访问评审结果。
+title: 检索对组或 Azure AD 访问评审中的应用程序的访问评审结果 |Microsoft Docs
+description: 了解如何检索的组成员或在 Azure AD 访问评审中的应用程序访问权限的访问评审结果。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dccacb82b34e7e257fcee9632045f12839b5425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2516e61b6b86c3d2cee164cfcb80a1f938922908
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210792"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839638"
 ---
-# <a name="retrieve-access-review-results"></a>检索访问评审结果
+# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>检索对组或 Azure AD 访问评审中的应用程序的访问评审结果
 
-管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](create-access-review.md)。  具有**全局管理员**、**用户帐户管理员**、**安全管理员**或**安全读者**角色的用户也可以读取访问评审结果。  为了将用户分配给其中一个角色，特权角色管理员可以使用 Azure AD PIM 来让用户有资格激活该角色，或者全局管理员可以永久地[将用户分配给角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)。
+管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](create-access-review.md)。  中的用户**全局管理员**，**用户管理员**，**安全管理员**或者**安全读者**角色还可以读取的访问评审结果。  若要将用户分配到这些角色之一，特权的角色管理员可以使用 Azure AD PIM 为使用户可激活该角色，或全局管理员可以永久[将用户分配到角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -55,7 +55,7 @@ ms.locfileid: "56210792"
 - [使用 Azure AD 访问评审管理用户访问权限](manage-user-access-with-access-reviews.md)
 - [使用 Azure AD 访问评审管理来宾访问权限](manage-guest-access-with-access-reviews.md)
 - [管理 Azure AD 访问评审的计划和控制措施](manage-programs-controls.md)
-- [创建对组成员的访问评审或对应用程序的访问](create-access-review.md)
+- [创建组或应用程序的访问评审](create-access-review.md)
 - [针对充当 Azure AD 管理角色的用户创建访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 
