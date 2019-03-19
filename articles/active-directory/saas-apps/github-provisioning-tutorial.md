@@ -16,28 +16,28 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac25473ecce86c2721eda9ede01b6d299c4b727b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 31f10ba0c04ccbd9f52b95c43fea7cc551fe64ee
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179325"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888009"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教程：为 GitHub 配置自动用户预配
 
 
 本教程的目的是说明从 Azure AD 自动将用户帐户预配到 GitHub 和取消其预配所需在 GitHub 和 Azure 中执行的步骤。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户
-*   启用了[企业云计划](https://help.github.com/articles/organization-billing-plans/#github-business-cloud)或更佳计划的 GitHub 租户 
-*   在 GitHub 中具有管理员权限的用户帐户 
+*   一家在 [GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)（需要 [GitHub Enterprise 计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)）中创建的 GitHub 组织
+*   在 GitHub 中具有到组织的管理员权限的用户帐户
 
 > [!NOTE]
-> Azure AD 预配集成依赖于可供 GitHub 团队在企业计划或更佳计划中使用的 [GitHub SCIM API](https://developer.github.com/v3/scim/)。
+> Azure AD 预配集成依赖于[GitHub SCIM API](https://developer.github.com/v3/scim/)，可供[GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)上的客户[GitHub Enterprise 的计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations).
 
 ## <a name="assigning-users-to-github"></a>将用户分配到 GitHub
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: efcd2e279d1bf387bc11c238a0592ecee6545cc4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 7a3abd854ec5e492407d1fbdc8d170f2a27ba1bc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053613"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816719"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
@@ -48,50 +48,6 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 ![Application Insights 请求详细信息](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
 若要进一步了解 Application Insights 门户的功能，请转到 [Application Insights 门户文档](../azure-monitor/app/app-insights-dashboards.md)。
-
-### <a name="configuring-application-insights-with-wad"></a>使用 WAD 配置 Application Insights
-
->[!NOTE]
->目前仅适用于 Windows 群集。
-
-可通过两种方式将数据从 WAD 发送到 Azure Application Insights，这一过程是通过向 WAD 配置添加 Application Insights 接收器实现，如[此文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所述。
-
-#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>在 Azure 门户中创建群集时添加 Application Insights 检测密钥
-
-![添加 AI 密钥](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
-
-创建群集时，如果诊断处于打开状态，会显示要求输入 Application Insights 检测密钥的可选字段。 如果在此处粘贴 Application Insights 密钥，则系统会在用于部署群集的资源管理器模板中自动配置 Application Insights 接收器。
-
-#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>将 Application Insights 接收器添加到资源管理器模板
-
-在 Resource Manager 模板的“WadCfg”中，通过应用以下两项更改添加“接收器”：
-
-1. 在声明完 `DiagnosticMonitorConfiguration` 后，直接添加接收器配置：
-
-    ```json
-    "SinksConfig": {
-        "Sink": [
-            {
-                "name": "applicationInsights",
-                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
-            }
-        ]
-    }
-
-    ```
-
-2. 在 `DiagnosticMonitorConfiguration` 中添加接收器，具体方法是在 `WadCfg` 的 `DiagnosticMonitorConfiguration` 中添加以下代码行（紧靠声明的 `EtwProviders` 前面）：
-
-    ```json
-    "sinks": "applicationInsights"
-    ```
-
-在上面的两个代码片段中，名称“applicationInsights”用于描述接收器。 这不是必需的，并且只要接收器名称包含在“接收器”中，就可将名称设定为任何字符串。
-
-目前，群集中的日志在 Application Insights 日志查看器中显示为**跟踪**。 由于来自平台的大部分跟踪信息都是“参考”级别，因此还可以考虑将接收器配置更改为仅发送类型为“关键”或“错误”的日志。 这可通过将“通道”添加到接收器完成，如[本文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所示。
-
->[!NOTE]
->如果在门户或资源管理器模板中使用错误的 Application Insights 密钥，则必须手动更改密钥并更新/重新部署群集。
 
 ### <a name="configuring-application-insights-with-eventflow"></a>使用 EventFlow 配置 Application Insights
 

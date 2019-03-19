@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fdabc16e191fb265b15af4a6d4a57cb749adc9f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 1abdfc377c40e37f01fbbbbd695e949671d40a51
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202547"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820121"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -30,7 +30,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 本文将介绍如何在 Azure VM 上使用 Azure 资源管理器部署模板来执行以下 Azure 资源的托管标识操作：
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 如果不熟悉 Azure 管理器部署模板，请查看[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
@@ -40,7 +40,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 与 Azure 门户和脚本一样，[Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)模板支持部署由 Azure 资源组定义的新资源或修改后的资源。 有多种可用于执行模板编辑和部署的方法（包括本地方法和基于门户的方法），包括：
 
    - 使用 [Azure Marketplace 中的自定义模板](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)，这样可以从头开始创建模板，也可以在现有常见模板或[快速入门模板](https://azure.microsoft.com/documentation/templates/)的基础之上操作。
-   - 派生自现有资源组，具体方法是从[原始部署](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history)或[当前部署](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group)导出模板。
+   - 派生自现有资源组，具体方法是从[原始部署](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)或[当前部署](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)导出模板。
    - 使用本地 [JSON 编辑器（例如 VS Code）](../../azure-resource-manager/resource-manager-create-first-template.md)，然后使用 PowerShell 或 CLI 进行上传和部署。
    - 使用 Visual Studio [Azure 资源组项目](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)同时创建和部署模板。  
 
@@ -209,7 +209,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 > [!Note]
 > 要使用 Azure 资源管理器模板创建用户分配托管标识，请参阅[创建用户分配托管标识](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)。
 
- ### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>向 Azure VM 分配用户分配的托管标识
+### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>向 Azure VM 分配用户分配的托管标识
 
 若要将用户分配的标识分配给 VM，你的帐户需要[虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)和[托管标识操作员](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色分配。 无需其他 Azure AD 目录角色分配。
 

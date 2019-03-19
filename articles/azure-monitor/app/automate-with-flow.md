@@ -9,18 +9,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/25/2017
+ms.date: 03/12/2019
 ms.author: mbullwin
-ms.openlocfilehash: 685ce54f75b20879230163f216246746b4a36922
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
-ms.translationtype: HT
+ms.openlocfilehash: cbb9cceef68febec0af991c3d8d5df3e3404f1c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755869"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834044"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Application Insights 过程
 
-你是否发现自己曾对遥测数据重复运行相同的查询，用于检查你的服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ Microsoft Flow Application Insights 连接器（预览版）是适用于这些用途的工具。
+你是否发现自己曾对遥测数据重复运行相同的查询，用于检查你的服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ 适用于 Microsoft Flow 的 Azure Application Insights 连接器是合适的工具用于这些目的。
 
 通过这种集成，现在无需编写任何代码就可自动执行许多过程。 使用 Application Insights 操作创建流后，它自动运行 Application Insights Analytics 查询。 
 
@@ -34,38 +34,45 @@ ms.locfileid: "53755869"
 
 ### <a name="step-1-create-a-flow"></a>步骤 1：创建流
 1. 登录到 [Microsoft Flow](https://flow.microsoft.com)，然后选择“我的流”。
-2. 单击“从头开始创建流”。
+2. 单击**新建**然后**从头开始创建**。
+
+    ![从头开始创建新的流](./media/automate-with-flow/1createflow.png)
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>步骤 2：为流创建触发器
-1. 选择“计划”，然后选择“计划 - 循环”。
-1. 在“频率”框中选择“天”，然后在“时间间隔”框中输入 1。
+1. 在生成中选项卡上选择**计划**，然后选择**日程安排-定期**。
 
-    ![Microsoft Flow 触发器对话框](./media/automate-with-flow/flow1.png)
+    ![选择计划下生成它](./media/automate-with-flow/2schedule.png)
+
+1. 在中**间隔**框中，输入**1**，然后在**频率**框中，选择**天**。
+2. 单击**新步骤**
+
+    ![设置与输入频率和间隔计划重复值](./media/automate-with-flow/3schedulerecurrence.png)
 
 
 ### <a name="step-3-add-an-application-insights-action"></a>步骤 3：添加 Application Insights 操作
-1. 单击“新建步骤”，并单击“添加操作”。
 1. 搜索“Azure Application Insights”。
-1. 单击“Azure Application Insights - 将 Analytics 查询可视化(预览)”。
-
-    ![运行 Analytics 查询窗口](./media/automate-with-flow/flow2.png)
+2. 单击**Azure Application Insights-可视化分析查询**。
+ 
+    ![选择操作：Azure Application Insights 可视化 Analytics 查询](./media/automate-with-flow/4visualize.png)
 
 ### <a name="step-4-connect-to-an-application-insights-resource"></a>步骤 4：连接到 Application Insights 资源
 
 若要完成此步骤，需要为资源提供应用程序 ID 和 API 密钥。 可从 Azure 门户检索它们，如下图所示：
 
-![Azure 门户中的应用程序 ID](./media/automate-with-flow/appid.png) 
+![Azure 门户中的应用程序 ID](./media/automate-with-flow/5apiaccess.png)
+
+![在 Azure 门户中 API 密钥](./media/automate-with-flow/6apikey.png)
 
 - 为你的连接提供一个名称，并提供应用程序 ID 和 API 密钥。
 
-    ![Microsoft Flow 连接窗口](./media/automate-with-flow/flow3.png)
+    ![Microsoft Flow 连接窗口](./media/automate-with-flow/7connection.png)
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>步骤 5：指定 Analytics 查询和图表类型
 此查询示例选择最后一天内失败的请求，并将它们与操作过程中发生的异常相关联。 Analytics 根据 operation_Id 标识符关联异常。 然后，该查询使用 autocluster 算法细分结果。 
 
 创建自己的查询时，请在将其添加到流之前，验证它们是否可在 Analytics 中正常运行。
 
-- 添加以下 Analytics 查询，然后选择 HTML 表图表类型。 
+- 添加以下 Analytics 查询，并选择 HTML 表图表类型。 然后选择**新步骤**。
 
     ```
     requests
@@ -78,19 +85,18 @@ ms.locfileid: "53755869"
     | evaluate autocluster()
     ```
     
-    ![Analytics 查询配置窗口](./media/automate-with-flow/flow4.png)
+    ![Analytics 查询配置窗口](./media/automate-with-flow/8query.png)
 
 ### <a name="step-6-configure-the-flow-to-send-email"></a>步骤 6：配置流以发送电子邮件
 
-1. 单击“新建步骤”，并单击“添加操作”。
 1. 搜索“Office 365 Outlook”。
-1. 单击“Office 365 Outlook - 发送电子邮件”。
+2. 单击“Office 365 Outlook - 发送电子邮件”。
 
-    ![Office 365 Outlook 选择窗口](./media/automate-with-flow/flow2b.png)
+    ![Office 365 Outlook 选择窗口](./media/automate-with-flow/9outlookaction.png)
 
 1. 在“发送电子邮件”窗口中，执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入收件人的电子邮件地址。
+   a. 键入收件人的电子邮件地址。
 
    b. 键入电子邮件的主题。
 
@@ -98,22 +104,22 @@ ms.locfileid: "53755869"
 
    d. 单击“显示高级选项”。
 
-    ![Office 365 Outlook 配置](./media/automate-with-flow/flow5.png)
+    ![Office 365 Outlook 配置](./media/automate-with-flow/10sendemailbody.png)
 
 1. 在动态内容菜单上执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“附件名称”。
+    a. 选择“附件名称”。
 
     b. 选择“附件内容”。
     
     c. 在“是否为 HTML”框中选择“是”。
 
-    ![Office 365 电子邮件配置窗口](./media/automate-with-flow/flow7.png)
+    ![Office 365 电子邮件配置窗口](./media/automate-with-flow/11emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-flow"></a>步骤 7：保存并测试流
-- 在“流名称”框中为流添加名称，然后单击“创建流”。
+- 在中**流名称**框中，添加你的流的名称，然后单击**保存**。
 
-    ![流创建窗口](./media/automate-with-flow/flow8.png)
+    ![命名流并保存](./media/automate-with-flow/12nameflow.png)
 
 可以等待触发器运行此操作，也可[根据需要运行触发器](https://flow.microsoft.com/blog/run-now-and-six-more-services/)来立即运行流。
 

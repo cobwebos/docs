@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 7da97b763c532a2189ef058cbb8ffb14c5b150f9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 56d0b8ced4a0eed3c2bf215ed0e5fc77c343f7fd
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968367"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728635"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -32,6 +32,8 @@ ms.locfileid: "52968367"
 > 为灾难恢复备份和还原 API 管理服务实例的过程还可用于为暂存之类的方案复制 API 管理服务实例。
 >
 > 每个备份都会在 30 天后过期。 如果在 30 天有效期到期后尝试还原备份，还原会失败并显示 `Cannot restore: backup expired` 消息。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -207,7 +209,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> 也可分别运行 PowerShell Backup-AzureRmApiManagement 和 Restore-AzureRmApiManagement 命令，执行备份和还原操作。
+> 也可分别运行 PowerShell Backup-AzApiManagement 和 Restore-AzApiManagement 命令，执行备份和还原操作。
 
 ## <a name="next-steps"></a>后续步骤
 

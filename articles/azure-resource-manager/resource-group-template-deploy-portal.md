@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 0711743d46aaac08f8572917d91e452ee919134c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220119"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816890"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>使用 Resource Manager 模板和 Azure 门户部署资源
 
-本文说明如何将 [Azure 门户](https://portal.azure.com)与 [Azure 资源管理器](resource-group-overview.md)配合使用来部署 Azure 资源。 若要了解有关管理资源的信息，请参阅[通过门户管理 Azure 资源](resource-group-portal.md)。
+本文说明如何将 [Azure 门户](https://portal.azure.com)与 [Azure 资源管理器](resource-group-overview.md)配合使用来部署 Azure 资源。 若要了解如何管理你的资源，请参阅[使用 Azure 门户管理 Azure 资源](manage-resources-portal.md)。
 
 ## <a name="create-resource-group"></a>创建资源组
 
@@ -32,7 +32,7 @@ ms.locfileid: "47220119"
 
    ![添加资源组](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
-1. 为其命名并指定位置，如有必要，选择一个订阅。 需要提供资源组的位置，因为资源组存储与资源有关的元数据。 出于合规目的，你可能需要指定该元数据的存储位置。 一般情况下，建议指定大部分资源将驻留的位置。 使用相同位置可简化模板。
+1. 为其命名并指定位置，如有必要，选择一个订阅。 需要提供资源组的位置，因为资源组存储与资源有关的元数据。 出于合规目的，你可能需要指定该元数据的存储位置。 一般情况下，建议指定大部分资源的驻留位置。 使用相同位置可简化模板。
 
    ![设置组的值](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "47220119"
 
    ![搜索模板部署](./media/resource-group-template-deploy-portal/search-template.png)
 
-1. 选择**创建**。
+1. 选择“创建”。
 
    ![选择“创建”](./media/resource-group-template-deploy-portal/show-template-option.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "47220119"
    ![部署已保存模板](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 若要查看审核日志，请参阅[使用 Resource Manager 进行审核操作](resource-group-audit.md)。
-* 若要排查部署错误，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
-* 若要从部署或资源组中检索模板，请参阅[从现有资源导出 Azure 资源管理器模板](resource-manager-export-template.md)。
-* 若要安全地跨多个区域推出服务，请参阅 [Azure 部署管理器](deployment-manager-overview.md)。
+* 若要查看审核日志，请参阅[使用 Resource Manager 进行审核操作](./resource-group-audit.md)。
+* 若要排查部署错误，请参阅[查看部署操作](./resource-manager-deployment-operations.md)。
+* 若要从部署或资源组导出的模板，请参阅[导出 Azure 资源管理器模板](./manage-resource-groups-portal.md#export-resource-groups-to-templates)。
+* 若要跨多个区域安全地推出服务，请参阅 [Azure 部署管理器](./deployment-manager-overview.md)。

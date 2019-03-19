@@ -10,22 +10,24 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: azure-functions
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 10/26/2018
+ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: a91778f1646807a092a3c8cda66bd3bd104ff8b5
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 04653dcdf0fb64e8b935cda18c01198ec91c548d
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301877"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807467"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
 本指南包含有关使用 JavaScript 编写 Azure Functions 的复杂性的信息。
 
-JavaScript 函数是导出的 `function`，它将在触发时执行（[触发器在 function.json 中配置](functions-triggers-bindings.md)）。 每个函数要传递的第一个参数是 `context` 对象，该对象用于接收和发送绑定数据、日志记录以及与运行时通信。
+JavaScript 函数是导出的 `function`，它将在触发时执行（[触发器在 function.json 中配置](functions-triggers-bindings.md)）。 传递给每个函数的第一个参数是`context`对象，用于接收和发送绑定数据，日志记录，以及与运行时通信。
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 此外，应该完成有关使用 [Visual Studio Code](functions-create-first-function-vs-code.md) 或[门户](functions-create-first-azure-function.md)创建第一个函数的 Functions 快速入门。
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 完成函数快速入门，以创建你的第一个函数，请使用[Visual Studio Code](functions-create-first-function-vs-code.md)或[在门户中](functions-create-first-azure-function.md)。
+
+这篇文章还支持[TypeScript 应用程序开发](#typescript)。
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -51,7 +53,7 @@ FunctionsProject
 
 项目的根目录中有共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都具有一个文件夹，其中包含其代码文件 (.js) 和绑定配置文件 (function.json)。 `function.json` 父目录的名称始终是函数的名称。
 
-[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](functions-triggers-bindings.md#local-development-azure-functions-core-tools)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#local-development-azure-functions-core-tools)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 ## <a name="exporting-a-function"></a>导出函数
 
@@ -109,7 +111,7 @@ module.exports = async function (context, req) {
 
 ### <a name="inputs"></a>输入
 在 Azure Functions 中，输入分为两种类别：一种是触发器输入，另一种则是附加输入。 函数可通过三种方式读取触发器和其他输入绑定（`direction === "in"` 的绑定）：
- - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 请注意，*function.json* 中定义的 `name` 属性不需要与参数名称匹配，不过两者应该匹配。
+ - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 `name`中定义的属性*function.json*不需要以匹配名称的参数，尽管它应。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -138,7 +140,8 @@ module.exports = async function (context, req) {
 ### <a name="outputs"></a>Outputs
 函数可通过多种方式写入输出（`direction === "out"` 的绑定）。 在所有情况下，*function.json* 中定义的绑定属性 `name` 对应于函数中所写入到的对象成员的名称。 
 
-可通过以下方式之一将数据分配到输出绑定。 不要结合使用这些方法。
+（不结合使用这些方法） 的以下方法之一，可以将数据分配给输出绑定：
+
 - **_[有多个输出时建议使用]_ 返回对象。** 如果使用异步函数/返回 Promise 的函数，可以返回分配有输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
 
   ```javascript
@@ -152,7 +155,7 @@ module.exports = async function (context, req) {
       };
   };
   ```
-  
+
   如果使用同步函数，可以使用 [`context.done`](#contextdone-method) 返回此对象（请参阅示例）。
 - **_[有单个输出时建议使用]_ 直接返回值，并使用 $return 绑定名称。** 这仅适用于异步函数/返回 Promise 的函数。 请参阅[导出异步函数](#exporting-an-async-function)中的示例。 
 - **向 `context.bindings` 赋值** 可以直接向 context.bindings 赋值。
@@ -167,7 +170,7 @@ module.exports = async function (context, req) {
       return;
   };
   ```
- 
+
 ### <a name="bindings-data-type"></a>绑定数据类型
 
 若要定义输入绑定的数据类型，请使用绑定定义中的 `dataType` 属性。 例如，若要以二进制格式读取 HTTP 请求的内容，请使用类型 `binary`：
@@ -269,7 +272,7 @@ context.log(message)
 允许在默认跟踪级别向流式处理函数日志进行写入。 `context.log` 中还提供了其他的日志记录方法，用以允许在其他跟踪级别写入函数日志：
 
 
-| 方法                 | 说明                                |
+| 方法                 | 描述                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | 向错误级日志记录或更低级别进行写入。   |
 | **warn(_message_)**    | 向警告级日志记录或更低级别进行写入。 |
@@ -346,7 +349,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 `context.req`（请求）对象具有以下属性：
 
-| 属性      | 说明                                                    |
+| 属性      | 描述                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 一个包含请求正文的对象。               |
 | _headers_     | 一个包含请求标头的对象。                   |
@@ -361,7 +364,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 `context.res`（响应）对象具有以下属性：
 
-| 属性  | 说明                                               |
+| 属性  | 描述                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 一个包含响应正文的对象。         |
 | _headers_ | 一个包含响应标头的对象。             |
@@ -550,7 +553,47 @@ const myObj = new MyObj();
 module.exports = myObj;
 ```
 
-请在此示例中务必注意，尽管正在导出对象，但无法保证可保留两次执行之间的状态。
+在此示例中，务必要注意虽然正在导出对象，但没有用于保留两次执行之间的状态的保证。
+
+## <a name="typescript"></a>TypeScript
+
+当针对版本 2.x 的 Functions 运行时，同时[Visual Studio Code 的 Azure Functions](functions-create-first-function-vs-code.md)和[Azure Functions Core Tools](functions-run-local.md)可用于创建使用模板支持的函数应用TypeScript 函数应用项目。 该模板会生成`package.json`和`tsconfig.json`轻松地转译，项目文件运行，并发布具有这些工具的 TypeScript 代码中的 JavaScript 函数。
+
+一个已生成`.funcignore`文件用于指示项目发布到 Azure 时排除哪些文件。  
+
+TypeScript 文件 (.ts) 转译为 JavaScript (.js) 文件位于`dist`输出目录。 使用 TypeScript 模板[`scriptFile`参数](#using-scriptfile)中`function.json`以指示相应的.js 文件中的位置`dist`文件夹。 使用模板设置输出位置`outDir`中的参数`tsconfig.json`文件。 如果更改此设置或文件夹的名称，则运行时不能以查找要运行的代码。
+
+> [!NOTE]
+> 用于 TypeScript 的实验性支持存在版本 1.x 的 Functions 运行时。 实验性版本 transpiles TypeScript 文件时调用该函数的 JavaScript 文件中。 在版本 2.x 中，此实验性支持已被取代，由工具驱动方法初始化主机之前执行的转译和在部署过程。
+
+在本地开发和部署从 TypeScript 项目的方式取决于你的开发工具。
+
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+[Visual Studio Code 的 Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)扩展允许你使用 TypeScript 函数的开发。 Core Tools 是 Azure Functions 扩展的要求。
+
+若要在 Visual Studio Code 中创建一个 TypeScript 函数应用，只需选择`TypeScript`时创建的 function app 和系统要求选择的语言。
+
+当您按下**F5**运行应用程序本地的转译完成初始化主机 (func.exe) 之前。 
+
+当将函数应用部署到 Azure 中使用**部署函数应用到...** 按钮时，Azure Functions 扩展插件首先从 TypeScript 源文件生成 JavaScript 文件的生产就绪版本。
+
+### <a name="azure-functions-core-tools"></a>Azure Functions 核心工具
+
+若要创建使用 Core Tools 一个 TypeScript 函数应用项目，必须创建函数应用时指定的 typescript 语言选项。 可以通过以下方式之一执行此操作：
+
+- 运行`func init`命令中，选择`node`作为语言堆栈，然后选择`typescript`。
+
+- 运行 `func init --worker-runtime typescript` 命令。
+
+若要运行函数应用程序代码使用在本地核心工具，使用`npm start`命令，而不是`func host start`。 `npm start`命令等同于以下命令：
+
+- `npm run build`
+- `func extensions install`
+- `tsc`
+- `func start`
+
+在使用之前[ `func azure functionapp publish` ]命令将部署到 Azure，必须先运行`npm run build:production`命令。 此命令从 TypeScript 源文件，可以使用部署创建 JavaScript 文件的生产就绪版本[ `func azure functionapp publish` ]。
 
 ## <a name="considerations-for-javascript-functions"></a>JavaScript 函数的注意事项
 
@@ -558,11 +601,7 @@ module.exports = myObj;
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>选择单 vCPU 应用服务计划
 
-创建使用应用服务计划的函数应用时，建议选择单 vCPU 计划，而不是选择具有多个 vCPU 的计划。 目前，Functions 在单 vCPU VM 上运行 JavaScript 函数更为高效；使用更大的 VM 不会产生预期的性能提高。 需要时，可以通过添加更多单 vCPU VM 实例来手动扩大，也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)。    
-
-### <a name="typescript-and-coffeescript-support"></a>TypeScript 和 CoffeeScript 支持
-
-因为目前还不能直接支持通过运行时自动编译 TypeScript 或 CoffeeScript，因此需要在部署时在运行时外部处理此类支持。 
+创建使用应用服务计划的函数应用时，建议选择单 vCPU 计划，而不是选择具有多个 vCPU 的计划。 目前，Functions 在单 vCPU VM 上运行 JavaScript 函数更为高效；使用更大的 VM 不会产生预期的性能提高。 如有必要，您可以手动扩大添加更多单 vCPU VM 实例，也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)。
 
 ### <a name="cold-start"></a>冷启动
 
@@ -575,3 +614,5 @@ module.exports = myObj;
 + [Azure Functions 最佳实践](functions-best-practices.md)
 + [Azure Functions 开发人员参考](functions-reference.md)
 + [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
+
+[func azure functionapp 发布]: functions-run-local.md#project-file-deployment

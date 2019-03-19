@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 36a448a861bdfdcd85e532578383b14e56f54b1a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.date: 02/26/2019
+ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039089"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889369"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>使用资源运行状况排查 Azure SQL 数据库的连接问题
 
@@ -53,9 +53,9 @@ ms.locfileid: "54039089"
 
 ### <a name="unknown"></a>Unknown
 
-运行状况为“未知”指示资源运行状况未收到此资源的相关信息已超过 10 分钟。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。
-如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”。
-如果资源遇到问题，“未知”运行状态可能暗示平台中的事件正在影响资源。
+运行状况为“未知”指示资源运行状况未收到此资源的相关信息已超过 10 分钟。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。 如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”。 如果资源遇到问题，“未知”运行状态可能暗示平台中的事件正在影响资源。
+
+![Unknown](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>历史信息
 

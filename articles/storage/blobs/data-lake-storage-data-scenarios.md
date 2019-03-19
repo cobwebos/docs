@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: 09514e37d1d40c489eda483980237d26e4a08730
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: ec97cf903a37465f98007750fc41edc0952ab3a6
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417916"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889590"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -70,9 +70,9 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 |---|--|---|
 |存储资源管理器| 向用户和组分配角色 | [为具有 Azure Active Directory 的用户分配管理员和非管理员角色](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
 |AzCopy| 向用户和组分配角色 <br>**or**<br> 使用 SAS 令牌| [为具有 Azure Active Directory 的用户分配管理员和非管理员角色](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[轻松创建从 Azure 存储下载文件所需的 SAS - 使用 Azure 存储资源管理器](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
-|Apache DistCp | 为用户分配的托管标识分配角色 | [创建包含 Data Lake Storage Gen2 的 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2) |
+|Apache DistCp | 为用户分配的托管标识分配角色 | [创建包含 Data Lake Storage Gen2 的 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure 数据工厂| 为用户分配的托管标识分配角色<br>**or**<br> 向服务主体分配角色<br>**or**<br> 使用存储帐户密钥 | [链接服务属性](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
-|Azure HDInsight| 为用户分配的托管标识分配角色 | [创建包含 Data Lake Storage Gen2 的 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2)|
+|Azure HDInsight| 为用户分配的托管标识分配角色 | [创建包含 Data Lake Storage Gen2 的 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
 |Azure Databricks| 向服务主体分配角色 | [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 若要授予对特定文件和文件夹的访问权限，请参阅以下文章。

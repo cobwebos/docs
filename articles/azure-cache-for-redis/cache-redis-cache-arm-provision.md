@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: e223cb060857d45d9f25e2ee1dfca7e159225d8b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 5bdad61df732f0aeb1a758aacb5844204387e19b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237104"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983893"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>使用模板创建 Azure Redis 缓存
 
@@ -37,8 +37,8 @@ ms.locfileid: "56237104"
 > 适用于新[高级层](cache-premium-tier-intro.md)的 Resource Manager 模板现已推出。 
 > 
 > * [通过群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
-> * [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
-> * [通过 VNet 和可选群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
+> * [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+> * [创建部署到虚拟网络的高级 Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
 > 若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)并搜索 `Azure Cache for Redis`。
 > 
@@ -52,8 +52,8 @@ ms.locfileid: "56237104"
 [![部署到 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>parameters
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
-应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。 
+使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
+应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。 
 
 [!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
 

@@ -1,6 +1,6 @@
 ---
 title: 如何从用于 VM 的 Azure Monitor（预览版）查询日志 | Microsoft Docs
-description: 用于 VM 的 Azure Monitor 解决方案会将指标和日志数据转发到 Log Analytics，本文将介绍相关的记录并提供示例查询。
+description: 为 Vm 解决方案的 azure Monitor 收集指标和日志数据和这篇文章介绍记录并包含的示例查询。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 3ab70febbb41b26fd824f9ae6ef0d00358c7530f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: f33b87fa2c90eda7e4fa135e55565781e8491418
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864411"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983772"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>如何从用于 VM 的 Azure Monitor（预览版）查询日志
-用于 VM 的 Azure Monitor 收集性能和连接指标、计算机和进程库存数据以及运行状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 数据存储。  可在 Log Analytics 中[搜索](../../azure-monitor/log-query/log-query-overview.md)此数据。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+适用于 Vm 的 azure Monitor 收集性能和连接指标、 计算机和进程清单数据和运行状况状态信息并将其转发到 Azure Monitor 中的 Log Analytics 工作区。  此数据是可用于[查询](../../azure-monitor/log-query/log-query-overview.md)Azure 监视器中。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 ## <a name="map-records"></a>映射记录
 除了在进程或计算机启动或载入到用于 VM 的 Azure Monitor 映射功能时生成的记录以外，还会针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
@@ -34,13 +34,13 @@ ms.locfileid: "55864411"
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
 ### <a name="connections"></a>连接
-连接指标将写入到 Log Analytics 的新表 VMConnection 中。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  在侦听套接字上执行 *accept* 命令后生成的 TCP 连接是入站连接，针对给定的 IP 和端口执行 *connect* 命令后建立的 TCP 连接是出站连接。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
+连接指标写入 Azure Monitor 日志-VMConnection 中的新表。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  在侦听套接字上执行 *accept* 命令后生成的 TCP 连接是入站连接，针对给定的 IP 和端口执行 *connect* 命令后建立的 TCP 连接是出站连接。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
 
 这些表中的记录是基于依赖项代理报告的数据生成的。 每条记录表示一分钟时间间隔内观测到的结果。 TimeGenerated 属性表示时间间隔的开始时间。 每条记录包含用于识别相应实体（即连接或端口）以及与该实体关联的指标的信息。 目前，只会报告使用“基于 IPv4 的 TCP”发生的网络活动。
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection 中的一个逻辑记录内。 
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 |方向 |连接方向，值为 *inbound* 或 *outbound* |
 |计算机 |计算机 FQDN |
@@ -52,7 +52,7 @@ ms.locfileid: "55864411"
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 |LinksEstablished |在报告时间范围内建立的物理网络连接数 |
 |LinksTerminated |在报告时间范围内终止的物理网络连接数 |
@@ -63,7 +63,7 @@ ms.locfileid: "55864411"
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 |BytesSent |在报告时间范围内发送的字节总数 |
 |BytesReceived |在报告时间范围内接收的字节总数 |
@@ -89,7 +89,7 @@ ms.locfileid: "55864411"
 #### <a name="geolocation"></a>地理位置
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 |RemoteCountry |RemoteIp 所在的国家/地区的名称。  例如 *United States* |
 |RemoteLatitude |地理位置的纬度。 例如 *47.68* |
@@ -98,11 +98,11 @@ ms.locfileid: "55864411"
 #### <a name="malicious-ip"></a>恶意 IP
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 |MaliciousIp |RemoteIp 地址 |
 |IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
-|说明 |观察到的威胁说明。 |
+|描述 |观察到的威胁说明。 |
 |TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
 |置信度 |值介于 0 和 100 之间。 |
 |严重性 |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
@@ -255,5 +255,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 如果你不太了解如何在 Log Analytics 中编写查询，请参考 Azure 门户中的[如何使用 Log Analytics 页](../../azure-monitor/log-query/get-started-portal.md)编写 Log Analytics 查询。
+* 如果您不熟悉 Azure Monitor 中编写日志查询，请查看[如何使用 Log Analytics](../../azure-monitor/log-query/get-started-portal.md)在 Azure 门户中编写日志查询。
 * 了解如何[编写搜索查询](../../azure-monitor/log-query/search-queries.md)。

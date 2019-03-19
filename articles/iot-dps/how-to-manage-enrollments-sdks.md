@@ -3,22 +3,22 @@ title: 使用 Azure 设备预配服务 SDK 管理设备注册 | Microsoft Docs
 description: 如何使用服务 SDK 管理 IoT 中心设备预配服务中的设备注册
 author: yzhong94
 ms.author: yizhon
-ms.date: 04/04/18
+ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: 1c7fa798c2e767aa6a21b3c56da6f69b4d3a1406
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732340"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674746"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 设备预配服务 SDK 管理设备注册
 “设备注册”将创建单台设备或一组设备在某一时刻向设备预配服务进行注册的记录。 注册记录包含注册过程中设备所需的初始配置及所需的 IoT 中心。 这篇文章演示如何使用 Azure IoT 预配服务 SDK 以编程方式管理预配服务的设备注册。  SDK 可从 GitHub 上与 Azure IoT SDK 相同的存储库中获取。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * 从设备预配服务实例获取连接字符串。
 * 为所使用的[证明机制](concepts-security.md#attestation-mechanism)获取设备安全项目：
     * [**受信任的平台模块 (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module)：

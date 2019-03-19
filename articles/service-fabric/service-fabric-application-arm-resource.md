@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: feb9d0a01cbba75fc9868f5a603d494c5c09ae2e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: e41647140373fcf637cad55af62764bd87826a62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386291"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849340"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>将应用程序和服务作为 Azure 资源管理器资源进行管理
 
@@ -69,9 +69,9 @@ ms.locfileid: "49386291"
 3. 确定要使用此方法部署的应用程序后，需要立即打包、压缩这些应用程序，并将它们上传到文件共享。 此共享必须可通过 REST 终结点进行访问，这样 Azure 资源管理器才能在部署期间使用它。
 4. 在资源管理器模板中的群集声明下，描述每个应用程序的属性。 这些属性包括副本或实例计数，以及资源（其他应用程序或服务）之间的任何依赖链。 有关完整属性列表，请参阅 [REST API Swagger 规范](https://aka.ms/sfrpswaggerspec)。请注意，这不会取代应用程序或服务清单，只是在群集的资源管理器模板中描述了清单的部分内容。 下面展示了示例模板，包括在 Application1 中部署无状态服务 Service1 和有状态服务 Service2：
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+   ```json
+   {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
       "clusterName": {
@@ -251,11 +251,11 @@ ms.locfileid: "49386291"
         }
       }
     ]
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE] 
-  > 必须将 apiVersion 设置为 `"2017-07-01-preview"`。 部署的此模板也可以与群集互不影响，只要群集已部署即可。
+   > [!NOTE] 
+   > 必须将 apiVersion 设置为 `"2017-07-01-preview"`。 部署的此模板也可以与群集互不影响，只要群集已部署即可。
 
 5. 部署！ 
 
@@ -264,7 +264,7 @@ ms.locfileid: "49386291"
 如果群集已部署，且其上已部署一些要作为资源管理器资源进行管理的应用程序，可以使用相同的 API，将这些应用程序确定为资源管理器资源，从而执行 PUT 调用，而不用删除并重新部署应用程序。 
 
 > [!NOTE]
-> 若要允许群集升级忽略不正常的应用，客户可以在“upgradeDescription/healthPolicy”节中指定“maxPercentUnhealthyApplications: 100”；有关所有设置的详细说明，请参阅 [Service Fabrics REST API 群集升级策略文档](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
+> 若要允许客户的群集升级，以忽略不正常的应用程序可以指定"maxPercentUnhealthyApplications:100 – 在"升级描述/healthPolicy"部分中;对于所有设置的详细的说明位于[服务结构 REST API 群集升级策略文档](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
 
 ## <a name="next-steps"></a>后续步骤
 

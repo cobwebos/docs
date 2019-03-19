@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d029de11c7101e961506f1fa46f5a71c6efb103e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 6cbde9d0d53cdd688c39381978bd338c66d5688e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044002"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671669"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用模板创建内部负载均衡器
 
@@ -28,6 +28,7 @@ ms.locfileid: "54044002"
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
@@ -44,10 +45,10 @@ ms.locfileid: "54044002"
 1. 如果从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择订阅。
 2. 将参数文件下载到本地磁盘。
 3. 编辑该文件并将其保存。
-4. 运行 **New-AzureRmResourceGroupDeployment** cmdlet 以使用模板创建资源组。
+4. 运行 **New-AzResourceGroupDeployment** cmdlet 以使用模板创建资源组。
 
-    ```azurecli
-    New-AzureRmResourceGroupDeployment -Name TestRG -Location westus `
+    ```azurepowershell-interactive
+    New-AzResourceGroupDeployment -Name TestRG -Location westus `
         -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json' `
         -TemplateParameterFile 'C:\temp\azuredeploy.parameters.json'
     ```
@@ -59,7 +60,7 @@ ms.locfileid: "54044002"
 1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **azure config mode** 命令以切换到 Resource Manager 模式，如下所示。
 
-    ```azurecli
+    ```azurecli-interactive
     azure config mode arm
     ```
 
@@ -67,7 +68,7 @@ ms.locfileid: "54044002"
 
         info:    New mode is arm
 
-3. 打开参数文件，选择其内容，然后将其保存到计算机上的文件中。 对于本示例，我们将参数文件保存到 *parameters.json*。
+3. 打开参数文件，选择其内容，并将其保存到计算机上的文件中。 对于本示例，我们将参数文件保存到 *parameters.json*。
 4. 运行 **azure group deployment create** 命令以使用之前下载并修改的模板和参数文件部署新的内部负载均衡器。 在输出后显示的列表说明了所用的参数。
 
     ```azurecli

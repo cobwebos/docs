@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 208ef1267571002a90433f0b3febebbb0ea7089a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: cf1e7c4acca147020612e6d33d0e72afb4be0865
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173277"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869948"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 身份验证库
 
@@ -54,7 +54,7 @@ Azure AD v2.0 终结点适用于两种类型的库：
 
 客户端身份验证库用于获取令牌以调用受保护的 Web API
 
-| 平台 | 库 | 下载 | 源代码 | 示例 | 引用 | 概念文档 | 路线图 |
+| 平台 | 库 | 下载 | 源代码 | 示例 | 参考 | 概念文档 | 路线图 |
 | --- | --- | --- | --- | --- | --- | --- | ---|
 | ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js（预览） | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  [单页应用](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  | [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki)|
 |![Angular JS](media/sample-v2-code/logo_angular.png) | MSAL Angular JS | [NPM](https://www.npmjs.com/package/@azure/msal-angularjs) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  |  | |
@@ -67,7 +67,7 @@ Azure AD v2.0 终结点适用于两种类型的库：
 
 中间件库用于保护 Web 应用程序和 Web API。 对于使用 ASP.NET 或 ASP.NET Core 编写的 Web 应用或 Web API，ASP.NET/ASP.NET Core 使用中间件库
 
-| 平台 | 库 | 下载 | 源代码 | 示例 | 引用
+| 平台 | 库 | 下载 | 源代码 | 示例 | 参考
 | --- | --- | --- | --- | --- | --- |
 | ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET 安全性 |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[ASP.NET 安全性 (GitHub)](https://github.com/aspnet/Security) |[MVC 应用](quickstart-v2-aspnet-webapp.md) |[ASP.NET API 参考](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
 | ![.NET](media/sample-v2-code/logo_NET.png)| 适用于 .NET 的 IdentityModel 扩展| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC 应用](quickstart-v2-aspnet-webapp.md) |[参考](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |

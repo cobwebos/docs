@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: HT
+ms.openlocfilehash: 3daa71c91d1e49a497a979b9b5b89df1fcb9418c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408317"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889675"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -68,7 +68,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 - 如果你打算使用多个 HDInsight 群集来访问单独的数据，请为每个群集上的元存储使用单独的数据库。 如果在多个 HDInsight 群集之间共享元存储，则表示群集使用相同的元数据和基础用户数据文件。
 - 请定期备份自定义元存储。 Azure SQL 数据库自动生成备份，但备份保留期的时间范围会有所不同。 有关详细信息，请参阅[了解 SQL 数据库自动备份](../sql-database/sql-database-automated-backups.md)。
 - 将元存储和 HDInsight 群集放置在同一区域中，以获得最高的性能和最低的网络出口费用。
-- 使用 Azure SQL 数据库监视工具（例如 Azure 门户或 Azure Log Analytics）监视元存储的性能和可用性。
+- 监视元存储的性能和使用 Azure SQL 数据库监视工具，如 Azure 门户或 Azure Monitor 日志的可用性。
 - 对现有的自定义元存储数据库创建更高版本的新 Azure HDInsight 时，系统会升级元存储的架构，这是不可逆转的，无法从备份还原数据库。
 - 如果在多个群集之间共享元存储，请确保所有群集都采用相同的 HDInsight 版本。 不同的 Hive 版本使用不同的元存储数据库架构。 例如，无法在 Hive 1.2 和 Hive 2.1 这两个版本的群集之间共享元存储。 
 

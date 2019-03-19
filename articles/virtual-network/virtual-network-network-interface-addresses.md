@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 4fae4486e6cf47892ba2133885ec864969f66001
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: 89b311edbae6b5f6679908b5d07b22b402b5c55e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663598"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888060"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
 
@@ -30,11 +30,13 @@ ms.locfileid: "55663598"
 
 ## <a name="before-you-begin"></a>开始之前
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 在完成本文任何部分中的步骤之前，请完成以下任务：
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 来创建与 Azure 的连接。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 必须将登录或连接到 Azure 所用的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[网络接口权限](virtual-network-network-interface.md#permissions)”中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
@@ -49,12 +51,12 @@ ms.locfileid: "55663598"
 4. 在“IP 配置”下选择“+ 添加”。
 5. 指定以下内容，然后选择“确定”：
 
-    |设置|必需？|详细信息|
-    |---|---|---|
-    |Name|是|对于网络接口必须是唯一的|
-    |Type|是|由于要将 IP 配置添加到现有网络接口，并且每个网络接口都必须有一个[主要](#primary) IP 配置，因此，你的唯一选项是“辅助”。|
-    |专用 IP 地址分配方法|是|[**动态**](#dynamic)：Azure 为在其中部署网络接口的子网地址范围分配下一可用地址。 [**静态**](#static)：为在其中部署网络接口的子网地址范围分配未使用的地址。|
-    |公共 IP 地址|否|**已禁用：** 该 IP 配置当前没有关联的公共 IP 地址资源。 **已启用：** 选择现有的 IPv4 公共 IP 地址，或新建一个。 若要了解如何创建公共 IP 地址，请参阅[公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)一文。|
+   |设置|必需？|详细信息|
+   |---|---|---|
+   |名称|是|对于网络接口必须是唯一的|
+   |Type|是|由于要将 IP 配置添加到现有网络接口，并且每个网络接口都必须有一个[主要](#primary) IP 配置，因此，你的唯一选项是“辅助”。|
+   |专用 IP 地址分配方法|是|[**动态**](#dynamic)：Azure 为在其中部署网络接口的子网地址范围分配下一可用地址。 [**静态**](#static)：为在其中部署网络接口的子网地址范围分配未使用的地址。|
+   |公共 IP 地址|否|**已禁用：** 该 IP 配置当前没有关联的公共 IP 地址资源。 **已启用：** 选择现有的 IPv4 公共 IP 地址，或新建一个。 若要了解如何创建公共 IP 地址，请参阅[公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)一文。|
 6. 可以遵循[将多个 IP 地址分配到虚拟机操作系统](virtual-network-multiple-ip-addresses-portal.md#os-config)一文中的说明，手动将辅助专用 IP 地址添加到虚拟机操作系统。 在手动向虚拟机操作系统添加 IP 地址之前，请参阅[专用](#private) IP 地址以了解特殊注意事项。 请不要向虚拟机操作系统添加任何公共 IP 地址。
 
 **命令**
@@ -62,7 +64,7 @@ ms.locfileid: "55663598"
 |工具|命令|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
+|PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>更改 IP 地址设置
 
@@ -83,7 +85,7 @@ ms.locfileid: "55663598"
 |工具|命令|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
+|PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>删除 IP 地址
 
@@ -99,7 +101,7 @@ ms.locfileid: "55663598"
 |工具|命令|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
+|PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP 配置
 
@@ -118,10 +120,10 @@ ms.locfileid: "55663598"
 
 - 必须具有分配给它的 IPv4 或 IPv6 地址。 如果地址是 IPv6，则网络接口只能具有一个辅助 IP 配置。 如果地址是 IPv4，则网络接口可以具有多个分配给它的辅助 IP 配置。 若要详细了解可以向网络接口分配多少专用和公共 IPv4 地址，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文。
 - 如果专用 IP 地址是 IPv4，则还可以具有分配给它的多个公共 IPv4 地址。 如果专用 IP 地址是 IPv6，则无法向 IP 配置分配公共 IPv4 或 IPv6 地址。 在下列方案中，向网络接口分配多个 IP 地址很有帮助：
-    - 在单个服务器上使用不同的 IP 地址和 SSL 证书托管多个网站或服务。
-    - 虚拟机充当网络虚拟设备，例如防火墙或负载均衡器。
-    - 可将任何网络接口的任何专用 IPv4 地址添加到 Azure 负载均衡器后端池。 过去，只能将主要网络接口的主要 IPv4 地址添加到后端池。 若要详细了解如何对多个 IPv4 配置进行负载均衡，请参阅[对多个 IP 配置进行负载均衡](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 
-    - 可以对分配给网络接口的一个 IPv6 地址进行负载均衡。 若要详细了解如何对 IPv6 地址进行负载均衡，请参阅[对 IPv6 地址进行负载均衡](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
+  - 在单个服务器上使用不同的 IP 地址和 SSL 证书托管多个网站或服务。
+  - 虚拟机充当网络虚拟设备，例如防火墙或负载均衡器。
+  - 可将任何网络接口的任何专用 IPv4 地址添加到 Azure 负载均衡器后端池。 过去，只能将主要网络接口的主要 IPv4 地址添加到后端池。 若要详细了解如何对多个 IPv4 配置进行负载均衡，请参阅[对多个 IP 配置进行负载均衡](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 
+  - 可以对分配给网络接口的一个 IPv6 地址进行负载均衡。 若要详细了解如何对 IPv6 地址进行负载均衡，请参阅[对 IPv6 地址进行负载均衡](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
 
 ## <a name="address-types"></a>地址类型
 
@@ -144,7 +146,7 @@ ms.locfileid: "55663598"
 4. 启动虚拟机。
 5. 在操作系统中[手动配置](virtual-network-multiple-ip-addresses-portal.md#os-config)辅助 IP 地址（在 Windows 内还需要配置主要 IP 地址）以配置在 Azure.
 
-通过遵循上述步骤，在 Azure 中分配给网络接口的专用 IP 地址与在虚拟机操作系统中分配的地址将保持相同。 若要记录你在操作系统中为订阅中的哪些虚拟机手动设置了 IP 地址，请考虑向虚拟机添加一个 Azure [标记](../azure-resource-manager/resource-group-using-tags.md)。 例如，你可以使用“IP 地址分配：静态”。 这样，可以轻松找到你的订阅中你在操作系统中手动为其设置了 IP 地址的虚拟机。
+通过遵循上述步骤，在 Azure 中分配给网络接口的专用 IP 地址与在虚拟机操作系统中分配的地址会保持相同。 若要记录你在操作系统中为订阅中的哪些虚拟机手动设置了 IP 地址，请考虑向虚拟机添加一个 Azure [标记](../azure-resource-manager/resource-group-using-tags.md)。 例如，你可以使用“IP 地址分配：静态”。 这样，可以轻松找到你的订阅中你在操作系统中手动为其设置了 IP 地址的虚拟机。
 
 通过专用 IP 地址，虚拟机除了能够与同一网络中的或所连接的虚拟网络中的其他资源进行通信外，还能够进行到 Internet 的出站通信。 出站连接是由 Azure 转换为不可预测的公共 IP 地址的源网络地址。 若要了解 Azure 出站 Internet 连接的详细信息，请阅读 [Azure 出站 Internet 连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 不能从 Internet 进行到虚拟机的专用 IP 地址的入站通信。 如果出站连接需要可预测的公共 IP 地址，则将公共 IP 地址资源关联到网络接口。
 

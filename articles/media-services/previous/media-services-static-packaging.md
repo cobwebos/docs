@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 80c9f1c7e2bec3e3f3fa696134a23f0760598a29
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: b8f8c802eb2b353be6b7ee2fbf484bd9f4acf3e8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001130"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848195"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>使用 Azure 媒体包装器完成静态打包任务  
 > [!NOTE]
@@ -57,11 +57,11 @@ ms.locfileid: "56001130"
 
 本部分演示如何处理验证任务。 本部分还演示如何查看完成时出现 JobStatus.Error 的作业的状态和错误消息。
 
-要使用媒体服务包装程序验证 MP4 文件，必须创建自己的清单 (.ism) 文件，并将其与源文件一起上传到媒体服务帐户。 下面是 Media Encoder Standard 生成的 .ism 文件的一个示例。 文件名区分大小写。 另请确保 .ism 文件中的文本采用 UTF-8 编码。
+若要使用媒体服务包装程序验证 MP4 文件，必须创建自己的清单 (.ism) 文件，并将其与源文件一起上传到媒体服务帐户。 下面是 Media Encoder Standard 生成的 .ism 文件的一个示例。 文件名区分大小写。 另请确保 .ism 文件中的文本采用 UTF-8 编码。
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-    <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+    <smil xmlns="https://www.w3.org/2001/SMIL20/Language">
       <head>
     <!-- Tells the server that these input files are MP4s – specific to Dynamic Packaging -->
         <meta name="formats" content="mp4" /> 
@@ -612,7 +612,7 @@ ms.locfileid: "56001130"
                 // Note that the configuration defined in MediaEncryptor_PlayReadyProtection.xml
                 // is using keySeedValue. It is recommended that you do this only for testing 
                 // and not in production. For more information, see 
-                // http://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
+                // https://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
                 //
                 string configPlayReady = File.ReadAllText(Path.Combine(_configurationXMLFiles,
                                             @"MediaEncryptor_PlayReadyProtection.xml"));
@@ -712,7 +712,7 @@ ms.locfileid: "56001130"
 > 
 > 
 
-本部分的示例将夹层文件（在本例中为 MP4）编码为多比特率 MP4 文件，然后将 MP4 打包为平滑流。 然后，它将平滑流打包成使用高级加密标准 (AES) 128 位流加密法加密的 HTTP 实时流 (HLS)。 确保更新以下代码，以便指向输入 MP4 文件所在的文件夹， 并指向 MediaPackager_MP4ToSmooth.xml 和 MediaPackager_SmoothToHLS.xml 配置文件所在的位置。 可以在 [Azure 媒体包装器的任务预设](https://msdn.microsoft.com/library/azure/hh973635.aspx)一文中找到这些文件的定义。
+本部分的示例将夹层文件（在本例中为 MP4）编码为多比特率 MP4 文件，然后将 MP4 打包为平滑流式处理。 然后，它将平滑流式处理打包成使用高级加密标准 (AES) 128 位流加密法加密的 HTTP Live Streamin (HLS)。 确保更新以下代码，以便指向输入 MP4 文件所在的文件夹， 并指向 MediaPackager_MP4ToSmooth.xml 和 MediaPackager_SmoothToHLS.xml 配置文件所在的位置。 可以在 [Azure 媒体包装器的任务预设](https://msdn.microsoft.com/library/azure/hh973635.aspx)一文中找到这些文件的定义。
 
 ```csharp
     using System;
@@ -774,7 +774,7 @@ ms.locfileid: "56001130"
                 IAsset HLSEncryptedWithAESAsset = CreateHLSEncryptedWithAES(clearSmoothStreamAsset);
 
                 // You can use the following player to test the HLS with AES stream.
-                // http://apps.microsoft.com/windows/app/3ivx-hls-player/f79ce7d0-2993-4658-bc4e-83dc182a0614 
+                // https://apps.microsoft.com/windows/app/3ivx-hls-player/f79ce7d0-2993-4658-bc4e-83dc182a0614 
                 string hlsWithAESURL = HLSEncryptedWithAESAsset.GetHlsUri().ToString();
                 Console.WriteLine("HLS with AES URL:");
                 Console.WriteLine(hlsWithAESURL);
@@ -1372,7 +1372,7 @@ ms.locfileid: "56001130"
                 // Note that the configuration defined in MediaEncryptor_PlayReadyProtection.xml
                 // is using keySeedValue. It is recommended that you do this only for testing 
                 // and not in production. For more information, see 
-                // http://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
+                // https://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
                 //
                 string configPlayReady = File.ReadAllText(Path.Combine(_configurationXMLFiles,
                                             @"MediaEncryptor_PlayReadyProtection.xml"));

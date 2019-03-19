@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d1c48c10d2c58e5cb2ffd7df296390bfaf765bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b791a2c42bad636a779ead75e73b978fbc4b7bf9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206389"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>教程：Azure Active Directory 与 OfficeSpace Software 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56206389"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 OfficeSpace Software 的集成，需要具有以下项：
 
@@ -133,7 +133,7 @@ ms.locfileid: "56206389"
 
     a. 单击“添加属性”，打开“添加属性”对话框。
 
-    ![配置“添加” ](./media/officespace-tutorial/tutorial_attribute_04.png)
+    ![配置“添加”](./media/officespace-tutorial/tutorial_attribute_04.png)
 
     ![配置属性](./media/officespace-tutorial/tutorial_attribute_05.png)
     

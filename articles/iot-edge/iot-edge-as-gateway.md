@@ -4,17 +4,17 @@ description: 使用 Azure IoT Edge 创建一个透明、不透明或代理网关
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: e0aafc6e5a6926ad70aa5df335f45b841955cab9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092275"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877582"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 
@@ -54,4 +54,4 @@ IoT 解决方案中的网关为 IoT 设备提供了设备连接和边缘分析�
 使用不透明网关（协议转换）模式时，通过该网关连接的所有设备共享同一个可包含最多 50 条消息的云到设备的队列。 它遵循的原则是，仅当很少设备通过各字段网关进行连接以及云到设备的流量较低时，才使用不透明网关模式。
 
 ## <a name="next-steps"></a>后续步骤
-了解如何将 IoT Edge 设备配置为[透明网关](how-to-create-transparent-gateway-linux.md)。
+了解如何将 IoT Edge 设备配置为[透明网关](how-to-create-transparent-gateway.md)。

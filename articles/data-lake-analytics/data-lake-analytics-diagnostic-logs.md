@@ -8,12 +8,12 @@ ms.author: jasonh
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: 0bade9f393d879123b7b1485052f70924d9c9b9c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
-ms.translationtype: HT
+ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045475"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959115"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics（访问 Azure Data Lake Analytics 的诊断日志）
 
@@ -41,12 +41,12 @@ ms.locfileid: "43045475"
 
      * 选择“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
-     * 选择“发送到 Log Analytics”，将数据发送到 Log Analytics 服务。 若要使用 Log Analytics 收集和分析日志，请使用此选项。
+     * 选择__发送到 Log Analytics__若要将数据发送到 Azure Monitor 服务。 如果你想要使用 Azure Monitor 日志收集并分析日志，请使用此选项。
    * 指定是要获取审核日志还是请求日志，或者两者都获取。  请求日志捕获每个 API 请求。 审核日志记录由该 API 请求触发的所有操作。
 
    * 对于“存档到存储帐户”，指定数据将保留的天数。
 
-   * 单击“保存”。
+   * 单击“ __保存__”。
 
         > [!NOTE]
         > 单击“保存”按钮之前，必须选择“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
@@ -125,7 +125,7 @@ ms.locfileid: "43045475"
 
 #### <a name="request-log-schema"></a>请求日志架构
 
-| 名称 | Type | Description |
+| 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的标识符 |
@@ -139,7 +139,7 @@ ms.locfileid: "43045475"
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
 
-| 名称 | Type | Description |
+| 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
 | 路径 |String |操作执行所在的路径 |
@@ -177,7 +177,7 @@ ms.locfileid: "43045475"
 
 #### <a name="audit-log-schema"></a>审核日志架构
 
-| 名称 | Type | Description |
+| 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的标识符 |
@@ -195,7 +195,7 @@ ms.locfileid: "43045475"
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
 
-| 名称 | Type | Description |
+| 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | JobId |String |分配给作业的 ID |
 | JobName |String |提供给作业的名称 |

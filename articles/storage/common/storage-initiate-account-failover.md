@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/11/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: d1fb921f72af58eacde5f1ef35ee3aec80f767c8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.subservice: common
+ms.openlocfilehash: f582ef8cca3c36bad40f14026aea1ad422b6106f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994669"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668558"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>启动存储帐户故障转移（预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "55994669"
 > [!WARNING]
 > 帐户故障转移通常会导致一些数据丢失。 若要了解帐户故障转移的影响，以及如何应对数据丢失问题，请查看[了解帐户故障转移过程](storage-disaster-recovery-guidance.md#understand-the-account-failover-process)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 请先确保已按照以下步骤操作，然后才能对存储帐户执行帐户故障转移：
 

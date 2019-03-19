@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f4838f688210f9017d691bd6a463217a75fc90d4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: a19153677e691d2681c131df67100a43ef9532a0
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447508"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889318"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
@@ -91,7 +91,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 请查看[服务管理员变更限制](#limits)，确保自己的方案受支持。
+1. 请确保你的方案支持通过检查服务管理员变更限制。
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -109,7 +109,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ### <a name="account-center"></a>帐户中心
 
-1. 请查看[服务管理员变更限制](#limits)，确保自己的方案受支持。
+1. 请确保你的方案支持通过检查服务管理员变更限制。
 
 1. 以帐户管理员身份登录到[帐户中心](https://account.windowsazure.com/subscriptions)。
 
@@ -156,3 +156,4 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 * [了解 Azure 中的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-portal.md)
+* [添加或更改 Azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)

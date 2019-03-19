@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1609d413604e172b9c718bd11768c495dfa8afe8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 734fb5ce641d48800cef68ea79cdb258e44ac267
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191410"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867093"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 
@@ -83,7 +83,7 @@ Azure AD 域服务允许完全同步 Azure AD 中可用的所有用户和组，�
 
 3. “概述”选项卡显示当前正在预配的托管域。 完全预配之前，无法配置托管域。 可能最多需要一小时才能完全预配托管域。
 
-    ![预配状态期间的“域服务 - 概览”选项卡 ](./media/getting-started/domain-services-provisioning-state-details.png)
+    ![预配状态期间的“域服务 - 概览”选项卡](./media/getting-started/domain-services-provisioning-state-details.png)
 
 4. 托管域完全预配之后，“概览”选项卡会将域状态显示为“正在运行”。
 

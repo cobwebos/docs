@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/27/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7a7fe9603716575c241ca78ebdc9b674888ca835
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 2a245a6e3d76a7df41b5ef28f9bac8a2c2122402
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452201"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985411"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
@@ -25,7 +25,7 @@ ms.locfileid: "54452201"
 > [!NOTE]
 > 从 2018 年 12 月 21 日开始，可以[将认知服务资源附加到 Azure 搜索技能集](cognitive-search-attach-cognitive-services.md)。 这会使我们能够开始对技能集执行收费。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
 >
-> 执行[内置认知技能](cognitive-search-predefined-skills.md)将按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services)进行收费，其费率与以往直接执行任务的费率相同。 图像提取是 Azure 搜索收费项，目前以预览价格提供。 有关详细信息，请参见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)或[如何计费](search-sku-tier.md#how-billing-works)。
+> 执行[内置认知技能](cognitive-search-predefined-skills.md)按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services)收费，其费率与你以往直接执行任务的费率相同。 图像提取是 Azure 搜索收费项，目前以预览定价提供。 有关详细信息，请参见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)或[如何计费](search-sku-tier.md#how-billing-works)。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -43,7 +43,8 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 | categories    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
 |defaultLanguageCode |  输入文本的语言代码。 支持以下语言：`de, en, es, fr, it`|
 |minimumPrecision | 未使用。 保留供将来使用。 |
-|includeTypelessEntities | 当设置为 true 时，如果文本包含某个已知实体，但无法分类为受支持的类别之一，则它将作为 `"entities"` 复杂输出字段的一部分返回。 默认为 `false` |
+|includeTypelessEntities | 当设置为 true 时，如果文本包含某个已知实体，但无法分类为受支持的类别之一，则它将作为 `"entities"` 复杂输出字段的一部分返回。 
+这些是众所周知，但未归类为当前受支持"类别"的一部分的实体。 例如"Windows 10"是一个已知实体 （产品），但是"产品"都不会在目前支持的类别。 默认为 `false` |
 
 
 ## <a name="skill-inputs"></a>技能输入
@@ -67,7 +68,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 | dateTimes  | 一个字符串数组，其中，每个字符串都表示一个日期时间（因为它以文本形式显示）值。 |
 | urls | 一个字符串数组，其中，每个字符串都表示一个 URL |
 | emails | 一个字符串数组，其中，每个字符串都表示一个电子邮件地址 |
-| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>值（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>confidence（现在未使用。 将设置为值为 -1）</li></ul> |
+| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>值 （实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>confidence（现在未使用。 将设置为值为 -1）</li></ul> |
 | 实体 | 一个复杂类型数组，包含有关从文本提取的实体的丰富信息，具有以下字段 <ul><li> name（实际实体名称。 这表示一个“规范化”窗体）</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl（实体的 Wikipedia 页面的链接）</li><li>bingId</li><li>type（识别的实体的类别）</li><li>subType（仅适用于某些类别，这提供实体类型的更精细视图）</li><li> matches（包含的复杂集合）<ul><li>text（实体的原始文本）</li><li>offset（找到它的位置）</li><li>length（原始实体文本的长度）</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>示例定义

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 2e30f3bb40e23e5b0b1951759bdff3a9f02cc9d5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 01c3e9c82959629dc3e43fb6b0833d4dbb05e0aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236057"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823002"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -36,7 +36,7 @@ DSCForLinux 扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚�
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -369,7 +369,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 Login-AzAccount
 ```
 
-单击[**此处**](../../azure-resource-manager/powershell-azure-resource-manager.md)详细了解如何将 Azure PowerShell 与 Azure 资源管理器配合使用。
+单击[**此处**](../../azure-resource-manager/manage-resources-powershell.md)详细了解如何将 Azure PowerShell 与 Azure 资源管理器配合使用。
 
 可运行以下命令部署 DSCForLinux 扩展：
 

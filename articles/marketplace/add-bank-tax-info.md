@@ -6,6 +6,7 @@ documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
 editor: ''
+ms.service: marketplace
 ms.assetid: ''
 ms.workload: ''
 ms.tgt_pltfrm: ''
@@ -13,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2ff5b9e5bbae15b37726ea066474120d9417feba
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
-ms.translationtype: HT
+ms.openlocfilehash: f194b02e5b92ca2de5b58a033c38d4f2e35f93f6
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825794"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790910"
 ---
 # <a name="add-bank-and-tax-information"></a>添加银行和税务信息  
 使用事务处理列表类型的所有商业产品/服务都必须添加银行和税务信息。  
@@ -42,7 +43,7 @@ ms.locfileid: "34825794"
 
 4.  单击“下一步”按钮。 
 
----   
+---
 
 ## <a name="add-tax-information"></a>添加税务信息  
 1.  使用 Microsoft ID 登录到开发人员中心。  
@@ -57,6 +58,6 @@ ms.locfileid: "34825794"
 5.  单击“下一步”按钮。  
 
 ## <a name="next-steps"></a>后续步骤
-*   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页面。  
+*   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页。  
  
----  
+---

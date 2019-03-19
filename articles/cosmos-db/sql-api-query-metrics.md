@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: e6d16c31b8975036202fe77906e2d729391b5c59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: c7b62f66830e17fd8f6607e0a629307a9ab6fc78
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038069"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983585"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
 
@@ -38,7 +38,7 @@ Azure Cosmos DB 提供了一个[用于查询数据的 SQL API](how-to-sql-query.
 
 SDK 针对查询执行提供了各种选项。 例如，在 .NET 中，`FeedOptions` 类中提供了以下选项。 下表介绍了这些选项以及它们如何影响查询执行时间。 
 
-| 选项 | Description |
+| 选项 | 描述 |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | 对于需要跨多个分区执行的任何查询，都必须将其设置为 true。 这是一个显式标志，可用来在开发时有意识地进行性能权衡。 |
 | `EnableScanInQuery` | 如果已决定不使用索引编制，但仍然希望通过扫描方式运行查询，必须将其设置为 true。 只有针对所请求的筛选器路径禁用了索引编制时才适用。 | 
@@ -124,7 +124,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 从查询返回的主要响应标头包括以下内容：
 
-| 选项 | Description |
+| 选项 | 描述 |
 | ------ | ----------- |
 | `x-ms-item-count` | 响应中返回的项数。 这取决于所提供的 `x-ms-max-item-count`、在最大响应有效负载大小内可以容纳的项数、预配的吞吐量以及查询执行时间。 |  
 | `x-ms-continuation:` | 用于继续执行查询的继续标记（如果有更多结果）。 | 
@@ -213,8 +213,10 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 
 有关查询执行指标的部分介绍如何检索查询的服务器执行时间 ( `totalExecutionTimeInMs`)，以便可区分查询执行和网络传输所用的时间。
 
-### <a name="indexing-policy"></a>索引编制策略
+### <a name="indexing-policy"></a>索引策略
 若要了解索引编制路径、种类和模式以及它们对查询执行有何影响，请参阅[配置索引编制策略](index-policy.md)。 默认情况下，索引编制策略为字符串使用哈希索引编制，字符串比较适合进行等式查询，但不适合进行范围查询/order by 查询。 如果需要对字符串使用范围查询，建议为所有字符串指定范围索引类型。 
+
+默认情况下，Azure Cosmos DB 会将应用到的所有数据自动编制索引。 对于高性能插入方案，请考虑不包括路径，因为这会减少每个插入操作的 RU 费用。 
 
 ## <a name="query-execution-metrics"></a>查询执行指标
 可以通过传入可选的 `x-ms-documentdb-populatequerymetrics` 标头（在 .NET SDK 中为 `FeedOptions.PopulateQueryMetrics`）获取有关查询执行的详细指标。 `x-ms-documentdb-query-metrics` 中返回的值具有适用于对查询执行进行高级故障排除的以下键-值对。 
@@ -235,7 +237,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| 指标 | 单位 | Description | 
+| 指标 | 单位 | 描述 | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | 毫秒 | 查询执行时间 | 
 | `queryCompileTimeInMs` | 毫秒 | 查询编译时间  | 
@@ -257,7 +259,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 下面提供了一些示例查询，并说明了如何解释从查询执行返回的某些指标： 
 
-| Query | 示例指标 | Description | 
+| Query | 示例指标 | 描述 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 为匹配 TOP 子句而检索的文档数为 100+1。 查询时间主要花费在 `WriteOutputTime` 和 `DocumentLoadTime` 中，因为它是一个扫描。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount 现在较高（为匹配 TOP 子句为 500+1）。 | 

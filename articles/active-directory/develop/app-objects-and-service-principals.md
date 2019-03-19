@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 02/27/2019
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41eeb4c45e4ef2f04a5e53fde081a2c46093d379
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 1b7ab4007a94efbc48bfea67c6b954c02de0b2ba
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186074"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887431"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
@@ -87,9 +87,9 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 
 在此示例方案中：
 
-| 步骤 | 说明 |
+| 步骤 | 描述 |
 |------|-------------|
-| 1    | 是在应用程序的宿主租户中创建应用程序对象和服务主体对象的过程。 |
+| 第    | 是在应用程序的宿主租户中创建应用程序对象和服务主体对象的过程。 |
 | 2    | 当 Contoso 和 Fabrikam 的管理员完成同意并向应用程序授予访问权限时，会在其公司的 Azure AD 租户中创建服务主体对象，并向其分配管理员所授予的权限。 另请注意，HR 应用可能配置/设计为允许由用户同意以供个人使用。 |
 | 3    | HR 应用程序的使用者租户（例如 Contoso 和 Fabrikam）各有自己的服务主体对象。 每个对象代表其在运行时使用的应用程序实例，该实例受相关管理员同意的权限控制。 |
 
@@ -102,6 +102,6 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 <!--Image references-->
 
 <!--Reference style links -->
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
+[AAD-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
+[AAD-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
 [AZURE-Portal]: https://portal.azure.com

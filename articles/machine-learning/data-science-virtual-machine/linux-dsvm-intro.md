@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b5f2bee7ab0277b94da699be486594a602b94a29
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: e7b67905c96495382536555b87772e4eefada250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241689"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835741"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Linux CentOS 数据科学虚拟机
 
@@ -61,7 +61,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 ## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的数据科学虚拟机
 [Ubuntu](dsvm-ubuntu-intro.md) 映像同样可用，它包含多种与 CentOS 映像相同的工具以及加深度学习框架。 [Windows](provision-vm.md) 映像同样可用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 创建 Linux 数据科学虚拟机之前，必须具备以下条件：
 
 * **Azure 订阅**：若要获取一项订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
@@ -104,7 +104,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 预配约需要 10 到 20 分钟。 预配的状态在 Azure 门户上显示。
 
 ## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>如何访问 Linux 数据科学虚拟机
-创建 VM 后，可使用 SSH 登录。 使用在步骤 3 的**基本信息**部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 上下载 [Putty](http://www.putty.org) 之类的 SSH 客户端工具。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。
+创建 VM 后，可使用 SSH 登录。 使用在步骤 3 的**基本信息**部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 上下载 [Putty](https://www.putty.org) 之类的 SSH 客户端工具。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。
 
 > [!NOTE]
 > 在测试方面，X2Go 客户端的性能明显优于 X11 转发。 建议对图形桌面界面使用 X2Go 客户端。
@@ -114,7 +114,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 ## <a name="installing-and-configuring-x2go-client"></a>安装和配置 X2Go 客户端
 Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 若要连接到 Linux VM 图形桌面，请在客户端上执行以下操作：
 
-1. 从 [X2Go ](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
+1. 从 [X2Go ](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
 1. 运行 X2Go 客户端，并选择“新建会话”。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
    * **会话选项卡**：
      * **主机**：Linux Data Science VM 的主机名或 IP 地址。
@@ -132,7 +132,7 @@ R 是数据分析和机器学习的最常用语言之一。 如果要使用 R �
 
 若要启动 R 控制台，只需在 shell 中键入 **R**。 执行该操作将进入交互式环境。 要开发 R 程序，通常使用 Emacs、vi 或 gedit 等编辑器，并在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 环境来开发 R 程序。
 
-还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](http://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 此脚本可以在 R 交互式界面中运行，可以通过在 shell 中键入 **R** 来输入此脚本（如前所述）。  
+还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 此脚本可以在 R 交互式界面中运行，可以通过在 shell 中键入 **R** 来输入此脚本（如前所述）。  
 
 ### <a name="python"></a>Python
 为方便使用 Python 进行开发，已安装 Anaconda Python 分发版 2.7 和 3.5。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。 可以使用默认文本编辑器。 此外，可以使用 Spyder，它是与 Anaconda Python 分发版捆绑在一起的 Python IDE。 Spyder 需要图形桌面或 X11 转发。 图形桌面中提供了 Spyder 的快捷方式。
@@ -198,12 +198,12 @@ Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyt
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-不需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 停止这些服务。演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例在 `/dsvm/samples/MRS` 目录中提供。 
+你可以停止 Hadoop 相关服务，不需要通过运行时```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```演示如何开发和测试 MRS 在远程 Spark 上下文 （即 DSVM 上的独立 Spark 实例） 中的示例是提供，可在`/dsvm/samples/MRS`目录。 
 
 ### <a name="ides-and-editors"></a>IDE 和编辑器
 可以选择多个代码编辑器。 这包括 vi/VIM、Emacs、gEdit、PyCharm、RStudio、Eclipse 和 IntelliJ。 gEdit、Eclipse、IntelliJ、RStudio 和 PyCharm 是图形编辑器，需登录到图形桌面才能使用。 这些编辑器具有用以启动的桌面和应用程序菜单快捷方式。
 
-**VIM** 和 **Emacs** 是基于文本的编辑器。 Emacs 上已安装名为 Emacs Speaks Statistics (ESS) 的附加包，使得在 Emacs 编辑器中使用 R 更轻松。 可在 [ESS](http://ess.r-project.org/) 了找到更多信息。
+**VIM** 和 **Emacs** 是基于文本的编辑器。 Emacs 上已安装名为 Emacs Speaks Statistics (ESS) 的附加包，使得在 Emacs 编辑器中使用 R 更轻松。 可在 [ESS](https://ess.r-project.org/) 了找到更多信息。
 
 **Eclipse** 是一种开放源 - 支持多种语言的可扩展 IDE。 Java 开发人员版是安装在 VM 上的实例。 可安装适用于数种常用语言的插件，以扩展环境。 Eclipse 中还安装有插件，名为**用于 Eclipse 的 Azure 工具包**。 它允许使用支持 Java 等语言的 Eclipse 开发环境创建、开发、测试和部署 Azure 应用程序。 还有一个**用于 Java 的 Azure SDK**，允许从 Java 环境中访问不同的 Azure 服务。 有关用于 Eclipse 的 Azure 工具包的详细信息，请参阅[用于 Eclipse 的 Azure 工具包](../../azure-toolkit-for-eclipse.md)。
 
@@ -377,5 +377,5 @@ Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 使用基于 
 * [Linux 数据科学虚拟机上的数据科学](linux-dsvm-walkthrough.md)演练展示了如何使用此处预配的 Linux 数据科学 VM 执行数个常见的数据科学任务。 
 * 通过尝试本文中介绍的工具，探索数据科学 VM 上的各种数据科学工具。 还可以在虚拟机内的 shell 上运行 *dsvm-more-info*，获取有关 VM 上安装的工具的基本介绍和详细信息。  
 * 通过使用 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)，了解如何系统地构建端到端分析解决方案。
-* 若要了解使用 Cortana Analytics 套件的机器学习和数据分析示例，请访问 [Cortana Analytics 库](http://gallery.cortanaanalytics.com)。
+* 若要了解使用 Cortana Analytics 套件的机器学习和数据分析示例，请访问 [Cortana Analytics 库](https://gallery.cortanaanalytics.com)。
 

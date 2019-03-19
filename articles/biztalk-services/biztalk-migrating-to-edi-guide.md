@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 38fe0e4901977637be22670d09dccffdfa274304
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5543fd5ee2b86a57414a384df9d808e87b297a5e
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253816"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983024"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务：技术指南
 
@@ -27,7 +27,7 @@ ms.locfileid: "51253816"
 
 编写使用：Microsoft Azure BizTalk 服务 – 2014 年 2 月版本。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 电子数据交换 (EDI) 是企业以电子方式交换数据的最普遍的方式之一，也称为企业对企业或 B2B 交易。 自 BizTalk Server 初版起，十多年来 BizTalk Server 始终拥有 EDI 支持。 借助 BizTalk 服务，Microsoft 继续在 Microsoft Azure Platform 上支持 EDI 解决方案。 大部分 B2B 事务都在组织外部，因此更容易在云平台上实现。 Microsoft Azure 通过 BizTalk 服务提供此功能。
 
 虽然部分客户将 BizTalk 服务视为新 EDI 解决方案的“新领域”平台，但许多客户拥有当前的 BizTalk Server EDI 解决方案，他们可能希望将其迁移到 Azure。 由于 BizTalk 服务 EDI 是基于与 BizTalk Server EDI 架构（贸易合作伙伴、实体、协议）相同的关键实体构建的，因此可将 BizTalk Server EDI 项目迁移到 BizTalk 服务。
@@ -102,7 +102,7 @@ Microsoft Azure BizTalk 服务提供了将 BizTalk Server 映射迁移到 BizTal
 
 * [如何将 WCF 工作流服务与服务总线队列和主题集成](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/)（Paolo Salvatori 编写）。 
 * [使用 Windows Workflow Foundation 和 Azure 构建应用会议](https://go.microsoft.com/fwlink/p/?LinkId=237314)（来自 Build 2011 大会）。
-* [Windows Workflow Foundation 开发人员中心](https://go.microsoft.com/fwlink/p/?LinkId=237315)（参见 MSDN）。
+* [*Windows Workflow Foundation 开发人员中心*](https://docs.microsoft.com/previous-versions/dotnet/articles/ee342461(v=msdn.10))。
 * [Windows Workflow Foundation 4 (WF4) 文档](https://msdn.microsoft.com/library/dd489441.aspx)（参见 MSDN）。
 
 ## <a name="other-considerations"></a>其他注意事项

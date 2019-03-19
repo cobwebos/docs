@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4ed44bff002ed8422f199c24a566fe6ff606af8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 3a1a334c6c7852923da94403352bb7318b241629
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190647"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>教程：Azure Active Directory 与 Trisotech Digital Enterprise Server 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56190647"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Trisotech Digital Enterprise Server 的集成，需要做好以下准备：
 
@@ -150,7 +150,7 @@ ms.locfileid: "56190647"
 
     f. 单击“保存”
 
- ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 

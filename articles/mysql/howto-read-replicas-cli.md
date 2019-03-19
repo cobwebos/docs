@@ -5,22 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: 67cfa45d602b6bf9de27a0b559c58e28b79d1c84
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.date: 02/26/2019
+ms.openlocfilehash: e291cb46b5f8cb8722348bd8fcd6031ed29beb9a
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732815"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888298"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中创建和管理只读副本
 
-> [!IMPORTANT]
-> 只读副本功能目前以公共预览版提供。
-
 在本文中，你将了解如何使用 Azure CLI 在与 Azure Database for MySQL 服务中的主服务器相同的 Azure 区域内创建和管理只读副本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - 将用作主服务器的 [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)。 
@@ -38,7 +35,7 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 
 `az mysql server replica create` 命令需要以下参数：
 
-| 设置 | 示例值 | 说明  |
+| 设置 | 示例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
 | 名称 | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
@@ -60,7 +57,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 
 `az mysql server replica stop` 命令需要以下参数：
 
-| 设置 | 示例值 | 说明  |
+| 设置 | 示例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  副本服务器所在的资源组。  |
 | 名称 | mydemoreplicaserver | 要停止在其上进行复制的副本服务器的名称。 |
@@ -94,7 +91,7 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 
 `az mysql server replica list` 命令需要以下参数：
 
-| 设置 | 示例值 | 说明  |
+| 设置 | 示例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
 | server-name | mydemoserver | 主服务器的名称或 ID。 |

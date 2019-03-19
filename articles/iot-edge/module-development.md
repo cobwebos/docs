@@ -4,17 +4,17 @@ description: 为 Azure IoT Edge 开发可与运行时和 IoT 中心通信的自�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3dd5005312e1c59fa53a0d917951c89033374192
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: ea2d1dbcf991ce858f07905bc1bb41809f9bcdd8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200626"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882733"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>开发你自己的 IoT Edge 模块
 
@@ -48,7 +48,7 @@ IoT Edge 中心基于[部署清单](module-composition.md)中介绍的声明性�
 
 最后，Edge 中心处理的设备到云消息标有以下系统属性：
 
-| 属性 | Description |
+| 属性 | 描述 |
 | -------- | ----------- |
 | $connectionDeviceId | 发送消息的客户端的设备 ID |
 | $connectionModuleId | 发送消息的模块的模块 ID |
@@ -65,5 +65,9 @@ IoT Edge 中心基于[部署清单](module-composition.md)中介绍的声明性�
 
 ## <a name="next-steps"></a>后续步骤
 
-开发模块后，了解如何[大规模部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)。
+[准备 IoT Edge 开发和测试环境](development-environment.md)
+
+[使用 Visual Studio 2017 来开发C#IoT edge 模块](how-to-visual-studio-develop-csharp-module.md)
+
+[使用 Visual Studio Code 开发 IoT edge 模块](how-to-vs-code-develop-module.md)
 

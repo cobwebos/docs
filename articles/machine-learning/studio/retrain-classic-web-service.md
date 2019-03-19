@@ -5,25 +5,25 @@ description: 了解如何重新训练模型和更新经典 Web 服务以在 Azur
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 4f3ca01ae44900e4d0ce22b79db44d7bfa84e56d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: fa4448c2a44a3c56548120bd04abf53df9a85ba0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456548"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822013"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>重新训练并部署经典工作室 Web 服务
 
 重新训练机器学习模型是确保它们保持准确并基于最相关的数据的一种方法。 本文介绍如何重新训练经典工作室 Web 服务。 有关如何重新训练新的工作室 Web 服务的指南，请[查看此操作指南文章](retrain-machine-learning-model.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-本文假设你已经进行了重新训练试验和预测性试验。 这些步骤在[重新训练和部署机器学习模型](retrain-models-programmatically.md)中进行了解释。 但是，你不会将机器学习模型部署为新的 Web 服务，而是将预测试验部署为经典 Web 服务。
+本文假设你已经进行了重新训练试验和预测性试验。 这些步骤在[重新训练和部署机器学习模型](/azure/machine-learning/studio/retrain-machine-learning-model)中进行了解释。 但是，你不会将机器学习模型部署为新的 Web 服务，而是将预测试验部署为经典 Web 服务。
      
 ## <a name="add-a-new-endpoint"></a>添加新的终结点
 
@@ -60,7 +60,7 @@ ms.locfileid: "56456548"
 1. 运行 [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) 示例代码。
 1. 从 AddEndpoint 的输出中，查找 *HelpLocation* 值并复制 URL。
 
-   ![addEndpoint 的输出中的 HelpLocation 示例。](./media/troubleshooting-retraining-a-model/addEndpoint-output.png)
+   ![addEndpoint 的输出中的 HelpLocation 示例。](./media/retrain-classic/addEndpoint-output.png)
 1. 将 URL 粘贴到浏览器中，以导航到提供 Web 服务帮助链接的页面。
 1. 单击“更新资源”链接，打开修补程序帮助页面。
 
@@ -81,7 +81,7 @@ ms.locfileid: "56456548"
 
 修补程序帮助页包含你必须使用的修补程序 URL，并提供可用于调用它的示例代码。
 
-![修补程序 URL。](./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png)
+![修补程序 URL。](./media/retrain-classic/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>更新终结点
 
@@ -145,7 +145,7 @@ ms.locfileid: "56456548"
 
 ## <a name="next-steps"></a>后续步骤
 
-要了解有关如何管理 Web 服务或跟踪多个试验运行的详细信息，请参阅以下文章：
+若要了解有关如何管理 Web 服务或跟踪多个实验运行的详细信息，请参阅以下文章：
 
-* [了解 Web 服务门户](manage-new-webservice.md)
-* [管理试验迭代](manage-experiment-iterations.md)
+* [探索 Web 服务门户](manage-new-webservice.md)
+* [管理实验迭代](manage-experiment-iterations.md)

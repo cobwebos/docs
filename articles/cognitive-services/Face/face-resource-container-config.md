@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 02/25/2019
 ms.author: diberry
-ms.openlocfilehash: 6a4d20073275e3d858cecb73c2e95c97ea53a647
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 4215b008af21a3473a1d2dcef5f73a1b19133215
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311964"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821553"
 ---
 # <a name="configure-face-docker-containers"></a>配置人脸 Docker 容器
 
@@ -51,9 +51,52 @@ ms.locfileid: "56311964"
 
 * Azure 门户：人脸的概述，标记为 `Endpoint`
 
-|必选| Name | 数据类型 | 说明 |
+|需要| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+
+<!-- specific to face only -->
+
+## <a name="cloudai-configuration-settings"></a>CloudAI 配置设置
+
+`CloudAI` 部分中的配置设置提供容器特有的容器特定选项。 `CloudAI` 部分中的人脸容器支持以下设置和对象
+
+| 名称 | 数据类型 | 描述 |
+|------|-----------|-------------|
+| `Storage` | 对象 | 人脸容器使用的存储方案。 有关 `Storage` 对象的存储方案和关联设置的详细信息，请参阅[存储方案设置](#storage-scenario-settings) |
+
+### <a name="storage-scenario-settings"></a>存储方案设置
+
+人脸容器存储 blob、缓存、元数据和队列数据，具体取决于存储的内容。 例如，大型用户组的培训索引和结果存储为 blob 数据。 人脸容器在与这些类型的数据交互以及存储这些类型的数据时会提供两种不同的存储方案：
+
+* 内存  
+  所有四种类型的数据都存储在内存中。 它们不是分布式的，也不是持久性的。 如果停止或删除人脸容器，则会销毁该容器的所有存储数据。  
+  这是人脸容器的默认存储方案。
+* Azure  
+  人脸容器使用 Azure 存储和 Azure Cosmos DB 在持久存储中分发这四种类型的数据。 Azure 存储处理 blob 和队列数据。 由 Azure Cosmos DB 处理元数据和缓存数据。 如果停止或删除人脸容器，则该容器的所有存储数据仍保存在 Azure 存储和 Azure Cosmos DB 中。  
+  Azure 存储方案使用的资源具有以下附加要求
+  * Azure 存储资源必须使用 StorageV2 帐户类型
+  * Azure Cosmos DB 资源必须使用用于 MongoDB 的 Auzre Cosmos DB API
+
+存储方案和关联的配置设置由 `Storage` 对象在 `CloudAI` 配置部分下进行管理。 `Storage` 对象中提供了以下配置设置：
+
+| 名称 | 数据类型 | 描述 |
+|------|-----------|-------------|
+| `StorageScenario` | String | 容器支持的存储方案。 可用值如下<br/>`Memory` - 默认值。 容器使用非持久、非分布式的内存中存储，用于单节点的临时使用情况。 如果停止或删除容器，则该容器的存储将被销毁。<br/>`Azure` - 容器使用 Azure 资源进行存储。 如果停止或删除容器，则会保留该容器的存储。|
+| `ConnectionStringOfAzureStorage` | String | 容器使用的 Azure 存储资源的连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
+| `ConnectionStringOfCosmosMongo` | String | 容器使用的 Azure Cosmos DB 资源的 MongoDB 连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
+
+例如，以下命令指定 Azure 存储方案，并为用于存储人脸容器数据的 Azure 存储和 Cosmos DB 资源提供示例连接字符串。
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
+  ```
+
+存储方案的处理是与输入装入点和输出装入点的处理分开的。 可以为单个容器指定这些功能的组合。 例如，以下命令在主机上的 `D:\Output` 文件夹中定义一个 Docker 绑定装入点作为输出装入点，然后从人脸容器映像实例化容器，并将 JSON 格式的日志文件保存到输出装入点。 以下命令还指定 Azure 存储方案，并为用于存储人脸容器数据的 Azure 存储和 Cosmos DB 资源提供示例连接字符串。
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 Logging:Disk:Format=json CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
+  ```
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -79,7 +122,7 @@ ms.locfileid: "56311964"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](face-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| Name | 数据类型 | 说明 |
+|可选| 名称 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 人脸容器不使用此项。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|

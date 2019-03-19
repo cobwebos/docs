@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/19/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: e6ab51d568c950ca7fd503150557df288d84174f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 0d6813c11b5b9ed4aef666f5eb3dc75d8c9de770
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867726"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593416"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
@@ -50,21 +50,14 @@ ms.locfileid: "55867726"
 
 在顶部导航栏中，选择“训练”。 预测偏差现已消失。
 
+> [!Note]
+> 在单词或短语中的示例查询文本下, 一条红线时[实体预测误差](luis-how-to-add-example-utterances.md#entity-status-predictions)已发生。 您需要更正它。 
+
 ## <a name="add-a-custom-entity"></a>添加自定义实体
 
 将话语添加到意向后，可以选择话语内部的文本来创建自定义实体。 通过自定义实体可以标记要提取的文本，以及正确的意向。 
 
-1. 在话语中选择单词 `Seattle`。 系统会使用方括号括住文本，并显示一个下拉菜单。 
-
-    ![在“意向详细信息”页上创建自定义实体的屏幕截图](./media/luis-how-to-add-intents/create-custom-entity.png) 
-
-    此示例选择了要标记为实体的单个单词。 可将单个单词或短语标记为实体。
-
-1. 在菜单的顶部文本框中输入 `Location`，然后选择“创建新实体”。 
-
-    ![在“意向详细信息”页上创建自定义实体名称的屏幕截图](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
-
-1. 在用于创建实体的“要创建哪种类型的实体?”弹出窗口中，验证“实体名称”是否为“位置”，“实体类型”是否为“简单”。 选择“完成”。
+请参阅[将实体添加到查询文本](luis-how-to-add-example-utterances.md)若要了解详细信息。
 
 ## <a name="entity-prediction-discrepancy-errors"></a>实体预测偏差错误 
 
@@ -80,7 +73,7 @@ ms.locfileid: "55867726"
 
 ## <a name="using-the-contextual-toolbar"></a>使用上下文工具栏
 
-在列表中选择一个或多个示例话语后，可以选中某个话语左侧的框，使用话语列表上方的工具栏执行以下操作：
+在列表中，选择一个或多个示例语音样本，应检查查询文本，左侧的框时会查询文本列表上方的工具栏可以执行以下操作：
 
 * 重新分配意向：将话语移到不同的意向
 * 删除话语

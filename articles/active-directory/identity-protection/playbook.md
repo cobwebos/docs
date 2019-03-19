@@ -17,12 +17,12 @@ ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52d89d577d0bf50168104e9dae1ddc2a5278ff0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: bc2f2f90029918955f00771acaac10b3cf5f4416
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201561"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868266"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
 
@@ -148,7 +148,7 @@ ms.locfileid: "56201561"
 
 **若要测试登录风险策略，请执行以下步骤：**
 
-1. 使用租户的全局管理员凭据登录到 [https://portal.azure.com ](https://portal.azure.com)。
+1. 使用租户的全局管理员凭据登录到 [https://portal.azure.com](https://portal.azure.com)。
 
 2. 导航到 **Azure AD Identity Protection**。
 

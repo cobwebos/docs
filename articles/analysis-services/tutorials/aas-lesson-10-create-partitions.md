@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 11be6d10589d981335d1f63d06933dba5265348a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: 91d34065753ae29b14aad8580bf922b8213a7988
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191830"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738617"
 ---
 # <a name="create-partitions"></a>创建分区
 
@@ -21,16 +21,16 @@ ms.locfileid: "54191830"
   
 本课程预计完成时间：15 分钟  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>必备组件  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 9 课：创建层次结构](../tutorials/aas-lesson-9-create-hierarchies.md)。  
   
 ## <a name="create-partitions"></a>创建分区  
   
 #### <a name="to-create-partitions-in-the-factinternetsales-table"></a>若要在 FactInternetSales 表中创建分区  
   
-1.  在表格建模资源管理器中，展开“表”，然后右键单击“FactInternetSales” > “分区”。  
+1.  在表格模型资源管理器中，展开“表”，右键单击“FactInternetSales” > “分区”。  
   
-2.  在分区管理器中，单击“复制”，然后将名称更改为“FactInternetSales2010”。
+2.  在分区管理器中，单击“复制”，并将名称更改为 **FactInternetSales2010**。
   
     你希望分区仅包括特定期间内的那些行，因此，对于 2010 年，必须修改查询表达式。
   
@@ -57,11 +57,11 @@ ms.locfileid: "54191830"
   
 #### <a name="to-create-a-partition-for-the-2011-year"></a>为 2011 年创建分区  
   
-1.  在分区列表中，单击创建的“FactInternetSales2010”分区，并单击“复制”。  将分区名称更改为“FactInternetSales2011”。 
+1.  在分区列表中，单击创建的“FactInternetSales2010”分区，并单击“复制”。  将分区名称更改为 **FactInternetSales2011**。 
 
-    不需要使用查询编辑器来创建新的 filtered rows 子句。 你已经创建了针对 2010 年的查询的副本，需要做的所有事情就是针对 2011 年对该查询做细微更改。
+    不需要使用查询编辑器来创建新的 filtered rows 子句。 现已创建针对 2010 年的查询的副本，接下来需要做的所有事情就是针对 2011 年对该查询做细微更改。
   
-2.  在**查询表达式**中，为了使此分区仅包括 2011 年的那些行，请将 Filtered Rows 子句中的年份分别替换为 **2011** 和 **2012**，如下所示：  
+2.  在“查询表达式”中，为了使此分区仅包括 2011 年的那些行，请将 Filtered Rows 子句中的年份分别替换为 **2011** 和 **2012**，如下所示：  
   
     ```  
     let
@@ -102,11 +102,11 @@ ms.locfileid: "54191830"
 
     ![aas-lesson10-process-partitions](../tutorials/media/aas-lesson10-process-partitions.png)
   
-    如果提示输入模拟凭据，请输入你在第 2 课中指定的 Windows 用户名和密码。  
+    如果提示输入模拟凭据，请输入在第 2 课中指定的 Windows 用户名和密码。  
   
     此时会出现“数据处理”对话框，其中显示了每个分区的处理详细信息。 请注意，为每个分区传输的行数不同。 每个分区仅包括 SQL 语句的 WHERE 子句指定年份的那些行。 当处理完成后，继续操作并关闭“数据处理”对话框。  
   
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
- ## <a name="whats-next"></a>后续步骤
+## <a name="whats-next"></a>后续步骤
 转到下一课：[第 11 课：创建角色](../tutorials/aas-lesson-11-create-roles.md)。 

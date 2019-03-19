@@ -17,17 +17,17 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: a1cc8a9305103a30fc0ea0fc40c23a522e136d80
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339017"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807178"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Azure Active Directory 中有关 Identity Protection（已刷新）的常见问题解答和已知问题
 
 
-## <a name="dismiss-user-risk"></a>消除用户风险
+## <a name="dismiss-user-risk-known-issues"></a>消除已知问题的用户风险
 
 经典 Identity Protection 中的“消除用户风险”将 Identity Protection（已刷新）的用户风险历史记录中的参与者设置为 Azure AD。
 
@@ -37,7 +37,7 @@ Identity Protection（已刷新）中的“消除用户风险”将 Identity Pro
 当前存在一个已知问题，该问题导致用户风险消除流中发生延迟。 如果具有“用户风险策略”，则该策略将在单击“消除用户风险”后的几分钟内阻止应用于已消除的用户。 但是，UX 刷新已消除用户的“风险状态”时，存在已知延迟。 要解决此问题，请在浏览器级刷新页面以查看最新的用户“风险状态”。
 
 
-## <a name="risky-users-report"></a>“有风险用户”报告
+## <a name="risky-users-report-known-issues"></a>有风险的用户报告的已知的问题
 
 username 字段上的查询区分大小写，而 Name 字段上的查询不区分大小写。
 
@@ -45,14 +45,10 @@ username 字段上的查询区分大小写，而 Name 字段上的查询不区�
 
 经典 Identity Protection 中的“消除所有事件”将风险事件的状态设置为“已关闭(已解决)”。
 
-如果试图通过单击“有风险的登录报告”的登录记录中的“有风险的用户报告”来访问有风险的用户报告，有时可能会显示“出了点问题。请重试”。 若要解决这个问题，单击屏幕顶部的“应用”或“重置”，将填充有风险的用户数据。
 
-
-## <a name="risky-sign-ins-report"></a>风险登录报告
+## <a name="risky-sign-ins-report-known-issues"></a>已知问题的风险登录报表
 
 风险事件上的“解决”将状态设置为“用户已通过基于风险的策略驱动的 MFA”。
-
-“有风险的登录”报告中的“重置”不会清除“风险事件类型”的值。
 
 
 ## <a name="frequently-asked-questions"></a>常见问题

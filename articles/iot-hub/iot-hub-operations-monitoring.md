@@ -1,26 +1,26 @@
 ---
-title: Azure IoT 中心操作监视 | Microsoft Docs
+title: Azure IoT 中心操作监视 （已弃用） |Microsoft Docs
 description: 如何使用 Azure IoT 中心操作监视功能实时监视 IoT 中心上的操作状态。
 author: nberdy
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
-ms.translationtype: HT
+ms.openlocfilehash: d839e2e9922ac68af3aea37884e8b2f72b80b0e7
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160042"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791573"
 ---
-# <a name="iot-hub-operations-monitoring"></a>IoT 中心操作监视
+# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中心操作监视 （已弃用）
 
 IoT 中心操作监视可让你实时监视 IoT 中心上的操作状态。 IoT 中心可以跟踪多个操作类别的事件。 可以选择将一个或多个类别的事件发送到 IoT 中心的终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
 
 >[!NOTE]
->IoT 中心操作监视功能已弃用，并将于 2019 年 3 月 10 日从 IoT 中心中删除。 有关如何监视 IoT 中心的操作和运行状况，请参阅[监视 Azure IoT 中心运行状况并快速诊断问题][lnk-monitor]。 要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案][lnk-blog-announcement]。
+>IoT 中心**操作监视已弃用，并且已从 IoT 中心于 2019 年 3 月 10 日**。 有关如何监视 IoT 中心的操作和运行状况，请参阅[监视 Azure IoT 中心运行状况并快速诊断问题][lnk-monitor]。 要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案][lnk-blog-announcement]。
 
 IoT 中心监视 6 种类别的事件：
 

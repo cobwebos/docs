@@ -13,18 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: ccc9a74c4e238ebfcab0fc05a3bf825000917843
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: d69ddcd44fd947f3d1dc61ac960e7b55258c163e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998924"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872006"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure Monitor 中执行跨资源日志查询  
 
 以前，使用 Azure Monitor 只能分析来自当前工作区内的数据，这限制了跨订阅中定义的多个工作区查询数据的能力。  此外，之前只能直接在 Application Insights 中或从 Visual Studio 中使用 Application Insights 搜索通过基于 web 的应用程序收集的遥测数据项。  这还使得难以采用本机方式将操作数据和应用程序数据一起分析。   
 
-现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。  你只能在 [Log Analytics](portals.md) 中执行这些类型的查询。 可以在单个查询中包含的资源（Log Analytics 工作区和 Application Insights 应用）数量限制为 100。 
+现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。  你只能在 [Log Analytics](portals.md) 中执行这些类型的查询。
+
+## <a name="cross-resource-query-limits"></a>跨资源查询限制 
+
+* 可以包括在单个查询中的 Application Insights 资源数被限制为 100。
+* 视图设计器中不支持跨资源查询。 可以创作 Log Analytics 中的查询并将其固定到 Azure 仪表板并[可视化日志搜索](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search)。 
+* 在新支持跨资源日志警报中的查询[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 而无需使用进行切换，可以在警报规则创建跨资源查询日志[scheduledQueryRules API 的 ARM 模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)– 不过是可管理此警报规则，但[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)而不是从 Azure 门户。
+
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作区以及从 Application Insights 进行查询
 若要在查询中引用另一个工作区，请使用 [*workspace*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) 标识符，对于 Application Insights 中的应用，请使用 [*app*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression) 标识符。  

@@ -2,7 +2,7 @@
 title: 将 SQL Server Integration Services 包迁移到 Azure | Microsoft Docs
 description: 了解如何将 SQL Server Integration Services 包迁移到 Azure。
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/15/2018
-ms.openlocfilehash: 2fa37d31e984399c1b676cf6c6112617fac43fd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: 1113e203f92c2362d0a7a5da002179a8c3ebb793
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721931"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791828"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-azure"></a>将 SQL Server Integration Services 包迁移到 Azure
 如果使用 SQL Server Integration Services (SSIS) 并想将 SSIS 项目/包从 SQL Sever 托管的源 SSISDB 迁移到 Azure SQL 数据库服务器或 Azure SQL 数据库托管实例托管的目标 SSISDB，可以使用 Integration Services 部署向导来部署它们。 可以从 SQL Server Management Studio (SSMS) 中启动向导。
@@ -31,7 +31,7 @@ ms.locfileid: "53721931"
 > * 评估源 SSIS 项目/包。
 > * 将 SSIS 项目/包迁移到 Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成这些步骤，需满足以下条件：
 
 - SSMS 17.2 版本或更高版本。
@@ -80,7 +80,7 @@ ms.locfileid: "53721931"
 8.  选择“**下一步**”。
 9.  在“选择目标”页上，指定项目目标。
 
-       a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“服务器名称”文本框中，输入完全限定的 Azure SQL 数据库服务器名称 (<server_name>.database.windows.net) 或 Azure SQL 数据库托管实例名称 (<server_name.dns_prefix>.database.windows.net)。
+       a. 在“服务器名称”文本框中，输入完全限定的 Azure SQL 数据库服务器名称 (<server_name>.database.windows.net) 或 Azure SQL 数据库托管实例名称 (<server_name.dns_prefix>.database.windows.net)。
  
        b. 提供身份验证信息，然后选择“连接”。
     
@@ -105,7 +105,7 @@ ms.locfileid: "53721931"
 13. 选择“部署”启动部署进程。
 
 14. 完成部署进程后，可查看“结果”页，其中显示每一次成功或失败的部署操作。
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 如果任何操作失败，请在“结果”列中选择“失败”以显示错误说明。
+    a. 如果任何操作失败，请在“结果”列中选择“失败”以显示错误说明。
     b. （可选）选择“保存报表”以将结果保存到 XML 文件。
 
 15. 选择“关闭”以退出 Integration Services 部署向导。

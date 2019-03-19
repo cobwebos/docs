@@ -8,19 +8,19 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5513948a6611e93833c7e70fa4e5667b3901a9f3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238482"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880217"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure 数据目录入门
 Azure 数据目录是一个完全托管的云服务，具有企业数据资产的注册系统和发现系统的功能。 有关详细的概述，请参阅 [What is Azure Data Catalog](data-catalog-what-is-data-catalog.md)（什么是 Azure 数据目录）。
 
 本教程帮助用户开始使用 Azure 数据目录。 将在本教程中执行以下过程：
 
-| 过程 | Description |
+| 过程 | 描述 |
 |:--- |:--- |
 | [预配数据目录](#provision-data-catalog) |在此过程中预配或设置 Azure 数据目录。 仅当以前尚未设置目录时才执行此步骤。 即使有多个订阅与 Azure 帐户关联，每个组织也只能有一个数据目录（Microsoft Azure Active Directory 域）。 |
 | [注册数据资产](#register-data-assets) |在此过程中，将 AdventureWorks2014 示例数据库中的数据资产注册到数据目录。 注册是从数据源提取关键结构元数据（例如名称、类型和位置）并将该元数据复制到目录的过程。 数据源与数据资产保留在原地，但目录使用元数据，使数据源及其数据更容易发现和识别。 |
@@ -82,7 +82,7 @@ Azure AD 为企业提供在云中和本地轻松管理标识与访问权限的�
     ![Azure 数据目录 - 在列表中查看目录](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 3. 单击创建的目录。 门户中会出现“数据目录”边栏选项卡。
    
-   ![Azure 数据目录 - 门户中的边栏选项卡 ](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
+   ![Azure 数据目录 - 门户中的边栏选项卡](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
 4. 可以查看数据目录的属性并进行更新。 例如，单击“定价层”并更改版本。
    
     ![Azure 数据目录 - 定价层](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
@@ -144,7 +144,7 @@ Adventure Works 数据库支持一家虚构自行车制造商 (Adventure Works C
       ![Azure 数据目录 - 已注册的对象](media/data-catalog-get-started/data-catalog-registered-objects.png)
    9. 若要查看注册的数据源对象，请单击“查看门户”。 在 Azure 数据目录门户中，确认可在网格视图中看到所有四个表和数据库。
       
-      ![Azure 数据目录门户中的对象 ](media/data-catalog-get-started/data-catalog-view-portal.png)
+      ![Azure 数据目录门户中的对象](media/data-catalog-get-started/data-catalog-view-portal.png)
 
 本练习已注册 Adventure Works 示例数据库中的对象，使整个组织中的用户可以轻松找到它们。 下一个练习介绍如何发现已注册的数据资产。
 

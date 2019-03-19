@@ -10,23 +10,25 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: cae02627c539e543d27ea188d521605f187ea8a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 672bfee600f19661c6bc68535a68fff4a0ccc43f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475340"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835361"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 6 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 6 月发行的版本中所引入的新功能和所做的更改。 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="user-defined-restore-points"></a>用户定义的还原点
 SQL 数据仓库每 8 小时就会自动拍摄数据仓库的快照，从而保证八小时恢复点目标 (RPO)。 虽然此自动化快照减轻了运行数据仓库的管理负担，但仍需要根据业务需求在关键时间拍摄快照。 例如，在数据仓库中加载重要的数据或部署新的脚本之前拍摄快照，以在操作前启用恢复点。 
 
-SQL 数据仓库现在通过 [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint) cmdlet 支持[用户定义的还原点](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/)。
+SQL 数据仓库现在支持[用户定义的还原点](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/)通过[新建 AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) cmdlet。
 
 ```PowerShell
-New-AzureRmSqlDatabaseRestorePoint
+New-AzSqlDatabaseRestorePoint
     -ResourceGroupName $ResourceGroupName
     -ServerName $ServerName
     -DatabaseName $DatabaseName
@@ -124,7 +126,7 @@ start_time                | end_time                | command
 [客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [客户成功案例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[堆栈溢出论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[堆栈溢出论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

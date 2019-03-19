@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: fdeef8be1cfaabde326f68a1207f7c38d037a502
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 62a2da72a2659b95e4da41de67da4c609b8f049e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313290"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835576"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -40,7 +40,7 @@ ms.locfileid: "56313290"
 
 如果 VM 上没有所有最新的受信任根证书，则“启用复制”作业可能会失败。 如果没有证书，来自 VM 的 Site Recovery 服务调用的身份验证和授权会失败。 系统会显示失败的“启用复制”Site Recovery 作业的错误消息：
 
-**错误代码** | **可能的原因** | **建议**
+**错误代码** | 可能的原因 | **建议**
 --- | --- | ---
 151066<br></br>**消息**：Site Recovery 配置失败。 | 计算机上没有授权和身份验证所需的受信任的根证书。 | - 对于运行 Windows 操作系统的 VM，请确保虚拟机上存在受信任的根证书。 有关信息，请参阅[配置受信任的根和不允许的证书](https://technet.microsoft.com/library/dn265983.aspx)。<br></br>- 对于运行 Linux 操作系统的 VM，请按照 Linux 操作系统版本分销商发布的受信任根证书指南操作。
 
@@ -79,7 +79,7 @@ ms.locfileid: "56313290"
 
 4. 如果未找到 Baltimore 根 CA 证书，则下载该证书。  
 
-    ``# wget http://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root.pem``
+    ``# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root.pem``
 
 5. 检查 DigiCert_Global_Root_CA 证书是否存在。
 
@@ -158,12 +158,12 @@ ms.locfileid: "56313290"
 - **可能的原因** </br>
   - 由于 DNS 解析失败而无法建立到 Site Recovery 终结点的连接。
   - 在重新保护期间，对虚拟机进行故障转移但无法从 DR 区域访问 DNS 服务器时经常会出现此问题。
-  
+
 - **解决方法**
    - 如果你使用的是自定义 DNS，请确保可以从灾难恢复区域访问 DNS 服务器。 若要检查你是否具有自定义 DNS，请转到“VM”>“灾难恢复网络”>“DNS 服务器”。 尝试从虚拟机访问 DNS 服务器。 如果它无法访问，请通过对 DNS 服务器进行故障转移或创建 DR 网络与 DNS 之间站点的行来使其可访问。
-  
+
     ![com-error](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
- 
+
 
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>问题 2：Site Recovery 配置失败 (151196)
 - **可能的原因** </br>
@@ -172,8 +172,10 @@ ms.locfileid: "56313290"
 - **解决方法**
   - Azure Site Recovery 需要具有对 Office 365 IP 范围的访问权限来进行身份验证。
     如果你使用 Azure 网络安全组 (NSG) 规则/防火墙代理控制 VM 上的出站网络连接，请确保允许到 O365 IP 范围的通信。 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
-        - 如果将来要向 Azure Active Directory (AAD) 添加新地址，则需要创建新的 NSG 规则。
+      - 如果将来要向 Azure Active Directory (AAD) 添加新地址，则需要创建新的 NSG 规则。
 
+> [!NOTE]
+> 如果虚拟机位于后面**标准**内部负载均衡器，则不会有权访问 O365 Ip，即大于 默认情况下 login.micorsoftonline.com。 可以将其更改为**基本**内部负载均衡器类型或创建出绑定的访问，如中所述[一文](https://aka.ms/lboutboundrulescli)。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
 - **可能的原因** </br>
@@ -181,24 +183,24 @@ ms.locfileid: "56313290"
 
 - **解决方法**
   - Azure Site Recovery 需要根据区域访问 [Site Recovery IP 范围](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)。 请确保可以从虚拟机访问所需的 IP 范围。
-    
+
 
 ### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>问题 4：当网络流量通过本地代理服务器时 A2A 复制失败 (151072)
- - **可能的原因** </br>
-   - 自定义代理设置无效，并且 ASR 移动服务代理未在 IE 中自动检测到代理设置
+- **可能的原因** </br>
+  - 自定义代理设置无效，并且 ASR 移动服务代理未在 IE 中自动检测到代理设置
 
 
- - **解决方法**
-   1.   移动服务代理通过 Windows 上的 IE 和 Linux 上的 /etc/environment 检测代理设置。
-   2.  如果只想对 ASR 移动服务设置代理，可在位于以下路径的 ProxyInfo.conf 中提供代理详细信息：</br>
-       - ***Linux*** 上的 ``/usr/local/InMage/config/``
-       - ***Windows*** 上的 ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
-   3.   ProxyInfo.conf 应包含采用以下 INI 格式的代理设置。</br>
-                   *[proxy]*</br>
-                   *Address=http://1.2.3.4*</br>
-                   *Port=567*</br>
-   4. ASR 移动服务代理仅支持***未经身份验证的代理***。
- 
+- **解决方法**
+  1. 移动服务代理通过 Windows 上的 IE 和 Linux 上的 /etc/environment 检测代理设置。
+  2. 如果只想对 ASR 移动服务设置代理，可在位于以下路径的 ProxyInfo.conf 中提供代理详细信息：</br>
+     - ***Linux*** 上的 ``/usr/local/InMage/config/``
+     - ***Windows*** 上的 ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
+  3. ProxyInfo.conf 应包含采用以下 INI 格式的代理设置。</br>
+                *[proxy]*</br>
+                *Address=http://1.2.3.4*</br>
+                *Port=567*</br>
+  4. ASR 移动服务代理仅支持***未经身份验证的代理***。
+
 
 ### <a name="fix-the-problem"></a>解决问题
 若要将[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)加入允许列表，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤执行操作。
@@ -207,7 +209,7 @@ ms.locfileid: "56313290"
 
 必须初始化附加到 VM 的新磁盘。
 
-**错误代码** | **可能的原因** | **建议**
+**错误代码** | **可能的原因** | 建议
 --- | --- | ---
 150039<br></br>**消息**：Azure data disk (DiskName) (DiskURI) with logical unit number (LUN) (LUNValue) was not mapped to a corresponding disk being reported from within the VM that has the same LUN value.（具有逻辑单元号 (LUN) (LUNValue) 的 Azure 数据磁盘 (DiskName) (DiskURI) 未映射到具有相同 LUN 值的 VM 报告的相应磁盘。） | - 新数据磁盘已附加到 VM，但该磁盘未初始化。</br></br>- VM 内的数据磁盘未正确报告磁盘附加到 VM 时的 LUN 值。| 请确保数据磁盘已初始化，然后重试操作。</br></br>对于 Windows：[附加并初始化新的磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。</br></br>对于 Linux：[在 Linux 中初始化新的数据磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。
 
@@ -279,6 +281,7 @@ Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同
 
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/卷影复制服务错误（错误代码 151025）
+
 **错误代码** | **可能的原因** | **建议**
 --- | --- | ---
 151025<br></br>**消息**：Site Recovery 扩展安装失败 | - 禁用了“COM + 系统应用程序”服务。</br></br>- 禁用了“卷影复制”服务。| 将“COM + 系统应用程序”和“卷影复制”服务设置为自动或手动启动模式。
@@ -302,31 +305,31 @@ GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/
 
 
 - 以下行来自 GRUB 文件 /boot/grub2/grub.cfg。 <br>
-*linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
+  *linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
 
 
 - 以下行来自 GRUB 文件 /boot/grub/menu.lst
-*kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+  *kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 
 如果发现上面的粗体字符串，GRUB 具有参数“root”和“resume”的实际设备名，而不是 UUID。
- 
+
 **如何修复：**<br>
 设备名应替换为相应的 UUID。<br>
 
 
 1. 执行命令“blkid <device name>”找到设备的 UUID。 例如：<br>
-```
-blkid /dev/sda1 
-```<br>
-```/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap" ```<br>
-```blkid /dev/sda2```<br> 
-```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
-```<br>
+   ```
+   blkid /dev/sda1 
+   ```<br>
+   ```/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap" ```<br>
+   ```blkid /dev/sda2```<br> 
+   ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   ```<br>
 
 
 
 1. Now replace the device name with its UUID in the format like "root=UUID=<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
-*kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+   *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 1. Restart the protection again
 
 ## Enable protection failed as device mentioned in the GRUB configuration doesn't exist(error code 151124)
@@ -336,14 +339,14 @@ The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/bo
 Few examples: </br>
 
 1. The following line is from the GRUB file **"/boot/grub2/grub.cfg"** on RHEL7. </br>
-*linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US.UTF-8*</br>
-Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+   *linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M\@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US.UTF-8*</br>
+   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
 1. The following line is from the GRUB file **"/etc/default/grub"** on RHEL7 </br>
- *GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"*</br>
-Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+   *GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"*</br>
+   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
 1. The following line is from the GRUB file **"/boot/grub/menu.lst"** on RHEL6 </br>
-*kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
- Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".<br>
+   *kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
+   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".<br>
 
 **How to Fix:**<br>
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e0aaddb841687718295e09e64b23d9cefa9246fd
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 3bdf642c37fe5f64b7d853da6a050ec8c2a7d44d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436104"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834653"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -62,7 +62,7 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 1. 使用以下方法之一，在 Azure 中启用“自动化混合辅助角色”解决方案：
 
-   * 使用[将 Log Analytics 管理解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)中所述的过程，将“自动化混合辅助角色”解决方案添加到订阅。
+   * 添加**自动化混合辅助角色**解决方案添加到你的订阅使用的过程[添加 Azure Monitor 记录到你的工作区解决方案](../log-analytics/log-analytics-add-solutions.md)。
    * 运行以下 cmdlet：
 
         ```azurepowershell-interactive
@@ -71,7 +71,7 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 1. 运行以下命令，安装 Log Analytics Linux 代理。 请将 \<WorkspaceID\> 和 \<WorkspaceKey\> 替换为工作区中的相应值。
 
-  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+   [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
    ```bash
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -87,7 +87,7 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 ## <a name="turning-off-signature-validation"></a>关闭签名验证
 
-默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 runbook，将看到显示“签名验证失败”字样的错误。 若要禁用签名验证，请运行以下命令。 将第二个参数替换为 Log Analytics 工作区 ID。
+默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 runbook，将看到显示“签名验证失败”字样的错误。 若要禁用签名验证，请运行以下命令。 第二个参数替换为你的 log analytics 工作区 id。
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
@@ -111,12 +111,8 @@ Linux 混合 Runbook 辅助角色并非支持 Azure 自动化中的全套 Runboo
 * 图形
 * 图形 PowerShell 工作流
 
-## <a name="troubleshoot"></a>故障排除
-
-若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅 [Linux 混合 Runbook 辅助角色的故障排除](troubleshoot/hybrid-runbook-worker.md#linux)
-
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何配置 Runbook，使本地数据中心或其他云环境中的过程自动化，请参阅[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)。
 * 有关如何删除混合 Runbook 辅助角色的说明，请参阅[删除 Azure 自动化混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)。
-
+* 若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅 [Linux 混合 Runbook 辅助角色的故障排除](troubleshoot/hybrid-runbook-worker.md#linux)

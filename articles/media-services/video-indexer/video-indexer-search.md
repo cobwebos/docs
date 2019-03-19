@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: d2c2e87b3dade68dc311aa38743c11a60a69f68b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 07b3c806dc5df5f93bee3206cbca53485675e7dd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004535"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872397"
 ---
 # <a name="find-exact-moments-within-videos"></a>在视频中查找确切的时刻
 
@@ -23,22 +23,26 @@ ms.locfileid: "56004535"
 1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 2. 在帐户的所有视频中搜索。
 
-    在以下示例中，我们搜索了 Channel9 创建的包含 Scott Hanselman 的所有视频。
+    在以下示例中，我们搜索的对话安全有关和中 Satya，所有视频
 
     ![搜索](./media/video-indexer-search/video-indexer-search01.png)
 3. 搜索视频的汇总见解。
 
-    然后即可单击视频中的“播放”，在视频中进行搜索。 再然后，可以选择“选择”选项卡，在视频中进行搜索。例如，我们搜索了使用“标识保护”文本的所有位置。 
+    然后即可单击视频中的“播放”，在视频中进行搜索。 再然后，可以选择“选择”选项卡，在视频中进行搜索。 
+
+    在以下示例中，我们搜索"安全"内所选的视频。
 
     ![搜索](./media/video-indexer-search/video-indexer-search02.png)
 
     如果单击某个结果，播放器会将你带到视频中的相应时刻。 可以在应用程序中获得播放器/见解视图和同步。 有关详细信息，请参阅[将视频索引器小组件嵌入应用程序](video-indexer-embed-widgets.md)。 
 4. 搜索视频的明细。
+    
+    如果你想要创建您自己根据找到的视频剪辑，请按**编辑**按钮。 此页介绍了视频以及其 insights 作为筛选器。 有关详细信息，请参阅[查看和编辑视频索引器见解](video-indexer-view-edit.md)。 
 
-    若要根据所发现的视频创建你自己的明细，请按“编辑”按钮。 此页面会显示视频的所有明细。 可以在明细中搜索，只显示感兴趣的行。 有关详细信息，请参阅[查看和编辑视频索引器见解](video-indexer-view-edit.md)。
-
-    在此示例中，我们搜索了“标识保护”文本。 我们还应用了其他筛选器，如以下屏幕所示。
-
+    您可以搜索视频以仅显示你感兴趣，并使用端 insights 筛选你想要查看的部分的行中。 完成后，可以预览剪辑并按**发布**创建库中将显示在新剪辑。
+    
+    在以下示例中，我们搜索的"mixed reality"文本。 我们还应用了其他筛选器，如以下屏幕所示。
+    
     ![搜索](./media/video-indexer-search/video-indexer-search03.png)
 
 ## <a name="next-steps"></a>后续步骤 

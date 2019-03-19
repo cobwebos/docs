@@ -5,22 +5,23 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
+ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
-ms.openlocfilehash: 69a4e4c59038599a7375466c46878bdd017582fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 1d3c4039ae823d3797e768af5892333d4d925268
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231604"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57789935"
 ---
-# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>方案：使用 Azure Functions 和 Azure 服务总线触发逻辑应用
+# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>场景：使用 Azure Functions 和 Azure 服务总线触发逻辑应用
 
 需要部署长时间运行的侦听器或任务时，可以使用 Azure Functions 为逻辑应用创建触发器。 例如，可以创建一个函数以侦听队列，并立即以推送触发器的形式触发逻辑应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
@@ -34,9 +35,9 @@ ms.locfileid: "50231604"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，并创建一个空的逻辑应用。 
 
-   如果你不熟悉逻辑应用，请查看[快速入门：创建你的第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+   如果不熟悉逻辑应用，查看[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜索框中，输入“http 请求”。 在触发器列表下，选择以下触发器：**当收到 HTTP 请求时**
+1. 在搜索框中，输入“http 请求”。 在触发器列表中选择此触发器：**当收到 HTTP 请求时**
 
    ![选择触发器](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -98,7 +99,7 @@ ms.locfileid: "50231604"
 
 1. 在 Azure 门户中，打开并展开你的函数应用（如果尚未打开）。 
 
-1. 在你的函数应用名称下，展开“函数”。 在“函数”窗格中，选择“新建函数”。 选择此模板：**服务总线队列触发器 - C#**
+1. 在你的函数应用名称下，展开“函数”。 在“函数”窗格中，选择“新建函数”。 选择此模板：**服务总线队列触发器-C#**
    
    ![选择 Azure Functions 门户](./media/logic-apps-scenario-function-sb-trigger/newqueuetriggerfunction.png)
 
@@ -114,14 +115,14 @@ ms.locfileid: "50231604"
    
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/.........";
    
+   // Re-use instance of http clients if possible - https://docs.microsoft.com/en-us/azure/azure-functions/manage-connections
+   private static HttpClient httpClient = new HttpClient();
+   
    public static void Run(string myQueueItem, TraceWriter log)
    {
        log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
 
-       using (var client = new HttpClient())
-       {
-           var response = client.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
-       }
+       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
    }
    ```
 

@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 5ce8464de552fb228b961af199e4b03e645478a2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: cfa9f6bcb81182f4e76e995d626b207f8e130a80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809974"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840913"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 
@@ -28,10 +28,12 @@ ms.locfileid: "55809974"
 > 建议客户创建新的服务器，并将现有服务器的连接类型显式设置为“重定向”（首选）或“代理”，具体取决于服务器的连接体系结构。
 >
 > 为了防止在进行此更改时在现有环境中通过服务终结点进行的连接中断，我们使用遥测执行以下操作：
+>
 > - 对于在更改前检测到的通过服务终结点进行过访问的服务器，我们将连接类型切换为 `Proxy`。
 > - 对于所有其他的服务器，我们会将连接类型切换为 `Redirect`。
 >
 > 在以下方案中，服务终结点用户可能仍会受影响：
+>
 > - 应用程序不常连接到现有的服务器，因此我们的遥测不捕获有关这些应用程序的信息。
 > - 自动部署逻辑创建 SQL 数据库服务器（假设服务终结点连接的默认行为是 `Proxy`）
 >
@@ -106,10 +108,7 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 北欧 | 191.235.193.75 | 40.113.93.91 |
 | 美国中南部 | 23.98.162.75 | 13.66.62.124 |
 | 东南亚 | 23.100.117.95 | 104.43.15.0 |
-| 英国北部 | 13.87.97.210 | |
-| 英国南部 1 | 51.140.184.11 | |
-| 英国南部 2 | 13.87.34.7 | |
-| 英国西部 | 51.141.8.11 | |
+| 英国南部 | 51.140.184.11 | |
 | 美国中西部 | 13.78.145.25 | |
 | 西欧 | 191.237.232.75 | 40.68.37.158 |
 | 美国西部 1 | 23.99.34.75 | 104.42.238.205 |
@@ -127,6 +126,10 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 
 ## <a name="script-to-change-connection-settings-via-powershell"></a>通过 PowerShell 编写脚本以更改连接设置
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+
 > [!IMPORTANT]
 > 此脚本需要 [Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
@@ -134,22 +137,22 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 
 ```powershell
 # Get SQL Server ID
-$sqlserverid=(Get-AzureRmSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
+$sqlserverid=(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
 
 # Set URI
 $id="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy
-(Get-AzureRmResource -ResourceId $id).Properties.connectionType
+(Get-AzResource -ResourceId $id).Properties.connectionType
 
 # Update connection policy
-Set-AzureRmResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
+Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ```
 
 ## <a name="script-to-change-connection-settings-via-azure-cli"></a>通过 Azure CLI 编写脚本以更改连接设置
 
 > [!IMPORTANT]
-> 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+> 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 以下 CLI 脚本演示如何更改连接策略。
 

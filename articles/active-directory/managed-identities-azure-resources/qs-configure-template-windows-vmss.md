@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fc32e9e306149052df37cc24bc54e2aad902c50
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d6ad683af5597be746524a360d438a06b2e429b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199419"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847246"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>使用模板在 Azure 虚拟机规模集上配置 Azure 资源托管标识
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>使用模板作为 Azure 虚拟机规模上配置的 Azure 资源管理的标识
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -32,7 +32,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 在 Azure 虚拟机规模集上启用和禁用系统分配托管标识
 - 在 Azure 虚拟机规模集上添加和删除用户分配托管标识
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
@@ -50,7 +50,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 与 Azure 门户和脚本一样，[Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)模板支持部署由 Azure 资源组定义的新资源或修改后的资源。 有多种可用于执行模板编辑和部署的方法（包括本地方法和基于门户的方法），包括：
 
    - 使用 [Azure Marketplace 中的自定义模板](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)，这样可以从头开始创建模板，也可以在现有常见模板或[快速入门模板](https://azure.microsoft.com/documentation/templates/)的基础之上操作。
-   - 派生自现有资源组，具体方法是从[原始部署](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history)或[当前部署](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group)导出模板。
+   - 派生自现有资源组，具体方法是从[原始部署](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)或[当前部署](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)导出模板。
    - 使用本地 [JSON 编辑器（例如 VS Code）](../../azure-resource-manager/resource-manager-create-first-template.md)，然后使用 PowerShell 或 CLI 进行上传和部署。
    - 使用 Visual Studio [Azure 资源组项目](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)同时创建和部署模板。  
 
@@ -63,7 +63,6 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 ### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-a-existing-virtual-machine-scale-set"></a>在创建虚拟机规模集期间或在现有的虚拟机规模集上启用系统分配托管标识
 
 1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含虚拟机规模集的 Azure 订阅关联的帐户。
-   
 2. 要启用系统分配托管标识，请将模板加载到编辑器中，在 resources 节中找到所关注的 `Microsoft.Compute/virtualMachinesScaleSets` 资源，并在与 `identity` 属性相同的级别添加 `"type": "Microsoft.Compute/virtualMachinesScaleSets"` 属性。 使用以下语法：
 
    ```JSON
@@ -321,7 +320,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
         }
     ]
    ```
-### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>从 Azure 虚拟机规模集删除用户分配的托管标识
+   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>从 Azure 虚拟机规模集删除用户分配的托管标识
 
 如果虚拟机规模集不再需要用户分配托管标识，请执行以下操作：
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5c63a838d6cffce5ca45dbf0dde50bb9bd01892c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 8cda538cade4750e03ecb91dfb2c478df730e556
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171637"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961289"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -29,19 +29,19 @@ ms.locfileid: "55171637"
 
 UserJourneys 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | UserJourney | 1:n | 定义完整用户流所需的所有构造的用户旅程。 | 
 
 UserJourney 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用户旅程的标识符，可用于从策略中的其他元素中引用它。 [信赖方策略](relyingparty.md)的 DefaultUserJourney 元素指向此属性。 |
 
 UserJourney 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1:n | 成功事务必须遵循的业务流程序列。 每个用户旅程都包含按顺序执行的业务流程步骤的有序列表。 如果任何步骤失败，则事务将失败。 |
 
@@ -49,19 +49,19 @@ UserJourney 元素包含以下元素：
 
 用户旅程表示为成功事务必须遵循的业务流程序列。 如果任何步骤失败，则事务将失败。 这些业务流程步骤引用策略文件中允许的构建基块和声明提供程序。 负责显示或呈现用户体验的任何业务流程步骤也具有对相应内容定义标识符的引用。
 
-业务流程步骤可以基于业务流程步骤元素中定义的前提条件有条件地执行。 例如，仅当存在特定声明或声明等于或未达到指定值时，才能检查执行业务流程步骤。 
+业务流程步骤可以有条件地执行，基于业务流程步骤元素中定义的前置条件。 例如，可以检查来执行业务流程步骤仅当存在特定声明，或如果声明是相等或不到指定的值。 
 
 若要指定业务流程步骤的有序列表，请将 OrchestrationSteps 元素作为策略的一部分添加。 此元素是必需的。
 
 OrchestrationSteps 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1:n | 一个有序的业务流程步骤。 | 
 
 OrchestrationStep 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | 顺序 | 是 | 业务流程步骤的顺序。 | 
 | Type | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange - 指示业务流程步骤与声明提供程序交换声明。</li><li>SendClaims - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> | 
@@ -71,38 +71,38 @@ OrchestrationStep 元素包含以下属性：
 
 OrchestrationStep 元素可以包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- | 
 | Preconditions | 0:n | 为执行业务流程步骤而必须满足的前置条件列表。 | 
 | ClaimsProviderSelections | 0:n | 业务流程步骤的声明提供程序选择列表。 | 
 | ClaimsExchanges | 0:n | 业务流程步骤的声明交换列表。 | 
 
-#### <a name="preconditions"></a>Preconditions
+### <a name="preconditions"></a>Preconditions
 
 Preconditions 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- | 
 | Precondition | 0:n | 具体取决于正在使用的技术配置文件，根据声明提供程序选择重定向客户端或对交换声明进行服务器调用。 | 
 
 
-##### <a name="precondition"></a>Precondition
+#### <a name="precondition"></a>Precondition
 
 Precondition 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | Type | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist（指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals（指定当指定声明存在且其值等于指定值时应执行操作）。 |
 | ExecuteActionsIf | 是 | 使用 true 或 false 测试确定是否应执行前置条件中的操作。 | 
 
 Precondition 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | 值 | 1:n | 要查询的 ClaimTypeReferenceId。 另一个值元素包含要检查的值。</li></ul>|
 | 操作 | 1:1 | 在业务流程步骤中的前置条件检查为 true 时应执行的操作。 如果 `Action` 的值设置为 `SkipThisOrchestrationStep`，则不应执行相关联的 `OrchestrationStep`。 | 
 
-### <a name="preconditions-examples"></a>Preconditions 示例
+#### <a name="preconditions-examples"></a>Preconditions 示例
 
 以下前置条件检查是否存在用户的 objectId。 在用户旅程中，用户已选择使用本地帐户进行登录。 如果存在 objectId，请跳过此业务流程步骤。
 
@@ -164,13 +164,13 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 
 ClaimsProviderSelection 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 0:n | 提供可以选择的声明提供程序的列表。|
 
 ClaimsProviderSelection 元素包含以下属性： 
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | 否 | 声明交换的标识符，在声明提供程序选择的下一个业务流程步骤中执行。 必须指定此属性或 ValidationClaimsExchangeId 属性，但不能同时指定这两个属性。 | 
 | ValidationClaimsExchangeId | 否 | 声明交换的标识符，在当前业务流程步骤中执行以验证声明提供程序选择。 必须指定此属性或 TargetClaimsExchangeId 属性，但不能同时指定这两个属性。 |
@@ -216,30 +216,13 @@ ClaimsProviderSelection 元素包含以下属性：
 
 ClaimsExchanges 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 0:n | 具体取决于正在使用的技术配置文件，根据所选的 ClaimsProviderSelection 重定向客户端，或对交换声明进行服务器调用。 | 
 
 ClaimsExchange 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ID | 是 | 声明交换步骤的标识符。 该标识符用于从策略中的声明提供程序选择步骤引用声明交换。 | 
 | TechnicalProfileReferenceId | 是 | 要执行的技术配置文件的标识符。 |
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

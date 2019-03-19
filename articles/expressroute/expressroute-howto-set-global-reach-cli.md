@@ -2,28 +2,23 @@
 title: 配置 ExpressRoute Global Reach：Azure CLI | Microsoft Docs
 description: 本文介绍了如何将 ExpressRoute 线路链接到一起，以在本地网络之间建立专用网络并启用 Global Reach。
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
-ms.author: cherylmc
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: be10489d731b9e01d148ce1ac7892cb6de956662
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: 28df8f59944ccac9d731e15a558d864beed2f3ae
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659314"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817688"
 ---
-# <a name="configure-expressroute-global-reach-by-using-the-azure-cli-preview"></a>使用 Azure CLI 配置 ExpressRoute Global Reach（预览版）
+# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute 全球覆盖
 
 本文帮助你使用 Azure CLI 配置 Azure ExpressRoute Global Reach。 有关详细信息，请参阅 [ExpressRoute Global Reach](expressroute-global-reach.md)。
  
-## <a name="before-you-begin"></a>开始之前
-
-> [!IMPORTANT]
-> 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 在开始配置前，请满足以下要求：
 
 * 安装最新版本的 Azure CLI。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 和 [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)。

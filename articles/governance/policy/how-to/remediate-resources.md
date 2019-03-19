@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 086ef9030451632ee4defa39a402e4d62c897f20
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342110"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816551"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -131,6 +131,8 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ## <a name="create-a-remediation-task"></a>创建修正任务
 
+### <a name="create-a-remediation-task-through-portal"></a>创建通过门户更新任务
+
 在评估期间，带 deployIfNotExists 效果的策略分配确定是否存在不符合资源。 当发现不符合资源时，将在“修正”页上提供详细信息。 具有不符合资源的策略列表也可以用来触发修正任务。 此选项用于基于 **deployIfNotExists** 模板创建部署。
 
 若要创建修正任务，请执行以下步骤：
@@ -163,6 +165,32 @@ if ($roleDefinitionIds.Count -gt 0)
    ![修正 - 资源任务上下文菜单](../media/remediate-resources/resource-task-context-menu.png)
 
 通过“修正任务”部署的资源将添加到“策略符合性”页上的“部署的资源”选项卡。
+
+### <a name="create-a-remediation-task-through-azure-cli"></a>创建修正任务通过 Azure CLI
+
+若要创建**修正任务**使用 Azure CLI 使用`az policy remediation`命令。 替换`{subscriptionId}`与你的订阅 ID 和`{myAssignmentId}`与你**deployIfNotExists**策略分配 id。
+
+```azurecli-interactive
+# Login first with az login if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+az policy remediation create --name myRemediation --policy-assignment '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+有关其他修正命令和示例，请参阅[az 策略修正](/cli/azure/policy/remediation)命令。
+
+### <a name="create-a-remediation-task-through-azure-powershell"></a>创建修正任务通过 Azure PowerShell
+
+若要创建**修正任务**使用 Azure PowerShell 使用`Start-AzPolicyRemediation`命令。 替换`{subscriptionId}`与你的订阅 ID 和`{myAssignmentId}`与你**deployIfNotExists**策略分配 id。
+
+```azurepowershell-interactive
+# Login first with Connect-AzAccount if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+有关其他修正 cmdlet 和示例，请参阅[Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights)模块。
 
 ## <a name="next-steps"></a>后续步骤
 

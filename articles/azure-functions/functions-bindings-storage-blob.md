@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 33f79569a2478c7e234b04ba2dee4e9b8883abae
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 16899c833d996902cf7a0a3f7ab57479869fbdd9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895884"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737773"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -95,7 +95,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
 有关 `BlobTrigger` 特性的详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
@@ -120,7 +120,7 @@ blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创�
 }
 ```
 
-blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
 有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#trigger---configuration)部分。
 
@@ -167,7 +167,7 @@ function.json 文件如下所示：
 }
 ```
 
-blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
 有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#trigger---configuration)部分。
 
@@ -202,7 +202,7 @@ function.json 文件如下所示：
 }
 ```
 
-blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
 有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#trigger---configuration)部分。
 
@@ -348,7 +348,7 @@ public void run(
 
 ## <a name="trigger---blob-name-patterns"></a>触发器 - Blob 名称模式
 
-可以在 *function.json* 的 `path` 属性中或者在 `BlobTrigger` 特性构造函数中指定 Blob 名称模式。 名称模式可以是[筛选器或绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)。 以下部分提供了有关示例。
+可以在 *function.json* 的 `path` 属性中或者在 `BlobTrigger` 特性构造函数中指定 Blob 名称模式。 名称模式可以是[筛选器或绑定表达式](./functions-bindings-expressions-patterns.md)。 以下部分提供了有关示例。
 
 ### <a name="get-file-name-and-extension"></a>获取文件名和扩展名
 
@@ -391,7 +391,7 @@ public void run(
 
 Blob 触发器提供了几个元数据属性。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值的语义与 [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 类型相同。
 
-|属性  |Type  |说明  |
+|属性  |Type  |描述  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|触发 Blob 的路径。|
 |`Uri`|`System.Uri`|主位置的 blob 的 URI。|
@@ -1099,7 +1099,7 @@ public static void Run(
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 
-| 绑定 |  引用 |
+| 绑定 |  参考 |
 |---|---|
 | Blob | [Blob 错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | Blob、表、队列 |  [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

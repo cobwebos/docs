@@ -3,7 +3,7 @@ title: 关于 Azure 密钥保管库密钥、机密和证书 - Azure 密钥保管
 description: Azure Key Vault REST 接口概述以及密钥、机密和证书的开发人员详细信息。
 services: key-vault
 documentationcenter: ''
-author: BryanLa
+author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: 49879d36937a0f0d7ccf1a82cf8b6ca09453894d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.author: mbaldwin
+ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106959"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842560"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
@@ -39,10 +39,10 @@ ms.locfileid: "56106959"
 
 JavaScript 对象表示法 (JSON) 与 JavaScript 对象的签名和加密 (JOSE) 规范是重要的背景信息。  
 
--   [JSON Web 密钥 (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [JSON Web 密钥 (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [JSON Web 加密 (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [JSON Web 算法 (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [JSON Web 签名 (JWS)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
+-   [JSON Web 签名 (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>数据类型
 
@@ -112,7 +112,7 @@ Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信�
 #### <a name="curve-types"></a>曲线类型
 
 -   P-256 - NIST 曲线 P-256，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
--   P-256K - SEC 曲线 SECP256K1，在 [SEC 2：建议使用的椭圆曲线域参数](http://www.secg.org/sec2-v2.pdf)中定义。
+-   P-256K - SEC 曲线 SECP256K1，在 [SEC 2：建议使用的椭圆曲线域参数](https://www.secg.org/sec2-v2.pdf)中定义。
 -   P-384 - NIST 曲线 P-384，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
 -   P-521 - NIST 曲线 P-521，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
 
@@ -166,7 +166,7 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 
 用户可以使用 JWK 对象的 key_ops 属性按密钥限制 Key Vault 支持的任何加密操作。  
 
-有关 JWK 对象的详细信息，请参阅 [JSON Web 密钥 (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)。  
+有关 JWK 对象的详细信息，请参阅 [JSON Web 密钥 (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)。  
 
 ###  <a name="key-attributes"></a>密钥属性
 
@@ -189,7 +189,7 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 
 有关数据类型的详细信息，请参阅[数据类型](#data-types)。
 
-有关其他可能的属性的详细信息，请参阅 [JSON Web 密钥 (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)。
+有关其他可能的属性的详细信息，请参阅 [JSON Web 密钥 (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)。
 
 ### <a name="key-tags"></a>密钥标记
 
@@ -409,10 +409,10 @@ Key Vault 允许使用其他颁发者提供者的配置创建多个颁发者对�
 
 如果证书的策略设置为自动续订，则在发生以下事件时发送通知。  
 
--   证书续订之前
--   证书续订之后，指出是否已成功续订证书，或是否存在错误，需要手动续订证书。  
+- 证书续订之前
+- 证书续订之后，指出是否已成功续订证书，或是否存在错误，需要手动续订证书。  
 
- 如果证书策略设置为手动续订（仅限电子邮件），则在续订证书时发送通知。  
+  如果证书策略设置为手动续订（仅限电子邮件），则在续订证书时发送通知。  
 
 ### <a name="certificate-access-control"></a>证书访问控制
 

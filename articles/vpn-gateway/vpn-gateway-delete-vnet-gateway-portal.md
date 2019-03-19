@@ -7,12 +7,13 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: d0c54a00afd723b68bedc0a305cfb0f16edf4ac9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 387b4e982772f22453876e1ea8b9e7c4039601c4
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816248"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790571"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>使用门户删除虚拟网络网关
 
@@ -42,7 +43,7 @@ ms.locfileid: "55816248"
 ### <a name="to-delete-the-local-network-gateway"></a>删除本地网络网关
 
 1. 在“所有资源”中，找到与每个连接相关联的本地网络网关。
-2. 在本地网络网关的“概述”边栏选项卡上，单击“删除”。
+2. 在本地网关的“概述”边栏选项卡上，单击“删除”。
 
 ### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>删除网关的公共 IP 地址资源
 

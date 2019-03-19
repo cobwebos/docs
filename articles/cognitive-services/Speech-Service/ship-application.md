@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445111"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962020"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 
@@ -39,11 +39,13 @@ ms.locfileid: "56445111"
 
 所需语音 SDK 文件可部署在与应用程序相同的目录中。 这样，应用程序便可直接访问库。 请确保选择与应用程序匹配的正确版本 (Win32/x64)。
 
-| Name | 函数
+| 名称 | 函数
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | 核心 SDK，对于本机和托管部署是必需的
-| `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | 对于托管部署是必需的
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | 对于托管部署是必需的
+
+>[!NOTE]
+> 从版本 1.3.0 文件`Microsoft.CognitiveServices.Speech.csharp.bindings.dll`（在早期版本中已发货） 不再需要。 功能现已集成 SDK 的核心。
 
 ## <a name="linux"></a>Linux
 

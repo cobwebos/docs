@@ -4,7 +4,7 @@ description: 了解如何使用 Azure CLI，通过将基于 Azure 文件的卷�
 services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
-manager: jeconnoc
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9bce2d0e6d01813fd376b2505838defc9c772d70
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: c1a9209537eaee1d107f43c8fc10ea90899c67ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891089"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842169"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载基于 Azure 文件的卷 
 
@@ -28,7 +28,7 @@ ms.locfileid: "52891089"
 
 若要将卷装载到服务，需在 Service Fabric 网格应用程序中创建卷资源，然后在服务中引用该卷。  可在[基于 YAML 的资源文件](#declare-a-volume-resource-and-update-the-service-resource-yaml)或[基于 JSON 的部署模板](#declare-a-volume-resource-and-update-the-service-resource-json)中完成声明该卷资源并在服务资源中引用它。 必须先创建 Azure 存储帐户和 [Azure 文件共享](/azure/storage/files/storage-how-to-create-file-share)，然后才能装载此卷。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成本文的内容。 
 
@@ -87,7 +87,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {

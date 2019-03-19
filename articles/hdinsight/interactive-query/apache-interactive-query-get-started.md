@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: b34d67e640f09ac6949e992d3af9388581851622
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: ae0264c918bb550affe8e694cdb3b9891edea531
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629520"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875440"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>将交互式查询与 HDInsight 配合使用
 交互式查询（也称为 Apache Hive LLAP 或[低延迟分析处理](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。 交互式查询支持内存中缓存，可提高 Apache Hive 查询速度和交互性。
@@ -38,7 +38,7 @@ ms.locfileid: "53629520"
  
 * 使用 Apache Zeppelin
 
-    请参阅[在 Azure HDInsight 中使用 Apache Zeppelin 运行 Apache Hive 查询](../hdinsight-connect-hive-zeppelin.md)。
+    请参阅[使用 Apache Zeppelin 才能在 Azure HDInsight 运行 Apache Hive 查询](../hdinsight-connect-hive-zeppelin.md)。
 
 * 使用 Visual Studio
 
@@ -72,7 +72,7 @@ ms.locfileid: "53629520"
 
 * 了解如何[在 HDInsight 中创建交互式查询群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 * 了解如何[在 Azure HDInsight 中使用 Power BI 直观显示大数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。
-* 了解如何[在 Azure HDInsight 中使用 Apache Zeppelin 运行 Apache Hive 查询](../hdinsight-connect-hive-zeppelin.md)。
+* 了解如何[使用 Apache Zeppelin 在 Azure HDInsight 运行 Apache Hive 查询](../hdinsight-connect-hive-zeppelin.md)。
 * 了解如何[使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries)。
 * 了解如何[使用用于 Visual Studio Code 的 HDInsight 工具](../hdinsight-for-vscode.md)。
 * 了解如何[在 HDInsight 中将 Apache Hive 视图与 Apache Hadoop 配合使用](../hadoop/apache-hadoop-use-hive-ambari-view.md)

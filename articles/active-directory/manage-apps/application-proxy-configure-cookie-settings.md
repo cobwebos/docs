@@ -7,17 +7,17 @@ manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: concept
+ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d97e2542200703201b1c20738581a938ba209e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 60fc8cb8be39b2ffc217641464a991d8d2f3b997
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165988"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674287"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) 具有访问和会话 cookie，可通过应用
 
 [应用程序代理](application-proxy.md)使用以下访问和会话 cookie 设置。
 
-| Cookie 设置 | 默认 | 说明 | 建议 |
+| Cookie 设置 | 默认 | 描述 | 建议 |
 | -------------- | ------- | ----------- | --------------- |
 | 使用仅限 HTTP 的 Cookie | **否** | **是**允许应用程序代理在 HTTP 响应标头中包含 HTTPOnly 标志。 此标志提升安全性，例如，它会阻止客户端脚本 (CSS) 复制或修改 cookie。<br></br><br></br>在我们支持“仅 HTTP”设置之前，应用程序代理为 cookie 加密并通过安全 SSL 通道传输 cookie，以防其被修改。 | 选择“是”，可提升安全性。<br></br><br></br>为那些需要访问会话 cookie 的客户端或用户代理使用“否”。 例如，为通过应用程序代理连接远程桌面网关服务器的 RDP 或 MTSC 客户端使用“否”。|
 | 使用安全 Cookie | **否** | **是**允许应用程序代理在 HTTP 响应标头中包含 Secure 标志。 Secure Cookie 通过经由 TLS 保护的通道（如 HTTPS）来传输 cookie，可增强安全性。 由于以明文形式传输 cookie，这样可防止 cookie 被未经授权的参与方观察到。 | 选择“是”，可提升安全性。|
@@ -43,21 +43,19 @@ Azure Active Directory (Azure AD) 具有访问和会话 cookie，可通过应用
 5. 在“其他设置”下，将 cookie 设置设置为“是”或“否”。
 6. 单击“保存”应用所做的更改。 
 
-<!---
+## <a name="view-current-cookie-settings---powershell"></a>查看当前 cookie 设置-PowerShell
 
-## View current cookie settings - PowerShell
-
-To see the current cookie settings for the application, use this PowerShell command:  
+若要查看应用程序的当前 cookie 设置，请使用此 PowerShell 命令：  
 
 ```PowerShell
 Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl * 
 ```
 
-## Set cookie settings - PowerShell
+## <a name="set-cookie-settings---powershell"></a>将 PowerShell 设置 cookie 设置-
 
-In the following PowerShell commands, ```<ObjectId>``` is the ObjectId of the application. 
+在以下 PowerShell 命令中，```<ObjectId>```是应用程序的 ObjectId。 
 
-**Http-Only Cookie** 
+**仅限 http Cookie** 
 
 ```PowerShell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $true 
@@ -71,11 +69,9 @@ Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabl
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $false 
 ```
 
-**Persistent Cookies**
+**永久 Cookie**
 
 ```PowerShell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $false 
 ```
-
--->

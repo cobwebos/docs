@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 2f7d671dd70571ce167d9c5abd632cdebff329da
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888135"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868538"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](./diagnostic-logs-schema.md)的映射。
@@ -110,7 +110,7 @@ ms.locfileid: "54888135"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | authorization |包含事件的 RBAC 属性的 Blob。 通常包括“action”、“role”和“scope”属性。 |
 | caller |执行操作（UPN 声明或 SPN 声明，具体取决于可用性）的用户的电子邮件地址。 |
@@ -119,15 +119,18 @@ ms.locfileid: "54888135"
 | correlationId |通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
 | description |事件的静态文本说明。 |
 | eventDataId |事件的唯一标识符。 |
+| eventName | 管理事件的友好名称。 |
+| category | 始终"管理" |
 | httpRequest |描述 Http 请求的 Blob。 通常包括“clientRequestId”、“clientIpAddress”和“method”（HTTP 方法。 例如 PUT）。 |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |受影响资源的资源组的名称。 |
 | resourceProviderName |受影响资源的资源提供程序的名称 |
+| resourceType | 管理事件受影响的资源的类型。 |
 | resourceId |受影响资源的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
 | 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
-| status |描述操作状态的字符串。 一些常见值如下：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
+| 状态 |描述操作状态的字符串。 一些常见值如下：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus |通常是相应 REST 调用的 HTTP 状态代码，但也可以包含描述子状态的其他字符串，例如以下常见值：正常(HTTP 状态代码:200)、已创建(HTTP 状态代码:201)、已接受(HTTP 状态代码:202)、没有任何内容(HTTP 状态代码:204)、错误的请求(HTTP 状态代码:400)、找不到(HTTP 状态代码:404)、冲突(HTTP 状态代码:409)、内部服务器错误(HTTP 状态代码:500)、服务不可用(HTTP 状态代码:503)、网关超时(HTTP 状态代码: 504)。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | submissionTimestamp |事件可供查询的时间戳。 |
@@ -254,7 +257,7 @@ ms.locfileid: "54888135"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | channels | 始终是“Admin, Operation” |
 | correlationId | 字符串格式的 GUID。 |
@@ -347,7 +350,7 @@ ms.locfileid: "54888135"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/alertRules |
 | channels | 始终是“Admin, Operation” |
@@ -362,7 +365,7 @@ ms.locfileid: "54888135"
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
 | 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
-| status |描述操作状态的字符串。 一些常见值如下：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
+| 状态 |描述操作状态的字符串。 一些常见值如下：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 对警报而言通常为 NULL。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | submissionTimestamp |事件可供查询的时间戳。 |
@@ -372,7 +375,7 @@ ms.locfileid: "54888135"
 该属性字段包含不同的值，具体取决于警报事件的源。 两种常见警报事件提供程序是活动日志警报和指标警报。
 
 #### <a name="properties-for-activity-log-alerts"></a>活动日志警报的属性
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | properties.subscriptionId | 激活活动日志预警规则的活动日志事件的订阅 ID。 |
 | properties.eventDataId | 激活活动日志预警规则的活动日志事件的事件数据 ID。 |
@@ -383,7 +386,7 @@ ms.locfileid: "54888135"
 | properties.status | 激活活动日志预警规则的活动日志事件的状态。|
 
 #### <a name="properties-for-metric-alerts"></a>指标警报的属性
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | properties.RuleUri | 指标预警规则自身的资源 ID。 |
 | properties.RuleName | 指标预警规则的名称。 |
@@ -456,7 +459,7 @@ ms.locfileid: "54888135"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/autoscaleSettings |
 | channels | 始终是“Admin, Operation” |
@@ -546,7 +549,7 @@ ms.locfileid: "54888135"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
@@ -626,7 +629,7 @@ ms.locfileid: "54888135"
 
 ```
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
@@ -736,7 +739,7 @@ ms.locfileid: "54888135"
 
 ### <a name="policy-event-property-descriptions"></a>Policy 事件属性说明
 
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | authorization | 事件的 RBAC 属性数组。 对于新资源，这是触发评估的请求的操作和范围。 对于现有资源，操作是“Microsoft.Resources/checkPolicyCompliance/read”。 |
 | caller | 对于新资源，为启动部署的标识。 对于现有资源，为 Microsoft Azure Policy Insights RP 的 GUID。 |

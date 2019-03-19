@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 61211db72928bebf0e1ea50cad6362337f66f0eb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859602"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844582"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>实体类型及其在 LUIS 中的目的
 
@@ -201,7 +201,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 ## <a name="regular-expression-entity"></a>正则表达式实体 
 
-正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 使用部分但并非全部 [.Net Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) 库。 
+正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 使用部件，但不是所有[.NET 正则表达式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)库。 
 
 在以下情况下，非常适合使用该实体：
 

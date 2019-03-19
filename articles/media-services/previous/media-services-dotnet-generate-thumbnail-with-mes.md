@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 430e3f0db2f053a2d5a6ea2a3e2a2d1c4418b501
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: e557f7f615a53bc7ed27849e9ea1721328c1afee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995129"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834569"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使 Media Encoder Standard 通过 .NET 来生成缩略图 
 
@@ -66,7 +66,7 @@ ms.locfileid: "55995129"
 
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
         <PngImage Start="{Best}">
           <PngLayers>
@@ -125,7 +125,7 @@ ms.locfileid: "55995129"
     
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
         <JpgImage Start="5%" Step="10%" Range="96%">
           <JpgLayers>
@@ -184,7 +184,7 @@ ms.locfileid: "55995129"
 ### <a name="xml-preset"></a>XML 预设
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
         <JpgImage Start="00:00:30" Step="00:00:01" Range="00:00:01">
           <JpgLayers>
@@ -252,7 +252,7 @@ ms.locfileid: "55995129"
 ### <a name="xml-preset"></a>XML 预设
 ```xml
     <?xml version="1.0" encoding="utf-8"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
     <Encoding>
     <JpgImage Start="5%" Step="10%" Range="96%"><JpgImage Start="00:00:01" Step="00:00:15">
       <JpgLayers>
@@ -351,7 +351,7 @@ ms.locfileid: "55995129"
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
         <H264Video>
           <KeyFrameInterval>00:00:02</KeyFrameInterval>

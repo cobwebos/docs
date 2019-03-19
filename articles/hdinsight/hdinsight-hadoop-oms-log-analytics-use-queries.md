@@ -1,6 +1,6 @@
 ---
-title: 通过查询 Azure Log Analytics 监视 Azure HDInsight 群集
-description: 了解如何在 Azure Log Analytics 上运行查询，以监视在 HDInsight 群集中运行的作业。
+title: 查询 Azure 监视器用于监视 Azure HDInsight 群集的日志
+description: 了解如何在 Azure Monitor 日志以监视在 HDInsight 群集中运行的作业上运行的查询。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,24 +9,26 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
-ms.translationtype: HT
+ms.openlocfilehash: e1187867fc9da9a89f92d7b321c8703ee7a8a407
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386496"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889250"
 ---
-# <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>通过查询 Azure Log Analytics 监视 Azure HDInsight 群集
+# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>查询 Azure 监视器用于监视 HDInsight 群集的日志
 
-了解一些基本的方案，即如何使用 Azure Log Analytics 来监视 Azure HDInsight 群集：
+了解如何使用 Azure Monitor 日志来监视 Azure HDInsight 群集上的一些基本方案：
 
 * [分析 HDInsight 群集指标](#analyze-hdinsight-cluster-metrics)
 * [搜索特定的日志消息](#search-for-specific-log-messages)
 * [创建事件警报](#create-alerts-for-tracking-events)
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-* 必须先配置 HDInsight 群集，才能使用 Azure Log Analytics，并且已将特定于 HDInsight 群集的 Log Analytics 管理解决方案添加到工作区。 有关说明，请参阅[将 Azure Log Analytics 用于 HDInsight 群集](hdinsight-hadoop-oms-log-analytics-tutorial.md)。
+## <a name="prerequisites"></a>必备组件
+
+* 您必须配置一个 HDInsight 群集，可以使用 Azure Monitor 日志，并添加 HDInsight 特定于群集的 Azure Monitor 日志监视工作区的解决方案。 有关说明，请参阅[与 HDInsight 群集使用 Azure Monitor 日志](hdinsight-hadoop-oms-log-analytics-tutorial.md)。
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>分析 HDInsight 群集指标
 
@@ -34,7 +36,7 @@ ms.locfileid: "53386496"
 
 1. 从 Azure 门户打开关联到 HDInsight 群集的 Log Analytics 工作区。
 2. 选择“日志搜索”磁贴。
-3. 在搜索框中键入以下查询，在所有指标中搜索所有适用于所有 HDInsight 群集（已配置为使用 Azure Log Analytics）的指标，然后选择“运行”。
+3. 键入以下查询在搜索框中搜索所有 HDInsight 群集配置为使用 Azure Monitor 日志，然后选择所有可用度量值的所有指标**运行**。
 
         search *
 
@@ -67,7 +69,7 @@ ms.locfileid: "53386496"
 
 1. 从 Azure 门户打开关联到 HDInsight 群集的 Log Analytics 工作区。
 2. 选择“日志搜索”磁贴。
-3. 键入以下查询，搜索所有适用于所有 HDInsight 群集（已配置为使用 Azure Log Analytics）的错误消息，然后选择“运行”。 
+3. 键入以下查询以搜索所有 HDInsight 群集配置为使用 Azure Monitor 日志的所有错误消息，然后选择**运行**。 
 
          search "Error"
 
@@ -117,11 +119,11 @@ ms.locfileid: "53386496"
 3. 选择要编辑或删除的警报。
 4. 可以使用以下选项：**保存**、**放弃**、**禁用**和**删除**。
 
-    ![HDInsight Log Analytics 警报删除编辑](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![HDInsight Azure Monitor 日志警报删除编辑](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-有关详细信息，请参阅[使用 Log Analytics 中的警报规则](../log-analytics/log-analytics-alerts-creating.md)。
+有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/platform/alerts-metric.md)。
 
 ## <a name="see-also"></a>另请参阅
 
-* [使用 Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
-* [在 Log Analytics 中创建警报规则](../log-analytics/log-analytics-alerts-creating.md)
+* [OMS 日志分析：视图设计器](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [创建、 查看和管理使用 Azure Monitor 的指标警报](../azure-monitor/platform/alerts-metric.md)

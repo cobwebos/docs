@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9bd015076cdbd70768b1359fac0cfc893d871513
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 360fd8e7ab0f7a85dbeed2bdbc7da379cbcfe91a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149588"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737019"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
 
@@ -33,33 +33,33 @@ Predicate 元素定义基本验证，用以检查声明类型的值并返回 `tr
 
 Predicates 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | Predicate | 1:n | 谓词列表。 | 
 
 Predicate 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词的标识符。 其他元素可以在策略中使用此标识符。 |
 | 方法 | 是 | 用于验证的方法类型。 可能的值：IsLengthRange、MatchesRegex、IncludesCharacters 或 IsDateRange。 IsLengthRange 值检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 MatchesRegex 值检查字符串声明值是否与正则表达式相匹配。 IncludesCharacters 值检查字符串声明值是否包含字符集。 IsDateRange 值检查日期声明值是否在指定的最小和最大参数范围内。 |
 
 Predicate 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 | 检查失败时向用户发送的错误消息。 此字符串可以使用[语言自定义](localization.md)进行本地化 |
 | parameters | 1:1 | 用于字符串验证的方法类型参数。 | 
 
 Parameters 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | 参数 | 1:n | 用于字符串验证的方法类型参数。 | 
 
 Parameter 元素包含以下属性：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | ID | 1:1 | 该参数的标识符。 |
 
@@ -132,56 +132,56 @@ Parameter 元素包含以下属性：
 
 PredicateValidations 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1:n | 谓词验证列表。 | 
 
 PredicateValidation 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。 ClaimType 元素可以在策略中使用此标识符。 |
 
 PredicateValidation 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1:n | 谓词组列表。 | 
 
 PredicateGroups 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1:n | 谓词列表。 | 
 
 PredicateGroup 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词组的标识符。  |
 
 PredicateGroup 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 |  谓词的说明，可以帮助用户了解应键入哪些值。 | 
 | PredicateReferences | 1:n | 谓词引用的列表。 | 
 
 PredicateReferences 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | MatchAtLeast | 否 | 指定该值针对要接受的输入必须至少匹配多个谓词定义。 |
 
 PredicateReferences 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1:n | 对谓词的引用。 | 
 
 PredicateReference 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。  |
 
@@ -350,7 +350,7 @@ PredicateReference 元素包含以下属性：
 
 ![Predicate 进程](./media/predicates/predicates-pass.png)
 
- ## <a name="configure-a-date-range"></a>配置日期范围
+## <a name="configure-a-date-range"></a>配置日期范围
 
 借助 Predicates 和 PredicateValidations 元素，你可以通过使用 `DateTimeDropdown` 来控制 UserInputType 的最小和最大日期值。 如下例所示，可使用 `IsDateRange` 方法创建 Predicate 并提供最小和最大参数。
 

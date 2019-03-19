@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 928fe956dbdc5020f273e59f4aaf3e4b690384f9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b7c4ac61caae371ebce7c273a4b48244a45c3519
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202309"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>教程：Azure Active Directory 与 Infor Retail - Information Management 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56202309"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Infor Retail - Information Management 的集成，需要以下项：
 
@@ -112,6 +112,7 @@ ms.locfileid: "56202309"
     ![Infor Retail – Information Management 域和 URL 单一登录信息 IDP](./media/inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_url.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
+    
     |   |
     | -- |
     | `https://<company name>.mingle.infor.com` |

@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 112a986efc11822f6c847511a33be6206b1f00da
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: e7e4e898142d6f9d1a93e91c1f1476ff81fc7d3c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717478"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734653"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
 
@@ -54,7 +54,7 @@ FunctionsProject
 
 存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都有自己的代码文件 (.fsx) 和绑定配置文件 (function.json)。
 
-[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](functions-triggers-bindings.md#local-development-azure-functions-core-tools)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#local-development-azure-functions-core-tools)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 ## <a name="binding-to-arguments"></a>绑定到参数
 对于每个绑定支持某些参数，请参阅 [Azure 函数触发器和绑定开发人员参考](functions-triggers-bindings.md)。 例如，blob 触发器支持的其中一个参数绑定是 POCO，可以使用 F # 记录来表示。 例如：

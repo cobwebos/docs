@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: magattus
-ms.openlocfilehash: 526f3522bff05618189ad4f8205fbb61afc47fdc
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.openlocfilehash: 5be1835de2aa1631c4ec2115dd34ea85f0267403
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320276"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870884"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>针对内容分发类型优化 Azure CDN
 
@@ -66,7 +66,7 @@ Microsoft 建议测试不同提供程序的性能差异，以选择最适合分�
 
 1. 在**来自 Akamai 的标准 Azure CDN** 配置文件中，选择一个终结点。
 
-    ![终结点选择 ](./media/cdn-optimization-overview/01_Akamai.png)
+    ![终结点选择](./media/cdn-optimization-overview/01_Akamai.png)
 
 2. 在“设置”下选择“优化”。 然后，在“优化针对方案”下拉列表中选择一种类型。
 

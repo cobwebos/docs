@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: a447c359c38c2173ea42b6d717067fc8b3a88f9a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 5b49db8d7e8360837dc209e98123eeccd5542769
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875485"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837739"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure 媒体服务 v3 常见问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "55875485"
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>什么是处理视频的建议方法？
 
-建议使用指向视频的 HTTP(s) URL 提交作业。 有关详细信息，请参阅 [HTTP(s) 引入](job-input-from-http-how-to.md)。 在可以处理之前，无需先使用输入视频创建资产。
+[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 一个[作业](https://docs.microsoft.com/rest/api/media/jobs)是要应用到媒体服务的实际请求**转换**为给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
 ### <a name="how-does-pagination-work"></a>分页是如何工作的？
 
@@ -45,6 +45,29 @@ ms.locfileid: "55875485"
 媒体服务 v3 实时编码尚不支持在实时流过程中插入视频或图像盖板。 
 
 可以使用[实时本地编码器](recommended-on-premises-live-encoders.md)切换源视频。 许多应用提供切换源（包括 Telestream Wirecast、Switcher Studio（在 iOS 上）、OBS Studio（免费应用）等）的功能。
+
+## <a name="content-protection"></a>内容保护
+
+### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>在使用 JWT 令牌请求许可证或密钥之前，如何以及在何处获取 JWT 令牌？
+
+1. 在生产环境中，需要获取安全令牌服务 (STS)（Web 服务），以便根据 HTTPS 请求颁发 JWT 令牌。 对于测试，可以使用 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 定义的 **GetTokenAsync** 方法中所示的代码。
+2. 对用户进行身份验证后，播放器需要向 STS 发出请求以获取此类令牌，并将其分配为令牌的值。 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)。
+
+* 有关使用对称和非对称密钥运行 STS 的示例，请参阅 [https://aka.ms/jwt](https://aka.ms/jwt)。 
+* 有关使用此类 JWT 令牌的、基于 Azure Media Player 的播放器示例，请参阅 [https://aka.ms/amtest](https://aka.ms/amtest)（展开“player_settings”链接可查看令牌输入）。
+
+### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>如何授权使用 AES 加密流式传输视频的请求？
+
+正确的方法是利用 STS（安全令牌服务）：
+
+在 STS 中，根据用户配置文件添加不同的声明（例如“高级用户”、“基本用户”、“免费试用版用户”）。 在 JWT 中添加不同的声明后，用户可以查看不同的内容。 当然，对于不同的内容/资产，ContentKeyPolicyRestriction 包含相应的 RequiredClaims。
+
+使用 Azure 媒体服务 Api 用于配置许可证/密钥传递和加密你的资产 (如中所示[此示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs))。
+
+有关详细信息，请参阅：
+
+- [内容保护概述](content-protection-overview.md)
+- [设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)
 
 ## <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3 
 
@@ -64,5 +87,4 @@ ms.locfileid: "55875485"
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [媒体服务 v3 概述](media-services-overview.md)
+[媒体服务 v3 概述](media-services-overview.md)

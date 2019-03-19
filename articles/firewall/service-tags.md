@@ -5,23 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 2/21/2019
+ms.date: 2/25/2019
 ms.author: victorh
-ms.openlocfilehash: 9ecc5d3779ac6632f4a5c05914cbb0e756c79e91
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 1d03d896de947fcc938619c52a3690962a0d2d6c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458214"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805614"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure 防火墙服务标记
 
 服务标记表示一组 IP 地址前缀，帮助最大程度地降低安全规则创建过程的复杂性。 无法创建自己的服务标记，也无法指定要将哪些 IP 地址包含在标记中。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 Azure 防火墙服务标记可用于网络规则目标字段。 它们可用于代替特定的 IP 地址。
-
-> [!NOTE]
-> 服务标记正逐步添加到部分区域中，并且不久以后将在所有区域中都可使用。
 
 ## <a name="supported-service-tags"></a>支持的服务标记
 

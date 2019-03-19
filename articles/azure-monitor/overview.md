@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0ef11355d7a65bd2c9b7ddfb6c4db2ba02538062
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: d0902c0e0b4c669f3918155f8416f064485abbea
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270362"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874896"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -40,7 +40,7 @@ Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azur
 
 ![度量值](media/overview/metrics.png)
 
-可以使用[查询](log-query/log-query-overview.md)来分析 Azure Monitor 收集的日志数据，这些查询可以快速检索、合并和分析所收集的数据。  可以使用 Azure 门户中的 [Log Analytics](log-query/portals.md) 创建和测试查询，然后可以直接使用这些工具分析数据，或者保存查询以便与[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)配合使用。
+可以使用[查询](log-query/log-query-overview.md)来分析 Azure Monitor 收集的日志数据，这些查询可以快速检索、合并和分析所收集的数据。  可以创建和测试使用的查询[Log Analytics](log-query/portals.md)在 Azure 门户，然后将其直接使用这些工具分析数据或保存查询供[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)。
 
 Azure Monitor 使用 Azure 数据资源管理器使用的 [Kusto 查询语言](/azure/kusto/query/)的某个版本，该查询语言适用于简单的日志查询，但也包括高级功能，例如聚合、联接和智能分析。 可以通过[多个课程](log-query/get-started-queries.md)快速了解此查询语言。  特定指南提供给已熟悉 [SQL](log-query/sql-cheatsheet.md) 和 [Splunk](log-query/splunk-cheatsheet.md) 的用户。
 
@@ -130,14 +130,12 @@ Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，�
 通常，我们需要将 Azure Monitor 与其他系统集成，并生成使用监视数据的自定义解决方案。 其他 Azure 服务使用 Azure Monitor 来提供这种集成。
 
 ### <a name="event-hub"></a>事件中心
-[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs)是一个流式传输平台和事件引入服务，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储数据。 使用事件中心可[将 Azure Monitor 中的日志数据流式传输](platform/stream-monitoring-data-event-hubs.md)到合作伙伴 SIEM 和监视工具。
+[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs)是一个流式传输平台和事件引入服务，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储数据。 使用事件中心[流式传输 Azure Monitor 数据](platform/stream-monitoring-data-event-hubs.md)到合作伙伴 SIEM 和监视工具。
 
-> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
 ### <a name="logic-apps"></a>逻辑应用
 使用[逻辑应用](https://azure.microsoft.com/services/logic-apps)服务可以通过与不同系统和服务集成的工作流将任务和业务流程自动化。 其中提供了用于在 Azure Monitor 中读取和写入指标与日志的活动，使你能够生成与其他各种系统相集成的工作流。
 
-![逻辑应用](platform/media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="api"></a>API
 可以使用多个 API 从/向 Azure Monitor 读取和写入指标与日志，以及访问生成的警报。 还可以配置和检索警报。 这样，几乎可以不受限制地生成与 Azure Monitor 集成的自定义解决方案。
