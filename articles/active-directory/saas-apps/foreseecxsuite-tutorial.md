@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2364152cc897ac02c3fcdff68423c64737bb1a78
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 104caa001f773c48a708879f3f9b50b74190fc74
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187655"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>教程：Azure Active Directory 与 ForeSee CX Suite 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56187655"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 ForeSee CX Suite 的集成，需要准备好以下各项：
 
@@ -120,7 +120,7 @@ ms.locfileid: "56187655"
 
     ![ForeSee CX Suite 域和 URL 单一登录信息](./media/foreseecxsuite-tutorial/urlupload.png)
 
-1. 如果没有**服务提供程序元数据文件**，请执行以下步骤：
+1. 如果您尚未**服务提供程序元数据文件**，执行以下步骤：
 
     ![ForeSee CX Suite 域和 URL 单一登录信息](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_url.png)
 

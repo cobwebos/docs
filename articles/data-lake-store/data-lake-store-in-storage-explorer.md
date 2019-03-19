@@ -1,7 +1,7 @@
 ---
 title: 在 Azure 存储资源管理器中管理 Azure Data Lake Storage Gen1 资源
 description: 了解如何在 Azure 存储资源管理器中访问和管理 Azure Data Lake Storage Gen1 数据和资源
-Keywords: Azure Data Lake Store, Azure Storage Explorer
+Keywords: Azure Data Lake Store，Azure 存储资源管理器
 services: Data Lake Store
 documentationcenter: ''
 author: jejiang
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: bf2af67bb9498d4814f63fa66fdd50171ce0b4a1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966256"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534338"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>使用存储资源管理器管理 Azure Data Lake Storage Gen1 资源
 
@@ -27,7 +27,7 @@ ms.locfileid: "52966256"
 
 另一优势是，不需拥有订阅权限即可管理 Data Lake Storage Gen1 数据。 在存储资源管理器中，可以将 Data Lake Storage Gen1 路径附加到“本地和附加”节点，只要有人授予权限即可。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成本文中的步骤，需要符合以下先决条件：
 
 *   Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial)。
@@ -195,7 +195,7 @@ Data Lake Storage Gen1 帐户的资源包含文件夹和文件。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 查看[最新的存储资源管理器发行说明和视频](http://www.storageexplorer.com)。
+* 查看[最新的存储资源管理器发行说明和视频](https://www.storageexplorer.com)。
 * 了解如何[在 Azure 存储资源管理器中管理 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)。
 * [存储资源管理器入门](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
 * [Azure Data Lake Storage Gen1 入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)。

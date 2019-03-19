@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2b02b048719dd7707db7e97df3641a314b512177
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861674"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431132"
 ---
 # <a name="analyze-method"></a>分析方法
 
@@ -24,7 +24,7 @@ ms.locfileid: "55861674"
 > 语言分析预览版已在 2018 年 8 月 9 日停止使用。 我们建议使用 [Azure 机器学习文本分析模块](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)进行文本处理和分析。
 
 “Analyze”REST API 用于分析给定的自然语言输入。
-它可能只涉及查找输入内的[句子和令牌](Sentences-and-Tokens.md)、查找[词性标记](POS-tagging.md)或查找[结构树](Constituency-Parsing.md)。
+这可能涉及仅查找[句子和令牌](Sentences-and-Tokens.md)内的输入，查找[一部分的语音标记](POS-tagging.md)，或查找[角色群树](Constituency-Parsing.md)。
 可通过选取相关分析器指定想要的结果。
 要列举所有可用分析器，请查看**[分析器](AnalyzersMethod.md)**。
 
@@ -38,7 +38,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>请求参数
 
-Name | Type | 必选 | 说明
+名称 | Type | 需要 | 描述
 -----|-------|----------|------------
 **语言**    | 字符串 | 是 | 将用于分析的两个字母的 ISO 语言编码。 例如，English 为“en”。
 **analyzerIds** | 字符串列表 | 是 | 要应用的分析器的 GUID 列表。 有关详细信息，请参阅分析器文档。
@@ -50,7 +50,7 @@ Name | Type | 必选 | 说明
 
 结果如下：
 
-Name | 类型 | 说明
+名称 | 类型 | 描述
 -----|------|--------------
 analyzerId | 字符串 | 指定分析器的 GUID
 结果 | 对象 | 分析器结果
@@ -59,7 +59,7 @@ analyzerId | 字符串 | 指定分析器的 GUID
 
 ### <a name="tokens-response-json"></a>令牌响应 (JSON)
 
-Name | 类型 | 说明
+名称 | 类型 | 描述
 -----|------|-------------
 结果 | 句子对象列表 | 文本内确定的句子边界 |
 result[x].Offset | int | 每个句子的起始字符偏移量 |

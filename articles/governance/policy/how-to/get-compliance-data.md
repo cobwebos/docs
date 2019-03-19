@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 40d0250101e4653cd5ab2a3610473d9c577d8998
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: df5b6268a2ecd7062969aac9d663ee751eeab130
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114104"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535198"
 ---
 # <a name="getting-compliance-data"></a>获取符合性数据
 
@@ -28,7 +28,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 在探讨符合性报告方法之前，让我们了解符合性信息的更新时间和频率，以及触发评估周期的事件。
 
 > [!WARNING]
-> 如果符合性状态被报告为“未注册”，请验证是否已注册 Microsoft.PolicyInsights 资源提供程序，并验证用户是否具有适当的基于角色的访问控制 (RBAC) 权限，如[此处](../overview.md#rbac-permissions-in-azure-policy)所述。
+> 如果符合性状态被报告成**未注册**，确认**Microsoft.PolicyInsights**注册资源提供程序和用户具有适当的基于角色的访问控制 （RBAC) 权限，如中所述[Azure 策略中的 RBAC](../overview.md#rbac-permissions-in-azure-policy)。
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -142,25 +142,11 @@ Azure 门户展示了一个图形体验用于可视化和了解环境中的符�
 
 ![策略符合性活动日志](../media/getting-compliance-data/compliance-activitylog.png)
 
-### <a name="change-history-preview"></a>更改历史记录（预览版）
+### <a name="understand-non-compliance"></a>了解非符合性
 
-作为新的**公共预览版**的一部分，提供不符合资源过去 14 天的更改历史记录。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或修改不符合资源的资源管理器属性时，就会触发更改检测。
+<a name="change-history-preview"></a>
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
-
-1. 在“概览”或“符合性”页，选择“不符合”的策略。
-
-1. 在“策略符合性”页的“资源符合性”选项卡下，选择“不符合”的资源。
-
-1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡。 此时会显示检测到的更改的列表（如果存在）。
-
-   ![策略更改历史记录 - 选项卡](../media/getting-compliance-data/change-history-tab.png)
-
-1. 选择其中一个检测到的更改。 不符合资源的_视觉差异_在“更改历史记录”页上显示。
-
-   ![策略更改历史记录 - 视觉差异](../media/getting-compliance-data/change-history-visual-diff.png)
-
-_视觉差异_可帮助识别资源的更改。 检测到的更改可能与导致资源不符合所选策略的因素无关。
+当资源被确定为**符合**，有许多可能的原因。 若要确定资源的原因**不符合**或者若要查找负责更改，请参阅[确定不符合性](./determine-non-compliance.md)。
 
 ## <a name="command-line"></a>命令行
 
@@ -430,7 +416,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-如果已将包含 `AzureActivity` 解决方案的 [Log Analytics 工作区](../../../log-analytics/log-analytics-overview.md)绑定到订阅，则还可以使用简单的 Azure 数据资源管理器查询和 `AzureActivity` 表，查看评估周期中的不符合结果。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
+如果有[Log Analytics 工作区](../../../log-analytics/log-analytics-overview.md)与`AzureActivity`从[Activity Log Analytics 解决方案](../../../azure-monitor/platform/collect-activity-logs.md)绑定到你的订阅，你还可以查看从评估周期中使用的非符合性结果简单的 Kusto 查询和`AzureActivity`表。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
 
 ![使用 Azure Monitor 日志实现的策略符合性](../media/getting-compliance-data/compliance-loganalytics.png)
 

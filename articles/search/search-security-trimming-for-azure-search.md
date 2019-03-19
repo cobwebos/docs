@@ -9,12 +9,12 @@ author: brjohnstmsft
 ms.author: brjohnst
 manager: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 84147b250ea17df9af67cc8a9025cdf6ec59a705
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: 326a449d3992d22a4be2d365061c99ef8b13aef9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314221"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453484"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>用于在 Azure 搜索中修整结果的安全筛选器
 
@@ -33,7 +33,7 @@ ms.locfileid: "53314221"
 >[!NOTE]
 > 本文档未介绍检索主体标识符的过程。 应该从标识服务提供程序获取该标识符。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设读者拥有 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure 搜索服务](https://docs.microsoft.com/azure/search/search-create-service-portal)和 [Azure 搜索索引](https://docs.microsoft.com/azure/search/search-create-index-portal)。  
 
@@ -152,7 +152,7 @@ api-key: [admin or query key]
 ```
 ## <a name="conclusion"></a>结束语
 
-本文介绍了如何基于用户标识和 Azure 搜索 `search.in()` 函数筛选结果。 可以使用此函数传入请求用户的主体标识符，以将其与每个目标文档关联的主体标识符进行匹配。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
+本文介绍了如何基于用户标识和 Azure 搜索 `search.in()` 函数筛选结果。 此函数可用于传入请求的用户可以与每个目标文档关联的主体标识符匹配的主体标识符。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
  
 ## <a name="see-also"></a>另请参阅
 

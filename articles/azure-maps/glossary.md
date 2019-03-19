@@ -4,16 +4,16 @@ description: 与 Azure Maps、Location Based Services 和 GIS 相关的常用术
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
-ms.topic: resource
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 3b8af6f3f91c54c78cc3b277068272c27055e4aa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 11e49d362508e9720cf65fc20e020930b5f5c3ad
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816877"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775027"
 ---
 # <a name="glossary"></a>术语表
 

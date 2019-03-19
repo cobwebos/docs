@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f1fa78c9345d5bbe0120ad203c738c441b2e1917
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: f53ae122e9888f3e537a3557b6ac5bd76856c2eb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991542"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767543"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>使用 DRM 动态加密和许可证传送服务
 
@@ -61,7 +61,7 @@ ms.locfileid: "55991542"
 
 ![具有 DRM 保护的视频的 AMS](./media/protect-with-drm/ams_player.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 以下是完成本教程所需具备的条件。
 

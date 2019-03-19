@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: eb5b4b3741b064a934833b3094c69db85e9ccabb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5eac98ec88b960956c9a0931673e67f530aef8da
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238703"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542176"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk 服务：颁发者名称和颁发者密钥
 
@@ -38,8 +38,8 @@ Azure BizTalk 服务使用 Service Bus 颁发者名称和颁发者密钥以及 A
 ## <a name="access-control-issuer-name-and-issuer-key"></a>Access Control 颁发者名称和颁发者密钥
 Access Control 颁发者名称和颁发者密钥由以下各项使用：
 
-* 在 Visual Studio 中创建的 Azure BizTalk 服务应用程序：要在 Visual Studio 中成功将 BizTalk 服务应用程序部署到 Azure，请输入访问控制颁发者名称和颁发者密钥。 
-* Azure BizTalk 服务门户：创建 BizTalk 服务并打开 BizTalk 服务门户时，会使用相同的访问控制值对访问控制颁发者名称和颁发者密钥自动注册部署。
+* 在 Visual Studio 中创建 Azure BizTalk 服务应用程序：若要成功部署到 Azure BizTalk 服务应用程序在 Visual Studio 中的，输入 Access Control 颁发者名称和颁发者密钥。 
+* Azure BizTalk 服务门户：当你创建 BizTalk 服务，并打开 BizTalk 服务门户时，Access Control 颁发者名称和颁发者密钥自动注册为使用相同的访问控制值部署。
 
 ### <a name="get-the-access-control-issuer-name-and-issuer-key"></a>获取访问控制颁发者名称和颁发者密钥
 
@@ -77,7 +77,7 @@ Access Control 颁发者名称和颁发者密钥由以下各项使用：
 Service Bus 颁发者名称和颁发者密钥由 BizTalk 适配器服务使用。 在 Visual Studio 中的 BizTalk 服务项目中，使用 BizTalk 适配器服务连接到本地业务线 (LOB) 系统。 若要连接，请创建 LOB 中继并输入 LOB 系统的详细信息。 在执行此操作时，还可以输入 Service Bus 颁发者名称和颁发者密钥。
 
 ### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>检索 Service Bus 颁发者名称和颁发者密钥
-1. 登录到 [Azure 门户](http://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 搜索“服务总线”，并选择命名空间。 
 3. 打开“共享访问策略”属性，选择策略，并查看“连接字符串”以获取名称和密钥值。  
 
@@ -85,16 +85,16 @@ Service Bus 颁发者名称和颁发者密钥由 BizTalk 适配器服务使用�
 其他 Azure BizTalk 服务主题：
 
 * [安装 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [教程：Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [教程：Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
 * [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>另请参阅
 * [如何：使用 ACS 管理服务配置服务标识](https://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
-* [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [BizTalk 服务：开发人员、 基本、 标准和高级版图表](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
 * [BizTalk 服务：预配](https://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [BizTalk 服务：预配状态图表](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk 服务：设置状态图表](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [BizTalk 服务：仪表板、 监视和缩放选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk 服务：备份和还原](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [BizTalk 服务：限制](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
 

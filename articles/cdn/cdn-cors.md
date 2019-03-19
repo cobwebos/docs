@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f9429e88525e27c0b6bad29d1927d53d05dfbcc8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 3c8fab85d71f5f81bbf81bc3dd7a22d6c0b7f11b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765358"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551834"
 ---
 # <a name="using-azure-cdn-with-cors"></a>将 Azure CDN 与 CORS 一起使用
 ## <a name="what-is-cors"></a>什么是 CORS？
-CORS（跨域资源共享）是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 为了减少跨站点脚本攻击的可能性，所有现代 Web 浏览器都实现了称为[同源策略](http://www.w3.org/Security/wiki/Same_Origin_Policy)的安全限制。  这可以防止网页调用其他域中的 API。  CORS 提供了一种安全方式，允许一个源（源域）调用另一个源中的 API。
+CORS（跨域资源共享）是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 为了减少跨站点脚本攻击的可能性，所有现代 Web 浏览器都实现了称为[同源策略](https://www.w3.org/Security/wiki/Same_Origin_Policy)的安全限制。  这可以防止网页调用其他域中的 API。  CORS 提供了一种安全方式，允许一个源（源域）调用另一个源中的 API。
 
 ## <a name="how-it-works"></a>工作原理
 CORS 请求有两种类型：简单请求和复杂请求。
@@ -76,7 +76,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Verizon 的 Azure CDN 高级版**使用[兼容 Perl 的正则表达式](http://pcre.org/)作为其正则表达式的引擎。  可以使用[正则表达式 101](https://regex101.com/) 等工具验证正则表达式。  请注意，“/”字符在正则表达式中有效且无需转义，但是转义该字符被认为是最佳实践，并且一些正则表达式验证器也期望对其进行转义。
+> **Verizon 的 Azure CDN 高级版**使用[兼容 Perl 的正则表达式](https://pcre.org/)作为其正则表达式的引擎。  可以使用[正则表达式 101](https://regex101.com/) 等工具验证正则表达式。  请注意，“/”字符在正则表达式中有效且无需转义，但是转义该字符被认为是最佳实践，并且一些正则表达式验证器也期望对其进行转义。
 > 
 > 
 

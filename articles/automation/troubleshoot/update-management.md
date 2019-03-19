@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 0b92d36287646038d9195f7ba39352d8ced9a3b6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: a8be44201a2181ab252dfba501469719dd675ffa
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270260"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410156"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -44,7 +44,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 1. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理正常工作。
 2. 如果使用的是克隆的映像：
-   1. 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下。
+   1. 在 Log Analytics 工作区中，从已保存的搜索作用域配置为删除 VM`MicrosoftDefaultScopeConfig-Updates`如果它所示。 已保存的搜索位于工作区的“常规”下。
    2. 运行 `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`
    3. 运行 `Restart-Service HealthService` 重新启动 `HealthService`。 这将重新创建密钥，并生成新的 UUID。
    4. 如果此操作无效，请首先对映像进行系统准备，然后在事后安装 MMA 代理。
@@ -78,11 +78,11 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="nologs"></a>场景：Log Analytics 中未显示计算机的更新管理数据
+### <a name="nologs"></a>场景：不显示在一台计算机的 Azure Monitor 日志中的更新管理数据
 
 #### <a name="issue"></a>问题
 
-你的计算机在“合规性”下显示为“未评估”，但你会在 Log Analytics 中看到混合 Runbook 辅助角色的检测信号数据，而不是“更新管理”。
+有显示为计算机**未评估**下**符合性**，但您看到的混合 Runbook 辅助角色但不是更新管理的 Azure Monitor 日志中的检测信号数据。
 
 #### <a name="cause"></a>原因
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+ms.openlocfilehash: 84251b16d91ca74e11298c7aa54c9a7a8b7fd6d6
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743657"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576712"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -111,7 +111,50 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 ![已安装的服务](./media/hdinsight-high-availability-linux/services.png)
 
-服务旁边可能会出现一系列表示状态的图标。 可以使用页面顶部的“警报”链接查看与服务相关的任何警报。 可以选择每个服务来查看其详细信息。
+服务旁边可能会出现一系列表示状态的图标。 可以使用页面顶部的“警报”链接查看与服务相关的任何警报。  Ambari 提供多个预定义的警报。
+
+以下警报帮助监视群集的可用性：
+
+| 警报名称                               | 描述                                                                                                                                                                                  |
+|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 指标监视状态                    | 此警报表示指标监视进程由监视器状态脚本的状态。                                                                                   |
+| Ambari 代理检测信号                   | 如果服务器将无法与代理的联系，则会触发此警报。                                                                                                                        |
+| ZooKeeper 服务器进程                 | 如果 ZooKeeper 服务器进程无法确定处于开机状态且正在侦听网络上，会触发此主机级别警报。                                                               |
+| IOCache 元数据服务器状态           | 如果 IOCache 元数据服务器不能确定能够正常运行并且可以为客户端请求做出响应，则触发此主机级警报                                                            |
+| JournalNode Web UI                       | 无法访问 JournalNode Web UI 时，会触发此主机级别警报。                                                                                                                 |
+| Spark2 Thrift Server                     | 如果无法确定 Spark2 Thrift 服务器能够正常运行，则会触发此主机级别警报。                                                                                                |
+| 历史记录服务器进程                   | 如果历史记录服务器进程无法建立能够正常运行且正在侦听网络上，会触发此主机级别警报。                                                                |
+| 历史记录服务器 Web UI                    | 无法访问 History Server Web UI 时，会触发此主机级别警报。                                                                                                              |
+| ResourceManager Web UI                   | 无法访问 ResourceManager Web UI 时，会触发此主机级别警报。                                                                                                             |
+| NodeManager 运行状况摘要               | 如果有不正常 NodeManagers 会触发此服务级别警报                                                                                                                    |
+| 应用程序时间线 Web UI                      | 无法访问应用程序时间线 Server Web UI 时，会触发此主机级别警报。                                                                                                         |
+| DataNode 运行状况摘要                  | 如果有不正常数据节点，会触发此服务级别警报                                                                                                                       |
+| NameNode Web UI                          | 无法访问 NameNode Web UI 时，会触发此主机级别警报。                                                                                                                    |
+| ZooKeeper 控制器故障转移过程    | 如果已确认能够正常运行且正在侦听网络上不能为 ZooKeeper 故障转移控制器过程，会触发此主机级别警报。                                                   |
+| Oozie Server Web UI                      | 无法访问 Oozie server Web UI 时，会触发此主机级别警报。                                                                                                                |
+| Oozie 服务器状态                      | 如果 Oozie 服务器不能确定能够正常运行并且可以为客户端请求做出响应，则会触发此主机级别警报。                                                                      |
+| Hive 元存储过程                   | 如果 Hive 元存储过程不能确定处于开机状态且正在侦听网络上，会触发此主机级别警报。                                                                 |
+| HiveServer2 Process                      | 如果 HiveServer 不能确定能够正常运行并且可以为客户端请求做出响应，则会触发此主机级别警报。                                                                        |
+| WebHCat 服务器状态                    | 如果 templeton 服务器状态不正常，则会触发此主机级别警报。                                                                                                            |
+| 可用百分比 ZooKeeper 服务器      | 如果向群集中 ZooKeeper 服务器下的数大于配置的严重阈值，则会触发此警报。 它聚合 ZooKeeper 进程将进行检查的结果。     |
+| Spark2 Livy Server                       | 如果无法确定 Livy2 服务器能够正常运行，则会触发此主机级别警报。                                                                                                        |
+| Spark2 历史记录服务器                    | 如果无法确定 Spark2 历史记录服务器能够正常运行，则会触发此主机级别警报。                                                                                               |
+| 指标收集器进程                | 如果指标收集器不能为已确认能够正常运行且正在侦听已配置的端口上的几个秒等于阈值，则会触发此警报。                                 |
+| 指标收集器-HBase Master 过程 | 如果指标收集器的 HBase 主进程不能为已确认能够正常运行且正在侦听已配置的严重阈值，以秒为单位的网络上，会触发此警报。 |
+| 可用百分比指标监视器       | 如果进程都没有启动的指标监视和网络上侦听的已配置的警告和严重阈值的百分比，则会触发此警报。                             |
+| 可用百分比 NodeManagers           | 如果 NodeManagers 关闭群集中的数大于配置的严重阈值，则会触发此警报。 它聚合 NodeManager 进程将进行检查的结果。        |
+| NodeManager 运行状况                       | 此主机级警报检查可用的 NodeManager 组件中的节点运行状况属性。                                                                                              |
+| NodeManager Web UI                       | 无法访问 NodeManager Web UI 时，会触发此主机级别警报。                                                                                                                 |
+| NameNode 高可用性运行状况        | 如果 Active NameNode 或备用 NameNode 未运行，则会触发此服务级别警报。                                                                                     |
+| DataNode 过程                         | 如果单个 DataNode 进程不能为建立能够正常运行且正在侦听网络上，会触发此主机级别警报。                                                         |
+| DataNode Web UI                          | 无法访问 DataNode Web UI 时，会触发此主机级别警报。                                                                                                                    |
+| 可用百分比 JournalNodes           | 如果 JournalNodes 关闭群集中的数大于配置的严重阈值，则会触发此警报。 它聚合 JournalNode 进程将进行检查的结果。        |
+| 可用百分比数据节点              | 如果关闭数据节点群集中的数大于配置的严重阈值，则会触发此警报。 它聚合 DataNode 进程将进行检查的结果。              |
+| Zeppelin 服务器状态                   | 如果 Zeppelin 服务器不能确定能够正常运行并且可以为客户端请求做出响应，则会触发此主机级别警报。                                                                   |
+| HiveServer2 Interactive Process          | 如果 HiveServerInteractive 不能确定能够正常运行并且可以为客户端请求做出响应，则会触发此主机级别警报。                                                             |
+| LLAP 应用程序                         | 如果 LLAP 应用程序不能确定能够正常运行并且可以对请求做出响应，则会触发此警报。                                                                                    |
+
+可以选择每个服务来查看其详细信息。
 
 尽管服务页提供了有关每个服务的状态和配置的信息，但并不提供有关该服务正在哪个头节点上运行的信息。 若要查看此信息，请使用页面顶部的“主机”链接。 此页会显示群集内的主机，包括头节点。
 

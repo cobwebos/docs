@@ -4,17 +4,17 @@ description: 在代码中使用 HTTP REST API 抓取 Azure Blob 存储中用于 
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 7bd7bcf66f0d91a87519a5d5bff7df7c73e2603f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: b7e7ecd2a82a8d64967288def9c6ede7a292f72a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310862"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759385"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>使用 Azure 搜索来搜索 Blob 存储
 
@@ -38,7 +38,7 @@ ms.locfileid: "53310862"
 ## <a name="image-search"></a>图像搜索
 Azure 搜索的全文搜索、分面导航和排序功能现在可以应用于 blob 中存储的图像的元数据了。
 
-如果使用 Microsoft 认知服务中的 [Computer Vision API](https://www.microsoft.com/cognitive-services/computer-vision-api) 对这些图像进行了预先处理，则可以为在每个图像中找到的可视内容编制索引，包括 OCR 和手写识别。 我们正在致力于直接向 Azure 搜索中添加 OCR 和其他图像处理功能，如果对这些功能感兴趣，请在我们的 [UserVoice](https://aka.ms/azsuv) 上提交请求或者[给我们发电子邮件](mailto:azscustquestions@microsoft.com)。
+认知搜索包括图像处理技能，如[光学字符识别 (OCR)](cognitive-search-skill-ocr.md)和标识[视觉特征](cognitive-search-skill-image-analysis.md)，使其编制索引，在每个找到的可视内容图像。
 
 ## <a name="index-and-search-through-json-blobs"></a>在 JSON blob 中编制索引和执行搜索
 可以将 Azure 搜索配置为提取在包含 JSON 的 blob 中找到的结构化内容。 Azure 搜索可以读取 JSON blob 并将结构化内容解析为 Azure 搜索文档的合适字段。 Azure 搜索还可以获取包含 JSON 对象数组的 blob 并将每个元素映射到单独的 Azure 搜索文档。
@@ -52,5 +52,5 @@ JSON 解析当前不可通过门户进行配置。 [了解有关 Azure 搜索中
 
 单击“添加 Azure 搜索”将启动一个工作流，可以在其中选择现有 Azure 搜索服务或创建一个新服务。 如果创建新服务，则会离开存储帐户的门户。 可以导航回存储门户页并重新选择“添加 Azure 搜索”选项，然后可以选择现有服务。
 
-### <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 在完整[文档](https://aka.ms/azsblobindexer)中详细了解 Azure 搜索 Blob 索引器。

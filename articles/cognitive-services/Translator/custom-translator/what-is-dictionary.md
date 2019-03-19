@@ -5,24 +5,24 @@ description: 字典一个对齐的文档，其中指定了你始终希望 Micros
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: bc297fd4cdda8cdb3dc618b73e91d2f4e31e8b6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: bfefb1fe44959bc7e5186a0f14813f41256cf2d5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212403"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775435"
 ---
 # <a name="what-is-a-dictionary"></a>什么是字典？
 
 字典是一组对齐的文档，其中指定了短语或句子的列表及其对应的译文。 如果希望 Microsoft Translator 始终使用字典中提供的译文来翻译源短语或句子，可以在训练中使用字典。 字典有时称为词汇表或术语库。 可将字典视为所列的所有字词的强行“复制并替换”译法。
 
-字典仅适用于采用完全受支持 Microsoft 神经机器翻译 (NMT) 系统的语言对的项目。 有关完整的语言列表，请参阅 http://www.aka.ms/translatorlanguages。
+字典仅适用于采用完全受支持 Microsoft 神经机器翻译 (NMT) 系统的语言对的项目。 [查看语言的完整列表](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
 
-## <a name="phrase-dictionary"></a>短语字典 
+## <a name="phrase-dictionary"></a>短语字典
 如果在训练模型时包含短语字典，将按指定的方式翻译所列的任何单词或短语。 句子的余下部分将按平时的方式翻译。 可以使用短语字典来指定不应翻译的短语：在字典中的源和目标文件内提供相同的无需翻译的短语即可。
 
 ## <a name="sentence-dictionary"></a>句子字典
@@ -36,9 +36,9 @@ ms.locfileid: "55212403"
 
 ## <a name="recommendations"></a>建议
 
-- 字典不可取代使用训练数据训练的模型。  字典本质上只是查找并替换单词或句子。  让系统从完整句子中的训练材料进行学习，通常比使用字典的做法更好。 
+- 字典不可取代使用训练数据训练的模型。  字典本质上只是查找并替换单词或句子。  让系统从完整句子中的训练材料进行学习，通常比使用字典的做法更好。
 - 应谨慎使用短语字典。 如果替换了某个句子中的短语，该句子中的上下文将会丢失，或者仅限用于翻译该句子的余下部分。 结果是，尽管会根据短语字典翻译该句子中的短语或单词，但句子的整体翻译质量往往会降低。
-- 短语字典非常适合用于复合名词，例如产品名称（“Microsoft SQL Server”）、专有名词（“汉堡市”）或产品功能（“数据透视表”）。 对于动词或形容词，它不能起到相同的作用，因为这些词语的词尾在源或目标语言中很容易发生变化。 避免对复合名词以外的任何内容使用短语字典条目。 
+- 短语字典非常适合用于复合名词，例如产品名称（“Microsoft SQL Server”）、专有名词（“汉堡市”）或产品功能（“数据透视表”）。 对于动词或形容词，它不能起到相同的作用，因为这些词语的词尾在源或目标语言中很容易发生变化。 避免对复合名词以外的任何内容使用短语字典条目。
 - 使用字典时，译文中的大小写和标点符号将反映目标文件中提供的大小写和标点符号。 尝试识别字典文件中输入句子与源句子之间的匹配项时，将忽略大小写和标点符号。 例如，假设要训练一个使用字典的英语到西班牙语翻译系统，该字典在源文件中指定了“City of Hamburg”，在目标文件中指定了“Ciudad de hamburg”。 如果请求翻译包含短语“city of Hamburg”的句子，则“city of Hamburg”将匹配字典文件中的“City of Hamburg”条目，并映射到最终译文中的“Ciudad de hamburg”。
 - 如果某个单词在字典文件中多次出现，系统始终使用提供的最后一个条目。 字典不应包含同一单词的多种译文。
 

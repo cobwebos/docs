@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: erikre
-ms.openlocfilehash: 79582e59d9ad9396acf29d6e35d640edcb20dca3
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: HT
+ms.openlocfilehash: bae35f9e153227ddcca6e0d20ce862317b968eb1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275949"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536005"
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser 和 Microsoft Azure 计费 API 集成
 本文介绍如何在 Cloud Cruiser 中使用从新的 Microsoft Azure 计费 API 中收集到的信息，以进行工作流成本模拟和分析。
@@ -84,14 +84,14 @@ Cloud Cruiser 工作簿提供自动化的方式来从 RateCard API 收集信息�
 
 ![图 5 - 验证新的服务][5]
 
-在“费率计划”选项卡上，可查看名为“AzureSimulation”的新费率计划，其费率从 RateCard API 导入。
+在“费率计划”选项卡上，可以查看名为“AzureSimulation”的新费率计划，其费率是从 RateCard API 导入的。
 
 ![图 6 - 验证新的费率计划和关联的费率][6]
 
 ### <a name="normalize-wap-and-azure-services"></a>规范化 WAP 和 Azure 服务
 默认情况下，WAP 提供基于计算、内存和网络资源的使用信息。 在 Cloud Cruiser 中，可以直接根据这些资源的分配情况或计费使用情况来定义服务。 例如，可以对每小时的 CPU 使用率设置一个基本费率，或根据分配给实例的内存 GB 数进行收费。
 
-在此示例中，为了对 WAP 和 Azure 的成本进行比较，我们需要汇集 WAP 上的资源使用数据并进行捆绑，然后将其映射到 Azure 服务。 在工作簿中可以轻松地实现这种转换：
+在此示例中，为了对 WAP 和 Azure 的成本进行比较，我们需要汇集 WAP 上的资源使用数据并进行捆绑，并映射到 Azure 服务。 在工作簿中可以轻松地实现这种转换：
 
 ![图 7 - 对 WAP 数据进行转换以规范化服务][7]
 
@@ -113,7 +113,7 @@ Cloud Cruiser 工作簿提供自动化的方式来从 RateCard API 收集信息�
 下面的图表显示相同的数据，但是按部门进行细分。 每个部门在 WAP 和 Azure 中运行工作负荷的成本，并在 Savings 柱（绿色）中显示两者之间的成本差额。
 
 ## <a name="azure-usage-api"></a>Azure 使用情况 API
-### <a name="introduction"></a>介绍
+### <a name="introduction"></a>简介
 Microsoft 最近推出了 Azure 使用情况 API，允许订户以编程方式提取使用数据以深入了解其使用情况。 Cloud Cruiser 客户可以充分利用此 API 提供的更丰富数据集。
 
 Cloud Cruiser 可以通过多种方式利用与使用情况 API 的集成。 通过 API 可用的粒度（每小时使用情况信息）和资源元数据信息提供了支持灵活的 Showback 或 Chargeback 模型所必需的数据集。 
@@ -137,7 +137,7 @@ Cloud Cruiser 可以通过多种方式利用与使用情况 API 的集成。 通
 在计费方，Cloud Cruiser 自动化了 Showback/Chargeback 过程，而且可以利用标记信息将使用数据连接到相应的使用者（部门、区域、项目等）。 这种自动化实现了一个巨大的改进，可以确保计费过程具有一致性且可审核。
 
 ### <a name="creating-a-resource-group-with-tags-on-microsoft-azure"></a>在 Microsoft Azure 上创建具有标记的资源组
-本教程的第一步是在 Azure 门户中创建资源组，并创建与资源相关联的新标记。 在此示例中，我们创建以下标记：部门、环境、所有者和项目。
+本教程的第一步是在 Azure 门户中创建资源组，并创建与资源相关联的新标记。 对于此示例中，我们创建以下标记：部门、 环境、 所有者和项目。
 
 以下屏幕截图显示了具有关联标记的资源组示例。
 
@@ -189,7 +189,7 @@ Cloud Cruiser 工作簿提供自动化的方式来从使用情况 API 收集信�
 下一步是创建查找表，将标记中的信息关联到 ResourceGroupName。 接下来，使用此查找表为消耗数据扩充标记信息。
 
 ### <a name="adding-the-tag-information-to-the-consumption-data"></a>将标记信息添加到消耗数据
-现可跳转到 PublishData 表，它对来自计费 API 的消耗信息进行处理，并添加从标记提取的字段。 通过查看在上一步中创建的查找表（使用 ResourceGroupName 作为查找关键字），就可以执行该过程。
+现可跳转到 PublishData 表，它对来自计费 API 的消耗信息进行处理，并添加从标记提取的字段。 通过查看在上一步中创建的查找表（使用 *ResourceGroupName* 作为查找关键字），就可以执行该过程。
 
 ![图 5 - 使用查找到的信息填充帐户结构][14]
 
@@ -200,7 +200,7 @@ Cloud Cruiser 工作簿提供自动化的方式来从使用情况 API 收集信�
 最值得称道的是，只需要执行该步骤一次。 完成该工作簿后，只需将其添加到计划程序中，然后它将于计划时间以每小时或每日的频率运行。 然后，为了分析数据，以便从云使用数据中获取有意义的信息，仅需要创建新的报表或自定义现有报表。
 
 ### <a name="next-steps"></a>后续步骤
-* 有关创建 Cloud Cruiser 工作簿和报表的详细说明，请参阅 Cloud Cruiser 联机[文档](http://docs.cloudcruiser.com/)（需要有效登录）。  有关 Cloud Cruiser 的详细信息，请联系 [info@cloudcruiser.com](mailto:info@cloudcruiser.com)。
+* 有关创建 Cloud Cruiser 工作簿和报表的详细说明，请参阅 Cloud Cruiser 联机[文档](https://docs.cloudcruiser.com/)（需要有效登录）。  有关 Cloud Cruiser 的详细信息，请联系 [info@cloudcruiser.com](mailto:info@cloudcruiser.com)。
 * 有关 Azure 资源使用情况 API 和 RateCard API 的概述，请参阅[深入了解 Microsoft Azure 资源消耗](billing-usage-rate-card-overview.md)。
 * 请查看 [Azure 计费 REST API 参考](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)，了解有关这两种 API（属于 Azure 资源管理器提供的 API 集）的更多信息。
 * 如果想直接深入了解示例代码，请查看在 [Azure 代码示例](https://azure.microsoft.com/documentation/samples/?term=billing)上的 Microsoft Azure 计费 API 代码示例。

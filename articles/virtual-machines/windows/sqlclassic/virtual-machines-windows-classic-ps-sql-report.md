@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 8c12190e3c34c3294d2735fdd228aafbf6073f12
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820107"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445630"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
@@ -81,7 +81,7 @@ ms.locfileid: "55820107"
      * **HTTPS**：默认公共和专用端口均为 443。 最佳安全方案是更改私有端口并配置防火墙和报表服务器以使用私有端口。 有关终结点的详细信息，请参阅[如何设置与虚拟机的通信](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，如果使用 443 之外的端口，请更改 HTTPS 脚本中的参数 **$HTTPsport = 443**。
    * 单击“下一步”。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. 在向导的最后一页上，保持选中默认的“安装 VM 代理”。 本主题中的步骤不使用 VM 代理，但如果计划保留此 VM，VM 代理和扩展将允许增强 CM。  有关 VM 代理的详细信息，请参阅 [VM 代理和扩展 – 第 1 部分](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/)。 安装并运行的一个默认扩展是“BGINFO”扩展，它在 VM 桌面上显示系统信息，如内部 IP 和驱动器可用空间。
-9. 单击“完成”。 ![确定](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
+9. 单击“完成”。 ![Ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. VM 的“状态”在预配过程中显示为“启动(预配)”，在预配完成并可供使用时显示为“运行”。
 
 ## <a name="step-2-create-a-server-certificate"></a>步骤 2：创建服务器证书
@@ -116,7 +116,7 @@ ms.locfileid: "55820107"
 ### <a name="to-use-the-virtual-machines-self-signed-certificate"></a>使用虚拟机自签名证书
 当设置 VM 时已在 VM 上创建了自签名证书。 证书具有与 VM DNS 名称相同的名称。 为避免出现证书错误，它必须在 VM 本身上受信任，并且受该站点的所有用户信任。
 
-1. 要信任本地 VM 上的证书的根 CA，请将该证书添加到**受信任的根证书颁发机构**。 以下是所需步骤的摘要。 有关如何信任 CA 的详细步骤，请参阅[安装服务器证书](https://technet.microsoft.com/library/cc740068)。
+1. 要信任本地 VM 上的证书的根 CA，请将该证书添加到 **受信任的根证书颁发机构**。 以下是所需步骤的摘要。 有关如何信任 CA 的详细步骤，请参阅[安装服务器证书](https://technet.microsoft.com/library/cc740068)。
    
    1. 从 Azure 门户中，选择 VM 并单击“连接”。 根据浏览器配置，可能会向你提示保存一个用于连接到 VM 的 .rdp 文件。
       
@@ -124,7 +124,7 @@ ms.locfileid: "55820107"
       
        例如，在下图中，VM 名称是 **ssrsnativecloud**，用户名是 **testuser**。
       
-       ![登录名包含 VM 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+       ![登录名包含 vm 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
    2. 运行 mmc.exe。 有关更多信息，请参阅[如何：使用 MMC 管理单元查看证书](https://msdn.microsoft.com/library/ms788967.aspx)。
    3. 在控制台应用程序“文件”菜单中，添加“证书”管理单元，在系统提示时选择“计算机帐户”，并单击“下一步”。
    4. 选择要管理的“本地计算机”，并单击“完成”。
@@ -160,7 +160,7 @@ ms.locfileid: "55820107"
    
     例如，在下图中，VM 名称是 **ssrsnativecloud**，用户名是 **testuser**。
    
-    ![登录名包含 VM 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![登录名包含 vm 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. 在 VM 上，使用管理权限打开 **Windows PowerShell ISE**。 默认情况下，将 PowerShell ISE 安装在 Windows server 2012 上。 建议使用 ISE 而不是标准 Windows PowerShell 窗口，以便将脚本粘贴到 ISE，修改脚本，并运行该脚本。
 3. 在 Windows PowerShell ISE 中，单击“视图”菜单，并单击“显示脚本窗格”。
 4. 复制以下脚本，并将该脚本粘贴到 Windows PowerShell ISE 脚本窗格。
@@ -294,7 +294,7 @@ ms.locfileid: "55820107"
    
     例如，在下图中，VM 名称是 **ssrsnativecloud**，用户名是 **testuser**。
    
-    ![登录名包含 VM 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![登录名包含 vm 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. 在 VM 上，使用管理权限打开 **Windows PowerShell ISE**。 默认情况下，将 PowerShell ISE 安装在 Windows server 2012 上。 建议使用 ISE 而不是标准 Windows PowerShell 窗口，以便将脚本粘贴到 ISE，修改脚本，并运行该脚本。
 3. 若要允许运行脚本，运行以下 Windows PowerShell 命令：
    
@@ -517,7 +517,7 @@ ms.locfileid: "55820107"
    5. 将默认的“身份验证类型”保留为“服务凭据”，然后单击“下一步”。
    6. 在“摘要”页上单击“下一步”。
    7. 配置完成后，单击“完成”。
-8. 在左窗格中，单击“报表管理器 URL”。 将默认的“虚拟目录”保留为“报告”，然后单击“应用”。
+8. 在左窗格中，单击“报表管理器 URL”。 将默认的“虚拟目录”保留为“Reports”，然后单击“应用”。
 9. 单击“退出”关闭 Reporting Services 配置管理器。
 
 ## <a name="step-4-open-windows-firewall-port"></a>步骤 4：打开 Windows 防火墙端口
@@ -541,7 +541,7 @@ ms.locfileid: "55820107"
 2. 如果在 VM 上配置 HTTPS 终结点时使用了非 443 的端口，则更新下面命令中的端口，并运行命令：
    
         New-NetFirewallRule -DisplayName “Report Server (TCP on port 443)” -Direction Inbound –Protocol TCP –LocalPort 443
-3. 命令完成后，命令提示符中会显示“Ok”。
+3. 命令完成后，命令提示符中会显示 **Ok** 。
 
 若要验证端口已打开，请打开 Windows PowerShell 窗口并运行以下命令：
 

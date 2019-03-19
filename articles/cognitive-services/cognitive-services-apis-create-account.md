@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: garye
-ms.openlocfilehash: c69e8b7360774971316b5a060aff9e7057d3e9aa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 21e1eb00f688f2e7061e876cc4375d6d780838fc
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873966"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534797"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建认知服务帐户
 
 本快速入门介绍如何注册 Azure 认知服务并创建单服务或多服务订阅。 这些服务由 Azure [资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)表示，允许连接到一个或多个 Azure 认知服务 API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 有效的 Azure 订阅。 免费[创建一个帐户](https://azure.microsoft.com/free/)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "55873966"
 
 ### <a name="single-service-subscription"></a>单服务订阅
 
-1. 登录 [Azure 门户](http://portal.azure.com)，然后单击“创建资源”。
+1. 登录 [Azure 门户](https://portal.azure.com)，然后单击“创建资源”。
 
     ![选择认知服务 API](media/cognitive-services-apis-create-account/azurePortalScreen.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "55873966"
 
 ### <a name="multi-service-subscription"></a>多服务订阅
 
-1. 登录 [Azure 门户](http://portal.azure.com)，然后单击“创建资源”。
+1. 登录 [Azure 门户](https://portal.azure.com)，然后单击“创建资源”。
 
     ![选择认知服务 API](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
 

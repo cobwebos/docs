@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0a46a5707d1901c18d850ff9cfd8d4b09b72c646
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 7accb8f2d97f5e4b4dc19ba93ab9edc1a4e6ce8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021265"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541327"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
@@ -93,7 +93,7 @@ ms.locfileid: "54021265"
     John, Doe
     Jane, Doe
     ```
-2. 使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具创建 **adftutorial** 容器，将 **emp.txt** 文件上传到该容器。
+2. 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具创建 **adftutorial** 容器，将 **emp.txt** 文件上传到该容器。
 
     ![Azure 存储资源管理器下载。 将数据从 Blob 存储复制到 SQL 数据库](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
 3. 使用以下 SQL 脚本在 Azure SQL 数据库中创建 **emp** 表。  

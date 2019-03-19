@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a299c5cf59a3c5b7a994303c9d85783ecfbb424
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7b681915eb3ad9960f335d46508b857fa6ec2e20
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201884"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551766"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
@@ -32,7 +32,7 @@ ms.locfileid: "56201884"
 本文介绍计划 Azure AD 联接实现所需信息。
 
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设读者已阅读 [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "56201884"
 
 ## <a name="plan-your-implementation"></a>规划实施
 
-若要规划混合 Azure AD 实现，应做好以下准备：
+若要规划您的 Azure AD 联接实现，您应熟悉：
 
 |   |   |
 |---|---|

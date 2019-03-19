@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pbutlerm
-ms.openlocfilehash: f13d49fde7f0e40f6dcb026fcb20cb11c028c64b
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: fd51a9f70d60219a9429ff66d6f1d404391f6fb0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100869"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446703"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure 和 AppSource 市场套餐
 
@@ -41,7 +41,7 @@ ms.locfileid: "56100869"
 
 ## <a name="test-drive"></a>体验版
 
-*体验版*是一项市场功能，它针对启用了此功能的每个产品/服务为客户提供了一个“先试后买”演示选项。  体验版功能仅限于以下部分产品/服务类型：[Azure 应用程序](./azure-applications/cpp-azure-app-offer.md)、[Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md)、[Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md)、[Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)、[SaaS 应用程序](./saas-app/cpp-saas-offer.md)和[虚拟机](./virtual-machine/cpp-virtual-machine-offer.md)。  此功能需要发布者创建为其产品/服务自定义的体验版模板。  有关详细信息，请参阅[体验版](../cloud-partner-portal-orig/what-is-test-drive.md)部分。
+*体验版*是一项市场功能，它针对启用了此功能的每个产品/服务为客户提供了一个“先试后买”演示选项。  体验版功能仅限于以下部分产品/服务类型：[Azure 应用程序](./azure-applications/cpp-azure-app-offer.md)、[Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md)、[Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md)、[Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)、[SaaS 应用程序](./saas-app/cpp-saas-offer.md)和[虚拟机](./virtual-machine/cpp-virtual-machine-offer.md)。  此功能需要发布者创建为其产品/服务自定义的体验版模板。  有关详细信息，请参阅[体验版](./test-drive/what-is-test-drive.md)部分。
 
 可以通过应用[体验版筛选器](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)来浏览具有体验版演示的现有市场产品/服务。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "56100869"
 
 下表列出了[云合作伙伴门户](https://cloudpartner.azure.com)当前支持的套餐类型。  对于每个套餐类型，其中指出了套餐在市场中的列出位置，以及套餐解决方案技术的一般说明。
 
-|                产品/服务类型                |  市场  |   说明                                                           |
+|                产品/服务类型                |  市场  |   描述                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
 | [Azure 应用程序](./azure-applications/cpp-azure-app-offer.md) | Azure | 解决方案包括通过 Azure 资源管理器模板部署的一个或多个虚拟机 (VM) 以及可选的自定义 Azure 代码。  部署可以由客户通过解决方案模板来完成，或者由发布者管理。 这种类型提供的灵活性比所提供的虚拟机套餐类型更高。  |
 | [咨询服务](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Azure 和 AppSource | Microsoft 认可的顾问可以在 Azure 市场或 AppSource 中列出其域特定的服务。  他们的专业知识可帮助客户评估问题，以及根据业务目标创建和部署适当的解决方案。  |

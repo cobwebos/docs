@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729789"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452124"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -119,19 +119,13 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
    **ExpressRoute 监视器**：选择“立即发现”，以便发现所有已连接到 Azure 订阅（通过此 Log Analytics 工作区进行链接）中的虚拟网络的 ExpressRoute 专用对等互连。 
 
-   >[!NOTE] 
-   > 此解决方案目前只发现 ExpressRoute 专用对等互连。 
+   ![ExpressRoute 监视器”视图](media/network-performance-monitor/npm-express-route.png)
 
-   >[!NOTE] 
-   > 只发现特定的专用对等互连，这些对等互连连接到与订阅关联的虚拟网络，而订阅则通过此 Log Analytics 工作区进行链接。 如果 ExpressRoute 所连接到的虚拟网络位于链接到此工作区的订阅之外，请在这些订阅中创建 Log Analytics 工作区。 使用网络性能监视器监视这些对等互连。
-
-   ![“ExpressRoute 监视器”视图](media/network-performance-monitor/npm-express-route.png)
-
-   完成发现操作以后，发现的专用对等互连就会列在表中。 
+   发现完成之后，表中列出的已发现的线路和对等互连。 
 
    ![“网络性能监视器配置”页](media/network-performance-monitor/npm-private-peerings.png)
     
-针对这些对等互连的监视功能一开始处于禁用状态。 选择要监视的每个对等互连，然后从右侧的详细信息视图中配置相应的监视功能。 选择“保存”以保存配置。 要了解详细信息，请参阅“配置 ExpressRoute 监视”一文。 
+监视这些线路和对等互连是一开始处于禁用状态。 选择你想要监视的每个资源，并为其配置监视从右侧的详细信息视图。 选择“保存”以保存配置。 要了解详细信息，请参阅“配置 ExpressRoute 监视”一文。 
 
 安装完成以后，数据的填充需要 30 分钟到 1 小时。 当解决方案正从网络聚合数据时，网络性能监视器“概览”磁贴中会显示“解决方案需要进行额外配置”消息。 收集数据并为其编制索引以后，“概览”磁贴会变化，并以摘要形式告知网络运行状况。 然后，你可以对安装了 Log Analytics 代理的节点以及从环境中发现的子网的监视进行编辑。
 
@@ -269,7 +263,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
 4. 成功创建警报后，可以使用“管理警报”链接来管理警报。 
 
-每次创建警报时，NPM 会在 Azure Monitor 中创建基于查询的日志警报规则。 默认情况下，每隔 5 分钟就会触发此查询。 Azure Monitor 不会对创建的前 250 条日志警报规则收取费用，超过 250 条日志警报规则限制的任何警报规则都将按照 [Azure Monitor 定价页中的警报定价](https://azure.microsoft.com/en-us/pricing/details/monitor/)计费。
+每次创建警报时，NPM 会在 Azure Monitor 中创建基于查询的日志警报规则。 此查询将触发默认情况下每隔 5 分钟。 Azure Monitor 不会对创建的前 250 条日志警报规则收取费用，超过 250 条日志警报规则限制的任何警报规则都将按照 [Azure Monitor 定价页中的警报定价](https://azure.microsoft.com/en-us/pricing/details/monitor/)计费。
 通知将按照 [Azure Monitor 定价页中的通知定价](https://azure.microsoft.com/en-us/pricing/details/monitor/)单独收费。
 
 

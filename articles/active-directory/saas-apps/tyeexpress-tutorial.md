@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97e294a8b0e34e1fac24d0cbe01791e2eb290a43
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 334f5fa2309c44bebe8583f497fdaa3c7578e5ae
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162572"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>教程：Azure Active Directory 与 T&E Express 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56162572"
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 T&E Express 的集成，需要以下项：
 
@@ -134,7 +134,7 @@ ms.locfileid: "56162572"
 
     ![配置单一登录](./media/tyeexpress-tutorial/tye-SAML.png)
 
-1. 将“Activar(Activate)”选项从“No”更改为“SI(Yes)”。 在“标识提供程序元数据”文本框中，粘贴从 Azure 门户下载的元数据 XML。
+1. 将“Activar(Activate)”选项从“No”更改为“SI(Yes)”。 在中**标识提供程序元数据**文本框中，粘贴从 Azure 门户下载的 XML 元数据。
 
     ![配置单一登录](./media/tyeexpress-tutorial/tyeAdmin.png)
 

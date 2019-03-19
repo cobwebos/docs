@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0d42ff70bfaebf4d544fd81e6767592198ccef
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205590"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431166"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
 
@@ -86,7 +86,7 @@ ms.locfileid: "56205590"
 3. 选择配置为使用 AD DS 帐户的 AD 连接器。
 4. 在“操作”下，选择“属性”。
 5. 在弹出对话框中，选择“连接到 Active Directory 林”：
-6. 林名称指示相应的本地 AD。
+6. 林名称指示相应在本地 AD。
 7. 用户名指示用于同步的 AD DS 帐户。
 8. 在密码文本框 ![Azure AD Connect 同步加密密钥实用程序](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)中输入 AD DS 帐户的新密码
 9. 单击“确定”以保存新密码，并重启 Synchronization Service 以从内存缓存中删除旧密码。
@@ -96,4 +96,4 @@ ms.locfileid: "56205590"
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

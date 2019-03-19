@@ -3,17 +3,17 @@ title: 管理 Azure Maps 帐户的定价层 | Microsoft Docs
 description: 可以使用 Azure 门户管理 Azure Maps 帐户及其定价层。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/02/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b87fa166f82e4302b5430064d41c293731c60470
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 43f5c6ea42464a83d070775fae8c5befe35bf60d
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107695"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569905"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>管理 Azure Maps 帐户的定价层
 

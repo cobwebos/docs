@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: b4d40f011b9a9e69953496fbdb0dc63ffc8a5027
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904363"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774551"
 ---
 # <a name="manage-and-configure-projects"></a>管理和配置项目
 
@@ -59,14 +59,25 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 要创建新的 DSVM 实例，请按照[创建 Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)上的说明进行操作。 如果希望 DSVM 出现在 Azure Notebooks 的下拉列表中，则使用适用于 Linux (Ubuntu) 的 Data Science Virtual Machine 映像。  如果出于其他原因需要使用 Windows 或 CentOS 映像，则可以使用“直接计算”选项手动连接到 DSVM。
 
+> [!IMPORTANT]
+> 当使用直接计算或数据科学虚拟机，在其运行的笔记本必须是完全自包含。 目前，Azure Notebooks 复制仅 *.ipynb*到 VM 的文件，但不会将任何其他文件复制项目中。 因此，其他 Vm 上运行的笔记本无法找到其他项目文件。
+>
+> 您可以解决该问题在两种方法：
+>
+> 1. 将项目文件手动复制到 VM。
+>
+> 2. 嵌入的安装程序笔记本中的文件，您首先该运行之前主 notebook。 在安装程序笔记本中，创建其中的单元格包含文件内容的每个文件的代码单元格。 然后在每个单元格的顶部，插入命令`%%writefile <filename>`，其中`<filename>`是要接收内容的文件的名称。 运行 notebook，它会创建这些 VM 上的所有文件。 有关示例，请参阅[setup.ipynb 文件在 Microsoft 宠物检测器演示](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb)(GitHub)。
+>
+>     ![使用 %%的代码单元开头的 writefile 命令](media/setup-notebook-writefile-command.png)
+
 ## <a name="edit-project-metadata"></a>编辑项目元数据
 
 在项目面板中，选择“项目设置”，再选择“信息”选项卡，该选项卡包含下表所含的项目元数据。 可随时更改项目元数据。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如“Python 中的 Hello World”。 |
-| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只可使用字母、数字和连字符，长度限制为 30 个字符。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“My Project Name”变成“my-project-name”。 |
+| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 可以使用字母、 数字和连字符，限制为 30 个字符，且不能为[保留项目 ID](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
 | 公共项目 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
 | 隐藏克隆 | 如果设置了此选项，其他用户无法看到该项目的克隆的列表。 对于与不属于同一个组织的许多人共享（例如，在教学过程中使用笔记本）的项目，隐藏克隆十分有用。 |
 
@@ -82,7 +93,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 “+ 新建”命令（键盘快捷方式：n）用于创建新的文件或文件夹。 使用该命令时，首先选择要创建的项的类型：
 
-| 项类型 | 说明 | 命令行为 |
+| 项类型 | 描述 | 命令行为 |
 | --- | --- | --- |
 | **笔记本** | Jupyter 笔记本 | 显示一个弹出窗口，在其中指定笔记本的文件名和语言。 |
 | **文件夹** | 子文件夹 | 在项目的文件列表中创建一个编辑字段，用于输入文件夹名称。 |

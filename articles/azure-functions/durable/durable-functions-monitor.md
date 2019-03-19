@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f68c3797d5425c496e38c1000cc39e3868d41739
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: f3b9ef9d840630269c4c5621a4dab3c732bacdbf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727031"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551647"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
@@ -166,7 +166,7 @@ RetryAfter: 10
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-业务流程的超时时间已到，或者检测到晴天时，业务流程将会[终止](durable-functions-instance-management.md#terminating-instances)。 也可以在另一函数中使用 `TerminateAsync` (.NET) 或 `terminate` (JavaScript)，或调用上述 202 响应中提到的 **terminatePostUri** HTTP POST Webhook（请将 `{text}` 替换为终止原因）：
+业务流程的超时时间已到，或者检测到晴天时，业务流程将会[终止](durable-functions-instance-management.md)。 也可以在另一函数中使用 `TerminateAsync` (.NET) 或 `terminate` (JavaScript)，或调用上述 202 响应中提到的 **terminatePostUri** HTTP POST Webhook（请将 `{text}` 替换为终止原因）：
 
 ```
 POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

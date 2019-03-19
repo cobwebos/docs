@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 40bff35c1136d55e968a287d259f2304252f5248
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
-ms.translationtype: HT
+ms.openlocfilehash: bb5ef610e55495c372a47ff78e3252c9d8ec7055
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078774"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435910"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板演练手册
 ## <a name="executive-summary"></a>执行摘要
@@ -187,7 +187,7 @@ Cortana Intelligence Suite 是云中的集成环境。 在云环境中部署高�
 
 以下段落描述了这个 4 步骤过程：
 
-1. **数据收集** – 任何基于高级分析的解决方案都依赖于数据（请参阅**了解数据**）。 具体而言，在提到预测分析和预测时，我们依赖于持续、动态的数据流。 就能源需求预测而言，此数据可能直接来自智能电表，或已在本地数据库中聚合。 我们还依赖于其他外部数据源，例如天气和温度。 必须协调、计划和存储此持续数据流。 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/) (ADF) 是用于完成此任务的主要工具。
+1. **数据收集** – 任何基于高级分析的解决方案都依赖于数据（请参阅**了解数据**）。 具体而言，在提到预测分析和预测时，我们依赖于持续、动态的数据流。 对于能源需求预测而言，此数据可提供直接来自智能电表，或已在本地数据库上聚合。 我们还依赖于其他外部数据源，例如天气和温度。 必须协调、计划和存储此持续数据流。 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/) (ADF) 是用于完成此任务的主要工具。
 2. **建模** – 为了获得准确又可靠的能源预测，必须开发（训练）并维护一个优秀的模型，使用历史数据并从数据中提取有用且可预测的模式。 随着不断开发出先进的算法，机器学习 (ML) 领域一直在快速发展。 Azure 机器学习工作室提供绝佳的用户体验，有助于在完整的工作流中使用最先进的 ML 算法。 该工作流在直观的流程图中演示，包含准备数据、提取特征、建模和评估模型。 用户可以使用此环境中数以百计的各种不同模型。 此阶段结束时，数据科研人员可获得一个已完整评估且可部署的有效模型。
 
    下图演示了典型的工作流：
@@ -369,7 +369,7 @@ MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩
 
 ![Web 服务部署和使用](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 
-由此可知，Web 服务部署在 Cortana Intelligence Suite 云中，并通过其公开的 REST API 终结点来调用。 位于不同域中的各种不同的客户端可以通过 Web API 服务来同时调用服务。 Web 服务也可以扩展，以便支持数千个并发调用。
+Web 服务部署和使用由此可知，Web 服务部署在 Cortana Intelligence Suite 云中，并通过其公开的 REST API 终结点来调用。 位于不同域中的各种不同的客户端可以通过 Web API 服务来同时调用服务。 Web 服务也可以扩展，以便支持数千个并发调用。
 
 ### <a name="a-typical-solution-architecture"></a>典型的解决方案体系结构
 在部署能源需求预测解决方案时，我们的兴趣是部署端到端解决方案，超越预测 Web 服务，并加速整个数据流。 调用新预测时，必须确保可向模型馈送最新的数据特征。 这意味着，需要不断地引入、处理和转换新收集的原始数据，成为赖以创建模型的必要特征。 同时，还要将预测的数据提供给最终使用方客户端使用。 下图演示了一个示例数据流周期（或数据管道）：

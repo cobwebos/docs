@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 9a240e15049d1acd7344f3ecf7dbf41ff2c3850d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 9903339cbf0958893fb0d11a8c1b6ab7d156aae7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818781"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548211"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "55818781"
 | |  |
 |---|---|
 |**下载 SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API 文档**|[Python API 参考文档](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
+|**API 文档**|[Python API 参考文档](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK 安装说明**|[Python SDK 安装说明](https://github.com/Azure/azure-cosmos-python)|
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
 |**入门**|[Python SDK 入门](sql-api-python-application.md)|
@@ -91,7 +91,7 @@ ms.locfileid: "55818781"
 * 此版本中的 REST API 版本已升级到“2017-01-19”。
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
-* 对文档注释进行编辑更改。
+* 对文档注释进行编辑性更改。
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 * 添加了对 Python 3.5 的支持。
@@ -108,7 +108,7 @@ ms.locfileid: "55818781"
 * 添加了对多区域数据库帐户的支持。
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* 在文档中添加了对生存时间 (TTL) 的支持。
+* 添加了对文档生存时间 (TTL) 功能的支持。
 
 ### <a name="a-name161161"></a><a name="1.6.1"/>1.6.1
 * 与服务器端分区相关的 bug 修复，以允许在分区键路径中使用特殊字符。

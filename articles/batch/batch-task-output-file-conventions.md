@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ede0b7cbeee9227a7023e5c0550a951897cc43e4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 69a3032ee96accdbafb32c96f4e9f3c89a0b3458
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821178"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539490"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 
@@ -43,7 +43,7 @@ Azure Batch 提供多种方式来保存任务输出。 文件约定最适合以�
 - 作业中的客户端应用程序或其他任务需要根据 ID 或用途定位并下载任务输出文件。
 - 想要在 Azure 门户中查看任务输出。
 
-如果你的情况与上面不同，可能需要考虑不同的方法。 有关保存任务输出的其他选项的详细信息，请参阅[将作业和任务输出保存到 Azure 存储](batch-task-output.md)。
+如果你的情形不同于上面列出的情形，则可能需要考虑其他方式。 有关保存任务输出的其他选项的详细信息，请参阅[将作业和任务输出保存到 Azure 存储](batch-task-output.md)。
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>什么是 Batch 文件约定标准？
 
@@ -250,7 +250,7 @@ GitHub 上的用于 .NET 的 Microsoft Azure SDK 存储库中提供了文件约�
 [nuget_manager]: https://docs.nuget.org/consume/installing-nuget
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com
-[storage_explorer]: http://storageexplorer.com/
+[storage_explorer]: https://storageexplorer.com/
 
 [1]: ./media/batch-task-output/task-output-01.png "门户中“保存的输出文件”和“保存的日志”选择器"
 [2]: ./media/batch-task-output/task-output-02.png "Azure 门户中的“任务输出”边栏选项卡"

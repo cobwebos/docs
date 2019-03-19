@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 9d606dd4faf324d68e4365eae0802de2384471ab
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295350"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551749"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -27,7 +27,7 @@ ms.locfileid: "55295350"
 
 本文介绍如何在逻辑应用中使用 Oracle 数据库连接器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 支持的 Oracle 版本： 
     * Oracle 9 及更高版本
@@ -40,7 +40,7 @@ ms.locfileid: "55295350"
 
 * 将 Oracle 客户端与本地数据网关安装在同一计算机上。 请务必安装 Oracle 提供的 64 位用于 .Net 的 Oracle 数据提供程序：  
 
-  [用于 Windows x64 的 64 位 ODAC 12c Release 4 (12.1.0.2.4)](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
+  [用于 Windows x64 的 64 位 ODAC 12c Release 4 (12.1.0.2.4)](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
     > 如果未安装 Oracle 客户端，则在尝试创建或使用连接时，会发生错误。 请参阅本文中的常见错误。

@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf258637311cd22964723da6bad3451dff6cccf6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 1bcb50829dca59f8a467c2c1d2381b5463ef9471
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632002"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437388"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
 了解如何使用针对 Visual Studio 的 Azure Data Lake (Apache Hadoop) 工具创建 C# Apache Storm 拓扑。 本文档逐步说明在 Visual Studio 中创建 Storm 项目，在本地测试该项目，然后将它部署到Apache Storm on Azure HDInsight 群集的过程。
 
-还可了解如何创建使用 C# 和 Java 组件的混合拓扑。
+同时还说明了如何创建使用 C# 和 Java 组件的混合拓扑。
 
 > [!NOTE]  
 > 虽然本文档中的步骤依赖于具有 Visual Studio 的 Windows 开发环境，但编译后的项目可以提交到基于 Linux 或基于 Windows 的 HDInsight 群集。 仅 2016 年 10 月 28 日之后创建的基于 Linux 的群集支持 SCP.NET 拓扑。
@@ -39,7 +39,7 @@ ms.locfileid: "53632002"
 
 ## <a name="install-visual-studio"></a>安装 Visual Studio
 
-通过安装以下 Visual Studio 版本之一，可以使用 SCP.NET 开发 C# 拓扑：
+可以使用下列其中一个版本的 Visual Studio，通过 SCP.NET 来开发 C# 拓扑：
 
 * Visual Studio 2012 Update 4
 
@@ -134,7 +134,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
 1. 打开 Visual Studio，选择“文件” > “新建”，然后选择“项目”。
 
-2. 在“新建项目”窗口中，展开“已安装” > “模板”，然后选择“Azure Data Lake”。 从模板列表中，选择“Storm 应用程序”。 在屏幕底部，输入 **WordCount** 作为应用程序名称。
+2. 在“新建项目”窗口中，展开“已安装” > “模板”，然后选择“Azure Data Lake”。 从模板列表中，选择“Storm 应用程序”。 在屏幕底部，输入 WordCount 作为应用程序名称。
 
     ![“新建项目”窗口的屏幕截图](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
 
@@ -224,7 +224,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
 1. 删除项目中的现有 **Bolt.cs** 文件。
 
-2. 在“解决方案资源管理器”中，右键单击项目，然后选择“添加” > “新建项”。 从列表中选择“Storm Bolt”，并输入 **Splitter.cs** 作为名称。 重复此过程，以创建名为 **Counter.cs** 的另一个 Bolt。
+2. 在“解决方案资源管理器”中，右键单击项目，然后选择“添加” > “新建项”。 从列表中选择“Storm Bolt”，然后输入 Splitter.cs 作为名称。 重复此过程，以创建名为 **Counter.cs** 的另一个 Bolt。
 
    * **Splitter.cs**：实现将句子分割成不同的单词并发出一串新单词的 Bolt。
 
@@ -420,7 +420,7 @@ return topologyBuilder;
 
     若要在拓扑中查看有关组件的信息，请双击关系图中的组件。
 
-4. 从“拓扑摘要”视图中，单击“终止”以停止拓扑。
+4. 在“拓扑摘要”视图中，单击“终止”以停止拓扑。
 
    > [!NOTE]  
    > Storm 拓扑会一直运行，直到它被停用，或者群集被删除。
@@ -433,7 +433,7 @@ return topologyBuilder;
 
 * **元数据缓存**：Spout 必须存储所发出数据的相关元数据，只有这样，才能在失败时重新检索和发出数据。 此示例所发出的数据较少，因此将每个元组的原始数据存储在字典中以便重播。
 
-* **Ack**：拓扑中的每个 Bolt 都可以调用 `this.ctx.Ack(tuple)` 来确认它已成功处理元组。 所有 Bolt 都已确认 Tuple 之后，即会调用 Spout 的 `Ack` 方法。 `Ack` 方法可让 Spout 删除为重播缓存的数据。
+* **Ack**：拓扑中的每个 Bolt 都可以调用 `this.ctx.Ack(tuple)` 来确认它已成功处理元组。 所有 bolt 都已都确认元组时,`Ack`会调用 spout 的方法。 `Ack` 方法可让 Spout 删除为重播缓存的数据。
 
 * **Fail**：每个 Bolt 都可以调用 `this.ctx.Fail(tuple)`，指出元组的处理失败。 这项失败会传播到 Spout 的 `Fail` 方法，在其中，可以使用缓存的元数据来重放 Tuple。
 
@@ -474,7 +474,7 @@ return topologyBuilder;
 
 * 使用 **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** 将传入或传出 Java 组件的数据从 Java 对象序列化为 JSON。
 
-* 将拓扑提交到服务器时，必须使用“其他配置”选项指定 **Java 文件路径**。 指定的路径应该是包含 JAR 文件的目录，而 JAR 文件包含 Java 类
+* 将拓扑提交到服务器时，必须使用“其他配置”选项指定 **Java 文件路径**。 指定的路径应该是包含 JAR 文件的目录，而 JAR 文件包含 Java 类。
 
 ### <a name="azure-event-hubs"></a>Azure 事件中心
 
@@ -489,7 +489,7 @@ SCP.NET 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 
 ## <a id="configurationmanager"></a>使用 ConfigurationManager
 
-请勿使用 **ConfigurationManager** 从 Bolt 和 Spout 组件检索配置值。 这样做会导致空指针异常。 而项目的配置将作为拓扑上下文中的键值对传递到 Storm 拓扑中。 对于依赖于配置值的每个组件，必须在初始化期间从上下文中检索它们。
+请勿使用 **ConfigurationManager** 从 Bolt 和 Spout 组件检索配置值。 这样做会导致空指针异常。 而项目的配置将作为拓扑上下文中的键值对传递到 Storm 拓扑中。 每个依赖于配置值的组件都必须在初始化过程中从上下文检索这些值。
 
 下面的代码演示了如何检索这些值：
 
@@ -530,13 +530,13 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
 
-2. 从包管理器中选择“更新”。 有可用更新时会列出。 单击“更新”让包安装更新。
+2. 从包管理器中选择“更新”。 有可用更新时会将其列出。 单击“更新”让包安装更新。
 
 > [!IMPORTANT]  
 > 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到更新版本：
 >
 > 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
-> 2. 使用“搜索”字段搜索 **Microsoft.SCP.Net.SDK**，然后将其添加到项目中。
+> 2. 使用“搜索”字段搜索 Microsoft.SCP.Net.SDK，然后将其添加到项目中。
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>排查使用拓扑的常见问题
 
@@ -570,7 +570,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
     ![突出显示“输出类型”的项目属性屏幕截图](./media/apache-storm-develop-csharp-visual-studio-topology/outputtype.png)
 
    > [!NOTE]
-   > 将拓扑部署到群集之前，请记得将“输出类型”更改回“类库”。
+   > 将拓扑部署到群集之前，请记得将“输出类型”改回“类库”。
 
 2. 在“解决方案资源管理器”中，右键单击项目，然后选择“添加” > “新建项”。 选择“类”，并输入 **LocalTest.cs** 作为类名。 最后，单击“添加”。
 
@@ -690,7 +690,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
    > 字符串数据保存为这些文件中的十进制值数组。 例如，**splitter.txt** 文件中的 \[[97,103,111]] 是单词 *and*。
 
 > [!NOTE]  
-> 在部署到 Storm on HDInsight 群集之前，请记得将“项目类型”设置回“类库”。
+> 在部署到 Storm on HDInsight 群集之前，请确保将“项目类型”设置回“类库”。
 
 ### <a name="log-information"></a>记录信息
 
@@ -709,7 +709,7 @@ Context.Logger.Info("Component started");
 
 若要查看运行中拓扑中所发生的错误，请使用以下步骤：
 
-1. 在“服务器资源管理器”中，右键单击 Storm on HDInsight 群集，并选择“查看 Storm 拓扑”。
+1. 在“服务器资源管理器”中，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”。
 
 2. 对于 **Spout** 和 **Bolt**，“上一错误”列包含有关上次发生的错误的信息。
 

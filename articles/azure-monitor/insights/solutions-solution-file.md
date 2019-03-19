@@ -7,19 +7,19 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c84aedbdb306bbd7432c3c0b611e6e58243624e2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 298bf10cf07467de897c7e38af9539fc71375eab
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999362"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776642"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -68,7 +68,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 下表描述了参数属性。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | type |参数的数据类型。 向用户显示的输入控件取决于数据类型。<br><br>bool - 下拉框<br>string - 文本框<br>int - 文本框<br>securestring - 密码字段<br> |
 | category |参数的可选类别。  相同类别中的参数分到一组。 |
@@ -83,7 +83,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 >
 >
 
-| 参数 | Type | 说明 |
+| 参数 | Type | 描述 |
 |:--- |:--- |:--- |
 | accountName |字符串 |Azure 自动化帐户名称。 |
 | pricingTier |字符串 |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
@@ -211,7 +211,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ### <a name="properties"></a>属性
 解决方案资源具有下表中的属性。  这包括由用于定义安装解决方案后如何管理资源的解决方案引用和包含的资源。  解决方案中的每个资源应在 **referencedResources** 或 **containedResources** 属性中列出。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 窗体中 Log Analytics 工作区的 ID。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
@@ -222,20 +222,13 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ### <a name="plan"></a>计划
 解决方案资源的 **plan** 实体具有下表中的属性。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | 名称 |解决方案名称。 |
 | 版本 |由作者确定的解决方案版本。 |
 | product |标识解决方案的唯一字符串。 |
 | 发布者 |解决方案发布者。 |
 
-
-
-## <a name="sample"></a>示例
-可在以下位置查看具有解决方案资源的解决方案文件示例。
-
-- [自动化资源](solutions-resources-automation.md#sample)
-- [搜索和警报资源](solutions-resources-searches-alerts.md#sample)
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 2b570fdb42c29c6ad68add32be660ef57f1eec1f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468295"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535733"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>资源组的 Azure 事件网格事件架构
 
@@ -34,7 +34,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 资源组可从 Azure 资源管理器发出管理事件，例如，在创建 VM 或删除存储帐户时。
 
-| 事件类型 | 说明 |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Resources.ResourceActionCancel | 在资源操作被取消时引发。 |
 | Microsoft.Resources.ResourceActionFailure | 在资源操作失败时引发。 |
@@ -234,7 +234,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -247,10 +247,10 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | authorization | 对象 | 操作请求的授权。 |
-| 声明 | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
+| 声明 | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
 | correlationId | 字符串 | 用于故障排除的操作 ID。 |
 | httpRequest | 对象 | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
 | resourceProvider | 字符串 | 操作的资源提供程序。 |

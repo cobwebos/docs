@@ -3,7 +3,7 @@ title: 常见参数和标头
 description: 这些参数和标头常见于与 Key Vault 资源相关的所有操作。
 services: key-vault
 documentationcenter: ''
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
 ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed9400fb15b
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: 1ac0f54aa4dfdc9db4724629c4dbfe7a4982838f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.author: mbaldwin
+ms.openlocfilehash: cc6c937e37ebb7919ca271e765ad6460c104e43b
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301224"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405039"
 ---
 # <a name="common-parameters-and-headers"></a>常见参数和标头
 
@@ -43,7 +43,7 @@ ms.locfileid: "56301224"
    }  
 ```
 
-|元素名称 | Type | 说明 |
+|元素名称 | Type | 描述 |
 |---|---|---|
 | 代码 | 字符串 | 发生的错误类型。|
 | message | 字符串 | 错误原因说明。 |

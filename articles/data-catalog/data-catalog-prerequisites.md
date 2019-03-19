@@ -8,12 +8,12 @@ ms.assetid: ef497a54-dc4d-4820-b5bf-c361b64b964d
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 5d05371d9b948dc2f7d6f834eb9431af80fc6365
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 788e7a453e9879d9c901448659ff1c8cfa7201ff
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406866"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548298"
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Azure 数据目录先决条件
 
@@ -30,7 +30,7 @@ Azure 订阅可帮助组织云服务资源的访问权限，例如数据目录�
 Azure AD 为企业提供在云中和本地轻松管理标识与访问权限的方式。 用户可以使用单个公司帐户或学校帐户，单一登录到任何云和本地 Web 应用程序。 数据目录使用 Azure AD 对登录进行身份验证。 有关详细信息，请参阅[什么是 Azure Active Directory？](../active-directory/fundamentals/active-directory-whatis.md)。
 
 > [!NOTE]
-> 通过使用 [Azure 门户](http://portal.azure.com/)，用户可使用个人 Microsoft 帐户或 Azure Active Directory 工作或学校帐户进行登录。 若要使用 Azure 门户或[数据目录门户](http://www.azuredatacatalog.com)设置 Azure 数据目录，必须使用 Azure Active Directory 帐户而不是个人帐户进行登录。
+> 通过使用 [Azure 门户](https://portal.azure.com/)，用户可使用个人 Microsoft 帐户或 Azure Active Directory 工作或学校帐户进行登录。 若要使用 Azure 门户或[数据目录门户](https://www.azuredatacatalog.com)设置 Azure 数据目录，必须使用 Azure Active Directory 帐户而不是个人帐户进行登录。
 >
 >
 

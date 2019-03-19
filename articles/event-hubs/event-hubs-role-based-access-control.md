@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 1324700445aebe672b2c5ae2b55ad9bc0bab13b2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
-ms.translationtype: HT
+ms.openlocfilehash: 549cfb84ff247295e01c800aa41ba265bb8921c7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384252"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540073"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 
@@ -52,7 +52,7 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 在可以运行示例应用程序之前，将它注册到 Azure AD 中并批准允许应用程序以其身份访问事件中心的许可提示。 
 
-由于示例应用程序是一个控制台应用程序，因此必须注册一个本机应用程序并将 **Microsoft.EventHub** 的 API 权限添加到“必需的权限”集。 本机应用程序在 Azure AD 中还需要有一个充当标识符的 redirect-URI，该 URI 不需要是网络目的地。 对于此示例请使用 `http://eventhubs.microsoft.com`，因为示例代码已使用了该 URI。
+由于示例应用程序是一个控制台应用程序，因此必须注册一个本机应用程序并将 **Microsoft.EventHub** 的 API 权限添加到“必需的权限”集。 本机应用程序在 Azure AD 中还需要有一个充当标识符的 redirect-URI，该 URI 不需要是网络目的地。 对于此示例请使用 `https://eventhubs.microsoft.com`，因为示例代码已使用了该 URI。
 
 [此教程](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)中介绍了详细的注册步骤。 请按照那些步骤注册一个**本机**应用，然后按照更新说明将 **Microsoft.EventHub** API 添加到必需的权限。 执行那些步骤时，请记下 **TenantId** 和 **ApplicationId**，因为到时要使用这些值来运行应用程序。
 
