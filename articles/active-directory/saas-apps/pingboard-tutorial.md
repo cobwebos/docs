@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 084a921123badb786503ce6696eb4ace14dd59b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a26418a5159781eab96cf7730d669ccb65742d86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170476"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861479"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>教程：Azure Active Directory 与 Pingboard 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56170476"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Pingboard 的集成，需要具有以下项：
 
@@ -202,7 +202,7 @@ ms.locfileid: "56170476"
 
     a. 在“全名”文本框中，键入用户的全名，如 Britta Simon。
 
-    b. 在“电子邮件”文本框中，键入用户的电子邮件地址，如 brittasimon@contoso.com。
+    b. 在中**电子邮件**文本框中，键入用户电子邮件地址，例如**brittasimon\@contoso.com**。
 
     c. 在“职务”文本框中，键入 Britta Simon 的职务。
 

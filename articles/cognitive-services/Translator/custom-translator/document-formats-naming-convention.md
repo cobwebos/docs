@@ -5,16 +5,16 @@ description: 本指南介绍自定义翻译中的文档格式和命名约定。 
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: afd3192117bd22c62fd8e36752515166e4c6e043
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 0b578bfdb75b0ad4d4065d8793a74e7c4284eb74
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225469"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781582"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
@@ -22,7 +22,7 @@ ms.locfileid: "55225469"
 
 下表包含了可用于生成翻译系统的所有受支持文件格式：
 
-| 格式            | 扩展   | 说明                                                                                                                                                                                                                                                                    |
+| 格式            | 扩展   | 描述                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | .XLF、.XLIFF | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |
 | TMX               | .TMX         | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |

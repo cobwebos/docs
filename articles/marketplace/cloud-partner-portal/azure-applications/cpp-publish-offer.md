@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: cafda8a48f9160c80edb02c3452035f912958bc7
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: fdca47877d4cb2192eef0a26448cd21e8afe4b77
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098215"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217931"
 ---
 # <a name="publish-azure-application-offer"></a>发布 Azure 应用程序产品/服务
 
@@ -52,6 +52,8 @@ ms.locfileid: "56098215"
 
 完成发布过程后，套餐将在 [Microsoft Azure 市场应用程序类别](https://azuremarketplace.microsoft.com/marketplace/apps/)中列出。
 
+>[!Note]
+>云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
 
 ## <a name="errors-and-review-feedback"></a>错误和评审反馈
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure API 管理中使用 Azure 托管服务标识 | Microsoft Docs
-description: 了解如何在 API 管理中使用 Azure 托管服务标识
+title: 使用 Azure API 管理中管理的标识 |Microsoft Docs
+description: 了解如何使用 API 管理中管理的标识
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -11,27 +11,27 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: 54c4d58dc881ffc7c1f5ecc2242b64e5b61fa68f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730741"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310550"
 ---
-# <a name="use-azure-managed-service-identity-in-azure-api-management"></a>在 Azure API 管理中使用 Azure 托管服务标识
+# <a name="use-managed-identities-in-azure-api-management"></a>使用 Azure API 管理中管理的标识
 
-本文说明如何创建 API 管理服务实例的托管服务标识以及如何访问其他资源。 借助 Azure Active Directory (Azure AD) 生成的托管服务标识，API 管理实例可以轻松、安全访问其他受 Azure AD 保护的资源（如 Azure Key Vault）。 此托管服务标识由 Azure 托管，无需设置或转交任何机密。 有关 Azure 托管服务标识的详细信息，请参阅 [Azure 资源的托管服务标识](../active-directory/msi-overview.md)。
+本文介绍如何创建 API 管理服务实例的托管的标识以及如何访问其他资源。 生成的 Azure Active Directory (Azure AD) 的托管的标识，API 管理实例轻松安全地访问其他 Azure AD 保护的资源，如 Azure Key Vault。 此标识由 Azure 管理，不需要设置或转交任何机密。 有关托管标识的详细信息，请参阅[什么是 Azure 资源的管理的标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="create-a-managed-service-identity-for-an-api-management-instance"></a>为 API 管理实例创建托管服务标识
+## <a name="create-a-managed-identity-for-an-api-management-instance"></a>创建托管的标识为 API 管理实例
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-若要在门户中设置托管服务标识，需先按常规创建 API 管理实例，然后启用该功能。
+若要设置在门户中的托管标识，您将先创建像平时一样的 API 管理实例，然后启用该功能。
 
 1. 按常规在门户中创建 API 管理实例。 在门户中导航到该应用。
-2. 选择“托管服务标识”。
+2. 选择**托管服务标识**。
 3. 将“使用 Azure Active Directory 注册”切换至“打开”。 单击“保存”。
 
 ![启用 MSI](./media/api-management-msi/enable-msi.png)
@@ -80,14 +80,14 @@ ms.locfileid: "55730741"
 ## <a name="use-the-managed-service-identity-to-access-other-resources"></a>使用托管服务标识访问其他资源
 
 > [!NOTE]
-> 目前，托管服务标识可用于从 Azure Key Vault 为 API 管理自定义域名获取证书。 不久后会支持更多方案。
+> 目前，管理的标识可用于从 Azure 密钥保管库中获取证书，对 API 管理自定义域名。 不久后会支持更多方案。
 >
 >
 
 
 ### <a name="obtain-a-certificate-from-azure-key-vault"></a>从 Azure Key Vault 中获取证书
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备组件
 1. 包含 pfx 证书的 Key Vault 必须与 API 管理服务在同一 Azure 订阅和同一资源组中。 这是 Azure 资源管理器模板的要求。
 2. 机密的内容类型必须是 *application/x-pkcs12*。 可以使用以下脚本上传证书：
 
@@ -110,7 +110,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 以下示例显示包含以下步骤的 Azure 资源管理器模板：
 
-1. 创建含托管服务标识的 API 管理实例。
+1. 创建托管标识的 API 管理实例。
 2. 更新 Azure Key Vault 实例的访问策略，并允许 API 管理实例从中获取机密。
 3. 通过 Key Vault 实例中的证书设置自定义域名来更新 API 管理实例。
 
@@ -166,7 +166,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
         "keyVaultIdToCertificate": {
             "type": "string",
             "metadata": {
-                "description": "Reference to the KeyVault certificate."
+                "description": "Reference to the KeyVault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
             }
         }
     },
@@ -238,7 +238,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 Azure 托管服务标识的详细信息：
+了解有关 Azure 资源的管理的标识的详细信息：
 
-* [Azure 资源的托管服务标识](../active-directory/msi-overview.md)
+* [什么是 Azure 资源的管理的标识](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)

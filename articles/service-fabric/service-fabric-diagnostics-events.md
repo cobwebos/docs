@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 936a47593b9db6e4989c30b2df37dfd82c286c59
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
-ms.translationtype: HT
+ms.openlocfilehash: c4ce8e01b1dc819453610f68d044cc268e27eed7
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290512"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242745"
 ---
 # <a name="service-fabric-events"></a>Service Fabric 事件 
 
 Service Fabric 平台会为群集内发生的关键操作活动写入多个结构化的事件。 从群集升级到副本放置决策都属于此类事件。 Service Fabric 公开的每个事件都映射到群集中的下列实体之一：
 * 群集
-* Application
+* 应用程序
 * 服务
 * Partition
 * 副本 
@@ -45,7 +45,7 @@ Service Fabric 平台会为群集内发生的关键操作活动写入多个结�
 ## <a name="how-to-access-events"></a>如何访问事件
 
 可以通过以下几种不同的方式访问 Service Fabric 事件：
-* 事件通过标准通道（如 ETW/Windows 事件日志）进行记录，并且可由任何支持这些事件的监视工具（如 Log Analytics）显示。 默认情况下，在门户中创建的群集已启用诊断并让 Microsoft Azure 诊断代理将事件发送到 Azure 表存储，但你仍需要将此群集与 Log Analytics 资源集成。 详细了解如何配置 [Azure 诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)，以便修改群集的诊断配置，从而获取更多日志或性能计数器以及 [Log Analytics 集成](service-fabric-diagnostics-event-analysis-oms.md)
+* 事件通过标准频道如 ETW/Windows 事件日志记录和可视化，方法是支持这些例如 Azure Monitor 日志的任何监视工具。 默认情况下，在门户中创建的群集已打开的诊断和具有 Windows Azure 诊断代理将事件发送到 Azure 表存储，但仍需要将此集成与 log analytics 资源。 详细了解如何配置[Azure 诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)修改诊断配置的群集以获取更多日志或性能计数器和[Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md)
 * EventStore 服务的 Rest API 允许直接查询群集或通过 Service Fabric 客户端库进行查询。 请参阅[通过 EventStore API 查询群集事件](service-fabric-diagnostics-eventstore-query.md)。
 
 ## <a name="next-steps"></a>后续步骤

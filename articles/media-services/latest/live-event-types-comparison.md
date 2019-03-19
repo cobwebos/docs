@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9d62ef2295abbb8f8fc6f45ffc0c7ab1ce9616e4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 9952a7bbac1eb79de0d3425f839e3bd30196844e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878351"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243884"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
@@ -33,7 +33,7 @@ ms.locfileid: "55878351"
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|
 | 贡献源中建议的最大层数|最大为 12|1 个音频|
-| 输出中的最大层数| 与输入相同|最大为 7|
+| 输出中的最大层数| 与输入相同|最多为 6 （请参阅下面的系统预设）|
 | 贡献源的最大聚合带宽|60 Mbps|不适用|
 | 贡献中单个层的最大比特率 |20 Mbps|20 Mbps|
 | 支持多语言音轨|是|否|
@@ -54,6 +54,30 @@ ms.locfileid: "55878351"
 | 支持非一致性输入 GOP|是|否 – 输入必须具有固定的 GOP 持续时间|
 | 支持可变帧率输入|是|否 - 输入必须是固定的帧速率。 轻微的帧率变化是容许的，例如在高速运动情况下出现的轻微帧率变化。 但是，贡献源不能降低帧速率（例如降低到 15 帧/秒）。|
 | 输入源丢失时，会自动关闭实时事件|否|12 小时后，如果没有运行的 LiveOutput|
+
+## <a name="system-presets"></a>系统预设
+
+使用实时编码时 (实时事件设置为**标准**)，编码预设定义如何将传入流编码为多个比特率或图层。 目前，唯一允许的值为预设*Default720p* （默认值）。
+
+Default720p 会将视频编码为以下 6 层。
+
+### <a name="output-video-stream"></a>输出视频流
+
+| 比特率 | 宽度 | 高度 | MaxFPS | 配置文件 | 输出流名称 |
+| --- | --- | --- | --- | --- | --- |
+| 3500 |1280 |720 |30 |高 |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |高 |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |高 |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |高 |Video_512x288_850kbps |
+| 550 |384 |216 |30 |高 |Video_384x216_550kbps |
+| 200 |340 |192 |30 |高 |Video_340x192_200kbps |
+
+> [!NOTE]
+> 如果您需要使用自定义的实时编码预设，请联系amshelp@microsoft.com。 您应指定所需的表的分辨率和比特率。 不要验证只有一个图层 720p 和最多 6 层。
+
+### <a name="output-audio-stream"></a>输出音频流
+
+音频以 128 kbps 的速率编码为立体声 AAC-LC，采样率为 48 kHz。
 
 ## <a name="next-steps"></a>后续步骤
 

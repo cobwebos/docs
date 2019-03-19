@@ -6,22 +6,22 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/19/2019
+ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07fd8c41e7817e232513ed9a260c3722a1fdac11
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 74b099c648fa4dd1c735cc76c82efbc102d9843c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429258"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443039"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
 本文可帮助你使用更改跟踪解决方案轻松识别环境中的更改。 该解决方案会跟踪对 Windows 和 Linux 软件、Windows 和 Linux 文件、Windows 注册表项、Windows 服务和 Linux 守护程序进行的更改。 标识配置更改有助于确定操作问题。
 
-对受监视服务器上已安装的软件、Windows 服务、Windows 注册表和文件以及 Linux 守护程序进行的更改将发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松查看服务器基础结构中所做的更改。
+对已安装的软件、 Windows 服务、 Windows 注册表和文件，并受监视服务器上的 Linux 守护程序的更改发送到云中的 Azure Monitor 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松查看服务器基础结构中所做的更改。
 
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
 
@@ -155,6 +155,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 更改跟踪解决方案当前遇到以下问题：
 
 * 没有在 Windows Server 2016 Core RS3 计算机上收集修补程序更新。
+* Linux 守护程序可能会显示已更改的状态，即使不未进行任何更改也是如此。 这是因为如何`SvcRunLevels`捕获字段。
 
 ## <a name="change-tracking-data-collection-details"></a>更改跟踪数据收集详细信息
 
@@ -261,7 +262,7 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 ## <a name="search-logs"></a>搜索日志
 
-除了门户中提供的详细信息以外，还可以针对日志执行搜索。 在打开“更改跟踪”页的情况下，单击“Log Analytics”打开“日志搜索”页。
+除了门户中提供的详细信息以外，还可以针对日志执行搜索。 与**更改跟踪**页上，打开，请单击**Log Analytics**，这将打开**日志**页。
 
 ### <a name="sample-queries"></a>示例查询
 
@@ -296,7 +297,7 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 
 就更改跟踪或清单数据来说，虽然针对 Hosts 文件的更改发出警报是一种很好的应用警报的方式，但还有更多适用于警报的情形，其中包括在以下部分定义的情况及其示例。
 
-|Query  |说明  |
+|Query  |描述  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|用于跟踪对系统关键文件的更改|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|用于跟踪对关键配置文件的修改|
@@ -314,5 +315,5 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 > [!div class="nextstepaction"]
 > [故障排除环境中的更改](automation-tutorial-troubleshoot-changes.md)
 
-* 使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)以查看详细的更改跟踪数据。
+* 使用[Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)若要查看详细的更改跟踪数据。
 

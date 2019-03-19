@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67a8c4d4fe5476d00677c08bef9668066c4ec4f3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458294"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339736"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>从“我的个人资料”（预览版）门户管理组织
 可以从“我的个人资料”门户的“组织”页管理组织。
@@ -35,7 +35,7 @@ ms.locfileid: "56458294"
 
 2. 从左侧导航窗格中选择“组织”，或从“组织”块中选择“管理组织”链接。
 
-    ![“我的个人资料”页，显示突出显示的“组织”链接](media/myprofile-portal/myprofile-portal-organizations-links.png)
+    ![“我的个人资料”页，显示突出显示的“组织”链接](media/myprofile-portal/myprofile-portal-organizations.png)
 
 3. 查看**本组织**的信息。 
 
@@ -57,4 +57,4 @@ ms.locfileid: "56458294"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看最近登录活动后，可以选择查看或管理[安全信息](user-help-security-info-overview.md)、[最近登录活动](myprofile-portal-recent-activity-page.md)、连接的[设备](myprofile-portal-devices-page.md)，或者选择查看组织[使用数据](myprofile-portal-privacy-page.md)的方式。
+- 后查看你的组织，你可以选择要查看或管理你[的安全信息](user-help-security-info-overview.md)的连接[设备](myprofile-portal-devices-page.md)，或视图如何组织[使用你的数据](myprofile-portal-privacy-page.md)。

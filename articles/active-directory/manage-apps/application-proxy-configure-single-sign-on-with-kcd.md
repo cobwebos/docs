@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19ea76f28995dfa7f7dd5a6f280f8319f5b4ca26
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b82f32477efb2e45eb95651dd21ccd2ae3095e7c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180754"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431303"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 
@@ -30,20 +30,20 @@ ms.locfileid: "56180754"
 可以在 Active Directory 中提供应用程序代理连接器权限来模拟用户，以使用集成 Windows 身份验证 (IWA) 实现应用程序的单一登录。 连接器使用此权限来代表用户发送和接收令牌。
 
 ## <a name="how-single-sign-on-with-kcd-works"></a>使用 KCD 的单一登录的工作原理
-此示意图解释了用户尝试访问采用 IWA 的本地应用程序时的流程。
+当用户尝试访问使用 IWA 的在内部部署应用程序时，此图解释了流。
 
 ![Microsoft AAD 身份验证流程示意图](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. 用户输入 URL，通过应用程序代理访问本地应用程序。
+1. 用户输入用于通过应用程序代理访问本地应用程序的 URL。
 2. 应用程序代理将请求重定向到 Azure AD 身份验证服务，以进行预身份验证。 此时，Azure AD 将应用所有适用的身份验证和授权策略，例如多重身份验证。 如果用户通过验证，Azure AD 将创建令牌并将其发送给用户。
 3. 用户将令牌传递给应用程序代理。
 4. 应用程序代理验证令牌并从中检索用户主体名称 (UPN)，通过双重身份验证安全通道，将请求、UPN 和服务主体名称 (SPN) 发送到连接器。
-5. 连接器与本地 AD 执行 Kerberos 约束委托 (KCD) 协商，模拟用户将 Kerberos 令牌发送到应用程序。
+5. 连接器执行与本地 AD，模拟用户获取 Kerberos 令牌对应用程序的 Kerberos 约束委派 (KCD) 协商。
 6. Active Directory 将应用程序的 Kerberos 令牌发送到连接器。
 7. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。
 8. 应用程序将响应发送到连接器，该响应随后返回到应用程序代理服务，最后返回到用户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 开始为 IWA 应用程序使用 SSO 之前，请确保已在环境中完成以下设置和配置：
 
 * 应用（例如 SharePoint Web 应用）已设置为使用 Windows 集成身份验证。 有关详细信息，请参阅 [Enable Support for Kerberos Authentication](https://technet.microsoft.com/library/dd759186.aspx)（启用对 Kerberos 身份验证的支持）；对于 SharePoint，请参阅 [Plan for Kerberos authentication in SharePoint 2013](https://technet.microsoft.com/library/ee806870.aspx)（在 SharePoint 2013 中规划 Kerberos 身份验证）。

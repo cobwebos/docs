@@ -18,12 +18,12 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a45d776ea241e04aacf39e45f7bf6d2cc58c689
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172159"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446633"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系
 
@@ -39,7 +39,7 @@ Azure AD Connect 可以管理本地 Active Directory 联合身份验证服务 (A
 
 Azure AD Connect **仅**管理与 Azure AD 信任相关的设置。 Azure AD Connect 不会修改 AD FS 中有关其他信赖方信任的任何设置。 下表指出了 Azure AD Connect 控制的设置。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 | :--- | :--- |
 | 令牌签名证书 | Azure AD Connect 可用于重置和重新创建与 Azure AD 之间的信任关系。 Azure AD Connect 针对 AD FS 的令牌签名证书执行一次性的立即滚动更新，并更新 Azure AD 域联合设置。|
 | 令牌签名算法 | Microsoft 建议使用 SHA-256 作为令牌签名算法。 Azure AD Connect 可以检测令牌签名算法是否设置为安全性不如 SHA-256 的值。 在下一个可能的配置操作中，它会将设置更新为 SHA-256。 必须更新其他信赖方信任，才能使用新的令牌签名证书。 |
@@ -77,7 +77,7 @@ Azure AD Connect **仅**管理与 Azure AD 信任相关的设置。 Azure AD Con
 
 Azure AD Connect 确保始终使用适当的建议声明规则集来配置 Azure AD 信任。 Microsoft 建议使用 Azure AD Connect 来管理 Azure AD 信任。 本部分列出颁发转换规则集及其说明。
 
-| 规则名称 | 说明 |
+| 规则名称 | 描述 |
 | --- | --- |
 | 颁发 UPN | 此规则从 userprincipalname 的同步设置中配置的属性查询 userprincipalname 的值。|
 | 查询自定义 ImmutableId 声明的 objectguid 和 msdsconsistencyguid | 此规则在 objectguid 和 msdsconsistencyguid 值（如果存在）的管道中添加一个临时值 |
@@ -105,7 +105,7 @@ Azure AD Connect 确保始终使用适当的建议声明规则集来配置 Azure
 
 每当对 Azure AD 信任设置进行更新时，Azure AD Connect 1.1.873.0 或更高版本都会创建 Azure AD 信任设置的备份。 Azure AD 信任设置将备份到 **%ProgramData%\AADConnect\ADFS**。 文件名采用以下格式：AadTrust-&lt;日期&gt;-&lt;时间&gt;.txt，例如 AadTrust-20180710-150216.txt
 
-![Azure AD 信任示例备份的快照](./media/how-to-connect-azure-ad-trust/backup.png)
+![示例的屏幕截图备份的 Azure AD 信任](./media/how-to-connect-azure-ad-trust/backup.png)
 
 可以使用下面建议的步骤还原颁发转换规则
 

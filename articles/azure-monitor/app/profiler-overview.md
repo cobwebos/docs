@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2a2c2667ae3180fd4f7b114ce6cef05ac7a1080c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: c42de8cf189c0ebaf5f13ef5971ad91d14d862fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859719"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850269"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>使用 Application Insights 探查 Azure 中的生产应用程序
 ## <a name="enable-application-insights-profiler-for-your-application"></a>对应用程序启用 Application Insights Profiler
@@ -30,6 +30,7 @@ Profiler 适用于以下 Azure 服务中部署的 .NET 应用程序。 下面提
 * [Azure 云服务](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虚拟机和虚拟机规模集](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [**预览**ASP.NET Core Azure Linux Web 应用](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
 如果已启用 Profiler 但未看到跟踪，请查看[故障排除指南](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)。
 
@@ -93,6 +94,10 @@ AWAIT\_TIME 指示代码正在等待另一个任务完成。 这种延迟通常�
 ### <a id="block"></a>阻塞时间
 
 BLOCKED_TIME 指示代码正在等待另一个资源变为可用。 例如，它可能会等待同步对象或线程变为可用，或等待请求完成。
+
+### <a name="unmanaged-async"></a>非托管的异步
+
+.NET framework 发出 ETW 事件和线程之间传递活动 id，以便可以在线程之间跟踪异步调用。 非托管的代码 （本机代码） 和异步代码的某些较旧样式缺少这些事件和活动 id，因此探查器无法判断哪个线程和线程上正在运行哪些函数。 这是在调用堆栈中标记为非托管 Async。 如果下载 ETW 文件，您可能能够使用[PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md)以获取更详细地了解发生了什么情况。
 
 ### <a id="cpu"></a>CPU 时间
 

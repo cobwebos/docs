@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: cdd5c7592ebbc092c8e7be01a0fdd16e9c78aeaf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024087"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240790"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文提供有关 Azure 数据工厂的常见问题解答。  
@@ -174,6 +174,33 @@ ms.locfileid: "54024087"
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>如何得体地处理活动输出中的 NULL 值？ 
 可以在表达式中使用 `@coalesce` 构造来得体地处理 NULL 值。 
+
+## <a name="mapping-data-flows"></a>映射数据的流
+
+### <a name="which-adf-version-do-i-use-to-create-data-flows"></a>使用 ADF 版本创建的数据流动？
+使用 ADF V2 版本来创建数据流
+  
+### <a name="i-was-a-previous-private-preview-customer-using-data-flows-and-i-used-the-adf-v2-wdata-flows-preview-version"></a>我已使用的数据流动的上一个个人预览版客户，我使用 ADF V2 w/数据的流预览版本
+此版本现已过时。 使用 ADF V2 的数据流
+  
+### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-data-flows"></a>内容已从个人预览版更改为受限公共预览版中的数据流动？
+不再需要打开 Databricks 群集。 ADF 将管理群集创建和关闭的。 Blob 数据集和 ADLS 数据集分为分隔的文本和 Parquet 数据集。 您仍可以使用 ADLS 和 Blob 存储区来存储这些文件。 为这些存储引擎使用相应的链接服务。
+
+### <a name="can-i-migrate-my-private-preview-factories-to-adf-v2"></a>可以将我的个人预览版工厂迁移到 ADF V2？
+
+[是的请按照此处的说明](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)
+
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-do-you-need"></a>我需要帮助来解决我的数据的流逻辑，需要什么样的？
+
+在 Microsoft 提供的帮助或使用的数据流进行故障排除，请提供"DSL 代码计划"。 为此，请执行以下步骤：
+
+* 从数据数据流设计器右上角中单击"代码"。 这会显示数据流的可编辑 JSON 代码。
+* 从代码视图中，请单击右上角的"计划"。 计划切换将从 JSON 切换到只读的格式化 DSL 脚本计划。
+* 复制和粘贴此脚本或将其保存在文本文件中。
+
+### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>如何访问在 ADF 中使用其他 80 数据集类型的数据？
+
+数据流目前允许 Azure SQL DB、 Azure SQL DW、 分隔的文本文件从 Blob 或 ADLS 和 Parquet 文件从 Blob 或 ADLS 本机源和接收器。 从任何其他连接器将数据转移到使用的复制活动，然后执行数据流的活动，以转换数据后已暂存。 例如，管道会首先将复制到 Blob，然后数据流活动将使用数据集在源中以转换该数据。
 
 ## <a name="next-steps"></a>后续步骤
 有关创建数据工厂的分步说明，请参阅以下教程：

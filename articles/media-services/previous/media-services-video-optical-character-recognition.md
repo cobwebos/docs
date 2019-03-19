@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: e0fa769c9071cac0dccaf43c312c80c7d097e345
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: c1983f14a23f8929091f5b7ae43e24bb9a834034
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005125"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857736"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>使用 Azure 媒体分析将视频文件中的文本内容转换为数字文本  
 ## <a name="overview"></a>概述
@@ -42,7 +42,7 @@ ms.locfileid: "56005125"
 >
 
 ### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 说明 |
+| 属性名称 | 描述 |
 | --- | --- |
 |AdvancedOutput| 如果将 AdvancedOutput 设置为 true，则 JSON 输出将包含每个单词的位置数据（除了短语和区域以外）。 如果不想查看这些详细信息，请将标志设置为 false。 默认值为 false。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)。|
 | 语言 |（可选）描述要查找的文本的语言。 下列类型作之一：AutoDetect（默认值）、Arabic、简体中文、繁体中文、Czech Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
@@ -77,7 +77,7 @@ ms.locfileid: "56005125"
 
 ```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
-    <VideoOcrPreset xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""http://www.windowsazure.com/media/encoding/Preset/2014/03"">
+    <VideoOcrPreset xmlns:xsi=""https://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""https://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""https://www.windowsazure.com/media/encoding/Preset/2014/03"">
       <Options>
          <AdvancedOutput>true</AdvancedOutput>
          <Language>English</Language>
@@ -103,7 +103,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
 
 输出包含以下属性：
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | --- | --- |
 | 时间刻度 |视频每秒的“刻度”数 |
 | Offset |时间戳的时间偏移量。 在版本 1.0 的视频 API 中，此属性始终为 0。 |

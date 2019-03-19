@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6cc55ec2e3be3510b9547025db17bcbee97e10
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765375"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441383"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清单收集管理 Azure 虚拟机
 
@@ -91,7 +91,9 @@ ms.locfileid: "55765375"
 
 ## <a name="manage-machine-groups"></a>管理计算机组
 
-使用清单，可以在 Log Analytics 中创建和查看计算机组。 计算机组是由 Log Analytics 中的查询定义的计算机集合。
+清单允许您创建并在 Azure Monitor 日志中查看计算机组。 计算机组是由 Azure Monitor 日志中查询定义的计算机的集合。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 要查看计算机组，请在清单页面上选择“计算机组”选项卡。
 
@@ -103,7 +105,7 @@ ms.locfileid: "55765375"
 
 单击“+ 克隆”按钮可以克隆计算机组。 此处，必须为组提供一个新名称并为组提供别名。 此时可以更改定义。 在更改查询后，按“验证查询”来预览将被选择的计算机。 当对组感到满意时，单击“创建”来创建计算机组
 
-如果希望创建一个新的计算机组，请选择“+ 创建计算机组”。 此按钮将打开“创建计算机组”页面，可以在其中定义新组。 单击“创建”以创建组。
+如果你想要创建新的计算机组，请选择 **+ 创建计算机组**。 此按钮将打开“创建计算机组”页面，可以在其中定义新组。 单击“创建”以创建组。
 
 ![创建新的计算机组](./media/automation-vm-inventory/create-new-group.png)
 
@@ -116,7 +118,7 @@ ms.locfileid: "55765375"
 3. 在列表中选择要断开连接的虚拟机。 该虚拟机有一个绿色复选标记，位于“OMS 连接”列中“此工作区”的旁边。
 
    >[!NOTE]
-   >OMS 现在称为 Log Analytics。
+   >OMS 现在称为 Azure Monitor 日志。
    
 4. 在下一页的顶部，选择“断开连接”。
 5. 在配置窗口中，选择“是”。

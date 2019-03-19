@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 7a01b4baa9dafba4f0193c7a73dc1ae44214f501
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: f27e7eba11dd98bc30f4f1b5d796488d3973f64a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311574"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405617"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据
 
@@ -98,10 +98,16 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
     - 应用程序密钥
     - 租户 ID
 
-2. 授予服务主体在 Azure 存储中的适当权限。
+2. 授予服务主体适当的权限。
 
-    - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。
-    - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。
+    - **作为源**，在存储资源管理器，请至少授予**读取 + 执行**列表，并复制文件夹和子文件夹中的文件或授予的权限**读取**复制单个文件的权限。 或者，在访问控制 (IAM)，请至少授予**存储 Blob 数据读取器**角色。
+    - **作为接收器**，在存储资源管理器，请至少授予**写入 + 执行**文件夹中创建子项目的权限。 或者，在访问控制 (IAM)，请至少授予**存储 Blob 数据参与者**角色。
+
+>[!NOTE]
+>到列表文件夹从根目录开始，您需要设置的权限被授予对服务主体**具有"执行"权限的根级别**对 IAM 或权限。 对于以下情况需要这样做：
+>- 使用**复制数据工具**创作复制管道。
+>- 在创作期间使用**数据工厂 UI** 测试连接和浏览文件夹。 
+>如果需考虑授予根级别的权限，则可以跳过测试连接和输入的路径手动在创作过程。 复制活动仍适用，只要通过复制文件的适当权限授予服务主体。
 
 链接服务支持以下属性：
 
@@ -140,16 +146,22 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
 
 ### <a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
-可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可以像使用自己的服务主体一样，直接使用此服务标识进行 Blob 存储身份验证。 此指定工厂可通过此方法访问以及从/向 Blob 存储复制数据。
+可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 对于 Blob 存储身份验证类似于使用服务主体，可以直接使用此托管的标识。 此指定工厂可通过此方法访问以及从/向 Blob 存储复制数据。
 
 若要使用 Azure 资源的托管标识身份验证，请执行以下步骤：
 
-1. 通过复制与工厂一起生成的“服务标识应用程序 ID”的值[检索数据工厂服务标识](data-factory-service-identity.md#retrieve-service-identity)。
+1. [检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)通过复制"服务标识应用程序 ID"与工厂一起生成的值。
 
-2. 授予托管标识在 Azure 存储中的适当权限。 
+2. 授予托管的标识适当的权限。 
 
-    - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。
-    - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。
+    - **作为源**，在存储资源管理器，请至少授予**读取 + 执行**列表，并复制文件夹和子文件夹中的文件或授予的权限**读取**复制单个文件的权限。 或者，在访问控制 (IAM)，请至少授予**存储 Blob 数据读取器**角色。
+    - **作为接收器**，在存储资源管理器，请至少授予**写入 + 执行**文件夹中创建子项目的权限。 或者，在访问控制 (IAM)，请至少授予**存储 Blob 数据参与者**角色。
+
+>[!NOTE]
+>向列表文件夹从根目录开始，您需要设置的权限被授予对托管标识**拥有"Execute"权限的根级别**或 IAM 权限。 对于以下情况需要这样做：
+>- 使用**复制数据工具**创作复制管道。
+>- 在创作期间使用**数据工厂 UI** 测试连接和浏览文件夹。 
+>如果需考虑授予根级别的权限，则可以跳过测试连接和输入的路径手动在创作过程。 复制活动仍适用，只要具有文件要复制的适当权限授予托管的标识。
 
 链接服务支持以下属性：
 
@@ -186,6 +198,8 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
 | type | 数据集的 type 属性必须设置为 AzureBlobFSFile。 |是 |
 | folderPath | Data Lake Storage Gen2 中的文件夹的路径。 如果未指定，它指向根目录。 <br/><br/>支持通配符筛选器，允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或 `^`，请使用此转义字符进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |否 |
 | fileName | 指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且没有在活动接收器中指定 preserveHierarchy，则复制活动会自动生成采用以下模式的文件名称：“Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]”，例如“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”；如果使用表名称而不是查询从表格源进行复制，则名称模式为“[table name].[format].[compression if configured]”，例如“MyTable.csv”。 |否 |
+| modifiedDatetimeStart | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
+| modifiedDatetimeEnd | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
 | 格式 | 若要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果要分析或生成具有特定格式的文件，以下是受支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为“最佳”和“最快”。 |否 |
 
@@ -205,7 +219,9 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详
         },
         "typeProperties": {
             "folderPath": "mycontainer/myfolder",
-            "fileName": "myfile.csv.gz",
+            "fileName": "*",
+            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
+            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {
                 "type": "TextFormat",
                 "columnDelimiter": ",",

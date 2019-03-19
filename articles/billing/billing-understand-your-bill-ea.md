@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
 ms.author: banders
-ms.openlocfilehash: 36ce4d96e02bac1eae1791acf811da468726b4a6
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: 16feb41707e5afa07054d20b620f5822eedad773
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902697"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858906"
 ---
 # <a name="understand-your-bill-for-azure-customers-with-an-enterprise-agreement"></a>了解签署了企业协议的 Azure 客户的帐单
 
@@ -64,7 +64,7 @@ ms.locfileid: "54902697"
 
 1. “总用量”应与服务超额发票上的“总应收金额”相匹配。 下表列出发票上显示的以及企业门户“使用情况摘要”中显示的款项和说明：
 
-   |发票上的款项|“使用情况摘要”中的款项|说明|
+   |发票上的款项|“使用情况摘要”中的款项|描述|
    |---|---|---|
    |总应收金额|总用量|应用信用额度之前特定周期的税前使用费总额。|
    |承诺用量|承诺用量|在该特定周期应用的信用额度。|
@@ -92,4 +92,4 @@ ms.locfileid: "54902697"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

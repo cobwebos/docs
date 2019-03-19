@@ -3,7 +3,7 @@ title: Azure Cloud Shell 限制 | Microsoft Docs
 description: Azure Cloud Shell 的限制概述
 services: azure
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: juluk
-ms.openlocfilehash: 1f2c218ed9ba2f5f9285c60b8d4c11704825c0f5
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.author: damaerte
+ms.openlocfilehash: 8fd88221818d28c227c33719c03e522e815a408b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563875"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245737"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 
@@ -45,7 +45,7 @@ Cloud Shell 支持最新版本的 Microsoft Edge、Microsoft Internet Explorer�
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>对于一个给定的用户，只有一个 shell 可处于活动状态
 
-不管是在 **Bash** 还是 **PowerShell** 中，用户每次只能启动一种类型的 shell。 但是，每次可以运行 Bash 或 PowerShell 的多个实例。 在 Bash 和 PowerShell 之间切换会导致 Cloud Shell 重启，从而终止现有会话。
+不管是在 **Bash** 还是 **PowerShell** 中，用户每次只能启动一种类型的 shell。 但是，每次可以运行 Bash 或 PowerShell 的多个实例。 使用菜单 Bash 或 PowerShell 之间切换会导致 Cloud Shell 重启，从而终止现有会话。 或者，可以通过键入运行 PowerShell 中的 bash `bash`，并可在 bash 运行 PowerShell，通过键入`pwsh`。
 
 ### <a name="usage-limits"></a>使用限制
 
@@ -57,9 +57,9 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 
 权限设置为普通用户，不具有 sudo 访问权限。 不会保留 `$Home` 目录外部的任何安装。
 
-### <a name="editing-bashrc"></a>编辑 .bashrc
+### <a name="editing-bashrc-or-profile"></a>编辑.bashrc 或 $PROFILE
 
-编辑 .bashr 时要小心，执行这一操作可能导致 Cloud Shell 出现意外错误。
+编辑.bashrc 或 PowerShell 的 $PROFILE 文件，这样可以在 Cloud Shell 中导致意外的错误时要注意。
 
 ## <a name="powershell-limitations"></a>PowerShell 限制
 
@@ -73,23 +73,15 @@ Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预�
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>从 Azure 驱动器创建时的默认文件位置：
 
-使用 PowerShell cmdlet，用户无法在 Azure 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 `$HOME`。 
+使用 PowerShell cmdlet，用户可以创建在 Azure 下的文件： 驱动器。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 `$HOME`。 
 
 ### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
 
-如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD`、`Connect-AzureRmAccount` 或 `Connect-AzAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
-
-### <a name="tab-completion-crashes-psreadline"></a>Tab 自动补全导致 PSReadline 崩溃
-
-如果用户的 EditMode 在 PSReadline 中设置为 Emacs，用户尝试通过 Tab 自动补全显示所有可能性，而窗口大小过小，无法显示所有可能性，则 PSReadline 将崩溃。
+如果用户在运行命令将创建一个 Windows 对话框，其中一个如会看到一条错误消息： `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>在显示进度栏后出现大间距型
 
 如果用户执行显示进度栏的操作（例如，在 `Azure:` 驱动器中的 tab 自动补全），则光标可能设置不正确，且在以前的进度栏处出现间距。
-
-### <a name="random-characters-appear-inline"></a>随机字符以内联显示
-
-光标位置序列代码（例如 `5;13R`）可以在用户输入时显示。  这些字符可以手动删除。
 
 ## <a name="next-steps"></a>后续步骤
 

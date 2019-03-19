@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 5c5a42908198b3a8f473efbe4f54bc481e250efa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875988"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431982"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -63,7 +63,7 @@ ms.locfileid: "55875988"
 
 **答**：部署不会自动更新。
 
-如果已调整并部署了具有基线 V1.0 的模型，该部署将保持原样。 客户可以解除已部署的模型，使用较新版本的基线重新调整并重新部署。
+如果已调整并部署了具有基线 V1.0 的模型，该部署将保持原样。 客户可以取消标记已部署的模型，重新调整使用基线的较新版本并重新部署。
 
 **问：如果我的已部署模型需要比门户提供的并发性更高的并发性，该怎么办？**
 

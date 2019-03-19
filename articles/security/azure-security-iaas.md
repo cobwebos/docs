@@ -4,7 +4,7 @@ description: " 将工作负荷迁移到 Azure IaaS 为重新评估设计带来�
 services: security
 documentationcenter: na
 author: barclayn
-manager: barbkess
+manager: MBaldwin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341210"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409740"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
@@ -39,7 +39,7 @@ ms.locfileid: "56341210"
 保护 VM 安全的第一步是确保只有授权用户才能设置新 VM 以及访问 VM。
 
 **最佳做法**：控制 VM 访问。   
-**详细信息**：使用 [Azure 策略](../governance/policy/overview.md)建立组织中的资源约定和创建自定义策略。 将这些策略应用于资源，如[资源组](../azure-resource-manager/resource-group-overview.md)。 属于该资源组的 VM 将继承该组的策略。
+**详细信息**：使用 [Azure 策略](../azure-policy/azure-policy-introduction.md)建立组织中的资源约定和创建自定义策略。 将这些策略应用于资源，如[资源组](../azure-resource-manager/resource-group-overview.md)。 属于该资源组的 VM 将继承该组的策略。
 
 如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 [Azure 管理组](../azure-resource-manager/management-groups-overview.md)提供订阅上的作用域级别。 可将订阅组织到管理组（容器）中，并将管理条件应用到该组。 管理组中的所有订阅都将自动继承应用于该组的条件。 不管使用什么类型的订阅，管理组都能提供大规模的企业级管理。
 
@@ -128,7 +128,7 @@ Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正�
 
 安全中心可主动监视威胁，并通过“安全警报”公开潜在的威胁。 关联的威胁将合并到名为“安全事件”的单个视图中。
 
-安全中心将数据存储在 [Azure 日志分析](../log-analytics/log-analytics-overview.md)中。 Log Analytics 提供查询语言和分析引擎，让你深入了解应用程序和资源的操作。 数据也是从 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md)、管理解决方案以及安装在虚拟机（云中或本地）上的代理收集的数据。 可以通过此共享功能全面了解自己的环境。
+安全中心将数据存储在[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)。 Azure Monitor 日志提供了使你能够深入了解你的应用程序和资源的操作的查询语言和分析引擎。 数据也是从 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md)、管理解决方案以及安装在虚拟机（云中或本地）上的代理收集的数据。 可以通过此共享功能全面了解自己的环境。
 
 没有为 VM 实施强大安全措施的组织将意识不到未经授权的用户可能试图绕过安全控制机制。
 
@@ -153,10 +153,10 @@ Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正�
 **详细信息**：Azure 磁盘加密将生成加密密钥并将其写入密钥保管库。 在 Key Vault 中管理加密密钥需要 Azure AD 身份验证。 为此，请创建 Azure AD 应用程序。 对于身份验证，可以使用基于客户端机密的身份验证或[基于客户端证书的 Azure AD 身份验证](../active-directory/active-directory-certificate-based-authentication-get-started.md)。
 
 **最佳做法**：使用密钥加密密钥 (KEK) 来为加密密钥提供附加的安全层。 将 KEK 添加到密钥保管库。   
-**详细信息**：使用 [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) cmdlet 在 Key Vault 中创建密钥加密密钥。 还可从本地硬件安全模块 (HSM) 导入 KEK 以进行密钥管理。 有关详细信息，请参阅 [Key Vault 文档](../key-vault/key-vault-hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。 在本地密钥管理 HSM 中保留此密钥的托管副本，提供额外的保护，防止意外删除密钥。
+**详细信息**：使用[添加 AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在密钥保管库中创建的密钥加密密钥。 还可从本地硬件安全模块 (HSM) 导入 KEK 以进行密钥管理。 有关详细信息，请参阅 [Key Vault 文档](../key-vault/key-vault-hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。 在本地密钥管理 HSM 中保留此密钥的托管副本，提供额外的保护，防止意外删除密钥。
 
 **最佳做法**：在加密磁盘之前创建[快照](../virtual-machines/windows/snapshot-copy-managed-disk.md)和/或备份。 如果加密期间发生意外故障，备份可提供恢复选项。   
-**详细信息**：加密之前，需要备份包含托管磁盘的 VM。 备份之后，可以通过指定 -skipVmBackup 参数，使用 Set-AzureRmVMDiskEncryptionExtension cmdlet 来加密托管磁盘。 有关如何备份和还原已加密 VM 的详细信息，请参阅 [Azure 备份](../backup/backup-azure-vms-encryption.md)一文。
+**详细信息**：加密之前，需要备份包含托管磁盘的 VM。 执行备份后，可以使用**集 AzVMDiskEncryptionExtension** cmdlet 可通过指定加密托管的磁盘 *-skipVmBackup*参数。 有关如何备份和还原已加密 VM 的详细信息，请参阅 [Azure 备份](../backup/backup-azure-vms-encryption.md)一文。
 
 **最佳做法**：为确保加密机密不会跨过区域边界，Azure 磁盘加密需要将密钥保管库和 VM 共置在同一区域。   
 **详细信息**：在要加密的 VM 所在的同一区域中创建并使用密钥保管库。

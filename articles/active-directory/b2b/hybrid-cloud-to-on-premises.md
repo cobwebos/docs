@@ -1,6 +1,6 @@
 ---
-title: 向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限 | Microsoft Docs
-description: 介绍如何使用 Azure AD B2B 协作向云 B2B 用户授予本地应用的访问权限。
+title: B2B 用户授予访问权限的本地应用的 Azure Active Directory |Microsoft Docs
+description: 演示如何为云 B2B 用户对在本地与 Azure AD B2B 协作的应用程序。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ac169bfc2d04e08e9853bb6ceda64fdeed861b4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b0e9536f009d478796bc9367a66630c02019dcd2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190052"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441239"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 

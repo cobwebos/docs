@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda3cb2b8d8edd4567440be627a58f576aebcca0
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: dbfcab7900a1552a46341ec71b8b0ea4b41b0bce
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458284"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339158"
 ---
 # <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>从“我的个人资料”（预览）门户中查看与隐私相关的信息
 可以查看组织如何使用“我的个人资料”门户的“隐私”页中的数据。
@@ -29,7 +29,7 @@ ms.locfileid: "56458284"
 
 2. 从左侧导航窗格中选择“隐私”，或从“隐私”块中选择“查看隐私”链接。
 
-    ![“我的个人资料”页，显示突出显示的“隐私”链接](media/myprofile-portal/myprofile-portal-privacy-links.png)
+    ![“我的个人资料”页，显示突出显示的“隐私”链接](media/myprofile-portal/myprofile-portal-privacy.png)
 
 3. 查看信息，包括：
 
@@ -39,4 +39,4 @@ ms.locfileid: "56458284"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看近期登录活动后，可以选择查看或管理[安全信息](user-help-security-info-overview.md)、[最近登录活动](myprofile-portal-recent-activity-page.md)、连接的[设备](myprofile-portal-devices-page.md)或[组织](myprofile-portal-organizations-page.md)。
+- 后查看你的组织如何使用你的数据，您可以选择要查看或管理你[的安全信息](user-help-security-info-overview.md)，已连接[设备](myprofile-portal-devices-page.md)，或你[组织](myprofile-portal-organizations-page.md)。

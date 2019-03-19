@@ -12,22 +12,28 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 235d6174153e32b40885811350d967af5b98ecc4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: c873587a640bb36e9fa43e314bf789a207956ae0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478349"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854834"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
-使用 Azure SQL 数据库的内存中技术可以提高应用程序的性能，并潜在地降低数据库的成本。 使用 Azure SQL 数据库的内存中技术可以在各种工作负荷上实现性能改进：
+使用 Azure SQL 数据库的内存中技术可以提高应用程序的性能，并潜在地降低数据库的成本。 
+
+## <a name="when-to-use-in-memory-technologies"></a>何时使用内存中技术
+
+使用 Azure SQL 数据库的内存中技术可以在各种工作负荷上实现性能改进：
 
 - **事务**（联机事务处理 (OLTP)），其中的大多数请求将读取或更新少量的数据（例如 CRUD 操作）。
 - **分析**（联机分析处理 (OLAP)），其中的大多数查询出于报告目的而执行复杂的计算，特定数量的查询会将数据加载和追加到现有的表中（称为“批量加载”）或者从表中删除数据。 
 - **混合**（混合事务/分析处理 (HTAP)），其中针对相同的数据集同时执行 OLTP 和 OLAP 查询。
 
-内存中技术使用查询的本机编译，或者底层硬件上提供的批处理和 SIMD 指令等高级处理来保留应在内存中处理的数据，可以提高这些工作负荷的性能。
+内存中技术使用查询的本机编译，或者底层硬件上提供的批处理和 SIMD 指令等高级处理来保留应在内存中处理的数据，可以提高这些工作负荷的性能。 
+
+## <a name="overview"></a>概述
 
 Azure SQL 数据库采用以下内存中技术：
 - *[内存中 OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* 可以增加每秒处理的事务数，并降低事务处理的延迟。 可受益于内存中 OLTP 的情况有：高吞吐量事务处理（例如贸易和游戏）、从事件或 IoT 设备引入数据、缓存、数据加载以及临时表和表变量等情况。
@@ -88,7 +94,7 @@ Azure SQL 数据库采用以下内存中技术：
 深入介绍这些技术的视频：
 
 - [Azure SQL 数据库中的内存中 OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)（包含性能优势的演示和自行重现这些结果的步骤）
-- [内存中 OLTP 视频：定义及其使用时机和用法](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [内存中 OLTP 视频：定义及其使用时机和用法](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
 
 可通过编程方式了解给定的数据库是否支持内存中 OLTP。 可执行以下 Transact-SQL 查询：
 ```
@@ -150,7 +156,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 有关该技术的深入介绍视频：
 
-- [列存储索引：Ignite 2016 大会中发布的内存中分析视频](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [列存储索引：Ignite 2016 大会中发布的内存中分析视频](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>列存储索引的数据大小和存储
 
@@ -188,7 +194,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 - [In-Memory OLTP in Azure SQL Database Blog Post](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)（“Azure SQL 数据库中的内存中 OLTP”博客文章）
 - [了解内存中 OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
 - [了解列存储索引](https://msdn.microsoft.com/library/gg492088.aspx)
-- [了解实时运营分析](https://msdn.microsoft.com/library/dn817827.aspx)
+- [了解实时运行分析](https://msdn.microsoft.com/library/dn817827.aspx)
 - 请参阅[有关常用工作负荷模式和迁移注意事项](https://msdn.microsoft.com/library/dn673538.aspx)（介绍内存中 OLTP 往往能够在其中提供显著性能改善的工作负荷模式）
 
 ### <a name="application-design"></a>应用程序设计

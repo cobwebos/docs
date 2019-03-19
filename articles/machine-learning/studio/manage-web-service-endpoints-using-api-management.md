@@ -1,33 +1,30 @@
 ---
-title: 使用 API 管理以管理机器学习工作室 Web 服务
+title: 管理 web 服务使用 API 管理
 titleSuffix: Azure Machine Learning Studio
 description: 介绍如何使用 API 管理来管理 AzureML Web 服务的指南。 通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 915b972774fb418a454d8a3acd2a61f25af7a6aa
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488503"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852876"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室 Web 服务
 ## <a name="overview"></a>概述
 本指南介绍如何快速入门，即使用 API 管理来管理 Azure 机器学习工作室 Web 服务。
 
 ## <a name="what-is-azure-api-management"></a>什么是 Azure API 管理？
-Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。 单击[此处](https://azure.microsoft.com/services/api-management/)获取有关 Azure API 管理的详细信息。 单击[此处](../../api-management/api-management-get-started.md)获取如何使用 Azure API 管理的指南。 这份额外指南（作为本指南的依据）涵盖更多主题，包括通知配置、层定价、响应处理、用户身份验证、创建产品、开发人员订阅和使用仪表板。
+Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。 单击[此处](https://azure.microsoft.com/services/api-management/)获取有关 Azure API 管理的详细信息。 单击[此处](/azure/api-management/import-and-publish)获取如何使用 Azure API 管理的指南。 这份额外指南（作为本指南的依据）涵盖更多主题，包括通知配置、层定价、响应处理、用户身份验证、创建产品、开发人员订阅和使用仪表板。
 
-## <a name="what-is-azureml"></a>AzureML 是什么？
-AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和共享先进的分析解决方案。 单击[此处](https://azure.microsoft.com/services/machine-learning/)了解有关 AzureML 的详细信息。
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成本指南，需要：
 
 * 一个 Azure 帐户。 如果没有 Azure 帐户，请单击[此处](https://azure.microsoft.com/pricing/free-trial/)了解有关如何创建免费试用版帐户的详细信息。
@@ -185,11 +182,11 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 
 展开“数据转换”和“操作”，并将“选择数据集中的列”拖动至实验。 将“Amazon 中的书评”连接到“选择数据集中的列”。
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![将书籍评论数据集模块连接到的投影列模块](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 单击“选择数据集中的列”，并单击“启动列选择器”并选择“Col2”。 单击复选标记应用这些更改。
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![选择使用列名称的列](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 展开“文本分析”，并将“功能哈希”拖动至实验。 将“选择数据集中的列”连接到“功能哈希”。
 

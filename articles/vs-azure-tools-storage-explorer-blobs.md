@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: fd13cb25fbe3696bf67615ef956f478b7c355547
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422046"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858161"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>使用存储资源管理器管理 Azure Blob 存储资源
 ## <a name="overview"></a>概述
 [Azure Blob 存储](storage/blobs/storage-dotnet-how-to-use-blobs.md)是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。
 可以使用 Blob 存储向外公开数据，或者私下存储应用程序数据。 本文介绍如何使用存储资源管理器来处理 Blob 容器和 Blob。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成本文中的步骤，需要满足以下先决条件：
 
 * [下载并安装存储资源管理器](https://www.storageexplorer.com)
@@ -112,7 +112,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
 
    ![“获取 SAS”选项][9]
 6. 指定完 SAS 选项以后，选择“创建”。
-7. 然后会显示第二个“共享访问签名”对话框，其中列出了可用来访问存储资源的 blob 容器以及 URL 和 QueryString。
+7. 然后会显示第二个“共享访问签名”对话框，其中列出了可用来访问存储资源的 Blob 容器以及 URL 和 QueryString。
    选择要复制到剪贴板的 URL 旁边的“复制”。
 
    ![复制 SAS URL][10]
@@ -172,23 +172,23 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
      1. 在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件”。
 
         ![“上传文件”菜单][15]
-     2. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 (…) 按钮，以选择要上传的文件。
+     2. 在 **“上传文件”** 对话框中，选择 **“文件”** 文本框右侧的省略号 (**…**) 按钮，以选择要上传的文件。
 
         ![“上传文件”选项][16]
      3. 将类型指定为“Blob 类型”。 有关详细信息，请参阅[创建容器和设置权限](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container)。
      4. （可选）指定要将选定文件上传到其中的目标文件夹。 如果目标文件夹不存在，系统会创建一个。
-     5. 选择“上传”。
+     5. 选择 **“上传”**。
    * **将文件夹上传到 Blob 容器**
 
      1. 在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件夹”。
 
         ![“上传文件夹”菜单][17]
-     2. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 (…) 按钮，以选择要上传其内容的文件夹。
+     2. 在 **“上传文件夹”** 对话框中，选择 **“文件夹”** 文本框右侧的省略号 (**…**) 按钮，以选择要上传其内容的文件夹。
 
         ![“上传文件夹”选项][18]
      3. 将类型指定为“Blob 类型”。 有关详细信息，请参阅[创建容器和设置权限](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container)。
      4. （可选）指定要将选定文件夹的内容上传到其中的目标文件夹。 如果目标文件夹不存在，系统会创建一个。
-     5. 选择“上传”。
+     5. 选择 **“上传”**。
    * **将 Blob 下载到本地计算机**
 
      1. 选择要下载的 Blob。

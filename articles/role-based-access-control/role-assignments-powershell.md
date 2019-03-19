@@ -1,6 +1,6 @@
 ---
 title: 使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限 | Microsoft Docs
-description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 管理用户、组和应用程序对 Azure 资源的访问权限。 这包括如何列出访问权限、授予访问权限以及删除访问权限。
+description: 了解如何管理的用户、 组和应用程序使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 对 Azure 资源的访问权限。 这包括如何列出访问权限、授予访问权限以及删除访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 84fd4262d3b64b369d6307a6a875e8a459324aaa
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: ace70dea5277b4e9d8c8b0e6e0cdc49da0b674e0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343768"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432220"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限
 
@@ -27,7 +27,7 @@ ms.locfileid: "56343768"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要管理访问，需要具有以下任一项：
 
@@ -81,9 +81,11 @@ NotDataActions   : {}
 AssignableScopes : {/}
 ```
 
-### <a name="list-a-specific-role-in-json-format"></a>以 JSON 格式列出特定角色
+## <a name="list-a-role-definition"></a>列出角色定义
 
-若要以 JSON 格式列出特定角色，请使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)。
+### <a name="list-a-role-definition-in-json-format"></a>以 JSON 格式列出角色定义
+
+若要以 JSON 格式列出角色定义，请使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)。
 
 ```azurepowershell
 Get-AzRoleDefinition <role name> | ConvertTo-Json
@@ -328,4 +330,4 @@ PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionNam
 
 - [教程：使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限](tutorial-role-assignments-group-powershell.md)
 - [教程：使用 Azure PowerShell 为 Azure 资源创建自定义角色](tutorial-custom-role-powershell.md)
-- [使用 Azure PowerShell 管理资源](../azure-resource-manager/powershell-azure-resource-manager.md)
+- [使用 Azure PowerShell 管理资源](../azure-resource-manager/manage-resources-powershell.md)

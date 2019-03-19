@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: 9208d9949ee68f966087c5e0bb50806ece8a2f60
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599938"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011409"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>在 Windows 或 Linux 上为连接的工厂解决方案加速器部署边缘网关
 
@@ -39,7 +39,7 @@ ms.locfileid: "53599938"
 
 ## <a name="choose-a-gateway-device"></a>选择网关设备
 
-如果还没有网关设备，Microsoft 建议从其中一个合作伙伴处购买商业网关。 有关与连接的工厂解决方案兼容的网关设备的列表，请访问  [Azure IoT 设备目录](https://catalog.azureiotsuite.com/?q=opc)。 按照设备随附的说明操作，设置网关。
+如果还没有网关设备，Microsoft 建议从其中一个合作伙伴处购买商业网关。 有关与连接的工厂解决方案兼容的网关设备的列表，请访问  [Azure IoT 设备目录](https://catalog.azureiotsolutions.com/?q=opc)。 按照设备随附的说明操作，设置网关。
 
 如果需要手动配置现有的网关设备，请使用以下说明。
 
