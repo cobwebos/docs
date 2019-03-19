@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725025"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997533"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 
@@ -36,7 +36,7 @@ ms.locfileid: "53725025"
 
 这两种操作都可用于 Azure 应用服务允许的所有标识提供者之间的身份验证。 这些提供者包括 Facebook、Twitter、Google 和 Microsoft 等社交标识提供者，以及用于企业标识的 Azure Active Directory。
 
-可以在 [GitHub 上的示例目录]中找到每种用例的示例。
+可以在 [在 GitHub 上的示例目录]中找到每种用例的示例。
 
 ## <a name="supported-platforms"></a>支持的平台
 
@@ -135,7 +135,7 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
 
     保存文件。
 
-1. 在本地运行应用程序（API 会在 http://localhost:3000) 上提供），或发布到 Azure。
+1. 可以在本地运行应用程序 (提供 API `http://localhost:3000`) 或发布到 Azure。
 
 ### <a name="create-node-backend-portal"></a>使用 Azure 门户创建 Node.js 后端
 
@@ -192,7 +192,7 @@ var mobile = azureMobileApps({ homePage: true });
 
 azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中的表公开为 Web API 的机制。 它提供五个操作：
 
-| Operation | Description |
+| Operation | 描述 |
 | --- | --- |
 | GET /tables/*tablename* |获取表中的所有记录。 |
 | GET /tables/*tablename*/:id |获取表中的特定记录。 |
@@ -284,7 +284,7 @@ module.exports = table;
 1. 下载并安装 [Microsoft SQL Server 2014 Express]。 请务必安装 SQL Server 2014 Express with Tools 版。 除非确实需要 64 位支持，否则请使用 32 位版本，因为它在运行时消耗的内存更少。
 1. 运行 SQL Server 2014 配置管理器：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在树菜单中，展开“SQL Server 网络配置”节点。
+   a. 在树菜单中，展开“SQL Server 网络配置”节点。
 
    b. 选择“SQLEXPRESS 的协议”。
 
@@ -370,7 +370,7 @@ module.exports = {
 
 azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的应用设置。 使用以下列表在“应用设置”中配置应用：
 
-| 应用设置 | azureMobile.js 设置 | Description | 有效值 |
+| 应用设置 | azureMobile.js 设置 | 描述 | 有效值 |
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |名称 |应用的名称 |字符串 |
 | **MS_MobileLoggingLevel** |logging.level |要记录的消息的最小日志级别 |error、warning、info、verbose、debug、silly |
@@ -404,7 +404,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 1. 在“资源组”框中，输入与应用相同的名称。
 1. 系统将选择默认应用服务计划。 若要更改应用服务计划：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“应用服务计划” > “+ 新建”。
+   a. 选择“应用服务计划” > “+ 新建”。
 
    b. 为新应用服务计划命名并选择适当的位置。
 
@@ -984,7 +984,7 @@ Node.js 应用程序可访问各种诊断日志工具。 在内部，移动应�
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [GitHub 上的 basicapp 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
 [GitHub 上的 todo 示例]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
-[GitHub 上的示例目录]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
+[在 GitHub 上的示例目录]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
 [static-schema sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
 [QueryJS]: https://github.com/Azure/queryjs
 [用于 Visual Studio 的 Node.js 工具 1.1]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1

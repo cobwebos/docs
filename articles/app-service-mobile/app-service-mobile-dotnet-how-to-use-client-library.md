@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 01294ec8aa65a8405bc99be215008dad66a73d8d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 469c6802879707a3cf16b3e17876cb1f5e3854fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960738"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093001"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -226,7 +226,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable.Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-以下经过修改的查询将跳过前三个结果，返回后三个结果。 此查询会生成第二“页”数据，其中页面大小为三个项。
+以下经过修改的查询会跳过前三个结果，返回接下来的三个结果。 此查询会生成第二“页”数据，其中页面大小为三个项。
 
 ```csharp
 // Define a filtered query that skips the top 3 items and returns the next 3 items.
@@ -240,10 +240,10 @@ List<TodoItem> items = await query.ToListAsync();
 query = query.IncludeTotalCount();
 ```
 
-在实际应用中，可以对页导航控件或类似的 UI 使用类似于上面的查询，以在页之间导航。
+在实际应用中，可以搭配页导航控件或类似的 UI 使用类似于上述示例的查询，在页之间导航。
 
 > [!NOTE]
-> 要重写移动应用后端中的 50 行限制，还必须将 [EnableQueryAttribute] 应用到公共 GET 方法，并指定分页行为。 将以下语句应用到该方法后，最大返回行数将设置为 1000：
+> 要替代移动应用后端中的 50 行限制，还必须将 [EnableQueryAttribute] 应用到公共 GET 方法，并指定分页行为。 将以下语句应用到该方法后，最大返回行数将设置为 1000：
 >
 > `[EnableQuery(MaxTop=1000)]`
 
@@ -376,7 +376,7 @@ await table.DeleteAsync(jo);
 ### <a name="optimisticconcurrency"></a>如何：使用乐观并发解决冲突
 两个或两个以上客户端可能会同时将更改写入同一项目。 如果没有冲突检测，则最后一次写入会覆盖任何以前的更新。 **乐观并发控制**假设每个事务均可以提交，因此不使用任何资源锁定。  提交事务之前，乐观并发控制会验证是否没有其他事务修改了数据。 如果数据已修改，则将回滚正在提交的事务。
 
-移动应用通过使用 `version` 系统属性列（该列是为移动应用后端中的每个表定义的）跟踪对每个项的更改来支持乐观并发控制。 每次更新某个记录时，移动应用都将该记录的 `version` 属性设置为新值。 在每次执行更新请求期间，会将该请求包含的记录的 `version` 属性与服务器上的记录的同一属性进行比较。 如果随请求传递的版本与后端不匹配，客户端库将引发 `MobileServicePreconditionFailedException<T>` 异常。 该异常中提供的类型就是包含记录服务器版本的后端中的记录。 然后，应用程序可以借助此信息来确定是否要使用后端中正确的 `version` 值再次执行更新请求以提交更改。
+移动应用通过使用 `version` 系统属性列（该列是为移动应用后端中的每个表定义的）跟踪对每个项的更改来支持乐观并发控制。 每次更新某个记录时，移动应用都将该记录的 `version` 属性设置为新值。 在每次执行更新请求期间，会将该请求包含的记录的 `version` 属性与服务器上的记录的同一属性进行比较。 如果随请求传递的版本与后端不匹配，客户端库会引发 `MobileServicePreconditionFailedException<T>` 异常。 该异常中提供的类型就是包含记录服务器版本的后端中的记录。 然后，应用程序可以借助此信息来确定是否要使用后端中正确的 `version` 值再次执行更新请求以提交更改。
 
 在 `version` 系统属性的表类中定义列，启用乐观并发。 例如：
 
@@ -462,7 +462,7 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]主题。
+有关详细信息，请参阅 [Offline Data Sync in Azure Mobile Apps]主题。
 
 ### <a name="binding"></a>如何：将移动应用数据绑定到 Windows 用户界面
 本部分说明如何使用 Windows 应用中的 UI 元素显示返回的数据对象。  下面的代码示例绑定到列表的源，列表中包含对不完整项的查询。 [MobileServiceCollection] 创建移动应用支持的绑定集合。
@@ -663,10 +663,10 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
 
      **Windows**：
 
-    ```csharp
-    private MobileServiceUser user;
-    private async Task AuthenticateAsync()
-    {
+     ```csharp
+     private MobileServiceUser user;
+     private async Task AuthenticateAsync()
+     {
 
         string authority = "INSERT-AUTHORITY-HERE";
         string resourceId = "INSERT-RESOURCE-ID-HERE";
@@ -694,15 +694,15 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
         }
-    }
-    ```
+     }
+     ```
 
      **Xamarin.iOS**
 
-    ```csharp
-    private MobileServiceUser user;
-    private async Task AuthenticateAsync(UIViewController view)
-    {
+     ```csharp
+     private MobileServiceUser user;
+     private async Task AuthenticateAsync(UIViewController view)
+     {
 
         string authority = "INSERT-AUTHORITY-HERE";
         string resourceId = "INSERT-RESOURCE-ID-HERE";
@@ -722,15 +722,15 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
         {
             Console.Error.WriteLine(@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
         }
-    }
-    ```
+     }
+     ```
 
      **Xamarin.Android**
 
-    ```csharp
-    private MobileServiceUser user;
-    private async Task AuthenticateAsync()
-    {
+     ```csharp
+     private MobileServiceUser user;
+     private async Task AuthenticateAsync()
+     {
 
         string authority = "INSERT-AUTHORITY-HERE";
         string resourceId = "INSERT-RESOURCE-ID-HERE";
@@ -753,14 +753,14 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
             builder.SetTitle("You must log in. Login Required");
             builder.Create().Show();
         }
-    }
-    protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-    {
+     }
+     protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+     {
 
         base.OnActivityResult(requestCode, resultCode, data);
         AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
-    }
-    ```
+     }
+     ```
 
 #### <a name="client-facebook"></a>使用来自 Facebook 或 Google 的令牌进行单一登录
 可以为 Facebook 或 Google 使用此代码段中所示的客户端流。
@@ -886,7 +886,7 @@ await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 * [使用跨平台模板注册](#register-xplat)
 
 ### <a name="register-for-push"></a>如何：注册推送通知
-使用移动应用客户端可向 Azure 通知中心注册推送通知。 注册时，会获得从平台特定的推送通知服务 (PNS) 获取的句柄。 然后就可以在创建注册时提供此值以及任何标记。 以下代码用于推送通知的 Windows 应用注册到 Windows 通知服务 (WNS)：
+使用移动应用客户端可向 Azure 通知中心注册推送通知。 注册时，你将获得从平台特定的推送通知服务 (PNS) 获取的句柄。 然后就可以在创建注册时提供此值以及任何标记。 以下代码用于推送通知的 Windows 应用注册到 Windows 通知服务 (WNS)：
 
 ```csharp
 private async void InitNotificationsAsync()
@@ -961,7 +961,7 @@ public JObject myTemplates()
 MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObject secondaryTiles);
 ```
 
-出于安全考虑，会在注册期间删除所有标记。 要将标记添加到安装或安装中的模板，请参阅 [使用适用于 Azure 移动应用的 .NET 后端服务器 SDK]。
+出于安全考虑，会在注册期间删除所有标记。 若要将标记添加到安装或安装中的模板，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK]。
 
 若要使用这些注册的模板发送通知，请参阅[通知中心 API]。
 
@@ -986,7 +986,7 @@ private async void InsertTodoItem(TodoItem todoItem)
 }
 ```
 
-有关处理错误条件的另一示例可在[移动应用文件示例]中找到。 [LoggingHandler] 示例提供了日志记录委托处理程序，记录发送到后端的请求。
+有关处理错误条件的其他示例，可在 [Mobile Apps Files Sample]（移动应用文件示例）中找到。 [LoggingHandler] 示例提供了日志记录委托处理程序，记录发送到后端的请求。
 
 ### <a name="headers"></a>如何：自定义请求标头
 若要支持特定的应用程序方案，可能需要自定义与移动应用后端之间的通信。 例如，可能需要将一个自定义标头添加到每个传出请求，甚至要更改响应状态代码。 可以使用自定义 [DelegatingHandler] 来实现此目的，如以下示例中所示：
@@ -1040,7 +1040,7 @@ public class MyHandler : DelegatingHandler
 [12]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
 [向应用添加身份验证]: app-service-mobile-windows-store-dotnet-get-started-users.md
-[Azure 移动应用中的脱机数据同步]: app-service-mobile-offline-data-sync.md
+[Offline Data Sync in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [向应用添加推送通知]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Register your app to use a Microsoft account login]: ../app-service/configure-authentication-provider-microsoft.md
 [如何为 Active Directory 登录配置应用服务]: ../app-service/configure-authentication-provider-aad.md
@@ -1077,7 +1077,7 @@ public class MyHandler : DelegatingHandler
 [PasswordVault]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: https://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
 [通知中心 API]: https://msdn.microsoft.com/library/azure/dn495101.aspx
-[移动应用文件示例]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
+[Mobile Apps Files Sample]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
 [LoggingHandler]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files/blob/master/src/client/MobileAppsFilesSample/Helpers/LoggingHandler.cs#L63
 
 <!-- External URLs -->

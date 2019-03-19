@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 962c1cff91a5ac3f52dc67c30bd2c7a4e2e22b9d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 8ec6a6a24629f72199d5f5afa86200acf53aba01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631832"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136540"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>在 Azure 搜索中生成高级查询的 Lucene 语法查询示例
 在构造 Azure 搜索的查询时，可以将默认的[简单查询分析器](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)替换为更全面的 [Azure 搜索中的 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，以便制定专用的高级查询定义。 
@@ -206,7 +206,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 请尝试在代码中指定 Lucene 查询分析器。 以下链接介绍如何为 .NET 和 REST API 设置搜索查询。 链接使用默认的简单语法，因此需要应用从本文中所学知识指定 **queryType**。
 
 * [使用 .NET SDK 查询 Azure 搜索索引](search-query-dotnet.md)
-* [使用 REST API 查询 Azure 搜索索引](search-query-rest-api.md)
+* [使用 REST API 查询 Azure 搜索索引](search-create-index-rest-api.md)
 
 可在以下链接找到其他语法参考、查询体系结构和示例：
 

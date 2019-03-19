@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e71e4ea56bfe467e03be59d6a855272baafc4235
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822725"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107723"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -47,7 +47,7 @@ Azure 上的 SAP HANA（大型实例）提供两个备份和还原选项：
 
 - 基础结构备份和还原功能。 还可以使用 Azure 上的 SAP HANA（大型实例）底层基础结构提供的备份和还原功能。 此选项满足备份和快速还原的需要。 本部分的余下内容介绍 HANA 大型实例提供的备份和还原功能。 本部分还会介绍备份和还原功能与 HANA 大型实例提供的灾难恢复功能之间的关系。
 
->   [!NOTE]
+> [!NOTE]
 >   HANA 大型实例底层基础结构使用的快照技术依赖于 SAP HANA 快照。 目前，SAP HANA 快照无法与 SAP HANA 多租户数据库容器的多个租户配合工作。 如果只部署一个租户，则 SAP HANA 快照可以正常工作，并可以使用此方法。
 
 ## <a name="using-storage-snapshots-of-sap-hana-on-azure-large-instances"></a>使用 Azure 上的 SAP HANA（大型实例）的存储快照
@@ -641,44 +641,44 @@ HANA Backup ID:
 
 1. 关闭 HANA 实例。
 
- ![关闭 HANA 实例](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
+   ![关闭 HANA 实例](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
 
 1. 卸载每个 HANA 数据库节点上的数据卷。 如果仍将数据卷载入操作系统，快照还原会失败。
- ![卸载每个 HANA 数据库节点上的数据卷](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
+   ![卸载每个 HANA 数据库节点上的数据卷](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
 
 1. 提出 Azure 支持请求，并包含有关如何还原特定快照的说明。
 
- - 还原期间：Azure 上的 SAP HANA 服务管理部门可能要求用户参加电话会议以进行协调、验证并确认还原的是正确的存储快照。 
+   - 还原期间：Azure 上的 SAP HANA 服务管理部门可能要求用户参加电话会议以进行协调、验证并确认还原的是正确的存储快照。 
 
- - 还原后：Azure 上的 SAP HANA 服务管理部门会告知存储快照已还原。
+   - 还原后：Azure 上的 SAP HANA 服务管理部门会告知存储快照已还原。
 
 1. 完成还原过程后，请重新装载所有数据卷。
 
- ![重新装载所有数据卷](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
+   ![重新装载所有数据卷](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
 
 1. 在 SAP HANA Studio 中选择恢复选项（如果在通过 SAP HANA Studio 重新连接到 HANA DB 时未自动显示）。 以下示例演示如何还原到最后一个 HANA 快照。 存储快照中嵌入了一个 HANA 快照。 如果要还原到最近的存储快照，该快照应是最近的 HANA 快照。 （如果要还原到较旧的存储快照，需要根据存储快照的创建时间找到 HANA 快照。）
 
- ![在 SAP HANA Studio 中选择恢复选项](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
+   ![在 SAP HANA Studio 中选择恢复选项](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
 
 1. 选择“将数据库恢复到特定的数据备份或存储快照”。
 
- ![“指定恢复类型”窗口](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
+   ![“指定恢复类型”窗口](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
 
 1. 选择“指定不包含目录的备份”。
 
- ![“指定备份位置”窗口](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
+   ![“指定备份位置”窗口](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
 
 1. 在“目标类型”列表中，选择“快照”。
 
- ![“指定要恢复的备份”窗口](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
+   ![“指定要恢复的备份”窗口](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
 
 1. 选择“完成”启动恢复过程。
 
- ![选择“完成”启动恢复过程](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
+    ![选择“完成”启动恢复过程](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
 
 1. HANA 数据库已还原并恢复到存储快照包含的 HANA 快照。
 
- ![HANA 数据库已还原并恢复到 HANA 快照](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
+    ![HANA 数据库已还原并恢复到 HANA 快照](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
 
 ### <a name="recover-to-the-most-recent-state"></a>恢复到最新状态
 
@@ -691,23 +691,23 @@ HANA Backup ID:
 
 1. 选择“将数据库恢复到其最近状态”。
 
- ![选择“将数据库恢复到其最近状态”](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
+   ![选择“将数据库恢复到其最近状态”](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
 
 1. 指定最新 HANA 日志备份的位置。 该位置需要包含从创建 HANA 快照开始，到处于最新状态为止的所有 HANA 事务日志备份。
 
- ![指定最新 HANA 日志备份的位置](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
+   ![指定最新 HANA 日志备份的位置](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
 
 1. 选择一个备份用作恢复数据库的基础。 在本示例中，屏幕截图中的 HANA 快照为存储快照中包含的 HANA 快照。 
 
- ![选择一个备份用作恢复数据库的基础](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
+   ![选择一个备份用作恢复数据库的基础](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
 
 1. 如果增量备份在创建 HANA 快照之后、处于最近状态之前不存在，请清除“使用增量备份”复选框。
 
- ![如果不存在增量备份，则清除“使用增量备份”复选框](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
+   ![如果不存在增量备份，则清除“使用增量备份”复选框](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
 
 1. 在摘要屏幕上选择“完成”启动还原过程。
 
- ![在摘要屏幕上单击“完成”](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
+   ![在摘要屏幕上单击“完成”](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
 
 ### <a name="recover-to-another-point-in-time"></a>恢复到另一个时间点
 若要恢复到 HANA 快照（包含在存储快照中）与晚于 HANA 快照时间点恢复之间的时间点，请执行以下步骤：
