@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: ed1b7b1b0f466b7dd16e8eaa47ec44d132d0f5ff
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859243"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547412"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。  使用模式可在不提供更多话语的情况下获得更高的意向准确度。 
@@ -31,18 +31,21 @@ ms.locfileid: "55859243"
 |孔西明的下属员工有谁？|获取组织结构组|.30|
 |谁归孔西明管辖？|获取组织结构组|.30|
 
-如果应用具有 10 到 20 条句子长度不同、字词顺序不同，甚至用词不同（“下属员工”、“经理”和“报告”的近义词）的话语，则 LUIS 返回的置信度得分可能较低。 为了帮助 LUIS 理解字词顺序的重要性，需创建一个模式。 
+如果应用具有 10 到 20 条句子长度不同、字词顺序不同，甚至用词不同（“下属员工”、“经理”和“报告”的近义词）的话语，则 LUIS 返回的置信度得分可能较低。 创建一种模式有助于 LUIS 了解单词顺序的重要性。 
 
 模式可处理以下情况： 
 
-* 当意向得分较低时
-* 当正确的意向得分不是最高但太接近最高得分。 
+* 意向分数较低
+* 正确的目的不是最高分但过于接近最高分。 
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>模式不保证提取意向
 模式使用多种预测技术。 在模式中设置模板话语的意向并不保证得出意向预测，但表示很可能得出。 
 
-## <a name="patterns-do-not-improve-entity-detection"></a>模式不提升检测到实体的可能性
-当模式需要实体时，它不帮助检测实体。 模式仅表示使用意向和角色帮助作出预测。  
+<a name="patterns-do-not-improve-entity-detection"/>
+
+## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>模式不会提高机器学习的内容实体检测
+
+一种模式主要是为了帮助意向和角色的预测。 Pattern.any 实体用于提取自由格式的实体。 虽然模式使用的实体，一种模式没有帮助检测机器学习的内容的实体。  
 
 若将多个话语合并到单个模式，则无法提升实体预测。 若要触发简单实体，需要添加话语或使用列表实体，否则模式将无法触发。
 
@@ -58,23 +61,71 @@ ms.locfileid: "55859243"
 ## <a name="pattern-syntax"></a>模式语法
 模式语法是一个话语模板。 该模板应包含要匹配的字词和实体，还要包含希望忽略的字词和标点。 它不是一个正则表达式。 
 
-模式中的实体用花括号 `{}` 括起。 模式可包含实体和带角色的实体。 Pattern.any 是一种只在模式中使用的实体。 以下部分介绍了语法。
+模式中的实体用花括号 `{}` 括起。 模式可包含实体和带角色的实体。 [Pattern.any](luis-concept-entity-types.md#patternany-entity)是仅在模式中使用的实体。 
 
-### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>用于向模式模板添加实体的语法
+模式语法支持以下语法：
+
+|函数|语法|嵌套级别|示例|
+|--|--|--|--|
+|实体| {} -用大括号|2|窗体 {实体名称} 位于何处？|
+|可选|[]-方括号<BR><BR>限制为 3 上的可选和分组的任意组合的嵌套级别 |2|问号是可选的 [？]|
+|分组|（) 的括号|2|是 ( \| b）。|
+|或| \| 的垂直条 （管道）<br><br>限制为 2 在一个组上的垂直条 （或者） |-|其中，是窗体 ({窗体的名称-短} &#x7c; {长的窗体的名称} &#x7c; {窗体 number})| 
+|开始和/或查询文本的末尾|^ 的插入符号|-|^ 开始查询文本<br>完成将语音样本 ^<br>^ 严格字面上匹配的查询与 {number} 实体的整个文本 ^|
+
+## <a name="nesting-syntax-in-patterns"></a>模式中的嵌套语法
+
+**可选**语法中的，使用方括号内，可以是嵌套的两个级别。 例如：`[[this]is] a new form`。 此示例中进行了以下言辞： 
+
+|嵌套的可选查询文本示例|说明|
+|--|--|
+|这是一个新窗体|匹配模式中的所有单词|
+|是一个新窗体|与外部的可选单词和模式中的非可选单词匹配|
+|新的窗体|所需的匹配项字匹配|
+
+**分组**语法中的，使用括号，可以是嵌套的两个级别。 例如：`(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`。 这允许将任何要匹配的三个实体。 
+
+如果实体 2 为列表实体 (RedWest C) 中的已知的构建名 Entity1 是具有角色，如来源 （西雅图） 和目标 (Cairo) 的位置，以下查询文本将映射到这种模式：
+
+|嵌套的分组查询文本示例|说明|
+|--|--|
+|RedWest-C|外部对实体进行分组的匹配项|
+|西雅图|与内部分组实体之一相匹配|
+|Cairo|与内部分组实体之一相匹配|
+
+## <a name="nesting-limits-for-groups-with-optional-syntax"></a>具有可选的语法的组的嵌套限制
+
+组合**分组**与**可选**语法有 3 个嵌套级别的限制。
+
+|允许|示例|
+|--|--|
+|是|( [ ( test1 &#x7c; test2 ) ] &#x7c; test3 )|
+|否|( [ ( [ test1 ] &#x7c; test2 ) ] &#x7c; test3 )|
+
+## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>嵌套的组或 ing 语法限制
+
+组合**分组**与**或 ing**语法有 2 个垂直图条的限制。
+
+|允许|示例|
+|--|--|
+|是|( test1 &#x7c; test2 &#x7c; ( test3 &#x7c; test4 ) )|
+|否|( test1 &#x7c; test2 &#x7c; test3 &#x7c; ( test4 &#x7c; test5 ) ) |
+
+## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>用于向模式模板添加实体的语法
 要向模式模板添加实体，需用花括号将实体名称括起，比如 `Who does {Employee} manage?`。 
 
 |模式与实体|
 |--|
 |`Who does {Employee} manage?`|
 
-### <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>用于向模式模板添加实体和角色的语法
+## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>用于向模式模板添加实体和角色的语法
 实体角色表示为 `{entity:role}`其中实体名称后接一个冒号，再接角色名称。 要向模式模板添加带角色的实体，需用花括号将实体名称和角色名称括起，比如 `Book a ticket from {Location:Origin} to {Location:Destination}`。 
 
 |模式与实体角色|
 |--|
 |`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
-### <a name="syntax-to-add-a-patternany-to-pattern-template"></a>用于向模式模板添加 pattern.any 的语法
+## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>用于向模式模板添加 pattern.any 的语法
 Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照模式模板操作，pattern.any 即可为任意长度。 
 
 要向模式模板添加 Pattern.any 实体，需用花括号将 Pattern.any 实体括起，比如 `How much does {Booktitle} cost and what format is it available in?`。  
@@ -89,35 +140,42 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 |《询问》的价格是多少？它适合哪种格式？|
 |《深夜小狗神秘事件》的价格是多少？它适合哪种格式？| 
 
-在这些书名示例中，书名的上下文字词不会让 LUIS 混乱。 LUIS 知道哪一截是书名，因为书名位于模式中且用 Pattern.any 实体标记。
+书籍标题的单词不令人困惑到 LUIS LUIS 知道书籍名称结束的位置，因为基于 Pattern.any 实体。
 
-### <a name="explicit-lists"></a>显式列表
-如果模式包含 Pattern.any，且模式语法可能基于话语提取出错误的实体，需通过创作 API 创建一个[显式列表](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)，允许出现此异常。 
+## <a name="explicit-lists"></a>显式列表
+
+创建[显式列表](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)通过创作 API 以允许该异常时：
+
+* 模式包含[Pattern.any](luis-concept-entity-types.md#patternany-entity)
+* 和模式语法允许根据查询文本不正确的实体提取的可能性。 
 
 例如，假设你的模式中包含可选语法 `[]` 和实体语法 `{}`，两个语法的组合方式导致数据提取错误。
 
-请考虑使用模式“[find] email about {subject} [from {person}]”。 在下面的话语中，主题和人员实体一个提取正确，一个提取错误：
+请考虑使用模式“[find] email about {subject} [from {person}]”。
+
+在下面的话语中，主题和人员实体一个提取正确，一个提取错误：
 
 |话语|实体|提取是否正确|
 |--|--|:--:|
 |email about dogs from Chris|subject=dogs<br>person=Chris|✔|
 |email about the man from La Mancha|subject=the man<br>person=La Mancha|X|
 
-在上表中，话语 `email about the man from La Mancha` 的主题应该是 `the man from La Mancha`（书名），但因为主题包含可选字词 `from`书名被预测错误。 
+在上表中，使用者应`the man from La Mancha`（书名） 而是因为使用者包含可选单词`from`，错误地预测标题。 
 
 要避免模式出现此异常，需使用[显式列表的创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) 添加 `the man from la mancha` 作为 {subject} 实体的显式列表匹配。
 
-### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>用于在模板话语中标记可选文本的语法
+## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>用于在模板话语中标记可选文本的语法
 使用正则表达式方括号语法 `[]` 标出话语中的可选文本。 最多能对两个括号使用方括号嵌套可选文本。
 
-|模式与可选的文本|
-|--|
-|`[find] email about {subject} [from {person}]`|
+|模式与可选的文本|含义|
+|--|--|
+|`[find] email about {subject} [from {person}]`|`find` 和`from {person}`都是可选的|
+|`Can you help me[?]|标点符号是可选的|
 
-可使用方括号忽略 `.``!` 和 `?` 等标点符号。 要忽略这些标记，必须将每个标记包含在单独的模式中。 可选语法目前不支持在多个项目的列表中忽略一个项目。
+标点符号 (`?`， `!`， `.`) 应忽略，并且需要忽略它们在模式中使用方括号语法。 
 
-## <a name="patterns-only"></a>仅限模式
-即使意向中没有任何实例话语，应用也可通过 LUIS 运行。 这种用法仅在使用模式的情况下使用。 模式要求每个模式至少有一个实体。 对于只有模式的应用，模式不能包含通过机器学习到的实体，因为这些实体要求具有示例话语。 
+## <a name="pattern-only-apps"></a>仅限模式的应用
+只要每个意向的模式，可以生成与意图不有任何示例语音样本，一个应用。 对于仅限模式的应用，该模式不应包含机器学习的内容的实体，因为这些需要的示例查询文本。 
 
 ## <a name="best-practices"></a>最佳做法
 了解[最佳实践](luis-concept-best-practices.md)。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 7fdd2a96044acdae223243d751bfcffb7a99da78
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666868"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534253"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>在 Azure 机器学习中使用 IoT 中心的传感器数据进行天气预报
 
@@ -85,7 +85,7 @@ ms.locfileid: "38666868"
 
    **位置**：与资源组使用同一位置。
 
-   **固定仪表板**：选中此选项可以方便地从仪表板访问 IoT 中心。
+   **固定到仪表板**：选中此选项可以方便地从仪表板访问 IoT 中心。
 
    ![在 Azure 中创建流分析作业](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "38666868"
 1. 在“作业拓扑”下，单击“输入”。
 1. 在“输入”窗格中单击“添加”，并输入以下信息：
 
-   **输入别名**：输入的唯一别名。
+   **输入别名**：输入唯一的别名。
 
    **源**：选择“IoT 中心”。
 
@@ -114,13 +114,13 @@ ms.locfileid: "38666868"
 
    **输出别名**：输出的唯一别名。
 
-   **接收器**：选择“Blob 存储”。
+   **接收器**：选择**Blob 存储**。
 
-   **存储帐户**：Blob 存储的存储帐户。 可以创建一个存储帐户或使用现有存储帐户。
+   **存储帐户**：用于在 blob 存储的存储帐户。 可以创建一个存储帐户或使用现有存储帐户。
 
-   **容器**：保存 Blob 的容器。 可以创建一个容器或使用现有容器。
+   **容器**：保存 blob 容器。 可以创建一个容器或使用现有容器。
 
-   **事件序列化格式**：选择“CSV”。
+   **事件序列化格式**:选择“CSV”。
 
    ![向 Azure 中的流分析作业添加输出](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
@@ -131,15 +131,15 @@ ms.locfileid: "38666868"
 1. 在“作业拓扑”下，单击“函数” > “添加”。
 1. 输入以下信息：
 
-   **函数别名**：输入 `machinelearning`。
+   **函数别名**:输入 `machinelearning` 。
 
-   **函数类型**：选择“Azure ML”。
+   **函数类型**:选择**Azure 机器学习**。
 
-   **导入选项**：选择“从其他订阅导入”。
+   **导入选项**：选择**导入从其他订阅**。
 
-   **URL**：输入从 Excel 工作簿记下的 WEB 服务 URL。
+   **URL**：从 Excel 工作簿输入记下的 WEB 服务 URL。
 
-   **密钥**：输入从 Excel 工作簿记下的访问密钥。
+   **密钥**：从 Excel 工作簿输入记下的访问密钥。
 
    ![向 Azure 中的流分析作业添加函数](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
@@ -175,7 +175,7 @@ ms.locfileid: "38666868"
 
 运行客户端应用程序，以开始收集温度和湿度数据并将其发送到 IoT 中心。 对于 IoT 中心收到的每条消息，流分析作业将调用天气预报 Web 服务，以生成下雨的可能性。 然后，结果将保存到 Azure Blob 存储。 Azure 存储资源管理器是一种可用于查看结果的工具。
 
-1. [下载并安装 Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
+1. [下载并安装 Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。
 1. 打开 Azure 存储资源管理器。
 1. 登录到 Azure 帐户。
 1. 选择订阅。

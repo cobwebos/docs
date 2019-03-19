@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3eb68c4394afeb4719d92fb56d3ae9028d8566c9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: b53cb65ec99637dadb16ed9d97c495571be956d7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456106"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451189"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>用例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机
 
@@ -29,7 +29,7 @@ DevOps 领域中有许多工具可帮助你处理持续集成管道中的各个�
 - 编写并测试代码，针对系统的主要和次要版本创建并发布安装包。
 - 创建和管理用于安装和运行包中代码的 VM。  
 
-完成这两个核心过程后，随着创建和部署新版本，立即就能自动更新任何特定 VM 上运行的包。
+当这两个核心过程都已经正常运行后，只要创建和部署了新版本，就能立即自动更新任何特定 VM 上运行的包。
 
 ## <a name="component-overview"></a>组件概述
 
@@ -51,12 +51,12 @@ Resource Manager 模板以声明方式生成基础结构，例如网络、子网
 ## <a name="quick-trip-around-the-diagram"></a>示意图速览
 
 首先，需要编写、生成和测试代码，然后创建安装包。
-Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不足以满足需要，还有 PowerShell 的完整功能可执行实际安装。 将包放入可访问的位置 – 包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。 本用例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 将“编译”成 NuPkg，然后存储在 NuGet 服务器中。 当配置按名称请求某个包并引用 NuGet 服务器时，Chocolatey DSC 资源（现在位于 VM 中）将获取并安装包。 也可以请求特定版本的包。
+Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不足以满足需要，还有 PowerShell 的完整功能可执行实际安装。 将包放入某个地方访问 – 包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。 本用例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 将“编译”成 NuPkg，然后存储在 NuGet 服务器中。 当配置按名称请求某个包并引用 NuGet 服务器时，Chocolatey DSC 资源（现在位于 VM 中）将获取并安装包。 也可以请求特定版本的包。
 
 示意图左下方有一个 Azure 资源管理器模板。 在本用例中，VM 扩展将 VM 注册到 Azure Automation State Configuration“拉”服务器（即请求服务器）成为“节点”。 配置存储在“拉”服务器中。
 实际上存储两次：一次存储为纯文本，另一次编译成 MOF 文件（适用于对此有所了解的人）。在门户，MOF 是“节点配置”（而不只是“配置”）。 它是与“节点”关联的项目，节点知道它的配置。 以下详细信息演示如何将节点配置分配给节点。
 
-也许你已从头开始完成了部分或大部分工作。 创建和编译 nuspec 并将其存储在 NuGet 服务器中是一件很简单的事。 此外，你已在管理 VM。 持续部署的下一步需要设置拉取服务器（一次）、向它注册节点（一次），然后创建配置并存储到节点中（初步）。 接下来，当包升级并部署到存储库时，请刷新“拉”服务器中的“配置”和“节点配置”（根据需要重复）。
+也许已执行了开头的一点或大部分操作。 创建和编译 nuspec 并将其存储在 NuGet 服务器中是一件很简单的事。 此外，你已在管理 VM。 持续部署的下一步需要设置拉取服务器（一次）、向它注册节点（一次），然后创建配置并存储到节点中（初步）。 接下来，当包升级并部署到存储库时，请刷新“拉”服务器中的“配置”和“节点配置”（根据需要重复）。
 
 如果不是从资源管理器模板开始，也没关系。 有一些 PowerShell Cmdlet 可帮助你向拉取服务器注册 VM，以及完成余下的所有工作。 有关详细信息，请参阅以下文章：[加入 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)。
 
@@ -178,16 +178,16 @@ Get-AzureRmAutomationDscCompilationJob `
 ## <a name="step-5-creating-and-maintaining-package-metadata"></a>步骤 5：创建和维护包元数据
 
 对于放入包存储库中的每一个包，需要使用 nuspec 来描述它。
-该 nuspec 必须经过编译并存储在 NuGet 服务器中。 [此处](https://docs.nuget.org/create/creating-and-publishing-a-package)对该过程进行了说明。 可以使用 MyGet.org 作为 NuGet 服务器。 他们销售这种服务，但也提供免费的入门 SKU。 在 NuGet.org 中，可以找到为专用包安装你自己的 NuGet 服务器的说明。
+该 nuspec 必须经过编译并存储在 NuGet 服务器中。 [此处](https://docs.nuget.org/create/creating-and-publishing-a-package)对该过程进行了说明。 可以使用 MyGet.org 作为 NuGet 服务器。 他们销售这种服务，但也提供免费的初始 SKU。 在 NuGet.org 中，可以找到为专用包安装你自己的 NuGet 服务器的说明。
 
 ## <a name="step-6-tying-it-all-together"></a>步骤 6：汇总
 
 每当有某个版本通过 QA 和部署批准时，即会创建包，更新 nuspec 和 nupkg 并将其部署到 NuGet 服务器。 此外，还必须更新配置（上述步骤 4）以便与新版本号匹配。 配置必须发送到“拉”服务器并进行编译。
-然后，依赖于该配置的 VM 将提取并安装更新。 其中的每项更新都很简单 - 只需一两行的 PowerShell 命令。 对于 Azure DevOps，有些更新封装在可一起链接到内部版本内的生成任务中。 [本文](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery)提供更多详细信息。 此 [GitHub 存储库](https://github.com/Microsoft/vso-agent-tasks)详细介绍了各种可用的生成任务。
+然后，依赖于该配置的 VM 提取并安装更新。 其中的每项更新都很简单 - 只需一两行的 PowerShell 命令。 对于 Azure DevOps，有些更新封装在可一起链接到内部版本内的生成任务中。 [本文](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery)提供更多详细信息。 此 [GitHub 存储库](https://github.com/Microsoft/vso-agent-tasks)详细介绍了各种可用的生成任务。
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>注释
 
-本用例开头的 VM 来自于 Azure 库的通用 Windows Server 2012 R2 映像。 可以从任何存储的映像开始，并使用 DSC 配置对其进行调整。
+本用例开头的 VM 来自于 Azure 库的通用 Windows Server 2012 R2 映像。 用户可以从任何存储的映像开始，并使用 DSC 配置对其进行调整。
 不过，更改已刻入映像的配置要比使用 DSC 动态更新配置难得多。
 
 将此技巧运用于 VM 时，不需要使用资源管理器模板和 VM 扩展。 即使 VM 不在 Azure 上，也能由 CD 管理。 只需在 VM 上安装 Chocolatey 并配置 LCM，以使其知道“拉”服务器的所在位置即可。

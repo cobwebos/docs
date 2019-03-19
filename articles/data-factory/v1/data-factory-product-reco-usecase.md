@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8ff100cd3fc1c9def10b4e585119414281b90d92
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017372"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540124"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。
@@ -50,7 +50,7 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 
 在线零售商网站每天会有千兆字节的原始 web 日志文件生成为半结构化文件。 使用数据工厂的全局部署数据移动作式服务，将原始 Web 日志文件以及客户和产品目录信息定期提取到 Azure Blob 存储中。 一天的原始日志文件会在 blob 存储中进行划分归类（按年份和月份）以便长期存储。  [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) 用于在 blob 存储中划分原始日志文件并通过 Hive 和 Pig 脚本处理大规模提取的日志。 已划分的 web 日志数据随后经处理以为机器学习建议系统提取需要的输入，从而生成个性化产品建议。
 
-在此示例中，机器学习使用的建议系统是来自 [Apache Mahout](http://mahout.apache.org/) 的开源机器学习建议平台。  任何 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/) 或自定义模型均可应用于本方案。  Mahout 模型用于预测网站上项目之间的相似性（以整体使用模式为基础），以及用于基于每个用户生成个性化的建议。
+在此示例中，机器学习使用的建议系统是来自 [Apache Mahout](https://mahout.apache.org/) 的开源机器学习建议平台。  任何 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/) 或自定义模型均可应用于本方案。  Mahout 模型用于预测网站上项目之间的相似性（以整体使用模式为基础），以及用于基于每个用户生成个性化的建议。
 
 最后，个性化的产品建议结果集将转移到关系数据市场中供零售商网站使用。  结果集还可由其他程序直接从 blob 存储进行访问，或移动到其他客户或使用案例的相关存储中。
 

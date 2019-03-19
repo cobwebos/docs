@@ -7,25 +7,25 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 38a01b4f81b76ba90a5fda4909d0e65e6307057e
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
-ms.translationtype: HT
+ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408708"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569019"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>映射数据流源转换
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-源转换配置用于将数据导入数据流的数据源。 可以在单个数据流中使用多个源转换。 一开始，请始终设计包含源的数据流。
+源转换配置用于将数据导入数据流的数据源。 可以在单个数据流中使用多个源转换。 始终开始设计你使用源转换数据流动。
 
 > [!NOTE]
-> 每个数据流至少需要一个源转换。 可添加其他任意数目的源以完成数据转换。 可以使用联接或联合转换将这些源联接到一起。
+> 每个数据流至少需要一个源转换。 可添加其他任意数目的源以完成数据转换。 可以使用联接或联合转换将这些源联接到一起。 当在调试会话中调试数据的流时，将从使用采样设置或调试源限制的源读取数据。 但是，任何数据将不写入到接收器直到管道数据流活动中执行数据的流。 
 
 ![源转换选项](media/data-flow/source.png "源")
 
-每个数据流源转换必须刚好与一个数据工厂数据集相关联，该数据集定义要写入或读取的数据的形状与位置。 可以在源中使用通配符和文件列表，以一次性处理多个文件。
+每个数据流源转换必须与一个数据工厂数据集相关联。 数据集定义的形状和位置数据以写入或读取。 可以在您的源中使用通配符和文件列表来一次处理多个文件时使用文件源。
 
 ## <a name="data-flow-staging-areas"></a>数据流暂存区域
 
@@ -43,7 +43,7 @@ ms.locfileid: "56408708"
 如果源数据的传入版本与定义的架构不匹配，则数据流的执行将会失败。
 
 ### <a name="sampling"></a>采样
-使用采样来限制源中的行数。  只需使用源数据的样本进行测试和调试时，此功能非常有用。
+使用采样来限制源中的行数。  这是测试或从您出于调试目的的源进行数据采样时很有用。
 
 ## <a name="define-schema"></a>定义架构
 
@@ -53,7 +53,7 @@ ms.locfileid: "56408708"
 
 ![源转换](media/data-flow/source003.png "数据类型")
 
-对于强类型化的源，可以修改 
+对于强类型化的源，可以修改在后续选择转换中的数据类型。 
 
 ### <a name="optimize"></a>优化
 
@@ -74,7 +74,7 @@ ms.locfileid: "56408708"
 ## <a name="source-file-management"></a>源文件管理
 ![新源设置](media/data-flow/source2.png "新设置")
 
-* 源文件夹的通配符路径，将从中选取一系列与模式匹配的文件。 这会替代在数据集定义中设置的任何文件。
+* 源文件夹的通配符路径，将从中选取一系列与模式匹配的文件。 这将覆盖您的数据集定义中设置了任何文件。
 * 文件列表。 与文件集相同。 指向你创建的、包含要处理的相对路径文件列表的文本文件。
 * 用于存储文件名的列将在数据列中存储来自源的文件名。 请在此处输入新名称以存储文件名字符串。
 * 完成后（数据流执行后你可以选择不对源文件执行任何操作、删除源文件或移动源文件）。 移动路径是相对路径。

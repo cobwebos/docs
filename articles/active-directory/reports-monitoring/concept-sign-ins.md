@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f47de0544d6d708d3c8b104be4edada86c11551
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 993a8ca48df40b400c21852d3d28941d9d62affb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190358"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549011"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 本主题概述了登录报告。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 * 具有“安全管理员”、“安全读者”和“报告读者”角色的用户
@@ -149,23 +149,13 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ## <a name="download-sign-in-activities"></a>下载登录活动
 
-如果想要在 Azure 门户外部使用登录活动数据，可以[下载登录数据](quickstart-download-sign-in-report.md)。 单击“下载”会创建一个包含最近 5K 条记录的 CSV 文件。  除了“下载”按钮外，Azure 门户还为你提供了一个[生成用于下载数据的脚本](tutorial-signin-logs-download-script.md)的选项。  
+如果想要在 Azure 门户外部使用登录活动数据，可以[下载登录数据](quickstart-download-sign-in-report.md)。 单击**下载**为您提供创建 CSV 或 JSCON 文件中的最新 250,000 记录的选项。  
 
 ![下载](./media/concept-sign-ins/71.png "下载")
-
-如果需要更大的灵活性，可以使用脚本解决方案。 单击“脚本”会创建一个 PowerShell 脚本，其中包含已设置的所有筛选器。 以**管理员模式**下载并运行此脚本以生成 CSV 文件。 
 
 > [!IMPORTANT]
 > 可以下载的记录数受 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)的限制。  
 
-### <a name="running-the-script-on-a-windows-10-machine"></a>在 Windows 10 计算机上运行脚本
-
-如果要在 **Windows 10** 计算机上运行脚本，则需要先执行一些其他步骤。 
-
-1. 安装 [Az 模块](/powershell/azure/install-az-ps)。
-2. 通过打开 PowerShell 提示符并运行命令 **Import-Module Az** 来导入模块。
-3. 运行 **Set-ExecutionPolicy unrestricted**，并选择 **Yes to All**。 
-4. 现在，可以在管理员模式下运行下载的 PowerShell 脚本以生成 CSV 文件。
 
 ## <a name="sign-ins-data-shortcuts"></a>登录数据快捷方式
 

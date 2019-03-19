@@ -5,16 +5,16 @@ services: storage
 author: RenaShahMSFT
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: db11b457fda75c780a6b02715b4aced4c9f38ac1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 9238b1dfc697f9efae723aba787982ae1493a608
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452594"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762256"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -98,7 +98,7 @@ using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure Files
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ## <a name="access-the-file-share-programmatically"></a>以编程方式访问文件共享
-接下来，将以下代码添加到 `Main()` 方法（在上面显示的代码后面）以检索连接字符串。 此代码将获取我们先前创建的文件的引用，并将其内容输出到控制台窗口中。
+接下来，将以下代码添加到 `Main()` 方法（在上面显示的代码后面）以检索连接字符串。 此代码会获取我们先前创建的文件的引用，并将其内容输出到控制台窗口中。
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -137,7 +137,7 @@ if (share.Exists())
 ## <a name="set-the-maximum-size-for-a-file-share"></a>设置文件共享的最大大小
 从 Azure 存储客户端库的 5.x 版开始，可以设置文件共享的配额（或最大大小），单位为千兆字节。 还可以查看共享当前存储了多少数据。
 
-通过设置一个共享的配额，可以限制在该共享上存储的文件的总大小。 如果共享上文件的总大小超过在共享上设定的配额，则客户端将不能增加现有文件的大小或创建新文件，除非这些文件是空的。
+通过设置一个共享的配额，可以限制在该共享上存储的文件的总大小。 如果共享上文件的总大小超过在共享上设定的配额，则客户端不能增加现有文件的大小或创建新文件，除非这些文件是空的。
 
 下面的示例演示如何检查共享的当前使用情况，以及如何设置共享的配额。
 
@@ -223,7 +223,7 @@ if (share.Exists())
 有关创建和使用共享访问签名的更多信息，请参阅[使用共享访问签名 (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 和[创建 SAS 并将其与 Azure Blob 结合使用](../blobs/storage-dotnet-shared-access-signature-part-2.md)。
 
 ## <a name="copy-files"></a>复制文件
-从 Azure 存储客户端库的 5.x 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 在后续部分中，我们将演示如何以编程方式执行这些复制操作。
+从 Azure 存储客户端库的 5.x 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 在后续部分中，我们演示如何以编程方式执行这些复制操作。
 
 还可以使用 AzCopy 将一个文件复制到另一个文件或将一个 Blob 复制到一个文件，反之亦然。 请参阅 [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
@@ -469,7 +469,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 * [将 Azure CLI 用于 Azure 存储](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [排查 Azure 文件问题](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>引用
+### <a name="reference"></a>参考
 * [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [文件服务 REST API 参考](https://msdn.microsoft.com/library/azure/dn167006.aspx)
 

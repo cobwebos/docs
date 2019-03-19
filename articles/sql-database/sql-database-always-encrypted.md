@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 manager: craigg
-ms.date: 11/07/2018
-ms.openlocfilehash: a54fa92e248cb75be315327f7389e62904c7c777
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.date: 03/08/2019
+ms.openlocfilehash: 5226ec05af95cf305008968cf945070532274ee5
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754858"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726934"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Windows 证书存储中
 
@@ -36,7 +36,8 @@ ms.locfileid: "55754858"
 * 创建一个数据库表并加密列。
 * 创建一个可以从已加密列插入、选择和显示数据的应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
+
 在本教程中，需要：
 
 * Azure 帐户和订阅。 如果没有订阅，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -45,30 +46,33 @@ ms.locfileid: "55754858"
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
 
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
+
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击“创建资源” > “数据 + 存储” > “SQL 数据库”。
 3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 如需在 Azure 门户中创建数据库的详细说明，请参阅[第一个 Azure SQL 数据库](sql-database-single-database-get-started.md)。
-   
+
     ![创建空数据库](./media/sql-database-always-encrypted/create-database.png)
 
 本教程后面的步骤中会用到连接字符串。 创建数据库后，转到新的 Clinic 数据库并复制连接字符串。 可以在任何时候获取连接字符串，但在 Azure 门户中时很容易对其进行复制。
 
 1. 单击“SQL 数据库” > “Clinic” > “显示数据库连接字符串”。
 2. 复制 **ADO.NET** 的连接字符串。
-   
+
     ![复制连接字符串](./media/sql-database-always-encrypted/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>使用 SSMS 连接到数据库
+
 打开 SSMS，连接到包含 Clinic 数据库的服务器。
 
 1. 打开 SSMS。 （单击“连接” > “数据库引擎”以打开“连接到服务器”窗口）（如果它未打开）。
 2. 输入服务器名称和凭据。 服务器名称可以在 SQL 数据库边栏选项卡以及此前复制的连接字符串中找到。 键入完整的服务器名称，包括 *database.windows.net*。
-   
+
     ![复制连接字符串](./media/sql-database-always-encrypted/ssms-connect.png)
 
 如果“新建防火墙规则”窗口打开，请登录到 Azure，让 SSMS 创建新的防火墙规则。
 
 ## <a name="create-a-table"></a>创建表
+
 在本部分中，将创建一个表以保存患者数据。 这最初是一个普通表 - 可在下一部分配置加密。
 
 1. 展开“数据库”。
@@ -89,18 +93,19 @@ ms.locfileid: "55754858"
          PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
          GO
 
-
 ## <a name="encrypt-columns-configure-always-encrypted"></a>加密列（配置始终加密）
+
 SSMS 提供了一个向导，通过设置 CMK、CEK 和已加密列即可轻松地配置始终加密。
 
 1. 展开“数据库” > “Clinic” > “表”。
 2. 右键单击“患者”表，并选择“加密列”以打开始终加密向导：
-   
+
     ![加密列](./media/sql-database-always-encrypted/encrypt-columns.png)
 
 Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** (CMK)、**验证**和**摘要**。
 
 ### <a name="column-selection"></a>列选择
+
 单击“简介”页上的“下一步”，可以打开“列选择”页。 在此页上，选择想要加密的列，[加密类型和要使用的列加密密钥 (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2)。
 
 加密每位患者的“SSN”和“出生日期”信息。 **SSN** 列将使用确定性加密，该加密支持相等性查找、联接和分组方式。 **BirthDate** 列将使用随机加密，该加密不支持操作。
@@ -110,6 +115,7 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
 ![加密列](./media/sql-database-always-encrypted/column-selection.png)
 
 ### <a name="master-key-configuration"></a>主密钥配置
+
 **主密钥配置**页是设置 CMK 和选择密钥存储提供程序（在其中存储 CMK）的地方。 目前，可以将 CMK 存储在 Windows 证书存储、Azure 密钥保管库或硬件安全模块 (HSM) 中。 本教程演示如何将密钥存储在 Windows 证书存储中。
 
 验证是否选中了“Windows 证书存储”，并单击“下一步”。
@@ -117,14 +123,17 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
 ![主密钥配置](./media/sql-database-always-encrypted/master-key-configuration.png)
 
 ### <a name="validation"></a>验证
+
 可以现在就加密这些列，也可以保存 PowerShell 脚本供以后运行。 对于本教程，请选择“现在完成”，并单击“下一步”。
 
 ### <a name="summary"></a>摘要
+
 验证设置是否全都正确，并单击“完成”以完成“始终加密”的设置。
 
 ![摘要](./media/sql-database-always-encrypted/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>验证向导的操作
+
 向导完成后，数据库就会设置为始终加密。 该向导执行以下操作：
 
 * 创建 CMK。
@@ -134,12 +143,11 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
 可以验证 SSMS 中密钥的创建，只需转到“Clinic” > “安全” > “始终加密密钥”即可。 现在，可以看到向导生成的新密钥了。
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>创建处理已加密数据的客户端应用程序
+
 现在已设置始终加密，可以生成一个应用程序，用其在已加密列上执行某些 *inserts* 操作和 *selects* 操作。 若要成功运行此示例应用程序，则必须在运行过始终加密向导的计算机上运行它。 要在其他计算机上运行，则必须将始终加密证书部署到运行客户端应用的计算机上。  
 
 > [!IMPORTANT]
 > 通过始终加密列将明文数据传递到服务器时，应用程序必须使用 [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) 对象。 在不使用 SqlParameter 对象的情况下传递文本值会导致异常。
-> 
-> 
 
 1. 打开 Visual Studio 并创建新的 C# 控制台应用程序。 确保将项目设置为 **.NET Framework 4.6** 或更高版本。
 2. 将项目命名为 **AlwaysEncryptedConsoleApp**，然后单击“确定”。
@@ -147,6 +155,7 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
 ![新建控制台应用程序](./media/sql-database-always-encrypted/console-app.png)
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>修改连接字符串以启用始终加密
+
 本节介绍如何在数据库连接字符串中启用始终加密。 在下一节（即“始终加密示例控制台应用程序”）中，将修改刚创建的控制台应用。
 
 要启用“始终加密”，需要将“列加密设置”关键字添加到连接字符串中，并将其设置为“启用”。
@@ -155,16 +164,15 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
 
 > [!NOTE]
 > 在特定于始终加密的客户端应用程序中，这是需要完成的唯一更改。 如果某个现有应用程序将其连接字符串存储在外部（即存储在配置文件中），则可在不更改任何代码的情况下启用始终加密。
-> 
-> 
 
 ### <a name="enable-always-encrypted-in-the-connection-string"></a>在连接字符串中启用始终加密
+
 将以下关键字添加到连接字符串中：
 
     Column Encryption Setting=Enabled
 
-
 ### <a name="enable-always-encrypted-with-a-sqlconnectionstringbuilder"></a>通过 SqlConnectionStringBuilder 启用始终加密
+
 以下代码显示了如何通过将 [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) 设置为 [Enabled](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx) 来启用“始终加密”。
 
     // Instantiate a SqlConnectionStringBuilder.
@@ -175,9 +183,8 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
     connStringBuilder.ColumnEncryptionSetting =
        SqlConnectionColumnEncryptionSetting.Enabled;
 
-
-
 ## <a name="always-encrypted-sample-console-application"></a>始终加密示例控制台应用程序
+
 此示例演示了如何执行以下操作：
 
 * 修改连接字符串以启用始终加密。
@@ -188,20 +195,19 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
 
 运行该应用以在操作中查看始终加密。
 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Data;
-    using System.Data.SqlClient;
+```cs
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
 
-    namespace AlwaysEncryptedConsoleApp
-    {
+namespace AlwaysEncryptedConsoleApp
+{
     class Program
     {
         // Update this line with your Clinic database connection string from the Azure portal.
-        static string connectionString = @"Replace with your connection string";
+        static string connectionString = @"Data Source = SPE-T640-01.sys-sqlsvr.local; Initial Catalog = Clinic; Integrated Security = true";
 
         static void Main(string[] args)
         {
@@ -224,7 +230,6 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
             Console.WriteLine(Environment.NewLine + "Enter server password:");
             connStringBuilder.Password = Console.ReadLine();
 
-
             // Assign the updated connection string to our global variable.
             connectionString = connStringBuilder.ConnectionString;
 
@@ -235,16 +240,42 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
             // Add sample data to the Patients table.
             Console.Write(Environment.NewLine + "Adding sample patient data to the database...");
 
-            InsertPatient(new Patient() {
-                SSN = "999-99-0001", FirstName = "Orlando", LastName = "Gee", BirthDate = DateTime.Parse("01/04/1964") });
-            InsertPatient(new Patient() {
-                SSN = "999-99-0002", FirstName = "Keith", LastName = "Harris", BirthDate = DateTime.Parse("06/20/1977") });
-            InsertPatient(new Patient() {
-                SSN = "999-99-0003", FirstName = "Donna", LastName = "Carreras", BirthDate = DateTime.Parse("02/09/1973") });
-            InsertPatient(new Patient() {
-                SSN = "999-99-0004", FirstName = "Janet", LastName = "Gates", BirthDate = DateTime.Parse("08/31/1985") });
-            InsertPatient(new Patient() {
-                SSN = "999-99-0005", FirstName = "Lucy", LastName = "Harrington", BirthDate = DateTime.Parse("05/06/1993") });
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0001",
+                FirstName = "Orlando",
+                LastName = "Gee",
+                BirthDate = DateTime.Parse("01/04/1964", culture)
+            });
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0002",
+                FirstName = "Keith",
+                LastName = "Harris",
+                BirthDate = DateTime.Parse("06/20/1977", culture)
+            });
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0003",
+                FirstName = "Donna",
+                LastName = "Carreras",
+                BirthDate = DateTime.Parse("02/09/1973", culture)
+            });
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0004",
+                FirstName = "Janet",
+                LastName = "Gates",
+                BirthDate = DateTime.Parse("08/31/1985", culture)
+            });
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0005",
+                FirstName = "Lucy",
+                LastName = "Harrington",
+                BirthDate = DateTime.Parse("05/06/1993", culture)
+            });
 
 
             // Fetch and display all patients.
@@ -294,7 +325,7 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
             int returnValue = 0;
 
             string sqlCmdText = @"INSERT INTO [dbo].[Patients] ([SSN], [FirstName], [LastName], [BirthDate])
-         VALUES (@SSN, @FirstName, @LastName, @BirthDate);";
+     VALUES (@SSN, @FirstName, @LastName, @BirthDate);";
 
             SqlCommand sqlCmd = new SqlCommand(sqlCmdText);
 
@@ -465,10 +496,11 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
     }
-    }
-
+}
+```
 
 ## <a name="verify-that-the-data-is-encrypted"></a>确保数据已加密
+
 通过使用 SSMS 查询“患者”数据，可以快速检查服务器上的实际数据已进行加密。 （使用尚未在其中启用列加密设置的当前连接。）
 
 针对 Clinic 数据库运行以下查询。
@@ -484,24 +516,21 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
 1. 在 SSMS 中，右键单击“对象资源管理器”中的服务器，并单击“断开连接”。
 2. 单击“连接” > “数据库引擎”打开“连接到服务器”窗口，并单击“选项”。
 3. 单击“其他连接参数”，并键入 **Column Encryption Setting=enabled**。
-   
+
     ![新建控制台应用程序](./media/sql-database-always-encrypted/ssms-connection-parameter.png)
 4. 针对 **Clinic** 数据库运行以下查询。
-   
+
         SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
-   
+
      现在，可以看到已加密列中的明文数据。
 
     ![新建控制台应用程序](./media/sql-database-always-encrypted/ssms-plaintext.png)
 
-
-
 > [!NOTE]
 > 如果从其他计算机使用 SSMS（或任何客户端）进行连接，则无法访问加密密钥，并且无法解密数据。
-> 
-> 
 
 ## <a name="next-steps"></a>后续步骤
+
 创建使用始终加密的数据库以后，可能需要执行以下操作：
 
 * 从另一台计算机运行此示例。 此示例无法访问加密密钥，因此无法访问明文数据，导致无法成功运行。
@@ -510,9 +539,9 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
 * [将 Always Encrypted 证书部署到其他客户端计算机](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1)（请参阅“向应用程序和用户提供证书”部分）。
 
 ## <a name="related-information"></a>相关信息
+
 * [始终加密（客户端开发）](https://msdn.microsoft.com/library/mt147923.aspx)
 * [透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)
 * [SQL Server 加密](https://msdn.microsoft.com/library/bb510663.aspx)
 * [始终加密向导](https://msdn.microsoft.com/library/mt459280.aspx)
 * [始终加密博客](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-

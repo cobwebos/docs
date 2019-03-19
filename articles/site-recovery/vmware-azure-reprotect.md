@@ -1,18 +1,18 @@
 ---
 title: 在 VMware VM 和物理服务器的灾难恢复期间，将 VM 从 Azure 重新保护到本地站点 | Microsoft Docs
 description: 在 VMware VM 和物理服务器的灾难恢复期间故障转移到 Azure 后，了解如何从 Azure 故障回复到本地站点。
-author: rajani-janaki-ram
-manager: gauravd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/17/2018
-ms.author: rajanaki
-ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.date: 3/12/2019
+ms.author: mayg
+ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791863"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771803"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>故障转移到 Azure 后，将计算机重新保护并故障回复到本地站点
 
@@ -114,7 +114,6 @@ ms.locfileid: "53791863"
 
 ## <a name="common-issues"></a>常见问题
 
-- 当前，Site Recovery 仅支持故障回复到 VMFS 或 vSAN 数据存储。 不支持 NFS 数据存储。 由于此限制，如果使用 NFS 数据存储，则重新保护屏幕中的数据存储选择输入将为空；或者它会显示 vSAN 数据存储，但在执行作业时将失败。 如果打算执行故障回复，则可在本地创建 VMFS 数据存储并故障回复到该数据存储。 此故障回复操作会引发完整下载 VMDK 的操作。
 - 如果执行只读的用户 vCenter 发现并保护虚拟机，保护会成功且故障转移可正常工作。 进行重新保护期间，操作会失败，因为无法发现数据存储。 症状是在重新保护期间数据存储没有列出。 若要解决此问题，可以使用具有适当权限的帐户更新 vCenter 凭据，然后重试该作业。 
 - 在故障回复 Linux 虚拟机并在本地运行它时，会看到网络管理器程序包已从该计算机卸载。 发生此卸载的原因是虚拟机在 Azure 中恢复时，网络管理器程序包遭到删除。
 - 当 Linux 虚拟机配置有静态 IP 地址且故障转移到 Azure 时，将通过 DHCP 获取 IP 地址。 当故障转移回复到本地时，该虚拟机会继续使用 DHCP 获取 IP 地址。 如有需要，请手动登录到该计算机，然后将 IP 地址设置回静态地址。 Windows 虚拟机可以重新获取其静态 IP 地址。

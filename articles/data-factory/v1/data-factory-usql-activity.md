@@ -3,22 +3,22 @@ title: 使用 U-SQL 脚本转换数据 - Azure | Microsoft Docs
 description: 了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 7631b103d6d14cceb2c320d56e9f68d9ea57e4d8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020840"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777288"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -46,7 +46,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 下表介绍了 JSON 定义中使用的一般属性。 可以进一步选择服务主体身份验证，还是用户凭据身份验证。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
 | **accountName** |Azure Data Lake Analytics 帐户名。 |是 |
@@ -62,7 +62,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | 指定应用程序的客户端 ID。 | 是 |
 | **servicePrincipalKey** | 指定应用程序的密钥。 | 是 |
@@ -90,7 +90,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 ### <a name="user-credential-authentication"></a>用户凭据身份验证
 也可以指定下列属性，对 Data Lake Analytics 使用用户凭据身份验证：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
@@ -317,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-ADF 使用“parameters”部分动态传递 U-SQL 脚本中 **@in** 和 **@out** 参数的值。 请参阅管道定义中的“parameters”部分。
+值**\@中**并**\@出**参数在 U-SQL 脚本中的使用动态传递 adf parameters 部分。 请参阅管道定义中的“parameters”部分。
 
 也可在 Azure Data Lake Analytics 服务上运行的作业的管道定义中指定其他属性，如 degreeOfParallelism 和 priority。
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 355a144597ce384725d92e64d4a5e4909b18c3d7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 53532a19482a33f8727e71d44ae169225b5b1c98
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246096"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449948"
 ---
 # <a name="how-to-sign-up-for-the-text-analytics-api"></a>如何注册文本分析 API
 
@@ -25,7 +25,7 @@ ms.locfileid: "56246096"
 
 + 创建[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)，选择“文本分析 API”。 密钥在注册时生成。
 
-就文本分析来说，我们提供供用户浏览和评估的“免费”层，以及适用于生产性工作负荷的计费层。 每个订阅都有多种注册选项：免费、付费，等等。 如果请求量增加，可以切换到提供更多事务的层。
+就文本分析来说，我们提供供用户浏览和评估的“免费”层，以及适用于生产性工作负荷的计费层。 每个订阅中可以有多个注册： 一个免费、 付费，一个，等等。 如果请求量增加，可以切换到提供更多事务的层。
 
 预览版或免费层的服务没有服务级别协议。 有关详细信息，请参阅[认知服务的 SLA](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/)
 
