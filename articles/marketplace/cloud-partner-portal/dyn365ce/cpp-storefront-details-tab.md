@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 66119ffab8c6117e223468834b59e6d6b19409a0
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: f9cbf5033d0ffb84959de94db052626dd1d131c8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54445056"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997949"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 Customer Engagement “店面详细信息”选项卡
 
@@ -56,7 +56,7 @@ ms.locfileid: "54445056"
 |  应用类型             | 选择在 AppSource 中为应用启用的试用类型。 “免费”表示可不付费使用；“试用”表示客户可免费试用应用一段时间；“与我联系”表示客户可在 AppSource 上请求试用该应用。  |
 | 应用的帮助链接 | 应用的联机文档或其他帮助资源的 URL。  |
 | 支持的国家/地区 | 弹出窗口，可在其中选择面向哪些地理区域提供该应用。  默认值为在全球范围内分发。 |
-| 支持的语言   | 选择应用支持的语言。 当前仅支持几个语言选项。  （如果应用还支持此列表中未列出的其他语言，请继续发布产品/服务，并将此信息通过电子邮件发送到 appsource@microsoft.com。）  |
+| 支持的语言   | 选择应用支持的语言。 当前仅支持几个语言选项。  (如果您的应用程序支持不在此列表的其他语言，继续发布产品/服务，并通过电子邮件发送到此信息： appsource\@microsoft.com。)  |
 | 应用版本           | 应用的版本号    |
 | 应用发布日期      | 应用程序的发行/发布日期 |
 | 可与应用配合使用的产品 | 可与应用进行互操作的产品或服务。 最多可以列出三个产品。 若要列出产品，请单击“+新建”并在显示的文本框中输入产品名称。  |
@@ -73,7 +73,7 @@ ms.locfileid: "54445056"
 
 下表介绍此选项卡中的字段： 
 
-|      字段            |    说明                 |
+|      字段            |    描述                 |
 |  ---------------      |  ---------------               |
 | 套餐徽标（png 格式，48x48） | 上传将在应用搜索页上显示的图像。 格式为 PNG，大小必须为 48 x 48 像素。 |
 | 套餐徽标（png 格式，216x216） | 上传将在应用详细信息页上显示的图像。 格式为 PNG，大小必须为 216 x 216 像素。 |
@@ -91,7 +91,7 @@ ms.locfileid: "54445056"
 
 下表介绍此选项卡中的字段： 
 
-|      字段            |    说明                 |
+|      字段            |    描述                 |
 |  ---------------      |  ---------------               |
 | 隐私策略 URL    | 应用的联机隐私策略 URL。  |
 | 使用条款          | 纯文本格式的应用使用条款。  AppSource 客户必须接受这些条款，才能试用应用。 |

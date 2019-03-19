@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf73708be8a8bc597b70d0cb50fc337efa72906
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 23d829ad9b85b6e7944f6dd534ea7fbb3f92a0d2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211676"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887911"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>在 Azure Active Directory 中将静态组成员资格更改为动态
 
@@ -33,7 +33,7 @@ ms.locfileid: "56211676"
 
 ## <a name="change-the-membership-type-for-a-group"></a>更改组的成员资格类型
 
-1. 在租户中使用全局管理员或用户帐户管理员的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 登录到[Azure AD 管理中心](https://aad.portal.azure.com)是全局管理员或用户管理员在你的租户中的帐户。
 2. 选择“组”。
 3. 在“所有组”列表中，打开要更改的组。
 4. 选择“属性”。

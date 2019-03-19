@@ -5,15 +5,15 @@ services: iot-hub
 ms.service: iot-hub
 author: dominicbetts
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 02/17/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3cdfa74c5f124e57b125399e39b7981b1dfb6d09
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 69fdc6cf678107ef64ea1fe7b819738fd4a4ff4f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43100227"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56741245"
 ---
 ## <a name="customize-and-extend-the-device-management-actions"></a>自定义和扩展设备管理操作
 
@@ -25,12 +25,8 @@ IoT 解决方案可扩展已定义的设备管理模式集，或通过使用设�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，将使用直接方法触发设备上的远程重新启动。 使用报告属性报告设备上次重新启动时间，并查询设备孪生从云中发现设备上次重新启动时间。
+本教程使用直接方法触发设备上的远程重新启动。 使用报告属性报告设备上次重新启动时间，并查询设备孪生从云中发现设备上次重新启动时间。
 
-若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅：
+若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅[如何更新固件](../articles/iot-hub/tutorial-firmware-update.md)
 
-[教程：如何进行固件更新](../articles/iot-hub/tutorial-firmware-update.md)
-
-若要了解如何扩展 IoT 解决方案以及在多个设备上计划方法调用，请参阅[计划和广播作业](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md)教程。
-
-若要继续完成 IoT 中心入门内容，请参阅 [IoT Edge 入门](../articles/iot-edge/tutorial-simulate-device-linux.md)。
+若要了解如何扩展 IoT 解决方案并在多个设备上计划方法调用，请参阅[计划和广播作业](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md)。

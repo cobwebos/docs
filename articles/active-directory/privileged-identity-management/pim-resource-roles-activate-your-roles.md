@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/21/2018
+ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07d9d6eaf0426512e93574d733e7daee1cab1ddb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b574e538c407040518f3905f8fbd9fa91d5dd067
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183507"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002052"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>在 PIM 中激活 Azure 资源角色
 
@@ -36,9 +36,13 @@ ms.locfileid: "56183507"
 
 1. 打开“Azure AD Privileged Identity Management”。 有关如何将 PIM 磁贴添加到仪表板的信息，请参阅[开始使用 PIM](pim-getting-started.md)。
 
-1. 单击“我的角色”，查看你有资格获取的 Azure AD 目录角色和 Azure 资源角色列表。
+1. 单击“我的角色”。
 
     ![Azure AD 目录角色和 Azure 资源角色 - 我的角色](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+
+1. 单击**Azure 资源角色**若要查看符合条件的 Azure 资源角色的列表。
+
+   ![Azure 资源角色](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
 1. 在“Azure 资源角色”列表中，找到要激活的角色。
 
@@ -68,7 +72,7 @@ ms.locfileid: "56183507"
 
 1. 单击“激活”。
 
-    如果角色不需要审批，则会激活该角色并将其添加到活动角色列表中。 若要立即使用该角色，请按照下一部分中的步骤操作。
+    如果角色不需要审批，则会激活该角色并将其添加到活动角色列表中。 如果你想要使用该角色，请按照下一节中的步骤。
 
     如果[角色需要审批](pim-resource-roles-approval-workflow.md)才能激活，则浏览器右上角会显示一条通知，告知你请求正在等待审批。
 
@@ -76,17 +80,19 @@ ms.locfileid: "56183507"
 
 ## <a name="use-a-role-immediately-after-activation"></a>激活后立即使用角色
 
-在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用“应用程序访问”页，如以下步骤所述。
+在激活后的任何延迟，请执行以下步骤后激活立即使用 Azure 资源角色。
 
 1. 打开 Azure AD Privileged Identity Management。
 
-1. 单击“应用程序访问”页。
+1. 单击“我的角色”，查看你有资格获取的 Azure AD 目录角色和 Azure 资源角色列表。
 
-    ![PIM 应用程序访问 - 屏幕截图](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+1. 单击**Azure 资源角色**。
 
-1. 单击“Azure 资源”链接以将门户重新打开到“所有资源”页。
+1. 单击**活动角色**选项卡。
 
-    单击此链接时，会使当前令牌失效并强制 Azure 门户获取应包含已更新权限的新令牌。
+1. 激活角色后，门户中注销并重新登录。
+
+    现在应可使用该角色。
 
 ## <a name="view-the-status-of-your-requests"></a>查看请求的状态
 
@@ -110,7 +116,7 @@ ms.locfileid: "56183507"
 
 1. 针对想要取消的角色，单击“取消”链接。
 
-    单击“取消”会取消该请求。 若要再次激活该角色，必须提交新的激活请求。
+    当您单击取消时，将取消该请求。 若要再次激活该角色，必须提交新的激活请求。
 
    ![取消等待中的请求](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
@@ -118,7 +124,7 @@ ms.locfileid: "56183507"
 
 ### <a name="permissions-not-granted-after-activating-a-role"></a>激活角色后未授予权限
 
-在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用“应用程序访问”页，如前面[在激活后立即使用角色](#use-a-role-immediately-after-activation)中所述。
+在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 激活完成后，Azure 门户中注销并重新登录以开始使用新激活的角色。
 
 有关其他故障排除步骤，请参阅[排查提升的权限问题](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx)。
 

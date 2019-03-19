@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 6645463f2172a6f201f4d2f840e03d1797367752
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: e96e462709ab0c715c831bd10c628869d5c617fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512337"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013311"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -40,11 +40,11 @@ Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的�
 ### <a name="diagnostic-settings"></a>诊断设置
 可以使用诊断设置配置非计算资源的诊断日志。 用于资源控制的诊断设置：
 
-* 将诊断日志发送到何处（存储帐户、事件中心或 Log Analytics）。
+* 诊断日志会发送到何处 （存储帐户、 事件中心或 Azure Monitor 日志）。
 * 发送哪些日志类别。
 * 应该将每个日志类别保留在存储帐户中多长时间。
 * 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
-* 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，仅选择了“事件中心”或“Log Analytics”选项），则保留策略无效。
+* 如果设置了保留策略，但禁止将日志存储在存储帐户中 （例如，仅事件中心或 Azure Monitor 日志选项处于选中状态），则保留策略产生任何影响。
 * 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。
 
 ### <a name="enable-diagnostic-logs-via-rest-apis"></a>通过 REST API 启用诊断日志
@@ -59,7 +59,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 **标头**
 * 将 `{api-version}` 替换为 `2016-09-01`。
-* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的资源 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-portal.md)。
+* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的资源 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/manage-resource-groups-portal.md)。
 * 将 `Content-Type` 标头设置为 `application/json`。
 * 将授权标头设置为从 Azure Active Directory 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-scenarios.md)。
 
@@ -103,7 +103,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | 说明 |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | storageAccountId |String | 要将诊断日志发送到的存储帐户的资源 ID |
 | serviceBusRuleId |String | 要在其中创建事件中心，以便流式传输诊断日志的服务总线命名空间的服务总线规则 ID。 规则 ID 的格式为：“{服务总线资源 ID}/authorizationrules/{密钥名称}”。|
@@ -273,11 +273,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | 说明 | 示例 |
+| 属性 | Type | 描述 | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 活动运行日志始终为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | 事件的时间，以时间跨度表示，采用 UTC 格式 | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | String | 在时间跨度表示，采用 UTC 格式的事件时间 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |activityRunId| String| 活动运行的 ID | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |pipelineRunId| String| 管道运行的 ID | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | 数据工厂资源的关联资源 ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
@@ -288,7 +288,6 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |activityName| String | 活动名称 | `MyActivity` |
 |start| String | 活动运行的开始时间，以时间跨度表示，采用 UTC 格式 | `2017-06-26T20:55:29.5007959Z`|
 |end| String | 活动运行的结束时间，以时间跨度表示，采用 UTC 格式。 如果活动尚未结束（正在启动的活动的诊断日志），则设置默认值 `1601-01-01T00:00:00Z`。  | `2017-06-26T20:55:29.5007959Z` |
-
 
 ### <a name="pipeline-run-logs-attributes"></a>管道运行日志属性
 
@@ -320,11 +319,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | 说明 | 示例 |
+| 属性 | Type | 描述 | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 活动运行日志为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | 事件的时间，以时间跨度表示，采用 UTC 格式 | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | String | 在时间跨度表示，采用 UTC 格式的事件时间 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| String| 管道运行的 ID | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| String | 数据工厂资源的关联资源 ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | 诊断日志的类别。 请将此属性设置为“PipelineRuns” | `PipelineRuns` |
@@ -334,7 +333,6 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |start| String | 活动运行的开始时间，以时间跨度表示，采用 UTC 格式 | `2017-06-26T20:55:29.5007959Z`|
 |end| String | 活动运行的结束时间，以时间跨度表示，采用 UTC 格式。 如果活动尚未结束（正在启动的活动的诊断日志），则设置默认值 `1601-01-01T00:00:00Z`。  | `2017-06-26T20:55:29.5007959Z` |
 |status| String | 管道运行的最终状态（Succeeded 或 Failed） | `Succeeded`|
-
 
 ### <a name="trigger-run-logs-attributes"></a>触发器运行日志属性
 
@@ -365,11 +363,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| 属性 | Type | 说明 | 示例 |
+| 属性 | Type | 描述 | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 对于活动运行日志，请设置为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | String | 事件的时间，以时间跨度表示，采用 UTC 格式 | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| time | String | 在时间跨度表示，采用 UTC 格式的事件时间 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |triggerId| String| 触发器运行的 ID | `08587023010602533858661257311` |
 |resourceId| String | 数据工厂资源的关联资源 ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | 诊断日志的类别。 请将此属性设置为“PipelineRuns” | `PipelineRuns` |

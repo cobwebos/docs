@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
-ms.openlocfilehash: 857647e89b7ac5d9bc72bc4b2ace0ea7279353f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109465"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013799"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple 本地固定卷：常见问题 (FAQ)
 ## <a name="overview"></a>概述
@@ -45,15 +45,16 @@ ms.locfileid: "23109465"
 由于设备上的某些本地空间用于托管分层卷的工作集，因此如果设备有分层卷，可用于创建本地固定卷的空间就会减少。 相反，创建本地固定卷也会相应减少分层卷可用的空间。 下表汇总了创建本地固定卷时，8100 和 8600 设备上可用的分层容量。
 
 #### <a name="update-30"></a>Update 3.0 
+
 | 本地固定卷的预配容量 | 可为分层卷预配的容量 - 8100 | 可为分层卷预配的容量 - 8600 |
 | --- | --- | --- |
 | 0 |200 TB |500 TB |
 | 1 TB |176.5 TB |477.8 TB |
 | 4 TB |105.9 TB |411.1 TB |
 | 8.5 TB |0 TB |311.1 TB |
-| 10 TB |不可用 |277.8 TB |
-| 15 TB |不可用 |166.7 TB |
-| 22.5 TB |不可用 |0 TB |
+| 10 TB |NA |277.8 TB |
+| 15 TB |NA |166.7 TB |
+| 22.5 TB |NA |0 TB |
 
 **问：** 为何创建本地固定卷是长时间运行的操作？
 
@@ -162,7 +163,7 @@ ms.locfileid: "23109465"
 
 **问：** 是否可以在还原期间更改卷的类型？
 
-**答：** 无法在还原期间更改卷类型。
+**答：** 否，不能在还原期间更改卷类型。
 
 * 已删除的卷还原为快照中存储的类型。
 * 无论快照中存储的类型为何，卷都根据其当前类型还原（请参考前两个问题）。

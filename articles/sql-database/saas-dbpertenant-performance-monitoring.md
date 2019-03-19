@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5b9d5d6252f22901d2b8ac5a61d924ce12cc7065
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004619"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100422"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -28,7 +28,7 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-
+> 
 > * 通过运行提供的负载生成器，模拟租户数据库上的使用情况
 > * 在租户数据库对负载增加进行响应时，监视其情况
 > * 通过扩展弹性池来响应数据库负载增加的情况
@@ -57,7 +57,7 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库来说，监视和警报功能可以在数据库和池上使用。 这种内置的监视和警报功能是特定于资源的，因此对于少量资源使用方便，但在处理大量资源时就不是很方便。
 
-对于使用许多资源的大容量应用场景，可以使用 [Log Analytics](saas-dbpertenant-log-analytics.md)。 这是单独的 Azure 服务，可针对发出的诊断日志以及日志分析工作区中收集的遥测进行分析。 Log Analytics 可收集多个服务的遥测，可查询和设置警报。
+对于大容量方案，其中你正在使用许多资源，请[Azure Monitor 日志](saas-dbpertenant-log-analytics.md)可用。 这是单独的 Azure 服务的基础上发出的诊断日志和 Log Analytics 工作区中收集的遥测提供了分析。 Azure Monitor 日志可以收集多个服务的遥测数据和用于查询和设置警报。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS Database Per Tenant 应用程序的脚本
 
@@ -83,10 +83,10 @@ New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../a
 
 | 演示 | 场景 |
 |:--|:--|
-| 2 | 生成正常强度负载（约 40 DTU） |
+| 2 | 生成正常强度负载 (约 40 DTU) |
 | 3 | 生成单个数据库的突发时间更长且频率更高的负载|
-| 4 | 生成单个数据库的 DTU 突发更高的负载（约 80 DTU）|
-| 5 | 在正常负载的基础上生成单个租户的高负载（约 95 DTU）|
+| 4 | 生成每个数据库 (约 80 DTU) 的 DTU 突发更高的负载|
+| 5 | 生成在正常负载的高负载在单个租户 (约 95 DTU)|
 | 6 | 生成跨多个池的不均衡负载|
 
 负载生成器向每个租户数据库应用仅限 CPU 的综合负载。 该生成器为每个租户数据库启动一个作业，以便定期调用生成负载的存储过程。 负载级别（以 eDTU 为单位）、持续时间和间隔在各个数据库之间并不相同，模拟不可预测的租户活动。
@@ -171,17 +171,17 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 1. 单击“+ 新建池”，在当前服务器上创建一个池。
 1. 在“弹性池”模板上，执行以下操作：
 
-    1. 将名称设置为 Pool2。
-    1. 将定价层保留为“标准池”。
-    1. 单击“配置池”。
-    1. 将池 eDTU 设置为 50 eDTU。
-    1. 单击“添加数据库”，查看服务器上可添加到 Pool2 的数据库的列表。
-    1. 任意选择 10 个数据库，将其移动到新池，然后单击“选择”。 如果已经运行了负载生成器，则服务已经了解到性能配置文件需要比默认大小 50 eDTU 更大的池，并建议从 100 eDTU 开始设置。
+   1. 将名称设置为 Pool2。
+   1. 将定价层保留为“标准池”。
+   1. 单击“配置池”。
+   1. 将池 eDTU 设置为 50 eDTU。
+   1. 单击“添加数据库”，查看服务器上可添加到 Pool2 的数据库的列表。
+   1. 任意选择 10 个数据库，将其移动到新池，然后单击“选择”。 如果已经运行了负载生成器，则服务已经了解到性能配置文件需要比默认大小 50 eDTU 更大的池，并建议从 100 eDTU 开始设置。
 
-    ![建议](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![建议](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
-    1. 对于本教程，保留默认值 50 eDTU，再次单击“选择”。
-    1. 选择“确定”创建新池，并将选定的数据库移动到该池中。
+   1. 对于本教程，保留默认值 50 eDTU，再次单击“选择”。
+   1. 选择“确定”创建新池，并将选定的数据库移动到该池中。
 
 创建池及移动数据库移需要数分钟的时间。 移动数据库期间，在需关闭任何打开的连接这一最后时刻到来前，数据库将会保持联机状态，其访问完全不受影响。 只要拥有重试逻辑，随后客户端就会连接到新池中的数据库。
 
@@ -196,7 +196,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 本练习模拟 Contoso 音乐厅在销售热门音乐会票时遇到的负载过高的情况。
 
 1. 在 PowerShell ISE 中打开 \\Demo-PerformanceMonitoringAndManagement.ps1 脚本。
-1. 设置 **$DemoScenario = 5，在正常负载的基础上生成单个租户的高负载（约 95 DTU）。**
+1. 设置 **$DemoScenario = 5，生成正常的负载以及单租户 (约 95 DTU) 上的负载高。**
 1. 设置 **$SingleTenantDatabaseName = contosoconcerthall**
 1. 使用 **F5** 执行该脚本。
 
@@ -247,4 +247,4 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 * [构建 Wingtip Tickets SaaS Database Per Tenant 应用程序部署的其他教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [SQL 弹性池](sql-database-elastic-pool.md)
 * [Azure 自动化](../automation/automation-intro.md)
-* [Log Analytics](saas-dbpertenant-log-analytics.md) -“设置和使用 Log Analytics”教程
+* [Azure Monitor 日志](saas-dbpertenant-log-analytics.md)-设置启动并使用 Azure Monitor 日志教程

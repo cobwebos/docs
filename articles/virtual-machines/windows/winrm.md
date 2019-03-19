@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 22a522fcde2b79d89e6084cdcfcbf64e4e5bd5ce
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 77b575de3a84d582c11fb31952120e1079e23ffb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977960"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091097"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure 资源管理器中的虚拟机设置 WinRM 访问权限
 
@@ -84,8 +84,6 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 
 > [!NOTE]
 > 密钥 URL 还需要包含版本。 示例 URL 如下所示： https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
-> 
-> 
 
 #### <a name="templates"></a>模板
 可使用以下代码获取模板中 URL 的链接

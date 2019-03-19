@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 4127b6b2b2601b640a6fda4ccb60960d1762ee81
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414738"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877864"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -26,15 +26,17 @@ ms.locfileid: "56414738"
 
 本文介绍如何基于 URL 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引。 本文中的代码示例包括注释掉的代码，该代码显示了如何上传字节数组。 <br/>本文还介绍可以在 API 上设置的用于更改 API 过程和输出的某些参数。
 
-视频上传以后，视频索引器会选择性地对视频进行编码（在本文中介绍）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以创建[连接到 Azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)的视频索引器帐户。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
+视频上传以后，视频索引器会选择性地对视频进行编码（在本文中介绍）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，创建的视频索引器帐户[连接到你的 Azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
 
 ## <a name="uploading-considerations"></a>上传注意事项
 
 - 根据 URL（首选方式）上传视频时，必须使用 TLS 1.2（或更高版本）保护终结点
-- 对于 URL 选项，上传大小限制为 25GB
+- 具有 URL 选项上传大小被限制为 30 GB
+- 在大多数浏览器 URL 长度是限制为 2000年个字符
 - 对于字节数组选项，上传大小限制为 2GB
 - 字节组选项会在 30 分钟后超时
 - 需要对 `videoURL` 参数中提供的 URL 进行编码
+- 索引编制媒体服务资产具有与索引从 URL 相同的限制
 
 > [!Tip]
 > 建议使用 .NET framework 版本 4.6.2. 或更高版本，因为较旧的 .NET framework 不会默认为 TLS 1.2。
@@ -56,22 +58,22 @@ ms.locfileid: "56414738"
 - 索引状态更改： 
     - 属性：    
     
-        |Name|说明|
+        |名称|描述|
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
     - 示例： https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - 在视频中标识的人：
-    - 属性
+  - 属性
     
-        |Name|说明|
-        |---|---|
-        |id| 视频 ID|
-        |faceId|出现在视频索引中的人脸 ID|
-        |knownPersonId|在人脸模型中唯一的个人 ID|
-        |personName|人名|
+      |名称|描述|
+      |---|---|
+      |id| 视频 ID|
+      |faceId|出现在视频索引中的人脸 ID|
+      |knownPersonId|在人脸模型中唯一的个人 ID|
+      |personName|人名|
         
-     - 示例： https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - 示例： https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>说明
 
@@ -280,7 +282,7 @@ public class AccountContractSlim
 
 上传操作可能会返回下表中列出的状态代码。
 
-|状态代码|ErrorType（在响应正文中）|说明|
+|状态代码|ErrorType（在响应正文中）|描述|
 |---|---|---|
 |400|VIDEO_ALREADY_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小时前，相同的视频已在给定帐户中处理失败。 API 客户端应至少等待 2 小时才能重新上传视频。|

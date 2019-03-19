@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: f8122f35ac6d604908fc31dcece7dfb53dd50286
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 8c7da8d04b456642b158dda77d9c745891aa18e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985375"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58051868"
 ---
 共享映像库是可以帮助你围绕自定义托管 VM 映像生成结构和组织的服务。 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。 共享映像可以复制到多个区域，以便更快地扩展部署。
 
@@ -23,7 +23,7 @@ ms.locfileid: "55985375"
 
 共享映像库功能具有多种资源类型：
 
-| 资源 | 说明|
+| 资源 | 描述|
 |----------|------------|
 | **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
@@ -128,18 +128,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
  
  A. 若要在 Azure 门户上列出不同订阅中你有权访问的所有共享映像库资源，请执行以下步骤：
 
- 1. 打开 [Azure 门户](https://portal.azure.com)。
- 1. 转到“所有资源”。
- 1. 选择要列出其中的所有资源的所有订阅。
- 1. 查找类型为“专用库”的资源。
+1. 打开 [Azure 门户](https://portal.azure.com)。
+1. 转到“所有资源”。
+1. 选择要列出其中的所有资源的所有订阅。
+1. 查找类型为“专用库”的资源。
  
- 若要查看映像定义和映像版本，还应选择“显示隐藏的类型”。
+   若要查看映像定义和映像版本，还应选择“显示隐藏的类型”。
  
- 若要列出不同订阅中你有权访问的所有共享映像库资源，请在 Azure CLI 中使用以下命令：
+   若要列出不同订阅中你有权访问的所有共享映像库资源，请在 Azure CLI 中使用以下命令：
 
- ```bash
- az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
- ```
+   ```bash
+   az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
+   ```
 
 
 **问：** 如何在订阅之间共享映像？
@@ -155,9 +155,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
  方案 2：如果你有非托管的通用化映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
 
- 方案 3：如果本地文件系统中包含 VHD，则需要上传 VHD、创建托管映像，然后可以从该映像创建映像定义和映像版本。 
-    - 如果 VHD 适用于 Windows VM，请参阅[上传通用化 VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)。
-    - 如果 VHD 适用于 Linux VM，请参阅[上传 VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+ 方案 3：如果本地文件系统中包含 VHD，则需要上传 VHD、创建托管映像，然后可以从该映像创建映像定义和映像版本。
+- 如果 VHD 适用于 Windows VM，请参阅[上传通用化 VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)。
+- 如果 VHD 适用于 Linux VM，请参阅[上传 VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 
 **问：** 是否可以从专用化磁盘创建映像版本？
@@ -175,12 +175,12 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
  A. 下面提到了可在每个资源中更新的详细信息：
  
 共享映像库：
-- 说明
+- 描述
 
 映像定义：
 - 建议的 vCPU 数
 - 内存
-- 说明
+- 描述
 - 生命周期终结日期
 
 映像版本：

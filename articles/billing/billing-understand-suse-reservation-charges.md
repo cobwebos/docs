@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
-ms.openlocfilehash: 1b6e85344508d7b29e99c1ba3e6e1d0ac0aba2e3
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: a9f784d7e7ed21a5a10a2f5e16125d60e7b9667f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904057"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863468"
 ---
 # <a name="understand-how-the-suse-linux-enterprise-software-plan-discount-is-applied"></a>了解 SUSE Linux Enterprise 软件计划折扣是如何应用的
 
@@ -52,7 +52,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID| 比率| 示例 VM 大小|
 | -------| ------------------------| --- |--- |
-|SLES for HPC 1-2 个 vCPU|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
+|SLES for HPC 1-2 个 vCPU|e275a668-ce79-44e2-a659-f43443265e98|第|D2s_v3|
 |SLES for HPC 3-4 个 vCPU|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
 |SLES for HPC 5个及以上的 vCPU|4edcd5a5-8510-49a8-a9fc-c9721f501913|2.6|D8s_v3|
 
@@ -63,8 +63,8 @@ Azure 门户商城名称：
 - SLES 12 SP3 for HPC
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
-| ------- | --- | ------------------------| --- | --- |
-|SLES for HPC 1-2 个 vCPU |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
+| ------- | --- | ------------------------| --- |
+|SLES for HPC 1-2 个 vCPU |8c94ad45-b93b-4772-aab1-ff92fcec6610|第|D2s_v3|
 |SLES for HPC 3-4 个 vCPU|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1.92308|D4s_v3|
 |SLES for HPC 5个及以上的 vCPU |907a85de-024f-4dd6-969c-347d47a1bdff|2.92308|D8s_v3|
 
@@ -78,7 +78,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- | --- |
-|SLES for SAP Priority 1-2 个 vCPU|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
+|SLES for SAP Priority 1-2 个 vCPU|497fe0b6-fa3c-4e3d-a66b-836097244142|第|D2s_v3|
 |SLES for SAP Priority 3-4 个 vCPU |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
 |SLES for SAP Priority 5 个及以上的 vCPU |18ae79cd-dfce-48c9-897b-ebd3053c6058|2.41176|D8s_v3|
 
@@ -92,7 +92,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|SLES 1 vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|1|B1ms|
+|SLES 1 vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|第|B1ms|
 |SLES 2-4 个 vCPU |924bee71-5eb8-424f-83ed-a58823c33908|2|D4s_v3|
 |SLES 2-4 个 vCPU |60b3ae9d-e77a-46b2-9cdf-92fa87407969|2|D4s_v3|
 |SLES 6 个 vCPU |e8862232-6131-4dbe-bde4-e2ae383afc6f|3||
@@ -118,7 +118,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|SLES 1-2 核 vCPU |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
+|SLES 1-2 核 vCPU |4b2fecfc-b110-4312-8f9d-807db1cb79ae|第|D2s_v3|
 |SLES 3-4 核 vCPU |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 个及以上的 vCPU |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 
@@ -135,4 +135,4 @@ Azure 门户商城名称：
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

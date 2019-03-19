@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 7da765bda815e9112dac809d259fd417dc4d866e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 4b305087c0c755254d72811fb9275c509343c87e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878391"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -50,11 +50,14 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.1 |2.3.0、2.2.0、2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1（仅限 Windows） |-|-|
 | Apache Livy |0.5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.1 |1.1, 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1 |1.1 和 1.0 * （请参阅下面的备注） | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
 | Apache 滑块 |-| 0.92.0 |-|-|-|-|-|-|
+
+> [!NOTE]
+> 由于系统的性能注意事项，Kafka 0.10 版的支持已在 2019 年 3 月过期。
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>检查当前的 Hadoop 组件版本信息
 
@@ -122,12 +125,12 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
 
 - 数据授权
 
-    - 与 Apache Ranger 集成以对 Hive、Spark SQL 和 Yarn 队列授权。
-    - 可以对文件和文件夹设置访问控制。
+  - 与 Apache Ranger 集成以对 Hive、Spark SQL 和 Yarn 队列授权。
+  - 可以对文件和文件夹设置访问控制。
 
     有关详细信息，请参阅：
 
-    - [在已加入域的 HDInsight 中配置 Apache Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
+  - [在已加入域的 HDInsight 中配置 Apache Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
 
 - 查看审核日志以监视访问和配置的策略。 
 

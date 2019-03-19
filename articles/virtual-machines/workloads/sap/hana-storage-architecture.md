@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2018
+ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e692cc1fd8670cc14b42e4714d84356d4d4c53a2
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: HT
+ms.openlocfilehash: 02272ee16cf3303890a8ba6d35d38676e98c788c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275983"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006109"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA（大型实例）存储体系结构
 
-SAP HANA 根据 SAP 建议的指导原则在经典部署模型中配置 Azure 上的 SAP HANA（大型实例）的存储布局。 [SAP HANA 存储要求](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了指导原则。
+SAP HANA 根据 SAP 建议的指导原则在经典部署模型中配置 Azure 上的 SAP HANA（大型实例）的存储布局。 [SAP HANA 存储要求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了指导原则。
 
 I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 HANA 大型实例单位，存储不会是四倍大小。 这些单位附带的卷用于存储 HANA 事务日志备份。 有关详细信息，请参阅[安装和配置 Azure 上的 SAP HANA（大型实例）](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -73,9 +73,9 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 
 可以在 HANA 大型实例单位上托管多个活动的 SAP HANA 实例。 此类配置需要按实例进行卷设置，这样就仍然能够提供存储快照和灾难恢复的功能。 目前，HANA 大型实例单位可以细分如下：
 
-- **S72、S72m、S96、S144、S192**：以 256 GB 为增量，且以 256 GB 为最小起始单位。 可以组合使用不同的增量（例如 256 GB、512 GB 等），但不得超出该单位的最大内存。
-- **S144m 和 S192m**：以 256 GB 为增量，以 512 GB 为最小单位。 可以组合使用不同的增量（例如 512 GB、768 GB 等），但不得超出该单位的最大内存。
-- **II 类**：以 512 GB 为增量，最小起始单位为 2 TB。 可以组合使用不同的增量（例如 512 GB、1 TB 和 1.5 TB 等），但不得超出该单位的最大内存。
+- **S72、 S72m、 S96、 S144、 S192**:以 256 GB，以 256 GB 为最小起始单位为增量。 可以组合使用不同的增量（例如 256 GB、512 GB 等），但不得超出该单位的最大内存。
+- **S144m 和 S192m**:增量为 256 GB，以 512 GB 的最小单位。 可以组合使用不同的增量（例如 512 GB、768 GB 等），但不得超出该单位的最大内存。
+- **类型 II 类**:在具有最小起始单位为 2 TB 的 512 GB 为增量。 可以组合使用不同的增量（例如 512 GB、1 TB 和 1.5 TB 等），但不得超出该单位的最大内存。
 
 运行多个 SAP HANA 实例的部分示例如下。
 
@@ -93,6 +93,20 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 用于 HANA 大型实例存储允许数据透明加密存储在磁盘上。 在部署 HANA 大型实例单位时，可以选择启用这种加密。 还可以选择已在部署后将更改为加密卷。 将从非加密移动到加密卷是透明的并且不需要停机时间。 
 
 使用 I 类 SKU 时，会加密存储启动 LUN 的卷。 对于 II 类 SKU 的 HANA 大型实例，需使用 OS 方法加密启动 LUN。 有关更多信息，请联系 Microsoft Service Management 团队。
+
+## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>所需的设置 HANA 大型实例上较大的 HANA 实例。
+在 HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)每个文件。 与不同的文件大小限制在 EXT3 文件系统中，在 HANA 并不知道隐式强制实施通过 HANA 大型实例存储的存储限制。 因此 HANA 不会自动创建新的数据文件时达到文件大小限制为 16 TB。 当 HANA 尝试增长超过 16 TB 的文件，HANA 将报告错误和索引服务器将结束时崩溃。
+
+> [!IMPORTANT]
+> 为了防止 HANA 尝试增长超过 16 TB 的文件大小限制的 HANA 大型实例存储的数据文件，您需要在 HANA global.ini 配置文件中设置以下参数
+> 
+> - datavolume_striping=true
+> - datavolume_striping_size_gb = 15000
+> - 另请参阅 SAP 说明[#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - SAP 说明注意[#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+
+
+
 
 **后续步骤**
 - 请参阅 [HANA 大型实例支持的方案](hana-supported-scenario.md)

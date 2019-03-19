@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 40b266c92a86006746ab5341ac5fa1d785ee6032
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: de7288e2062fdfab363c46749b34c7afcacbb6e1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197162"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094797"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理器中配置多值路由方法
 
@@ -49,7 +49,7 @@ ms.locfileid: "54197162"
     | 位置                | 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
    |        |           | 
   
-  ![创建流量管理器配置文件](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
+   ![创建流量管理器配置文件](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 
@@ -61,13 +61,13 @@ ms.locfileid: "54197162"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 类型                    | 外部终结点                                   |
+    | Type                    | 外部终结点                                   |
     | 名称           | myEndpoint1                                        |
     | 完全限定的域名 (FQDN) 或 IP           | 键入要添加到此流量管理器配置文件的终结点的公共 IP 地址                         |
     |        |           |
 
 4. 重复步骤 2 和 3 以添加名为“myEndpoint2”的另一个终结点，在“完全限定的域名 (FQDN) 或 IP”处，输入第二个终结点的公共 IP 地址。
-5.  添加完这两个终结点后，这两个终结点会显示在“流量管理器配置文件”中，并且其监视状态为“联机”。
+5. 添加完这两个终结点后，这两个终结点会显示在“流量管理器配置文件”中，并且其监视状态为“联机”。
 
    ![添加流量管理器终结点](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  

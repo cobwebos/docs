@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a82d871ea232b31b31cfc24585af672141617d88
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57976770"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure 数据工厂 - 函数和系统变量
 > [!NOTE]
@@ -27,7 +27,8 @@ ms.locfileid: "54352999"
 本文提供 Azure 数据工厂支持的函数和变量的相关信息。
 
 ## <a name="data-factory-system-variables"></a>数据工厂系统变量
-| 变量名 | Description | 对象作用域 | JSON 作用域和用例 |
+
+| 变量名 | 描述 | 对象作用域 | JSON 作用域和用例 |
 | --- | --- | --- | --- |
 | WindowStart |当前活动运行窗口的开始时间间隔 |activity |<ol><li>指定数据选择查询。 请参阅[数据移动活动](data-factory-data-movement-activities.md)一文中引用的连接器文章。</li> |
 | WindowEnd |当前活动运行窗口的结束时间间隔 |activity |与 WindowStart 相同。 |
@@ -77,7 +78,7 @@ ms.locfileid: "54352999"
 ### <a name="functions"></a>函数
 下表列出了 Azure 数据工厂中的所有函数：
 
-| 类别 | 函数 | parameters | Description |
+| 类别 | 函数 | parameters | 描述 |
 | --- | --- | --- | --- |
 | 时间 |AddHours(X,Y) |X：DateTime <br/><br/>Y: int |向给定时间 X 加 Y 小时。 <br/><br/>示例： `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | 时间 |AddMinutes(X,Y) |X：DateTime <br/><br/>Y: int |向 X 加 Y 分钟。<br/><br/>示例： `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

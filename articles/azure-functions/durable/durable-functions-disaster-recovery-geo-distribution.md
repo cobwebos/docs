@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0fb2103b982d5b2fc1a04455b451459ede12166e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336929"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108199"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>灾难恢复和异地分发
 
@@ -24,7 +24,7 @@ ms.locfileid: "53336929"
 在 Durable Functions 中，所有状态保存在 Azure 存储中。 [任务中心](durable-functions-task-hubs.md)是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
 所述的方案会提议一些部署选项，以提高可用性，并在灾难恢复活动期间尽量减少停机时间。
 
-必须注意，这些方案基于“主动-被动”配置，因为它们是使用 Azure 存储引导执行的。 此模式的操作包括将一个后备（被动）函数应用部署到不同的区域。 流量管理器将监视主要（主动）函数应用的可用性。 如果主要应用发生故障，流量管理器会故障转移到后备函数应用。 有关详细信息，请参阅[流量管理器](https://azure.microsoft.com/services/traffic-manager/)的[优先级流量路由方法](../../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method)。
+必须注意，这些方案基于“主动-被动”配置，因为它们是使用 Azure 存储引导执行的。 此模式的操作包括将一个后备（被动）函数应用部署到不同的区域。 流量管理器将监视主要（主动）函数应用的可用性。 如果主要应用发生故障，流量管理器会故障转移到后备函数应用。 有关详细信息，请参阅[流量管理器](https://azure.microsoft.com/services/traffic-manager/)的[优先级流量路由方法](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)。
 
 >[!NOTE]
 >

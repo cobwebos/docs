@@ -5,17 +5,17 @@ description: '若要使用 Azure 机器学习工作室，需要具有“机器�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: bcd5b377f00ad43ff727c581471aad3ac651bdbb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 7aeee4f24f6c7133ad978bc0c6c7fb8853bc4c35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270081"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086133"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>创建并共享 Azure 机器学习工作室工作区
 
@@ -36,10 +36,10 @@ ms.locfileid: "56270081"
 
 4. 输入工作区信息：
 
-    - *工作区名称*最多可以为 260 个字符，不能以空格结束。 该名称不能包含下列字符：`< > * % & : \ ? + /`
-    - 如果从此工作区部署 Web 服务，将使用所选择（或创建）的 *Web 服务计划*以及所选的关联*定价层*。
+   - *工作区名称*最多可以为 260 个字符，不能以空格结束。 该名称不能包含下列字符：`< > * % & : \ ? + /`
+   - 如果从此工作区部署 Web 服务，将使用所选择（或创建）的 *Web 服务计划*以及所选的关联*定价层*。
 
-    ![创建新的工作室工作区](./media/create-workspace/create-new-workspace.png)
+     ![创建新的工作室工作区](./media/create-workspace/create-new-workspace.png)
 
 5. 单击“创建”。
 

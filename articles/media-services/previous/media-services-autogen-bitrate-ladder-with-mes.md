@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 5ccd53ac03235bd114218135488bef25891754be
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: bbaf4d490fcebb4cd741a9b83ffc5d7e85699755
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004054"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991862"
 ---
 #  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用 Azure Media Encoder Standard 自动生成比特率阶梯  
 
@@ -176,7 +176,7 @@ namespace AdaptiveStreamingMESPresest
 
 |层|高度|宽度|比特率 (kbps)|
 |---|---|---|---|
-|1|1080|1920|6780|
+|第|1080|1920|6780|
 |2|720|1280|3520|
 |3|540|960|2210|
 |4|360|640|1150|
@@ -188,7 +188,7 @@ namespace AdaptiveStreamingMESPresest
 
 |层|高度|宽度|比特率 (kbps)|
 |---|---|---|---|
-|1|720|1280|2940|
+|第|720|1280|2940|
 |2|540|960|1850|
 |3|360|640|960|
 |4|270|480|600|
@@ -199,7 +199,7 @@ namespace AdaptiveStreamingMESPresest
 
 |层|高度|宽度|比特率 (kbps)|
 |---|---|---|---|
-|1|360|640|700|
+|第|360|640|700|
 |2|270|480|440|
 |3|180|320|230|
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

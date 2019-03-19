@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 840c9f4115c13052c65e5975ed22aab7737ea2fe
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 5d725cdac93ebdb39437c0b9bcb619488fade0f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543898"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090655"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -24,7 +24,7 @@ ms.locfileid: "53543898"
 
 Azure Batch 池具有两个设置来允许计算节点彼此进行通信，例如，来运行多实例任务。 这些设置不需要单独的 VNet。 但是，默认情况下，节点不能与属于 Batch 池的一部分的虚拟机（例如，许可证服务器或文件服务器）进行通信。 若要允许池计算节点安全地与其他虚拟机或本地网络进行通信，可以在 Azure VNet 的子网中预配该池。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * “身份验证”。 若要使用 Azure VNet，Batch 客户端 API 必须使用 Azure Active Directory (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 
 
@@ -48,7 +48,7 @@ Azure Batch 池具有两个设置来允许计算节点彼此进行通信，例�
 6. 指定剩余所需设置，包括“节点大小”、“目标专用节点”和“低优先级节点”，以及任何所需的可选设置。
 7. 在“虚拟网络”中，选择要使用的虚拟网络和子网。
   
-  ![使用虚拟网络添加池](./media/batch-virtual-network/add-vnet-pool.png)
+   ![使用虚拟网络添加池](./media/batch-virtual-network/add-vnet-pool.png)
 
 ## <a name="user-defined-routes-for-forced-tunneling"></a>用户定义的用于强制隧道的路由
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 311ec7bacdfe58982ee670277000d81756f92005
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 03e10497b033fc3d97fde4cd524b358c05fdc943
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648586"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457818"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -347,7 +347,7 @@ Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小为 4 TiB�
 
 **哪些区域中支持大于 4 TiB 的托管磁盘大小？**
 
-目前在预览版中，美国中西部、欧洲北部、欧洲西部、美国西部 2、美国东部 2、美国东部支持托管磁盘大小。
+在除弗吉尼亚，中国和德国以外的所有 Azure 生产区域中支持托管的磁盘大小超过 4 TiB 的预览。 
 
 **我们是否支持在较新的磁盘大小上启用主机缓存？**
 

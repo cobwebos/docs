@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e6e25424981118363070d42b2fb057b18fdb91a9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 0d743d89c344ce9cb6eec116ed9c3e0cbe56f86e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805949"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878641"
 ---
 <a name="api-prerequisites"></a>API 先决条件
 ================
@@ -55,7 +55,7 @@ ms.locfileid: "48805949"
 
      ![向门户中添加托管应用](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-4. 单击“添加”将服务主体添加到你的帐户。
+1. 单击“添加”将服务主体添加到你的帐户。
 
    ![添加服务主体](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
@@ -66,7 +66,7 @@ ms.locfileid: "48805949"
 云合作伙伴门户 API 在身份验证期间使用以下资产和协议：
 
 - 一个 JSON Web 令牌 (JWT) 持有者令牌，用来请求对资源的访问权限
-- [OpenID Connect](http://openid.net/connect/) (OIDC) 协议，用来验证标识
+- [OpenID Connect](https://openid.net/connect/) (OIDC) 协议，用来验证标识
 - [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)，用作标识颁发机构
 
 有两个原则方法可用来以编程方式获取 JWT 令牌：

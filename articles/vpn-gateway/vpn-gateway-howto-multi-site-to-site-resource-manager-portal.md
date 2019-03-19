@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a814834be3225764c3b6f237bd515ca087f975a7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 4b9f007e00d0912687b723bd4f7e747da893948d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873115"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998833"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet
 
@@ -52,7 +52,7 @@ ms.locfileid: "52873115"
 * VPN 设备有一个面向外部的公共 IP 地址。 此 IP 地址不得位于 NAT 之后。
 
 ## <a name="part1"></a>第 1 部分 - 配置连接
-1. 从浏览器导航到 [Azure 门户](http://portal.azure.com)，并在必要时用 Azure 帐户登录。
+1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)，并在必要时用 Azure 帐户登录。
 2. 单击“**所有资源**”，从资源列表中找到“**虚拟网络网关**”并单击它。
 3. 在“虚拟网络网关”页面上，单击“连接”。
    

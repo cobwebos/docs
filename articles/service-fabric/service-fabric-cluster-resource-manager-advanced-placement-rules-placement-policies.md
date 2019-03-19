@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 66c51b08884c9d7a4d522c94f7b81774ec7a8bda
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 985d41d3a00974e25c9abc4709c5bf5e662f7a50
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641996"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086031"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric 服务的放置策略
 放置策略是可用于在某些不常见的特定情况下控制服务位置的附加规则。 这些情况的一些示例包括：
@@ -44,6 +44,7 @@ ms.locfileid: "34641996"
 凭借 InvalidDomain 放置策略，可以指定某个特定容错域对特定服务是无效的。 此策略可确保特定的服务绝对不会在特定的区域中运行（例如，出于地缘政治或公司政策的原因）。 可以通过单独的策略指定多个无效域。
 
 <center>
+
 ![无效域示例][Image1]
 </center>
 
@@ -64,7 +65,8 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 所需的域放置策略要求服务仅存在于指定域中。 可以通过独立的策略指定多个所需域。
 
 <center>
-![所需域示例][Image2]
+
+![所需的域示例][Image2]
 </center>
 
 代码：
@@ -85,6 +87,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 首选主域指定放置主要副本的容错域。 如果一切运行正常，主副本最终会在此域中。 如果域或主要副本出现故障或关闭，则主要副本会移到其他位置，理想情况下为同一域中的其他位置。 如果这个新位置不在首选域中，群集 Resource Manager 将尽可能快地将它移回到首选域。 当然，此设置仅适用于有状态服务。 对于跨越 Azure 区域或多个数据中心的群集，如果该群集的服务希望放置在某个位置，此策略最有用。 使主要副本接近其用户或其他服务有助于降低延迟，尤其是对于默认由主要副本处理的读取操作。
 
 <center>
+
 ![首选主域和故障转移][Image3]
 </center>
 

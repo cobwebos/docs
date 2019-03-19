@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 46d51e787a388f0963788c6419a2d9e3af89bc4f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 6f064bb875786fc50073ab4216bc1c52ace294bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456650"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113259"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -50,7 +50,7 @@ ms.locfileid: "56456650"
    是的。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
 
 
-1. **是否可以部署 Azure 门户中不可见的较旧的 SQL Server 映像？**
+1. **是否可以部署在 Azure 门户中不可见的 SQL Server 的较旧映像？**
 
    是的，使用 PowerShell。 有关使用 PowerShell 部署 SQL Server VM 的详细信息，请参阅[如何使用 Azure PowerShell 预配 SQL Server 虚拟机](virtual-machines-windows-ps-sql-create.md)。
 
@@ -82,7 +82,7 @@ ms.locfileid: "56456650"
 
 1. **如果 SQL Server 仅用于待机/故障转移，是否必须付费才能在 Azure VM 上为 SQL Server 授予许可？**
 
-   如果有[虚拟机许可常见问题解答](https://azure.microsoft.com/pricing/licensing-faq/)中所述的“软件保障”并且使用“许可证移动性”，则无需付费即可为在 HA 部署中作为被动次要副本参与的 SQL Server 授予许可。 否则，你需要付费才可为其授予许可。
+   如果具有软件保障并使用许可移动性中所述[虚拟机许可常见问题解答](https://azure.microsoft.com/pricing/licensing-faq/)，则无需付费即可为在 HA 部署中的被动辅助副本参与的 SQL Server。 否则，你需要付费才可为其授予许可。
 
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
@@ -111,31 +111,40 @@ ms.locfileid: "56456650"
  
    是的。 所有客户都可以将 VM 注册到新的 SQL VM 资源提供程序。 但是，只有享受软件保障权益的客户能够在 SQL Server VM 上激活 [Azure 混合权益 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/)（或 BYOL）。 
 
-1. **如果移动或删除 VM 资源，_* Microsoft.SqlVirtualMachine_* 资源会发生什么情况？** 
+1. **会发生什么情况_Microsoft.SqlVirtualMachine_如果移动或删除 VM 资源的资源？** 
 
    删除或移动 Microsoft.Compute/VirtualMachine 资源时，会通知关联的 Microsoft.SqlVirtualMachine 资源以异步方式复制此操作。
 
-1. **如果删除 _* Microsoft.SqlVirtualMachine_* 资源，VM 会发生什么情况？**
+1. **如果，VM 会发生什么情况_Microsoft.SqlVirtualMachine_删除资源？**
 
-   删除 Microsoft.SqlVirtualMachine 资源时，Microsoft.Compute/VirtualMachine 资源不受影响。 但是，许可更改会默认回退到原始的映像源。 
+    删除 Microsoft.SqlVirtualMachine 资源时，Microsoft.Compute/VirtualMachine 资源不受影响。 但是，许可更改会默认回退到原始的映像源。 
 
 1. **是否可以将自行部署的 SQL Server VM 注册到 SQL VM 资源提供程序？**
 
-   是的。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，不能将自行部署的 SQL VM 转换为即用即付。  
+    是的。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，不能将自行部署的 SQL VM 转换为即用即付。
 
 ## <a name="administration"></a>管理
 
 1. **是否可以在同一 VM 上安装另一个 SQL Server 实例？是否可以更改默认实例的已安装功能？**
 
-   可以。 SQL Server 安装媒体位于 **C** 驱动器上的某个文件夹中。 可从该位置运行 **Setup.exe** 添加新的 SQL Server 实例，或更改计算机上 SQL Server 的其他已安装功能。 请注意，某些功能（例如自动备份、自动修补和 Azure Key Vault 集成）仅对默认实例起作用。
+   可以。 SQL Server 安装媒体位于 **C** 驱动器上的某个文件夹中。 可从该位置运行 **Setup.exe** 添加新的 SQL Server 实例，或更改计算机上 SQL Server 的其他已安装功能。 请注意，某些功能，例如自动备份、 自动修补和 Azure 密钥保管库集成，仅运行针对默认实例或命名实例的配置是否正确 (请参阅问题 3)。 
 
 1. **是否可以卸载 SQL Server 的默认实例？**
 
-   可以，但需注意以下事项。 如前面的解答中所述，依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的功能仅对默认实例起作用。 卸载默认实例后，该扩展会继续查找默认实例并可能生成事件日志错误。 这些错误来自以下两个源：Microsoft SQL Server 凭据管理和 Microsoft SQL Server IaaS 代理。 其中一个错误可能类似于以下内容：
+   可以，但需注意以下事项。 如之前的答案中所述，有依赖的功能[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。  如果不也删除 IaaS 扩展卸载默认实例，扩展仍继续为其查找，并可能会生成事件日志错误。 这些错误来自以下两个源：Microsoft SQL Server 凭据管理和 Microsoft SQL Server IaaS 代理。 其中一个错误可能类似于以下内容：
 
       建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。
 
    如果你决定卸载默认实例，还要卸载 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
+
+1. **可以使用命名的实例的 SQL Server IaaS 扩展**？
+   
+   是的如果命名的实例是 SQL Server 上的唯一实例和原始的默认实例已正确卸载。 若要使用的命名的实例，请执行以下操作：
+    1. 部署来自应用商店的 SQL Server VM。 
+    1. 卸载 IaaS 扩展。
+    1. 完全卸载 SQL Server。
+    1. 安装 SQL Server 的命名实例。 
+    1. 安装 IaaS 扩展。 
 
 1. **是否可从 SQL VM 完全删除 SQL Server？**
 
@@ -143,9 +152,9 @@ ms.locfileid: "56456650"
    
 ## <a name="updating-and-patching"></a>更新和修补
 
-1. **如何将 Azure VM 中的 SQL Server 升级到新版本？**
+1. **如何更改到新的 Azure VM 中的 SQL Server 版本/版本？**
 
-   目前，在 Azure VM 中运行的 SQL Server 不提供任何就地升级。 因此，请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用标准[数据迁移技术](virtual-machines-windows-migrate-sql.md)，将数据库迁移到新的服务器。
+   具有软件保障的客户将能够执行就地升级的 SQL Server 使用批量许可门户中的安装媒体的 Azure VM 上运行。 但是，目前，没有办法更改 SQL Server 实例的版本。 使用所需的 SQL Server 版本中，创建新的 Azure 虚拟机并将数据库迁移到新服务器使用标准[数据迁移技术](virtual-machines-windows-migrate-sql.md)。
 
 1. **如何将更新和服务包应用到 SQL Server VM？**
 

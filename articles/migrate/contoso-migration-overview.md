@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 1f5eb085239ac985aa3355b1e91dac9639827339
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 8c1b5cc8a9f1c1246bd1973539e3bd00b340a657
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155064"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890944"
 ---
 # <a name="contoso-migration-overview"></a>Contoso 迁移：概述
 
@@ -21,7 +21,7 @@ ms.locfileid: "54155064"
 
 本文档是系列文章中的第一篇，目的是展示虚拟公司 Contoso 如何迁移到 Azure。 该系列包括相关信息和方案来说明如何设置基础结构的迁移及运行不同类型的迁移。 应用场景越来越复杂，我们将逐渐添加其他文章进行讲解。 文章展示 Contoso 公司如何完成其迁移任务，但始终提供一般阅读和特定说明的指针。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Azure 提供了针对一套全面的云服务的访问权限。 开发者和 IT 专业人员可以使用这些服务借助一系列工具和框架在一个全球性的数据中心网络内构建、部署和管理应用程序。 当你的业务面临与数字化变迁相关的挑战时，Azure 云可以帮助你规划如何优化资源和运营，与客户和员工进行沟通，以及对产品进行变革。
 
@@ -39,7 +39,7 @@ Azure 意识到，尽管云提供了诸多优点，包括速度和灵活性、�
 **重新托管** | 通常被称为“直接迁移”迁移。 此选项无需更改代码，允许将现有应用快速迁移到 Azure。 每个应用都按原样迁移，以便从云中获益，而不会产生与更改代码相关的风险和费用。 | 当需要将应用快速移动到云中时。<br/><br/> 当想要在不修改应用的情况下移动该应用时。<br/><br/> 当重新架构应用，以便它们可以在迁移后利用 [Azure IaaS](https://azure.microsoft.com/overview/what-is-iaas/) 可伸缩性时。<br/><br/> 当应用对业务非常重要，但无需立即更改应用功能时。
 **重构** | 通常被称为“重新打包”，重构需要对应用进行最小程度的更改，以便它们可以连接到 [Azure PaaS](https://azure.microsoft.com/overview/what-is-paas/)，并使用云产品/服务。<br/><br/> 例如，可以将现有应用迁移到 Azure 应用服务或 Azure Kubernetes 服务 (AKS)。<br/><br/> 或者，将关系数据库和非关系数据库重构为 Azure SQL 数据库托管实例、Azure Database for MySQL、Azure Database for PostgreSQL 和 Azure Cosmos DB 等选项。 | 如果可轻松重新打包应用，使其在 Azure 中工作。<br/><br/> 如果想要应用 Azure 提供的创新性 DevOps 实践，或正在考虑将容器策略用于工作负荷的 DevOps。<br/><br/> 对于重构，需要考虑现有基本代码的可移植性，以及可用的开发技能。
 **重新架构** | 重新架构以便迁移的重点在于修改和扩展应用功能及基本代码，以优化云可伸缩性的应用体系结构。<br/><br/> 例如，可将整体应用分解为一组一起工作且缩放轻松的微服务。<br/><br/> 或者，将关系数据库和非关系数据库重新构建为完全托管的 DBaaS 解决方案，如 Azure SQL 数据库托管实例、Azure Database for MySQL、Azure Database for PostgreSQL 和 Azure Cosmos DB。 | 当应用需要进行重大修订，以便纳入新功能或在云平台上有效工作时。<br/><br/> 当想要使用现有应用程序投资、满足可伸缩性需求、应用创新性 Azure DevOps 实践和最小化虚拟机的使用时。
-**重新生成** | 重新生成通过使用 Azure 云技术从头开始重新生成应用来使操作更进一步。<br/><br/> 例如，可使用[原生于云](http://azure.com/cloudnative)的技术（如 Azure Functions、Azure AI、Azure SQL 数据库托管实例、Azure Cosmos DB 等）生成尚无人开发的应用。 | 当希望快速开发且现有应用的功能和生存期有限时。<br/><br/> 当准备好加快业务创新（包括 Azure 提供的 DevOps 实践）、使用原生于云的技术生成新应用程序，以及充分利用 AI、区块链和 IoT 中的改进时。
+**重新生成** | 重新生成通过使用 Azure 云技术从头开始重新生成应用来使操作更进一步。<br/><br/> 例如，可使用[原生于云](https://azure.com/cloudnative)的技术（如 Azure Functions、Azure AI、Azure SQL 数据库托管实例、Azure Cosmos DB 等）生成尚无人开发的应用。 | 当希望快速开发且现有应用的功能和生存期有限时。<br/><br/> 当准备好加快业务创新（包括 Azure 提供的 DevOps 实践）、使用原生于云的技术生成新应用程序，以及充分利用 AI、区块链和 IoT 中的改进时。
 
 ## <a name="migration-articles"></a>迁移文章
 
@@ -54,8 +54,8 @@ Azure 意识到，尽管云提供了诸多优点，包括速度和灵活性、�
 [文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | Contoso 准备其本地和 Azure 基础结构进行迁移。 该系列的所有迁移文章共用同一个基础结构。 | 可用
 [文章 3：评估要迁移到 Azure 的本地资源](contoso-migration-assessment.md)  | Contoso 评估 VMware 上运行的本地 SmartHotel360 应用。 Contoso 使用 Azure Migrate 服务评估应用 VM，并使用数据迁移助手评估应用 SQL Server 数据库。 | 可用
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用   
-[文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用   [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
-[文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用 [文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 服务将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
+[文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
+[文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用 [文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) 
 [文章 8：在 Azure VM 和 Azure Database for MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Site Recovery 将其 Linux osTicket 应用迁移到 Azure VM。 它使用 MySQL Workbench 将应用数据库迁移到 Azure Database for MySQL。 | 可用
 [文章 9：在 Azure Web 应用和 Azure SQL 数据库中重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将其 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例。 | 可用    
 [文章 10：在 Azure Web 应用和 Azure Database for MySQL 中重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 使用 Azure 流量管理器将其 Linux osTicket 应用迁移到多个 Azure 区域上的 Azure Web 应用，并与 GitHub 集成以实现持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用

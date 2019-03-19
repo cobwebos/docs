@@ -12,12 +12,12 @@ ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
 ms.lastreviewed: 02/04/2019
-ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a1902ae2bf663c432876a0f73e2bb17616023b8a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697462"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006911"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>在 Azure Stack 上部署 Ethereum 区块链网络
 
@@ -25,7 +25,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 
 凭借少量的用户输入以及 Azure Stack 租户门户中的一键式部署，每个成员就能预配他们的网络足迹。 每个成员的网络占用情况由一组负载均衡的事务节点（应用程序或用户可以通过与它们交互来提交事务）、一组记录事务的挖掘节点以及一个网络虚拟设备 (NVA) 构成。 后续的连接步骤将连接 NVA 以创建完全配置的多成员区块链网络。
 
-若要设置：
+若要设置，请执行以下操作：
 
 - 选择部署体系结构
 - 部署独立网络、联盟领导者网络或联盟成员网络
@@ -39,7 +39,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 - 适用于 Linux 的自定义脚本 2.0
 - 适用于 Windows 的自定义脚本扩展
 
-有关区块链方案的更多信息，请参阅 [Ethereum 工作量证明联盟解决方案模板](../../blockchain/templates/ethereum-deployment.md)。
+了解区块链方案的详细信息，请参阅[以太坊概念验证的颁发机构联盟解决方案模板](../../blockchain/templates/ethereum-poa-deployment.md)。
 
 ## <a name="deployment-architecture"></a>部署体系结构
 
@@ -157,7 +157,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 
 ![成员部署摘要](./media/azure-stack-ethereum/ethereum-node-status-2.png)
 
-如图所示，成员的节点状态为“未运行”。 此状态是因为未建立成员和领导者之间的连接。 成员与领导者之间的连接是双向连接。 部署成员时，模板会自动创建从成员到领导者的连接。 若要创建从领导者到成员的连接，请转到下一步骤。
+如图所示，成员的节点状态为“未运行”。 之所以出现此状态是因为成员与领导者之间未建立连接。 成员与领导者之间的连接是双向连接。 部署成员时，模板会自动创建从成员到领导者的连接。 若要创建从领导者到成员的连接，请转到下一步骤。
 
 ### <a name="connect-member-and-leader"></a>连接成员和领导者
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1262ed841fe8f6f9c2d5339d79abf06c1ab15a25
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
-ms.translationtype: HT
+ms.openlocfilehash: 724a91b6ba0be030a2281bce366e4378892df59b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392867"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011575"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA（大型实例）网络体系结构
 
@@ -27,7 +27,7 @@ Azure 网络服务的体系结构是在 HANA 大型实例上成功部署 SAP 应
 
 - 在本地部署的 SAP 系统。 由于其大小的原因，这些系统当前无法托管在 Azure 中。 一个典型的示例是在 SQL Server（用作数据库）上运行且需要的 CPU 或内存资源超出 VM 提供能力的 SAP ERP 生产系统。
 - 在本地部署的基于 SAP HANA 的 SAP 系统。
-- 在 VM 中部署的 SAP 系统。 这些系统可能是任何基于 SAP NetWeaver 的应用程序的开发、测试、沙盒或生产实例，这些应用程序可以根据资源消耗和内存需求成功地在 Azure 中的 VM 上部署。 这些系统也可能基于数据库，例如 SQL Server。 有关详细信息，请参阅 [SAP 支持说明 #1928533 - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型](https://launchpad.support.sap.com/#/notes/1928533/E)。 这些系统可能基于数据库，例如 SAP HANA。 有关详细信息，请参阅 [SAP HANA 认证的 IaaS 平台](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)。
+- 在 VM 中部署的 SAP 系统。 这些系统可能是任何基于 SAP NetWeaver 的应用程序的开发、测试、沙盒或生产实例，这些应用程序可以根据资源消耗和内存需求成功地在 Azure 中的 VM 上部署。 这些系统也可能基于数据库，例如 SQL Server。 有关详细信息，请参阅[SAP 支持说明 #1928533 – Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型](https://launchpad.support.sap.com/#/notes/1928533/E)。 这些系统可能基于数据库，例如 SAP HANA。 有关详细信息，请参阅 [SAP HANA 认证的 IaaS 平台](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)。
 - 在 Azure 中的 VM 上部署的 SAP 应用程序服务器，它们利用 Azure 大型实例模具中的 Azure 上的 SAP HANA（大型实例）。
 
 使用至少四个不同部署方案的混合式 SAP 布局很常见。 也有很多客户方案在 Azure 中运行完整的 SAP 布局。 由于 VM 的功能越来越强大，将其所有 SAP 解决方案移到 Azure 上的客户数量也在增长。
@@ -79,7 +79,7 @@ Azure 中 SAP 部署的差别如下：
 - 与数据在本地和 Azure 之间交换的典型方案相比，SAP 应用程序体系结构对网络延迟更为敏感。
 - 虚拟网络网关具有至少两个 ExpressRoute 连接。 两个连接共享虚拟网络网关传入数据的最大带宽。
 
-在 VM 和 HANA 大型实例单位之间体验到的网络延迟可能高于典型的 VM 到 VM 网络往返延迟。 测量到的值可能超过 0.7 毫秒的往返延迟，具体取决于 Azure 区域。而在 [SAP 说明 #1100926 - 常见问题解答：网络性能](https://launchpad.support.sap.com/#/notes/1100926/E)中，0.7 毫秒被归类为低于平均值。 依赖于 Azure 区域和工具来测量 Azure VM 和 HANA 大型实例单元之间的网络往返延迟，所测量的延迟可以达到或大约 2 毫秒。 尽管如此，客户在 SAP HANA 大型实例上部署基于 SAP HANA 的生产型 SAP 应用程序很成功。 请确保在 Azure HANA 大型实例中对自己的业务流程进行彻底的测试。
+在 VM 和 HANA 大型实例单位之间体验到的网络延迟可能高于典型的 VM 到 VM 网络往返延迟。 相关的 Azure 区域，测量值可能超过 0.7 毫秒往返滞后时间被归类为低于平均值中[SAP 说明 #1100926-常见问题解答：网络性能](https://launchpad.support.sap.com/#/notes/1100926/E)。 依赖于 Azure 区域和工具来测量 Azure VM 和 HANA 大型实例单元之间的网络往返延迟，所测量的延迟可以达到或大约 2 毫秒。 尽管如此，客户在 SAP HANA 大型实例上部署基于 SAP HANA 的生产型 SAP 应用程序很成功。 请确保在 Azure HANA 大型实例中对自己的业务流程进行彻底的测试。
  
 为了确保 VM 和 HANA 大型实例之间的网络延迟稳定，必须选择虚拟网络网关 SKU。 不同于本地与 VM 之间的流量模式，VM 与 HANA 大型实例之间的流量模式可能是这样的：一开始流量很小，但随着要传输的请求和数据量的增多，可能会出现流量突然增高的迸发现象。 为了应对这种迸发现象，我们强烈建议使用 UltraPerformance 网关 SKU。 对于 II 类 HANA 大型实例 SKU，将 UltraPerformance 网关 SKU 用作虚拟网络网关是强制性的。
 
@@ -113,7 +113,7 @@ Azure 中 SAP 部署的差别如下：
 - 对于单个较大的 SAP 应用层，使用多个虚拟网络。
 - 为所部署的每个 SAP 系统部署一个单独的虚拟网络，而不是将这些 SAP 系统集中放置在同一虚拟网络中的各个子网中。
 
- 适用于 Azure 上的 SAP HANA（大型实例）的缩放性更好的网络体系结构：
+  适用于 Azure 上的 SAP HANA（大型实例）的缩放性更好的网络体系结构：
 
 ![跨多个虚拟网络部署 SAP 应用层](./media/hana-overview-architecture/image4-networking-architecture.png)
 
@@ -132,12 +132,12 @@ Azure 中 SAP 部署的差别如下：
 
 * Azure 上的 SAP HANA（大型实例）单位有一个分配的 IP 地址，该地址源自客户提交的 Server IP 池地址范围。 有关详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）的基础结构和连接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 可通过 Azure 订阅以及用于将虚拟网络连接到 Azure 上的 HANA（大型实例）的 ExpressRoute 访问此 IP 地址。 从该服务器 IP 池地址范围中分配的 IP 地址将直接分配给硬件单元， 而不会经过 NAT 转换，在此解决方案的第一个部署中也存在这种情况。 
 
-> [!NOTE] 
+> [!NOTE]
 > 若要克服前两个列表项中所述的暂时性路由限制，需要使用其他组件进行路由。 可用于克服该限制的组件可以是：
-
+> 
 > * 来回路由数据的反向代理。 例如，使用 Azure 中部署的带流量管理器的 F5 BIG-IP、NGINX 作为虚拟防火墙/流量路由解决方案。
 > * 在 Linux VM 中使用 [IPTables 规则](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)在本地位置与 HANA 大型实例单元之间，或者在不同区域中的 HANA 大型实例单元之间实现路由。
-
+> 
 > 请注意，Microsoft 不实现也不支持涉及第三方网络设备或 IPTables 的自定义解决方案。 必须由所用组件的供应商或集成者提供支持。 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>HANA 大型实例的 Internet 连接

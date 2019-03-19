@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure Active Directory 中管理应用密码 | Microsoft Docs
-description: 本页帮助用户了解什么是应用密码，以及它们在双重验证中起到什么作用。
+title: 如何管理应用密码-Azure Active Directory |Microsoft Docs
+description: 了解有关应用密码，以及这些信息用于有关双重验证。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,13 +12,14 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdcd078714d8311cf59471492187314183de28b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 47128bce8dbbee1b28f6b0a3a5783e5ccee501bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187298"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177392"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
@@ -88,7 +89,7 @@ ms.locfileid: "56187298"
 
 1. 登录到工作或学校帐户。
 
-2. 转到 https://portal.office.com，在“Office 365 门户”页的右上角选择“设置”图标，然后展开“其他安全性验证”。
+2. 转到[ https://portal.office.com ](https://portal.office.com)，选择**设置**从右上角的图标**Office 365 门户**页，然后再展开**额外的安全验证**。
 
     ![Office 门户，其中显示了展开的“其他安全性验证”区域](media/security-info/security-info-o365password.png)
 
@@ -104,7 +105,7 @@ ms.locfileid: "56187298"
 
 1. 登录到工作或学校帐户。
 
-2. 转到 https://portal.office.com，在“Office 365 门户”页的右上角选择“设置”图标，然后选择“其他安全性验证”。
+2. 转到[ https://portal.office.com ](https://portal.office.com)，选择**设置**从右上角的图标**Office 365 门户**页上，并选择**额外的安全验证**。
 
 3. 选择带有“创建和管理应用程序密码”字样的文本，打开“应用密码”页。
 

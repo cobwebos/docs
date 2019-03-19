@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: 74cd56f5a8bfe8717927c13e6bf30eb27b43fbc9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: b18ae44a140d77c24d8b5741bc09740767d1344f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558515"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075946"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>在 Azure 门户中创建新的时序见解环境
 本文介绍如何使用 Azure 门户创建新的时序见解环境。
@@ -26,28 +26,28 @@ ms.locfileid: "53558515"
 ## <a name="steps-to-create-the-environment"></a>创建环境的步骤
 遵循以下步骤创建环境：
 
-1.  登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2.  选择“+ 新建”按钮。
+2. 选择“+ 新建”按钮。
 
-3.  选择“物联网”类别，再选择“时序见解”。
+3. 选择“物联网”类别，再选择“时序见解”。
 
    ![创建时序见解环境](media/time-series-insights-get-started/1-new-tsi.png)
 
-4.  在“时序见解”页上，选择“创建”。
+4. 在“时序见解”页上，选择“创建”。
 
 5. 填写必需的参数。 下表解释了每个参数：
    
    ![创建时序见解资源组](media/time-series-insights-get-started/2-create-tsi.png)
    
-   设置|建议的值|Description
+   设置|建议的值|描述
    ---|---|---
    环境名称 | 唯一的名称 | 此名称在[时序资源管理器](https://insights.timeseries.azure.com)中代表环境
    订阅 | 订阅 | 如果有多个订阅，最好是选择包含事件源的订阅。 时序见解可以自动检测存在于同一订阅中的 Azure IoT 中心和事件中心资源。
    资源组 | 创建新资源组或使用现有的资源组 | 资源组是结合使用的 Azure 资源的集合。 可以选择现有的资源组，例如，包含事件中心或 IoT 中心的资源组。 或者，如果此资源与其他资源不相关，则可以创建新资源组。
    位置 | 最靠近事件源的位置 | 最好是选择包含事件源数据的同一个数据中心位置，以尽量避免增加跨界和跨区域的带宽费用，以及将数据移出区域时增大延迟。
    定价层 | S1 | 选择所需的吞吐量。 若要尽量降低费用并获得入门容量，请选择 S1。
-   容量 | 1 | 容量是应用于入口速率、存储容量和所选 SKU 相关成本的乘数。  可以在创建环境后更改其容量。 若要尽量降低费用，请选择 1 个单位的容量。 
+   容量 | 第 | 容量是应用于入口速率、存储容量和所选 SKU 相关成本的乘数。  可以在创建环境后更改其容量。 若要尽量降低费用，请选择 1 个单位的容量。 
   
 6. 选中“固定到仪表板”，以便将来轻松访问时序见解环境。
 
