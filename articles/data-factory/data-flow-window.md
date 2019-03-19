@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 329125d39c0da403ff078182af2eee74bcd9c84d
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 6f3f06ff54fc76416ba63f4f09835897d546f8dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270899"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861904"
 ---
-# <a name="azure-data-factory-mapping-data-flow-window-transformation"></a>Azure 数据工厂映射数据流窗口转换
+# <a name="azure-data-factory-window-transformation"></a>Azure 数据工厂窗口转换
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -39,10 +39,13 @@ Over 子句的另一部分是设置 ```Order By```。 该操作将设置数据�
 
 ![窗口选项](media/data-flow/windows6.png "窗口 6")
 
-## <a name="window-columns"></a>窗口列
+## <a name="window-columns"></a>窗口的列
 最后，使用表达式生成器定义你希望与数据窗口一起使用的聚合，例如 RANK、COUNT、MIN、MAX、DENSE RANK、LEAD 和 LAG 等。
 
 ![窗口选项](media/data-flow/windows7.png "窗口 7")
 
 此处列出了可通过表达式生成器采用 ADF 数据流表达式语言使用的聚合和分析函数的完整列表： https://aka.ms/dataflowexpressions。
 
+## <a name="next-steps"></a>后续步骤
+
+如果您正在寻找简单的 group by 聚合，使用[聚合转换](data-flow-aggregate.md)

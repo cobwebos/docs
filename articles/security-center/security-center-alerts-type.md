@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1f9ea2fd1e9a346046c55db451bc333373896db5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 6bd05a417bfb011dd86b61d654be836ef76099b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118082"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439677"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>了解 Azure 安全中心中的安全警报
 本文可帮助了解 Azure 安全中心提供的各类安全警报和相关的见解。 有关如何管理警报和事件的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
@@ -96,7 +96,7 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的�
 * **删除了所有的文件影子副本**：此警报表明影子副本已被删除。
 * **可疑的文件清除命令**：此警报表明攻击者组合使用 systeminfo 命令来执行入侵后的自清除活动。  虽然 *systeminfo.exe* 是合法的 Windows 工具，但此处这样的使用方式（即连续执行该工具两次，然后使用删除命令）是很罕见的。
 * **可疑的帐户创建操作**：此警报表明攻击者创建的帐户十分类似于现有的内置管理权限帐户。 攻击者可能会使用此方法创建一个恶意帐户，而不会被检测到。
-* **可疑的卷影复制活动**：此警报表明在资源上存在影子副本删除活动。 卷影复制 (VSC) 是重要的项目，用于存储数据快照。 此活动与勒索软件有关，但也可能是合法活动。
+* **可疑的卷影复制活动**：此警报表明在资源上存在影子副本删除活动。 卷影复制 (VSC) 是重要的项目，用于存储数据快照。 此活动与勒索软件，相关联，但它也可能是合法。
 * **Windows 注册表持久性方法**：此警报表明攻击者尝试在 Windows 注册表中持久保留某个可执行文件。 恶意软件通常使用这种方法，因此在计算机启动后仍然存在。
 * **可疑的全新防火墙规则**：此警报表明攻击者已通过 *netsh.exe* 添加了新的防火墙规则，允许来自可疑位置的某个可执行文件的流量。
 * **可疑的 XCOPY 执行活动**：此警报表明存在一系列 XCOPY 执行操作。这可能表示攻击者已损害你的某个计算机并用其传播恶意软件。

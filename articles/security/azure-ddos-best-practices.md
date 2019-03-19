@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 9f837a5dbea15b159a226b12c034add1dcf69834
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117844"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247335"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS 防护：最佳做法和参考体系结构
 
@@ -126,7 +126,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 防护遥测、监视和警报
 
-标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](../azure-monitor/overview.md) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可将日志记录集成到 Splunk（Azure 事件中心）、Azure Log Analytics 和 Azure 存储，以通过 Azure Monitor 诊断界面进行高级分析。
+标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](../azure-monitor/overview.md) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 通过 Azure Monitor 诊断界面的高级分析，可与 Splunk （Azure 事件中心）、 Azure Monitor 日志和 Azure 存储集成日志记录。
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 

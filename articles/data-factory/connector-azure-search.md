@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: aa6c6a35a66569d5db182e1871012b9697c2802c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 1c8cbcd2e5f137b1e8381dcce164ae9a4b87e804
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023339"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852835"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
@@ -49,7 +49,7 @@ Azure 搜索链接的服务支持以下属性：
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 > [!IMPORTANT]
-> 将数据从云数据存储复制到 Azure 搜索索引时，需要使用 connectVia 中的显式区域在 Azure 搜索链接服务中引用 Azure 集成运行时。 将此区域设置为 Azure 搜索所在的位置。 从 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 了解更多信息。
+> 将数据从云数据存储复制到 Azure 搜索索引，在 Azure 搜索链接服务，需要显式区域位于 connactVia Azure 集成运行时，请参阅。 将此区域设置为 Azure 搜索所在的位置。 从 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 了解更多信息。
 
 **示例：**
 

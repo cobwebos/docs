@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b1e6884366300a4edfce1eb05971e50f673b3a22
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 4ddcd2429ce1b7e44670b52a0a7b7494d0400af7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457218"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860969"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 进行数据探索和建模
 
@@ -29,8 +29,8 @@ ms.locfileid: "55457218"
 
 * [使用 SGD 的线性回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)是使用随机梯度下降 (SGD) 方法进行优化和特征缩放的线性回归模型，以预测支付的小费金额。 
 * [使用 LBFGS 的逻辑回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS)或“logit”回归，是可在因变量分类时用于执行数据分类的回归模型。 LBFGS 是拟牛顿优化算法，近似于使用有限计算机内存量的 Broyden–Fletcher–Goldfarb–Shanno (BFGS) 算法，在机器学习中广泛使用。
-* [随机林](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
-* [梯度提升树](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式训练决策树以最大程度减少损失函数。 GBT 用于回归和分类，并且可处理分类特征，不需要功能缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
+* [随机林](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
+* [梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式训练决策树以最大程度减少损失函数。 GBT 用于回归和分类，并且可处理分类特征，不需要功能缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
 建模步骤还包含显示如何训练、评估和保存每个模型类型的代码。 已使用 Python 编写解决方案并显示相关绘图。   
 
@@ -39,7 +39,7 @@ ms.locfileid: "55457218"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 需要一个 Azure 帐户和一个 Spark 1.6（或 Spark 2.0）HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
 
 ## <a name="spark-clusters-and-notebooks"></a>Spark 群集和笔记本
@@ -60,19 +60,17 @@ ms.locfileid: "55457218"
 
 > [!NOTE]
 > 航班数据集已添加到 Spark 2.0 笔记本，以方便演示分类算法的用法。 有关航班准时出发数据集和天气数据集的信息，请参阅以下链接：
-
->- 航班准时出发数据：[http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
-
->- 机场天气数据：[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 > 
+> - 航班准时出发数据：[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
+> - 机场天气数据：[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-有关 NYC 出租车和飞机航班延迟数据集的 Spark 2.0 笔记本可能需要 10 分钟或更长时间运行（具体取决于 HDI 群集大小）。 以上列表中的第一个笔记本全面显示了数据探索、可视化和 ML 模型训练的许多方面，该笔记本使用下采样的 NYC 数据集（其中已预先联接出租车和费用文件）运行时所花费的时间更短：[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) 此笔记本完成运行的时间短得多（2-3 分钟），对于实现快速浏览我们为 Spark 2.0 提供的代码这一目的，此笔记本可能是一个很好的起点。 
+> 有关 NYC 出租车和飞机航班延迟数据集的 Spark 2.0 笔记本可能需要 10 分钟或更长时间运行（具体取决于 HDI 群集大小）。 以上列表中的第一个笔记本全面显示了数据探索、可视化和 ML 模型训练的许多方面，该笔记本使用下采样的 NYC 数据集（其中已预先联接出租车和费用文件）运行时所花费的时间更短：[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) 此笔记本完成运行的时间短得多（2-3 分钟），对于实现快速浏览我们为 Spark 2.0 提供的代码这一目的，此笔记本可能是一个很好的起点。 
 
 <!-- -->
 
@@ -81,7 +79,7 @@ ms.locfileid: "55457218"
 <!-- -->
 
 > [!NOTE]
-下面的说明与使用 Spark 1.6 相关。 对于 Spark 2.0 版本，请使用上面所述和链接的笔记本。 
+> 下面的说明与使用 Spark 1.6 相关。 对于 Spark 2.0 版本，请使用上面所述和链接的笔记本。 
 
 <!-- -->
 
@@ -362,8 +360,8 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>为分类特征编制索引并进行编码以输入到建模函数中
 本部分介绍如何为分类特征编制索引或进行编码以输入到建模函数中。 MLlib 的建模和预测函数需要带有分类输入数据的特征在使用前编制索引或进行编码。 根据模型，需要以不同方式为它们编制索引或进行编码：  
 
-* **基于树的建模**需要将类别编码为数值（例如，具有三个类别的特征可能会使用 0、1、2 进行编码）。 这由 MLlib 的 [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) 函数提供。 此函数将标签的字符串列编码为标签索引列，它们将按标签频率进行排序。 虽然使用输入和数据处理的数值编制索引，但可指定基于树的算法，将其视为类别进行相应处理。 
-* **逻辑和线性回归模型**需要独热编码，例如，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
+* **基于树的建模**需要将类别编码为数值（例如，具有三个类别的特征可能会使用 0、1、2 进行编码）。 这由 MLlib 的 [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 函数提供。 此函数将标签的字符串列编码为标签索引列，它们将按标签频率进行排序。 虽然使用输入和数据处理的数值编制索引，但可指定基于树的算法，将其视为类别进行相应处理。 
+* **逻辑和线性回归模型**需要独热编码，例如，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
 下面是用于为分类特征编制索引和编码的代码：
 

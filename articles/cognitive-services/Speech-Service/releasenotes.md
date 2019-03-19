@@ -11,21 +11,31 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446828"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856084"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="speech-sdk-131-2019-february-refresh"></a>语音 SDK 1.3.1:2019 年 2 月刷新
+
+这是 bug 修复版本和仅影响本机/托管 SDK。 它不影响 JavaScript 版本的 SDK。
+
+**Bug 修复**
+
+* 修复内存泄漏时使用的麦克风输入。 基于的 Stream 或输入的文件不受影响。
 
 ## <a name="speech-sdk-130-2019-february-release"></a>语音 SDK 1.3.0：2019 年 2 月版本
 
 **新功能**
 
-* 语音 SDK 支持通过 AudioConfig 类来选择输入麦克风。 这允许将音频数据从非默认麦克风流式传输到语音服务。 有关更多详细信息，请参阅介绍[音频输入设备选择](how-to-select-audio-input-devices.md)的文档。 这在 JavaScript 中尚不可用。
+* 语音 SDK 支持通过 AudioConfig 类来选择输入麦克风。 这样可以流式传输到语音服务从非默认麦克风的音频数据。 有关详细信息，请参阅文档描述[音频输入设备选择](how-to-select-audio-input-devices.md)。 这在 JavaScript 中尚不可用。
 * 语音 SDK 目前在 beta 版本中支持 Unity。 请通过 [GitHub 示例存储库](https://aka.ms/csspeech/samples)中的问题部分来提供反馈。 此版本支持在 Windows x86 和 x64（桌面或通用 Windows 平台应用程序）以及 Android（ARM32/64，x86）上使用 Unity。 [Unity 快速入门](quickstart-csharp-unity.md)中提供了更多信息。
+* 该文件`Microsoft.CognitiveServices.Speech.csharp.bindings.dll`（在早期版本中已发货） 不再需要。 功能现已集成到核心 SDK。
+
 
 **示例**
 
@@ -54,6 +64,7 @@ ms.locfileid: "56446828"
   * 首次支持并实现了短语提示。
   * 随服务 JSON 返回属性集合以用于识别
 * Windows DLL 现在包含一个版本资源。
+* 如果创建一个识别器`FromEndpoint`可以直接向终结点 URL 中添加参数。 使用`FromEndpoint`无法配置通过标准配置属性的识别器。
 
 **Bug 修复**
 
@@ -78,13 +89,13 @@ ms.locfileid: "56446828"
 **新功能**
 
 * Python
-  * 此版本支持 Python 的 Beta 版本（3.5 及更高版本）。 有关详细信息，请[参阅此处](quickstart-python.md)。
+  * 此版本支持 Python 的 Beta 版本（3.5 及更高版本）。 有关详细信息，请参阅 here](quickstart-python.md)。
 * JavaScript
   * 适用于 JavaScript 的语音 SDK 已开放了源代码。 [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js) 上提供了源代码。
   * 我们现在支持 Node.js，可以在[此处](quickstart-js-node.md)找到详细信息。
   * 已删除了对音频会话的长度限制，将自动在后台进行重新连接。
 * 连接对象
-  * 可以从识别器中访问连接对象。 此对象允许你显式启动服务连接并订阅连接事件和断开连接事件。
+  * 从识别器，可以访问连接对象。 此对象允许你显式启动服务连接并订阅连接事件和断开连接事件。
     （这在 JavaScript 和 Python 中尚不可用。）
 * 支持 Ubuntu 18.04。
 * Android
@@ -102,7 +113,7 @@ ms.locfileid: "56446828"
 * 在某些情况下，异常会被泄露。
 * 修复了翻译事件参数中的内存泄漏。
 * 修复了长时间运行的会话中与重新连接相关的锁定问题。
-* 修复了可能会导致失败的翻译缺少最终结果的问题。
+* 修复了缺少对失败的翻译的最终结果可能会导致的问题。
 * C#：如果在主线程中没有等待异步操作，则可能会在异步任务完成之前释放识别器。
 * Java:修复了导致 Java VM 故障的一个问题。
 * Objective-C：修复了枚举映射；之前返回 RecognizedIntent 而非 RecognizingIntent。
@@ -111,7 +122,7 @@ ms.locfileid: "56446828"
 
 **示例**
 
-* 更新并修复了几个示例（例如，翻译的输出语音，等等）。
+* 更新并修复了几个示例 （例如输出语音翻译，等等。）。
 * 在[示例存储库](https://aka.ms/csspeech/samples)中添加了 Node.js 示例。
 
 ## <a name="speech-sdk-110"></a>语音 SDK 1.1.0
@@ -119,7 +130,7 @@ ms.locfileid: "56446828"
 **新功能**
 
 * 对 Android x86/x64 的支持。
-* 代理支持：在 SpeechConfig 对象中，现在可以调用某个函数来设置代理信息（主机名、端口、用户名和密码）。 此功能在 iOS 上尚不可用。
+* 代理支持：在 SpeechConfig 对象中，现在可以调用一个函数来设置代理服务器信息 （主机名、 端口、 用户名和密码）。 此功能在 iOS 上尚不可用。
 * 改进了错误代码和消息。 如果识别返回了错误，这在过去会将 `Reason`（在已取消事件中）或 `CancellationDetails`（在识别结果中）设置为 `Error`。 取消的事件现在包含两个附加的成员：`ErrorCode` 和 `ErrorDetails`。 如果服务器随所报告的错误返回了附加的错误信息，则现在将在新成员中提供该信息。
 
 **改进**
@@ -130,7 +141,7 @@ ms.locfileid: "56446828"
 
 **Bug 修复**
 
-* 修复了在识别器中发现的几处异常。 此外，还会捕获异常并将其转换为已取消事件。
+* 修复了在识别器中发现的几处异常。 此外，异常被捕获和转换为已取消事件。
 * 修复了属性管理中的内存泄漏。
 * 修复了音频输入文件可能会导致识别器发生故障的 bug。
 * 修复了在会话停止事件后无法检索事件的 bug。
@@ -168,7 +179,7 @@ ms.locfileid: "56446828"
 
 **重大更改**
 
-* 该版本中推出了大量重大更改。
+* 此版本中，都会引入大量重大更改。
   有关详细信息，请查看[此页](https://aka.ms/csspeech/breakingchanges_1_0_0)。
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>认知服务语音 SDK 0.6.0：2018 年 8 月版本

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: cd4c5dc877bf565e5218d431506bbeccd5dc6382
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: c4e0f30f68d778b55e89b956be2c5545041c4e6f
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567259"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214599"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -229,7 +229,7 @@ SQL 数据同步自动预配的限制如下：
         -  [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Data Sync Agent - [Azure SQL 数据同步的 Data Sync Agent](sql-database-data-sync-agent.md)
--   监视 - [使用 Log Analytics 监视 SQL 数据同步](sql-database-sync-monitor-oms.md)
+-   监视器-[使用 Azure Monitor 监视 SQL 数据同步日志](sql-database-sync-monitor-oms.md)
 -   故障排除 - [排查 Azure SQL 数据同步问题](sql-database-troubleshoot-data-sync.md)
 -   更新同步架构
     -   使用 Transact-SQL - [在 Azure SQL 数据同步中自动复制架构更改](sql-database-update-sync-schema.md)

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: bb13e507e7992f4cd4d767a7a18850739b8dccf2
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: f119d128b35b93d7e18d514c09d187689d8dffe9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270192"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306895"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>使用 System Center DPM 准备将工作负载备份到 Azure
 
@@ -48,20 +48,17 @@ Azure VM 上的 DPM | System Center 2012 R2 DPM 2012 R2 更新汇总 3 或更高
 物理服务器上的 DPM | System Center 2012 SP1 或更高版本；System Center 2012 R2。
 Hyper-V VM 上的 DPM | System Center 2012 SP1 或更高版本；System Center 2012 R2。
 VMware VM 上的 DPM | System Center 2012 R2 更新汇总 5 或更高版本。
-组件 | DPM 服务器上应已安装 Windows PowerShell 和 .NET Framework 4.5。
+组件 | DPM 服务器应具有 Windows PowerShell 和安装.NET Framework 4.5。
 支持的应用 | [了解](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) DPM 可以进行哪些备份。
 支持的文件类型 | 使用 Azure 备份，可以备份下列文件类型：加密（仅完整备份）；压缩（支持增量备份）；稀疏（支持增量备份）；压缩和稀疏（处理为稀疏）。
 不受支持的文件类型 | 区分大小写的文件系统上的服务器；硬链接（跳过）；重分析点（跳过）；加密和压缩（跳过）；加密和稀疏（跳过）；压缩流；分析流。
-本地存储 | 要备份的每台计算机上的可用本地存储必须至少为要备份的数据大小的 5%。  例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
+本地存储 | 要备份的每台计算机上的可用本地存储必须至少为要备份的数据大小的 5%。 例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
 保管库存储 | 可以备份到 Azure 备份保管库的数据量没有限制，但数据源（例如，虚拟机或数据库）的大小不应超过 54400 GB。
 Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安装 DPM SP1 汇总 2 或更高版本。 这是代理安装所必需的。<br/><br/> 本文介绍如何部署最新版本的 Azure 备份代理（也称为 Microsoft Azure 恢复服务 (MARS) 代理）。 如果已部署早期版本，请更新到最新版本以确保备份按预期运行。
 
-
 在开始之前，需要一个启用了 Azure 备份功能的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 阅读[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)的相关信息。
 
-
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
-
 
 ## <a name="modify-storage-settings"></a>修改存储设置
 
@@ -82,7 +79,6 @@ Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安
 
     ![备份保管库列表](./media/backup-azure-dpm-introduction/choose-storage-configuration-rs-vault.png)
 
-
 ## <a name="download-vault-credentials"></a>下载保管库凭据
 
 在保管库中注册 DPM 服务器时使用保管库凭据。
@@ -98,7 +94,7 @@ Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安
 
 - 保管库凭据仅在注册工作流的过程中使用。
 - 你需负责确保保管库凭据文件安全且不会泄露。
-    -  如果失去了对凭据的控制权，则保管库凭据可能会被用来向保管库注册其他计算机。
+    - 如果失去了对凭据的控制权，则保管库凭据可能会被用来向保管库注册其他计算机。
     - 但是，备份数据是使用属于客户的通行短语加密的，因此现有的备份数据不会泄露。
 - 确保将文件保存在可从 DPM 服务器访问的位置。 如果将它存储在文件共享/SMB 中，请检查访问权限。
 - 保管库凭据会在 48 小时后过期。 可以根据需要任意下载新的保管库凭据。 不过，在注册工作流中只能使用最新的保管库凭据文件。
@@ -138,8 +134,7 @@ Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安
 7. Azure 备份代理将安装 .NET Framework 4.5 和 Windows PowerShell（如果未安装）以完成安装。
 8. 安装代理后，关闭该窗口。
 
-   ![关闭](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
-
+    ![关闭](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>在保管库中注册 DPM 服务器
 
@@ -175,8 +170,7 @@ Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安
     > 加密通行短语由你拥有，Microsoft 看不到该通行短语。
     > 如果丢失或忘记了通行短语，Microsoft 无法帮助你恢复备份的数据。
 
-13. 单击“注册”以向保管库注册 DPM 服务器。  
-
+13. 单击“注册”以向保管库注册 DPM 服务器。
 
 服务器成功注册到保管库后，现在，可以开始备份到 Microsoft Azure。
 

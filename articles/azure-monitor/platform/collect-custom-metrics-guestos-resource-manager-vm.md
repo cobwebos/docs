@@ -4,18 +4,20 @@ description: 使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1eaf73e1d8b3c60ea32fa7d4aaf51a212d24a18c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 63b134ab9bfdac3617c845da7a14ee6b9234c84d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894592"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782014"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 使用 Azure Monitor [诊断扩展](diagnostics-extension-overview.md)，可以从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。 该扩展可将遥测数据发送到[许多不同的位置](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)。
 
@@ -25,11 +27,11 @@ ms.locfileid: "55894592"
 
 如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
 
-- 需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+- 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器
@@ -237,17 +239,17 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 我们将利用 Azure PowerShell 部署资源管理器模板。
 
 1. 启动 PowerShell。
-1. 使用 `Login-AzureRmAccount` 登录到 Azure 门户。
-1. 使用 `Get-AzureRmSubscription` 获取订阅列表。
+1. 使用 `Login-AzAccount` 登录到 Azure 门户。
+1. 使用 `Get-AzSubscription` 获取订阅列表。
 1. 设置要在其中创建/更新虚拟机的订阅：
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>"
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
 1. 若要为部署的 VM 创建新资源组，请运行以下命令：
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
+    New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
    > 请记住[使用为自定义指标启用的 Azure 区域](metrics-custom-overview.md)。
@@ -257,7 +259,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
    > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾。
 
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
+   New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 
 1. 部署成功后，VM 应会显示在 Azure 门户中，并向 Azure Monitor 发出指标。

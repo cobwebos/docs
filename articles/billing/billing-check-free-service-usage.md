@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: banders
-ms.openlocfilehash: e4dbcc9bad7e4912318931e9f91d311b8b058501
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: 4e940a12cd57ef136cfd9ead298f9afcd2d6ad1f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903700"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849850"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>检查 Azure 免费帐户中包含的免费服务的使用情况 
 
@@ -69,4 +69,4 @@ ms.locfileid: "54903700"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

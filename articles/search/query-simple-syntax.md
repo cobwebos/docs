@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 12589d9fa4623dbb6ebfd12d2e007eb9303ecdbf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 4f06af8044a79a7dc54d6fde55992111d24d22a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007595"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441554"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Azure 搜索中的简单查询语法
 Azure 搜索实现两种基于 Lucene 的查询语言：[简单查询分析器](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html)和 [Lucene 查询分析器](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)。 在 Azure 搜索中，简单查询语法排除了模糊/贪婪选项。  
@@ -46,7 +46,7 @@ Azure 搜索实现两种基于 Lucene 的查询语言：[简单查询分析器](
 
 ## <a name="operators-in-simple-search"></a>简单搜索中的运算符
 
-可以在查询字符串中嵌入运算符，以生成一组用于查找匹配文档的标准。 
+可以在一个查询字符串来生成一组丰富的条件对其找到匹配的文档中嵌入运算符。 
 
 ## <a name="and-operator-"></a>AND 运算符 `+`
 

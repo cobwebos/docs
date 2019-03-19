@@ -1,19 +1,19 @@
 ---
 title: Azure IoT 中心开发人员指南 | Microsoft Docs
 description: Azure IoT 中心开发人员指南讨论了终结点、安全性、标识注册表、设备管理、直接方法、设备孪生、文件上传、作业、IoT 中心查询语言以及消息传送。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: dobett
-ms.openlocfilehash: ecbec614bd0d1b043faf6ad002b05d4acdcc4ab4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
-ms.translationtype: HT
+ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041741"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450985"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT 中心开发人员指南
 
@@ -55,7 +55,7 @@ Azure IoT 中心提供：
 
 * [控制对 IoT 中心的访问](iot-hub-devguide-security.md)说明用于向设备和云组件授予 IoT 中心功能访问权限的安全模型。 此文章包括有关使用令牌和 X.509 证书的信息，以及可以授予的权限的详细信息。
 
-* [使用设备孪生来同步状态和配置](iot-hub-devguide-device-twins.md)介绍*设备孪生*概念。 本文还介绍了设备孪生具备的功能，例如使用设备孪生来同步设备。 此文章包括有关设备孪生中存储的数据的信息。
+* [使用设备孪生来同步状态和配置](iot-hub-devguide-device-twins.md)介绍*设备孪生*概念。 此外介绍了功能设备孪生公开，如使用设备孪生同步设备。 此文章包括有关设备孪生中存储的数据的信息。
 
 * [在设备上调用直接方法](iot-hub-devguide-direct-methods.md)介绍直接方法的生命周期。 本文介绍如何通过后端应用在设备上调用方法，以及如何在设备上处理直接方法。
 

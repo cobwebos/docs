@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: a243ac45ce29ae824c8f38036d4387da3b1cff8f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 165df03ec06081fe9b2e1ab84ffe7579ac457758
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453206"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855480"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机上的数据浏览和可视化工具
 
@@ -43,7 +43,7 @@ ms.locfileid: "55453206"
 | 支持的 DSVM 版本     | Windows、Linux     |
 | 典型用途      | 常规 ML 工具     |
 | 如何使用/运行它？      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上，使用 X2Go 登录，然后导航到“应用程序”->“开发”->“Weka”。 |
-| 示例链接      | [Weka 示例](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| 示例链接      | [Weka 示例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | DSVM 上的相关工具      |LightGBM、Rattle、Xgboost   |
 
 ## <a name="rattle"></a>Rattle

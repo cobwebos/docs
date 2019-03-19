@@ -6,22 +6,21 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: fd57c344c640974e9c73156902848fb1685861f2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: fb3b375a66ac9b05ad26287b7c39ce8e748ad699
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163137"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780314"
 ---
 # <a name="what-is-bing-local-business-search"></a>什么是必应当地企业搜索？
 必应当地企业搜索 API 是一种 RESTful 服务，该服务使应用程序可以基于搜索查询找到有关当地企业的信息。 例如，`q=<business-name> in Redmond, Washington` 或 `q=Italian restaurants near me`。 
 
 ## <a name="features"></a>功能
-| Feature | 说明 |  
+| Feature | 描述 |  
 | -- | -- | 
 | [查找当地企业和位置](quickstarts/local-quickstart.md) | 必应当地企业搜索 API 通过查询获取本地化的结果。 结果包括企业网站的 URL 和显示文本、电话号码以及地理位置，包括：GPS 坐标、城市、街道地址 |  
 | [使用地理边界筛选当地结果](specify-geographic-search.md) | 添加坐标作为搜索参数，以将结果限制到由圆形区域或方框指定的特定地理区域。 | 

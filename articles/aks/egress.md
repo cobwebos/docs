@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: aeffe172fd422f18e2828c5274e9a2ed13cc546a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 6612d801804cdd1e092b50977230f24b378e64ba
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103354"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407130"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的出口流量使用公用静态 IP 地址
 
@@ -24,7 +24,7 @@ ms.locfileid: "55103354"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+您还需要 Azure CLI 版本 2.0.59 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="egress-traffic-overview"></a>出口流量概述
 
@@ -36,7 +36,7 @@ AKS 群集的出口流量遵循 [Azure 负载均衡器约定][outbound-connectio
 
 创建静态公用 IP 地址以用于 AKS 时，必须在节点资源组中创建 IP 地址资源。 使用 [az aks show][az-aks-show] 命令获取资源组名称并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取名为 myResourceGroup 的资源组中 AKS 群集名称 myAKSCluster 的节点资源组：
 
-```azurecli
+```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
@@ -44,7 +44,7 @@ MC_myResourceGroup_myAKSCluster_eastus
 
 现在，使用 [az network public ip create][az-network-public-ip-create] 命令创建静态公用 IP 地址。 指定上一命令中获取的节点资源组名称，然后指定 IP 地址资源的名称，如 myAKSPublicIP：
 
-```azurecli
+```azurecli-interactive
 az network public-ip create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --name myAKSPublicIP \
@@ -67,7 +67,7 @@ az network public-ip create \
 
 稍后可以使用 [az network public-ip list][az-network-public-ip-list] 命令获取公用 IP 地址。 指定节点资源组的名称，然后查询 ipAddress，如以下示例中所示：
 
-```azurecli
+```azurecli-interactive
 $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
 
 40.121.183.52
@@ -104,7 +104,7 @@ kubectl apply -f egress-service.yaml
 启动并附加到基本 Debian pod：
 
 ```console
-kubectl run -it --rm aks-ip --image=debian
+kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 ```
 
 若要从容器中访问网站，请使用 `apt-get` 将 `curl` 安装到容器。
@@ -118,7 +118,7 @@ apt-get update && apt-get install curl -y
 ```console
 $ curl -s checkip.dyndns.org
 
-<html><head><title>Current IP Check</title></head><body>Current IP Address: 23.101.128.81</body></html>
+<html><head><title>Current IP Check</title></head><body>Current IP Address: 40.121.183.52</body></html>
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 8a839d33d66ed434fe04b2c0df742606c11dff2c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c8c907b26d8ffbcf50b8b03376fec32723d171c6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217932"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779700"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
@@ -33,9 +33,9 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-要开始使用 Azure 媒体服务，应该具备以下条件：
+若要开始使用 Azure 媒体服务，应该具备以下条件：
 
 * 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
@@ -46,7 +46,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 ## <a name="sdks-and-tools"></a>SDK 和工具
 
-要构建媒体服务解决方案，可以使用：
+若要构建媒体服务解决方案，可以使用：
 
 * [媒体服务 REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 可用的客户端 SDK 之一：
@@ -77,9 +77,9 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 ## <a name="service-level-agreement-sla"></a>服务级别协议 (SLA)
 
 * 对于媒体服务编码，我们保证 REST API 事务可实现 99.9% 的可用性。
-* 如果客户购买了标准或高级流式处理终结点，则对于流式处理，我们以 99.9% 的可用性保证成功处理现有媒体内容的请求。
+* 对于流式处理，如果用户购买了标准或高级流式处理终结点，则在其请求现有媒体内容时，我们会成功处理该请求，确保可用性达到 99.9%。
 * 对于实时频道，我们保证运行中的频道在至少 99.9% 的时间都能建立外部连接。
-* 对于内容保护，我们保证会在至少 99.9% 的时间成功满足密钥请求。
+* 对于内容保护，我们保证至少 99.9% 的时间内将成功完成关键请求。
 * 对于索引器，我们将使用编码预留单位在 99.9% 的时间成功处理索引器任务请求。
 
 有关详细信息，请参阅 [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/)。

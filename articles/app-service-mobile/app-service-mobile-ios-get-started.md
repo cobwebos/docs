@@ -11,15 +11,15 @@ ms.service: app-service-mobile
 ms.workload: na
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 9809b51f1279c99de69cd1c219ffc57351ff21ef
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: d0d6a3d9da2768c2d7b04bd9c4a7c24fba9eb65e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41918589"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781674"
 ---
 # <a name="create-an-ios-app"></a>创建 iOS 应用
 
@@ -31,15 +31,15 @@ ms.locfileid: "41918589"
 
 若要完成本教程，需要一台 Mac 和 [一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)
 
-## <a name="step-i-create-a-new-azure-mobile-app-backend"></a>步骤 I：创建新的 Azure 移动应用后端
+## <a name="step-i-create-a-new-azure-mobile-app-backend"></a>步骤 i:创建新的 Azure 移动应用后端
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="step-ii-configure-the-backend-project"></a>步骤 II：配置后端项目
+## <a name="step-ii-configure-the-backend-project"></a>步骤 II:配置后端项目
 
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="step-iii-download-and-run-the-ios-app"></a>步骤 III：下载并运行 iOS 应用
+## <a name="step-iii-download-and-run-the-ios-app"></a>步骤 III:下载并运行 iOS 应用程序
 
 [!INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 

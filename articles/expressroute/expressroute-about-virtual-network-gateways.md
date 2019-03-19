@@ -5,18 +5,20 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: dcae78e507597ae2b7f79cc1d6cbb326ee535696
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d9c607114d6c6c56c25303a88dcc11f4ab804eb4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076587"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404326"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>关于 ExpressRoute 的虚拟网络网关
 虚拟网络网关用于在 Azure 虚拟网络和本地位置之间发送网络流量。 可以使用虚拟网络网关发送 ExpressRoute 流量或 VPN 流量。 本文重点介绍 ExpressRoute 虚拟网络网关，并且包含了有关 SKU、按 SKU 预估的性能和网关类型的信息。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="gateway-types"></a>网关类型
 
@@ -31,7 +33,7 @@ ms.locfileid: "53076587"
 ## <a name="gwsku"></a>网关 SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-如果想要将网关升级为功能更强大的网关 SKU，在大多数情况下，可以使用“Resize-AzureRmVirtualNetworkGateway”PowerShell cmdlet。 此方法适用于升级到 Standard 和 HighPerformance SKU。 但是，若要升级到 UltraPerformance SKU，需要重新创建网关。 重新创建网关会导致停机。
+如果你想要升级到更强大的网关 SKU 网关，可以在大多数情况下使用重设大小 AzVirtualNetworkGateway PowerShell cmdlet。 此方法适用于升级到 Standard 和 HighPerformance SKU。 但是，若要升级到 UltraPerformance SKU，需要重新创建网关。 重新创建网关会导致停机。
 
 ### <a name="aggthroughput"></a>预估性能（按网关 SKU）
 下表显示网关类型和估计性能。 此表适用于 Resource Manager 与经典部署模型。
@@ -62,7 +64,7 @@ ms.locfileid: "53076587"
 
 | **经典** | **资源管理器** |
 | --- | --- |
-| [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network#networking) |
+| [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>后续步骤

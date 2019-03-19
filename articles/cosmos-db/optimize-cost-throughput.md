@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 32c0ee4764c7c2b541428c63857286a45a09a634
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: e4d4d15ebb8200f16be8953e955b2e793be03c3a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733110"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452176"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
 
@@ -113,7 +113,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="optimize-by-changing-indexing-policy"></a>通过更改索引策略进行优化 
 
-默认情况下，Azure Cosmos DB 自动为每条记录的每个属性编制索引。 这是为了简化开发，并确保跨许多不同类型的即席查询具有优异的性能。 如果你的大型记录包含数千个属性，购买吞吐量来为每个属性编制索引的做法可能并不有效，尤其是只针对其中的 10 个或 20 个属性运行查询时。 在接近于能够控制特定的工作负荷时，我们的指导原则是优化索引策略。 在[此处](indexing-policies.md)可以找到有关 Azure Cosmos DB 索引策略的完整详细信息。 
+默认情况下，Azure Cosmos DB 自动为每条记录的每个属性编制索引。 这是为了简化开发，并确保跨许多不同类型的即席查询的优异的性能。 如果你的大型记录包含数千个属性，购买吞吐量来为每个属性编制索引的做法可能并不有效，尤其是只针对其中的 10 个或 20 个属性运行查询时。 在接近于能够控制特定的工作负荷时，我们的指导原则是优化索引策略。 在[此处](indexing-policies.md)可以找到有关 Azure Cosmos DB 索引策略的完整详细信息。 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>监视预配的吞吐量和消耗的吞吐量 
 
@@ -159,7 +159,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 2. 有一种方法可以估算应用程序所需的预留吞吐量：在针对应用程序所用的代表性 Azure Cosmos 容器或数据库运行典型操作时，记录与之相关的请求单位 (RU) 费用，然后估算预计每秒会执行的操作数目。 同时请务必测量并包含典型查询及其用量。 若要了解如何以编程方式或使用门户估算查询的 RU 成本，请参阅[优化查询成本](online-backup-and-restore.md)。 
 
-3. 获取操作及其 RU 成本的另一种方法是启用 Log Analytics，它会提供操作/持续时间的细目以及请求费用。 Azure Cosmos DB 提供每个操作的请求费用，因此，可以存储响应中的每笔操作费用，然后将其用于分析。 
+3. 另一种方法来获取 Ru 中的操作以及它们的成本是通过启用 Azure Monitor 日志，这将为你提供的操作/持续时间和请求费用细目。 Azure Cosmos DB 提供每个操作的请求费用，因此，可以存储响应中的每笔操作费用，然后将其用于分析。 
 
 4. 可按需弹性扩展和缩减预配的吞吐量，以适应工作负荷的需要。 
 

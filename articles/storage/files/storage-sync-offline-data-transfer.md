@@ -1,93 +1,90 @@
 ---
-title: 为向 Azure 文件同步进行脱机引入使用 Data Box 及其他方法。
-description: 启用同步兼容批量迁移支持的进程和最佳做法。
+title: 使用 Azure Data Box 和其他方法将数据迁移到 Azure 文件同步
+description: 将 Azure 文件同步与兼容的方式大容量数据迁移。
 services: storage
 author: fauhse
 ms.service: storage
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: fauhse
-ms.component: files
-ms.openlocfilehash: a184e0563d1ad26671c38cabe07f42d97cbe2885
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.subservice: files
+ms.openlocfilehash: 3b286bbe2c246345bf6acd84a4fc0c400451c706
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56212333"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445341"
 ---
-# <a name="migrate-to-azure-file-sync"></a>迁移到 Azure 文件同步
-可通过以下几个选项迁移到 Azure 文件同步：
+# <a name="migrate-bulk-data-to-azure-file-sync"></a>将大容量数据迁移到 Azure 文件同步
+两种方式，可以将大容量数据迁移到 Azure 文件同步：
 
-### <a name="uploading-files-via-azure-file-sync"></a>通过 Azure 文件同步上传文件
-最简单的选项是将文件本地移动到 Windows Server 2012 R2 或更高版本，然后安装 Azure 文件同步代理。 配置同步后，文件将从服务器上传。 目前所有客户的平均上传速度为每 2 天大约 1 TB。
-请考虑通过[带宽限制计划](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)确保服务器在数据中心内的状态良好。
+* **使用 Azure 文件同步上传文件。** 这是最简单方法。 将文件本地到 Windows Server 2012 R2 或更高版本，移动并安装 Azure 文件同步代理。 设置在同步后，将从服务器上传文件。 （我们的客户当前遇到有关每隔两天的 1 TiB 平均上传的速度。）若要确保你的服务器不会使用太多带宽为你的数据中心，你可能想要将设置[带宽限制计划](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)。
+* **传输文件脱机。** 如果你没有足够的带宽，可能无法在合理的时间内将文件上载到 Azure。 面临的挑战是整个组文件的初始同步。 若要解决这一挑战，使用脱机批量迁移工具如[Azure Data Box 系列](https://azure.microsoft.com/services/storage/databox)。 
 
-### <a name="offline-bulk-transfer"></a>脱机批量传输
-上传肯定是最简单的选择，而如果可用带宽无法在合理的时间内将文件同步到 Azure，它可能就无效。 这里要克服的难题是整个文件集的初始同步。 随后，Azure 文件同步将仅在命名空间中发生更改时迁移这些更改，占用的带宽就低得多。
-使用脱机批量迁移工具（例如 Azure [Data Box 系列](https://azure.microsoft.com/services/storage/databox)工具）可解决初始上传这一项难题。 文本接下来重点介绍以兼容 Azure 文件同步的方式执行脱机迁移的进程。 还将介绍有助于避免文件冲突并在启用同步后保留文件和文件夹 ACL 及时间戳的最佳做法。
+本文介绍如何将迁移脱机文件是 Azure 文件同步与兼容的方式。按照这些说明进行操作以避免文件冲突并保留文件和文件夹的访问控制列表 (Acl) 和时间戳后启用同步。
 
-### <a name="online-migration-tools"></a>联机迁移工具
-下面概述的过程并非只适用于 Data Box。 它适用于任何脱机迁移工具（如 Data Box）或联机工具（如 AzCopy、Robocopy 或第三方工具和服务）。 无论采用何种方法来解决初始上传这一个难题，按照下面列出的步骤以兼容同步的方式使用这些工具都很重要。
+## <a name="online-migration-tools"></a>联机迁移工具
+不仅为数据框中，还为其他脱机迁移工具在此文章的工作原理中介绍的过程。 它还适用于 AzCopy、 Robocopy 或合作伙伴工具和服务等联机工具。 但是克服初始上传的挑战，请按照本文适用于 Azure 文件同步的方式使用这些工具中的步骤。
 
 
-## <a name="offline-data-transfer-benefits"></a>脱机数据传输的好处
-使用 Data Box 进行脱机迁移的主要益处如下：
+## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>使用一种工具来将脱机数据传输的优点
+下面是使用传输工具如 Data Box 进行脱机迁移的主要优势：
 
-- 通过脱机批量传输过程（例如 Data Box）将文件迁移到 Azure 时，你不必通过网络从服务器上传所有文件。 对于大命名空间，这可能意味着可以节省大量网络带宽和时间。
-- 使用 Azure 文件同步时，无论使用何种传输方式（例如 Data Box、Azure 导入），实时服务器均只上载将数据传送到 Azure 后已更改的文件。
-- Azure 文件同步确保也同步了文件和文件夹 ACL，即使脱机批量迁移产品不传输 ACL。
-- 使用 Azure Data Box 和 Azure 文件同步时，故障时间为零。 使用 Data Box 将数据传输到 Azure 可有效利用网络带宽，同时确保文件保真。 只上传发送 Data Box 以来已更改的文件还可以让命名空间保持最新。
+- 您无需通过网络上载的所有文件。 对于大命名空间，此工具可以节省大量的网络带宽和时间。
+- 当你使用 Azure 文件同步时，无论哪种传输工具使用 （Data Box，Azure 导入/导出服务等），实时服务器上载更改后将数据移到 Azure 的文件。
+- Azure 文件同步同步文件和文件夹的 Acl，即使脱机批量迁移工具不会传输 Acl。
+- 数据框和 Azure 文件同步要求没有停机时间。 当您使用 Data Box 将数据传输到 Azure 时，您有效地使用网络带宽和保留的文件保真度。 也将保留你的命名空间保持最新的上传文件的更改后将数据移到 Azure。
 
-## <a name="plan-your-offline-data-transfer"></a>计划脱机数据传输
-在开始之前，请查看以下信息：
+## <a name="prerequisites-for-the-offline-data-transfer"></a>脱机数据传输的先决条件
+脱机数据传输开始之前：
 
-- 先完成向一个或多个 Azure 文件共享的批量迁移，再启用与 Azure 文件同步的同步。
-- 如果你打算使用 Data Box 进行批量迁移：请查看 [Data Box 的部署先决条件](../../databox/data-box-deploy-ordered.md#prerequisites)。
-- 规划最终的 Azure 文件同步拓扑：[规划 Azure 文件同步部署](storage-sync-files-planning.md)
-- 选择将保存要与其同步的文件共享的 Azure 存储帐户。 确保批量迁移发生在同一存储帐户中的临时暂存共享中。 批量迁移只能通过使用驻留在同一存储帐户中的最终共享和暂存共享启用。
-- 仅在创建与服务器位置的新同步关系时，才能使用批量迁移。 无法使用现有同步关系启用批量迁移。
+- 启用与 Azure 文件同步的同步之前，将大容量数据迁移到一个或多个 Azure 文件共享。
+- 如果您计划使用 Data Box 进行大容量迁移，请查看[部署先决条件的数据框](../../databox/data-box-deploy-ordered.md#prerequisites)。
+- 规划最终 Azure 文件同步拓扑。 有关详细信息，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)。
+- 选择将包含你想要与其同步的文件共享的 Azure 存储帐户。 将大容量数据迁移到位于相同的存储帐户或帐户中的临时过渡共享。 可以使用仅在最后一个共享和暂存共享相同的存储帐户中。
+- 与服务器位置创建新的同步关系。 不能使用现有的同步关系将大容量数据迁移。
 
-## <a name="offline-data-transfer-process"></a>脱机数据传输过程
-本部分介绍以与 Azure Data Box 等批量迁移工具兼容的方式设置 Azure 文件同步的过程。
+## <a name="process-for-offline-data-transfer"></a>脱机数据传输的过程
+下面介绍了如何设置 Azure 文件同步与 Azure Data Box 等的大容量迁移工具兼容的方式：
 
-![该过程的直观步骤（下一段中也对这些步骤作出了详细说明）](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
+![关系图显示了如何设置 Azure 文件同步](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
 
 | 步骤 | 详细信息 |
 |---|---------------------------------------------------------------------------------------|
-| ![过程步骤 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [订购 Data Box](../../databox/data-box-deploy-ordered.md)。 [Data Box 系列中有几个产品/服务](https://azure.microsoft.com/services/storage/databox/data)可满足你的需求。 接收 Data Box 并按照 Data Box [文档复制数据](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)。 请确保将数据复制到 Data Box 上的此 UNC 路径：`\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>`其中 `ShareName` 是暂存共享的名称。 将 Data Box 发送回 Azure。 |
-| ![过程步骤 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 等待文件显示在指定为临时暂存共享的 Azure 文件共享中。 切勿启用向这些共享同步！ |
-| ![过程步骤 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | 为 Data Box 为你创建的每个文件共享创建一个空的新共享。 确保此新共享与 Data Box 共享位于同一存储帐户中。 [如何创建新的 Azure 文件共享](storage-how-to-create-file-share.md)。 |
-| ![过程步骤 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | 在存储同步服务中[创建同步组](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)，并将空共享作为云终结点引用。 对每个 Data Box 文件共享重复此步骤。 查看[部署 Azure 文件同步](storage-sync-files-deployment-guide.md)指南，并按照设置 Azure 文件同步所需的步骤进行操作。 |
-| ![过程步骤 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [将实时服务器目录添加为服务器终结点](storage-sync-files-deployment-guide.md#create-a-server-endpoint)。 在此过程中指定已将文件移动到 Azure 并引用暂存共享。 可以根据需要启用或禁用云分层。 在实时服务器上创建服务器终结点时，需要引用暂存共享。 在新服务器终结点边栏选项卡中启用“脱机数据传输”（见下图），并引用必须与云终结点位于同一存储帐户中的暂存共享。 可用共享列表按存储帐户和尚未同步的共享进行筛选。 |
+| ![步骤 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [订购 Data Box](../../databox/data-box-deploy-ordered.md)。 Data Box 系列产品/服务[多个产品](https://azure.microsoft.com/services/storage/databox/data)以满足你的需求。 在收到数据框中，请遵循其[文档，以将数据复制](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)到 Data Box 上此 UNC 路径：*\\<DeviceIPAddres>\<StorageAccountName_AzFile >\<共享名 >*。 在这里， *ShareName*是临时共享的名称。 将 Data Box 发送回 Azure。 |
+| ![步骤 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 等待，直到你的文件显示在您选择作为临时过渡共享的 Azure 文件共享中。 *不要启用同步到这些共享。* |
+| ![步骤 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | 创建新的空共享的数据框为你创建的每个文件共享。 Data Box 共享同一个存储帐户应为此新共享。 [如何创建新的 Azure 文件共享](storage-how-to-create-file-share.md)。 |
+| ![步骤 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [创建同步组](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)存储同步服务中。 作为云终结点引用的空共享。 对每个 Data Box 文件共享重复此步骤。 [设置 Azure 文件同步](storage-sync-files-deployment-guide.md)。 |
+| ![步骤 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [将实时服务器目录添加为服务器终结点](storage-sync-files-deployment-guide.md#create-a-server-endpoint)。 在过程中，指定文件移动到 Azure，并引用临时共享。 可以启用或禁用云分层根据需要。 在实时服务器上创建服务器终结点，来引用该临时共享。 上**添加服务器终结点**边栏选项卡下**脱机数据传输**，选择**已启用**，然后选择必须与在云中相同的存储帐户中的临时共享终结点。 在这里，由存储帐户并不已同步的共享筛选的可用共享列表。 |
 
-![直观呈现创建新服务器终结点时启用脱机数据传输的 Azure 门户用户界面。](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
+![显示如何创建新的服务器终结点时启用脱机数据传输的 Azure 门户用户界面的屏幕截图](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
 
 ## <a name="syncing-the-share"></a>同步共享
-同步在创建服务器终结点后开始。 对于服务器上具有的每个文件，同步将确定它是否也在 Data Box 存放文件的暂存共享中。如果是，同步将从暂存共享复制该文件，而不是从服务器上传该文件。 如果暂存共享中没有该文件，或者本地服务器上有较新版本，则同步将从本地服务器上传该文件。
+创建服务器终结点后，将启动同步。 同步过程确定是否在服务器上的每个文件也存在于其中 Data Box 存入文件的临时共享。 如果文件不存在同步过程将从临时共享，而无需将其上传从服务器复制文件。 如果文件不存在的临时共享中，或本地服务器上可用的较新版本，同步过程将从本地服务器将文件上传。
 
 > [!IMPORTANT]
-> 只能在创建服务器终结点期间启用批量迁移模式。 一旦建立了服务器终结点，目前就无法将批量迁移的数据从已在同步的服务器集成到命名空间中。
+> 仅当要创建服务器终结点时，可以启用大容量迁移模式。 建立服务器终结点后，您不能将大容量迁移将数据从已同步服务器集成到命名空间。
 
 ## <a name="acls-and-timestamps-on-files-and-folders"></a>文件和文件夹上的 ACL 和时间戳
-Azure 文件同步将确保从实时服务器同步文件和文件夹 ACL，即使所用的批量迁移工具最初未传输 ACL。 也就是说，暂存共享可以不包含文件和文件夹上的任何 ACL。 如果在创建新服务器终结点时启用脱机数据迁移功能，将在此时为服务器上的所有文件同步 ACL。 也将同步创建时间和修改时间这两个时间戳。
+Azure 文件同步可确保即使在您使用的大容量迁移工具最初未传输 Acl，从实时服务器同步文件和文件夹的 Acl。 正因为如此，暂存共享不需要包含任何文件和文件夹的 Acl。 创建新的服务器终结点启用了脱机数据迁移功能，在服务器上同步所有文件 Acl。 创建新的和修改时间戳还会同步。
 
 ## <a name="shape-of-the-namespace"></a>命名空间的形状
-命名空间的形状取决于启用同步时服务器上的内容。 如果于 Data Box 执行快照和迁移之后在本地服务器上删除了文件，则不会将这些文件放入实时同步命名空间。 它们仍在暂存共享中，但不会复制它们。 同步根据实时服务器保留命名空间时，这就是预期的行为。 Data Box 快照只是高效复制文件的基础，不确保实时命名空间的形状。
+启用同步时，服务器的内容确定命名空间的形状。 如果 Data Box 快照和迁移完成后，将从本地服务器中删除文件，这些文件不将移到实时、 可同步命名空间。 它们都保留在暂存共享，但它们不会复制。 这是必需的因为同步将保持活动状态的服务器根据命名空间。 Data Box*快照*是只是临时地高效的文件复制。 它不是实时的命名空间的形状的颁发机构。
 
-## <a name="finishing-bulk-migration-and-clean-up"></a>完成批量迁移和清理
-下面的屏幕截图显示了 Azure 门户中的服务器终结点属性边栏选项卡。 可在脱机数据传输部分中查看进程的状态。 它将显示“正在进行中”或“已完成”。
+## <a name="cleaning-up-after-bulk-migration"></a>批量迁移后进行清理 
+当服务器完成它的命名空间的初始同步时，Data Box 批量迁移文件使用暂存文件共享。 上**服务器终结点属性**边栏选项卡在 Azure 门户中，在**脱机数据传输**部分中，状态将更改从**正在进行中**到**已完成**. 
 
-服务器在完成整个命名空间的初始同步后，对含 Data Box 批量迁移文件的暂存文件共享的使用就已经完成了。 观察状态更改为“完成”的脱机数据传输的服务器终结点属性。 此时，你可以清理暂存共享以节省成本：
+![服务器终结点属性边栏选项卡中的脱机数据传输的状态和禁用控件的位置的屏幕截图](media/storage-sync-files-offline-data-transfer/data-box-integration-3-444.png)
 
-1. 状态为“已完成”时，点击服务器终结点属性中的“禁用脱机数据传输”。
-2. 请考虑删除暂存共享以节省成本。 暂存共享不太可能包含文件和文件夹 ACL，因此其使用受限。 若要即时备份，则请创建[正在同步的 Azure 文件共享的真实快照](storage-snapshots-files.md)。 你可以[启用 Azure 备份以按计划拍摄快照]( ../../backup/backup-azure-files.md)。
+现在，你可以清理临时共享以节约成本：
 
-![直观显示脱机数据传输状态和禁用控件所在的服务终结点属性的 Azure 门户用户界面。](media/storage-sync-files-offline-data-transfer/data-box-integration-3-444.png)
+1. 上**服务器终结点属性**边栏选项卡上，当状态为**Completed**，选择**禁用脱机数据传输**。
+2. 请考虑删除暂存的共享来节省成本。 暂存共享可能不包含文件和文件夹的 Acl，因此它不是很有用。 用于备份的时间点目的创建真正[同步的 Azure 文件共享的快照](storage-snapshots-files.md)。 你可以[设置 Azure 备份来创建快照]( ../../backup/backup-azure-files.md)按计划。
 
-应仅在状态为“已完成”或者因配置错误而确实希望终止时禁用此模式。 如果在合法部署过程中禁用该模式，即使暂存共享仍然可用，系统也将开始从服务器上传文件。
+仅当状态时禁用脱机数据传输模式**已完成**或当你想要取消由于配置不正确。 如果在部署过程中禁用模式，将开始即使暂存共享仍可从服务器上传文件。
 
 > [!IMPORTANT]
-> 禁用脱机数据传输后，即使批量迁移中的暂存共享仍可用，也无法再次启用它。
+> 禁用脱机数据传输模式后，您不能再次启用它，即使在大容量迁移的临时共享仍可用。
 
 ## <a name="next-steps"></a>后续步骤
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)

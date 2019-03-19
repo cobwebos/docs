@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a8cfb39c26813b605d69fb3a2b3057ec2b0d897
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e68175471b24c48f23cc48cff9d0b47c937f588a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217456"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217183"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 
@@ -30,7 +30,7 @@ ms.locfileid: "56217456"
 
 下表介绍了多重身份验证的三个版本之间的差别：
 
-| 版本 | 说明 |
+| 版本 | 描述 |
 | --- | --- |
 | 适用于 Office 365 的多重身份验证 <br> Microsoft 365 商业版 |此版本专门与 Office 365 应用程序配合使用，可以从 Office 365 或 Microsoft 365 门户进行管理。 管理员可以[使用双重验证来保护 Office 365 资源](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)。 此版本是 Office 365 或 Microsoft 365 商业版订阅的一部分。 |
 | 面向 Azure AD 管理员的多重身份验证 | Azure AD 租户中被分配了 Azure AD 全局管理员角色的用户可以免费启用双重验证。|
@@ -65,6 +65,9 @@ ms.locfileid: "56217456"
 | 受信任的 IP | | |● |
 | 记住受信任的设备的 MFA |● |● |● |
 | 适用于本地应用程序的 MFA | | |● |
+
+> [!IMPORTANT]
+> 开始在 2019 年 3 月中的电话呼叫选项将不能向免费/试用 Azure AD 租户中用户的 MFA 和 SSPR 的用户。 此更改不会影响短信。 电话呼叫将继续可供用户在付费 Azure AD 租户。 此更改只会影响免费/试用 Azure AD 租户。
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>如何为 Azure AD 管理员启用 Azure 多重身份验证
 

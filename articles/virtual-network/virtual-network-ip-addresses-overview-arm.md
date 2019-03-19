@@ -7,17 +7,17 @@ documentationcenter: na
 author: jimdial
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 03/05/2019
 ms.author: jdial
-ms.openlocfilehash: a71870115c3ea5e64c8b365d6c4aa64920bc6ca3
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 9185bfea8bddff52f6183ac3e5395cdbc0b73bb1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675035"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860765"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 
@@ -71,7 +71,7 @@ ms.locfileid: "56675035"
 标准 SKU 公共 IP 地址为：
 
 - 始终使用静态分配方法。
-- 具有可调整的入站发起流和出站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟。
+- 具有可调整的入站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟，出站发起流的空闲超时固定为 4 分钟。
 - 默认情况下为安全的，并且对入站流量关闭。 必须使用[网络安全组](security-overview.md#network-security-groups)将允许的入站流量显式列入允许列表中。
 - 分配到网络接口、标准公共负载均衡器、应用程序网关或 VPN 网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 - 默认情况下是区域冗余的，也可以选择为区域性的（可以创建为区域性的，并且在特定的可用性区域中保证可靠性）。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
@@ -121,14 +121,14 @@ ms.locfileid: "56675035"
 
 ### <a name="application-gateways"></a>应用程序网关数
 
-将公共 IP 地址分配给网关的**前端**配置可以将其与 Azure [应用程序网关](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)相关联。 此公共 IP 地址充当负载均衡型 VIP。 只能将动态基本公共 IP 地址分配给应用程序网关 V1 前端配置，并且只能将静态、基本或标准 SKU 地址分配给 V2 前端配置。
+将公共 IP 地址分配给网关的**前端**配置可以将其与 Azure [应用程序网关](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)相关联。 此公共 IP 地址充当负载均衡型 VIP。 您只能将分配*动态*给应用程序网关 V1 前端配置时，基本公共 IP 地址和仅*静态*到 V2 前端配置的标准 SKU 地址。
 
 ### <a name="at-a-glance"></a>概览
 下表显示了将公共 IP 地址关联到顶级资源时所依据的特定属性，以及能够使用的可能分配方法（动态或静态）。
 
 | 顶级资源 | IP 地址关联 | 动态 | 静态 |
 | --- | --- | --- | --- |
-| 虚拟机 |网络接口 |是 |是 |
+| 虚拟机 |Linux |是 |是 |
 | 面向 Internet 的负载均衡器 |前端配置 |是 |是 |
 | VPN 网关 |网关 IP 配置 |是 |是 |
 | 应用程序网关 |前端配置 |是（仅限 V1） |是（仅限 V2） |
@@ -176,7 +176,7 @@ ms.locfileid: "56675035"
 
 | 顶级资源 | IP 地址关联 | 动态 | 静态 |
 | --- | --- | --- | --- |
-| 虚拟机 |网络接口 |是 |是 |
+| 虚拟机 |Linux |是 |是 |
 | 负载均衡 |前端配置 |是 |是 |
 | 应用程序网关 |前端配置 |是 |是 |
 

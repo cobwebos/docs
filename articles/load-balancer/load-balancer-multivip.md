@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3036bbc74b4ed8ee92e10f952252889c4c12f845
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: bf5721e206316a4ce576253743e9ac65de47094a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353934"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194038"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>为云服务配置多个 VIP
 
@@ -52,7 +52,7 @@ ms.locfileid: "54353934"
 这些限制都是暂时性的，以后随时可能更改。 请务必重新访问此页，以了解将来发生的更改。
 
 ## <a name="how-to-add-a-vip-to-a-cloud-service"></a>如何将 VIP 添加到云服务
-要将 VIP 添加到服务，请运行以下 PowerShell 命令：
+要将 VIP 添加到你的服务，请运行以下 PowerShell 命令：
 
 ```powershell
 Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
@@ -121,7 +121,7 @@ Get-AzureVM -ServiceName myService -Name myVM1 |
     Update-AzureVM
 ```
 
-该命令使用端口 *8080* 上的 *TCP* 创建一个终结点（该终结点将链接到端口 *80* 上名为 *Vip2* 的 VIP），并将它链接到名为 *myService* 的云服务中名为 *myVM1* 的 VM。
+该命令使用端口 *8080* 上的 *TCP* 创建一个终结点（该终结点链接到端口 *80* 上名为 *Vip2* 的 VIP），并将它链接到名为 *myService* 的云服务中名为 *myVM1* 的 VM。
 
 若要验证配置，请运行以下 PowerShell 命令：
 
@@ -172,7 +172,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 
 ## <a name="next-steps"></a>后续步骤
 
-[用于 Azure 负载均衡器的 Log Analytics](load-balancer-monitor-log.md)
+[为 Azure 负载均衡器的 azure Monitor 日志](load-balancer-monitor-log.md)
 
 [面向 Internet 的负载均衡器概述](load-balancer-internet-overview.md)
 

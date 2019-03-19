@@ -12,22 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b94136f063f9d4793ce4c8a03c17454df920af26
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.openlocfilehash: 1da3b71cbb809c92ba3228676f8a47235829b499
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117548"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309530"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 可以在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中自动配置[警报](../../azure-monitor/app/alerts.md)。
 
 此外，可以[将 webhook 设置为自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)。
 
 > [!NOTE]
 > 如果要同时创建资源和警报，请考虑[使用 Azure 资源管理器模板](powershell.md)。
->
->
 
 ## <a name="one-time-setup"></a>一次性设置
 如果之前尚未将 PowerShell 与 Azure 订阅结合使用：
@@ -42,15 +43,15 @@ ms.locfileid: "54117548"
 
 ```PowerShell
 
-    Add-AzureRmAccount
+    Add-AzAccount
 ```
 
 
 ## <a name="get-alerts"></a>获取警报
-    Get-AzureRmAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
+    Get-AzAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
 ## <a name="add-alert"></a>添加警报
-    Add-AzureRmMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
+    Add-AzMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
      -ResourceGroup "{GROUP NAME}" `
      -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
      -MetricName "{METRIC NAME}" `
@@ -69,7 +70,7 @@ ms.locfileid: "54117548"
 
 GUID 是订阅 ID（不是应用程序的检测密钥）。
 
-    Add-AzureRmMetricAlertRule -Name "slow responses" `
+    Add-AzMetricAlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
@@ -83,7 +84,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 ## <a name="example-2"></a>示例 2
 我在应用程序中使用 [TrackMetric()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) 报告名为“salesPerHour”的指标。 如果“salesPerHour”低于 100（平均值超出 24 小时），会向我的同事发送电子邮件。
 
-    Add-AzureRmMetricAlertRule -Name "poor sales" `
+    Add-AzMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
@@ -97,7 +98,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 同一规则可用于通过使用另一跟踪调用（如 TrackEvent 或 trackPageView）的[测量参数](../../azure-monitor/app/api-custom-events-metrics.md#properties)报告的指标。
 
 ## <a name="metric-names"></a>指标名称
-| 指标名称 | 屏幕名称 | Description |
+| 指标名称 | 屏幕名称 | 描述 |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |浏览器异常 |浏览器中所引发未捕获异常的计数。 |
 | `basicExceptionServer.count` |服务器异常 |应用所引发未经处理的异常的计数 |

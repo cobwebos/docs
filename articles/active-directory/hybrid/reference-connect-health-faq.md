@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b653ee16864f5076cdad9d1dbc33e63b175ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167582"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852947"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -55,7 +55,7 @@ ms.locfileid: "56167582"
 
 | 注册的代理数 | 所需的许可证数 | 示例监视配置 |
 | ------ | --------------- | --- |
-| 1 | 1 | 1 个 Azure AD Connect 服务器 |
+| 第 | 第 | 1 个 Azure AD Connect 服务器 |
 | 2 | 26| 1 个 Azure AD Connect 服务器和 1 个域控制器 |
 | 3 | 51 | 1 个 Active Directory 联合身份验证服务 (AD FS) 服务器、1 个 AD FS 代理和 1 个域控制器 |
 | 4 | 76 | 1 个 AD FS 服务器、1 个 AD FS 代理和 2 个域控制器 |
@@ -155,7 +155,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 此测试通常会失败，因为 Health 代理无法解析 AD FS 场名称。 如果 AD FS 服务器位于网络负载均衡器之后，并且请求从位于负载均平衡器后面的节点（而不是位于负载均衡器前面的常规客户端）启动，则可能会发生这种情况。 这可以通过更新位于“C:\Windows\System32\drivers\etc”下的“hosts”文件来修复，以包括 AD FS 服务器的 IP 地址或 AD FS 场名称（如 sts.contoso.com）的环回 IP 地址 (127.0.0.1)。 添加主机文件会使网络调用短路，从而使 Health 代理获得令牌。
 
-**问：我收到一封电子邮件，指示我的计算机没有应用最新的勒索攻击修补程序。** 我为什么会收到这个电子邮件？
+**问：我收到一封电子邮件，指示我的计算机不需要进行修正的最新的勒索软件攻击。** 我为什么会收到这个电子邮件？
 
 Azure AD Connect Health 服务会扫描其所监视的所有计算机，以确保已安装所需的修补程序。 如果至少有一台计算机未安装关键修补程序，则会向租户管理员发送此电子邮件。 以下逻辑用于做出此判断。
 1. 查找计算机上安装的所有修补程序。
@@ -192,6 +192,9 @@ CheckForMS17-010
 **问：为什么未生成 ADFS 审核？**
 
 请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的更多信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。
+
+**问：代理证书何时自动续订之前过期？**
+代理证书，将会自动续订**6 个月**之前其到期日期。 如果未续订，请确保是稳定的网络连接的代理。 重新启动代理服务或更新到最新版本还可能会解决此问题。
 
 
 ## <a name="related-links"></a>相关链接

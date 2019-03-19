@@ -9,19 +9,29 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 02/27/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 52e7fdf6de25300d4f78ee9822aca4ad83f646e9
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
-ms.translationtype: HT
+ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408419"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243613"
 ---
 # <a name="encoding-with-media-services"></a>使用媒体服务进行编码
 
-使用 Azure 媒体服务可以将高质量的数字媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，可能需要以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 本主题介绍如何使用媒体服务 v3 对内容进行编码。
+Azure 媒体服务，可将高质量的数字媒体文件编码为自适应比特率 MP4 文件，因此可在各种浏览器和设备上播放内容。 成功的媒体服务编码作业创建一个输出资产的一组自适应比特率 mp4 和流式处理配置文件。 配置文件包括.ism、.ismc、.mpi 和其他不应修改的文件。 完成编码作业后，可以充分利用[动态打包](dynamic-packaging-overview.md)和启动流式处理。
+
+若要在输出中进行视频播放的客户端可用的资产，则必须创建**流式处理定位符**和生成流 Url。 然后，你的客户端根据清单中指定的格式，它们具有选定的协议接收流。
+
+下图显示了按需流式处理与动态打包工作流。
+
+![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+
+本主题介绍如何使用媒体服务 v3 对内容进行编码。
+
+## <a name="transforms-and-jobs"></a>转换和作业
 
 若要使用媒体服务 v3 进行编码，需创建[转换](https://docs.microsoft.com/rest/api/media/transforms)和[作业](https://docs.microsoft.com/rest/api/media/jobs)。 转换用于定义编码设置和输出的配方，作业则是该配方的一个实例。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
@@ -60,9 +70,11 @@ ms.locfileid: "56408419"
 
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中缩放编码
 
-目前，客户需要使用 Azure 门户或媒体服务 v2 API 来设置 RU（如[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)中所述）。 
+若要缩放媒体处理，请参阅[使用 CLI 缩放](media-reserved-units-cli-how-to.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [转换和作业](transforms-jobs-concept.md)
+* [从 HTTPS URL 使用内置的预设编码](job-input-from-http-how-to.md)
+* [对本地文件使用内置的预设进行编码](job-input-from-local-file-how-to.md)
+* [生成自定义预设，以满足特定的方案或设备要求](customize-encoder-presets-how-to.md)
 * [使用媒体服务上传、编码和流式传输](stream-files-tutorial-with-api.md)

@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29cb7f6799556406c4c5def12b1367bfd581d06b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 56fda1110218910f8fbd8aa9597195f37444e01c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198569"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193309"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码哈希同步问题
 本主题提供解决密码哈希同步问题的步骤。 如果密码未按预期同步，请区分该密码是一部分用户的密码还是所有用户的密码。
@@ -225,7 +225,7 @@ ms.locfileid: "56198569"
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>未同步任何密码：手动排查问题的步骤
 按照下列步骤确定未同步任何密码的原因：
 
-1. 连接服务器是否处于[暂存模式](how-to-connect-sync-operations.md#staging-mode)？ 处于暂存模式的服务器不同步任何密码。
+1. 连接服务器是否处于[暂存模式](how-to-connect-sync-staging-server.md)？ 处于暂存模式的服务器不同步任何密码。
 
 2. 运行[获取密码同步设置的状态](#get-the-status-of-password-sync-settings)部分中的脚本。 这样就可以获得密码同步配置的概述。  
 

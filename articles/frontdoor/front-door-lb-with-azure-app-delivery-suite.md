@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 5403b5506a3758ede5ad06640335b873b6b9aa96
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: a89043f814bc97aeb081789e92d9e4488712a465
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820812"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439020"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>使用 Azure 的应用程序传送套件进行负载均衡
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Microsoft Azure 提供了多种全球和区域服务，用于管理网络流量的分布和负载均衡方式：流量管理器、Front Door 服务、应用程序网关和负载均衡器。  将这些服务与 Azure 的许多区域和分区体系结构一起使用，能够生成可靠且可缩放的高性能应用程序。
 
 ![应用程序传送套件 ][1]
@@ -59,7 +59,7 @@ Front Door 在 Microsoft 网络边缘终止 HTTP 请求，并主动进行探测�
 | 流量管理器 | Azure Front Door 服务 |
 | --------------- | ------------------------ |
 |**任何协议：** 流量管理器在 DNS 层运行，因此可以路由任何类型的网络流量，比如 HTTP、TCP、UDP 等。 | **HTTP 加速：** 在 Microsoft 网络边缘代理 Front Door 流量。  因此，HTTP(S) 请求在延迟和吞吐量方面有所改善，降低了 SSL 协商的延迟并使用热连接从 AFD 连接到应用程序。|
-|**本地路由：** 在 DNS 层进行路由，始终点到点地路由流量。  即使在自己的网络上使用流量管理器，从分公司路由到本地数据中心亦可采用一条直接的路径。 | **独立的可伸缩性：** Front Door 适用于 HTTP 请求，因此，可根据各个应用程序微服务的规则和运行状况，将路由到不同 URL 路径的请求路由到不同的后端/区域服务池（微服务）。|
+|**本地路由：** 在 DNS 层进行路由，始终点到点地路由流量。  从分支办公室路由到你本地数据中心可能需要直接的路径;甚至在您自己的网络上使用流量管理器。 | **独立的可伸缩性：** Front Door 适用于 HTTP 请求，因此，可根据各个应用程序微服务的规则和运行状况，将路由到不同 URL 路径的请求路由到不同的后端/区域服务池（微服务）。|
 |**计费形式：** 基于 DNS 的计费随用户数增加，适用于具有更多用户和更高稳定性的服务，从而为使用率较高的情况降低费用。 |**内联安全性：** Front Door 启用流量限速和 IP ACL 等规则，使你能在流量达到应用程序前保护后端。 
 
 </br>由于 Front Door 对 HTTP 工作负载具有的性能、可操作性和安全性优势，我们建议客户为其 HTTP 工作负载使用 Front Door。    流量管理器和 Front Door 可并行使用，为应用程序提供全部流量。 

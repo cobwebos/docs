@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: chris-lauren
 ms.author: clauren
-ms.date: 09/24/2018
+ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7f24e242168fc969d0f0d920dce0e6d9562a295
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 8dea667b15471accd4fc8b09d0ff1eb7aa5daed5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241829"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403679"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务管理、部署和监视模型
 
 本文介绍如何使用 Azure 机器学习服务来部署、管理和监视模型，以便不断改进它们。 可以在本地计算机上部署通过 Azure 机器学习训练的模型，也可从其他源进行部署。 
 
-下图演示了完整的部署工作流：[ ![Azure 机器学习的部署工作流](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
+下图演示了完整的部署工作流：[![为 Azure 机器学习部署工作流](media/concept-model-management-and-deployment/deployment-pipeline.png)](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 部署工作流包括以下步骤：
 1. 在 Azure 机器学习服务工作区中托管的注册表中**注册模型**
@@ -33,7 +33,7 @@ ms.locfileid: "55241829"
 
 每个步骤都可以单独执行，或者作为单个部署命令的一部分执行。 另外还可以将部署集成到 **CI/CD 工作流**中，如下图所示。
 
-[ ![“Azure 机器学习持续集成/持续部署 (CI/CD) 循环”](media/concept-model-management-and-deployment/model-ci-cd.png) ](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[![Azure 机器学习持续集成/持续部署 (CI/CD) 周期](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>步骤 1：注册模型
 
@@ -73,7 +73,7 @@ Azure 机器学习支持最常用的框架，但通常情况下，任何可以�
 
 Web 服务部署也可进行搜索。 例如，可以搜索特定模型或映像的所有部署。
 
-[ ![推断目标](media/concept-model-management-and-deployment/inferencing-targets.png) ](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![推断目标](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 可以将映像部署到云中的下述部署目标：
 
@@ -105,6 +105,6 @@ Web 服务部署也可进行搜索。 例如，可以搜索特定模型或映像
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解在使用 Azure 机器学习服务时，[部署模型的方式和位置](how-to-deploy-and-where.md)。
+详细了解在使用 Azure 机器学习服务时，[部署模型的方式和位置](how-to-deploy-and-where.md)。 有关部署的示例，请参阅[教程：部署 Azure 容器实例中的图像分类模型](tutorial-deploy-models-with-aml.md)。
 
 了解如何创建[使用部署为 Web 服务的模型](how-to-consume-web-service.md)的客户端应用程序和服务。

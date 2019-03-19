@@ -6,16 +6,16 @@ services: cognitive-services
 author: lewlu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 5eb198ecf76556e632c5f42bc22362b2f20f8916
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 95b339e8d7f2c5c63c30e002411152b50cece2a5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55771526"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448775"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>将人脸数据迁移到其他人脸订阅
 
@@ -23,7 +23,7 @@ ms.locfileid: "55771526"
 
 这种相同的迁移策略也适用于 LargePersonGroup 和 LargeFaceList 对象。 如果不熟悉本指南中的概念，请查看[术语表](../Glossary.md)中的相关概念定义。 本指南结合使用人脸 API .NET 客户端库与 C#。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 两个人脸 API 订阅密钥（一个包含现有数据，另一个是迁移目标）。 请按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明操作，订阅人脸 API 服务并获取密钥。
 - 对应于目标订阅的人脸 API 订阅 ID 字符串（位于 Azure 门户上的“概览”边栏选项卡中）。 
@@ -83,7 +83,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 
 ## <a name="retrieve-the-snapshot-id"></a>检索快照 ID
 
-由于快照拍摄方法是异步的，因此需要等待它完成（无法取消快照操作）。 在下面的代码中，`WaitForOperation` 方法监视异步调用，即每 100 毫秒检查一次状态。 当操作完成后，你便能检索操作 ID。 可以通过分析 `OperationLocation` 字段来获取 ID。 
+快照生成方法是异步的因此你将需要等待其完成 （不能取消操作的快照）。 在下面的代码中，`WaitForOperation` 方法监视异步调用，即每 100 毫秒检查一次状态。 当操作完成后，你便能检索操作 ID。 可以通过分析 `OperationLocation` 字段来获取 ID。 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);

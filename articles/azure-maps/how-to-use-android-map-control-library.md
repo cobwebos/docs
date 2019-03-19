@@ -1,6 +1,6 @@
 ---
-title: 如何使用 Azure Maps 中的 Android 地图控件 | Microsoft Docs
-description: 使用 Azure Maps 中的 Android 地图控件。
+title: 如何使用 Android 地图控件中 Azure Maps |Microsoft Docs
+description: Azure Maps 中的 Android 地图控件。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/12/2019
@@ -9,53 +9,53 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 57cc585d621c71872a4b7658c74f581c8998b245
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 15706addbe6b7f6310223978130158c792a47c89
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341073"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010661"
 ---
-# <a name="how-to-use-azure-maps-android-sdk"></a>如何使用 Azure Maps Android SDK
+# <a name="how-to-use-the-azure-maps-android-sdk"></a>如何使用 Azure Maps Android SDK
 
-Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将引导你完成安装 Azure Maps Android SDK、加载地图以及在地图上插入图钉的过程。
+Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将指导您完成以下过程安装 Azure Maps Android SDK、 加载映射中，并在代码图上放置一个 pin。
 
-## <a name="prerequisites-to-get-started"></a>开始之前的先决条件
+## <a name="prerequisites"></a>必备组件
 
-### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户 
+### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 
-若要遵循本指南中的步骤，首先需要参阅[管理帐户和密钥](how-to-manage-account-keys.md)以创建并管理采用 S1 定价层的帐户订阅。
+若要完成本文中的过程，必须先向[创建 Azure Maps 帐户](how-to-manage-account-keys.md)S1 定价层中。
 
 ### <a name="download-android-studio"></a>下载 Android Studio
 
-可以从 Google 免费下载 [Android Studio](https://developer.android.com/studio/)。 若要安装 Azure Maps Android SDK，首先需要下载 Android Studio，并创建一个包含空活动的项目。
+您需要下载 Android Studio 并创建一个项目具有空的活动，然后才能安装 Azure Maps Android SDK。 你可以[下载 Android Studio](https://developer.android.com/studio/)免费从 Google。 
 
 ## <a name="create-a-project-in-android-studio"></a>在 Android Studio 中创建项目
 
-需要创建一个包含空活动的新项目。 遵循以下步骤创建新的 Android Studio 项目：
+首先，需要使用空活动创建新项目。 完成这些步骤以创建 Android Studio 项目：
 
-1. 在“选择项目”下，选中“手机和平板电脑”作为运行应用程序的平台。
-2. 在平台下面单击“空活动”，然后单击“下一步”。
-3. 在“配置项目”下，选择 `API 21: Android 5.0.0 (Lollipop)` 作为最低要求的 SDK。 这是 Azure Maps Android SDK 支持的最低版本。
-4. 接受默认的 `Activity Name` 和 `Layout Name` 值，然后单击“完成”
+1. 下**选择你的项目**，选择**手机和平板电脑**。 你的应用程序将此窗体上运行。
+2. 上**手机和平板电脑**选项卡上，选择**空活动**，然后选择**下一步**。
+3. 在“配置项目”下，选择 `API 21: Android 5.0.0 (Lollipop)` 作为最低要求的 SDK。 这是 Azure Maps Android SDK 支持的最早版本。
+4. 接受默认值`Activity Name`并`Layout Name`，然后选择**完成**。
 
-安装 Android Studio 和创建新项目时如需更多帮助，请参阅 [Android Studio 文档](https://developer.android.com/studio/intro/)。
+请参阅[Android Studio 文档](https://developer.android.com/studio/intro/)有关的详细信息帮助安装 Android Studio 以及创建新的项目。
 
-![创建新项目](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![创建一个项目](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>设置虚拟设备
 
-Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发期间，虚拟设备可帮助你测试应用程序。 若要设置虚拟设备，请单击项目屏幕右上角的“Android 虚拟设备(AVD)管理器”图标。 然后单击“创建虚拟设备”按钮。 也可以通过工具栏中的“工具”>“Android”>“AVD 管理器”转到该管理器。 在“手机”类别中选择“Nexus 5X”，然后单击“下一步”。
+Android Studio 可让你在计算机上设置 Android 虚拟设备。 执行此操作可帮助您测试应用程序在开发过程。 若要设置虚拟设备，右上角的项目在屏幕上，选择 Android 虚拟设备 (AVD) 管理器图标，然后选择**创建虚拟设备**。 此外可以通过选择获取到 AVD 管理器**工具** > **Android** > **AVD 管理器**从工具栏中。 在中**手机**类别中，选择**Nexus 5 X**，然后选择**下一步**。
 
-在 [Android Studio 文档](https://developer.android.com/studio/run/managing-avds)中详细了解如何设置 AVD。
+您可以了解更多有关设置的 AVD [Android Studio 文档](https://developer.android.com/studio/run/managing-avds)。
 
 ![Android Emulator](./media/how-to-use-android-map-control-library/android-emulator.png)
 
-## <a name="install-azure-maps-android-sdk"></a>安装 Azure Maps Android SDK
+## <a name="install-the-azure-maps-android-sdk"></a>Azure Maps Android SDK 安装
 
-在继续生成应用程序之前，请遵循以下步骤安装 Azure Maps Android SDK。 
+构建您的应用程序的下一步是安装 Azure Maps Android SDK。 完成这些步骤以安装 SDK:
 
-1. 将以下内容添加到“build.gradle”文件中的存储库块“所有项目”。
+1. 将以下代码添加到**的所有项目**，**存储库**中阻止你**build.gradle**文件。
 
     ```
     maven {
@@ -63,9 +63,9 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发�
     }
     ```
 
-2. 更新 **app/build.gradle** 并在其中添加以下内容：
+2. 更新你**app/build.gradle**并向其添加以下代码：
 
-    1. 将以下内容添加到 Android 块：
+    1. 将以下代码添加到 Android 块：
 
         ```
         compileOptions {
@@ -73,13 +73,13 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发�
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    2. 更新依赖项块并在其中添加以下内容：
+    2. 更新你的依赖项的块，并向其添加以下代码：
 
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.1"
         ```
 
-3. 将以下内容添加到“AndroidManifest.xml”以设置权限
+3. 设置的权限通过添加以下 XML 到您**AndroidManifest.xml**文件：
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -90,7 +90,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发�
     </manifest>
     ```
 
-4. 编辑“res > layout > activity_main.xml”，使其如以下 XML 所示：
+4. 编辑**res** > **布局** > **activity_main.xml**使它看起来像此 XML:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -113,7 +113,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发�
     </FrameLayout>
     ```
 
-5. 编辑 **MainActivity.java** 以创建地图视图活动类。 编辑后，它应如以下类所示：
+5. 编辑 **MainActivity.java** 以创建地图视图活动类。 在编辑后，它应类似此类：
 
     ```java
     package com.example.myapplication;
@@ -187,21 +187,21 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 在开发�
 
 ## <a name="import-classes"></a>导入类
 
-完成上述步骤后，Android Studio 很有可能会针对代码中的某些文本发出警告。 若要解决这些警告，请导入 `MainActivity.java` 中当前引用的类。
+完成上述步骤后，你将可能获取警告 Android Studio 有关的一些代码。 若要解决这些警告，导入中引用的类`MainActivity.java`。
 
-可以按 `Alt`+`Enter`（在 Mac 上为 `Option`+`Return`）自动导入这些类。 
+您可以通过选择 Alt + Enter （选项 + 返回在 Mac 上） 会自动导入这些类。
 
-单击“运行‘应用’”按钮（或 Mac 上的 `Control`+`R`）生成应用程序。
+选择运行按钮，如以下图 （或按在 Mac 上的控件 + R），生成应用程序中所示。
 
 ![单击“运行”](./media/how-to-use-android-map-control-library/run-app.png)
 
-Android Studio 将花费几秒钟时间来生成应用程序。 生成完成后，可在 Android 仿真设备中测试应用程序。 将会看到下面所示的地图。
+Android Studio 中将需要几秒钟才能生成应用程序。 生成完成后，你可以测试应用程序中仿真的 Android 设备。 应看到类似如下的映射：
 
 ![Android 地图](./media/how-to-use-android-map-control-library/android-map.png)
 
 ## <a name="add-a-marker-to-the-map"></a>将标记添加到地图
 
-若要在地图中添加标记，请将 `mapView.getMapAsync()` 函数添加到 `MainActivity.java`。 最终的 `MainActivity.java` 应如下所示：
+若要将标记添加到您的映射，将添加`mapView.getMapAsync()`函数来`MainActivity.java`。 最后一个`MainActivity.java`代码应如下所示：
 
 ```java
 package com.example.myapplication;
@@ -288,6 +288,6 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-重新运行应用程序后，应会在地图上看到如下所示的标记。
+再次运行应用程序。 应在映射中，看到一个标记，如下所示：
 
 ![Android 地图图钉](./media/how-to-use-android-map-control-library/android-map-pin.png)

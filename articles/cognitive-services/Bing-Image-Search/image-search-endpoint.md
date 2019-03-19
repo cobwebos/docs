@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 03/04/2019
 ms.author: v-gedod
-ms.openlocfilehash: 5e5cf9fcf6f70449fef8237fc004332e36bcd3b4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: fcae25ea0ef3f48beac6c221a11ca8a91443f7ce
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860263"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336134"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>必应图像搜索 API 的终结点
 
 图像搜索 API 包括 3 个终结点。  终结点 1 基于查询返回来自 Web 的图像。 终结点 2 返回 [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse)。  终结点 3 返回热门图像。
+
 ## <a name="endpoints"></a>终结点
+
 若要使用必应 API 获取图像结果，请向以下某个终结点发送请求。 使用标头和 URL 参数来定义更多规范。
 
 **终结点 1：** 返回与 `?q=""` 定义的用户搜索查询相关的图像。

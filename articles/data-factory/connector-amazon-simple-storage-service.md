@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 16d0002ec8e42eec92895aaf582a8c2b3df2c3a6
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 5a3da4d890cd5bdffa5373d2e1319009609283f2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895255"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541632"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,7 +64,7 @@ Amazon S3 链接的服务支持以下属性：
 >如果从官方 Amazon S3 服务之外的兼容 S3 的存储复制数据，请指定自定义 S3 服务 URL。
 
 >[!NOTE]
->此连接器需要 IAM 帐户的访问密钥才能从 Amazon S3 复制数据。 不支持[临时安全凭据](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)。
+>此连接器需要 IAM 帐户的访问密钥才能从 Amazon S3 复制数据。 不支持[临时安全凭据](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)。
 >
 
 下面是一个示例：

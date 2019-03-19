@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: db13064c93381f87f82959ed3386abfc0a8e4593
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: c989e53113557219e13dd730ac43621d3824baac
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238656"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434753"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
 本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 使用本文中的信息可以帮助将代码模块化，从而同时提高代码的可重用性和易维护性。
@@ -193,7 +193,7 @@ FROM    t1
 GO
 ```
 
-在此阶段发生的唯一操作是创建存储过程，该存储过程使用 DDL 语句生成临时表 #stats_ddl。  如果此存储过程在会话中运行了不止一次，它会删除已存在的 #stats_ddl，以确保它不会失败。  但是，由于存储过程的末尾没有 `DROP TABLE`，当存储过程完成后，它将保留创建的表，以便能够在存储过程之外进行读取。  在 SQL 数据仓库中，与其他 SQL Server 数据库不同，有可能在创建临时表的过程外部使用该临时表。  可以在会话中的**任何位置**使用 SQL 数据仓库临时表。 这样可提高代码的模块化程度与易管理性，如以下示例所示：
+在此阶段，已发生的唯一操作是生成临时表 #stats_ddl，是使用 DDL 语句的存储过程的创建。  如果此存储过程在会话中运行了不止一次，它会删除已存在的 #stats_ddl，以确保它不会失败。  但是，由于存储过程的末尾没有 `DROP TABLE`，当存储过程完成后，它将保留创建的表，以便能够在存储过程之外进行读取。  在 SQL 数据仓库中，与其他 SQL Server 数据库不同，有可能在创建临时表的过程外部使用该临时表。  可以在会话中的**任何位置**使用 SQL 数据仓库临时表。 这样可提高代码的模块化程度与易管理性，如以下示例所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;

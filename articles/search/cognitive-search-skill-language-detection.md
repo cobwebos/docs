@@ -8,26 +8,28 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/25/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 088a147bbcf4f94209ce9faf62e14833a818408c
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: 605f4c639cfc8c0f9732f7347532e1bd7edc055f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411300"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404648"
 ---
 #   <a name="language-detection-cognitive-skill"></a>语言检测认知技能
 
-对于多达 120 种语言，语言检测技能会检测输入文本的语言，并报告在请求上提交的每个文档的单一语言代码。 语言代码配有表示分析长度的得分。 此技能使用认知服务中的[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)提供的机器学习模型。
+**语言检测**技能检测到的语言输入文本并报告在请求上提交的每个文档的单个语言代码。 语言代码配有表示分析长度的得分。 此技能使用认知服务中的[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)提供的机器学习模型。
 
 当需要提供文本的语言作为其他技能（例如，[情绪分析技能](cognitive-search-skill-sentiment.md)或[文本拆分技能](cognitive-search-skill-textsplit.md)）的输入时，此功能尤其有用。
+
+语言检测利用必应的自然语言处理库，它超出了数的[支持的语言和区域](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)列出文本分析。 语言的确切列表未发布，但包括所有广泛所说的语言，以及变体、 方言和某些区域和文化的语言。 如果有较少使用的语言所表示的内容，则可以[试用语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)以查看是否返回代码。 不能检测到的语言的响应是`unknown`。
 
 > [!NOTE]
 > 从 2018 年 12 月 21 日开始，可以[将认知服务资源附加到 Azure 搜索技能集](cognitive-search-attach-cognitive-services.md)。 这会使我们能够开始对技能集执行收费。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
 >
-> 执行[内置认知技能](cognitive-search-predefined-skills.md)将按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services)进行收费，其费率与以往直接执行任务的费率相同。 图像提取是 Azure 搜索收费项，目前以预览价格提供。 有关详细信息，请参见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)或[如何计费](search-sku-tier.md#how-billing-works)。
+> 执行[内置认知技能](cognitive-search-predefined-skills.md)按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services)收费，其费率与你以往直接执行任务的费率相同。 图像提取是 Azure 搜索收费项，目前以预览定价提供。 有关详细信息，请参见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)或[如何计费](search-sku-tier.md#how-billing-works)。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill

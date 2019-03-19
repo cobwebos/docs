@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: a4e5087e53d4505d54b5ff4b8d17ad6166c6174b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
-ms.translationtype: HT
+ms.openlocfilehash: c0e953434e947703308ff8d796107838df8cc979
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002495"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437308"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso 迁移：在 Azure 中重新生成本地应用
 
@@ -119,7 +119,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/) | 用于存储所有类型的容器部署的映像。 | 成本取决于功能、存储和使用持续时间。 [了解详细信息](https://azure.microsoft.com/pricing/details/container-registry/)。
 [Azure 应用服务](https://azure.microsoft.com/services/app-service/containers/) | 快速生成、部署和缩放在任何平台上运行的企业级 Web 应用、移动应用和 API 应用。 | 应用服务计划按秒收费。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/windows/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 对于此方案，Contoso 需具备以下项：
 
@@ -152,9 +152,9 @@ Contoso 管理员运行部署脚本来使用 AKS 和 Azure 容器注册表 (ACR)
 - 本部分的说明中使用的是 **SmartHotel360-Azure-backend** 存储库。
 - **SmartHotel360-Azure-backend** GitHub 存储库包含用于部署的本部分的所有软件。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
-1. 在开始之前，Contoso 管理员确保在他们用于部署的开发计算机上安装所有必备软件。
+1. 在开始之前，Contoso 管理员确保他们使用的部署在开发计算机上安装中的所有必备软件。
 2. 使用 Git: git 克隆**https://github.com/Microsoft/SmartHotel360-Azure-backend.git**将存储库克隆到本地的开发计算机
 
 

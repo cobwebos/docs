@@ -6,17 +6,17 @@ documentationcenter: na
 author: craigshoemaker
 manager: jeconnoc
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
-ms.service: azure-functions; cosmos-db
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 4536048db4abc25decf1dbf02c75833c570e41af
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 5762e934d7735dd9617cefc1f56105823d74312f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118201"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782184"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
@@ -1716,7 +1716,7 @@ public class DocsFromRouteSqlQuery {
 |name     || 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
-|**id**    | **Id** | 要检索的文档的 ID。 此属性支持[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
+|**id**    | **Id** | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
 |**sqlQuery**  |**SqlQuery**  | 用于检索多个文档的 Azure Cosmos DB SQL 查询。 该属性支持运行时绑定，如以下示例中所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。|
 |**connectionStringSetting**     |**ConnectionStringSetting**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
 |**partitionKey**|**PartitionKey**|指定用于查找分区键值。 可以包含绑定参数。|
@@ -2317,7 +2317,7 @@ public String cosmosDbQueryById(
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 
-| 绑定 | 引用 |
+| 绑定 | 参考 |
 |---|---|
 | CosmosDB | [CosmosDB 错误代码](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
@@ -2342,7 +2342,7 @@ public String cosmosDbQueryById(
 }
 ```  
 
-|属性  |默认 | 说明 |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
 |协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)| 

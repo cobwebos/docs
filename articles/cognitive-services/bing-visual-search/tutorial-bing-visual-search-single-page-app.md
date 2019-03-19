@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: cf8525d4cc829805532210bf09e9ea9da240405d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: e06fd7a4b2d072e5528643c2c8517d7545c36ef3
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857743"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338648"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>创建视觉搜索单页 Web 应用 
 
-必应视觉搜索 API 提供的体验类似于 Bing.com/images 上所示的图像详细信息。 借助视觉搜索，可以指定图像并取回有关图像的见解，如视觉上相似的图像、购物源、包含图像的网页等。 
+必应视觉搜索 API 提供类似于 Bing.com/images 上显示的映像详细信息的体验。 借助视觉搜索，可以指定图像并取回有关图像的见解，如视觉上相似的图像、购物源、包含图像的网页等。 
 
 本文介绍了如何扩展必应图像搜索 API 的单页 Web 应用。 若要查看该教程或获取此处使用的源代码，请参阅[教程：创建必应图像搜索 API 的单页应用](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)。 
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html) 上提供了此应用程序的完整源代码（在扩展它以使用必应视觉搜索 API 后）。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 

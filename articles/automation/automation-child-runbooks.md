@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f52c9731b0289563037cbf065f3e22d652b40e74
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 84f17b76f03c01d0b1441a50b9bcbddc1dfe2ef3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417425"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57851305"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "56417425"
 
 ## <a name="invoking-a-child-runbook-using-inline-execution"></a>使用内联执行调用子 Runbook 
 
-若要从另一个 Runbook 调用某个内嵌 Runbook，请使用被调用 Runbook 的名称并提供其参数值，就像使用活动或 cmdlet 时一样。  同一自动化帐户中的所有 Runbook 可按此方式相互使用。 父 Runbook 将等待子 Runbook 完成，然后转移到下一行，并直接向父级返回任何输出。
+若要从另一个 Runbook 调用某个内嵌 Runbook，请使用被调用 Runbook 的名称并提供其参数值，就像使用活动或 cmdlet 时一样。  同一自动化帐户中的所有 Runbook 可按此方式相互使用。 父 Runbook 将等待子 Runbook 完成，并转移到下一行，并直接向父级返回任何输出。
 
 在调用某个内联 Runbook 时，它会在与父 Runbook 所在的同一个作业中运行。 父 Runbook 运行的子 Runbook 的作业历史记录中不会提供相应的指示。 子 Runbook 发生的任何异常和任何流输出将与父级关联。 此行为减少了作业数，简化了作业的跟踪，并便于排查自从子 Runbook 引发任何异常以及将其流输出与父作业关联以来发生的问题。
 
@@ -81,9 +81,12 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 ### <a name="example"></a>示例
 
-以下示例将启动一个包含参数的子 Runbook，然后使用 Start-AzureRmAutomationRunbook -wait 参数等待其完成。 完成后，将从子 Runbook 收集其输出。 若要使用 `Start-AzureRmAutomationRunbook`，必须向 Azure 订阅进行身份验证。
+以下示例将启动一个包含参数的子 Runbook，并使用 Start-AzureRmAutomationRunbook -wait 参数等待其完成。 完成后，将从子 Runbook 收集其输出。 若要使用 `Start-AzureRmAutomationRunbook`，必须向 Azure 订阅进行身份验证。
 
 ```azurepowershell-interactive
+# Ensures you do not inherit an AzureRMContext in your runbook
+Disable-AzureRmContextAutosave –Scope Process
+
 # Connect to Azure with RunAs account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
@@ -101,7 +104,7 @@ Start-AzureRmAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -DefaultProfile $AzureContext `
+    -AzureRMContext $AzureContext `
     –Parameters $params –wait
 ```
 
