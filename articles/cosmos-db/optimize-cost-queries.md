@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457660"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840182"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的查询成本
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 中的查询通常按吞吐量从最快/最高效到较慢/效�
 
 将一些数据存储在 Azure Cosmos 容器中后，可以使用 Azure 门户中的数据资源管理器来构建和运行查询。 此外可以通过使用数据资源管理器获取查询的成本。 此方法使你了解系统支持的典型查询和操作所涉及的实际费用。
 
-此外可以使用 SDK 以编程方式获取查询的成本。 要测量任何操作（如创建、更新或删除）的开销，请在使用 REST API 时检查 `x-ms-request-charge` 标头。 如果使用的是 .Net 或 Java SDK，则 `RequestCharge` 属性是获取请求费用的等效属性，并且此属性存在于 ResourceResponse 或 FeedResponse 中。
+此外可以使用 SDK 以编程方式获取查询的成本。 要测量任何操作（如创建、更新或删除）的开销，请在使用 REST API 时检查 `x-ms-request-charge` 标头。 如果使用.NET 或 Java SDK`RequestCharge`属性是要获取的请求费用的等效属性和此属性是 ResourceResponse 或 FeedResponse 中存在。
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -53,13 +53,13 @@ while (queryable.HasMoreResults)
 
 ## <a name="factors-influencing-request-unit-charge-for-a-query"></a>影响查询请求单位费用的因素
 
-查询的请求单位依赖于许多因素。 例如，加载/返回的 Azure Cosmos 项的数量、对索引的查找次数、查询编译时间等详细信息。 Azure Cosmos DB 保证在相同数据上执行相同的查询时，即使重复执行，也始终使用相同数量的请求单位。 使用查询执行指标的查询配置文件使你可以很好地了解请求单位的使用情况。  
+查询的请求单位依赖于许多因素。 例如，Azure Cosmos 返回的项数加载/，针对索引查询编译的查找次数时间等详细信息。 Azure Cosmos DB 保证在相同数据上执行相同的查询时，即使重复执行，也始终使用相同数量的请求单位。 使用查询执行指标的查询配置文件使你可以很好地了解请求单位的使用情况。  
 
 在某些情况下，可能会在查询的分页执行中看到 200 个和 429 个响应序列以及变量请求单位，这是因为查询将根据可用的 RU 尽可能快地运行。 可能会看到查询执行在服务器和客户端之间分成多个页面/往返。 例如，10,000 个项可以作为多个页面返回，每个页面根据对该页面执行的计算收费。 对这些页面求和时，应获得与整个查询相同的 RU 数。  
 
 ## <a name="metrics-for-troubleshooting"></a>故障排除的指标
 
-查询、用户定义的函数 (UDF) 所使用的性能和吞吐量主要取决于函数本身。 查找 UDF 中查询执行花费的时间和使用的 RU 数量的最简单方法是启用查询指标。 如果使用的是 .Net SDK，则以下是 SDK 返回的示例查询指标：
+查询、用户定义的函数 (UDF) 所使用的性能和吞吐量主要取决于函数本身。 查找 UDF 中查询执行花费的时间和使用的 RU 数量的最简单方法是启用查询指标。 如果使用.NET SDK，下面是由 SDK 返回的示例查询指标：
 
 ```bash
 Retrieved Document Count                 :               1              

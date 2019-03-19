@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 015cbadef57a3e306fea4321db4b12c3a3918683
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 4685c4213ad992e8d0fcffdf91a039cd04b426ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433775"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844201"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "54433775"
 > [!IMPORTANT]
 > 由于所需的虚拟网络支持，此功能在 API 管理的**高级**和**开发人员**层中可用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 开始之前：
 
@@ -142,7 +142,7 @@ az account set --subscription <guid>
 
 * “displayName”可以是 API 的任意名称。 对于本文，请使用“Service Fabric App”。
 * “name”为 API 提供一个唯一且有描述性的名称，例如“service-fabric-app”。 它显示在开发人员和发布者门户中。
-* “serviceUrl”引用实现 API 的 HTTP 服务。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 例如，本文中设置了“http://servicefabric”。
+* “serviceUrl”引用实现 API 的 HTTP 服务。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 例如，本文中设置了“<http://servicefabric>”。
 * “path”附加到 API 管理服务的基础 URL。 基础 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。
 * “protocols”确定可用于访问 API 的协议。 对于本文，列出 **http** 和 **https**。
 * “path”是 API 的后缀。 对于本文，请使用“myapp”。
@@ -177,7 +177,7 @@ az account set --subscription <guid>
     <set-backend-service
         backend-id="servicefabric"
         sf-service-instance-name="service-name"
-        sf-resolve-condition="@(context.LastError?.Reason == 'BackendConnectionFailure')" />
+        sf-resolve-condition="@(context.LastError?.Reason == "BackendConnectionFailure")" />
   </inbound>
   <backend>
     <base/>
@@ -226,7 +226,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
     <set-backend-service
         backend-id="servicefabric"
         sf-service-instance-name="service-name"
-        sf-resolve-condition="@(context.LastError?.Reason == 'BackendConnectionFailure')" />
+        sf-resolve-condition="@(context.LastError?.Reason == "BackendConnectionFailure")" />
   </inbound>
   <backend>
     <base/>
@@ -285,7 +285,7 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 群集由群集资源本身以及其他 Azure 资源组成。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
-登录到 Azure，选择要删除的群集的订阅 ID。  可通过登录到 [Azure 门户](http://portal.azure.com)查找订阅 ID。 使用 [Remove-AzureRMResourceGroup cmdlet](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组和所有群集资源。
+登录到 Azure，选择要删除的群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 使用 [Remove-AzureRMResourceGroup cmdlet](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组和所有群集资源。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

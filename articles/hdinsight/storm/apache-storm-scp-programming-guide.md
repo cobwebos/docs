@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: 1ad9661d85c7ec91f361cdc4d126e0a91e376b66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332092"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853284"
 ---
 # <a name="scp-programming-guide"></a>SCP 编程指南
 SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](https://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](https://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
@@ -32,7 +32,7 @@ SCP 中的数据以连续的元组流形式建模。 一般情况下，元组首
 
 SCP 支持“尽力”、“至少一次”数据处理和“恰一次”数据处理。 在分布式流处理应用程序中，数据处理过程中可能会出现各种错误，例如，网络中断、机器故障、用户代码错误等等。“至少一次”处理会在出现错误时自动重新处理原来的数据，从而确保所有数据均至少被处理一次。 “至少一次”处理简单且可靠，适用于许多应用程序。 但是，当应用程序需要确切计数时，进行“至少一次”处理是不够的，因为相同的数据有可能用于应用程序拓扑中。 在此情况下，“恰一次”处理可确保即使数据被多次重复使用和处理，结果也是正确。
 
-通过 SCP，.NET 开发人员可以开发实时数据处理应用程序，同时在后台通过 Storm 利用 Java 虚拟机 (JVM)。 .NET 和 JVM 通过 TCP 本地套接字进行通信。 基本上，每个 Spout/Bolt 都是一个 .Net/Java 进程对，在这些进程对中，用户逻辑作为插件在 .Net 进程中运行。
+通过 SCP，.NET 开发人员可以开发实时数据处理应用程序，同时在后台通过 Storm 利用 Java 虚拟机 (JVM)。 .NET 和 JVM 通过 TCP 本地套接字进行通信。 基本上是每个 Spout/Bolt 是一个.NET/Java 进程对，用户逻辑作为插件的.NET 进程中运行的位置。
 
 若要在 SCP 上开发数据处理应用程序，需要执行以下几个步骤：
 
@@ -69,9 +69,9 @@ ISCPSpout 是适用于非事务性 Spout 的接口。
          void Fail(long seqId, Dictionary<string, Object> parms);  
      }
 
-调用 `NextTuple()` 时，C\# 用户代码会发送一个或多个元组。 如果没有要发送的数据，此方法应返回而不发送任何信息。 请注意，如果 C\# 进程的单一线程出现紧凑循环，会调用 `NextTuple()`、`Ack()` 和 `Fail()`。 如果没有要发送的元组，最好短暂地将 NextTuple 置于休眠状态（例如 10 毫秒），以免浪费太多 CPU。
+调用 `NextTuple()` 时，C\# 用户代码会发送一个或多个元组。 如果没有要发送的数据，此方法应返回而不发送任何信息。 请注意，如果 C\# 进程的单一线程出现紧凑循环，将会调用 `NextTuple()`、`Ack()` 和 `Fail()`。 如果没有要发送的元组，最好短暂地将 NextTuple 置于休眠状态（例如 10 毫秒），以免浪费太多 CPU。
 
-仅在规范文件中启用了确认机制的情况下，才会调用 `Ack()` 和 `Fail()`。 `seqId` 用于识别已确认或失败的元组。 因此，如果在非事务性拓扑中启用了确认功能，应在 Spout 中使用以下 emit 函数：
+仅在规范文件中启用了确认机制的情况下，才会调用 `Ack()` 和 `Fail()`。 `seqId`可用来识别已确认或失败的元组。 因此，如果在非事务性拓扑中启用了确认功能，应在 Spout 中使用以下 emit 函数：
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
@@ -99,7 +99,7 @@ ISCPTxSpout 是适用于事务性 Spout 的接口。
         void Fail(long seqId, Dictionary<string, Object> parms);        
     }
 
-与非事务性接口一样，如果 C\# 进程的单一线程出现紧凑循环，会调用 `NextTx()`、`Ack()` 和 `Fail()`。 如果没有要发送的数据，最好短暂地将 `NextTx` 置于休眠状态（例如 10 毫秒），以免浪费太多 CPU。
+与非事务性接口一样，如果 C\# 进程的单一线程出现紧凑循环，将会调用 `NextTx()`、`Ack()` 和 `Fail()`。 如果没有要发送的数据，最好短暂地将 `NextTx` 置于休眠状态（例如 10 毫秒），以免浪费太多 CPU。
 
 调用 `NextTx()` 可启动新的事务；输出参数 `seqId` 用于识别事务，该参数也用于 `Ack()` 和 `Fail()` 中。 在 `NextTx()` 中，用户可以将数据发送到 Java 端。 然后，数据会被存储在 ZooKeeper 中，以支持重用。 ZooKeeper 的容量有限，因此，用户应该只发送元数据，而不应该发送事务性 Spout 中的批量数据。
 
@@ -352,7 +352,7 @@ SCP 拓扑规范是一种特定于域的语言，用于描述和配置 SCP 拓�
 
 SCP.NET 添加了以下函数来定义事务性拓扑：
 
-| **新函数** | **参数** | **说明** |
+| **新函数** | **Parameters** | **说明** |
 | --- | --- | --- |
 | **tx-topolopy** |topology-name<br />spout-map<br />bolt-map |使用拓扑名称、Spout 定义图和 Bolt 定义图来定义事务性拓扑&nbsp; |
 | **scp-tx-spout** |exec-name<br />args<br />fields |定义事务性 Spout。 使用 args 运行带有 exec-name 的应用程序。<br /><br />***fields*** 是用于 Spout 的输出字段 |
@@ -431,7 +431,7 @@ SCP 支持用户代码同时向多个不同数据流发送元组或同时接收�
 向不存在的数据流发送元组会导致运行时异常。
 
 ### <a name="fields-grouping"></a>字段分组
-Storm 中内置的字段分组在 SCP.NET 中无法正常使用。 在 Java 代理端，所有字段数据类型实际上都是 byte[]，字段分组会使用 byte[] 对象来进行分组。 byte[] 对象哈希代码是该对象在内存中的地址。 因此，如果两个 byte[] 对象共享相同的内容但地址不相同，分组会不正确。
+在 Storm 中内置的字段分组在 SCP.NET 中的工作不正常。 在 Java 代理端，所有字段数据类型实际上都是 byte[]，字段分组会使用 byte[] 对象来进行分组。 byte[] 对象哈希代码是该对象在内存中的地址。 因此，如果两个 byte[] 对象共享相同的内容但地址不相同，分组会不正确。
 
 SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的内容来进行分组。 在 **SPEC** 文件中，语法如下所示：
 
@@ -450,7 +450,7 @@ SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的�
 3. [0,1] 表示从 0 开始的字段 ID 的哈希集。
 
 ### <a name="hybrid-topology"></a>混合拓扑
-本机 Storm 是用 Java 编写的。 SCP.Net 已对其进行增强，使 C\# 开发者能够编写 C\# 代码来处理其业务逻辑。 但它也支持混合拓扑，这种拓扑不仅包含 C\# Spout/Bolt，还包含 Java Spout/Bolt。
+本机 Storm 是用 Java 编写的。 SCP.NET 经过增强，即可启用 C\#开发人员能够编写 C\#代码来处理其业务逻辑。 但它也支持混合拓扑，这种拓扑不仅包含 C\# Spout/Bolt，还包含 Java Spout/Bolt。
 
 ### <a name="specify-java-spoutbolt-in-spec-file"></a>在规范文件中指定 Java Spout/Bolt
 在规范文件中，“scp-spout”和“scp-bolt”也可用于指定 Java Spout 和 Bolt；下面是一个示例：
@@ -562,7 +562,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
 
 ## <a name="scp-programming-examples"></a>SCP 编程示例
 ### <a name="helloworld"></a>HelloWorld
-HelloWorld 是一个简单的 SCP.Net 编程示例。 它使用非事务性拓扑，带有一个名为 **generator** 的 Spout，以及两个分别名为 **splitter** 和 **counter** 的 Bolt。 Spout 生成器会随机生成一些句子，然后将生成的句子发送到 拆分器。 Bolt 拆分器会将句子拆分为字词并将其发送到计数器 Bolt。 Bolt "counter" 使用字典记录每个字词出现的次数。
+**HelloWorld**是一个简单的示例，若要显示的 scp.net 编程。 它使用非事务性拓扑，带有一个名为 **generator** 的 Spout，以及两个分别名为 **splitter** 和 **counter** 的 Bolt。 Spout 生成器会随机生成一些句子，然后将生成的句子发送到 拆分器。 Bolt 拆分器会将句子拆分为字词并将其发送到计数器 Bolt。 Bolt "counter" 使用字典记录每个字词出现的次数。
 
 在本示例中，有两个规范文件：**HelloWorld.spec** 和 **HelloWorld\_EnableAck.spec**。 在 C\# 代码中，可以通过从 Java 端获取 pluginConf 来确定是否已启用确认功能。
 
@@ -573,7 +573,7 @@ HelloWorld 是一个简单的 SCP.Net 编程示例。 它使用非事务性拓�
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-在 Spout 中，如果启用了确认功能，会使用字典将未确认的元组存储在缓存中。 如果调用了 Fail()，则会重新处理失败的元组：
+在 spout 中，如果已启用确认功能，一个字典，用于缓存未确认的元组。 如果调用了 Fail()，则会重新处理失败的元组：
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {

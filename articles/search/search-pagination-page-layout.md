@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8cf65f0ed3ecd5c9a86d6adcdd5defd930522f85
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: ef29dafe32c3c5988cd33f59c8436eeef4b45886
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301547"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849272"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>如何在 Azure 搜索中使用搜索结果
 本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 
 
 在 REST API 中，请求包括 GET 命令、路径和查询参数，用于通知服务正在请求的内容以及如何明确表述响应。 在 .NET SDK 中，等效的 API 是 [DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet)。
 
-多个代码示例包含一个 Web 前端接口，相关内容可参阅：[纽约市工作岗位演示应用](http://azjobsdemo.azurewebsites.net/)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+多个代码示例包含一个 Web 前端接口，相关内容可参阅：[纽约市工作岗位演示应用](https://azjobsdemo.azurewebsites.net/)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 
 > [!NOTE]
-> 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅 [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice)。> 
+> 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅[Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice)。 > 
 > 
 
 ## <a name="total-hits-and-page-counts"></a>总匹配记录和页面计数

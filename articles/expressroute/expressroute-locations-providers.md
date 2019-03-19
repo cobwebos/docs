@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: feb67da3-5abc-4acb-bad4-f78e3c541ded
 ms.service: expressroute
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 03/05/2019
 ms.author: pareshmu
-ms.openlocfilehash: 58532eedab2e704861221b75d219a56e0a3f0f2c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: 54fb871f653e74606d54f98c9ca695c33b7b5f37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959555"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849136"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -42,22 +42,19 @@ ms.locfileid: "56959555"
 
 | **地缘政治区域** | **区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- | --- |
-| **澳大利亚政府** | 1 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
-| **欧洲** | 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹、阿姆斯特丹 2、都柏林、伦敦、伦敦 2、马赛、纽波特（威尔士）、巴黎 |
-| **北美** | 1 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、圣安东尼奥、西雅图、硅谷、华盛顿特区、华盛顿特区 2、蒙特利尔、魁北克市、多伦多 |
+| **澳大利亚政府** | 第 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
+| **欧洲** | 第 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |Amsterdam, Amsterdam2, Dublin, London, London2, Marseille, Newport(Wales), Paris, Zurich |
+| **北美** | 第 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、圣安东尼奥、西雅图、硅谷、华盛顿特区、华盛顿特区 2、蒙特利尔、魁北克市、多伦多 |
 | **亚洲** | 2 |东亚、东南亚 |香港特别行政区、吉隆坡、新加坡、新加坡 2、台北 |
 | **澳大利亚** | 2 |澳大利亚东南部、澳大利亚东部 |墨尔本、珀斯、悉尼 | 
 | **印度** | 2 |印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
 | **日本** | 2 |日本西部、日本东部 |大坂、东京 |
 | **韩国** | 2 |韩国中部、韩国南部 |釜山、首尔|
-| **南非** | 3 |[南非西部+、南非北部+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |开普敦、约翰内斯堡 |
+| **南非** | 3 |南非西部、 南非北部 |开普敦、约翰内斯堡 |
 | **南美洲** | 3 |巴西南部 |圣保罗 |
 
- **+** 表示即将推出
-
-
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>国家/地区云的区域和地缘政治边界
-下表提供了国家/地区云的区域和地缘政治边界的信息。
+下表提供了有关国家/地区云的区域和地缘政治边界的信息。
 
 | **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- |
@@ -66,7 +63,7 @@ ms.locfileid: "56959555"
 | **中国北部** |中国北部、中国北部 2 |北京、北京 2 |
 | **德国** |德国中部、德国东部 |柏林、法兰克福 |
 
-标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如有需要，请联系连接服务提供商。
+标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。 需要启用 ExpressRoute 高级版附加组件才能支持全球连接。 不支持连接到国家/地区云环境。 如果需要，请与连接服务提供商合作。
 
 ## <a name="locations"></a>连接服务提供商位置
 
@@ -85,7 +82,7 @@ ms.locfileid: "56959555"
 | **开普敦** | Teraco | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
 | **金奈** | Tata Communications | Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **金奈 2** | Airtel | Airtel |
-| **芝加哥** | Equinix | Aryaka Networks、AT&T NetBond、Cologix、Comcast、Coresite、Equinix、Internet2、Level 3 Communications、Megaport、PacketFabric、PCCW Global Limited、Sprint、Telia Carrier、Verizon、Zayo |
+| **芝加哥** | Equinix | Aryaka Networks、 AT & T NetBond、 Cologix、 Comcast、 Coresite、 Equinix、 InterCloud、 Internet2，Level 3 Communications、 Megaport、 PacketFabric、 PCCW Global Limited、 冲刺 （sprint)、 Telia 运营商、 Verizon、 Zayo |
 | **达拉斯** | Equinix | Aryaka Networks、AT&T NetBond、Cologix、Equinix、Internet2、Level 3 Communications、Megaport、Neutrona Networks、Telmex Uninet+、Telia Carrier、Verizon、Zayo|
 | **丹佛** | CoreSite | CoreSite、Megaport |
 | **都柏林** | Equinix | Colt、eir、Equinix、Interxion、Megaport |
@@ -105,7 +102,7 @@ ms.locfileid: "56959555"
 | **纽约** | Equinix | CenturyLink Cloud Connect、Coresite、Equinix、InterCloud、Megaport、Zayo |
 | **Newport(Wales)** | Next Generation Data | British Telecom、Level 3 Communications、Next Generation Data |
 | **大阪** | Equinix | Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |
-| **巴黎** | Interxion | Colt、Intercloud、Interxion、Equinix、Orange |
+| **巴黎** | Interxion | Colt、 Equinix、 Intercloud、 Interxion、 橙色、 Zayo |
 | **珀斯** | NextDC | NextDC |
 | **魁北克市** | 4Degrees | Bell Canada、Megaport |
 | **圣安东尼奥** | CyrusOne | CenturyLink Cloud Connect、Megaport |
@@ -114,13 +111,15 @@ ms.locfileid: "56959555"
 | **首尔** | KINX | KINX、LG CNS、Sejong Telecom |
 | **硅谷** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Comcast、Coresite、Equinix、InterCloud、IX Reach、PacketFabric、Level 3 Communications、Megaport、Orange、Sprint、Tata Communications、Verizon、Zayo |
 | **新加坡** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Telstra Corporation、Verizon、Vodafone |
-| **新加坡 2** | Global Switch | Colt、Megaport、SingTel |
+| **新加坡 2** | Global Switch | Colt、 Epsilon 全局 Communications、 Megaport、 SingTel |
 | **悉尼** | Equinix | AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、NTT Communications、Optus、Orange、Telstra Corporation、Verizon |
 | **台北** | Chief Telecom | Chief Telecom |
 | **东京** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT EAST、Orange、Softbank、Verizon |
 | **多伦多** | Cologix | AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Equinix、Megaport、Telus、Zayo |
 | **华盛顿特区** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Cologix、Comcast、Coresite、Equinix、Internet2、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、PacketFabric、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
 | **华盛顿特区 2** | Coresite | Coresite | 
+| **Zurich** | Interxion | Interxion |
+
  **+** 表示即将推出
 
 ### <a name="national-cloud-environments"></a>国家/地区云环境
@@ -157,16 +156,16 @@ ms.locfileid: "56959555"
 如果前面部分中未列出连接服务提供商，仍可以建立连接。
 
 * 请咨询连接服务提供商，以确定他们是否已连接到上表中列出的任何 Exchange 提供商。 可以访问以下链接，以收集 Exchange 提供商所提供的服务的详细信息。 已有多个连接提供商连接到以太网 Exchange。
-  * [Cologix](http://www.cologix.com/)
-  * [CoreSite](http://www.coresite.com/)
-  * [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
-  * [InterXion](http://www.interxion.com/)
-  * [NextDC](http://www.nextdc.com/)
+  * [Cologix](https://www.cologix.com/)
+  * [CoreSite](https://www.coresite.com/)
+  * [Equinix Cloud Exchange](https://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
+  * [InterXion](https://www.interxion.com/)
+  * [NextDC](https://www.nextdc.com/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)
   
 * 让连接提供商将网络扩展到选择的对等互连位置。
-  * 确保连接提供商以高可用性方式扩展连接，以防出现单点故障。
+  * 确保连接服务提供商以高可用性方式扩展连接，以防出现单点故障。
 * 从 Exchange 连接服务提供商处订购一条 ExpressRoute 线路以连接到 Microsoft。
   * 根据 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md) 中的步骤来设置连接。
 
@@ -181,7 +180,7 @@ ms.locfileid: "56959555"
 | **汉堡** | Equinix | Cinia |
 | **香港** | Equinix | Chief、Macroview Telecom |
 | **约翰内斯堡** | Teraco | MTN |
-| **伦敦** | BICS、Equinix、euNetworks、Telecity | Bezeq International Ltd.、Epsilon、Telecommunications Limited、Exponential E、HSO、NexGen Networks、Proximus、Tamares Telecom、Zain |
+| **伦敦** | BICS、Equinix、euNetworks、Telecity | Bezeq International Ltd.、 CoreAzure，Telecommunications Limited、 Exponential E、 HSO、 NexGen Networks、 Proximus、 Tamares Telecom、 Zain |
 | **洛杉矶** | Equinix |Transtelco |
 | **马德里** | Level3 | Zertia |
 | **Montreal** | Cologix、Equinix | Airgate Technologies, Inc.Cogeco Peer 1、Rogers、Zirro |
@@ -199,7 +198,7 @@ ms.locfileid: "56959555"
 | **华盛顿特区** |Equinix | Altice Business、BICS、Cox Business、Gtt Communications Inc、Epsilon、Telecommunications Limited、Lightower、Masergy、Windstream |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute 系统集成商
-根据网络的规模，有时，很难启用专用连接来满足需要。 可以与下表中列出的任一系统集成商合作，以帮助你将加入 ExpressRoute。
+根据网络的规模，有时，很难启用专用连接来满足需要。 可以与下表中列出的任一系统集成商合作，以帮助将你加入 ExpressRoute。
 
 | **所在洲** | **系统集成商** |
 | --- | --- |

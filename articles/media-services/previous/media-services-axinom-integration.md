@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: ae9a8873be3fbd3cead23e27e80931f78ea57eb4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 6714beae690e23c686fc08b88e93044ae3901c89
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992531"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839485"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务 
 > [!div class="op_single_selector"]
@@ -29,9 +29,9 @@ ms.locfileid: "55992531"
 > 
 
 ## <a name="overview"></a>概述
-Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细信息，请参阅 [Mingfei 的博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)）。 此外，Azure 媒体播放器 (AMP) 还添加了 Widevine 支持（有关详细信息，请参阅 [AMP 文档](http://amp.azure.net/libs/amp/latest/docs/)）。 这是在配备了 MSE 和 EME 的现代浏览器上流式处理受 CENC 保护的 DASH 内容方面的一项重要成就，该保护是通过 multi-native-DRM（PlayReady 和 Widevine）来完成的。
+Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细信息，请参阅 [Mingfei 的博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)）。 此外，Azure 媒体播放器 (AMP) 还添加了 Widevine 支持（有关详细信息，请参阅 [AMP 文档](https://amp.azure.net/libs/amp/latest/docs/)）。 这是在配备了 MSE 和 EME 的现代浏览器上流式处理受 CENC 保护的 DASH 内容方面的一项重要成就，该保护是通过 multi-native-DRM（PlayReady 和 Widevine）来完成的。
 
-从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许配置 Widevine 许可证模板并获取 Widevine 许可证。 还可以通过以下 AMS 合作伙伴来帮助交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
+从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许配置 Widevine 许可证模板并获取 Widevine 许可证。 还可以通过以下 AMS 合作伙伴来帮助交付 Widevine 许可证：[Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](https://ezdrm.com/)、[castLabs](https://castlabs.com/company/partners/azure/)。
 
 本文介绍如何集成和测试由 Axinom 管理的 Widevine 许可证服务器。 具体而言，本文涵盖：  
 
@@ -44,7 +44,7 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 ![DASH 和 CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
 ## <a name="content-protection"></a>内容保护
-有关动态保护和密钥交付策略的配置，请参阅 Mingfei 的博客：[How to configure Widevine packaging with Azure Media Services](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)（如何使用 Azure 媒体服务配置 Widevine 打包）。
+有关动态保护和密钥交付策略的配置，请参阅 Mingfei 的博客：[How to configure Widevine packaging with Azure Media Services](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)（如何使用 Azure 媒体服务配置 Widevine 打包）。
 
 可以通过 multi-DRM 配置动态 CENC 保护，因为 DASH 流式处理具有下述两项特点：
 
@@ -64,7 +64,7 @@ Axinom 提供的 Widevine 许可证服务器要求 JWT 令牌身份验证。 需
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
 
-AMP 代码的其余部分为标准 AMP API，如[此处](http://amp.azure.net/libs/amp/latest/docs/)的 AMP 文档所述。
+AMP 代码的其余部分为标准 AMP API，如[此处](https://amp.azure.net/libs/amp/latest/docs/)的 AMP 文档所述。
 
 在 AMP 中的正式长期方法发布之前，上述 javascript 仍是一个设置自定义授权标头的短期方法。
 
@@ -130,7 +130,7 @@ John Sheehan 的 [JWT NuGet 包](https://www.nuget.org/packages/JWT)符合要求
 
 Axinom Widevine 许可证服务器
 
-    <add key="ax:laurl" value="http://drm-widevine-licensing.axtest.net/AcquireLicense" />
+    <add key="ax:laurl" value="https://drm-widevine-licensing.axtest.net/AcquireLicense" />
     <add key="ax:com_key_id" value="69e54088-e9e0-4530-8c1a-1eb6dcd0d14e" />
     <add key="ax:com_key" value="4861292d027e269791093327e62ceefdbea489a4c7e5a4974cc904b840fd7c0f" />
     <add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
@@ -160,7 +160,7 @@ Axinom Widevine 许可证服务器
         objXmlNamespaceManager.AddNamespace("cenc", "urn:mpeg:cenc:2013");
         objXmlNamespaceManager.AddNamespace("ms",   "urn:microsoft");
         objXmlNamespaceManager.AddNamespace("mspr", "urn:microsoft:playready");
-        objXmlNamespaceManager.AddNamespace("xsi",  "http://www.w3.org/2001/XMLSchema-instance");
+        objXmlNamespaceManager.AddNamespace("xsi",  "https://www.w3.org/2001/XMLSchema-instance");
         objXmlNamespaceManager.PushScope();
 
         XPathNodeIterator objXPathNodeIterator;

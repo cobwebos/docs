@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 781a897c99a28fbd1b695876f477b140521068e3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244873"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431183"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>纵向扩展 Azure 开发测试实验室基础结构
 在以企业规模实施开发测试实验室之前，有几个关键的决策点。 组织大致了解这些决策点有助于将来做出设计决策。 但是，这些要点不应阻碍组织的概念证明工作。 初始纵向扩展规划的三个首要方面包括：
@@ -46,7 +46,7 @@ ms.locfileid: "56244873"
 通常，采用一个订阅的方法在大型企业中不易管理。 但是，限制订阅数可提供以下优势：
 
 - **预测**企业的成本。  使用单个订阅能使预算变得非常容易，因为所有资源都在一个池中。 使用此方法可以在计费周期内的任何给定时间更方便地决定何时行使成本控制措施。
-- VM、项目、公式、网络配置、权限、策略等的**管理**更轻松，因为只需在一个订阅中完成所有更新，而不用在许多订阅中进行更新。
+- **可管理性**的 Vm、 项目、 公式、 网络配置、 权限、 策略，等则简单因为所有的更新仅需要一个订阅，而不是进行跨多个订阅的更新中。
 - 对于要求使用本地连接的企业而言，单个订阅中的**网络**工作可以大大简化。 使用其他订阅时，必须跨订阅连接虚拟网络（中心辐射模型），这就需要额外的配置、管理、IP 地址空间，等等。
 - 每个人在同一订阅中操作可以简化**团队协作** – 例如，可以更轻松地将 VM 重新分配给同事、共享资源团队，等等。
 

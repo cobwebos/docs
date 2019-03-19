@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3e48ce4adc64f434b80210ff8aa36a983ba88c26
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: e3eb7ce49c5d22b11b0b6f018e025bdfa2a67703
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894908"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431999"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入
 
@@ -23,7 +23,7 @@ ms.locfileid: "55894908"
 
 本文介绍如何在 Azure Active Directory (Azure AD) B2C 中向注册用户旅程添加新的用户提供的条目（声明）。  另外还介绍如何将该条目配置为下拉列表，并对它是否为必需条目进行定义。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。 测试注册或登录用户旅程，以便注册新的本地帐户，然后再继续操作。
 

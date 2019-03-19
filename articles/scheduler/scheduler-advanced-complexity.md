@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701006"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860612"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>在 Azure 计划程序中为作业生成高级计划和重复周期
 
@@ -63,15 +63,15 @@ ms.locfileid: "55701006"
 
 此表简要概述了在设置作业的重复周期和计划时可以使用的主要 JSON 元素。 
 
-| 元素 | 必选 | 说明 | 
+| 元素 | 需要 | 描述 | 
 |---------|----------|-------------|
-| **startTime** | 否 | [ISO 8601 格式](http://en.wikipedia.org/wiki/ISO_8601)的 DateTime 字符串值，用于指定作业在基本计划中首次启动的时间。 <p>对于复杂的计划，作业的启动时间不早于 **startTime**。 | 
+| **startTime** | 否 | [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)的 DateTime 字符串值，用于指定作业在基本计划中首次启动的时间。 <p>对于复杂的计划，作业的启动时间不早于 **startTime**。 | 
 | **recurrence** | 否 | 作业运行时的重复规则。 **recurrence** 对象支持这些元素：**frequency**、**interval**、**schedule**、**count** 和 **endTime**。 <p>如果使用 **recurrence** 元素，则还必须使用 **frequency** 元素，而其他 **recurrence** 元素是可选的。 |
 | **frequency** | 是，当使用 **recurrence** 时 | 两次作业之间的时间单位并支持这些值：“Minute”、“Hour”、“Day”、“Week”、“Month”和“Year” | 
 | **interval** | 否 | 一个正整数，根据 **frequency** 确定两次作业之间的时间单位数。 <p>例如，如果 **interval** 为 10，**frequency** 为“Week”，则作业每隔 10 周重复一次。 <p>下面是每种频率的最大间隔数： <p>- 18 个月 <br>- 78 周 <br>- 548 天 <br>- 对于小时和分钟，范围为 1 <= <*interval*> <= 1000。 | 
 | **schedule** | 否 | 根据指定的分钟标记、小时标记、星期日期和月份日期定义重复周期的更改 | 
 | **count** | 否 | 一个正整数，指定作业在完成之前运行的次数。 <p>例如，当每日作业将 **count** 设置为 7，并且开始日期为星期一时，该作业将在星期日结束运行。 如果已经过了开始日期，则从创建时间开始计算第一次运行。 <p>如果未指定 **endTime** 或 **count**，作业将无限期运行。 不能在同一个作业中同时使用 **count** 和 **endTime**，但首先完成的规则优先。 | 
-| **endTime** | 否 | [ISO 8601 格式](http://en.wikipedia.org/wiki/ISO_8601)的 Date 或 DateTime 字符串值，用于指定作业何时停止运行。 可为 **endTime** 设置一个过去的值。 <p>如果未指定 **endTime** 或 **count**，作业将无限期运行。 不能在同一个作业中同时使用 **count** 和 **endTime**，但首先完成的规则优先。 |
+| **endTime** | 否 | [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)的 Date 或 DateTime 字符串值，用于指定作业何时停止运行。 可为 **endTime** 设置一个过去的值。 <p>如果未指定 **endTime** 或 **count**，作业将无限期运行。 不能在同一个作业中同时使用 **count** 和 **endTime**，但首先完成的规则优先。 |
 |||| 
 
 例如，此 JSON 架构描述了作业的基本计划和重复周期： 
@@ -94,9 +94,9 @@ ms.locfileid: "55701006"
 
 *日期和日期时间值*
 
-* 计划程序作业中的日期只包括日期并遵循 [ISO 8601 规范](http://en.wikipedia.org/wiki/ISO_8601)。
+* 计划程序作业中的日期只包括日期并遵循 [ISO 8601 规范](https://en.wikipedia.org/wiki/ISO_8601)。
 
-* 计划程序作业中的日期时间包括日期和时间，遵循 [ISO 8601 规范](http://en.wikipedia.org/wiki/ISO_8601)，并且在未指定 UTC 时差时假定为 UTC。 
+* 计划程序作业中的日期时间包括日期和时间，遵循 [ISO 8601 规范](https://en.wikipedia.org/wiki/ISO_8601)，并且在未指定 UTC 时差时假定为 UTC。 
 
 有关详细信息，请参阅[概念、术语和实体](../scheduler/scheduler-concepts-terms.md)。
 
@@ -159,7 +159,7 @@ ms.locfileid: "55701006"
 
 下表详细描述了 schedule 元素：
 
-| JSON 名称 | 说明 | 有效值 |
+| JSON 名称 | 描述 | 有效值 |
 |:--- |:--- |:--- |
 | **分钟数** |运行作业的小时中的分钟。 |整数数组。 |
 | **小时数** |运行作业的日期中的小时。 |整数数组。 |
@@ -173,7 +173,7 @@ ms.locfileid: "55701006"
 
 这些计划假设 **interval** 设置为 1\. 此外，这些示例假设正确的**频率**值符合 **schedule**。 例如，不能在使用 "day" 作为**频率**的同时，在**计划**中使用 **monthDays** 修改项。 本文前面已描述这些限制。
 
-| 示例 | 说明 |
+| 示例 | 描述 |
 |:--- |:--- |
 | `{"hours":[5]}` |在每天的 5:00 AM 运行。<br /><br />计划程序会将 "hours" 中的每个值与 "minutes" 中的每个值一一匹配，以创建运行作业的所有时间的列表。 |
 | `{"minutes":[15], "hours":[5]}` |在每天早晨 5:15 运行。 |

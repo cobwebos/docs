@@ -3,7 +3,7 @@ title: Azure Service Fabric 容器和服务的资源治理 | Microsoft Docs
 description: Azure Service Fabric 允许指定在容器内部或外部运行的服务的资源限制。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: twhitney, subramar
-ms.openlocfilehash: 66f651f921773f638b4493be70319d5d80b122db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.author: aljo, subramar
+ms.openlocfilehash: 985d31ea5fff7989b70443848effb616eca47ae2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844103"
 ---
 # <a name="resource-governance"></a>资源调控
 
@@ -116,7 +116,7 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
-<ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='https://www.w3.org/2001/XMLSchema-instance'>
 
   <!--
   ServicePackageA has the number of CPU cores defined, but doesn't have the MemoryInMB defined.
@@ -145,7 +145,7 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
-<ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='https://www.w3.org/2001/XMLSchema-instance'>
 
   <Parameters>
     <Parameter Name="CpuCores" DefaultValue="4" />

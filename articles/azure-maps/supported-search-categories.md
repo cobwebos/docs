@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: b2bb5e0f9b138af5ff69599b7ba35457788c8a65
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.openlocfilehash: 64b28fc0db56be77bce9c22f9332110205a42b1d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968441"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437337"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps 支持的类型
 
@@ -45,7 +45,7 @@ ms.locfileid: "38968441"
 | COLLEGE\_UNIVERSITY | 专科院校/社区学院、学院/大学、学院、大学预科中学、大学 |
 | COMMERCIAL\_BUILDING | 办公大楼、园区总部、商业建筑 |
 | COMMUNITY\_CENTER | 社区中心 |
-| COMPANY | 电子、制造、计算机数据服务、公共健康技术、多元化金融、动物收留所、航空、设备租赁、服务、邮件/包裹/货物递送、公交、家用电器维修、保洁服务、OEM、税务服务、石油天然气、法律服务、建筑、电信、运输、汽车制造、化工、殡仪服务、桥梁隧道建设、汽车、机械工程、服务、投资顾问、广告/营销、移动存储、储蓄机构、保险、计算机软件、制药、餐饮、婚礼服务、农业技术、房地产、出租车、豪车接送服务、租车、采矿、发行技术、有线电话、进口/出口分销、公司、收容所、煤矿、房地产、酿酒、金矿 |
+| COMPANY | 电子器件、 制造、 计算机数据服务、 公共健康技术、 多元化的金融、 动物防范一些、 航班、 设备租赁费、 服务、 邮件/包/运费交付、 总线行、 家庭设备修复，清理服务，oem，税服务、 石油天然气、 法律服务、 构造、 电信、 传输、 汽车制造、 化学物、 葬礼服务防止假死、 桥隧道操作、 汽车、 机械工程、 服务、 投资顾问广告/市场营销，移动存储、 节省机构、 保险、 计算机软件 pharmaceuticals，以迎合，婚礼服务、 农业技术、 不动产、 出租车、 礼车 shuttle 服务总线章程租赁，挖掘、 发布技术、 电缆电话、 导入/导出分发、 公司、 asylum、 由燃煤提供; mine(s)、 estate(s)、 啤酒厂、 gold mine(s) |
 | COURTHOUSE | 法院 |
 | CULTURAL\_CENTER | 文化中心 |
 | DENTIST | 牙医 |

@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f083a5a9fe8027467eb95711a15725859f59e4fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: b08e1489cf337360e838a3b5d5531fa2d4c0073b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438042"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57846950"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
 
@@ -27,7 +27,7 @@ ms.locfileid: "54438042"
 
 本教程介绍了如何在 Azure 自动化中创建 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 。 从一个简单的 Runbook 开始，将测试和发布该 Runbook，同时了解如何跟踪 Runbook 作业的状态。 然后，通过修改 Runbook 来实际管理 Azure 资源，这种情况下会启动 Azure 虚拟机。 最后，通过添加 Runbook 参数使此 Runbook 更稳健。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要具备以下先决条件：
 
@@ -56,7 +56,7 @@ ms.locfileid: "54438042"
 
 2. 通过单击“保存” 保存 Runbook。
 
-##<a name="a-namestep-3---test-the-runbook-test-the-runbook"></a><a name="step-3---test-the-runbook"> 测试 runbook
+## <a name="step-3---test-the-runbook"> </a> 测试 runbook
 
 在发布 Runbook 使其可在生产中使用之前，需对其进行测试以确保其能正常工作。 测试 Runbook 时，可以运行其“草稿”版本并以交互方式查看其输出。
 
@@ -107,6 +107,9 @@ ms.locfileid: "54438042"
 已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。 除非使用在创建自动化帐户时自动创建的运行方式连接对其进行身份验证，否则无法执行此操作。 通过 Connect-azurermaccount cmdlet 使用运行方式连接。 如果要跨多个订阅管理资源，需要使用 -AzureRmContext 参数以及 [Get-AzureRmContext](/powershell/module/azurerm.profile/get-azurermcontext)。
 
    ```powershell
+   # Ensures you do not inherit an AzureRMContext in your runbook
+   Disable-AzureRmContextAutosave –Scope Process
+   
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
@@ -121,6 +124,9 @@ ms.locfileid: "54438042"
 1. 键入（或者复制并粘贴）以下代码，对自动化运行方式帐户的身份验证进行处理：
 
    ```powershell
+   # Ensures you do not inherit an AzureRMContext in your runbook
+   Disable-AzureRmContextAutosave –Scope Process
+
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
    -ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
@@ -141,6 +147,9 @@ ms.locfileid: "54438042"
 1. 在 Connect-AzureRmAccount 后面键入 Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'（提供要启动的虚拟机的名称和资源组名称）。  
 
    ```powershell
+   # Ensures you do not inherit an AzureRMContext in your runbook
+   Disable-AzureRmContextAutosave –Scope Process
+
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
    -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
@@ -161,6 +170,9 @@ Runbook 当前会启动你在 Runbook 中硬编码的虚拟机，但如果在启
     [string]$VMName,
     [string]$ResourceGroupName
    )
+   # Ensures you do not inherit an AzureRMContext in your runbook
+   Disable-AzureRmContextAutosave –Scope Process
+
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
    -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
