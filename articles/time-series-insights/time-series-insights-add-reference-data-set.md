@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
-ms.openlocfilehash: a14f568e2485e59cb3e567eb9ee5c5eb20b02afc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: f5cc06ba1a326d262c1437a941306b4d4a648260
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198416"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101221"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建引用数据集
 
@@ -82,19 +82,19 @@ ms.locfileid: "54198416"
  
 13. 通过填写数据网格上方的“数据集名称”字段为数据集命名。
 
-   ![为数据集命名。](media/add-reference-data-set/name_reference_dataset.png)
+    ![为数据集命名。](media/add-reference-data-set/name_reference_dataset.png)
 
 14. 通过选择数据网格上方的下拉列表，提供数据集中的**主键**列。
 
-   ![选择键列。](media/add-reference-data-set/set_primary_key.png)
+    ![选择键列。](media/add-reference-data-set/set_primary_key.png)
 
-   （可选）选择 **+** 按钮来将一个辅键列添加为复合主键。 如果需要撤消选择，请从下拉列表中选择空值来删除辅键。
+    （可选）选择 **+** 按钮来将一个辅键列添加为复合主键。 如果需要撤消选择，请从下拉列表中选择空值来删除辅键。
 
-15.  若要上传数据，请选择“上传行”按钮。
+15. 若要上传数据，请选择“上传行”按钮。
 
-   ![上载](media/add-reference-data-set/upload_rows.png)
+    ![上载](media/add-reference-data-set/upload_rows.png)
 
-   页面会确认完成的上传并显示消息“已成功上传数据集”。
+    页面会确认完成的上传并显示消息“已成功上传数据集”。
 
 ## <a name="next-steps"></a>后续步骤
 * 以编程方式[管理引用数据](time-series-insights-manage-reference-data-csharp.md)。

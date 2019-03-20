@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 0f6fff5047bc72fa1171e06bb2f160196ecef807
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300602"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090332"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -44,8 +44,8 @@ ms.locfileid: "55300602"
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * 改进了对观察者异常的处理。
 * 有关观察者错误的更丰富信息：
- * 当观察者由于观察者的 ProcessChangesAsync 抛出异常而关闭时，CloseAsync 现在将接收设置为 ChangeFeedObserverCloseReason.ObserverError 的 reason 参数。
- * 添加了跟踪以识别观察者的用户代码中的错误。
+  * 当观察者由于观察者的 ProcessChangesAsync 抛出异常而关闭时，CloseAsync 现在将接收设置为 ChangeFeedObserverCloseReason.ObserverError 的 reason 参数。
+  * 添加了跟踪以识别观察者的用户代码中的错误。
 
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
 * 添加了对使用共享数据库吞吐量的拆分集合的处理支持。
@@ -130,7 +130,7 @@ ms.locfileid: "55300602"
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * 稳定性改进。
-  * 修复了处理取消的任务问题，该问题可能导致某些分区上的观察者停止。
+  * 用于处理已取消的任务可能会导致的问题的修复某些分区上停止观察程序。
 * 支持手动检查点。
 * 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 及更高版本。
 

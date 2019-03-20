@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 8de155eb0c53a07c88d996e2545be9da3159653f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: c6ca7637c8e251fa29781503ffc18227c51bb4da
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565575"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002295"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>将弹性数据库客户端库与 Dapper 配合使用
 本文档面向依赖于使用 Dapper 生成应用程序，但同时想要运用[弹性数据库工具](sql-database-elastic-scale-introduction.md)创建应用程序来实现分片，以横向扩展其数据层的开发人员。  本文档演示了与弹性数据库工具集成所需的基于 Dapper 的应用程序发生的更改。 我们将重点介绍如何使用 Dapper 构建弹性数据库分片管理和数据依赖型路由。 
@@ -27,7 +27,7 @@ ms.locfileid: "55565575"
 将 **Dapper** 和 **DapperExtensions** 与 Azure SQL 数据库的弹性数据库客户端库的过程很简单。 将新 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 对象的创建和打开方式更改为使用来自[客户端库](https://msdn.microsoft.com/library/azure/dn765902.aspx)的 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 调用，应用程序即可使用数据依赖型路由。 这会将应用程序中的更改限制为已创建和打开新连接的位置。 
 
 ## <a name="dapper-overview"></a>Dapper 概述
-**Dapper** 是对象关系映射器。 它将应用程序中的 .NET 对象映射到关系数据库（或者执行相反的映射）。 示例代码的第一个部分演示了如何将弹性数据库客户端库与基于 Dapper 的应用程序相集成。 示例代码的第二个部分演示了同时使用 Dapper 和 DapperExtensions 时如何集成。  
+**Dapper** 是对象关系映射器。 它将应用程序中的 .NET 对象映射到关系型数据库（或者执行相反的映射）。 示例代码的第一个部分演示了如何将弹性数据库客户端库与基于 Dapper 的应用程序相集成。 示例代码的第二个部分演示了同时使用 Dapper 和 DapperExtensions 时如何集成。  
 
 Dapper 中的映射器功能对数据库连接提供扩展方法，可以简化用于执行或查询数据库的 T-SQL 语句的提交。 例如，使用 Dapper 可以轻松地在 .NET 对象与用于 **Execute** 调用的 SQL 语句参数之间进行映射，或者在 Dapper 中通过 **Query** 调用来使用对 .NET 对象执行 SQL 查询后返回的结果。 
 
@@ -35,7 +35,7 @@ Dapper 中的映射器功能对数据库连接提供扩展方法，可以简化�
 
 Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制数据库连接的创建。 这有助于与弹性数据库客户端库交互，从而可以通过将 shardlet 映射到数据库来中转数据库连接。
 
-若要获取 Dapper 程序集，请参阅 [Dapper .NET](http://www.nuget.org/packages/Dapper/)。 有关 Dapper 扩展，请参阅 [DapperExtensions](http://www.nuget.org/packages/DapperExtensions)。
+若要获取 Dapper 程序集，请参阅 [Dapper .NET](https://www.nuget.org/packages/Dapper/)。 有关 Dapper 扩展，请参阅 [DapperExtensions](https://www.nuget.org/packages/DapperExtensions)。
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>弹性数据库客户端库速览
 使用弹性数据库客户端库，可以定义应用程序数据的分区（称为 shardlet），将它们映射到数据库，并根据分片键来识别这些分区。 可以根据需要创建任意数目的数据库，并在这些数据库之间分布 shardlet。 分片键值到数据库的映射由库的 API 提供的分片映射存储。 此功能称为**分片映射**管理。 分片映射还为带有分片键的请求充当数据库连接的代理。 此功能称为数据依赖型路由。
@@ -64,8 +64,8 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 此代码示例（摘自随附的示例）演示了应用程序在库中提供分片键，以将连接中转到正确分片的方案。   
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                     key: tenantId1, 
-                     connectionString: connStrBldr.ConnectionString, 
+                     key: tenantId1,
+                     connectionString: connStrBldr.ConnectionString,
                      options: ConnectionOptions.Validate))
     {
         var blog = new Blog { Name = name };
@@ -87,13 +87,13 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 查询的工作方式非常类似 - 首先从客户端 API 使用 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 打开连接。 然后，可以使用常规 Dapper 扩展方法将 SQL 查询的结果映射到 .NET 对象：
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId1, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId1,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate ))
-    {    
+    {
            // Display all Blogs for tenant 1
            IEnumerable<Blog> result = sqlconn.Query<Blog>(@"
-                                SELECT * 
+                                SELECT *
                                 FROM Blog
                                 ORDER BY Name");
 
@@ -112,8 +112,8 @@ Dapper 随附了可以在开发数据库应用程序时提供更大方便性和�
 在应用程序中使用 DapperExtensions 不会更改创建和管理数据库连接的方式。 应用程序仍要负责打开连接，并且扩展方法要求使用常规 SQL 客户端连接对象。 我们可以依赖于上述 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx)。 如以下代码示例所示，唯一的变化是不再需要编写 T-SQL 语句：
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            var blog = new Blog { Name = name2 };
@@ -123,8 +123,8 @@ Dapper 随附了可以在开发数据库应用程序时提供更大方便性和�
 下面是查询的代码示例： 
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            // Display all Blogs for tenant 2
@@ -143,7 +143,7 @@ Microsoft 模式和实践团队发布了[暂时性故障处理应用程序块](h
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
-       using (SqlConnection sqlconn = 
+       using (SqlConnection sqlconn =
           shardingLayer.ShardMap.OpenConnectionForKey(tenantId2, connStrBldr.ConnectionString, ConnectionOptions.Validate))
           {
               var blog = new Blog { Name = name2 };

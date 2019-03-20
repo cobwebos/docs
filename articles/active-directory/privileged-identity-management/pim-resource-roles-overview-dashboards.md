@@ -1,5 +1,5 @@
 ---
-title: 使用资源仪表板执行访问评审 - Azure | Microsoft Docs
+title: 使用资源仪表板在 PIM-Azure 中执行访问评审 |Microsoft Docs
 description: 介绍如何使用资源仪表板在 Azure AD Privileged Identity Management (PIM) 中执行访问评审。
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30cfafec770aec72faf01563018fbd478e73ab2f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 89abf15731bd125737e7c18ab45782820a856b38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202576"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012665"
 ---
-# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>使用资源仪表板执行访问评审
+# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>使用资源仪表板在 PIM 中执行访问评审
 
 可以使用资源仪表板在 Privileged Identity Management (PIM) 中对 Azure 资源执行访问评审。 “管理员视图”仪表板包含三个主要组件：
 

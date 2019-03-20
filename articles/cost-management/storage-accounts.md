@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: secdec18
-ms.openlocfilehash: 25a8057a1c547e29b209d87d9124a3e019957dd8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f03193253bd8d8a7530d65a552a07d3901887cf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100848"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104295"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>为 Cloudyn 配置存储帐户
 
@@ -23,7 +23,7 @@ ms.locfileid: "53100848"
 
 可以将 Cloudyn 报表保存在 Cloudyn 门户、Azure 存储或 AWS 存储 Bucket 中。 将报表保存到 Cloudyn 门户的操作免费。 但是，将报表保存到云服务提供商的存储为可选操作，需要额外付费。 本文介绍如何配置用于存储报表的 Azure 存储帐户和 Amazon Web Services (AWS) 存储 Bucket。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 必须有 Azure 存储帐户或 Amazon 存储 Bucket。
 
@@ -39,13 +39,13 @@ ms.locfileid: "53100848"
 2. 单击“所有服务”，选择“存储帐户”，滚动到要使用的存储帐户，然后选择该帐户。
 3. 在存储帐户页的“设置”下，单击“访问密钥”。
 4. 复制**存储帐户名称**和 key1 下的**连接字符串**。  
-![复制存储帐户名称和连接字符串](./media/storage-accounts/azure-storage-access-keys.png)  
+   ![复制存储帐户名称和连接字符串](./media/storage-accounts/azure-storage-access-keys.png)  
 5. 通过 Azure 门户打开 Cloudyn 门户，或导航到 https://azure.cloudyn.com 并进行登录。
 6. 单击齿轮符号，然后选择“报表存储管理”。
 7. 单击“新增 +”，确保选中“Microsoft Azure”。 在“名称”区域中粘贴 Azure 存储帐户名称。 在相应的区域中粘贴**连接字符串**。 输入容器名称，然后单击“保存”。  
-![在“添加新报表存储”框中粘贴 Azure 存储帐户名称和连接字符串](./media/storage-accounts/azure-cloudyn-storage.png)
+   ![在“添加新报表存储”框中粘贴 Azure 存储帐户名称和连接字符串](./media/storage-accounts/azure-cloudyn-storage.png)
 
-  此时新的 Azure 报表存储项会显示在存储帐户列表中。  
+   此时新的 Azure 报表存储项会显示在存储帐户列表中。  
     ![列表中的新 Azure 报表存储项](./media/storage-accounts/azure-storage-entry.png)
 
 
@@ -67,8 +67,8 @@ Cloudyn 使用现有的 AWS 凭据“用户”或“角色”将报表保存到 
 4. 单击“JSON”选项卡。
 5. 以下策略允许将报表保存到 S3 Bucket。 将以下策略示例复制并粘贴到“JSON”选项卡。将 &lt;bucketname&gt; 替换为 Bucket 名称。
 
-  ```json
-{
+   ```json
+   {
     "Version": "2012-10-17",
     "Statement": [
       {
@@ -82,8 +82,8 @@ Cloudyn 使用现有的 AWS 凭据“用户”或“角色”将报表保存到 
         ]
       }
     ]
-}
-```
+   }
+   ```
 
 6. 单击“查看策略”。  
     ![显示示例信息的 AWS JSON 策略](./media/storage-accounts/aws-policy.png)  
@@ -122,11 +122,11 @@ Cloudyn 使用现有的 AWS 凭据“用户”或“角色”将报表保存到 
 2. 选择“权限”选项卡，然后单击“Bucket 策略”。
 3. 复制并粘贴以下策略示例。 将 &lt;bucket\_name&gt; 和 &lt;Cloudyn\_principle&gt; 替换为 Bucket 的 ARN。 替换 Cloudyn 使用的角色或用户的 ARN。
 
-  ```
-{
-  "Id": "Policy1485775646248",
-  "Version": "2012-10-17",
-  "Statement": [
+   ```
+   {
+   "Id": "Policy1485775646248",
+   "Version": "2012-10-17",
+   "Statement": [
     {
       "Sid": "SaveReport2S3",
       "Action": [
@@ -140,9 +140,9 @@ Cloudyn 使用现有的 AWS 凭据“用户”或“角色”将报表保存到 
         ]
       }
     }
-  ]
-}
-```
+   ]
+   }
+   ```
 
 4. 在 Bucket 策略编辑器中，单击“保存”。
 

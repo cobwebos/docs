@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 2330e395244f33653af415b5db896fdc2aa2024d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852977"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107029"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
@@ -30,7 +30,7 @@ ms.locfileid: "54852977"
 Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用来传递此类跟踪上下文的有效负载属性。
 该协议基于 [HTTP 关联协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)。
 
-| 属性名称        | 说明                                                 |
+| 属性名称        | 描述                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
 |  Correlation-Context | 操作上下文，将传播到操作处理流程涉及到的所有服务。 有关详细信息，请参阅 [HTTP 协议中的 Correlation-Context](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
@@ -213,7 +213,7 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 1. `IsEnabled(<OperationName>, string entity, null)`，例如 `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`。 请注意，末尾没有“Start”或“Stop”。 使用此语句可以筛选出特定的操作或队列。 如果回调返回 `false`，则表示未发送操作的事件
 
-  * 对于“Process”和“ProcessSession”操作，还会收到 `IsEnabled(<OperationName>, string entity, Activity activity)` 回调。 使用此回调可根据 `activity.Id` 或 Tags 属性筛选事件。
+   * 对于“Process”和“ProcessSession”操作，还会收到 `IsEnabled(<OperationName>, string entity, Activity activity)` 回调。 使用此回调可根据 `activity.Id` 或 Tags 属性筛选事件。
   
 2. `IsEnabled(<OperationName>.Start)`，例如 `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`。 检查是否应激发“Start”事件。 结果只影响“Start”事件，但其他检测不依赖于它。
 

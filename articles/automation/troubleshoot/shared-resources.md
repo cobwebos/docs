@@ -4,16 +4,16 @@ description: 了解如何解决 Azure 自动化共享资源的问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/3/2018
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 911f592c43865ea8bdfe85c1ad1071c7112ae9b6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 35e39a070a4c976655296d2ea141478d13e43bbc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475435"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902818"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>解决共享资源的错误
 
@@ -38,6 +38,24 @@ ms.locfileid: "54475435"
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
+
+### <a name="update-azure-modules-importing"></a>场景：尝试将其更新后导入停滞的 AzureRM 模块
+
+#### <a name="issue"></a>问题
+
+尝试更新 AzureRM 模块后，并显示以下消息横幅停留在你的帐户：
+
+```
+Azure modules are being updated
+```
+
+#### <a name="cause"></a>原因
+
+没有更新 AzureRM 模块是具有数值名以 0 开头的资源组中的自动化帐户中的已知的问题。
+
+#### <a name="resolution"></a>解决方法
+
+若要更新 Azure 模块在自动化帐户中，它必须是字母数字名称的资源组中。 具有从 0 开始的数字名称的资源组不能在这一次更新 AzureRM 模块。
 
 ### <a name="module-fails-to-import"></a>场景：模块无法导入，或者 cmdlet 在导入后无法执行
 
@@ -119,6 +137,30 @@ You do not have permissions to create…
 若要创建或更新运行方式帐户，必须对运行方式帐户使用的各种资源具有适当的权限。 要了解创建或更新运行方式帐户所需的权限，请参阅[运行方式帐户权限](../manage-runas-account.md#permissions)。
 
 如果该问题是由某个锁引起的，请确保可以删除该锁。 然后导航到锁定的资源，右键单击该锁并选择“删除”以删除该锁。
+
+### <a name="iphelper"></a>场景：当收到错误"找不到入口点将在 DLL 中的 GetPerAdapterInfo 名为 iplpapi.dll"执行 runbook。
+
+#### <a name="issue"></a>问题
+
+执行 runbook 时您会收到以下异常：
+
+```error
+Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
+```
+
+#### <a name="cause"></a>原因
+
+此错误最可能是由于配置不正确[运行方式帐户](../manage-runas-account.md)。
+
+#### <a name="resolution"></a>解决方法
+
+请确保你[运行方式帐户](../manage-runas-account.md)已正确配置。 后配置正确，请确保使用 Azure 进行身份验证在 runbook 中具有适当的代码。 下面的示例演示用于在 runbook 中使用运行方式帐户进行 Azure 身份验证代码的片段。
+
+```powershell
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
+-ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+```
 
 ## <a name="next-steps"></a>后续步骤
 

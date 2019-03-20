@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 95c495bf3a8ad7b82c42d4071899d045cb49f27b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 4784ca08366d833d02372393e0e12f0fefe8c5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247538"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112443"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
@@ -80,8 +80,8 @@ DSVM 名称限制包括：
 
 > [!NOTE]
 >
-> 以下代码使用 `RemoteCompute` 目标类将现有的 VM 作为计算目标来附加。
-> 为了推广此设计模式，将会在将来的版本中弃用 `DsvmCompute` 类。
+> 下面的代码使用[RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py)目标类要附加现有的 VM 作为计算目标。
+> [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py)类将在为支持这种设计模式的未来版本中弃用。
 
 运行以下代码，根据预先存在的 Linux DSVM 创建计算目标。
 
@@ -107,7 +107,7 @@ compute_target.wait_for_completion(show_output=True)
 
 若要提供访问权限，必须：
 + 创建一个包含 `get_data()` 函数的 get_data.py 文件 
-* 将该文件置于可以作为绝对路径访问的目录中 
++ 将该文件置于可以作为绝对路径访问的目录中 
 
 你可以封装代码，以从 blob 存储或 get_data.py 文件中的本地磁盘读取数据。 在下面的代码示例中，数据来自 sklearn 包。
 

@@ -7,19 +7,19 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 357b22e4d4a6bf42ba165e49fc3cc01762268297
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 17f9acf6dcdc5a81c785bedc3649ee0258562b43
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756506"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994157"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for PostgreSQL 中备份和还原服务器
 
 ## <a name="backup-happens-automatically"></a>自动进行备份
 Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功能。 通过此功能，用户可将服务器及其所有数据库还原到新服务器上的某个较早时间点。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成本操作指南，需要：
 - [Azure Database for PostgreSQL 服务器和数据库](quickstart-create-server-database-azure-cli.md)
 
@@ -47,7 +47,7 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
 可以如下所述更改服务器的备份保留期：
 
 ```azurecli-interactive
-az postgres server update --name mydemoserver --resource-group myresourcegroup --backup-retention-days 10
+az postgres server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
 前面的示例将 mydemoserver 的备份保留期更改为 10 天。
@@ -68,7 +68,8 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 `az postgres server restore` 命令需要以下参数：
-| 设置 | 建议的值 | 说明  |
+
+| 设置 | 建议的值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
 | 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
@@ -107,7 +108,8 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 ```
 
 `az postgres server georestore` 命令需要以下参数：
-| 设置 | 建议的值 | 说明  |
+
+| 设置 | 建议的值 | 描述  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新服务器将属于的资源组的名称。|
 |名称 | mydemoserver-georestored | 新服务器的名称。 |

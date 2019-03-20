@@ -3,15 +3,16 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用门户创建虚拟节点
 description: 了解如何通过 Azure 门户创建使用虚拟节点运行 Pod 的 Azure Kubernetes 服务 (AKS) 群集。
 services: container-service
 author: iainfoulds
+ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: a47910083083787000b749a0b5b3256df5e702c8
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: c1e4803698525f0d084fadac14e3952b951ecae6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845395"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58164436"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用 Azure 门户中的虚拟节点
 
@@ -19,6 +20,16 @@ ms.locfileid: "54845395"
 
 > [!IMPORTANT]
 > AKS 的虚拟节点目前提供**预览版**。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+
+## <a name="preview-limitations"></a>预览版限制
+
+虽然此功能处于预览状态，但以下区域支持部署：
+
+* 澳大利亚东部 (australiaeast)
+* 美国东部 (eastus)
+* 美国中西部 (westcentralus)
+* 西欧 (westeurope)
+* 美国西部 (westus)
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -184,7 +195,7 @@ $ curl -L 10.241.0.4
 [aks-network]: ./networking-overview.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
 

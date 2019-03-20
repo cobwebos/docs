@@ -16,12 +16,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17f832947e289933fb7cde9513bc6e091aec30ae
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122971"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -178,7 +178,7 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 如只需进行少量更改，使用同步规则编辑器即可达到目的。 如需进行大量更改，最好选择 PowerShell。 某些高级功能只有 PowerShell 中才会提供。
 
 ### <a name="get-the-powershell-script-for-an-out-of-box-rule"></a>获取现成规则的 PowerShell 脚本
-要查看创建现成规则的 PowerShell 脚本，在同步规则编辑器中选择此规则，并单击“导出”。 此操作会提供创建该规则的 PowerShell 脚本。
+若要查看创建现成规则的 PowerShell 脚本，在同步规则编辑器中选择此规则，然后单击“导出”。 此操作会提供创建该规则的 PowerShell 脚本。
 
 ### <a name="advanced-precedence"></a>高级优先级
 以 100 优先级值开头的现成同步规则。 如果有多个林，并且需要进行大量自定义更改，那么 99 个同步规则可能不够。
@@ -268,8 +268,8 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | Name | *提供名称* | 例如 *In from AD – User UserType* |
-    | 说明 | *提供说明* |  |
+    | 名称 | *提供名称* | 例如 *In from AD – User UserType* |
+    | 描述 | *提供说明* |  |
     | 连接的系统 | *选择本地 AD 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
     | Metaverse 对象类型 | **Person** |  |
@@ -294,7 +294,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
-    | 直接 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | 未选中 | 更新 |
+    | 表达式 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | 未选中 | 更新 |
 
 7. 单击“添加”创建入站规则。
 
@@ -310,8 +310,8 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
-    | Name | *提供名称* | 例如 *Out to AAD – User UserType* |
-    | 说明 | *提供说明* ||
+    | 名称 | *提供名称* | 例如 *Out to AAD – User UserType* |
+    | 描述 | *提供说明* ||
     | 连接的系统 | *选择 AAD 连接器* ||
     | 连接的系统对象类型 | **User** ||
     | Metaverse 对象类型 | **Person** ||
@@ -322,7 +322,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     | 属性 | 运算符 | 值 |
     | --- | --- | --- |
-    | sourceObjectType | EQUAL | 用户 |
+    | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
     范围筛选器确定要将此出站同步规则应用到哪些 Azure AD 对象。 在本示例中，我们将使用 *Out to AD – User Identity* 现成同步规则中的相同范围筛选器。 它可以防止将同步规则应用到未从本地 Active Directory 同步的 User 对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
@@ -349,8 +349,8 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
    3. 在弹出对话框中，选择“完全导入”，并单击“确定”。
    4. 等待操作完成。
 
-    > [!NOTE]
-    > 如果源属性已包含在导入属性列表中，则可以在本地 AD 连接器上跳过“完全导入”。 换而言之，在执行[步骤 2：将源属性添加到本地 AD 连接器架构](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema)的过程中不需要进行任何更改。
+      > [!NOTE]
+      > 如果源属性已包含在导入属性列表中，则可以在本地 AD 连接器上跳过“完全导入”。 换而言之，在执行[步骤 2：将源属性添加到本地 AD 连接器架构](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema)的过程中不需要进行任何更改。
 
 2. 在 **Azure AD 连接器**上运行“完全导入”：
 

@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bda70a6854dc6d94d3d4b37e6f587e4dcd045126
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 9c4af55a5ddb05335f8acfdd23711df2290e217b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543831"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085688"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>在 Service Fabric 中配置和使用服务相关性
 相关性是一个控件，主用于帮助简化将已存在且较大型的单体式应用程序转换到云和微服务领域。 它也可以用作提升服务性能的优化，不过这样做可能会产生副作用。
@@ -59,17 +59,19 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 相关性通过多种相互关联的架构之一来表示，有两种不同的模式。 相关性的最常见模式是所谓的 NonAlignedAffinity 模式。 在 NonAlignedAffinity 下，不同服务的副本或实例放在相同节点上。 另一种模式是 AlignedAffinity。 对齐的相关性仅适用于有状态服务。 配置两个有状态服务实现对齐的相关性，可确保这些服务的主副本与其他服务的主副本位于相同的节点上。 它还能确保这些服务的每个辅助副本对位于相同的节点上。 也可以针对有状态服务配置 NonAlignedAffinity（但不太常见）。 使用 NonAlignedAffinity 时，两个有状态服务的不同副本会在相同的节点上运行，但二者的主副本最终会在不同的节点上。
 
 <center>
-![相关性模式及其影响][Image1]
+
+![相关性模式和它们的影响][Image1]
 </center>
 
 ### <a name="best-effort-desired-state"></a>尽力而为的所需状态
 相关性关系是以尽力而为的方式获取的。 它不提供在同一可执行进程中运行所提供的归置或可靠性保证。 具有相关性关系的服务是本质上不同的实体，可能失败或者被单独移动。 相关性关系也会中断，但这些换行符是临时的。 例如，容量限制可能代表相关性关系中只有某些服务对象能够适用于给定的节点。 在这种情况下，即使有相关性关系，但由于存在其他限制，也无法强制实施这种关系。 如果可以这样做，冲突会稍后自动更正。
 
 ### <a name="chains-vs-stars"></a>链形与星形
-目前，群集 Resource Manager 无法为相关性关系链建模。 这意味着，如果有一个服务是某一个相关性关系中的子级，则该服务不能是另一个相关性关系中的父级。 如果想要为这种关系建模，需要有效地将它建模为星形而不是链形。 要从链形转为星形，请改为将最下层子级的父级设置为第一个子级的父级。 可能需要执行此操作多次，具体取决于服务的排列方式。 如果没有自然父级服务，可能需要创建一个用作占位符。 根据需求，可能还需要查看一下[应用程序组](service-fabric-cluster-resource-manager-application-groups.md)。
+目前，群集 Resource Manager 无法为相关性关系链建模。 这意味着，如果有一个服务是某一个相关性关系中的子级，则该服务不能是另一个相关性关系中的父级。 如果想要为这种关系建模，需要有效地将它建模为星形而不是链形。 为了从链形转变为星形，最下面的子级会变成第一个子级的父级。 可能需要执行此操作多次，具体取决于服务的排列方式。 如果没有自然父级服务，可能需要创建一个用作占位符。 根据需求，可能还需要查看一下[应用程序组](service-fabric-cluster-resource-manager-application-groups.md)。
 
 <center>
-![相关性关系上下文中的链形与星形][Image2]
+
+![链 vs。星形][Image2]
 </center>
 
 目前关于相关性关系的另一个要注意的事项是，它们默认是双向的。 这意味着相关性规则只强制子级放置在父级的所在之处。 不能确保父级位于子级的所在之处。 因此，如果存在相关性违规并且由于某些原因无法通过将子级移动到父级节点来纠正违规行为，那么 - 即使将父级移动到子级节点可以纠正违规 - 父级也不会移动到子级节点。 将配置 [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) 设置为 true 会消除方向性。 还请务必注意，相关性关系并不完美，或者无法立即强制执行，因为不同的服务具有不同的生命周期，会失败并且会单独移动。 例如，假设父级由于故障突然故障转移到另一个节点。 群集资源管理器和故障转移管理器会先处理故障转移，因为保证服务之间同步、一致和可用是优先考虑的。 故障转移完成后，相关性关系立即破裂，但群集资源管理器会认为一切都正常，直到它发现子级未与父级在一起。 这些种类的检查会定期执行。 若要深入了解群集资源管理器如何评估约束，可访问[本文](service-fabric-cluster-resource-manager-management-integration.md#constraint-types)，[此文](service-fabric-cluster-resource-manager-balancing.md)详细介绍如何配置评估这些约束的频率。   

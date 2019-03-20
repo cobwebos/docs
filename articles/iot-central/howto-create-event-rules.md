@@ -3,17 +3,17 @@ title: 在 Azure IoT Central 应用程序中创建和管理事件规则 | Micros
 description: 可以通过 Azure IoT Central 事件规则以近实时方式监视设备并自动调用操作（例如在触发规则时发送电子邮件）。
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 08/14/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af85ff8272853be82bae5c79622295fddfc60ade
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.openlocfilehash: f350d0ae6602fb393da3ddc350f33ec89e86078e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337268"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081434"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建事件规则并设置通知
 
@@ -27,29 +27,21 @@ ms.locfileid: "53337268"
 
 若要创建事件规则，设备模板必须至少定义有一个事件度量。 此示例使用冷藏食品贩卖机设备来报告风扇电机错误事件。 此规则监视由设备报告的事件，只要报告了事件，就会发送电子邮件。
 
-1. 使用 Device Explorer，导航到要对其添加规则的设备模板。
-
-1. 在所选模板下，单击一个现有设备。 
-
-    >[!TIP] 
-    >如果此模板无任何设备，请先添加一个新设备。
+1. 使用**设备模板**页上，导航到要为其添加的规则的设备模板。
 
 1. 如果尚未创建任何规则，则会看到以下屏幕：
 
     ![尚无规则](media/howto-create-event-rules/Rules_Landing_Page.png)
 
+1. 上**规则**选项卡上，选择 **+ 新规则**若要查看可以创建的规则的类型。
 
-1. 在“规则”选项卡上，依次单击“编辑模板”和“+ 新建规则”，即可查看可以创建的规则类型。
-
-
-1. 单击“事件”磁贴创建事件监视规则。
+1. 选择**事件**磁贴，以创建监视规则的事件。
 
     ![规则类型](media/howto-create-event-rules/Rule_Types.png)
 
-    
 1. 输入一个有助于在此设备模板中识别该规则的名称。
 
-1. 若要立即为所有根据此模板创建的设备启用此规则，请将“为此模板的所有设备启用规则”切换为开启状态。
+1. 若要立即启用基于此模板创建的所有设备的规则，请切换**此模板中的所有设备的启用规则**。
 
     ![规则详细信息](media/howto-create-event-rules/Rule_Detail.png)
 
@@ -63,26 +55,25 @@ ms.locfileid: "53337268"
 
 1. 从“度量”下拉列表中选择要监视的事件。 在此示例中，已选择“风扇电机错误”事件。
 
-   ![条件](media/howto-create-event-rules/Condition_Filled_Out.png) 
-
+   ![条件](media/howto-create-event-rules/Condition_Filled_Out.png)
 
 1. 或者，还可将“计数”设为“聚合”，并提供相应阈值。
 
-    - 如无聚合，此规则对每个满足此条件的事件数据点均会触发。 例如，如果将此规则的条件配置为在“风扇电机错误”事件发生时触发，则设备报告该事件时会立即触发此规则。
-    - 如果“计数”用作聚合函数，则必须提供“阈值”和“聚合时间段”（此期间内需评估条件）。 在这种情况下，事件计数会聚合，且此规则仅在聚合事件计数匹配阈值时触发。
- 
-    例如，如果要对 5 分钟内存在超过 3 个设备事件的情况发出警报，请选择事件，然后将聚合函数设为“计数”，将运算符设为“大于”，并将“阈值”设为“3”。 将“聚合时间段”设为“5 分钟”。 设备在 5 分钟内发送超过 3 个事件时，此规则会触发。 规则评估频率与“聚合时间段”相同，也就是说，此例中规则每隔 5 分钟评估一次。 
+   - 如无聚合，此规则对每个满足此条件的事件数据点均会触发。 例如，如果配置规则的条件来触发时**风扇电动机错误**则规则将触发设备报告该事件时，应立即发生的事件。
+   - 如果“计数”用作聚合函数，则必须提供“阈值”和“聚合时间段”（此期间内需评估条件）。 在这种情况下，聚合的事件的计数和聚合的事件计数与匹配的阈值时才会触发规则。
 
-    ![添加事件条件](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
+     例如，如果要对 5 分钟内存在超过 3 个设备事件的情况发出警报，请选择事件，然后将聚合函数设为“计数”，将运算符设为“大于”，并将“阈值”设为“3”。 将“聚合时间段”设为“5 分钟”。 设备在 5 分钟内发送超过 3 个事件时，此规则会触发。 规则评估频率与“聚合时间段”相同，也就是说，此例中规则每隔 5 分钟评估一次。
 
-    >[!NOTE] 
-    >“条件”下可添加多个事件度量。 如果指定多个条件，必须满足所有条件才能触发该规则。 每个条件通过“AND”子句隐式联接。 使用聚合时，必须聚合每个度量。
+     ![添加事件条件](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
+
+     >[!NOTE]
+     >“条件”下可添加多个事件度量。 如果指定多个条件，必须满足所有条件才能触发该规则。 每个条件获取隐式联接 AND 子句。 使用聚合时，必须聚合每个度量。
 
 ### <a name="configure-actions"></a>配置操作
 
 本部分演示如何设置在规则触发时要执行的操作。 此规则中指定的所有条件评估结果均为 true 时会调用操作。
 
-1. 选择“操作”旁边的“+”。 在此处可以看到可用操作的列表。 
+1. 选择“操作”旁边的“+”。 在此处可以看到可用操作的列表。
 
     ![添加操作](media/howto-create-event-rules/Add_Action.png)
 
@@ -94,8 +85,6 @@ ms.locfileid: "53337268"
    ![配置操作](media/howto-create-event-rules/Configure_Action.png)
 
 1. 若要保存规则，请选择“保存”。 此规则数分钟即可生效，然后就开始监视发送到应用程序的事件。 匹配规则中指定的条件时，规则会触发配置的电子邮件操作。
-
-1. 选择“完成”，退出“编辑模板”模式。
 
 可将其他操作添加到规则，例如 Microsoft Flow 和 Webhook。 每个规则最多可添加 5 个操作。
 

@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7cd6af1dc6b947abd91c9d25a4b102e52da9d24d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 20f9655e1c3e7cce652802957f5eef1f333870e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456718"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176491"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -51,7 +51,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 ## <a name="cluster-autoscaler"></a>群集自动缩放程序
 
-为响应不断变化的 Pod 需求，Kubernetes 拥有一个集群自动缩放程序，可根据节点池中请求的计算资源调整节点数。 默认情况下，群集自动缩放程序每隔 10 秒检查一次 API 服务器，以了解节点计数所需的任何更改。 如果群集自动缩放程序确定需要进行更改，则 AKS 群集中的节点数会相应增加或减少。 群集自动缩放程序适用于运行 Kubernetes 1.10.x 或更高版本的支持 RBAC 的 AKS 群集。
+若要响应不断变化的盒需求，Kubernetes 已群集自动缩放程序 （目前以预览版在 AKS 中），可调整的基于节点池中的请求的计算资源的节点数。 默认情况下，群集自动缩放程序每隔 10 秒检查一次 API 服务器，以了解节点计数所需的任何更改。 如果群集自动缩放程序确定需要进行更改，则 AKS 群集中的节点数会相应增加或减少。 群集自动缩放程序适用于运行 Kubernetes 1.10.x 或更高版本的支持 RBAC 的 AKS 群集。
 
 ![Kubernetes 群集自动缩放程序](media/concepts-scale/cluster-autoscaler.png)
 
@@ -81,7 +81,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 ![Kubernetes 迸发缩放到 ACI](media/concepts-scale/burst-scaling.png)
 
-使用 ACI，可以快速部署容器实例，而无需额外的基础结构开销。 当与 AKS 连接时，ACI 会成为 AKS 群集的安全逻辑扩展。 虚拟 Kubelet 组件安装在 AKS 群集中，将 ACI 显示为虚拟 Kubernetes 节点。 然后，Kubernetes 可以计划通过虚拟节点作为 ACI 实例运行的 Pod，而不是直接在 AKS 群集中的 VM 节点上运行的 Pod。
+使用 ACI，可以快速部署容器实例，而无需额外的基础结构开销。 当与 AKS 连接时，ACI 会成为 AKS 群集的安全逻辑扩展。 虚拟 Kubelet 组件安装在 AKS 群集中，将 ACI 显示为虚拟 Kubernetes 节点。 然后，Kubernetes 可以计划通过虚拟节点作为 ACI 实例运行的 Pod，而不是直接在 AKS 群集中的 VM 节点上运行的 Pod。 虚拟节点目前处于预览状态，在 AKS 中。
 
 应用程序无需修改即可使用虚拟节点。 集群自动缩放程序在 AKS 集群中部署新节点后，部署可以跨 AKS 和 ACI 进行缩放，且没有延迟。
 

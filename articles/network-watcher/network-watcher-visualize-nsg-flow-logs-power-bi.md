@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913289"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079020"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 可视化网络安全组流日志
 
@@ -56,10 +56,10 @@ ms.locfileid: "54913289"
 
 1. 在 Power BI Desktop 应用程序中下载并打开以下 Power BI 模板：[网络观察程序 PowerBI 流日志模板](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. 输入所需的查询参数
-    1. **StorageAccountName** – 指定包含所要加载和可视化的 NSG 流日志的存储帐户的名称。
-    1. **NumberOfLogFiles** – 指定要在 Power BI 中下载和可视化的日志文件数。 例如，如果指定 50，则会下载 50 个最新的日志文件。 如果启用 2 个 NSG 并配置为向此帐户发送 NSG 流日志，则可以查看过去 25 小时的日志。
+   1. **StorageAccountName** – 指定包含所要加载和可视化的 NSG 流日志的存储帐户的名称。
+   1. **NumberOfLogFiles** – 指定要在 Power BI 中下载和可视化的日志文件数。 例如，如果指定 50，则会下载 50 个最新的日志文件。 如果启用 2 个 NSG 并配置为向此帐户发送 NSG 流日志，则可以查看过去 25 小时的日志。
 
-    ![Power BI 主界面][2]
+      ![Power BI 主界面][2]
 
 1. 输入存储帐户的访问密钥。 在 Azure 门户中导航到存储帐户，并从“设置”菜单中选择“访问密钥”，即可找到有效的访问密钥。 单击“连接”，并应用更改。
 
@@ -67,7 +67,7 @@ ms.locfileid: "54913289"
 
     ![访问密钥 2][4]
 
-4.  现已下载并分析日志，接下来可以利用预先创建的视觉对象。
+4. 现已下载并分析日志，接下来可以利用预先创建的视觉对象。
 
 ## <a name="understanding-the-visuals"></a>了解视觉对象
 

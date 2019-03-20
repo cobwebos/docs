@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: c88fe7051519440056fe85e7ff9172ae0239bd41
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234231"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090808"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -27,13 +27,13 @@ ms.locfileid: "56234231"
 ## <a name="azure-portal"></a>Azure 门户
 
 > [!NOTE]
-
+> 
 >  创建警报规则时，请确保：
-
+> 
 > - 范围中的订阅不同于创建警报的订阅。
-- 条件必须是配置警报所依据的级别/状态/调用方/资源组/资源 ID/资源类型/事件类别。
-- 警报配置 JSON 中没有“anyOf”条件或嵌套的条件（简单而言，只允许一个 allOf，而不允许更多的 allOf/anyOf）。
-- 当类别是“管理”时， 必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
+> - 条件必须是配置警报所依据的级别/状态/调用方/资源组/资源 ID/资源类型/事件类别。
+> - 警报配置 JSON 中没有“anyOf”条件或嵌套的条件（简单而言，只允许一个 allOf，而不允许更多的 allOf/anyOf）。
+> - 当类别是“管理”时， 必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
 
 ### <a name="create-with-azure-portal"></a>使用 Azure 门户进行创建
 
@@ -50,35 +50,36 @@ ms.locfileid: "56234231"
 
 3. 在“定义警报条件”下提供以下信息，然后单击“完成”。
 
-    - **警报目标：** 若要查看并选择新警报的目标，请使用“按订阅筛选” / “按资源类型筛选”，并从显示的列表中选择资源或资源组。
+   - **警报目标：** 若要查看并选择新警报的目标，请使用“按订阅筛选” / “按资源类型筛选”，并从显示的列表中选择资源或资源组。
 
-    > [!NOTE]
+     > [!NOTE]
+     > 
+     > 可以为活动日志信号选择资源、资源组或整个订阅。
 
-    > 可以为活动日志信号选择资源、资源组或整个订阅。
+     **警报目标示例视图**
+     ![选择目标](media/alerts-activity-log/select-target.png)
 
-    **预警目标示例视图** ![选择目标](media/alerts-activity-log/select-target.png)
+   - 在“目标条件”下，单击“添加条件”，将会显示目标的所有可用信号，包括来自各种**活动日志**的那些信号；**监视服务**名称中追加了类别名称。
 
-    - 在“目标条件”下，单击“添加条件”，将会显示目标的所有可用信号，包括来自各种**活动日志**的那些信号；**监视服务**名称中追加了类别名称。
+   - 从**活动日志**类型的各种可能操作的显示列表中选择信号。
 
-    - 从**活动日志**类型的各种可能操作的显示列表中选择信号。
+     可为此目标信号选择日志历史记录时间线和相应的警报逻辑：
 
-    可为此目标信号选择日志历史记录时间线和相应的警报逻辑：
+     **添加条件屏幕**
 
-    **添加条件屏幕**
+     ![添加条件](media/alerts-activity-log/add-criteria.png)
 
-    ![添加条件](media/alerts-activity-log/add-criteria.png)
+     **历史记录时间**：可以绘制在过去 6/12/24 小时内或过去一周内为所选操作提供的事件。
 
-    **历史记录时间**：可以绘制在过去 6/12/24 小时内或过去一周内为所选操作提供的事件。
-
-    **警报逻辑**：
+     **警报逻辑**：
 
      - **事件级别** - 事件的严重性级别。 “详细”、“信息性”、“警告”、“错误”或“严重”。
      - **状态**：事件的状态。 例如，“已启动”、“失败”或“成功”。
      - **事件发起者**：也称为“调用方”；执行操作的用户的电子邮件地址或 Azure Active Directory 标识符。
 
-        应用了警报逻辑的示例信号图：
+       应用了警报逻辑的示例信号图：
 
-        ![ 已选择条件](media/alerts-activity-log/criteria-selected.png)
+       ![ 已选择条件](media/alerts-activity-log/criteria-selected.png)
 
 4. 在“定义警报规则详细信息”下提供以下详细信息：
 
@@ -115,15 +116,15 @@ ms.locfileid: "56234231"
 
     可以使用可用的筛选器（“订阅”、“资源组”、“资源”、“信号类型”或“状态”）来查找想要编辑的活动规则。
 
-    > [!NOTE]
+   > [!NOTE]
+   > 
+   > 只能编辑“说明”、“目标条件”和“操作组”。
 
-    > 只能编辑“说明”、“目标条件”和“操作组”。
+3. 选择规则并双击以编辑规则选项。 进行所需的更改，然后单击“保存”。
 
-3.  选择规则并双击以编辑规则选项。 进行所需的更改，然后单击“保存”。
+   ![ 管理警报规则](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
-    ![ 管理警报规则](media/alerts-activity-log/activity-log-rule-edit-page.png)
-
-4.  可以禁用、启用或删除规则。 根据步骤 2 中的详述选择规则后，在窗口顶部选择相应的选项。
+4. 可以禁用、启用或删除规则。 根据步骤 2 中的详述选择规则后，在窗口顶部选择相应的选项。
 
 
 ## <a name="azure-resource-template"></a>Azure 资源模板
@@ -204,13 +205,26 @@ ms.locfileid: "56234231"
 
 ## <a name="powershell"></a>PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+### <a name="deploy-resource-manager-template-with-powershell"></a>将 PowerShell 与资源管理器模板部署
+若要使用 PowerShell 来部署示例上的 [资源模板一部分] 中所示的资源模板 (#resource manager 的模板，请使用以下命令：
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
+```
+
+其中 sampleActivityLogAlert.parameters.json 包含为创建警报规则的所需的参数提供的值。
+
+### <a name="use-activity-log-powershell-cmdlets"></a>使用活动日志 PowerShell cmdlet
+
 活动日志警报具有专用的 PowerShell cmdlet 可用：
 
-- [Set-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermactivitylogalert)：用于创建新的或更新现有的活动日志警报规则资源
-- [Get-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermactivitylogalert)：用于检索一个或多个活动日志警报规则资源
-- [Remove-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/remove-azurermactivitylogalert)：用于在用户确认的情况下删除活动日志警报规则资源
-- [Enable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/enable-azurermactivitylogalert)：用于启用现有的活动日志警报规则资源
-- [Disable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/disable-azurermactivitylogalert)：用于禁用现有的活动日志警报规则资源
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0) :创建一个新或更新现有活动日志警报。
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0) :获取一个或多个活动日志警报的资源。
+- [启用 AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0) :启用现有活动日志警报，并设置其标记。
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) :禁用现有活动日志警报，并设置其标记。
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    :删除活动日志警报。
 
 ## <a name="cli"></a>CLI
 

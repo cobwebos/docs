@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: b58059727a383e978691bfbbee77a1f6b04692ce
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: c5128e904e540deeb3293fb687da4e8cafcfa1e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264320"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870988"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到本地文件系统
 
@@ -26,7 +26,7 @@ ms.locfileid: "54264320"
 
 本文介绍如何根据本示例方案所述连接到本地文件系统：将上传至 Dropbox 的文件复制到文件共享，然后发送一封电子邮件。 为了安全连接和访问本地系统，逻辑应用将使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要按照此示例进行操作，需要以下这些项：
 
@@ -34,9 +34,9 @@ ms.locfileid: "54264320"
 
 * 将逻辑应用连接到本地系统（例如文件系统服务器）之前，需要[安装并设置本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 这样，便可以指定在从逻辑应用创建文件系统连接时要使用网关安装。
 
-* [Drobox 帐户](https://www.dropbox.com/)和账户凭据。 DropBox 凭据是在逻辑应用和 Drobox 帐户之间创建连接所必需的。 
+* 一个[Dropbox 帐户](https://www.dropbox.com/)，这可以免费注册。 你的帐户凭据是用于创建逻辑应用和你的 Dropbox 帐户之间的连接所必需的。 
 
-* 拥有要访问的文件系统的计算机帐户凭据。 例如，如果在与文件系统相同的计算机上安装数据网关，则需要该计算机的帐户凭据。 
+* 具有你想要使用的文件系统的计算机的访问。 例如，如果在同一台计算机作为文件系统上安装数据网关，您为该计算机需要的帐户凭据。 
 
 * 逻辑应用支持的提供商（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](https://docs.microsoft.com/connectors/)。 此逻辑应用使用 Office 365 Outlook 帐户。 如果使用其他电子邮件帐户，整个步骤仍然是相同的，但 UI 可能稍有不同。 
 
@@ -68,7 +68,7 @@ ms.locfileid: "54264320"
 
    ![创建连接](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | 属性 | 必选 | 值 | Description | 
+   | 属性 | 需要 | Value | 描述 | 
    | -------- | -------- | ----- | ----------- | 
    | **连接名称** | 是 | <connection-name> | 连接使用的名称 | 
    | **根文件夹** | 是 | <*root-folder-name*> | 文件系统的根文件夹，例如，如果安装了本地数据网关，比如安装了本地数据网关的计算机上的本地文件夹，或者计算机可以访问的网络共享文件夹。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根文件夹是主要的父文件夹，用作所有与文件有关的操作的相对路径。 | 

@@ -16,12 +16,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cec018eec6e298e27329c03964dccf5809c1791
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 79549c1b8ed578319e43fc1c4354c7cd76f71589
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190630"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004224"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>在 PIM 中扩展或续订 Azure 资源角色分配
 
@@ -49,7 +49,7 @@ Azure 资源的 Privileged Identity Management (PIM) 引入了新控件用于管
 
 如果分配结束日期时间在 14 天内，则“延期”按钮将在用户界面中变为有效链接。 以下示例假设当前日期为 3 月 27 日。
 
-![“延期”按钮](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
+![扩展按钮](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
 
 若要请求延期此角色分配，请选择“延期”打开请求窗体。
 
@@ -64,11 +64,11 @@ Azure 资源的 Privileged Identity Management (PIM) 引入了新控件用于管
 
 片刻之后，资源管理员会收到一封电子邮件通知，要求他们审阅延期请求。 如果已提交延期请求，Azure 门户的顶部会显示一条 toast 通知，其中解释了错误。
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
+![说明错误的通知](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
 
 转到左窗格中的“待定的请求”选项卡查看请求状态或取消请求。
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
+![挂起的请求](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
 
 ### <a name="admin-approve"></a>管理员审批
 
@@ -80,7 +80,7 @@ Azure 资源的 Privileged Identity Management (PIM) 引入了新控件用于管
 
 当管理员选择“批准”或“拒绝”时，将显示请求的详细信息，同时会显示一个字段，让管理员提供审核日志的理由。
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
+![批准角色分配请求](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
 
 批准延期角色分配的请求时，资源管理员可以选择新的开始日期和结束日期以及分配类型。 如果管理员希望提供受限的访问权限来完成特定的任务（例如，一天的访问权限），则可能需要更改分配类型。 在此示例中，管理员可将分配从“符合条件”更改为“活动”。 这意味着，他们可为请求者提供访问权限，而无需让请求者激活。
 
@@ -100,7 +100,7 @@ Azure 资源的 Privileged Identity Management (PIM) 引入了新控件用于管
 
 不再能够访问资源的成员可以访问最长 30 天的已过期分配历史记录。 为此，他们可以浏览到左窗格中的“我的角色”，并在 Azure 资源角色部分选择“已过期的角色”选项卡。
 
-![“已过期的角色”选项卡](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
+![过期的角色选项卡](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
 
 显示的角色列表默认为“符合条件的角色”。 使用下拉菜单在“符合条件”与“活动”分配角色之间切换。
 

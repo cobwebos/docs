@@ -8,19 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: fcb5941c56eda19f9c524a2c078a76483426b862
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: 2ba94963238cd5ee96df5c178a072addc5ddd75e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266988"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082919"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>有助于保护使用 Azure 备份的混合备份的安全功能
 对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防止此类攻击，Azure 备份现提供可保护混合备份的安全功能。 本文介绍如何通过 Azure 恢复服务代理和 Azure 备份服务器来启用和使用这些功能。 这些功能包括：
 
 - **防护**。 执行关键操作（例如更改密码）时，会添加额外的身份验证层。 使用此验证，确保只有具有有效 Azure 凭据的用户才可执行此类操作。
 - **警报**。 执行关键操作（例如删除备份数据）时，会向订阅管理员发送电子邮件通知。 此电子邮件可确保用户快速收到有关此类操作的通知。
-- **恢复**。 删除的备份数据自删除之日起将另外保留 14 天。 这可确保能够在给定的时间段内恢复数据，因此即使受到攻击，也不会丢失数据。 此外，还保留了更多的最小恢复点，以防止数据损坏。
+- **恢复**。 删除的备份数据自删除之日起会另外保留 14 天。 这可确保能够在给定的时间段内恢复数据，因此即使受到攻击，也不会丢失数据。 此外，还保留了更多的最小恢复点，以防止数据损坏。
 
 > [!NOTE]
 > 如果使用基础结构即服务 (IaaS) VM 备份，则不应启用安全功能。 这些功能对于 IaaS VM 备份尚不可用，因此启用这些功能没有任何影响。 只有使用以下项才应启用安全功能： <br/>
@@ -41,7 +41,7 @@ ms.locfileid: "54266988"
 
     ![Azure 门户“浏览”选项的屏幕截图](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
-    此时会显示恢复服务保管库列表。 从此列表中，选择一个保管库。 此时会打开选定的保管库仪表板。
+    此时显示恢复服务保管库列表。 从此列表中，选择一个保管库。 此时会打开选定的保管库仪表板。
 3. 从保管库下显示的项目列表中，单击“设置”下的“属性”。
 
     ![恢复服务保管库选项的屏幕截图](./media/backup-azure-security-feature/vault-list-properties.png)
@@ -49,7 +49,7 @@ ms.locfileid: "54266988"
 
     ![恢复服务保管库属性的屏幕截图](./media/backup-azure-security-feature/security-settings-update.png)
 
-    更新链接将打开“安全设置”边栏选项卡，其中提供功能摘要，并允许启用它们。
+    更新链接会打开“安全设置”边栏选项卡，其中提供功能摘要，并允许启用它们。
 5. 从下拉列表“是否已配置 Azure 多重身份验证?”中选择一个值，确认是否已启用 [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)。 如果已启用，则在登录到 Azure 门户时，系统会要求从另一设备（例如移动电话）进行身份验证。
 
    在备份中执行关键操作时，必须输入 Azure 门户中提供的安全 PIN。 启用多重身份验证相当于增加了一个安全层。 只有获得授权、具有有效 Azure 凭据且通过第二台设备进行身份验证的用户能够访问 Azure 门户。
@@ -58,7 +58,7 @@ ms.locfileid: "54266988"
     ![安全设置的屏幕截图](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recover-deleted-backup-data"></a>恢复已删除的备份数据
-如果执行**停止备份并删除备份数据**操作，备份会将已删除的备份数据另外再保留 14 天，不会立即删除数据。 若要在 14 天的期限内还原该数据，请根据所用软件执行以下步骤：
+如果执行“停止备份并删除备份数据”操作，备份会将已删除的备份数据另外再保留 14 天，不会立即删除数据。 若要在 14 天的期限内还原该数据，请根据所用软件执行以下步骤：
 
 对于 **Azure 恢复服务代理**用户：
 
@@ -82,7 +82,7 @@ ms.locfileid: "54266988"
 在为关键操作添加额外身份验证层的过程中，在执行**停止保护并删除数据**和**更改密码**操作时，系统会提示输入安全 PIN。
 
 > [!NOTE]
-
+> 
 > 目前，对于 DPM 和 MABS，**停止保护并删除数据**不支持安全 PIN。
 
 若要接收此 PIN，请执行以下操作：

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5d0259726a45346f1e9b891cb235531d6c24d4a2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: 34a63c8f283f24fa58b4e2a41d3a44ff0c8c3c17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433417"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003464"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
 
@@ -34,9 +34,9 @@ ms.locfileid: "53433417"
 
 下表根据数据量和网络带宽列出了大致的数据传输持续时间。 如果数据迁移预计需要花费三周以上，请使用 Data Box。
 
-|**数据量**|**网络带宽**|||
-|---|---|---|---|
-|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**
+|**数据量**|**网络带宽**||||
+|---|---|---|---|---|
+|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
 |1 TB|2 天|1 天| 2 小时|14 分钟|
 |10 TB|22 天|10 天|1 天|2 小时|
 |35 TB|76 天|34 天|3 天|8 小时|
@@ -94,7 +94,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 #### <a name="hive-metastore-migration-using-scripts"></a>使用脚本迁移 Hive 元存储
 
-1. 从本地 Hive 元存储生成 Hive DDL。 可以使用[包装器 bash 脚本](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)完成此步骤。
+1. 生成本地 Hive 元存储上从 Hive Ddl。 可以使用[包装器 bash 脚本](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)完成此步骤。
 1. 编辑生成的 DDL，将 HDFS URL 替换为 WASB/ADLS/ABFS URL。
 1. 针对 HDInsight 群集中的元存储运行更新的 DDL。
 1. 确保本地与云之间的 Hive 元存储版本兼容。
@@ -111,7 +111,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 ### <a name="apache-ranger"></a>Apache Ranger
 
 - 将本地 Ranger 策略导出到 XML 文件。
-- 使用 XSLT 等工具将基于 HDFS 的本地特定路径转换为 WASB/ADLS。
+- 在本地将转换到 WASB/ADLS 使用 XSLT 之类的工具的特定基于 HDFS 的路径。
 - 将策略导入到 HDInsight 上运行的 Ranger。
 
 ## <a name="next-steps"></a>后续步骤

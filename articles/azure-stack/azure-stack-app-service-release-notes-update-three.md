@@ -16,12 +16,12 @@ ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 2432c30ca98904c2e6789f4b15468f905096bbf7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 765701188de6375a5dfe0c9a6c04afe1ee9f6740
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962785"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886433"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>基于 Azure Stack 的应用服务 Update 3 发行说明
 
@@ -59,7 +59,7 @@ ms.locfileid: "55962785"
 - 针对核心服务的更新，用于提高可靠性和错误消息传递，以便更轻松地诊断常见问题。
 
 - **针对以下应用程序框架和工具的更新**：
-  - 添加了 ASP.Net Core 2.1.2
+  - 添加了的 ASP.NET Core 2.1.2
   - 添加了 NodeJS 10.0.0
   - 添加了 Zulu OpenJDK 8.30.0.1
   - 添加了 Tomcat 8.5.31 和 9.0.8
@@ -197,7 +197,7 @@ ms.locfileid: "55962785"
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
 
-请参阅在 Azure Stack 1807 发行说明文档。
+请参阅 Azure Stack 1807 发行说明中的文档。
 
 ## <a name="next-steps"></a>后续步骤
 

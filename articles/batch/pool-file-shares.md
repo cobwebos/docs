@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 13ed2caa5ae547747707c368246ea23486dbed72
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469560"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103326"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>将 Batch 池与 Azure 文件共享配合使用
 
@@ -66,16 +66,16 @@ net use S: \\mystorageaccountname.file.core.windows.net\myfileshare /user:AZURE\
 
 1. 使用池配置中的启动任务运行 `cmdkey` 命令行实用工具。 这会在每个 Windows 节点上保留凭据。 启动任务命令行类似于：
 
-  ```
-  cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
+   ```
+   cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
-  ```
+   ```
 
 2. 使用 `net use` 将每个节点上的共享装载为每个任务的一部分。 例如，以下任务命令行将文件共享装载为 *S:* 驱动器。 此命令行后接一个引用共享的命令或脚本。 在对 `net use` 的调用中使用缓存的凭据。 此步骤假设对任务使用的用户标识与在池的启动任务中使用的标识相同，并非所有场景都适合这样做。
 
-  ```
-  cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
-  ```
+   ```
+   cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
+   ```
 
 ### <a name="c-example"></a>C# 示例
 以下 C# 示例演示如何使用启动任务在 Windows 池中保留凭据。 存储文件服务名称和存储凭据作为定义的常量传递。 此处，启动任务在具有池范围的标准（非管理员）自动用户帐户下运行。

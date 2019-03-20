@@ -16,12 +16,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: c6a2f14900d3a0d6f9e16e9b0c6d0bdfff97d6b5
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: 094d79026a55e651a1f67a5047dff20c769c359a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903830"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881106"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>在 Azure 门户或 Azure 帐户中心注册时出现“找不到任何订阅”错误
 
@@ -56,4 +56,4 @@ ms.locfileid: "54903830"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

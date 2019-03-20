@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff88f25d4bf7fea09ea07673326e068840243b98
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 75d0e962169529ab8d17aeeeed8aab26e7b7e994
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176571"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>教程：Azure Active Directory 与 Wdesk 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56176571"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [什么是使用 Azure Active Directory 的应用程序访问和单一登录](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Wdesk 的集成，需要以下项目：
 
@@ -219,7 +219,7 @@ ms.locfileid: "56176571"
    
     ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser1.png)  
 
-1. 在“用户”文本框中，输入用户的用户名，如 brittasimon@contoso.com然后单击“继续”按钮。
+1. 在**用户**文字框中，输入类似的用户的用户名**brittasimon\@contoso.com**然后单击**继续**按钮。
 
     ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser3.png)
 
@@ -227,7 +227,7 @@ ms.locfileid: "56176571"
   
     ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser4.png)
  
-    a. 在“电子邮件”文本框中，输入用户的电子邮件，如 brittasimon@contoso.com。
+    a. 在中**电子邮件**文字框中，输入类似的用户的电子邮件**brittasimon\@contoso.com**。
 
     b. 在“名字”文本框中，输入用户的名字，如 Britta。
 

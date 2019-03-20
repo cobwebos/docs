@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 4eb4db9a4057d072f348de48bee2f746f77cbb84
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 6001d291581dc317da89cadbf3891e334362062b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715335"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897582"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>创建 HDInsight 群集时添加自定义 Apache Hive 库
 
@@ -49,9 +49,9 @@ ms.locfileid: "53715335"
 
 * 要安装的 jar 必须存储在**单个容器**中的 Azure Blob 存储中。
 
-* 在创建期间，包含 jar 文件的库的存储帐户**必须**链接到 HDInsight 群集。 它必须是默认的存储帐户，或者是通过__可选配置__添加的帐户。
+* 在创建期间，包含 jar 文件的库的存储帐户 **必须** 链接到 HDInsight 群集。 它必须是默认的存储帐户，或者是通过__可选配置__添加的帐户。
 
-* 必须指定容器的 WASB 路径作为脚本操作的参数。 例如，如果 jar 存储在名为 **mystorage** 的存储帐户上名为 **libs** 的容器中，则该参数应为 **wasb://libs@mystorage.blob.core.windows.net/**。
+* 必须指定容器的 WASB 路径作为脚本操作的参数。 例如，如果 jar 存储在名为的容器**libs**的存储帐户中名为**mystorage**，该参数应为**wasb://libs\@mystorage.blob.core.windows.net/**。
 
   > [!NOTE]  
   > 本文档假定已创建存储帐户、blob 容器，并已将文件上传到该容器。
@@ -79,7 +79,7 @@ ms.locfileid: "53715335"
 
    * **ZOOKEEPER**：将此项留空。
 
-   * **参数**：输入包含 jar 的容器和存储帐户的 WASB 地址。 例如，**wasb://libs@mystorage.blob.core.windows.net/**。
+   * **参数**：输入包含 jar 的容器和存储帐户的 WASB 地址。 例如， **wasb://libs\@mystorage.blob.core.windows.net/**。
 
 3. 在“脚本操作”的底部，使用“选择”按钮保存配置。
 
@@ -89,7 +89,7 @@ ms.locfileid: "53715335"
 
 6. 继续按[预配 Linux 上的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中所述预配群集。
 
-群集创建完成后，能够使用通过此脚本从 Hive 添加的 jar，而无需使用 `ADD JAR` 语句。
+群集创建完成后，你能够使用通过此脚本从 Hive 添加的 jar，而无需使用 `ADD JAR` 语句。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 6db9a5b65fc2723af2eae006ad81716e23e52133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860518"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975485"
 ---
 # <a name="interpret-method"></a>interpret 方法
 
@@ -29,7 +29,7 @@ REST 终结点：
 
 ## <a name="request-parameters"></a>请求参数
 
-Name     | 值 | 必需？  | 说明
+名称     | 值 | 必需？  | 描述
 ---------|---------|---------|---------
 **query**    | 文本字符串 | 是 | 用户输入的查询。  如果 complete 设置为 1，查询将被解释为生成查询自动完成建议的前缀。        
 **model**    | 文本字符串 | 否  | 要查询的模型的名称。  当前，值默认为“最新”。        
@@ -37,10 +37,12 @@ complete | 0 或 1 | 否<br>default:0  | 1 意味着自动完成建议是基于�
 **count**    | Number | 否<br>default:10 | 返回的最大解释数。         
 **offset**   | Number | 否<br>default:0  | 返回的第一个解释的索引。 例如，count=2&offset=0 返回解释 0 和 1。 count=2&offset=2 返回解释 2 和 3。       
 timeout  | Number | 否<br>default:1000 | 超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
+
 <br>
   
 ## <a name="response-json"></a>响应 (JSON)
-Name     | 说明
+
+名称     | 描述
 ---------|---------
 **query** |query 参数来自请求。
 interpretations |用于将用户输入与语法进行匹配的 0 种或更多种不同方式的数组。
@@ -54,6 +56,7 @@ interpretations[x].rules[y].output.value  |规则输出。 对于学术知识 AP
 aborted | 如果请求超时，则为 True。
 
 <br>
+
 #### <a name="example"></a>示例：
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2

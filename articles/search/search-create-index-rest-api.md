@@ -1,63 +1,94 @@
 ---
-title: 使用 REST API 在代码中创建索引 - Azure 搜索
+title: 在代码中使用 PowerShell 和 REST API-Azure 搜索创建索引
 description: 使用 HTTP 请求和 Azure 搜索 REST API 在代码中创建全文搜索索引。
-ms.date: 10/17/2018
-author: mgottein
+ms.date: 03/15/2019
+author: heidisteen
 manager: cgronlun
-ms.author: magottei
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: b4d85d3b8ee7e6a872fdd6bf07917770c4d2ee9e
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 6e3b1e3d501355994cd81c5eb9d712a684474524
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265254"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136184"
 ---
-# <a name="create-an-azure-search-index-using-the-rest-api"></a>使用 REST API 创建 Azure 搜索索引
+# <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>快速入门：创建 Azure 搜索索引中使用 PowerShell 和 REST API
 > [!div class="op_single_selector"]
->
-> * [概述](search-what-is-an-index.md)
+> * [PowerShell (REST)](search-create-index-rest-api.md)
+> * [C#](search-create-index-dotnet.md)
+> * [Postman (REST)](search-fiddler.md)
 > * [门户](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
->
->
+> 
 
-本文介绍了如何使用 Azure 搜索 REST API 创建 Azure 搜索 [索引](https://docs.microsoft.com/rest/api/searchservice/Create-Index) 。
+本文将指导你完成创建、 加载和查询 Azure 搜索的过程[索引](search-what-is-an-index.md)使用 PowerShell 和[Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 索引定义和内容作为格式正确的 JSON 内容包含在请求正文。
 
-按照本指南创建索引之前，应已经 [创建 Azure 搜索服务](search-create-service-portal.md)。
+## <a name="prerequisites"></a>必备组件
 
-若要使用 REST API 创建 Azure 搜索索引，需向 Azure 搜索服务的 URL 终结点发出一个 HTTP POST 请求。 索引定义作为格式标准的 JSON 内容包含在请求正文中。
+[创建 Azure 搜索服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)在当前订阅下。 可以使用本快速入门的免费服务。 其他系统必备组件包括以下各项。
 
-## <a name="identify-your-azure-search-services-admin-api-key"></a>确定 Azure 搜索服务的管理 API 密钥
-现在，已预配 Azure 搜索服务，可以使用 REST API 向服务的 URL 终结点发出 HTTP 请求。 所有 API 请求必须包含针对预配的搜索服务生成的 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
+[PowerShell 5.1 或更高版本](https://github.com/PowerShell/PowerShell)，并使用[Invoke-restmethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod)的顺序和交互式步骤。
 
-1. 若要查找服务的 API 密钥，必须登录 [Azure 门户](https://portal.azure.com/)
-2. 转到 Azure 搜索服务的边栏选项卡
-3. 单击“密钥”图标
+URL 终结点和管理搜索服务的 api 密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-服务将具有*管理密钥*和*查询密钥*。
+  1. 在 Azure 门户中，搜索服务中**概述**页上，获取该 URL。 示例终结点可能类似于 `https://my-service-name.search.windows.net`。
 
-* 主管理密钥和辅助 *管理密钥* 授予所有操作的完全控制权限，包括管理服务以及创建和删除索引、索引器与数据源的能力。 有两个密钥的作用是确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
-* *查询密钥* 授予对索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
+  2. 在中**设置** > **密钥**，在服务上获取的完全权限管理员密钥。 有两个可互换的管理密钥，提供业务连续性，以防你需要一个滚动更新。 添加、 修改和删除对象上的请求，可以使用主要或辅助密钥。
 
-可以使用主管理密钥或辅助管理密钥来创建索引。
+  ![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
-## <a name="define-your-azure-search-index-using-well-formed-json"></a>使用格式标准的 JSON 定义 Azure 搜索索引
-对服务的单个 HTTP POST 请求将创建索引。 HTTP POST 请求的正文包含一个定义 Azure 搜索索引的 JSON 对象。
+  所有请求都需要对每个请求发送到你的服务 api 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-1. 此 JSON 对象的第一个属性是索引的名称。
-2. 此 JSON 对象的第二个属性是一个名为 `fields` 的 JSON 数组，其包含索引中每个字段的一个单独 JSON 对象。 每个 JSON 对象包含每个字段属性（包括“名称”、“类型”等）的多个名称/值对。
+## <a name="connect-to-azure-search"></a>连接到 Azure 搜索
 
-设计索引时，必须牢记搜索用户体验和业务需求，因为必须为每个字段分配 [适当的属性](https://docs.microsoft.com/rest/api/searchservice/Create-Index)。 这些属性控制何种搜索功能（筛选、分面、排序全文搜索等）应用于哪个字段。 对于任何未指定的属性，除非专门禁用默认设置，否则系统将默认启动相应的搜索功能。
+在 PowerShell 中，创建 **$headers**要存储的内容类型和 API 密钥对象。 只需一次将此标头设置会话的持续时间内，但会将其添加到每个请求。 
 
-此示例中，索引命名为“hotels”，字段按如下方式定义：
+```powershell
+$headers = @{
+   'api-key' = '<your-admin-api-key>'
+   'Content-Type' = 'application/json' 
+   'Accept' = 'application/json' }
+```
 
-```JSON
+创建 **$url**对象，它指定服务的索引集合。 `mydemo`服务名称用作占位符。 替换为它在此示例中的当前订阅中的有效的搜索服务。
+
+```powershell
+$url = "https://mydemo.search.windows.net/indexes?api-version=2017-11-11"
+```
+
+运行**Invoke-restmethod**将 GET 请求发送到服务并验证的连接。 添加**Convertto-json** ，以便您可以查看从服务发送回的响应。
+
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
+```
+
+如果该服务为空，并且没有索引，结果将类似于下面的示例。 否则，您将看到索引定义的 JSON 表示形式。
+
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/$metadata#indexes",
+    "value":  [
+
+              ]
+}
+```
+
+## <a name="1---create-an-index"></a>1-创建索引
+
+除非使用门户，可以加载数据之前，服务上必须存在索引。 此步骤中定义索引，并将其推送到服务。 [创建索引 (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)用于此步骤。
+
+所需的元素的索引包含一个名称和字段集合。 字段集合定义的结构*文档*。 每个字段有一个名称、 类型和特性，以确定如何使用它 (例如，是否是全文索引时才可搜索、 筛选或可在搜索结果中检索)。 一个索引，其中一个类型的字段中`Edm.String`必须指定为*密钥*文档标识。
+
+此索引名为"hotels"，并且请参阅下面的字段定义。 索引定义指定[语言分析器](index-add-language-analyzers.md)为`description_fr`字段，因为它用于存储法语文本，我们将在后面的示例中添加。
+
+将此示例粘贴到 PowerShell 来创建 **$body**对象，包含索引架构。
+
+```powershell
+$body = @"
 {
     "name": "hotels",  
     "fields": [
@@ -75,32 +106,275 @@ ms.locfileid: "54265254"
         {"name": "location", "type": "Edm.GeographyPoint"}
     ]
 }
+"@
 ```
 
-根据每个字段在应用程序中的预期使用方式，谨慎选择其索引属性。 例如，用户搜索酒店时很可能不知道 `hotelId` 这一唯一键，因此通过将 `searchable` 设置为 `false`（可节省索引空间），禁用该字段的全文搜索。
+将 URI 设置为你的服务上的索引集合和*hotels*索引。
 
-请注意，必须将类型为 `Edm.String` 的索引中的确切字段指定为“密钥”字段。
+```powershell
+$url = "https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11"
+```
 
-上述索引定义对 `description_fr` 字段使用了语言分析器，因为它用于存储法语文本。 请参阅[语言支持主题](https://docs.microsoft.com/rest/api/searchservice/Language-support)以及相应的[博客文章](https://azure.microsoft.com/blog/language-support-in-azure-search/)，了解有关语言分析器的详细信息。
+运行该命令与 **$url**， **$headers**，并 **$body**在服务上创建索引。 
 
-## <a name="issue-the-http-request"></a>发出 HTTP 请求
-1. 将索引定义用作请求正文，向 Azure 搜索服务终结点 URL 发出 HTTP POST 请求。 在 URL 中，请务必使用服务名称作为主机名，并将适当的 `api-version` 作为查询字符串参数（发布此文档时，API 版本为 `2017-11-11`）。
-2. 在请求头中，指定 `Content-Type` 作为 `application/json`。 还需提供步骤 I 中在 `api-key` 标头中标识的服务管理密钥。
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertTo-Json
+```
+结果应类似于此 （到前两个字段为简洁起见已截断）：
 
-必须提供自己的服务名称和 API 密钥，以发出以下请求：
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/$metadata#indexes/$entity",
+    "@odata.etag":  "\"0x8D6A99E2DED96B0\"",
+    "name":  "hotels",
+    "defaultScoringProfile":  null,
+    "fields":  [
+                   {
+                       "name":  "hotelId",
+                       "type":  "Edm.String",
+                       "searchable":  false,
+                       "filterable":  true,
+                       "retrievable":  true,
+                       "sortable":  false,
+                       "facetable":  false,
+                       "key":  true,
+                       "indexAnalyzer":  null,
+                       "searchAnalyzer":  null,
+                       "analyzer":  null,
+                       "synonymMaps":  ""
+                   },
+                   {
+                       "name":  "baseRate",
+                       "type":  "Edm.Double",
+                       "searchable":  false,
+                       "filterable":  true,
+                       "retrievable":  true,
+                       "sortable":  true,
+                       "facetable":  true,
+                       "key":  false,
+                       "indexAnalyzer":  null,
+                       "searchAnalyzer":  null,
+                       "analyzer":  null,
+                       "synonymMaps":  ""
+                   },
+. . .
+```
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
-    Content-Type: application/json
-    api-key: [api-key]
+> [!Tip]
+> 可能还检查索引列表在门户中，或重新运行用于验证服务连接的命令，以查看进行验证， *hotels*索引集合中列出的索引。
 
+## <a name="2---load-documents"></a>2-加载文档
 
-对于成功的请求，应看到状态代码 201（已创建）。 有关通过 REST API 创建索引的详细信息，请访问[此处](https://docs.microsoft.com/rest/api/searchservice/Create-Index)的 API 参考。 有关请求失败时可能返回的其他 HTTP 状态代码的详细信息，请参阅 [HTTP 状态代码（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
+若要将推送文档，请使用对索引的 URL 终结点的 HTTP POST 请求。 此任务的 REST api[添加、 更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。
 
-使用完索引并想删除它时，只需发出 HTTP DELETE 请求。 例如，以下是删除“hotels”索引的方法：
+将此示例粘贴到 PowerShell 来创建 **$body**对象，其中包含你想要上载的文档。 
 
-    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11
-    api-key: [api-key]
+此请求包括两个完整备份和一个部分的记录。 部分记录演示你可以上传不完整的文档。 `@search.action`参数指定索引如何实现。 有效值包括上传、 合并、 mergeOrUpload 和删除。 MergeOrUpload 行为会创建新文档 hotelId = 3，或更新内容，如果它已存在。
 
+```powershell
+$body = @"
+{
+    "value": [
+        {
+            "@search.action": "upload",
+            "hotelId": "1",
+            "baseRate": 199.0,
+            "description": "Best hotel in town",
+            "hotelName": "Fancy Stay",
+            "category": "Luxury",
+            "tags": ["pool", "view", "wifi", "concierge"],
+            "parkingIncluded": false,
+            "smokingAllowed": false,
+            "lastRenovationDate": "2010-06-27T00:00:00Z",
+            "rating": 5,
+            "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
+        },
+        {
+            "@search.action": "upload",
+            "hotelId": "2",
+            "baseRate": 79.99,
+            "description": "Cheapest hotel in town",
+            "hotelName": "Roach Motel",
+            "category": "Budget",
+            "tags": ["motel", "budget"],
+            "parkingIncluded": true,
+            "smokingAllowed": true,
+            "lastRenovationDate": "1982-04-28T00:00:00Z",
+            "rating": 1,
+            "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
+        },
+        {
+            "@search.action": "mergeOrUpload",
+            "hotelId": "3",
+            "baseRate": 129.99,
+            "description": "Close to town hall and the river"
+        }
+    ]
+}
+"@
+```
+
+将终结点设置为*hotels*文档集合，包括在索引操作 (索引/酒店/docs/index)。
+
+```powershell
+$url = "https://mydemo.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11"
+```
+
+运行该命令与 **$url**， **$headers**，并 **$body**若要将文档加载到 hotels 索引。
+
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
+```
+结果应类似于下面的示例。 您应看到状态代码 201。 所有状态代码的说明，请参阅[HTTP 状态代码 （Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
+
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/indexes(\u0027hotels\u0027)/$metadata#Collection(Microsoft.Azure.Search.V2017_11_11.IndexResult)",
+    "value":  [
+                  {
+                      "key":  "1",
+                      "status":  true,
+                      "errorMessage":  null,
+                      "statusCode":  201
+                  },
+                  {
+                      "key":  "2",
+                      "status":  true,
+                      "errorMessage":  null,
+                      "statusCode":  201
+                  },
+                  {
+                      "key":  "3",
+                      "status":  true,
+                      "errorMessage":  null,
+                      "statusCode":  201
+                  }
+              ]
+}
+```
+
+## <a name="3---search-an-index"></a>3-搜索索引
+
+此步骤说明如何使用索引进行查询[搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+
+将终结点设置为*hotels*文档集合，并添加**搜索**要包括查询字符串参数。 此字符串是空搜索并返回所有文档的 unranked 的列表。
+
+```powershell
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*'
+```
+
+运行命令以发送 **$url**到服务。
+
+```powershell
+Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
+```
+
+结果应类似于以下输出。
+
+```
+{
+    "@odata.context":  "https://mydemo.search.windows.net/indexes(\u0027hotels\u0027)/$metadata#docs(*)",
+    "value":  [
+                  {
+                      "@search.score":  1.0,
+                      "hotelId":  "1",
+                      "baseRate":  199.0,
+                      "description":  "Best hotel in town",
+                      "description_fr":  null,
+                      "hotelName":  "Fancy Stay",
+                      "category":  "Luxury",
+                      "tags":  "pool view wifi concierge",
+                      "parkingIncluded":  false,
+                      "smokingAllowed":  false,
+                      "lastRenovationDate":  "2010-06-27T00:00:00Z",
+                      "rating":  5,
+                      "location":  "@{type=Point; coordinates=System.Object[]; crs=}"
+                  },
+                  {
+                      "@search.score":  1.0,
+                      "hotelId":  "2",
+                      "baseRate":  79.99,
+                      "description":  "Cheapest hotel in town",
+                      "description_fr":  null,
+                      "hotelName":  "Roach Motel",
+                      "category":  "Budget",
+                      "tags":  "motel budget",
+                      "parkingIncluded":  true,
+                      "smokingAllowed":  true,
+                      "lastRenovationDate":  "1982-04-28T00:00:00Z",
+                      "rating":  1,
+                      "location":  "@{type=Point; coordinates=System.Object[]; crs=}"
+                  },
+                  {
+                      "@search.score":  1.0,
+                      "hotelId":  "3",
+                      "baseRate":  129.99,
+                      "description":  "Close to town hall and the river",
+                      "description_fr":  null,
+                      "hotelName":  null,
+                      "category":  null,
+                      "tags":  "",
+                      "parkingIncluded":  null,
+                      "smokingAllowed":  null,
+                      "lastRenovationDate":  null,
+                      "rating":  null,
+                      "location":  null
+                  }
+              ]
+}
+```
+
+请尝试几个其他查询示例，若要了解的语法。 可以执行字符串搜索，原义 $filter 查询，结果集，作用域搜索到特定字段，以及更多限制。
+
+```powershell
+# Query example 1
+# Search the entire index for the term 'budget'
+# Return only the `hotelName` field, "Roach hotel"
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=budget&$select=hotelName'
+
+# Query example 2 
+# Apply a filter to the index to find hotels cheaper than $150 per night
+# Returns the `hotelId` and `description`. Two documents match.
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$filter=baseRate lt 150&$select=hotelId,description'
+
+# Query example 3
+# Search the entire index, order by a specific field (`lastRenovationDate`) in descending order
+# Take the top two results, and show only `hotelName` and `lastRenovationDate`
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate'
+```
+## <a name="clean-up"></a>清理 
+
+如果不再需要应删除该索引。 一项免费服务被限制为三个索引。 您可能想要删除你主动不使用任何索引。
+
+```powershell
+# Set the URI to the hotel index
+$url = 'https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11'
+
+# Delete the index
+Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
+```
 
 ## <a name="next-steps"></a>后续步骤
-创建 Azure 搜索索引后，就可以 [将内容上传到索引中](search-what-is-data-import.md)，以便可以开始搜索数据。
+
+尝试将法语说明添加到索引。 下面的示例包括法语字符串，并演示其他搜索操作。 使用 mergeOrUpload 创建或添加到现有字段。 以下字符串需要是 utf-8 编码。
+
+```json
+{
+    "value": [
+        {
+            "@search.action": "mergeOrUpload",
+            "hotelId": "1",
+            "description_fr": "Meilleur hôtel en ville"
+        },
+        {
+            "@search.action": "merge",
+            "hotelId": "2",
+            "description_fr": "Hôtel le moins cher en ville",
+        },
+        {
+            "@search.action": "delete",
+            "hotelId": "6"
+        }
+    ]
+}
+```

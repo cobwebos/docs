@@ -14,18 +14,18 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
-ms.translationtype: HT
+ms.openlocfilehash: ef24e356c9ac8424fc519a3b16af5d37a20e706f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
-ms.locfileid: "27704418"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999806"
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>如何在 Hudson 连续集成中使用 Azure 从属插件
 适用于 Hudson 的 Azure 从属插件使你能够在运行分布式构建系统时，预配 Azure 上的从属节点。
 
 ## <a name="install-the-azure-slave-plug-in"></a>安装 Azure 从属插件
-1. 在 Hudson 仪表板中，单击“管理 Hudson”。
+1. 在 Hudson 仪表板中，单击“管理 Hudson” 。
 2. 在“管理 Hudson”页面中，单击“管理插件”。
 3. 单击“可用”选项卡。
 4. 单击“搜索”，然后键入 **Azure**，将列表限制到相关插件。
@@ -67,7 +67,7 @@ ms.locfileid: "27704418"
 获取订阅配置文件后，请按照以下步骤配置 Azure 从属插件。
 
 1. 在 Hudson 仪表板中，单击“管理 Hudson”。
-2. 单击“配置系统”。
+2. 单击“配置系统” 。
 3. 向下滚动页面找到“云”部分。
 4. 单击“添加新云”>“Microsoft Azure”。
    
@@ -76,9 +76,9 @@ ms.locfileid: "27704418"
     此时会显示用于输入订阅详细信息的字段。
    
     ![配置配置文件][configure profile]
-5. 从订阅配置文件中复制订阅 ID 和管理证书，然后将其粘贴到相应的字段中。
+5. 从用户的订阅配置文件复制订阅 ID 和管理证书，并将其粘贴到相应的字段中。
    
-    复制订阅 ID 和管理证书时，请**不要**包含将值括起来的引号。
+    在复制订阅 ID 和管理证书时， **不要**包含将值括起来的引号。
 6. 单击“验证配置”。
 7. 配置成功通过验证后，单击“保存”。
 
@@ -137,13 +137,13 @@ ms.locfileid: "27704418"
     
          sudo apt-get install -y ant
     
-     将在创建 VM 后执行“初始化脚本”。 在此示例中，脚本安装 Java、git 和 ant。
+     会在创建 VM 后执行“初始化脚本”  。 在此示例中，脚本安装 Java、git 和 ant。
 16. 在“用户名”和“密码”字段中，为要在 VM 中创建的管理员帐户创建首选值。
 17. 单击“验证模板”检查指定的参数是否有效。
 18. 单击“保存” 。
 
 ## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>创建在 Azure 上的从属节点上运行的 Hudson 作业
-在此部分，将创建一个在 Azure 上的从属节点上运行的 Hudson 任务。
+在此部分，你创建一个在 Azure 上的从属节点上运行的 Hudson 任务。
 
 1. 在 Hudson 仪表板中，单击“新建作业”。
 2. 为正在创建的作业输入一个名称。
@@ -151,7 +151,7 @@ ms.locfileid: "27704418"
 4. 单击“确定”。
 5. 在作业配置页中，选择“限制可以运行此项目的位置”。
 6. 选择“节点和标签菜单”，并选择 **linux**（在上一部分中创建虚拟机模板时，我们指定了此标签）。
-7. 在“构建”部分，单击“添加构建步骤”，并选择“执行 shell”。
+7. 在“构建”部分，单击“添加构建步骤”，然后选择“执行 shell”。
 8. 编辑以下脚本，用相应的值替换 **{your github account name}**、**{your project name}** 和 **{your project directory}**，然后将编辑后的脚本粘贴到显示的文本区域中。
    
         # Clone from git repo
@@ -188,7 +188,7 @@ ms.locfileid: "27704418"
 <!-- URL List -->
 
 [Azure Java 开发人员中心]: https://azure.microsoft.com/develop/java/
-[订阅配置文件]: http://go.microsoft.com/fwlink/?LinkID=396395
+[订阅配置文件]: https://go.microsoft.com/fwlink/?LinkID=396395
 
 <!-- IMG List -->
 

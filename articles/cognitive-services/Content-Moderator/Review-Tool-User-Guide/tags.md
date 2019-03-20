@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 942b30ab9949a28c42949913d90e7448c22b658f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: fa3b7be6ac7cc398685bf5ad7d21173bcb072b69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206267"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118402"
 ---
 # <a name="create-and-use-moderation-tags"></a>创建和使用审核标记
 
@@ -23,15 +23,15 @@ ms.locfileid: "55206267"
 
 ## <a name="create-tags"></a>创建标记
 
-1.  选择“设置”选项卡中的“标记”。
+1. 选择“设置”选项卡中的“标记”。
 
-  ![内容审查标记](images/tags-1.png)
+   ![内容审查标记](images/tags-1.png)
 
-2.  输入标记的两字母短代码。
-3.  输入标记名称。 请务必命名简短的描述性名称。 例如，“isbullying”。
-4.  输入说明。
-5.  单击“添加”。
-6.  创建完标记后，单击“保存”。
+2. 输入标记的两字母短代码。
+3. 输入标记名称。 请务必命名简短的描述性名称。 例如，“isbullying”。
+4. 输入说明。
+5. 单击“添加”。
+6. 创建完标记后，单击“保存”。
 
 ![定义内容审查标记](images/tags-2-define.png)
 

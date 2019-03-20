@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: da24c437a1dbe8744579cd26ee1348f50c4815ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563977"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884738"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -206,30 +206,34 @@ Azure 通知中心提供多项可用于故障排除的功能，尤其是针对�
 
 Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通知中心指标]页上找到有关可用指标的详细信息。
 
+您可以以编程方式访问度量值。 有关详细信息，请参阅以下文章：
+
+- [检索与.NET 的 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用用户名和密码。 若要使用的证书，重载 FromServicePrincipal 方法提供的证书，如中所示[本例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)。 
+- [获取资源的指标和活动日志](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
+- [Azure 监视 REST API 演练](../azure-monitor/platform/rest-api-walkthrough.md)
+
+
 > [!NOTE]
 > 成功的通知仅意味着推送通知已传递到外部 PNS（例如 Apple 的 APNS，或 Google 的 FCM）。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
 
-我们还提供了以编程方式导出遥测数据的功能（在标准层）。 有关详细信息，请参阅[通知中心指标示例]。
-
 [Azure 门户]: https://portal.azure.com
-[通知中心定价]: http://azure.microsoft.com/pricing/details/notification-hubs/
-[Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
+[通知中心定价]: https://azure.microsoft.com/pricing/details/notification-hubs/
+[Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [案例研究：Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [案例研究：Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
 [案例研究：Seattle Times]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [案例研究：Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [案例研究：7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [通知中心 REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[通知中心入门教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Chrome 应用教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
-[Mobile Services Pricing]: http://azure.microsoft.com/pricing/details/mobile-services/
+[通知中心入门教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Chrome 应用教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
+[Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [后端注册指南]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [后端注册指南 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
 [通知中心安全模型]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[通知中心安全推送教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[通知中心故障排除]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[通知中心安全推送教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
+[通知中心故障排除]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [通知中心指标]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[通知中心指标示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [注册信息导出/导入]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure 门户]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: 1f31189a83b6659371fcd0b34423f2fb681526c2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: ec382217bfa32da19c0b98e656f3782739b26cc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55148081"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58114605"
 ---
 ## <a name="download-the-source-code"></a>下载源代码
 
@@ -53,16 +53,16 @@ git submodule foreach git pull origin master
     ```
 
 1. 运行 **start.cmd** 脚本。 该脚本将提示你输入以下信息：
-    * 解决方案名称。
-    * 要使用的 Azure 订阅。
-    * 要使用的 Azure 数据中心的位置。
+   * 解决方案名称。
+   * 要使用的 Azure 订阅。
+   * 要使用的 Azure 数据中心的位置。
 
-    脚本使用解决方案名称在 Azure 中创建资源组。 此资源组包含解决方案加速器使用的 Azure 资源。 不再需要相关的资源后，可以删除此资源组。
+     脚本使用解决方案名称在 Azure 中创建资源组。 此资源组包含解决方案加速器使用的 Azure 资源。 不再需要相关的资源后，可以删除此资源组。
 
-    此脚本还向本地计算机添加一组前缀为 **PCS** 的环境变量。 在本地启动 Docker 容器或微服务项目时，它们将从这些环境变量读取其配置值。
+     此脚本还向本地计算机添加一组前缀为 **PCS** 的环境变量。 在本地启动 Docker 容器或微服务项目时，它们将从这些环境变量读取其配置值。
 
-    > [!TIP]
-    > 在此脚本完成时，它还会将环境变量保存到一个名为 **\<your home folder\>\\.pcs\\\<solution name\>.env** 的文件中。 可以将它们用于将来的解决方案加速器部署。 请注意，运行 **docker-compose** 时，在本地计算机上设置的任何环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+     > [!TIP]
+     > 在此脚本完成时，它还会将环境变量保存到一个名为 **\<your home folder\>\\.pcs\\\<solution name\>.env** 的文件中。 可以将它们用于将来的解决方案加速器部署。 请注意，运行 **docker-compose** 时，在本地计算机上设置的任何环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
 
 1. 退出命令行环境。
 

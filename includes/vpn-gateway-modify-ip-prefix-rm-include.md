@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: da351942ae4e53fa48ae20616b5ea480d4fe03e4
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 13089a2514229c5c5bc7b40d9447719247b23405
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418260"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58114507"
 ---
 ### <a name="noconnection"></a>修改本地网关 IP 地址前缀 - 无网关连接
 
@@ -26,10 +26,10 @@ ms.locfileid: "56418260"
    ```
 2. 修改前缀。
 
-  ```azurepowershell-interactive
-  Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
-  -AddressPrefix @('10.101.0.0/24','10.101.1.0/24','10.101.2.0/24')
-  ```
+   ```azurepowershell-interactive
+   Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
+   -AddressPrefix @('10.101.0.0/24','10.101.1.0/24','10.101.2.0/24')
+   ```
 
 删除地址前缀：
 
@@ -37,19 +37,19 @@ ms.locfileid: "56418260"
 
 1. 设置 LocalNetworkGateway 的变量。
 
-  ```azurepowershell-interactive
-  $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
+   ```
 2. 使用更新的前缀设置网关。
 
-  ```azurepowershell-interactive
-  Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
-  -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
-  ```
+   ```azurepowershell-interactive
+   Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
+   -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
+   ```
 
 ### <a name="withconnection"></a>修改本地网关 IP 地址前缀 - 存在网关连接
 
-如果有一个网关连接并且想要添加或删除包含在本地网关中的 IP 地址前缀，将需要按顺序执行以下步骤。 这会导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。 只需删除连接。
+如果有一个网关连接并且想要添加或删除包含在本地网关中的 IP 地址前缀，则需要按顺序执行以下步骤。 这会导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。 只需删除连接。
 
 1. 删除连接。
 

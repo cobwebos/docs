@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 中的 MyApps 门户是什么？ | Microsoft Docs
+title: 什么是 MyApps 门户-Azure Active Directory？ | Microsoft Docs
 description: 了解如何使用各种形式的 MyApps 门户（Web 浏览器、Android 应用、iPhone 和 iPad 应用）访问 SaaS 应用程序。
 services: active-directory
 author: eross-msft
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9682611467311f06d60f6f393ebd7788f95f7f12
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 47c624a9f1d3989e9146f7c32745ca892f6467e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58115254"
 ---
 # <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
 
@@ -81,11 +82,11 @@ MyApps 门户扩展当前适用于：
 
 > [!NOTE]
 > 附加功能仅适用于 Microsoft Edge、Chrome 和 Firefox。
->
-可以直接从以下站点下载扩展：
-- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
-- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
+> 
+> 可以直接从以下站点下载扩展：
+> - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+> - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+> - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 如果使用的我的应用 URL 不是 `https://myapps.microsoft.com`，请通过执行以下操作配置默认 URL：
 1. 未登录到该扩展时，请右键单击该扩展图标。

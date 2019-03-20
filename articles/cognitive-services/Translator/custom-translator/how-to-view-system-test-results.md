@@ -5,20 +5,20 @@ description: 训练成功后，可以审查系统测试以分析训练结果。 
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 6cad142c050ca1de7e4c5f9b4415132a82f38c7b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 67ddc7a8e9d79d0eef9c017b315385df62c18e33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215237"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997713"
 ---
 # <a name="view-system-test-results"></a>查看系统测试结果
 
-训练成功后，可以审查系统测试以分析训练结果。 如果对训练结果感到满意，可以针对训练的模型下达部署请求。 
+训练成功后，可以审查系统测试以分析训练结果。 如果对训练结果感到满意，可以针对训练的模型下达部署请求。
 
 ## <a name="system-test-results-page"></a>系统测试结果页
 
@@ -26,7 +26,7 @@ ms.locfileid: "55215237"
 
 “测试”选项卡显示：
 
-1.  **系统测试结果：** 训练中测试过程的结果。 测试过程生成 BLEU 评分。
+1.  **系统测试结果：** 在培训中测试过程的结果。 测试过程生成 BLEU 评分。
 
     **句子计数：** 在测试集中使用了多少个并行句子。
 

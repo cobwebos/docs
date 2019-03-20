@@ -5,17 +5,17 @@ description: 如何在 Azure 机器学习工作室中调试“训练模型”和
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 2810a059bebc3fa89aef8f75b27250328d81e678
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 9c505262030e5b5aa13b8d221cf1e39c4a9c7833
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455273"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090757"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中调试模型
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5d52653d68c6ebfca7e35a134da263eee99fd3e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 0c87aca6c480d9ebc4add7943a341fe94d640a4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001290"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中，使用 Windows 故障转移群集和共享磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA
 
@@ -41,7 +41,7 @@ ms.locfileid: "34657071"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -149,11 +149,11 @@ ms.locfileid: "34657071"
 
 本文介绍如何通过使用 Windows Server 故障转移群集和群集共享磁盘，群集化 SAP ASCS/SCS 实例，在 Azure 中配置高可用性 SAP 系统。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始安装之前，请查看这些文档：
 
-* [体系结构指南：使用群集共享磁盘在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-shared-disk]
+* [体系结构指南：使用群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例的群集][sap-high-availability-guide-wsfc-shared-disk]
 
 * [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘，准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
 
@@ -183,40 +183,40 @@ ms.locfileid: "34657071"
 
 ### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
 
-1.  在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
+1. 在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
 
-  > [!IMPORTANT]
-  > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (\<SID\>-lb-ascs) 的 IP 地址相同。  
-  >
-  >
+   > [!IMPORTANT]
+   > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (\<SID\>-lb-ascs) 的 IP 地址相同。  
+   >
+   >
 
-  虚拟 SAP ASCS/SCS 的主机名 (pr1-ascs-sap) 的 IP 地址与 Azure 负载均衡器(pr1-lb-ascs) 的 IP 地址相同。
+   虚拟 SAP ASCS/SCS 的主机名 (pr1-ascs-sap) 的 IP 地址与 Azure 负载均衡器(pr1-lb-ascs) 的 IP 地址相同。
 
-  ![图 1：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目][sap-ha-guide-figure-3046]
+   ![图 1：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目][sap-ha-guide-figure-3046]
 
-  图 1：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目
+   _**图 1：** 定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目_
 
-2.  若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域”。
+2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域”。
 
-  ![图 2：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址][sap-ha-guide-figure-3047]
+   ![图 2：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址][sap-ha-guide-figure-3047]
 
-  图 2：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址
+   _**图 2：** SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址_
 
 ### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>安装 SAP 的第一个群集节点
 
-1.  在群集节点 A 上执行第一个群集节点选项。例如，在 pr1-ascs-0 主机上。
-2.  若要保留 Azure 内部负载均衡器的默认端口，请选择：
+1. 在群集节点 A 上执行第一个群集节点选项。例如，在 pr1-ascs-0 主机上。
+2. 若要保留 Azure 内部负载均衡器的默认端口，请选择：
 
-  * **ABAP 系统**：**ASCS** 实例编号 **00**
-  * **Java 系统**：**SCS** 实例编号 **01**
-  * **ABAP+Java 系统**：**ASCS** 实例编号 **00** 和 **SCS** 实例编号 **01**
+   * **ABAP 系统**：**ASCS** 实例编号 **00**
+   * **Java 系统**：**SCS** 实例编号 **01**
+   * **ABAP+Java 系统**：**ASCS** 实例编号 **00** 和 **SCS** 实例编号 **01**
 
-  若要对 ABAP ASCS 实例使用 00 以外的实例编号并且对 Java SCS 实例使用 01 以外的实例编号，请先更改 Azure 内部负载均衡器的默认负载均衡规则。 有关详细信息，请参阅[更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-ha-guide-8.9]。
+   若要对 ABAP ASCS 实例使用 00 以外的实例编号并且对 Java SCS 实例使用 01 以外的实例编号，请先更改 Azure 内部负载均衡器的默认负载均衡规则。 有关详细信息，请参阅[更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-ha-guide-8.9]。
 
 下面几个任务未在标准的 SAP 安装文档中做介绍。
 
 > [!NOTE]
-> SAP 安装文档介绍如何安装第一个 ASCS/SCS 群集节点。
+> SAP 安装文档介绍了如何安装第一个 ASCS/SCS 群集节点。
 >
 >
 
@@ -226,20 +226,20 @@ ms.locfileid: "34657071"
 
 修改 ASCS/SCS 实例的 SAP 配置文件：
 
-1.  将此配置文件参数添加到 SAP ASCS/SCS 实例配置文件：
+1. 将此配置文件参数添加到 SAP ASCS/SCS 实例配置文件：
 
-  ```
-  enque/encni/set_so_keepalive = true
-  ```
-  在本例中，路径为：
+   ```
+   enque/encni/set_so_keepalive = true
+   ```
+   在本例中，路径为：
 
-  `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
+   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
 
-  例如，添加到 SAP SCS 实例配置文件和相应的路径：
+   例如，添加到 SAP SCS 实例配置文件和相应的路径：
 
-  `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
 
-2.  若要应用更改，请重启 SAP ASCS/SCS 实例。
+2. 若要应用更改，请重启 SAP ASCS/SCS 实例。
 
 ### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>添加探测端口
 
@@ -249,97 +249,97 @@ ms.locfileid: "34657071"
 
 添加探测端口：
 
-1.  运行以下 PowerShell 命令，检查当前的“ProbePort”值：
+1. 运行以下 PowerShell 命令，检查当前的“ProbePort”值：
 
-  ```PowerShell
-  $SAPSID = "PR1"     # SAP <SID>
+   ```PowerShell
+   $SAPSID = "PR1"     # SAP <SID>
 
-  $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-  Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
-  ```
+   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
+   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+   ```
 
    请在群集配置中的某个虚拟机上执行命令。
 
-2.  定义探测端口。 默认探测端口号为 0。 在本示例中，我们使用探测端口 62000。
+2. 定义探测端口。 默认探测端口号为 0。 在本示例中，我们使用探测端口 62000。
 
-  ![图 3：群集配置探测端口默认为 0][sap-ha-guide-figure-3048]
+   ![图 3：群集配置探测端口默认为 0][sap-ha-guide-figure-3048]
 
-  图 3：群集配置探测端口默认为 0
+   _**图 3：** 群集配置探测端口默认为 0_
 
-  端口号在 SAP Azure 资源管理器模板中定义。 可在 PowerShell 中分配端口号。
+   端口号在 SAP Azure 资源管理器模板中定义。 可在 PowerShell 中分配端口号。
 
-  若要为 SAP \<SID\> IP 群集资源设置新的 ProbePort 值，请运行以下 PowerShell 脚本，更新环境的 PowerShell 变量：
+   若要为 SAP \<SID\> IP 群集资源设置新的 ProbePort 值，请运行以下 PowerShell 脚本，更新环境的 PowerShell 变量：
 
-  ```PowerShell
-  $SAPSID = "PR1"      # SAP <SID>
-  $ProbePort = 62000   # ProbePort of the Azure internal load balancer
+   ```PowerShell
+   $SAPSID = "PR1"      # SAP <SID>
+   $ProbePort = 62000   # ProbePort of the Azure internal load balancer
 
-  Clear-Host
-  $SAPClusterRoleName = "SAP $SAPSID"
-  $SAPIPresourceName = "SAP $SAPSID IP"
-  $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
-  $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
-  $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
-  $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
-  $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
-  $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
-  $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
+   Clear-Host
+   $SAPClusterRoleName = "SAP $SAPSID"
+   $SAPIPresourceName = "SAP $SAPSID IP"
+   $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
+   $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
+   $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
+   $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
+   $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
+   $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
+   $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
 
-  $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
+   $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
 
-  Write-Host "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" -ForegroundColor Cyan
-  Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+   Write-Host "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" -ForegroundColor Cyan
+   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
 
-  Write-Host
-  Write-Host "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." -ForegroundColor Cyan
-  Write-Host
-  Write-Host "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." -ForegroundColor Cyan
-  Write-Host
+   Write-Host
+   Write-Host "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." -ForegroundColor Cyan
+   Write-Host
+   Write-Host "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." -ForegroundColor Cyan
+   Write-Host
 
-  $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
+   $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
 
-  Write-Host
+   Write-Host
 
-  $ActivateChanges = Read-Host "Do you want to take restart SAP cluster role '$SAPClusterRoleName', to activate the changes (yes/no)?"
+   $ActivateChanges = Read-Host "Do you want to take restart SAP cluster role '$SAPClusterRoleName', to activate the changes (yes/no)?"
 
-  if($ActivateChanges -eq "yes"){
-  Write-Host
-  Write-Host "Activating changes..." -ForegroundColor Cyan
+   if($ActivateChanges -eq "yes"){
+   Write-Host
+   Write-Host "Activating changes..." -ForegroundColor Cyan
 
-  Write-Host
-  write-host "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..." -ForegroundColor Cyan
-  Stop-ClusterResource -Name $SAPIPresourceName
-  sleep 5
+   Write-Host
+   write-host "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..." -ForegroundColor Cyan
+   Stop-ClusterResource -Name $SAPIPresourceName
+   sleep 5
 
-  Write-Host "Starting SAP cluster role '$SAPClusterRoleName' ..." -ForegroundColor Cyan
-  Start-ClusterGroup -Name $SAPClusterRoleName
+   Write-Host "Starting SAP cluster role '$SAPClusterRoleName' ..." -ForegroundColor Cyan
+   Start-ClusterGroup -Name $SAPClusterRoleName
 
-  Write-Host "New ProbePort parameter is active." -ForegroundColor Green
-  Write-Host
+   Write-Host "New ProbePort parameter is active." -ForegroundColor Green
+   Write-Host
 
-  Write-Host "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" -ForegroundColor Cyan
-  Write-Host
-  Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
-  }else
-  {
-  Write-Host "Changes are not activated."
-  }
-  ```
+   Write-Host "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" -ForegroundColor Cyan
+   Write-Host
+   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+   }else
+   {
+   Write-Host "Changes are not activated."
+   }
+   ```
 
-  将 SAP \<SID\> 群集角色联机之后，验证“ProbePort”是否已设置为新值。
+   将 SAP \<SID\> 群集角色联机之后，验证“ProbePort”是否已设置为新值。
 
-  ```PowerShell
-  $SAPSID = "PR1"     # SAP <SID>
+   ```PowerShell
+   $SAPSID = "PR1"     # SAP <SID>
 
-  $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-  Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
+   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
 
-  ```
-  运行该脚本后，系统会提示重启 SAP 群集组以激活更改。
+   ```
+   运行该脚本后，系统会提示重启 SAP 群集组以激活更改。
 
-  ![图 4：设置新值后探测群集端口][sap-ha-guide-figure-3049]
+   ![图 4：设置新值后探测群集端口][sap-ha-guide-figure-3049]
 
-  图 4：设置新值后探测群集端口
+   _**图 4：** 设置新值后探测群集端口_
 
 ### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>打开 Windows 防火墙探测端口
 
@@ -367,7 +367,7 @@ ProbePort 设置为 62000。 现在，可从其他主机（例如 ascsha-dbas）
 
 ![图 5：将 SAP ERS 实例的服务类型更改为自动延迟][sap-ha-guide-figure-3050]
 
-图 5：将 SAP ERS 实例的服务类型更改为自动延迟
+_**图 5：** 将 SAP ERS 实例的服务类型更改为自动延迟_
 
 ## <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>安装 SAP 主应用程序服务器
 
@@ -382,48 +382,48 @@ ProbePort 设置为 62000。 现在，可从其他主机（例如 ascsha-dbas）
 >
 
 
-## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制
+## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> 测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制
 可以使用故障转移群集管理器和 SIOS DataKeeper 管理和配置工具，轻松测试及监视 SAP ASCS/SCS 实例故障转移与 SIOS 磁盘复制。
 
 ### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>SAP ASCS/SCS 实例在群集节点 A 上运行
 
 SAP PR1 群集组在群集节点 A（例如在 pr1-ascs-0）上运行。 将属于 SAP PR1 群集组的共享磁盘驱动器 S 分配到群集节点 A。ASCS/SCS 实例也使用磁盘驱动器 S。 
 
-![图 6：故障转移群集管理器：SAP \<SID\> 群集组在群集节点 A 上运行][sap-ha-guide-figure-5000]
+![图 6：故障转移群集管理器：将 SAP \<SID\>群集组在群集节点 A 上运行][sap-ha-guide-figure-5000]
 
-_图 6：故障转移群集管理器：SAP \<SID\> 群集组在群集节点 A 上运行_
+_**图 6：** 故障转移群集管理器：将 SAP \<SID\>群集组在群集节点 A 上运行_
 
 在 SIOS DataKeeper 管理和配置工具中，可以看到共享磁盘数据以同步方式从群集节点 A 上的源卷驱动器 S 复制到群集节点 B 上的目标卷驱动器 S。例如，从 pr1-ascs-0 [10.0.0.40] 复制到 pr1-ascs-1 [10.0.0.41]。
 
 ![图 7：在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B][sap-ha-guide-figure-5001]
 
-图 7：在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B
+_**图 7：** 在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B_
 
 ### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>从节点 A 到节点 B 的故障转移
 
-1.  选择以下选项之一，开始将 SAP\<SID\> 群集组从群集节点 A 故障转转到群集节点 B 的故障转移：
-  - 故障转移群集管理器  
-  - 故障转移群集 PowerShell
+1. 选择以下选项之一，开始将 SAP\<SID\> 群集组从群集节点 A 故障转转到群集节点 B 的故障转移：
+   - 故障转移群集管理器  
+   - 故障转移群集 PowerShell
 
-  ```PowerShell
-  $SAPSID = "PR1"     # SAP <SID>
+   ```PowerShell
+   $SAPSID = "PR1"     # SAP <SID>
 
-  $SAPClusterGroup = "SAP $SAPSID"
-  Move-ClusterGroup -Name $SAPClusterGroup
+   $SAPClusterGroup = "SAP $SAPSID"
+   Move-ClusterGroup -Name $SAPClusterGroup
 
-  ```
-2.  重启 Windows 来宾操作系统中的群集节点 A。 这会启动将 SAP \<SID\> 群集组从节点 A 故障转移到节点 B 的自动故障转移。  
-3.  重启 Azure 门户中的群集节点 A。 这会启动将 SAP \<SID\> 群集组从节点 A 故障转移到节点 B 的自动故障转移。  
-4.  使用 Azure PowerShell 重启群集节点 A。 这会启动将 SAP \<SID\> 群集组从节点 A 故障转移到节点 B 的自动故障转移。
+   ```
+2. 重启 Windows 来宾操作系统中的群集节点 A。 这会启动将 SAP \<SID\> 群集组从节点 A 故障转移到节点 B 的自动故障转移。  
+3. 重启 Azure 门户中的群集节点 A。 这会启动将 SAP \<SID\> 群集组从节点 A 故障转移到节点 B 的自动故障转移。  
+4. 使用 Azure PowerShell 重启群集节点 A。 这会启动将 SAP \<SID\> 群集组从节点 A 故障转移到节点 B 的自动故障转移。
 
-  故障转移后，SAP \<SID\> 群集组在群集节点 B 上运行。例如，在 pr1-ascs-1 上运行。
+   故障转移后，SAP \<SID\> 群集组在群集节点 B 上运行。例如，在 pr1-ascs-1 上运行。
 
-  ![图 8：在故障转移群集管理器中，SAP \<SID\> 群集组在群集节点 B 上运行][sap-ha-guide-figure-5002]
+   ![图 8：在故障转移群集管理器，SAP \<SID\>群集组在群集节点 B 上运行][sap-ha-guide-figure-5002]
 
-  _图 8：在故障转移群集管理器中，SAP \<SID\> 群集组在群集节点 B 上运行_
+   _**图 8**:在故障转移群集管理器，SAP \<SID\>群集组在群集节点 B 上运行_
 
-  共享磁盘现在已装载到群集节点 B。SIOS DataKeeper 正在将数据从群集节点 B 上的源卷 S 复制到群集节点 A 上的目标卷 S。例如，从 pr1-ascs-1 [10.0.0.41] 复制到 pr1-ascs-0 [10.0.0.40]。
+   共享磁盘现在已装载到群集节点 B。SIOS DataKeeper 正在将数据从群集节点 B 上的源卷 S 复制到群集节点 A 上的目标卷 S。例如，从 pr1-ascs-1 [10.0.0.41] 复制到 pr1-ascs-0 [10.0.0.40]。
 
-  ![图 9：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A][sap-ha-guide-figure-5003]
+   ![图 9：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A][sap-ha-guide-figure-5003]
 
-  图 9：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A
+   _**图 9：** SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A_

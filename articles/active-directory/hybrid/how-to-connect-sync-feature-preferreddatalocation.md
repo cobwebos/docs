@@ -16,12 +16,12 @@ ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe9a10c85efa2f52a04f5c2fab87421a08f0a16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199793"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118436"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Office 365 中的多地域功能时，你使用此属性来指定用户的 Office 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
@@ -126,8 +126,8 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | Name | *提供名称* | 例如“In from AD – User preferredDataLocation” |
-    | 说明 | *提供自定义说明* |  |
+    | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
+    | 描述 | *提供自定义说明* |  |
     | 连接的系统 | *选取本地 Active Directory 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
     | Metaverse 对象类型 | **Person** |  |
@@ -155,8 +155,8 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
-    | Name | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
-    | 说明 | *提供说明* ||
+    | 名称 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
+    | 描述 | *提供说明* ||
     | 连接的系统 | *选择 Azure AD 连接器* ||
     | 连接的系统对象类型 | **User** ||
     | Metaverse 对象类型 | **Person** ||
@@ -167,7 +167,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 属性 | 运算符 | 值 |
     | --- | --- | --- |
-    | sourceObjectType | EQUAL | 用户 |
+    | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
     范围筛选器确定要将此出站同步规则应用到哪些 Azure AD 对象。 在本示例中，我们将使用与“Out to AD – User Identity”OOB（现成）同步规则中相同的范围筛选器。 它可以防止将同步规则应用到未从本地 Active Directory 同步的 **User** 对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
@@ -192,8 +192,8 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
    3. 在对话框中，选择“完全导入”，并单击“确定”。
    4. 等待操作完成。
 
-    > [!NOTE]
-    > 如果源属性已包含在导入的属性的列表中，则可以在本地 Active Directory 连接器上跳过“完全导入”。 换而言之，在本文前面的步骤 2 中不需要进行任何更改。
+      > [!NOTE]
+      > 如果源属性已包含在导入的属性的列表中，则可以在本地 Active Directory 连接器上跳过“完全导入”。 换而言之，在本文前面的步骤 2 中不需要进行任何更改。
 
 2. 在 Azure AD 连接器上运行**完全导入**：
 

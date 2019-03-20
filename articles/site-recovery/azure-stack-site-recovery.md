@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039463"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002384"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -190,7 +190,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 > [!NOTE]
 > 还可通过命令行安装配置服务器。 [了解详细信息](physical-manage-configuration-server.md#install-from-the-command-line)。
-
+> 
 > 帐户名出现在门户中可能需要 15 分钟或更长时间。 若要立即更新，请选择“配置服务器” > ***服务器名称*** > “刷新服务器”。
 
 ## <a name="step-4-set-up-the-target-environment"></a>步骤 4：设置目标环境
@@ -214,7 +214,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 4. 在“恢复点保留期”中，指定每个恢复点的保留时长。 可将复制的 VM 恢复到指定的时间窗口中的任何点。
 5. 在“应用一致性快照频率”中，指定创建应用程序一致性快照的频率。
 
-    - “应用一致”快照是 VM 内应用数据的时间点快照。
+    - 应用一致性快照是 VM 内应用程序数据的时间点快照。
     - 卷影复制服务 (VSS) 确保 VM 上的应用在创建快照时处于一致状态。
 6. 选择“确定”以创建策略。
 
@@ -249,9 +249,9 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 > [!NOTE]
 > 为 VM 启用复制后，Site Recovery 会安装移动服务。
-
+> 
 > 可能要等 15 分钟或更长时间，更改才会生效并显示在门户中。
-
+> 
 > 若要监视添加的 VM，请在“配置服务器” > “上次联系时间”中查看上次发现 VM 的时间。 若要添加 VM 而不想要等待计划的发现，请突出显示配置服务器（不要选择它），然后选择“刷新”。
 
 

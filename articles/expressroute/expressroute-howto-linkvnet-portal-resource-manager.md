@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 16d85510efb055d7d564ffadb9fff2b200771bc6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438823"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079462"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>使用门户将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -54,17 +54,17 @@ ms.locfileid: "53438823"
 
 1. 确保已成功配置 ExpressRoute 线路和 Azure 专用对等互连。 请遵循[创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)和[配置路由](expressroute-howto-routing-arm.md)中的说明。 ExpressRoute 线路应如下图所示：
 
-  ![ExpressRoute 线路屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   ![ExpressRoute 线路屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
 2. 现在可以开始预配连接，以便将虚拟网络网关链接到 ExpressRoute 线路。 单击“连接” > “添加”以打开“添加连接”页面，然后配置值。
 
-  ![添加连接屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
-3. 成功配置连接之后，连接对象会显示连接的信息。
+   ![添加连接屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+3. 成功配置你的连接之后，连接对象会显示连接的信息。
 
-  ![连接对象屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+   ![连接对象屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>将 VNet 连接到线路 - 不同订阅
 
-用户可以在多个订阅之间共享 ExpressRoute 线路。 下图是在多个订阅之间共享 ExpressRoute 线路的简单示意图。
+用户可以在多个订阅之间共享 ExpressRoute 线路。 下图显示了如何在多个订阅之间实现 ExpressRoute 线路共享的简单示意图。
 
 ![跨订阅连接](./media/expressroute-howto-linkvnet-portal-resource-manager/cross-subscription.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "53438823"
 
 ### <a name="administration---about-circuit-owners-and-circuit-users"></a>管理 - 关于线路所有者和线路用户
 
-“线路所有者”是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可由线路用户兑换的授权。 线路用户是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 线路用户可以兑现授权（每个虚拟网络需要一个授权）。
+“线路所有者”是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可供“线路用户”兑换的授权。 线路用户是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 线路用户可以兑现授权（每个虚拟网络需要一个授权）。
 
 线路所有者有权随时修改和撤消授权。 撤消授权将导致从撤消了访问权限的订阅中删除所有链路连接。
 
@@ -95,10 +95,10 @@ ms.locfileid: "53438823"
 
 1. 在 ExpressRoute 页面中，单击“授权”，键入授权的**名称**并单击“保存”。
 
-  ![授权](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
+   ![授权](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 2. 保存配置后，复制“资源 ID”和“授权密钥”。
 
-  ![授权密钥](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
+   ![授权密钥](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
 **若要删除连接授权**
 
@@ -112,18 +112,18 @@ ms.locfileid: "53438823"
 
 1. 单击“+新建”按钮。
 
-  ![单击“新建”](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
+   ![单击“新建”](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
 2. 在市场中搜索“连接”，选择它并单击“创建”。
 
-  ![搜索连接](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
+   ![搜索连接](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
 3. 确保“连接类型”设置为“ExpressRoute”。
 4. 在“基本信息”页面中填写详细信息，然后单击“确定”。
 
-  ![“基本信息”页面](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
+   ![“基本信息”页面](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. 在“设置”页面中，选择“虚拟网络网关”并选中“兑换授权”复选框。
 6. 输入“授权密钥”和“对等线路 URI”，并为连接命名。 单击“确定”。
 
-  ![“设置”页](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+   ![“设置”页](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. 在“摘要”页面中复查信息，并单击“确定”。
 
 **若要释放连接授权**

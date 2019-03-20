@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 76239f80076cbe0f86d6e091a29b008a5a5d06c1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 3282afb87672ba25294e65ea1474a9e06df03362
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871056"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍了如何执行一些操作来最大限度地利用 Azure 安全中心提供的优势，从而帮助读者入门。 执行这些操作，可以在所有与 Azure Active Directory 租户相关联的 Azure 订阅中实现公开范围，并能以聚合方式跨多个订阅应用安全策略，从而大规模、有效地管理组织的安全状态。
@@ -38,7 +38,7 @@ ms.locfileid: "56116637"
 可以将订阅整理到管理组中，并向管理组应用治理策略。 管理组中的所有订阅都会自动继承应用于管理组的策略。 虽然不一定要在安全中心内创建管理组，但强烈建议至少创建一个管理组，以便创建根管理组。 创建管理组后，Azure AD 租户下的所有订阅都会与它关联。 有关 PowerShell 说明以及更多信息，请参阅[创建管理组以管理资源和组织](../azure-resource-manager/management-groups-create.md)。
 
  
-1. 登录到 [Azure 门户](http://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有服务” > “管理组”。
 3. 在主页上，选择“新建管理组”。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "56116637"
 5.  选择“保存”
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>在 Azure 门户中查看管理组
-1. 登录 [Azure 门户](http://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 若要查看管理组，请选择 Azure 主菜单下的“所有服务”。
 3. 选择“通用”下的“管理组”。
 
@@ -77,7 +77,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
    - 将开关设为“是”时，将分配到 Azure RBAC 中根范围 (/) 的用户访问管理员角色。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
 
-  - 将开关设为“否”时，会从用户帐户中删除 Azure RBAC 中的用户访问管理员角色。 将无法再分配在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中的角色。 只能查看和管理已获取访问权限的 Azure 订阅和管理组。
+   - 将开关设为“否”时，会从用户帐户中删除 Azure RBAC 中的用户访问管理员角色。 将无法再分配在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中的角色。 只能查看和管理已获取访问权限的 Azure 订阅和管理组。
 
 4. 单击“保存”，保存设置。
 
@@ -108,15 +108,15 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 
 #### <a name="assign-rbac-roles-to-users-with-powershell"></a>使用 PowerShell 向用户分配 RBAC 角色： 
-1. 安装 [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+1. 安装 [Azure PowerShell](/powershell/azure/install-az-ps)。
 2. 运行以下命令： 
 
     ```azurepowershell
-    # Install Management Groups Powershell module
-    Install-Module AzureRM.Resources
-    
     # Login to Azure as a Global Administrator user
-    Login-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. 当出现提示时，请使用全局管理员凭据登录。 
@@ -128,12 +128,12 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
     ```azurepowershell
     # Add Reader role to the required user on the Root Management Group
     # Replace "user@domian.com” with the user to grant access to
-    New-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
+    New-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
     ```
 5. 若要删除角色，请运行下面的命令： 
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
+    Remove-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
 ### <a name="open-or-refresh-security-center"></a>打开或刷新安全中心
@@ -141,12 +141,17 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 2. 请确保在订阅选择器中选择了要在安全中心内查看的所有订阅。
+
     ![订阅选择器屏幕截图](./media/security-center-management-groups/subscription-selector.png)
+
 1. 在 Azure 主菜单下，依次选择“所有服务”和“安全中心”。
-2. 在“概述”中，没有订阅覆盖率图表。 
-    ![订阅覆盖率图表屏幕截图](./media/security-center-management-groups/security-center-subscription-coverage.png)
+2. 在“概述”中，没有订阅覆盖率图表。
+
+    ![订阅覆盖范围图屏幕截图](./media/security-center-management-groups/security-center-subscription-coverage.png)
+
 3. 单击“覆盖率”，查看所覆盖的订阅列表。 
-    ![订阅覆盖率列表屏幕截图](./media/security-center-management-groups/security-center-coverage.png)
+
+    ![订阅覆盖范围列表屏幕快照](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>撤消提升的访问权限 
 向用户分配 RBAC 角色后，租户管理员应将自己从用户访问管理员角色中删除。
@@ -176,8 +181,8 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 4. 重复执行第 1 步到第 3 步，直到已添加范围内的所有订阅。
 
- > [!NOTE]
- > 管理组可以包含订阅和子管理组。 向父管理组分配拥有 RBAC 角色的用户时，子管理组的订阅继承访问权限。 子管理组还继承在父管理组设置的策略。 
+   > [!NOTE]
+   > 管理组可以包含订阅和子管理组。 向父管理组分配拥有 RBAC 角色的用户时，子管理组的订阅继承访问权限。 子管理组还继承在父管理组设置的策略。 
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何在 Azure 安全中心内实现租户级公开范围。 若要详细了解安全中心，请参阅以下文章：

@@ -4,14 +4,14 @@ description: Avere vFXT for Azure 的先决条件
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 9c3301ba16bfaeb7014658a380e287a36a505be8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 5642f3acd108d0d3f504fc132522936d1b5ab870
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299198"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082579"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -57,7 +57,7 @@ ms.locfileid: "55299198"
 
 |Azure 组件|Quota|
 |----------|-----------|
-|虚拟机|至少 3 个 D16s_v3 或 E32s_v3|
+|虚拟机|3 个或多个与 E32s_v3|
 |高级 SSD 存储|200 GB OS 空间加上每个节点的 1 TB 到 4 TB 缓存空间 |
 |存储帐户（可选） |v2|
 |数据后端存储（可选） |一个新的 LRS Blob 容器 |
@@ -151,6 +151,30 @@ ms.locfileid: "55299198"
    ```
 
 创建群集时将使用此角色名称。 在本例中，名称为 ``avere-operator``。
+
+## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>在虚拟网络 （如果需要） 中创建存储服务终结点
+
+一个[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)使 Azure Blob 流量本地而不是虚拟网络外部路由。 建议使用 Azure Blob 存储后端数据的 Azure 群集任何 Avere vFXT。 
+
+如果你要提供现有的 vnet 和群集创建过程中创建新的 Azure Blob 容器的后端存储，你必须为 Microsoft 存储在 vnet 中具有服务终结点。 创建群集之前，必须存在此终结点或创建将失败。 
+
+存储服务终结点适用于使用 Azure Blob 存储的 Azure 群集任何 Avere vFXT，即使将存储添加更高版本。 
+
+> [!TIP] 
+> * 如果要为群集创建过程中创建新的虚拟网络，请跳过此步骤。 
+> * 此步骤是可选不是在群集创建期间创建 Blob 存储。 在这种情况下，您可以更高版本创建的服务终结点，如果您决定使用 Azure Blob。
+
+从 Azure 门户创建存储服务终结点。 
+
+1. 在门户中，单击左侧的“虚拟网络”。
+1. 选择群集的 vnet。 
+1. 单击左侧的“服务终结点”。
+1. 单击顶部的“添加”。
+1. 将服务作为``Microsoft.Storage``选择群集的子网。
+1. 在底部单击“添加”。
+
+   ![带注释的 Azure 门户屏幕截图，注释标明创建服务终结点的步骤](media/avere-vfxt-service-endpoint.png)
+
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>后续步骤：创建 vFXT 群集
 

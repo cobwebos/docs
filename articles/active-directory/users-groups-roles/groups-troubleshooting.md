@@ -13,20 +13,50 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1fef19c555b9d2e52d4734a8f7bc5e39183e684
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0594d99874ea9bb83673013a9a03272edcd8ce0b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169303"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897667"
 ---
-# <a name="troubleshooting-dynamic-memberships-for-groups"></a>组的动态成员身份疑难解答
+# <a name="troubleshoot-and-resolve-groups-issues"></a>排查和解决组问题
 
-**我在组上配置了一个规则，但该组中的成员身份未更新**<br/>检查规则中的用户属性值：是否有用户满足该规则？ 如果一切看上去正常，请为要填充的组预留一些时间。 根据租户的大小，首次填充或者在更改规则后，最长可能需要 24 小时才能在组中完成填充。
+## <a name="troubleshooting-group-creation-issues"></a>组创建问题疑难解答
+**我已禁用 Azure 门户中创建的安全组，但仍可以通过 Powershell 创建组****用户可以在 Azure 门户中创建安全组**设置在 Azure 门户的控件中是否非管理员用户可以在访问面板或 Azure 门户中创建安全组。 它不会控制通过 Powershell 创建安全组。
+
+若要禁用组创建有关在 Powershell 中的非管理员用户：
+1. 验证是否允许非管理员用户创建组：
+   
+   ```
+   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+   ```
+  
+2. 如果它返回 `UsersPermissionToCreateGroupsEnabled : True`，则非管理员用户可以创建组。 若要禁用此功能，请执行以下操作：
+  
+   ``` 
+   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+   ```
+
+<br/>**我收到允许错误，尝试在 Powershell 中创建动态组时最大组**<br/>
+如果你收到一条消息中，该值指示 Powershell_最大允许组计数达到动态组策略_，这意味着已在租户中的动态组达到最大限制。 每个租户的动态组的最大数量为 5,000。
+
+若要创建任何新的动态组，将首先需要删除某些现有的动态组。 没有方法来提高限制。
+
+## <a name="troubleshooting-dynamic-memberships-for-groups"></a>组的动态成员身份疑难解答
+
+**我在组上配置了一个规则，但该组中的成员身份未更新**<br/>
+1. 验证的用户或设备属性在规则中的值。 请确保有用户满足该规则。 对于设备，检查设备属性，以确保任何已同步的属性包含预期值。<br/>
+2. 检查成员身份处理状态来确认它已完成。 你可以检查[成员身份处理状态](groups-create-rule.md#check-processing-status-for-a-rule)和的上次更新日期上**概述**组页。
+
+如果一切看上去正常，请为要填充的组预留一些时间。 根据租户的大小，首次填充或者在更改规则后，最长可能需要 24 小时才能在组中完成填充。
 
 **我配置了一条规则，但现在却删除了该规则的现有成员**<br/>这是预期的行为。 在启用或更改某个规则时，会删除组中的现有成员。 评估规则后返回的用户将作为成员添加到组中。
 
 **我在添加或更改规则后未立即看到成员身份变化，这是为什么？**<br/>专用成员身份评估定期在异步后台进程中执行。 该过程要花费多长时间取决于目录中的用户数，以及应用规则后创建的组的大小。 通常，用户数较少的目录在几分钟内就能看到组成员身份变化。 而具有大量用户的目录可能需要 30 分钟或更长时间才能填充信息。
+
+**如何强制现在处理的组？**<br/>
+目前，没有办法自动触发要按需处理的组。 但是，可以手动触发重新处理更新成员身份规则以在末尾添加空格。  
 
 **遇到了规则处理错误**<br/>下表列出了常见动态成员资格规则错误以及更正方法。
 

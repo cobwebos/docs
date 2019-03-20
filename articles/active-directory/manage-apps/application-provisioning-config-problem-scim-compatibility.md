@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a1e5643c9d5f6fc2492dd52ccd07606a47d21b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190511"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124060"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -59,36 +59,36 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
  
 1. 登录 Azure 门户： https://portal.azure.com。
 2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分，找到并选择现有 SCIM 应用程序。
-3.  在现有 SCIM 应用的“属性”部分，复制“对象 ID”。
-4.  在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
+3. 在现有 SCIM 应用的“属性”部分，复制“对象 ID”。
+4. 在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
 5. 在 Graph 资源管理器中，运行以下命令以找到预配作业的 ID。 将“[object-id]”替换为从第三步复制的服务主体 ID（对象 ID）。
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
- ![获取作业](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "获取作业") 
+   ![获取作业](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "获取作业") 
 
 
 6. 在结果中，复制以“customappsso”或“scim”开头的完整“ID”字符串。
 7. 运行以下命令，检索属性映射配置，以便执行备份。 使用和之前一样的 [object-id]，并将 [job-id] 替换为从最后一步复制的预配作业 ID。
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
- ![获取架构](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "获取架构") 
+   ![获取架构](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "获取架构") 
 
 8. 复制最后一步的 JSON 输出，并保存到文本文件。 此输出包含向旧应用添加的所有自定义属性映射，应该约有数千行 JSON。
 9. 运行以下命令，删除预配作业：
  
- `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
+   `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
 10. 运行以下命令，创建具有最新服务修补程序的新预配作业。
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
- `{   templateId: "scim"   } `
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
+    `{   templateId: "scim"   } `
    
 11. 在最后一步的结果中，复制以“scim”开头的完整“ID”字符串。 可选择运行以下命令，将 [new-job-id] 替换为刚才复制的新作业 ID，并输入第七步的 JSON 输出作为请求正文来重新应用旧属性映射。
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
- `{   <your-schema-json-here>   }`
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
+    `{   <your-schema-json-here>   }`
 
 12. 返回第一个 Web 浏览器窗口，选择应用程序的“预配”选项卡。
 13. 验证配置，然后启动预配作业。 
@@ -97,15 +97,15 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 是的。 如果已将应用程序编码为展示修补程序发布前已经存在的旧行为，并需要部署其新实例，请执行以下程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器创建展示旧行为的 SCIM 预配作业。
  
-1.  登录 Azure 门户： https://portal.azure.com。
+1. 登录 Azure 门户： https://portal.azure.com。
 2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”>“创建应用程序”部分，创建新的“非库”应用程序。
-3.  在新的自定义应用的“属性”部分，复制“对象 ID”。
-4.  在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
+3. 在新的自定义应用的“属性”部分，复制“对象 ID”。
+4. 在新的 Web 浏览器窗口中，转到 https://developer.microsoft.com/graph/graph-explorer 并以要向其中添加应用的 Azure AD 租户的管理员身份登录。
 5. 在 Graph 资源管理器中，运行以下命令，初始化应用的预配配置。
-将“[object-id]”替换为从第三步复制的服务主体 ID（对象 ID）。
+   将“[object-id]”替换为从第三步复制的服务主体 ID（对象 ID）。
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   templateId: "customappsso"   }`
+   `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+   `{   templateId: "customappsso"   }`
  
 6. 返回第一个 Web 浏览器窗口，选择应用程序的“预配”选项卡。
 7. 照常完成用户预配配置。

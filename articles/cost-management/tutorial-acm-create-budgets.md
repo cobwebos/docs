@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: b41d086c092f3b18715d8fb70cd1a487a97c6869
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814038"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013035"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -33,13 +33,13 @@ ms.locfileid: "55814038"
 > * 在 Azure 门户中创建预算
 > * 编辑预算
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 各种 Azure 帐户类型都支持预算。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 若要查看预算，你至少需要对 Azure 帐户具有读取访问权限。
 
  对于 Azure EA 订阅，必须拥有读取访问权限才能查看预算。 若要创建和管理预算，必须具有参与者权限。 可以为 EA 订阅和资源组创建单独的预算。 但是，不能为 EA 计费帐户创建预算。
 
-每个订阅支持以下 Azure 权限，以便按用户和组进行预算：
+以下 Azure 权限作用域，支持或预算对于每个订阅按用户和组。 有关作用域的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
 
 - 所有者 - 可以为订阅创建、修改或删除预算。
 - 参与者和成本管理参与者 - 可以创建、修改或删除自己的预算。 可以修改其他人创建的预算的预算金额。
@@ -53,7 +53,9 @@ ms.locfileid: "55814038"
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>在 Azure 门户中创建预算
 
-可以按月、按季或按年创建 Azure 订阅预算。 Azure 门户中的导航内容决定了你是为订阅还是为资源组创建预算。 例如，在 Azure 门户中，导航至“订阅”&gt; 选择订阅 &gt;“预算”。 在此示例中，创建的预算是针对所选订阅的。 如果要为资源组创建预算，请导航到“资源组” > 选择资源组 >“预算”。
+可以按月、按季或按年创建 Azure 订阅预算。 在 Azure 门户中导航的内容确定是否创建订阅或管理组的预算。
+
+若要创建或查看在预算，打开在 Azure 门户并选择所需的范围**预算**菜单中。 例如，导航到**订阅**，从列表中，选择一个订阅，然后选择**预算**菜单中。 使用**作用域**药丸切换到不同的作用域，如预算中的管理组。 有关作用域的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
 
 创建预算后，会显示一个简单的视图，其中说明了当前支出与预算的对比情况。
 
@@ -85,6 +87,28 @@ ms.locfileid: "55814038"
 
 ![编辑预算以更改各种属性的示例](./media/tutorial-acm-create-budgets/edit-budget.png)
 
+## <a name="trigger-an-action-group"></a>触发器的操作组
+
+当创建或编辑订阅或资源组范围内的预算时，您可以将其配置为调用一个操作组。 当满足你预算的阈值时，操作组可以执行各种不同的操作。 有关操作组详细信息，请参阅[创建和管理在 Azure 门户中的操作组](../azure-monitor/platform/action-groups.md)。 有关操作组包含使用基于预算的自动化的详细信息，请参阅[使用 Azure 预算管理成本](../billing/billing-cost-management-budget-scenario.md)。
+
+若要创建或更新操作组，请单击**管理操作组**时你正在创建或编辑在预算。
+
+![创建预算以显示管理操作组的示例](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+
+接下来，单击**添加操作组**和创建操作组。
+
+
+![添加操作组中的图像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
+
+组创建操作后，关闭该对话框，以返回到你的预算。
+
+配置你的预算以满足各个阈值时使用操作组。 支持多达五个不同的阈值。
+
+![显示警报条件的操作组选择示例](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
+
+下面的示例列出了预算阈值设置为 50%、 75%和 100%。 每个配置为触发指定的操作组中指定的操作。
+
+![显示配置了各种操作组和操作的类型的警报条件示例](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
 ## <a name="next-steps"></a>后续步骤
 

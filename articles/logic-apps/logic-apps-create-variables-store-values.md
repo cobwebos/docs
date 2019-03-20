@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: HT
+ms.openlocfilehash: e525e5584e4835b0f2b73203c818c3f799b77cf5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075708"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建用于保存和管理值的变量
 
@@ -35,7 +35,7 @@ ms.locfileid: "54063210"
 
 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要遵循本文，需要准备好以下各项：
 
@@ -72,7 +72,7 @@ ms.locfileid: "54063210"
 
 4. 提供变量的以下信息：
 
-   | 属性 | 必选 | Value |  Description |
+   | 属性 | 需要 | Value |  描述 |
    |----------|----------|-------|--------------|
    | Name | 是 | <*variable-name*> | 要递增的变量的名称 | 
    | Type | 是 | <*variable-type*> | 变量的数据类型 | 
@@ -208,7 +208,7 @@ ms.locfileid: "54063210"
 
 3. 提供用于递增变量的以下信息：
 
-   | 属性 | 必选 | Value |  Description |
+   | 属性 | 需要 | Value |  描述 |
    |----------|----------|-------|--------------|
    | Name | 是 | <*variable-name*> | 要递增的变量的名称 | 
    | Value | 否 | <*increment-value*> | 用于递增变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递增变量的特定值。 | 
@@ -328,7 +328,7 @@ ms.locfileid: "54063210"
 
 下面是“递减变量”操作的属性：
 
-| 属性 | 必选 | Value |  Description |
+| 属性 | 需要 | Value |  描述 |
 |----------|----------|-------|--------------|
 | Name | 是 | <*variable-name*> | 要递减的变量的名称 | 
 | Value | 否 | <*increment-value*> | 用于递减变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递减变量的特定值。 | 
@@ -363,7 +363,7 @@ ms.locfileid: "54063210"
 
 下面是“设置变量”操作的属性：
 
-| 属性 | 必选 | Value |  Description | 
+| 属性 | 需要 | Value |  描述 | 
 |----------|----------|-------|--------------| 
 | Name | 是 | <*variable-name*> | 要更改的变量的名称 | 
 | Value | 是 | <*new-value*> | 要赋给变量的值。 两者的数据类型必须相同。 | 
@@ -414,14 +414,15 @@ ms.locfileid: "54063210"
 
 1. 根据变量是字符串还是数组，找到并选择以下操作之一： 
 
-  * **变量 - 追加到字符串变量**
-  * **变量 - 追加到数组变量** 
+   * **变量 - 追加到字符串变量**
+   * **变量 - 追加到数组变量** 
 
-2. 提供要追加为字符串或数组中最后一个项的值。 此值是必需的。 
+2. 提供要追加为字符串或数组中最后一个项的值。 
+   此值是必需的。 
 
 下面是“追加到...”操作的属性：
 
-| 属性 | 必选 | Value |  Description | 
+| 属性 | 需要 | Value |  描述 | 
 |----------|----------|-------|--------------| 
 | Name | 是 | <*variable-name*> | 要更改的变量的名称 | 
 | Value | 是 | <*append-value*> | 要追加的值，可以是任何类型 | 

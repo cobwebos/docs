@@ -3,23 +3,30 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 002/08/2019
-ms.openlocfilehash: ce7d8628c28a4a202a05aeea60e71655b4b7f1a2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.date: 03/11/2019
+ms.openlocfilehash: 200e2dfd2dd4f9aedd9256b307491a0b207ea124
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984883"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57964072"
 ---
-如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（话语）发送给 Microsoft。 容器约每 10 到 15 分钟报告一次使用情况。
+查询到该容器在定价层用于 Azure 资源的计费`<ApiKey>`。
 
-`docker run` 使用以下参数以便计费：
+认知服务容器未获得运行无需连接到计费终结点进行计数的许可。 客户需要使容器能够通信与计费终结点在所有时间的计费信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。 
 
-| 选项 | 说明 |
+### <a name="connecting-to-azure"></a>连接到 Azure
+
+容器需要计费的参数值，才能运行。 这些值允许用于连接到计费终结点的容器。 容器约每 10 到 15 分钟报告一次使用情况。 如果容器不能连接到 Azure 允许的时间范围内，容器将继续运行，但将不提供查询，直到还原计费终结点。 在 10 到 15 分钟的时间间隔相同 10 次尝试连接。 如果它无法连接到 10 次尝试中的计费终结点，容器将停止运行。 
+
+### <a name="billing-arguments"></a>计费参数
+
+所有这三个以下选项必须使用有效的值，以便指定`docker run`命令来启动该容器：
+
+| 选项 | 描述 |
 |--------|-------------|
 | `ApiKey` | 用于跟踪账单信息的认知服务资源的 API 密钥。<br/>必须将此选项的值设置为 `Billing` 中指定的已预配资源的 API 密钥。 |
 | `Billing` | 用于跟踪账单信息的认知服务资源的终结点。<br/>必须将此选项的值设置为已预配的 LUIS Azure 资源的终结点 URI。|
 | `Eula` | 表示已接受容器的许可条款。<br/>此选项的值必须设置为 `accept`。 |
 
-> [!IMPORTANT]
-> 必须使用有效值指定所有三个选项，否则容器将无法启动。
+

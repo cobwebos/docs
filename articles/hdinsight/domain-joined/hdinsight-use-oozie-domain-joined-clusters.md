@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: b0ec8bf52b0b41aef4ea4cc2bfb6ed8fdcd170ec
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 15cdc78559a8f299e2bf0f357bbb7c0664881712
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343283"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116888"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie
 
@@ -38,9 +38,9 @@ Apache Oozie 是一个管理 Apache Hadoop 作业的工作流和协调系统。 
 有关安全外壳 (SSH) 的详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 1. 使用 SSH 连接到 HDInsight 群集：  
- ```bash
-ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
- ```
+   ```bash
+   ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+   ```
 
 2. 若要验证 Kerberos 身份验证是否成功，请使用 `klist` 命令。 如果不成功，请使用 `kinit` 启动 Kerberos 身份验证。
 
@@ -54,23 +54,25 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
 ## <a name="define-the-workflow"></a>定义工作流
 Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。 hPDL 是一种 XML 过程定义语言。 按照以下步骤定义工作流：
 
-1.  设置域用户的工作区：
- ```bash
-hdfs dfs -mkdir /user/<DomainUser>
-cd /home/<DomainUserPath>
-cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
-tar -xvf oozie-examples.tar.gz
-hdfs dfs -put examples /user/<DomainUser>/
- ```
-将 `DomainUser` 替换为域用户名。 将 `DomainUserPath` 替换为域用户的主目录路径。 将 `ClusterVersion` 替换为群集 Hortonworks 数据平台 (HDP) 版本。
+1. 设置域用户的工作区：
+   ```bash
+   hdfs dfs -mkdir /user/<DomainUser>
+   cd /home/<DomainUserPath>
+   cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
+   tar -xvf oozie-examples.tar.gz
+   hdfs dfs -put examples /user/<DomainUser>/
+   ```
+   将 `DomainUser` 替换为域用户名。 
+   将 `DomainUserPath` 替换为域用户的主目录路径。 
+   将 `ClusterVersion` 替换为群集 Hortonworks 数据平台 (HDP) 版本。
 
-2.  使用以下语句创建并编辑新文件：
- ```bash
-nano workflow.xml
- ```
+2. 使用以下语句创建并编辑新文件：
+   ```bash
+   nano workflow.xml
+   ```
 
 3. 打开 nano 编辑器后，输入以下 XML 作为文件内容：
- ```xml
+   ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
        <credentials>
@@ -165,25 +167,25 @@ nano workflow.xml
        </kill>
        <end name="end" />
     </workflow-app>
- ```
+   ```
 4. 将 `clustername` 替换为群集的名称。 
 
 5. 若要保存该文件，请选择 Ctrl+X。 输入 `Y` 。 然后选择 Enter。
 
     工作流分为两部分：
-    *   **凭据部分。** 此部分接收用于验证 Oozie 操作的凭据：
+   * **凭据部分。** 此部分接收用于验证 Oozie 操作的凭据：
 
-       此示例对 Hive 操作进行身份验证。 若要了解详细信息，请参阅[操作身份验证](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)。
+     此示例对 Hive 操作进行身份验证。 若要了解详细信息，请参阅[操作身份验证](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)。
 
-       凭据服务允许 Oozie 操作模拟用户访问 Hadoop 服务。
+     凭据服务允许 Oozie 操作模拟用户访问 Hadoop 服务。
 
-    *   **操作部分。** 此部分包含三个操作：map-reduce、Hive server 2 和 Hive server 1：
+   * **操作部分。** 此部分包含三个操作：map-reduce、Hive server 2 和 Hive server 1：
 
-      - map-reduce 操作针对输出聚合字数统计的映射化简运行来自 Oozie 包的示例。
+     - map-reduce 操作针对输出聚合字数统计的映射化简运行来自 Oozie 包的示例。
 
-       - Hive server 2 和 Hive server 1 操作在随 HDInsight 提供的示例 Hive 表上执行查询。
+     - Hive server 2 和 Hive server 1 操作在随 HDInsight 提供的示例 Hive 表上执行查询。
 
-        Hive 操作借助操作元素中的关键字 `cred`，使用凭据部分中定义的凭据进行身份验证。
+     Hive 操作借助操作元素中的关键字 `cred`，使用凭据部分中定义的凭据进行身份验证。
 
 6. 使用以下命令将 `workflow.xml` 文件复制到 `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`：
      ```bash

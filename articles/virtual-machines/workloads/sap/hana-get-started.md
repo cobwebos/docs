@@ -16,21 +16,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 561eff75ef4268acd3f737f7aaa92ccaacfda7f3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 635f519239ad00df8672472bcb6c54e6b8a59927
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328703"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001702"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>快速入门：在 Azure VM 上手动安装单实例 SAP HANA
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 手动安装 SAP NetWeaver 7.5 和 SAP HANA 1.0 SP12 时，本入门指南可指导用户在 Azure 虚拟机 (VM) 上设置单实例 SAP HANA。 本指南重点介绍在 Azure 上部署 SAP HANA。 它不能替代 SAP 文档。 
 
 >[!Note]
 >本指南介绍如何将 SAP HANA 部署到 Azure VM 中。 有关将 SAP HANA 部署到 HANA 大型实例的信息，请参阅[使用 Azure 虚拟机 (VM) 上的 SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)。
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本指南假定使用者熟悉如下基础结构即服务 (IaaS) 基础知识：
  * 如何通过 Azure 门户或 PowerShell 部署虚拟机或虚拟网络。
  * Azure 跨平台命令行接口 (CLI)，包括用来使用 JavaScript 对象表示法 (JSON) 模板的选项。
@@ -49,7 +49,7 @@ ms.locfileid: "56328703"
 有关 VM 配置和操作的更多详细信息，请参阅文档 [Azure 上的 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)。
 有关 SAP HANA 高可用性，请参阅 [Azure 虚拟机的 SAP HANA 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)。
 
-如果希望快速部署 SAP HANA 实例、S/4HANA 或 BW/4HANA 系统，则应考虑使用 [SAP Cloud Appliance Library](http://cal.sap.com)。 可在[本指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)中找到部署的相关文档，例如如何在 Azure 中通过 SAP CAL 部署 S/4HANA 系统。 只需具有 Azure 订阅，以及可通过 SAP Cloud Appliance Library 注册的 SAP 用户，即可完成操作。
+如果希望快速部署 SAP HANA 实例、S/4HANA 或 BW/4HANA 系统，则应考虑使用 [SAP Cloud Appliance Library](https://cal.sap.com)。 可在[本指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)中找到部署的相关文档，例如如何在 Azure 中通过 SAP CAL 部署 S/4HANA 系统。 只需具有 Azure 订阅，以及可通过 SAP Cloud Appliance Library 注册的 SAP 用户，即可完成操作。
 
 ## <a name="additional-resources"></a>其他资源
 ### <a name="sap-hana-backup"></a>SAP HANA 备份
@@ -70,7 +70,7 @@ ms.locfileid: "56328703"
 如需查看更多有关 SAP HANA 和其他 Linux 操作系统的 SAP 文档，请参阅：
 
 * [SAP Support Note #171356 - SAP Software on Linux:General Information](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息）
-* [SAP 支持说明 #1944799 - 适用于 SLES 操作系统安装的 SAP HANA 指南](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+* [SAP 支持说明 #1944799 - 适用于 SLES 操作系统安装的 SAP HANA 指南](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 * [SAP 支持说明 #2205917 - SAP HANA DB 建议的适用于 SLES 12 for SAP Applications 的 OS 设置](https://launchpad.support.sap.com/#/notes/2205917/E)
 * [SAP Support Note #1984787 - SUSE Linux Enterprise Server 12:Installation Notes](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #1984787 - SUSE Linux Enterprise Server 12：安装说明）
 * [SAP 支持说明 #1391070 - Linux UUID 解决方案](https://launchpad.support.sap.com/#/notes/1391070)
@@ -195,7 +195,7 @@ Azure 上 Linux VM 中的根文件系统具有大小限制。 因此，有必要
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-在建议的磁盘配置中，将 HANA 数据卷和日志卷放置在使用 LVM 或 MDADM 进行条带化的同一组 Azure 高级存储磁盘上。 不需要定义任何 RAID 冗余级别，因为 Azure 高级存储会保留磁盘的三个映像用作冗余。 若要确保配置足够的存储，请参阅 [SAP HANA TDI 存储要求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)和 [SAP HANA 服务器安装和更新指南](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)。 此外应考虑不同 Azure 高级存储磁盘的不同虚拟硬盘 (VHD) 吞吐量卷，如 [VM 的高性能高级存储和托管磁盘](../../windows/disks-types.md)中所述。 
+在建议的磁盘配置中，将 HANA 数据卷和日志卷放置在使用 LVM 或 MDADM 进行条带化的同一组 Azure 高级存储磁盘上。 不需要定义任何 RAID 冗余级别，因为 Azure 高级存储会保留磁盘的三个映像用作冗余。 若要确保配置足够的存储，请参阅 [SAP HANA TDI 存储要求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)和 [SAP HANA 服务器安装和更新指南](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)。 此外应考虑不同 Azure 高级存储磁盘的不同虚拟硬盘 (VHD) 吞吐量卷，如 [VM 的高性能高级存储和托管磁盘](../../windows/disks-types.md)中所述。 
 
 可将更多的高级存储磁盘添加到 HANA DBMS VM，用于存储数据库或事务日志备份。
 
@@ -251,7 +251,7 @@ SLES for SAP Applications 12 GA 和 SLES for SAP Applications 12 SP1 具有替�
 
 对于 SAP HANA DB VM，在数据库安装期间，当使用 SAPinst (SWPM) 和“典型”安装选项时，所有项都将安装到 /hana 和 /usr/sap 中。 SAP HANA 日志备份的默认位置位于 /usr/sap 中。 同样，防止根文件系统耗尽存储空间也非常重要，在使用 SWPM 安装 SAP HANA 之前，请确保 /hana 和 /usr/sap 中有足够的可用空间。
 
-有关 SAP HANA 的标准文件系统布局的说明，请参阅 [SAP HANA Server Installation and Update Guide](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)（SAP HANA 服务器安装和更新指南）。
+有关 SAP HANA 的标准文件系统布局的说明，请参阅 [SAP HANA Server Installation and Update Guide](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)（SAP HANA 服务器安装和更新指南）。
 
 ![在 SAP 应用服务器 VM 上创建的额外文件系统](./media/hana-get-started/image009.jpg)
 
@@ -403,7 +403,7 @@ SLES for SAP Applications 12 GA 和 SLES for SAP Applications 12 SP1 具有替�
 
 * [Choosing the Correct SAP HANA HDBLCM for Your Task](https://help.sap.com/saphelp_hanaplatform/helpdata/en/68/5cff570bb745d48c0ab6d50123ca60/content.htm)（为任务选择正确的 SAP HANA HDBLCM）
 * [SAP HANA Lifecycle Management Tools](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm)（SAP HANA 生命周期管理工具）
-* [SAP HANA Server Installation and Update Guide](http://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)（SAP HANA 服务器安装和更新指南）
+* [SAP HANA Server Installation and Update Guide](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)（SAP HANA 服务器安装和更新指南）
 
 为了避免 `\<HANA SID\>adm user`（由 HDBLCM 工具创建）的默认组 ID 设置发生问题，请在通过 HDBLCM 安装 SAP HANA 之前，定义一个名为 `sapsys`、组 ID 为 `1001` 的新组：
 

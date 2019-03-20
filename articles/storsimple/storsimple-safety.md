@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
-ms.openlocfilehash: 1be635826edbb60d50b06cc7c529e32b6280390b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9d0c8c01ae0d87c944922dece74e13f00879b02f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249381"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010254"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
 ![警告图标](./media/storsimple-safety/IC740879.png)
@@ -30,7 +30,7 @@ ms.locfileid: "51249381"
 ## <a name="safety-icon-conventions"></a>安全图标约定
 以下是在查看安全预防措施时出现的图标，安装和运行 Microsoft Azure StorSimple 设备时应遵循这些措施。
 
-| 图标 | Description |
+| 图标 | 描述 |
 |:--- |:--- |
 | ![危险图标](./media/storsimple-safety/IC740879.png) **DANGER!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
 | ![警告图标](./media/storsimple-safety/IC740879.png) **WARNING!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
@@ -145,7 +145,7 @@ ms.locfileid: "51249381"
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 
-当通过船运或空运对电池进行运输时，请遵循 [http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) 中提供的 IATA 锂电池指南文档
+当通过船运或空运对电池进行运输时，请遵循 [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) 中提供的 IATA 锂电池指南文档
 
 查看完这些安全注意事项之后，后续步骤是对设备进行解包、安装机架并连接电缆。
 

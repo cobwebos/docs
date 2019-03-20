@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a0b4c41d347ba556e737d422af22fb5a47c7c4ff
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: a7aa5401cbba9fafda9f995a882934ef0edfa481
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108715"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881140"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
-本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](http://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
+本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
 
 有关介绍如何处理大型数据集的演练，请参阅 [Team Data Science Process - 使用 Azure HDInsight Hadoop 群集处理 1 TB 数据集](hive-criteo-walkthrough.md)。
 
@@ -84,7 +84,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 > 
 > 
 
-若要将 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)数据集从其公共位置复制，可以使用[将数据从 Azure Blob 存储移入和移出](move-azure-blob.md)中所述的任意方法。
+若要将 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集从其公共位置复制，可以使用[将数据从 Azure Blob 存储移入和移出](move-azure-blob.md)中所述的任意方法。
 
 此处介绍如何使用 AzCopy 传输包含数据的文件。 若要下载并安装 AzCopy，请按照 [AzCopy 命令行实用工具入门](../../storage/common/storage-use-azcopy.md)中的说明进行操作。
 
@@ -516,7 +516,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 你可能想要知道两个位置之间的直接距离是否有差异，以及出租车的实际行程距离。 如果乘客发现司机故意绕远路，该乘客提供小费的可能性更低。
 
-为了查看实际行程距离与两个经纬点（“大圆”距离）之间的[半正矢距离](http://en.wikipedia.org/wiki/Haversine_formula)的比较结果，我们使用 Hive 中可用的三角函数：
+为了查看实际行程距离与两个经纬点（“大圆”距离）之间的[半正矢距离](https://en.wikipedia.org/wiki/Haversine_formula)的比较结果，我们使用 Hive 中可用的三角函数：
 
     set R=3959;
     set pi=radians(180);
@@ -822,8 +822,8 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 此示例演练及其附带脚本在 MIT 许可证下由 Microsoft 共享。 有关更多详细信息，请查看 GitHub 上示例代码目录中的 **LICENSE.txt** 文件。
 
 ## <a name="references"></a>参考
-•    [Andrés Monroy NYC 出租车行程下载页](http://www.andresmh.com/nyctaxitrips/)  
-•    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [Andrés Monroy NYC 出租车行程下载页](https://www.andresmh.com/nyctaxitrips/)  
+•    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 •   [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png

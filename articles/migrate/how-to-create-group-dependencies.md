@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 5c4d16ff85972bc4b608e6ce2006912fb27d49d2
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: a3c0e94e213b861714bfc5f38e20e4d9a1de3a19
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895425"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107910"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
@@ -21,9 +21,10 @@ ms.locfileid: "55895425"
 > [!NOTE]
 > 要可视化其依赖项的组所包含的计算机不应超过 10 台。 如果组中所包含的计算机超过 10 台，建议将该组拆分为更小的组，以便利用依赖项可视化功能。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prepare-for-dependency-visualization"></a>准备依赖项可视化
-Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算机的依赖项可视化。
+Azure Migrate 利用 Azure Monitor 日志，若要启用的计算机的依赖项可视化效果中的服务映射解决方案。
 
 > [!NOTE]
 > 依赖项可视化功能在 Azure 政府中不可用。
@@ -93,18 +94,18 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 1. 在 Azure Migrate 项目中，在 **“管理”** 下，单击 **“组”**，然后选择组。
 2. 在组页面上，单击 **“查看依赖项”**，打开组依赖项映射。
 3. 组的依赖项映射显示了以下详细信息：
-    - 与组中包含的所有计算机的入站（客户端）和出站（服务器）TCP 连接
-        - 没有安装 MMA 和依赖项代理的依赖计算机按端口号进行分组
-        - 安装了 MMA 和依赖项代理的依赖计算机显示在单独的框中
-    - 计算机内运行的进程，可以展开每个计算机框查看这些进程
-    - 每台计算机的属性（如，完全限定的域名、操作系统、MAC 地址等），可单击每个计算机框查看相关详细信息
+   - 与组中包含的所有计算机的入站（客户端）和出站（服务器）TCP 连接
+       - 没有安装 MMA 和依赖项代理的依赖计算机按端口号进行分组
+       - 安装了 MMA 和依赖项代理的依赖计算机显示在单独的框中
+   - 计算机内运行的进程，可以展开每个计算机框查看这些进程
+   - 每台计算机的属性（如，完全限定的域名、操作系统、MAC 地址等），可单击每个计算机框查看相关详细信息
 
      ![查看组依赖项](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. 若要查看更精细的依赖项，请单击时间范围并进行修改。 时间范围默认为 1 小时。 你可以修改时间范围，或指定开始和结束日期以及持续时间。
 
-    > [!NOTE]
-      目前，依赖性可视化效果 UI 不支持选择超过一小时的时间范围。 使用 Log Analytics [查询较长持续时间的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-a-group)。
+   > [!NOTE]
+   >    目前，依赖性可视化效果 UI 不支持选择超过一小时的时间范围。 使用 Azure Monitor 记录到[查询依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-a-group)通过更长的时间。
 
 4. 验证依赖计算机，以及每台计算机内运行的进程，标识应在组中添加或删除的计算机。
 5. 按住 Ctrl 键单击，在映射上选择想要在组中添加或删除的计算机。
@@ -117,19 +118,19 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 
 如果你想要检查显示在组依赖项映射中的特定计算机的依赖项，请[设置计算机依赖项映射](how-to-create-group-machine-dependencies.md)。
 
-## <a name="query-dependency-data-from-log-analytics"></a>从 Log Analytics 查询依赖项数据
+## <a name="query-dependency-data-from-azure-monitor-logs"></a>查询依赖项数据从 Azure Monitor 日志
 
-服务映射捕获的依赖项数据可用于在与 Azure Migrate 项目关联的 Log Analytics 工作区中进行查询。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)可在 Log Analytics 中查询的服务映射数据表。 
+捕获的服务映射依赖关系数据是可用于查询与你的 Azure Migrate 项目相关联的 Log Analytics 工作区中。 [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)有关服务映射数据表来查询 Azure 监视器中的信息记录。 
 
-要运行 Log Analytics 查询：
+若要运行 Kusto 查询：
 
 1. 安装代理后，请转到门户并单击“概述”。
 2. 在“概述”中，转到项目的“Essentials”部分，然后单击“OMS 工作区”旁边提供的工作区名称。
 3. 在“Log Analytics 工作区”页上，单击“常规” > “日志”。
-4. 编写查询以使用 Log Analytics 收集依赖项数据。 [此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)提供用于收集依赖项数据的示例查询。
+4. 编写查询来收集依赖项数据使用 Azure Monitor 日志。 [此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)提供用于收集依赖项数据的示例查询。
 5. 通过单击“运行”，运行查询。 
 
-[详细了解](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)如何编写 Log Analytics 查询。 
+[了解详细信息](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)有关如何编写 Kusto 查询。 
 
 
 ## <a name="next-steps"></a>后续步骤

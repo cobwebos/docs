@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 88efa6b16e33fe928ad9354b7283f7c651e6710c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881294"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877694"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
-你是否刚开始探索语音服务的功能？ 你是否正在为你的应用程序实现一项新功能？ 下面是一些提示，作为开发人员你可以从中获得帮助。
+你刚开始探索语音服务的功能？ 你是否正在为你的应用程序实现一项新功能？ 下面是一些提示，作为开发人员你可以从中获得帮助。
 
 > [!div class="checklist"]
 > * 随时获取 Azure 认知服务中新开发的最新消息或查找与语音服务相关的最新消息。
@@ -30,7 +30,7 @@ ms.locfileid: "55881294"
 
 ## <a name="stay-informed"></a>随时获取最新信息
 
-有关认知服务的新闻，请关注[认知服务博客](https://azure.microsoft.com/blog/topics/cognitive-services/)。 有关语音服务的最新消息，请关注[语音服务博客](https://azure.microsoft.com/blog/tag/speech-service/)。
+有关认知服务的新闻，请关注[认知服务博客](https://azure.microsoft.com/blog/topics/cognitive-services/)。 有关语音服务的最新信息，跟踪[语音服务博客](https://azure.microsoft.com/blog/tag/speech-service/)。
 
 ## <a name="search"></a>搜索
 
@@ -61,11 +61,11 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 
 |组件/方面  |标记  |
 |---------|---------|
-|语音识别 |[[microsoft-cognitive+speech-to-text]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|语音合成 |[[microsoft-cognitive+text-to-speech]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|语音翻译 |[[microsoft-cognitive+translation]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|语音意向 |[[microsoft-cognitive+luis]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|常规语音 SDK |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+|语音识别 |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
+|语音合成 |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
+|语音翻译 |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
+|语音意向 |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
+|常规语音 SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
 > Stack Overflow 中的以下文帖包含有关如何提交问题和添加源代码的提示。 遵循以下准则有助于提高社区成员快速评估和响应问题的可能性：  

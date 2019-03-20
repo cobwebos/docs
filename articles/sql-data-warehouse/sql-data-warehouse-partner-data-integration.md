@@ -10,23 +10,23 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: c45c40f6244f76f15e98369b89d4c9a5b9e537aa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 0e82c1887cb096c7c95ad7e1cbbc1d76962f7831
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473737"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000442"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍其数据集成解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
 
 ## <a name="data-integration-partners"></a>数据集成合作伙伴
-| 合作伙伴 | 说明 | 链接 | 视频 |
+| 合作伙伴 | 描述 | 链接 | 视频 |
 | --- | --- | --- | --- |
 | ![Alteryx][1] |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[市场][alteryx_marketplace]<br>[网站][alteryx_designer_website]<br>[白皮书][alteryx_whitepaper]<br>[数据表][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] |[![Alteryx 视频](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
 | ![Attunity][2] |**Attunity**<br>Attunity CloudBeam 提供自动化且经过优化的解决方案，用于将数据加载到 SQL 数据仓库。 该解决方案采用“单击即加载”设计，可以简化并加速批量加载，并支持从许多异构数据库（包括 SQL Server、Oracle、DB2、Sybase 和 mySQL）进行递增复制。 |[市场][attunity_marketplace]<br>[快速入门][attunity_quickstart]<br>[网站][attunity_cloudbeam_website]<br>[数据表][attunity_cloudbeam_datasheet]<br>[Twitter][attunity_cloudbeam_twitter]<br>[YouTube][attunity_cloudbeam_youtube] |[![Attunity 视频](./media/sql-data-warehouse-partner-data-integration/attunity_video.jpg)](https://www.youtube.com/watch?v=w14zuSjMlok) |
 | ![Bryte Systems][3] |**Bryte Systems**<br>Bryte Systems 将各种数据库与源到 SQL 数据仓库的数据传输自动化。 Bryte Systems 擅长数据移动及集成技术。 他们构建基于云的数据仓库和 Data Lake 来发现见解。 |[网站][bryte_systems_azure_website] | |
-| ![Informatica][4] |**适用于 Azure 的 Informatica 云服务 – 即用即付**<br> 使用“适用于 Azure 的 Informatica 云服务 – 即用即付”优化 Azure 服务的价值，并从所有混合数据集提取可操作见解。 Informatica 云为数据集成、云分析、应用程序集成和数据管理提供同类最佳的解决方案。 借助自助服务数据迁移、集成和管理功能，客户可以快速且可靠地从各种源（如 SaaS 应用程序、基于 Hadoop 的 Data Lake 和其他本地数据源（Oracle、 SAP））将千万亿字节的数据导入、导出、同步和计划到 Azure。 适用于 Azure 的 Informatica 云服务为 Azure SQL 数据仓库、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 提供大容量的高性能本机连接。 |[市场][informatica_Cloud_Services_marketplace]<br>[免费试用][informatica_cloud_free_trial]<br>[配置指南][informatica_cloud_services_config]<br>[网站][informatica_Cloud_Services_website]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
+| ![Informatica][4] |**适用于 Azure 的 Informatica 云服务 – 即用即付**<br> 使用“适用于 Azure 的 Informatica 云服务 – 即用即付”优化 Azure 服务的价值，并从所有混合数据集提取可操作见解。 Informatica 云为数据集成、云分析、应用程序集成和数据管理提供同类最佳的解决方案。 使用自助服务数据迁移、 集成和管理功能，客户可以快速可靠地导入、 导出、 同步，和安排千万亿字节的数据迁移到不同的 SaaS 应用程序，基于 Hadoop 的 data lake 等源的 Azure 和其他本地数据源 （Oracle、 SAP）。 适用于 Azure 的 Informatica 云服务为 Azure SQL 数据仓库、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 提供大容量的高性能本机连接。 |[市场][informatica_Cloud_Services_marketplace]<br>[免费试用][informatica_cloud_free_trial]<br>[配置指南][informatica_cloud_services_config]<br>[网站][informatica_Cloud_Services_website]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
 | ![Informatica][4] |**Informatica PowerCenter**<br>Informatica 是全球最知名的独立数据集成软件提供商之一。 PowerCenter 是用户所有数据集成计划的基石。 可以将 PowerCenter 用于分析、数据仓库、应用程序迁移、整合或数据管理。 |[市场][informatica_PowerCenter_byol]<br>[网站][informatica_PowerCenter_website]<br>[数据表][informatica_powercenter_datasheet]<br>[Twitter][informatica_powercenter_twitter]<br>[YouTube][informatica_powercenter_youtube] | |
 | ![Redgate][5] |**Redgate Data Platform Studio（预览版）**<br>Redgate 的 Data Platform Studio 可通过简单而可靠的方式将本地 SQL 数据库迁移到 Azure SQL 数据仓库。 它经过专门的设计，可以让你在实施完全自动化迁移时进行明智的决策，并且可以免费用来进行一次性迁移。 |[网站][redgate_website]<br>[Twitter][redgate_twitter]<br>[YouTube][redgate_youtube] |[![Redgate 视频](./media/sql-data-warehouse-partner-data-integration/redgate_video.jpg)](https://www.youtube.com/watch?v=IR9HNvnU46s) |
 | ![SnapLogic][6] |**SnapLogic**<br>SnapLogic 集成平台即服务 (iPaaS) 可让客户在 Microsoft Azure SQL 数据仓库中快速传入和传出数据。 SnapLogic 可以让用户在一个解决方案中集成数百个应用程序、服务和 IoT 方案。 使用 SnapLogic 可以在云模式、本地模式或混合模式下对数据进行快速有效的分析！ |[市场][snaplogic_marketplace]<br>[网站][snaplogic_website]<br>[数据表][snaplogic_datasheet]<br>[Twitter][snaplogic_twitter]<br>[YouTube][snaplogic_youtube] |[![Snaplogic 视频](./media/sql-data-warehouse-partner-data-integration/snaplogic_video.jpg)](https://www.youtube.com/watch?v=YiJCwObOh5Y) |
@@ -54,7 +54,7 @@ ms.locfileid: "55473737"
 [informatica_cloud_services_config]:https://kb.informatica.com/proddocs/Product%20Documentation/6/IC_Spring2017_MicrosoftAzure[SQL]DataWarehouseConnectorGuide_en.pdf
 
 <!--Datasheet Links-->
-[alteryx_designer_datasheet]:http://www.alteryx.com/sites/default/files/resources/files/alt-designer-ds.pdf
+[alteryx_designer_datasheet]:https://www.alteryx.com/sites/default/files/resources/files/alt-designer-ds.pdf
 [attunity_cloudbeam_datasheet]:http://www.attunity.com/sites/default/files/content/attunity-azure-solution-sheet.pdf
 
 <!--[bryte_systems_azure_datasheet]:-->
@@ -62,15 +62,15 @@ ms.locfileid: "55473737"
 <!--[informatica_cloud_datasheet]:https://www.informatica.com/content/dam/informatica-com/global/amer/us/collateral/data-sheet/cloud-integration-platform_data-sheet_2711.pdf-->
 
 [informatica_powercenter_datasheet]:https://www.informatica.com/content/dam/informatica-com/global/amer/us/collateral/brochure/powercenter_brochure_6659.pdf
-[snaplogic_datasheet]:http://campaigns.snaplogic.com/rs/055-FYJ-916/images/SnapLogic-for-Microsoft-Cortana.pdf
+[snaplogic_datasheet]:https://campaigns.snaplogic.com/rs/055-FYJ-916/images/SnapLogic-for-Microsoft-Cortana.pdf
 
 <!--Free Trial-->
 [informatica_cloud_free_trial]:https://www.informatica.com/products/cloud-integration/connectivity/microsoft-azure-connector.html
 
 <!--Website Links -->
-[alteryx_designer_website]:http://www.alteryx.com/partners/microsoft/
+[alteryx_designer_website]:https://www.alteryx.com/partners/microsoft/
 [attunity_cloudbeam_website]:http://www.attunity.com/attunity-cloudbeam-for-azure/
-[bryte_systems_azure_website]:http://www.bryteflow.com/
+[bryte_systems_azure_website]:https://www.bryteflow.com/
 [informatica_Cloud_Services_website]:https://www.informatica.com/products/cloud-integration.html
 [informatica_PowerCenter_website]:https://www.informatica.com/products/data-integration/powercenter.html
 [redgate_website]:http://dataplatformstudio.com/
@@ -101,7 +101,7 @@ ms.locfileid: "55473737"
 
 [alteryx_designer_press]:https://www.alteryx.com/press-releases/alteryx-now-enables-data-analysts-to-perform-in-database-blending-in-microsoft-azure 
 [attunity_cloudbeam_press]:http://www.attunity.com/news/attunity-launches-cloud-data-warehouse-solutions-microsoft-azure
-[bryte_systems_azure_press]:http://medianet.com.au/releases/release-details?id=837667
+[bryte_systems_azure_press]:https://medianet.com.au/releases/release-details?id=837667
 
 <!--[informatica_Cloud_Services_press]:-->
 <!--[informatica_PowerCenter_press]:-->
@@ -136,4 +136,4 @@ ms.locfileid: "55473737"
 
 <!--WhitePaper-->
 
-[alteryx_whitepaper]:http://pages.alteryx.com/Microsoft-Azure-InDB-WP?lsm=microsoft
+[alteryx_whitepaper]:https://pages.alteryx.com/Microsoft-Azure-InDB-WP?lsm=microsoft

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3064b3eb5f29e2b2d1ff8516dce97bbb3fb8062
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 09ff573683ef681a053f2bcd37325d48b3823371
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166260"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100813"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>将 Azure 多重身份验证服务器配置为与 AD FS 2.0 配合使用
 
@@ -32,7 +32,9 @@ ms.locfileid: "56166260"
 2. 单击“基于表单”选项卡。
 3. 单击“添加”。
 
-   <center>![设置](./media/howto-mfaserver-adfs-2/setup1.png)</center>
+   <center>
+   
+   ![设置](./media/howto-mfaserver-adfs-2/setup1.png)</center>
 
 4. 若要自动检测用户名、密码和域变量，请在“自动配置基于窗体的网站”对话框内输入登录 URL（例如 https://sso.contoso.com/adfs/ls)），并单击“确定”。
 5. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。
@@ -41,7 +43,9 @@ ms.locfileid: "56166260"
 8. 将请求格式设置为“POST 或 GET”。
 9. 输入用户名变量 (ctl00$ContentPlaceHolder1$UsernameTextBox) 和密码变量 (ctl00$ContentPlaceHolder1$PasswordTextBox)。 如果基于窗体的登录页显示域文本框，则也输入域变量。 若要在登录页中查找输入框的名称，请在 Web 浏览器中导航到该登录页，右键单击该页并选择“查看源”。
 10. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。
-    <center>![设置](./media/howto-mfaserver-adfs-2/manual.png)</center>
+    <center>
+    
+    ![设置](./media/howto-mfaserver-adfs-2/manual.png)</center>
 11. 单击“高级…” 查看高级设置。 用户可以配置的设置包括：
 
     - 选择自定义拒绝页文件
@@ -63,13 +67,17 @@ ms.locfileid: "56166260"
 1. 单击“目录集成”图标。
 2. 在“设置”选项卡上，选择“使用特定 LDAP 配置”单选按钮。
 
-   <center>![设置](./media/howto-mfaserver-adfs-2/ldap1.png)</center>
+   <center>
+    
+   ![设置](./media/howto-mfaserver-adfs-2/ldap1.png)</center>
 
 3. 单击“编辑”。
 4. 在“编辑 LDAP 配置”对话框中，使用连接到 AD 域控制器时所需的信息填充字段。 Azure 多重身份验证服务器帮助文件中提供了字段说明。
 5. 通过单击“测试”按钮来测试 LDAP 连接。
 
-   <center>![设置](./media/howto-mfaserver-adfs-2/ldap2.png)</center>
+   <center>
+    
+   ![设置](./media/howto-mfaserver-adfs-2/ldap2.png)</center>
 
 6. 如果 LDAP 连接测试成功，请单击“确定”。
 
@@ -81,7 +89,9 @@ ms.locfileid: "56166260"
 
 确保已将 Active Directory 中的用户导入服务器。 如果想将内部 IP 地址加入允许列表，以在从这些位置登录网站时不需要进行双重验证，请参阅以下[受信任的 IP部分](#trusted-ips)。
 
-<center>![设置](./media/howto-mfaserver-adfs-2/reg.png)</center>
+<center>
+
+![设置](./media/howto-mfaserver-adfs-2/reg.png)</center>
 
 ## <a name="ad-fs-20-direct-without-a-proxy"></a>不带代理的 AD FS 2.0 直通
 可以在没有使用 AD FS 代理时保护 AD FS。 请在 AD FS 服务器上安装 Azure 多重身份验证服务器，并按以下步骤配置该服务器：
@@ -94,7 +104,9 @@ ms.locfileid: "56166260"
 6. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。
 7. 如果需要，请选中“Cookie 缓存”框。
 
-   <center>![设置](./media/howto-mfaserver-adfs-2/noproxy.png)</center>
+   <center>
+   
+   ![设置](./media/howto-mfaserver-adfs-2/noproxy.png)</center>
 
 8. 单击“确定”。
 9. 单击“本机模块”选项卡，并选择服务器、网站（例如“默认网站”）或 AD FS 应用程序（例如“adfs”下的“ls”），以在所需的级别启用 IIS 插件。
@@ -113,4 +125,6 @@ ms.locfileid: "56166260"
 3. 显示“添加受信任的 IP”对话框时，选择“单个 IP”、“IP 范围”或“子网”其中一个单选按钮。
 4. 输入应加入允许列表的 IP 地址、IP 地址范围或子网。 如果输入子网，请选择适当的网络掩码，并单击“确定”按钮。 现已添加受信任的 IP。
 
-<center>![设置](./media/howto-mfaserver-adfs-2/trusted.png)</center>
+<center>
+
+![设置](./media/howto-mfaserver-adfs-2/trusted.png)</center>

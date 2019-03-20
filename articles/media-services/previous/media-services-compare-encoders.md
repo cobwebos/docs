@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 3dac469c2932276a903a516b71caa860f8870fa6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: bb827b80f79a53f30074b9230efe3e2049471051
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989332"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880766"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器之间的对比  
 
@@ -33,7 +33,7 @@ ms.locfileid: "55989332"
 |---|---|---|
 |在编码时应用条件逻辑<br/>（例如，如果输入是 HD，执行 5.1 音频编码）|否|是|
 |隐藏式字幕|否|[是](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Dolby® 专业响度校正](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> （使用 Dialogue Intelligence™）|否|是|
+|[Dolby® 专业响度校正](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> （使用 Dialogue Intelligence™）|否|是|
 |反交错、反转电视电影|基本|广播质量|
 |检测和删除黑色边框 <br/>（左右黑边、上下黑边）|否|是|
 |生成缩略图|[是](media-services-dotnet-generate-thumbnail-with-mes.md)|[是](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -45,7 +45,7 @@ ms.locfileid: "55989332"
 ## <a id="billing"></a>每个编码器使用的计费表
 | 媒体处理器名称 | 适用定价 | 说明 |
 | --- | --- | --- |
-| **Media Encoder Standard** |编码器 |将基于作为输出生成的所有媒体文件的总持续时间（以分钟为单位）对编码任务进行收费，按照“编码器”列下[此处][1]指定的费率。 |
+| **Media Encoder Standard** |编码器 |编码任务根据 ENCODER 列下作为输出生成的所有媒体文件的总持续时间（分钟）计费，费率已在[此处][1]指定。 |
 | **媒体编码器高级工作流** |高级编码器 |将基于作为输出生成的所有媒体文件的总持续时间（以分钟为单位）对编码任务进行收费，按照“高级编码器”列下[此处][1]指定的费率。 |
 
 ## <a name="input-containerfile-formats"></a>输入容器/文件格式
@@ -103,7 +103,7 @@ ms.locfileid: "55989332"
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |否 |
 
 ## <a name="output-containerfile-formats"></a>输出容器/文件格式
-| 输出容器/文件格式 | 媒体编码器标准版 | 媒体编码器高级工作流 |
+| 输出容器/文件格式 | Media Encoder Standard | 媒体编码器高级工作流 |
 | --- | --- | --- |
 | Adobe® Flash® F4V |否 |是 |
 | MXF（OP1a、XDCAM 和 AS02） |否 |是 |
@@ -153,4 +153,4 @@ ms.locfileid: "55989332"
 * [配额和限制](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->
-[1]: http://azure.microsoft.com/pricing/details/media-services/
+[1]: https://azure.microsoft.com/pricing/details/media-services/

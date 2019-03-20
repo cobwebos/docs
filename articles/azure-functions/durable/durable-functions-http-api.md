@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c2ffa623ad7a6c6da5b799d2c7d5f35c9f65e503
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+ms.openlocfilehash: 5bd977826f489ca8452432babe6126b8553450fb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215399"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137702"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions 中的 HTTP API (Azure Functions)
 
@@ -44,13 +44,13 @@ Durable Task 扩展公开了一组 HTTP API，可用于执行以下任务：
 
 这些示例函数生成以下 JSON 响应数据。 所有字段的数据类型均为 `string`。
 
-| 字段             |Description                           |
-|-------------------|--------------------------------------|
-| id                |业务流程实例的 ID。 |
-| statusQueryGetUri |业务流程实例的状态 URL。 |
-| sendEventPostUri  |业务流程实例的“引发事件”URL。 |
-| terminatePostUri  |业务流程实例的“终止”URL。 |
-| rewindPostUri     |业务流程实例的“回退”URL。 |
+| 字段                   |描述                           |
+|-------------------------|--------------------------------------|
+| **`id`**                |业务流程实例的 ID。 |
+| **`statusQueryGetUri`** |业务流程实例的状态 URL。 |
+| **`sendEventPostUri`**  |业务流程实例的“引发事件”URL。 |
+| **`terminatePostUri`**  |业务流程实例的“终止”URL。 |
+| **`rewindPostUri`**     |业务流程实例的“回退”URL。 |
 
 下面是示例响应：
 
@@ -90,19 +90,11 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
 
 由扩展实现的所有 HTTP API 均采用以下参数。 所有参数的数据类型均为 `string`。
 
-| 参数  | 参数类型  | Description |
-|------------|-----------------|-------------|
-| instanceId | 代码             | 业务流程实例的 ID。 |
-| taskHub    | 查询字符串    | [任务中心](durable-functions-task-hubs.md)的名称。 如果未指定，则使用当前函数应用的任务中心名称。 |
-| 连接 | 查询字符串    | 用于存储帐户的连接字符串的名称。 如果未指定，则使用函数应用的默认连接字符串。 |
-| systemKey  | 查询字符串    | 需要授权密钥才可调用 API。 |
-| showInput  | 查询字符串    | 可选参数；仅单实例请求。 如果设置为 `false`，则执行输入不会包括在响应有效负载中。|
-| showHistory| 查询字符串    | 可选参数；仅单实例请求。 如果设置为 `true`，业务流程执行历史记录将包含在响应有效负载中。|
-| showHistoryOutput| 查询字符串    | 可选参数；仅单实例请求。 如果设置为 `true`，活动输出将包含在业务流程执行历史记录中。|
-| createdTimeFrom  | 查询字符串    | 可选参数。 指定后，筛选在给定 ISO8601 时间戳当时或之后创建的返回实例列表。|
-| createdTimeTo    | 查询字符串    | 可选参数。 指定后，筛选在给定 ISO8601 时间戳当时或之前创建的返回实例列表。|
-| runtimeStatus    | 查询字符串    | 可选参数。 指定后，根据其运行时状态筛选返回实例列表。 若要查看可能的运行时状态值列表，请参阅[查询实例](durable-functions-instance-management.md)主题。 |
-| top    | 查询字符串    | 可选参数。 如果指定，则会将查询结果拆分到各个页面中并限制每页最大结果数。 |
+| 参数        | 参数类型  | 描述 |
+|------------------|-----------------|-------------|
+| **`taskHub`**    | 查询字符串    | [任务中心](durable-functions-task-hubs.md)的名称。 如果未指定，则使用当前函数应用的任务中心名称。 |
+| **`connection`** | 查询字符串    | 用于存储帐户的连接字符串的名称。 如果未指定，则使用函数应用的默认连接字符串。 |
+| **`systemKey`**  | 查询字符串    | 需要授权密钥才可调用 API。 |
 
 `systemKey` 是 Azure Functions 主机自动生成的授权密钥。 它可专门向 Durable Task 扩展 API 授予访问权限，且可通过与管理[其他授权密钥](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)相同的方式进行管理。 发现 `systemKey` 值的最简单的方法是使用上文提及的 `CreateCheckStatusResponse` API。
 
@@ -114,17 +106,41 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
 
 #### <a name="request"></a>请求
 
-对于 Functions 1.0，请求格式如下：
+有关版本 1.x 的 Functions 运行时，请求格式，如下所示 （为清楚起见显示多行）：
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
+    ?taskHub={taskHub
+    &connection={connectionName}
+    &code={systemKey}
+    &showHistory=[true|false]
+    &showHistoryOutput=[true|false]
+    &showInput=[true|false]
 ```
 
-Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
+在版本 2.x 的 Functions 运行时，该 URL 的格式都完全相同的参数，但通过一个略有不同的前缀：
 
 ```http
-GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
+GET /runtime/webhooks/durabletask/instances/{instanceId}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &showHistory=[true|false]
+    &showHistoryOutput=[true|false]
+    &showInput=[true|false]
 ```
+
+此 API 的请求参数包括前面提及的默认集及以下唯一参数：
+
+| 字段                   | 参数类型  | 描述 |
+|-------------------------|-----------------|-------------|
+| **`instanceId`**        | 代码             | 业务流程实例的 ID。 |
+| **`showInput`**         | 查询字符串    | 可选参数。 如果设置为`false`，该函数输入将不包括在响应有效负载。|
+| **`showHistory`**       | 查询字符串    | 可选参数。 如果设置为 `true`，业务流程执行历史记录将包含在响应有效负载中。|
+| **`showHistoryOutput`** | 查询字符串    | 可选参数。 如果设置为`true`，该函数输出将包含在业务流程执行历史记录。|
+| **`createdTimeFrom`**   | 查询字符串    | 可选参数。 如果指定，将筛选返回的实例时或之后的给定的 ISO8601 时间戳创建列表。|
+| **`createdTimeTo`**     | 查询字符串    | 可选参数。 指定时，将筛选返回的实例或给定的 ISO8601 时间戳之前创建的列表。|
+| **`runtimeStatus`**     | 查询字符串    | 可选参数。 指定后，根据其运行时状态筛选返回实例列表。 若要查看可能的运行时状态值列表，请参阅[查询实例](durable-functions-instance-management.md)主题。 |
 
 #### <a name="response"></a>响应
 
@@ -138,15 +154,15 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 
 值为 HTTP 200 和 HTTP 202 时的响应负载是包含以下字段的 JSON 对象：
 
-| 字段           | 数据类型 | Description |
-|-----------------|-----------|-------------|
-| runtimeStatus   | 字符串    | 实例的运行时状态。 相关的值为：正在运行、挂起、失败、已取消、已终止和已完成。 |
-| input           | JSON      | 用于初始化实例的 JSON 数据。 如果 `showInput` 查询字符串参数设置为 `false`，则此字段为 `null`。|
-| customStatus    | JSON      | 用于自定义业务流程状态的 JSON 数据。 如果未设置，此字段为 `null`。 |
-| output          | JSON      | 实例的 JSON 输出。 如果实例不是已完成状态，则该字段为 `null`。 |
-| createdTime     | 字符串    | 创建实例的时间。 使用 ISO 8601 扩展表示法。 |
-| lastUpdatedTime | 字符串    | 实例持续的时间。 使用 ISO 8601 扩展表示法。 |
-| historyEvents   | JSON      | 包含业务流程执行历史记录的 JSON 数组。 除非 `showHistory` 查询字符串参数设置为 `true`，否则此字段为 `null`。 |
+| 字段                 | 数据类型 | 描述 |
+|-----------------------|-----------|-------------|
+| **`runtimeStatus`**   | 字符串    | 实例的运行时状态。 相关的值为：正在运行、挂起、失败、已取消、已终止和已完成。 |
+| **`input`**           | JSON      | 用于初始化实例的 JSON 数据。 如果 `showInput` 查询字符串参数设置为 `false`，则此字段为 `null`。|
+| **`customStatus`**    | JSON      | 用于自定义业务流程状态的 JSON 数据。 如果未设置，此字段为 `null`。 |
+| **`output`**          | JSON      | 实例的 JSON 输出。 如果实例不是已完成状态，则该字段为 `null`。 |
+| **`createdTime`**     | 字符串    | 创建实例的时间。 使用 ISO 8601 扩展表示法。 |
+| **`lastUpdatedTime`** | 字符串    | 实例持续的时间。 使用 ISO 8601 扩展表示法。 |
+| **`historyEvents`**   | JSON      | 包含业务流程执行历史记录的 JSON 数组。 除非 `showHistory` 查询字符串参数设置为 `true`，否则此字段为 `null`。 |
 
 下面是包括业务流程执行历史记录和活动输出的示例响应有效负载（为提高可读性已设置格式）：
 
@@ -207,40 +223,53 @@ HTTP 202 响应还包括 Location 响应标头，该标头引用了与上文提�
 
 ### <a name="get-all-instances-status"></a>获取所有实例状态
 
-还可以查询所有实例状态。 从“获取实例状态”请求中删除 `instanceId`。 参数与“获取实例状态”相同。
+此外可以通过删除查询的所有实例状态`instanceId`Get 实例状态请求中。 在这种情况下，基本参数是相同的 Get 实例状态。 此外支持用于筛选的查询字符串参数。
 
 请务必牢记 `connection` 和 `code` 可选。 如果具有对函数的匿名身份验证，则无需代码。
-如果不想使用除 AzureWebJobsStorage 应用设置中定义的连接字符串之外的其他 blob 存储连接字符串，则可以放心地忽略连接查询字符串参数。
+如果不想使用不同的存储连接字符串而不在 AzureWebJobsStorage 应用设置中定义，那么可以放心地忽略连接查询字符串参数。
 
 #### <a name="request"></a>请求
 
-对于 Functions 1.0，请求格式如下：
+有关版本 1.x 的 Functions 运行时，请求格式，如下所示 （为清楚起见显示多行）：
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /admin/extensions/DurableTaskExtension/instances
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &createdTimeFrom={timestamp}
+    &createdTimeTo={timestamp}
+    &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
+    &showInput=[true|false]
+    &top={integer}
 ```
 
-Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
+在版本 2.x 的 Functions 运行时，该 URL 的格式都完全相同的参数，但通过一个略有不同的前缀：
 
 ```http
-GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /runtime/webhooks/durableTask/instances?
+    taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &createdTimeFrom={timestamp}
+    &createdTimeTo={timestamp}
+    &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
+    &showInput=[true|false]
+    &top={integer}
 ```
 
-#### <a name="request-with-filters"></a>请求筛选器
+此 API 的请求参数包括前面提及的默认集及以下唯一参数：
 
-可以筛选请求。
-
-对于 Functions 1.0，请求格式如下：
-
-```http
-GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}&showInput={showInput}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
-```
-
-Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
-
-```http
-GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}&showInput={showInput}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
-```
+| 字段                   | 参数类型  | 描述 |
+|-------------------------|-----------------|-------------|
+| **`instanceId`**        | 代码             | 业务流程实例的 ID。 |
+| **`showInput`**         | 查询字符串    | 可选参数。 如果设置为`false`，该函数输入将不包括在响应有效负载。|
+| **`showHistory`**       | 查询字符串    | 可选参数。 如果设置为 `true`，业务流程执行历史记录将包含在响应有效负载中。|
+| **`showHistoryOutput`** | 查询字符串    | 可选参数。 如果设置为`true`，该函数输出将包含在业务流程执行历史记录。|
+| **`createdTimeFrom`**   | 查询字符串    | 可选参数。 如果指定，将筛选返回的实例时或之后的给定的 ISO8601 时间戳创建列表。|
+| **`createdTimeTo`**     | 查询字符串    | 可选参数。 指定时，将筛选返回的实例或给定的 ISO8601 时间戳之前创建的列表。|
+| **`runtimeStatus`**     | 查询字符串    | 可选参数。 指定后，根据其运行时状态筛选返回实例列表。 若要查看可能的运行时状态值列表，请参阅[查询实例](durable-functions-instance-management.md)主题。 |
+| **`top`**               | 查询字符串    | 可选参数。 指定时，会限制查询返回的实例数。 |
 
 #### <a name="response"></a>响应
 
@@ -299,25 +328,124 @@ GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={conne
 > 如果实例表中有很多行，则此操作在 Azure存储 I/O 方面可能代价非常高昂。 有关实例表的更多详细信息，请参阅 [Durable Functions (Azure Functions) 中的性能和缩放](durable-functions-perf-and-scale.md#instances-table)文档。
 >
 
-#### <a name="request-with-paging"></a>进行分页的请求
+如果存在更多结果，则响应标头中返回的继续标记。  标头的名称为 `x-ms-continuation-token`。
 
-可以设置 `top` 参数来将查询结果拆分到各个页面中。
+如果下一个请求标头中设置继续标记值，可以获取下一页结果。 请求标头的此名称也是`x-ms-continuation-token`。
 
-对于 Functions 1.0，请求格式如下：
+### <a name="purge-single-instance-history"></a>清除单个实例历史记录
+
+删除历史记录和指定业务流程实例的相关的项目。
+
+#### <a name="request"></a>请求
+
+有关版本 1.x 的 Functions 运行时，请求格式，如下所示 （为清楚起见显示多行）：
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}
+    ?taskHub={taskHub}
+    &connection={connection}
+    &code={systemKey}
 ```
 
-Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
+在版本 2.x 的 Functions 运行时，该 URL 的格式都完全相同的参数，但通过一个略有不同的前缀：
 
 ```http
-GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+DELETE /runtime/webhooks/durabletask/instances/{instanceId}
+    ?taskHub={taskHub}
+    &connection={connection}
+    &code={systemKey}
 ```
 
-如果存在下一个页面，则会在响应标头中返回继续标记。  标头的名称为 `x-ms-continuation-token`。
+此 API 的请求参数包括前面提及的默认集及以下唯一参数：
 
-如果在下一个请求标头中设置了继续标记值，则可以获取下一页。  请求标头中的此键是 `x-ms-continuation-token`。
+| 字段             | 参数类型  | 描述 |
+|-------------------|-----------------|-------------|
+| **`instanceId`**  | 代码             | 业务流程实例的 ID。 |
+
+#### <a name="response"></a>响应
+
+可以返回以下 HTTP 状态代码值。
+
+* **HTTP 200 (正常)**：已成功清除实例历史记录。
+* **HTTP 404 (找不到)**：指定的实例不存在。
+
+响应负载**HTTP 200**用例是一个具有以下字段的 JSON 对象：
+
+| 字段                  | 数据类型 | 描述 |
+|------------------------|-----------|-------------|
+| **`instancesDeleted`** | integer   | 已删除的实例数。 对于单个实例的情况下，此值应始终为`1`。 |
+
+以下是响应负载的示例（为提高可读性设置了格式）：
+
+```json
+{
+    "instancesDeleted": 1
+}
+```
+
+### <a name="purge-multiple-instance-history"></a>清除多个实例历史记录
+
+您还可以通过删除来删除历史记录和相关的项目的任务中心内的多个实例`{instanceId}`清除单个实例历史记录请求中。 若要有选择地清除实例历史记录，请使用获取所有实例状态请求中所述的相同筛选器。
+
+#### <a name="request"></a>请求
+
+有关版本 1.x 的 Functions 运行时，请求格式，如下所示 （为清楚起见显示多行）：
+
+```http
+DELETE /admin/extensions/DurableTaskExtension/instances
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &createdTimeFrom={timestamp}
+    &createdTimeTo={timestamp}
+    &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
+```
+
+在版本 2.x 的 Functions 运行时，该 URL 的格式都完全相同的参数，但通过一个略有不同的前缀：
+
+```http
+DELETE /runtime/webhooks/durabletask/instances
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &createdTimeFrom={timestamp}
+    &createdTimeTo={timestamp}
+    &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
+```
+
+此 API 的请求参数包括前面提及的默认集及以下唯一参数：
+
+| 字段                 | 参数类型  | 描述 |
+|-----------------------|-----------------|-------------|
+| **`createdTimeFrom`** | 查询字符串    | 可选参数。 指定时，筛选已创建时或之后的给定的 ISO8601 时间戳的已清除实例的列表。|
+| **`createdTimeTo`**   | 查询字符串    | 可选参数。 指定时，筛选已清除或给定的 ISO8601 时间戳之前创建的实例的列表。|
+| **`runtimeStatus`**   | 查询字符串    | 可选参数。 指定时，筛选器已清除的实例的列表基于其运行时状态。 若要查看可能的运行时状态值列表，请参阅[查询实例](durable-functions-instance-management.md)主题。 |
+
+如果未不指定任何参数，则将清除任务中心中的所有实例。
+
+> [!NOTE]
+> 此操作会在 Azure 存储 I/O 方面很高，如果有大量的行中的实例和/或历史记录表。 这些表上的更多详细信息可在[性能和规模 Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table)文档。
+
+#### <a name="response"></a>响应
+
+可以返回以下 HTTP 状态代码值。
+
+* **HTTP 200 (正常)**：已成功清除实例历史记录。
+* **HTTP 404 (找不到)**：未不找到任何实例，与匹配的筛选器表达式。
+
+响应负载**HTTP 200**用例是一个具有以下字段的 JSON 对象：
+
+| 字段                   | 数据类型 | 描述 |
+|-------------------------|-----------|-------------|
+| **`instancesDeleted`**  | integer   | 已删除的实例数。 |
+
+以下是响应负载的示例（为提高可读性设置了格式）：
+
+```json
+{
+    "instancesDeleted": 250
+}
+```
 
 ### <a name="raise-event"></a>引发事件
 
@@ -325,24 +453,31 @@ GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={conne
 
 #### <a name="request"></a>请求
 
-对于 Functions 1.0，请求格式如下：
+有关版本 1.x 的 Functions 运行时，请求格式，如下所示 （为清楚起见显示多行）：
 
 ```http
-POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
 ```
 
-Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
+在版本 2.x 的 Functions 运行时，该 URL 的格式都完全相同的参数，但通过一个略有不同的前缀：
 
 ```http
-POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
 ```
 
 此 API 的请求参数包括前面提及的默认集及以下唯一参数：
 
-| 字段       | 参数类型  | 数据类型 | Description |
-|-------------|-----------------|-----------|-------------|
-| eventName   | 代码             | 字符串    | 目标业务流程正在等待的事件的名称。 |
-| {content}   | 请求内容 | JSON      | JSON 格式的事件负载。 |
+| 字段             | 参数类型  | 描述 |
+|-------------------|-----------------|-------------|
+| **`instanceId`**  | 代码             | 业务流程实例的 ID。 |
+| **`eventName`**   | 代码             | 目标业务流程正在等待的事件的名称。 |
+| **`{content}`**   | 请求内容 | JSON 格式的事件负载。 |
 
 #### <a name="response"></a>响应
 
@@ -355,7 +490,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 下面的请求示例向等待名为 operation 的事件的实例发送 JSON 字符串 `"incr"`：
 
-```
+```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 Content-Type: application/json
 Content-Length: 6
@@ -371,23 +506,32 @@ Content-Length: 6
 
 #### <a name="request"></a>请求
 
-对于 Functions 1.0，请求格式如下：
+有关版本 1.x 的 Functions 运行时，请求格式，如下所示 （为清楚起见显示多行）：
 
 ```http
-POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &reason={text}
 ```
 
-Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
+在版本 2.x 的 Functions 运行时，该 URL 的格式都完全相同的参数，但通过一个略有不同的前缀：
 
 ```http
-POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &reason={text}
 ```
 
 此 API 的请求参数包括前面提及的默认集及以下唯一参数。
 
-| 字段       | 参数类型  | 数据类型 | Description |
-|-------------|-----------------|-----------|-------------|
-| 原因      | 查询字符串    | 字符串    | 可选。 终止业务流程实例的原因。 |
+| 字段             | 参数类型  | 描述 |
+|-------------------|-----------------|-------------|
+| **`instanceId`**  | 代码             | 业务流程实例的 ID。 |
+| **`reason`**      | 查询字符串    | 可选。 终止业务流程实例的原因。 |
 
 #### <a name="response"></a>响应
 
@@ -411,23 +555,32 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 ### <a name="request"></a>请求
 
-对于 Functions 1.0，请求格式如下：
+有关版本 1.x 的 Functions 运行时，请求格式，如下所示 （为清楚起见显示多行）：
 
 ```http
-POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &reason={text}
 ```
 
-Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
+在版本 2.x 的 Functions 运行时，该 URL 的格式都完全相同的参数，但通过一个略有不同的前缀：
 
 ```http
-POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &reason={text}
 ```
 
 此 API 的请求参数包括前面提及的默认集及以下唯一参数。
 
-| 字段       | 参数类型  | 数据类型 | Description |
-|-------------|-----------------|-----------|-------------|
-| 原因      | 查询字符串    | 字符串    | 可选。 回退业务流程实例的原因。 |
+| 字段             | 参数类型  | 描述 |
+|-------------------|-----------------|-------------|
+| **`instanceId`**  | 代码             | 业务流程实例的 ID。 |
+| **`reason`**      | 查询字符串    | 可选。 回退业务流程实例的原因。 |
 
 ### <a name="response"></a>响应
 
@@ -439,7 +592,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}
 
 下面的示例请求回退失败的实例，并将原因指定为**已修复**：
 
-```
+```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 ```
 

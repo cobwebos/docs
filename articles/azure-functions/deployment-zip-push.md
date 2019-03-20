@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: HT
+ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086575"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
 
@@ -51,13 +51,13 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
 + **通过 Azure 门户：**
 
-    1. 登录 [Azure 门户](https://portal.azure.com)，并转到函数应用。
+  1. 登录 [Azure 门户](https://portal.azure.com)，并转到函数应用。
 
-    2. 在“概述”选项卡中，选择“下载应用内容”。 选择下载选项，然后选择“下载”。
+  2. 在“概述”选项卡中，选择“下载应用内容”。 选择下载选项，然后选择“下载”。
 
-        ![下载函数应用项目](./media/deployment-zip-push/download-project.png)
+      ![下载函数应用项目](./media/deployment-zip-push/download-project.png)
 
-    所下载的 .zip 文件格式正确，可使用 .zip 推送部署将其重新发布到函数应用。 门户下载还可以添加在 Visual Studio 中直接打开函数应用所需的文件。
+     所下载的 .zip 文件格式正确，可使用 .zip 推送部署将其重新发布到函数应用。 门户下载还可以添加在 Visual Studio 中直接打开函数应用所需的文件。
 
 + **使用 REST API：**
 

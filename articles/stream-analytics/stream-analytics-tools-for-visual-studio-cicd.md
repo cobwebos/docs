@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2017
-ms.openlocfilehash: 85cb23d865133f2ee769874aa5150ab13e04cd69
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: 641254be37ac0019ee6a256fc99f96fc3bfb75a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122767"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>使用流分析工具进行持续集成和开发
 本文介绍如何使用适用于 Visual Studio 的 Azure 流分析工具设置持续集成和部署过程。
@@ -21,8 +21,8 @@ ms.locfileid: "54410545"
 使用版本 2.3.0000.0 或更高版本的[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)以获得对 MSBuild 的支持。
 
 有 NuGet 包可用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供了 MSBuild、本地运行和部署工具，用于支持流分析 Visual Studio 项目的持续集成和部署进程。 
-> [!NOTE] 
-NuGet 包只能与 2.3.0000.0 或以上版本的用于 Visual Studio 的流分析工具配合使用。 如果具有在以前版本的 Visual Studio 工具中创建的项目，只需使用 2.3.0000.0 或以上版本将其打开并保存即可。 然后即可启用新功能。 
+> [!NOTE]
+> NuGet 包只能与 2.3.0000.0 或以上版本的用于 Visual Studio 的流分析工具配合使用。 如果具有在以前版本的 Visual Studio 工具中创建的项目，只需使用 2.3.0000.0 或以上版本将其打开并保存即可。 然后即可启用新功能。 
 
 有关详细信息，请参阅[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)。
 
@@ -45,8 +45,8 @@ NuGet 包只能与 2.3.0000.0 或以上版本的用于 Visual Studio 的流分�
 
 parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 
-> [!NOTE] 
-对于所有凭据，默认值均设置为 null。 部署到云之前，必须先设置这些值。
+> [!NOTE]
+> 对于所有凭据，默认值均设置为 null。 部署到云之前，必须先设置这些值。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {

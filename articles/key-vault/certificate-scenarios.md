@@ -3,7 +3,7 @@ title: Key Vault 证书入门
 description: 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
 services: key-vault
 documentationcenter: ''
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
 ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: aeba7473437e6cb7bfe8060b742ed1d6863047e9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.author: mbaldwin
+ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109208"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075623"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -50,12 +50,12 @@ ms.locfileid: "56109208"
 
 **步骤 3** - Contoso 管理员以及拥有证书（取决于 CA）的 Contoso 员工（Key Vault 用户）可以从管理员处获取证书，也可以直接从 CA 的帐户获取。  
 
--   开始通过[设置证书颁发者](/rest/api/keyvault/setcertificateissuer/setcertificateissuer)资源，对密钥保管库执行添加凭据操作。 证书颁发者是 Azure Key Vault (KV) 中表示为 CertificateIssuer 资源的实体。 它用于提供有关 KV 证书来源的信息，例如颁发者名称、提供者、凭据和其他管理详细信息。
-    -   例如： MyDigiCertIssuer  
-        -   提供程序  
-        -   凭据 - CA 帐户凭据。 每个 CA 都有其自身的特定数据。  
+- 开始通过[设置证书颁发者](/rest/api/keyvault/setcertificateissuer/setcertificateissuer)资源，对密钥保管库执行添加凭据操作。 证书颁发者是 Azure Key Vault (KV) 中表示为 CertificateIssuer 资源的实体。 它用于提供有关 KV 证书来源的信息，例如颁发者名称、提供者、凭据和其他管理详细信息。
+  - 例如： MyDigiCertIssuer  
+    -   提供程序  
+    -   凭据 - CA 帐户凭据。 每个 CA 都有其自身的特定数据。  
 
-     若要详细了解如何通过 CA 提供者来创建帐户，请参阅 [Key Vault 博客](https://aka.ms/kvcertsblog)上的相关文章。  
+    若要详细了解如何通过 CA 提供者来创建帐户，请参阅 [Key Vault 博客](https://aka.ms/kvcertsblog)上的相关文章。  
 
 **步骤 3.1** - 设置用于接收通知的[证书联系人](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)。 这是 Key Vault 用户的联系人。 Key Vault 不强制执行此步骤。  
 

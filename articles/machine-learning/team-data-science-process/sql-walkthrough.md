@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 953f2cdac41dcd610afbde39a318c0237b0b9099
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: c9d707d1a76b3b5913d66745767df8e84362a192
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114733"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890842"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>团队数据科学过程实务：使用 SQL Server
-在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
+在本教程中，将逐步指导完成使用 SQL Server 和可公开取得的数据集 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)，构建和部署机器学习模型的过程。 该程序遵循标准数据科学工作流，包括：引入和浏览数据，设计功能以促进学习，并构建和部署模型。
 
 ## <a name="dataset"></a>NYC 出租车行程数据集介绍
 NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 CSV 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
@@ -82,7 +82,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩 
 根据数据集大小、数据源位置和所选的 Azure 目标环境，此应用场景类似于[应用场景 \#5：本地文件中的大型数据集、Azure VM 中的目标 SQL Server](plan-sample-scenarios.md#largelocaltodb)。
 
 ## <a name="getdata"></a>从公共源获取数据
-要从 [NYC 出租车行程](http://www.andresmh.com/nyctaxitrips/)数据集的公共位置获取该数据集，可以使用[将数据从 Azure Blob 存储移入和移出](move-azure-blob.md)中所述的任意方法，将数据复制到新的虚拟机。
+要从 [NYC 出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集的公共位置获取该数据集，可以使用[将数据从 Azure Blob 存储移入和移出](move-azure-blob.md)中所述的任意方法，将数据复制到新的虚拟机。
 
 使用 AzCopy 复制数据：
 
@@ -622,8 +622,8 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 此示例演练和及其附带脚本和 IPython notebook 是在 MIT 许可证下由 Microsoft 共享。 如需更多详细信息，请查看 GitHub 上示例代码目录中的 LICENSE.txt 文件。
 
 ### <a name="references"></a>参考
-•    [Andrés Monroy NYC 出租车行程下载页](http://www.andresmh.com/nyctaxitrips/)  
-•    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [Andrés Monroy NYC 出租车行程下载页](https://www.andresmh.com/nyctaxitrips/)  
+•    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 •   [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png

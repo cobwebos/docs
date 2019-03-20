@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8770aaeff3e0d7b2d6a39f596aafebf15ed48b23
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 91889971e1ab8a9ea8341f6bc57735d973ea0e89
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984983"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58114931"
 ---
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -74,8 +74,8 @@ $galleryImage = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-
-在即将发布的版本中，将能够使用个人定义的“-Publisher”、“-Offer”和“-Sku”值来查找和指定映像定义，然后使用匹配的映像定义中的最新映像版本来创建 VM。 例如，以下是三个映像定义及其值：
+### <a name="using-publisher-offer-and-sku"></a>使用发布者、 产品/服务和 SKU 
+实现共享的映像，计划的客户**即将推出的版本**，你将能够使用您个人定义 **-发布者**， **-提供**和 **-Sku**值查找和指定图像定义，然后使用最新版本从匹配的映像创建 VM 映像定义。 例如，以下是三个映像定义及其值：
 
 |映像定义|发布者|产品/服务|SKU|
 |---|---|---|---|
@@ -83,10 +83,9 @@ $galleryImage = New-AzGalleryImageDefinition `
 |myImage2|myPublisher|standardOffer|mySku|
 |myImage3|测试|standardOffer|testSku|
 
-所有这三个映像都有唯一的一组值。 在即将发布的版本中，可合并这些值以请求特定映像的最新版本。 
+所有这三个映像都有唯一的一组值。 可以拥有共享一个或两个但不是全部三个值的映像版本。 **即将推出的版本**，可以将这些值合并以请求特定映像的最新版本。 **在当前版本中不起作用**，但将在将来提供。 发布时，使用以下语法用于设置为源映像*myImage1*从上表。
 
 ```powershell
-# The following should set the source image as myImage1 from the table above
 $vmConfig = Set-AzVMSourceImage `
    -VM $vmConfig `
    -PublisherName myPublisher `
@@ -94,9 +93,9 @@ $vmConfig = Set-AzVMSourceImage `
    -Skus mySku 
 ```
 
-这与当前为 [Azure 市场映像](../articles/virtual-machines/windows/cli-ps-findimage.md)指定这些内容以创建 VM 的方式类似。 请记住这一点，每个映像定义都需要具有一组唯一的这些值。 可以拥有共享一个或两个但不是全部三个值的映像版本。 
+它类似于如何目前指定使用发布者、 产品/服务和 SKU [Azure Marketplace 映像](../articles/virtual-machines/windows/cli-ps-findimage.md)若要获取 Marketplace 映像的最新版本。 请记住这一点，每个映像定义都需要具有一组唯一的这些值。  
 
-##<a name="create-an-image-version"></a>创建映像版本
+## <a name="create-an-image-version"></a>创建映像版本
 
 使用 [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 根据托管映像创建映像版本。 在此示例中，映像版本为 1.0.0，该版本被复制到美国中西部和美国中南部数据中心。
 

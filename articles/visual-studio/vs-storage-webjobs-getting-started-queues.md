@@ -12,22 +12,22 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 74aea3ad4c3dda8abc69275ad4d683fbcf485ccc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722900"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999550"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio Azure WebJob 项目中使用 Azure 队列存储。 当使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。  
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio Azure WebJob 项目中使用 Azure 队列存储。 使用 Visual Studio 中的“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。  
 
 本文提供了 C# 代码示例，用于演示如何在 Azure 队列存储服务中使用 Azure WebJobs SDK 版本 1.x。
 
-Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。 一条队列消息的大小最多可为 64 KB，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。 有关详细信息，请参阅[通过 .NET 开始使用 Azure 队列存储](../storage/queues/storage-dotnet-how-to-use-queues.md)。 有关 ASP.NET 的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
+Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。 一条队列消息的大小最多可为 64 KB，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。 有关详细信息，请参阅[通过 .NET 开始使用 Azure 队列存储](../storage/queues/storage-dotnet-how-to-use-queues.md)。 有关 ASP.NET 的详细信息，请参阅 [ASP.NET](https://www.asp.net)。
 
 ## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>如何在接收队列消息时触发函数
 若要编写接收队列消息时 WebJobs SDK 调用的函数，请使用 **QueueTrigger** 属性。 该属性构造函数使用一个字符串参数来指定要轮询的队列名称。 若要了解如何以动态方式设置队列名称，请参阅[如何设置配置选项](#how-to-set-configuration-options)。
@@ -42,9 +42,9 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 }
 ```
 
-除了 **string** 以外，参数还可以是字节数组、**CloudQueueMessage** 对象或定义的 POCO。
+除了 string 以外，参数还可以是字节数组、CloudQueueMessage 对象或定义的 POCO。
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 在下面的示例中，队列消息包含 **BlobInformation** 对象的 JSON，该对象包含一个 **BlobName** 属性。 SDK 会自动反序列化该对象。
 
 ```csharp
@@ -54,7 +54,7 @@ public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobI
 }
 ```
 
-SDK 使用 [Newtonsoft.Json NuGet 包](http://www.nuget.org/packages/Newtonsoft.Json)序列化和反序列化消息。 如果在不使用 WebJobs SDK 的程序中创建队列消息，则可以如以下示例所示编写代码，以创建 SDK 可以分析的 POCO 队列消息。
+SDK 使用 [Newtonsoft.Json NuGet 包](https://www.nuget.org/packages/Newtonsoft.Json)序列化和反序列化消息。 如果在不使用 WebJobs SDK 的程序中创建队列消息，则可以如以下示例所示编写代码，以创建 SDK 可以分析的 POCO 队列消息。
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
@@ -72,7 +72,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-异步函数可以采用[取消标记](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)，如以下用于复制 blob 的示例中所示。 （有关 **queueTrigger** 占位符的说明，请参阅 [Blob](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) 部分。）
+异步函数可以采用[取消标记](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)，如以下用于复制 blob 的示例中所示。 （有关 **queueTrigger** 占位符的说明，请参阅 [Blob](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) 部分。）
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -190,7 +190,7 @@ public static void GracefulShutdownDemo(
 若要编写创建新队列消息的函数，请使用 **Queue** 属性。 与 **QueueTrigger** 一样，可以传入字符串形式的队列名称，还可以[动态设置队列名称](#how-to-set-configuration-options)。
 
 ### <a name="string-queue-messages"></a>字符串队列消息
-下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请按照本部分稍后介绍的方法使用 **IAsyncCollector<T>**。）
+下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请按照本部分稍后将介绍的方法使用 IAsyncCollector<T>。）
 
 ```csharp
 public static void CreateQueueMessage(
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 要创建包含 POCO（而不是字符串）的队列消息，请将 POCO 类型作为输出参数传递给 **Queue** 属性构造函数。
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 对于队列消息中存储为 JSON 的 POCO，可以在 **Queue** 属性的 **blobPath** 参数中使用占位符来指定对象的属性。 还可以将队列元数据属性名称用作占位符。 请参阅[获取队列或队列消息元数据](#get-queue-or-queue-message-metadata)。
 
 下面的示例将 Blob 复制到具有不同扩展名的新 Blob。 队列消息是一个 **BlobInformation** 对象，其中包括 **BlobName** 和 **BlobNameWithoutExtension** 属性。 属性名称用作 **Blob** 属性的 blob 路径中的占位符。
@@ -311,7 +311,7 @@ public static void CopyBlobPOCO(
 }
 ```
 
-SDK 使用 [Newtonsoft.Json NuGet 包](http://www.nuget.org/packages/Newtonsoft.Json)序列化和反序列化消息。 如果在不使用 WebJobs SDK 的程序中创建队列消息，则可以如以下示例所示编写代码，以创建 SDK 可以分析的 POCO 队列消息。
+SDK 使用 [Newtonsoft.Json NuGet 包](https://www.nuget.org/packages/Newtonsoft.Json)序列化和反序列化消息。 如果在不使用 WebJobs SDK 的程序中创建队列消息，可以如以下示例所示编写代码，以创建 SDK 可以分析的 POCO 队列消息。
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
@@ -319,7 +319,7 @@ var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
 logQueue.AddMessage(queueMessage);
 ```
 
-如果在将 Blob 绑定到某对象之前需要在函数中执行某些操作，则可以使用函数正文中的属性，如[在函数正文中使用 WebJobs SDK 属性](#use-webjobs-sdk-attributes-in-the-body-of-a-function)所示。
+如果在将 Blob 绑定到某对象之前需要在函数中执行某些操作，则可以使用函数正文中的属性，如[使用函数正文中的 WebJobs SDK 属性](#use-webjobs-sdk-attributes-in-the-body-of-a-function)所示。
 
 ### <a name="types-you-can-use-the-blob-attribute-with"></a>可以使用 Blob 属性的类型
 **Blob** 属性可用于以下类型：
@@ -442,9 +442,9 @@ static void Main(string[] args)
 ### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>在代码中设置 WebJobs SDK 构造函数参数的值
 有时，要在代码中指定队列名称、Blob 名称、容器或表名称，而不是进行硬编码。 例如，可能要在配置文件或环境变量中指定 **QueueTrigger** 的队列名称。
 
-可以通过将 **NameResolver** 对象传递给 **JobHostConfiguration** 类型来执行该操作。 此时，可以在 WebJobs SDK 属性构造函数参数中包含以百分号 (%) 括住的特殊占位符，**NameResolver** 代码将指定用于取代这些占位符的实际值。
+可以将 NameResolver 对象传递给 JobHostConfiguration 类型来执行该操作。 此时，可以在 WebJobs SDK 属性构造函数参数中包含以百分号 (%) 括住的特殊占位符，NameResolver 代码将指定要用于取代这些占位符的实际值。
 
-例如，假设要在测试环境中使用名为 logqueuetest 的队列，并在生产环境中使用名为 logqueueprod 的队列。 希望在 **appSettings** 集合中指定将具有实际队列名称的条目的名称，而不是硬编码的队列名称。 如果 **appSettings** 键为 logqueue，则函数如以下示例所示。
+例如，假设要在测试环境中使用名为 logqueuetest 的队列，并在生产环境中使用名为 logqueueprod 的队列。 希望在具有实际队列名称的 **appSettings** 集合中指定条目名称，而不是硬编码的队列名称。 如果 **appSettings** 键为 logqueue，则函数如以下示例所示。
 
 ```csharp
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
@@ -453,7 +453,7 @@ public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 }
 ```
 
-然后，**NameResolver** 类可以从 **appSettings** 获取队列名称，如以下示例中所示：
+然后，NameResolver 类可以从 appSettings 获取队列名称，如以下示例所示：
 
 ```csharp
 public class QueueNameResolver : INameResolver

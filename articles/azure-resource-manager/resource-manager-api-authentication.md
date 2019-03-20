@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 138367eb7eb0d4be2e0a7bec57d1bce551a5e829
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266987"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107046"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>使用 Resource Manager 身份验证 API 访问订阅
 
@@ -234,7 +234,8 @@ ASP.NET MVC 示例应用的 [UserCanManagerAccessForSubscription](https://github
 <a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>获取 Azure AD 图形 API 的仅限应用的访问令牌
-若要对应用进行身份验证并获取 Azure AD 图形 API 的令牌，请向 Azure AD 令牌终结点发出客户端凭据授予 OAuth2.0 流令牌请求 (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**)。
+
+若要对您的应用程序进行身份验证并获取 Azure AD Graph API 的令牌，向 Azure AD 令牌终结点发出客户端凭据授予 OAuth2.0 流令牌请求 (**https:\//login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
 
 ASP.net MVC 示例应用程序的 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) 方法使用适用于 .NET 的 Active Directory 身份验证库来获取图形 API 的仅限应用的访问令牌。
 
@@ -282,7 +283,7 @@ ASP.net MVC 示例应用程序的 [GetObjectIdOfServicePrincipalInOrganization](
 
 应用程序的角色分配向用户显示，因此请选择最低必要权限。
 
-请调用 [Resource Manager 角色定义 API](https://docs.microsoft.com/rest/api/authorization/roledefinitions) 列出所有 Azure RBAC 角色，搜索并逐一查看结果，按名称找到所需的角色定义。
+请调用 [Resource Manager 角色定义 API](https://docs.microsoft.com/rest/api/authorization/roledefinitions) 列出所有 Azure RBAC 角色，并搜索并逐一查看结果，按名称找到所需的角色定义。
 
 ASP.net MVC 示例应用的 [GetRoleId](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L246) 方法可实现此调用。
 
@@ -333,7 +334,7 @@ ASP.net MVC 示例应用的 [GrantRoleToServicePrincipalOnSubscription](https://
 
 在请求中使用以下值：
 
-| Guid | 说明 |
+| Guid | 描述 |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |订阅的 ID |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |应用程序服务主体的对象 ID |

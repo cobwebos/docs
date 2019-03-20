@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: d91d62c387fc7bcaef8b7f2cb7e8d865c882aeed
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: f2cd8f5074f815e84caaedb01335406657f29088
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445451"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088003"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>如何使用自定义影像服务生成分类器
 
 若要使用自定义影像服务进行图像分类，首先必须生成分类器模型。 在本指南中，将了解如何通过自定义影像服务网站生成分类器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 有效的 Azure 订阅。 免费[创建一个帐户](https://azure.microsoft.com/free/)。
 - 一组用于训练分类器的图像。 有关选择图像的提示，请参阅下文。
@@ -100,7 +100,7 @@ ms.locfileid: "56445451"
 
 > [!NOTE]
 > 自定义影像服务支持某些自动负片图像处理。 例如，如果要生成葡萄与香蕉的分类器并提交一张鞋子图像用于预测，则分类器对于该图像的葡萄与香蕉评分均应接近 0%。
-
+> 
 > 另一方面，如果负片图像仅仅是定型中使用的图像的变量，由于相似性很大，模型很可能将负片图像分类为标记类。 例如，如果具有一个橙子与葡萄柚分类器，并且输入克莱门氏小柑橘的图像，则它可能将克莱门氏小柑橘分类为橙子，因为克莱门氏的许多特征类似于橙子。 如果负片图像具有这种性质，建议在训练期间创建一个或多个单独的标签（例如，“其他”）并使用此标签标记负片图像，使模型更好地区分这些类。
 
 ## <a name="train-the-classifier"></a>训练分类器

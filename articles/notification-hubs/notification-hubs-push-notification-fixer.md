@@ -1,5 +1,5 @@
 ---
-title: Azure 通知中心的已删除通知诊断
+title: Azure 通知中心-诊断丢弃的通知数
 description: 了解如何诊断 Azure 通知中心的已删除通知的常见问题。
 services: notification-hubs
 documentationcenter: Mobile
@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 9dd6a66ea416ad61682b8e33c6163db3ac345d92
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: c0fd7dec31a2c4054c59db3bae52cdb15ba01eed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447711"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884415"
 ---
-# <a name="diagnose-dropped-notifications-in-notification-hubs"></a>诊断通知中心的已删除通知
+# <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Azure 通知中心-诊断丢弃的通知数
 
 Azure 通知中心客户提出的最常见问题之一是如何排查以下问题：客户端设备上不显示从应用程序发送的通知。 他们想知道删除通知的位置和原因以及如何修复该问题。 本文标识了通知被删除或设备收不到通知的各种原因。 了解如何分析并确定根本原因。
 
@@ -246,10 +246,7 @@ The Token obtained from the Token Provider is wrong
 
 * **以编程方式访问**
 
-有关编程访问的详细信息，请参阅以下文章：
-
-* [以编程方式遥测访问]  
-* [通过 API 遥测访问示例]
+有关以编程方式访问的详细信息，请参阅[以编程方式遥测访问]
 
 > [!NOTE]
 > 与遥测相关的多项功能（例如，导出和导入注册、通过 API 进行遥测访问）只能在标准服务层使用。 如果尝试从免费或基本服务层使用这些功能，那么在使用 SDK 时会收到异常消息，在从 REST API 直接使用这些功能时会收到 HTTP 403（已禁止）错误。
@@ -274,12 +271,11 @@ The Token obtained from the Token Provider is wrong
 [Templates]: https://msdn.microsoft.com/library/dn530748.aspx
 [APNs overview]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html（APNs 概述）
 [About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options
-[Export and modify registrations in bulk]: http://msdn.microsoft.com/library/dn790624.aspx
+[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
 [服务总线资源管理器]: https://msdn.microsoft.com/library/dn530751.aspx#sb_explorer
 [服务总线资源管理器代码]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[查看通知中心的设备注册]: http://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
-[深入探讨：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]: http://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
-[宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4]: http://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
+[查看通知中心的设备注册]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[深入探讨：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
+[宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[以编程方式遥测访问]: http://msdn.microsoft.com/library/azure/dn458823.aspx
-[通过 API 遥测访问示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
+[以编程方式遥测访问]: https://msdn.microsoft.com/library/azure/dn458823.aspx

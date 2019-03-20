@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 53a1f50647e05b71afe6accb85f8a90cd8b7e253
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 7f05665f4bcc5449c1a81fa24582b333b0a944e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470388"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58173747"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用于管理和发布的事件网格 SDK
 
@@ -46,4 +46,4 @@ ms.locfileid: "54470388"
 * 有关示例应用程序，请参阅[事件网格代码示例](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid)。
 * 有关事件网格的介绍，请参阅[什么是事件网格？](overview.md)
 * 有关 Azure CLI 中的事件网格命令，请参阅 [Azure CLI](/cli/azure/eventgrid)。
-* 有关 PowerShell 中的事件网格命令，请参阅 [PowerShell](/powershell/module/azurerm.eventgrid)。
+* 有关 PowerShell 中的事件网格命令，请参阅 [PowerShell](/powershell/module/az.eventgrid)。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: a6941e28bdfd922a68ff484c57031326a9aa5c0b
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 0ab14d41c149ec6e0ce76d24afb0e88a6af53935
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452626"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884551"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
 
@@ -192,15 +192,15 @@ ms.locfileid: "54452626"
  >[!NOTE]
  >虽然可以使用 `*` 来指定名称类似的性能计数器组，但通过接收器发送任何计数器（到 Application Insights）都需要它们单独声明。 
 
-4. 在添加需要收集的适当性能计数器后，需要升级群集资源，以让这些更改反映到正在运行的群集中。 保存已修改的 `template.json` 并打开 PowerShell。 可以使用 `New-AzureRmResourceGroupDeployment` 升级群集。 该调用需要资源组的名称、更新的模板文件和参数文件，并提示资源管理器对你更新的资源进行相应更改。 一旦登录到帐户并在正确的订阅中，使用以下命令来运行升级：
+1. 在添加需要收集的适当性能计数器后，需要升级群集资源，以让这些更改反映到正在运行的群集中。 保存已修改的 `template.json` 并打开 PowerShell。 可以使用 `New-AzureRmResourceGroupDeployment` 升级群集。 该调用需要资源组的名称、更新的模板文件和参数文件，并提示资源管理器对你更新的资源进行相应更改。 一旦登录到帐户并在正确的订阅中，使用以下命令来运行升级：
 
     ```sh
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. 升级完成后（需要 15-45 分钟，具体取决于是否为首次部署以及资源组的大小），WAD 应收集性能计数器，并将其发送到与群集关联的存储帐户中的 WADPerformanceCountersTable 表中。 通过[将 AI 接收器添加到资源管理器模板](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)，查看 Application Insights 中的性能计数器。
+1. 升级完成后（需要 15-45 分钟，具体取决于是否为首次部署以及资源组的大小），WAD 应收集性能计数器，并将其发送到与群集关联的存储帐户中的 WADPerformanceCountersTable 表中。 通过[将 AI 接收器添加到资源管理器模板](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)，查看 Application Insights 中的性能计数器。
 
 ## <a name="next-steps"></a>后续步骤
 * 收集群集的更多性能计数器。 有关应收集的计数器列表，请参阅[性能指标](service-fabric-diagnostics-event-generation-perf.md)。
 * [将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../virtual-machines/windows/extensions-diagnostics-template.md)，以进一步修改 `WadCfg`，包括配置向其发送诊断数据的其他存储帐户。
-* 访问 [WadCfg 生成器](http://azure.github.io/azure-diagnostics-tools/config-builder/)以从头开始生成模板，并确保语法正确。
+* 访问 [WadCfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)以从头开始生成模板，并确保语法正确。

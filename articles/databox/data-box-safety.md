@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 65b111d74121b6a679883d480b9e1f19d41e334e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905131"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>安全安装和运行 Azure Data Box
 ![警告图标](./media/data-box-safety/warning_icon.png)
@@ -24,7 +24,7 @@ ms.locfileid: "49093545"
 ## <a name="safety-icon-conventions"></a>安全图标约定
 遵照安全预防措施安装和运行 Data Box 时，会看到以下图标。
 
-| 图标 | Description |
+| 图标 | 描述 |
 |:--- |:--- |
 | ![危险图标](./media/data-box-safety/warning_icon.png) **DANGER!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
 | ![警告图标](./media/data-box-safety/warning_icon.png) **WARNING!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
@@ -77,9 +77,9 @@ ms.locfileid: "49093545"
 * 在移动之前，或者如果认为该设备出现了任何形式的损坏，请永久拔掉电源。
 * 根据以下电源规格提供带电力过载保护的合适电源：
 
-    - 电压：100V AC 到 240V AC
-    - 电流：最大 6A
-    - 频率：50Hz 到 60Hz
+    - 电压：100 V AC 到 240 V AC
+    - 电流：最大 6 A
+    - 频率：50 Hz 到 60 Hz
 
 ![警告图标](./media/data-box-safety/warning_icon.png)**小心：**
 
@@ -142,7 +142,7 @@ Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 
 ![电池处置图标](./media/data-box-safety/battery_disposal_icon.png)
 
-本产品、其电池或包装上的此符号表示本产品包含的任何电池不可当作家庭垃圾进行处置。 你需要负责将此废弃物递送到适当的电池以及电力和电子设备回收点。 由于电池以及电力和电子设备中可能包含有害物质，这种独立的回收和循环利用有助于保护自然资源，并防止不当的处置可能对人类健康和环境造成的不利后果。 有关电池以及电力和电子废弃物投放点的详细信息，请联系当地的市政办公室、家庭垃圾处置服务部门，或销售本产品的商店。 联系 *erecycle@microsoft.com* 获取有关 WEEE 的更多信息。
+本产品、其电池或包装上的此符号表示本产品包含的任何电池不可当作家庭垃圾进行处置。 你需要负责将此废弃物递送到适当的电池以及电力和电子设备回收点。 由于电池以及电力和电子设备中可能包含有害物质，这种独立的回收和循环利用有助于保护自然资源，并防止不当的处置可能对人类健康和环境造成的不利后果。 有关电池以及电力和电子废弃物投放点的详细信息，请联系当地的市政办公室、家庭垃圾处置服务部门，或销售本产品的商店。 请联系*erecycle\@microsoft.com* WEEE 上的其他信息。
 
 本产品包含钮扣电池。
 

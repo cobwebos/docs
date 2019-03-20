@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d8bb451c821a4883c81e0e51c5d98e146e3008e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 2d59235b067d9571bc8b64c33799431be6489502
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243532"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087204"
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>还原 Azure SQL 数据仓库（门户）
 > [!div class="op_single_selector"]
@@ -23,9 +23,9 @@ ms.locfileid: "55243532"
 > * [门户][Portal]
 > * [PowerShell][PowerShell]
 > * [REST][REST]
->
->
-在本文中，用户将学习如何使用 Azure 门户还原 Azure SQL 数据仓库。
+> 
+> 
+> 本文介绍如何使用 Azure 门户还原 Azure SQL 数据仓库。
 
 ## <a name="before-you-begin"></a>开始之前
 **验证 DTU 容量。** 每个 SQL 数据仓库实例都由一个具有默认数据吞吐量单位 (DTU) 配额的 SQL 服务器（例如 myserver.database.windows.net）托管。 在还原 SQL 数据仓库之前，请验证 SQL Server 剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改][Request a DTU quota change]。
@@ -34,7 +34,7 @@ ms.locfileid: "55243532"
 还原数据库：
 
 1. 登录到 [Azure 门户][Azure portal]。
-2. 在左侧面板中选择“浏览”，并选择“SQL Server”。
+2. 在左侧面板中选择“浏览”，然后选择“SQL Server”。
 
     ![依次选择“浏览”>“SQL Server”](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
 3. 查找服务器，并选择它。
@@ -46,7 +46,7 @@ ms.locfileid: "55243532"
 5. 在数据仓库边栏选项卡顶部，选择“还原”。
 
     ![选择“还原”](./media/sql-data-warehouse-restore-database-portal/01-select-restore-from-active.png)
-6. 指定新**数据库名称**。
+6. 指定新的“数据库名称” 。
 7. 选择最新的**还原点**。
 
    请确保选择最新还原点。 因为还原点按照协调世界时(UTC) 显示，所以默认选项可能不是最新还原点。
@@ -64,7 +64,7 @@ ms.locfileid: "55243532"
 还原已删除的数据库：
 
 1. 登录到 [Azure 门户][Azure portal]。
-2. 在左侧面板中选择“浏览”，并选择“SQL Server”。
+2. 在左侧面板中选择“浏览”，然后选择“SQL Server”。
 
     ![依次选择“浏览”>“SQL Server”](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
 3. 查找服务器，并选择它。

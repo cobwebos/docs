@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd5d724583dd4682fb6c0b01e8ec11196936289b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 53f8ec8a6833446663d7f142deefd595eed13136
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211897"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116259"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
 
@@ -63,12 +63,12 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
     1. 根据应用程序类型，将登录 URL 或重定向 URL 设置为基 URL。
     1. 选择“创建”以创建应用程序。
 1. 在退出 Azure 门户之前生成客户端密码。
-    1. 在 Azure 门户中，选择应用程序，然后选择“设置”。
-    1. 在“设置”菜单中选择“密钥”，然后添加密钥持续时间为一年或两年的密钥。
-    1. 保存此页面时，Azure 门户将显示密钥值。 将密钥值复制并保存在安全的位置。
+   1. 在 Azure 门户中，选择应用程序，然后选择“设置”。
+   1. 在“设置”菜单中选择“密钥”，然后添加密钥持续时间为一年或两年的密钥。
+   1. 保存此页面时，Azure 门户将显示密钥值。 将密钥值复制并保存在安全的位置。
 
-    > [!IMPORTANT]
-    > 在实现中配置应用程序设置时需要此秘钥。 此密钥值不会重新显示，也无法通过任何其他方式检索。 因此，当它在 Azure 门户中可见时请立即记录。
+      > [!IMPORTANT]
+      > 在实现中配置应用程序设置时需要此秘钥。 此密钥值不会重新显示，也无法通过任何其他方式检索。 因此，当它在 Azure 门户中可见时请立即记录。
 
 ### <a name="register-the-client-application"></a>注册客户端应用程序
 
@@ -108,7 +108,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | 说明 |
+| 参数 |  | 描述 |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JSON Web 令牌 (JWT)，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的访问令牌值。 |
@@ -142,7 +142,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 使用证书的服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | 说明 |
+| 参数 |  | 描述 |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JWT 访问令牌，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的令牌值。 |
@@ -180,7 +180,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 成功响应是具有以下参数的 JSON OAuth 2.0 响应：
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | 作用域 |令牌中授予的访问权限的范围。 |
@@ -252,7 +252,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 
 SAML 断言的服务到服务请求包含以下参数：
 
-| 参数 |  | 说明 |
+| 参数 |  | 描述 |
 | --- | --- | --- |
 | grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的访问令牌值。|
@@ -271,7 +271,7 @@ SAML 断言的服务到服务请求包含以下参数：
 
 ### <a name="response-with-saml-assertion"></a>使用 SAML 断言进行响应
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | 作用域 |令牌中授予的访问权限的范围。 |

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998614"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120544"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
 
@@ -23,9 +23,11 @@ ms.locfileid: "55998614"
 
 除了使用默认的运行状况探测监视以外，还可以根据应用程序的要求自定义运行状况探测。 本文介绍默认的和自定义的运行状况探测。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="default-health-probe"></a>默认的运行状况探测
 
-如果未设置任何自定义探测配置，应用程序网关会自动配置默认运行状况探测。 监视行为是向针对后端池配置的 IP 地址发出 HTTP 请求。 对于默认探测，如果后端 http 设置是针对 HTTPS 配置的，则探测也会使用 HTTPS 测试后端的运行状况。
+如果未设置任何自定义探测配置，应用程序网关自动配置默认运行状况探测。 监视行为是向针对后端池配置的 IP 地址发出 HTTP 请求。 对于默认探测，如果后端 http 设置是针对 HTTPS 配置的，则探测也会使用 HTTPS 测试后端的运行状况。
 
 例如：将应用程序网关配置为使用 A、B 和 C 后端服务器来接收端口 80 上的 HTTP 网络流量。 默认运行状况监视每隔 30 秒对三台服务器进行测试，以获取正常的 HTTP 响应。 正常的 HTTP 响应具有 200 到 399 的[状态代码](https://msdn.microsoft.com/library/aa287675.aspx)。
 
@@ -33,26 +35,26 @@ ms.locfileid: "55998614"
 
 ### <a name="probe-matching"></a>探测匹配
 
-默认情况下，包含状态代码 200 的 HTTP(S) 响应被视为正常。 自定义运行状况探测额外支持两个匹配条件。 可根据需要使用条件匹配来修改构成正常响应的因素的默认解释。
+默认情况下，状态代码 200 与 399 之间的 HTTP (S) 响应被视为正常运行。 自定义运行状况探测额外支持两个匹配条件。 可根据需要使用条件匹配来修改构成正常响应的因素的默认解释。
 
 下面是匹配条件： 
 
 - **HTTP 响应状态代码匹配** - 接受用户指定的 http 响应代码或响应代码范围的探测匹配条件。 支持逗号分隔的单个响应状态代码，或一系列状态代码。
 - **HTTP 响应正文匹配** - 查找 HTTP 响应正文并匹配用户指定字符串的探测匹配条件。 该匹配操作只会在响应正文中确定是否存在用户指定的字符串，而不执行完整正则表达式匹配。
 
-可以使用 `New-AzureRmApplicationGatewayProbeHealthResponseMatch` cmdlet 指定匹配条件。
+可以使用 `New-AzApplicationGatewayProbeHealthResponseMatch` cmdlet 指定匹配条件。
 
 例如：
 
-```powershell
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```azurepowershell
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
 指定匹配条件后，可在 PowerShell 中使用 `-Match` 参数将其附加到探测配置。
 
 ### <a name="default-health-probe-settings"></a>默认的运行状况探测设置
 
-| 探测属性 | 值 | 说明 |
+| 探测属性 | 值 | 描述 |
 | --- | --- | --- |
 | 探测 URL |http://127.0.0.1:\<port\>/ |URL 路径 |
 | 时间间隔 |30 |发送下一个运行状况探测前需要等待的时间（以秒为单位）。|
@@ -62,7 +64,7 @@ $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 > [!NOTE]
 > 该端口与后端 HTTP 设置的端口相同。
 
-默认探测只查看 http://127.0.0.1:\<port\> 来判断运行状况。 如果需要配置运行状况探测以使其转到自定义 URL 或修改任何其他设置，必须使用自定义探测。
+默认探测只查看 http:\//127.0.0.1:\<端口\>来确定运行状况状态。 如果需要配置运行状况探测以使其转到自定义 URL 或修改任何其他设置，必须使用自定义探测。
 
 ### <a name="probe-intervals"></a>探测间隔
 
@@ -72,15 +74,15 @@ $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ## <a name="custom-health-probe"></a>自定义的运行状况探测
 
-自定义探测可让你更精细地控制运行状况监视。 使用自定义探测时，可以配置探测间隔、要测试的 URL 和路径，以及在将后端池实例标记为不正常之前可接受的失败响应次数。
+使用自定义探测可以更精细地控制运行状况监视。 使用自定义探测时，可以配置探测间隔、要测试的 URL 和路径，以及在将后端池实例标记为不正常之前可接受的失败响应次数。
 
 ### <a name="custom-health-probe-settings"></a>自定义的运行状况探测设置
 
 下表提供自定义运行状况探测的属性的定义。
 
-| 探测属性 | 说明 |
+| 探测属性 | 描述 |
 | --- | --- |
-| Name |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 |

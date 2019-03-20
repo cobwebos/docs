@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 38070c3073febbdbea896c177ae68d4b9519314d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: be36f9ab881f2375b14ba0ea36038f9e840d199f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813375"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997525"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出本地或 IaaS (Azure VM) 中的 SQL Server
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,6 +29,8 @@ ms.locfileid: "55813375"
 > 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的 SQL Server 连接器](../connector-sql-server.md)。
 
 本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出本地 SQL Server 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="supported-scenarios"></a>支持的方案
 可以将数据**从 SQL Server 数据库**复制到以下数据存储：
@@ -80,7 +82,7 @@ ms.locfileid: "55813375"
 | username |如果使用的是 Windows 身份验证，请指定用户名。 示例：域名\\用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 
-可使用 **New-AzureRmDataFactoryEncryptValue** cmdlet 加密凭据，并在连接字符串中使用凭据，如下例所示（**EncryptedCredential** 属性）：
+您可以加密使用的凭据**新建 AzDataFactoryEncryptValue** cmdlet，并使用它们在连接字符串中，如下面的示例中所示 (**EncryptedCredential**属性):
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -129,7 +131,7 @@ ms.locfileid: "55813375"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **SqlServerTable** 类型的数据集的 **typeProperties** 部分具有以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | tableName |链接服务所引用的 SQL Server 数据库实例中的表或视图的名称。 |是 |
 
@@ -146,7 +148,7 @@ ms.locfileid: "55813375"
 ### <a name="sqlsource"></a>SqlSource
 复制活动中源的类型为 **SqlSource**时，则可在 **typeProperties** 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 可引用输入数据集所引用的数据库中的多个表。 如果未指定，执行的 SQL 语句为：select from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 存储过程中的最后一条 SQL 语句必须是 SELECT 语句。 |否 |
@@ -164,7 +166,7 @@ ms.locfileid: "55813375"
 ### <a name="sqlsink"></a>SqlSink
 **SqlSink** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。 |整数（行数） |否（默认值：10000） |
@@ -551,17 +553,15 @@ ms.locfileid: "55813375"
 
     有关详细信息和启用 TCP/IP 协议的其他方法，请参阅[启用或禁用服务器网络协议](https://msdn.microsoft.com/library/ms191294.aspx)。
 3. 在同一窗口中，双击“TCP/IP”以启动“TCP/IP 属性”窗口。
-4. 切换到“IP 地址”选项卡。向下滚动以查看 IPAll 部分。 记下 TCP 端口（默认值是 1433）。
+4. 切换到“IP 地址”选项卡。向下滚动以查看 IPAll 部分。 记下**TCP 端口**(默认值是**1433年**)。
 5. 在计算机上创建 Windows 防火墙规则，以便允许通过此端口传入流量。
 6. **验证连接**：若要使用完全限定名称连接到 SQL Server，请从另一台计算机使用 SQL Server Management Studio。 例如：“\<machine\>.\<domain\>.corp.\<company\>.com,1433.”
 
    > [!IMPORTANT]
-
+   > 
    > 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。
-   >
+   > 
    > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
-   >
-   >
 
 
 ## <a name="identity-columns-in-the-target-database"></a>目标数据库中的标识列

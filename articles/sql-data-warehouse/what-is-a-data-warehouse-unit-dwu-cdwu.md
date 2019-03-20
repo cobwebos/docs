@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce7a36f796716f48f6575b2391ac563eebf4530
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 5f6e24dfa1b5c4ea4f0748af81104edfe88ceeae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447814"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099097"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 针对选择理想数目的数据仓库单位（DWU、cDWU）来优化价格和性能以及如何更改单位数提供了建议。 
@@ -68,7 +68,7 @@ WITH
 
 DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
 
-增加数据库单位时，将以线性方式增加计算资源。 第 2 代可提供最佳查询性能和最大规模，但入门价格也更高。 它专为对性能有持续需求的企业而设计。 这些系统最大限度利用缓存。 
+增加数据库单位时，将以线性方式增加计算资源。 第 2 代提供最佳查询性能和最大规模。 这些系统最大限度利用缓存。
 
 ### <a name="capacity-limits"></a>容量限制
 每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../sql-database/sql-database-what-is-a-dtu.md) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
@@ -124,10 +124,13 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 3. 单击“ **保存**”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
 
 ### <a name="powershell"></a>PowerShell
-若要更改 DWU 或 cDWU，请使用 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell cmdlet。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的服务级别目标设置为 DW1000。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+若要更改 Dwu 或 Cdwu，请使用[集 AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的服务级别目标设置为 DW1000。
 
 ```Powershell
-Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
+Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
 ```
 
 有关详细信息，请参阅[适用于 SQL 数据仓库的 PowerShell cmdlet](sql-data-warehouse-reference-powershell-cmdlets.md)
@@ -183,7 +186,7 @@ FROM      sys.databases
 ;
 ```
 
-3. 提交以下查询以检查操作状态
+1. 提交以下查询以检查操作状态
 
 ```sql
 SELECT    *

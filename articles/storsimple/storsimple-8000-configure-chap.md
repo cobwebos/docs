@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1a558769ffaa52ed2e996a2b537a5ea409101bd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
-ms.translationtype: HT
+ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012652"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095154"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>为 StorSimple 设备配置 CHAP
 
@@ -53,8 +53,8 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
    1. 提供 CHAP 发起程序的用户名。
    2. 提供 CHAP 发起程序的密码。
       
-    > [!IMPORTANT]
-    > CHAP 用户名包含的字符必须少于 233 个。 CHAP 密码必须介于 12 到 16 个字符之间。 用户名或密码过长会导致在 Windows 主机上进行身份验证失败。
+      > [!IMPORTANT]
+      > CHAP 用户名包含的字符必须少于 233 个。 CHAP 密码必须介于 12 到 16 个字符之间。 用户名或密码过长会导致在 Windows 主机上进行身份验证失败。
    
    3. 确认该密码。
 

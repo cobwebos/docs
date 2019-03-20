@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: abb0abb94d3b3e7abc4dce58cdb11fa0c2cedd34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 482d7a9662a79503bb2b197d5a6c63c9fa3c1c96
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805228"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113106"
 ---
 # <a name="configure-lead-management-in-marketo"></a>在 Marketo 中配置潜在顾客管理
 
@@ -50,7 +50,7 @@ ms.locfileid: "48805228"
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
 
-8.  复制“嵌入代码”中显示的值，以便可以在云合作伙伴门户的 Marketo 字段中配置“服务器 ID”、“Munchkin ID”和“窗体 ID”。
+1. 复制“嵌入代码”中显示的值，以便可以在云合作伙伴门户的 Marketo 字段中配置“服务器 ID”、“Munchkin ID”和“窗体 ID”。
 
 使用下面的示例说明如何从 Marketo 的嵌入代码示例获取所需的 ID。
 

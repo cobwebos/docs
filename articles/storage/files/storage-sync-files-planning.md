@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 7b6a5a46e311fa54d6957c45d35ef20d94cf7632
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c032961bf89ba470a38ebccfd846659b080f9fab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200490"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013223"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -132,6 +132,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 - 使用 NTFS 文件系统进行了格式化的本地附加卷。
 
 ### <a name="file-system-features"></a>文件系统功能
+
 | Feature | 支持状态 | 说明 |
 |---------|----------------|-------|
 | 访问控制列表 (ACL) | 完全支持 | Windows ACL 由 Azure 文件同步进行保留，并由 Windows Server 在服务器终结点上强制实施。 如果直接在云中访问文件，则 Azure 文件不（尚不）支持 Windows ACL。 |
@@ -148,6 +149,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 > 仅支持 NTFS 卷。 不支持 ReFS、FAT、FAT32 及其他文件系统。
 
 ### <a name="files-skipped"></a>跳过的文件
+
 | 文件/文件夹 | 注意 |
 |-|-|
 | Desktop.ini | 特定于系统的文件 |
@@ -235,6 +237,7 @@ Azure 文件同步仅在以下区域中可用：
 |--------|---------------------|
 | 澳大利亚东部 | 新南威尔士州 |
 | 澳大利亚东南部 | 维多利亚 |
+| 巴西南部 | 圣保罗 Paolo 状态 |
 | 加拿大中部 | 多伦多 |
 | 加拿大东部 | 魁北克市 |
 | 印度中部 | 浦那 |
@@ -242,6 +245,8 @@ Azure 文件同步仅在以下区域中可用：
 | 东亚 | 香港特别行政区 |
 | 美国东部 | 弗吉尼亚州 |
 | 美国东部 2 | 弗吉尼亚州 |
+| 日本东部 | 东京都埼玉县 |
+| 日本西部 | 大阪 |
 | 美国中北部 | 伊利诺斯州 |
 | 北欧 | 爱尔兰 |
 | 美国中南部 | Texas |

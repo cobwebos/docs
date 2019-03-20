@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef3a0143b2fd536332cdae8ea0bb50cc0a93e6e9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 1d2faefd8443383e7afff8e3729bf6f1cf25c3a7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430415"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887012"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -63,7 +63,7 @@ ms.locfileid: "56430415"
 
 > [!WARNING]
 > 修改现有组的成员身份规则时请小心。 更改规则时，将重新评估组成员资格，并删除不再符合新规则的用户（在此过程中，仍然匹配新规则的用户不会受到影响）。 在此过程中，将删除这些用户的许可证，从而导致服务丢失，或在某些情况下导致数据丢失。
-
+> 
 > 如果拥有大型动态组，并且依赖于该组进行许可证分配，请先考虑对较小的测试组验证所有主要更改，然后再将更改应用到主要组。
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>多个组和多个许可证
@@ -90,23 +90,23 @@ ms.locfileid: "56430415"
 
 1. 最初，该用户只从 E3 基本服务组继承许可证，这将启用四项服务计划，如下所示：
 
-  ![E3 组启用的服务的屏幕截图](./media/licensing-group-advanced/e3-group-enabled-services.png)
+   ![E3 组启用的服务的屏幕截图](./media/licensing-group-advanced/e3-group-enabled-services.png)
 
 2. 选择“分配”可直接向该用户分配 E3 许可证。 在本例中，我们要禁用除 Yammer Enterprise 以外的所有服务计划：
 
-  ![演示如何直接向用户分配许可证的屏幕截图](./media/licensing-group-advanced/assign-license-to-user.png)
+   ![演示如何直接向用户分配许可证的屏幕截图](./media/licensing-group-advanced/assign-license-to-user.png)
 
 3. 因此，该用户仍然只会使用 E3 产品的 1 个许可证。 但是，直接分配只会为该用户启用 Yammer Enterprise 服务。 可以看到组成员身份与直接分配分别会启用哪些服务：
 
-  ![继承分配与直接分配的屏幕截图](./media/licensing-group-advanced/direct-vs-inherited-assignment.png)
+   ![继承分配与直接分配的屏幕截图](./media/licensing-group-advanced/direct-vs-inherited-assignment.png)
 
 4. 使用直接分配时，允许执行以下操作：
 
-  - 可在用户对象中直接关闭 Yammer Enterprise。 插图中此服务的“开/关”切换器的启用方式与其他服务相反。 这是因为此服务是直接对用户启用的，因此可以修改。
-  - 也可以将其他服务启用为直接分配的许可证的一部分。
-  - 可以使用“删除”按钮删除用户的直接许可证。 可以看到，该用户现在只拥有继承的组许可证，并且只有原始服务保持启用状态：
+   - 可在用户对象中直接关闭 Yammer Enterprise。 插图中此服务的“开/关”切换器的启用方式与其他服务相反。 这是因为此服务是直接对用户启用的，因此可以修改。
+   - 也可以将其他服务启用为直接分配的许可证的一部分。
+   - 可以使用“删除”按钮删除用户的直接许可证。 可以看到，该用户现在只拥有继承的组许可证，并且只有原始服务保持启用状态：
 
-    ![演示如何删除直接分配的屏幕截图](./media/licensing-group-advanced/remove-direct-license.png)
+     ![演示如何删除直接分配的屏幕截图](./media/licensing-group-advanced/remove-direct-license.png)
 
 ## <a name="managing-new-services-added-to-products"></a>管理添加到产品的新服务
 当 Microsoft 向产品添加新服务时，相应服务将在分配了产品许可证的所有组中默认启用。 租户中订阅了有关产品更改通知的用户将提前收到电子邮件，通知他们即将推出的服务添加件。
@@ -122,15 +122,15 @@ ms.locfileid: "56430415"
 3. 转到 [“Azure Active Directory”>“许可证”>“所有产品”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)边栏选项卡，选择“Office 365 企业版 E5”，然后选择“许可的组”以查看具有该产品的所有组的列表。
 
 4. 单击要查看的组（此处为 O365 E5 - Exchange only）。 随后将打开“许可证”选项卡。单击 E5 许可证会打开一个列出所有已启用服务的边栏选项卡。
-> [!NOTE]
-> 除了 Exchange Online 服务外，Microsoft Stream 服务也已自动添加到此组中并已启用：
+   > [!NOTE]
+   > 除了 Exchange Online 服务外，Microsoft Stream 服务也已自动添加到此组中并已启用：
 
-  ![添加到组许可证的新服务的屏幕截图](./media/licensing-group-advanced/manage-new-services.png)
+   ![添加到组许可证的新服务的屏幕截图](./media/licensing-group-advanced/manage-new-services.png)
 
 5. 如果要禁用此组中的新服务，请单击服务旁边的“开/关”切换器，然后单击“保存”按钮确认更改。 Azure AD 现在将处理组中的所有用户以应用更改；添加到该组的任何新用户均不会启用 Microsoft Stream 服务。
 
-  > [!NOTE]
-  > 用户仍然可以通过一些其他许可证分配（用户作为成员的其他组或直接许可证分配）启用该服务。
+   > [!NOTE]
+   > 用户仍然可以通过一些其他许可证分配（用户作为成员的其他组或直接许可证分配）启用该服务。
 
 6. 如有必要，请为分配了此产品的其他组执行相同的步骤。
 
@@ -141,7 +141,7 @@ ms.locfileid: "56430415"
 
 2. 可以使用 `Get-MsolAccountSku` 来发现该租户中所有已预配的产品许可证。
 
-  ![Get-Msolaccountsku cmdlet 的屏幕截图](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
+   ![Get-Msolaccountsku cmdlet 的屏幕截图](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
 3. 通过[此 PowerShell 脚本](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)将 AccountSkuId 值用于感兴趣的许可证。 这会生成具有此许可证的用户列表以及如何分配此许可证的信息。
 
@@ -159,8 +159,8 @@ ms.locfileid: "56430415"
 
 1. 将“活动”筛选器设置为“设置组许可证”，然后单击“应用”。
 2. 结果包括在组中设置或修改的许可证的所有情况。
->[!TIP]
-> 你还可以在“目标”筛选器中键入组的名称，以确定结果范围。
+   >[!TIP]
+   > 你还可以在“目标”筛选器中键入组的名称，以确定结果范围。
 
 3. 单击列表视图中的项以查看已更改内容的详细信息。 在“修改的属性”下，列出了许可证分配的旧值和新值。
 
@@ -173,23 +173,23 @@ ms.locfileid: "56430415"
 如果组许可证发生更改，Azure AD 会开始将更改应用到所有用户。
 
 1. 若要查看组何时开始处理，请将“活动”筛选器设置为“开始将基于组的许可证应用到用户”。 请注意，操作的执行组件是 Microsoft Azure AD 基于组的许可，这是用于执行所有组许可证更改的系统帐户。
->[!TIP]
-> 单击列表中的项，查看“修改的属性”字段，它显示经过选择进行处理的许可证更改。 如果对组进行多次更改，并且不确定处理了哪次更改，则该字段很有用。
+   >[!TIP]
+   > 单击列表中的项，查看“修改的属性”字段，它显示经过选择进行处理的许可证更改。 如果对组进行多次更改，并且不确定处理了哪次更改，则该字段很有用。
 
 2. 同样，若要查看组完成处理的时间，可使用筛选器值“完成将基于组的许可证应用到用户”。
->[!TIP]
-> 在这种情况下，“修改的属性”字段包含结果摘要，这对于快速检查处理是否会导致任何错误而言非常有用。 示例输出：
-> ```
-Modified Properties
-...
-Name : Result
-Old Value : []
-New Value : [Users successfully assigned licenses: 6, Users for whom license assignment failed: 0.];
-> ```
+   > [!TIP]
+   > 在这种情况下，“修改的属性”字段包含结果摘要，这对于快速检查处理是否会导致任何错误而言非常有用。 示例输出：
+   > ```
+   > Modified Properties
+   > ...
+   > Name : Result
+   > Old Value : []
+   > New Value : [Users successfully assigned licenses: 6, Users for whom license assignment failed: 0.];
+   > ```
 
 3. 若要查看如何处理组的完整日志（包括所有用户更改），请设置以下筛选器：
-  - **启动者（执行组件）**：“Microsoft Azure AD 基于组的许可”
-  - **日期范围**（可选）：你知道特定组开始处理和完成处理的自定义时间范围
+   - **启动者（执行组件）**：“Microsoft Azure AD 基于组的许可”
+   - **日期范围**（可选）：你知道特定组开始处理和完成处理的自定义时间范围
 
 此示例输出显示处理开始时间、产生的所有用户更改以及处理完成时间。
 
@@ -220,7 +220,7 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 
 - 如果针对大型组（例如，100,000 个用户）分配或修改许可证，则可能会影响性能。 具体而言，Azure AD 自动化生成的大量更改可能会对 Azure AD 与本地系统之间的目录同步性能产生负面影响。
 
-- 如果使用动态组来管理用户的成员身份，请验证用户是否包含在组中，这是进行许可证分配所必需的。 如果为否，则对于动态组，请[检查成员身份规则的处理状态](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule)。 
+- 如果使用动态组来管理用户的成员身份，请验证用户是否包含在组中，这是进行许可证分配所必需的。 如果为否，则对于动态组，请[检查成员身份规则的处理状态](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)。 
 
 - 在某些高负载情况下，处理组的许可证更改或处理具有现有许可证的组的成员身份更改可能需要很长时间。 如果发现对于 60000 及以下的用户群，处理更改所需时间超过 24 小时，请[开具支持票证](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest)以便我们调查。 
 

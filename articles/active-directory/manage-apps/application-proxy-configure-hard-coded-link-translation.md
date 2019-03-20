@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 778ae1aa9d5517912b9c67b27066a75d14358087
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9c010a7bcd2d811b31d9c2d05e81cce5dc85c2ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186044"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118589"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
 
@@ -43,8 +43,8 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
  
 > [!NOTE]
 > 最后一个选项只适用于出于任何原因无法使用自定义域来使其应用具有相同的内部和外部 URL 的租户。 启用此功能之前，请查看 [Azure AD 应用程序代理中的自定义域](application-proxy-configure-custom-domain.md)对你是否适用。 
-
->或者，如果需要配置链接转换的应用程序是 SharePoint，请参阅[配置 SharePoint 2013 的备用访问映射](https://technet.microsoft.com/library/cc263208.aspx)，以获取映射链接的另一种方法。 
+> 
+> 或者，如果需要配置链接转换的应用程序是 SharePoint，请参阅[配置 SharePoint 2013 的备用访问映射](https://technet.microsoft.com/library/cc263208.aspx)，以获取映射链接的另一种方法。 
 
  
 ### <a name="option-1-intune-managed-browser-integration"></a>选项 1：Intune Managed Browser 集成 

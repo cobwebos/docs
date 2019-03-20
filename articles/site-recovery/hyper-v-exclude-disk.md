@@ -8,17 +8,18 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216959"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992330"
 ---
 # <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 本文介绍如何从复制中排除磁盘。 这种排除可以优化消耗的复制带宽，或者优化此类磁盘利用的目标端资源。
 
 ## <a name="supported-scenarios"></a>支持的方案
+
 **功能** | **VMware 到 Azure** | **Hyper-V 到 Azure** | **Azure 到 Azure**| **Hyper-V 到 Hyper-V** 
 --|--|--|--|--
 排除磁盘 | 是 | 是 | 否 | 否
@@ -72,7 +73,7 @@ ms.locfileid: "55216959"
 DB-Disk0-OS | DISK0 | C:\ | 操作系统磁盘
 DB-Disk1| Disk1 | D:\ | SQL 系统数据库和用户数据库 1
 DB-Disk2（已从保护中排除该磁盘） | Disk2 | E:\ | 临时文件
-DB-Disk3（已从保护中排除该磁盘） | Disk3 | F:\ | SQL tempdb 数据库（文件夹路径 (F:\MSSQL\Data\) </br /> </br />在故障转移前记下该文件夹路径。
+DB-Disk3（已从保护中排除该磁盘） | Disk3 | F:\ | SQL tempdb 数据库（文件夹路径 (F:\MSSQL\Data\)） <br /> <br />记下在故障转移之前的文件夹路径。
 DB-Disk4 | Disk4 |G:\ |用户数据库 2
 
 在虚拟机的两个磁盘上的数据改动是临时性的，因此在保护 SalesDB 虚拟机时，可以从复制中排除 Disk2 和 Disk3。 Azure Site Recovery 不会复制这些磁盘。 进行故障转移时，这些磁盘不会存在于 Azure 的故障转移虚拟机上。
@@ -82,7 +83,7 @@ DB-Disk4 | Disk4 |G:\ |用户数据库 2
 **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | ---
 DISK0 | C:\ | 操作系统磁盘
-Disk1 | E:\ | 临时存储</br /> </br />Azure 添加此磁盘并分配第一个可用的驱动器号。
+Disk1 | E:\ | 临时存储<br /> <br />Azure 将添加此磁盘并分配第一个可用的驱动器号。
 Disk2 | D:\ | SQL 系统数据库和用户数据库 1
 Disk3 | G:\ | 用户数据库 2
 
@@ -146,7 +147,7 @@ Disk3 为 SQL tempdb 磁盘\)（tempdb 文件夹路径为 F:\MSSQL\Data），已
 **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | ---
 DISK0 | C:\ | 操作系统磁盘
-Disk1 | E:\ | 临时存储</br /> </br />Azure 添加此磁盘并分配第一个可用的驱动器号。
+Disk1 | E:\ | 临时存储<br /> <br />Azure 将添加此磁盘并分配第一个可用的驱动器号。
 Disk2 | D:\ | SQL 系统数据库和用户数据库 1
 Disk3 | G:\ | 用户数据库 2
 
@@ -186,7 +187,7 @@ DB-Disk3 | Disk3 | F:\ | 用户数据 2
 **磁盘名称** | **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | 操作系统磁盘
-DB-Disk1 | Disk1 | D:\ | 临时存储</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | 临时存储<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | 用户数据 1
 DB-Disk3 | Disk3 | F:\ | 用户数据 2
 
@@ -213,10 +214,10 @@ DB-Disk3 | Disk3 | F:\ | 用户数据 2
 
 将虚拟机从 Hyper-V 故障转移到 Azure 以后，Azure 虚拟机上的磁盘如下所示：
 
-**磁盘名称**| **来宾操作系统磁盘编号**| **驱动器号** | **磁盘上的数据类型**
+**磁盘名称** | **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |操作系统磁盘
-DB-Disk1 | Disk1 | D:\ | 临时存储</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | 临时存储<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | 用户数据 1
 DB-Disk3 | Disk3 | F:\ | 用户数据 2
 

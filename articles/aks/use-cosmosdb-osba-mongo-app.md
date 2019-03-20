@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, 用于 Azure 的 Open Service Broker
-ms.openlocfilehash: 3146d11f33809391d93305d63bad757ed281fb70
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977009"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991986"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>将现有的 MongoDB 应用程序与用于 MongoDB 的 Azure Cosmos DB API 和用于 Azure 的 Open Service Broker (OSBA) 集成
 
@@ -23,7 +23,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 它还提供
 
 本文使用现有的 Java 应用程序，该应用程序使用 MongoDB 数据库并对其进行更新，以便使用 Cosmos DB 数据库，而后者又使用 Open Service Broker for Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在继续操作之前，必须满足以下条件：
     
@@ -81,7 +81,7 @@ BUILD SUCCESSFUL in 10s
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-在浏览器中，导航到 http://localhost:8080。
+在浏览器中，导航到 `http://localhost:8080`。
 
 ![使用默认数据的 Spring Music 应用](media/music-app.png)
 
@@ -184,12 +184,12 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 注意，应用程序仍使用 *mongodb* 配置文件以及以 *mongodb://* 开头的 URI 来连接到 Cosmos DB 数据库。 [用于 MongoDB 的 Azure Cosmos DB API](../cosmos-db/mongodb-introduction.md) 提供此兼容性。 使用它，应用程序就可以继续运行，就像使用 MongoDB 数据库一样，但实际上它使用的是 Cosmos DB。
 
-在浏览器中，导航到 http://localhost:8080。 请注意，默认数据已还原。 与之交互：删除一些现有的专辑，并创建一些新的。 可通过以下方式验证所做的更改是否已持久保存：停止并重启应用程序，然后在浏览器中导航回到该应用程序。 注意所做的更改仍在该处。 所做的更改保存到使用 Open Service Broker for Azure 创建的 Cosmos DB。
+在浏览器中，导航到 `http://localhost:8080`。 请注意，默认数据已还原。 与之交互：删除一些现有的专辑，并创建一些新的。 可通过以下方式验证所做的更改是否已持久保存：停止并重启应用程序，然后在浏览器中导航回到该应用程序。 注意所做的更改仍在该处。 所做的更改保存到使用 Open Service Broker for Azure 创建的 Cosmos DB。
 
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>在 AKS 群集上运行应用程序
 
-可以使用 [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) 将应用程序部署到 AKS 群集。 Azure Dev Spaces 可以用来在 AKS 中生成项目（例如 Dockefile 和 Helm 图表），以及部署并运行应用程序。
+可以使用 [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) 将应用程序部署到 AKS 群集。 Azure 开发人员空间可帮助您生成项目，如 Dockerfile 和 Helm 图表，以及部署和运行在 AKS 中的应用程序。
 
 若要在 AKS 群集中启用 Azure Dev Spaces，请执行以下操作：
 

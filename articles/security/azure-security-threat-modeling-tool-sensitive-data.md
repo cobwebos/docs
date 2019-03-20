@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892552"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905216"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
 | --------------- | ------- |
 | **计算机信任边界** | <ul><li>[如果二进制文件包含敏感信息，请确保将其模糊处理](#binaries-info)</li><li>[考虑使用加密文件系统 (EFS) 来保护用户特定的机密数据](#efs-user)</li><li>[确保应用程序在文件系统中存储的敏感数据经过加密](#filesystem)</li></ul> | 
 | **Web 应用程序** | <ul><li>[确保不要在浏览器中缓存敏感内容](#cache-browser)</li><li>[加密 Web 应用配置文件中包含敏感数据的部分](#encrypt-data)</li><li>[在敏感窗体和输入中显式禁用自动填充 HTML 特性](#autocomplete-input)</li><li>[确保用户屏幕上显示的敏感数据经过屏蔽](#data-mask)</li></ul> | 
-| **数据库** | <ul><li>[实施动态数据屏蔽，限制透露给非特权用户的敏感数据](#dynamic-users)</li><li>[确保以加盐哈希格式存储密码](#salted-hash)</li><li>[确保数据库列中的敏感数据经过加密](#db-encrypted)</li><li>[确保启用数据库级加密 (TDE)](#tde-enabled)</li><li>[确保数据库备份经过加密](#backup)</li></ul> | 
+| **数据库** | <ul><li>[实施动态数据屏蔽，限制透露给非特权用户的敏感数据](#dynamic-users)</li><li>[确保以加盐哈希格式存储密码](#salted-hash)</li><li>[确保在数据库列中的敏感数据经过加密](#db-encrypted)</li><li>[确保启用数据库级加密 (TDE)](#tde-enabled)</li><li>[确保数据库备份经过加密](#backup)</li></ul> | 
 | **Web API** | <ul><li>[确保不要在浏览器的存储中存储与 Web API 相关的敏感数据](#api-browser)</li></ul> | 
 | Azure Document DB | <ul><li>[加密 Azure Cosmos DB 中存储的敏感数据](#encrypt-docdb)</li></ul> | 
 | **Azure IaaS VM 信任边界** | <ul><li>[使用 Azure 磁盘加密来加密虚拟机所用的磁盘](#disk-vm)</li></ul> | 
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [MSDN：自动完成特性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[在 HTML 中使用自动完成](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML 净化漏洞](https://technet.microsoft.com/security/bulletin/MS10-071)、[又是自动完成？](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **参考**              | [MSDN：自动完成特性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[在 HTML 中使用自动完成](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML 净化漏洞](https://technet.microsoft.com/security/bulletin/MS10-071)、[又是自动完成？](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **步骤** | 自动完成特性指定是要打开还是关闭窗体的自动填充。 如果打开自动完成，浏览器会根据用户以前输入的值自动填充值。 例如，如果在窗体中输入新名称和密码，然后提交该窗体，则浏览器会提示是否应保存该密码。此后显示该窗体时，该名称和密码会自动填充，或者在输入名称时自动填充。 拥有本地访问权限的攻击者可能会通过浏览器缓存获取明文密码。 自动完成默认已启用，必须显式将它禁用。 |
 
 ### <a name="example"></a>示例
@@ -182,7 +182,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [使用 .NET 加密 API 的密码哈希](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
+| **参考**              | [使用 .NET 加密 API 的密码哈希](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
 | **步骤** | 不应将密码存储在自定义用户存储数据库中。 应该改为使用 salt 值存储密码哈希。 确保用户的 salt 始终唯一，并在存储密码之前应用 b-crypt、s-crypt 或 PBKDF2，使用 150,000 次循环的最小工作系数迭代计数，消除暴力破解的可能性。| 
 
 ## <a id="db-encrypted"></a>确保数据库列中的敏感数据经过加密
@@ -399,7 +399,7 @@ Allow screen capture
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [Crypto Obfuscation For .Net](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **参考**              | [Crypto Obfuscation For .Net](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
 | **步骤** | 应该模糊处理生成的二进制文件（apk 中的程序集），以阻止对程序集进行反向工程。可以使用 `CryptoObfuscator` 等工具实现此目的。 |
 
 ## <a id="cert"></a>将 clientCredentialType 设置为 Certificate 或 Windows
@@ -429,7 +429,7 @@ Allow screen capture
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **属性**              | 安全模式 - 传输，安全模式 - 消息 |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF 安全基础知识 - CoDe 杂志](http://www.codemag.com/article/0611051) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF 安全基础知识 - CoDe 杂志](https://www.codemag.com/article/0611051) |
 | **步骤** | 未定义任何传输或消息安全性。 在未定义传输或消息安全性的情况下传输消息的应用程序无法保证消息的完整性或机密性。 如果 WCF 安全绑定设置为 None，将同时禁用传输和消息安全性。 |
 
 ### <a name="example"></a>示例
@@ -453,8 +453,8 @@ Allow screen capture
 * 两者。 允许提供传输和消息级安全性的设置（只有 MSMQ 支持此模式）。 
 * TransportWithMessageCredential。 通过消息传递凭据，消息保护和服务器身份验证由传输层提供。 
 * TransportCredentialOnly。 通过传输层传递客户端凭据，不应用消息保护。 使用传输和消息安全性保护消息的完整性和保密性。 以下配置告知服务要对消息凭据使用传输安全性。
-```
-<system.serviceModel>
+  ```
+  <system.serviceModel>
   <bindings>
     <wsHttpBinding>
     <binding name=""MyBinding""> 
@@ -462,5 +462,5 @@ Allow screen capture
     <message clientCredentialType=""Windows""/> 
     </binding> 
   </bindings> 
-</system.serviceModel> 
-```
+  </system.serviceModel> 
+  ```

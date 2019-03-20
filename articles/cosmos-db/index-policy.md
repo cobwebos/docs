@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 中索引的工作原理。 了解如何配�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2018
+ms.date: 3/1/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6c145b58a1f0eaaf93fb5797028e11ba8338d6be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 0ba5cdd4f92390634d6d2bea8add8309cb1f4d3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460227"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014503"
 ---
 # <a name="index-policy-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -23,9 +23,9 @@ ms.locfileid: "55460227"
 
 * **配置索引模式**：通过在容器上使用索引策略，可以配置不同的索引模式，例如“一致”或“无”。
 
-## <a name="indexing-modes"></a>索引模式 
+## <a name="indexing-modes"></a>索引模式
 
-Azure Cosmos DB 支持两种索引模式，可以在 Azure Cosmos 容器上配置这些模式。 可以通过索引策略配置以下两种索引模式： 
+Azure Cosmos DB 支持两种索引模式，可以在 Azure Cosmos 容器上配置这些模式。 可以通过索引策略配置以下两种索引模式：
 
 * **一致**：如果 Azure Cosmos 容器的策略设置为“一致”，则特定容器上的查询将按照为点读取指定的一致性级别进行（例如，非常、有限过期性、会话或最终）。 
 

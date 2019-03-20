@@ -5,17 +5,16 @@ description: 使用 PowerShell 创建和管理 Azure 机器学习工作室工作
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
-ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 01/25/2019
-ms.openlocfilehash: b6080e6e81b6cedce4d08cf20e082c87e5cecade
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: bd3a82f326cdf7f51e8842e45333ff2bd647c260
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489812"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092746"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio"></a>Azure 机器学习工作室 PowerShell 模块
 
@@ -58,7 +57,7 @@ Az 现在是与 Azure 交互的 PowerShell 模块，它包含 AzureRM 以前的�
 ## <a name="support-table"></a> PowerShell 支持表
 
  **工作室工作区** | **Az** |  **AzureRM** | **PowerShell 经典** |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | 创建/删除工作区 | [资源管理器模板](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) | [资源管理器模板](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | 管理工作区用户 |  |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
 | 管理承诺计划 | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | [New-AzureRmMlCommitmentPlan](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/new-azurermmlcommitmentplan) |
