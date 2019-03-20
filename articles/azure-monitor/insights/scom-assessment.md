@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 5b4da39d56b86f79727590076ac60b87541643e1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819852"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082834"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -40,15 +40,15 @@ ms.locfileid: "55819852"
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 
-该解决方案适用于 Microsoft System Operations Manager 2012 Service Pack (SP) 1 和 2012 R2。
+该解决方案适用于 Microsoft System Center 2012 Operations Manager Service Pack 1、 Microsoft System Center 2012 R2 Operations Manager、 Microsoft System Center 2016 Operations Manager、 Microsoft System Center 2016 Operations Manager 和 Microsoft SystemCenter Operations Manager 1807
 
 使用以下信息安装和配置解决方案。
 
- - 在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 可从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview)安装该解决方案。
+- 在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 可从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview)安装该解决方案。
 
- - 将解决方案添加到工作区以后，仪表板上的“System Center Operations Manager 运行状况检查”磁贴会显示“需要更多的配置”这样一条消息。 单击该磁贴，并按照页面中所述的配置步骤操作
+- 将解决方案添加到工作区以后，仪表板上的“System Center Operations Manager 运行状况检查”磁贴会显示“需要更多的配置”这样一条消息。 单击该磁贴，并按照页面中所述的配置步骤操作
 
- ![System Center Operations Manager 仪表板磁贴](./media/scom-assessment/scom-configrequired-tile.png)
+  ![System Center Operations Manager 仪表板磁贴](./media/scom-assessment/scom-configrequired-tile.png)
 
 > [!NOTE]
 > 可以使用脚本配置 System Center Operations Manager，只需执行 Log Analytics 中解决方案的配置页所述的步骤即可。
@@ -57,9 +57,9 @@ ms.locfileid: "55819852"
 1. [设置 System Center Operations Manager 运行状况检查的运行方式帐户](#operations-manager-run-as-accounts-for-log-analytics)  
 2. 配置 System Center Operations Manager 运行状况检查规则
 
-## <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager 评估数据收集详细信息
+## <a name="system-center-operations-manager-health-check-data-collection-details"></a>System Center Operations Manager 运行状况检查数据集合详细信息
 
-System Center Operations Manager 评估从以下源收集数据：
+System Center Operations Manager 运行状况检查解决方案收集以下来源的数据：
 
 * 注册表
 * Windows Management Instrumentation (WMI)
@@ -97,7 +97,7 @@ Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每�
 2. 在“分发”选项卡上，单击“选定的计算机”框旁边的“添加”，添加要将该帐户分发到的管理服务器。  单击“确定”两次以保存更改。
 3. 在“运行方式配置”下，单击“配置文件”。
 4. 搜索“SCOM 评估配置文件”。
-5. 配置文件名称应为：“Microsoft System Center Advisor SCOM 评估运行方式配置文件”。
+5. 配置文件名称应为：*Microsoft System Center Operations Manager 运行状况检查运行方式配置文件*。
 6. 右键单击该配置文件并更新其属性，添加最近创建的运行方式帐户。
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>向运行方式帐户授予具体权限的 SQL 脚本
@@ -152,13 +152,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>配置运行状况检查规则
 
-System Center Operations Manager 运行状况检查解决方案的管理包中包含一个名为“Microsoft System Center Advisor SCOM 评估运行评估规则”的规则。 此规则负责执行运行状况检查。 若要启用该规则并配置频率，请使用以下过程。
+System Center Operations Manager 运行状况检查解决方案的管理包中包括一个名为规则*Microsoft System Center Operations Manager 运行运行状况检查规则*。 此规则负责执行运行状况检查。 若要启用该规则并配置频率，请使用以下过程。
 
-Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 若要执行运行状况检查，必须在管理服务器上启用该规则。 使用以下步骤。
+默认情况下，禁用 Microsoft System Center Operations Manager 运行运行状况检查规则。 若要执行运行状况检查，必须在管理服务器上启用该规则。 使用以下步骤。
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>为特定的管理服务器启用规则
 
-1. 在 Operations Manager 操作控制台的“创作”工作区的“规则”窗格中，搜索规则“Microsoft System Center Advisor SCOM 评估运行评估规则”。
+1. 在中**创作**工作区中的 Operations Manager 操作控制台中，搜索规则*Microsoft System Center Operations Manager 运行运行状况检查规则*中**规则**窗格。
 2. 在搜索结果中，选择包含文本“类型:管理服务器”的规则。
 3. 右键单击该规则，并单击“重写” > “对于类为管理服务器的特定对象”。
 4.  在可用管理服务器列表中，选择要在其上运行该规则的管理服务器。  这应该是前面配置的，要与运行方式帐户关联的同一个管理服务器。
@@ -170,7 +170,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 评估默认配置为每隔 10,080 分钟（即七天）运行一次。 最小可以将该值重写为 1440 分钟（即一天）。 该值表示连续运行评估的最小间隔时间。 若要重写该间隔，请使用以下步骤。
 
-1. 在 Operations Manager 控制台的“创作”工作区的“规则”部分中，搜索规则“Microsoft System Center Advisor SCOM 评估运行评估规则”。
+1. 在中**创作**工作区中的 Operations Manager 控制台中，搜索规则*Microsoft System Center Operations Manager 运行运行状况检查规则*中**规则**部分。
 2. 在搜索结果中，选择包含文本“类型:管理服务器”的规则。
 3. 右键单击该规则，并单击“重写规则” > “对于类为管理服务器的所有对象”。
 4. 将“间隔”参数值更改为所需的间隔值。 在以下示例中，该值设置为 1440 分钟（一天）。<br><br> ![间隔参数](./media/scom-assessment/interval.png)<br>  
@@ -277,7 +277,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 是否有某种方法可配置检查的运行频率？ 是的。 请参阅[配置运行频率](#configure-the-run-frequency)。
 
-如果添加 System Center Operations Manager 评估解决方案后发现另一台服务器，那么是否会检查它？ 是的，发现之后，即会对它进行检查，默认情况下每隔七天检查一次。
+*如果添加 System Center Operations Manager 运行状况检查解决方案后发现另一台服务器，则会检查它？* 是的，发现之后，即会对它进行检查，默认情况下每隔七天检查一次。
 
 *执行数据收集的进程的名称是什么？* AdvisorAssessment.exe
 

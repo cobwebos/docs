@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bc52c4eaf77b9441683eea8e5f899c6ef34d62e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: e85beea4250b5ac5f4defd0b918786079d3dbe3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002351"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892653"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -100,7 +100,7 @@ Azure 媒体服务的 SLA 涵盖了视频索引器，可在 [SLA](https://azure.
 
 ### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Microsoft 对我的已由视频索引器编制索引和/或存储的视频或音频文件，以及提取的元数据和见解拥有哪些访问权限？
 
-根据 [Azure 联机服务条款](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST)，你的内容完全由你拥有，Microsoft 只会根据 OST 和 Microsoft 隐私声明访问你的内容，以及视频索引器从你的内容中提取的元数据和见解。
+根据 [Azure 联机服务条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST)，你的内容完全由你拥有，Microsoft 只会根据 OST 和 Microsoft 隐私声明访问你的内容，以及视频索引器从你的内容中提取的元数据和见解。
 
 ### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>我在视频索引器帐户中生成的自定义模型是否可用于其他帐户？
 
@@ -158,6 +158,10 @@ Azure 媒体服务的 SLA 涵盖了视频索引器，可在 [SLA](https://azure.
 
 视频索引器使用简单的即用即付定价模型，该模型基于要编制索引的内容输入的持续时间。 可能对编码、流式处理、存储、网络使用情况和编码保留单位收取额外费用。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)页。
 
+### <a name="when-am-i-billed-for-using-video-indexer"></a>何时将计费使用视频索引器？
+
+在发送时要编制索引的视频，用户将定义要分析视频，和 / 或音频分析索引。 这将确定哪些 Sku 进行收费。 如果在处理期间严重级别错误，将作为响应返回错误代码。 在这种情况下，不会发生计费。  严重错误可能由我们的代码中的 bug 或内部依赖关系服务中的严重故障。 错误的标识或见解提取之类的错误不被视为关键和返回的响应。 在任何情况下返回有效 （非错误代码） 响应，会发生计费。
+ 
 ### <a name="does-video-indexer-offer-a-free-trial"></a>视频索引器是否提供免费试用版？
 
 是的，视频索引器提供免费试用版，该版本具有完整的服务和 API 功能。 配额是，Web 界面用户可以免费为 600 分钟的视频编制索引，对于 API 用户，则为 2,400 分钟。 

@@ -1,6 +1,6 @@
 ---
 title: Azure 操作安全性 |Microsoft Docs
-description: 了解 Microsoft Azure Log Analytics、它的服务和它的工作原理。
+description: 了解有关 Microsoft Azure Monitor 日志、 其服务和它的工作原理。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: cc820d0e8a19ae3905fbd26a1b9a98e948ecfb63
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901502"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 ### <a name="overview"></a>概述
-我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 为应用程序和服务使用 Azure 其中一个最合理原因就是：可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 必须提供保密、完整且可用的客户数据，并实现透明问责。
+我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 针对应用程序和服务使用 Azure 的最合理原因之一是可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 必须提供保密、完整且可用的客户数据，并实现透明问责。
 
 为帮助客户更好地从客户和 Microsoft 操作这两个角度了解 Microsoft Azure 中实施的一系列安全控件，特编写本白皮书《Azure 操作安全性》，全面介绍通过 Microsoft Azure 实现的操作安全性。
 
@@ -53,36 +53,36 @@ Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据
 6.  [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+## <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor 日志
 
-Microsoft Azure Log Analytics 是适用于混合云的 IT 管理解决方案。 Log Analytics 可单独使用，也可用于扩展现有 System Center 部署，为用户基于云管理基础结构提供了最大的灵活性和控制度。
+Microsoft Azure Monitor 日志是混合云的 IT 管理解决方案。 单独使用或扩展现有 System Center 部署时，Azure Monitor 日志为您提供最大的灵活性和控制基于云的基础结构管理。
 
-![Log Analytics](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Azure Monitor 日志](./media/azure-operational-security/azure-operational-security-fig1.png)
 
-使用 Log Analytics，可以在任何云中（包括本地、Azure、AWS、Windows Server、Linux、VMware 和 OpenStack）管理任何实例，且成本低于其他有竞争力的解决方案。 Log Analytics 专为云优先的环境而构建，为管理企业提供了一种新方法，能最快且最经济高效地应对新的业务挑战并适应新的工作负载、应用程序和云环境。
+使用 Azure Monitor 日志，你可以管理哪种云，包括本地、 Azure、 AWS、 Windows Server、 Linux、 VMware 和 OpenStack，较低的成本比竞争对手解决方案中的任何实例。 为云优先世界上生成的 Azure Monitor 日志提供了为管理企业的速度最快、 最具成本效益的方式以满足新的业务挑战并适应新的工作负荷，应用程序和云环境的新方法。
 
-### <a name="log-analytics-services"></a>Log Analytics 服务
+### <a name="azure-monitor-services"></a>Azure 监视服务
 
-Log Analytics 的核心功能由在 Azure 中运行的一组服务提供。 每个服务提供特定的管理功能，可以组合这些服务来实现不同的管理方案。
+Azure Monitor 日志的核心功能提供的一组在 Azure 中运行的服务。 每个服务提供特定的管理功能，可以组合这些服务来实现不同的管理方案。
 
-| 服务  | 说明|
+| 服务  | 描述|
 | :------------- | :-------------|
-| Log Analytics | 监视和分析不同资源（包括物理机和虚拟机）的可用性与性能。 |
+| Azure Monitor 日志 | 监视和分析不同资源（包括物理机和虚拟机）的可用性与性能。 |
 |自动化 | 将手动过程自动化，实施物理机和虚拟机的配置。 |
 | 备份 | 备份和还原关键数据。 |
 | Site Recovery | 为关键应用程序提供高可用性。 |
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
+[Azure Monitor 日志](https://azure.microsoft.com/documentation/services/log-analytics)通过托管资源的数据收集到中央存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
 
 
 使用这种方法可以整合来自各种源的数据，因此可将 Azure 服务中的数据合并到现有的本地环境。 此外，它还能将数据收集与针对该数据执行的操作明确区分开来，以便能够针对所有类型的数据执行所有操作。
 
 
-![Log Analytics](./media/azure-operational-security/azure-operational-security-fig2.png)
+![Azure Monitor 日志](./media/azure-operational-security/azure-operational-security-fig2.png)
 
-Log Analytics 服务使用以下方法安全地管理你基于云的数据：
+Azure Monitor 服务使用以下方法安全地管理基于云的数据：
 -   数据隔离
 -   数据保留
 -   物理安全性
@@ -92,22 +92,22 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 
 ### <a name="azure-backup"></a>Azure 备份
 
-[Azure 备份](https://azure.microsoft.com/documentation/services/backup)提供数据备份和还原服务，是 Log Analytics 产品和服务套件的一部分。
+[Azure 备份](https://azure.microsoft.com/documentation/services/backup)提供数据的备份和还原服务，是 Azure Monitor 的产品和服务套件的一部分。
 它可以保护应用程序数据，并且无需资本投资、只需最低的运行成本，即可将这些数据保留多年。 除 SQL Server 和 SharePoint 等应用程序工作负荷之外，它还可以备份物理和虚拟 Windows 服务器中的数据。 [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) 也可使用它将受保护的数据复制到 Azure，以实现冗余和长期存储。
 
 
 Azure 备份中的受保护数据存储在位于特定地理区域的备份保管库。 数据在同一区域内复制，并且根据保管库类型，可能还会复制到其他区域以进一步实现复原。
 
 ### <a name="management-solutions"></a>管理解决方案
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。
+[Azure 监视器](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护你的本地和云基础结构。
 
 
-[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现使用一个或多个 Log Analytics 服务的特定管理方案。 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高在 Log Analytics 方面所做投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 市场或快速启动模板将它们提供给用户。
+[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的实现使用一个或多个 Azure 监视服务的特定管理方案的逻辑集。 不同的解决方案可从 Microsoft 和合作伙伴可以轻松地添加到 Azure 订阅，提高 Azure Monitor 中的投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 市场或快速启动模板将它们提供给用户。
 
 
 ![管理解决方案](./media/azure-operational-security/azure-operational-security-fig4.png)
 
-[更新管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 代理来收集有关每个代理上所需的更新的信息。 它将这些数据写入 Log Analytics 存储库，可以使用随附的仪表板来分析这些数据。
+[更新管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)适用于 Windows 和 Linux，若要收集的有关信息的代理所需的每个代理上的更新。 它将此数据写入到 Azure Monitor 日志存储库，你可以使用分析随附的仪表板。
 
 创建部署时，可以使用 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)中的 runbook 来安装所需的更新。 可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
 
@@ -149,7 +149,7 @@ Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集�
 
 -   **数据隔离**：服务中每个组件的数据都保持逻辑隔离。 所有数据均按组织进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。
 
--   **数据访问**：为了提供安全建议及调查潜在安全威胁，Microsoft 人员可能会访问 Azure 服务收集或分析的信息，包括故障转储文件、进程创建事件、VM 磁盘快照和项目，其中可能会意外地包括虚拟机中的客户数据或个人数据。 我们遵守 [Microsoft Online Services 条款和隐私声明](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)，其中指出，Microsoft 不会出于广告或类似的商业目的利用客户数据，或者从客户数据衍生信息。
+-   **数据访问**：为了提供安全建议及调查潜在安全威胁，Microsoft 人员可能会访问 Azure 服务收集或分析的信息，包括故障转储文件、进程创建事件、VM 磁盘快照和项目，其中可能会意外地包括虚拟机中的客户数据或个人数据。 我们遵守 [Microsoft Online Services 条款和隐私声明](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)，其中指出，Microsoft 不会出于广告或类似的商业目的利用客户数据，或者从客户数据衍生信息。
 
 -   **数据使用**：Microsoft 使用多个租户所使用的模式和威胁情报增强预防和检测威胁的能力；执行过程中遵循[隐私声明](https://www.microsoft.com/en-us/privacystatement/OnlineServices/)中所述的隐私承诺。
 
@@ -164,7 +164,7 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[Log Analytics 安全和审核解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)允许 IT 人员主动监视所有资源，这有助于最大程度地降低安全事件的影响。 Log Analytics 安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
+[Azure Monitor 日志安全](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)和审核解决方案允许 IT 人员主动监视所有资源，这可帮助尽量减少安全事件的影响。 Azure Monitor 日志安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
 
 -   恶意软件评估
 -   更新评估
@@ -271,6 +271,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 | 使用共享访问签名 (SAS) 的请求，包括失败和成功的请求 |客户端和服务器的超时错误 |
 |   分析数据请求 |    失败的 GET 请求，错误代码为 304（未修改） |
 | 不会记录存储分析本身发出的请求，如创建或删除日志。 [存储分析记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)及[存储分析日志格式](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)主题中提供了所记录数据的完整列表。 | 不会记录所有其他失败的匿名请求。 若要查看所记录数据的完整列表，请参阅 [Storage Analytics Logged Operations and Status Messages](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages)（存储分析记录的操作和状态消息）和 [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)（存储分析日志格式）。 |
+
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
 Azure AD 还包含整套标识管理功能，例如多重身份验证、设备注册、自助密码管理、自助组管理、特权帐户管理、基于角色的访问控制、应用程序使用情况监视、多样化审核以及安全监视和警报。
@@ -293,7 +294,7 @@ Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报�
 |从可能受感染的设备登录 |单个用户活动 |   |
 |具有异常登录活动的用户 |组活动报表 |   |
 | |密码重置注册活动报表 |   |
-| |密码重置活动 |   | |
+| |密码重置活动 |   |
 
 
 
@@ -312,7 +313,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 本文介绍了
 
--   Log Analytics 套件如何收集、处理和保护数据。
+-   如何收集、 处理和数据保护在 Azure Monitor 套件中。
 
 -   跨多个数据源快速分析事件。 识别安全风险并了解威胁和攻击的范围和影响，降低违反安全的行为所带来的损害。
 
@@ -335,7 +336,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 Microsoft 在设计其服务和软件时始终关注安全性，确保其云基础结构可复原，并能防御攻击。
 
-- [Log Analytics | 安全性与合规性](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Azure Monitor 日志 |安全性和符合性](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 使用 Microsoft 安全数据和分析来执行更智能和有效的威胁检测。
 

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099764"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075929"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL 超大规模数据库的 FAQ
 
@@ -45,7 +45,7 @@ ms.locfileid: "56099764"
 - 业务关键服务层适用于需优先考虑 IO 延迟的业务工作负荷。
 
 | | 资源类型 | 常规用途 |  超大规模 | 业务关键 |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|
 | **最适用于** |All|  大多数业务工作负荷。 提供以预算导向的、均衡的计算和存储选项。 | 数据容量要求高且能够流畅地自动缩放存储和流畅缩放计算的数据应用程序。 | 事务率较高、延迟 IO 最低的 OLTP 应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|
 |  **资源类型** ||单一数据库/弹性池/托管实例 | 单一数据库 | 单一数据库/弹性池/托管实例 |
 | **计算大小**|单一数据库/弹性池* | 1 - 80 个 vCore | 1 - 80 个 vCore* | 1 - 80 个 vCore |
@@ -73,7 +73,7 @@ ms.locfileid: "56099764"
 
 ### <a name="what-regions-currently-support-hyperscale"></a>哪些区域当前支持超大规模
 
-超大规模当前适用于以下区域的单一数据库：美国西部 1、美国西部 2、美国东部 1、美国中部、西欧、北欧、英国西部、东南亚、日本东部、韩国中部、澳大利亚东南部和澳大利亚东部。
+超大规模当前适用于以下区域的单一数据库：西部 US1、 美国西部 2 区、 东部 US1、 美国中部、 欧洲西部、 欧洲北部、 亚洲东南部、 日本东部、 韩国中部、 澳大利亚东南部和澳大利亚东部。
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>能否为每个 SQL 数据库服务器创建多个超大规模数据库
 

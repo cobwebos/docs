@@ -3,17 +3,17 @@ title: 将泛型 Node.js 客户端应用程序连接到 Azure IoT Central | Micr
 description: 如何以设备开发人员的身份将泛型 Node.js 设备连接到 Azure IoT Central 应用程序。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/26/2018
+ms.date: 02/04/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: 4d2701f078a26c22f52aebd0ef562dd60eaca923
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410483"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097968"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -41,7 +41,7 @@ ms.locfileid: "54410483"
 | 压力     | 压力    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  遥测度量的数据类型是一个浮点数。
+>   遥测度量的数据类型是一个浮点数。
 
 将表中所示字段名称准确输入设备模板中。 如果字段名称与对应的设备代码中的属性名称不匹配，则遥测数据无法显示在应用程序中。
 
@@ -51,10 +51,10 @@ ms.locfileid: "54410483"
 
 | 显示名称 | 字段名称  | 值 1 | 显示名称 | 值 2 | 显示名称 |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| 风扇模式     | fanmode     | 1       | 正在运行      | 0       | 已停止      |
+| 风扇模式     | fanmode     | 第       | 正在运行      | 0       | 已停止      |
 
 > [!NOTE]
-  状态度量的数据类型为字符串。
+>   状态度量的数据类型为字符串。
 
 将表中所示字段名称准确输入设备模板中。 如果字段名称与对应的设备代码中的属性名称不匹配，则状态无法显示在应用程序中。
 
@@ -67,7 +67,7 @@ ms.locfileid: "54410483"
 | 过热  | 过热    | 错误    |
 
 > [!NOTE]
-  事件度量的数据类型为字符串。
+>   事件度量的数据类型为字符串。
 
 ### <a name="device-properties"></a>设备属性
 
@@ -93,7 +93,7 @@ ms.locfileid: "54410483"
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-在 Azure IoT Central 应用程序中，从创建的设备模板添加真实设备，并记下设备连接字符串。 有关如何将 Node.js 应用程序连接到 IoT Central 的分步说明，请参阅“教程”>“添加设备”中的[从应用程序为真实设备生成连接字符串](tutorial-add-device.md#generate-connection-string-for-real-device-from-application)和[准备客户端代码](tutorial-add-device.md#prepare-the-client-code)。
+在 Azure IoT Central 应用程序中，从创建的设备模板添加真实设备，并记下设备连接字符串。 有关如何将 Node.js 应用程序连接到 IoT Central 的分步说明，请参阅“教程”>“添加设备”中的[从应用程序为真实设备生成连接字符串](tutorial-add-device.md#generate-connection-string)和[准备客户端代码](tutorial-add-device.md#prepare-the-client-code)。
 
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
@@ -129,11 +129,10 @@ ms.locfileid: "54410483"
     var client = clientFromConnectionString(connectionString);
     ```
 
-  > [!NOTE]
-  > Azure IoT Central 已转换为对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)，请按照以下说明[获取设备连接字符串](concepts-connectivity.md#getting-device-connection-string)并继续执行教程的剩余部分。 如果需要更多帮助，还可以在“教程”>“添加设备”中的[准备客户端代码](tutorial-add-device.md#prepare-the-client-code)中找到一组详细说明。
+    > [!NOTE]
+    > Azure IoT 中心已转换为使用 Azure IoT 中心设备预配服务 (DPS) 的所有设备连接，请按照这些说明[获取设备连接字符串](concepts-connectivity.md#get-a-connection-string)和继续本教程的余下部分。 如果需要更多帮助，还可以在“教程”>“添加设备”中的[准备客户端代码](tutorial-add-device.md#prepare-the-client-code)中找到一组详细说明。
 
-
-  将占位符 `{your device connection string}` 更新为设备连接字符串。 在此示例中，我们将 `targetTemperature` 初始化为零。你可以选择从设备获取当前的读取内容，也可以从设备孪生获取值。 
+    将占位符 `{your device connection string}` 更新为设备连接字符串。 在此示例中，我们将 `targetTemperature` 初始化为零。你可以选择从设备获取当前的读取内容，也可以从设备孪生获取值。 
 
 1. 若要向 Azure IoT Central 应用程序发送遥测、状态和事件度量，请将以下函数添加到文件：
 
@@ -269,11 +268,11 @@ node connectedAirConditionerAdv.js
 
     ![查看遥测数据](media/howto-connect-nodejs/viewtelemetry.png)
 
-* 在“属性”页上查看从设备发送的设备属性值。 如果连接成功，设备属性磁贴将会更新。 
+* 在“属性”页上查看从设备发送的设备属性值。 设备属性磁贴更新连接是否成功。
 
     ![查看设备属性](media/howto-connect-nodejs/viewproperties.png)
 
-* 在“设置”页中设置风扇速度和目标温度。 如果连接成功，设置值将会同步。 
+* 在“设置”页中设置风扇速度和目标温度。 如果连接成功，将同步的设置值。
 
     ![设置风扇速度](media/howto-connect-nodejs/setfanspeed.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 9917901146eb0a050531a66ab24fbd88c91c02c9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 61bb5601cf20e9f6e4fba1300d8f84c9d039e564
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311199"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225087"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -29,7 +29,7 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 
 ![Microsoft Azure 存储资源管理器][0]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -55,18 +55,13 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 
 以下 Linux 发行版支持 Azure 存储资源管理器：
 
-* Ubuntu 16.04 x64（推荐）
-* Ubuntu 17.10 x64
+* Ubuntu 18.04 x64
+* Ubuntu 16.04 x64
 * Ubuntu 14.04 x64
 
 Azure 存储资源管理器也许可以在其他发行版上使用，但只有上面列出的是正式受支持的。
 
-此外还必须安装以下依赖项/库，才能在 Linux 上运行 Azure 存储资源管理器：
-
-* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* libsecret（注意：计算机上必须提供 libsecret-1.so.0。 如果安装了其他版本的 libsecret，可以尝试将其 .so 文件以软链接的方式链接到 libsecret-1.so.0）
-* libgconf-2-4
-* Up-to-date GCC
+在 Linux 上安装存储资源管理器的更多帮助，请参阅[故障排除指南](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies)。
 
 Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)包含用于某些发行版的特定步骤。
 

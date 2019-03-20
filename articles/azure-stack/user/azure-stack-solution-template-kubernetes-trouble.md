@@ -14,12 +14,12 @@ ms.topic: article
 ms.author: mabvrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 5436b562b4f9054e0e00e3cc6abb1724797437db
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 6a5efce2f50a25902b33f2cb85d470a280000305
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729646"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002060"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>排查 Kubernetes 部署到 Azure Stack
 
@@ -151,6 +151,7 @@ ms.locfileid: "57729646"
     ```
 
 4. 检查参数并基于环境设置值。
+
     | 参数           | 描述                                                                                                      | 示例                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
     | -d, --vmd-host       | DVM 的公共 IP 或 FQDN。 该 VM 名称以 `vmd-` 开头。                                                       | IP：192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
@@ -174,7 +175,7 @@ ms.locfileid: "57729646"
     ![生成的日志](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
 
 
-4. 检索由该命令创建的文件夹中的日志。 该命令将创建新文件夹并加上时间戳。
+1. 检索由该命令创建的文件夹中的日志。 该命令将创建新文件夹并加上时间戳。
     - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
         - Dvmlogs
         - Acsengine-kubernetes-dvm.log

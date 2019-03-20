@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 24132fdb23ff89045f2b497327997d95e4ceecac
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 7f3b8101b633c977201b6c413ad12e4bbe55e9a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054837"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011782"
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 
@@ -25,7 +25,7 @@ Azure Application Insights 提供 Web 应用程序的监视信息，深度可达
 
 本文逐步讲解如何在 Visual Studio 中创建示例 ASP.NET Core [应用程序的步骤](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/?tabs=visual-studio)。 还介绍了如何使用 Application Insights 启动监视。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - .NET Core 2.0.0 SDK 或更高版本
 - [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7.3 版本或更高版本，带有 ASP.NET 和 Web 开发工作负载
@@ -88,15 +88,15 @@ Application Insights 的系统开销低。 通过添加 Application Insights 遥
 
 - 创建了一个新文件：
 
-  -  _ConnectedService.json_
+  - _ConnectedService.json_
 
     ```json
     {
-      "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
-      "Version": "8.12.10405.1",
-      "GettingStartedDocument": {
-        "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
-      }
+     "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
+     "Version": "8.12.10405.1",
+     "GettingStartedDocument": {
+       "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
+     }
     }
     ```
 
@@ -180,6 +180,10 @@ Application Insights 的系统开销低。 通过添加 Application Insights 遥
           }
       }
       ```
+
+## <a name="send-ilogger-logs-to-application-insights"></a>将 ILogger 日志发送到 Application Insights
+
+Application Insights 支持通过 ILogger 发送的捕获日志。 若要设置日志记录签出的代码示例[此处](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)。
 
 ## <a name="synthetic-transactions-with-powershell"></a>使用 PowerShell 创建综合事务
 
@@ -338,7 +342,7 @@ Application Insights 遥测每个实例中引用的“未配置”均表示此�
 
 ![适用于 Microsoft.AspNETCore.all 的 NuGet 依赖项关系图的屏幕截图](./media/asp-net-core/013-dependency.png)
 
-在 Visual Studio 之外，如果你是在 VSCode 或其他编辑器中编辑 ASP.NET Core 项目，则在未向项目显式添加 Application Insights 的情况下，这些程序集不会在调试过程中自动加载。
+之外 Visual Studio 中，如果您正在编辑的 ASP.NET Core 项目中 VSCode 或另一个编辑器中，这些程序集不会自动加载在调试期间如果你尚未显式添加到项目的 Application Insights。
 
 但在 Visual Studio 中，可以通过使用 [IHostingStartup 接口](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1)从外部程序集启用本地 Application Insights 功能。 接口会在调试期间动态添加 Application Insights。
 

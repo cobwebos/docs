@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 52e0521217fb99bc5fac3fdde8f43f9c80f86ac7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: eeda1ed3181b8cc8f641ed731b7f00fac2d3fad6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194226"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005829"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -244,6 +244,7 @@ PerItemErrorCount: 1006.
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>根据文件/目录同步错误进行故障排除
 **ItemResults 日志 - 按项列出的同步错误**  
+
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 由于尚未同步某个相关的文件夹，无法同步文件或目录更改。 在同步相关的更改后，此项将会同步。 | 无需采取措施。 |
@@ -271,6 +272,7 @@ PerItemErrorCount: 1006.
 
 ### <a name="common-sync-errors"></a>常见同步错误
 <a id="-2147023673"></a>**同步会话已取消。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x800704c7 |
@@ -281,6 +283,7 @@ PerItemErrorCount: 1006.
 同步会话可能出于各种原因失败，包括服务器正在重启或更新、VSS 快照，等等。尽管此错误看起来需要保持跟进，但可以放心地将其忽略，除非它持续了好几个小时。
 
 <a id="-2147012889"></a>**无法与服务建立连接。**    
+
 | | |
 |-|-|
 | **HRESULT** | 0x80072ee7 |
@@ -291,6 +294,7 @@ PerItemErrorCount: 1006.
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
 <a id="-2134376372"></a>**服务限制了用户请求。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8004c |
@@ -301,6 +305,7 @@ PerItemErrorCount: 1006.
 无需采取措施；服务器会重试。 如果此错误持续了几个小时，请创建支持请求。
 
 <a id="-2134364065"></a>**同步无法访问云终结点中指定的 Azure 文件共享。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8305f |
@@ -316,6 +321,7 @@ PerItemErrorCount: 1006.
 4. [确保 Azure 文件同步有权访问存储帐户。](#troubleshoot-rbac)
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**无法解析所用的存储帐户名。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C83060 |
@@ -332,6 +338,7 @@ PerItemErrorCount: 1006.
 3. [检查并确保存储帐户不包含任何网络规则。](#troubleshoot-network-rules)
 
 <a id="-1906441138"></a>**由于同步数据库出现问题，同步失败。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x8e5e044e |
@@ -342,6 +349,7 @@ PerItemErrorCount: 1006.
 如果 Azure 文件同步使用的内部数据库出现问题，则会发生此错误。出现此问题时，请创建支持请求，到时我们将与你取得联系，并帮助解决此问题。
 
 <a id="-2134364053"></a>服务器上安装的 Azure 文件同步代理版本不受支持。  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C8306B |
@@ -352,6 +360,7 @@ PerItemErrorCount: 1006.
 如果服务器上安装的 Azure 文件同步代理版本不受支持，则会出现此错误。 若要解决此问题，请[升级]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths)到[受支持的代理版本]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。
 
 <a id="-2134351810"></a>**达到了 Azure 文件共享存储限制。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8603e |
@@ -377,6 +386,7 @@ PerItemErrorCount: 1006.
 如果共享已满且未设置配额，则解决此问题的可行方法之一是，将当前服务器终结点的每个子文件夹放入其自己的单独同步组中自己的服务器终结点内。 这样，每个子文件夹就会同步到单个 Azure 文件共享。
 
 <a id="-2134351824"></a>**找不到 Azure 文件共享。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c86030 |
@@ -392,6 +402,7 @@ PerItemErrorCount: 1006.
 如果 Azure 文件共享已删除，则需要创建新的文件共享，然后重新创建同步组。 
 
 <a id="-2134364042"></a>**此 Azure 订阅暂停时，同步将会暂停。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C83076 |
@@ -402,6 +413,7 @@ PerItemErrorCount: 1006.
 当 Azure 订阅暂停时，将发生此错误。 还原 Azure 订阅后，会重新启用同步。 有关详细信息，请参阅[为何禁用我的 Azure 订阅？如何重新激活它？](../../billing/billing-subscription-become-disable.md)。
 
 <a id="-2134364052"></a>**为存储帐户配置了防火墙或虚拟网络。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8306c |
@@ -417,6 +429,7 @@ PerItemErrorCount: 1006.
 删除这些规则即可解决此问题。 
 
 <a id="-2134375911"></a>**由于同步数据库出现问题，同步失败。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c80219 |
@@ -432,6 +445,7 @@ PerItemErrorCount: 1006.
 如果此错误持续了几个小时，请创建支持请求，我们将与你取得联系，并帮助解决此问题。
 
 <a id="-2146762487"></a>**服务器无法建立安全连接。云服务收到意外的证书。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x800b0109 |
@@ -456,6 +470,7 @@ PerItemErrorCount: 1006.
 通过设置此注册表值，Azure 文件同步代理将在服务器和云服务之间传输数据时接受本地受信任的任何 SSL 证书。
 
 <a id="-2147012894"></a>**无法与服务建立连接。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80072ee2 |
@@ -466,6 +481,7 @@ PerItemErrorCount: 1006.
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
 <a id="-2134375680"></a>**由于身份验证出现问题，同步失败。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c80300 |
@@ -494,6 +510,7 @@ PerItemErrorCount: 1006.
     ```
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**服务器终结点所在卷的磁盘空间不足。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x8e5e0211 |
@@ -509,6 +526,7 @@ PerItemErrorCount: 1006.
 此错误的原因是卷已填满。 此错误的常见原因是服务器终结点外部的文件用尽了卷上的空间。 请通过添加更多的服务器终结点、将文件移到其他卷，或增大服务器终结点所在卷的大小，来释放卷上的空间。
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**服务尚未准备好与此服务器终结点同步。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8300f |
@@ -521,6 +539,7 @@ PerItemErrorCount: 1006.
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**由于许多单独的文件出现问题，同步失败。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8023b |
@@ -544,6 +563,7 @@ PerItemErrorCount: 1006.
 > Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。
 
 <a id="-2134376423"></a>**由于服务器终结点路径出现问题，同步失败。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c80019 |
@@ -554,6 +574,7 @@ PerItemErrorCount: 1006.
 确保路径存在、位于本地 NTFS 卷上，且不是重新分析点或现有服务器终结点。
 
 <a id="-2134375817"></a>同步失败，因为筛选器驱动程序版本与代理版本不兼容  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80C80277 |
@@ -564,6 +585,7 @@ PerItemErrorCount: 1006.
 发生此错误的原因是加载的云分层筛选器驱动程序 (StorageSync.sys) 版本与 Storage Sync Agent (FileSyncSvc) 服务不兼容。 如果已升级 Azure 文件同步代理，请重启服务器以完成安装。 如果错误继续发生，请卸载代理，重启服务器并重新安装 Azure 文件同步代理。
 
 <a id="-2134376373"></a>**服务当前不可用。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8004b |
@@ -574,6 +596,7 @@ PerItemErrorCount: 1006.
 此错误的原因是 Azure 文件同步服务不可用。 当 Azure 文件同步服务再次可用时，此错误将自行解决。
 
 <a id="-2134375922"></a>**由于同步数据库出现暂时性的问题，同步失败。**  
+
 | | |
 |-|-|
 | **HRESULT** | 0x80c8020e |
@@ -730,7 +753,7 @@ if ($fileShare -eq $null) {
 1. 单击“角色分配”选项卡以列出有权访问你的存储帐户的用户和应用程序（*服务主体*）。
 1. 检查“混合文件同步服务”是否与“读取器和数据访问”角色一起显示在列表中。 
 
-    ![存储帐户访问控制选项卡中的“混合文件同步服务”服务主体的屏幕截图](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
+    ![存储帐户的访问控制选项卡中的混合文件同步服务服务主体的屏幕截图](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
     如果“混合文件同步服务”没有出现在列表中，请执行以下步骤：
 
@@ -793,13 +816,13 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
     - Azure 文件共享不可访问。 删除仍属于同步组中的云终结点的 Azure 文件共享时，通常会发生此故障。
     - 存储帐户不可访问。 删除仍包含 Azure 文件共享的存储帐户，且该文件共享属于同步组中的云终结点时，通常会发生此故障。 
 - 服务器故障 
-    - 未加载 Azure 文件同步文件系统筛选器 (StorageSync.sys)。 为了响应分层/撤回请求，必须加载 Azure 文件同步文件系统筛选器。 可能会出于多种原因而未能加载该筛选器，但最常见的原因是管理员已手动将其卸载。 要使 Azure 文件同步正常运行，始终必须加载 Azure 文件同步文件系统筛选器。
-    - 重分析点缺失、损坏或出现其他形式的中断。 重分析点是文件中的特殊数据结构，它由两个部分组成：
-        1. 一个重分析标记，向操作系统指示 Azure 文件同步文件系统筛选器 (StorageSync.sys) 可能需要针对文件的 IO 执行某项操作。 
-        2. 重分析数据，向文件系统筛选器指示关联云终结点（Azure 文件共享）上的文件的 URI。 
+  - 未加载 Azure 文件同步文件系统筛选器 (StorageSync.sys)。 为了响应分层/撤回请求，必须加载 Azure 文件同步文件系统筛选器。 可能会出于多种原因而未能加载该筛选器，但最常见的原因是管理员已手动将其卸载。 要使 Azure 文件同步正常运行，始终必须加载 Azure 文件同步文件系统筛选器。
+  - 重分析点缺失、损坏或出现其他形式的中断。 重分析点是文件中的特殊数据结构，它由两个部分组成：
+    1. 一个重分析标记，向操作系统指示 Azure 文件同步文件系统筛选器 (StorageSync.sys) 可能需要针对文件的 IO 执行某项操作。 
+    2. 重分析数据，向文件系统筛选器指示关联云终结点（Azure 文件共享）上的文件的 URI。 
         
-        重分析点损坏的最常见原因是管理员尝试修改标记或其数据。 
-    - 网络连接问题。 若要分层或撤回文件，服务器必须已建立 Internet 连接。
+       重分析点损坏的最常见原因是管理员尝试修改标记或其数据。 
+  - 网络连接问题。 若要分层或撤回文件，服务器必须已建立 Internet 连接。
 
 以下部分说明如何排查云分层问题，并确定问题是云存储问题还是服务器问题。
 
@@ -822,14 +845,14 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 如果文件无法分层到 Azure 文件：
 
 1. 在事件查看器中，查看位于“应用程序和服务\Microsoft\FileSync\代理”下的遥测、操作和诊断事件日志。 
-    1. 验证文件是否在 Azure 文件共享中存在。
+   1. 验证文件是否在 Azure 文件共享中存在。
 
-    > [!NOTE]
-    > 文件必须先同步到 Azure 文件共享，然后才能分层。
+      > [!NOTE]
+      > 文件必须先同步到 Azure 文件共享，然后才能分层。
 
-    2. 验证服务器是否已建立 Internet 连接。 
-    3. 验证 Azure 文件同步筛选器驱动程序（StorageSync.sys 和 StorageSyncGuard.sys）是否正在运行。
-        - 在权限提升的命令提示符下，运行 `fltmc`。 验证 StorageSync.sys 和 StorageSyncGuard.sys 文件系统筛选器驱动程序是否已列出。
+   2. 验证服务器是否已建立 Internet 连接。 
+   3. 验证 Azure 文件同步筛选器驱动程序（StorageSync.sys 和 StorageSyncGuard.sys）是否正在运行。
+       - 在权限提升的命令提示符下，运行 `fltmc`。 验证 StorageSync.sys 和 StorageSyncGuard.sys 文件系统筛选器驱动程序是否已列出。
 
 > [!NOTE]
 > 如果文件无法分层，则每小时在“遥测”事件日志中记录事件 ID 9003 一次（为每个错误代码记录一个事件）。 如果需要其他信息才能诊断问题，请使用“操作”和“诊断”事件日志。

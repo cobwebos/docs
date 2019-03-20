@@ -3,22 +3,25 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用 Azure CLI 创建虚拟节点
 description: 了解如何通过 Azure CLI 创建使用虚拟节点运行 Pod 的 Azure Kubernetes 服务 (AKS) 群集。
 services: container-service
 author: iainfoulds
+ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 0aff1040a9c7532ff5efe724382a074120801eb3
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: a04dbd42e09ad8ec352af74950b6d71425a84a9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856479"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177664"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
+# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>预览-创建和配置使用虚拟节点上使用 Azure CLI 的 Azure Kubernetes 服务 (AKS) 群集
 
 若要快速缩放 Azure Kubernetes 服务 (AKS) 群集中的应用程序工作负载，可以使用虚拟节点。 使用虚拟节点可快速预配 Pod，并且只需对其执行时间按秒付费。 无需等待 Kubernetes 群集自动缩放程序部署 VM 计算节点来运行其他 Pod。 本文介绍如何创建和配置虚拟网络资源和 AKS 群集，然后启用虚拟节点。
 
 > [!IMPORTANT]
-> AKS 的虚拟节点目前提供预览版。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> AKS 预览版功能是自助服务和选择中。 预览版提供从我们的社区收集反馈和 bug。 但是，它们不受 Azure 技术支持。 如果创建群集，或将这些功能添加到现有群集，该群集是不受支持，直到此功能不再处于预览状态，为公开上市 (GA) 发布。
+>
+> 如果遇到问题的预览功能[打开在 AKS GitHub 存储库问题][ aks-github] bug 标题中的预览功能的名称。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -43,6 +46,16 @@ Microsoft.ContainerInstance  Registered
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
 ```
+
+## <a name="preview-limitations"></a>预览版限制
+
+虽然此功能处于预览状态，但以下区域支持部署：
+
+* 澳大利亚东部 (australiaeast)
+* 美国东部 (eastus)
+* 美国中西部 (westcentralus)
+* 西欧 (westeurope)
+* 美国西部 (westus)
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -324,6 +337,7 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --n
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+[aks-github]: https://github.com/azure/aks/issues]
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -5,8 +5,6 @@ services: traffic-manager
 documentationcenter: ''
 author: liumichelle
 manager: dkays
-editor: ''
-ms.assetid: f89be3be-a16f-4d47-bcae-db2ab72ade17
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-ms.openlocfilehash: a6f7a690cac5718216636d3191f348c71bcfb5d6
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734345"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099012"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用负载均衡服务
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布和负载均衡方式。 可以单独使用这些服务，或者根据需要结合使用这些服务提供的方法来构建优化解决方案。
 
@@ -70,26 +68,26 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 1. 在 Azure 门户中，单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 2. 输入以下基本信息：
 
-  * **名称**：为流量管理器配置文件提供 DNS 前缀名称。
-  * **路由方法**：选择流量路由方法策略。 有关这些方法的详细信息，请参阅[关于流量管理器流量路由方法](traffic-manager-routing-methods.md)。
-  * **订阅**：选择包含配置文件的订阅。
-  * **资源组**：选择包含配置文件的资源组。 可以是新的或现有的资源组。
-  * **资源组位置**：流量管理器服务是全局服务，不绑定到某个位置。 但是，用户必须指定组的区域，其中驻留了与流量管理器配置文件关联的元数据。 此位置对配置文件的运行时可用性没有任何影响。
+   * **名称**：为流量管理器配置文件提供 DNS 前缀名称。
+   * **路由方法**：选择流量路由方法策略。 有关这些方法的详细信息，请参阅[关于流量管理器流量路由方法](traffic-manager-routing-methods.md)。
+   * **订阅**：选择包含配置文件的订阅。
+   * **资源组**：选择包含配置文件的资源组。 可以是新的或现有的资源组。
+   * **资源组位置**：流量管理器服务是全局服务，不绑定到某个位置。 但是，用户必须指定组的区域，其中驻留了与流量管理器配置文件关联的元数据。 此位置对配置文件的运行时可用性没有任何影响。
 
 3. 单击“创建”，生成流量管理器配置文件。
 
-  ![“创建流量管理器”边栏选项卡](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
+   ![“创建流量管理器”边栏选项卡](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
 ### <a name="step-2-create-the-application-gateways"></a>步骤 2：创建应用程序网关
 
 1. 在 Azure 门户的右侧窗格中，单击“创建资源” > “网络” > “应用程序网关”。
 2. 输入有关应用程序网关的下述基本信息：
 
-  * **名称**：应用程序网关的名称。
-  * **SKU 大小**：应用程序网关的大小，可用选项包括：小型、中型或大型。
-  * **实例计数**：实例的数目，其值介于 2 到 10 之间。
-  * **资源组**：包含应用程序网关的资源组。 可以是现有资源组，也可以是新的资源组。
-  * **位置**：应用程序网关所在的区域，与资源组的位置相同。 位置很重要，因为虚拟网络和公共 IP 必须与网关位于同一位置。
+   * **名称**：应用程序网关的名称。
+   * **SKU 大小**：应用程序网关的大小，可用选项包括：小型、中型或大型。
+   * **实例计数**：实例的数目，其值介于 2 到 10 之间。
+   * **资源组**：包含应用程序网关的资源组。 可以是现有资源组，也可以是新的资源组。
+   * **位置**：应用程序网关所在的区域，与资源组的位置相同。 位置很重要，因为虚拟网络和公共 IP 必须与网关位于同一位置。
 3. 单击“确定”。
 4. 定义应用程序网关的虚拟网络、子网、前端 IP 和侦听器配置。 在本方案中，前端 IP 地址是**公共**地址，因此稍后可将它作为终结点添加到流量管理器配置文件中。
 5. 使用以下选项之一配置侦听器：
@@ -106,11 +104,11 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 2. 在“设置”下面选择“后端池”，并选择“添加”，添加要与 Web 层后端池关联的 VM。
 3. 输入后端池的名称，以及驻留在池中的计算机的所有 IP 地址。 在此方案中，我们将连接虚拟机的两个后端服务器池。
 
-  ![应用程序网关的“添加后端池”](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+   ![应用程序网关的“添加后端池”](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
 4. 在应用程序网关的“设置”下面选择“规则”，并单击“基于路径”按钮添加规则。
 
-  ![应用程序网关规则“基于路径”按钮](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
+   ![应用程序网关规则“基于路径”按钮](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
 5. 请提供以下信息来配置规则。
 
@@ -138,15 +136,15 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 在此方案中，流量管理器将连接到驻留在不同区域的应用程序网关（在前面步骤中配置）。 配置应用程序网关后，下一步是将它们连接到流量管理器配置文件。
 
 1. 打开流量管理器配置文件。 为此，请在资源组中查看，或者在“所有资源”中搜索流量管理器配置文件的名称。
-2. 在左窗格中选择“终结点”，并单击“添加”添加终结点。
+2. 在左窗格中选择“终结点”，然后单击“添加”来添加终结点。
 
-  ![流量管理器终结点“添加”按钮](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
+   ![流量管理器终结点“添加”按钮](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
 3. 输入以下信息来创建一个终结点：
 
-  * **类型**：选择要进行负载均衡的终结点的类型。 在此方案中，请选择“Azure 终结点”，因为我们会将其连接到以前配置的应用程序网关实例。
-  * **名称**：输入终结点的名称。
-  * **目标资源类型**：选择“公用 IP 地址”，并在“目标资源”下选择以前配置的应用程序网关的公用 IP。
+   * **类型**：选择要进行负载均衡的终结点的类型。 在此方案中，请选择“Azure 终结点”，因为我们会将其连接到以前配置的应用程序网关实例。
+   * **名称**：输入终结点的名称。
+   * **目标资源类型**：选择“公用 IP 地址”，并在“目标资源”下选择以前配置的应用程序网关的公用 IP。
 
    ![流量管理器的“添加终结点”](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
@@ -173,7 +171,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 1. 在资源组中，找到在前面步骤中创建的负载均衡器。
 2. 在“设置”下面，单击“后端池”，并单击“添加”添加后端池。
 
-  ![负载均衡器的“添加后端池”](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+   ![负载均衡器的“添加后端池”](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
 3. 输入后端池的名称。
 4. 项后端池添加单独的计算机或可用性集。
@@ -182,7 +180,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 1. 在负载均衡器的“设置”下面选择“探测”，并单击“添加”添加探测。
 
- ![负载均衡器的“添加探测”](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+   ![负载均衡器的“添加探测”](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
 2. 输入探测的名称。
 3. 为探测选择“**协议**”。 对于数据库，可能需要使用 TCP 探测而不是 HTTP 探测。 若要详细了解负载均衡器探测，请参阅[了解负载均衡器探测](../load-balancer/load-balancer-custom-probe-overview.md)。

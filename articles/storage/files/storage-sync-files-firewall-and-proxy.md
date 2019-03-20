@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fab8ec5a6ca94d2f30ec47da390885339adf8b43
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 937346bf6927efe11e43b64b7c9a2111f00c0e0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192211"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890818"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -59,28 +59,28 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 1. 配置 .NET 应用程序的代理设置 
 
-  - 编辑以下这两个文件：  
-    C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
-    C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+   - 编辑以下这两个文件：  
+     C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
+     C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-  - 在 machine.config 文件中添加 <system.net> 节（在 <system.serviceModel> 节下）。  将 127.0.01:8888 更改为代理服务器的 IP 地址和端口。 
-  ```
+   - 在 machine.config 文件中添加 <system.net> 节（在 <system.serviceModel> 节下）。  将 127.0.01:8888 更改为代理服务器的 IP 地址和端口。 
+     ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
           <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
         </defaultProxy>
       </system.net>
-  ```
+     ```
 
 2. 设置 WinHTTP 代理设置 
 
-  - 从提升的命令提示符或 PowerShell 运行以下命令来查看现有的代理设置：   
+   - 从提升的命令提示符或 PowerShell 运行以下命令来查看现有的代理设置：   
 
-    netsh winhttp show proxy
+     netsh winhttp show proxy
 
-  - 从提升的命令提示符或 PowerShell 运行以下命令来设置代理设置（将 127.0.01:8888 更改为代理服务器的 IP 地址和端口）：  
+   - 从提升的命令提示符或 PowerShell 运行以下命令来设置代理设置（将 127.0.01:8888 更改为代理服务器的 IP 地址和端口）：  
 
-    netsh winhttp set proxy 127.0.0.1:8888
+     netsh winhttp set proxy 127.0.0.1:8888
 
 3. 通过从提升的命令提示符或 PowerShell 运行以下命令，重新启动存储同步代理服务： 
 
@@ -93,14 +93,14 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 下表介绍了进行通信所需的域：
 
-| 服务 | 域 | 使用情况 |
-|---------|----------------|------------------------------|
-| **Azure 资源管理器** | https://management.azure.com | 包括初始服务器注册调用在内的任何用户调用（例如 PowerShell）都会转到/经过此 URL。 |
-| **Azure Active Directory** | https://login.windows.net | Azure 资源管理器调用必须由经过身份验证的用户发出。 若要成功，请使用此 URL 进行用户身份验证。 |
-| **Azure Active Directory** | https://graph.windows.net/ | 在部署 Azure 文件同步的过程中，将在订阅的 Azure Active Directory 中创建服务主体。 此 URL 用于该操作。 此主体用于将最小的一组权限委托给 Azure 文件同步服务。 对 Azure 文件同步进行初始设置的用户必须是经过身份验证且具有订阅所有者特权的用户。 |
-| **Azure 存储** | &ast;.core.windows.net | 服务器在下载某个文件时，可以直接与存储帐户中的 Azure 文件共享通信，从而提高数据移动效率。 服务器有一个 SAS 密钥，只允许进行针对性的文件共享访问。 |
-| **Azure 文件同步** | &ast;.one.microsoft.com | 在完成初始服务器注册以后，服务器会收到一个区域 URL，适用于该区域中的 Azure 文件同步服务实例。 服务器可以使用此 URL 直接且高效地与负责其同步的实例通信。 |
-| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp<br>http://ocsp.msocsp.com | 安装 Azure 文件同步代理后，PKI URL 用于下载与 Azure 文件同步服务和 Azure 文件共享进行通信所需的中间证书。 OCSP URL 用于检查证书的状态。 |
+| 服务 | 公共云终结点 | Azure 政府版终结点 | 使用情况 |
+|---------|----------------|---------------|------------------------------|
+| **Azure 资源管理器** | https://management.azure.com | https://management.usgovcloudapi.net | 包括初始服务器注册调用在内的任何用户调用（例如 PowerShell）都会转到/经过此 URL。 |
+| **Azure Active Directory** | https://login.windows.net | https://login.microsoftonline.us | Azure 资源管理器调用必须由经过身份验证的用户发出。 若要成功，请使用此 URL 进行用户身份验证。 |
+| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | 在部署 Azure 文件同步的过程中，将在订阅的 Azure Active Directory 中创建服务主体。 此 URL 用于该操作。 此主体用于将最小的一组权限委托给 Azure 文件同步服务。 对 Azure 文件同步进行初始设置的用户必须是经过身份验证且具有订阅所有者特权的用户。 |
+| **Azure 存储** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | 服务器在下载某个文件时，可以直接与存储帐户中的 Azure 文件共享通信，从而提高数据移动效率。 服务器有一个 SAS 密钥，只允许进行针对性的文件共享访问。 |
+| **Azure 文件同步** | &ast;.one.microsoft.com | &ast;.afs.azure.us | 在完成初始服务器注册以后，服务器会收到一个区域 URL，适用于该区域中的 Azure 文件同步服务实例。 服务器可以使用此 URL 直接且高效地与负责其同步的实例通信。 |
+| **Microsoft PKI** | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | 安装 Azure 文件同步代理后，PKI URL 用于下载与 Azure 文件同步服务和 Azure 文件共享进行通信所需的中间证书。 OCSP URL 用于检查证书的状态。 |
 
 > [!Important]
 > 如果允许流量通往 &ast;.one.microsoft.com，则可以让流量从服务器通往除同步服务之外的其他服务。 子域下还有更多可用的 Microsoft 服务。
@@ -109,22 +109,24 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 出于业务连续性和灾难恢复 (BCDR) 的原因，你可能在全局冗余 (GRS) 存储帐户中指定了 Azure 文件共享。 如果是这样，在发生长时间的区域性中断时，Azure 文件共享将故障转移到配对的区域。 Azure 文件同步使用的区域配对与存储相同。 因此，如果使用 GRS 存储帐户，则需要启用附加的 URL 才能让服务器与 Azure 文件同步的配对区域通信。在下表中，此配对称为“配对区域”。 此外，还需要启用一个流量管理器配置文件 URL。 在发生故障转移时，此 URL 可确保将网络流量无缝重新路由到配对区域；在下表中，此 URL 称为“发现 URL”。
 
-| 区域 | 主终结点 URL | 配对区域 | 发现 URL |
-|--------|---------------------------------------|--------|---------------------------------------|
-| 澳大利亚东部 | https://kailani-aue.one.microsoft.com | 澳大利亚东南部 | https://kailani-aue.one.microsoft.com |
-| 澳大利亚东南部 | https://kailani-aus.one.microsoft.com | 澳大利亚东部 | https://tm-kailani-aus.one.microsoft.com |
-| 加拿大中部 | https://kailani-cac.one.microsoft.com | 加拿大东部 | https://tm-kailani-cac.one.microsoft.com |
-| 加拿大东部 | https://kailani-cae.one.microsoft.com | 加拿大中部 | https://tm-kailani.cae.one.microsoft.com |
-| 美国中部 | https://kailani-cus.one.microsoft.com | 美国东部 2 | https://tm-kailani-cus.one.microsoft.com |
-| 东亚 | https://kailani11.one.microsoft.com | 东南亚 | https://tm-kailani11.one.microsoft.com |
-| 美国东部 | https://kailani1.one.microsoft.com | 美国西部 | https://tm-kailani1.one.microsoft.com |
-| 美国东部 2 | https://kailani-ess.one.microsoft.com | 美国中部 | https://tm-kailani-ess.one.microsoft.com |
-| 北欧 | https://kailani7.one.microsoft.com | 西欧 | https://tm-kailani7.one.microsoft.com |
-| 东南亚 | https://kailani10.one.microsoft.com | 东亚 | https://tm-kailani10.one.microsoft.com |
-| 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |
-| 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com |
-| 西欧 | https://kailani6.one.microsoft.com | 北欧 | https://tm-kailani6.one.microsoft.com |
-| 美国西部 | https://kailani.one.microsoft.com | 美国东部 | https://tm-kailani.one.microsoft.com |
+| 云  | 区域 | 主终结点 URL | 配对区域 | 发现 URL |
+|--------|--------|----------------------|---------------|---------------|
+| 公共 |澳大利亚东部 | https://kailani-aue.one.microsoft.com | 澳大利亚东南部 | https://kailani-aue.one.microsoft.com |
+| 公共 |澳大利亚东南部 | https://kailani-aus.one.microsoft.com | 澳大利亚东部 | https://tm-kailani-aus.one.microsoft.com |
+| 公共 | 加拿大中部 | https://kailani-cac.one.microsoft.com | 加拿大东部 | https://tm-kailani-cac.one.microsoft.com |
+| 公共 | 加拿大东部 | https://kailani-cae.one.microsoft.com | 加拿大中部 | https://tm-kailani.cae.one.microsoft.com |
+| 公共 | 美国中部 | https://kailani-cus.one.microsoft.com | 美国东部 2 | https://tm-kailani-cus.one.microsoft.com |
+| 公共 | 东亚 | https://kailani11.one.microsoft.com | 东南亚 | https://tm-kailani11.one.microsoft.com |
+| 公共 | 美国东部 | https://kailani1.one.microsoft.com | 美国西部 | https://tm-kailani1.one.microsoft.com |
+| 公共 | 美国东部 2 | https://kailani-ess.one.microsoft.com | 美国中部 | https://tm-kailani-ess.one.microsoft.com |
+| 公共 | 北欧 | https://kailani7.one.microsoft.com | 西欧 | https://tm-kailani7.one.microsoft.com |
+| 公共 | 东南亚 | https://kailani10.one.microsoft.com | 东亚 | https://tm-kailani10.one.microsoft.com |
+| 公共 | 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |
+| 公共 | 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com |
+| 公共 | 西欧 | https://kailani6.one.microsoft.com | 北欧 | https://tm-kailani6.one.microsoft.com |
+| 公共 | 美国西部 | https://kailani.one.microsoft.com | 美国东部 | https://tm-kailani.one.microsoft.com |
+| Government | 美国亚利桑那州政府 | https://usgovarizona01.afs.azure.us | 美国德克萨斯州政府 | https://tm-usgovarizona01.afs.azure.us |
+| Government | 美国德克萨斯州政府 | https://usgovtexas01.afs.azure.us | 美国亚利桑那州政府 | https://tm-usgovtexas01.afs.azure.us |
 
 - 如果使用本地冗余 (LRS) 或区域冗余 (ZRS) 存储帐户，只需启用“主终结点 URL”下面列出的 URL。
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: 3b27fe0bec4ec23739e3cff02d6aed667f1d3e1d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650097"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226821"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
@@ -199,15 +199,21 @@ ms.locfileid: "53650097"
 
     ![在 Ambari 中更改容器名称](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. 保存所做更改。
-9. 根据 Ambari 中的指示重启全部所需的服务。
-10. 将应用程序指向新群集。
+8. **如果您使用增强的写入功能不使用 HBase 群集，跳过此步骤。它只需要具有增强的写入功能的 HBase 群集。**
+   
+   更改 hbase.rootdir 路径以指向原始群集的容器。
+
+    ![在 Ambari 中，更改 hbase rootdir 的容器名称](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+9. 保存所做更改。
+10. 根据 Ambari 中的指示重启全部所需的服务。
+11. 将应用程序指向新群集。
 
     > [!NOTE]  
     > 升级时，应用程序的静态 DNS 会更改。 不要硬编码此 DNS，可以在域名的 DNS 设置中配置一个指向群集名称的 CNAME。 另一种做法是使用应用程序的、无需重新部署即可更新的配置文件。
 
-11. 启动引入，确定一切是否按预期正常运行。
-12. 如果新群集符合预期，请删除原始群集。
+12. 启动引入，确定一切是否按预期正常运行。
+13. 如果新群集符合预期，请删除原始群集。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 领英集成数据共享和许可 - Azure Active Directory | Microsoft Docs
+title: LinkedIn 帐户连接数据共享和许可的 Azure Active Directory |Microsoft Docs
 description: 介绍领英集成如何通过 Azure Active Directory 中的 Microsoft 应用共享数据
 services: active-directory
 author: curtand
@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e96c7da9ac53927ed48003370f40f5861f48d3d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 4e6e24f4e726e25ae65ecceaeb161f8e16d61721
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204758"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200440"
 ---
-# <a name="linkedin-integration-data-sharing-and-consent"></a>领英集成数据共享和许可
+# <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn 帐户连接数据共享和许可
 
-作为 Azure Active Directory (Azure AD) 管理员，可以允许组织中的用户同意将其 Microsoft 工作或学校帐户与领英帐户相连接。 当用户连接其帐户时，来自领英的信息和热点可以在某些 Microsoft 应用和服务中使用。 用户还可以期望通过来自 Microsoft 的信息改进和丰富领英上的网络体验。
+可以在组织 Active Directory (Azure AD) 进行许可来连接其 Microsoft 工作或学校帐户用于其 LinkedIn 帐户中启用用户。 用户连接其帐户之后，信息和 LinkedIn 的亮点是某些 Microsoft 应用和服务中可用。 用户还可以期望通过来自 Microsoft 的信息改进和丰富领英上的网络体验。
 
 若要在 Microsoft 应用和服务中查看领英信息，用户必须同意将自己的 Microsoft 帐户和领英帐户进行连接。 当用户首次在 Outlook、OneDrive 或 SharePoint Online 中的个人资料卡片上单击查看某人的领英信息时，系统会提示他们连接其帐户。 在用户同意体验并连接其帐户之前，不会为他们完整启用领英帐户连接。
 
@@ -32,13 +32,13 @@ ms.locfileid: "56204758"
 
 在 Microsoft 应用和服务中访问领英信息可以使用户更方便地与组织内部和外部的同事、客户和合作伙伴进行联系、接洽和建立职业关系。 新用户可以与同事进行联系、详细了解他们并轻松地访问更多信息，从而更快掌握情况。 下面是有关领英信息如何出现在 Microsoft 应用中的个人资料卡片上的示例：
 
-![启用领英集成](./media/linkedin-user-consent/display-example.png)
+![你的组织中启用 LinkedIn 集成](./media/linkedin-user-consent/display-example.png)
 
 ## <a name="enable-and-announce-linkedin-integration"></a>启用并公布领英集成
 
 必须是 Azure Active Directory 管理员才能管理组织的设置。 可以为所有用户或一组特定用户启用它。
 
-1. 若要启用或禁用集成，请按照[领英集成](linkedin-integration.md)中的步骤进行操作。
+1. 若要启用或禁用集成，请按照中的步骤[同意你的 Azure AD 组织的 LinkedIn 集成](linkedin-integration.md)。
 2. 当在组织中公布领英集成时，让用户访问有关 [Microsoft 应用和服务中的领英信息](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)的常见问题解答。 该文章提供有关领英信息在何处显示、如何连接帐户等内容的信息。
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>用于在 Microsoft 和领英中进行数据访问的用户同意
@@ -76,7 +76,7 @@ ms.locfileid: "56204758"
 
 从 Microsoft 访问的数据不会随领英永久存储（除了联系人）。 Microsoft 联系人在用户删除之前会存储在领英中。 详细了解如何[从领英删除导入的联系人](https://www.linkedin.com/help/linkedin/answer/43377)。
 
-有关领英对个人数据的使用的详细信息，请参阅[领英隐私策略](https://www.linkedin.com/legal/privacy-policy)。 对于领英服务、数据传输和存储，数据可以从欧盟流向美国并流回，你的隐私按[欧盟数据传输](https://www.linkedin.com/help/linkedin/answer/62533)中所述受到保护。
+有关领英对个人数据的使用的详细信息，请参阅[领英隐私策略](https://www.linkedin.com/legal/privacy-policy)。 LinkedIn 服务、 数据传输和存储，数据可以流向从欧盟美国和背面，并且您的隐私受到如中所述[欧盟数据传输](https://www.linkedin.com/help/linkedin/answer/62533)。
 
 ## <a name="next-steps"></a>后续步骤
 

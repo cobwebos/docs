@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: a12d3708cdb547cc036b249bebf901d2ec5121c3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729313"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871487"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -35,9 +35,17 @@ ms.locfileid: "55729313"
 
 可以在 [GitHub](https://github.com/azure-app-service) 上找到所有 Docker 文件。 可以在 [Docker Hub](https://hub.docker.com/u/appsvc/) 上找到所有 Docker 容器。
 
+<a id="#startup-file"></a>
+
 **配置运行时堆栈时，“启动文件”部分的所需值是什么？**
 
-对于 Node.js，指定 PM2 配置文件或脚本文件。 对于 .NET Core，以 `dotnet <myapp>.dll` 的形式指定已编译的 DLL 名称。 对于 Ruby，可以指定要用于初始化应用的 Ruby 脚本。
+| 堆栈     | 预期值                                                                |
+|-----------|-------------------------------------------------------------------------------|
+| Java SE   | 一个命令用于启动在`.jar`应用程序                                    |
+| Tomcat    | 若要为您的应用程序执行任何必要 configruations 脚本的位置 |
+| Node.js   | PM2 配置文件或脚本文件                                |          
+| .NET Core | 作为已编译的 DLL 名称 `dotnet <myapp>.dll`                                 |
+| Ruby      | 你想要初始化应用的 Ruby 脚本                     
 
 ## <a name="management"></a>管理
 
@@ -75,7 +83,7 @@ ms.locfileid: "55729313"
 
 如果 Linux Web 应用的 Git 部署失败，可选择以下选项之一部署应用程序代码：
 
-- 使用持续交付（预览版）功能：可将应用的源代码存储在 Azure DevOps Git 存储库或 GitHub 存储库中，以使用 Azure 持续交付。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
+- 使用持续交付（预览版）功能：可以在 Azure DevOps Git 存储库或要使用 Azure 持续交付的 GitHub 存储库中存储应用的源代码。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
 
 - 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：要使用此 API，请[通过 SSH 连接到 Web 应用](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support)，并转到要在其中部署代码的文件夹。 运行以下代码：
 
@@ -92,7 +100,7 @@ ms.locfileid: "55729313"
 需要，请在服务器端 Node.js 代码中禁用 `perMessageDeflate`。 例如，如果要使用 socket.io，请使用以下代码：
 
 ```nodejs
-var io = require('socket.io')(server,{
+const io = require('socket.io')(server,{
   perMessageDeflate :false
 });
 ```

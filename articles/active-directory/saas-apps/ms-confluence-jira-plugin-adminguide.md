@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b81129ada4710eff58d50bf998802e8ac1b2788
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191055"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109131"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>将 Atlassian Jira 和 Confluence 与 Azure Active Directory 结合使用的管理员指南
 
@@ -53,7 +53,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 * 还可以在公司网络外部使用 Jira 或 Confluence。
 * 该插件只能与 Jira 和 Confluence 的本地版本配合工作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在安装插件之前，请注意以下信息：
 
@@ -110,33 +110,33 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 ![插件配置屏幕](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-*   **元数据 URL**：用于从 Azure AD 获取联合元数据的 URL。
+* **元数据 URL**：用于从 Azure AD 获取联合元数据的 URL。
 
-*   **标识符**：由 Azure AD 用来验证请求源的 URL。 此值映射到 Azure AD 中的“标识符”元素。 插件自动派生此 URL，其格式为 https://*<域:端口>*/。
+* **标识符**：由 Azure AD 用来验证请求源的 URL。 此值映射到 Azure AD 中的“标识符”元素。 插件自动派生此 URL，其格式为 https://*<域:端口>*/。
 
-*   **回复 URL**：启动 SAML 登录的标识提供者 (IdP) 中的回复 URL。 此值映射到 Azure AD 中的“回复 URL”元素。 插件自动派生此 URL，其格式为 https://*<域:端口>*/plugins/servlet/saml/auth。
+* **回复 URL**：启动 SAML 登录的标识提供者 (IdP) 中的回复 URL。 此值映射到 Azure AD 中的“回复 URL”元素。 插件自动派生此 URL，其格式为 https://*<域:端口>*/plugins/servlet/saml/auth。
 
-*   **登录 URL**：启动 SAML 登录的 IdP 中的登录 URL。 此值映射到 Azure AD 中的“登录”元素。 插件自动派生此 URL，其格式为 https://*<域:端口>*/plugins/servlet/saml/auth。
+* **登录 URL**：启动 SAML 登录的 IdP 中的登录 URL。 此值映射到 Azure AD 中的“登录”元素。 插件自动派生此 URL，其格式为 https://*<域:端口>*/plugins/servlet/saml/auth。
 
-*   **IdP 实体 ID**：IdP 使用的实体 ID。 解析元数据 URL 时会填充此框。
+* **IdP 实体 ID**：IdP 使用的实体 ID。 解析元数据 URL 时会填充此框。
 
-*   **登录 URL**：来自 IdP 的登录 URL。 解析元数据 URL 时会从 Azure AD 填充此框。
+* **登录 URL**：来自 IdP 的登录 URL。 解析元数据 URL 时会从 Azure AD 填充此框。
 
-*   **注销 URL**：来自 IdP 的注销 URL。 解析元数据 URL 时会从 Azure AD 填充此框。
+* **注销 URL**：来自 IdP 的注销 URL。 解析元数据 URL 时会从 Azure AD 填充此框。
 
-*   **X.509 证书**：IdP 的 X.509 证书。 解析元数据 URL 时会从 Azure AD 填充此框。
+* **X.509 证书**：IdP 的 X.509 证书。 解析元数据 URL 时会从 Azure AD 填充此框。
 
-*   **登录按钮名称**：组织希望用户在登录页上看到的登录按钮名称。
+* **登录按钮名称**：组织希望用户在登录页上看到的登录按钮名称。
 
-*   **SAML 用户 ID 位置**：Jira 或 Confluence 用户 ID 预期在 SAML 响应中出现的位置。 此值可能出现在 **NameID** 或自定义属性名称中。
+* **SAML 用户 ID 位置**：Jira 或 Confluence 用户 ID 预期在 SAML 响应中出现的位置。 此值可能出现在 **NameID** 或自定义属性名称中。
 
-*   **属性名称**：用户 ID 预期所在的属性的名称。
+* **属性名称**：用户 ID 预期所在的属性的名称。
 
-*   **启用主领域发现**：如果公司使用基于 Active Directory 联合身份验证服务 (AD FS) 的登录，请选中此选项。
+* **启用主领域发现**：如果公司使用基于 Active Directory 联合身份验证服务 (AD FS) 的登录，请选中此选项。
 
-*   **域名**：使用基于 AD FS 的登录时要提供的域名。
+* **域名**：使用基于 AD FS 的登录时要提供的域名。
 
-*   **启用单一注销**：如果希望在用户从 Jira 或 Confluence 注销时你要从 Azure AD 注销，请选中此选项。
+* **启用单一注销**：如果希望在用户从 Jira 或 Confluence 注销时你要从 Azure AD 注销，请选中此选项。
 
 ## <a name="troubleshooting"></a>故障排除
 

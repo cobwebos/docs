@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: 72fa9bf211139b971afa443af812d644c76062fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188379"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123464"
 ---
 # <a name="deploy"></a>部署
 
@@ -21,7 +21,7 @@ ms.locfileid: "54188379"
   
 本课程预计完成时间：5 分钟  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>必备组件  
 本文是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 12 课：在 Excel 中分析](../tutorials/aas-lesson-12-analyze-in-excel.md)。  
 
 > [!IMPORTANT]  
@@ -45,19 +45,19 @@ ms.locfileid: "54188379"
   
 4.  在“模型名称”属性中，键入“Adventure Works Internet 销售模型”。  
   
-5.  验证你的选择，并单击“确定”。  
+5.  验证选择，并单击“确定”。  
   
 #### <a name="to-deploy-the-adventure-works-internet-sales"></a>部署“Adventure Works Internet 销售”
   
-1.  在“解决方案资源管理器”中，右键单击“AW Internet 销售”项目，并单击“生成”。  
+1. 在“解决方案资源管理器”中，右键单击“AW Internet 销售”项目，并单击“生成”。  
 
-2.  右键单击“AW Internet 销售”项目，并单击“部署”。
+2. 右键单击“AW Internet 销售”项目，并单击“部署”。
 
-    部署到 Azure Analysis Services 时，可能会提示输入帐户。 输入组织帐户和密码，例如 nancy@adventureworks.com。 此帐户必须位于服务器上的管理员组中。
+   部署到 Azure Analysis Services 时，可能会提示输入帐户。 输入组织帐户和密码，例如 nancy@adventureworks.com。 此帐户必须位于服务器上的管理员组中。
   
-    “部署”对话框会出现，其中显示了模型中包括的元数据和每个表的部署状态。  
+   “部署”对话框会出现，其中显示了模型中包括的元数据和每个表的部署状态。  
     
-    ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
+   ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
 3. 当部署成功完成时，继续操作并单击“关闭”。  
   

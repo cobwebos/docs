@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54fa8d09d930069191fb48e0ab015d436496b725
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 05bf125d629ffef01a645dc407c341a984805520
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166396"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227025"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -27,9 +27,9 @@ ms.locfileid: "56166396"
 
 > [!TIP]
 > 本文档中有许多带有以下标记的项：
->
+> 
 > :heavy_check_mark:**Microsoft 建议**
->
+> 
 > 这些是常规建议，应仅当其适用于企业需求时才实施。
 
 ## <a name="step-1-learn-about-pim"></a>步骤 1。 了解 PIM
@@ -58,7 +58,7 @@ Azure AD Privileged Identity Management (PIM) 可帮助跨 Azure AD、Azure 资�
 
 ### <a name="key-pim-terminology"></a>关键 PIM 术语
 
-| 术语或概念 | 说明 |
+| 术语或概念 | 描述 |
 | --- | --- |
 | 符合条件 | 要求用户在使用角色之前执行一项或多项操作的角色分配。 如果用户符合某个角色的条件，则意味着他们在需要执行特权任务时可以激活该角色。 用户无论具有永久角色分配还是合格角色分配，获得的访问权限并无差异。 唯一的差异在于，有些用户并不是一直需要该访问权限。 |
 | 激活 | 合格用户在使用角色之前执行一项或多项操作的过程。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。 |
@@ -99,7 +99,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 #### <a name="stakeholders-pim-for-azure-ad-roles"></a>利益干系人：适用于 Azure AD 角色的 PIM
 
-| Name | 角色 | 操作 |
+| 名称 | 角色 | 操作 |
 | --- | --- | --- |
 | 姓名和电子邮件 | **标识架构师或 Azure 全局管理员**<br/>标识管理团队的一位代表，负责定义如何根据组织中的核心标识管理基础结构实施此更改。 | SO/R/I |
 | 姓名和电子邮件 | **服务所有者/线路管理器**<br/>某项服务或一组服务的 IT 所有者的代表。 他们在制定决策和帮助推出团队 PIM 中发挥关键作用。 | SO/R/I |
@@ -109,7 +109,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 #### <a name="stakeholders-pim-for-azure-resource-roles"></a>利益干系人：用于 Azure 资源角色 的 PIM
 
-| Name | 角色 | 操作 |
+| 名称 | 角色 | 操作 |
 | --- | --- | --- |
 | 姓名和电子邮件 | **订阅/资源所有者**<br/>要为其部署 PIM 的每个订阅或资源的 IT 所有者的代表 | SO/R/I |
 | 姓名和电子邮件 | **安全所有者**<br/>安全团队的代表，可以签署确认计划符合组织的安全要求。 | SO/R |
@@ -120,7 +120,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 作为规划过程的一部分，须按照[开始使用 PIM 文档](pim-getting-started.md)中所述，先同意并启用 PIM。 通过启用 PIM，可以访问专为帮助部署而设计的某些功能。
 
-如果目标是为 Azure 资源部署 PIM，则应按照[发现要在 PIM 文档中管理的 Azure 资源](pim-resource-roles-discover-resources.md)中所述操作。 只有每个资源、资源组和订阅的所有者才能够在 PIM 中发现它们。 如果你是全局管理员并尝试为 Azure 资源部署 PIM，可以[提升访问权限以管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)，以便能够发现和访问目录中的所有 Azure 资源。 但是，建议在使用 PIM 管理其资源之前先获取每个订阅所有者的批准。
+如果目标是为 Azure 资源部署 PIM，则应按照[发现要在 PIM 文档中管理的 Azure 资源](pim-resource-roles-discover-resources.md)中所述操作。 只有每个资源、资源组和订阅的所有者才能够在 PIM 中发现它们。 如果你是全局管理员尝试部署的 Azure 资源的 PIM，则可[提升访问权限来管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)以允许您自己的目录中的所有 Azure 资源的访问发现。 但是，建议在使用 PIM 管理其资源之前先获取每个订阅所有者的批准。
 
 ### <a name="enforce-principle-of-least-privilege"></a>强制执行最低权限原则
 
@@ -161,7 +161,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 对于 Azure 订阅和资源，可以设置类似的访问评审流程，用于评审每个订阅或资源中的角色。 此过程的目标是最大程度地减少附加到每个订阅或资源的所有者和用户访问管理员分配量，以及删除不必要的分配。 但是，组织通常会将此类任务委派给每个订阅或资源的所有者，因为他们对特定角色（尤其是自定义角色）有更深入的了解。
 
-如果你是具有全局管理员角色的 IT 管理员，且尝试为组织中的 Azure 资源部署 PIM，则可以[提升访问权限以管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)，从而获取每个订阅的访问权限。 然后可以找到每个订阅的所有者，与其协作，删除不必要的分配，最大程度减少所有者角色分配量。
+如果你是具有全局管理员角色的 IT 管理员尝试部署你的组织中的 Azure 资源的 PIM，则可[提升访问权限来管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)以获取每个订阅的访问权限。 然后可以找到每个订阅的所有者，与其协作，删除不必要的分配，最大程度减少所有者角色分配量。
 
 具有 Azure 订阅的所有者角色的用户还可以利用 [Azure 资源的访问评审](pim-resource-roles-start-access-review.md)来审核和删除不必要的角色分配，此过程类似于之前用于 Azure AD 角色的过程。
 
@@ -177,13 +177,13 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 应侧重保护具有最多权限的 Azure AD 角色，这一点很重要。 基于 PIM 客户的使用模式，排在前 10 位的 PIM 管理的 Azure AD 角色为：
 
-1. 全局管理员角色
+1. 全局管理员
 1. 安全管理员
-1. 用户帐户管理员
+1. 用户管理员
 1. Exchange 管理员
 1. SharePoint 管理员
-1. Intune 服务管理员
-1. 安全读取者
+1. Intune 管理员
+1. 安全读者
 1. 服务管理员
 1. 计费管理员
 1. Skype for Business 管理员
@@ -256,16 +256,16 @@ Azure 资源的 PIM 支持时限服务帐户。 应以对待常规用户帐户�
 
 下表说明了每个设置。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 | --- | --- |
 | 角色 | 要为其定义设置的角色的名称。 |
-| 要求 MFA | 符合条件的用户是否需要在激活角色之前执行 MFA。<br/><br/>:heavy_check_mark:Microsoft 建议为所有管理员角色强制执行 MFA，尤其是在角色含有来宾用户的情况下。 |
+| 要求 MFA | 符合条件的用户是否需要在激活角色之前执行 MFA。<br/><br/> :heavy_check_mark:Microsoft 建议为所有管理员角色强制执行 MFA，尤其是在角色含有来宾用户的情况下。 |
 | 通知 | 如果设置为 true，当符合条件的用户激活角色时，组织中的全局管理员、特权角色管理员和安全管理员会收到电子邮件通知。<br/><br/>**注意：** 某些组织没有向管理员帐户绑定电子邮件地址来获取这些电子邮件通知，应该设置一个备用电子邮件地址，以便管理员收到这些电子邮件。 |
-| 事件工单 | 激活角色时符合条件的用户需要记录事件工单号。 此设置可帮助组织使用内部事件编号识别每次激活，以减少无效激活的次数。<br/><br/>:heavy_check_mark:Microsoft 建议利用事件工单号将 PIM 绑定到内部系统。 这对于需要激活操作上下文的审批者而言特别有用。 |
-| 需要审批 | 符合条件的用户是否需要获取批准才能激活角色。<br/><br/>:heavy_check_mark:Microsoft 建议为具有最多权限的角色设置审批操作。 基于全体 PIM 客户的使用模式，全局管理员、用户管理员、Exchange 管理员、安全管理员和密码管理员是最常应用审批操作的角色。 |
-| 审批者 | 如果符合条件的角色需要执行审批操作来进行激活，应列出批准请求的人员。 默认情况下，PIM 将审批者设置为身份是特权角色管理员的所有用户，无论他们是永久性角色还是合格角色。<br/><br/>**注意：** 如果用户同时有资格拥有 Azure AD 角色和该角色的审批者身份，则无法为自己执行审批操作。<br/><br/>:heavy_check_mark:Microsoft 建议所选择的审批者应为最了解特定角色及其常规用户的人员，而非拥有全局管理员角色的人员。 |
+| 事件工单 | 激活角色时符合条件的用户需要记录事件工单号。 此设置可帮助组织使用内部事件编号识别每次激活，以减少无效激活的次数。<br/><br/> :heavy_check_mark:Microsoft 建议利用事件工单号将 PIM 绑定到内部系统。 这对于需要激活操作上下文的审批者而言特别有用。 |
+| 需要审批 | 符合条件的用户是否需要获取批准才能激活角色。<br/><br/> :heavy_check_mark:Microsoft 建议为具有最多权限的角色设置审批操作。 基于全体 PIM 客户的使用模式，全局管理员、用户管理员、Exchange 管理员、安全管理员和密码管理员是最常应用审批操作的角色。 |
+| 审批者 | 如果符合条件的角色需要执行审批操作来进行激活，应列出批准请求的人员。 默认情况下，PIM 将审批者设置为身份是特权角色管理员的所有用户，无论他们是永久性角色还是合格角色。<br/><br/>**注意：** 如果用户同时有资格拥有 Azure AD 角色和该角色的审批者身份，则无法为自己执行审批操作。<br/><br/> :heavy_check_mark:Microsoft 建议所选择的审批者应为最了解特定角色及其常规用户的人员，而非拥有全局管理员角色的人员。 |
 | 激活持续时间 | 在角色到期之前，用户拥有该角色的有效期。 |
-| 永久管理员 | 将成为某个角色的永久管理员的用户的列表（永远不必激活）。<br/><br/>:heavy_check_mark:Microsoft 建议所有角色（全局管理员除外）均不设立长期管理员。 请参阅本计划的“应向谁分配合格角色”和“应向谁分配永久活动角色”部分，了解更多相关信息。 |
+| 永久管理员 | 将成为某个角色的永久管理员的用户的列表（永远不必激活）。<br/><br/> :heavy_check_mark:Microsoft 建议所有角色（全局管理员除外）均不设立长期管理员。 请参阅本计划的“应向谁分配合格角色”和“应向谁分配永久活动角色”部分，了解更多相关信息。 |
 | 活动管理员 | 对于 Azure 资源，活动管理员是永远不必激活角色便可使用角色的用户的列表。 与 Azure AD 角色中的不同，该角色不称为永久管理员，因为可以设置此角色的失效时间。 |
 | 活动期限 | 此配置中的时限到期后，Azure 资源角色的活动角色分配将失效。 可以选择 15 天、1 个月、3 个月、6 个月、1 年或永久活动。 |
 | 合格期限 | 此配置中的时限到期后，Azure 资源角色的合格角色分配将失效。 可以选择 15 天、1 个月、3 个月、6 个月、1 年或永久符合条件。 |

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096021"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>使用分布式查询实现跨租户报告
 
@@ -27,7 +27,7 @@ ms.locfileid: "55476241"
 本教程介绍以下内容：
 
 > [!div class="checklist"]
-
+> 
 > * 如何部署报告数据库
 > * 如何对所有租户数据库运行分布式查询
 > * 每个数据库中的全局视图如何实现跨租户的有效查询
@@ -61,7 +61,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReporting.ps1 脚本并设置以下值：
    * $DemoScenario = 1，购买在所有地点举行的活动的票证。
-2. 按 F5 运行脚本并生成票证销售。 脚本运行时，请继续执行本教程中的步骤。 票据数据在“运行即席分布式查询”部分中查询，所以请等待票据生成器完成。
+2. 按 F5 运行脚本并生成票证销售。 脚本运行时，请继续执行本教程中的步骤。 票证数据在“运行即席分布式查询”部分中查询，因此请等待票证生成器完成。
 
 ## <a name="explore-the-global-views"></a>浏览全局视图
 
@@ -106,7 +106,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1*。 
 
-1. 设置 $DemoScenario = 2，它表示部署特别报告数据库。
+1. 设置 **$DemoScenario = 2**，_部署即席生成报表数据库_。
 
 1. 按 F5 运行脚本并创建 adhocreporting 数据库。
 
@@ -148,7 +148,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 检查执行计划时，将鼠标悬停在计划图标上方可获取详细信息。 
 
-特别要注意是，定义外部数据源时的设置 DISTRIBUTION = SHARDED(VenueId) 可以提升许多方案的性能。 因为每个 VenueId  都映射到单个数据库，这样就可以轻松进行远程筛选，仅返回所需的数据。
+特别要注意是，定义外部数据源时的设置 DISTRIBUTION = SHARDED(VenueId) 可以提升许多方案的性能。 为每个*VenueId*映射到单个数据库，轻松地进行远程筛选，返回所需数据。
 
 1. 在 SSMS 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReportingQueries.sql。
 2. 确保已连接到 adhocanalytics 数据库。
@@ -181,7 +181,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 本教程介绍了如何：
 
 > [!div class="checklist"]
-
+> 
 > * 对所有租户数据库运行分布式查询
 > * 部署报告数据库，并定义运行分布式查询所需的架构。
 

@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: a1a2128e4e13494a76dfad9f051be56e02dbd995
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: b01b68964600f6162512d4405fddbaf125e7e76d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878793"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082715"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>使用见解标记获取有关图像的见解
 
@@ -66,7 +66,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 ## <a name="using-c"></a>使用 C#
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
 
@@ -242,7 +242,7 @@ namespace VisualSearchInsightsToken
 
 ## <a name="using-java"></a>使用 Java
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 如果你有喜欢使用的 Java IDE，可以使用它，但文本编辑器足以满足要求。
 
@@ -286,7 +286,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-// http://hc.apache.org/downloads.cgi (HttpComponents Downloads) HttpClient 4.5.5
+// https://hc.apache.org/downloads.cgi (HttpComponents Downloads) HttpClient 4.5.5
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -360,7 +360,7 @@ public class InsightsToken {
 
 ## <a name="using-nodejs"></a>使用 Node.js
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 需要使用 [Node.js 6](https://nodejs.org/en/download/) 来运行此代码。
 
@@ -373,19 +373,19 @@ public class InsightsToken {
 1. 为项目创建一个文件夹（或使用你最喜欢的 IDE 或编辑器）。
 2. 从命令提示符或终端导航至刚刚创建的文件夹。
 3. 安装请求模块：  
-  ```  
-  npm install request  
-  ```  
+   ```  
+   npm install request  
+   ```  
 3. 安装窗体数据模块：  
-  ```  
-  npm install form-data  
-  ```  
+   ```  
+   npm install form-data  
+   ```  
 4. 创建一个名为 GetVisualInsights.js 的文件，并将以下代码添加到其中。
 5. 将 `subscriptionKey` 值替换为你的订阅密钥。
 7. 运行该程序。  
-  ```
-  node GetVisualInsights.js
-  ```
+   ```
+   node GetVisualInsights.js
+   ```
 
 ```javascript
 var request = require('request');
@@ -428,7 +428,7 @@ function requestCallback(err, res, body) {
 ## <a name="using-python"></a>使用 Python
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 需要使用 [Python 3](https://www.python.org/) 来运行此代码。
 

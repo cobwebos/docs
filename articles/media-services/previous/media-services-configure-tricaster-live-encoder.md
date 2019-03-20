@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako;cenkd;anilmur
-ms.openlocfilehash: 64c38d6e7400d49903323159f23b395a8c2c334f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: adacce5c8307f3be972920bd3aef6d8ea912eb30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998189"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992002"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "55998189"
 >
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
@@ -56,7 +56,7 @@ ms.locfileid: "55998189"
 
 1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道…” 从菜单中。
 
-    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
+    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
 2. 指定频道名称，说明字段为可选字段。 在“频道设置”下针对“实时编码”选项选择“标准”，将“输入协议”设置为“RTMP”。 所有其他设置可保留原样。
 
@@ -113,7 +113,7 @@ ms.locfileid: "55998189"
 7. 选择该文件，并按“确定”。
 
     上传该配置文件以后，即可继续执行下一步。
-8. 获取频道的输入 URL，以便将其分配给 Tricaster “RTMP 终结点”。
+8. 获取频道的输入 URL，以便将其分配给 Tricaster 的“RTMP 终结点”。
 
     导航回 AMSE 工具，查看频道完成状态。 一旦状态从“正在启动”变为“正在运行”，即可获取输入 URL。
 
@@ -122,7 +122,7 @@ ms.locfileid: "55998189"
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster6.png)
 9. 在 Tricaster 项目中，将此信息粘贴到“闪存服务器”下的“位置”字段。 另请在“流 ID”字段中指定一个流名称。
 
-    如果流信息已添加到 FMLE 配置文件中，则也可通过以下方式将其导入此部分：单击“导入设置”，导航到已保存的 FMLE 配置文件，然后单击“确定”。 相关的“闪存服务器”字段应使用 FMLE 中的信息进行填充。
+    如果流信息已添加到 FMLE 配置文件，则也可以通过一下方式将其导入此部分：单击“导入设置” ，导航到已保存的 FMLE 配置文件，然后单击“确定” 。 相关的“闪存服务器”字段应使用 FMLE 中的信息进行填充。
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster7.png)
 10. 完成后，单击屏幕底部的“确定”。 当输入到 Tricaster 中的视频和音频已就绪时，则可单击“流”按钮开始将其流式传输到 AMS。
@@ -152,7 +152,7 @@ ms.locfileid: "55998189"
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
 2. 为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。  
 3. 选中“立即启动节目”框。
-4. 单击“创建节目”。  
+4. 单击“创建节目” 。  
 
     >[!NOTE]
     >创建节目需要的时间比创建频道需要的时间少。

@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中分配 Azure AD 目录角色 | Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中分配 Azure AD 目录角色。
+title: 分配 Azure AD 管理员角色的 Privileged Identity Management |Microsoft Docs
+description: 了解如何将 Azure Active Directory 在 Azure AD Privileged Identity Management (PIM) 中的管理员角色分配。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,22 +13,22 @@ ms.subservice: pim
 ms.date: 10/30/2018
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4acabd4b583766ac730558fd07c424ce97a1299a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e3c8a7fb7a94dbca7b0e63ddaf756a536fbd0600
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192501"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000630"
 ---
-# <a name="assign-azure-ad-directory-roles-in-pim"></a>在 PIM 中分配 Azure AD 目录角色
+# <a name="assign-azure-ad-administrator-roles-in-pim"></a>分配 Azure AD PIM 中的管理员角色
 
-使用 Azure Active Directory (Azure AD)，全局管理员可以完成**永久性的**目录角色分配。 可以使用 [Azure 门户](../users-groups-roles/directory-assign-admin-roles.md)或 [PowerShell 命令](/powershell/module/azuread#directory_roles)创建这些角色分配。
+使用 Azure Active Directory (Azure AD)，可以进行全局管理员**永久**Azure AD 管理员角色分配。 可以使用 [Azure 门户](../users-groups-roles/directory-assign-admin-roles.md)或 [PowerShell 命令](/powershell/module/azuread#directory_roles)创建这些角色分配。
 
-Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理员完成永久性的目录角色分配。 此外，特权角色管理员能使用户**符合**目录角色的条件。 符合条件的管理员可在需要时激活角色，在完成任务后，其权限随即失效。
+Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理员来分配永久管理员角色。 此外，特权角色管理员可让用户成为**合格**为 Azure AD 管理员角色。 符合条件的管理员可在需要时激活角色，在完成任务后，其权限随即失效。
 
 ## <a name="make-a-user-eligible-for-a-role"></a>使用户符合角色的条件
 
-遵循以下步骤可使用户符合 Azure AD 目录角色的条件。
+请按照下列步骤以使用户符合 Azure AD 管理员角色的资格。
 
 1. 使用[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色成员用户的身份登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -68,7 +68,7 @@ Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理�
 
 ## <a name="make-a-role-assignment-permanent"></a>将角色分配设为永久
 
-默认情况下，新用户只符合目录角色的条件。 若要将某个角色分配设为永久，请执行以下步骤。
+默认情况下，新的用户才符合 Azure AD 管理员角色的资格。 若要将某个角色分配设为永久，请执行以下步骤。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
@@ -92,7 +92,7 @@ Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理�
 
 可将用户从角色分配中删除，但始终必须至少保留一个永久的全局管理员用户。 如果不确定哪些用户仍然需要其角色分配，可以[启动角色的访问权限评审](pim-how-to-start-security-review.md)。
 
-遵循以下步骤从目录角色中删除特定的用户。
+按照以下步骤从 Azure AD 管理员角色中删除特定用户。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
@@ -116,7 +116,7 @@ Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理�
 
 ## <a name="authorization-error-when-assigning-roles"></a>分配角色时出现授权错误
 
-如果你最近为某个订阅启用了 PIM 并且在尝试使某个用户获得某个目录角色时出现授权错误，则可能是因为 MS-PIM 服务主体尚未具有合适的权限。 MS-PIM 服务主体必须具有[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色才能向其他人分配角色。 不需要等待 MS-PIM 被分配“用户访问管理员”角色，你可以手动分配该角色。
+如果你尝试将用户设为符合 Azure AD 管理员角色的资格时收到授权错误最近为订阅启用 PIM，它可能是因为 MS PIM 服务主体尚不具备适当的权限。 MS-PIM 服务主体必须具有[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色才能向其他人分配角色。 不需要等待 MS-PIM 被分配“用户访问管理员”角色，你可以手动分配该角色。
 
 请按照以下步骤向订阅的 MS-PIM 服务主体分配“用户访问管理员”角色。
 
@@ -151,5 +151,5 @@ Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中配置 Azure AD 目录角色设置](pim-how-to-change-default-settings.md)
+- [在 PIM 中配置 Azure AD 管理员角色设置](pim-how-to-change-default-settings.md)
 - [在 PIM 中分配 Azure 资源角色](pim-resource-roles-assign-roles.md)

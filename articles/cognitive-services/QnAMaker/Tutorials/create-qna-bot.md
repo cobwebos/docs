@@ -7,16 +7,16 @@ author: tulasim88
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.subservice: qna-maker`
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 930d2d7279f23974e937fd0d858891d0bcaa1291
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095205"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>教程：使用 Azure 机器人服务 v3 创建 QnA 机器人
 
@@ -36,7 +36,7 @@ ms.locfileid: "55869154"
 
 对于本文，你可以使用免费的 QnA Maker [服务](../how-to/set-up-qnamaker-service-azure.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程需要一个已发布的知识库。 如果没有知识库，请按照[创建知识库](../How-To/create-knowledge-base.md)中的步骤创建包含问题和回答的 QnA Maker 服务。
 
@@ -90,12 +90,12 @@ ms.locfileid: "55869154"
 
 1. 在 QnA Maker 门户中从知识库的“设置”选项卡获取知识库 ID、主机 URL 和终结点密钥。
 
-    - 登录 [QnA Maker](https://qnamaker.ai)
-    - 转到你的知识库
-    - 选择“设置”选项卡
-    - “发布”知识库（如果尚未执行该操作）
+   - 登录 [QnA Maker](https://qnamaker.ai)
+   - 转到你的知识库
+   - 选择“设置”选项卡
+   - “发布”知识库（如果尚未执行该操作）
 
-    ![QnA Maker 值](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+     ![QnA Maker 值](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
 
 ## <a name="test-the-bot"></a>测试机器人
 

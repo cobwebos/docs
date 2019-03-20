@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9a819f94ae0cc90d86fdbdf4c9201f1d5a2df6ee
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: e3a84bfa643ebe74983bcef0d0ea72c701ffa589
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213338"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170490"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>如何在对话学习器模型中记录对话
 
@@ -55,6 +55,8 @@ ms.locfileid: "55213338"
 9. 选择响应“奥斯汀的天气可能为晴天。”
 10. 单击“另存为训练对话”按钮。
     - 训练将立即启动
+
+![](../media/T11_logdialog.png)
 
 最后一个注意事项。 可以根据业务需要通过转到“设置”并取消选中“记录对话”来关闭对话日志记录功能。
 

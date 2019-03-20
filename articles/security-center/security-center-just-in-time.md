@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/18/2019
 ms.author: monhaber
-ms.openlocfilehash: 3239bd2d4c5b79f1ebd905fb3844f3e7874ff175
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110947"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199828"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用实时功能管理虚拟机访问
 
@@ -101,7 +101,7 @@ ms.locfileid: "58110947"
 
 
 > [!NOTE]
->如果为 VM 启用 JIT VM 访问，Azure 安全中心将在与所选端口关联的网络安全组中为该端口创建拒绝所有入站通信规则。 规则在网络安全组中将具有最高优先级，或比其中的现有规则的优先级更低。 这取决于确定规则是否安全的 Azure 安全中心执行的分析。
+>为 vm 启用 JIT VM 访问后，Azure 安全中心创建"拒绝所有入站的流量"规则中的所选端口与之关联的网络安全组中。 如果已为所选端口创建其他规则，然后现有规则优先于"拒绝所有入站的流量"的新规则。 如果所选端口上没有任何现有规则，"拒绝所有入站的流量"的新规则对网络安全组中需要最高优先级。
 >
 
 ### <a name="request-jit-access-to-a-vm"></a>请求 JIT 对 VM 的访问权限

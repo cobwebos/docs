@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault - 如何将软删除与 CLI 配合使用
 description: 使用 CLI 代码剪辑进行软删除的用例示例
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: bryanla
-ms.openlocfilehash: f0c1db2274eea6281bd4a350909b79d048ad21c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.author: mbaldwin
+ms.openlocfilehash: 4311d71775ef877e0090abca9c6caabab503ef08
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097604"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -21,7 +21,7 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 - 支持 Key Vault 的可恢复删除
 - 支持密钥保管库对象、密钥、机密和证书的可恢复删除
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Azure CLI - 如果环境没有此设置，请参阅[使用 Azure CLI 管理 Key Vault](key-vault-manage-with-cli2.md)。
 
@@ -31,7 +31,7 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
-| Operation | 说明 | 用户权限 |
+| Operation | 描述 | 用户权限 |
 |:--|:--|:--|
 |列出|列出已删除的密钥保管库。|Microsoft.KeyVault/deletedVaults/read|
 |恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|
@@ -167,19 +167,19 @@ az keyvault set-policy --name ContosoVault --key-permissions get create delete l
 像密钥一样，可以使用自己的命令管理机密：
 
 - 删除名为 SQLPassword 的机密： 
-```azurecli
-az keyvault secret delete --vault-name ContosoVault -name SQLPassword
-```
+  ```azurecli
+  az keyvault secret delete --vault-name ContosoVault -name SQLPassword
+  ```
 
 - 列出密钥保管库中所有已删除的机密： 
-```azurecli
-az keyvault secret list-deleted --vault-name ContosoVault
-```
+  ```azurecli
+  az keyvault secret list-deleted --vault-name ContosoVault
+  ```
 
 - 恢复处于已删除状态的机密： 
-```azurecli
-az keyvault secret recover --name SQLPassword --vault-name ContosoVault
-```
+  ```azurecli
+  az keyvault secret recover --name SQLPassword --vault-name ContosoVault
+  ```
 
 - 清除处于已删除状态的机密： 
 
@@ -195,7 +195,7 @@ az keyvault secret recover --name SQLPassword --vault-name ContosoVault
 > [!IMPORTANT]
 > 清除密钥保管库或其包含的对象之一将永久删除它，这意味着无法恢复！
 
-清除功能用于永久删除以前已软删除的密钥保管库对象或整个密钥保管库。 如前一部分中所示，启用了软删除功能的密钥保管库中存储的对象可能会经历多个状态：
+清除函数用于永久删除 key vault 对象或整个密钥保管库，以前已软删除。 如前一部分中所示，启用了软删除功能的密钥保管库中存储的对象可能会经历多个状态：
 
 - **活动**：删除之前。
 - **已软删除**：删除之后，能够列出和恢复为活动状态。

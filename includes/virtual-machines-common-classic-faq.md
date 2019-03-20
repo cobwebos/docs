@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 37dc96cf965181c5acba74449c684a08035e37b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: bc3590e90cacfa4966f0d1f64aa1c8d49483cb1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264079"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "58115991"
 ---
 本文讨论了通过经典部署模型创建的 Azure 虚拟机的一些用户常见问题。
 
@@ -26,7 +26,7 @@ ms.locfileid: "51264079"
 
 • Linux VM -- [Azure 认可发行版中的 Linux](https://go.microsoft.com/fwlink/p/?LinkId=393551)
 
-对于 Windows 客户端映像，某些版本的 Windows 7 和 Windows 8.1 可供 MSDN Azure 权益订户及 MSDN 开发和测试即用即付订户，用于开发和测试任务。 有关详细信息（包括说明和限制），请参阅[适用于 MSDN 订户的 Windows 客户端映像](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。
+对于 Windows 客户端映像，某些版本的 Windows 7 和 Windows 8.1 可供 MSDN Azure 权益订户及 MSDN 开发和测试即用即付订户，用于开发和测试任务。 有关详细信息（包括说明和限制），请参阅 [Windows Client images for MSDN subscribers（适用于 MSDN 订户的 Windows 客户端映像）](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。
 
 ## <a name="why-are-affinity-groups-being-deprecated"></a>为什么要弃用地缘组？
 地缘组是一个旧概念，指的是在 Azure 中客户的云服务部署和存储帐户的地理分组。 在早期的 Azure 网络设计中，它们最初用于改进 VM 到 VM 的网络性能。 它们还支持仅限于使用一个区域中的一小部分硬件的虚拟网络 (VNet) 的初始版本。
@@ -36,7 +36,7 @@ ms.locfileid: "51264079"
 Azure 资源管理器部署模型和 Azure 门户已弃用地缘组功能。 对于经典 Azure 门户，我们将禁止支持创建地缘组以及创建固定到地缘组的存储资源。 无需修改现有的使用地缘组的云服务。 但是，不能在新的云服务中使用地缘组，除非 Azure 支持专业人员建议使用它们。
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
-每个数据磁盘的容量高达 1 TB。 可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅[虚拟机大小](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+每个数据磁盘的容量高达 1 TB。 可以使用的数据磁盘数取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 Azure 存储帐户提供可用于操作系统磁盘和任意数据磁盘的存储。 每个磁盘都是一个 .vhd 文件，以页 blob 形式存储。 有关定价详细信息，请参阅 [Storage Pricing Details](https://go.microsoft.com/fwlink/p/?LinkId=396819)（存储定价详细信息）。
 
@@ -136,5 +136,5 @@ Azure 根据 VM 的大小和操作系统按小时价格计费。 对于不足一
 
 [使用 Azure CLI 创建和管理 Linux VM](../articles/virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[使用 Azure PowerShell 创建和管理 Windows VM](../articles/virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[创建和管理 Windows Vm 使用 Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 01af5052d8b092d10609769f211d6ffcde03cf8e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: bd4c024e14e70b5937d85e9917340d25f552096d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190368"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110862"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 
 同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要具备本地数据网关。 要了解有关网关的更多信息，请参阅[本地数据网关](analysis-services-gateway.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 **最低要求：**
 
@@ -90,19 +90,19 @@ ms.locfileid: "54190368"
 
 2. 在“创建连接网关”中，输入以下设置：
 
-    * **名称**：输入网关资源的名称。 
+   * **名称**：输入网关资源的名称。 
 
-    * **订阅**：选择要与网关资源关联的 Azure 订阅。 
+   * **订阅**：选择要与网关资源关联的 Azure 订阅。 
    
-      默认订阅取决于用来登录的 Azure 帐户。
+     默认订阅取决于用来登录的 Azure 帐户。
 
-    * **资源组**：创建资源组，或选择现有资源组。
+   * **资源组**：创建资源组，或选择现有资源组。
 
-    * **位置**：选择网关的注册区域。
+   * **位置**：选择网关的注册区域。
 
-    * **安装名称**：如果尚未选择网关安装，请选择注册的网关。 
+   * **安装名称**：如果尚未选择网关安装，请选择注册的网关。 
 
-    完成后，单击“创建”。
+     完成后，单击“创建”。
 
 ## <a name="connect-servers"></a>将服务器连接到网关资源
 

@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e433eded9ffccde0eccb3b807c8eb8e3219771f5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 295422e0f456c4dfd4166911ef8150e8a896ba1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162096"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111100"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -86,7 +86,7 @@ ms.locfileid: "56162096"
 6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。
 7. 将“登录方法”字段更改为“密码身份验证”。
 
-  ![RDS 上的“部署属性”屏幕](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
+   ![RDS 上的“部署属性”屏幕](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
 8. 为所有集合运行此命令。 用自己的信息替换 \<yourcollectionname\> 和 \<proxyfrontendurl\>。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
 
@@ -98,8 +98,8 @@ ms.locfileid: "56162096"
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
->[!NOTE]
->上面的命令在“`nrequire”中使用反引号。
+   >[!NOTE]
+   >上面的命令在“`nrequire”中使用反引号。
 
 9. 若要验证自定义 RDP 属性的修改并查看将从此集合的 RDWeb 下载的 RDP 文件内容，请运行以下命令：
     ```

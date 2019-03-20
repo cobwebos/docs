@@ -1,7 +1,7 @@
 ---
 title: 添加实体
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 在语言理解 (LUIS) 应用中添加实体（应用程序域中的关键数据）。
+description: 创建实体来从用户语言理解 (LUIS) 应用中的查询文本中提取关键数据。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d98896ab86c1dbbc988d44e3c8cf6545ba5d5d3c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859787"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106927"
 ---
 # <a name="create-entities-without-utterances"></a>创建不包含话语的实体
 
-实体表示要提取的话语中的字词或短语。 话语可包括多个实体，也可不包含任何实体。 实体表示一种类，包含相似对象（位置、事项、人员、事件或概念）的集合。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 
-
-可以在创建意向之前或期间创建实体。
+实体表示要提取的话语中的字词或短语。 实体表示一种类，包含相似对象（位置、事项、人员、事件或概念）的集合。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 （之前或之后） 中添加查询文本转意向或间隔时，可以创建实体添加到意向的语音样本。
 
 可在 LUIS 应用中通过“实体”页上的“实体列表”来编辑或删除实体。 LUIS 提供两种主要的实体类型：[预生成实体](luis-reference-prebuilt-entities.md)和自己的[自定义实体](luis-concept-entity-types.md#types-of-entities)。
 
-创建实体后，可以在“意向”详细信息页上的意向示例话语中对其进行标记。 
+创建机器学习的内容的实体时，需要将标记该实体中的所有意图的所有示例查询文本中。
 
-## <a name="add-prebuilt-entity"></a>添加预生成实体
+<a name="add-prebuilt-entity"></a>
+
+## <a name="add-a-prebuilt-entity-to-your-app"></a>将预生成的实体添加到您的应用程序
 
 添加到应用程序的常见预生成实体为 number 和 datetimeV2。 
 
@@ -40,7 +40,9 @@ ms.locfileid: "55859787"
 
     ![“添加预生成实体”对话框屏幕截图](./media/add-entities/list-of-prebuilt-entities.png)
 
-## <a name="add-simple-entities"></a>添加简单实体
+<a name="add-simple-entities"></a>
+
+## <a name="add-simple-entities-for-single-concepts"></a>添加单个概念的简单实体
 
 简单实体描述单一概念。 使用以下过程创建一个实体，用于提取“人力资源”或“运营”等公司部门名称。   
 
@@ -52,7 +54,9 @@ ms.locfileid: "55859787"
 
     [短语列表](luis-concept-feature.md)通常用于提升简单实体的信号。
 
-## <a name="add-regular-expression-entities"></a>添加正则表达式实体
+<a name="add-regular-expression-entities"></a>
+
+## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>添加高度结构化概念的正则表达式实体
 
 基于提供的正则表达式，正则表达式实体用来从话语中拉取数据。 
 
@@ -60,7 +64,7 @@ ms.locfileid: "55859787"
 
 1. 在弹出对话框中，在“实体名称”框中输入 `Human resources form name`，从“实体类型”列表中选择“正则表达式”，输入正则表达式 `hrf-[0-9]{6}`，然后选择“完成”。 
 
-    此正则表达式使用文本字符 `hrf-` 后接 6 位数来表示“人力资源”表单的表单编号。
+    此正则表达式匹配的原义字符`hrf-`，然后使用 6 位数来表示窗体号人力资源窗体。
 
 ## <a name="add-hierarchical-entities"></a>添加分层实体
 
@@ -85,7 +89,9 @@ ms.locfileid: "55859787"
 
     创建此实体后，转到包含该实体的示例话语所在的所有意向。 选择示例话语中的文本，并将文本标记为实体。 
 
-## <a name="add-composite-entities"></a>添加复合实体
+<a name="add-composite-entities"></a>
+
+## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>添加复合实体分组到父-子关系
 
 可以通过创建复合实体定义不同类型的实体之间的关系。 在以下示例中，实体包含正则表达式和预生成的名称实体。  
 
@@ -107,7 +113,9 @@ ms.locfileid: "55859787"
 
 1. 选择“完成”。
 
-## <a name="add-patternany-entities"></a>添加 Pattern.any 实体
+<a name="add-pattern-any-entities"></a>
+
+## <a name="add-patternany-entities-to-capture-free-form-entities"></a>添加 Pattern.any 捕获自由格式的实体的实体
 
 [Pattern.any](luis-concept-entity-types.md) 实体仅在[模式](luis-how-to-model-intent-pattern.md)中有效，在意向中无效。 此类实体有助于 LUIS 查找不同长度和字词选择的实体结尾。 由于此实体会在模式中使用，因此，LUIS 可识别实体末尾在话语模板中的位置。
 
@@ -123,7 +131,9 @@ ms.locfileid: "55859787"
 
     如果发现模式在包含 Pattern.any 时错误提取实体，请使用[显式列表](luis-concept-patterns.md#explicit-lists)来更正此问题。 
 
-## <a name="add-a-role-to-pattern-based-entity"></a>将角色添加到基于模式的实体
+<a name="add-a-role-to-pattern-based-entity"></a>
+
+## <a name="add-a-role-to-distinguish-different-contexts"></a>添加角色来区分不同的上下文
 
 角色是基于上下文的实体命名子类型。 它相当于[分层](#add-hierarchical-entities)实体，但是角色仅在[模式](luis-how-to-model-intent-pattern.md)中使用。 
 
@@ -141,7 +151,9 @@ ms.locfileid: "55859787"
 
     ![将 Origin 角色添加到 Location 实体的屏幕截图](./media/add-entities/roles-enter-role-name-text.png)
 
-## <a name="add-list-entities"></a>添加列表实体
+<a name="add-list-entities"></a>
+
+## <a name="add-list-entities-for-exact-matches"></a>添加列表实体的完全匹配项
 
 列表实体表示一组固定、封闭的相关单词。 
 
@@ -184,12 +196,15 @@ ms.locfileid: "55859787"
     ]  
     ```
 
+<a name="change-entity-type"></a>
 
-## <a name="change-entity-type"></a>更改实体类型
+## <a name="do-not-change-entity-type"></a>不能更改实体类型
 
 LUIS 不允许更改实体类型，因为它不知道构造该实体要添加或删除的内容。 若要更改类型，最好创建一个名称稍微不同的、类型正确的新实体。 实体创建后，在每句话语中，删除旧标记实体名称并添加新的实体名称。 重新标记所有话语后，即可删除旧实体。 
 
-## <a name="create-a-pattern-from-an-utterance"></a>通过表述创建模式
+<a name="create-a-pattern-from-an-utterance"></a>
+
+## <a name="create-a-pattern-from-an-example-utterance"></a>创建示例查询文本从一种模式
 
 请参阅[在意向或实体页上通过现有表述添加模式](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page)。
 

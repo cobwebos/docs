@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 2ea5b4e3af6591e6e25a863998baa7cecb3e29e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004626"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079105"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的联接
 
 > [!NOTE]
-> 在完成本课程之前，应先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和 [Azure Monitor 日志查询](get-started-queries.md)。
+> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)并[Azure Monitor 日志查询](get-started-queries.md)之前完成本课程中。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -86,7 +86,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>联接类型
 使用 kind 参数来指定联接类型。 如下表所述，每种类型在给定表的记录之间执行不同的匹配。
 
-| 联接类型 | 说明 |
+| 联接类型 | 描述 |
 |:---|:---|
 | innerunique | 这是默认的联接模式。 首先找到左表中匹配列的值，并删除重复值。  然后将该组唯一值集与右表匹配。 |
 | 内部 | 结果中只包括在两个表中匹配的记录。 |
@@ -101,7 +101,7 @@ SecurityEvent
 
 - 在每个表上使用时间筛选器，减少为联接计算得出的最小记录量。
 - 使用 `where` 和 `project` 可减少联接前输入表中的行数和列数。
-* 如果某个表始终小于另一个表，则将其用作联接的左侧。
+- 如果某个表始终小于另一个表，则将其用作联接的左侧。
 
 
 ## <a name="next-steps"></a>后续步骤

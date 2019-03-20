@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 23a1b2853423dd9f2a62c32792e27e3174495aff
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 25e4c308b55b66038be6825a239f185e5e813af5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817030"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085756"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "55817030"
 
 了解如何使用 Azure 门户创建将 Azure Data Lake Storage Gen1 帐户用作默认存储或额外存储的 HDInsight 群集。 即使附加存储只是 HDInsight 群集的可选选项，仍建议将业务数据存储在附加存储帐户中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始学习本教程之前，请确保满足以下要求：
 
 * **Azure 订阅**。 转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -136,7 +136,7 @@ ms.locfileid: "55817030"
 
     ![将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "将服务主体添加到 HDInsight 群集")
 
-  “读取”、“写入”和“执行”默认全部选中。
+   “读取”、“写入”和“执行”默认全部选中。
 
 3. 单击页面底部的“选择”。
 4. 单击“运行”分配权限。

@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 1db16f203755f9afc265495daba056313138a5dc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 26144b7eb53f5c0d4ebecbc9e6eece741f466719
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819437"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997788"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
 
 了解如何对使用应用程序网关时收到网关无效 (502) 错误进行故障排除。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
 
@@ -50,21 +52,21 @@ ms.locfileid: "55819437"
 * 检查与应用程序网关子网关联的 UDR。 确保 UDR 没有将流量引离后端子网 - 例如，检查到网络虚拟设备的路由或通过 ExpressRoute/VPN 播发到应用程序网关子网的默认路由。
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName
-Get-AzureRmVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
+Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
 * 检查包含后端 VM 的有效 NSG 和路由
 
 ```powershell
-Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
-Get-AzureRmEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
 * 检查 VNet 中是否存在自定义 DNS。 可以通过查看输出中的 VNet 属性的详细信息来检查 DNS。
 
 ```json
-Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName 
+Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName 
 DhcpOptions            : {
                            "DnsServers": [
                              "x.x.x.x"
@@ -79,9 +81,9 @@ DhcpOptions            : {
 
 此外，出现 502 错误经常意味着默认的运行状况探测无法访问后端 VM。 预配某个应用程序网关实例时，该实例会使用 BackendHttpSetting 的属性自动将默认的运行状况探测配置到每个 BackendAddressPool。 无需用户输入即可设置此探测。 具体而言，在配置负载均衡规则时，会在 BackendHttpSetting 与 BackendAddressPool 之间建立关联。 默认探测是针对其中每个关联配置的，而应用程序网关会在 BackendHttpSetting 元素中指定的端口上，与 BackendAddressPool 中每个实例发起周期性运行状况检查连接。 下表列出了与默认运行状况探测关联的值。
 
-| 探测属性 | 值 | 说明 |
+| 探测属性 | 值 | 描述 |
 | --- | --- | --- |
-| 探测 URL |http://127.0.0.1/ |URL 路径 |
+| 探测 URL |`http://127.0.0.1/` |URL 路径 |
 | 时间间隔 |30 |探测间隔（秒） |
 | 超时 |30 |探测超时（秒） |
 | 不正常阈值 |3 |探测重试计数。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
@@ -90,7 +92,7 @@ DhcpOptions            : {
 
 * 确定默认站点已配置且正在侦听 127.0.0.1。
 * 如果 BackendHttpSetting 指定的端口不是 80，则应将默认站点配置为侦听指定的端口。
-* 对 http://127.0.0.1:port 的调用应返回 HTTP 结果代码 200。 应在 30 秒超时期限内返回此代码。
+* 对 `http://127.0.0.1:port` 的调用应返回 HTTP 结果代码 200。 应在 30 秒超时期限内返回此代码。
 * 确保配置的端口已打开，并且没有任何防火墙或 Azure 网络安全组在配置的端口上阻止传入或传出流量。
 * 如果对 Azure 经典 VM 或云服务使用 FQDN 或公共 IP，请确保打开相应的[终结点](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)。
 * 如果 VM 是通过 Azure 资源管理器配置的并且位于应用程序网关部署所在的 VNet 的外部，则必须将[网络安全组](../virtual-network/security-overview.md)配置为允许在所需端口上进行访问。
@@ -101,9 +103,9 @@ DhcpOptions            : {
 
 自定义运行状况探测能够对默认探测行为提供更大的弹性。 使用自定义探测时，用户可以配置探测间隔、要测试的 URL 和路径，以及在将后端池实例标记为不正常之前可接受的失败响应次数。 添加了以下附加属性。
 
-| 探测属性 | 说明 |
+| 探测属性 | 描述 |
 | --- | --- |
-| Name |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅当应用程序网关上配置了多站点时才适用。 这与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 将探测发送到 \<protocol\>://\<host\>:\<port\>\<path\> |
@@ -116,7 +118,7 @@ DhcpOptions            : {
 根据上表验证是否已正确配置自定义运行状况探测。 除了上述故障排除步骤以外，另请确保符合以下要求：
 
 * 确保已根据[指南](application-gateway-create-probe-ps.md)正确指定了探测。
-* 如果在应用程序网关中设置了单站点，则默认情况下，除非已在自定义探测中进行配置，否则应将主机名指定为“127.0.0.1”。
+* 如果应用程序网关配置为单一站点中，默认情况下，主机应将名称指定为`127.0.0.1`，除非有其他配置中自定义探测。
 * 确保对 http://\<host\>:\<port\>\<path\> 的调用返回 HTTP 结果代码 200。
 * 确保 Interval、Time-out 和 UnhealtyThreshold 都在可接受的范围内。
 * 如果使用 HTTPS 探测器，请通过在后端服务器本身上配置回退证书，确保后端服务器不需要 SNI。
@@ -132,7 +134,7 @@ DhcpOptions            : {
 应用程序网关允许用户通过 BackendHttpSetting 配置此设置，然后可将此设置应用到不同的池。 不同的后端池可以有不同的 BackendHttpSetting，因此可配置不同的请求超时。
 
 ```powershell
-    New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
+    New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
 ## <a name="empty-backendaddresspool"></a>BackendAddressPool 为空
@@ -146,10 +148,10 @@ DhcpOptions            : {
 确保后端地址池不为空。 这可以通过 PowerShell、CLI 或门户来实现。
 
 ```powershell
-Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
-上述 cmdlet 的输出应包含非空后端地址池。 以下示例中返回了两个池，其中配置了后端 VM 的 FQDN 或 IP 地址。 BackendAddressPool 的预配状态必须是 'Succeeded'。
+上述 cmdlet 的输出应包含非空后端地址池。 以下示例中返回了两个池，其中配置了后端 VM 的 FQDN 或 IP 地址。 BackendAddressPool 的预配状态必须是“Succeeded”。
 
 BackendAddressPoolsText：
 

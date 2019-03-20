@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: dfff159d7e0204a752935458a2b4845499c0d652
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: ecfd86a7e4a8ef97663cc930906fd909b6f0fae8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453393"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011121"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Python 的客户端加密
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "55453393"
 4. 然后，使用内容加密密钥 (CEK) 解密已加密的用户数据。
 
 ## <a name="encryption-mechanism"></a>加密机制
-存储客户端库使用 [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 来加密用户数据。 具体而言，是使用 AES 的[加密块链接 (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式。 每个服务的工作方式都稍有不同，因此我们会在此讨论其中每个服务。
+存储客户端库使用 [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 来加密用户数据。 具体而言，是使用 AES 的[加密块链接 (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式。 每个服务的工作方式都稍有不同，因此我们会在此讨论其中每个服务。
 
 ### <a name="blobs"></a>Blob
 目前，客户端库仅支持整个 Blob 的加密。 具体而言，用户使用 **create*** 方法时支持加密。 对于下载，支持完整下载和范围下载，并且可以并行化上传和下载。
@@ -91,9 +91,9 @@ ms.locfileid: "55453393"
 2. 客户端库为每个实体生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK)，并通过为每个属性派生新的 IV 来对要加密的单个属性执行信封加密。 加密的属性存储为二进制数据。
 3. 然后，已包装的 CEK 和一些附加加密元数据将存储为两个附加保留属性。 第一个保留属性 (\_ClientEncryptionMetadata1) 是一个字符串属性，保存有关 IV、版本和已包装密钥的信息。 第二个保留属性 (\_ClientEncryptionMetadata2) 是一个二进制属性，保存有关已加密属性的信息。 第二个属性 (\_ClientEncryptionMetadata2) 中的信息本身是加密的。
 4. 由于加密需要这两个附加保留属性，用户现在可能只有 250 个自定义属性，而不是 252 个。 实体的总大小必须小于 1MB。
-   
+
    请注意，只有字符串属性可以加密。 如果要对其他类型的属性进行加密，必须将它们转换为字符串。 加密的字符串作为二进制属性存储在服务中，并在解密之后转换回字符串（原始字符串，不是 EdmType.STRING 类型的 EntityProperties）。
-   
+
    对于表，除了加密策略以外，用户还必须指定要加密的属性。 为此，可将这些属性存储在 type 设置为 EdmType.STRING 且 encrypt 设置为 true 的 TableEntity 对象中，或者在 tableservice 对象中设置 encryption_resolver_function。 加密解析程序是一个函数，它接受分区键、行键和属性名称并返回一个布尔值以指示是否应加密该属性。 在加密过程中，客户端库将使用此信息来确定是否应在写入到网络时加密属性。 该委托还可以围绕如何加密属性来实现逻辑的可能性。 （例如，如果 X，则加密属性 A，否则加密属性 A 和 B。）请注意，在读取或查询实体时，不需要提供此信息。
 
 ### <a name="batch-operations"></a>批处理操作
@@ -105,9 +105,9 @@ ms.locfileid: "55453393"
 > [!NOTE]
 > 由于实体已加密，因此不能运行根据已加密属性进行筛选的查询。  如果尝试运行，结果将会不正确，因为该服务会尝试将已加密的数据与未加密的数据进行比较。
 > 
->
-若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库将引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（\_ClientEncryptionMetadata1 和 \_ClientEncryptionMetadata2）。
-
+> 
+> 若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库将引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（\_ClientEncryptionMetadata1 和 \_ClientEncryptionMetadata2）。
+> 
 > [!IMPORTANT]
 > 使用客户端加密时，请注意以下要点：
 > 
@@ -115,10 +115,8 @@ ms.locfileid: "55453393"
 > * 对于表，存在类似的约束。 请注意，不要在未更新加密元数据的情况下更新已加密的属性。
 > * 如果在已加密的 Blob 上设置元数据，则可能会覆盖解密所需的与加密相关的元数据，因为设置元数据不是累加性的。 这也适用于快照；避免在创建已加密的 Blob 的快照时指定元数据。 如果必须设置元数据，务必调用 **get_blob_metadata** 方法首先获取当前加密元数据，并在设置元数据时避免并发写入。
 > * 对于只处理加密数据的用户，请在服务对象中启用 **require_encryption** 标志。 有关详细信息，请参阅下文。
-> 
-> 
 
-存储客户端库要求提供的 KEK 和密钥解析程序实现以下接口。 用于 Python KEK 管理的 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)支持正在筹备中，开发完成后将集成到此库中。
+存储客户端库要求提供的 KEK 和密钥解析程序实现以下接口。 用于 Python KEK 管理的 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)支持正在筹备中，开发完成后会集成到此库中。
 
 ## <a name="client-api--interface"></a>客户端 API/接口
 创建存储服务对象（例如 blockblobservice）后，用户可以向构成加密策略的字段赋值：key_encryption_key、key_resolver_function 和 require_encryption。 用户可仅提供 KEK 或解析程序，或同时提供两者。 key_encryption_key 是使用密钥标识符进行标识的基本密钥类型，它提供包装/解包逻辑。 key_resolver_function 用于在解密过程中解析密钥。 在指定了密钥标识符的情况下，它将返回有效的 KEK。 由此，用户能够在多个位置中托管的多个密钥之间进行选择。
@@ -136,10 +134,10 @@ KEK 必须实现以下方法才能成功加密数据：
 
 * 对于加密，始终使用该密钥，而没有密钥将导致错误。
 * 对于解密：
-  
+
   * 如果指定为获取密钥，则将调用密钥解析程序。 如果指定了解析程序，但该解析程序不具有密钥标识符的映射，则将引发错误。
   * 如果未指定解析程序，但指定了密钥，则在该密钥的标识符与所需密钥标识符匹配时使用该密钥。 如果标识符不匹配，则将引发错误。
-    
+
     azure.storage.samples <fix URL> 中的加密示例演示了针对 blob、队列和表的更详细端到端方案。
       KEK 和密钥解析程序的示例实现在示例文件中分别以 KeyWrapper 和 KeyResolver 提供。
 

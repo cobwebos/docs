@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: e8e9991f20481deee85a6d582582335eb98e3c24
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815211"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993426"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>在 Azure Database for PostgreSQL 服务器中优化 autovacuum 
 本文介绍如何在 Azure Database for PostgreSQL 服务器中有效优化 autovacuum。
@@ -43,7 +43,8 @@ PostgreSQL 使用多版本并发控制 (MVCC) 实现更高的数据库并发性�
 - 启动它以后应清除多少内容？
 
 下面是一些可以基于以上问题更新的 autovacuum 配置参数以及一些指导信息。
-参数|说明|默认值
+
+参数|描述|默认值
 ---|---|---
 autovacuum_vacuum_threshold|指定在任一表中触发清扫操作所需的已更新或已删除元组的最小数量。 默认值为 50 个元组。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。 若要替代单个表的设置，请更改表存储参数。|50
 autovacuum_vacuum_scale_factor|指定在决定是否触发清扫操作时要添加到 autovacuum_vacuum_threshold 的表大小的占比。 默认值为 0.2，即表大小的 20%。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。 若要替代单个表的设置，请更改表存储参数。|百分之 5
@@ -51,6 +52,7 @@ autovacuum_vacuum_cost_limit|指定自动清扫操作中使用的成本限制值
 autovacuum_vacuum_cost_delay|指定自动清扫操作中使用的成本延迟值。 如果指定为 -1，则会使用常规的 vacuum_cost_delay 值。 默认值为 20 毫秒。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。 若要替代单个表的设置，请更改表存储参数。|20 ms
 autovacuum_nap_time|指定任一给定数据库上运行的 autovacuum 之间的最小延迟。 守护程序会在每一轮中检查数据库并根据需要为数据库中的表发出清扫和分析命令。 延迟以秒为单位，默认值为一分钟 (1 min)。 只能在 postgresql.conf 文件中或服务器命令行上设置此参数。|15 s
 autovacuum_max_workers|指定在任何时候可能运行的 autovacuum 进程（不是 autovacuum 启动器）的最大数量。 默认值为三个。 只能在服务器启动时设置此参数。|3
+
 若要替代单个表的设置，请更改表存储参数。 
 
 ## <a name="autovacuum-cost"></a>Autovacuum 成本

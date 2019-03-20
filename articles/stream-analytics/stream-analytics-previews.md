@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: e4037e79812f0cf548ddfcc277c1b66332e0f1f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768556"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902869"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -22,6 +22,10 @@ ms.locfileid: "55768556"
 ## <a name="public-previews"></a>公共预览版
 
 以下功能以公共预览版提供。 现在可以使用这些功能，但请勿在生产环境中使用它们。
+
+### <a name="anomaly-detection"></a>异常检测
+
+Azure 流分析引入了新的机器学习模型，除了支持双向、慢正和慢负趋势检测外，还支持“峰值”和“低值”检测。 有关详细信息，请访问[Azure Stream Analytics 中的异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)。
 
 ### <a name="sql-database-reference-data"></a>SQL 数据库引用数据
 
@@ -47,10 +51,6 @@ Azure 流分析支持以 JavaScript 编写的用户定义的聚合 (UDA)，可�
 
 以下功能以个人预览版提供。
 
-### <a name="anomaly-detection"></a>异常检测
-
-Azure 流分析引入了新的机器学习模型，除了支持双向、慢正和慢负趋势检测外，还支持“峰值”和“低值”检测。
-
 ### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 流分析的 C# 自定义反序列化程序
 
 开发人员现在可以在 C# 中实现自定义反序列化程序，对 Azure 流分析接收的事件进行反序列化。 可以进行反序列化的格式示例包括 Parquet、Protobuf、XML 或任何二进制格式。
@@ -61,7 +61,7 @@ Azure 流分析引入了新的机器学习模型，除了支持双向、慢正�
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>适用于 Azure 流分析的 Visual Studio Code
 
-可以在 Visual Studio Code 中创建 Azure 流分析作业。
+可以在 Visual Studio Code 中创建 Azure 流分析作业。 有关访问工具个人预览版功能，请联系*ASAToolsfeedback\@microsoft.com*。
 
 ## <a name="next-steps"></a>后续步骤
 

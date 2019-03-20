@@ -7,33 +7,29 @@ author: kylestorck
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: conceptual
+ms.topic: resources
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: 2f7f7db31debd7663be44b79c42ab151a96ae7e5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 4cbede768409596365bea0cdbbb451cc5195ac4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869020"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136253"
 ---
-# <a name="known-issues"></a>已知问题
+# <a name="project-acoustics-known-issues"></a>项目噪声的已知问题
 针对 Project Acoustics 使用设计器预览时，可能会遇到以下已知问题。
 
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>重命名场景时丢失声学参数
 
-如果重命名某场景，属于该场景的所有声学参数均不会自动传输到新场景。 但是，它们将仍存在于旧资产文件中。 在场景文件旁边的“编辑器”目录内查找 SceneName_AcousticParameters.asset 文件。 重命名文件以反映新的场景名称。
-
-## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>运行时体素的大小与场景预览体素的大小不同
-
-如果在“探测”选项卡上执行计算并查看 voxel，然后在运行时对相同场景进行制作并查看 voxel，则两个 voxel 大小不同。 制作前显示的 voxel 是用于模拟中的 voxel。 在运行时显示的 voxel 用于探测点之间的内插。 这可能会导致不一致，其中门户在运行时显示已打开，而实际上未打开。
+如果重命名一个场景，所有属于该场景的声学参数不会自动传输到新的场景。 它们仍将但是存在旧的资产文件中。 在场景文件旁边的“编辑器”目录内查找 SceneName_AcousticParameters.asset 文件。 重命名文件以反映新的场景名称。
 
 ## <a name="unity-crashes-when-closing-project"></a>关闭项目时，Unity 崩溃
 
 在最新版本的 Unity (2018.2+) 上，存在一个已知 bug，在关闭项目时 Unity 会崩溃。 这由[此 Unity 问题](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project)跟踪。
 
 ## <a name="trouble-deploying-to-android"></a>部署到 Android 时遇到问题
-若要在 Android 上使用 Project Acoustics，请将生成目标更改为 Android。 某些版本的 Unity 在部署音频插件方面存在 bug - 请确保你使用的是不受[此 bug](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player) 影响的版本。
+若要在 Android 上使用 Project Acoustics，请将生成目标更改为 Android。 某些版本的 Unity 存在一个 bug 与部署音频插件。 请确保你不使用受版本[此 bug](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)。
 
 ## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>收到“找不到元数据文件 System.Security.dll”错误
 
@@ -44,8 +40,8 @@ ms.locfileid: "55869020"
 请仔细检查所用 Azure 帐户凭据是否正确、帐户是否支持制作中请求的节点类型，以及系统时钟是否准确。
 
 ## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>取消制作会使“制作”选项卡处于“正在删除”状态
-成功完成或取消时，Project Acoustics 将清除作业的所有 Azure 资源，这可能最多需要 5 分钟。
+项目噪声将清除上成功完成或取消的作业的所有 Azure 资源。 这可能需要最多 5 分钟。
 
 ## <a name="next-steps"></a>后续步骤
-* [在 Unity 项目中集成音响效果](getting-started.md)入门
+* 请尝试[Unity](unity-quickstart.md)或[Unreal](unreal-quickstart.md)示例内容
 

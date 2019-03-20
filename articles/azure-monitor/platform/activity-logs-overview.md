@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: fb3ed970b7f92e1cc06a9d1023e01f5888915e94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002093"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088666"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
 Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 这包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 活动日志之前称为“审核日志”或“操作日志”，因为“管理”类别报告订阅的控制面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志未包括读取 (GET) 操作或针对使用经典/“RDFE”模型的资源的操作。
 
-![活动日志与其他类型的日志 ](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![活动日志与其他类型的日志](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 图 1：活动日志与其他类型的日志
 
@@ -59,7 +59,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 * 在 **Azure 门户**中查询和查看活动日志。
 * [根据活动日志事件创建警报](../../azure-monitor/platform/activity-log-alerts.md)。
 * [将活动日志流式传输到**事件中心**](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
-* 在 PowerBI 中使用 [**PowerBI 内容包**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
+* 在 PowerBI 中使用 [PowerBI 内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
 * [将活动日志保存到**存储帐户**进行存档或手动检查](../../azure-monitor/platform/archive-activity-log.md)。 可以使用“日志配置文件”指定保留时间（天）。
 * 通过 PowerShell Cmdlet、CLI 或 REST API 查询活动日志。
 
@@ -118,29 +118,31 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
     ![门户中的“导出”按钮](./media/activity-logs-overview/activity-logs-portal-export-v2.png)
 3. 在显示的边栏选项卡中，可以选择：  
-  * 要导出事件的区域
-  * 要保存事件的存储帐户
-  * 要在存储中保留这些事件的天数。 设置为 0 天将永久保留日志。
-  * 需要在其中创建事件中心，以便流式传输这些事件的服务总线命名空间。
+   * 要导出事件的区域
+   * 要保存事件的存储帐户
+   * 要在存储中保留这些事件的天数。 设置为 0 天将永久保留日志。
+   * 需要在其中创建事件中心，以便流式传输这些事件的服务总线命名空间。
 
      ![“导出活动日志”边栏选项卡](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
-4. 单击“保存”保存这些设置。 这些设置会即时应用到订阅。
+4. 单击“保存”保存这些设置。 这些设置将立即应用于你的订阅。
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>通过 Azure PowerShell Cmdlet 配置日志配置文件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 #### <a name="get-existing-log-profile"></a>获取现有的日志配置文件
 
 ```
-Get-AzureRmLogProfile
+Get-AzLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>添加日志配置文件
 
 ```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
+Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --- | --- | --- |
 | Name |是 |日志配置文件的名称。 |
 | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -151,7 +153,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 #### <a name="remove-a-log-profile"></a>删除日志配置文件
 ```
-Remove-AzureRmLogProfile -name my_log_profile
+Remove-AzLogProfile -name my_log_profile
 ```
 
 ### <a name="configure-log-profiles-using-the-azure-cli"></a>使用 Azure CLI 配置日志配置文件

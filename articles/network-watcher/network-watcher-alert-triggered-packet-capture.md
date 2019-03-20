@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 71e71b417f12b58fc03c581826c0e5c2412e684b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427396"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876640"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
@@ -33,7 +33,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
 ![场景][scenario]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 最新版本的 [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。
 * 网络观察程序的现有实例。 [创建网络观察程序的实例](network-watcher-create.md)（如果还没有这样一个实例的话）。
@@ -110,13 +110,13 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
     该示例提供 Azure PowerShell 模块的本地路径。 在稍后的步骤中将使用这些文件夹。 此方案中使用的模块包括：
 
-    * AzureRM.Network
+   * AzureRM.Network
 
-    * AzureRM.Profile
+   * AzureRM.Profile
 
-    * AzureRM.Resources
+   * AzureRM.Resources
 
-    ![PowerShell 文件夹][functions5]
+     ![PowerShell 文件夹][functions5]
 
 1. 选择“函数应用设置” > “转到应用服务编辑器”。
 
@@ -146,7 +146,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
     ![PowerShell 文件][functions7]
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 若要使用 PowerShell cmdlet，必须进行身份验证。 配置函数应用中的身份验证。 若要配置身份验证，必须配置环境变量，并将加密密钥文件上传到函数应用。
 
@@ -344,7 +344,7 @@ $Encryptedpassword
   |**设置** | **值** | **详细信息** |
   |---|---|---|
   |**名称**|TCP_Segments_Sent_Exceeded|警报规则的名称。|
-  |**说明**|发送的 TCP 段已超出阈值|警报规则的说明。||
+  |**说明**|发送的 TCP 段已超出阈值|警报规则的说明。|
   |**指标**|发送的 TCP 段| 用于触发警报的指标。 |
   |**条件**|大于| 评估指标时要使用的条件。|
   |**阈值**|100| 触发警报的指标值。 此值应设置为环境的有效值。|
@@ -362,7 +362,7 @@ $Encryptedpassword
 
 如果捕获文件存储在本地，可以通过登录到虚拟机，检索捕获文件。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一个可以使用的工具是[存储资源管理器](http://storageexplorer.com/)。
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一个可以使用的工具是[存储资源管理器](https://storageexplorer.com/)。
 
 下载捕获后，可以使用能够读取 **.cap** 文件的任何工具来查看捕获。 下面提供了其中两个工具的链接：
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 16c9e1cb568533e8dcad046c4ee21bfeaf19d5b7
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: HT
+ms.openlocfilehash: cb68e93553be66d0d0be0edf61e491217bfe4d48
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407841"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091301"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
@@ -22,7 +22,7 @@ ms.locfileid: "53407841"
 
 了解如何使用 Apache Ambari Hive 视图运行 Hive 查询。 Hive 视图允许从 Web 浏览器创作、优化和运行 Hive 查询。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 基于 Linux 的 Apache Hadoop on HDInsight 群集版本 3.4 或更高版本。
 
@@ -73,7 +73,7 @@ ms.locfileid: "53407841"
    * `DROP TABLE`：删除表和数据文件（如果该表已存在）。
 
    * `CREATE EXTERNAL TABLE`：在 Hive 中创建一个新的“外部”表。
-   外部表仅在 Hive 中存储表定义。 数据将保留在原始位置。
+     外部表仅在 Hive 中存储表定义。 数据将保留在原始位置。
 
    * `ROW FORMAT`：演示如何设置数据格式。 在此情况下，每个日志中的字段以空格分隔。
 
@@ -81,8 +81,8 @@ ms.locfileid: "53407841"
 
    * `SELECT`：选择 t4 列包含值 [ERROR] 的所有行的计数。
 
-    > [!IMPORTANT]  
-    > 将“数据库”选择保留为“默认”。 本文档中的示例使用 HDInsight 附带的默认数据库。
+     > [!IMPORTANT]  
+     > 将“数据库”选择保留为“默认”。 本文档中的示例使用 HDInsight 附带的默认数据库。
 
 5. 要启动查询，请使用工作表下方的“执行”按钮。 按钮变为橙色，文本更改为“停止”。
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445536"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097985"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>教程：为 Zendesk 配置自动用户预配
 
@@ -30,7 +30,7 @@ ms.locfileid: "56445536"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -111,12 +111,12 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 5. 在“管理员凭据”部分下，输入 Zendesk 帐户的“管理员用户名”、“机密令牌”和“域”。 这些值的示例如下：
 
-    *   在“管理员用户名”字段中，填入 Zendesk 租户的管理员帐户的用户名。 示例：admin@contoso.com。
+   * 在“管理员用户名”字段中，填入 Zendesk 租户的管理员帐户的用户名。 示例：admin@contoso.com。
 
-    *   在“机密令牌”字段中，填充步骤 6 中所述的机密令牌。
+   * 在“机密令牌”字段中，填充步骤 6 中所述的机密令牌。
 
-    *   在“域”字段中，填充 Zendesk 租户的子域。
-    示例：对于租户 URL 为 https://my-tenant.zendesk.com 的帐户，子域为 **my-tenant**。
+   * 在“域”字段中，填充 Zendesk 租户的子域。
+     示例：对于租户 URL 为 https://my-tenant.zendesk.com 的帐户，子域为 **my-tenant**。
 
 6. Zendesk 帐户的“机密令牌”位于“管理”>“API”>“设置”中。
    确保“令牌访问”设置为“已启用”。

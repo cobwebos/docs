@@ -18,15 +18,18 @@ ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 109ababa78292bf8b172144174af3216f3844941
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b77b5185056329113ee1fd17fa3ed3f364380ca2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203652"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095868"
 ---
 # <a name="app-registration-reference"></a>应用注册参考
 本文档提供可在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)中找到的各种功能的上下文和说明。
+
+> [!NOTE]
+> 我们将不再支持注册和管理中的聚合与 Azure AD 应用程序[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)启动 2019 年 5。 我们建议你管理的现有应用程序，并使用注册新的应用程序[应用注册 （预览版）](https://aka.ms/appregistrations)体验在 Azure 门户中。
 
 ## <a name="my-applications-or-converged-applications"></a>我的应用程序或聚合应用程序
 此列表包含所有已注册且可与 Azure AD v2.0 终结点搭配使用的应用程序。 这些应用程序能够让用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure Active Directory 登录。 若要了解有关 Azure AD v2.0 终结点的详细信息，请参阅 [v2.0 概述](active-directory-appmodel-v2-overview.md)。 这些应用程序也可以用来与 Microsoft 帐户身份验证终结点 `https://login.live.com` 集成。

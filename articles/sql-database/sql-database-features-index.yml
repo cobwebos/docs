@@ -1,0 +1,56 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 18be472dfc6a9928b8ceea72fe1b277d77311a63
+ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57905301"
+documentType: LandingData
+title: Azure SQL 数据库-功能
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL 数据库-功能
+  meta.description: Learn about the features in Azure SQL Database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 02/06/2019
+  ms.author: jovanpop-msft
+sections:
+- items:
+  - type: paragraph
+    text: Azure SQL 数据库不只是一个经典关系数据库引擎，使你可以使用 SQL 语言查询数据。 Azure SQL 数据库中的数据库功能，可以执行强大的更多操作和实现高级的方案。
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: 内存中技术
+      href: /azure/sql-database/sql-database-in-memory
+      html: <p>实现高性能应用程序使用内存中技术。</p>
+    - title: 多模型功能
+      href: /azure/sql-database/sql-database-multi-model-features
+      html: <p>了解有关图形、 JSON、 XML、 Azure SQL 数据库中的空间功能的信息。</p>
+    - title: 事务复制
+      href: /azure/sql-database/sql-database-managed-instance-transactional-replication
+      html: <p>Azure SQL 数据库和 SQL Server 表之间复制数据。</p>
+    - title: 数据同步
+      href: /azure/sql-database/sql-database-sync-data
+      html: <p>在多个 SQL 数据库和 SQL Server 实例之间同步数据。</p>
+    - title: 作业自动化
+      href: /azure/sql-database/sql-database-job-automation-overview
+      html: <p>计划使用 SQL 代理和弹性作业的重复任务。</p>
+    - title: 临时表
+      href: /azure/sql-database/sql-database-temporal-tables
+      html: <p>跟踪和分析数据更改的完整历史记录。</p>
+- title: 更多资源
+  items:
+  - type: list
+    style: ordered
+    items:
+    - html: 了解如何<a href="/azure/sql-database/sql-database-features">区别 SQL Server 和 Azure SQL 数据库功能</a>。
+    - html: 了解如何使用中的这些功能<a href="/azure/sql-database/sql-database-howto">操作方法指南</a>。

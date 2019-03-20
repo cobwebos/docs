@@ -12,18 +12,29 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: f3bb6fa93a96adcd2c1995b6874aa0b36b2ce320
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300245"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884517"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL 数据库的多模型功能
 
 使用多模型数据库可以存储和处理以多种数据格式表示的数据，例如关系数据、图形、JSON/XML 文档、键/对，等等。
 
-Azure SQL 数据库设计为使用关系模型，在大多数情况下，该模型可为各种常规用途应用程序提供最佳性能。 但是，Azure SQL 数据库并不局限于关系数据。 Azure SQL 数据库允许使用各种与关系模型紧密集成的非关系格式。 Azure SQL 提供以下多模型功能：
+## <a name="when-to-use-multi-model-capabilities"></a>何时使用多模型功能
+
+Azure SQL 数据库设计为使用关系模型，在大多数情况下，该模型可为各种常规用途应用程序提供最佳性能。 但是，Azure SQL 数据库并不局限于关系数据。 Azure SQL 数据库允许使用各种与关系模型紧密集成的非关系格式。
+应考虑使用的 Azure SQL 数据库在以下情况下的多模型功能：
+- 有一些信息或结构的更好地适应用于 NoSQL 模型，您不想要使用单独的 NoSQL 数据库。
+- 大部分数据适合于关系模型，并且需要进行模型 NoSQL 样式中的数据的某些部分。
+- 你想要利用丰富的 Transact SQL 语言查询和分析关系和 NoSQL 数据，并将它与各种工具和应用程序可以使用 SQL 语言的集成。
+- 你想要应用的数据库功能，如[内存中技术](sql-database-in-memory.md)提高你分析性能或处理在 NoSQL 数据 strucutres，使用[事务复制](sql-database-managed-instance-transactional-replication.md)或[可读副本](sql-database-read-scale-out.md)上其他位置创建了数据的副本并卸载某些分析工作负荷从主数据库。
+
+## <a name="overview"></a>概述
+
+Azure SQL 提供以下多模型功能：
 - [图形功能](#graph-features)：以节点和边缘集的形式呈现数据，并使用通过图形 `MATCH` 运算符增强的标准 Transact-SQL 查询来查询图形数据。
 - [JSON 功能](#json-features)：在表中插入 JSON 文档，将关系数据转换为 JSON 文档，或反之。 可以使用通过 JSON 函数增强的标准 Transact-SQL 语言来分析文档，并使用非聚集索引、列存储索引或内存优化表来优化查询。
 - [空间功能](#spatial-features)：存储地理或几何图形数据、使用空间索引为其编制索引，并使用空间查询检索数据。
@@ -56,7 +67,7 @@ Azure SQL 数据库提供图形数据库功能，用于对数据库中的多对�
 
 ## <a name="json-features"></a>JSON 功能
 
-使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](http://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。
+使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。
 
 JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据格式。 JSON 还用于将半结构化数据存储在日志文件或 NoSQL 数据库（例如 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)）中。 许多 REST Web 服务返回采用 JSON 文本格式的结果，或接受采用 JSON 格式的数据。 大多数 Azure 服务（例如 [Azure 搜索](https://azure.microsoft.com/services/search/)、[Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)）都具有返回或使用 JSON 的 REST 终结点。
 
@@ -64,7 +75,7 @@ JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据�
 
 ![JSON 函数](./media/sql-database-json-features/image_1.png)
 
-对于 JSON 文本，可以使用内置函数 [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx)、[JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx) 和 [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx)，从 JSON 中提取数据，或者验证 JSON 的格式是否正确。 使用 [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) 函数可以更新 JSON 文本中的值。 对于更高级的查询和分析，[OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) 函数可将 JSON 对象数组转换成行集。 可对返回的结果集执行任何 SQL 查询。 最后，使用 [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) 可将存储在关系表中的数据格式化为 JSON 文本。
+对于 JSON 文本，可以使用内置函数 [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx)、[JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx) 和 [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx)，从 JSON 中提取数据，或者验证 JSON 的格式是否正确。 使用 [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) 函数可以更新 JSON 文本中的值。 对于更高级的查询和分析，使用 [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) 函数可将 JSON 对象数组转换成行集。 可对返回的结果集执行任何 SQL 查询。 最后，使用 [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) 可将存储在关系表中的数据格式化为 JSON 文本。
 
 有关详细信息，请参阅[如何处理 Azure SQL 数据库中的 JSON 数据](sql-database-json-features.md)。
 [JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) 是一项核心 SQL Server 数据库引擎功能，可在此处找到有关 JSON 功能的更多信息。
@@ -124,7 +135,7 @@ CREATE TABLE Collection (
 
 可根据需求，不受约束地自定义此键值结构。 例如，值可以是 XML 文档而不是 `nvarchar(max)` 类型，如果值为 JSON 文档，则你可以施加 `CHECK` 约束用于验证 JSON 内容的有效性。 可在附加的列中放置与某个键相关的任意数目的值、添加计算列与索引来简化和优化数据访问、将表定义为内存表/优化的仅限架构表以提高性能，等等。
 
-请参阅 [BWin 如何使用内存中 OLTP 实现前所未有的性能和处理规模](https://blogs.msdn.microsoft.com/sqlcat/2016/10/26/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/)，其中提到 BWin 的 ASP.NET 缓存解决方案每秒可以实现 1.200.000 次批处理，并举例说明如何在实践中有效地将关系模型用作键值对解决方案。
+请参阅 [BWin 如何使用内存中 OLTP 实现前所未有的性能和处理规模](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/)，其中提到 BWin 的 ASP.NET 缓存解决方案每秒可以实现 1.200.000 次批处理，并举例说明如何在实践中有效地将关系模型用作键值对解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 Azure SQL 数据库中的多模型功能也是 Azure SQL 数据库和 SQL Server 之间共享的核心 SQL Server 数据库引擎功能。 有关这些功能的更多详细信息，请访问 SQL 关系数据库文档页：

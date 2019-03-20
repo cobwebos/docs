@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: 4c533921b0c88a4f61cd96896b72306adb9a23cf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 637ad62744affa37630df9c841f3c7529674e788
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122903"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 本文演示如何使用 Azure 门户启用 Azure Active Directory 域服务 (Azure AD DS)。
@@ -62,14 +62,13 @@ ms.locfileid: "55175700"
    > [!NOTE]
    > **选择 DNS 域名的准则**
    > * **内置域名：** 默认情况下，向导指定目录的默认/内置域名（带有 .onmicrosoft.com 后缀）。 如果选择启用通过 Internet 对托管域进行安全 LDAP 访问，则创建公共 DNS 记录或从此域名的公共 CA 获取安全 LDAP 证书时会遇到问题。 Microsoft 拥有 *.onmicrosoft.com* 域，CA 不会为此域颁发证书担保。
-   * **自定义域名：** 还可以输入自定义域名。 在此示例中，自定义域名为 *contoso100.com*。
-   * **不可路由的域后缀：** 我们通常建议避免使用不可路由的域名后缀。 例如，最好避免创建 DNS 域名为“contoso.local”的域。 “.local”DNS 后缀不可路由，并可能导致 DNS 解析出现问题。
-   * **域前缀限制：** 指定域名的前缀（例如 *contoso100.com* 域名中的 contoso100）所包含的字符不得超过 15 个。 不能创建前缀长度超过 15 个字符的托管域。
-   * **网络名称冲突：** 确保虚拟网络中不存在为托管域选择的 DNS 域名。 具体而言，检查是否有以下情况：
-       * 虚拟网络中已存在具有相同 DNS 域名的 Active Directory 域。
-       * 计划在其中启用托管域的虚拟网络具有与本地网络之间的 VPN 连接。 在此方案中，确保在本地网络上没有具有相同 DNS 域名的域。
-       * 虚拟网络上存在具有该名称的云服务。
-    >
+   > * **自定义域名：** 还可以输入自定义域名。 在此示例中，自定义域名为 *contoso100.com*。
+   > * **不可路由的域后缀：** 我们通常建议避免使用不可路由的域名后缀。 例如，最好避免创建 DNS 域名为“contoso.local”的域。 “.local”DNS 后缀不可路由，并可能导致 DNS 解析出现问题。
+   > * **域前缀限制：** 指定域名的前缀（例如 *contoso100.com* 域名中的 contoso100）所包含的字符不得超过 15 个。 不能创建前缀长度超过 15 个字符的托管域。
+   > * **网络名称冲突：** 确保虚拟网络中不存在为托管域选择的 DNS 域名。 具体而言，检查是否有以下情况：
+   >     * 虚拟网络中已存在具有相同 DNS 域名的 Active Directory 域。
+   >     * 计划在其中启用托管域的虚拟网络具有与本地网络之间的 VPN 连接。 在此方案中，确保在本地网络上没有具有相同 DNS 域名的域。
+   >     * 虚拟网络上存在具有该名称的云服务。
 
 2. 选择要在其中创建托管域的 Azure“订阅”。
 

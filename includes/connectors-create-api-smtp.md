@@ -1,4 +1,17 @@
-### <a name="prerequisites"></a>先决条件
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: d90ef1737f0107e5e323c1e90e3f9021efd4e4f7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "58115903"
+---
+### <a name="prerequisites"></a>必备组件
 * 一个 [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol) 帐户  
 
 可以在逻辑应用中使用 SMTP 帐户之前，必须先授权该逻辑应用可以连接到 SMTP 帐户。好在，可以从 Azure 门户中的逻辑应用内轻松地执行此操作。  

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d7f67015d4df20ea39c1225d52be36340b8f65d1
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556970"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116175"
 ---
 # <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>教程：流分析和 Power BI：针对流式处理数据的实时分析仪表板
 Azure 流分析使你可以利用其中一种领先的商业智能工具 [Microsoft Power BI](https://powerbi.com/)。 本文将介绍如何使用 Power BI 作为 Azure 流分析作业的输出，以创建商业智能工具。 此外，还将介绍如何创建和使用实时仪表板。
@@ -24,7 +24,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 可观看演示此方案的[视频](https://www.youtube.com/watch?v=SGUpT-a99MA)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，请确保具有以下各项：
 
@@ -56,16 +56,16 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 7. 返回“新建输出”边栏选项卡后，请输入以下信息：
 
-    * **组工作区**：在 Power BI 租户中选择要在其下创建数据集的工作区。
-    * **数据集名称**：输入 `sa-dataset` 。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。
-    * **表名称**：输入 `fraudulent-calls` 。 目前，流分析作业的 Power BI 输出在 1 个数据集中只能有 1 个表。
+   * **组工作区**：在 Power BI 租户中选择要在其下创建数据集的工作区。
+   * **数据集名称**：输入 `sa-dataset` 。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。
+   * **表名称**：输入 `fraudulent-calls` 。 目前，流分析作业的 Power BI 输出在 1 个数据集中只能有 1 个表。
 
-    ![Power BI 工作区数据集和表](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
+     ![Power BI 工作区数据集和表](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
 
-    > [!WARNING]
-    > 如果 Power BI 已有 1 个数据集和 1 个表，且与流分析作业中指定的数据集和表同名，则会覆盖现有的数据集和表。
-    > 建议不要在 Power BI 帐户中显式创建此数据集和表。 在启动流分析作业，并且该作业开始向 Power BI 发送输出时，这些文件会自动创建。 如果作业查询没有返回任何结果，则无法创建数据集和表。
-    >
+     > [!WARNING]
+     > 如果 Power BI 已有 1 个数据集和 1 个表，且与流分析作业中指定的数据集和表同名，则会覆盖现有的数据集和表。
+     > 建议不要在 Power BI 帐户中显式创建此数据集和表。 在启动流分析作业，并且该作业开始向 Power BI 发送输出时，这些文件会自动创建。 如果作业查询没有返回任何结果，则无法创建数据集和表。
+     >
 
 8. 单击“创建”。
 
@@ -189,13 +189,13 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
     * 添加值，然后选择“fraudulentcalls”。
     * 对于“要显示的时间窗口”，请选择最近 10 分钟。
 
-    ![在 Power BI 中创建折线图磁贴](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
+      ![在 Power BI 中创建折线图磁贴](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
 9. 单击“下一步”，添加标题和副标题，然后单击“应用”。
 
-    现在，Power BI 仪表板显示关于流式处理数据中检测到的欺诈性呼叫数据的两个视图。
+     现在，Power BI 仪表板显示关于流式处理数据中检测到的欺诈性呼叫数据的两个视图。
 
-    ![已完成的 Power BI 仪表板，其中显示欺诈性呼叫的两个磁贴](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
+     ![已完成的 Power BI 仪表板，其中显示欺诈性呼叫的两个磁贴](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
 ## <a name="learn-more-about-power-bi"></a>详细了解 Power BI
@@ -248,7 +248,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 使用 Power BI 刷新授权后，授权区域中会出现一条绿色通知，指出问题已解决。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

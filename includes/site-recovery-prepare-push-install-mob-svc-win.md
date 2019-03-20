@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: ffc9b09c72ef1bf5180a0d626908d09b6fdd41ca
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166293"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "58113881"
 ---
 ### <a name="prepare-for-a-push-installation-on-a-windows-computer"></a>在 Windows 计算机上准备推送安装
 
@@ -17,7 +17,7 @@ ms.locfileid: "50166293"
 1. 创建可供进程服务器用来访问计算机的帐户。 该帐户应具有管理员权限（本地或域）。 只能将此帐户用于推送安装和代理更新。
 
    > [!NOTE]
-   > 如果不使用域帐户，请在本地计算机上禁用远程用户访问控制。 若要禁用远程用户访问控制，请在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 注册表项下添加一个新 DWORD：**LocalAccountTokenFilterPolicy**。 将值设置为 **1**。 若要执行此任务，请在命令提示符下运行以下命令：  
+   > 如果不使用域帐户，请在本地计算机上禁用远程用户访问控制。 若要禁用远程用户访问控制，请在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 注册表项，添加一个新的 dword 值：LocalAccountTokenFilterPolicy。 将值设置为 **1**。 若要执行此任务，请在命令提示符下运行以下命令：  
    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
    >
    >
@@ -27,7 +27,7 @@ ms.locfileid: "50166293"
 
 1. 添加在 CSPSConfigtool 中创建的帐户。 执行以下步骤:
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录到配置服务器。
+    a. 登录到配置服务器。
 
     b. 打开 **cspsconfigtool.exe**。 桌面上有该工具的快捷方式，也可以在 %ProgramData%\home\svsystems\bin 文件夹中找到它。
 

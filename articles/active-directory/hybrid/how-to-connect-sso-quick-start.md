@@ -16,12 +16,12 @@ ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69645c4aa9034b9a3459c7ee5fb0378c790a6e18
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 345c97a19f789bb3d850df000824d4c23989a81f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178084"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086813"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -74,8 +74,9 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 ![Azure AD Connect：更改用户登录](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 继续按向导操作，直到出现“启用单一登录”页。 为每个 Active Directory 林提供域管理员凭据，以便：
-    * 通过 Azure AD Connect 同步到 Azure AD。
-    * 包含你想要为其启用无缝 SSO 的用户。
+
+* 通过 Azure AD Connect 同步到 Azure AD。
+* 包含你想要为其启用无缝 SSO 的用户。
 
 完成向导后，租户即启用了无缝 SSO。
 
@@ -120,17 +121,17 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 1. 打开“组策略管理编辑器”工具。
 2. 编辑适用于部分或全部用户的组策略。 此示例使用**默认域策略**。
-3. 浏览到“用户配置” > “管理模板” > “Windows 组件” > “Internet Explorer” > “Internet 控制面板” > “安全页”。 然后选择“站点到区域分配列表”。
+3. 浏览到**用户配置** > **策略** > **管理模板** > **Windows组件** > **Internet 资源管理器** > **Internet 控制面板** > **安全页**. 然后选择“站点到区域分配列表”。
     ![单一登录](./media/how-to-connect-sso-quick-start/sso6.png)
 4. 启用策略，然后在对话框中输入以下值：
    - **值名称**：要将 Kerberos 票证转发到的 Azure AD URL。
    - **值**（数据）：1 指示 Intranet 区域。
 
-    结果如下所示：
+     结果如下所示：
 
-    值名称：`https://autologon.microsoftazuread-sso.com`
+     值名称：`https://autologon.microsoftazuread-sso.com`
   
-    值（数据）：1
+     值（数据）：第
 
    >[!NOTE]
    > 如果你想禁止某些用户使用无缝 SSO（例如，如果这些用户在共享展台上登录），请将前面的值设置为 4。 此操作将 Azure AD URL 添加到受限区域，并且始终无法使用无缝 SSO。
@@ -140,7 +141,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
     ![单一登录](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. 浏览到“用户配置” > “管理模板” > “Windows 组件” > “Internet Explorer” > “Internet 控制面板” > “安全页” > “Intranet 区域”。 然后选择“允许通过脚本更新状态栏”。
+6. 浏览到**用户配置** > **管理模板****策略**> * * > **Windows 组件** > **Internet Explorer** > **Internet 控制面板** > **安全页** >  **Intranet 区域**。 然后选择“允许通过脚本更新状态栏”。
 
     ![单一登录](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -162,9 +163,9 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
    - **值类型**：REG_DWORD。
    - **值数据**：00000001。
  
-    ![单一登录](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![单一登录](./media/how-to-connect-sso-quick-start/sso16.png)
  
-    ![单一登录](./media/how-to-connect-sso-quick-start/sso17.png)
+     ![单一登录](./media/how-to-connect-sso-quick-start/sso17.png)
 
 ### <a name="browser-considerations"></a>浏览器注意事项
 

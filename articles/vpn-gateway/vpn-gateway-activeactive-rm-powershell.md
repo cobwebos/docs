@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang, cherylmc
-ms.openlocfilehash: d1c5ea0ae60894e810d2f4eb0edff2126171a220
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 4c5a7a138a2b491867c5c4ba7234415036c8ba0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417102"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100830"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>配置与 Azure VPN 网关的主动-主动 S2S VPN 连接
 
@@ -36,10 +36,8 @@ ms.locfileid: "56417102"
 
 > [!IMPORTANT]
 > 主动-主动模式仅使用以下 SKU： 
-  * VpnGw1、VpnGw2、VpnGw3
-  * HighPerformance（适用于旧的遗留 SKU）
-> 
-> 
+>   * VpnGw1、VpnGw2、VpnGw3
+>   * HighPerformance（适用于旧的遗留 SKU）
 
 ## <a name ="aagateway"></a>第 1 部分 - 创建并配置主动-主动 VPN 网关
 以下步骤将 Azure VPN 网关配置为主动-主动模式。 主动-主动与主机-待机网关之间的重要差异：
@@ -84,9 +82,9 @@ $Connection152 = "VNet1toSite5_2"
 ```
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2.连接到订阅并创建新资源组
-确保切换到 PowerShell 模式，以便使用Resource Manager cmdlet。 有关详细信息，请参阅[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+确保切换到 PowerShell 模式，以便使用Resource Manager cmdlet。 有关详细信息，请参阅[将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助你连接：
+打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助连接：
 
 ```powershell
 Connect-AzAccount
@@ -284,7 +282,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $R
 在本示例中，虚拟网络属于同一订阅。 可以在不同订阅之间设置 VNet 到 VNet 连接，有关更多详细信息，请参阅[配置 VNet 到 VNet 连接](vpn-gateway-vnet-vnet-rm-ps.md)。 请确保在创建连接时添加“-EnableBgp $True”，以启用 BGP。
 
 #### <a name="1-declare-your-variables"></a>1.声明变量
-请务必将值替换为用于配置的值。
+请务必将值替换为要用于配置的值。
 
 ```powershell
 $RG2 = "TestAARG2"

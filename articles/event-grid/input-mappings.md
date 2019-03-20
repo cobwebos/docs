@@ -8,16 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 2c768790421ac74fa483877f09e66b1b4b5d5f35
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: a0e054be3ab7d4818ac323eb5fb93968f57eca4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476608"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181310"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>将自定义字段映射到事件网格架构
 
 即使事件数据与预期的[事件网格架构](event-schema.md)不匹配，也仍然可以使用事件网格将事件路由到订阅服务器。 本文介绍如何将你的架构映射到事件网格架构。
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="install-preview-feature"></a>安装预览功能
 

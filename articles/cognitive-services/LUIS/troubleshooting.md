@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: diberry
-ms.openlocfilehash: 71fb289f03467147acb2ef254ab87a2c753bc75c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: b9304e151bbce691b752f12aeec8a5376e517a8d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416541"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120765"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -102,10 +102,12 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>是否有 PowerShell 命令进入终结点？
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 可以使用 PowerShell 命令查看终结点配额：
 
 ```powershell
-Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>我的 LUIS 应用昨天还可以正常使用，但今天却出现 403 错误。 我没有更改应用。 如何解决问题？
@@ -145,7 +147,7 @@ Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>将某个应用导出之后又重新导入到新应用中时（使用新的应用 ID），LUIS 预测分数会有所不同。 为何发生这种情况？
 
-请参阅[同一应用的不同副本之间的预测差异](luis-concept-prediction-score.md#differences-with-predictions)。
+请参阅[同一应用的不同副本之间的预测差异](luis-concept-prediction-score.md#review-intents-with-similar-scores)。
 
 ### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>我对应用进行更改之后，一些表述会转到错误意图。 此问题似乎随机消失。 如何解决问题？ 
 
@@ -276,7 +278,7 @@ Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group
 
 以下功能是在 Build 2018 大会上发布的：
 
-|Name|内容|
+|名称|内容|
 |--|--|
 |增强功能|[正则表达式](luis-concept-data-extraction.md##regular-expression-entity-data)实体和[关键短语](luis-concept-data-extraction.md#key-phrase-extraction-entity-data)实体
 |模式|模式[概念](luis-concept-patterns.md)、[教程](luis-tutorial-pattern.md)、[操作方法](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) 实体概念，包括用作例外的[显式列表](luis-concept-patterns.md#explicit-lists)<br>[角色](luis-concept-roles.md)概念|

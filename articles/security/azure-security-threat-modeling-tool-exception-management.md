@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ce748be7f11d440e656e4af5cdd3cee3bbc9e313
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
-ms.translationtype: HT
+ms.openlocfilehash: 5c768497cc21b3fae82a9db290531af33841a2cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302143"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877286"
 ---
-# <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 | 缓解措施 
+# <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 |缓解措施 
 | 产品/服务 | 文章 |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF - 不要在配置文件中包含 serviceDebug 节点](#servicedebug)</li><li>[WCF - 不要在配置文件中包含 serviceMetadata 节点](#servicemetadata)</li></ul> |
-| **Web API** | <ul><li>[确保在 ASP.NET Web API 中进行适当的异常处理](#exception)</li></ul> |
-| **Web 应用程序** | <ul><li>[不要在错误消息中公开安全详细信息](#messages)</li><li>[实现默认错误处理页](#default)</li><li>[在 IIS 中将部署方法设置为 Retail](#deployment)</li><li>[异常应安全失败](#fail)</li></ul> |
+| **Web API** | <ul><li>[确保 ASP.NET Web API 中进行正确的异常处理](#exception)</li></ul> |
+| **Web 应用程序** | <ul><li>[不公开错误消息中的安全详细信息](#messages)</li><li>[实现默认错误处理页](#default)</li><li>[在 IIS 中将部署方法设置为 Retail](#deployment)</li><li>[异常应安全失败](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF - 不要在配置文件中包含 serviceDebug 节点
 
@@ -71,7 +71,7 @@ ms.locfileid: "43302143"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 5、MVC 6 |
 | **属性**              | 不适用  |
-| **参考**              | [ASP.NET Web API 中的异常处理](http://www.asp.net/web-api/overview/error-handling/exception-handling)、[ASP.NET Web API 中的模型验证](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **参考**              | [ASP.NET Web API 中的异常处理](https://www.asp.net/web-api/overview/error-handling/exception-handling)、[ASP.NET Web API 中的模型验证](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **步骤** | 默认情况下，ASP.NET Web API 中大多数未捕获的异常将转换成状态代码为 `500, Internal Server Error` 的 HTTP 响应|
 
 ### <a name="example"></a>示例
@@ -179,7 +179,7 @@ public HttpResponseMessage PostProduct(Product item)
 }
 ```
 
-请查看参考部分中的链接，了解有关 ASP.Net Web API 中异常处理和模型验证的更多详细信息 
+检查有关异常处理的其他详细信息的参考资料部分中的链接和 ASP.NET Web API 中的模型验证 
 
 ## <a id="messages"></a>不要在错误消息中公开安全详细信息
 
@@ -201,7 +201,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [编辑 ASP.NET 错误页设置对话框](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **步骤** | <p>如果 ASP.NET 应用程序失败并导致 HTTP/1.x 500 内部服务器错误，或者某项功能配置（例如请求筛选）阻止显示页面，会生成错误消息。 管理员可以选择是要让应用程序向客户端显示友好的消息、向客户端显示详细的错误消息，还是只向 localhost 显示详细的错误消息。 web.config 中的 <customErrors> 标记有三种模式：</p><ul><li>**On：** 指定启用自定义错误。 如果未指定 defaultRedirect 特性，用户将看到常规错误。 将向远程客户端和本地主机显示自定义错误</li><li>**Off：** 指定禁用自定义错误。 将向远程客户端和本地主机显示详细的 ASP.NET 错误</li><li>**RemoteOnly：** 指定只向远程客户端显示自定义错误，向本地主机显示 ASP.NET 错误。 这是默认值</li></ul><p>打开应用程序/站点的 `web.config`文件，确保该标记中定义了 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
+| **步骤** | <p>如果 ASP.NET 应用程序失败并导致 HTTP/1.x 500 内部服务器错误，或者某项功能配置（例如请求筛选）阻止显示页面，会生成错误消息。 管理员可以选择是要让应用程序向客户端显示友好的消息、向客户端显示详细的错误消息，还是只向 localhost 显示详细的错误消息。 web.config 中的 <customErrors> 标记有三种模式：</p><ul><li>**上：** 指定启用了自定义错误。 如果未指定 defaultRedirect 特性，用户将看到常规错误。 将向远程客户端和本地主机显示自定义错误</li><li>**关闭：** 指定禁用自定义错误。 将向远程客户端和本地主机显示详细的 ASP.NET 错误</li><li>**RemoteOnly:** 指定自定义错误将显示仅向远程客户端，并为本地主机显示 ASP.NET 错误。 这是默认值</li></ul><p>打开应用程序/站点的 `web.config`文件，确保该标记中定义了 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
 
 ## <a id="deployment"></a>在 IIS 中将部署方法设置为 Retail
 

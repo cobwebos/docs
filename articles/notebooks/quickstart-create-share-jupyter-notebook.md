@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 96eb6a823299521a071edc87b5bce95409405ffb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3f03202d0f4416b3bf08a33e5d997d7149eda9f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096267"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104397"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>快速入门：创建和共享笔记本
 
@@ -34,12 +34,12 @@ ms.locfileid: "53096267"
 
 1. 在出现的“创建新项目”弹出窗口中，输入或设置以下详细信息，然后选择“创建”：
 
-    - 项目名称：Python 中的 hello world
-    - 项目 ID：hello-world-python
-    - 公共项目：（已清除）
-    - 创建 README.md：（已清除）
+   - 项目名称：Python 中的 hello world
+   - 项目 ID：hello-world-python
+   - 公共项目：（已清除）
+   - 创建 README.md：（已清除）
 
-    ![已填充详细信息的“新建项目”弹出窗口](media/quickstarts/new-project-popup.png)
+     ![已填充详细信息的“新建项目”弹出窗口](media/quickstarts/new-project-popup.png)
 
 1. 几分钟后，Azure Notebooks 导航到新项目。 通过选择“+ 新建”下拉列表（可能仅显示为 +）并选择“笔记本”，向该项目添加笔记本：
 
@@ -93,7 +93,7 @@ ms.locfileid: "53096267"
 
     ![Jupyter Notebook 工具栏上的保存图标](media/quickstarts/hello-results-save-icon.png)
 
-1. 选择“文件” > “停止并关闭”菜单命令，停止服务器并关闭浏览器窗口。
+1. 选择**文件** > **关闭并停止**菜单命令来停止服务器，并关闭浏览器窗口。
 
 ## <a name="share-the-notebook"></a>共享笔记本
 

@@ -4,16 +4,16 @@ description: 了解在环境中有中低速网络带宽且正在计划传输小�
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: b9c19c4cd85b1ab2bc3ea010d029361957de3943
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
+ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263652"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124297"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>适用于小型数据集以及中低速网络带宽的数据传输
  
@@ -49,16 +49,16 @@ ms.locfileid: "53263652"
 
 下表汇总了各项关键功能方面的差异。
 
-| Feature                                                            | Azure 存储资源管理器                    | Azure 门户  | AzCopy<br>Azure PowerShell<br>Azure CLI            | Azure 存储 REST API 或 SDK |
-|----------------------------------------------|-------------------------------------------|--------------------------------------|-------------------|---------------------------------------|
-| 可用性                                                       | 下载并安装 <br>独立工具 | Azure 门户中基于 Web 的浏览工具           | 命令行工具 |在 .NET、Java、Python、JavaScript、C++、Go、Ruby 和 PHP 中的可编程接口                                                         |
-| 图形界面                                              | 是                                       | 是                                                     | 否                | 否                                                      |
-| 支持的平台                                              | Windows、Mac、Linux                       | 基于 Web     |Windows、Mac、Linux     |所有平台                                                         |
-| 允许对 blob 和文件夹进行的<br>Blob 存储操作            | 上载<br>下载<br>管理    | 上载<br>下载<br>管理  |上载<br>下载<br>管理             | 是，可自定义                                                        |
-| 允许对文件和文件夹进行的<br>Data Lake Gen1 存储操作  | 上载<br>下载<br>管理                | 否 |上载<br>下载<br>管理                   |      否                                                   |
-| 允许对文件和目录进行的<br>文件存储操作        | 上载<br>下载<br>管理       | 上载<br>下载<br>管理   |上载<br>下载<br>管理 |                                                         |是，可自定义
-| 允许对表格进行的<br>表存储操作                      |管理                            | 否            |AzCopy v7 中的表支持 |是，可自定义|
-| 允许的队列存储                                              | 管理                                    | 否  |否 | 是，可自定义|
+| Feature | Azure 存储资源管理器 | Azure 门户 | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure 存储 REST API 或 SDK |
+|---------|------------------------|--------------|-----------------------------------------|---------------------------------|
+| 可用性 | 下载并安装 <br>独立工具 | Azure 门户中基于 Web 的浏览工具 | 命令行工具 |在 .NET、Java、Python、JavaScript、C++、Go、Ruby 和 PHP 中的可编程接口 |
+| 图形界面 | 是 | 是 | 否 | 否 |
+| 支持的平台 | Windows、Mac、Linux | 基于 Web |Windows、Mac、Linux |所有平台 |
+| 允许对 blob 和文件夹进行的<br>Blob 存储操作 | 上载<br>下载<br>管理 | 上载<br>下载<br>管理 |上载<br>下载<br>管理 | 是，可自定义 |
+| 允许对文件和文件夹进行的<br>Data Lake Gen1 存储操作 | 上载<br>下载<br>管理 | 否 |上载<br>下载<br>管理                   | 否 |
+| 允许对文件和目录进行的<br>文件存储操作 | 上载<br>下载<br>管理 | 上载<br>下载<br>管理   |上载<br>下载<br>管理 | 是，可自定义 |
+| 允许对表格进行的<br>表存储操作 |管理 | 否 |AzCopy v7 中的表支持 |是，可自定义|
+| 允许的队列存储 | 管理 | 否  |否 | 是，可自定义|
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: d75a71fe5ba5a275aa8703bc59398cc8a7a5a622
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 0af36fa68b2d801eed52e6f081b040fb56929c91
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867131"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101306"
 ---
 # <a name="paging-through-video-search-results"></a>翻页浏览视频搜索结果
 
@@ -42,7 +42,7 @@ ms.locfileid: "55867131"
 若要翻页浏览可用视频，请在发送请求时使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) 查询参数。  
   
 
-|参数  |说明  |
+|参数  |描述  |
 |---------|---------|
 |`count`     | 指定要在响应中返回的结果数。 可以在响应中请求的最大结果数为 100。 默认值为 10。 提供的实际结果数可能小于请求获取的结果数。        |
 |`offset`     | 指定要跳过的结果数。 `offset` 从零开始，应小于 (`totalEstimatedMatches` - `count`)。          |
@@ -77,4 +77,4 @@ Host: api.cognitive.microsoft.com
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-[获取视频见解](video-insights.md)
+> [获取视频见解](video-insights.md)

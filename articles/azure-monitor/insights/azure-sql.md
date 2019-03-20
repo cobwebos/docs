@@ -3,7 +3,6 @@ title: Log Analytics 中的 Azure SQL Analytics 解决方案 | Microsoft 文档
 description: Azure SQL Analytics 解决方案可帮助你管理 Azure SQL 数据库
 services: log-analytics
 ms.service: log-analytics
-ms.subservice: performance
 ms.custom: ''
 ms.topic: conceptual
 author: danimir
@@ -11,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 02832ee84e02251239ab4364aac9ad0894c681b9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884775"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170218"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -35,7 +34,7 @@ Azure SQL Analytics 是一种高级云监视解决方案，用于通过单一虚
 
 Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输 Azure SQL 数据库（单一的、池化的和托管的实例数据库）的诊断遥测数据。 由于该解决方案不使用代理连接到 Log Analytics 服务，因此它不支持监视本地或 VM 中托管的 SQL Server，具体请参阅下面的兼容性表。
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | 描述 |
 | --- | --- | --- |
 | [Azure 诊断](../platform/collect-azure-metrics-logs.md) | **是** | Azure 指标和日志数据由 Azure 直接发送到 Log Analytics。 |
 | [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | Log Analytics 不从存储帐户中读取数据。 |
@@ -67,9 +66,13 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
 
 ## <a name="using-the-solution"></a>使用解决方案
 
-将解决方案添加到工作区时，“Azure SQL Analytics”磁贴也会添加到工作区并显示在“概览”中。 该磁贴显示解决方案从中接收诊断遥测数据的 Azure SQL 数据库、弹性池、托管实例和托管实例中数据库的数目。
+将解决方案添加到工作区时，“Azure SQL Analytics”磁贴也会添加到工作区并显示在“概览”中。 选择查看摘要链接来加载磁贴内容。
 
-![“Azure SQL Analytics”磁贴](./media/azure-sql/azure-sql-sol-tile.png)
+![Azure SQL Analytics 摘要磁贴](./media/azure-sql/azure-sql-sol-tile-01.png)
+
+加载后，磁贴将显示在该解决方案接收来自诊断遥测数据的托管实例中的 Azure SQL 数据库、 弹性池、 托管实例和数据库数。
+
+![“Azure SQL Analytics”磁贴](./media/azure-sql/azure-sql-sol-tile-02.png)
 
 该解决方案提供两个独立的视图 - 一个视图用于监视 Azure SQL 数据库和弹性池，另一个视图用于监视托管实例以及托管实例中的数据库。
 
@@ -109,7 +112,7 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
 
 下表概述了两个仪表板版本支持的透视图，一个版本适用于 Azure SQL 数据库和弹性池，另一个版本适用于托管实例。
 
-| 透视 | 说明 | SQL 数据库和弹性池支持 | 托管实例支持 |
+| 透视 | 描述 | SQL 数据库和弹性池支持 | 托管实例支持 |
 | --- | ------- | ----- | ----- |
 | 资源（按类型） | 对监视的所有资源进行计数的透视。 | 是 | 是 |
 | 洞察力 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |
@@ -146,14 +149,16 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
 
 ### <a name="creating-a-custom-role-in-portal"></a>在门户中创建自定义角色
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 认识到某些组织会在 Azure 中强制实施严格的权限控制，请查看以下 PowerShell 脚本，以便在 Azure 门户中创建“SQL Analytics 监视操作员”自定义角色，该角色拥有最大程度地使用 Azure SQL Analytics 所需的最低读取和写入权限。
 
 将以下脚本中的“{SubscriptionId}”替换为自己的 Azure 订阅 ID，并在以 Azure 中“所有者”或“参与者”角色的身份登录后执行该脚本。
 
    ```powershell
-    Connect-AzureRmAccount
-    Select-AzureRmSubscription {SubscriptionId}
-    $role = Get-AzureRmRoleDefinition -Name Reader
+    Connect-AzAccount
+    Select-AzSubscription {SubscriptionId}
+    $role = Get-AzRoleDefinition -Name Reader
     $role.Name = "SQL Analytics Monitoring Operator"
     $role.Description = "Lets you monitor database performance with Azure SQL Analytics as a reader. Does not allow change of resources."
     $role.IsCustom = $true
@@ -172,7 +177,7 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
     $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/write");
     $role.Actions.Add("Microsoft.Resources/deployments/write");
     $role.AssignableScopes = "/subscriptions/{SubscriptionId}"
-    New-AzureRmRoleDefinition $role
+    New-AzRoleDefinition $role
    ```
 
 创建新角色后，请将此角色分配给你需要向其授予自定义权限，使其能够使用 Azure SQL Analytics 的每个用户。

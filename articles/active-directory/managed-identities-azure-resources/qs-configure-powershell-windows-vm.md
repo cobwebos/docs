@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/27/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d1ff4b44ff352742ee91b61c0c774cfe7c3f9d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 28f9c17e21db5a46ad01fd1b318c52a3a721f8b9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181348"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226957"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>使用 PowerShell 在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -32,7 +32,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
@@ -46,7 +46,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 若要创建启用了系统分配的托管标识的 Azure VM，你的帐户需要[虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)角色分配。  无需其他 Azure AD 目录角色分配。
 
-1. 请参阅以下 Azure VM 快速入门之一，仅完成必要部分（“登录到 Azure”、“创建资源组”、“创建网络组”、“创建 VM”）。
+1. 请参阅以下 Azure VM 快速入门之一，完成必要部分 （"登录到 Azure"，"创建资源组"，"创建网络组"，"创建 VM"）。
     
     转到“创建 VM”部分时，需要对 [New-AzVMConfig](/powershell/module/az.compute/new-azvm) cmdlet 语法稍做修改。 务必添加 `-AssignIdentity:$SystemAssigned` 参数，以预配启用了系统分配标识的 VM，例如：
       
@@ -57,14 +57,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    - [使用 PowerShell 创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-powershell.md)
    - [使用 PowerShell 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. （可选）在 [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) cmdlet 中使用 `-Type` 参数添加 Azure 资源托管标识 VM 扩展（计划于 2019 年 1 月弃用）。 可以传递“ManagedIdentityExtensionForWindows”或“ManagedIdentityExtensionForLinux”（具体取决于 VM 的类型），并使用 `-Name` 参数为其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口：
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
-    > [!NOTE]
-    > 此步骤是可选的，因为也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。 Azure 资源托管标识 VM 扩展计划于 2019 年 1 月弃用。 
+> [!NOTE]
+> 可以选择性地预配 Azure 资源 VM 扩展的托管的标识，但将很快被弃用。 我们建议使用 Azure 实例元数据标识终结点进行身份验证。 有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 终结点进行身份验证](howto-migrate-vm-extension.md)。
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>在现有 Azure VM 上启用系统分配托管标识
 
@@ -83,14 +77,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-3. （可选）在 [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) cmdlet 中使用 `-Type` 参数添加 Azure 资源托管标识 VM 扩展（计划于 2019 年 1 月弃用）。 可以传递“ManagedIdentityExtensionForWindows”或“ManagedIdentityExtensionForLinux”（具体取决于 VM 的类型），并使用 `-Name` 参数为其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口。 请务必指定正确的 `-Location` 参数，以匹配现有 VM 的位置：
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
-    > [!NOTE]
-    > 此步骤是可选的，因为也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。
+> [!NOTE]
+> 可以选择性地预配 Azure 资源 VM 扩展的托管的标识，但将很快被弃用。 我们建议使用 Azure 实例元数据标识终结点进行身份验证。 有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 终结点进行身份验证](howto-migrate-vm-extension.md)。
 
 ### <a name="add-vm-system-assigned-identity-to-a-group"></a>将 VM 系统分配的标识添加到组
 
@@ -146,11 +134,8 @@ $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 
-若要删除 Azure 资源的托管标识 VM 扩展，请将 -Name 开关与 [Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension) cmdlet 配合使用，以指定在添加扩展时使用的同一名称：
-
-   ```powershell
-   Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
-   ```
+> [!NOTE]
+> 如果已预配的 Azure 资源 （若要不推荐使用） 的 VM 扩展托管的标识，则需要使用将其删除[删除 AzVMExtension](/powershell/module/az.compute/remove-azvmextension)。 有关详细信息，请参阅[从 VM 扩展迁移到 Azure 进行身份验证的 IMDS](howto-migrate-vm-extension.md)。
 
 ## <a name="user-assigned-managed-identity"></a>用户分配的托管标识
 
@@ -160,7 +145,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 
 若要将用户分配的标识分配给 VM，你的帐户需要[虚拟机参与者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)和[托管标识操作员](/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色分配。 无需其他 Azure AD 目录角色分配。
 
-1. 请参阅以下 Azure VM 快速入门之一，仅完成必要部分（“登录到 Azure”、“创建资源组”、“创建网络组”、“创建 VM”）。 
+1. 请参阅以下 Azure VM 快速入门之一，完成必要部分 （"登录到 Azure"，"创建资源组"，"创建网络组"，"创建 VM"）。 
   
     转到“创建 VM”部分时，需要对 [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) cmdlet 语法稍做修改。 添加 `-IdentityType UserAssigned` 和 `-IdentityID ` 参数，为 VM 预配用户分配的标识。  将 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 替换为自己的值。  例如：
     
@@ -171,14 +156,8 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
     - [使用 PowerShell 创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-powershell.md)
     - [使用 PowerShell 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. （可选）在 [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) cmdlet 中使用 `-Type` 参数添加 Azure 资源的托管标识 VM 扩展。 可以传递“ManagedIdentityExtensionForWindows”或“ManagedIdentityExtensionForLinux”（具体取决于 VM 的类型），并使用 `-Name` 参数为其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口。 请务必指定正确的 `-Location` 参数，以匹配现有 VM 的位置：
-      > [!NOTE]
-    > 此步骤是可选的，因为也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。 Azure 资源托管标识 VM 扩展计划于 2019 年 1 月弃用。
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
+> [!NOTE]
+> 可以选择性地预配 Azure 资源 VM 扩展的托管的标识，但将很快被弃用。 我们建议使用 Azure 实例元数据标识终结点进行身份验证。 有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 终结点进行身份验证](howto-migrate-vm-extension.md)。
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>向现有 Azure VM 分配用户分配托管标识
 
@@ -193,7 +172,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 2. 使用 [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) cmdlet 创建用户分配的托管标识。  记下输出中的 `Id`，因为下一步会用到它。
 
    > [!IMPORTANT]
-   > 创建用户分配的托管标识时仅支持字母数字和连字符（0-9 或 a-z 或 A-Z 或 -）字符。 另外，分配给 VM/VMSS 的名称长度应限制为 24 个字符，否则它无法正常工作。 请关注后续更新。 有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
+   > 创建用户分配管理的标识仅支持字母数字、 下划线和连字符 (0-9 或 a 到 z 或 A 到 Z，\_或-) 字符。 此外，名称应介于 3 到分配给 VM/VMSS 才能正常工作的 128 字符长度有限。 有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
 
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
@@ -208,12 +187,8 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
    Update-AzVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-4. 在 [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) cmdlet 中使用 `-Type` 参数添加 Azure 资源托管标识 VM 扩展（计划于 2019 年 1 月弃用）。 可以传递“ManagedIdentityExtensionForWindows”或“ManagedIdentityExtensionForLinux”（具体取决于 VM 的类型），并使用 `-Name` 参数为其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口。 指定正确的 `-Location` 参数，以匹配现有 VM 的位置。
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
+> [!NOTE]
+> 可以选择性地预配 Azure 资源 VM 扩展的托管的标识，但将很快被弃用。 我们建议使用 Azure 实例元数据标识终结点进行身份验证。 有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 终结点进行身份验证](howto-migrate-vm-extension.md)。
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>从 Azure VM 中删除用户分配的托管标识
 

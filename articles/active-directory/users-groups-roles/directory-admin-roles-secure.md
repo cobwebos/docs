@@ -6,7 +6,7 @@ keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
@@ -14,18 +14,18 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2d58ea2a7b25648dbecfefb882f71137096bff7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a31d41dedf7b925287a5beda15c7bfeb2bc59c96
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169993"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201868"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
 在现代组织中，大多数或所有业务资产的安全性取决于管理 IT 系统的特权帐户的完整性。 恶意操作者（包括网络攻击者）通常会以管理员帐户和特权访问的其他元素为目标，试图通过凭据窃取攻击快速获得敏感数据和系统的访问权限。 就云服务来说，预防此类攻击并对其做出响应是云服务提供商和客户的共同责任。 若要详细了解对终结点和云的最新威胁，请参阅 [Microsoft 安全情报报告](https://www.microsoft.com/security/operations/security-intelligence-report)。 本文有助于你制定路线图，消除当前计划和此处所述指南的差距。
 
-> [!NOTE] 
+> [!NOTE]
 > Microsoft 致力于实现最高信任度、透明度、合标性和合规性。 若要详细了解 Microsoft 全球事件响应团队如何减轻云服务攻击影响，以及如何将安全措施内置到 Microsoft 商业产品和云服务中，请参阅 [Microsoft 信任中心 - 安全性](https://www.microsoft.com/trustcenter/security)；若要了解 Microsoft 符合性目标，请参阅 [Microsoft 信任中心 - 符合性](https://www.microsoft.com/trustcenter/compliance)。
 
 <!--## Risk management, incident response, and recovery preparation
@@ -44,11 +44,12 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 就大多数组织来说，业务资产的安全性取决于管理 IT 系统的特权帐户的完整性。 网络攻击者会重点攻击针对基础结构系统（例如 Active Directory 和 Azure Active Directory）的特权访问，以便获得组织敏感数据的访问权限。 
 
-传统方法着重于对充当主要安全外围的网络的入口点和出口点进行保护，但随着 Internet 上 SaaS 应用和个人设备使用的增多，这种方法的效果也越来越不佳。 在复杂的现代企业中，对网络安全外围的自然替代方式是在组织的标识层中使用身份验证和授权控件。 
+传统方法着重于对充当主要安全外围的网络的入口点和出口点进行保护，但随着 Internet 上 SaaS 应用和个人设备使用的增多，这种方法的效果也越来越不佳。 在复杂的现代企业中，对网络安全外围的自然替代方式是在组织的标识层中使用身份验证和授权控件。
 
 特权管理帐户可以有效地控制这种新的“安全外围”。 必须保护特权访问，不管环境是本地环境、云环境还是混合了本地托管服务和云托管服务的环境。 若要保护管理访问权限免受恶意攻击者的攻击，必须采用完整而缜密的方法将组织的系统与风险因素隔离开来。 
 
 保护特权访问需要对以下各项进行更改：
+
 * 流程、管理做法和知识管理
 * 技术组件，例如主机防御、帐户保护和标识管理
 
@@ -75,7 +76,7 @@ Microsoft 建议你制定并遵循一个路线图，防止特权访问受到网�
 
 ## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>阶段 1：建议立即执行的关键项目
 
-![阶段 1](./media/directory-admin-roles-secure/stage-one.png)
+![首先要做的第 1 阶段关键项](./media/directory-admin-roles-secure/stage-one.png)
 
 路线图的阶段 1 着重于那些执行速度快且容易的关键任务。 建议在第一个 24-48 小时内快速执行这些项目，确保安全地进行基本级别的特权访问。 此阶段的安全特权访问路线图包括以下操作：
 
@@ -101,7 +102,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>对特许权限高的角色中的帐户进行标识和分类 
 
-启用 Azure AD Privileged Identity Management 后，请查看目录角色为“全局管理员”、“特权角色管理员”、“Exchange Online 管理员”和“SharePoint Online 管理员”的用户。 如果租户中没有 Azure AD PIM，则可使用 [PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 请从全局管理员角色开始，因为该角色是通用的：分配了此管理员角色的用户在组织已订阅的所有云服务中具有相同的权限，不管该角色是通过 Office 365 门户或 Azure 门户分配的，还是通过用于 Microsoft PowerShell 的 Azure AD 模块分配的。 
+启用 Azure AD Privileged Identity Management 后，请查看目录角色为“全局管理员”、“特权角色管理员”、“Exchange Online 管理员”和“SharePoint Online 管理员”的用户。 如果租户中没有 Azure AD PIM，则可使用 [PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 启动具有全局管理员角色，因为此角色是泛型： 分配此管理员角色的用户为其组织已订阅，而不管它们已被分配此角色在 Microsoft 365 中的所有云服务中具有相同的权限管理中心内，Azure 门户，或通过用于 Microsoft PowerShell 的 Azure AD 模块。 
 
 删除这些角色不再需要的任何帐户。 然后，对分配给管理员角色的剩余帐户进行分类：
 
@@ -116,17 +117,17 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 确保不要陷入以下情况：因无法登录或激活充当管理员的现有单个用户帐户而意外地导致自己无法管理 Azure AD 租户。 例如，如果组织与某个本地标识提供者联合进行身份验证，则当该标识提供者不可用时，用户就会无法进行本地登录。 可在租户中存储两个或更多个紧急访问帐户，缓解意外丧失管理访问权限造成的影响。
 
-可以使用紧急访问帐户来帮助组织限制现有 Azure Active Directory 环境中的特权访问。 这些帐户拥有极高的特权，不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。 组织务必控制和减少紧急帐户的使用，只在必要时使用。 
+可以使用紧急访问帐户来帮助组织限制现有 Azure Active Directory 环境中的特权访问。 这些帐户拥有极高的特权，不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。 组织务必控制和减少紧急帐户的使用，只在必要时使用。
 
 评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 *.onmicrosoft.com 域（用于“不受限”紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](directory-emergency-access.md)。
 
-#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户 
+#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户
 
 对于永久分配给一个或多个 Azure AD 管理员角色的所有个人用户，要求其在登录时进行多重身份验证 (MFA)：全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>阶段 2：减轻最常用攻击手段的危害
 
-![阶段 2](./media/directory-admin-roles-secure/stage-two.png)
+![阶段 2 减轻常用的攻击](./media/directory-admin-roles-secure/stage-two.png)
 
 路线图的阶段 2 着重于减轻进行凭据窃取和滥用时最常用的攻击手段导致的危害，并且可在约 2-4 周内实现。 此阶段的安全特权访问路线图包括以下操作。
 
@@ -138,13 +139,13 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 * 标识具有管理角色的用户及其可以在其中进行管理的服务。
 * 通过 Azure AD PIM 找出组织中哪些用户具有 Azure AD 的管理员访问权限，包括未在阶段 1 中列出的其他角色。
-* 除了在 Azure AD 中定义的角色，Office 365 还带有一组可以分配给组织中用户的管理员角色。 每个管理员角色都映射到常用业务功能，为组织中的人员提供在 Office 365 管理中心执行特定任务的权限。 通过 Office 管理中心找出组织中哪些用户可以通过管理员身份来访问 Office 365，包括通过不在 Azure AD 中管理的角色进行访问。 有关详细信息，请参阅[关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 安全方面的最佳做法](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3)。
+* 除了在 Azure AD 中定义的角色，Office 365 还带有一组可以分配给组织中用户的管理员角色。 每个管理员角色将映射到常用业务功能，并在你的组织的权限来执行特定任务允许人们[Microsoft 365 管理中心内](https://admin.microsoft.com)。 使用 Microsoft 365 管理中心内找出你的组织中的哪些用户具有 Office 365，包括通过不在 Azure AD 中管理的角色的管理员访问权限。 有关详细信息，请参阅[关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 安全方面的最佳做法](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3)。
 * 在组织所依赖的其他服务（例如 Azure、Intune 或 Dynamics 365）中执行清单操作。
 * 确保管理员帐户（用于管理目的的帐户，不只是用户的日常帐户）有附加的工作电子邮件地址，并且已注册使用 Azure MFA 或使用本地 MFA。
 * 要求用户提供进行管理访问的业务理由。
 * 删除那些不需要管理员访问权限的个人和服务的此类权限。
 
-#### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户 
+#### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户
 
 有时候，某个组织的初始全局管理员会在开始使用 Azure AD 时重复使用其现有的 Microsoft 帐户凭据。 应将这些 Microsoft 帐户替换为单个基于云的或同步的帐户。 
 
@@ -168,9 +169,7 @@ Azure AD 建议你要求对所有用户进行多重身份验证 (MFA)，这包�
 
 启用以下功能：
 
-* [为暴露风险高的帐户启用 MFA](../authentication/multi-factor-authentication-security-best-practices.md)，例如为组织执行官的帐户启用 MFA 
-* [为每个与单个用户相关联的管理员帐户启用 MFA](../authentication/howto-mfa-userstates.md)，这适用于其他连接的 SaaS 应用 
-* 为 Microsoft SaaS 应用的所有管理员启用 MFA，包括其角色在 Exchange Online 和 Office 门户中管理的管理员
+* [使用条件性访问策略的 MFA](../authentication/howto-mfa-getstarted.md)你的组织中的所有用户。
 
 如果使用 Windows Hello for Business，则可通过 Windows Hello 登录体验来满足 MFA 要求。 有关详细信息，请参阅 [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)。 
 
@@ -186,10 +185,9 @@ Azure AD Identity Protection 是一种基于算法的监视和报告工具，可
 
 [安全性和符合性计划](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57)概述了 Office 365 客户应如何配置 Office 365 并利用其他 EMS 功能。 然后查看步骤 3-6，了解如何[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)，并查看指南，了解如何[监视 Office 365 中的安全性和符合性](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)。
 
-
 #### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>配置 Office 365 活动监视（如果使用 Office 365）
 
-可以监视组织中的人员如何使用 Office 365 服务，以便标识那些具有管理帐户但因未登录到相关门户而可能不需要 Office 365 访问权限的用户。 有关详细信息，请参阅 [Office 365 管理中心中的活动报表](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)。
+可以监视组织中的人员如何使用 Office 365 服务，以便标识那些具有管理帐户但因未登录到相关门户而可能不需要 Office 365 访问权限的用户。 有关详细信息，请参阅[在 Microsoft 365 管理中心中的活动报表](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)。
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>确定事件/紧急情况响应计划所有者
 
@@ -203,18 +201,17 @@ Azure AD Identity Protection 是一种基于算法的监视和报告工具，可
 
 #### <a name="complete-an-inventory-of-subscriptions"></a>完成订阅清单
 
-通过企业门户和 Azure 门户确定组织中用于托管生产应用程序的订阅。 
+通过企业门户和 Azure 门户确定组织中用于托管生产应用程序的订阅。
 
 #### <a name="remove-microsoft-accounts-from-admin-roles"></a>从管理员角色中删除 Microsoft 帐户
 
-不应将其他程序（例如 Xbox、Live、Outlook）的 Microsoft 帐户用作组织订阅的管理员帐户。 从所有 Microsoft 帐户中删除管理员状态，将其替换为 Active Directory 工作或学校帐户（例如，chris@contoso.com）。
+不应将其他程序（例如 Xbox、Live、Outlook）的 Microsoft 帐户用作组织订阅的管理员帐户。 从所有的 Microsoft 帐户中删除管理员状态，并替换为 Azure Active Directory (例如， chris@contoso.com) 工作或学校帐户。
 
 #### <a name="monitor-azure-activity"></a>监视 Azure 活动
 
 Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供的信息涉及谁创建、更新和删除了什么资源，以及这些事件的发生时间。 有关详细信息，请参阅[审核和接收关于 Azure 订阅中重要操作的通知](../../azure-monitor/platform/quick-audit-notify-action-subscription.md)。
 
-
-### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>组织通过 Azure AD 管理其他云应用的访问权限时所需的其他步骤 
+### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>组织通过 Azure AD 管理其他云应用的访问权限时所需的其他步骤
 
 #### <a name="configure-conditional-access-policies"></a>配置条件访问策略
 
@@ -223,7 +220,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 ## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>阶段 3：构建管理活动的可见性并对其进行完全控制
 
-![阶段 3](./media/directory-admin-roles-secure/stage-three.png)
+![阶段 3 执行管理活动的控件](./media/directory-admin-roles-secure/stage-three.png)
 
 阶段 3 以阶段 2 的缓解措施为基础，按设计应在大约 1-3 个月内实施。 此阶段的安全特权访问路线图包括以下组件。
 
@@ -325,8 +322,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>阶段 4：持续构建防御，采取更主动的安全姿态
 
-
-![阶段 4](./media/directory-admin-roles-secure/stage-four.png)
+![阶段 4 采用主动的安全状况](./media/directory-admin-roles-secure/stage-four.png)
 
 路线图的阶段 4 以阶段 3 的可见性为基础，按设计应在 6 个月或更长时间内实施。 完成路线图有助于制定强大的特权访问保护措施，以便防范那些目前已知存在的可能攻击。 遗憾的是，安全威胁手段始终在发展且不断变化，因此建议你不断地查看安全状况，重点提高以你的环境为目标的攻击者的攻击成本，降低其成功率。
 
@@ -371,7 +367,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>“不受限”紧急措施：在紧急情况下需要做的事情
 
-![紧急情况](./media/directory-admin-roles-secure/emergency.jpeg)
+![紧急中断玻璃访问权限的帐户](./media/directory-admin-roles-secure/emergency.jpeg)
 
 1. 将事件相关信息通知给主要的管理员和安全官。
 
@@ -393,51 +389,41 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 ## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>常见问题解答：我们收到的有关如何保护特权访问的常见问题  
 
-
 **问：** 如果还没有实施任何安全访问组件，该怎么办？
 
 **答：** 定义至少两个“不受限”帐户，指定对特权管理员帐户实施 MFA，并将用户帐户与全局管理员帐户分开。
-
 
 **问：** 在遭到攻击后，首先需要解决的最重要问题是什么？
 
 **答：** 务必要求对身份暴露可能性高的个人进行最强的身份验证。
 
-
 **问：** 如果停用了特权管理员，该怎么办？
 
 **答：** 请创建一个始终保持最新的全局管理员帐户。
-
 
 **问：** 如果只剩下一位全局管理员，而该管理员联系不上，该怎么办？ 
 
 **答：** 使用其中一个“不受限”帐户，立即获取特许访问权限。
 
-
 **问：** 如何保护组织中的管理员？
 
 **答：** 让管理员始终以标准的“非特权”用户身份执行日常业务操作。
- 
 
 **问：** 在 Azure AD 中创建管理员帐户的最佳做法是什么？
 
 **答：** 针对特定的管理任务保留特许访问权限。
 
-
 **问：** 可以通过哪些现有工具减少持久进行的管理访问？
 
 **答：** Privileged Identity Management (PIM) 和 Azure AD 管理员角色。
 
-
 **问：** 对于将管理员帐户同步到 Azure AD，Microsoft 的态度是什么？
 
-**答：** 0 级管理员帐户（包括可以直接或间接对 AD 林、域或域控制器以及所有资产进行直接或间接管理控制的帐户、组和其他资产）只能用于本地 AD 帐户，通常不对适用于云的 Azure AD 进行同步。 
-
+**答：** 0 级管理员帐户（包括可以直接或间接对 AD 林、域或域控制器以及所有资产进行直接或间接管理控制的帐户、组和其他资产）只能用于本地 AD 帐户，通常不对适用于云的 Azure AD 进行同步。
 
 **问：** 如何防止管理员在门户中分配随机的管理员访问权限？
 
 **答：** 要求所有用户和大多数管理员使用非特权帐户。 一开始确定组织的占用空间，从而确定应该向哪些管理员帐户授予特权。 监视新创建的管理用户。
-
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -447,10 +433,8 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 * [有关如何执行风险评估的指南](https://www.microsoft.com/trustcenter/guidance/risk-assessment) - 管理 Microsoft 云服务的安全性和符合性要求
 
-### <a name="other-ms-online-services"></a>其他 MS Online Services 
+### <a name="other-microsoft-online-services"></a>其他 Microsoft Online Services
 
 * [Microsoft Intune 安全性](https://www.microsoft.com/trustcenter/security/intune-security) - Intune 从云端提供移动设备管理、移动应用程序管理和电脑管理功能。
 
 * [Microsoft Dynamics 365 安全性](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365 是 Microsoft 的基于云的解决方案，该方案将客户关系管理 (CRM) 和企业资源规划 (ERP) 功能统合在一起。
-
- 

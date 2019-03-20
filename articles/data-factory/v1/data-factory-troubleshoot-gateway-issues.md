@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119337"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
 本文提供有关解决数据管理网关使用问题的信息。
@@ -169,8 +169,8 @@ ms.locfileid: "55813834"
 请按照这些步骤使网关重新处于联机状态：
 
 1. 允许网关计算机和企业防火墙上的 IP 地址出站规则。 可以从 Windows 事件日志中找到 IP 地址 (ID == 401)：尝试以其访问权限 XX.XX.XX.XX:9350 禁止的方式访问套接字。
-* 在网关上配置代理设置。 有关详细信息，请参阅“代理服务器注意事项”部分。
-* 对网关计算机和企业防火墙上的 Windows 防火墙启用出站端口 5671 和 9350-9354。 有关详细信息，请参阅“端口和防火墙”部分。 此步骤虽为可选步骤，但出于性能方面的考虑，建议执行该步骤。
+1. 在网关上配置代理设置。 有关详细信息，请参阅“代理服务器注意事项”部分。
+1. 对网关计算机和企业防火墙上的 Windows 防火墙启用出站端口 5671 和 9350-9354。 有关详细信息，请参阅“端口和防火墙”部分。 此步骤虽为可选步骤，但出于性能方面的考虑，建议执行该步骤。
 
 ### <a name="3-problem"></a>3.问题
 出现以下错误。
@@ -184,7 +184,7 @@ ms.locfileid: "55813834"
 请按照这些步骤使网关重新处于联机状态：
 
 1. 稍等几分钟，连接会在错误消失后自动恢复。
-* 如果错误持续存在，请重新启动网关服务。
+1. 如果错误持续存在，请重新启动网关服务。
 
 ## <a name="failed-to-author-linked-service"></a>无法创作链接服务
 ### <a name="problem"></a>问题
@@ -282,6 +282,6 @@ ms.locfileid: "55813834"
 1. 启动 Windows **事件查看器**。
 2. 在“应用程序和服务日志” > **Data Management Gateway** 文件夹中查找日志。
 
- 解决网关相关问题时，在事件查看器中查找错误级别事件。
+   解决网关相关问题时，在事件查看器中查找错误级别事件。
 
 ![数据管理网关 - 事件查看器中的日志](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

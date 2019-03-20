@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 09bb81b0382f18c9cb94e5e4d0932dc6597ae73c
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454279"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080161"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
@@ -44,20 +44,20 @@ ms.locfileid: "56454279"
 2. 选择“网络”，然后在“特色”列表中选择“应用程序网关”。
 3. 输入应用程序网关的以下值：
 
-    - *myAppGateway* - 应用程序网关的名称。
-    - *myResourceGroupAG* - 新资源组。
+   - *myAppGateway* - 应用程序网关的名称。
+   - *myResourceGroupAG* - 新资源组。
 
-    ![新建应用程序网关](./media/create-multiple-sites-portal/application-gateway-create.png)
+     ![新建应用程序网关](./media/create-multiple-sites-portal/application-gateway-create.png)
 
 4. 接受其他设置的默认值，然后单击“确定”。
 5. 依次单击“选择虚拟网络”、“新建”，然后输入虚拟网络的以下值：
 
-    - *myVNet* - 虚拟网络的名称。
-    - *10.0.0.0/16* - 虚拟网络地址空间。
-    - *myAGSubnet* - 子网名称。
-    - *10.0.0.0/24* - 子网地址空间。
+   - *myVNet* - 虚拟网络的名称。
+   - *10.0.0.0/16* - 虚拟网络地址空间。
+   - *myAGSubnet* - 子网名称。
+   - *10.0.0.0/24* - 子网地址空间。
 
-    ![创建虚拟网络](./media/create-multiple-sites-portal/application-gateway-vnet.png)
+     ![创建虚拟网络](./media/create-multiple-sites-portal/application-gateway-vnet.png)
 
 6. 单击“确定”创建虚拟网络和子网。
 7. 依次单击“选择公共 IP 地址”、“新建”，然后输入公共 IP 地址的名称。 在本示例中，公共 IP 地址名为 *myAGPublicIPAddress*。 接受其他设置的默认值，然后单击“确定”。
@@ -94,6 +94,8 @@ ms.locfileid: "56454279"
 
 ### <a name="install-iis"></a>安装 IIS
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. 打开交互式 shell 并确保它已设置为 **PowerShell**。
 
     ![安装自定义扩展](./media/create-multiple-sites-portal/application-gateway-extension.png)
@@ -102,7 +104,7 @@ ms.locfileid: "56454279"
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -113,7 +115,7 @@ ms.locfileid: "56454279"
       -Settings $publicSettings
     ```
 
-3. 使用刚刚完成的步骤创建第二个虚拟机并安装 IIS。 在 Set-AzureRmVMExtension 中输入 *fabrikamVM* 作为名称，并输入 VMName 值。
+3. 使用刚刚完成的步骤创建第二个虚拟机并安装 IIS。 在 Set-AzVMExtension 中输入 *fabrikamVM* 作为名称，并输入 VMName 值。
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>使用虚拟机创建后端池
 
@@ -132,8 +134,8 @@ ms.locfileid: "56454279"
 1. 单击“侦听器”，然后单击“多站点”。
 2. 为侦听器输入以下值：
     
-    - *contosoListener* - 作为侦听器的名称。
-    - *www.contoso.com* - 将此主机名示例替换为自己的域名。
+   - *contosoListener* - 作为侦听器的名称。
+   - *www.contoso.com* - 将此主机名示例替换为自己的域名。
 
 3. 单击“确定”。
 4. 使用名称 *fabrikamListener* 并使用第二个域名创建第二个侦听器。 在此示例中，使用 *www.fabrikam.com*。

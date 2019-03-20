@@ -1,7 +1,7 @@
 ---
 title: 创建 Windows Data Science Virtual Machine
 titleSuffix: Azure
-description: 在 Azure 上配置和创建 Data Science Virtual Machine 用于进行分析和机器学习。
+description: 在 Azure 上配置和创建数据科学虚拟机，用于进行分析和机器学习。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 8ee424412c9c54dadef7391084e3ab976da9ad7f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417442"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896256"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows Data Science Virtual Machine
 
@@ -44,7 +44,7 @@ DSVM 中随附以下工具：
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) - 一种快速机器学习系统，支持在线哈希、allreduce、化简、learning2search、主动和交互式学习等技术
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/) - 一种可提供快速、 准确地提升树实现的工具
   * [Rattle](https://togaware.com/rattle/) - R 分析工具，使用它可在 R 中开始数据分析和机器学习。其中包括基于 GUI 的数据探索和使用自动 R 代码生成的建模。
-  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) - Java 中的可视数据挖掘和机器学习软件
+  * [Weka](https://www.cs.waikato.ac.nz/ml/weka/) - Java 中的可视数据挖掘和机器学习软件
   * [Apache Drill](https://drill.apache.org/) - 适用于 Apache Hadoop、NoSQL 和云存储的无架构 SQL 查询引擎。 它支持使用 ODBC 和 JDBC 接口通过 PowerBI、Microsoft Excel、Tableau 等标准 BI 工具查询 NoSQL 和文件。
 * R 和 Python 中的库，供 Azure 机器学习和其他 Azure 服务使用
 * 包含 Git Bash 的 Git，可配合源代码存储库（包括 GitHub 和 Azure DevOps）使用。 Git 提供一些常用的 Linux 命令行实用工具，可通过 Git Bash 和命令提示符对其进行访问。 示例包括 awk、sed、perl、grep、find、wget 和 curl。
@@ -71,7 +71,7 @@ DSVM 中随附以下工具：
 
 ## <a name="prerequisite"></a>先决条件
 
-若要创建 Microsoft Data Science Virtual Machine，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](http://azure.com/free)。
+若要创建 Microsoft Data Science Virtual Machine，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.com/free)。
 
 ## <a name="create-your-dsvm"></a>创建 DSVM
 
@@ -229,4 +229,4 @@ Microsoft Data Science Virtual Machine 上已预安装 Python SDK。
 * 在文件资源管理器中导航到 **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**，获取有关在 R 中使用支持企业级数据分析的 RevoScaleR 库的示例。  
 * 阅读文章：[Data Science Virtual Machine 的十大功能](https://aka.ms/dsvmtenthings)。
 * 通过使用 [Team Data Science Process](../team-data-science-process/index.yml)，了解如何系统地构建端到端分析解决方案。
-* 访问 [Azure AI 库](http://gallery.cortanaintelligence.com)，获取在 Azure 上使用 Azure 机器学习和相关数据服务的机器学习和数据分析示例。 我们还在虚拟机的“开始”菜单与桌面上提供了此库的图标。
+* 访问 [Azure AI 库](https://gallery.cortanaintelligence.com)，获取在 Azure 上使用 Azure 机器学习和相关数据服务的机器学习和数据分析示例。 我们还在虚拟机的“开始”菜单与桌面上提供了此库的图标。

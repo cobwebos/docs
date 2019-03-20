@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 2/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 58dd96b079dda50faa17a52782a79db83a0141bd
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 818b6e5994a4f5b9d21d511f0a31eab6e00033f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012473"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 
@@ -56,13 +56,14 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 此代码片段指定了 `Estimator` 构造函数的以下参数。
 
-参数 | 说明
+参数 | 描述
 --|--
 `source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算 
 `script_params`| 指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
 `compute_target`| 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集。 （请注意，即使 AmlCompute 集群是常用目标，也可以选择其他计算目标类型，比如 Azure VM 甚至是本地计算机。）
 `entry_script`| 要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及所依赖的任何其他文件应位于此文件夹中
 `conda_packages`| 要通过训练脚本所需的 conda 安装的 Python 包列表。  
+
 构造函数具有名为 `pip_packages` 的另一个参数，可以将其用于任何所需的 pip 包
 
 创建了 `Estimator` 对象后，请提交要在远程计算上通过调用[实验](concept-azure-machine-learning-architecture.md#experiment)对象 `experiment` 上的 `submit` 函数来运行的训练作业。 
@@ -106,7 +107,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 
 上述代码显示了 `Estimator` 构造函数的以下新参数：
 
-参数 | 说明 | 默认
+参数 | 描述 | 默认
 --|--|--
 `custom_docker_base_image`| 要使用的映像的名称。 仅提供公共 docker 存储库（这种情况下为 Docker 中心）中可用的映像。 若要使用专用 docker 存储库中的映像，请改为使用构造函数的 `environment_definition` 参数。 [请参阅示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)。 | `None`
 `node_count`| 要用于训练作业的节点数。 | `1`

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: e49a3063d6314947c59c5ae863077748d997f2b5
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: HT
+ms.openlocfilehash: 65f9b392f3ae57c1eaad7454434b4870954f36f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515465"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085093"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>将 Adafruit Feather HUZZAH ESP8266 连接到云中的 Azure IoT 中心
 
@@ -27,7 +27,7 @@ ms.locfileid: "51515465"
 将 Adafruit Feather HUZZAH ESP8266 连接到创建的 Azure IoT 中心。 然后，在 ESP8266 上运行一个示例应用程序，用于从 DHT22 传感器收集温度和湿度数据。 最后，将传感器数据发送到 IoT 中心。
 
 > [!NOTE]
-> 如果使用其他 ESP8266 开发板，仍可使用这些步骤将其连接到 IoT 中心。 根据所用的 ESP8266 开发板，可能需要重新配置 `LED_PIN`。 例如，如果使用 AI-Thinker 提供的 ESP8266，可将此参数从 `0` 更改为 `2`。 还没有工具包？ 从 [Azure 网站](http://azure.com/iotstarterkits)获取。
+> 如果使用其他 ESP8266 开发板，仍可使用这些步骤将其连接到 IoT 中心。 根据所用的 ESP8266 开发板，可能需要重新配置 `LED_PIN`。 例如，如果使用 AI-Thinker 提供的 ESP8266，可将此参数从 `0` 更改为 `2`。 还没有工具包？ 从 [Azure 网站](https://azure.com/iotstarterkits)获取。
 
 ## <a name="what-you-learn"></a>学习内容
 
@@ -134,7 +134,7 @@ ms.locfileid: "51515465"
 
 ## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>收集传感器数据并将其发送到 IoT 中心
 
-在本部分，会在 Feather HUZZAH ESP8266 上部署并运行一个示例应用程序。 该示例应用程序会使 Feather HUZZAH ESP8266 上的 LED 闪烁，并将从 DHT22 传感器收集的温度和湿度数据发送到 IoT 中心。
+在本部分，你会在 Feather HUZZAH ESP8266 上部署并运行一个示例应用程序。 该示例应用程序会使 Feather HUZZAH ESP8266 上的 LED 闪烁，并将从 DHT22 传感器收集的温度和湿度数据发送到 IoT 中心。
 
 ### <a name="get-the-sample-application-from-github"></a>从 GitHub 获取示例应用程序
 
@@ -160,7 +160,7 @@ ms.locfileid: "51515465"
 
 6. 在 Visual Studio Code 中，输入 `F1`。
 
-7. 键入“Arduino”并选择“Arduino: 开发板管理器”。
+7. 类型**Arduino** ，然后选择**arduino 开发：Board Manager**。
 
 8. 在“Arduino 开发板管理器”选项卡中，单击“其他 URL”。
 
@@ -180,19 +180,19 @@ ms.locfileid: "51515465"
 
 12. 单击 esp8266 的“安装”按钮。
 
-   Boards Manager 指示 ESP8266 安装了版本 2.2.0 或更高版本。
+    Boards Manager 指示 ESP8266 安装了版本 2.2.0 或更高版本。
 
-   ![已安装 esp8266 包](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
+    ![已安装 esp8266 包](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
-13. 输入 `F1`，然后键入“Arduino”，选择“Arduino: 开发板配置”。
+13. 输入`F1`，然后键入**Arduino** ，然后选择**arduino 开发：板配置**。
 
 14. 单击“所选开发板:”旁边的框，键入“esp8266”，然后选择“Adafruit HUZZAH ESP8266 (esp8266)”。
 
-   ![选择 esp8266 开发板](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
+    ![选择 esp8266 开发板](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
 ### <a name="install-necessary-libraries"></a>安装所需的库
 
-1. 在 Visual Studio Code 中，输入 `F1`，然后键入“Arduino”并选择“Arduino: 库管理员”。
+1. 在 Visual Studio Code 中，输入`F1`，然后键入**Arduino** ，然后选择**arduino 开发：库管理器**。
 
 2. 逐个搜索以下库名称。 对于找到的每个库，单击“安装”。
    * `AzureIoTHub`
@@ -222,7 +222,7 @@ ms.locfileid: "51515465"
 
 1. 在 Visual Studio Code 中，单击状态栏的 <Select Serial Port>，然后单击 Feather HUZZAH ESP8266 的串行端口。
 
-2. 输入 `F1`，然后键入“Arduino”并选择“Arduino: 上传”以生成示例应用程序并将其部署到 Feather HUZZAH ESP8266。
+2. 输入`F1`，然后键入**Arduino** ，然后选择**arduino 开发：上传**生成和部署到 Feather HUZZAH ESP8266 的示例应用程序。
 
 ### <a name="enter-your-credentials"></a>输入凭据
 

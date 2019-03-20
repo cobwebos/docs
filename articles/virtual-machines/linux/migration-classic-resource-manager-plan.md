@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: ff3fdec2f427e095c748e4a47079d783fa83802d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: de2279d7f24400142f9d47ecf25378e7e4c47f9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341328"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111967"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure Resource Manager 提供了大量令人惊叹的功能，但规划好迁移过程以确保一切顺利仍至关重要。 花时间进行规划可确保执行迁移活动时不会遇到问题。 
@@ -79,8 +79,8 @@ ms.locfileid: "56341328"
   
   针对确切方案（计算、网络和存储）执行实验室测试是确保顺利迁移的最佳办法。 这有助于确保：
 
-  - 待测试的是完全独立的实验室或现有的非生产环境。 建议使用可反复迁移和破坏性修改的完全独立的实验室。  下面列出了用于收集/水化实际订阅的元数据的脚本。
-  - 在单独的订阅中创建实验室是个好办法。 原因是实验室将被反复拆毁，单独拥有独立订阅可降低意外删除某实际内容的可能性。
+- 待测试的是完全独立的实验室或现有的非生产环境。 建议使用可反复迁移和破坏性修改的完全独立的实验室。  下面列出了用于收集/水化实际订阅的元数据的脚本。
+- 在单独的订阅中创建实验室是个好办法。 原因是实验室将被反复拆毁，单独拥有独立订阅可降低意外删除某实际内容的可能性。
 
   可以使用 AsmMetadataParser 工具实现此操作。 [在此处了解有关该工具的详细信息](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
@@ -95,7 +95,7 @@ ms.locfileid: "56341328"
 - **Express Route 线路和 VPN**。 当前含授权链接的快速路由网关不能在不停机的情况下集成。 有关解决方法，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../../expressroute/expressroute-migration-classic-resource-manager.md)。
 
 - **VM 扩展** - 虚拟机扩展可能是迁移正在运行的 VM 的最大障碍之一。 VM 扩展修正可能需要 1-2 天，因此请相应进行规划。  一个有效的 Azure 代理是报告正在运行的 VM 的 VM 扩展状态所需的。 如果正在运行的 VM 返回的状态为不佳，这会暂停迁移。 代理本身无需处于正常运行状态即可启用迁移，但如果 VM 上存在扩展，则同时需要正常运行的代理和出站 Internet 连接（含 DNS）才能使迁移继续。
-  - 如果在迁移期间与 DNS 服务器的连接断开，那么在准备迁移之前，需要先从每个 VM 中删除所有 VM 扩展（BGInfo v1.\* 除外），随后再在 Azure 资源管理器迁移后将这些扩展重新添加回 VM。  **这仅适用于正在运行的 VM。**  如果已停止解除分配 VM，则无需删除 VM 扩展。 **注意：** Azure 诊断和安全中心监视等诸多扩展都会在迁移后重新安装，因此删除它们并不是问题。
+  - 如果在迁移过程中与 DNS 服务器的连接丢失，除 BGInfo v1.\* 外的所有 VM 扩展在迁移准备前需要先从每个 VM 中删除，随后在 Azure Resource Manager 迁移后重新添加回 VM。  **这仅适用于正在运行的 VM。**  如果已停止解除分配 VM，则无需删除 VM 扩展。 **注意：** Azure 诊断和安全中心监视等诸多扩展都会在迁移后重新安装，因此删除它们并不是问题。
   - 此外，确保网络安全组不限制出站 Internet 访问权限。 这可能针对某些网络安全组配置。 若要使 VM 扩展迁移到 Azure 资源管理器，出站 Internet 访问权限（和 DNS）是必需的。 
   - BGInfo 扩展有两个版本：v1 和 v2。  如果 VM 是使用 Azure 门户或 PowerShell 创建的，则该 VM 上可能具有 v1 扩展。 此扩展无需删除且会被迁移 API 跳过（即不迁移）。 但是，如果经典 VM 通过使用新的 Azure 门户创建，它很可能具有基于 JSON 的 v2 版本的 BGInfo，该版本可迁移到 Azure 资源管理器部署模型，只要代理正常运行且具有出站 Internet 访问权限（和 DNS）。 
   - **补救选项 1**。 如果你知道 VM 不会有出站 Internet 访问权限、正常运行的 DNS 服务和 VM 上正常运行的 Azure 代理，则在准备前在迁移期间卸载所有 VM 扩展，并在迁移后重新安装这些 VM 扩展。 
@@ -114,17 +114,17 @@ ms.locfileid: "56341328"
     > 需要在与要迁移的当前环境相同的区域中提高这些限制。
     >
 
-    - 网络接口
-    - 负载均衡器
-    - 公共 IP
-    - 静态公共 IP
-    - 核心数
-    - 网络安全组
-    - 路由表
+  - 网络接口
+  - 负载均衡器
+  - 公共 IP
+  - 静态公共 IP
+  - 核心数
+  - 网络安全组
+  - 路由表
 
     可以通过最新版 Azure CLI 使用以下命令查看当前的 Azure 资源管理器配额。
 
-    **计算** *（核心数、可用性集数）*
+    **计算**（核心数、可用性集数）
 
     ```bash
     az vm list-usage -l <azure-region> -o jsonc 
@@ -142,13 +142,13 @@ ms.locfileid: "56341328"
     az storage account show-usage
     ```
 
-- **Azure 资源管理器 API 限制** - 如果有足够大的环境（如 在 VNET 中有 > 400 VM），则可能达到 Azure 资源管理器中的写入的默认 API 限制（当前为 **1200 次写入/小时**）。 开始迁移前，应开具支持票证为订阅提高此限制。
+- **Azure Resource Manager API 限制** - 如果有足够大的环境（如 在 VNET 中有 > 400 VM），则可能达到 Azure 资源管理器中的写入的默认 API 限制（当前为 **1200 次写入/小时**）。 开始迁移前，应开具支持票证为订阅提高此限制。
 
 - **预配超时 VM 状态** - 如果任何 VM 具有状态“预配超时”，则需要在迁移前解决此问题。 执行此操作的唯一方法是通过取消预配/重新预配 VM（删除、保留磁盘并重新创建 VM）来使用停机时间。 
 
 - **RoleStateUnknown VM 状态** - 如果迁移因“角色状态未知”错误消息暂停，请使用门户检查 VM 并确保其正常运行。 此错误通常数分钟后会自行消失（无需修正），通常属于虚拟机**启动**、**停止**、**重新启动**操作期间经常看到的过渡类型。 **建议做法：** 数分钟后尝试再次迁移。 
 
-- **Fabric 群集不存在** - 在某些情况下，由于各种原因，某些 VM 无法迁移。 已知情况之一是当 VM 创建于最近（过去一周左右），且碰巧获得尚未为 Azure 资源管理器工作负荷配备的 Azure 群集。  将收到一条错误消息，指出“Fabric 群集不存在”并且无法迁移 VM。 等待数天通常可解决此特殊问题，因为群集会很快启用 Azure 资源管理器。 但是，一个直接的解决方法是对 VM 执行 `stop-deallocate`，继续迁移，并在迁移后在 Azure 资源管理器中开始 VM 备份。
+- **Fabric 群集不存在** - 在某些情况下，由于各种原因，某些 VM 无法迁移。 已知情况之一是当 VM 创建于最近（过去一周左右），且碰巧获得尚未为 Azure 资源管理器工作负荷配备的 Azure 群集。  将收到一条错误消息，指出“Fabric 群集不存在”并且无法迁移 VM。 等待数天通常可解决此特殊问题，因为群集会很快启用 Azure Resource Manager。 但是，一个直接的解决方法是对 VM 执行 `stop-deallocate`，继续迁移，并在迁移后在 Azure 资源管理器中开始 VM 备份。
 
 ### <a name="pitfalls-to-avoid"></a>需避免的错误
 

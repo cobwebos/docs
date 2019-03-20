@@ -6,28 +6,31 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ab50bd5a2b5b1b0e63060986d4336774be7875b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245858"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224885"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
 
-Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。 这样，外部服务（例如 Azure DevOps Services、GitHub、Azure Log Analytics 或自定义应用程序）就可以在不通过 Azure 自动化 API 实现完整解决方案的情况下启动 Runbook。  
+Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。 这样，如 Azure DevOps 服务、 GitHub、 Azure Monitor 日志或自定义应用程序可以在启动 runbook，而无需实现完整的解决方案使用 Azure 自动化 API 的外部服务。  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 可以将 Webhook 与[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md) 中其他启动 Runbook 的方法进行比较
+
+> [!NOTE]
+> 不支持使用 webhook 来启动 Python runbook。
 
 ## <a name="details-of-a-webhook"></a>Webhook 详细信息
 
 下表介绍了必须为 webhook 配置的属性。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | 名称 |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
 | 代码 |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
@@ -44,7 +47,7 @@ Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会
 
 $WebhookData 对象具有以下属性：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | WebhookName |Webhook 的名称。 |
 | RequestHeader |包含传入 POST 请求标头的哈希表。 |
@@ -72,7 +75,7 @@ $WebhookData 对象具有以下属性：
 ![UI 中的启动 WebhookData 参数](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
 
 > [!NOTE]
-> 所有输入参数的值都会通过 Runbook 作业进行记录。 这意味着，客户端在 Webhook 请求中提供的任何输入都将记录下来，并可供有权访问自动化作业的任何人使用。  因此，在 Webhook 调用中包括敏感信息时，应该特别小心。
+> 所有输入参数的值都会通过 Runbook 作业进行记录。 这意味着，客户端在 Webhook 请求中提供的任何输入都会记录下来，并可供有权访问自动化作业的任何人使用。  因此，在 Webhook 调用中包括敏感信息时，应该特别小心。
 
 ## <a name="security"></a>安全
 
@@ -107,7 +110,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 客户端从 POST 请求中接收以下返回代码之一。
 
-| 代码 | 文本 | 说明 |
+| 代码 | 文本 | 描述 |
 |:--- |:--- |:--- |
 | 202 |已接受 |已接受该请求，并已成功将 Runbook 排队。 |
 | 400 |错误的请求 |出于以下原因之一，未接受该请求： <ul> <li>Webhook 已过期。</li> <li>Webhook 已禁用。</li> <li>URL 中的令牌无效。</li>  </ul> |
@@ -126,7 +129,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Webhook 在创建后将具有一年的有效期。 一年后，Webhook 将自动到期。 Webhook 到期后将无法将其重新激活，必须将其删除并重新创建。 如果 Webhook 还未达到其到期时间，则可对其进行延期。
 
-若要对 Webhook 进行延期，请导航到包含 Webhook 的 runbook。 选择“资源”****下的“Webhook”****。 单击要延期的 Webhook，此操作将打开“Webhook”页面。  选择新的到期日期和时间，然后单击“保存”。
+若要扩展 Webhook，请导航到包含 Webhook 的 runbook。 选择“资源”****下的“Webhook”****。 单击要延期的 Webhook，此操作将打开“Webhook”页面。  选择新的到期日期和时间，然后单击“保存”。
 
 ## <a name="sample-runbook"></a>示例 Runbook
 

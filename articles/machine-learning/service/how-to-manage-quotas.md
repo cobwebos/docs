@@ -11,18 +11,18 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b735df4e245d6e3ceebd847e91ed7dfdb255c267
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245984"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904637"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
 
 与其他 Azure 服务一样，与 Azure 机器学习服务关联的某些资源存在限制。 这些限制包括可以创建的工作区的数量上限以及用于训练或推断模型的实际基础计算的限制等。 本文提供关于为你的订阅中各种 Azure 资源预配置的限制的更多详细信息，同时还包括为每种资源类型请求配额增加的可用链接。 这些限制用于防止由于欺诈导致的预算超支，并且符合 Azure 容量限制。
 
-在设计和纵向扩展生产工作负载的 Azure 机器学习服务资源时，请记住这些配额。 例如，如果群集未达到指定的节点目标数量，那么可能是已达到订阅的 Azure 机器学习计算核心限制。 如果想将限制或配额提高到默认值限制以上，可以免费打开联机客户支持请求。 由于 Azure 容量限制，无法将限制提高到超过下表中显示的最大限制值。 如果没有“最大限制”列，则资源没有可调整的限制。
+在设计和纵向扩展生产工作负载的 Azure 机器学习服务资源时，请记住这些配额。 例如，如果你的群集不会达到目标数指定的节点，然后你可能已达到 Azure 机器学习计算核心数限制为你的订阅。 如果想将限制或配额提高到默认值限制以上，可以免费打开联机客户支持请求。 由于 Azure 容量限制，无法将限制提高到超过下表中显示的最大限制值。 如果没有“最大限制”列，则资源没有可调整的限制。
 
 ## <a name="special-considerations"></a>特殊注意事项
 
@@ -67,7 +67,7 @@ ms.locfileid: "55245984"
 | 每个节点的最大 GPU MPI 进程数 | 1-4 |
 | 每个节点的最大 GPU 辅助角色数 | 1-4 |
 | 最长作业生存期 | 7 天<sup>1</sup> |
-| 每个节点的最大参数服务器数 | 1 |
+| 每个节点的最大参数服务器数 | 第 |
 
 <sup>1</sup> 最长生存期是指运行从开始到结束的时间。 已完成的运行会无限期保存；最长生存期内未完成的运行的数据不可访问。
 

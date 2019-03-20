@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2c556fe3cc27e68d591c0f513dcfbe525e868b2c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897072"
 ---
 # <a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
 
 本文介绍了如何使用 SQL 或 Python 编程语言对 Azure 上的 SQL Server 中存储的数据进行采样。 还介绍了如何通过将采样数据保存到文件、上传到 Azure blob，然后读取到 Azure 机器学习工作室，将数据移至 Azure 机器学习中。
 
-Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.google.com/p/pyodbc/) ODBC 和 [Pandas](http://pandas.pydata.org/) 库进行采样。
+Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.google.com/p/pyodbc/) ODBC 和 [Pandas](https://pandas.pydata.org/) 库进行采样。
 
 > [!NOTE]
 > 本文档中的示例 SQL 代码假设该数据在 Azure 上的 SQL Server 中。 如果不存在，请参阅“[将数据移动到 Azure 上的 SQL Server](move-sql-server-virtual-machine.md)”文章，获取有关如何将数据移动到 Azure 上的 SQL Server 的说明。
@@ -60,7 +60,7 @@ Tablesample 也可用于数据采样。 如果数据大小较大（假设不同�
 > 
 
 ### <a name="sql-aml"></a>连接到 Azure 机器学习
-可直接在 Azure 机器学习[导入数据][import-data]模块中使用上述采样查询，对数据进行联机低采样并将其引入 Azure 机器学习实验。 使用读取器模块读取采样数据的屏幕截图如下所示：
+可直接在 Azure 机器学习[导入数据][import-data]模块中使用上述采样查询，对数据进行联机低采样并将其引入 Azure 机器学习实验。 使用读取器模块读取采样的数据的屏幕截图如下所示：
 
 ![读取器 SQL][1]
 
@@ -71,7 +71,7 @@ Tablesample 也可用于数据采样。 如果数据大小较大（假设不同�
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 中的 [Pandas](http://pandas.pydata.org/) 库提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码将 Azure SQL 数据库表中的 0.1% 数据采样读取到 Pandas 数据中：
+Python 中的 [Pandas](https://pandas.pydata.org/) 库提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码将 Azure SQL 数据库表中的 0.1% 数据采样读取到 Pandas 数据中：
 
     import pandas as pd
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 4622809f0e261236d6753daf5bb2e00ff814c849
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087867"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
 
@@ -91,11 +91,11 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
     - **源 vNet2**：10.2.0.0/24。
     - 每个分支虚拟网络都连接到“中心 vNet”。
 - **中心 vNet**。 **中心 vNet“源中心 vNet”：** 10.10.10.0/24。
-    - 此中心 vNet 充当网关守卫。
-    - 跨子网的所有通信都通过此中心进行。
- - ****中心 vNet 子网**。 中心 vNet 具有两个子网：
-     - **NVA 子网**：10.10.10.0/25。 此子网包含 NVA (10.10.10.10)。
-     - **网关子网**：10.10.10.128/25。 此子网包含连接到 ExpressRoute 连接的 ExpressRoute 网关，该连接通过专用对等互连路由域路由到本地站点。
+  - 此中心 vNet 充当网关守卫。
+  - 跨子网的所有通信都通过此中心进行。
+    - ****中心 vNet 子网**。 中心 vNet 具有两个子网：
+    - **NVA 子网**：10.10.10.0/25。 此子网包含 NVA (10.10.10.10)。
+    - **网关子网**：10.10.10.128/25。 此子网包含连接到 ExpressRoute 连接的 ExpressRoute 网关，该连接通过专用对等互连路由域路由到本地站点。
 - 本地数据中心通过香港的合作伙伴边缘建立了 ExpressRoute 线路连接。
 - 所有路由都通过 Azure 路由表 (UDR) 进行控制。
 - vNet 之间或流向本地数据中心的所有出站流量都经过 NVA 路由。

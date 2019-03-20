@@ -3,23 +3,23 @@ title: include 文件
 description: include 文件
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
-ms.date: 09/19/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 8c7f11d74d0a0b81f9f0c40871b2eaa3eb25f51f
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: ace6c36f1bc4582b3210c049a4ff8cb1f770bf88
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988226"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203473"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>从 iOS 应用程序调用 Microsoft Graph API
 
@@ -27,14 +27,14 @@ ms.locfileid: "49988226"
 
 完成本指南中的练习后，你的应用程序可以从任何具有 Azure AD 的公司或组织调用受保护的 API。 应用程序可以使用个人帐户（如 outlook.com、live.com 等）以及工作或学校帐户调用受保护的 API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - XCode 版本 10.x 是在本指南中创建的示例所必需的。 可从 [iTunes 网站](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下载 URL") 下载 XCode。
 - [Carthage](https://github.com/Carthage/Carthage) 依赖项管理器是包管理所必需的。
 
 ## <a name="how-this-guide-works"></a>本指南的工作原理
 
-![本指南的工作原理](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
+![演示如何按本教程适用生成示例应用](media/active-directory-develop-guidedsetup-ios-introduction/iosintro-updated.png)
 
 在本指南中，示例应用程序使 iOS 应用程序能够查询接受 Azure AD v2.0 终结点令牌的 Microsoft Graph API 或 Web API。 在此方案中，通过使用 **Authorization** 标头向 HTTP 请求添加了令牌。 由 Microsoft 身份验证库 (MSAL) 获取和更新令牌。
 
@@ -50,6 +50,6 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 本指南使用以下库：
 
-|库|Description|
+|库|描述|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|适用于 iOS 的 Microsoft 身份验证库预览|

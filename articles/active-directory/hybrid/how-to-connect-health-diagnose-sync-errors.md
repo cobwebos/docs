@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2924a45ae8851095944131b6fb1598775247f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: fbdeef7c591221756ad206bf2f3dd78ac3d26c4f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193996"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885311"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>诊断并修正重复的属性同步错误
 
@@ -33,7 +33,7 @@ ms.locfileid: "56193996"
 
 ## <a name="problems"></a>问题
 ### <a name="a-common-scenario"></a>常见方案
-发生 QuarantinedAttributeValueMustBeUnique 和 AttributeValueMustBeUnique 同步错误时，Azure AD 中往往会出现 UserPrincipalName 或代理地址冲突的情况。 在本地端更新有冲突的源对象即可解决同步错误。 下一次同步后，将会解决同步错误。例如，此图指示两位用户的 UserPrincipalName 有冲突。 两者都为 Joe.J@contoso.com。 有冲突的对象将在 Azure AD 中隔离。
+发生 QuarantinedAttributeValueMustBeUnique 和 AttributeValueMustBeUnique 同步错误时，Azure AD 中往往会出现 UserPrincipalName 或代理地址冲突的情况。 在本地端更新有冲突的源对象即可解决同步错误。 下一次同步后，将会解决同步错误。例如，此图指示两位用户的 UserPrincipalName 有冲突。 两者都**Joe.J\@contoso.com**。 有冲突的对象将在 Azure AD 中隔离。
 
 ![诊断常见的同步错误场景](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -66,32 +66,34 @@ ms.locfileid: "56193996"
 
 在 Azure 门户中，可以采取几个步骤来识别具体的可修复场景：  
 1.  检查“诊断状态”列。 状态显示是否还有一种可能的方式，直接从 Azure Active Directory 修复同步错误。 换而言之，故障排除流的存在可以缩小错误产生的情况并可能修复此错误。
+
 | 状态 | 它意味着什么？ |
 | ------------------ | -----------------|
 | 未启动 | 尚未访问此诊断过程。 根据诊断结果，有潜在可行的方法可以直接从门户修复同步错误。 |
 | 需要手动修复 | 该错误不符合从门户修复的条件。 有冲突的对象类型不是用户，或者已完成诊断步骤，但没有可从门户实施的解决方法。 后一种情况下，从本地端修复仍是解决方法之一。 [详细了解本地解决方法](https://support.microsoft.com/help/2647098)。 | 
 | 等待同步 | 已应用修复程序。 门户正在等待下一个同步周期以清除错误。 |
+
   >[!IMPORTANT]
   > 每个同步周期后都会重置诊断状态列。 
   >
 
-2.  在错误详细信息下选择“诊断”按钮。 需回答几个问题，确定同步错误的详细信息。 问题的答案有助于识别孤立对象的原因。
+1. 在错误详细信息下选择“诊断”按钮。 需回答几个问题，确定同步错误的详细信息。 问题的答案有助于识别孤立对象的原因。
 
-3.  如果结束诊断时出现“关闭”按钮，则表示根据回答，没有可从门户实施的快速解决方法。 请参考最后一个步骤中显示的解决方法。 从本地端修复仍是一种解决方法。 选择“关闭”按钮。 当前同步错误的状态将切换为“需要手动修复”。 当前的同步周期内，状态将保持不变。
+1. 如果结束诊断时出现“关闭”按钮，则表示根据回答，没有可从门户实施的快速解决方法。 请参考最后一个步骤中显示的解决方法。 从本地端修复仍是一种解决方法。 选择“关闭”按钮。 当前同步错误的状态将切换为“需要手动修复”。 当前的同步周期内，状态将保持不变。
 
-4.  识别孤立对象的原因后，可以直接从门户解决重复的属性同步错误。 选择“应用修复”按钮触发该过程。 当前同步错误的状态将更新为“等待同步”。
+1. 识别孤立对象的原因后，可以直接从门户解决重复的属性同步错误。 选择“应用修复”按钮触发该过程。 当前同步错误的状态将更新为“等待同步”。
 
-5.  下一个同步周期后，该错误应会从列表中删除。
+1. 下一个同步周期后，该错误应会从列表中删除。
 
 ## <a name="how-to-answer-the-diagnosis-questions"></a>如何回答诊断问题 
 ### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>该用户是否存在于本地 Active Directory 中？
 
 此问题的目的是试图识别本地 Active Directory 中现有用户的源对象。  
-1.  检查 Active Directory 是否包含具有提供的 UserPrincipalName 的对象。 如果没有，请回答“否”。
-2.  如果有，请检查该对象是否仍在同步的范围内。  
-  - 使用 DN 在 Azure AD 连接器空间中搜索。
-  - 如果找到了状态为“等待添加”的对象，请回答“否”。 Azure AD Connect 无法将该对象连接到正确的 Azure AD 对象。
-  - 如果未找到该对象，请回答“是”。
+1. 检查 Active Directory 是否包含具有提供的 UserPrincipalName 的对象。 如果没有，请回答“否”。
+2. 如果有，请检查该对象是否仍在同步的范围内。  
+   - 使用 DN 在 Azure AD 连接器空间中搜索。
+   - 如果找到了状态为“等待添加”的对象，请回答“否”。 Azure AD Connect 无法将该对象连接到正确的 Azure AD 对象。
+   - 如果未找到该对象，请回答“是”。
 
 在这些示例中，问题会尝试确定 Joe Jackson 是否仍存在于本地 Active Directory 中。
 在一般的场景中，用户 Joe Johnson 和 Joe Jackson 都会在本地 Active Directory 中。 隔离的对象是两个不同的用户。
@@ -104,11 +106,11 @@ ms.locfileid: "56193996"
 
 ### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>这两个帐户是否属于同一用户？
 此问题的目的是检查传入的有冲突用户和 Azure AD 中的现有用户对象，确定两者是否属于同一用户。  
-1.  有冲突的对象最近已同步到 Azure Active Directory。 比较对象的属性：  
-  - 显示名称
-  - 用户主体名称
-  - 对象 ID
-2.  如果 Azure AD 无法对它们进行比较，请检查 Active Directory 是否包含具有提供的 UserPrincipalNames 的对象。 如果找到这两个对象，请回答“否”。
+1. 有冲突的对象最近已同步到 Azure Active Directory。 比较对象的属性：  
+   - 显示名称
+   - 用户主体名称
+   - 对象 ID
+2. 如果 Azure AD 无法对它们进行比较，请检查 Active Directory 是否包含具有提供的 UserPrincipalNames 的对象。 如果找到这两个对象，请回答“否”。
 
 在下面的示例中，两个对象属于同一用户 Joe Johnson。
 

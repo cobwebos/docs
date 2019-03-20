@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7b2de1ae56e554013d9a5c574bb231164b80f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9ee58c2a3bed7544ff68e7d6ec756c35bee1d05b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207290"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103156"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 终结点中的权限和许可
 
@@ -61,7 +61,7 @@ Azure AD 中的权限提供多个属性用于帮助用户、管理员或应用�
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| 属性名称 | 说明 | 示例 |
+| 属性名称 | 描述 | 示例 |
 | --- | --- | --- |
 | `ID` | 这是唯一标识此权限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
 | `IsEnabled` | 指示此权限是否可供使用。 | true |
@@ -102,11 +102,11 @@ Azure AD 中的应用程序必须获得许可才能访问所需的资源或 API�
 - 资源应该单独显式定义 `Read` 和 `ReadWrite` 权限。
 - 资源应将允许访问跨用户边界的数据的所有权限标记为 `Admin` 权限。
 - 资源应当遵循命名模式 `Subject.Permission[.Modifier]`，其中：
-    - `Subject` 对应于可用的数据类型
-    - `Permission` 对应于用户可以对该数据执行的操作
-    - 可以选择使用 `Modifier` 来描述另一个权限的专用化
+  - `Subject` 对应于可用的数据类型
+  - `Permission` 对应于用户可以对该数据执行的操作
+  - 可以选择使用 `Modifier` 来描述另一个权限的专用化
     
     例如：
-    * Mail.Read - 允许用户读取邮件。
-    * Mail.ReadWrite - 允许用户读取或写入邮件。
-    * Mail.ReadWrite.All - 允许管理员或用户访问组织中的所有邮件。
+  - Mail.Read - 允许用户读取邮件。
+  - Mail.ReadWrite - 允许用户读取或写入邮件。
+  - Mail.ReadWrite.All - 允许管理员或用户访问组织中的所有邮件。

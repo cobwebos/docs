@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 7a4ff22bbb4c7c13d8c2feae3638ce8e33a8f7ad
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845818"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103530"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>对 Azure Site Recovery 代理问题进行故障排除
 
@@ -77,15 +77,15 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 
 1. 按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md)的说明进行操作。
 
- > [!NOTE]
- > 我们强烈建议只通过分发存储库更新代理。 不建议直接从 GitHub 下载代理代码进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
+   > [!NOTE]
+   > 我们强烈建议只通过分发存储库更新代理。 不建议直接从 GitHub 下载代理代码进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
 
 2. 运行以下命令，确保 Azure 代理可在 VM 上运行：`ps -e`
 
- 如果该进程未运行，请使用以下命令进行重启：
+   如果该进程未运行，请使用以下命令进行重启：
 
- * 对于 Ubuntu：`service walinuxagent start`
- * 对于其他分发版：`service waagent start`
+   * 对于 Ubuntu：`service walinuxagent start`
+   * 对于其他分发版：`service waagent start`
 
 3. [配置自动重启代理](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash)。
 4. 启用对虚拟机的保护。

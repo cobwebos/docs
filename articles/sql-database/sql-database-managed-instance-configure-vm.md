@@ -12,18 +12,18 @@ ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 640182b50492ed21cd604423fe1cef7301095941
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
-ms.translationtype: HT
+ms.openlocfilehash: 9e1001816e9a4cf62d2e6c84c72aae84428148d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408793"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997921"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>快速入门：配置 Azure VM，以便连接到 Azure SQL 数据库托管实例
 
 本快速入门演示如何配置 Azure 虚拟机，以便使用 SQL Server Management Studio (SSMS) 连接到 Azure SQL 数据库托管实例。 如需介绍如何使用点到站点连接从本地客户端计算机进行连接的快速入门，请参阅[配置点到站点连接](sql-database-managed-instance-configure-p2s.md) 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本快速入门从[创建托管实例](sql-database-managed-instance-get-started.md)中创建的资源着手。
 
@@ -70,7 +70,7 @@ ms.locfileid: "56408793"
 
 1. 确保在另一浏览器标签页中登录到 Azure 门户。然后，选择下面的按钮，创建客户端虚拟机并安装 SQL Server Management Studio：
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 2. 根据下表中的信息填充窗体：
 
@@ -84,7 +84,7 @@ ms.locfileid: "56408793"
    |**密码**|任何有效的密码|密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。<br>在[连接到 VM](#connect-to-virtual-machine) 时使用此密码。|
    | **虚拟机大小** | 任何有效的大小 | 此模板中的默认值 **Standard_B2s** 足以满足本快速入门的要求。 |
    | **位置**|[resourceGroup().location]。| 请勿更改此值。 |
-   | **虚拟网络名称**|在其中创建了托管实例的虚拟网络。|
+   | **虚拟网络名称**|在其中创建托管实例的虚拟网络。|
    | **子网名称**|在前述过程中创建的子网的名称| 请勿选择在其中创建了托管实例的子网。|
    | **项目位置** | [deployment().properties.templateLink.uri] | 请勿更改此值。 |
    | **项目位置 Sas 令牌** | 留空 | 请勿更改此值。 |

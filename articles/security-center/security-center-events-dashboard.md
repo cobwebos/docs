@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: f1a3268fcacd4083b767a3fe89d6ab9b41b6cceb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114053"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075759"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>在 Azure 安全中心监视和处理安全事件
 事件仪表板提供随着时间推移收集到的安全事件数的概述，以及可能需要注意的重要事件列表。  
@@ -28,6 +28,8 @@ ms.locfileid: "56114053"
 > 若要使用此功能，工作区必须运行 Log Analytics 版本 2 并且位于安全中心的标准层上。 请参阅安全中心[定价页](security-center-pricing.md)，了解有关标准层的详细信息。
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="what-is-a-security-event"></a>什么是安全事件？
 安全中心使用 Microsoft Monitoring Agent 收集计算机中各种与安全有关的配置和事件，并将这些事件存储在工作区中。 以下是此类数据的示例：操作系统日志（Windows 事件日志）、正在运行的进程和来自已集成安全中心的安全解决方案的事件。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
@@ -55,30 +57,30 @@ ms.locfileid: "56114053"
 1. 在“安全中心”主菜单下，选择“事件”。
 2. 此时，“事件仪表板”工作区选择器可能会打开。 如果只有一个工作区，将不会出现此工作区选择器。 如果有多个工作区，则需要选择一个工作区，以查看它的已处理事件详细信息。 如果有多个工作区，则从列表中选择一个工作区。
 
-  ![工作区列表][3]
+   ![工作区列表][3]
 
 3. 此时，“事件仪表板”打开，显示选定工作区的事件详细信息。 可以查看重要事件和所有事件（按类型分类）。  在此示例中，我们选择了“重要事件”。
 
-  ![重要事件][4]
+   ![重要事件][4]
 
 4. 可以通过选择一个事件类型来在此工作区中查询更多数据。 在此示例中，我们选择了“SecurityEvent”。
 
-  ![选择一个事件类型][5]
+   ![选择一个事件类型][5]
 
 5. “日志搜索”将打开，其中包含关于此事件类型的更多详细信息。
 
-  ![日志搜索][6]
+   ![日志搜索][6]
 
 ## <a name="add-a-notable-event"></a>添加重要事件
-安全中心将提供现成的重要事件。 可以使用 [Log Analytics 查询语言](../log-analytics/log-analytics-search-reference.md)并根据自己的查询添加重要事件。 将返回到“事件仪表板”，以添加显著事件。
+安全中心将提供现成的重要事件。 可以添加基于你自己的查询使用值得注意的事件[Kusto 查询语言](../log-analytics/log-analytics-search-reference.md)。 将返回到“事件仪表板”，以添加显著事件。
 
 1. 选择“添加重要事件”。
 
-  ![添加重要事件][7]
+   ![添加重要事件][7]
 
 2. “添加自定义重要事件”将打开。  在“显示名称”下，输入重要事件的名称。 在“搜索查询”下，输入针对此事件的查询。
 
-  ![输入查询][8]
+   ![输入查询][8]
 
 4. 选择“确定”。
 
@@ -94,7 +96,7 @@ ms.locfileid: "56114053"
 - 为空 - 你的工作区符合要求，选择一个工作区后即会转向仪表板
 
 > [!NOTE]
-> 在“事件仪表板”下，“事件数”列指明每个工作区中的事件数量。  一些工作区的此列为空，因为应用到该工作区的是安全中心的免费层。 在免费层下，安全中心会收集事件，但不会将事件保存到 Log Analytics 中，因此这些事件在仪表板中不可用。
+> 在“事件仪表板”下，“事件数”列指明每个工作区中的事件数量。  一些工作区的此列为空，因为应用到该工作区的是安全中心的免费层。 在免费层中，安全中心会收集事件但不是会保存在 Azure Monitor 日志的事件，以及在仪表板中不可用。
 >
 >
 
@@ -102,26 +104,26 @@ ms.locfileid: "56114053"
 1. 选择“需要更新”的工作区。
 2. “搜索升级”将打开。 选择“立即升级”。
 
-  ![立即升级][10]
+   ![立即升级][10]
 
 ## <a name="upgrade-to-security-centers-standard-tier"></a>升级到安全中心的标准层
 1. 选择包含“升级计划”的工作区。
 2. “事件仪表板”将打开。 选择“试用事件仪表板”。
 
-  ![试用仪表板][11]
+   ![试用仪表板][11]
 
 3. 在“载入高级安全”下，选择要升级的工作区。
 4. 在“定价”下，选择“标准层”。
 5. 选择“保存”。
 
-  ![升级到标准层][12]
+   ![升级到标准层][12]
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何使用安全中心的“事件仪表板”。 若要详细了解此仪表板的工作原理及如何编写自己的事件查询，请参阅：
 
-- [什么是 Log Analytics？](../log-analytics/log-analytics-overview.md) – Log Analytics 概述
-- [了解 Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-search-new.md) - 介绍日志搜索在 Log Analytics 中的用法以及创建日志搜索之前应了解的概念
-- [Log Analytics 搜索参考](../log-analytics/log-analytics-search-reference.md) – 了解如何使用 Log Analytics 中的查询语言编写自己的事件查询
+- [什么是 Azure Monitor 日志？](../log-analytics/log-analytics-overview.md) – 在 Azure Monitor 日志概述
+- [了解日志搜索中 Kusto](../log-analytics/log-analytics-log-search-new.md) -介绍如何在 Azure Monitor 日志中使用日志搜索，并提供创建日志搜索之前应了解的概念
+- [Kusto 搜索引用](../log-analytics/log-analytics-search-reference.md)– 了解如何编写您自己在日志中使用的查询语言的事件查询
 
 若要了解有关安全中心的详细信息，请参阅：
 

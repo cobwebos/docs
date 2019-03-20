@@ -1,25 +1,18 @@
 ---
 title: Azure 应用程序网关中的 WebSocket 支持 | Microsoft Docs
 description: 此页概述了应用程序网关的 WebSocket 支持。
-documentationcenter: na
-services: application-gateway
 author: amsriva
-manager: rossort
-editor: amsriva
-ms.assetid: 8968dac1-e9bc-4fa1-8415-96decacab83f
-ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/08/2017
 ms.author: amsriva
-ms.openlocfilehash: cc6e2480ea117a288ae94c9cd66be6a354d8230f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.service: application-gateway
+ms.topic: conceptual
+ms.workload: infrastructure-services
+ms.date: 03/18/2019
+ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993326"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168113"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>应用程序网关中的 WebSocket 支持概述
 
@@ -29,7 +22,15 @@ ms.locfileid: "52993326"
 
 可以在端口 80 或 443 上继续使用标准 HTTP 侦听器来接收 WebSocket 流量。 随后会使用应用程序网关规则中指定的相应后端池，将 WebSocket 流量定向到已启用 WebSocket 的后端服务器。 后端服务器必须响应应用程序网关探测，如[运行状况探测概述](application-gateway-probe-overview.md)部分中所述。 应用程序网关运行状况探测仅适用于 HTTP/HTTPS。 每个后端服务器都必须响应 HTTP 探测器，以便应用程序网关将 WebSocket 流量路由到服务器。
 
-## <a name="listener-configuration-element"></a>侦听器配置元素
+它的应用程序受益于快速的实时通信，如聊天、 仪表板中，游戏应用中使用。
+
+## <a name="how-does-websocket-work"></a>WebSocket 是如何工作的
+
+若要建立 WebSocket 连接，客户端和服务器之间交换的特定的基于 HTTP 的握手。 如果成功，应用程序层协议"升级"从 HTTP 到 Websocket，使用以前建立的 TCP 连接。 一旦发生这种情况，HTTP 是完全不相关的;可以发送或接收两个端点使用 WebSocket 协议，直到关闭 WebSocket 连接的数据。 
+
+![addcert](./media/application-gateway-websocket/websocket.png)
+
+### <a name="listener-configuration-element"></a>侦听器配置元素
 
 现有的 HTTP 侦听器可用于支持 WebSocket 流量。 以下是示例模板文件中 httpListeners 元素的代码片段。 需要同时拥有 HTTP 和 HTTPS 侦听器才能支持 WebSocket 并保护 WebSocket 流量。 同样，可以使用[门户](application-gateway-create-gateway-portal.md)或 [PowerShell](application-gateway-create-gateway-arm.md) 在端口 80/443 上创建具有侦听器的应用程序网关，以支持 WebSocket 通信。
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168237"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894081"
 ---
 <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
 ====================================
@@ -90,7 +90,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 
 1. 打开新的 Internet Explorer InPrivate 或 Chrome Incognito 浏览会话，以确保未登录到个人帐户。
 
-2. 转到 [Windows 开发人员中心](http://dev.windows.com/registration?accountprogram=azure)，将自己注册为卖家。 请在继续操作之前，阅读以下重要说明。
+2. 转到 [Windows 开发人员中心](https://dev.windows.com/registration?accountprogram=azure)，将自己注册为卖家。 请在继续操作之前，阅读以下重要说明。
 
    ![Microsoft 帐户验证](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
 
@@ -157,7 +157,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 
 **提供银行信息**
 
-1.  使用 Microsoft 帐户登录到 [Microsoft 开发人员中心](http://dev.windows.com/registration?accountprogram=azure)。
+1.  使用 Microsoft 帐户登录到 [Microsoft 开发人员中心](https://dev.windows.com/registration?accountprogram=azure)。
 2.  在左侧菜单中选择“付款帐户”，在“选择付款方式”下选择“银行帐户”或“PayPal”。
 
     >[!NOTE]
@@ -173,7 +173,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 
 **提供税务信息**
 
-1.  必要时使用 Microsoft 帐户登录到 [Microsoft 开发人员中心](http://dev.windows.com/registration?accountprogram=azure)。
+1.  必要时使用 Microsoft 帐户登录到 [Microsoft 开发人员中心](https://dev.windows.com/registration?accountprogram=azure)。
 2.  在左侧菜单中选择“税务配置文件”。
 3.  在“设置税务表单”页上：
     - 选择你永久居留的国家或地区。

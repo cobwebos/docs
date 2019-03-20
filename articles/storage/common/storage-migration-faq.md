@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 77963377d322a1c70226ceb772273127bec380de
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 2272414c185388df0ccbc9e21b7d166432fc7a52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506799"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110403"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
@@ -282,7 +282,7 @@ AzCopy 安装在什么位置？
 
     - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-dotnet-shared-access-signature-part-1.md)。
 
-**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使 “https://mystorageaccountname.blob.core.windows.net/images/image.gif” 显示为 “https://www.contoso.com/images/image.gif”？**
+**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使 “<https://mystorageaccountname.blob.core.windows.net/images/image.gif>” 显示为 “<https://www.contoso.com/images/image.gif>”？**
 
 使用自定义域的存储帐户当前不支持 SSL。
 但你可以使用非 HTTPS 自定义域。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名](../blobs/storage-custom-domain-name.md)。

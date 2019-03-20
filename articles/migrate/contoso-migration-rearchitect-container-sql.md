@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 243b19d19fbce11d77f60bc2eccc4d1c58c85b80
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: cb984bcbe79b69c0614579d66a3b853cd38a7e12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892178"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099080"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso 迁移：将本地应用重新架构到 Azure 容器和 Azure SQL 数据库
 
@@ -117,7 +117,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) | 构建和运行始终可用且可缩放的分布式应用 | 成本取决于计算节点的大小、位置和持续时间。 [了解详细信息](https://azure.microsoft.com/pricing/details/service-fabric/)。
 [Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | 提供一个用于应用开发的持续集成和持续部署 (CI/CD) 管道。 该管道首先会连接到用于管理应用程序代码的 Git 存储库，然后依次配置用于生成包和其他生成项目的生成系统，以及用于在开发、测试及生产环境中部署更改的发布管理系统。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要运行此方案，Contoso 需具备以下项：
 
@@ -402,10 +402,10 @@ Contoso 管理员使用 Visual Studio 和 SDK 工具将应用转换为容器，�
 4. Contoso 为 SmartHotel.Registration.WCF 应用重复此过程。
 5. 现在，检查解决方案发生了哪些变化。
 
-    - 新的应用是 **SmartHotel.RegistrationApplication/**
-    - 该应用包含两个服务：SmartHotel.Registration.WCF 和 SmartHotel.Registration.Web。
+   - 新的应用是 **SmartHotel.RegistrationApplication/**
+   - 该应用包含两个服务：SmartHotel.Registration.WCF 和 SmartHotel.Registration.Web。
 
-    ![容器](./media/contoso-migration-rearchitect-container-sql/container4.png)
+     ![容器](./media/contoso-migration-rearchitect-container-sql/container4.png)
 
 6. Visual Studio 创建了 Docker 文件，将所需的映像拉取到本地的开发人员计算机。
 
@@ -488,7 +488,7 @@ Contoso 管理员现在配置 Azure DevOps Services 来执行生成和发布过�
 
 16. 另请注意，已启用持续部署触发器。
 
-   ![已启用持续部署](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
+    ![已启用持续部署](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
 
 17. 单击“保存” > “创建发布”。
 

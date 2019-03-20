@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: eec13db8bdbe1f40a51df14077adb8740e977f5d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 1a5b883a8c9688d4545c0e98c00f78a2e982a611
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138406"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079703"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>如何使用 Visual Studio Mobile Center 将实际用户度量发送到流量管理器
 
@@ -33,22 +33,22 @@ ms.locfileid: "50138406"
 从客户端应用程序获取并发送到流量管理器的度量由使用唯一字符串的服务标识，称为实际用户度量 (RUM) 密钥。 可以使用 Azure 门户、REST API 或使用 PowerShell/CLI 接口获取 RUM 密钥。
 
 使用以下过程通过 Azure 门户获取 RUM 密钥：
-   1. 在浏览器中，登录 Azure 门户。 如果还没有帐户，可以注册免费一个月试用版。
-   2. 在门户的搜索栏中，搜索要修改的流量管理器配置文件名称，并在显示的结果中单击该流量管理器配置文件。
-   3. 在“流量管理器配置文件”页上，单击“设置”下的“实际用户度量”。
-   4. 单击“生成密钥”新建 RUM 密钥。
+1. 在浏览器中，登录 Azure 门户。 如果还没有帐户，可以注册免费一个月试用版。
+2. 在门户的搜索栏中，搜索要修改的流量管理器配置文件名称，并在显示的结果中单击该流量管理器配置文件。
+3. 在“流量管理器配置文件”页上，单击“设置”下的“实际用户度量”。
+4. 单击“生成密钥”新建 RUM 密钥。
         
    ![生成实际用户度量密钥](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **图 1：生成实际用户度量密钥**
+   图 1：**真实用户度量密钥生成**
 
-   5.   该页显示生成的 RUM 密钥和需要嵌入到 HTML 页中的 JavaScript 代码片段。
+5. 该页显示生成的 RUM 密钥和需要嵌入到 HTML 页中的 JavaScript 代码片段。
  
    ![实际用户度量密钥的 Javascript 代码](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
-   **图 2：实际用户度量密钥和度量 JavaScript**
+   图 2：真实用户度量密钥和度量 JavaScript
  
-   6. 单击“复制”按钮复制 RUM 密钥。 
+6. 单击“复制”按钮复制 RUM 密钥。 
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>步骤 2：使用 Mobile Center SDK 的 RUM 包检测应用
 
@@ -72,7 +72,7 @@ ms.locfileid: "50138406"
     在 **app/build.gradle** 文件中添加以下行：
 
     ```groovy
-    dependencies {   
+    dependencies {
      
         def mobileCenterSdkVersion = '0.12.1-16+3fe5b08'
         compile "com.microsoft.azure.mobile:mobile-center-rum:${mobileCenterSdkVersion}"

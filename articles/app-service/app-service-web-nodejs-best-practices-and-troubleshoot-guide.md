@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051845"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898850"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
@@ -90,7 +90,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-一个以分号分隔的文件列表，系统将监视其更改。 任何文件更改会导致应用程序回收。 每个条目都包含可选目录名称，以及相对于主要应用程序入口点所在目录的必要文件名。 只有文件名部分可以使用通配符。 默认值为 `*.js;web.config`
+一个以分号分隔的文件列表，系统将监视其更改。 任何文件更改会导致应用程序回收。 每个条目都包含可选目录名称，以及相对于主要应用程序入口点所在目录的必要文件名。 只有文件名部分可以使用通配符。 默认值为 `*.js;iisnode.yml`
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
@@ -118,7 +118,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled（请勿在实际生产站点上启用）
 
-此设置控制调试功能。 Iisnode 与节点检查器集成。 通过启用此设置，可启用节点应用程序的调试功能。 启用此设置后，iisnode 会在对 Node 应用程序发出第一个调试请求时，在“debuggerVirtualDir”目录中创建 node-inspector 文件。 可将请求发送到 http://yoursite/server.js/debug，以加载 node-inspector。 可以使用“debuggerPathSegment”设置来控制调试 URL 段。 默认情况下，debuggerPathSegment=’debug’。 可将 `debuggerPathSegment` 设置为 GUID 之类的值，这样，其他人就更难发现。
+此设置控制调试功能。 Iisnode 与节点检查器集成。 通过启用此设置，可启用节点应用程序的调试功能。 启用此设置后，iisnode 会在对 Node 应用程序发出第一个调试请求时，在“debuggerVirtualDir”目录中创建 node-inspector 文件。 可将请求发送到 `http://yoursite/server.js/debug`，以加载 node-inspector。 可以使用“debuggerPathSegment”设置来控制调试 URL 段。 默认情况下，debuggerPathSegment=’debug’。 可将 `debuggerPathSegment` 设置为 GUID 之类的值，这样，其他人就更难发现。
 
 有关调试的详细信息，请参阅[在 Windows 上调试 node.js 应用程序](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html)。
 
@@ -133,7 +133,7 @@ agentkeepalive 模块确保在 Azure Web 应用 VM 上重复使用套接字。 �
 [agentKeepALive ](https://www.npmjs.com/package/agentkeepalive) 配置示例：
 
 ```nodejs
-var keepaliveAgent = new Agent({
+let keepaliveAgent = new Agent({
     maxSockets: 40,
     maxFreeSockets: 10,
     timeout: 60000,
@@ -155,9 +155,9 @@ var keepaliveAgent = new Agent({
 例如，假设需要分析如下所示的 hello world 应用：
 
 ```nodejs
-var http = require('http');
+const http = require('http');
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-转到调试控制台站点 https://yoursite.scm.azurewebsites.net/DebugConsole。
+转到调试控制台站点 `https://yoursite.scm.azurewebsites.net/DebugConsole`。
 
 进入 site/wwwroot 目录。 将会看到一个命令提示符，如以下示例所示：
 
@@ -185,12 +185,12 @@ http.createServer(function (req, res) {
 现在，编辑 server.js 以分析应用程序。
 
 ```nodejs
-var http = require('http');
-var profiler = require('v8-profiler');
-var fs = require('fs');
+const http = require('http');
+const profiler = require('v8-profiler');
+const fs = require('fs');
 
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }

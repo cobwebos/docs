@@ -12,19 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: d2093760dcc17041f8fece19e6f3165b19f7d678
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 3bbcf5c2b6fb0939c47e24f25c1d5d834eb07dfb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805209"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004271"
 ---
-<a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>将 Microsoft Dynamics 365 Business Central 应用带入 Microsoft AppSource
-===============================================================================
+# <a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>将 Microsoft Dynamics 365 Business Central 应用带入 Microsoft AppSource
 
-使用 Dynamics 365 Business Central 作为应用生成器的平台有很多好处：
+还有很多有关使用的 Dynamics 365 Business Central 作为平台应用程序构建者的权益：
 
 -   使用你的专业知识丰富 Dynamics 365 Business Central，这是一个经过验证的 Microsoft 联机解决方案。
 -   利用 Dynamics 365 品牌 - 数百万用户了解并信任的品牌。
@@ -38,11 +37,18 @@ ms.locfileid: "48805209"
 2.  与我们分享你的应用创意。
     - 开发应用的技术方面
     - 开发应用的营销方面
-4.  **发布应用。**
+4.  *发布应用。*
 
-典型的申请流程和时间线如下所示： 
+
+## <a name="application-process-and-timeline"></a>应用程序进程和时间线
+
+下图描述了典型的应用程序进程和时间线： 
 
 ![Dynamics 365 Business Central 应用的发布序列](./media/d365-financials/image001.png)
 
-若要了解有关此应用程序类型的详细信息，请参阅[宣布推出 Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central/finance-and-operations-business-edition-to-business-central/)。
 
+## <a name="next-steps"></a>后续步骤
+
+若要了解有关此应用程序类型的详细信息，请参阅[宣布推出 Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central/finance-and-operations-business-edition-to-business-central/)。  此外，如果尚未这样做，请查看[Office 365，Dynamics 365，PowerApps 和 Power BI 产品/服务发布指南](../appsource-offer-publishing-guide.md)
+
+后这些准备，可以创建一个新[Microsoft Dynamics 365 Business Central 产品/服务](./d365-finance-create-new-offer.md)。

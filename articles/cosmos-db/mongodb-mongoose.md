@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 26eccfd2a144d5bfcb285e6b52af246c3eefde75
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 23275bc639b445b55cafb72c929514541ba00660
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822028"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105941"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 
@@ -22,7 +22,7 @@ ms.locfileid: "55822028"
 
 Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,15 +49,15 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 
 1. 将一个新文件添加到该文件夹，并将此文件命名为 ```index.js```。
 1. 使用一个 ```npm install``` 选项安装所需的包：
-    * Mongoose：```npm install mongoose@5 --save```
+   * Mongoose：```npm install mongoose@5 --save```
 
-    > [!Note]
-    > 下面的 Mongoose 示例连接基于 Mongoose 5+，后者自早期版本以来已发生变化。
+     > [!Note]
+     > 下面的 Mongoose 示例连接基于 Mongoose 5+，后者自早期版本以来已发生变化。
     
-    * Dotenv（若要从 .env 文件加载机密）：```npm install dotenv --save```
+   * Dotenv（若要从 .env 文件加载机密）：```npm install dotenv --save```
 
-    >[!Note]
-    > ```--save``` 标志将依赖项添加到 package.json 文件。
+     >[!Note]
+     > ```--save``` 标志将依赖项添加到 package.json 文件。
 
 1. 导入 index.js 文件中的依赖项。
     ```JavaScript
@@ -161,25 +161,25 @@ Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.h
     ```
 
 1. 现在，我们创建另一个架构和对象。 这一次，我们要针对家庭成员可能感兴趣的“Vacation Destinations”创建一个架构。
-    1. 我们按前面所述创建方案
-    ```JavaScript
-    const VacationDestinations = mongoose.model('VacationDestinations', new mongoose.Schema({
-        name: String,
-        country: String
-    }));
-    ```
+   1. 我们按前面所述创建方案
+      ```JavaScript
+      const VacationDestinations = mongoose.model('VacationDestinations', new mongoose.Schema({
+       name: String,
+       country: String
+      }));
+      ```
 
-    1. 创建示例对象（可将多个对象添加到此架构）并将其保存。
-    ```JavaScript
-    const vacaySpot = new VacationDestinations({
-        name: "Honolulu",
-        country: "USA"
-    });
+   1. 创建示例对象（可将多个对象添加到此架构）并将其保存。
+      ```JavaScript
+      const vacaySpot = new VacationDestinations({
+       name: "Honolulu",
+       country: "USA"
+      });
 
-    vacaySpot.save((err, saveVacay) => {
-        console.log(JSON.stringify(saveVacay));
-    });
-    ```
+      vacaySpot.save((err, saveVacay) => {
+       console.log(JSON.stringify(saveVacay));
+      });
+      ```
 
 1. 现在，请转到 Azure 门户，可以看到 Cosmos DB 中创建了两个集合。
 
@@ -251,40 +251,40 @@ Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.h
     ```
 
 1. 最后，创建模型的对象并将其保存。
-    1. 将对象添加到“Family”模型。
-    ```JavaScript
-    const family_common = new Family_common({
-        lastName: "Volum",
-        parents: [
-            { firstName: "Thomas" },
-            { firstName: "Mary Kay" }
-        ],
-        children: [
-            { firstName: "Ryan", gender: "male", grade: 8 },
-            { firstName: "Patrick", gender: "male", grade: 7 }
-        ],
-        pets: [
-            { givenName: "Blackie" }
-        ],
-        address: { country: "USA", state: "WA", city: "Seattle" }
-    });
+   1. 将对象添加到“Family”模型。
+      ```JavaScript
+      const family_common = new Family_common({
+       lastName: "Volum",
+       parents: [
+           { firstName: "Thomas" },
+           { firstName: "Mary Kay" }
+       ],
+       children: [
+           { firstName: "Ryan", gender: "male", grade: 8 },
+           { firstName: "Patrick", gender: "male", grade: 7 }
+       ],
+       pets: [
+           { givenName: "Blackie" }
+       ],
+       address: { country: "USA", state: "WA", city: "Seattle" }
+      });
 
-    family_common.save((err, saveFamily) => {
-        console.log("Saved: " + JSON.stringify(saveFamily));
-    });
-    ```
+      family_common.save((err, saveFamily) => {
+       console.log("Saved: " + JSON.stringify(saveFamily));
+      });
+      ```
 
-    1. 接下来，将对象添加到“VacationDestinations”模型，并将其保存。
-    ```JavaScript
-    const vacay_common = new Vacation_common({
-        name: "Honolulu",
-        country: "USA"
-    });
+   1. 接下来，将对象添加到“VacationDestinations”模型，并将其保存。
+      ```JavaScript
+      const vacay_common = new Vacation_common({
+       name: "Honolulu",
+       country: "USA"
+      });
 
-    vacay_common.save((err, saveVacay) => {
-        console.log("Saved: " + JSON.stringify(saveVacay));
-    });
-    ```
+      vacay_common.save((err, saveVacay) => {
+       console.log("Saved: " + JSON.stringify(saveVacay));
+      });
+      ```
 
 1. 现在，如果返回到 Azure 门户，可以看到只有一个名为 ```alldata``` 的集合，其中包含“Family”和“VacationDestinations”数据。
 

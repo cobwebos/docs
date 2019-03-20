@@ -5,14 +5,14 @@ services: application-gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/23/2018
-ms.author: amsriva
-ms.openlocfilehash: fcb49f532d5dfcd340baf017bd55c69d4e81e0e6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 3/12/2019
+ms.author: victorh
+ms.openlocfilehash: 16ba6b73dd0c64298f319d4b18750d753f166987
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630676"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849374"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>应用程序网关的端到端 SSL 概述
 
@@ -20,7 +20,9 @@ ms.locfileid: "53630676"
 
 使用端到端 SSL 可以安全地将敏感数据以加密方式传输到后端，同时仍可利用应用程序网关提供的第 7 层负载均衡功能的优点。 部分功能包括：基于 Cookie 的会话相关性、基于 URL 的路由、基于站点的路由支持，或注入 X-Forwarded-* 标头。
 
-如果配置为端到端 SSL 通信模式，应用程序网关会在网关上终止 SSL 会话，并解密用户流量。 然后，它会应用配置的规则，以选择要将流量路由到的适当后端池实例。 应用程序网关接下来会初始化到后端服务器的新 SSL 连接，并先使用后端服务器的公钥证书重新加密数据，然后再将请求传输到后端。 要启用端到端 SSL，请将 BackendHTTPSetting 中的协议设置设为 HTTPS，然后再将其应用到后端池。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
+如果配置为端到端 SSL 通信模式，应用程序网关会在网关上终止 SSL 会话，并解密用户流量。 然后，它会应用配置的规则，以选择要将流量路由到的适当后端池实例。 应用程序网关接下来会初始化到后端服务器的新 SSL 连接，并先使用后端服务器的公钥证书重新加密数据，然后再将请求传输到后端。 设置协议设置启用端到端 SSL **BackendHTTPSetting**到 HTTPS，随后将其应用到后端池。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
+
+SSL 策略适用于前端和后端流量。 在前端，应用程序网关充当服务器，并强制实施策略。 在后端，应用程序网关充当客户端，并在 SSL 握手期间将协议/密码信息发送作为首选项。
 
 ![端到端 ssl 方案][1]
 
@@ -39,10 +41,10 @@ ms.locfileid: "53630676"
 
 - 由 CN 与 HTTP 后端设置中的主机名匹配的知名 CA 颁发机构签名的证书不需要任何额外的步骤即可使端到端 SSL 工作。 
 
-   例如，如果后端证书由知名 CA 颁发并具有 contoso.com 的 CN，并且后端 http 设置的主机字段也设置为 contoso.com，则不需要其他步骤。 可以将后端 http 设置协议设置为 HTTPS，并且运行状况探测和数据路径都将启用 SSL。 如果使用 Azure 应用服务或其他 Azure Web 服务作为后端，则这些也是隐式受信任的，端到端 SSL 不需要其他步骤。
+   例如，如果后端证书由知名 CA 颁发并具有 contoso.com 的 CN，并且后端 http 设置的主机字段也设置为 contoso.com，则不需要其他步骤。 可以将后端 http 设置协议设置为 HTTPS，并且运行状况探测和数据路径都将启用 SSL。 如果你使用 Azure 应用服务或其他 Azure web 服务作为后端，然后这些也是隐式受信任并再执行其他步骤所需的端到端 SSL。
 - 如果证书是自签名证书，或是由未知中介签名的证书，那么，要在 v2 SKU 中启用端到端 SSL，必须定义受信任的根证书。 应用程序网关仅与符合以下条件的后端进行通信：后端的服务器证书的根证书与池关联的后端 http 设置中的受信任根证书列表之一匹配。
 - 除了根证书匹配之外，应用程序网关还会验证后端 http 设置中指定的主机设置是否与后端服务器的 SSL 证书提供的公用名 (CN) 的主机设置相匹配。 尝试与后端建立 SSL 连接时，应用程序网关会将服务器名称指示 (SNI) 扩展设置为后端 http 设置中指定的主机。
-- 如果已选择**从后端地址选择主机名**而不是选择后端 http 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 SSL 证书上的 CN 必须与其 FQDN 匹配。 在此方案中不支持具有 IP 的后端池成员。
+- 如果已选择**从后端地址选择主机名**而不是选择后端 http 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 SSL 证书上的 CN 必须与其 FQDN 匹配。 在此方案中不支持 ip 的后端池成员。
 - 根证书是来自后端服务器证书的 base64 编码的根证书。
 
 ## <a name="next-steps"></a>后续步骤

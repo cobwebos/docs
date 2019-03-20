@@ -3,8 +3,8 @@ title: include 文件
 description: include 文件
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/13/2018
-ms.author: andret
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 7ff04789a4ba5e5a689b3d3815852bc0fbcdc6a7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 2b30f95e050887130db1b2395f51e543a50e25d0
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988312"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203694"
 ---
 ## <a name="register-your-application"></a>注册应用程序
 
 如接下来的两部分中所述，可以采用两种方式之一注册应用程序。
 
-### <a name="option-1-express"></a>选项 1：快速
+### <a name="option-1-express"></a>选项 1：Express
 
 1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure)。
 2. 在“应用程序名称”中输入应用程序的名称。
@@ -44,7 +44,7 @@ ms.locfileid: "49988312"
     ```java
     final static String CLIENT_ID = "[Enter the application Id here]";
     ```
-<!-- Workaround for Docs conversion bug -->
+   <!-- Workaround for Docs conversion bug -->
 7. 在“应用” > “清单”下，打开 *AndroidManifest.xml* 文件。
 8. 在 `manifest\application` 中，添加以下活动。 `BrowserTabActivity` 活动，它允许 Microsoft 在完成身份验证后回调应用程序：
 
@@ -64,5 +64,5 @@ ms.locfileid: "49988312"
         </intent-filter>
     </activity>
     ```
-<!-- Workaround for Docs conversion bug -->
+   <!-- Workaround for Docs conversion bug -->
 9. 在 `BrowserTabActivity` 中，将 `[Enter the application Id here]` 替换为应用程序/客户端 ID。

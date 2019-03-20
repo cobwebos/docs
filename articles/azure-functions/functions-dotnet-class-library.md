@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994533"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111474"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -50,7 +50,7 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
  | - host.json
 ```
 
-部署到 Azure 中函数应用的正是此目录。 Functions 运行时 [2.x 版](functions-versions.md) 中所需的绑定扩展[作为 NuGet 包添加到项目中](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017)。
+部署到 Azure 中函数应用的正是此目录。 Functions 运行时 [2.x 版](functions-versions.md) 中所需的绑定扩展[作为 NuGet 包添加到项目中](./functions-bindings-register.md#c-class-library-with-visual-studio-2017)。
 
 > [!IMPORTANT]
 > 生成过程将为每个函数创建一个 *function.json* 文件。 此 *function.json* 文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 要了解如何禁用函数，请参阅[如何禁用函数](disable-function.md#functions-2x---c-class-libraries)。
@@ -83,7 +83,7 @@ public static class SimpleExample
 * [输入和输出绑定](functions-triggers-bindings.md)通过使用属性修饰来进行此类标记。  
 * 用于[日志](#logging)的 `ILogger` 或 `TraceWriter`（仅限[版本 1.x](functions-versions.md#creating-1x-apps)）参数。
 * 用于[正常关闭](#cancellation-tokens)的 `CancellationToken` 参数。
-* 用于获取触发器元数据的[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)参数。
+* 用于获取触发器元数据的[绑定表达式](./functions-bindings-expressions-patterns.md)参数。
 
 函数签名中的参数顺序并不重要。 例如，可以在其他绑定之前或之后放置触发器参数，也可以在触发器或绑定参数之前或之后添加记录器参数。
 
@@ -173,7 +173,7 @@ Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1.x 项目�
 
 ```xml
 <PropertyGroup>
-  <TargetFramework>netstandard2.0</TargetFramework>
+  <TargetFramework>netcoreapp2.1</TargetFramework>
   <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 </PropertyGroup>
 <ItemGroup>
@@ -205,7 +205,7 @@ Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install
 
 ## <a name="binding-to-method-return-value"></a>绑定到方法返回值
 
-通过将属性应用于方法返回值，可以对输出绑定使用方法返回值。 有关示例，请参阅[触发器和绑定](functions-triggers-bindings.md#using-the-function-return-value)。 
+通过将属性应用于方法返回值，可以对输出绑定使用方法返回值。 有关示例，请参阅[触发器和绑定](./functions-bindings-return-value.md)。 
 
 仅当成功的函数执行始终将返回值传递给输出绑定时，才使用返回值。 否则，请使用 `ICollector` 或 `IAsyncCollector`，如以下部分所示。
 

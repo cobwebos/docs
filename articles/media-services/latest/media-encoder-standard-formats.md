@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 3bc42bf5b83f9ff983c3d8d88a9a496cc395096c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 4c7e0e091aeecb205c63b8fa7e97d7592f15b856
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992579"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084372"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
 
@@ -27,7 +27,7 @@ ms.locfileid: "55992579"
 ## <a name="input-containerfile-formats"></a>输入容器/文件格式
 
 | 文件格式（文件扩展名） | 支持 |
-| --- | --- | --- | --- |
+| --- | --- |
 | FLV（使用 H.264 和 AAC 编解码器）(.flv) |是 |
 | MXF    (.mxf) |是 |
 | GXF    (.gxf) |是 |
@@ -56,7 +56,7 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 
 ## <a name="input-video-codecs"></a>输入视频编解码器
 | 输入视频编解码器 | 支持 |
-| --- | --- | --- | --- |
+| --- | --- |
 | AVC 8 位/10 位，最高支持 4:2:2，包括 AVCIntra |8 位 4:2:0 和 4:2:2 |
 | Avid DNxHD（MXF 格式） |是 |
 | DVCPro/DVCProHD（MXF 格式） |是 |
@@ -79,8 +79,8 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 
 ## <a name="input-audio-codecs"></a>输入音频编解码器
 | 输入音频编解码器 | 支持 |
-| --- | --- | --- | --- |
-| AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
+| --- | --- |
+| AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
 | MPEG Layer 2 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |是 |
 | Windows Media 音频 |是 |

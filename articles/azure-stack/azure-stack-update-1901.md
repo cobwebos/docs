@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/20/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 0bbf76e16334ae4847ec6f7fbf3aa88fb508e84d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731144"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226855"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新
 
@@ -34,14 +34,14 @@ ms.locfileid: "57731144"
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure Stack 1901 更新内部版本号是**1.1901.0.95**或**1.1901.0.99** 2019 年 2 月 26 日之后。 请参阅以下说明：
+Azure Stack 1901 更新内部版本号为 **1.1901.0.95**（在 2019 年 2 月 26 日以后则为 **1.1901.0.99**）。 请查看以下说明：
 
 > [!IMPORTANT]  
-> Microsoft 已发现可能会影响到 1901 年从 1811 (1.1811.0.101) 更新的客户的问题和已发布的更新的 1901年程序包来解决问题： 生成 1.1901.0.99，从 1.1901.0.95 更新。 已更新为 1.1901.0.95 的客户不需要采取进一步的措施。
+> Microsoft 已发现可能会影响到 1901 年从 1811 (1.1811.0.101) 更新的客户的问题和已发布的更新的 1901年程序包来解决问题： 生成 1.1901.0.99，从 1.1901.0.95 更新。 已更新到 1.1901.0.95 的客户不需执行其他操作。
 >
-> 1811 上的已连接的客户将会自动看到管理员门户中提供的新 1901 (1.1901.0.99) 包，并应将其准备就绪时安装。 断开连接的客户可以下载并导入新 1901年包使用相同的过程[此处所述](azure-stack-apply-updates.md)。
+> 系统会在管理员门户中为使用 1811 的已连接客户自动显示新的已发布的 1901 (1.1901.0.99) 包，该包在做好准备的情况下即可安装。 断开连接的客户可以根据[此处所述](azure-stack-apply-updates.md)的相同过程下载和导入新的 1901 包。
 >
-> 安装的下一个完整或修补程序包时，具有 1901年任一版本的客户不会受到影响。
+> 不管使用哪一个版本的 1901，客户在安装下一个完整的包或修补程序包时都不会受影响。
 
 ## <a name="hotfixes"></a>修补程序
 
@@ -58,12 +58,12 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - **1809**：[KB 4481548 – Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**：当前没有修补程序可用。
-- **1901**：当前没有修补程序可用。
+- **1901**：[KB 4481548 – Azure Stack 修补程序 1.1901.2.103](https://support.microsoft.com/help/4494720)
 
 ## <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
-- 在更新到 1901 之前，请先安装 1811 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)（如果有）。
+> - 在更新到 1901 之前，请先安装 1811 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)（如果有）。
 
 - 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。
 
@@ -89,7 +89,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
    * **AzureRm.Storage**  
          AzureRm 汇总模块现在包含已发布的 5.0.4 版，支持 **api-version 2017-10-01**。  
    * **AzureRm.Compute**  
-         在 `New-AzureRMVM` 和 `NewAzureRMVMSS` 中添加了简单参数集，`-ImageName` 参数支持指定用户映像。  
+         在 `New-AzureRmVM` 和 `New-AzureRmVmss` 中添加了简单参数集，`-Image` 参数支持指定用户映像。  
    * **AzureRm.Insights**  
          AzureRm 汇总模块现在包含已发布的 5.1.5 版，支持适用于指标、指标定义资源类型的 **api-version 2018-01-01**。
 
@@ -115,7 +115,8 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 <!-- 16523695 – IS, ASDK -->
 - 修复了以下问题：在将虚拟网络的 DNS 设置从“使用 Azure Stack DNS”更新为“自定义 DNS”之后，不使用新设置更新实例。
 
-- <!-- 3235634 – IS, ASDK -->修复了以下问题：部署包含 **v2** 后缀大小的 VM（例如 **Standard_A2_v2**）需要将后缀指定为 **Standard_A2_v2**（小写 v）。 使用全球 Azure 时，现在可以使用 **Standard_A2_V2**（大写 V）。
+- <!-- 3235634 – IS, ASDK -->
+  修复了以下问题：部署其大小包含 **v2** 后缀的 VM（例如 **Standard_A2_v2**）时，需要将后缀指定为 **Standard_A2_v2**（小写 v）。 使用全球 Azure 时，现在可以使用 **Standard_A2_V2**（大写 V）。
 
 <!-- 2869209 – IS, ASDK --> 
 - 修复了以下问题：使用 [Add-AzsPlatformImage cmdlet](/powershell/module/azs.compute.admin/add-azsplatformimage) 时必须使用 **-OsUri** 参数作为存储帐户 URI（磁盘将上传到该存储帐户）。 现在还可以使用磁盘的本地路径。
@@ -227,7 +228,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，会显示基板管理控制器 (BMC) 中的一条警告消息。 可以放心地忽略此警告。
 
-- <!-- 2468613 - IS -->在安装此更新的过程中，可能会看到标题为 `Error – Template for FaultType UserAccounts.New is missing.` 的警报。可以放心忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
+- <!-- 2468613 - IS --> 在安装此更新的过程中，可能会看到标题为 `Error – Template for FaultType UserAccounts.New is missing.` 的警报。可以放心忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
 
 ## <a name="post-update-steps"></a>更新后步骤
 
@@ -291,9 +292,9 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 <!-- 3632798 - IS, ASDK -->
 - 在门户中，如果添加入站安全规则并选择“服务标记”作为源，“服务标记”列表中会显示多个不适用于 Azure Stack 的选项。 在 Azure Stack 中有效的选项仅限以下几个：
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     在 Azure Stack 中，不支持将其他选项用作源标记。 同样，如果添加出站安全规则并选择“服务标记”作为目标，则显示与“源标记”相同的选项列表。 仅有的有效选项与“源标记”的有效选项相同，如以上列表中所述。
 

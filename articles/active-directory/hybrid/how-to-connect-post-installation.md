@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 576d3d4b9c793c564410335ce35ddd4c40697e4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 291b3d506993cfea89be072684835c0d4efe75f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197396"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095443"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>后续步骤以及如何管理 Azure AD Connect
 使用本文中介绍的操作流程，根据组织的需要和要求自定义 Azure Active Directory (Azure AD) Connect。  
@@ -51,23 +51,27 @@ ms.locfileid: "56197396"
 4. 在“目录”页的顶部，选择“目录集成”。
 5. 在“与本地 Active Directory 集成”的下方，注意上次同步时间。
 
-<center>![目录同步时间](./media/how-to-connect-post-installation/verify.png)</center>
+<center>
+
+![目录同步时间](./media/how-to-connect-post-installation/verify.png)</center>
 
 ## <a name="start-a-scheduled-synchronization-task"></a>启动计划的同步任务
-如果需要运行同步任务，可以通过再次运行 Azure AD Connect 向导来执行此操作。  需要提供 Azure AD 凭据。  在向导中，选择“自定义同步选项”任务，并一直单击“下一步”完成向导。 最后，请确保已选中“初始配置完成后立即开始同步过程”框。
+如果需要运行同步任务，可以通过再次运行 Azure AD Connect 向导来执行此操作。  需要提供 Azure AD 凭据。  在向导中，选择“自定义同步选项”任务，并一直单击“下一步”直到完成向导。 最后，请确保已选中“初始配置完成后立即开始同步过程”框。
 
-<center>![开始同步](./media/how-to-connect-post-installation/startsynch.png)</center>
+<center>
+
+![启动同步](./media/how-to-connect-post-installation/startsynch.png)</center>
 
 有关 Azure AD Connect 同步计划程序的详细信息，请参阅 [Azure AD Connect 计划程序](how-to-connect-sync-feature-scheduler.md)。
 
 ## <a name="additional-tasks-available-in-azure-ad-connect"></a>Azure AD Connect 中提供的其他任务
-在完成 Azure AD Connect 的初始安装后，随时可以从 Azure AD Connect 启动页或桌面快捷方式再次启动向导。  会发现，再次运行向导会以其他任务的形式提供一些新选项。  
+在完成 Azure AD Connect 的初始安装后，随时可以从 Azure AD Connect 启动页或桌面快捷方式再次启动向导。  在再次完成向导的过程中，会发现，它会以“其他任务”的形式提供一些新选项。  
 
 下表提供了这些任务的摘要以及各个任务的简要描述。
 
 ![其他任务列表](./media/how-to-connect-post-installation/addtasks.png)
 
-| 其他任务 | 说明 |
+| 其他任务 | 描述 |
 | --- | --- |
 | **查看所选方案** |查看当前的 Azure AD Connect 解决方案。  包括常规设置、同步的目录和同步设置等。 |
 | **自定义同步选项** |更改当前配置，包括在配置中添加其他 Active Directory 林，或启用同步选项（如用户、组、设备或密码回写）。 |

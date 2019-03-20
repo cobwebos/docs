@@ -17,12 +17,12 @@ ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68593087c1fbb912cafb9c886f43f947744c5651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 07466e40834b8bfaf4a452cf728bae517b8c7b00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122702"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>快速入门：要求使用 Azure Active Directory 条件访问对特定应用进行 MFA 
 
@@ -37,7 +37,7 @@ ms.locfileid: "56189372"
 
 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 若要完成本快速入门中的方案，你需要：
 
@@ -99,7 +99,7 @@ ms.locfileid: "56189372"
 
 5. 在“新建”页面的“名称”文本框中，键入“需要 MFA 才能访问 Azure 门户”。
 
-    ![Name](./media/app-based-mfa/05.png)
+    ![名称](./media/app-based-mfa/05.png)
 
 6. 在“分配”部分中，单击“用户和组”。
 
@@ -164,7 +164,7 @@ ms.locfileid: "56189372"
 - **Isabella Simonsen** 作为用户 
 - **Microsoft Azure 管理**作为云应用
 
- 单击“What If”会创建一个模拟报告，该报告：
+  单击“What If”会创建一个模拟报告，该报告：
 
 - 在“将应用的策略”下显示“需要 MFA 才能访问 Azure 门户” 
 - 显示“需要多重身份验证”作为“授权控件”。

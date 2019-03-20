@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 647923ce87e66314d7a95beb88cc842230f28774
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002070"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077065"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>（已弃用）在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "53002070"
 
 [Canary 发布](https://martinfowler.com/bliki/CanaryRelease.html)是 Netflix、Facebook 和 Spotify 等创新组织采用的一种智能部署策略。 它是一种非常有效的方案，因为它可以减少问题，引入安全网络，并提高创新能力。 为什么它没有被所有公司使用？ 将 CI/CD 管道扩展为包含 Canary 策略会增大复杂性，并且需要丰富的 devops（开发运营）知识和经验。 在小型公司和企业尚未涉足之前，这些因素就足以让它们望而却步。 
 
-[Vamp](http://vamp.io/) 是一个开源系统，旨在简化这种过渡，在首选的容器计划程序中添加 Canary 发布功能。 Vamp 的 Canary 功能并不局限于基于百分比的实施。 可以根据各种条件筛选和拆分流量，例如，定位特定的用户、IP 范围或设备。 Vamp 可以跟踪和分析性能指标，基于实际数据实现自动化。 可以设置为出错时自动回滚，或者根据负载或延迟缩放单个服务变体。
+[Vamp](https://vamp.io/) 是一个开源系统，旨在简化这种过渡，在首选的容器计划程序中添加 Canary 发布功能。 Vamp 的 Canary 功能并不局限于基于百分比的实施。 可以根据各种条件筛选和拆分流量，例如，定位特定的用户、IP 范围或设备。 Vamp 可以跟踪和分析性能指标，基于实际数据实现自动化。 可以设置为出错时自动回滚，或者根据负载或延迟缩放单个服务变体。
 
 ## <a name="set-up-azure-container-service-with-dcos"></a>设置 Azure 容器服务和 DC/OS
 
@@ -62,12 +62,12 @@ Vamp 需要使用 Elasticsearch 来收集和聚合指标。 可以使用 [magnet
 
 2. 在“部署新服务”弹出对话框中选择“JSON 模式”。
 
-  ![选择 JSON 模式](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
+   ![选择 JSON 模式](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
 
 3. 粘贴以下 JSON。 此配置在 Elasticsearch 端口上运行具有 1 GB RAM 的容器和基本运行状况检查。
   
-  ```JSON
-  {
+   ```JSON
+   {
     "id": "elasticsearch",
     "instances": 1,
     "cpus": 0.2,
@@ -89,47 +89,47 @@ Vamp 需要使用 Elasticsearch 来收集和聚合指标。 可以使用 [magnet
         "maxConsecutiveFailures": 0
       }
     ]
-  }
-  ```
+   }
+   ```
   
 
 3. 单击“部署”。
 
-  DC/OS 将部署 Elasticsearch 容器。 可以在“服务”页上跟踪进度。  
+   DC/OS 将部署 Elasticsearch 容器。 可以在“服务”页上跟踪进度。  
 
-  ![部署 e?Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
+   ![部署 e?Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
 
 ### <a name="deploy-vamp"></a>部署 Vamp
 
 Elasticsearch 报告“正在运行”后，可以添加 Vamp DC/OS 通用包。 
 
 1. 转到“通用”，并搜索 **vamp**。 
-  ![DC/OS 通用包中的 Vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
+   ![DC/OS 通用包中的 Vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
 2. 单击 vamp 包旁边的“安装”，并选择“高级安装”。
 
 3. 向下滚动并输入以下 elasticsearch-url：`http://elasticsearch.marathon.mesos:9200`。 
 
-  ![输入 Elasticsearch URL](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
+   ![输入 Elasticsearch URL](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
 4. 单击“检查并安装”，然后单击“安装”开始部署。  
 
-  DC/OS 将部署全部所需的 Vamp 组件。 可以在“服务”页上跟踪进度。
+   DC/OS 将部署全部所需的 Vamp 组件。 可以在“服务”页上跟踪进度。
   
-  ![将 Vamp 部署为通用包](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
+   ![将 Vamp 部署为通用包](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
   
 5. 完成部署后，可以访问 Vamp UI：
 
-  ![DC/OS 中的 Vamp 服务](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
+   ![DC/OS 中的 Vamp 服务](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
   
-  ![Vamp UI](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
+   ![Vamp UI](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
 
 
 ## <a name="deploy-your-first-service"></a>部署第一个服务
 
 Vamp 启动并运行后，请从蓝图部署一个服务。 
 
-最简单形式的 [Vamp 蓝图](http://vamp.io/documentation/using-vamp/blueprints/)描述了要部署的终结点（网关）、群集和服务。 Vamp 使用群集将相同服务的不同变体分组成逻辑组，以用于 Canary 发布或 A/B 测试。  
+最简单形式的 [Vamp 蓝图](https://vamp.io/documentation/using-vamp/blueprints/)描述了要部署的终结点（网关）、群集和服务。 Vamp 使用群集将相同服务的不同变体分组成逻辑组，以用于 Canary 发布或 A/B 测试。  
 
 此方案使用名为 [**sava**](https://github.com/magneticio/sava)、版本为 1.0 的示例整体应用程序。 该整体应用程序打包在一个 Docker 容器中，该容器位于 Docker 中心的 magneticio/sava:1.0.0 下面。 正常情况下，该应用在端口 8080 上运行，但在本例中，你希望在端口 9050 下将它公开。 使用简单的蓝图通过 Vamp 部署该应用。
 
@@ -139,11 +139,11 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
 
 3. 粘贴以下蓝图 YAML。 此蓝图包含一个群集，该群集只包含一个要在后续步骤中更改的服务变体：
 
-  ```YAML
-  name: sava                        # deployment name
-  gateways:
+   ```YAML
+   name: sava                        # deployment name
+   gateways:
     9050: sava_cluster/webport      # stable endpoint
-  clusters:
+   clusters:
     sava_cluster:               # cluster to create
      services:
         -
@@ -152,7 +152,7 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
             deployable: magneticio/sava:1.0.0
             ports:
               webport: 8080/http # cluster endpoint, used for canary releasing
-  ```
+   ```
 
 4. 单击“ **保存**”。 Vamp 将启动部署。
 
@@ -202,9 +202,9 @@ Vamp 在 DC/OS 代理节点上部署了 sava 服务，从而在端口 9050 上�
 
 2. 单击“添加”并粘贴以下蓝图 YAML：此蓝图描述要在现有群集 (sava_cluster) 中部署的新服务变体 (sava:1.1.0)。
 
-  ```YAML
-  name: sava:1.1.0      # blueprint name
-  clusters:
+   ```YAML
+   name: sava:1.1.0      # blueprint name
+   clusters:
     sava_cluster:       # cluster to update
       services:
         -
@@ -213,17 +213,17 @@ Vamp 在 DC/OS 代理节点上部署了 sava 服务，从而在端口 9050 上�
             deployable: magneticio/sava:1.1.0    
             ports:
               webport: 8080/http # cluster endpoint to update
-  ```
+   ```
   
 3. 单击“ **保存**”。 该蓝图会存储，并列在“蓝图”页上。
 
 4. 在 sava:1.1 蓝图中打开操作菜单，并单击“合并到”。
 
-  ![Vamp UI - 蓝图](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
+   ![Vamp UI - 蓝图](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
 5. 选择“sava”部署，并单击“合并”。
 
-  ![Vamp UI - 将蓝图合并到部署](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
+   ![Vamp UI - 将蓝图合并到部署](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
 Vamp 会在正在运行的部署的 **sava_cluster** 中，连同 sava:1.0.0 一起部署蓝图中描述的新 sava:1.1.0 服务变体。 
 
@@ -241,11 +241,11 @@ Vamp 会在正在运行的部署的 **sava_cluster** 中，连同 sava:1.0.0 一
 
 2. 将权重分配设置为 50%/50%，然后单击“保存”。
 
-  ![Vamp UI - 网关权重滑块](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
+   ![Vamp UI - 网关权重滑块](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
 3. 返回到浏览器并刷新 sava 页面几次。 现在，sava 应用程序会在 sava:1.0 页与 sava:1.1 页之间切换。
 
-  ![交替 sava1.0 和 sava1.1 服务](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
+   ![交替 sava1.0 和 sava1.1 服务](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
 
 
   > [!NOTE]
@@ -264,23 +264,23 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 
 2. 输入条件 **user-agent == Firefox**，并单击“Vamp UI - 保存”。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)
 
-  Vamp 将添加默认强度为 0% 的条件。 若要开始筛选流量，需要调整条件强度。
+   Vamp 将添加默认强度为 0% 的条件。 若要开始筛选流量，需要调整条件强度。
 
 3. 单击“Vamp UI - 编辑”更改应用到条件的**强度**。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)
  
 4. 将“强度”设置为 100%，然后单击“Vamp UI - 保存”以保存该设置。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)
 
-  现在，Vamp 会将与该条件的所有流量（所有 Firefox 用户）发送到 sava:1.0.0。
+   现在，Vamp 会将与该条件的所有流量（所有 Firefox 用户）发送到 sava:1.0.0。
 
-  ![Vamp UI - 将条件应用到网关](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
+   ![Vamp UI - 将条件应用到网关](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
 5. 最后，调整网关权重，以便将所有剩余流量（所有非 Firefox 用户）发送到新的 sava:1.1.0。 单击“权重”旁边的“Vamp UI - 编辑”并设置权重分配，以便将 100% 的流量定向到路由 sava/sava_cluster/sava:1.1.0/webport。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)
 
-  现在，未根据条件筛选的所有流量将定向到新的 sava:1.1.0。
+   现在，未根据条件筛选的所有流量将定向到新的 sava:1.1.0。
 
 6. 要查看筛选器的工作方式，请打开两个不同的浏览器（一个 Firefox 和一个其他浏览器），并从这两个浏览器访问 sava 服务。 所有 Firefox 请求将发送到 sava:1.0.0，而其他所有浏览器将定向到 sava:1.1.0。
 
-  ![Vamp UI - 筛选流量](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
+   ![Vamp UI - 筛选流量](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
 
 ## <a name="summing-up"></a>总结
 
@@ -291,9 +291,9 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何通过 [Vamp REST API](http://vamp.io/documentation/api/api-reference/) 管理 Vamp 操作。
+* 了解如何通过 [Vamp REST API](https://vamp.io/documentation/api/api-reference/) 管理 Vamp 操作。
 
 * 在 Node.js 中生成 Vamp 自动化脚本并以 [Vamp 工作流](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)的形式运行这些脚本。
 
-* 参阅其他 [VAMP 教程](http://vamp.io/documentation/tutorials/)。
+* 参阅其他 [VAMP 教程](https://vamp.io/documentation/tutorials/)。
 

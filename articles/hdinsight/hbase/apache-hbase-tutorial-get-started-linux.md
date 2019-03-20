@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: af604dbabe9df56322342230eaec70548f53c927
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 7f162412a099078302bb348dab9ad3171f9e2913
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794492"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199488"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight 中的 Apache HBase 入门示例
 
@@ -23,7 +23,7 @@ ms.locfileid: "53794492"
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 开始使用本 HBase 示例前，必须具有以下项目：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
@@ -33,7 +33,7 @@ ms.locfileid: "53794492"
 ## <a name="create-apache-hbase-cluster"></a>创建 Apache HBase 群集
 以下过程使用 Azure 资源管理器模板创建 HBase 群集以及相关的默认 Azure 存储帐户。 若要了解该过程与其他群集创建方法中使用的参数，请参阅 [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
-1. 单击下面的图像即可在 Azure 门户中打开该模板。 该模板位于 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中。
+1. 单击下面的图像即可在 Azure 门户中打开该模板。 模板位于[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. 在“自定义部署”边栏选项卡中输入以下值：
@@ -111,7 +111,7 @@ ms.locfileid: "53794492"
 
 HBase 提供了多种方法用于将数据载入表中。  有关详细信息，请参阅 [批量加载](https://hbase.apache.org/book.html#arch.bulk.load)。
 
-可在公共 Azure Blob 容器 *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt* 中找到示例数据文件。  该数据文件的内容为：
+示例数据文件可以位于公共 blob 容器*wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt*。  该数据文件的内容为：
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -175,14 +175,14 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
 REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终应该使用安全 HTTP (HTTPS) 来发出请求，确保安全地将凭据发送到服务器。
 
-2. 使用以下命令列出现有的 HBase 表：
+1. 使用以下命令列出现有的 HBase 表：
 
     ```bash
     curl -u <UserName>:<Password> \
     -G https://<ClusterName>.azurehdinsight.net/hbaserest/
     ```
 
-3. 使用以下命令创建包含两个列系列的新 HBase 表：
+1. 使用以下命令创建包含两个列系列的新 HBase 表：
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -194,7 +194,7 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
     ```
 
     架构以 JSON 格式提供。
-4. 使用以下命令插入一些数据：
+1. 使用以下命令插入一些数据：
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -212,7 +212,7 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
    * Sm9obiBEb2xl：John Dole
      
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) 允许插入多个（批处理）值。
-5. 使用以下命令获取行：
+1. 使用以下命令获取行：
    
     ```bash 
     curl -u <UserName>:<Password> \
@@ -247,15 +247,15 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 2. 在左侧菜单中，单击“HBase”。
 3. 在页面顶部单击“快速链接”，指向活动 Zookeeper 节点链接，并单击“HBase Master UI”。  该 UI 会在另一个浏览器标签页中打开：
 
-  ![HDInsight HBase HMaster UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![HDInsight HBase HMaster UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-  HBase Master UI 包含以下部分：
+   HBase Master UI 包含以下部分：
 
-  - 区域服务器
-  - 备份主机
-  - 表
-  - 任务
-  - 软件属性
+   - 区域服务器
+   - 备份主机
+   - 表
+   - 任务
+   - 软件属性
 
 ## <a name="delete-the-cluster"></a>删除群集
 为了避免不一致，建议在删除群集之前先禁用 HBase 表。
@@ -272,8 +272,6 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 若要了解更多信息，请参阅以下文章：
 
 * [HDInsight HBase 概述][hdinsight-hbase-overview]：Apache HBase 是构建于 Apache Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量非结构化和半结构化数据提供随机访问和高度一致性。
-
-[hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hbase-reference]: https://hbase.apache.org/book.html#importtsv

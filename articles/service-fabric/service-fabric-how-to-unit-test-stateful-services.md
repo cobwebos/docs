@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: a030860bcef41d7276e1356553b984f55e27ae1e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 65fccada665743cf293b4ee4bb8f786a4c01c58a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164149"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093899"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>为有状态服务创建单元测试
 对 Service Fabric 有状态服务进行单元测试可发现传统应用程序或特定于域的单元测试不一定会捕获的常见错误。 在为有状态服务开发单元测试时，应牢记一些特殊注意事项。
@@ -42,13 +42,13 @@ ms.locfileid: "55164149"
 作为测试的排列部分的一部分，将创建模拟副本集和状态管理器。 然后，副本集将自己为每个副本创建已测试服务的实例。 它还将自己执行生命周期事件，例如 `OnChangeRole` 和 `RunAsync`。 模拟状态管理器将确保对状态管理器执行的任何操作均按照实际状态管理器那样运行和保持。
 
 1. 创建将实例化正在测试的服务的服务工厂委托。 这应该与通常在 Service Fabric 服务或执行组件的 `Program.cs` 中找到的服务工厂回叫类似或相同。 这应遵循以下签名：
-```csharp
-MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
-```
+   ```csharp
+   MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
+   ```
 2. 创建 `MockReliableStateManager` 类的实例。 这将模拟与状态管理器的所有交互。
 3. 创建 `MockStatefulServiceReplicaSet<TStatefulService>` 的实例，其中 `TStatefulService` 是要测试服务的类型。 这将需要在步骤 #1 中创建的委托和在 #2 中实例化的状态管理器
 4. 将副本添加到副本集。 指定角色（如 Primary、ActiveSecondary、IdleSecondary）和副本的 ID
-> 保留副本 ID！ 这些将有可能在单元测试的行为和断言部分中使用。
+   > 保留副本 ID！ 这些将有可能在单元测试的行为和断言部分中使用。
 
 ```csharp
 //service factory to instruct how to create the service instance

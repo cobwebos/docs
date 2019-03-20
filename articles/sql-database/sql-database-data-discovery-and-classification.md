@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 3c5f087ed44c252737e7f45fde12a4b509637499
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892875"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202973"
 ---
 # <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL 数据库数据发现和分类
 
@@ -31,7 +31,7 @@ ms.locfileid: "55892875"
 数据发现和分类包含在[高级数据安全](sql-database-advanced-data-security.md) (ADS) 产品/服务中，该产品是高级 SQL 安全功能统一软件包。 可通过中心 SQL ADS 门户访问和管理数据发现和分类。
 
 > [!NOTE]
-> 本文档仅与 Azure SQL 数据库相关。 对于 SQL Server（本地），请参阅 [SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
+> 本文档仅与 Azure SQL 数据库相关。 SQL Server （本地），请参阅[SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
 
 ## <a id="subheading-1"></a>什么是数据发现和分类
 
@@ -144,7 +144,14 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) - 删除给定列的敏感度标签
 - [获取](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) - 获取给定列的敏感度标签
 - [按数据库列出当前项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 获取给定数据库的当前敏感度标签
-- [按数据库列出建议项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 获取给定数据库的当前敏感度标签
+- [按数据库列出建议项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 获取给定数据库的建议敏感度标签
+
+## <a name="permissions"></a>权限
+以下内置角色可以读取的 Azure SQL 数据库的数据分类： `Owner`， `Reader`， `Contributor`，`SQL Security Manager`和`User Access Administrator`。
+
+以下内置角色可以修改 Azure SQL 数据库的数据分类： `Owner`， `Contributor`， `SQL Security Manager`。
+
+详细了解[用于 Azure 资源的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 ## <a id="subheading-5"></a>后续步骤
 

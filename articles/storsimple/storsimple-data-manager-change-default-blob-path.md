@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: f73d9dcedee5165af752b9e10fb70de860e8e98b
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
-ms.translationtype: HT
+ms.openlocfilehash: cdaf991c25c23dee4f87b44142c1482bf892bcf2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
-ms.locfileid: "27862394"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011630"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>更改默认的 blob 路径
 
 当 StorSimple 数据管理器服务转换数据时，默认情况下，它会将转换后的 blob 放置在创建目标存储库期间指定的存储容器中。 blob 到达此位置时，可能需要将这些 blob 移动到备用位置。 本文介绍如何设置 Azure 函数以重命名默认 blob 文件路径，从而将 blob 移动到不同的位置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 确保 StorSimple 数据管理器服务中具有正确配置的作业定义。
 
@@ -33,7 +33,7 @@ ms.locfileid: "27862394"
 
 要创建 Azure 函数，请执行下列步骤：
 
-1. 转到 [Azure 门户](http://portal.azure.com/)。
+1. 转到 [Azure 门户](https://portal.azure.com/)。
 
 2. 单击“+ 创建资源”。 在“搜索”框中，输入“Function App”，并按 Enter。 在显示的应用列表中，选中并单击“Function App”。
 

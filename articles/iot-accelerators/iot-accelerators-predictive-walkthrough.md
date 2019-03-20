@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: bdb9b48549d24565fdafb9ac1c3215029445793c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 3387996dc0e1953eaafee9c4c61eb8faa865b654
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100478"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58172829"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>预测性维护解决方案加速器概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "56100478"
 
 ![逻辑体系结构][img-architecture]
 
-蓝色项是在部署解决方案加速器时，在同一区域中预配的 Azure 服务。 [预配页][lnk-azureiotsuite]显示了可部署解决方案加速器的区域列表。
+蓝色项是在部署解决方案加速器时，在同一区域中预配的 Azure 服务。 [预配页][lnk-azureiotsolutions]显示了可部署解决方案加速器的区域列表。
 
 绿色项是模拟的飞机引擎。 可以在[模拟设备](#simulated-devices)部分了解有关这些模拟设备的详细信息。
 
@@ -39,7 +39,7 @@ ms.locfileid: "56100478"
 
 ![加速器资源][img-resource-group]
 
-预配该解决方案加速器时，会收到一封电子邮件，其中包含机器学习工作区的链接。 还可以从 [Microsoft Azure IoT 解决方案加速器][lnk-azureiotsuite]页导航到机器学习工作区。 当解决方案处于“就绪”状态时，该页中会提供一个磁贴。
+预配该解决方案加速器时，会收到一封电子邮件，其中包含机器学习工作区的链接。 还可以从 [Microsoft Azure IoT 解决方案加速器][lnk-azureiotsolutions]页导航到机器学习工作区。 当解决方案处于“就绪”状态时，该页中会提供一个磁贴。
 
 ![机器学习模型][img-machine-learning]
 
@@ -53,7 +53,7 @@ ms.locfileid: "56100478"
 
 模拟设备可以处理在解决方案中通过 IoT 中心发送的以下命令：
 
-| 命令 | 说明 |
+| 命令 | 描述 |
 | --- | --- |
 | StartTelemetry |控制模拟的状态。<br/>使设备开始发送遥测 |
 | StopTelemetry |控制模拟的状态。<br/>使设备停止发送遥测 |
@@ -71,7 +71,7 @@ IoT 中心会提供设备命令确认。
 **事件处理器主机**在 Azure Web 作业中运行。 **事件处理器** 为已完成的周期获取平均传感器值。 然后，它将这些值传递给用于计算引擎 RUL 的已训练模型。 API 提供对属于解决方案一部分的机器学习工作区中的模型的访问。
 
 ## <a name="machine-learning"></a>机器学习
-机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 可以导航到 [azureiotsuite.com][lnk-azureiotsuite] 页面的解决方案磁贴中的机器学习工作区。 当解决方案处于“就绪”状态时，会提供一个磁贴。
+机器学习组件使用派生自数据的模型，这些数据是从实际飞机引擎收集的。 您可以导航到机器学习工作区从你的解决方案的磁贴上[azureiotsolutions.com] [ lnk-azureiotsolutions]页。 当解决方案处于“就绪”状态时，会提供一个磁贴。
 
 Azure 机器学习模型可用作模板，它展示了如何使用通过 IoT 解决方案加速器服务收集的遥测数据。 Microsoft 基于公开的数据<sup>\[1\]</sup> 构建了飞机引擎的[回归模型][lnk_regression_model]，并发布了有关如何使用该模型的分步指南。
 
@@ -93,7 +93,7 @@ Azure IoT 预测性维护解决方案加速器使用通过此模板创建的回�
 
 [lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
 [lnk-cortana-analytics]: https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
-[lnk-azureiotsuite]: https://www.azureiotsolutions.com/
+[lnk-azureiotsolutions]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
 [lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/

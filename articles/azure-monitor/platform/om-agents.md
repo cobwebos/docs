@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 133e617cd6bac1155ba22276887cf0790221e9de
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 722712d1e38efa3e1accc41abca5c9d88b3c1229
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186967"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095919"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 若要保持 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
@@ -37,7 +37,7 @@ ms.locfileid: "53186967"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Log Analytics 服务通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Log Analytics](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 在开始之前，请查看以下要求。
 
 * Log Analytics 仅支持 System Center Operations Manager 1807、System Center Operations Manager 1801、Operations Manager 2016、Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
@@ -132,7 +132,7 @@ ms.locfileid: "53186967"
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 展开 Operations Management Suite，并单击“**连接**”。
 1. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
-1. 在“Operations Management Suite 向导:代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，然后键入带端口号的 URL，例如 http://corpproxy:80，然后单击“完成”。
+1. 在“Operations Management Suite 向导:代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，然后键入带端口号的 URL，例如 <http://corpproxy:80>，然后单击“完成”。
 
 如果代理服务器要求身份验证，请执行以下步骤，配置需要向管理组中 Log Analytics 报告的受管理计算机传播的凭据和设置。
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9d6b72a994b034b0bbc735e5cca2ce987a02af61
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: e97e79ef3077431d8fc627cd634a67b0a01b6f8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195416"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993096"
 ---
 # <a name="saas-application-test-drive-tab"></a>SaaS 应用程序“体验版”选项卡
 
@@ -33,7 +33,7 @@ ms.locfileid: "53195416"
 
 ## <a name="how-a-test-drive-works"></a>体验版的工作方式
 
-潜在客户在市场中搜索并找到你的应用程序。 客户登录并同意接受使用条款。 此时，客户将收到你的预配置环境来试用固定的小时数，同时你可以开发后续要跟踪的优质潜在顾客。 有关详细信息，请参阅[什么是体验版？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/what-is-test-drive)
+潜在客户在市场中搜索并找到你的应用程序。 客户登录并同意接受使用条款。 此时，客户将收到你的预配置环境来进行固定小时数的试用，而你则获得优质潜在顾客，并可在此基础上进行跟进。 有关详细信息，请参阅[什么是体验版？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
 ## <a name="publishing-steps"></a>发布步骤
 
@@ -47,11 +47,12 @@ ms.locfileid: "53195416"
 ## <a name="setting-up-a-test-drive"></a>设置体验版
 
 我们根据产品类型、方案和你所在的市场提供了四种不同类型的体验版。
-|  **类型**          |  **说明**  |  **设置说明**  |
+
+|  类型          |  **说明**  |  **设置说明**  |
 |  ---------------   |  ---------------  |  ---------------  |
-|     Azure 资源管理器               |    Azure 资源管理器体验版是一个部署模板，其中包含了组成由发布者构建的解决方案的所有 Azure 资源。 适合此类体验版的产品是仅使用 Azure 资源的产品。               |       [Azure 资源管理器体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/azure-resource-manager-test-drive)            |
-|       已托管             |       托管体验版消除了 Microsoft 托管设置以及用于执行体验版用户预配和取消预配的服务的维护工作的复杂性。             |         [托管的体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/hosted-test-drive)          |
-|      逻辑应用              |       逻辑应用体验版是一个部署模板，用来包含所有复杂的解决方案体系结构。 所有 Dynamics 应用程序或自定义产品都应当使用此类型的体验版。            |      [逻辑应用体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/logic-app-test-drive)             |
+|     Azure 资源管理器               |    Azure 资源管理器体验版是一个部署模板，其中包含了组成由发布者构建的解决方案的所有 Azure 资源。 适合此类体验版的产品是仅使用 Azure 资源的产品。               |       [Azure 资源管理器体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |
+|       已托管             |       托管体验版消除了 Microsoft 托管设置以及用于执行体验版用户预配和取消预配的服务的维护工作的复杂性。             |         [托管的体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
+|      逻辑应用              |       逻辑应用体验版是一个部署模板，用来包含所有复杂的解决方案体系结构。 所有 Dynamics 应用程序或自定义产品都应当使用此类型的体验版。            |      [逻辑应用体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
 |       Power BI             |         Power BI 体验版包含一个嵌入式链接，指向某个定制的仪表板。 希望演示交互式 Power BI 视觉对象的任何产品都应使用此类型的体验版。 只需上传你的嵌入式 Power BI URL。          |        [Power BI 体验版](#Power-BI-test-drive)           |
 
 ### <a name="power-bi-test-drive"></a>Power BI 体验版

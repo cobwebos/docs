@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 196d08f47ddfdbb86b8e96ae0e5ca3d3e3e5917e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886758"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896222"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>向 Azure IoT Edge 进行持续集成和持续部署
 
@@ -25,7 +25,7 @@ ms.locfileid: "54886758"
 ![示意图 - 用于开发和生产的 CI 和 CD 分支](./media/how-to-ci-cd/cd.png)
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure Repos 存储库。 如果没有存储库，可[在项目中创建一个新的 Git 存储库](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav)。
 * 提交 IoT Edge 解决方案并将其推送到存储库。 如果要为测试本文创建新的示例解决方案，请按照[在 Visual Studio Code 中开发和调试模块](how-to-vs-code-develop-module.md)或[在 Visual Studio 中开发和调试 C# 模块](how-to-visual-studio-develop-csharp-module.md)中的步骤进行操作。
@@ -47,7 +47,7 @@ ms.locfileid: "54886758"
 >
 >有关详细信息，请参阅[创建生成管道](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline)。
 
-1. 登录 Azure DevOps 组织 (https://dev.azure.com/{your organization}/) 并打开包含 IoT Edge 解决方案存储库的项目。
+1. 登录到你的 Azure DevOps 组织 (**https:\//dev.azure.com/{your 组织} /**)，然后打开包含你的 IoT Edge 解决方案存储库的项目。
 
    在本文中，我们创建了名为“IoTEdgeRepo”的存储库。 该存储库包含“IoTEdgeSolution”，其中包含名为“filtermodule”的模块代码。 
 
@@ -69,13 +69,13 @@ ms.locfileid: "54886758"
 
 4. 创建管道后，将转到管道编辑器。 在管道描述中，根据目标平台选择正确的代理池： 
     
-    * 若要在用于 Linux 容器的 amd64 平台中生成模块，请选择“托管 Ubuntu 1604”
+   * 若要在用于 Linux 容器的 amd64 平台中生成模块，请选择“托管 Ubuntu 1604”
 
-    * 如果想在平台 amd64 中为 Windows 1809 容器生成模块，则需要[在 Windows 上设置自托管代理](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)。
+   * 如果想在平台 amd64 中为 Windows 1809 容器生成模块，则需要[在 Windows 上设置自托管代理](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)。
 
-    * 如果想在平台 arm32v7 中为 Linux 容器生成模块，则需要[在 Linux 上设置自托管代理](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)。
+   * 如果想在平台 arm32v7 中为 Linux 容器生成模块，则需要[在 Linux 上设置自托管代理](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)。
     
-    ![配置生成代理池](./media/how-to-ci-cd/configure-env.png)
+     ![配置生成代理池](./media/how-to-ci-cd/configure-env.png)
 
 5. 管道预先配置了名为“代理作业 1”的作业。 选择加号 (+)，向作业添加三个任务：“Azure IoT Edge”两次，“发布生成项目”一次。 （将鼠标悬停在每个任务的名称上，以查看“添加”按钮。）
 
@@ -158,11 +158,11 @@ ms.locfileid: "54886758"
 
 10. 选择新的 Azure IoT Edge 任务，并使用以下值对其进行配置：
 
-   * **显示名称**：操作字段更改时，显示名称会自动更新。 
-   * **操作**：使用下拉列表选择“部署到 IoT Edge 设备”。 更改操作值还会更新要匹配的任务显示名称。
-   * **Azure 订阅**：选择包含 IoT 中心的订阅。
-   * **IoT 中心名称**：选择 IoT 中心。 
-   * **选择单个/多个设备**：选择是否要将发布管道部署到一个设备或多个设备。 
+    * **显示名称**：操作字段更改时，显示名称会自动更新。 
+    * **操作**：使用下拉列表选择“部署到 IoT Edge 设备”。 更改操作值还会更新要匹配的任务显示名称。
+    * **Azure 订阅**：选择包含 IoT 中心的订阅。
+    * **IoT 中心名称**：选择 IoT 中心。 
+    * **选择单个/多个设备**：选择是否要将发布管道部署到一个设备或多个设备。 
       * 如果部署到单个设备，请输入“IoT Edge设备 ID”。 
       * 如果要部署到多个设备，请指定设备“目标条件”。 目标条件是用于在 IoT 中心匹配一组 Edge 设备的筛选器。 若想将设备标记用作条件，则需要使用 IoT 中心设备孪生更新对应的设备标记。 在高级设置中更新“IoT Edge 部署 ID”和“IoT Edge 部署优先级”。 有关为多个设备创建部署的详细信息，请参阅[了解 IoT Edge 自动部署](module-deployment-monitoring.md)。
 

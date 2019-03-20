@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ee892c85d2795f4ec11d47d861af3007c46e96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8e901f0e5fb1dc2840196bd6a739ff763b54ce8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169320"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119218"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
 Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，供你和你的组织使用。 下表列出了可用的报告：
 
-| 报表 | 位置 | 说明 |
+| 报表 | 位置 | 描述 |
 |:--- |:--- |:--- |
 | 阻止的用户历史记录 | Azure AD > MFA 服务器 > 阻止/解除阻止用户 | 显示请求阻止或解除阻止用户的历史记录。 |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
@@ -36,7 +36,9 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 2. 在左侧选择“Azure Active Directory” > “MFA 服务器”。
 3. 选择要查看的报告。
 
-   <center>![云](./media/howto-mfa-reporting/report.png)</center>
+   <center>
+   
+   ![云](./media/howto-mfa-reporting/report.png)</center>
 
 ## <a name="azure-ad-sign-ins-report"></a>Azure AD 登录报告
 

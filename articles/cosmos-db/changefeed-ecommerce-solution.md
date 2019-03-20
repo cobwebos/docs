@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 90f9a13882e370d6d0c67826750b3edd27603ede
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 50ae4de8c9c1d10b0b17a9744ffa2340059fc298
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862286"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120510"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -53,7 +53,7 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 7. **Power BI：** Power BI 用于可视化 Azure 流分析发送的数据。 可以构建一个仪表板来实时了解指标的变化。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Microsoft .NET Framework 4.7.1 或更高版本
 
@@ -105,7 +105,7 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 3. 接下来，创建名为 **leases** 的另一个集合用于处理更改源。 租约 (lease) 集合协调处理跨多个辅助角色的更改源。 单独集合用于存储租用，一个分区一个租用。  
 
-4.  返回“数据资源管理器”窗格，选择“新建集合”并在表单中填写以下详细信息：
+4. 返回“数据资源管理器”窗格，选择“新建集合”并在表单中填写以下详细信息：
 
    * 对于“数据库 ID”字段，请选择“使用现有项”，然后输入 **changefeedlabdatabase**。  
    * 对于“集合 ID”字段，请输入 **leases**。  

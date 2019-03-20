@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: eadbaacd4bb860cd09997775b8d77cbcf0ff17f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964808"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181616"
 ---
 # <a name="configure-usage-settings-and-policies"></a>配置使用设置和策略
 本文介绍了如何向实验室添加用户，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。 
@@ -38,9 +38,22 @@ ms.locfileid: "55964808"
 
     ![用户列表](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="send-registration-link-to-students"></a>将注册链接发送给学生
-以下过程包含了向用户发送注册链接的步骤。 如果为实验室启用了“限制访问”，则只有用户列表中的用户可以使用注册链接注册到实验室。 
+## <a name="share-registration-link-with-students"></a>学生使用的共享注册链接
+若要将注册链接发送到学生，使用以下方法之一。 第一种方法演示如何将电子邮件发送到学生注册链接和可选的消息。 第二种方法演示如何获取您可与他人共享所需的任何方式的注册链接。 
 
+如果为实验室启用了“限制访问”，则只有用户列表中的用户可以使用注册链接注册到实验室。 默认情况下启用此选项。 
+
+### <a name="send-email-to-users"></a>向用户发送电子邮件
+1. 切换到“用户”视图（如果尚未转到该页）。 
+2. 在列表中选择特定或所有用户。 若要选择特定的用户，请在列表的第一列中选中复选框。 若要选择的所有用户，请都选择前面的第一列标题的复选框 (**名称**) 或在列表中都选择的所有用户的所有复选框。
+3. 选择**发送邀请**工具栏上。 此外可以将鼠标悬停在列表中一个学生姓名，然后发送电子邮件图标。 
+
+    ![通过电子邮件发送注册链接](../media/tutorial-setup-classroom-lab/send-email.png)
+4. 上**通过电子邮件发送注册链接**页上，执行以下步骤： 
+    1. 类型**可选消息**想要发送给学生。 电子邮件会自动包括的注册链接。 
+    2. 上**通过电子邮件发送注册链接**页上，选择**发送**。 
+
+## <a name="get-registration-link"></a>获取注册链接
 1. 在左侧菜单中选择“用户”，切换到“用户”视图。 
 2. 选择“获取注册链接”磁贴。
 
@@ -49,11 +62,7 @@ ms.locfileid: "55964808"
 
     ![学生注册链接](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. 在“用户注册”对话框中，选择“关闭”。 
-4. 与某个学生共享注册链接，使其能够注册课程。 如果已启用“限制选项”设置且列表中有一系列用户，请执行以下操作：
-    1. 在列表中选择用户的**电子邮件地址**。 
-    2. 此时会在默认电子邮件程序中看到一个窗口，其中填充了“收件人”地址。 
-    3. 粘贴此前复制的**注册 URL**。 
-    4. 发送该**电子邮件**。 
+4. 共享**注册链接**与一名学生，以便学生可以注册的类。 
 
 ## <a name="view-users-registered-with-the-lab"></a>查看注册到实验室的用户
 

@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3fc8ae7eac8d54e332d43925ede6ad690ae1dde
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9634e2578ea256d1dec71389f676ee53627e6272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167824"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077762"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
 
@@ -27,8 +27,10 @@ ms.locfileid: "56167824"
 
 Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例如帐户顺序）备份到云中。 备份后，还可以使用该应用在新设备上恢复信息，从而避免潜在的锁定或重新创建帐户。
 
->[!IMPORTANT]
-> 对于每个备份存储位置，都需要一个个人 Microsoft 帐户和一个 iCloud 帐户。 但在该存储位置中，可以备份多个帐户。 例如，你可以拥有一个个人帐户、一个学校帐户和一个第三方帐户（例如 Facebook、Google 等）。<br><br>我们只会存储你的个人和第三方帐户凭据，包括用于证明你身份的用户名和帐户验证码。 我们不会存储与你的帐户相关的其他任何信息，包括电子邮件或文件。 以外，我们不会以任何方式或者与其他任何产品或服务关联或共享你的帐户。 最后，IT 管理员不会获得有关上述任何帐户的任何信息。
+> [!IMPORTANT]
+> 对于每个备份存储位置，都需要一个个人 Microsoft 帐户和一个 iCloud 帐户。 但在该存储位置中，可以备份多个帐户。 例如，你可以拥有一个个人帐户、一个学校帐户和一个第三方帐户（例如 Facebook、Google 等）。
+> 
+> 我们只会存储你的个人和第三方帐户凭据，包括用于证明你身份的用户名和帐户验证码。 我们不会存储与你的帐户相关的其他任何信息，包括电子邮件或文件。 以外，我们不会以任何方式或者与其他任何产品或服务关联或共享你的帐户。 最后，IT 管理员不会获得有关上述任何帐户的任何信息。
 
 ## <a name="back-up-your-account-credentials"></a>备份帐户凭据
 在备份凭据之前，必须具有：
@@ -84,7 +86,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
     ![Microsoft Authenticator 应用，允许扫描 QR 码](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >有关如何获取 QR 码的详细信息，请参阅 [Microsoft Authenticator 应用入门](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)或[设置安全信息以使用验证器应用](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app)，具体取决于管理员是否已启用安全信息。
+    >有关如何获取 QR 码的详细信息，请参阅 [Microsoft Authenticator 应用入门](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)或[设置安全信息以使用验证器应用](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)，具体取决于管理员是否已启用安全信息。
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>排查备份和恢复问题
 有几个可能的原因会导致无法备份：
@@ -98,10 +100,12 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 -   **现有的 Microsoft Authenticator 帐户。** 如果已在 Microsoft Authenticator 应用中设置了帐户，该应用将无法恢复备份的帐户。 阻止恢复有助于确保帐户详细信息不会被过期的信息覆盖。 在这种情况下，必须先从 Authenticator 应用中设置的现有帐户删除现有的帐户信息，然后才能恢复备份。
 
 ## <a name="next-steps"></a>后续步骤
-将帐户凭据备份并恢复到新设备后，可以继续使用 Microsoft Authenticator 应用来验证自己的身份。
+将帐户凭据备份并恢复到新设备后，可以继续使用 Microsoft Authenticator 应用来验证自己的身份。 有关详细信息，请参阅[登录到你的帐户使用 Microsoft Authenticator 应用](user-help-sign-in.md)。
 
 ## <a name="related-topics"></a>相关主题
-- [Microsoft Authenticator 应用入门](user-help-auth-app-download-install.md)  
+
+- [什么是 Microsoft Authenticator 应用？](user-help-auth-app-overview.md)
+
 - [Microsoft Authenticator 应用常见问题解答](user-help-auth-app-faq.md)
 
 - [多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/)

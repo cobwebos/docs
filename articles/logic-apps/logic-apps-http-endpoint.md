@@ -16,12 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: 7920fee1bacf569ac41c36142fc68080b4de5780
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230482"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904365"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流
 
@@ -71,7 +71,7 @@ ms.locfileid: "50230482"
 
     > [!TIP]
     > 
-    > 可以通过 [jsonschema.net](http://jsonschema.net/) 等工具为示例 JSON 有效负载生成架构，也可以选择“使用示例有效负载生成架构”，在“请求”触发器中生成该架构。 
+    > 可以通过 [jsonschema.net](https://jsonschema.net/) 等工具为示例 JSON 有效负载生成架构，也可以选择“使用示例有效负载生成架构”，在“请求”触发器中生成该架构。 
     > 输入示例有效负载，并选择“完成”。
 
     例如，此示例有效负载：
@@ -245,7 +245,7 @@ ms.locfileid: "50230482"
 
 响应具有以下属性：
 
-| 属性 | Description |
+| 属性 | 描述 |
 | --- | --- |
 | statusCode |指定用于响应传入请求的 HTTP 状态代码。 该代码可以是以 2xx、4xx 或 5xx 开头的任何有效状态代码。 但是，不允许使用 3xx 状态代码。 |
 | headers |定义要包含在响应中的任意数目的标头。 |
@@ -275,9 +275,9 @@ ms.locfileid: "50230482"
 
 ## <a name="q--a"></a>问题解答
 
-#### <a name="q-what-about-url-security"></a>问：URL 的安全性如何？
+#### <a name="q-what-about-url-security"></a>问：URL 的安全性呢？
 
-答：Azure 使用共享访问签名 (SAS) 安全生成逻辑应用回调 URL。 此签名以查询参数的形式传递。在触发逻辑应用之前必须验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
+答：Azure 安全地生成逻辑应用回调 Url 使用共享访问签名 (SAS)。 此签名以查询参数的形式传递。在触发逻辑应用之前必须验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
 
    > [!IMPORTANT]
    > 对于生产和安全系统，强烈建议不要直接从浏览器中调用逻辑应用，因为：
@@ -285,18 +285,18 @@ ms.locfileid: "50230482"
    > * URL 中会出现共享访问密钥。
    > * 由于跨逻辑应用客户的共享域，将无法管理安全内容策略。
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>问：是否可以进一步配置 HTTP 终结点？
+#### <a name="q-can-i-configure-http-endpoints-further"></a>问：可以配置 HTTP 终结点进一步吗？
 
-答：可以，HTTP 终结点支持通过 [**API 管理**](../api-management/api-management-key-concepts.md)进行更高级的配置。 此服务还提供相应的功能，使你能够以一致的方式管理所有 API（包括逻辑应用）、设置自定义域名和使用其他身份验证方法等等，例如：
+答：是的 HTTP 终结点支持通过更高级的配置[ **API 管理**](../api-management/api-management-key-concepts.md)。 此服务还提供相应的功能，使你能够以一致的方式管理所有 API（包括逻辑应用）、设置自定义域名和使用其他身份验证方法等等，例如：
 
 * [更改请求方法](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
 * [更改请求的 URL 段](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
 * 在 [Azure 门户](https://portal.azure.com/ "Azure 门户")中设置 API 管理域
 * 设置用于检查基本身份验证的策略。
 
-#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>问：从 2014 年 12 月 1 日预览版迁移的架构发生了哪些更改？
+#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>问：从 2014 年 12 月 1 日预览版迁移的架构时，将发生什么变化？
 
-答：下面是有关更改的摘要：
+答：下面是有关这些更改的摘要：
 
 | 2014 年 12 月 1 日预览版 | 2016 年 6 月 1 日 |
 | --- | --- |

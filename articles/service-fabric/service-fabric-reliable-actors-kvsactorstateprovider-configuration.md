@@ -7,19 +7,19 @@ author: sumukhs
 manager: timlt
 editor: ''
 ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 81c09d61a5213319fa01ef5cc7070ffe385bbab1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: a512bb4adc4e410ef2300811ffa4142348d5ee33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049504"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871812"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>配置 Reliable Actors - KVSActorStateProvider
 通过更改 Microsoft Visual Studio 程序包根目录下的指定执行组件的 Config 文件夹中生成的 settings.xml 文件，可以修改 KVSActorStateProvider 的默认配置。
@@ -27,7 +27,7 @@ ms.locfileid: "44049504"
 Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名称，并在创建基础运行时组件时使用这些配置值。
 
 > [!NOTE]
-> 请**勿**删除或修改 Visual Studio 解决方案中生成的 settings.xml 文件中的以下配置的节名称。
+> 请 **勿** 删除或修改 Visual Studio 解决方案中生成的 settings.xml 文件中的以下配置的节名称。
 > 
 > 
 
@@ -56,8 +56,8 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 | ReplicatorEndpoint |不适用 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
 | RetryInterval |秒 |5 |如果复制器未收到操作的确认信息而进行重新传输之后的时间段。 |
 | MaxReplicationMessageSize |字节 |50 MB |可以在单个消息中传输的复制数据的最大大小。 |
-| MaxPrimaryReplicationQueueSize |操作的数量 |1024 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。 此值必须大于 64 和 2 的幂。 |
-| MaxSecondaryReplicationQueueSize |操作的数量 |2048 |辅助队列中的操作的最大数目。 将在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
+| MaxPrimaryReplicationQueueSize |操作的数量 |1024 |主要队列中操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，释放一个操作。 此值必须大于 64 和 2 的幂。 |
+| MaxSecondaryReplicationQueueSize |操作的数量 |2048 |辅助队列中操作的最大数目。 会在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
 
 ## <a name="store-configuration"></a>存储配置
 存储配置用于配置本地存储，该存储用于保留正在复制的状态。
@@ -75,7 +75,7 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 ## <a name="sample-configuration-file"></a>示例配置文件
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Section Name="MyActorServiceReplicatorConfig">
       <Parameter Name="ReplicatorEndpoint" Value="MyActorServiceReplicatorEndpoint" />
       <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>

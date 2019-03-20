@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 5d4d74d4c3b5ec6779458e84da07c03033c37935
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330607"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078153"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>排查经典存储资源删除错误
 请遵循本文中的指导排查在尝试删除 Azure 存储帐户、容器或 *.vhd 页 Blob 文件时发生的以下错误之一。 
@@ -59,10 +59,10 @@ ms.locfileid: "56330607"
 #### <a name="azure-powershell"></a>Azure PowerShell
 用户尝试通过经典 PowerShell cmdlet 删除不再使用的存储帐户。 用户会看到以下消息：
 
-><span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
-
-><span style="color:red">Remove-AzureStorageAccount :BadRequest:存储帐户 myclassicaccount 包含一些活动的映像和/或磁盘，例如  
-myclassicaccount。 删除此存储帐户前，请确保删除这些映像和/或磁盘。</span>
+> <span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
+> 
+> <span style="color:red">Remove-AzureStorageAccount :BadRequest:存储帐户 myclassicaccount 包含一些活动的映像和/或磁盘，例如  
+> myclassicaccount。 删除此存储帐户前，请确保删除这些映像和/或磁盘。</span>
 
 ## <a name="unable-to-delete-storage-container"></a>无法删除存储容器
 
@@ -77,9 +77,9 @@ myclassicaccount。 删除此存储帐户前，请确保删除这些映像和/�
 #### <a name="azure-powershell"></a>Azure PowerShell
 如果用户选择使用 PowerShell 进行删除，则会导致以下错误。 
 
-><span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
-
-><span style="color:red">Remove-AzureStorageContainer :远程服务器返回错误：(412)容器中当前包含租约，但请求中未指定任何租约 ID。HTTP 状态代码：412 - HTTP 错误消息：容器中当前包含租约，但请求中未指定任何租约 ID。</span>
+> <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
+> 
+> <span style="color:red">Remove-AzureStorageContainer :远程服务器返回错误：(412)容器中当前包含租约，但请求中未指定任何租约 ID。HTTP 状态代码：412 - HTTP 错误消息：容器中当前包含租约，但请求中未指定任何租约 ID。</span>
 
 ## <a name="unable-to-delete-a-vhd"></a>无法删除 VHD 
 
@@ -99,9 +99,9 @@ myclassicaccount。 删除此存储帐户前，请确保删除这些映像和/�
 #### <a name="azure-powershell"></a>Azure PowerShell 
 如果用户选择使用 PowerShell 进行删除，则会导致以下错误。 
 
-><span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
-
-><span style="color:red">Remove-AzureStorageBlob :远程服务器返回错误：(412) Blob 中当前包含租约，但请求中未指定任何租约 ID。HTTP 状态代码：412 - HTTP 错误消息：Blob 中当前包含租约，但请求中未指定任何租约 ID。</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> 
+> <span style="color:red">Remove-AzureStorageBlob :远程服务器返回错误：(412) Blob 中当前包含租约，但请求中未指定任何租约 ID。HTTP 状态代码：412 - HTTP 错误消息：Blob 中当前包含租约，但请求中未指定任何租约 ID。</span>
 
 
 ## <a name="resolution-steps"></a>解决步骤

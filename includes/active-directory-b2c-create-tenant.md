@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: patricka
 ms.openlocfilehash: 623f95eac029e808746d5d08fa088eba134592dd
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133387"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "58115900"
 ---
 单击“创建资源”按钮。 在“在市场中搜索”字段中，输入 `Azure Active Directory B2C`。
 
@@ -25,7 +25,7 @@ ms.locfileid: "50133387"
 
 ![Azure AD B2C 使用可用字段中的示例文本创建租户](./media/active-directory-b2c-create-tenant/create-new-b2c-tenant.png)
 
-| 设置      | 示例值  | Description                                        |
+| 设置      | 示例值  | 描述                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | 组织名称 | Contoso | 组织的名称。 | 
 | 初始域名 |  ContosoB2CTenant | B2C 租户的域名。 默认情况下，初始域名包括 .onmicrosoft.com。 如果创建的是测试租户，请选择非生产名称，例如 ContosoB2CTesting。 |

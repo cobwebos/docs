@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 3948b0e1445aef5b9030e5e40f4bd4ec7ea1bf51
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: fe9ec05b3d8f084f58d5836f1a077e952966ecef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175751"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119320"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>将 CoreOS Linux 虚拟机加入托管域
 本文介绍如何将 Azure 中的 CoreOS Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -113,10 +113,9 @@ sudo adcli join -D CONTOSO100.COM -U bob@CONTOSO100.COM -K /etc/krb5.keytab -H c
 
 > [!NOTE]
 > **故障排除：** 如果 *adcli* 找不到托管域：
-  * 确保域可从虚拟机（请尝试 ping）进行访问。
-  * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
-  * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
->
+>   * 确保域可从虚拟机（请尝试 ping）进行访问。
+>   * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
+>   * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
 
 启动 SSSD 服务。 在 SSH 终端中键入以下命令：
   ```

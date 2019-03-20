@@ -16,12 +16,12 @@ ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: d140b80ecb5fe2a7211245044b08f43fde4233a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 459398f5f40ae5fb28dfa4ac73b94aecca7304eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240980"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099410"
 ---
 # <a name="azure-stack-capacity-planner"></a>Azure Stack Capacity Planner
 Azure Stack Capacity Planner 是用于 Azure Stack 资源容量规划的电子表格。 使用该容量规划器可以设计计算资源的各种分配，并查看这些分配如何与所选的硬件产品/服务相适应。 下面提供了有关如何使用 Azure Stack 计算器的详细说明。
@@ -61,8 +61,8 @@ Azure Stack 规划器内用于资源建模的基本构建基块是各种大小�
 2. 如果要针对一个特定的硬件配置为各种 VM 资源分配建模，请在页面的右上角找到“当前 SKU”标签正下方的蓝色下拉列表框。 下拉此列表框，然后选择所需的硬件 SKU。
 3. 现在就可以开始将各种大小的 VM 添加到模型了。 若要包含特定 VM 类型，请将数量值输入到该 VM 条目左侧的蓝色空心框中。
 
-  > [!NOTE]
-  > VM 存储总量是指 VM 的数据磁盘的总容量（受支持的磁盘的数目 * 单个磁盘的最大容量 (1 TB)）。 我们已根据配置指示器填充了“可用存储配置”表，以便你可以为每个 Azure Stack VM 选择所需级别的存储资源。 但是，请务必注意，你可以根据需要添加或更改“可用存储配置”表。<br><br>每个 VM 从最初分配的本地临时存储开始。 为反映临时存储的精简预配，local-temp 数量可以更改为包括最大可允许临时存储量的下拉菜单中的任何内容。
+   > [!NOTE]
+   > VM 存储总量是指 VM 的数据磁盘的总容量（受支持的磁盘的数目 * 单个磁盘的最大容量 (1 TB)）。 我们已根据配置指示器填充了“可用存储配置”表，以便你可以为每个 Azure Stack VM 选择所需级别的存储资源。 但是，请务必注意，你可以根据需要添加或更改“可用存储配置”表。<br><br>每个 VM 从最初分配的本地临时存储开始。 为反映临时存储的精简预配，local-temp 数量可以更改为包括最大可允许临时存储量的下拉菜单中的任何内容。
 
 4. 添加 VM 时，你将看到显示可用 SKU 资源更改的图表。 这样，就可以查看在建模过程中添加各种大小和数量的 VM 的效果。 查看更改效果的另一种方法是观察“可用 VM”列表正下方列出的“已使用”和“仍可用”数目。 这些数字反映了基于当前所选硬件 SKU 估计的值。
 5. 创建 VM 集后，可以通过单击页面右上角的“建议的 SKU”按钮（位于“当前 SKU”标签正下方）来查找建议的硬件 SKU。 使用此按钮，可以随后修改 VM 配置并查看哪一硬件支持每个配置。

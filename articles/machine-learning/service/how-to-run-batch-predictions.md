@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4c38230c1d5a4dcad9a10b82d810f82515980076
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 1e403ac0d2fbe9572a44fb3cde9d25e4df9b3db4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245865"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884993"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务对大型数据集运行批量预测
 
@@ -29,9 +29,9 @@ ms.locfileid: "55245865"
 
 在以下步骤中，需创建一个[机器学习管道](concept-ml-pipelines.md)来注册预先训练的计算机视觉模型 ([Inception-V3](https://arxiv.org/abs/1512.00567))。 然后使用该预先训练的模型对 Azure Blob 存储帐户中提供的图像进行批量评分。 这些用于评分的图像是 [ImageNet](http://image-net.org/) 数据集中的未标记图像。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 - 配置安装 Azure 机器学习 SDK 所需的开发环境。 有关详细信息，请参阅[配置 Azure 机器学习的开发环境](how-to-configure-environment.md)。
 

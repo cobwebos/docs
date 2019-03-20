@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 94baa1235388ce99d013f8267f8410dcc206a51d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998342"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894353"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
 
@@ -28,7 +28,7 @@ ms.locfileid: "55998342"
 
 本文档的目标读者是使用 OTT 或在线流/多屏解决方案的 DRM 子系统的工程师，或对于 DRM 子系统有兴趣的读者。 假设读者熟悉市场上的至少一种 DRM 技术，例如 PlayReady、Widevine、FairPlay 或 Adobe Access。
 
-在 DRM 方面，本文还会介绍使用多重 DRM 的 CENC（通用加密）。 在线流和 OTT 行业中的主要趋势是在各种客户端平台上使用 CENC 与多重原生 DRM。 这是从以前对于各种客户端平台使用单个 DRM 及其客户端 SDK 的趋势变化而来的。 使用 CENC 与多重原生 DRM 时，PlayReady 和 Widevine 都按照[通用加密 (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 规范加密。
+在 DRM 方面，本文还会介绍使用多重 DRM 的 CENC（通用加密）。 在线流和 OTT 行业中的主要趋势是在各种客户端平台上使用 CENC 与多重原生 DRM。 这是从以前对于各种客户端平台使用单个 DRM 及其客户端 SDK 的趋势变化而来的。 使用 CENC 与多重原生 DRM 时，PlayReady 和 Widevine 都按照[通用加密 (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 规范加密。
 
 使用 CENC 与多重 DRM 的好处如下：
 
@@ -156,7 +156,7 @@ DRM 子系统可能包含以下组件：
 | **密钥管理** |不需要参考实现 |
 | **内容管理** |一个 C# 控制台应用程序 |
 
-换而言之，IDP 和 STS 都将与 Azure AD 配合使用。 [Azure 媒体播放器 API](http://amp.azure.net/libs/amp/latest/docs/) 用于播放器。 媒体服务和媒体播放器都支持具有多重 DRM 的 DASH 和 CENC。
+换而言之，IDP 和 STS 都将与 Azure AD 配合使用。 [Azure 媒体播放器 API](https://amp.azure.net/libs/amp/latest/docs/) 用于播放器。 媒体服务和媒体播放器都支持具有多重 DRM 的 DASH 和 CENC。
 
 下图显示了上述技术映射的整体结构与流程。
 
@@ -208,7 +208,7 @@ DRM 子系统可能包含以下组件：
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. 使用 [Azure 媒体播放器 API](http://amp.azure.net/libs/amp/latest/docs/) 创建播放器。 通过 [Azure 媒体播放器的 ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) 指定要在不同的 DRM 平台上使用哪种 DRM 技术。
+8. 使用 [Azure 媒体播放器 API](https://amp.azure.net/libs/amp/latest/docs/) 创建播放器。 通过 [Azure 媒体播放器的 ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) 指定要在不同的 DRM 平台上使用哪种 DRM 技术。
 
 9. 下表显示了测试矩阵。
 

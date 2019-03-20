@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8316e571e97fce65b3f8308709d3300bc585663f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434863"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901536"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure 自动化中的源代码管理集成 - 传统
 
@@ -66,22 +66,22 @@ ms.locfileid: "54434863"
      | **Parameter** | **值** |
      |:--- |:--- |
      | 名称 |Microsoft.Azure.Automation.SourceControl.Connection |
-     | 类型 |String |
+     | Type |String |
      | 值 |{"Branch":\<分支名称>,"RunbookFolderPath":\<Runbook 文件夹路径>,"ProviderType":\<GitHub 具有值 1>,"Repository":\<存储库名称>,"Username":\< GitHub 用户名称>} |
 
-    * 变量 **Microsoft.Azure.Automation.SourceControl.OAuthToken** 包含 OAuthToken 的安全加密值。  
+     * 变量 **Microsoft.Azure.Automation.SourceControl.OAuthToken** 包含 OAuthToken 的安全加密值。  
 
-    |**Parameter**            |**值** |
-    |:---|:---|
-    | 名称  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
-    | 类型 | Unknown(Encrypted) |
-    | 值 | <加密的 OAuthToken> |  
+     |**Parameter**            |**值** |
+     |:---|:---|
+     | 名称  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
+     | Type | Unknown(Encrypted) |
+     | 值 | <加密的 OAuthToken> |  
 
-    ![变量](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
+     ![变量](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 
-    * **自动化源代码管理**已作为已授权的应用程序添加到 GitHub 帐户。 若要查看应用程序，请执行以下操作：从 GitHub 主页导航到“配置文件” > “设置” > “应用程序”。 此应用程序可让 Azure 自动化将 GitHub 存储库同步到自动化帐户。  
+     * **自动化源代码管理**已作为已授权的应用程序添加到 GitHub 帐户。 若要查看应用程序，请执行以下操作：从 GitHub 主页导航到“配置文件” > “设置” > “应用程序”。 此应用程序可让 Azure 自动化将 GitHub 存储库同步到自动化帐户。  
 
-    ![Git 应用程序](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
+     ![Git 应用程序](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
 
 
 ## <a name="using-source-control-in-automation"></a>在自动化中使用源代码管理
@@ -124,10 +124,6 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
 
     > [!NOTE] 
     > 从源代码管理进行的同步针对当前在源代码管理中的**所有** Runbook，覆盖当前存在于自动化帐户中的 Runbook 草稿版本。 用于同步的 Git 等效命令行指令为 **git pull**
-
-
-## <a name="troubleshooting-source-control-problems"></a>排查源代码管理问题
-签入或同步作业如有任何错误，作业状态应为“暂停”，可以在作业页面中查看更多错误详细信息。  “所有日志”部分会显示与该作业关联的所有 PowerShell 流。 这可以提供帮助你解决任何签入或同步问题所需的详细信息。此外，还会显示同步或签入 Runbook 时发生的操作序列。  
 
 ![AllLogs 图像](media/automation-source-control-integration-legacy/automation_13_AllLogs.png)
 

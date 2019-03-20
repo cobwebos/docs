@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 08c71ac1aba659a2e0fbb6655b6ee0a21576bf5d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: ce691ec0622749f1cb7252e237dae25b2657d115
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339781"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010531"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -31,6 +31,8 @@ ms.locfileid: "56339781"
 > [!NOTE] 
 > 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 
 ## <a id="subheading-1"></a>Azure SQL 数据库审核概述
 
@@ -43,7 +45,7 @@ ms.locfileid: "56339781"
 > [!IMPORTANT]
 > 审核日志会写入 Azure 订阅的 Azure Blob 存储中的**追加 Blob**。
 >
-> - 支持所有存储类型（v1、v2 和 blob）。
+> - 支持所有存储类型（v1、v2、blob）。
 > - 支持所有存储复制配置。
 > - 目前不支持高级存储。
 > - 目前不支持 VNet 中的存储。
@@ -85,7 +87,7 @@ ms.locfileid: "56339781"
 
     ![导航窗格][3]
 
-5. **新建** - 现在有多个选项，可以用来配置写入审核日志的位置。 可以将日志写入 Azure 存储帐户、写入 Log Analytics 工作区（供 Log Analytics 使用）或写入事件中心（供事件中心使用）。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
+5. **新建** - 现在有多个选项，可以用来配置写入审核日志的位置。 到 Azure 存储帐户、 Azure Monitor 日志由 Log Analytics 工作区或事件中心以便使用事件中心，可以编写日志。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
 
     ![存储选项](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -95,7 +97,7 @@ ms.locfileid: "56339781"
 
 7. 若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics (预览版)”，并打开“Log Analytics 详细信息”。 选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。
 
-    ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Log Analytics 工作区](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. 若要配置将审核日志写入事件中心的操作，请选择“事件中心(预览版)”，打开“事件中心详细信息”。 选择要将日志写入到其中的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
 
@@ -112,7 +114,7 @@ ms.locfileid: "56339781"
 
 ## <a id="subheading-3"></a>分析审核日志和报告
 
-如果已选择将审核日志写入到 Log Analytics，请执行以下操作：
+如果您选择将审核日志写入到 Azure Monitor 日志：
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
@@ -123,16 +125,16 @@ ms.locfileid: "56339781"
     ![在 Log Analytics 中打开](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
 - 也可从 Log Analytics 边栏选项卡访问审核日志。 打开 Log Analytics 工作区，然后在“常规”部分单击“日志”。 一开始可以使用简单的查询（例如：搜索“SQLSecurityAuditEvents”）来查看审核日志。
-    在这里，也可使用 [Log Analytics](../log-analytics/log-analytics-log-search.md) 对审核日志数据运行高级搜索。 有了 Log Analytics，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](../log-analytics/log-analytics-log-search.md)。
+    在这里，可以使用[Azure Monitor 日志](../log-analytics/log-analytics-log-search.md)审核日志数据上运行的高级的搜索。 Azure Monitor 日志可以使用集成的搜索和自定义仪表板轻松分析跨所有工作负荷和服务器的记录数以百万计的实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅[Azure Monitor 日志搜索引用](../log-analytics/log-analytics-log-search.md)。
 
 如果已选择将审核日志写入到事件中心，请执行以下操作：
 
 - 若要使用事件中心的审核日志数据，需设置一个流来使用事件并将其写入到目标。 有关详细信息，请参阅 [Azure 事件中心文档](https://docs.microsoft.com/azure/event-hubs/)。
-- 事件中心内的审核日志在 [Apache Avro](http://avro.apache.org/) 事件的主体中捕获，并使用带有 UTF-8 编码的 JSON 格式进行存储。 若要读取审核日志，可以使用 [Avro 工具](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools)或处理此格式的类似工具。
+- 事件中心内的审核日志在 [Apache Avro](https://avro.apache.org/) 事件的主体中捕获，并使用带有 UTF-8 编码的 JSON 格式进行存储。 若要读取审核日志，可以使用 [Avro 工具](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools)或处理此格式的类似工具。
 
 如果选择将审核日志写入到 Azure 存储帐户，可以使用多种方法来查看日志：
 
-- 审核日志会在安装期间选择的帐户中进行聚合。 可使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。 有关存储文件夹层次、命名约定和日志格式的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
+- 审核日志会在安装期间选择的帐户中进行聚合。 可使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。 有关存储文件夹层次、命名约定和日志格式的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
@@ -158,8 +160,8 @@ ms.locfileid: "56339781"
 
     4. 合并的文件会在 SSMS 中打开，可在其中进行查看和分析，以及将其作为 XEL 或 CSV 文件导出或导出到表中。
 
-- 使用 Power BI。 可在 Power BI 中查看和分析审核日志数据。 如需详细信息并访问可下载的模板，请参阅[在 Power BI 中分析审核日志数据](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/)。
-- 通过门户或使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具从 Azure 存储 blob 容器下载日志文件。
+- 使用 Power BI。 可在 Power BI 中查看和分析审核日志数据。 如需详细信息并访问可下载的模板，请参阅[在 Power BI 中分析审核日志数据](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/)。
+- 通过门户或使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具从 Azure 存储 blob 容器下载日志文件。
   - 在本地下载日志文件后，可双击打开文件，然后在 SSMS 中查看和分析日志。
   - 也可通过 Azure 存储资源管理器同时下载多个文件。 为此，请右键单击特定子文件夹，然后选择“另存为”，以便在本地文件夹中进行保存。
 
@@ -168,10 +170,10 @@ ms.locfileid: "56339781"
   - 下载多个文件或包含日志文件的子文件夹后，可以按照前述 SSMS 合并审核文件说明在本地合并它们。
   - 以编程方式查看 blob 审核日志：
 
-    - 使用[扩展事件读取器](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) C# 库。
-    - 使用 PowerShell [查询扩展事件文件](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/)。
+    - 使用[扩展事件读取器](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/) C# 库。
+    - 使用 PowerShell [查询扩展事件文件](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/)。
 
-## <a id="subheading-5"></a>生产实践
+## <a id="subheading-5"></a>生产做法
 
 <!--The description in this section refers to preceding screen captures.-->
 
@@ -187,7 +189,7 @@ ms.locfileid: "56339781"
     >[!IMPORTANT]
     >在数据库级审核中，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
     > [!WARNING]
-    > 目前，辅助异地复制数据库不支持使用事件中心或 Log Analytics 作为服务器级别审核日志的目标。
+    > 异地复制的辅助数据库当前不支持在服务器级别的审核日志为目标使用事件中心或 Azure Monitor 日志。
 
 ### <a id="subheading-6">重新生成存储密钥</a>
 
@@ -228,35 +230,35 @@ ms.locfileid: "56339781"
 
 **PowerShell cmdlet（包括对附加筛选的 WHERE 子句支持）**：
 
-- [创建或更新数据库 Blob 审核策略 (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [创建或更新服务器 Blob 审核策略 (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [创建或更新数据库审核策略 (设置 AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [创建或更新服务器审核策略 (设置 AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
 - [获取数据库审核策略 (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [获取服务器 Blob 审核策略 (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [获取服务器审核策略 (Get AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
 ## <a id="subheading-9"></a>使用 REST API 管理 SQL 数据库审核
 
-**REST API - Blob 审核**：
+**REST API**：
 
-- [创建或更新数据库 Blob 审核策略](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [创建或更新服务器 Blob 审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [获取数据库 Blob 审核策略](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [获取服务器 Blob 审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [创建或更新数据库审核策略](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [创建或更新服务器审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [获取数据库审核策略](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [获取服务器审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 支持使用 WHERE 子句执行附加筛选的扩展策略：
 
-- [创建或更新数据库扩展 Blob 审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [创建或更新服务器扩展 Blob 审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [获取数据库扩展 Blob 审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [获取服务器扩展 Blob 审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [创建或更新数据库*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [创建或更新服务器*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [获取数据库*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [获取服务器*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>使用 ARM 模板管理 SQL 数据库审核
 
 可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模板管理 Azure SQL 数据库审核，如以下示例所示：
 
 - [部署启用了审核的 Azure SQL Server，以将审核日志写入 Azure Blob 存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [部署启用了审核的 Azure SQL Server，以将审核日志写入 Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [部署 Azure SQL 服务器启用审核以将审核日志写入到 Azure Monitor 日志与](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
 - [部署启用了审核的 Azure SQL Server，以将审核日志写入事件中心](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
 
 <!--Anchors-->

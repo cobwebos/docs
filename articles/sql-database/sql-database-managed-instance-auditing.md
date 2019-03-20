@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: d283cfa18d31e360aed78ae5262c5416f94c0676
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894388"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086048"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
@@ -50,7 +50,7 @@ ms.locfileid: "55894388"
 
    1. 提供一个容器**名称**，将公共访问级别设置为“专用”，然后单击“确定”。
 
-     ![创建 Blob 容器配置](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![创建 Blob 容器配置](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
 1. 为审核日志创建容器后，可通过两种方式将其配置为审核日志的目标：[使用 T-SQL](#blobtsql)，或[使用 SQL Server Management Studio (SSMS) UI](#blobssms)：
 
@@ -113,7 +113,7 @@ ms.locfileid: "55894388"
         GO
         ```
 
-      1. 继续[创建服务器审核规范或数据库审核规范](#createspec)
+        1. 继续[创建服务器审核规范或数据库审核规范](#createspec)
 
    - <a id="blobssms"></a>使用 SQL Server Management Studio (SSMS) 18（预览版）为审核日志配置 Blob 存储：
 
@@ -135,7 +135,7 @@ ms.locfileid: "55894388"
 
      1. 从下拉列表中选择订阅、存储帐户和 Blob 容器，或者单击“创建”来创建自己的容器。 完成后，单击“确定”：
 
-        ![选择 Azure 订阅、存储帐户和 Blob 容器](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
+        ![选择 Azure 订阅、 存储帐户和 blob 容器](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
 
      1. 在“创建审核”对话框中单击“确定”。
 
@@ -158,9 +158,9 @@ ms.locfileid: "55894388"
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>将服务器的审核设置为事件中心或 Log Analytics
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>为您的服务器到事件中心或 Azure Monitor 日志设置审核
 
-可使用 Azure Monitor 将托管实例的审核日志发送到事件中心或 Log Analytics。 本部分介绍如何进行以下配置：
+从托管实例的审核日志可以发送到事件中心或 Azure Monitor 日志。 本部分介绍如何进行以下配置：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到托管实例。
 
@@ -170,7 +170,7 @@ ms.locfileid: "55894388"
 
 4. 在日志列表中选择“SQLSecurityAuditEvents”。
 
-5. 选择事件中心和/或 Log Analytics 的审核事件的目标。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
+5. 选择审核事件的事件中心、 Azure Monitor 日志，或两者的目标。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
 
 6. 单击“ **保存**”。
 
@@ -190,7 +190,7 @@ ms.locfileid: "55894388"
    - [创建服务器审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [创建数据库审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-10. 启用在步骤 7 中创建的服务器审核：
+10. 启用在步骤 8 中创建服务器审核：
  
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
@@ -213,11 +213,13 @@ ms.locfileid: "55894388"
 
 若要使用事件中心的审核日志数据，需设置一个流来使用事件并将其写入到目标。 有关详细信息，请参阅 Azure 事件中心文档。
 
-### <a name="consume-and-analyze-logs-stored-in-log-analytics"></a>使用和分析存储在 Log Analytics 中的日志
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>使用和分析日志存储在 Azure Monitor 日志
 
-如果将审核日志写入到 Log Analytics，则可以在 Log Analytics 工作区中使用它们，可以在其中对审核数据运行高级搜索。 首先，导航到 Log Analytics，在“常规”部分下单击“日志”，然后输入一个简单查询（例如：`search "SQLSecurityAuditEvents"`）以查看审核日志。  
+如果审核日志将写入到 Azure Monitor 日志，并可在 Log Analytics 工作区中，可以审核数据运行的高级的搜索。 作为起点，导航到 Log Analytics 工作区并在*常规*部分中，单击*日志*并输入一个简单查询，例如：`search "SQLSecurityAuditEvents"`若要查看审核日志。  
 
-有了 Log Analytics，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
+Azure Monitor 日志可以使用集成的搜索和自定义仪表板轻松分析跨所有工作负荷和服务器的记录数以百万计的实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅[Azure Monitor 日志搜索引用](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Azure SQL 数据库中的数据库与 SQL Server 中的数据库之间的审核差异
 
@@ -232,7 +234,7 @@ ms.locfileid: "55894388"
 Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 
 - 提供了新语法 `TO URL`，该语法允许指定用于放置 `.xel` 文件的 Azure Blob 存储容器的 URL。
-- 提供了新语法 `TO EXTERNAL MONITOR` 以启用事件中心和 Log Analytics 目标。
+- 一种新语法`TO EXTERNAL MONITOR`用于启用的事件中心和 Azure Monitor 日志目标。
 - **不支持** `TO FILE` 语法，因为 SQL 数据库无法访问 Windows 文件共享。
 - **不支持**关闭选项。
 - **不支持** `queue_delay` 为 0。

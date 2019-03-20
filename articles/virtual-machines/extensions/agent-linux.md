@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 1defa08b0eb9ede2adec3b7ac12c873522dd6c37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243873"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011594"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
 
@@ -73,7 +73,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
 下列系统已经过测试并确认兼容 Azure Linux 代理：
 
 > [!NOTE]
-> 此列表可能不同于 Microsoft Azure 平台所支持系统的官方列表，如以下文章所述：[http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> 此列表可能不同于 Microsoft Azure 平台所支持系统的官方列表，如以下文章所述：[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -108,12 +108,12 @@ Linux 代理的正常运行依赖一些系统程序包：
 
 ## <a name="command-line-options"></a>命令行选项
 ### <a name="flags"></a>标志
-* verbose：增加指定命令的详细程度
-* force：跳过某些命令的交互式确认
+* verbose:增加指定命令的详细程度
+* 强制：跳过某些命令的交互式确认
 
 ### <a name="commands"></a>命令
-* help：列出支持的命令和标志。
-* deprovision：尝试清理系统并使其适用于重新预配。 后续操作删除以下各项：
+* 帮助：列出受支持的命令和标志。
+* 取消预配：尝试清除系统并使其适用于重新预配。 后续操作删除以下各项：
   
   * 所有 SSH 主机密钥（如果在配置文件中 Provisioning.RegenerateSshHostKeyPair 为“y”）
   * /etc/resolv.conf 中的 Nameserver 配置
@@ -126,11 +126,11 @@ Linux 代理的正常运行依赖一些系统程序包：
 > 
 > 
 
-* deprovision+user：执行 -deprovision（上述）中的所有操作，同时删除最后预配的用户帐户（从 /var/lib/waagent 中获得）和关联数据。 此参数是取消对以前在 Azure 中设置的映像的设置以便捕获并重新使用该映像时的参数。
-* version：显示 waagent 的版本
-* serialconsole：配置 GRUB 以将 ttyS0（第一个串行端口）标记为启动控制台。 这可确保将内核启动日志发送到串行端口并适用于调试。
-* daemon：将 waagent 作为 daemon 运行以管理与平台的交互。 在 waagent init 脚本中为 waagent 指定此参数。
-* 开始：将 waagent 作为后台进程运行
+* deprovision + user:执行-deprovision （上述） 中的所有操作也将删除上次预配的用户帐户 （从 /var/lib/waagent 获得） 和关联的数据。 此参数是取消对以前在 Azure 中设置的映像的设置以便捕获并重新使用该映像时的参数。
+* 版本：显示 waagent 的版本
+* serialconsole:配置 GRUB 以将 ttyS0（第一个串行端口）标记为启动控制台。 这可确保将内核启动日志发送到串行端口并适用于调试。
+* 守护程序：将 waagent 作为 daemon 运行以管理与平台的交互。 在 waagent init 脚本中为 waagent 指定此参数。
+* 入门：Waagent 作为后台进程运行
 
 ## <a name="configuration"></a>配置
 配置文件 (/etc/waagent.conf) 可控制 waagent 的操作。 下面显示了示例配置文件：
@@ -344,6 +344,6 @@ Ubuntu 云映像利用 [cloud-init](https://launchpad.net/ubuntu/+source/cloud-i
 
 * 有关详细信息，请参阅以下资源来配置资源磁盘装入点，并在预配期间交换 Ubuntu 云映像上的空间：
   
-  * [Ubuntu Wiki：配置交换分区](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Wiki:配置交换分区](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [将自定义数据注入到 Azure 虚拟机中](../windows/classic/inject-custom-data.md)
 

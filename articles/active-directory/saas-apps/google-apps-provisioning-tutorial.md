@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ea80824588980fdd6c580b6d77c2a5566159547
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b78cb45d83cd9bc9bc973ec7a09cb75a8b111744
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211081"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224142"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -29,7 +29,7 @@ ms.locfileid: "56211081"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 G Suite 的集成，需要准备好以下各项：
 
@@ -53,7 +53,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 > [!IMPORTANT]
 > 建议将单个 Azure AD 用户分配到 G Suite 以测试预配配置。 可稍后再分配其他用户和组。
-
+> 
 > 将用户分配到 G Suite 时，在分配对话框中选择“用户”或“组”角色。 “默认访问权限”角色不可用于预配。
 
 ## <a name="enable-automated-user-provisioning"></a>启用自动化用户预配
@@ -80,8 +80,8 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
    
     ![选择“API 参考”。][16]
 
-    > [!IMPORTANT]
-    > 对于要预配到 G Suite 的每个用户，他们在 Azure Active Directory 中的用户名必须绑定到自定义域。 例如，G Suite 不会接受 bob@contoso.onmicrosoft.com 之类的用户名， 但会接受 bob@contoso.com。 可以通过在 Azure AD 中编辑属性来更改现有用户的域。 在以下步骤中我们介绍了如何为 Azure Active Directory 和 G Suite 设置自定义域。
+   > [!IMPORTANT]
+   > 对于要预配到 G Suite 的每个用户，他们在 Azure Active Directory 中的用户名必须绑定到自定义域。 例如，G Suite 不会接受 bob@contoso.onmicrosoft.com 之类的用户名， 但会接受 bob@contoso.com。 可以通过在 Azure AD 中编辑属性来更改现有用户的域。 在以下步骤中我们介绍了如何为 Azure Active Directory 和 G Suite 设置自定义域。
       
 1. 如果尚未向 Azure Active Directory 添加自定义域名，请按照以下步骤操作：
   
@@ -105,8 +105,8 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     e. 对所有要添加到目录的域重复上述步骤。
 
-    > [!NOTE]
-    若要进行用户预配，自定义域必须与源 Azure AD 的域名匹配。 如果不匹配，可以通过实现属性映射自定义来解决此问题。
+   > [!NOTE]
+   >  若要进行用户预配，自定义域必须与源 Azure AD 的域名匹配。 如果不匹配，可以通过实现属性映射自定义来解决此问题。
 
 
 1. 向 Azure AD 验证完所有域后，必须再次向 Google Apps 验证这些域。 对于每个尚未向 Google 注册的域，请执行以下步骤：
@@ -149,13 +149,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 将“预配模式”设置为“自动”。 
 
-     ![设置](./media/google-apps-provisioning-tutorial/provisioning.png)
+       ![Provisioning](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. 在“管理员凭据”部分，选择“授权”。 随即会在新的浏览器窗口中打开“Google 授权”对话框。
 
 1. 确认想要授权 Azure Active Directory 对你的 G Suite 租户进行更改。 选择“接受”。
     
-     ![确认权限。][28]
+       ![Confirm permissions.][28]
 
 1. 在 Azure 门户中，选择“测试连接”以确保 Azure AD 可以连接到你的应用。 如果连接失败，请确保 G Suite 帐户具有团队管理员权限。 然后再次重试“授权”步骤。
 
