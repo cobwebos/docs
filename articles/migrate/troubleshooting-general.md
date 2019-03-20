@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/11/2019
 ms.author: raynew
-ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 2b542cc8202b75c0007686e3f0e0d9fbd1ac28c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751899"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119167"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -53,38 +53,36 @@ ms.locfileid: "55751899"
 
 1. 在计算机上安装“armclient”（如果尚未安装）：
 
-  a. 在管理员命令提示符窗口中，运行以下命令：```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
+   a. 在管理员命令提示符窗口中，运行以下命令：```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
 
-  b. 在管理员 Windows PowerShell 窗口中，运行以下命令：```choco install armclient```
+   b. 在管理员 Windows PowerShell 窗口中，运行以下命令：```choco install armclient```
 
-2.  使用 Azure Migrate REST API 获取评估报告的下载 URL
+2. 使用 Azure Migrate REST API 获取评估报告的下载 URL
 
-  a.    在管理员 Windows PowerShell 窗口中，运行以下命令：```armclient login```
+   a.    在管理员 Windows PowerShell 窗口中，运行以下命令：```armclient login```
 
-  此操作将打开 Azure 登录弹出窗口，你需要在此窗口中登录 Azure。
+   此操作将打开 Azure 登录弹出窗口，你需要在此窗口中登录 Azure。
 
-  b.    在同一 PowerShell 窗口中，请运行以下命令以获取评估报告的下载 URL（使用适当的值替换 URI 参数，下面是示例 API 请求）
+   b.    在同一 PowerShell 窗口中，请运行以下命令以获取评估报告的下载 URL（使用适当的值替换 URI 参数，下面是示例 API 请求）
 
-       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+      ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
-       示例请求和输出：
+      示例请求和输出：
 
-       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
-esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
-018_12_16_21/downloadUrl?api-version=2018-02-02
-{
-  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
-  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
+      ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+   esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+   018_12_16_21/downloadUrl?api-version=2018-02-02
+   {
+   "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+   "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
 
 3. 复制响应中的 URL，并在浏览器中打开它以下载评估报告。
 
 4. 下载报告后，使用 Excel 浏览到下载的文件夹，然后在 Excel 中打开文件进行查看。
 
-### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>磁盘和网络适配器的性能数据显示为零
+### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>CPU、 内存和磁盘的性能数据显示为零
 
-如果在 vCenter 服务器上的统计信息设置级别设置为小于 3，便会出现此问题。 在级别 3 或更高级别上，vCenter 存储有关计算、存储和网络的 VM 性能历史记录。 如果小于级别 3，vCenter 将不会存储存储器和网络数据，而只存储 CPU 和内存数据。 在此方案中，性能数据在 Azure Migrate 中显示为零，而 Azure Migrate 根据从本地计算机上收集的元数据，为磁盘和网络提供大小建议。
-
-若要启用磁盘和网络性能数据收集，请将统计信息设置级别更改为 3。 然后，至少等待一天来发现环境并进行评估。
+Azure Migrate 持续配置文件的本地环境收集的本地 Vm 的性能数据。 如果你只是开始该发现您的环境，需要等待至少一天的性能数据收集执行时间。 如果无需等待一天创建评估后，性能度量值将显示为零。 等待一天之后, 可以创建新的评估或通过使用评估报表中的重新计算选项来更新现有的评估中。
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>创建迁移项目时，我已指定 Azure 地理位置，如何找到将存储所发现元数据的确切 Azure 区域？
 
@@ -99,9 +97,9 @@ esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/conto
 1. 通过检查其哈希值，验证是否已正确下载 Azure Migrate 收集器 OVA 文件。 请参阅[本文](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)来验证哈希值。 如果哈希值不匹配，请再次下载 OVA 文件并重试部署。
 2. 如果仍然失败，并且使用的是 VMware vSphere 客户端来部署 OVF，请尝试通过 vSphere Web 客户端对其进行部署。 如果仍然失败，请尝试使用其他 Web 浏览器。
 3. 如果使用的是 vSphere Web 客户端并尝试在 vCenter Server 6.5 或 6.7 上部署，请按照以下步骤尝试直接在 ESXi 主机上部署 OVA：
-  - 使用 Web 客户端（ https://<主机 IP 地址>/ui）直接连接 ESXi 主机（而不是 vCenter Server）
-  - 转到“主页”>“库存”
-  - 单击“文件”>“部署 OVF 模板”>“浏览到 OVA”，并完成部署
+   - 使用 Web 客户端（ https://<主机 IP 地址>/ui）直接连接 ESXi 主机（而不是 vCenter Server）
+   - 转到“主页”>“库存”
+   - 单击“文件”>“部署 OVF 模板”>“浏览到 OVA”，并完成部署
 4. 如果部署仍然失败，请联系 Azure Migrate 支持部门。
 
 
@@ -163,10 +161,34 @@ Azure Migrate 收集器下载 PowerCLI，并在设备上安装它。 无法安�
         C:\Program Files (x86)\WindowsPowerShell\Modules
 
    d. 在 Windows 服务管理器中（打开“运行”并键入 services.msc 以打开 Windows 服务管理器）重启“Azure Migrate 收集器”服务。 右键单击“Azure Migrate 收集器服务”，然后单击“启动”。
-   
-   e. 双击桌面快捷方式“运行收集器”以启动收集器应用程序。 收集器应用程序应当自动下载并安装所需版本的 PowerCLI。
 
-3. 如果上述步骤没有解决问题，请手动安装 [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016)，然后检查问题是否得到解决。
+   e. 双击桌面快捷方式“运行收集器”以启动收集器应用程序。 收集器应用程序应自动下载并安装所需的 PowerCLI 版本。
+
+3. 如果上述无法解决此问题，请执行步骤到上方，然后使用以下步骤在设备中手动安装 PowerCLI:
+
+   a. 清除所有未完成的 PowerCLI 安装文件的步骤 #a 到 #c # 上述步骤 2 中。
+
+   b. 转到开始 > 运行 > 在管理员模式下打开 Windows PowerShell(x86)
+
+   c. 运行以下命令：安装模块"VMWare.VimAutomation.Core"-RequiredVersion"6.5.2.6234650"（类型为 A 时它会要求确认）
+
+   d. 在 Windows 服务管理器中（打开“运行”并键入 services.msc 以打开 Windows 服务管理器）重启“Azure Migrate 收集器”服务。 右键单击“Azure Migrate 收集器服务”，然后单击“启动”。
+
+   e. 双击桌面快捷方式“运行收集器”以启动收集器应用程序。 收集器应用程序应自动下载并安装所需的 PowerCLI 版本。
+
+4. 如果无法下载中由于防火墙问题设备的模块，下载并安装模块中的计算机有权访问 internet 使用以下步骤：
+
+    a. 清除所有未完成的 PowerCLI 安装文件的步骤 #a 到 #c # 上述步骤 2 中。
+
+    b. 转到开始 > 运行 > 在管理员模式下打开 Windows PowerShell(x86)
+
+    c. 运行以下命令：安装模块"VMWare.VimAutomation.Core"-RequiredVersion"6.5.2.6234650"（类型为 A 时它会要求确认）
+
+    d. 将从"C:\Program Files (x86) \WindowsPowerShell\Modules"与"VMware"开始的所有模块都复制到收集器 VM 上的同一位置。
+
+    e. 在 Windows 服务管理器中（打开“运行”并键入 services.msc 以打开 Windows 服务管理器）重启“Azure Migrate 收集器”服务。 右键单击“Azure Migrate 收集器服务”，然后单击“启动”。
+
+    f. 双击桌面快捷方式“运行收集器”以启动收集器应用程序。 收集器应用程序应自动下载并安装所需的 PowerCLI 版本。
 
 ### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer 错误
 
@@ -222,14 +244,14 @@ Azure Migrate 取决于服务映射以获取依赖项可视化效果功能，并
 [此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)列出了依赖项代理支持的 Linux 操作系统。
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>我在 Azure Migrate 中可视化依赖项不能持续超过一小时？
-Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。 但是，可以使用 Log Analytics [查询更长持续时间内的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)。
+Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。 但是，可以使用 Azure Monitor 日志传输到[查询依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)通过更长的时间。
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>我无法可视化具有 10 个以上 VM 的组的依赖项？
 你可以[可视化依赖项的组最多只能有 10 个 VM](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)，如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。
 
 ### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>我已安装代理并使用依赖项可视化效果创建组。 现在，在执行故障转移后，计算机显示“安装代理”操作，而不是“查看依赖项”
 * 发布计划或计划外故障转移，本地计算机将处于关闭状态，而等效计算机会在 Azure 中处于启动状态。 这些计算机将获得一个不同的 MAC 地址。 它们可能会根据用户是否选择保留本地 IP 地址而获得不同的 IP 地址。 如果 MAC 和 IP 地址不同，Azure Migrate 则不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
-* 发布测试故障转移，本地计算机会按预期保持开启状态。 在 Azure 中启动的等效计算机将获取不同的 MAC 地址，并且可能会获取不同的 IP 地址。 除非用户阻止从这些计算机输出 Log Analytics 流量，否则 Azure Migrate 不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
+* 发布测试故障转移，本地计算机会按预期保持开启状态。 在 Azure 中启动的等效计算机将获取不同的 MAC 地址，并且可能会获取不同的 IP 地址。 除非用户阻止传出 Azure Monitor 日志的流量从这些计算机，否则 Azure Migrate 不会将本地计算机与任何服务映射依赖项数据关联，并会要求用户安装代理，而不是查看依赖项。
 
 ## <a name="troubleshoot-azure-readiness-issues"></a>排查 Azure 迁移就绪性问题
 
@@ -279,15 +301,15 @@ Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 A
 1. 打开浏览器，导航并登录到[门户](https://portal.azure.com)。
 2. 按 F12 键启动“开发人员工具”。 如果需要，请清除设置“清除导航上的条目”。
 3. 单击“网络”选项卡，然后开始捕获网络流量：
- - 在 Chrome 中，选择“保留日志”。 记录应自动启动。 红色圆圈指示正在捕获流量。 如果未显示，单击黑色圆圈启动
- - 在 Microsoft Edge/IE 中，记录应自动启动。 如果未启动，请单击绿色播放按钮。
+   - 在 Chrome 中，选择“保留日志”。 记录应自动启动。 红色圆圈指示正在捕获流量。 如果未显示，单击黑色圆圈启动
+   - 在 Microsoft Edge/IE 中，记录应自动启动。 如果未启动，请单击绿色播放按钮。
 4. 尝试再现该错误。
 5. 在记录过程中遇到错误后，停止记录，并保存一份已记录的活动：
- - 在 Chrome 中，右键单击并选择“将内容另存为 HAR”。 此操作会将日志压缩并导出为 .har 文件。
- - 在 Microsoft Edge/IE 中，单击“导出捕获流量”图标。 此操作会压缩并导出文件。
+   - 在 Chrome 中，右键单击并选择“将内容另存为 HAR”。 此操作会将日志压缩并导出为 .har 文件。
+   - 在 Microsoft Edge/IE 中，单击“导出捕获流量”图标。 此操作会压缩并导出文件。
 6. 导航到“控制台”选项卡，以查看任何警告或错误。 保存控制台日志：
- - 在 Chrome 中，右键单击控制台日志中的任意位置。 选择“另存为”，以导出和压缩日志。
- - 在 Microsoft Edge/IE 中，右键单击错误并选择“复制所有”。
+   - 在 Chrome 中，右键单击控制台日志中的任意位置。 选择“另存为”，以导出和压缩日志。
+   - 在 Microsoft Edge/IE 中，右键单击错误并选择“复制所有”。
 7. 关闭“开发人员工具”。
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>收集器错误代码和建议的操作

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
-ms.openlocfilehash: 14de0f632584ff5fb1a6b4395298e9cecfe455e6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268717"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105193"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>备份资源管理器部署中的 Windows 系统状态
 本文介绍了如何将 Windows Server 系统状态备份到 Azure。 本教程旨在引导完成基本操作。
@@ -51,7 +51,7 @@ ms.locfileid: "56268717"
     或
     * 选择“使用现有项”，并单击下拉菜单查看可用的资源组列表。
 
-  有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
+   有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
 7. 单击“位置”，为保管库选择地理区域  。 此选项决定了备份数据要发送到的地理区域。
 
@@ -66,7 +66,7 @@ ms.locfileid: "56268717"
 ### <a name="set-storage-redundancy-for-the-vault"></a>为保管库设置存储冗余
 在创建恢复服务保管库时，请确保存储冗余配置为所希望的方式。
 
-1. 在“恢复服务保管库”边栏选项卡中，单击新保管库。
+1. 从“恢复服务保管库”边栏选项卡中，单击新保管库  。
 
     ![在恢复服务保管库列表中选择新保管库](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "56268717"
 
     ![存储配置选择](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”。 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。 请在此[存储冗余概述](../storage/common/storage-redundancy.md)中深入了解[异地冗余](../storage/common/storage-redundancy-grs.md)和[本地冗余](../storage/common/storage-redundancy-lrs.md)存储选项。
+    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余” 。 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。 请在此[存储冗余概述](../storage/common/storage-redundancy.md)中深入了解[异地冗余](../storage/common/storage-redundancy-grs.md)和[本地冗余](../storage/common/storage-redundancy-lrs.md)存储选项。
 
 创建保管库之后，即可对其进行配置，以便备份 Windows 系统状态。
 
@@ -127,12 +127,12 @@ ms.locfileid: "56268717"
 
     ![下载保管库凭据](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    保管库凭据下载到 Downloads 文件夹。 下载完保管库凭据以后，会显示一个弹出窗口，询问用户是要打开还是要保存凭据。 单击“ **保存**”。 如果意外地单击了“打开”，可以让尝试打开保管库凭据的对话框关闭。 不能打开保管库凭据。 继续下一步。 保管库凭据位于 Downloads 文件夹中。   
+    保管库凭据下载到“下载”文件夹。 下载完保管库凭据以后，会显示一个弹出窗口，询问用户是要打开还是要保存凭据。 单击“ **保存**”。 如果意外地单击了“打开”，可以让尝试打开保管库凭据的对话框关闭。 不能打开保管库凭据。 继续下一步。 保管库凭据位于 Downloads 文件夹中。   
 
     ![保管库凭据下载完毕](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
-> [!NOTE]
-> 保管库凭据只能保存到打算使用代理的 Windows Server 的本地位置。
->
+   > [!NOTE]
+   > 保管库凭据只能保存到打算使用代理的 Windows Server 的本地位置。
+   >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
@@ -215,7 +215,7 @@ ms.locfileid: "56268717"
 4. 单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
 
 
-完成初始备份后，备份控制台中会显示“**作业已完成**”状态。
+完成初始备份后，备份控制台中显示“**作业已完成**”状态。
 
   ![IR 完成](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 

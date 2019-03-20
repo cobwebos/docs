@@ -11,24 +11,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343232"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005800"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>使用 Azure 门户查看 Azure 资源的拒绝分配
 
-即使角色分配向用户授予了访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 即使无法自行创建拒绝分配，也仍然需要能够查看拒绝分配，因为它们可能会影响你的总体权限。 若要获取有关拒绝分配的信息，必须具有 `Microsoft.Authorization/denyAssignments/read` 权限，大部分 [Azure 资源内置角色](built-in-roles.md)都包含该权限。
-
-本文介绍如何使用 Azure 门户来查看拒绝分配。
+即使角色分配向用户授予了访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 本文介绍如何使用 Azure 门户来查看拒绝分配。
 
 > [!NOTE]
-> 目前，拒绝分配为“只读”，且只能由 Azure 设置。
+> 在此期间，您可以添加自己的唯一方法拒绝分配是使用 Azure 蓝图。 有关详细信息，请参阅[保护 Azure 蓝图资源锁的新资源](../governance/blueprints/tutorials/protect-new-resources.md)。
+
+## <a name="prerequisites"></a>必备组件
+
+若要获取有关拒绝分配的信息，必须具有：
+
+- `Microsoft.Authorization/denyAssignments/read` 在大多数中包含的权限[Azure 资源的内置角色](built-in-roles.md)。
 
 ## <a name="view-deny-assignments"></a>查看拒绝分配
 
@@ -86,7 +90,7 @@ ms.locfileid: "56343232"
 
     ![拒绝分配 - 已拒绝权限](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | 操作类型 | 说明 |
+    | 操作类型 | 描述 |
     | --- | --- |
     | **操作**  | 已拒绝管理操作。 |
     | **不操作** | 从已拒绝管理操作中排除的管理操作。 |

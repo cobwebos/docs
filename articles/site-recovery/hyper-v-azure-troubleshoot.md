@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: e79ffba90f0812d79bcb7ab808e2b6ba80e1c61b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 14d763126cccadf8042da79b20d15e5c93a8ce62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756659"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094171"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -28,9 +28,9 @@ ms.locfileid: "55756659"
 3. 检查 Hyper-V 虚拟机管理服务是否在 Hyper-V 主机上运行。
 4. 检查 VM 的 Hyper-V-VMMS\Admin 登录中显示的问题。 此日志位于“应用程序和服务日志” > “Microsoft” > “Windows”中。
 5. 在来宾 VM 上，验证 WMI 是否已启用并可访问。
-  - [了解](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)基本 WMI 测试。
-  - [排查](https://aka.ms/WMiTshooting) WMI 问题。
-  - [排查](https://technet.microsoft.com/library/ff406382.aspx#H22) WMI 脚本和服务的问题。
+   - [了解](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)基本 WMI 测试。
+   - [排查](https://aka.ms/WMiTshooting) WMI 问题。
+   - [进行故障排除](https://technet.microsoft.com/library/ff406382.aspx#H22)WMI 脚本和服务的问题。
 6. 在来宾 VM 上，确保运行最新版本的 Integration Services。
     - [检查](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)是否安装了最新版本。
     - [始终使用](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)最新的 Integration Services。
@@ -41,9 +41,9 @@ ms.locfileid: "55756659"
 
 1. 确保运行[最新版本](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)的 Site Recovery 服务。
 2. 验证复制是否已暂停：
-  - 在 Hyper-V 管理器控制台中检查 VM 运行状况。
-  - 如果状态为严重，请右键单击 VM 并选择“复制” > “查看复制运行状况”。
-  - 如果复制已暂停，请单击“恢复复制”。
+   - 在 Hyper-V 管理器控制台中检查 VM 运行状况。
+   - 如果状态为严重，请右键单击 VM 并选择“复制” > “查看复制运行状况”。
+   - 如果复制已暂停，请单击“恢复复制”。
 3. 检查所需的服务是否正在运行。 如果未运行，请将其重启。
     - 如果在不使用 VMM 的情况下复制 Hyper-V，请检查以下服务是否在 Hyper-V 主机上运行：
         - 虚拟机管理服务
@@ -65,10 +65,10 @@ ms.locfileid: "55756659"
 2. 运行[部署规划器探查器](hyper-v-deployment-planner-run.md)。
 3. 运行探查器后，遵循[带宽](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)和[存储](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)方面的建议。
 4. 检查[数据变动限制](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)。 如果发现 VM 上的数据变动率较高，请执行以下操作：
-  - 检查 VM 是否标记为重新同步。
-  - 遵循[这些步骤](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/)来调查变动的起源。
-  - 当 HRL 日志文件超过可用磁盘空间的 50% 时，可能会发生数据变动。 如果这是问题所在，请为出现问题的所有 VM 预配更多的存储空间。
-  - 检查并确认复制未暂停。 如果已暂停，则它会继续将更改写入 HRL 文件，从而可能导致其大小增加。
+   - 检查 VM 是否标记为重新同步。
+   - 遵循[这些步骤](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/)来调查变动的起源。
+   - 当 HRL 日志文件超过可用磁盘空间的 50% 时，可能会发生数据变动。 如果这是问题所在，请为出现问题的所有 VM 预配更多的存储空间。
+   - 检查并确认复制未暂停。 如果已暂停，则它会继续将更改写入 HRL 文件，从而可能导致其大小增加。
  
 
 ## <a name="critical-replication-state-issues"></a>“严重”复制状态问题
@@ -91,17 +91,17 @@ ms.locfileid: "55756659"
 
 1. 检查是否已安装并运行最新版本的 Integration Services。  在 Hyper-V 主机上权限提升的 PowerShell 提示符下运行以下命令，检查是否有可用的更新：**get-vm  | select Name, State, IntegrationServicesState**。
 2. 检查 VSS 服务是否正在运行且正常：
-    - 若要检查服务，请登录到来宾 VM。 然后打开管理员命令提示符，运行以下命令检查所有 VSS 编写器是否正常。
-        - **Vssadmin list writers**
-        - **Vssadmin list shadows**
-        - **Vssadmin list providers**
-    - 检查输出。 如果编写器处于失败状态，请执行以下操作：
-        - 在 VM 上的应用程序事件日志中检查 VSS 操作错误。
-    - 尝试重启与失败的编写器关联的以下服务：
-        - 卷影复制
-         - Azure Site Recovery VSS 提供程序
-    - 执行此操作后，请等待几个小时再查看是否已成功生成应用一致的快照。
-    - 最后一招是尝试重新启动 VM。 这可能解决服务处于无响应状态的问题。
+   - 若要检查服务，请登录到来宾 VM。 然后打开管理员命令提示符，运行以下命令检查所有 VSS 编写器是否正常。
+       - **Vssadmin list writers**
+       - **Vssadmin list shadows**
+       - **Vssadmin list providers**
+   - 检查输出。 如果编写器处于失败状态，请执行以下操作：
+       - 在 VM 上的应用程序事件日志中检查 VSS 操作错误。
+   - 尝试重启与失败的编写器关联的以下服务：
+     - 卷影复制
+       - Azure Site Recovery VSS 提供程序
+   - 执行此操作后，请等待几个小时再查看是否已成功生成应用一致的快照。
+   - 最后一招是尝试重新启动 VM。 这可能解决服务处于无响应状态的问题。
 3. 检查 VM 中是否不包含任何动态磁盘。 应用一致的快照不支持动态磁盘。 可在磁盘管理 (diskmgmt.msc) 中进行此项检查。
 
     ![动态磁盘](media/hyper-v-azure-troubleshoot/dynamic-disk.png)

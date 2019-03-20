@@ -13,15 +13,15 @@ ms.service: app-service-mobile
 ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: crdun
-ms.openlocfilehash: 0c00709417f3b393e8505dc7232abd5541c4e961
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 7014d09bbb62e78c37a9496628e3509b6eaaa4ac
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954963"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768223"
 ---
 # <a name="create-an-apache-cordova-app"></a>创建 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "52954963"
 
 只有在完成本教程后，才可以学习有关使用 Azure 应用服务中的移动应用功能的所有其他 Apache Cordova 教程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成本教程，需要具备以下先决条件：
 
 * 装有 [Visual Studio Community 2017] 或更高版本的电脑。

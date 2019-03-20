@@ -1,18 +1,18 @@
 ---
 title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：CLI | Microsoft Docs
-description: 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤将帮助你使用 CLI 创建跨界站点到站点 VPN 网关连接。
+description: 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤有助于使用 CLI 创建跨界站点到站点 VPN 网关连接。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 18834357651e5fb72dd849a8d8e2e7687f0a8141
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 6cf427ee1dbd47d3b762035abc2236bda65db116
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730350"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773174"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络
 
@@ -36,7 +36,7 @@ ms.locfileid: "55730350"
 在开始配置之前，请验证是否符合以下条件：
 
 * 确保有一台兼容的 VPN 设备，并且可对其进行配置。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
-* 确认 VPN 设备有一个面向外部的公共 IPv4 地址。 此 IP 地址不得位于 NAT 之后。
+* 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
 * 可以使用 Azure Cloud Shell 运行 CLI 命令（参见以下说明）。 但是，如果希望在本地运行命令，请验证是否已安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 和 [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)。 
  
@@ -115,7 +115,7 @@ az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubn
 
 使用以下值：
 
-* *--gateway-ip-address* 是本地 VPN 设备的 IP 地址。 VPN 设备不能位于 NAT 之后。
+* *--gateway-ip-address* 是本地 VPN 设备的 IP 地址。
 * *--local-address-prefixes* 是本地地址空间。
 
 使用 [az network local-gateway create](/cli/azure/network/local-gateway) 命令添加具有多个地址前缀的本地网关：
@@ -155,7 +155,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --re
 通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
 - 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的可用密钥。
-- 虚拟网络网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 若要查找虚拟网关的公共 IP 地址，请使用 [az network public-ip list](/cli/azure/network/public-ip) 命令。 为了方便阅读，对输出进行了格式化，以表格式显示一系列公共 IP。
+- 虚拟网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 若要查找虚拟网关的公共 IP 地址，请使用 [az network public-ip list](/cli/azure/network/public-ip) 命令。 为了方便阅读，对输出进行了格式化，以表格式显示一系列公共 IP。
 
   ```azurecli-interactive
   az network public-ip list --resource-group TestRG1 --output table

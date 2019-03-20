@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 11e29aa8d85ed7e3cf5ce7b4a8360e4b5eb628f9
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.openlocfilehash: 9ce236748c1ca4f5e166fe1d7574f6a635d6204b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319211"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855880"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
@@ -65,10 +65,9 @@ ms.locfileid: "54319211"
 ### <a name="what-do-i-need-on-premises"></a>需要在本地做好哪些准备？
 
 需要一个或多个在一个或多个独立或群集 Hyper-V 主机上运行的 VM。 还可以复制 System Center Virtual Machine Manager (VMM) 托管的主机上运行的 VM。
-    - 如果不运行 VMM，则在 Site Recovery 部署期间，将 Hyper-V 主机和群集收集到 Hyper-V 站点中。 在每个 Hyper-V 主机上安装 Site Recovery 代理（Azure Site Recovery 提供程序和 Recovery Services 代理）。
-    - 如果 Hyper-V 主机位于 VMM 云中，则在 VMM 中协调复制。 在 VMM 服务器上安装 Site Recovery 提供程序，在每个 Hyper-V 主机上安装恢复服务代理。 在 VMM 逻辑/VM 网络和 Azure VNet 之间进行映射。
-    - 
-[详细了解](hyper-v-azure-architecture.md) Hyper-V 到 Azure 的体系结构。
+- 如果不运行 VMM，则在 Site Recovery 部署期间，将 Hyper-V 主机和群集收集到 Hyper-V 站点中。 在每个 Hyper-V 主机上安装 Site Recovery 代理（Azure Site Recovery 提供程序和 Recovery Services 代理）。
+- 如果 Hyper-V 主机位于 VMM 云中，则在 VMM 中协调复制。 在 VMM 服务器上安装 Site Recovery 提供程序，在每个 Hyper-V 主机上安装恢复服务代理。 在 VMM 逻辑/VM 网络和 Azure VNet 之间进行映射。
+- [详细了解](hyper-v-azure-architecture.md) Hyper-V 到 Azure 的体系结构。
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>是否可以复制 Hyper-V 群集上的 VM？
 
@@ -139,11 +138,11 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 可以每隔 30 秒（高级存储除外）、5 分钟或 15 分钟复制一次 Hyper-V VM。
 
-###<a name="can-i-extend-replication"></a>是否可以扩展复制？
-不支持扩展扩展或链式复制。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
+### <a name="can-i-extend-replication"></a>是否可以扩展复制？
+不支持扩展扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>是否可以执行脱机初始复制？
-不支持此操作。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。
+不支持此操作。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。
 
 ### <a name="can-i-exclude-disks"></a>是否可以排除磁盘？
 可以从复制中排除磁盘。 
@@ -189,7 +188,7 @@ Site Recovery 不会在启用复制的 Hyper-V VM 上显式安装任何内容。
 Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到辅助 Azure 数据中心。 发生故障转移时，我们会确保元数据和保管库保留在为保管库选择的同一地理区域中。
 
 ### <a name="is-failover-automatic"></a>故障转移是自动发生的吗？
-[故障转移](site-recovery-failover.md)不是自动的。 可以在门户中单击一下鼠标来启动故障转移，或者使用 [PowerShell](/powershell/module/azurerm.siterecovery) 来触发故障转移。
+[故障转移](site-recovery-failover.md)不是自动的。 启动在门户中，单击一下故障转移，也可以使用[PowerShell](/powershell/module/azurerm.siterecovery)触发故障转移。
 
 ### <a name="how-do-i-fail-back"></a>如何故障回复？
 

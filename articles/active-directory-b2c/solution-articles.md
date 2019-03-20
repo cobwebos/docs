@@ -7,19 +7,19 @@ ms.author: davidmu
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: b2c
-ms.openlocfilehash: 5f771e51a0114c321d1dfcbaf305dd9923040032
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.subservice: B2C
+ms.openlocfilehash: 08a5e288d58d86cdad18561cb8a08a31f44ae498
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149029"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009729"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 解决方案和培训
 
 借助 Azure Active Directory (Azure AD) B2C，组织能够实现帮助其与客户建立联系的业务解决方案。 以下解决方案指南和培训是可供下载的文档，能够帮助你了解这些解决方案。
 
-| 标题 | 说明 |
+| 标题 | 描述 |
 | ----- | ----------- |
 | [使用 Azure AD B2C 进行客户标识管理](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | 在本服务概述中，来自 Azure AD B2C 团队的 Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) 概要介绍了服务的工作原理，并展示了如何快速将 B2C 连接到 ASP.NET Core 应用程序。 |
 | [使用 Azure AD B2C 的优点](https://aka.ms/b2coverview) | 了解 Azure AD B2C 的优点和常见方案，以及应用程序可以如何利用此 CIAM 服务。 |
@@ -28,3 +28,4 @@ ms.locfileid: "55149029"
 | [在混合环境中将应用程序身份验证迁移到 Azure AD B2C](https://aka.ms/MigratetoAADB2C) | 在当今的现代组织中，数字化转型和迁移到云在不同阶段进行，这让大多数组织至少需要暂时在混合标识环境中运营。<br><br>本指南重点介绍如何创建将第一个应用程序移到 Azure AD B2C 的迁移计划，并涵盖在混合标识环境中这样做时应该注意的事项。 |
 | [面向客户的应用程序的一般数据保护条例 (GDPR) 注意事项](https://aka.ms/AADB2CandGDPR) | 对于任何面向客户的应用程序，着手将会保存个人数据及服务欧盟公民的项目的所有组织都必须将 GDPR 纳入考虑。<br><br>本解决方案指南重点介绍如何将 Azure AD B2C 用作整体 GDPR 合规方法的灵活组件，其中包括如何通过 Azure AD B2C 组件支持个人的每个关键 GDPR 权利。 |
 | 使用自定义策略：<br><ul><li>[自定义策略简介](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Introduction.pdf)</li><li>[利用租户中的自定义策略](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Leveraging%20Custom%20Policies%20for%20your%20Tenant.pdf)</li><li>[结构策略和管理密钥](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Structuring%20Policies%20and%20Managing%20Keys.pdf)</li><li>[自带标识和迁移用户](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Bring-your-own-identity%20and%20Migrating%20Users.pdf)</li><li>[排查策略问题和审核访问权限](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Troubleshooting%20Policies%20and%20Auditing.pdf)</li><li>[深入了解自定义策略架构](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Deep%20Dive%20on%20Custom%20Policy%20Schema.pdf)</li><br>| 本系列文档提供了 Azure AD B2C 中自定义策略的端到端之旅，深入介绍了最常见的高级标识方案。<br><br> 它包括如何为这些方案实施和管理自定义策略，以及如何使用可用工具对其进行诊断。 它还深入探讨了自定义策略工作原理，并详细说明了如何对其进行微调以满足自己的特定要求。 |
+

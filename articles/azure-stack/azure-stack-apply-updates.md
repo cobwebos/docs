@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: 0c3f52c78bbfd3094324b74f3b66610fcebfa2f4
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 9eca22f5a594bf3d61b1d68882c4853f4bfc499d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099286"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100745"
 ---
 # <a name="apply-updates-in-azure-stack"></a>在 Azure Stack 中应用更新
 
@@ -28,9 +28,9 @@ ms.locfileid: "56099286"
 
 可以使用管理门户中的“更新”磁贴为 Azure Stack 应用 Microsoft 或 OEM 更新包。
 
-如果您使用的是集成的系统版本 1807年或更早版本，必须下载更新包，包文件导入到 Azure Stack，然后安装更新包。 有关说明，请参阅[下载程序包更新 Azure Stack](#update-azure-stack-by-downloading-the-package)
+如果使用 1807 或更低版本的集成系统，则必须下载更新包，将包文件导入到 Azure Stack，然后安装更新包。 有关说明，请参阅[通过下载包更新 Azure Stack](#update-azure-stack-by-downloading-the-package)
 
-这些升级的说明适用于 Azure Stack 集成系统。 如果使用 Azure Stack 开发系统，必须下载最新版本的安装包。 有关说明，请参阅[安装 Azure Stack 开发工具包](.\asdk\asdk-install.md)
+这些升级说明适用于 Azure Stack 集成系统。 如果使用 Azure Stack 开发系统，则必须下载最新版本的安装包。 有关说明，请参阅[安装 Azure Stack 开发工具包](./asdk/asdk-install.md)
 
 ## <a name="update-azure-stack"></a>更新 Azure Stack
 
@@ -38,31 +38,31 @@ ms.locfileid: "56099286"
 
 1. 打开管理门户。
 
-2. 选择**仪表板**。 选择**更新**磁贴。
+2. 选择“仪表板”。 选择“更新”磁贴。
 
     ![Azure Stack 更新可用](media/azure-stack-apply-updates/azure-stack-updates-1901-dashboard.png)
 
-3. 记下当前版本的 Azure Stack。 您可以更新到下一步的完整版本。 例如，如果您运行 Azure Stack 1811 下, 一个发布版本已 1901年。
+3. 记下 Azure Stack 的当前版本。 可以更新到下一个完整版本。 例如，如果当前运行的是 Azure Stack 1811，则下一个发布版本是 1901。
 
-    ![Azure Stack 更新应用](media/azure-stack-apply-updates/azure-stack-updates-1901-updateavailable.png)
+    ![应用 Azure Stack 更新](media/azure-stack-apply-updates/azure-stack-updates-1901-updateavailable.png)
 
-4. 在更新列表中选择下一个可用版本。 可以选择**视图**发行版中的说明列来打开版本的发行说明主题，如果想要查看版本更改。
+4. 在“更新”列表中选择下一个可用版本。 若要查看版本更改，可以在发行说明列中选择“查看”打开该版本的发行说明主题。
 
-5. 现在选择更新。 将启动更新。
+5. 选择“立即更新”。 随即会开始更新。
 
 ### <a name="review-update-history"></a>查看更新历史记录
 
 1. 打开管理门户。
 
-2. 选择**仪表板**。 选择**更新**磁贴。
+2. 选择“仪表板”。 选择“更新”磁贴。
 
-3. 选择**更新历史记录**。
+3. 选择“更新历史记录”。
 
 ![Azure Stack 更新历史记录](media/azure-stack-apply-updates/azure-stack-update-history.PNG)
 
-## <a name="update-azure-stack-by-downloading-the-package"></a>下载程序包更新 Azure Stack
+## <a name="update-azure-stack-by-downloading-the-package"></a>通过下载包更新 Azure Stack
 
-如果您使用的是集成的系统版本 1807年或更早版本，必须下载更新包，包文件导入到 Azure Stack，然后安装更新包。
+如果使用 1807 或更低版本的集成系统，则必须下载更新包，将包文件导入到 Azure Stack，然后安装更新包。
 
 ## <a name="download-the-update-package"></a>下载更新包
 
@@ -75,7 +75,7 @@ ms.locfileid: "56099286"
 - 一个 `Metadata.xml` 文件。 此文件包含有关更新的基本信息，例如发布者、名称、先决条件、大小和支持路径 URL。
 
 > [!IMPORTANT]  
-> 应用 Azure Stack 1901 更新包后，Azure Stack 更新包的打包格式将从.exe、.bin(s)，和.zip(s).xml 格式和.xml 格式。 已连接戳记的 azure Stack 操作员不会受到影响。 断开连接的 azure Stack 操作员将只需将.xml 和.zip 文件导入使用相同的过程如下所述。
+> 应用 Azure Stack 1901 更新包之后，Azure Stack 更新包的包格式将从 .exe、.bin(s) 和 .xml 格式改为 .zip(s) 和 .xml 格式。 已连接阵列的 Azure Stack 操作员不受影响。 已断开连接的 Azure Stack 操作员只需使用如下所述的同一过程导入 .xml 和 .zip 文件。
 
 ## <a name="import-and-install-updates"></a>导入并安装更新
 
@@ -94,7 +94,7 @@ ms.locfileid: "56099286"
  
     ![显示如何转到存储帐户的 Blob](media/azure-stack-apply-updates/ApplyUpdates3.png) 
 
-4. 在“Blob 服务”下，选择“+ 容器”创建容器。 输入的名称 (例如*更新 1811年*)，然后选择**确定**。
+4. 在“Blob 服务”下，选择“+ 容器”创建容器。 输入名称（例如 *Update-1811*），然后选择“确定”。
  
      ![显示如何在存储帐户中添加容器](media/azure-stack-apply-updates/ApplyUpdates4.png)
 

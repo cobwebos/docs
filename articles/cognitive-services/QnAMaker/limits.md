@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/26/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 6f36000eb5a17e58d1450a064897dd9caef89bad
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: fe15cafceea8128735f7241fa5e4187d4d9c47a9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859345"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960048"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 QnA Maker 限制的完整列表。
@@ -52,7 +52,7 @@ QnA Maker 限制的完整列表。
 * 文件名长度：200
 * 支持的文件格式:：“.tsv”、“.pdf”、“.txt”、“.docx”、“.xlsx”。
 * 备用问题的最大数量：100
-* 问题答案对的最大数量：取决于选择的 [Azure 搜索层](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits) 
+* 问题答案对的最大数量：取决于[Azure 搜索层](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)选择。 问题和答案对映射到 Azure 搜索索引上的文档。 
 
 ## <a name="create-knowledge-base-call-limits"></a>创建知识库调用限制：
 表示每个创建知识库操作的限制；即，单击“创建知识库”或调用 CreateKnowledgeBase API。
@@ -71,6 +71,6 @@ QnA Maker 限制的完整列表。
 
 了解何时以及如何更改服务层：
 
-* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku)：当你需要在知识库中有更多问题和解答而超出当前层的能力范围时，请升级 QnA Maker 服务定价层。
-* [搜索](how-to/upgrade-qnamaker-service.md#upgrade-app-service) - 当知识库需要处理来自客户端应用的更多请求时，请升级应用服务定价层。
-* [应用服务](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service)：当计划拥有许多知识库时，请升级 Azure 搜索服务定价层。
+* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku):当您需要更多源文件或 QnA Maker 服务定价层中您的知识库，超出了当前的层，更大的文档升级。
+* [应用服务](how-to/upgrade-qnamaker-service.md#upgrade-app-service):当知识库需要处理来自客户端应用的更多请求时，请升级应用服务定价层。
+* [Azure 搜索](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service):当计划拥有许多知识库时，请升级 Azure 搜索服务定价层。

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 25fdce2381cc6dd65559a2450a42de5389589863
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: 7c4bd326c597b8e989dfc7aac5239ddb2d38376a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195370"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884756"
 ---
 # <a name="saas-application-storefront-details-tab"></a>SaaS 应用程序店面详细信息选项卡
 
@@ -37,7 +37,7 @@ ms.locfileid: "53195370"
 |  **产品/服务字段**   |  **说明**  |
 |  ---------------   |  ---------------  |
 |      套餐摘要              |        概述产品/服务的价值主张。 它将显示在产品/服务的搜索页上。 此内容不应超过 100 个字符。           |
-|      套餐说明              |      显示在应用程序详细信息页上的描述。 允许的最大长度为 1300 个字符。 可以使用基本 HTML 标志标记来设置内容的格式。 例如，&lt;p&gt;、&lt;h1&gt;、&lt;h2&gt; 以及 &lt;li&gt;。 要查看格式化描述的外观，请使用联机实时 HTML 工具，例如 [http://htmledit.squarefree.com](http://htmledit.squarefree.com)             |
+|      套餐说明              |      显示在应用程序详细信息页上的描述。 允许的最大长度为 1300 个字符。 可以使用基本 HTML 标志标记来设置内容的格式。 例如，&lt;p&gt;、&lt;h1&gt;、&lt;h2&gt; 以及 &lt;li&gt;。 要查看格式化描述的外观，请使用联机实时 HTML 工具，例如 [http://htmledit.squarefree.com](https://htmledit.squarefree.com)             |
 |          行业          |        选择产品/服务最适合的行业。 如果应用与多个行业相关，可选择其中最相关的两项。           |
 |          建议的类别（最多 3 个）         |        选择产品/服务最适合的类别。 最多可以选择三个类别。           |
 |           应用版本         |        输入应用程序的版本号。           |

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9967893e855770b693f0d581a07fe2910df4a3cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 117d58f6f56fe1b24539c7bfe950f1a23d6de51a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186937"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003597"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -26,14 +26,15 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志 B2C 类别中的可用活动概述
 审核日志中的“B2C”类别包含以下类型的活动：
-|活动类型 |说明  |
+
+|活动类型 |描述  |
 |---------|---------|
 |授权 |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动         |
 |Directory |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动 |
 |应用程序 | 与 B2C 应用程序相关的 CRUD 操作 |
 |密钥 |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作 |
 |资源 |与 B2C 资源（如策略和标识提供者）相关的 CRUD 操作
-|身份验证 |用户凭据和令牌颁发的验证|
+|Authentication |用户凭据和令牌颁发的验证|
 
 > [!NOTE]
 > 有关用户对象 CRUD 活动，请参阅“核心目录”类别。
@@ -65,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>通过 Azure AD 报告 API 访问审核日志
 审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)进行访问。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 若要向 Azure AD 报告 API 进行身份验证，首先需要注册应用程序。 请确保遵循[访问 Azure AD 报告 API 的先决条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)中的步骤。
 
 ### <a name="accessing-the-api"></a>访问 API

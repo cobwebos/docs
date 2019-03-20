@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1f79330f12117c6ade8884165d1538623e19c7ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 6be2a2d6febfe927cadbdeb12dc91b0e103d6ac4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175258"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094620"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C：在自定义配置文件编辑策略中使用自定义属性
 
@@ -23,7 +23,7 @@ ms.locfileid: "55175258"
 
 在本文中，可在 Azure Active Directory (Azure AD) B2C 目录中创建自定义属性。 将在配置文件编辑用户旅程中将此新属性用作自定义声明。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 请按照 [Azure Active Directory B2C：自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤进行操作。
 
@@ -260,20 +260,20 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 1. 通过更改以下 TechnicalProfiles，将新声明添加到流以登录社交帐户。 社交帐户和联合帐户使用这两个 TechnicalProfiles 登录。 它们使用 alternativeSecurityId 作为用户对象的定位符来读写用户数据。
 
-  ```xml
+   ```xml
     <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
     <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-  ```
+   ```
 
 2. 在内置策略和自定义策略之间使用相同的扩展属性。 通过门户体验添加扩展属性或自定义属性时，使用每个 B2C 租户中都存在的 b2c-extensions-app 注册这些属性。 按照以下步骤在自定义策略中使用扩展属性：
 
-  a. 在 portal.azure.com 的 B2C 租户中，导航到 Azure Active Directory 并选择“应用注册”。  
-  b. 找到 b2c-extensions-app，然后选择它。  
-  c. 在“概要”下，输入“应用程序 ID”和“对象 ID”。  
-  d. 将这些信息包含在 AAD-Common TechnicalProfile 元数据中：  
+   a. 在 portal.azure.com 的 B2C 租户中，导航到 Azure Active Directory 并选择“应用注册”。  
+   b. 找到 b2c-extensions-app，然后选择它。  
+   c. 在“概要”下，输入“应用程序 ID”和“对象 ID”。  
+   d. 将这些信息包含在 AAD-Common TechnicalProfile 元数据中：  
 
-  ```xml
+   ```xml
       <ClaimsProviders>
         <ClaimsProvider>
           <DisplayName>Azure Active Directory</DisplayName>
@@ -285,16 +285,16 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
               <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
               <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
             </Metadata>
-  ```
+   ```
 
 3. 与门户体验保持一致。 在自定义策略中使用这些属性之前，需先使用门户 UI 创建这些属性。 在门户中创建属性 ActivationStatus 时，必须对其进行引用，如下所示：
 
-  ```
-  extension_ActivationStatus in the custom policy.
-  extension_<app-guid>_ActivationStatus via Graph API.
-  ```
+   ```
+   extension_ActivationStatus in the custom policy.
+   extension_<app-guid>_ActivationStatus via Graph API.
+   ```
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 有关扩展属性的详细信息，请参阅文章[目录架构扩展| 图形 API 概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)。
 

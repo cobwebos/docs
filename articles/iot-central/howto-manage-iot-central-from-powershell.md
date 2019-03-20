@@ -8,18 +8,20 @@ ms.author: dobett
 ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 04726249809656344c8f81164d5deed5af321e71
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: 450b27d21cf4079bdef6fc20c3f2e83f4e47cbd2
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354964"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806550"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>从 Azure PowerShell 管理 IoT Central
 
+[!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
+
 如果不从 IoT Central [应用程序管理器](https://aka.ms/iotcentral)页面创建和管理 IoT Central 应用程序，可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 来管理应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -73,7 +75,7 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 
 **应用程序模板**
 
-|模板名称  |Description |
+|模板名称  |描述 |
 |---------------|------------|
 |iotc-default@1.0.0 |创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
 |iotc-demo@1.0.0    |创建一个应用程序，其中包含已为冷藏食品贩卖机创建的设备模板。 通过此模板来完成 Azure IoT Central 的入门。 |

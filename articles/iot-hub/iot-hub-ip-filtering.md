@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: d549127b5cbdb3a94e435e753592f3227cb95f3a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 02059409000ee5b68fbcb8695f580980c95effe6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232208"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731701"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
 安全性对于基于 Azure IoT 中心的任何 IoT 解决方案来说都是一个重要方面。 作为安全配置的一部分，有时需要显式指定设备可从其连接的 IP 地址。 使用 *IP 筛选器*功能，可以配置规则来拒绝或接受来自特定 IPv4 地址的流量。
 
-## <a name="when-to-use"></a>使用时机
+## <a name="when-to-use"></a>何时使用
 
 对于需要阻止特定 IP 地址的 IoT 中心终结点的情况，有两个具体用例：
 
@@ -28,9 +28,9 @@ ms.locfileid: "56232208"
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
-IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选器规则适用于使用任意受支持协议和从设备和后端应用发出的所有连接。
+在 IoT 中心服务级别应用 IP 筛选器规则。 因此，IP 筛选器规则适用于使用任意受支持协议和从设备和后端应用发出的所有连接。
 
-来自与 IoT 中心内的拒绝 IP 规则匹配的 IP 地址的任何连接尝试都将收到未经授权 401 状态代码和说明。 响应消息不会提及 IP 规则。
+与 IoT 中心的拒绝 IP 规则匹配的 IP 地址发出的任何连接尝试都会收到“未授权”401 状态代码和说明。 响应消息不会提及 IP 规则。
 
 ## <a name="default-setting"></a>默认设置
 
@@ -66,7 +66,7 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 ## <a name="delete-an-ip-filter-rule"></a>删除 IP 筛选器规则
 
-要删除 IP 筛选器规则，请在网格中选择一个或多个规则，并单击“删除”。
+如果要删除 IP 筛选器规则，请在网格中选择一个或多个规则，并单击“删除”。
 
 ![删除 IoT 中心 IP 筛选规则](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
@@ -121,11 +121,13 @@ az resource update -n <iothubName> -g <resourceGroupName> --resource-type Micros
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>使用 Azure PowerShell 检索和更新 IP 筛选器
 
-可以通过 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 检索和设置 IoT 中心的 IP 筛选器。 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+可以检索和设置通过 IoT 中心的 IP 筛选器[Azure PowerShell](/powershell/azure/overview)。 
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
-$iothubResource = Get-AzureRmResource -ResourceGroupName <resourceGroupNmae> -ResourceName <iotHubName> -ExpandProperties
+$iothubResource = Get-AzResource -ResourceGroupName <resourceGroupNmae> -ResourceName <iotHubName> -ExpandProperties
 
 # Access existing IP filter rules
 $iothubResource.Properties.ipFilterRules |% { Write-host $_ }
@@ -140,7 +142,7 @@ $iothubResource.Properties.ipFilterRules += $filter
 $iothubResource.Properties.ipFilterRules = @($iothubResource.Properties.ipFilterRules | Where 'filterName' -ne 'GoodIP')
 
 # Update your IoT Hub resource with your updated IP filters
-$iothubResource | Set-AzureRmResource -Force
+$iothubResource | Set-AzResource -Force
 ```
 
 ## <a name="update-ip-filter-rules-using-rest"></a>使用 REST 更新 IP 筛选器
@@ -150,7 +152,7 @@ $iothubResource | Set-AzureRmResource -Force
 
 ## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估
 
-IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
+IP 筛选器规则按顺序应用，与 IP 地址匹配的第一条规则决定了是采取接受操作还是拒绝操作。
 
 例如，如果希望接受 192.168.100.0/22 范围中的地址并拒绝任何其他地址，则网格中的第一个规则应接受 192.168.100.0/22 地址范围。 下一个规则应通过使用 0.0.0.0/0 范围拒绝所有地址。
 

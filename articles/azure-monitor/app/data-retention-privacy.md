@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: 3c74d3a6c5b66053fb968ad52f72eca181799a3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300255"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003580"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -118,9 +118,7 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 如果与其他项目共享代码，请务必删除检测密钥。
 
 ## <a name="is-the-data-encrypted"></a>数据是否已加密？
-服务器中的数据目前不会加密。
-
-在数据中心之间移动的所有数据都经过加密。
+所有数据都进行静态加密并为其之间移动数据中心。
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>从应用程序传输到 Application Insights 服务器的数据是否经过加密？
 是。我们使用 https 将数据从几乎所有 SDK（包括 Web 服务器、设备和 HTTPS 网页）发送到门户。 唯一的例外是从纯 HTTP 网页发送的数据。
@@ -158,12 +156,12 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 
 - 从配置文件中删除 ServerTelemetryChannel
 - 将此代码片段添加到配置中：
-```csharp
-ServerTelemetryChannel channel = new ServerTelemetryChannel();
-channel.StorageFolder = @"D:\NewTestFolder";
-channel.Initialize(TelemetryConfiguration.Active);
-TelemetryConfiguration.Active.TelemetryChannel = channel;
-```
+  ```csharp
+  ServerTelemetryChannel channel = new ServerTelemetryChannel();
+  channel.StorageFolder = @"D:\NewTestFolder";
+  channel.Initialize(TelemetryConfiguration.Active);
+  TelemetryConfiguration.Active.TelemetryChannel = channel;
+  ```
 
 ### <a name="netcore"></a>NetCore
 
@@ -239,6 +237,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Application Insights - 概述][start]。）每个组件发送不同的数据。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>不同情况下发送的数据类
+
 | 操作 | 收集的数据类（参阅下一表格） |
 | --- | --- |
 | [将 Application Insights SDK 添加到 .NET Web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>Requests<br/>**异常**<br/>会话<br/>users |
@@ -254,6 +253,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Appl
 有关[适用于其他平台的 SDK][platforms]，请参阅相关文档。
 
 #### <a name="the-classes-of-collected-data"></a>收集的数据类
+
 | 收集的数据类 | 包含（此列表并不详尽） |
 | --- | --- |
 | **属性** |**任何数据 - 由代码确定** |

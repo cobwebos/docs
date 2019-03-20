@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: ca951c813554ae253cbd572e03c53b8687499af9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 94bdc0670fb63b1b4c306a5af3357f437784338c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000159"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007924"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure Monitor 中收集 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Azure Monitor 进行收集并将其存储为[日志数据](data-collection.md)。
@@ -40,7 +40,7 @@ Azure Monitor 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自�
 ## <a name="iis-log-record-properties"></a>IIS 日志记录属性
 IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机的名称。 |
 | cIP |客户端的 IP 地址。 |
@@ -67,12 +67,12 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 ## <a name="log-queries-with-iis-logs"></a>使用 IIS 日志的日志查询
 下表提供了检索 IIS 日志记录的日志查询的不同示例。
 
-| Query | 说明 |
+| Query | 描述 |
 |:--- |:--- |
 | W3CIISLog |所有 IIS 日志记录。 |
 | W3CIISLog &#124; where scStatus==500 |返回状态为 500 的所有 IIS 日志记录。 |
 | W3CIISLog &#124; summarize count() by cIP |按客户端 IP 地址的 IIS 日志条目计数。 |
-| W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |按主机的 URL www.contoso.com 的 IIS 日志条目的计数。 |
+| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |计数的 IIS 日志条目由 URL 主机 www\.contoso.com。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |每台 IIS 计算机接收的总字节数。 |
 
 ## <a name="next-steps"></a>后续步骤

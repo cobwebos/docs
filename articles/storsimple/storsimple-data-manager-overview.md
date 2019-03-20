@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: fe4d332859b3ec0ba03e64f9a830b7710586aa17
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: c5ffe3ec2ec3cb06297df6be4ba7021f692633bf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158811"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312477"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 数据管理器解决方案概述
 
@@ -68,7 +68,9 @@ StorSimple 数据管理器在以下 7 个区域中提供：
  - 源存储帐户（与 StorSimple 设备关联的帐户）和目标存储帐户（希望其中的数据采用本机格式）位于同一 Azure 区域中。
  - 在包含 StorSimple 存储帐户的区域中使用数据管理器和作业定义。 如果不可行，请在最近的 Azure 区域中使用数据管理器，然后在 StorSimple 存储帐户所在的同一区域中创建作业定义。 
 
-    如果 StorSimple 存储帐户不在支持创建作业定义的 26 个区域中，建议不要运行 StorSimple 数据管理器，因为这样可能会产生较长的延迟和高昂的流出费用。
+    如果 StorSimple 存储帐户不支持创建作业定义的 26 个区域中，我们建议您不要运行 StorSimple 数据管理器，正如您看到较长的延迟和潜在的出口费用。
+    
+Microsoft 致力于确保在所有区域都可以使用 Azure 服务。 但是，非计划的服务中断可能会发生短时间内的某些区域中。 在这种情况下，可以在服务中断时，不会影响的区域中显示的数据管理器和作业定义和运行转换作业。 你可能会遇到一些额外的延迟，在此类方案中，但这可能是您在极少数的区域性服务中断的恢复策略。
 
 ## <a name="security-considerations"></a>安全注意事项
 

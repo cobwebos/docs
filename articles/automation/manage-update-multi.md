@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac2d1c1fb59988c8b95fda6b92bb9ae0332fc0e0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 65ea01047743c5894ac2ae8b38a197b57cb6971c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427417"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531313"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -25,7 +25,7 @@ ms.locfileid: "54427417"
 - 计划安装所需的更新
 - 查看部署结果，验证是否已成功将更新应用到所有启用了“更新管理”的虚拟机
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用“更新管理”，需要具备以下条件：
 
@@ -70,9 +70,9 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>为非 Azure 虚拟机和计算机启用更新管理
 
-若要了解如何为非 Azure Windows 虚拟机和计算机启用“更新管理”，请参阅[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](../log-analytics/log-analytics-windows-agent.md)。
+若要了解如何为 Azure Windows 虚拟机和计算机启用更新管理，请参阅[连接 Windows 计算机连接到 Azure 中的 Azure Monitor 服务](../log-analytics/log-analytics-windows-agent.md)。
 
-若要了解如何为非 Azure Linux 虚拟机和计算机启用“更新管理”，请参阅[将 Linux 计算机连接到 Log Analytics](../log-analytics/log-analytics-agent-linux.md)。
+若要了解如何为非 Azure Linux 虚拟机和计算机启用更新管理，请参阅[将 Linux 计算机连接到 Azure Monitor 日志](../log-analytics/log-analytics-agent-linux.md)。
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>查看附加到自动化帐户的计算机
 
@@ -104,7 +104,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | 描述 |
 | --- | --- | --- |
 | Windows 代理 |是 |“更新管理”从 Windows 代理收集有关系统更新的信息，并开始安装必需的更新。 |
 | Linux 代理 |是 |“更新管理”从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -113,7 +113,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ### <a name="collection-frequency"></a>收集频率
 
-在计算机完成更新符合性扫描以后，代理会将信息批量转发到 Azure Log Analytics。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。
+计算机完成更新符合性扫描后，代理将转发到 Azure Monitor 日志的大容量中的信息。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。
 
 如果 MMA 重启，除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动。
 
@@ -132,7 +132,7 @@ Linux 代理必须具有访问更新存储库的权限。
 - **名称**：输入用于标识更新部署的唯一名称。
 - **操作系统**：选择“Windows”或“Linux”。
 - **要更新的组(预览版)**：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)
-- **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../azure-monitor/platform/computer-groups.md)
+- **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)
 
   ![“新建更新部署”窗格](./media/manage-update-multi/update-select-computers.png)
 
@@ -159,7 +159,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 - **重启控制** - 此设置确定如何为更新部署处理重启。
 
-   |选项|说明|
+   |选项|描述|
    |---|---|
    |必要时请重启| **（默认）** 必要时且在维护时段允许的情况下开始重启。|
    |永远重启|无论是否需要重启，都会开始重启。 |

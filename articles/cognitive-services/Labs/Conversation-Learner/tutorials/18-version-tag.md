@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 99b4712373423d30dc83408cc80eccc93b342c10
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55205994"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086303"
 ---
 # <a name="how-to-use-version-tagging"></a>如何使用版本标记
 
@@ -67,9 +67,9 @@ ms.locfileid: "55205994"
 
 现在，我们就可以将此项标记为模型的“版本 1”了。
 
-4. 在左面板中，单击“设置”，然后单击 ![](../media/tutorial18_version_tags.PNG)“版本标记”图标，以显示应单击的 `New Tag` 按钮。
+1. 在左面板中，单击“设置”，然后单击 ![](../media/tutorial18_version_tags.PNG)“版本标记”图标，以显示应单击的 `New Tag` 按钮。
     - 将其命名为“版本 1”
-4. 在“实时标记”下拉列表中，选择“版本 1”。  
+1. 在“实时标记”下拉列表中，选择“版本 1”。  
     - 现在，使用此机器人的通道将使用我们模型的“版本 1”。
     - 此版本 1 模型的实体、操作和训练对话不能再进行更改。
     - 如果将“版本 1”选为“编辑标记”，则只能查看模型，而不能对其进行编辑。

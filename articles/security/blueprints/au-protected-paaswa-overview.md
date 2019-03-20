@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 8fd3725a5f3cd45da261aca17bf0f89a3e5a5aa0
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: c17f16ce796c9f296facd69c18de4effc7ff5258
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055177"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440975"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure 安全性与合规性蓝图 - 符合 Australia PROTECTED 的 PaaS Web 应用程序
 
@@ -59,7 +59,7 @@ ms.locfileid: "54055177"
 - Azure 安全中心
 - Azure SQL 数据库
 - Azure 存储
-- Azure Log Analytics
+- Azure Monitor 日志
 - Azure 虚拟网络
     - (1)/16 网络
     - (4)/24 网络
@@ -114,7 +114,7 @@ ms.locfileid: "54055177"
 每个网络安全组打开了特定的端口和协议，使解决方案能够安全正确地工作。 此外，为每个网络安全组启用了以下配置：
 
   - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
-  - Azure Log Analytics 已连接到[网络安全组的诊断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+  - Azure Monitor 日志连接到[的网络安全组诊断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 **子网**：每个子网与其对应的网络安全组相关联。
 
@@ -127,7 +127,7 @@ ms.locfileid: "54055177"
 
 对于从客户自有网络传输的“受保护”数据，该体系结构将使用 Internet，或者将 ExpressRoute 与配置有 IPSEC 的 VPN 网关配合使用。
 
-此外，通过 Azure 管理门户发送到 Azure 的所有事务将使用 TLS v1.2 通过 HTTPS 进行。
+此外，通过 HTTPS 利用 TLS v1.2 发生到 Azure 通过 Azure 管理门户的所有事务。
 
 ### <a name="data-at-rest"></a>静态数据
 该体系结构通过加密、数据库审核和其他措施保护静态数据。
@@ -189,9 +189,9 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
 
-**Log Analytics**：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中进行处理、存储和在仪表板上报告。 收集数据后，数据将按数据类型组织到不同的表中，这样就可以对所有数据进行集中分析，不管其最初来源是什么。 此外，Azure 安全中心与 Log Analytics 集成，使客户能够使用 Log Analytics 查询来访问其安全事件数据，并将这些数据与其他服务中的数据合并。
+**Azure Monitor 日志**：这些日志合并在[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)进行处理、 存储和仪表板报告。 收集以后，数据会按数据类型整理到不同的表中，这样就可以对所有数据进行集中分析，不管其最初来源是什么。 此外，Azure 安全中心与 Azure Monitor 日志允许客户使用 Kusto 查询来访问其安全事件数据并将其与其他服务中的数据集成。
 
-以下 Log Analytics [管理解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)是此体系结构的一部分：
+以下 Azure[监视解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)作为此体系结构的一部分包括在内：
 -   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署的服务器基础结构的优先建议列表。
 - [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
 - [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。

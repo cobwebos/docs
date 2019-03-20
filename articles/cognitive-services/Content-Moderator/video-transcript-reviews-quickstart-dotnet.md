@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: feecafcae8095c11736d1a76a1b6774c8dde1fc8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 2e33f94486fe295fffa1f0b4bbd298b15d9271f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113727"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>使用 .NET 创建视频脚本评论
 
@@ -25,7 +25,7 @@ ms.locfileid: "55864088"
 - 向评论中添加已审查的脚本
 - 发布评论
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假定你已[审查视频](video-moderation-api.md)，并在评论工具中[创建了视频评论](video-reviews-quickstart-dotnet.md)以便进行人工决策。 你现在想要在评论工具中添加已审查的视频脚本。
 
@@ -246,10 +246,10 @@ ms.locfileid: "55864088"
 1. 内容审查器团队名称。
 1. **CreateVideoReviews** 返回的视频评论 ID。
 1. 一个 IList<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** 具有以下属性：
-- **Terms**。 一个 IList<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** 具有以下属性：
-- **Index**。 该词语从零开始的索引。
-- **Term**。 一个包含该词语的字符串。
-- **Timestamp**。 一个字符串，包含在脚本中找到词语的时间（以秒为单位）。
+1. **Terms**。 一个 IList<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** 具有以下属性：
+1. **Index**。 该词语从零开始的索引。
+1. **Term**。 一个包含该词语的字符串。
+1. **Timestamp**。 一个字符串，包含在脚本中找到词语的时间（以秒为单位）。
 
 脚本必须采用 WebVTT 格式。 有关更多信息，请参阅 [WebVTT：Web 视频文本轨道格式](https://www.w3.org/TR/webvtt1/)。
 

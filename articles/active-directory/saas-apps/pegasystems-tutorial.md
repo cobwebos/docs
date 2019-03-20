@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a6fd51ad14395b3c195ae1ceb5a188dd2c708c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: fa3a3dbda3f184b0c2541dc9df6c39afa86458e4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162503"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437626"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教程：zure Active Directory 与 Pega Systems 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56162503"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Pega Systems 的集成，需要具有以下项：
 
@@ -170,7 +170,7 @@ ms.locfileid: "56162503"
 
     ![配置单一登录“保存”按钮](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
-1. 在“创建身份验证服务”屏幕上执行以下操作：
+1. 在执行以下操作**创建身份验证服务**屏幕：
 
     ![配置单一登录“保存”按钮](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
 

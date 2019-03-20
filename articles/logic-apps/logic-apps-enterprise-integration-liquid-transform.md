@@ -5,17 +5,16 @@ services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
 ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: d607c75bc451774e6bf269eb658236d93a85021f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 3441350a07047676ac43de23262be6c54912162c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854371"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104159"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
 
@@ -23,7 +22,7 @@ ms.locfileid: "54854371"
 
 因此，在可以在逻辑应用中执行 Liquid 转换之前，必须先使用 Liquid 映射定义从 JSON 到 JSON 的映射，然后将该映射存储在集成帐户中。 本文展示了如何创建并使用此 Liquid 模板或映射。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有订阅，可以[从免费的 Azure 帐户着手](https://azure.microsoft.com/free/)。 或者[注册即用即付订阅](https://azure.microsoft.com/pricing/purchase-options/)。
 
@@ -35,8 +34,7 @@ ms.locfileid: "54854371"
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>为集成帐户创建 Liquid 模板或映射
 
-1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。
-如果希望在 Liquid 模板中使用任何筛选器，请确保这些筛选器以大写字母开头。 了解有关 [Liquid 筛选器](https://shopify.github.io/liquid/basics/introduction/#filters)的更多信息，此类筛选器使用 [DotLiquid](https://dotliquidmarkup.org/) 和 C# 命名约定。
+1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在 Liquid 模板，你可以使用[Liquid 筛选](https://shopify.github.io/liquid/basics/introduction/#filters)，可使用该技术[DotLiquid](https://dotliquidmarkup.org/)和C#命名约定。 但是，请确保您*以大写字符开头的筛选器名称*，不是小写字符。 
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -82,7 +80,8 @@ ms.locfileid: "54854371"
 
 2. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)。
 
-3. 在触发器下，选择“新建步骤”。 在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：**将 JSON 转换为 JSON - Liquid**
+3. 在触发器下，选择“新建步骤”。 
+   在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：**将 JSON 转换为 JSON - Liquid**
 
    ![查找并选择 Liquid 操作](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -101,7 +100,7 @@ ms.locfileid: "54854371"
 
    2. 从“选择集成帐户”列表中，选择集成帐户，并选择“保存”。
 
-     ![将逻辑应用链接到集成帐户](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+      ![将逻辑应用链接到集成帐户](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
 ## <a name="test-your-logic-app"></a>测试逻辑应用
 

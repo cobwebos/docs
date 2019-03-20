@@ -8,21 +8,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 02/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2a566312e70e0c1d5f85a540f30ecdf0adc0e7e7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: bf29fd8d9b707636fb5965669ad800517a6cf58f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653707"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075555"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 生成机器学习应用程序并分析数据集
 
 了解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 创建机器学习应用程序，以便对打开的数据集执行简单预测分析。 在 Spark 的内置机器学习库中，本示例通过逻辑回归使用*分类*。 
-
-> [!TIP]  
-> 本示例也适用于在 HDInsight 中创建的 Spark (Linux) 群集上的 [Jupyter 笔记本](https://jupyter.org/)。 笔记本体验可让你从笔记本本身运行 Python 代码片段。 若要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)。 然后运行 **Python** 文件夹中的笔记本“机器学习：使用 MLlib.ipynb 对食品检测数据进行预测分析”。
 
 MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实用工具，其中包括适用于以下任务的实用工具：
 
@@ -38,7 +35,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 逻辑回归是用于分类的算法。 Spark 的逻辑回归 API 可用于 *二元分类*，或将输入数据归类到两组中的一组。 有关逻辑回归的详细信息，请参阅[维基百科](https://en.wikipedia.org/wiki/Logistic_regression)。
 
-总之，逻辑回归的过程会产生 *逻辑函数*，可用于预测输入向量属于一个组或另一个组的概率。  
+总之，逻辑回归过程会产生“逻辑函数”  ，该函数可用于预测输入向量属于其中一个组的概率。  
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>食品检测数据的预测分析示例
 本示例使用 Spark 对食品检测数据 (**Food_Inspections1.csv**) 执行一些预测分析，这些数据通过 [City of Chicago data portal](https://data.cityofchicago.org/)（芝加哥市数据门户）获取。 此数据集包含有关在芝加哥执行的食品企业检测的信息，包括每家企业的相关信息、发现的违规行为（若有）以及检测结果。 CSV 数据文件在与群集（位于 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**）关联的存储帐户中可用。
@@ -49,7 +46,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 1. 使用 PySpark 内核创建 Jupyter Notebook。 有关说明，请参阅[创建 Jupyter Notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
 
-2. 导入此应用程序所需的类型。 将以下代码复制并粘贴到空白单元格中，然后按 **SHIRT + ENTER**。
+2. 导入此应用程序所需的类型。 复制并将以下代码粘贴到一个空单元格，然后再按**SHIFT + ENTER**。
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -173,7 +170,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
     ```PySpark
     %%sql -o countResultsdf
-    SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
+    SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
     后接 `-o countResultsdf` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头结点）。 输出将作为 [Pandas](https://pandas.pydata.org/) 数据帧进行保存，指定名称为 **countResultsdf**。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅[包含 Apache Spark HDInsight 群集的 Jupyter Notebook 上可用的内核](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
@@ -201,26 +198,18 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
     ![Spark 机器学习应用程序输出：包含五个不同检测结果的饼图](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark 机器学习结果输出")
 
-    一项检测可以包含 5 个不同结果：
-
-    - 未找到企业
-    - 失败
-    - 通过
-    - 有条件通过
-    - 停止经营
-
     若要预测食物检测结果，需要基于违规行为开发一个模型。 由于逻辑回归是二元分类方法，因此有必要将结果数据分为两个类别：“失败”和“通过”：
 
-    - 通过
-        - 通过
-        - 有条件通过
-    - 失败
-        - 失败
-    - 弃用
-        - 未找到企业
-        - 停止经营
+   - 通过
+       - 通过
+       - 有条件通过
+   - 失败
+       - 失败
+   - 弃用
+       - 未找到企业
+       - 停止经营
 
-    附带其他结果（“未找到企业”或“停止经营”）的数据没有作用，不过它们在结果中占据极小的百分比。
+     附带其他结果（“未找到企业”或“停止经营”）的数据没有作用，不过它们在结果中占据极小的百分比。
 
 4. 运行以下代码，将现有数据帧 (`df`) 转换为新的数据帧，其中每个检测以“违规行为标签对”表示。 在本例中，`0.0` 标签表示失败，`1.0` 标签表示成功，`-1.0` 标签表示除了这两个以外的结果。 
 
@@ -254,7 +243,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 处理自然语言的一种标准机器学习方法是为每个不同单词分配一个“索引”，并将一个向量传递到机器学习算法，以便每个索引值包含文本字符串中该单词的相对频率。
 
-MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个违规行为字符串以获取每个字符串中的单个单词。 然后使用 `HashingTF` 将每组令牌转换为功能向量，随后可将向量传递到逻辑回归算法以构造模型。 利用“管道”按序列执行上述所有步骤。
+MLlib 提供了执行此操作的一种简单方法。 首先，“标记”每个违规行为字符串以获取每个字符串中的单个单词。 然后使用 `HashingTF` 将每组令牌转换为功能向量，随后可将向量传递到逻辑回归算法以构造模型。 利用“管道”按序列执行上述所有步骤。
 
 ```PySpark
 tokenizer = Tokenizer(inputCol="violations", outputCol="words")
@@ -272,7 +261,7 @@ model = pipeline.fit(labeledData)
 1. 运行以下代码创建新的数据帧 **predictionsDf**，其中包含由模型生成的预测。 该代码片段还根据数据帧创建一个名为 **Predictions** 的临时表。
 
     ```PySpark
-    testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+    testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                 .map(csvParse) \
                 .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
     testDf = spark.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
@@ -284,10 +273,6 @@ model = pipeline.fit(labeledData)
     应看到如下输出：
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     ['id',
         'name',
         'results',
@@ -305,7 +290,7 @@ model = pipeline.fit(labeledData)
     predictionsDf.take(1)
     ```
 
-   将显示针对测试数据集中第一项的预测。
+   显示了对测试数据集中第一个条目的预测。
 1. `model.transform()` 方法会将相同转换应用于任何具有相同构架的新数据，并成功预测如何对数据进行分类。 可执行一些简单的统计，以了解预测的准确度：
 
     ```PySpark
@@ -321,10 +306,6 @@ model = pipeline.fit(labeledData)
     输出如下所示：
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```
@@ -370,14 +351,14 @@ model = pipeline.fit(labeledData)
     plt.axis('equal')
     ```
 
-    应该会看到以下输出：
+    应会看到以下输出：
 
-    ![Spark 机器学习应用程序输出：失败食品检测百分比饼图。](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark 机器学习结果输出")
+    ![Spark 机器学习应用程序输出 - 显示失败食品检测结果百分比的饼图](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark 机器学习结果输出")
 
-    在此图中，“positive”结果是指未通过食品检测，而“negative”结果表示已通过检测。
+    在该图中，“正”的结果指未通过食品检验，而“负”的结果指通过检验。
 
 ## <a name="shut-down-the-notebook"></a>关闭笔记本
-运行完应用程序之后，应该关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。
+运行完应用程序之后，应该关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”。 这会关闭笔记本。
 
 ## <a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)

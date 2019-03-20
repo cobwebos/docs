@@ -16,21 +16,21 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2a5876a3f77eb0764edc5ce833f4b74284dda66
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211710"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852938"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect：从 DirSync 升级
 Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 DirSync 升级的方式。 这些步骤不适用于从另一个版本的 Azure AD Connect 或从 Azure AD Sync 升级。
 
 开始安装 Azure AD Connect 之前，确保[下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)，完成 [Azure AD Connect：硬件和先决条件](how-to-connect-install-prerequisites.md)中的预备步骤。 特别是，请阅读以下内容，因为其中描述了与 DirSync 不同的方面：
 
-* 所需的 .Net 和 PowerShell 版本。 服务器上所需要的版本比 DirSync 需要的版本新。
+* 所需的.NET 和 PowerShell 版本。 服务器上所需要的版本比 DirSync 需要的版本新。
 * 代理服务器配置。 如果使用代理服务器连接 Internet，则该设置必须在升级之前配置。 DirSync 始终使用安装它时为用户配置的代理服务器，但是 Azure AD Connect 使用计算机设置。
-* 需要在代理服务器中打开的 URL。 对于基本的应用场景，DirSync 也支持这些 URL，要求是一样的。 如果想要使用任何包括在 Azure AD Connect 中的新功能，则必须打开一些新的 URL。
+* 需要在代理服务器中打开的 URL。 对于基本的应用场景，DirSync 也支持这些 URL，要求是一样的。 如果要使用 Azure AD Connect 的一些新功能，则必须打开一些新 URL。
 
 > [!NOTE]
 > 启用新的 Azure AD Connect 服务器并开始将更改同步到 Azure AD 以后，不得通过回退来使用 DirSync 或 Azure AD Sync。不支持从 Azure AD Connect 降级到旧客户端（包括 DirSync 和 Azure AD Sync），那样可能会导致各种问题，例如数据在 Azure AD 中丢失。
@@ -41,7 +41,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 根据当前的 DirSync 部署，可以使用不同的升级选项。 如果预期的升级时间少于 3 小时，建议执行就地升级。 如果预期的升级时间超过 3 小时，建议在另一台服务器上进行并行部署。 如果对象数目超过 50,000 个，预计需要 3 个多小时才能完成升级。
 
 | 场景 |
-| --- | --- |
+| --- |
 | [就地升级](#in-place-upgrade) |
 | [并行部署](#parallel-deployment) |
 
@@ -71,7 +71,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 
 ![已阻止升级](./media/how-to-dirsync-upgrade-get-started/analysisblocked.png)
 
-在这些情况下，建议在[过渡模式](how-to-connect-sync-operations.md#staging-mode)下安装新的 Azure AD Connect 服务器，并确认旧的 DirSync 及新的 Azure AD Connect 配置。 使用自定义配置重新应用所有更改，如 [Azure AD Connect 同步自定义配置](how-to-connect-sync-whatis.md)中所述。
+在这些情况下，建议在[过渡模式](how-to-connect-sync-staging-server.md)下安装新的 Azure AD Connect 服务器，并确认旧的 DirSync 及新的 Azure AD Connect 配置。 使用自定义配置重新应用所有更改，如 [Azure AD Connect 同步自定义配置](how-to-connect-sync-whatis.md)中所述。
 
 无法检索且未迁移 DirSync 用于服务帐户的密码。 这些密码会在升级期间重置。
 
@@ -96,7 +96,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
    ![欢迎使用 Azure](./media/how-to-dirsync-upgrade-get-started/Welcome.png)
 3. 单击“下一步”开始分析现有的 DirSync 安装。  
    ![分析现有的目录同步安装](./media/how-to-dirsync-upgrade-get-started/Analyze.png)
-4. 分析完成后，可看到如何继续的建议。  
+4. 完成分析后，可以看到操作建议。  
    * 如果使用 SQL Server Express 并且对象数少于 50,000 个，则会显示以下屏幕：  
      ![分析完成，已准备好从 DirSync 升级](./media/how-to-dirsync-upgrade-get-started/AnalysisReady.png)
    * 如果使用完整的 SQL Server for DirSync，则会看到以下页面：  
@@ -111,7 +111,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
    如果收到错误消息并且出现了连接问题，请参阅[排查连接问题](tshoot-connect-connectivity.md)。
 6. 提供 Active Directory 的企业管理员帐户。  
    ![输入 ADDS 凭据](./media/how-to-dirsync-upgrade-get-started/ConnectToADDS.png)
-7. 现在可以开始配置。 单击“升级”时，会卸载 DirSync 并配置 Azure AD Connect，然后开始同步。  
+7. 现在可以开始配置。 单击“升级” 后，会卸载 DirSync 并配置 Azure AD Connect，并开始同步。  
    ![已准备好配置](./media/how-to-dirsync-upgrade-get-started/ReadyToConfigure.png)
 8. 安装完成后，请注销并再次登录到 Windows，即可使用同步服务管理器或同步规则编辑器，或者尝试进行其他任何配置更改。
 
@@ -161,12 +161,12 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
      可以在此屏幕上看到以下选项：  
      ![输入 Azure AD 凭据](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
 7. 单击“下一步”。
-8. 在“已准备好配置”页上，保留选中“配置完成后立即开始同步过程”。 服务器当前为[过渡模式](how-to-connect-sync-operations.md#staging-mode)，更改不会导出到 Azure AD。
+8. 在“已准备好配置”页上，保留选中“配置完成后立即开始同步过程”。 服务器当前为[过渡模式](how-to-connect-sync-staging-server.md)，更改不会导出到 Azure AD。
 9. 单击“安装”。
 10. 安装完成后，请注销并再次登录到 Windows，即可使用同步服务管理器或同步规则编辑器，或者尝试进行其他任何配置更改。
 
 > [!NOTE]
-> 开始 Windows Server Active Directory 和 Azure Active Directory 之间的同步，但不会将任何更改导出到 Azure AD。 每次只能有一个同步工具在主动导出更改。 此状态称为[过渡模式](how-to-connect-sync-operations.md#staging-mode)。
+> 开始 Windows Server Active Directory 和 Azure Active Directory 之间的同步，但不会将任何更改导出到 Azure AD。 每次只能有一个同步工具在主动导出更改。 此状态称为[过渡模式](how-to-connect-sync-staging-server.md)。
 
 ### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>验证 Azure AD Connect 是否已准备好开始同步
 若要验证 Azure AD Connect 是否已准备好接管 DirSync，需要从“开始”菜单的“Azure AD Connect”组中，打开“同步服务管理器”。
@@ -182,7 +182,7 @@ Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 D
 
 检查这些操作的结果，并确保没有任何错误。
 
-如果想查看并检查即将导出到 Azure AD 的更改，请阅读有关如何在[过渡模式](how-to-connect-sync-operations.md#staging-mode)下验证配置的主题。 进行所需的配置更改，直到没有任何意外的错误。
+如果想查看并检查即将导出到 Azure AD 的更改，请阅读有关如何在[过渡模式](how-to-connect-sync-staging-server.md)下验证配置的主题。 进行所需的配置更改，直到没有任何意外的错误。
 
 完成这些步骤并对结果满意之后，就可以从 DirSync 切换到 Azure AD。
 

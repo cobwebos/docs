@@ -7,26 +7,26 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f3f8cf88268498d20651eab40eb655313180cadc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 75aa960ff060d74d0a579b475e4334402992b3c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203193"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903347"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric 群集 Resource Manager 简介
 在传统上，管理 IT 系统或联机服务意味着将特定物理机或虚拟机专用于这些特定的服务或系统。 服务构建为层级形式。 这些层级分为“ Web”层和“数据”（或“存储”）层。 应用程序会有消息传送层（请求在其中流入和流出）以及一组专用于缓存的计算机。 每个层级或每种类型的工作负荷都有特定的专用计算机：数据库需要一些专用计算机，Web 服务器也需要一些。 如果特定类型的工作负荷导致运行它的计算机运行温度过高，则可以向该层添加更多具有该相同配置的计算机。 但是，并非所有工作负荷都可以如此轻松地进行横向扩展 - 尤其是在数据层中，通常需要将计算机替换为更大的计算机。 这很容易理解。 如果某台计算机发生故障，则在还原该计算机之前，整个应用程序中的该部件以较低容量来运行。 这仍然很容易理解（但不一定有趣）。
 
 然而，现在的服务和软件体系结构领域已发生改变。 应用程序采用横向扩展设计更为常见。 具有容器和/或微服务的应用程序的构建已较为普遍。 现在，虽然可能仍只具有几台计算机，但它们已不只是运行单个工作负荷实例。 它们甚至可以同时运行多个不同的工作负荷。 现在有多个不同类型的服务（没有一个服务需要占用整个计算机的资源），可能使用了这些服务的数百个不同实例。 每个命名实例都有一个或多个实例或副本用于高可用性 (HA)。 根据这些工作负荷的大小及其繁忙程度，可能需要数百至数千台计算机。 
 
-突然间，管理环境并不像管理一些专用于单一类型工作负荷的计算机一样简单。 服务器是虚拟的且不再具有名称（毕竟现在要管理的是[一大堆](http://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20)而不是几台计算机）。 有关计算机的配置减少了，有关服务本身的配置增多了。 专用于单个工作负荷实例的硬件大体上已过时。 服务本身已经变成小型分布式系统，跨越多个较小的商用硬件。
+突然间，管理环境并不像管理一些专用于单一类型工作负荷的计算机一样简单。 服务器是虚拟的且不再具有名称（毕竟现在要管理的是[一大堆](https://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20)而不是几台计算机）。 有关计算机的配置减少了，有关服务本身的配置增多了。 专用于单个工作负荷实例的硬件大体上已过时。 服务本身已经变成小型分布式系统，跨越多个较小的商用硬件。
 
 由于应用不再是一系列分布在多个层级的固化结构，因此现在就有更多的组合需要处理。 哪种因素决定了哪种类型的工作负荷可在特定的硬件上，或者可以运行多少个工作负荷？ 哪些工作负荷可在相同的硬件上运行得更好，哪些会发生冲突？ 计算机出现故障时，如何知道计算机上正在运行哪些程序？ 哪种机制负责确保该工作负荷可再次开始运行？ 是否正在等待（虚拟）计算机恢复正常，或者工作负荷自动故障转移到其他计算机并保持运行？ 是否需要人工干预？ 如何在此环境中升级？
 
@@ -54,7 +54,7 @@ ms.locfileid: "56203193"
 由于群集资源管理器负责移动服务，因此它提供一个不同于网络负载均衡器的功能集。 这是因为，网络负载均衡器将网络流量传送到服务所在位置，即使这个位置并不适合运行该服务。 Service Fabric 群集资源管理器使用本质上不同的策略来确保可以高效利用群集中的资源。
 
 ## <a name="next-steps"></a>后续步骤
-- 有关群集 Resource Manager 中的体系结构和信息流的信息，请查看[此文](service-fabric-cluster-resource-manager-architecture.md)
+- 有关群集资源管理器中的体系结构和信息流的信息，请参阅[这篇文章](service-fabric-cluster-resource-manager-architecture.md)
 - 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些指标，请查看这篇[描述 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
 - 有关配置服务的详细信息，请参阅[了解如何配置服务](service-fabric-cluster-resource-manager-configure-services.md)
 - 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[本文](service-fabric-cluster-resource-manager-metrics.md)

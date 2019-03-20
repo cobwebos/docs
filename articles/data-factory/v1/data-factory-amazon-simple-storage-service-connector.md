@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fda80455cf3504bf992fabc3018be2d5c05612ae
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 1f5064cece32cfc38f149816961e5156ff20974a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019140"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536702"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +38,7 @@ ms.locfileid: "54019140"
 * 对 Amazon S3 对象操作的 `s3:GetObject` 和 `s3:GetObjectVersion`。
 * 对 Amazon S3 存储桶操作的 `s3:ListBucket`。 如果使用数据工厂复制向导，则还需要 `s3:ListAllMyBuckets`。
 
-可以从[在策略中指定权限](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)中找到 Amazon S3 权限的完整列表（包含详细信息）。
+可以从[在策略中指定权限](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)中找到 Amazon S3 权限的完整列表（包含详细信息）。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具或 API 创建包含复制活动的管道，以便从 Amazon S3 源移动数据。
@@ -69,7 +69,7 @@ ms.locfileid: "54019140"
 | secretAccessKey |机密访问键本身。 |加密的机密字符串 |是 |
 
 >[!NOTE]
->此连接器需要 IAM 帐户的访问密钥才能从 Amazon S3 复制数据。 不支持[临时安全凭据](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)。
+>此连接器需要 IAM 帐户的访问密钥才能从 Amazon S3 复制数据。 不支持[临时安全凭据](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)。
 >
 
 下面是一个示例：
@@ -92,7 +92,7 @@ ms.locfileid: "54019140"
 
 所有数据集类型（例 SQL 数据库、Azure Blob 和 Azure 表）的结构、可用性和策略等部分类似。 每种数据集的 **typeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AmazonS3** 类型数据集（包括 Amazon S3 数据集）的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | bucketName |S3 存储桶的名称。 |String |是 |
 | key |S3 对象键。 |String |否 |
@@ -173,7 +173,7 @@ ms.locfileid: "54019140"
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的各个部分和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。 可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，属性因源和接收器类型而异。 复制活动中源的类型为 **FileSystemSource**（包括 Amazon S3）时，可以在 **typeProperties** 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | recursive |指定是否以递归方式列出目录下的 S3 对象。 |true/false |否 |
 

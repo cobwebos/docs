@@ -7,25 +7,28 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
-ms.service: monitoring
+ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 75ed69d749e23f39c03afb09f70a18cc1aed600b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078569"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102578"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>使用 Azure 自动化 runbook 收集 Log Analytics 中的数据
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 可以从各种源中收集 Log Analytics 中的大量数据，包括代理上的[数据源](../../azure-monitor/platform/agent-data-sources.md)以及[从 Azure 中收集的数据](../../azure-monitor/platform/collect-azure-metrics-logs.md)。 尽管某些情况下，需要收集无法通过这些标准源访问的数据。 这时，可以使用 [HTTP 数据收集器 API](../../azure-monitor/platform/data-collector-api.md) 将数据从任何 REST API 客户端写入到 Log Analytics。 一种执行此数据收集的常用方法是使用 Azure 自动化中的 runbook。
 
 本教程将逐步介绍在 Azure 自动化中创建和计划 runbook，将数据写入 Log Analytics 的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 此方案要求在 Azure 订阅中配置以下资源。 两者皆可为免费帐户。
 
 - [Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
@@ -63,7 +66,7 @@ ms.locfileid: "54078569"
 | 属性 | 工作区 ID 值 | 工作区密钥值 |
 |:--|:--|:--|
 | 名称 | WorkspaceId | WorkspaceKey |
-| 类型 | String | String |
+| Type | String | String |
 | 值 | 粘贴在 Log Analytics 工作区的“工作区 ID”中。 | 粘贴在 Log Analytics 工作区的“主密钥”或“辅助密钥”中。 |
 | 加密 | 否 | 是 |
 
@@ -92,7 +95,7 @@ Azure 自动化在门户中具有编辑器，可在其中编辑和测试 runbook
     # Code copied from the runbook AzureAutomationTutorial.
     $connectionName = "AzureRunAsConnection"
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -109,7 +112,7 @@ Azure 自动化在门户中具有编辑器，可在其中编辑和测试 runbook
     $logType = "AutomationJob"
     
     # Get the jobs from the past hour.
-    $jobs = Get-AzureRmAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
+    $jobs = Get-AzAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
     
     if ($jobs -ne $null) {
         # Convert the job data to json
@@ -128,13 +131,13 @@ Azure 自动化包含用于[测试 runbook](../../automation/automation-testing-
 
 ![测试 runbook](media/runbook-datacollect/test-runbook.png)
 
-6. 单击“保存”保存 runbook。
+1. 单击“保存”保存 runbook。
 1. 单击“测试窗格”，在测试环境中打开 runbook。
-3. 由于 runbook 具有参数，所以系统会提示输入这些参数的值。 输入将从其中收集作业信息的的资源组的名称和自动化帐户。
-4. 单击“启动”以启动 runbook。
-3. runbook 启动时的状态为“已排队”，之后变为“正在运行”状态。
-3. runbook 应显示详细输出以及以 json 格式收集的作业。 如果未列出任何作业，则可能在过去一个小时内尚未在自动化帐户中创建任何作业。 尝试启动自动化帐户中的任何 runbook，然后再次执行测试。
-4. 确保所得输出未在对 Log Analytics 的 post 命令中显示任何错误。 应看到类似于下面的消息。
+1. 由于 runbook 具有参数，所以系统会提示输入这些参数的值。 输入将从其中收集作业信息的的资源组的名称和自动化帐户。
+1. 单击“启动”以启动 runbook。
+1. runbook 启动时的状态为“已排队”，之后变为“正在运行”状态。
+1. runbook 应显示详细输出以及以 json 格式收集的作业。 如果未列出任何作业，则可能在过去一个小时内尚未在自动化帐户中创建任何作业。 尝试启动自动化帐户中的任何 runbook，然后再次执行测试。
+1. 确保所得输出未在对 Log Analytics 的 post 命令中显示任何错误。 应看到类似于下面的消息。
 
     ![发布输出](media/runbook-datacollect/post-output.png)
 
@@ -186,9 +189,9 @@ Azure 自动化包含用于[测试 runbook](../../automation/automation-testing-
 
 创建计划后，需要设置参数值，此计划每次启动 runbook 时都要使用此参数值。
 
-6. 单击“配置参数和运行设置”。
-7. 填写“ResourceGroupName”和“AutomationAccountName”的值。
-8. 单击“确定”。
+1. 单击“配置参数和运行设置”。
+1. 填写“ResourceGroupName”和“AutomationAccountName”的值。
+1. 单击“确定”。
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9.验证 runbook 是否按计划启动
 每次启动 runbook 时，都会[创建一个作业](../../automation/automation-runbook-execution.md)并记录任何输出。 实际上，这些正是 runbook 在收集的作业。 通过在计划启动时间已过去后，检查 runbook 作业，可以验证 runbook 是否按预期启动。

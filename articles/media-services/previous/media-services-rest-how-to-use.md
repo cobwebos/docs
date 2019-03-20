@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 1e8d21c39a428049594237900aa76f783a3ed0ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005448"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860341"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "56005448"
 使用 REST 时需考虑下列事项：
 
 * 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 需要使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 
-* 使用 JSON 并指定在请求中使用 **__metadata** 关键字（例如，为了引用某个链接对象）时，必须将 **Accept** 标头设置为 [JSON 详细格式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)（参阅以下示例）。 Odata 并不了解请求中的 **__metadata** 属性，除非将其设置为 verbose。  
+* 使用 JSON 并指定在请求中使用 **__metadata** 关键字（例如，为了引用某个链接对象）时，必须将 **Accept** 标头设置为 [JSON 详细格式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)（参阅以下示例）。 Odata 并不了解请求中的 **__metadata** 属性，除非将其设置为 verbose。  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1
         Content-Type: application/json;odata=verbose
@@ -81,7 +81,7 @@ ms.locfileid: "56005448"
 | client-request-id |String |调用方定义的值，用于标识给定请求。 如果指定，会在响应消息中包括此值，作为一种映射请求的方法。 <p><p>**重要说明**<p>值的上限应为 2096b (2k)。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 响应标头
-下面是可以根据你请求的资源以及要执行的操作返回给一组标头。
+下面是可以根据所请求的资源以及要执行的操作返回的一组标头。
 
 | 标头 | Type | 值 |
 | --- | --- | --- |
@@ -94,7 +94,7 @@ ms.locfileid: "56005448"
 ## <a name="standard-http-verbs-supported-by-media-services"></a>媒体服务支持的标准 HTTP 谓词
 下面是在提出 HTTP 请求时可以使用的 HTTP 谓词的完整列表：
 
-| Verb | 说明 |
+| Verb | 描述 |
 | --- | --- |
 | GET |返回对象的当前值。 |
 | POST |根据提供的数据创建对象，或提交命令。 |

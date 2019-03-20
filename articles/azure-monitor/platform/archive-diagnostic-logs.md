@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b01afe1626fe27a20e7b7103ccb020e4414f774f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 0d23509d4efb0385770811e004bb2599c3866847
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476456"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313332"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>存档 Azure 诊断日志
 
@@ -24,7 +24,7 @@ ms.locfileid: "54476456"
 >
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，需要[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)，将诊断日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将活动日志和诊断指标存档到存储帐户，也可将该存储帐户用于诊断日志，使得所有监视数据都位于一个中心位置。
 
@@ -68,11 +68,13 @@ ms.locfileid: "54476456"
 
 ## <a name="archive-diagnostic-logs-via-azure-powershell"></a>通过 Azure PowerShell 存档诊断日志
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ```
-Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
+Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --- | --- | --- |
 | ResourceId |是 |要设置诊断设置的资源的资源 ID。 |
 | StorageAccountId |否 |应该将诊断日志保存到其中的存储帐户的资源 ID。 |
@@ -148,10 +150,10 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234
 }
 ```
 
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | time |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
-| resourceId |受影响资源的资源 ID。 |
+| ResourceId |受影响资源的资源 ID。 |
 | operationName |操作的名称。 |
 | category |事件的日志类别。 |
 | 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |

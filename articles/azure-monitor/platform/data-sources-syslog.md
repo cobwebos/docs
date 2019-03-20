@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: fb59740289caffaf8325aa75aaf8ae649611b347
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: fa94bffc05879be9d6bbaaa7cd884c36ffe7e0b8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991627"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451273"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。  安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。  然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
@@ -183,7 +183,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
 ## <a name="syslog-record-properties"></a>Syslog 记录属性
 record 记录的类型为 **Syslog**，并且具有下表中的属性。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机。 |
 | 设施 |定义生成消息的系统部分。 |
@@ -197,7 +197,7 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 ## <a name="log-queries-with-syslog-records"></a>具有 Syslog 记录的日志查询
 下表提供了检索 Syslog 记录的不同日志查询示例。
 
-| Query | 说明 |
+| Query | 描述 |
 |:--- |:--- |
 | Syslog |所有 Syslog。 |
 | Syslog &#124; where SeverityLevel == "error" |具有错误严重级别的所有 Syslog 记录。 |

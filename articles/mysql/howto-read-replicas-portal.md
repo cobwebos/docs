@@ -5,23 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: c7622252cd5b375e8c580bfcf7a45806d219d828
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.date: 02/26/2019
+ms.openlocfilehash: 52f192a179c02e63c394401cce82b51fbe96e92d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900555"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887261"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中创建和管理只读副本
 
-
-> [!IMPORTANT]
-> 只读副本功能目前以公共预览版提供。
-
 在本文中，将了解如何使用 Azure 门户在与 Azure Database for MySQL 服务中的主服务器相同的 Azure 区域内创建和管理只读副本。 此功能目前处于公开预览状态。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 将用作主服务器的 [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
@@ -40,18 +36,18 @@ ms.locfileid: "54900555"
 
 4. 选择“添加副本”。
 
-   ![Azure Database for MySQL - 复制 ](./media/howto-read-replica-portal/add-replica.png)
+   ![Azure Database for MySQL - 复制](./media/howto-read-replica-portal/add-replica.png)
 
 5. 输入副本服务器的名称，然后单击“确定”以确认创建副本。
 
-   ![Azure Database for MySQL - 创建副本 ](./media/howto-read-replica-portal/create-replica.png)
+   ![Azure Database for MySQL - 创建副本](./media/howto-read-replica-portal/create-replica.png)
 
 > [!NOTE]
 > 只读副本使用与主服务器相同的服务器配置创建。 副本服务器配置在创建后可以更改。 建议副本服务器的配置应保持在与主服务器相同或更大的值，以确保副本能够跟上主服务器。
 
 一旦创建副本服务器，可以从“复制”边栏选项卡中进行查看。
 
-   ![Azure Database for MySQL - 列出副本 ](./media/howto-read-replica-portal/list-replica.png)
+   ![Azure Database for MySQL - 列出副本](./media/howto-read-replica-portal/list-replica.png)
 
 ## <a name="stop-replication-to-a-replica-server"></a>停止复制到副本服务器
 
@@ -66,15 +62,15 @@ ms.locfileid: "54900555"
 
 3. 选择要停止复制的副本服务器。
 
-   ![Azure Database for MySQL - 停止复制选择服务器 ](./media/howto-read-replica-portal/stop-replication-select.png)
+   ![Azure Database for MySQL - 停止复制选择服务器](./media/howto-read-replica-portal/stop-replication-select.png)
 
 4. 选择“停止复制”。
 
-   ![Azure Database for MySQL - 停止复制 ](./media/howto-read-replica-portal/stop-replication.png)
+   ![Azure Database for MySQL - 停止复制](./media/howto-read-replica-portal/stop-replication.png)
 
 5. 通过单击“确定”，确认要停止复制。
 
-   ![Azure Database for MySQL - 停止复制确认 ](./media/howto-read-replica-portal/stop-replication-confirm.png)
+   ![Azure Database for MySQL - 停止复制确认](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
 ## <a name="delete-a-replica-server"></a>删除副本服务器
 
@@ -86,15 +82,15 @@ ms.locfileid: "54900555"
 
 3. 选择要删除的副本服务器。
 
-   ![Azure Database for MySQL - 删除副本选择服务器 ](./media/howto-read-replica-portal/delete-replica-select.png)
+   ![Azure Database for MySQL - 删除副本选择服务器](./media/howto-read-replica-portal/delete-replica-select.png)
 
 4. 选择“删除副本”
 
-   ![Azure Database for MySQL - 删除副本 ](./media/howto-read-replica-portal/delete-replica.png)
+   ![Azure Database for MySQL - 删除副本](./media/howto-read-replica-portal/delete-replica.png)
 
 5. 键入副本的名称，然后单击“删除”以确认删除副本。  
 
-   ![Azure Database for MySQL - 删除副本确认 ](./media/howto-read-replica-portal/delete-replica-confirm.png)
+   ![Azure Database for MySQL - 删除副本确认](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
 ## <a name="delete-a-master-server"></a>删除主服务器
 
@@ -107,11 +103,11 @@ ms.locfileid: "54900555"
 
 2. 从“概览”中，选择“删除”。
 
-   ![Azure Database for MySQL - 删除主服务器 ](./media/howto-read-replica-portal/delete-master-overview.png)
+   ![Azure Database for MySQL - 删除主服务器](./media/howto-read-replica-portal/delete-master-overview.png)
 
 3. 键入主服务器的名称，然后单击“删除”以确认删除主服务器。  
 
-   ![Azure Database for MySQL - 删除主服务器 ](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![Azure Database for MySQL - 删除主服务器](./media/howto-read-replica-portal/delete-master-confirm.png)
 
 ## <a name="monitor-replication"></a>监视复制
 
@@ -121,15 +117,15 @@ ms.locfileid: "54900555"
 
 3. 从可用指标的下拉列表中选择“复制延迟(秒)”。 
 
-   ![选择复制延迟时间 ](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
+   ![选择复制延迟时间](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 
 4. 选择要查看的时间范围。 下图选择 30 分钟的时间范围。
 
-   ![选择时间范围 ](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
+   ![选择时间范围](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
 
 5. 查看所选时间范围的复制延迟时间。 下图显示过去的 30 分钟。
 
-   ![选择时间范围 ](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![选择时间范围](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>后续步骤
 

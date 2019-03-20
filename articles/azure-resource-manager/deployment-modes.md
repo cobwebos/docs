@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/13/2019
+ms.date: 02/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: bc28349e1bfc935ac8298f991575c1e0cb42d38c
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: 5213affe953636c46486614ee2a020d7727e1478
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299221"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407505"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -26,7 +26,7 @@ ms.locfileid: "56299221"
 
 ## <a name="complete-mode"></a>完整模式
 
-在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源。 由于[条件](resource-manager-templates-resources.md#condition)的计算结果为 false，因此不会删除模板中指定但未部署的资源。
+在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源。 由于[条件](resource-group-authoring-templates.md#condition)的计算结果为 false，因此不会删除模板中指定但未部署的资源。
 
 资源类型处理完整模式删除的方式有所不同。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。 
 
@@ -36,6 +36,10 @@ ms.locfileid: "56299221"
 
 > [!NOTE]
 > 仅根级别模板支持完整部署模式。 对于[链接模板或嵌套模板](resource-group-linked-templates.md)，必须使用增量模式。 
+>
+> [订阅级别部署](deploy-to-subscription.md)不支持完整模式。
+>
+> 当前，门户不支持完整模式。
 >
 
 ## <a name="incremental-mode"></a>增量模式

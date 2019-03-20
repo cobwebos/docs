@@ -5,7 +5,7 @@ keywords: 即用即付升级
 services: ''
 documentationcenter: ''
 author: bandersmsft
-manager: alherz
+manager: jureid
 editor: ''
 tags: billing
 ms.assetid: 0b4ac8f3-3df0-478a-8a07-b18b40f0cf5f
@@ -14,31 +14,65 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2017
+ms.date: 03/14/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cb6f2e35062649038ece7cd834c582ca9dccf7b
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: 3e6cb875aa686d9e2d0ba7bf51563d3b51b1572a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900096"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094222"
 ---
-# <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付
+# <a name="upgrade-your-free-trial-or-azure-for-students-starter-subscription-to-pay-as-you-go"></a>升级免费试用版或 Azure for Students Starter 订阅到即用即付
 
-在 Azure 帐户中心中将[免费试用版](https://azure.microsoft.com/free/)或 [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) 订阅升级为[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)。
+如果有[免费试用版](https://azure.microsoft.com/free/)，则可以升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)在 Azure 门户中的订阅。 如果有[Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/)订阅，则可以升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)Azure 帐户中心中。
 
-1. 登录到 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)。
-2. 在订阅状态分区中，选择“立即升级”横幅。
-   
-    ![显示点击何处以从免费试用版升级到即用即付的屏幕截图](./media/billing-upgrade-azure-subscription/billpage.png)
-3. 确认升级。
-   
-    ![显示如何选择以确认想要升级订阅的屏幕截图](./media/billing-upgrade-azure-subscription/Upgrade.png)
+<a id="freetrial"></a>
 
- 从免费试用版订阅升级时，创建订阅后，可保留剩余信用额度整整 30 天。 仍可使用 12 个月的免费服务。
- 
- 如果想要在升级后[转移订阅](billing-subscription-transfer.md)，则必须等到订阅套餐 ID 更改为 MS-AZR-003P。 出现以下情况时，套餐 ID 会更改
+## <a name="upgrade-your-free-trial-to-pay-as-you-go"></a>将免费试用版升级到即用即付
+
+从免费试用版订阅升级时，创建订阅后，可保留剩余信用额度整整 30 天。 仍可使用 12 个月的免费服务。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)
+1. 搜索上**成本管理 + 计费。**
+
+    ![显示搜索的屏幕截图](./media/billing-upgrade-azure-subscription/search.png)
+
+1. 选择免费试用版订阅。
+1. 在订阅概览边栏选项卡，单击**升级订阅**命令栏中。
+
+    ![屏幕截图，显示升级按钮](./media/billing-upgrade-azure-subscription/free-upgrade-button.png)
+
+1. 如果还没有为你的免费试用版订阅付款方法，将提示您添加一个。
+1. 您可能需要输入一个电话号码来验证你的身份。
+1. 键入你的订阅的名称。 默认情况下，名称是*即用即付。*
+
+     ![显示名称的屏幕截图](./media/billing-upgrade-azure-subscription/free-upgrade-name.png)
+
+1. 选择你的订阅的支持计划。 若要了解有关支持计划的详细信息，请参阅[Azure 支持计划](https://azure.microsoft.com/us/support/plans/)。
+
+1. 单击“升级”。
+
+如果想要在升级后[转移订阅](billing-subscription-transfer.md)，则必须等到订阅套餐 ID 更改为 MS-AZR-003P。 出现以下情况时，套餐 ID 会更改：
 
 * 使用所有剩余信用额度，或
 * 自开始免费试用 30 天之后
+
+<a id="student"></a>
+
+## <a name="upgrade-your-azure-for-students-starter-subscription-to-pay-as-you-go"></a>将你的 Azure for Students Starter 订阅升级到即用即付
+
+1. 登录到 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)。
+1. 选择你的 Azure for Students Starter 订阅。
+1. 下**订阅状态**，单击**立即升级**。
+
+    ![显示学生的升级的屏幕截图](./media/billing-upgrade-azure-subscription/student-upgrade-button.png)
+
+1. 输入你的订阅的名称。
+
+1. 单击**立即升级**。
+
+## <a name="next-steps"></a>后续步骤
+
+现在，你有一个即用即付订阅，请参阅[防止意外的费用通过 Azure 计费和成本管理。](billing-getting-started.md)

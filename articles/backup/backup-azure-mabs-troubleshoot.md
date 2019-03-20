@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: kasinh
-ms.openlocfilehash: 0ebf1bae023115a268547e5c64e3a2681438092a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 22507a1b89c6a7d6867e9b669e1a2e70106a4e41
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340665"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880562"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -104,4 +104,4 @@ ms.locfileid: "56340665"
 
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 使用 Office 365 帐户设置电子邮件通知 |错误 ID：2013| 原因：<br> 尝试使用 Office 365 帐户 <br>**建议的操作：**<ol><li> 首先确保 Exchange 上已设置用于 DPM 服务器的“在接收连接器上允许匿名中继”。 有关如何配置此功能的详细信息，请参阅 TechNet 上的[在接收连接器上允许匿名中继](https://technet.microsoft.com/library/bb232021.aspx)。</li> <li> 如果无法使用内部 SMTP 中继并需要使用 Office 365 服务器进行设置，可将 IIS 设置为中继。 将 DPM 服务器配置为[使用 IIS 将 SMTP 中继到 O365](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx)。<br><br> **重要说明**：请务必使用 user@domain.com 格式，而不要使用“域\用户”格式。<br><br><li>指示 DPM 将本地服务器名用作 SMTP 服务器，并使用端口 587。 然后将它指向于应从中发送电子邮件的用户电子邮件地址。<li> DPM SMTP 设置页上的用户名和密码应属于 DPM 所在域中的域帐户。 </li><br> **注意**：更改 SMTP 服务器地址时，请对新设置进行更改，关闭设置框，然后重新打开它以确保反映新值。  只是进行更改和测试可能不一定总能让新设置生效，因此最佳做法是通过此方法进行测试。<br><br>在此过程期间，可随时清除这些设置，方法是关闭 DPM 控制台，然后编辑以下注册表项：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 删除 SMTPPassword 和 SMTPUserName 项**。 重新启动 UI 时，可将这些设置添加回到 UI。
+| 使用 Office 365 帐户设置电子邮件通知 |错误 ID：2013| 原因：<br> 尝试使用 Office 365 帐户 <br>**建议的操作：**<ol><li> 首先确保 Exchange 上已设置用于 DPM 服务器的“在接收连接器上允许匿名中继”。 有关如何配置此功能的详细信息，请参阅 TechNet 上的[在接收连接器上允许匿名中继](https://technet.microsoft.com/library/bb232021.aspx)。</li> <li> 如果无法使用内部 SMTP 中继并需要使用 Office 365 服务器进行设置，可将 IIS 设置为中继。 将 DPM 服务器配置为[使用 IIS 将 SMTP 中继到 O365](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx)。<br><br> **重要说明**：请务必使用用户\@domain.com 格式并*不*域 \ 用户。<br><br><li>指示 DPM 将本地服务器名用作 SMTP 服务器，并使用端口 587。 然后将它指向于应从中发送电子邮件的用户电子邮件地址。<li> DPM SMTP 设置页上的用户名和密码应属于 DPM 所在域中的域帐户。 </li><br> **注意**：更改 SMTP 服务器地址时，请对新设置进行更改，关闭设置框，然后重新打开它以确保反映新值。  只是进行更改和测试可能不一定总能让新设置生效，因此最佳做法是通过此方法进行测试。<br><br>在此过程期间，可随时清除这些设置，方法是关闭 DPM 控制台，然后编辑以下注册表项：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 删除 SMTPPassword 和 SMTPUserName 项**。 重新启动 UI 时，可将这些设置添加回到 UI。

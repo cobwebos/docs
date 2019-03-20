@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7c87a0f478b6efbe7ae9ff07def8b4d0d730b111
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478485"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835106"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
 
@@ -58,7 +58,7 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
 
 > [!NOTE]
 > **对于 BCP 我的数据应在哪里？**  
-> 尽管并非必需，但是将包含源数据的文件置于目标 SQL Server 所在的计算机上可以更快地进行传输（网络速度与本地磁盘 IO 速度）。 可以使用各种文件复制工具（如 [AZCopy](../../storage/common/storage-use-azcopy.md)、[Azure 存储资源管理器](http://storageexplorer.com/)，或者通过远程桌面协议 (RDP) 进行 Windows 复制/粘贴），将包含数据的平面文件移到已安装 SQL Server 的计算机。
+> 尽管并非必需，但是将包含源数据的文件置于目标 SQL Server 所在的计算机上可以更快地进行传输（网络速度与本地磁盘 IO 速度）。 可以使用各种文件复制工具（如 [AZCopy](../../storage/common/storage-use-azcopy.md)、[Azure 存储资源管理器](https://storageexplorer.com/)，或者通过远程桌面协议 (RDP) 进行 Windows 复制/粘贴），将包含数据的平面文件移到已安装 SQL Server 的计算机。
 >
 >
 
@@ -75,10 +75,10 @@ CREATE TABLE <tablename>
 )
 ```
 
-2. 通过从已安装 bcp 的计算机的命令行执行以下命令，生成介绍表架构的格式文件。
+1. 通过从已安装 bcp 的计算机的命令行执行以下命令，生成介绍表架构的格式文件。
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-3. 使用如下所示的 bcp 命令将数据插入数据库。 假设在同一台计算机上已安装 SQL Server，这应从命令行运行：
+1. 使用如下所示的 bcp 命令将数据插入数据库。 假设在同一台计算机上已安装 SQL Server，这应从命令行运行：
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
@@ -142,7 +142,7 @@ Set-ExecutionPolicy Restricted #reset the execution policy
 ```sql
 SET DATEFORMAT ymd;
 ```
-2. 使用批量导入语句导入数据：
+1. 使用批量导入语句导入数据：
 
 ```sql
 BULK INSERT <tablename>
@@ -195,7 +195,7 @@ SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成�
 4. 使用[从文件源移动数据](#filesource_to_sqlonazurevm)部分中介绍的任意方法将平面文件中的数据移动到 SQL Server。
 
 ### <a name="sql-migration"></a>SQL 数据库迁移向导
-[SQL Server 数据库迁移向导](http://sqlazuremw.codeplex.com/)提供了一种可在两个 SQL Server 实例之间移动数据的用户友好方法。 它允许用户在源表和目标表之间映射数据架构，选择列类型和各种其他功能。 它使用隐式的大容量复制 (BCP)。 SQL 数据库迁移向导的欢迎屏幕的屏幕快照如下所示。  
+[SQL Server 数据库迁移向导](https://sqlazuremw.codeplex.com/)提供了一种可在两个 SQL Server 实例之间移动数据的用户友好方法。 它允许用户在源表和目标表之间映射数据架构，选择列类型和各种其他功能。 它使用隐式的大容量复制 (BCP)。 SQL 数据库迁移向导的欢迎屏幕的屏幕快照如下所示。  
 
 ![SQL Server 迁移向导][2]
 

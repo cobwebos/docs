@@ -9,12 +9,12 @@ ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 86e5a0a0cf4c820efdcc65505d11e2fb0c198f0b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039837"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880033"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>排查将 Java 异步 SDK 与 Azure Cosmos DB SQL API 帐户配合使用时出现的问题
 本文介绍了将 [Java 异步 SDK](sql-api-sdk-async-java.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。
@@ -150,6 +150,40 @@ createObservable
 ### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>连接到 Azure Cosmos DB 仿真器时出现故障
 
 Azure Cosmos DB 仿真器 HTTPS 证书是自签名证书。 若要将 SDK 与仿真器配合使用，请将仿真器证书导入 Java TrustStore。 有关详细信息，请参阅[导出 Azure Cosmos DB 仿真器证书](local-emulator-export-ssl-certificates.md)。
+
+### <a name="dependency-conflict-issues"></a>依赖项冲突问题
+
+```console
+Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
+```
+
+上述异常表明 RxJava lib (例如，1.2.2) 的较旧版本上具有依赖关系。 我们的 SDK 依赖于 RxJava 1.3.8 RxJava 的早期版本中不可用的 api。 
+
+解决方法的此类 issuses 是确定哪些其他依赖项将在 RxJava 1.2.2 和排除 RxJava 1.2.2，对的可传递依赖关系，并允许 CosmosDB SDK 自带的较新版本。
+
+若要确定哪些库引入了 RxJava 1.2.2 项目 pom.xml 文件旁边运行以下命令：
+```bash
+mvn dependency:tree
+```
+有关详细信息，请参阅[maven 依赖项树指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
+
+一旦您认定了 RxJava 1.2.2 是项目的可传递依赖项的其他依赖项，您可以修改依赖项 lib pom 文件和排除 RxJava 可传递依赖项中它：
+
+```xml
+<dependency>
+  <groupId>${groupid-of-lib-which-brings-in-rxjava1.2.2}</groupId>
+  <artifactId>${artifactId-of-lib-which-brings-in-rxjava1.2.2}</artifactId>
+  <version>${version-of-lib-which-brings-in-rxjava1.2.2}</version>
+  <exclusions>
+    <exclusion>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxjava</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
+有关详细信息，请参阅[排除可传递依赖项指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
 
 
 ## <a name="enable-client-sice-logging"></a>启用客户端 SDK 日志记录

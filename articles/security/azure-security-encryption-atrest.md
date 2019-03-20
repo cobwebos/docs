@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: c9e3a98b1073a2b198a341f31a320bba670b0596
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 4ced712b1b2716d85f0366ea892460053db598b8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117895"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076898"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -258,7 +258,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 |                                  |                    | **加密模型和密钥管理** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **使用服务托管密钥的服务器端**     | **使用 Key Vault 中的客户管理密钥的服务器端**             | **使用客户端托管密钥的客户端**      |
-| **存储和数据库**        |                    |                    |                    |                    |
+| **存储和数据库**        |                    |                    |                    |
 | 磁盘 (IaaS)                      | -                  | 是，RSA 2048 位  | -                  |
 | SQL Server (IaaS)                | 是                | 是，RSA 2048 位  | 是                |
 | Azure SQL（数据库/数据仓库） | 是                | 是，RSA 2048 位  | 是                |
@@ -268,7 +268,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | Azure 存储（表、队列）   | 是                | -                  | 是                |
 | Cosmos DB (Document DB)          | 是                | -                  | -                  |
 | StorSimple                       | 是                | -                  | 是                |
-| 备份                           | -                  | -                  | 是                |
+| 备份                           | 是                | -                  | 是                |
 | 智能和分析   |                    |                    |                    |
 | Azure 数据工厂               | 是                | -                  | -                  |
 | Azure 机器学习           | -                  | 预览，RSA 2048 位 | -                  |

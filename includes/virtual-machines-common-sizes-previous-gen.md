@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 937ac1d892cdea849d7e5a89c8e69c6b069f2efd
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333768"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57964083"
 ---
 本文提供有关先前几代虚拟机大小的信息。 这些大小仍可使用，但有新的大小可供使用。
 
 
 ## <a name="ds-series"></a>DS 系列
 
-ACU：160
+ACU：160-250 <sup>1</sup>
 
 高级存储：支持
 
@@ -28,16 +28,17 @@ ACU：160
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |1 |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 32 |2 / 500 |
+| Standard_DS1 |第 |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 32 |2 / 500 |
 | Standard_DS2 |2 |7 |14 |8 |8,000 / 64 (86) |6,400 / 64 |2 / 1000 |
 | Standard_DS3 |4 |14 |28 |16 |16,000 / 128 (172) |12,800 / 128 |4 / 2000 |
 | Standard_DS4 |8 |28 |56 |32 |32,000 / 256 (344) |25,600 / 256 |8 / 4000 |
 
+<sup>1</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)
 <br>
 
 ## <a name="ds-series---memory-optimized"></a>DS 系列 - 内存优化
 
-ACU：160 <sup>1</sup>
+ACU：160-250 <sup>1,2</sup>
 
 高级存储：支持
 
@@ -52,11 +53,11 @@ ACU：160 <sup>1</sup>
 
 <sup>1</sup> DS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
 
-
+<sup>2</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)
 
 ## <a name="d-series"></a>D 系列 
 
-ACU：160
+ACU：160-250 <sup>1</sup>
 
 高级存储：不支持
 
@@ -64,16 +65,17 @@ ACU：160
 
 | 大小         | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1         | 3.5         | 50             | 3000/46/23                                           | 4/4x500                         | 2 / 500                 |
+| Standard_D1  | 第         | 3.5         | 50             | 3000/46/23                                           | 4/4x500                         | 2 / 500                 |
 | Standard_D2  | 2         | 7           | 100            | 6000/93/46                                           | 8/8x500                         | 2 / 1000                     |
 | Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 16/16x500                         | 4 / 2000                     |
 | Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 4000                     |
 
+<sup>1</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)
 <br>
 
 ## <a name="d-series---memory-optimized"></a>D 系列 - 内存优化
 
-ACU：160
+ACU：160-250 <sup>1</sup>
 
 高级存储：不支持
 
@@ -86,6 +88,7 @@ ACU：160
 | Standard_D13 | 8         | 56          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 4000                     |
 | Standard_D14 | 16        | 112         | 800            | 48000/750/375                                        | 64/64x500                       | 8 / 8000                |
 
+<sup>1</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)
 <br>
 
 ## <a name="a-series---compute-intensive-instances"></a>A 系列 - 计算密集型实例
@@ -96,7 +99,7 @@ ACU：225
 
 高级存储缓存：不支持
 
-A8-A11 和 H 系列大小也称为“计算密集型实例”。 运行这些大小的硬件专为计算密集型和网络密集型应用程序而设计和优化，包括高性能计算 (HPC) 群集应用程序、建模和模拟。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。  本文针对此分组中每种大小提供有关 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽的信息。 
+A8-A11 和 H 系列大小也称为“计算密集型实例”。 运行这些大小的硬件专为计算密集型和网络密集型应用程序而设计和优化，包括高性能计算 (HPC) 群集应用程序、建模和模拟。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。  
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (HDD)：GiB | 最大数据磁盘数 | 数据磁盘最大吞吐量：IOPS | 最大 NIC 数|
 | --- | --- | --- | --- | --- | --- | --- |
@@ -119,14 +122,15 @@ ACU：50-100
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (HDD)：GiB | 最大数据磁盘数 | 数据磁盘最大吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps)  |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0 <sup>1</sup> |1 |0.768 |20 |1 |1x500 |2 / 100 |
-| Standard_A1 |1 |1.75 |70 |2 |2x500 |2 / 500  |
+| Standard_A0 <sup>1</sup> |第 |0.768 |20 |第 |1x500 |2 / 100 |
+| Standard_A1 |第 |1.75 |70 |2 |2x500 |2 / 500  |
 | Standard_A2 |2 |3.5 |135 |4 |4x500 |2 / 500 |
 | Standard_A3 |4 |7 |285 |8 |8x500 |2 / 1000 |
 | Standard_A4 |8 |14 |605 |16 |16x500 |4 / 2000 |
 | Standard_A5 |2 |14 |135 |4 |4x500 |2 / 500 |
 | Standard_A6 |4 |28 |285 |8 |8x500 |2 / 1000 |
 | Standard_A7 |8 |56 |605 |16 |16x500 |4 / 2000 |
+
 <br>
 
 <sup>1</sup> A0 大小在物理硬件上过度订阅。 仅针对此特定大小，其他客户部署可能影响正在运行的工作负荷的性能。 以下概述的相对性能为预期的基准，受限于近似变化性的 15%。
@@ -151,8 +155,8 @@ ACU：50-100
 
 |大小 – 大小\名称 | vCPU |内存|NIC 数（最大值）|最大临时磁盘大小 |最大 数据磁盘（每个 1023 GB）|最大 IOPS（每个磁盘 300 次）|
 |---|---|---|---|---|---|---|
-|A0\Basic_A0|1|768 MB|2| 20 GB|1|1x300|
-|A1\Basic_A1|1|1.75 GB|2| 40 GB |2|2x300|
+|A0\Basic_A0|第|768 MB|2| 20 GB|第|1x300|
+|A1\Basic_A1|第|1.75 GB|2| 40 GB |2|2x300|
 |A2\Basic_A2|2|3.5 GB|2| 60 GB|4|4x300|
 |A3\Basic_A3|4|7 GB|2| 120 GB |8|8x300|
 |A4\Basic_A4|8|14 GB|2| 240 GB |16|16x300|

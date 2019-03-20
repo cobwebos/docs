@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e51c91d2857ac91b0ebf998c016ebcf56c0de0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
-ms.translationtype: HT
+ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244777"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088700"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
 
@@ -55,7 +55,7 @@ ms.locfileid: "54244777"
 * 下载 [StorSimple 虚拟阵列文件服务器配置清单](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)。
 * 下载 [StorSimple 虚拟阵列 iSCSI 服务器配置清单](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 下面是 StorSimple Device Manager 服务、StorSimple 虚拟阵列以及数据中心网络的配置先决条件。
 
@@ -155,15 +155,15 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 3. 单击“添加”。
 4. 在“添加存储帐户”边栏选项卡中，执行以下操作：
    
-    1. 对于“订阅”，选择“当前”。
+   1. 对于“订阅”，选择“当前”。
    
-    2. 提供 Azure 存储帐户的名称。
+   2. 提供 Azure 存储帐户的名称。
    
-    3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才选择“禁用”。
+   3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才选择“禁用”。
    
-    4. 单击“添加”。 成功创建存储帐户后，将收到通知。<br></br>
+   4. 单击“添加”。 成功创建存储帐户后，将收到通知。<br></br>
    
-     ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+      ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>后续步骤
 

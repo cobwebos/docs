@@ -10,22 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6b849ad72554af163d8ac3d5ff1248023dc71052
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 358ca13548f0215fabee949c5fa3dee64beb2d6d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268520"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996958"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
 此过程将 ASP.NET Web 应用配置为将遥测发送到 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服务。 它适用于托管在你自己的本地或云中 IIS 服务器上的 ASP.NET 应用。 你会获得图表和功能强大的查询语言，这有助于你了解应用的性能以及用户使用它的方式。另外，在出现故障或性能问题时还会自动发送警报。 许多开发人员发现这些功能很有用，不过你也可以根据需要扩展和自定义遥测。
 
-在 Visual Studio 中单击几下即可完成安装。 可以选择对遥测量进行限制，从而避免付费。 可以通过此功能对用户不多的站点进行试验和调试，或者对其进行监视。 如果认为需要前进一步，对生产站点进行监视，则可轻松地在以后提高该限制。
+在 Visual Studio 中单击几下即可完成安装。 可以选择对遥测量进行限制，从而避免付费。 此功能允许您试验和调试，或监视用户不多的站点。 如果认为需要前进一步，对生产站点进行监视，则可轻松地在以后提高该限制。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要要将 Application Insights 添加到 ASP.NET 网站，需要：
 
 - 使用以下工作负荷安装[用于 Windows 的 Visual Studio 2017](https://www.visualstudio.com/downloads/)：
@@ -37,11 +37,11 @@ ms.locfileid: "56268520"
 ## <a name="ide"></a> 步骤 1：添加 Application Insights SDK
 
 > [!IMPORTANT]
-> 添加 Application Insights 的过程因 ASP.NET 模板类型而异。 若要使用“空”或“Azure 移动应用”模板，请选择“项目” > “添加 Application Insights 遥测”。 对于所有其他的 ASP.NET 模板，请参阅以下说明。 
+> 在此示例中的屏幕截图基于 Visual Studio 2017 版本 15.9.9。 添加 Application Insights 的体验不同版本的 Visual Studio 2017 以及 ASP.NET 模板类型而异。 较旧版本可能有备用文本，例如"配置 Application Insights"。
 
-在解决方案资源管理器中右键单击 Web 应用的名称，并选择“配置 Application Insights”
+右键单击 web 应用名称在解决方案资源管理器，然后选择**外** > **Application Insights 遥测**
 
-![解决方案资源管理器的屏幕截图，其中突出显示了“配置 Application Insights”](./media/asp-net/0001-configure-application-insights.png)
+![解决方案资源管理器的屏幕截图，其中突出显示了“配置 Application Insights”](./media/asp-net/add-telemetry-new.png)
 
 （根据所用的 Application Insights SDK 版本，系统可能会提示升级到最新的 SDK 版本。 如果出现提示，请选择“更新 SDK”。）
 
@@ -49,15 +49,15 @@ ms.locfileid: "56268520"
 
 Application Insights 配置屏幕：
 
-选择“免费开始”。
+选择“入门”。
 
-![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/0004-start-free.png)
+![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/00004-start-free.png)
 
 如果想要设置用于存储数据的资源组或位置，请单击“配置设置”。 资源组用于控制对数据的访问。 例如，如果有多个应用构成了同一个系统的一部分，可在同一个资源组中放置这些应用的 Application Insights 数据。
 
- 选择“注册”。 
+ 选择“注册”。
 
-![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/0005-register-ed.png)
+![使用 Application Insights 页注册应用的屏幕截图](./media/asp-net/00005-register-ed.png)
 
  在调试期间以及发布应用后，遥测数据将发送到 [Azure 门户](https://portal.azure.com)。
 > [!NOTE]
@@ -68,7 +68,7 @@ Application Insights 配置屏幕：
 
 Visual Studio 中会显示已记录的事件数。
 
-![Visual Studio 的屏幕截图。 调试期间会显示“Application Insights”按钮。](./media/asp-net/0006-Events.png)
+![Visual Studio 的屏幕截图。 调试期间会显示“Application Insights”按钮。](./media/asp-net/00006-Events.png)
 
 ## <a name="step-3-see-your-telemetry"></a>步骤 3：查看遥测
 可在 Visual Studio 或 Application Insights Web 门户中查看遥测数据。 在 Visual Studio 中搜索遥测，以便对应用进行调试。 当系统运行时，在 Web 门户中监视性能和使用情况。 
@@ -95,7 +95,7 @@ Visual Studio 中会显示已记录的事件数。
 
 门户将从应用打开遥测视图。
 
-![Application Insights 概述页的屏幕截图](./media/asp-net/66.png)
+![Application Insights 概述页的屏幕截图](./media/asp-net/007.png)
 
 在门户中，单击任何磁贴或图表以查看更多详细信息。
 
@@ -117,8 +117,6 @@ Visual Studio 中会显示已记录的事件数。
 
 祝贺你！ 已在应用中安装 Application Insights 包，并将其配置为向 Azure 中的 Application Insights 服务发送遥测。
 
-![遥测数据移动示意图](./media/asp-net/01-scheme.png)
-
 接收应用遥测的 Azure 资源通过“检测密钥”进行标识。 可以在 ApplicationInsights.config 文件中找到该密钥。
 
 
@@ -126,10 +124,6 @@ Visual Studio 中会显示已记录的事件数。
 若要升级到 [SDK 的新版本](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)，请打开 **NuGet 包管理器**，并筛选已安装的包。 选择“Microsoft.ApplicationInsights.Web”，并选择“升级”。
 
 如果对 ApplicationInsights.config 执行了任何自定义操作，请在升级前保存相关副本。 然后，将更改合并到新版本中。
-
-## <a name="video"></a>视频
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -155,7 +149,7 @@ Visual Studio 中会显示已记录的事件数。
 
 * [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)：创建测试来确保站点在 Web 上可见。
 * [智能诊断](../../azure-monitor/app/proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
-* [指标警报](../../azure-monitor/app/alerts.md)：设置这些警报可在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
+* [指标警报](../../azure-monitor/app/alerts.md)：设置警报来警告你如果在指标超过阈值。 可以在编码到应用中的自定义指标中设置它们。
 
 ### <a name="automation"></a>自动化
 

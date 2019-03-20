@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b73656e2bb7c413d2c29fafb682f39154499854a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: 7d877f467f06768c31679752d9deff1ca19d0003
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904448"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882869"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -34,8 +34,8 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](https://go.
 ### <a name="web-server-diagnostics"></a>Web 服务器诊断
 可以启用或禁用以下种类的日志：
 
-* **详细错误日志记录** - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。
-* **失败请求跟踪** - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 如果要提高站点性能或隔离特定的 HTTP 错误，这将非常有用。
+* **详细错误日志记录** - 任何会生成 HTTP 状态代码 400（或更大数字）的请求的详细信息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。 会为应用的文件系统中的每个错误生成一个 HTML 文件，并可保留最多 50 个错误（文件）。 当 HTML 文件的数目超出 50 时，最旧的 26 个文件会自动删除。
+* **失败请求跟踪** - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 如果要提高站点性能或隔离特定的 HTTP 错误，这将非常有用。 会在应用的文件系统中为每个错误生成一个文件夹。 文件保留策略与上述详细错误日志记录的相同。
 * **Web 服务器日志记录** - 使用 [W3C 扩展日志文件格式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)的 HTTP 事务信息。 这在确定整体站点指标（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
 
 ### <a name="application-diagnostics"></a>应用程序诊断
@@ -194,7 +194,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 | ApplicationName |应用名称 |
 | InstanceId |发生事件的应用实例 |
 | EventTickCount |事件发生的日期和时间，刻度格式（精度更高） |
-| EventId |此事件的事件 ID<p><p>如果未指定，则默认为 0 |
+| EventId |此事件的事件 ID<p><p>如果未指定，默认为 0 |
 | Pid |进程 ID |
 | Tid |生成事件的线程的线程 ID |
 | 消息 |事件详细消息 |
@@ -213,6 +213,10 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 失败请求跟踪存储在名为 **fr######.xml** 的 XML 文件中。 为了便于查看记录信息，在 XML 文件所在目录中提供了一个名为 **freb.xsl** 的 XSL 样式表。 如果在 Internet Explorer 中打开其中一个 XML 文件，Internet Explorer 会使用 XSL 样式表提供易于阅读的跟踪信息，如下方示例所示：
 
 ![在浏览器中查看失败请求](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+
+> [!NOTE]
+> 查看带格式的失败的请求跟踪的简单办法是导航到在门户中的应用程序页面。 从左侧菜单中，选择**诊断并解决问题**，然后搜索**失败请求跟踪日志**，然后单击图标来浏览和查看所需的跟踪。
+>
 
 ### <a name="detailed-error-logs"></a>详细的错误日志
 详细的错误日志是 HTML 文档，可提供有关发生的 HTTP 错误的详细信息。 由于它们只是 HTML 文档，所以可以使用 Web 浏览器查看。

@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 02/22/2019
 ms.author: diberry
-ms.openlocfilehash: 9d3352017723f5beac318d461a537820b6593bef
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 132f6eab86c02e28fe562a0c7d3357175e5813b8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881666"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195041"
 ---
-# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以提高预测准确性
-在 LUIS 应用接收到终结点表述后，请使用模式的[概念](luis-concept-patterns.md)提高表述（按字词顺序和字词选择呈现模式）的预测准确性。 模式使用[实体](luis-concept-entity-types.md)及其角色并通过特定模式语法提取数据。 
+# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以改进预测精确性
+LUIS 应用接收终结点语音样本后，使用[模式](luis-concept-patterns.md)以改进预测精确性的语音样本，显示一个图案中单词顺序和 word 的选择。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)以指示的位置：[实体](luis-concept-entity-types.md)，实体角色和可选的文本。
 
 ## <a name="add-template-utterance-to-create-pattern"></a>添加模板表述以创建模式
 1. 通过选择“我的应用”页上的应用名称来打开应用，然后选择“提高应用性能”下左侧面板中的“模式”。
@@ -42,100 +42,36 @@ ms.locfileid: "55881666"
 
     ![包含两种实体类型的已输入模式的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-5.png)
 
-## <a name="search-patterns"></a>搜索模式
-通过搜索可找到包含某些给定文本的模式。  
-
-1. 选择放大镜图标。
-
-    ![模式页的屏幕截图，其中突出显示了搜索工具图标](./media/luis-how-to-model-intent-pattern/search-icon.png)
-
-    在模式列表右上角的搜索框中键入搜索文本，然后按 Enter。 模式列表将更新，仅显示包含搜索文本的模式。
-
-    ![模式页的屏幕截图，其中突出显示了搜索框中的搜索文本](./media/luis-how-to-model-intent-pattern/search-text.png)
-
-    若要取消搜索并还原模式的完整列表，请删除键入的搜索文本。
-
-<!-- TBD: should I be able to click on the magnifying glass again to close the search box? It doesn't reset the list. -->
-
-## <a name="edit-a-pattern"></a>编辑模式
-1. 要编辑模式，请选择该模式所在行最右侧的省略号 (...) 按钮，然后选择“编辑”。 
-
-    ![模式行中“编辑”菜单项的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
-
-2. 在文本框中输入任何更改。 完成后，请按“Enter”。 完成模式编辑后，请[培训](luis-how-to-train.md)应用。
-
-    ![编辑模式的屏幕截图](./media/luis-how-to-model-intent-pattern/edit-pattern.png)
-
-## <a name="reassign-individual-pattern-to-different-intent"></a>为其他意向重新分配一个模式
-
-若要为其他意向重新分配一个模式，请选择模式文本右侧的意向列表框，然后选择一个其他意向。
-
-![为其他意向重新分配一个模式的屏幕截图](./media/luis-how-to-model-intent-pattern/reassign-individual-pattern.png)
-
-## <a name="reassign-several-patterns-to-different-intent"></a>为其他意向重新分配多个模式
-
-若要为其他意向重新分配多个模式，请选择每个模式左侧的复选框或选择顶部的复选框。 “重新分配意向”选项在工具栏上显示。 为模式选择正确意向。 
-
-![为其他意向重新分配多个模式的屏幕截图](./media/luis-how-to-model-intent-pattern/reassign-many-patterns.png)
-
-## <a name="delete-a-single-pattern"></a>删除一个模式
-
-1. 要删除模式，请选择该模式所在行最右侧的省略号 (...) 按钮，然后选择“删除”。 
-
-    ![删除表述的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
-
-2. 选择“确定”以确认删除。
-
-    ![删除确认屏幕截图](./media/luis-how-to-model-intent-pattern/confirm-delete.png)
-
-## <a name="delete-several-patterns"></a>删除多个模式
-
-1. 若要删除多个模式，请选择每个模式左侧的复选框或选择顶部的复选框。 “删除模式”选项在工具栏上显示。 选择“删除模式”。  
-
-    ![删除多个模式的屏幕截图](./media/luis-how-to-model-intent-pattern/delete-many-patterns.png)
-
-2. “删除模式”确认对话框随即显示。 选择“确定”完成删除。
-
-    ![删除多个模式确认框的屏幕截图](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
-
-## <a name="filter-pattern-list-by-entity"></a>按实体筛选模式列表
-
-若要按特定实体筛选模式列表，请在模式上方的工具栏中选择“实体筛选器”。 
-
-![按实体筛选模式的屏幕截图](./media/luis-how-to-model-intent-pattern/filter-entities-1.png)
-
-应用筛选器后，实体名称将在工具栏下方显示。 
-
-## <a name="filter-pattern-list-by-intent"></a>按意向筛选模式列表
-
-若要按特定意向筛选模式列表，请在模式上方的工具栏中选择“意向筛选器”。 
-
-![按意向筛选模式的屏幕截图](./media/luis-how-to-model-intent-pattern/filter-intents-1.png)
-
-应用筛选器后，意向名称将在工具栏下方显示。 
-
-## <a name="remove-entity-or-intent-filter"></a>删除实体或意向筛选器
-筛选模式列表后，实体或意向名称将在工具栏下方显示。 若要删除筛选器，请选择名称。
-
-![从筛选器中删除实体的屏幕截图](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
-
-筛选器将被删除，同时显示所有模式。 
-
-## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>在意向或实体页上通过现有表述添加模式
-可在“意向”或“实体”页上通过现有表述创建模式。 任何意向或实体页上的所有表述都在列表中显示，可在列表的右侧列中访问表述级选项，例如“编辑”、“删除”和“添加为模式”。
-
-1. 在所选的话语行上，选择话语右侧的省略号 (...) 按钮，然后选择“添加为模式”。
-
-    [![选项菜单中突出显示添加模式的陈述表的屏幕截图](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "选项菜单中突出显示添加模式的陈述表的屏幕截图")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
-
-2. 根据[语法规则](luis-concept-patterns.md#pattern-syntax)修改模式。 如果所选表述已使用实体进行标记，则表示这些实体已在具有正确语法的模式中。
-
-    ![按实体筛选出的模式的屏幕截图](./media/luis-how-to-model-intent-pattern/confirm-patterns-modal.png)
-
 ## <a name="train-your-app-after-changing-model-with-patterns"></a>在对模型进行模式更改后对应用进行培训
 添加、编辑、删除或重新分配模式后，请针对更改来[培训](luis-how-to-train.md)和[发布](luis-how-to-publish-app.md)应用以影响终结点查询。 
 
+<a name="search-patterns"></a>
+<a name="edit-a-pattern"></a>
+<a name="reassign-individual-pattern-to-different-intent"></a>
+<a name="reassign-several-patterns-to-different-intent"></a>
+<a name="delete-a-single-pattern"></a>
+<a name="delete-several-patterns"></a>
+<a name="filter-pattern-list-by-entity"></a>
+<a name="filter-pattern-list-by-intent"></a>
+<a name="remove-entity-or-intent-filter"></a>
+<a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>
+
+## <a name="use-contextual-toolbar"></a>使用上下文工具栏
+
+上面的模式列表的上下文工具栏中，您可以：
+
+* 搜索模式
+* 编辑模式
+* 为其他意向重新分配一个模式
+* 为其他意向重新分配多个模式
+* 删除一个单模式
+* 删除多个模式
+* 按实体筛选模式列表
+* Filter-pattern-list-by-intent
+* 删除实体或意向筛选器
+* 在意向或实体页上通过现有表述添加模式
+
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[生成模式](luis-tutorial-pattern.md)（具有 pattern.any 和角色）。
+* 了解如何[生成一种模式](luis-tutorial-pattern.md)pattern.any 和教程，说明如何使用角色。
 * 了解如何[培训](luis-how-to-train.md)应用。

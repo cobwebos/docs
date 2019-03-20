@@ -14,12 +14,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 3cda9d487d9548251c68d61db51bf2fb826b6f79
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 96325d7c21ccf7d93deaafbad974009004030157
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775282"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091981"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>作为一项服务验证的发行说明
 
@@ -42,10 +42,10 @@ ms.locfileid: "57775282"
 
 如果运行 Azure Stack 每月更新验证工作流和 OEM 更新包的版本不是 1810年或更高版本，一旦到达 OEM 更新步骤您将收到错误。 这是一个 bug。 正在开发了修复程序。缓解步骤如下所示：
 
-1.  OEM 更新作为正常运行。
-2.  在包的成功的应用程序后执行 Test-azurestack 并保存输出。
-3.  取消测试。
-4.  发送到已保存的输出VaaSHelp@microsoft.com接收通过测试运行结果。
+1. OEM 更新作为正常运行。
+2. 在包的成功的应用程序后执行 Test-azurestack 并保存输出。
+3. 取消测试。
+4. 发送到已保存的输出VaaSHelp@microsoft.com接收通过测试运行结果。
 
 ## <a name="version-402"></a>版本 4.0.2
 

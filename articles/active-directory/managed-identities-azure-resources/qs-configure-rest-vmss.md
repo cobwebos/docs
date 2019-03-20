@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d208cab8b39b777fea7809be418613f17751b1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b35470daf8ef037a72516690c75980a6d07e8e29
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170280"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097160"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>使用 REST API 调用在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -33,7 +33,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 在 Azure 虚拟机规模集上启用和禁用系统分配的托管标识
 - 在 Azure 虚拟机规模集上添加和删除用户分配托管标识
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
@@ -72,7 +72,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  检索持有者访问令牌，下一步在授权标头中将使用该令牌创建具有系统分配的托管标识的虚拟机规模集。
+3. 检索持有者访问令牌，下一步在授权标头中将使用该令牌创建具有系统分配的托管标识的虚拟机规模集。
 
    ```azurecli-interactive
    az account get-access-token
@@ -81,23 +81,23 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 4. 通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用，创建虚拟机规模集。 下面的示例在“myResourceGroup”中创建名为“myVMSS”的虚拟机规模集，该规模集具有系统分配的托管标识（请求正文中用值 `"identity":{"type":"SystemAssigned"}` 进行标识）。 请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
 
    ```bash   
-  curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
-  ```
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
+   ```
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-  **请求标头**
+   **请求标头**
 
-  |请求标头  |说明  |
-  |---------|---------|
-  |*Content-Type*     | 必需。 设置为 `application/json`。        |
-  |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
+   |请求标头  |描述  |
+   |---------|---------|
+   |*Content-Type*     | 必需。 设置为 `application/json`。        |
+   |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
 
-  **请求正文**
+   **请求正文**
 
-  ```JSON
+   ```JSON
     {
        "sku":{
           "tier":"Standard",
@@ -158,7 +158,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
           }
        }
     }  
-  ```  
+   ```  
 
 ### <a name="enable-system-assigned-managed-identity-on-a-existing-virtual-machine-scale-set"></a>在现有虚拟机规模集上启用系统分配的托管标识
 
@@ -185,7 +185,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -218,7 +218,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 |
@@ -252,7 +252,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -296,7 +296,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -331,7 +331,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  检索持有者访问令牌，下一步在授权标头中将使用该令牌创建具有系统分配的托管标识的虚拟机规模集。
+3. 检索持有者访问令牌，下一步在授权标头中将使用该令牌创建具有系统分配的托管标识的虚拟机规模集。
 
    ```azurecli-interactive
    az account get-access-token
@@ -353,7 +353,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -440,7 +440,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 |
@@ -535,7 +535,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 |   
  
@@ -556,7 +556,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -588,7 +588,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -624,7 +624,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -663,7 +663,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
     **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -702,7 +702,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 |
    
@@ -724,7 +724,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -756,7 +756,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |说明  |
+   |请求标头  |描述  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -786,7 +786,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **请求标头**
 
-|请求标头  |说明  |
+|请求标头  |描述  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -813,7 +813,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **请求标头**
 
-|请求标头  |说明  |
+|请求标头  |描述  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 

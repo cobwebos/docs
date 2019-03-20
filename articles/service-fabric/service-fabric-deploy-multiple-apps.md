@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: ea2f27069ca445a4d74ddc634f5c396ab13564a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 4d9dfbcfc1dd00209a90386bf75f0c2515a28060
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248990"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854460"
 ---
 # <a name="deploy-multiple-guest-executables"></a>部署多个来宾可执行文件
-本文介绍了如何将多个来宾可执行文件打包并部署到 Azure Service Fabric。 要生成并部署单个 Service Fabric 包，请参阅如何[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md)。
+本文介绍如何打包多个来宾可执行文件并部署到 Azure Service Fabric。 要生成并部署单个 Service Fabric 包，请参阅如何[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md)。
 
 虽然本演练演示的是如何部署将 MongoDB 用作数据存储并具有 Node.js 前端的应用程序，但是可以将这些步骤套用于任何与另一个应用程序具有依赖关系的应用程序。   
 
-可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 请参阅[使用 Visual Studio 打包现有应用程序](service-fabric-deploy-existing-app.md)。 添加第一个来宾可执行文件后，右键单击应用程序项目，并依次选择 **“添加”->“新建 Service Fabric 服务”**，将第二个来宾可执行文件项目添加到解决方案中。 请注意，如果选择在 Visual Studio 项目中链接源，在生成的 Visual Studio 解决方案中可确保应用程序包与源中的更改保持同步。 
+可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 请参阅[使用 Visual Studio 打包现有应用程序](service-fabric-deploy-existing-app.md)。 添加第一个来宾可执行文件后，右键单击应用程序项目，并依次选择 **“添加”->“新建 Service Fabric 服务”**，将第二个来宾可执行文件项目添加到解决方案中。 注意：如果选择在 Visual Studio 项目中链接源，则生成 Visual Studio 解决方案可确保应用程序包能够与源中的更改保持同步。 
 
 ## <a name="samples"></a>示例
 * [打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -61,7 +61,7 @@ ms.locfileid: "51248990"
     |-- node.exe
 ```
 
-在下一个步骤中，将为 Node.js 应用程序创建应用程序包。 以下代码会创建包含 Node.js 应用程序的 Service Fabric 应用程序包。
+下一个步骤为 Node.js 应用程序创建应用程序包。 以下代码会创建包含 Node.js 应用程序的 Service Fabric 应用程序包。
 
 ```
 .\ServiceFabricAppPackageUtil.exe /source:'[yourdirectory]\MyNodeApplication' /target:'[yourtargetdirectory] /appname:NodeService /exe:'node.exe' /ma:'bin/www' /AppType:NodeAppType
@@ -121,7 +121,7 @@ ms.locfileid: "51248990"
 ### <a name="packaging-the-mongodb-application"></a>打包 MongoDB 应用程序
 既然已打包 Node.js 应用程序，可以继续打包 MongoDB。 如前文所述，现在进行的步骤并非特定于 Node.js 和 MongoDB 的步骤。 事实上，它们适用于所有要打包在一起以作为一个 Service Fabric 应用程序的应用程序。  
 
-为了打包 MongoDB，会想要确定你打包 Mongod.exe 和 Mongo.exe。 这两个二进制文件都位于 MongoDB 安装目录的 `bin` 目录中。 目录结构类似于下面的结构。
+若要打包 MongoDB，需要确保打包 Mongod.exe 和 Mongo.exe。 这两个二进制文件都位于 MongoDB 安装目录的 `bin` 目录中。 目录结构类似于下面的结构。
 
 ```
 |-- MongoDB
@@ -136,7 +136,7 @@ Service Fabric 需要使用类似于下面的命令来启动 MongoDB，因此打
 mongod.exe --dbpath [path to data]
 ```
 > [!NOTE]
-> 如果将 MongoDB 数据目录放在节点的本地目录中，当节点发生故障时，不会保留数据。 应该使用持久存储或实现 MongoDB 副本集以防止数据丢失。  
+> 如果你将 MongoDB 数据目录放在节点的本地目录中，当节点发生故障时，不会保留数据。 应该使用持久存储或实现 MongoDB 副本集以防止数据丢失。  
 >
 >
 
@@ -146,7 +146,7 @@ mongod.exe --dbpath [path to data]
 .\ServiceFabricAppPackageUtil.exe /source: [yourdirectory]\MongoDB' /target:'[yourtargetdirectory]' /appname:MongoDB /exe:'bin\mongod.exe' /ma:'--dbpath [path to data]' /AppType:NodeAppType
 ```
 
-为了将 MongoDB 添加到 Service Fabric 应用程序包，必须确定 /target 参数指向已经包含应用程序清单及 Node.js 应用程序的同一个目录。 此外，还需要确保使用的是同一个 ApplicationType 名称。
+为了将 MongoDB 添加到 Service Fabric 应用程序包，需要确保 /target 参数指向已经包含应用程序清单及 Node.js 应用程序的同一个目录。 此外，还需要确保使用的是同一个 ApplicationType 名称。
 
 让我们浏览到该目录并检查已创建的工具。
 
@@ -164,10 +164,10 @@ mongod.exe --dbpath [path to data]
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-如你所见，工具已将新文件夹“MongoDB”添加到包含 MongoDB 二进制文件的目录中。 如果打开 `ApplicationManifest.xml` 文件，可以看到包现在包含 Node.js 应用程序和 MongoDB。 以下代码会显示应用程序清单的内容。
+正如所见，工具已将新文件夹“MongoDB”添加到包含 MongoDB 二进制文件的目录中。 如果打开 `ApplicationManifest.xml` 文件，可以看到包现在包含 Node.js 应用程序和 MongoDB。 以下代码会显示应用程序清单的内容。
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="MongoDB" ServiceManifestVersion="1.0" />
    </ServiceManifestImport>
@@ -206,12 +206,12 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 将应用程序成功发布到本地群集之后，便可以在我们在 Node.js 应用程序的服务清单中输入的端口（例如 http://localhost:3000 ）上访问 Node.js 应用程序。
 
-在本教程中，学习了如何轻松地将两个现有应用程序打包成一个 Service Fabric 应用程序。 你也了解了如何将其部署到 Service Fabric，以便让它能够从一些 Service Fabric 功能（例如高可用性和运行状况系统整合）中获益。
+在本教程中，学习了如何轻松地将两个现有应用程序打包成一个 Service Fabric 应用程序。 还已了解如何将其部署到 Service Fabric，以便它能够从一些 Service Fabric 功能（例如高可用性和运行状况系统集成）中获益。
 
 
 ## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>在 Linux 上使用 Yeoman 将更多来宾可执行文件添加到现有应用程序
 
-要将其他服务添加到使用 `yo` 创建的应用程序，请执行以下步骤： 
+要将另一个服务添加到使用 `yo` 创建的应用程序，请执行以下步骤： 
 1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
 2. 运行 `yo azuresfguest:AddService`，并提供必要的详细信息。
 

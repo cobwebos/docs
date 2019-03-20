@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3109c4e6190cd8e485ae9b28117c4688836dfc26
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470308"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855931"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
 本文介绍如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。 它将指导完成[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)所需的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 本文中的模型包括逻辑和线性回归、随机林和梯度提升树 (GBT)，以及两个常见的监管式机器学习任务：
@@ -26,9 +26,9 @@ ms.locfileid: "55470308"
 
 建模过程需要对测试数据集和相关准确性度量值进行定型和评估。 在本文中，可以了解如何在 Azure Blob 存储中存储这些模型，以及如何对其预测性能进行评分和评估。 本文还介绍了如何通过使用交叉验证和超参数扫描优化模型的更高级主题。 所使用的数据是 GitHub 上提供的 2013 年 NYC 出租车行程和费用数据集样本。
 
-[Scala](http://www.scala-lang.org/) 是一种基于 Java 虚拟机的语言，其集成面向对象和功能语言概念。 这是一种可扩展的语言，非常适合云中的分布式处理，且在 Azure Spark 群集上运行。
+[Scala](https://www.scala-lang.org/) 是一种基于 Java 虚拟机的语言，其集成面向对象和功能语言概念。 这是一种可扩展的语言，非常适合云中的分布式处理，且在 Azure Spark 群集上运行。
 
-[Spark](http://spark.apache.org/) 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中的迭代算法的最佳选择。 [Spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) 包提供了一组统一的高级 API，它们构建在数据帧之上，可以帮助创建和优化实际机器学习管道。 [MLlib](http://spark.apache.org/mllib/) 是 Spark 的可扩展机器学习库，为此分布式环境提供建模功能。
+[Spark](https://spark.apache.org/) 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中的迭代算法的最佳选择。 [Spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) 包提供了一组统一的高级 API，它们构建在数据帧之上，可以帮助创建和优化实际机器学习管道。 [MLlib](https://spark.apache.org/mllib/) 是 Spark 的可扩展机器学习库，为此分布式环境提供建模功能。
 
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) 是 Azure 托管的开放源代码 Spark 产品。 它还包括对 Spark 群集上 Jupyter Scala 笔记本的支持，并且可运行 Spark SQL 交互式查询以便对存储在 Azure Blob 存储中的数据进行转换、筛选和可视化。 本文中的 Scala 代码片段提供解决方案，并显示相关图表，以可视化安装在 Spark 群集上的 Jupyter 笔记本中运行的数据。 这些主题中的建模步骤具有代码，显示每种类型模型的定型、评估、保存和使用方式。
 
@@ -39,7 +39,7 @@ ms.locfileid: "55470308"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
 
@@ -368,7 +368,7 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
 ### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>分类特征的索引和独热编码
 MLlib 的建模和预测函数需要在使用前，对带有分类输入数据的特征进行索引或独热编码。 本部分介绍如何对分类特征进行索引和独热编码，输入到建模函数中。
 
-根据模型，需要以不同方式为其编制索引或进行独热编码。 例如，逻辑和线性回归模型需进行独热编码。 例如，具有三个类别的特性可以扩展为三个特征列。 根据观察类别，每个列将包含 0 或 1 个类别。 MLlib 为独热编码提供 [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder)。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 使用此编码，可将预期数值特征的算法（如逻辑回归）应用到分类特征。
+根据模型，需要以不同方式为其编制索引或进行独热编码。 例如，逻辑和线性回归模型需进行独热编码。 例如，具有三个类别的特性可以扩展为三个特征列。 根据观察类别，每个列将包含 0 或 1 个类别。 MLlib 为独热编码提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder)。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 使用此编码，可将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
 此处，只需转换四个字符串变量来显示示例。 还可以将由数值表示的其他变量（例如工作日）编制索引为类别变量。
 
@@ -853,7 +853,7 @@ ROC 曲线下的面积：0.9846895479241554
 ### <a name="create-a-gbt-regression-model"></a>创建 GBT 回归模型
 使用 Spark ML `GBTRegressor()` 函数创建 GBT 回归模型，并根据测试数据评估模型。
 
-[梯度提升树](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式定型决策树以最大程度减少损失函数。 可使用 GBT 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
+[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式定型决策树以最大程度减少损失函数。 可使用 GBT 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

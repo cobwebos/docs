@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c7b3695e5cb43a9c8f659a3ac1baddab51526b2d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: eeb3b2098cf477004ba7ad85a903f1a8e2267392
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893725"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117823"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -52,14 +52,14 @@ ms.locfileid: "55893725"
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
 | SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| Oracle |用于 Oracle 的 Microsoft OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 | |
-| Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .Net 的 Teradata 数据提供程序 | |
+| Oracle |用于 Oracle 的 Microsoft OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
+| Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .Net 的 Teradata 数据提供程序 |
 | | | |
 
 ### <a name="in-memory-only"></a>仅限内存中
 
 |数据源  |  
-|---------|---------|
+|---------|
 |Access 数据库     |  
 |Active Directory<sup>[1](#tab1400b)</sup>     |  
 |Analysis Services     |  
@@ -83,7 +83,7 @@ ms.locfileid: "55893725"
 |SharePoint<sup>[1](#tab1400b)</sup>     |   
 |Sybase 数据库     |  
 |XML 表<sup>[1](#tab1400b)</sup>    |  
-|||
+||
  
 <a name="tab1400b">1</a> 仅限表格 1400 和更高模型。
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 03/12/2019
 ms.author: celested
-ms.reviewer: asteen
+ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7df7469a6975fa5e84b43487b524ca888718d7d2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 5f9c4f2c618851b596cd8f2dfa1fd45820a05049
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162316"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791675"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何配置应用程序代理应用程序的单一登录
 
@@ -43,11 +43,16 @@ ms.locfileid: "56162316"
 
 -   **基于标头的登录**：通过合作关系启用基于标头的登录，需要提供一些其他配置。 有关为使用标头进行身份验证的应用程序配置单一登录的合作关系和分步说明的详细信息，请参阅 [Azure AD 的 PingAccess 文档](application-proxy-configure-single-sign-on-with-ping-access.md)。
 
-可通过以下方式找到这些选项：转到“企业应用程序”中的应用程序，打开左侧菜单上的“单一登录”页。 请注意，如果应用程序是在旧门户中创建，可能看不到所有这些选项。
+-   **SAML 单一登录**:SAML 单一登录，Azure AD 进行身份验证对应用程序使用用户的 Azure AD 帐户。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。 有关设置 SAML 单一登录的信息，请参阅[使用应用程序代理进行单一登录 SAML](application-proxy-configure-single-sign-on-on-premises-apps.md)。
+
+可通过以下方式找到这些选项：转到“企业应用程序”中的应用程序，打开左侧菜单上的“单一登录”页。 请注意，是否你的应用程序在旧门户中创建的您不可能会看到所有这些选项。
 
 在此页上，还可以看到另一个登录选项：链接登录。 此选项也受应用程序代理支持。 但是，此选项不会将单一登录添加到应用程序。 也就是说，应用程序可能已经使用另一个服务（如 Active Directory 联合身份验证服务）实现了单一登录。 
 
 此选项允许管理员在访问应用程序时创建一个指向用户首次登录的应用程序的链接。 例如，如果某一个应用程序配置为使用 Active Directory 联合身份验证服务 2.0 验证用户身份，则管理员可以使用“链接登录”选项在访问面板上创建指向该应用程序的链接。
 
 ## <a name="next-steps"></a>后续步骤
-[使用应用程序代理为应用提供单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
+- [使用应用程序代理通过密码保管库进行单一登录](application-proxy-configure-single-sign-on-password-vaulting.md)
+- [使用应用程序代理通过 Kerberos 约束委派进行单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
+- [使用应用程序代理通过基于标头的身份验证进行单一登录](application-proxy-configure-single-sign-on-with-ping-access.md) 
+- [使用应用程序代理进行单一登录 SAML](application-proxy-configure-single-sign-on-on-premises-apps.md)。

@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心搜索 | Microsoft Docs
-description: 了解 Azure 安全中心是如何使用 Log Analytics 搜索检索和分析安全数据的。
+description: 了解 Azure 安全中心如何使用 Azure Monitor 日志搜索来检索和分析安全数据。
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: c02a9f61a4a8b88f8b6c4d861f1a6cbe904ad70d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074499"
 ---
 # <a name="azure-security-center-search"></a>Azure 安全中心搜索
-Azure 安全中心使用 [Log Analytics 搜索](../log-analytics/log-analytics-log-searches.md)检索和分析安全数据。 Log Analytics 提供用于快速检索和整合数据的查询语言。 在安全中心中，可以利用 Log Analytics 搜索来构造查询并分析收集的数据。
+Azure 安全中心使用[Azure Monitor 日志搜索](../log-analytics/log-analytics-log-searches.md)来检索和分析安全数据。 Azure Monitor 日志提供用于快速检索和整合数据的查询语言。 从安全中心，您可以利用 Azure Monitor 日志搜索来构造查询并分析收集的数据。
 
 安全中心的免费层和标准层均提供了此搜索功能。  日志搜索提供的数据取决于应用到工作区的层级别。  请参阅安全中心[定价页](../security-center/security-center-pricing.md)了解详细信息。
 
@@ -35,29 +35,29 @@ Azure 安全中心使用 [Log Analytics 搜索](../log-analytics/log-analytics-l
 ## <a name="access-search"></a>访问“搜索”
 1. 在“安全中心”主菜单下，选择“搜索”。
 
-  ![选择“日志搜索”][1]
+   ![选择“日志搜索”][1]
 
 2. 安全中心将列出 Azure 订阅下的所有工作区。 选择工作区。 （如果只有一个工作区，将不会出现此工作区选择器。）
 
-  ![选择工作区][2]
+   ![选择工作区][2]
 
 3. “日志搜索”将打开。 若要在所选工作区下查询更多数据，请输入以下查询示例：
 
-  SecurityEvent | where EventID == 4625 | summarize count() by TargetAccount
+   SecurityEvent | where EventID == 4625 | summarize count() by TargetAccount
 
-  结果将显示登录失败（事件 4625）的所有帐户。
+   结果将显示登录失败（事件 4625）的所有帐户。
 
-  ![搜索结果][3]
+   ![搜索结果][3]
 
-请参阅 [Log Analytics 查询语言](../log-analytics/log-analytics-search-reference.md)，详细了解如何在所选工作区下查询数据。
+请参阅[Kusto 查询语言](../log-analytics/log-analytics-search-reference.md)有关如何对所选工作区下查询数据的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，你已了解如何在安全中心中访问搜索功能。 安全中心使用 Log Analytics 搜索。 若要详细了解 Log Analytics 搜索，请参阅：
+在本文中，你已了解如何在安全中心中访问搜索功能。 安全中心使用 Azure Monitor 日志搜索。 若要了解有关 Azure Monitor 日志搜索的详细信息，请参阅：
 
-- [什么是 Log Analytics？](../log-analytics/log-analytics-overview.md) – Log Analytics 概述
-- [了解 Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-search-new.md) - 介绍日志搜索在 Log Analytics 中的用法以及创建日志搜索之前应了解的概念
-- [在 Log Analytics 中使用日志搜索查找数据](../log-analytics/log-analytics-log-searches.md) – 日志搜索使用教程
-- [Log Analytics 搜索参考](../log-analytics/log-analytics-search-reference.md) – 介绍 Log Analytics 中的查询语言
+- [什么是 Azure Monitor 日志？](../log-analytics/log-analytics-overview.md) – 在 Azure Monitor 日志概述
+- [了解日志搜索中 Azure Monitor 日志](../log-analytics/log-analytics-log-search-new.md)-介绍如何在 Azure Monitor 日志中使用日志搜索，并提供创建日志搜索之前应了解的概念
+- [在 Azure Monitor 日志中使用日志搜索查找数据](../log-analytics/log-analytics-log-searches.md)– 有关使用日志搜索的教程
+- [Kusto 搜索引用](../log-analytics/log-analytics-search-reference.md)– 介绍了 Azure Monitor 日志中的查询语言
 
 若要了解有关安全中心的详细信息，请参阅：
 

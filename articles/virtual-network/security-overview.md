@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 7ba0cd37ea4c26485b154663fa4a99e98e3ec64e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: b90087221de71ca7f627b9ea1717b423cfcf457b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430125"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535710"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -32,7 +32,7 @@ ms.locfileid: "56430125"
 
 |属性  |说明  |
 |---------|---------|
-|Name|网络安全组中的唯一名称。|
+|名称|网络安全组中的唯一名称。|
 |优先度 | 介于 100 和 4096 之间的数字。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。|
 |源或目标| 可以是任何值，也可以是单个 IP 地址、无类别域际路由 (CIDR) 块（例如 10.0.0.0/24）、[服务标记](#service-tags)或[应用程序安全组](#application-security-groups)。 如果为 Azure 资源指定一个地址，请指定分配给该资源的专用 IP 地址。 在 Azure 针对入站流量将公共 IP 地址转换为专用 IP 地址后，系统会处理网络安全组，然后由 Azure 针对出站流量将专用 IP 地址转换为公共 IP 地址。 详细了解 Azure [IP 地址](virtual-network-ip-addresses-overview-arm.md)。 指定范围、服务标记或应用程序安全组可以减少创建的安全规则数。 在一个规则中指定多个单独的 IP 地址和范围（不能指定多个服务标记或应用程序组）的功能称为[扩充式安全规则](#augmented-security-rules)。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能指定多个 IP 地址和 IP 地址范围。 详细了解 [Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。|
 |协议     | TCP、UDP 或“任何”，包括（但不限于）TCP、UDP 和 ICMP。 不能仅指定 ICMP，因此，如果需要 ICMP，请使用“任何”。 |
@@ -63,11 +63,11 @@ ms.locfileid: "56430125"
 * **AzureCloud**（仅限资源管理器）：此标记表示 Azure 的 IP 地址空间，包括所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。 如果指定 AzureCloud 作为值，则会允许或拒绝发往 Azure 公共 IP 地址的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureCloud，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure AzureCloud，可以指定 AzureCloud.EastUS 作为服务标记。 
 * **AzureTrafficManager**（仅限资源管理器）：此标记表示 Azure 流量管理器探测 IP 地址的 IP 地址空间。 有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 
 * **Storage**（仅限资源管理器）：此标记表示 Azure 存储服务的 IP 地址空间。 如果指定 *Storage* 作为值，则会允许或拒绝发往存储的流量。 如果只想允许对某个特定[区域](https://azure.microsoft.com/regions)中的存储进行访问，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure 存储，可以指定 *Storage.EastUS* 作为服务标记。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 由此标记表示的所有地址前缀也由 **Internet** 标记表示。 
-* **Sql**（仅限资源管理器）：此标记表示 Azure SQL 数据库和 Azure SQL 数据仓库服务的地址前缀。 如果指定 *Sql* 作为值，则会允许或拒绝发往 Sql 的流量。 如果只想允许对某个特定[区域](https://azure.microsoft.com/regions)中的 Sql 进行访问，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure SQL 数据库，可以指定 *Sql.EastUS* 作为服务标记。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 由此标记表示的所有地址前缀也由 **Internet** 标记表示。 
+* **Sql**（仅限资源管理器）：此标记表示 Azure SQL 数据库、 Azure Database for MySQL、 Azure Database for PostgreSQL，地址前缀和 Azure SQL 数据仓库服务。 如果指定 *Sql* 作为值，则会允许或拒绝发往 Sql 的流量。 如果只想允许对某个特定[区域](https://azure.microsoft.com/regions)中的 Sql 进行访问，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure SQL 数据库，可以指定 *Sql.EastUS* 作为服务标记。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 由此标记表示的所有地址前缀也由 **Internet** 标记表示。 
 * **AzureCosmosDB**（仅限资源管理器）：此标记表示 Azure Cosmos 数据库服务的地址前缀。 如果指定 *AzureCosmosDB* 作为值，则会允许或拒绝发往 AzureCosmosDB 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureCosmosDB，则可以在以下格式的 AzureCosmosDB.[region name] 中指定区域。 
 * **AzureKeyVault**（仅限资源管理器）：此标记表示 Azure KeyVault 服务的地址前缀。 如果指定 *AzureKeyVault* 作为值，则会允许或拒绝发往 AzureKeyVault 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureKeyVault，则可以在以下格式的 AzureKeyVault.[region name] 中指定区域。 
 * **EventHub**（仅限资源管理器）：此标记表示 Azure EventHub 服务的地址前缀。 如果指定 EventHub 作为值，则会允许或拒绝发往 EventHub 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 EventHub，则可采用以下格式 EventHub.[区域名称] 指定该区域。 
-* **ServiceBus**（仅限资源管理器）：此标记表示 Azure ServiceBus 服务的地址前缀。 如果指定 ServiceBus 作为值，则会允许或拒绝发往 ServiceBus 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 ServiceBus，则可采用以下格式 ServiceBus.[区域名称] 指定该区域。 
+* **ServiceBus**（仅限资源管理器）：此标记表示使用高级服务层的 Azure 服务总线服务的地址前缀。 如果指定 ServiceBus 作为值，则会允许或拒绝发往 ServiceBus 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 ServiceBus，则可采用以下格式 ServiceBus.[区域名称] 指定该区域。 
 * **MicrosoftContainerRegistry**（仅限资源管理器）：此标记表示 Microsoft 容器注册表服务的地址前缀。 如果指定 MicrosoftContainerRegistry 作为值，则会允许或拒绝发往 MicrosoftContainerRegistry 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 MicrosoftContainerRegistry，则可采用以下格式 MicrosoftContainerRegistry.[区域名称] 指定该区域。 
 * **AzureContainerRegistry**（仅限资源管理器）：此标记表示 Azure 容器注册表服务的地址前缀。 如果指定 AzureContainerRegistry 作为值，则会允许或拒绝发往 AzureContainerRegistry 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureContainerRegistry，则可采用以下格式 AzureContainerRegistry.[区域名称] 指定该区域。 
 * **AppService**（仅限资源管理器）：此标记表示 Azure AppService 服务的地址前缀。 如果指定 AppService 作为值，则会允许或拒绝发往 AppService 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AppService，则可采用以下格式 AppService.[区域名称] 指定该区域。 
@@ -131,7 +131,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | All | 拒绝 |
 
-在“源”和“目标”列表中，“VirtualNetwork”、“AzureLoadBalancer”和“Internet”是[服务标记](#service-tags)，而不是 IP 地址。 在“协议”列中，“所有”包含 TCP、UDP 和 ICMP。 创建规则时，可以指定 TCP、UDP 或“所有”，但不能仅指定 ICMP。 因此，如果规则需要 ICMP，请为协议选择“所有”。 “源”和“目标”列中的“0.0.0.0/0”表示所有地址。
+在“源”和“目标”列表中，“VirtualNetwork”、“AzureLoadBalancer”和“Internet”是[服务标记](#service-tags)，而不是 IP 地址。 在“协议”列中，“所有”包含 TCP、UDP 和 ICMP。 创建规则时，可以指定 TCP、UDP 或“所有”，但不能仅指定 ICMP。 因此，如果规则需要 ICMP，请为协议选择“所有”。 “源”和“目标”列中的“0.0.0.0/0”表示所有地址。 客户端等 Azure 门户、 Azure CLI 或 Powershell 可以使用 * 或任何为该表达式。
  
 不能删除默认规则，但可以通过创建更高优先级的规则来替代默认规则。
 

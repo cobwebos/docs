@@ -1,18 +1,19 @@
 ---
 title: 了解 Azure IoT 中心设备孪生 | Microsoft Docs
 description: 开发人员指南 - 使用设备孪生在 IoT 中心与设备之间同步状态和配置数据
-author: fsautomata
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: elioda
-ms.openlocfilehash: 606a7c64cc60fa81a71bf40a8087875e08e7c984
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 4ad75a7ba4e2f6060824f3cf1c87a42f8fa32843
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053017"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113131"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -146,7 +147,7 @@ ms.locfileid: "54053017"
 3. 解决方案后端可以通过[查询](iot-hub-devguide-query-language.md)设备孪生，跟踪多个设备上的配置操作结果。
 
 > [!NOTE]
-> 为便于阅读，上述代码片段示例经过优化，演示了为设备配置及其状态进行编码的一种方式。 IoT 中心不会对设备克隆中的所需属性和报告属性施加特定的架构。
+> 为便于阅读，上述代码片段示例经过优化，演示了为设备配置及其状态进行编码的一种方式。 IoT 中心不会对设备孪生中的所需属性和报告属性施加特定的架构。
 > 
 
 可以使用孪生来同步长时间运行的操作，例如固件更新。 有关如何使用属性来同步和跟踪各设备中长时间运行的操作的详细信息，请参阅[使用所需的属性来配置设备](tutorial-device-twins.md)。
@@ -179,44 +180,44 @@ ms.locfileid: "54053017"
 
 * **接收孪生通知**。 此操作允许解决方案后端在修改孪生时收到通知。 为此，IoT 解决方案需要创建一个路由，并且将“数据源”设置为等于 *twinChangeEvents*。 默认情况下没有此类路由预先存在，因此不会发送孪生通知。 如果更改速率太高，或由于其他原因（例如内部故障），IoT 中心可能会只发送一个包含所有更改的通知。 因此，如果应用程序需要可靠地审核和记录所有中间状态，则应使用设备到云消息。 孪生通知消息包括属性和正文。
 
-   - 属性
+  - 属性
 
-   | 名称 | 值 |
-   | --- | --- |
-   $content-type | application/json |
-   $iothub-enqueuedtime |  发送通知的时间 |
-   $iothub-message-source | twinChangeEvents |
-   $content-encoding | utf-8 |
-   deviceId | 设备 ID |
-   hubName | IoT 中心的名称 |
-   operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 操作时间戳 |
-   iothub-message-schema | deviceLifecycleNotification |
-   opType | “replaceTwin”或“updateTwin” |
+    | 名称 | 值 |
+    | --- | --- |
+    $content-type | application/json |
+    $iothub-enqueuedtime |  发送通知的时间 |
+    $iothub-message-source | twinChangeEvents |
+    $content-encoding | utf-8 |
+    deviceId | 设备 ID |
+    hubName | IoT 中心的名称 |
+    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 操作时间戳 |
+    iothub-message-schema | deviceLifecycleNotification |
+    opType | “replaceTwin”或“updateTwin” |
 
-   消息系统属性以 `$` 符号为前缀。
+    消息系统属性以 `$` 符号为前缀。
 
-   - Body
+  - Body
         
-   本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
+    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
 
-   ```json
-   {
-       "properties": {
-           "desired": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           },
-           "reported": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           }
-       }
-   }
-   ```
+    ```json
+    {
+      "properties": {
+          "desired": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          },
+          "reported": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          }
+      }
+    }
+    ```
 
 上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **ServiceConnect** 权限。
 
@@ -280,7 +281,7 @@ IoT 中心对 `tags`、`properties/desired` 和 `properties/reported`（不包�
 
 IoT 中心拒绝将这些文档的大小增加到超出限制的所有操作，在这种情况下还会返回错误。
 
-## <a name="device-twin-metadata"></a>设备克隆的元数据
+## <a name="device-twin-metadata"></a>设备孪生的元数据
 
 IoT 中心保留设备孪生所需属性和报告属性中每个 JSON 对象的上次更新时间戳。 时间戳采用 UTC，以 [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 格式编码`YYYY-MM-DDTHH:MM:SS.mmmZ`。
 

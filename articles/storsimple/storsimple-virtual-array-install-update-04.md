@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: cd3fdec0e50d64af28306034e6e1086e67526b7d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251047"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007322"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 0.4
 
@@ -48,7 +48,7 @@ ms.locfileid: "51251047"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
-1. 启动 Internet Explorer，并转到 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
+1. 启动 Internet Explorer，并转到 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 
 2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 

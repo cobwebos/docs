@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10a1f38b2c793bffb6061c6eefdccef7ac5c57b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7f7418c16d5d5312d2a9a7913da49941ef0a7870
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204519"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090451"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>登录到访问面板网站时出现问题
 
@@ -168,23 +168,23 @@ ms.locfileid: "56204519"
 
 若要检查用户的多重身份验证状态，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，单击“用户和组”。
 
-5.  单击“所有用户”。
+5. 单击“所有用户”。
 
-6.  单击窗格顶部的“多重身份验证”按钮。
+6. 单击窗格顶部的“多重身份验证”按钮。
 
-7.  在**多重身份验证管理门户**加载后，确保位于“用户”选项卡上。
+7. 在**多重身份验证管理门户**加载后，确保位于“用户”选项卡上。
 
-8.  通过搜索、筛选或排序在用户列表中找到用户。
+8. 通过搜索、筛选或排序在用户列表中找到用户。
 
-9.  从用户列表中选择用户，并根据需要**启用**、**禁用**或**强制实施**多重身份验证。
+9. 从用户列表中选择用户，并根据需要**启用**、**禁用**或**强制实施**多重身份验证。
 
    >[!NOTE]
    >如果用户处于**已强制实施**状态，可暂时将其设置为**已禁用**以允许用户重新登录到其帐户。 一旦他们重新登录到其帐户，便可以再次将其状态更改为**已启用**来要求他们在下次登录期间重新注册其联系信息。 此外，也可以按照[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)中的步骤为其验证或设置此数据。

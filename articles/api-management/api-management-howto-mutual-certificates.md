@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: b8f8d0a089a74334a908e3dad65c63231bbe5975
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 13a2eb080c6822a8a6786be1952bc588fa8afd80
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098929"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729196"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 
@@ -27,6 +27,8 @@ API 管理允许使用客户端证书保护对 API 后端服务的访问。 本�
 有关如何使用 API 管理 REST API 来管理证书的信息，请参阅 <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 证书实体</a>。
 
 ## <a name="prerequisites"> </a>先决条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 本指南介绍如何将 API 管理服务实例配置为使用客户端证书身份验证访问 API 的后端服务。 在按照本文中的步骤操作之前，应该为后端服务配置客户端证书身份验证（[若要在 Azure 网站中配置证书身份验证，请参阅此文][to configure certificate authentication in Azure WebSites refer to this article]）。 你需要访问证书和密码才能将其上传到 API 管理服务。
 
@@ -81,11 +83,11 @@ API 管理允许使用客户端证书保护对 API 后端服务的访问。 本�
 
 ## <a name="self-signed-certificates"></a>自签名证书
 
-如果使用自签名证书，将需要禁用证书链验证使 API 管理能够与后端系统进行通信， 否则，它将返回 500 错误代码。 若要配置此项，可以使用 [`New-AzureRmApiManagementBackend`](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend)（适用于新后端）或 [`Set-AzureRmApiManagementBackend`](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend)（适用于现有后端）PowerShell cmdlet 并将 `-SkipCertificateChainValidation` 参数设置为 `True`。
+如果使用自签名证书，将需要禁用证书链验证使 API 管理能够与后端系统进行通信， 否则，它将返回 500 错误代码。 若要配置此项，可以使用 [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend)（适用于新后端）或 [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend)（适用于现有后端）PowerShell cmdlet 并将 `-SkipCertificateChainValidation` 参数设置为 `True`。
 
 ```powershell
-$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
-New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+$context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
 [How to add operations to an API]: api-management-howto-add-operations.md

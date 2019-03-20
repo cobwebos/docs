@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5b338f0b829a337bccf41af5ab9449a6b39b665d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: b122d12394fe39990e359a3192e1ec5b68f17515
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186950"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899887"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>虚拟硬盘部署模板 
 
@@ -27,7 +27,7 @@ ms.locfileid: "53186950"
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "userStorageAccountName": {

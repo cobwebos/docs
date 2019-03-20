@@ -4,18 +4,17 @@ titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 资源管理器模板创建新的 Azure 机器学习服务工作区。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: larryfr
-ms.author: haining
-author: hning86
+ms.author: larryfr
+author: Blackmist
 ms.date: 02/11/2019
-ms.openlocfilehash: b9d05e8de01178fd8731e492d2aeefd28f3ef4cf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105699"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850071"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>使用模板创建 Azure 机器学习服务工作区
 
@@ -23,9 +22,9 @@ ms.locfileid: "56105699"
 
 有关详细信息，请参阅[使用 Azure 资源管理器模板部署应用程序](../../azure-resource-manager/resource-group-template-deploy.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 * 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
@@ -193,12 +192,12 @@ ms.locfileid: "56105699"
 1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 显示“编辑模板”屏幕后，请粘贴本文档中所述的模板。
 1. 选择“保存”以使用该模板。 提供以下信息并同意列出的条款和条件：
 
-    * 订阅：选择用于这些资源的 Azure 订阅。
-    * 资源组：选择或创建一个用于包含服务的资源组。
-    * 工作区名称：要创建的 Azure 机器学习工作区所用的名称。 工作区名称的长度必须为 3 到 33 个字符。 只能包含字母数字字符和“-”。
-    * 位置：选择要在其中创建资源的位置。
+   * 订阅：选择用于这些资源的 Azure 订阅。
+   * 资源组：选择或创建一个用于包含服务的资源组。
+   * 工作区名称：要创建的 Azure 机器学习工作区所用的名称。 工作区名称的长度必须为 3 到 33 个字符。 只能包含字母数字字符和“-”。
+   * 位置：选择要在其中创建资源的位置。
 
-    ![Azure 门户中的模板参数](media/how-to-create-workspace-template/template-parameters.png)
+     ![Azure 门户中的模板参数](media/how-to-create-workspace-template/template-parameters.png)
 
 有关详细信息，请参阅[从自定义模板部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)。
 

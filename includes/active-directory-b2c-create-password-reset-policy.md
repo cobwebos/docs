@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: patricka
 ms.openlocfilehash: 78abb190dccd27c5bf70dfe12f978e1118601815
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: HT
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742250"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "58116091"
 ---
 若要在应用程序上启用细化密码重置，请使用**密码重置**用户流。 请注意，租户范围的密码重置选项是在[此处](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md)指定的。 此用户流描述了客户在密码重置过程中将经历的体验以及应用程序在成功完成时会接收到的令牌内容。
 

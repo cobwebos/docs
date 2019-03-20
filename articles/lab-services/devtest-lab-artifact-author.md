@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 05abc61da7af02c56dacd632175d6fbfa64cb9e1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098555"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116820"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
 
@@ -53,7 +53,7 @@ ms.locfileid: "55098555"
       }
     }
 
-| 元素名称 | 必需？ | 说明 |
+| 元素名称 | 必需？ | 描述 |
 | --- | --- | --- |
 | $schema |否 |JSON 架构文件的位置。 JSON 架构文件可帮助测试定义文件的有效性。 |
 | title |是 |实验室中显示的项目的名称。 |
@@ -76,10 +76,10 @@ ms.locfileid: "55098555"
       }
     }
 
-| 元素名称 | 必需？ | 说明 |
+| 元素名称 | 必需？ | 描述 |
 | --- | --- | --- |
 | type |是 |参数值的类型。 请参阅以下允许类型列表。 |
-| displayName |是 |在实验室中显示给用户的参数的名称。 | |
+| displayName |是 |在实验室中显示给用户的参数的名称。 |
 | description |是 |实验室中显示的参数的说明。 |
 
 允许的类型是：
@@ -126,7 +126,7 @@ ms.locfileid: "55098555"
 
 ## <a name="related-articles"></a>相关文章
 * [如何诊断开发测试实验室中的项目失败](devtest-lab-troubleshoot-artifact-failure.md)
-* [使用开发测试实验室中的资源管理器模板将 VM 加入到现有 Active Directory 域中](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [使用开发测试实验室中的资源管理器模板将 VM 加入到现有 Active Directory 域中](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [将 Git 项目存储库添加到实验室](devtest-lab-add-artifact-repo.md)。

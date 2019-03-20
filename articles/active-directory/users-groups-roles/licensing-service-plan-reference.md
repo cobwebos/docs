@@ -1,10 +1,10 @@
 ---
 title: 用于许可的产品名称和服务计划标识符 - Azure AD | Microsoft Docs
-description: 用于在 Azure 门户、Office 365 门户、PowerShell 或 Microsoft Graph 中管理 Azure Active Directory 许可的标识符映射
+description: 管理 Azure Active Directory 许可在 Azure 门户、 Microsoft 365 管理中心、 PowerShell 或 Microsoft Graph 中的标识符映射
 services: active-directory
 keywords: Azure Active Directory 许可服务计划
 documentationcenter: ''
-author: curtand
+author: ajayanti1
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,19 +13,19 @@ ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 01/28/2019
 ms.author: curtand
-ms.reviewer: sumitp
+ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f12a300afbf56d5f6149dcc71f2fc4efedbc44f8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: fc4580b4f600b06fc89e3fc8760679028765e03e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430160"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176411"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>用于许可的产品名称和服务计划标识符
 
-在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)或 Office 365 门户中管理许可证时，可看到类似于“Office 365 企业版 E3”的产品名称。 使用 PowerShell v1.0 cmdlet 时，会发现同一个产品是使用特定但不太友好的名称：*ENTERPRISEPACK* 标识的。 使用 PowerShell v2.0 cmdlet 或 Microsoft Graph 时，会发现同一个产品是使用 GUID 值：*6fd2c87f-b296-42f0-b197-1e91e994b900* 标识的。 下表列出了最常用的 Microsoft 联机服务产品，并提供了它们的不同 ID 值。 这些表仅供参考，并且仅保证在本文最后更新之时是准确的。 Microsoft 不打算定期针对新添加的服务更新它们。
+管理许可证时[Azure 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)或[Microsoft 365 管理中心内](https://admin.microsoft.com)，则会看到如下所示的产品名称*Office 365 企业版 E3*。 使用 PowerShell v1.0 cmdlet 时，会发现同一个产品是使用特定但不太友好的名称：*ENTERPRISEPACK* 标识的。 使用 PowerShell v2.0 cmdlet 或 Microsoft Graph 时，会发现同一个产品是使用 GUID 值：*6fd2c87f-b296-42f0-b197-1e91e994b900* 标识的。 下表列出了最常用的 Microsoft 联机服务产品，并提供了它们的不同 ID 值。 这些表仅供参考，并且仅保证在本文最后更新之时是准确的。 Microsoft 不打算定期针对新添加的服务更新它们。
 
 - **产品名称**：在管理门户中使用
 - **字符串 ID**：由 PowerShell v1.0 cmdlet 在对许可证执行操作时使用

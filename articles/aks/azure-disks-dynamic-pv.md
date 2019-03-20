@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 02ebfb711c5f51c71f42f7b67b8804b91a0be368
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 735be71faecb9882b13f6f536d43715139d0f4db
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329262"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342014"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
 
@@ -21,13 +21,13 @@ ms.locfileid: "56329262"
 > [!NOTE]
 > Azure 磁盘只能使用“访问模式”类型 ReadWriteOnce 装载，这使其只可供 AKS 中的单个 Pod 使用。 如果需要在多个 Pod 之间共享永久性卷，请使用 [Azure 文件][azure-files-pvc]。
 
-有关 Kubernetes 永久性卷的详细信息，请参阅 [Kubernetes 永久性卷][kubernetes-volumes]。
+有关 Kubernetes 卷的详细信息，请参阅[AKS 中的应用程序的存储选项][concepts-storage]。
 
 ## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+您还需要 Azure CLI 版本 2.0.59 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="built-in-storage-classes"></a>内置存储类
 
@@ -42,7 +42,7 @@ ms.locfileid: "56329262"
 
 使用 [kubectl get sc][kubectl-get] 命令查看预先创建的存储类。 以下示例显示了 AKS 群集中可用的预先创建存储类：
 
-```
+```console
 $ kubectl get sc
 
 NAME                PROVISIONER                AGE
@@ -51,7 +51,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> 永久卷声明在 GiB 中指定，但 Azure 托管磁盘由 SKU 针对特定大小计费。 这些 SKU 的范围从用于 S4 或 P4 磁盘的 32 GiB 到用于 S80 或 P80 磁盘的 32 TiB。 高级托管磁盘的吞吐量和 IOPS 性能取决于 SKU 和 AKS 群集中节点的实例大小。 有关详细信息，请参阅[托管磁盘的定价和性能][managed-disk-pricing-performance]。
+> 永久卷声明在 GiB 中指定，但 Azure 托管磁盘由 SKU 针对特定大小计费。 这些 Sku 的范围从 S4 或 P4 磁盘的 32GiB 到 32TiB S80 或 P80 （处于预览状态） 的磁盘。 高级托管磁盘的吞吐量和 IOPS 性能取决于 SKU 和 AKS 群集中节点的实例大小。 有关详细信息，请参阅[托管磁盘的定价和性能][managed-disk-pricing-performance]。
 
 ## <a name="create-a-persistent-volume-claim"></a>创建永久性卷声明
 
@@ -78,7 +78,7 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令创建永久性卷声明，并指定 azure-premium.yaml 文件：
 
-```
+```console
 $ kubectl apply -f azure-premium.yaml
 
 persistentvolumeclaim/azure-managed-disk created
@@ -117,7 +117,7 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令创建 Pod，如以下示例所示：
 
-```
+```console
 $ kubectl apply -f azure-pvc-disk.yaml
 
 pod/mypod created
@@ -125,7 +125,7 @@ pod/mypod created
 
 现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod mypod` 检查 Pod 时可以看到此配置，如以下精简示例所示：
 
-```
+```console
 $ kubectl describe pod mypod
 
 [...]
@@ -154,7 +154,7 @@ Events:
 
 首先，使用 `kubectl get pvc` 命令获取卷名称，例如，获取 PVC 名称 *azure-managed-disk*：
 
-```
+```console
 $ kubectl get pvc azure-managed-disk
 
 NAME                 STATUS    VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
@@ -163,7 +163,7 @@ azure-managed-disk   Bound     pvc-faf0f176-8b8d-11e8-923b-deb28c58d242   5Gi   
 
 此卷名称构成了基础 Azure 磁盘名称。 使用 [az disk list][az-disk-list] 查询磁盘 ID 并提供 PVC 卷名称，如以下示例所示：
 
-```
+```azurecli-interactive
 $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c58d242`)]' -o tsv
 
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
@@ -171,7 +171,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 
 运行 [az snapshot create][az-snapshot-create]，使用磁盘 ID 创建快照磁盘。 以下示例在 AKS 群集所在的同一资源组 (*MC_myResourceGroup_myAKSCluster_eastus*) 中创建名为 *pvcSnapshot* 的快照。 如果在 AKS 群集无权访问的资源组中创建快照和还原磁盘，可能会遇到权限问题。
 
-```azurecli
+```azurecli-interactive
 $ az snapshot create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --name pvcSnapshot \
@@ -184,13 +184,13 @@ $ az snapshot create \
 
 若要还原磁盘并将其用于 Kubernetes Pod，请在使用 [az disk create][az-disk-create] 创建磁盘时，将快照用作源。 如果以后需要访问原始数据快照，此操作可保留原始资源。 以下示例基于名为 *pvcSnapshot* 的快照创建名为 *pvcRestored* 的磁盘：
 
-```azurecli
+```azurecli-interactive
 az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --source pvcSnapshot
 ```
 
 若要使用包含 Pod 的已还原磁盘，请指定清单中磁盘的 ID。 使用 [az disk show][az-disk-show] 命令获取磁盘 ID。 以下示例获取上一步骤中创建的 *pvcRestored* 的磁盘 ID：
 
-```azurecli
+```azurecli-interactive
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
@@ -225,7 +225,7 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令创建 Pod，如以下示例所示：
 
-```
+```console
 $ kubectl apply -f azure-restored.yaml
 
 pod/mypodrestored created
@@ -233,7 +233,7 @@ pod/mypodrestored created
 
 可以使用 `kubectl describe pod mypodrestored` 查看 Pod 详细信息，例如，以下精简示例显示了卷信息：
 
-```
+```console
 $ kubectl describe pod mypodrestored
 
 [...]
@@ -250,6 +250,8 @@ Volumes:
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
+关联的最佳做法，请参阅[存储和备份在 AKS 中的最佳做法][operator-best-practices-storage]。
 
 详细了解使用 Azure 磁盘的 Kubernetes 永久性卷。
 
@@ -275,3 +277,5 @@ Volumes:
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[operator-best-practices-storage]: operator-best-practices-storage.md
+[concepts-storage]: concepts-storage.md

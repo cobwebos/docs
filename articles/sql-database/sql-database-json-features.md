@@ -12,22 +12,22 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 7e688abbe1b8188cb85e5762086009522b5b7d39
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: 77f6125980c43817230b8a8d4beb32757f23e6c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332075"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995487"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL 数据库中的 JSON 功能入门
-使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](http://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。 以下 JSON 方案在 Azure SQL 数据库中可用：
+使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。 以下 JSON 方案在 Azure SQL 数据库中可用：
 - 使用 `FOR JSON` 字句[将关系数据设置为 JSON 格式](#formatting-relational-data-in-json-format)。
 - [处理 JSON 数据](#working-with-json-data)
 - 使用 JSON 标量函数[查询 JSON 数据](#querying-json-data)。
 - 使用 `OPENJSON` 函数[将 JSON 转换为表格格式](#transforming-json-into-tabular-format)。
 
 ## <a name="formatting-relational-data-in-json-format"></a>将关系数据设置为 JSON 格式
-如果 Web 服务从数据库层提取数据并以 JSON 格式提供响应，或者客户端 JavaScript 框架或库接受 JSON 格式的数据，则可以直接在 SQL 查询中将数据库内容格式化为 JSON。 不再需要编写应用程序代码将 Azure SQL 数据库中的结果格式化为 JSON，也不再需要包含一些 JSON 序列化库来转换表格查询结果，然后将对象序列化为 JSON 格式。 可以使用 FOR JSON 子句将 Azure SQL 数据库中的 SQL 查询结果格式化为 JSON，然后直接在应用程序中使用这种格式。
+如果 Web 服务从数据库层提取数据并以 JSON 格式提供响应，或者客户端 JavaScript 框架或库接受 JSON 格式的数据，则可以直接在 SQL 查询中将数据库内容格式化为 JSON。 不再需要编写应用程序代码将 Azure SQL 数据库中的结果格式化为 JSON，也不再需要包含一些 JSON 序列化库来转换表格查询结果，然后将对象序列化为 JSON 格式。 可以使用 FOR JSON 子句将 Azure SQL 数据库中的 SQL 查询结果格式化为 JSON，并直接在应用程序中使用这种格式。
 
 以下示例使用 FOR JSON 子句，将 Sales.Customer 表中的行格式化为 JSON：
 
@@ -159,13 +159,13 @@ ALTER TABLE Products
 如果输入的文本是格式正确的 JSON，ISJSON 函数将返回值 1。 在每次插入或更新 JSON 列时，此约束都会验证新文本值是否为格式正确的 JSON。
 
 ## <a name="transforming-json-into-tabular-format"></a>将 JSON 转换为表格格式
-Azure SQL 数据库还允许将 JSON 集合转换为表格格式，然后加载或查询 JSON 数据。
+Azure SQL 数据库还允许将 JSON 集合转换为表格格式，并加载或查询 JSON 数据。
 
 OPENJSON 是一个表值函数，可分析 JSON 文本、查找 JSON 对象数组、迭代数组的元素，并在输出结果中针对每个数组元素返回一行。
 
 ![JSON 表格](./media/sql-database-json-features/image_2.png)
 
-在以上示例中，可以指定要在何处查找应打开的 JSON 数组（在 $.Orders 路径中）、应返回哪些列作为结果，以及要在何处查找以单元格形式返回的 JSON 值。
+在以上示例中，可以指定要在何处查找应打开的 JSON 数组（在 $.Orders 路径中）、应返回哪些列作为结果，以及要在何处查找将作为单元格返回的 JSON 值。
 
 可以将 @orders 变量中的 JSON 数组转换为行集、分析此结果集，或将行插入标准表中：
 
@@ -190,9 +190,9 @@ END
 ## <a name="next-steps"></a>后续步骤
 要了解如何将 JSON 集成到应用程序中，请参阅以下资源：
 
-* [TechNet 博客](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/05/json-in-sql-server-2016-part-1-of-4/)
+* [TechNet 博客](https://blogs.technet.microsoft.com/dataplatforminsider/20../../json-in-sql-server-2016-part-1-of-4/)
 * [MSDN 文档](https://msdn.microsoft.com/library/dn921897.aspx)
 * [第 9 频道视频](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-要了解将 JSON 集成到应用程序中的各种方案，请参阅这部第 [9 频道视频](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的演示，或者在 [JSON 博客文章](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中查找与应用场合相符的方案。
+若要了解将 JSON 集成到应用程序的各种方案，请参阅[第 9 频道视频](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)中的演示，或者在 [JSON 博客文章](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)中查找与用例相符的方案。
 

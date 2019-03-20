@@ -11,12 +11,12 @@ ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 1c30f77c061ec25c88186caee3f60e65f3afb3de
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 01da06ca55199989a3a27012bec101580f5ef853
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232862"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442199"
 ---
 # <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>使用 Azure 逻辑应用调用 HTTP 或 HTTPS 终结点
 
@@ -28,7 +28,7 @@ ms.locfileid: "50232862"
 
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "50232862"
 
    ![选择 HTTP 触发器](./media/connectors-native-http/select-http-trigger.png)
 
-1. 提供要包含在目标终结点调用中的 [HTTP 触发器参数和值](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)。 设置重复周期，以确定触发器检查目标终结点的频率。
+1. 提供要包含在目标终结点调用中的 [HTTP 触发器参数和值](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)。 设置触发器的频率定期检查目标终结点。
 
    ![输入 HTTP 触发器参数](./media/connectors-native-http/http-trigger-parameters.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "50232862"
 
 1. 完成后，请务必保存逻辑应用。 在设计器工具栏上，选择“保存”。 
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 若要设置身份验证，请在操作或触发器中选择“显示高级选项”。 有关 HTTP 触发器和操作可用的身份验证类型的详细信息，请参阅[触发器和操作类型参考](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
 

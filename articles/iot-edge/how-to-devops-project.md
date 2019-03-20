@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 57279a4e92b1f42505003f12d41c8203aa5603d4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: 02977032c5975de4098600ddbebccfcbb9b0fafd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122886"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>使用 Azure DevOps Projects 为 IoT Edge 创建 CI/CD 管道（预览版）
 
@@ -127,7 +127,7 @@ DevOps Projects 在 Azure Repos 中为项目创建了 Git 存储库。 在本部
 
 12. 在发布管道的菜单中，请选择“任务”，然后从下拉列表选择“开发”阶段。 DevOps Projects 创建了发布阶段，该阶段创建 IoT 中心、在该中心创建 IoT Edge 设备、从生成管道部署示例模块，并将虚拟机预配为作为 IoT Edge 设备运行。 若要了解有关 CD 的 Azure IoT Edge 任务的详细信息，请参阅[配置 Azure 管道以进行持续部署](how-to-ci-cd.md#configure-continuous-deployment)。
 
-   ![查看持续部署任务](media/how-to-devops-project/dev-release.png)
+    ![查看持续部署任务](media/how-to-devops-project/dev-release.png)
 
 13. 在右侧，选择“查看发布”。 此视图显示发布历史记录。
 

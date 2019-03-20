@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 02/07/2019
 ms.author: lahugh
-ms.openlocfilehash: 734c16111ab859b55d87525cdc8a644c8114f6d2
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 9902f38ddfd3035adcce697c2eb5b77bdc1d8c9c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429021"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874755"
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch 计算节点环境变量
 
@@ -39,7 +39,7 @@ ms.locfileid: "56429021"
 
 ## <a name="environment-variables"></a>环境变量
 
-| 变量名称                     | 说明                                                              | 可用性 | 示例 |
+| 变量名称                     | 描述                                                              | 可用性 | 示例 |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | 任务所属的 Batch 帐户名。                  | 所有任务。   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch 帐户的 URL。 | 所有任务。 | `https://myaccount.westus.batch.azure.com` |
@@ -62,7 +62,6 @@ ms.locfileid: "56429021"
 | AZ_BATCH_TASK_DIR               | 节点上的[任务目录][files_dirs]的完整路径。 此目录包含任务的 `stdout.txt` 和 `stderr.txt`，以及 AZ_BATCH_TASK_WORKING_DIR。 | 所有任务。 | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | 当前任务的 ID。 | 除启动任务以外的所有任务。 | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | [多实例任务][multi_instance]的主要任务和每个子任务的目录路径相同。 路径存在于运行多实例任务的每个节点上，并且在该节点上运行的任务命令（[协调命令][coord_cmd]和[应用程序命令][app_cmd]）对其具有读取/写入权限。 在其他节点上执行的子任务或主要任务不具有对此目录（它不是“共享”的网络目录）的远程访问权限。 | 多实例主要和子任务。 | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
-| AZ_BATCH_TASK_SHARED_DIR        | 公共目录，用于存储要在节点上的任务之间共享的数据。 | 所有任务。 | C:\user\tasks\shared |
 | AZ_BATCH_TASK_WORKING_DIR       | 节点上的[任务工作目录][files_dirs]的完整路径。 当前正在运行的任务具有对此目录的读取/写入权限。 | 所有任务。 | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | 分配给[多实例任务][multi_instance]的节点和每个节点的内核数的列表。 使用 `numNodes<space>node1IP<space>node1Cores<space>` 格式列出了节点和内核<br/>`node2IP<space>node2Cores<space> ...`，其中节点数后跟一个或多个节点 IP 地址和每个节点的内核数。 |  多实例主要和子任务。 |`2 10.0.0.4 1 10.0.0.5 1` |
 

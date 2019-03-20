@@ -3,20 +3,20 @@ title: 在 Azure 数据工厂中创建基于事件的触发器 | Microsoft Docs
 description: 了解如何在 Azure 数据工厂中创建运行管道的触发器来响应事件。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: douglasl
-ms.openlocfilehash: fd7355c342a075f7b0c2e1173717c0345f1f94ba
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: 94c9c3f997143d72262c1ba3d8dbfea90d6f920c
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428544"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576610"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
 
@@ -81,7 +81,7 @@ Azure 存储帐户中文件的到达或删除就是一个典型的事件。 你�
 > [!IMPORTANT]
 > 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段，如以下示例所示。
 
-| 属性 | 示例 | 说明 |
+| 属性 | 示例 | 描述 |
 |---|---|---|
 | **Blob 路径开头** | `/containername/` | 接收容器中任何 blob 事件。 |
 | **Blob 路径开头** | `/containername/blobs/foldername/` | 接收 `containername` 容器和 `foldername` 文件夹中的任何 blob 事件。 |

@@ -3,23 +3,21 @@ title: Azure 流量管理器的工作原理 | Microsoft Docs
 description: 本文将帮助你了解流量管理器如何路由流量以确保 Web 应用程序的高性能和可用性
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: KumudD
 manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2018
+ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 26d61c1b263a8fa7ff4f0ff5b2888f1d900e772e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567836"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108859"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理器的工作原理
 
@@ -41,8 +39,8 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 htt
 为了实现此配置，他们完成以下步骤：
 
 1. 部署服务的三个实例。 这些部署的 DNS 名称为“contoso-us.cloudapp.net”、“contoso-eu.cloudapp.net”和“contoso-asia.cloudapp.net”。
-2. 创建一个名为“contoso.trafficmanager.net”的流量管理器配置文件，并将它配置为对三个终结点使用“性能”流量路由方法。
-* 使用 DNS CNAME 记录将虚构域名“partners.contoso.com”配置为指向“contoso.trafficmanager.net”。
+1. 创建一个名为“contoso.trafficmanager.net”的流量管理器配置文件，并将它配置为对三个终结点使用“性能”流量路由方法。
+1. 使用 DNS CNAME 记录将虚构域名“partners.contoso.com”配置为指向“contoso.trafficmanager.net”。
 
 ![流量管理器 DNS 配置][1]
 

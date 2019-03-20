@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
-ms.date: 01/31/18
-ms.openlocfilehash: 6249c45a1cd3a8acbb9770fc39da881d8da9057f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.date: 01/31/2018
+ms.openlocfilehash: 89e0294db3178cedd3b14aada0b505787b17c75e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230125"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671788"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
@@ -27,9 +27,9 @@ ms.locfileid: "50230125"
 
 每个逻辑应用均由[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)启动，并且只有一个触发器，该触发器可启动逻辑应用工作流并将任何数据作为该触发器的一部分进行传递。 某些连接器提供触发器，类型包括：
 
-* 轮询触发器：定期检查服务终结点以获取新数据。 如果存在新数据，触发器会创建并运行新的工作流实例（将数据作为输入）。
+* 轮询触发器：定期检查新数据的服务终结点。 如果存在新数据，触发器会创建并运行新的工作流实例（将数据作为输入）。
 
-* 推送触发器：侦听服务终结点上的数据并等到特定事件发生。 事件发生时触发器会立即触发，创建并运行新的工作流实例（将任何可用数据用作输入）。
+* 推送触发器：侦听服务终结点上的数据，并等待特定事件发生。 事件发生时触发器会立即触发，创建并运行新的工作流实例（将任何可用数据用作输入）。
 
 下面提供了几个常用触发器示例：
 
@@ -59,8 +59,8 @@ ms.locfileid: "50230125"
 * [为工作流运行设置长时间运行的操作](../logic-apps/logic-apps-create-api-app.md)
 * [使用 webhook 响应外部事件和操作](../logic-apps/logic-apps-create-api-app.md)
 * [利用对 HTTP 请求的同步响应调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)
-* [教程：在几分钟内使用逻辑应用和 Power BI 生成由 AI 提供支持的社交仪表板](https://aka.ms/logicappsdemo)
-* [视频：响应 Twilio SMS Webhook 并发送文本响应](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
+* [教程：在几分钟内使用逻辑应用和 Power BI 构建 AI 支持的社交仪表板](https://aka.ms/logicappsdemo)
+* [视频：响应 Twilio SMS webhook 并发送文本响应](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>控制流、错误处理和日志记录功能
 
@@ -70,7 +70,7 @@ ms.locfileid: "50230125"
 * [使用循环重复执行步骤或处理数组和集合中的项](../logic-apps/logic-apps-control-flow-loops.md)
 * [使用范围将操作组合在一起](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [工作流中的授权错误和异常处理](../logic-apps/logic-apps-exception-handling.md)
-* [用例：医疗保健公司如何将逻辑应用异常处理用于 HL7 FHIR 工作流](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [用例：医疗保健公司如何使用逻辑应用异常处理用于 HL7 FHIR 工作流](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [创建逻辑应用时启用监视和诊断日志记录](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
 
@@ -98,13 +98,13 @@ ms.locfileid: "50230125"
 * [从逻辑应用调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md)
 * [教程：使用 Azure Functions 触发逻辑应用](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
-* [教程：创建与 Azure 逻辑应用和 Microsoft 认知服务集成的函数以分析 Twitter 帖子人气](../azure-functions/functions-twitter-email.md)
-* [教程：通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [教程：创建与 Azure 逻辑应用集成的函数和 Microsoft 认知服务，以分析 Twitter 帖子人气](../azure-functions/functions-twitter-email.md)
+* [教程：IoT 远程监视和使用 Azure 逻辑应用通过连接 IoT 中心和邮箱的通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [博客：从逻辑应用调用 SOAP 终结点](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 ## <a name="end-to-end-scenarios"></a>端到端方案
 
-* [白皮书：端到端案例管理与 Azure 服务（如逻辑应用）的集成](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+* [白皮书：与 Azure 服务，如逻辑应用的端到端案例管理集成](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
 
 ## <a name="customer-stories"></a>客户案例
 

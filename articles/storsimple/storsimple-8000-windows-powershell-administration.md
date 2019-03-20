@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 449c65d0ed746664b75bf8775dda695f569b3eb0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228379"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003120"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 
@@ -47,7 +47,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 ## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>通过设备串行控制台连接到 Windows PowerShell for StorSimple
 
-可以[下载 PuTTY](http://www.putty.org/) 或类似的终端模拟软件来连接到 Windows PowerShell for StorSimple。 需要专门配置 PuTTY 才能访问 Microsoft Azure StorSimple 设备。 以下主题包含有关如何配置 PuTTy 并连接到设备的详细步骤。 此外还介绍了串行控制台中的各个菜单选项。
+可以[下载 PuTTY](https://www.putty.org/) 或类似的终端模拟软件来连接到 Windows PowerShell for StorSimple。 需要专门配置 PuTTY 才能访问 Microsoft Azure StorSimple 设备。 以下主题包含有关如何配置 PuTTy 并连接到设备的详细步骤。 此外还介绍了串行控制台中的各个菜单选项。
 
 ### <a name="putty-settings"></a>PuTTY 设置
 
@@ -110,8 +110,8 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
    * 应用更新
    * 安装修复程序
 
-    > [!NOTE]
-    > 如果忘记了设备管理员密码并且无法通过选项 1 或选项 2 进行连接，那么这是首选选项。
+     > [!NOTE]
+     > 如果忘记了设备管理员密码并且无法通过选项 1 或选项 2 进行连接，那么这是首选选项。
 
 4. **更改语言**：此选项用于更改 Windows PowerShell 界面上的显示语言。 支持的语言包括英语、日语、俄语、法语、韩语、西班牙语、意大利语、德语、中文和葡萄牙语（巴西）。
 
@@ -159,7 +159,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 在 Windows PowerShell for StorSimple 中，有关于 cmdlet 的帮助信息。 此帮助的在线最新版本也可用，可以用它来更新系统上的帮助信息。
 
-获取关于此界面的帮助信息与获取关于 Windows PowerShell 的帮助信息很相似，且大多数与帮助信息相关的 cmdlet 将正常工作。 可以在 TechNet 库中找到关于 Windows PowerShell 的在线帮助信息：[使用 Windows PowerShell 编写脚本](https://go.microsoft.com/fwlink/?LinkID=108518)。
+获取关于此界面的帮助信息与获取关于 Windows PowerShell 的帮助信息很相似，且大多数与帮助信息相关的 cmdlet 将正常工作。 TechNet 库中，可以找到有关 Windows PowerShell 帮助联机：[使用 Windows PowerShell 编写脚本](https://go.microsoft.com/fwlink/?LinkID=108518)。
 
 下面是关于此 Windows PowerShell 界面的帮助信息类型的简要说明，包括如何更新帮助信息。
 

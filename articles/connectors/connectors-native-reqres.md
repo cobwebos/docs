@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 58210db585befd7ce915d4579d4d0303eb15bff3
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: HT
+ms.openlocfilehash: 2479db2abcb578eb380655346582392770606b39
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27960555"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552174"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>请求和响应组件入门
 借助逻辑应用中的请求和响应组件，可以实时响应事件。
@@ -38,7 +38,7 @@ ms.locfileid: "27960555"
 
 下面是如何在逻辑应用设计器中设置 HTTP 请求的示例序列。
 
-1. 在逻辑应用中添加触发器“请求 - 收到 HTTP 请求时”。 可以选择为请求正文提供 JSON 架构（通过使用 [JSONSchema.net](http://jsonschema.net) 之类的工具）。 这允许设计器为 HTTP 请求中的属性生成令牌。
+1. 在逻辑应用中添加触发器“请求 - 收到 HTTP 请求时”。 可以选择为请求正文提供 JSON 架构（通过使用 [JSONSchema.net](https://jsonschema.net) 之类的工具）。 这允许设计器为 HTTP 请求中的属性生成令牌。
 2. 添加另一个操作，以便保存逻辑应用。
 3. 保存逻辑应用后，可以从请求卡获取 HTTP 请求 URL。
 4. 对该 URL 的 HTTP POST（可使用 [Postman](https://www.getpostman.com/) 之类的工具）触发逻辑应用。
@@ -68,14 +68,14 @@ HTTP 请求操作仅在用于由 HTTP 请求触发的工作流中时才有效。
 ## <a name="request-trigger"></a>请求触发器
 下面是此连接器支持的触发器的详细信息。 存在单个请求触发器。
 
-| 触发器 | 说明 |
+| 触发器 | 描述 |
 | --- | --- |
 | 请求 |在收到 HTTP 请求时发生 |
 
 ## <a name="response-action"></a>响应操作
 下面是此连接器支持的操作的详细信息。 存在只能在附带请求触发器时使用的单个响应操作。
 
-| 操作 | 说明 |
+| 操作 | 描述 |
 | --- | --- |
 | 响应 |向相关 HTTP 请求返回响应 |
 
@@ -85,7 +85,7 @@ HTTP 请求操作仅在用于由 HTTP 请求触发的工作流中时才有效。
 #### <a name="request-trigger"></a>请求触发器
 下面是来自传入 HTTP 请求的触发器的输入字段。
 
-| 显示名称 | 属性名称 | 说明 |
+| 显示名称 | 属性名称 | 描述 |
 | --- | --- | --- |
 | JSON 架构 |schema |HTTP 请求正文的 JSON 架构 |
 
@@ -95,7 +95,7 @@ HTTP 请求操作仅在用于由 HTTP 请求触发的工作流中时才有效。
 
 下面是请求的输出详细信息。
 
-| 属性名称 | 数据类型 | 说明 |
+| 属性名称 | 数据类型 | 描述 |
 | --- | --- | --- |
 | 标头 |对象 |请求标头 |
 | Body |对象 |请求对象 |
@@ -103,7 +103,7 @@ HTTP 请求操作仅在用于由 HTTP 请求触发的工作流中时才有效。
 #### <a name="response-action"></a>Response 操作
 下面是 HTTP 请求操作的输入字段。 * 表示它是必填字段。
 
-| 显示名称 | 属性名称 | 说明 |
+| 显示名称 | 属性名称 | 描述 |
 | --- | --- | --- |
 | 状态代码* |statusCode |HTTP 状态代码 |
 | 标头 |headers |要包含的任何响应标头的 JSON 对象 |

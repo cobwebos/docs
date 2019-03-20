@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3e5f6edf213838345c21598213b4fc2065e66335
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 5fb62c38bde98d946694790adb860240eaa59fa9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884131"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530171"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 URL 预生成实体
 URL 实体提取带域名或 IP 地址的 URL。 此实体已定型，因此不需要将包含 URL 的示例陈述添加到应用程序。 仅在 `en-us` 区域性中支持 URL 实体。 
@@ -29,7 +29,7 @@ URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
 
 ```json
 {
-  "query": "http://www.luis.ai is a great cognitive services example of artificial intelligence",
+  "query": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
   "topScoringIntent": {
     "intent": "None",
     "score": 0.781975448
@@ -42,7 +42,7 @@ URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
   ],
   "entities": [
     {
-      "entity": "http://www.luis.ai",
+      "entity": "https://www.luis.ai",
       "type": "builtin.url",
       "startIndex": 0,
       "endIndex": 17

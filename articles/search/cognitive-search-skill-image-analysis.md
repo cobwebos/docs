@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c70c3cc1818e85c03c78524d1e8571af6d686218
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 4fb14b49e573770aaef13d6b5d47c265337c408c
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429054"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568917"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
@@ -34,10 +34,10 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 参数区分大小写。
 
-| 参数名称     | 说明 |
+| 参数名称     | 描述 |
 |--------------------|-------------|
 | defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此参数，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认） <br/> zh - 简体中文|
-|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> categories - 根据认知服务[文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>Description - 用完整的英文句子描述图像内容。</li><li>Faces - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li> ImageType - 检测图像是剪贴画还是素描。</li><li>   Color - 确定主题色、主色以及图像是否为黑白。</li><li>Adult - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
+|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> categories - 根据认知服务[文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>Description - 用完整的英文句子描述图像内容。</li><li>Faces - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li> *ImageType* -检测图像是否为剪贴画或线条绘图。</li><li>  Color - 确定主题色、主色以及图像是否为黑白。</li><li>Adult - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
 | 详细信息   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>Celebrities - 识别在图像中检测到的名人。</li><li>Landmarks - 识别在图像中检测到的地标。</li></ul>
  |
 
@@ -110,16 +110,16 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
     "values": [
         {
             "recordId": "1",
-            "data": {                
-                "image":  {
-                               "data": "BASE64 ENCODED STRING OF A JPEG IMAGE",
-                               "width": 500,
-                               "height": 300,
-                               "originalWidth": 5000,  
-                               "originalHeight": 3000,
-                               "rotationFromOriginal": 90,
-                               "contentOffset": 500  
-                           }
+            "data": {
+                "image": {
+                    "data": "BASE64 ENCODED STRING OF A JPEG IMAGE",
+                    "width": 500,
+                    "height": 300,
+                    "originalWidth": 5000,
+                    "originalHeight": 3000,
+                    "rotationFromOriginal": 90,
+                    "contentOffset": 500
+                }
             }
         }
     ]
@@ -132,18 +132,18 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 ```json
 {
     "values": [
-      {
-        "recordId": "1",
+        {
+            "recordId": "1",
             "data": {
                 "categories": [
-           {
+                    {
                         "name": "abstract_",
                         "score": 0.00390625
                     },
                     {
-                "name": "people_",
+                        "name": "people_",
                         "score": 0.83984375,
-                "detail": {
+                        "detail": {
                             "celebrities": [
                                 {
                                     "name": "Satya Nadella",
@@ -214,7 +214,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
                     {
                         "age": 44,
                         "gender": "Male",
-                    "faceBoundingBox": {
+                        "faceBoundingBox": {
                             "left": 593,
                             "top": 160,
                             "width": 250,
@@ -236,8 +236,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
                     "clipArtType": 0,
                     "lineDrawingType": 0
                 }
-           }
-      }
+            }
+        }
     ]
 }
 ```
@@ -246,7 +246,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 ## <a name="error-cases"></a>错误案例
 在以下错误案例中，未提取任何元素。
 
-| 错误代码 | 说明 |
+| 错误代码 | 描述 |
 |------------|-------------|
 | NotSupportedLanguage | 不支持提供的语言。 |
 | InvalidImageUrl | 图片 URL 格式不正确或无法访问。|
