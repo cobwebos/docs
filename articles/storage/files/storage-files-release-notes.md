@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 2/12/2019
+ms.date: 3/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 2bbac21b9ac3e07cbb41ea8aa4cf93dcbd636d15
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181773"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118606"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,7 +25,8 @@ ms.locfileid: "56181773"
 
 | 里程碑 | 代理版本号 | 发行日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支持（建议的版本） |
+| 2019 年 3 月更新汇总- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019 年 3 月 7日日 | 支持（建议的版本） |
+| V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支持 |
 | 2019 年 1 月更新汇总 - [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 2019 年 1 月 14 日 | 支持 |
 | 2018 年 12 月更新汇总 - [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 2018 年 12 月 10 日 | 支持 |
 | 2018 年 12 月更新汇总 | 4.1.0.0 | 2018 年 12 月 4 日 | 支持 |
@@ -38,13 +39,23 @@ ms.locfileid: "56181773"
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-5100"></a>代理版本 5.1.0.0
+以下发行说明仅适用于 2019 年 3 月 7 日发布的 Azure 文件同步代理的版本 5.1.0.0。 这些说明是版本 5.0.2.0 列出的发行说明。
+
+此版本修复的问题列表：  
+- 文件可能无法进行同步错误 0x80c8031d (ECS_E_CONCURRENCY_CHECK_FAILED)，如果服务器上失败的更改枚举
+- 如果同步会话或文件收到错误 0x80072f78 (WININET_E_INVALID_SERVER_RESPONSE) 时，同步将立即重试该操作
+- 文件可能会失败，错误 0x80c80203 (ECS_E_SYNC_INVALID_STAGED_FILE) 同步
+- 重新调用文件时，可能会发生高内存使用率
+- 云分层遥测改进 
+
 ## <a name="agent-version-5020"></a>代理版本 5.0.2.0
 以下发行说明适用于 Azure 文件同步代理版本 5.0.2.0（2019 年 2 月 12 日发布）。
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题
 
 - 支持 Azure 政府云
-    - 我们增加了针对 Azure 政府云的预览版支持。 这需要将订阅加入允许列表，并从 Microsoft 下载特殊代理。 若要访问预览版，请将电子邮件直接发送至 [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)。
+  - 我们增加了针对 Azure 政府云的预览版支持。 这需要将订阅加入允许列表，并从 Microsoft 下载特殊代理。 若要访问预览版，请将电子邮件直接发送至 [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)。
 - 支持重复数据删除
     - Windows Server 2016 和 Windows Server 2019 现在完全支持重复数据删除并启用了云分层功能。 在启用了云分层的卷上启用重复数据删除以后，即可在本地缓存更多的文件，不需预配更多的存储。
 - 支持脱机数据传输（例如，通过 Data Box 进行的脱机数据传输）

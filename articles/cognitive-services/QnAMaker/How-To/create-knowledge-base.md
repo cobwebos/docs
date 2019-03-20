@@ -1,26 +1,26 @@
 ---
 title: 创建知识库
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: 使用 QnA Maker 门户，添加使用聊天创建知识库。 这使得应用程序具有吸引力。 将预先填充的顶部聊天集添加到知识库中作为你的机器人的聊天内容的起点，并节省从头开始编写它们的时间和成本。
+titleSuffix: QnA Maker API - Azure Cognitive Services
+description: 使用 QnA Maker API 服务门户中，若要添加使用 chit 聊天创建知识库。 这使得应用程序具有吸引力。 将预先填充的顶部聊天集添加到知识库中作为你的机器人的聊天内容的起点，并节省从头开始编写它们的时间和成本。
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 03/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 4ba744c3d8cc3a785c04bbbb1b476a857859e244
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: b4553a392795bb8578f24848ccacc870b654bce9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876841"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116226"
 ---
-# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>快速入门：使用 QnA Maker 门户创建知识库
+# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>快速入门：创建使用 QnA Maker API 服务门户的知识库
 
-使用 QnA Maker，在创建知识库时可以轻松添加现有数据源。 可以基于以下文档类型创建新的 QnA Maker 知识库：
+QnA Maker API 服务门户轻松创建一个知识库时添加现有数据源。 可以基于以下文档类型创建新的 QnA Maker 知识库：
 
 <!-- added for scanability -->
 * 常见问题解答页面
@@ -52,7 +52,7 @@ ms.locfileid: "55876841"
 
 1. 向知识库中添加**聊天内容**。 通过选择 3 个性格之一，选择为你的机器人添加聊天内容支持。 
 
-    ![向 KB 添加聊天内容 ](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+    ![向 KB 添加聊天内容](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
 
 1. 选择“创建知识库”。
 

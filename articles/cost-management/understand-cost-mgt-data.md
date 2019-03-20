@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/07/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 40c08f87a1711ae57ceb8b288851686d1e2ad391
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447457"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993928"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -62,8 +62,9 @@ ms.locfileid: "56447457"
 | **支持计划** | Azure 政府版专业直接支持 | MS-AZR-USGOV-0042P |
 | **支持计划** | Azure 政府版开发人员支持 | MS-AZR-USGOV-0043P |
 
-对于使用即用即付、MSDN 和 Visual Studio 产品/服务类别的客户，从 2018 年 2 月 10 日起可在“成本管理”中使用数据。
+对于使用即用即付、MSDN 和 Visual Studio 产品/服务类别的客户，从 2018 年 2 月 10 日起可在“成本管理”中使用数据。 若要访问的数据，你在 2018 年 10 月 02 日之前的订阅，可以使用[Azure 帐户中心](https://account.azure.com/subscriptions)若要下载你的使用情况详细信息的 CSV 文件中也可以使用[使用情况详细信息 API](/rest/api/consumption/usagedetails)。
 
+## <a name="determine-your-offer-type"></a>确定你的产品/服务类型
 如果未看到订阅数据并想要确定你的订阅是否属于受支持的套餐，可以验证你的订阅是否受支持。 若要验证 Azure 订阅是否受支持，请登录到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“所有服务”。 在服务列表中选择“订阅”。 在订阅列表菜单中，单击要验证的订阅。 该订阅将显示在“概述”选项卡上，在其中可以看到“套餐”和“套餐 ID”。 下图显示了一个示例。
 
 ![“订阅概述”选项卡的示例，其中显示了“套餐”和“套餐 ID”](./media/understand-cost-mgt-data/offer-and-offer-id.png)
@@ -94,7 +95,7 @@ ms.locfileid: "56447457"
 
 ## <a name="rated-usage-data-refresh-schedule"></a>用量计费数据刷新计划
 
-成本和用量数据在 Azure 门户上的“成本管理 + 计费”以及[支持 API](https://aka.ms/costmgmt/docs) 中提供。 查看成本时，请记住以下几点：
+成本和用量数据在 Azure 门户上的“成本管理 + 计费”以及[支持 API](index.yml) 中提供。 查看成本时，请记住以下几点：
 
 - 当前计费周期的估算费用每天更新六次。
 - 由于用量会增大，当前计费周期的估算费用可能会更改。

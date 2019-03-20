@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: da6be839f5e7c1bfd885015c9b0206945feb77d1
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: d90f23f52ca4c0cce3d853114acf673aa085d3c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452779"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889772"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 
@@ -31,7 +31,7 @@ ms.locfileid: "54452779"
 > [!IMPORTANT]
 > 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，请通过 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)花费几分钟创建免费试用帐户。
 
-本指南介绍如何借助 Azure 通知中心，直接从 [Node.js](http://nodejs.org) 应用程序发送推送通知。
+本指南介绍如何借助 Azure 通知中心，直接从 [Node.js](https://nodejs.org) 应用程序发送推送通知。
 
 涵盖的方案包括在下列平台将推送通知发送到应用程序：
 
@@ -60,7 +60,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 4. 在该文件夹中，找到 **azure** 包，其中包含访问通知中心所需的库。
 
 > [!NOTE]
-> 可以在官方 [NPM 博客](http://blog.npmjs.org/post/85484771375/how-to-install-npm)中了解有关安装 NPM 的详细信息。
+> 可以在官方 [NPM 博客](https://blog.npmjs.org/post/85484771375/how-to-install-npm)中了解有关安装 NPM 的详细信息。
 
 ### <a name="import-the-module"></a>导入模块
 
@@ -107,7 +107,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 - **Payload** — 消息的 JSON 或原始字符串的有效负载。
 - **Callback** — 回调函数。
 
-有关有效负载格式的详细信息，请参阅 [Implementing GCM Server](http://developer.android.com/google/gcm/server.html#payload)（实现 GCM 服务器）文档中的 **Payload**（有效负载）部分。
+有关有效负载格式的详细信息，请参阅 [Implementing GCM Server](https://developer.android.com/google/gcm/server.html#payload)（实现 GCM 服务器）文档中的 **Payload**（有效负载）部分。
 
 以下代码使用由 `NotificationHubService` 公开的 `GcmService` 实例将推送通知发送到所有已注册的客户端。
 
@@ -130,9 +130,9 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 - **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
 - **Payload** — 消息的 JSON 或字符串的有效负载。
-- **Callback** — 回调函数。
+- **Callback** - 回调函数。
 
-有关有效负载格式的详细信息，请参阅 [Local and Push Notification Programming Guide](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)（本地通知和推送通知编程指南）文档中的 **Notification Payload**（通知有效负载）部分。
+有关有效负载格式的详细信息，请参阅 [Local and Push Notification Programming Guide](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)（本地通知和推送通知编程指南）文档中的 **Notification Payload**（通知有效负载）部分。
 
 以下代码使用由 `NotificationHubService` 公开的 `ApnsService` 实例将警报消息发送给所有客户端：
 
@@ -199,9 +199,9 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 使用上述示例代码段，可以轻松地构建服务基础结构，将推送通知传递到各种设备。 了解使用通知中心和 node.js 的基础知识之后，请参考下列链接以了解有关如何进一步扩展这些功能的详细信息。
 
 - 请参阅 MSDN 参考：[Azure 通知中心](https://msdn.microsoft.com/library/azure/jj927170.aspx)。
-- 请访问 GitHub 上的 [Azure SDK for Node] 存储库以获取更多示例和实施详细信息。
+- 请访问 GitHub 上的 [用于 Node 的 Azure SDK] 存储库以获取更多示例和实施详细信息。
 
-[Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
+[用于 Node 的 Azure SDK]: https://github.com/WindowsAzure/azure-sdk-for-node
 [Next Steps]: #nextsteps
 [What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
 [Create a Service Namespace]: #create-a-service-namespace
@@ -221,9 +221,9 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
-[SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+[Azure Service Bus Notification Hubs]: https://msdn.microsoft.com/library/windowsazure/jj927170.aspx
+[SqlFilter]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: c456f8f7f08fdbd0020bfc49ceeec262fa0ac773
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 14c9a453913a9a8080c840df3f23751487b86c34
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458174"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006151"
 ---
 # <a name="ilogger"></a>ILogger
 
@@ -219,6 +219,26 @@ services.AddApplicationInsightsTelemetry("ikeyhere");
 在此示例中，`ApplicationInsightsLoggerProvider` 使用的配置与常规应用程序监视使用的配置相同。 因此，`ILogger` 跟踪和其他遥测（Requests、Dependencies 等）将运行同一组 `TelemetryInitializers`、`TelemetryProcessors` 和 `TelemetryChannel`。 它们将以相同方式关联和采样/不采样。
 
 但是，此行为有一个例外。 记录来自 `Program.cs` 或 `Startup.cs` 自身的内容时，`TelemetryConfiguration` 未完全设置，因此，这些日志不会拥有默认配置。 但是，其他各个日志（例如，来自 Controllers、Models 等的日志）会共享该配置。
+
+## <a name="control-logging-level"></a>控制日志记录级别
+
+除了筛选日志，如上面的示例中所示的代码，也可能是控制捕获的 Application Insights 日志记录级别，通过修改`appsettings.json`。 [日志记录基础文档 ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering)演示如何实现此目的。 专门为 Application Insights 提供程序别名的名称是`ApplicationInsights`中所示，下面的示例将配置`ApplicationInsights`捕获日志的`Warning`及更高版本所有类别。
+
+```json
+{
+  "Logging": {
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    },
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

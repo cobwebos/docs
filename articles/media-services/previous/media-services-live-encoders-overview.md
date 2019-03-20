@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 50e1d3c894455f31513f7bcd1bff42a9329b329a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 360b822bc78d353e91612459a70334a0bf3a56e6
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992868"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189625"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>如何在使用 Azure 媒体服务时配置本地编码器以创建多比特率流
 本主题列出的本地实时编码器可用于捕获实时事件，并将单比特率实时流发送到 AMS 通道（已启用实时编码）以供进一步处理。 本主题还列出了演示如何配置所列编码器的教程链接。
@@ -28,19 +28,19 @@ ms.locfileid: "55992868"
 > 通过 RTMP 流式处理时，检查防火墙和/或代理设置，确认出站 TCP 端口 1935 和 1936 已打开。
 
 ## <a name="flash-media-live-encoder"></a>Flash 媒体实时编码器
-有关如何配置 [Flash 媒体实时编码器](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) 以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 FMLE](media-services-configure-fmle-live-encoder.md)。
+有关如何配置 [Flash 媒体实时编码器](https://www.adobe.com/products/flash-media-encoder.html) (FMLE) 以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 FMLE](media-services-configure-fmle-live-encoder.md)。
 
 ## <a name="haivision-kb-encoder"></a>Haivision KB 编码器
 有关如何配置 [Haivision KB 编码器](https://www.haivision.com/products/kb-series/)以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 Haivision KB 编码器](media-services-configure-kb-live-encoder.md)。
 
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
-有关如何配置 [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) 编码器以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 Wirecast](media-services-configure-wirecast-live-encoder.md)。
+有关如何配置 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 编码器以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 Wirecast](media-services-configure-wirecast-live-encoder.md)。
 
 ## <a name="newtek-tricaster"></a>NewTek TriCaster
 有关如何配置 [Tricaster](http://newtek.com/products/tricaster-40.html) 编码器以将单比特率实时流发送到 AMS 通道的信息，请参阅[配置 Tricaster](media-services-configure-tricaster-live-encoder.md)。
 
 ## <a name="elemental-live"></a>Elemental Live
-有关详细信息，请参阅 [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live)。
+有关详细信息，请参阅 [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live)。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

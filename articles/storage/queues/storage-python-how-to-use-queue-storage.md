@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/14/2018
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: ea508c04660df4ba103a2a0da39b7cd914cd629c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: afa0b6d4f87c4325f116463242c15df9d9b6e7c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471243"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006427"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>如何通过 Python 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "55471243"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概述
-本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Python 编写并使用[用于 Python 的 Microsoft Azure 存储 SDK]。 介绍的方案包括**插入**、**扫视**、**获取**和**删除**队列消息以及**创建和删除队列**。 有关队列的详细信息，请参阅 [后续步骤] 部分。
+本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Python 编写并使用[Microsoft Azure Storage SDK for Python]。 介绍的方案包括**插入**、**扫视**、**获取**和**删除**队列消息以及**创建和删除队列**。 有关队列的详细信息，请参阅 [后续步骤] 部分。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -84,7 +84,7 @@ for message in messages:
 ```
 
 ## <a name="how-to-dequeue-messages"></a>如何：取消消息的排队
-代码分两步从队列中删除消息。 在调用 **get\_messages** 时，默认情况下会获得队列中的下一条消息。 对于从此队列读取消息的任何其他代码，从 **get\_messages** 返回的消息将变得不可见。 默认情况下，此消息将持续 30 秒不可见。 若要从队列中删除消息，还必须调用 **delete\_message**。 此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message**。
+代码分两步从队列中删除消息。 在调用 **get\_messages** 时，默认情况下会获得队列中的下一条消息。 对于从此队列读取消息的任何其他代码，从 get\_messages 返回的消息将变得不可见。 默认情况下，此消息将持续 30 秒不可见。 若要从队列中删除消息，还必须调用 **delete\_message**。 此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message**。
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -133,5 +133,5 @@ queue_service.delete_queue('taskqueue')
 * [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
 * [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355)
 
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[用于 Python 的 Microsoft Azure 存储 SDK]: https://github.com/Azure/azure-storage-python
+[Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
+[Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
