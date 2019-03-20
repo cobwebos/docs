@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c7fe0d6f8e03501cca7a8b98f95286b6a21c0476
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227185"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "58114505"
 ---
 ## <a name="multi-and-single-instance-vms"></a>多实例和单实例 VM
 对于在 Azure 上运行的许多客户而言，在 VM 进行计划内维护时可以计划是非常重要的，因为在维护期间会停机约 15 分钟。 可以在预配的 VM 接收计划内维护时，使用可用性集帮助控制。
@@ -21,7 +21,7 @@ ms.locfileid: "50227185"
 ## <a name="for-multi-instance-configuration"></a>对于多实例配置
 可以通过将 VM 从可用性集删除，以选择计划内维护影响部署在可用性集设置中的 VM 的时间。
 
-1. 在计划内维护七天前，向多实例配置中的 VM 发送电子邮件。 受影响的多实例 VM 的订阅 ID 和名称将包括在电子邮件正文中。
+1. 在计划内维护七天前，向多实例配置中的 VM 发送电子邮件。 受影响的多实例 VM 的订阅 ID 和名称会包括在电子邮件正文中。
 2. 在这七天内，可以通过从可用性集删除该区域中的多实例 VM，以选择实例的更新时间。 此设置中的更改导致重新启动，因为虚拟机正在从一部以维护为目标的实体主机，移到另一部不是以维护为目标的实体主机。
 3. 可在 Azure 门户中从可用性集删除 VM。
 
@@ -41,7 +41,7 @@ ms.locfileid: "50227185"
    >以后，可以通过选择一个列出的可用性集将 VM 重新配置为多实例。
 
 4. 从可用性集中删除的 VM 将移到单实例主机，并且不在可用性集设置的计划内维护期间更新。
-5. 可用性集 VM 更新完成（根据原始电子邮件中所述的计划）之后，应该将 VM 添加回到其可用性集。 加入可用性集会将 VM 重新配置为多实例，导致重新启动。 通常，跨整个 Azure 环境的所有多实例更新完成之后，将轮到单实例维护。
+5. 可用性集 VM 更新完成（根据原始电子邮件中所述的计划）之后，应该将 VM 添加回到其可用性集。 加入可用性集会将 VM 重新配置为多实例，导致重新启动。 通常，跨整个 Azure 环境的所有多实例更新完成之后，单实例维护开始进行。
 
 也可以使用 Azure PowerShell 从可用性集中删除 VM：
 

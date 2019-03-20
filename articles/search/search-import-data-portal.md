@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ee1b2a40dbcbd53a758ac71f30401778ef07e872
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.openlocfilehash: fcb1e4f32608a1c83b653984dfa066da38e7c451
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229751"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960746"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Azure 搜索的导入数据向导
 
@@ -77,15 +77,17 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 * [Azure 表存储](search-howto-indexing-azure-tables.md)（不支持[认知搜索](cognitive-search-concept-intro.md)管道）
 
-平展数据集是必需的输入。 只能从单个表、数据库视图或等效的数据结构导入。 在运行向导之前，应创建此数据结构。
+平展数据集是必需的输入。 只能从单个表、数据库视图或等效的数据结构导入。 
 
-|  选项 | Description |
+运行该向导之前，应创建此数据结构，它必须包含的内容。 不会运行**导入数据**空的数据源向导。
+
+|  选项 | 描述 |
 | ---------- | ----------- |
 | **现有数据源** |如果已在搜索服务中定义索引器，则可以为另一个导入选择现有数据源定义。 在 Azure 搜索中，索引器仅使用数据源对象。 可以以编程方式或通过“导入数据”向导创建数据源对象。|
 | **示例**| Azure 搜索承载免费的公共 Azure SQL 数据库，可用于了解 Azure 搜索中的导入和查询请求。 请参阅[快速入门：使用门户工具进行导入、编制索引和查询](search-get-started-portal.md)用于演练。 |
 | **Azure SQL 数据库** |可以在此页上或通过 ADO.NET 连接字符串，指定服务名称、具有读取权限的数据库用户的凭据和数据库名称。 选择要查看或自定义属性的连接字符串选项。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。 |
 | **Azure VM 上的 SQL Server** |指定完全限定的服务名、用户 ID 和密码以及数据库作为连接字符串。 若要使用此数据源，以前必须已在加密连接的本地存储中安装了证书。 如需说明，请参阅[与 Azure 搜索的 SQL VM 连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。 |
-| **Azure Cosmos DB** |要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 可以定义查询以平展或筛选行集，或者检测已更改的文档以便进行后续数据刷新操作。 |
+| **Cosmos DB** |要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 可以定义查询以平展或筛选行集，或将查询留空。 在此向导不需要查询。|
 | **Azure Blob 存储** |要求包括存储帐户和容器。 （可选）如果 blob 名称遵循用于分组的虚拟命名约定，可以将名称的虚拟目录部分指定为容器下的某个文件夹。 有关详细信息，请参阅[为 Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md)。 |
 | **Azure 表存储** |要求包括存储帐户和表名。 （可选）可以指定一个查询来检索表的子集。 有关详细信息，请参阅[为表存储编制索引](search-howto-indexing-azure-tables.md)。 |
 

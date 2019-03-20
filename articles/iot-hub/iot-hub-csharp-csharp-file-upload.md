@@ -1,19 +1,20 @@
 ---
 title: 使用 .NET 将文件从设备上传到 Azure IoT 中心 | Microsoft Docs
 description: 如何使用用于 .NET 的 Azure IoT 设备 SDK 从设备将文件上传到云中。 上传的文件存储在 Azure 存储 Blob 容器中。
-author: fsautomata
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
-ms.author: elioda
-ms.openlocfilehash: 25ec3a158d1eca77a7ca622af9b249789ef3b5e2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.author: robin.shahan
+ms.openlocfilehash: d661f8834aec77957e0fd2713cde5da9a48903fd
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259320"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010560"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>通过 .NET 使用 IoT 中心将文件从设备上传到云
 
@@ -36,7 +37,7 @@ ms.locfileid: "51259320"
 
 在本教程结束时，会运行 2 个 .NET 控制台应用：
 
-* **SimulatedDevice**，这是[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程中创建的应用的修改版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
+* **SimulatedDevice**， [使用 IoT 中心发送云到设备消息](iot-hub-csharp-csharp-c2d.md) 教程中创建的应用的修改版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
 
 * **ReadFileUploadNotification**，它可以接收来自 IoT 中心的文件上传通知。
 
@@ -85,7 +86,7 @@ ms.locfileid: "51259320"
     }
     ```
 
-    `UploadToBlobAsync` 方法获取要上载的文件的文件名与流源，并处理上载到存储的任务。 控制台应用会显示上传文件所需的时间。
+    `UploadToBlobAsync` 方法获取要上传的文件的文件名与流源，并处理上传到存储的任务。 控制台应用会显示上传文件所需的时间。
 
 1. 在 **Main** 方法中的 `Console.ReadLine()` 行前面添加以下方法：
 
@@ -106,7 +107,7 @@ ms.locfileid: "51259320"
 
 2. 在“解决方案资源管理器”中，右键单击 **ReadFileUploadNotification** 项目，并单击“管理 NuGet 包...”。
 
-3. 在“NuGet 包管理器”窗口中，搜索“Microsoft.Azure.Devices”，单击“安装”并接受使用条款。
+3. 在“NuGet 包管理器”窗口中，搜索“Microsoft.Azure.Devices”，并单击“安装”并接受使用条款。
 
     此操作会下载、安装 [Azure IoT 服务 SDK NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Devices/)，并在 **ReadFileUploadNotification** 项目中添加对它的引用。
 

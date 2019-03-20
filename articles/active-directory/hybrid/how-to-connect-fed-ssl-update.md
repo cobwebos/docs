@@ -16,12 +16,12 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c83fe4655b3b3d4de04be74c0f3ced1ddac5ec2b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 39ac0e9cf11a0c6c212c4beadb6635ad2b6b056d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185547"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734704"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书
 
@@ -36,7 +36,7 @@ ms.locfileid: "56185547"
 >[!NOTE]
 >若要详细了解 AD FS 所使用的证书，请参阅[了解 AD FS 所使用的证书](https://technet.microsoft.com/library/cc730660.aspx)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **AD FS 场**：确保 AD FS 场基于 Windows Server 2012 R2 或更高版本。
 * **Azure AD Connect**：确保 Azure AD Connect 的版本为 1.1.553.0 或更高版本。 将使用任务“更新 AD FS SSL 证书”。

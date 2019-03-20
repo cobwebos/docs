@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 02/13/2019
-ms.openlocfilehash: 59eb0b842392faa2adfcd99b028f1e283a7e8db7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.date: 02/23/2019
+ms.openlocfilehash: db91e67254e9927caba68a84b38a1ee94da8d3ab
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243823"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750117"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL 数据库服务层
 
@@ -42,7 +42,7 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 - 托管实例中的存储大小必须指定为 32 GB 的倍数。
 - 可以选择介于 10 GB 与受支持最大值之间的任何单一数据库大小
   - 对于标准或常规用途服务层中的存储，按 10 GB 增量增减大小
-  - 对于高级或关键业务服务层中的存储，按 250 GB 增量增减大小
+  - 对于高级或业务关键服务层中的存储，按 250 GB 增量增减大小
 - 在“常规用途”服务层中，`tempdb` 使用附加的 SSD，此存储成本包含在 vCore 价格中。
 - 在“业务关键”服务层中，`tempdb` 与 MDF 和 LDF 文件共享附加的 SSD，tempDB 存储成本已包含在 vCore 价格中。
 

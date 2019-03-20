@@ -7,22 +7,22 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: danlep
-ms.openlocfilehash: 3f058a68057d6b84cbbb2dfdb08ea8c2cb12b0b9
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
-ms.translationtype: HT
+ms.openlocfilehash: 8fc364eac619c2f23ad2db1051a9b3ffa1bd38d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322084"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138076"
 ---
 # <a name="azure-container-registry-skus"></a>Azure 容器注册表 SKU
 
 Azure 容器注册表 (ACR) 分为多个服务层（称为“SKU”）。 这些 SKU 提供可预测的定价和多个选项，用来适应你在 Azure 中的专用 Docker 注册表的容量和使用模式。
 
-| SKU | 托管 | Description |
+| SKU | 托管 | 描述 |
 | --- | :-------: | ----------- |
 | **基本** | 是 | 供开发者了解 Azure 容器注册表的入口点（已优化过成本）。 基本注册表的编程功能（Azure Active Directory 身份验证集成、映像删除和 Webhook）与标准注册表和高级注册表相同。 但其附带的存储和映像吞吐量最适合使用较少的场景。 |
 | **标准** | 是 | 标准注册表的功能与基本注册表相同。不同之处在于，前者附带更多的存储和映像吞吐量。 标准注册表应能够满足大部分生产方案的需求。 |
-| **高级** | 是 | 高级注册表附带的存储和并发操作数最多，支持大容量方案。 除增加了映像吞吐容量之外，高级注册表还增添了其他功能，例如[异地复制][container-registry-geo-replication]可用于跨多个区域管理一个注册表，以及[内容信任（预览版）](container-registry-content-trust.md)可用于映像标记签名。 |
+| **高级** | 是 | 高级注册表附带的存储和并发操作数最多，支持大容量方案。 除了更高版本的映像吞吐量，高级注册表还增添功能，包括[异地复制][ container-registry-geo-replication]用于跨多个区域管理单个注册表[内容信任 （预览版）](container-registry-content-trust.md)对于图像标记签名，并[防火墙和虚拟网络 （预览版）](container-registry-vnet.md)来限制对注册表的访问。 |
 | 经典<sup>1</sup> | 否 | 此 SKU 在 Azure 中启用了初始版 Azure 容器注册表服务。 经典注册表由 Azure 在订阅中创建的存储帐户提供支持，这会限制 ACR 提供更高级功能，如增加吞吐量和异地复制。 |
 
 <sup>1</sup> 经典 SKU 将在 **2019 年 3 月** **弃用**。 请对所有新的容器注册表使用基本、标准或高级 SKU。

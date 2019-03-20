@@ -8,22 +8,18 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d771f03f9f71151ef25140148d4dd4daf3d46ec
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 3e303ce2b6f28500406bacf5b66d26f9c78ba46d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443407"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57783434"
 ---
 **出站数据传输**：[出站数据传输](https://azure.microsoft.com/pricing/details/bandwidth/)（传出 Azure 数据中心的数据）会产生带宽使用费。
 
-**事务**：会根据你对标准托管磁盘执行的事务数向你收费。 Azure 对标准 HDD 的每 100,000 个事务收费 0.0036 美元。 事务包括对存储区的读操作和写操作。
+**事务**：会根据你对标准托管磁盘执行的事务数向你收费。
 
-标准 SSD 使用大小为 256 KB 的 IO 单位。 如果要传输的数据小于 256 KB，该数据会被视为 1 个 I/O 单位。 更大的 I/O 大小被视为多个 256 KB 大小的 I/O。 例如，1,100 KB I/O 会被视为 5 个 I/O 单位。
-
-高级托管磁盘没有事务费用。
-
-有关托管磁盘的详细定价信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
+有关托管磁盘，包括事务成本的定价详细信息请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 
 ### <a name="ultra-ssd-vm-reservation-fee"></a>超级 SSD VM 预留费用
 

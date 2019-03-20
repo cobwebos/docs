@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 6de50c5031db59176bdf17ecc69b934559220f6a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108445"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433648"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的硬件组件
 
@@ -67,10 +67,10 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 | 组件 | # 存在 | 插件模块？ | 更换过程 |
 |:--- |:--- |:--- |:--- |
-| 底盘 |1 |否 |[更换 StorSimple 设备上的底盘](storsimple-8000-chassis-replacement.md) |
-| 主控制器 |#N/A |是 |[更换 StorSimple 设备上的控制器模块](storsimple-8000-controller-replacement.md) |
-| 764W 电源和散热模块 (PCM) |#N/A |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-8000-power-cooling-module-replacement.md) |
-| 备用电池 |#N/A |是 |[更换 StorSimple 设备上的备用电池模块](storsimple-8000-battery-replacement.md) |
+| 底盘 |第 |否 |[更换 StorSimple 设备上的底盘](storsimple-8000-chassis-replacement.md) |
+| 主控制器 |2 |是 |[更换 StorSimple 设备上的控制器模块](storsimple-8000-controller-replacement.md) |
+| 764W 电源和散热模块 (PCM) |2 |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-8000-power-cooling-module-replacement.md) |
+| 备用电池 |2 |是 |[更换 StorSimple 设备上的备用电池模块](storsimple-8000-battery-replacement.md) |
 | 磁盘驱动器 |12 |是 |[更换 StorSimple 设备上的磁盘驱动器](storsimple-8000-disk-drive-replacement.md) |
 
 **表 1** 主机箱中的硬件组件
@@ -79,20 +79,20 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 | 组件 | # 存在 | 插件模块？ | 更换过程 |
 |:--- |:--- |:--- |:--- |
-| 底盘 |1 |否 |[更换 StorSimple 设备上的底盘](storsimple-8000-chassis-replacement.md) |
-| EBOD 控制器 |#N/A |是 |[更换 StorSimple 设备上的 EBOD 控制器](storsimple-8000-ebod-controller-replacement.md) |
-| 580W 电源和散热模块 (PCM) |#N/A |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-8000-power-cooling-module-replacement.md) |
+| 底盘 |第 |否 |[更换 StorSimple 设备上的底盘](storsimple-8000-chassis-replacement.md) |
+| EBOD 控制器 |2 |是 |[更换 StorSimple 设备上的 EBOD 控制器](storsimple-8000-ebod-controller-replacement.md) |
+| 580W 电源和散热模块 (PCM) |2 |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-8000-power-cooling-module-replacement.md) |
 | 磁盘驱动器 |12 |是 |[更换 StorSimple 设备上的磁盘驱动器](storsimple-8000-disk-drive-replacement.md) |
 
 **表 2** EBOD 机箱中的硬件组件
 
 以下正面图和背面图突出显示了设备上的插件模块。 在需要更换插件模块时，这些图可用于确定各种插件模块的位置。 EBOD 机箱和主机箱的正面图显示磁盘驱动器，背面图显示插件模块。
 
-![带有磁盘驱动器的设备前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
+![具有磁盘驱动器的设备的前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
 
 **图 1** 设备的前面
 
-| 标签 | 说明 |
+| Label | 描述 |
 |:--- |:--- |
 | 0 - 11 |磁盘驱动器（总数为 12） |
 
@@ -102,10 +102,10 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 **图 2** 主机箱的背面
 
-| 标签 | 说明 |
+| Label | 描述 |
 |:--- |:--- |
-| 1 |PCM 0 |
-| #N/A |PCM 1 |
+| 第 |PCM 0 |
+| 2 |PCM 1 |
 | 3 |控制器 0 |
 | 4 |控制器 1 |
 
@@ -113,10 +113,10 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 **图 3** EBOD 机箱的背面
 
-| 标签 | 说明 |
+| Label | 描述 |
 |:--- |:--- |
-| 1 |PCM 0 |
-| #N/A |PCM 1 |
+| 第 |PCM 0 |
+| 2 |PCM 1 |
 | 3 |EBOD 控制器 0 |
 | 4 |EBOD 控制器 1 |
 

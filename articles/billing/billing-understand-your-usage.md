@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
-ms.openlocfilehash: 88518bee879d01966813fc89e8095d2237476a15
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: a143fc6d9dbd78ae365f943a00ac9f8492d5e51c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901303"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897140"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>了解 Microsoft Azure 详细使用费条款 
 
@@ -40,7 +40,7 @@ ms.locfileid: "54901303"
 
 详细使用情况 CSV 文件的顶部显示了你在这个月的计费周期期间使用的服务。 下表列出了此部份中显示的条款和说明。
 
-| 术语 | 说明 |
+| 术语 | 描述 |
 | --- | --- |
 |计费周期 |使用测定仪时的计费周期 |
 |测定仪类别 |标识该次使用的最上层服务 |
@@ -63,7 +63,7 @@ ms.locfileid: "54901303"
 
 该 CSV 文件的“每日使用情况”部分显示影响计费费率的使用详细信息。 下表列出了此部份中显示的条款和说明。
 
-| 术语 | 说明 |
+| 术语 | 描述 |
 | --- | --- |
 |使用日期 |使用测定仪时的日期 |
 |测定仪类别 |标识该次使用所属的最上层服务 |
@@ -90,4 +90,4 @@ ms.locfileid: "54901303"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

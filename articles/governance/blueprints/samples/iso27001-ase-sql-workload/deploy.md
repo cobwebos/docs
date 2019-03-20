@@ -8,12 +8,12 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 3130616a4373f29765e47308c379320230641322
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
-ms.translationtype: HT
+ms.openlocfilehash: 80c98170fc136c20d8489cec5d145f96e207bc9f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57994191"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201902"
 ---
 # <a name="deploy-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>部署 Azure 蓝图 ISO 27001 应用服务环境 / SQL 数据库工作负荷蓝图示例
 
@@ -105,7 +105,7 @@ ms.locfileid: "57994191"
 
      在本部分中定义的参数不适用于在其下定义的项目。 这些参数是[动态参数](../../concepts/parameters.md#dynamic-parameters)由于蓝图赋值的过程定义。 有关完整列表或项目参数和及其说明，请参阅[项目参数表](#artifact-parameters-table)。
 
-1. 一旦输入所有参数后，选择**分配**页的底部。
+1. 一旦输入所有参数后，选择**分配**页的底部。 创建蓝图分配和项目部署开始。 部署需要约一小时。 若要检查部署的状态，请打开蓝图分配。
 
 > [!WARNING]
 > Azure 蓝图服务和内置蓝图示例均**免费**。 Azure 资源都[按产品定价](https://azure.microsoft.com/pricing/)。 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估计运行此蓝图示例部署的资源的成本。
@@ -157,10 +157,10 @@ ms.locfileid: "57994191"
 > [ISO 27001 应用服务环境 / SQL 数据库工作负荷蓝图-概述](./index.md)
 > [ISO 27001 应用服务环境 / SQL 数据库工作负荷蓝图-控件映射](./control-mapping.md)
 
-添加有关蓝图和如何使用这些文章：
+有关蓝图和如何使用这些蓝图的更多文章：
 
-- 了解如何[蓝图生命周期](../../concepts/lifecycle.md)。
+- 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。
-- 了解如何自定义[蓝图先后顺序](../../concepts/sequencing-order.md)。
-- 了解如何使利用[蓝图资源锁定](../../concepts/resource-locking.md)。
+- 了解如何自定义[蓝图排序顺序](../../concepts/sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](../../concepts/resource-locking.md)。
 - 了解如何[更新现有分配](../../how-to/update-existing-assignments.md)。

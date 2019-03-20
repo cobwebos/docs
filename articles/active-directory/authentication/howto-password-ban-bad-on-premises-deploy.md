@@ -1,6 +1,6 @@
 ---
 title: 部署 Azure AD 密码保护预览版
-description: 部署 Azure AD 密码保护预览版以禁止错误的本地密码
+description: 将 Azure AD 密码保护预览版，若要禁止错误密码的本地部署
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,184 +11,185 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8d39b614c373c63cf1405c5db0f64581c481d1f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 832f29d16e5976493da56b304c3de0288b83c9b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417189"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848739"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>预览版：部署 Azure AD 密码保护
 
 |     |
 | --- |
-| Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| Azure Active Directory (Azure AD) 密码保护是 Azure AD 的公共预览版功能。 有关预览版的详细信息，请参阅[Supplemental Terms of Use 针对 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-了解[如何为 Windows Server Active Directory 实施 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)后，下一步是规划和执行部署。
+现在，你已了解[如何强制执行 Windows Server Active directory 的 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)下, 一步是规划和执行您的部署。
 
 ## <a name="deployment-strategy"></a>部署策略
 
-Microsoft 建议在审核模式下开始任何部署。 审核模式是默认的初始设置，在其中可以继续设置密码，如果阻止设置密码，会在事件日志中创建条目。 在审核模式下完全部署代理服务器和 DC 代理之后，应执行定期监视，以确定在实施密码策略后，对用户和环境造成了哪些影响。
+我们建议您在审核模式下启动部署。 审核模式是默认的初始设置，可以继续设置密码。 事件日志中记录会被阻止的密码。 在审核模式下部署的代理服务器和 DC 代理后，你应监视的密码策略强制实施策略，将具有对用户和环境的影响。
 
-在审核阶段，许多组织发现：
+在审核阶段中，许多组织找出的：
 
 * 需要改进现有的操作过程，以使用更安全的密码。
-* 用户经常选择不安全的密码。
-* 需要告知用户即将对安全措施做出的更改以及这些更改对用户造成的影响，并帮助用户更好地了解如何选择更安全的密码。
+* 用户通常使用不安全的密码。
+* 他们需要通知用户有关即将发生的更改中强制实施安全机制，可能会影响它们，以及如何选择更安全的密码。
 
-在审核模式下运行该功能一段合理的时间后，可将实施配置从“审核”转换为“实施”，因而需要更安全的密码。 在此期间最好是执行有针对性的监视。
+该功能在审核模式下运行的一定宽限期后，可以切换中的配置*审核*到*强制实施*需要更加安全的密码。 在此期间最好是执行有针对性的监视。
 
 ## <a name="deployment-requirements"></a>部署要求
 
-* 将安装 Azure AD 密码保护 DC 代理服务的所有域控制器都必须运行 Windows Server 2012 或更高版本。
-* 将安装 Azure AD 密码保护代理服务器服务的所有计算机都必须运行 Windows Server 2012 R2 或更高版本。
-* 安装了 Azure AD 密码保护组件的所有计算机（包括域控制器）都必须安装 Universal C 运行时。
-这最好通过使用 Windows 更新完全修补计算机来完成。 否则，可以安装合适的特定于 OS 的更新包 - 请参阅[适用于 Windows 中的 Universal C 运行时的更新](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)。
-* 在每个域中的至少一台域控制器和托管 Azure AD 密码保护代理服务的至少一台服务器之间必须存在网络连接。 此连接必须允许域控制器访问代理服务器服务上的 RPC 终结点映射器端口 (135) 和 RPC 服务器端口。 RPC 服务器端口默认情况下是一个动态 RPC 端口，但可以将其配置为使用静态端口（请参阅下文）。
-* 托管 Azure AD 密码保护代理服务的所有计算机必须具有对以下终结点的网络访问权限：
+* 获取 DC 代理服务的 Azure AD 密码保护安装必须运行 Windows Server 2012 或更高版本的所有域控制器。
+* 获取代理服务的 Azure AD 密码保护安装必须运行 Windows Server 2012 R2 或更高版本的所有计算机。
+* 将安装 Azure AD 密码保护代理服务的所有计算机都必须安装的.NET 4.7。
+  应已完全更新的 Windows Server 上安装.NET 4.7。 如果这不是这种情况，下载并运行安装程序，请参阅[Windows.NET Framework 4.7 脱机安装程序](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
+* 所有计算机，包括获取 Azure AD 密码保护组件安装的域控制器都必须安装的通用 C 运行时。 通过确保从 Windows 更新的所有更新，可以获取运行时。 也可以特定于操作系统的更新包中获取它。 有关详细信息，请参阅[在 Windows 中的通用 C 运行时的更新](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)。
+* 网络连接之间必须存在的每个域中至少一个域控制器和至少一台服务器承载密码保护代理服务。 此连接必须允许域控制器访问 RPC 终结点映射器端口 135 和代理服务上的 RPC 服务器端口。 默认情况下，RPC 服务器端口是动态的 RPC 端口，但可以配置[使用静态端口](#static)。
+* 承载代理服务的所有计算机必须都具有网络访问以下终结点：
 
-    |终结点 |目的|
+    |**终结点**|**用途**|
     | --- | --- |
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|
 
-* 托管 Azure AD 密码保护代理服务的所有计算机必须配置为允许出站 TLS 1.2 HTTP 流量。
-* 拥有全局管理员帐户，以用来向 Azure AD 注册 Azure AD 密码保护代理服务器服务和林。
-* 拥有在林根域中具有 Active Directory 域管理员权限的帐户，以用来向 Azure AD 注册 Windows Server Active Directory 林。
-* 运行 DC 代理服务软件的任何 Active Directory 域都必须使用 DFSR 进行 sysvol 复制。
+* 承载代理服务进行密码保护的所有计算机必须都配置为允许出站 TLS 1.2 HTTP 流量。
+* 用于注册 Azure AD 密码保护和林的代理服务的全局管理员帐户。
+* 要与 Azure AD 中注册的 Windows Server Active Directory 林的林根域中具有 Active Directory 域管理员权限的帐户。
+* 运行 DC 代理服务软件任何 Active Directory 域必须使用分布式文件系统复制 (DFSR) 进行 sysvol 复制。
+* 必须在域中运行 Windows Server 2012 的所有域控制器上启用密钥分发服务。 默认情况下，此服务启用通过手动触发器启动。
 
-## <a name="single-forest-deployment"></a>单林部署
+## <a name="single-forest-deployment"></a>单个林部署
 
-下图显示了 Azure AD 密码保护的基本组件如何在本地 Active Directory 环境中配合工作。
+下图显示了 Azure AD 密码保护的基本组件如何协同工作的本地 Active Directory 环境中。
 
 ![Azure AD 密码保护组件如何配合工作](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
-部署之前，最好查看软件的工作原理；请参阅 [Azure AD 密码保护的概念性概述](concept-password-ban-bad-on-premises.md)。
+它是一个好办法查看之前将其部署该软件的工作原理。 请参阅[Azure AD 密码保护的概念性概述](concept-password-ban-bad-on-premises.md)。
 
 ### <a name="download-the-software"></a>下载软件
 
-可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)下载 Azure AD 密码保护的两个必需安装程序
+有两个 Azure AD 密码保护所需的安装程序。 它们是可从[Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071)。
 
-### <a name="install-and-configure-the-azure-ad-password-protection-proxy-service"></a>安装和配置 Azure AD 密码保护代理服务
+### <a name="install-and-configure-the-proxy-service-for-password-protection"></a>安装和配置密码保护代理服务
 
-1. 选择用于托管 Azure AD 密码保护代理服务的一个或多个服务器。
-   * 每个此类服务只能为单个林提供密码策略，主机必须已加入该林中的某个域（根域和子域均受支持）。 为使 Azure AD 密码保护代理服务发挥其作用，必须在林的每个域中的至少一个 DC，与 Azure AD 密码保护代理计算机之间建立网络连接。
-   * 支持在域控制器上安装并运行 Azure AD 密码保护代理服务用于测试；缺点是域控制器需要建立 Internet 连接，这可能会造成安全问题。 Microsoft 建议仅将此配置用于测试目的。
-   * 建议至少配置两个代理服务器来实现冗余。 参阅[高可用性](howto-password-ban-bad-on-premises-deploy.md#high-availability)
+1. 选择要承载密码保护代理服务的一个或多个服务器。
+   * 每个此类服务只能为单个林提供的密码策略。 主机必须加入到该林的域中。 同时支持域根和子域。 您需要在林中的每个域中至少一个 DC 和密码保护计算机之间的网络连接。
+   * 您可以用于测试的域控制器上运行的代理服务。 但此域控制器然后需要 internet 连接，可以是安全隐患。 我们建议仅用于测试此配置。
+   * 我们建议在至少两台代理服务器以实现冗余。 请参阅[高可用性](howto-password-ban-bad-on-premises-deploy.md#high-availability)。
 
-2. 使用 AzureADPasswordProtectionProxySetup.msi MSI 包安装 Azure AD 密码保护代理服务。
-   * 安装该软件不需要重新启动。 可以使用标准的 MSI 过程将软件安装自动化，例如：`msiexec.exe /i AzureADPasswordProtectionProxySetup.msi /quiet /qn`
+1. 安装 Azure AD 密码保护代理服务使用`AzureADPasswordProtectionProxySetup.exe`软件安装程序。
+   * 安装该软件不需要重新启动。 可以使用标准的 MSI 过程将软件安装自动化，例如：
+
+      `AzureADPasswordProtectionProxySetup.exe /quiet`
 
       > [!NOTE]
-      > 在安装 AzureADPasswordProtectionProxySetup.msi MSI 包之前，Windows 防火墙服务必须正在运行，否则将发生安装错误。 如果 Windows 防火墙配置为不运行，则解决方法是在安装过程中暂时启用并启动 Windows 防火墙服务。 代理软件在安装后对 Windows 防火墙软件没有特定的依赖关系。 如果使用的是第三方防火墙，则还必须对其进行配置以满足部署要求（允许对端口 135 和代理 RPC 服务器端口（无论是动态的还是静态的）进行入站访问）。 [请参阅部署要求](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)
+      > 在安装 AzureADPasswordProtectionProxySetup.msi 包，以避免出现安装错误之前，必须运行 Windows 防火墙服务。 如果 Windows 防火墙配置为不运行，解决方法是暂时启用并在安装期间运行防火墙服务。 代理软件安装后具有 Windows 防火墙上的任何特定依赖项。 如果正在使用第三方防火墙，它必须仍配置以满足部署要求。 其中包括允许到端口 135 和代理服务器的 RPC 端口的入站的访问。 请参阅[部署要求](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)。
 
-3. 以管理员身份打开 PowerShell 窗口。
-   * Azure AD 密码保护代理软件包含名为 AzureADPasswordProtection 的新 PowerShell 模块。 以下步骤假设从 PowerShell 模块运行各个 cmdlet、已打开新的 PowerShell 窗口，并已导入新模块，如下所示：
+1. 以管理员身份打开 PowerShell 窗口。
+   * 该密码保护代理软件包含新的 PowerShell 模块*AzureADPasswordProtection*。 运行此 PowerShell 模块中的各种 cmdlet 的以下步骤。 按如下所示导入新的模块：
 
       ```PowerShell
       Import-Module AzureADPasswordProtection
       ```
 
-   * 使用以下 PowerShell 命令检查服务是否正在运行：`Get-Service AzureADPasswordProtectionProxy | fl`。
-     该命令应生成 **Status** 为“Running”的结果。
+   * 若要检查服务正在运行，请使用以下 PowerShell 命令：
 
-4. 注册代理。
-   * 完成步骤 3 后，Azure AD 密码保护代理服务会在计算机上运行，但尚未获得用来与 Azure AD 通信的凭据。 必须注册到 Azure AD 才能使用 `Register-AzureADPasswordProtectionProxy` PowerShell cmdlet。 该 cmdlet 需要 Azure 租户的全局管理员凭据，以及在本地林根域中的 Active Directory 域管理员特权。 针对给定的代理服务成功运行该 cmdlet 后，对 `Register-AzureADPasswordProtectionProxy` 的其他调用会继续成功，但没有必要。
+      `Get-Service AzureADPasswordProtectionProxy | fl`。
 
-      Register-AzureADPasswordProtectionProxy cmdlet 支持下面所述的三种不同身份验证模式。
+     结果应显示**状态**为"Running"。
 
-      * 交互式身份验证模式：
+1. 注册代理。
+   * 步骤 3 完成后，在计算机上运行的代理服务。 但该服务还没有与 Azure AD 通信所需的凭据。 不需要与 Azure AD 注册：
 
-         ```PowerShell
-         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
-         ```
-         > [!NOTE]
-         > 此模式不适用于 Server Core 操作系统。 请按如下所述改用一种替代的身份验证模式。
+     `Register-AzureADPasswordProtectionProxy`
 
-         > [!NOTE]
-         > 如果启用了 Internet Explorer 增强的安全性配置，则此模式可能会失败。 解决方法是禁用 IESC，注册代理服务器，然后重新启用 IESC。
+     此 cmdlet 需要你的 Azure 租户的全局管理员凭据。 您还需要在目录林根域中的本地 Active Directory 域管理员权限。 此命令成功一次代理服务后，它的其他调用将成功，但不是必需的。
 
-      * 设备代码身份验证模式：
+      `Register-AzureADPasswordProtectionProxy` Cmdlet 支持以下三种身份验证模式。
 
-         ```PowerShell
-         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceMode
-         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
-         ```
+     * 交互式身份验证模式：
 
-         可以遵照不同设备上显示的说明完成身份验证。
+        ```PowerShell
+        Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
+        ```
+        > [!NOTE]
+        > 在 Server Core 操作系统，此模式下不起作用。 相反，使用以下身份验证模式之一。 此外，如果启用了 Internet Explorer 增强安全配置在此模式可能会失败。 解决方法是先禁用该配置，注册代理，然后重新启用它。
 
-      * 无提示（基于密码）身份验证模式：
+     * 设备代码身份验证模式：
 
-         ```PowerShell
-         $globalAdminCredentials = Get-Credential
-         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
-         ```
+        ```PowerShell
+        Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
+        To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
+        ```
 
-         > [!NOTE]
-         > 如果身份验证出于任何原因需要 MFA，则此模式将会失败。 如果出现这种情况，请使用前面所述的两种模式之一来完成基于 MFA 的身份验证。
+        然后，按照以下不同的设备上显示的说明完成身份验证。
 
-      目前不需要指定 -ForestCredential 参数，该参数是为将来的功能保留的。
+     * 无提示（基于密码）身份验证模式：
 
-   > [!NOTE]
-   > 在 Azure AD 密码保护代理服务的生存期，预期只需注册该服务一次。 注册后，代理服务会自动执行其他任何必要的维护。 针对给定的代理成功运行该 cmdlet 后，对“Register-AzureADPasswordProtectionProxy”的其他调用会继续成功，但没有必要。
+        ```PowerShell
+        $globalAdminCredentials = Get-Credential
+        Register-AzureADPasswordProtectionProxy -AzureCredential $globalAdminCredentials
+        ```
 
-   > [!TIP]
-   > 首次针对给定的 Azure 租户运行此 cmdlet 时，在 cmdlet 完成执行之前，可能会出现明显的延迟（数秒）。 除非报告了失败，否则应将这种延迟视为警告。
+        > [!NOTE]
+        > 如果 Azure 多重身份验证是必需的此模式下无法正常工作。 在这种情况下，使用以前的两种身份验证模式之一。
 
-5. 注册林。
-   * 必须运行 `Register-AzureADPasswordProtectionForest` PowerShell cmdlet，使用用来与 Azure 通信的凭据将本地 Active Directory 初始化。 该 cmdlet 需要 Azure 租户的全局管理员凭据，以及在本地林根域中的 Active Directory 域管理员特权。 针对每个林运行此步骤一次。
+       当前不需要指定 *-ForestCredential*参数，保留供将来提供的功能。
 
-      Register-AzureADPasswordProtectionForest cmdlet 支持下面所述的三种不同身份验证模式。
-
-      * 交互式身份验证模式：
-
-         ```PowerShell
-         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
-         ```
-         > [!NOTE]
-         > 此模式不适用于 Server Core 操作系统。 请按如下所述改用一种替代的身份验证模式。
-
-         > [!NOTE]
-         > 如果启用了 Internet Explorer 增强的安全性配置，则此模式可能会失败。 解决方法是禁用 IESC，注册代理服务器，然后重新启用 IESC。  
-
-      * 设备代码身份验证模式：
-
-         ```PowerShell
-         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceMode
-         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
-         ```
-
-         可以遵照不同设备上显示的说明完成身份验证。
-
-      * 无提示（基于密码）身份验证模式：
-         ```PowerShell
-         $globalAdminCredentials = Get-Credential
-         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
-         ```
-
-         > [!NOTE]
-         > 如果身份验证需要 MFA，则此模式将会失败。 如果出现这种情况，请使用前面所述的两种模式之一来完成基于 MFA 的身份验证。
-
-      仅当当前登录的用户也是根域的 Active Directory 域管理员时，上述示例才会成功。 否则，可以通过 -ForestCredential 参数提供替代的域凭据。
-
-   > [!NOTE]
-   > 如果环境中安装了多个代理服务器，使用哪个代理服务器注册林并不重要。
+   
+   针对密码保护代理服务的注册是必需的一次只能在服务的生命周期中。 之后，代理服务将自动执行任何其他必要的维护。
 
    > [!TIP]
-   > 首次针对给定的 Azure 租户运行此 cmdlet 时，在 cmdlet 完成执行之前，可能会出现明显的延迟（数秒）。 除非报告了失败，否则应将这种延迟视为警告。
+   > 可能在完成第一次为特定的 Azure 租户中运行此 cmdlet 之前有明显的延迟。 除非将报告失败，不必担心这种延迟。
+
+1. 注册林。
+   * 必须初始化具有所需的凭据以使用与 Azure 通信的本地 Active Directory 林`Register-AzureADPasswordProtectionForest`PowerShell cmdlet。 该 cmdlet 还要求你的 Azure 租户的全局管理员凭据。 它还需要在目录林根域中的本地 Active Directory 域管理员权限。 针对每个林运行此步骤一次。
+
+      `Register-AzureADPasswordProtectionForest` Cmdlet 支持以下三种身份验证模式。
+
+     * 交互式身份验证模式：
+
+        ```PowerShell
+        Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
+        ```
+        > [!NOTE]
+        > 此模式下无法在 Server Core 操作系统上运行。 而是使用以下两种身份验证模式之一。 此外，如果启用了 Internet Explorer 增强安全配置在此模式可能会失败。 解决方法是先禁用该配置，注册代理，然后重新启用它。  
+
+     * 设备代码身份验证模式：
+
+        ```PowerShell
+        Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
+        To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
+        ```
+
+        然后，按照以下不同的设备上显示的说明完成身份验证。
+
+     * 无提示（基于密码）身份验证模式：
+        ```PowerShell
+        $globalAdminCredentials = Get-Credential
+        Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
+        ```
+
+        > [!NOTE]
+        > 如果 Azure 多重身份验证是必需的此模式下无法正常工作。 在这种情况下，使用以前的两种身份验证模式之一。
+
+       当前登录的用户也是根级域的 Active Directory 域管理员，这些示例才成功。 如果这不是这种情况，则可以提供通过备用域凭据 *-ForestCredential*参数。
 
    > [!NOTE]
-   > 在 Active Directory 林的生存期内，预期只需注册该林一次。 注册后，林中运行的域控制器代理会自动执行其他任何必要的维护。 针对给定的林成功运行该 cmdlet 后，对 `Register-AzureADPasswordProtectionForest` 的其他调用会继续成功，但没有必要。
+   > 如果在环境中安装了多个代理服务器，它并不重要用于注册在林中的代理服务器。
 
-   > [!NOTE]
-   > 要想使 `Register-AzureADPasswordProtectionForest` 成功，代理服务器的域中至少必须有一台 Windows Server 2012 或更高版本的域控制器可用。 但是，在执行此步骤之前，不需要在任何域控制器上安装 DC 代理软件。
+   > [!TIP]
+   > 可能在完成第一次为特定的 Azure 租户中运行此 cmdlet 之前有明显的延迟。 除非将报告失败，不必担心这种延迟。
 
-6. 将 Azure AD 密码保护代理服务配置为通过 HTTP 代理通信
+   Active Directory 林的注册是必需的一次只能在林的生命周期。 之后，在林中域控制器代理将自动执行任何其他必要的维护。 之后`Register-AzureADPasswordProtectionForest`运行已成功为林时，该 cmdlet 的其他调用成功，但不是必需的。
 
-   如果环境要求使用特定的 HTTP 代理来与 Azure 通信，可按如下所示实现此目的。
+   有关`Register-AzureADPasswordProtectionForest`若要成功，在至少一个域控制器运行 Windows Server 2012 或更高版本必须是可用代理服务器的域中。 但不必在此步骤之前的任何域控制器上安装 DC 代理软件。
 
-   在 `%ProgramFiles%\Azure AD Password Protection Proxy\Service` 文件夹中创建名为 `proxyservice.exe.config`、包含以下内容的文件：
+1. 配置密码保护，通过 HTTP 代理进行通信的代理服务。
+
+   如果你的环境需要使用特定的 HTTP 代理来与 Azure 通信，使用此方法：创建*AzureADPasswordProtectionProxy.exe.config* %ProgramFiles%\Azure AD 密码保护 Proxy\Service 文件夹中的文件。 包括以下内容：
 
       ```xml
       <configuration>
@@ -201,7 +202,7 @@ Microsoft 建议在审核模式下开始任何部署。 审核模式是默认的
       </configuration>
       ```
 
-   如果 HTTP 代理需要身份验证，请按如下所示添加 useDefaultCredentials 标记：
+   如果您的 HTTP 代理服务器要求身份验证，将添加*useDefaultCredentials*标记：
 
       ```xml
       <configuration>
@@ -214,17 +215,17 @@ Microsoft 建议在审核模式下开始任何部署。 审核模式是默认的
       </configuration>
       ```
 
-   在这两种情况下，都需要将 `http://yourhttpproxy.com:8080` 替换为特定 HTTP 代理服务器的地址和端口。
+   在这两种情况下，将为`http://yourhttpproxy.com:8080`的地址和特定的 HTTP 代理服务器的端口。
 
-   如果使用授权策略配置了 HTTP 代理，必须向托管 Azure AD 密码保护代理服务的计算机的 Active Directory 计算机帐户授予访问权限。
+   如果您的 HTTP 代理服务器配置给我们一个授权策略，您必须授予访问权限的托管代理服务进行密码保护的计算机的 Active Directory 计算机帐户。
 
-   创建或更新 `proxyservice.exe.config` 文件后，应停止再重启 Azure AD 密码保护代理服务。
+   我们建议你停止并重新启动代理服务，在创建或更新后*AzureADPasswordProtectionProxy.exe.config*文件。
 
-   Azure AD 密码保护代理服务不支持使用特定的凭据连接到 HTTP 代理。
+   代理服务不支持使用特定凭据用于连接到 HTTP 代理。
 
-7. 可选：将 Azure AD 密码保护代理服务配置为侦听特定的端口。
-   * 域控制器上的 Azure AD 密码保护 DC 代理软件使用“基于 TCP 的 RPC”来与 Azure AD 密码保护代理服务通信。 默认情况下，Azure AD 密码保护代理服务侦听任何可用的动态 RPC 终结点。 出于网络拓扑或防火墙要求，可根据需要将服务配置为侦听特定的 TCP 端口。
-      * 若要将服务配置为在静态端口下运行，请使用 `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet。
+1. 可选：配置密码保护，以侦听特定端口的代理服务。
+   * 在域控制器上的密码保护的 DC 代理软件通过 TCP 使用 RPC 与代理服务进行通信。 默认情况下，代理服务在任何可用的动态 RPC 终结点上进行侦听。 但您可以将服务配置为侦听特定 TCP 端口，如果这是必要由于网络拓扑或您的环境中的防火墙要求。
+      * <a id="static" /></a>若要配置静态端口下运行的服务，请使用`Set-AzureADPasswordProtectionProxyConfiguration`cmdlet。
          ```PowerShell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
@@ -232,7 +233,7 @@ Microsoft 建议在审核模式下开始任何部署。 审核模式是默认的
          > [!WARNING]
          > 必须停止并重启服务，才能让这些更改生效。
 
-      * 若要将服务配置为在动态端口下运行，请使用相同的过程，但要将 StaticPort 重新设置为 0，如下所示：
+      * 若要配置动态端口下运行的服务，使用相同的过程，但设置*StaticPort*为零：
          ```PowerShell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```
@@ -241,9 +242,9 @@ Microsoft 建议在审核模式下开始任何部署。 审核模式是默认的
          > 必须停止并重启服务，才能让这些更改生效。
 
    > [!NOTE]
-   > 在端口配置中进行任何更改后，需要手动重启 Azure AD 密码保护代理服务。 进行这种性质的配置更改后，不需要重启域控制器上运行的 DC 代理服务软件。
+   > 端口配置中进行任何更改后，密码保护代理服务将需要手动重启。 但无需进行这些配置更改后重新启动域控制器上的 DC 代理服务软件。
 
-   * 可以使用 `Get-AzureADPasswordProtectionProxyConfiguration` cmdlet 查询当前的服务配置，如以下示例所示：
+   * 若要查询的服务的当前配置，请使用`Get-AzureADPasswordProtectionProxyConfiguration`cmdlet:
 
       ```PowerShell
       Get-AzureADPasswordProtectionProxyConfiguration | fl
@@ -253,39 +254,39 @@ Microsoft 建议在审核模式下开始任何部署。 审核模式是默认的
       StaticPort  : 0
       ```
 
-### <a name="install-the-azure-ad-password-protection-dc-agent-service"></a>安装 Azure AD 密码保护 DC 代理服务
+### <a name="install-the-dc-agent-service"></a>安装 DC 代理服务
 
-   使用 `AzureADPasswordProtectionDCAgent.msi` MSI 包安装 Azure AD 密码保护 DC 代理服务软件
+   使用安装的 DC 代理服务的密码保护`AzureADPasswordProtectionDCAgentSetup.msi`包。
 
-   由于只能在重新启动后加载或卸载密码筛选器 dll（这是一项操作系统要求），在安装和卸载后需要重新启动软件安装。
+   软件安装或卸载，则需要重新启动。 这是因为密码筛选器 Dll 是仅加载或卸载被重启。
 
-   支持在不充当域控制器的计算机上安装 DC 代理服务。 在这种情况下，服务将会启动并运行，但在将计算机提升为域控制器之前，服务会一直处于非活动状态。
+   可以在尚不是域控制器的计算机上安装 DC 代理服务。 在这种情况下，服务将启动并运行，但保持非活动状态，直到计算机被提升为域控制器。
 
-   可以使用标准的 MSI 过程将软件安装自动化，例如：
+   您可以通过使用标准的 MSI 过程自动化软件安装。 例如：
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgent.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
 
    > [!WARNING]
-   > 上述示例 msiexec 命令会导致立即重新启动；指定 `/norestart` 标志可避免重新启动。
+   > 示例 msiexec 命令会导致立即重新启动。 若要避免这种情况，请使用`/norestart`标志。
 
-将 Azure AD 密码保护 DC 代理软件安装在域控制器上并重新启动后，安装即告完成。 无需（也无法）进行其他配置。
+域控制器上安装了 DC 代理软件并重新启动该计算机后，安装已完成。 无需（也无法）进行其他配置。
 
 ## <a name="multiple-forest-deployments"></a>多林部署
 
-跨多个林部署 Azure AD 密码保护不需要满足其他要求。 根据“单林部署”部分中所述单独配置每个林。 每个 Azure AD 密码保护代理只能支持它所加入到的林中的域控制器。 不管 Active Directory 信任配置如何，给定林中的 Azure AD 密码保护软件都不知道其他林中部署的 Azure AD 密码保护软件。
+跨多个林部署 Azure AD 密码保护不需要满足其他要求。 "单林部署"部分中所述，单独配置每个林。 每个密码保护代理只支持联接到林中的域控制器。 密码保护软件中的任何林中不知道的密码保护软件部署到其他林，而不考虑 Active Directory 信任配置中。
 
 ## <a name="read-only-domain-controllers"></a>只读域控制器
 
-密码更改\设置永远不会在只读域控制器 (RODC) 中处理和保留；这些操作会转发到可写域控制器。 因此，无需在 RODC 上安装 DC 代理软件。
+密码更改/设置不处理和保留在只读域控制器 (Rodc) 上。 将在转发到可写域控制器。 因此，您无需在 Rodc 上安装 DC 代理软件。
 
 ## <a name="high-availability"></a>高可用性
 
-确保 Azure AD 密码保护的高可用性的主要考虑因素在于，当林中的域控制器尝试从 Azure 下载新策略或其他数据时，如何确保代理服务器的可用性。 在确定要调用哪个代理服务器时，每个 DC 代理将使用简单的轮循机制算法，并跳过无响应的代理服务器。 对于大多数完全连接的且复制正常（目录状态和 sysvol 状态正常）的 Active Directory 部署，两 (2) 个代理服务器应足以确保可用性，因此可确保及时下载新策略和其他数据。 可按需部署其他代理服务器。
+在林中的域控制器尝试从 Azure 下载新策略或其他数据时，密码保护的主可用性问题为代理服务器的可用性。 在决定要调用的代理服务器时，每个 DC 代理将使用简单的轮循机制样式算法。 代理跳过代理服务器不响应。 对于具有正常运行复制的 directory 和 sysvol 文件夹状态的最完全连接 Active Directory 部署，两台代理服务器就足以确保可用性。 这会导致及时下载新策略和其他数据。 但是，可以将部署其他代理服务器。
 
-通过设计 DC 代理软件可以缓解与高可用性相关的常用问题。 DC 代理维护最近下载的密码策略的本地缓存。 即使所有已注册的代理服务器出于任何原因而不可用，DC 代理也仍会实施其缓存的密码策略。 在大型部署中，密码策略的合理更新频率通常是几天，而不是几小时或更短的时间更新一次。 因此，代理服务器的短暂中断不会给 Azure AD 密码保护功能的运行或其安全优势造成严重影响。
+DC 代理软件的设计可降低高可用性与相关联的常规问题。 DC 代理维护最近下载的密码策略的本地缓存。 即使所有已注册的代理服务器变得不可用，DC 代理会继续强制实施其缓存的密码策略。 通常是在大型部署中的密码策略的合理的更新频率*天*、 不是几小时或更少。 因此，代理服务器的短暂停机不会显著影响 Azure AD 密码保护。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本地服务器上安装 Azure AD 密码保护所需的服务后，请完成[安装后的配置并收集报告信息](howto-password-ban-bad-on-premises-operations.md)，以完成部署。
+至此，已安装的服务所需的 Azure AD 密码保护的本地服务器上[执行安装后配置和报告信息的收集](howto-password-ban-bad-on-premises-operations.md)完成部署。
 
 [Azure AD 密码保护的概念性概述](concept-password-ban-bad-on-premises.md)

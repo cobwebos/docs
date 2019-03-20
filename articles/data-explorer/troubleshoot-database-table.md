@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ec66066fe51af97f6355b78dd7af3480a39a5a03
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 0bd9f5ed00193aa9f872287b6afaf9e2b28c24dc
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215074"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188333"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>故障排除：无法在 Azure 数据资源管理器中创建或删除数据库或表
 
@@ -37,7 +37,7 @@ ms.locfileid: "50215074"
 
     有关权限的详细信息，请参阅[管理数据库权限](manage-database-permissions.md)。
 
-1. 请确保不存在具有相同名称的表。 如果存在，可以：使用不同的名称创建表；重命名现有表（需要“表管理员”角色）；或删除现有表（需要“数据库管理员”角色）。 使用以下命令。
+1. 请确保不存在具有相同名称的表。 如果它存在，则你可以：使用不同的名称; 创建表重命名现有表 (需要*表管理员*角色); 或删除现有表 (需要*数据库管理员*角色)。 使用以下命令。
 
     ```Kusto
     .drop table <TableName>
@@ -53,7 +53,7 @@ ms.locfileid: "50215074"
 
 ## <a name="general-guidance"></a>一般指南
 
-1. 查看 [Azure 服务健康状况仪表板](https://azure.microsoft.com/status/>)。 在尝试使用数据库或表的区域查找 Azure 数据资源管理器的状态。
+1. 查看 [Azure 服务健康状况仪表板](https://azure.microsoft.com/status/)。 在尝试使用数据库或表的区域查找 Azure 数据资源管理器的状态。
 
     如果状态不佳（绿色复选标记），请在状态改善后重试。
 

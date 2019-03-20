@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 93c70e038589667ae97acb86663a6179dcc81637
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245080"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877320"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>如何通过云合作伙伴门户创建 Dynamics 365 for Operations 套餐
 
@@ -31,7 +31,7 @@ ms.locfileid: "51245080"
 
 满足所有先决条件后，可以开始创作 Dynamics 365 for Operations 套餐。
 
-1. 登录[云合作伙伴平台](http://cloudpartner.azure.com/)。
+1. 登录[云合作伙伴平台](https://cloudpartner.azure.com/)。
 2. 在左侧导航栏中单击“+ 新建套餐”，然后选择“Dynamics 365 for Operations”。\"\"\"\"
 3. 新套餐的“编辑器”视图现在可供使用，我们随时可以开始创作。\"\"
 4. 需要填写的窗体显示在“编辑器”视图的左侧。\"\"\"\" 每个\"窗体\"都包含一组要填写的字段。必填字段标有红色的星号 (\*)。
@@ -51,7 +51,7 @@ ms.locfileid: "51245080"
 
 这是发布者个人资料内产品/服务的唯一标识符。 此 ID 将显示在产品 URL 中。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 此字段在套餐推出后处于锁定状态。
 
-例如，如果发布者 contoso 创建了 ID 为 *sample-dynamics365 for operations* 的套餐，该套餐将以 \"https://appsource.microsoft.com/marketplace/apps/**contoso**.*sample-dynamics 365 for operations*?tab=Overview\" 的形式显示在 AppSource 中
+例如，如果发布服务器 contoso 发布者创建与产品/服务产品/服务 ID*操作的示例 dynamics365*，它将显示在 AppSource 作为`https://appsource.microsoft.com/marketplace/apps/**contoso**.*sample-dynamics365 for operations*?tab=Overview\`。
 
 ### <a name="publisher-id"></a>发布者 ID
 
@@ -138,7 +138,7 @@ ms.locfileid: "51245080"
 
 ### <a name="leads-management"></a>潜在顾客管理
 
-选择用于存储潜在顾客的 CRM 系统。 如果有以下 CRM 系统之一，请在此处选择\"Azure 表\"：Salesforce、Marketo、Microsoft Dynamics CRM。 在 AppSource 中试用应用的最终用户（潜在顾客）的详细信息将写入到此处所选的 CRM 系统。 根据选择的 CRM 系统，单击以下相应 URL，以获取有关如何完成下一组字段的信息。
+选择用于存储潜在顾客的 CRM 系统。 选择\"Azure 表\"此处为具有以下的 CRM 系统中的一个：Salesforce、Marketo、Microsoft Dynamics CRM。 在 AppSource 中试用应用的最终用户（潜在顾客）的详细信息将写入到此处所选的 CRM 系统。 根据选择的 CRM 系统，单击以下相应 URL，以获取有关如何完成下一组字段的信息。
 
 ![潜在顾客管理详细信息](./media/publish_d365_new_offer/leads.png)
 

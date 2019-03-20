@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 125f1a2a041c8c05289c95bd12c10618bfc622a8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 40ff2339ad34a72079109317bf0a89dfbc6458e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246739"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58114926"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 的高性能高级存储和托管磁盘
 
@@ -63,11 +63,11 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
     若要开始使用高级存储，请为非托管磁盘创建一个高级存储帐户。 若要在 [Azure 门户](https://portal.azure.com)中创建高级存储帐户，请选择“高级”性能层。 选择“本地冗余存储(LRS)”复制选项。 也可以通过将性能层设置为 **Premium_LRS** 来创建高级存储帐户。 若要更改性能层，请使用以下方法之一：
      
-    - [对 Azure 存储使用 PowerShell](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
-    - [对 Azure 存储使用 Azure CLI](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
-    - [Azure 存储资源提供程序 REST API](https://docs.microsoft.com/rest/api/storagerp)（适用于 Azure 资源管理器部署），或某个 Azure 存储资源提供程序客户端库
+  - [对 Azure 存储使用 PowerShell](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
+  - [对 Azure 存储使用 Azure CLI](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
+  - [Azure 存储资源提供程序 REST API](https://docs.microsoft.com/rest/api/storagerp)（适用于 Azure 资源管理器部署），或某个 Azure 存储资源提供程序客户端库
 
-    若要了解高级存储帐户的限制，请参阅“高级存储的可伸缩性和性能目标”。
+    若要了解有关高级存储帐户限制信息，请参阅[可伸缩性和性能目标](#scalability-and-performance-targets)。
 
 * **高级本地冗余存储**
 
@@ -98,8 +98,6 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
     > [!NOTE]
     > 如果使用[存储空间](https://technet.microsoft.com/library/hh831739.aspx)条带化高级存储数据磁盘，请为使用的每个磁盘设置包含 1 列的存储空间。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 默认情况下，在服务器管理器中可以设置最多包含 8 个磁盘的列。 如果磁盘超过 8 个，请使用 PowerShell 来创建卷。 手动指定列数。 否则，即使有更多磁盘，服务器管理器 UI 仍会继续使用 8 个列。 例如，如果一个带区集中有 32 个磁盘，请指定 32 列。 若要指定虚拟磁盘使用的列数，请在 [New-VirtualDisk](https://technet.microsoft.com/library/hh848643.aspx) PowerShell cmdlet 中使用 *NumberOfColumns* 参数。 有关详细信息，请参阅[存储空间概述](https://technet.microsoft.com/library/hh831739.aspx)和[存储空间常见问题解答](https://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)。
-    >
-    > 
 
 * **缓存**
 
@@ -160,7 +158,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 | 每个磁盘的吞吐量 | 每秒 25 MB | 每秒 50 MB | 每秒 100 MB | 每秒 125 MB | 每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB | 每秒 480 MB | 每秒 750 MB | 每秒 750 MB |
 
 > [!NOTE]
-> 请确保 VM 上有足够的带宽可用来驱动磁盘流量，如[高级存储支持的 VM]() 中所述。 否则，磁盘吞吐量和 IOPS 将限制为较小的值。 最大吞吐量和 IOPS 基于 VM 限制，而不是上表中所述的磁盘限制。  
+> 请确保有足够的带宽可用来驱动磁盘流量，在 VM 上中所述[支持的 Vm](#supported-vms)。 否则，磁盘吞吐量和 IOPS 将限制为较小的值。 最大吞吐量和 IOPS 基于 VM 限制，而不是上表中所述的磁盘限制。  
 > Azure 将高级存储平台设计为可以进行大规模并行处理。 将应用程序设计为多线程有助于实现较大磁盘大小提供的高性能目标。
 
 下面是在高级存储可伸缩性和性能目标方面需要知道的一些重要事项：
@@ -294,7 +292,7 @@ sudo yum install microsoft-hyper-v
 
 * **高级存储磁盘和 Blob 大小**
 
-    高级存储磁盘或 Blob 根据磁盘或 Blob 的预配大小计费。 Azure 会将预配大小映射（向上舍入）到最接近的高级存储磁盘选项。 有关详细信息，请参阅[高级存储的可伸缩性和性能目标]()中的表格。 每个磁盘将映射到一种受支持的预配大小并相应地计费。 任何预配的磁盘根据每月的高级存储优惠价格按小时计费。 例如，如果在设置完 P10 磁盘的 20 小时后删除它，则会以 20 小时计算 P10 解决方案的费用。 这与写入磁盘的实际数据量或使用的 IOPS 和吞吐量无关。
+    高级存储磁盘或 Blob 根据磁盘或 Blob 的预配大小计费。 Azure 会将预配大小映射（向上舍入）到最接近的高级存储磁盘选项。 有关详细信息，请参阅中的表[可伸缩性和性能目标](#scalability-and-performance-targets)。 每个磁盘将映射到一种受支持的预配大小并相应地计费。 任何预配的磁盘根据每月的高级存储优惠价格按小时计费。 例如，如果在设置完 P10 磁盘的 20 小时后删除它，则会以 20 小时计算 P10 解决方案的费用。 这与写入磁盘的实际数据量或使用的 IOPS 和吞吐量无关。
 
 * **高级非托管磁盘快照**
 

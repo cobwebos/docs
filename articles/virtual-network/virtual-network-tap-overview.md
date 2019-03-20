@@ -13,21 +13,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2019
+ms.date: 03/18/2019
 ms.author: kaanan
-ms.openlocfilehash: dd99e1376eb0589fc8cb8404d557c9ebddd45fd6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 45224b1b0ec4a4b3c93393c178f1f03baa58e10b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992053"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189132"
 ---
 # <a name="virtual-network-tap"></a>虚拟网络 TAP
 
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具由[网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)合作伙伴提供。 有关经验证可与虚拟网络 TAP 一起使用的合作伙伴解决方案列表，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)。
 
 > [!IMPORTANT]
-> 目前，虚拟网络 TAP 在 WestCentralUS Azure 区域中提供开发者预览版。 若要使用虚拟网络点击，您必须注册在预览中通过发送电子邮件至 <azurevnettap@microsoft.com>你的订阅 id。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 此开发者预览版在提供时没有附带服务级别协议，不应用于生产工作负载。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 请参阅 [Supplemental Terms of Use 针对 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 有关详细信息。
+> 虚拟网络点击当前处于预览状态在所有 Azure 区域。 若要使用虚拟网络点击，您必须注册在预览中通过发送电子邮件至 <azurevnettap@microsoft.com>你的订阅 id。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 此预览版提供，无服务级别协议，不应该用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 请参阅 [Supplemental Terms of Use 针对 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 有关详细信息。
 
 ## <a name="virtual-network-tap-partner-solutions"></a>虚拟网络 TAP 合作伙伴解决方案
 

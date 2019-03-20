@@ -1,33 +1,19 @@
 ---
-title: 自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure 门户 | Microsoft 文档
+title: 自定义 Azure 应用程序网关的 Web 应用程序防火墙规则 - Azure 门户
 description: 本文将介绍如何使用 Azure 门户自定义应用程序网关的 Web 应用程序防火墙规则。
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-ms.assetid: 1159500b-17ba-41e7-88d6-b96986795084
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 03/28/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: 30df26dc3a9697d3435779f91c32b2d99a747b88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: b18c9666e58925746a3b61740db6fb5118c2010b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990461"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733710"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>通过 Azure 门户自定义 Web 应用程序防火墙规则
-
-> [!div class="op_single_selector"]
-> * [Azure 门户](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
 Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 这些保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 某些规则可能会导致误报，并会阻止实际流量。 出于此原因，应用程序网关提供了自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请参阅 [Web 应用程序防火墙 CRS 规则组和规则列表](application-gateway-crs-rulegroups-rules.md)。
 
@@ -62,6 +48,19 @@ Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序
    2. 选择“保存”。 
 
 ![保存更改][3]
+
+## <a name="mandatory-rules"></a>强制性规则
+
+以下列表包含导致 WAF 在防护模式下阻止请求的条件（在检测模式下，它们作为异常记录）。 无法配置或禁用这些规则：
+
+* 除非关闭正文检查（XML、JSON、表单数据），否则无法分析请求正文会导致请求被阻止
+* 请求正文（不带文件）数据长度大于配置的限制
+* 请求正文（包括文件）大于限制
+* WAF 引擎发生内部错误
+
+CRS 3.x 特定：
+
+* 入站异常分数超出阈值
 
 ## <a name="next-steps"></a>后续步骤
 

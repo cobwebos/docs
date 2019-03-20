@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5be6acc28932cb3c7f0481b18cbcffae27c3ce13
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: be7dbe35800bbe911bc56d1883462534a16499a0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002368"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083175"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
 
@@ -28,7 +28,7 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-
+> 
 > * 通过运行提供的负载生成器，模拟分片多租户数据库上的使用情况
 > * 在数据库响应负载增加时对其进行监视
 > * 通过扩展数据库来响应数据库负载增加的情况
@@ -52,7 +52,7 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库，在数据库上提供了监视和警报功能。 这种内置的监视和警报功能是特定于资源的，因此，对于使用少量资源的方案比较方便，但在处理大量资源时就不太适用了。
 
-对于使用许多资源的大容量应用场景，可以使用 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)。 这是单独的 Azure 服务，可针对发出的诊断日志以及日志分析工作区中收集的遥测进行分析。 Log Analytics 可收集多个服务的遥测，可查询和设置警报。
+对于大容量方案，其中你正在使用许多资源，请[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)可用。 这是单独的 Azure 服务的基础上发出的诊断日志和 Log Analytics 工作区中收集的遥测提供了分析。 Azure Monitor 日志可以收集多个服务的遥测数据和用于查询和设置警报。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序源代码和脚本
 
@@ -78,10 +78,10 @@ New-TenantBatch 脚本在分片多租户数据库内使用唯一的租户密钥�
 
 | 演示 | 场景 |
 |:--|:--|
-| 2 | 生成正常强度的负载（约 30 DTU） |
+| 2 | 生成正常强度负载 (约 30 DTU) |
 | 3 | 生成单个租户的突发时间更长的负载|
-| 4 | 生成单个租户的 DTU 突发个数更高的负载（约 70 个 DTU）|
-| 5 | 在单个租户上生成高强度负载（约 90 个 DTU）和在所有其他租户上生成正常强度负载 |
+| 4 | 生成每个租户 (大约 70 DTU) 的 DTU 突发更高的负载|
+| 5 | 生成单个租户加上所有其他租户正常强度负载上的高强度 (大约 90 个 DTU) |
 
 负载生成器向每个租户数据库应用仅限 CPU 的综合负载。 该生成器为每个租户数据库启动一个作业，以便定期调用生成负载的存储过程。 负载级别（以 DTU 计）、持续时间和间隔在各个数据库之间都是不同的，用以模拟不可预测的租户活动。
 
@@ -168,7 +168,7 @@ Wingtip Tickets SaaS 多租户数据库是一个 SaaS 应用，SaaS 应用上的
 本练习模拟 Salix Salsa 在销售热门活动票时遇到的负载过高的情况。
 
 1. 打开 …\\Demo-PerformanceMonitoringAndManagement.ps1 脚本。
-1. 设置 $DemoScenario = 5，在正常负载的基础上生成单个租户的高负载（约 90 个 DTU）。
+1. 设置 **$DemoScenario = 5**，_生成在正常负载 (约 90 个 DTU) 的单个租户上的高负载。_
 1. 设置 $SingleTenantName = Salix Salsa
 1. 使用 **F5** 执行该脚本。
 

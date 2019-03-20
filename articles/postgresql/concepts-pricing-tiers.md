@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 8cc7d7d93f483289ab7faa3f5a7193fc218b57bc
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: a8dbb2c06d3622dcde19f298ee12fa49afb4cd4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695021"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532042"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -43,35 +43,38 @@ ms.locfileid: "55695021"
 
 > [!IMPORTANT]
 > 从 2018 年 12 月 12 日开始，新客户将无法在巴西南部、加拿大中部、加拿大东部、东亚、美国东部 2、印度中部、印度西部、日本西部、美国中北部、美国西部预配第 4 计算代系服务器。 从 2019 年 2 月 1 日起，这些区域中此前创建的第 4 计算代系服务器将迁移到第 5 计算代系。
+>
+> [!IMPORTANT]
+> 从 2019 年 2 月 19 日，新客户将无法再预配在美国中部、 美国东部、 日本东部、 欧洲北部、 美国中南部、 亚洲东南部、 欧洲西部的计算第 4 代服务器。 以前创建的计算生成 4 个服务器都将迁移来计算生成 5 从 2019 年 4 月 1 日开始在这些区域中。
 
 | **Azure 区域** | **第 4 代** | **第 5 代** |
 |:---|:----------:|:--------------------:|
 | 美国中部 |  | X |
 | 美国东部 |  | X |
-| 美国东部 2 | X | X |
-| 美国中北部 | X | X |
+| 美国东部 2 |  | X |
+| 美国中北部 |  | X |
 | 美国中南部 | X | X |
-| 美国西部 | X | X |
+| 美国西部 |  | X |
 | 美国西部 2 |  | X |
-| 巴西南部 | X | X |
-| 加拿大中部 | X | X |
-| 加拿大东部 | X | X |
+| 巴西南部 |  | X |
+| 加拿大中部 |  | X |
+| 加拿大东部 |  | X |
 | 北欧 | X | X |
 | 西欧 |  | X |
 | 法国中部 |  | X |
 | 英国南部 |  | X |
 | 英国西部 |  | X |
-| 东亚 | X | X |
+| 东亚 |  | X |
 | 东南亚 | X | X |
 | 澳大利亚东部 |  | X |
 | 澳大利亚中部 |  | X |
 | 澳大利亚中部 2 |  | X |
 | 澳大利亚东南部 |  | X |
-| 印度中部 | X | X |
+| 印度中部 |  | X |
 | 印度南部 |  | X |
-| 印度西部 | X | X |
+| 印度西部 |  | X |
 | 日本东部 | X | X |
-| 日本西部 | X | X |
+| 日本西部 |  | X |
 | 韩国中部 |  | X |
 | 韩国南部 |  | X |
 | 中国东部 1 | X |  |

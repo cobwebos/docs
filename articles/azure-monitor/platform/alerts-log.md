@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 29050be7587f88ce7a1f5370f50dcfa1ecd68306
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990439"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57873785"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 
@@ -47,29 +47,29 @@ ms.locfileid: "55990439"
 
 1. 定义警报条件：使用“选择资源”链接，然后通过选择资源来指定目标。 进行筛选：选择“订阅”和“资源类型”，以及所需的资源。
 
-    >[!NOTE]
-
-    > 创建日志警报 - 在继续操作之前，请验证**日志**信号是否可用于所选资源。
-    ![选择资源](media/alerts-log/Alert-SelectResourceLog.png)
+   > [!NOTE]
+   > 
+   > 创建日志警报 - 在继续操作之前，请验证**日志**信号是否可用于所选资源。
+   >  ![选择资源](media/alerts-log/Alert-SelectResourceLog.png)
 
 1. 日志警报：确保“资源类型”是分析源（例如 Log Analytics 或 Application Insights），且信号类型为“日志”，并选择相应的“资源”，然后单击“完成”。 接下来，使用“添加条件”按钮查看适用于该资源的信号选项列表，并针对所选日志监视服务（如 *Log Analytics* 或 *Application Insights*）从信号列表中选择“自定义日志搜索”选项。
 
    ![选择资源 - 自定义日志搜索](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
-
+   > 
    > 警报列表可以导入分析查询作为信号类型 - **日志（已保存查询）**，如上图所示。 这样用户便能够在 Analytics 中完善查询，然后保存这些查询供将来在警报中使用 - 有关使用保存的查询的详细信息，请参阅[在 Log Analytics 中使用日志搜索](../../azure-monitor/log-query/log-query-overview.md)或 [Application Insights Analytics 中的共享查询](../../azure-monitor/log-query/log-query-overview.md)。
 
 1. 日志警报：选择后，可以在“搜索查询”字段中指定警报查询；如果查询语法不正确，该字段将以红色显示错误。 如果查询语法正确 - 将以图表形式显示指定查询的历史数据供参考，同时显示用于调整时间范围（过去六个小时到过去一周）的选项。
 
     ![配置警报规则](media/alerts-log/AlertsPreviewAlertLog.png)
 
-    > [!NOTE]
-    
-    > 仅当查询结果包含时间详细信息时，才能显示历史数据可视化效果。 如果查询生成了汇总数据或特定列值 - 则以单一绘图的形式显示相同的数据。
-    > 对于使用 Application insights 或[切换到新的 API](alerts-log-api-switch.md) 的指标度量类型的日志警报，可以使用“聚合基于”选项指定要使用哪个特定变量对数据进行分组，如下面所示：
-    >
-    > ![“聚合基于”选项](media/alerts-log/aggregate-on.png)
+   > [!NOTE]
+   > 
+   > 仅当查询结果包含时间详细信息时，才能显示历史数据可视化效果。 如果查询生成了汇总数据或特定列值 - 则以单一绘图的形式显示相同的数据。
+   > 对于使用 Application insights 或[切换到新的 API](alerts-log-api-switch.md) 的指标度量类型的日志警报，可以使用“聚合基于”选项指定要使用哪个特定变量对数据进行分组，如下面所示：
+   > 
+   > ![“聚合基于”选项](media/alerts-log/aggregate-on.png)
 
 1. 日志警报：打开可视化效果后，可以从显示的“条件”、“聚合”和“阈值”选项中选择“警报逻辑”。 最后，使用“时间段”选项在逻辑中指定评估指定条件的时间。 此外，通过选择“频率”来指定运行警报服务的频率。 日志警报可以基于：
     - [记录数目](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules)：如果查询返回的记录计数大于或小于提供的值，则创建警报。
@@ -102,9 +102,9 @@ ms.locfileid: "55990439"
 
 1. 如果所有字段有效并且附带绿色的勾选标记，则可以单击“创建警报规则”按钮，在“Azure Monitor - 警报”中创建警报。 可以从警报仪表板查看所有警报。
 
-    ![创建规则](media/alerts-log/AlertsPreviewCreate.png)
+     ![创建规则](media/alerts-log/AlertsPreviewCreate.png)
 
-    几分钟后，警报将处于活动状态，并按前面所述进行触发。
+     几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 用户还可以在 [log analytics](../log-query/portals.md) 中完成其分析查询，然后通过“设置警报”按钮推送它来创建警报 - 然后遵循以上教程中从步骤 6 开始的说明。
 
@@ -205,7 +205,7 @@ Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQue
 ```
 
 > [!IMPORTANT]
-> 使用 [Scheduled Query Rules ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)（计划查询规则）API 调用或资源模板时，必须有包含目标资源隐藏链接的标记字段。
+> 隐藏链接到目标资源的标记字段为必填项利用[计划的查询规则](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)API 调用或资源模板。
 
 针对此演练，上面的示例 json 可以保存为（例如）sampleScheduledQueryRule.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)进行部署。
 
@@ -217,7 +217,7 @@ Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQue
 ```json
 
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
     },
@@ -304,34 +304,35 @@ Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQue
 ```
 
 > [!IMPORTANT]
-> 使用 [Scheduled Query Rules ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)（计划查询规则）API 调用或资源模板时，必须有包含目标资源隐藏链接的标记字段。 使用日志警报中的跨资源查询时，必须使用 [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) 且用户必须有权访问所述的资源列表
+> 隐藏链接到目标资源的标记字段为必填项利用[计划的查询规则](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)API 调用或资源模板。 使用日志警报中的跨资源查询时，必须使用 [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) 且用户必须有权访问所述的资源列表
 
 针对此演练，上面的示例 json 可以保存为（例如）sampleScheduledQueryRule.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)进行部署。
 
 ## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>使用 PowerShell、CLI 或 API 管理日志警报
 
-[Azure Monitor - 计划查询规则 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 为 REST API 并与 Azure 资源管理器 REST API 完全兼容。 因此，可以使用资源管理器 cmdlet 和 Azure CLI 通过 Powershell 使用它。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Azure Monitor - 计划查询规则 API]（ https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 是一个 REST API 并且与 Azure 资源管理器 REST API 完全兼容。 因此，可以使用资源管理器 cmdlet 和 Azure CLI 通过 Powershell 使用它。
+
 
 > [!NOTE]
 > 还可以使用旧式 [Log Analytics 警报 API](../../azure-monitor/platform/api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../../azure-monitor/insights/solutions-resources-searches-alerts.md)的旧式模板管理 Log Analytics 的日志警报。 有关默认使用此处详述的新 ScheduledQueryRules API 的详细信息，请参阅[切换到 Log Analytics 警报的新 API](alerts-log-api-switch.md)。
 
+日志警报当前不具有专用的 PowerShell 或 CLI 命令目前;但是，如下图所示可用于通过 Azure 资源管理器 PowerShell cmdlet 示例前面所示的资源模板 (sampleScheduledQueryRule.json) 在模板资源部分中：
 
-日志警报目前没有专用的 PowerShell 或 CLI 命令；但如下所示，可以通过之前在“资源模板”部分中显示的示例资源模板 (sampleScheduledQueryRule.json) 通过 Azure 资源管理器 PowerShell cmdlet 进行使用：
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
+New-AzResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
 
 下面展示了之前在“资源模板”部分中显示的示例资源模板 (sampleScheduledQueryRule.json) 通过 Azure CLI 中的 Azure 资源管理器命令进行使用的情况：
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
-```
+On successful operation, 201 will be returned to state new alert rule creation or 200 will be returned if an existing alert rule was modified.
 
-成功执行操作后，将返回 201 声明新的警报规则创建，如果修改了现有警报规则，则返回 200。
+## Next steps
 
-## <a name="next-steps"></a>后续步骤
-
-* 了解 [Azure 警报中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)
-* 了解[用于日志警报的 Webhook 操作](../../azure-monitor/platform/alerts-log-webhook.md)
-* 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)
-* 详细了解 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)。
+* Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
+* Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
+* Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
+* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).

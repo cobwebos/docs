@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994766"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888462"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -397,7 +397,7 @@ return result;
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、MVC5 |
 | **属性**              | 不适用，标识提供者 - ADFS，标识提供程序 - Azure AD |
-| **参考**              | [ASP.NET Web API 中的身份验证和授权](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
+| **参考**              | [ASP.NET Web API 中的身份验证和授权](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
 | **步骤** | <p>如果应用程序依赖于 Azure AD 或 ADFS 声明，则可从这些声明派生应用程序用户的角色信息，因为标识提供者或应用程序本身可以提供此信息。 在上述任何情况下，自定义授权实现应验证用户角色信息。</p><p>如果应用程序依赖于 Azure AD 或 ADFS 声明，则可从这些声明派生应用程序用户的角色信息，因为标识提供者或应用程序本身可以提供此信息。 在上述任何情况下，自定义授权实现应验证用户角色信息。</p>
 
 ### <a name="example"></a>示例

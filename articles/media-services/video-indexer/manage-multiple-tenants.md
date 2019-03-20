@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/10/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 3b6daa60e8c8945d49170a00da5bd3ffb57b48ac
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: e98cf44db01de1f99836e247066ba01006eac97b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000108"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733293"
 ---
 # <a name="manage-multiple-tenants"></a>管理多个租户
 
@@ -56,7 +56,7 @@ ms.locfileid: "56000108"
 
 [上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)时，可为每个租户指定不同的分区属性。 这可以在 [搜索 API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?)中实现隔离。 在搜索 API 中指定分区属性后，只会获取指定分区的结果。 
 
- ### <a name="considerations"></a>注意事项
+### <a name="considerations"></a>注意事项
 
 * 可以在租户之间共享内容和自定义模型。
 * 一个租户会影响其他租户的性能。

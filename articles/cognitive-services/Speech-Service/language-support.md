@@ -1,5 +1,5 @@
 ---
-title: 语言支持 - 语音服务 API
+title: 语言支持的语音服务
 titleSuffix: Azure Cognitive Services
 description: Azure 语音服务支持多种语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文提供服务支持语言的完整列表。
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 22916a188c79d5894faf48dd71d6ab17a582cf8b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878028"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225427"
 ---
-# <a name="language-and-region-support-for-speech-service-api"></a>语音服务 API 的语言和区域支持
+# <a name="language-and-region-support-for-the-speech-services"></a>语音服务的语言和区域支持
 
 不同的语音服务函数支持不同的语言。 下表汇总了语言支持。
 
@@ -76,13 +76,18 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
 有关神经语音和区域可用性的完整列表，请参阅[区域](regions.md#neural-voices)。
 
 | 区域设置 | 语言 | 性别 | 服务名称映射|
-|--------|----------|---------|--------------------|
+|--------|----------|--------|---------------------|
+| de-DE | 德语(德国) | 女 | "Microsoft Server 语音文本到语音语音 (DE-DE KatjaNeural)" |
 | en-US | 英语(美国) | 男 | “Microsoft 服务器语音的文本转语音（en-US，GuyNeural）” |
 | en-US | 英语(美国) | 女 | “Microsoft 服务器语音的文本转语音（en-US，JessaNeural）” |
+| it-IT | 意大利语(意大利) | 女 | "Microsoft Server 语音文本到语音语音 (it IT，ElsaNeural)" |
 | zh-CN | 中文 | 女 | “Microsoft 服务器语音的文本转语音（zh-CN，XiaoxiaoNeural）” |
 
 > [!IMPORTANT]
 > Microsoft 服务器语音的文本转语音（zh-CN，XiaoxiaoNeural）仅可通过以下东南亚终结点获得： https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1。
+
+> [!IMPORTANT]
+> Microsoft Server 语音文本到语音语音 (DE-DE KatjaNeural) 和 Microsoft 服务器语音文本到语音语音 (it IT，ElsaNeural) 仅可通过西欧终结点： https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1。
 
 ### <a name="standard-voices"></a>标准语音
 
@@ -162,7 +167,7 @@ te-IN | 泰卢固语(印度) |女 | “Microsoft 服务器语音的文本转语�
 th-TH | 泰语|男 | “Microsoft 服务器语音的文本转语音（th-TH，Pattara）”
 tr-TR |土耳其语| 女 | “Microsoft 服务器语音的文本转语音（tr-TR，SedaRUS）”
 vi-VN | 越南语|男 | “Microsoft 服务器语音的文本转语音（vi-VN，An）”
-zh-CN | 中文(中国大陆)|女 | “Microsoft 服务器语音的文本转语音（zh-CN，HuihuiRUS）”
+zh-CN | 中文(中国)|女 | “Microsoft 服务器语音的文本转语音（zh-CN，HuihuiRUS）”
 | | |女 | “Microsoft 服务器语音的文本转语音（zh-CN，Yaoyao，Apollo）”
 | | |男 | “Microsoft 服务器语音的文本转语音（zh-CN，Kangkang，Apollo）”
 zh-HK | 中文(香港特别行政区)|女 | “Microsoft 服务器语音的文本转语音（zh-HK，Tracy，Apollo）”
@@ -179,7 +184,7 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 语音自定义功能适用于美国英语 (en-US)、中国大陆的普通话 (zh-CN)、法语 (fr-FR)、德语 (de-DE) 和意大利语 (it-IT)。
 
 > [!NOTE]
-> 法语、德语和意大利语音训练从包含 2,000 多条话语的数据集开始。 包含 2,000 多条话语的初始数据集也支持中英双语模型。
+> 法语、 德语和意大利语语调培训启动使用 2000 多语音样本的数据集。 包含 2,000 多条话语的初始数据集也支持中英双语模型。
 
 ## <a name="speech-translation"></a>语音翻译
 
@@ -255,5 +260,5 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
+* [获取语音服务试用订阅](https://azure.microsoft.com/try/cognitive-services/)
 * [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)

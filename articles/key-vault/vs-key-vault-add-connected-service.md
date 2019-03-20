@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: ghogen
-ms.openlocfilehash: a6de5385046918c48b3f606477727ca4623a784c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
-ms.translationtype: HT
+ms.openlocfilehash: de849ae290228826ee500ae1c7e623210e585d34
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998619"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113242"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -24,7 +24,7 @@ ms.locfileid: "53998619"
 
 有关连接服务为了启用 Key Vault 而在项目中所做的更改的详细信息，请参阅 [Key Vault 连接服务 - 我的 ASP.NET 4.7.1 项目发生了什么情况](vs-key-vault-aspnet-what-happened.md)或 [Key Vault 连接服务 - 我的 ASP.NET Core 项目发生了什么情况](vs-key-vault-aspnet-core-what-happened.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 一个 Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 - Visual Studio 2017 版本 15.7（装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
@@ -49,7 +49,7 @@ ms.locfileid: "53998619"
 
    ![重命名 Key Vault，并选择一个资源组](media/vs-key-vault-add-connected-service/KeyVaultConnectedService-Edit.PNG)
 
-1. 选择现有资源组，或选择使用自动生成的唯一名称创建新的资源组。  如果想要使用不同的名称创建新组，可以使用 [Azure 门户](https://portal.azure.com)，然后关闭页面并重启，以重新加载资源组列表。
+1. 选择一个现有的资源组，或选择创建一个新使用自动生成的唯一名称。  如果想要使用不同的名称创建新组，可以使用 [Azure 门户](https://portal.azure.com)，然后关闭页面并重启，以重新加载资源组列表。
 1. 选择要在其中创建 Key Vault 的区域。 如果 Web 应用程序托管在 Azure 中，请选择托管 Web 应用程序的区域，以获得最佳性能。
 1. 选择定价模型。 有关详细信息，请参阅 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)。
 1. 选择“确定”接受配置选项。
@@ -78,7 +78,7 @@ ms.locfileid: "53998619"
 1. 安装这两个 nuget 包：[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 库。
 
 2. 打开 Program.cs 文件，使用以下代码更新代码： 
-```
+   ```
     public class Program
     {
         public static void Main(string[] args)
@@ -106,27 +106,27 @@ ms.locfileid: "53998619"
 
         private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     }
-```
+   ```
 3. 接下来打开 About.cshtml.cs 文件并写入以下代码
-    1. 通过此 using 语句包含对 Microsoft.Extensions.Configuration 的引用    
-        ```
-        using Microsoft.Extensions.Configuration
-        ```
-    2. 添加此构造函数
-        ```
-        public AboutModel(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-        ```
-    3. 更新 OnGet 方法。 使用在上述命令中创建的机密名称更新此处显示的占位符值
-        ```
-        public void OnGet()
-        {
-            //Message = "Your application description page.";
-            Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
-        }
-        ```
+   1. 通过此 using 语句包含对 Microsoft.Extensions.Configuration 的引用    
+       ```
+       using Microsoft.Extensions.Configuration
+       ```
+   2. 添加此构造函数
+       ```
+       public AboutModel(IConfiguration configuration)
+       {
+           _configuration = configuration;
+       }
+       ```
+   3. 更新 OnGet 方法。 使用在上述命令中创建的机密名称更新此处显示的占位符值
+       ```
+       public void OnGet()
+       {
+           //Message = "Your application description page.";
+           Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+       }
+       ```
 
 通过浏览到“关于”页在本地运行应用。 应检索机密值
 

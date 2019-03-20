@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9910155b439b5ee6d0e5abd96d750943605098a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 88839598b3ae11f0041b3451ba5481547c019c9d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211591"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449608"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "56211591"
 
 ![设置](./media/howto-mfaserver-dir-ad/dirint.png)
 
-| Feature | 说明 |
+| Feature | 描述 |
 | --- | --- |
 | 使用 Active Directory |选择“使用 Active Directory”选项可使用 Active Directory 进行导入和同步。  此设置为默认设置。 <br>注意：要正常完成 Active Directory 集成，请将计算机加入域并使用域帐户登录。 |
 | 包括受信任域 |选中“包括受信任域”可让代理尝试连接到当前域、林中其他域或林信任涉及的域所信任的域。  当不从任何受信任域导入或同步用户时，请取消选中该复选框以提高性能。  默认处于选中状态。 |
@@ -38,7 +38,7 @@ ms.locfileid: "56211591"
 
 下表描述了 LDAP 配置设置。
 
-| Feature | 说明 |
+| Feature | 描述 |
 | --- | --- |
 | 服务器 |输入运行 LDAP 目录的服务器的主机名或 IP 地址。  还可以以分号分隔形式指定备份服务器。 <br>注意：当绑定类型是 SSL 时，需要输入完全限定的主机名。 |
 | 基 DN |输入要从中启动所有目录查询的基目录对象的可分辨名称。  例如，dc=abc,dc=com。 |
@@ -61,17 +61,17 @@ Azure 多重身份验证提供以下三个筛选选项：
 * **用户筛选器** - 指定用于在执行目录搜索时限定用户记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectClass=user)(objectCategory=person))。  对于其他 LDAP 目录，请根据目录架构使用 (objectClass=inetOrgPerson) 或类似语句。 <br>注意：如果留空，将默认使用 (&(objectCategory=person)(objectClass=user))。
 
 ## <a name="attributes"></a>属性
-可以根据需要自定义特定目录的属性。  这样，便可以添加自定义属性，优化为只同步所需的属性。 对于每个属性字段的值，请使用目录架构中定义的属性的名称。 下表提供了有关每项功能的更多信息。
+可以根据需要自定义特定目录的属性。  这样，便可以添加自定义属性，优化为只同步所需的属性。 使用每个属性字段的值的目录架构中定义的属性的名称。 下表提供了有关每项功能的更多信息。
 
 可以手动输入属性，它们不需要与属性列表中的某个属性匹配。
 
 ![属性](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| Feature | 说明 |
+| Feature | 描述 |
 | --- | --- |
 | 唯一标识符 |输入用作容器、安全组和用户记录的唯一标识符的属性的属性名称。  在 Active Directory 中，它通常是 objectGUID。 其他 LDAP 实现可能使用 entryUUID 或类似值。  默认值为 objectGUID。 |
 | 唯一标识符类型 |选择唯一标识符属性的类型。  在 Active Directory 中，objectGUID 属性的类型是 GUID。 其他 LDAP 实现可能使用 ASCII 字节数组或字符串类型。  默认值为 GUID。 <br><br>必须正确设置此类型，因为系统会根据同步项的唯一标识符对其进行引用。 唯一标识符类型用于直接查找目录中的对象。  如果目录实际上将值存储为 ASCII 字符的字节数组，将此类型设置为字符串会使同步无法正常运行。 |
-| 可分辨名称 |输入包含每条记录的可分辨名称的属性的属性名称。  在 Active Directory 中，它通常是 distinguishedName。 其他 LDAP 实现可能使用 entryDN 或类似值。  默认值为 distinguishedName。 <br><br>如果只包含可分辨名称的属性不存在，则可以使用 adspath 属性。  将自动剥除路径的“LDAP://\<server\>/”部分，仅留下对象的可分辨名称。 |
+| 可分辨名称 |输入包含每条记录的可分辨名称的属性的属性名称。  在 Active Directory 中，它通常是 distinguishedName。 其他 LDAP 实现可能使用 entryDN 或类似值。  默认值为 distinguishedName。 <br><br>如果只包含可分辨的名称属性不存在，可能会使用 ads 路径属性。  将自动剥除路径的“LDAP://\<server\>/”部分，仅留下对象的可分辨名称。 |
 | 容器名称 |输入容器记录中包含名称的属性的属性名称。  从 Active Directory 导入或添加同步项时，此属性的值会显示在容器层次结构中。  默认值为 name。 <br><br>如果不同的容器将不同的属性用作其名称，请使用分号分隔多个容器名称属性。  在容器对象中找到的第一个容器名称属性用于显示其名称。 |
 | 安全组名称 |输入安全组记录中包含名称的属性的属性名称。  从 Active Directory 导入或添加同步项时，此属性的值会显示在“安全组”列表中。  默认值为 name。 |
 | 用户名 |输入用户记录中包含用户名的属性的属性名称。  此属性的值用作多重身份验证服务器的用户名。  可以指定第二个属性作为第一个属性的备份。  仅当第一个属性不包含用户的值时，才使用第二个属性。  默认值为 userPrincipalName 和 sAMAccountName。 |
@@ -79,7 +79,7 @@ Azure 多重身份验证提供以下三个筛选选项：
 | 姓氏 |输入用户记录中包含姓氏的属性的属性名称。  默认值为 sn。 |
 | 电子邮件地址 |输入用户记录中包含电子邮件地址的属性的属性名称。  电子邮件地址用于向用户发送欢迎和更新电子邮件。  默认值为 mail。 |
 | 用户组 |输入用户记录中包含用户组的属性的属性名称。  用户组可用于在 Multi-Factor Auth 服务器管理门户的代理和报告中筛选用户。 |
-| 说明 |输入用户记录中包含说明的属性的属性名称。  说明只用于搜索。  默认值为 description。 |
+| 描述 |输入用户记录中包含说明的属性的属性名称。  说明只用于搜索。  默认值为 description。 |
 | 通话语言 |输入包含某一语言的短名称的属性的属性名称，该语言用于用户的语音呼叫。 |
 | 短信语言 |输入包含某一语言的短名称的属性的属性名称，该语言用于用户的短信。 |
 | 移动应用语言 |输入包含某一语言的短名称的属性的属性名称，该语言用于用户的手机应用短信。 |
@@ -111,7 +111,7 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 
 下表包含有关“同步”选项卡中每项设置的更多信息。
 
-| Feature | 说明 |
+| Feature | 描述 |
 | --- | --- |
 | 启用与 Active Directory 的同步 |如果选中此项，多重身份验证服务器服务将定期轮询 Active Directory 的更改。 <br><br>注意：必须先至少添加一个同步项并且必须执行“立即同步”，然后 Multi-Factor Auth 服务器服务才会开始处理更改。 |
 | 同步间隔 |指定 Multi-Factor Auth 服务器服务在轮询和处理更改之间需要等待的时间间隔。 <br><br> 注意：指定的时间间隔是每个周期开始之间的时间。  如果处理更改的时间超过了此时间间隔，该服务将立即重新轮询。 |

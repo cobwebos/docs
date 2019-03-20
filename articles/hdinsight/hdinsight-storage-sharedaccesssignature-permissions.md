@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202667"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -163,7 +163,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
     Connect-AzureRmAccount
     ```
 
-    出现提示时，请使用 Azure 订阅的帐户登录。
+    出现提示时，使用的帐户登录 Azure 订阅。
 
     如果帐户与多个 Azure 订阅关联，可能需要使用 `Select-AzureRmSubscription` 来选择想要使用的订阅。
 
@@ -215,17 +215,11 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
     对 MapReduce2 和 YARN 重复此过程。
 
-7. 重启这些服务后，请选择每个服务，并从“服务操作”下拉列表中禁用维护模式。
+7. 重新启动这些服务后，选择每个服务并从“服务操作”  下拉列表中选择“禁用维护模式”。
 
 ## <a name="test-restricted-access"></a>测试限制的访问
 
-若要验证已限制的访问，请使用以下方法：
-
-* 对于**基于 Windows** 的 HDInsight 群集，请使用远程桌面连接到群集。 有关详细信息，请参阅[使用 RDP 连接到 HDInsight](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)。
-
-    连接之后，请使用桌面上的“Hadoop 命令行”图标打开命令提示符。
-
-* 对于**基于 Linux** 的 HDInsight 群集，请使用 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+若要验证访问受到限制，使用 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 连接到群集后，使用以下步骤验证是否只能读取和列出 SAS 存储帐户中的项：
 
@@ -265,13 +259,13 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
         put: java.io.IOException
 
-    发生此错误的原因是存储位置是只读+仅限列出的。 使用以下命令将数据放在群集的可写默认存储中：
+    发生此错误的原因是存储位置仅支持读取和列出。 使用以下命令将数据放在群集的可写默认存储中：
 
     ```bash
     hdfs dfs -put testfile.txt wasb:///testupload.txt
     ```
 
-    这一次操作应会成功完成。
+    这一次操作应该会成功完成。
 
 ## <a name="troubleshooting"></a>故障排除
 

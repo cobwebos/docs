@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e208f899ff26135d3ce26bfa18096210513381
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: bcc93254b50da9bff6f687034d39d0058aa514e1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192041"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>教程：Azure Active Directory 与 Perception United States (Non-UltiPro) 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56192041"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Perception United States (Non-UltiPro) 的集成，需备齐以下项目：
 
@@ -166,7 +166,7 @@ ms.locfileid: "56192041"
     
     c. 在“标识提供者名称”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。 
 
-    d. 在“SAML 域”文本框中，输入类似于 **@contoso.com** 的域。
+    d. 在中**SAML 域文本框**，输入类似于定义域 **\@contoso.com**。
 
     e. 单击“再次上传”以上传“元数据 XML”文件。
 

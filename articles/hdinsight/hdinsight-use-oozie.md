@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5048a4ab4db6d4cb168d2a643a412f89273658b4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: ece621b18c15061ccb559baf9583677dcc848ca4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984250"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201749"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -52,7 +52,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。 它与 Ha
 > 
 > 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 开始学习本教程之前，必须具有以下项：
 
 * **配备 Azure PowerShell 的工作站**。 
@@ -123,19 +123,19 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 
 
 RunHiveScript 有几个变量。 在使用 Azure PowerShell 从工作站提交 Oozie 作业时，会传递值。
 
-|工作流变量|说明|
+|工作流变量|描述|
 |---|---|
 |${jobTracker}|指定 Hadoop 作业跟踪器的 URL。 在 HDInsight 版本 3.0 和 2.1 中使用 **jobtrackerhost:9010**。|
-|${nameNode}|指定 Hadoop 名称节点的 URL。 请使用默认的文件系统地址，例如 wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net。|
+|${nameNode}|指定 Hadoop 名称节点的 URL。 请使用默认的文件系统地址，例如 wasb://&lt;containerName&gt;\@&lt;storageAccountName&gt;.blob.core.windows.net。|
 |${queueName}|指定要将作业提交到的队列名称。 使用**默认值**。|
 
-|Hive 操作变量|说明|
+|Hive 操作变量|描述|
 |---|---|
 |${hiveDataFolder}|指定 Hive Create Table 命令的源目录。|
 |${hiveOutputFolder}|指定 INSERT OVERWRITE 语句的输出文件夹。|
 |${hiveTableName}|指定引用 log4j 数据文件的 Hive 表的名称。|
 
-|Sqoop 操作变量|说明|
+|Sqoop 操作变量|描述|
 |---|---|
 |${sqlDatabaseConnectionString}|指定 Azure SQL 数据库连接字符串。|
 |${sqlDatabaseTableName}|指定要将数据导出到的 Azure SQL 数据库表。|
@@ -576,7 +576,7 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 * Hive 脚本输出文件
 * log4jLogsCount 表中的数据
 
-这是可以使用的一个示例 PowerShell 脚本：
+以下是可以使用的一个示例 PowerShell 脚本：
 ```powershell
     $resourceGroupName = "<AzureResourceGroupName>"
 
@@ -631,7 +631,6 @@ Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。 可
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
 
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md

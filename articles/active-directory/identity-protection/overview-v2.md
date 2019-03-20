@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e60804e6bdf37607a08b6c530fd900e0f481a45b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2c3543b217339c39ad79c2125afdef8f087a70b3
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204502"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336680"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory Identity Protection（已刷新）是什么？
 
@@ -58,6 +58,7 @@ Identity Protection 体验已经过刷新，以更好地保护组织的标识。
 
 Azure AD Identity Protection 是 Azure Active Directory Premium P2 的一项功能，它允许你配置策略，以便在用户标识遭到入侵或帐户所有者以外的其他人试图使用其标识登录时自动进行响应。 除了 Azure AD 提供的条件访问控制以外，这些策略还可以自动阻止或启用缓解措施，如密码重置或强制实施多重身份验证。 此外，Identity Protection 还提供监视和报告功能，以便更深入地了解组织中的风险和潜在威胁。 
 
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
 
 ## <a name="risk-events"></a>风险事件
@@ -66,7 +67,7 @@ Azure AD Identity Protection 检测到以下风险事件：
 
  
 
-| 风险事件类型 | 说明 | 检测类型 |
+| 风险事件类型 | 描述 | 检测类型 |
 | ---             | ---         | ---            |
 | 异常位置登录 | 从异常位置（基于用户最近的登录）进行登录。 | 脱机 |
 | 匿名 IP 地址 | 从匿名 IP 地址登录（例如：Tor 浏览器，匿名程序 VPN）。 | 实时 |

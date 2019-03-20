@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 67d86ca7ed79f431bf762d4a3679e18a7b4bc373
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990207"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188350"
 ---
-# <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>使用本地编码器实时传送视频流以创建多比特率流
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用从本地编码器接收多比特率实时流的频道
 
 > [!NOTE]
 > 自 2018 年 5 月 12 日起，实时频道将不再支持 RTP/MPEG-2 传输流引入协议。 请从 RTP/MPEG-2 迁移到 RTMP 或分段 MP4（平滑流式处理）引入协议。
@@ -45,13 +45,13 @@ ms.locfileid: "55990207"
 > [!NOTE]
 > 本文讨论未启用执行实时编码的频道的属性。 若要了解如何使用执行实时编码的频道，请参阅[使用 Azure 媒体服务创建多比特率流的实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)。
 >
->有关建议的本地编码器的详细信息，请参阅[建议的本地编码器](media-services-recommended-encoders.md)。
+>有关建议在本地编码器上，请参阅有关的信息[建议在本地编码器上](media-services-recommended-encoders.md)。
 
 下图表示的是一个使用本地实时编码器输出多比特率 RTMP 或分片 MP4（平滑流式处理）流的实时传送视频流工作流。
 
 ![实时工作流][live-overview]
 
-## <a id="scenario"></a>常见实时传送视频流方案
+## <a id="scenario"></a>常见的实时流处理方案
 以下步骤介绍创建常见的实时传送视频流应用程序时涉及的任务。
 
 1. 将视频摄像机连接到计算机。 启动并配置输出多比特率 RTMP 或分段 MP4（平滑流式处理）流的本地实时编码器。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
@@ -142,11 +142,11 @@ ms.locfileid: "55990207"
 
 ### <a name="channel-preview"></a>频道预览
 #### <a name="preview-urls"></a>预览 URL
-频道还提供了一个预览终结点（预览 URL），可以使用它在进一步处理和传递流之前预览流并对其进行验证。
+通道还提供了一个预览终结点（预览 URL），可使用它在进一步处理和传递流之前预览流并对其进行验证。
 
 可以在创建频道时获取预览 URL。 若要获取该 URL，频道不一定要处于“正在运行”状态。 在频道开始引入数据后，可以预览流。
 
-当前，不管指定了哪种输入类型，都只能以分片 MP4（平滑流式处理）流格式来传送预览流。 可以使用[平滑流式处理运行状况监视器](http://playready.directtaps.net/smoothstreaming/)播放器来测试平滑流。 还可以使用 Azure 门户中托管的播放器来查看流。
+当前，不管指定了哪种输入类型，都只能以分片 MP4（平滑流式处理）流格式来传送预览流。 可以使用[平滑流式处理运行状况监视器](https://playready.directtaps.net/smoothstreaming/)播放器来测试平滑流。 还可以使用 Azure 门户中托管的播放器来查看流。
 
 #### <a name="allowed-ip-addresses"></a>允许的 IP 地址
 可以定义允许连接到预览终结点的 IP 地址。 如果未指定 IP 地址，则允许任何 IP 地址。 允许的 IP 地址可以指定为以下项之一：
@@ -167,7 +167,7 @@ ms.locfileid: "55990207"
 
 一个频道最多支持三个并发运行的节目，因此可以为同一传入流创建多个存档。 可以根据需要发布和存档事件的不同部分。 例如，假设业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。 为了实现此目的，需要创建两个同时运行的节目。 一个节目设置为存档六小时的事件，但不发布该节目。 另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
 
-不应当将现有节目重用于新事件。 而应针对每个事件创建新节目。 在准备好开始流式传输和存档时，启动节目。 在要停止对事件进行流式传输和存档时，停止节目。
+不应当将现有节目重用于新事件。 而应针对每个事件创建新节目。 准备好开始流式传输和存档后，启动节目。 在要停止对事件进行流式传输和存档时，停止节目。
 
 要删除已存档内容，请停止并删除节目，然后删除关联的资产。 如果节目使用该资产，则无法删除该资产。 必须先删除该节目。
 
@@ -185,7 +185,7 @@ ms.locfileid: "55990207"
 下表显示频道状态如何映射到计费模式。
 
 | 频道状态 | 门户 UI 指示器 | 是否计费？ |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **正在启动** |**正在启动** |否（暂时状态） |
 | **正在运行** |**就绪**（没有正在运行的节目）<p><p>或<p>**流式处理**（至少有一个正在运行的节目） |是 |
 | **正在停止** |**正在停止** |否（暂时状态） |
@@ -207,13 +207,13 @@ ms.locfileid: "55990207"
 * 使用辅助引入 URL 需要额外的带宽。
 * 传入多比特率流最多可包含 10 个视频质量级别（又称层）和最多 5 个音频曲目。
 * 任何视频质量级别的最高平均比特率应低于 10 Mbps。
-* 所有视频和音频流的均比特率聚合平应小于 25 Mbps。
+* 所有视频和音频流的平均比特率聚合应小于 25 Mbps。
 * 当频道或其关联的节目正在运行时，无法更改输入协议。 如果需要不同的协议，应当针对每个输入协议创建单独的频道。
 * 可在频道中引入单比特率。 但由于频道不处理流，因此客户端应用程序也会接收单比特率流。 （我们不建议此选项。）
 
 下面是与使用频道及其相关组件相关的其他注意事项：
 
-* 每次重新配置实时编码器时，可调用频道上的**重置**方法。 在重置频道之前，必须停止节目。 在重置频道后，重新启动节目。
+* 每次重新配置实时编码器后，请对通道调用 **重置** 方法。 在重置频道之前，必须停止节目。 在重置频道后，重新启动节目。
 
   > [!NOTE]
   > 重新启动节目时，需要将其与新资产相关联，并创建新定位符。 
@@ -229,7 +229,7 @@ ms.locfileid: "55990207"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相关主题
-[建议的本地编码器](media-services-recommended-encoders.md)
+[建议在本地编码器上](media-services-recommended-encoders.md)
 
 [Azure 媒体服务分片 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
 

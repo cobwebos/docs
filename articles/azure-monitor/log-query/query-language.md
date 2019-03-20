@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: 01d452f97134093e9b40b6ec32f1c9fed41564aa
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343045"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749812"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor 日志查询
 Azure Monitor 日志在 Azure 数据资源管理器之上构建，Azure Monitor 日志查询使用同一 Kusto 查询语言的某个版本。 [Kusto 查询语言文档](/azure/kusto/query)提供了该语言的完整详细信息，在编写 Azure Monitor 日志查询时，应将此文档用作主要参考资源。 本页提供了用于学习编写查询，以及该语言的 Azure Monitor 实现差异的其他资源的链接。
@@ -27,14 +27,14 @@ Azure Monitor 日志在 Azure 数据资源管理器之上构建，Azure Monitor 
 
 ## <a name="getting-started"></a>入门
 
-- [Azure Monitor 日志分析入门](get-started-portal.md)课程介绍了如何在 Azure 门户中编写查询和处理结果。
+- [开始使用 Azure 监视器 Log Analytics](get-started-portal.md)是一个编写查询和使用 Azure 门户中的结果。
 - [Azure Monitor 日志查询入门](get-started-queries.md)是一门介绍如何使用 Azure Monitor 日志数据编写查询的课程。
 
 ## <a name="concepts"></a>概念
 - [在 Azure Monitor 中分析日志数据](../../azure-monitor/log-query/log-query-overview.md)简要概述了日志查询以及如何构建 Azure Monitor 日志数据。
 - [查看和分析 Azure Monitor 中的日志数据](../../azure-monitor/log-query/portals.md)介绍了可在其中创建和运行日志查询的门户。
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 - [查询语言参考](/azure/kusto/query)是 Kusto 查询语言的完整语言参考。
 - [Azure Monitor 日志查询语言差异](data-explorer-difference.md)介绍了不同 Kusto 查询语言版本之间的差异。

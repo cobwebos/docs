@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: f2f1313461fcb58ea48af99aeda2f7005534fe34
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885181"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088411"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -29,7 +29,7 @@ ms.locfileid: "48885181"
 
 相比之下，1.x 版运行时仅支持 Azure 门户或 Windows 计算机上的开发和托管。
 
-## <a name="languages"></a>语言
+## <a name="languages"></a>Languages
 
 2.x 版运行时使用新的语言扩展性模型。 在版本 2.x 中，函数应用中的所有函数必须共享相同的语言。 函数应用中的函数语言是在创建应用时选择的。
 
@@ -49,7 +49,7 @@ Azure Functions 1.x 试验性语言不会更新为使用新模型，因此它们
 
 ### <a name="changes-in-triggers-and-bindings"></a>触发器和绑定的更改
 
-版本 2.x 要求为应用中的函数所用的特定触发器和绑定安装扩展。 唯一的例外是 HTTP 和计时器触发器，它们不需要扩展。  有关详细信息，请参阅[注册和安装绑定扩展](./functions-triggers-bindings.md#register-binding-extensions)。
+版本 2.x 要求为应用中的函数所用的特定触发器和绑定安装扩展。 唯一的例外是 HTTP 和计时器触发器，它们不需要扩展。  有关详细信息，请参阅[注册和安装绑定扩展](./functions-bindings-register.md)。
 
 此外，在不同的版本中，函数的 `function.json` 或属性存在几处更改。 例如，事件中心的 `path` 属性现在为 `eventHubName`。 请参阅[现有绑定表](#bindings)，以获取每个绑定的文档链接。
 
@@ -65,9 +65,9 @@ Azure Functions 1.x 试验性语言不会更新为使用新模型，因此它们
 
 * 主机配置文件 (host.json) 应该为空或包含字符串 `"version": "2.0"`。
 
-* 为了改进监视功能，门户中使用 [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 设置的 WebJobs 仪表板已替换为使用 [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsightsinstrumentationkey) 设置的 Azure Application Insights。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+* 为了改进监视功能，门户中使用 [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 设置的 WebJobs 仪表板已替换为使用 [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) 设置的 Azure Application Insights。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
-* 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置中的 [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functionsworkerruntime) 值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
+* 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置中的 [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) 值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
 
 * 应用服务计划中函数的默认超时已更改为 30 分钟。 可以使用 host.json 中的 [functionTimeout](functions-host-json.md#functiontimeout) 设置，将超时手动改回到 unlimited（无限）。
 
@@ -95,7 +95,7 @@ Azure Functions 1.x 试验性语言不会更新为使用新模型，因此它们
 ##### <a name="version-2x"></a>版本 2.x
 
 ```xml
-<TargetFramework>netstandard2.0</TargetFramework>
+<TargetFramework>netcoreapp2.2</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
@@ -109,7 +109,7 @@ Azure Functions 1.x 试验性语言不会更新为使用新模型，因此它们
 
 ### <a name="changing-version-of-apps-in-azure"></a>在 Azure 中更改应用版本
 
-Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functionsextensionversion) 应用程序设置指定。 值 `~2` 表示面向 2.x 版运行时，`~1` 表示面向 1.x 版运行时。 请不要随意更改此设置，因为这可能需要在函数中进行其他应用设置更改和代码更改。 若要了解将函数应用迁移到不同运行时版本的建议方法，请参阅[如何以 Azure Functions 运行时版本为目标](set-runtime-version.md)。
+Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) 应用程序设置指定。 值 `~2` 表示面向 2.x 版运行时，`~1` 表示面向 1.x 版运行时。 请不要随意更改此设置，因为这可能需要在函数中进行其他应用设置更改和代码更改。 若要了解将函数应用迁移到不同运行时版本的建议方法，请参阅[如何以 Azure Functions 运行时版本为目标](set-runtime-version.md)。
 
 ## <a name="bindings"></a>绑定
 
@@ -121,11 +121,13 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 * 更轻便的执行环境，其中运行时仅知道和加载正在使用的绑定。
 
-除 HTTP 和计时器触发器外，其他所有绑定必须显式添加到函数应用项目，或者在门户中注册。 有关详细信息，请参阅[注册绑定扩展](functions-triggers-bindings.md#register-binding-extensions)。
+除 HTTP 和计时器触发器外，其他所有绑定必须显式添加到函数应用项目，或者在门户中注册。 有关详细信息，请参阅[注册绑定扩展](./functions-bindings-expressions-patterns.md)。
 
 下表显示了每个运行时版本支持的绑定。
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+[!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

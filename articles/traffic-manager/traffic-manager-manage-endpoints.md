@@ -6,17 +6,17 @@ documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: 28ea626adf87ad9f115b5acc5452dfc91ad833c5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 0832010707fc9b5d5f435aac29940db6905d18d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009291"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>添加、禁用、启用或删除终结点
 
@@ -29,7 +29,7 @@ ms.locfileid: "51244996"
 
 ## <a name="to-add-a-cloud-service-or-an-app-service-endpoint-to-a-traffic-manager-profile"></a>将云服务或应用服务终结点添加到流量管理器配置文件
 
-1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
+1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，并在显示的结果中单击该流量管理器配置文件。
 3. 在“流量管理器配置文件”边栏选项卡的“设置”部分中，单击“终结点”。
 4. 在显示的“终结点”边栏选项卡中，单击“添加”。
@@ -49,16 +49,16 @@ ms.locfileid: "51244996"
 
 ## <a name="to-disable-an-endpoint"></a>禁用终结点
 
-1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
+1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，并在显示的结果中单击该流量管理器配置文件。
 3. 在“流量管理器配置文件”边栏选项卡的“设置”部分中，单击“终结点”。 
 4. 单击要禁用的终结点，并在显示的“终结点”边栏选项卡中，单击“编辑”。
-5. 在“终结点”边栏选项卡中，将终结点的状态更改为“已禁用”，然后单击“保存”。
+5. 在“终结点”边栏选项卡中，将终结点的状态更改为“已禁用”，并单击“保存”。
 6. 在生存时间 (TTL) 的持续时间内，客户端会继续将流量发送到终结点。 可以在流量管理器配置文件的“配置”页上更改 TTL。
 
 ## <a name="to-enable-an-endpoint"></a>启用终结点
 
-1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
+1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，并在显示的结果中单击该流量管理器配置文件。
 3. 在“流量管理器配置文件”边栏选项卡的“设置”部分中，单击“终结点”。 
 4. 单击要禁用的终结点，并在显示的“终结点”边栏选项卡中，单击“编辑”。
@@ -67,11 +67,11 @@ ms.locfileid: "51244996"
 
 ## <a name="to-delete-an-endpoint"></a>删除终结点
 
-1. 在浏览器中，登录 [Azure 门户](http://portal.azure.com)。
+1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。
 2. 在门户的搜索栏中，搜索要修改的**流量管理器配置文件**名称，并在显示的结果中单击该流量管理器配置文件。
 3. 在“流量管理器配置文件”边栏选项卡的“设置”部分中，单击“终结点”。 
 4. 单击要禁用的终结点，并在显示的“终结点”边栏选项卡中，单击“编辑”。
-5. 在“终结点”边栏选项卡中，将终结点的状态更改为“已启用”，然后单击“保存”。
+5. 在“终结点”边栏选项卡中，将终结点的状态更改为“已启用”，并单击“保存”。
 
 
 ## <a name="next-steps"></a>后续步骤

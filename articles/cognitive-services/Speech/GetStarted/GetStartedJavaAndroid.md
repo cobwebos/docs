@@ -10,26 +10,27 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 3d7bbdb25815027625b6f56b25e64c4a07b3728f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 147042e300e629dd7e354d4e9079cc4855a8146c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222484"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547005"
 ---
-[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
-
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>快速入门：在 Android 上的 Java 中使用必应语音识别 API
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 通过必应语音识别 API，可以开发使用基于云的必应语音服务将语音转换为文本的 Android 应用程序。 API 支持实时流式处理，因此应用程序可以在将音频发送到服务的同时以同步和异步方式接收部分识别结果。
 
 本文将使用示例应用程序来演示如何使用适用于 Android 的语音客户端库在 Java 中为 Android 设备开发语音到文本应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="platform-requirements"></a>平台要求
 
-此示例由适用于 Windows 的 [Android Studio](http://developer.android.com/sdk/index.html) 通过 Java 开发。
+此示例由适用于 Windows 的 [Android Studio](https://developer.android.com/sdk/index.html) 通过 Java 开发。
 
 ### <a name="get-the-client-library-and-sample-application"></a>获取客户端库和示例应用程序
 

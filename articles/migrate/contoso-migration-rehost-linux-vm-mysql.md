@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 3cac893fcaafd4fe8d35aab2a10da92019d3ed42
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 114f4ccccaa861928263eb59b4e43379989abcca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698948"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077847"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso 迁移：将本地 Linux 应用重新托管到 Azure VM 和 Azure MySQL
 
@@ -108,7 +108,7 @@ Contoso 将按如下方式完成迁移进程：
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) | 数据库基于开放源代码 MySQL 服务器引擎。 它提供完全托管的企业就绪社区 MySQL 数据库即服务，用于应用开发和部署。 
 
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 对于此方案，Contoso 需具备以下项。
 
@@ -127,7 +127,7 @@ Contoso 将按如下方式完成迁移进程：
 > [!div class="checklist"]
 > * **步骤 1：为 Site Recovery 准备 Azure**：创建恢复服务保管库以及用于保存复制数据的 Azure 存储帐户。
 > * **步骤 2：为 Site Recovery 准备本地 VMware**：准备用于发现 VM 和安装代理的帐户，并准备在故障转移后连接到 Azure VM。
- * **步骤 3：预配数据库**：在 Azure 中，预配 Azure MySQL 数据库的实例。
+>   * **步骤 3：预配数据库**：在 Azure 中，预配 Azure MySQL 数据库的实例。
 > * **步骤 4：复制 VM**：配置 Site Recovery 源和目标环境、设置复制策略，然后开始将 VM 复制到 Azure 存储。
 > * **步骤 5：迁移数据库**：使用 MySQL 工具设置迁移。
 > * **步骤 6：使用 Site Recovery 迁移 VM**：最后，运行测试故障转移以确保一切正常工作，然后运行完整故障转移以将 VM 迁移到 Azure。
@@ -147,10 +147,10 @@ Contoso 管理员按如下所述创建存储帐户和保管库：
 
 1. Contoso 在美国东部 2 区域中创建存储帐户 (**contosovmsacc20180528**)。
 
-    - 存储帐户必须位于与恢复服务保管库相同的区域。
-    - 他们使用具有标准存储空间的常规用途帐户，并使用 LRS 复制。
+   - 存储帐户必须位于与恢复服务保管库相同的区域。
+   - 他们使用具有标准存储空间的常规用途帐户，并使用 LRS 复制。
 
-    ![Site Recovery 存储](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
+     ![Site Recovery 存储](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
 
 3. 网络和存储帐户就绪后，创建一个保管库 (ContosoMigrationVault)，并将其置于美国东部 2 主要区域的 **ContosoFailoverRG** 资源组中。
 

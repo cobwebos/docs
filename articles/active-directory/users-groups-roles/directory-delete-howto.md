@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3f42ccb50496ed53ea9a68b60301f9feccccb16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 833c2e460ae306a7673e580aaa304be93c3cd044
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188488"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199726"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>删除 Azure Active Directory 租户
 
@@ -36,50 +36,53 @@ ms.locfileid: "56188488"
 
 ## <a name="delete-an-azure-ad-tenant"></a>删除 Azure AD 租户
 
-1. 使用租户的全局管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 登录到[Azure AD 管理中心](https://aad.portal.azure.com)是租户的全局管理员的帐户。
 
 2. 选择“Azure Active Directory”。
 
-3. 切换到要删除的租户。
+3. 切换到你想要删除的组织。
   
-  ![“删除目录”按钮](./media/directory-delete-howto/delete-directory-command.png)
+   ![确认删除之前的组织](./media/directory-delete-howto/delete-directory-command.png)
 
 4. 选择“删除目录”。
   
-  ![“删除目录”按钮](./media/directory-delete-howto/delete-directory-list.png)
+   ![选择要删除的组织的命令](./media/directory-delete-howto/delete-directory-list.png)
 
 5. 如果租户未通过一个或多个检查，系统会提供相关链接，其中介绍了有关如何通过的详细信息。 通过所有检查后，选择“删除”以完成此过程。
 
 ## <a name="i-have-an-expired-subscription-but-i-cant-delete-the-tenant"></a>我的订阅已过期，但无法删除租户
 
-如果配置了 Azure Active Directory 租户，你可能已为组织激活了基于许可证的订阅，例如 Azure Active Directory Premium P2、Office 365 商业高级版或企业移动性 + 安全性 E5。 除非完全删除这些订阅，否则它们会阻止删除目录，以避免意外的数据丢失。 订阅必须处于“已取消预配”状态才能删除租户。 “已过期”或“已取消”订阅移动到“已禁用”状态后，最后一个阶段就是“已取消预配”状态。 
+配置 Azure AD 租户，你可能有也基于许可证的订阅为组织激活等 Azure AD Premium P2、 Office 365 商业高级版，或企业移动性 + 安全性 E5。 除非完全删除这些订阅，否则它们会阻止删除目录，以避免意外的数据丢失。 订阅必须处于“已取消预配”状态才能删除租户。 “已过期”或“已取消”订阅移动到“已禁用”状态后，最后一个阶段就是“已取消预配”状态。 
 
 有关 Office 365 订阅试用到期后需执行的操作（不包括付费合作伙伴/CSP、企业协议或批量许可），请参阅下表。 如需深入了解 Office 365 数据保留期和订阅生命周期，请参阅 [Office 365 商业版订阅结束后我的数据和访问会出现什么情况？](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)。 
 
 订阅状态 | 数据 | 对数据的访问
 ----- | ----- | -----
-活动（30 天试用）  | 所有用户均可访问数据    | <li>用户可正常访问 Office 365 文件或应用<li>管理员可正常访问 Office 365 管理中心和资源 
-已到期（30 天）   | 所有用户均可访问数据    | <li>用户可正常访问 Office 365 文件或应用<li>管理员可正常访问 Office 365 管理中心和资源
-已禁用（30 天） | 仅管理员可访问数据  | <li>用户无法访问 Office 365 文件或应用<li>管理员可以访问 Office 365 管理中心，但无法向用户分配许可证，也无法更新用户
-已取消预配（禁用后 30 天） | 已删除数据（没有使用其他服务时自动删除） | <li>用户无法访问 Office 365 文件或应用<li>管理员可以访问 Office 365 管理中心购买和管理其他订阅
+活动（30 天试用）  | 所有用户均可访问数据    | <li>用户可正常访问 Office 365 文件或应用<li>管理员可以正常访问 Microsoft 365 管理中心和资源 
+已到期（30 天）   | 所有用户均可访问数据    | <li>用户可正常访问 Office 365 文件或应用<li>管理员可以正常访问 Microsoft 365 管理中心和资源
+已禁用（30 天） | 仅管理员可访问数据  | <li>用户无法访问 Office 365 文件或应用<li>管理员可以访问 Microsoft 365 管理中心内，但不能将许可证分配给或更新用户
+已取消预配（禁用后 30 天） | 已删除数据（没有使用其他服务时自动删除） | <li>用户无法访问 Office 365 文件或应用<li>管理员可以访问 Microsoft 365 管理中心内购买和管理其他订阅 
 
-可将订阅置于“已取消预配”状态，通过适用于企业的 Microsoft Store 管理中心在 3 天后删除。 Office 365 管理中心也即将推出此功能。
+## <a name="delete-a-subscription-in-the-microsoft-365-admin-center"></a>Microsoft 365 管理中心中删除订阅
 
-1. 使用租户的全局管理员帐户登录到[适用于企业的 Microsoft Store 管理中心](https://businessstore.microsoft.com/manage/)。 如果尝试删除具有初始默认域 contoso.onmicrosoft.com 的“Contoso”租户，请使用 UPN（例如 admin@contoso.onmicrosoft.com）登录。
+可以将放到订阅**Deprovisoned**状态在使用 Microsoft 365 管理中心内的三天内删除。
 
-2. 转到“管理”选项卡，选择“产品和服务”，然后选择想要取消的订阅，并选择“删除”。
+1. 登录到[Microsoft 365 管理中心内](https://admin.microsoft.com)租户中的全局管理员的帐户。 如果尝试删除具有初始默认域 contoso.onmicrosoft.com 的“Contoso”租户，请使用 UPN（例如 admin@contoso.onmicrosoft.com）登录。
+
+2. 转到**计费**选项卡并选择**产品和服务**，然后选择你想要取消的订阅。 单击“取消”后，刷新该页面。
   
-  ![删除用于删除订阅的链接](./media/directory-delete-howto/delete-command.png)
+   ![删除用于删除订阅的链接](./media/directory-delete-howto/delete-command.png)
   
-3. 选择“删除订阅”以接受条款和条件，并删除订阅。 所有数据将在三天内永久删除。 如果改变了主意，可在接下来的三天内重新激活订阅。
+3. 选择“删除”，删除订阅并接受条款和条件。 所有数据将在三天内永久删除。 如果改变心意，可在这三天时间内重新激活订阅。
   
-  ![条款和条件](./media/directory-delete-howto/delete-terms.png)
+   ![请仔细阅读条款和条件](./media/directory-delete-howto/delete-terms.png)
 
 4. 现在订阅状态已改变，订阅已被标记以进行删除。 订阅在 72 小时后会进入“已取消预配”状态。
 
 5. 已删除租户上的订阅并且时间已过 72 后，可再次登录 Azure AD 管理中心，这里应没有必需的操作，也不会有订阅阻止你删除租户。 你应可以成功删除 Azure AD 租户。
   
-  ![在删除屏幕通过订阅检查](./media/directory-delete-howto/delete-checks-passed.png)
+   ![在删除屏幕通过订阅检查](./media/directory-delete-howto/delete-checks-passed.png)
 
 ## <a name="next-steps"></a>后续步骤
+
 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory/)

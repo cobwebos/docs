@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cb8e5074d0cd99f5c7cb2130e6f9181eb5382015
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 5aa118815146287d00a3bb8ee7d5fce57a6ad9ca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805591"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120289"
 ---
 <a name="how-to-fill-out-the-technical-info-form"></a>如何填写“技术信息”窗体
 ===========================================
@@ -36,9 +36,9 @@ ms.locfileid: "48805591"
 
 -   **应用测试自动化** -- 必需 - 为了对扩展进行自动化测试而必须创建的 VS Code 测试包。
 
-2.  在“扩展的其他信息”部分中，上传你的扩展的其他信息。 在验证过程中将使用此信息。
+1. 在“扩展的其他信息”部分中，上传你的扩展的其他信息。 在验证过程中将使用此信息。
 
-    ![应用扩展的其他信息窗体](./media/d365-financials/image016.png)
+   ![应用扩展的其他信息窗体](./media/d365-financials/image016.png)
 
 
 -   **产品文档 URL** -- 必需 - 扩展的文档的 URL。

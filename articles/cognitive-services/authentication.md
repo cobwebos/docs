@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 2f9b477e076b038a6a695952ee3f770b30ad179b
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429462"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240756"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
@@ -24,15 +24,17 @@ ms.locfileid: "56429462"
 * [使用多服务订阅密钥进行身份验证](#authenticate-with-a-multi-service-subscription-key)
 * [使用令牌进行身份验证](#authenticate-with-an-authentication-token)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在发出请求之前，需要具有 Azure 帐户和 Azure 认知服务订阅。 如果已有帐户，请继续并跳到下一节。 如果还没有帐户，我们会提供指南，可在几分钟内完成设置：[创建 Azure 认知服务帐户](cognitive-services-apis-create-account.md)。
 
+可以获取订阅密钥从[Azure 门户](cognitive-services-apis-create-account.md#access-your-resource)创建你的帐户，或激活之后[免费试用版](https://azure.microsoft.com/try/cognitive-services/my-apis)。
+ 
 ## <a name="authentication-headers"></a>身份验证标头
 
 让我们快速查看可用于 Azure 认知服务的身份验证标头。
 
-| 标头 | 说明 |
+| 标头 | 描述 |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | 使用此标头通过特定服务订阅密钥或多服务订阅密钥进行身份验证。 |
 | Ocp-Apim-Subscription-Region | 只有在使用具有[文本翻译 API](./Translator/reference/v3-0-reference.md) 的多服务订阅密钥时才需要此标头。 使用此标头指定订阅区域。 |

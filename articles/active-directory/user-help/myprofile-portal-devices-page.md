@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd6db6b8dbbe051dba129b0d9f3e87f293d6706
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458304"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729106"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>从“我的个人资料”（预览版）门户管理连接的设备
 从“我的个人资料”门户的“设备”页，可以管理使用工作或学校帐户连接到的设备，禁用不再拥有的任何设备。
@@ -29,14 +29,14 @@ ms.locfileid: "56458304"
 
 2. 从左侧导航窗格选择“设备”，或从“设备”块选择“管理设备”链接。
 
-    ![“我的个人资料”页，显示突出显示的“设备”链接](media/myprofile-portal/myprofile-portal-devices-links.png)
+    ![“我的个人资料”页，显示突出显示的“设备”链接](media/myprofile-portal/myprofile-portal-devices.png)
 
 3. 查看有关连接设备的信息，并确保可以识别所有这些设备。 
 
     ![“设备”页，显示连接的设备](media/myprofile-portal/myprofile-portal-devices-page.png)
 
 ## <a name="disable-a-device"></a>禁用设备
-可以随时禁用任何连接的设备。 如果设备对你而言不熟悉或如果设备丢失或被盗，这一点尤其重要。
+可以随时禁用任何连接的设备。 如果设备对你而言不熟悉或如果设备丢失或被盗，这一点尤其重要。 禁用设备后，它将不再进行身份验证由你的组织，并将不能访问任何组织的资源。
 
 >[!Important]
 >如果错误地禁用了设备，则无法撤消该操作。 必须联系组织的管理员以重新添加设备。
@@ -49,4 +49,4 @@ ms.locfileid: "56458304"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看最近登录活动后，可以选择查看或管理[安全信息](user-help-security-info-overview.md)、[最近登录活动](myprofile-portal-recent-activity-page.md)、连接的[组织](myprofile-portal-organizations-page.md)，或者选择查看组织[使用数据](myprofile-portal-privacy-page.md)的方式。
+- 后查看连接的设备，你可以选择要查看或管理你[的安全信息](user-help-security-info-overview.md)、 你[组织](myprofile-portal-organizations-page.md)，或视图如何组织[使用你的数据](myprofile-portal-privacy-page.md)。

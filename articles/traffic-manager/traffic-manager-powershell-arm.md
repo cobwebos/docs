@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: efaa9101fbe46e0db2f582fe5a208dd8b16f095f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 2b480df0100690a7a5064044d435a34845516fa6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003578"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442097"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
-Azure 资源管理器是 Azure 中的首选服务管理接口。 可以使用基于 Azure 资源管理器的 API 和工具来管理 Azure 流量管理器配置文件。
+Azure Resource Manager 是 Azure 中的首选服务管理接口。 可以使用基于 Azure 资源管理器的 API 和工具来管理 Azure 流量管理器配置文件。
 
 ## <a name="resource-model"></a>资源模型
 
@@ -38,7 +38,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 * [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
 
-本文中的示例假设你具备现有的资源组。 可以使用以下命令创建资源组：
+本文中的示例假设已有一个资源组。 可以使用以下命令创建资源组：
 
 ```powershell
 New-AzResourceGroup -Name MyRG -Location "West US"
@@ -57,13 +57,13 @@ $profile = New-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG -
 
 下表描述了参数：
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
-| Name |流量管理器配置文件资源的资源名称。 同一资源组中的配置文件必须具有唯一的名称。 此名称不同于用于 DNS 查询的 DNS 名称。 |
+| 名称 |流量管理器配置文件资源的资源名称。 同一资源组中的配置文件必须具有唯一的名称。 此名称不同于用于 DNS 查询的 DNS 名称。 |
 | ResourceGroupName |包含配置资源的资源组的名称。 |
 | TrafficRoutingMethod |指定用于确定在响应 DNS 查询时返回的终结点的流量路由方法。 可能的值为“Performance”、“Weighted”或“Priority”。 |
 | RelativeDnsName |指定此流量管理器配置文件提供的 DNS 名称中的主机名部分。 将此值与 Azure 流量管理器使用的 DNS 域名相结合，可以构成配置文件的完全限定域名 (FQDN)。 例如，设置“contoso”值将成为“contoso.trafficmanager.net”。 |
-| TTL |指定 DNS 生存时间 (TTL)，以秒为单位。 此 TTL 用于通知本地 DNS 解析器和 DNS 客户端，要将此流量管理器配置文件的 DNS 响应缓存多久。 |
+| TTL |指定 DNS 生存时间 (TTL)，以秒为单位。 此 TTL 通知本地 DNS 解析器和 DNS 客户端缓存此流量管理器配置文件的 DNS 响应的时长。 |
 | MonitorProtocol |指定用于监视终结点运行状况的协议。 可能的值为“HTTP”和“HTTPS”。 |
 | MonitorPort |指定用于监视终结点运行状况的 TCP 端口。 |
 | MonitorPath |指定用于探测终结点运行状况的终结点域名的相对路径。 |
@@ -151,7 +151,7 @@ New-AzTrafficManagerEndpoint -Name MyIpEndpoint -ProfileName MyProfile -Resource
 指定外部终结点时：
 
 * 必须使用“Target'”参数指定终结点域名
-* 如果使用了“'Performance”流量路由方法，则需要获取“EndpointLocation”。 否则其则是可选项。 此值必须是[有效的 Azure 区域名称](https://azure.microsoft.com/regions/)。
+* 如果使用“性能”流量路由方法，则需要“EndpointLocation”。 否则其则是可选项。 此值必须是[有效的 Azure 区域名称](https://azure.microsoft.com/regions/)。
 * “加权”和“优先级”是可选项。
 
 ### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>示例 1：使用 `Add-AzTrafficManagerEndpointConfig` 和 `Set-AzTrafficManagerProfile` 添加外部终结点
@@ -208,7 +208,7 @@ New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceG
 
 ## <a name="adding-endpoints-from-another-subscription"></a>从其他订阅添加终结点
 
-流量管理器可以使用不同订阅中的终结点。 需要使用要添加的终结点切换到订阅，以检索所需的流量管理器输入。 然后，需要使用流量管理器配置文件切换到订阅，并向其中添加终结点。 下面的示例演示如何使用公共 IP 地址执行此操作。
+流量管理器可以使用不同订阅中的终结点。 需要使用要添加的终结点切换到订阅，以检索所需的流量管理器输入。 然后，您需要切换到这些订阅与流量管理器配置文件，并向其添加终结点。 下面的示例演示如何使用公共 IP 地址执行此操作。
 
 ```powershell
 Set-AzContext -SubscriptionId $EndpointSubscription

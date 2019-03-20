@@ -7,18 +7,18 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.assetid: 1f054a4e-6243-4a66-a62a-0031adb750d8
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d1d2dd689cb389b6adfe1dd534e7c73e17f755f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 4082847e1871fc03713471b0c043dddb80f91b0d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989179"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769227"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>在 Azure Monitor 中设定监视解决方案的目标（预览版）
 向订阅添加监视解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。  你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。  本文介绍了如何使用“解决方案目标”，这是一种允许向解决方案界定一个范围的功能。
@@ -35,7 +35,7 @@ ms.locfileid: "55989179"
 在工作区中创建计算机组后，将该组包括在范围配置中，然后可以将范围配置应用于一个或多个解决方案。
  
  
- ### <a name="2-create-a-scope-configuration"></a>2.创建范围配置
+### <a name="2-create-a-scope-configuration"></a>2.创建范围配置
  **范围配置**包括一个或多个计算机组并且可以应用于一个或多个解决方案。 
  
  使用以下过程创建范围配置。  
@@ -49,7 +49,7 @@ ms.locfileid: "55989179"
  6. 单击“确定”以创建范围配置。 
 
 
- ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3.将范围配置应用于解决方案。
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3.将范围配置应用于解决方案。
 创建范围配置后，可以将其应用于一个或多个解决方案。  请注意，虽然单个范围配置可以用于多个解决方案，但每个解决方案只能使用一个范围配置。
 
 使用以下过程应用范围配置。  

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ae29451e3f7ec263f296e69656a5c66045334687
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227429"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "58114076"
 ---
 1. 使用[从 Azure 经典 CLI 连接到 Azure](/cli/azure/authenticate-azure-cli) 中列出的步骤登录到 Azure 订阅。
 

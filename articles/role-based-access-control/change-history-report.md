@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: cab5b9317102a86dd75d2cb7e5a820cf64d2e831
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338797"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535540"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>查看 Azure 资源的 RBAC 更改的活动日志
 
@@ -108,9 +108,9 @@ az monitor activity-log list --resource-group pharma-sales-projectforecast --sta
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
 ```
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) 是另一种可用于收集并分析所有 Azure 资源的 RBAC 更改的工具。 Log Analytics 有以下优势：
+[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)是另一个工具可用于收集和分析所有 Azure 资源的 RBAC 更改。 Azure Monitor 日志具有以下优势：
 
 - 编写复杂查询和逻辑
 - 与警报、Power BI 和其他工具集成
@@ -123,9 +123,9 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 1. 为工作区[配置 Activity Log Analytics 解决方案](../azure-monitor/platform/collect-activity-logs.md#configuration)。
 
-1. [查看活动日志](../azure-monitor/platform/collect-activity-logs.md#using-the-solution)。 单击“Log Analytics”选项可以快速导航至 Activity Log Analytics 概述页面。
+1. [查看活动日志](../azure-monitor/platform/collect-activity-logs.md#using-the-solution)。 导航到活动 Log Analytics 解决方案概述页的快速方法是单击**Log Analytics**选项。
 
-   ![门户中的 Log Analytics 选项](./media/change-history-report/azure-log-analytics-option.png)
+   ![Azure 监视器在门户中将记录选项](./media/change-history-report/azure-log-analytics-option.png)
 
 1. 可以选择使用[日志搜索](../log-analytics/log-analytics-log-search.md)页面或[高级分析门户](../azure-monitor/log-query/get-started-portal.md)来查询并查看日志。 若要详细了解这两种选择，请参阅[日志搜索页面或高级分析门户](../azure-monitor/log-query/portals.md)。
 

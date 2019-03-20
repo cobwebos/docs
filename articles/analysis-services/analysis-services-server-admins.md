@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5afc434ccd7a41c6fa1f4fec300941458c84889e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 25eb111871bbe3b18f59b0d6c123c72f3e55c859
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629556"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737104"
 ---
 # <a name="manage-server-administrators"></a>管理服务器管理员
 
@@ -40,8 +40,10 @@ ms.locfileid: "53629556"
 
 ## <a name="powershell"></a>PowerShell
 
-使用 [New-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver) cmdlet 在创建新服务器时指定管理员参数。 <br>
-使用 [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver) cmdlet 为现有服务器修改管理员参数。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+使用[新建 AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) cmdlet 来创建新的服务器时指定的管理员参数。 <br>
+使用[集 AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) cmdlet 来修改现有的服务器的管理员参数。
 
 ## <a name="rest-api"></a>REST API
 

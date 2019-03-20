@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 514242eb759a2349d96b38ebe54bb98cf0e83423
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468812"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454935"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -146,7 +146,7 @@ ms.locfileid: "55468812"
 1. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 粘贴需要的查询，根据需要，这会直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据。
 1. 开始使用上传的数据集对 Azure 机器学习实验流进行采样
 
-## <a name="largedbtodb"></a>场景 \#6：本地 SQL Server 数据库中针对 Azure 虚拟机中 SQL Server 的大型数据集
+## <a name="largedbtodb"></a>场景 \#6：针对 SQL Server 在 Azure 虚拟机在本地 SQL Server 数据库中的大型数据集
 ![Azure 中 SQL DB 的本地大型 SQL DB][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
@@ -154,7 +154,7 @@ ms.locfileid: "55468812"
 1. 使用一种数据导出方法将数据从 SQL Server 导出到转储文件。
    
    > [!NOTE]
-   > 如果决定移动本地数据库中所有数据，另一个方法（更快）是将完整数据库移动到 Azure 中的 SQL Server 实例。 跳过导出数据、创建数据库和将数据加载/导入到目标数据库的步骤，使用另一个方法。
+   > 如果您决定将所有数据从本地数据库，另一个 （更快） 方法将完整的数据库移到 Azure 中的 SQL Server 实例。 跳过导出数据、创建数据库和将数据加载/导入到目标数据库的步骤，使用另一个方法。
    > 
    > 
 1. 将转储文件上传到 Azure 存储容器。

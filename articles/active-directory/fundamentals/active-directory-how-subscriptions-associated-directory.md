@@ -8,40 +8,48 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 03/13/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a116355c8140d30f8297cde067a82f37f72e02a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 262f46b3d0b61923352f3ff98b08cb5e4f6d5e75
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165852"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993900"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
-Azure 订阅与 Azure Active Directory (Azure AD) 建立了信任关系，即该订阅信任 Azure AD 对用户、服务和设备进行身份验证。 多个订阅可以信任同一个 Azure AD 目录，但每个订阅只能信任一个目录。
+
+Azure 订阅已与 Azure Active Directory (Azure AD)，这意味着该订阅信任 Azure AD 进行身份验证的用户、 服务和设备的信任关系。 多个订阅可以信任同一个 Azure AD 目录，但每个订阅只能信任一个目录。
 
 如果订阅过期，则将失去与该订阅关联的所有其他资源的访问权限。 但是，Azure AD Directory 仍保留在 Azure 中，可使用不同的 Azure 订阅关联和管理目录。
 
-所有用户都有一个用于身份验证的“主”目录。 但是，用户还可在其他目录中作为来宾。 可在 Azure AD 中查看每位用户的主目录和来宾目录。
+你的所有用户具有单个*家庭*目录进行身份验证。 但是，用户还可在其他目录中作为来宾。 可在 Azure AD 中查看每位用户的主目录和来宾目录。
 
->[!Important]
->订阅目录更改后，所有已分配访问权限的[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 用户和所有订阅管理员都会失去访问权限。 此外，如果有任何密钥保管库，它们也将受到订阅移动的影响。 要解决该问题，必须[更改密钥保管库租户 ID](../../key-vault/key-vault-subscription-move-fix.md)，然后才能继续操作。
-
+> [!Important]
+> 在将对另一个目录，已使用分配的角色的用户的订阅[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md)将失去访问权限。 经典订阅管理员 （服务管理员和协同管理员） 还将失去访问权限。
 
 ## <a name="before-you-begin"></a>开始之前
+
 要想关联或添加订阅，必须先执行以下任务：
 
-- 使用符合以下条件的帐户登录：
-    - 对订阅具有“RBAC 所有者”访问权限。
+1. 请查看以下更改和可能如何影响您的列表：
 
+    - 使用 RBAC 角色分配的用户将失去访问权限
+    - 服务管理员和共同管理员将失去访问权限
+    - 如果必须任何密钥保管库，则它们将无法访问，您必须修复在关联后
+    - 如果你有已注册的 Azure Stack，必须关联过后重新注册
+
+1. 使用符合以下条件的帐户登录：
+    - 具有[所有者](../../role-based-access-control/built-in-roles.md#owner)角色分配的订阅。 有关如何将所有者角色分配的信息，请参阅[管理 Azure 资源使用 RBAC 和 Azure 门户访问权限](../../role-based-access-control/role-assignments-portal.md)。
     - 同时存在于当前目录（与订阅关联）和新目录（希望以后与订阅关联）中。 有关获取其他目录访问权限的详细信息，请参阅 [Azure Active Directory 管理员如何添加 B2B 协作用户？](../b2b/add-users-administrator.md)。
 
-- 请确保未使用 Azure 云服务提供商 (CSP) 订阅（MS-AZR-0145P、MS-AZR-0146P、MS-AZR-159P）、Microsoft 内部订阅 (MS-AZR-0015P) 或 Microsoft Imagine 订阅 (MS-AZR-0144P)。
+1. 请确保未使用 Azure 云服务提供商 (CSP) 订阅（MS-AZR-0145P、MS-AZR-0146P、MS-AZR-159P）、Microsoft 内部订阅 (MS-AZR-0015P) 或 Microsoft Imagine 订阅 (MS-AZR-0144P)。
     
 ## <a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>将现有订阅关联到 Azure AD 目录
+
 1. 登录，然后从 [Azure 门户中的“订阅”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择要使用的订阅。
 
 2. 选择“更改目录”。
@@ -61,6 +69,14 @@ Azure 订阅与 Azure Active Directory (Azure AD) 建立了信任关系，即该
     ![目录切换器页](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
 更改订阅目录是服务级操作，不会影响订阅的账单所有权。 帐户管理员仍可从[帐户中心](https://account.azure.com/subscriptions)更改服务管理员。 若要删除原始目录，必须将订阅的账单所有权转让给新的帐户管理员。若要详细了解如何转让账单所有权，请参阅[将 Azure 订阅所有权转让给其他帐户](../../billing/billing-subscription-transfer.md)。 
+
+## <a name="post-association-steps"></a>发布关联的步骤
+
+将关联到不同的目录的订阅后，可能必须执行恢复操作的其他步骤。
+
+1. 如果你有任何密钥保管库，则必须更改密钥保管库租户 id。 有关详细信息，请参阅[订阅移动后更改密钥保管库租户 ID](../../key-vault/key-vault-subscription-move-fix.md)。
+
+1. 如果你注册 Azure Stack 使用此订阅，则必须重新注册。 有关详细信息，请参阅[使用 Azure 注册 Azure Stack](../../azure-stack/azure-stack-registration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

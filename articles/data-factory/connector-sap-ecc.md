@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: d6a6d9b352db61d98e85c840a3ebc5cb6a832a3f
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: d86264b632daa09a899fae28e73e117b16322617
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352455"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121955"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP ECC 复制数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "54352455"
 - 复制由 SAP ECC OData 服务（例如 SAP 表/视图、BAPI、数据提取器，等等）公开的任何对象中的数据，或复制发送到 SAP PI 的可以通过相关适配器接收为 OData 的数据/IDOC。
 - 使用基本身份验证复制数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 通常，SAP ECC 通过 SAP 网关经由 OData 服务来公开实体。 若要使用此 SAP ECC 连接器，需要：
 
@@ -88,7 +88,7 @@ SAP ECC 链接服务支持以下属性：
 
 若要从 SAP ECC 复制数据，请将数据集的 type 属性设置为 **SapEccResource**。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | 路径 | SAP ECC OData 实体的路径。 | 是 |
 
@@ -121,7 +121,7 @@ SAP ECC 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**SapEccSource** | 是 |
-| query | 用于筛选数据的 OData 查询选项。 示例："$select=Name,Description&$top=10"。<br/><br/>SAP ECC 连接器复制以下组合 URL 中的数据：（在链接服务中指定的 RUL）/（在数据集中指定的路径）?（在复制活动源中指定的查询）。 请参阅 [OData URL 组件](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| query | 用于筛选数据的 OData 查询选项。 示例："$select=Name,Description&$top=10"。<br/><br/>SAP ECC 连接器复制以下组合 URL 中的数据：（在链接服务中指定的 RUL）/（在数据集中指定的路径）?（在复制活动源中指定的查询）。 请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 
 **示例：**
 
@@ -160,12 +160,12 @@ SAP ECC 链接服务支持以下属性：
 从 SAP ECC 复制数据时，可以使用以下映射将 SAP ECC 数据的 OData 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 | OData 数据类型 | 数据工厂临时数据类型 |
-|:--- |:--- |:--- |
+|:--- |:--- |
 | Edm.Binary | String |
 | Edm.Boolean | Bool |
 | Edm.Byte | String |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | 小数 |
+| Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | Edm.Single | Single |
 | Edm.Guid | String |

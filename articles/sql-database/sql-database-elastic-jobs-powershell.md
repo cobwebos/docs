@@ -11,32 +11,32 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: 52a12486add25cd32400af755aa6cd8cac07c6f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472637"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905048"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
 
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
-
 使用适用于**弹性数据库作业**的 PowerShell API（预览版），可以定义要针对哪组数据库执行哪些脚本。 本文说明如何使用 PowerShell cmdlet 创建和管理**弹性数据库作业**。 请参阅[弹性作业概述](sql-database-elastic-jobs-overview.md)。 
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+
+## <a name="prerequisites"></a>必备组件
 * Azure 订阅。 如需免费试用，请参阅[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
 * 使用弹性数据库工具创建的一组数据库。 请参阅[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)。
 * Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 * **弹性数据库作业** PowerShell 程序包：请参阅[安装弹性数据库作业](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>选择 Azure 订阅
-要选择订阅，需要提供订阅 ID (**-SubscriptionId**) 或订阅名称 (**-SubscriptionName**)。 如果有多个订阅，可以运行 **Get-AzureRmSubscription** cmdlet，并从结果集中复制所需的订阅信息。 获得订阅信息后，请运行下面的 cmdlet 将此订阅设置为默认值，即创建和管理作业的目标：
+要选择订阅，需要提供订阅 ID (**-SubscriptionId**) 或订阅名称 (**-SubscriptionName**)。 如果有多个订阅可以运行**Get AzSubscription** cmdlet，并复制结果的所需的订阅信息设置。 获得订阅信息后，请运行下面的 cmdlet 将此订阅设置为默认值，即创建和管理作业的目标：
 
-    Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
+    Select-AzSubscription -SubscriptionId {SubscriptionID}
 
 建议使用 [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) 针对弹性数据库作业开发和执行 PowerShell 脚本。
 
@@ -46,7 +46,7 @@ ms.locfileid: "55472637"
 <table style="width:100%">
   <tr>
     <th>对象类型</th>
-    <th>说明</th>
+    <th>描述</th>
     <th>相关的 PowerShell API</th>
   </tr>
   <tr>
@@ -524,7 +524,7 @@ ms.locfileid: "55472637"
     Write-Output $job
 
 ## <a name="data-collection-across-databases"></a>跨数据库收集数据
-可以使用作业跨一组数据库来执行查询，并将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
+用户可以使用作业跨一组数据库来执行查询，并将结果发送到特定的表。 可以在事实之后查询数据表，以查看每个数据库的查询结果。 这提供了跨多个数据库执行查询的异步方法。 可通过重试自动处理失败的尝试。
 
 如果不存在指定的目标表，则自动创建该表。 新表与返回的结果集的架构相符。 如果脚本返回多个结果集，弹性数据库作业只将第一个结果集发送到目标表。
 

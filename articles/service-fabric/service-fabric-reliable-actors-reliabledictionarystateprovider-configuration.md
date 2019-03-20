@@ -7,19 +7,19 @@ author: sumukhs
 manager: timlt
 editor: ''
 ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 13cf9c148e36201bd8ee81d4072d8b8cd8660bd1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 224899e92684d83d33fbd61408e67d4ec11ec0a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053142"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898731"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>配置 Reliable Actors - ReliableDictionaryActorStateProvider
 通过更改 Visual Studio 包根目录下的指定执行组件的 Config 文件夹中生成的 settings.xml 文件，可以修改 ReliableDictionaryActorStateProvider 的默认配置。
@@ -66,7 +66,7 @@ SharedLogId 和 SharedLogPath 设置始终一起使用，用于定义群集中�
 SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志的磁盘空间数量。  若要指定 SharedLogSizeInMB，不需要指定 SharedLogId 和 SharedLogPath。
 
 ## <a name="replicator-security-configuration"></a>复制器安全配置
-复制器安全配置用于保护在复制过程中使用的通信通道的安全。 这意味着服务将无法看到对方的复制流量，从而确保高度可用的数据也处于安全状态。
+复制器安全配置用于保护在复制过程中使用的通信通道的安全。 这意味着服务无法看到对方的复制流量，从而确保高度可用的数据也处于安全状态。
 默认情况下，空的安全配置节会影响复制安全。
 
 > [!IMPORTANT]
@@ -89,18 +89,18 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 | BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
 | ReplicatorEndpoint |不适用 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
 | MaxReplicationMessageSize |字节 |50 MB |可以在单个消息中传输的复制数据的最大大小。 |
-| MaxPrimaryReplicationQueueSize |操作的数量 |8192 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。 此值必须大于 64 和 2 的幂。 |
-| MaxSecondaryReplicationQueueSize |操作的数量 |16384 |辅助队列中的操作的最大数目。 将在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
+| MaxPrimaryReplicationQueueSize |操作的数量 |8192 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，释放一个操作。 此值必须大于 64 和 2 的幂。 |
+| MaxSecondaryReplicationQueueSize |操作的数量 |16384 |辅助队列中的操作的最大数目。 会在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
 | CheckpointThresholdInMB |MB |200 |创建状态检查点后的日志文件空间量。 |
 | MaxRecordSizeInKB |KB |1024 |复制器可以在日志中写入的最大记录大小。 此值必须是 4 的倍数，且大于 16。 |
-| OptimizeLogForLowerDiskUsage |布尔 |是 |为 true 时会配置日志，以便使用 NTFS 稀疏文件创建副本的专用日志文件。 这会降低文件的实际磁盘空间使用率。 为 false 时，会使用固定分配创建文件，这可提供最佳写入性能。 |
+| OptimizeLogForLowerDiskUsage |布尔 |true |为 true 时会配置日志，以便使用 NTFS 稀疏文件创建副本的专用日志文件。 这会降低文件的实际磁盘空间使用率。 为 false 时，会使用固定分配创建文件，这可提供最佳写入性能。 |
 | SharedLogId |guid |"" |指定要用于标识与此副本一起使用的共享日志文件的唯一 guid。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogId，则也必须指定 SharedLogPath。 |
 | SharedLogPath |完全限定的路径名 |"" |指定会在其中创建此副本共享日志文件的完全限定路径。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
 
 ## <a name="sample-configuration-file"></a>示例配置文件
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Section Name="MyActorServiceReplicatorConfig">
       <Parameter Name="ReplicatorEndpoint" Value="MyActorServiceReplicatorEndpoint" />
       <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>

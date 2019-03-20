@@ -1,10 +1,10 @@
 ---
-title: 在 Azure AD 中管理紧急访问帐户 | Microsoft Docs
+title: 管理紧急访问管理员帐户的 Azure Active Directory |Microsoft Docs
 description: 本文介绍如何借助紧急访问帐户来防止意外地被锁在 Azure Active Directory (Azure AD) 租户之外的情况。
 services: active-directory
 author: markwahl-msft
 ms.author: curtand
-ms.date: 12/21/2018
+ms.date: 03/19/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bd08f9414353eb6d458494d76654dae7262c524
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f430a832ffb35b95d0bf4eff2d82be5ecc3d865c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769181"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224934"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 

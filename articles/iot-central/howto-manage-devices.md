@@ -3,19 +3,19 @@ title: 在 Azure IoT Central 应用程序中管理设备 | Microsoft Docs
 description: 如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 11/02/2018
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b882c31f40f177b81fc84eb7071f396bddeaa0dd
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: 1e67c22a55068ce42cb1eb6d9c0c9bdf8215f44e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658108"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167977"
 ---
-# <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
+# <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>在 Azure IoT Central 应用程序中管理设备（新 UI 设计）
 
 本文介绍如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。 操作员可以：
 
@@ -24,19 +24,17 @@ ms.locfileid: "55658108"
 - 通过更改设备属性中存储的值，使设备元数据保持最新状态。
 - 通过在“设置”页中更新特定设备的设置，来控制设备的行为。
 
-[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
-
 ## <a name="view-your-devices"></a>查看设备
 
 若要查看单个设备：
 
 1. 在左侧导航菜单中选择“Device Explorer”。 此处会显示[设备模板](howto-set-up-template.md)的列表。
 
-1. 在左侧窗格的“模板”下选择设备模板。
+1. 在“模板”列表中选择设备模板。
 
-1. 在“Device Explorer”页的右侧窗格中，可以看到从该设备模板创建的设备列表，如下所示。 选择单个设备以查看该设备的“设备详细信息”页：
+1. 在“Device Explorer”页面的右侧窗格中，可以看到根据该设备模板创建的设备的列表。 选择单个设备以查看该设备的“设备详细信息”页：
 
-    [![设备详细信息页](./media/howto-manage-devices/image1.png)](./media/howto-manage-devices/image1.png#lightbox)
+    ![设备详细信息页](./media/howto-manage-devices/devicelist.png)
 
 ## <a name="add-a-device"></a>添加设备
 
@@ -48,15 +46,14 @@ ms.locfileid: "55658108"
 
 1. 选择“+ 新建”。
 
-1. 选择“真实”或“模拟”。 真实设备是指要连接到 Azure IoT Central 应用程序的物理设备。 模拟设备包含 Azure IoT Central 生成的示例数据。 本示例使用真实设备。 选择“真实”导航到新设备的“设备详细信息”页。
-
+1. 选择“真实”或“模拟”。 真实设备是指要连接到 Azure IoT Central 应用程序的物理设备。 模拟设备包含 Azure IoT Central 生成的示例数据。
 
 ## <a name="import-devices"></a>导入设备
 
-Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大量的设备连接到应用程序。 该 CSV 文件应包含以下列（和标头）
-1.  IOTC_DeviceID<span style="color:Red">（应为小写）</span>
-1.  IOTC_DeviceName（可选）
+若要将大量设备连接到应用程序，可从 CSV 文件批量导入设备。 该 CSV 文件应包含以下列和标头：
 
+* **IOTC_DeviceID** - 设备 ID 应全部小写。
+* **IOTC_DeviceName** - 此列是可选的。
 
 若要在应用程序中批量注册设备：
 
@@ -64,12 +61,12 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 
 1. 在左面板中，选择要为其批量创建设备的设备模板。
 
- >   [!NOTE] 
-    如果还没有设备模板，则可以在“未关联设备”下导入设备，并在没有任何模板的情况下注册这些设备。 导入设备后，就可以将其与模板关联起来作为后续步骤。
+    > [!NOTE]
+    > 如果还没有设备模板，则可以在“未关联的设备”下导入设备，并在没有模板的情况下注册这些设备。 导入设备后，可以将其与模板相关联。
 
-1. 单击“导入”。
+1. 选择“导入”。
 
-    [![导入操作](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
+    ![导入操作](./media/howto-manage-devices/BulkImport1.png)
 
 1. 选择包含要导入的设备 ID 列表的 CSV 文件。
 
@@ -77,54 +74,65 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 
 1. 导入完成后，设备网格上会显示成功消息。
 
-    [![导入成功](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+    ![导入成功](./media/howto-manage-devices/BulkImport3.png)
 
-如果设备导入操作失败，将在设备网格上看到错误消息。 系统会生成一个日志文件来捕获所有错误；单击错误消息可下载该文件。
-
+如果设备导入操作失败，将在设备网格上看到错误消息。 系统会生成一个捕获所有错误的可下载的日志文件。
 
 **将设备与模板关联**
 
 如果通过在“未关联设备”下启动导入来注册设备，则无需任何设备模板关联即可创建设备。 设备必须与模板关联起来，才能浏览有关设备的数据和其他详细信息。 请按照以下步骤将设备与模板进行关联：
-1. 在左侧导航菜单中选择“Device Explorer”。
-1. 在左面板中，选择“未关联设备”。
-    [![未关联设备](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
-1. 选择想要与模板关联的设备。
-1. 单击“关联”选项。
-    [![关联设备](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
-1. 从可用模板列表中选择模板，然后单击“关联”按钮。
-1. 所选设备将在相应的设备模板下移动。
 
- >   [!NOTE] 
-    设备与模板关联后，就无法取消关联或与其他模板关联。
+1. 在左侧导航菜单中选择“Device Explorer”。
+
+1. 在左面板中，选择“未关联的设备”：
+
+    ![未关联的设备](./media/howto-manage-devices/UnassociatedDevices1.png)
+
+1. 选择想要与模板关联的设备：
+
+1. 选择**相关联**:
+
+    ![关联设备](./media/howto-manage-devices/UnassociatedDevices2.png)
+
+1. 从可用模板列表中选择该模板，然后选择**相关联**。
+
+1. 所选设备与所选设备模板相关联。
+
+> [!NOTE]
+> 设备与某个模板关联后，就无法取消关联或与其他模板关联。
 
 ## <a name="export-devices"></a>导出设备
 
-若要预配设备以连接到 IoT Central，将需要由 IoT Central 生成的设备连接字符串。 可以使用“导出”功能从应用程序中批量获取设备的连接字符串和其他属性。 “导出”为所有选定的设备创建一个 CSV 文件，其中包含设备标识、设备名称和主要连接字符串。
+若要将真实设备连接到 IoT Central，需要其连接字符串。 您可以导出大容量以获取你需要创建设备的连接字符串信息中的设备详细信息。 导出过程中使用设备标识、 设备名称和所有所选设备的密钥创建的 CSV 文件。
 
 从应用程序中批量导出设备：
+
 1. 在左侧导航菜单中选择“Device Explorer”。
 
-1. 在左面板中，选择要为其导出设备的设备模板。
+1. 在左面板中，选择要从中导出设备的设备模板。
 
-1. 选择想要导出的设备，然后单击“导出”操作。
+1. 选择你想要导出，然后选择的设备**导出**操作。
 
-    [![导出](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
+    ![导出](./media/howto-manage-devices/Export1.png)
 
-1. 导出过程将开始，你可以跟踪网格顶部的状态。 
+1. 导出过程开始。 可以在网格顶部跟踪状态。
 
-1. 一旦导出完成，将显示一条成功消息，并提供一个用来下载生成文件的链接。
+1. 导出完成后，将显示一条成功消息，并提供一个用来下载生成文件的链接。
 
-1. 单击“成功消息”将文件下载到磁盘上的本地文件夹。
+1. 选择**条成功消息**若要将文件下载到磁盘上的本地文件夹。
 
-    [![导出成功](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
+    ![导出成功](./media/howto-manage-devices/Export2.png)
 
-1. 导出的 CSV 文件将具有以下列信息：设备 ID、设备名称、设备主/辅助密钥以及主/次要证书指纹
-    *   IOTC_DEVICEID
-    *   IOTC_DEVICENAME
-    *   IOTC_SASKEY_PRIMARY
-    *   IOTC_SASKEY_SECONDARY
-    *   IOTC_X509THUMBPRINT_PRIMARY 
-    *   IOTC_X509THUMBPRINT_SECONDARY
+1. 导出的 CSV 文件包含以下列：设备 ID、设备名称、设备密钥和 X509 证书指纹：
+
+    * IOTC_DEVICEID
+    * IOTC_DEVICENAME
+    * IOTC_SASKEY_PRIMARY
+    * IOTC_SASKEY_SECONDARY
+    * IOTC_X509THUMBPRINT_PRIMARY
+    * IOTC_X509THUMBPRINT_SECONDARY
+
+请参阅[在 Azure IoT 中心的设备连接性](concepts-connectivity.md)，有关连接字符串和连接到 IoT 中心应用程序的实际设备的详细信息。
 
 ## <a name="delete-a-device"></a>删除设备
 
@@ -148,7 +156,7 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 
 1. 选择“设置”选项卡。此处会显示设备的所有设置及其当前值。 对于每项设置，可以查看设备是否仍在同步。
 
-1. 将设置修改为所需的值。 可以一次性修改多个设置，也可以同时更新所有设置。
+1. 将设置修改为所需的值。 可以一次修改多个设置，并同时更新这些设置。
 
 1. 选择“更新”。 值会发送到设备。 当设备确认设置更改时，该设置的状态将恢复为“已同步”。
 

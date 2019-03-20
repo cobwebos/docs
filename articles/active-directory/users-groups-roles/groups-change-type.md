@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d829ad9b85b6e7944f6dd534ea7fbb3f92a0d2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887911"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199595"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>在 Azure Active Directory 中将静态组成员资格更改为动态
 
@@ -47,14 +47,13 @@ ms.locfileid: "57887911"
   
 2. 选择“添加动态查询”，然后提供规则。
   
-   ![输入规则](./media/groups-change-type/enter-rule.png)
+   ![输入规则的动态组](./media/groups-change-type/enter-rule.png)
   
 3. 创建规则之后，选择页面底部的“添加查询”。
 4. 在组的“属性”页上选择“保存”，以便保存所做的更改。 组列表中组的“成员身份类型”会立即进行更新。
 
 > [!TIP]
 > 如果所输入的成员资格规则不正确，组转换操作可能会失败。 通知显示在门户的右上角；它包含系统无法接受规则的原因说明。 请仔细阅读，了解如何调整规则才能使其生效。 有关规则语法的示例以及成员资格规则支持的属性、运算符和值的完整列表，请参阅 [Azure Active Directory 中的组的动态成员资格规则](groups-dynamic-membership.md)。
-
 
 ## <a name="change-membership-type-for-a-group-powershell"></a>更改组的成员资格类型 (PowerShell)
 
@@ -63,7 +62,7 @@ ms.locfileid: "57887911"
 
 下面是在现有组中切换成员身份管理的函数示例。 在此示例中，必须小心正确地操作 GroupTypes 属性，并保留与动态成员身份无关的任何值。
 
-```
+```powershell
 #The moniker for dynamic groups as used in the GroupTypes property of a group object
 $dynamicGroupTypeString = "DynamicMembership"
 
@@ -107,13 +106,13 @@ function ConvertStaticGroupToDynamic
 ```
 将组设为静态：
 
-```
+```powershell
 ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
 ```
 
 将组设为动态：
 
-```
+```powershell
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
 

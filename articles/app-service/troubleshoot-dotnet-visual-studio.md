@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e9c1c35236ce6449a9c9bf06ba291f46db472
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729916"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996774"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
 ## <a name="overview"></a>概述
@@ -134,19 +134,19 @@ public ActionResult About()
 }
 ```
 
-4. 在 `ViewBag.Message` 行上[设置一个断点](https://docs.microsoft.com/visualstudio/debugger/)。
+1. 在 `ViewBag.Message` 行上[设置一个断点](https://docs.microsoft.com/visualstudio/debugger/)。
 
-5. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。
+1. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。
 
-6. 在“配置文件”下拉列表中，选择在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中使用的相同配置文件。 然后，单击“设置”。
+1. 在“配置文件”下拉列表中，选择在[在 Azure 应用服务中创建 ASP.NET 应用](app-service-web-get-started-dotnet-framework.md)中使用的相同配置文件。 然后，单击“设置”。
 
-7. 在“发布”对话框中，单击“设置”选项卡，将“配置”更改为“调试”，然后单击“保存”。
+1. 在“发布”对话框中，单击“设置”选项卡，将“配置”更改为“调试”，然后单击“保存”。
 
     ![在调试模式下发布](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-8. 单击“发布” 。 部署结束后，浏览器将打开应用的 Azure URL，此时关闭浏览器。
+1. 单击“发布” 。 部署结束后，浏览器将打开应用的 Azure URL，此时关闭浏览器。
 
-9. 在“服务器资源管理器”中，右键单击应用，并单击“附加调试器”。
+1. 在“服务器资源管理器”中，右键单击应用，并单击“附加调试器”。
 
     ![附加调试程序](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
@@ -156,19 +156,19 @@ public ActionResult About()
     > 如果启动调试器时出现问题，请尝试使用“云资源管理器”而不是“服务器资源管理器”执行此操作。
     >
 
-10. 单击菜单中的“关于”。
+1. 单击菜单中的“关于”。
 
-     Visual Studio 会在断点处停止，代码在 Azure 中运行，而不是在本地计算机上。
+    Visual Studio 会在断点处停止，代码在 Azure 中运行，而不是在本地计算机上。
 
-11. 将鼠标悬停在 `currentTime` 变量上查看时间值。
+1. 将鼠标悬停在 `currentTime` 变量上查看时间值。
 
-     ![在运行于 Azure 中的调试模式下查看变量](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
+    ![在运行于 Azure 中的调试模式下查看变量](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
-     看到的时间是 Azure 服务器时间，可能与本地计算机所处时区不同。
+    看到的时间是 Azure 服务器时间，可能与本地计算机所处时区不同。
 
-12. 为 `currentTime` 变量输入一个新值，如“Now running in Azure”。
+1. 为 `currentTime` 变量输入一个新值，如“Now running in Azure”。
 
-13. 按 F5 继续运行。
+1. 按 F5 继续运行。
 
      运行于 Azure 中的“关于”页面会显示在 currentTime 变量中输入的新值。
 
@@ -311,7 +311,7 @@ public ActionResult Contact()
 }        
 ```
 
-2. 将 `using System.Diagnostics;` 语句添加到文件顶部。
+1. 将 `using System.Diagnostics;` 语句添加到文件顶部。
 
 ### <a name="view-the-tracing-output-locally"></a>本地查看跟踪输出
 1. 按 F5 以调试模式运行应用程序。
@@ -339,15 +339,15 @@ public ActionResult Contact()
 ```
 
 `WebPageTraceListener` 允许通过浏览至 `/trace.axd` 查看跟踪输出。
-3. 将<a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">跟踪元素</a>添加到 Web.config file 文件中的 `<system.web>` 下面，如下所示：
+1. 将<a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">跟踪元素</a>添加到 Web.config file 文件中的 `<system.web>` 下面，如下所示：
 
 ``` xml
 <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
 ```       
 
-4. 按 Ctrl+F5 运行应用程序。
-5. 在浏览器窗口的地址栏中，将 trace.axd 添加到 URL，然后按 Enter（URL 类似于 http://localhost:53370/trace.axd)）。
-6. 在“应用程序跟踪”页面上，单击第一行中（非浏览器链接中）的“查看详细信息”。
+1. 按 Ctrl+F5 运行应用程序。
+1. 在浏览器窗口的地址栏中，添加*trace.axd*到 URL，然后按 Enter (URL 类似于`http://localhost:53370/trace.axd`)。
+1. 在“应用程序跟踪”页面上，单击第一行中（非浏览器链接中）的“查看详细信息”。
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
@@ -477,7 +477,7 @@ Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出
    * Web 服务器日志位于 *LogFiles\http\RawLogs* 文件夹的 *.log* 文件中。 可以使用诸如 [Log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) 之类的工具查看并处理这些文件。
    * 详细的错误消息日志位于 *LogFiles\DetailedErrors* 文件夹的 *.html* 文件中。
 
-    （*deployments* 文件夹内是由源代码管理发布创建的文件；其中没有任何有关 Visual Studio 发布的内容。 *Git* 文件夹内是与源代码管理发布以及日志文件流式传输服务相关的跟踪。）  
+     （*deployments* 文件夹内是由源代码管理发布创建的文件；其中没有任何有关 Visual Studio 发布的内容。 *Git* 文件夹内是与源代码管理发布以及日志文件流式传输服务相关的跟踪。）  
 
 <!-- ## <a name="storagelogs"></a>View storage logs
 Application tracing logs can also be sent to an Azure storage account, and you can view them in Visual Studio. To do that you'll create a storage account, enable storage logs in the Azure portal, and view them in the **Logs** tab of the **Azure Web App** window.
@@ -576,7 +576,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 
 3. 在 Visual Studio 中，在“Azure Web 应用”窗口的“配置”选项卡中，单击“在管理门户中打开”。
 
-4. 在 [Azure 门户](https://portal.azure.com)中应用的“设置”页面上，单击“部署凭据”，并输入新的用户名和密码。
+4. 在中[Azure 门户](https://portal.azure.com)**设置**为您的应用程序页上，单击**部署凭据**，然后输入新用户名和密码。
 
     ![新建 FTP 用户名和密码](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
@@ -685,7 +685,7 @@ catch (Exception ex)
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   用于查看 Web 服务器日志（*.log* 文件）中的数据的工具。
-* [使用 LogParser 解决 IIS 性能问题或应用程序错误](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [解决 IIS 性能问题或使用 logparser 解决应用程序错误](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   可用于分析 Web 服务器日志的 Log Parser 工具介绍。
 * [Robert McMurray 有关 LogParser 使用的博客文章](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [IIS 7.0、IIS 7.5 以及 IIS 8.0 中的 HTTP 状态代码](https://support.microsoft.com/kb/943891)

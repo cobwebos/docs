@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: 23d30d3b881fbe5aab4e537073b2582eb01bfe7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: b5544be37015368173f3f8eb39288b7a97ae11c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183418"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084991"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD 域服务托管域中的同步
 下图演示了 Azure AD 域服务托管域中的同步工作原理。
@@ -70,8 +70,6 @@ Azure AD Connect 同步用于将用户帐户、组成员身份和凭据哈希同
 
 > [!NOTE]
 > **使用 UPN 格式登录到托管域：** 可以针对托管域中的某些用户帐户自动生成 SAMAccountName 属性。 如果多个用户具有相同的 mailNickname 属性或者用户具有很长的 UPN 前缀，可能会自动生成这些用户的 SAMAccountName。 因此，使用 SAMAccountName 格式（例如“CONTOSO100\joeuser”）不一定能够可靠地登录到域。 为用户自动生成的 SAMAccountName 可能不同于其 UPN 前缀。 请使用 UPN 格式（例如“joeuser@contoso100.com”）可靠地登录到托管域。
->
->
 
 ### <a name="attribute-mapping-for-user-accounts"></a>用户帐户的属性映射
 下表演示了 Azure AD 租户中用户对象的特定属性如何同步到托管域中的相应属性。

@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 84c37927eda65be71eb837aef2cb4968a121ee29
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.openlocfilehash: 0d055b1a78622665137a6abad18681a728ae2b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426887"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010558"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>如何在 Azure 的 Java 应用程序中使用 Twilio 发起电话呼叫
-以下示例演示了如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 生成的应用程序会提示用户输入电话呼叫值，如以下屏幕截图中所示。
+以下示例演示了如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 生成的应用程序会提示用户输入电话呼叫值，如以下屏幕截图所示。
 
 ![使用 Twilio 和 Java 的 Azure 呼叫窗体][twilio_java]
 
@@ -162,7 +162,7 @@ ms.locfileid: "52426887"
     </body>
     </html>
 
-除了发起呼叫外，makecall.jsp 还可显示 Twilio 终结点、API 版本和呼叫状态。 如以下屏幕截图所示：
+除了发起呼叫外，makecall.jsp 还可显示 Twilio 终结点、API 版本和呼叫状态。 下面的屏幕截图是一个示例：
 
 ![使用 Twilio 和 Java 的 Azure 呼叫响应][twilio_java_response]
 
@@ -173,7 +173,7 @@ ms.locfileid: "52426887"
 2. 修改 **startup.cmd** 以解压缩 TwilioCloud WAR。
 3. 针对计算模拟器编译应用程序。
 4. 在计算模拟器中启动部署。
-5. 打开浏览器并运行 **http://localhost:8080/TwilioCloud/callform.jsp**。
+5. 打开浏览器中，并运行`http://localhost:8080/TwilioCloud/callform.jsp`。
 6. 在窗体中输入值，单击“发起此呼叫”，并查看 makecall.jsp 中的结果。
 
 准备好部署到 Azure 之后，请针对云部署重新进行编译，部署到 Azure，然后在浏览器中运行 http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp（将 *your_hosted_name* 替换为自己的值）。

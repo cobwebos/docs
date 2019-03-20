@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 877e42dc8d6e69834cf989122f855ada560b813c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: 2ed4826eb47ab2fb13d312860475f9ec9b323bf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201238"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884148"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
 
@@ -45,7 +45,7 @@ IoT Edge 模块必须支持以下平台选项之一。
 支持 IoT Edge 所支持的全部第 1 层平台（已在 [Azure IoT Edge 支持](https://docs.microsoft.com/azure/iot-edge/support)中记录）。 我们之所以推荐此选项，是因为它提供更好的客户体验。 后面将会展示满足此条件的模块。 使用此平台选项的模块必须：
 
 - 提供一个 `latest` 标记和一个版本标记（例如 `1.0.1`），这些标记是使用 GitHub [manifest-tool](https://github.com/estesp/manifest-tool) 生成的清单标记。
-- 使用[“市场”选项卡](./cpp-marketplace-tab.md)添加[已认证的兼容 IoT Edge 设备](https://aka.ms/iot-edge-certified)的链接。 此链接将解析为 `http://aka.ms/iot-edge-certified`，客户可在此网站中浏览或搜索已认证的设备。 此网站也称为 [Azure IoT Edge 认证](https://catalog.azureiotsolutions.com/)设备目录。
+- 使用[“市场”选项卡](./cpp-marketplace-tab.md)添加[已认证的兼容 IoT Edge 设备](https://aka.ms/iot-edge-certified)的链接。 此链接将解析为 `https://aka.ms/iot-edge-certified`，客户可在此网站中浏览或搜索已认证的设备。 此网站也称为 [Azure IoT Edge 认证](https://catalog.azureiotsolutions.com/)设备目录。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支持的一部分第 1 层平台
   
@@ -61,9 +61,9 @@ IoT Edge 模块必须支持以下平台选项之一。
 - 该模块必须适用于 [Azure IoT Edge 认证](https://catalog.azureiotsolutions.com/)设备目录中的**至少一个 IoT Edge 认证**设备。
 - 必须在套餐说明中的最后一个段落（在[“市场”选项卡](./cpp-marketplace-tab.md)下）阐述**最低硬件要求**。 （可选）如果模块有明显的差异，则还可以列出建议的硬件要求。 例如，在套餐说明的末尾添加以下部分：
 
- ```html
+  ```html
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
- ```
+  ```
 
 ### <a name="configuration"></a>配置
 
@@ -128,7 +128,8 @@ IoT Edge 模块必须尽量请求提供对主机的最低特权访问权限。 �
 
 ## <a name="recertification-process"></a>重新认证过程
 
-<!-- Add legal time windows--> 每当发生会影响模块的重大更改时，合作伙伴会收到通知，例如：
+<!-- Add legal time windows-->
+会影响他们的模块，如的重大更改时，合作伙伴将收到通知：
 
 - IoT Edge 支持的第 1 层 OS/体系结构支持矩阵
 - IoT 模块 SDK

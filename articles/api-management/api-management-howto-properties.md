@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 829d6bc6cb3f8e78d065d7aaca4937634e7349c8
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
-ms.translationtype: HT
+ms.openlocfilehash: f7c52b7ab8aaad917eb03455800df6d8ba4cbc88
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082698"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
 API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 可以使用文字文本值、策略表达式和命名值构造策略语句。 
 
 每个 API 管理服务实例都有一个属性集合，其中包含对服务实例来说属于全局性的键值对（称为“命名值”）。 这些命名值可以用来管理所有 API 配置和策略的常量字符串值。 每个属性都有以下特性：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | 显示名称 |字符串 |策略中用于引用属性的数字字母字符串。 |
 | 值 |字符串 |属性的值。 不能为空或只由空格组成。 |
@@ -50,7 +50,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 2. 选择“命名值”。
 3. 按“+添加”。
 
-  “名称”和“值”是必需值。 如果此属性值为机密，请选中“这是机密”复选框。 输入一个或多个用于组织命名值的可选标记，并单击“保存”。
+   “名称”和“值”是必需值。 如果此属性值为机密，请选中“这是机密”复选框。 输入一个或多个用于组织命名值的可选标记，并单击“保存”。
 4. 单击“创建”。
 
 创建属性后，可以通过单击该属性对其进行编辑。 如果更改属性名称，则会自动更新引用该属性的策略，让其使用新名称。

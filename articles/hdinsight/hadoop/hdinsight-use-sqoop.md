@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: a6c17ad8d4af568d910597da4b44f09676d1c36a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: ffded5705e61538a8bec886483a49705bb2298c1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203024"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -56,7 +56,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
 本教程中使用这两个数据集测试 Sqoop 导入和导出。
 
 ## <a name="create-cluster-and-sql-database"></a>创建群集和 SQL 数据库
-本部分演示如何使用 Azure 门户和 Azure 资源管理器模板创建群集、SQL 数据库和 SQL 数据库架构，以便运行教程。 可以在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)中找到此模板。 Resource Manager 模板调用 bacpac 包以将表架构部署到 SQL 数据库。  bacpac 包位于公共 blob 容器 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果想要为 bacpac 文件使用私有容器，请使用模板中的以下值：
+本部分演示如何使用 Azure 门户和 Azure 资源管理器模板创建群集、SQL 数据库和 SQL 数据库架构，以便运行教程。 可以在中找到的模板[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)。 Resource Manager 模板调用 bacpac 包以将表架构部署到 SQL 数据库。  bacpac 包位于公共 blob 容器 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果想要为 bacpac 文件使用私有容器，请使用模板中的以下值：
    
 ```json
 "storageKeyType": "Primary",
@@ -82,9 +82,9 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
     - **群集登录名和密码**：默认登录名是“admin”。
     - **SSH 用户名和密码**。
     - **SQL 数据库服务器登录名和密码**。
-    - **_artifacts 位置**：使用默认值（除非想要在其他位置使用自己的 backpac 文件）。
+    - **_artifacts 位置**：使用默认值，除非你想要在其他位置使用 bacpac 文件。
     - **_artifacts 位置 Sas 令牌**：将此字段留空。
-    - **Bacpac 文件名**：使用默认值（除非想要使用自己的 backpac 文件）。
+    - **Bacpac 文件名**：使用默认值，除非你想要使用自己的 bacpac 文件。
      
         以下值在变量部分中硬编码：
         
@@ -163,7 +163,7 @@ HDInsight 可以使用各种方法运行 Sqoop 作业。 使用下表来确定�
 PowerShell 示例将执行以下步骤：
 
 1. 连接到 Azure。
-2. 创建 Azure 资源组。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/powershell-azure-resource-manager.md)
+2. 创建 Azure 资源组。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/manage-resource-groups-powershell.md)
 3. 创建一个 Azure SQL 数据库服务器、一个 Azure SQL 数据库和两个表。 
    
     如果改用 SQL Server，请使用以下语句来创建表：
@@ -196,7 +196,7 @@ PowerShell 示例将执行以下步骤：
     若要检查群集，可以使用 Azure 门户或 Azure PowerShell。
 5. 预处理源数据文件。
    
-    在本教程中，要将一个 log4j 日志文件（带分隔符的文件）和一个 Hive 表导出到 Azure SQL 数据库。 带分隔符的文件名为 */example/data/sample.log*。 在本教程前面，看到了几个 log4j 日志的示例。 在日志文件中，有一些空行和一些类似下面这样的行：
+    在本教程中，要将一个 log4j 日志文件（带分隔符的文件）和一个 Hive 表导出到 Azure SQL 数据库。 带分隔符的文件名为 */example/data/sample.log*。 在本教程前面介绍了几个 log4j 日志的示例。 在日志文件中，有一些空行和一些类似下面这样的行：
    
         java.lang.Exception: 2012-02-03 20:11:35 SampleClass2 [FATAL] unrecoverable system problem at id 609774657
             at com.osa.mocklogger.MockLogger$2.run(MockLogger.java:83)
@@ -627,7 +627,6 @@ Get-AzureRmHDInsightJobOutput `
 [hdinsight-provision]: ../hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md

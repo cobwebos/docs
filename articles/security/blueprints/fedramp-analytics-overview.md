@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 0e5beb89f3ea2a5c14fc56af35112710964bdb16
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: fa10ff14bf893c268d6b6b1a0d181d11a3f27dc4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406562"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451869"
 ---
-# <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure 安全性和符合性蓝图：用于 FedRAMP 的分析
+# <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure 安全性与合规性蓝图：FedRAMP 的分析
 
 ## <a name="overview"></a>概述
 
@@ -37,7 +37,7 @@ Microsoft Azure 为客户提供各种报告和分析服务；但此解决方案�
 
 整个解决方案基于一个 Azure 存储帐户进行构建，客户可从 Azure 门户配置该帐户。 Azure 存储通过“存储服务加密”加密所有数据，以保持静态数据的机密性。  异地冗余存储 (GRS) 确保客户主数据中心的不良事件不会导致数据丢失，因为第二个副本将存储在数百英里以外的独立位置中。
 
-为了增强安全性，此体系结构通过 Azure Active Directory 和 Azure Key Vault 管理资源。 系统运行状况通过 Log Analytics 和 Azure Monitor 进行监视。 客户配置两个监视服务捕获日志并在单独的、可轻松导航的仪表板中显示系统运行状况。
+为了增强安全性，此体系结构通过 Azure Active Directory 和 Azure Key Vault 管理资源。 系统运行状况通过 Azure Monitor 进行监视。 客户配置两个监视服务捕获日志并在单独的、可轻松导航的仪表板中显示系统运行状况。
 
 Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理，后者从配置为通过安全 VPN 或 ExpressRoute 连接访问 Azure SQL 数据库的本地计算机运行。 **Azure 建议配置 VPN 或 Azure ExpressRoute 连接，以便进行管理和将数据导入参考体系结构资源组。**
 
@@ -63,8 +63,7 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 - Azure Analysis Service
 - Azure Active Directory
 - Azure 密钥保管库
-- Azure Log Analytics
-- Azure Monitor
+- Azure 监视器 （日志）
 - Azure 存储
 - ExpressRoute/VPN 网关
 - Power BI 仪表板
@@ -74,18 +73,18 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 
 ![替换文字](images/fedramp-analytics-components.png?raw=true "用于 FedRAMP 组件的分析示意图")
 
-**Azure Functions**：[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 解决方案通过大多数编程语言在云中运行小段代码。 此解决方案中的函数与 Azure 存储集成以自动将客户数据拉入云，从而促成与其他 Azure 服务的集成。 函数可轻松缩放，并且仅在运行时产生费用。
+**Azure Functions**：[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)是用于通过大多数编程语言在云中运行小段代码的解决方案。 此解决方案中的函数与 Azure 存储集成以自动将客户数据拉入云，从而促成与其他 Azure 服务的集成。 函数可轻松缩放，并且仅在运行时产生费用。
 
-**Azure Analysis Service**：[Azure Analysis Service](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) 提供企业数据建模和与 Azure 数据平台服务的集成。 通过将多个源的数据结合到单个数据模型中，Azure Analysis Service 加快浏览大量数据的速度。
+**Azure 分析服务**:[Azure Analysis Service](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview)提供企业数据建模和使用 Azure 数据平台服务的集成。 通过将多个源的数据结合到单个数据模型中，Azure Analysis Service 加快浏览大量数据的速度。
 
-**Power BI**：[Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) 为尝试通过数据处理工作提取更好见解的客户提供分析和报告功能。
+**Power BI**：[Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi)提供分析和报告功能的客户尝试提取更好地了解从数据处理工作。
 
 ### <a name="networking"></a>网络
-**网络安全组**：设置 [Nsg](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 来管理流向部署资源和服务的流量。 网络安全组设置为默认拒绝方案，并且仅允许预配置访问控制列表 (ACL) 中包含的流量。
+**网络安全组**：[Nsg](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)设置来管理流量定向到已部署的资源和服务。 网络安全组设置为默认拒绝方案，并且仅允许预配置访问控制列表 (ACL) 中包含的流量。
 
 每个 NSG 都打开了特定的端口和协议，以便解决方案能够安全正确地工作。 此外，为每个 NSG 启用了以下配置：
   - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
-  - 已将 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) 连接到 NSG 的诊断功能。
+  - [Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)连接到 NSG 的诊断日志。
 
 ### <a name="data-at-rest"></a>静态数据
 该体系结构通过加密、数据库审核和其他措施保护静态数据。
@@ -110,17 +109,17 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 
 ### <a name="logging-and-audit"></a>日志记录和审核
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) 生成完整显示的监视数据（包括活动日志、指标和诊断数据），使用户可以全面了解系统运行状况。  
-[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 可广泛记录系统和用户活动以及系统运行状况。 它收集并分析 Azure 和本地环境中的资源生成的数据。
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作见解。
+[Azure Monitor 日志](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)可广泛记录系统和用户活动以及系统运行状况。 它收集并分析 Azure 和本地环境中的资源生成的数据。
+- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
 - **防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
-- **日志存档**：所有诊断日志写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 这些日志连接到 Azure Log Analytics 进行处理、存储和仪表板报告。
+- **日志存档**：所有诊断日志写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 这些日志连接到 Azure Monitor 日志进行处理、 存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分包括在内：
 -   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案用于存储、运行和管理 runbook。
 -   [安全和审核](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)：“安全和审核”仪表板通过提供有关安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全状态的高级见解。
--   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署服务器基础结构的优先建议列表。
--   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案帮助客户跨所有 Azure 订阅分析 Azure 活动日志。
+-   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
+-   [Azure 活动日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
 
 ### <a name="identity-management"></a>身份管理
 -   使用 Azure AD 对应用程序执行身份验证。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。 此外，数据库列加密使用 Azure AD 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅如何[保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
@@ -130,7 +129,7 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 若要详细了解 Azure SQL 数据库安全功能的用法，请参阅 [Contoso Clinic 演示应用程序](https://github.com/Microsoft/azure-sql-security-sample)示例。
 
 ### <a name="security"></a>安全
-**机密管理**：解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。
+**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。
 
 ## <a name="guidance-and-recommendations"></a>指导和建议
 
@@ -141,17 +140,17 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 对于管理部署以及预配与环境交互的人员的访问至关重要。 只需[单击四下](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)，即可将现有 Windows Server Active Directory 与 AAD 集成。 客户还可以通过将部署的 Active Directory 基础结构作为 AAD 林的子域，将部署的 Active Directory 基础结构（域控制器）绑定到现有 AAD。
 
 ### <a name="additional-services"></a>其他服务
-#### <a name="iaas---vm-vonsiderations"></a>IaaS - VM 注意事项
-此 PaaS 解决方案不包括任何 Azure IaaS VM。 客户可以创建 Azure VM 运行多个 PaaS 服务。 在这种情况下，可以利用用于业务持续性和 Log Analytics 的特定功能和服务：
+#### <a name="iaas---vm-considerations"></a>IaaS-VM 注意事项
+此 PaaS 解决方案不包括任何 Azure IaaS VM。 客户可以创建 Azure VM 运行多个 PaaS 服务。 在这种情况下，也可以利用特定功能和服务的业务连续性和 Azure Monitor 日志：
 
 ##### <a name="business-continuity"></a>业务连续性
-- **高可用性**：服务器工作负荷将分组到[可用性集](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，帮助确保 Azure 中虚拟机的高可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
+- **高可用性**：服务器工作负荷中的分组[可用性集](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)以帮助确保在 Azure 中的虚拟机的高可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
 
 - **恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而缩短还原时间。
 
 ##### <a name="monitoring-solutions"></a>监视解决方案
 -   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
--   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案报告恶意软件、威胁和防护状态。
+-   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案用于报告恶意软件、威胁和防护状态。
 -   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：更新管理解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
 -   [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
 -   [更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)：更改跟踪解决方案使得客户能够轻松识别环境中的更改。

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
 ms.custom: seodec2018
-ms.openlocfilehash: a18aaceb4840ffc7e3e3dca4eeb8f5fd8e88049c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: e7b2c43e06c8fbc1f561defebf29fdd37bc8bfab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876396"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100898"
 ---
 # <a name="search-for-gif-images"></a>搜索 .gif 图像 
 
@@ -47,6 +47,7 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 - *AnimatedGifHttps* 仅返回来自 https 地址的动态 gif 图像。 为了安全起见，许多应用程序需要通过 https 连接到外部 Web 链接。 例如，Apple App Store 需要通过 HTTPS 连接到 Web 服务，以便在传输过程中安全地加密用户数据。
 
 <a name="gifExample" />
+
 ## <a name="example-search-for-animated-gif-using-java"></a>使用 Java 搜索动态 gif 的示例
 
 以下 URL 搜索动态 .gif 图像：`q=interesting`

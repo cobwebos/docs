@@ -4,15 +4,15 @@ description: 在 Azure Kubernetes 服务 (AKS) 中为群集创建和管理 Azure
 services: container-service
 author: iainfoulds
 ms.service: container-service
-ms.topic: get-started-article
-ms.date: 09/26/2018
+ms.topic: conceptual
+ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: b8cbeacda98aec639724f30fe3a7e94346f05ba4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: dc2e2f010de3dfe265cddbbaa6c050d081bd05dc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308748"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778546"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -24,7 +24,7 @@ AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principa
 
 若要创建 Azure AD 服务主体，必须具有相应的权限，能够向 Azure AD 租户注册应用程序，并将应用程序分配到订阅中的角色。 如果没有必需的权限，可能需要请求 Azure AD 或订阅管理员来分配必需的权限，或者预先创建一个可以与 AKS 群集配合使用的服务主体。
 
-还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+您还需要 Azure CLI 版本 2.0.59 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>自动创建和使用服务主体
 
@@ -33,7 +33,7 @@ AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principa
 在下述 Azure CLI 示例中，尚未指定服务主体。 在此方案中，Azure CLI 为 AKS 群集创建一个服务主体。 若要成功完成此操作，Azure 帐户必须具有创建服务主体所需的相应权限。
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --generate-ssh-keys
+az aks create --name myAKSCluster --resource-group myResourceGroup
 ```
 
 ## <a name="manually-create-a-service-principal"></a>手动创建服务主体
@@ -49,8 +49,8 @@ az ad sp create-for-rbac --skip-assignment
 ```json
 {
   "appId": "559513bd-0c19-4c1a-87cd-851a26afd5fc",
-  "displayName": "azure-cli-2018-09-25-21-10-19",
-  "name": "http://azure-cli-2018-09-25-21-10-19",
+  "displayName": "azure-cli-2019-03-04-21-35-28",
+  "name": "http://azure-cli-2019-03-04-21-35-28",
   "password": "e763725a-5eee-40e8-a466-dc88d980f415",
   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db48"
 }
@@ -77,9 +77,9 @@ az aks create \
 
 ## <a name="delegate-access-to-other-azure-resources"></a>委托对其他 Azure 资源的访问权限
 
-AKS 群集的服务主体可以用来访问其他资源。 例如，如果需要使用高级网络来连接到现有的虚拟网络或连接到 Azure 容器注册表 (ACR)，则需将访问权限委托给服务主体。
+AKS 群集的服务主体可以用来访问其他资源。 例如，如果你想要部署到现有 Azure 虚拟网络子网在 AKS 群集或连接到 Azure 容器注册表 (ACR)，您需要委派对服务主体对这些资源的访问权限。
 
-若要委托权限，请使用 [az role assignment create][az-role-assignment-create] 命令创建一个角色分配。 将 `appId` 分配到特定的范围，例如一个资源组或虚拟网络资源。 然后，通过角色定义服务主体对资源的具体权限，如以下示例所示：
+若要委派的权限，使用以下工具创建角色分配[创建的 az 角色分配][ az-role-assignment-create]命令。 分配`appId`到特定的作用域，例如资源组或虚拟网络资源。 然后，通过角色定义服务主体对资源的具体权限，如以下示例所示：
 
 ```azurecli
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
@@ -123,6 +123,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 使用 AKS 和 Azure AD 服务主体时，请牢记以下注意事项。
 
 - Kubernetes 的服务主体是群集配置的一部分。 但是，请勿使用标识来部署群集。
+- 默认情况下，服务主体凭据的有效期为一年。 你可以[更新或滚动更新服务主体凭据][ update-credentials]在任何时间。
 - 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 *https://www.contoso.org/example*）相关联。 应用程序的 URL 不一定是实际的终结点。
 - 指定服务主体**客户端 ID** 时，请使用 `appId` 的值。
 - 在 Kubernetes 群集的主 VM 和节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中
@@ -136,7 +137,9 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Active Directory 服务主体，请参阅[应用程序和服务主体对象][service-principal]
+有关 Azure Active Directory 服务主体的详细信息，请参阅[应用程序和服务主体对象][service-principal]。
+
+有关如何更新凭据的信息，请参阅[更新或服务主体在 AKS 中轮换凭据][update-credentials]。
 
 <!-- LINKS - internal -->
 [aad-service-principal]:../active-directory/develop/app-objects-and-service-principals.md
@@ -154,3 +157,4 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 [rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr
+[update-credentials]: update-credentials.md

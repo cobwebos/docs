@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860401"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008655"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>常见问题：Azure 到 Azure 的复制
 
@@ -26,6 +26,7 @@ ms.locfileid: "55860401"
 1.  **[多 VM 一致性](#multi-vm-consistency)** 
 1.  **[恢复计划](#recovery-plan)** 
 1.  **[重新保护和故障回复](#reprotection-and-failback)** 
+2.  **[容量](#capacity)**
 1.  **[安全性](#security)** 
 
 
@@ -35,7 +36,7 @@ ms.locfileid: "55860401"
 请查看 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)。
 ### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Azure Site Recovery 的免费层是如何工作的？
 每个使用 Azure Site Recovery 保护的实例在其保护期的前 31 天内均享受免费。 从第 32 天起，将按以上收费率对实例的保护进行计费。
-###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
 是，尽管受保护实例的 Azure Site Recovery 在前 31 天内为免费，但你可能会产生 Azure 存储器、存储事务和数据传输的费用。 恢复后的虚拟机也可能会产生 Azure 计算费用。 可以在[此处](https://azure.microsoft.com/pricing/details/site-recovery)获取有关定价的完整详细信息
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>有关在 Azure VM 上配置 Site Recovery 的最佳做法是什么？
@@ -59,7 +60,7 @@ ms.locfileid: "55860401"
 
 ### <a name="can-i-exclude-disks"></a>是否可以排除磁盘？
 
-是的，可以在保护时使用 PowerShell 排除磁盘。 有关详细信息，请参阅 [PowerShell 指南](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine)。
+是的，可以在保护时使用 PowerShell 排除磁盘。 有关详细信息，请参阅[此文章](azure-to-azure-exclude-disks.md)
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 将 Azure VM 复制到另一个 Azure 区域时，复制是持续性的。 有关详细信息，请参阅 [Azure 到 Azure 复制体系结构](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process)。
@@ -105,7 +106,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。
 由于应用程序一致性恢复点会捕获内存中的以及正在处理的所有数据，因此它会要求框架（例如 Windows 上的 VSS）静止应用程序。 当工作负荷已经非常繁忙时，如果非常频繁地这样做，可能会影响性能。 对于非数据库工作负荷，通常建议不要对应用程序一致性恢复点使用低频率，即使对于数据库工作负荷，采用 1 小时的频率也足够了。 
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>应用程序一致性恢复点生成的最低频率是多少？
-Site Recovery 可以创建一个应用程序一致性的恢复点，最小频率为 1 小时。
+在 1 小时，site Recovery 可以使用的最小频率创建的应用程序一致的恢复点。
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>如何生成和保存恢复点？
 若要了解 Site Recovery 如何生成恢复点，让我们查看一个复制策略的示例，其中，恢复点保留期为 24 小时，应用一致性快照的频率为 1 小时。
@@ -117,7 +118,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 用户无法更�
 1. 在过去 1 小时内，以 5 分钟的频率创建了恢复点。
 2. 对于超出 1 小时的期限，Site Recovery 只保留了 1 个恢复点。
 
-  ![生成的恢复点列表](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+   ![生成的恢复点列表](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
 
 
 ### <a name="how-far-back-can-i-recover"></a>可以恢复到哪个最早的时间点？
@@ -220,7 +221,12 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>故障回复需要多长时间？
 完成重新保护后，故障回复所需的时间通常类似于从主要区域故障转移到次要区域所需的时间。 
 
-## <a name="a-namesecuritysecurity"></a><a name="security">安全性
+## <a name="capacity"></a>容量
+### <a name="does-site-recovery-work-with-reserved-instance"></a>Site Recovery 的工作与保留的实例？
+是的可以购买[保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)在 DR 区域和 ASR 故障转移操作将使用它们。 </br> 需要从客户无需额外配置。
+
+
+## <a name="security"></a>安全性
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>复制数据是否会发送到 Site Recovery 服务？
 否。Site Recovery 不会拦截复制的数据，也不包含虚拟机上运行的组件的任何相关信息。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。

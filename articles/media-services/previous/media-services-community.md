@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 641218e6a9a366d8c3b0d269223a98c08b860bdb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: aeaf8fb5112fe9f6d8f2ca77ed9c1fd244fd9603
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001147"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877065"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区  
 
@@ -48,10 +48,10 @@ ms.locfileid: "56001147"
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 团队还可以监控使用 Azure 媒体服务标记 Stack Overflow 的问题。
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-media-services) 
+[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>与团队联系
-Azure 媒体服务主要支持电子邮件是：**amshelp@microsoft.com**。
+Azure 媒体服务主要支持电子邮件是： **amshelp\@microsoft.com**。
 
 下表列出了功能子团队的电子邮件：
 

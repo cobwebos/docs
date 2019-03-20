@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: patricka
 ms.openlocfilehash: fcd71f74e0b00934958828024094773e42496b66
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51017264"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "58114181"
 ---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "51017264"
 
 ![新 Web API 的注册设置示例](./media/active-directory-b2c-register-web-api/b2c-new-web-api-settings.png)
 
-| 设置      | 示例值  | Description                                        |
+| 设置      | 示例值  | 描述                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **名称** | Contoso B2C API | 输入应用程序的“名称”，用于向使用者描述 API。 | 
 | 包括 Web 应用/Web API | 是 | 对于 Web API，请选择“是”。 |

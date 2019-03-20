@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448477"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847121"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>在发布门户中设置应用程序
 
@@ -27,16 +27,16 @@ ms.locfileid: "54448477"
 
 ## <a name="login-and-create-a-new-offer"></a>登录并创建新套餐
 
-1. 登录[云合作伙伴平台](http://cloudpartner.azure.com/)。
+1. 登录[云合作伙伴平台](https://cloudpartner.azure.com/)。
 2. 从左侧导航栏中单击“+ 新建套餐”，然后选择“Dynamics 365 for Customer Engagement”。
 
 ![选择新套餐](./media/CRMScreenShot14.png)
 
-3. 新套餐“编辑器”视图现在可供使用，我们随时可以开始创作。
+1. 新套餐“编辑器”视图现在可供使用，我们随时可以开始创作。
 
 ![“新建套餐”屏幕](./media/CRMScreenShot15.png)
 
-4. 需要填写的“窗体”显示在“编辑器”视图中的左侧。 每个“窗体”都包含一组要填写的字段。必填字段标有红色的星号 (\*)。
+1. 需要填写的“窗体”显示在“编辑器”视图中的左侧。 每个“窗体”都包含一组要填写的字段。必填字段标有红色的星号 (\*)。
 
 有四个主窗体用于创作 Dynamics 365 for Customer Engagement 套餐
 
@@ -88,7 +88,7 @@ ms.locfileid: "54448477"
 
 ### <a name="crm-package-availability"></a>CRM 包可用性
 
-在此部分，选择可以使用该包的 CRM 区域。 有关哪些区域为哪些国家/地区提供服务的信息，请参阅以下链接：[http://o365datacentermap.azurewebsites.net/](http://o365datacentermap.azurewebsites.net/)
+在此部分，选择可以使用该包的 CRM 区域。 有关哪些区域为哪些国家/地区提供服务的信息，请参阅以下链接：[https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 注意：部署到德国主权云和 US Gov 主权云需要特殊权限，且在认证期间需要验证
 

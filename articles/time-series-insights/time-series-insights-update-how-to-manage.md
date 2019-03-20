@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 099c7a456e67eae981b2e68e73e2bed7557c7372
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 3c6b5094613ee482b0fd3f63e3d9d69dfe4d40f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632393"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094848"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>预配和管理 Azure 时序见解预览版
 
@@ -67,7 +67,7 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
      > [!TIP]
      > 在批处理事件或历史数据上传方案中，消息排队时间可能不是要使用的最佳配置设置。 确保验证在这种情况下你是决定使用还是不使用 Timestamp 属性。
 
-    ![“事件源”选项卡][2]
+     ![“事件源”选项卡][2]
 
 1. 确认环境是否已使用所需设置进行预配。
 
