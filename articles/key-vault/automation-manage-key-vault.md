@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 85a0c05719ba374ed213212db6f094d75e433183
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: ace32968808dfa919e6ca5d5777818d2672249fe
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073423"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224867"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>使用 Azure 自动化管理 Azure 密钥保管库
 
@@ -34,7 +34,7 @@ Azure 自动化提供了具有高可靠性和高可用性的工作流执行引�
 
 ## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>Azure 自动化如何帮助管理 Azure 密钥保管库？
 
-可以使用 [AzureRM 密钥保管库 cmdlet](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) 和 [Azure 经典密钥保管库 cmdlet](https://docs.microsoft.com/powershell/module/servicemanagement/azure) 在 Azure 自动化中管理密钥保管库。 Azure 自动化中自动提供管理经典密钥保管库所需的 Azure 模块，因此，可以将 [AzureRM-KeyVault 模块](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4)导入 Azure 自动化中，以便在服务中执行多种密钥保管库管理任务。 还可以将 Azure 自动化中的 cmdlet 与其他 Azure 服务的 cmdlet 搭配使用，以自动完成跨 Azure 服务和第三方系统的复杂任务。
+可以使用 [AzureRM 密钥保管库 cmdlet](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) 和 [Azure 经典密钥保管库 cmdlet](https://docs.microsoft.com/powershell/module/servicemanagement/azure) 在 Azure 自动化中管理密钥保管库。 Azure 自动化中自动提供管理经典密钥保管库所需的 Azure 模块，因此，可以将 [AzureRM-KeyVault 模块](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4)导入 Azure 自动化中，以便在服务中执行多种密钥保管库管理任务。 若要了解有关如何将模块导入到 Azure 自动化的详细信息，请参阅[管理 Azure 自动化中的模块](../automation/shared-resources/modules.md)还可以搭配使用 Azure 自动化中使用这些 cmdlet 与其他 Azure 服务，自动完成跨复杂任务的 cmdletAzure 服务和第三方系统。
 
 使用 Azure 密钥保管库 cmdlet 可以执行其他任务，如这些任务： 
 

@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure VMSS 上使用 Azure CLI 配置系统分配托管标识和用户分配托管标识
-description: 分步说明如何在 Azure VMSS 上使用 Azure CLI 配置系统分配托管标识和用户分配托管标识。
+title: 如何配置系统和用户分配管理的标识在 Azure 虚拟机规模集使用 Azure CLI
+description: 分步介绍了如何配置系统和用户分配管理的标识在 Azure 虚拟机规模集，使用 Azure CLI。
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/15/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cd03ad6640ac809ce8ac2e8f4fc1070246df27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88bcd38890baea2d6bc0460937fe4b7882f7fd23
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886858"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226039"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>使用 Azure CLI 在虚拟机规模集上配置 Azure 资源托管标识
 
@@ -28,9 +28,9 @@ ms.locfileid: "57886858"
 
 Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
 
-本文介绍如何使用 Azure CLI 在 Azure 虚拟机规模集 (VMSS) 上执行以下 Azure 资源托管标识操作：
-- 在 Azure VMSS 上启用和禁用系统分配托管标识
-- 在 Azure VMSS 上添加和删除用户分配托管标识
+在本文中，您学习如何执行以下管理的标识的 Azure 资源操作的 Azure 虚拟机规模集，使用 Azure CLI:
+- 在 Azure 虚拟机规模集上启用和禁用系统分配托管标识
+- 在 Azure 虚拟机规模集上添加和删除用户分配托管标识
 
 
 ## <a name="prerequisites"></a>必备组件
@@ -57,7 +57,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
-本部分介绍如何使用 Azure CLI 为 Azure VMSS 启用和禁用系统分配托管标识。
+在本部分中，您将了解如何启用和禁用使用 Azure CLI 为 Azure 虚拟机规模集的系统分配的托管的标识。
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>在创建 Azure 虚拟机规模集的过程中启用系统分配托管标识
 
@@ -114,11 +114,8 @@ az vmss update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-若要删除 Azure 资源 VM 扩展的托管标识（计划于 2019 年 1 月弃用），请使用 [az vmss identity remove](/cli/azure/vmss/identity/) 命令从 VMSS 中删除系统分配的托管标识：
-
-```azurecli-interactive
-az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
-```
+> [!NOTE]
+> 如果已预配的 Azure 资源 （若要不推荐使用） 的 VM 扩展托管的标识，则需要使用将其删除[az vmss 扩展删除](https://docs.microsoft.com/cli/azure/vm/)。 有关详细信息，请参阅[从 VM 扩展迁移到 Azure 进行身份验证的 IMDS](howto-migrate-vm-extension.md)。
 
 ## <a name="user-assigned-managed-identity"></a>用户分配的托管标识
 
@@ -126,7 +123,7 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>在创建虚拟机规模集的过程中分配用户分配托管标识
 
-本部分介绍如何创建 VMSS 以及向 VMSS 分配用户分配托管标识。 如果已有要使用的 VMSS，请跳过此部分，转到下一部分。
+本部分将指导你通过虚拟机规模集的创建和分配的用户分配的托管标识的虚拟机规模集。 如果已有想要使用的虚拟机规模集，跳过本部分中，转到下一步。
 
 1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/azure/group/#az-group-create) 创建用于包含和部署用户分配托管标识的[资源组](~/articles/azure-resource-manager/resource-group-overview.md#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 :
 
@@ -158,7 +155,7 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
    }
    ```
 
-3. 使用 [az vmss create](/cli/azure/vmss/#az-vmss-create) 创建 VMSS。 以下示例创建与新用户分配托管标识关联的 VMSS，用 `--assign-identity` 参数指定。 请务必将 `<RESOURCE GROUP>`、`<VMSS NAME>`、`<USER NAME>`、`<PASSWORD>` 和 `<USER ASSIGNED IDENTITY>` 参数值替换为你自己的值。 
+3. 创建虚拟机规模集使用[az vmss 创建](/cli/azure/vmss/#az-vmss-create)。 下面的示例创建与新用户分配托管标识，由指定关联的虚拟机规模集`--assign-identity`参数。 请务必将 `<RESOURCE GROUP>`、`<VMSS NAME>`、`<USER NAME>`、`<PASSWORD>` 和 `<USER ASSIGNED IDENTITY>` 参数值替换为你自己的值。 
 
    ```azurecli-interactive 
    az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
@@ -188,18 +185,18 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
    }
    ```
 
-2. 使用 [az vmss identity assign](/cli/azure/vmss/identity) 将用户分配托管标识分配给 VMSS。 请务必将 `<RESOURCE GROUP>` 和 `<VMSS NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY>` 为上一步创建的用户分配标识的资源 `name` 属性：
+2. 将托管的标识用户分配到虚拟机规模集使用的分配[az vmss identity 分配](/cli/azure/vmss/identity)。 请务必将 `<RESOURCE GROUP>` 和 `<VIRTUAL MACHINE SCALE SET NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY>` 为上一步创建的用户分配标识的资源 `name` 属性：
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
     ```
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>从 Azure 虚拟机规模集删除用户分配的托管标识
 
-要从虚拟机规模集中删除用户分配托管标识，请使用 [az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove)。 如果这是用户分配给虚拟机规模集的唯一托管标识，则 `UserAssigned` 将从标识类型值中删除。  请务必将 `<RESOURCE GROUP>` 和 `<VMSS NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY>` 将为用户分配托管标识的 `name` 属性，可通过 `az vmss identity show` 在虚拟机规模集的标识部分中找到：
+要从虚拟机规模集中删除用户分配托管标识，请使用 [az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove)。 如果这是用户分配给虚拟机规模集的唯一托管标识，则 `UserAssigned` 将从标识类型值中删除。  请务必将 `<RESOURCE GROUP>` 和 `<VIRTUAL MACHINE SCALE SET NAME>` 参数值替换为自己的值。 `<USER ASSIGNED IDENTITY>` 将为用户分配托管标识的 `name` 属性，可通过 `az vmss identity show` 在虚拟机规模集的标识部分中找到：
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
+az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
 ```
 
 如果虚拟机规模集没有系统分配的托管标识，并且你想要从中删除所有用户分配的托管标识，请使用以下命令：

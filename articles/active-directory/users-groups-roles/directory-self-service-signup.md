@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 02/12/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7818d184cd74da43ceac008331b4436979152557
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 0cfc31705909710e6a60e0d2fd3963e74e9397ee
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233167"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201256"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>什么是 Azure Active Directory 的自助服务注册？
 
-此文章介绍自助服务注册及如何在 Azure Active Directory (Azure AD) 中支持自助服务注册的相关内容。 若要从非托管 Azure AD 租户处接管域名，请参阅[以管理员身份接管非托管目录](domains-admin-takeover.md)。
+此文章介绍了如何使用自助服务注册来填充 Azure Active Directory (Azure AD) 中的组织。 如果你想要接管域名从非托管 Azure AD 的组织，请参阅[接管非托管目录，以管理员身份](domains-admin-takeover.md)。
 
 ## <a name="why-use-self-service-signup"></a>为何使用自助服务注册？
 * 让客户更快获得所需的服务
@@ -71,7 +71,7 @@ Flow 和 PowerApps 试用注册不由 **AllowAdHocSubscriptions** 设置控制�
 
 以下流程图解释了这些参数的不同组合，以及目录和自助注册的最终状态。
 
-![自助服务注册控件](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+![自助服务注册控件的流程图](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
 有关示例和如何使用这些参数的详细信息，请参阅 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)。
 

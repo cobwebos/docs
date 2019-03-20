@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c8e60d97d37937e508a88f27b11274980a51a52c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 6678a37b534db5603aed245bdc8edffbf04b7f51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466194"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904741"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
 
@@ -37,8 +37,8 @@ ms.locfileid: "55466194"
 
 * [使用 SGD 的线性回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)是使用随机梯度下降 (SGD) 方法进行优化和特征缩放的线性回归模型，以预测支付的小费金额。 
 * [使用 LBFGS 的逻辑回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS)或“logit”回归，是可在因变量分类时用于执行数据分类的回归模型。 LBFGS 是拟牛顿优化算法，近似于使用有限计算机内存量的 Broyden–Fletcher–Goldfarb–Shanno (BFGS) 算法，在机器学习中广泛使用。
-* [随机林](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
-* [梯度提升树](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式训练决策树以最大程度减少损失函数。 GBT 用于回归和分类，并且可处理分类特征，不需要功能缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
+* [随机林](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
+* [梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式训练决策树以最大程度减少损失函数。 GBT 用于回归和分类，并且可处理分类特征，不需要功能缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
 为二元分类问题显示了使用 CV 和超参数扫描的建模示例。 回归任务的主要主题中显示了更简单的示例（不使用参数扫描）。 但是在附录中，还显示了为线性回归使用弹性网络的验证和为随机林回归使用参数扫描的 CV。 **弹性网络**是用于拟合线性回归模型的正则化回归方法，该方法将 L1 和 L2 指标组合起来，作为 [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) 和 [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) 方法的惩罚。   
 
@@ -337,7 +337,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 ### <a name="index-and-one-hot-encode-categorical-features"></a>为分类特征编制索引并进行独热编码
 本部分介绍如何为分类特征编制索引或进行编码以输入到建模函数中。 MLlib 的建模和预测函数需要在使用前，对带有分类输入数据的特征进行索引或编码。 
 
-根据模型，需要以不同方式为它们编制索引或进行独热编码。 例如，逻辑和线性回归模型需要独热编码，举例来说，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
+根据模型，需要以不同方式为它们编制索引或进行独热编码。 例如，逻辑和线性回归模型需要独热编码，举例来说，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
 下面是用于为分类特征编制索引和编码的代码：
 

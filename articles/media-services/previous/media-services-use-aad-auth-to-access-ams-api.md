@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: fa13ffe450b60bd8c896636911268a98b49bbc0f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994095"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104125"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API  
  
@@ -71,20 +71,20 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
 1. 提示用户输入凭据。
 2. 请求获取包含以下参数的 Azure AD 访问令牌：  
 
-    * Azure AD 租户终结点。
+   * Azure AD 租户终结点。
 
-        可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
-    * 媒体服务资源 URI。 
+       可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
+   * 媒体服务资源 URI。 
 
-        对于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如， https://rest.media.azure.net)。
+       对于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如， https://rest.media.azure.net)。
 
-    * 媒体服务（本机）应用程序客户端 ID。
-    * 媒体服务（本机）应用程序重定向 URI。
-    * REST 媒体服务的资源 URI。
+   * 媒体服务（本机）应用程序客户端 ID。
+   * 媒体服务（本机）应用程序重定向 URI。
+   * REST 媒体服务的资源 URI。
         
-        该 URI 表示 REST API 终结点（例如， https://test03.restv2.westus.media.azure.net/api/)。
+       该 URI 表示 REST API 终结点（例如， https://test03.restv2.westus.media.azure.net/api/)。
 
-    若要获取这些参数的值，请参阅[使用 Azure 门户访问 Azure AD 身份验证设置](media-services-portal-get-started-with-aad.md)（使用用户身份验证选项）。
+     若要获取这些参数的值，请参阅[使用 Azure 门户访问 Azure AD 身份验证设置](media-services-portal-get-started-with-aad.md)（使用用户身份验证选项）。
 
 3. Azure AD 访问令牌发送到客户端。
 4. 客户端使用 Azure AD 访问令牌向 Azure 媒体 REST API 发送请求。
@@ -113,20 +113,20 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
     
 1. 中间层应用（Web API 或 Web 应用程序）请求获取包含以下参数的 Azure AD 访问令牌：  
 
-    * Azure AD 租户终结点。
+   * Azure AD 租户终结点。
 
-        可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
-    * 媒体服务资源 URI。 
+       可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
+   * 媒体服务资源 URI。 
 
-        对于位于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如， https://rest.media.azure.net)。
+       对于位于同一 Azure 环境中的媒体服务帐户，此 URI 相同（例如， https://rest.media.azure.net)。
 
-    * REST 媒体服务的资源 URI。
+   * REST 媒体服务的资源 URI。
 
-        该 URI 表示 REST API 终结点（例如， https://test03.restv2.westus.media.azure.net/api/)。
+       该 URI 表示 REST API 终结点（例如， https://test03.restv2.westus.media.azure.net/api/)。
 
-    * Azure AD 应用程序值：客户端 ID和客户端密码。
+   * Azure AD 应用程序值：客户端 ID和客户端密码。
     
-    若要获取这些参数的值，请参阅[使用 Azure 门户访问 Azure AD 身份验证设置](media-services-portal-get-started-with-aad.md)（使用服务主体身份验证选项）。
+     若要获取这些参数的值，请参阅[使用 Azure 门户访问 Azure AD 身份验证设置](media-services-portal-get-started-with-aad.md)（使用服务主体身份验证选项）。
 
 2. Azure AD 访问令牌发送到中间层。
 4. 中间层使用 Azure AD 令牌向 Azure 媒体 REST API 发送请求。

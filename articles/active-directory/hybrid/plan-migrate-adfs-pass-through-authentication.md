@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0df959439eae703d18d8777e8d433e1ee176556c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: bf0bb51470272099ed2824d0450082f93fe65f14
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184612"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076456"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的直通身份验证
 
@@ -128,9 +128,9 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 |-|-|
 | 打算对其他这些应用程序（非 Azure AD 和 Office 365）保留使用 AD FS。 | 转换域后，将同时使用 AD FS 和 Azure AD。 考虑用户体验。 在某些情况下，用户可能需要进行身份验证两次，一次是针对 Azure AD（然后用户可以通过 SSO 访问 Office 365 等其他应用程序），另一次是针对仍以信赖方信任方式绑定到 AD FS 的任何应用程序再次进行身份验证。 |
 | AD FS 实例经过重度的自定义，并依赖于 onload.js 文件中的特定自定义设置（例如，你已更改登录体验，使用户只需以 **SamAccountName** 格式输入其用户名而不是用户主体名称 (UPN)；或者组织在登录体验中使用了众多的品牌设计）。 不能在 Azure AD 中复制 onload.js 文件。 | 在继续之前，必须验证 Azure AD 是否可以满足当前自定义要求。 如需更多信息和指导，请参阅有关 AD FS 品牌和 AD FS 自定义的部分。|
-| 使用 AD FS 阻止旧版身份验证客户端。| 考虑将用于阻止旧版身份验证客户端的 AD FS 控制机制替换为[条件访问控制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)和 [Exchange Online 客户端访问规则](http://aka.ms/EXOCAR)的组合。 |
+| 使用 AD FS 阻止旧版身份验证客户端。| 考虑将用于阻止旧版身份验证客户端的 AD FS 控制机制替换为[条件访问控制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)和 [Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)的组合。 |
 | 要求用户在 AD FS 中进行身份验证时对本地多重身份验证服务器解决方案执行多重身份验证。| 在托管标识域中，无法通过本地多重身份验证解决方案将多重身份验证质询注入到身份验证流。 但是，在转换域后，可以使用 Azure 多重身份验证服务进行多重身份验证。<br /><br /> 如果用户当前未使用 Azure 多重身份验证，则需要执行一次性的用户注册步骤。 必须准备好将规划的注册过程传达给用户。 |
-| 目前在 AD FS 中使用访问控制策略（AuthZ 规则）来控制对 Office 365 的访问。| 考虑将这些策略替换为等效的 Azure AD [条件访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)和 [Exchange Online 客户端访问规则](http://aka.ms/EXOCAR)。|
+| 目前在 AD FS 中使用访问控制策略（AuthZ 规则）来控制对 Office 365 的访问。| 考虑将这些策略替换为等效的 Azure AD [条件访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)和 [Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)。|
 
 ### <a name="common-ad-fs-customizations"></a>常见的 AD FS 自定义项
 
@@ -260,11 +260,11 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
    ![“准备好配置”页的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
 7. 在 Azure AD 门户中，依次选择“Azure Active Directory”、“Azure AD Connect”。
 8. 验证以下设置：
-  * “联合身份验证”设置为“已禁用”。
-  * “无缝单一登录”设置为“已启用”。
-  * “直通身份验证”设置为“已启用”。<br />
+   * “联合身份验证”设置为“已禁用”。
+   * “无缝单一登录”设置为“已启用”。
+   * “直通身份验证”设置为“已启用”。<br />
 
-  ![显示“用户登录”部分中的设置的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
+   ![显示“用户登录”部分中的设置的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
 接下来， 部署附加的身份验证方法：
 
@@ -272,16 +272,16 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 2. 在“直通身份验证”页上选择“下载”按钮。
 3. 在“下载代理”页上选择“接受条款并下载”。
 
-  随后将开始下载附加的身份验证代理。 在已加入域的服务器上安装辅助身份验证代理。 
+   随后将开始下载附加的身份验证代理。 在已加入域的服务器上安装辅助身份验证代理。 
 
-  > [!NOTE]
-  > 在 Azure AD Connect 工具的“用户登录”部分进行配置更改过程中，始终会在 Azure AD Connect 服务器本身上安装第一个代理。 请在单独的服务器上安装任何附加的身份验证代理。 我们建议提供两到三个附加的身份验证代理。 
+   > [!NOTE]
+   > 在 Azure AD Connect 工具的“用户登录”部分进行配置更改过程中，始终会在 Azure AD Connect 服务器本身上安装第一个代理。 请在单独的服务器上安装任何附加的身份验证代理。 我们建议提供两到三个附加的身份验证代理。 
 
 4. 运行身份验证代理安装。 在安装过程中，必须输入全局管理员帐户的凭据。
 
-  ![显示 Microsoft Azure AD Connect“身份验证代理包”页上的“安装”按钮的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![显示 Microsoft Azure AD Connect“身份验证代理包”页上的“安装”按钮的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-  ![显示登录页的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![显示登录页的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. 安装身份验证代理后，可以返回到直通身份验证代理运行状况页，以检查附加代理的状态。
 
@@ -377,7 +377,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 测试直通身份验证：
 
 1. 在 InPrivate 模式下打开 Internet Explorer，以避免无缝 SSO 自动将你登录。
-2. 转到 Office 365 登录页 ([http://portal.office.com](http://portal.office.com/))。
+2. 转到 Office 365 登录页 ([https://portal.office.com](https://portal.office.com/))。
 3. 输入用户 UPN，然后选择“下一步”。 请务必输入已从本地 Active Directory 实例同步的，并且事先已使用联合身份验证的混合用户的 UPN。 此时会显示一个页面，可在其中输入用户名和密码：
 
    ![显示用于输入用户名的登录页的屏幕截图](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)

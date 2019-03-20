@@ -3,7 +3,7 @@ title: 使用 Service Fabric 和 VS 调试 Windows 容器 | Microsoft Docs
 description: 了解如何使用 Visual Studio 2017 在 Azure Service Fabric 中调试 Windows 容器。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: msfussell
 editor: ''
 ms.service: service-fabric
@@ -12,19 +12,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: twhitney, mikhegn
-ms.openlocfilehash: 9801db8a38a8c21aea26b42f4fe01bd4a43988c5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.author: aljo, mikhegn
+ms.openlocfilehash: 9fe66e40376d9098244a1268fe9884cd416a36c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311216"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113565"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>如何：使用 Visual Studio 2017 调试 Azure Service Fabric 中的 Windows 容器
 
 借助 Visual Studio 2017 Update 7 (15.7)，可以将容器中的 .NET 应用程序作为 Service Fabric 服务进行调试。 本文介绍如何配置环境，然后调试在本地 Service Fabric 群集中运行的容器中的 .NET 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 在 Windows 10 上，按照此快速入门[配置 Windows 10 以运行 Windows 容器](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10)
 * 在 Windows Server 2016 上，按照此快速入门[配置 Windows 2016 以运行 Windows 容器](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)
@@ -35,19 +35,19 @@ ms.locfileid: "56311216"
 1. 确保 Docker for Window 服务正在运行，然后再继续进行下一步。
 
 1. 为了支持容器之间的 DNS 解析，必须使用计算机名称来设置本地开发群集。 如果要通过反向代理寻址服务，则还需要执行这些步骤。
-    1. 以管理员身份打开 PowerShell
-    2. 导航到 SDK 群集安装文件夹，通常为 `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`。
-    3. 运行脚本 `DevClusterSetup.ps1`
+   1. 以管理员身份打开 PowerShell
+   2. 导航到 SDK 群集安装文件夹，通常为 `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`。
+   3. 运行脚本 `DevClusterSetup.ps1`
 
-       ``` PowerShell
-         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
-       ```
+      ``` PowerShell
+        C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
+      ```
 
-    > [!NOTE]
-    > 可以使用 `-CreateOneNodeCluster` 来设置单节点群集。 默认情况下将创建一个本地五节点群集。
-    >
+      > [!NOTE]
+      > 可以使用 `-CreateOneNodeCluster` 来设置单节点群集。 默认情况下将创建一个本地五节点群集。
+      >
 
-    若要详细了解 Service Fabric 中的 DNS 服务，请参阅 [Azure Service Fabric 中的 DNS 服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)。 如需深入了解从容器中运行的服务使用 Service Fabric 反向代理，请参阅[对容器中运行的服务的反向代理特殊处理](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)。
+      若要详细了解 Service Fabric 中的 DNS 服务，请参阅 [Azure Service Fabric 中的 DNS 服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)。 如需深入了解从容器中运行的服务使用 Service Fabric 反向代理，请参阅[对容器中运行的服务的反向代理特殊处理](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)。
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>在 Service Fabric 中调试容器时的已知限制
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: fc594a660efe1bf90daeffa79826057a8e66c60c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 512417a228ed99a2f5b516f14084a5785bc0c1dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245161"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096735"
 ---
 # <a name="how-to-find-endpoints-and-access-keys-for-the-text-analytics-cognitive-service"></a>如何查找文本分析认知服务的终结点和访问密钥
 
@@ -33,7 +33,7 @@ ms.locfileid: "56245161"
 
 4. 单击链接以打开服务边栏选项卡。 现在即可在“资源”>“密钥”中获得密钥，或通过概要窗格中的“展示访问密钥”。 终结点也会显示在概要窗格中。
 
- ![带有终结点和密钥的门户页](../media/portal-keys-endpoint.png)
+   ![带有终结点和密钥的门户页](../media/portal-keys-endpoint.png)
 
 ## <a name="see-also"></a>另请参阅 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7f8c410f368c5c63bd24bed25b9807b8061180be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189790"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993192"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -43,12 +43,12 @@ ms.locfileid: "54189790"
   
 4.  选择以下权限之一：  
   
-    |权限|Description|  
+    |权限|描述|  
     |----------------|-----------------|  
     |**无**|成员无法修改模型架构，也无法查询数据。|  
     |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
     |读取和处理|成员可以（基于行级筛选器）查询数据并运行“处理”和“全部处理”操作，但无法修改模型架构。|  
-    |**过程**|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
+    |**处理**|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
     |管理员|成员可以修改模型架构并查询所有数据。|   
   
 5.  如果正在创建的角色具有“读取”或“读取和处理”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”选项卡，选择表，再单击“DAX 筛选器”字段，然后键入一个 DAX 公式。
@@ -71,7 +71,8 @@ ms.locfileid: "54189790"
 2. 在“创建角色”中，输入角色名称和描述。
 
 3. 选择权限。
-   |权限|Description|  
+
+   |权限|描述|  
    |----------------|-----------------|  
    |完全控制（管理员）|成员可以修改模型架构，处理并查询所有数据。| 
    |处理数据库|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
@@ -121,7 +122,7 @@ ms.locfileid: "54189790"
 
 [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) 模块提供任务特定的数据库管理 cmdlet，以及接受表格模型脚本语言 (TMSL) 查询或脚本的通用 Invoke-ASCmd cmdlet。 以下 cmdlet 用于管理数据库角色和用户。
   
-|Cmdlet|Description|
+|Cmdlet|描述|
 |------------|-----------------| 
 |[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|向数据库角色添加成员。| 
 |[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|从数据库角色删除成员。|   

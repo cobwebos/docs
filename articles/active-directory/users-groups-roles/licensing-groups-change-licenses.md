@@ -11,43 +11,44 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c81ab72be58cd223eb9b3fe9ec53d56574a94e8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 4b65eb38b6c8102295f40b5e169ae7c32a2342a2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201358"
 ---
-# <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>如何使用基于组的许可安全地在产品许可证之间迁移用户
+# <a name="change-the-license-for-a-single-user-in-a-licensed-group-in-azure-active-directory"></a>更改 Azure Active Directory 中的许可组中的单个用户许可证
 
 本文介绍在使用基于组的许可时，在产品许可证之间移动用户的建议方法。 此方法的目标是确保在迁移期间不会中断服务或丢失数据：用户可在产品之间无缝切换。 本文介绍了迁移过程的两种变化形式：
 
--   在不包含有冲突服务计划的产品许可证之间进行简单的迁移，例如，在 Office 365 企业版 E3 与 Office 365 企业版 E5 之间进行迁移。
+- 在不包含有冲突服务计划的产品许可证之间进行简单的迁移，例如，在 Office 365 企业版 E3 与 Office 365 企业版 E5 之间进行迁移。
 
--   在包含某些有冲突服务计划的产品许可证之间进行较复杂的迁移，例如，在 Office 365 企业版 E1 与 Office 365 企业版 E3 之间进行迁移。 有关冲突的详细信息，请参阅[有冲突的服务计划](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)和[无法同时分配的服务计划](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time)。
+- 在包含某些有冲突服务计划的产品许可证之间进行较复杂的迁移，例如，在 Office 365 企业版 E1 与 Office 365 企业版 E3 之间进行迁移。 有关冲突的详细信息，请参阅[有冲突的服务计划](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)和[无法同时分配的服务计划](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time)。
 
 本文包含可用于执行迁移和验证步骤的示例 PowerShell 代码。 对于无法手动执行步骤的大规模操作，这些代码特别有用。
 
 ## <a name="before-you-begin"></a>开始之前
 在开始迁移之前，请务必验证所要迁移的所有用户是否满足特定的假设条件。 如果所有用户不满足假设条件，则某些用户的迁移可能失败。 因此，某些用户无法访问服务或数据。 应验证以下假设条件：
 
--   已使用基于组的许可为用户分配了源许可证。 要从中移动产品的许可证继承自单个源组，而不是直接分配的。
+- 已使用基于组的许可为用户分配了源许可证。 要从中移动产品的许可证继承自单个源组，而不是直接分配的。
 
     >[!NOTE]
     >如果许可证也是直接分配的，它们可能会阻止应用目标许可证。 详细了解[直接许可证分配和组许可证分配](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses)。 可以使用 [PowerShell 脚本](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)来检查用户是否具有直接许可证。
 
--   目标产品有足够的许可证。 如果没有足够的许可证，则某些用户可能无法获取目标许可证。 可以检查[可用的许可证数目](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)。
+- 目标产品有足够的许可证。 如果没有足够的许可证，则某些用户可能无法获取目标许可证。 可以检查[可用的许可证数目](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)。
 
--   没有为用户分配可能与目标许可证冲突的，或者可能阻止删除源许可证的其他产品许可证。 例如，依赖于其他产品的 Workplace Analytics 或 Project Online 等附加产品中的许可证。
+- 没有为用户分配可能与目标许可证冲突的，或者可能阻止删除源许可证的其他产品许可证。 例如，依赖于其他产品的 Workplace Analytics 或 Project Online 等附加产品中的许可证。
 
--   了解组在环境中的管理方式。 例如，如果通过 Azure AD Connect 在本地管理组并将其同步到 Azure Active Directory (Azure AD) 中，则需要使用本地系统添加/删除用户。 将更改同步到 Azure AD 并在基于组的许可中拾取更改会花费一段时间。 如果使用 Azure AD 动态组成员身份，则需要改为通过修改属性来添加/删除用户。 但是，总体迁移过程保持不变。 唯一的差别是如何为组成员身份添加/删除用户。
+- 了解组在环境中的管理方式。 例如，如果通过 Azure AD Connect 在本地管理组并将其同步到 Azure Active Directory (Azure AD) 中，则需要使用本地系统添加/删除用户。 将更改同步到 Azure AD 并在基于组的许可中拾取更改会花费一段时间。 如果使用 Azure AD 动态组成员身份，则需要改为通过修改属性来添加/删除用户。 但是，总体迁移过程保持不变。 唯一的差别是如何为组成员身份添加/删除用户。
 
 ## <a name="migrate-users-between-products-that-dont-have-conflicting-service-plans"></a>在不包含有冲突服务计划的产品之间迁移用户
+
 迁移目标是使用基于组的许可将用户许可证从“源许可证”（在此示例中为：Office 365 企业版 E3）更改为“目标许可证”（在此示例中为：Office 365 企业版 E5）。 此方案中的两种产品不包含有冲突的服务计划，因此，可以同时完全分配其许可证，而不会发生冲突。 在迁移过程中，用户始终可以访问服务或数据。 迁移是以小型的“批”执行的。 可以验证每个批的结果，并最大程度地缩小迁移过程中可能发生的任何问题的范围。 总体过程如下：
 
 1.  用户是源组的成员，从该组继承源许可证。
@@ -65,6 +66,7 @@ ms.locfileid: "56430295"
 7.  针对后续的用户批重复此过程。
 
 ### <a name="migrate-a-single-user-by-using-the-azure-portal"></a>使用 Azure 门户迁移单个用户
+
 这是一篇有关如何迁移单个用户的简单演练。
 
 **步骤 1**：用户的源许可证继承自某个组。 未直接分配许可证：

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 714bf5f915cb588a99552a8bbbc5ffa76aa16846
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 3a1fd81f890e304c6bda75fad609cc8c98cd634d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426125"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880375"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure 自动化中的证书资产
 
@@ -26,18 +26,19 @@ ms.locfileid: "54426125"
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
 对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。 可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-|Cmdlet|说明|
+|Cmdlet|描述|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能从 Get-AutomationCertificate 活动中检索证书本身。|
-|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|将新证书创建到 Azure 自动化中。|
-[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|从 Azure自动化中删除证书。|将新证书创建到 Azure 自动化中。
+|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能从 Get-AutomationCertificate 活动中检索证书本身。| 
+|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|将新证书创建到 Azure 自动化中。| 
+[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|从 Azure自动化中删除证书。|
 |[Set-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationcertificate)|设置现有证书的属性，包括上传证书文件和设置 .pfx 的密码。|
 |[Add-AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|为指定的云服务上传服务证书。|
+
 
 ## <a name="activities"></a>活动
 下表中的活动用于在 Runbook 和 DSC 配置中访问证书。
 
-| 活动 | 说明 |
+| 活动 | 描述 |
 |:---|:---|
 |Get-AutomationCertificate|在 Runbook 或 DSC 配置中获取要使用的证书。 返回一个 [System.Security.Cryptography.X509Certificates.X509Certificate2](https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate2.aspx) 对象。|
 
@@ -48,7 +49,7 @@ ms.locfileid: "54426125"
 
 下表中的函数用于在 Python2 Runbook 中访问证书。
 
-| 函数 | 说明 |
+| 函数 | 描述 |
 |:---|:---|
 | automationassets.get_automation_certificate | 检索有关证书资产的信息。 |
 
@@ -62,11 +63,11 @@ ms.locfileid: "54426125"
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>使用 Azure 门户创建新证书
 
 1. 在自动化帐户中，单击“资产”磁贴以打开“资产”边栏选项卡。
-1. 单击“证书”磁贴打开“证书”边栏选项卡。
-1. 单击边栏选项卡顶部的“添加证书”。
-1. 在“名称”框中键入证书的名称。
-1. 若要浏览 .cer 或.pfx 文件，请单击“上传证书文件”下的“选择文件”。 如果选择了 .pfx 文件，请指定密码，以及是否允许导出。
-1. 单击“创建”以保存新的证书资产。
+2. 单击“证书”磁贴打开“证书”边栏选项卡。
+3. 单击边栏选项卡顶部的“添加证书”。
+4. 在“名称”框中键入证书的名称。
+5. 若要浏览 .cer 或.pfx 文件，请单击“上传证书文件”下的“选择文件”。 如果选择了 .pfx 文件，请指定密码，以及是否允许导出。
+6. 单击“创建”以保存新的证书资产。
 
 ### <a name="to-create-a-new-certificate-with-windows-powershell"></a>使用 Windows PowerShell 创建新证书
 
@@ -105,7 +106,7 @@ Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 
 下图显示了在图形 Runbook 中使用证书的示例。 这与上面演示的从文本 Runbook 向云服务添加证书的示例相同。
 
-![示例图形创作 ](media/automation-certificates/graphical-runbook-add-certificate.png)
+![示例图形创作](media/automation-certificates/graphical-runbook-add-certificate.png)
 
 ### <a name="python2-sample"></a>Python2 示例
 以下示例演示了如何在 Python2 Runbook 中访问证书。

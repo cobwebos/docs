@@ -1,19 +1,19 @@
 ---
 title: 使用模板创建 Azure IoT 中心 (PowerShell) | Microsoft Docs
 description: 如何使用 Azure 资源管理器模板和 PowerShell 创建 IoT 中心。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 0b033121890ea8c347642f64922113505f39efc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: c9a72bc435517241cf705660a669e9fb57ae2a1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436529"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103105"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure 资源管理器模板创建 IoT 中心 (PowerShell)
 
@@ -24,7 +24,9 @@ ms.locfileid: "54436529"
 > [!NOTE]
 > Azure 具有用于创建和处理资源的两个不同部署模型：[Azure 资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍了如何使用 Azure 资源管理器部署模型。
 
-要完成本教程，需要以下各项：
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+要完成本教程，需要具备以下先决条件：
 
 * 有效的 Azure 帐户。 <br/>如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
 * [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
@@ -37,33 +39,33 @@ ms.locfileid: "54436529"
 在 PowerShell 命令提示符中，输入以下命令以登录 Azure 订阅：
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 如果有多个 Azure 订阅，则访问 Azure 即有权访问与凭据关联的所有 Azure 订阅。 使用以下命令，列出可供使用的 Azure 订阅：
 
 ```powershell
-Get-AzureRMSubscription
+Get-AzSubscription
 ```
 
 使用以下命令，选择想要用于运行命令以创建 IoT 中心的订阅。 可使用上一命令输出中的订阅名称或 ID：
 
 ```powershell
-Select-AzureRMSubscription `
+Select-AzSubscription `
     -SubscriptionName "{your subscription name}"
 ```
 
 可以使用以下命令来发现可部署 IoT 中心的位置和当前支持的 API 版本：
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).Locations
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).ApiVersions
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).Locations
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).ApiVersions
 ```
 
 在 IoT 中心支持的位置之一，使用以下命令创建资源组来包含 IoT 中心。 本示例将创建一个名为 **MyIoTRG1** 的资源组：
 
 ```powershell
-New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
+New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
 ## <a name="submit-a-template-to-create-an-iot-hub"></a>提交模板以创建 IoT 中心
@@ -127,16 +129,16 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 3. 运行以下命令部署新的 IoT 中心，并传递 IoT 中心的名称作为参数。 在此示例中，IoT 中心的名称是 `abcmyiothub`。 IoT 中心的名称必须全局唯一：
 
     ```powershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
+    New-AzResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
     ```
-  [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
+   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 4. 输出会显示你创建的 IoT 中心的密钥。
 
-5. 若要验证应用程序是否添加了新的 IoT 中心，请访问 [Azure 门户][lnk-azure-portal]并查看资源列表。 或者，使用 Get-azurermresource PowerShell cmdlet。
+5. 若要验证应用程序是否添加了新的 IoT 中心，请访问 [Azure 门户][lnk-azure-portal]并查看资源列表。 另外，也可以使用 **Get-AzResource** PowerShell cmdlet。
 
 > [!NOTE]
-> 本示例应用程序将添加用于对你计费的 S1 标准 IoT 中心。 在完成后，可以通过 [Azure 门户][lnk-azure-portal]或者使用 **Remove-AzureRmResource** PowerShell cmdlet 删除该 IoT 中心。
+> 本示例应用程序将添加用于对你计费的 S1 标准 IoT 中心。 在完成任务后，可以通过 [Azure 门户][lnk-azure-portal] 或者使用 **Remove-AzResource** PowerShell cmdlet 删除该 IoT 中心。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -159,10 +161,10 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
+[lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
-[lnk-powershell-arm]: ../azure-resource-manager/powershell-azure-resource-manager.md
+[lnk-powershell-arm]: ../azure-resource-manager/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
 [lnk-sdks]: iot-hub-devguide-sdks.md

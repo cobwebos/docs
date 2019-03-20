@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 76d2794d45e9cd73ae8faf203ba29c4dbba64eae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 86e28c3561968b1411a3baa9ec0daecfab6ac73f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202871"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
@@ -180,7 +180,7 @@ Az.Storage 预览版模块支持不可变存储。  若要启用该功能，请�
 
 **仅为法律诉讼程序是合法保留策略，或是否有其他使用方案？**
 
-否，合法保留是只用于非基于时间的保留策略的一般术语。 它不需要以仅用于诉讼相关会议记录。 合法保留策略可用于禁用覆盖和删除用于保护重要的企业蠕虫数据保留期为未知。 您可能会使用它为企业策略保护任务关键蠕虫工作负荷或自定义事件触发器需要使用基于时间的保留策略之前将其用作暂存策略。 
+否，合法保留是只用于非基于时间的保留策略的一般术语。 它不需要以仅用于诉讼相关会议记录。 合法保留策略可用于禁用覆盖和删除用于保护重要的企业蠕虫数据保留期为未知。 您或者可以使用它作为企业策略来保护任务关键蠕虫工作负荷之前自定义事件触发器需要使用基于时间的保留策略，则会将其用作暂存策略。 
 
 **如果尝试删除某个容器，而该容器使用锁定的基于时间的保留策略或法定保留，会发生什么情况？**
 

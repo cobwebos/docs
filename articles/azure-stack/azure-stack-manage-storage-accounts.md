@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: bce00300e62b3ea04331530bbda2c16f0ddd2ab3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 840445b2c1a28d294027c7fbfda9e6bf6e431f14
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759366"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990711"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure Stack 中的存储帐户
 
@@ -45,7 +45,7 @@ ms.locfileid: "57759366"
 **筛选帐户：**
 
 1. 选择窗格顶部的“筛选”。
-2. 在“筛选”窗格中，可以指定“帐户名”、“\*\*订阅 ID”或“状态”，以调整要显示的存储帐户列表。 适当地使用筛选器。
+2. 在筛选器窗格中，它允许您指定**帐户名**，**订阅 ID**，或**状态**以调整要显示的存储帐户的列表。 适当地使用筛选器。
 3. 选择“更新”。 列表会相应地刷新。
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)

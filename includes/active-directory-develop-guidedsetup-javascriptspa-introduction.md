@@ -4,22 +4,22 @@ description: include 文件
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 2cb4895fc2f884d6da41b55faa91fbcb9e88f52f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: a6fcbc0e8adac75f17d7379ff512ba650d0bb118
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978639"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203284"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>从 JavaScript 单页应用程序 (SPA) 调用 Microsoft Graph API
 
@@ -27,7 +27,7 @@ ms.locfileid: "52978639"
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 
-![本指南生成的示例应用的工作原理](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.png)
+![演示如何按本教程适用生成示例应用](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro-updated.png)
 
 <!--start-collapse-->
 ### <a name="more-information"></a>更多信息
@@ -41,7 +41,7 @@ ms.locfileid: "52978639"
 
 本指南使用以下库：
 
-|库|Description|
+|库|描述|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|适用于 JavaScript 的 Microsoft 身份验证库预览|
 

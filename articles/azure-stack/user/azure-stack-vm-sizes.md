@@ -14,12 +14,12 @@ ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: ffcb6d6d7955a2b276850d6db9d08a2cc5c16adb
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0188de6d3a29034ec00999b2e07cab6ddb911631
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565014"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176253"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack 中支持的虚拟机大小
 
@@ -27,7 +27,7 @@ ms.locfileid: "55565014"
 
 本文列出了 Azure Stack 中可用的虚拟机 (VM) 大小。
 
-磁盘 IOPS （输入/输出操作每秒） 在 Azure Stack 是一个函数而不是磁盘类型的 VM 大小。 这意味着，无论你选择磁盘类型为 SSD 或 HDD 的 Standard_Fs 系列 VM，对于单个附加数据磁盘的 IOPS 限制是 2300 IOPS。 IOPS 限制是上限 （最大可能），以防止干扰性邻居。 它不是你将获得有关特定的 VM 大小的 IOPS 保证。
+Azure Stack 上的磁盘 IOPS（每秒输入/输出操作次数）是与 VM 大小相关的函数，与磁盘类型无关。 这意味着，对于 Standard_Fs 系列 VM，不管你选择 SSD 还是 HDD 作为磁盘类型，单个额外的数据磁盘的 IOPS 限制都是 2300。 施加的 IOPS 限制是一种上限（最大可能值），目的是防止邻域干扰。 它不是你会在特定 VM 大小上获得的 IOPS 的保证。
 
 ## <a name="general-purpose"></a>常规用途
 
@@ -135,14 +135,14 @@ ms.locfileid: "55565014"
 ### <a name="fsv2-series"></a>Fsv2 系列
 *需要 Azure Stack 1804 或更高版本* 
 
-|大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) |
-|---------------------|----|----|-----|-----|-------|--------------|
-|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |
-|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |
-|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |
-|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |
-|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |
-|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |
+|大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
+|---------------------|----|----|-----|-----|-------|--------------|---------|
+|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |2 |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |4 |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |8 |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |8 |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |8 |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |8 |
 
 
 ## <a name="memory-optimized"></a>内存优化

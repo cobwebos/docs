@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 1902 更新 |Microsoft Docs
-description: 了解有关 Azure Stack 集成系统，包括最新内容、 1902年更新的已知的问题，以及下载更新的位置。
+title: Azure Stack 1902 更新 | Microsoft Docs
+description: 了解 Azure Stack 集成系统的 1902 更新，包括新增功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,33 +12,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/13/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 66dfdf3a88a4bacdc118fed00d79f02b22da7869
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.lastreviewed: 03/13/2019
+ms.openlocfilehash: cccedaf8664ae504890d519c8b1aa57533592845
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792457"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188282"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 更新
 
 *适用于：Azure Stack 集成系统*
 
-本文介绍 1902年更新包的内容。 该更新包含此版 Azure Stack 的改进、修复和新功能。 本文还描述了此版本中的已知问题，并包含一个用于下载该更新的链接。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
+本文介绍 1902 更新包的内容。 该更新包含此版 Azure Stack 的改进、修复和新功能。 本文还描述了此版本中的已知问题，并包含一个用于下载该更新的链接。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]  
 > 此更新包仅适用于 Azure Stack 集成系统。 请勿将此更新包应用于 Azure Stack 开发工具包。
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure Stack 1902 更新内部版本号是**1.1902.0.69**。
+Azure Stack 1902 更新内部版本号为 **1.1902.0.69**。
 
 ## <a name="hotfixes"></a>修补程序
 
-Azure Stack 定期发布修补程序。 请务必安装[最新的 Azure Stack 修补程序](#azure-stack-hotfixes)为 1901 到 1902年更新 Azure Stack 之前。
+Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1902 之前，请务必先安装 1901 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)。
 
 Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 ASDK 上安装修补程序。
 
@@ -52,12 +52,12 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - **1809**：[KB 4481548 – Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**：当前没有修补程序可用。
 - **1901**：当前没有修补程序可用。
-- **1902**:当前没有修补程序可用。
+- **1902**：当前没有修补程序可用。
 
 ## <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
-- 安装[最新的 Azure Stack 修补程序](#azure-stack-hotfixes)为之前更新到 1902年 1901 （如果有）。
+> - 在更新到 1902 之前，请先安装 1901 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)（如果有）。
 
 - 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。
 
@@ -67,7 +67,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 当 Azure Stack 管理由 System Center Operations Manager (SCOM) 时，请确保更新[适用于 Microsoft Azure Stack 管理包](https://www.microsoft.com/download/details.aspx?id=55184)到版本 1.0.3.11 应用 1902年之前。
 
-- Azure Stack 更新的包格式已从 **.bin/.exe/.xml**到 **.zip/.xml**从 1902年发行版开始。 具有已连接 Azure Stack 缩放单位的客户将看到**可用更新**在门户中的消息。 现在，未连接的客户可以只需下载并导入包含相应的.xml 的.zip 文件。
+- 从版本 1902 开始，Azure Stack 更新包的格式已从 **.bin/.exe/.xml** 更改为 **.zip/.xml**。 使用联网 Azure Stack 缩放单元的客户将在门户中看到“有可用更新”消息。 未建立连接的客户现在只需下载并导入包含相应 .xml 的 .zip 文件即可。
 
 <!-- ## New features -->
 
@@ -75,7 +75,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 ## <a name="improvements"></a>改进
 
-- 1902 版本引入了用于创建计划、 产品/服务、 配额和加载项计划在 Azure Stack 管理员门户上的新用户界面。 有关详细信息，包括屏幕截图，请参阅[创建计划、 产品/服务和配额](azure-stack-create-plan.md)。
+- 1902 版本在 Azure Stack 管理员门户上引入了新的用户界面用于创建计划、套餐、配额和附加计划。 有关详细信息（包括屏幕截图），请参阅[创建计划、套餐和配额](azure-stack-create-plan.md)。
 
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
@@ -84,23 +84,49 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 1398818 3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context   PNU
 1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
 -->
-- 若要提高包的完整性和安全性，以及用于脱机引入更轻松地管理，Microsoft 已更改的更新包的格式从.exe 和.bin 文件到一个.zip 文件。 新的格式添加其他有时，可能会导致更新的准备，以停止正在解包过程的可靠性。 相同的包格式也适用于更新您的 OEM 中的包。
-- 若要提高 Azure Stack 运营商体验运行 Test-azurestack 时，运算符现在只需使用，"Test-azurestack-组 UpdateReadiness"而不是将十个附加参数传递后一个 Include 语句。
+- 若要提高包的完整性和安全性和进行脱机引入更轻松地管理，Microsoft 已更改的更新包的格式从.exe 和.bin 文件到一个.zip 文件。 新的格式向有时，可能会导致更新的准备，以停止正在解包过程的更多的可靠性。 相同的包格式也适用于更新您的 OEM 中的包。
+
+- 若要运行时，提高 Azure Stack 运营商体验**Test-azurestack**，现在只需使用运算符`Test-AzureStack -Group UpdateReadiness`而不是传递后的十个其他参数`include`语句。 例如：
 
   ```powershell
-    Test-AzureStack -Group UpdateReadiness  
-  ```  
-  
-- 若要在更新过程中改进的整体可靠性和可用性的核心基础结构服务，作为更新操作计划的一部分的本机更新资源提供程序将检测并调用根据需要自动全局修正。 全局修正"修复"工作流包括：
-    - 检查处于非最佳状态并尝试修复它们所需的基础结构虚拟机 
-    - 作为控制计划的一部分的 SQL 服务问题，检查并尝试修复它们根据需要
-    - 检查作为一部分的网络控制器 (NC) 软件负载均衡器 (SLB) 服务的状态并尝试修复它们根据需要
-    - 检查网络控制器 (NC) 服务的状态并尝试修复它根据需要
-    - 检查紧急恢复控制台服务 (ERCS) service fabric 节点的状态并根据需要修复它们
-    - 检查 XRP service fabric 节点的状态并根据需要修复它们
-    - 检查 Azure 一致的存储 (ACS) service fabric 节点的状态并根据需要修复它们
+  Test-AzureStack -Group UpdateReadiness  
+  ```
 
+- 若要在更新过程期间改进的整体可靠性和核心基础结构服务的可用性，本机更新资源提供程序将检测并根据需要调用自动全局修正更新操作计划的一部分。 全局修正"修复"工作流包括：
 
+  - 检查处于非最佳状态并尝试修复所需对它们的基础结构虚拟机。
+  - 作为控制计划的一部分的 SQL 服务问题，检查并尝试修复所需对它们。
+  - 检查作为一部分的网络控制器 (NC) 软件负载均衡器 (SLB) 服务的状态并尝试根据需要修复它们。
+  - 检查网络控制器 (NC) 服务的状态并尝试根据需要修复它。
+  - 检查紧急恢复控制台服务 (ERCS) service fabric 节点的状态并根据需要修复它们。
+  - 检查 XRP service fabric 节点的状态并根据需要修复它们。
+  - 检查 Azure 一致的存储 (ACS) service fabric 节点的状态并根据需要修复它们。
+
+<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
+- 改进的可靠性的容量扩展期间添加节点时切换到正在运行的状态从"扩展存储"的缩放单元状态。    
+
+<!-- 
+1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
+1396607 3796092: Move Blob services log from Storage role to ACSBlob role to reduce the log size of Storage Diagnostics
+1404529 3835749: Enable Group Policy Diagnostic Logs    Diagnostics
+1436561 Bug 3949187: [Bug Fix] Remove AzsStorageSvcsSummary test from SecretRotationReadiness Test-AzureStack flag  Diagnostics
+1404512 3849946: Get-AzureStackLog should collect all child folders from c:\Windows\Debug   Diagnostics 
+-->
+- 改进 Azure stack 诊断工具来提高日志集合可靠性和性能。 有关网络和标识服务的其他日志记录。 
+
+<!-- 1384958    Adding a Test-AzureStack group for Secret Rotation  Diagnostics -->
+- 改进的可靠性**Test-azurestack**机密轮换准备情况测试。
+
+<!-- 1404751    3617292: Graph: Remove dependency on ADWS.  Identity -->
+- 以与客户的 Active Directory 环境进行通信时提高 AD Graph 的可靠性的改进。
+
+<!-- 1391444    [ISE] Telemetry for Hardware Inventory - Fill gap for hardware inventory info   System info -->
+- 改进的硬件清单中的集合**Get AzureStackStampInformation**。
+
+- 若要提高 ERCS 基础结构上运行的操作的可靠性，为每个 ERCS 实例的内存将增加从 8 GB 到 12 GB。 在 Azure Stack 集成系统安装中，这会导致 12 GB 增加总体。
+
+> [!IMPORTANT]
+> 为了确保修补升级过程尽可能地减少租户停机时间，请在“容量”边栏选项卡中确认 Azure Stack 阵列是否可提供 12 GB 以上的可用空间。 成功安装更新后，“容量”边栏选项卡中会反映内存增大。
 
 ## <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
 
@@ -136,14 +162,13 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - [CVE-2019-0662](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0662)
 - [CVE-2019-0663](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0663)
 
-
-有关这些漏洞的详细信息，单击上面的链接，或请参阅 Microsoft 知识库文章[4487006](https://support.microsoft.com/en-us/help/4487006)。
+有关这些漏洞的详细信息，请单击上述链接，或者查看 Microsoft 知识库文章 [4487006](https://support.microsoft.com/en-us/help/4487006)。
 
 ## <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
 - 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，会显示基板管理控制器 (BMC) 中的一条警告消息。 可以放心地忽略此警告。
 
-- <!-- 2468613 - IS -->在安装此更新的过程中，可能会看到标题为 `Error – Template for FaultType UserAccounts.New is missing.` 的警报。可以放心忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
+- <!-- 2468613 - IS --> 在安装此更新的过程中，可能会看到标题为 `Error – Template for FaultType UserAccounts.New is missing.` 的警报。可以放心忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
 
 ## <a name="post-update-steps"></a>更新后步骤
 
@@ -186,7 +211,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - 虚拟机规模集 (VMSS) 创建体验提供基于 CentOS 的 7.2 作为部署选项。 由于该映像在 Azure Stack 上不可用，因此请为部署选择另一操作系统，或者使用一个 Azure 资源管理器模板，指定另一个已在部署之前由操作员从市场下载的 CentOS 映像。  
 
 <!-- TBD - IS ASDK --> 
-- 更新应用 1902年后，部署包含托管磁盘的 Vm 时，您可能会遇到以下问题：
+- 应用 1902 更新后，在部署包含托管磁盘的 VM 时可能会遇到以下问题：
 
    - 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次选择“资源提供程序”、“Microsoft.Compute”、“重新注册”。
@@ -195,9 +220,18 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 如果使用创建时已启用 SSH 授权的 Ubuntu 18.04 VM，则无法使用 SSH 密钥登录。 若要解决此问题，请在预配后使用针对 Linux 扩展的 VM 访问权限来实现 SSH 密钥，或者使用基于密码的身份验证。
 
-- 在构建 1902，ERCS 基础结构所需 VM 已从 8 GB 增加到 12 GB 的内存。 在 ASDK 中，这会导致的 4 GB 增长。 在 Azure Stack 集成系统安装中，它是 12 GB 增加。
+- 如果还没有硬件生命周期主机 (HLH):在之前生成 1902年，您必须将组策略设置**计算机配置 \windows 设置 \ 安全设置 \ 本地策略 \ 安全选项**到**发送 LM 和 NTLM – 如果协商使用NTLMv2会话安全**. 自生成 1902年，必须将其作为**未定义**或将其设置为**仅发送 NTLMv2 响应**（这是默认值）。 否则为不能建立的 PowerShell 远程会话，会收到**访问被拒绝**错误：
 
-   若要确保修补和更新过程会导致租户停机时间量最少，请确保 Azure Stack 戳具有超过 12 GB 的可用空间**容量**边栏选项卡。 您可以看到增加反映在此内存**容量**成功安装更新后的边栏选项卡。
+   ```shell
+   PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
+   New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
+   about_Remote_Troubleshooting Help topic.
+   At line:1 char:12
+   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
+   +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
+      + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed
+   ```
 
 ### <a name="networking"></a>网络  
 
@@ -220,19 +254,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - 网络安全组 (NSG) 无法像在全球 Azure 中一样在 Azure Stack 中运行。 在 Azure 中，可以在一个 NSG 规则中设置多个端口（使用门户、PowerShell 和资源管理器模板）。 但是，在 Azure Stack 中，无法通过门户在一个 NSG 规则中设置多个端口。 若要解决此问题，请使用资源管理器模板或 PowerShell 设置这些附加的规则。
 
 <!-- 3203799 - IS, ASDK -->
-- 目前，无论实例大小是什么，Azure Stack 都不支持将 4 个以上的网络接口 (NIC) 附加到 VM 实例。
-
-- 识别问题丢弃数据包超过 1450 字节到内部负载均衡器 (ILB)。 问题是由于正在太低，无法容纳 VXLAN 封装数据包遍历该角色，该自 1901年起已被移动到主机的主机上的 MTU 设置。 有至少两个方案，可能会遇到我们曾经表现此问题：
-
-  - SQL 查询将 SQL Always On 后面内部负载均衡器 (ILB)，并为超过 660 个字节。
-  - 如果尝试启用多个主节点，Kubernetes 部署失败。  
-
-  在同一虚拟网络但不同子网上的 VM 和 ILB 之间的通信时，将发生此问题。 您可以通过在提升的命令提示符中运行以下命令，ASDK 主机上解决此问题：
-
-  ```shell
-  netsh interface ipv4 set sub "hostnic" mtu=1660
-  netsh interface ipv4 set sub "management" mtu=1660
-  ```
+- Azure Stack 不支持 4 个以上的网络接口 (Nic) 现在，附加到 VM 实例而不考虑实例的大小。
 
 <!-- ### SQL and MySQL-->
 
@@ -250,7 +272,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 ## <a name="download-the-update"></a>下载更新
 
-可以从 Azure Stack 1902 更新包下载[此处](https://aka.ms/azurestackupdatedownload)。 
+可从[此处](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1902 更新包。 
 
 只有在联网场景中，Azure Stack 部署才会定期检查安全的终结点，并在已发布云更新的情况下自动通知你。 有关详细信息，请参阅[管理 Azure Stack 的更新](azure-stack-updates.md#using-the-update-tile-to-manage-updates)。
 

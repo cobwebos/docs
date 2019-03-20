@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 8cd50cab555755a137114bf871cad57ddf7a9db5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3e93e822c5764a23bba124152ef5dfabf2d3f94f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872974"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223863"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>在 Linux 上创建运行 Apache Tomcat 服务器的 Service Fabric 容器
 Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 本文介绍如何使用 Apache Tomcat 和简单的 Web 应用程序生成容器，然后将该容器部署到运行 Linux 的 Service Fabric 群集并连接到 Web 应用程序。  
@@ -153,12 +153,12 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
 
    ```xml
    <Resources>
-     <Endpoints>
-       <!-- This endpoint is used by the communication listener to obtain the port on which to 
-        listen. Please note that if your service is partitioned, this port is shared with 
-        replicas of different partitions that are placed in your code. -->
-       <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
-     </Endpoints>
+    <Endpoints>
+      <!-- This endpoint is used by the communication listener to obtain the port on which to 
+       listen. Please note that if your service is partitioned, this port is shared with 
+       replicas of different partitions that are placed in your code. -->
+      <Endpoint Name="endpointTest" Port="8080" Protocol="tcp"/>
+    </Endpoints>
    </Resources>
    ```
 
@@ -166,10 +166,10 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
 
    ```xml
    <Policies>
-     <ContainerHostPolicies CodePackageRef="Code">
-       <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
-       <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-     </ContainerHostPolicies>
+    <ContainerHostPolicies CodePackageRef="Code">
+      <PortBinding ContainerPort="8080" EndpointRef="endpointTest"/>
+      <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
+    </ContainerHostPolicies>
    </Policies>
    ```
 
@@ -183,31 +183,31 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
 
    * 若要连接到本地 Service Fabric 群集，请运行：
 
-      ```bash
-      sfctl cluster select --endpoint http://localhost:19080
-      ```
+     ```bash
+     sfctl cluster select --endpoint http://localhost:19080
+     ```
     
    * 若要连接到安全的 Azure 群集，请确保客户端证书以 .pem 文件的形式存在于 ServiceFabricTomcat 目录中，并运行： 
 
-      ```bash
-      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
-      ```
-      在上述命令中，将 `your-certificate.pem` 替换为客户端证书文件的名称。 在开发和测试环境中，群集证书通常用作客户端证书。 如果你的证书未自签名，则忽略 `-no-verify` 参数。 
+     ```bash
+     sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
+     ```
+     在上述命令中，将 `your-certificate.pem` 替换为客户端证书文件的名称。 在开发和测试环境中，群集证书通常用作客户端证书。 如果你的证书未自签名，则忽略 `-no-verify` 参数。 
        
-      群集证书通常本地下载为 .pfx 文件。 如果你还没有 PEM 格式的证书，可以运行以下命令，通过 .pfx 文件创建 .pem 文件：
+     群集证书通常本地下载为 .pfx 文件。 如果你还没有 PEM 格式的证书，可以运行以下命令，通过 .pfx 文件创建 .pem 文件：
 
-      ```bash
-      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
-      ```
+     ```bash
+     openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
+     ```
 
-      如果 .pfx 文件不受密码保护，请对最后一个参数使用 `-passin pass:`。
+     如果 .pfx 文件不受密码保护，请对最后一个参数使用 `-passin pass:`。
 
 
 13. 运行模板中提供的安装脚本，将应用程序部署到群集中。 该脚本将应用程序包复制到群集映像存储区，注册应用程序类型并创建应用程序的实例。
 
-      ```bash
-      ./install.sh
-      ```
+     ```bash
+     ./install.sh
+     ```
 
    运行安装脚本后，打开浏览器并导航到 Service Fabric Explorer：
     

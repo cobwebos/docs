@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d222e398653487cb87525ac13ebe682e9c8a26ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195930"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122920"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 
@@ -66,7 +66,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 - 确保内容符合 HTML5 规范且可访问
 - 确保为 CORS 启用了内容服务器。
 - 通过 HTTPS 提供内容。
-- 为所有链接和 CSS 内容使用绝对 URL，例如 https://yourdomain/content。
+- 为所有链接和 CSS 内容使用绝对 URL，例如 `https://yourdomain/content`。
 
 > [!TIP]
 > 若要验证托管内容的站点是否已启用 CORS 并测试 CORS 请求，可以使用站点 https://test-cors.org/。 可以借助此站点将 CORS 请求发送到远程服务器（测试是否支持 CORS），或者将 CORS 请求发送到测试服务器（探索 CORS 的某些功能）。
@@ -121,16 +121,16 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 1. 打开浏览会话，并使用页面 *unified.html* 在存储帐户中的位置的完整 URL `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` 导航到该页面。 例如， https://contoso369b2c.blob.core.windows.net/b2c/unified.html。
 2. 导航到 https://test-cors.org。在此站点中，可以验证所用的页面是否已启用 CORS。  
-<!--
-![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
--->
+   <!--
+   ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
+   -->
 
 3. 在“远程 URL”中，输入 unified.html 内容的完整 URL，并单击“发送请求”。
 4. 在“结果”部分中检查输出是否包含“XHR 状态: 200”，此状态表明已启用 CORS。
-<!--
-![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
--->
-存储帐户现在应包含本演示中所述的名为 *b2c* 的 Blob 容器，该容器包含 *Starter-Pack* 中的以下 wingtiptoys 模板。
+   <!--
+   ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
+   -->
+   存储帐户现在应包含本演示中所述的名为 *b2c* 的 Blob 容器，该容器包含 *Starter-Pack* 中的以下 wingtiptoys 模板。
 
 <!--
 ![Correctly configured storage account](../../articles/active-directory-b2c/media/active-directory-b2c-reference-customize-ui-custom/storage-account-final.png)
@@ -138,7 +138,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 下表描述了上述 HTML5 页面的用途。
 
-| HTML5 模板 | 说明 |
+| HTML5 模板 | 描述 |
 |----------------|-------------|
 | *phonefactor.html* | 此页面可用作多重身份验证页面的模板。 |
 | *resetpassword.html* | 此页面可用作“忘记密码”页面的模板。 |
@@ -154,7 +154,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 下表描述了 Azure AD B2C 标识体验引擎识别的内容定义 ID 集及其相关的页面类型。
 
-| 内容定义 ID | 说明 |
+| 内容定义 ID | 描述 |
 |-----------------------|-------------|
 | *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些提供者包括企业标识提供者、社交标识提供者（如 Facebook 和 Google+）或本地帐户（基于电子邮件地址或用户名）。 |

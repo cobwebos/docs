@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6eb0ce9098b5cc5f66035851c6837e9e46fcf2df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411379"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074992"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
 
@@ -118,7 +118,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="disable-windows-firewall"></a>禁用 Windows 防火墙
 `netsh advfirewall set allprofiles state off`
 
-故障排除时，可以使用此命令暂时排除 Windows 防火墙。 下一次重启时，将会启用防火墙；也可以使用以下命令来启用它。 不要通过停止 Windows 防火墙服务 (MPSSVC) 或基本筛选引擎 (BFE) 服务来排除 Windows 防火墙。 停止 MPSSVC 或 BFE 会导致所有连接被阻止。
+故障排除时，可以使用此命令暂时排除 Windows 防火墙。 它将启用下次重新启动或使用以下命令将其启用。 不要通过停止 Windows 防火墙服务 (MPSSVC) 或基本筛选引擎 (BFE) 服务来排除 Windows 防火墙。 停止 MPSSVC 或 BFE 会导致所有连接被阻止。
 ### <a name="enable-windows-firewall"></a>启用 Windows 防火墙
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>管理用户和组
@@ -247,8 +247,8 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 `powershell <enter>`
 
->[!CAUTION]
-在运行其他任何 PowerShell 命令之前，请从 PowerShell 会话中删除 PSReadLine 模块。 目前有一个已知问题：如果在 SAC 中的 PowerShell 会话内运行 PSReadLine，从剪贴板粘贴的文本中会出现额外的字符。
+> [!CAUTION]
+> 在运行其他任何 PowerShell 命令之前，请从 PowerShell 会话中删除 PSReadLine 模块。 目前有一个已知问题：如果在 SAC 中的 PowerShell 会话内运行 PSReadLine，从剪贴板粘贴的文本中会出现额外的字符。
 
 请先检查是否已加载 PSReadLine。 在 Windows Server 2016、Windows 10 和更高版本的 Windows 上，默认已加载 PSReadLine。 在更低的 Windows 版本上，只有手动安装的 PSReadLine 才会加载。 
 

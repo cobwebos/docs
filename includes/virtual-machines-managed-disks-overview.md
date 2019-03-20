@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10afad7f782d1a98dfde5f7d708477375af54597
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 287ae3b8122dd2a1e43c31055ac0ea5b04dddb07
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330960"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190636"
 ---
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -53,7 +53,7 @@ ms.locfileid: "56330960"
 
 ### <a name="temporary-disk"></a>临时磁盘
 
-每个 VM 包含一个不是托管磁盘的临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或重新部署 VM 时，临时磁盘上的数据可能会丢失。 在 VM 标准重启期间，临时驱动器上的数据应会保留。 但是，有些情况下数据可能不会持久保留，例如移到新主机。 因此，临时驱动器上的任何数据都不应该是对系统至关重要的数据。
+每个 VM 包含一个不是托管磁盘的临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 临时磁盘上的数据可能会丢失期间[维护事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)事件，或者当您[重新部署 VM](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。 在 VM 成功标准重启期间，临时驱动器上的数据将保留。 
 
 ## <a name="managed-disk-snapshots"></a>托管磁盘快照
 

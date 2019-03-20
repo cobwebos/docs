@@ -6,16 +6,16 @@ author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: security
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f07699b49b7791894d1f183b0686161375ea17a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: a3204c2705ba7b83c4fe22ab6bdd15c11eeeeda5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182432"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的威胁检测
 在 Azure SQL 数据仓库中配置威胁检测并浏览可疑事件。
@@ -57,7 +57,7 @@ ms.locfileid: "55295411"
    **注意：** 在 Excel 2010 或更高版本中，需要配置 Power Query 和“快速合并”设置
    
     ![导航窗格](media/sql-data-warehouse-security-threat-detection/7_td_audit_records_open_excel.png)
-5. 若要配置“快速合并”设置 - 请在“POWER QUERY”功能区选项卡中，选择“选项”以显示“选项”对话框。 选择“隐私”部分，并选择第二个选项 -“忽略隐私级别并潜在地改善性能”：
+5. 若要配置“快速合并”设置 - 请在“POWER QUERY”功能区选项卡中，选择“选项”以显示“选项”对话框。 选择“隐私”部分，然后选择第二个选项 -“忽略隐私级别并潜在地改善性能”：
    
     ![导航窗格](media/sql-data-warehouse-security-threat-detection/8_td_excel_fast_combine.png)
 6. 要加载 SQL 审核日志，请确保设置选项卡中的参数设置正确，选择“数据”功能区，并单击“全部刷新”按钮。

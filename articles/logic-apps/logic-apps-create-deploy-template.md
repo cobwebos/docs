@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 8714c91079d087b16a62af4af8b381edf6871f8b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: HT
+ms.openlocfilehash: 3d32b180f7d841c36f8ae03aa94956c6da00c6fe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065726"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883434"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>使用 Azure 资源管理器模板部署逻辑应用
 
@@ -63,7 +63,7 @@ Visual Studio 工具生成可跨任何订阅或位置使用的有效部署模板
 1. 下载最新版本的[逻辑应用模板创建程序](https://github.com/jeffhollan/LogicAppTemplateCreator/releases)。  
 2. 提取 PowerShell 模块文件夹中的文件夹（通常为 `%UserProfile%\Documents\WindowsPowerShell\Modules`）。
 
-为了使模块可与任何租户和订阅访问令牌一起使用，建议通过 [ARMClient](https://github.com/projectkudu/ARMClient) 命令行工具来使用它。  此[博客文章](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)详细讨论了 ARMClient。
+为了使模块可与任何租户和订阅访问令牌一起使用，建议通过 [ARMClient](https://github.com/projectkudu/ARMClient) 命令行工具来使用它。  此[博客文章](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)详细讨论了 ARMClient。
 
 ### <a name="generate-a-logic-app-template-by-using-powershell"></a>使用 PowerShell 来生成逻辑应用模板
 安装 PowerShell 之后，可以使用以下命令来生成模板：

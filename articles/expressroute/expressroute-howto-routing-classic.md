@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: fbf97c984a00d6bdd7f79c26094ae36348e00236
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.openlocfilehash: 5542d61c5e615361ca96f911cfe11540fcd09037
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342028"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103819"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>创建和修改 ExpressRoute 线路的对等互连（经典）
 > [!div class="op_single_selector"]
@@ -58,25 +58,25 @@ Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRou
 
 1. 使用提升的权限打开 PowerShell 控制台，并连接到帐户。
 
-  ```powershell
-  Connect-AzureRmAccount
-  ```
+   ```powershell
+   Connect-AzureRmAccount
+   ```
 2. 检查该帐户的订阅。
 
-  ```powershell
-  Get-AzureRmSubscription
-  ```
+   ```powershell
+   Get-AzureRmSubscription
+   ```
 3. 如果有多个订阅，请选择要使用的订阅。
 
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+   ```powershell
+   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   ```
 
 4. 接下来，使用以下 cmdlet 将 Azure 订阅添加到经典部署模型的 PowerShell。
 
-  ```powershell
-  Add-AzureAccount
-  ```
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="azure-private-peering"></a>Azure 专用对等互连
 
@@ -86,59 +86,59 @@ Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRou
 
 1. **创建 ExpressRoute 线路。**
 
-  请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
+   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确保它已预配。**
    
-  检查 ExpressRoute 线路是否已预配并已启用。
+   检查 ExpressRoute 线路是否已预配并已启用。
 
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  返回：
+   返回：
 
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  确保线路显示为已预配并已启用。 否则，请咨询连接服务提供商，使线路处于所需状态。
+   确保线路显示为已预配并已启用。 否则，请咨询连接服务提供商，使线路处于所需状态。
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 3. **配置线路的 Azure 专用对等互连。**
 
-  在继续执行后续步骤之前，请确保已准备好以下各项：
+   在继续执行后续步骤之前，请确保已准备好以下各项：
    
-  * 主链路的 /30 子网。 它不能是保留给虚拟网络使用的任何地址空间的一部分。
-  * 辅助链路的 /30 子网。 它不能是保留给虚拟网络使用的任何地址空间的一部分。
-  * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
-  * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以将专用 AS 编号用于此对等互连。 确认未使用 65515。
-  * MD5 哈希（如果选择使用）。 可选。
+   * 主链路的 /30 子网。 它不能是保留给虚拟网络使用的任何地址空间的一部分。
+   * 辅助链路的 /30 子网。 它不能是保留给虚拟网络使用的任何地址空间的一部分。
+   * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
+   * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以将专用 AS 编号用于此对等互连。 确认未使用 65515。
+   * MD5 哈希（如果选择使用）。 可选。
      
-  可使用以下示例为线路配置 Azure 专用对等互连：
+   可使用以下示例为线路配置 Azure 专用对等互连：
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
-  ```    
+   ```powershell
+   New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
+   ```    
 
-  若要使用 MD5 哈希，请使用以下示例为线路配置 Azure 专用对等互连：
+   若要使用 MD5 哈希，请使用以下示例为线路配置 Azure 专用对等互连：
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
+   ```
      
-  > [!IMPORTANT]
-  > 确认将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
-  > 
+   > [!IMPORTANT]
+   > 确认将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
+   > 
 
 ### <a name="to-view-azure-private-peering-details"></a>查看 Azure 专用对等互连详细信息
 
@@ -189,59 +189,59 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
 
 1. **创建 ExpressRoute 线路**
 
-  请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
+   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在这种情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确认它已预配**
 
-  首先必须检查 ExpressRoute 线路是否已预配并已启用。
+   首先必须检查 ExpressRoute 线路是否已预配并已启用。
 
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  返回：
+   返回：
 
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  确认线路显示为已预配并已启用。 否则，请咨询连接服务提供商，使线路处于所需状态。
+   确认线路显示为已预配并已启用。 否则，请咨询连接服务提供商，使线路处于所需状态。
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 4. **配置线路的 Azure 公共对等互连**
    
-  在继续下一步之前，请确保已准备好以下信息：
+   在继续下一步之前，请确保已准备好以下信息：
    
-  * 主链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。
-  * 辅助链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。
-  * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
-  * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
-  * MD5 哈希（如果选择使用）。 可选。
+   * 主链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。
+   * 辅助链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。
+   * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
+   * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
+   * MD5 哈希（如果选择使用）。 可选。
 
-  > [!IMPORTANT]
-  > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
-  >  
+   > [!IMPORTANT]
+   > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
+   >  
      
-  可使用以下示例为线路配置 Azure 公共对等互连：
+   可使用以下示例为线路配置 Azure 公共对等互连：
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
+   ```
      
-  若要使用 MD5 哈希，请使用以下示例配置线路：
+   若要使用 MD5 哈希，请使用以下示例配置线路：
      
-  ```powershell
-  New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
+   ```
      
 ### <a name="to-view-azure-public-peering-details"></a>查看 Azure 公共对等互连详细信息
 
@@ -293,34 +293,34 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
 
 1. **创建 ExpressRoute 线路**
   
-  请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
+   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确认它已预配**
 
-  确认线路显示为已预配并已启用。 
+   确认线路显示为已预配并已启用。 
    
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  返回：
+   返回：
    
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  确认线路显示为已预配并已启用。 否则，请咨询连接服务提供商，使线路处于所需状态。
+   确认线路显示为已预配并已启用。 否则，请咨询连接服务提供商，使线路处于所需状态。
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 3. **配置线路的 Microsoft 对等互连**
    
     在继续下一步之前，请确保已准备好以下信息。
@@ -329,16 +329,16 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * 辅助链路的 /30 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 前缀。
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
-   * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀的列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
+   * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
    * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。 可选。
    * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
    * MD5 哈希（如果选择使用）。 **可选。**
      
-  运行以下 cmdlet 为线路配置 Microsoft 对等互连：
+   运行以下 cmdlet 为线路配置 Microsoft 对等互连：
  
-  ```powershell
-  New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
+   ```
 
 ### <a name="to-view-microsoft-peering-details"></a>查看 Microsoft 对等互连详细信息
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 5ba55e339db4c33d1b0d759e4682481e20318938
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166228"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "58115360"
 ---
 ### <a name="prepare-for-a-push-installation-on-a-linux-server"></a>在 Linux 服务器上准备推送安装
 
@@ -20,7 +20,7 @@ ms.locfileid: "50166228"
 1. 确保安全外科 (SSH) 已启用且正在端口 22 上运行。
 1. 在 sshd_config 文件中启用 SFTP 子系统和密码身份验证。 执行以下步骤:
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 以 **root** 身份登录。
+    a. 以 **root** 身份登录。
 
     b. 在 **/etc/ssh/sshd_config** 文件中，找到以“PasswordAuthentication”开头的行。
 
@@ -34,7 +34,7 @@ ms.locfileid: "50166228"
 
 1. 添加在 CSPSConfigtool 中创建的帐户。 执行以下步骤:
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录到配置服务器。
+    a. 登录到配置服务器。
 
     b. 打开 **cspsconfigtool.exe**。 桌面上有该工具的快捷方式，也可以在 %ProgramData%\home\svsystems\bin 文件夹中找到它。
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: a5033b9eab637a62c6bea4f95f4e604313125994
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 810f9bb81d367cfe70e59d62d81a9e129cf80e6b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542041"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225973"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -26,7 +26,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 |应用程序 |群集类型 | 描述 |
 |---|---|---|
-|AtScale 智能平台 |Hadoop |AtScale 将允许您查询几十亿行数据以交互方式使用 BI 工具已经知道，拥有，并喜爱 – 从 Microsoft Excel、 PowerBI、 Tableau Software qlikview 到横向扩展 OLAP 服务器，在 HDInsight 群集。 |
+|AtScale 智能平台 |Hadoop |AtScale 将允许您查询几十亿行数据以交互方式使用 BI 工具已经知道，拥有，并喜爱 – 从 Microsoft Excel、 Power BI、 Tableau Software qlikview 到横向扩展 OLAP 服务器，在 HDInsight 群集。 |
 |CDAP 4.2，HDInsight 的 4.3 |HBase |CDAP 是加速了值的 Hadoop 以及让 IT 人员提供自助服务数据的大数据的第一个统一的集成平台。 开放源代码和可扩展的 CDAP 消除障碍创新。 要求：4 个区域节点，最小值 D3 v2。 |
 |Datameer |Hadoop |Datameer 自助服务可扩展的平台来准备，探索的东西，和用于管理你的数据分析加速将复杂的多源数据转变为有价值的面向业务的信息，在整个企业范围内提供更快、 更智能见解。 |
 |在 HDInsight 上的 Dataiku DSS |Hadoop、Spark |在企业数据科学平台，可让数据科学家和数据分析师中 Dataiku DSS 协作来设计和运行新的数据产品和服务更有效地将原始数据转变为有影响力的预测。 |

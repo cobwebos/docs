@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: bb2ebeedb1b34288a3d402ffdf4df80aa3be83cd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 1102a8c80b0040c7044d64c674d956d339238623
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154069"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086643"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。
@@ -86,12 +86,11 @@ sudo vi /etc/hosts
     sudo realm discover CONTOSO100.COM
     ```
 
-     > [!NOTE]
-     > **故障排除：** 如果“领域发现”找不到托管域：
-     * 确保域可从虚拟机（请尝试 ping）进行访问。
-     * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
-     * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
-     >
+   > [!NOTE]
+   > **故障排除：** 如果“领域发现”找不到托管域：
+   >   * 确保域可从虚拟机（请尝试 ping）进行访问。
+   >   * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
+   >   * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
 
 2. 初始化 Kerberos。 在 SSH 终端中键入以下命令：
 

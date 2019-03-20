@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 18853d10c4acf1573772d72a8fb2c347cce545df
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: c27244af6da01163fa9ab554b6b9c1d9c99bab23
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730161"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104567"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步
 
@@ -57,7 +57,7 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
 - 该主机具有足够的本地存储，可以保存本地缓存的数据。
 - 对用于部署 Azure 文件同步的 Azure 订阅拥有所有者级别的访问权限。如果没有所有者或管理员级别的权限，则为同步组创建云终结点时可能会遇到问题。
 - 有权访问包含所要同步到的 Azure 文件共享的[常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。 有关详细信息，请参阅[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。
- - 如何[创建 Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
+  - 如何[创建 Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 
 ## <a name="migration-process"></a>迁移过程
 
@@ -87,7 +87,7 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
     如果使用不同的 Windows Server 主机，请跳过此步骤并转到下一步骤。 如果对 AFS 使用相同的 Windows 文件服务器，则现在会出现几分钟的停机时间。 
     - **停机时间开始** - 删除在“步骤 1F”中创建的服务器终结点。 
     - 使用数据接下来要驻留到的路径创建新的服务器终结点。
-    - 当服务器终结点显示为“正常”（这可能需要几分钟时间）后，新位置中会出现这些数据。 现在，可将 Windows Server 主机配置为从此新位置提供文件。 - **停机时间结束**。
+    - 当服务器终结点显示为“正常”（这可能需要几分钟时间）后，新位置中会出现这些数据。 现在，可将 Windows Server 主机配置为从此新位置提供文件。 -**停机时间结束**。
 5.  如果对 Azure 文件同步使用另一个 Windows 文件服务器，则不会出现任何停机时间。 
     - 使用准备用作缓存的本地存储的路径添加另一个服务器终结点，以代替 StorSimple 设备。 
     - 片刻之后，即可在新服务器中看到文件。 随时可以在主机上从 StorSimple 设备切换到此新位置。

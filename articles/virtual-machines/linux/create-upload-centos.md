@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: a46f2b4ed1bb3fc5fff65a627bd3d808ed85ffce
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 4e32d2357636cb488d3a58b78b025860da3f74c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967276"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091352"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
 
@@ -29,14 +29,14 @@ ms.locfileid: "52967276"
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-本文假设已在虚拟硬盘中安装了 CentOS（或类似的衍生产品）Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
+本文假设已在虚拟硬盘中安装了 CentOS（或类似的衍生产品）Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅 [安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **CentOS 安装说明**
 
 * 另请参阅[常规 Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 的提示。
-* Azure 不支持 VHDX 格式，仅支持**固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，则意味着选择的是“固定大小”，而不是在创建磁盘时动态分配默认大小。
+* Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，则意味着选择的是“固定大小”，而不是在创建磁盘时动态分配默认大小。
 * 在安装 Linux 系统时，*建议*使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台相同的 VM 进行故障排除的情况下。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 可以在数据磁盘上使用。
 * 需要装载 UDF 文件系统的内核支持。 在 Azure 上首次启动时，预配配置将通过附加到来宾的 UDF 格式媒体传递到 Linux VM。 Azure Linux 代理必须能够装载 UDF 文件系统才能读取其配置和预配 VM。
 * 低于 2.6.37 的 Linux 内核版本不支持具有更大 VM 大小的 Hyper-V 上的 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的旧分发版，在 RHEL 6.6 (kernel-2.6.32-504) 中已解决。 运行版本低于 2.6.37 的自定义内核的系统，或者版本低于 2.6.32-504 的基于 RHEL 的内核必须在 grub.conf 中的内核命令行上设置启动参数 `numa=off`。 有关详细信息，请参阅 Red Hat [KB 436883](https://access.redhat.com/solutions/436883)。
@@ -49,7 +49,7 @@ ms.locfileid: "52967276"
 
 2. 单击“连接”打开该虚拟机的控制台窗口。
 
-3. 在 CentOS 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
+3. 在 CentOS 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 请运行以下命令来卸载该包：
 
         # sudo rpm -e --nodeps NetworkManager
 
@@ -127,7 +127,7 @@ ms.locfileid: "52967276"
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
     > [!Note]
-    > 本指南的余下部分假设你至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
+    > 本指南的余下部分假设用户至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
 
 9. 将下列行添加到 /etc/yum.conf：
 
@@ -159,13 +159,13 @@ ms.locfileid: "52967276"
 
     如果没有按步骤 3 中所述删除 NetworkManager 包和 NetworkManager-gnome 包，则安装 WALinuxAgent 包时会删除它们。
 
-13. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/boot/grub/menu.lst`，并确保默认内核包含以下参数：
+13. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/boot/grub/menu.lst` ，并确保默认内核包含以下参数：
 
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
 
     这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。
 
-    除此之外，建议*删除*以下参数：
+    除此之外，建议 *删除* 以下参数：
 
         rhgb quiet crashkernel=auto
 
@@ -203,16 +203,16 @@ ms.locfileid: "52967276"
 为 Azure 准备 CentOS 7 虚拟机非常类似于 CentOS 6，但有几个值得注意的重要区别：
 
 * NetworkManager 包不再与 Azure Linux 代理冲突。 默认情况下将安装此包，建议不要删除它。
-* GRUB2 现在用作默认引导加载程序，因此用于编辑内核参数的过程已更改（请参见下文）。
+* GRUB2 现在用作默认引导加载程序，因此编辑内核参数的过程已更改（见下文）。
 * XFS 现在是默认文件系统。 如果需要，仍可以使用 ext4 文件系统。
 
 **配置步骤**
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-2. 单击“连接”打开该虚拟机的控制台窗口。
+2. 单击“连接”  以打开该虚拟机的控制台窗口。
 
-3. 创建或编辑文件 `/etc/sysconfig/network` 并添加以下文本：
+3. 创建或编辑 `/etc/sysconfig/network` 文件，添加以下文本：
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
@@ -293,7 +293,7 @@ ms.locfileid: "52967276"
 
         rhgb quiet crashkernel=auto
 
-    图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。 根据需要可以配置 `crashkernel` 选项，但请注意此参数会使虚拟机中的可用内存量减少 128MB 或更多，这在较小的虚拟机上可能会出现问题。
+    图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。 根据需要可以配置 `crashkernel` 选项，但请注意此参数会使 VM 中的可用内存量减少 128 MB 或更多，这在较小的 VM 上可能会出现问题。
 
 9. 按照上面所示完成编辑 `/etc/default/grub` 后，运行以下命令以重新生成 grub 配置：
 
@@ -301,11 +301,11 @@ ms.locfileid: "52967276"
 
 10. 如果从 VMware、VirtualBox 或 KVM 生成映像：请确保 initramfs 中包含 HYPER-V 驱动程序：
 
-   编辑 `/etc/dracut.conf`，添加内容：
+    编辑 `/etc/dracut.conf`，添加内容：
 
         add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
 
-   重新生成 initramfs：
+    重新生成 initramfs：
 
         # sudo dracut -f -v
 
@@ -316,7 +316,7 @@ ms.locfileid: "52967276"
 
 12. 不要在 OS 磁盘上创建交换空间。
 
-   Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是*临时*磁盘，并可能在取消预配 VM 时被清空。 在安装 Azure Linux 代理（请参见前一步骤）后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是*临时*磁盘，并可能在取消预配 VM 时被清空。 在安装 Azure Linux 代理（请参见前一步骤）后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4

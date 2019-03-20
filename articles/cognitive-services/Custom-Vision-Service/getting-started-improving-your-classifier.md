@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 54faf8b37afa953aac7d411df2f539188dc5b451
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: f96b4bb75a22e51586820a2e7be08c09cf7b26dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310203"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104414"
 ---
 # <a name="how-to-improve-your-classifier"></a>如何改进分类器
 
@@ -39,7 +39,7 @@ ms.locfileid: "56310203"
 
 ## <a name="data-quantity"></a>数据数量
 
-训练图像的数目是最重要的因素。 我们建议一开始为每个标签至少使用 50 个图像。 使用更少的图像时，过度拟合的风险会提高，同时，性能数字可能会指出质量良好，但模型可能很难处理实际数据。 
+训练图像的数目是最重要的因素。 我们建议使用至少 50 个图像每个标签作为起始点。 使用更少的图像时，过度拟合的风险会提高，同时，性能数字可能会指出质量良好，但模型可能很难处理实际数据。 
 
 ## <a name="data-balance"></a>数据平衡
 
@@ -57,9 +57,9 @@ ms.locfileid: "56310203"
 
     ![背景图像示例](./media/getting-started-improving-your-classifier/background.png)
 
-* __照明：__ 提供不同照明下的图像（即在闪光、高曝光等设置下拍摄），尤其是在用于预测的图像具有不同照明的情况下。 使用不同饱和度、色调和亮度的图像也很有帮助。
+* __光照：__ 提供不同照明下的图像（即在闪光、高曝光等设置下拍摄），尤其是在用于预测的图像具有不同照明的情况下。 使用不同饱和度、色调和亮度的图像也很有帮助。
 
-    ![照明图像示例](./media/getting-started-improving-your-classifier/lighting.png)
+    ![光照图像示例](./media/getting-started-improving-your-classifier/lighting.png)
 
 * __对象大小：__ 提供具有不同大小和数量的对象的图像（例如，几串香蕉的照片和一根香蕉的特写照片）。 不同的大小有助于分类器涵盖所有方面。
 
@@ -102,4 +102,4 @@ ms.locfileid: "56310203"
 本指南介绍了使自定义图像分类模型变得更准确的几种方法。 接下来，请了解如何通过将图像提交到预测 API 来以编程方式测试这些图像。
 
 > [!div class="nextstepaction"]
-[使用预测 API](use-prediction-api.md)
+> [使用预测 API](use-prediction-api.md)

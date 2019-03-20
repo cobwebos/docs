@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 20a3b790310153ac5bda23fb72baf2ae61e1da52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416184"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003713"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -21,7 +21,7 @@ ms.locfileid: "56416184"
 
 ### <a name="does-azure-migrate-support-assessment-of-only-vmware-workloads"></a>Azure Migrate 是否仅支持对 VMware 工作负载的评估？
 
-是，Azure Migrate 目前仅支持对 VMware 工作负载的评估。 以后将实现对 Hyper-V 和物理服务器的支持。
+是，Azure Migrate 目前仅支持对 VMware 工作负载的评估。 支持的 HYPER-V 功能处于预览状态，请注册[此处](https://aka.ms/migratefuture)以获取预览版的访问权限。 将在将来启用的物理服务器的支持。
 
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Azure Migrate 是否需要使用 vCenter Server 来发现 VMware 环境？
 
@@ -42,7 +42,7 @@ Azure Migrate 是一个迁移规划工具，而 Azure Site Recovery 部署规划
 
 **从 VMware 迁移到 Azure**：如果想要将本地工作负荷迁移到 Azure，请使用 Azure Migrate 进行迁移规划。 Azure Migrate 会评估本地工作负荷并提供指导、见解和机制，以帮助迁移到 Azure。 准备好迁移计划后，可以使用 Azure Site Recovery 和 Azure 数据库迁移服务之类的服务将计算机迁移到 Azure。
 
-**从 Hyper-V 迁移到 Azure**：Azure Migrate 目前仅支持评估要迁移到 Azure 的 VMware 虚拟机。 Azure Migrate 对 Hyper-V 的支持已在规划中。 在此期间，可以使用 Site Recovery 部署规划器。 在 Azure Migrate 实现 Hyper-V 支持后，可以使用 Azure Migrate 来规划 Hyper-V 工作负荷的迁移。
+**从 Hyper-V 迁移到 Azure**：正式发布版本的 Azure Migrate 当前支持迁移到 Azure 的 VMware 虚拟机的评估。 支持的 HYPER-V 目前处于预览状态与生产支持。 如果您感兴趣尝试预览版，请注册[此处](https://aka.ms/migratefuture)。
 
 **从 VMware/Hyper-V 到 Azure 的灾难恢复**：如果想要使用 Azure Site Recovery (Site Recovery) 在 Azure 中实现灾难恢复 (DR)，请使用 Site Recovery 部署规划器进行 DR 规划。 Site Recovery 部署规划器会针对本地环境执行深度的、特定于 ASR 的评估。 它会提供所需的建议，让 Site Recovery 成功执行复制、虚拟机故障转移等 DR 操作。  
 
@@ -104,7 +104,7 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
   - 进网络
   - 出网络
 
-基于代理的发现是可以在基于设备的发现的基础上使用的选项，它会帮助客户将本地 VM 的[依赖项可视化](how-to-create-group-machine-dependencies.md)。 依赖项代理收集 FQDN、OS、IP 地址、MAC 地址、VM 中运行的进程，以及 VM 的传入/传出 TCP 连接等详细信息。 基于代理的发现是可选的，如果不想要将 VM 依赖项可视化，则可以选择不安装代理。
+基于代理的发现是一个可在基于设备的发现之上的选项，可帮助客户[可视化依赖项](how-to-create-group-machine-dependencies.md)的本地 Vm。 依赖项代理收集 FQDN、OS、IP 地址、MAC 地址、VM 中运行的进程，以及 VM 的传入/传出 TCP 连接等详细信息。 基于代理的发现是可选的，如果不想要将 VM 依赖项可视化，则可以选择不安装代理。
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>是否会对已分析的 ESXi 主机环境造成任何性能影响？
 
@@ -120,7 +120,7 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 ### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>在连续分析的情况下，Azure Migrate 上载的数据量是多少？
 
-发送到 Azure Migrate 的数据量取决于多个参数。 若要给出一个指示性数字，一个有 10 台计算机（每台有一个磁盘和一个 NIC）的项目每天将发送大约 50 MB。 这是一个近似值，将根据 NIC 和磁盘的数据点数而变化（如果计算机、NIC 或磁盘数量增加，则发送的数据将是非线性的）。 
+发送到 Azure Migrate 的数据量取决于多个参数。 若要给出一个指示性数字，一个有 10 台计算机（每台有一个磁盘和一个 NIC）的项目每天将发送大约 50 MB。 这是一个近似值，将根据 NIC 和磁盘的数据点数而变化（如果计算机、NIC 或磁盘数量增加，则发送的数据将是非线性的）。
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>数据是否经过静态加密和传输中加密？
 
@@ -176,7 +176,7 @@ Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/of
 
 ### <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
 
-使用依赖项可视化，你可以在运行评估之前通过交叉检查计算机依赖项来更自信地评估要迁移的 VM 组。 依赖项可视化可帮助你确保不遗漏任何事项，以避免在迁移到 Azure 时发生意外的服务中断。 Azure Migrate 利用 Log Analytics 中的服务映射解决方案来实现依赖项可视化。
+使用依赖项可视化，你可以在运行评估之前通过交叉检查计算机依赖项来更自信地评估要迁移的 VM 组。 依赖项可视化可帮助你确保不遗漏任何事项，以避免在迁移到 Azure 时发生意外的服务中断。 Azure Migrate 利用 Azure Monitor 日志，以启用依赖项可视化效果中的服务映射解决方案。
 
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>是否需要支付依赖项可视化功能的使用费？
 
@@ -217,7 +217,7 @@ Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/of
 [此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)列出了依赖项代理支持的 Linux 操作系统。
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>我在 Azure Migrate 中可视化依赖项时是否可以超过一小时的持续时间？
-否，Azure Migrate 允许依赖项可视化持续最多一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。 但是，可以使用 Log Analytics [查询依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)（经过更长的持续时间）。
+否，Azure Migrate 允许依赖项可视化持续最多一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。 但是，可以使用 Azure Monitor 日志传输到[查询依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)通过更长的时间。
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>包含 10 个以上 VM 的组是否支持依赖项可视化？
 可以[可视化最多包含 10 个 VM 的组的依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。

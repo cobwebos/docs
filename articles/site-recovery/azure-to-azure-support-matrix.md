@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 4c58d053412b8f90b6423454fcda814e8cf6da75
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: dbee223e6c8e878d017026531dd06301fe6aaf84
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093865"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
@@ -33,7 +33,7 @@ ms.locfileid: "56329007"
 ## <a name="resource-support"></a>资源支持
 
 **资源操作** | **详细信息**
---- | --- | ---
+--- | --- 
 **跨资源组移动保管库** | 不支持
 **跨资源组移动计算/存储/网络资源** | 不支持。<br/><br/> 如果在 VM 复制后移动 VM 或相关组件（如存储/网络），则需要禁用并重新启用 VM 的复制。
 **将 Azure VM 从一个订阅复制到另一个订阅以进行灾难恢复** | 在同一 Azure Active Directory 租户中受支持。
@@ -83,6 +83,7 @@ Site Recovery 支持复制那些运行本节中所列操作系统的 Azure VM。
 
 **操作系统** | **详细信息**
 --- | ---
+Windows Server 2019 |
 Windows Server 2016  | 服务器核心、带桌面体验的服务器
 Windows Server 2012 R2 |
 Windows Server 2012 |
@@ -194,7 +195,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持为[使用 Azure AD 应用的加密](https://aka.ms/ade-aad-app)启用的 VM |
 适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 不支持 |
 热添加/移除磁盘 | 不支持 | 如果在 VM 上添加或删除数据磁盘，则需为 VM 禁用复制后重新启用复制。
-排除磁盘 | [通过 powershell 支持](https://review.docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell?branch=pr-en-us-66458#replicate-azure-virtual-machine) |  默认排除临时磁盘。
+排除磁盘 | [通过 powershell 支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine) |   默认排除临时磁盘。
 存储空间直通  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
 横向扩展文件服务器  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
 LRS | 支持 |
@@ -234,7 +235,7 @@ NIC 上的 NSG | 支持 | 在恢复计划中使用 Azure 自动化脚本将 NSG 
 流量管理器     | 支持 | 可以预配置流量管理器，这样在正常情况下，流量路由到源区域中的终结点；发生故障转移时，流量路由到目标区域中的终结点。
 Azure DNS | 支持 |
 自定义 DNS  | 支持 |
-未经身份验证的代理 | 支持 | 请参阅[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)。    
+未经身份验证的代理 | 支持 | 请参阅[网络指南文档。](site-recovery-azure-to-azure-networking-guidance.md)    
 经过身份验证的代理 | 不支持 | 如果 VM 对出站连接使用经过身份验证的代理，则不能使用 Azure Site Recovery 复制该 VM。    
 具有本地网络的站点到站点 VPN（带或不带 ExpressRoute）| 支持 | 确保按以下方式配置 UDR 和 NSG：Site Recovery 流量不路由到本地网络。 请参阅[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)。  
 VNET 到 VNET 连接 | 支持 | 请参阅[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)。  

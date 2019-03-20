@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 5e6a44018cde84067a4c16c9d3d62227733f6658
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 617696c842ab90fc36c68e74831ffd1d79d14bc4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075572"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225699"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure Stack 的存储容量 
 
@@ -89,7 +89,7 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 云操作员可以使用管理员门户来查看所有共享的存储容量。
 
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
-2. 选择“所有服务” > “存储”以打开文件共享列表，可以在其中查看使用情况信息。 
+2. 选择**所有服务** > **存储** > **文件共享**，打开您可以在其中查看使用情况信息的文件共享列表。 
 
     ![示例：存储文件共享](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
@@ -170,13 +170,13 @@ VM 磁盘包括操作系统磁盘，由租户添加到容器。 VM 还可能包�
 
    ![示例：$destination shares](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
-4. 开始迁移容器。 迁移是异步操作。 如果在首次迁移完成之前开始迁移其他容器，请使用作业 ID 来跟踪每个容器的状态。
+4. 开始迁移容器。 迁移是异步操作。 如果第一次迁移完成之前启动的更多的容器的迁移，请，使用作业 ID 来跟踪每个状态。
 
    ```PowerShell
    $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
    ```
 
-   然后检查 $jobId。 在以下示例中，请将 *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* 替换为要检查的作业 ID：
+   然后检查 $jobId。 在以下示例中，替换*d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0*具有你想要检查作业 ID:
 
    ```PowerShell
    $jobId

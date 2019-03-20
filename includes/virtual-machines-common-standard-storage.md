@@ -9,11 +9,11 @@ ms.date: 01/08/2019
 ms.author: yuemlu
 ms.custom: include file
 ms.openlocfilehash: ad57d373422e0fc310e51ac31f2a2e76999abf22
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193287"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "58114299"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>高性价比标准存储以及非托管和托管 Azure VM 磁盘
 
@@ -81,11 +81,11 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 ## <a name="snapshots-and-copy-blob"></a>快照和复制 Blob
 
-对于存储服务而言，VHD 文件是页 blob。 可以拍摄页 blob 的快照，并将其复制到其他位置，例如其他存储帐户。
+对于存储服务而言，VHD 文件是页 blob。 可以创建页 Blob 的快照，并将其复制到其他位置，如不同的存储帐户。
 
 ### <a name="unmanaged-disks"></a>非托管磁盘
 
-可以为非托管标准磁盘创建[增量快照](../articles/virtual-machines/windows/incremental-snapshots.md)，这与对标准存储使用快照的方式相同。 如果源磁盘是本地冗余存储帐户，则建议创建快照，并将那些快照复制到地域冗余的标准存储帐户。 有关详细信息，请参阅 [Azure 存储冗余选项](../articles/storage/common/storage-redundancy.md)。
+可以为非托管标准磁盘创建[增量快照](../articles/virtual-machines/windows/incremental-snapshots.md)，这与对标准存储使用快照的方式相同。 如果源磁盘是本地冗余存储帐户，则建议创建快照，并将这些快照复制到地域冗余的标准存储帐户。 有关详细信息，请参阅 [Azure 存储冗余选项](../articles/storage/common/storage-redundancy.md)。
 
 如果磁盘已附加到 VM，则磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 后，无法在该 Blob 上执行 [Copy Blob](/rest/api/storageservices/Copy-Blob)（复制 Blob）操作。 此时，必须先使用 [Snapshot Blob](/rest/api/storageservices/Snapshot-Blob)（快照 Blob）REST API 方法创建该 Blob 的快照，然后对该快照执行 [Copy Blob](/rest/api/storageservices/Copy-Blob)（复制 Blob）以复制附加的磁盘。 或者，可以分离磁盘，并执行任何必要的操作。
 
@@ -95,9 +95,9 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 ### <a name="managed-disks"></a>托管磁盘
 
-托管磁盘的快照是托管磁盘的只读副本，其作为标准托管磁盘存储。 托管磁盘当前不支持增量快照，但以后将支持增量快照。
+托管磁盘的快照是托管磁盘的只读副本，其作为标准托管磁盘存储。 托管磁盘目前不支持增量快照，但将来会支持。
 
-如果托管磁盘已附加到 VM，则磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 时，无法通过生成共享访问签名 (SAS) 来执行复制操作。 请先创建磁盘快照，然后对该快照执行复制操作。 或者，可以分离磁盘，并生成共享访问签名 (SAS)以执行复制操作。
+如果托管磁盘已附加到 VM，则磁盘上将不允许某些 API 操作。 例如，磁盘附加到 VM 时，无法通过生成共享访问签名 (SAS) 来执行复制操作。 请先创建磁盘快照，然后对该快照执行复制操作。 或者，可以分离磁盘，然后通过生成共享访问签名 (SAS) 执行复制操作。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 

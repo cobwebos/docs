@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fa9cebe092f726b2df3dec99cee1bb97ccc92dc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 4f9628be1d1f1d146ed0dbc5ebd9579f0512aeac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658649"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997363"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
 
@@ -48,7 +48,7 @@ ms.locfileid: "34658649"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -199,11 +199,11 @@ ms.locfileid: "34658649"
 
 本文介绍如何在 Azure 上安装和配置高可用 SAP 系统，使用 Windows Server 故障转移群集 (WSFC) 和横向扩展文件服务器作为一个选项来群集化 SAP ASCS/SCS 实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始安装之前，请查看以下文章：
 
-* [体系结构指南：使用文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-file-share]
+* [体系结构指南：使用文件共享在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-file-share]
 
 * [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 Azure 基础结构以实现 SAP 高可用性][sap-high-availability-infrastructure-wsfc-file-share]
 
@@ -211,7 +211,7 @@ ms.locfileid: "34658649"
 * SAP 软件预配管理器 (SWPM) 安装工具版本 SPS21 或更高版本。
 * 下载包含新的 SAP 群集资源 DLL 的最新 NTCLUST.SAR 档案。 新的 SAP 群集 DLL 支持基于 Windows Server 故障转移群集使用文件共享的 SAP ASCS/SCS 高可用性。
 
-  有关新的 SAP 群集资源 DLL 的详细信息，请查看此博客：[新的 SAP 群集资源 DLL 可用！][sap-blog-new-sap-cluster-resource-dll]。
+  有关新的 SAP 群集资源 DLL 的详细信息，请参阅此博客：[新的 SAP 群集资源 DLL 已推出 ！][sap-blog-new-sap-cluster-resource-dll].
 
 我们不会介绍数据库管理系统 (DBMS) 安装，因为安装因使用的 DBMS 而异。 但是，本文假设 DBMS 在高可用性方面的疑虑已通过不同 DBMS 供应商为 Azure 提供的功能支持而获得解决。 此类功能包括：适用于 SQL Server 的 AlwaysOn 或数据库镜像，以及适用于 Oracle 数据库的 Oracle Data Guard。 在本文中所使用的方案中，我们未向 DBMS 添加更多保护。
 
@@ -425,9 +425,9 @@ Import-Module C:\tmp\SAPScripts.psm1
 Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_ascs-1 -NewASCSHostName pr1-ascs -NewSAPGlobalHostName sapglobal -Verbose  
 ```
 
-![图 1：SAPScripts.psm1 输出][sap-ha-guide-figure-8012]
+![图 1：SAPScripts.psm1 output][sap-ha-guide-figure-8012]
 
-**图 1**：SAPScripts.psm1 输出
+_**图 1**:SAPScripts.psm1 输出_
 
 ## <a name="update-the-sidadm-user-environment-variable"></a>更新 \<sid>adm 用户环境变量
 
@@ -516,7 +516,7 @@ C:\usr\sap\PR1\ASCS00\exe\sapstartsrv.exe -r -p \\sapglobal\sapmnt\PR1\SYS\profi
 
 ![图 2：重新安装 SAP 服务][sap-ha-guide-figure-8013]
 
-**图 2**：重新安装 SAP 服务
+_**图 2**:重新安装 SAP 服务_
 
 确保参数正确，然后选择“手动”作为“启动类型”。
 

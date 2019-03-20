@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eefc02eccb2c90f3173ec096a79a913a2dede04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0c77ac32bd6079a8583cc6ea91cb8e214e5b31ac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211166"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095545"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
 
@@ -88,25 +88,25 @@ ms.locfileid: "56211166"
 
 若要为应用程序配置单一登录，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
-6.  选择要配置单一登录的应用程序。
+6. 选择要配置单一登录的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8.  选择“基于密码的登录”模式。
+8. 选择“基于密码的登录”模式。
 
-9.  输入“登录 URL”。 这就是用户在其中输入用户名和密码进行登录时的 URL。 确保登录字段在 URL 中可见。
+9. 输入“登录 URL”。 这就是用户在其中输入用户名和密码进行登录时的 URL。 确保登录字段在 URL 中可见。
 
 10. 将用户分配到应用程序。
 
@@ -117,25 +117,25 @@ ms.locfileid: "56211166"
 
 若要直接将一个或多个用户分配到应用程序，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  从列表中选择要向其分配用户的应用程序。
+6. 从列表中选择要向其分配用户的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。
+8. 若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。
 
-9.  在“添加分配”窗格中，单击“用户和组”选择器。
+9. 在“添加分配”窗格中，单击“用户和组”选择器。
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
 
@@ -153,25 +153,25 @@ ms.locfileid: "56211166"
 
 若要直接将一个或多个组分配到应用程序，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  从列表中选择要向其分配用户的应用程序。
+6. 从列表中选择要向其分配用户的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。
+8. 若要打开“添加分配”窗格，请单击“用户和组”列表顶部的“添加”按钮。
 
-9.  在“添加分配”窗格中，单击“用户和组”选择器。
+9. 在“添加分配”窗格中，单击“用户和组”选择器。
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的组的**完整组名**。
 

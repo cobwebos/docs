@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d14cfb82ae74f85425dbd3e8a365e8b99969641d
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226635"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "58115245"
 ---
 ## <a name="using-vm-extensions"></a>使用 VM 扩展
 Azure VM 扩展实现了可帮助其他程序在 Azure VM 上正常工作的行为或功能（例如，**WebDeployForVSDevTest** 扩展允许 Visual Studio 在 Azure VM 上对解决方案进行 Web 部署），或为用户提供与 VM 交互的功能以支持其他某种行为（例如，用户可以使用 VM 访问扩展从 PowerShell、Azure CLI 和 REST 客户端重置或修改 Azure VM 上的远程访问值）。
 
 > [!IMPORTANT]
-> 有关这些扩展按它们支持的功能列出的完整列表，请参阅 [Azure VM 扩展和功能](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 由于每个 VM 扩展都支持特定功能，因此使用扩展确切地可以和不可以执行哪些操作取决于该扩展。 因此，在修改 VM 之前，请确保已阅读要使用的 VM 扩展的文档。 不支持删除某些 VM 扩展；其他 VM 扩展具有可设置以从根本上更改 VM 行为的属性。
+> 有关这些扩展按它们支持的功能列出的完整列表，请参阅 [Azure VM 扩展和功能](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 由于每个 VM 扩展都支持特定功能，因此使用扩展确切地可以和不可以执行哪些操作取决于该扩展。 因此，在修改 VM 之前，请确保已阅读要使用的 VM 扩展的相关文档。 不支持删除某些 VM 扩展；其他 VM 扩展具有可设置以从根本上更改 VM 行为的属性。
 > 
 > 
 
@@ -96,7 +96,7 @@ Azure VM 扩展实现了可帮助其他程序在 Azure VM 上正常工作的行�
 扩展可以在创建实例时添加，也可以将它们添加到正在运行的实例。 可以更新、禁用或删除扩展。 可以通过使用 Azure PowerShell cmdlet 或使用服务管理 REST API 操作来执行这些操作。 需要使用参数才能安装和设置某些扩展。 扩展支持公共和私有参数。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-使用 Azure PowerShell cmdlet 是添加和更新扩展的最简单方法。 使用扩展 cmdlet 时，将完成大部分扩展配置。 有时，可能需要以编程方式添加扩展。 当需要这样做时，必须提供扩展的配置。
+使用 Azure PowerShell cmdlet 是添加和更新扩展的最简单方法。 使用扩展 cmdlet 时，将为用户完成大部分扩展配置。 有时，可能需要以编程方式添加扩展。 当需要这样做时，必须提供扩展的配置。
 
 可以使用以下 cmdlet 来了解扩展是否需要配置公共和私有参数：
 
@@ -104,7 +104,7 @@ Azure VM 扩展实现了可帮助其他程序在 Azure VM 上正常工作的行�
 * 对于虚拟机的实例，可以使用 **Get-AzureVMAvailableExtension** cmdlet。
 
 ### <a name="service-management-rest-apis"></a>服务管理 REST API
-通过使用 REST API 检索可用扩展的列表时，将收到有关如何配置扩展的信息。 返回的信息可能会显示由公共架构和私有架构表示的参数信息。 在有关实例的查询中返回公共参数值。 不会返回私有参数值。
+使用 REST API 检索可用扩展的列表时，会收到有关如何配置扩展的信息。 返回的信息可能会显示由公共架构和私有架构表示的参数信息。 在有关实例的查询中返回公共参数值。 不会返回私有参数值。
 
 可以使用以下 REST API 来了解扩展是否需要配置公共和私有参数：
 

@@ -6,16 +6,16 @@ author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: security
 ms.date: 06/15/2018
 ms.author: kavithaj
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: 379425a4c0b21234fb4e48dc1c8a56cfea645045
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: f1452b1f15fe176107015957cdd1cd1cff5f4e55
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727375"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58172846"
 ---
 # <a name="column-level-security"></a>列级别安全性
 借助列级别安全性 (CLS)，客户可以根据用户的执行上下文或其组成员身份，控制对数据库表列的访问。

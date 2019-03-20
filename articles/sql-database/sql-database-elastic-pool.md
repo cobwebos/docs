@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.date: 02/28/2019
+ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963839"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010235"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -51,7 +51,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 可以加入池的数据库越多，实现的节省就越大。 但根据应用程序使用模式，可能会看到与使用两个 S3 数据库一样少的节约。
 
-以下各部分将帮助用户了解如何评估特定的数据库集合是否会因使用池而受益。 这些示例使用标准池，但同样的原理也适用于基本和高级池。
+以下各部分有助于了解如何评估特定的数据库集合是否会因使用池而受益。 这些示例使用标准池，但同样的原理也适用于基本和高级池。
 
 ### <a name="assessing-database-utilization-patterns"></a>评估数据库使用模式
 
@@ -118,10 +118,10 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
 
    对于基于 DTU 的购买模型：MAX（<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>  
-   <并发高峰数据库的数目 X 每一数据库的高峰 DTU 使用率）
+   <并发高峰数据库的数目 X 每一数据库的高峰 DTU 使用率)
 
    对于基于 vCore 的购买模型：MAX（<*数据库的总数目* X *每一数据库的平均 vCore 使用率*>、<br>  
-   <并发高峰数据库的数目 X 每一数据库的高峰 vCore 使用率)
+   <*并发高峰数据库的数目* X *每一数据库的高峰 vCore 使用率*)
 
 2. 通过将池内所有的数据库所需的字节数相加来估算池所需要的存储空间。 然后，确定提供此存储量的 eDTU 池的大小。
 3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型，请取步骤 1 中的 vCore 估算值。
@@ -200,6 +200,20 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 还可以选择在此数据库表中并列查看更多的指标，以获取更完整的数据库性能视图。
 
 有关详细信息，请参阅[在 Azure 门户中创建 SQL 数据库警报](sql-database-insights-alerts-portal.md)。
+
+## <a name="customer-case-studies"></a>客户案例研究
+
+- [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
+
+  SnelStart 使用 Azure SQL 数据库弹性池来快速扩展其业务服务每月 1,000 个新的 Azure SQL 数据库的速率。
+
+- [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
+
+  Umbraco 使用 Azure SQL 数据库使用弹性池为数千个租户在云中快速预配和缩放服务。
+
+- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+
+  Daxko/CSI 使用 Azure SQL 数据库弹性池来加速其开发周期和增强其客户服务和性能。
 
 ## <a name="next-steps"></a>后续步骤
 

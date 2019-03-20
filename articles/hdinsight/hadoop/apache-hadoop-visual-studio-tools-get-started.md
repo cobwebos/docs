@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: aa9d03e40880dbc856045840499dba43b9d1aba9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bb7c46548726b00c68c8e952a8e2956ad0511763
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105329"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201766"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询
 
@@ -93,7 +93,7 @@ ms.locfileid: "58105329"
 
 1. 在服务器资源管理器中，导航到“Azure” > “HDInsight”并选择你的群集。
 
-2. 右键单击某个 HDInsight 群集，并选择“在 Azure 门户中管理群集”。
+2. 右键单击 HDInsight 群集，然后选择**在 Azure 门户中管理群集**。
 
 通过 Visual Studio 提问和/或提供反馈：
 
@@ -275,5 +275,5 @@ ms.locfileid: "58105329"
 * [在 HDInsight 中使用 Hadoop Hive](hdinsight-use-hive.md)
 * [开始在 HDInsight 中使用 Apache Hadoop](apache-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中提交 Apache Hadoop 作业](submit-apache-hadoop-jobs-programmatically.md)
-* [使用 HDInsight 中的 Apache Hadoop 分析 Twitter 数据](../hdinsight-analyze-twitter-data.md)
+* [使用 HDInsight 中的 Apache Hadoop 分析 Twitter 数据](../hdinsight-analyze-twitter-data-linux.md)
 

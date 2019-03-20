@@ -9,11 +9,11 @@ ms.date: 11/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4cd1d143151e61c7c767ffdc4acb172b06dd0e43
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52585628"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "58114506"
 ---
 |**SKU**   | S2S/VNet 到 VNet<br>隧道 | **P2S<br> SSTP 连接** | **P2S<br> IKEv2 连接** | 聚合<br>吞吐量基准 |
 |---       | ---        | ---       | ---            | ---       |

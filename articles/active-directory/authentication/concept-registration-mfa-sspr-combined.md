@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 03/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa9872ef76264956430bb69856a197042c196dfd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6399f5b208bc4d7182622f29bd522cfc9a088e9d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550184"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224543"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合的安全信息注册 （预览版）
 
@@ -68,11 +68,11 @@ Mfa，用户可以为其默认方法设置以下选项：
 
 ## <a name="combined-registration-modes"></a>组合的注册模式
 
-有两种"模式"的组合的注册： 中断和管理。 
+有两种"模式"的组合的注册： 中断和管理。
 
-中断模式下，是一种类似于向导的体验，在注册或刷新其安全信息，请参阅在登录时向用户显示。 
+中断模式下，是一种类似于向导的体验，在注册或刷新其安全信息，请参阅在登录时向用户显示。
 
-管理模式是用户的配置文件的一部分，使他们能够管理其安全信息。 
+管理模式是用户的配置文件的一部分，使他们能够管理其安全信息。
 
 这两种模式中，如果用户以前已注册的方法，用于 MFA，它们将需要执行 MFA，才能访问其安全信息。
 

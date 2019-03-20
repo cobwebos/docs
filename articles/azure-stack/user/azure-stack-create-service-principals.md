@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 9f0ccb85fa4b42ef3ca90c6d4ca2d80113b93a0c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3a6fa631fdf3436dc3a76817d2c0043b0407b2ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733693"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121547"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>通过创建服务主体向应用程序授予对 Azure Stack 资源的访问权限
 
@@ -56,8 +56,8 @@ ms.locfileid: "56733693"
 
 如果你的 Azure Stack 使用 Azure AD 作为标识存储，则可以通过 Azure 门户使用与 Azure 中相同的步骤来创建服务主体。
 
->[!NOTE]
-在开始创建服务主体之前，请检查你是否具有[所需的 Azure AD 权限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+> [!NOTE]
+> 在开始创建服务主体之前，请检查你是否具有[所需的 Azure AD 权限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
 
 ### <a name="create-service-principal"></a>创建服务主体
 
@@ -73,15 +73,15 @@ ms.locfileid: "56733693"
 
 1. 从 Active Directory 中的“应用注册”，选择应用程序。
 
-2. 复制“应用程序 ID”并将其存储在应用程序代码中。 在示例应用程序中的应用程序使用**客户端 id**指**应用程序 ID**。
+2. 复制“应用程序 ID”并将其存储在应用程序代码中。 在引用“应用程序 ID”时，示例应用程序中的应用程序使用“客户端 ID”。
 
      ![应用程序的应用程序 ID](./media/azure-stack-create-service-principals/image12.png)
 3. 若要生成身份验证密钥，请选择“密钥”。
 
 4. 提供密钥说明和密钥持续时间。 完成后，选择“保存”。
 
->[!IMPORTANT]
-保存密钥后，将显示密钥**值**。 请记下此值，因为以后无法检索密钥。 将密钥值存储在应用程序可检索的位置。
+> [!IMPORTANT]
+> 保存密钥后，将显示密钥**值**。 请记下此值，因为以后无法检索密钥。 将密钥值存储在应用程序可检索的位置。
 
 ![有关已保存的密钥的密钥值警告。](./media/azure-stack-create-service-principals/image15.png)
 
@@ -101,8 +101,8 @@ ms.locfileid: "56733693"
 
 要访问订阅中的资源，必须将应用程序分配到角色。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
 
->[!NOTE]
-可以在订阅、资源组或资源级别设置角色的作用域。 较低级别的作用域将继承权限。 例如，如果应用具有某个资源组的“读者”角色，则意味着该应用可以读取该资源组中的任何资源。
+> [!NOTE]
+> 可以在订阅、资源组或资源级别设置角色的作用域。 较低级别的作用域将继承权限。 例如，如果应用具有某个资源组的“读者”角色，则意味着该应用可以读取该资源组中的任何资源。
 
 请使用以下步骤作为指南来为服务主体分配角色。
 

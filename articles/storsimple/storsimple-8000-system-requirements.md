@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 1a9cdf31c5924d22d968cd99383417ba371cd1c3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
-ms.translationtype: HT
+ms.openlocfilehash: f05e3e85d36ffc23a193a6771a0271c71b2f8544
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
-ms.locfileid: "28011055"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013637"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列软件、高可用性和网络要求
 
@@ -61,7 +61,7 @@ ms.locfileid: "28011055"
 
 StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必选 | 说明 |
+| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 需要 | 说明 |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |出 |WAN |否 |<ul><li>出站端口用于 Internet 访问以检索更新。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |出 |WAN |是 |<ul><li>出站端口用于访问云中的数据。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li><li>此端口还在两个控制器中用于垃圾回收。</li></ul> |
@@ -98,9 +98,9 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 | --- | --- | --- |
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple Device Manager 服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
 | `https://*.backup.windowsazure.com` |设备注册 |仅限 DATA 0 |
-| `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |证书吊销 |启用云的网络接口 |
+| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |证书吊销 |启用云的网络接口 |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 存储帐户和监视 |启用云的网络接口 |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com` |Microsoft 更新服务器<br> |仅限控制器的固定 IP |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft 更新服务器<br> |仅限控制器的固定 IP |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |仅限控制器的固定 IP |
 | `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |支持包 |启用云的网络接口 |
 
@@ -110,9 +110,9 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 | --- | --- | --- |
 | `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple Device Manager 服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
 | `https://*.backup.windowsazure.us` |设备注册 |仅限 DATA 0 |
-| `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |证书吊销 |启用云的网络接口 |
+| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |证书吊销 |启用云的网络接口 |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 存储帐户和监视 |启用云的网络接口 |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com` |Microsoft 更新服务器<br> |仅限控制器的固定 IP |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft 更新服务器<br> |仅限控制器的固定 IP |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |仅限控制器的固定 IP |
 | `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |支持包 |启用云的网络接口 |
 
@@ -129,8 +129,8 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 
     | 网络接口 | 启用云 | 禁用云但配有网关 |
     |-----|---------------|---------------------------|
-    | Data 0  | 1            | -                        |
-    | Data 1  | #N/A            | 20                       |
+    | Data 0  | 第            | -                        |
+    | Data 1  | 2            | 20                       |
     | Data 2  | 3            | 30                       |
     | Data 3  | 4            | 40                       |
     | Data 4  | 5            | 50                       |
@@ -155,7 +155,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 * VIP 失败还会在 StorSimple 设备上引发警报。 有关详细信息，请转到[警报快速参考](storsimple-8000-manage-alerts.md)。
 * 对于重试，iSCSI 优先于云。
   
-    请考虑下面的示例：StorSimple 设备已启用两个网络接口，即 Data 0 和 Data 1。 Data 0 是启用云的接口，而 Data 1 既启用云又启用了 iSCSI。 此设备上的其他网络接口均未启用云或 iSCSI。
+    下面是一个示例：StorSimple 设备已启用的两个网络接口、 Data 0 和 Data 1。 Data 0 是启用云的接口，而 Data 1 既启用云又启用了 iSCSI。 此设备上的其他网络接口均未启用云或 iSCSI。
   
     如果 Data 1 失败，因为它是最后一个 iSCSI 网络接口，会导致将控制器故障转移到另一个控制器上的 Data 1。
 
@@ -240,7 +240,7 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 请仔细查看这些最佳实践，确保连接到 StorSimple 设备的主机具有高可用性。
 
 * 通过[双节点文件服务器群集配置][1]来配置 StorSimple。 通过消除单点故障并在主机端内置冗余，整个解决方案变得高度可用。
-* 在存储控制器故障转移期间，使用可用于 Windows Server 2012 (SMB 3.0) 的连续可用 (CA) 共享来实现高可用性。 有关通过 Windows Server 2012 配置文件服务器群集和持续可用共享的其他信息，请参阅该[视频演示](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)。
+* 在存储控制器故障转移期间，使用可用于 Windows Server 2012 (SMB 3.0) 的连续可用 (CA) 共享来实现高可用性。 有关通过 Windows Server 2012 配置文件服务器群集和持续可用共享的其他信息，请参阅该[视频演示](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)。
 
 ## <a name="next-steps"></a>后续步骤
 

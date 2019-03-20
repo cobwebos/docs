@@ -1,4 +1,17 @@
-### <a name="prerequisites"></a>先决条件
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 845b27b8efd66de87ec08e0b5b81bcc332dffdfb
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "58115904"
+---
+### <a name="prerequisites"></a>必备组件
 * 一个 Twilio 帐户
 * 已验证可以接收短信的 Twilio 手机号码
 * 已验证可以发送短信的 Twilio 手机号码

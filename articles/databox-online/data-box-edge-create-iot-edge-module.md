@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: d0b171f05bb2243da83509348b099bebcb44ebc7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508702"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094671"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>开发 C# IoT Edge 模块以在 Data Box Edge（预览版）上移动文件
 
@@ -46,7 +46,7 @@ ms.locfileid: "55508702"
 
 文件位于云共享中后，它会自动上传到 Azure 存储帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，请确保：
 
@@ -71,14 +71,14 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 2. 选择“创建资源”>“容器”>“容器注册表”。 单击“创建”。
 3. 提供：
 
-    1. Azure 中的唯一“注册表名称”，可包含 5 到 50 个字母数字字符。
-    2. 选择“订阅”。
-    3. 创建新的资源组，或选择现有的“资源组”。
-    4. 选择“位置” 。 我们建议此位置应该与 Data Box Edge 资源的关联位置相同。
-    5. 将“管理员用户”切换到“启用”。
-    6. 将 SKU 设置为“基本”。
+   1. Azure 中的唯一“注册表名称”，可包含 5 到 50 个字母数字字符。
+   2. 选择“订阅”。
+   3. 创建新的资源组，或选择现有的“资源组”。
+   4. 选择“位置” 。 我们建议此位置应该与 Data Box Edge 资源的关联位置相同。
+   5. 将“管理员用户”切换到“启用”。
+   6. 将 SKU 设置为“基本”。
 
-    ![创建容器注册表](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![创建容器注册表](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. 选择“创建”。
 5. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。

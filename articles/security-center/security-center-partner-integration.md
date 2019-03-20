@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/3/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52b347aef240f2338aedff2c2a1a3cd53743dc27
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 5a25ba889ebde750937f88e447123263a82d5627
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114257"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896817"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -34,7 +34,7 @@ ms.locfileid: "56114257"
 目前，集成式安全解决方案包括：
 
 - Web 应用程序防火墙（[Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/products.html)、[Azure 应用程序网关](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/)）
-- 下一代防火墙（[Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) 和 [Palo Alto Networks](https://www.paloaltonetworks.com/products)）
+- 下一代防火墙（[Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](https://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) 和 [Palo Alto Networks](https://www.paloaltonetworks.com/products)）
 - 漏洞评估（[Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) 和 [Rapid7](https://www.rapid7.com/products/insightvm/)）
 
 > [!NOTE]
@@ -60,7 +60,7 @@ ms.locfileid: "56114257"
 
 3. 在“安全中心”菜单下，选择“安全解决方案”。
 
-  ![安全中心概述](./media/security-center-partner-integration/overview.png)
+   ![安全中心概述](./media/security-center-partner-integration/overview.png)
 
 在“安全解决方案”下，可以查看集成式 Azure 安全解决方案的运行状况信息，并执行基本的管理任务。 还可以连接其他类型的安全数据源，例如通用事件格式 (CEF) 的 Azure Active Directory Identity Protection 警报和防火墙日志。
 
@@ -82,12 +82,12 @@ ms.locfileid: "56114257"
 >
 >
 
-2. 选择“查看”以了解其他信息和选项，其中包括：
+1. 选择“查看”以了解其他信息和选项，其中包括：
 
-  - **解决方案控制台**。 打开此解决方案的管理体验。
-  - **链接 VM**。 打开“链接应用程序”边栏选项卡。 此处，可将资源连接到合作伙伴解决方案。
-  - **删除解决方案**。
-  - **配置**。
+   - **解决方案控制台**。 打开此解决方案的管理体验。
+   - **链接 VM**。 打开“链接应用程序”边栏选项卡。 此处，可将资源连接到合作伙伴解决方案。
+   - **删除解决方案**。
+   - **配置**。
 
    ![合作伙伴解决方案详细信息](./media/security-center-partner-solutions/partner-solutions-detail.png)
 

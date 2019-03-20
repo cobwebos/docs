@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: f27dbf20eab5866ac3061d888c17e970a1d197f7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: d7497a0226f236cedc583de0a31013adcc2b830f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34666749"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "58114185"
 ---
 # <a name="azure-and-the-internet-of-things"></a>Azure 和物联网
 
@@ -79,8 +79,8 @@ ms.locfileid: "34666749"
 [img-solution-architecture]: ./media/iot-azure-and-iot/iot-reference-architecture.png
 [img-dashboard]: ./media/iot-azure-and-iot/iot-suite.png
 
-[lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
-[lnk-iot-suite]: ../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
+[lnk-iot-hub]: ../articles/iot-hub/about-iot-hub.md
+[lnk-iot-suite]: ../articles/iot-accelerators/about-iot-accelerators.md
 [lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
 [Azure IoT solution accelerators]: http://azure.microsoft.com/solutions/iot
 [lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md

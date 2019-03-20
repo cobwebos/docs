@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: f54bec9c328893d1d579bff3313f126dbc1178de
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fbb95f6b92944b0f07ad17eb3094f9b30480144c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728023"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200965"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -176,7 +176,7 @@ module.exports = async function (context, message) {
 ### <a name="trigger---java-example"></a>触发器 - Java 示例
 
 以下 Java 示例显示了一个存储队列触发器函数，该函数用于记录放入队列 `myqueuename` 的触发消息。
- 
+
  ```java
  @FunctionName("queueprocessor")
  public void run(
@@ -190,7 +190,7 @@ module.exports = async function (context, message) {
  ```
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
- 
+
 在 [C# 类库](functions-dotnet-class-library.md)，请使用以下属性来配置队列触发器：
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)
@@ -218,7 +218,7 @@ module.exports = async function (context, message) {
       ....
   }
   ```
- 
+
   有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
@@ -253,14 +253,14 @@ module.exports = async function (context, message) {
 |---------|---------|----------------------|
 |类型 | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 |包含功能代码中的队列项有效负载的变量的名称。  | 
-|**queueName** | **QueueName**| 要轮询的队列的名称。 | 
+|name | 不适用 |包含功能代码中的队列项有效负载的变量的名称。  |
+|**queueName** | **QueueName**| 要轮询的队列的名称。 |
 |**连接** | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>触发器 - 用法
- 
+
 在 C# 和 C# 脚本中，可以使用 `string paramName` 等方法参数访问消息数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
 
 * 对象 - Functions 运行时将 JSON 负载反序列化为代码中定义的任意类的实例。 
@@ -306,9 +306,7 @@ module.exports = async function (context, message) {
 
 ## <a name="trigger---hostjson-properties"></a>触发器 - host.json 属性
 
-[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。
-
-[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
+[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 请参阅[host.json 设置](#hostjson-settings)部分，了解有关可用设置的详细信息。
 
 ## <a name="output"></a>输出
 
@@ -370,7 +368,7 @@ function.json 文件如下所示：
     }
   ]
 }
-``` 
+```
 
 [配置](#output---configuration)部分解释了这些属性。
 
@@ -431,7 +429,7 @@ function.json 文件如下所示：
     }
   ]
 }
-``` 
+```
 
 [配置](#output---configuration)部分解释了这些属性。
 
@@ -466,13 +464,13 @@ module.exports = function(context) {
        result.setValue(message + " has been added.");
        return message;
  }
- ```
+```
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入队列存储的参数使用 `@QueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是 POJO 的任何本机 Java 类型。
 
 
 ## <a name="output---attributes"></a>输出 - 特性
- 
+
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs)。
 
 该特性将应用到 `out` 参数，或应用到函数的返回值。 该特性的构造函数采用队列的名称，如以下示例中所示：
@@ -509,14 +507,14 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 |---------|---------|----------------------|
 |类型 | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。| 
-|**queueName** |**QueueName** | 队列的名称。 | 
+|name | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
+|**queueName** |**QueueName** | 队列的名称。 |
 |**连接** | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>输出 - 用法
- 
+
 在 C# 和 C# 脚本中，可以使用 `out T paramName` 等方法参数编写一条队列消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
 
 * 可序列化为 JSON 的对象
@@ -564,16 +562,16 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
         }
     }
 }
-```  
+```
 
 
 |属性  |默认 | 描述 |
-|---------|---------|---------| 
-|maxPollingInterval|00:00:02|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒）。 | 
-|visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 | 
-|batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 | 
-|maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。| 
-|newBatchThreshold|batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。| 
+|---------|---------|---------|
+|maxPollingInterval|00:00:02|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒）。 |
+|visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |
+|batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 |
+|maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。|
+|newBatchThreshold|batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。|
 
 ## <a name="next-steps"></a>后续步骤
 

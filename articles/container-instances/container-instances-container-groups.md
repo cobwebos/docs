@@ -1,17 +1,21 @@
 ---
-ms.openlocfilehash: 1555a577d4fdf0436e891e3d73495d1fe2f7e606
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+title: Azure 容器实例容器组
+description: 了解如何多容器组在 Azure 容器实例中工作
+services: container-instances
+author: dlepow
+manager: jeconnoc
+ms.service: container-instances
+ms.topic: article
+ms.date: 03/20/2018
+ms.author: danlep
+ms.custom: mvc
+ms.openlocfilehash: 8724bd7e13b0d8607ad5a6814b27c8c06681f331
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901315"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202004"
 ---
----
-title:Azure 容器实例容器组说明：了解如何多容器组即可在 Azure 容器实例服务： 容器实例作者： dlepow manager: jeconnoc
-
-ms.service: container-instances ms.topic: article ms.date:2018 年 03 月 20 日 ms.author: danlep ms.custom: mvc
-
-
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
 Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定义和它们支持的方案类型。

@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d1d515786fde06f4622402f2c1d0c3add7cd8843
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: f3d9a2447bdbc2a1a5ce930ffa161d5a9e30069b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913133"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225053"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>使用企业安全性套餐实现 Apache Hadoop 安全性简介
 
 以前，Azure HDInsight 仅支持一个用户：本地管理员。这种情况对于应用程序团队或部门而言比较有利。 随着基于 Apache Hadoop 的工作负荷在企业部门中越来越普及，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制等企业级功能需求也变得日益重要。 
 
-现可创建已加入 Active Directory 域的企业安全性套餐 (ESP) HDInsight 群集。 接下来可配置企业员工的列表，这些员工可通过 Azure Active Directory 进行身份验证并登录到 HDInsight 群集。 企业外部的任何人都无法登录或访问 HDInsight 群集。 
+现可创建已加入 Active Directory 域的企业安全性套餐 (ESP) HDInsight 群集。 然后可以配置可以通过 Azure Active Directory 来登录到 HDInsight 群集进行身份验证从企业员工的列表。 没有人从企业外部的登录或访问 HDInsight 群集。 
 
 企业管理员可以使用 [Apache Ranger](https://hortonworks.com/apache/ranger/) 配置基于角色的访问控制 (RBAC) 来实现 Apache Hive 安全性。 配置 RBAC 可将数据访问权限限制为仅满足使用需求。 最后，管理员可以审核员工的数据访问权限和对访问控制策略所做的任何更改。 这样，管理员即可实现对其企业资源的高度控制。
 
@@ -36,10 +36,10 @@ HDInsight 中的外围安全性通过虚拟网络和 Azure VPN 网关服务实�
 
 另一层外围安全性通过 VPN 网关服务实现。 网关充当传入 HDInsight 群集的任何请求的第一道防线。 网关接受请求并进行验证，仅在此之后才会允许请求传递给群集中的其他节点。 通过这种方式，网关为群集中的其他名称和数据节点提供外围安全性。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 企业管理员可在[虚拟网络](https://azure.microsoft.com/services/virtual-network/)中创建 ESP HDInsight 群集。 HDInsight 群集的所有节点将加入企业管理的域。 此过程通过使用 [Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-overview.md)实现。 
 
-借助这种设置，企业员工可以使用其域凭据登录到群集节点。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Apache Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。 管理员拥有完全控制权，可以限制通过这些终结点与群集交互的用户数目。
+通过此设置，企业员工可以登录到群集节点通过使用其域凭据。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Apache Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。 管理员拥有完全控制权，可以限制通过这些终结点与群集交互的用户数目。
 
 ## <a name="authorization"></a>授权
 大多数企业遵循的最佳实践是，确保并非每位员工都有权访问所有企业资源。 同理，管理员可以针对群集资源定义基于角色的访问控制策略。 

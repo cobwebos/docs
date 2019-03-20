@@ -4,7 +4,7 @@ description: include 文件
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: b26b88d0e089217fa9915bdbdcb8f913731bcc67
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 220723988f349bf015d2de7633af78782bc03bac
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988171"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203167"
 ---
 ## <a name="register-your-application"></a>注册应用程序
 
@@ -38,7 +38,7 @@ ms.locfileid: "49988171"
 
 5. 按照说明获取应用程序 ID，并将其粘贴到代码中。
 
-### <a name="option-2-advanced-mode"></a>选项 2：高级模式
+### <a name="option-2-advanced-mode"></a>选项 2：高级的模式
 
 若要注册应用程序并将应用程序注册信息添加到解决方案，请执行以下操作：
 1. 如果还没有注册应用程序，请转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)。

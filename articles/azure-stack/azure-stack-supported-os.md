@@ -16,12 +16,12 @@ ms.date: 2/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 171beb432a2c49f1896dc13208a3df1b922828c0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1ab59dfc42213fc5c5ce22841e572e2724e239aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245686"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118997"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack 支持的来宾操作系统
 
@@ -32,7 +32,7 @@ ms.locfileid: "57245686"
 Azure Stack 支持下表中列出的 Windows 来宾操作系统：
 
 | 操作系统 | 描述 | 在市场中可用 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | Windows Server，版本 1709 | 64 位 | 包含容器的核心 |
 | Windows Server 2016 | 64 位 |  数据中心、数据中心核心、包含容器的数据中心 |
 | Windows Server 2012 R2 | 64 位 |  数据中心 |
@@ -53,12 +53,12 @@ Datacenter 版本可在市场中下载；客户可以自带包含其他版本的
 在 Marketplace 中列出为可用的 Linux 发行版包括必要 Windows Azure Linux 代理 (WALA)。 如果将自己的映像带到 Azure Stack，请遵循[将 Linux 映像添加到 Azure Stack](azure-stack-linux.md) 中的指导。
 
 > [!NOTE]
-> 使用最新的公共 WALA 版本或版本 2.2.20 应构建自定义映像。 早于 2.2.20 和 2.2.20 和 2.2.36 之间的版本在 Azure Stack 上可能无法正常工作。 
+> 自定义映像应该使用最新的公共 WALA 版本或 2.2.20 版本生成。 早于 2.2.20 和 2.2.20 和 2.2.36 之间的版本在 Azure Stack 上可能无法正常工作。 
 >
 > 目前 Azure Stack 不支持 [cloud-init](https://cloud-init.io/)。
 
 | 分发 | 描述 | 发布者 | 市场 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | 基于 CentOS 的 6.9 | 64 位 | Rogue Wave | 是 |
 | 基于 CentOS 的 7.4 | 64 位 | Rogue Wave | 是 |
 | ClearLinux | 64 位 | ClearLinux.org | 是 |

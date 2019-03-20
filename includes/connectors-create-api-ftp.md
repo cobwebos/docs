@@ -1,4 +1,17 @@
-### <a name="prerequisites"></a>先决条件
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 65f1e6d2489775a17ba2dacef0623706364fffab
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "58115669"
+---
+### <a name="prerequisites"></a>必备组件
 * 一个 [FTP](https://wikipedia.org/wiki/File_Transfer_Protocol) 帐户  
 
 可以在逻辑应用中使用 FTP 帐户之前，必须先授权该逻辑应用可以连接到 FTP 帐户。好在，可以从 Azure 门户中的逻辑应用内轻松地执行此操作。  

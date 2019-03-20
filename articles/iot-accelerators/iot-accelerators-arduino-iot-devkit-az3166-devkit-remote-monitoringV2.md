@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: eb2a6692c0b00dc4419c601228453a8cfc44c02a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 3551d088c1d02715bf9ace09d7eb0048bc10111e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156776"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105244"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>将 IoT DevKit 设备连接到远程监视解决方案加速器
 
@@ -36,11 +36,11 @@ ms.locfileid: "54156776"
 
 1. 确保 IoT DevKit 未连接到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
 
-1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench：打开示例...” 。然后选择“IoT DevKit”作为开发板。
+1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:**打开示例...”** 。然后选择“IoT DevKit”作为开发板。
 
 1. 找到“远程监视”，然后单击“打开示例”。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹：
 
-  ![IoT Workbench，选择“远程监视”示例](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
+   ![IoT Workbench，选择“远程监视”示例](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
 ## <a name="configure-the-device"></a>配置设备
 
@@ -55,7 +55,7 @@ ms.locfileid: "54156776"
 
     ![IoT DevKit 配置模式](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-1. 按 F1 打开命令面板，键入并选择“Azure IoT Device Workbench：配置设备设置... > 配置设备连接字符串” 。
+1. 按 F1 打开命令面板，键入并选择“Azure IoT Device Workbench：配置设备设置... > 配置设备连接字符串” **。
 
 1. 粘贴以前复制的连接字符串，然后按 **Enter** 对设备进行配置。
 
@@ -63,7 +63,7 @@ ms.locfileid: "54156776"
 
 若要生成并上传设备代码，请执行以下操作：
 
-1. 按 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench：上传设备代码” ：
+1. 按 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench：上传设备代码” **：
 
 1. VS Code 会编译代码并将其上传到 DevKit 设备：
 
@@ -79,7 +79,7 @@ ms.locfileid: "54156776"
 
 当示例应用运行时，DevKit 设备会将遥测数据从其传感器通过 Wi-Fi 发送到解决方案加速器。 若要查看遥测数据，请执行以下操作：
 
-1. 转到解决方案仪表板，然后单击“设备”。
+1. 转到解决方案仪表板，然后单击**Device Explorer**。
 
 1. 单击 DevKit 设备的设备名称。 在右侧选项卡上，可以实时查看 DevKit 中的遥测数据：
 
@@ -87,7 +87,7 @@ ms.locfileid: "54156776"
 
 ### <a name="control-the-devkit-device"></a>控制 DevKit 设备
 
-借助远程监视解决方案加速器，可以远程控制自己的设备。 示例代码实现了三个方法。在“设备”页上选择设备时，可以在“方法”部分看到这些方法：
+借助远程监视解决方案加速器，可以远程控制自己的设备。 示例代码实现中所示的三种方法**方法**部分上选择该设备时**Device Explorer**页：
 
 ![IoT DevKit 方法](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "54156776"
 
 1. 使用以下值配置“作业”，然后单击“应用”：
 
-    * 选择作业：**Run 的方法**
-    * 方法名称：**LedColor**
-    * 作业名称：**ChangeLedColor**
+   * 选择作业：**Run 的方法**
+   * 方法名称：**LedColor**
+   * 作业名称：**ChangeLedColor**
 
-    ![作业设置](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+     ![作业设置](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
 
 1. 数秒钟后，DevKit 上 RGB LED（位于按钮 A 下面）的颜色会变化：
 

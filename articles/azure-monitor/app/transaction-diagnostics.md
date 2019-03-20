@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b7ad21bd3185e5e6ba4774cdc5780b0594033f14
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027008"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903617"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
 
@@ -50,7 +50,7 @@ ms.locfileid: "54027008"
 * 选择任意行，在[右侧查看其详细信息](#details-of-the-selected-telemetry)。 
 
 > [!NOTE]
-对其他组件的调用包括两行：一行表示来自调用方组件的出站调用（依赖项），另一行对应于调用的组件处的入站请求。 可通过前导图标和样式不同的持续时间条来区分它们。
+> 对其他组件的调用包括两行：一行表示来自调用方组件的出站调用（依赖项），另一行对应于调用的组件处的入站请求。 可通过前导图标和样式不同的持续时间条来区分它们。
 
 ## <a name="all-telemetry-with-this-operation-id"></a>所有使用此操作 ID 的遥测
 
@@ -74,9 +74,9 @@ ms.locfileid: "54027008"
 
 [Application Insights 探查器](../../azure-monitor/app/profiler.md)或[快照调试器](snapshot-debugger.md)有助于对性能和失败问题进行代码级诊断。 通过此体验，仅需一次单击即可查看任意组件的探查器跟踪或快照。
 
-如果无法让 Profiler 正常工作，请联系 **serviceprofilerhelp@microsoft.com**
+如果无法让 Profiler 正常工作，请联系**serviceprofilerhelp\@microsoft.com**
 
-如果无法让快照调试器正常工作，请联系 **snapshothelp@microsoft.com**
+如果无法让快照调试器工作，请联系**snapshothelp\@microsoft.com**
 
 ![探查器集成](media/transaction-diagnostics/profilerTraces.png)
 

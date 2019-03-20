@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 2051a14532f00f24be0c8cb0ca03a7b2b4078a45
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: d667dadeb2e7c9d0005ab8d1a565017973038aaa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905148"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
 
@@ -216,17 +216,16 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 + **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当“没有”定义上述的“Padding”属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
-      - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。
-      - **UpperPad** 的每个组件不能大于 `KernelShape[d]/2`。
-      - 这些属性的默认值为一个元组，其所有组件都等于 0。
+  - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。
+  - **UpperPad** 的每个组件不能大于 `KernelShape[d]/2`。
+  - 这些属性的默认值为一个元组，其所有组件都等于 0。
 
     设置 **Padding** = true 允许尽可能多的填充，使内核的“中心”保持在“真实”输入内。 这会对数学做出一些更改，以便计算输出大小。 通常情况下，输出大小 *D* 计算为 `D = (I - K) / S + 1`，其中 `I` 是输入大小，`K` 是内核大小，`S` 是 stride，`/` 表示整数除法（向零舍入）。 如果设置 UpperPad = [1, 1]，则输入大小 `I` 实际上是 29，因此 `D = (29 - 5) / 2 + 1 = 13`。 但是，当 **Padding** = true 时，`I` 实际上增长 `K - 1`，因此 `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`。 通过为 **UpperPad** 和 **LowerPad** 指定值，相比只设置 **Padding** = true，可以更好地控制填充。
 
 有关卷积网络及其应用程序的详细信息，请参阅这些文章：
 
-+ [http://deeplearning.net/tutorial/lenet.html ](http://deeplearning.net/tutorial/lenet.html)
-+ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
-+ [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)
++ [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
++ [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
 ## <a name="pooling-bundles"></a>池捆绑
 
@@ -252,13 +251,13 @@ hidden P1 [5, 12, 12]
 
 有关池层的详细信息，请参阅这些文章：
 
-+ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第 3.4 节）
-+ [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
-+ [http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第 3.4 节）
++ [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
++ [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
 ## <a name="response-normalization-bundles"></a>响应规范化捆绑
 
-**响应规范化**是本地规范化方案，由 Geoffrey Hinton 等人在 [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（深层卷积神经网络的 ImageNet 分类）一文中首次提出。
+**响应规范化**是本地规范化方案，由 Geoffrey Hinton 等人在 [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（深层卷积神经网络的 ImageNet 分类）一文中首次提出。
 
 响应规范化用于避免神经网络中的通用化。 一个神经元在一个非常高的激活级别中激发时，本地响应规范化层将抑制周围神经元的激活级别。 这是通过使用三个参数（`α`、`β` 和 `k`）和一个卷积结构（或邻域形状）来完成的。 目标层 **y** 中的每个神经元对应于源层中神经元 **x**。 **y** 的激活级别由以下公式指定，其中 `f` 是神经元的激活级别，`Nx` 是内核（或包含 **x** 邻域中神经元的集），由以下卷积结构定义：
 
@@ -463,4 +462,4 @@ output Digit [10] from Hid3 all;
 
 ## <a name="acknowledgements"></a>致谢
 
-用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure Machine Learning studio - Introduction to Net#](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)（Azure 机器学习工作室中的神经网络 - Net# 简介）
+用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure Machine Learning studio - Introduction to Net#](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)（Azure 机器学习工作室中的神经网络 - Net# 简介）

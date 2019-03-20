@@ -7,30 +7,30 @@ ms.service: dns
 ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
-ms.openlocfilehash: 2b14753237e118540da6306fa9f06816f3e58b71
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980128"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086320"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在区域顶点托管负载均衡的 Azure Web 应用
 
-DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容。 contoso.com 是区域顶点的示例。 这种限制将为流量管理器背后拥有负载均衡应用程序的应用程序所有者带来问题。 无法从区域顶点记录指向流量管理器配置文件。 因此，应用程序所有者必须使用一种解决方法。 应用程序层的重定向必须从区域顶点重定向到另一个域。 例如，从 contoso.com 重定向到 www.contoso.com。 这种方案会给重定向功能带来单一故障点。
+DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容。 contoso.com 是区域顶点的示例。 这种限制将为流量管理器背后拥有负载均衡应用程序的应用程序所有者带来问题。 无法从区域顶点记录指向流量管理器配置文件。 因此，应用程序所有者必须使用一种解决方法。 应用程序层的重定向必须从区域顶点重定向到另一个域。 例如，contoso.com 中的重定向到 www\.contoso.com。 这种方案会给重定向功能带来单一故障点。
 
 使用别名记录，此问题将不再存在。 应用程序所有者现在可将其区域顶点记录指向具有外部终结点的流量管理器配置文件。 应用程序所有者可以指向用于其 DNS 区域中任何其他域的相同流量管理器配置文件。
 
-例如，contoso.com 和 www.contoso.com 可以指向同一流量管理器配置文件。 只要流量管理器配置文件仅配置了外部终结点，就会出现这种情况。
+例如，contoso.com 和 www\.contoso.com 可以指向同一个流量管理器配置文件。 只要流量管理器配置文件仅配置了外部终结点，就会出现这种情况。
 
 本文介绍如何为域顶点创建别名记录，以及为 Web 应用配置流量管理器配置文件终结点。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 必须具有可用于在 Azure DNS 中托管以供测试的域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
 
-有关在 Azure DNS 中托管域的说明，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md)。
+若要托管在 Azure DNS 中的域的说明，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md)。
 
 本教程中使用的示例域为 contoso.com，但请使用自己的域名。
 
@@ -76,7 +76,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 在资源组中创建流量管理器配置文件。 使用默认值，并键入在 trafficmanager.net 命名空间中唯一的名称。
 
-有关创建流量管理器配置文件的信息，请参阅[快速入门：为高度可用的 Web 应用程序创建流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
+创建流量管理器配置文件的信息，请参阅[快速入门：创建高度可用的 web 应用程序的流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 
 ### <a name="create-endpoints"></a>创建终结点
 
@@ -87,14 +87,14 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 3. 单击“添加”。
 4. 参考下表配置终结点：
 
-   |类型  |名称  |目标  |位置  |自定义标头设置|
+   |Type  |名称  |目标  |位置  |自定义标头设置|
    |---------|---------|---------|---------|---------|
    |外部终结点     |End-01|为 App-01 记下的 IP 地址|美国东部|主机：\<为 App-01 记下的 URL\><br>示例：**host:app-01.azurewebsites.net**|
    |外部终结点     |End-02|为 App-02 记下的 IP 地址|美国中部|主机：\<为 App-02 记下的 URL\><br>示例：**host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>创建 DNS 区域
 
-可以使用现有 DNS 区域进行测试，或者创建新区域。 若要在 Azure 中创建和委托新的 DNS 区域，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md)。
+可以使用现有 DNS 区域进行测试，或者创建新区域。 若要创建和委托在 Azure 中新的 DNS 区域，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md)。
 
 ### <a name="add-the-alias-record-set"></a>添加别名记录集
 
@@ -104,7 +104,7 @@ DNS 区域准备就绪后，你可以添加区域顶点的别名记录。
 2. 单击“记录集”。
 3. 参考下表添加记录集：
 
-   |名称  |类型  |别名记录集  |别名类型  |Azure 资源|
+   |名称  |Type  |别名记录集  |别名类型  |Azure 资源|
    |---------|---------|---------|---------|-----|
    |@     |A|是|Azure 资源|流量管理器 - 你的配置文件|
 
@@ -141,6 +141,6 @@ DNS 区域准备就绪后，你可以添加区域顶点的别名记录。
 
 若要详细了解别名记录，请参阅以下文章：
 
-- [教程：配置引用 Azure 公共 IP 地址的别名记录](tutorial-alias-pip.md)
-- [教程：使用流量管理器支持顶点域名的别名记录](tutorial-alias-tm.md)
+- [教程：配置表示 Azure 公共 IP 地址的别名记录](tutorial-alias-pip.md)
+- [教程：配置别名记录来支持为流量管理器使用顶点域名](tutorial-alias-tm.md)
 - [DNS 常见问题](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

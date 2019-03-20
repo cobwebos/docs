@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: b1fc52ac46a6cdb73b9210833e437765398781ef
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 0fec9173eb94aa60c3689089e4eacd2d9d47724a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819121"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200015"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 了解 HDInsight 企业安全性套餐 (ESP) 中的用户和角色，以及如何管理 ESP 群集。
@@ -143,7 +143,7 @@ ms.locfileid: "55819121"
 ## <a name="users-of-hdinsight-clusters-with-esp"></a>使用 ESP 的 HDInsight 群集的用户
 非 ESP HDInsight 群集具有两个在群集创建期间创建的用户帐户：
 
-* **Ambari 管理员**：此帐户也称为 Hadoop 用户 或 HTTP 用户。 此帐户可用于在 https://&lt;clustername>.azurehdinsight.net 中登录到 Ambari。 也可将其用于在 Ambari 视图上运行查询、通过外部工具（例如 PowerShell、Templeton、Visual Studio）执行作业和使用 Hive ODBC 驱动程序和 BI 工具（例如 Excel、PowerBI 或 Tableau）进行身份验证。
+* **Ambari 管理员**：此帐户也称为 Hadoop 用户 或 HTTP 用户。 可以使用此帐户登录到 Ambari https://&lt;群集名称 >。 azurehdinsight.net。 它还可以使用 Ambari 视图上运行查询、 通过外部工具 （例如，PowerShell、 Templeton、 Visual Studio） 执行作业和使用 Hive ODBC 驱动程序和 BI 工具 （例如，Excel、 Power BI 或 Tableau） 进行身份验证。
 
 使用 ESP 的 HDInsight 群集除 Ambari 管理员之外，还有三个新用户。
 
@@ -179,9 +179,9 @@ HDInsight 企业安全性套餐具有以下角色：
 ## <a name="open-the-ambari-management-ui"></a>打开 Ambari 管理 UI
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 打开 HDInsight 群集。 请参阅[列出和显示群集](../hdinsight-administer-use-management-portal.md#list-and-show-clusters)。
+2. 打开 HDInsight 群集。
 3. 在顶部菜单中单击“仪表板”以打开 Ambari。
-4. 使用群集管理员域用户名和密码登录到 Ambari。
+4. 登录到 Ambari 使用群集管理员域用户的用户名和密码。
 5. 在右上角单击“管理员”下拉菜单，并单击“管理 Ambari”。
 
     ![ESP HDInsight 管理 Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)

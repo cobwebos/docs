@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 76ccbb3eabbf7186498ad0d57753314bdeffc2ea
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
-ms.translationtype: HT
+ms.openlocfilehash: aa740cfb203f50dc97a06359774dae367a20252b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52585635"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "58113883"
 ---
 ## <a name="about-vhds"></a>关于 VHD
 
@@ -25,7 +25,7 @@ Azure 中想要用作磁盘或映像创建源的所有 .VHD 文件都是只读�
 
 基于映像创建虚拟机时，Azure 将为虚拟机创建磁盘，该磁盘是源 .vhd 文件的副本。 为避免被意外删除，Azure 对任何用于创建映像、操作系统磁盘或数据磁盘的源 .vhd 文件设置了租约。
 
-在删除源 .vhd 文件之前，需要先通过删除磁盘或映像来解除租约。 若要删除由虚拟机当前用作操作系统磁盘的 .vhd 文件，可以通过删除虚拟机并删除所有关联的磁盘，一次性删除虚拟机、操作系统磁盘和源 .vhd 文件。 但是，删除作为数据磁盘源的 .vhd 文件需要按一定顺序执行几个步骤。 首先从虚拟机分离该磁盘，然后删除该磁盘，再删除 .vhd 文件。
+在删除源 .vhd 文件之前，需要先通过删除磁盘或映像来解除租约。 若要删除由虚拟机当前用作操作系统磁盘的 .vhd 文件，可以通过删除虚拟机并删除所有关联的磁盘，一次性删除虚拟机、操作系统磁盘和源 .vhd 文件。 但是，删除用作数据磁盘来源的 .vhd 文件需要按一定顺序执行几个步骤。 首先从虚拟机分离该磁盘，然后删除该磁盘，再删除 .vhd 文件。
 
 > [!WARNING]
 > 如果从存储空间删除了源 .vhd 文件或删除了存储帐户，Microsoft 无法恢复数据。
@@ -71,6 +71,6 @@ Azure 磁盘具备 99.999% 的可用性。 Azure 磁盘持续提供企业级持�
 | 磁盘类型 | 固态硬盘 (SSD) | 固态硬盘 (SSD) | 硬盘驱动器 (HDD)  
 | 概述  | 基于 SSD 的高性能、低延迟磁盘支持，适用于运行 IO 密集型工作负荷或托管任务关键型生产环境的 VM |比 HDD 更一致的性能和可靠性。 适用于低 IOPS 工作负荷| 基于 HDD 的经济高效型磁盘，适用于访问频率不高的方案
 | 场景  | 生产和性能敏感型工作负荷 |Web 服务器、不常使用的企业应用程序和开发/测试| 备份、非关键、不常访问
-| 磁盘大小 | P4：32 GiB（仅托管磁盘）<br>P6：64 GiB（仅托管磁盘）<br>P10：128 GiB<br>P15：256 GiB（仅托管磁盘）<br>P20：512 GiB<br>P30：1024 GiB<br>P40：2048 GiB<br>P50：4,095 GiB<br>P60：8,192 GiB * (8 TiB)<br>P70：16,384 GiB * (16 TiB)<br>P80：32,767 GiB * (32 TiB) |仅托管磁盘：<br>E10：128 GiB<br>E15：256 GiB<br>E20：512 GiB<br>E30：1024 GiB<br>E40：2048 GiB<br>E50：4095 GiB<br>E60：8,192 GiB * (8 TiB)<br>E70：16,384 GiB * (16 TiB)<br> E80：32,767 GiB * (32 TiB) | 非托管磁盘：1 GiB - 4 TiB (4095 GiB) <br><br>托管磁盘：<br> S4：32 GiB <br>S6：64 GiB <br>S10：128 GiB <br>S15：256 GiB <br>S20：512 GiB <br>S30：1024 GiB <br>S40：2048 GiB<br>S50：4095 GiB<br>S60：8,192 GiB * (8 TiB)<br>S70：16,384 GiB * (16 TiB)<br>S80：32,767 GiB * (32 TiB)
-| 每个磁盘的最大吞吐量 | P4：25 MiB/秒<br> P6：50 MiB/秒<br> P10：100 MiB/秒<br> P15：125 MiB/秒<br> P20：150 MiB/秒<br> P30：200 MiB/秒<br> P40-P50：250 MiB/秒<br> P60：480 MiB/秒*<br> P70-P80：750 MiB/秒* | E10-E50：高达 60 MiB/秒<br> E60：高达 300 MiB/秒*<br> E70-E80：500 MiB/秒*| S4 - S50：高达 60 MiB/秒<br> S60：高达 300 MiB/秒*<br> S70-S80：高达 500 MiB/秒*
-| 每个磁盘的最大 IOPS | P4：120 IOPS<br> P6：240 IOPS<br> P10：500 IOPS<br> P15：1100 IOPS<br> P20：2300 IOPS<br> P30：5000 IOPS<br> P40-P50：7500 IOPS<br> P60：12,500 IOPS *<br> P70：15,000 IOPS *<br> P80：20,000 IOPS * | E10-E50：高达 500 IOPS<br> E60：高达 1300 IOPS *<br> E70-E80：高达 2000 IOPS * | S4-S50：高达 500 IOPS<br> S60：高达 1300 IOPS *<br> S70-S80：高达 2000 IOPS *
+| 磁盘大小 | P4：32 GiB（仅托管磁盘）<br>P6：64 GiB（仅托管磁盘）<br>P10：128 GiB<br>P15：256 GiB（仅托管磁盘）<br>P20：512 GiB<br>P30：1024 GiB<br>P40：2048 GiB<br>P50：4,095 GiB<br>P60：8,192 GiB * (8 TiB)<br>P70：16,384 GiB * (16 TiB)<br>P80：32,767 GiB * (32 TiB) |仅托管磁盘：<br>E4：32 GiB<br>E6：64 GiB<br>E10：128 GiB<br>E15：256 GiB<br>E20：512 GiB<br>E30：1024 GiB<br>E40：2048 GiB<br>E50：4095 GiB<br>E60：8,192 GiB * (8 TiB)<br>E70：16,384 GiB * (16 TiB)<br> E80：32,767 GiB * (32 TiB) | 非托管磁盘：1 GiB - 4 TiB (4095 GiB) <br><br>托管磁盘：<br> S4：32 GiB <br>S6：64 GiB <br>S10：128 GiB <br>S15：256 GiB <br>S20：512 GiB <br>S30：1024 GiB <br>S40：2048 GiB<br>S50：4095 GiB<br>S60：8,192 GiB * (8 TiB)<br>S70：16,384 GiB * (16 TiB)<br>S80：32,767 GiB * (32 TiB)
+| 每个磁盘的最大吞吐量 | P4：25 MiB/秒<br> P6：50 MiB/秒<br> P10：100 MiB/秒<br> P15：125 MiB/秒<br> P20：150 MiB/秒<br> P30：200 MiB/秒<br> P40-P50：250 MiB/秒<br> P60：480 MiB/秒 *<br> P70-P80：750 MiB/秒 * | E10-E50：最多 60 MiB/秒<br> E60：最多 300 MiB/秒 *<br> E70-E80：500 MiB/秒 *| S4 - S50：最多 60 MiB/秒<br> S60：最多 300 MiB/秒 *<br> S70-S80：最多 500 MiB/秒 *
+| 每个磁盘的最大 IOPS | P4：120 IOPS<br> P6：240 IOPS<br> P10：500 IOPS<br> P15：1100 IOPS<br> P20：2300 IOPS<br> P30：5000 IOPS<br> P40-P50：7,500 IOPS<br> P60：12,500 IOPS *<br> P70：15,000 IOPS *<br> P80：20,000 IOPS * | E10-E50：最高 500 IOPS<br> E60：最高 1300 IOPS *<br> E70-E80：最高 2000 IOPS * | S4-S50：最高 500 IOPS<br> S60：最高 1300 IOPS *<br> S70-S80：最高 2000 IOPS *

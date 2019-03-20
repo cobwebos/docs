@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: e08b38fcea152489455eb4b4f66e56bc609a09db
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 81646c979748b7a23762a25538ced447e382f72a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251718"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878425"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -233,7 +233,7 @@ New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Lo
 # Set your current working storage account
 Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
 
-# Create a Azure File Service Share
+# Create an Azure File Service Share
 $s = New-AzureStorageShare <<teamsharename>>
 # Create a directory under the FIle share. You can give it any name
 New-AzureStorageDirectory -Share $s -Path <directory name>
@@ -262,7 +262,7 @@ DSVM 已在命令行以及 GUI 上加载了用于访问 GitHub 存储库的客�
 
     git clone https://github.com/Azure/DataScienceVM.git
 
-在 Visual Studio 中，可以执行相同的克隆操作。 以下屏幕截图演示了如何在 Visual Studio 中访问 Git 和 GitHub 工具。
+在 Visual Studio 中，可以执行相同的克隆操作。 以下屏幕截图显示了如何访问 Visual Studio 中的 Git 和 GitHub 工具。
 
 ![Visual Studio 的屏幕截图，其中显示了 GitHub 连接](./media/vm-do-ten-things/VSGit.PNG)
 
@@ -279,7 +279,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 ![Azure 门户中存储帐户创建流程的屏幕截图](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * 确认在 ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` 找到了预安装的命令行工具 AzCopy。 PATH 环境变量中包含 azcopy.exe 的目录现已可用，以避免在运行此工具时键入完整的命令路径。 有关 AzCopy 工具的详细信息，请参阅 [AzCopy 文档](../../storage/common/storage-use-azcopy.md)
-* 启动 Azure 存储资源管理器工具。 可以从 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)下载该工具。 
+* 启动 Azure 存储资源管理器工具。 可以从 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)下载该工具。 
 
 ![Azure 存储资源管理器访问存储帐户时的屏幕截图](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -296,7 +296,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 在 PowerShell 中或从命令提示符下，运行 AzCopy 命令。 以下是 AzCopy 命令的一些使用示例：
 
 ```powershell
-# Copy *.sql from local machine to a Azure Blob
+# Copy *.sql from local machine to an Azure Blob
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:"c:\Aaqs\Data Science Scripts" /Dest:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /DestKey:[ENTER STORAGE KEY] /S /Pattern:*.sql
 
 # Copy back all files from Azure Blob container to Local machine

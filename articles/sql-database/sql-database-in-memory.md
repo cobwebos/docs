@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: c873587a640bb36e9fa43e314bf789a207956ae0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/19/2019
+ms.openlocfilehash: d2c852b48c219283bba2304a993dd26e802b3252
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854834"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226974"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
@@ -83,7 +83,7 @@ Azure SQL 数据库采用以下内存中技术：
 
 - **内存优化的行存储**格式：每个行是一个独立的内存对象。 这是针对高性能 OLTP 工作负荷优化的经典内存中 OLTP 格式。 在内存优化的行存储格式中可以使用两种类型的内存优化表：
   - 持久性表 (SCHEMA_AND_DATA)：服务器重启后会保留内存中的行。 此类表的行为类似于传统的行存储表，同时具有内存中优化的附加优势。
-  - 非持久性表 (SCEMA_ONLY)：重启后不保留行。 此类表适用于临时数据（例如，取代临时表），或者需要快速加载其中的数据，然后将数据移到某个持久性表（称为临时表）的表。
+  - *非持久表*(SCHEMA_ONLY) 其中的行是不保留后重新启动。 此类表适用于临时数据（例如，取代临时表），或者需要快速加载其中的数据，然后将数据移到某个持久性表（称为临时表）的表。
 - **内存优化的列存储**格式：其中的数据以纵栏表的格式进行组织。 此结构适用于 HTAP 方案，其中，需要针对运行 OLTP 工作负荷的同一数据结构运行分析查询。
 
 > [!Note]

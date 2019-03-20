@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e86180a643b27056edc9901d590760cedcbf259
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331871"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081825"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ ms.locfileid: "54331871"
 
 可以将数据从本地 PostgreSQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持用作接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 数据工厂当前支持将数据从 PostgreSQL 数据库移至其他数据存储，而不支持将数据从其他数据存储移至 PostgreSQL 数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 数据工厂服务支持使用数据管理网关连接到本地 PostgreSQL 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
@@ -50,12 +50,12 @@ ms.locfileid: "54331871"
 
 - 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 - 还可以使用以下工具来创建管道：
-    - Azure 门户
-    - Visual Studio
-    - Azure PowerShell
-    - Azure 资源管理器模板
-    - .NET API
-    - REST API
+  - Azure 门户
+  - Visual Studio
+  - Azure PowerShell
+  - Azure 资源管理器模板
+  - .NET API
+  - REST API
 
     有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "54331871"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的数据集的 typeProperties 部分（包括 PostgreSQL 数据集）具有以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | tableName |链接服务引用的 PostgreSQL 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -306,46 +306,46 @@ ms.locfileid: "54331871"
 
 | PostgreSQL 数据库类型 | PostgresSQL 别名 | .NET Framework 类型 |
 | --- | --- | --- |
-| abstime | |Datetime | &nbsp;
+| abstime | |Datetime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [(n)] | |Byte[], String | &nbsp;
+| bit [(n)] | |Byte[], String |
 | bit varying [ (n) ] |varbit |Byte[], String |
 | 布尔值 |bool |Boolean |
-| box | |Byte[], String |&nbsp;
-| bytea | |Byte[], String |&nbsp;
+| box | |Byte[], String |
+| bytea | |Byte[], String |
 | character [(n)] |char [(n)] |String |
 | character varying [(n)] |varchar [(n)] |String |
-| cid | |String |&nbsp;
-| cidr | |String |&nbsp;
-| circle | |Byte[], String |&nbsp;
-| 日期 | |Datetime |&nbsp;
-| daterange | |String |&nbsp;
+| cid | |String |
+| cidr | |String |
+| circle | |Byte[], String |
+| 日期 | |Datetime |
+| daterange | |String |
 | 双精度 |float8 |Double |
-| inet | |Byte[], String |&nbsp;
-| intarry | |String |&nbsp;
-| int4range | |String |&nbsp;
-| int8range | |String |&nbsp;
+| inet | |Byte[], String |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
 | integer |int, int4 |Int32 |
-| interval [fields] [(p)] | |Timespan |&nbsp;
-| json | |String |&nbsp;
-| jsonb | |Byte[] |&nbsp;
-| 折线图 | |Byte[], String |&nbsp;
-| lseg | |Byte[], String |&nbsp;
-| macaddr | |Byte[], String |&nbsp;
-| money | |小数 |&nbsp;
-| numeric [(p, s)] |decimal [(p, s)] |小数 |
-| numrange | |String |&nbsp;
-| oid | |Int32 |&nbsp;
-| 路径 | |Byte[], String |&nbsp;
-| pg_lsn | |Int64 |&nbsp;
-| point | |Byte[], String |&nbsp;
-| polygon | |Byte[], String |&nbsp;
+| interval [fields] [(p)] | |Timespan |
+| json | |String |
+| jsonb | |Byte[] |
+| 折线图 | |Byte[], String |
+| lseg | |Byte[], String |
+| macaddr | |Byte[], String |
+| money | |Decimal |
+| numeric [(p, s)] |decimal [(p, s)] |Decimal |
+| numrange | |String |
+| oid | |Int32 |
+| 路径 | |Byte[], String |
+| pg_lsn | |Int64 |
+| point | |Byte[], String |
+| polygon | |Byte[], String |
 | real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |String |&nbsp;
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

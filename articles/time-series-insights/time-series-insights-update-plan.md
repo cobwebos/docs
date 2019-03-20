@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 09fef060a58723624796fe6192fef2444251cc1c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 251e95744f57d9b5e42df9bdc3743f4880ff5381
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556078"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076990"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>计划 Azure 时序见解预览版环境
 
@@ -90,7 +90,7 @@ ms.locfileid: "53556078"
 有关 Azure 中用于业务连续性和灾难恢复 (BCDR) 的内置功能的信息，请参阅 [Azure 业务连续性技术指南](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance)。 有关 Azure 应用程序的高可用性和灾难恢复实现策略的体系结构指南，请参阅 [Azure 应用程序的灾难恢复和高可用性](https://docs.microsoft.com/azure/architecture/resiliency/index)一文。
 
 > [!NOTE]
-
+> 
 >  时序见解没有内置 BCDR。
 > 默认情况下，Azure 存储、Azure IoT 中心和 Azure 事件中心具有内置恢复功能。
 

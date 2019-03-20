@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.author: sogup
-ms.openlocfilehash: 0ab626bffa3520af0ea23314cbaed118d66e280f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0eb19ba8278df2d77466e5be13731723557e85a8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007505"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082069"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>跨 Azure 订阅和资源组移动恢复服务保管库（受限公共预览版）
 
@@ -37,10 +37,8 @@ ms.locfileid: "56007505"
 -   如果跨订阅移动包含 VM 备份数据的保管库，则必须将 VM 移到同一订阅，并使用同一目标资源组来继续备份。<br>
 
 > [!NOTE]
->
-目前无法移动配置为与 **Azure Site Recovery** 配合使用的恢复服务保管库。 如果使用 **Azure Site Recovery** 为灾难恢复配置了任何 VM（Azure IaaS、Hyper-V、VMware）或物理机，移动操作将受阻止。 针对 Site Recovery 服务的资源移动功能尚未推出。
->
->
+> 
+> 目前无法移动配置为与 **Azure Site Recovery** 配合使用的恢复服务保管库。 如果使用 **Azure Site Recovery** 为灾难恢复配置了任何 VM（Azure IaaS、Hyper-V、VMware）或物理机，移动操作将受阻止。 针对 Site Recovery 服务的资源移动功能尚未推出。
 
 ## <a name="register-the-source-subscription-to-move-your-recovery-services-vault"></a>注册来源订阅以移动恢复服务保管库
 
@@ -48,26 +46,26 @@ ms.locfileid: "56007505"
 
 1. 登录到 Azure 帐户
 
-  ```
-  Connect-AzureRmAccount
-  ```
+   ```
+   Connect-AzureRmAccount
+   ```
 
-2.  选择要注册的订阅
+2. 选择要注册的订阅
 
-    ```
-    Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3.  注册此订阅
+   ```
+   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+   ```
+3. 注册此订阅
 
-  ```
-  Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
-  ```
+   ```
+   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   ```
 
 4. 运行命令
 
-  ```
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-  ```
+   ```
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   ```
 
 等待 30 分钟以将订阅加入允许列表，然后开始使用 Azure 门户或 PowerShell 执行移动操作。
 
@@ -78,27 +76,27 @@ ms.locfileid: "56007505"
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 打开“恢复服务保管库”列表，并选择要移动的保管库。 当保管库仪表板打开时，其外观如下图所示。
 
-  ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-  如果未看到保管库的“概要”信息，请单击下拉图标。 现在，应会看到保管库的“概要”信息。
+   如果未看到保管库的“概要”信息，请单击下拉图标。 现在，应会看到保管库的“概要”信息。
 
-  ![“概要”信息选项卡](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
+   ![“概要”信息选项卡](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
 3. 在保管库概述菜单中，单击“资源组”旁边的“更改”打开“移动资源”边栏选项卡。
 
-  ![更改资源组](./media/backup-azure-move-recovery-services/change-resource-group.png)
+   ![更改资源组](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
 4. 在“移动资源”边栏选项卡中，对于选定的保管库，建议通过选中下图所示的复选框，移动可选的相关资源。
 
-  ![移动订阅](./media/backup-azure-move-recovery-services/move-resource.png)
+   ![移动订阅](./media/backup-azure-move-recovery-services/move-resource.png)
 
 5. 若要添加目标资源组，请在“资源组”下拉列表中选择现有的资源组，或单击“创建新组”选项。
 
-  ![创建资源](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+   ![创建资源](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
 6. 添加资源组后，确认“我了解与已移动资源关联的工具和脚本在更新为使用新资源 ID 之前将不可用”选项，然后单击“确定”完成保管库移动操作。
 
-  ![确认消息](./media/backup-azure-move-recovery-services/confirmation-message.png)
+   ![确认消息](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
 
 ## <a name="use-azure-portal-to-move-a-recovery-services-vault-to-a-different-subscription"></a>使用 Azure 门户将恢复服务保管库移到不同的订阅
@@ -116,16 +114,16 @@ ms.locfileid: "56007505"
 
 3. 在保管库概述菜单中，单击“订阅”旁边的“更改”打开“移动资源”边栏选项卡。
 
-  ![更改订阅](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
+   ![更改订阅](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
 4. 选择要移动的资源。此处我们建议使用“全选”选项来选择列出的所有可选资源。
 
-  ![移动资源](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
+   ![移动资源](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. 在“订阅”下拉列表中选择目标订阅，保管库将移到该订阅。
 6. 若要添加目标资源组，请在“资源组”下拉列表中选择现有的资源组，或单击“创建新组”选项。
 
-  ![添加订阅](./media/backup-azure-move-recovery-services/add-subscription.png)
+   ![添加订阅](./media/backup-azure-move-recovery-services/add-subscription.png)
 
 7. 单击“我了解与已移动资源关联的工具和脚本在更新为使用新资源 ID 之前将不可用”选项以确认，然后单击“确定”。
 

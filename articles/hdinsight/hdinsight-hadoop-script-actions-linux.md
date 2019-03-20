@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6702bfabd27b56ce473fe8eb14aadc9dc6e8e7c9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 4bef785a08d7482468630bc690d6c19b05bdf770
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202956"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -39,7 +39,7 @@ ms.locfileid: "56338863"
 
 有关使用这些方法应用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="bestPracticeScripting"></a>脚本开发最佳做法
+## <a name="bestPracticeScripting"></a>脚本开发最佳实践
 
 在针对 HDInsight 群集开发自定义脚本时，有些最佳做法要铭记于心：
 
@@ -61,7 +61,7 @@ ms.locfileid: "56338863"
 
 不同版本的 HDInsight 有不同版本的 Hadoop 服务和已安装的组件。 如果脚本需要特定版本的服务或组件，你应该只在包含所需组件的 HDInsight 版本中使用该脚本。 可以使用 [HDInsight 组件版本控制](hdinsight-component-versioning.md)来查找有关 HDInsight 随附组件版本的信息。
 
-### <a name="bps10"></a>选择目标 OS 版本
+### <a name="bps10"></a> 选择目标 OS 版本
 
 基于 Linux 的 HDInsight 取决于 Ubuntu Linux 分发。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 和更高版本取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
 
@@ -151,13 +151,13 @@ HDInsight 会记录已写入 STDOUT 和 STDERR 的脚本输出。 可以使用 A
 > [!NOTE]  
 > 只有在成功创建群集之后，才能使用 Apache Ambari。 如果在群集创建期间使用脚本操作但创建失败，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)的故障排除部分，以了解访问所记录信息的其他方式。
 
-大多数实用工具和安装包会将信息写入 STDOUT 和 STDERR，不过你可能想要添加更多日志记录。 若要将文本发送到 STDOUT，可使用 `echo`。 例如：
+大多数实用工具和安装包已将信息写入 STDOUT 和 STDERR，不过你可能需要添加更多日志记录。 若要将文本发送到 STDOUT，请使用 `echo`。 例如：
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-默认情况下，`echo` 会将字符串发送到 STDOUT。 要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。 例如：
+默认情况下，`echo` 会将字符串发送到 STDOUT。 若要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。 例如：
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -167,7 +167,7 @@ echo "Getting ready to install Foo"
 
 有关查看脚本操作记录的信息的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
-### <a name="bps8"></a>将文件另存为包含 LF 行尾的 ASCII
+### <a name="bps8"></a> 将文件另存为包含 LF 行尾的 ASCII
 
 应将 Bash 脚本存储为 ASCII 格式，该格式以 LF 作为行尾。 存储为 UTF-8 或者使用 CRLF 作为行尾的文件可能失败并返回以下错误：
 
@@ -176,7 +176,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="bps9"></a>使用重试逻辑从暂时性错误中恢复
+### <a name="bps9"></a> 使用重试逻辑从暂时性错误中恢复
 
 下载文件、使用 apt-get 安装包或者执行通过 Internet 传输数据的其他操作时，可能会由于暂时性网络错误而失败。 例如，与你通信的远程资源可能正在故障转移到备份节点。
 
@@ -225,7 +225,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 可在脚本中使用以下帮助器：
 
-| 帮助器用法 | 说明 |
+| 帮助器用法 | 描述 |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |将文件从源 URI 下载到指定的文件路径。 默认情况下，它不会覆盖现有的文件。 |
 | `untar_file TARFILE DESTDIR` |将 tar 文件（使用 `-xf`）解压缩到目标目录。 |
@@ -246,7 +246,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 在某些情况下，脚本可能需要参数。 例如，使用 Ambari REST API 时，可能需要群集的管理员密码。
 
-传递给脚本的参数称为“位置参数”，将分配到 `$2` 作为第一个参数，分配到 `$1` 作为第二个参数，依此类推。 `$0` 包含该脚本本身的名称。
+传递给脚本的参数称为“位置参数”，将分配到 `$1` 作为第一个参数，分配到 `$2` 作为第二个参数，依此类推。 `$0` 包含该脚本本身的名称。
 
 作为参数传递给脚本的值应括在单引号 (') 中。 这样可以确保将传递的值视为文本。
 
@@ -294,7 +294,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 HDInsight 的不同版本取决于 Ubuntu 的特定版本。 不同 OS 版本之间存在不同，必须在脚本中检查。 例如，可能需要安装与 Ubuntu 版本相关的二进制文件。
 
-若要查看 OS 版本，请使用 `lsb_release`。 例如，以下脚本演示如何根据 OS 版本引用特定的 tar 文件：
+若要检查 OS 版本，请使用 `lsb_release`。 例如，以下脚本演示如何根据 OS 版本引用特定的 tar 文件：
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -332,7 +332,6 @@ fi
 Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅以下链接了解更多示例脚本操作。
 
 * [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)
-* [在 HDInsight 群集上安装并使用 Apache Solr](hdinsight-hadoop-solr-install-linux.md)
 * [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
 * [在 HDInsight 群集上安装或升级 Mono](hdinsight-hadoop-install-mono.md)
 

@@ -7,21 +7,21 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c49a6320b7ba37297a7c1c0775aef2c2d8c6c868
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: f3b4e6cd18a362775443bb296560a076aaa1497d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104290"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883621"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>示例：使用文本翻译 API 创建自定义技能
 
 在此示例中，学习如何创建 Web API 自定义技能，可接受任何语言的文本并将其翻译为英语。 该示例使用 [Azure Function](https://azure.microsoft.com/services/functions/) 来包装[翻译文本 API](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)，以便实现自定义技能接口。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 + 如果不熟悉自定义技能应实现的输入/输出接口，请阅读[自定义技能接口](cognitive-search-custom-skill-interface.md)一文。
 
@@ -39,7 +39,7 @@ ms.locfileid: "55104290"
 
 1. 在“新建项目”对话框中，选择“已安装”，展开“Visual C#” > “云”，选择“Azure Functions”，键入项目的名称，然后选择“确定”。 函数应用名称必须可以充当 C# 命名空间，因此请勿使用下划线、连字符或任何其他的非字母数字字符。
 
-1. 选择“Azure Functions v2 (.Net Core)”。 也可以使用版本 1 执行此操作，但下面的代码基于 v2 模板编写。
+1. 选择**Azure Functions v2 (.NET Core)**。 也可以使用版本 1 执行此操作，但下面的代码基于 v2 模板编写。
 
 1. 选择“HTTP 触发器”作为类型
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b797cc6e1c0ef0df61c4d1384d2beb12c37112ba
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: a4757be00a3633f56aed52dd7af22923e49b0b62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456849"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102377"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>设置安全信息以使用验证器应用（预览）
 可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
@@ -36,11 +36,11 @@ ms.locfileid: "56456849"
 
 1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
-    ![“我的个人资料”页面，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile.png)
+    ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“验证器应用”，然后选择“添加”。
 
@@ -52,10 +52,10 @@ ms.locfileid: "56456849"
 
     ![“首先获取应用”页](media/security-info/securityinfo-myprofile-getauthapp.png)
 
-    >[!Note]
-    >若要使用除 Microsoft Authenticator 应用以外的验证器应用，请选择“我想要使用其他验证器应用”链接。
-    
-    >如果你的组织允许选择除验证器应用以外的其他方法，则可以选择“我想要设置其他方法”链接。
+   > [!Note]
+   > 若要使用除 Microsoft Authenticator 应用以外的验证器应用，请选择“我想要使用其他验证器应用”链接。
+   > 
+   > 如果你的组织允许选择除验证器应用以外的其他方法，则可以选择“我想要设置其他方法”链接。
 
 5. 在移动设备上安装 Microsoft Authenticator 应用时，请将“设置帐户”页保持打开。
 
@@ -81,9 +81,9 @@ ms.locfileid: "56456849"
 
 8. 在 Microsoft Authenticator 应用中确认通知，然后选择“下一步”。
 
-    ![成功通知，指出正在连接应用和帐户](media/security-info/securityinfo-myprofile-successauthapp.png)
+     ![成功通知，指出正在连接应用和帐户](media/security-info/securityinfo-myprofile-successauthapp.png)
 
-    在使用双重验证或密码重置时，安全信息默认会更新为使用 Microsoft Authenticator 应用来验证你的身份。
+     在使用双重验证或密码重置时，安全信息默认会更新为使用 Microsoft Authenticator 应用来验证你的身份。
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>从安全信息方法中删除验证器应用
 如果你不再想要使用验证器应用作为安全信息方法，可以从“安全信息”页中将其删除。 这适用于所有身份验证器应用，而不仅仅是 Microsoft Authenticator 应用。 删除该应用后，必须在移动设备上转到验证器应用，并删除帐户。

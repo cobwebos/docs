@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 14c43fbc138d6d70b65f6afd1ef174488e066796
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: c96f2dc2b44ea2118d9f0dd6c988017efcba5800
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567734"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116769"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 
@@ -32,13 +32,13 @@ ms.locfileid: "55567734"
 
 本教程将探讨还原和遣返工作流。 学习如何：
 > [!div class="checklist"]
-
->* 将数据库和弹性池配置信息同步到租户目录中。
->* 在包含应用程序、服务器和池的“恢复”区域中设置镜像环境。   
->* 使用异地还原恢复目录和租户数据库。
->* 中断解决后，使用异地复制遣返租户目录和更改后的租户数据库。
->* 在还原（或遣返）每个数据库后更新目录，以跟踪每个租户数据库的活动副本的当前位置。
->* 确保应用程序和租户数据库始终位于同一 Azure 区域，以降低延迟。 
+> 
+> * 将数据库和弹性池配置信息同步到租户目录中。
+> * 在包含应用程序、服务器和池的“恢复”区域中设置镜像环境。   
+> * 使用异地还原恢复目录和租户数据库。
+> * 中断解决后，使用异地复制遣返租户目录和更改后的租户数据库。
+> * 在还原（或遣返）每个数据库后更新目录，以跟踪每个租户数据库的活动副本的当前位置。
+> * 确保应用程序和租户数据库始终位于同一 Azure 区域，以降低延迟。 
  
 
 开始本教程之前，需具备以下先决条件：
@@ -194,13 +194,13 @@ ms.locfileid: "55567734"
 
 * 恢复目录数据库后但在租户恢复联机前，请在 Web 浏览器中刷新 Wingtip Tickets 事件中心。
 
-    * 在页脚中，注意目录服务器名称现在带有 -recovery 后缀，并且位于恢复区域。
+  * 在页脚中，注意目录服务器名称现在带有 -recovery 后缀，并且位于恢复区域。
 
-    * 请注意，尚未还原的租户标记为脱机且不可选择。   
+  * 请注意，尚未还原的租户标记为脱机且不可选择。   
  
     ![恢复进程](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-    * 如果在租户脱机时直接打开租户的事件页，页面将显示租户脱机通知。 例如，在 Contoso Concert Hall 处于脱机状态时，尝试打开 http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall。
+  * 如果在租户脱机时直接打开租户的事件页，页面将显示租户脱机通知。 例如，在 Contoso Concert Hall 处于脱机状态时，尝试打开 http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall。
 
     ![恢复进程](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -245,13 +245,13 @@ ms.locfileid: "55567734"
 
 4. 打开恢复资源组，并注意以下各项：
 
-    * 目录和带有 -recovery 后缀的 tenants1 服务器的恢复版本。 这些服务器上的还原目录和租户数据库全部使用在原始区域中使用的名称。
+   * 目录和带有 -recovery 后缀的 tenants1 服务器的恢复版本。 这些服务器上的还原目录和租户数据库全部使用在原始区域中使用的名称。
 
-    * tenants2-dpt-&lt;user&gt;-recovery SQL 服务器。 此服务器用于在中断期间预配新租户。
+   * tenants2-dpt-&lt;user&gt;-recovery SQL 服务器。 此服务器用于在中断期间预配新租户。
 
-    * 名为 events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;user&gt; 的应用服务，即事件应用的恢复实例。
+   * 名为 events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;user&gt; 的应用服务，即事件应用的恢复实例。
 
-    ![恢复区域中的 Contoso 资源](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
+     ![恢复区域中的 Contoso 资源](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
     
 5. 打开 tenants2-dpt-&lt;user&gt;-recovery SQL 服务器。 请注意，其中包含数据库 hawthornhall 和弹性池 Pool1。 hawthornhall 数据库配置为 Pool1 弹性池中的弹性数据库。
 
@@ -367,12 +367,12 @@ ms.locfileid: "55567734"
 
 本教程介绍了如何：
 > [!div class="checklist"]
-
->* 使用租户目录保存定期更新的配置信息，以允许在其他区域中创建镜像恢复环境。
->* 使用异地还原将 Azure SQL 数据库恢复到恢复区域。
->* 更新租户目录以反映已还原的租户数据库位置。 
->* 使用 DNS 别名可使应用程序全程连接到租户目录，并且无需进行重新配置。
->* 中断解决后，使用异地复制将恢复后的数据库遣返回原始区域。
+> 
+> * 使用租户目录保存定期更新的配置信息，以允许在其他区域中创建镜像恢复环境。
+> * 使用异地还原将 Azure SQL 数据库恢复到恢复区域。
+> * 更新租户目录以反映已还原的租户数据库位置。 
+> * 使用 DNS 别名可使应用程序全程连接到租户目录，并且无需进行重新配置。
+> * 中断解决后，使用异地复制将恢复后的数据库遣返回原始区域。
 
 请尝试学习[使用数据库异地复制对多租户 SaaS 应用程序进行灾难恢复](saas-dbpertenant-dr-geo-replication.md)教程，了解如何使用异地复制动态缩短恢复大规模多租户应用程序所需的时间。
 

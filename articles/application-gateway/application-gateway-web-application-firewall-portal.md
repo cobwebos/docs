@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 7a090a068984a71c917cf5c33761dd78ac1ad2c8
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 510a243b9133fe0ef0fe33b4dccce97f9d65e301
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453250"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074954"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关
 
@@ -31,6 +31,8 @@ ms.locfileid: "56453250"
 
 ![Web 应用程序防火墙示例](./media/application-gateway-web-application-firewall-portal/scenario-waf.png)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
@@ -43,21 +45,21 @@ ms.locfileid: "56453250"
 2. 选择“网络”，然后在“特色”列表中选择“应用程序网关”。
 3. 输入应用程序网关的以下值：
 
-    - *myAppGateway* - 应用程序网关的名称。
-    - *myResourceGroupAG* - 作为新资源组。
-    - 对于应用程序网关的层，选择 *WAF*。
+   - *myAppGateway* - 应用程序网关的名称。
+   - *myResourceGroupAG* - 作为新资源组。
+   - 对于应用程序网关的层，选择 *WAF*。
 
-    ![新建应用程序网关](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
+     ![新建应用程序网关](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
 
 4. 接受其他设置的默认值，然后单击“确定”。
 5. 依次单击“选择虚拟网络”、“新建”，然后输入虚拟网络的以下值：
 
-    - *myVNet* - 虚拟网络的名称。
-    - *10.0.0.0/16* - 虚拟网络地址空间。
-    - *myAGSubnet* - 子网名称。
-    - *10.0.0.0/24* - 子网地址空间。
+   - *myVNet* - 虚拟网络的名称。
+   - *10.0.0.0/16* - 虚拟网络地址空间。
+   - *myAGSubnet* - 子网名称。
+   - *10.0.0.0/24* - 子网地址空间。
 
-    ![创建虚拟网络](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
+     ![创建虚拟网络](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
 
 6. 单击“确定”创建虚拟网络和子网。
 7. 依次单击“选择公共 IP 地址”、“新建”，然后输入公共 IP 地址的名称。 在本示例中，公共 IP 地址名为 *myAGPublicIPAddress*。 接受其他设置的默认值，然后单击“确定”。
@@ -103,7 +105,7 @@ ms.locfileid: "56453250"
 2. 运行以下命令以在虚拟机上安装 IIS： 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -114,7 +116,7 @@ ms.locfileid: "56453250"
       -Location EastUS
     ```
 
-3. 使用刚刚完成的步骤创建第二个虚拟机并安装 IIS。 输入 *myVM2* 作为其名称，并将其用于 Set-AzureRmVMExtension 中的 VMName。
+3. 使用刚刚完成的步骤创建第二个虚拟机并安装 IIS。 输入*myVM2*为其名称和在组 AzVMExtension VMName。
 
 ### <a name="add-backend-servers"></a>添加后端服务器
 

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d4204d4937b8eca2dcb3f656659f185f30c8bddf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: af5d8e4146b7cf7b0b9c474b25b3ad48c9cb3902
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755011"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890026"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
@@ -32,6 +32,10 @@ ms.locfileid: "55755011"
 * Azure 自动化 Desired State Configuration (DSC)。 配合使用 Azure 自动化中的 DSC 以及已部署在环境中的 Windows 计算机的脚本。  
 * PowerShell 脚本。
 * 适用于在 Azure Stack 中运行 Windows 本地环境的虚拟机的资源管理器模板。  
+
+>[!NOTE]
+>Azure 安全中心 (ASC) 取决于 Microsoft Monitoring Agent （也称为 Log Analytics Windows 代理） 和将安装并将其配置为作为其部署的一部分的 Log Analytics 工作区报告。 ASC 包括启用了你的订阅中的所有 Vm 上的 Log Analytics Windows 代理的自动安装，并将其配置为向特定的工作区报告的自动预配选项。 有关此选项的详细信息，请参阅[启用 Log Analytics 代理的自动预配](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-log-analytics-agent-)。
+>
 
 若要了解支持的配置，请查看[支持的 Windows 操作系统](log-analytics-agent.md#supported-windows-operating-systems)和[网络防火墙配置](log-analytics-agent.md#network-firewall-requirements)。
 

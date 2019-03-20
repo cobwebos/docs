@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7401a77e79ec42930c411856defd48a0ba3c3bf7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170231"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879112"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -134,7 +134,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 | ms DS ConsistencyGuid 功能 |对[设计概念 - 使用 ms-DS-ConsistencyGuid 作为 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 中所述的 ms-DS-ConsistencyGuid 属性的写入权限。 | 
 | 密码哈希同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
 | Exchange 混合部署 |针对用户、组和联系人的属性的写入权限，详见[Exchange 混合写回](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
-| Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
+| Exchange 邮件公共文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
 | 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../authentication/howto-sspr-writeback.md)。 |
 | 设备写回 |通过 PowerShell 脚本授予的权限，详见[设备写回](how-to-connect-device-writeback.md)。 |
 | 组写回 |允许你将 **Office 365 组**写回到已安装 Exchange 的林中。  有关详细信息，请参阅[组写回](how-to-connect-preview.md#group-writeback)。|
@@ -163,7 +163,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 ### <a name="adsync-service-account"></a>ADSync 服务帐户
 同步服务可在不同帐户下运行。 它可在**虚拟服务帐户** (VSA)、**组托管服务帐户** (gMSA/sMSA) 或常规用户帐户下运行。 2017 年 4 月版本的 Connect 的支持选项已更改（若进行全新安装）。 如果从早期版本的 Azure AD Connect 升级，这些附加选项将不可用。
 
-| 帐户的类型 | 安装选项 | 说明 |
+| 帐户的类型 | 安装选项 | 描述 |
 | --- | --- | --- |
 | [虚拟服务帐户](#virtual-service-account) | 快速和自定义，2017 年 4 月版及更高版本 | 此选项适用于所有快速安装，在域控制器上的安装除外。 对于自定义安装，除非使用了其他选项，否则它便是默认选项。 |
 | [组托管服务帐户](#group-managed-service-account) | 自定义，2017 年 4 月版及更高版本 | 如果使用远程 SQL Server，则建议使用组托管服务帐户。 |
@@ -206,7 +206,7 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 #### <a name="group-managed-service-account"></a>组托管服务帐户
 如果使用远程 SQL Server，则建议使用**组托管服务帐户**。 若要详细了解如何为组托管服务帐户准备 Active Directory ，请参阅 [Group Managed Service Accounts Overview](https://technet.microsoft.com/library/hh831782.aspx)（组托管服务帐户概述）。
 
-要使用此选项，请在[安装所需组件](how-to-connect-install-custom.md#install-required-components)页上，选择“使用现有服务帐户”，并选择“托管服务帐户”。  
+若要使用此选项，请[安装所需的组件](how-to-connect-install-custom.md#install-required-components)页上选择“使用现有的服务帐户”，然后选择“托管服务帐户”。  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
 还支持使用[独立托管服务帐户](https://technet.microsoft.com/library/dd548356.aspx)。 但是，这些帐户只能在本地计算机上使用，因此使用这些帐户相对默认虚拟服务帐户而言并没有好处。
 
@@ -223,7 +223,7 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 
 此帐户用于以安全方式存储其他帐户的密码。 其他这些帐户密码以加密形式存储在数据库中。 通过使用 Windows 数据保护 API (DPAPI) 的密钥加密服务来保护加密密钥的私钥。
 
-如果使用完整的 SQL Server，服务帐户将是为同步引擎创建的数据库的 DBO。 如果使用其他权限，服务将无法按预期工作。 此外会创建 SQL 登录名。
+如果使用完整的 SQL Server，服务帐户将是为同步引擎创建的数据库的 DBO。 如果使用其他权限，服务无法按预期工作。 此外会创建 SQL 登录名。
 
 该帐户也会获取对文件、注册表项和与同步引擎相关的其他对象的权限。
 
@@ -249,7 +249,7 @@ Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中�
 |使用快速设置安装 | [Azure AD Connect 的快速安装](how-to-connect-install-express.md)|
 |使用自定义设置安装 | [Azure AD Connect 的自定义安装](./how-to-connect-install-custom.md)|
 |从 DirSync 升级 | [从 Azure AD 同步工具 (DirSync) 升级](how-to-dirsync-upgrade-get-started.md)|
-|安装后 | [验证安装并分配许可证 ](how-to-connect-post-installation.md)|
+|安装后 | [验证安装并分配许可证](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

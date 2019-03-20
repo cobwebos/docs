@@ -15,12 +15,12 @@ ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 8073dff6dbd8bbceb16d7fdcf8d39012233c32d6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 24c500251c8e91b7542c5c9d3e77676205c88c1f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240448"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090961"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack 中的缩放单元节点操作
 
@@ -42,15 +42,15 @@ ms.locfileid: "55240448"
 3. 在结果中选择缩放单元。
 4. 从左侧的“常规”下面，选择“节点”。
 
-  查看以下信息：
+   查看以下信息：
 
-  - 各个节点的列表
-  - 操作状态（参阅以下列表）
-  - 电源状态（“正在运行”或“已停止”）
-  - 服务器模型
-  - 基板管理控制器 (BMC) 的 IP 地址
-  - 内核总数
-  - 总内存量
+   - 各个节点的列表
+   - 操作状态（参阅以下列表）
+   - 电源状态（“正在运行”或“已停止”）
+   - 服务器模型
+   - 基板管理控制器 (BMC) 的 IP 地址
+   - 内核总数
+   - 总内存量
 
 ![缩放单元的状态](media/azure-stack-node-actions/multinodeactions.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "55240448"
  - 硬件组件发生故障并予以更换之后（如果现场可更换单元 (FRU) 文档中建议更换）。
 
 > [!Important]  
-> 当您需要更换节点或单个硬件组件时，请参阅 OEM 硬件供应商的 FRU 文档了解确切的步骤。 FRU 文档将指定在更换硬件组件之后是否需要运行修复操作。 
+> 需要更换节点或单个硬件组件时，请参阅 OEM 硬件供应商的 FRU 文档，以了解具体步骤。 FRU 文档将指定在更换硬件组件之后是否需要运行修复操作。 
 
 运行修复操作时，需要指定 BMC IP 地址。 
 
@@ -155,13 +155,13 @@ ms.locfileid: "55240448"
 
 ## <a name="shutdown"></a>关机
 
-**关闭**操作前将所有活动的工作负荷移动到相同的缩放单位中的剩余节点。 然后该操作会正常关闭的缩放单位节点。
+“关闭”操作会先将所有活动工作负荷移到同一缩放单元中的其余节点。 然后该操作会正常关闭缩放单元节点。
 
-启动已关闭的节点后，需要运行[恢复](#resume)操作。 之前在节点上运行的工作负荷不会故障回复。
+启动已关闭的节点后，需要运行“[恢复](#resume)”操作。 之前在节点上运行的工作负荷不会故障回复。
 
-如果关闭操作失败，尝试[清空](#drain)操作之后执行关闭操作。
+如果关闭操作失败，请尝试“[清空](#drain)”操作，然后执行关闭操作。
 
-若要运行的关闭操作，打开提升的 PowerShell 提示符，并运行以下 cmdlet:
+若要运行关闭操作，请打开权限提升的 PowerShell 提示符，并运行以下 cmdlet：
 
   ```PowerShell
   Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -Shutdown

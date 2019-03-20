@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 082a4fafe76631435b5969298b0a806565666956
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
-ms.translationtype: HT
+ms.openlocfilehash: a013c52d900f4882752d878d26c45069ba0879a4
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259358"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56824277"
 ---
 > [!IMPORTANT]
-> 创建用户分配的标识时，只能使用字母数字字符（0-9、a-z、A-Z）和连字符 (-)。 另外，为了确保能够正常分配给 VM/VMSS，名称长度不得超过 24 个字符。 请关注后续更新。 有关详细信息，请参阅 [FAQ 和已知问题](/azure/active-directory/managed-service-identity/known-issues)。
+> 当创建用户分配的标识，仅字母数字字符 (0-9、 a-z、 A 到 Z)，下划线 (\_) 和连字符 （-） 支持。 此外，名称应至少有 3 个字符和多达 128 个字符的长度分配给 VM/VMSS 才能正常工作。 请关注后续更新。 有关详细信息，请参阅 [FAQ 和已知问题](/azure/active-directory/managed-service-identity/known-issues)。

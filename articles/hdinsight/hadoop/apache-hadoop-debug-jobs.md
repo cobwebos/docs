@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 0ba3c7321b0771c839289abb7891cd8e6b280afe
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 4d3d45434a90e89e011bf8aa7c3fd37909e25386
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822674"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203058"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>分析 Apache Hadoop 日志
 
-Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件系统的 Azure 存储帐户。 该存储帐户称作默认存储帐户。 群集使用默认存储帐户上的 Azure 表存储和 Blob 存储来存储其日志。  若要了解群集的默认存储帐户，请参阅[在 HDInsight 中管理 Apache Hadoop 群集](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)。 即使在删除群集以后，日志仍会保留在存储帐户中。
+Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件系统的 Azure 存储帐户。 该存储帐户称作默认存储帐户。 群集使用默认存储帐户上的 Azure 表存储和 Blob 存储来存储其日志。  若要了解群集的默认存储帐户，请参阅[在 HDInsight 中管理 Apache Hadoop 群集](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts)。 即使在删除群集以后，日志仍会保留在存储帐户中。
 
 ## <a name="logs-written-to-azure-tables"></a>写入 Azure 表的日志
 
@@ -77,7 +77,7 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
     ![HDInsight Hadoop 日志选择列](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
 7. 单击“确定”导入数据。
 8. 选择“TraceLevel”、“角色”和“ComponentName”列，并单击功能区中的“分组依据”控件。
-9. 单击“分组依据”对话框中的“确定”
+9. 单击“分组依据”对话框中的“确定” 
 10. 单击“应用并关闭”。
 
 现在可以根据需要使用 Excel 来筛选和排序。 你可能想要包括其他列（例如“消息”列），以便在出现问题时对其进行更深入的分析，但选择上述列并对其分组以后，已经可以基本了解 Hadoop 服务的情况。 setuplog 和 hadoopinstalllog 表也是如此。
@@ -123,7 +123,7 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
   
     ![启动群集仪表板](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png)
 * **获取节点状态**。 在左窗格中展开“群集”，并单击“节点”。 此时会列出群集中的所有节点、每个节点的 HTTP 地址、分配给每个节点的资源等。
-* **监视作业状态**。 在左窗格中展开“群集”，并单击“应用程序”列出群集中的所有作业。 若要查看特定状态（例如“新”、“已提交”、“正在运行”等）的作业，请单击“应用程序”下的相应链接。 可以进一步单击作业名称以查找该作业的详细信息，例如输出、日志等。
+* **监视作业状态**。 在左窗格中展开“群集”，并单击“应用程序”列出群集中的所有作业。 若要查看特定状态（例如“新”、“已提交”、“正在运行”等）的作业，请单击“应用程序”下的相应链接。 可以进一步单击作业名称，了解该作业的详细信息，例如输出、日志等。
 
 ### <a name="access-the-hbase-ui"></a>访问 HBase UI
 在 Azure 门户中，单击某个 HDInsight HBase 群集名称以打开群集窗格。 在群集窗格中，单击“仪表板”。 出现提示时，输入群集管理员凭据。 在 Ambari 中，从服务列表中选择“HBase”。 在页面顶部选择“快速链接”，指向活动 Zookeeper 节点链接，并单击“HBase Master UI”。

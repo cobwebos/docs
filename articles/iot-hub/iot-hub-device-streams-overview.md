@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 024bb29f9d7276021888e949073f6d45aed0a249
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770782"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076269"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
 
@@ -117,16 +117,16 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>通过设备流活动日志排除故障
 
-可以设置 Azure Log Analytics 以收集 IoT 中心内设备流的活动日志。 这在故障排除方案中非常有用。
+可以设置 Azure Monitor 日志收集在 IoT 中心设备流的活动日志。 这在故障排除方案中非常有用。
 
-按照以下步骤为 IoT 中心的设备流活动配置 Azure Log Analytics：
+请执行以下步骤来配置 Azure Monitor 的 IoT 中心的设备流活动的日志：
 
 1. 导航到 IoT 中心的“诊断设置”选项卡，然后单击“打开诊断”链接。
 
-  ![替代文本](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "启用诊断日志")
+   ![替代文本](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "启用诊断日志")
 
 
-2. 提供诊断设置的名称，然后选择“发送到 Log Analytics”选项。 系统将引导你选择现有的 Log Analytics 资源或创建新的资源。 此外，在列表中选中“DeviceStreams”。
+2. 提供诊断设置的名称，然后选择“发送到 Log Analytics”选项。 将指导你选择现有的 Log Analytics 工作区资源或创建一个新。 此外，在列表中选中“DeviceStreams”。
 
     ![替代文本](./media/iot-hub-device-streams-overview/device-streams-diagnostics.PNG "启用设备流日志")
 
@@ -153,7 +153,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ## <a name="iot-hub-device-stream-samples"></a>IoT 中心设备流示例
 
 我们发布了两个[快速入门示例](/azure/iot-hub)，演示应用程序如何使用设备流。
-* *回显*示例演示如何以编程方式使用设备流（通过直接调用 SDK API）。
+* *Echo*示例演示 （通过直接调用 SDK API） 以编程方式使用的设备流。
 * 本地代理示例演示如何通过设备流以隧道方式连接现成的客户端/服务器应用程序流（例如 SSH、RDP 或 Web）。
 
 这些示例在下面进行更详细的介绍。

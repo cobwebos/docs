@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: bff1e8c111a8a50e15b6d316e422a641a778c73c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775163"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225036"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -233,14 +233,46 @@ RBAC 角色可能包含用于管理或数据层访问权限。 "读者"角色，
 
 ## <a name="linux-dependencies"></a>Linux 依赖项
 
-对于 Ubuntu 16.04 以外的 Linux 分发版，你可能需要手动安装某些依赖项。 一般情况下，以下包是必需的：
+一般情况下，以下包需要在 Linux 上运行存储资源管理器：
 
-* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* `libsecret`
+* [.NET core 2.0 运行时](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* `libgnome-keyring-common` 和 `libgnome-keyring-dev`
 * `libgconf-2-4`
-* Up-to-date GCC
 
-根据你的分发，可能需要安装其他包。 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)包含用于某些发行版的特定步骤。
+根据你的分发，可能有不同，或需要安装更多包。
+
+Ubuntu 18.04，16.04 和 14.04 正式支持存储资源管理器。 干净的计算机的安装步骤如下所示：
+
+# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+
+1. 下载存储资源管理器
+2. 安装.NET Core 运行时，已验证的最新版本是：[2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-2.0.8) （如果已安装较新版本，您可能需要存储资源管理器，修补程序，请参阅下文）
+3. 运行 `sudo apt-get install libgconf-2-4`
+4. 运行 `sudo apt install libgnome-keyring-common libgnome-keyring-dev`
+
+# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+
+1. 下载存储资源管理器
+2. 安装.NET Core 运行时，已验证的最新版本是：[2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.0.8) （如果已安装较新版本，您可能需要存储资源管理器，修补程序，请参阅下文）
+3. 运行 `sudo apt install libgnome-keyring-dev`
+
+# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+
+1. 下载存储资源管理器
+2. 安装.NET Core 运行时，已验证的最新版本是：[2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-2.0.8) （如果已安装较新版本，您可能需要存储资源管理器，修补程序，请参阅下文）
+3. 运行 `sudo apt install libgnome-keyring-dev`
+
+---
+
+### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>较新版本的.NET Core 的修补存储资源管理器 
+如果有大于 2.0 安装和运行存储资源管理器版本 1.7.0 或更低版本的.NET Core 的版本，最有可能需要修补存储资源管理器通过完成以下步骤：
+1. 下载 1.5.43 新版 StreamJsonRpc[从 nuget](https://www.nuget.org/packages/StreamJsonRpc/1.5.43)。 查找的页面右侧的"下载包"链接。
+2. 下载包后, 更改其文件扩展名从`.nupkg`到 `.zip`
+3. 将包解压缩
+4. 转到 `streamjsonrpc.1.5.43/lib/netstandard1.1/`
+5. 复制`StreamJsonRpc.dll`到存储资源管理器文件夹中的以下位置：
+    1. `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+    2. `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
 ## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>打开在资源管理器从 Azure 门户不起作用
 

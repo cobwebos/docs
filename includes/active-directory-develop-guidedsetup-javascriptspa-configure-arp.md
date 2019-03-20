@@ -4,7 +4,7 @@ description: include 文件
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 9a9f3cd2668f0e78441548592f38ade8ddc0fe46
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
+ms.openlocfilehash: f9993058f93cf94ee468a92ac7cbb2d6881e61be
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330746"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58214436"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>向应用添加应用程序的注册信息
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 0ef4aa988f4adc855051b213013636b4a04f1cca
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: 8e108d88282894a7b1bf014146083008bedd483d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316965"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095035"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>由于 VM 启动到安全模式，因此无法对 VM 进行 RDP
 
@@ -47,7 +47,7 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
 ### <a name="use-serial-control"></a>使用串行控制台
 
 1. 连接到[串行控制台并打开 CMD 实例](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 如果 VM 上未启用串行控制台，请参阅[脱机修复 VM](#repair-the-vm-offline)。
+   )。 如果 VM 上未启用串行控制台，请参阅[脱机修复 VM](#repair-the-vm-offline)。
 2. 检查启动配置数据：
 
         bcdedit /enum
@@ -55,12 +55,12 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
     如果 VM 配置为启动到安全模式，则可在“Windows 启动加载程序”部分下看到一个名为“安全启动”的额外标志。 如果未看到“安全启动”标志，则 VM 未处于安全模式。 本文不适用于这种情况。
 
     “安全启动”标志可能显示有以下值：
-    - 轻微
-    - 网络
+   - 轻微
+   - 网络
 
-    在这两种模式下，RDP 都不会启动。 因此，修补程序保持不变。
+     在这两种模式下，RDP 都不会启动。 因此，修补程序保持不变。
 
-    ![“安全模式”标志相关图像](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
+     ![“安全模式”标志相关图像](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
 3. 删除“安全模式”标志，使 VM 启动到正常模式：
 

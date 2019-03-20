@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.openlocfilehash: c43d3b236a305f1e6d2bd392527a5206b6a5c974
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341229"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074890"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>使用对称密钥预配旧设备
 
@@ -40,7 +40,7 @@ ms.locfileid: "53341229"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
 * 已启用[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 Visual Studio 2015 或 [Visual Studio 2017](https://www.visualstudio.com/vs/)。
@@ -114,23 +114,23 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 ## <a name="create-a-symmetric-key-enrollment-group"></a>创建对称密钥注册组
 
-1. 登录到 [Azure 门户](http://portal.azure.com)，并打开你的设备预配服务实例。
+1. 登录到 [Azure 门户](https://portal.azure.com)，并打开你的设备预配服务实例。
 
 2. 选择“管理注册”选项卡，然后单击页面顶部的“添加注册组”按钮。 
 
 3. 在“添加注册组”中输入以下信息，然后单击“保存”按钮。
 
-    - **组名**：输入 **mylegacydevices**。
+   - **组名**：输入 **mylegacydevices**。
 
-    - **证明类型**：选择“对称密钥”。
+   - **证明类型**：选择“对称密钥”。
 
-    - **自动生成密钥**：选中此框。
+   - **自动生成密钥**：选中此框。
 
-    - **选择要如何将设备分配到中心**：选择“静态配置”，以便可以分配到特定的中心。
+   - **选择要如何将设备分配到中心**：选择“静态配置”，以便可以分配到特定的中心。
 
-    - **选择此组可分配到的 IoT 中心**：选择你的中心之一。
+   - **选择此组可分配到的 IoT 中心**：选择你的中心之一。
 
-    ![为对称密钥证明添加注册组](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![为对称密钥证明添加注册组](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
 4. 保存注册后，将生成“主要密钥”和“辅助密钥”，并将其添加到注册条目。 对称密钥注册组在“注册组”选项卡的“组名”栏下显示为“mylegacydevices”。 
 
@@ -294,7 +294,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 * 若要了解有关重新设置的详细信息，请参阅 [IoT 中心设备重新设置概念](concepts-device-reprovision.md) 
 * [快速入门：使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)
-* 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
+* 若要了解更多取消设置，请参阅[如何取消预配了以前自动预配的设备](how-to-unprovision-devices.md) 
 
 
 

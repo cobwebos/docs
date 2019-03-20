@@ -8,38 +8,38 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 212506667a56befb4e3926dec7a9e3eb9772ebed
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 4b5d2de2e9ccd44517e083a435e127bd5678f002
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55736252"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "58114821"
 ---
-# <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Azure 虚拟机工作负荷的超级 SSD（预览版）托管磁盘
+# <a name="ultra-disks-preview-managed-disks-for-azure-virtual-machine-workloads"></a>超高磁盘 （预览） 托管的 Azure 虚拟机工作负荷的磁盘
 
-Azure 超级 SSD（预览版）为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低延迟的磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超级 SSD 的其他优势包括能够动态改变工作负荷以及磁盘的性能，而无需重启虚拟机。 超级 SSD 适用于 SAP HANA、顶层数据库等数据密集型工作负荷，以及事务密集型工作负荷。
+超高的 azure 磁盘 （预览版） 提供高吞吐量、 高 IOPS 和一致的低延迟磁盘存储为 Azure IaaS Vm。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超高的磁盘的其他好处包括能够动态地更改而无需重新启动虚拟机工作负荷以及磁盘的性能。 超高磁盘适合数据密集型工作负荷，例如 SAP HANA、 顶层数据库和事务密集型工作负荷。
 
-## <a name="ultra-ssd-features"></a>超级 SSD 的功能
+## <a name="ultra-disk-features"></a>超高磁盘功能
 
-**托管磁盘**：超级 SSD 只可用作托管磁盘。 超级 SSD 无法部署为非托管磁盘或页 Blob。 创建托管磁盘时，请指定 UltraSSD_LRS 作为磁盘 SKU，并指明所需的磁盘大小、IOPS 和吞吐量，然后，Azure 将自动创建并管理该磁盘。  
+托管磁盘：超高的磁盘才可作为托管磁盘。 超高的磁盘不能部署为非托管的磁盘或页 blob。 在创建托管的磁盘时，指定磁盘 sku 类型为 UltraSSD_LRS 并指示磁盘，IOPS 的大小和所需的吞吐量和 Azure 创建和管理磁盘。  
 
-**虚拟机**：超级 SSD 旨在与启用了高级 SSD 的所有 Azure 虚拟机 SKU 配合使用；但是，因为它当前为预览版，所以 VM 大小设定为 ES/DS v3。
+**虚拟机**：超高磁盘用于处理所有高级 SSD 启用了的 Azure 虚拟机 Sku;但是，因为它目前处于预览状态，Vm 的大小都为 ES/DS v3。
 
-**动态性能配置**：超级 SSD 允许动态改变磁盘的性能（IOPS 和吞吐量）以及工作负荷的需求，而无需重启虚拟机。
+**动态性能配置**：超高的磁盘，可动态更改而无需重新启动虚拟机的工作负荷需求以及磁盘的性能 （IOPS 和吞吐量）。
 
 ## <a name="scalability-and-performance-targets"></a>可伸缩性和性能目标
 
-预配超级 SSD 时，可以使用相应的选项来单独配置磁盘的容量和性能。 超级 SSD 提供从 4 GiB 到 64 TiB 的多种固定大小，并提供一个灵活的性能配置模型用于单独配置 IOPS 和吞吐量。 超级 SSD 只可用作数据磁盘。 我们建议将高级 SSD 用作 OS 磁盘。
+在设置超高磁盘时，将可以选择单独配置容量和磁盘的性能。 超高磁盘从最多 64 TiB 4 GiB 有多个固定大小和功能，可单独配置的 IOPS 和吞吐量的灵活的性能配置模型。 超高磁盘仅可用作数据磁盘。 我们建议将高级 SSD 用作 OS 磁盘。
 
-超级 SSD 的一些重要功能包括：
+超高的磁盘的一些主要功能包括：
 
-- 磁盘容量：超级 SSD 提供从 4 GiB 到 64 TiB 的不同磁盘大小。
-- 磁盘 IOPS：超级 SSD 支持 300 IOPS/GiB 的 IOPS 限制，每个磁盘最高可达 160 K IOPS。 若要实现预配的 IOPS，请确保选择的磁盘 IOPS 小于 VM IOPS。 最小磁盘 IOPS 为 100 IOPS。
-- 磁盘吞吐量：使用超级 SSD 时，单个磁盘对应于每个预配 IOPS 的吞吐量限制为 256 KiB/秒，每个磁盘的最大吞吐量为 2000 MBps（其中，MBps = 每秒 10^6 字节）。 最小磁盘吞吐量为 1 MiB。
+- 磁盘容量：超高磁盘提供最多 64 TiB 4 GiB 从一系列不同的磁盘大小。
+- 磁盘 IOPS：超高的磁盘支持 300 IOPS/GiB，最多 160 K IOPS 的每个磁盘的 IOPS 的限制。 若要实现预配的 IOPS，请确保选择的磁盘 IOPS 小于 VM IOPS。 最小磁盘 IOPS 为 100 IOPS。
+- 磁盘吞吐量：使用超高磁盘时，单个磁盘的吞吐量限制是 256 KiB/秒，对于每个预配 IOPS 的最大为每个磁盘的 2000 MBps (其中 MBps = 10 ^6 字节 / 秒)。 最小磁盘吞吐量为 1 MiB。
 
 下表汇总了不同磁盘大小支持的不同配置：  
 
-### <a name="ultra-ssd-managed-disk-offerings"></a>超级 SSD 托管磁盘产品
+### <a name="ultra-disks-managed-disk-offerings"></a>超高磁盘托管磁盘产品/服务
 
 |磁盘大小 (GiB)  |IOPS 上限  |吞吐量上限 (MBps)  |
 |---------|---------|---------|
@@ -55,22 +55,22 @@ Azure 超级 SSD（预览版）为 Azure IaaS VM 提供高吞吐量、高 IOPS �
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-使用超级 SSD 时，请注意以下计费注意事项：
+使用超高磁盘时，将应用以下计费事项：
 
 - 托管磁盘大小
 - 托管磁盘的预配 IOPS
 - 托管磁盘的预配吞吐量
-- 超级 SSD VM 预留费用
+- 超高磁盘 VM 预订费用
 
 ### <a name="managed-disk-size"></a>托管磁盘大小
 
-当预配新的 Azure VM 时，托管磁盘根据你选择的 VM 大小进行计费。 Azure 将预配大小映射（向上舍入）到最接近的磁盘大小。 有关提供的磁盘大小的详细信息，请参阅前面的“可伸缩性和性能目标”部分的表格。 每个磁盘映射到一种受支持的预配大小并相应地按小时计费。 例如，如果预配了 200 GiB 的超级 SSD 磁盘，并在 20 小时后将其删除，则它会映射到 256 GiB 的磁盘大小，并且将按 256 GiB 大小收取 20 个小时的费用。 此计费基于计算时数消耗，与实际写入到磁盘的数据量无关。
+当预配新的 Azure VM 时，托管磁盘根据你选择的 VM 大小进行计费。 Azure 将预配大小映射（向上舍入）到最接近的磁盘大小。 有关提供的磁盘大小的详细信息，请参阅前面的“可伸缩性和性能目标”部分的表格。 每个磁盘映射到一种受支持的预配大小并相应地按小时计费。 例如，如果预配 200 GiB 超高磁盘和 20 个小时后删除它，它将映射到 256 GiB 的磁盘大小产品/服务，则要支付 256 GiB 为 20 个小时。 此计费基于计算时数消耗，与实际写入到磁盘的数据量无关。
 
-### <a name="managed-disk-provisioned-iops"></a>托管磁盘的预配 IOPS
+### <a name="managed-disk-provisioned-iops"></a>预配 IOPS 的托管的磁盘
 
 IOPS 是指应用程序每秒发送到磁盘的请求数。 输入/输出操作可以是有序或随机的读取或写入。 根据附加到 VM 的磁盘大小或磁盘数，每小时根据平均 IOPS 数进行计费。 有关提供的磁盘 IOPS 的详细信息，请参阅前面的“可伸缩性和性能目标”部分的表格。
 
-### <a name="managed-disk-provisioned-throughput"></a>托管磁盘的预配吞吐量
+### <a name="managed-disk-provisioned-throughput"></a>托管磁盘预配的吞吐量
 
 吞吐量是指应用程序在指定时间间隔内发送到磁盘的数据量，计量单位为字节/秒。 如果应用程序正在执行大规模的输入/输出操作，则需要高吞吐量。  
 
@@ -78,20 +78,20 @@ IOPS 是指应用程序每秒发送到磁盘的请求数。 输入/输出操作�
 
 因此，必须确定应用程序所需的最佳吞吐量和 IOPS 值。 尝试优化其中一个值时，另一个值也会受影响。 我们建议从对应于 16 KiB IO 大小的吞吐量着手，并在需要更高吞吐量时进行调整。
 
-有关超级 SSD 支持的磁盘吞吐量的详细信息，请参阅前面的“可伸缩性和性能目标”部分中的表格。 与磁盘大小和 IOPS 一样，预配吞吐量根据预配的 MBps 按小时计费。
+超高的磁盘上的受支持的磁盘吞吐量的详细信息，请参阅上述的可伸缩性和性能目标部分中的表。 与磁盘大小和 IOPS 一样，预配吞吐量根据预配的 MBps 按小时计费。
 
-### <a name="ultra-ssd-vm-reservation-fee"></a>超级 SSD VM 预留费用
+### <a name="ultra-disk-vm-reservation-fee"></a>超高磁盘 VM 预订费用
 
-我们即将在 VM 上引入一项功能，用于指示 VM 与超级 SSD 兼容。 与超级 SSD 兼容的 VM 在计算 VM 实例与块存储缩放单元之间分配专用的带宽容量，以优化性能并降低延迟。 在 VM 上添加此功能会导致预留费用，不过，这笔费用是仅当在 VM 上启用了超级 SSD 功能但未将超级 SSD 磁盘附加到 VM 时才产生的。 如果将超级 SSD 磁盘附加到与超级 SSD 兼容的 VM，则不会收取此费用。 此费用根据 VM 上预配的每个 vCPU 计收。
+我们引入了指示 VM 兼容的超高磁盘的 VM 上的功能。 与超级磁盘兼容的 VM 在计算 VM 实例与块存储缩放单元之间分配专用的带宽容量，以优化性能并降低延迟。 在 VM 上添加此功能会导致预留费用，不过，这笔费用是仅当在 VM 上启用了超级磁盘功能但未将超级磁盘附加到 VM 时才产生的。 当超高磁盘附加到超高兼容的 VM 时，不会收取此费用。 此费用根据 VM 上预配的每个 vCPU 计收。
 
-请参阅 [Azure 磁盘定价页](https://azure.microsoft.com/pricing/details/managed-disks/)，了解受限预览版中可用的新超级 SSD 磁盘价格详细信息。
+请参阅[定价页的 Azure 磁盘](https://azure.microsoft.com/pricing/details/managed-disks/)为新超高磁盘价格的详细信息在有限预览版中可用。
 
-### <a name="ultra-ssd-preview-scope-and-limitations"></a>超级 SSD 预览版的范围和限制
+### <a name="ultra-disk-preview-scope-and-limitations"></a>超高磁盘预览作用域和限制
 
-在预览期，超级 SSD 磁盘：
+适用于预览版，超高的磁盘：
 
 - 最初在美国东部 2 区的单个可用性区域中受支持  
-- 只能在可用性区域中使用（区域外部的可用性集和单一 VM 部署无法附加超级 SSD 磁盘）
+- 仅可用于可用性区域 （可用性集和单个 VM 部署外部区域将不能将附加的超高磁盘）
 - 仅在 ES/DS v3 VM 上受支持
 - 只可用作数据磁盘，并且仅支持 4k 物理扇区大小  
 - 只能以空磁盘的形式创建  

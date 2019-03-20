@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 91c069f845ef6291f867099e59e79fd059d8caf1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.openlocfilehash: a99d8a265cdc72b6bd1dd45ab670f514d828f808
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320219"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005699"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Storage Gen1
 
@@ -30,8 +30,8 @@ ms.locfileid: "54320219"
 
 了解如何使用 Azure 门户来创建 Azure Data Lake Storage Gen1 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关详细信息，请参阅 [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
-开始学习本教程之前，必须做好以下准备：
+## <a name="prerequisites"></a>必备组件
+要阅读本教程，必须具备以下项：
 
 * **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -76,9 +76,9 @@ ms.locfileid: "54320219"
 
 > [!NOTE]
 > 也可以使用 Azure 资源管理器模板创建 Data Lake Storage Gen1 帐户。 可以从 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=data+lake+store)访问这些模板：
-    - 不进行数据加密：[在不进行数据加密的情况下部署 Azure Data Lake Storage Gen1 帐户](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/)。
-    - 使用 Data Lake Storage Gen1 进行数据加密：[使用加密部署 Data Lake Storage Gen1 帐户 (Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/)。
-    - 使用 Azure Key Vault 进行数据加密：[使用加密部署 Data Lake Storage Gen1 帐户 (Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/)。
+> - 不进行数据加密：[在不进行数据加密的情况下部署 Azure Data Lake Storage Gen1 帐户](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/)。
+> - 使用 Data Lake Storage Gen1 进行数据加密：[使用加密部署 Data Lake Storage Gen1 帐户 (Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/)。
+> - 使用 Azure Key Vault 进行数据加密：[使用加密部署 Data Lake Storage Gen1 帐户 (Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/)。
 > 
 > 
 

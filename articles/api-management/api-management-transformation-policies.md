@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dc39d2f64aa2cd895cbf57d95100d831a6f4432
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 72348085a69746306e40029bc7473df271b60221
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159785"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105278"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -45,7 +45,7 @@ ms.locfileid: "54159785"
 
 -   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。
 
-##  <a name="ConvertJSONtoXML"></a> 将 JSON 转换为 XML
+##  <a name="ConvertJSONtoXML">将 JSON 转换为 XML</a>
  `json-to-xml` 策略将请求或响应正文从 JSON 转换为 XML。
 
 ### <a name="policy-statement"></a>策略语句
@@ -70,13 +70,13 @@ ms.locfileid: "54159785"
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |json-to-xml|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|Description|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|不适用|
 |consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|true|
@@ -114,13 +114,13 @@ ms.locfileid: "54159785"
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |xml-to-json|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|Description|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|不适用|
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|不适用|
@@ -150,13 +150,13 @@ ms.locfileid: "54159785"
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |find-and-replace|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|Description|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |from|要搜索的字符串。|是|不适用|
 |to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|不适用|
@@ -188,7 +188,7 @@ ms.locfileid: "54159785"
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |redirect-content-urls|根元素。|是|
 
@@ -207,6 +207,15 @@ ms.locfileid: "54159785"
 ```xml
 <set-backend-service base-url="base URL of the backend service" />
 ```
+
+或
+
+```xml
+<set-backend-service backend-id="identifier of the backend entity specifying base URL of the backend service" />
+```
+
+> [!NOTE]
+> 可以通过管理管理后端实体[API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend)并[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)。
 
 ### <a name="example"></a>示例
 
@@ -252,16 +261,16 @@ ms.locfileid: "54159785"
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |set-backend-service|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|Description|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
-|base-url|新的后端服务基 URL。|否|不适用|
-|backend-id|要路由到的后端标识符。|否|不适用|
+|base-url|新的后端服务基 URL。|之一`base-url`或`backend-id`必须存在。|不适用|
+|backend-id|要路由到的后端标识符。 (通过后端实体进行管理[API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend)并[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)。)|之一`base-url`或`backend-id`必须存在。|不适用|
 |sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|不适用|
 |sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|不适用|
 |sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|不适用|
@@ -279,14 +288,14 @@ ms.locfileid: "54159785"
  使用 `set-body` 策略设置传入和传出请求的消息正文。 可以使用 `context.Request.Body` 属性或 `context.Response.Body` 访问消息正文，具体取决于策略是在入站节中还是在出站节中。
 
 > [!IMPORTANT]
->  请注意，默认情况下，当用户使用 `context.Request.Body` 或 `context.Response.Body` 访问消息正文时，原始的消息正文会丢失，必须将正文返回到表达式中，以便对其进行设置。 要保留正文内容，请在访问消息时将 `preserveContent` 参数设置为 `true`。 如果 `preserveContent` 设置为 `true`，而表达式返回了不同的正文，则会使用返回的正文。
->
+>  请注意，默认情况下，当用户使用 `context.Request.Body` 或 `context.Response.Body` 访问消息正文时，原始的消息正文会丢失，必须将正文返回到表达式中，以便对其进行设置。 若要保留正文内容，请在访问消息时将 `preserveContent` 参数设置为 `true`。 如果 `preserveContent` 设置为 `true`，而表达式返回了不同的正文，则会使用返回的正文。
+> 
 >  在使用 `set-body` 策略时，请注意以下事项。
->
->  -   要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，你是在显式提供全新的正文内容。
-> -   将响应的内容保留在入站管道中并不合理，因为尚无响应。
-> -   将请求的内容保留在出站管道中并不合理，因为请求此时已发送到后端。
-> -   如果在没有消息正文的情况下使用此策略（例如在入站 GET 中使用），则会引发异常。
+> 
+> - 若要使用 `set-body` 策略返回全新的或更新的正文，则不需将 `preserveContent` 设置为 `true`，因为是在显式提供全新的正文内容。
+>   -   将响应的内容保留在入站管道中并不合理，因为尚无响应。
+>   -   将请求的内容保留在出站管道中并不合理，因为请求此时已发送到后端。
+>   -   如果在没有消息正文的情况下使用此策略（例如在入站 GET 中使用），则会引发异常。
 
  有关详细信息，请参阅[上下文变量](api-management-policy-expressions.md#ContextVariables)表中的 `context.Request.Body`、`context.Response.Body`、`IMessage` 部分。
 
@@ -304,7 +313,7 @@ ms.locfileid: "54159785"
 <set-body>Hello world!</set-body>
 ```
 
-#### <a name="example-accessing-the-body-as-a-string-note-that-we-are-preserving-the-original-request-body-so-that-we-can-access-it-later-in-the-pipeline"></a>示例：访问字符串形式的正文。 请注意，我们将保留原始请求正文，以便稍后可以在管道中进行访问。
+#### <a name="example-accessing-the-body-as-a-string-note-that-we-are-preserving-the-original-request-body-so-that-we-can-access-it-later-in-the-pipeline"></a>示例：访问字符串形式的正文。 请注意，我们会保留原始请求正文，以便稍后可以在管道中进行访问。
 
 ```xml
 <set-body>
@@ -376,7 +385,7 @@ ms.locfileid: "54159785"
 </set-body>
 ```
 
-#### <a name="tranform-json-using-a-liquid-template"></a>使用 Liquid 模板转换 JSON
+#### <a name="transform-json-using-a-liquid-template"></a>使用 Liquid 模板的 JSON 转换
 ```xml
 {
 "order": {
@@ -388,13 +397,13 @@ ms.locfileid: "54159785"
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|Description|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否|Liquid|
 
@@ -482,29 +491,27 @@ OriginalUrl.
  有关详细信息，请参阅[策略表达式](api-management-policy-expressions.md)和[上下文变量](api-management-policy-expressions.md#ContextVariables)。
 
 > [!NOTE]
-> 标头的多个值会连接到 CSV 字符串，例如：  
-> `headerName: value1,value2,value3`
+> 标头的多个值会连接到 CSV 字符串，例如所示： `headerName: value1,value2,value3`
 >
 > 例外情况包括标准化标头，其值：
 > - 可能包含逗号（`User-Agent`、`WWW-Authenticate`、`Proxy-Authenticate`），
 > - 可能包含日期（`Cookie`、`Set-Cookie`、`Warning`），
 > - 包含日期（`Date`、`Expires`、`If-Modified-Since`、`If-Unmodified-Since`、`Last-Modified`、`Retry-After`）。
 >
-> 如果出现这些例外情况，多个标头值将不会连接成一个字符串，并将作为单独的标头传递，例如：  
->`User-Agent: value1`  
->`User-Agent: value2`  
+> 发生这些异常时多个标头值不能连接为一个字符串，并将作为单独的标头，例如传递： `User-Agent: value1`
+>`User-Agent: value2`
 >`User-Agent: value3`
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
 |值|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|Description|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有标头的值。<br />-   skip - 不替换现有标头值。<br />-   append - 将值追加到现有标头值。<br />-   delete - 从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。|否|override|
 |名称|指定要设置的标头的名称。|是|不适用|
@@ -557,14 +564,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |set-query-parameter|根元素。|是|
 |值|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|Description|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|
 |名称|指定要设置的查询参数的名称。|是|不适用|
@@ -579,11 +586,11 @@ OriginalUrl.
 ##  <a name="RewriteURL"></a> 重写 URL
  `rewrite-uri` 策略将请求 URL 从其公用格式转换为 Web 服务所需的格式，如以下示例所示。
 
--   公共 URL - `http://api.example.com/storenumber/ordernumber`
+- 公共 URL - `http://api.example.com/storenumber/ordernumber`
 
--   请求 URL - `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
+- 请求 URL - `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
- 如果要将用户和/或浏览器友好的 URL 转换成 Web 服务所需的 URL 格式，则可使用此策略。 应用此策略的前提是公开备用的 URL 格式，例如简洁 URL、RESTful URL、用户友好的 URL 或 SEO 友好的 URL。这些 URL 是纯结构化 URL，不包含查询字符串，只包含资源的路径（在方案和颁发机构的后面）。 通常会出于美观、可用性或搜索引擎优化 (SEO) 目的使用这种 URL。
+  如果要将用户和/或浏览器友好的 URL 转换成 Web 服务所需的 URL 格式，则可使用此策略。 应用此策略的前提是公开备用的 URL 格式，例如简洁 URL、RESTful URL、用户友好的 URL 或 SEO 友好的 URL。这些 URL 是纯结构化 URL，不包含查询字符串，只包含资源的路径（在方案和颁发机构的后面）。 通常会出于美观、可用性或搜索引擎优化 (SEO) 目的使用这种 URL。
 
 > [!NOTE]
 >  只能使用此策略添加查询字符串参数。 不能在重写 URL 中添加额外的模板路径参数。
@@ -636,13 +643,13 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |rewrite-uri|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|属性|Description|必选|默认|
+|属性|描述|需要|默认|
 |---------------|-----------------|--------------|-------------|
 |template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|不适用|
 |copy-unmatched-params|指定是否将原始 URL 模板中不存在的传入请求中的查询参数添加到重新编写模板定义的 URL|否|true|
@@ -705,7 +712,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|Description|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
 |参数|用于定义在转换中使用的变量|否|

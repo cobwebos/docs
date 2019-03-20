@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a8c4ef5df586c87862ea8e1634e9a72356401d0b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bcb538cf2e546e4913ccb223e143c2343e114de7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247419"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896188"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>教程：在 Azure 中创建跨云缩放解决方案
 
@@ -128,7 +128,7 @@ Azure Repos
 
 1. 登录到 Azure Pipelines 以确认能够创建生成定义。
 
-2. 添加 **-r win10-x64** 代码。 在 .Net Core 中触发独立部署时需要此代码。
+2. 添加 **-r win10-x64** 代码。 这是触发使用.NET Core 的独立的部署所必需的。
 
     ![Alt text](media/azure-stack-solution-cloud-burst/image4.png)
 
@@ -266,7 +266,7 @@ Azure Pipelines 和 Azure DevOps Server 提供高度可配置、可管理的管�
 
 使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/)（例如 Azure Repos 中的 Web 应用代码）将内容部署到这两个云。
 
-### <a name="add-code-to-a-azure-repos-project"></a>向 Azure Repos 项目添加代码
+### <a name="add-code-to-an-azure-repos-project"></a>将代码添加到 Azure 存储库项目
 
 1.  使用在 Azure Stack 上拥有项目创建权限的帐户登录到 Azure Repos。 下一屏幕捕获显示如何连接到 HybridCICD 项目。
 
@@ -286,7 +286,7 @@ Azure Pipelines 和 Azure DevOps Server 提供高度可配置、可管理的管�
 
 2.  导航到项目的“生成 Web 应用程序”页。
 
-3.  在“参数”中，添加 **-r win10-x64** 代码。 在 .Net Core 中触发独立部署时需要此代码。
+3.  在“参数”中，添加 **-r win10-x64** 代码。 这需要触发使用.NET Core 的独立的部署。
 
 4.  运行生成。 [独立部署生成](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)过程将发布可在 Azure 和 Azure Stack 上运行的项目。
 

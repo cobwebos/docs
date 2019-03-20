@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: patricka
 ms.openlocfilehash: 0ab34d6234db9c13ffe82ccd0e8580217085f631
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: HT
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742467"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "58114916"
 ---
 如果仅希望在应用程序上启用登录，请使用**登录**用户流。 此用户流描述了客户在登录过程中将经历的体验以及应用程序在成功登录时会接收到的令牌内容。
 

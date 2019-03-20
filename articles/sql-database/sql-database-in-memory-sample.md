@@ -6,18 +6,18 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: b36db929d1ed6487f0da72bea5415d6ca4223b92
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005736"
 ---
 # <a name="in-memory-sample"></a>内存中示例
 
@@ -41,7 +41,7 @@ ms.locfileid: "55756031"
 
 以下资源提供了更简单、更直观的内存中 OLTP 性能演示：
 
-- 版本：[in-memory-oltp-demo-v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
+- 版本： [in-memory-oltp-demo-v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
 - 源代码：[in-memory-oltp-demo-source-code](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/in-memory/ticket-reservations)
 
 #### <a name="installation-steps"></a>安装步骤
@@ -126,7 +126,7 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 运行 ostress.exe 时，建议将参数值传递到以下两个存储过程：
 
-- 使用 -n100，运行大量的并发连接。
+- 使用 -n100 运行大量的并发连接。
 - 使用 -r500，让每个连接循环数百次。
 
 
@@ -183,18 +183,18 @@ end
 有关详细信息，请参阅：
 - [内存中 OLTP 的示例数据库](https://msdn.microsoft.com/library/mt465764.aspx)中的 ostress.exe 介绍。
 - [内存中 OLTP 的示例数据库](https://msdn.microsoft.com/library/mt465764.aspx)。
-- [有关安装 ostress.exe 的博客](https://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)。
+- [有关安装 ostress.exe 的博客](https://blogs.msdn.com/b/psssql/archive/20../../cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)。
 
 
 
 <!--
 dn511655.aspx is for SQL 2014,
 [Extensions to AdventureWorks to Demonstrate In-Memory OLTP]
-(http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
+(https://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
 
 whereas for SQL 2016+
 [Sample Database for In-Memory OLTP]
-(http://msdn.microsoft.com/library/mt465764.aspx)
+(https://msdn.microsoft.com/library/mt465764.aspx)
 -->
 
 
@@ -237,18 +237,18 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>重置，编辑 *_ondisk*，并重新运行
+#### <a name="reset-edit-for-ondisk-then-rerun"></a>重置，编辑 _ondisk，然后重新运行
 
 
-在获得 *_inmem* 运行结果之后，请针对 *_ondisk* 运行执行以下步骤：
+在获得 _inmem 运行结果之后，请针对 _ondisk 运行执行以下步骤：
 
 
 1. 在 SSMS 中运行以下命令重置数据库，删除前面运行的命令所插入的所有数据：
-```sql
-EXECUTE Demo.usp_DemoReset;
-```
+   ```sql
+   EXECUTE Demo.usp_DemoReset;
+   ```
 
-2. 编辑 ostress.exe 命令行，将所有的 *_inmem* 替换为 *_ondisk*。
+2. 编辑 ostress.exe 命令行，将所有的 _inmem 替换为 _ondisk。
 
 3. 再次重新运行 ostress.exe，并捕获持续时间结果。
 
@@ -277,13 +277,13 @@ EXECUTE Demo.usp_DemoReset;
 
 
 1. 使用 Azure 门户基于示例创建全新的 AdventureWorksLT 数据库。
- - 使用相同的名称。
- - 选择任一高级服务层。
+   - 使用相同的名称。
+   - 选择任一高级服务层。
 
 2. 将 [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) 复制到剪贴板。
- - T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的内存中对象。
- - 该脚本将创建维度表和两个事实表。 每个事实表中填充了 350 万行。
- - 该脚本可能需要 15 分钟才能完成。
+   - T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的内存中对象。
+   - 该脚本将创建维度表和两个事实表。 每个事实表中填充了 350 万行。
+   - 该脚本可能需要 15 分钟才能完成。
 
 3. 将 T-SQL 脚本粘贴到 SSMS，然后执行该脚本。 **CREATE INDEX** 语句中的 **COLUMNSTORE** 关键字至关重要，如下所示：<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
@@ -402,7 +402,7 @@ GO
 
 - [了解列存储索引](https://msdn.microsoft.com/library/gg492088.aspx)
 
-- [了解实时运营分析](https://msdn.microsoft.com/library/dn817827.aspx)
+- [了解实时运行分析](https://msdn.microsoft.com/library/dn817827.aspx)
 
 - 请参阅[有关常用工作负荷模式和迁移注意事项](https://msdn.microsoft.com/library/dn673538.aspx)（介绍内存中 OLTP 往往能够在其中提供显著性能改善的工作负荷模式）
 

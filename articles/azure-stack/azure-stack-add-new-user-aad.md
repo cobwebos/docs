@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 40b26429cf4e7f218c2b5a276ae936f60bd6abe4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d7dc690f719dd9265317b2bba3b87521e9a00d6b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453229"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106570"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>在 Azure Active Directory 中添加新的 Azure Stack 租户帐户
 
@@ -41,11 +41,11 @@ ms.locfileid: "57453229"
 
     ![添加新用户，具有用户信息的用户页](media/azure-stack-add-new-user-aad/new-user-user.png)
 
-    - **名称（必需）。** 新用户的姓氏和名字。 例如，Mary Parker。
-    - **用户名（必需）。** 新用户的用户名。 例如，mary@contoso.com。
-        用户名的域名部分必须是初始默认域名“<yourdomain name>.onmicrosoft.com”，或自定义域名（例如“contoso.com”）。 若要了解有关如何创建自定义域名的详细信息，请参阅[如何将自定义域名添加到 Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md)。
-    - **配置文件。** （可选）可添加有关用户的详细信息。 也可稍后添加用户信息。 有关添加用户信息的详细信息，请参阅[如何添加或更改用户配置文件信息](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)。
-    - **目录角色。**  选择“用户”。
+   - **名称（必需）。** 新用户的姓氏和名字。 例如，Mary Parker。
+   - **用户名（必需）。** 新用户的用户名。 例如，mary@contoso.com。
+       用户名的域名部分必须是初始默认域名“<yourdomain name>.onmicrosoft.com”，或自定义域名（例如“contoso.com”）。 若要了解有关如何创建自定义域名的详细信息，请参阅[如何将自定义域名添加到 Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md)。
+   - **配置文件。** （可选）可添加有关用户的详细信息。 也可稍后添加用户信息。 有关添加用户信息的详细信息，请参阅[如何添加或更改用户配置文件信息](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)。
+   - **目录角色。**  选择“用户”。
 
 5. 选中“显示密码”并复制“密码”框中提供的自动生成的密码。 在初始登录过程中需要此密码。
 

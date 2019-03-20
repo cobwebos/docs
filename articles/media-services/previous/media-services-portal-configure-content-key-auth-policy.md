@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 7dd056042b841e54c18ee1a667c44cfa11d77a61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 71d24c827a5d3382c88b1131d8bc42983b9d5db5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164594"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877473"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -66,7 +66,7 @@ ms.locfileid: "56164594"
 ### <a name="playready"></a>PlayReady
 使用 PlayReady 保护内容时，需要在授权策略中指定的项目之一是用于定义 PlayReady 许可证模板的 XML 字符串。 默认情况下，已设置以下策略：
 
-    <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
+    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
           <LicenseTemplates>
             <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
               <ContentKey i:type="ContentEncryptionKeyFromHeader" />

@@ -4,18 +4,18 @@ ms.service: azure-powershell
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: sewhee
-ms.openlocfilehash: b93722147959881dfbffbb47b7a3e4b140044525
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: c5440555c11d98fb89f8594eec1d4b7e74ea8667
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246731"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58115357"
 ---
 ## <a name="setting-up-powershell-for-resource-manager-templates"></a>为 Resource Manager 模板设置 PowerShell
 必须拥有正确的 Windows PowerShell 和 Azure PowerShell 版本，才能将 Azure PowerShell 与 Resource Manager 配合使用。
 
 ### <a name="verify-powershell-versions"></a>验证 PowerShell 版本
-确保有 Windows PowerShell 3.0 或 4.0 版。 若要查找 Windows PowerShell 版本，请在 Windows PowerShell 命令提示符下键入以下命令。
+确保安装有 Windows PowerShell 3.0 或 4.0 版。 若要查找 Windows PowerShell 版本，请在 Windows PowerShell 命令提示符下键入以下命令。
 
     $PSVersionTable
 
@@ -63,5 +63,4 @@ ms.locfileid: "56246731"
     $subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
     Select-AzureRmSubscription -SubscriptionName $subscr -Current
 
-有关 Azure 订阅和帐户的详细信息，请参阅[如何：连接到订阅](/powershell/azureps-cmdlets-docs)。
-
+有关 Azure 订阅和帐户的详细信息，请参阅[如何：连接到订阅](/powershell/azureps-cmdlets-docs#step-3-connect)。

@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 9ad1208283527f35e04dede2706fd0e424096dc5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: 9e9c09c1825f5c8383a708e8bd343146396f878e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54300616"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553324"
 ---
 以下限制适用于 Azure 备份。
 
 | **限制** | **默认** |
 | --- | --- |
-| 可以在保管库中注册的服务器/计算机数 | Windows Server/Windows Client/System Center DPM：50 <br/><br/> IaaS VM：1000  |
-| 保管库存储中的数据源大小 |最大 54400 GB。 此限制不适用于 IaaS VM 备份 |
-| Azure 订阅中的备份保管库数 |每个区域 500 个保管库 |
-| 计划每日备份 |Windows Server/客户端：每天 3 次<br/> System Center DPM：每天 2 次 <br/> IaaS VM：每天 1 次  |
-| 附加到 Azure VM 进行备份的数据磁盘数 | 16 |
-| 附加到 Azure VM 进行备份的单个数据磁盘| 4095 GB|
+| 服务器或可以在保管库中注册的计算机。 | Windows Server/Windows 客户端/System Center Data Protection Manager:50。 <br/><br/> IaaS VM：1,000.  |
+| 保管库存储中的数据源的大小。 |54,400 GB 最大值。 此限制不适用于 IaaS VM 备份。 |
+| Azure 订阅中的备份保管库。 |每个区域 500 个保管库。 |
+| 计划每日备份。 |Windows Server/客户端：每天三次。<br/> System Center DPM：两个一天。 <br/> IaaS VM：每天一次。  |
+| 数据磁盘附加到 Azure VM 备份。 | 16 |
+| 单个数据磁盘附加到 Azure VM 备份。| 4,095 GB|

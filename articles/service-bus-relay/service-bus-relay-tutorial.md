@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 6927788fa79c567222a199064f5b375546ecf9ad
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
+ms.openlocfilehash: db73363a05734db5d7e3375a5755a807eb7ce2a5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615461"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890961"
 ---
 # <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务
 
@@ -43,12 +43,12 @@ ms.locfileid: "51615461"
 > * 实现 WCF 客户端
 > * 运行应用程序。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要具备以下先决条件：
 
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-- [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+- [Visual Studio 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
 - 用于 .NET 的 Azure SDK。 从 [SDK 下载页](https://azure.microsoft.com/downloads/)安装它。
 
 ## <a name="create-a-relay-namespace"></a>创建中继命名空间
@@ -61,7 +61,7 @@ ms.locfileid: "51615461"
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>使用接口创建中继协定
 
-1. 在“开始”菜单中右键单击 Visual Studio，以便以管理员身份启动该程序，并选择“以管理员身份运行”。
+1. 在“开始”菜单中右键单击 Visual Studio，以便以管理员身份启动该程序，然后选择“以管理员身份运行”。
 2. 创建新的控制台应用程序项目。 单击“文件”菜单并选择“新建”，并单击“项目”。 在“新建项目”对话框中，单击“Visual C#”（如果“Visual C#”未出现，则在“其他语言”下方查看）。 单击“控制台应用 (.NET Framework)”模板，并将其命名为“EchoService”。 单击“确定”以创建该项目  。
 
     ![创建控制台应用][2]
@@ -84,10 +84,10 @@ ms.locfileid: "51615461"
    > 本教程使用 C# 命名空间“Microsoft.ServiceBus.Samples”，它是基于协定的管理类型的命名空间，此类型用于[配置 WCF 客户端](#configure-the-wcf-client)步骤中的配置文件。 在构建此示例时，可以指定任何想要的命名空间，在配置文件中修改了协定以及相应服务的命名空间后，本教程才会生效。 在 App.config 文件中指定的命名空间必须与在 C# 文件中指定的命名空间相同。
    >
    >
-7. 直接在 `Microsoft.ServiceBus.Samples` 命名空间声明后面（但在命名空间内），定义一个名为 `IEchoContract` 的新接口，然后将 `ServiceContractAttribute` 属性应用于该接口，命名空间值为 `http://samples.microsoft.com/ServiceModel/Relay/`。 该命名空间值不同于在整个代码范围内使用的命名空间。 相反，该命名空间值将用作此协定的唯一标识符。 显式指定命名空间可防止将默认的命名空间值添加到约定名称中。 在命名空间声明后，粘贴以下代码：
+7. 直接在 `Microsoft.ServiceBus.Samples` 命名空间声明后面（但在命名空间内）定义一个名为 `IEchoContract` 的新接口，然后将 `ServiceContractAttribute` 属性应用于该接口，命名空间值为 `https://samples.microsoft.com/ServiceModel/Relay/`。 该命名空间值不同于在整个代码范围内使用的命名空间。 相反，该命名空间值将用作此协定的唯一标识符。 显式指定命名空间可防止将默认的命名空间值添加到约定名称中。 在命名空间声明后，粘贴以下代码：
 
     ```csharp
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
     }
@@ -103,7 +103,7 @@ ms.locfileid: "51615461"
     [OperationContract]
     string Echo(string text);
     ```
-9. 直接在 `IEchoContract` 接口定义之后，声明从 `IEchoContract` 中继承，并可传承到 `IClientChannel` 接口的通道，如下所示：
+9. 直接在 `IEchoContract` 接口定义之后声明从 `IEchoContract` 中继承并同样继承到 `IClientChannel` 接口的通道，如下所示：
 
     ```csharp
     public interface IEchoChannel : IEchoContract, IClientChannel { }
@@ -122,7 +122,7 @@ using System.ServiceModel;
 
 namespace Microsoft.ServiceBus.Samples
 {
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]
@@ -158,7 +158,7 @@ namespace Microsoft.ServiceBus.Samples
 2. 将 [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) 属性应用于 `IEchoContract` 接口。 该属性指定服务名称和命名空间。 完成后，`EchoService` 类将如下所示：
 
     ```csharp
-    [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "EchoService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class EchoService : IEchoContract
     {
     }
@@ -172,7 +172,7 @@ namespace Microsoft.ServiceBus.Samples
         return text;
     }
     ```
-4. 单击“生成”，并单击“生成解决方案”以确认工作的准确性。
+4. 单击“生成”，然后单击“生成解决方案”以确认工作的准确性。
 
 ### <a name="define-the-configuration-for-the-service-host"></a>定义服务主机的配置
 
@@ -203,7 +203,7 @@ namespace Microsoft.ServiceBus.Samples
     <endpoint contract="Microsoft.ServiceBus.Samples.IEchoContract" binding="netTcpRelayBinding"/>
     ```
 
-    终结点用于定义客户端会在何处查找主机应用程序。 接下来，本教程使用此步骤创建一个通过 Azure 中继完全公开主机的 URI。 绑定声明我们将 TCP 用作协议，以与中继服务进行通信。
+    终结点用于定义客户端会在何处查找主机应用程序。 接下来，本教程使用此步骤创建一个通过 Azure 中继完全公开主机的 URI。 绑定声明我们要将 TCP 用作协议，以与中继服务进行通信。
 7. 在“生成”菜单中，单击“生成解决方案”以确认工作的准确性。
 
 ### <a name="example"></a>示例
@@ -211,7 +211,7 @@ namespace Microsoft.ServiceBus.Samples
 下面的代码显示服务协定的实现。
 
 ```csharp
-[ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+[ServiceBehavior(Name = "EchoService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
 
     class EchoService : IEchoContract
     {
@@ -259,8 +259,8 @@ namespace Microsoft.ServiceBus.Samples
     string sasKey = Console.ReadLine();
     ```
 
-    随后将使用 SAS 密钥来访问项目。 命名空间作为参数传递给 `CreateServiceUri` 以创建服务 URI。
-2. 使用 [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) 对象声明使用 SAS 密钥作为凭据类型。 在最后一步中添加的代码后直接添加以下代码。
+    随后将使用 SAS 密钥来访问你的项目。 命名空间作为参数传递给 `CreateServiceUri` 以创建服务 URI。
+2. 使用 [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) 对象声明将使用 SAS 密钥作为凭据类型。 在最后一步中添加的代码后直接添加以下代码。
 
     ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
@@ -294,7 +294,7 @@ Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "Ec
     ServiceHost host = new ServiceHost(typeof(EchoService), address);
     ```
 
-    该服务主机是可实例化服务的 WCF 对象。 在这里传递想要创建的服务类型（`EchoService` 类型），以及想要公开服务的地址。
+    该服务主机是可实例化服务的 WCF 对象。 在这里将传递要创建的服务类型（`EchoService` 类型），以及要公开服务的地址。
 3. 在 Program.cs 文件的顶部，添加对 [System.ServiceModel.Description](https://msdn.microsoft.com/library/system.servicemodel.description.aspx) 和 [Microsoft.ServiceBus.Description](/dotnet/api/microsoft.servicebus.description) 的引用。
 
     ```csharp
@@ -307,7 +307,7 @@ Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "Ec
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
-    此步骤告知中继服务可以通过检查项目的 ATOM 源公开找到应用程序。 如果将 **DiscoveryType** 设置为 **private**，客户端将仍能够访问该服务。 但是，当搜索中继命名空间时不会显示该服务。 相反，客户端必须事先知道终结点路径。
+    此步骤告知中继服务，可以通过检查项目的 ATOM 源来公开查找你的应用程序。 如果将 **DiscoveryType** 设置为 **private**，客户端将仍将能够访问该服务。 但是，当搜索中继命名空间时不会显示该服务。 相反，客户端必须事先知道终结点路径。
 5. 将服务凭据应用到 App.config 文件中定义的服务终结点：
 
     ```csharp
@@ -354,7 +354,7 @@ using Microsoft.ServiceBus.Description;
 
 namespace Microsoft.ServiceBus.Samples
 {
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]
@@ -363,7 +363,7 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IEchoChannel : IEchoContract, IClientChannel { };
 
-    [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceBehavior(Name = "EchoService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     class EchoService : IEchoContract
     {
         public string Echo(string text)
@@ -421,7 +421,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="create-a-wcf-client-for-the-service-contract"></a>创建服务协定的 WCF 客户端
 
-下一步将创建客户端应用程序，并定义会在后续步骤中实现的服务协定。 请注意，许多这样的步骤类似于创建服务的步骤：定义协定、编辑 App.config 文件、使用凭据连接到中继服务等。 该过程后面的示例中提供了这些任务所用的代码。
+下一步将创建客户端应用程序，并定义将在后续步骤中实现的服务协定。 请注意，许多这样的步骤类似于创建服务的步骤：定义协定、编辑 App.config 文件、使用凭据连接到中继服务等。 该过程后面的示例中提供了这些任务所用的代码。
 
 1. 通过执行以下操作为客户端通在当前 Visual Studio 解决方案中创建一个新的项目：
 
@@ -431,7 +431,7 @@ namespace Microsoft.ServiceBus.Samples
       <br />
 2. 在解决方案资源管理器中，双击 **EchoClient** 项目中的 Program.cs 文件以在编辑器中将其打开（如果尚未打开）。
 3. 将命名空间名称从其默认名称 `EchoClient` 更改为 `Microsoft.ServiceBus.Samples`。
-4. 安装[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)：在解决方案资源管理器中，右键单击“EchoClient”项目，并单击“管理 NuGet 包”。 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。
+4. 安装[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)：在解决方案资源管理器中，右键单击“EchoClient”项目，然后单击“管理 NuGet 包”。 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。
 
     ![][3]
 5. 为 Program.cs 文件中的 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) 命名空间添加 `using` 语句。
@@ -442,7 +442,7 @@ namespace Microsoft.ServiceBus.Samples
 6. 如下面的示例中所示，将服务协定定义添加到命名空间。 请注意，此定义等同于“服务”项目中所使用的定义。 `Microsoft.ServiceBus.Samples` 命名空间的顶部。
 
     ```csharp
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]
@@ -465,7 +465,7 @@ using System.ServiceModel;
 namespace Microsoft.ServiceBus.Samples
 {
 
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]
@@ -512,7 +512,7 @@ namespace Microsoft.ServiceBus.Samples
     ```
 
     此步骤定义终结点的名称、服务中定义的协定，以及客户端应用程序使用 TCP 与 Azure 中继进行通信的事实。 终结点名称在下一步中用于将此终结点配置与服务 URI 链接。
-5. 单击“文件”，并单击“全部保存”。
+5. 单击“文件”，然后单击“全部保存”。
 
 ### <a name="example"></a>示例
 
@@ -631,7 +631,7 @@ using System.ServiceModel;
 
 namespace Microsoft.ServiceBus.Samples
 {
-    [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+    [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
         [OperationContract]

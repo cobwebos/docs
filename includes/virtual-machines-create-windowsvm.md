@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d4075f644ed1ce42479e35544f0e1442488f78eb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: HT
+ms.openlocfilehash: b0b5e817d5e39dd7800a1482d40c56db5f2be6ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958905"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58114186"
 ---
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "29958905"
 
 2. 输入用于在 VM 上创建本地帐户的“用户名”和强“密码”。 该本地帐户用于登录和管理 VM。 在本示例中，azureuser 是用户名。
 
- 密码长度必须为 8 到 123 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 查看更多关于 [用户名和密码要求](../articles/virtual-machines/windows/faq.md)。
+   密码的长度必须为 8 到 123 个字符，并且必须符合以下四个复杂性要求中的三个要求：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 查看有关 [用户名和密码要求](../articles/virtual-machines/windows/faq.md)的更多信息。
 
 3. “订阅”可选。 常用的一个设置是“即用即付”。
 
@@ -68,6 +68,6 @@ ms.locfileid: "29958905"
 
  ![列出虚拟机的指定设置的“摘要”边栏选项卡报表](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)
 
-创建虚拟机后，门户会在“所有资源”下列出新的虚拟机，并在仪表板上显示虚拟机的磁贴。 此外，还会创建和列出相应的云服务和存储帐户。 虚拟机和云服务都会自动启动，其状态会显示为“正在运行”。
+创建虚拟机后，门户会在“所有资源”下列出新的虚拟机，并在仪表板上显示虚拟机的磁贴。 此外，还会创建和列出相应的云服务和存储帐户。 虚拟机和云服务都会自动启动，其状态显示为“正在运行”。
 
  ![配置虚拟机的 VM 代理和终结点](./media/virtual-machines-common-portal-create-fqdn/portal-with-new-vm.png)

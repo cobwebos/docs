@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 28630a1d1b2ce212fe1054496814a9084f8cfc98
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116297"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904246"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -59,7 +59,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 | [安全平台](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [隐私和控制](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[合规性](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [透明度](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [安全开发周期](https://www.microsoft.com/en-us/sdl/)，内部审核 | [随时进行数据管理](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [信任中心](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [强制性安全培训、背景检查](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [控制数据位置](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](http://azuredatacentermap.azurewebsites.net/)|
+| [强制性安全培训、背景检查](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [控制数据位置](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](https://azuredatacentermap.azurewebsites.net/)|
 | [渗透测试](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)，[入侵检测，DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)，[审核和日志记录](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [根据条件提供数据访问](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [云服务审慎调查清单](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 中的哪些人员可以根据哪些条款访问数据](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [最先进的数据中心](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)、物理安全性、[安全网络](https://docs.microsoft.com/azure/security/security-network-overview) | [响应执法部门](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [服务、位置和行业的符合性](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [安全事件响应](https://aka.ms/SecurityResponsepaper)，[共担责任](https://aka.ms/sharedresponsibility) |[严格的隐私标准](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [查看 Azure 服务和透明度中心的认证](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
@@ -75,7 +75,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 本部分提供了关于安全操作中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="security-and-audit-dashboard"></a>“安全和审核”仪表板
-[安全和审核解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助[内置搜索查询](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 [安全和审核](https://technet.microsoft.com/library/mt484091.aspx)仪表板是主屏幕，提供 Log Analytics 中安全性的所有相关内容。 它提供计算机安全状态的高级洞见。 还允许查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
+[安全和审核解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助[内置搜索查询](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 [安全和审核](https://technet.microsoft.com/library/mt484091.aspx)仪表板是主屏幕，所有相关 Azure Monitor 日志中的安全性。 它提供计算机安全状态的高级洞见。 还允许查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
 
 此外，检测到特定事件时，可以将安全性和符合性配置为[自动执行特定操作](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)。
 
@@ -94,10 +94,10 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 ### <a name="azure-monitor"></a>Azure Monitor
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 对来自 Azure 基础结构（[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)）和每个单独的 Azure 资源（[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)）的数据提供可视化效果、查询、路由、警报、自动缩放和自动化功能。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) - 为本地基础结构和第三方基于云的基础结构（例如 AWS），以及 Azure 资源提供 IT 管理解决方案。 可以将来自 Azure Monitor 的数据直接路由到 Log Analytics，因此可以在一个位置查看整个环境的指标和日志。
+### <a name="azure-monitor-logs"></a>Azure Monitor 日志
+[Azure Monitor 日志](https://azure.microsoft.com/documentation/services/log-analytics/)– 用于在本地和第三方基于云的基础结构 （例如 AWS) 以及 Azure 资源提供 IT 管理解决方案。 可以直接向 Azure Monitor 日志路由 Azure Monitor 中的数据，以便你可以在一个位置查看整个环境中查看指标和日志。
 
-在取证和其他安全分析中，Log Analytics 是非常有用的工具，因为使用该工具能通过灵活的查询方法快速搜索大量与安全相关的条目。 此外，本地[防火墙和代理日志可以导出到 Azure 中，并可以使用 Log Analytics 进行分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)。
+Azure 监视器日志可能是在取证和其他安全分析中，一个有用的工具，因为该工具，可快速搜索大量与安全相关的条目，具有灵活的查询方法。 此外，本地[防火墙和代理日志可以导出到 Azure 并可供分析使用 Azure Monitor 日志。](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 
 ### <a name="azure-advisor"></a>Azure 顾问
 [Azure 顾问](https://docs.microsoft.com/azure/advisor/)是一种个性化的云顾问，可帮助优化 Azure 部署。 它分析资源配置和使用情况遥测数据。 然后，它推荐解决方案，帮助提高资源的[性能](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)、[安全性](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations)和[高可用性](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations)，同时寻找机会[减少总体 Azure 支出](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations)。 Azure 顾问提供安全建议，可显著提高在 Azure 中部署的解决方案的总体安全状况。 这些建议来自于 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)执行的安全分析。
@@ -116,7 +116,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 如果想要执行自己的渗透测试，或者想要使用其他扫描程序套件或提供程序，则必须按照 [Azure 渗透测试审批流程](https://docs.microsoft.com/azure/security/azure-security-pen-testing )来进行并获得事先批准才能执行所需的渗透测试。
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
-[Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)中的 Web 应用程序防火墙 (WAF) 可帮助保护 Web 应用程序，使其免受常见基于 Web 的攻击威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。 同时预先配置保护，免受 [Open Web Application Security Project (OWASP) 标识为前 10 种常见漏洞](https://msdn.microsoft.com/library/)的威胁攻击。
+[Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)中的 Web 应用程序防火墙 (WAF) 可帮助保护 Web 应用程序，使其免受常见基于 Web 的攻击威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。 同时预先配置保护，免受 [Open Web Application Security Project (OWASP) 标识为前 10 种常见漏洞](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)的威胁攻击。
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 [应用服务身份验证/授权](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)是一项功能，方便应用程序登录用户，避免在应用后端更改代码。 该功能可以方便地保护应用程序和处理每个用户的数据。
@@ -287,7 +287,7 @@ Web 应用程序防火墙是 [Azure 应用程序网关](https://docs.microsoft.c
 
 ### <a name="azure-dns"></a>Azure DNS
 [域名系统](https://technet.microsoft.com/library/bb629410.aspx)或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 DNS 支持“CIA”安全三因素的可用性方面。
-### <a name="log-analytics-nsgs"></a>Log Analytics NSG
+### <a name="azure-monitor-logs-nsgs"></a>Azure 监视器日志 Nsg
 可以为 NSG 启用以下诊断日志类别：
 -   事件：包含根据 MAC 地址向 VM 和实例角色应用的 NSG 规则条目。 每隔 60 秒收集一次这些规则的状态。
 
@@ -334,7 +334,7 @@ Azure 密钥保管库 (AKV) 服务专用于在一个高度可用的安全位置�
 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)是用于加密 Windows 和 Linux IaaS 虚拟机磁盘的新功能。 它应用 Windows 的行业标准 BitLocker 功能和 Linux 的 DM-Crypt 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure Key Vault 集成，帮助用户控制和管理 Key Vault 订阅中的磁盘加密密钥和机密。 此解决方案还可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
 
 ### <a name="virtual-networking"></a>虚拟网络
-虚拟机需要网络连接。 要支持该要求，Azure 要求将虚拟机连接到 Azure 虚拟网络。 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑[ Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
+虚拟机需要网络连接。 为了满足该要求，Azure 需要虚拟机连接到 Azure 虚拟网络。 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑[ Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
 
 ### <a name="patch-updates"></a>修补程序更新
 修补程序更新可以减少必须在企业中部署的软件更新数目并提高监视符合性的能力，从而提供查找及修复潜在问题的基础并简化软件更新管理过程。

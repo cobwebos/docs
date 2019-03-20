@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-service
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: 48deeec7a2c8767ab5dbb81b622e6d40483ed455
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58115670"
+---
 # <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>建立到 Kubernetes、DC/OS 或 Docker Swarm 群集的远程连接
 创建 Azure 容器服务群集后，需要连接到该群集才能部署和管理工作负荷。 本文介绍如何通过远程计算机连接到群集的主 VM。 
 
@@ -5,7 +18,7 @@ Kubernetes、DC/OS 和 Docker Swarm 群集在本地提供 HTTP 终结点。 对�
 
 对于 DC/OS 和 Docker Swarm，我们建议创建一个从本地计算机通往群集管理系统的安全外壳 (SSH) 隧道。 建立隧道后，可以运行使用 HTTP 终结点的命令，通过本地系统查看 Orchestrator 的 Web 界面（如果可用）。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * [部署在 Azure 容器服务中](../articles/container-service/dcos-swarm/container-service-deployment.md)的 Kubernetes、DC/OS 或 Docker Swarm 群集。
 * SSH RSA 私钥文件，对应于在部署期间添加到群集的公钥。 这些命令假设 SSH 私钥位于计算机上的 `$HOME/.ssh/id_rsa` 中。 有关详细信息，请参阅适用于 [macOS 和 Linux](../articles/virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../articles/virtual-machines/linux/ssh-from-windows.md) 的说明。 如果 SSH 连接不起作用，可能需要[重置 SSH 密钥](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md)。
@@ -19,7 +32,7 @@ Kubernetes、DC/OS 和 Docker Swarm 群集在本地提供 HTTP 终结点。 对�
 > 
 
 ### <a name="install-kubectl"></a>安装 kubectl
-安装此工具的方法之一是使用 `az acs kubernetes install-cli` Azure CLI 2.0 命令。 若要运行此命令，请确保[已安装](/cli/azure/install-az-cli2)最新的 Azure CLI 2.0 并已登录到 Azure 帐户 (`az login`)。
+若要安装此工具的一种方法是使用`az acs kubernetes install-cli`Azure CLI 命令。 若要运行此命令，请确保您[安装](/cli/azure/install-az-cli2)最新版本的 Azure cli 并登录到 Azure 帐户 (`az login`)。
 
 ```azurecli
 # Linux or macOS
@@ -100,11 +113,11 @@ Kubernetes UI 现已显示在 `http://localhost:8001/ui` 上。
     ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com
     ```
   
-  > [!NOTE]
-  > SSH 连接端口为 2200，而不是标准端口 22。 在包含多个主 VM 的群集中，这是第一个主 VM 的连接端口。
-  > 
+   > [!NOTE]
+   > SSH 连接端口为 2200，而不是标准端口 22。 在包含多个主 VM 的群集中，这是第一个主 VM 的连接端口。
+   > 
 
-  该命令会在没有输出的情况下返回。
+   该命令会在没有输出的情况下返回。
 
 请参阅以下部分中的 DC/OS 和 Swarm 示例。    
 
@@ -168,16 +181,16 @@ docker info
 
 5. 选择“SSH”>“隧道”并配置以下转发端口：
 
-    * **源端口：** 为 DC/OS 使用 80，为 Swarm 使用 2375。
-    * **目标：** DC/OS 使用 localhost:80，Swarm 使用 localhost:2375。
+   * **源端口：** 对于 Swarm，80 使用 DC/OS 或 2375年。
+   * **目标：** 使用 DC/OS 或 localhost:2375 localhost:80 Swarm。
 
-    以下示例适用于 DC/OS，但 Docker Swarm 与之类似。
+     以下示例适用于 DC/OS，但 Docker Swarm 与之类似。
 
-    > [!NOTE]
-    > 创建此隧道时，不能使用端口 80。
-    > 
+     > [!NOTE]
+     > 创建此隧道时，不能使用端口 80。
+     > 
 
-    ![PuTTY 配置 3](./media/container-service-connect/putty3.png)
+     ![PuTTY 配置 3](./media/container-service-connect/putty3.png)
 
 6. 完成后，单击“会话”>“保存”保存连接配置。
 

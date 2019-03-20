@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 03e15532d04a4c62796aad884c5e344688814672
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: fffac197d99dfe03617b281bb9a09e54f3cd5705
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209228"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202293"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -196,7 +196,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 [Apache Tez](https://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。 基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
 
 > [!NOTE]  
-> 对于基于 Windows 的 HDInsight 群集来说，Tez 目前默认处于关闭状态，必须将其启用。 要充分利用 Tez，必须设置 Hive 查询的以下值：
+> 对于基于 Windows 的 HDInsight 群集来说，Tez 目前默认处于关闭状态，因此必须启用。 要充分利用 Tez，必须设置 Hive 查询的以下值：
 >
 > `set hive.execution.engine=tez;`
 >
@@ -257,7 +257,6 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流和协调系统。 有关�
 
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 976bb44ae81a6c002d2503407a4d74d513a76042
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f82ce7cbc060d7bb97e2ee90d872fbf2abd1983b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725263"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117772"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>授权用户访问 Apache Ambari 视图
 
@@ -51,24 +51,24 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 **向这些组授予权限**![向这些组授予权限](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
 
-4. 若要添加用户，请选择“添加用户”按钮。
+1. 若要添加用户，请选择“添加用户”按钮。
 
-    * 开始键入用户名，随后会看到以前定义的名称的下拉列表。
+   * 开始键入用户名，随后会看到以前定义的名称的下拉列表。
 
-    ![用户自动填充](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
+     ![用户自动填充](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
 
-    * 选择或完成键入用户名。 若要将此用户名添加为新用户，请选择“新建”按钮。
+   * 选择或完成键入用户名。 若要将此用户名添加为新用户，请选择“新建”按钮。
 
-    * 若要保存更改，请选中**蓝色复选框**。
+   * 若要保存更改，请选中**蓝色复选框**。
 
-    ![用户已输入](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
+     ![用户已输入](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
 
-5. 若要添加组，请选择“添加组”按钮。
+1. 若要添加组，请选择“添加组”按钮。
 
-    * 开始键入组名称。 选择现有组名称或添加新组的过程与添加用户的过程相同。
-    * 若要保存更改，请选中**蓝色复选框**。
+   * 开始键入组名称。 选择现有组名称或添加新组的过程与添加用户的过程相同。
+   * 若要保存更改，请选中**蓝色复选框**。
 
-    ![组已输入](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
+     ![组已输入](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
 
 若要向某个用户分配该视图的使用权限，但不希望该用户成为拥有其他权限的组的成员，那么，将用户直接添加到视图的做法就很有效。 若要降低管理开销，向组分配权限的做法可能更简便。
 

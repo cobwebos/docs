@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: HT
+ms.openlocfilehash: 05c6f1cbf5f7f20745fa837accdaa95e6c186b8b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994362"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226603"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或故障问题
 
@@ -267,6 +267,6 @@ HDInsight 群集中预配置了相关服务（例如 Hadoop、Hive、HBase 等�
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
 * [分析 HDInsight 日志](hdinsight-debug-jobs.md)
-* [在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [访问基于 Linux 的 HDInsight 中的 Apache Hadoop YARN 应用程序登录](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [HDInsight 上的 Apache Spark 群集的已知问题](hdinsight-apache-spark-known-issues.md)
