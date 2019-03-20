@@ -39,7 +39,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |[自定义语音服务](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home "自定义语音服务")（预览版）|借助自定义语音服务，可为应用程序和用户创建精确符合其需要的自定义语言模型和声学模型。|
 |[必应语音 API](https://docs.microsoft.com/azure/cognitive-services/speech/home "必应语音 API")|必应语音 API 为你提供了一种在应用程序中创建语音支持功能的简便方法。|
 |[语音翻译](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "语音翻译")|语音翻译是一项机器翻译服务。|
-|[说话人识别 API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "说话人识别 API")（预览版）|说话人识别 API 为说话人识别和验证提供算法。|
+|[说话人识别 API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "说话人识别 API")（预览版）|说话人识别 API 为识别和验证说话人提供算法。|
 
 ## <a name="language-apis"></a>语言 API
 
