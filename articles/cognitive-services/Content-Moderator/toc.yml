@@ -8,7 +8,7 @@ items:
     expanded: true
 - name: 快速入门
   items:
-  - name: 入门
+  - name: 尝试在 Web 上使用内容审查器
     href: quick-start.md
   - name: 使用客户端 SDK
     items:
@@ -26,6 +26,10 @@ items:
   items:
   - name: 审查电子商务映像
     href: ecommerce-retail-catalog-moderation.md
+  - name: 审查 Facebook 内容
+    href: facebook-post-moderation.md
+  - name: 视频和脚本审核
+    href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: 概念
   items:
   - name: 图像审查
@@ -104,12 +108,6 @@ items:
       href: Review-Tool-User-Guide/Workflows.md
     - name: 查看仪表板
       href: Review-Tool-User-Guide/View-Dashboard.md
-  - name: 第一个内容审查器应用
-    items:
-    - name: Facebook 内容审核
-      href: facebook-post-moderation.md
-    - name: 视频和脚本审核
-      href: video-transcript-moderation-review-tutorial-dotnet.md
   - name: 导出或删除帐户数据
     href: ./export-delete-data.md
   - name: Azure 网络研讨会系列
@@ -160,9 +158,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Azure 路线图
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: c9f43e8598afc6e9fa68c24313ef862072d48e75
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: cee9e6c585dfa65ccee5c0f4631b5efc81dde760
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215365"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900703"

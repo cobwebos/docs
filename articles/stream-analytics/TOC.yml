@@ -32,15 +32,17 @@ items:
 - name: 概念
   items:
   - name: 作业的输入类型
-    href: stream-analytics-add-inputs.md
     items:
+    - name: 输入概述
+      href: stream-analytics-add-inputs.md
     - name: 流式数据输入
       href: stream-analytics-define-inputs.md
     - name: 引用数据输入
       href: stream-analytics-use-reference-data.md
   - name: 作业的输出类型
-    href: stream-analytics-define-outputs.md
     items:
+    - name: 输出概述
+      href: stream-analytics-define-outputs.md
     - name: 输出到 Cosmos DB
       href: stream-analytics-documentdb-output.md
     - name: 输出到 Azure SQL DB
@@ -114,7 +116,7 @@ items:
       href: stream-analytics-monitoring.md
     - name: 监视作业 - PowerShell
       href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
-    - name: 监视作业 - Azure .Net SDK
+    - name: 监视作业 - Azure .NET SDK
       href: stream-analytics-monitor-jobs.md
     - name: 监视作业 - Visual Studio
       href: stream-analytics-monitor-jobs-use-vs.md
@@ -122,9 +124,10 @@ items:
     items:
     - name: 利用流单元进行缩放
       href: stream-analytics-streaming-unit-consumption.md
-    - name: 利用查询并行度进行缩放
-      href: stream-analytics-parallelization.md
+    - name: 利用并行化进行缩放
       items:
+      - name: 查询并行化
+        href: stream-analytics-parallelization.md
       - name: 提高吞吐量
         href: stream-analytics-scale-jobs.md
     - name: 利用 ML 函数进行缩放
@@ -428,16 +431,16 @@ items:
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=stream-analytics
   - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+    href: https://stackoverflow.com/questions/tagged/azure-stream-analytics
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
   - name: 客户案例研究
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 24c475fcbe1bda825693ee04f9381922c46633ad
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 127d7aa2588a47084dd43eb7f22adf9f73f90dce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539235"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852997"

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2179b212dbbc7891b003664f4bea3d47cbb3a34e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: f03ece417ef5db891efe32a662a092ebf6072b33
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575386"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848155"
 documentType: LandingData
 title: Azure 数据工厂文档
 metadata:
@@ -80,6 +80,7 @@ sections:
     - html: 转换虚拟网络中的数据 - <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
     - html: 添加分支和链接 - <a href="/azure/data-factory/tutorial-control-flow-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
     - html: 运行 Azure 中的 SSIS 包 - <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
+    - html: Azure 数据工厂中的持续集成和交付 (CI/CD) - <a href="/azure/data-factory/continuous-integration-deployment">数据工厂 UI</a>
 - title: 示例
   items:
   - type: paragraph

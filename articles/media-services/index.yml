@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0f249cfc604a31a29f6b2e3c0380e6591ec8b4e6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3b778caed10981923d424745d820bfe10c1ce553
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903600"
 documentType: LandingData
 title: Azure 媒体服务文档
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09-24-2018
+  ms.date: 03/11/2019
   ms.author: juliako
 abstract:
   description: Azure 媒体服务 (AMS) 是一个基于云的平台，可用于生成解决方案，以便实现观众可在大多数受欢迎的设备上体验的高清晰度视频编码和广播品质视频流。 借助 AMS v3，还可使用视频索引器通过 AMS v3 分析器预设从视频和音频文件中提取见解。 如果需要更详细的见解，请直接使用视频索引器。<br/> 如需了解何时要使用视频索引器与媒体服务分析器预设，请查看<a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">比较文档</a>。
@@ -27,23 +27,28 @@ sections:
   - type: list
     style: cards
     className: cardsM
-    columns: 3
+    columns: 2
     items:
     - href: /azure/media-services/latest/
       html: <p>了解如何使用媒体服务 v3 对视频进行编码、按需流式处理、实时直播和分析。</p>
       image:
         src: media/index/AMSIcons-media_servicesV3.svg
       title: Azure 媒体服务 v3
-    - href: /azure/media-services/previous/
-      html: <p>了解如何使用媒体服务 v2 对视频进行编码、按需流式处理和实时直播。</p>
-      image:
-        src: media/index/AMSIcons-media_servicesV2.svg
-      title: Azure 媒体服务 v2（旧版）
     - href: /azure/media-services/video-indexer/
       html: <p>了解如何使用视频索引器从视频和音频文件中提取见解。</p>
       image:
         src: media/index/AMSIcons-media_analytics.svg
       title: 视频索引器
+    - href: /azure/media-services/previous/
+      html: <p>了解如何使用媒体服务 v2 对视频进行编码、按需流式处理和实时直播。</p>
+      image:
+        src: media/index/AMSIcons-media_servicesV2.svg
+      title: Azure 媒体服务 v2（旧版）
+    - href: /azure/cdn/
+      html: <p>了解如何使用 CDN 来缓存静态对象，并加快无法缓存的动态内容的速度。</p>
+      image:
+        src: /azure/cdn/media/index/cdn.svg
+      title: CDN
 - title: 5 分钟快速入门
   items:
   - type: paragraph

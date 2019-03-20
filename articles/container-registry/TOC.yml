@@ -62,26 +62,29 @@ items:
       href: container-registry-image-lock.md
     - name: 删除容器映像
       href: container-registry-delete.md
-    - name: 内容信任（预览版）
-      href: container-registry-content-trust.md
     - name: 升级经典注册表
       href: container-registry-upgrade.md
     - name: 使用 ACR webhook
       href: container-registry-webhook.md
     - name: Helm 图表存储库（预览版）
       href: container-registry-helm-repos.md
-  - name: Authentication
+  - name: 安全性和身份验证
     items:
+    - name: 使用虚拟网络限制访问（预览版）
+      href: container-registry-vnet.md
     - name: 身份验证概述
       href: container-registry-authentication.md
-    - name: 服务主体身份验证
-      href: container-registry-auth-service-principal.md
-    - name: 托管标识身份验证
-      href: container-registry-authentication-managed-identity.md
-    - name: Azure 容器实例
-      href: container-registry-auth-aci.md
-    - name: Azure Kubernetes 服务 (AKS)
-      href: container-registry-auth-aks.md
+      items:
+      - name: 服务主体身份验证
+        href: container-registry-auth-service-principal.md
+      - name: 托管标识身份验证
+        href: container-registry-authentication-managed-identity.md
+      - name: 从 Azure 容器实例进行身份验证
+        href: container-registry-auth-aci.md
+      - name: 从 Azure Kubernetes 服务 (AKS) 进行身份验证
+        href: container-registry-auth-aks.md
+    - name: 内容信任（预览版）
+      href: container-registry-content-trust.md
   - name: 生成并修补
     items:
     - name: ACR 任务
@@ -137,9 +140,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-container-registry
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: ef8f6b64129f9dd2f2959c89e93c34b9d90a62f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 732c0f878df9b5d722571bf45e4afd76a3180ebb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541943"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137988"

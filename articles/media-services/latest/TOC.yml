@@ -165,9 +165,14 @@ items:
     - name: 本地文件作为作业输入 - .NET
       displayName: encode, encoding
       href: job-input-from-local-file-how-to.md
-    - name: 使用自定义转换 - .NET
-      displayName: encode, encoding, tranform
-      href: customize-encoder-presets-how-to.md
+    - name: 通过自定义转换进行编码
+      items:
+      - name: 使用 .NET
+        href: customize-encoder-presets-how-to.md
+      - name: 使用 CLI
+        href: custom-preset-cli-howto.md
+      - name: 使用 REST
+        href: custom-preset-rest-howto.md
   - name: 使用事件网格
     items:
     - name: 监视事件 - 门户
@@ -250,9 +255,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure 云和区域
     href: azure-clouds-regions.md
-ms.openlocfilehash: 5a25312b9a66bcde3523735046ed1df6661f7c61
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d0c44938110ebb6f823ee61fc8969638fa31b648
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532796"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893112"

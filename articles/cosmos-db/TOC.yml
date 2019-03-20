@@ -22,7 +22,7 @@ items:
   expanded: true
 - name: 教程
   items:
-  - name: 1 - 创建帐户
+  - name: 1 - 创建和管理数据
     items:
     - name: 构建控制台应用
       items:
@@ -238,7 +238,7 @@ items:
         href: create-mongodb-golang.md
     - name: 教程
       items:
-      - name: 1 - 创建帐户
+      - name: 1 - 创建和管理数据
         items:
         - name: Node.js 控制台应用
           href: mongodb-samples.md
@@ -337,7 +337,7 @@ items:
         href: create-cassandra-python.md
     - name: 教程
       items:
-      - name: 1 - 创建帐户和数据库
+      - name: 1 - 创建和管理数据
         href: create-cassandra-api-account-java.md
       - name: 2 - 加载数据
         href: cassandra-api-load-data.md
@@ -389,7 +389,7 @@ items:
         href: create-table-python.md
     - name: 教程
       items:
-      - name: 1 - 创建帐户
+      - name: 1 - 创建和管理数据
         href: tutorial-develop-table-dotnet.md
       - name: 2 - 迁移数据
         displayName: import
@@ -656,9 +656,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: f42bc31661ecc14fde4d2466ccd89d91dfd5deb5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 96160b85319ddd7e09b1ecd4e57b974608648021
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406807"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876912"

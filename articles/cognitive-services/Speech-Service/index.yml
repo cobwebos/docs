@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9a99e7133b24d37af5ce36c717d03bb0fdae7da5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c68bf4cf8bcc50069f3741ac0f1746363c1f82ac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861802"
 documentType: LandingData
 title: 语音服务文档
 metadata:
@@ -24,7 +24,7 @@ metadata:
   ms.author: erhopf
   ms.custom: seodec18
 abstract:
-  description: 了解如何使用语音服务和语音 SDK 向应用添加支持语音的功能。 可以使用语音 SDK 向应用添加<i>语音转文本</i>（语音识别/SR）、<i>意向</i>、<i>翻译</i>和<i>文本转语音</i> (TTS) 功能。 语音服务还有一个 REST API，此 API 适用于任何能够发出 HTTP 请求的编程语言。
+  description: 了解如何使用语音服务和语音 SDK 向应用添加支持语音的功能。 可以使用语音 SDK 向应用添加<i>语音转文本</i>（语音识别/SR）、<i>意向</i>、<i>翻译</i>和<i>文本转语音</i> (TTS) 功能。 语音服务还具有 REST API，这些 API 可与任何能够发出 HTTP 请求的编程语言配合使用。
 sections:
 - items:
   - type: list

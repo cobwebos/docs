@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 82ba644f844c59b59f449e137c64b767d5dffbff
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f0d4a689e783f8c460ee54b3613ac0fe432b59ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464018"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862781"
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
@@ -15,7 +15,7 @@ metadata:
   ms.service: iot-edge
   services: iot-edge
   ms.topic: landing-page
-  ms.date: 01/30/2019
+  ms.date: 03/13/2019
   ms.author: kgremban
 abstract:
   description: Azure IoT Edge 是基于物联网 (IoT) 中心构建的 IoT 服务。 此服务供想要在设备上 （也称为“在边缘上”）而不是在云中分析数据的客户使用。 通过将部分工作负荷移至边缘，设备将消息发送到云所花费的时间可以更少，并且设备可以对状态更改更快地做出响应。
@@ -32,7 +32,7 @@ sections:
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 在模拟设备上部署你的第一个 IoT Edge 模块并处理数据：
+    text: 创建 Azure 虚拟机、将其配置为作为 IoT Edge 设备运行，并将代码部署到它：
   - type: list
     style: icon48
     items:

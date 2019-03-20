@@ -50,7 +50,7 @@ items:
     items:
     - name: SSL 策略概述
       href: application-gateway-ssl-policy-overview.md
-    - name: 端到端 SSL
+    - name: SSL 终止和端到端 SSL
       href: ssl-overview.md
   - name: WAF
     items:
@@ -68,7 +68,7 @@ items:
     href: redirect-overview.md
   - name: 重写 HTTP 标头
     href: rewrite-http-headers.md
-  - name: 多租户支持
+  - name: 应用服务 Web 应用和多租户支持
     href: application-gateway-web-app-overview.md
   - name: 运行状况监视
     href: application-gateway-probe-overview.md
@@ -156,9 +156,11 @@ items:
     items:
     - name: Azure PowerShell
       href: add-http-header-rewrite-rule-powershell.md
-  - name: 多租户支持
+  - name: 配置应用服务 Web 应用和多租户服务
     items:
-    - name: 配置多租户支持
+    - name: 门户
+      href: configure-web-app-portal.md
+    - name: Azure PowerShell
       href: create-web-app.md
   - name: 自定义探测
     items:
@@ -216,9 +218,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 堆栈溢出
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: 57ae904b8bc65ef9b249b055d8f1abb3b25c4752
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: bd544dc507be3caade81ee45c3a5d704392c5694
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170320"

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 34439268163b4da6ac45af09101f4f609de7e9ee
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248157"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013851"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 1.0
 
@@ -58,7 +58,7 @@ ms.locfileid: "51248157"
 * 安装更新或修补程序
 
 > [!IMPORTANT] 
-> 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。**
+> 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。
 
 ### <a name="download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
@@ -66,7 +66,7 @@ ms.locfileid: "51248157"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
-1. 启动 Internet Explorer，并转到 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
+1. 启动 Internet Explorer，并转到 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 
 2. 如果是首次在此计算机上使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 
@@ -99,7 +99,7 @@ ms.locfileid: "51248157"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 Web UI 中，转到“维护” > “软件更新”。 记下运行的软件版本。 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。**
+1. 在本地 Web UI 中，转到“维护” > “软件更新”。 记下运行的软件版本。 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update1m.png)
 

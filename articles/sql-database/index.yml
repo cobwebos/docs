@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ba32f17ac596a21614c1e18a01f622defb069a8e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: dad3d16ad6d630bd57e6e5d196d16d45692935d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338410"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167960"
 documentType: LandingData
 title: Azure SQL 数据库文档
 metadata:
@@ -65,7 +65,7 @@ sections:
         src: media/index/i_elasticpool.svg
       title: 弹性池
     - href: /azure/sql-database/sql-database-managed-instance-index
-      html: <p>使用托管实例可轻松地将本地数据库迁移到完全托管的 Azure PaaS 数据库服务，只需更改极少数据库代码或无需更改数据库代码。</p>
+      html: <p>使用托管实例可使完全托管的 SQL Server 数据库引擎实例托管在 Azure 云中，而无需为从本地数据库进行迁移做出任何数据库代码更改或只需做出极少的数据库代码更改。</p>
       image:
         src: media/index/i_mi.svg
       title: 托管实例
