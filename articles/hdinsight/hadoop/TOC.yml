@@ -40,6 +40,9 @@ items:
   - name: 比较存储选项
     href: ../hdinsight-hadoop-compare-storage-options.md
     maintainContext: true
+  - name: 了解托管标识
+    href: ../hdinsight-managed-identities.md
+    maintainContext: true
 - name: 如何
   items:
   - name: 使用 Apache Hadoop 沙盒
@@ -75,10 +78,6 @@ items:
         href: apache-hadoop-use-hive-powershell.md
       - name: 使用 .NET SDK
         href: apache-hadoop-use-hive-dotnet-sdk.md
-      - name: 使用远程桌面
-        href: apache-hadoop-use-hive-remote-desktop.md
-      - name: 使用查询控制台
-        href: apache-hadoop-use-hive-query-console.md
     - name: 将 Java UDF 与 Hive 配合使用
       href: apache-hadoop-hive-java-udf.md
     - name: 将 MapReduce 与 Apache Hadoop 配合使用
@@ -159,15 +158,11 @@ items:
       href: apache-hadoop-connect-excel-hive-odbc-driver.md
     - name: 使用 Apache Hive JDBC 驱动程序进行连接
       href: apache-hadoop-connect-hive-jdbc-driver.md
-    - name: 分析存储的传感器数据
-      href: apache-hive-analyze-sensor-data.md
     - name: 分析存储的推文
       href: ../hdinsight-analyze-twitter-data-linux.md
       maintainContext: true
     - name: 使用 Apache Mahout 生成建议
       href: apache-hadoop-mahout-linux-mac.md
-    - name: 使用 Apache Hive 分析网站日志
-      href: apache-hive-analyze-website-log.md
     - name: 分析 Application Insights 遥测日志
       href: ../spark/apache-spark-analyze-application-insight-logs.md
       maintainContext: true
@@ -207,9 +202,6 @@ items:
       maintainContext: true
     - name: 使用 Hue
       href: ../hdinsight-hadoop-hue-linux.md
-      maintainContext: true
-    - name: 使用 Apache Solr
-      href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
     - name: 使用 Apache Zeppelin
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
@@ -321,8 +313,11 @@ items:
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
-    - name: 缩放 HDInsight 群集
+    - name: 手动缩放群集
       href: ../hdinsight-scaling-best-practices.md
+      maintainContext: true
+    - name: 自动缩放群集
+      href: ../hdinsight-autoscale-clusters.md
       maintainContext: true
     - name: 使用外部元数据存储
       href: ../hdinsight-use-external-metadata-stores.md
@@ -495,9 +490,6 @@ items:
     - name: 运行 Apache Hadoop MapReduce 示例
       href: ../hdinsight-run-samples.md
       maintainContext: true
-    - name: 在群集上使用 Apache Solr
-      href: ../hdinsight-hadoop-solr-install-linux.md
-      maintainContext: true
     - name: 使用 Apache Giraph 处理大型图形
       href: ../hdinsight-hadoop-giraph-install.md
       maintainContext: true
@@ -510,26 +502,14 @@ items:
     - name: 使用 Apache Maven 构建 Java 应用程序
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: 使用脚本操作进行自定义
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
     - name: 访问 Apache Hadoop YARN 应用程序日志
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
     - name: 使用 Apache Mahout 生成电影建议
       href: ../hdinsight-mahout.md
       maintainContext: true
-    - name: 分析航班延误数据
-      href: ../hdinsight-analyze-flight-delay-data.md
-      maintainContext: true
     - name: 开发脚本操作
       href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: 分析 Twitter 数据
-      href: ../hdinsight-analyze-twitter-data.md
-      maintainContext: true
-    - name: 使用 Azure 门户管理群集
-      href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
     - name: 使用 Apache Ambari API 监视群集
       href: ../hdinsight-monitor-use-ambari-api.md
@@ -556,9 +536,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: c679970484666a6087b33276eb545304a3b2793c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c2272c9ae3b5f26dc1c83b7af5850a44aed6abdc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887023"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224390"

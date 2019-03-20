@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8caeb6ad79f82ecb86da313cca901cb3a16b6d5c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8385fe5ecb9a6e17d872795ba4eff5c038e4df47
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199863"
 documentType: LandingData
 title: Azure 搜索文档
 metadata:
@@ -57,12 +57,10 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/search/cognitive-search-tutorial-blob">了解认知技能 REST API</a>
+    - html: <a href="/azure/search/cognitive-search-tutorial-blob">使用 AI（认知服务）编制索引</a>
     - html: <a href="/azure/search/search-howto-dotnet-sdk">如何将 Azure 搜索与 .NET 配合使用</a>
     - html: <a href="/azure/search/search-indexer-tutorial">通过 .NET 对 Azure SQL 数据库内容进行索引</a>
     - html: <a href="/azure/search/search-semi-structured-data">通过 REST 对 Azure Blob 存储中的半结构化数据进行索引</a>
-    - html: <a href="/azure/search/search-synonyms-tutorial-sdk">添加可返回等效术语结果的同义词</a>
-    - html: <a href="/azure/search/search-autocomplete-tutorial">使用 .NET 将自动完成添加到搜索框</a>
     - html: <a href="/azure/search/search-get-started-portal">使用门户编制索引并进行查询测试</a>
 - title: 引用
   items:

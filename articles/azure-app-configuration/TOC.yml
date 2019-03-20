@@ -1,5 +1,5 @@
 items:
-- name: Azure 应用配置（预览版）文档
+- name: Azure 应用配置预览版文档
   href: index.yml
 - name: 概述
   items:
@@ -54,9 +54,9 @@ items:
   items:
   - name: 提供产品反馈
     href: https://github.com/Azure/AppConfiguration
-ms.openlocfilehash: 6723ea35f6cc674c0e2776260c2077d781a5014c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 2a0c67c39a17b5a7035f569ed860cd4e6b3cd844
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989766"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224526"
