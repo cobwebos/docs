@@ -10,15 +10,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 11/14/2018
+ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0be7ae9658259b327014c5678777c963e6cb5
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
-ms.translationtype: HT
+ms.openlocfilehash: 1d2d53213af34377d23c9ea140bab15822fc1b2e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302810"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444763"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服务 API 将任务数据保存到 Azure 存储
 
@@ -36,9 +36,6 @@ Azure Batch 提供多种方式来保存任务输出。 使用 Batch 服务 API �
 - 希望保存使用虚拟机配置创建的池中的 Batch 任务和作业管理器任务的输出。
 - 希望将输出保存到具有任意名称的 Azure 存储容器。
 - 希望将输出保存到按照 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)命名的 Azure 存储容器。 
-
-> [!NOTE]
-> 批处理服务 API 不支持保存使用云服务配置创建的池中运行的任务数据。 有关保存运行云服务配置的池的任务输出的信息，请参阅[使用适用于 .NET 的批处理文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)。
 
 如果你的情况与上面不同，可能需要考虑不同的方法。 例如，在运行任务时，Batch 服务 API 目前不支持将输出流式传输到 Azure 存储。 若要流式传输输出，请考虑使用适用于 .NET 的 Batch 文件约定库。 对于其他语言，需要实现自己的解决方案。 有关保存任务输出的其他选项的详细信息，请参阅[将作业和任务输出保存到 Azure 存储](batch-task-output.md)。
 

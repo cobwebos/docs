@@ -1,6 +1,6 @@
 ---
 title: 从 Azure 市场部署 VM | Microsoft Docs
-description: 介绍如何从 Azure 市场预配置的虚拟机部署虚拟机。
+description: 介绍如何部署虚拟机从 Azure Marketplace 预配置虚拟机。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: v-miclar
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3ec4e0b047e94dc7481c51390c6e4370fdea5efa
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: d800d2a9c4eced2fa347658ecbb5b7a97031d997
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258792"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838691"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>从 Azure 市场部署虚拟机
 

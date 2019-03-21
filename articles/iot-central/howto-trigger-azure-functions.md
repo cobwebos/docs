@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 512956d2de0f9a838cc6378345a334e489d1d120
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c80b007c3c9c1a35540e690554603a5ae8f16d62
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306861"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284623"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>在 Azure IoT Central 中使用 Webhook 触发 Azure Functions
 
 本主题适用于构建者和管理员。
 
-使用 Azure Functions 对来自 IoT Central 规则的 Webhook 输出运行无服务器代码。 不必预配 VM 或发布 Web 应用来使用 Azure Functions，而是可以按无服务器方式运行此代码。 先使用 Azure Functions 转换 Webhook 有效负载，然后再将它发送到最终目标，如 SQL 数据库或事件网格。
+使用 Azure Functions 对来自 IoT Central 规则的 Webhook 输出运行无服务器代码。 无需预配 VM 或发布 web 应用以使用 Azure Functions，但可以改为运行此无服务器代码。 先使用 Azure Functions 转换 Webhook 有效负载，然后再将它发送到最终目标，如 SQL 数据库或事件网格。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -29,13 +29,13 @@ ms.locfileid: "57306861"
 
 1. [在 Azure 门户中创建新的 function app](https://ms.portal.azure.com/#create/Microsoft.FunctionApp)。
 
-    ![在 Azure 门户中创建新的函数应用](media/howto-trigger-azure-functions/createfunction.png)
+    ![在 Azure 门户中创建新的 function app](media/howto-trigger-azure-functions/createfunction.png)
 
-2. 展开 function app，然后选择 **+ 按钮**旁边函数。 如果这是函数应用中的第一个函数，请选择“自定义函数”。 此时将显示函数模板的完整集合。
+2. 展开 function app，然后选择 **+ 按钮**旁边函数。 如果此函数在函数应用中的第一个，请选择**门户中**作为开发环境，然后选择**继续**。
 
     ![在函数应用中选择自定义函数](media/howto-trigger-azure-functions/customfunction.png)
 
-3. 在搜索栏中输入“generic”，然后选择需要用于泛型 Webhook 触发器模板的语言。 本主题使用 C# 函数。 
+3. 选择**Webhook + API**模板，然后选择**创建**。 本主题使用基于.NET 的 Azure 函数。
 
     ![选择通用 Webhook 触发器](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
 

@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: c420b1b5fc15f89bd14b8ae42919f24de97da4fc
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 5ac8e35614d6f0514f60932bc34aa8cab2c0ad11
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894150"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542142"
 ---
 # <a name="marketplace-faqs"></a>市场常见问题解答
 
@@ -66,10 +66,11 @@ Azure 市场提供 SaaS 应用程序、虚拟机、解决方案模板、Azure �
 
 可通过以下方式购买 Azure 市场套餐：
 
-* [基于 Web 的店面](https://azuremarketplace.microsoft.com/marketplace/apps)。
-* [Microsoft Azure 管理门户](https://portal.azure.com/)，或 [Azure 市场命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
+* [基于 web 的店面](https://azuremarketplace.microsoft.com/marketplace/apps)
+* [Microsoft Azure 管理门户](https://portal.azure.com/)，或通过[Azure Marketplace 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
-注意：预付额度和其他形式的货币承诺不能用于支付软件许可证费用，但可用于支付相关 Azure 使用费。  [Azure 货币承诺](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)中列出了例外项目。
+>[!Note]
+>预付额度和其他形式的货币承诺不能用于支付软件许可证费用，但可用于支付相关 Azure 使用费。  [Azure 货币承诺](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)中列出了例外项目。
 
 **能否选择将 Azure 市场购买内容部署到其中的 Microsoft Azure 区域？**
 
@@ -93,9 +94,11 @@ Azure 市场提供 SaaS 应用程序、虚拟机、解决方案模板、Azure �
 
 **哪些国家/地区支持购买通过 Azure 市场销售/预配的应用程序和服务？**
 
-Azure 市场可供以下国家/地区的 Microsoft Azure 客户使用：
+Azure Marketplace 中列出的国家/地区的 Microsoft Azure 客户可[参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)。
 
-阿尔及利亚、阿根廷、澳大利亚、奥地利、巴林、白俄罗斯、比利时、巴西、保加利亚、加拿大、智利、哥伦比亚、哥斯达黎加、克罗地亚、赛普路斯、捷克共和国、丹麦、多米尼加共和国、厄瓜多尔、埃及、萨尔瓦多、爱沙尼亚、芬兰、法国、德国、希腊、危地马拉、香港、匈牙利、冰岛、印度、印度尼西亚、爱尔兰、以色列、意大利、日本、约旦、哈萨克斯坦、肯尼亚、科威特、拉脱维亚、列支敦士登、立陶宛、卢森堡、马其顿共和国、马来西亚、马耳他、墨西哥、黑山、摩洛哥、荷兰、新西兰、尼日利亚、挪威、阿曼、巴基斯坦、巴拿马、巴拉圭、秘鲁、菲律宾、波兰、葡萄牙、波多黎各、卡塔尔、罗马尼亚、俄罗斯、沙特阿拉伯、塞尔维亚、新加坡、斯洛伐克、斯洛文尼亚、南非、韩国、西班牙、斯里兰卡、瑞典、瑞士、台湾、泰国、特立尼达和多巴哥、突尼斯、土耳其、乌克兰、阿联酋、英国、美国、乌拉圭、委内瑞拉。
+**Azure Marketplace 支持哪些货币？**
+
+可以在以下 17 货币执行事务：澳大利亚元、 BRL、 CAD、 瑞士法郎、 丹麦克朗、 欧元、 GBP、 INR、 JPY、 韩元、 挪威克朗、 新西兰元、 微妙、 瑞典克朗、 台币、 美元、 RMB。
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>从 Azure 市场部署解决方案
 
@@ -180,17 +183,17 @@ Azure 应用（解决方案模板和托管应用）：
 
 **如何为这些订阅付款？Azure 市场购买内容显示在 Azure 帐单上吗？是否还有其他帐单？**
 
-Azure 市场购买内容将继续采用和 Azure 订阅相同的付款方式。  除非它们能使用货币承诺，否则其计费方式与 Azure 用量无关。
+MOSP- [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)（即 web 直接） 客户的 Azure 订阅配置文件的同一信用卡收费。 如果没有存档信用卡，则将无法从 Azure 市场购买商品。 在这种情况下，你已收到了一个特别豁免权，可针对 Azure 费用向你开票。
 
-将对 MOSP（Microsoft 在线订阅计划，即 web-direct）客户的 Azure 订阅配置文件中记录的同一信用卡收费。 如果客户没有存档信用卡（收到了特别豁免权，可针对 Azure 费用开票），则无法从 Azure 市场购买。
-
-对于企业协议 (EA) 客户，将针对其 EA 收费。 [Azure 货币承诺](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)中列出的特定 Azure 市场套餐将首先扣除可用货币承诺，然后在单张季度发票上按超额计费。 EA 间接、教育和政府客户将按其授权解决方案提供商 (LSP) 计费。
+对于企业协议 (EA) 客户，将针对其 EA 收费。 此处列出的特定 Azure 市场套餐将首先扣除可用货币承诺，然后在单张季度发票上按超额计费。 EA 间接、教育和政府客户将按其授权解决方案提供商 (LSP) 计费。
 
 **可在哪里查看 Azure 市场订阅详细信息和计费信息？**
 
-MOSP（Microsoft 在线订阅计划，即 web direct）客户可在 Azure 计费门户中的“市场”菜单下查看市场订阅详细信息。 从市场购买了虚拟机的客户可在 Microsoft Azure 管理门户中查看其估计应计费用。
+MOSP- [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)(web 直接) 客户可在发票选项卡的成本管理 + Azure 管理门户的计费部分中查看 Marketplace 采购详细信息。
 
-企业协议 (EA) 客户可在企业门户计费和帐户管理视图的“Azure 市场”选项卡中查看应用市场订阅详细信息。 注意：EA 间接客户只能查看套餐和用量信息。 企业门户中将不提供定价详细信息。
+企业协议 (EA) 客户可在发票选项卡的成本管理 + Azure 管理门户的计费部分中查看 Marketplace 采购详细信息。
+
+客户视图中选择一家公司后，云解决方案提供商 (CSP) 合作伙伴可以每个客户在合作伙伴中心订单历史记录选项卡中查看 Marketplace 购买详细信息。
 
 **如何取消 Azure VM 的 Azure 市场附加产品？**
 
@@ -198,9 +201,9 @@ MOSP（Microsoft 在线订阅计划，即 web direct）客户可在 Azure 计费
 
 **将按何种频率对 Azure 市场购买内容计费？**
 
-对于企业协议客户，在使用[所述特定服务](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)的月份，将首先从可用货币承诺中扣除这些服务的总成本。 对于不可从货币承诺扣费的所有 Azure 市场套餐，将以欠款形式按月计费。
+对于特定服务，企业协议客户，首先具有可用货币承诺中扣除的总成本为这些服务使用的月份中。 对于不可从货币承诺扣费的所有 Azure 市场套餐，将以欠款形式按月计费。 SaaS 的年度订阅收费的为期一年的服务的一次。
 
-将每月对 MOSP（即 web-direct）客户的 Azure 订阅配置文件中记录的同一信用卡收费。
+MOSP- [Microsoft 在线订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)(web 直接) 客户收取每月的 Azure 订阅配置文件的同一信用卡。 SaaS 的年度订阅收费的为期一年的服务的一次。
 
 **如何将 Azure 市场购买内容从 MOSP 订阅迁移到我的直接企业协议 (EA) 订阅？**
 
@@ -246,7 +249,7 @@ MOSP（Microsoft 在线订阅计划，即 web direct）客户可在 Azure 计费
 
 **如果不满意，能否退货？**
 
-从 Azure 市场进行的购买不能退回，但可取消/删除。 取消/删除订阅后，不会对后续月份收费。
+从进行的购买[Azure Marketplace](https://azuremarketplace.microsoft.com/)不能退回，但可取消/删除。 消耗根据产品/服务计费根据使用情况，因此当它停止时，费用也停止。 订阅已取消，并且不会超过当前计费期间进行计费。 如果订阅已取消购买 （24 小时的每月和每年只有 14 天） 后不久，提供全额退款。
 
 有关其市场服务或购买内容的任何技术问题，客户必须直接联系发布者。 可在 Azure 市场中的解决方案详细信息页上找到发布者联系方式和/或指向支持网站的链接。
 
@@ -335,6 +338,10 @@ Microsoft 提供了两个不同的云市场店面 – Azure 市场和 AppSource�
 **通过 Azure 市场购买是否有任何交易费？**
 
 通过 Azure 市场购买解决方案许可证时，软件许可证的收入将在发布者与 Microsoft 之间分摊。  这种分摊是根据[市场发布者协议](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)中的条款和条件进行的。 此外，对于使用 BYOL（自带许可证）的发布者解决方案，发布者无需支付交易费。
+
+**什么是标准协定？**
+
+发布者可以选择为充分利用，以便客户可以简化的采购和法律审核过程的 Microsoft 产品/服务标准合同条款。
 
 **在何处可以找到将应用程序与 Azure Active Directory (AAD) 集成的指导原则？**
 
@@ -490,6 +497,35 @@ Azure 市场是面向 IT 专业人员和开发人员的商店，用于发现为 
 Azure 市场可供以下国家/地区的 Microsoft Azure 客户使用：
 
 阿尔及利亚、阿根廷、澳大利亚、奥地利、巴林、白俄罗斯、比利时、巴西、保加利亚、加拿大、智利、哥伦比亚、哥斯达黎加、克罗地亚、赛普路斯、捷克共和国、丹麦、多米尼加共和国、厄瓜多尔、埃及、萨尔瓦多、爱沙尼亚、芬兰、法国、德国、希腊、危地马拉、香港、匈牙利、冰岛、印度、印度尼西亚、爱尔兰、以色列、意大利、日本、约旦、哈萨克斯坦、肯尼亚、科威特、拉脱维亚、列支敦士登、立陶宛、卢森堡、马其顿共和国、马来西亚、马耳他、墨西哥、黑山、摩洛哥、荷兰、新西兰、尼日利亚、挪威、阿曼、巴基斯坦、巴拿马、巴拉圭、秘鲁、菲律宾、波兰、葡萄牙、波多黎各、卡塔尔、罗马尼亚、俄罗斯、沙特阿拉伯、塞尔维亚、新加坡、斯洛伐克、斯洛文尼亚、南非、韩国、西班牙、斯里兰卡、瑞典、瑞士、台湾、泰国、特立尼达和多巴哥、突尼斯、土耳其、乌克兰、阿联酋、英国、美国、乌拉圭、委内瑞拉。
+
+**如何定义我地理可用性，以便在不同国家/地区销售？**
+
+1.  在云合作伙伴门户中，导航到你想要添加新的国家/地区的 SKU。  在"SKU 详细信息"中，导航到"国家/地区可用性"，然后单击"选择区域。"
+
+    ![选择区域](media/marketplace-publishers-guide/FAQ-choose-geo.png)
+
+1.  使用所有可用的国家/地区销售到将弹出列表。  单击你想要将此 SKU 提供每个国家/地区旁边的复选框。 单击"确定"。
+
+    ![选择国家/地区列表](media/marketplace-publishers-guide/FAQ-select-countries.png)
+
+1.  最后要应用于实时产品/服务的更改，请单击"发布"。  
+
+>[!Note]
+>需要 24 小时后，更改才能生效。
+
+<!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
+
+**发布者如何更改现有产品/服务的地理可用性？**
+
+发布服务器可以编辑现有产品/服务中，选择新国家/地区，并使用电子表格下载/上传函数设置定价。
+
+**在哪些国家/地区中可以客户购买 Azure Marketplace 产品/服务？**
+
+Azure Marketplace 支持 141 购买从地理位置定义的客户的帐单地址。 请参阅[参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)有关国家/地区的列表。
+
+**Azure Marketplace 支持哪些货币？**
+
+可以在以下 17 货币执行事务：AUD、 BRL、 CAD、 瑞士法郎、 丹麦克朗、 欧元、 GBP、 INR、 JPY、 KRW、 挪威克朗、 新西兰元、 但难题，瑞典克朗、 台币、 美元。
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>从 Azure 市场部署解决方案
 

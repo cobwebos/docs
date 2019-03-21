@@ -4,16 +4,16 @@ description: 了解定期传输数据时，如何选择 Azure 数据传输解决
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 271be60bc26cf6bc9a64c459d030818d9e493a22
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: ba6d5e20f0d6a004fd85d7e9dc57584547d52ba3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158442"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772851"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期数据传输解决方案
  
@@ -61,7 +61,7 @@ ms.locfileid: "54158442"
 | 数据预处理                           | 否                         | 是，通过 Edge 计算进行    | 是                                                           |
 | 本地缓存<br>（存储本地数据）    | 是                        | 是                      | 否                                                            |
 | 从其他云传输                    | 否                         | 否                       | 是                                                           |
-| 定价                                       | [定价](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [定价](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定价](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
+| 定价                                       | [定价](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [价格](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定价](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>后续步骤
 
