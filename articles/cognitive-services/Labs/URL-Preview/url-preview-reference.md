@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: a871048c9d75fc6ea958cfacaa3a47b11765fb0d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884437"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104703"
 ---
 # <a name="project-url-preview-v7-reference"></a>项目 URL 预览 v7 参考
 
@@ -56,13 +56,13 @@ q - 标识要预览的 URL 的查询
 > 某些对其他搜索 API 有意义的请求标头不影响 URL 预览
 > - Pragma - 调用方无法控制 URL 预览是否使用缓存
 > - User-Agent - 目前，URL 预览 API 不会为从电脑、笔记本电脑或移动设备发出的调用提供不同的响应。
-
+> 
 > 另外，某些参数目前对 URL 预览 API 没有意义，但也许可以在将来用于改进全球化。
 
 ## <a name="headers"></a>标头
 下面是请求和响应可能包含的标头。
 
-|标头|说明|
+|标头|描述|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|响应标头。<br /><br /> 请求使用的市场。 形式为 \<languageCode\>-\<countryCode\>。 例如，en-US。|
 |<a name="traceid" />BingAPIs-TraceId|响应标头。<br /><br /> 包含请求详细信息的日志条目 ID。 发生错误时，捕获此 ID。 如果无法确定并解决问题，请纳入此 ID 以及提供给支持团队的其他信息。|
@@ -73,24 +73,24 @@ q - 标识要预览的 URL 的查询
 ## <a name="query-parameters"></a>查询参数
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。 查询必须是使用 http 或 https 方案的绝对 URL；我们不支持相对 URL 或其他方案（如 ftp://）
 
-|Name|值|Type|必选|
+|名称|值|Type|需要|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** URL 预览 API 目前仅支持美国地理和英语。<br /><br />|String|是|
 |<a name="query" />q|要预览的 URL|String|是|
-|<a name="responseformat" />responseFormat|可用于响应的媒体类型。 下面是可能的不区分大小写的值。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 默认值为 JSON。 若要了解响应应包含的 JSON 对象，请参阅[响应对象](#response-objects)。<br /><br />如果指定 JsonLd，则响应正文会包含 JSON-LD 对象，后者包含搜索结果。 有关 JSON-LD 的信息，请参阅 [JSON-LD](http://json-ld.org/)。|String|否|
+|<a name="responseformat" />responseFormat|可用于响应的媒体类型。 下面是可能的不区分大小写的值。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 默认值为 JSON。 若要了解响应应包含的 JSON 对象，请参阅[响应对象](#response-objects)。<br /><br />如果指定 JsonLd，则响应正文会包含 JSON-LD 对象，后者包含搜索结果。 有关 JSON-LD 的信息，请参阅 [JSON-LD](https://json-ld.org/)。|String|否|
 |<a name="safesearch"/>safeSearch|非法的成人内容或盗版内容将被阻止且系统会显示错误代码 400，并且不会返回 *isFamilyFriendly* 标志。 <p>对于合法的成人内容，行为如下。 状态代码返回 200，并且 *isFamilyFriendly* 标志设置为 false。<ul><li>safeSearch=strict：将不会返回标题、说明、URL 和图像。</li><li>safeSearch=moderate：将获取标题、URL 和说明，但不获取说明性图像。</li><li>safeSearch=off：获取所有响应对象/元素 – 标题、URL、说明和图像。</li></ul> |String|非必需。 </br> 默认为 safeSearch=strict。|
 
 ## <a name="response-objects"></a>响应对象
 就像在 Web 搜索 API 中一样，响应架构为 [WebPage] 或 ErrorResponse。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
-|对象|说明|
+|对象|描述|
 |------------|-----------------|
 |[WebPage](#webpage)|包含预览属性的顶级 JSON 对象。|
 
 ### <a name="error"></a>错误
 定义已发生的错误。
 
-|元素|说明|Type|
+|元素|描述|Type|
 |-------------|-----------------|----------|
 |<a name="error-code" />code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|
 |<a name="error-message" />message|对错误的说明。|String|
@@ -102,7 +102,7 @@ q - 标识要预览的 URL 的查询
 ### <a name="errorresponse"></a>ErrorResponse
 请求失败时响应包含的顶级对象。
 
-|Name|值|Type|
+|名称|值|Type|
 |----------|-----------|----------|
 |_type|类型提示。|String|
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|
@@ -110,7 +110,7 @@ q - 标识要预览的 URL 的查询
 ### <a name="webpage"></a>WebPage
 定义预览版网页的信息。
 
-|Name|值|Type|
+|名称|值|Type|
 |----------|-----------|----------|
 |名称|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|
@@ -119,7 +119,7 @@ q - 标识要预览的 URL 的查询
 |primaryImageOfPage/contentUrl|将包括在预览版中的代表性图像的 URL|String|
 
 ### <a name="identifiable"></a>Identifiable
-|Name|值|Type|
+|名称|值|Type|
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
 
@@ -127,7 +127,7 @@ q - 标识要预览的 URL 的查询
 
 下面是请求可能返回的 HTTP 状态代码。
 
-|状态代码|说明|
+|状态代码|描述|
 |-----------------|-----------------|
 |200|成功。|
 |400|查询参数之一缺失或无效。|
@@ -170,7 +170,7 @@ q - 标识要预览的 URL 的查询
 
 下面是可能的错误代码和子错误代码值。
 
-|代码|SubCode|说明
+|代码|SubCode|描述
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 状态代码为 500。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，则 HTTP 状态代码为 400。<br/><br/>如果使用 HTTP 协议而不是 HTTPS 协议，则必应会返回 HttpNotAllowed，且 HTTP 状态代码为 410。

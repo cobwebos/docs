@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5431372abb9a1157b322a8af4a07ba5fa15d8e8e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: b207d9e3123245e5cb7dddb625f7488886591ae5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720452"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089856"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -56,11 +56,9 @@ ms.locfileid: "53720452"
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
 虽然各个域提供商的具体情况不同，但你都需从自定义域名（例如 **contoso.com**）映射到与 Web 应用集成的流量管理器域名 (**contoso.trafficmanager.net**)。
-   
+
 > [!NOTE]
-> 如果某条记录已被使用并且你需要先将你的应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如，要提前将 **www.contoso.com** 绑定到 Web 应用，请创建一条从 **awverify.www** 到 **contoso.trafficmanager.net** 的 CNAME 记录。 然后，可以将“www.contoso.com”添加到 Web 应用，而不必更改“www”CNAME 记录。 有关详细信息，请参阅[在自定义域中为 Web 应用创建 DNS 记录][CREATEDNS]。
-> 
-> 
+> 如果某条记录已被使用并且你需要先将你的应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如，若要提前将绑定**www\.contoso.com**到 web 应用，创建从一条 CNAME 记录**awverify.www**到**contoso.trafficmanager.net**。 然后，可以添加"www\.contoso.com"到 Web 应用而无需更改"www"CNAME 记录。 有关详细信息，请参阅[在自定义域中为 Web 应用创建 DNS 记录][CREATEDNS]。
 
 在域提供商处添加或修改完 DNS 记录后，请保存这些更改。
 

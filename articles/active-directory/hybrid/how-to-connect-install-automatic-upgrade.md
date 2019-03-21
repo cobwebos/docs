@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2018
+ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6083237426e86220f8a3cb7fbe0cdfc30f44f8cc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208820"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003912"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 [1.1.105.0（于 2016 年 2 月发布）](reference-connect-version-history.md#111050)一起推出的。  此功能已在[内部版本 1.1.561](reference-connect-version-history.md#115610) 中更新，现在支持以前不支持的其他方案。
 
 ## <a name="overview"></a>概述
 使用**自动升级**功能是确保 Azure AD Connect 安装始终保持最新状态的最简单方法。 系统默认启用此功能，以便进行快速安装和 DirSync 升级。 发布新版本时，安装会自动升级。
-默认情况下，将针对以下方案启用自动升级：
+默认情况下，针对以下方案启用自动升级：
 
 * 快速设置安装和 DirSync 升级。
 * 使用 SQL Express LocalDB，这是快速设置始终使用的选项。 使用 SQL Express 的 DirSync 也将使用 LocalDB。
@@ -40,10 +40,10 @@ ms.locfileid: "56208820"
 | 状态 | 注释 |
 | --- | --- |
 | Enabled |自动升级已启用。 |
-| Suspended |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
+| 已挂起 |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
 | 已禁用 |自动升级已禁用。 |
 
-可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。 应该只有系统才能设置“暂停”状态。
+可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。 应该只有系统才能设置“暂停”状态。  之前 1.1.750.0 Set-adsyncautoupgrade cmdlet 将阻止自动升级如果自动升级状态已设置为 Suspended。 此功能现在已更改，因此它不会阻止自动升级。
 
 自动升级使用 Azure AD Connect Health 作为升级基础结构。 为使自动升级正常工作，请确保根据 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述，在代理服务器中打开 **Azure AD Connect Health** 的 URL。
 
@@ -67,7 +67,7 @@ ms.locfileid: "56208820"
 
 结果代码前面会有包含状态概述的前缀。
 
-| 结果代码前缀 | 说明 |
+| 结果代码前缀 | 描述 |
 | --- | --- |
 | Success |安装已成功升级。 |
 | UpgradeAborted |某种临时状态停止了升级。 升级会重试，预期稍后会成功。 |
@@ -75,7 +75,7 @@ ms.locfileid: "56208820"
 
 下面是最常见的消息列表。 该列表并不完整，但结果消息应会明确说明问题所在。
 
-| 结果消息 | 说明 |
+| 结果消息 | 描述 |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |无法写入注册表。 |
@@ -89,18 +89,18 @@ ms.locfileid: "56208820"
 | UpgradeAbortedSyncExeInUse |服务器上打开了 [Synchronization Service Manager UI](how-to-connect-sync-service-manager-ui.md)。 |
 | UpgradeAbortedSyncOrConfigurationInProgress |安装向导正在运行，或者在计划程序外部计划了同步。 |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | 已选择 Adfs 作为登录方法。 | 
+| UpgradeNotSupportedAdfsSignInMethod | 已选择 Adfs 作为登录方法。 |
 | UpgradeNotSupportedCustomizedSyncRules |已将自己的自定义规则添加到配置中。 |
 | UpgradeNotSupportedDeviceWritebackEnabled |已启用[设备写回](how-to-connect-device-writeback.md)功能。 |
 | UpgradeNotSupportedGroupWritebackEnabled |已启用[组写回](how-to-connect-preview.md#group-writeback)功能。 |
 | UpgradeNotSupportedInvalidPersistedState |安装不是快速设置或 DirSync 升级。 |
-| UpgradeNotSupportedMetaverseSizeExceeeded |Metaverse 中的对象超过 100,000 个。 |
+| UpgradeNotSupportedMetaverseSizeExceeeded |metaverse 中的对象超过 100,000 个。 |
 | UpgradeNotSupportedMultiForestSetup |正在连接到多个林。 快速安装只会连接到一个林。 |
-| UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |d
+| UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |
 | UpgradeNotSupportedNonMsolAccount |[AD DS 连接器帐户](reference-connect-accounts-permissions.md#ad-ds-connector-account)不再是默认的 MSOL_ 帐户。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。 | 
+| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。 |
 | UpgradeNotSupportedPtaSignInMethod | 已选择“直通身份验证”作为登录方法。 |
-| UpgradeNotSupportedStagingModeEnabled |服务器已设置为[过渡模式](how-to-connect-sync-operations.md#staging-mode)。 |
+| UpgradeNotSupportedStagingModeEnabled |服务器已设置为[过渡模式](how-to-connect-sync-staging-server.md)。 |
 | UpgradeNotSupportedUserWritebackEnabled |已启用[用户写回](how-to-connect-preview.md#user-writeback)功能。 |
 
 ## <a name="next-steps"></a>后续步骤

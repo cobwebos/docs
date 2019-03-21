@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: afd6ded48bc330032b77be4bc8cd186a6f71ee5f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105121"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098995"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>在 Azure 安全中心应用系统更新
 Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监控，以找出缺少的操作系统更新。 安全中心从 Windows 更新或 Windows Server Update Services (WSUS) 检索可用的安全更新和关键更新的列表，具体取决于 Windows 计算机上配置的服务。 安全中心还可以在 Linux 系统中检查最新更新。 如果 VM 或计算机缺少系统更新，安全中心将建议应用系统更新。
@@ -43,7 +43,7 @@ Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监
     - VM 和计算机中缺少的关键更新的总数。
     - VM 和计算机中缺少的安全更新的总数。
 
-  仪表板底部列出了 VM 和计算机中缺少的所有更新以及缺少更新的严重性。  此列表包括：
+   仪表板底部列出了 VM 和计算机中缺少的所有更新以及缺少更新的严重性。  此列表包括：
 
     - 名称：所缺更新的名称。
     - VM 和 和计算机的数量：缺少此更新的 VM 和计算机的总数。
@@ -63,13 +63,13 @@ Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监
 
    ![缺少的安全更新][3]
 
-4. 选择顶部功能区中的“搜索”图标。  随即打开 Log Analytics 搜索查询，筛选出缺少更新的计算机。
+4. 选择顶部功能区中的“搜索”图标。  Azure Monitor 日志搜索查询打开，并筛选到缺少更新的计算机。
 
-   ![Log Analytics 搜索][4]
+   ![Azure 监视器日志搜索][4]
 
 5. 选择列表中的计算机，以了解详细信息。 此时，将会打开另一个搜索结果，其中筛选出了相应计算机的信息。
 
-    ![Log Analytics 搜索][5]
+    ![Azure 监视器日志搜索][5]
 
 ## <a name="reboot-after-system-updates"></a>在系统更新后重启
 1. 返回到“建议”边栏选项卡。 应用系统更新后，将生成名为**在系统更新后重启**的新项。 此项提醒需要重启 VM 才能完成应用系统更新的过程。

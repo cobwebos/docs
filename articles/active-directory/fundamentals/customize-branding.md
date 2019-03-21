@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 807643146c4f2821cecf60499ea1985f56e9d251
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168589"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103054"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Office 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
@@ -29,7 +29,7 @@ ms.locfileid: "56168589"
 ## <a name="customize-your-azure-ad-sign-in-page"></a>自定义 Azure AD 登录页面
 可以自定义 Azure AD 登录页面，这些页面会在用户登录到组织的特定于租户的应用时显示（例如 [*https://outlook.com/contoso.com*](https://outlook.com/contoso.com)），或者在传递域变量时显示（例如 [*https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com)）。
 
-用户访问 www.office.com 等网站时，自定义品牌不会立即显示。 相反，用户必须先登录才会显示自定义品牌。
+当用户转到如 www 站点时你的自定义品牌不会立即显示\.office.com。 相反，用户必须先登录才会显示自定义品牌。
 
 > [!NOTE]
 > 所有品牌元素都是可选的。 例如，如果指定没有背景图像的横幅徽标，则登录页面将显示带有目标网站（例如 Office 365）默认背景图像的徽标。<br><br>此外，登录页面品牌不会带到个人 Microsoft 帐户。 如果用户或企业访客使用个人 Microsoft 帐户登录，则其登录页面不会显示组织的品牌。
@@ -103,7 +103,7 @@ ms.locfileid: "56168589"
 
 4. 选择“保存”。
 
-  最长可能需要一个小时才能显示用户对登录页的品牌元素所做的任何更改。
+   最长可能需要一个小时才能显示用户对登录页的品牌元素所做的任何更改。
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>将特定语言的公司品牌元素添加到目录
 无法将更改原始配置的语言从默认语言更改为其他语言。 但是，如果需要其他语言的配置，则可以创建新的配置。

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d98a5ab13c2aecd3b3cef590526031f5bdee594
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268305"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094746"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)是 Azure 提供的高可用性功能之一。 使用可用性区域可提高 Azure 上 SAP 工作负荷的整体可用性。 此功能已在某些 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中推出。 今后会在更多的区域中推出。
@@ -109,8 +109,8 @@ SAP 应用层部署在一个 Azure [可用性集](https://docs.microsoft.com/azu
 - 对于部署的所有虚拟机，需要使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
 - Azure 高级存储和[超级 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
 - 这一点同样适用于共享的 sapmnt 目录，包括共享磁盘 (Windows)、CIFS 共享 (Windows) 或 NFS 共享 (Linux)。 需要采用某种技术来复制此类共享磁盘或者在区域之间共享。 支持以下技术：
-    - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)。
-    - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)中所述构建的 NFS 共享。
+  - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)。
+  - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)中所述构建的 NFS 共享。
     
     目前，不支持使用[针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)中所述的 Microsoft 横向扩展文件服务的跨区域解决方案。
 - 构建 [SUSE Linux Pacemaker 群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)或其他应用程序实例时，第三个区域用于托管 SBD 设备。
@@ -123,7 +123,7 @@ SAP 应用层部署在一个 Azure [可用性集](https://docs.microsoft.com/azu
 
 该体系结构的基本布局如下所示：
 
-![主动/被动区域部署](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+![主动/被动区域部署](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
 
 以下注意事项适用于此配置：
 

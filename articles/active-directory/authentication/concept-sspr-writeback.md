@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bba14e37e811c941c9709eef6b6d8ffd8322643
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 3772f42b1216cfb26d66b1d68fcb9e59fd8652d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167127"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107536"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -96,11 +96,11 @@ ms.locfileid: "56167127"
    >
 
 1. 如果密码设置操作失败，错误消息会提示用户重试。 操作失败的可能原因如下：
-   * 服务已关闭。
-   * 用户选择的密码不符合组织策略。
-   * 在本地 Active Directory 中找不到用户。
+    * 服务已关闭。
+    * 用户选择的密码不符合组织策略。
+    * 在本地 Active Directory 中找不到用户。
 
-    错误消息会向用户提供指导，让他们尝试解决问题，而无需管理员的干预。
+      错误消息会向用户提供指导，让他们尝试解决问题，而无需管理员的干预。
 
 ## <a name="password-writeback-security"></a>密码写回安全性
 

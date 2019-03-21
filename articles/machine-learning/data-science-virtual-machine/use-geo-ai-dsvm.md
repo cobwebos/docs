@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 11026d642a5136ffcf0caa5815934115b6becf89
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 6e6737e928ece820ea9119d8dfe1d7cf22477646
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238453"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880096"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>使用地理人工智能数据科学虚拟机
 
@@ -30,7 +30,7 @@ ms.locfileid: "55238453"
 
 ## <a name="configuration-details"></a>配置详细信息
 
-Python 库 [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm)，用来与在数据科学 VM 的全局根 conda 环境（位于 ```c:\anaconda```）中安装的 ArcGIS 进行交互。 
+Python 库 [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm)，用来与在数据科学 VM 的全局根 conda 环境（位于 ```c:\anaconda```）中安装的 ArcGIS 进行交互。 
 
 - 如果在命令提示符中运行 Python，请运行 ```activate``` 来激活到 conda 根 Python 环境。 
 - 如果使用 IDE 或 Jupyter Notebook，可以选择环境或内核来确保处于正确的 conda 环境中。 
@@ -43,7 +43,7 @@ ArcGIS 的 R 桥作为名为 [arcgisbinding](https://github.com/R-ArcGIS/r-bridg
 除了基础数据科学 VM 提供的基于机器学习和深度学习框架的示例外，地理 AI 数据科学 VM 还提供了一组地理空间示例。 这些示例可以帮助你使用地理空间数据和 ArcGIS 软件快速开始 AI 应用程序开发。 
 
 
-1. [使用 Python 进行地理空间分析入门](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)：一个简介性的示例，展示了如何使用 [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) 库提供的与 ArcGIS 的 Python 接口来处理地理空间数据。 它还展示了如何将传统的机器学习与地理空间数据组合使用，并在 ArcGIS 中在地图上以可视化方式呈现结果。 
+1. [使用 Python 进行地理空间分析入门](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)：一个简介性的示例，展示了如何使用 [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) 库提供的与 ArcGIS 的 Python 接口来处理地理空间数据。 它还展示了如何将传统的机器学习与地理空间数据组合使用，并在 ArcGIS 中在地图上以可视化方式呈现结果。 
 
 2. [使用 R 进行地理空间分析入门](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)：一个简介性的示例，展示了如何使用 [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) 库提供的与 ArcGIS 的 R 接口来处理地理空间数据。 
 

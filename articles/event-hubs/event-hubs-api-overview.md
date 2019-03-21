@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 432f2495dd1b4c8aeb761d12904adf26f3c24c0b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: dcfc2480cd9a62b57255163132373998db328034
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660691"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075793"
 ---
 # <a name="available-event-hubs-apis"></a>可用的事件中心 API
 
@@ -54,7 +54,7 @@ ms.locfileid: "55660691"
 下表列出了所有当前可用的特定于管理的库。 这些库并非仅包含运行时操作，并且管理事件中心实体不是其唯一目的。
 
 | 语言/平台 | 管理包 | 存储库 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 
 ## <a name="next-steps"></a>后续步骤

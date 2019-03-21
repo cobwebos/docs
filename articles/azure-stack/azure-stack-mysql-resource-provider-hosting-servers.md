@@ -15,19 +15,19 @@ ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: eb5d1ca55efed7e83739f21a432b61b6aad25f70
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 68e8bfa16c56b8c864ac99cdf6c19243bc7e881c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194004"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101867"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>为 MySQL 资源提供程序添加托管服务器
 
-可以在中托管 MySQL 宿主服务器实例上的虚拟机 (VM) [Azure Stack](azure-stack-poc.md)，或只要 MySQL 资源提供程序可以连接到的实例在 Azure Stack 环境外部的 VM 上。
+可以在 [Azure Stack](azure-stack-poc.md) 中的虚拟机 (VM) 上或者在 Azure Stack 环境外部的 VM 上托管 MySQL 宿主服务器实例，前提是 MySQL 资源提供程序能够连接到该实例。
 
 > [!NOTE]
-> MySQL 资源提供程序应默认提供商订阅中创建，而应计费的用户订阅中创建 MySQL 宿主服务器。 资源提供程序服务器不应用于托管用户数据库。
+> MySQL 资源提供程序应在默认提供程序订阅中创建，而 MySQL 宿主服务器则应在可计费用户订阅中创建。 资源提供程序服务器不应用于托管用户数据库。
 
 可以将 MySQL 版本 5.6、5.7 和 8.0 用于宿主服务器。 MySQL RP 不支持 caching_sha2_password 身份验证；下一版本会添加此功能。 必须将 MySQL 8.0 服务器配置为使用 mysql_native_password。 也支持 MariaDB。
 
@@ -44,9 +44,9 @@ ms.locfileid: "57194004"
 4. 提供 MySQL 服务器实例的连接详细信息。
 
    * 对于“MySQL 宿主服务器名称”，请提供完全限定域名 (FQDN) 或有效的 IPv4 地址。 请勿使用短 VM 名称。
-   - 默认管理员**用户名**Bitnami MySQL 映像在 Azure Stack marketplace 中可用是*根*。 
-   - 如果不知道根**密码**，请参阅[Bitnami 文档](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials)若要了解如何获取它。 
-   - 未提供默认的 MySQL 实例，因此需指定“宿主服务器的大小(GB)”。 输入接近数据库服务器容量的大小。
+   * Azure Stack 市场中提供的 Bitnami MySQL 映像的默认管理员**用户名**为 *root*。 
+   * 如果不知道 root 的**密码**，请参阅 [Bitnami 文档](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials)，了解如何获取它。 
+   * 未提供默认的 MySQL 实例，因此需指定“宿主服务器的大小(GB)”。 输入接近数据库服务器容量的大小。
    * 保留“订阅”的默认设置。
    * 对于“资源组”，请创建新组或使用现有组。
 
@@ -60,8 +60,8 @@ ms.locfileid: "57194004"
    SKU **名称**应反映 SKU 的属性，这样用户就能将其数据库部署到适当的 SKU。
 
 6. 选择“确定”以创建 SKU。
-> [!NOTE]
-> SKU 最长可能需要在一小时后才显示在门户中。 在部署并运行 SKU 之前，无法创建数据库。
+   > [!NOTE]
+   > SKU 最长可能需要在一小时后才显示在门户中。 在部署并运行 SKU 之前，无法创建数据库。
 
 7. 在“添加 MySQL 宿主服务器”下，选择“创建”。
 

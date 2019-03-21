@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 67442a5861514eadfebfc877d91e735e05f6f63d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 64bab5c1b99720eecb189834d7a11802cf919ca3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117539"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106774"
 ---
 # <a name="alert-confidence-score"></a>警报置信度分数 
 
@@ -45,7 +45,7 @@ ms.locfileid: "56117539"
 查看安全中心给出警报置信度时所依据的数据：
 - 在“安全警报”边栏选项卡中的“置信度”下，查看给出该置信度评分所依据的观测结果，并获取与警报相关的见解。 这可以更深入地了解导致该警报的活动性质。
 
- ![可疑的置信度评分][2]
+  ![可疑的置信度评分][2]
 
 使用安全中心的置信度评分可在环境中设定警报会审的优先级。 置信度评分能够节省时间和精力，因为它可以自动调查警报、运用行业最佳做法和智能算法，并可充当虚拟分析师来确定哪些威胁是真实的并需要重点关注。
 

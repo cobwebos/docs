@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: f69035202a3358af38ebaf8e94abdd3b030e633f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: e58a62761284e0671c0083d41f5dde4c13b32fe2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256062"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108250"
 ---
-# <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk 服务：利用操作日志进行故障排除
+# <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk 服务：使用操作日志进行故障排除
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
-
+> 
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 ## <a name="what-are-the-operation-logs"></a>什么是操作日志
@@ -66,10 +66,10 @@ ms.locfileid: "51256062"
 ## <a name="see-also"></a>另请参阅
 * [Backup BizTalk Service](https://go.microsoft.com/fwlink/p/?LinkID=325584)（备份 BizTalk 服务）
 * [从备份还原 BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk 服务：开发人员、 基本、 标准和高级版图表](https://go.microsoft.com/fwlink/p/?LinkID=302279)
 * [BizTalk 服务：预配](https://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk 服务：预配状态图表](https://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk 服务：设置状态图表](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk 服务：仪表板、 监视和缩放选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)
 * [BizTalk 服务：限制](https://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [BizTalk 服务：颁发者名称和颁发者密钥](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)

@@ -3,17 +3,17 @@ title: 在 Azure IoT Central 应用程序中创建和管理遥测规则 | Micros
 description: 可以通过 Azure IoT Central 遥测规则近乎实时地监视设备并自动调用操作（例如在触发规则时发送电子邮件）。
 author: ankitgupta
 ms.author: ankitgup
-ms.date: 11/02/2018
+ms.date: 02/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a5475ad2f487bca90f600406ca9bb8f0925a4988
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 5f6bc30c318e2f5511b352f1a52f0a5360e4b6f1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964809"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081553"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建遥测规则并设置通知
 
@@ -27,20 +27,15 @@ ms.locfileid: "52964809"
 
 若要创建遥测规则，必须在设备模板中至少定义一个遥测度量。 本示例使用一个发送温度和湿度遥测数据的冷冻贩卖机设备。 该规则监视设备报告的温度，并在温度超过 80 度时发送电子邮件。
 
-1. 使用 Device Explorer，导航到要对其添加规则的设备模板。
-
-1. 在所选模板下，单击一个现有设备。 
-
-    >[!TIP] 
-    >如果此模板无任何设备，请先添加一个新设备。
+1. 使用**设备模板**页上，导航到要为其添加的规则的设备模板。
 
 1. 如果尚未创建任何规则，则会看到以下屏幕：
 
     ![尚无规则](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
-1. 在“规则”选项卡上，依次单击“编辑模板”和“+ 新建规则”，即可查看可以创建的规则类型。
+1. 上**规则**选项卡上，选择 **+ 新规则**若要查看可以创建的规则的类型。
 
-1. 单击“遥测”，创建用于监视设备遥测数据的规则。
+1. 选择**遥测**创建规则以监视设备遥测数据。
 
     ![规则类型](media/howto-create-telemetry-rules/Rule_Types.png)
 
@@ -49,28 +44,25 @@ ms.locfileid: "52964809"
 1. 若要对针对此模板创建的所有设备立即启用规则，请切换到“为此模板的所有设备启用规则”。
 
    ![规则详细信息](media/howto-create-telemetry-rules/Rule_Detail.png)
-    
+
     此规则自动应用到该设备模板下的所有设备。
-    
 
 ### <a name="configure-the-rule-conditions"></a>配置规则条件
 
 条件用于定义此规则监视的条件。
 
-1. 单击“条件”旁边的“**+**”，以添加新条件。
+1. 选择**+** 旁边**条件**以添加新的条件。
 
 1. 从“度量”下拉列表中选择要监视的遥测数据。
 
-   ![条件](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
-
 1. 接下来，选择“聚合”、“运算符”并提供“阈值”。
-    - 聚合是可选的。 如无聚合，此规则将对每个满足此条件的遥测数据点触发。 例如，如果规则配置为在温度超过 80 时触发，则当设备报告温度超过 80 时，该规则会在瞬间触发。
-    - 如果选择了 Average、Min、Max、Count 等聚合函数，则用户必须提供需要评估的条件的“聚合时间窗口”。 例如，如果将时段设置为“5 分钟”，并且规则查找超过 80 的平均温度，则当平均温度至少有 5 分钟超过 80 时，该规则将会触发。 规则评估频率与“聚合时间段”相同，也就是说，此示例中规则每隔 5 分钟评估一次。
+   - 聚合是可选的。 如无聚合，此规则将对每个满足此条件的遥测数据点触发。 例如，如果几乎可以立即将规则配置为触发器，当温度高于 80 则触发规则时设备将报告温度 > 80。
+   - 如果选择了 Average、Min、Max、Count 等聚合函数，则用户必须提供需要评估的条件的“聚合时间窗口”。 例如，如果将时段设置为“5 分钟”，并且规则查找超过 80 的平均温度，则当平均温度至少有 5 分钟超过 80 时，该规则将会触发。 规则评估频率与“聚合时间段”相同，也就是说，此示例中规则每隔 5 分钟评估一次。
 
-    >[!NOTE]
-    >可在“条件”下面添加多个遥测度量。 如果指定多个条件，必须满足所有条件才能触发该规则。 每个条件通过“AND”子句隐式联接。 使用聚合时，必须聚合每个度量。
-    
-    
+     ![条件](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
+
+     >[!NOTE]
+     >可在“条件”下面添加多个遥测度量。 如果指定多个条件，必须满足所有条件才能触发该规则。 每个条件通过“AND”子句隐式联接。 使用聚合时，必须聚合每个度量。
 
 ### <a name="configure-actions"></a>配置操作
 
@@ -88,8 +80,6 @@ ms.locfileid: "52964809"
    ![配置操作](media/howto-create-telemetry-rules/Configure_Action.png)
 
 1. 若要保存规则，请选择“保存”。 此规则在数分钟内即可生效，然后开始监视发送到应用程序的遥测数据。 满足规则中指定的条件时，规则会触发配置的电子邮件操作。
-
-1. 选择“完成”，退出“编辑模板”模式。
 
 可将其他操作添加到规则，例如 Microsoft Flow 和 Webhook。 每个规则最多可添加 5 个操作。
 

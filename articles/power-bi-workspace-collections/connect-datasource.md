@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: fcf18731bd5b9bbe91541931ac68effd9de6debf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: c67369edec2f3c84ada14e6c2a3a3ab8056b3e0c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104688"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870089"
 ---
 # <a name="connect-to-a-data-source"></a>连接到数据源
 
@@ -28,7 +28,7 @@ ms.locfileid: "55104688"
 
 | 导入 | DirectQuery |
 | --- | --- |
-| 将表、列和数据导入或复制到报表的数据集。 若要查看对基础数据所做的更改，必须刷新，或重新导入完整的当前数据集。 |仅会将表和列导入或复制到报表的数据集中。 始终可以查看最新的数据。 |
+| 将表、列 *和数据* 导入或复制到报表的数据集。 若要查看对基础数据所做的更改，必须刷新，或重新导入完整的当前数据集。 |仅会将*表和列*导入或复制到报表的数据集中。 始终可以查看最新的数据。 |
 
 通过 Power BI 工作区集合，可以将 DirectQuery 与云数据源结合使用，但暂不能与本地数据源结合使用。
 
@@ -60,7 +60,7 @@ ms.locfileid: "55104688"
 * 如果查询过于复杂，则会出错。 若要修复此错误，则必须重构查询，降低其复杂程度。 如果查询必须很复杂，需要导入数据，而不使用 DirectQuery。
 * 关系筛选仅限于单向，而不是双向。
 * 不能更改某列的数据类型。
-* 默认情况下，将对度量值中允许使用的 DAX 表达式加以限制。 请参阅 [DirectQuery 和度量值](#measures)。
+* 默认情况下，对度量值中允许使用的 DAX 表达式加以限制。 请参阅 [DirectQuery 和度量值](#measures)。
 
 <a name="measures"/>
 
@@ -72,5 +72,5 @@ ms.locfileid: "55104688"
 * [Microsoft Power BI 工作区集合入门](get-started.md)
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-有更多问题？ [尝试 Power BI 社区](http://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)
 

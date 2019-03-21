@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 385e0065123b86f8f8b7c8503fe6de6daa7c6562
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 3d9c2a694562977c2a012d9faa9c282c6b8fff9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874118"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099825"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>从意向和实体中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
@@ -195,7 +195,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ```
 
 |数据对象|父级|子|值|
-|--|--|--|--|--|
+|--|--|--|--|
 |分层实体|位置|ToLocation|"paris"|
 
 ## <a name="composite-entity-data"></a>复合实体数据

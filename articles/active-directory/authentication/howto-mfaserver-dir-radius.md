@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79104895e91dc2143a0f4a592878ecc5e2df61d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d3d21ff9b56a7fcb33fbdb6bbb82c64ef97abf71
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172818"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085773"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
 
@@ -39,9 +39,9 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 4. 单击“添加”。
 5. 输入将向 Azure 多重身份验证服务器进行身份验证的设备/服务器的 IP 地址、应用程序名称（可选）和共享机密。
 
-  应用程序名称将出现在报告中，并可能会显示在短信或移动应用身份验证消息中。
+   应用程序名称将出现在报告中，并可能会显示在短信或移动应用身份验证消息中。
 
-  Azure 多重身份验证服务器和设备/服务器上的共享机密必须相同。
+   Azure 多重身份验证服务器和设备/服务器上的共享机密必须相同。
 
 6. 如果所有用户均已导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器或者将免除进行双重验证，请使该框处于未选中状态。
 7. 如果想使用移动身份验证应用中的 OATH 密码作为备份方法，请选中“启用回退 OATH 令牌”框。

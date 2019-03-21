@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746296"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004946"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储指标和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -133,9 +133,9 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 存储客户端库将客户端的日志数据存储在应用程序的配置文件（web.config 或 app.config）中的指定位置。
 
 ### <a name="collect-a-network-trace"></a>收集网络跟踪
-当客户端应用程序正在运行时，可以使用 Message Analyzer 来收集 HTTP/HTTPS 网络跟踪。 Message Analyzer 在后端使用 [Fiddler](http://www.telerik.com/fiddler)。 在收集网络跟踪之前，我们建议配置 Fiddler 来记录未加密的 HTTPS 通信：
+当客户端应用程序正在运行时，可以使用 Message Analyzer 来收集 HTTP/HTTPS 网络跟踪。 Message Analyzer 在后端使用 [Fiddler](https://www.telerik.com/fiddler)。 在收集网络跟踪之前，我们建议配置 Fiddler 来记录未加密的 HTTPS 通信：
 
-1. 安装 [Fiddler](http://www.telerik.com/download/fiddler)。
+1. 安装 [Fiddler](https://www.telerik.com/download/fiddler)。
 2. 启动 Fiddler。
 3. 选择“工具”|“Fiddler 选项”。
 4. 在“选项”对话框中，确保“捕获 HTTPS 连接”和“解密 HTTPS 通信”都已选中，如下所示。
@@ -233,7 +233,7 @@ Message Analyzer 包括 Azure 存储的资产，可帮助你分析服务器、�
 
 如果仍有大量的日志数据，则可能需要在加载日志数据之前指定会话筛选器以筛选数据。 在“会话筛选器”框中，选择“库”按钮可以选择预定义的筛选器；例如，从 Azure 存储筛选器中选择“全局时间筛选器 I”可根据某个时间间隔进行筛选。 然后，可以编辑筛选条件，以指定要查看的时间间隔的起始和结束时间戳。 还可以根据特定的状态代码筛选；例如，可以选择仅加载状态代码为 404 的日志条目。
 
-要深入了解如何将日志数据导入 Microsoft Message Analyzer，请参阅 TechNet 上的 [Retrieving Message Data](https://technet.microsoft.com/library/dn772437.aspx)（检索消息数据）。
+有关如何将日志数据导入 Microsoft Message Analyzer 的详细信息，请参阅 TechNet 上的[检索消息数据](https://technet.microsoft.com/library/dn772437.aspx)。
 
 ### <a name="use-the-client-request-id-to-correlate-log-file-data"></a>使用客户端请求 ID 关联日志文件数据
 Azure 存储客户端库会自动为每个请求生成唯一的客户端请求 ID。 此值将写入客户端日志、服务器日志和网络跟踪，因此可以在 Message Analyzer 中使用它在所有三个日志之间关联数据。 有关客户端请求 ID 的其他信息，请参阅[客户端请求 ID](storage-monitoring-diagnosing-troubleshooting.md#client-request-id)。
@@ -288,7 +288,7 @@ Message Analyzer 的存储空间资产包括 Azure 存储视图布局，这是�
 应用此筛选器后，可看到已从客户端日志中排除的行，因为客户端日志不包含 **StatusCode** 列。 首先，我们会检查服务器和网络跟踪日志，以找到 404 错误，然后我们会返回到客户端日志以检查导致它们的客户端操作。
 
 > [!NOTE]
-> 可根据 **StatusCode** 列进行筛选；如果将表达式添加到包含状态代码为 null 的日志条目的筛选器，则仍可显示所有 3 个日志（包括客户端日志）中的数据。 若要构造此筛选器表达式，请使用：
+> 可以根据 **StatusCode** 列筛选，并仍显示所有三个日志（包括客户端日志）中的数据，前提是将表达式添加到包括日志条目的筛选器（状态代码为 null）。 若要构造此筛选器表达式，请使用：
 > 
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
 > 
@@ -356,7 +356,7 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 | 409（全部） |*StatusCode == 409 |All |
 | 低 PercentSuccess 或分析日志项包含事务状态为 ClientOtherErrors 的操作 |AzureStorageLog.RequestStatus == "ClientOtherError" |服务器 |
 | Nagle 警告 |((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) 和 (AzureStorageLog.RequestPacketSize <1460) 和 (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) |服务器 |
-| 服务器和网络日志中的时间范围 |#Timestamp >= 2014-10-20T16:36:38 和 #Timestamp <= 2014-10-20T16:36:39 |服务器、网络 |
+| 服务器和网络日志中的时间范围 |#Timestamp   >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 |服务器、网络 |
 | 服务器日志中的时间范围 |AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 和 AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 |服务器 |
 
 ## <a name="next-steps"></a>后续步骤

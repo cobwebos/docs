@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: ryanwi
-ms.openlocfilehash: bdff930e00bfebe1d702e397a9dfc7de15aa3225
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: f358080b3bcada5515f578ad2215fa2b135c2f2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878323"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>多容器应用程序和服务清单示例
 下面是多容器 Service Fabric 应用程序的应用程序和服务清单示例。 这些示例的用途是展示有哪些设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Windows Server 2016 容器示例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)清单。
 
 展示了以下功能：
+
 |清单|功能|
 |---|---|
 |[应用程序清单](#application-manifest)| [替代环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置容器端口到主机映射](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[配置容器注册表身份验证](service-fabric-get-started-containers.md#configure-container-registry-authentication)、[资源调控](service-fabric-resource-governance.md)、[设置隔离模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定 OS 内部版本特定的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
@@ -40,8 +41,8 @@ ms.locfileid: "55156218"
 <ApplicationManifest ApplicationTypeName="Container.ApplicationType"
                      ApplicationTypeVersion="1.0.0"
                      xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                     xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
     <Parameter Name="BackEndService_InstanceCount" DefaultValue="-1" />
     <Parameter Name="FrontEndService_InstanceCount" DefaultValue="-1" />
@@ -171,8 +172,8 @@ ms.locfileid: "55156218"
 <ServiceManifest Name="FrontEndServicePkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType.
          The UseImplicitHost attribute indicates this is a guest service. -->
@@ -221,8 +222,8 @@ ms.locfileid: "55156218"
 <ServiceManifest Name="BackEndServicePkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType.
          The UseImplicitHost attribute indicates this is a guest service. -->

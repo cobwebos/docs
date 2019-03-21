@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中为 B2B 协作配置 SaaS 应用 | Microsoft 文档
+title: 配置适用于 B2B 协作-Azure Active Directory 的 SaaS 应用程序 |Microsoft Docs
 description: 有关 Azure Active Directory B2B 协作的代码和 PowerShell 示例
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a2f4ecbe8a183636bfc4e463e4c074ab94e2d01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 03652329acaeb737cb7cb4010ef48938caa17acc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182810"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096905"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>为 B2B 协作配置 SaaS 应用
 
@@ -37,37 +37,37 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 
 1. 要将 Dropbox Business 应用添加到 Azure AD 中，请在左窗格中选择“企业应用程序”，然后单击“添加”。
 
-  ![“企业应用程序”页上的“添加”按钮](media/configure-saas-apps/add-dropbox.png)
+   ![“企业应用程序”页上的“添加”按钮](media/configure-saas-apps/add-dropbox.png)
 
 2. 在“添加应用程序”窗口中的搜索框内输入 **dropbox**，并在结果列表中选择“Dropbox for Business”。
 
-  ![在“添加应用程序”页上搜索“dropbox”](media/configure-saas-apps/add-app-dialog.png)
+   ![在“添加应用程序”页上搜索“dropbox”](media/configure-saas-apps/add-app-dialog.png)
 
 3. 在“单一登录”页上的左窗格中选择“单一登录”，并在“用户标识符”框中输入 **user.mail**。 （用户标识符默认设置为“UPN”。）
 
-  ![为应用配置单一登录](media/configure-saas-apps/configure-app-sso.png)
+   ![为应用配置单一登录](media/configure-saas-apps/configure-app-sso.png)
 
 4. 要下载用于 Dropbox 配置的证书，请选择“配置 DropBox”，并在列表中选择“SAML 单一登录服务 URL”。
 
-  ![下载用于 DropBox 配置的证书](media/configure-saas-apps/download-certificate.png)
+   ![下载用于 DropBox 配置的证书](media/configure-saas-apps/download-certificate.png)
 
 5. 在“单一登录”页中使用登录 URL 登录到 Dropbox。
 
-  ![Dropbox 登录页](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![Dropbox 登录页](media/configure-saas-apps/sign-in-to-dropbox.png)
 
 6. 在菜单中选择“管理控制台”。
 
-  ![Dropbox 菜单中的“管理控制台”链接](media/configure-saas-apps/dropbox-menu.png)
+   ![Dropbox 菜单中的“管理控制台”链接](media/configure-saas-apps/dropbox-menu.png)
 
 7. 在“身份验证”对话框中选择“更多”，上载证书，并在“登录 URL”框中输入 SAML 单一登录 URL。
 
-  ![折叠的“身份验证”对话框中的“更多”链接](media/configure-saas-apps/dropbox-auth-01.png)
+   ![折叠的“身份验证”对话框中的“更多”链接](media/configure-saas-apps/dropbox-auth-01.png)
 
-  ![展开的“身份验证”对话框中的“登录 URL”链接](media/configure-saas-apps/paste-single-sign-on-URL.png)
+   ![展开的“身份验证”对话框中的“登录 URL”链接](media/configure-saas-apps/paste-single-sign-on-URL.png)
 
 8. 要在 Azure 门户中配置自动用户设置，请在左窗格中选择“预配”，在“预配模式”框中选择“自动”，并选择“授权”。
 
-  ![在 Azure 门户中配置自动用户预配](media/configure-saas-apps/set-up-automatic-provisioning.png)
+   ![在 Azure 门户中配置自动用户预配](media/configure-saas-apps/set-up-automatic-provisioning.png)
 
 在 Dropbox 应用中设置来宾或成员用户后，他们会收到来自 Dropbox 的单独邀请。 若要使用 Dropbox 单一登录，受邀者必须单击邀请中的某个链接接受邀请。
 
@@ -78,22 +78,22 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 
 2. 按以下顺序来配置单一登录：
 
-  ![配置 Box 单一登录](media/configure-saas-apps/configure-box-sso.png)
+   ![配置 Box 单一登录](media/configure-saas-apps/configure-box-sso.png)
 
- a. 在“登录 URL”框中，确保登录 URL 是在 Azure 门户中为 Box 适当设置的 URL。 此 URL 是 Box.com 租户的 URL。 它应该遵循命名约定 *https://.box.com*。  
- “标识符”不适用于此应用，但仍显示为必填字段。
+   a. 在“登录 URL”框中，确保登录 URL 是在 Azure 门户中为 Box 适当设置的 URL。 此 URL 是 Box.com 租户的 URL。 它应该遵循命名约定 *https://.box.com*。  
+   “标识符”不适用于此应用，但仍显示为必填字段。
 
- b. 在“用户标识符”框中输入 **user.mail**（适用于来宾帐户 SSO）。
+   b. 在“用户标识符”框中输入 **user.mail**（适用于来宾帐户 SSO）。
 
- c. 在“SAML 签名证书”下面，单击“创建新证书”。
+   c. 在“SAML 签名证书”下面，单击“创建新证书”。
 
- d. 要开始将 Box.com 租户配置为使用 Azure AD 作为标识提供者，请下载元数据文件并将其保存到本地驱动器。
+   d. 要开始将 Box.com 租户配置为使用 Azure AD 作为标识提供者，请下载元数据文件并将其保存到本地驱动器。
 
- e. 将元数据文件转发给 Box 支持团队，他们将为你配置单一登录。
+   e. 将元数据文件转发给 Box 支持团队，他们将为你配置单一登录。
 
 3. 为了在 Azure AD 中启用自动用户设置，请在左窗格中选择“预配”，并选择“授权”。
 
-  ![授权 Azure AD 连接到 Box](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
+   ![授权 Azure AD 连接到 Box](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
 与 Dropbox 受邀者一样，Box 受邀者也必须从 Box 应用兑换其邀请。
 

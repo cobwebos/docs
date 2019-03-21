@@ -2,21 +2,21 @@
 title: 有关联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制的文章 | Microsoft Docs
 description: 了解在联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/11/2019
-ms.openlocfilehash: b066c7f6c32b6e9fe1c1f63b5db88b4deaa2edae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.date: 03/05/2019
+ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231812"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091488"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制
 
@@ -62,9 +62,9 @@ ms.locfileid: "54231812"
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
- 2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。
+   1. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。
 
- 3. 重新运行迁移活动。
+   1. 重新运行迁移活动。
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>在执行“完整数据加载”或“增量数据同步”期间发生迁移失败，并且与架构中的活动触发器发生各种完整性冲突
 
@@ -89,7 +89,7 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 **解决方法**
 
-如果 LOB 列大于 32 KB，请通过 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) 联系工程团队。
+如果必须大于 32 KB 的 LOB 列，请联系工程团队[让 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。
 
 ### <a name="issues-with-timestamp-columns"></a>时间戳列的问题
 
@@ -99,7 +99,7 @@ DMS 不会迁移源时间戳值；DMS 在目标表中生成新的时间戳值。
 
 **解决方法**
 
-如果需要 DMS 迁移源表中存储的确切时间戳值，请通过 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) 联系工程团队。
+如果需要 DMS 迁移源表中存储的确切时间戳值，请联系的工程团队[让 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。
 
 ### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>发生数据迁移错误时，“数据库详细状态”边栏选项卡上不会提供其他详细信息。
 

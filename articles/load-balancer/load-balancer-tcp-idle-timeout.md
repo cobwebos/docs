@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 24a7d2354693e362d7709b8817c438555caae0e3
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
+ms.openlocfilehash: 0c57eec4d739da13d98099a6b2f01fbf0ad0051c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256190"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857532"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>为 Azure 负载均衡器配置 TCP 空闲超时设置
 
@@ -28,7 +28,7 @@ ms.locfileid: "53256190"
 
 当连接关闭时，客户端应用程序可能会收到以下错误消息：“The underlying connection was closed:A connection that was expected to be kept alive was closed by the server.”（基础连接已关闭: 服务器关闭了应保持连接状态的连接。）
 
-常见的做法是使用 TCP 保持连接状态。 这种做法可以将连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 在启用保持连接状态的情况下，在连接处于非活动状态时发送数据包。 这些用于保持连接状态的数据包可以确保始终达不到空闲超时值，于是就可以长时间维持连接。
+常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 在启用保持连接状态的情况下，在连接处于非活动状态时发送数据包。 这些用于保持连接状态的数据包可以确保始终达不到空闲超时值，于是就可以长时间维持连接。
 
 此设置仅适用于入站连接。 为了避免断开连接，必须将 TCP 保持连接的时间间隔配置为小于空闲超时设置，或者增加空闲超时值。 我们已允许对空闲超时进行配置，以便支持这样的情况。 现在，可以将空闲超时的持续时间设置为 4 到 30 分钟。
 
@@ -122,7 +122,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Prot
 ### <a name="response"></a>响应
 
 ```xml
-<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
     <InputEndpoint>
     <LoadBalancedEndpointSetName>endpoint-set-name</LoadBalancedEndpointSetName>
     <LocalPort>local-port-number</LocalPort>

@@ -1,19 +1,18 @@
 ---
 title: 常见问题解答 - 适用于 IaaS VM 的 Azure 磁盘加密 | Microsoft Docs
 description: 本文提供有关适用于 Windows 和 Linux IaaS VM 的 Microsoft Azure 磁盘加密的常见问题解答。
-author: mestew
+author: msmbaldwin
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.author: mstewart
-ms.date: 01/25/2019
+ms.author: mbaldwin
+ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda7d6d3fddf2f4529a983ce2d4991797a5c8448
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: b98b9653aee395ebdf797c50c313c322727480c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661830"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892755"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -44,12 +43,14 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 | --- | --- |--- |
 | Ubuntu | 16.04| OS 和数据磁盘 |
 | Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
+| RHEL | 7.6 | OS 和数据磁盘* |
 | RHEL | 7.5 | OS 和数据磁盘* |
 | RHEL | 7.4 | OS 和数据磁盘* |
 | RHEL | 7.3 | OS 和数据磁盘* |
 | RHEL | 7.2 | OS 和数据磁盘* |
 | RHEL | 6.8 | 数据磁盘* |
 | RHEL | 6.7 | 数据磁盘* |
+| CentOS | 7.5 | OS 和数据磁盘 |
 | CentOS | 7.4 | OS 和数据磁盘 |
 | CentOS | 7.3 | OS 和数据磁盘 |
 | CentOS | 7.2n | OS 和数据磁盘 |
@@ -72,6 +73,18 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>是否可以使用 Azure 磁盘加密来加密引导卷和数据卷？
 
 是的，可以加密 Windows 和 Linux IaaS VM 的引导卷和数据卷。 对于 Windows VM，在不事先加密 OS 卷的情况下无法加密数据。 对于 Linux VM，可以在不事先加密 OS 卷的情况下加密数据卷。 加密 Linux 的 OS 卷之后，不支持针对 Linux IaaS VM 的 OS 卷禁用加密。
+
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>可以加密 Azure 磁盘加密的卸载的卷？
+
+否，Azure 磁盘加密仅加密已装载的卷。
+
+## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>如何旋转秘密或加密密钥？
+
+若要轮换机密，只需调用您最初用于启用磁盘加密在同一命令，指定不同的密钥保管库。 若要轮换的密钥加密密钥，调用您最初用于启用磁盘加密，指定新的密钥加密在同一命令。 
+
+## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>如何添加或删除密钥加密密钥，如果我最初未使用其中一个？
+
+若要添加密钥加密密钥，请调用再次传递密钥加密密钥参数启用命令。 若要删除的密钥加密密钥，请调用不使用密钥加密密钥参数再次启用命令。
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok"></a>Azure 磁盘加密是否支持自带秘钥 (BYOK)？
 
@@ -133,10 +146,17 @@ Azure 磁盘加密具有先决条件。 请参阅 [Azure 磁盘加密先决条�
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure 磁盘加密使用何种加密方法？
 
-在 Windows 上，ADE 使用 BitLocker AES256 加密方法（Windows Server 2012 之前版本上的 AES256WithDiffuser）。 在 Linux 上，ADE 配合使用 aes-xts-plain64 的 dmcrypt 默认方法和 256 位卷主密钥。
+在 Windows 上，ADE 使用 BitLocker AES256 加密方法（Windows Server 2012 之前版本上的 AES256WithDiffuser）。 在 Linux 上，ADE 使用 256 位卷主密钥使用 aes xts plain64 解密默认值。
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>如果我使用 EncryptFormatAll 并指定了所有卷类型，它是否会擦除我们已加密的数据驱动器上的数据？
 否，不会擦除已使用 Azure 磁盘加密进行了加密的数据驱动器上的数据。 与 EncryptFormatAll 不重新加密 OS 驱动器类似，它也不会重新加密已加密的数据驱动器。 有关详细信息，请参阅 [EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)。        
+
+## <a name="is-xfs-filesystem-supported"></a>是否支持 XFS 文件系统？
+数据磁盘加密支持 XFS 卷。 若要加密当前已使用 XFS 格式化的卷，请指定 EncryptFormatAll 选项。 这将重新格式化该卷。 有关详细信息，请参阅 [EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)。
+
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>可以备份和还原已加密的 VM？ 
+
+Azure 备份提供了一种机制来备份和还原加密的 VM 的同一订阅和区域中。  有关说明，请参阅[备份和还原加密的虚拟机与 Azure 备份](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)。  当前不支持将已加密的 VM 还原到不同的区域。  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>可以在何处提问或提供反馈？
 

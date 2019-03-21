@@ -8,30 +8,30 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510130"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898680"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
 
 WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](../storage-import-export-service.md)一起使用的驱动器准备和修复工具。 可以使用此工具将数据复制到要寄送给 Azure 数据中心的硬盘驱动器。 完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。 本文介绍了如何使用此工具。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="requirements-for-waimportexportexe"></a>WAImportExport.exe 的先决条件
 
 - **计算机配置**
   - Windows 7、Windows Server 2008 R2 或更新版本的 Windows 操作系统
-  - 必须安装 .NET Framework 4。 有关如何检查计算机上是否已安装 .Net Framework 的信息，请参阅[常见问题](#faq)。
+  - 必须安装 .NET Framework 4。 请参阅[常见问题解答](#faq)如何检查是否已在计算机上安装.NET Framework。
 - **存储帐户密钥** - 需要具有存储帐户的至少一个帐户密钥。
 
 ### <a name="preparing-disk-for-import-job"></a>为导入作业准备磁盘
 
 - **BitLocker** - 必须在运行 WAImportExport 工具的计算机上启用 BitLocker。 若要了解如何启用 BitLocker，请参阅 [FAQ](#faq)。
-- 可从运行 WAImportExport 工具的计算机访问的**磁盘**。 有关磁盘规格，请参阅[常见问题](#faq)。
+- **磁盘** 。 有关磁盘规格，请参阅[常见问题](#faq)。
 - **源文件** - 打算导入的文件必须可从复制计算机访问，无论这些文件是位于网络共享还是本地硬盘驱动器上。
 
 ### <a name="repairing-a-partially-failed-import-job"></a>修复部分失败的导入作业
@@ -40,7 +40,7 @@ WAImportExport 工具是可与 [Microsoft Azure 导入/导出服务](../storage-
 
 ### <a name="repairing-a-partially-failed-export-job"></a>修复部分失败的导出作业
 
-- Azure 导入/导出服务在存储帐户与磁盘之间复制数据时生成的**复制日志文件**。 该文件位于源存储帐户中。
+- Azure 导入/导出服务在存储帐户与磁盘之间复制数据时生成的副本日志文件。 该文件位于源存储帐户中。
 - **清单文件** - [可选] 位于 Microsoft 返回的已导出驱动器中。
 
 ## <a name="download-and-install-waimportexport"></a>下载并安装 WAImportExport
@@ -76,22 +76,22 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 ### <a name="dataset-csv-file-fields"></a>数据集 CSV 文件字段
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
 | BasePath | **[必需]**<br/>此参数的值表示要导入的数据的源。 此工具将以递归方式复制此路径下的所有数据。<br><br/>允许的值：这必须是本地计算机上的有效路径或者是有效的共享路径，并且应当可以供用户访问。 目录路径必须是绝对路径（而非相对路径）。 如果路径以“\\”结尾，表示的是目录；如果路径不以“\\”结尾，表示的是文件。<br/>不允许在此字段中指定正则表达式。 如果路径包含空格，请将其输入在 "" 中。<br><br/>**示例**："c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
-| DstBlobPathOrPrefix | **[必需]**<br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。 如果仅指定根，将在目标 Blob 容器中复制源的目录结构。 如果需要不同于源的目录结构，请在 CSV 中添加多行映射<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 Blob 的名称中不能包含“/”，因此当目标目录为根容器时，不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 BLOB 路径为 https://mystorageaccount.blob.core.windows.net/video，则此字段的值可为 video/  |
-| /BlobType | **[可选]** block &#124; page<br/>导入/导出服务当前支持 2 种 Blob。 页 Blob 和块 Blob。默认情况下，所有文件以块 Blob 的形式导入。 \*.vhd 和 \*.vhdx 以页 Blob 的形式导入。块 Blob 和页 Blob 的允许大小有限制。 有关详细信息，请参阅 [Storage scalability targets](storage-scalability-targets.md)（存储可伸缩性目标）。  |
+| DstBlobPathOrPrefix | [必需]<br/> Windows Azure 存储帐户中的目标虚拟目录的路径。 虚拟目录可能存在，也可能不存在。 如果不存在，则导入/导出服务会创建一个。<br/><br/>在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。 请记住，容器名称必须是小写的。 有关容器命名规则，请参阅[命名和引用容器、Blob 与元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。 如果仅指定根，将在目标 Blob 容器中复制源的目录结构。 如果需要不同于源的目录结构，请在 CSV 中添加多行映射<br/><br/>可以指定容器，或者指定类似于 music/70s/ 的 Blob 前缀。 目标目录必须以容器名称开头，后接正斜杠“/”，并且可以选择包含以“/”结尾的虚拟 Blob 目录。<br/><br/>当目标容器为根容器时，必须显式指定包含正斜杠的根容器，例如 $root/。 由于根容器下的 blob 名称中不能包含“/”，因此当目标目录为根容器时，不会复制源目录中的任何子目录。<br/><br/>**示例**<br/>如果目标 BLOB 路径为 https://mystorageaccount.blob.core.windows.net/video，则此字段的值可为 video/  |
+| /BlobType | [可选] block &#124; page<br/>导入/导出服务当前支持 2 种 Blob。 页 Blob 和块 Blob。默认情况下，所有文件以块 Blob 的形式导入。 \*.vhd 和 \*.vhdx 将以页 blob 的形式导入。块 blob 和页 blob 允许的大小有一定限制。 有关详细信息，请参阅 [Storage scalability targets](storage-scalability-targets.md)（存储可伸缩性目标）。  |
 | Disposition | **[可选]** rename &#124; no-overwrite &#124; overwrite <br/> 此字段指定导入期间 （即在将数据从磁盘上传到存储帐户时）发生复制行为。 可用选项包括：rename&#124;overwrite&#124;no-overwrite。如果未指定任何选项，使用默认选项“rename”。 <br/><br/>Rename：若有同名对象，则在目标中创建副本。<br/>Overwrite：将文件覆盖为较新的文件。 最后修改的文件优先。<br/>No-overwrite：如果文件已存在，则跳过写入该文件。|
 | MetadataFile | **[可选]** <br/>此字段的值是用户需要保留对象的元数据或者提供自定义元数据时可提供的元数据文件。 目标 Blob 的元数据文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md) |
-| PropertiesFile | **[可选]** <br/>目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。 |
+| PropertiesFile | [可选] <br/>目标 Blob 的属性文件的路径。 有关详细信息，请参阅[导入/导出服务元数据和属性文件格式](../storage-import-export-file-format-metadata-and-properties.md)。 |
 
 ## <a name="prepare-initialdriveset-or-additionaldriveset-csv-file"></a>准备 InitialDriveSet 或 AdditionalDriveSet CSV 文件
 
 ### <a name="what-is-driveset-csv"></a>什么是驱动器集 CSV
 
-/InitialDriveSet 或 /AdditionalDriveSet 标志的值是 CSV 文件，其中包含要将驱动器号映射到的磁盘的列表，以便此工具可以正确选择要准备的磁盘列表。 如果数据大小大于单个磁盘的大小，WAImportExport 工具以优化方式在此 CSV 文件中所列的多个磁盘之间分发数据。
+/InitialDriveSet 或 /AdditionalDriveSet 标志的值是 CSV 文件，其中包含要将驱动器号映射到的磁盘的列表，以便此工具可以正确选择要准备的磁盘列表。 如果数据大小大于单个磁盘的大小，WAImportExport 工具以优化方式在此 CSV 文件中所列的多个磁盘之间分配数据。
 
-在单个会话中可将数据写入到磁盘数量没有限制。 工具会根据磁盘大小和文件夹大小分发数据。 它会选择最适合对象大小的磁盘。 上传到存储帐户时，数据会聚合回数据集文件中指定的目录结构。 若要创建驱动器集 CSV，请遵循以下步骤。
+在单个会话中可将数据写入到磁盘数量没有限制。 工具会根据磁盘大小和文件夹大小分配数据。 它会选择最适合对象大小的磁盘。 上传到存储帐户时，数据会聚合回数据集文件中指定的目录结构。 若要创建驱动器集 CSV，请遵循以下步骤。
 
 ### <a name="create-basic-volume-and-assign-drive-letter"></a>创建基本卷并分配驱动器号
 
@@ -151,12 +151,12 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 如果数据无法放入 InitialDriveset 中指定的驱动器，可以使用该工具将其他驱动器添加到同一个复制会话。 
 
->[!NOTE] 
->会话 ID 应与上一个会话 ID 匹配。日记文件应与上一个会话中指定的文件匹配。
->
-```
-WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
-```
+> [!NOTE]
+> 会话 ID 应与上一个会话 ID 匹配。日记文件应与上一个会话中指定的文件匹配。
+> 
+> ```
+> WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
+> ```
 
 **示例：**
 
@@ -199,17 +199,17 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 
 ## <a name="waimportexport-parameters"></a>WAImportExport 参数
 
-| parameters | 说明 |
+| parameters | 描述 |
 | --- | --- |
 |     /j:&lt;JournalFile&gt;  | **必需**<br/> 日记文件的路径。 日记文件跟踪一组驱动器，并记录这些驱动器的准备进度。 必须始终指定日记文件。  |
-|     /logdir:&lt;LogDirectory&gt;  | 可选。 日志目录。<br/> 详细日志文件以及某些临时文件将写入此目录。 如果未指定，则将当前目录用作日志目录。 对于同一个日记文件，只能将日志目录指定指定一次。  |
+|     /logdir:&lt;LogDirectory&gt;  | 可选。 日志目录。<br/> 详细日志文件以及某些临时文件将写入此目录。 如果未指定，则将当前目录用作日志目录。 对于同一个日记文件，只能指定一次日志目录。  |
 |     /id:&lt;SessionId&gt;  | **必需**<br/> 用于标识复制会话的会话 ID。 它用于确保准确恢复中断的复制会话。  |
 |     /ResumeSession  | 可选。 如果最后一个复制会话异常终止，可以指定此参数来恢复该会话。   |
 |     /AbortSession  | 可选。 如果最后一个复制会话异常终止，可以指定此参数来中止该会话。  |
 |     /sn:&lt;StorageAccountName&gt;  | **必需**<br/> 仅适用于 RepairImport 和 RepairExport。 存储帐户的名称。  |
 |     /sk:&lt;StorageAccountKey&gt;  | **必需**<br/> 存储帐户的密钥。 |
 |     /InitialDriveSet:&lt;driveset.csv&gt;  | **必需** 运行第一个复制会话时<br/> 包含要准备的驱动器列表的 CSV 文件。  |
-|     /AdditionalDriveSet:&lt;driveset.csv&gt; | **必需**。 （将驱动器添加到当前复制会话时）。 <br/> 包含要添加的其他驱动器列表的 CSV 文件。  |
+|     /AdditionalDriveSet:&lt;driveset.csv&gt; | **必需**。 将驱动器添加到当前复制会话时。 <br/> 包含要添加的其他驱动器列表的 CSV 文件。  |
 |      /r:&lt;RepairFile&gt; | **必需** 仅适用于 RepairImport 和 RepairExport。<br/> 用于跟踪修复进度的文件的路径。 每个驱动器都必须有且仅有一个修复文件。  |
 |     /d:&lt;TargetDirectories&gt; | **必需**。 仅适用于 RepairImport 和 RepairExport。 对于 RepairImport，值为要修复的一个或多个以分号分隔的目录；对于 RepairExport，值为要修复的一个目录，例如驱动器的根目录。  |
 |     /CopyLogFile:&lt;DriveCopyLogFile&gt; | **必需** 仅适用于 RepairImport 和 RepairExport。 驱动器复制日志文件（详细或错误）的路径。  |
@@ -305,7 +305,7 @@ WAImportExport 工具是可与 Microsoft Azure 导入/导出服务一起使用�
 
 #### <a name="how-does-the-waimportexport-tool-work-on-multiple-source-dir-and-disks"></a>WAImportExport 工具如何处理多个源目录和磁盘？
 
-如果数据大小大于磁盘大小，WAImportExport 工具以优化方式在磁盘之间分发数据。 到多个磁盘的数据复制可以并行或者按顺序执行。 可同时将数据写入到磁盘数量没有限制。 工具会根据磁盘大小和文件夹大小分发数据。 它会选择最适合对象大小的磁盘。 数据上传到存储帐户时，将融合回到指定的目录结构。
+如果数据大小大于磁盘大小，WAImportExport 工具以优化方式在磁盘之间分发数据。 到多个磁盘的数据复制可以并行或者按顺序执行。 可同时将数据写入到其中的磁盘没有数量限制。 工具会根据磁盘大小和文件夹大小分发数据。 它会选择最适合对象大小的磁盘。 上传到存储帐户时，数据会聚合回指定的目录结构。
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>在哪里可以找到上一个版本的 WAImportExport 工具？
 
@@ -333,7 +333,7 @@ SessionId 可以包含字母、0~9、下划线 (\_)、短划线 (-) 或井号 (#
 
 日志目录指定用于存储详细日志和临时清单文件的目录。 如果未指定，则使用当前目录作为日志目录。 日志为详细日志。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 #### <a name="what-are-the-specifications-of-my-disk"></a>磁盘的规格是什么？
 
@@ -358,13 +358,13 @@ SessionId 可以包含字母、0~9、下划线 (\_)、短划线 (-) 或井号 (#
 1. 在命令提示符下键入 gpedit.msc，启动**组策略编辑器**。 如果**组策略编辑器**不可用，请先启用 BitLocker。 请参阅前一条常见问题。
 2. 打开“本地计算机策略”&gt;“计算机配置”&gt;“管理模板”&gt;“Windows 组件”&gt;“BitLocker 驱动器加密”&gt;“操作系统驱动器”。
 3. 编辑“启动时需要附加身份验证”策略。
-4. 将该策略设置为“已启用”，并确保“没有兼容的 TPM 时允许 BitLocker”已选中。
+4. 将该策略设置为“启用”，并确保已选中“没有兼容的 TPM 时允许 BitLocker”。
 
 ####  <a name="how-to-check-if-net-4-or-higher-version-is-installed-on-my-machine"></a>如何检查计算机上是否已安装 .NET 4 或更高版本？
 
 所有 Microsoft .NET Framework 版本都安装在以下目录：%windir%\Microsoft.NET\Framework\
 
-请在要运行该工具的目标计算机上导航到上述路径。 查找以“v4”开头的文件夹名称。 如果不存在这种目录，则表示计算机上未安装 .NET 4。 可以使用 [Microsoft .NET Framework 4（Web 安装程序）](https://www.microsoft.com/download/details.aspx?id=17851)在计算机上下载 .Net 4。
+请在要运行该工具的目标计算机上导航到上述路径。 查找以“v4”开头的文件夹名称。 如果不存在这种目录，则表示计算机上未安装 .NET 4。 可以使用您计算机上下载.NET 4 [Microsoft.NET Framework 4 （Web 安装程序）](https://www.microsoft.com/download/details.aspx?id=17851)。
 
 ### <a name="limits"></a>限制
 
@@ -384,7 +384,7 @@ SessionId 可以包含字母、0~9、下划线 (\_)、短划线 (-) 或井号 (#
 
 #### <a name="what-will-be-the-hierarchy-of-my-data-when-it-appears-in-the-storage-account"></a>数据显示在存储帐户中时会采用哪种层次结构？
 
-尽管数据分散在多个磁盘之间，但数据上传到存储帐户时，将融合回到数据集 CSV 文件中指定的目录结构。
+尽管数据分散在多个磁盘之间，但数据上传到存储帐户时，会融合回到数据集 CSV 文件中指定的目录结构。
 
 #### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>复制正在进行时，有多少个输入磁盘会并行发生活动 IO？
 
