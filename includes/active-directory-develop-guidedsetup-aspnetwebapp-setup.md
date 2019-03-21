@@ -3,8 +3,8 @@ title: include 文件
 description: include 文件
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ac8e678d8ca006fc5b0ab52f007590ac4e334bf7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 701b08cafd2e6d38a68252ea5919c8f4cd7de9b4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988501"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203592"
 ---
 ## <a name="set-up-your-project"></a>设置项目
 
@@ -31,7 +31,7 @@ ms.locfileid: "49988501"
 
 1. 在 Visual Studio 中：`File` > `New` > `Project`
 2. 在 *Visual C#\Web* 下，选择 `ASP.NET Web Application (.NET Framework)`。
-3. 命名应用程序，并单击“确定”
+3. 命名应用程序，然后单击“确定”
 4. 选择 `Empty` 并选中复选框，添加 `MVC` 引用
 
 ## <a name="add-authentication-components"></a>添加身份验证组件
@@ -51,7 +51,7 @@ ms.locfileid: "49988501"
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>配置身份验证管道
-下面的步骤用于创建 OWIN 中间件 Startup 类，以配置 OpenID Connect 身份验证。 IIS 进程启动时，会自动执行此类。
+下面的步骤用于创建 OWIN 中间件 Startup 类，以配置 OpenID Connect 身份验证。 IIS 进程启动时，将自动执行此类。IIS 进程启动时，将自动执行此类。
 
 > [!TIP]
 > 如果项目的根文件夹中没有 `Startup.cs` 文件，请执行以下操作：

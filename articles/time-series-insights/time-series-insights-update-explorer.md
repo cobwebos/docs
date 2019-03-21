@@ -10,18 +10,18 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: d5c18521f39b1b57b5f94a54bb3131e05abba745
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: ed8a829bd73a53dc94bf8b08648b3d6684f718f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556639"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109757"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>在资源管理器预览版中实现数据可视化
 
 本文介绍 Azure 时序见解预览版[资源管理器 Web 应用](https://insights.timeseries.azure.com/preview/samples)中可用的功能和选项。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 使用 Azure 时序见解预览版资源管理器之前，必须：
 
@@ -141,7 +141,7 @@ Azure 时序见解预览版资源管理器包含以下元素：
 
 1. **日期范围起始和结束 Web 控件**：借助此 Web 控件可以轻松地单击并选择所需日期和时间范围。 还可以使用该控件在不同时区之间切换。 进行更改之后，若要应用于当前工作区，请选择“保存”。
 
-  ![explorer-thirteen][13]
+   ![explorer-thirteen][13]
 
 ## <a name="time-series-insights-preview-navigation-panel"></a>时序见解预览版导航面板
 

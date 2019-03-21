@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
 ms.service: batch
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5117d426ac9595dfe25828013c1bd8c7fa81f92c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: e2bd67ebb977a37c75631f16fbbf4c7dbd6bf250
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812355"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765364"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
@@ -53,7 +53,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以�
 
 ## <a name="log-in-and-authenticate"></a>登录并进行身份验证
 
-要将 Azure CLI 与 Batch 配合使用，需登录并进行身份验证。 请执行两个简单的步骤：
+若要将 Azure CLI 与 Batch 配合使用，需登录并进行身份验证。 请执行两个简单的步骤：
 
 1. **登录到 Azure。** 登录到 Azure 即可访问 Azure 资源管理器命令，包括 [Batch Management 服务](batch-management-dotnet.md)命令。  
 2. **登录到 Batch 帐户。** 登录到 Batch 帐户即可访问 Batch 服务命令。   
@@ -88,7 +88,7 @@ az login
 
     将 Azure CLI 与 Batch 配合使用时，通过 Azure AD 进行身份验证是默认设置，建议用于大多数方案。 
     
-    如上一部分所述，以交互方式登录到 Azure 时，系统会缓存凭据，因此 Azure CLI 可以使用这些相同的凭据登录到 Batch 帐户。 如果通过服务主体登录到 Azure，也会使用这些凭据登录到 Batch 帐户。
+    如上一部分所述，以交互方式登录到 Azure 时，系统会缓存凭据，因此 Azure CLI 可以使用这些相同的凭据将你登录到 Batch 帐户。 如果通过服务主体登录到 Azure，也会使用这些凭据登录到 Batch 帐户。
 
     Azure AD 的优势是提供基于角色的访问控制 (RBAC)。 使用 RBAC 时，用户的访问权限取决于分配给他们的角色，而不是是否拥有帐户密钥。 可以管理 RBAC 角色而不是帐户密钥，让 Azure AD 负责访问权限和身份验证。  
 
@@ -152,7 +152,7 @@ az batch task list --job-id job001
 
 下表介绍 Batch 服务支持的 OData 子句：
 
-| 子句 | 说明 |
+| 子句 | 描述 |
 |---|---|
 | `--select-clause [select-clause]` | 返回每个实体的属性子集。 |
 | `--filter-clause [filter-clause]` | 仅返回与指定的 OData 表达式匹配的实体。 |

@@ -1,23 +1,23 @@
 ---
-title: 机器学习模型如何变为 Web 服务
+title: 如何模型变为 web 服务
 titleSuffix: Azure Machine Learning Studio
-description: Azure 机器学习工作室模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
+description: 如何在 Azure 机器学习工作室模型实验逐步进展从开发到 Web 服务的机制概述。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 776f33e3e550ad9a711a90732c6c4526e647aa89
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 28bb96099acb800d9095325b8c7b46a6b5124b4e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456786"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835116"
 ---
-# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>机器学习工作室模型如何从实验逐步变为运营 Web 服务
+# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-a-web-service"></a>机器学习工作室模型对 Web 服务从实验逐步进展的方式
 Azure 机器学习工作室提供交互式画布，允许开发、运行、测试和迭代表示预测分析模型的***实验***。 有大量各种不同的模块可用于：
 
 * 将数据输入到实验
@@ -32,7 +32,7 @@ Azure 机器学习工作室提供交互式画布，允许开发、运行、测�
 在本文中，我们提供了有关机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
 
 > [!NOTE]
-> 还有其他方法可用于开发和部署机器学习模型，但本文的重点是如何使用机器学习工作室。 例如，若要阅读如何使用 R 创建经典预测 Web 服务的说明，请参阅博客文章[使用 RStudio 和 Azure 机器学习工作室生成和部署预测 Web 应用](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)。
+> 还有其他方法可用于开发和部署机器学习模型，但本文的重点是如何使用机器学习工作室。 例如，若要阅读如何使用 R 创建经典预测 Web 服务的说明，请参阅博客文章[使用 RStudio 和 Azure 机器学习工作室生成和部署预测 Web 应用](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)。
 >
 >
 
@@ -95,7 +95,7 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 如果要保留机器学习模型，但希望使用新数据对其进行重新训练，有两个选择：
 
-1. **Web 服务运行时重新训练模型** - 如果要在预测 Web 服务正在运行时重新训练模型，可以通过对训练实验进行部分修改，以使其成为***重新训练实验***来完成此操作，然后可以将其部署为***重新训练 Web* 服务**。 有关如何执行此操作的说明，请参阅[以编程方式重新训练机器学习模型](retrain-models-programmatically.md)。
+1. **Web 服务运行时重新训练模型** - 如果要在预测 Web 服务正在运行时重新训练模型，可以通过对训练实验进行部分修改，以使其成为***重新训练实验***来完成此操作，然后可以将其部署为***重新训练 Web* 服务**。 有关如何执行此操作的说明，请参阅[以编程方式重新训练机器学习模型](/azure/machine-learning/studio/retrain-machine-learning-model)。
 2. **返回原始训练实验并使用不同的训练数据来开发模型** - 预测实验链接到 Web 服务，但训练实验不是以此方式直接链接。 如果修改原始训练实验并单击“**设置 Web 服务**”，它将创建一个*新的*预测实验，在其部署时会创建一项*新的* Web 服务。 它不只是更新原始 Web 服务。
 
    如果需要修改训练实验，请打开它并单击“**另存为**”以制作副本。 这会使原始训练实验、预测实验和 Web 服务保持不变。 现在可以使用更改来创建新的 Web 服务。 部署了新的 Web 服务后，可以决定是否要停止以前的 Web 服务，或使其与新的服务一起运行。
@@ -109,7 +109,7 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 * 转换实验 - [如何准备模型以便在 Azure 机器学习工作室中进行部署](convert-training-experiment-to-scoring-experiment.md)
 * 部署 Web 服务 - [部署 Azure 机器学习 Web 服务](publish-a-machine-learning-web-service.md)
-* 重新训练模型 - [以编程方式重新训练机器学习模型](retrain-models-programmatically.md)
+* 重新训练模型 - [以编程方式重新训练机器学习模型](/azure/machine-learning/studio/retrain-machine-learning-model)
 
 有关整个过程的示例，请参阅：
 

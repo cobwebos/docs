@@ -10,15 +10,15 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 08/09/2018
+ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08897b2085c2a8f0eafb90b77486d60a0edce190
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.openlocfilehash: 17df4415166c71f49c6b2534289b2c1f79cb6174
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359861"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117245"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -43,9 +43,6 @@ Azure Functions 以两种不同的模式运行：消耗计划和 Azure 应用服
 
 使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消费计划中，函数执行在可配置的时间段后超时。
 
-> [!NOTE]
-> 对于消耗量计划，函数的默认超时时间为 5 分钟。 可通过更改 [host.json](functions-host-json.md#functiontimeout) 项目文件中的属性 `functionTimeout`，将函数应用的该值最多增加到最大值 10 分钟。
-
 账单将基于执行数量、执行时间和所用内存。 账单是基于函数应用内的所有函数聚合而生成的。 有关详细信息，请参阅 [Azure Functions 定价页]。
 
 消耗计划是默认的宿主计划，它提供了以下优势：
@@ -62,7 +59,7 @@ Azure Functions 以两种不同的模式运行：消耗计划和 Azure 应用服
 * 具有已运行其他应用服务实例的、未充分利用的现成 VM。
 * 函数应用持续或几乎持续运行。 在这种情况下，应用服务计划可能更经济高效。
 * 所需 CPU 或内存选项超出消耗计划提供的选项。
-* 代码需要运行的时间超过消耗量计划允许的最长执行时间（即 10 分钟）。
+* 你的代码需要运行时间超过[允许的最长执行时间](#timeout)基于消耗计划。
 * 需要仅对应用服务计划可用的功能，例如应用服务环境支持、VNET/VPN 连接性和更大的 VM。
 * 想要在 Linux 上运行函数应用，或者想要提供要在其上运行函数的自定义映像。
 
@@ -70,13 +67,15 @@ VM 使得成本不再取决于执行数量、执行时间和所用内存。 因�
 
 借助应用服务计划，可通过添加更多 VM 实例手动进行扩展，也可启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 还可以通过选择不同的应用服务计划来进行增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/web-sites-scale.md)。 
 
-在应用服务计划上运行 JavaScript 函数时，应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#considerations-for-javascript-functions)。  
+在应用服务计划上运行 JavaScript 函数时，应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#choose-single-vcpu-app-service-plans)。  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
-<a name="always-on"></a>
-### <a name="always-on"></a>AlwaysOn
+
+### <a name="always-on"></a> 始终可用
 
 如果在应用服务计划上运行，应启用 AlwaysOn 设置，使函数应用能正常运行。 在应用服务计划中，如果函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 只能对应用服务计划使用始终可用。 在消耗计划中，平台会自动激活函数应用。
+
+[!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 ## <a name="what-is-my-hosting-plan"></a>我采用了哪种托管计划
 
@@ -125,7 +124,8 @@ Azure Functions 使用名为“缩放控制器”的组件来监视事件率以�
 缩放可根据多种因素而异，可根据选定的触发器和语言以不同的方式缩放。 但是，当今的系统中存在一些缩放特征：
 
 * 单个函数应用最多只能纵向扩展到 200 个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
-* 最多每隔 10 秒分配一次新实例。
+* HTTP 触发器的新实例分配最多一次每隔 1 秒。
+* 对于非 HTTP 触发器，新的实例分配最多一次每隔 30 秒。
 
 不同触发器还可能有不同的缩放限制，如下所述：
 

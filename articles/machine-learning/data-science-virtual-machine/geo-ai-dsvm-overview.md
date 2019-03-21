@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 2aa5522b8200f87df633759ee136f744cd1b8099
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 6588690629d2e266469a4b8ea533c5650f3fc0ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471226"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890876"
 ---
 # <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>地理人工智能数据科学虚拟机简介
 
@@ -44,7 +44,7 @@ Windows 2016 数据科学虚拟机支持这种虚拟机。 另外，还在 Geo-D
 
 Microsoft 提供的[数据科学虚拟机 (DSVM)](overview.md) 是 Azure 上常用的试验和建模环境，并提供许多 AI、机器学习和数据科学工具。 这些平台和工具均已方便地进行预配置，以帮助你立即提高工作效率。 
 
-通过将数据科学 VM 的预测功能与 Azure 云和 [ESRI](http://www.esri.com) 的地理空间分析软件的可伸缩性相结合，数据科学家和地理空间分析师现在有了一个高效平台，通过该平台可以从其数据中获取新智能和确定新机会。 
+通过将数据科学 VM 的预测功能与 Azure 云和 [ESRI](https://www.esri.com) 的地理空间分析软件的可伸缩性相结合，数据科学家和地理空间分析师现在有了一个高效平台，通过该平台可以从其数据中获取新智能和确定新机会。 
 
 
 ## <a name="next-steps"></a>后续步骤

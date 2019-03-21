@@ -8,17 +8,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a86a965a746ed659b73c359ee44fb9be250aae97
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 5f46e7846a5b0cd9479f19d475d4604f37bead4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714277"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168735"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
-了解如何使用脚本操作，将其他 Azure 存储帐户添加到 HDInsight。 本文档中的步骤会将存储帐户添加到基于 Linux 的现有 HDInsight 群集。
+了解如何使用脚本操作，将其他 Azure 存储帐户添加到 HDInsight。 本文档中的步骤会将存储帐户添加到基于 Linux 的现有 HDInsight 群集。 本文适用于[Azure 存储](hdinsight-hadoop-use-blob-storage.md)和仅附加存储帐户 （非默认群集存储帐户）。 本文不适用于[Azure 数据湖存储 Gen1](hdinsight-hadoop-use-data-lake-store.md)并[Azure 数据湖存储第 2 代](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 > [!IMPORTANT]  
 > 本文档中的信息介绍在创建群集后，如何将其他存储添加到此群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
@@ -124,7 +123,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
         fs.azure.account.keyprovider.mystorage.blob.core.windows.net
         fs.azure.account.key.mystorage.blob.core.windows.net
 
-4. 确定需要删除的存储帐户密钥后，使用条目右侧的红色“-”图标将其删除。 然后使用 __“保存”__ 按钮保存更改。
+4. 确定该存储帐户的密钥后，需要使用该条目右侧的红色“-”图标删除该条目。 然后使用 __“保存”__ 按钮保存更改。
 
 5. 保存更改后，使用脚本操作将存储帐户和新的密钥值添加到群集。
 
@@ -133,7 +132,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 如果存储帐户与 HDInsight 群集位于不同的区域，则可能会遇到性能低下问题。 访问不同区域中的数据会在区域 Azure 数据中心之外和公共 Internet 上发送网络流量，这会导致延迟。
 
 > [!WARNING]  
-> 不支持在 HDInsight 群集之外的其他区域使用存储帐户。
+> 不支持在 HDInsight 群集之外的其他区域中使用存储帐户。
 
 ### <a name="additional-charges"></a>额外费用
 
@@ -144,4 +143,4 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
 ## <a name="next-steps"></a>后续步骤
 
-你已了解如何将其他存储帐户添加到现有 HDInsight 群集。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)
+已学习如何将其他存储帐户添加到现有 HDInsight 群集。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)

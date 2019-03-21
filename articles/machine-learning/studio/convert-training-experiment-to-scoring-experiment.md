@@ -5,16 +5,16 @@ description: 如何将机器学习工作室训练实验转换为预测实验，�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 1d07ad7e60e1ee9ff3216767fcfc77405d557f44
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 2a318edada5cdc4124e221fdc8c441ab323a9289
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455103"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119609"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>如何准备在 Azure 机器学习工作室中部署的模型
 
@@ -22,7 +22,7 @@ Azure 机器学习工作室提供必需的工具，方便你开发预测分析�
 
 为此，请使用工作室创建一个实验（称为“训练实验”），以便对模型进行训练、评分和编辑。 满意以后，即可将训练实验转换为*预测实验*（已配置为对用户数据进行评分），使模型做好部署准备。
 
-有关此过程的示例，请参阅[教程 1：预测信贷风险](tutorial-part1-credit-risk.md)。
+可以看到在此过程的示例[教程 1:预测信贷风险](tutorial-part1-credit-risk.md)。
 
 本文深入分析了将训练实验转换为预测实验并对后者进行部署的细节。 了解这些细节之后，即可学习如何配置已部署模型，使之更高效。
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 309ddcf68d03f34ca3309d76d15cc3928037c667
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 715c595f7a8757842ddf10de1c5d5c0a905e9d53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017440"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110522"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>从数据工厂调用 MapReduce 程序
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -42,7 +42,7 @@ ms.locfileid: "54017440"
 > [!NOTE] 
 > 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习以下教程：[构建第一个数据管道](data-factory-build-your-first-pipeline.md)。  
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍如何使用 HDInsight MapReduce 活动。
 
 请参阅 [Pig](data-factory-pig-activity.md) 和 [Hive](data-factory-hive-activity.md)，深入了解如何通过使用 HDInsight Pig 和 Hive 活动在管道中基于 Windows/Linux 的 HDInsight 群集上运行 Pig/Hive 脚本。 
@@ -110,7 +110,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
         }
     }
     ```
-可使用 HDInsight MapReduce 活动在 HDInsight 群集中运行任何 MapReduce jar 文件。 在管道的以下示例 JSON 定义中，配置了HDInsight 活动，以便运行 Mahout JAR 文件。
+   可使用 HDInsight MapReduce 活动在 HDInsight 群集中运行任何 MapReduce jar 文件。 在管道的以下示例 JSON 定义中，配置了HDInsight 活动，以便运行 Mahout JAR 文件。
 
 ## <a name="sample-on-github"></a>GitHub 上的示例
 可从以下资源下载使用 HDInsight MapReduce 活动的示例：[GitHub 上的数据工厂示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample)。  
@@ -236,15 +236,15 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 ## <a name="run-spark-programs"></a>运行 Spark 程序
 可以通过 MapReduce 活动在 HDInsight Spark 群集上运行 Spark 程序。 有关详细信息，请参阅[从 Azure 数据工厂调用 Spark 程序](data-factory-spark.md)。  
 
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
+[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[Azure Portal]: http://portal.azure.com
+[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>另请参阅
 * [Hive 活动](data-factory-hive-activity.md)

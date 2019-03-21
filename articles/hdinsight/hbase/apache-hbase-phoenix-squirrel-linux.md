@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 51707baeba4a511d2766161afacd512a4338cf24
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: 6dee4ac7cb863a08e9046b16189e7f4a7b04b810
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653979"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201664"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>将 Apache Phoenix 与 HDInsight 中基于 Linux 的 Apache HBase 群集配合使用
 了解如何在 Azure HDInsight 中使用 [Apache Phoenix](https://phoenix.apache.org/)，以及如何使用 SQLLine。 有关 Phoenix 的详细信息，请参阅[在 15 分钟或更短时间内了解 Apache Phoenix](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)。 有关 Phoenix 语法，请参阅 [Apache Phoenix 语法](https://phoenix.apache.org/language/index.html)。
@@ -27,7 +27,7 @@ ms.locfileid: "53653979"
 ## <a name="use-sqlline"></a>使用 SQLLine
 [SQLLine](http://sqlline.sourceforge.net/) 是用于执行 SQL 的命令行实用工具。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 使用 SQLLine 之前，必须先准备好以下各项：
 
 * **HDInsight 中的 Apache HBase 群集**。 若要创建一个 HBase 群集，请参阅 [HDInsight 中的 Apache HBase 入门](./apache-hbase-tutorial-get-started-linux.md)。
@@ -47,7 +47,7 @@ ms.locfileid: "53653979"
 
 2. 在 SSH 中，运行以下命令以运行 SQLLine：
 
-        cd /usr/hdp/2.2.9.1-7/phoenix/bin
+        cd /usr/hdp/current/phoenix/bin
         ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
 3. 要创建 HBase 表并插入一些数据，请运行以下命令：
 
@@ -76,7 +76,6 @@ ms.locfileid: "53653979"
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
 
-[hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp
 [hdinsight-hbase-provision-vnet]:apache-hbase-provision-vnet.md
 [hdinsight-hbase-overview]:apache-hbase-overview.md
 

@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 1d350cae379c5ec790413775138225b60b9c5e32
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564929"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901927"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩展云数据库之间移动数据
 
-如果是软件即服务开发人员，应用程序突然遇到巨大需求，那么需要适应该需求增长。 因此，添加了更多数据库（分片）。 如何在不破坏数据完整性的情况下将数据重新分配到新数据库？ 使用**拆分 / 合并工具**将数据从受约束的数据库移到新的数据库。  
+如果是软件即服务开发人员，应用程序突然遇到巨大需求，那么需要适应该需求增长。 因此，你添加了更多数据库（分片）。 如何在不破坏数据完整性的情况下将数据重新分配到新数据库？ 使用**拆分 / 合并工具**将数据从受约束的数据库移到新的数据库。  
 
 将拆分/合并工具作为 Azure web 服务运行。 管理员或开发人员使用该工具在不同数据库 （分片）之间移动 shardlet（一个分片中的数据）。 该工具使用分片映射管理来维护服务元数据数据库，并确保一致的映射。
 
@@ -29,7 +29,7 @@ ms.locfileid: "55564929"
 
 ## <a name="download"></a>下载
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>文档
 
@@ -65,11 +65,11 @@ ms.locfileid: "55564929"
 
   拆分/合并将作为客户托管服务交付。 必须在 Microsoft Azure 订阅中部署并托管该服务。 从 NuGet 下载的程序包将包含一个要使用特定部署信息完成的配置模板。 有关详细信息，请参阅[拆分 / 合并教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。 Azure 订阅运行有该服务，可以控制和配置该服务的大多数安全设置。 默认模板包括配置 SSL 的选项、基于证书的客户端身份验证、存储凭据的加密、DoS 防护和 IP 限制。 可以在以下[拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)文档中找到有关安全方面的详细信息。
 
-  默认部署的服务可与一个辅助角色和一个 Web 角色同时运行。 在 Azure 云服务中，每个角色都使用 A1 VM 大小。 虽然无法在部署程序包时修改这些设置，但是可以在运行的云服务中成功进行部署之后更改它们（通过 Azure 门户）。 请注意，出于技术方面的原因，不得为多个实例配置辅助角色。
+  默认部署的服务可与一个辅助角色和一个 Web 角色同时运行。 在 Azure 云服务中，每个角色都使用 A1 VM 大小。 虽然你无法在部署程序包时修改这些设置，但是可以在运行的云服务中成功进行部署之后更改它们（通过 Azure 门户）。 请注意，出于技术方面的原因，不得为多个实例配置辅助角色。
 
 - **分片映射集成**
 
-  拆分/合并服务可与应用程序的分片映射进行交互。 使用拆分/合并服务拆分或合并范围或者在分片之间移动 shardlet 时，该服务会使分片映射自动保持最新。 为实现此目的，该服务将连接到应用程序的分片映射管理器数据库并将这些范围和映射保留为拆分/合并/移动请求进度。 这可确保在进行拆分/合并操作时，分片映射始终显示最新视图。 通过将一批 shardlet 从源分片移动到目标分片来实现拆分、合并和 shardlet 移动操作。 在 shardlet 移动操作过程中，属于当前批的 shardlet 会在分片映射中被标记为脱机状态，并且不可用于使用 **OpenConnectionForKey** API 进行数据依赖型路由连接。
+  拆分/合并服务可与应用程序的分片映射进行交互。 使用拆分/合并服务拆分或合并范围或者在分片之间移动 shardlet 时，该服务会使分片映射自动保持最新。 为实现此目的，该服务将连接到应用程序的分片映射管理器数据库并将这些范围和映射保留为拆分/合并/移动请求进度。 这可确保在进行拆分/合并操作时，分片映射始终显示最新视图。 通过将一批 shardlet 从源分片移动到目标分片来实现拆分、合并和 shardlet 移动操作。 在 shardlet 移动操作过程中，属于当前批的 shardlet 在分片映射中标记为脱机，并且不可用于使用 **OpenConnectionForKey** API 进行依赖于数据的路由连接。
 
 - **一致的 shardlet 连接**
 
@@ -136,7 +136,7 @@ ms.locfileid: "55564929"
 
 - **分片映射**
 
- 请求参数的下一部分包含有关分片映射和托管分片映射的数据库的信息。 具体而言，需要提供托管分片映射的 Azure SQL 数据库服务器和数据库的名称、用于连接到分片映射数据库的凭据以及分片映射的名称。 当前，该操作仅接受一个凭据集。 这些凭据需要具有足够的权限，才能对分片映射和分片上的用户数据执行更改。
+  请求参数的下一部分包含有关分片映射和托管分片映射的数据库的信息。 具体而言，需要提供托管分片映射的 Azure SQL 数据库服务器和数据库的名称、用于连接到分片映射数据库的凭据以及分片映射的名称。 当前，该操作仅接受一个凭据集。 这些凭据需要具有足够的权限，才能对分片映射和分片上的用户数据执行更改。
 
 - **源范围（拆分与合并）**
 
@@ -216,12 +216,16 @@ ms.locfileid: "55564929"
 
 ## <a name="deploy-diagnostics"></a>部署诊断
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+
 针对 NuGet 包所提供的 Web 和辅助角色，若要使用诊断配置启用监视和诊断，请使用 Azure PowerShell 运行以下命令：
 
 ```powershell
     $storage_name = "<YourAzureStorageAccount>"
     $key = "<YourAzureStorageAccountKey"
-    $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
+    $storageContext = New-AzStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
     $config_path = "<YourFilePath>\SplitMergeWebContent.diagnostics.xml"
     $service_name = "<YourCloudServiceName>"
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWeb"
@@ -238,7 +242,7 @@ ms.locfileid: "55564929"
 
 ![WADLogsTable][2]
 
-上图中突出显示的 WADLogsTable 包含来自拆分/合并服务的应用程序日志的详细事件。 请注意，已下载包提供的默认配置面向生产部署。 因此，从服务实例中提取日志和计数器的时间间隔较大（5 分钟）。 对于测试和部署，可以通过按需调整 Web 或辅助角色的诊断设置来减少该时间间隔。 右键单击 Visual Studio 服务器资源管理器中的角色（如上所示），并在对话框中调整诊断配置设置的传输时间段：
+上图中突出显示的 WADLogsTable 包含来自拆分/合并服务的应用程序日志的详细事件。 请注意，已下载包提供的默认配置面向生产部署。 因此，从服务实例中提取日志和计数器的时间间隔较大（5 分钟）。 对于测试和部署，可以通过按需调整 Web 或辅助角色的诊断设置来减少该时间间隔。 右键单击 Visual Studio 服务器资源管理器中的角色（如上所示），然后在对话框中调整诊断配置设置的传输时间段：
 
 ![配置][3]
 

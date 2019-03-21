@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: f61f5ebf4c0658ff846421682d50ea346c699e01
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 818b3e3b464ecbe8d55367ab5318436a14567263
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107916"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108757"
 ---
 # <a name="security-center-settings"></a>安全中心设置
 本文概述了安全中心内的设置。
@@ -51,6 +51,6 @@ ms.locfileid: "56107916"
 * [在 Azure 安全中心进行安全运行状况监视](security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)：了解如何管理和响应安全警报。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状况。
-- [Azure 安全中心数据安全性](security-center-data-security.md)：了解安全中心如何管理和保护数据。
+* [Azure 安全中心数据安全性](security-center-data-security.md)：了解安全中心如何管理和保护数据。
 * [Azure 安全中心常见问题解答](security-center-faq.md)：获取服务使用方面的常见问题解答。
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)：获取最新的 Azure 安全性新闻和信息。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/29/2019
 ms.author: kumud
-ms.openlocfilehash: 18e4a7ae5010730054dd110828c63e8418b93f39
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 52524e6291faae8ccc27c0d53e9e38ab63a4c8d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296913"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58132423"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>负载均衡器空闲情况下的 TCP 重置（公共预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "55296913"
 ![负载均衡器 TCP 重置](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
 >[!NOTE] 
->具有空闲超时情况下的 TCP 重置功能的负载均衡器目前提供公共预览版，并且可在一组有限的[区域](#regions)中使用。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>负载平衡器 TCP 空闲超时功能上重置具有这一次现推出公共预览版。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
 你可以更改此默认行为，并启用根据入站 NAT 规则、负载均衡规则和[出站规则](https://aka.ms/lboutboundrules)在空闲超时情况下发送 TCP 重置。  根据规则启用时，负载均衡器将在所有匹配流的空闲超时情况下向客户端和服务器终结点发送双向 TCP 重置（TCP RST 数据包）。
 

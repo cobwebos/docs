@@ -1,20 +1,19 @@
 ---
 title: 配置用于 Microsoft 对等互连的路由筛选器 - ExpressRoute：PowerShell：Azure | Microsoft Docs
 description: 本文介绍如何使用 PowerShell 配置用于 Microsoft 对等互连的路由筛选器
-documentationcenter: na
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: fc2cfcce57ad15d2bbad3242351492e184e7fd33
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: c67d4979709fc8e72c560c9071b17f48b309e07d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415290"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110828"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>配置用于 Microsoft 对等互连的路由筛选器：PowerShell
 > [!div class="op_single_selector"]
@@ -75,6 +74,9 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ### <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
@@ -84,19 +86,19 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接。 使用 Azure Cloud Shell 时，无需运行该 cmdlet，该软件将自动登录。
 
 ```azurepowershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 如果有多个 Azure 订阅，请查看该帐户的订阅。
 
 ```azurepowershell-interactive
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 指定要使用的订阅。
 
 ```azurepowershell-interactive
-Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
 ## <a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
@@ -106,7 +108,7 @@ Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_nam
 使用以下 cmdlet 获取与通过 Microsoft 对等互连可访问服务相关联的 BGP 团体值列表，以及与之关联的前缀列表：
 
 ```azurepowershell-interactive
-Get-AzureRmBgpServiceCommunity
+Get-AzBgpServiceCommunity
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2.列出要使用的值
 
@@ -118,10 +120,10 @@ Get-AzureRmBgpServiceCommunity
 
 ### <a name="1-create-a-route-filter"></a>1.创建路由筛选器
 
-首先，创建路由筛选器。 命令“New-AzureRmRouteFilter”只创建路由筛选器资源。 创建资源后，必须创建规则并将其附加到路由筛选器对象。 运行以下命令来创建路由筛选器资源：
+首先，创建路由筛选器。 命令新建 AzRouteFilter 仅创建路由筛选器资源。 创建资源后，必须创建规则并将其附加到路由筛选器对象。 运行以下命令来创建路由筛选器资源：
 
 ```azurepowershell-interactive
-New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
+New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
 ### <a name="2-create-a-filter-rule"></a>2.创建筛选器规则
@@ -129,7 +131,7 @@ New-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup
 可将一组 BGP 团体指定为逗号分隔列表，如示例所示。 运行以下命令来创建新规则：
  
 ```azurepowershell-interactive
-$rule = New-AzureRmRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010,12076:5040"
+$rule = New-AzRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010,12076:5040"
 ```
 
 ### <a name="3-add-the-rule-to-the-route-filter"></a>3.将规则添加到路由筛选器
@@ -137,9 +139,9 @@ $rule = New-AzureRmRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -R
 运行以下命令将筛选器规则添加到路由筛选器：
  
 ```azurepowershell-interactive
-$routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
 $routefilter.Rules.Add($rule)
-Set-AzureRmRouteFilter -RouteFilter $routefilter
+Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
 ## <a name="attach"></a>步骤 3：将路由筛选器附加到 ExpressRoute 线路
@@ -147,9 +149,9 @@ Set-AzureRmRouteFilter -RouteFilter $routefilter
 运行以下命令将路由筛选器附加到 ExpressRoute 线路，假设你只有 Microsoft 对等互连：
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 $ckt.Peerings[0].RouteFilter = $routefilter 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ## <a name="tasks"></a>常见任务
@@ -160,24 +162,24 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 1. 运行以下命令来获取路由筛选器资源：
 
-  ```azurepowershell-interactive
-  $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
-  ```
+   ```azurepowershell-interactive
+   $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+   ```
 2. 通过运行以下命令获取路由筛选器资源的路由筛选器规则：
 
-  ```azurepowershell-interactive
-  $routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
-  $rule = $routefilter.Rules[0]
-  ```
+   ```azurepowershell-interactive
+   $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+   $rule = $routefilter.Rules[0]
+   ```
 
 ### <a name="updateproperties"></a>更新路由筛选器的属性
 
 如果路由筛选器已附加到线路，则 BGP 社区列表的更新会通过建立的 BGP 会话自动传播相应的前缀播发更改。 可使用以下命令更新路由筛选器的 BGP 团体列表：
 
 ```azurepowershell-interactive
-$routefilter = Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
+$routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
 $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
-Set-AzureRmRouteFilter -RouteFilter $routefilter
+Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
 ### <a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
@@ -186,7 +188,7 @@ Set-AzureRmRouteFilter -RouteFilter $routefilter
   
 ```azurepowershell-interactive
 $ckt.Peerings[0].RouteFilter = $null
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="delete"></a>删除路由筛选器
@@ -194,7 +196,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 只有在路由筛选器未附加到任何线路时，才能将其删除。 尝试删除路由筛选器之前，请确保其未附加到任何线路。 可使用以下命令删除路由筛选器：
 
 ```azurepowershell-interactive
-Remove-AzureRmRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
+Remove-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 ```
 
 ## <a name="next-steps"></a>后续步骤

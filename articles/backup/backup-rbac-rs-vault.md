@@ -6,20 +6,20 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 12/09/2018
 ms.author: trinadhk
-ms.openlocfilehash: de7c00717349a1c814c5a13508adb11879aa10a5
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: HT
+ms.openlocfilehash: e86595ceb940ebcfa702823e9c9b8ad3ef50bb45
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704641"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674627"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。
 
 > [!IMPORTANT]
-> Azure 备份提供的角色仅限于可在 Azure 门户或恢复服务保管库 PowerShell cmdlet 中执行的操作。 这些角色对在 Azure 备份代理客户端 UI、System Center Data Protection Manager UI 或 Azure 备份服务器 UI 中执行的操作不具有控制。
+> Azure 备份提供的角色仅限于执行可在 Azure 门户中执行的操作，或者通过 REST API 或恢复服务保管库 PowerShell 或 CLI cmdlet 执行的操作。 这些角色对在 Azure 备份代理客户端 UI、System Center Data Protection Manager UI 或 Azure 备份服务器 UI 中执行的操作不具有控制。
 
 Azure 备份提供了 3 个用于控制备份管理操作的内置角色。 详细了解 [Azure RBAC 内置角色](../role-based-access-control/built-in-roles.md)
 
@@ -63,7 +63,7 @@ Azure 备份提供了 3 个用于控制备份管理操作的内置角色。 详�
 > 如果在 VM 资源范围内指定 VM 参与者并单击“备份”作为 VM 设置的一部分，则即使已经备份 VM，它也将打开“启用备份”屏幕，因为验证备份状态的调用仅在订阅级别起作用。 若要避免此问题，请转到保管库并打开 VM 的备份项视图，或者在订阅级别指定“VM 参与者”角色。 
 
 ## <a name="next-steps"></a>后续步骤
-* [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：Azure 门户中的 RBAC 入门。
+* [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：在 Azure 门户中开始使用 RBAC。
 * 了解如何通过以下方式管理访问权限：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: a2cd0d213be778624ae862d35f99f7fe960f0755
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 0ba61dc266add48577c3a382465ecb2cec9d2a05
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093848"
+ms.locfileid: "58188027"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
@@ -77,7 +77,7 @@ ms.locfileid: "58093848"
 
 | 语法值 | 新值|
 |---|---|
-|[URI 方案](/hdinsight-hadoop-linux-information#URI-and-scheme.md) | 修改以反映你的存储。  下面的语法是适用于 blob 存储启用安全传输。|
+|[URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme) | 修改以反映你的存储。  下面的语法是适用于 blob 存储启用安全传输。|
 |`SPARK_STORAGE_CONTAINER`|替换为 Spark 群集使用的默认存储容器名称。|
 |`SPARK_STORAGE_ACCOUNT`|替换为 Spark 群集使用的默认存储帐户名称。|
 

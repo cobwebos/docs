@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: 2d576a0d51eb723efdd1652898c2c019ee7475a8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999209"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118249"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>在 Azure DNS 中托管反向 DNS 查找区域
 
@@ -131,7 +131,7 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 1. 在“域名”字段中，输入使用该 IP 的资源的完全限定域名 (FQDN)。
 1. 单击窗格底部的“确定”创建 DNS 记录。
 
- ![“添加记录集”窗格，已填写其中的输入框](./media/dns-reverse-dns-hosting/figure5.png)
+   ![“添加记录集”窗格，已填写其中的输入框](./media/dns-reverse-dns-hosting/figure5.png)
 
 以下示例演示如何使用 PowerShell 或 Azure CLI 完成此任务。
 
@@ -269,6 +269,6 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
 
 ## <a name="next-steps"></a>后续步骤
 
-有关反向 DNS 的详细信息，请参阅[反向 DNS 查找](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)。
+有关反向 DNS 的详细信息，请参阅[反向 DNS 查找](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)。
 <br>
 了解如何[管理 Azure 服务的反向 DNS 记录](dns-reverse-dns-for-azure-services.md)。

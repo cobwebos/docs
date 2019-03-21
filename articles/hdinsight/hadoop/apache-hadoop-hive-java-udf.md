@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4a3da9e2ad4d5ab83c1e906b3ab43540e819b48c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 94e9a70707472eb94109ebcc404fd7a1a3074135
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341993"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575740"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用
 
@@ -134,7 +134,7 @@ ms.locfileid: "56341993"
 
 4. 将 **exampleudf/src/main/java/com/microsoft/examples/App.java** 重命名为 **ExampleUDF.java**，并在编辑器中打开该文件。
 
-5. 将 **ExampleUDF.java** 文件的内容替换为以下代码，并保存该文件。
+5. 将 **ExampleUDF.java** 文件的内容替换为以下内容，并保存该文件。
 
     ```java
     package com.microsoft.examples;
@@ -176,7 +176,7 @@ ms.locfileid: "56341993"
 2. 使用 `scp` 命令将文件复制到 HDInsight 群集。
 
     ```bash
-    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
+    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight.net
     ```
 
     将 `myuser` 替换为群集的 SSH 用户帐户。 将 `mycluster` 替换为群集名称。 如果使用密码保护 SSH 帐户，系统会提示输入该密码。 如果使用了证书，则可能需要使用 `-i` 参数指定私钥文件。

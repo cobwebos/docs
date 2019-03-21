@@ -4,17 +4,17 @@ description: 介绍 Azure Policy 如何使用资源策略定义，通过描述�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 1c65ea47f7dd091ea326d9300a8ef09208a03951
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 35cb5c286b9c9657c37dcede7f51082b5c48ef99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447780"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894421"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -80,7 +80,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
-在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。
+在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 支持标记的资源的列表，请参阅[标记 Azure 资源的支持](../../../azure-resource-manager/tag-support.md)。
 
 ## <a name="parameters"></a>parameters
 
@@ -101,7 +101,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
   - `displayName`：在门户中显示的用于参数的友好名称。
   - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
 - `defaultValue`：（可选）设置分配的参数的值（如果值未给定）。 在更新已分配的现有策略定义时必须使用此项。
-- `allowedValues`：（可选）提供参数在分配过程中接受的值的列表。
+- `allowedValues`：（可选）提供了一个参数接受在分配过程的值数组。
 
 例如，可以定义策略定义来限制资源的部署位置。 **allowedLocations** 可以是该策略定义的一个参数。 每次分配策略定义来限制接受的值时，会使用此参数。 使用 **strongType** 可以在通过门户完成分配时提供增强的体验：
 
@@ -289,6 +289,9 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 也可使用 **value** 来形成条件。 **value** 会针对[参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。
 **value** 可与任何支持的[条件](#conditions)配对。
 
+> [!WARNING]
+> 如果的结果_模板函数_是一个错误，策略将评估失败。 失败的评估是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板故障](#avoiding-template-failures)。
+
 #### <a name="value-examples"></a>Value 示例
 
 此策略规则示例使用 **value** 将 `resourceGroup()` 函数和返回的 **name** 属性的结果与 **like** 条件 `*netrg` 进行对比。 此规则拒绝名称以 `*netrg` 结尾的资源组中 **type** 不为 `Microsoft.Network/*` 的资源。
@@ -328,6 +331,44 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
     }
 }
 ```
+
+#### <a name="avoiding-template-failures"></a>避免模板失败
+
+利用_模板函数_中**值**允许对许多复杂的嵌套函数。 如果的结果_模板函数_是一个错误，策略将评估失败。 失败的评估是一种隐式**拒绝**。 举例**值**在某些情况下失败：
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[substring(field('name'), 0, 3)]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+使用上面的示例策略规则[substring （)](../../../azure-resource-manager/resource-group-template-functions-string.md#substring)若要比较的前三个字符**名称**到**abc**。 如果**名称**短于三个字符，`substring()`函数会导致出现错误。 此错误将使策略成为**拒绝**效果。
+
+请改用[if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if)函数来检查如果前三个字符**名称**相等**abc**但不允许**名称**短于三个字符以导致错误：
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[if(greaterOrEquals(length(field('name')), 3), substring(field('name'), 0, 3), 'not starting with abc')]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+使用修改后的策略规则时，`if()`检查的长度**名称**之前尝试获取`substring()`少于三个字符的值上。 如果**名称**太短，而是返回"不开始于 abc"的值并将其与比较**abc**。 具有不以开头的短名称的资源**abc**仍然失败策略规则，但不能再在评估期间将导致错误。
 
 ### <a name="effect"></a>效果
 
@@ -443,70 +484,60 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-第一个示例用于评估整个数组，其中 **[\*]** 别名评估数组的每个元素。
-
-让我们以策略规则为例。 此策略将**拒绝**已配置 ipRules 的存储帐户（如果**没有** ipRules 具有值“127.0.0.1”）。
+Normal 的别名作为单个值表示的字段。 此字段适用于完全匹配比较方案时的整个值集必须有且仅定义，没有更多且不小于。 使用**ipRules**，将一组具体的规则存在的规则数和每个规则的构成包括验证示例。 此示例规则检查完全两者**192.168.1.1**并**10.0.4.1**与_操作_的**允许**中**ipRules**以应用**effectType**:
 
 ```json
 "policyRule": {
     "if": {
-        "allOf": [{
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "Equals": [
+                    {
+                        "action": "Allow",
+                        "value": "192.168.1.1"
+                    },
+                    {
+                        "action": "Allow",
+                        "value": "10.0.4.1"
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+**[\*]** 别名使可能与数组中的每个元素的值，每个元素的特定属性进行比较。 这种方法可以比较元素属性的如果没有，则的，如果任何，或如果所有的方案。 使用**ipRules [\*]**，示例会验证的每个_操作_是_拒绝_，但不是需担心如何存在多少规则或哪些 IP _值_是。 此示例规则检查的所有匹配项**ipRules [\*].value**到**10.0.4.1** ，并将应用**effectType**才找不到至少一个匹配项：
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
                 "exists": "true"
             },
             {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-                "notEquals": "127.0.0.1"
+                "notEquals": "10.0.4.1"
             }
         ]
     },
     "then": {
-        "effect": "deny",
+        "effect": "[parameters('effectType')]"
     }
 }
 ```
 
-对于此示例，**ipRules** 数组如下所示：
-
-```json
-"ipRules": [{
-        "value": "127.0.0.1",
-        "action": "Allow"
-    },
-    {
-        "value": "192.168.1.1",
-        "action": "Allow"
-    }
-]
-```
-
-下面是此示例的处理方式：
-
-- `networkAcls.ipRules` - 检查数组是否不为 null。 它的计算结果为 true，因此继续评估。
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-    "exists": "true"
-  }
-  ```
-
-- `networkAcls.ipRules[*].value` - 检查 **ipRules** 数组中的每个 _value_ 属性。
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-    "notEquals": "127.0.0.1"
-  }
-  ```
-
-  - 作为数组，将处理每个元素。
-
-    - "127.0.0.1" != "127.0.0.1" 的计算结果为 false。
-    - "127.0.0.1" != "192.168.1.1" 的计算结果为 true。
-    - **ipRules** 数组中至少有一个 _value_ 属性被评估为 false，因此评估将停止。
-
-由于条件的计算结果为 false，因此不会触发**拒绝**效果。
+有关详细信息，请参阅[评估 [\*] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
 ## <a name="initiatives"></a>计划
 

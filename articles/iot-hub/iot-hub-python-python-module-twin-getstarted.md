@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: bf2137803c7a6c70f9efe75524a4ed5cf51d6ca1
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 1d7c8d8a02358b4eb9f52f1a9bd04b797fcd934f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451436"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110794"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>使用 Python 后端和 Python 设备创建 IoT 中心模块标识和模块孪生入门
 
@@ -87,7 +87,7 @@ except KeyboardInterrupt:
 
 1. **获取模块连接字符串** -- 现在，如果登录到 [Azure 门户][lnk-portal]。 导航到 IoT 中心并单击 IoT 设备。 查找并打开 myFirstDevice，可以看到 myFirstModule 已成功创建。 复制模块连接字符串。 下一步将需要它。
 
-  ![Azure 门户模块详细信息][15]
+   ![Azure 门户模块详细信息][15]
 
 1. **创建 UpdateModuleTwinReportedProperties 应用** 在“Program.cs”文件顶部添加以下 `using` 语句：
 
@@ -172,7 +172,7 @@ except KeyboardInterrupt:
 [15]:./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md

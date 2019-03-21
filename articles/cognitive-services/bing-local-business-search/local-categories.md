@@ -6,16 +6,15 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9ee6d0f8b609b87fe7ed4083bc5886ceaf158cb2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: b96c4e0ebfb12f48917febcc8ad623de18758935
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188705"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773656"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>必应当地企业搜索 API 的搜索类别
 

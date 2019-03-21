@@ -3,22 +3,22 @@ title: SQL Server 存储过程活动
 description: 了解如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库或 Azure SQL 数据仓库中的存储过程。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 5604767b49e6234bba5c16179bebe717938170cf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 77842b60108629168f423f25eb03b01079cf55e5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753259"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775351"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -85,7 +85,7 @@ ms.locfileid: "55753259"
     ```
 
    > [!IMPORTANT]
-   > 参数（在本示例中为 DateTime）的**名称**和**大小写**必须与管道/活动 JSON 中指定的参数匹配。 在存储过程定义中，请确保使用 **@** 作为参数的前缀。
+   > 参数（在本示例中为 DateTime）的**名称**和**大小写**必须与管道/活动 JSON 中指定的参数匹配。 在存储过程定义中，请确保使用 **\@** 作为参数的前缀。
 
 ### <a name="create-a-data-factory"></a>创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -304,7 +304,7 @@ ms.locfileid: "55753259"
 
 下表描述了其中的 JSON 属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | 名称 | 活动名称 |是 |
 | description |描述活动用途的文本 |否 |

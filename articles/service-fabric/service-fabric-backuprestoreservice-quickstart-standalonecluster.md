@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: b8f7142b2bd8e07e4b92c37b7e06bc4fe09efb73
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
+ms.openlocfilehash: f3a0651d3641a547722528fb33f688cce1913e6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580410"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886637"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric 中的定期备份和还原
 > [!div class="op_single_selector"]
@@ -48,15 +48,15 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     - Azure 存储
     - 文件共享（本地）
 - 枚举备份
-- 触发分区的临时备份
+- 触发即席备份的分区
 - 使用之前的备份还原分区
 - 暂时暂停备份
 - 备份的保留期管理（即将推出）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * 具有 Fabric 6.2 及更高版本的 Service Fabric 群集。 应在 Windows Server 上安装群集。 有关下载所需包的步骤，请参阅[文章](service-fabric-cluster-creation-for-windows-server.md)。
 * 用于加密机密的 X.509 证书，连接到存储以存储备份时需要此机密。 请参阅[文章](service-fabric-windows-cluster-x509-security.md)，了解如何获取或创建一个自签名的 X.509 证书。
-* 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向 .Net Core 2.0 的应用程序，应使用 Service Fabric SDK 3.1 或更高版本生成应用程序。
+* 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向.NET Core 2.0 的应用程序，应用程序应使用生成 Service Fabric SDK 版本 3.1 或更高版本。
 
 ## <a name="enabling-backup-and-restore-service"></a>启用备份和还原服务
 首先，需要在群集中启用备份和还原服务。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。 通过以下步骤启用备份和还原服务：

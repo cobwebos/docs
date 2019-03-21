@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c50aece847119dd0d2421553e9e9827c2168e553
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 4fd52510abd61c4d319a3fcbc8f722df5edbc476
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451640"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120595"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>教程：连接、设置和激活 Azure Data Box Edge（预览版） 
 
@@ -32,7 +32,7 @@ ms.locfileid: "54451640"
 > Data Box Edge 以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 配置和设置 Data Box Edge 设备之前，请确保：
 
@@ -82,12 +82,12 @@ ms.locfileid: "54451640"
    
     配置网络设置时，请记住：
 
-    - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 系统会自动分配 IP 地址、子网、网关和 DNS。
-    - 如果未启用 DHCP，则可以根据需要分配静态 IP。
-    - 可以将网络接口配置为 IPv4。
+   - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 系统会自动分配 IP 地址、子网、网关和 DNS。
+   - 如果未启用 DHCP，则可以根据需要分配静态 IP。
+   - 可以将网络接口配置为 IPv4。
 
-    >[!NOTE] 
-    > 建议不要将网络接口的本地 IP 地址从静态切换到 DCHP，除非有另一个 IP 地址连接到该设备。 如果使用一个网络接口并切换到 DHCP，则无法确定 DHCP 地址。 如果要更改为 DHCP 地址，请等待设备注册服务后再更改。 然后，可以在 Azure 门户中为你的服务查看“设备属性”中所有适配器的 IP。
+     >[!NOTE] 
+     > 建议不要将网络接口的本地 IP 地址从静态切换到 DCHP，除非有另一个 IP 地址连接到该设备。 如果使用一个网络接口并切换到 DHCP，则无法确定 DHCP 地址。 如果要更改为 DHCP 地址，请等待设备注册服务后再更改。 然后，可以在 Azure 门户中为你的服务查看“设备属性”中所有适配器的 IP。
 
 1. （可选）在左窗格中选择“Web 代理设置”，然后配置 Web 代理服务器。 尽管这一配置为可选操作，但如果使用 Web 代理，则只能在此页上进行配置。
    

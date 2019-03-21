@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 64470a1497a287f4cc2c3ef3ed29986382aeac9b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9657cda8b0f3a19d02ebf1907116235b88f4cb82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285509"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111508"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
 
@@ -32,7 +32,7 @@ ms.locfileid: "51285509"
 1. 生成 Protobuf 类
 1. 本地测试
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要遵循本操作指南中的步骤，需要：
 
@@ -70,7 +70,7 @@ ms.locfileid: "51285509"
 
 若要在本地运行存储适配器微服务，请单击“调试”\>“开始调试”。
 
-Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：<http://127.0.0.1:9022/v1/status>。 导航到此地址时，状态应显示为“正常: 活动且正常”。
+Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：<http://127.0.0.1:9022/v1/status>。 导航到此地址时，状态应显示为“正常:活动且正常”。
 
 在完成后续步骤时，让存储适配器微服务继续在 Visual Studio Code 的此实例中运行。
 
@@ -84,58 +84,58 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 1. 在设备模型 **assettracker-01.json** 文件中定义设备功能。 Protobuf 设备模型的 telemetry 节必须：
 
-    * 包含为设备生成的 Protobuf 类的名称。 以下部分将介绍如何生成此类。
-    * 指定 Protobuf 作为消息格式。
+   * 包含为设备生成的 Protobuf 类的名称。 以下部分将介绍如何生成此类。
+   * 指定 Protobuf 作为消息格式。
 
-    ```json
-    {
-      "SchemaVersion": "1.0.0",
-      "Id": "assettracker-01",
-      "Version": "0.0.1",
-      "Name": "Asset Tracker",
-      "Description": "An asset tracker with location, temperature, and humidity",
-      "Protocol": "AMQP",
-      "Simulation": {
-        "InitialState": {
-          "online": true,
-          "latitude": 47.445301,
-          "longitude": -122.296307,
-          "temperature": 38.0,
-          "humidity": 62.0
-        },
-        "Interval": "00:01:00",
-        "Scripts": [
-          {
-            "Type": "javascript",
-            "Path": "assettracker-01-state.js"
-          }
-        ]
-      },
-      "Properties": {
-        "Type": "AssetTracker",
-        "Location": "Field",
-        "Latitude": 47.445301,
-        "Longitude": -122.296307
-      },
-      "Telemetry": [
-        {
-          "Interval": "00:00:10",
-          "MessageTemplate": "{\"latitude\":${latitude},\"longitude\":${longitude},\"temperature\":${temperature},\"humidity\":${humidity}}",
-          "MessageSchema": {
-            "Name": "assettracker-sensors;v1",
-            "ClassName": "Microsoft.Azure.IoTSolutions.DeviceSimulation.Services.Models.Protobuf.AssetTracker",
-            "Format": "Protobuf",
-            "Fields": {
-              "latitude": "double",
-              "longitude": "double",
-              "temperature": "double",
-              "humidity": "double"
-            }
-          }
-        }
-      ]
-    }
-    ```
+     ```json
+     {
+     "SchemaVersion": "1.0.0",
+     "Id": "assettracker-01",
+     "Version": "0.0.1",
+     "Name": "Asset Tracker",
+     "Description": "An asset tracker with location, temperature, and humidity",
+     "Protocol": "AMQP",
+     "Simulation": {
+       "InitialState": {
+         "online": true,
+         "latitude": 47.445301,
+         "longitude": -122.296307,
+         "temperature": 38.0,
+         "humidity": 62.0
+       },
+       "Interval": "00:01:00",
+       "Scripts": [
+         {
+           "Type": "javascript",
+           "Path": "assettracker-01-state.js"
+         }
+       ]
+     },
+     "Properties": {
+       "Type": "AssetTracker",
+       "Location": "Field",
+       "Latitude": 47.445301,
+       "Longitude": -122.296307
+     },
+     "Telemetry": [
+       {
+         "Interval": "00:00:10",
+         "MessageTemplate": "{\"latitude\":${latitude},\"longitude\":${longitude},\"temperature\":${temperature},\"humidity\":${humidity}}",
+         "MessageSchema": {
+           "Name": "assettracker-sensors;v1",
+           "ClassName": "Microsoft.Azure.IoTSolutions.DeviceSimulation.Services.Models.Protobuf.AssetTracker",
+           "Format": "Protobuf",
+           "Fields": {
+             "latitude": "double",
+             "longitude": "double",
+             "temperature": "double",
+             "humidity": "double"
+           }
+         }
+       }
+     ]
+     }
+     ```
 
 ### <a name="create-device-behaviors-script"></a>创建设备行为脚本
 

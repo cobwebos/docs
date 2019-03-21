@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e20599833d3073e4819dbc974d4b2afe962ba18a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984301"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780008"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>适用于 Azure 虚拟机（资源管理器）的自动备份 v2
 
@@ -32,7 +32,7 @@ ms.locfileid: "55984301"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要使用自动备份 v2，请查看以下先决条件：
 
 **操作系统**：
@@ -52,7 +52,7 @@ ms.locfileid: "55984301"
 
 - 目标数据库必须使用完整恢复模式。 有关对备份使用完整恢复模型产生的影响的详细信息，请参阅 [Backup Under the Full Recovery Model](https://technet.microsoft.com/library/ms190217.aspx)（使用完整恢复模型的备份）。
 - 系统数据库不需要使用完整恢复模型。 但是，如果需要为模型或 MSDB 创建日志备份，则必须使用完整恢复模型。
-- 目标数据库必须位于默认 SQL Server 实例上。 SQL Server IaaS 扩展不支持命名的实例。
+- 目标数据库必须位于任一默认 SQL Server 实例上，或[正确安装](virtual-machines-windows-sql-server-iaas-faq.md#administration)命名实例。 
 
 > [!NOTE]
 > 自动备份依赖于 **SQL Server IaaS 代理扩展**。 当前的 SQL 虚拟机库映像默认添加此扩展。 有关详细信息，请参阅 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
@@ -62,7 +62,7 @@ ms.locfileid: "55984301"
 
 ### <a name="basic-settings"></a>基本设置
 
-| 设置 | 范围（默认值） | 说明 |
+| 设置 | 范围（默认值） | 描述 |
 | --- | --- | --- |
 | **自动备份** | 启用/禁用（已禁用） | 为运行 SQL Server 2016/2017 Developer、Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** | 1-30 天（30 天） | 保留备份的天数。 |
@@ -72,7 +72,7 @@ ms.locfileid: "55984301"
 
 ### <a name="advanced-settings"></a>高级设置
 
-| 设置 | 范围（默认值） | 说明 |
+| 设置 | 范围（默认值） | 描述 |
 | --- | --- | --- |
 | **系统数据库备份** | 启用/禁用（已禁用） | 启用后，此功能还会备份系统数据库：Master、MSDB 和 Model。 对于 MSDB 和 Model 数据库，如果想要创建日志备份，请验证这些数据库是否处于完整恢复模式。 永远不会针对 Master 数据库创建日志备份。 此外，不会创建 TempDB 的备份。 |
 | **备份计划** | 手动/自动（自动） | 默认情况下，系统会根据日志的增长情况自动确定备份计划。 用户可以使用手动备份计划来指定备份时段。 此情况下，仅按指定的频率、在特定日期的指定时段内进行备份。 |
@@ -178,7 +178,7 @@ Set-AzVMSqlServerExtension -VMName $vmname `
     -Version "1.2" -Location $region 
 ```
 
-### <a id="verifysettings"></a> 验证当前设置
+### <a id="verifysettings"></a>验证当前设置
 如果在预配期间启用了自动备份，可以使用 PowerShell 检查当前配置。 运行 Get-AzVMSqlServerExtension 命令并检查 AutoBackupSettings 属性：
 
 ```powershell

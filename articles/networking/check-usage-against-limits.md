@@ -8,19 +8,19 @@ manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: networking
+ms.service: azure
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: 0b15861f663c98d3b873f95a0ea6c485ada91fb6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 54050c4c20b6ebb35f198775448f51ee8cdc533b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421600"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117636"
 ---
 # <a name="check-resource-usage-against-limits"></a>根据限制检查资源使用情况
 
@@ -34,25 +34,27 @@ ms.locfileid: "54421600"
 4. 选择要查看其使用情况信息的订阅的名称。
 5. 在“设置”下选择“使用情况 + 配额”。
 6. 可以选择以下选项：
-    - **资源类型**：可选择所有资源类型，也可选择要查看的特定资源类型。
-    - **提供程序**：可选择所有资源提供程序，也可选择“计算”、“网络”或“存储”。
-    - **位置**：可以选择所有 Azure 位置，也可选择特定位置。
-    - 可以选择显示所有资源，也可只显示至少部署了一个资源的资源。
+   - **资源类型**：可选择所有资源类型，也可选择要查看的特定资源类型。
+   - **提供程序**：可选择所有资源提供程序，也可选择“计算”、“网络”或“存储”。
+   - **位置**：可以选择所有 Azure 位置，也可选择特定位置。
+   - 可以选择显示所有资源，也可只显示至少部署了一个资源的资源。
 
-    下图中的示例显示了在美国东部至少部署了一个资源的所有网络资源：
+     下图中的示例显示了在美国东部至少部署了一个资源的所有网络资源：
 
-        ![View usage data](./media/check-usage-against-limits/view-usage.png)
+       ![查看使用情况数据](./media/check-usage-against-limits/view-usage.png)
 
-    可以通过选择列标题来对列进行排序。 显示的限制是订阅的限制。 如果需要增加默认限制，请选择“请求增加”，然后完成并提交支持请求。 所有资源都具有 Azure [限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)中列出的最大限制。 如果当前限制已达到最大数量，则不能增加限制。
+     可以通过选择列标题来对列进行排序。 显示的限制是订阅的限制。 如果需要增加默认限制，请选择“请求增加”，然后完成并提交支持请求。 所有资源都具有 Azure [限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)中列出的最大限制。 如果当前限制已达到最大数量，则不能增加限制。
 
 ## <a name="powershell"></a>PowerShell
 
-可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 *AzureRM* PowerShell 模块 6.0.1 或更高版本。 在计算机上运行 `Get-Module -ListAvailable AzureRM`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以登录到 Azure。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-使用 [Get-AzureRmNetworkUsage](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0) 根据限制查看使用情况。 以下示例获取在“美国东部”位置至少部署了一个资源的资源的使用情况：
+可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果从您的计算机运行 PowerShell，你需要 Azure PowerShell 模块，版本 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以登录到 Azure。
+
+使用 [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage) 根据限制查看使用情况。 以下示例获取在“美国东部”位置至少部署了一个资源的资源的使用情况：
 
 ```azurepowershell-interactive
-Get-AzureRmNetworkUsage `
+Get-AzNetworkUsage `
   -Location eastus `
   | Where-Object {$_.CurrentValue -gt 0} `
   | Format-Table ResourceType, CurrentValue, Limit

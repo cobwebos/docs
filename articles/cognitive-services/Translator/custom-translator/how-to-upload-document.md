@@ -5,16 +5,16 @@ description: 使用文档上传功能可以上传用于训练的并行文档。 
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: e08813c71a0b95b6b130ab71313bda6d044d730a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 7df7dd44716e98c74282bd0f0700ec7881ef31ef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217214"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766934"
 ---
 # <a name="upload-a-document"></a>上传文档
 

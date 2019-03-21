@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d3b0f7cdacfb781ba7925be8146c10919c5269b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 91ab8e8757c4a5313fde5f4d883e45648c9143b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455528"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901349"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>预览版：本地 Azure AD 密码保护 - 常见问题解答
 
@@ -26,10 +26,6 @@ ms.locfileid: "56455528"
 |     |
 
 ## <a name="general-questions"></a>一般问题
-
-**问：Azure AD 密码保护何时推出正式版 (GA)？**
-
-GA 计划在 CY2019 第一季度推出（2019 年 3 月末之前）。 感谢目前为止提供该功能相关反馈的所有人 - 我们非常感激！
 
 **问：在如何选择安全密码方面，你们为用户提供了哪些指导？**
 
@@ -44,6 +40,14 @@ GA 计划在 CY2019 第一季度推出（2019 年 3 月末之前）。 感谢目
 **问：如何将 Azure AD 密码保护权益应用到我的一部分本地用户？**
 
 不支持。 部署并启用后，Azure AD 密码保护不会区分对待 - 所有用户都会获得均等的安全权益。
+
+**问：密码更改和密码设置 （或重置） 之间的区别是什么？**
+
+证明他们已知道旧密码后，在用户选择新密码时，密码更改。 例如，这是当用户登录到 Windows，然后提示用户选择新密码时，会发生什么情况。
+
+当管理员帐户的密码将使用替换新密码，例如使用 Active Directory 用户和计算机管理工具时，密码设置 （有时称为密码重置）。 此操作需要高级别的特权 （通常域管理员），并且通常执行该操作的人员没有知道旧密码。 技术支持方案通常执行此操作，例如当为忘记其密码的用户提供帮助。 您还会看到事件在第一次使用密码创建一个全新的用户帐户时设置的密码。
+
+密码验证策略行为而不考虑是否完成密码更改一个或一组相同。 Azure AD 密码保护 DC 代理服务会记录不同的事件来通知你是否密码更改或设置操作已完成。  请参阅[Azure AD 密码保护监视和日志记录](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)。
 
 **问：是否支持与其他基于密码筛选器的产品一同安装 Azure AD 密码保护？**
 
@@ -82,6 +86,10 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 **问：是否可与其他服务（例如 Azure AD Connect）一起部署 Azure AD 密码保护代理服务？**
 
 是的。 Azure AD 密码保护代理服务和 Azure AD Connect 永远不会直接相互冲突。
+
+**问：按什么顺序应 DC 代理和代理服务器必须安装并注册？**
+
+支持的代理的代理安装、 DC 代理安装、 林注册和代理注册任何排序。
 
 **问：部署此功能是否会导致域控制器上出现性能瓶颈？**
 

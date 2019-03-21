@@ -6,12 +6,13 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 02/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 922aa739a42eddbe8cd7e3cabe46681c0c2c6d46
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: bf1cc3b95e8335b6e24dd405d82e5c51d2a8d11b
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417068"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792678"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>使用 PowerShell 删除虚拟网络网关
 > [!div class="op_single_selector"]
@@ -23,7 +24,7 @@ ms.locfileid: "56417068"
 
 可以使用多种不同的方法来删除 VPN 网关配置中的虚拟网络网关。
 
-- 如果要删除所有信息并从头开始配置（例如，在测试环境中），可以删除资源组。 删除某个资源组时，会删除该组中的所有资源。 仅不想要保留资源组中的任何资源时，才建议使用此方法。 使用这种方法时，无法做到有选择性地删除一部分资源。
+- 如果要删除所有信息并从头开始配置（例如，在测试环境中），可以删除资源组。 删除某个资源组时，会删除该组中的所有资源。 仅当不想保留资源组中的任何资源时，才建议使用此方法。 使用这种方法时，无法做到有选择性地删除一部分资源。
 
 - 如果想要保留资源组中的某些资源，则删除虚拟网络网关的过程会略微复杂一些。 在删除虚拟网络网关之前，必须先删除任何依赖于该网关的资源。 遵循的步骤取决于创建的连接类型，以及每个连接的依赖资源。
 
@@ -37,7 +38,7 @@ ms.locfileid: "56417068"
 
 ### <a name="2-connect-to-your-azure-account"></a>2.连接到 Azure 帐户。
 
-打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助连接：
+打开 PowerShell 控制台并连接到帐户。 使用以下示例帮助建立连接：
 
 ```powershell
 Connect-AzAccount
@@ -160,7 +161,7 @@ $GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
-与虚拟网络网关建立的其他连接可能属于不同的资源组。 检查其他每个资源组中的其他连接。 在此示例中，我们会检查来自 RG2 的连接。 请针对可能与虚拟网络网关建立了连接的每个资源组运行此步骤。
+与虚拟网络网关建立的其他连接可能属于不同的资源组。 检查其他每个资源组中的其他连接。 在此示例中，我们检查来自 RG2 的连接。 请针对可能与虚拟网络网关建立了连接的每个资源组运行此步骤。
 
 ```powershell
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
@@ -197,7 +198,7 @@ $ConnsR | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-此时，虚拟网络网关已被删除。 可以使用接下来的步骤删除不再使用的任何资源。
+此时，虚拟网络网关已删除。 可以使用接下来的步骤删除不再使用的任何资源。
 
 ### <a name="6-delete-the-public-ip-address-resources"></a>6.删除公共 IP 地址资源
 

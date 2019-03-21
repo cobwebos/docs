@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 662fc124af71c1ce976037a3544f59e3cea54ef0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: c9c8c649208cff95f4ee515d39cc8cca3e2c64bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207625"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121479"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>了解如何监视和诊断在反向代理处处理的请求
 
@@ -32,83 +32,84 @@ ms.locfileid: "34207625"
 1. 反向代理将返回响应状态代码 504（超时）。
 
     原因之一可能是由于服务在请求超时时间段内无法答复。
-下面的第一个事件记录了在反向代理处接收到的请求的详细信息。 第二个事件指示在向服务转发时请求失败，原因是“内部错误 = ERROR_WINHTTP_TIMEOUT” 
+   下面的第一个事件记录了在反向代理处接收到的请求的详细信息。 
+   第二个事件指示在向服务转发时请求失败，原因是“内部错误 = ERROR_WINHTTP_TIMEOUT” 
 
     有效负载包括：
 
-    *  **traceId**：可将此 GUID 用于关联与单个请求对应的所有事件。 在下面的两个事件中，traceId = 2f87b722-e254-4ac2-a802-fd315c1a0271 暗示它们属于同一请求。
-    *  **requestUrl**：请求已发送到的 URL（反向代理 URL）。
-    *  **verb**：HTTP 谓词。
-    *  **remoteAddress**：发送请求的客户端地址。
-    *  **resolvedServiceUrl**：向其解析传入请求的服务终结点 URL。 
-    *  **errorDetails**：关于失败的详细信息。
+   * **traceId**:可以使用此 GUID 与单个请求对应的所有事件相关联。 在下面的两个事件中，traceId = 2f87b722-e254-4ac2-a802-fd315c1a0271 暗示它们属于同一请求。
+   * **requestUrl**:向其发送请求的 URL (反向代理 URL)。
+   * **谓词**:HTTP 谓词。
+   * **remoteAddress**:客户端发送请求的地址。
+   * **resolvedServiceUrl**:传入的请求已解析到的服务终结点 URL。 
+   * **errorDetails**:有关失败的其他信息。
 
-    ```
-    {
-      "Timestamp": "2017-07-20T15:57:59.9871163-07:00",
-      "ProviderName": "Microsoft-ServiceFabric",
-      "Id": 51477,
-      "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Request url = https://localhost:19081/LocationApp/LocationFEService?zipcode=98052, verb = GET, remote (client) address = ::1, resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052, request processing start time =     15:58:00.074114 (745,608.196 MSec) ",
-      "ProcessId": 57696,
-      "Level": "Informational",
-      "Keywords": "0x1000000000000021",
-      "EventName": "ReverseProxy",
-      "ActivityID": null,
-      "RelatedActivityID": null,
-      "Payload": {
-        "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
-        "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?zipcode=98052",
-        "verb": "GET",
-        "remoteAddress": "::1",
-        "resolvedServiceUrl": "Https://localhost:8491/LocationApp/?zipcode=98052",
-        "requestStartTime": "2017-07-20T15:58:00.0741142-07:00"
-      }
-    }
+     ```
+     {
+     "Timestamp": "2017-07-20T15:57:59.9871163-07:00",
+     "ProviderName": "Microsoft-ServiceFabric",
+     "Id": 51477,
+     "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Request url = https://localhost:19081/LocationApp/LocationFEService?zipcode=98052, verb = GET, remote (client) address = ::1, resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052, request processing start time =     15:58:00.074114 (745,608.196 MSec) ",
+     "ProcessId": 57696,
+     "Level": "Informational",
+     "Keywords": "0x1000000000000021",
+     "EventName": "ReverseProxy",
+     "ActivityID": null,
+     "RelatedActivityID": null,
+     "Payload": {
+      "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
+      "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?zipcode=98052",
+      "verb": "GET",
+      "remoteAddress": "::1",
+      "resolvedServiceUrl": "Https://localhost:8491/LocationApp/?zipcode=98052",
+      "requestStartTime": "2017-07-20T15:58:00.0741142-07:00"
+     }
+     }
 
-    {
-      "Timestamp": "2017-07-20T16:00:01.3173605-07:00",
-      ...
-      "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Error while forwarding request to service: response status code = 504, description = Reverse proxy Timeout, phase = FinishSendRequest, internal error = ERROR_WINHTTP_TIMEOUT ",
-      ...
-      "Payload": {
-        "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
-        "statusCode": 504,
-        "description": "Reverse Proxy Timeout",
-        "sendRequestPhase": "FinishSendRequest",
-        "errorDetails": "internal error = ERROR_WINHTTP_TIMEOUT"
-      }
-    }
-    ```
+     {
+     "Timestamp": "2017-07-20T16:00:01.3173605-07:00",
+     ...
+     "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Error while forwarding request to service: response status code = 504, description = Reverse proxy Timeout, phase = FinishSendRequest, internal error = ERROR_WINHTTP_TIMEOUT ",
+     ...
+     "Payload": {
+      "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
+      "statusCode": 504,
+      "description": "Reverse Proxy Timeout",
+      "sendRequestPhase": "FinishSendRequest",
+      "errorDetails": "internal error = ERROR_WINHTTP_TIMEOUT"
+     }
+     }
+     ```
 
 2. 反向代理将返回响应状态代码 404（未找到）。 
     
     下面的示例中的反向代理将返回 404，因为找不到匹配的服务终结点。
     此处需要了解的有效负载项为：
-    *  **processRequestPhase**：指示发生故障时请求处理的阶段，TryGetEndpoint， 即尝试获取要转发到的服务终结点时。 
-    *  **errorDetails**：列出终结点搜索条件。 此处，你可看到指定的 listenerName = FrontEndListener，而副本终结点列表仅包含名称为 OldListener 的侦听程序。
+   * **processRequestPhase**:指示请求处理时出错，阶段***TryGetEndpoint***即 即尝试获取要转发到的服务终结点时。 
+   * **errorDetails**:列出了终结点搜索条件。 此处，你可看到指定的 listenerName = FrontEndListener，而副本终结点列表仅包含名称为 OldListener 的侦听程序。
     
-    ```
-    {
+     ```
+     {
+     ...
+     "Message": "c1cca3b7-f85d-4fef-a162-88af23604343 Error while processing request, cannot forward to service: request url = https://localhost:19081/LocationApp/LocationFEService?ListenerName=FrontEndListener&zipcode=98052, verb = GET, remote (client) address = ::1, request processing start time = 16:43:02.686271 (3,448,220.353 MSec), error = FABRIC_E_ENDPOINT_NOT_FOUND, message = , phase = TryGetEndoint, SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"\":\"Https:\/\/localhost:8491\/LocationApp\/\"}} ",
+     "ProcessId": 57696,
+     "Level": "Warning",
+     "EventName": "ReverseProxy",
+     "Payload": {
+      "traceId": "c1cca3b7-f85d-4fef-a162-88af23604343",
+      "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?ListenerName=NewListener&zipcode=98052",
       ...
-      "Message": "c1cca3b7-f85d-4fef-a162-88af23604343 Error while processing request, cannot forward to service: request url = https://localhost:19081/LocationApp/LocationFEService?ListenerName=FrontEndListener&zipcode=98052, verb = GET, remote (client) address = ::1, request processing start time = 16:43:02.686271 (3,448,220.353 MSec), error = FABRIC_E_ENDPOINT_NOT_FOUND, message = , phase = TryGetEndoint, SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"\":\"Https:\/\/localhost:8491\/LocationApp\/\"}} ",
-      "ProcessId": 57696,
-      "Level": "Warning",
-      "EventName": "ReverseProxy",
-      "Payload": {
-        "traceId": "c1cca3b7-f85d-4fef-a162-88af23604343",
-        "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?ListenerName=NewListener&zipcode=98052",
-        ...
-        "processRequestPhase": "TryGetEndoint",
-        "errorDetails": "SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Https:\/\/localhost:8491\/LocationApp\/\"}}"
-      }
-    }
-    ```
-    反向代理返回“404 未找到”的另一个示例为：ApplicationGateway\Http 配置参数 SecureOnlyMode 已设为 true，同时反向代理正在侦听 HTTPS，但所有副本终结点都不安全（侦听 HTTP）。
-    反向代理返回 404，因为找不到用于侦听 HTTPS 的终结点来转发请求。 分析事件负载中的参数有助于缩小问题范围：
+      "processRequestPhase": "TryGetEndoint",
+      "errorDetails": "SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Https:\/\/localhost:8491\/LocationApp\/\"}}"
+     }
+     }
+     ```
+     反向代理返回 404 的位置的另一个示例是找不到：ApplicationGateway\Http 配置参数**SecureOnlyMode**设置为 true，使用反向代理侦听**HTTPS**，但所有副本终结点都是不安全 （侦听 HTTP）。
+     反向代理返回 404，因为找不到用于侦听 HTTPS 的终结点来转发请求。 分析事件负载中的参数有助于缩小问题范围：
     
-    ```
-        "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
-    ```
+     ```
+      "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
+     ```
 
 3. 反向代理请求失败，出现超时错误。 
     事件日志包含一个具有已接收请求详细信息（此处未显示）的事件。

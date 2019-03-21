@@ -12,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 06c034968b2577d6321ffe6f55f969547a35931f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: aaa07759ed8b10578d024d5838ac1d2658778695
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054429"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999890"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>使用 Azure 门户创建、更改或删除服务终结点策略
 
@@ -35,7 +35,7 @@ ms.locfileid: "54054429"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 
-通过 http://portal.azure.com 登录到 Azure 门户。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-a-service-endpoint-policy"></a>创建服务终结点策略
 

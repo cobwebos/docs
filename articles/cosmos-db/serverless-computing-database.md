@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: ff202c85f20adce173a375987a5f2250fda565b2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041180"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123770"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
 
@@ -97,11 +97,11 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 1. 通过将 Azure Cosmos DB 触发器添加到每个 Azure Functions 可以创建多个 Azure Functions，它们全部都侦听购物车数据的同一更改源。 请注意，当多个函数侦听同一更改源时，需要为每个函数提供新的租用集合。 有关租约集合的详细信息，请参阅[了解更改源处理器库](change-feed-processor.md)。
 2. 每当新商品添加到用户的购物车时，更改源都将从购物车容器中独立调用每个函数。
-    * 一个函数可能使用当前购物篮的内容更改用户可能有兴趣的其他商品的显示内容。
-    * 另一个函数可能更新库存总数。
-    * 另一个函数可能将某些产品的客户信息发送到营销部门，该部门将向它们发送促销邮件程序。 
+   * 一个函数可能使用当前购物篮的内容更改用户可能有兴趣的其他商品的显示内容。
+   * 另一个函数可能更新库存总数。
+   * 另一个函数可能将某些产品的客户信息发送到营销部门，该部门将向它们发送促销邮件程序。 
 
-    任何部门通过侦听更改源都可以创建 Azure Cosmos DB 触发器，并可确保它们在此过程中不会延迟关键的订单处理事件。
+     任何部门通过侦听更改源都可以创建 Azure Cosmos DB 触发器，并可确保它们在此过程中不会延迟关键的订单处理事件。
 
 在所有这些用例中，由于函数本身已分离应用，所以无需一直启动新应用实例。 相反，Azure Functions 会在需要时启动个别函数以完成离散进程。
 

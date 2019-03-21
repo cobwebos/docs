@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9edd243c47c7c0eeeff3b875fccede01806862a7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: d89886e7cc5fe47013902b281c490b79a07e7641
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452671"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888104"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
 
@@ -32,7 +32,7 @@ ms.locfileid: "55452671"
 要修改适用于 Spark 1.6 的 Jupyter 笔记本以用于 HDInsight Spark 2.0 群集，请将 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。 此代码演示如何使用在 Spark 2.0 中创建的模型。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 1. 需要一个 Azure 帐户和一个 Spark 1.6（或 Spark 2.0）HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
 2. 还必须在此处通过演练针对 Spark 1.6 群集或 Spark 2.0 笔记本的[使用 Spark 进行数据探索和建模](spark-data-exploration-modeling.md)主题，来创建要评分的机器学习模型。 
@@ -190,9 +190,9 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>特征转换：为分类特征编制索引并编码以输入到模型中进行评分
 本部分介绍如何使用 `StringIndexer` 为分类数据编制索引，并使用 `OneHotEncoder` 为特征编码以输入到模型中。
 
-[StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) 将标签的字符串列编码为标签索引列。 索引按标签频率排序。 
+[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 将标签的字符串列编码为标签索引列。 索引按标签频率排序。 
 
-[OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期连续值特征的算法（如逻辑回归）应用到分类特征。
+[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期连续值特征的算法（如逻辑回归）应用到分类特征。
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -257,7 +257,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：5.37 秒
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>使用特征数组创建 RDD 对象以输入到模型中
-本部分包含的代码显示如何将分类文本数据编制索引为标签点数据类型，并对其进行独热编码，以便它可用于训练和测试 MLlib 逻辑回归和基于树的模型。 索引数据存储在[弹性分布式数据集 (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) 对象中。 这些是 Spark 中的基本抽象。 RDD 对象表示可与 Spark 并行处理的不可变、已分区的元素集合。
+本部分包含的代码显示如何将分类文本数据编制索引为标签点数据类型，并对其进行独热编码，以便它可用于训练和测试 MLlib 逻辑回归和基于树的模型。 索引数据存储在[弹性分布式数据集 (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) 对象中。 这些是 Spark 中的基本抽象。 RDD 对象表示可与 Spark 并行处理的不可变、已分区的元素集合。
 
 它还包含显示如何使用 MLlib 提供的 `StandardScalar` 缩放数据的代码，用于使用随机梯度下降 (SGD) 的线性回归，随机梯度下降是一种用于训练范围广泛的机器学习模型的流行算法。 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 用于将特征缩放到单位方差。 特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 
 
@@ -397,9 +397,9 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 ## <a name="score-classification-and-regression-random-forest-models"></a>为分类和回归随机林模型评分
 本部分中的代码显示如何加载已保存在 Azure Blob 存储中的分类和回归随机林模型、使用标准分类器和回归测量为其性能评分，然后将结果保存回 Blob 存储。
 
-[随机林](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林可处理分类特征、扩展到多类分类设置、不需要功能缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
+[随机林](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林可处理分类特征、扩展到多类分类设置、不需要功能缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
 
-[spark.mllib](http://spark.apache.org/mllib/) 支持将随机林用于使用连续和分类特征的二元和多类分类以及回归。 
+[spark.mllib](https://spark.apache.org/mllib/) 支持将随机林用于使用连续和分类特征的二元和多类分类以及回归。 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -445,7 +445,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 **spark.mllib** 支持将 GBT 用于使用连续和分类特征的二元分类和回归。 
 
-[梯度提升树](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式训练决策树以最大程度减少损失函数。 GBT 可处理分类特征、不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
+[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式训练决策树以最大程度减少损失函数。 GBT 可处理分类特征、不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2B 协作 API 和自定义 | Microsoft 文档
+title: B2B 协作 API 和自定义-Azure Active Directory |Microsoft Docs
 description: Azure Active Directory B2B 协作可让业务合作伙伴有选择性地访问本方的企业应用程序，为跨公司合作关系提供支持
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a475c9032d2c4062b506c1e6ebcadd1901c946b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111304"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
 
@@ -44,7 +44,7 @@ ms.locfileid: "56177421"
     "sendInvitationMessage": true
     ```
 
-  发送给收件人
+   发送给收件人
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
@@ -58,7 +58,7 @@ ms.locfileid: "56177421"
     "sendInvitationMessage": false
     ```
 
-  在这种情况下，将通过可嵌入电子邮件模板的 API、即时消息或所选择的其他分发方法收到兑换 URL。
+   在这种情况下，将通过可嵌入电子邮件模板的 API、即时消息或所选择的其他分发方法收到兑换 URL。
 
 6. 最后，如果是管理员，可以选择以成员身份邀请用户。
 

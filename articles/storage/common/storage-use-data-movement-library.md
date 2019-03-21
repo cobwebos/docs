@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: fd64376f68a177f12b2105ae0974eeeeefa94f4b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460074"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996148"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>使用 Microsoft Azure 存储数据移动库传输数据
 
@@ -193,7 +193,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 此代码提示我们输入本地文件的路径、新的或现有容器的名称，以及新 Blob 的名称。 `TransferManager.UploadAsync`  方法使用此信息执行上传。
 
-点击 `F5` 运行应用程序。 可通过使用 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)查看存储帐户，来验证是否已发生上传。
+点击 `F5` 运行应用程序。 可通过使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)查看存储帐户，来验证是否已发生上传。
 
 ## <a name="set-number-of-parallel-operations"></a>设置并行操作数目
 数据移动库提供的一个极佳功能就是设置并行操作数目，以提高数据传输吞吐量。 默认情况下，数据移动库将并行操作数目设置为 8 * 计算机上核心数。

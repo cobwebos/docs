@@ -6,14 +6,14 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 08/06/2018
+ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 56fbb5d45e55e63ae887d915367cfc649e531095
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
-ms.translationtype: HT
+ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180749"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
 

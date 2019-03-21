@@ -1,19 +1,19 @@
 ---
 title: 了解 Azure IoT 中心定价 | Microsoft Docs
 description: 开发人员指南 - 介绍了如何实现 IoT 中心（包括样例）的计数和定价。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
-ms.author: dobett
-ms.openlocfilehash: 247c12fb15fe8aa82c3a29c4c2d1e704db40e424
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
+ms.date: 03/11/2019
+ms.openlocfilehash: 23b53e852672c129ff148b0b493a44172f9baf9a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141493"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769738"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT 中心定价信息
 
@@ -28,8 +28,8 @@ ms.locfileid: "53141493"
 | 标识注册表操作 <br/> （创建、检索、列表、更新、删除） | 不收费。 |
 | 设备到云的消息 | 成功发送的消息以流入 IoT 中心的 4KB 区块大小为单位进行收费。 例如，1 条 6KB 的消息按 2 条消息收费。 |
 | 云到设备的消息 | 成功发送的消息按 4KB 区块大小为单位收费，例如，1 条 6KB 的消息按 2 条消息收费。 |
-| 文件上传 | 向 Azure 存储传输文件时，不通过 IoT 中心计费。 文件传输时的启动消息和完成消息按 4KB 增量数计费。 例如，传输一个 10MB 的文件时，会在 Azure 存储费用的基础上收取两条消息的费用。 |
-| 直接方法 | 成功的方法请求按 4KB 区块大小为单位收费，正文非空的响应作为附加消息以 4KB 区块大小为单位收费。 向已断开连接的设备发出的请求被视作消息，以 4KB 块大小为单位收费。 例如，正文为 6KB 的方法产生的来自设备的响应若没有正文，则按 2 条消息收费。 而正文为 6KB 的方法产生的来自设备的响应若为 1KB，则按 2 条请求消息收费，另加一条响应的消息费用。 |
+| 文件上传 | 向 Azure 存储传输文件时，不通过 IoT 中心计费。 文件传输时的启动消息和完成消息按 4KB 增量数计费。 例如，传输一个 10MB 的文件被按两条消息的 Azure 存储成本。 |
+| 直接方法 | 成功的方法请求按 4KB 区块收费，响应作为附加消息以 4KB 块收费。 向已断开连接的设备发出的请求被视作消息，以 4KB 块大小为单位收费。 例如，使用的设备响应没有正文的 4 KB 正文的方法是按 2 条消息收费。 而正文为 6KB 的方法产生的来自设备的响应若为 1KB，则按 2 条请求消息收费，另加一条响应的消息费用。 |
 | 设备和模块孪生读取 | 如果孪生从设备或模块和解决方案后端进行读取，则将其作为消息以 512 字节块大小为单位收费。 例如，读取 6 KB 的孪生按 12 条消息收费。 |
 | 设备和模块孪生更新（标记和属性） | 如果孪生从设备或模块和解决方案后端进行更新，则将其作为消息以 512 字节块大小为单位收费。 例如，读取 6 KB 的孪生按 12 条消息收费。 |
 | 设备和模块孪生查询 | 查询被视作消息，根据结果大小以 512 字节块大小为单位收费。 |
@@ -42,7 +42,7 @@ ms.locfileid: "53141493"
 
 ## <a name="example-1"></a>示例 #1
 
-某个设备每分钟将一条 1KB 的设备到云的消息发送到 IoT 中心，该消息随后由 Azure 流分析读取。 解决方案后端每 10 分钟调用设备上的 1 个方法（有效负载为 512 字节），以便触发特定操作。 设备以 200 字节大小的结果响应方法。
+某个设备每分钟将一条 1KB 的设备到云的消息发送到 IoT 中心，该消息随后由 Azure 流分析读取。 解决方案后端调用方法 （为 512 个字节的有效负载） 在设备上每隔 10 分钟以便触发特定操作。 设备以 200 字节大小的结果响应方法。
 
 设备使用：
 

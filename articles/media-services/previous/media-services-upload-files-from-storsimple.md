@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 22cf9b66ecf7bbbe8ef226635e84f0aaf9d26b17
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 0d7ca397cf45c4a67a914a8105deb9043adf46e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993922"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835263"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>将文件从 Azure StorSimple 上传到 Azure 媒体服务帐户中  
 
@@ -47,7 +47,7 @@ ms.locfileid: "55993922"
 
 ## <a name="see-also"></a>另请参阅
 
-[在数据管理器中使用 .Net SDK 触发作业](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
+[使用.NET SDK 来触发作业在数据管理器](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c4acb3b779821193949c69d440edaafec5e3d803
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: e29f36897dd52fcb09456768a799209a385d74fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474048"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444491"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Team Data Science Process 的数据采集和理解阶段
 
@@ -66,9 +66,9 @@ TDSP 提供名为 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/mas
 ## <a name="artifacts"></a>项目
 以下是此阶段中的可交付结果：
 
-   * [数据质量报表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/DataSummaryReport.md)：此报表包含数据摘要、每个属性和目标之间的关系、变量排名等。 作为 TDSP 一部分提供的 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) 工具可在任何表格数据集（例如，CSV 文件或关系表）上快速生成此报表。 
+   * [数据质量报表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md)：此报表包含数据摘要、每个属性和目标之间的关系、变量排名等。 作为 TDSP 一部分提供的 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) 工具可在任何表格数据集（例如，CSV 文件或关系表）上快速生成此报表。 
    * **解决方案体系结构**：解决方案体系结构可以是生成模型后数据管道的关系图或说明，该数据管道用于对新数据进行评分或预测。 它还包含要基于新数据重新定型模型的管道。 使用 TDSP 目录结构模板时，将此文档存储到[项目](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project)目录中。
-   * **检查点决策**：开始完整的功能设计和建模前，可以重新评估项目，以确定预期值是否足以继续投入资金。 例如，用户可能已准备好继续进行项目，但需要收集更多数据或由于没有数据可以回答问题而放弃项目。
+   * **检查点决策**：开始完整的功能设计和建模前，您可以重新评估项目，以确定预期值是否足以继续追求它。 例如，用户可能已准备好继续进行项目，但需要收集更多数据或由于没有数据可以回答问题而放弃项目。
 
 ## <a name="next-steps"></a>后续步骤
 

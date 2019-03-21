@@ -4,12 +4,12 @@ ms.service: service-bus-messaging
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
-ms.openlocfilehash: ef6d5d22f70d5fff38f90b457a7c945ab59fc67c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
+ms.openlocfilehash: 7b05f3d8bcca5f26161f4c362078fa134518cafd
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330750"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588647"
 ---
 ## <a name="what-are-service-bus-topics-and-subscriptions"></a>什么是服务总线主题和订阅？
 服务总线主题和订阅支持 *发布/订阅* 消息通信模型。 在使用主题和订阅时，分布式应用程序的组件不会直接相互通信，而是通过充当中介的主题交换消息。
@@ -21,32 +21,6 @@ ms.locfileid: "52330750"
 主题订阅类似于接收发送至该主题的消息副本的虚拟队列。 可以选择以订阅为单位为主题注册筛选规则。 使用筛选规则，可以进行筛选或限制以决定发送到某个主题的哪些消息将由哪些主题订阅接收。
 
 利用服务总线主题和订阅，可以扩展和处理许多用户和应用程序之间存在的大量消息。
-
-## <a name="create-a-namespace"></a>创建命名空间
-若要开始在 Azure 中使用服务总线主题和订阅，必须先创建一个 *服务命名空间*。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
-
-创建命名空间：
-
-1. 登录到 [Azure 门户][Azure portal]。
-2. 在门户的左侧导航窗格中，依次单击“创建资源”、“企业集成”和“服务总线”。
-3. 在“创建命名空间”  对话框中，输入命名空间名称。 系统会立即检查该名称是否可用。
-4. 在确保命名空间名称可用后，选择定价层（基础版、标准版或高级版）。
-5. 在“订阅”  字段中，选择要创建命名空间的 Azure 订阅。
-6. 在“资源组”字段中，选择将存放命名空间的现有资源组，或者创建一个新资源组。      
-7. 在“位置” 中，选择应托管命名空间的国家或地区。
-   
-    ![创建命名空间][create-namespace]
-8. 单击“创建”  按钮。 系统现已创建命名空间并已将其启用。 可能需要等待几分钟，因为系统将为帐户配置资源。
-
-### <a name="obtain-the-credentials"></a>获取凭据
-1. 在命名空间列表中，单击新创建的命名空间名称。
-2. 在“服务总线命名空间”窗格中，单击“共享访问策略”。
-3. 在“共享访问策略”窗格中，单击“RootManageSharedAccessKey”。
-   
-    ![connection-info][connection-info]
-4. 在“策略: RootManageSharedAccessKey”窗格中，单击“连接字符串 - 主键”旁边的复制按钮，将连接字符串复制到剪贴板供以后使用。
-   
-    ![connection-string][connection-string]
 
 [Azure portal]: https://portal.azure.com
 [create-namespace]: ./media/howto-service-bus-topics/create-namespace.png

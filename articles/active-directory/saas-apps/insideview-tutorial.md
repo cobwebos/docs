@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0885a469877d0ea9f52f6191b4cd894ddbbce5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 92cb4f1093d8450bb2c32d99f4ccedd0a5688253
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教程：Azure Active Directory 与 InsideView 的集成
 
@@ -34,12 +34,12 @@ ms.locfileid: "56162015"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 InsideView 的集成，需要以下各项：
 
 - Azure AD 订阅
-- 已启用 InsideView 单一登录的订阅
+- InsideView 单一登录已启用的订阅
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -91,7 +91,7 @@ ms.locfileid: "56162015"
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 InsideView 测试用户](#creating-a-insideview-test-user) - 在 InsideView 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+1. **[创建 InsideView 测试用户](#creating-a-insideview-test-user)** -Britta Simon 的对应在 InsideView 链接到用户的 Azure AD 表示形式。
 1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -116,7 +116,7 @@ ms.locfileid: "56162015"
     在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://my.insideview.com/iv/<STS Name>/login.iv`
 
     > [!NOTE] 
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [InsideView 支持团队](mailto:support@insideview.com)获取此值。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系[InsideView 支持团队](mailto:support@insideview.com)获取此值。
  
 1. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
 
@@ -191,7 +191,7 @@ ms.locfileid: "56162015"
 
     d. 单击“创建”。
  
-### <a name="creating-a-insideview-test-user"></a>创建 InsideView 测试用户
+### <a name="creating-an-insideview-test-user"></a>创建 InsideView 测试用户
 
 要使 Azure AD 用户能够登录 InsideView，必须将这些用户预配到 InsideView 中。 对于 InsideView，预配是一项手动任务。
 

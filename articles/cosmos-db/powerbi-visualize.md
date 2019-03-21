@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: f6ba66aa37b4a1902f98d2a1fcf5f542fa6476d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043645"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137668"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "54043645"
 > [!NOTE]
 > 目前，仅 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持使用 Power BI 连接器连接 Azure Cosmos DB。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在按照此 Power BI 教程中的说明操作之前，请确保已拥有对以下资源的访问权限：
 
 * [下载最新版本的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
@@ -122,7 +122,7 @@ ms.locfileid: "54043645"
 8. 为新列提供一个名称，例如经纬度。
 9. 接下来，为新列指定自定义公式。  对于我们的示例，我们将如下所示，使用以下公式连接逗号分隔的纬度值和经度值：`Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 单击“确定”。
    
-    有关数据分析表达式 (DAX)（包括 DAX 函数）的详细信息，请访问 [Power BI Desktop 中的 DAX Basic](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)。
+    在数据分析表达式 (DAX) 包括 DAX 函数的详细信息，请访问[Power BI Desktop 中的 DAX 基础知识](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
    
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 添加自定义列](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 
@@ -155,12 +155,12 @@ ms.locfileid: "54043645"
 
 下面将演示创建简单交互地图视图报表的基本步骤。
 
-1. 对于我们的示例，我们将创建显示每座火山的位置的地图视图。  在“可视化”窗格中，单击如上屏幕截图中突出显示的“地图”视觉对象类型。  应该会看到绘制在“报表”画布上的地图视觉对象类型。  “可视化”窗格也应该显示一组与地图视觉对象类型相关的属性。
+1. 对于我们的示例，我们创建显示每座火山的位置的地图视图。  在“可视化”窗格中，单击如上屏幕截图中突出显示的“地图”视觉对象类型。  应该会看到绘制在“报表”画布上的地图视觉对象类型。  “可视化”窗格也应该显示一组与地图视觉对象类型相关的属性。
 2. 现在，从“字段”窗格将经纬度字段拖放到“可视化”窗格中的“位置”属性。
 3. 接下来，将“火山名称”字段拖放到“图例”属性。  
 4. 然后，将“海拔”字段拖放到“大小”属性。  
-5. 现在，你应会看到该地图视觉对象显示有一组表示每座火山位置的气泡，并用气泡的大小对应火山的海拔。
-6. 此时已成功创建了基本报表。  可以通过添加更多可视化效果来进一步自定义该报表。  在本例中，我们添加了火山类型切片器以使报表具有交互性。  
+5. 现在应会看到显示一组表示每座火山位置的气泡的地图视觉对象，气泡的大小与火山的海拔相关联。
+6. 此时已创建了基本报表。  可以通过添加更多可视化效果来进一步自定义该报表。  在本例中，我们添加了火山类型切片器以使报表具有交互性。  
    
 7. 在“文件”菜单中，单击“保存”并将该文件保存为 PowerBITutorial.pbix。
 
@@ -175,7 +175,7 @@ ms.locfileid: "54043645"
     ![成功发布到 Power BI！ 在 Power BI 中打开教程](./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png)
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>在 PowerBI.com 中创建仪表板
-既然有了报表，就将报表分享到 PowerBI.com 吧
+现在，已创建一份可在 PowerBI.com 上共享的报表
 
 从 Power BI Desktop 发布报表到 PowerBI.com 时，会在 PowerBI.com 租户中生成一个“报表”和“数据集”。 例如，将一个名为 **PowerBITutorial** 的报表发布到 PowerBI.com 后，PowerBITutorial 会出现在 PowerBI.com 的“报表”和“数据集”部分。
 
@@ -185,7 +185,7 @@ ms.locfileid: "54043645"
 
    ![PowerBI.com 中新“报表”和“数据集”的屏幕截图](./media/powerbi-visualize/power-bi-pin-live-tile.png)
 
-然后按照[从报表固定磁贴](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report)中的说明创建新仪表板。 
+然后，根据 [Pin a tile from a report](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report)（从报表固定磁贴）中的说明创建新仪表板。 
 
 创建仪表板之前也可以临时修改报表。 但是，建议使用 Power BI Desktop 执行修改并将报表重新发布到 PowerBI.com。
 

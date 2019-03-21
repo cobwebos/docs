@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 03/20/2018
-ms.openlocfilehash: 9288ffa406b0e5765b35fa9b23aa13dee5754e9a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 99b4134f8f2d6ed2f521a7f488c33e06c0f436bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165822"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>基于 Azure Stack 的应用服务 Update 1 发行说明
 
@@ -58,7 +58,7 @@ ms.locfileid: "55240015"
 - 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack 门户 SDK 版本一致。
 
 - **针对以下应用程序框架和工具的更新**：
-    - 增加了 **.Net Core 2.0** 支持
+    - 添加 **.NET Core 2.0**支持
     - 增加了 **Node.JS** 版本：
         - 6.11.2
         - 6.11.5

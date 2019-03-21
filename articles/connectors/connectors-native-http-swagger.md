@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: bb89c76fb19bff74d39d919c8d2e65d430cb0566
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817744"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551962"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP + Swagger 连接器调用 REST 终结点
 
@@ -60,7 +60,7 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
 
 3. 将 Swagger 文件上传到 blob 中。 
 
-   可通过 [Azure 门户](https://portal.azure.com)或 [Azure 存储资源管理器](http://storageexplorer.com/)之类的工具执行此步骤。
+   可通过 [Azure 门户](https://portal.azure.com)或 [Azure 存储资源管理器](https://storageexplorer.com/)之类的工具执行此步骤。
 
 4. 在 Azure Blob 存储中引用文档的 HTTPS 链接。 
 
@@ -74,14 +74,14 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger 触发器
 触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。 HTTP + Swagger 连接器具有一个触发器。
 
-| 触发器 | 说明 |
+| 触发器 | 描述 |
 | --- | --- |
 | HTTP + Swagger |进行 HTTP 调用并返回响应内容 |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger 操作
 操作是由在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息。](connectors-overview.md) HTTP + Swagger 连接器具有一个可能的操作。
 
-| 操作 | 说明 |
+| 操作 | 描述 |
 | --- | --- |
 | HTTP + Swagger |进行 HTTP 调用并返回响应内容 |
 
@@ -92,19 +92,19 @@ HTTP + Swagger 连接器附带一个可能的操作。 下面是每个操作的�
 在 Swagger 元数据的协助下发出 HTTP 出站请求。
 星号 (*) 表示必填字段。
 
-| 显示名称 | 属性名称 | 说明 |
+| 显示名称 | 属性名称 | 描述 |
 | --- | --- | --- |
 | 方法* |方法 |要使用的 HTTP 谓词。 |
 | URI* |uri |HTTP 请求的 URI。 |
 | 标头 |headers |要包含的 HTTP 标头的 JSON 对象。 |
 | Body |body |HTTP 请求正文。 |
-| 身份验证 |authentication |要用于请求的身份验证。 有关详细信息，请参阅 [HTTP 连接器](connectors-native-http.md#authentication)。 |
+| Authentication |authentication |要用于请求的身份验证。 有关详细信息，请参阅 [HTTP 连接器](connectors-native-http.md#authentication)。 |
 
 **输出详细信息**
 
 HTTP 响应
 
-| 属性名称 | 数据类型 | 说明 |
+| 属性名称 | 数据类型 | 描述 |
 | --- | --- | --- |
 | 标头 |对象 |响应标头 |
 | Body |对象 |响应对象 |
@@ -113,7 +113,7 @@ HTTP 响应
 ### <a name="http-responses"></a>HTTP 响应
 对各种操作进行调用时，可能得到特定响应。 下表概述对应的响应和说明。
 
-| Name | 说明 |
+| 名称 | 描述 |
 | --- | --- |
 | 200 |OK |
 | 202 |已接受 |

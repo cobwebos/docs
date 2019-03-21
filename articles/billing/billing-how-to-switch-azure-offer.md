@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: 6e0339808d65cd5b4acd7b77284ccedf7cdf1989
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: bbdcbdc7ef288eeeb279c7e5e59baee492e1f292
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902119"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835260"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>将 Azure 即用即付订阅更改为其他套餐
 
@@ -51,7 +51,7 @@ ms.locfileid: "54902119"
 >
 
 1. 在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)登录。
-1. 选择“即用即付”订阅。
+1. 选择即用即付订阅。
 1. 单击“切换到其他套餐”。 仅当用户使用“即用即付”且已完成第一个计费周期的情况下，此按钮才可用。
 
    ![请注意页面右侧的“切换套餐”按钮](./media/billing-how-to-switch-azure-offer/switchbutton.png)
@@ -102,7 +102,7 @@ Azure 套餐是用户拥有的 Azure 订阅*类型*。 例如，[即用即付](h
 
 #### <a name="billing"></a>计费
 
-在转换当天，将针对所有未付费用生成发票。 之后，按新套餐的定价条款对订阅进行计费。 订阅计费周年会变为更改套餐的日期。 更改产品/服务之前的使用情况与计费数据不会被保留，因此建议在切换之前先下载一个副本。
+在切换当天，为所有未付费用生成发票。 之后，按新套餐的定价条款对订阅进行计费。 订阅计费周年会变为更改套餐的日期。 更改产品/服务之前的使用情况与计费数据不会被保留，因此建议在切换之前先下载一个副本。
 
 ### <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>能否从即用即付转为[云解决方案提供商](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) 或[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)？
 
@@ -116,4 +116,4 @@ Azure 套餐是用户拥有的 Azure 订阅*类型*。 例如，[即用即付](h
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

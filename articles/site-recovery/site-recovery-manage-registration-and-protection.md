@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 9aaa5dd2c636f9b5d92e949e1af71eda809cdac7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: c22acb1ae82e5c1e781598e8545c7f1625cc1c09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810314"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122784"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 
@@ -55,18 +55,18 @@ ms.locfileid: "55810314"
         pushd .
         try
         {
-             $windowsIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
-             $principal=new-object System.Security.Principal.WindowsPrincipal($windowsIdentity)
-             $administrators=[System.Security.Principal.WindowsBuiltInRole]::Administrator
-             $isAdmin=$principal.IsInRole($administrators)
-             if (!$isAdmin)
-             {
+            $windowsIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
+            $principal=new-object System.Security.Principal.WindowsPrincipal($windowsIdentity)
+            $administrators=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+            $isAdmin=$principal.IsInRole($administrators)
+            if (!$isAdmin)
+            {
                 "Please run the script as an administrator in elevated mode."
                 $choice = Read-Host
-                return;       
-             }
+                return;
+            }
 
-            $error.Clear()    
+            $error.Clear()
             "This script will remove the old Azure Site Recovery Provider related properties. Do you want to continue (Y/N) ?"
             $choice =  Read-Host
 
@@ -95,24 +95,24 @@ ms.locfileid: "55810314"
             {
                 if (Test-Path $registrationPath)
                 {
-                    "Removing registration related registry keys."    
+                    "Removing registration related registry keys."
                     Remove-Item -Recurse -Path $registrationPath
                 }
 
                 if (Test-Path $proxySettingsPath)
-            {
+                {
                     "Removing proxy settings"
                     Remove-Item -Recurse -Path $proxySettingsPath
                 }
 
                 $regNode = Get-ItemProperty -Path $asrHivePath
                 if($regNode.DraID -ne $null)
-                {            
+                {
                     "Removing DraId"
                     Remove-ItemProperty -Path $asrHivePath -Name $draIdValue
                 }
                 if($regNode.IdMgmtCloudContainerId -ne $null)
-                {            
+                {
                     "Removing IdMgmtCloudContainerId"
                     Remove-ItemProperty -Path $asrHivePath -Name $idMgmtCloudContainerId
                 }
@@ -131,7 +131,7 @@ ms.locfileid: "55810314"
                 $store.Remove($cert)
             }
         }catch
-        {    
+        {
             [system.exception]
             Write-Host "Error occurred" -ForegroundColor "Red"
             $error[0]
@@ -158,11 +158,11 @@ ms.locfileid: "55810314"
 
 1. 依次转到“受保护的项” > “复制的项”，右键单击计算机，再单击“禁用复制”。
 2. 在“禁用复制”中，可以选择下列选项：
-     - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
-    - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理本地虚拟机上的复制配置。 
+   - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
+   - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理本地虚拟机上的复制配置。 
 
-    > [!NOTE]
-    > 如果选择“删除”选项，请运行下面的一组脚本，清理本地 Hyper-V 服务器上的复制设置。
+     > [!NOTE]
+     > 如果选择“删除”选项，请运行下面的一组脚本，清理本地 Hyper-V 服务器上的复制设置。
 1. 在源 Hyper-V 主机服务器上，取消复制虚拟机。 将 SQLVM1 替换为虚拟机名称，并通过管理 PowerShell 运行以下脚本
 
 ```powershell
@@ -177,11 +177,11 @@ ms.locfileid: "55810314"
 1. 依次转到“受保护的项” > “复制的项”，右键单击计算机，再单击“禁用复制”。
 2. 在“禁用复制”中，选择下列选项之一：
 
-    - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
-    - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理本地虚拟机上的复制配置。 
+   - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
+   - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理本地虚拟机上的复制配置。 
 
-    > [!NOTE]
-    > 如果选择“删除”选项，请运行下面的脚本，清理本地 VMM 服务器上的复制设置。
+     > [!NOTE]
+     > 如果选择“删除”选项，请运行下面的脚本，清理本地 VMM 服务器上的复制设置。
 3. 从源 VMM 服务器上的 VMM 控制台使用 PowerShell（需要管理员权限）运行此脚本。 将占位符 SQLVM1 替换为虚拟机名称。
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
@@ -201,15 +201,15 @@ ms.locfileid: "55810314"
 1. 依次转到“受保护的项” > “复制的项”，右键单击计算机，再单击“禁用复制”。
 2. 在“禁用复制”中，选择下列选项之一：
 
-    - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
-    - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理本地虚拟机上的复制配置。 运行下面的一组脚本，清理本地虚拟机上的复制设置。
-> [!NOTE]
-> 如果选择“删除”选项，请运行下面的脚本，清理本地 VMM 服务器上的复制设置。
+   - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
+   - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会清理本地虚拟机上的复制配置。 运行下面的一组脚本，清理本地虚拟机上的复制设置。
+     > [!NOTE]
+     > 如果选择“删除”选项，请运行下面的脚本，清理本地 VMM 服务器上的复制设置。
 
 3. 从源 VMM 服务器上的 VMM 控制台使用 PowerShell（需要管理员权限）运行此脚本。 将占位符 SQLVM1 替换为虚拟机名称。
 
-         $vm = get-scvirtualmachine -Name "SQLVM1"
-         Set-SCVirtualMachine -VM $vm -ClearDRProtection
+        $vm = get-scvirtualmachine -Name "SQLVM1"
+        Set-SCVirtualMachine -VM $vm -ClearDRProtection
 4. 在辅助 VMM 服务器上，运行下面的脚本，清理辅助虚拟机的设置：
 
         $vm = get-scvirtualmachine -Name "SQLVM1"

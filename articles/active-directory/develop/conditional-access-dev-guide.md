@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.author: celested
 ms.reviewer: dadobali
-ms.date: 09/24/2018
+ms.date: 02/28/2019
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2be77cdc4a5ad38a7d8c125fd95256e77cd92019
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c02f094def3828d0839025f4b7dea48ee64adcc8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202938"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543180"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问的开发人员指南
 
@@ -44,7 +44,6 @@ ms.locfileid: "56202938"
 
 具体来说，在以下应用场景下需要代码来处理条件性访问“质询”：
 
-* 访问 Microsoft Graph 的应用
 * 执行代理流的应用
 * 访问多个服务/资源的应用
 * 使用 ADAL.js 的单页应用
@@ -58,15 +57,28 @@ ms.locfileid: "56202938"
 
 在某些应用场景下，需要进行代码更改来处理条件性访问，而在其他应用场景下一切按原样运行。 以下是使用条件性访问执行多重身份验证的一些应用场景，可以通过它们深入了解其中的差异。
 
-* 你正在构建单租户 iOS 应用，并应用了条件性访问策略。 应用允许用户登录且不请求访问 API。 用户登录后，自动调用策略，用户需要执行多重身份验证 (MFA)。
-* 你正在构建多租户 Web 应用，该应用使用 Microsoft Graph 访问 Exchange 及其他服务。 采用此应用的企业客户设置了有关 Exchange 的策略。 当 Web 应用为 MS Graph 请求令牌时，将不会对应用进行质询以符合策略。 最终用户使用有效令牌进行登录。 当应用尝试针对 Microsoft Graph 使用此令牌来访问 Exchange 数据时，将通过 ```WWW-Authenticate``` 标头将声明“质询”返回给 Web 应用。 然后，应用可以在新请求中使用 ```claims```，并将提示最终用户符合条件。
+* 你正在构建单租户 iOS 应用，并应用了条件性访问策略。 应用允许用户登录且不请求访问 API。 用户登录后，自动调用策略，用户需要执行多重身份验证 (MFA)。 
 * 你正在构建使用中间层服务访问下游 API 的本机应用。 公司中使用此应用的企业客户对下游 API 应用了策略。 最终用户登录时，本机应用将请求访问中间层并将发送令牌。 中间层执行代理流来请求访问下游 API。 此时，将向中间层发出一个声明“质询”。 中间层将质询发送回本机应用，本机应用需符合条件访问策略。
+
+#### <a name="microsoft-graph"></a>Microsoft Graph
+
+在条件性访问环境中生成应用时，Microsoft Graph 将具有特殊的注意事项。 通常情况下，条件性访问的机制的行为相同，但用户看到的策略将基于您的应用程序正在请求从关系图的基础数据。 
+
+具体而言，Microsoft Graph 的所有作用域表示某些可以单独应用了策略的数据集。 条件性访问策略被分配特定的数据集，因为 Azure AD 将强制执行基于图形的背后的数据的条件性访问策略而不是图形本身。
+
+例如，如果应用程序请求的以下 Microsoft Graph 作用域
+
+```
+scopes="Bookings.Read.All Mail.Read"
+```
+
+应用程序可以期望他们满足 Bookings 和 Exchange 上设置的所有策略的用户。 如果它授予访问权限，某些作用域可能映射到多个数据集。 
 
 ### <a name="complying-with-a-conditional-access-policy"></a>符合条件性访问策略
 
 对于多个不同的应用拓扑，会在建立会话时评估条件性访问策略。 条件性访问策略在应用和服务的粒度上运行时，调用它的时间很大程度上取决于你尝试完成的应用场景。
 
-在应用尝试访问具有条件性访问策略的服务时，可能会遇到条件性访问质询。 此质询编码在 `claims` 参数中，而此参数来自 Azure AD 或 Microsoft Graph 的响应。 以下是此质询参数的示例：
+在应用尝试访问具有条件性访问策略的服务时，可能会遇到条件性访问质询。 此质询编码在`claims`来自 Azure AD 的响应中提供的参数。 以下是此质询参数的示例： 
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -76,7 +88,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ## <a name="scenarios"></a>方案
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 Azure AD 条件性访问是 [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 包含的一项功能。 可以在[未授权用户使用情况报表](../active-directory-conditional-access-unlicensed-usage-report.md)中了解有关许可要求的更多信息。 开发人员可以加入 [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx)，其中包含企业移动性套件（含有 Azure AD Premium）免费订阅。
 
@@ -84,70 +96,15 @@ Azure AD 条件性访问是 [Azure AD Premium](https://docs.microsoft.com/azure/
 
 下列信息仅适用于这些条件性访问应用场景：
 
-* 访问 Microsoft Graph 的应用
 * 执行代理流的应用
 * 访问多个服务/资源的应用
 * 使用 ADAL.js 的单页应用
 
-以下各部分讨论更复杂的常见应用场景。 核心运行原则是请求已应用条件访问策略的服务令牌时评估条件访问策略，但在通过 Microsoft Graph 访问时除外。
+以下各部分讨论更复杂的常见应用场景。 核心运行原则是在已应用条件性访问策略的服务的请求令牌时评估策略的条件性访问。
 
-## <a name="scenario-app-accessing-microsoft-graph"></a>方案：访问 Microsoft Graph 的应用
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>场景：执行代理流的应用
 
-此应用场景介绍 Web 应用请求访问 Microsoft Graph 的情况。 可以将此场景中的条件访问策略分配到通过 Microsoft Graph 将其作为工作负荷访问的 SharePoint、Exchange 或其他的一些服务。 在此示例中，假定有关于 SharePoint Online 的条件访问策略。
-
-![访问 Microsoft Graph 流的应用示意图](./media/conditional-access-dev-guide/app-accessing-microsoft-graph-scenario.png)
-
-应用首先向 Microsoft Graph 请求授权，此过程需要访问没有条件访问策略的下游工作负荷。 请求成功且未调用任何策略，应用收到 Microsoft Graph 的令牌。 此时，应用可以在所请求的终结点的持有者请求中使用此访问令牌。 现在，应用需要访问 Microsoft Graph 的 SharePoint Online 终结点，例如：`https://graph.microsoft.com/v1.0/me/mySite`
-
-应用已拥有 Microsoft Graph 的有效令牌，因此，它可以执行新请求，而无需获取新令牌。 此请求失败，并且 Microsoft Graph 以包含 ```WWW-Authenticate``` 质询的“HTTP 403 禁止访问”的形式发出声明质询。
-
-以下是响应示例：
-
-```
-HTTP 403; Forbidden
-error=insufficient_claims
-www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/common/oauth2/authorize", client_id="<GUID>", error=insufficient_claims, claims={"access_token":{"polids":{"essential":true,"values":["<GUID>"]}}}"
-```
-
-声明质询位于 ```WWW-Authenticate``` 标头内，可以分析它来提取下一个请求的声明参数。 将其追加到新请求后，Azure AD 知道了要在用户登录时评估条件性访问策略，并且现在应用已符合条件性访问策略。 重新请求 SharePoint Online 终结点成功。
-
-```WWW-Authenticate``` 标头确实包含唯一的结构，但为提取值而进行分析并不是件小事。 以下是可帮助的简短方法。
-
-```csharp
-        /// <summary>
-        /// This method extracts the claims value from the 403 error response from MS Graph.
-        /// </summary>
-        /// <param name="wwwAuthHeader"></param>
-        /// <returns>Value of the claims entry. This should be considered an opaque string.
-        /// Returns null if the wwwAuthheader does not contain the claims value. </returns>
-        private String extractClaims(String wwwAuthHeader)
-        {
-            String ClaimsKey = "claims=";
-            String ClaimsSubstring = "";
-            if (wwwAuthHeader.Contains(ClaimsKey))
-            {
-                int Index = wwwAuthHeader.IndexOf(ClaimsKey);
-                ClaimsSubstring = wwwAuthHeader.Substring(Index, wwwAuthHeader.Length - Index);
-                string ClaimsChallenge;
-                if (Regex.Match(ClaimsSubstring, @"}$").Success)
-                {
-                    ClaimsChallenge = ClaimsSubstring.Split('=')[1];
-                }
-                else
-                {
-                    ClaimsChallenge = ClaimsSubstring.Substring(0, ClaimsSubstring.IndexOf("},") + 1);
-                }
-                return ClaimsChallenge;
-            }
-            return null;
-        }
-```
-
-有关演示如何处理声明质询的代码示例，请参阅适用于 ADAL .NET 的[代理代码示例](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)。
-
-## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>方案：执行代理流的应用
-
-在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 从而，此服务将执行“代理”流来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件性访问策略，并且使用的是本机应用，而非服务器/守护程序应用。
+在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 从而，此服务将执行“代理”流来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件性访问策略，并且使用的是本机应用，而非服务器/守护程序应用。 
 
 ![执行代理流的应用示意图](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -217,7 +174,6 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 应用需要捕获 `error=interaction_required`。 然后应用程序可以在同一个资源上使用 `acquireTokenPopup()` 或 `acquireTokenRedirect()`。 用户被强制执行多重身份验证。 用户完成多重身份验证后，应用针对所请求资源签发一个新访问令牌。
 
 若要尝试此应用场景，请参阅 [JS SPA 代理代码示例](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)。 此代码示例使用之前通过 JS SPA 注册的条件性访问策略和 Web API 演示此应用场景。 它演示了如何正确处理声明质询并获取可用于 Web API 的访问令牌。 或者，请查看常规的 [Angular.js 代码示例](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp)，获取 Angular SPA 方面的指南。
-
 
 ## <a name="see-also"></a>另请参阅
 
