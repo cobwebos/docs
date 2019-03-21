@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 188e58261cec90e9afcc885f3da21fa3fab3b746
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2925ca5a303876a68b6d605c7312d43af102b6e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875427"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088462"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>教程：使用 Visual Studio 和 C# 中的连接服务连接到必应新闻搜索 API
 
@@ -87,14 +87,14 @@ ms.locfileid: "55875427"
 
 现已将向项目添加对必应新闻搜索 API 的支持，下面介绍如何使用 API，将智能搜索添加到网页。
 
-1.  在 Startup.cs 的 `ConfigureServices` 方法中，添加对 `IServiceCollection.AddSingleton` 的调用。 这使得包含关键设置的配置对象可用于项目中的代码。
+1. 在 Startup.cs 的 `ConfigureServices` 方法中，添加对 `IServiceCollection.AddSingleton` 的调用。 这使得包含关键设置的配置对象可用于项目中的代码。
  
    ```csharp
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-            services.AddSingleton<IConfiguration>(Configuration);
-        }
+       public void ConfigureServices(IServiceCollection services)
+       {
+           services.AddMvc();
+           services.AddSingleton<IConfiguration>(Configuration);
+       }
    ```
 
 

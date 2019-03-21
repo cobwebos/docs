@@ -4,17 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 此示例中的 QnA Maker KB 根据一个简单的常见问题解答网页创建，该网页解答有关 BitLocker 密钥恢复的问题。
 author: diberry
 manager: nitinme
+services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 2ac6e6fcd73abddcee668b8f73184b923aeab5d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3f7b24af3d48075150ae7c192ccf421b928a7aa3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876991"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113693"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>创建、训练和发布 QnA Maker 知识库
 
@@ -53,7 +54,7 @@ ms.locfileid: "55876991"
 
 10. 在右上角选择“添加 QnA 对”，以便在 KB 的“编辑”部分添加新的行。 在“问题”下输入“嗨”。 在“解答”下输入“你好，请向我提问 Bitlocker 问题。”
 
-   ![添加 QnA 对](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+    ![添加 QnA 对](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
 11. 在右上角选择“保存并训练”，以便保存所做的编辑并训练 QnA Maker 模型。 如果不保存，编辑的内容不会保留。
 
@@ -61,7 +62,7 @@ ms.locfileid: "55876991"
 
 13. 选择“检查”，更详细地检查响应。 测试窗口用于测试对 KB 所做的更改，然后会发布这些更改。
 
-   ![测试面板](../media/qnamaker-quickstart-kb/inspect-panel.png)
+    ![测试面板](../media/qnamaker-quickstart-kb/inspect-panel.png)
 
 14. 再次选择“测试”，关闭“测试”弹出窗口。
 
@@ -69,7 +70,7 @@ ms.locfileid: "55876991"
 
 16. QnA Maker 服务现在已成功发布。 可以在应用程序或机器人代码中使用此终结点。
 
-   ![发布](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![发布](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 026913e8afbc1eca5742e21d28ed65c1f1f04d96
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 802d7f200f43c690978f05e2d66be81bd2635e1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549513"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838827"
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Go 语言连接和查询数据
 本快速入门演示如何使用以 [Go](https://golang.org/) 语言 (golang) 编写的代码连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Go 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
@@ -85,7 +85,7 @@ ms.locfileid: "53549513"
  ![Azure Database for PostgreSQL 服务器名称](./media/connect-go/1-connection-string.png)
 
 ## <a name="build-and-run-go-code"></a>生成和运行 Go 代码 
-1. 若要编写 Golang 代码，可以使用纯文本编辑器，例如 Microsoft Windows 中的记事本、Ubuntu 中的 [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) 或 [Nano](https://www.nano-editor.org/)，或者 macOS 中的 TextEdit。 如果偏好功能更丰富的交互式开发环境 (IDE)，可尝试 Jetbrains 推出的 [Gogland](https://www.jetbrains.com/go/)、Microsoft 推出的 [Visual Studio Code](https://code.visualstudio.com/)，或者 [Atom](https://atom.io/)。
+1. 若要编写 Golang 代码，可以使用纯文本编辑器，例如 Microsoft Windows 中的记事本、Ubuntu 中的 [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) 或 [Nano](https://www.nano-editor.org/)，或者 macOS 中的 TextEdit。 如果偏好功能更丰富的交互式开发环境 (IDE)，可尝试 Jetbrains 推出的 [Gogland](https://www.jetbrains.com/go/)、Microsoft 推出的 [Visual Studio Code](https://code.visualstudio.com/)，或者 [Atom](https://atom.io/)。
 2. 将以下部分中的 Golang 代码粘贴到文本文件中，再使用文件扩展名 \*.go 将这些文件保存到项目文件夹中，例如 Windows 路径 `%USERPROFILE%\go\src\postgresqlgo\createtable.go` 或 Linux 路径 `~/go/src/postgresqlgo/createtable.go`。
 3. 在代码中找到 `HOST`、`DATABASE`、`USER`、`PASSWORD` 常量，将示例值替换为自己的值。  
 4. 启动命令提示符或 Bash Shell。 将目录转到项目文件夹。 例如，在 Windows 上使用 `cd %USERPROFILE%\go\src\postgresqlgo\`。 在 Linux 上使用 `cd ~/go/src/postgresqlgo/`。 提到的某些 IDE 环境提供不需 shell 命令的调试和运行时功能。

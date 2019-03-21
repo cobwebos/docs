@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc6d1d53fd292a936c833450fee3af91671eec86
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171156"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102394"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教程：将单个 AD 林环境联合到云中
 
@@ -83,7 +83,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 
 1. Hyper-V 管理器，双击虚拟机
 2. 单击“开始”按钮。
-3.  系统将提示你“按任意键以从 CD 或 DVD 启动”。 继续执行此操作。
+3. 系统将提示你“按任意键以从 CD 或 DVD 启动”。 继续执行此操作。
 4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”。
 5. 单击“立即安装”。
 6. 输入许可证密钥并单击“下一步”。
@@ -281,9 +281,9 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
 
-1.  浏览到 [https://myapps.microsoft.com](httpss://myapps.microsoft.com)
+1. 浏览到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用在我们的新租户中创建的用户帐户登录。  需要使用以下格式登录：(user@domain.onmicrosoft.com)。 使用用户用于在本地登录的相同密码。
-![验证](media/tutorial-password-hash-sync/verify1.png)
+   ![验证](media/tutorial-password-hash-sync/verify1.png)
 
 现在已经成功设置了一个混合标识环境，可以使用它来测试和熟悉 Azure 提供的功能。
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b6f968bef3708ca311bc5a41fe029ea9a10f62b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 8ac17c00f635c4c14c0e4752847aff941f81804a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015842"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111610"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>教程：使用 Visual Studio 创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -47,6 +47,9 @@ ms.locfileid: "54015842"
 > 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Hadoop 群集构建用于转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 1. 阅读 [教程概述](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) ，完成 **先决条件** 步骤。       
 2. 只有订阅/资源组级别的 [数据工厂参与者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。
 3. 必须在计算机上安装了以下软件： 
@@ -129,8 +132,8 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 2. 在“添加新项”对话框中，选择“Azure Blob”，并单击“添加”。   
 3. 将 JSON 文本替换为以下文本并保存 **AzureBlobLocation1.json** 文件。 
 
-  ```json   
-  {
+   ```json   
+   {
     "name": "InputDataset",
     "properties": {
       "structure": [
@@ -158,11 +161,11 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
         "interval": 1
       }
     }
-  }
-  ``` 
+   }
+   ``` 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    | 属性 | Description |
+    | 属性 | 说明 |
     |:--- |:--- |
     | type | type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
     | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
@@ -182,7 +185,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 2. 在“添加新项”对话框中，选择“Azure SQL”，并单击“添加”。 
 3. 将 JSON 文本替换为以下 JSON 并保存 **AzureSqlTableLocation1.json** 文件。
 
-  ```json
+   ```json
     {
      "name": "OutputDataset",
      "properties": {
@@ -210,7 +213,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ```
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    | 属性 | Description |
+    | 属性 | 说明 |
     |:--- |:--- |
     | type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
     | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
@@ -230,7 +233,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 2. 在“添加新项”对话框中，选择“复制数据管道”，并单击“添加”。 
 3. 将 JSON 替换为以下 JSON 并保存 **CopyActivity1.json** 文件。
 
-  ```json   
+   ```json   
     {
      "name": "ADFTutorialPipeline",
      "properties": {
@@ -274,19 +277,19 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
      }
     }
     ```   
-    - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
-    - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 
-    - 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。 有关复制活动支持的数据存储（以源和接收器的形式存在）的完整列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 若要了解如何使用特定的受支持的数据存储（以源/接收器的形式存在），请单击表中的链接。  
+   - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
+   - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 
+   - 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。 有关复制活动支持的数据存储（以源和接收器的形式存在）的完整列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 若要了解如何使用特定的受支持的数据存储（以源/接收器的形式存在），请单击表中的链接。  
      
-    将 **start** 属性的值替换为当前日期，将 **end** 值替换为下一个日期。 可以仅指定日期部分，跳过日期时间的时间部分。 例如，“2016-02-03”等效于“2016-02-03T00:00:00Z”
+     将 **start** 属性的值替换为当前日期，将 **end** 值替换为下一个日期。 可以仅指定日期部分，跳过日期时间的时间部分。 例如，“2016-02-03”等效于“2016-02-03T00:00:00Z”
      
-    开始和结束日期时间必须采用 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 
+     开始和结束日期时间必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 
      
-    如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
+     如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
      
-    在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
+     在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
 
-    有关管道定义中 JSON 属性的说明，请参阅[创建管道](data-factory-create-pipelines.md)一文。 有关复制活动定义中 JSON 属性的说明，请参阅[数据移动活动](data-factory-data-movement-activities.md)一文。 有关 BlobSource 支持的 JSON 属性的说明，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md)一文。 有关 SqlSink 支持的 JSON 属性的说明，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md)一文。
+     有关管道定义中 JSON 属性的说明，请参阅[创建管道](data-factory-create-pipelines.md)一文。 有关复制活动定义中 JSON 属性的说明，请参阅[数据移动活动](data-factory-data-movement-activities.md)一文。 有关 BlobSource 支持的 JSON 属性的说明，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md)一文。 有关 SqlSink 支持的 JSON 属性的说明，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md)一文。
 
 ## <a name="publishdeploy-data-factory-entities"></a>发布/部署数据工厂实体
 本步骤发布前面所创建的数据工厂实体（链接服务、数据集和管道）。 还可以指定要创建用来保存这些实体的新数据工厂的名称。  
@@ -333,12 +336,12 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。 
 
     ```PowerShell    
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
     可运行以下命令来确认数据工厂提供程序是否已注册。 
     
     ```PowerShell
-    Get-AzureRmResourceProvider
+    Get-AzResourceProvider
     ```
   * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，并导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作会自动注册提供程序。
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
@@ -441,7 +444,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     }
     ```
 
-    此示例配置 Azure 存储链接服务和 Azure SQL 链接服务的 connectionString 属性。 请注意，指定名称的语法是 [JsonPath](http://goessner.net/articles/JsonPath/)。   
+    此示例配置 Azure 存储链接服务和 Azure SQL 链接服务的 connectionString 属性。 请注意，指定名称的语法是 [JsonPath](https://goessner.net/articles/JsonPath/)。   
 
     如果 JSON 具有属性，该属性将包含以下代码所示的值数组：  
 

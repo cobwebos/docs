@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7bd4c261af4159429a91bd8b425180037eec8c23
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670887"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085314"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>使用 Azure Maps 设置地域隔离区
 
@@ -25,11 +25,11 @@ ms.locfileid: "56670887"
 本教程将介绍以下操作：
 
 > [!div class="checklist"]
-* 使用数据上传 API 在 Azure Maps 数据服务中上传地域隔离区。
-*   设置事件网格用于处理地域隔离区事件。
-*   设置地域隔离区事件处理程序。
-*   使用逻辑应用设置警报以响应地域隔离区事件。
-*   使用 Azure Maps 地域隔离区服务 API 跟踪施工资产是否在工地范围内。
+> * 使用数据上传 API 在 Azure Maps 数据服务中上传地域隔离区。
+> *   设置事件网格用于处理地域隔离区事件。
+> *   设置地域隔离区事件处理程序。
+> *   使用逻辑应用设置警报以响应地域隔离区事件。
+> *   使用 Azure Maps 地域隔离区服务 API 跟踪施工资产是否在工地范围内。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -150,9 +150,9 @@ ms.locfileid: "56670887"
 
 5. 单击“发送”并查看响应标头。 位置标头包含用于访问或下载供将来使用的数据的 URI。 它还包含上传的数据的唯一 `udId`。
 
-  ```HTTP
-  https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
 
 ## <a name="set-up-an-event-handler"></a>设置事件处理程序
 
@@ -163,15 +163,15 @@ ms.locfileid: "56670887"
 
 1. 在 Azure 门户中创建逻辑应用
 
-  ![创建逻辑应用](./media/tutorial-geofence/logic-app.png)
+   ![创建逻辑应用](./media/tutorial-geofence/logic-app.png)
 
 2. 选择 HTTP 请求触发器，然后在 Outlook 连接器中选择“发送电子邮件”作为操作
   
-  ![逻辑应用架构](./media/tutorial-geofence/logic-app-schema.png)
+   ![逻辑应用架构](./media/tutorial-geofence/logic-app-schema.png)
 
 3. 保存该逻辑应用以生成 HTTP URL 终结点并复制 HTTP URL。
 
-  ![逻辑应用终结点](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![逻辑应用终结点](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>创建 Azure Maps 事件订阅
@@ -208,53 +208,53 @@ Azure Maps 支持三种事件类型。 可在[此处](https://docs.microsoft.com
  
 1. 位置 1：
     
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
-  ![地域隔离区查询 1](./media/tutorial-geofence/geofence-query1.png)
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
+   ![地域隔离区查询 1](./media/tutorial-geofence/geofence-query1.png)
 
-  在上述响应中，从主要地域隔离区的距离为负表示该设备在地域隔离区范围之内，从子场地地域隔离区的距离为正表示该设备在子场地地域隔离区范围之外。 
+   在上述响应中，从主要地域隔离区的距离为负表示该设备在地域隔离区范围之内，从子场地地域隔离区的距离为正表示该设备在子场地地域隔离区范围之外。 
 
 2. 位置 2： 
    
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
     
-  ![地域隔离区查询 2](./media/tutorial-geofence/geofence-query2.png)
+   ![地域隔离区查询 2](./media/tutorial-geofence/geofence-query2.png)
 
-  仔细查看上述 JSON 响应可以发现，设备在子场地范围之外，但在主要隔离区范围之内。 这不会触发事件，且不会发送电子邮件。
+   仔细查看上述 JSON 响应可以发现，设备在子场地范围之外，但在主要隔离区范围之内。 这不会触发事件，且不会发送电子邮件。
 
 3. 位置 3： 
   
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![地域隔离区查询 3](./media/tutorial-geofence/geofence-query3.png)
+   ![地域隔离区查询 3](./media/tutorial-geofence/geofence-query3.png)
 
-  发生了状态更改，设备现在位于主要地域隔离区和子场地地域隔离区的范围之内。 这会发布事件，并向运营经理发送通知电子邮件。
+   发生了状态更改，设备现在位于主要地域隔离区和子场地地域隔离区的范围之内。 这会发布事件，并向运营经理发送通知电子邮件。
 
 4. 位置 4： 
 
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
   
-  ![地域隔离区查询 4](./media/tutorial-geofence/geofence-query4.png)
+   ![地域隔离区查询 4](./media/tutorial-geofence/geofence-query4.png)
 
    仔细观察相应的响应可以发现，此处即使设备已经退出子场地地域隔离区，也不会发布任何事件。 查看用户在 GET 请求中指定的时间可以发现，子场地地域隔离区相对于此时间已过期，设备仍在主要地域隔离区范围内。 在响应正文中的 `expiredGeofenceGeometryId` 下面还可以看到子场地地域隔离区的几何 ID。
 
 
 5. 位置 5：
       
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![地域隔离区查询 5](./media/tutorial-geofence/geofence-query5.png)
+   ![地域隔离区查询 5](./media/tutorial-geofence/geofence-query5.png)
 
-  可以看到，设备已离开主要工地地域隔离区。 这属于严重的违规，因此将发布事件，并向运营经理发送严重警报电子邮件。
+   可以看到，设备已离开主要工地地域隔离区。 这属于严重的违规，因此将发布事件，并向运营经理发送严重警报电子邮件。
 
 ## <a name="next-steps"></a>后续步骤
 

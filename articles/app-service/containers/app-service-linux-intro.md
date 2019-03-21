@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 2e75ff08acdda03c0080f49c6616274a4b031075
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 161b2054d690a2e609085852aa7caf2f02366f69
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903717"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215653"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -71,9 +71,7 @@ Linux 应用服务支持大量内置映像，以便提高开发人员工作效�
 
 Azure 门户仅显示当前对用于容器的 Web 应用有效的功能。 当我们启用更多功能时，会在门户中看到这些功能。
 
-某些功能（例如虚拟网络集成、Azure Active Directory/第三方身份验证或 Kudu 站点扩展）尚不可用。 这些功能可用后，我们将更新文档和博客，以反映所做更改。
-
-Linux 上的应用服务仅支持[基本、标准和高级](https://azure.microsoft.com/pricing/details/app-service/plans/)应用服务计划，没有[免费或共享](https://azure.microsoft.com/pricing/details/app-service/plans/)层。 不能在已经托管非 Linux Web 应用的应用服务计划中创建用于容器的 Web 应用。 
+Linux 上的应用服务仅支持[基本、标准和高级](https://azure.microsoft.com/pricing/details/app-service/plans/)应用服务计划，没有[免费或共享](https://azure.microsoft.com/pricing/details/app-service/plans/)层。 不能在已经托管非 Linux Web 应用的应用服务计划中创建用于容器的 Web 应用。  
 
 另外，根据当前的限制，请勿在同一资源组中混合使用 Windows 和 Linux 应用。
 

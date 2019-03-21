@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aebc308f6bfaddbe8e9b430096cb6698d7dd06c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736577"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099063"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
 
@@ -47,9 +47,10 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 2. [安装 Git](https://git-scm.com/)
 3. [安装 Microsoft Azure Service Fabric SDK](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. 运行以下命令，将 Visual Studio 启用为把应用程序部署到本地 Service Fabric 群集：
-    ```powershell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
-    ```
+
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+   ```
     
 ## <a name="build-a-cluster"></a>生成群集
 
@@ -63,14 +64,14 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 1. 以管理员身份打开权限提升的新 PowerShell 窗口。
 2. 运行以下 PowerShell 命令创建开发群集：
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+   ```
 3. 运行以下命令来启动本地群集管理器工具：
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
+   ```
 
 >[!NOTE]
 > 本快速入门中示例应用程序使用的功能在 Windows 7 中不提供。
@@ -131,23 +132,23 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 2. 打开 **/VotingData/Controllers/VoteDataController.cs** 文件，并在此 Web API 的 Put 方法（第 54 行）中设置一个断点。
 
 3. 返回到浏览器，再单击投票选项或添加新的投票选项。 点击 Web 前端 API 控制器中的第一个断点。
-    * 此时，浏览器中的 JavaScript 将请求发送到前端服务中的 Web API 控制器。
+   * 此时，浏览器中的 JavaScript 将请求发送到前端服务中的 Web API 控制器。
 
-    ![添加投票前端服务](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
+     ![添加投票前端服务](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    * 首先，为后端服务构建 ReverseProxy 的 URL (1)。
-    * 然后，向 ReverseProxy 发送 HTTP PUT 请求 (2)。
-    * 最后，将后端服务的响应返回到客户端 (3)。
+   * 首先，为后端服务构建 ReverseProxy 的 URL (1)。
+   * 然后，向 ReverseProxy 发送 HTTP PUT 请求 (2)。
+   * 最后，将后端服务的响应返回到客户端 (3)。
 
 4. 按 F5 以继续操作
-    - 在浏览器提示时，授予 ServiceFabricAllowedUsers 组读取和执行权限（适用于调试模式）。
-    - 此时，到达后端服务中的断点。
+   - 在浏览器提示时，授予 ServiceFabricAllowedUsers 组读取和执行权限（适用于调试模式）。
+   - 此时，到达后端服务中的断点。
 
-    ![添加投票后端服务](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
+     ![添加投票后端服务](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    * 在方法 (1) 的第一行，`StateManager` 获取或添加一个可靠字典 `counts`。
-    * 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句（图中标识为2）负责创建此事务。
-    * 在事务中更新投票选项的相关键值，并提交操作 (3)。 提交方法返回后，便会更新字典中的数据，并将数据复制到群集中的其他节点。 数据现在安全地存储在群集中，并且后端服务可以故障转移到其他节点，同时数据仍可用。
+   - 在方法 (1) 的第一行，`StateManager` 获取或添加一个可靠字典 `counts`。
+   - 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句（图中标识为2）负责创建此事务。
+   - 在事务中更新投票选项的相关键值，并提交操作 (3)。 提交方法返回后，便会更新字典中的数据，并将数据复制到群集中的其他节点。 数据现在安全地存储在群集中，并且后端服务可以故障转移到其他节点，同时数据仍可用。
 5. 按 F5 以继续操作
 
 若要停止调试会话，请按 Shift+F5。

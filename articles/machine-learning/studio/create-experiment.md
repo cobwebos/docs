@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 803a52994536d2d6f39a064f97af7831af0cebb6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0819c232412e1619f82a25476a8318d26c8087da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105720"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>快速入门：在 Azure 机器学习工作室中创建你的第一个数据科学试验
 
@@ -95,21 +95,21 @@ ms.locfileid: "56453165"
 
 1. 单击[选择数据集中的列][select-columns] 模块，并单击“属性”窗格中的“启动列选择器”。
 
-    - 在左侧单击“使用规则”
-    - 在**开头为**下面，单击**所有列**。 这些规则指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
-    - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
-    - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
+   - 在左侧单击“使用规则”
+   - 在**开头为**下面，单击**所有列**。 这些规则指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
+   - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
+   - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
-    ![启动列选择器，排除“规范化损失”列](./media/create-experiment/launch-column-selector.png)
+     ![启动列选择器，排除“规范化损失”列](./media/create-experiment/launch-column-selector.png)
 
-    此时“选择数据集中的列”的属性窗格指示它将传入数据集中的所有列，但“规范化损失”除外。
+     此时“选择数据集中的列”的属性窗格指示它将传入数据集中的所有列，但“规范化损失”除外。
 
-    ![属性窗格显示“规范化损失”列已排除](./media/create-experiment/showing-excluded-column.png)
+     ![属性窗格显示“规范化损失”列已排除](./media/create-experiment/showing-excluded-column.png)
 
-    > [!TIP] 
-    > 可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在本例中，请双击[选择数据集中的列][select-columns]模块，并键入注释“排除规范化损失”。
+     > [!TIP] 
+     > 可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在本例中，请双击[选择数据集中的列][select-columns]模块，并键入注释“排除规范化损失”。
 
-    ![双击要添加注释的模块](./media/create-experiment/add-comment.png)
+     ![双击要添加注释的模块](./media/create-experiment/add-comment.png)
 
 1. 将[清理缺失数据][clean-missing-data]模块拖到试验画布，然后将其连接到[选择数据集中的列][select-columns]”模块。 在“属性”窗格的“清理模式”下选择“删除整行”。 这些选项指示[清理缺失数据][clean-missing-data]清理数据，删除存在缺失值的行。 双击该模块并键入注释“删除缺失值行”。
 

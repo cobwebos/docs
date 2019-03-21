@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 4b4706baa5148bba955a980b6184e0747f023066
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1d6f4bb2bda550c72566243b2d2d98b1685e9147
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875087"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119796"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>快速入门：使用适用于 Python 的必应新闻搜索 SDK 执行新闻搜索
 
@@ -86,4 +86,4 @@ else:
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-[创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)
+> [创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

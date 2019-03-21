@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: d333eb6baa41321fdf7daca3c545d5d5e3ed5fe4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: b9ddd82d18b7f67f61e5c1589511ea6db4fa18a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732697"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100286"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>教程：通过简单实体和短语列表提取名称
 
@@ -127,7 +127,7 @@ ms.locfileid: "56732697"
     |申请铺砖工作。|磁贴|
     |附加的是申请景观建筑师的简历。|景观建筑师|
     |我申请生物学教授的简历已包括在内。|生物学教授|
-    |我想要申请摄影方面的职位。|摄影|git 
+    |我想要申请摄影方面的职位。|摄影|
 
 ## <a name="mark-job-entity-in-other-intents"></a>在其他意向中标记工作实体
 

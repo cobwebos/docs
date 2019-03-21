@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05e245bb55747b9415c16386cff48e5ac758f529
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 830825c6ad54a6ff300fb7ee223b32ee0571a55a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177880"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58163528"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>如何使用 Azure 门户管理设备
 
@@ -152,7 +152,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 **备注：**
 
 - 需要具有 Azure AD 中的全局管理员身份才能启用/禁用设备。 
-- 禁用设备会阻止设备使用 Azure AD 成功进行身份验证，从而阻止设备访问由设备 CA 保护或使用 WH4B 凭据保护的 Azure AD 资源。 
+- 禁用设备可阻止设备与 Azure AD，从而阻止设备访问你设备 CA 的受保护的 Azure AD 资源，或使用 WH4B 凭据成功进行身份验证。 
 
 
 

@@ -12,12 +12,12 @@ ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c68dba4a188e5acf88cc39b02e535d89a1c9e46
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2281bc451a5acf9e4e634a124161a3e8b0734deb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178815"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090502"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>教程：在 Azure AD Connect 中将 PHS 设置为 AD FS 的后备
 
@@ -60,9 +60,9 @@ ms.locfileid: "56178815"
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
 
-1.  浏览到 [http://myapps.microsoft.com](http://myapps.microsoft.com)
+1. 浏览到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用在我们的新租户中创建的用户帐户登录。  需要使用以下格式登录：(user@domain.onmicrosoft.com)。 使用用户用于在本地登录的相同密码。</br>
-![验证](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![验证](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="next-steps"></a>后续步骤
 

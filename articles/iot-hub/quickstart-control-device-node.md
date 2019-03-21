@@ -1,21 +1,21 @@
 ---
 title: 快速入门：从 Azure IoT 中心控制设备 (Node.js) | Microsoft Docs
 description: 本快速入门会运行两个示例 Node.js 应用程序。 一个为后端应用程序，可远程控制连接到中心的设备。 另一个应用程序可模拟连接到中心的可受远程控制的设备。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/22/2019
-ms.author: dobett
-ms.openlocfilehash: 97491ca483ec402a491e5f20b2527b93df810d64
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.date: 02/27/2019
+ms.openlocfilehash: 8c297c973a8d6a03b6d5990164bbde1485e36023
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674100"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170898"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>快速入门：控制连接到 IoT 中心的设备 (Node.js)
 
@@ -94,7 +94,7 @@ node --version
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --hub-name YourIoTHubName --output table
+      --name YourIoTHubName --output table
     ```
 
     记下如下所示的服务连接字符串：

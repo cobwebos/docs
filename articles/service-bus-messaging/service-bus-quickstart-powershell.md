@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 36f1b39ca4cef33a8cfcdb295b5c4d59e1128a0c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 143c36df623085eb4f07363d9c9ebd64d4f5a144
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426839"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104754"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>快速入门：使用 Azure PowerShell 创建服务总线队列
 Microsoft Azure 服务总线是一种提供安全消息传送和绝对可靠性的企业集成消息中转站。 典型的服务总线方案通常涉及将两个或更多应用程序、服务或进程彼此解耦以及传输状态或数据更改。 此类方案可能涉及在其他应用程序或服务中计划多个批处理作业，或触发订单履行。 例如，零售公司可能会将其销售点数据发送到后端办公系统或区域配送中心，以便进行补货和库存更新。 在这种情况下，客户端应用会将消息发送到服务总线队列并从中接收消息。
@@ -96,15 +96,15 @@ Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespac
    Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
    ```
 
-5.  在 PowerShell 提示符下，键入以下命令：
+5. 在 PowerShell 提示符下，键入以下命令：
 
    ```shell
    dotnet build
    ```
 
-6.  导航到 `bin\Debug\netcoreapp2.0` 文件夹。
+6. 导航到 `bin\Debug\netcoreapp2.0` 文件夹。
 
-7.  键入以下命令以运行程序。 请务必将 `myConnectionString` 替换为先前获取的值，将 `myQueueName` 替换为所创建队列的名称：
+7. 键入以下命令以运行程序。 请务必将 `myConnectionString` 替换为先前获取的值，将 `myQueueName` 替换为所创建队列的名称：
 
    ```shell
    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"

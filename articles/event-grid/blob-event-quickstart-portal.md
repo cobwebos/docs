@@ -9,12 +9,12 @@ ms.date: 10/17/2018
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 2b8b06a540af99cad45bed4068dd55773eaf38d0
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a0043ca886bf6c92ab26d76b3678bf8a2764846a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468567"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098511"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入门：利用 Azure 门户将 Blob 存储事件路由到 Web 终结点
 
@@ -48,7 +48,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 
@@ -104,8 +104,8 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 1. 现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 查看你的 Web 应用，将会看到已收到了一个 blob 已创建事件。 
 
-  ```json
-  {
+   ```json
+   {
     "topic": "/subscriptions/{subscription-id}/resourceGroups/eventgroup/providers/Microsoft.Storage/storageAccounts/demoblob0625",
     "subject": "/blobServices/default/containers/eventcontainer/blobs/testfile.txt",
     "eventType": "Microsoft.Storage.BlobCreated",
@@ -127,8 +127,8 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
     },
     "dataVersion": "",
     "metadataVersion": "1"
-  }
-  ```
+   }
+   ```
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 15ef1905562d04c2732016dfd1340910b3a8f699
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 381eecefbba238e712820a09c8ec489706ef3751
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106451"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
 
@@ -122,7 +122,7 @@ ms.locfileid: "54900351"
 
 如果已安装存储资源管理器并将其连接到此快速入门中使用的存储帐户，则请跳过此部分。
 
-2. 运行 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)工具，选择左侧的“连接”图标，选择“使用存储帐户名称和密钥”，然后选择“下一步”。
+1. 运行 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)工具，选择左侧的“连接”图标，选择“使用存储帐户名称和密钥”，然后选择“下一步”。
 
     ![运行“存储帐户资源管理器”工具。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
@@ -140,13 +140,13 @@ ms.locfileid: "54900351"
  
 1. 单击“帐户密钥”旁边的显示/隐藏图标以显示该值，然后复制“帐户密钥”值并将其粘贴在存储资源管理器的“帐户密钥”框中。
   
-3. 选择“下一步”>“连接”。
+1. 选择“下一步”>“连接”。
 
    ![粘贴存储凭据，然后进行连接。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
 ### <a name="examine-the-output-queue"></a>检查输出队列
 
-4. 在存储资源管理器中选择用于本快速入门的存储帐户。
+1. 在存储资源管理器中选择用于本快速入门的存储帐户。
 
 1. 展开“队列”节点，然后选择名为 **outqueue** 的队列。 
 
@@ -154,7 +154,7 @@ ms.locfileid: "54900351"
 
     ![存储资源管理器中显示的队列消息](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-2. 再次运行函数，此时会看到新消息出现在队列中。  
+1. 再次运行函数，此时会看到新消息出现在队列中。  
 
 ## <a name="clean-up-resources"></a>清理资源
 

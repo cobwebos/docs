@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bee16ed8205453546702946628c98c73b0f34b15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191718"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103802"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中更新应用程序
 
@@ -60,24 +60,24 @@ ms.locfileid: "56191718"
    ![更新应用程序的注册](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
 4. 随后会转到应用程序的注册主页，其中包含应用程序的“设置”页。 若要为 Web 应用程序添加凭据，请执行以下操作：
-  1. 在“设置”页上选择“密钥”部分。
-  2. 若要添加证书，请执行以下操作：
-    - 选择“上传公钥”。
-    - 选择要上传的文件。 它必须是以下文件类型之一：.cer、.pem、.crt。
-  - 若要添加密码，请执行以下操作：
-    - 添加密钥的说明。
-    - 选择持续时间。
-    - 选择“保存”。 保存配置更改后，最右边的列将包含密钥值。 **请务必复制密钥**以便在客户端应用程序代码中使用，因为退出此页后无可访问此密钥。
+   1. 在“设置”页上选择“密钥”部分。
+   1. 若要添加证书，请执行以下操作：
+      - 选择“上传公钥”。
+      - 选择要上传的文件。 它必须是以下文件类型之一：.cer、.pem、.crt。
+   1. 若要添加密码，请执行以下操作：
+      - 添加密钥的说明。
+      - 选择持续时间。
+      - 选择“保存”。 保存配置更改后，最右边的列将包含密钥值。 **请务必复制密钥**以便在客户端应用程序代码中使用，因为退出此页后无可访问此密钥。
 
 5. 添加从客户端访问资源 API 的权限
-  1. 在“设置”页上，选择“所需权限”部分，然后选择“添加”。
-  1. 单击“选择 API”，以选择要从中进行选取的资源类型。
-  1. 浏览可用 API 列表，或使用搜索框从公开 Web API 的目录中的可用资源应用程序中进行选择。 选择感兴趣的资源，然后单击“选择”。
-  1. 在“启用访问权限”页面上，选择应用程序在访问 API 时所需的应用程序权限和/或委托权限。
+   1. 在“设置”页上，选择“所需权限”部分，然后选择“添加”。
+   1. 单击“选择 API”，以选择要从中进行选取的资源类型。
+   1. 浏览可用 API 列表，或使用搜索框从公开 Web API 的目录中的可用资源应用程序中进行选择。 选择感兴趣的资源，然后单击“选择”。
+   1. 在“启用访问权限”页面上，选择应用程序在访问 API 时所需的应用程序权限和/或委托权限。
    
-  ![更新应用程序的注册 - 权限 API](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
+   ![更新应用程序的注册 - 权限 API](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
 
-  ![更新应用程序的注册 - 权限 perms](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
+   ![更新应用程序的注册 - 权限 perms](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. 完成后，在“启用访问权限”页上选择“选择”按钮，并在“添加 API 访问权限”页上单击“完成”按钮。 随后会返回到“所需权限”页，其中的新资源已添加到 API 列表。
 
@@ -98,8 +98,8 @@ ms.locfileid: "56191718"
 4. 随后会转到应用程序的注册主页，并打开应用程序的“设置”页。 单击应用程序注册页中的“清单”以切换到“编辑清单”页。 此时会打开一个基于 Web 的清单编辑器，可在其中**编辑**门户中的清单。 （可选）可以单击“下载”并在本地进行编辑，然后使用“上传”将清单重新应用到应用程序。
 5. 本示例通过将以下 JSON 元素添加到 `oauth2Permissions` 集合，在资源/API 中公开一个名为 `Employees.Read.All` 的新范围。 现有的 `user_impersonation` 范围是在注册期间默认提供的。 `user_impersonation` 允许客户端应用程序使用登录用户的标识请求资源的访问权限。 请务必在现有 `user_impersonation` 范围元素的后面添加逗号，并根据资源的需求更改属性值。 
 
-  ```json
-  {
+   ```json
+   {
     "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
     "adminConsentDisplayName": "Read-only access to Employee records",
     "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
@@ -108,17 +108,17 @@ ms.locfileid: "56191718"
     "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
     "userConsentDisplayName": "Read-only access to your Employee records",
     "value": "Employees.Read.All"
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE]
-  > 必须通过编程方式或 GUID 生成工具（例如 [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)）来生成 `id` 值。 `id` 表示 Web API 公开的范围的唯一标识符。 为客户端配置访问 Web API 的适当权限后，Azure AD 将为它颁发 OAuth2.0 访问令牌。 当客户端调用 Web API 时，会出示该访问令牌，其中的范围 (scp) 声明设置为客户端应用程序注册中请求的权限。
-  >
-  > 以后可以根据需要公开其他范围。 请考虑 Web API 可能要公开与各种不同功能关联的多个范围。 在运行时，资源可以通过评估所收到的 OAuth 2.0 访问令牌中的范围 (`scp`) 声明，来控制对 Web API 的访问。
+   > [!NOTE]
+   > 必须通过编程方式或 GUID 生成工具（例如 [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)）来生成 `id` 值。 `id` 表示 Web API 公开的范围的唯一标识符。 为客户端配置访问 Web API 的适当权限后，Azure AD 将为它颁发 OAuth2.0 访问令牌。 当客户端调用 Web API 时，会出示该访问令牌，其中的范围 (scp) 声明设置为客户端应用程序注册中请求的权限。
+   >
+   > 以后可以根据需要公开其他范围。 请考虑 Web API 可能要公开与各种不同功能关联的多个范围。 在运行时，资源可以通过评估所收到的 OAuth 2.0 访问令牌中的范围 (`scp`) 声明，来控制对 Web API 的访问。
 
 6. 完成后，单击“保存”。 现在，Web API 已配置为可供目录中的其他应用程序使用。
 
-  ![更新应用程序的注册](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
+   ![更新应用程序的注册](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
 
 ### <a name="verify-the-web-api-is-exposed-to-other-applications-in-your-tenant"></a>验证 Web API 是否已公开给租户中的其他应用程序
 
@@ -130,7 +130,7 @@ ms.locfileid: "56191718"
 
 3. 在“启用访问权限”页上，应会看到客户端权限请求可用的新范围。
 
-  ![已显示新权限](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
+   ![已显示新权限](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
 
 ### <a name="more-on-the-application-manifest"></a>有关应用程序清单的更多信息
 
@@ -211,9 +211,9 @@ Web 应用程序还可以：
 3. 在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”，并找到/单击想要配置的应用程序。 随后会转到应用程序的注册主页，并打开应用程序的“设置”页。
 4. 单击应用程序注册页中的“清单”切换到“编辑清单”页。 此时会打开一个基于 Web 的清单编辑器，可在其中**编辑**门户中的清单。 找到“oauth2AllowImplicitFlow”值并将其设置为“true”。 此值默认设置为“false”。
    
-  ```json
-  "oauth2AllowImplicitFlow": true,
-  ```
+   ```json
+   "oauth2AllowImplicitFlow": true,
+   ```
 5. 保存更新的清单。 保存后，Web API 即已配置为使用 OAuth 2.0 隐式授权来对用户进行身份验证。
 
 ## <a name="next-steps"></a>后续步骤

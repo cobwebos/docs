@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 37aa248af30c4beae3f9d170174842c908933339
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 16741461df2431cbf4433899dd375741e944ce0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112562"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
@@ -87,24 +87,24 @@ ms.locfileid: "54020007"
 1. 选择要在其中创建数据工厂的 Azure **订阅**。 
 1. 对于**资源组**，请执行以下步骤之一：
      
-      - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
-      - 选择“新建”，并输入资源组的名称。   
+   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
+   - 选择“新建”，并输入资源组的名称。   
          
-      若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
 1. 选择“V2”作为“版本”。
 1. 选择数据工厂的**位置**。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 1. 选择“固定到仪表板”。     
 1. 单击“创建”。
 1. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
-    ![“正在部署数据工厂”磁贴](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
+     ![“正在部署数据工厂”磁贴](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
 1. 创建完成后，可以看到图中所示的“数据工厂”页。
    
-    ![数据工厂主页](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
+     ![数据工厂主页](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
 1. 单击“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
 1. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示：  
 
-    ![“入门”页](./media/tutorial-bulk-copy-portal/get-started-page.png)
+     ![“入门”页](./media/tutorial-bulk-copy-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>创建链接服务
 创建链接服务，将数据存储和计算链接到数据工厂。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到数据存储。 
@@ -179,10 +179,10 @@ ms.locfileid: "54020007"
 
 1. 切换到“连接”选项卡，然后执行以下步骤： 
 
-    1. 选择 **AzureSqlDatabaseLinkedService** 作为**链接服务**。
-    1. 对于“表”，可选择任何表。 此表是一个虚拟表。 在创建管道时指定一个针对源数据集的查询。 该查询用于从 Azure SQL 数据库提取数据。 也可单击“编辑”复选框，然后输入 **dummyName** 作为表名称。 
+   1. 选择 **AzureSqlDatabaseLinkedService** 作为**链接服务**。
+   1. 对于“表”，可选择任何表。 此表是一个虚拟表。 在创建管道时指定一个针对源数据集的查询。 该查询用于从 Azure SQL 数据库提取数据。 也可单击“编辑”复选框，然后输入 **dummyName** 作为表名称。 
 
-    ![源数据集连接页](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
+      ![源数据集连接页](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
  
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>为接收器 SQL 数据仓库创建数据集

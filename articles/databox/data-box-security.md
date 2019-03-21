@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b4e7165f30364ba61b583cf5d2f55e8826b9cf3
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 90004c27463a61de1b36eaea6754215f911f7483
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092119"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095851"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
 
@@ -75,16 +75,16 @@ Azure Data Box 在服务中收集并显示以下关键实例中的个人信息�
 
 - **订单详细信息** – 创建订单后，用户的寄送地址、电子邮件和联系信息将存储在 Azure 门户中。 保存的信息包括：
 
-    - 联系人姓名
-    - 电话号码
-    - 电子邮件
-    - 街道地址
-    - 城市
-    - 邮政编码
-    - 状态
-    - 国家/地区/省/区域
-    - 承运商帐号
-    - 运输跟踪号
+  - 联系人姓名
+  - 电话号码
+  - 电子邮件
+  - 街道地址
+  - 城市
+  - 邮政编码
+  - 状态
+  - 国家/地区/省/区域
+  - 承运商帐号
+  - 运输跟踪号
 
     作业完成或者删除订单时，Data Box 服务会删除订单详细信息。
 
@@ -97,13 +97,13 @@ Azure Data Box 在服务中收集并显示以下关键实例中的个人信息�
 
 Data Box 中实现了以下安全准则： 
 
-|准则   |Description   |
+|准则   |说明   |
 |---------|---------|
-|[IEC 60529 IP52](http://www.iec.ch/)    | 防水防尘保护         |
+|[IEC 60529 IP52](https://www.iec.ch/)    | 防水防尘保护         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 对不利运输条件的承受力          |
-|[NIST SP 800-147](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | 安全的固件更新         |
+|[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | 安全的固件更新         |
 |[FIPS 140-2 级别 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | 数据保护         |
-|[NIST SP 800-88r1](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | 数据清理         |
+|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | 数据清理         |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,19 +2,19 @@
 title: 使用 Terraform 和 HCL 创建 VM 群集
 description: 在 Azure 中使用 Terraform 和 HashiCorp 配置语言 (HCL) 创建 Linux 虚拟机群集与负载均衡器
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 虚拟机, 网络, 模块
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: a53fee8ee492de4d9eaa8b45a8d4a88e692da02d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: a0358859d6f806a94c529bae2eb6fa9d1ab82963
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077830"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>使用 Terraform 和 HCL 创建 VM 群集
 
@@ -46,30 +46,30 @@ ms.locfileid: "54410364"
 
 5. 将以下代码复制到变量声明文件中：
 
-  ```tf
-  variable subscription_id {}
-  variable tenant_id {}
-  variable client_id {}
-  variable client_secret {}
+   ```tf
+   variable subscription_id {}
+   variable tenant_id {}
+   variable client_id {}
+   variable client_secret {}
   
-  provider "azurerm" {
+   provider "azurerm" {
       subscription_id = "${var.subscription_id}"
       tenant_id = "${var.tenant_id}"
       client_id = "${var.client_id}"
       client_secret = "${var.client_secret}"
-  }
-  ```
+   }
+   ```
 
 6. 创建一个包含 Terraform 变量的值的新文件。 当 Terraform 自动加载任意名为 `terraform.tfvars`（或遵循 `*.auto.tfvars` 模式）的文件时（如果当前目录中存在该文件），通常将对 Terraform 变量文件 `terraform.tfvars` 进行命名。 
 
 7. 将以下代码复制到变量文件中。 请确保按如下所示替换占位符：对于 `subscription_id`，请使用运行 `az account set` 时指定的 Azure 订阅 ID。 对于 `tenant_id`，请使用从 `az ad sp create-for-rbac` 返回的 `tenant` 值。 对于 `client_id`，请使用从 `az ad sp create-for-rbac` 返回的 `appId` 值。 对于 `client_secret`，请使用从 `az ad sp create-for-rbac` 返回的 `password` 值。
 
-  ```tf
-  subscription_id = "<azure-subscription-id>"
-  tenant_id = "<tenant-returned-from-creating-a-service-principal>"
-  client_id = "<appId-returned-from-creating-a-service-principal>"
-  client_secret = "<password-returned-from-creating-a-service-principal>"
-  ```
+   ```tf
+   subscription_id = "<azure-subscription-id>"
+   tenant_id = "<tenant-returned-from-creating-a-service-principal>"
+   client_id = "<appId-returned-from-creating-a-service-principal>"
+   client_secret = "<password-returned-from-creating-a-service-principal>"
+   ```
 
 ## <a name="2-create-a-terraform-configuration-file"></a>2.创建 Terraform 配置文件
 
@@ -79,34 +79,34 @@ ms.locfileid: "54410364"
 
 2. 将以下示例资源定义复制到新创建的 `main.tf` 文件中： 
 
-  ```tf
-  resource "azurerm_resource_group" "test" {
+   ```tf
+   resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
-  }
+   }
 
-  resource "azurerm_virtual_network" "test" {
+   resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
     location            = "${azurerm_resource_group.test.location}"
     resource_group_name = "${azurerm_resource_group.test.name}"
-  }
+   }
 
-  resource "azurerm_subnet" "test" {
+   resource "azurerm_subnet" "test" {
     name                 = "acctsub"
     resource_group_name  = "${azurerm_resource_group.test.name}"
     virtual_network_name = "${azurerm_virtual_network.test.name}"
     address_prefix       = "10.0.2.0/24"
-  }
+   }
 
-  resource "azurerm_public_ip" "test" {
+   resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
     public_ip_address_allocation = "static"
-  }
+   }
 
-  resource "azurerm_lb" "test" {
+   resource "azurerm_lb" "test" {
     name                = "loadBalancer"
     location            = "${azurerm_resource_group.test.location}"
     resource_group_name = "${azurerm_resource_group.test.name}"
@@ -115,15 +115,15 @@ ms.locfileid: "54410364"
       name                 = "publicIPAddress"
       public_ip_address_id = "${azurerm_public_ip.test.id}"
     }
-  }
+   }
 
-  resource "azurerm_lb_backend_address_pool" "test" {
+   resource "azurerm_lb_backend_address_pool" "test" {
     resource_group_name = "${azurerm_resource_group.test.name}"
     loadbalancer_id     = "${azurerm_lb.test.id}"
     name                = "BackEndAddressPool"
-  }
+   }
 
-  resource "azurerm_network_interface" "test" {
+   resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
     location            = "${azurerm_resource_group.test.location}"
@@ -135,9 +135,9 @@ ms.locfileid: "54410364"
       private_ip_address_allocation = "dynamic"
       load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
     }
-  }
+   }
 
-  resource "azurerm_managed_disk" "test" {
+   resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
     location             = "${azurerm_resource_group.test.location}"
@@ -145,18 +145,18 @@ ms.locfileid: "54410364"
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
-  }
+   }
 
-  resource "azurerm_availability_set" "avset" {
+   resource "azurerm_availability_set" "avset" {
     name                         = "avset"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
-  }
+   }
 
-  resource "azurerm_virtual_machine" "test" {
+   resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
     location              = "${azurerm_resource_group.test.location}"
@@ -215,8 +215,8 @@ ms.locfileid: "54410364"
     tags {
       environment = "staging"
     }
-  }
-  ```
+   }
+   ```
 
 ## <a name="3-initialize-terraform"></a>3.初始化 Terraform 
 

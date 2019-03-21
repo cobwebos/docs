@@ -10,18 +10,18 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2df1e2c261069473a02b40e4a7e45895eadea42d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5a2fb54658599e0500944aaae9225f314277f9da
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219390"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539082"
 ---
 # <a name="tutorial-anomaly-detection-with-python-application"></a>教程：使用 Python 应用程序进行异常情况检测
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-本教程介绍了如何使用 Python 中的异常情况检测 API 以及如何使用常用库直观显示结果。 使用 Jupyter 运行教程并使用你的订阅密钥尝试查看自己的数据。 若要了解如何开始使用交互式 Jupyter 笔记本，请参阅 [Jupyter 文档](http://jupyter.readthedocs.io/en/latest/index.html)。 
+本教程介绍了如何使用 Python 中的异常情况检测 API 以及如何使用常用库直观显示结果。 使用 Jupyter 运行教程并使用你的订阅密钥尝试查看自己的数据。 若要了解如何开始使用交互式 Jupyter 笔记本，请参阅 [Jupyter 文档](https://jupyter.readthedocs.io/en/latest/index.html)。 
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: ac32ec6fc1f59b87d3efb88d95d21af309681934
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: db931a3a114be101eeb5e14fa7ba100a789e7cf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587967"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094985"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>快速入门：在 Azure Cosmos DB 中使用 Java SDK 创建图形数据库 
 
@@ -219,17 +219,17 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后单击右下侧“目标”旁边的“更改图形中某个顶点的目标”。![](./media/create-graph-java/edit-pencil-button.png) 可能需要扩大窗口才能看到该按钮。
 
-   ![更改图形中某个顶点的目标。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![更改图形中某个顶点的目标。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. 在“目标”框中键入“rakesh”，在“Edge 标签”框中键入“认识”，然后单击复选框。
 
-   ![通过数据资源管理器在 ashley 和 rakesh 之间添加连接](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![通过数据资源管理器在 ashley 和 rakesh 之间添加连接](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. 现在，从结果列表中选择“rakesh”即可看到 ashley 和 rakesh 已连接。 
 
-   ![在数据资源管理器中连接的两个顶点](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![在数据资源管理器中连接的两个顶点](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-   这就完成了本教程的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
+    这就完成了本教程的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

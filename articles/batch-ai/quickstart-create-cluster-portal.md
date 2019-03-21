@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 49e78f1774a2998de7070453f7c098aef1761242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408929"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093222"
 ---
 # <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建用于 Batch AI 训练作业的群集
 
@@ -59,7 +59,7 @@ ssh-keygen -t rsa -b 2048
 
 3. 在“工作区名称”和“资源组”中输入值。 可以视需要为工作区的“订阅”和“位置”选择不同的选项。 选择“创建工作区”。
 
-  ![创建 Batch AI 工作区](./media/quickstart-create-cluster-portal/create-workspace.png)
+   ![创建 Batch AI 工作区](./media/quickstart-create-cluster-portal/create-workspace.png)
 
 出现“部署成功”消息后，转到所创建的资源，然后选择工作区。
 
@@ -73,7 +73,7 @@ Batch AI 文件服务器是单节点 NFS，可以自动装载在群集节点上�
 
 3. 输入**管理员用户名**，将 SSH 公钥文件的内容复制到 **SSH 密钥**。 至于其余值，请接受默认设置，然后选择“创建文件服务器”。
 
-  ![创建 Batch AI 文件服务器](./media/quickstart-create-cluster-portal/create-file-server.png)
+   ![创建 Batch AI 文件服务器](./media/quickstart-create-cluster-portal/create-file-server.png)
 
 部署文件服务器需要几分钟时间。
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f6ae69c04d83e1ce1540267fb7932b80cca1013c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ef0a3d251679d7dd6760f1f928cbf0f0daf3db01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087196"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099131"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -72,25 +72,25 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 安装以下包，其中包含在注册过程中使用过的组件：
 
-    - 适用于 TPM 的安全客户端：`azure-iot-security-tpm`
-    - 设备的传输，用于连接到设备预配服务：`azure-iot-provisioning-device-http` 或 `azure-iot-provisioning-device-amqp`
-    - 将要使用传输的客户端和安全客户端：`azure-iot-provisioning-device`
+   - 适用于 TPM 的安全客户端：`azure-iot-security-tpm`
+   - 设备的传输，用于连接到设备预配服务：`azure-iot-provisioning-device-http` 或 `azure-iot-provisioning-device-amqp`
+   - 将要使用传输的客户端和安全客户端：`azure-iot-provisioning-device`
 
-    注册设备以后，即可使用常用的 IoT 中心设备客户端包通过在注册过程中提供的凭据来连接设备。 将需要以下项：
+     注册设备以后，即可使用常用的 IoT 中心设备客户端包通过在注册过程中提供的凭据来连接设备。 将需要以下项：
 
-    - 设备客户端：`azure-iot-device`
-    - 一个传输：`azure-iot-device-amqp`、`azure-iot-device-mqtt`、`azure-iot-device-http` 中的任一项
-    - 已安装的安全客户端：`azure-iot-security-tpm`
+   - 设备客户端：`azure-iot-device`
+   - 一个传输：`azure-iot-device-amqp`、`azure-iot-device-mqtt`、`azure-iot-device-http` 中的任一项
+   - 已安装的安全客户端：`azure-iot-security-tpm`
 
-    > [!NOTE]
-    > 下面的示例使用 `azure-iot-provisioning-device-http` 和 `azure-iot-device-mqtt` 传输。
-    > 
+     > [!NOTE]
+     > 下面的示例使用 `azure-iot-provisioning-device-http` 和 `azure-iot-device-mqtt` 传输。
+     > 
 
-    可以在 **registerdevice** 文件夹中的命令提示符处运行以下命令，一次性安装所有这些包：
+     可以在 **registerdevice** 文件夹中的命令提示符处运行以下命令，一次性安装所有这些包：
 
-        ```cmd/sh
-        npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
-        ```
+       ```cmd/sh
+       npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
+       ```
 
 1. 在 **registerdevice** 文件夹中，使用文本编辑器创建新的 **ExtractDevice.js** 文件。
 
@@ -141,15 +141,15 @@ Azure IoT 设备预配服务支持两类注册：
 1. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。 
 
 1. 在“添加注册”下，输入以下信息：
-    - 选择“TPM”作为标识证明*机制*。
-    - 输入 TPM 设备的*注册 ID* 和*认可密钥*。
-    - （可选）可以提供以下信息：
-        - 选择与预配服务链接的 IoT 中心。
-        - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。
-        - 使用设备所需的初始配置更新“初始设备孪生状态”。
-    - 完成后，单击“保存”按钮。 
+   - 选择“TPM”作为标识证明*机制*。
+   - 输入 TPM 设备的*注册 ID* 和*认可密钥*。
+   - （可选）可以提供以下信息：
+       - 选择与预配服务链接的 IoT 中心。
+       - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。
+       - 使用设备所需的初始配置更新“初始设备孪生状态”。
+   - 完成后，单击“保存”按钮。 
 
-    ![在门户边栏选项卡中输入设备注册信息](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+     ![在门户边栏选项卡中输入设备注册信息](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
    成功注册以后，设备的“注册 ID”显示在“单个注册”选项卡下的列表中。 
 

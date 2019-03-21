@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 24a957260e3e3f161ce9e2e61b746f9b052e784d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 82310857276c53c85af033ae32a3aeef4f33c8da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264363"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109369"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>使用 Azure DevOps Projects 创建用于 PHP 的 CI/CD 管道
 
@@ -56,7 +56,7 @@ Azure DevOps Projects 提供一种简化的体验，适合在 Azure Pipelines �
 
 1. 创建新的 Azure DevOps 组织，或选择现有的组织。 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择 Azure DevOps 中项目的名称。 
+    a. 选择 Azure DevOps 中项目的名称。 
     
     b. 选择 Azure 订阅和位置，输入应用程序的名称，然后选择“完成”。   
         几分钟后，DevOps Projects 仪表板会显示在 Azure 门户中。 首先会在 Azure DevOps 组织的存储库中设置示例应用程序，然后运行生成并将应用程序部署到 Azure。 可以通过此仪表板查看代码存储库、你的 CI/CD 管道以及 Azure 中的应用程序。  
@@ -65,7 +65,7 @@ Azure DevOps Projects 提供一种简化的体验，适合在 Azure Pipelines �
 
     ![仪表板视图](_img/azure-devops-project-php/dashboardnopreview.png) 
     
- DevOps Projects 自动配置了 CI 生成和发布触发器。  现在可以与 PHP 应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。
+   DevOps Projects 自动配置了 CI 生成和发布触发器。  现在可以与 PHP 应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>提交代码更改并执行 CI/CD
 

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 1c8f280d58d12df33b687fa9c09712176987cdd1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1e0e5deea8602b3da16074155e69c952227b8609
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117670"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -74,11 +74,11 @@ ms.locfileid: "53259539"
 
     除以下值外，接受其他所有默认值：
 
-    * 输入群集的名称。
-    * 在本文中，请创建运行时为 **4.0** 的群集。
-    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+   * 输入群集的名称。
+   * 在本文中，请创建运行时为 **4.0** 的群集。
+   * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     
-    选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
 
@@ -89,12 +89,12 @@ ms.locfileid: "53259539"
 1. [从 GitHub](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 中将此示例 JSON 数据文件下载到本地计算机上。 单击右键并在本地保存原始文件。
 
 2. 如果还没有存储帐户，请创建一个。
-    - 在 Azure 门户中，选择“创建资源”。 选择**存储**类别，然后选择**存储帐户**
-    - 为存储帐户提供唯一名称。
-    - 选择“帐户类型”：**Blob 存储**
-    - 选择一个**资源组**名称。 使用在其中创建了 Databricks 工作区的同一个资源组。
+   - 在 Azure 门户中，选择“创建资源”。 选择**存储**类别，然后选择**存储帐户**
+   - 为存储帐户提供唯一名称。
+   - 选择“帐户类型”：**Blob 存储**
+   - 选择一个**资源组**名称。 使用在其中创建了 Databricks 工作区的同一个资源组。
     
-    有关详细信息，请参阅[创建 Azure Blob 存储帐户](../storage/common/storage-quickstart-create-account.md)。
+     有关详细信息，请参阅[创建 Azure Blob 存储帐户](../storage/common/storage-quickstart-create-account.md)。
 
 3. 在 Blob 存储帐户中创建一个存储容器，并将示例 json 文件上传到该容器中。 可以使用 Azure 门户或 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)来上传文件。
 
@@ -130,21 +130,21 @@ ms.locfileid: "53259539"
 
     在以下代码片段中，将 `{YOUR CONTAINER NAME}`、`{YOUR STORAGE ACCOUNT NAME}`、`{YOUR STORAGE ACCOUNT ACCESS KEY}` 替换为你的 Azure 存储帐户的相应值。 在笔记本上的某个空白单元中粘贴该代码片段，并按 SHIFT + ENTER 运行该代码单元。
 
-    * **使用 DBFS 装载存储帐户（推荐）**。 在此代码片段中，Azure 存储帐户路径装载到 `/mnt/mypath`。 因此，在将来访问 Azure 存储帐户时，不需要提供完整路径。 可以直接使用 `/mnt/mypath`。
+   * **使用 DBFS 装载存储帐户（推荐）**。 在此代码片段中，Azure 存储帐户路径装载到 `/mnt/mypath`。 因此，在将来访问 Azure 存储帐户时，不需要提供完整路径。 可以直接使用 `/mnt/mypath`。
 
-          dbutils.fs.mount(
-            source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
-            mountPoint = "/mnt/mypath",
-            extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
+         dbutils.fs.mount(
+           source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
+           mountPoint = "/mnt/mypath",
+           extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
 
-    * **直接访问存储帐户**
+   * **直接访问存储帐户**
 
-          spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
+         spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
 
-    有关如何检索存储帐户密钥的说明，请参阅[管理存储访问密钥](../storage/common/storage-account-manage.md#access-keys)。
+     有关如何检索存储帐户密钥的说明，请参阅[管理存储访问密钥](../storage/common/storage-account-manage.md#access-keys)。
 
-    > [!NOTE]
-    > 还可以对 Azure Databricks 中的 Spark 群集使用 Azure Data Lake Store。 有关说明，请参阅[对 Azure Databricks 使用 Data Lake Store](https://go.microsoft.com/fwlink/?linkid=864084)。
+     > [!NOTE]
+     > 还可以对 Azure Databricks 中的 Spark 群集使用 Azure Data Lake Store。 有关说明，请参阅[对 Azure Databricks 使用 Data Lake Store](https://go.microsoft.com/fwlink/?linkid=864084)。
 
 4. 运行一条 SQL 语句，以使用示例 JSON 数据文件 **small_radio_json.json** 中的数据创建一个临时表。 在以下代码片段中，请将占位符值替换为容器名称和存储帐户名称。 在笔记本上的某个空白单元中粘贴该代码片段，并按 SHIFT + ENTER。 在该代码片段中，`path` 表示已上传到 Azure 存储帐户的示例 JSON 文件所在的位置。
 
@@ -183,12 +183,12 @@ ms.locfileid: "53259539"
 
     ![自定义条形图](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "自定义条形图")
 
-    * 将“键”设置为“性别”。
-    * 将“序列分组”设置为“级别”。
-    * 将“值”设置为“级别”。
-    * 将“聚合”设置为“计数”。
+   * 将“键”设置为“性别”。
+   * 将“序列分组”设置为“级别”。
+   * 将“值”设置为“级别”。
+   * 将“聚合”设置为“计数”。
 
-    单击“应用”。
+     单击“应用”。
 
 9. 输出将显示以下屏幕截图中所示的可视表示形式：
 

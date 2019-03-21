@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure Active Directory？ | Microsoft Docs
+title: 什么是 Azure Active Directory？ - Azure Active Directory | Microsoft Docs
 description: 了解 Azure Active Directory，包括必要的术语、受众、许可基础知识和相关功能。
 services: active-directory
 author: eross-msft
@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b443dc2d25558343fb8cad3fd5e9734a672e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0d3b3cd7e759892c2215f190a682f5f69818958d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187383"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442353"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？ 
 Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的标识和访问管理服务。 员工可以通过 Azure AD 登录并访问以下资源：

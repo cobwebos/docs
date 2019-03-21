@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: d7679f41b5e1c1fe6705ef3ed4be28a521f0d0d2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46507562ab5a31f377b8c3a11902abf9aeccd846
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728482"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176440"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>快速入门：使用 Java 通过文本翻译 API 来确定句子长度
 
@@ -34,8 +34,8 @@ ms.locfileid: "56728482"
 首先，创建此项目的工作目录。 从命令行（或终端）中，运行以下命令：
 
 ```console
-mkdir break-sentence-sample
-cd break-sentence-sample
+mkdir length-sentence-sample
+cd length-sentence-sample
 ```
 
 接下来，初始化一个 Gradle 项目。 此命令将创建 Gradle 的基本生成文件，最重要的是 `build.gradle.kts`，它在运行时用来创建并配置应用程序。 从工作目录运行以下命令：
@@ -56,7 +56,7 @@ plugins {
     application
 }
 application {
-    mainClassName = "BreakSentence"
+    mainClassName = "LengthSentence"
 }
 repositories {
     mavenCentral()
@@ -77,11 +77,11 @@ dependencies {
 mkdir -p src/main/java
 ```
 
-接下来，在此文件夹中，创建一个名为 `BreakSentence.java` 的文件。
+接下来，在此文件夹中，创建一个名为 `LengthSentence.java` 的文件。
 
 ## <a name="import-required-libraries"></a>导入所需的库
 
-打开 `BreakSentence.java` 并添加以下 import 语句：
+打开 `LengthSentence.java` 并添加以下 import 语句：
 
 ```java
 import java.io.*;
@@ -97,12 +97,12 @@ import com.squareup.okhttp.*;
 首先，为你的项目创建一个公共类：
 
 ```java
-public class BreakSentence {
+public class LengthSentence {
   // All project code goes here...
 }
 ```
 
-将以下行添加到 `BreakSentence` 类。 你会注意到，除了 `api-version`，还可以定义输入语言。 在此示例中，语言为英语。
+将以下行添加到 `LengthSentence` 类。 你会注意到，除了 `api-version`，还可以定义输入语言。 在此示例中，语言为英语。
 
 ```java
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
@@ -111,7 +111,7 @@ String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-ve
 
 ## <a name="create-a-client-and-build-a-request"></a>创建客户端并生成请求
 
-将以下行添加到 `BreakSentence` 类来实例化 `OkHttpClient`：
+将以下行添加到 `LengthSentence` 类来实例化 `OkHttpClient`：
 
 ```java
 // Instantiates the OkHttpClient.
@@ -156,8 +156,8 @@ public static String prettify(String json_text) {
 ```java
 public static void main(String[] args) {
     try {
-        BreakSentence breakSentenceRequest = new BreakSentence();
-        String response = breakSentenceRequest.Post();
+        LengthSentence lengthSentenceRequest = new LengthSentence();
+        String response = lengthSentenceRequest.Post();
         System.out.println(prettify(response));
     } catch (Exception e) {
         System.out.println(e);

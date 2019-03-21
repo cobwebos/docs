@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: e4bc5de9345bcb65f82ca7ac0095b3e0fd3907e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: aefbe4265cb97a003b908c5631e1f9ed4e0192cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165992"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102094"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的带宽计划  
 
@@ -43,13 +43,13 @@ ms.locfileid: "49165992"
 
 3. 在“添加计划”中： 
 
-    1. 提供计划的“开始日期”、“结束日期”、“开始时间”和“结束时间”。 
-    2. 如果此计划全天运行，可以选中“全天”选项。 
-    3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。 为此字段提供介于 1 和 1,000 之间的数字。 
-    4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。 
-    5. 单击 **“添加”**。
+   1. 提供计划的“开始日期”、“结束日期”、“开始时间”和“结束时间”。 
+   2. 如果此计划全天运行，可以选中“全天”选项。 
+   3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。 为此字段提供介于 1 和 1,000 之间的数字。 
+   4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。 
+   5. 单击“添加”。
 
-    ![单击“添加用户”](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![单击“添加用户”](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. 此时会使用指定的参数创建一个计划。 此计划随后会显示在门户中的带宽计划列表中。
 

@@ -9,12 +9,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: a73568fd1dd7ed6b6cd3a7938768db4982725658
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 99f5b09d0b5dfc144dca7f19efff3f0656a82b35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497871"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093239"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 
@@ -77,16 +77,16 @@ ms.locfileid: "55497871"
     ![选择工作负荷](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 5. 对于“备份策略”菜单中的“策略名称”，请键入“财务”。 对备份策略输入以下更改：
-    - 对于“备份频率”，请将时区设置为“中部时间”。 由于此综合体育中心位于德克萨斯，其所有者希望时间为当地时间。 将备份频率设置为每日凌晨 3:30。
-    - 对于“每日备份点的保留期”，请将时间段设置为 90 天。
-    - 对于“每周备份点的保留期”，请使用“星期一”还原点并将其保留 52 周。
-    - 对于“每月备份点的保留期”，使用当月第一个星期日作为还原点，并将其保留 36 个月。
-    - 取消选中“每年备份点的保留期”选项。 财务主管不希望数据保留期超过 36 个月。
-    - 单击“确定”以创建备份策略。
+   - 对于“备份频率”，请将时区设置为“中部时间”。 由于此综合体育中心位于德克萨斯，其所有者希望时间为当地时间。 将备份频率设置为每日凌晨 3:30。
+   - 对于“每日备份点的保留期”，请将时间段设置为 90 天。
+   - 对于“每周备份点的保留期”，请使用“星期一”还原点并将其保留 52 周。
+   - 对于“每月备份点的保留期”，使用当月第一个星期日作为还原点，并将其保留 36 个月。
+   - 取消选中“每年备份点的保留期”选项。 财务主管不希望数据保留期超过 36 个月。
+   - 单击“确定”以创建备份策略。
 
-    ![选择工作负荷](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
+     ![选择工作负荷](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
-    创建备份策略后，将策略与虚拟机关联。
+     创建备份策略后，将策略与虚拟机关联。
 
 6. 在“选择虚拟机”对话框中选择“myVM”，然后单击“确定”，将备份策略部署到虚拟机。
 

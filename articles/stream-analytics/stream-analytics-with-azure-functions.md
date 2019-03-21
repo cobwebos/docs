@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 8ef1b2a2271106a382faf9e06d57b44ca1bf033b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 80977c13aa9851ea5df9a15f5b9580dd1a931259
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810790"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569189"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>从 Azure 流分析作业运行 Azure Functions 
 
@@ -63,77 +63,77 @@ ms.locfileid: "55810790"
 
 2. 浏览到 run.csx 函数。 将其更新为以下代码。 （请务必将“\<在此处放置用于 Redis 的 Azure 缓存连接字符串\>”替换为上一节中检索到的用于 Redis 的 Azure 缓存主连接字符串。）  
 
-   ```csharp
-   using System;
-   using System.Net;
-   using System.Threading.Tasks;
-   using StackExchange.Redis;
-   using Newtonsoft.Json;
-   using System.Configuration;
+    ```csharp
+    using System;
+    using System.Net;
+    using System.Threading.Tasks;
+    using StackExchange.Redis;
+    using Newtonsoft.Json;
+    using System.Configuration;
 
-   public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
-   {
-      log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    {
+        log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
     
-      // Get the request body
-      dynamic dataArray = await req.Content.ReadAsAsync<object>();
+        // Get the request body
+        dynamic dataArray = await req.Content.ReadAsAsync<object>();
 
-      // Throw an HTTP Request Entity Too Large exception when the incoming batch(dataArray) is greater than 256 KB. Make sure that the size value is consistent with the value entered in the Stream Analytics portal.
+        // Throw an HTTP Request Entity Too Large exception when the incoming batch(dataArray) is greater than 256 KB. Make sure that the size value is consistent with the value entered in the Stream Analytics portal.
 
-      if (dataArray.ToString().Length > 262144)
-      {        
-         return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
-      }
-      var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
-      log.Info($"Connection string.. {connection}");
+        if (dataArray.ToString().Length > 262144)
+        {
+            return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
+        }
+        var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
+        log.Info($"Connection string.. {connection}");
     
-      // Connection refers to a property that returns a ConnectionMultiplexer
-      IDatabase db = connection.GetDatabase();
-      log.Info($"Created database {db}");
+        // Connection refers to a property that returns a ConnectionMultiplexer
+        IDatabase db = connection.GetDatabase();
+        log.Info($"Created database {db}");
     
-      log.Info($"Message Count {dataArray.Count}");
+        log.Info($"Message Count {dataArray.Count}");
 
-      // Perform cache operations using the cache object. For example, the following code block adds few integral data types to the cache
-      for (var i = 0; i < dataArray.Count; i++)
-      {
-        string time = dataArray[i].time;
-        string callingnum1 = dataArray[i].callingnum1;
-        string key = time + " - " + callingnum1;
-        db.StringSet(key, dataArray[i].ToString());
-        log.Info($"Object put in database. Key is {key} and value is {dataArray[i].ToString()}");
+        // Perform cache operations using the cache object. For example, the following code block adds few integral data types to the cache
+        for (var i = 0; i < dataArray.Count; i++)
+        {
+            string time = dataArray[i].time;
+            string callingnum1 = dataArray[i].callingnum1;
+            string key = time + " - " + callingnum1;
+            db.StringSet(key, dataArray[i].ToString());
+            log.Info($"Object put in database. Key is {key} and value is {dataArray[i].ToString()}");
        
-      // Simple get of data types from the cache
-      string value = db.StringGet(key);
-      log.Info($"Database got: {value}");
-      }
+            // Simple get of data types from the cache
+            string value = db.StringGet(key);
+            log.Info($"Database got: {value}");
+        }
 
-      return req.CreateResponse(HttpStatusCode.OK, "Got");
-    }    
+        return req.CreateResponse(HttpStatusCode.OK, "Got");
+    }
 
    ```
 
    当流分析从函数收到“HTTP 请求实体过大”异常时，将减小发送到 Azure Functions 的批次的大小。 在函数中，使用下面的代码检查流分析，确保其不会发送过大的批次。 确保函数中使用的最大批次数和最大批次大小值与在流分析门户中输入的值一致。
 
-   ```csharp
-   if (dataArray.ToString().Length > 262144)
-      {        
-        return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
-      }
+    ```csharp
+    if (dataArray.ToString().Length > 262144)
+        {
+            return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
+        }
    ```
 
 3. 在所选的文本编辑器中，创建名为 project.json 的 JSON 文件。 使用下面的代码，将其保存在本地计算机上。 此文件包含 C# 函数所需的 NuGet 包依赖项。  
    
-   ```json
-       {
-         "frameworks": {
-             "net46": {
-                 "dependencies": {
-                     "StackExchange.Redis":"1.1.603",
-                     "Newtonsoft.Json": "9.0.1"
-                 }
-             }
-         }
-     }
+    ```json
+    {
+        "frameworks": {
+            "net46": {
+                "dependencies": {
+                    "StackExchange.Redis":"1.1.603",
+                    "Newtonsoft.Json": "9.0.1"
+                }
+            }
+        }
+    }
 
    ```
  
@@ -168,8 +168,8 @@ ms.locfileid: "55810790"
 4. 打开流分析作业，将查询更新为以下内容。 （如果已将输出接收器命名为其他名称，请务必替换“saop1”文本。）  
 
    ```sql
-    SELECT 
-            System.Timestamp as Time, CS1.CallingIMSI, CS1.CallingNum as CallingNum1, 
+    SELECT
+            System.Timestamp as Time, CS1.CallingIMSI, CS1.CallingNum as CallingNum1,
             CS2.CallingNum as CallingNum2, CS1.SwitchNum as Switch1, CS2.SwitchNum as Switch2
         INTO saop1
         FROM CallStream CS1 TIMESTAMP BY CallRecTime

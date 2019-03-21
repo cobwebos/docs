@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f1e905b0b67048a10f6eb455d77275375a99dbd0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 805abec84b26a6b2b9af3dfe318f877f4edb9547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245399"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080890"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>计算要计费的 Blob 容器总大小
 
@@ -101,17 +101,17 @@ For-Each Signed Identifier[512 bytes]
 * 对于每个存储的元数据块，添加名称长度（以 ASCII 码存储），再加上字符串值的长度。
 
 * 对于块 blob：
-    * 块列表为 8 字节。
-    * 块数乘以块 ID 大小（按字节计）。
-    * 所有已提交和未提交块中数据的大小。
+  * 块列表为 8 字节。
+  * 块数乘以块 ID 大小（按字节计）。
+  * 所有已提交和未提交块中数据的大小。
 
     >[!NOTE]
     >使用快照时，大小仅包括此基本或快照 blob 的唯一数据。 如果未提交块在一周后未被使用，则回收到垃圾桶。 之后不计入账单。
 
 * 对于页 blob：
-    * 字节数按具有数据的不连续页面范围数乘以 12 计算。 这是在调用 GetPageRanges API 时看到的唯一页面范围数。
+  * 字节数按具有数据的不连续页面范围数乘以 12 计算。 这是在调用 GetPageRanges API 时看到的唯一页面范围数。
 
-    * 所有存储页面中的数据大小（按字节计）。
+  * 所有存储页面中的数据大小（按字节计）。
 
     >[!NOTE]
     >使用快照时，大小仅包含要计数的基本 blob 或快照 blob 的唯一页面。

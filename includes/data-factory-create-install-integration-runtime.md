@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 4189d3a09625f211c6f9eddc7c1c5fe43ad31732
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1b0289f5771663f3800ff4e58ba5c0528eb89cb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571829"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124433"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>创建自承载 Integration Runtime
 
@@ -36,7 +36,7 @@ ms.locfileid: "51571829"
     Name              : myonpremirsp0914
     Description       :
     ```
- 
+  
 3. 若要检索所创建的 Integration Runtime 的状态，请运行以下命令。 确认 **State** 属性的值已设置为 **NeedRegistration**。 
 
    ```powershell
@@ -124,7 +124,7 @@ ms.locfileid: "51571829"
 
     ![“诊断”选项卡](media/data-factory-create-install-integration-runtime/config-manager-diagnostics-tab.png)   
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“配置管理器”页上，转到“诊断”选项卡。
+    a. 在“配置管理器”页上，转到“诊断”选项卡。
 
     b. 选择“SqlServer”作为数据源类型。
 

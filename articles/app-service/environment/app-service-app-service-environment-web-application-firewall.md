@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: 4681dad55807705a2ce8e9908cbd3ee53fb3c32e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631492"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089312"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
@@ -66,7 +66,7 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 
 ![添加管理终结点][AddManagementEndpoint]
 
-使用浏览器浏览到云服务上的管理终结点。 如果云服务名称为 test.cloudapp.net，则浏览到 http://test.cloudapp.net:8000 即可访问此终结点。 应会看到与下图类似的登录页，在此页上，可以使用在 WAF VM 设置阶段指定的凭据登录。
+使用浏览器浏览到云服务上的管理终结点。 如果云服务名称为 test.cloudapp.net，则浏览到 `http://test.cloudapp.net:8000` 即可访问此终结点。 应会看到与下图类似的登录页，在此页上，可以使用在 WAF VM 设置阶段指定的凭据登录。
 
 ![管理登录页][ManagementLoginPage]
 

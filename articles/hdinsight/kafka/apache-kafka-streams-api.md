@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: cb959bd74322534573f83c2b3258ff28d4c324ff
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c40e00d55af49b1b040d3fe706f08af719b2238
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584150"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112783"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>教程：Apache Kafka Streams API
 
@@ -199,13 +199,13 @@ public class Stream
 
     主题用于以下目的：
 
-    * `test`：本主题是接收记录的位置。 流式处理应用程序从此处读取。
-    * `wordcounts`：本主题是流式处理应用程序存储其输出的位置。
-    * `RekeyedIntermediateTopic`：本主题用于在 `countByKey` 运算符更新计数时对数据进行重新分区。
-    * `wordcount-example-Counts-changelog`：本主题是 `countByKey` 操作使用的状态存储
+   * `test`：本主题是接收记录的位置。 流式处理应用程序从此处读取。
+   * `wordcounts`：本主题是流式处理应用程序存储其输出的位置。
+   * `RekeyedIntermediateTopic`：本主题用于在 `countByKey` 运算符更新计数时对数据进行重新分区。
+   * `wordcount-example-Counts-changelog`：本主题是 `countByKey` 操作使用的状态存储
 
-    > [!IMPORTANT]  
-    > Kafka on HDInsight 也可以配置为自动创建主题。 有关详细信息，请参阅[配置自动主题创建](apache-kafka-auto-create-topics.md)文档。
+     > [!IMPORTANT]  
+     > Kafka on HDInsight 也可以配置为自动创建主题。 有关详细信息，请参阅[配置自动主题创建](apache-kafka-auto-create-topics.md)文档。
 
 ## <a name="run-the-code"></a>运行代码
 

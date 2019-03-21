@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b099d1765f0ed56d6768501086bf8b9f83d5a86a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f5ac1c53a97fc2a3749582c5f48b967e3ce0c2c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112263"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104261"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>教程：使用 Service Fabric 演示容器服务的故障转移和缩放
 
@@ -63,8 +63,8 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 
 现在可以选择缩放 Web 前端的实例数量。
 
-3. 将数字更改为 2，再单击“缩放服务”。
-4. 在树视图中单击“fabric:/TestContainer/azurevotefront”节点，并展开分区节点（由 GUID 表示）。
+1. 将数字更改为 2，再单击“缩放服务”。
+1. 在树视图中单击“fabric:/TestContainer/azurevotefront”节点，并展开分区节点（由 GUID 表示）。
 
 ![sfxscaledone][sfxscaledone]
 

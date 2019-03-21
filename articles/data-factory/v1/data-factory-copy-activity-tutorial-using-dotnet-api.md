@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7a3979d9f92526934f074b7a6a122352928abe68
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 647b2ae5f23ef6f94e3a56eb777053a7eb3e0097
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428390"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090434"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教程：使用 .NET API 创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -46,10 +46,13 @@ ms.locfileid: "54428390"
 > 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Hadoop 群集构建用于转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * 请阅读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 了解教程概述，并完成 **先决条件** 步骤。
 * Visual Studio 2012、2013 或 2015
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
-* Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
+* Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/install-Az-ps) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
 创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。
@@ -58,17 +61,17 @@ ms.locfileid: "54428390"
 2. 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
 
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. 运行以下命令查看此帐户的所有订阅。
 
     ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 4. 运行以下命令选择要使用的订阅。 将 **&lt;NameOfAzureSubscription**&gt; 替换为 Azure 订阅的名称。
 
     ```PowerShell
-    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 
    > [!IMPORTANT]
@@ -77,7 +80,7 @@ ms.locfileid: "54428390"
 5. 在 PowerShell 中运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组。
 
     ```PowerShell
-    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
     如果资源组已存在，请指定是要更新它 (Y) 还是保留原样 (N)。
@@ -86,7 +89,7 @@ ms.locfileid: "54428390"
 6. 创建 Azure Active Directory 应用程序。
 
     ```PowerShell
-    $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
+    $azureAdApplication = New-AzADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
     ```
 
     如果看到以下错误，请指定不同的 URL，并再次运行该命令。
@@ -97,12 +100,12 @@ ms.locfileid: "54428390"
 7. 创建 AD 服务主体。
 
     ```PowerShell
-    New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
 8. 将服务主体添加到 **数据工厂参与者** 角色。
 
     ```PowerShell
-    New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    New-AzRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
 9. 获取应用程序 ID。
 
@@ -512,9 +515,9 @@ ms.locfileid: "54428390"
     ```
 18. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
 19. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
-   * 链接服务：**LinkedService_AzureStorage**
-   * 数据集：InputDataset 和 OutputDataset。
-   * 管道：**PipelineBlobSample**
+    * 链接服务：**LinkedService_AzureStorage**
+    * 数据集：InputDataset 和 OutputDataset。
+    * 管道：**PipelineBlobSample**
 20. 验证是否在指定的 Azure SQL 数据库中的“emp”表内创建了两条员工记录。
 
 ## <a name="next-steps"></a>后续步骤

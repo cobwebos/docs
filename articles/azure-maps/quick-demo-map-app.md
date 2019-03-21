@@ -3,18 +3,18 @@ title: 使用 Azure Maps 执行交互式地图搜索 | Microsoft Docs
 description: Azure 快速入门 - 使用 Azure Maps 创建演示版交互式地图搜索
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/02/2018
+ms.date: 03/07/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 681a76de02d91b39ee74d1e4fa764c06d79ff3ab
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: be6d9ab0011e3d6b5d8ae1da489fc60c316e2867
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065131"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095460"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>使用 Azure Maps 创建交互式搜索地图
 
@@ -34,20 +34,20 @@ ms.locfileid: "54065131"
 2. 在“在市场中搜索”框中，输入“Maps”。
 3. 从“结果”中，选择“Maps”。 选择地图下面显示的“创建”按钮。
 4. 在“创建 Azure Maps 帐户”页上，输入以下值：
-    - 新帐户的名称。
-    - 要用于此帐户的订阅。
-    - 此帐户的资源组。 可以选择“新建”或“使用现有”选项，以便新建资源组或使用现有资源组。
-    - 选择所选的定价层。
-    - 阅读**许可**和**隐私声明**。 选择接受条款的复选框。
-    - 最后，选择“创建”按钮。
+   - 新帐户的名称。
+   - 要用于此帐户的订阅。
+   - 此帐户的资源组。 可以选择“新建”或“使用现有”选项，以便新建资源组或使用现有资源组。
+   - 选择所选的定价层。
+   - 阅读**许可**和**隐私声明**。 选择接受条款的复选框。
+   - 最后，选择“创建”按钮。
 
-    ![在门户中创建 Azure Maps 帐户](./media/quick-demo-map-app/create-account.png)
+     ![在门户中创建 Azure Maps 帐户](./media/quick-demo-map-app/create-account.png)
 
 5. 帐户成功创建后，将其打开，查找帐户菜单的设置部分。 选择“密钥”，查看 Azure Maps 帐户的主要密钥和辅助密钥。 将“主密钥”值复制到本地剪贴板，以便在下一部分中使用。
 
 ## <a name="download-the-application"></a>下载应用程序
 
-1. 下载或复制 [interactiveSearch.html](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/interactiveSearch.html) 文件的内容。
+1. 下载或复制 [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) 文件的内容。
 2. 在本地将此文件的内容另存为 **AzureMapDemo.html**。 在文本编辑器中将其打开。
 3. 搜索字符串 `<insert-key>`。 将其替换为在上一部分获取的**主密钥**值。
 

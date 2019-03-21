@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 037dafcfc60c629841e326cecc38bb2b3250d77c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 092a346d8303bb9e88a53b6fa529bb820635c554
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015417"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099536"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 在本教程中，我们将创建一个数据工厂管道来展示某些控制流功能。 此管道执行从 Azure Blob 存储容器中某个容器到同一存储帐户中另一个容器的简单复制。 如果复制活动成功，该管道会在告知成功结果的电子邮件中发送成功复制操作的详细信息（例如写入的数据量）。 如果复制活动失败，该管道会在告知失败结果的电子邮件中发送复制失败的详细信息（例如错误消息）。 整个教程讲解了如何传递参数。
@@ -52,7 +52,7 @@ ms.locfileid: "54015417"
     John,Doe
     Jane,Doe
     ```
-2. 使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具执行以下步骤： 
+2. 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具执行以下步骤： 
     1. 创建 **adfv2branch** 容器。
     2. 在 **adfv2branch** 容器中创建 **input** 文件夹。
     3. 将 **input.txt** 文件上传到该容器。
@@ -199,10 +199,10 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    ![新建 Azure 存储链接服务](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. 输入 `@pipeline().parameters.sourceBlobContainer` 作为文件夹，输入 `emp.txt` 作为文件名。 使用 sourceBlobContainer 管道参数设置数据集的文件夹路径。 
 
-    ![源数据集设置](./media/tutorial-control-flow-portal/source-dataset-settings.png)
+   ![源数据集设置](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 13. 切换到“管道”选项卡，或单击树状视图中的管道。 确认为“源数据集”选择了“SourceBlobDataset”。 
 
-   ![源数据集](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+    ![源数据集](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 13. 在属性窗口中切换到“接收器”选项卡，针对“接收器数据集”单击“+ 新建”。 像创建源数据集一样，在此步骤中创建复制活动的接收器数据集。 
 
     ![“新建接收器数据集”按钮](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
@@ -217,7 +217,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ![接收器数据集设置](./media/tutorial-control-flow-portal/sink-dataset-settings.png)
 17. 切换到顶部的“管道”选项卡。 在“活动”工具箱中展开“常规”，将“Web”活动拖放到管道设计器图面。 将活动的名称设置为 **SendSuccessEmailActivity**。 Web 活动允许调用任何 REST 终结点。 有关该活动的详细信息，请参阅 [Web 活动](control-flow-web-activity.md)。 此管道使用 Web 活动调用逻辑应用电子邮件工作流。 
 
-   ![拖放第一个 Web 活动](./media/tutorial-control-flow-portal/success-web-activity-general.png)
+    ![拖放第一个 Web 活动](./media/tutorial-control-flow-portal/success-web-activity-general.png)
 18. 从“常规”选项卡切换到“设置”选项卡，然后执行以下步骤： 
     1. 对于“URL”，请指定用于发送成功电子邮件的逻辑应用工作流的 URL。  
     2. 为“方法”选择“POST”。 
@@ -235,12 +235,12 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ```
         消息正文包含以下属性：
 
-        - 消息 – `@{activity('Copy1').output.dataWritten` 的传递值。 访问前一复制活动的属性，并传递 dataWritten 的值。 失败时，传递错误输出而不是 `@{activity('CopyBlobtoBlob').error.message`。
-        - 数据工厂名称 – `@{pipeline().DataFactory}` 的传递值。这是一个系统变量，用于访问相应的数据工厂名称。 有关系统变量的列表，请参阅[系统变量](control-flow-system-variables.md)一文。
-        - 管道名称 – `@{pipeline().Pipeline}` 的传递值。 这也是系统变量，用于访问相应的管道名称。 
-        - 接收方 – 传递 "\@pipeline().parameters.receiver") 的值。 访问管道参数。
+       - 消息 – `@{activity('Copy1').output.dataWritten` 的传递值。 访问前一复制活动的属性，并传递 dataWritten 的值。 失败时，传递错误输出而不是 `@{activity('CopyBlobtoBlob').error.message`。
+       - 数据工厂名称 – `@{pipeline().DataFactory}` 的传递值。这是一个系统变量，用于访问相应的数据工厂名称。 有关系统变量的列表，请参阅[系统变量](control-flow-system-variables.md)一文。
+       - 管道名称 – `@{pipeline().Pipeline}` 的传递值。 这也是系统变量，用于访问相应的管道名称。 
+       - 接收方 – 传递 "\@pipeline().parameters.receiver") 的值。 访问管道参数。
     
-        ![第一个 Web 活动的设置](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
+         ![第一个 Web 活动的设置](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. 将“复制”活动旁边的绿色按钮拖放到“Web”活动，以便将“复制”活动连接到“Web”活动。 
 
     ![将“复制”活动连接到第一个“Web”活动](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)

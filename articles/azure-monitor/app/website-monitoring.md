@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 2f16a8fdb124cd2ee69fbdef74f3999800b55157
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a35f4d8c1d5bf5943ecba02ff262fbc7fc0730fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261990"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108217"
 ---
 # <a name="start-monitoring-your-website"></a>开始监视网站
 
@@ -87,7 +87,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
         });
         
         window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
-</script>
+   </script>
    ```
 
 3. 编辑 ``hello_world.html``，添加检测密钥。
@@ -127,7 +127,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 5. 如果我们已检测较复杂的包含多个页面的网站，则可使用另一有用的工具：[**用户流**](../../azure-monitor/app/usage-flows.md)。 使用**用户流**时，可以跟踪用户在访问网站不同部分时采用的路径。
 
-  ![用户流可视化](./media/website-monitoring/user-flows.png)
+   ![用户流可视化](./media/website-monitoring/user-flows.png)
 
 若要了解更多用于监视网站的高级配置，请查看 [JavaScript SDK API 参考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)。
 

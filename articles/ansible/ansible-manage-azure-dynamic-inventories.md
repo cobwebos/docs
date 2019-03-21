@@ -1,19 +1,19 @@
 ---
 title: 使用 Ansible 管理 Azure 动态库存
 description: 了解如何使用 Ansible 管理 Azure 动态库存
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, cloudshell, 动态库存
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: tutorial
-ms.openlocfilehash: cf404b84377a37f9a97f7e7c9c9f86402fe999e0
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 0ef754b792654281f2a12b8eee613434896d5476
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092202"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>使用 Ansible 管理 Azure 动态库存
 使用 Ansible 可将各种源（包括 Azure 等云源）中的库存信息提取到动态库存中。 本文介绍如何使用 [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) 配置一个 Ansible Azure 动态库存，并在该库存中创建两个虚拟机、标记其中的一个虚拟机，然后在标记的虚拟机上安装 Nginx。
@@ -130,9 +130,9 @@ ansible-inventory-test-vm1 | SUCCESS => {
 
 1. 创建名为 `nginx.yml` 的文件（用于包含演练手册），如下所示：
 
-  ```azurecli-interactive
-  vi nginx.yml
-  ```
+   ```azurecli-interactive
+   vi nginx.yml
+   ```
 
 1. 将以下代码插入新建的 `nginx.yml` 文件中：
 

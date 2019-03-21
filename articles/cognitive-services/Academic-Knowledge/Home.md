@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: 975c36451f0f00ce374a0bbf0a6dd87ec39eb912
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b15ed5e2b31ed817d3f6558858e2b7285f98a70f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871551"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551715"
 ---
 # <a name="academic-knowledge-api"></a>学术知识 API
 
@@ -23,7 +23,7 @@ ms.locfileid: "55871551"
 
 MAG 数据源自必应 Web 索引和必应的内部知识库。 由于必应索引持续不断，此 API 将通过必应发现和索引获取网页中的最新信息。 基于此数据库，学术知识 API 实现了由知识驱动的交互对话，从而将被动搜索与主动建议体验、丰富的研究论文图谱搜索结果以及一组论文和相关实体的属性值直方图分布进行无缝结合。
 
-要详细了解 Microsoft Academic Graph，请参阅 [http://aka.ms/academicgraph](https://aka.ms/academicgraph)。
+要详细了解 Microsoft Academic Graph，请参阅 [https://aka.ms/academicgraph](https://aka.ms/academicgraph)。
 
 学术知识 API 已从认知服务预览版迁移至认知服务实验室。 项目的新主页是 [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge)。 截至 2018 年 5 月 24 日，现有 API 密钥将继续有效。 该日期之后，请生成新的 API 密钥。 请注意，现有密钥过期后，付费预览版将立即失效。 如果 API 的免费层不满足你的需求，请与我们的团队联系。 
 

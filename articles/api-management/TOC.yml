@@ -224,29 +224,27 @@ items:
   items:
   - name: 常见问题解答
     href: api-management-faq.md
+  - name: 定价
+    href: https://aka.ms/apimpricing
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
-  - name: API 设计指南
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
-  - name: API 实现指南
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
+  - name: 路线图
+    href: https://aka.ms/apimroadmap
+  - name: 功能请求
+    href: https://aka.ms/apimwish
+  - name: 视频
+    href: https://azure.microsoft.com/documentation/videos/index/?services=api-management
   - name: MSDN 论坛
     href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt
   - name: 堆栈溢出
     href: https://stackoverflow.com/questions/tagged/azure-api-management
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=api-management
-  - name: 路线图
-    href: https://aka.ms/apimroadmap
-  - name: 适用于 API 管理的 Power BI 解决方案模板
-    href: https://aka.ms/apimpbi
-  - name: 博客
-    href: https://aka.ms/apimblog
-  - name: 功能请求
-    href: https://aka.ms/apimwish
-ms.openlocfilehash: fd8cade676bb8966ad33637bad97d100c268f89d
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+  - name: API 设计指南
+    href: https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
+  - name: API 实现指南
+    href: https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
+ms.openlocfilehash: 637671ae4e85a7f3ed4f71af5caf580660c2b6ce
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246613"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260207"

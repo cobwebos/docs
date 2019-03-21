@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: e6d2404e6f509c03d2d3965f34d8229de25df4b7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ee28bfebb6732c7bb3b689cf08b9b876adb74b1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114614"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104669"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入门：将 Linux 计算机载入到安全中心
 载入 Azure 订阅之后，可以通过预配 Linux 代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。
@@ -37,7 +37,7 @@ ms.locfileid: "56114614"
 1. 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
 2. 在 **Microsoft Azure** 菜单上选择“安全中心”。 此时会打开“安全中心 - 概览”。
 
- ![安全中心概述][2]
+   ![安全中心概述][2]
 
 3. 在“安全中心”主菜单下，选择“入门”。
 4. 选择“入门”选项卡。![入门][3]
@@ -46,16 +46,16 @@ ms.locfileid: "56114614"
 
     ![添加非 Azure 计算机](./media/quick-onboard-linux-computer/non-azure.png)
 
-6.  在“直接代理”页面上，在“下载和板载 Agent for Linux”下，选择“复制”按钮以复制 *wget* 命令。
+6. 在“直接代理”页面上，在“下载和板载 Agent for Linux”下，选择“复制”按钮以复制 *wget* 命令。
 
-7.  打开记事本并粘贴此命令。 将此文件保存到可以从你的 Linux 计算机访问的位置。
+7. 打开记事本并粘贴此命令。 将此文件保存到可以从你的 Linux 计算机访问的位置。
 
 ## <a name="install-the-agent"></a>安装代理
 
-1.  在你的 Linux 计算机上，打开前面保存的文件。 选择整个内容，进行复制，打开一个终端控制台并粘贴该命令。
-2.  在安装完成后，可以通过运行 *pgrep* 命令验证 *omsagent* 是否已安装。 该命令将返回 *omsagent* PID（进程 ID），如下所示：
+1. 在你的 Linux 计算机上，打开前面保存的文件。 选择整个内容，进行复制，打开一个终端控制台并粘贴该命令。
+2. 在安装完成后，可以通过运行 *pgrep* 命令验证 *omsagent* 是否已安装。 该命令将返回 *omsagent* PID（进程 ID），如下所示：
 
-  ![安装代理][5]
+   ![安装代理][5]
 
 可以在以下位置找到适用于 Linux 的安全中心代理的 日志：*/var/opt/microsoft/omsagent/<workspace id>/log/*
 

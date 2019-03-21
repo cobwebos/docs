@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
 ms.author: eamono
-ms.openlocfilehash: d7113842aff4d6d9ec66439d1d43e5e24333d3f1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d0764131f0e7e321a87ed383636606b2124ef7d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467564"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173764"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>教程：将 Azure 自动化与事件网格和 Microsoft Teams 相集成
 
@@ -31,6 +31,8 @@ ms.locfileid: "54467564"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 若要完成此教程，需要 [Azure 自动化帐户](../automation/automation-offering-get-started.md)，以保存从 Azure 事件网格订阅触发的 runbook。
 

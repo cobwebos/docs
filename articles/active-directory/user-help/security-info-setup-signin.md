@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da54c4f7fae5a613d88f169d58a083f9273c0d3
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f9c6faff10f68d720bc3c86a191e4cd1b1f9abdc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587882"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123600"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>根据登录页提示设置安全信息（预览）
 如果在你登录到工作或学校帐户后，紧接着出现设置安全信息的提示，你可以遵循以下步骤进行设置。
@@ -39,10 +39,10 @@ ms.locfileid: "56587882"
 
 1. 根据提示选择“下一步”后，会出现“保护帐户向导”，其中显示了管理员和组织要求设置的第一种方法。 在本示例中，第一种方法是 Microsoft Authenticator 应用。
 
-    >[!Note]
-    >若要使用除 Microsoft Authenticator 应用以外的验证器应用，请选择“我想要使用其他验证器应用”链接。
-    
-    >如果你的组织允许选择除验证器应用以外的其他方法，则可以选择“我想要设置其他方法”链接。
+   > [!Note]
+   > 若要使用除 Microsoft Authenticator 应用以外的验证器应用，请选择“我想要使用其他验证器应用”链接。
+   > 
+   > 如果你的组织允许选择除验证器应用以外的其他方法，则可以选择“我想要设置其他方法”链接。
 
     ![“保护帐户向导”，其中显示了验证器应用下载页](media/security-info/securityinfo-prompt-get-auth-app.png)
 

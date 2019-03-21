@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7db08cde0df1ba3d9bc227758ab3ad00c1fc422
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2f569b497afe01db0fc4c3aa29589e6f2c538faf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108655"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>快速入门：设置开发环境
 
@@ -55,8 +55,8 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 > [!TIP]
 > 如果需要查找租户 ID，可执行以下操作：
-* 将鼠标指针悬停在帐户名上以获取目录/租户 ID，或
-* 在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”
+> * 将鼠标指针悬停在帐户名上以获取目录/租户 ID，或
+> * 在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”
 
 如果没有任何与帐户关联的现有租户，则帐户名下面会显示一个 GUID；另外，除非按照下一节的步骤操作，否则无法执行注册应用等操作。
 

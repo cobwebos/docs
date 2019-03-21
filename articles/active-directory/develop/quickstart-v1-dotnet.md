@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b06ceb86e8406657766be1375889fcfe1b4673d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2b55f7e615f2c2edb604d5b9433db6cc48d9f36f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204536"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223387"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>快速入门：从 .NET 桌面 (WPF) 应用将用户登录并调用 Microsoft Graph API
 
@@ -77,9 +77,9 @@ ms.locfileid: "56204536"
 
 1. 在 `DirectorySearcher` 项目中，打开 `app.config`。
 1. 替换 `<appSettings>` 节中的元素值，以反映你在 Azure 门户中输入的值。 只要使用 ADAL，代码就会引用这些值。
-  * `ida:Tenant` 是你的 Azure AD 租户的域，例如 contoso.onmicrosoft.com
-  * `ida:ClientId` 是你从门户中复制的应用程序的客户端 ID。
-  * `ida:RedirectUri` 是你在门户中注册的 URL。
+   * `ida:Tenant` 是你的 Azure AD 租户的域，例如 contoso.onmicrosoft.com
+   * `ida:ClientId` 是你从门户中复制的应用程序的客户端 ID。
+   * `ida:RedirectUri` 是你在门户中注册的 URL。
 
 ## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>步骤 3：使用 ADAL 从 Azure AD 获取令牌
 
@@ -172,7 +172,7 @@ ADAL 遵守的基本原理是，每当应用需要访问令牌时，它只需调
                 MessageBox.Show(ex.Message);
             }
 
-            // If user interaction is required, proceed to main page without singing the user in.
+            // If user interaction is required, proceed to main page without signing the user in.
             return;
         }
 

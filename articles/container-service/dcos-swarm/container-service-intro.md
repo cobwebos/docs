@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 348bde94bc01e00777603af8ac078d5e319d732c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 25b6f2b1e79cb6efdcb9d7ee0e956648673e48c0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001978"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528859"
 ---
 # <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>（已弃用）Azure 容器服务的托管解决方案的 Docker 容器简介 
 
@@ -38,7 +38,7 @@ Azure 容器服务旨在通过使用当今客户中热门的开源工具和技�
 Azure 容器服务针对业务流程提供了 Docker Swarm、DC/OS 或 Kubernetes 选项。 部署应用程序的方式取决于所选的业务流程。
 
 ### <a name="using-dcos"></a>使用 DC/OS
-DC/OS 是基于 Apache Mesos 分布式系统内核的分布式操作系统。 Apache Mesos 存放于 Apache Software Foundation，并将一些 [IT 业界知名人士](http://mesos.apache.org/documentation/latest/powered-by-mesos/) 列为用户和参与者。
+DC/OS 是基于 Apache Mesos 分布式系统内核的分布式操作系统。 Apache Mesos 存放于 Apache Software Foundation，并将一些 [IT 业界知名人士](https://mesos.apache.org/documentation/latest/powered-by-mesos/) 列为用户和参与者。
 
 ![为显示代理和主机的 DC/OS 配置的 Azure 容器服务。](media/acs-intro/dcos.png)
 

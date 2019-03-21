@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: bccf12c4e0614ec02414001ab7cf3c4b7f189e65
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 557e7d9a35f012d65977d3e0654b55b15ff1e28f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455994"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106434"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教程：使用 Azure Batch 运行并行 R 模拟 
 
-使用 [doAzureParallel](http://www.github.com/Azure/doAzureParallel) 包大规模运行并行 R 工作负荷。该包是一种轻型 R 包，允许直接从 R 会话使用 Azure Batch。 doAzureParallel 包在常用 [foreach](http://cran.r-project.org/web/packages/foreach/index.html) R 包的基础上生成。 doAzureParallel 执行 foreach 循环的每个迭代，将其作为 Azure Batch 任务提交。
+使用 [doAzureParallel](https://www.github.com/Azure/doAzureParallel) 包大规模运行并行 R 工作负荷。该包是一种轻型 R 包，允许直接从 R 会话使用 Azure Batch。 doAzureParallel 包在常用 [foreach](https://cran.r-project.org/web/packages/foreach/index.html) R 包的基础上生成。 doAzureParallel 执行 foreach 循环的每个迭代，将其作为 Azure Batch 任务提交。
 
 本教程介绍如何部署 Batch 池，然后直接在 RStudio 中通过 Azure Batch 运行并行 R 作业。 学习如何：
  
@@ -45,7 +45,7 @@ ms.locfileid: "55455994"
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>安装 doAzureParallel
 
-在 RStudio 控制台中安装 [doAzureParallel GitHub 包](http://www.github.com/Azure/doAzureParallel)。 以下命令在当前 R 会话中下载并安装该包及其依赖项： 
+在 RStudio 控制台中安装 [doAzureParallel GitHub 包](https://www.github.com/Azure/doAzureParallel)。 以下命令在当前 R 会话中下载并安装该包及其依赖项： 
 
 ```R
 # Install the devtools package  
@@ -260,7 +260,7 @@ stopCluster(cluster)
 本教程介绍了如何：
 
 > [!div class="checklist"]
-安装 doAzureParallel 并将其配置为访问 Batch 帐户和存储帐户
+> 安装 doAzureParallel 并将其配置为访问 Batch 帐户和存储帐户
 > * 创建一个 Batch 池，作为 R 会话的并行后端
 > * 在池中运行示例并行模拟
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 57d112cfce00839f1381dc41d24bfb697179b5a4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8276b86df2dc1bc90fc07da262aa0979f7562619
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878674"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548483"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>教程：创建自定义语言模型
 
@@ -59,7 +59,7 @@ ms.locfileid: "55878674"
 | 每行的话语数 | 1 |
 | 文件大小上限 | 1.5 GB |
 | 备注 | 避免将字符重复 4 次以上，例如“aaaaa”|
-| 备注 | 不得使用“\t”之类的特殊字符，也不得使用 [Unicode 字符表](http://www.utf8-chartable.de/)中 U+00A1 以上的任何其他 UTF-8 字符|
+| 备注 | 不得使用“\t”之类的特殊字符，也不得使用 [Unicode 字符表](https://www.utf8-chartable.de/)中 U+00A1 以上的任何其他 UTF-8 字符|
 | 备注 | URI 也会被拒绝，因为没有特定的方法可以给 URI 发音|
 
 文本在导入时，会进行文本规范化，使之可供系统处理。 但是，用户在上传数据之前，必须完成一些重要的规范化操作。 请参阅 [Transcription guidelines](prepare-transcription.md)（听录准则），确定在准备语言数据时哪一种语言合适。

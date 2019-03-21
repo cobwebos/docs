@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: af764557a6bd3d3f60a3aa628834d5929e073a82
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ab13b0db843e5a2652ed1dd61a0e5ab5f7541244
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021979"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120255"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure 数据工厂用户界面 (UI) 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。
@@ -134,11 +134,11 @@ ms.locfileid: "54021979"
 1. 选择要在其中创建数据工厂的 Azure **订阅**。
 1. 对于“资源组”，请执行以下步骤之一：
    
-      - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
 
-      - 选择“新建”，并输入资源组的名称。
+   - 选择“新建”，并输入资源组的名称。
         
-    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
+     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。
 1. 在“版本”下选择“V2”。
 1. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
 1. 选择“固定到仪表板”。 

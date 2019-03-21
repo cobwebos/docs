@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 10/16/2017
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: c1124e710c3bb2cc4d00595989ccb95e584025c4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6f44d4e6e5a0ee940394e09ceff8a425700d34e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884488"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100720"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教程：构建自定义搜索网页
 
@@ -49,11 +49,11 @@ ms.locfileid: "55884488"
   
 4. 登录后，单击“新建自定义搜索”。 在“新建自定义搜索实例”窗口中，输入有意义的名称并说明搜索返回的内容类型。 可随时更改名称。  
   
-  ![“新建自定义搜索实例”框的屏幕截图](../media/newCustomSrch.png)  
+   ![“新建自定义搜索实例”框的屏幕截图](../media/newCustomSrch.png)  
   
 5. 单击“确定”，指定 URL 及是否包括该 URL 的子页。  
   
-  ![URL 定义页的屏幕截图](../media/newCustomSrch1-a.png)  
+   ![URL 定义页的屏幕截图](../media/newCustomSrch1-a.png)  
 
 
 ## <a name="add-active-entries"></a>添加活动条目
@@ -97,28 +97,28 @@ ms.locfileid: "55884488"
   
 2. 选择布局。  
   
-  ![在“托管 UI”中选择布局这一步骤的屏幕截图](./media/custom-search-hosted-ui-select-layout.png)  
+   ![在“托管 UI”中选择布局这一步骤的屏幕截图](./media/custom-search-hosted-ui-select-layout.png)  
   
 3. 选择颜色主题。  
   
-  ![在“托管 UI”中选择颜色主题的屏幕截图](./media/custom-search-hosted-ui-select-color-theme.png)  
+   ![在“托管 UI”中选择颜色主题的屏幕截图](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-  如果需要微调颜色主题以更好地与 Web 应用集成，请单击“自定义主题”。 并非所有颜色配置都适用于所有布局主题。 若要更改颜色，请在相应的文本框中输入颜色的 RGB HEX 值（例如，#366eb8）。 或者，单击颜色按钮，然后单击适合你的阴影。 选择颜色时，请始终考虑辅助功能。
+   如果需要微调颜色主题以更好地与 Web 应用集成，请单击“自定义主题”。 并非所有颜色配置都适用于所有布局主题。 若要更改颜色，请在相应的文本框中输入颜色的 RGB HEX 值（例如，#366eb8）。 或者，单击颜色按钮，然后单击适合你的阴影。 选择颜色时，请始终考虑辅助功能。
   
-  ![在“托管 UI”中自定义颜色主题的屏幕截图](./media/custom-search-hosted-ui-customize-color-theme.png)  
+   ![在“托管 UI”中自定义颜色主题的屏幕截图](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
   
 4. 指定其他配置选项。  
   
-  ![在“托管 UI”中进行其他配置这一步骤的屏幕截图](./media/custom-search-hosted-ui-additional-configurations.png)  
+   ![在“托管 UI”中进行其他配置这一步骤的屏幕截图](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-  要进行高级配置，请单击“显示高级配置”。 这会将诸如“链接目标”的配置添加到 Web 搜索选项，将“启用筛选器”添加到“图像”和“视频”选项，将“搜索框文本占位符”添加到“杂项”选项。
+   要进行高级配置，请单击“显示高级配置”。 这会将诸如“链接目标”的配置添加到 Web 搜索选项，将“启用筛选器”添加到“图像”和“视频”选项，将“搜索框文本占位符”添加到“杂项”选项。
 
-  ![在“托管 UI”中进行高级配置这一步骤的屏幕截图](./media/custom-search-hosted-ui-advanced-configurations.png)  
+   ![在“托管 UI”中进行高级配置这一步骤的屏幕截图](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
 5. 从下拉列表中选择订阅密钥。 或者，可以手动输入订阅密钥。 有关获取密钥的信息，请参阅[尝试认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api)。  
   
-  ![在“托管 UI”中进行其他配置这一步骤的屏幕截图](./media/custom-search-hosted-ui-subscription-key.png)
+   ![在“托管 UI”中进行其他配置这一步骤的屏幕截图](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -140,66 +140,66 @@ ms.locfileid: "55884488"
   
 3. 在“新建项目”窗口中，选择“Visual C#/Web/ASP.NET Core Web 应用程序”，为项目命名，然后单击“确定”。  
   
-  ![“新建项目”窗口的屏幕截图](./media/custom-search-new-project.png)  
+   ![“新建项目”窗口的屏幕截图](./media/custom-search-new-project.png)  
   
 4. 在“新建 ASP.NET Core Web 应用程序”窗口中，选择“Web 应用程序”，单击“确定”。  
   
-  ![“新建项目”窗口的屏幕截图](./media/custom-search-new-webapp.png)  
+   ![“新建项目”窗口的屏幕截图](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>编辑 index.cshtml
 
 1. 在解决方案资源管理器中，展开“页面”，双击“index.cshtml”打开该文件。  
   
-  ![解决方案资源管理器的屏幕截图，其中“页面”为展开状态，index.cshtml 为选中状态](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
+   ![解决方案资源管理器的屏幕截图，其中“页面”为展开状态，index.cshtml 为选中状态](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
 2. 在 index.cshtml 中，删除自 7 行以下的所有内容。  
   
-  ```razor
-  @page
-  @model IndexModel
-  @{
+   ```razor
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }    
-  ```  
+   }    
+   ```  
   
 3. 添加换行元素和 div，充当容器。  
   
-  ```html
-  @page
-  @model IndexModel
-  @{
+   ```html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch"></div>
-  ```  
+   }
+   <br />
+   <div id="customSearch"></div>
+   ```  
   
 4. 在“托管 UI”页中，向下滚动到名为“使用 UI”的部分。 单击“终结点”以访问 JavaScript 代码片段。 另外，你还可以通过单击“生产”，然后单击“托管 UI”选项卡，获取该代码片段。
   
-  <!-- Get new screenshot after prod gets new bits
-  ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
-  -->
+   <!-- Get new screenshot after prod gets new bits
+   ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
+   -->
   
 5. 将脚本元素粘贴到添加的容器中。  
   
-  ``` html
-  @page
-  @model IndexModel
-  @{
+   ``` html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch">
+   }
+   <br />
+   <div id="customSearch">
       <script type="text/javascript" 
           id="bcs_js_snippet"
           src="https://ui.customsearch.ai /api/ux/rendering-js?customConfig=<YOUR-CUSTOM-CONFIG-ID>&market=en-US&safeSearch=Moderate&version=latest&q=">
       </script>
-  </div>
-  ```  
+   </div>
+   ```  
   
 6. 在解决方案资源管理器中，右键单击“wwwroot”并单击“在浏览器中查看”。  
   
-  ![在“解决方案资源管理器”的 wwwroot 上下文菜单中选择“在浏览器中查看”的屏幕截图](./media/custom-search-webapp-view-in-browser.png)  
+   ![在“解决方案资源管理器”的 wwwroot 上下文菜单中选择“在浏览器中查看”的屏幕截图](./media/custom-search-webapp-view-in-browser.png)  
 
 新的自定义搜索网页应类似于以下页面：
 

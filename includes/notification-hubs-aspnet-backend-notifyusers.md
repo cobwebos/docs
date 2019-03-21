@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9a94f76e2d1fe930d2d6d43e81a756f0cb15d23d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8413044beff68390dbccdf16c4477e113a85f81b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125144"
 ---
 ## <a name="create-the-webapi-project"></a>创建 WebAPI 项目
 
@@ -55,7 +55,7 @@ ms.locfileid: "54453063"
     * 选择已创建的应用服务计划。
     * 选择“创建新的应用服务计划”，然后新建一个应用服务计划。
 
-  在本教程中，不需要使用数据库。 选择应用服务计划后，选择“确定”以创建项目。
+   在本教程中，不需要使用数据库。 选择应用服务计划后，选择“确定”以创建项目。
 
     ![“配置 Microsoft Azure Web 应用”窗口][B5]
 
@@ -84,9 +84,9 @@ ms.locfileid: "54453063"
    * 请求使用*基本*身份验证。
    * 用户名字符串和密码字符串是相同的字符串。
 
-  否则，会拒绝该请求。 此身份验证不是真正的身份验证和授权方法。 它只是本教程中一个简单的示例。
+   否则，会拒绝该请求。 此身份验证不是真正的身份验证和授权方法。 它只是本教程中一个简单的示例。
 
-  如果请求消息已经过 `AuthenticationTestHandler` 的身份验证和授权，则基本身份验证用户将附加到 [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) 上的当前请求。 稍后，另一个控制器 (RegisterController) 会使用 HttpContext 中的用户信息，将[标记](https://msdn.microsoft.com/library/azure/dn530749.aspx)添加到通知注册请求。
+   如果请求消息已经过 `AuthenticationTestHandler` 的身份验证和授权，则基本身份验证用户将附加到 [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) 上的当前请求。 稍后，另一个控制器 (RegisterController) 会使用 HttpContext 中的用户信息，将[标记](https://msdn.microsoft.com/library/azure/dn530749.aspx)添加到通知注册请求。
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler

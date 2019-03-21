@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 78381bd34bd7fe7a8941d7e3a567ec1282d6a8d9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 186bd272fdca20475686847dc4e86b8ad50e5e41
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080958"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -26,8 +26,8 @@ ms.locfileid: "51261394"
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
 Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关的设备。
-- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
 
 本文将演示单个注册。
 
@@ -83,14 +83,14 @@ Azure IoT 设备预配服务支持两类注册：
 1. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。 
 
 1. 在“添加注册”下，输入以下信息：
-    - 选择“TPM”作为标识证明*机制*。
-    - 输入 TPM 设备的*注册 ID* 和*认可密钥*。 
-    - 选择与预配服务链接的 IoT 中心。
-    - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。
-    - 使用设备所需的初始配置更新“初始设备孪生状态”。
-    - 完成后，单击“保存”按钮。 
+   - 选择“TPM”作为标识证明*机制*。
+   - 输入 TPM 设备的*注册 ID* 和*认可密钥*。 
+   - 选择与预配服务链接的 IoT 中心。
+   - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。
+   - 使用设备所需的初始配置更新“初始设备孪生状态”。
+   - 完成后，单击“保存”按钮。 
 
-    ![在门户边栏选项卡中输入设备注册信息](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
+     ![在门户边栏选项卡中输入设备注册信息](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
 
    成功注册以后，设备的“注册 ID”会显示在“单个注册”选项卡下的列表中。 
 
@@ -102,11 +102,11 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 按照[这些说明](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)生成 Python 包。
 
-    > [!NOTE]
-        > 如果运行 `build_client.cmd`，请确保使用 `--use-tpm-simulator` 标志。
-
-    > [!NOTE]
-        > 如果使用 `pip`，请确保也安装 `azure-iot-provisioning-device-client` 包。 请注意，发布的 PIP 包使用真实的 TPM 而非模拟器。 若要使用模拟器，需使用 `--use-tpm-simulator` 标志从源进行编译。
+   > [!NOTE]
+   > 如果运行 `build_client.cmd`，请确保使用 `--use-tpm-simulator` 标志。
+   > 
+   > [!NOTE]
+   > 如果使用 `pip`，请确保也安装 `azure-iot-provisioning-device-client` 包。 请注意，发布的 PIP 包使用真实的 TPM 而非模拟器。 若要使用模拟器，需使用 `--use-tpm-simulator` 标志从源进行编译。
 
 1. 导航到示例文件夹。
 

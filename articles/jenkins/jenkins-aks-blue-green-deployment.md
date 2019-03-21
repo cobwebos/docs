@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/11/2018
-ms.openlocfilehash: 9bd601aee87ab0776069c80bfdeffb70b06c3c86
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073877"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092287"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)
 
@@ -117,12 +117,12 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>通过示例设置脚本设置 Kubernetes 群集
 1. 编辑 **deploy/aks/setup/setup.sh** 文件，将以下占位符替换为环境的相应值： 
 
-    - **&lt;your-resource-group-name>**
-    - **&lt;your-kubernetes-cluster-name>**
-    - **&lt;your-location>**
-    - **&lt;your-dns-name-suffix>**
+   - **&lt;your-resource-group-name>**
+   - **&lt;your-kubernetes-cluster-name>**
+   - **&lt;your-location>**
+   - **&lt;your-dns-name-suffix>**
 
-    ![bash 中 setup.sh 脚本的屏幕截图，其中突出显示了多个占位符](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
+     ![bash 中 setup.sh 脚本的屏幕截图，其中突出显示了多个占位符](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
 1. 运行设置脚本。
 

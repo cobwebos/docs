@@ -12,21 +12,21 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e53afdfc4d2d8288a612cfb461751e6f78ebb2fa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 34455cac61dd3b1f1251d4bc2003bd8b029de031
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179257"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014968"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>有关将帐户添加到 Microsoft Authenticator 应用的概述
 
 Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登录到帐户。 双重验证可帮助你更安全地访问帐户，尤其是在查看敏感信息时。 由于密码可能会遗忘、失窃或者泄露，双重验证作为一种附加的安全保障步骤，可帮助保护帐户的安全，因为其他人更难破解它。
 
->[!Important]
->Microsoft Authenticator 应用可用于使用双重验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户。
-
->此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
+> [!Important]
+> Microsoft Authenticator 应用可用于使用双重验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户。
+> 
+> 此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
 
 可通过多种方式使用 Microsoft Authenticator 应用，包括：
 
@@ -43,6 +43,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 |个人帐户|个人建立的 Microsoft 和非 Microsoft 帐户，例如，在 Outlook.com、Xbox LIVE、Google、Facebook 等服务中创建的帐户。|
 
 ## <a name="in-this-section"></a>本节内容
+
 |文章 |说明 |
 |------|------------|
 |[添加工作或学校帐户](user-help-auth-app-add-work-school-account.md)|介绍如何将工作或学校帐户添加到 Microsoft Authenticator 应用以进行双重验证。|

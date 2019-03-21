@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7ad5f22b0604cb9de38f7990c88d760df97098d9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: dc2fb3faddc8af30edd66b926259c05580d9872a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235829"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104516"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -179,16 +179,16 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 3. 在桌面上，单击“运行收集器”快捷方式。
 4. 在收集器 UI 的顶部栏中单击“检查更新”，并确认收集器正在最新版本上运行。 如果不是，可以选择从链接下载最新的升级包并更新收集器。
 5. 在 Azure Migrate 收集器中，打开“设置必备组件”。
-    - 选择打算迁移到的 Azure 云（Azure 全局或 Azure 政府）。
-    - 接受许可条款，并阅读第三方信息。
-    - 收集器将会检查 VM 是否可访问 Internet。
-    - 如果 VM 通过代理访问 Internet，请单击“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) Internet 连接要求和收集器访问的 [URL 列表](https://docs.microsoft.com/azure/migrate/concepts-collector)。
+   - 选择打算迁移到的 Azure 云（Azure 全局或 Azure 政府）。
+   - 接受许可条款，并阅读第三方信息。
+   - 收集器将会检查 VM 是否可访问 Internet。
+   - 如果 VM 通过代理访问 Internet，请单击“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) Internet 连接要求和收集器访问的 [URL 列表](https://docs.microsoft.com/azure/migrate/concepts-collector)。
 
-      > [!NOTE]
-      > 需以 http://ProxyIPAddress 或 http://ProxyFQDN 的形式输入代理地址。 仅支持 HTTP 代理。 如果有拦截代理，则如果没有导入代理证书，Internet 连接一开始可能会失败；[详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector)如何在收集器 VM 上将代理证书作为受信任的证书导入，以便修复此问题。
+     > [!NOTE]
+     > 需以 <http://ProxyIPAddress> 或 <http://ProxyFQDN> 的形式输入代理地址。 仅支持 HTTP 代理。 如果有拦截代理，则如果没有导入代理证书，Internet 连接一开始可能会失败；[详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector)如何在收集器 VM 上将代理证书作为受信任的证书导入，以便修复此问题。
 
-    - 收集器将检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
-    - 下载并安装 VMware PowerCLI。
+   - 收集器将检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
+   - 下载并安装 VMware PowerCLI。
 
 6. 在“指定 vCenter Server 详细信息”中，执行以下操作：
     - 指定 vCenter 服务器的名称 (FQDN) 或 IP 地址。

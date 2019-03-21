@@ -11,12 +11,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c813685a89f3d18b01ab75d710df54f8d1e1338
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b951cc81d2f957214eb4c78125bde36b61ff64b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187734"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098036"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>教程：使用直通身份验证 (PTA) 集成单个 AD 林
 
@@ -80,7 +80,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 
 1. Hyper-V 管理器，双击虚拟机
 2. 单击“开始”按钮。
-3.  系统将提示你“按任意键以从 CD 或 DVD 启动”。 继续执行此操作。
+3. 系统将提示你“按任意键以从 CD 或 DVD 启动”。 继续执行此操作。
 4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”。
 5. 单击“立即安装”。
 6. 输入许可证密钥并单击“下一步”。
@@ -250,9 +250,9 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
 
-1.  浏览到 [https://myapps.microsoft.com](httpss://myapps.microsoft.com)
+1. 浏览到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用在我们的新租户中创建的用户帐户登录。  需要使用以下格式登录：(user@domain.onmicrosoft.com)。 使用用户用于在本地登录的相同密码。
-![验证](media/tutorial-password-hash-sync/verify1.png)
+   ![验证](media/tutorial-password-hash-sync/verify1.png)
 
 现在已经成功设置了一个混合标识环境，可以使用它来测试和熟悉 Azure 提供的功能。
 

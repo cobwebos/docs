@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 5833571bc1c1ac2674723abf286437c3e5e0a5ae
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 6f96195197daf026cddee10785e0cadae8096031
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791857"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111763"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 HDInsight 中创建 Apache Spark 群集
 了解如何在 Azure HDInsight 中创建 Apache Spark 群集，以及如何对 Hive 表运行 Spark SQL 查询。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)。
@@ -49,16 +49,16 @@ ms.locfileid: "53791857"
     选择“下一步”，转到“存储”页。
 3. 在“存储”下，提供以下值：
 
-    - **选择存储帐户**：选择“新建”，然后为新存储帐户命名。 用于此快速入门的存储帐户名称为“myspark20180403store”。
+   - **选择存储帐户**：选择“新建”，然后为新存储帐户命名。 用于此快速入门的存储帐户名称为“myspark20180403store”。
 
-    ![创建 HDInsight Spark 群集存储配置](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "在 HDInsight 中创建 Spark 群集存储配置")
+     ![创建 HDInsight Spark 群集存储配置](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "在 HDInsight 中创建 Spark 群集存储配置")
 
-    > [!NOTE]  
-    > 屏幕截图上显示“选择现有”。 可以在“新建”和“选择现有”之间切换此链接。
+     > [!NOTE]  
+     > 屏幕截图上显示“选择现有”。 可以在“新建”和“选择现有”之间切换此链接。
 
-    默认容器具有默认名称。  可以根据需要更改此名称。
+     默认容器具有默认名称。  可以根据需要更改此名称。
 
-    选择“下一步”，转到“摘要”页。 
+     选择“下一步”，转到“摘要”页。 
 
 
 3. 在“摘要”页上，选择“创建”。 创建群集大约需要 20 分钟时间。 必须先创建群集，才能继续下一会话。

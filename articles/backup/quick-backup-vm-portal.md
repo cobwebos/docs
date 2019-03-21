@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 7/17/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 9d2578e10916d3770e73ab88e4d0e63aea3fe420
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 445437fe92ec75f1d34021808d7d47a372c2a44b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114770"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535172"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>在 Azure 中备份虚拟机
 可以通过 Azure 门户创建 Azure 备份。 此方法提供基于浏览器的用户界面用于创建和配置 Azure 备份及所有相关的资源。 可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点可存储在异地冗余的恢复保管库中。 本文详细介绍如何使用 Azure 门户备份虚拟机 (VM)。 
@@ -25,10 +25,10 @@ ms.locfileid: "39114770"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-通过 http://portal.azure.com 登录到 Azure 门户。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="select-a-vm-to-back-up"></a>选择要备份的 VM
-在恢复服务保管库中创建一个简单的计划每日备份。 
+在恢复服务保管库中创建一个简单的已计划每日备份。 
 
 1. 在左侧菜单中选择“虚拟机”。 
 2. 从列表中选择要备份的 VM。 如果使用了 VM 快速入门教程中的示例命令，VM 在 *myResourceGroup* 资源组中名为 *myVM*。
@@ -45,7 +45,7 @@ ms.locfileid: "39114770"
 
     默认情况下，保管库是针对异地冗余存储设置的。 为了进一步保护数据，此存储冗余级别可确保将备份数据复制到距离主要区域数百英里以外的 Azure 次要区域。
 
-    创建并使用策略来定义备份作业的运行时间以及恢复点的存储期限。 默认保护策略每天运行一个备份作业，并将恢复点保留 30 天。 可以使用这些默认策略值来快速保护 VM。 
+    创建并使用策略来定义备份作业的运行时间以及恢复点的存储期限。 默认保护策略每天运行备份作业，并将恢复点保留 30 天。 可以使用这些默认策略值来快速保护 VM。 
 
 3. 若要接受默认备份策略值，请选择“启用备份”。
 
@@ -53,7 +53,7 @@ ms.locfileid: "39114770"
 
 
 ## <a name="start-a-backup-job"></a>启动备份作业
-可以立即启动备份，而不用等待默认策略在预定的时间运行作业。 第一个备份作业会创建一个完整恢复点。 初始备份后的每个备份作业都会创建增量恢复点。 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
+可以立即开始备份，而不用等待默认策略根据计划的时间运行作业。 第一个备份作业会创建一个完整恢复点。 此初始备份后的每个备份作业会创建增量恢复点。 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
 
 1. 在 VM 的“备份”窗口中，选择“立即备份”。
 

@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: b78c19d4fa6b2e5b69e5d7f46cea51d943b808fa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5635e0f669cec64bdbbf947099f980066a4aebc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882142"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121411"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>教程：通过 QnA Maker 门户创建知识库并回答问题
 
@@ -25,12 +25,12 @@ ms.locfileid: "55882142"
 本教程介绍如何执行下列操作： 
 
 > [!div class="checklist"]
-* 在 QnA Maker 门户中创建知识库
-* 查看、保存和训练知识库
-* 发布知识库
-* 使用 Curl 查询知识库
-
-> [!NOTE] 
+> * 在 QnA Maker 门户中创建知识库
+> * 查看、保存和训练知识库
+> * 发布知识库
+> * 使用 Curl 查询知识库
+> 
+> [!NOTE]
 > [“Azure-Samples/cognitive-services-qnamaker-csharp”GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)中提供本教程的编程版本和完整的解决方案。
 
 ## <a name="prerequisites"></a>先决条件

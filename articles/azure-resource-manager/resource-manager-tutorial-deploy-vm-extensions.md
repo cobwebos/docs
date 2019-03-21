@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9361c8b17d1b43b4ef63aca6ab4660571efddcde
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a40619000998d7222781094db2829aabcc6a7fb2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492779"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100762"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板部署虚拟机扩展
 
@@ -68,13 +68,13 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 1. 若要打开该文件，请选择“打开”。  
     该模板定义五个资源：
 
-    * **Microsoft.Storage/storageAccounts**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
-    * **Microsoft.Network/publicIPAddresses**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
-    * **Microsoft.Network/virtualNetworks**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
-    * **Microsoft.Network/networkInterfaces**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
-    * **Microsoft.Compute/virtualMachines**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
+   * **Microsoft.Storage/storageAccounts**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
+   * **Microsoft.Network/publicIPAddresses**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
+   * **Microsoft.Network/virtualNetworks**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
+   * **Microsoft.Network/networkInterfaces**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
+   * **Microsoft.Compute/virtualMachines**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
 
-    在自定义模板之前，不妨对其进行一些基本的了解。
+     在自定义模板之前，不妨对其进行一些基本的了解。
 
 1. 选择“文件” > “另存为”，使用文件名 *azuredeploy.json* 将该文件的副本保存到本地计算机。
 
@@ -108,14 +108,14 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 有关此资源定义的详细信息，请查看[扩展参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions)。 下面是一些重要元素：
 
-* **名称**：由于扩展资源是虚拟机对象的子资源，因此其名称必须有虚拟机名称前缀。 请参阅[子资源](./resource-manager-templates-resources.md#child-resources)。
+* **名称**：由于扩展资源是虚拟机对象的子资源，因此其名称必须有虚拟机名称前缀。 请参阅[子资源](./resource-group-authoring-templates.md#child-resources)。
 * **dependsOn**：在创建虚拟机以后创建扩展资源。
 * **fileUris**：存储脚本文件的位置。 如果不使用提供的位置，则需更新这些值。
 * **commandToExecute**：此命令调用脚本。  
 
 ## <a name="deploy-the-template"></a>部署模板
 
-有关部署过程，请参阅“部署模板”部分，文档为[教程：使用依赖的资源创建 Azure 资源管理器模板](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)。 建议使用为虚拟机管理员帐户生成的密码。 请参阅本文的[先决条件](#prerequisites)部分。
+有关部署过程，请参阅“部署模板”部分，文档为[教程：使用依赖的资源创建 Azure 资源管理器模板](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)中使用的。 建议使用为虚拟机管理员帐户生成的密码。 请参阅本文的[先决条件](#prerequisites)部分。
 
 ## <a name="verify-the-deployment"></a>验证部署
 

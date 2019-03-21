@@ -2,19 +2,19 @@
 title: 结合托管标识使用 Azure 市场映像创建 Terraform Linux 虚拟机
 description: 结合托管标识和远程状态管理使用市场映像创建 Terraform Linux 虚拟机，以便轻松地将资源部署到 Azure。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, MSI, 虚拟机, 远程状态, azure
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852535"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007961"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>结合 Azure 资源的托管标识使用 Azure 市场映像创建 Terraform Linux 虚拟机
 
@@ -77,7 +77,7 @@ Terraform VM 映像执行以下步骤：
 
 ## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>访问和配置 Linux Terraform 虚拟机
 
-创建 VM 后，可使用 SSH 登录到该 VM。 使用在步骤 3 的“基本信息”部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 上下载 [Putty](http://www.putty.org/) 之类的 SSH 客户端工具。
+创建 VM 后，可使用 SSH 登录到该 VM。 使用在步骤 3 的“基本信息”部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 上下载 [Putty](https://www.putty.org/) 之类的 SSH 客户端工具。
 
 使用 SSH 连接到虚拟机后，需要向整个订阅授予对虚拟机上的 Azure 资源的托管标识的参与者权限。 
 

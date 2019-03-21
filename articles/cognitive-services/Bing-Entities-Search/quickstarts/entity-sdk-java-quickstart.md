@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: ea13ae5bc649ae3a803fb8446fa009fac94874a8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a5a3bb38f832d13a39a061453e6ef7910ba5cccf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673558"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094103"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>快速入门：通过适用于 Java 的必应实体搜索 SDK 来发送搜索请求
 
@@ -67,7 +67,7 @@ ms.locfileid: "56673558"
 
 ## <a name="create-a-search-client"></a>创建搜索客户端
 
-2. 实现 `dominantEntityLookup` 客户端，它需要你的 API 终结点以及 `ServiceClientCredentials` 类的实例。
+1. 实现 `dominantEntityLookup` 客户端，它需要你的 API 终结点以及 `ServiceClientCredentials` 类的实例。
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -80,47 +80,47 @@ ms.locfileid: "56673558"
 
     若要实现 `ServiceClientCredentials`，请执行以下步骤：
 
-    1. 重写 `applyCredentialsFilter()` 函数，使用 `OkHttpClient.Builder` 对象作为参数。 
+   1. 重写 `applyCredentialsFilter()` 函数，使用 `OkHttpClient.Builder` 对象作为参数。 
         
-        ```java
-        //...
-        new ServiceClientCredentials() {
-                @Override
-                public void applyCredentialsFilter(OkHttpClient.Builder builder) {
-                //...
-                }
-        //...
-        ```
+       ```java
+       //...
+       new ServiceClientCredentials() {
+               @Override
+               public void applyCredentialsFilter(OkHttpClient.Builder builder) {
+               //...
+               }
+       //...
+       ```
     
-    2. 在 `applyCredentialsFilter()` 中，调用 `builder.addNetworkInterceptor()`。 创建一个新的 `Interceptor` 对象，并重写其 `intercept()` 方法来获取 `Chain` 侦听器对象。
+   2. 在 `applyCredentialsFilter()` 中，调用 `builder.addNetworkInterceptor()`。 创建一个新的 `Interceptor` 对象，并重写其 `intercept()` 方法来获取 `Chain` 侦听器对象。
 
-        ```java
-        //...
-        builder.addNetworkInterceptor(
-            new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                //...    
-                }
-            });
-        ///...
-        ```
+       ```java
+       //...
+       builder.addNetworkInterceptor(
+           new Interceptor() {
+               @Override
+               public Response intercept(Chain chain) throws IOException {
+               //...    
+               }
+           });
+       ///...
+       ```
 
-    3. 在 `intercept` 函数中，为请求创建变量。 使用 `Request.Builder()` 生成请求。 将你的订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并返回请求对象上的 `chain.proceed()`。
+   3. 在 `intercept` 函数中，为请求创建变量。 使用 `Request.Builder()` 生成请求。 将你的订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头，并返回请求对象上的 `chain.proceed()`。
             
-        ```java
-        //...
-        public Response intercept(Chain chain) throws IOException {
-            Request request = null;
-            Request original = chain.request();
-            Request.Builder requestBuilder = original.newBuilder()
-                    .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            request = requestBuilder.build();
-            return chain.proceed(request);
-        }
-        //...
-        ```
-## <a name="send-a-request-and-receive-a-response"></a>发送请求并接收响应
+       ```java
+       //...
+       public Response intercept(Chain chain) throws IOException {
+           Request request = null;
+           Request original = chain.request();
+           Request.Builder requestBuilder = original.newBuilder()
+                   .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+           request = requestBuilder.build();
+           return chain.proceed(request);
+       }
+       //...
+       ```
+      ## <a name="send-a-request-and-receive-a-response"></a>发送请求并接收响应
 
 1. 使用你的订阅密钥创建搜索客户端的新实例。 使用 `client.entities().search()` 发送搜索查询 `satya nadella` 的搜索请求，并获得响应。 
     
@@ -130,7 +130,7 @@ ms.locfileid: "56673558"
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-2. 如果返回了任何实体，则将它们转换为一个列表。 循环访问它们，并输出主实体。
+1. 如果返回了任何实体，则将它们转换为一个列表。 循环访问它们，并输出主实体。
 
     ```java
     if (entityData.entities().value().size() > 0){

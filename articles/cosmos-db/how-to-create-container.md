@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 445d9f220a215eb17436d52f637b57bd3492aaae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8ce890500c31c1966254e5bca9d23c8fcdd7bb67
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864768"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258286"
 ---
 # <a name="create-an-azure-cosmos-container"></a>创建 Azure Cosmos 容器
 
@@ -23,7 +23,7 @@ ms.locfileid: "55864768"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. [创建新的 Azure Cosmos DB 帐户](create-sql-api-dotnet.md#create-a-database-account)或选择现有的帐户。
+1. [创建新的 Azure Cosmos DB 帐户](create-sql-api-dotnet.md#create-account)或选择现有的帐户。
 
 1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，请提供以下详细信息：
 
@@ -198,7 +198,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-MongoDB 网络协议不需请求单位。 若要创建新的包含吞吐量的集合，请使用 Azure 门户或 SQL API。
+> MongoDB 网络协议不需请求单位。 若要创建新的包含吞吐量的集合，请使用 Azure 门户或 SQL API。
 
 ### <a id="dotnet-cassandra"></a>Cassandra API
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: b12e7aad5fbdf65a8936b943f5053eda76dbd883
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c9f7ec5009c9299e317d9b10f857e326d25fa005
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037474"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120102"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>教程：将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户
 
@@ -35,31 +35,31 @@ ms.locfileid: "54037474"
 
 * **估计吞吐量需求：** 在将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户之前，应当估计你的工作负荷的吞吐量需求。 通常，建议先从 CRUD 操作所需的平均吞吐量开始，然后再包括提取转换加载 (ETL) 或高峰操作所需的额外吞吐量。 需要以下详细信息来规划迁移： 
 
-   * **现有数据大小或估计的数据大小：** 定义最小数据库大小和吞吐量要求。 如果正在估计新应用程序的数据大小，则可以假定数据均匀分布在行中并通过乘以数据大小来估计值。 
+  * **现有数据大小或估计的数据大小：** 定义最小数据库大小和吞吐量要求。 如果正在估计新应用程序的数据大小，则可以假定数据均匀分布在行中并通过乘以数据大小来估计值。 
 
-   * **所需吞吐量：** 大概的读取（查询/获取）和写入（更新/删除/插入）吞吐率。 需要使用此值来计算所需的请求单位以及处于稳定状态的数据大小。  
+  * **所需吞吐量：** 大概的读取（查询/获取）和写入（更新/删除/插入）吞吐率。 需要使用此值来计算所需的请求单位以及处于稳定状态的数据大小。  
 
-   * **架构：** 通过 cqlsh 连接到现有的 Cassandra 群集并从 Cassandra 中导出架构： 
+  * **架构：** 通过 cqlsh 连接到现有的 Cassandra 群集并从 Cassandra 中导出架构： 
 
-     ```bash
-     cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
-     ```
+    ```bash
+    cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
+    ```
 
-   确定现有工作负载的需求后，应根据收集到的吞吐量需求创建一个 Azure Cosmos 帐户、数据库和容器。  
+    确定现有工作负载的需求后，应根据收集到的吞吐量需求创建一个 Azure Cosmos 帐户、数据库和容器。  
 
-   * **确定操作的 RU 费用：** 可以使用 Cassandra API 支持的 任何 SDK 来确定 RU。 此示例演示获取 RU 费用的 .NET 版本。
+  * **确定操作的 RU 费用：** 可以使用 Cassandra API 支持的 任何 SDK 来确定 RU。 此示例演示获取 RU 费用的 .NET 版本。
 
-     ```csharp
-     var tableInsertStatement = table.Insert(sampleEntity);
-     var insertResult = await tableInsertStatement.ExecuteAsync();
+    ```csharp
+    var tableInsertStatement = table.Insert(sampleEntity);
+    var insertResult = await tableInsertStatement.ExecuteAsync();
 
-     foreach (string key in insertResult.Info.IncomingPayload)
-       {
-          byte[] valueInBytes = customPayload[key];
-          string value = Encoding.UTF8.GetString(valueInBytes);
-          Console.WriteLine($"CustomPayload:  {key}: {value}");
-       }
-     ```
+    foreach (string key in insertResult.Info.IncomingPayload)
+      {
+         byte[] valueInBytes = customPayload[key];
+         string value = Encoding.UTF8.GetString(valueInBytes);
+         Console.WriteLine($"CustomPayload:  {key}: {value}");
+      }
+    ```
 
 * **分配所需的吞吐量：** 随着吞吐量需求的增长，Azure Cosmos DB 可以自动扩展存储和吞吐量。 可以使用 [Azure Cosmos DB 请求单位计算器](https://www.documentdb.com/capacityplanner)来估计吞吐量需求。 
 

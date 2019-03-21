@@ -1,19 +1,19 @@
 ---
 title: 将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS
 description: 了解如何在 Azure 上托管的 CentOS 虚拟机中部署 Ansible 解决方案模板，以及配置为在 Azure 中运行的工具。
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, 解决方案模板, 虚拟机, azure 资源的托管标识, centos, red hat
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 9fa711c86e3ef7f05e87504905ec642808d8f601
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 78fe5211f135b4a4c7d0fd21c66340025ad2d05d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770276"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104210"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS
 适用于 Azure 的 Ansible 解决方案模板用于在 CentOS 虚拟机上配置 Ansible 实例，以及 Ansible 和一套配置为在 Azure 中运行的工具。 这些工具包括：
@@ -37,30 +37,30 @@ ms.locfileid: "55770276"
 
 1. “创建 Ansible”页中显示了多个选项卡。 在“基本信息”选项卡上输入所需的信息：
 
-    - **名称** - 指定 Ansible 实例的名称。 本文使用了名称 `ansiblehost` 进行演示。
-    - **用户名** - 指定有权访问 Ansible 实例的用户名。 本文使用了名称 `ansibleuser` 进行演示。
-    - **身份验证类型** - 选择“密码”或“SSH 公钥”。 本文选择了“SSH 公钥”进行演示。
-    - **密码**和**确认密码** - 如果为“身份验证类型”选择了“密码”，请在此处输入密码。
-    - **SSH 公钥** - 如果为“身份验证类型”选择了“SSH 公钥”，请以单行格式输入 RSA 公钥 - 以 `ssh-rsa` 开头。
-    - **订阅** - 从下拉列表中选择自己的 Azure 订阅。
-    - **资源组** - 从下拉列表中选择现有的资源组，或者选择“新建”并指定新资源组的名称。 本文使用了名为 `ansiblerg` 的新资源组进行演示。
-    - **位置** - 从下拉列表中选择方案适用的位置。
+   - **名称** - 指定 Ansible 实例的名称。 本文使用了名称 `ansiblehost` 进行演示。
+   - **用户名** - 指定有权访问 Ansible 实例的用户名。 本文使用了名称 `ansibleuser` 进行演示。
+   - **身份验证类型** - 选择“密码”或“SSH 公钥”。 本文选择了“SSH 公钥”进行演示。
+   - **密码**和**确认密码** - 如果为“身份验证类型”选择了“密码”，请在此处输入密码。
+   - **SSH 公钥** - 如果为“身份验证类型”选择了“SSH 公钥”，请以单行格式输入 RSA 公钥 - 以 `ssh-rsa` 开头。
+   - **订阅** - 从下拉列表中选择自己的 Azure 订阅。
+   - **资源组** - 从下拉列表中选择现有的资源组，或者选择“新建”并指定新资源组的名称。 本文使用了名为 `ansiblerg` 的新资源组进行演示。
+   - **位置** - 从下拉列表中选择方案适用的位置。
 
-    ![用于指定 Ansible 基本设置的 Azure 门户选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-1.png)
+     ![用于指定 Ansible 基本设置的 Azure 门户选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-1.png)
 
 1. 选择“确定”。
 
 1. 在“其他设置”选项卡中输入所需的信息：
 
-    - **大小** - Azure 门户默认使用标准大小。 若要指定适合特定方案的其他大小，选择箭头来显示不同大小的列表。
-    - **VM 磁盘类型** - 选择“SSD”（高级固态硬盘）或“HDD”（机械硬盘）。 本文选择了“SSD”进行演示，因为 SSD 具有性能优势。 有关上述每种磁盘存储的详细信息，请参阅以下文章：
-        - [VM 的高性能高级存储和托管磁盘](/azure/virtual-machines/windows/premium-storage)
-        - [Azure 虚拟机工作负荷的标准 SSD 托管磁盘](/azure/virtual-machines/windows/disks-standard-ssd)
-    - **公共 IP 地址** - 如果想要从虚拟机外部与虚拟机通信，请指定此设置。 默认值是名为 `ansible-pip` 的新公共 IP 地址。 若要指定其他 IP 地址，请选择箭头指定该 IP 地址的属性 - 例如名称、SKU 和分配。 
-    - **域名标签** - 输入虚拟机的面向公众的域名。 该名称必须唯一且符合命名要求。 有关为虚拟机指定名称的详细信息，请参阅 [Azure 资源的命名约定](/azure/architecture/best-practices/naming-conventions)。
-    - **Ansible 版本** - 指定版本号，或者指定值 `latest` 以部署最新版本。 选择“Ansible 版本”旁边的信息图标可以查看有关可用版本的详细信息。
+   - **大小** - Azure 门户默认使用标准大小。 若要指定适合特定方案的其他大小，选择箭头来显示不同大小的列表。
+   - **VM 磁盘类型** - 选择“SSD”（高级固态硬盘）或“HDD”（机械硬盘）。 本文选择了“SSD”进行演示，因为 SSD 具有性能优势。 有关上述每种磁盘存储的详细信息，请参阅以下文章：
+       - [VM 的高性能高级存储和托管磁盘](/azure/virtual-machines/windows/premium-storage)
+       - [Azure 虚拟机工作负荷的标准 SSD 托管磁盘](/azure/virtual-machines/windows/disks-standard-ssd)
+   - **公共 IP 地址** - 如果想要从虚拟机外部与虚拟机通信，请指定此设置。 默认值是名为 `ansible-pip` 的新公共 IP 地址。 若要指定其他 IP 地址，请选择箭头指定该 IP 地址的属性 - 例如名称、SKU 和分配。 
+   - **域名标签** - 输入虚拟机的面向公众的域名。 该名称必须唯一且符合命名要求。 有关为虚拟机指定名称的详细信息，请参阅 [Azure 资源的命名约定](/azure/architecture/best-practices/naming-conventions)。
+   - **Ansible 版本** - 指定版本号，或者指定值 `latest` 以部署最新版本。 选择“Ansible 版本”旁边的信息图标可以查看有关可用版本的详细信息。
 
-    ![用于指定 Ansible 其他设置的 Azure 门户选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-2.png)
+     ![用于指定 Ansible 其他设置的 Azure 门户选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-2.png)
 
 1. 选择“确定”。
 
@@ -72,7 +72,7 @@ ms.locfileid: "55770276"
 
 1. “摘要”页将显示验证过程，并列出 Ansible 部署的指定条件。 使用该选项卡底部的链接可以**下载模板和参数**，以配合支持的 Azure 语言和平台使用。 
 
-    ![Azure 门户中的 Ansible“摘要”选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-4.png)
+     ![Azure 门户中的 Ansible“摘要”选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-4.png)
 
 1. 选择“确定”。
 
@@ -80,7 +80,7 @@ ms.locfileid: "55770276"
 
 1. 选择门户页顶部的“通知”图标以跟踪 Ansible 部署。 部署完成后，选择“转到资源组”。 
 
-    ![Azure 门户中的 Ansible“摘要”选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-complete.png)
+     ![Azure 门户中的 Ansible“摘要”选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-complete.png)
 
 1. 在资源组页上，获取 Ansible 主机的 IP 地址并登录，以使用 Ansible 管理 Azure 资源。
 
