@@ -9,14 +9,15 @@ ms.date: 05/26/2017
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ab999e2b2a8465b110874cca3d478c60c18099
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ae5ae6d742bc6b4420b886c9ea2bd4e023075f4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091131"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295515"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>获取对 B2B 协作的支持
 
@@ -28,7 +29,7 @@ ms.locfileid: "58091131"
      - 服务：Active Directory
      - 支持计划：选择相关的支持计划
 
-   ![新建支持请求](media/get-support/new-support-request.png)
+   ![显示新的支持请求的屏幕截图](media/get-support/new-support-request.png)
 
 2. 描述问题：
    - 选择反映需求的适当严重性。
@@ -36,6 +37,6 @@ ms.locfileid: "58091131"
    - 选择“添加用户(B2B)”作为类别
    - 包括所有错误消息，例如 CorrelationID、受影响的用户等。
 
-   ![支持票证问题描述](media/get-support/problem-description.png)
+   ![显示支持票证问题描述的屏幕截图](media/get-support/problem-description.png)
 
 3. 请添加联系信息，以便支持代表与你联系进行进一步的疑难解答。

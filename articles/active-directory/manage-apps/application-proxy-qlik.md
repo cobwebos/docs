@@ -14,17 +14,17 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 855cf81dbf24b0662048f69061ca85b72ff5f670
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 12e36c49d8c4db60302d4b72dfa81ea4aceec77b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107383"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>应用程序代理和 Qlik Sense 
 Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保可轻松使用应用程序代理来提供对 Qlik Sense 部署的远程访问。  
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 此方案的剩余部分假定你已完成以下操作：
  
 - 配置 [Qlik Sense](https://community.qlik.com/docs/DOC-19822)。 
@@ -41,13 +41,13 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 2. 选择“Azure Active Directory” > “企业应用程序”。 
 3. 单击边栏选项卡顶部的“添加”。 
 4. 选择“本地应用程序”。 
-5.       在必填的字段中填写有关新应用的信息。 参考以下指导完成设置： 
-    - **内部 URL**：此应用程序具有的内部 URL 本身应为 QlikSense URL。 例如，**https&#58;//demo.qlikemm.com:4244** 
-    - **预身份验证方法**：Azure Active Directory（推荐使用但并非必需项） 
-1.       选择边栏选项卡底部的“添加”。 添加应用程序后，将打开快速启动菜单。 
-2.       在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。 确保此测试帐户有权访问本地应用程序。 
-3.       选择“分配”，保存测试用户分配。 
-4.       （可选）在应用管理边栏选项卡中选择“单一登录”。 从下拉菜单中选择“Kerberos 约束委派”，然后根据 Qlik 配置填写必填字段。 选择“保存”。 
+5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置： 
+   - **内部 URL**：此应用程序具有的内部 URL 本身应为 QlikSense URL。 例如，**https&#58;//demo.qlikemm.com:4244** 
+   - **预身份验证方法**：Azure Active Directory（推荐使用但并非必需项） 
+1. 选择边栏选项卡底部的“添加”。 添加应用程序后，将打开快速启动菜单。 
+2. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。 确保此测试帐户有权访问本地应用程序。 
+3. 选择“分配”，保存测试用户分配。 
+4. （可选）在应用管理边栏选项卡中选择“单一登录”。 从下拉菜单中选择“Kerberos 约束委派”，然后根据 Qlik 配置填写必填字段。 选择“保存”。 
 
 ### <a name="application-2"></a>应用程序 2： 
 按照应用程序 1 的相同步骤操作，但存在以下例外： 

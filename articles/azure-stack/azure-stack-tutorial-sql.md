@@ -16,12 +16,12 @@ ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: ed149398a1244ad0cb09c3e0fe128973c6caa00d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: b61bf4f05f52b9d28ee09bb6c0de30544396e815
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407997"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091590"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>教程：提供高度可用的 SQL 数据库
 
@@ -65,7 +65,7 @@ Azure Stack 操作员，可以配置承载 SQL Server 数据库服务器 Vm。 S
 - 一个可用性集，其中包含的 SQL 和文件共享见证服务器 Vm  
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. 选择**\+** **创建资源** > **自定义**，，然后**模板部署**。
 
@@ -156,7 +156,7 @@ Azure Stack 操作员，可以配置承载 SQL Server 数据库服务器 Vm。 S
 > 以下步骤从运行在 Azure Stack 用户门户租户用户提供 SQL Server 功能 （Microsoft.SQLAdapter 服务） 的订阅。
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. 选择**\+** **创建资源** > **数据\+存储**，然后**SQL 数据库**。<br><br>提供所需的数据库属性的信息包括名称、 排序规则、 最大大小和订阅、 资源组和位置以用于部署。 
 

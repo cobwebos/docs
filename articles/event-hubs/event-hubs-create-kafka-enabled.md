@@ -1,6 +1,6 @@
 ---
 title: 创建启用了 Apache Kafka 的事件中心 - Azure 事件中心 | Microsoft Docs
-description: 本文提供了一个演练，说明如何使用 Azure 门户创建启用了 Apache Kafka 的 Azure 事件中心命名空间。
+description: 本文提供了创建 Apache Kafka 的演练使用 Azure 门户中启用 Azure 事件中心命名空间。
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: bf78ac6bce23b739ed661929f6fe90eddc9b4d94
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090766"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000489"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>创建启用了 Apache Kafka 的事件中心
 
@@ -26,7 +26,7 @@ Azure 事件中心提供了一个 Kafka 终结点。 此终结点允许事件中
 
 本文介绍如何创建事件中心命名空间，以及如何获取将 Kafka 应用程序连接到启用 Kafka 的事件中心所需的连接字符串。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 

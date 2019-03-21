@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761843aad24dc89131079eb59954bd17883e595d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2dfbb618bafd9ae3cbb0c691e63a243ab2c2c31e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178390"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996534"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 资源的托管标识进行登录 
 
@@ -29,7 +29,7 @@ ms.locfileid: "56178390"
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -87,7 +87,7 @@ Azure 资源的托管标识提供一个[服务主体对象](../develop/developer
 如下所示的响应可能表示未正确配置 VM 的 Azure 资源的托管标识：
 
 - PowerShell：Invoke-WebRequest：无法连接到远程服务器
-- CLI：MSI：无法从 'http://localhost:50342/oauth2/token' 检索令牌，出现错误 HTTPConnectionPool (主机='localhost'，端口=50342) 
+- CLI：MSI：*无法检索从令牌`http://localhost:50342/oauth2/token`出现错误 ' HTTPConnectionPool (主机 = 'localhost'，端口 = 50342)* 
 
 如果收到以下错误之一，请在 [Azure 门户](https://portal.azure.com)中返回到 Azure VM 并执行以下操作：
 

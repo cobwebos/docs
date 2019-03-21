@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ee05c117fb45cbd96a82ede524db7a6b098830f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9820fcae0dfb366c1722c50c95400c7de0fbeb12
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854749"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285779"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 每个新的 Azure AD 租户都附带了初始域名 *domainname*.onmicrosoft.com。 无法更改或删除初始域名，但可以将组织的名称添加到列表中。 添加自定义域名可帮助你熟悉的用户，如用户名*alain\@contoso.com*。
@@ -31,7 +31,7 @@ ms.locfileid: "57854749"
 
 1. 使用具有订阅“所有者”角色的帐户登录到 [Azure 门户](https://portal.azure.com/)，然后选择“Azure Active Directory”。 有关订阅角色的详细信息，请参阅[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)。
 
-    ![Azure 门户屏幕](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    ![Azure 门户的屏幕，其中显示 Azure AD 选项](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
     >[!TIP]
     > 如果计划使用 Azure AD 联合你的本地 Windows Server AD，则需要在运行 Azure AD Connect 工具来同步目录时选中“我计划将此域配置为使用本地 Active Directory 进行单一登录”复选框。 还需要在向导的“Azure AD 域”步骤中注册选择用于与本地目录进行联合的域名。 [这些说明](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)中示范了向导中该步骤的大致情形。 如果没有 Azure AD Connect 工具，可以 [在此处下载](https://go.microsoft.com/fwlink/?LinkId=615771)。
@@ -46,7 +46,7 @@ ms.locfileid: "57854749"
 
 1. 依次选择“自定义域名”、“添加自定义域”。
 
-    ![“Fabrikam - 自定义域名”页，其中突出显示了“添加自定义域”选项](media/add-custom-domain/add-custom-domain.png)
+    ![自定义域名称的页上，添加自定义域上所示](media/add-custom-domain/add-custom-domain.png)
 
 2. 在“自定义域名”框中键入组织的新域名（例如 _contoso.com_），然后选择“添加域”。
 
@@ -55,7 +55,7 @@ ms.locfileid: "57854749"
     >[!Important]
     >若要正常完成此过程，必须包含 .com、.net 或其他任何顶级扩展名。
 
-    ![“Fabrikam - 自定义域名”页，其中突出显示了“添加域”按钮](media/add-custom-domain/add-custom-domain-blade.png)
+    ![自定义域名称的页上，添加自定义域页面](media/add-custom-domain/add-custom-domain-blade.png)
 
 4. 复制“Contoso”页中的 DNS 信息。 例如 MS=ms64983159。
 

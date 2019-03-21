@@ -17,18 +17,18 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 085b23fe43db4936a0fd459872ec841f2b45e221
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 98134a8fd7609a6f8857d633d2c45251e4c9197b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194268"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081570"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor-preview"></a>使用 Azure Monitor（预览版）将 Azure Active Directory 日志与 SumoLogic 集成
 
 本文介绍如何使用 Azure Monitor 将 Azure Active Directory (Azure AD) 日志与 SumoLogic 集成。 首先将日志路由到 Azure 事件中心，然后将事件中心与 SumoLogic 相集成。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用此功能，需满足以下条件:
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
@@ -40,7 +40,7 @@ ms.locfileid: "56194268"
 2. 将 SumoLogic 实例配置为[收集 Azure Active Directory 的日志](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)。
 3. [安装 Azure AD SumoLogic 应用](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)以使用预配置的仪表板，这可对环境进行实时分析。
 
- ![仪表板](./media/howto-integrate-activity-logs-with-sumologic/overview-dashboard.png)
+   ![仪表板](./media/howto-integrate-activity-logs-with-sumologic/overview-dashboard.png)
 
 ## <a name="next-steps"></a>后续步骤
 

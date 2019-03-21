@@ -1,32 +1,32 @@
 ---
-title: 教程：将自动完成功能添加到搜索框 - Azure 搜索
+title: 将记忆式键入功能添加到您的搜索框-Azure 搜索的示例
 description: 演示如何使用 Azure 搜索自动完成功能和建议 API 改善数据导向型应用程序的最终用户体验的示例。
 manager: pablocas
 author: mrcarter8
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: b754f00e9bed34717734c4aec81e5489d2c12b63
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997155"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200270"
 ---
-# <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>教程：使用 Azure 搜索将自动完成功能添加到搜索框
+# <a name="example-add-autocomplete-to-your-search-box-using-azure-search"></a>示例：使用 Azure 搜索将自动完成功能添加到搜索框
 
-本教程介绍如何使用 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) 中的[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)和[分面](search-faceted-navigation.md)生成强大的搜索框。 
+在此示例中，您将学习如何使用[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)，[记忆式键入功能](https://docs.microsoft.com/rest/api/searchservice/autocomplete)并[方面](search-faceted-navigation.md)中[Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)和[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet)构建功能强大的搜索框。 
 
 + “建议”根据用户键入的内容提供实际结果的建议。 
 + “自动完成”是 Azure 搜索中[新的预览版功能](search-api-preview.md)，它提供索引中的字词来补全用户当前正在键入的内容。 
 
 我们将会比较多种技术，以改善用户工作效率，在用户键入内容时为他们提供丰富的搜索功能。
 
-本教程将演练一个基于 ASP.NET MVC 的应用程序，该应用程序使用 C# 来调用 [Azure 搜索 .NET 客户端库](https://aka.ms/search-sdk)，并使用 JavaScript 直接调用 Azure 搜索 REST API。 本教程中的应用程序以填充 [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) 示例数据的索引为目标。 可以使用 NYC Jobs 演示中已配置的索引，也可以使用 NYCJobs 示例解决方案中的数据加载器填充自己的索引。 该示例使用 [jQuery UI](https://jqueryui.com/autocomplete/) 和 [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) JavaScript 库生成支持自动完成的搜索框。 将这些组件与 Azure 搜索结合使用，可以查看用于演示如何在搜索框中支持自动完成和提前键入的多个示例。
+此示例将指导你完成使用的基于 ASP.NET MVC 的应用程序C#来调用[Azure 搜索.NET 客户端库](https://aka.ms/search-sdk)，并直接调用 Azure 搜索 REST API 的 JavaScript。 对于此示例应用程序针对索引填充[NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)示例数据。 可以使用 NYC Jobs 演示中已配置的索引，也可以使用 NYCJobs 示例解决方案中的数据加载器填充自己的索引。 该示例使用 [jQuery UI](https://jqueryui.com/autocomplete/) 和 [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) JavaScript 库生成支持自动完成的搜索框。 将这些组件与 Azure 搜索结合使用，可以查看用于演示如何在搜索框中支持自动完成和提前键入的多个示例。
 
 将要执行以下任务：
 
@@ -35,16 +35,16 @@ ms.locfileid: "55997155"
 > * 将搜索服务信息添加到应用程序设置
 > * 实现一个搜索输入框
 > * 在自动完成列表中添加从远程源提取数据的支持 
-> * 使用 .Net SDK 和 REST API 检索建议并自动完成键入
+> * 检索的建议和记忆式键入功能使用.NET SDK 和 REST API
 > * 支持客户端缓存以改善性能 
 
 ## <a name="prerequisites"></a>先决条件
 
 * Visual Studio 2017。 可以使用免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 
 
-* 下载教程的示例[源代码](https://github.com/azure-samples/search-dotnet-getting-started)。
+* 下载示例[源代码](https://github.com/azure-samples/search-dotnet-getting-started)的示例。
 
-* （可选）一个有效的 Azure 帐户和 Azure 搜索服务。 如果没有 Azure 帐户，可以注册[免费试用版](https://azure.microsoft.com/free/)。 有关服务预配的帮助，请参阅[创建搜索服务](search-create-service-portal.md)。 由于可以使用已在不同演示中设置的托管 NYCJobs 索引完成本教程，因此，该帐户和服务是可选的。
+* （可选）一个有效的 Azure 帐户和 Azure 搜索服务。 如果没有 Azure 帐户，可以注册[免费试用版](https://azure.microsoft.com/free/)。 有关服务预配的帮助，请参阅[创建搜索服务](search-create-service-portal.md)。 因为可以使用非托管的 NYCJobs 索引已在位置进行不同演示完成此示例中，帐户和服务就是可选的。
 
 * （可选）下载 [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) 示例代码，以便将 NYCJobs 数据导入到自己的 Azure 搜索服务上的某个索引中。
 
@@ -61,11 +61,11 @@ ms.locfileid: "55997155"
 
 1. 按 F5 启动应用程序。  随后会创建 2 个索引，并导入 NYCJob 示例数据。
 
-1. 在 Visual Studio 中，打开教程示例代码中的 AutocompleteTutorial.sln 解决方案文件。  打开 AutocompleteTutorial 项目中的 Web.config，并将 SearchServiceName 和 SearchServiceApiKey 值更改为上述相同值。
+1. 在示例的示例代码中，打开 Visual Studio 中的 AutocompleteTutorial.sln 解决方案文件。  打开 AutocompleteTutorial 项目中的 Web.config，并将 SearchServiceName 和 SearchServiceApiKey 值更改为上述相同值。
 
 ### <a name="running-the-sample"></a>运行示例
 
-现已准备好运行教程示例应用程序。  在 Visual Studio 中打开 AutocompleteTutorial.sln 解决方案文件，以运行教程中的步骤。  该解决方案包含一个 ASP.NET MVC 项目。  按 F5 运行该项目，并在所选的浏览器中加载页面。  顶部显示了一个用于选择 C# 或 JavaScript 的选项。  C# 选项从浏览器调用 HomeController，并使用 Azure 搜索 .Net SDK 检索结果。  JavaScript 选项直接从浏览器调用 Azure 搜索 REST API。  一般情况下，此选项的性能明显要好得多，因为它会使控制器与流保持隔离。  可以根据自己的需求和语言偏好选择适当的选项。  页面中提供了几个自动完成示例，为每个选项提供了一些指导。  每个示例包含了一些可供尝试的建议示例文本。  请尝试在每个搜索框中键入几个字母，以查看结果。
+现在您就可以运行示例示例应用程序。  在要运行该示例的 Visual Studio 中打开 AutocompleteTutorial.sln 解决方案文件。  该解决方案包含一个 ASP.NET MVC 项目。  按 F5 运行该项目，并在所选的浏览器中加载页面。  顶部显示了一个用于选择 C# 或 JavaScript 的选项。  C#选项从浏览器连接到了 HomeController 同时使用 Azure 搜索.NET SDK 来检索结果。  JavaScript 选项直接从浏览器调用 Azure 搜索 REST API。  一般情况下，此选项的性能明显要好得多，因为它会使控制器与流保持隔离。  可以根据自己的需求和语言偏好选择适当的选项。  页面中提供了几个自动完成示例，为每个选项提供了一些指导。  每个示例包含了一些可供尝试的建议示例文本。  请尝试在每个搜索框中键入几个字母，以查看结果。
 
 ## <a name="how-this-works-in-code"></a>代码中的工作原理
 
@@ -79,7 +79,7 @@ ms.locfileid: "55997155"
 <input class="searchBox" type="text" id="example1a" placeholder="search">
 ```
 
-它是一个简单的输入文本框，包含用于设置样式的类、JavaScript 引用的 id，以及占位符文本。  奇妙之处在于 javascript。
+这是具有一个 ID 来引用的 JavaScript 和占位符文本的样式设置的类的简单输入的文本框。  奇妙之处在于 javascript。
 
 ### <a name="javascript-code-c"></a>JavaScript 代码 (C#)。
 
@@ -132,7 +132,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 1. 打开 Controllers 目录下的 HomeController.cs 文件。 
 
-1. 首先会发现，InitSearch 类的顶部有一个方法。  此方法在 Azure 搜索服务中创建经过身份验证的 HTTP 索引客户端。  若要详细了解其中的工作原理，请访问以下教程：[如何使用 .NET 应用程序中的 Azure 搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+1. 首先会发现，InitSearch 类的顶部有一个方法。  此方法在 Azure 搜索服务中创建经过身份验证的 HTTP 索引客户端。  如果你想要了解有关此工作原理的详细信息，请访问下面的示例：[如何使用 .NET 应用程序中的 Azure 搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 1. 转到 Suggest 函数。
 
@@ -209,15 +209,15 @@ $(function () {
 });
 ```
 
-如果将此示例与前面调用主控制器的示例进行比较，会发现两者存在一些类似之处。  `minLength` 和 `position` 的自动完成配置完全相同。  此处的最明显差别在于源。  此示例不是调用主控制器中的 Suggest 方法，而是在 JavaScript 函数中创建一个 REST 请求，并使用 ajax 执行该请求。  然后，在“success”中处理响应，并将其用作源。
+如果将此示例与前面调用主控制器的示例进行比较，会发现两者存在一些类似之处。  `minLength` 和 `position` 的自动完成配置完全相同。  此处的最明显差别在于源。  而不是在主控制器中调用的建议方法，REST 请求中的 JavaScript 函数创建和执行使用 Ajax。  然后，在“success”中处理响应，并将其用作源。
 
 ## <a name="takeaways"></a>要点
 
-本教程演示了生成支持自动完成和建议的搜索框的基本步骤。  其中介绍了如何生成 ASP.NET MVC 应用程序，并使用 Azure 搜索 .Net SDK 或 REST API 来检索建议。
+此示例演示用于生成支持自动完成功能和建议的搜索框中的基本步骤。  您看到了如何可以生成一个 ASP.NET MVC 应用程序和使用 Azure 搜索.NET SDK 或 REST API 来检索建议。
 
 ## <a name="next-steps"></a>后续步骤
 
-将建议和自动完成功能集成到搜索体验中。  考虑直接使用 .Net SDK 或 REST API 如何在用户键入内容时为其提供 Azure 搜索的强大功能，以帮助提高他们的工作效率。
+将建议和自动完成功能集成到搜索体验中。  请考虑直接使用.NET SDK 或 REST API 可以帮助键入以使它们提高工作效率的 Azure 搜索的强大功能引入你的用户。
 
 > [!div class="nextstepaction"]
 > [自动完成 REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)

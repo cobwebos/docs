@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 54d98c02ee9e5202c09e333843f8c16955f4e2d4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: bf7391ea83adf852be0f989a82e89d7f316f2f85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090536"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 
@@ -23,7 +23,7 @@ ms.locfileid: "55819241"
 
 使用 Azure Active Directory B2C (Azure AD B2C) 自定义策略可在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本文重点介绍如何使用自定义策略来自定义包含动态内容的 Azure AD B2C 用户界面。 若要开始，请参阅[自定义策略中的 UI 自定义](active-directory-b2c-ui-customization-custom.md)。 
 
 >[!NOTE]
@@ -39,7 +39,7 @@ ms.locfileid: "55819241"
 
 `ContentDefinitions` 节包含一系列 `ContentDefinition` XML 元素。 `ContentDefinition` 元素的 ID 属性指定与内容定义相关的页面类型。 也就是说，该元素定义了要在其中应用自定义 HTML5/CSS 模板的上下文。 下表描述了 IEF 引擎识别的内容定义 ID 集及其相关的页面类型。
 
-| 内容定义 ID | 默认 HTML5 模板| 说明 | 
+| 内容定义 ID | 默认 HTML5 模板| 描述 | 
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **标识提供者选择页面**。 此页面列出可供用户在登录期间选择的标识提供者。 选项通常是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
@@ -196,7 +196,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
     >若要验证托管内容的站点是否已启用 CORS 并可测试 CORS 请求，请转到 [test-cors.org](https://test-cors.org/) 网站。 
 
 * 提供的内容通过 **HTTPS** 安全传输。
-* 为所有链接、CSS 内容和图像使用绝对 URL，例如 *https://yourdomain/content*。
+* 正在使用*绝对 URL*，如`https://yourdomain/content`、 对所有链接、 CSS 内容和图像。
 
 ## <a name="step-5-configure-your-content-definition"></a>步骤 5：配置内容定义
 若要配置 `ContentDefinition`，请执行以下操作：

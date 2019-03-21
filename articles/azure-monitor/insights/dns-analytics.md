@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 0eeab5a2489bacde74b98e7d404789a00b64d02a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: fdc3c42da7f3d2290806a8cd00d7c90d16f3b87d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992715"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103921"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -66,7 +66,7 @@ DNS Analytics 可帮助：
 
 - **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
 
- 可以修改列表，添加任何想要查看的域名后缀，从而查看查找见解。 还可以删除任何不感兴趣的域名后缀，从而查看查找见解。
+  可以修改列表，添加任何想要查看的域名后缀，从而查看查找见解。 还可以删除任何不感兴趣的域名后缀，从而查看查找见解。
 
 - **频繁通信的客户端阈值**。 DNS 客户端超出查找请求数的阈值时，将突出显示在“DNS 客户端”边栏选项卡中。 默认阈值为 1,000。 可以编辑该阈值。
 
@@ -142,7 +142,7 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
 **名称注册请求**。 上面的磁贴显示成功和失败的 DNS 动态更新请求的趋势线。 下面的磁贴列出前 10 个向 DNS 服务器发送 DNS 更新请求失败的客户端（按失败的次数排列）。
 
-![“名称注册请求”边栏选项卡 ](./media/dns-analytics/name-reg-req-blade.png)
+![“名称注册请求”边栏选项卡](./media/dns-analytics/name-reg-req-blade.png)
 
 **示例 DDI Analytics 查询**。 包含直接提取原始分析数据的最常见搜索查询的列表。
 

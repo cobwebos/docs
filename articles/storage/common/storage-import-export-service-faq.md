@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e52d5f3b30490227541e99e067c096a7df6dd911
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566182"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867569"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答 
 下面是你在使用 Azure 导入/导出服务将数据传输到 Azure 存储时可能会提出的问题及其解答。 问题和解答分为以下几个类别：
@@ -87,8 +87,18 @@ ms.locfileid: "55566182"
 - 在美国和欧洲的 FedEx 帐户编号，或者
 - 在亚洲和澳大利亚区域的 DHL 帐户编号。
 
+> [!NOTE]
+> 在印度数据中心需要声明号信头 (交付 challan) 以退回驱动器上。 若要排列的所需的条目传递，还必须预订选取与所选运营商并共享与数据中心的详细信息。
+
 ### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>跨国寄送驱动器是否存在限制？
 请注意，发运的物理介质可能需要穿越国界。 应当负责确保物理介质和数据是遵照适用的法律导入和/或导出的。 在发运物理介质之前，请咨询顾问以验证介质和数据是否可以合法地发运到所确定的数据中心。 这会有助于确保它可以及时到达 Microsoft。
+
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>是否有数据中心提供我的磁盘的任何特殊要求？
+
+要求取决于特定的 Azure 数据中心限制。
+- 有几个网站，需要 Microsoft 数据中心的入站 ID 编号，以出于安全原因包上编写的。 寄送驱动器或磁盘到数据中心之前，请联系 Azure DataBox 操作 (adbops@microsoft.com) 若要获取此数字。 缺少此编号，将拒绝包。
+- 在印度数据中心需要的驱动程序，例如政府 ID 卡或证明不可以。 个人详细信息 （例如，平移、 AADHAR、 DL），名称、 联系人和汽车板数字以获得入口条目传递。 若要避免出现传送延迟，通知有关这些要求的运营商。
+
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>创建作业时，寄送地址是一个不同于存储帐户位置的位置。 我该怎么办？
 
@@ -128,7 +138,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure 导入/导出支持的最大块 Blob 和页 Blob 大小是多少？
 
 最大块 Blob 大小大约为 4.768TB 或 5,000,000 MB。
-最大页 Blob 大小为 1TB。
+最大页 Blob 大小为 8 TB。
 
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure 导入/导出是否支持 AES-256 加密？

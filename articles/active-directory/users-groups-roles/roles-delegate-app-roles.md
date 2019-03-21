@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 316ebb7774a0420087bf9ed5c099a91d78a96fb0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9aba12a2bca882b5f0e6e95d8e4f6014b318a12e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119716"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用管理员角色
 
@@ -37,8 +37,8 @@ ms.locfileid: "56181212"
 1. 使用符合租户中全局管理员角色条件的帐户登录 [Azure AD 租户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 2. 拥有足够权限后，打开[“角色和管理员”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)。
 3. 打开以下角色之一，以查看它的成员分配：
-  * **应用管理员**
-  * **云应用管理员**
+   * **应用管理员**
+   * **云应用管理员**
 4. 在角色的“成员”页上，选择“添加成员”。
 5. 选择一个或多个要添加到角色的成员。 <!--Members can be users or groups.-->
 
@@ -50,8 +50,8 @@ ms.locfileid: "56181212"
 
 1. 使用符合租户中全局管理员角色条件的帐户登录 [Azure AD 租户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 2. 拥有足够权限后，执行以下一个或两个设置：
-  * 在[租户的“用户设置”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)上，将“用户可以注册应用”设置为“否”。
-  * 在[企业应用的“用户设置”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)上，将“用户可以自行同意应用访问公司数据”设置为“否”。
+   * 在[租户的“用户设置”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)上，将“用户可以注册应用”设置为“否”。
+   * 在[企业应用的“用户设置”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)上，将“用户可以自行同意应用访问公司数据”设置为“否”。
 3. 然后，根据需要，将需要此权限的用户分配为“应用开发人员”角色的成员。
 
 注册应用后，用户自动添加为应用的第一个所有者。

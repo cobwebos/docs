@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: afa927009e684fa7f8c6217c91dcb589b331b5f5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224167"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58163780"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>如何添加预先训练的实体
 本教程展示了如何向 Conversation Learner 模型添加预先训练的实体。
@@ -25,7 +25,7 @@ ms.locfileid: "55224167"
 [![预先训练的实体教程预览](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities_Preview)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities)
 
 ## <a name="requirements"></a>要求
-本教程要求运行常规教程机器人
+本教程要求常规教程机器人处于运行状态
 
     npm run tutorial-general
 
@@ -35,50 +35,49 @@ ms.locfileid: "55224167"
 
 ## <a name="steps"></a>Steps
 
+从 Web UI 的主页开始。
+
 ### <a name="create-the-model"></a>创建模型
 
-1. 在 Web UI 中，单击“新建模型”。
-2. 在“名称”字段中键入“PretrainedEntities”，然后按 Enter。
-3. 单击“创建”按钮。
+1. 选择**新的模型**。
+2. 输入**PretrainedEntities**有关**名称**。
+3. 选择“创建”。
 
 ### <a name="entity-creation"></a>创建实体
 
-1. 在左侧面板中单击“实体”，然后单击“新建实体”按钮。
-2. 选择“预先训练的/datetimeV2”作为“实体类型”。
-3. 选中“多值”复选框。
-    - 多值实体会将一个或多个值累积到实体中。
-    - 预先训练的实体禁用了“可否定”属性。
-4. 单击“创建”按钮。
+1. 选择**实体**在左侧的窗格中，然后**新实体**。
+2. 选择**Trained 前/datetimeV2**有关**实体类型**。
+3. 检查**多值**若要启用该实体累积了一个或多个值。 请注意，不能为 negatable Pre-Trained 实体。
+4. 选择“创建”。
 
-![](../media/tutorial7_entities_a.PNG)
+![](../media/T08_entity_create.png)
 
-### <a name="create-the-first-action"></a>创建第一个操作
+1. 选择**操作**在左侧的窗格中，然后**新操作**。
+2. 输入**的日期是 $builtin-datetimev2**为**智能机器人应用程序的响应...**.
+3. 选择“创建”。
 
-1. 在左面板中单击“操作”，然后单击“新建操作”按钮。
-2. 在“机器人的响应...”字段中，键入“日期为 $builtin-datetimev2”
-3. 单击“创建”按钮。
-
-![](../media/tutorial7_actions_a.PNG)
+![](../media/T08_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>创建第二个操作
 
-1. 在左面板中单击“操作”，然后单击“新建操作”按钮。
-2. 在“机器人的响应...”字段中，键入“今天是几号?”
-    - 预先训练的实体不能作为必需实体，因为默认情况下会针对所有用户话语识别它们。
-3. 在“取消资格实体”字段中，键入“builtin-datetimev2”。
-4. 单击“创建”按钮。
+1. 选择**操作**在左侧的窗格中，然后**新操作**。
+2. 输入**日期是什么？** 为**智能机器人应用程序的响应...**.预先训练的实体不能**所需实体**如他们所识别的默认值为所有语音样本。
+3. 输入**builtin datetimev2**有关**取消将赋予**。
+4. 选择“创建”。
 
-![](../media/tutorial7_actions2_a.PNG)
+![](../media/T08_action_create_2.png)
 
 ### <a name="train-the-model"></a>训练模型
 
-1. 在左侧面板上单击“训练对话”，然后单击“新建训练对话”按钮。
-2. 在聊天面板中，在显示了“键入你的消息...”的位置键入“你好。”
-3. 单击“对操作打分”按钮。
-4. 选择响应“今天是几号?”
-5. 在聊天面板中，在显示了“键入你的消息...”的位置键入“今天”
-    - “今天”话语由 LUIS 中预先训练的模型自动识别。
+1. 选择**训练对话框**在左侧的窗格中，然后**新训练对话框**。
+2. 输入**你好**为左的聊天面板中的用户的语句。
+3. 选择**评分操作**。
+4. 选择**什么是日期？** 从操作列表
+5. 输入**今天**为左的聊天面板中的用户的语句。
+    - **今天**: LUIS 中预先训练的模型自动识别语音样本。
     - 将鼠标指针悬停在预先训练的实体的值上方会显示由 LUIS 提供的更多数据。
+
+![](../media/T08_training.png)
 
 ## <a name="next-steps"></a>后续步骤
 

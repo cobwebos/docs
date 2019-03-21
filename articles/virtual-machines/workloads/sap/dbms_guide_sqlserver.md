@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ae26a2daf2a65eaf56672c9e75147bd71e489a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: aac7ca7aa67143f89d9247da879a6fad2cfbb7b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330726"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992497"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -158,7 +158,7 @@ ms.locfileid: "56330726"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56330726"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -343,7 +343,7 @@ ms.locfileid: "56330726"
 这些配置让 tempdb 耗用的空间比系统驱动器能够提供的还多。 非持久性驱动器 D:\ 还提供更大的 I/O 延迟和吞吐量（除 A 系列 VM 外）。 若要确定正确的 tempdb 大小，可以在现有系统上检查 tempdb 大小。 
 
 >[!NOTE]
-> 将 tempdb 数据文件和日志文件放入在驱动器 D:\ 上创建的文件夹时，需要确保 VM 重启后，该文件夹存在。 由于 VM 重启后新初始化了驱动器 D:\，所有文件和目录结构都已清除。[本文](http://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)中记录了在启动 SQL Server 服务之前，有可能在驱动器 D:\ 上重新创建最终目录结构。
+> 将 tempdb 数据文件和日志文件放入在驱动器 D:\ 上创建的文件夹时，需要确保 VM 重启后，该文件夹存在。 由于 VM 重启后新初始化了驱动器 D:\，所有文件和目录结构都已清除。[本文](https://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)中记录了在启动 SQL Server 服务之前，有可能在驱动器 D:\ 上重新创建最终目录结构。
 
 运行包含 SAP 数据库的 SQL Server 且 tempdb 数据和 tempdb 日志文件放置于 D:\ 驱动器的 VM 配置应如下所示：
 
@@ -383,7 +383,7 @@ SQL Server 2014 及更新版本提供了一种可能性：将数据库文件直�
 * 之前列出的有关将 VHD 分布到不同 Azure 存储帐户的注意事项也适用于这种部署方法。 意味着 I/O 操作计数会以 Azure 存储帐户的限制为依据。
 * 代表 SQL Server 数据和日志文件的存储 Blob 的流量将计入特定 VM 类型的 VM 的网络带宽，而不是计入 VM 的存储 I/O 配额。 有关特定 VM 类型的网络和存储带宽的信息，请参考 [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)一文。
 * 由于通过网络配额推送文件 I/O，你将主要搁浅存储配额，而这只会部分地使用 VM 的总体带宽。
-* Azure 高级存储针对不同磁盘大小的 IOPS 和 I/O 吞吐量性能目标不再适用。 即使创建的 Blob 位于 Azure 高级存储上。 目标记录于 [VM 的高性能高级存储与托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets)一文中。 由于直接将 SQL Server 数据文件和日志文件至于存储在 Azure 高级存储上的 Blob，因此与 Azure 高级存储上的 VHD 相比，性能特征可能会有所不同。
+* Azure 高级存储针对不同磁盘大小的 IOPS 和 I/O 吞吐量性能目标不再适用。 即使创建的 Blob 位于 Azure 高级存储上。 目标记录于 [VM 的高性能高级存储与托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)一文中。 由于直接将 SQL Server 数据文件和日志文件至于存储在 Azure 高级存储上的 Blob，因此与 Azure 高级存储上的 VHD 相比，性能特征可能会有所不同。
 * 将 SQL Server 数据文件直接放在 Azure blob 上时，无法使用 Azure 高级存储磁盘可用的基于主机的高速缓存。
 * 在 M 系列 VM 上，Azure 写入加速器不能用于支持针对 SQL Server 事务日志文件的亚毫秒写入。 
 

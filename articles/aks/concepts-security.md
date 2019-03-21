@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 66fc5c92410118f4e0042738d2107b272d68f9bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456497"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240331"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -28,13 +28,13 @@ ms.locfileid: "56456497"
 
 ## <a name="master-security"></a>主组件安全
 
-在 AKS 中，Kubernetes 主组件是 Microsoft 提供的托管服务的一部分。 每个 AKS 群集都有其自己的专用单租户 Kubernetes 主组件，用于提供 API 服务器、计划程序等。此主组件由 Microsoft 管理和维护。
+在 AKS 中，Kubernetes 主组件是 Microsoft 提供的托管服务的一部分。 每个 AKS 群集都有其自己的专用单租户 Kubernetes 主组件，用于提供 API 服务器、计划程序等。此主管理并由 Microsoft 维护。
 
 默认情况下，Kubernetes API 服务器使用公共 IP 地址，并具有完全限定的域名 (FQDN)。 可使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
 
 ## <a name="node-security"></a>节点安全性
 
-AKS 节点是由你管理和维护的 Azure 虚拟机。 节点通过 Docker 容器运行时运行经过优化的 Ubuntu Linux 分发。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
+AKS 节点是由你管理和维护的 Azure 虚拟机。 运行使用小鲸鱼容器运行时优化的 Ubuntu Linux 分发的节点。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
 
 Azure 平台会在夜间自动将 OS 安全修补程序应用于节点。 如果 OS 安全更新需要重启主机，系统不会自动执行重启操作。 可以手动重启节点，或使用常用的方法，即使用 [Kured][kured]，这是一个适用于 Kubernetes 的开源重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
 
@@ -65,7 +65,7 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于节点。 如果
 
 ### <a name="azure-network-security-groups"></a>Azure 网络安全组
 
-为筛选虚拟网络中的通信流量，Azure 使用网络安全组规则。 这些规则定义要允许或拒绝哪些源和目标 IP 范围、端口和协议访问资源。 会创建默认规则以允许 TLS 流量流向 Kubernetes API 服务器以及便于 SSH 访问节点。 在使用负载均衡器、端口映射或入口路由创建服务时，AKS 会自动修改网络安全组，以便流量流向正确的方向。
+为筛选虚拟网络中的通信流量，Azure 使用网络安全组规则。 这些规则定义要允许或拒绝哪些源和目标 IP 范围、端口和协议访问资源。 创建默认规则以允许到 Kubernetes API 服务器的 TLS 通信。 在使用负载均衡器、端口映射或入口路由创建服务时，AKS 会自动修改网络安全组，以便流量流向正确的方向。
 
 ## <a name="kubernetes-secrets"></a>Kubernetes 机密
 
@@ -76,6 +76,8 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 ## <a name="next-steps"></a>后续步骤
 
 若要开始为 AKS 群集提供保护，请参阅[升级 AKS 群集][aks-upgrade-cluster]。
+
+关联的最佳做法，请参阅[的群集的安全性和在 AKS 中的升级最佳做法][operator-best-practices-cluster-security]。
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 
@@ -99,3 +101,4 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md

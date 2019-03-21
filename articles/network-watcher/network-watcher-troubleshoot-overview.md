@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 8048dde6158d9eaa9bf38a8c3020420b81bdd55b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: aa7fce21228d4413dc4964d6e828bf60478aee27
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099766"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901825"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
@@ -107,7 +107,7 @@ ms.locfileid: "55099766"
 > [!NOTE]
 > 在某些情况下，仅部分日志文件写入到存储中。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 使用 Azure Blob 存储入门](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](http://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 使用 Azure Blob 存储入门](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

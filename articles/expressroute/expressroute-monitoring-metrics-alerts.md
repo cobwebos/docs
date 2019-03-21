@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 115b1185575232800e060f67317e4973eea9ea53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d78c110f3317f4dd9f16cbe243aeca437e9890a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091758"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108791"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
@@ -43,18 +43,18 @@ ms.locfileid: "53091758"
 
 1. 若要配置警报，请导航到 **Azure Monitor**，然后单击“警报”。
 
-  ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
+   ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
 2. 单击“+选择目标”，然后选择 ExpressRoute 网关连接资源。
 
-  ![目标]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![目标]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. 定义警报详细信息。
 
-  ![操作组](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
+   ![操作组](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
 4. 定义和添加操作组。
 
-  ![添加操作组](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
+   ![添加操作组](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
 
 ## <a name="alerts-based-on-each-peering"></a>基于每个对等互连的警报
 

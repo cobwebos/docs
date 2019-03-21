@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 5378151d01418a81977f2fc2f562a6540bbb665d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: a973d8dbab18e9ea66afb5ffff83f47c3ad98f93
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663175"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012347"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -32,7 +32,7 @@ Chef 是一个强大的工具，用于提供自动化和所需的状态配置。
 本文介绍如何设置 Chef 环境以预配 Azure 虚拟机，并逐步讲解如何创建一个策略或“食谱”，然后将此食谱部署到 Azure 虚拟机。
 
 ## <a name="chef-basics"></a>Chef 基础知识
-在开始之前，请[复习一下 Chef 的基本概念](http://www.chef.io/chef)。
+在开始之前，请[复习一下 Chef 的基本概念](https://www.chef.io/chef)。
 
 下图描绘了概要的 Chef 体系结构。
 
@@ -175,7 +175,7 @@ knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 接下来，[下载并安装](https://downloads.chef.io/chef-workstation/) Chef 工作站。
 将 Chef 工作站安装在默认位置。 安装可能需要几分钟时间。
 
-桌面上会显示“CW PowerShell”，这是使用与 Chef 产品交互时所需的工具加载的环境。 在 CW PowerShell 中可以使用新的临时命令（例如 `chef-run`），以及传统的 Chef CLI 命令（例如 `chef`）。 使用 `chef -v` 查看安装的 Chef 工作站和 Chef 工具版本。 也可以通过在 Chef 工作站应用中选择“关于 Chef 工作站”来检查工作站版本。
+桌面上会显示“CW PowerShell”，这是使用与 Chef 产品交互时所需的工具加载的环境。 CW PowerShell 提供了新的特殊命令，如`chef-run`也作为传统 Chef CLI 命令，如`chef`。 使用 `chef -v` 查看安装的 Chef 工作站和 Chef 工具版本。 也可以通过在 Chef 工作站应用中选择“关于 Chef 工作站”来检查工作站版本。
 
 `chef --version` 应返回如下所示的输出：
 
@@ -218,7 +218,7 @@ Chef Workstation: 0.2.29
 
     knife azure image list
 
-如果所有项都已正确配置，会看到可用 Azure 映像的列表滚动显示。
+如果所有项都已正确配置，用户可看到可用 Azure 映像的列表滚动显示。
 
 祝贺。 现已设置好工作站！
 

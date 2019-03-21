@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be5220c5f28505bd83110705e08a6b1c7fb12529
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b2346c0631bb4540aef27623f82f72f4eabd0d23
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210690"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433546"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory 活动日志内容包错误故障排除 
 
@@ -71,6 +71,6 @@ ms.locfileid: "56210690"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为 Azure AD 报表安装 Power BI 内容包](quickstart-install-power-bi-content-pack.md)。
+* [安装适用于 Azure AD 报告 Power BI 内容包](quickstart-install-power-bi-content-pack.md)。
 * [将 Power BI 内容包用于 Azure AD 报表来可视化数据](howto-power-bi-content-pack.md)
 * [如何获取对 Azure Active Directory 的支持](../fundamentals/active-directory-troubleshooting-support-howto.md)

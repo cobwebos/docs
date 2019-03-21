@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/16/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a83ded660b56028ea311992ba6161e8a8e43f65d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511966"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098087"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -42,7 +42,7 @@ Azure 保证在任何情况下，有效的 DNS 请求将从至少一个 Azure DN
 
 域在域名系统中具有唯一名称。 例如 contoso.com。
 
-DNS 区域用来托管某个特定域的 DNS 记录。 例如，域 contoso.com 可能包含几条 DNS 记录。 这些记录可能包含 mail.contoso.com（用于邮件服务器）和 www.contoso.com（用于网站）。 这些记录托管在 DNS 区域 contoso.com 中。
+DNS 区域用来托管某个特定域的 DNS 记录。 例如，域 contoso.com 可能包含几条 DNS 记录。 记录可能包括 mail.contoso.com 用于邮件服务器和 www\.网站为 contoso.com。 这些记录托管在 DNS 区域 contoso.com 中。
 
 域名仅是一个名称。 DNS 区域是包含域名的 DNS 记录的数据资源。 可以使用 Azure DNS 托管 DNS 区域，以及管理 Azure 中域的 DNS 记录。 它还提供 DNS 名称服务器，用于回答来自 Internet 的 DNS 查询。
 
@@ -239,7 +239,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 是的。 删除注册或解析虚拟网络但事先未将它从专用区域中取消链接时，删除操作将会成功。 但是，虚拟网络不会从专用区域中自动取消链接（如果存在这种链接）。 必须手动从专用区域中取消链接虚拟网络。 出于此原因，请在删除虚拟网络之前，先从专用区域中取消其链接。
 
-### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>是否即使专用区域（例如 contoso.local）已链接到虚拟网络，也仍可使用默认 FQDN (internal.cloudapp.net) 进行 DNS 解析？
+### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>使用默认 FQDN (internal.cloudapp.net) 的 DNS 解析将仍能即使专用区域 (例如，private.contoso.com) 链接到的虚拟网络？
 
 是的。 专用区域功能不能取代使用 Azure 提供的 internal.cloudapp.net 区域进行的默认 DNS 解析。 它只是一项补充性的功能或增强功能。 不管依赖于 Azure 提供的 internal.cloudapp.net 还是自己的专用区域，都请使用要解析的区域的 FQDN。 
 
@@ -262,7 +262,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>专用区域的区域数或记录数是否存在任何配额或限制？
 
-专用区域的每个订阅允许的区域数没有限制。 专用区域的每个区域的记录集数也没有限制。 公共和专用区域数将会计入总体 DNS 限制。 有关详细信息，请参阅 [Azure 订阅和服务限制](../azure-subscription-service-limits.md#dns-limits)
+专用区域的每个订阅允许的区域数没有限制。 专用区域的每个区域的记录集数也没有限制。 公共和专用区域数将会计入总体 DNS 限制。 有关详细信息，请参阅 [Azure 订阅和服务限制](../azure-subscription-service-limits.md#azure-dns-limits)
 
 ### <a name="is-there-portal-support-for-private-zones"></a>专用区域是否支持门户？
 

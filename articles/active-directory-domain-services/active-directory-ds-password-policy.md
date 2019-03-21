@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5fc50aeeb2764f90a111c2466ff5a9deefe1e65c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 513cccb8b83eb4a69df1bc6172f1f02485215e35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167982"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085997"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>托管域中的密码和帐户锁定策略
 本文介绍托管域中的默认密码策略。 此外，还介绍如何配置这些策略。
@@ -89,28 +89,28 @@ ms.locfileid: "55167982"
 7. 在右侧的“任务”面板中，依次单击“新建”、“密码设置”。
 8. 在“创建密码设置”对话框中，指定要在自定义 FGPP 中应用的自定义密码设置。 请记得正确设置优先顺序，以覆盖默认 FGPP。
 
-  ![创建自定义 FGPP](./media/how-to/custom-fgpp.png)
+   ![创建自定义 FGPP](./media/how-to/custom-fgpp.png)
 
-  > [!TIP]
-  > **请记得取消选中“防止意外删除”选项。** 如果选中此选项，则无法保存 FGPP。
-  >
-  >
+   > [!TIP]
+   > **请记得取消选中“防止意外删除”选项。** 如果选中此选项，则无法保存 FGPP。
+   >
+   >
 
 9. 在“直接应用到”中，单击“添加”按钮。 在“选择用户或组”对话框中，单击“位置”按钮。
 
-  ![选择“用户和组”](./media/how-to/fgpp-applies-to.png)
+   ![选择“用户和组”](./media/how-to/fgpp-applies-to.png)
 
 10. 在“位置”对话框中，展开域名并单击“AADDC 用户”。 现在，可以从内置用户 OU 中选择要对其应用 FGPP 的组。
 
-  ![选择该组所属的 OU](./media/how-to/fgpp-container.png)
+    ![选择该组所属的 OU](./media/how-to/fgpp-container.png)
 
 11. 键入该组的名称，然后单击“检查名称”按钮以验证该组是否存在。
 
-  ![选择要应用 FGPP 的组](./media/how-to/fgpp-apply-group.png)
+    ![选择要应用 FGPP 的组](./media/how-to/fgpp-apply-group.png)
 
 12. 该组的名称将显示在“直接应用到”部分。 单击“确定”按钮保存这些更改。
 
-  ![已应用 FGPP](./media/how-to/fgpp-applied.png)
+    ![已应用 FGPP](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
 > **对自定义 OU 中的用户帐户应用自定义密码策略：** 精细密码策略只能应用到组。 若要仅对自定义 OU 中的用户配置自定义密码策略，请创建一个包含该 OU 中用户的组。

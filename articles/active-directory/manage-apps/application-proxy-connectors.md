@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907511b7f20311479e7b11a30f3d5719daea3f87
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: 4f96a67fecead65af28a975267590ebb08c715d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301462"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852996"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -93,7 +93,8 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\* 此计算机使用自定义设置提高某些默认连接限制，使之超过 .Net 推荐的设置。 我们建议先使用默认设置运行测试，再联系支持人员以为你的租户更改此限制。
+
+\* 此计算机使用自定义设置以提高某些超出.NET 推荐的设置的默认连接限制。 我们建议先使用默认设置运行测试，再联系支持人员以为你的租户更改此限制。
  
 >[!NOTE]
 >在 4 核心、8 核心和 16 核心计算机之间，最大 TPS 没有多大区别。 主要区别体现在预期的延迟。  

@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: HT
+ms.openlocfilehash: 15770246f52e87b8fba4a9ec01e1583d194d002b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334221"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887045"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 计划程序的概念、术语和实体
 
@@ -26,7 +26,7 @@ ms.locfileid: "52334221"
 
 Azure 计划程序 REST API 公开并使用以下主要实体或资源：
 
-| 实体 | Description |
+| 实体 | 描述 |
 |--------|-------------|
 | **作业** | 通过用于执行的简单或复杂策略定义单个定期操作。 操作可以包括 HTTP、存储队列、服务总线队列或服务总线主题请求。 | 
 | **作业集合** | 包含一组作业，并且维护集合内各作业共享的设置、配额和限制。 作为 Azure 订阅所有者，你可以创建作业集合，并根据使用情况或应用程序边界将作业分组。 作业集合具有以下特性： <p>- 限制在一个区域。 <br>- 可以强制执行配额，以便限制集合中所有作业的使用。 <br>- 配额包括 MaxJobs 和 MaxRecurrence. | 
@@ -75,9 +75,9 @@ Azure 计划程序支持多个作业类型：
 
 作业还包括系统提供的数据，例如，作业的下一次计划运行时间。 作业的代码定义是一个 JavaScript 对象表示法 (JSON) 格式的对象，包括以下元素：
 
-| 元素 | 必选 | Description | 
+| 元素 | 需要 | 描述 | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | 否 | 作业的开始时间，时区偏移量为 [ISO 8601 格式](http://en.wikipedia.org/wiki/ISO_8601) | 
+| [**startTime**](#start-time) | 否 | 作业的开始时间，时区偏移量为 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | 是 | 主操作的详细信息，可以包含 errorAction 对象 | 
 | [**errorAction**](#error-action) | 否 | 主操作失败时运行的辅助操作的详细信息 |
 | [**recurrence**](#recurrence) | 否 | 定期作业的频率和间隔等详细信息 | 
@@ -137,7 +137,7 @@ Azure 计划程序支持多个作业类型：
 
 ## <a name="starttime"></a>startTime
 
-在 startTime 对象中，可以指定 [ISO 8601 格式](http://en.wikipedia.org/wiki/ISO_8601)的开始时间和时区偏移量。
+在 startTime 对象中，可以指定 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)的开始时间和时区偏移量。
 
 <a name="action"></a>
 
@@ -239,7 +239,7 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| 属性 | 必选 | 值 | Description | 
+| 属性 | 需要 | Value | 描述 | 
 |----------|----------|-------|-------------| 
 | **frequency** | 是，使用 recurrence 时 | Minute、Hour、Day、Week、Month、Year | 两次作业之间的时间单位 | 
 | **interval** | 否 | 1 - 1000（包含） | 一个正整数，根据频率确定两次作业之间的时间单位数 | 
@@ -269,7 +269,7 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| 属性 | 必选 | 值 | Description | 
+| 属性 | 需要 | Value | 描述 | 
 |----------|----------|-------|-------------| 
 | **retryType** | 是 | **Fixed** **None** | 确定是否指定重试策略（固定）或（无）。 | 
 | **retryInterval** | 否 | PT30S | 指定每次重试尝试之间的间隔和频率（[ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)）。 最小值为 15 秒，最大值为 18 个月。 | 

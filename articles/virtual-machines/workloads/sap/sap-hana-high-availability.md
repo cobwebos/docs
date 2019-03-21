@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: aca5b1613a6500b3aeca1a7074cabdce50023510
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: f0bac9d50e73ed703905545261e86796ede214e2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789494"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180834"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -45,7 +45,7 @@ ms.locfileid: "53789494"
 [suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
-[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged%2Fazuredeploy.json
+[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
 
 对于本地开发，可以使用 HANA 系统复制或共享存储来建立 SAP HANA 的高可用性。
 在 Azure 虚拟机 (VM) 上，Azure 上的 HANA 系统复制是唯一受支持的高可用性功能。 SAP HANA 复制由一个主节点和至少一个辅助节点组成。 对主节点上数据所做的更改以同步或异步方式复制到辅助节点。
@@ -193,6 +193,9 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 有关 SAP HANA 所需端口的详细信息，请阅读 [SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章或 [SAP 说明 2388694][2388694]。
 
+> [!IMPORTANT]
+> 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)。
+> SAP 说明[2382421](https://launchpad.support.sap.com/#/notes/2382421)当前包含有冲突的语句，通知你将 net.ipv4.tcp_timestamps 设置为 1。 对于 Azure 虚拟机放置在 Azure 负载均衡器后面，将参数设置**net.ipv4.tcp_timestamps**到**0**。 
 
 ## <a name="create-a-pacemaker-cluster"></a>创建 Pacemaker 群集
 

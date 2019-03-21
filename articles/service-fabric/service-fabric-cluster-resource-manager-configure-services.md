@@ -7,22 +7,22 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea781b5dbbf09c0a21fbcf781ae129295d02dbad
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 55d75bb0bae4bf3feb370b7fdf4d80dc43bdc0ca
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054785"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736883"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>配置 Service Fabric 服务的群集 Resource Manager 设置
-使用 Service Fabric 群集资源管理器可以精细地控制用于管控每个命名服务的规则。 每个命名服务均可为它在群集中的分配方式指定规则。 每个命名服务还可以定义要报告的指标集，包括指标集对该服务的重要程度。 配置服务的过程分为 3 个不同的任务：
+Service Fabric 群集资源管理器允许精细地控制用于管控每个独立命名服务的规则。 每个命名服务均可为它在群集中的分配方式指定规则。 每个命名服务还可以定义要报告的指标集，包括指标集对该服务的重要程度。 配置服务的过程分为 3 个不同的任务：
 
 1. 配置放置约束
 2. 配置指标
@@ -46,5 +46,5 @@ ms.locfileid: "44054785"
 - 相关性是可以针对服务配置的一种模式。 它并不常用，但如果需要，可以参阅[此处](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
 - 可以在服务上配置许多不同的放置规则以处理其他方案。 可以在[此处](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)了解这些不同的放置策略
 - 从头开始并[获取 Service Fabric 群集 Resource Manager 简介](service-fabric-cluster-resource-manager-introduction.md)
-- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
+- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[均衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 - 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章

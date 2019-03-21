@@ -11,31 +11,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 53716fa343df25026dcc668ed8483673d934d1ad
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: fff213c8d1a408bf96e385f2097a5ef30dcc05d2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339118"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992094"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 资源的拒绝分配
 
-*拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组或服务主体，以便拒绝访问。 即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的 Azure 资源操作。 Azure 中的某些资源提供程序现在包括了拒绝分配。 目前，拒绝分配为**只读**，且只能由 Microsoft 设置。
+*拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组或服务主体，以便拒绝访问。 即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的 Azure 资源操作。 Azure 中的某些资源提供程序现在包括了拒绝分配。
 
 在某些方面，拒绝分配不同于角色分配。 拒绝分配可以排除主体并阻止子范围进行继承。 拒绝分配也适用于[经典订阅管理员](rbac-and-directory-admin-roles.md)分配。
 
 本文介绍如何定义拒绝分配。
+
+> [!NOTE]
+> 在此期间，您可以添加自己的唯一方法拒绝分配是使用 Azure 蓝图。 有关详细信息，请参阅[保护 Azure 蓝图资源锁的新资源](../governance/blueprints/tutorials/protect-new-resources.md)。
 
 ## <a name="deny-assignment-properties"></a>拒绝分配属性
 
  拒绝分配具有以下属性：
 
 > [!div class="mx-tableFixed"]
-> | 属性 | 必选 | Type | 说明 |
+> | 属性 | 需要 | Type | 描述 |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | 是 | String | 拒绝分配的显示名称。 对于给定作用域，名称必须是唯一的。 |
 > | `Description` | 否 | String | 拒绝分配的说明。 |

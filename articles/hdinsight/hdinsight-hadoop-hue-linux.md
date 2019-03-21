@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: e0e25a9a1e70575d862374da0fb3097408b002e7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714621"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202684"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -48,7 +48,7 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
 本部分说明如何在使用 Azure 门户预配群集时使用脚本。
 
 > [!NOTE]  
-> Azure PowerShell、Azure 经典 CLI、HDInsight .NET SDK 或 Azure 资源管理器模板也可用于应用脚本操作。 也可以将脚本操作应用于已在运行的群集。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+> Azure PowerShell、Azure 经典 CLI、HDInsight .NET SDK 或 Azure 资源管理器模板也可用于应用脚本操作。 也可以将脚本操作应用于已在运行的群集。 有关详细信息，请参阅 [使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 >
 >
 
@@ -143,7 +143,6 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
 
 ## <a name="next-steps"></a>后续步骤
 * [在 HDInsight 群集上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。 Giraph 可让你使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
-* [在 HDInsight 群集上安装 Apache Solr](hdinsight-hadoop-solr-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Solr。 Solr 允许对存储的数据执行功能强大的搜索操作。
 * [在 HDInsight 群集上安装 R](hdinsight-hadoop-r-scripts-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 R。 R 是一种用于统计计算的开放源代码语言和环境。 它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。 它还提供了各种图形功能。
 
 [powershell-install-configure]: install-configure-powershell-linux.md

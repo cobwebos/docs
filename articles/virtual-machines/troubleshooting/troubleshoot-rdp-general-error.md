@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 25e70b3a685f3b777a74c4cc6bf0e56dd37741a7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
-ms.translationtype: HT
+ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821508"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100405"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>排查 Azure VM 的常规 RDP 错误
 
@@ -77,7 +77,7 @@ RDP 侦听器配置不当。
    ch -si 1
    ```
 
-#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>步骤 2：检查 RDP 注册表项的值：
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>步骤 2：请检查 RDP 注册表项的值：
 
 1. 检查策略是否禁用 RDP。
 
@@ -229,8 +229,8 @@ RDP 侦听器配置不当。
 
       策略定义\Windows 组件\远程桌面服务\远程桌面会话主机\连接\允许用户使用远程桌面服务进行远程连接
   
-7. 从救援 VM 拆离磁盘。
-8. [从磁盘创建新的 VM](../windows/create-vm-specialized.md)。
+1. 从救援 VM 拆离磁盘。
+1. [从磁盘创建新的 VM](../windows/create-vm-specialized.md)。
 
 如果仍发生此问题，请转到步骤 2。
 

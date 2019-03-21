@@ -8,15 +8,15 @@ ms.author: hshapiro
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a0d20d6cdb719f34a50052ff2eb693071c7ece96
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122363"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标
 
@@ -46,6 +46,7 @@ Azure 机器学习服务为不同的计算目标提供不同的支持。 典型�
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **所有计算目标都可重复用于多个训练作业**。 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。
 
@@ -138,16 +139,16 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
     * **vm_size**：Azure 机器学习计算创建的节点的 VM 系列。
     * **max_nodes**：在 Azure 机器学习计算中运行作业时自动扩展到的最大节点数。
     
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-  还可以在创建 Azure 机器学习计算时配置多个高级属性。 使用这些属性可以创建固定大小的持久性群集，或者在订阅中的现有 Azure 虚拟网络内创建持久性群集。  有关详细信息，请参阅 [AmlCompute 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
+   还可以在创建 Azure 机器学习计算时配置多个高级属性。 使用这些属性可以创建固定大小的持久性群集，或者在订阅中的现有 Azure 虚拟网络内创建持久性群集。  有关详细信息，请参阅 [AmlCompute 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     )。
     
- 或者，可以[在 Azure 门户中](#portal-create)创建并附加持久性 Azure 机器学习计算资源。
+   或者，可以[在 Azure 门户中](#portal-create)创建并附加持久性 Azure 机器学习计算资源。
 
 1. **配置**：为持久性计算目标创建运行配置。
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
@@ -167,34 +168,34 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
 1. **附加**：若要附加现有虚拟机作为计算目标，必须提供虚拟机的完全限定域名 (FQDN)、用户名和密码。 在本示例中，请将 \<fqdn> 替换为 VM 的 FQDN，或替换为公共 IP 地址。 请将 \<username> 和 \<password> 替换为 VM 的 SSH 用户名和密码。
 
- ```python
- from azureml.core.compute import RemoteCompute, ComputeTarget
+   ```python
+   from azureml.core.compute import RemoteCompute, ComputeTarget
 
- # Create the compute config 
- compute_target_name = "attach-dsvm"
- attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   # Create the compute config 
+   compute_target_name = "attach-dsvm"
+   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
 
- # If you authenticate with SSH keys instead, use this code:
- #                                                  ssh_port=22,
- #                                                  username='<username>',
- #                                                  password=None,
- #                                                  private_key_file="<path-to-file>",
- #                                                  private_key_passphrase="<passphrase>")
+   # If you authenticate with SSH keys instead, use this code:
+   #                                                  ssh_port=22,
+   #                                                  username='<username>',
+   #                                                  password=None,
+   #                                                  private_key_file="<path-to-file>",
+   #                                                  private_key_passphrase="<passphrase>")
 
- # Attach the compute
- compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
+   # Attach the compute
+   compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
 
- compute.wait_for_completion(show_output=True)
- ```
+   compute.wait_for_completion(show_output=True)
+   ```
 
- 或者，可以[使用 Azure 门户](#portal-reuse)将 DSVM 附加到工作区。
+   或者，可以[使用 Azure 门户](#portal-reuse)将 DSVM 附加到工作区。
 
 1. **配置**：为 DSVM 计算目标创建运行配置。 Docker 与 conda 用于在 DSVM 上创建和配置训练环境。
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
@@ -211,11 +212,11 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
 
 1. **附加**：若要将 HDInsight 群集作为计算目标附加，必须提供该 HDInsight 群集的主机名、用户名和密码。 下面的示例使用 SDK 将群集附加到工作区。 在该示例中，请将 \<clustername> 替换为群集名称。 请将 \<username> 和 \<password> 替换为群集的 SSH 用户名和密码。
 
-  ```python
- from azureml.core.compute import ComputeTarget, HDInsightCompute
- from azureml.exceptions import ComputeTargetException
+   ```python
+   from azureml.core.compute import ComputeTarget, HDInsightCompute
+   from azureml.exceptions import ComputeTargetException
 
- try:
+   try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
     attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azureinsight.net', 
                                                           ssh_port=22, 
@@ -225,21 +226,57 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
                                        name='myhdi', 
                                        attach_configuration=attach_config)
 
- except ComputeTargetException as e:
+   except ComputeTargetException as e:
     print("Caught = {}".format(e.message))
 
- hdi_compute.wait_for_completion(show_output=True)
-  ```
+   hdi_compute.wait_for_completion(show_output=True)
+   ```
 
-  或者，可以[使用 Azure 门户](#portal-reuse)将 HDInsight 群集附加到工作区。
+   或者，可以[使用 Azure 门户](#portal-reuse)将 HDInsight 群集附加到工作区。
 
 1. **配置**：为 HDI 计算目标创建运行配置。 
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
+
+### <a id="azbatch"></a>Azure 批处理 
+
+使用 azure Batch 在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 可以在 Azure 机器学习管道中使用 AzureBatchStep，若要将作业提交到计算机的 Azure Batch 池。
+
+若要附加 Azure Batch 用作计算目标，必须使用 Azure 机器学习 SDK，并提供以下信息：
+
+-   **Azure Batch 计算名称**:一个友好名称以用于在工作区中的计算
+-   **Azure Batch 帐户名称**:Azure Batch 帐户的名称
+-   **资源组**：包含 Azure Batch 帐户的资源组。
+
+下面的代码演示如何将附加 Azure Batch 用作计算目标：
+
+```python
+from azureml.core.compute import ComputeTarget, BatchCompute
+from azureml.exceptions import ComputeTargetException
+
+batch_compute_name = 'mybatchcompute' # Name to associate with new compute in workspace
+
+# Batch account details needed to attach as compute to workspace
+batch_account_name = "<batch_account_name>" # Name of the Batch account
+batch_resource_group = "<batch_resource_group>" # Name of the resource group which contains this account
+
+try:
+    # check if the compute is already attached
+    batch_compute = BatchCompute(ws, batch_compute_name)
+except ComputeTargetException:
+    print('Attaching Batch compute...')
+    provisioning_config = BatchCompute.attach_configuration(resource_group=batch_resource_group, account_name=batch_account_name)
+    batch_compute = ComputeTarget.attach(ws, batch_compute_name, provisioning_config)
+    batch_compute.wait_for_completion()
+    print("Provisioning state:{}".format(batch_compute.provisioning_state))
+    print("Provisioning errors:{}".format(batch_compute.provisioning_errors))
+
+print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
+```
 
 ## <a name="set-up-compute-in-the-azure-portal"></a>在 Azure 门户中设置计算
 

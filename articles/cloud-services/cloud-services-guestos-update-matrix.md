@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/5/2019
+ms.date: 3/12/2019
 ms.author: raiye
-ms.openlocfilehash: 76009115f855a840c81e79d0c864187c8410aa23
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: c5fdee4e5b1b9d2a283ef55ce99dffab0cb25873
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751508"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840834"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用自动进行来宾 OS 更新，则不一定要阅读本页面。
@@ -43,6 +43,9 @@ ms.locfileid: "55751508"
 
 ## <a name="news-updates"></a>新闻更新
 
+###### <a name="march-12-2019"></a>**2019 年 3 月 12日日**
+1 月版来宾 OS 已发布。
+
 ###### <a name="february-5-2019"></a>**2019 年 2 月 5 日**
 1 月版来宾 OS 已发布。
 
@@ -64,9 +67,6 @@ ms.locfileid: "55751508"
 ###### <a name="september-12-2018"></a>**2018 年 9 月 12 日**
 8 月版来宾 OS 已发布。
 
-###### <a name="august-3-2018"></a>**2018 年 8 月 3 日**
-7 月版来宾 OS 已发布。
-
 ## <a name="releases"></a>发行版本
 
 ## <a name="family-6-releases"></a>系列 6 发行版
@@ -77,11 +77,21 @@ ms.locfileid: "55751508"
 > [!NOTE]
 > Windows Azure SDK for .NET 3.0 可在[此处][Windows Azure SDK]下载。
 >
+>安装步骤：
+>1. 请卸载任何旧版本的 MicrosoftAzureAuthoringTools*.msi
+>2. 安装[用于 .NET 的 Azure SDK - 3.0][Windows Azure SDK]
+>3. 重启计算机
+>4. 创建新的云服务项目并添加单个辅助角色
+>5. 将 OS 系列更改为 6 并生成一个包
+>6. 使用 Azure 门户或 Visual Studio 将该包部署到 Azure
+>
+
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+| WA-GUEST-OS-6.4_201902-01 |2019 年 3 月 12日日 |Post 6.6 |
 | WA-GUEST-OS-6.3_201901-01 |2019 年 2 月 5日 |6.5 发行后 |
-| WA-GUEST-OS-6.2_201812-01 |2019 年 1 月 24 日 |6.4 发行后 |
+|~~WA-GUEST-OS-6.2_201812-01~~|2019 年 1 月 24 日 |2019 年 3 月 12日日 |
 |~~WA-GUEST-OS-6.1_201811-01~~ |2019 年 1 月 24 日 |2019 年 2 月 5日 |
 
 ## <a name="family-5-releases"></a>系列 5 发行版本
@@ -93,15 +103,16 @@ ms.locfileid: "55751508"
 > OS 系列 5 的 RDP 密码至少必须有 10 个字符。
 >
 
+
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+| WA-GUEST-OS-5.28_201902-01 |2019 年 3 月 12日日 |文章就是 5.30 |
 | WA-GUEST-OS-5.27_201901-01 |2019 年 2 月 5日 |5.29 发行后 |
-| WA-GUEST-OS-5.26_201812-01 |2019 年 1 月 7 日 |5.28 发行后 |
+|~~WA-GUEST-OS-5.26_201812-01~~|2019 年 1 月 7 日 |2019 年 3 月 12日日 |
 |~~WA-GUEST-OS-5.25_201811-01~~ |2018 年 12 月 14 日 |2019 年 2 月 5日 |
 |~~WA-GUEST-OS-5.24_201810-01~~ |2018 年 11 月 8 日 |2019 年 1 月 7 日 |
 |~~WA-GUEST-OS-5.23_201809-01~~ |2018 年 10 月 12 日 |2018 年 12 月 14 日 |
 |~~WA-GUEST-OS-5.22_201808-01~~ |2018 年 9 月 12 日 |2018 年 11 月 8 日 |
-|~~WA-GUEST-OS-5.21_201807-02~~ |2018 年 8 月 3 日 |2018 年 10 月 12 日 |
 
 ## <a name="family-4-releases"></a>系列 4 发行版本
 **Windows Server 2012 R2**
@@ -110,13 +121,13 @@ ms.locfileid: "55751508"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+| WA-GUEST-OS-4.63_201902-01 |2019 年 3 月 12日日 |Post 4.65 |
 | WA-GUEST-OS-4.62_201901-01 |2019 年 2 月 5日 |4.64 发行后 |
-| WA-GUEST-OS-4.61_201812-01 |2019 年 1 月 7 日 |4.63 发行后 |
+|~~WA-GUEST-OS-4.61_201812-01~~|2019 年 1 月 7 日 |2019 年 3 月 12日日 |
 |~~WA-GUEST-OS-4.60_201811-01~~ |2018 年 12 月 14 日 |2019 年 2 月 5日 |
 |~~WA-GUEST-OS-4.59_201810-01~~ |2018 年 11 月 8 日 |2019 年 1 月 7 日 |
 |~~WA-GUEST-OS-4.58_201809-01~~ |2018 年 10 月 12 日 |2018 年 12 月 14 日 |
 |~~WA-GUEST-OS-4.57_201808-01~~ |2018 年 9 月 12 日 |2018 年 11 月 8 日 |
-|~~WA-GUEST-OS-4.56_201807-02~~ |2018 年 8 月 3 日 |2018 年 10 月 12 日 |
 
 ## <a name="family-3-releases"></a>系列 3 发行版本
 **Windows Server 2012**
@@ -125,13 +136,13 @@ ms.locfileid: "55751508"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+| WA-GUEST-OS-3.70_201902-01 |2019 年 3 月 12日日 |Post 3.72 |
 | WA-GUEST-OS-3.69_201901-01 |2019 年 2 月 5日 |3.71 发行后 |
-| WA-GUEST-OS-3.68_201812-01 |2019 年 1 月 7 日 |3.70 发行后 |
+|~~WA-GUEST-OS-3.68_201812-01~~|2019 年 1 月 7 日 |2019 年 3 月 12日日 |
 |~~WA-GUEST-OS-3.67_201811-01~~ |2018 年 12 月 14 日 |2019 年 2 月 5日 |
 |~~WA-GUEST-OS-3.66_201810-01~~ |2018 年 11 月 8 日 |2019 年 1 月 7 日 |
 |~~WA-GUEST-OS-3.65_201809-01~~ |2018 年 10 月 12 日 |2018 年 12 月 14 日 |
 |~~WA-GUEST-OS-3.64_201808-01~~ |2018 年 9 月 12 日 |2018 年 11 月 8 日 |
-|~~WA-GUEST-OS-3.63_201807-02~~ |2018 年 8 月 3 日 |2018 年 10 月 12 日 |
 
 ## <a name="family-2-releases"></a>系列 2 发行版本
 **Windows Server 2008 R2 SP1**
@@ -140,14 +151,13 @@ ms.locfileid: "55751508"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+| WA-GUEST-OS-2.83_201902-01 |2019 年 3 月 12日日 |Post 2.85 |
 | WA-GUEST-OS-2.82_201901-01 |2019 年 2 月 5日 |2.84 发行后 |
-| WA-GUEST-OS-2.81_201812-01 |2019 年 1 月 7 日 |2.83 发行后 |
+|~~WA-GUEST-OS-2.81_201812-01~~ |2019 年 1 月 7 日 |2019 年 3 月 12日日 |
 |~~WA-GUEST-OS-2.80_201811-01~~ |2018 年 12 月 14 日 |2019 年 2 月 5日 |
 |~~WA-GUEST-OS-2.79_201810-01~~ |2018 年 11 月 8 日 |2019 年 1 月 7 日 |
 |~~WA-GUEST-OS-2.78_201809-01~~ |2018 年 10 月 12 日 |2018 年 12 月 14 日 |
 |~~WA-GUEST-OS-2.77_201808-01~~ |2018 年 9 月 12 日 |2018 年 11 月 8 日 |
-|~~WA-GUEST-OS-2.76_201807-02~~ |2018 年 8 月 3 日 |2018 年 10 月 12 日 |
-|~~WA-GUEST-OS-2.75_201806-01~~ |2018 年 7 月 3 日 |2018 年 9 月 12 日 |
 
 ## <a name="msrc-patch-updates"></a>MSRC 修补程序更新
 [此处][patches]提供了每月来宾 OS 版本随附的修补程序列表。
@@ -162,7 +172,7 @@ ms.locfileid: "55751508"
 | 4 |版本 2.1+ |
 | 3 |版本 1.8+ |
 | 2 |版本 1.3+ |
-| 1 |版本 1.0+ |
+| 第 |版本 1.0+ |
 
 ## <a name="guest-os-release-information"></a>来宾 OS 版本信息
 来宾 OS 发行版有三个重要的日期：**发行日期**、**停用日期**和**失效日期**。 来宾 OS 在门户中可用，并可选作目标来宾 OS。 当来宾 OS 到达停用日期时，将从 Azure 中删除。 但是，面向该来宾 OS 的任何云服务仍会正常运行。
@@ -209,19 +219,19 @@ Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的�
 [来宾 OS 更新 RSS 源]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
 [Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
-[ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
+[ssl3 announcement]: https://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
 [Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
-[ssl3-fixit]: http://go.microsoft.com/?linkid=9863266
+[ssl3-fixit]: https://go.microsoft.com/?linkid=9863266
 [MS14-066]: https://technet.microsoft.com/library/security/ms14-066.aspx
 [MS14-046]: https://technet.microsoft.com/library/security/ms14-046.aspx
 [retire policy sdk]: https://msdn.microsoft.com/library/dn479282.aspx
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
-[azuresupport]: http://azure.microsoft.com/support/options/
-[net install pkg]: http://www.microsoft.com/download/details.aspx?id=42643
+[azuresupport]: https://azure.microsoft.com/support/options/
+[net install pkg]: https://www.microsoft.com/download/details.aspx?id=42643
 [msrc]: https://technet.microsoft.com/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
-[restarts]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
+[restarts]: https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md

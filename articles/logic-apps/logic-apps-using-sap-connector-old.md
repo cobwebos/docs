@@ -2,7 +2,6 @@
 title: 连接到 SAP 系统 - Azure 逻辑应用 | Microsoft Docs
 description: 如何使用 Azure 逻辑应用将工作流自动化，以访问和管理 SAP 资源
 author: ecfan
-manager: jeconnoc
 ms.author: estfan
 ms.date: 05/31/2018
 ms.topic: article
@@ -11,18 +10,17 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 77d1e11c1400f9a3d6bb6bda8e935cd4d24a195e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230890"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170830"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
 > [!NOTE]
-> 此 SAP 连接器不久将弃用。 我们已发布新的更高级的 SAP 连接器，建议你选择或移至[新的 SAP 连接器](./logic-apps-using-sap-connector.md)。
->  
+> 此 SAP 连接器已不推荐使用计划。 请使用或迁移到[更高版本和更高级的 SAP 连接器](./logic-apps-using-sap-connector.md)。 
 
 本文介绍如何使用 SAP 应用程序服务器和 SAP 消息服务器连接器，从逻辑应用内部访问 SAP 资源。 这样，便可以通过创建逻辑应用来自动执行任务、过程和工作流，以管理 SAP 数据和资源。
 
@@ -34,7 +32,7 @@ ms.locfileid: "50230890"
 
 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要遵循本文中的步骤，需准备好以下各项：
 
@@ -67,7 +65,7 @@ ms.locfileid: "50230890"
 
 1. 在 Azure 门户中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 
 
-2. 在搜索框中，输入“http 请求”作为筛选器。 在触发器列表中选择此触发器：“请求 - 当收到 HTTP 请求时”
+2. 在搜索框中，输入“http 请求”作为筛选器。 从触发器列表中选择此触发器：**请求 - 当收到 HTTP 请求时**
 
    ![添加 HTTP 请求触发器](./media/logic-apps-using-sap-connector-old/add-trigger.png)
 
@@ -93,7 +91,7 @@ ms.locfileid: "50230890"
    * **SAP 应用程序服务器 - 发送到 SAP**
    * **SAP 消息服务器 - 发送到 SAP**
 
-   本示例使用此操作：“SAP 应用程序服务器 - 发送到 SAP”
+   此示例使用此操作：**SAP 应用程序服务器 - 发送到 SAP**
 
    ![选择“SAP 应用程序服务器”或“SAP 消息服务器”](media/logic-apps-using-sap-connector-old/select-sap-action.png)
 
@@ -154,7 +152,7 @@ ms.locfileid: "50230890"
 
 1. 在逻辑应用设计器中的 SAP 操作下，选择“新建步骤” > “添加操作”。
 
-2. 在搜索框中，输入“响应”作为筛选器。 在操作列表中选择此操作：“请求 - 响应”
+2. 在搜索框中，输入“响应”作为筛选器。 在操作列表中选择此操作：**请求 - 响应**
 
 3. 在“正文”框中单击，以显示动态内容列表。 在该列表中的“发送到 SAP”下面，选择“正文”字段。 
 

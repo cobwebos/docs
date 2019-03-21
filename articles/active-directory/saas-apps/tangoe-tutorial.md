@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986afa1239ad0efd9ccb936252ead37c8379b447
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8c9f410fa890df7aac3c3bf4d89468b92e69ba38
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192891"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883226"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>教程：Azure Active Directory 与 Tangoe Command Premium Mobile 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56192891"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Tangoe Command Premium Mobile 的集成，需要以下项：
 
@@ -75,7 +75,7 @@ ms.locfileid: "56192891"
 
 1. 在搜索框中，键入“Tangoe Command Premium Mobile”，从结果面板中选择“Tangoe Command Premium Mobile”，然后单击“添加”按钮添加该应用程序。
 
-    ![从库中添加 Tangoe Command Premium Mobile ](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
+    ![从库中添加 Tangoe Command Premium Mobile](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Tangoe Command Premium Mobile 的 Azure AD 单一登录。

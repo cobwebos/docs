@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 38ab7b80e2f03176c3bedfd98a2d0e20fc02592b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 773e600577b35019b8a3619c7eec3e93b77a4382
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865886"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085790"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>使用 PowerShell 为 Azure Stack 启用备份
 
@@ -29,7 +29,7 @@ ms.locfileid: "56865886"
 使用 Windows PowerShell 启用基础结构备份服务，以便定期备份以下内容：
  - 内部标识服务和根证书
  - 用户计划、产品/服务、订阅
- - 计算、 存储和网络用户配额
+ - 计算配额、存储配额和网络用户配额
  - 用户密钥保管库机密
  - 用户 RBAC 角色和策略
  - 用户存储帐户
@@ -51,9 +51,11 @@ ms.locfileid: "56865886"
 | $sharepath      | 键入**备份存储位置**的路径。 必须使用通用命名约定 (UNC) 字符串表示单独的设备上托管的文件共享的路径。 UNC 字符串指定资源（如共享文件或设备）的位置。 若要确保备份数据的可用性，设备应放置在单独的位置。 |
 | $frequencyInHours | “频率(小时)”决定了以何频率创建备份。 默认值为 12。 计划程序支持的最大值为 12，最小值为 4。|
 | $retentionPeriodInDays | “保留期(天)”决定了备份在外部位置保留多少天。 默认值为 7。 计划程序支持的最大值为 14，最小值为 2。 超过保留期的备份会自动从外部位置删除。|
-| $encryptioncertpath | 加密证书路径指定的文件路径。CER 文件，其用于数据加密的公钥。 |
+| $encryptioncertpath | 将应用到 1901年和更高版本。  参数是在 Azure Stack 模块版本 1.7 和更高版本可用。 加密证书路径指定 .CER 文件的文件路径，文件中的公钥用于数据加密。 |
+| $encryptionkey | 应用于生成 1811年或更早版本。 参数是 Azure Stack 模块版本 1.6 或更早版本中提供。 用于数据加密的加密密钥。 使用[新建 AzsEncryptionKeyBase64](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) cmdlet 以生成新密钥。 |
 |     |     |
 
+### <a name="enable-backup-on-1901-and-beyond-using-certificate"></a>启用备份上 1901年及更高版本使用证书
 ```powershell
     # Example username:
     $username = "domain\backupadmin"
@@ -80,6 +82,25 @@ ms.locfileid: "56865886"
     # Set the backup settings with the name, password, share, and CER certificate file.
     Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
 ```
+### <a name="enable-backup-on-1811-or-earlier-using-certificate"></a>1811 或前面使用的证书上启用备份
+```powershell
+    # Example username:
+    $username = "domain\backupadmin"
+ 
+    # Example share path:
+    $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
+
+    $password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
+
+    # Create a self-signed certificate using New-SelfSignedCertificate, export the public key portion and save it locally.
+
+    $key = New-AzsEncryptionKeyBase64
+    $Securekey = ConvertTo-SecureString -String ($key) -AsPlainText -Force
+
+    # Set the backup settings with the name, password, share, and CER certificate file.
+    Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $Securekey
+```
+
    
 ##  <a name="confirm-backup-settings"></a>确认备份设置
 
@@ -119,15 +140,15 @@ ms.locfileid: "56865886"
     BackupRetentionPeriodInDays : 5
    ```
 
-###<a name="azure-stack-powershell"></a>Azure Stack PowerShell 
-若要配置基础结构备份的 PowerShell cmdlet 是集 AzsBackupConfiguration。 在早期版本中，该 cmdlet 是集 AzsBackupShare。 此 cmdlet 需要提供证书。 如果使用的加密密钥配置基础结构备份，无法更新加密密钥，或查看的属性。 你将需要使用管理员 PowerShell 1.6 版。 
+### <a name="azure-stack-powershell"></a>Azure Stack PowerShell 
+用于配置基础结构备份的 PowerShell cmdlet 为 Set-AzsBackupConfiguration。 在以前的版本中，此 cmdlet 为 Set-AzsBackupShare。 此 cmdlet 要求提供一个证书。 如果为基础结构备份配置了加密密钥，则不能更新加密密钥或查看属性。 需使用 1.6 版管理员 PowerShell。 
 
-如果基础结构备份已配置到 1901年更新之前，您可以使用版本 1.6 的管理员 PowerShell 设置以及查看加密密钥。 1.6 版将允许你从加密密钥更新到证书文件。
-请参阅[安装 Azure Stack PowerShell](azure-stack-powershell-install.md)有关安装该模块的正确版本的详细信息。 
+如果基础结构备份在更新到 1901 之前已进行配置，则可使用 1.6 版管理员 PowerShell 来设置和查看加密密钥。 1.6 版不允许从加密密钥更新到证书文件。
+请参阅[安装 Azure Stack PowerShell](azure-stack-powershell-install.md)，详细了解如何安装模块的正确版本。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何运行备份，请参阅[备份 Azure Stack](azure-stack-backup-back-up-azure-stack.md)
+若要了解如何运行备份，请参阅[备份 Azure Stack](azure-stack-backup-back-up-azure-stack.md)
 
-了解如何验证是否备份已运行，请参阅[确认在管理门户中完成的备份](azure-stack-backup-back-up-azure-stack.md)
+若要了解如何验证备份是否已运行，请参阅[在管理门户中确认已完成的备份](azure-stack-backup-back-up-azure-stack.md)

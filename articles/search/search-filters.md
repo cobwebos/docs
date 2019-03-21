@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 539a7fc5b9d3038424059f1ee599c6966a968781
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: a9e8d2cbc067fd92208fac778ba17c58bdc7a5e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629588"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079139"
 ---
 # <a name="filters-in-azure-search"></a>Azure 搜索中的筛选器 
 
@@ -32,17 +32,17 @@ ms.locfileid: "53629588"
 
 1. 使用筛选器基于索引中的数据值将索引分片。 获得一个包含城市、房屋类型和设施的架构后，可以创建一个筛选器来显式选择满足条件（西雅图、共管式公寓、水滨）的文档。 
 
-  使用相同输入的全文搜索通常生成类似的结果，但筛选器更精确，因为它要求筛选字词与索引中的内容完全匹配。 
+   使用相同输入的全文搜索通常生成类似的结果，但筛选器更精确，因为它要求筛选字词与索引中的内容完全匹配。 
 
 2. 如果搜索体验附带筛选要求，请使用筛选器：
 
- * [分面导航](search-faceted-navigation.md)使用筛选器传回用户选择的分面类别。
- * 地理搜索使用筛选器在“附近查找”应用中传递当前位置的坐标。 
- * 安全筛选器将安全标识符作为筛选条件进行传递，在索引中找到的匹配项充当代理，提供对文档的访问权限。
+   * [分面导航](search-faceted-navigation.md)使用筛选器传回用户选择的分面类别。
+   * 地理搜索使用筛选器在“附近查找”应用中传递当前位置的坐标。 
+   * 安全筛选器将安全标识符作为筛选条件进行传递，在索引中找到的匹配项充当代理，提供对文档的访问权限。
 
 3. 如果想要对数字字段施加搜索条件，请使用筛选器。 
 
-  数字字段可在文档中检索并可显示在搜索结果中，但不可单独搜索（受全文搜索的限制）。 如果需要基于数字数据施加选择条件，请使用筛选器。
+   数字字段可在文档中检索并可显示在搜索结果中，但不可单独搜索（受全文搜索的限制）。 如果需要基于数字数据施加选择条件，请使用筛选器。
 
 ### <a name="alternative-methods-for-reducing-scope"></a>缩小范围的替代方法
 
@@ -141,10 +141,8 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 如果某个字段不可筛选，而你想要将其设为可筛选，则必须添加一个新字段，或重新生成现有字段。 更改字段定义会改变索引的物理结构。 在 Azure 搜索中，所有允许的访问路径已编制索引以加快查询速度，因此，在字段定义发生更改时，必须重新生成数据结构。 
 
-重新生成单个字段可能是影响性较低的操作，只需执行一项合并操作，将现有的文档键和关联的值发送到索引，将每个文档的剩余部分保持不变。 如果遇到重新生成方面的要求，请参阅以下链接获取操作说明：
+重新生成单个字段可能是影响性较低的操作，只需执行一项合并操作，将现有的文档键和关联的值发送到索引，将每个文档的剩余部分保持不变。 如果遇到重新生成要求，请参阅[的索引操作 (上传、 合并、 mergeOrUpload，删除)](search-what-is-data-import.md#indexing-actions)有关选项的列表。
 
- + [使用 .NET SDK 的索引操作](https://docs.microsoft.com/azure/search/search-import-data-dotnet#decide-which-indexing-action-to-use)
- + [使用 REST API 的索引操作](https://docs.microsoft.com/azure/search/search-import-data-rest-api#decide-which-indexing-action-to-use)
 
 ## <a name="text-filter-fundamentals"></a>文本筛选器基础知识
 
@@ -155,7 +153,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 文本字符串区分大小写。 大写的单词不会转换成小写：`$filter=f eq 'Sunny day'` 不会查找“sunny day”。
 
 
-| 方法 | Description | 
+| 方法 | 描述 | 
 |----------|-------------|
 | [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | 提供给定字段的逗号分隔字符串列表的函数。 字符串由筛选条件构成，这些条件应用到查询范围中的每个字段。 <br/><br/>`search.in(f, ‘a, b, c’)` 在语义上等效于 `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`，不过，在值列表较大时，它的执行速度要快得多。<br/><br/>我们建议对[安全筛选器](search-security-trimming-for-azure-search.md)以及对包含要与给定字段中的值匹配的原始文本的任何筛选器使用 **search.in** 函数。 此方法旨在提高速度。 在查询数百到数千个值时，有望获得亚秒级的响应速度。 尽管可传入该函数的项数没有明确限制，但延迟会根据提供的字符串数按比例提高。 | 
 | [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | 用于在同一个筛选表达式中将全文搜索操作与严格的布尔筛选操作混合使用的函数。 该函数可在一个请求中实现多种查询筛选器组合。 还可以使用该函数来构建 *contains* 筛选器，以根据较大字符串中的部分字符串进行筛选。 |  

@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 243fb01a5c8112afaf310f616b93c2667ac6f19d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 76af6d6585d52eee99548f69c92bd414068fa28d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729855"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259204"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>访问 Azure Stack 中的 Kubernetes 仪表板 
 
@@ -114,11 +114,11 @@ Kubernetes 包括可用于基本的管理操作的 web 仪表板。 使用此仪
 
 ## <a name="open-the-kubernetes-dashboard"></a>打开 Kubernetes 仪表板 
 
-1.  禁用 Web 浏览器弹出窗口阻止程序。
+1. 禁用 Web 浏览器弹出窗口阻止程序。
 
-2.  浏览器访问 URL 记下该命令的运行时的点`kubectl cluster-info`。 例如： https://azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy 
-3.  选择客户端证书。
-4.  输入的令牌。 
+2. 浏览器访问 URL 记下该命令的运行时的点`kubectl cluster-info`。 例如： https:\//azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard: / 代理 
+3. 选择客户端证书。
+4. 输入的令牌。 
 5. 重新连接到主节点上的 bash 命令行并对其授予权限`kubernetes-dashboard`。 运行以下命令：
 
     ```Bash  

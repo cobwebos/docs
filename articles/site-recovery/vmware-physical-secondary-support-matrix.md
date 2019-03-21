@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 6ebf1abe6f3b115a254201184f47e6aad2febb2a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 2f70a180afcc8eda5d43356c3f4f96b25292c6d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208170"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088921"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
 
@@ -110,10 +110,10 @@ RDM | 是
 
 移动服务可协调本地 VMware 服务器/物理服务器和辅助站点之间的复制。 如果设置了复制，应确保安装了最新版本的移动服务和其他组件。
 
-**更新** | **详细信息** 
---- | --- 
-Scout 更新 | [了解和下载](vmware-physical-secondary-disaster-recovery.md#updates)最新的 Scout 更新 | Scout 更新是累积更新。
-组件更新 | Scout 更新包括所有组件的更新，包括 RX 服务器、配置服务器、进程和主目标服务器，vContinuum 服务器和要保护的源服务器。<br/><br/> [了解详细信息](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。
+| **更新** | **详细信息** |
+| --- | --- |
+|Scout 更新 | Scout 更新是累积更新。 <br/><br/> [了解和下载](vmware-physical-secondary-disaster-recovery.md#updates)最新的 Scout 更新 |
+|组件更新 | Scout 更新包括所有组件的更新，包括 RX 服务器、配置服务器、进程和主目标服务器，vContinuum 服务器和要保护的源服务器。<br/><br/> [了解详细信息](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|
 
 
 ## <a name="next-steps"></a>后续步骤

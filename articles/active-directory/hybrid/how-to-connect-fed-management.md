@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49a82e1452a4380920271f4fb4f7397208e32d78
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174446"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870935"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
 本文介绍如何使用 Azure Active Directory (Azure AD) Connect 管理和自定义 Active Directory 联合身份验证服务 (AD FS)。 另外，还介绍了可能需要针对完整的 AD FS 场配置执行的其他常见 AD FS 任务。

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: f7c482a0308d3c2b2583d99cf4079040065b80c0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 9f88314bbf507dc3b4e282532acfa079c2a63cce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561362"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890536"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>使用提取的数据运行跨租户分析 - 单租户应用
  
@@ -65,7 +65,7 @@ ms.locfileid: "55561362"
 
 ## <a name="setup"></a>设置
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 若要完成本教程，请确保满足以下先决条件：
 
@@ -93,7 +93,7 @@ ms.locfileid: "55561362"
     - 若要使用包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **3**  
 3. 按 **F5** 运行演示脚本（用于调用 *Deploy-TenantAnalytics<XX>.ps1* 脚本），以创建租户分析存储。 
 
-部署应用程序并在其中填充所需的租户数据后，请使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 并指定登录名 *developer* 和密码 *P@ssword1*，来连接 **tenants1-dpt-&lt;User&gt;** 和 **catalog-dpt-&lt;User&gt;** 服务器。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
+现在，已部署应用程序，并填充了感兴趣的租户数据，使用[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)连接**tenants1-dpt-&lt;用户&gt;** 和**目录-dpt-&lt;用户&gt;** 服务器使用的登录名 =*开发人员*，密码 = *P\@ssword1*。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -175,7 +175,7 @@ ms.locfileid: "55561362"
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 在左窗格中选择“数据库”，输入 *developer* 作为用户名，输入 *P@ssword1* 作为密码。 单击“连接”。  
+5. 选择**数据库**在左窗格中，然后输入用户名 =*开发人员*，然后输入密码 = *P\@ssword1*。 单击“连接”。  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db4c2fc0781225af6cc59df72467a69e0ba73e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0fc2aca2b785329b6faebd37c94493269d65c22b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189544"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182976"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
@@ -46,7 +46,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 还可以使用 Office 365 凭据访问 **Azure 管理中心**。 激活对 Azure AD 的访问权限以后，就会重定向到 Azure AD 门户。 在基本订阅级别，报告中提供的详细信息量是受限制的。 Azure 高级订户可获取其他的数据和分析。
 
-若要在 Office 365 管理中心内访问“已标记为存在风险的用户”报告，请执行以下操作：
+访问**已标记为风险用户**中 Microsoft 365 管理中心内的报表：
 
 1.  在左侧导航菜单中，选择“管理中心”。 
 2.  选择“Azure AD”。

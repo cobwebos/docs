@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 596ac871067886ee3124c0f21beb35cb3b8fe1ae
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235031"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593805"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>将 Azure 资源管理器支持与 Azure 负载均衡器配合使用
 
@@ -30,15 +30,15 @@ Azure 资源管理器是 Azure 中的首选服务管理框架。 Azure 负载均
 
 * 前端 IP 配置 - 单个负载均衡器可包含一个或多个前端 IP 地址（也称为虚拟 IP，即 VIP）。 这些 IP 地址充当流量的入口。
 * 后端地址池 - 即指与虚拟机网络接口卡 (NIC) 关联且分配有负载的 IP 地址。
-* 负载均衡规则 - 规则属性将给定的前端 IP 和端口组合映射到一组后端 IP 地址和端口组合。 单个负载均衡器可拥有多个负载均衡规则。 每个规则都包含前端 IP 和端口，以及与 VM 关联的后端 IP 和端口。
+* 负载均衡规则 – 规则属性将映射给定的前端 IP 和端口组合到一组的后端 IP 地址和端口组合。 单个负载均衡器可拥有多个负载均衡规则。 每个规则是前端 IP 和端口与后端 IP 和端口与 Vm 关联的组合。
 * 探测 – 使用探测可以跟踪 VM 实例的运行状况。 如果运行状况探测失败，VM 实例会自动从轮转列表中删除。
-* 入站 NAT 规则 - 定义流过前端 IP 并分配到后端 IP 的入站流量的 NAT 规则。
+* 入站的 NAT 规则 – NAT 规则定义流过前端 IP 的入站的流量，并分配到后端 IP。
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 
 ## <a name="quickstart-templates"></a>快速入门模板
 
-Azure 资源管理器可让你使用声明性模板预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
+Azure 资源管理器可让你使用声明性模板预配应用程序。 在单个模板中，你可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
 
 模板可包含以下项的定义：虚拟机、虚拟网络、可用性集、网络接口 (NIC)、存储帐户、负载均衡器、网络安全组和公开 IP。 使用模板，可创建复杂应用程序所需的一切内容。 模板文件可签入到内容管理系统进行版本控制和协作。
 
@@ -58,7 +58,7 @@ Azure 资源管理器可让你使用声明性模板预配应用程序。 在单�
 
 Azure 资源管理器 cmdlet、命令行工具和 REST API 入门
 
-* [Azure 网络 Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.network#networking) 可用于创建负载均衡器。
+* [Azure 网络 Cmdlet](https://docs.microsoft.com/powershell/module/az.network#networking) 可用于创建负载均衡器。
 * [如何使用 Azure 资源管理器创建负载均衡器](load-balancer-get-started-ilb-arm-ps.md)
 * [将 Azure CLI 与 Azure 资源管理结合使用](../xplat-cli-azure-resource-manager.md)
 * [负载均衡器 REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)

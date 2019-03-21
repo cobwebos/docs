@@ -1,23 +1,24 @@
 ---
 title: 故障排除 - 为 IaaS VM 启用 Azure 磁盘加密 | Microsoft Docs
 description: 本文提供适用于 Windows 和 Linux IaaS VM 的 Microsoft Azure 磁盘加密的故障排除提示。
-author: mestew
+author: msmbaldwin
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.author: mstewart
-ms.date: 02/04/2019
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: faea1cc7c45393c10a240de2c92757ff8f2ac5c3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 48cf0f2e219d141a039f508f0ea948aa5c78b882
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694075"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838266"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
 本指南面向使用 Azure 磁盘加密的组织中的 IT 专业人员、信息安全分析人员和云管理员。 本文旨在帮助排查与磁盘加密相关的问题。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Linux OS 磁盘加密故障排除
 
@@ -55,17 +56,17 @@ uname -a
 
 Linux OS 磁盘加密序列暂时卸载 OS 驱动器。 然后，它将对整个 OS 磁盘进行逐块加密，然后再将其重新安装为加密状态。 与 Windows 上的 Azure 磁盘加密不同，Linux 磁盘加密不允许在加密的同时并发使用 VM。 VM 的性能特点会在完成加密所需的时间上产生显著差异。 这些特点包括磁盘大小以及存储帐户为标准还是高级 (SSD) 存储。
 
-若要检查加密状态，可以轮询 [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) 命令返回的 ProgressMessage 字段。 加密 OS 驱动器时，VM 会进入维护状态，同时会禁用 SSH，以防止对进行中的进程造成任何干扰。 进行加密时，EncryptionInProgress 消息大部分时间都在提供报告。 几个小时之后，VMRestartPending 消息会提示重新启动 VM。 例如：
+若要检查的加密状态，轮询**ProgressMessage**从返回的字段[Get AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus)命令。 加密 OS 驱动器时，VM 会进入维护状态，同时会禁用 SSH，以防止对进行中的进程造成任何干扰。 进行加密时，EncryptionInProgress 消息大部分时间都在提供报告。 几个小时之后，VMRestartPending 消息会提示重新启动 VM。 例如：
 
 
-```
-PS > Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+```azurepowershell
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
 
-PS > Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
 OsVolumeEncrypted          : VMRestartPending
 DataVolumesEncrypted       : Encrypted
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
@@ -91,7 +92,7 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 使用 [Azure AD 凭据](azure-security-disk-encryption-prerequisites-aad.md)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Office 365 URL 和 IP 地址范围](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../key-vault/key-vault-access-behind-firewall.md)的文档中提供了密钥保管库说明。
 
 ### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
-VM 必须能够访问这样的 [Azure 实例元数据服务](../virtual-machines/windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。
+VM 必须能够访问这样的 [Azure 实例元数据服务](../virtual-machines/windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。  不支持 alter 本地 HTTP 流量传输到此地址 （例如，添加 X 转发的标头） 的代理配置。
 
 ### <a name="linux-package-management-behind-a-firewall"></a>防火墙保护下的 Linux 程序包管理
 
@@ -111,15 +112,15 @@ VM 必须能够访问这样的 [Azure 实例元数据服务](../virtual-machines
    \windows\system32\en-US\bdehdcfg.exe.mui
    ```
 
-   2. 输入以下命令：
+1. 输入以下命令：
 
    ```
    bdehdcfg.exe -target default
    ```
 
-   3. 此命令将创建一个 550 MB 系统分区。 重新启动系统。
+1. 此命令将创建一个 550 MB 系统分区。 重新启动系统。
 
-   4. 使用 DiskPart 检查卷，然后继续。  
+1. 使用 DiskPart 检查卷，然后继续。  
 
 例如：
 
@@ -136,6 +137,12 @@ DISKPART> list vol
 
 If the expected encryption state does not match what is being reported in the portal, see the following support article:
 [Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por) --> 
+
+## <a name="troubleshooting-encryption-status"></a>加密状态故障排除 
+
+在门户可能显示为加密磁盘，即使已在 VM 中未加密。  低级别的命令用于直接解密 VM，而不是使用更高级别 Azure 磁盘加密管理命令中的将磁盘从可以发生该错误。  更高级别命令不仅解密从 VM 中的磁盘，VM 外部它们还必须更新重要平台级别的加密设置和与 VM 关联的扩展插件设置。  如果这些不保存在对齐方式，请在平台不能以报告加密状态或正确预配 VM。   
+
+若要正确地禁用 Azure 磁盘加密，从已知的良好状态启动已启用，加密，然后使用[禁用 AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)并[删除 AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) Powershell命令，或[az vm 加密禁用](/cli/azure/vm/encryption)CLI 命令。 
 
 ## <a name="next-steps"></a>后续步骤
 

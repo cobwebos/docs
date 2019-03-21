@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: f6c2fbe5daeb114d6a5ea77c9823f1fa5bfe8425
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864462"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57977405"
 ---
 # <a name="graph-search-method"></a>Graph 搜索方法
 
@@ -29,7 +29,8 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 <br>
 
 ## <a name="request-parameters"></a>请求参数  
-Name     | 值 | 必需？  | 说明
+
+名称     | 值 | 必需？  | 描述
 -----------|-----------|---------|--------
 **mode**       | 文本字符串 | 是 | 要使用的模式的名称。 值为 json 或 lambda。
 
@@ -45,8 +46,10 @@ Name     | 值 | 必需？  | 说明
 对于 lambda 搜索，POST 正文是纯文本字符串。 POST 正文是 LIKQ lambda 查询字符串，即为一个 C# 语句（对于 lambda 搜索，请参阅[查询字符串规范](LambdaSearchSyntax.md)）。 
 
 <br>
+
 ## <a name="response-json"></a>响应 (JSON)
-Name | 说明
+
+名称 | 描述
 -------|-----   
 **results** | 一组与查询表达式匹配的 0 个或多个实体。 每个实体都包含请求获取的属性值。 如果已成功处理请求，此字段就会显示。
 **error** | HTTP 状态代码。 如果请求失败，此字段就会显示。
@@ -55,6 +58,7 @@ Name | 说明
 如果无法在 800 毫秒内处理查询，就会返回超时错误。 
 
 <br>
+
 #### <a name="example"></a>示例：
 
 ##### <a name="json-search"></a>JSON 搜索

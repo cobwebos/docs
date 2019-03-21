@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: 1b5991b7e9bb870fdace4418e23c7f8ff9bf8636
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 2bf9f75442ccf57aa28e6a12f415fb6e4ede78ec
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101776"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553318"
 ---
-以下是 Azure Maps 服务 **S0 定价层**的使用限制。 使用限制取决于定价层。 
+下表显示了 Azure Maps S0 定价层的使用情况限制。 使用限制取决于定价层。 
 
 | 资源                              | S0 定价层限制 |
 |---------------------------------------|:---------------------:|
 | 每个订阅的最大请求速率 |   每秒 50 个请求  |
 
 
-以下是 Azure Maps 数据服务的数据大小限制。 Azure Maps 数据服务仅适用于 S1 定价层。
+下表显示了 Azure Maps 的数据大小限制。 Azure Maps 数据服务将仅位于 S1 定价层。
 
 | 资源                              | 限制 |
 |---------------------------------------|:---------------------:|
 | 数据的最大大小 |   50 MB  |
 
-有关 Azure Maps 定价层的详细信息，请参阅 [Azure Maps 定价详细信息](https://azure.microsoft.com/pricing/details/azure-maps/)。
+有关定价层 Azure Maps 的详细信息，请参阅[Azure Maps 定价](https://azure.microsoft.com/pricing/details/azure-maps/)。

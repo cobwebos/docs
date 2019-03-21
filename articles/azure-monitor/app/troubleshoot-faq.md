@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 810a4708974d18a4bba048e3e402a172868178f3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429683"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905047"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -257,7 +257,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 允许 Web 服务器将遥测发送到我们的终结点。 
 
-### <a name="proxy-redirect"></a>代理重定向
+### <a name="gateway-redirect"></a>网关重定向
 
 通过重写配置中的终结点，将流量从服务器路由到 Intranet 上的网关。
 如果配置中不存在这些“终结点”属性，则这些类将使用下面示例 ApplicationInsights.config 中显示的默认值。 
@@ -288,7 +288,19 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 注意，自 v2.6.0 开始具备 ApplicationIdProvider 功能
 
+### <a name="proxy-passthrough"></a>代理传递
 
+可以通过配置计算机级别或应用程序级别实现的代理传递代理。
+有关详细信息请参阅 》 上 dotnet 的文章[DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)。
+ 
+ 示例 Web.config:
+ ```xml
+<system.net>
+    <defaultProxy>
+      <proxy proxyaddress="http://xx.xx.xx.xx:yyyy" bypassonlocal="true"/>
+    </defaultProxy>
+</system.net>
+```
  
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>是否可以在 Intranet 服务器上运行可用性 Web 测试？

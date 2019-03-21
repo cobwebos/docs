@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e0942f028752b1e3db89802ee889eac7157815d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 194f422c1567103e41f3b39f8510931b1f4762b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105176"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何从 LocalDB 10 GB 的限制恢复
 Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可以使用随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，也可以使用自己的完整 SQL。 SQL Server Express 存在 10 GB 的大小限制。 使用 LocalDB 并达到此限制后，Azure AD Connect Synchronization Service 将无法正常启动或同步。 本文提供了恢复步骤。
@@ -74,20 +74,20 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 
 4. 启动 **sqlcmd** 实用程序，方法是运行 `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` 命令并使用 sysadmin 或数据库 DBO 的凭据。
 
-5. 要收缩数据库，请在 sqlcmd 提示符 (1>) 处输入 `DBCC Shrinkdatabase(ADSync,1);`，并在下一行输入 `GO`。
+5. 如果要收缩数据库，请在 sqlcmd 提示符 (1>) 处输入 `DBCC Shrinkdatabase(ADSync,1);`，并在下一行输入 `GO`。
 
 6. 如果操作成功，请尝试再次启动 Synchronization Service。 如果可以启动 Synchronization Service，请转到[删除运行历史记录数据](#delete-run-history-data)步骤。 否则，请联系支持部门。
 
 ### <a name="delete-run-history-data"></a>删除运行历史记录数据
 默认情况下，Azure AD Connect 最多保留 7 天的运行历史记录数据。 在此步骤中，我们会通过删除运行历史记录数据来回收 DB 空间，这样 Azure AD Connect Synchronization Service 就可以重新开始同步。
 
-1.  转到“开始”→ Synchronization Service，以便启动 **Synchronization Service Manager**。
+1. 转到“开始”→ Synchronization Service，以便启动 **Synchronization Service Manager**。
 
-2.  转到“操作”选项卡。
+2. 转到“操作”选项卡。
 
-3.  在“操作”下面，选择“清除运行…”
+3. 在“操作”下面，选择“清除运行…”
 
-4.  可以选择“清除所有运行”或“清除 <date>之前的运行…”选项。 建议一开始清除超过两天的运行历史记录数据。 如果仍遇到 DB 大小问题，则选择“清除所有运行”选项。
+4. 可以选择“清除所有运行”或“清除 <date>之前的运行…”选项。 建议一开始清除超过两天的运行历史记录数据。 如果仍遇到 DB 大小问题，则选择“清除所有运行”选项。
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>缩短运行历史记录数据的保留期
 此步骤是为了在多次同步周期后降低遇到 10 GB 限制问题的可能性。

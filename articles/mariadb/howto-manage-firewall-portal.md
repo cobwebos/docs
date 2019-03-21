@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75fc79b582803150f2111efb848d113d52928263
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 3fccb50e3447eabc15cbef89ab7655b3f1d1f4ac
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544662"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876800"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则
 使用服务器级防火墙规则，管理员可以从指定的 IP 地址或某个范围的 IP 地址访问 Azure Database for MariaDB 服务器。 
@@ -32,7 +32,7 @@ ms.locfileid: "53544662"
 
 4. 添加其他地址范围。 在 Azure Database for MariaDB 防火墙规则中，可以指定单个 IP 地址，也可以指定某个范围的地址。 如果希望将规则限制为单个 IP 地址，请在“起始 IP”和“结束 IP”字段中输入相同的地址。 打开防火墙后，管理员、用户和应用程序可以访问 MariaDB 服务器上他们拥有有效凭据的任何数据库。
 
-   ![Azure 门户 - 防火墙规则 ](./media/howto-manage-firewall-portal/4-specify-addresses.png)
+   ![Azure 门户 - 防火墙规则](./media/howto-manage-firewall-portal/4-specify-addresses.png)
 
 5. 在工具栏上单击“保存”以保存此服务器级防火墙规则。 等待出现有关防火墙规则更新已成功的确认消息。
 

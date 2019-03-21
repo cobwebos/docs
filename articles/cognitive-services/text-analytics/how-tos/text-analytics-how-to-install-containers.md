@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 6ad48bb6e7d9c2fd0365b26999b67ad8c62fc42c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f757218d29317f82339967a327f34438c62ab96
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000259"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294138"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -26,7 +26,7 @@ ms.locfileid: "58000259"
 
 ## <a name="prerequisites"></a>必备组件
 
-若要运行任何文本分析容器，必须具有以下各项：
+若要运行任何文本分析容器，必须在主机计算机和容器环境。
 
 ## <a name="preparation"></a>准备工作
 
@@ -46,11 +46,14 @@ ms.locfileid: "58000259"
 
 下表描述了每个文本分析容器的 CPU 和内存配置，其中包括要分配的最少和建议 CPU 核心数（至少 2.6 GHz）和内存量 (GB)。
 
-| 容器 | 最小值 | 建议 |
-|-----------|---------|-------------|
-|关键短语提取 | 单核，2 GB 内存 | 单核，4 GB 内存 |
-|语言检测 | 单核，2 GB 内存 | 单核，4 GB 内存 |
-|情绪分析 | 单核，2 GB 内存 | 单核，4 GB 内存 |
+| 容器 | 最小值 | 建议 | TPS<br>（最低配置，最大值）|
+|-----------|---------|-------------|--|
+|关键短语提取 | 单核，2 GB 内存 | 单核，4 GB 内存 |15, 30|
+|语言检测 | 单核，2 GB 内存 | 单核，4 GB 内存 |15, 30|
+|情绪分析 | 单核，2 GB 内存 | 单核，4 GB 内存 |15, 30|
+
+* 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
+* TP-每秒事务数
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
@@ -64,7 +67,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 |语言检测 | `mcr.microsoft.com/azure-cognitive-services/language` |
 |情绪分析 | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令从 Microsoft 容器注册表下载容器映像。
+使用[ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/)命令，以从 Microsoft 容器注册表下载容器映像。
 
 有关文本分析容器可用标记的完整说明，请查看 Docker 中心内的以下容器：
 

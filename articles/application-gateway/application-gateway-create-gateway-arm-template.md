@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 6a671744944527b64aab9a7b9afe05d6a9f2f27f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 682aac8ec6716ac59c6bdc0710065c916a0c41b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002082"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084923"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建应用程序网关
 
@@ -49,27 +49,27 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 
 ![场景](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
-## <a name="download-and-understand-the-azure-resource-manager-template"></a>下载 Azure 资源管理器模板并对其进行了解
+## <a name="download-and-understand-the-azure-resource-manager-template"></a>下载并了解 Azure Resource Manager 模板
 
 可以从 GitHub 下载用于创建虚拟网络和两个子网的现有 Azure 资源管理器模板，进行任何所需的更改，并重用该模板。 为此，请按照以下步骤操作：
 
 1. 导航到[创建启用了 Web 应用程序防火墙的应用程序网关](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf)。
-1. 单击 **azuredeploy.json**，并单击 **RAW**。
-1. 将该文件保存到计算机上的本地文件夹。
-1. 如果熟悉 Azure 资源管理器模板，则跳到步骤 7。
+1. 单击 **azuredeploy.json**，然后单击 **RAW**。
+1. 将该文件保存到计算机上的本地文件夹中。
+1. 如果熟悉 Azure Resource Manager 模板，则跳到步骤 7。
 1. 打开保存的文件，并查看 **parameters** 下行中的内容
-1. Azure 资源管理器模板参数提供了在部署过程中可以填充的值的占位符。
+1. Azure Resource Manager 模板参数提供了在部署过程中可以填充的值的占位符。
 
-  | 参数 | Description |
-  | --- | --- |
-  | **subnetPrefix** |应用程序网关子网的 CIDR 块。 |
-  | **applicationGatewaySize** | 应用程序网关的大小。  WAF 仅允许中型和大型网关。 |
-  | **backendIpaddress1** |第一个 Web 服务器的 IP 地址。 |
-  | **backendIpaddress2** |第二个 Web 服务器的 IP 地址。 |
-  | **wafEnabled** | 用于确定是否启用了 WAF 的设置。|
-  | **wafMode** | Web 应用程序防火墙的模式。  可用选项有：“预防”或“检测”。|
-  | **wafRuleSetType** | WAF 的规则集类型。  目前，OWASP 是唯一受支持的选项。 |
-  | **wafRuleSetVersion** |规则集版本。 OWASP CRS 2.2.9 和 3.0 目前是支持的选项。 |
+   | 参数 | 描述 |
+   | --- | --- |
+   | **subnetPrefix** |应用程序网关子网的 CIDR 块。 |
+   | **applicationGatewaySize** | 应用程序网关的大小。  WAF 仅允许中型和大型网关。 |
+   | **backendIpaddress1** |第一个 Web 服务器的 IP 地址。 |
+   | **backendIpaddress2** |第二个 Web 服务器的 IP 地址。 |
+   | **wafEnabled** | 用于确定是否启用了 WAF 的设置。|
+   | **wafMode** | Web 应用程序防火墙的模式。  可用选项有：“预防”或“检测”。|
+   | **wafRuleSetType** | WAF 的规则集类型。  目前，OWASP 是唯一受支持的选项。 |
+   | **wafRuleSetVersion** |规则集版本。 OWASP CRS 2.2.9 和 3.0 目前是支持的选项。 |
 
 1. 检查 **resources**下的内容，并注意以下属性：
 
@@ -82,61 +82,63 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 1. 将该文件保存到计算机上的本地文件夹。
 1. 打开保存的文件并编辑参数的值。 使用以下值部署本方案中所述的应用程序网关。
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "addressPrefix": {
-            "value": "10.0.0.0/16"
-            },
-            "subnetPrefix": {
-            "value": "10.0.0.0/28"
-            },
-            "applicationGatewaySize": {
-            "value": "WAF_Medium"
-            },
-            "capacity": {
-            "value": 2
-            },
-            "backendIpAddress1": {
-            "value": "10.0.1.10"
-            },
-            "backendIpAddress2": {
-            "value": "10.0.1.11"
-            },
-            "wafEnabled": {
-            "value": true
-            },
-            "wafMode": {
-            "value": "Detection"
-            },
-            "wafRuleSetType": {
-            "value": "OWASP"
-            },
-            "wafRuleSetVersion": {
-            "value": "3.0"
-            }
-        }
-    }
-    ```
+     ```json
+     {
+         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+         "contentVersion": "1.0.0.0",
+         "parameters": {
+             "addressPrefix": {
+             "value": "10.0.0.0/16"
+             },
+             "subnetPrefix": {
+             "value": "10.0.0.0/28"
+             },
+             "applicationGatewaySize": {
+             "value": "WAF_Medium"
+             },
+             "capacity": {
+             "value": 2
+             },
+             "backendIpAddress1": {
+             "value": "10.0.1.10"
+             },
+             "backendIpAddress2": {
+             "value": "10.0.1.11"
+             },
+             "wafEnabled": {
+             "value": true
+             },
+             "wafMode": {
+             "value": "Detection"
+             },
+             "wafRuleSetType": {
+             "value": "OWASP"
+             },
+             "wafRuleSetVersion": {
+             "value": "3.0"
+             }
+         }
+     }
+     ```
 
 1. 保存文件。 可以使用联机 JSON 验证工具（例如 [JSlint.com](https://www.jslint.com/)）测试 JSON 模板和参数模板。
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>使用 PowerShell 部署 Azure 资源管理器模板
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 如果从未使用过 Azure PowerShell，请访问：[如何安装和配置 Azure PowerShell](/powershell/azure/overview)，并按照说明进行操作，以登录到 Azure 并选择订阅。
 
 1. 登录 PowerShell
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 1. 检查该帐户的订阅。
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     系统会提示用户使用凭据进行身份验证。
@@ -144,29 +146,29 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 1. 选择要使用的 Azure 订阅。
 
     ```powershell
-    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
 1. 如有必要，请使用 **New-AzureResourceGroup** cmdlet 创建资源组。 在以下示例中，在“美国东部”位置创建名为 AppgatewayRG 的资源组。
 
     ```powershell
-    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
-1. 运行 **New-AzureRmResourceGroupDeployment** cmdlet，使用在前面下载并修改的模板和参数文件部署新虚拟网络。
+1. 运行 **New-AzResourceGroupDeployment** cmdlet，使用在前面下载并修改的模板和参数文件部署新虚拟网络。
     
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>使用 Azure CLI 部署 Azure 资源管理器模板
 
-若要使用 Azure CLI 部署下载的 Azure 资源管理器模板，请执行以下步骤：
+若要使用 Azure CLI 部署下载的 Azure Resource Manager 模板，请执行以下步骤：
 
 1. 如果从未使用过 Azure CLI，请参阅 [安装和配置 Azure CLI](/cli/azure/install-azure-cli) ，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 
-1. 如有必要，请运行 `az group create` 命令创建一个资源组，如以下代码片段中所示。 请注意命令的输出。 在输出后显示的列表说明了所用的参数。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
+1. 如有必要，请运行 `az group create` 命令创建一个资源组，如以下代码片段中所示。 请注意命令的输出。 在输出后显示的列表说明了所使用的参数。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
     ```azurecli
     az group create --location westus --name appgatewayRG
@@ -202,7 +204,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>对 Resource Manager 模板提供证书数据
 
-如果将 SSL 与模板一起使用，请提供 base64 字符串的证书，而不是上传证书。 若要将 .pfx 或 .cer 转换为 base64 字符串，请运行以下命令之一。 以下命令可将证书转换为提供给模板的 base64 字符串。 预期输出为一个字符串，它可以存储在变量中，并粘贴到模板中。
+如果将 SSL 与模板一起使用，需要提供 base64 字符串格式的证书，而不是上传证书。 若要将 .pfx 或 .cer 转换为 base64 字符串，请运行以下命令之一。 以下命令可将证书转换为提供给模板的 base64 字符串。 预期输出为一个字符串，它可以存储在变量中，并粘贴到模板中。
 
 ### <a name="macos"></a>macOS
 ```bash
@@ -222,7 +224,7 @@ echo $cert
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureRmResourceGroup -Name appgatewayRG
+Remove-AzResourceGroup -Name appgatewayRG
 ```
 
 ### <a name="azure-cli"></a>Azure CLI

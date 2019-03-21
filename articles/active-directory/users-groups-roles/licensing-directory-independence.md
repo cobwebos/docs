@@ -15,12 +15,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 443aef1a7396dc637b656a805b758a62bcfac41d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 45f48b6d8ef29d14606f18d4ccee77bd742a670a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194285"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175992"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>了解多个 Azure Active Directory 租户的交互方式
 
@@ -47,7 +47,7 @@ ms.locfileid: "56194285"
 若要在 Azure 门户中添加 Azure AD 租户，请使用作为 Azure AD 全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)，然后选择左侧的“新建”。
 
 > [!NOTE]
-> 与其他 Azure 资源不同，租户不是 Azure 订阅的子资源。 如果 Azure 订阅被取消或过期，仍可以使用 Azure PowerShell、Azure 图形 API 或 Office 365 管理中心来访问租户数据。 此外，还可以[将其他订阅与租户相关联](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+> 与其他 Azure 资源不同，租户不是 Azure 订阅的子资源。 如果你的 Azure 订阅取消或已过期，仍可以访问你使用 Azure PowerShell、 Azure 图形 API 或 Microsoft 365 管理中心内的租户数据。 此外，还可以[将其他订阅与租户相关联](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 >
 
 ## <a name="next-steps"></a>后续步骤

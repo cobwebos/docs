@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 08e80a9baa4c6841b6d88d1c5f2ba69992ffa7ef
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
-ms.translationtype: HT
+ms.openlocfilehash: 693da06ce14a4854d5db49f588fa29d791060166
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977049"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108097"
 ---
 # <a name="add-an-email-action"></a>添加电子邮件操作
 
@@ -31,7 +31,7 @@ ms.locfileid: "51977049"
 
 1. 从“仪表板”导航到“规则”页面：
 
-    ![“规则”页面](./media/iot-accelerators-remote-monitoring-email-actions/rules.png)
+    ![“规则”页面](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
 1. 单击要修改的现有规则旁边的复选框，然后单击顶部的“编辑”。 随即出现可编辑的“规则”面板。
 
@@ -41,7 +41,7 @@ ms.locfileid: "51977049"
 
 1. 在收件人框中输入电子邮件地址，然后按每个电子邮件地址的“Enter”键以添加：
 
-    ![地址项](./media/iot-accelerators-remote-monitoring-email-actions/address.png)
+    ![地址项](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. 输入电子邮件的主题。
 
@@ -59,7 +59,7 @@ ms.locfileid: "51977049"
 
 1. 从“仪表板”导航到“规则”页面：
 
-    ![“规则”页面](./media/iot-accelerators-remote-monitoring-email-actions/rules.png)
+    ![“规则”页面](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
 1. 请按照[创建规则部分](iot-accelerators-remote-monitoring-automate.md#create-a-rule)中的步骤进行操作。 请按照[创建高级规则](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule)部分中的步骤进行操作，直到设置“严重级别”。 此时请勿单击“应用”。
 
@@ -69,7 +69,7 @@ ms.locfileid: "51977049"
 
 1. 在收件人框中输入电子邮件地址，然后按每个电子邮件地址的“Enter”键以添加：
 
-    ![地址项](./media/iot-accelerators-remote-monitoring-email-actions/address.png)
+    ![地址项](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
 1. 输入电子邮件的主题。
 
@@ -128,7 +128,7 @@ ms.locfileid: "51977049"
 
 1. 单击以登录 Outlook。 随即转到 Azure 门户：
 
-  ![登录 Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook.png)
+   ![登录 Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
 1. 单击“授权”。 系统会提示你进行登录。 用于登录的帐户应是该应用程序用于发送电子邮件通知的电子邮件地址：
 
@@ -136,7 +136,7 @@ ms.locfileid: "51977049"
 
 1. 如果已成功配置电子邮件通知，则会显示以下消息：
 
-  ![Outlook 登录成功](./media/iot-accelerators-remote-monitoring-email-actions/success.png)
+   ![Outlook 登录成功](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
 ## 自定义电子邮件 HTML <a name="htmledit"></a>
 
@@ -168,7 +168,7 @@ ms.locfileid: "51977049"
 
 远程监视解决方案加速器使用 Outlook 发送电子邮件通知。 Outlook 将发送的电子邮件数量限制为[每 1 分钟 30 封电子邮件](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)。 接收电子邮件的电子邮件客户端也可以限制每分钟收到的电子邮件数量。 有关限制事宜，请查看特定电子邮件客户端。 设置规则的电子邮件通知时，规则应计算至少一分钟的平均值，而不是使用即时值：
 
-![平均值计算](./media/iot-accelerators-remote-monitoring-email-actions/calculation.png)
+![平均值计算](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 
 ## <a name="next-steps"></a>后续步骤
 

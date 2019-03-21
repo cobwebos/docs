@@ -16,19 +16,19 @@ ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: af3e7528e2312cef1832dc104e83384a91acf263
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: b6950e3445f2320f2e3a45f55726befd7077119a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991336"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835903"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 适用于 Azure Stack 集成系统的 1901年更新或部署 Azure 应用服务 1.5 之前部署最新的 Azure Stack 开发工具包。
+> 请将 1901 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.5。
 
 按照本文中的说明操作即可将[应用服务资源提供程序](azure-stack-app-service-overview.md)安装到符合以下条件的 Azure Stack 环境：
 
@@ -36,7 +36,7 @@ ms.locfileid: "56991336"
 - 受 Active Directory 联合身份验证服务 (AD FS) 保护。
 
 > [!IMPORTANT]  
-> 运行资源提供程序安装程序之前，请确保已按照中的指导[在开始之前](azure-stack-app-service-before-you-get-started.md)并已阅读[发行说明](azure-stack-app-service-release-notes-update-five.md)其伴随 1.5 版本了解有关新功能、 修复和可能会影响你的部署任何已知的问题。
+> 在运行资源提供程序安装程序之前，请确保已按照[准备工作](azure-stack-app-service-before-you-get-started.md)中的指南进行操作，并已阅读版本 1.5 随附的[发行说明](azure-stack-app-service-release-notes-update-five.md)，了解新功能、修补程序以及任何可能影响部署的已知问题。
 
 若要将应用服务资源提供程序添加到脱机的 Azure Stack 部署，必须完成以下顶级任务：
 
@@ -82,30 +82,30 @@ ms.locfileid: "56991336"
     ![应用服务安装程序][3]
 
 7. 在下一页上执行以下操作：
-    1. 单击“Azure Stack 订阅”框旁边的“连接”按钮。
-        - 提供管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，并单击“登录”。
-    2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
+   1. 单击“Azure Stack 订阅”框旁边的“连接”按钮。
+      - 提供管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，并单击“登录”。
+   2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
     
-    > [!NOTE]
-    > 应用服务只能部署到“默认提供程序订阅”。
-    >
+      > [!NOTE]
+      > 应用服务只能部署到“默认提供程序订阅”。
+      >
     
-    3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
-    4. 单击“下一步”。
+   3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
+   4. 单击“下一步”。
 
-    ![应用服务安装程序][4]
+      ![应用服务安装程序][4]
 
 8. 现在，可以选择部署到通过[此处](azure-stack-app-service-before-you-get-started.md#virtual-network)所述的步骤配置的现有虚拟网络，或者让应用服务安装程序创建虚拟网络和关联的子网。
-    1. 选择“使用默认设置创建 VNet”，接受默认值，然后单击“下一步”，或者
-    2. 选择“使用现有的 VNet 和子网”。
-        1. 选择包含虚拟网络的**资源组**；
-        2. 选择要部署到的正确**虚拟网络**名称；
-        3. 为每个所需角色子网选择正确的“子网”值；
-        4. 点击“下一步”
+   1. 选择“使用默认设置创建 VNet”，接受默认值，然后单击“下一步”，或者
+   2. 选择“使用现有的 VNet 和子网”。
+       1. 选择包含虚拟网络的**资源组**；
+       2. 选择要部署到的正确**虚拟网络**名称；
+       3. 为每个所需角色子网选择正确的“子网”值；
+       4. 点击“下一步”
 
-    ![应用服务安装程序][5]
+      ![应用服务安装程序][5]
 
-9. 输入文件共享的信息，然后单击“下一步”。 文件共享的地址必须使用文件服务器的完全限定域名或 IP 地址。 例如 \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或 \\\10.0.0.1\websites。  如果使用已加入域的文件服务器，必须提供完整的用户名包括域，例如，myfileserverdomain\FileShareOwner。
+9. 输入文件共享的信息，然后单击“下一步”。 文件共享的地址必须使用文件服务器的完全限定域名或 IP 地址。 例如 \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或 \\\10.0.0.1\websites。  如果使用已加入域的文件服务器，则必须提供包含域的完整用户名，例如 myfileserverdomain\FileShareOwner。
 
     > [!NOTE]
     > 在继续下一步之前，安装程序会尝试测试与文件共享的连接。  但是，如果前面已选择部署到现有虚拟网络，则安装程序可能无法连接到文件共享，并显示警告来询问是否继续。  请检查文件共享信息，如果正确，则继续。
@@ -152,7 +152,7 @@ ms.locfileid: "56991336"
     > ```
     > 有关更多详细信息，请参阅 [Azure Stack 1.3 上的 Azure 应用服务的发行说明](azure-stack-app-service-release-notes-update-three.md)。
    
-   ![应用服务安装程序][12]
+    ![应用服务安装程序][12]
 
 13. 查看角色实例和 SKU 选项。 使用 ASDK 部署中每个角色的最小实例数和最小 SKU 填充默认值。 提供 vCPU 和内存要求摘要是为了帮助你规划部署。 进行选择后，单击“下一步”。
 
@@ -172,7 +172,7 @@ ms.locfileid: "56991336"
     ![应用服务安装程序][14]
 
     > [!NOTE]
-    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。Azure Stack上的 Azure 应用服务要求在用于部署的映像上激活 Microsoft.Net 3.5.1 SP1。 市场联合 Windows Server 2016 映像未启用此功能，因此必须在预先启用此功能的情况下创建并使用 Windows Server 2016 映像。**
+    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。Azure Stack 上的 azure 应用服务需要 microsoft.net 3.5.1 SP1 已激活用于部署的映像上。 市场联合 Windows Server 2016 映像未启用此功能，因此必须在预先启用此功能的情况下创建并使用 Windows Server 2016 映像。**
 
 14. 在“选择平台映像”框中选择部署型 Windows Server 2016 虚拟机映像，该映像由应用服务云的计算资源提供程序提供。 单击“下一步”。
 
@@ -199,7 +199,7 @@ ms.locfileid: "56991336"
 ## <a name="post-deployment-steps"></a>部署后步骤
 
 > [!IMPORTANT]  
-> 如果提供了使用 SQL Alwayson 实例应用服务 RP 必须[appservice_hosting 和 appservice_metering 数据库添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)和同步数据库以防止服务中的任何损失数据库故障转移事件。
+> 如果已经为应用服务 RP 提供 SQL Always On 实例，则必须[将 appservice_hosting 和 appservice_metering 数据库添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)并同步数据库，以免在进行数据库故障转移时丢失服务。
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>验证 Azure Stack 上的应用服务安装
 
@@ -210,7 +210,7 @@ ms.locfileid: "56991336"
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
 
 > [!NOTE]
-> 如果您选择将部署到现有的虚拟网络和连接到你的文件服务器的内部 IP 地址，则必须添加出站安全规则，启用辅助子网和文件服务器之间的 SMB 流量。  为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
+> 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。  为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
 > * 源：任意
 > * 源端口范围：*
 > * 目标：IP 地址
@@ -253,7 +253,7 @@ ms.locfileid: "56991336"
 
 1. 在 Azure Stack 租户门户中，单击“+”，转到 Azure 市场，部署 Django 网站并等待成功完成。 Django Web 平台使用基于文件系统的数据库。 它不需要任何其他资源提供程序，如 SQL 或 MySQL。
 
-2. 如果还部署了 MySQL 资源提供程序，则可从市场部署 WordPress 网站。 当系统提示输入数据库参数时，请输入用户名，其格式为 *User1@Server1*（使用所选的用户名和服务器名称）。
+2. 如果还部署了 MySQL 资源提供程序，则可从市场部署 WordPress 网站。 当系统提示输入数据库参数时，输入作为用户名*User1\@Server1*、 用户名称与所选的服务器名称。
 
 3. 如果还部署了 SQL Server 资源提供程序，则可从市场部署 DNN 网站。 当系统提示输入数据库参数时，请在运行 SQL Server 的计算机中选择连接到资源提供程序的数据库。
 

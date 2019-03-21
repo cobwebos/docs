@@ -2,21 +2,20 @@
 title: 适用于 Azure 数据工厂的 Azure PowerShell 示例 | Microsoft Docs
 description: Azure PowerShell 示例 - 这些脚本可帮助你创建和管理数据工厂。
 services: data-factory
-author: douglaslMS
-manager: douglaslMS
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: douglasl
-ms.openlocfilehash: 514e119211e92e6e056caaf895bce1bce70fa53f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: c822ebdea2bab6f4c6c05cf2d4a4b822d6e02f3f
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018919"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575675"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>适用于 Azure 数据工厂的 Azure PowerShell 示例
 

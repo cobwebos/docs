@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 4b4510a02c4212724f8a592c7318aecab3d06275
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 1b52f47d692cf2fb2925ebb2a9882b9c79c29a87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733255"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452634"
 ---
 # <a name="what-is-microsoft-genomics"></a>什么是 Microsoft 基因组学？
 Microsoft 基因组学提供 Burrows-Wheeler Aligner (BWA) 的云实现以及用于辅助分析的基因组分析工具包 (GATK)。 该服务已通过 ISO 认证并符合 HIPAA 法规，并针对基因组排序需求提供价格可预测性。 了解如何通过阅读快速入门、教程和文档使用 Microsoft 基因组学服务并将其与 API 集成。
 
 ## <a name="support-your-most-demanding-sequencing-needs"></a>支持最苛刻的排序需求
-在运行百亿亿字节规模的工作负荷中，利用 Microsoft 的规模和体验，而不是管理自己的数据中心。 BWA-GATK 的云实现与博德研究所的最佳做法管道高度相关。
+在运行百亿亿字节规模的工作负荷中，利用 Microsoft 的规模和体验，而不是管理自己的数据中心。 使用广泛研究所的最佳做法管道高度 concordant BWA GATK 我们云实现。
 
 
 ## <a name="keep-your-business-running"></a>使业务持续运转

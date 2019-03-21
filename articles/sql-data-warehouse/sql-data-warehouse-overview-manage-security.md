@@ -6,16 +6,16 @@ author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: security
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c3844d378b44d292b9a7eb631fa896d5f6e61dbe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 179925fc7411a1ccf3de02d7b6298cc66f93bc66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472178"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175711"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>保护 SQL 数据仓库中的数据库
 > [!div class="op_single_selector"]
@@ -35,9 +35,9 @@ ms.locfileid: "55472178"
 
 SQL 数据仓库使用服务器级防火墙规则。 它不支持数据库级防火墙规则。 有关详细信息，请参阅 [Azure SQL 数据库防火墙][Azure SQL Database firewall]、[sp_set_firewall_rule][sp_set_firewall_rule]。
 
-默认加密到 SQL 数据仓库的连接。  将忽略通过修改连接设置禁用加密的操作。
+默认加密到 SQL 数据仓库的连接。  通过修改连接设置来禁用加密的操作会被忽略。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 身份验证是指连接到数据库时如何证明身份。 SQL 数据仓库当前支持通过用户名和密码，以及 Azure Active Directory 进行 SQL Server 身份验证。 
 
 在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 使用这些凭据，可以通过 SQL Server 身份验证以数据库所有者（或“dbo”）的身份在该服务器对任何数据库进行验证。

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: b3855386f89eda71e145df6dd83d1b1e7e093735
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563637"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878068"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>在使用分片多租户 SQL 数据库的 SaaS 应用程序中管理架构
 
@@ -41,7 +41,7 @@ ms.locfileid: "55563637"
 > * 更新所有租户数据库中的引用数据。
 > * 在所有租户数据库中的表上创建索引。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 须已部署 Wingtip Tickets 多租户数据库应用：
     - 有关说明，请参阅第一篇教程，其中介绍了 Wingtip Tickets SaaS 多租户数据库应用：<br />[部署和浏览使用 Azure SQL 数据库的分片多租户应用程序](saas-multitenantdb-get-started-deploy.md)。
@@ -53,7 +53,7 @@ ms.locfileid: "55563637"
 - 必须已安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 > [!NOTE]
-> 本教程使用的是有限预览版（[弹性数据库作业](sql-database-elastic-database-client-library.md)）中 Azure SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 *SaaSFeedback@microsoft.com*，并在邮件主题中注明“弹性作业预览版”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 *SaaSFeedback@microsoft.com*。
+> 本教程使用的是有限预览版（[弹性数据库作业](sql-database-elastic-database-client-library.md)）中 Azure SQL 数据库服务的功能。 如果你想要执行本教程中，将订阅 ID 提供给*SaaSFeedback\@microsoft.com*主题 = 弹性作业预览版。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，请联系*SaaSFeedback\@microsoft.com*相关的问题或者需要支持。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
 
@@ -173,5 +173,5 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 > * 更新所有租户数据库中的引用数据
 > * 在所有租户数据库中的表上创建索引
 
-接下来，请试用[临时报表教程](saas-multitenantdb-adhoc-reporting.md)，了解如何跨租户数据库运行分布式查询。
+接下来，请尝试[临时报表教程](saas-multitenantdb-adhoc-reporting.md)浏览跨租户数据库运行分布式的查询。
 

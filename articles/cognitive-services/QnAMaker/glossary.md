@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: c280f6ef99678b77edcb251ead685be88265f825
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: bb3b262f3bde0599cb6dea009d0fbbeafb1c529a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871007"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649435"
 ---
 # <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>QnA Maker 知识库和服务的术语表
 
@@ -42,4 +42,4 @@ QnA Maker 服务是开始使用 QnA Maker 的先决条件。 购买 QnA Maker �
 响应是基于给定用户查询的最佳匹配从知识库检索的答案。
 
 ## <a name="confidence-score"></a>置信度分数
-响应的置信度分数是介于 0 和 100 之间的数值，100 是指用户查询与知识库中的问题之间精确查询匹配，所提供的响应是对给定用户查询的正确、适当的响应。 答案通常按置信度分数排名，而置信度分数较高的答案则作为默认响应。
+响应的置信度分数是介于 0 和 100 之间的数值，100 是指用户查询与知识库中的问题之间精确查询匹配，所提供的响应是对给定用户查询的正确、适当的响应。 答案通常按置信度得分排名和具有更高版本的置信度得分担任[默认响应](concepts/confidence-score.md#change-default-answer)。

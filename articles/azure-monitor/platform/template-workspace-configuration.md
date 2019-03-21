@@ -11,16 +11,19 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: 46be596cbd2641b9ecd3206f44a6e7de7beed255
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: c59e0e7cd846f77082b7131aaec15e4945a18191
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417494"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110148"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 可以使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
 * 创建工作区，包括设置定价层 
@@ -40,9 +43,9 @@ ms.locfileid: "56417494"
 下表列出了此示例中使用的资源的 API 版本。
 
 | 资源 | 资源类型 | API 版本 |
-|:---|:---|:---|:---|
+|:---|:---|:---|
 | 工作区   | workspaces    | 2017-03-15-preview |
-| 搜索      | savedSearches | 2017-03-15-preview |
+| 搜索      | savedSearches | 2015-03-20 |
 | 数据源 | datasources   | 2015-11-01-preview |
 | 解决方案    | solutions     | 2015-11-01-preview |
 
@@ -101,7 +104,7 @@ ms.locfileid: "56417494"
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
@@ -122,7 +125,7 @@ ms.locfileid: "56417494"
    * 对于 PowerShell，请在包含模板的文件夹中使用以下命令：
    
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
         ```
 
    * 对于命令行，请在包含模板的文件夹中使用以下命令：
@@ -218,7 +221,7 @@ ms.locfileid: "56417494"
   },
   "resources": [
     {
-      "apiVersion": "2017-03-15-preview",
+      "apiVersion": "2015-11-01-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -230,7 +233,7 @@ ms.locfileid: "56417494"
       },
       "resources": [
         {
-          "apiVersion": "2017-03-15-preview",
+          "apiVersion": "2015-03-20",
           "name": "VMSS Queries2",
           "type": "savedSearches",
           "dependsOn": [
@@ -379,7 +382,7 @@ ms.locfileid: "56417494"
           }
         },
         {
-          "apiVersion": "2015-11-01-preview",
+          "apiVersion": "2015-03-20",
           "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('workspaceName'))]",
           "type": "storageinsightconfigs",
           "dependsOn": [
@@ -500,7 +503,7 @@ ms.locfileid: "56417494"
 
 #### <a name="powershell"></a>PowerShell
 ```powershell
-New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
+New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
 ```
 
 #### <a name="command-line"></a>命令行

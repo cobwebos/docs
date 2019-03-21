@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: fcba3aef29e1566f9dfb2b151c15fe683be94fdb
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: 7fead05e7404e042d923631f4ba745553085943a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266581"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098104"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>部署 Azure Blockchain Workbench
 
@@ -47,7 +47,7 @@ Blockchain Workbench 的成本是基础 Azure 服务成本的总和。 Azure 服
 > [!IMPORTANT]
 > 如果使用具有较低服务限制的订阅（如 Azure 免费层订阅），则部署可能会由于 VM 内核配额不足而失败。 在部署之前，使用[虚拟机 vCPU 配额](../../virtual-machines/windows/quotas.md)一文中的指导检查配额。 默认 VM 选择需要 6 个 VM 内核。 更改为较小的 VM（如标准 DS1 v2）会将内核数减少到 4。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以选择在部署之前[手动配置](#azure-ad-configuration) Azure AD，或者在部署后运行一个脚本。 若要重新部署 Blockchain Workbench，请参阅 [Azure AD 配置](#azure-ad-configuration)以验证 Azure AD 配置。
 
@@ -75,7 +75,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
     ![创建 Azure Blockchain Workbench](media/deploy/blockchain-workbench-settings-basic.png)
 
-    | 设置 | Description  |
+    | 设置 | 描述  |
     |---------|--------------|
     | 资源前缀 | 部署的短唯一标识符。 此值用作资源命名的基础。 |
     | VM 用户名 | 该用户名用作所有虚拟机 (VM) 的管理员。 |
@@ -98,7 +98,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
     ![新区块链网络的高级设置](media/deploy/advanced-blockchain-settings-new.png)
 
-    | 设置 | Description  |
+    | 设置 | 描述  |
     |---------|--------------|
     | 监视 | 选择是否要允许 Azure Monitor 监视区块链网络 |
     | Azure Active Directory 设置 | 选择“稍后添加”。</br>注意：如果选择[预配置 Azure AD](#azure-ad-configuration) 或要重新部署，请选择“立即添加”。 |
@@ -108,20 +108,20 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
     “使用现有”选项允许你指定 Ethereum 权威证明 (PoA) 区块链网络。 终结点具有以下要求。
 
-    * 终结点必须是 Ethereum 权威证明 (PoA) 区块链网络。
-    * 终结点必须可通过网络公开访问。
-    * PoA 区块链网络应配置为将天然气价格设置为零。
+   * 终结点必须是 Ethereum 权威证明 (PoA) 区块链网络。
+   * 终结点必须可通过网络公开访问。
+   * PoA 区块链网络应配置为将天然气价格设置为零。
 
-    > [!NOTE]
-    > Blockchain Workbench 帐户不会获得资助。 如果需要资金，交易将会失败。
+     > [!NOTE]
+     > Blockchain Workbench 帐户不会获得资助。 如果需要资金，交易将会失败。
 
-    ![现有区块链网络的高级设置](media/deploy/advanced-blockchain-settings-existing.png)
+     ![现有区块链网络的高级设置](media/deploy/advanced-blockchain-settings-existing.png)
 
-    | 设置 | Description  |
-    |---------|--------------|
-    | Ethereum RPC 终结点 | 提供现有 PoA 区块链网络的 RPC 终结点。 终结点以 https:// 或 http:// 开头，以端口号结尾。 例如： `http<s>://<network-url>:<port>` |
-    | Azure Active Directory 设置 | 选择“稍后添加”。</br>注意：如果选择[预配置 Azure AD](#azure-ad-configuration) 或要重新部署，请选择“立即添加”。 |
-    | VM 选择 | 为区块链网络选择首选的 VM 大小。 |
+     | 设置 | 描述  |
+     |---------|--------------|
+     | Ethereum RPC 终结点 | 提供现有 PoA 区块链网络的 RPC 终结点。 终结点以 https:// 或 http:// 开头，以端口号结尾。 例如： `http<s>://<network-url>:<port>` |
+     | Azure Active Directory 设置 | 选择“稍后添加”。</br>注意：如果选择[预配置 Azure AD](#azure-ad-configuration) 或要重新部署，请选择“立即添加”。 |
+     | VM 选择 | 为区块链网络选择首选的 VM 大小。 |
 
 9. 选择“确定”完成高级设置。
 
@@ -223,18 +223,18 @@ Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Az
 
     ``` json
     "appRoles": [
-         {
-           "allowedMemberTypes": [
-             "User",
-             "Application"
-           ],
-           "displayName": "Administrator",
-           "id": "<A unique GUID>",
-           "isEnabled": true,
-           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
-           "value": "Administrator"
-         }
-       ],
+         {
+           "allowedMemberTypes": [
+             "User",
+             "Application"
+           ],
+           "displayName": "Administrator",
+           "id": "<A unique GUID>",
+           "isEnabled": true,
+           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
+           "value": "Administrator"
+         }
+       ],
     ```
 
     > [!IMPORTANT]

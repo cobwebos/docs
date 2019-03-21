@@ -1,6 +1,6 @@
 ---
 title: 虚拟网络服务终结点 - Azure 事件中心 | Microsoft Docs
-description: 本文提供了有关如何向虚拟网络中添加 Microsoft.EventHub 服务终结点的信息。
+description: 本文介绍如何将 Microsoft.EventHub 服务终结点添加到虚拟网络。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -9,22 +9,23 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 03/12/2019
 ms.author: shvija
-ms.openlocfilehash: 077202e65c9e63c8ca5ea1a555ccd70bf27028c6
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 7b5a62f81238d1ae2b627c395613066350b36efe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232597"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887589"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>将虚拟网络服务终结点与 Azure 事件中心配合使用
 
 通过将事件中心与[虚拟网络 (VNet) 服务终结点][vnet-sep]相集成，可从绑定到虚拟网络的工作负荷（例如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
 
-配置为绑定到至少一个虚拟网络子网服务终结点后，相应的事件中心命名空间将不再接受来自经授权的虚拟网络子网以外的任何位置的流量。 从虚拟网络的角度来看，通过将事件中心命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。
+配置为绑定到至少一个虚拟网络子网服务终结点后，相应事件中心命名空间不再接受来自任何位置的流量，但获得授权的虚拟网络中的子网。 从虚拟网络的角度来看，通过将事件中心命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。 
 
-然后，绑定到子网的工作负荷与相应的事件中心命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。
+然后，绑定到子网的工作负荷与相应的事件中心命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。 没有此行为异常。 默认情况下，启用服务终结点，将启用与虚拟网络关联的 IP 防火墙中的 denyall 规则。 若要启用对事件中心公共终结点的访问的 IP 防火墙中，可以添加特定的 IP 地址。 
+
 
 >[!WARNING]
 > 实现虚拟网络集成可以防止其他 Azure 服务与事件中心进行交互。
@@ -48,7 +49,7 @@ ms.locfileid: "56232597"
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>通过 VNet 集成启用的高级安全方案 
 
-对于需要严格和隔离安全性的解决方案和虚拟网络子网在其中的隔离服务之间提供分段的解决方案，它们通常仍然需要驻留在这些隔离舱中的服务之间的通信路径。
+解决方案需要紧密和化的安全性，以及虚拟网络子网在其中提供分段之间的分隔开的服务，仍需要驻留在这些隔离舱中的服务之间的通信路径。
 
 隔离舱之间的任何即时 IP 路由（包括通过 TCP/IP 承载 HTTPS 的）都存在利用网络层漏洞的风险。 消息传递服务提供完全隔离的通信路径，其中消息在各方之间转换时会以平均方式写入磁盘。 绑定到同一个事件中心实例的两个不同虚拟网络中的工作负荷可通过消息进行高效和可靠的通信，同时保留各自的网络隔离边界完整性。
  

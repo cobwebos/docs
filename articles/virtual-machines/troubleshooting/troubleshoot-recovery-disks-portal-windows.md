@@ -3,7 +3,7 @@ title: 在 Azure 门户中使用 Windows 故障排除 VM | Microsoft Docs
 description: 了解如何通过使用 Azure 门户将 OS 磁盘连接到恢复 VM，对 Azure 中的 Windows 虚拟机问题进行故障排除
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-windows
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/013/2018
+ms.date: 08/13/2018
 ms.author: genli
-ms.openlocfilehash: 2c5fac377dfab4b4c85991dcb8f4e15f4e3cb61a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: ec2da7d9f659f32c40f7a2685ab08be4eec27ed5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225922"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780620"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Windows VM 来修复所有错误，然后重新创建原始 VM。
@@ -64,7 +64,7 @@ ms.locfileid: "55225922"
 
 恢复 VM 的第一步是删除 VM 资源本身。 删除 VM 时会将虚拟硬盘留在存储帐户中。 删除 VM 后，可将虚拟硬盘附加到另一个 VM，以排查和解决这些错误。
 
-在门户中选择 VM，并单击“删除”：
+在门户中选择用户的 VM，并单击“删除”： 
 
 ![显示启动错误的 VM 启动诊断屏幕截图](./media/troubleshoot-recovery-disks-portal-windows/stop-delete-vm.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "55225922"
 
     ![在门户中附加现有磁盘](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. 若要选择现有的虚拟硬盘，请单击“VHD 文件”：
+2. 若要选择现有的虚拟硬盘，请单击“VHD 文件”： 
 
     ![浏览现有 VHD](./media/troubleshoot-recovery-disks-portal-windows/select-vhd-location.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "55225922"
 
     ![确认附加现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal-windows/attach-disk-confirm.png)
 
-5. 几秒钟后，VM 的“磁盘”窗格将列出作为数据磁盘连接的现有虚拟硬盘：
+5. 几秒钟后，VM 的“磁盘”窗格列出作为数据磁盘连接的现有虚拟硬盘： 
 
     ![现有虚拟硬盘已附加为数据磁盘](./media/troubleshoot-recovery-disks-portal-windows/attached-disk.png)
 
@@ -121,11 +121,11 @@ ms.locfileid: "55225922"
 
     ![在“服务器管理器”中选择“文件和存储服务”](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-2. 选择“磁盘”，并选择数据磁盘。 右键单击数据磁盘，并选择“脱机”：
+2. 选择“磁盘”，并选择数据磁盘。 右键单击数据磁盘，并选择“脱机” ：
 
     ![在“服务器管理器”中将数据磁盘设置为脱机](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
-3. 现在从 VM 中分离虚拟硬盘。 在 Azure 门户中选择 VM，并单击“磁盘”。 选择现有的虚拟硬盘，并单击“分离”：
+3. 现在从 VM 中分离虚拟硬盘。 在 Azure 门户中选择 VM，并单击“磁盘”。 Select your existing virtual hard disk and then click <bpt id="p1">**</bpt>Detach<ept id="p1">**</ept>:
 
     ![分离现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 

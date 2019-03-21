@@ -3,7 +3,7 @@ title: 排查 Azure VM 上的 BitLocker 启动错误 | Microsoft Docs
 description: 了解如何排查 Azure VM 中的 BitLocker 启动错误
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genli
+author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 3a615beeec45871aab1e98ad338ffa053ddbec92
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: a7bd812d3aadfd3c358c8d0aeccf0e92ed474a05
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984760"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993207"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
@@ -26,13 +26,13 @@ ms.locfileid: "55984760"
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
- ## <a name="symptom"></a>症状
+## <a name="symptom"></a>症状
 
  Windows VM 不启动。 检查[启动诊断](../windows/boot-diagnostics.md)窗口中的屏幕截图时，看到以下错误消息之一：
 
 - 插入含 BitLocker 密钥的 USB 驱动程序
 
-- 你被锁定！ 输入恢复密钥，以便再次开始操作（键盘布局：美式键盘）错误登录信息输入次数过多，因此，你的 PC 被锁定以保护你的隐私。 若要检索恢复密钥，请从另一电脑或移动设备转到 http://windows.microsoft.com/recoverykeyfaq。 如果需要，密钥 ID 为 XXXXXXX。 或者，可以重置电脑。
+- 你被锁定！ 输入恢复密钥，以便再次开始操作（键盘布局：美式键盘）错误登录信息输入次数过多，因此，你的 PC 被锁定以保护你的隐私。 若要检索恢复密钥，请从另一电脑或移动设备转到 https://windows.microsoft.com/recoverykeyfaq。 如果需要，密钥 ID 为 XXXXXXX。 或者，可以重置电脑。
 
 - 输入密码以解锁此驱动器 [ ] 按 Insert 键在键入时查看密码。
 - 输入恢复密钥 从 USB 设备加载恢复密钥。

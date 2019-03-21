@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 164d705a16dd82a1c5f3ff6f5e6982f80eb40dab
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 180cbb9c31d14c36679bb84f92b3c9892ee3602d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011159"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
-Azure 容器注册表存储和管理专用 [Docker](http://hub.docker.com) 容器映像，其方式类似于 [Docker Hub](https://hub.docker.com/) 存储公共 Docker 映像。 可以使用 [Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 对容器注册表执行[登录](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他操作。
+Azure 容器注册表存储和管理专用 [Docker](https://hub.docker.com) 容器映像，其方式类似于 [Docker Hub](https://hub.docker.com/) 存储公共 Docker 映像。 可以使用 [Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 对容器注册表执行[登录](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他操作。
 
 以下步骤从公共 Docker 中心注册表下载正式的 [Nginx 映像](https://store.docker.com/images/nginx)，为专用 Azure 容器注册表标记该映像，将其推入到注册表，然后从注册表提取。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
@@ -62,7 +62,7 @@ docker pull nginx
 docker run -it --rm -p 8080:80 nginx
 ```
 
-浏览到 [http://localhost:8080](http://localhost:8080)，查看由正在运行的容器中的 Nginx 提供服务的默认网页。 应看到类似于下面的页面：
+浏览到`http://localhost:8080`查看正在运行的容器中的 Nginx 提供的默认 web 页。 应看到类似于下面的页面：
 
 ![本地计算机上的 Nginx](./media/container-registry-get-started-docker-cli/nginx.png)
 
@@ -104,7 +104,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-浏览到 [http://localhost:8080](http://localhost:8080) 查看正在运行的容器。
+浏览到`http://localhost:8080`若要查看正在运行的容器。
 
 若要停止并删除容器，请按 `Control`+`C`。
 

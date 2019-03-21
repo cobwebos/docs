@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7b657d11e829d636063639e26a90d671a5d1473
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: ad716e2ef5e597424c860378e7a63d5c2de53f54
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438347"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834551"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>使用 Curl 通过 HDInsight 中的 Hadoop 运行 Apache Sqoop 作业
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -23,11 +23,11 @@ ms.locfileid: "53438347"
 
 本文档使用 Curl 演示如何使用原始 HTTP 请求来与 HDInsight 交互，以便运行、监视和检索 Sqoop 作业的结果。 若要执行这些操作，需要使用 HDInsight 群集提供的 WebHCat REST API（前称 Templeton）。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 要完成本文中的步骤，需要：
 
 
-* 完成[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](hdinsight-use-sqoop.md#create-cluster-and-sql-database)，以配置具有 HDInsight 群集和 Azure SQL 数据库的环境。
+* 完整[使用 HDInsight 中的 Hadoop 使用 Apache Sqoop](hdinsight-use-sqoop.md#create-cluster-and-sql-database)与 HDInsight 群集和 Azure SQL 数据库配置环境。
 * [Curl](https://curl.haxx.se/). Curl 是一种将数据传入或传出 HDInsight 群集的工具。
 * [jq](https://stedolan.github.io/jq/). jq 实用工具用于处理从 REST 请求返回的 JSON 数据。
 
@@ -68,19 +68,19 @@ ms.locfileid: "53438347"
 
     此命令中使用的参数如下：
 
-    * **-d** - 由于未使用 `-G`，请求将按默认使用 POST 方法。 `-d` 指定与请求一起发送的数据值。
+   * **-d** - 由于未使用 `-G`，请求将按默认使用 POST 方法。 `-d` 指定与请求一起发送的数据值。
 
-        * **user.name** - 正在运行命令的用户。
+       * **user.name** - 正在运行命令的用户。
 
-        * **command** - 要执行的 Sqoop 命令。
+       * **command** - 要执行的 Sqoop 命令。
 
-        * **statusdir** - 此作业的状态要写入到的目录。
+       * **statusdir** - 此作业的状态要写入到的目录。
 
-    此命令应会返回可用于检查作业状态的作业 ID。
+     此命令应会返回可用于检查作业状态的作业 ID。
 
-        ```json
-        {"id":"job_1415651640909_0026"}
-        ```
+       ```json
+       {"id":"job_1415651640909_0026"}
+       ```
 
 3. 若要检查作业的状态，请使用以下命令。 将“JOBID”替换为上一步骤返回的值。 例如，如果返回值为 `{"id":"job_1415651640909_0026"}`，则 **JOBID** 将是 `job_1415651640909_0026`。
 
@@ -99,7 +99,7 @@ ms.locfileid: "53438347"
 
 ## <a name="limitations"></a>限制
 * 批量导出 - 在基于 Linux 的 HDInsight 上，用于将数据导出到 Microsoft SQL Server 或 Azure SQL 数据库的 Sqoop 连接器目前不支持批量插入。
-* 批处理 - 在基于 Linux 的 HDInsight 上，如果执行插入时使用 `-batch` 开关，Sqoop 将执行多次插入而不是批处理插入操作。
+* 批处理 - 在基于 Linux 的 HDInsight 上，如果执行插入时使用 `-batch` 开关，Sqoop 会执行多次插入而不是批处理插入操作。
 
 ## <a name="summary"></a>摘要
 如本文档中所示，可以使用原始 HTTP 请求来运行、监视和查看 HDInsight 群集上的 Sqoop 作业的结果。

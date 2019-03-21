@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 22a800e65c0f64dfa897433d1ea983006ed62250
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412183"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447840"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
 
@@ -52,7 +52,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 以下标头是必需的：
 
-| 请求标头   | 说明 |
+| 请求标头   | 描述 |
 |------------------|-----------------|
 | Content-Type：  | 必需。 设置为 `application/json`。 |
 | Authorization： | 必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
@@ -63,7 +63,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 下面的通用定义用来构建请求正文：
 
-| 名称                       | 必选 | 类型                                                                                | 说明  |
+| 名称                       | 需要 | Type                                                                                | 描述  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | 位置                   | True     | 字符串                                                                              | 资源位置。 |
 | 名称                       |          | 字符串                                                                              | 虚拟机的名称。 |
@@ -127,7 +127,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 }
 ```
 
-有关请求正文中的变量定义的完整列表，请参阅[虚拟机创建或更新请求正文定义](/rest/api/compute/virtualmachines/createorupdate#definitions)。
+有关可用的请求正文中定义的完整列表，请参阅[虚拟机创建或更新请求正文定义](/rest/api/compute/virtualmachines/createorupdate#definitions)。
 
 ## <a name="sending-the-request"></a>发送请求
 
@@ -137,7 +137,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 对于要创建或更新虚拟机的操作，有两个成功响应：
 
-| 名称        | 类型                                                                              | 说明 |
+| 名称        | 类型                                                                              | 描述 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 正常      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 已创建     |

@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/12/2019
+ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5152058643b97e11c7487d470d4f7d3fc9d96b6e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 63d4f8e2f1b88084b2bac5f1a29514b5e289cbd4
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878119"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286510"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>有关 Azure 磁盘加密的附录 
 
@@ -100,7 +100,7 @@ ms.locfileid: "57878119"
 - **列出 Key Vault 中用于加密 VM 的所有磁盘加密机密** 
 
      ```azurepowershell-interactive
-     Get-AzureKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
+     Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
      ```
 
 ### <a name="bkmk_prereq-script"></a>使用 Azure 磁盘加密先决条件 PowerShell 脚本
@@ -546,7 +546,7 @@ ms.locfileid: "57878119"
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a>未使用 KEK 加密的磁盘加密机密
-若要设置密钥保管库中的机密，使用[集 AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 对于 Windows 虚拟机，需将 bek 文件编码为 base64 字符串，并使用 `Set-AzureKeyVaultSecret` cmdlet 将其上传到 Key Vault。 对于 Linux，需将密码编码为 base64 字符串，然后将其上传到 Key Vault。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
+若要设置密钥保管库中的机密，使用[集 AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 对于 Windows 虚拟机，需将 bek 文件编码为 base64 字符串，并使用 `Set-AzKeyVaultSecret` cmdlet 将其上传到 Key Vault。 对于 Linux，需将密码编码为 base64 字符串，然后将其上传到 Key Vault。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
 
 #### <a name="windows-bek-file"></a>Windows BEK 文件
 ```powershell
@@ -569,7 +569,7 @@ $FileContentEncoded = [System.convert]::ToBase64String((Get-Content -Path $BEKFi
 
 $SecretName = [guid]::NewGuid().ToString()
 $SecureSecretValue = ConvertTo-SecureString $FileContentEncoded -AsPlainText -Force
-$Secret = Set-AzureKeyVaultSecret -VaultName $VeyVaultName -Name $SecretName -SecretValue $SecureSecretValue -tags $tags
+$Secret = Set-AzKeyVaultSecret -VaultName $VeyVaultName -Name $SecretName -SecretValue $SecureSecretValue -tags $tags
 
 # Show the secret's URL and store it as a variable. This is used as -DiskEncryptionKeyUrl in Set-AzVMOSDisk when you attach your OS disk. 
 $SecretUrl=$secret.Id
@@ -587,7 +587,7 @@ $SecretUrl
  $secretValue = [Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($passphrase))
  $secureSecretValue = ConvertTo-SecureString $secretValue -AsPlainText -Force
 
- $secret = Set-AzureKeyVaultSecret -VaultName $KeyVaultName -Name $secretName -SecretValue $secureSecretValue -tags $tags
+ $secret = Set-AzKeyVaultSecret -VaultName $KeyVaultName -Name $secretName -SecretValue $secureSecretValue -tags $tags
  $secretUrl = $secret.Id
 ```
 
@@ -601,8 +601,8 @@ $SecretUrl
     # This is the passphrase that was provided for encryption during the distribution installation
     $passphrase = "contoso-password"
 
-    Add-AzureKeyVaultKey -VaultName $KeyVaultName -Name "keyencryptionkey" -Destination Software
-    $KeyEncryptionKey = Get-AzureKeyVaultKey -VaultName $KeyVault.OriginalVault.Name -Name "keyencryptionkey"
+    Add-AzKeyVaultKey -VaultName $KeyVaultName -Name "keyencryptionkey" -Destination Software
+    $KeyEncryptionKey = Get-AzKeyVaultKey -VaultName $KeyVault.OriginalVault.Name -Name "keyencryptionkey"
 
     $apiversion = "2015-06-01"
 

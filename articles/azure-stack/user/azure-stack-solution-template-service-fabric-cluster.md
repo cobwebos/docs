@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: a8897288e19a7628dbd1cc2c022de4db2a111393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d0d725a57c27fe30215d77a596f6fb3b8c8720d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248038"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098002"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
@@ -28,7 +28,7 @@ ms.locfileid: "55248038"
 
 有关使用 Service Fabric 的详细信息，请参阅 Azure 文档中的 [Azure Service Fabric 概述](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)和 [Service Fabric 群集安全方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
 
-Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是虚拟机规模集与使用 Desired State Configuration (DSC) 的预安装的软件集。
+Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是一个虚拟机规模集，具有使用所需状态配置 (DSC) 设置的预安装软件。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -37,17 +37,17 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
    这是在部署 Service Fabric 时添加到 KeyVault 的 X.509 服务器证书。 
    - 此证书中的 **CN** 必须与创建的 Service Fabric 群集的完全限定域名 (FQDN) 匹配。 
    - 证书格式必须是 PFX，因为需要公钥和私钥。 
-   请参阅创建此服务器端证书所要满足的[要求](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
+     请参阅创建此服务器端证书所要满足的[要求](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
 
-    > [!NOTE]  
-    > 可以使用自签名的证书取代 X.509 服务器证书进行测试。 自签名的证书不需要与群集的 FQDN 匹配。
+     > [!NOTE]  
+     > 可以使用自签名的证书取代 X.509 服务器证书进行测试。 自签名的证书不需要与群集的 FQDN 匹配。
 
-1.  **管理客户端证书**这是客户端用于在 Service Fabric 群集中进行身份验证的证书，可以是自签名的证书。 请参阅创建此客户端证书所要满足的[要求](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
+1. **管理客户端证书**这是客户端用于在 Service Fabric 群集中进行身份验证的证书，可以是自签名的证书。 请参阅创建此客户端证书所要满足的[要求](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
 
-1.  **必须在 Azure Stack 市场中提供以下各项：**
-     - **Windows Server 2016** – 模板使用 Windows Server 2016 映像来创建群集。  
-     - **客户脚本扩展** - Microsoft 提供的虚拟机扩展。  
-     - **PowerShell Desired Stage Configuration** - Microsoft 提供的虚拟机扩展。
+1. **必须在 Azure Stack 市场中提供以下各项：**
+    - **Windows Server 2016** – 模板使用 Windows Server 2016 映像来创建群集。  
+    - **客户脚本扩展** - Microsoft 提供的虚拟机扩展。  
+    - **PowerShell Desired Stage Configuration** - Microsoft 提供的虚拟机扩展。
 
 
 ## <a name="add-a-secret-to-key-vault"></a>向 Key Vault 添加机密

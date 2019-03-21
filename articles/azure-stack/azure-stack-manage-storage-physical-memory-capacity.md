@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 875e823aa2958ee38b3510e93ffac7918be661cb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cb5b64869a26133e1c08095a816c2d2854f85b94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103496"
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>管理 Azure Stack 的物理内存容量
 
@@ -39,11 +39,11 @@ ms.locfileid: "57774007"
 ## <a name="add-memory-to-an-existing-node"></a>将内存添加到现有节点
 以下步骤提供添加内存过程的高级概述。 
 
-> [!Warning]  
-请勿在未参考 OEM 提供的文档的情况下按照这些步骤操作。
-
-> [!Warning]  
-由于不支持滚动内存升级，因此必须关闭整个缩放单元。
+> [!Warning]
+> 请勿在未参考 OEM 提供的文档的情况下按照这些步骤操作。
+> 
+> [!Warning]
+> 由于不支持滚动内存升级，因此必须关闭整个缩放单元。
 
 1. 按照[启动和停止 Azure Stack](azure-stack-start-and-stop.md) 一文中所述的步骤，停止 Azure Stack。
 2. 使用硬件制造商的文档升级每台物理计算机上的内存。

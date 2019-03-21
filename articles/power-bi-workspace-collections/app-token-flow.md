@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 1dd6be61aab91bb15cc42939689e3c7399bee3db
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: e9b240a17614593cd04280a13e006c4d06e832fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236526"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904265"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
 
@@ -38,7 +38,7 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 
 应用令牌可以包含下列声明：
 
-| 声明 | 说明 |    
+| 声明 | 描述 |    
 | --- | --- |
 | **ver** |应用令牌的版本。 当前版本为 0.2.0。 |
 | **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，请使用：https:\//analysis.windows.net/powerbi/api。 |
@@ -94,7 +94,7 @@ SDK 中提供了可以更轻松地创建应用令牌的方法。 例如，对于
 
 下面是针对 Power BI 工作区集合的可用作用域。
 
-|范围|说明|
+|范围|描述|
 |---|---|
 |Dataset.Read|提供对指定数据集进行读取的权限。|
 |Dataset.Write|提供向指定数据集进行写入的权限。|
@@ -182,4 +182,4 @@ Body
 [Microsoft Power BI 工作区集合入门](get-started.md)  
 [PowerBI-CSharp Git 存储库](https://github.com/Microsoft/PowerBI-CSharp)
 
-有更多问题？ [尝试 Power BI 社区](http://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

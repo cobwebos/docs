@@ -11,18 +11,18 @@ ms.custom: REST, seodec18
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
-ms.openlocfilehash: 5f92ae386730032e7da278b9dd2b0effef313741
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 0d8ac22679bc4e789c22396c21c51dacee201302
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752052"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433835"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>使用 REST API 获取负载均衡器利用率指标
 
 本操作指南演示如何使用 [Azure REST API](/rest/api/azure/) 收集[标准负载均衡器](/azure/load-balancer/load-balancer-standard-overview)在一段时间内处理的字节数。
 
-[Azure Monitor REST 参考](/rest/api/monitor)中提供了 REST API 的完整参考文档和其他示例。 
+[Azure Monitor REST 参考](/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 
 ## <a name="build-the-request"></a>生成请求
 
@@ -36,14 +36,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 以下标头是必需的： 
 
-|请求标头|说明|  
+|请求标头|描述|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
 |Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| Name | 说明 |
+| 名称 | 描述 |
 | :--- | :---------- |
 | subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 包含该资源的资源组名称。 可以从 Azure 资源管理器 API、CLI 或门户获取此值。 |
@@ -59,7 +59,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="handle-the-response"></a>处理响应
 
-成功返回指标值列表时，返回状态代码 200。 [参考文档](/rest/api/monitor/metrics/list#errorresponse)中提供了错误代码的完整列表。
+成功返回指标值列表以后，会返回状态代码 200。 [参考文档](/rest/api/monitor/metrics/list#errorresponse)中提供了错误代码的完整列表。
 
 ## <a name="example-response"></a>示例响应 
 

@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 67baa204d50d1319559abcc58e0ae00e1810ebaf
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: ff77a955c34941d87a1f653726ab3f19e84aa440
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452643"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101969"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>通过使用 ASP.NET 注册推送通知的当前用户
 
@@ -42,11 +42,11 @@ ms.locfileid: "54452643"
    * **文本字段**：“Password”
    * **按钮**：“Login”
 
-    此时，Storyboard 应与下图类似：
+     此时，Storyboard 应与下图类似：
 
-    ![][0]
+     ![][0]
 
-2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“**登录**”按钮的“**操作**”。
+2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“登录”按钮的“操作”。
 
     ![][1]
 
@@ -246,7 +246,7 @@ ms.locfileid: "54452643"
 
     此方法获取一个安装 ID 和用于推送通知的通道并将它与设备类型一起发送到在通知中心创建注册的已经身份验证的 Web API 方法。 此 Web API 已在[使用通知中心通知用户]中定义。
 
-现在客户端应用程序已更新，请返回到[使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
+现在客户端应用程序已更新，请返回到 [使用通知中心通知用户] 并更新移动服务以使用通知中心发送通知。
 
 <!-- Anchors. -->
 

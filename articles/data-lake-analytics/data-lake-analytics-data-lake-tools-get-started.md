@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/13/2018
-ms.openlocfilehash: 1c6a83626f86724bcaa61de03a49b5327af19d88
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: HT
+ms.openlocfilehash: b463946402eee40d0de0942eeaf37a6f9ea59990
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706528"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083056"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -23,23 +23,23 @@ Azure Data Lake 和流分析工具包括与两项 Azure 服务相关的功能：
 
 本文介绍如何使用 Visual Studio 创建 Azure Data Lake Analytics 帐户，使用 [U-SQL](data-lake-analytics-u-sql-get-started.md) 定义作业以及将作业提交到 Data Lake Analytics 服务。 有关 Data Lake Analytics 的详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Microsoft 建议你升级到针对 Visual Studio 的 Azure Data Lake 工具 2.3.3000.4 或更高版本。 以前的版本不再可以下载，现已弃用。 
->
->**我需要做什么？**
->
->1. 检查是否使用的是针对 Visual Studio 的 Azure Data Lake 工具早于 2.3.3000.4 的版本。 
->   
->   ![检查工具版本](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-about-data-lake.png)
 > 
->2. 如果版本是早于 2.3.3000.4 的版本，请通过访问下载中心更新针对 Visual Studio 的 Azure Data Lake 工具： 
+> **我需要做什么？**
+> 
+> 1. 检查是否使用的是针对 Visual Studio 的 Azure Data Lake 工具早于 2.3.3000.4 的版本。 
+> 
+>    ![检查工具版本](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-about-data-lake.png)
+> 
+> 2. 如果版本是早于 2.3.3000.4 的版本，请通过访问下载中心更新针对 Visual Studio 的 Azure Data Lake 工具： 
 >    - [对于 Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
 >    - [对于 Visual Studio 2013 和 Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* Visual Studio：支持除 Express 以外的所有版本。
+* **Visual Studio**:支持除 Express 之外的所有版本。
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013

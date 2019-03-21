@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: a52c5bf1a52a4d598986664c41e80273e0b26788
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: f3534f3001de1c3e58f0be3fb7bc9639b7dfcd03
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014102"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295414"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -48,11 +48,12 @@ ms.locfileid: "58014102"
 
 下表显示了为每个人脸 API 容器分配的最小和建议的 CPU 核心数和内存。
 
-| 容器 | 最小值 | 建议 |
-|-----------|---------|-------------|
-|人脸 | 单核，2 GB 内存 | 单核，4 GB 内存 |
+| 容器 | 最小值 | 建议 | TPS<br>（最低配置，最大值）|
+|-----------|---------|-------------|--|
+|人脸 | 单核，2 GB 内存 | 单核，4 GB 内存 |10, 20|
 
-每个核心必须至少为 2.6 千兆赫（GHz）或更快。
+* 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
+* TP-每秒事务数
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 

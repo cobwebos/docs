@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: xpouyat
-ms.openlocfilehash: 1954ccf07badbd4632c653bb1af4d6e96153e1fb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 505def9cde7cddf2ddcc23408fa3159de886167a
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000066"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294563"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>授权 Microsoft® 平滑流式处理客户端移植工具包 
 ## <a name="overview"></a>概述
@@ -29,7 +29,7 @@ Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经�
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>说明
+## <a name="description"></a>描述
 经过授权的 SSPK 可以提供优异的商业价值。 SSPK 许可证为行业提供：
 
 * 采用 C++ 的平滑流式处理移植工具包源代码 
@@ -125,8 +125,9 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
-* Filmflex Movies Limited
+* FilmFlex 电影 Limited
 * Fluendo S.A.
+* FUNAI ELECTRIC CO.，LTD
 * Gibson Innovations Limited
 * Haier Information Applicantion S.R.L
 * HANDAN BroadInfoCom Co., Ltd.
@@ -158,7 +159,6 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * VIZIO, Inc.
 * Wistron Corporation
 * ZTE Corporation
-
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

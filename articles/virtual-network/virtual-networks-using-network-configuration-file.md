@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 2baae0a1932bdcb7fa5e29ac06dd8ae7a7020a30
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.openlocfilehash: e26ec4d268b9bd8852ef8cd2c522995902e15923
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421838"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992390"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>使用网络配置文件配置虚拟网络（经典）
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。
 
 可以在 Azure 经典命令行接口 (CLI) 或 Azure PowerShell 中使用网络配置文件来创建和配置虚拟网络（经典）。 无法通过 Azure 资源管理器部署模型使用网络配置文件创建或修改虚拟网络。 无法在 Azure 门户中使用网络配置文件来创建或修改虚拟网络（经典），但可以直接在 Azure 门户中创建虚拟网络（经典），而无需使用网络配置文件。
 
@@ -71,7 +71,7 @@ ms.locfileid: "52421838"
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
   <VirtualNetworkConfiguration>
     <Dns />
     <VirtualNetworkSites>

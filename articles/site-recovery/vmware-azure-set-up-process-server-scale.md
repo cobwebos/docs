@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: f2d8d070a8adbe7992795b06722427da2830cb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
+ms.openlocfilehash: e3f6a160f57a4432f91c395a2e0dd664bc8f323d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253674"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106536"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>为故障回复使用更多进程服务器进行扩展
 
@@ -24,8 +24,8 @@ ms.locfileid: "53253674"
 
 请确保已执行[容量规划](site-recovery-plan-capacity-vmware.md)以进行 VMware 复制。 这可帮助你确定如何以及何时应部署额外的进程服务器。
 
->[!NOTE]
-不支持使用克隆的进程服务器组件。 按照本文中的步骤横向扩展每个 PS。
+> [!NOTE]
+> 不支持使用克隆的进程服务器组件。 按照本文中的步骤横向扩展每个 PS。
 
 ### <a name="sizing-requirements"></a>调整大小要求 
 
@@ -39,7 +39,7 @@ ms.locfileid: "53253674"
 
 其中，每台受保护的源计算机配置有 3 个磁盘，每个磁盘 100 GB。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 下表中汇总了额外进程服务器的先决条件。
 
@@ -56,11 +56,11 @@ ms.locfileid: "53253674"
 3. 选择配置服务器以向下钻取到配置服务器详细信息。 然后单击“+ 进程服务器”。
 4. 在“添加进程服务器” >  “选择要部署进程服务器的位置”中，选择“在本地部署横向扩展进程服务器”。
 
-  ![添加服务器页](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+   ![添加服务器页](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. 单击“下载 Microsoft Azure Site Recovery 统一安装程序”。 这会下载最新版本的安装文件。
 
-  > [!WARNING]
-  进程服务器安装版本应低于所运行的配置服务器版本或与之相同。 确保版本兼容性的一种简单方法是使用最近用来安装或更新配置服务器的同一安装程序。
+   > [!WARNING]
+   > 进程服务器安装版本应低于所运行的配置服务器版本或与之相同。 确保版本兼容性的一种简单方法是使用最近用来安装或更新配置服务器的同一安装程序。
 
 ## <a name="install-from-the-ui"></a>从 UI 安装
 

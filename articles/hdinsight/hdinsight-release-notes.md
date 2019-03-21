@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/02/2019
-ms.openlocfilehash: 49087792efa5e377beadc78746bcf99c88954e9b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
-ms.translationtype: HT
+ms.openlocfilehash: e6a528ae7eda7e10ab06c6f338fd05d20332a9fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000065"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089006"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight 发行说明
 
@@ -33,7 +33,7 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和
 
 1.  ***更新 Hadoop 和其他开源项目*** - 除了超过 20 个开源项目的 1000 多个 bug 修复，此更新还包含 **Spark (2.3)** 和 **Kafka (1.0)** 的新版本。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  [**Apache Spark 2.3 中的新增功能**](https://spark.apache.org/releases/spark-release-2-3-0.html)
+    a.  [**Apache Spark 2.3 中的新增功能**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
     b.  [**Apache Kafka 1.0 中的新增功能**](https://kafka.apache.org/downloads#1.0.0)
 
@@ -1155,7 +1155,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 | BUG-98983              | [KNOX-1108](https://issues.apache.org/jira/browse/KNOX-1108)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | NiFiHaDispatch 不会故障转移                                                                                                                |
 | BUG-99107              | [HIVE-19054](https://issues.apache.org/jira/browse/HIVE-19054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 函数复制应使用“hive.repl.replica.functions.root.dir”作为根                                                                  |
 | BUG-99145              | [RANGER-2035](https://issues.apache.org/jira/browse/RANGER-2035)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 使用 Oracle 后端访问包含空 implClass 的 servicedefs 时出错                                                                          |
-| BUG-99160              | [SLIDER-1259](https://issues.apache.org/jira/browse/SLIDER-1259)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Slider 在多宿主环境中无法工作                                                                                               |
+| BUG-99160              | [SLIDER-1259](https://issues.apache.org/jira/browse/SLIDER-1259)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 滑块在多宿主环境中无效                                                                                               |
 | BUG-99239              | [ATLAS-2462](https://issues.apache.org/jira/browse/ATLAS-2462)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 由于未在命令中提供任何表，针对所有表执行 Sqoop 导入引发 NPE                                                                        |
 | BUG-99301              | [ATLAS-2530](https://issues.apache.org/jira/browse/ATLAS-2530)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | hive\_process 和 hive\_column\_lineage 的名称属性开头存在换行符                                                    |
 | BUG-99453              | [HIVE-19065](https://issues.apache.org/jira/browse/HIVE-19065)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 元存储客户端兼容性检查应包括 syncMetaStoreClient                                                                        |
@@ -1250,7 +1250,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 | BUG-95595              | [HIVE-15563](https://issues.apache.org/jira/browse/HIVE-15563)                                                                                                                                                                                                                 | 忽略 SQLOperation.runQuery 中的非法操作状态转换异常，以公开实际异常。                                                       |
 | BUG-95685              | [ATLAS-2422](https://issues.apache.org/jira/browse/ATLAS-2422)                                                                                                                                                                                                                 | 导出：支持基于类型的导出                                                                                                                            |
 | BUG-95798              | [PHOENIX-2714](https://issues.apache.org/jira/browse/PHOENIX-2714)、 [PHOENIX-2724](https://issues.apache.org/jira/browse/PHOENIX-2724)、 [PHOENIX-3023](https://issues.apache.org/jira/browse/PHOENIX-3023)、 [PHOENIX-3040](https://issues.apache.org/jira/browse/PHOENIX-3040) | 不要使用 guideposts 串行执行查询                                                                                                          |
-| BUG-95969              | [HIVE-16828](https://issues.apache.org/jira/browse/HIVE-16828)、 [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063)、 [HIVE-18390](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | 分区视图失败并出现 FAILED：IndexOutOfBoundsException 索引：1，大小：1                                                                              |
+| BUG-95969              | [HIVE-16828](https://issues.apache.org/jira/browse/HIVE-16828)、 [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063)、 [HIVE-18390](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | 分区视图失败并出现 FAILED：IndexOutOfBoundsException 索引：1，大小：第                                                                              |
 | BUG-96019              | [HIVE-18548](https://issues.apache.org/jira/browse/HIVE-18548)                                                                                                                                                                                                                 | 修复 log4j 导入                                                                                                                                             |
 | BUG-96288              | [HBASE-14123](https://issues.apache.org/jira/browse/HBASE-14123)、 [HBASE-14135](https://issues.apache.org/jira/browse/HBASE-14135)、 [HBASE-17850](https://issues.apache.org/jira/browse/HBASE-17850)                                                                           | 向后移植 Hbase 备份/还原 2.0                                                                                                                            |
 | BUG-96313              | [KNOX-1119](https://issues.apache.org/jira/browse/KNOX-1119)                                                                                                                                                                                                                   | Pac4J OAuth/OpenID 主体需可配置                                                                                                        |
@@ -1309,116 +1309,116 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 ## <a name="known-issues"></a>已知问题
 
--   **HDInsight 与 ADLS Gen 2 集成** 使用 Azure Data Lake Storage Gen 2 的 HDInsight ESP 群集在用户目录和权限上存在两个问题：
+- **HDInsight 与 ADLS Gen 2 集成** 使用 Azure Data Lake Storage Gen 2 的 HDInsight ESP 群集在用户目录和权限上存在两个问题：
    
-   1. 用户的主目录未在头节点 1 上创建。 解决方法是，手动创建目录并将所有权更改为相应用户的 UPN。
+  1. 用户的主目录未在头节点 1 上创建。 解决方法是，手动创建目录并将所有权更改为相应用户的 UPN。
    
-   2. /hdp 目录的权限当前未设置为 751。 这需要设置为该值 
-      ```bash
-      chmod 751 /hdp 
-      chmod –R 755 /hdp/apps
-      ```
+  2. /hdp 目录的权限当前未设置为 751。 这需要设置为该值 
+     ```bash
+     chmod 751 /hdp 
+     chmod –R 755 /hdp/apps
+     ```
 
--   **Spark 2.3**
+- **Spark 2.3**
 
-    -   \[[*SPARK-23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] 规则 OptimizeMetadataOnlyQuery 导致了错误结果
+  -   \[[*SPARK-23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] 规则 OptimizeMetadataOnlyQuery 导致错误的结果
 
-    -   \[[*SPARK-23406*](https://issues.apache.org/jira/browse/SPARK-23406)\] 流到流的自联接中存在 Bug
+  -   \[[*SPARK-23406*](https://issues.apache.org/jira/browse/SPARK-23406)\] 流到流的自联接中存在 Bug
 
-    -   如果 Azure Data Lake Storage（第 2 代）是群集的默认存储，则 Spark 示例笔记本不可用。
+  -   如果 Azure Data Lake Storage（第 2 代）是群集的默认存储，则 Spark 示例笔记本不可用。
 
--   **企业安全性套餐**
+- **企业安全性套餐**
 
-    - Spark Thrift 服务器不接受来自 ODBC 客户端的连接。
-      解决方法步骤：
-      1. 创建群集后等待大约 15 分钟。
-      2. 检查 ranger UI 中是否存在 hivesampletable_policy。
-      3. 重启 Spark 服务。
-         现在，STS 连接应该工作。
+  - Spark Thrift 服务器不接受来自 ODBC 客户端的连接。
+    解决方法步骤：
+    1. 创建群集后等待大约 15 分钟。
+    2. 检查 ranger UI 中是否存在 hivesampletable_policy。
+    3. 重启 Spark 服务。
+       现在，STS 连接应该工作。
 
--   **Ranger 服务检查失败的解决方法**
+- **Ranger 服务检查失败的解决方法**
 
-    -   [RANGER-1607](https://issues.apache.org/jira/browse/RANGER-1607)：从以前的 HDP 版本升级到 HDP 2.6.2 时 Ranger 服务检查失败的解决方法。
+  -   [RANGER-1607](https://issues.apache.org/jira/browse/RANGER-1607)：从以前的 HDP 版本升级到 HDP 2.6.2 时 Ranger 服务检查失败的解决方法。
 
-        > [!NOTE]  
-        > 仅当已在 Ranger 中启用 SSL 时。 
+      > [!NOTE]  
+      > 仅当已在 Ranger 中启用 SSL 时。 
      
-    尝试通过 Ambari 从以前的 HDP 版本升级到 HDP 2.6.1 时会出现此问题。 Ambari 使用 curl 调用对 Ambari 中的 Ranger 服务执行服务检查。 如果 Ambari 使用的 JDK 版本是 JDK-1.7，curl 调用将会失败并出现以下错误：
+  尝试通过 Ambari 从以前的 HDP 版本升级到 HDP 2.6.1 时会出现此问题。 Ambari 使用 curl 调用对 Ambari 中的 Ranger 服务执行服务检查。 如果 Ambari 使用的 JDK 版本是 JDK-1.7，curl 调用将会失败并出现以下错误：
     
-    `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
+  `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
     
-    出现此错误的原因是 Ranger 中使用的 tomcat 版本是 Tomcat-7.0.7\*。 使用 JDK-1.7 会与 Tomcat-7.0.7\* 中提供的默认加密法产生冲突。
+  出现此错误的原因是 Ranger 中使用的 tomcat 版本是 Tomcat-7.0.7\*。 使用 JDK-1.7 会与 Tomcat-7.0.7\* 中提供的默认加密法产生冲突。
     
-    可通过两种方式解决此问题：
+  可通过两种方式解决此问题：
     
-    -   将 Ambari 中使用的 JDK 从 JDK 1.7 更新到 JDK 1.8（请参阅 Ambari 参考指南中的 [更改 JDK 版本](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html) 部分）。
+  -   将 Ambari 中使用的 JDK 从 JDK 1.7 更新到 JDK 1.8（请参阅 Ambari 参考指南中的[更改 JDK 版本](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html)部分）。
     
-    -   如果想要继续支持 JDK-1.7 环境：
+  -   如果想要继续支持 JDK-1.7 环境：
     
-        1.  在 Ambari Ranger 配置中的 ranger-admin-site 部分添加具有以下值的属性 ranger.tomcat.ciphers：
+      1.  在 Ambari Ranger 配置中的 ranger-admin-site 部分添加具有以下值的属性 ranger.tomcat.ciphers：
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
         
-        2.  如果为 Ranger-KMS 配置了环境，请在 Ambari Ranger 配置中的 theranger-kms-site 部分添加具有以下值的属性 ranger.tomcat.ciphers：
+      2.  如果为 Ranger-KMS 配置了环境，请在 Ambari Ranger 配置中的 theranger-kms-site 部分添加具有以下值的属性 ranger.tomcat.ciphers：
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
     
-    >[!NOTE]  
-    >所述的值是工作示例，可能不会反映你的环境。 确保设置这些属性的方式与配置环境的方式相匹配。   
+  >[!NOTE]  
+  >所述的值是工作示例，可能不会反映你的环境。 确保设置这些属性的方式与配置环境的方式相匹配。   
 
--   **RangerUI：转义在策略窗体中输入的策略条件文本**
+- **RangerUI：转义在策略窗体中输入的策略条件文本**
     
-    **受影响的组件：** Ranger
+  **受影响的组件：** Ranger
     
-    **问题说明**
+  **问题说明**
     
-    如果用户想要创建包含自定义策略条件和表达式的策略，或文本中含有特殊字符，则无法强制实施策略。 在数据库中保存策略之前，特殊字符将转换为 ASCII。
+  如果用户想要创建包含自定义策略条件和表达式的策略，或文本中含有特殊字符，则无法强制实施策略。 在数据库中保存策略之前，特殊字符将转换为 ASCII。
     
-    **特殊字符：** & &lt; &gt; " \` '
+  **特殊字符：** & &lt; &gt; " \` '
     
-    例如，保存策略后，条件 tags.attributes\['type'\]='abc' 将转换为以下内容。
+  例如，保存策略后，条件 tags.attributes\['type'\]='abc' 将转换为以下内容。
     
-    tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
+  tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
     
-    可以通过在编辑模式下打开策略，查看包含这些字符的策略条件。
+  可以通过在编辑模式下打开策略，查看包含这些字符的策略条件。
     
-    **解决方法**
+  **解决方法**
     
-    - **选项\# 1：通过 Ranger Rest API 创建/更新策略**
+  - **选项\# 1：通过 Ranger Rest API 创建/更新策略**
         
-        REST URL： http://&lt;host&gt;:6080/service/plugins/policies
+      REST URL： http://&lt;host&gt;:6080/service/plugins/policies
         
-        **创建包含策略条件的策略：**
+      **创建包含策略条件的策略：**
         
-        以下示例将创建标记为 \`tags-test\` 的策略，并通过选择 select、update、create、drop、alter、index、lock、all 等所有 hive 组件权限，将该策略分配到策略条件为 astags.attr\['type'\]=='abc' 的 \`public\` 组。
+      以下示例将创建标记为 \`tags-test\` 的策略，并通过选择 select、update、create、drop、alter、index、lock、all 等所有 hive 组件权限，将该策略分配到策略条件为 astags.attr\['type'\]=='abc' 的 \`public\` 组。
         
-        **示例：**
+      **示例：**
         
-        `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
+      `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
         
-        **更新包含策略条件的现有策略：**
+      **更新包含策略条件的现有策略：**
         
-        以下示例将更新标记为 \`tags-test\` 的策略，并通过选择 select、update、create、drop、alter、index、lock、all 等所有 hive 组件权限，将该策略分配到策略条件为 astags.attr\['type'\]=='abc' 的 \`public\` 组。
+      以下示例将更新标记为 \`tags-test\` 的策略，并通过选择 select、update、create、drop、alter、index、lock、all 等所有 hive 组件权限，将该策略分配到策略条件为 astags.attr\['type'\]=='abc' 的 \`public\` 组。
         
-        REST URL： http://&lt;host-name&gt;:6080/service/plugins/policies/&lt;policy-id&gt;
+      REST URL： http://&lt;host-name&gt;:6080/service/plugins/policies/&lt;policy-id&gt;
         
-        **示例：**
+      **示例：**
         
-        `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
+      `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
         
-    - **选项\# 2：应用 Javascript 更改**
+  - **选项\# 2：应用 Javascript 更改**
         
-        更新 JS 文件的步骤：
+      更新 JS 文件的步骤：
         
-        1.  在 /usr/hdp/current/ranger-admin 下找到 PermissionList.js 文件
+      1.  在 /usr/hdp/current/ranger-admin 下找到 PermissionList.js 文件
         
-        2.  找到 renderPolicyCondtion 函数的定义（行号：404）。
+      2.  找到 renderPolicyCondtion 函数的定义（行号：404）。
         
-        3.  从该函数中删除以下行，即 display 函数下的行（行号：434）
+      3.  从该函数中删除以下行，即 display 函数下的行（行号：434）
             
-            val = \_.escape(val);//Line No:460
+          val = \_.escape(val);//Line No:460
             
-            删除上述行之后，Ranger UI 将允许你创建策略条件可以包含特殊字符的策略，并且针对同一策略执行策略评估将会成功。
+          删除上述行之后，Ranger UI 将允许你创建策略条件可以包含特殊字符的策略，并且针对同一策略执行策略评估将会成功。
 
 **HDInsight 与 ADLS Gen 2 集成：ESP 群集存在用户目录和权限问题**
     1.  用户的主目录未在头节点 1 上创建。 解决方法是，手动创建这些目录并将所有权更改为相应用户的 UPN。
@@ -1426,7 +1426,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 ## <a name="deprecation"></a>弃用
 
--   **OMS 门户：** 我们已从指向 OMS 门户的 HDInsight 资源页中删除该链接。 Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理其配置并分析收集的数据。 此门户的所有功能已移至 Azure 门户，在其中继续进行开发。 HDInsight 已弃用 OMS 门户支持。 客户将在 Azure 门户中使用 HDInsight Log Analytics 集成。
+-   **OMS 门户：** 我们已从指向 OMS 门户的 HDInsight 资源页中删除该链接。 Azure Monitor 日志最初使用自身调用在 OMS 门户的门户来管理其配置和分析收集的数据。 此门户的所有功能已移至 Azure 门户，在其中继续进行开发。 HDInsight 已弃用 OMS 门户支持。 客户将在 Azure 门户中使用 HDInsight Azure Monitor 日志集成。
 
 -   **Spark 2.3**
 

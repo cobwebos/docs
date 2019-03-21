@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+ms.openlocfilehash: ff6601042c82cef2b0101833117f17aca8b463dc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743787"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223251"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>使用 Apache Ambari API 在 HDInsight 中监视 Apache Hadoop 群集
 了解如何使用 Apache Ambari API 监视 HDInsight 群集。
@@ -39,9 +39,9 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 
 * **一个 Azure HDInsight 群集**。 有关群集预配的说明，请参阅[开始使用 HDInsight][hdinsight-get-started] 或[预配 HDInsight 群集][hdinsight-provision]。 需要以下数据才能完成本教程：
   
-  | 群集属性 | Azure PowerShell 变量名 | 值 | Description |
+  | 群集属性 | Azure PowerShell 变量名 | 值 | 描述 |
   | --- | --- | --- | --- |
-  |   HDInsight 群集名称 |$clusterName | |HDInsight 群集的名称。 |
+  |   HDInsight 群集名称 |$clusterName | |你的 HDInsight 群集的名称。 |
   |   群集用户名 |$clusterUsername | |创建群集时指定的群集用户名。 |
   |   群集密码 |$clusterPassword | |群集用户密码。 |
 
@@ -119,7 +119,7 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 ## <a name="ambari-monitoring-apis"></a>监视 API 的 Ambari
 下表列出了一些最常用的 Ambari 监视 API 调用。 有关该 API 的详细信息，请参阅 [Apache Ambari API 参考][ambari-api-reference]。
 
-| 监视 API 调用 | URI | Description |
+| 监视 API 调用 | URI | 描述 |
 | --- | --- | --- |
 | 获取群集 |`/api/v1/clusters` | |
 | 获取群集信息 |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |群集、服务、主机 |
@@ -137,7 +137,7 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 ## <a name="next-steps"></a>后续步骤
 现在已经学习了如何使用 Apache Ambari 监视 API 调用。 若要了解更多信息，请参阅以下文章：
 
-* [使用 Azure 门户管理 HDInsight 群集][hdinsight-admin-portal]
+* [使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)
 * [使用 Azure PowerShell 管理 HDInsight 群集][hdinsight-admin-powershell]
 * [使用命令行接口管理 HDInsight 群集][hdinsight-admin-cli]
 * [HDInsight 文档][hdinsight-documentation]
@@ -155,7 +155,6 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
 [hdinsight-documentation]: https://docs.microsoft.com/azure/hdinsight/
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md

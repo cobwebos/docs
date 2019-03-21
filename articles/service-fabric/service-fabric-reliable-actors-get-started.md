@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: f92fe2432051b148bf0b35fccc3fa33db9b66a14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 5c21f1c9345fcf1b89afc3e1ee6b7f61ee79ddbe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093134"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168096"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "55093134"
 
 本文演示在 Visual Studio 中创建和调试简单的 Reliable Actor 应用程序。 有关 Reliable Actors 的详细信息，请参阅 [Service Fabric Reliable Actors 简介](service-fabric-reliable-actors-introduction.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，确保计算机上已设置 Service Fabric 开发环境（包括 Visual Studio）。 有关详细信息，请参阅[如何设置开发环境](service-fabric-get-started.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "55093134"
 
 ![适用于 Visual Studio 的 Service Fabric 工具 - 新建项目][1]
 
-在下一对话框中，选择 **.Net Core 2.0** 下的“执行组件服务”，并输入服务的名称。
+在下一步对话框中，选择**执行组件服务**下 **.NET Core 2.0**并输入服务的名称。
 
 ![Service Fabric 项目模板][5]
 

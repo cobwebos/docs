@@ -2,33 +2,33 @@
 title: 排查 HDInsight 群集速度慢或故障问题 - Azure HDInsight
 description: 诊断和排查 HDInsight 群集速度慢或故障问题。
 services: hdinsight
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 05c6f1cbf5f7f20745fa837accdaa95e6c186b8b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.date: 03/19/2019
+ms.openlocfilehash: 0129a09383b59aa5d213ef7ff1c78f23588472a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226603"
+ms.locfileid: "58295464"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或故障问题
 
-如果 HDInsight 群集运行速度缓慢或者发生故障并返回错误代码，你可以使用多个故障排除选项。 如果作业的运行时间超过预期或者响应时间比平时要慢，原因可能是群集的上游组件（例如运行群集的服务）发生故障。 但是，这些速度变慢问题的最常见原因是缩放不足。 创建新的 HDInsight 群集时，请选择适当的[虚拟机大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
+如果 HDInsight 群集运行速度缓慢或者发生故障并返回错误代码，你可以使用多个故障排除选项。 如果作业的运行时间超过预期或者响应时间比平时要慢，原因可能是群集的上游组件（例如运行群集的服务）发生故障。 但是，这些速度变慢问题的最常见原因是缩放不足。 在创建新的 HDInsight 群集时，选择适当[虚拟机大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)。
 
 若要诊断群集变慢或故障的原因，请收集有关环境的各个方面的信息，例如，关联的 Azure 服务、群集配置和作业执行信息。 一种有效的诊断方法是尝试在另一个群集上再现错误状态。
 
-* 步骤 1：收集有关问题的数据
-* 步骤 2：验证 HDInsight 群集环境 
-* 步骤 3：查看群集的运行状况
-* 步骤 4：查看环境堆栈和版本
-* 步骤 5：检查群集日志文件
-* 步骤 6：检查配置设置
-* 步骤 7：在不同的群集上再现故障 
+* 步骤 1：收集有关问题的数据。
+* 步骤 2：验证 HDInsight 群集环境。
+* 步骤 3：查看群集的运行状况。
+* 步骤 4：查看环境堆栈和版本。
+* 步骤 5：检查群集日志文件。
+* 步骤 6：检查配置设置。
+* 步骤 7：再现不同的群集上故障。
 
 ## <a name="step-1-gather-data-about-the-issue"></a>步骤 1：收集有关问题的数据
 
@@ -57,13 +57,12 @@ Azure 门户可以提供此信息：
 
 ![HDInsight - Azure 门户信息](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-也可以使用 Azure 经典 CLI：
+此外可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
 
+```azurecli
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
-    azure hdinsight cluster list
-    azure hdinsight cluster show <ClusterName>
-```
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 另一个选项是使用 PowerShell。 有关详细信息，请参阅[使用 Azure PowerShell 在 HDInsight 中管理 Apache Hadoop 群集](hdinsight-administer-use-powershell.md)。
 
@@ -73,10 +72,10 @@ Azure 门户可以提供此信息：
 
 ### <a name="service-details"></a>服务详细信息
 
-* 检查开源库发行版本
-* 检查 [Azure 服务中断](https://azure.microsoft.com/status/) 
-* 检查 Azure 服务使用限制 
-* 检查 Azure 虚拟网络子网配置 
+* 检查开源库发行版本。
+* 检查[Azure 服务中断](https://azure.microsoft.com/status/)。  
+* 检查 Azure 服务使用限制。 
+* 检查 Azure 虚拟网络子网配置。  
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>使用 Ambari UI 查看群集配置设置
 
@@ -124,7 +123,7 @@ Apache Hive、Apache Pig 或 Apache Sqoop 作业失败的常见场合之一是 [
 这是来自网关节点的常规消息，也是最常见的故障状态代码。 发生此故障的可能原因之一是活动头节点上的 WebHCat 服务已关闭。 若要检查是否存在这种情况，请使用以下 CURL 命令：
 
 ```bash
-$ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
+curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
 ```
 
 Ambari 将显示一条警报，其中指出了 WebHCat 服务已在哪些主机上关闭。 可以通过在相应的主机上重启 WebHCat 服务使其恢复运行。
@@ -153,7 +152,7 @@ Ambari 将显示一条警报，其中指出了 WebHCat 服务已在哪些主机�
 当 WebHCat 承受包含 10 个以上开放套接字的负载时，需要更长的时间来建立新的套接字连接，从而可能导致超时。 若要列出 WebHCat 的源和目标网络连接，请在当前活动头节点上使用 `netstat`：
 
 ```bash
-$ netstat | grep 30111
+netstat | grep 30111
 ```
 
 30111 是 WebHCat 侦听的端口。 开放套接字数应小于 10。
@@ -161,7 +160,7 @@ $ netstat | grep 30111
 如果没有开放套接字，则上述命令不会生成结果。 若要检查 Templeton 是否已启动并在侦听端口 30111，请使用：
 
 ```bash
-$ netstat -l | grep 30111
+netstat -l | grep 30111
 ```
 
 ##### <a name="yarn-level-timeout"></a>YARN 级超时
@@ -190,9 +189,9 @@ Templeton 调用 YARN 来运行作业，Templeton 与 YARN 之间的通信可能
 
 诊断这些问题的步骤：
 
-    1. 确定要排查的 UTC 时间范围
-    2. 选择相应的 `webhcat.log` 文件
-    3. 查看这段时间的警告和错误消息
+1. 确定要排查的 UTC 时间范围
+2. 选择相应的 `webhcat.log` 文件
+3. 查看这段时间的警告和错误消息
 
 #### <a name="other-webhcat-failures"></a>其他 WebHCat 故障
 
@@ -215,8 +214,6 @@ Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务�
 ## <a name="step-5-examine-the-log-files"></a>步骤 5：检查日志文件
 
 构成 HDInsight 群集的许多服务和组件会生成多种类型的日志。 前文介绍了 [WebHCat 日志文件](#check-your-webhcat-service)。 可以根据以下部分中所述，调查其他多种有用的日志文件来缩小群集问题的范围。
-
-![HDInsight 日志文件示例](./media/hdinsight-troubleshoot-failed-cluster/logs.png)
 
 * HDInsight 群集由多个节点组成，其中的大多数节点负责运行已提交的作业。 作业可并发运行，但日志文件只能以线性方式显示结果。 HDInsight 执行新任务，并终止一开始就无法完成的其他任务。 整个活动将记录到 `stderr` 和 `syslog` 文件。
 
@@ -259,7 +256,7 @@ HDInsight 群集中预配置了相关服务（例如 Hadoop、Hive、HBase 等�
 1. 使用与有故障群集相同的配置创建新的测试群集。
 2. 将第一个作业步骤提交到测试群集。
 3. 当此步骤完成处理时，请在步骤日志文件中查看错误。 连接到测试群集的主节点并在其中查看日志文件。 步骤日志文件只会在该步骤运行了一段时间、已完成或失败之后才显示。
-4. 如果第一个步骤成功，请运行下一个步骤。 如果出现错误，请在日志文件中调查错误。 如果这是代码中的错误，请予以纠正，然后重新运行该步骤。 
+4. 如果第一个步骤成功，请运行下一个步骤。 如果出现错误，请在日志文件中调查错误。 如果这是代码中的错误，请予以纠正，然后重新运行该步骤。
 5. 继续运行，直到所有步骤都可完成运行且不出错。
 6. 完成调试测试群集后，请将其删除。
 

@@ -5,18 +5,26 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321478"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093831"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>在 Site Recovery 部署规划器中查看针对从 VMware 灾难恢复到 Azure 的成本估算报告
 
 部署规划器报表以[建议](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)表的形式提供成本估算摘要，以“成本估算”表的形式提供详细的成本分析。 它按 VM 提供详细的成本分析。 
+
+>[!Note]
+>部署规划器工具的当前版本不提供复制到托管磁盘的 Vm 的成本估算。
+>* 使用托管磁盘参数设置为"Yes""计算和网络"边栏选项卡上，DR 演练成本估计将是相同的存储帐户和托管的磁盘。
+>* 若要获取复制大约每年成本估计值，进行以下临时设置上**成本估算**表：
+>    * 在中设置的"成本持续时间"的参数**设置**"Year"的表
+>    * 在中**详细成本分析**表中，将"一年的 DR 演练的数"列设置为 12 和"每次 DR 演练的持续时间 （天）"为 30 
+>    * 复制成本将是类似于在每年中的列 'R' 即 DR 演练的存储成本中填充的成本**每年的 DR 演练成本**子部分。
 
 ### <a name="cost-estimation-summary"></a>成本估算摘要 
 下图显示的摘要视图包含灾难恢复 (DR) 到所选目标区域的 Azure 时的总估算成本，以及生成报表时所用的指定货币。
@@ -106,9 +114,9 @@ ms.locfileid: "54321478"
 * 数据冗余 
 * Azure 混合权益
 
-3.  可以将同一值应用到表中的所有 VM，只需针对“一年的 DR 演练次数”、“每次 DR 演练的持续时间(天)”、“数据冗余”、“Azure 混合使用权益”单击“应用到所有项”按钮即可。
+1. 可以将同一值应用到表中的所有 VM，只需针对“一年的 DR 演练次数”、“每次 DR 演练的持续时间(天)”、“数据冗余”、“Azure 混合使用权益”单击“应用到所有项”按钮即可。
 
-4.  单击“重新计算成本”即可更新成本。
+1. 单击“重新计算成本”即可更新成本。
 
 **VM 名称**：VM 的名称。
 

@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b68f7004366dcb502ffc8332cf8266a434c7ecfb
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
-ms.translationtype: HT
+ms.openlocfilehash: b1b62c68ef4e18f4d4d36a78078ad7431717b754
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977142"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995652"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>虚拟机“市场”选项卡
 
-在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。 这个较长的窗体划分为四个部分：“概述”、“营销项目”、“潜在顾客管理”和“法律条款”。 
+在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。 此长格式被划分为四个部分：**概述**，**市场营销项目**，**潜在客户管理**，并且**法律**。 
 
 ## <a name="overview-section"></a>“概述”部分
 在此部分输入有关 Azure 市场套餐的常规信息。  名称旁边附有星号 (*) 的字段表示必填字段。
@@ -38,6 +38,7 @@ ms.locfileid: "51977142"
 | **摘要**               | 解决方案用途或功能的简短描述。  最大长度为 100 个字符。 |
 | **长摘要**          | 解决方案的用途或功能。  最大长度为 256 个字符。 |
 | **说明**           | 解决方案的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。 |
+| **Microsoft CSP 经销商渠道** | 云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。 |
 | **营销标识符**  | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **预览订阅 ID** | 为预览版添加 1 到 100 个订阅标识符。 在套餐发布之后、上线之前，这些已加入允许列表的订阅将有权访问该套餐。 |
 | **有用链接**          | 将 URL 添加到文档、发行说明、常见问题解答等内容。 |
@@ -47,7 +48,7 @@ ms.locfileid: "51977142"
 
 ## <a name="marketing-artifacts-section"></a>“营销项目”部分
 
-此第二部分划分为三个子部分：“徽标”、“屏幕截图”和“视频”。 只有徽标是必需的营销项目，但为了充分吸引客户的注意，我们强烈建议填写所有这些字段。
+此第二个部分分为三个小节：**徽标**，**屏幕截图**，和**视频**。 只有徽标是必需的营销项目，但为了充分吸引客户的注意，我们强烈建议填写所有这些字段。
 
 ![虚拟机“新建套餐”窗体中“市场”选项卡的“营销项目”部分](./media/publishvm_009.png)
 
@@ -63,7 +64,7 @@ ms.locfileid: "51977142"
 | **名称**                  | 名称或标题 <!-- TODO - max char length? none specified in UI -->                               |
 | **图像**                 | 屏幕截图图像，533x324 像素                                         |
 | *视频*  |  |
-| **名称**                  | 名称或标题 <!-- TODO - max char length? -->                              |
+| **名称**                  | 名称或标题  <!-- TODO - max char length? -->                              |
 | **链接**                  | 视频 URL，托管在 YouTube 或 Vimeo 中                                        |
 | **缩略图**             | 533x324 位图                                                               |
 |  |  |
@@ -71,7 +72,7 @@ ms.locfileid: "51977142"
 
 ### <a name="logo-guidelines"></a>徽标准则
 
-<!-- TD: It seems like this section could be better located in some common area, maybe a AMP Marketing/Design section 
+<!-- TD: It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
 上传到云合作伙伴门户中的所有徽标都应遵循以下准则：
@@ -121,7 +122,7 @@ ms.locfileid: "51977142"
 
 ## <a name="legal-section"></a>“法律”部分
 
-在最后一个部分，可以提供每个套餐所需的两个法律文档：“隐私政策”和“使用条款”。
+最后一部分，可提供所需的每个产品/服务的两个法律文档：“隐私策略”和“使用条款”。
 
 |  **字段**                |     **说明**                                                          |
 |  ---------                |     ---------------                                                          |

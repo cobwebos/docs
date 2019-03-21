@@ -5,16 +5,16 @@ description: 自定义翻译提供了各种方法来高效地管理你的项目�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 922f64f3e9588b3bfcfeedf7602df781c8ee6172
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: a4277e8bbd130588e343019a8b02221593efad52
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226598"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772630"
 ---
 # <a name="search-edit-and-delete-projects"></a>搜索、编辑和删除项目
 
@@ -39,7 +39,7 @@ ms.locfileid: "55226598"
 
 ## <a name="edit-a-project"></a>编辑项目
 
-使用自定义翻译，可以编辑项目的名称和说明。 其他项目元数据（例如类别、源语言、目标语言）不可编辑。 以下步骤介绍了如何编辑项目。
+自定义转换器可编辑的名称和描述项目的功能。 编辑起来类别、 源代码语言和目标语言不是可用于其他项目元数据。 以下步骤说明如何编辑项目。
 
 1.  单击将鼠标指针悬停在项目上时出现的铅笔图标。
 

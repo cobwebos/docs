@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e4c90b6f9fd8b968ceb0e241649ddbcf1c2e1cb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a15284b0176b7148055812ce5a642ec38e67d53b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189102"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>教程：Azure Active Directory 与 TrackVia 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56189102"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 TrackVia 的集成，需要以下项：
 
@@ -136,7 +136,7 @@ ms.locfileid: "56189102"
     
 1. 在不同的浏览器窗口中，以管理员身份登录到 TrackVia 公司站点。
 
-1. 单击 Trackvia“我的帐户”设置，然后选择“单一登录”选项卡，执行以下步骤：
+1. 单击通过正轨**我的帐户**设置，然后选择**单一登录**选项卡上，执行以下步骤：
 
     ![TrackVia 配置](./media/trackvia-tutorial/configure1.png)
 

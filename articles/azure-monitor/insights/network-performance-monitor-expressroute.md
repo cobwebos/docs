@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.openlocfilehash: 2dcbe170a69c0c285cb6425427f94b5efced8712
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: d0819b57307fc037b3be6ab04ed9ec6c8720a618
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747452"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103581"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 监视器
 
@@ -55,7 +55,7 @@ ms.locfileid: "55747452"
 
     ![ExpressRoute 监视器配置](media/network-performance-monitor-expressroute/expressroute-configure.png)
  
- 完成发现操作以后，发现的专用对等互连就会列在表中。 针对这些对等互连的监视功能一开始处于禁用状态。 
+   完成发现操作以后，发现的专用对等互连就会列在表中。 针对这些对等互连的监视功能一开始处于禁用状态。 
 
 ### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>启用 ExpressRoute 对等连接监视 
 
@@ -116,7 +116,7 @@ ms.locfileid: "55747452"
 
 可通过 LogAnalytics 查看通知代码并设置警报。 在“NPM 诊断”页面上，可看到触发的每条诊断消息的说明。
 
-| 通知代码（日志） | 说明 |
+| 通知代码（日志） | 描述 |
 | --- | --- |
 | 5501 | 无法遍历 ExpressRoute 线路的辅助连接 |
 | 5502 | 无法遍历 ExpressRoute 线路的主连接 |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b24d32afed5acfd846f9a8e8316339665524ad2e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: bd1d3c71660ae584b0aa57c7cc765fdc519f4b1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849753"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863587"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -42,7 +42,7 @@ ms.locfileid: "52849753"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [内容安全策略简介](http://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[内容安全策略参考](http://content-security-policy.com/)、[安全功能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[内容安全策略简介](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[是否可以使用 CSP？](http://caniuse.com/#feat=contentsecuritypolicy) |
+| **参考**              | [内容安全策略简介](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[内容安全策略参考](https://content-security-policy.com/)、[安全功能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[内容安全策略简介](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[是否可以使用 CSP？](https://caniuse.com/#feat=contentsecuritypolicy) |
 | **步骤** | <p>内容安全策略 (CSP) 是一种深度防护安全机制，也是一项 W3C 标准，可让 Web 应用程序所有者控制其站点中嵌入的内容。 CSP 以 HTTP 响应标头的形式添加在 Web 服务器上，由浏览器在客户端实施。 它是基于允许列表的策略 - 网站可以声明一组受信任的域，而通过这些域可以加载 JavaScript 等活动内容。</p><p>CSP 提供以下安全优势：</p><ul><li>**XSS 防护：** 如果页面容易受到 XSS 攻击，攻击者可通过两种方式利用这种漏洞：<ul><li>注入 `<script>malicious code</script>`。 由于 CSP 采用 Base Restriction-1，因此这种攻击不起作用</li><li>注入 `<script src=”http://attacker.com/maliciousCode.js”/>`。 由于攻击者控制的域不会出现在 CSP 的域允许列表中，因此这种攻击不起作用</li></ul></li><li>**控制数据渗透：** 如果网页中的任何恶意内容尝试连接到外部网站并窃取数据，CSP 将中止该连接。 这是因为，目标域不会出现在 CSP 的允许列表中</li><li>**防范点击劫持：** 点击劫持是一种攻击技法，攻击者布设一个正规的网站，诱迫用户点击其中的 UI 元素。 目前，针对点击劫持的防范措施是通过配置 响应标头 X-Frame-Options 实现的。 并非所有浏览器都支持此标头，从趋势来看，CSP 是防范点击劫持的标准方式。</li><li>**实时攻击报告：** 如果启用 CSP 的网站上发生注入攻击，浏览器会自动向 Web 服务器上配置的终结点触发通知。 这样，CSP 便充当了实时警告系统。</li></ul> |
 
 ### <a name="example"></a>示例
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [ASP.NET 调试概览](http://msdn2.microsoft.com/library/ms227556.aspx)、[ASP.NET 跟踪概览](http://msdn2.microsoft.com/library/bb386420.aspx)、[如何：启用 ASP.NET 应用程序跟踪](http://msdn2.microsoft.com/library/0x5wc973.aspx)、[如何：启用 ASP.NET 应用程序调试](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **参考**              | [ASP.NET 调试概览](https://msdn2.microsoft.com/library/ms227556.aspx)、[ASP.NET 跟踪概览](https://msdn2.microsoft.com/library/bb386420.aspx)、[如何：启用 ASP.NET 应用程序跟踪](https://msdn2.microsoft.com/library/0x5wc973.aspx)、[如何：启用 ASP.NET 应用程序调试](https://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **步骤** | 为页面启用跟踪后，请求该页面的每个浏览器也会获取包含有关内部服务器状态和工作流的数据的跟踪信息。 该信息可能是安全敏感信息。 为页面启用调试后，服务器上发生的错误会导致向浏览器提供完整的堆栈跟踪数据。 该数据可能会透露有关服务器工作流的安全敏感信息。 |
 
 ## <a id="js-trusted"></a>仅从受信任源访问第三方 JavaScript
@@ -152,7 +152,7 @@ Example: var str="alert(1)"; eval(str);
     <httpProtocol>
       <customHeaders>
         <clear />
-        <add name="Access-Control-Allow-Origin" value="http://example.com" />
+        <add name="Access-Control-Allow-Origin" value="https://example.com" />
       </customHeaders>
     </httpProtocol>
 ```
@@ -160,7 +160,7 @@ Example: var str="alert(1)"; eval(str);
 ### <a name="example"></a>示例
 如果无法访问 Web.config，则可通过添加以下 CSharp 代码来配置 CORS： 
 ```csharp
-HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example.com")
+HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://example.com")
 ```
 
 请注意，务必将“Access-Control-Allow-Origin”属性中的来源列表设置为一组有限的受信任来源。 不当地配置此列表（例如，将值设置为“*”）会使得恶意站点能够毫无限制地向 Web 应用程序触发跨域请求，从而使应用程序易于遭受 CSRF 攻击。 
@@ -173,7 +173,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **属性**              | 不适用  |
-| **参考**              | [请求验证 - 阻止脚本攻击](http://www.asp.net/whitepapers/request-validation) |
+| **参考**              | [请求验证 - 阻止脚本攻击](https://www.asp.net/whitepapers/request-validation) |
 | **步骤** | <p>请求验证是 ASP.NET 版本 1.1 中的一项功能，可阻止服务器接受包含未编码 HTML 的内容。 此功能旨在帮助阻止某些脚本注入攻击，避免在不知情的情况下将客户端脚本代码或 HTML提交到服务器，然后将其存储并提供给其他用户。 尽管如此，我们仍旧强烈建议验证所有输入数据和 HTML，并在适当的情况下将其编码。</p><p>请求验证的执行方式是将所有输入数据与潜在危险值的列表进行比较。 如果出现匹配项，ASP.NET 将引发 `HttpRequestValidationException`。 请求验证功能默认已启用。</p>|
 
 ### <a name="example"></a>示例
@@ -210,7 +210,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [IE8 安全性第五部分：全面保护](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME 类型](http://en.wikipedia.org/wiki/Mime_type) |
+| **参考**              | [IE8 安全性第五部分：全面保护](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME 类型](https://en.wikipedia.org/wiki/Mime_type) |
 | **步骤** | X-Content-Type-Options 标头是一个 HTTP 标头，可让开发人员指定不应该对其内容使用 MIME 探查。 此标头旨在缓解 MIME 探查攻击。 对于可能包含用户可控内容的每个页面，必须使用 HTTP 标头 X-Content-Type-Options:nosniff。 若要针对应用程序中的所有页面全局启用所需的标头，可执行以下操作之一|
 
 ### <a name="example"></a>示例
@@ -297,7 +297,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 5 |
 | **属性**              | 不适用  |
-| **参考**              | [在 ASP.NET Web API 2 中启用跨域请求](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 中的 CORS 支持](https://msdn.microsoft.com/magazine/dn532203.aspx) |
+| **参考**              | [在 ASP.NET Web API 2 中启用跨域请求](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api)、[ASP.NET Web API - ASP.NET Web API 2 中的 CORS 支持](https://msdn.microsoft.com/magazine/dn532203.aspx) |
 | **步骤** | <p>浏览器安全性将阻止网页向另一个域发出 AJAX 请求。 这种限制称为同域策略，可阻止恶意站点读取另一个站点中的敏感数据。 但是，有时可能需要安全公开可由其他站点使用的 API。 跨域资源共享 (CORS) 是一项 W3C 标准，可让服务器放宽同域策略。</p><p>使用 CORS，服务器可以显式允许某些跨域请求，同时拒绝另一些跨域请求。 与 JSONP 等早期技术相比，CORS 更安全且更灵活。</p>|
 
 ### <a name="example"></a>示例
@@ -367,7 +367,7 @@ public class ResourcesController : ApiController
 ### <a name="example"></a>示例
 若要对类中的特定方法禁用 CORS，可按如下所示使用 DisableCors 特性： 
 ```csharp
-[EnableCors("http://example.com", "Accept, Origin, Content-Type", "POST")]
+[EnableCors("https://example.com", "Accept, Origin, Content-Type", "POST")]
 public class ResourcesController : ApiController
 {
   public HttpResponseMessage Put(Resource data)
@@ -404,7 +404,7 @@ public class ResourcesController : ApiController
 public void Configure(IApplicationBuilder app)
 {
     app.UseCors(builder =>
-        builder.WithOrigins("http://example.com")
+        builder.WithOrigins("https://example.com")
         .WithMethods("GET", "POST", "HEAD")
         .WithHeaders("accept", "content-type", "origin", "x-custom-header"));
 }
@@ -418,7 +418,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddCors(options =>
     {
         options.AddPolicy("AllowSpecificOrigin",
-            builder => builder.WithOrigins("http://example.com"));
+            builder => builder.WithOrigins("https://example.com"));
     });
 }
 public void Configure(IApplicationBuilder app)

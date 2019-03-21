@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 6a652b3fa834c2f29f5063f9ba72a3e3d4e75f58
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: c9247b37e1e475892a1561c5667dc25275f67327
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512442"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104108"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>创建虚拟网络对等互连 - 不同部署模型和不同订阅
 
@@ -60,7 +60,7 @@ ms.locfileid: "55512442"
 10. 以用户 A 的身份注销门户，然后以用户 B 的身份登录。
 11. 单击“+ 新建”，在“在市场中搜索”框中键入“虚拟网络”，然后在搜索结果中单击“虚拟网络”。
 12. 在显示的“虚拟网络”边栏选项卡中，在“选择部署模型”框中选择“经典”，然后单击“创建”。
-13.   在显示的“创建虚拟网络(经典)”边栏选项卡中，输入以下值：
+13. 在显示的“创建虚拟网络(经典)”边栏选项卡中，输入以下值：
 
     - 名称：myVnetB
     - **地址空间**：10.1.0.0/16
@@ -74,7 +74,7 @@ ms.locfileid: "55512442"
 15. 在显示的“myVnetB”边栏选项卡中，单击左侧垂直选项列表中的“属性”。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
 16. 完成 myVnetB 的步骤 5-9，输入步骤 8 中的用户 A。
 17. 以用户 B 的身份注销门户，然后以用户 A 的身份登录。
-18. 在门户顶部的“搜索资源”框中键入 myVnetA。 单击出现在搜索结果中的“myVnetA”。 随即显示“myVnet”虚拟网络的边栏选项卡。
+18. 在门户顶部的“搜索资源”框中键入 *myVnetA*。 单击出现在搜索结果中的“myVnetA”。 随即显示“myVnet”虚拟网络的边栏选项卡。
 19. 单击“myVnetA”。
 20. 在显示的“myVnetA”边栏选项卡中，单击左侧垂直选项列表中的“对等互连”。
 21. 在显示的“myVnetA - 对等互连”边栏选项卡中，单击“+ 添加”
@@ -149,7 +149,7 @@ ms.locfileid: "55512442"
       --scope $vNetAId
     ```
 
-8. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到计算机上的文本编辑器。 将 `<SubscriptionB-id>` 替换为订阅 ID。如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 ID 值就是订阅 ID。Azure 创建了虚拟网络（经典），该网络是在步骤 4 中在名为 Default-Networking 的资源组中创建的虚拟网络。 将修改后的脚本粘贴到 CLI 会话中，然后按 `Enter`。
+8. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到电脑上的文本编辑器。 将 `<SubscriptionB-id>` 替换为订阅 ID。如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 **id** 值就是订阅 ID。Azure 创建了虚拟网络（经典），该网络是在步骤 4 中在名为 *Default-Networking* 的资源组中创建的虚拟网络。 将修改后的脚本粘贴到 CLI 会话中，按 `Enter`。
 
     ```azurecli-interactive
     # Peer VNet1 to VNet2.
@@ -180,7 +180,7 @@ ms.locfileid: "55512442"
 
 本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。 
 
-1. 安装最新版本的 PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) 和 [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+1. 安装最新版本的 PowerShell [Azure](https://www.powershellgallery.com/packages/Azure)并[Az](https://www.powershellgallery.com/packages/Az)模块。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 2. 启动 PowerShell 会话。
 3. 在 PowerShell 中，输入 `Add-AzureAccount` 命令，作为用户 B 登录用户 B 的订阅。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
 4. 若要通过 PowerShell 创建虚拟网络（经典），必须新建网络配置文件，或修改现有网络配置文件。 了解如何[导出、更新和导入网络配置文件](virtual-networks-using-network-configuration-file.md)。 该文件应包括本教程中使用的虚拟网络的以下 VirtualNetworkSite 元素：
@@ -201,17 +201,17 @@ ms.locfileid: "55512442"
     > [!WARNING]
     > 导入更改的网络配置文件会导致订阅中现有虚拟网络（经典）发生变化。 请确保只添加之前的虚拟网络，且不会从订阅中更改或删除任何现有虚拟网络。 
 
-5. 输入 `Connect-AzureRmAccount` 命令，以用户 B 的身份登录用户 B 的订阅，使用 Resource Manager。
-6. 向用户 A 分配访问虚拟网络 B 的权限。将以下脚本复制到电脑上的文本编辑器，并将 `<SubscriptionB-id>` 替换为订阅 B 的 ID。如果不知道订阅 ID，请输入 `Get-AzureRmSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 Azure 创建了虚拟网络（经典），该网络是在步骤 4 中在名为 Default-Networking 的资源组中创建的虚拟网络。 若要执行该脚本，请复制修改后的脚本，将其粘贴到 PowerShell，然后按 `Enter`。
+5. 输入 `Connect-AzAccount` 命令，以用户 B 的身份登录用户 B 的订阅，使用 Resource Manager。
+6. 向用户 A 分配访问虚拟网络 B 的权限。将以下脚本复制到电脑上的文本编辑器，并将 `<SubscriptionB-id>` 替换为订阅 B 的 ID。如果不知道订阅 ID，请输入 `Get-AzSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 Azure 创建了虚拟网络（经典），该网络是在步骤 4 中在名为 *Default-Networking* 的资源组中创建的虚拟网络。 若要执行该脚本，请复制修改后的脚本，将其粘贴到 PowerShell，然后按 `Enter`。
     
     ```powershell 
-    New-AzureRmRoleAssignment `
+    New-AzRoleAssignment `
       -SignInName UserA@azure.com `
       -RoleDefinitionName "Classic Network Contributor" `
       -Scope /subscriptions/<SubscriptionB-id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
     ```
 
-7. 以用户 B 的身份注销 Azure，然后输入 `Connect-AzureRmAccount` 命令，以用户 A 的身份登录用户 A 的订阅。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
+7. 以用户 B 的身份注销 Azure，然后输入 `Connect-AzAccount` 命令，以用户 A 的身份登录用户 A 的订阅。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
 8. 复制以下脚本，将其粘贴到 PowerShell，然后按 `Enter`，创建虚拟网络 (Resource Manager)：
 
     ```powershell
@@ -220,22 +220,22 @@ ms.locfileid: "55512442"
       $location='eastus'
 
     # Create a resource group.
-    New-AzureRmResourceGroup `
+    New-AzResourceGroup `
       -Name $rgName `
       -Location $location
 
     # Create virtual network A.
-    $vnetA = New-AzureRmVirtualNetwork `
+    $vnetA = New-AzVirtualNetwork `
       -ResourceGroupName $rgName `
       -Name 'myVnetA' `
       -AddressPrefix '10.0.0.0/16' `
       -Location $location
     ```
 
-9. 向用户 B 分配访问 myVnetA 的权限。 将以下脚本复制到电脑上的文本编辑器，并将 `<SubscriptionA-Id>` 替换为订阅 A 的 ID。如果不知道订阅 ID，请输入 `Get-AzureRmSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 将修改后的脚本粘贴到 PowerShell，然后按 `Enter` 执行该脚本。
+9. 向用户 B 分配访问 myVnetA 的权限。 将以下脚本复制到电脑上的文本编辑器，并将 `<SubscriptionA-Id>` 替换为订阅 A 的 ID。如果不知道订阅 ID，请输入 `Get-AzSubscription` 命令查看。 返回的输出中的 **Id** 值就是订阅 ID。 将修改后的脚本粘贴到 PowerShell，然后按 `Enter` 执行该脚本。
 
     ```powershell
-    New-AzureRmRoleAssignment `
+    New-AzRoleAssignment `
       -SignInName UserB@azure.com `
       -RoleDefinitionName "Network Contributor" `
       -Scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
@@ -244,7 +244,7 @@ ms.locfileid: "55512442"
 10. 将以下脚本复制到电脑上的文本编辑器，并将 `<SubscriptionB-id>` 替换为订阅 B 的 ID。将myVnetA 和 myVNetB 进行对等，复制修改后的脚本，将其粘贴到 PowerShell，然后按 `Enter`。
 
     ```powershell
-    Add-AzureRmVirtualNetworkPeering `
+    Add-AzVirtualNetworkPeering `
       -Name 'myVnetAToMyVnetB' `
       -VirtualNetwork $vnetA `
       -RemoteVirtualNetworkId /subscriptions/<SubscriptionB-id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
@@ -253,7 +253,7 @@ ms.locfileid: "55512442"
 11. 复制以下脚本，将其粘贴到 PowerShell，按 `Enter`，查看 myVnetA 的对等互连状态。
 
     ```powershell
-    Get-AzureRmVirtualNetworkPeering `
+    Get-AzVirtualNetworkPeering `
       -ResourceGroupName $rgName `
       -VirtualNetworkName myVnetA `
       | Format-Table VirtualNetworkName, PeeringState
@@ -299,7 +299,7 @@ ms.locfileid: "55512442"
 1. 在 PowerShell 命令提示符处，输入以下命令，删除虚拟网络 (Resource Manager)：
 
    ```powershell
-   Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
+   Remove-AzResourceGroup -Name myResourceGroupA -Force
    ```
 
 2. 若要通过 PowerShell 删除虚拟网络（经典），必须修改现有网络配置文件。 了解如何[导出、更新和导入网络配置文件](virtual-networks-using-network-configuration-file.md)。 删除本教程中使用的虚拟网络的以下 VirtualNetworkSite 元素：

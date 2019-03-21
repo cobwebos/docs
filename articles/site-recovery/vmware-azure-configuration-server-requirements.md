@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 26ea184055f1496babf4f98f5d103b9af9c77ac0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 92eef714f651ef0ce4e58fcfbb8fad75a38c55c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973445"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121326"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>VMware 到 Azure 的灾难恢复的配置服务器要求
 
@@ -75,11 +75,12 @@ MYSQL | 应安装 MySQL。 可以手动安装，或者让 Site Recovery 进行�
 
 组件 | 要求 
 --- | ---
-CPU | 内存 | 缓存磁盘 | 数据更改率 | 复制的计算机
---- | --- | --- | --- | ---
-8 个 vCPU<br/><br/> 2 个插槽 * 4 个核心 \@ 2.5 GHz | 16 GB | 300 GB | 500 GB 或更少 | 少于 100 台计算机
-12 个 vCPU<br/><br/> 2 个插槽 * 6 个核心 \@ 2.5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 到 150 台计算机
-16 个 vCPU<br/><br/> 2 个插槽 * 8 个核心 \@ 2.5 GHz | 32 GB | 1 TB | 1-2 TB | 150 到 200 台计算机
+
+| CPU | 内存 | 缓存磁盘 | 数据更改率 | 复制的计算机 |
+| --- | --- | --- | --- | --- |
+| 8 个 vCPU<br/><br/> 2 个插槽 * 4 个核心 \@ 2.5 GHz | 16 GB | 300 GB | 500 GB 或更少 | 少于 100 台计算机 |
+| 12 个 vCPU<br/><br/> 2 个插槽 * 6 个核心 \@ 2.5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 到 150 台计算机 |
+| 16 个 vCPU<br/><br/> 2 个插槽 * 8 个核心 \@ 2.5 GHz | 32 GB | 1 TB | 1-2 TB | 150 到 200 台计算机 | 
 
 
 

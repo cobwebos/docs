@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30627994a8fe8cfe73e7945dadf2153ea60860b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ef8f66cda7e80ffdafefbbac5de24d45f01401af
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175126"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286924"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>配置自定义禁止密码列表
-
-|     |
-| --- |
-| Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
 
 许多组织发现其用户使用常见的当地词汇（比如学校、运动队或名人）来创建密码，这让这些密码很容易猜到。 当用户和管理员尝试更改或重置密码时，除了全局禁止密码列表之外，Microsoft 自定义禁止密码列表允许组织添加要评估和阻止的字符串。
 
@@ -31,7 +26,7 @@ ms.locfileid: "56175126"
 
 配置自定义禁止密码列表需要 Active Directory Premium P1 或 P2 许可证。 有关 Azure Active Directory 许可的更多详细信息，请参阅 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，并依次浏览到 **Azure Active Directory**、“身份验证方法”、“密码保护(预览版)”。
+1. 登录到[Azure 门户](https://portal.azure.com)并浏览到**Azure Active Directory**，**身份验证方法**，然后**密码保护**。
 1. 将选项“强制实施自定义列表”设为“是”。
 1. 将字符串添加到“自定义禁止密码列表”（每行一个字符串）
    * 自定义禁止密码列表最多可包含 1000 个词。

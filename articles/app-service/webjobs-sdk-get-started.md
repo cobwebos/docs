@@ -4,66 +4,39 @@ description: 用于事件驱动的后台处理的 WebJobs SDK 简介。 了解�
 services: app-service\web, storage
 documentationcenter: .net
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: b39c8c19b494422d34bae7145d69e8e95cb16846
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: b824c99a015cfa2c1d1c75e2a1257eff482e8dd6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416814"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087952"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
-本文介绍如何创建 Azure WebJobs SDK 项目、在本地运行它，然后将其部署到 Azure 应用服务。
+本文介绍如何使用 Visual Studio 2017 创建 Azure WebJobs SDK 项目、在本地运行它，然后将其部署到 [Azure 应用服务](overview.md)。 创建的项目是使用 WebJobs SDK 版本 3.x 的 .NET Core 控制台应用。 如果你对使用 .NET Framework 的版本 2.x 感兴趣，请参阅[使用 Visual Studio 开发和部署 WebJob - Azure 应用服务](webjobs-dotnet-deploy-vs.md)。
 
-本文中的说明适用于 [Visual Studio 2017](https://www.visualstudio.com/vs/)，也可以使用其他工具（例如 [Visual Studio Code](https://code.visualstudio.com/)）完成相同的任务。
+若要详细了解如何使用 WebJobs SDK，请参阅[如何使用 Azure WebJobs SDK 进行事件驱动的后台处理](webjobs-sdk-how-to.md)。
 
-## <a name="what-is-the-azure-webjobs-sdk"></a>什么是 Azure WebJobs SDK
-
-Azure WebJobs SDK 是一种框架，可简化编写后台处理代码来访问 Azure 服务中的数据的任务。 该 SDK 采用声明性语法，以便指定应触发某个函数的事件，例如，在队列中添加了新消息。 触发某个函数后，类似的声明性语法将控制数据的读取和写入。 此触发器和绑定系统会处理大部分与访问 Azure 和第三方服务相关的低级别代码编写任务。
-
-### <a name="functions-triggers-and-bindings"></a>函数、触发器和绑定
-
-WebJobs SDK 项目定义一个或多个函数。 函数是在其方法签名中包含触发器特性的方法。 触发器指定调用函数的条件，绑定指定要读取和写入的数据。 例如，以下函数中的触发器特性告知运行时，每当 `items` 队列中出现队列消息时，就要调用该函数。 `Blob` 特性告知运行时要使用队列消息读取 *workitems* 容器中的 Blob。 `queueTrigger` 参数 &mdash; 中提供的队列消息 &mdash; 的内容是 Blob 名称。
-
-```cs
-public static void Run(
-    [QueueTrigger("items")] string myQueueItem,
-    [Blob("workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
-    TraceWriter log)
-{
-    log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
-}
-```
-
-### <a name="versions-2x-and-3x"></a>版本 2.x 和 3.x
-
-说明介绍了如何创建 WebJobs SDK 3.x 版的项目。 版本 3.x 中引入的主要更改是使用 .NET Core 而不是 .NET Framework。 本文总结了 v2.x 和 v3.x 之间的差异。
-
-### <a name="azure-functions"></a>Azure Functions
-
-[Azure Functions](../azure-functions/functions-overview.md) 为函数提供了无服务器选择。 它基于 WebJobs SDK，是不需要直接使用 WebJobs SDK 时的选择。 Azure Functions 2.x 使用 WebJobs SDK 3.x。 有关详细信息，请参阅 [Azure Functions 与 WebJobs SDK 之间的比较](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)。
-
-## <a name="prerequisites"></a>先决条件
-
-本文假设你已创建一个 [Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)，并且对 [Azure 应用服务中的应用](overview.md)有一定的经验。 完成本文中的步骤：
+## <a name="prerequisites"></a>必备组件
 
 * [安装](/visualstudio/install/)包含 **Azure 开发**工作负荷的 Visual Studio 2017。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。
-* [创建应用服务应用](app-service-web-get-started-dotnet-framework.md)。 如果已有一个可在其中部署 WebJob 的应用服务应用，则可以使用该应用，而无需新建。
+
+* 必须有一个 [Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)才能将 WebJobs SDK 项目发布到 Azure。
 
 ## <a name="create-a-project"></a>创建一个项目
 
 1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”。
 
-2. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
+2. 选择“.NET Core”>“控制台应用(.NET Core)”。
 
 3. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
 
@@ -71,39 +44,21 @@ public static void Run(
 
 ## <a name="webjobs-nuget-packages"></a>WebJobs NuGet 包
 
-安装 WebJobs SDK 的 NuGet 包在 v2.x 和 v3.x 两个版本之间略有不同。
-
-### <a name="install-sdk-version-3x-packages"></a>安装 SDK 3.x 版的包
-
 1. 安装以下 NuGet 包的最新稳定版本 3.x 版：
 
-    * `Microsoft.Azure.WebJobs`
-    * `Microsoft.Azure.WebJobs.Extensions`
+   * `Microsoft.Azure.WebJobs`
+   * `Microsoft.Azure.WebJobs.Extensions`
 
-    下面是 3.0.3 版的“包管理器控制台”命令：
+     下面是适用于版本 3.0.4 的**包管理器控制台**命令：
 
-    ```powershell
-    Install-Package Microsoft.Azure.WebJobs -version 3.0.2
-    Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.1
-    ```
-
-### <a name="install-the-sdk-version-2x-package"></a>安装 SDK 2.x 版的包
-
-1. 安装 NuGet 包 `Microsoft.Azure.WebJobs` 的最新稳定 2.x 版本。
-
-    下面是版本 2.2.0 的“包管理器控制台”命令：
-
-    ```powershell
-    Install-Package Microsoft.Azure.WebJobs -version 2.2.0
-    ```
+     ```powershell
+     Install-Package Microsoft.Azure.WebJobs -version 3.0.4
+     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.1
+     ```
 
 ## <a name="create-the-host"></a>创建主机
 
-主机是函数的运行时容器：它侦听触发器并调用函数。 你创建的主机取决于 SDK 版本。
-
-### <a name="version-3x"></a>3.x 版
-
-以下操作创建一个实现 [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost) 的主机，它是 ASP.NET Core 中的通用主机。 
+主机是函数的运行时容器，它侦听触发器并调用函数。 以下步骤创建一个实现 [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost) 的主机，它是 ASP.NET Core 中的通用主机。
 
 1. 在 *Program.cs* 中，添加 `using` 语句：
 
@@ -129,41 +84,16 @@ public static void Run(
     }
     ```
 
-在 ASP.NET Core 中，通过调用 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 实例上的方法来设置主机配置。 有关详细信息，请参阅 [.NET 通用主机](/aspnet/core/fundamentals/host/generic-host)。 `ConfigureWebJobs` 扩展方法初始化 WebJobs 主机。
-
-### <a name="version-2x"></a>版本 2.x
-
-以下代码创建“JobHost”对象。
-
-1. 在 *Program.cs* 中，添加 `using` 语句：
-
-   ```cs
-   using Microsoft.Azure.WebJobs;
-   ```
-
-1. 将 `Main`方法替换为以下代码：
-
-   ```cs
-   static void Main()
-   {
-       var config = new JobHostConfiguration();
-       var host = new JobHost(config);
-       host.RunAndBlock();
-   }
-   ```
-
-主机配置是在用于创建 `JobHost` 的 `JobHostConfiguration` 实例中设置的。
+在 ASP.NET Core 中，通过调用 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 实例上的方法来设置主机配置。 有关详细信息，请参阅 [.NET 通用主机](/aspnet/core/fundamentals/host/generic-host)。 `ConfigureWebJobs` 扩展方法初始化 WebJobs 主机。 在 `ConfigureWebJobs` 中，初始化特定的 WebJobs 扩展并设置这些扩展的属性。  
 
 ## <a name="enable-console-logging"></a>启用控制台日志记录
 
-对于 WebJobs SDK 的 2.x 版和 3.x 版，建议使用为 ASP.NET Core 开发的记录框架。 此框架在存储媒体和筛选方面提供更高的性能和灵活性。 有关详细信息，请参阅[登录 ASP.NET Core](/aspnet/core/fundamentals/logging)。
-
-本部分介绍如何设置使用此框架的控制台日志记录。
+在本部分，设置使用 [ASP.NET Core 日志记录框架](/aspnet/core/fundamentals/logging)的控制台日志记录。
 
 1. 安装以下 NuGet 包的最新稳定版本：
 
    * `Microsoft.Extensions.Logging` - 日志记录框架。
-   * `Microsoft.Extensions.Logging.Console` - 控制台提供程序。 提供程序将日志发送到特定的目标（在本例中为控制台）。
+   * `Microsoft.Extensions.Logging.Console` - 用于将日志发送到控制台的控制台提供程序。
 
    下面是 2.2.0 版的“包管理器控制台”命令：
 
@@ -181,11 +111,7 @@ public static void Run(
    using Microsoft.Extensions.Logging;
    ```
 
-1. 日志记录代码更新取决于 SDK 版本：
-
-    **3.x 版**
-
-    在 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 上调用 [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) 方法。 [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) 方法将控制台日志记录添加到配置中。
+1. 在 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 上调用 [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) 方法。 [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) 方法将控制台日志记录添加到配置中。
 
     ```cs
     builder.ConfigureLogging((context, b) =>
@@ -216,46 +142,23 @@ public static void Run(
     }
     ```
 
-    **版本 2.x**
-
-    在 `Main` 方法中添加代码，以便在创建 `JobHost` 之前更新 `JobHostConfiguration`：
-
-    ```cs
-    config.DashboardConnectionString = "";
-    var loggerFactory = new LoggerFactory();
-    config.LoggerFactory = loggerFactory
-        .AddConsole();
-    ```
-
-    现在，`Main` 方法如下所示：
-
-    ```cs
-    var config = new JobHostConfiguration();
-    config.DashboardConnectionString = "";
-    var loggerFactory = new LoggerFactory();
-    config.LoggerFactory = loggerFactory
-        .AddConsole();
-    var host = new JobHost(config);
-    host.RunAndBlock();
-    ```
-
-    这些更新执行以下操作：
+    此项更新执行以下操作：
 
     * 禁用[仪表板日志记录](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs)。 仪表板是一个旧式监视工具，不建议对高吞吐量生产方案使用仪表板日志记录。
     * 使用默认[筛选](webjobs-sdk-how-to.md#log-filtering)添加控制台提供程序。
 
 现在即可以添加由到达 [Azure 存储队列](../azure-functions/functions-bindings-storage-queue.md)的消息触发的函数。
 
-## <a name="install-binding-extensions"></a>安装绑定扩展
+## <a name="install-the-storage-binding-extension"></a>安装存储绑定扩展
 
-从 3.x 版开始，必须显式安装函数中使用的 WebJobs SDK 绑定属性的扩展。 唯一的例外是[计时器触发器](../azure-functions/functions-bindings-timer.md)和 [HTTP 触发器](../azure-functions/functions-bindings-http-webhook.md)，它们不需要扩展。 WebJobs SDK 2.x 版不使用扩展，因为 SDK 中附带扩展。 如果你使用的是 2.x 版，请跳到下一部分。
+从版本 3.x 开始，必须显式安装 WebJobs SDK 所需的存储绑定扩展。 在以前版本中，存储绑定已包含在 SDK 中。
 
 1. 安装 [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet 包的最新稳定版本，即 3.x 版。 
 
-    下面是 3.0.2 版的“包管理器控制台”命令：
+    下面是适用于版本 3.0.3 的**包管理器控制台**命令：
 
     ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.2
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.3
     ```
 
 2. 在 `ConfigureWebJobs` 扩展方法中，调用 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 实例上的 `AddAzureStorage` 方法来初始化存储扩展。 此时，`ConfigureWebJobs` 方法如下例所示：
@@ -270,7 +173,7 @@ public static void Run(
 
 ## <a name="create-a-function"></a>创建函数
 
-1. 右键单击项目，选择“添加” > “新项目...”，并将新的 C# 类文件命名为“Functions.cs”。
+1. 右键单击项目，选择“添加” > “新建项...”，选择“类”，将新的 C# 类文件命名为 *Functions.cs*，然后选择“添加”。
 
 1. 在 Functions.cs 中，使用以下代码替换生成的模板：
 
@@ -296,7 +199,7 @@ public static void Run(
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-在本地运行的 Azure 存储模拟器不具备 WebJobs SDK 所需的全部功能。 因此，在本部分，我们应在 Azure 中创建一个存储帐户，并将项目配置为使用该帐户。
+在本地运行的 Azure 存储模拟器不具备 WebJobs SDK 所需的全部功能。 因此，在本部分，我们应在 Azure 中创建一个存储帐户，并将项目配置为使用该帐户。 如果已有一个存储帐户，请跳到步骤 6。
 
 1. 在 Visual Studio 中打开“服务器资源管理器”并登录 Azure。 右键单击“Azure”节点，选择“连接到 Microsoft Azure 订阅”。
 
@@ -326,9 +229,9 @@ public static void Run(
 
 WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串。 在本地运行时，它会在本地配置文件或环境变量中查找此值。
 
-### <a name="appsettingsjson-sdk-version-3x"></a>appsettings.json（SDK 3.x 版）
+1. 右键单击项目，选择“添加” > “新建项...”，选择“JavaScript JSON 配置文件”，将新文件命名为 *appsettings.json*，然后选择“添加”。 
 
-1. 创建“appsettings.json”文件，或添加 `AzureWebJobsStorage` 字段，如以下示例所示：
+1. 在新文件中添加 `AzureWebJobsStorage` 字段，如以下示例所示：
 
     ```json
     {
@@ -338,17 +241,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 将 *{storage connection string}* 替换为先前复制的连接字符串。
 
-### <a name="appconfig-sdk-version-2x"></a>App.config（SDK 2.x 版）
-
-1. 将以下 XML 添加到 *App.config* 文件中紧靠在 `<configuration>` 左标记的后面。
-
-   ```xml
-   <connectionStrings>
-     <add name="AzureWebJobsStorage" connectionString="{storage connection string}" />
-   </connectionStrings>
-   ```
-
-1. 将 *{storage connection string}* 替换为先前复制的连接字符串。
+1. 在解决方案资源管理器中选择“appsettings.json”文件，在“属性”窗口中，将“复制到输出目录”设置为“如果较新则复制”。
 
 稍后，你将在 Azure 应用服务中的应用中添加相同的连接字符串应用设置。
 
@@ -356,7 +249,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 在本部分，我们将生成并在本地运行项目，然后通过创建队列消息来触发函数。
 
-1. 按 Ctrl+F5 运行项目。
+1. 按 **Ctrl+F5** 运行项目。
 
    控制台显示运行时已找到函数，并等待队列消息触发该函数。 v3.x 主机生成以下输出：
 
@@ -376,7 +269,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 关闭控制台窗口。
 
-1. 在 Visual Studio 的“服务器资源管理器”中，展开新存储帐户所在的节点，然后右键单击“队列”。 
+1. 在 Visual Studio 的“服务器资源管理器”中，展开新存储帐户所在的节点，然后右键单击“队列”。
 
 1. 选择“创建队列”。
 
@@ -390,7 +283,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    ![创建队列](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. 在“添加消息”对话框中，输入 *Hello World!* 作为**消息正文**，然后选择“确定”。
+1. 在“添加消息”对话框中，输入 *Hello World!* 作为**消息正文**，然后选择“确定”。 现在，队列中会出现一条消息。
 
    ![创建队列](./media/webjobs-sdk-get-started/hello-world-text.png)
 
@@ -400,7 +293,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    由于[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm)，运行时最长可能需要花费 2 分钟才能找到消息并调用函数。 以[开发模式](webjobs-sdk-how-to.md#host-development-settings)运行可以缩减此等待时间。
 
-  3.x 版的控制台输出如下所示：
+   控制台输出如下所示：
 
    ```console
     info: Function.ProcessQueueMessage[0]
@@ -413,7 +306,9 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
           Executed 'Functions.ProcessQueueMessage' (Succeeded, Id=2c319369-d381-43f3-aedf-ff538a4209b8)
    ```
 
-1. 关闭控制台窗口。
+1. 关闭控制台窗口。 
+
+1. 返回“队列”窗口并刷新。 该消息已消失，因为本地运行的函数已对其进行处理。 
 
 ## <a name="add-application-insights-logging"></a>添加 Application Insights 日志记录
 
@@ -443,13 +338,13 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 在“连接字符串”框中添加以下条目。
 
-   |Name  |连接字符串  |数据库类型|
+   |名称  |连接字符串  |数据库类型|
    |---------|---------|------|
    |AzureWebJobsStorage | {前面复制的存储连接字符串}|“自定义”|
 
 1. 如果“应用程序设置”框中没有 Application Insights 检测密钥，请添加前面复制的检测密钥。 （根据应用服务应用的创建方式，该框中可能已包含检测密钥。）
 
-   |Name  |值  |
+   |名称  |值  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 
@@ -457,11 +352,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 选择“保存”。
 
-1. 向项目添加 Application Insights 连接，以便你可以在本地运行：
-
-    **3.x 版**
-
-    在“appsettings.json”文件中，添加 `APPINSIGHTS_INSTRUMENTATIONKEY` 字段，如下例所示：
+1. 向项目添加 Application Insights 连接，以便在本地运行。 在“appsettings.json”文件中，添加 `APPINSIGHTS_INSTRUMENTATIONKEY` 字段，如下例所示：
 
     ```json
     {
@@ -470,17 +361,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
     }
     ```
 
-    **版本 2.x**
-
-    将以下 XML 添加到 *App.config* 文件中紧靠在连接字符串集合的后面。
-
-    ```xml
-    <appSettings>
-        <add key="APPINSIGHTS_INSTRUMENTATIONKEY" value="{instrumentation key}" />
-    </appSettings>
-    ```
-
-    在任一版本中，将“{instrumentation key}”替换为正在使用的 Application Insights 资源中的检测密钥。
+    将 *{instrumentation key}* 替换为所用 Application Insights 资源中的检测密钥。
 
 1. 保存所做更改。
 
@@ -490,8 +371,6 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 * 使用默认[筛选](webjobs-sdk-how-to.md#log-filtering)添加 Application Insights 日志记录提供程序；在本地运行时，所有“信息”和更高级别的日志将转到控制台和 Application Insights。
 * 将 `LoggerFactory` 对象放在 `using` 块中，以确保在主机退出时刷新日志输出。
-
-#### <a name="version-3x"></a>3.x 版
 
 1. 为 Application Insights 日志记录提供程序安装 NuGet 包的最新稳定版本 3.x 版：`Microsoft.Azure.WebJobs.Logging.ApplicationInsights`。
 
@@ -532,46 +411,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
     }
     ```
 
-#### <a name="version-2x"></a>版本 2.x
-
-1. 为 Application Insights 日志记录提供程序安装 NuGet 包的最新稳定 2.x 版本：`Microsoft.Azure.WebJobs.Logging.ApplicationInsights`。
-
-   下面是版本 2.2.0 的“包管理器控制台”命令：
-
-   ```powershell
-   Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
-   ``` 
-
-1. 为 .NET 配置管理器安装 NuGet 包的最新稳定 4.x 版本：`System.Configuration.ConfigurationManager`。
-
-   下面是版本 4.4.1 的“包管理器控制台”命令：
-
-   ```powershell
-   Install-Package System.Configuration.ConfigurationManager -version 4.4.1
-   ``` 
-
-1. 打开 *Program.cs* 并为配置管理器添加 `using` 语句：
-
-   ```csharp
-   using System.Configuration;
-   ```
-
-1. 将 `Main`方法中的代码替换为以下代码：
-
-   ```csharp
-   using (var loggerFactory = new LoggerFactory())
-   {
-       var config = new JobHostConfiguration();
-       var instrumentationKey =
-           ConfigurationManager.AppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"];
-       config.DashboardConnectionString = "";
-       config.LoggerFactory = loggerFactory
-           .AddApplicationInsights(instrumentationKey, null)
-           .AddConsole();
-       var host = new JobHost(config);
-       host.RunAndBlock();
-   }
-   ```
+    这将 Application Insights 提供程序添加到日志记录，使用先前添加到你的应用设置的密钥。
 
 ## <a name="test-application-insights-logging"></a>测试 Application Insights 日志记录
 
@@ -597,27 +437,11 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 关闭控制台窗口。
 
-## <a name="deploy-as-a-webjob"></a>部署 WebJob
+## <a name="deploy-as-a-webjob"></a>部署到 Azure
 
-在本部分中，我们将项目部署为 WebJob。 将项目部署到[前面创建的](#create-app-service-app-and-application-insights-instance)应用服务应用。 为了在 Azure 中运行项目时测试代码，我们将通过创建一条队列消息来触发函数调用。
+在部署期间，可以创建一个要在其中运行函数的应用服务实例。 将 .NET Core 控制台应用发布到 Azure 中的应用服务时，该应用会自动以 WebJob 的形式运行。 若要详细了解发布过程，请参阅[使用 Visual Studio 开发和部署 WebJob](webjobs-dotnet-deploy-vs.md)。
 
-1. 在“解决方案资源管理器”中，右键单击项目并选择“发布为 Azure WebJob”。
-
-1. 在“添加 Azure WebJob”对话框中，选择“确定”。
-
-   ![添加 Azure WebJob](./media/webjobs-sdk-get-started/add-azure-webjob.png)
-
-   Visual Studio 会自动安装用于 WebJob 发布的 NuGet 包。
-
-1. 在“发布”向导的“配置文件”步骤中，选择“Microsoft Azure 应用服务”。
-
-   ![“发布”对话框](./media/webjobs-sdk-get-started/publish-dialog.png)
-
-1. 在“应用服务”对话框中，选择“<你的资源组>”>“<你的应用服务应用>”，然后选择“确定”。
-
-   ![“应用服务”对话框](./media/webjobs-sdk-get-started/app-service-dialog.png)
-
-1. 生成发布配置文件后，选择“发布”。
+[!INCLUDE [webjobs-publish-net-core](../../includes/webjobs-publish-net-core.md)]
 
 ## <a name="trigger-the-function-in-azure"></a>触发 Azure 中的函数
 
@@ -656,7 +480,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
    }
    ```
 
-   在此代码中，`queueTrigger` 是[绑定表达式](../azure-functions/functions-triggers-bindings.md#binding-expressions-and-patterns)，意味着它将在运行时解析为不同的值。  在运行时，它具有队列消息的内容。
+   在此代码中，`queueTrigger` 是[绑定表达式](../azure-functions/functions-bindings-expressions-patterns.md)，意味着它将在运行时解析为不同的值。  在运行时，它具有队列消息的内容。
 
 1. 添加 `using`：
 
@@ -684,7 +508,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    ![队列消息 Program.cs](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
 
-1. 运行该项目。
+1. 在本地运行项目
 
    该队列消息会触发函数，而该函数又会读取 Blob 并记录其长度。 控制台输出如下所示：
 
@@ -718,15 +542,21 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 创建另一个队列消息，并使用 *Program.cs* 作为消息的文本。
 
-1. 运行该项目。
+1. 在本地运行项目
 
    该队列消息会触发函数，而该函数又会读取 Blob、记录其长度并创建新 Blob。 控制台输出相同，但在转到 Blob 容器窗口并选择“刷新”时，会看到名为 *copy-Program.cs* 的新 Blob。
 
+## <a name="republish-the-updates-to-azure"></a>将更新重新发布到 Azure
+
+1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”。
+
+1. 在“发布”对话框中，确保当前配置文件已选中，然后选择“发布”。 “输出”窗口中会详细显示发布结果。
+ 
+1. 通过再次将某个文件上传到 Blob 容器，并将一条消息添加到与所上传文件同名的队列，来验证 Azure 中的函数。 将会看到，该消息已从队列中删除，并且 Blob 容器中创建了该文件的副本。 
+
 ## <a name="next-steps"></a>后续步骤
 
-本指南介绍了如何创建、运行和部署 WebJobs SDK 项目。
-
-为了演示 WebJobs SDK 项目的方方面面，本指南中的说明指导我们从头开始创建了一个项目。 但是，在创建下一个项目时，请考虑使用“云”类别中的“Azure WebJob”模板。 此模板会使用已设置好的 NuGet 包和示例代码创建项目。 可能需要更改示例代码才能使用新的记录框架。
+本文介绍了如何创建、运行和部署 WebJobs SDK 3.x 项目。
 
 > [!div class="nextstepaction"]
 > [详细了解 WebJobs SDK](webjobs-sdk-how-to.md)

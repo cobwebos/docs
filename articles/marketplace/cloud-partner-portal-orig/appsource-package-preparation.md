@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0b24c5d2f174c9a656e81d0c85e12b589d7d7799
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805749"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837025"
 ---
 # <a name="appsource-package-preparation"></a>AppSource 包准备
 
@@ -33,14 +33,14 @@ ms.locfileid: "48805749"
 
 以下步骤可帮助你创建 AppSource 包。
 
-## <a name="a-create-a-package-for-the-package-deployer"></a>a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建 Package Deployer 的包
+## <a name="a-create-a-package-for-the-package-deployer"></a>a. 创建 Package Deployer 的包
 
 Package Deployer 的包是 AppSource 包的一部分。
 
 若要创建 Package Deployer 的包，请参考以下说明：[https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx)。 完成后，该包将包括以下资产：
 
-1. 包文件夹：包含所有解决方案、配置数据、平面文件和包的内容。 _注意：在以下示例中，我们假设包文件夹名为“PkgFolder”_
-2. dll：该程序集包含包的自定义代码。 _注意：在以下示例中，我们假设此文件名为“MicrosoftSample.dll”。_
+1. 包文件夹：包含所有解决方案、配置数据、平面文件和包的内容。 _注意：在下面的示例中我们将假定包文件夹名为"PkgFolder"_
+2. dll:程序集包含您的包的自定义代码。 _注意：在下面的示例中我们将假定此文件称为"MicrosoftSample.dll。"_
 
 现在，需要创建名为 **Content_Types.xml** 的文件。此文件将列出包中的所有资产扩展。 下面是该文件的示例代码。
 
@@ -71,11 +71,11 @@ Package Deployer 的包是 AppSource 包的一部分。
 
 ![CRMScreenShot2](media/CRMScreenShot2.png)
 
-2. 选择该文件夹中的所有项，单击右键并选择“发送到压缩(zip)文件夹”
+1. 选择该文件夹中的所有项，单击右键并选择“发送到压缩(zip)文件夹”
 
 ![CRMScreenShot3](media/CRMScreenShot3.png)
 
-3. 将名称更改为 package.zip
+1. 将名称更改为 package.zip
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
@@ -97,7 +97,7 @@ AppSource 包需要几个附加的文件。
         <StartDate>01/01/2016</StartDate>
         <EndDate>01/01/2021</EndDate>
         <SupportedCountries>US,CA</SupportedCountries>
-        <LearnMoreLink>http://www.microsoft.com</LearnMoreLink>
+        <LearnMoreLink>https://www.microsoft.com</LearnMoreLink>
         <Locales>
         <PackageLocale Code="1033" IsDefault="true">
         <Logo>logo32x32.png</Logo>
@@ -117,13 +117,13 @@ AppSource 包需要几个附加的文件。
 |SolutionAnchorName |Package Deployer 中用于显示名称和解决方案资产说明的解决方案 zip 文件的名称。|
 | StartDate| 这是解决方案包可供使用的日期。 格式为 MM/DD/YYYY|
 |EndDate|这是解决方案包不再可供使用的日期。 格式为 MM/DD/YYYY |
-|SupportedCountries |这是可以看到此包的国家/地区的逗号分隔列表。 请联系联机服务部门获取所有最新国家/地区代码的列表。 在撰写本文时，该列表为：AE,AL,AM,AO,AR,AT,AU,AZ,BA,BB,BD,BE,BG,BH,BM,BN,BO,BR,BY,CA,CH,CI,CL,CM,CO,CR,CV,CW,CY,CZ,DE,DK,DO,DZ,EC,EE,EG,ES,FI,FR,GB,GE,GH,GR,GT,HK,HN,HR,HU,ID,IE,IL,IN,IQ,IS,IT,JM,JO,JP,KE,KG,KN,KR,KW,KY,KZ,LB,LK,LT,LU,LV,LY,MA,MC,MD,ME,MK,MN,MO,MT,MU,MX,MY,NG,NI,NL,NO,NZ,OM,PA,PE,PH,PK,PL,PR,PS,PT,PY,QA,RO,RS,RU,RW,SA,SE,SG,SI,SK,SN,SV,TH,TM,TN,TR,TT,TW,UA,US,UY,UZ,VE,VI,VN,ZA,ZW |
+|SupportedCountries |这是可以看到此包的国家/地区的逗号分隔列表。 请联系联机服务部门获取所有最新国家/地区代码的列表。 当时，撰写本文列表为：AE，AL，AM，AO，AR，会在、 澳大利亚，AZ、 BA、 BB、 BD，，BG、 BH、 BM、 BN、 BO、 巴西，由 CA，CH，CI，CL，CM，CO、 CR、 CV，CW，CY、 CZ，DE、 DK、 执行、 DZ、 EC、 EE，例如，ES、 FI、 FR、 GB、 GE、 GH、 GR、 GT、 香港特别行政区HN、 HR、 HU、 ID、 IE、 IL、 IN、 IQ，是，它，JM、 JO、 JP、 KE、 KG、 KN、 韩国、 KW，肯塔基州，KZ、 LB、 LK、 L T、 LU、 LV、 LY，MA、 MC，MD、 我、 MK，MN，月，MT，MU，MX，我，NG，NI、 NL、 否、 新西兰、 OM、 PA，PE、 P HPK、 PL、 拉取请求、 PS、 PT、 上一年度、 QA、 RO、 RS、 RU、 RW、 SA、 SE、 SG、 SI，SK、 SN、 SV、 TH、 TM，TN、 TR、 TT、 TW、 UA、 美国、 UY、 UZ、 VE、 VI、 VN、 ZA、 ZW |
 |LearnMoreLink | 此包的详细信息页的 URL。 |
 |Locales|此节点的一个实例，适用于你要在首选解决方案 UX 中支持的每种 UX 语言。 此节点包含描述每种语言的区域设置、徽标和条款的子级|
-|区域设置：PackageLocale.Code|此节点的语言 LCID。 示例：“美国英语”为 1033|
+|区域设置：PackageLocale.Code|此节点的语言 LCID。 示例：美国英语为 1033|
 |区域设置：PackageLocale.IsDefault|指示这是默认语言。 如果客户选择的 UX 语言不可用，则此语言将用作回退语言。|
 |区域设置：徽标|这是要用于此包的徽标。 图标大小为 32x32。 允许的格式为 PNG 和 JPG|
-|区域设置：条款：PackageTerm.File|这是包含许可条款的 HTML 文档的文件名。|
+|区域设置： 术语：PackageTerm.File|这是包含许可条款的 HTML 文档的文件名。|
 
 下面是徽标的显示位置：
 

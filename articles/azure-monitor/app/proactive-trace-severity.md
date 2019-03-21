@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: a593e42ed87ab985d4f4584ed6b73109716120bf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 10b909fd5239546047aa4696a1f6a68a703778c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027098"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001231"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>跟踪严重性比下降（预览）
 
@@ -26,7 +26,7 @@ ms.locfileid: "54027098"
 此功能需要为应用配置跟踪日志（请参见如何为 [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) 或 [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs) 配置跟踪日志侦听器），除此之外，不需要其他特殊步骤。 在应用生成足够多的异常遥测数据后，此功能会激活。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>何时会收到此类型的智能检测通知？
-对比前面七天计算的基线，如果“良好”跟踪（跟踪级别记录为 Info 或 Verbose）和“错误”跟踪（跟踪级别记录为 Warning、Error 或 \* Fatal）之间的比率在某一天降低，则可能会收到此类型通知。
+可能会收到此类型的通知，如果"良好"跟踪之间的比率 (跟踪级别的日志记录*Info*或*Verbose*) 和"错误"跟踪 (跟踪记录的级别*警告*，*错误*，或*致命错误*) 中的特定一天，相比过去七天计算的基线降低。
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>收到通知是否意味着我的应用肯定有问题？
 不是，通知并不意味着应用肯定有问题。 虽然“良好”和“错误”跟踪之间的比率降低可能指示应用程序出现问题，但这种比率的变化也可能是良性的。 例如，如果应用程序中的新流发出的“错误”跟踪多于现有流，则可能带来比率的增加。

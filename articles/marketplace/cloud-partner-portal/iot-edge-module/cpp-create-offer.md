@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7943119ed29e03afb6b089a913d4ba2baddc166
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 69ee0c0add2895b30a60db577cc11c83a0e00bb8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432124"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854766"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>使用云合作伙伴门户创建新的 IoT Edge 模块套餐
 
@@ -34,7 +34,7 @@ ms.locfileid: "49432124"
 
 ## <a name="new-offer-form"></a>“新建套餐”窗体 
 
-登录到[云合作伙伴门户](http://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建套餐”。 在“新建套餐”菜单中，选择“IoT Edge 模块”显示“新建套餐”窗体，然后开始定义新 IoT Edge 模块套餐的资产。 
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建套餐”。 在“新建套餐”菜单中，选择“IoT Edge 模块”显示“新建套餐”窗体，然后开始定义新 IoT Edge 模块套餐的资产。 
 
 ![新建 IoT Edge 模块套餐用户界面中的选项](./media/new-iot-edge-module-offer.png)
 

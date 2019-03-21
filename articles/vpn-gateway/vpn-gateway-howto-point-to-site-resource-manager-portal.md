@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e8a28634e554ee75eea79e69c0b73e8adec3447
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: fa406ac2f1e0b89a1161660a49f2a4cb6f6d6c32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700530"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117313"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点连接：Azure 门户
 
@@ -39,7 +39,7 @@ ms.locfileid: "55700530"
 * **地址空间：** 192.168.0.0/16<br>对于此示例，我们只使用一个地址空间。 VNet 可以有多个地址空间。
 * **子网名称：** FrontEnd
 * 子**网地址范围：** 192.168.1.0/24
-* **订阅：** 如果有多个订阅，请验证是否正在使用正确的订阅。
+* **订阅：** 如果有多个订阅，请确保使用正确的订阅。
 * **资源组：** TestRG
 * **位置：** 美国东部
 * **GatewaySubnet：** 192.168.200.0/24<br>
@@ -94,17 +94,17 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
 1. 创建虚拟网关后，请导航到虚拟网关页的“设置”部分。 在“设置”部分单击“点到站点配置”。
 
-  ![“点到站点”页](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
+   ![“点到站点”页](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
 2. 单击“立即配置”，打开配置页。
 
-  ![立即配置](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
+   ![立即配置](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
 3. 在“点到站点”配置页的“地址池”框中，添加要使用的专用 IP 地址范围。 VPN 客户端动态接收指定范围内的 IP 地址。 单击“保存”验证和保存设置。
 
-  ![客户端地址池](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
+   ![客户端地址池](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
-  >[!NOTE]
-  >如果门户中的此页上未显示“隧道类型”或“身份验证类型”，则表示网关使用的是基本 SKU。 基本 SKU 不支持 IKEv2 或 RADIUS 身份验证。
-  >
+   >[!NOTE]
+   >如果门户中的此页上未显示“隧道类型”或“身份验证类型”，则表示网关使用的是基本 SKU。 基本 SKU 不支持 IKEv2 或 RADIUS 身份验证。
+   >
 
 ## <a name="tunneltype"></a>7.配置隧道类型
 
@@ -126,13 +126,13 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 2. 请确保已导出了格式为 Base-64 编码的 X.509 (.cer) 文件的根证书。 需要以这种格式导出证书，以便使用文本编辑器打开该证书。
 3. 使用记事本之类的文本编辑器打开该证书。 复制证书数据时，请确保将文本复制为一个无回车符或换行符的连续行。 可能需要在文本编辑器中将视图修改为“显示符号/显示所有字符”以查看回车符和换行符。 仅将以下部分复制为一个连续行：
 
-  ![证书数据](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
-4. 将证书数据粘贴到“公共证书数据”字段中。 “命名”该证书，并单击“保存”。 最多可以添加 20 个受信任的根证书。
+   ![证书数据](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
+4. 将证书数据粘贴到“公共证书数据”字段中。 **命名**该证书，然后单击“保存”。 最多可以添加 20 个受信任的根证书。
 
-  ![证书上传](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
+   ![证书上传](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
 5. 单击页面顶部的“保存”来保存所有配置设置。
 
-  ![保存](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
+   ![保存](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
 ## <a name="installclientcert"></a>10.安装已导出的客户端证书
 
@@ -159,10 +159,10 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 
 2. 在“连接”状态页上，单击“连接”以启动连接。 如果看到“选择证书”屏幕，请确保所显示的客户端证书是要用来连接的证书。 如果不是，请使用下拉箭头选择正确的证书，并单击“确定”。
 
-  ![VPN 客户端连接到 Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
+   ![VPN 客户端连接到 Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
 3. 连接已建立。
 
-  ![已建立连接](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
+   ![已建立连接](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
 
 #### <a name="troubleshoot-windows-p2s-connections"></a>对 Windows P2S 连接进行故障排除
 
@@ -183,8 +183,8 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 1. 要验证 VPN 连接是否处于活动状态，请打开提升的命令提示符，然后运行 *ipconfig/all*。
 2. 查看结果。 请注意，收到的 IP 地址是在配置中指定的点到站点 VPN 客户端地址池中的地址之一。 结果与以下示例类似：
 
-  ```
-  PPP adapter VNet1:
+   ```
+   PPP adapter VNet1:
       Connection-specific DNS Suffix .:
       Description.....................: VNet1
       Physical Address................:
@@ -194,7 +194,7 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
       Subnet Mask.....................: 255.255.255.255
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 ## <a name="connectVM"></a>连接到虚拟机
 

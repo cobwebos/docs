@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
-ms.openlocfilehash: b617ccee1826dfcc05ca7131d1eb04fd98b6b627
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: a52f42fb194d2f39861a57c95a664ad57b4f91d1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811148"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895866"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>在 Azure Stack 上备份 SharePoint 场
 在 Azure Stack 上使用 Microsoft Azure 备份服务器 (MABS) 将 SharePoint 场备份到 Microsoft Azure，其方法与备份其他数据源极为类似。 Azure 备份提供灵活的备份计划来创建每日、每周、每月或每年备份点，并提供适用于各种备份点的保留策略选项。 利用该技术，不仅可以存储本地磁盘副本以实现快速的恢复时间目标 (RTO)，还可以将副本存储到 Azure 以进行经济高效的长期保留。
@@ -226,7 +226,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
 答：可以，该项可以恢复到原始 SharePoint 站点。
 
 问：如果使用 SQL AlwaysOn 配置了 SharePoint，我能否将 SharePoint 数据库恢复到原始位置？<br>
-答：由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此，除非删除可用性组，否则无法修改它们。 因此，MABS 无法将数据库还原到原始位置。 可以将 SQL Server 数据库恢复到另一个 SQL Server 实例。
+答：由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此除非删除可用性组，否则无法修改它们。 因此，MABS 无法将数据库还原到原始位置。 可以将 SQL Server 数据库恢复到另一个 SQL Server 实例。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 使用双重验证的 Azure MFA 登录 | Microsoft 文档
+title: Azure MFA 登录使用双重验证的 Azure Active Directory |Microsoft Docs
 description: 本页将提供有关在何处查看 Azure MFA 支持的各种登录方法的指导。
 keywords: 用户身份验证, 登录体验, 使用手机登录, 使用办公电话登录
 services: active-directory
@@ -13,26 +13,27 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
+ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2545e85ff466ed7455161eb725b824da465457bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177293"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840863"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>使用 Azure 多重身份验证时的登录体验
 > [!NOTE]
 > 本文的目的是了解典型的登录体验。 有关登录的帮助或者要排查问题，请参阅[使用 Azure 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)。
 
 ## <a name="what-will-your-sign-in-experience-be"></a>登录体验是怎样的？
-根据所选择的第二重验证因素（拨打电话、身份验证应用或短信），登录体验将有所不同。 请选择最适当地描述了活动的选项：
+根据所选择的第二重验证因素（拨打电话、身份验证应用或短信），你的登录体验有所不同。 请选择最适当地描述了活动的选项：
 
 | 如何登录？ |
 | --- |
 | [通过拨打我的手机或办公电话](#signing-in-with-a-phone-call) |
 | [通过向我的手机发送短信](#signing-in-with-a-text-message)
-| 使用来自 Microsoft Authenticator 应用的通知 |
+| [使用来自 Microsoft 验证器应用的通知](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
 | 使用来自 Microsoft Authenticator 应用的验证码 |
 | [使用备用方法，因为我现在无法使用首选方法](#signing-in-with-an-alternate-method) |
 
@@ -57,10 +58,10 @@ ms.locfileid: "56177293"
 1. 使用用户名和密码登录到 Office 365 等应用程序或服务。
 2. Microsoft 将通知发送到设备上的 Microsoft 验证器应用。
 
-  ![Microsoft 发送通知](./media/multi-factor-authentication-end-user-signin/notify.png)
+   ![Microsoft 发送通知](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. 打开手机上的通知，选择“验证”键。 如果公司需要 PIN，请在此处输入。
-4. 现在你应已登录。
+4. 现在，应该已登录。
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>使用验证码通过 Microsoft Authenticator 应用登录
 
@@ -69,7 +70,7 @@ ms.locfileid: "56177293"
 1. 使用用户名和密码登录到 Office 365 等应用程序或服务。
 2. Microsoft 会提示输入验证码。
 
-  ![输入验证码](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![输入验证码](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
 3. 打开手机上的 Microsoft Authenticator 应用，并在登录框中输入该代码。
 
@@ -80,12 +81,11 @@ ms.locfileid: "56177293"
 2. 选择“使用其他验证选项”。 此时会显示不同的验证选项，具体将取决于设置了多少个选项。
 3. 选择一种替代方法并登录。
 
-  ![使用替代方法](./media/multi-factor-authentication-end-user-signin/alt.png)
+   ![使用替代方法](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>后续步骤
+- 如果使用双重验证登录时遇到问题，请在[使用 Azure 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)中获取详细信息。
 
-如果使用双重验证登录时遇到问题，请在[使用 Azure 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)中获取详细信息。
+- 了解如何[管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)。
 
-了解如何[管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)。
-
-了解如何[开始使用 Microsoft 验证器应用](user-help-auth-app-download-install.md)，以便使用通知（而不是短信和电话呼叫）登录。
+- 了解如何[开始使用 Microsoft 验证器应用](user-help-auth-app-download-install.md)，以便使用通知（而不是短信和电话呼叫）登录。

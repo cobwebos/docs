@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e66c694d2bfb5497712bcf81c4d50a8e68fdcef9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af106650f6e1d139ec7af2c8d243dc50f2e963fc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122514"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293952"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
@@ -38,7 +38,7 @@ ms.locfileid: "58122514"
 
 如果收到无权邀请用户的通知，请在“用户设置”下验证用户帐户是否有权邀请外部用户：
 
-![外部用户设置](media/troubleshoot/external-user-settings.png)
+![显示外部用户设置的屏幕截图](media/troubleshoot/external-user-settings.png)
 
 如果最近修改了这些设置或为用户分配了“来宾邀请者”角色，可能有 15-60 分钟的延迟更改才生效。
 
@@ -50,7 +50,7 @@ ms.locfileid: "58122514"
 
 受邀用户所在组织正在使用 Azure Active Directory，但其中不存在特定用户帐户（例如，用户不存在于 AAD contoso.comAzure AD contoso.com 中）。 contoso.com 的管理员可能会设置一个策略以阻止创建用户。 用户必须向其管理员进行核实以确定是否允许外部用户。 外部用户的管理员可能需要在其域中允许电子邮件验证的用户（请参阅有关允许电子邮件验证的用户的此[文章](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)）。
 
-![错误，指出此租户不允许电子邮件验证的用户添加](media/troubleshoot/allow-email-verified-users.png)
+![错误，指出租户不允许电子邮件经过验证的用户](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>外部用户尚未存在于联合域中
 

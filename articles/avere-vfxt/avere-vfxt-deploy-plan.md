@@ -4,18 +4,18 @@ description: 介绍部署 Avere vFXT for Azure 之前的规划工作
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: a097110bac7dad630f9a85dd8b20678db0c739cf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744650"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990979"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
-本文介绍如何规划新的 Avere vFXT for Azure 群集，以确保根据需求正确定位和调整所要创建的群集。 
+本文介绍如何规划 Azure 定位并根据需要适当地设置大小的群集新 Avere vFXT。 
 
 在访问 Azure 市场或创建任何 VM 之前，请考虑群集如何与 Azure 中的其他元素交互。 规划好要将群集资源定位在专用网络和子网中的哪个位置，并确定后端存储的位置。 确保创建的群集节点足够强大，可以支持自己的工作流。 
 
@@ -32,16 +32,22 @@ ms.locfileid: "55744650"
 * 应使用为 Avere vFXT 部署创建的新订阅来管理所有元素。 优势包括： 
   * 更简单的成本跟踪 - 在一个订阅中查看和审核由资源、基础结构和计算循环产生的所有成本。
   * 更轻松的清理 - 完成项目后，可以删除整个订阅。
-  * 方便地对资源配额进行分区 - 通过将 Avere vFXT 客户端和群集隔离到单个订阅中，可以在提供大量的客户端用于高性能计算工作流时保护其他关键工作负荷免受可能的资源限制。
+  * 方便分区资源的配额-保护其他关键工作负荷免受可能限制通过隔离 Avere vFXT 客户端和单个订阅中的群集的资源。 提供大量的高性能计算工作流的客户端时，这可以避免冲突。
 
 * 将客户端计算系统定位在靠近 vFXT 群集的位置。 后端存储可以位于较远的位置。  
 
-* 为方便起见，请将 vFXT 群集和群集控制器 VM 定位在同一虚拟网络 (VNet) 和同一资源组中。 它们还应该使用相同的存储帐户。 （群集控制器创建群集，并且还可用于群集命令行管理。）  
-
-  > [!NOTE] 
-  > 群集创建模板可以为群集创建新的资源组和新的存储帐户。 可以指定现有资源组，但该资源组必须为空。
+* VFXT 群集和群集控制器 VM 应位于同一资源组中，同一虚拟网络 (vnet) 中使用相同的存储帐户。 自动化的群集创建模板处理大多数情况下。
 
 * 群集必须位于其自身的子网中，以避免与客户端或计算资源发生 IP 地址冲突。 
+
+* 群集创建模板可以创建该群集，包括资源组、 虚拟网络、 子网，以及存储帐户的所需的基础结构资源的大多数。 如果你想要使用已存在的资源，请确保它们满足此表中的要求。 
+
+  | 资源 | 使用现有？ | 要求 |
+  |----------|-----------|----------|
+  | 资源组 | 是的如果为空 | 必须为空| 
+  | 存储帐户 | 如果创建群集后连接的现有 Blob 容器是 <br/>  如果在群集创建过程中创建新的 Blob 容器否 | 现有的 Blob 容器必须为空 <br/> &nbsp; |
+  | 虚拟网络 | 是 | 如果创建新的 Azure Blob 容器必须包含存储服务终结点 | 
+  | 子网 | 是 |   |
 
 ## <a name="ip-address-requirements"></a>IP 地址要求 
 
@@ -62,22 +68,20 @@ Avere vFXT 群集使用以下 IP 地址：
 
 可以选择将网络资源和 Blob 存储（如果已使用）定位在不包含该群集的其他资源组中。
 
-## <a name="vfxt-node-sizes"></a>vFXT 节点大小 
+## <a name="vfxt-node-size"></a>vFXT 节点大小
 
-充当群集节点的 VM 决定了请求吞吐量和缓存的存储容量。 可以从具有不同内存、处理器和本地存储特征的两个实例类型中进行选择。 
+充当群集节点的 VM 决定了请求吞吐量和缓存的存储容量。 <!-- The instance type offered has been chosen for its memory, processor, and local storage characteristics. You can choose from two instance types, with different memory, processor, and local storage characteristics. -->
 
 每个 vFXT 节点是相同的。 也就是说，如果创建三节点群集，则会获得三个具有相同类型和大小的 VM。 
 
 | 实例类型 | vCPU | 内存  | 本地 SSD 存储  | 最大数据磁盘数 | 非缓存磁盘吞吐量 | NIC（计数） |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D16s_v3 | 16  | 64 GiB  | 128 GiB  | 32 | 25,600 IOPS <br/> 384 MBps | 8,000 MBps (8) |
 | Standard_E32s_v3 | 32  | 256 GiB | 512 GiB  | 32 | 51,200 IOPS <br/> 768 MBps | 16,000 MBps (8)  |
 
-每个节点的磁盘缓存可配置，范围为 1000 GB 到 8000 GB。 对于 Standard_D16s_v3 节点，建议的缓存大小为每个节点 1 TB；对于 Standard_E32s_v3 节点，则建议每个节点 4 TB。
+每个节点的磁盘缓存可配置，范围为 1000 GB 到 8000 GB。 每个节点的 4 TB 是 Standard_E32s_v3 节点的建议的缓存大小。
 
-有关这些 VM 的其他信息，请阅读以下 Microsoft Azure 文档：
+有关这些虚拟机的其他信息，请参阅 Microsoft Azure 文档：
 
-* [常规用途虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general)
 * [内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
 
 ## <a name="account-quota"></a>帐户配额
@@ -120,7 +124,7 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公用 I
 
 如果你在群集控制器上设置了公用 IP 地址，则可以使用它作为跳转主机来从专用子网外部联系 Avere vFXT 群集。 但是，因为控制器有权修改群集节点，这会带来小小的安全风险。  
 
-为了提高具有公用 IP 地址时的安全性，请使用一个网络安全组来仅允许通过端口 22 进行的入站访问。 （可选）可以通过锁定对 IP 源地址范围的访问来进一步保护系统，换句话说，只允许从你打算将其用于群集访问的计算机进行连接。
+为了提高安全性具有公共 IP 地址的控制器，部署脚本会自动创建限制为仅端口 22 的入站的访问的网络安全组。 可以通过锁定对 IP 源地址范围的访问来进一步保护系统，换句话说，只允许从你打算将其用于群集访问的计算机进行连接。
 
 创建群集时，可以选择是否在群集控制器上创建公用 IP 地址。 
 

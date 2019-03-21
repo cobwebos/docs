@@ -7,19 +7,19 @@ author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
-ms.service: na
+ms.service: api-management
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 62bc6507e4b56c9df31a561f7677907486b0d562
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.openlocfilehash: 3b6f1a004e4fb69bc08d5163734021bcb2aed9a2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421583"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765792"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>上传 Azure Service Management 证书
 管理证书使你可以使用 Azure 提供的经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 
@@ -33,7 +33,7 @@ ms.locfileid: "52421583"
 
 还可以使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 对客户端代码进行身份验证，以用于自动化目的。
 
-**注意：** 必须是订阅的共同管理员，才能在“管理证书”下执行任何操作。 [了解](https://go.microsoft.com/fwlink/?linkid=849300)有关如何在新的 Azure 门户中添加或删除共同管理员 
+**注意：** 必须是订阅的共同管理员来管理证书下执行任何操作。 [了解](https://go.microsoft.com/fwlink/?linkid=849300)有关如何在新的 Azure 门户中添加或删除共同管理员 
 
 ## <a name="upload-a-management-certificate"></a>上传管理证书
 创建管理证书后（仅使用公钥的 .cer 文件），可将其上传到门户。 当该证书在门户中可用时，任何拥有匹配证书（私钥）的人都可通过 Management API 连接并访问与订阅相关联的资源。

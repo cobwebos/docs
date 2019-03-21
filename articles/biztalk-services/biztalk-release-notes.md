@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: a82035bfbed109d6521131d8c730bef04030c94f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260311"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093535"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk 服务发行说明
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
-
+> 
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
@@ -47,7 +47,8 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 * 对于发送端协议，现可为每个架构指定不同的分隔符集。 可在发送端协议的协议设置下指定此配置。 有关详细信息，请参阅[在 Azure BizTalk 服务中创建 X12 协议](https://msdn.microsoft.com/library/azure/hh689847.aspx)和[在 Azure BizTalk 服务中创建 EDIFACT 协议](https://msdn.microsoft.com/library/azure/dn606267.aspx)。 出于相同目的，还向 TPM OM API 添加了两个新实体。 请参阅 [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) 和 [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx)。  
 * 现支持标准 XSD 构造，包括派生类型。 请参阅[在映射中使用标准 XSD 构造](https://msdn.microsoft.com/library/azure/dn793987.aspx)和[在映射方案和示例中使用派生类型](https://msdn.microsoft.com/library/azure/dn793997.aspx)。  
 * AS2 支持用于消息签名的新 MIC 算法和新加密算法。 请参阅[在 Azure BizTalk 服务中创建 AS2 协议](https://msdn.microsoft.com/library/azure/hh689890.aspx)。  
-  ## <a name="know-issues"></a>已知问题
+
+## <a name="known-issues"></a>已知问题
 
 ### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>更新 BizTalk 服务门户后出现的连接问题
   如果在 BizTalk 服务门户处于打开状态时升级了 BizTalk 服务以融入相关服务更改，可能会遇到 BizTalk 服务门户连接问题。  
@@ -127,7 +128,7 @@ BizTalk 适配器服务功能中的 BizTalk 适配器包适配器可利用用户
 <faultcode>s:Client</faultcode>
 <faultstring xml:lang="en-US">The UDT with FullName "File, FileUDT, Version=Value, Culture=Value, PublicKeyToken=Value" could not be loaded. Try placing the assembly containing the UDT definition in the Global Assembly Cache.</faultstring>
 <detail>
-  <AFConnectRuntimeFault xmlns="http://Microsoft.ApplicationServer.Integration.AFConnect/2011" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <AFConnectRuntimeFault xmlns="http://Microsoft.ApplicationServer.Integration.AFConnect/2011" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
     <ExceptionCode>ERROR_IN_SENDING_MESSAGE</ExceptionCode>
   </AFConnectRuntimeFault>
 </detail>

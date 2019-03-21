@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.openlocfilehash: 9d941c36499f851f20c41fa6dd01faf14e4192ba
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 808c2f38be875e70b4f52698b7a6278aa781a6ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992764"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124066"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>离线更新 Azure Stack 上的 Azure 应用服务
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 应用 1901年更新或更高版本到 Azure Stack 集成系统，或部署 Azure 应用服务 1.5 之前部署最新的 Azure Stack 开发工具包。 
+> 请将 1901 更新或更高版本应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.5。 
 
 遵循本文中的说明可以升级部署在处于以下状态的 Azure Stack 环境中的[应用服务资源提供程序](azure-stack-app-service-overview.md)：
 
@@ -35,7 +35,7 @@ ms.locfileid: "56992764"
 * 受 Active Directory 联合身份验证服务 (AD FS) 保护。
 
 > [!IMPORTANT]
-> 在运行之前升级，请确保你已完成[部署 Azure Stack 资源提供程序上的 Azure 应用服务](azure-stack-app-service-deploy-offline.md)和你已阅读[发行说明](azure-stack-app-service-release-notes-update-five.md)，其中附带有1.5 版本中，若要了解有关新功能、 修复和可能会影响你的部署任何已知的问题。
+> 在运行升级之前，请确保已完成[部署 Azure Stack 上的 Azure 应用服务资源提供程序](azure-stack-app-service-deploy-offline.md)，并已阅读版本 1.5 随附的[发行说明](azure-stack-app-service-release-notes-update-five.md)，了解新功能、修补程序以及任何可能影响部署的已知问题。
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>运行应用服务资源提供程序安装程序
 
@@ -97,14 +97,14 @@ ms.locfileid: "56992764"
 7. 在下一页上执行以下操作：
 
    1. 单击“Azure Stack 订阅”框旁边的“连接”按钮。
-        * 如果使用 Azure Active Directory (Azure AD)，请输入在部署 Azure Stack 时提供的 Azure AD 管理员帐户和密码。 单击“登录”。
-        * 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，_cloudadmin@azurestack.local_。 输入密码，并单击“登录”。
+      * 如果使用 Azure Active Directory (Azure AD)，请输入在部署 Azure Stack 时提供的 Azure AD 管理员帐户和密码。 单击“登录”。
+      * 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，_cloudadmin@azurestack.local_。 输入密码，并单击“登录”。
    2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
    3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
    4. 如果检测到现有的应用服务部署，则资源组和存储帐户将被填充并灰显。
    5. 按“下一步”查看升级摘要。
 
-    ![检测到应用服务安装][4]
+      ![检测到应用服务安装][4]
 
 8. 在摘要页上执行以下操作：
    1. 验证所做的选择。 若要进行更改，请使用“上一步”按钮访问前面的页面。

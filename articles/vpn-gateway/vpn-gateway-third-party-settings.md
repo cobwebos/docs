@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 389578cb45977890645020fe7fcd6c69c08c41f5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694245"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991877"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
 
@@ -33,14 +33,14 @@ ms.locfileid: "55694245"
 
 下表列出了几种常见设备和相关帮助：
 
-|产品    |引用                                                |
+|产品    |参考                                                |
 |-----------|-----------------------------------------------------------|
 |Cisco ASA  |[适用于 Azure VPN 上的 Cisco ASA 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[适用于 Azure VPN 上的 Cisco ISR 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
 |Cisco ASR  |[适用于 Azure VPN 上的 Cisco ASR 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
 |Sonicwall |在 [Sonicwall 站点](https://www.sonicwall.com/en-us/support)上搜索 **Azure VPN** |
 | Checkpoint    |在 [Checkpoint 站点](https://supportcenter.checkpoint.com/supportcenter/portal)上搜索 **Azure VPN** |
-|Juniper |在 [Juniper 站点]( http://www.juniper.net/search/public/)上搜索 **Azure VPN**|
+|Juniper |在 [Juniper 站点]( https://www.juniper.net/search/public/)上搜索 **Azure VPN**|
 |Barracuda  |[适用于 Azure VPN 上的 Barracuda 的社区建议解决方案](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[适用于 Azure VPN 上的 F5 的社区建议解决方案](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
 |Palo       |[适用于 Azure VPN 上的 Palo 的社区建议解决方案](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |

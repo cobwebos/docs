@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 67bdabe24e789dc4d1f2020a7a7853eafaa607c3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429360"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861887"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -38,41 +38,41 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
    * 直接模式
 
-     直接模式支持通过 TCP 和 HTTPS 协议的连接。 目前，.NET Standard 2.0 支持直接模式。 使用直接模式时，有两个可用的协议选项：
+     直接模式支持通过 TCP 和 HTTPS 协议的连接。 如果使用.NET SDK 的最新版本，.NET Standard 2.0 和.NET framework 中支持直接连接模式。 使用直接模式时，有两个可用的协议选项：
 
-    * TCP
-    * HTTPS
+     * TCP
+     * HTTPS
 
-    如果使用网关模式，Cosmos DB 在使用 Azure Cosmos DB 的 API for MongoDB 时使用端口 443 和端口 10250、10255 和 10256。 10250 端口映射到没有异地复制功能的默认 MongoDB 实例，10255/10256 端口映射到具有异地复制功能的 MongoDB 实例。 在直接模式下使用时 TCP 时，除了网关端口外，还需确保端口 10000 到 20000 范围之间的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口。 如果这些端口未处于打开状态，在尝试使用 TCP 时会收到“503 服务不可用”错误。 下表显示可用于不同 API 的连接模式以及每个 API 的服务端口用户：
+     如果使用网关模式，Cosmos DB 在使用 Azure Cosmos DB 的 API for MongoDB 时使用端口 443 和端口 10250、10255 和 10256。 10250 端口映射到没有异地复制功能的默认 MongoDB 实例，10255/10256 端口映射到具有异地复制功能的 MongoDB 实例。 在直接模式下使用时 TCP 时，除了网关端口外，还需确保端口 10000 到 20000 范围之间的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口。 如果这些端口未处于打开状态，在尝试使用 TCP 时会收到“503 服务不可用”错误。 下表显示可用于不同 API 的连接模式以及每个 API 的服务端口用户：
 
-    |连接模式  |支持的协议  |支持的 SDK  |API/服务端口  |
-    |---------|---------|---------|---------|
-    |网关  |   HTTPS    |  所有 SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
-    |直接    |    HTTPS     |  .Net 和 Java SDK    |   10,000-20,000 范围内的端口    |
-    |直接    |     TCP    |  .NET SDK    | 10,000-20,000 范围内的端口 |
+     |连接模式  |支持的协议  |支持的 SDK  |API/服务端口  |
+     |---------|---------|---------|---------|
+     |网关  |   HTTPS    |  所有 SDK    |   SQL(443)、Mongo(10250, 10255, 10256)、Table(443)、Cassandra(10350)、Graph(443)    |
+     |直接    |    HTTPS     |  .NET 和 Java SDK    |   10,000-20,000 范围内的端口    |
+     |直接    |     TCP    |  .NET SDK    | 10,000-20,000 范围内的端口 |
 
-    Azure Cosmos DB 提供基于 HTTPS 的简单开放 RESTful 编程模型。 此外，它提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 .NET 客户端 SDK 获得。 直接 TCP 和 HTTPS 使用 SSL 进行初始身份验证和加密通信。 为了获得最佳性能，请尽可能使用 TCP 协议。
+     Azure Cosmos DB 提供基于 HTTPS 的简单开放 RESTful 编程模型。 此外，它提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 .NET 客户端 SDK 获得。 直接 TCP 和 HTTPS 使用 SSL 进行初始身份验证和加密通信。 为了获得最佳性能，请尽可能使用 TCP 协议。
 
-    连接模式是在构造 DocumentClient 实例期间使用 ConnectionPolicy 参数配置的。 如果使用直接模式，则也可以在 ConnectionPolicy 参数中设置协议。
+     连接模式是在构造 DocumentClient 实例期间使用 ConnectionPolicy 参数配置的。 如果使用直接模式，则也可以在 ConnectionPolicy 参数中设置协议。
 
-    ```csharp
-    var serviceEndpoint = new Uri("https://contoso.documents.net");
-    var authKey = new "your authKey from the Azure portal";
-    DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
-    new ConnectionPolicy
-    {
+     ```csharp
+     var serviceEndpoint = new Uri("https://contoso.documents.net");
+     var authKey = new "your authKey from the Azure portal";
+     DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
+     new ConnectionPolicy
+     {
         ConnectionMode = ConnectionMode.Direct,
         ConnectionProtocol = Protocol.Tcp
-    });
-    ```
+     });
+     ```
 
-    由于只有直接模式支持 TCP，因此如果使用网关模式，HTTPS 协议始终用来与网关通信，并忽略 ConnectionPolicy 中的 Protocol 值。
+     由于只有直接模式支持 TCP，因此如果使用网关模式，HTTPS 协议始终用来与网关通信，并忽略 ConnectionPolicy 中的 Protocol 值。
 
-    ![Azure Cosmos DB 连接策略演示](./media/performance-tips/connection-policy.png)
+     ![Azure Cosmos DB 连接策略演示](./media/performance-tips/connection-policy.png)
 
-2. **调用 OpenAsync，以避免首次请求的启动延迟**
+2. **调用 OpenAsync 以避免首次请求时启动延迟**
 
-    默认情况下，第一个请求因为必须提取地址路由表而有较高的延迟。 若要避免首次请求的启动延迟，则应调用 OpenAsync() 一次在初始化期间，如下所示。
+    默认情况下，第一个请求因为必须提取地址路由表而有较高的延迟。 为了避免首次请求时的这种启动延迟，应该在初始化期间调用 OpenAsync() 一次，如下所示。
 
         await client.OpenAsync();
    <a id="same-region"></a>
@@ -141,7 +141,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
         IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
 10. **增加线程/任务数目**
 
-    请参阅“网络”部分中的[增加线程/任务数目](#increase-threads)。
+    请参阅“网络”部分中的 [增加线程/任务数目](#increase-threads) 。
 
 11. **使用 64 位主机进程**
 
@@ -170,7 +170,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     有关详细信息，请参阅 [Azure Cosmos DB 索引策略](index-policy.md)。
 
-## <a name="throughput"></a>Throughput
+## <a name="throughput"></a>吞吐量
 <a id="measure-rus"></a>
 
 1. **测量和优化较低的每秒请求单位使用量**

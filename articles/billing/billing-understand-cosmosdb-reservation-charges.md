@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: f83499e52b6405ec5475795a80c5a4325043a441
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: f6549710f90c8d59ed443ab9ae1a302a2d8278d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904482"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899513"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解如何将预留折扣应用于 Azure Cosmos DB
 
@@ -33,25 +33,25 @@ ms.locfileid: "54904482"
 
 |计量描述  |区域 |比率  |
 |---------|---------|---------|
-|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东南部  |  亚太东南部    |   1      |
-|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东部 |   亚太东部   |    1     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲北部|  欧洲北部       |    1     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 韩国南部|    韩国南部     |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲西部|    欧洲西部     |      1   |
-|Azure Cosmos DB - 100 RU/秒/小时 - 韩国中部|   韩国中部    |       1  |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部|   英国南部      |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国西部|   英国西部      |    1     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国北部 |   英国北部    |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部 2|   英国南部 2      |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部 2|  美国东部 2     |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中北部|   美国中北部      |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部|   美国西部      |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中部| 美国中部        |     1    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部 2|   美国西部 2      |      1   |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中西部|   美国中西部      |       1  |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部|   美国东部      |  1       |
-|Azure Cosmos DB - 100 RU/秒/小时 - 南非北部|     南非北部    |   1      |
-|Azure Cosmos DB - 100 RU/秒/小时 - 南非西部 |    南非西部      |    1     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东南部  |  亚太东南部    |   第      |
+|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东部 |   亚太东部   |    第     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲北部|  欧洲北部       |    第     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 韩国南部|    韩国南部     |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲西部|    欧洲西部     |      第   |
+|Azure Cosmos DB - 100 RU/秒/小时 - 韩国中部|   韩国中部    |       第  |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部|   英国南部      |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国西部|   英国西部      |    第     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国北部 |   英国北部    |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部 2|   英国南部 2      |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部 2|  美国东部 2     |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中北部|   美国中北部      |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部|   美国西部      |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中部| 美国中部        |     第    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部 2|   美国西部 2      |      第   |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中西部|   美国中西部      |       第  |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部|   美国东部      |  第       |
+|Azure Cosmos DB - 100 RU/秒/小时 - 南非北部|     南非北部    |   第      |
+|Azure Cosmos DB - 100 RU/秒/小时 - 南非西部 |    南非西部      |    第     |
 |Azure Cosmos DB - 100 RU/秒/小时 - 印度南部|    印度南部     |    1.0375    |
 |Azure Cosmos DB - 100 RU/秒/小时 - 加拿大东部|   加拿大东部      |    1.1      |
 |Azure Cosmos DB - 100 RU/秒/小时 - 日本东部|   日本东部      |    1.125     |
@@ -117,5 +117,5 @@ Azure 计费系统将向第一个处理且与预留配置相匹配的实例分�
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

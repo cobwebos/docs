@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1285a9262221dbd8e46d07e384697ddea853f9fc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163047"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193139"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
 
@@ -46,10 +46,10 @@ ms.locfileid: "56163047"
 |使用快速设置安装 | [Azure AD Connect 的快速安装](./how-to-connect-install-express.md)|
 |使用自定义设置安装 | [Azure AD Connect 的自定义安装](./how-to-connect-install-custom.md)|
 |从 DirSync 升级 | [从 Azure AD 同步工具 (DirSync) 升级](./how-to-dirsync-upgrade-get-started.md)|
-|安装后 | [验证安装并分配许可证 ](how-to-connect-post-installation.md)|
+|安装后 | [验证安装并分配许可证](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>了解有关安装 Azure AD Connect 的详细信息
-还要预先了解 [操作](how-to-connect-sync-operations.md) 注意事项。 可能要部署一台待机服务器，以便在发生[灾难](how-to-connect-sync-operations.md#disaster-recovery)时轻松进行故障转移。 如果要频繁进行配置更改，应该计划部署一台 [暂存模式](how-to-connect-sync-operations.md#staging-mode) 服务器。
+还要预先了解 [操作](how-to-connect-sync-operations.md) 注意事项。 可能要部署一台待机服务器，以便在发生[灾难](how-to-connect-sync-staging-server.md#disaster-recovery)时轻松进行故障转移。 如果要频繁进行配置更改，应该计划部署一台 [暂存模式](how-to-connect-sync-staging-server.md) 服务器。
 
 |主题 |链接|  
 | --- | --- |
@@ -88,7 +88,7 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 ## <a name="customize-azure-ad-connect-sync"></a>自定义 Azure AD Connect 同步
 Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配置。 但总会有一些情况使得默认配置不适用，因此必须进行调整。 可以根据本部分和链接主题中所述进行更改。
 
-如果以前没有用过同步拓扑，请先了解 [技术概念](how-to-connect-sync-technical-concepts.md)中所述的基本概念和术语。 Azure AD Connect 是在 MIIS2003、ILM2007 和 FIM2010 基础上演进而来的。 即使有些功能相同，但改变的部分也有很多。
+如果以前没有用过同步拓扑，请先了解[技术概念](how-to-connect-sync-technical-concepts.md)中所述的基本概念和术语。 Azure AD Connect 是在 MIIS2003、ILM2007 和 FIM2010 基础上演进而来的。 即使有些功能相同，但改变的部分也有很多。
 
 [默认配置](concept-azure-ad-connect-sync-default-configuration.md) 假设配置中可能存在多个林。 在这些拓扑中，用户对象可能表示为另一个林中的联系人。 用户还可能在另一个资源林中具有链接的邮箱。 [用户和联系人](concept-azure-ad-connect-sync-user-and-contacts.md)中介绍了默认配置的行为。
 

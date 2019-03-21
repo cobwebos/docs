@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6da0511456f413924eee9d4cf622f50125b15833
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 6ea919a4c9554584e0da79739d3465586ae43227
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416558"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075145"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -87,7 +87,7 @@ ms.locfileid: "56416558"
 
 以下步骤将创建两个虚拟网络，以及它们各自的网关子网和配置。 然后在两个 VNet 之间创建 VPN 连接。 必须计划用于网络配置的 IP 地址范围。 请记住，必须确保没有任何 VNet 范围或本地网络范围存在任何形式的重叠。 在这些示例中，我们没有包括 DNS 服务器。 如果需要虚拟网络的名称解析，请参阅[名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
-示例中使用以下值：
+示例中使用了以下值：
 
 **TestVNet1 的值：**
 
@@ -102,8 +102,8 @@ ms.locfileid: "56416558"
 * 公共 IP：VNet1GWIP
 * VPNType：RouteBased
 * Connection(1to4)：VNet1toVNet4
-* Connection(1to5)：VNet1toVNet5（适用于不同订阅中的 VNet）
-* ConnectionType：VNet2VNet
+* Connection(1to5)：VNet1 到 VNet5（适用于不同订阅中的 VNet）
+* 连接类型：VNet2VNet
 
 **TestVNet4 的值：**
 
@@ -117,92 +117,92 @@ ms.locfileid: "56416558"
 * GatewayName：VNet4GW
 * 公共 IP：VNet4GWIP
 * VPNType：RouteBased
-* 连接: VNet4toVNet1
-* ConnectionType：VNet2VNet
+* 连接：VNet4 到 VNet1
+* 连接类型：VNet2VNet
 
 
 ### <a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
 
 1. 验证订阅设置。
 
-  如果是在计算机上本地运行 PowerShell，请连接到你的帐户。 如果使用的是 Azure Cloud Shell，则将自动连接。
+   如果是在计算机上本地运行 PowerShell，请连接到你的帐户。 如果使用的是 Azure Cloud Shell，则将自动连接。
 
-  ```azurepowershell-interactive
-  Connect-AzAccount
-  ```
+   ```azurepowershell-interactive
+   Connect-AzAccount
+   ```
 
-  检查该帐户的订阅。
+   检查该帐户的订阅。
 
-  ```azurepowershell-interactive
-  Get-AzSubscription
-  ```
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-  如果有多个订阅，请指定要使用的订阅。
+   如果有多个订阅，请指定要使用的订阅。
 
-  ```azurepowershell-interactive
-  Select-AzSubscription -SubscriptionName nameofsubscription
-  ```
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName nameofsubscription
+   ```
 2. 声明变量。 本示例使用此练习中的值来声明变量。 在大多数情况下，应将这些值替换为自己的值。 但是，如果执行这些步骤的目的是熟悉这种类型的配置，可以直接使用这些变量。 根据需要修改变量，然后将变量复制并粘贴到 PowerShell 控制台中。
 
-  ```azurepowershell-interactive
-  $RG1 = "TestRG1"
-  $Location1 = "East US"
-  $VNetName1 = "TestVNet1"
-  $FESubName1 = "FrontEnd"
-  $BESubName1 = "Backend"
-  $GWSubName1 = "GatewaySubnet"
-  $VNetPrefix11 = "10.11.0.0/16"
-  $VNetPrefix12 = "10.12.0.0/16"
-  $FESubPrefix1 = "10.11.0.0/24"
-  $BESubPrefix1 = "10.12.0.0/24"
-  $GWSubPrefix1 = "10.12.255.0/27"
-  $GWName1 = "VNet1GW"
-  $GWIPName1 = "VNet1GWIP"
-  $GWIPconfName1 = "gwipconf1"
-  $Connection14 = "VNet1toVNet4"
-  $Connection15 = "VNet1toVNet5"
-  ```
+   ```azurepowershell-interactive
+   $RG1 = "TestRG1"
+   $Location1 = "East US"
+   $VNetName1 = "TestVNet1"
+   $FESubName1 = "FrontEnd"
+   $BESubName1 = "Backend"
+   $GWSubName1 = "GatewaySubnet"
+   $VNetPrefix11 = "10.11.0.0/16"
+   $VNetPrefix12 = "10.12.0.0/16"
+   $FESubPrefix1 = "10.11.0.0/24"
+   $BESubPrefix1 = "10.12.0.0/24"
+   $GWSubPrefix1 = "10.12.255.0/27"
+   $GWName1 = "VNet1GW"
+   $GWIPName1 = "VNet1GWIP"
+   $GWIPconfName1 = "gwipconf1"
+   $Connection14 = "VNet1toVNet4"
+   $Connection15 = "VNet1toVNet5"
+   ```
 3. 创建资源组。
 
-  ```azurepowershell-interactive
-  New-AzResourceGroup -Name $RG1 -Location $Location1
-  ```
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name $RG1 -Location $Location1
+   ```
 4. 创建 TestVNet1 的子网配置。 本示例创建一个名为 TestVNet1 的虚拟网络和三个子网，这三个子网分别名为 GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。
 
-  下面的示例使用先前设置的变量。 在本示例中，网关子网使用 /27。 尽管创建的网关子网最小可为 /29，但建议至少选择 /28 或 /27，创建包含更多地址的更大子网。 这样便可以留出足够多的地址，满足将来可能需要使用的其他配置。
+   下面的示例使用先前设置的变量。 在本示例中，网关子网使用 /27。 尽管创建的网关子网最小可为 /29，但建议至少选择 /28 或 /27，创建包含更多地址的更大子网。 这样便可以留出足够多的地址，满足将来可能需要使用的其他配置。
 
-  ```azurepowershell-interactive
-  $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
-  $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-  $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
-  ```
+   ```azurepowershell-interactive
+   $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
+   $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
+   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+   ```
 5. 创建 TestVNet1。
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
-  -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
+   -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+   ```
 6. 请求一个公共 IP 地址，以分配给要为 VNet 创建的网关。 注意，AllocationMethod 是动态的。 无法指定要使用的 IP 地址。 它动态分配到网关。 
 
-  ```azurepowershell-interactive
-  $gwpip1 = New-AzPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
-  -Location $Location1 -AllocationMethod Dynamic
-  ```
+   ```azurepowershell-interactive
+   $gwpip1 = New-AzPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
+   -Location $Location1 -AllocationMethod Dynamic
+   ```
 7. 创建网关配置。 网关配置定义要使用的子网和公共 IP 地址。 使用本示例创建网关配置。
 
-  ```azurepowershell-interactive
-  $vnet1 = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
-  $subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
-  $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
-  -Subnet $subnet1 -PublicIpAddress $gwpip1
-  ```
+   ```azurepowershell-interactive
+   $vnet1 = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
+   $subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+   $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
+   -Subnet $subnet1 -PublicIpAddress $gwpip1
+   ```
 8. 为 TestVNet1 创建网关。 在此步骤中，将为 TestVNet1 创建虚拟网络网关。 VNet 到 VNet 配置需要基于路由的 VPN 类型。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
-  -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn `
-  -VpnType RouteBased -GatewaySku VpnGw1
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
+   -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn `
+   -VpnType RouteBased -GatewaySku VpnGw1
+   ```
 
 完成命令后，创建此网关将需要多达 45 分钟的时间。 如果使用的是 Azure Cloud Shell，可以单击 Cloud Shell 终端的右上角重启 CloudShell 会话，然后配置 TestVNet4。 无需等到 TestVNet1 网关创建完成。
 
@@ -212,61 +212,61 @@ ms.locfileid: "56416558"
 
 1. 连接并声明变量。 请务必将值替换为用于配置的值。
 
-  ```azurepowershell-interactive
-  $RG4 = "TestRG4"
-  $Location4 = "West US"
-  $VnetName4 = "TestVNet4"
-  $FESubName4 = "FrontEnd"
-  $BESubName4 = "Backend"
-  $GWSubName4 = "GatewaySubnet"
-  $VnetPrefix41 = "10.41.0.0/16"
-  $VnetPrefix42 = "10.42.0.0/16"
-  $FESubPrefix4 = "10.41.0.0/24"
-  $BESubPrefix4 = "10.42.0.0/24"
-  $GWSubPrefix4 = "10.42.255.0/27"
-  $GWName4 = "VNet4GW"
-  $GWIPName4 = "VNet4GWIP"
-  $GWIPconfName4 = "gwipconf4"
-  $Connection41 = "VNet4toVNet1"
-  ```
+   ```azurepowershell-interactive
+   $RG4 = "TestRG4"
+   $Location4 = "West US"
+   $VnetName4 = "TestVNet4"
+   $FESubName4 = "FrontEnd"
+   $BESubName4 = "Backend"
+   $GWSubName4 = "GatewaySubnet"
+   $VnetPrefix41 = "10.41.0.0/16"
+   $VnetPrefix42 = "10.42.0.0/16"
+   $FESubPrefix4 = "10.41.0.0/24"
+   $BESubPrefix4 = "10.42.0.0/24"
+   $GWSubPrefix4 = "10.42.255.0/27"
+   $GWName4 = "VNet4GW"
+   $GWIPName4 = "VNet4GWIP"
+   $GWIPconfName4 = "gwipconf4"
+   $Connection41 = "VNet4toVNet1"
+   ```
 2. 创建资源组。
 
-  ```azurepowershell-interactive
-  New-AzResourceGroup -Name $RG4 -Location $Location4
-  ```
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name $RG4 -Location $Location4
+   ```
 3. 创建 TestVNet4 的子网配置。
 
-  ```azurepowershell-interactive
-  $fesub4 = New-AzVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
-  $besub4 = New-AzVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
-  $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
-  ```
+   ```azurepowershell-interactive
+   $fesub4 = New-AzVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
+   $besub4 = New-AzVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
+   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
+   ```
 4. 创建 TestVNet4。
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4 `
-  -Location $Location4 -AddressPrefix $VnetPrefix41,$VnetPrefix42 -Subnet $fesub4,$besub4,$gwsub4
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4 `
+   -Location $Location4 -AddressPrefix $VnetPrefix41,$VnetPrefix42 -Subnet $fesub4,$besub4,$gwsub4
+   ```
 5. 请求公共 IP 地址。
 
-  ```azurepowershell-interactive
-  $gwpip4 = New-AzPublicIpAddress -Name $GWIPName4 -ResourceGroupName $RG4 `
-  -Location $Location4 -AllocationMethod Dynamic
-  ```
+   ```azurepowershell-interactive
+   $gwpip4 = New-AzPublicIpAddress -Name $GWIPName4 -ResourceGroupName $RG4 `
+   -Location $Location4 -AllocationMethod Dynamic
+   ```
 6. 创建网关配置。
 
-  ```azurepowershell-interactive
-  $vnet4 = Get-AzVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4
-  $subnet4 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
-  $gwipconf4 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
-  ```
+   ```azurepowershell-interactive
+   $vnet4 = Get-AzVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4
+   $subnet4 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
+   $gwipconf4 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
+   ```
 7. 创建 TestVNet4 网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
-  -Location $Location4 -IpConfigurations $gwipconf4 -GatewayType Vpn `
-  -VpnType RouteBased -GatewaySku VpnGw1
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
+   -Location $Location4 -IpConfigurations $gwipconf4 -GatewayType Vpn `
+   -VpnType RouteBased -GatewaySku VpnGw1
+   ```
 
 ### <a name="step-4---create-the-connections"></a>步骤 4 - 创建连接
 
@@ -274,24 +274,24 @@ ms.locfileid: "56416558"
 
 1. 获取两个虚拟网关。
 
-  ```azurepowershell-interactive
-  $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
-  $vnet4gw = Get-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4
-  ```
+   ```azurepowershell-interactive
+   $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+   $vnet4gw = Get-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4
+   ```
 2. 创建 TestVNet1 到 TestVNet4 的连接。 在此步骤中，创建 TestVNet1 到 TestVNet4 的连接。 示例中引用了共享密钥。 可以对共享密钥使用自己的值。 共享密钥必须与两个连接匹配，这一点非常重要。 创建连接可能需要简短的一段时间才能完成。
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGatewayConnection -Name $Connection14 -ResourceGroupName $RG1 `
-  -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
-  -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGatewayConnection -Name $Connection14 -ResourceGroupName $RG1 `
+   -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
+   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+   ```
 3. 创建 TestVNet4 到 TestVNet1 的连接。 此步骤类似上面的步骤，只不过是创建 TestVNet4 到 TestVNet1 的连接。 确保共享密钥匹配。 几分钟后会建立连接。
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
-  -VirtualNetworkGateway1 $vnet4gw -VirtualNetworkGateway2 $vnet1gw -Location $Location4 `
-  -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
+   -VirtualNetworkGateway1 $vnet4gw -VirtualNetworkGateway2 $vnet1gw -Location $Location4 `
+   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+   ```
 4. 验证连接。 请参阅 [如何验证连接](#verify)部分。
 
 ## <a name="difsub"></a>如何连接不同订阅中的 VNet
@@ -304,7 +304,7 @@ ms.locfileid: "56416558"
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>步骤 5 - 创建并配置 TestVNet1
 
-必须完成前述部分的[步骤 1](#Step1) 和[步骤 2](#Step2)，才能创建并配置 TestVNet1 及其 VPN 网关。 就此配置来说，不需创建前一部分的 TestVNet4，虽然创建后不会与这些步骤冲突。 完成步骤 1 和步骤 2 后，继续执行步骤 6，创建 TestVNet5。
+必须完成前述部分的[步骤 1](#Step1) 和[步骤 2](#Step2)，才能创建并配置 TestVNet1 及其 VPN 网关。 就此配置来说，不需创建前一部分中的 TestVNet4，虽然创建后不会与这些步骤冲突。 完成步骤 1 和步骤 2 后，继续执行步骤 6，创建 TestVNet5。
 
 ### <a name="step-6---verify-the-ip-address-ranges"></a>步骤 6 - 验证 IP 地址范围
 
@@ -322,87 +322,87 @@ ms.locfileid: "56416558"
 * GatewayName：VNet5GW
 * 公共 IP：VNet5GWIP
 * VPNType：RouteBased
-* 连接: VNet5toVNet1
+* 连接：VNet5toVNet1
 * ConnectionType：VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>步骤 7 - 创建并配置 TestVNet5
 
-必须在新订阅环境中完成此步骤。 此部分可能由拥有订阅的不同组织的管理员执行。
+必须在新订阅的上下文中完成此步骤。 此部分可能由拥有订阅的不同组织的管理员执行。
 
 1. 声明变量。 请务必将值替换为用于配置的值。
 
-  ```azurepowershell-interactive
-  $Sub5 = "Replace_With_the_New_Subscription_Name"
-  $RG5 = "TestRG5"
-  $Location5 = "Japan East"
-  $VnetName5 = "TestVNet5"
-  $FESubName5 = "FrontEnd"
-  $BESubName5 = "Backend"
-  $GWSubName5 = "GatewaySubnet"
-  $VnetPrefix51 = "10.51.0.0/16"
-  $VnetPrefix52 = "10.52.0.0/16"
-  $FESubPrefix5 = "10.51.0.0/24"
-  $BESubPrefix5 = "10.52.0.0/24"
-  $GWSubPrefix5 = "10.52.255.0/27"
-  $GWName5 = "VNet5GW"
-  $GWIPName5 = "VNet5GWIP"
-  $GWIPconfName5 = "gwipconf5"
-  $Connection51 = "VNet5toVNet1"
-  ```
+   ```azurepowershell-interactive
+   $Sub5 = "Replace_With_the_New_Subscription_Name"
+   $RG5 = "TestRG5"
+   $Location5 = "Japan East"
+   $VnetName5 = "TestVNet5"
+   $FESubName5 = "FrontEnd"
+   $BESubName5 = "Backend"
+   $GWSubName5 = "GatewaySubnet"
+   $VnetPrefix51 = "10.51.0.0/16"
+   $VnetPrefix52 = "10.52.0.0/16"
+   $FESubPrefix5 = "10.51.0.0/24"
+   $BESubPrefix5 = "10.52.0.0/24"
+   $GWSubPrefix5 = "10.52.255.0/27"
+   $GWName5 = "VNet5GW"
+   $GWIPName5 = "VNet5GWIP"
+   $GWIPconfName5 = "gwipconf5"
+   $Connection51 = "VNet5toVNet1"
+   ```
 2. 连接到订阅 5。 打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助你连接：
 
-  ```azurepowershell-interactive
-  Connect-AzAccount
-  ```
+   ```azurepowershell-interactive
+   Connect-AzAccount
+   ```
 
-  检查该帐户的订阅。
+   检查该帐户的订阅。
 
-  ```azurepowershell-interactive
-  Get-AzSubscription
-  ```
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-  指定要使用的订阅。
+   指定要使用的订阅。
 
-  ```azurepowershell-interactive
-  Select-AzSubscription -SubscriptionName $Sub5
-  ```
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName $Sub5
+   ```
 3. 创建新的资源组。
 
-  ```azurepowershell-interactive
-  New-AzResourceGroup -Name $RG5 -Location $Location5
-  ```
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name $RG5 -Location $Location5
+   ```
 4. 创建 TestVNet5 的子网配置。
 
-  ```azurepowershell-interactive
-  $fesub5 = New-AzVirtualNetworkSubnetConfig -Name $FESubName5 -AddressPrefix $FESubPrefix5
-  $besub5 = New-AzVirtualNetworkSubnetConfig -Name $BESubName5 -AddressPrefix $BESubPrefix5
-  $gwsub5 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName5 -AddressPrefix $GWSubPrefix5
-  ```
+   ```azurepowershell-interactive
+   $fesub5 = New-AzVirtualNetworkSubnetConfig -Name $FESubName5 -AddressPrefix $FESubPrefix5
+   $besub5 = New-AzVirtualNetworkSubnetConfig -Name $BESubName5 -AddressPrefix $BESubPrefix5
+   $gwsub5 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName5 -AddressPrefix $GWSubPrefix5
+   ```
 5. 创建 TestVNet5。
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5 -Location $Location5 `
-  -AddressPrefix $VnetPrefix51,$VnetPrefix52 -Subnet $fesub5,$besub5,$gwsub5
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5 -Location $Location5 `
+   -AddressPrefix $VnetPrefix51,$VnetPrefix52 -Subnet $fesub5,$besub5,$gwsub5
+   ```
 6. 请求公共 IP 地址。
 
-  ```azurepowershell-interactive
-  $gwpip5 = New-AzPublicIpAddress -Name $GWIPName5 -ResourceGroupName $RG5 `
-  -Location $Location5 -AllocationMethod Dynamic
-  ```
+   ```azurepowershell-interactive
+   $gwpip5 = New-AzPublicIpAddress -Name $GWIPName5 -ResourceGroupName $RG5 `
+   -Location $Location5 -AllocationMethod Dynamic
+   ```
 7. 创建网关配置。
 
-  ```azurepowershell-interactive
-  $vnet5 = Get-AzVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
-  $subnet5  = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
-  $gwipconf5 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
-  ```
+   ```azurepowershell-interactive
+   $vnet5 = Get-AzVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
+   $subnet5  = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
+   $gwipconf5 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
+   ```
 8. 创建 TestVNet5 网关。
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 `
-  -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 `
+   -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1
+   ```
 
 ### <a name="step-8---create-the-connections"></a>步骤 8 - 创建连接
 
@@ -410,68 +410,68 @@ ms.locfileid: "56416558"
 
 1. **[订阅 1]** 获取订阅 1 的虚拟网关。 登录并连接到订阅 1，然后运行以下示例：
 
-  ```azurepowershell-interactive
-  $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
-  ```
+   ```azurepowershell-interactive
+   $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+   ```
 
-  复制以下元素的输出，并通过电子邮件或其他方式将输出发送给订阅 5 的管理员。
+   复制以下元素的输出，并通过电子邮件或其他方式将输出发送给订阅 5 的管理员。
 
-  ```azurepowershell-interactive
-  $vnet1gw.Name
-  $vnet1gw.Id
-  ```
+   ```azurepowershell-interactive
+   $vnet1gw.Name
+   $vnet1gw.Id
+   ```
 
-  这两个元素的值类似于以下示例输出：
+   这两个元素的值类似于以下示例输出：
 
-  ```
-  PS D:\> $vnet1gw.Name
-  VNet1GW
-  PS D:\> $vnet1gw.Id
-  /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
-  ```
+   ```
+   PS D:\> $vnet1gw.Name
+   VNet1GW
+   PS D:\> $vnet1gw.Id
+   /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
+   ```
 2. **[订阅 5]** 获取订阅 5 的虚拟网关。 登录并连接到订阅 5，然后运行以下示例：
 
-  ```azurepowershell-interactive
-  $vnet5gw = Get-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
-  ```
+   ```azurepowershell-interactive
+   $vnet5gw = Get-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
+   ```
 
-  复制以下元素的输出，并通过电子邮件或其他方式将输出发送给订阅 1 的管理员。
+   复制以下元素的输出，并通过电子邮件或其他方式将输出发送给订阅 1 的管理员。
 
-  ```azurepowershell-interactive
-  $vnet5gw.Name
-  $vnet5gw.Id
-  ```
+   ```azurepowershell-interactive
+   $vnet5gw.Name
+   $vnet5gw.Id
+   ```
 
-  这两个元素的值类似于以下示例输出：
+   这两个元素的值类似于以下示例输出：
 
-  ```
-  PS C:\> $vnet5gw.Name
-  VNet5GW
-  PS C:\> $vnet5gw.Id
-  /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
-  ```
+   ```
+   PS C:\> $vnet5gw.Name
+   VNet5GW
+   PS C:\> $vnet5gw.Id
+   /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
+   ```
 3. **[订阅 1]** 创建 TestVNet1 到 TestVNet5 连接。 在此步骤中，创建 TestVNet1 到 TestVNet5 的连接。 此处的差别在于无法直接获取 $vnet5gw ，因为它位于不同订阅中。 需要使用上述步骤中从订阅 1 传递的值来创建新的 PowerShell 对象。 使用下面的示例。 将名称、ID 和共享密钥替换为自己的值。 共享密钥必须与两个连接匹配，这一点非常重要。 创建连接可能需要简短的一段时间才能完成。
 
-  连接到订阅 1，并运行以下示例：
+   连接到订阅 1，并运行以下示例：
 
-  ```azurepowershell-interactive
-  $vnet5gw = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-  $vnet5gw.Name = "VNet5GW"
-  $vnet5gw.Id   = "/subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW"
-  $Connection15 = "VNet1toVNet5"
-  New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet5gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
-  ```
+   ```azurepowershell-interactive
+   $vnet5gw = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+   $vnet5gw.Name = "VNet5GW"
+   $vnet5gw.Id   = "/subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW"
+   $Connection15 = "VNet1toVNet5"
+   New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet5gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+   ```
 4. **[订阅 5]** 创建 TestVNet5 到 TestVNet1 连接。 此步骤类似上面的步骤，只不过是创建 TestVNet5 到 TestVNet1 的连接。 此处也适用基于从订阅 1 获取的值创建 PowerShell 对象这一相同过程。 在此步骤中，请确保共享密钥匹配。
 
-  连接到订阅 5，并运行以下示例：
+   连接到订阅 5，并运行以下示例：
 
-  ```azurepowershell-interactive
-  $vnet1gw = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-  $vnet1gw.Name = "VNet1GW"
-  $vnet1gw.Id = "/subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW "
-  $Connection51 = "VNet5toVNet1"
-  New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
-  ```
+   ```azurepowershell-interactive
+   $vnet1gw = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+   $vnet1gw.Name = "VNet1GW"
+   $vnet1gw.Id = "/subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW "
+   $Connection51 = "VNet5toVNet1"
+   New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+   ```
 
 ## <a name="verify"></a>如何验证连接
 

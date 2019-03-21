@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: 9aa6b9dc26b53315957b7ddbb113d1d129dcc1da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: da7750198f76bc9e17c23b1347e9fc78262aa06c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109157"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086949"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
 
@@ -93,25 +93,25 @@ ms.locfileid: "56109157"
 可根据需要在同一保管库中重新注册配置服务器。 如果除了在配置服务器计算机上运行的默认进程服务器外，还存在其他进程服务器计算机，请注册这两台计算机。
 
 
-  1. 在保管库中，打开“管理” > “Site Recovery 基础结构” > “配置服务器”。
-  2. 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。
-  3. 登录到配置服务器计算机。
-  4. 在 %ProgramData%\ASR\home\svsystems\bin 中，打开 cspsconfigtool.exe。
-  5. 在“保管库注册”选项卡上，单击“浏览”并找到你下载的保管库凭据文件。
-  6. 按需提供代理服务器详细信息。 然后选择“注册”。
-  7. 打开管理员 PowerShell 命令窗口并运行以下命令：
+1. 在保管库中，打开“管理” > “Site Recovery 基础结构” > “配置服务器”。
+2. 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。
+3. 登录到配置服务器计算机。
+4. 在 %ProgramData%\ASR\home\svsystems\bin 中，打开 cspsconfigtool.exe。
+5. 在“保管库注册”选项卡上，单击“浏览”并找到你下载的保管库凭据文件。
+6. 按需提供代理服务器详细信息。 然后选择“注册”。
+7. 打开管理员 PowerShell 命令窗口并运行以下命令：
    ```
-      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+    $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
    ```
 
-      >[!NOTE]
-      >为了从配置服务器**拉取最新的证书**来横向扩展流程服务器，请执行命令 *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt*
+    >[!NOTE]
+    >为了从配置服务器**拉取最新的证书**来横向扩展流程服务器，请执行命令 *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt*
 
-  8. 最后，通过执行以下命令重启 obengine。
-  ```
-          net stop obengine
-          net start obengine
+8. 最后，通过执行以下命令重启 obengine。
+   ```
+        net stop obengine
+        net start obengine
    ```
 
 
@@ -180,21 +180,21 @@ ms.locfileid: "56109157"
 
 ### <a name="parameters"></a>parameters
 
-|参数名称| Type | 说明| 值|
+|参数名称| Type | 描述| 值|
 |-|-|-|-|
-| /ServerMode|必选|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
-|/InstallLocation|必选|用于安装组件的文件夹| 计算机上的任意文件夹|
-|/MySQLCredsFilePath|必选|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
-|/VaultCredsFilePath|必选|保管库凭据文件的路径|有效的文件路径|
-|/EnvType|必选|要保护的环境类型 |VMware<br>NonVMware|
-|/PSIP|必选|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/CSIP|必选|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/PassphraseFilePath|必选|通行短语文件位置的完整路径|有效的文件路径|
+| /ServerMode|需要|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
+|/InstallLocation|需要|用于安装组件的文件夹| 计算机上的任意文件夹|
+|/MySQLCredsFilePath|需要|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
+|/VaultCredsFilePath|需要|保管库凭据文件的路径|有效的文件路径|
+|/EnvType|需要|要保护的环境类型 |VMware<br>NonVMware|
+|/PSIP|需要|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/CSIP|需要|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/PassphraseFilePath|需要|通行短语文件位置的完整路径|有效的文件路径|
 |/BypassProxy|可选|指定配置服务器不使用代理连接到 Azure|若要从 Venu 获取此值|
 |/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|文件应采用以下指定格式|
 |DataTransferSecurePort|可选|PSIP 上用于复制数据的端口号| 有效端口号（默认值为 9433）|
 |/SkipSpaceCheck|可选|跳过缓存磁盘的空间检查| |
-|/AcceptThirdpartyEULA|必选|该标志表示接受第三方 EULA| |
+|/AcceptThirdpartyEULA|需要|该标志表示接受第三方 EULA| |
 |/ShowThirdpartyEULA|可选|显示第三方 EULA。 如果作为输入提供，将忽略所有其他参数| |
 
 

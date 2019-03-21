@@ -9,12 +9,12 @@ ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: kefre
-ms.openlocfilehash: 7b85faf2e1803b40f3f2f0e49c5672b96e7961f5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 0f96ee13e6020bc69508f8ced45741fe7dec396a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224337"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732873"
 ---
 # <a name="use-the-anomaly-finder-api-with-java"></a>将异常查找器 API 与 Java 配合使用
 
@@ -22,7 +22,7 @@ ms.locfileid: "55224337"
 
 本文提供了相关信息和示例代码，帮助用户快速开始将异常情况检测 API 与 Java 配合使用，从而获取时序数据的异常情况检测结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 

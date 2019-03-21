@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 1278c788c0d36b2cadf860e379791ecd823a510b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110964"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务 DC/OS 群集
 
@@ -34,25 +34,25 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 ### <a name="pre-requisite"></a>先决条件
 - [Microsoft Azure 订阅](https://azure.microsoft.com/free/) - 可免费获取订阅。  
 - Log Analytics 工作区设置 - 请参阅下面的“步骤 3”
-- 安装 [DC/OS CLI](http://docs.mesosphere.com/1.12/cli)。
+- 安装 [DC/OS CLI](https://docs.mesosphere.com/1.12/cli)。
 
 1. 在 DC/OS 仪表板中单击“通用”，并搜索“OMS”，如下所示。
 
    >[!NOTE]
    >OMS 现在称为 Log Analytics。
 
- ![](media/container-service-monitoring-oms/image2.png)
+   ![](media/container-service-monitoring-oms/image2.png)
 
 2. 单击“安装”。 将看到包含版本信息并带有“安装包”或“高级安装”按钮的弹出窗口。 单击“高级安装”，可转到 **OMS 特定的配置属性**页面。
 
- ![](media/container-service-monitoring-oms/image3.png)
+   ![](media/container-service-monitoring-oms/image3.png)
 
- ![](media/container-service-monitoring-oms/image4.png)
+   ![](media/container-service-monitoring-oms/image4.png)
 
 3. 需在此页面上输入 `wsid`（Log Analytics 工作区 ID）和 `wskey`（工作区 ID 的主键）。 若要获取 `wsid` 和 `wskey`，需要在 <https://mms.microsoft.com> 创建一个帐户。
-按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取 `wsid` 和 `wskey`，如下所示。
+   按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取 `wsid` 和 `wskey`，如下所示。
 
- ![](media/container-service-monitoring-oms/image5.png)
+   ![](media/container-service-monitoring-oms/image5.png)
 
 4. 选择所需实例数，并单击“查看并安装”按钮。 通常情况下，所需实例数与代理群集中拥有的 VM 数相等。 Log Analytics Linux 代理作为单独的容器安装在每个 VM 上，其目的是收集用于监视和记录信息的信息。
 

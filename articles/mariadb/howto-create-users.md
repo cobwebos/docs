@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 189e122e04d56d28c1e1e94d328569647614a124
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 019c4eca564c503913a488a1d1ee5e4046ff320a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542121"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089873"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中创建用户 
 本文介绍如何在 Azure Database for MariaDB 中创建用户。
@@ -80,7 +80,7 @@ ms.locfileid: "53542121"
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-有关用户帐户管理的详细信息，请参阅 MariaDB 文档，了解[用户帐户管理](https://mariadb.com/kb/en/library/user-account-management/)、[GRANT 语法](https://mariadb.com/kb/en/library/grant/)和[权限](https://mariadb.com/kb/en/library/grant/#privilege-levels)。
+   有关用户帐户管理的详细信息，请参阅 MariaDB 文档，了解[用户帐户管理](https://mariadb.com/kb/en/library/user-account-management/)、[GRANT 语法](https://mariadb.com/kb/en/library/grant/)和[权限](https://mariadb.com/kb/en/library/grant/#privilege-levels)。
 
 ## <a name="next-steps"></a>后续步骤
 针对新用户计算机的 IP 地址打开防火墙，使其能够连接：[使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则](howto-manage-firewall-portal.md)  

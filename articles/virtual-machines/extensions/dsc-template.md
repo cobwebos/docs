@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: d55f6097e3e1eed508580676edcf008b0739034c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 41d9f21688df6f32918500365bc88f3f168604d2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230967"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869643"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
 
@@ -36,33 +36,46 @@ DSC 扩展继承默认扩展属性。
 
 ```json
 {
-    "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
-    "apiVersion": "2018-04-01",
-    "location": "[resourceGroup().location]",
-    "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
-    ],
-    "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.76",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-            "configurationArguments": {
-                "RegistrationUrl" : "registrationUrl",
-                "NodeConfigurationName" : "nodeConfigurationName"
-            }
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "name": "Microsoft.Powershell.DSC",
+  "apiVersion": "2018-06-30",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.Powershell",
+    "type": "DSC",
+    "typeHandlerVersion": "2.77",
+    "autoUpgradeMinorVersion": true,
+    "protectedSettings": {
+      "Items": {
+        "registrationKeyPrivate": "[listKeys(resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName')), '2018-06-30').Keys[0].value]"
+      }
+    },
+    "settings": {
+      "Properties": [
+        {
+          "Name": "RegistrationKey",
+          "Value": {
+            "UserName": "PLACEHOLDER_DONOTUSE",
+            "Password": "PrivateSettingsRef:registrationKeyPrivate"
+          },
+          "TypeName": "System.Management.Automation.PSCredential"
         },
-        "protectedSettings": {
-            "configurationArguments": {
-                "RegistrationKey": {
-                    "userName": "NOT_USED",
-                    "Password": "registrationKey"
-                }
-            }
+        {
+          "Name": "RegistrationUrl",
+          "Value": "[reference(concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))).registrationUrl]",
+          "TypeName": "System.String"
+        },
+        {
+          "Name": "NodeConfigurationName",
+          "Value": "[parameters('nodeConfigurationName')]",
+          "TypeName": "System.String"
         }
+      ]
     }
+  }
 }
 ```
 
@@ -77,37 +90,44 @@ DSC 扩展继承默认扩展属性。
 ```json
 "extensionProfile": {
     "extensions": [
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
-            "apiVersion": "2018-04-01",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.Powershell",
-                "type": "DSC",
-                "typeHandlerVersion": "2.76",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "configurationArguments": {
-                        "RegistrationUrl" : "registrationUrl",
-                        "NodeConfigurationName" : "nodeConfigurationName"
-                    }
-                },
-                "protectedSettings": {
-                    "configurationArguments": {
-                        "RegistrationKey": {
-                            "userName": "NOT_USED",
-                            "Password": "registrationKey"
-                        }
-                    }
-                }
+      {
+        "name": "Microsoft.Powershell.DSC",
+        "properties": {
+          "publisher": "Microsoft.Powershell",
+          "type": "DSC",
+          "typeHandlerVersion": "2.77",
+          "autoUpgradeMinorVersion": true,
+          "protectedSettings": {
+            "Items": {
+              "registrationKeyPrivate": "[listKeys(resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName')), '2018-06-30').Keys[0].value]"
             }
+          },
+          "settings": {
+            "Properties": [
+              {
+                "Name": "RegistrationKey",
+                "Value": {
+                  "UserName": "PLACEHOLDER_DONOTUSE",
+                  "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                },
+                "TypeName": "System.Management.Automation.PSCredential"
+              },
+              {
+                "Name": "RegistrationUrl",
+                "Value": "[reference(concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))).registrationUrl]",
+                "TypeName": "System.String"
+              },
+              {
+                "Name": "NodeConfigurationName",
+                "Value": "[parameters('nodeConfigurationName')]",
+                "TypeName": "System.String"
+              }
+            ]
+          }
         }
+      }
     ]
-}
+  }
 ```
 
 ## <a name="detailed-settings-information"></a>详细设置信息
@@ -158,7 +178,7 @@ DSC 扩展继承默认扩展属性。
 
 ## <a name="details"></a>详细信息
 
-| 属性名称 | 类型 | Description |
+| 属性名称 | Type | 描述 |
 | --- | --- | --- |
 | settings.wmfVersion |字符串 |指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为 **latest** 可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”。 这些可能值将来可能会更新。 默认值为 **latest**。 |
 | settings.configuration.url |字符串 |指定要从中下载 DSC 配置 .zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，请将 **protectedSettings.configurationUrlSasToken** 属性设置为 SAS 令牌的值。 如果已定义 **settings.configuration.script** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置位置配置管理器 (LCM) 元数据，并应提供参数。 |
@@ -177,7 +197,7 @@ DSC 扩展继承默认扩展属性。
 有关以下值的详细信息，请参阅[本地配置管理器基本设置](/powershell/dsc/metaconfig#basic-settings)。
 使用 DSC 扩展默认配置脚本只能配置下表中列出的 LCM 属性。
 
-| 属性名称 | 类型 | Description |
+| 属性名称 | Type | 描述 |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |必需的属性。 指定节点用于注册到 Azure 自动化服务的密钥作为 PowerShell 凭据对象的密码。 可以使用 **listkeys** 方法针对自动化帐户自动发现此值。  请参阅[示例](#example-using-referenced-azure-automation-registration-values)。 |
 | settings.configurationArguments.RegistrationUrl |字符串 |必需的属性。 指定节点将尝试注册的自动化终结点的 URL。 可以使用 **reference** 方法针对自动化帐户自动发现此值。 |
@@ -234,7 +254,7 @@ DSC 扩展继承默认扩展属性。
 
 以下示例摘自 [DSC 扩展处理程序概述](dsc-overview.md)。
 此示例使用 Resource Manager 模板而不是cmdlet 来部署该扩展。
-保存 IisInstall.ps1 配置，将它放在 .zip 文件中，并将该文件上传到可访问的 URL 中。
+保存 IisInstall.ps1 配置，将其放在.zip 文件中 (示例： `iisinstall.zip`)，然后上传到可访问的 URL 中的文件。
 此示例使用 Azure Blob 存储，但可以从任意位置下载 .zip 文件。
 
 在资源管理器模板中，以下代码指示 VM 下载正确的文件并运行适当的 PowerShell 函数：
@@ -242,7 +262,7 @@ DSC 扩展继承默认扩展属性。
 ```json
 "settings": {
     "configuration": {
-        "url": "https://demo.blob.core.windows.net/",
+        "url": "https://demo.blob.core.windows.net/iisinstall.zip",
         "script": "IisInstall.ps1",
         "function": "IISInstall"
     }
@@ -335,27 +355,27 @@ DSC 扩展继承默认扩展属性。
 “WmfVersion 为‘{0}’。
 唯一的可能值为 ... 和 'latest'”。
 
-**问题**：不允许使用提供的值。
+**问题**:不允许提供的值。
 
-**解决方法**：将无效值更改为有效值。
+**解决方案**；无效的值更改为有效的值。
 有关详细信息，请参阅[详细信息](#details)中的表格。
 
 ### <a name="invalid-url"></a>无效的 URL
 
 “ConfigurationData.url 为‘{0}’。 这不是有效的 URL”。“DataBlobUri 为‘{0}’。 这不是有效的 URL”。“Configuration.url 为‘{0}’。 这不是有效的 URL”
 
-**问题**：提供的 URL 无效。
+**问题**:提供的 URL 无效。
 
-**解决方法**：检查提供的所有 URL。
+**解决方案**；检查提供的所有 Url。
 确保所有 URL 都解析为扩展可在远程计算机上访问的有效位置。
 
 ### <a name="invalid-registrationkey-type"></a>无效 RegistrationKey 类型
 
 “PSCredential 类型的参数 RegistrationKey 的类型无效。”
 
-**问题**：protectedSettings.configurationArguments 中的 *RegistrationKey* 值不能以 PSCredential 以外的任何类型提供。
+**问题**:*RegistrationKey* protectedSettings.configurationArguments 中的值不能提供 PSCredential 之外的任何类型。
 
-**解决方法**：使用以下格式将 RegistrationKey 的 protectedSettings.configurationArguments 条目更改为 PSCredential 类型：
+**解决方案**；RegistrationKey 你 protectedSettings.configurationArguments 项更改为使用以下格式的 PSCredential 类型：
 
 ```json
 "configurationArguments": {
@@ -370,18 +390,18 @@ DSC 扩展继承默认扩展属性。
 
 “无效的 configurationArguments 类型 {0}”
 
-**问题**：*ConfigurationArguments* 属性无法解析为**哈希表**对象。
+**问题**:*ConfigurationArguments*属性不能解析为**哈希表**对象。
 
-**解决方法**：将 *ConfigurationArguments* 属性设置为**哈希表**。
+**解决方案**；使你*ConfigurationArguments*属性**哈希表**。
 遵循上述示例中提供的格式。 请注意引号、逗号和括号。
 
 ### <a name="duplicate-configurationarguments"></a>重复的 ConfigurationArguments
 
 “在公共和受保护的 configurationArguments 中发现重复的参数‘{0}’”
 
-**问题**：公共设置中的 *ConfigurationArguments* 和受保护设置中的 *ConfigurationArguments* 包含同名属性。
+**问题**:*ConfigurationArguments*公共设置中并*ConfigurationArguments*在受保护的设置必须具有相同名称的属性。
 
-**解决方法**：删除其中一个重复的属性。
+**解决方案**；删除其中一个重复的属性。
 
 ### <a name="missing-properties"></a>缺少属性
 
@@ -397,7 +417,7 @@ DSC 扩展继承默认扩展属性。
 
 “protectedSettings.ConfigurationDataUrlSasToken 要求指定 settings.configurationData.url”
 
-**问题**：定义的属性需要另一个缺少的属性。
+**问题**:定义的属性需要另一个缺少的属性。
 
 **解决方法**：
 

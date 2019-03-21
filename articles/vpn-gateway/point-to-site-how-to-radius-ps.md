@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0d31129a94d6e575ead01a62d22ae3ce8f2acf64
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 1096c120b4e7731fabd574c4096e70fe02b6272d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414910"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081077"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>使用 RADIUS 身份验证配置 VNet 的点到站点连接：PowerShell
 
@@ -20,7 +20,7 @@ ms.locfileid: "56414910"
 
 点到站点 (P2S) VPN 网关用于创建从单个客户端计算机到虚拟网络的安全连接。 要从远程位置连接到 VNet，例如从家里或会议室进行远程通信，则可使用点到站点 VPN。 如果只有一些客户端需要连接到 VNet，则可使用 P2S VPN 这种解决方案来代替站点到站点 VPN。
 
-P2S VPN 连接是从 Windows 和 Mac 设备启动的。 连接方客户端可以使用以下身份验证方法：
+P2S VPN 连接是从 Windows 和 Mac 设备启动的。 连接方客户端可以使用以下身份验证方法： 
 
 * RADIUS 服务器
 * VPN 网关本机证书身份验证
@@ -46,7 +46,7 @@ P2S 连接有以下要求：
 ## <a name="aboutad"></a>关于 P2S VPN 的 Active Directory (AD) 域身份验证
 
 AD 域身份验证可让用户使用其组织域凭据登录到 Azure。 它需要一台与 AD 服务器集成的 RADIUS 服务器。 组织也可以利用其现有的 RADIUS 部署。
- 
+ 
 RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间，VPN 网关充当传递设备，在 RADIUS 服务器与连接方设备之间来回转发身份验证消息。 VPN 网关必须能够访问 RADIUS 服务器。 如果 RADIUS 服务器位于本地，需要建立从 Azure 到本地站点的 VPN 站点到站点连接。
 
 除了 Active Directory 以外，RADIUS 服务器还能与其他外部标识系统集成。 这样就为点到站点 VPN 提供了大量的身份验证选项，包括 MFA 选项。 请查看 RADIUS 服务器供应商文档，获取该服务器可集成的标识系统列表。
@@ -63,10 +63,6 @@ RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
-
-### <a name="sign-in"></a>登录
-
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ### <a name="example"></a>示例值
 
@@ -87,7 +83,34 @@ RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间
 * **DNS 服务器：** 用于 VNet 名称解析的 DNS 服务器的 IP 地址。 （可选）
 * **GW 名称：Vnet1GW**
 * **公共 IP 名称：VNet1GWPIP**
-* **VpnType：RouteBased** 
+* **VpnType：RouteBased**
+
+
+## <a name="signin"></a>登录并设置变量
+
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+
+### <a name="declare-variables"></a>声明变量
+
+声明要使用的值。 使用以下示例，在必要时会值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。
+
+  ```azurepowershell-interactive
+  $VNetName  = "VNet1"
+  $FESubName = "FrontEnd"
+  $BESubName = "Backend"
+  $GWSubName = "GatewaySubnet"
+  $VNetPrefix1 = "192.168.0.0/16"
+  $VNetPrefix2 = "10.254.0.0/16"
+  $FESubPrefix = "192.168.1.0/24"
+  $BESubPrefix = "10.254.1.0/24"
+  $GWSubPrefix = "192.168.200.0/26"
+  $VPNClientAddressPool = "172.16.201.0/24"
+  $RG = "TestRG"
+  $Location = "East US"
+  $GWName = "VNet1GW"
+  $GWIPName = "VNet1GWPIP"
+  $GWIPconfName = "gwipconf"
+  ```
 
 ## 1.<a name="vnet"></a>创建资源组、VNet 和公共 IP 地址
 
@@ -95,33 +118,33 @@ RADIUS 服务器可以驻留在本地或 Azure VNet 中。 在身份验证期间
 
 1. 创建资源组。
 
-  ```azurepowershell-interactive
-  New-AzResourceGroup -Name "TestRG" -Location "East US"
-  ```
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name "TestRG" -Location "East US"
+   ```
 2. 为虚拟网络创建子网配置，并将其命名为 FrontEnd、BackEnd 和 GatewaySubnet。 这些前缀必须是已声明的 VNet 地址空间的一部分。
 
-  ```azurepowershell-interactive
-  $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
-  $besub = New-AzVirtualNetworkSubnetConfig -Name "Backend" -AddressPrefix "10.254.1.0/24"  
-  $gwsub = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "192.168.200.0/24"
-  ```
+   ```azurepowershell-interactive
+   $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
+   $besub = New-AzVirtualNetworkSubnetConfig -Name "Backend" -AddressPrefix "10.254.1.0/24"  
+   $gwsub = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "192.168.200.0/24"
+   ```
 3. 创建虚拟网络。
 
-  在本示例中，-DnsServer 服务器参数是可选的。 指定一个值不会创建新的 DNS 服务器。 指定的 DNS 服务器 IP 地址应该是可以解析从 VNet 所连接到的资源名称的 DNS 服务器。 对于此示例，我们使用了专用 IP 地址，但这可能不是你 DNS 服务器的 IP 地址。 请务必使用自己的值。 指定的值将由部署到 VNet 的资源使用，而不是由 P2S 连接使用。
+   在本示例中，-DnsServer 服务器参数是可选的。 指定一个值不会创建新的 DNS 服务器。 指定的 DNS 服务器 IP 地址应该是可以解析从 VNet 所连接到的资源名称的 DNS 服务器。 对于此示例，我们使用了专用 IP 地址，但这可能不是你 DNS 服务器的 IP 地址。 请务必使用自己的值。 指定的值将由部署到 VNet 的资源使用，而不是由 P2S 连接使用。
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
+   ```
 4. VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 VPN 网关当前仅支持动态公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 
-  指定用于请求动态分配的公共 IP 地址的变量。
+   指定用于请求动态分配的公共 IP 地址的变量。
 
-  ```azurepowershell-interactive
-  $vnet = Get-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
-  $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet 
-  $pip = New-AzPublicIpAddress -Name "VNet1GWPIP" -ResourceGroupName "TestRG" -Location "East US" -AllocationMethod Dynamic 
-  $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
-  ```
+   ```azurepowershell-interactive
+   $vnet = Get-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
+   $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet 
+   $pip = New-AzPublicIpAddress -Name "VNet1GWPIP" -ResourceGroupName "TestRG" -Location "East US" -AllocationMethod Dynamic 
+   $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
+   ```
 
 ## 2.<a name="radius"></a>设置 RADIUS 服务器
 
@@ -147,25 +170,25 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 ```
 
 ## 4.<a name="addradius"></a>添加 RADIUS 服务器和客户端地址池
- 
+ 
 * 可按名称或 IP 地址指定 -RadiusServer。 如果指定名称并且服务器驻留在本地，VPN 网关可能无法解析名称。 如果出现这种情况，最好是指定服务器的 IP 地址。 
 * -RadiusSecret 应该与 RADIUS 服务器上配置的值匹配。
 * -VpnClientAddressPool 是连接方 VPN 客户端在连接时要从中接收 IP 地址的范围。 使用专用 IP 地址范围时，该范围不得与要通过其进行连接的本地位置重叠，也不得与要连接到其中的 VNet 重叠。 请确保配置足够大的地址池。  
 
 1. 为 RADIUS 机密创建安全字符串。
 
-  ```azurepowershell-interactive
-  $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
-  ```
+   ```azurepowershell-interactive
+   $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
+   ```
 
 2. 系统会提示输入 RADIUS 机密。 输入的字符不会显示，而是被“*”字符取代。
 
-  ```azurepowershell-interactive
-  RadiusSecret:***
-  ```
+   ```azurepowershell-interactive
+   RadiusSecret:***
+   ```
 3. 添加 VPN 客户端地址池和 RADIUS 服务器信息。
 
-  对于 SSTP 配置：
+   对于 SSTP 配置：
 
     ```azurepowershell-interactive
     $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
@@ -174,7 +197,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-  对于 IKEv2 配置：
+   对于 IKEv2 配置：
 
     ```azurepowershell-interactive
     $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
@@ -183,7 +206,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-  对于 SSTP + IKEv2
+   对于 SSTP + IKEv2
 
     ```azurepowershell-interactive
     $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
@@ -202,10 +225,10 @@ VPN 客户端配置可让设备通过 P2S 连接来与 VNet 建立连接。 若
 
 1. 若要连接到 VNet，请在客户端计算机上导航到 VPN 连接，找到创建的 VPN 连接。 其名称与虚拟网络的名称相同。 输入域凭据，单击“连接”。 此时会显示一条弹出消息，请求以提升的权限操作。 请接受请求并输入凭据。
 
-  ![VPN 客户端连接到 Azure](./media/point-to-site-how-to-radius-ps/client.png)
+   ![VPN 客户端连接到 Azure](./media/point-to-site-how-to-radius-ps/client.png)
 2. 连接已建立。
 
-  ![已建立连接](./media/point-to-site-how-to-radius-ps/connected.png)
+   ![已建立连接](./media/point-to-site-how-to-radius-ps/connected.png)
 
 ### <a name="connect-from-a-mac-vpn-client"></a>从 Mac VPN 客户端进行连接
 
@@ -218,8 +241,8 @@ VPN 客户端配置可让设备通过 P2S 连接来与 VNet 建立连接。 若
 1. 要验证 VPN 连接是否处于活动状态，请打开提升的命令提示符，然后运行 *ipconfig/all*。
 2. 查看结果。 请注意，收到的 IP 地址是在配置中指定的点到站点 VPN 客户端地址池中的地址之一。 结果与以下示例类似：
 
-  ```
-  PPP adapter VNet1:
+   ```
+   PPP adapter VNet1:
       Connection-specific DNS Suffix .:
       Description.....................: VNet1
       Physical Address................:
@@ -229,7 +252,7 @@ VPN 客户端配置可让设备通过 P2S 连接来与 VNet 建立连接。 若
       Subnet Mask.....................: 255.255.255.255
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 若要对 P2S 连接进行故障排除，请参阅[排查 Azure 点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。
 

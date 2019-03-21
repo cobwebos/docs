@@ -5,17 +5,17 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3d2f831da0106bce2c83ee8b0ff3588f721f3ffe
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 17ae4b930d259dedd3e4e202fae69de32d9bf593
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207796"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819542"
 ---
-# <a name="expressroute-global-reach-preview"></a>ExpressRoute Global Reach（预览版）
+# <a name="expressroute-global-reach"></a>ExpressRoute 的全球性覆盖
 ExpressRoute 是用来将本地网络连接到 Microsoft 云的一种专用且可复原的方式。 可以从专用数据中心或公司网络访问许多 Microsoft 云服务，例如 Azure、Office 365 和 Dynamics 365。 例如，你可能在旧金山有一家分公司，其 ExpressRoute 线路位于硅谷，在伦敦有另一家分公司，其 ExpressRoute 线路位于同一城市。 这两个分公司都可以与美国西部和英国南部的 Azure 资源高速连接。 但是，分公司不能直接相互交换数据。 换句话说，10.0.1.0/24 可以将数据发送到 10.0.3.0/24 和 10.0.4.0/24，但不能发送到 10.0.2.0/24。
 
 ![不带时][1]
