@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 5ebd543000c8927f714e5345dfd8eb6033c6301a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 5042d89f1cb5e928444e4b3c9a23db7bb1d66585
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820362"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531600"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
 
@@ -22,7 +22,7 @@ ms.locfileid: "55820362"
 
 <a href="https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode"><img src="./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png"></a>
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 适用于 VS Code 的 Azure Data Lake 工具支持 Windows、Linux 和 macOS。 U-SQL 本地运行和本地调试仅适用于 Windows。
 
@@ -30,7 +30,7 @@ ms.locfileid: "55820362"
 
 对于 MacOS 和 Linux：
 - [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core)
-- [Mono 5.2.x](http://www.mono-project.com/download/)
+- [Mono 5.2.x](https://www.mono-project.com/download/)
 
 ## <a name="install-azure-data-lake-tools"></a>安装 Azure Data Lake 工具
 

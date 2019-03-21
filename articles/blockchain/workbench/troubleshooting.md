@@ -1,6 +1,6 @@
 ---
 title: Azure Blockchain Workbench 故障排除
-description: 如何排查 Azure Blockchain Workbench 应用程序问题
+description: 如何解决 Azure Blockchain Workbench 应用程序。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 9f0f32bc1fb6b88dc85f09e13aebc60ff74ec723
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: b55c84773d99c325689fbc5182e75c7cb108d00a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329727"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890009"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Azure Blockchain Workbench 故障排除
 
@@ -24,7 +24,7 @@ PowerShell 脚本用于协助开发人员进行调试或提供支持。 此脚�
 * Blockchain 网络，例如 Ethereum
 * Blockchain Workbench 微服务
 * Application Insights
-* Azure 监视 (Log Analytics)
+* Azure 监视 （Azure Monitor 日志）
 
 可以根据此信息确定后续步骤和问题的根本原因。
 
@@ -46,21 +46,21 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ```
 此脚本接受以下参数：
 
-| 参数  | Description | 必选 |
+| 参数  | 描述 | 需要 |
 |---------|---------|----|
 | 订阅 ID | SubscriptionID，用于创建或定位所有资源。 | 是 |
 | ResourceGroupName | Blockchain Workbench 部署时所在的 Azure 资源组的名称。 | 是 |
 | OutputDirectory | 用于创建输出 .ZIP 文件的路径。 如果未指定，则默认为当前目录。 | 否 |
 | LookbackHours | 拉取遥测数据时要使用的小时数。 默认值为 24 小时。 最大值为 90 小时 | 否 |
-| OmsSubscriptionId | 在其中部署了 Log Analytics 的订阅 ID。 传递此参数的前提是适用于区块链网络的 Log Analytics 部署在 Blockchain Workbench 的资源组外面。| 否 |
-| OmsResourceGroup |在其中部署了 Log Analytics 的资源组。 传递此参数的前提是适用于区块链网络的 Log Analytics 部署在 Blockchain Workbench 的资源组外面。| 否 |
-| OmsWorkspaceName | Log Analytics 工作区名称。 传递此参数的前提是适用于区块链网络的 Log Analytics 部署在 Blockchain Workbench 的资源组外面 | 否 |
+| OmsSubscriptionId | 部署 Azure 监视器将记录其中的订阅 ID。 如果外 Blockchain Workbench 的资源组部署区块链网络的 Azure Monitor 日志，仅将此参数传递。| 否 |
+| OmsResourceGroup |部署 Azure 监视器将记录其中的资源组。 如果外 Blockchain Workbench 的资源组部署区块链网络的 Azure Monitor 日志，仅将此参数传递。| 否 |
+| OmsWorkspaceName | Log Analytics 工作区名称。 仅传递此参数，如果外 Blockchain Workbench 的资源组部署区块链网络的 Azure Monitor 日志 | 否 |
 
 ## <a name="what-is-collected"></a>收集什么内容？
 
 输出 ZIP 文件包含以下文件夹结构：
 
-| 文件夹或文件 | Description  |
+| 文件夹或文件 | 描述  |
 |---------|---------|
 | \Summary.txt | 系统摘要 |
 | \Metrics\blockchain | 有关区块链的指标 |

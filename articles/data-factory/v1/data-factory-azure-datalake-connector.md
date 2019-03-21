@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8731857d133e60cad4ecdca21874916949e05ff3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813511"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57975604"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Storage Gen1 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -70,7 +70,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 创建 **AzureDataLakeStore** 类型的链接服务，以便将 Data Lake Store 数据链接到数据工厂。 下表描述了特定于 Data Lake Store 链接服务的 JSON 元素。 可以选择服务主体身份验证或用户凭据身份验证。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureDataLakeStore**。 | 是 |
 | **dataLakeStoreUri** | Azure Data Lake Store 帐户相关信息。 此信息采用以下格式之一：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
@@ -91,7 +91,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | 指定应用程序的客户端 ID。 | 是 |
 | **servicePrincipalKey** | 指定应用程序的密钥。 | 是 |
@@ -118,7 +118,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 ### <a name="user-credential-authentication"></a>用户凭据身份验证
 或者，通过指定以下属性，可使用用户凭据身份验证向/从 Data Lake Store 进行复制：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
@@ -237,10 +237,10 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **AzureDataLakeStore** 类型的数据集的 **typeProperties** 节包含以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | **folderPath** |Data Lake Store 中容器和文件夹的路径。 |是 |
-| **fileName** |Azure Data Lake Store 中文件的名称。 **fileName** 属性可选，并且区分大小写。 <br/><br/>如果指定 **fileName**，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 **fileName**，则复制将包括输入数据集的 **folderPath** 中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，所生成文件的名称会采用格式 Data._Guid_.txt`。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. 否 |
+| **fileName** |Azure Data Lake Store 中文件的名称。 **fileName** 属性可选，并且区分大小写。 <br/><br/>如果指定 **fileName**，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 **fileName**，则复制将包括输入数据集的 **folderPath** 中的所有文件。<br/><br/>当**文件名**未指定为输出数据集和**preserveHierarchy**未指定在活动接收器中生成的文件的名称采用以下格式`Data._Guid_.txt`。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |否 |
 | **partitionedBy** |**partitionedBy** 属性可选。 它可用于指定时序数据的动态路径和文件名。 例如，**folderPath** 可针对每小时的数据参数化。 有关详细信息和示例，请参阅“partitionedBy 属性”。 |否 |
 | **format** | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文中的[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)等部分。 <br><br> 如果想要在基于文件的存储之间“按原样”复制文件（二进制副本），可以在输入和输出数据集定义中跳过 `format` 节。 |否 |
 | **compression** | 指定数据的压缩类型和级别。 支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
@@ -281,13 +281,13 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **AzureDataLakeStoreSource** 支持 **typeProperties** 节中的以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | **recursive** |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
 
 **AzureDataLakeStoreSink** 支持 **typeProperties** 节中的以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | **copyBehavior** |指定复制行为。 |<b>PreserveHierarchy</b>：将文件层次结构保留到目标文件夹中。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy</b>：源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/><b>MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，会自动生成文件名。 |否 |
 

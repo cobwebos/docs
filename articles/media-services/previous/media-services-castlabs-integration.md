@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: 0b3d8759f13f48e5fa95ff709fa283ed41e0ea25
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003204"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863251"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "56003204"
 
 本文介绍如何使用 Azure 媒体服务(AMS) 传送 AMS 使用 PlayReady 和 Widevine DRM 动态加密的流。 PlayReady 许可证来自媒体服务 PlayReady 许可证服务器，而 Widevine 许可证则由 **castLabs** 许可证服务器传送。
 
-若要播放受 CENC（PlayReady 和/或 Widevine）保护的流式处理内容，可使用 [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。 有关详细信息，请参阅 [AMP 文档](http://amp.azure.net/libs/amp/latest/docs/)。
+若要播放受 CENC（PlayReady 和/或 Widevine）保护的流式处理内容，可使用 [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html)。 有关详细信息，请参阅 [AMP 文档](https://amp.azure.net/libs/amp/latest/docs/)。
 
 下图演示了高级 Azure 媒体服务和 castLabs 集成体系结构。
 
@@ -45,7 +45,7 @@ ms.locfileid: "56003204"
 * castLabs 和 AMS 均内置了令牌身份验证。 以下部分讨论身份验证令牌。 
 * 客户端请求流式传输视频时，内容将使用**通用加密** (CENC) 进行动态加密，并由 AMS 动态打包成平滑流和 DASH。 我们还针对 HLS 流式处理协议提供 PlayReady M2TS 基本流加密。
 * PlayReady 许可证从 AMS 许可证服务器检索，而 Widevine 许可证则从 castLabs 许可证服务器检索。 
-* Media Player 会自动根据客户端平台功能决定要提取哪个许可证。 
+* Media Player 自动根据客户端平台功能决定要提取哪个许可证。 
 
 ## <a name="authentication-token-generation-for-getting-a-license"></a>用于获取许可证的身份验证令牌生成
 
@@ -67,7 +67,7 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 
 下表描述了 castLabs 中的 JWT 令牌。 
 
-| Name | 说明 |
+| 名称 | 描述 |
 | --- | --- |
 | optData |一个包含相关信息的 JSON 字符串。 |
 | crt |一个包含有关资源、其许可证信息和播放权限的信息的 JSON 字符串。 |
@@ -101,10 +101,10 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 
 ## <a name="playing-back-a-video"></a>播放视频
 
-若要播放使用通用加密（PlayReady 和/或 Widevine）加密的视频，可以使用 [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。 运行控制台应用程序时，将回显内容密钥 ID 和清单 URL。
+若要播放使用通用加密（PlayReady 和/或 Widevine）加密的视频，可以使用 [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html)。 运行控制台应用程序时，将回显内容密钥 ID 和清单 URL。
 
 1. 打开新的选项卡并启动 STS： http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid]。
-2. 转到 [Azure 媒体播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
+2. 转到 [Azure 媒体播放器](https://amsplayer.azurewebsites.net/azuremediaplayer.html)。
 3. 粘贴到流 URL 中。
 4. 单击“高级选项”复选框。
 5. 在“保护”下拉列表中选择 PlayReady 和/或 Widevine。

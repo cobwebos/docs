@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 10/01/2018
+ms.date: 1/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4ffd3d2383973c6e4b318d580e442a2a53cc629
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 32dc55927f614a91c390a417595b7a00c16e9386
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239615"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847943"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>使用 Application Insights 监视 Azure 机器学习模型
 
@@ -28,9 +28,9 @@ ms.locfileid: "55239615"
 [详细了解 Application Insights](../../azure-monitor/app/app-insights-overview.md)。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+* 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 * 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 若要了解如何满足这些先决条件，请参阅[如何配置开发环境](how-to-configure-environment.md)。
 * 要部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 的经过训练的机器学习模型。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程。

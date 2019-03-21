@@ -15,20 +15,22 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 4e6527bf115f327635a0b0fe187094dafb320598
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380530"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884029"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>使用门户创建并监视带有事件网格的 Azure 媒体服务事件
 
-Azure 事件网格是针对云的事件处理服务。 在本文中，使用 Azure 门户订阅 Azure 媒体服务帐户的事件。 然后，触发事件以查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 在本文中，将事件发送到收集并显示消息的 Web 应用。
+Azure 事件网格是针对云的事件处理服务。 此服务使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)事件消息路由到订阅服务器。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。 有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
+
+在本文中，使用 Azure 门户订阅 Azure 媒体服务帐户的事件。 然后，触发事件以查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 在本文中，我们将事件发送到 web 应用，可收集和显示的消息。
 
 完成后即可看到事件数据已发送到 Web 应用。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 * 拥有一个有效的 Azure 订阅。
 * 按照[本快速入门](create-account-cli-quickstart.md)所述，创建新的 Azure 媒体服务帐户。
@@ -39,7 +41,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，使用 Azu
 
 1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 

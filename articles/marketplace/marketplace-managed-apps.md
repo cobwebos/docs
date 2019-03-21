@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: ae50562a9354b9c1e5b2711e5bbeec7b1e0fbbb8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 15c559bb8b357b7776c101f88db8316b05edb677
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078790"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213154"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure 应用程序：“托管应用程序”产品/服务发布指南
 
@@ -46,6 +46,8 @@ ms.locfileid: "54078790"
 >[!NOTE]
 > 托管应用必须可通过市场部署。 如果客户沟通是个问题，应该在启用商机分享后与感兴趣的客户交流。  
 
+>[!Note]
+>云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](./cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
 
 ## <a name="next-steps"></a>后续步骤
 如果尚未注册， 

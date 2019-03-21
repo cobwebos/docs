@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: dc5439c98b5abc69b6cb1ba144e015426bb887ce
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996920"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259068"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>使用 Azure 门户配置内容保护策略
  使用 Azure 媒体服务，可以在媒体从离开计算机到存储、处理和传送的整个过程中确保其安全。 可以通过媒体服务传送按高级加密标准 (AES)（使用 128 位加密密钥）动态加密的内容。 也可借助 PlayReady 和/或 Widevine 数字版权管理 (DRM) 以及 Apple FairPlay，将其与通用加密 (CENC) 配合使用。 

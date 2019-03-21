@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: bd6531bc950e006f15924bb9a0d6428f9e69d544
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: bc559a1224aace2ee599c24c8dce07a6d55173fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330828"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863706"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 9 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 9 月发行的版本中所引入的新功能和所做的更改。
@@ -99,7 +99,7 @@ Commands completed successfully.
 
 ## <a name="bug-fixes"></a>Bug 修复
 
-| 标题 | 说明 |
+| 标题 | 描述 |
 |:---|:---|
 | **修复了有关创建唯一约束分发的统计信息的问题** | 此修补程序解决了运行仅指定表（表已定义约束）的 UPDATE STATISTICS 时遇到的错误。 |
 | **修复了有关对外部表编译查询的问题** | 此修补程序解决了影响涉及外部表的查询编译时间的缺陷。|
@@ -116,7 +116,7 @@ Commands completed successfully.
 * [功能请求]
 * [视频]
 * [客户顾问团队博客]
-* [堆栈溢出论坛]
+* [Stackoverflow 论坛]
 * [Twitter]
 
 
@@ -124,7 +124,7 @@ Commands completed successfully.
 [客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [客户成功案例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[堆栈溢出论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stackoverflow 论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

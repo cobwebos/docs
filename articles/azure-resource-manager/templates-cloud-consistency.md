@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 4d5c7f8a91bb63cdd80a6f70603e34f8130b92ef
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 4b1c829a417d050b4d931611d9f2952e01582f04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106675"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089465"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
 
@@ -49,8 +49,6 @@ Microsoft 在很多位置提供了面向企业的智能云服务，其中包括�
 
 有关 Azure 资源管理器模板的简介，请参阅[模板部署](resource-group-overview.md#template-deployment)。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="ensure-template-functions-work"></a>确保模板函数可用
 
 资源管理器模板的基本语法是 JSON。 模板使用 JSON 的超集，通过表达式和函数扩展语法。 模板语言处理器经常更新以支持附加的模板函数。 有关可用模板函数的详细说明，请参阅 [Azure 资源管理器模板函数](resource-group-template-functions.md)。
@@ -65,13 +63,13 @@ Azure 资源管理器的功能始终会首先引入到全球 Azure。 使用以�
 
 1. 导入 psm1 模块并执行 Test-AzureRmureRmTemplateFunctions cmdlet：
 
-  ```powershell
-  # Import the module
-  Import-module <path to local clone>\AzTemplateFunctions.psm1
+   ```powershell
+   # Import the module
+   Import-module <path to local clone>\AzTemplateFunctions.psm1
 
-  # Execute the Test-AzureRmTemplateFunctions cmdlet
-  Test-AzureRmTemplateFunctions -path <path to local clone>
-  ```
+   # Execute the Test-AzureRmTemplateFunctions cmdlet
+   Test-AzureRmTemplateFunctions -path <path to local clone>
+   ```
 
 该脚本部署多个最小化模板，每个模板仅包含唯一的模板函数。 脚本的输出报告受支持的和不可用的模板函数。
 

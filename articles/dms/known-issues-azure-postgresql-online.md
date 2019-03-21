@@ -3,20 +3,20 @@ title: 有关联机迁移到 Azure Database for MySQL 时存在的已知问题/�
 description: 了解在联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制。
 services: database-migration
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 09/22/2018
-ms.openlocfilehash: ec91eec9baba1f337f18e1927a87971bf1499040
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.date: 03/12/2019
+ms.openlocfilehash: f52eb1699b980e84195ec34eb543c4523328c893
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724126"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181990"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>联机迁移到 Azure DB for PostgreSQL 时存在的已知问题/迁移限制
 
@@ -97,7 +97,7 @@ ms.locfileid: "53724126"
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **解决方法**：如果 LOB 对象大于 32 KB，请通过 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) 联系工程团队。
+    **解决方法**：如果必须大于 32 KB 的 LOB 对象，请联系工程团队[让 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。
 
 - **限制**：如果表中包含 LOB 列，切没有用于表的主键集，则数据可能不会为此表迁移。
 

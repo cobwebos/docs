@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0832fbcacd8b58ffaf36ce2e55e3add151a881db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470189"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870924"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>使用 Azure Functions 管理 Azure SQL 数据仓库中的计算资源
 
@@ -57,14 +57,14 @@ ms.locfileid: "55470189"
 
 4. 在计划区域向 CRON 表达式添加所需时间，此时间反映了你所希望的对 SQL 数据仓库进行纵向扩展的频率。 
 
-  ![更改函数计划](media/manage-compute-with-azure-functions/change-schedule.png)
+   ![更改函数计划](media/manage-compute-with-azure-functions/change-schedule.png)
 
-  `schedule` 的值是 [CRON 表达式](http://en.wikipedia.org/wiki/Cron#CRON_expression)，其中包含以下六个字段： 
-  ```json
-  {second} {minute} {hour} {day} {month} {day-of-week}
-  ```
+   `schedule` 的值是 [CRON 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)，其中包含以下六个字段： 
+   ```json
+   {second} {minute} {hour} {day} {month} {day-of-week}
+   ```
 
-  例如，“0 30 9 * * 1-5”表示在每个工作日的上午 9:30 触发一次。 有关详细信息，请访问 Azure Functions [计划示例][schedule examples]。
+   例如，“0 30 9 * * 1-5”表示在每个工作日的上午 9:30 触发一次。 有关详细信息，请访问 Azure Functions [计划示例][schedule examples]。
 
 
 ## <a name="change-the-time-of-the-scale-operation"></a>更改缩放操作的时间

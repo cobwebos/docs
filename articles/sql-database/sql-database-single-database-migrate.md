@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: f033a93c0e4fc2648e151572bee25db5463e32e3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 2feece21644f8b79b4e5fc74331944cdddbdee4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101291"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996424"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
 
@@ -28,7 +28,7 @@ ms.locfileid: "56101291"
 
 将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单个或共用数据库有两种主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
 
-两种方法均需使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 确保源数据库与 Azure SQL 数据库兼容。 SQL 数据库 V12 除了要解决服务器级操作和跨数据库操作的相关问题之外，还要解决与 SQL Server 的[功能对等性](sql-database-features.md)问题。 依赖[部分支持或不受支持的函数](sql-database-transact-sql-information.md)的数据库和应用程序需要进行某种程度的[重新设计来修复这些不兼容性](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)，才能迁移 SQL Server 数据库。
+两种方法均需使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 确保源数据库与 Azure SQL 数据库兼容。 SQL 数据库 V12 除了要解决服务器级操作和跨数据库操作的相关问题之外，还要解决与 SQL Server 的[功能对等性](sql-database-features.md)问题。 依赖[部分支持或不受支持的函数](sql-database-transact-sql-information.md)的数据库和应用程序需要进行某种程度的[重新设计来修复这些不兼容性](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)，然后才能迁移 SQL Server 数据库。
 
 > [!NOTE]
 > 要将非 SQL Server 数据库（包括 Microsoft Access、Sybase、MySQL Oracle 和 DB2）迁移到 Azure SQL 数据库，请参阅 [SQL Server 迁移助手](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/)。
@@ -114,7 +114,7 @@ ms.locfileid: "56101291"
 - [SQL Server 2008 R2 中已停用的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
 - [SQL Server 2005 中已停用的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 
-除了搜索 Internet 和使用这些资源，还可以使用 [MSDN SQL Server 社区论坛](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver)或 [StackOverflow](http://stackoverflow.com/)。
+除了搜索 Internet 和使用这些资源，还可以使用 [MSDN SQL Server 社区论坛](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver)或 [StackOverflow](https://stackoverflow.com/)。
 
 > [!IMPORTANT]
 > 使用 SQL 数据库托管实例可迁移现有 SQL Server 实例及其数据库，而几乎不会出现兼容性问题。 请参阅[什么是托管实例](sql-database-managed-instance.md)。
@@ -123,6 +123,6 @@ ms.locfileid: "56101291"
 
 - 使用 Azure SQL EMEA 工程师博客中的脚本[监视迁移过程中的 tempdb 使用情况](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/)。
 - 使用 Azure SQL EMEA 工程师博客中的脚本[监视发生迁移时数据库的事务日志空间](https://blogs.msdn.microsoft.com/azuresqlemea/2016/10/31/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database/0)。
-- 有关 SQL Server 客户咨询团队使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
+- 如需 SQL Server 客户顾问团队编写的有关使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
 - 若要了解如何在迁移后处理 UTC 时间，请参阅 [Modifying the default time zone for your local time zone](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/)（针对本地时区修改默认时区）。
 - 若要了解如何在迁移后更改数据库的默认语言，请参阅 [How to change the default language of Azure SQL Database](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/)（如何更改 Azure SQL 数据库的默认语言）。

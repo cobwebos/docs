@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ce65f71349ae6d7e86ebae1ee2067653a63b89b4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 777aca4754d4d5dc893f930994ffe61db18362fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161050"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089329"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
@@ -37,15 +37,15 @@ ms.locfileid: "55161050"
 
 ##  <a name="create-a-resource-owner-user-flow"></a>创建资源所有者用户流
 
-1.  以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
-2.  若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
-3.  单击“用户流”，然后选择“新建用户流”。
-4.  单击“全部”选项卡，然后选择“资源所有者”。
-5.  提供用户流名称，例如 ROPC_Auth。
-6.  在“应用程序声明”下，单击“显示更多”。
-7.  选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
-8.  选择“确定”，然后选择“创建”。
-9.  单击“运行用户流”。
+1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
+2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
+3. 单击“用户流”，然后选择“新建用户流”。
+4. 单击**所有**选项卡并选择**登录使用 ROPC**。
+5. 提供用户流名称，例如 ROPC_Auth。
+6. 在“应用程序声明”下，单击“显示更多”。
+7. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
+8. 选择“确定”，然后选择“创建”。
+9. 单击“运行用户流”。
 
    你随后会看到一个终结点，如以下示例所示：
 
@@ -83,7 +83,7 @@ ms.locfileid: "55161050"
 实际的 POST 请求如下所示：
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
 Host: yourtenant.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

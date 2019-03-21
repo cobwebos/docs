@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: cddb3769cfc5a2ba002e19036d986f4165670dc1
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 3c22aab20a9260bfd21869f0b327211e2f3d8894
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962445"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004222"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -41,11 +41,11 @@ ms.locfileid: "55962445"
 cordova plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-有关创建[第一个 Apache Cordova 应用]的详细信息，请参阅相关文档。
+有关创建 [第一个 Apache Cordova 应用]的详细信息，请参阅相关文档。
 
 ## <a name="ionic"></a>设置 Ionic v2 应用
 
-要正确配置 Ionic v2 项目，请先创建基本应用，然后添加 Cordova 插件：
+若要正确配置 Ionic v2 项目，首先需创建一个基本应用，并添加 Cordova 插件：
 
 ```
 ionic start projectName --v2
@@ -53,7 +53,7 @@ cd projectName
 ionic plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-将以下行添加到 `app.component.ts` 以创建客户端对象：
+向 `app.component.ts` 中添加以下行以创建客户端对象：
 
 ```typescript
 declare var WindowsAzure: any;
@@ -96,7 +96,7 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 1. 登录到 [Azure 门户]
 2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
 3. 单击“工具”
-4. 在“观察”菜单中单击“资源浏览器”，并单击“转到”。  此时会打开一个新窗口或选项卡。
+4. 在“观察”菜单中单击“资源浏览器”，并单击“转到”。  会打开新窗口或选项卡。
 5. 在左侧导航栏中，展开站点的“config”、“authsettings”节点。
 6. 单击“编辑”
 7. 查找“allowedExternalRedirectUrls”元素。  该元素可能已设置为 null 或值数组。  将该值更改为以下值：
@@ -106,7 +106,7 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
              "https://localhost:3000"
          ],
 
-    将 URL 替换为自己服务的 URL。  示例包括“ http://localhost:3000 ”（适用于 Node.js 示例服务）或“ http://localhost:4400 ”（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
+    将 URL 替换为自己服务的 URL。  示例包括`http://localhost:3000`（适用于 Node.js 示例服务） 或`http://localhost:4400`（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
 8. 单击屏幕右上角的“读/写”按钮。
 9. 单击绿色的“PUT”按钮。
 
@@ -124,7 +124,7 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 大约需要 10-15 秒时间才能使新设置生效。
 
 ## <a name="register-for-push"></a>如何：注册推送通知
-安装 [phonegap-plugin-push] 即可处理推送通知。  在命令行中使用 `cordova plugin add` 命令，或者在 Visual Studio 内通过 Git 插件安装程序，即可轻松添加此插件。  Apache Cordova 应用中的以下代码将为设备注册推送通知：
+安装 [phonegap-plugin-push] 即可处理推送通知。  在命令行中使用 `cordova plugin add` 命令，或者在 Visual Studio 内通过 Git 插件安装程序，即可轻松添加此插件。  Apache Cordova 应用中的以下代码为设备注册推送通知：
 
 ```javascript
 var pushOptions = {
@@ -163,7 +163,7 @@ pushHandler.on('error', function (error) {
 });
 ```
 
-使用通知中心 SDK 从服务器发送推送通知。  请勿直接从客户端发送推送通知。 否则可能会触发拒绝对通知中心或 PNS 的服务攻击。  遇到此类攻击时，PNS 会禁止流量。
+使用通知中心 SDK 从服务器发送推送通知。  请勿直接从客户端发送推送通知。 否则可能会触发拒绝对通知中心或 PNS 的服务攻击。  PNS 可能会因此类攻击而禁止相关流量。
 
 ## <a name="more-information"></a>详细信息
 

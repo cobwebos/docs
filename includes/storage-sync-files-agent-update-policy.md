@@ -4,18 +4,18 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: fa0edaaa3ee785f89faceb51419d360752bb9825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635997"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051703"
 ---
 Azure 文件同步代理将定期更新，以便添加新功能和解决问题。 建议配置 Microsoft 更新，以便在 Azure 文件同步代理更新发布时获得这些更新。
 
 #### <a name="major-vs-minor-agent-versions"></a>主要与次要代理版本
-* 主要代理版本通常包含新的功能，并且版本号的第一个组成部分会递增。 例如：2.\*.\*
-* 次要代理版本也称为“修补”，其发布频率高于主要版本。 它们通常包含 bug 修复和小幅的改进，但不包含新功能。 例如：*\*.3.\**
+* 主要代理版本通常包含新的功能，并且版本号的第一个组成部分会递增。 例如：2.\*.\*\*\*
+* 次要代理版本也称为“修补”，其发布频率高于主要版本。 它们通常包含 bug 修复和小幅的改进，但不包含新功能。 例如：\*\*.3.\*\*
 
 #### <a name="upgrade-paths"></a>升级路径
 可以通过四种经过批准和测试的方法来安装 Azure 文件同步代理更新。 

@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 909a68ff0fd78fbdd4870506d1ad579392036dbf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999192"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294478"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>适用于 .NET 的媒体服务 SDK 中的重试逻辑  
 
-使用 Microsoft Azure 服务时，可能发生暂时性故障。 如果发生暂时性故障，在大多数情况下，该操作会在几次重试后成功。 适用于 .NET 的媒体服务 SDK 执行重试逻辑以处理与异常和错误关联的暂时性故障，这些异常和错误由 Web 请求、执行查询、保存更改和存储操作导致。  默认情况下，适用于 .NET 的媒体服务 SDK 向应用程序重新引发异常前会执行四次重试。 然后，应用程序中的代码必须正确处理此异常。  
+使用 Microsoft Azure 服务时，可能发生暂时性故障。 如果发生暂时性故障，在大多数情况下，该操作会在几次重试后成功。 适用于 .NET 的媒体服务 SDK 执行重试逻辑以处理与异常和错误关联的暂时性故障，这些异常和错误由 Web 请求、执行查询、保存更改和存储操作导致。  默认情况下，适用于 .NET 的媒体服务 SDK 向应用程序重新引发异常前会执行四次重试。 应用程序中的代码稍后必须正确处理此异常。  
 
  下面为 Web 请求、存储、查询和 SaveChanges 策略的简要指南：  
 
@@ -68,7 +68,7 @@ ms.locfileid: "55999192"
 | ProtocolError <br/>ProtocolError 上的重试由 HTTP 状态代码处理控制。 有关详细信息，请参阅 [HTTP 错误和状态代码](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)。 |是 |是 |是 |是 |
 
 ### <a name="HTTPStatusCode"></a> HTTP 错误状态代码
-查询和 SaveChanges 操作引发 DataServiceClientException、DataServiceQueryException 或 DataServiceQueryException 时，HTTP 错误状态代码将返回在 StatusCode 属性中。  下表显示了对其执行重试逻辑的错误代码。  
+如果 Query 和 SaveChanges 操作引发 DataServiceClientException、DataServiceQueryException 或 DataServiceQueryException，则 StatusCode 属性中返回 HTTP 错误状态代码。  下表显示了对其执行重试逻辑的错误代码。  
 
 | 状态 | Web 请求 | 存储 | Query | SaveChanges |
 | --- | --- | --- | --- | --- |

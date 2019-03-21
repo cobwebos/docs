@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: ac4391b91d818b21e392e134115294fb84473e69
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: 8fd43228c5129395f9a61778fb83d32906fc85df
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449636"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311757"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>在 Azure Monitor 中创建日志的指标警报
 
 ## <a name="overview"></a>概述
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classic-portal.md)更具优势的[指标警报类型](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 指标可用于 [Azure 服务的大型列表](../../azure-monitor/platform/metrics-supported.md)。 本文解释某个资源子集的用法 - `Microsoft.OperationalInsights/workspaces`。
 
@@ -360,7 +362,7 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
 也可以使用以下 Azure Powershell 命令：
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
+New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
 ```
 
 或使用 Azure CLI 部署资源模板：
@@ -676,7 +678,7 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 也可以使用以下 Azure Powershell 命令：
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
+New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
 ```
 
 或使用 Azure CLI 部署资源模板：

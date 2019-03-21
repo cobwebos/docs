@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 22f9daedf1438af30006bce48826d842942309ea
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: 35ac227bd420b614525d468f2d3332a2a02b5388
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659994"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111083"
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure Database for PostgreSQL 复制数据
 
@@ -47,8 +47,8 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 说明 | 选项 | 必选 |
-|:--- |:--- |:--- |:--- |:--- |
+| 属性 | 描述 | 选项 | 需要 |
+|:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| 驱动程序用于加密在驱动程序和数据库服务器之间发送的数据的方法。 例如 `ValidateServerCertificate=<0/1/6>;`| 0 (No Encryption) **(Default)** / 1 (SSL) / 6 (RequestSSL) | 否 |
 | ValidateServerCertificate (VSC) | 启用 SSL 加密后，确定驱动程序是否验证数据库服务器发送的证书（加密方法=1）。 例如 `ValidateServerCertificate=<0/1>;`| 0 (Disabled) **(Default)** / 1 (Enabled) | 否 |
 

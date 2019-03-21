@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: fca14eb5a51799e6d3c0e4f96cb956e4e6886cdb
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: aa9cdbaece2714dd4869268f394e6840fe42edda
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844817"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225393"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 
@@ -91,7 +91,7 @@ ms.locfileid: "54844817"
 > 请确保选择现有 HDInsight 群集的 Azure 资源组。  否则，会收到错误消息“无法对嵌套资源执行请求的操作。 父资源 '&lt;ClusterName>' 未找到。”
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>创建群集时添加边缘节点
-本部分介绍如何使用 Resource Manager 模板创建包含边缘节点的 HDInsight 群集。  可以在 [Azure 快速启动模板库](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。该脚本不执行任何操作。  它只是演示如何从 Resource Manager 模板调用脚本操作。
+本部分介绍如何使用 Resource Manager 模板创建包含边缘节点的 HDInsight 群集。  可以在中找到 Resource Manager 模板[Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。该脚本不执行任何操作。  它只是演示如何从 Resource Manager 模板调用脚本操作。
 
 **创建包含边缘节点的 HDInsight 群集**
 

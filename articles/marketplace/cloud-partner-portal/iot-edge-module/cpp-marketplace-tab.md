@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c119869c47547fd5d91f6ee91fcd772ea5941f46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432169"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010947"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge 模块“市场”选项卡
 
 
-在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。 这个较长的窗体划分为四个部分：“概述”、“营销项目”、“潜在顾客管理”和“法律条款”。
+在“新建套餐”页的“市场”选项卡中，可向潜在客户提供营销、销售和法律信息与协议，以及管理从市场生成的潜在顾客。 此长格式被划分为四个部分：**概述**，**市场营销项目**，**潜在客户管理**，并且**法律**。
 
 ## <a name="overview"></a>概述
 
@@ -39,7 +39,7 @@ ms.locfileid: "49432169"
 | **标题**                 | 套餐的标题。 将在市场中突出显示。  最大长度为 50 个字符。 <!--ADD PICTURE IN ACTION-->|
 | **摘要**               | 套餐的简短摘要。 最大长度为 100 个字符。 <!--ADD PICTURE IN ACTION-->|
 | **长摘要**          | 套餐的较长摘要（不过，其内容可与“摘要”相同）。  最大长度为 256 个字符。 <!--ADD PICTURE IN ACTION-->|
-| **说明**           | 套餐的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。<br/> 必须在底部包含“最低硬件要求”段落。 例如： <br/> <p><u>最低硬件要求：</u>Linux x64 和 arm32 OS，1 GB RAM，500 Mb 存储</p>
+| **说明**           | 套餐的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。<br/> 必须在底部包含“最低硬件要求”段落。 例如： <br/> <p><u>最低硬件要求：</u>Linux x64 和 arm32 OS，1 GB 的 RAM，500 Mb 的存储</p>
 | **营销标识符**  | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **预览订阅 ID** | 为预览版添加 1 到 100 个订阅标识符。 在套餐发布之后、上线之前，这些已加入允许列表的订阅将有权访问该套餐。 |
 | **有用链接**          | 可能最适合与该套餐关联的企业和技术类别的多项选择。  最多允许添加 10 个类别。 请务必至少添加一个文档链接，以及 [Azure IoT 设备目录](https://catalog.azureiotsolutions.com/)中兼容的 IoT Edge 设备的一个链接。 |
@@ -78,7 +78,7 @@ ms.locfileid: "49432169"
 
 ## <a name="marketing-artifacts"></a>营销项目
 
-此部分包含以下子部分：“徽标”、“屏幕截图”和“视频”。 
+本节包含以下小节：**徽标**，**屏幕截图**，和**视频**。 
 
 >[!Note]
 >只有徽标是必需的营销项目，但为了充分吸引客户的注意，我们强烈建议填写所有这些字段。
@@ -104,7 +104,7 @@ ms.locfileid: "49432169"
 
 ### <a name="logo-guidelines"></a>徽标准则
 
-<!-- It seems like this section could be better located in some common area, maybe a AMP Marketing/Design section 
+<!-- It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
 上传到云合作伙伴门户中的所有徽标都应遵循以下准则：
@@ -160,7 +160,7 @@ As an example, the following hero icon is for the Azure Container Service.
 
 ## <a name="legal"></a>合法
 
-在此部分可以提供每个套餐所需的两个法律文档：“隐私政策”和“使用条款”。
+此部分中，你可提供所需的每个产品/服务的两个法律文档：“隐私策略”和“使用条款”。
 
 |  **字段**                |     **说明**                                                          |
 |  ---------                |     ---------------                                                          |

@@ -1,5 +1,5 @@
 ---
-title: Azure AD 密码保护中的监视和日志记录（预览版）
+title: 监视和日志记录在 Azure AD 密码保护
 description: 了解 Azure AD 密码保护中的监视和日志记录
 services: active-directory
 ms.service: active-directory
@@ -11,23 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1f946eceab68b0fe49ea67dc33a7094458cd14c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: b1e12addc15afe0c0745e0e8d5a9b6718483d477
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451480"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293713"
 ---
-# <a name="preview-azure-ad-password-protection-monitoring-and-logging"></a>预览版：Azure AD 密码保护中的监视和日志记录
-
-|     |
-| --- |
-| Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD 密码保护中的监视和日志记录
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文详细介绍了各种监视技术，包括每项服务在哪里记录日志信息，以及如何报告 Azure AD 密码保护使用情况。
 
-# <a name="dc-agent-event-logging"></a>DC 代理事件日志记录
+## <a name="dc-agent-event-logging"></a>DC 代理事件日志记录
 
 在每个域控制器上，DC 代理服务软件将每个密码验证操作的结果（和其他状态）写入本地事件日志：
 

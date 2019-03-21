@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: b2e8d629f4007729ad0538aee9bdb8e67747b026
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c37e41bce481fff5e172687907cce527c10ae006
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58015124"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225002"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
@@ -217,33 +217,33 @@ ms.locfileid: "58015124"
 
 1. 对于“名称”，选择 **Limit** 变量。 对于“值”，输入“1”。 
 
-    ![按增幅 1 递增“Limit”](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+     ![按增幅 1 递增“Limit”](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
 1. 在循环外部和循环下，选择“新建步骤”。 
 
 1. 在搜索框下，选择“所有”。 
-    查找并添加发送电子邮件的操作，例如： 
+     查找并添加发送电子邮件的操作，例如： 
 
-    ![添加用于发送电子邮件的操作](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+     ![添加用于发送电子邮件的操作](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
 1. 根据提示登录到电子邮件帐户。
 
 1. 设置电子邮件操作的属性。 将 **Limit** 变量添加到主题。 这样，你可以确认变量的当前值满足你指定的条件，例如：
 
-     ![设置电子邮件属性](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+      ![设置电子邮件属性](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-     | 属性 | 值 | 说明 |
-     | -------- | ----- | ----------- | 
-     | **收件人** | *<email-address\@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
-     | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
-     | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
-     |||| 
+      | 属性 | 值 | 说明 |
+      | -------- | ----- | ----------- | 
+      | **收件人** | *<email-address\@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
+      | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
+      | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
+      |||| 
 
 1. 保存逻辑应用。 若要手动测试逻辑应用，请在设计器工具栏上选择“运行”。
 
-     在你的逻辑开始运行后，你将收到一封包含指定内容的电子邮件：
+      在你的逻辑开始运行后，你将收到一封包含指定内容的电子邮件：
 
-     ![收到的电子邮件](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+      ![收到的电子邮件](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
 ## <a name="prevent-endless-loops"></a>防止无限循环
 

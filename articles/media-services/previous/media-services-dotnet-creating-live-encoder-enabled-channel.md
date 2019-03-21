@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 85d32af93586b460c2885d7ed58c0f5aa5df8a44
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: 77d37d5fae024c7b50d9eac461c9f609a86f8ed9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828343"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100098"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
 > [!div class="op_single_selector"]
@@ -42,21 +42,19 @@ ms.locfileid: "54828343"
 
 > [!NOTE]
 > 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amslived@microsoft.com。
-> 
-> 
 
 1. 将视频摄像机连接到计算机。 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
 
     此步骤也可以在创建频道后执行。
 
 2. 创建并启动频道。
-3. 检索频道引入 URL。
+3. 检索通道引入 URL。
 
     实时编码器使用引入 URL 将流发送到频道。
 
 4. 检索频道预览 URL。
 
-    使用此 URL 来验证频道是否正常接收实时流。
+    使用此 URL 来验证通道是否正常接收实时流。
 
 5. 创建资源。
 6. 如果想让资源在播放期间进行动态加密，请执行以下操作：
@@ -88,10 +86,10 @@ ms.locfileid: "54828343"
 7. 显示和隐藏清单。 启动和停止广告。 将使用长时间运行的 API。
 8. 清理频道及所有关联的资源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 以下是完成本教程所需具备的条件。
 
-* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费的 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
+* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完后，也可保留帐户并使用免费的 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
 * 必须使用适用于 .NET 的媒体服务 SDK 版本 3.2.0.0 或更高版本。
@@ -230,7 +228,7 @@ namespace EncodeLiveStreamWithAmsClear
             // When creating a Channel, you can specify allowed IP addresses in one of the following formats: 
             // IpV4 address with 4 numbers
             // CIDR address range
-        
+
             return new ChannelInput
             {
                 StreamingProtocol = StreamingProtocol.FragmentedMP4,
@@ -258,7 +256,7 @@ namespace EncodeLiveStreamWithAmsClear
             // When creating a Channel, you can specify allowed IP addresses in one of the following formats: 
             // IpV4 address with 4 numbers
             // CIDR address range
-        
+
             return new ChannelPreview
             {
                 AccessControl = new ChannelAccessControl

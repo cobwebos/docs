@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: e050122984c19e46f3782c8364331323b403caad
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893827"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895475"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 分析实时 Azure 云服务
 
@@ -32,6 +32,8 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
 1. 请检查以确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本。 只需要确认 *ServiceConfiguration.\*.cscfg* 文件的 `osFamily` 值至少为“5”即可。
 
 1. [将 Application Insights SDK 添加到 Azure 云服务](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json)。
+
+   >**是探查器在 WAD 的最新版本中随附的云服务中的 bug。** 若要使用探查器与云服务，它仅支持最高版本 2.7.2 AI SDK。 如果使用 AI SDK 的较新版本，您必须返回 2.7.2，它才能使用探查器。 如果使用 Visual Studio App Insights SDK 的版本降级，可能会在运行时获取绑定重定向错误。 这是因为 Microsoft.ApplicationInsights 的 web.config 文件中的"newVersion"应设置为"2.7.2.0"后降级 AI SDK，但它不会自动更新。
 
 1. 使用 Application Insights 跟踪请求：
 

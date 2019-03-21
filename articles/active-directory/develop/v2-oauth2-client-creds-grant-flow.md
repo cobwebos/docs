@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76b752df4557ac5b0b493f1fb40d1712d37c8e22
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d25963d44960ec3ab15fdee2c264c3bf18e26c2a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207664"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540562"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流
 
@@ -108,11 +108,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 必选 | 要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
-| `client_id` | 必选 | 分配给应用的应用程序（客户端）ID。 可以在注册应用的门户中找到此信息。 |
-| `redirect_uri` | 必选 | 要向其发送响应以供应用处理的重定向 URI。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
+| `tenant` | 需要 | 要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
+| `client_id` | 需要 | 分配给应用的应用程序（客户端）ID。 可以在注册应用的门户中找到此信息。 |
+| `redirect_uri` | 需要 | 要向其发送响应以供应用处理的重定向 URI。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
 | `state` | 建议 | 同时随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
 
 此时，Azure AD 强制要求只有租户管理员可以登录来完成请求。 系统将要求管理员批准在应用注册门户中针对应用请求的所有直接应用程序权限。
@@ -125,10 +125,10 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
 | `tenant` | 向应用程序授予所请求权限的目录租户（采用 GUID 格式）。 |
-| `state` | 同样随令牌响应返回的请求中所包含的值。 它可以是用户想要的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
+| `state` | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该状态用于对发出身份验证请求出现之前，有关用户在应用中的状态的信息（例如前面所在的页面或视图）编码。 |
 | `admin_consent` | 设置为 **True**。 |
 
 ##### <a name="error-response"></a>错误响应
@@ -139,7 +139,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
 | `error` | 可用于分类错误类型，并响应错误的错误代码字符串。 |
 | `error_description` | 可帮助用户识别错误根本原因的特定错误消息。 |
@@ -167,13 +167,13 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 必选 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必选 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
-| `scope` | 必选 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 </br>此值告知 v2.0 终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_secret` | 必选 | 在应用注册门户中为应用生成的应用程序机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
-| `grant_type` | 必选 | 必须设置为 `client_credentials`。 |
+| `tenant` | 需要 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
+| `client_id` | 需要 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
+| `scope` | 需要 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 </br>此值告知 v2.0 终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `client_secret` | 需要 | 在应用注册门户中为应用生成的应用程序机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
+| `grant_type` | 需要 | 必须设置为 `client_credentials`。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
@@ -189,14 +189,14 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| 参数 | 条件 | 说明 |
+| 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 必选 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必选 |分配给应用的应用程序（客户端）ID。 |
-| `scope` | 必选 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 <br>此值通知 v2.0 终结点为应用配置的所有直接应用程序权限，终结点应该为与要使用的资源关联的对象颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_assertion_type` | 必选 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 必选 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
-| `grant_type` | 必选 | 必须设置为 `client_credentials`。 |
+| `tenant` | 需要 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
+| `client_id` | 需要 |分配给应用的应用程序（客户端）ID。 |
+| `scope` | 需要 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 <br>此值通知 v2.0 终结点为应用配置的所有直接应用程序权限，终结点应该为与要使用的资源关联的对象颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `client_assertion_type` | 需要 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
+| `client_assertion` | 需要 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
+| `grant_type` | 需要 | 必须设置为 `client_credentials`。 |
 
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 
@@ -212,7 +212,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
 | `access_token` | 请求的访问令牌。 应用可以使用此令牌验证受保护的资源，例如验证 Web API。 |
 | `token_type` | 指示令牌类型值。 Azure AD 支持的唯一类型是 `bearer`。 |
@@ -235,7 +235,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 }
 ```
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
 | `error` | 可用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | `error_description` | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -264,9 +264,9 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dC
 
 ## <a name="code-samples-and-other-documentation"></a>代码示例和其他文档
 
-阅读 Microsoft 身份验证库中的[客户端凭据概述文档](http://aka.ms/msal-net-client-credentials)
+阅读 Microsoft 身份验证库中的[客户端凭据概述文档](https://aka.ms/msal-net-client-credentials)
 
-| 示例 | 平台 |说明 |
+| 示例 | 平台 |描述 |
 |--------|----------|------------|
 |[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2.1 控制台 | 一个简单的 .NET Core 应用程序，该应用程序显示某个租户的用户在使用应用程序的标识查询 Microsoft Graph，而不是代表用户来查询。 该示例还演示了使用证书进行身份验证的变体。 |
 |[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | 一个 Web 应用程序，该应用程序使用应用程序的标识来同步 Microsoft Graph 的数据，而不是代表用户来同步。 |

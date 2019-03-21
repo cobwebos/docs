@@ -3,7 +3,7 @@ title: Web 服务参数 - Azure 机器学习工作室 | Microsoft Docs
 description: 在 Web 服务受访问时，如何使用 Azure 机器学习 Web 服务参数修改模型行为。
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
 editor: cgronlun
@@ -13,14 +13,14 @@ ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 5b216242b5c1c093c5f508adce04ef7b4bec4d1e
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: a236043d5622e5a2e1ffd572c887fb5ffac2174a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453182"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837994"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>使用 Azure 机器学习工作室 Web 服务参数
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数*允许执行此任务。 
@@ -75,7 +75,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 访问 Web 服务时，Web 服务的用户现在可为[导出数据][writer]模块指定新目标。
 
 ## <a name="more-information"></a>详细信息
-有关更详细的示例，请参阅 [机器学习博客](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 中的 [Web 服务参数](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 条目。
+有关更详细的示例，请参阅 [机器学习博客](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 中的 [Web 服务参数](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 条目。
 
 有关访问机器学习 Web 服务的详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
 

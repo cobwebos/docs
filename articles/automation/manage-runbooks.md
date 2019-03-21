@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da3b09998d163ffcc16bfcbbf9f516467dd3311d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 5bb52e0547ed9bc18d67370ffb9db35942212aab
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418379"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887584"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
-可以通过以下方法将 Runbook 添加到 Azure 自动化：[创建新的 Runbook](#creating-a-new-runbook)；从文件或 [Runbook 库](automation-runbook-gallery.md)导入现有 Runbook。 本文介绍如何通过文件创建和导入 Runbook。  可以在 [Azure 自动化的 Runbook 和模块库](automation-runbook-gallery.md)中获取有关如何访问社区 Runbook 和模块的所有详细信息。
+可以通过以下方法将 Runbook 添加到 Azure 自动化：[创建新的 Runbook](#create-a-runbook)；从文件或 [Runbook 库](automation-runbook-gallery.md)导入现有 Runbook。 本文介绍如何通过文件创建和导入 Runbook。  可以在 [Azure 自动化的 Runbook 和模块库](automation-runbook-gallery.md)中获取有关如何访问社区 Runbook 和模块的所有详细信息。
 
 ## <a name="create-a-runbook"></a>创建 runbook
 
@@ -65,7 +65,7 @@ New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
 5. 如果“名称”字段已启用，则可以选择更改它。  Runbook 名称必须以字母开头，可以使用字母、数字、下划线和短划线。
 6. 将自动选择 [Runbook 类型](automation-runbook-types.md)，但可以在考虑适用的限制后更改该类型。 
 7. 新的 runbook 会出现在自动化帐户的 runbook 列表中。
-8. 必须先[发布 Runbook](#publishing-a-runbook)，才能运行它。
+8. 必须先[发布 Runbook](#publish-a-runbook)，才能运行它。
 
 > [!NOTE]
 > 在导入图形 Runbook 或图形 PowerShell 工作流 Runbook 后，可以选择转换为其他类型（如果需要）。 无法转换为文本 runbook。
@@ -89,7 +89,7 @@ Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>测试 Runbook
 
-测试 Runbook 时，将执行[草稿版](#publishing-a-runbook)，并会完成其所执行的任何操作。 不会创建作业历史记录，但会在“测试输出”窗格中显示[“输出”](automation-runbook-output-and-messages.md#output-stream)与[“警告和错误”](automation-runbook-output-and-messages.md#message-streams)。 仅当 [$VerbosePreference 变量](automation-runbook-output-and-messages.md#preference-variables)设置为 Continue 时，才会在“输出”窗格中显示发送到[详细流](automation-runbook-output-and-messages.md#message-streams)的消息。
+测试 Runbook 时，将执行[草稿版](#publish-a-runbook)，并会完成其所执行的任何操作。 不会创建作业历史记录，但会在“测试输出”窗格中显示[“输出”](automation-runbook-output-and-messages.md#output-stream)与[“警告和错误”](automation-runbook-output-and-messages.md#message-streams)。 仅当 [$VerbosePreference 变量](automation-runbook-output-and-messages.md#preference-variables)设置为 Continue 时，才会在“输出”窗格中显示发送到[详细流](automation-runbook-output-and-messages.md#message-streams)的消息。
 
 即使草稿版正在运行，该 Runbook 也仍会正常执行，并针对环境中的资源执行任何操作。 因此，只能在非生产资源中测试 Runbook。
 
@@ -130,4 +130,4 @@ Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
 
 * 要了解可以如何从 Runbook 和 PowerShell 模块库中受益，请参阅 [Azure 自动化的 Runbook 和模块库](automation-runbook-gallery.md)
 * 若要了解有关使用文本编辑器编辑 PowerShell 和 PowerShell 工作流 Runbook 的详细信息，请参阅 [编辑 Azure 自动化中的文本 Runbook](automation-edit-textual-runbook.md)
-* 若要详细了解图形 Runbook 创作，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
+* 若要详细了解图形 Runbook 创作，请参阅 [Graphical authoring in Azure Automation](automation-graphical-authoring-intro.md)

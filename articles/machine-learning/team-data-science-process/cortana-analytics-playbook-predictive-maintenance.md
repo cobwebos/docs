@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 0785d0805027dd0bd621203ade7287e5a1840a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816639"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870140"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -401,15 +401,15 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 如前所述，PdM 的模型操作化不同于其对等模块。 涉及到异常检测和故障检测的方案通常实施在线评分（也称为实时评分）。 此处，模型将对每条传入的记录评分，并返回预测结果。 对于异常检测，预测指示发生了异常（示例：单类 SVM）。 对于故障检测，预测会指示故障的类型或类。
 
-相比之下，PdM 涉及到批量评分。 为了符合模型签名，必须像训练数据一样设计新数据中的特征。 对于新数据经常采用的大型数据集，特征将会基于不同的时间窗口聚合，并分批进行评分。 批量评分通常在 [Spark](http://spark.apache.org/) 或 [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics) 等分布式系统中进行。 可用采用两种替代方案 - 但两者都欠佳：
+相比之下，PdM 涉及到批量评分。 为了符合模型签名，必须像训练数据一样设计新数据中的特征。 对于新数据经常采用的大型数据集，特征将会基于不同的时间窗口聚合，并分批进行评分。 批量评分通常在 [Spark](https://spark.apache.org/) 或 [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics) 等分布式系统中进行。 可用采用两种替代方案 - 但两者都欠佳：
 - 流数据引擎支持基于内存中窗口的聚合。 因此，对于它们是否支持在线评分有所争议。 但是，这些系统适用于较窄时间窗口中的密集数据，或较宽窗口中的稀疏元素。 如 PdM 方案中所示，对于较宽时间窗口中的密集数据，它们可能无法正常缩放。
 - 如果批量评分不可用，解决方法是调整在线评分，以便每次以较小的批次处理新数据。
 
 ## <a name="solution-templates-for-predictive-maintenance"></a>预测性维护的解决方案模板
 
-本指南的最后一部分提供可在 Azure 中实现的 PdM 解决方案模板、教程和试验的列表。 在某些情况下，只需片刻时间即可将这些 PdM 应用程序部署到 Azure 订阅。 可将它们用作概念证明演示、用于试验替代方案的沙盒，或者用于实际生产实施项目的加速器。 这些模板在 [Azure AI 库](http://gallery.azure.ai)或 [Azure GitHub](https://github.com/Azure) 中提供。 这些不同的示例会逐渐部署到此解决方案模板。
+本指南的最后一部分提供可在 Azure 中实现的 PdM 解决方案模板、教程和试验的列表。 在某些情况下，只需片刻时间即可将这些 PdM 应用程序部署到 Azure 订阅。 可将它们用作概念证明演示、用于试验替代方案的沙盒，或者用于实际生产实施项目的加速器。 这些模板在 [Azure AI 库](https://gallery.azure.ai)或 [Azure GitHub](https://github.com/Azure) 中提供。 这些不同的示例会逐渐部署到此解决方案模板。
 
-| # | 标题 | 说明 |
+| # | 标题 | 描述 |
 |--:|:------|-------------|
 | 2 | [Azure 预测性维护解决方案模板](https://github.com/Azure/AI-PredictiveMaintenance) | 开放源代码解决方案模板，用于演示机器学习建模和完整的 Azure 基础结构，该结构可支持 IoT 远程监视环境中的预测性维护方案。 |
 | 3 | [预测性维护的深度学习](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 包含一个演示解决方案的 Azure Notebook。该解决方案使用 LSTM （长短期记忆）网络（某类递归神经网络）进行预测性维护。请参阅[有关此示例的博客文章](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)。|
@@ -431,9 +431,9 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 | [Azure 上的 AI 开发人员](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | 公共 |
 | [Microsoft AI 学校](https://aischool.microsoft.com/learning-paths) | 公共 |
 | [GitHub 中的 Azure AI 学习资源](https://github.com/Azure/connectthedots/blob/master/readme.md) | 公共 |
-| [LinkedIn Learning](http://www.linkedin.com/learning) | 公共 |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | 公共 |
 | [Microsoft AI YouTube 网络研讨会](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | 公共 |
-| [Microsoft AI 展示](http://channel9.msdn.com/Shows/AI-Show) | 公共 |
+| [Microsoft AI 展示](https://channel9.msdn.com/Shows/AI-Show) | 公共 |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | 合作伙伴 |
 | [Microsoft 合作伙伴网络](https://learningportal.microsoft.com) | 合作伙伴 |
 

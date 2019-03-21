@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1022ce74fd5514b274f498a4d4f764393e6428
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a7cd986544dfb1472f5cc8a013fec951dca42a59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185768"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898646"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workteam"></a>教程：Azure Active Directory 与 Workteam 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56185768"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Workteam 的集成，需要准备好以下各项：
 
@@ -200,7 +200,7 @@ ms.locfileid: "56185768"
 
     a. 在“姓名”文本框中，输入用户的名字，例如 **Brittasimon**。
 
-    b. 在“电子邮件”文本框中，输入用户的电子邮件，例如 **Brittasimon@contoso.com**。
+    b. 在中**电子邮件**文字框中，输入类似的用户的电子邮件**Brittasimon\@contoso.com**。
 
     c. 单击“确定”。
 

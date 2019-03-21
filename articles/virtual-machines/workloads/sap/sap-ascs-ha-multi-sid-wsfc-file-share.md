@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ce4391e8fb2047320c4d84ac18ce0b1f8c8eaad
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: eac9f80e4b57c725de3bc05f55e09d49fb8e2ee5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745012"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004604"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -48,7 +48,7 @@ ms.locfileid: "55745012"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -218,7 +218,7 @@ ms.locfileid: "55745012"
 
 有关负载均衡器限制的详细信息，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”。 还可考虑使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而不是 Azure 负载均衡器的基本 SKU。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示。
 
@@ -347,7 +347,7 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![图 5：多 SID SOFS 使用相同的 SAP 全局主机名 2][sap-ha-guide-figure-8016]
+![图 5：第二个 Volume2 在故障转移群集管理器][sap-ha-guide-figure-8016]
 
 _**图 5：** 故障转移群集管理器中的第二个 Volume2_
 
@@ -403,26 +403,31 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 _**图 6：** 启动“添加文件共享”向导_
 
 <br>
-图 7：![选择“SMB 共享 - 快速”][sap-ha-guide-figure-8018]
+
+![图 7："选择 SMB 共享 – 快速"][sap-ha-guide-figure-8018]
 
 _**图 7：** 选择“SMB 共享 - 快速”_
 
 <br>
-图 8：![选择“sapglobalhost2”，并指定 Volume2 上的路径][sap-ha-guide-figure-8019]
+
+![图 8：选择"sapglobalhost2"，并指定 Volume2 上的路径][sap-ha-guide-figure-8019]
 
 _**图 8：** 选择“sapglobalhost2”，并指定 Volume2 上的路径_
 
 <br>
-图 9：![将文件共享名设置为“sapmnt”][sap-ha-guide-figure-8020]
+
+![图 9：文件共享名设置为"sapmnt"][sap-ha-guide-figure-8020]
 
 _**图 9：** 将文件共享名设置为“sapmnt”_
 
 <br>
-图 10：![禁用所有设置][sap-ha-guide-figure-8021]
+
+![图 10：禁用所有设置][sap-ha-guide-figure-8021]
 
 _**图 10：** 禁用所有设置_
 
 <br>
+
 为以下项分配对文件和 sapmnt 共享的“完全控制”权限：
 * SAP_\<SID>_GlobalAdmin 域用户组
 * ASCS/SCS 群集节点 ascs-1$ 和 ascs-2$ 的计算机对象
@@ -432,16 +437,19 @@ _**图 10：** 禁用所有设置_
 _**图 11：** 为用户组和计算机帐户分配“完全控制”权限_
 
 <br>
-图 12：![选择“创建”][sap-ha-guide-figure-8023]
+
+![图 12：选择“创建”][sap-ha-guide-figure-8023]
 
 _**图 12：** 选择“创建”_
 
 <br>
-![图 13：绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt 已创建][sap-ha-guide-figure-8024]
+
+![图 13：第二个 sapmnt 绑定到 sapglobal2 主机和 Volume2 已创建][sap-ha-guide-figure-8024]
 
 _**图 13：** 绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt 已创建_
 
 <br>
+
 ## <a name="install-sap-netweaver-multi-sid"></a>安装 SAP NetWeaver 多 SID
 
 ### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>安装 SAP \<SID2> ASCS/SCS 和 ERS 实例

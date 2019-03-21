@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 09e8ee05017c47c5b01bc529135004eff19b846f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: ee5ed8871ea5c021ad8c87e35f45e42ad641a324
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118456"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124161"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 
@@ -64,11 +64,11 @@ Azure 安全中心客户现在可以使用 Windows Defender ATP 的功能：
 1. 在“加入”边栏选项卡中选择或创建用于存储数据的工作区。 <br>
 2. 如果看不到所有工作区，可能是由于缺少权限，请确保已将工作区设置到“Azure 安全标准”层。 有关详细信息，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
     
-3.  选择“添加服务器”以查看有关如何安装 Microsoft Monitoring Agent 的说明。 
+3. 选择“添加服务器”以查看有关如何安装 Microsoft Monitoring Agent 的说明。 
 
-4.  加入后，可以在“计算和应用”下监视计算机。
+4. 加入后，可以在“计算和应用”下监视计算机。
 
-  ![加入计算机](media/security-center-wdatp/onboard-computers.png)
+   ![加入计算机](media/security-center-wdatp/onboard-computers.png)
 
 
 ## <a name="enable-windows-defender-atp-integration"></a>启用 Windows Defender ATP 集成

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: cb1d08bb7b4c64d8dbcf39a667cb037ff30c38e7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467887"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287258"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -29,7 +29,7 @@ ms.locfileid: "54467887"
 
 将自定义指标发送到 Azure Monitor 时，报告的每个数据点或值必须包括以下信息。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 若要将自定义指标提交到 Azure Monitor，提交指标的实体需在请求的 **Bearer** 标头中提供有效的 Azure Active Directory (Azure AD) 令牌。 可通过几种支持的方法获取有效的持有者令牌：
 1. [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 为 Azure 资源本身（例如 VM）提供一个标识。 托管服务标识 (MSI) 旨在授予资源权限来执行特定的操作。 例如，允许资源发出有关其自身的指标。 可为某个资源或其 MSI 授予针对另一个资源的“监视指标发布者”权限。 获取此权限后，该 MSI 也能发出其他资源的指标。
 2. [Azure AD 服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 在此方案中，可向某个 Azure AD 应用程序或服务分配发出有关 Azure 资源的指标的权限。
@@ -55,7 +55,7 @@ ms.locfileid: "54467887"
 >
 
 ### <a name="timestamp"></a>Timestamp
-发送到 Azure Monitor 的每个数据点必须带有时间戳标记。 此时间戳捕获测量或收集指标值的日期时间。 Azure Monitor 接受带有过去最多 20 分钟和将来最多 5 分钟时间戳的指标数据。
+发送到 Azure Monitor 的每个数据点必须带有时间戳标记。 此时间戳捕获测量或收集指标值的日期时间。 Azure Monitor 接受带有过去最多 20 分钟和将来最多 5 分钟时间戳的指标数据。 时间戳必须采用 ISO 8601 格式。
 
 ### <a name="namespace"></a>命名空间
 命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，可以使用名为 **ContosoMemoryMetrics** 的命名空间来跟踪用于分析应用的内存用量指标， 并使用名为 **ContosoAppTransaction** 的另一个命名空间来跟踪有关应用程序中用户事务的所有指标。
@@ -65,7 +65,7 @@ ms.locfileid: "54467887"
 
 ### <a name="dimension-keys"></a>维度键
 维度是一个键/值对，帮助描述有关收集的指标的附加特征。 使用附加特征可以收集用于提供更深入见解的指标的详细信息。 例如，“已使用内存字节数”指标可以包含名为“进程”的维度键，用于捕获 VM 上的每个进程消耗的内存字节数。 使用此键可以筛选指标，以查看特定的进程使用了多少内存，或者识别内存用量最高的 5 个进程。
-每个自定义指标最多可以包含 10 个维度。
+维度是可选的并非所有指标可能都具有维度。 自定义指标可以有最多 10 个维度。
 
 ### <a name="dimension-values"></a>维度值
 报告指标数据点时，所报告的指标的每个维度键都有一个对应的维度值。 例如，可以报告 VM 上 ContosoApp 使用的内存：
@@ -75,6 +75,7 @@ ms.locfileid: "54467887"
 * 维度值是“ContosoApp.exe”。
 
 发布指标值时，只能为每个维度键指定一个维度值。 如果收集 VM 上多个进程的相同“内存使用率”指标，则可以报告该时间戳的多个指标值。 每个指标值将为“进程”维度键指定不同的维度值。
+维度是可选的并非所有指标可能都具有维度。 如果指标 post 定义了维度键，相应的维度值是必需的。
 
 ### <a name="metric-values"></a>指标值
 Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在给定的分钟内，某个指标可能需要多次采样， 例如 CPU 利用率。 或者，可能需要针对多个离散事件进行测量， 例如登录事务延迟。 若要在 Azure Monitor 中限制发出和支付的原始值数目，可在本地预先聚合并发出值：
@@ -101,7 +102,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 * 最小值：12
 * 最大值：12
 * 总和：12
-* 计数：1
+* 计数：第
 
 使用此过程可以发出在给定的分钟内，相同指标与维度的组合的多个值。 然后，Azure Monitor 将会提取在给定分钟内发出的所有原始值，并将其聚合在一起。
 
@@ -169,13 +170,13 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 
 |Azure 区域|区域终结点前缀|
 |---|---|
-|美国东部|https://eastus.monitoring.azure.com/|
-|美国中南部|https://southcentralus.monitoring.azure.com/|
-|美国中西部|https://westcentralus.monitoring.azure.com/|
-|美国西部 2|https://westus2.monitoring.azure.com/|
-|东南亚|https://southeastasia.monitoring.azure.com/|
-|北欧|https://northeurope.monitoring.azure.com/|
-|西欧|https://westeurope.monitoring.azure.com/|
+|美国东部| https:\//eastus.monitoring.azure.com/ |
+|美国中南部| https:\//southcentralus.monitoring.azure.com/ |
+|美国中西部| https:\//westcentralus.monitoring.azure.com/ |
+|美国西部 2| https:\//westus2.monitoring.azure.com/ |
+|东南亚| https:\//southeastasia.monitoring.azure.com/ |
+|北欧| https:\//northeurope.monitoring.azure.com/ |
+|西欧| https:\//westeurope.monitoring.azure.com/ |
 
 ## <a name="quotas-and-limits"></a>配额和限制
 Azure Monitor 针对自定义指标实施以下用量限制：
@@ -185,6 +186,7 @@ Azure Monitor 针对自定义指标实施以下用量限制：
 |活动的时序/订阅/区域|50,000|
 |每个指标的维度键数|10|
 |指标命名空间、指标名称、维度键和维度值的字符串长度|256 个字符|
+
 活动的时序定义为包含过去 12 小时内发布的指标值的指标、维度键或维度值的任意唯一组合。
 
 ## <a name="next-steps"></a>后续步骤
