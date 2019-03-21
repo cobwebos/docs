@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: raynew
-ms.openlocfilehash: dd66710a24ca28b78c6b3e0a8197a078f17524db
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 66ed5765a91b607bc5b765926c5df87d13ff6a24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868134"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109842"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>运行 Azure 备份服务器的无人参与安装
 
@@ -27,32 +27,32 @@ ms.locfileid: "52868134"
 
 2. 将以下代码粘贴在 MABSSetup.ini 文件中。 将括号 (\< \>) 内的文本替换为来自你环境的值。 以下文本是一个示例：
 
-  ```
-  [OPTIONS]
-  UserName=administrator
-  CompanyName=<Microsoft Corporation>
-  SQLMachineName=localhost
-  SQLInstanceName=<SQL instance name>
-  SQLMachineUserName=administrator
-  SQLMachinePassword=<admin password>
-  SQLMachineDomainName=<machine domain>
-  ReportingMachineName=localhost
-  ReportingInstanceName=<reporting instance name>
-  SqlAccountPassword=<admin password>
-  ReportingMachineUserName=<username>
-  ReportingMachinePassword=<reporting admin password>
-  ReportingMachineDomainName=<domain>
-  VaultCredentialFilePath=<vault credential full path and complete name>
-  SecurityPassphrase=<passphrase>
-  PassphraseSaveLocation=<passphrase save location>
-  UseExistingSQL=<1/0 use or do not use existing SQL>
-  ```
+   ```
+   [OPTIONS]
+   UserName=administrator
+   CompanyName=<Microsoft Corporation>
+   SQLMachineName=localhost
+   SQLInstanceName=<SQL instance name>
+   SQLMachineUserName=administrator
+   SQLMachinePassword=<admin password>
+   SQLMachineDomainName=<machine domain>
+   ReportingMachineName=localhost
+   ReportingInstanceName=<reporting instance name>
+   SqlAccountPassword=<admin password>
+   ReportingMachineUserName=<username>
+   ReportingMachinePassword=<reporting admin password>
+   ReportingMachineDomainName=<domain>
+   VaultCredentialFilePath=<vault credential full path and complete name>
+   SecurityPassphrase=<passphrase>
+   PassphraseSaveLocation=<passphrase save location>
+   UseExistingSQL=<1/0 use or do not use existing SQL>
+   ```
 
 3. 保存文件。 然后在安装服务器上的提升的命令提示符处，输入以下命令：
 
-  ```
-  start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
-  ```
+   ```
+   start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
+   ```
 
 可以将以下这些标志用于安装：</br>
 /f：.ini 文件路径</br>

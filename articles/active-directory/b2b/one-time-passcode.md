@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9493f7ee3278bb42dc21574cd008fbe2f4376a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8f5234674bc41e1f5bfa260dfc32042a3345d9f7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185139"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294819"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>电子邮件一次性密码身份验证（预览）
 
@@ -35,11 +36,11 @@ ms.locfileid: "56185139"
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>一次性密码来宾用户的用户体验
 借助一次性密码身份验证，来宾用户可以通过单击直接链接或使用邀请电子邮件来兑换邀请。 在任一情况下，浏览器中的消息都指示代码将发送到来宾用户的电子邮件地址。 来宾用户选择“发送代码”：
  
-   ![访问面板 - 管理应用](media/one-time-passcode/otp-send-code.png)
+   ![显示发送代码按钮的屏幕截图](media/one-time-passcode/otp-send-code.png)
  
 密码将发送到用户的电子邮件地址。 用户从电子邮件检索密码，并在浏览器窗口中输入该密码：
  
-   ![访问面板 - 管理应用](media/one-time-passcode/otp-enter-code.png)
+   ![显示输入的代码页的屏幕截图](media/one-time-passcode/otp-enter-code.png)
  
 来宾用户现在已通过身份验证，他们可以查看共享资源或继续登录。 
 
@@ -57,7 +58,7 @@ ms.locfileid: "56185139"
 
 通过转到“Azure Active Directory” > “组织关系” > “来自其他组织的用户”，在 Azure 门户中查看通过一次性密码进行身份验证的来宾用户。
 
-![在 Azure 门户中查看“来源”为“OTP”的一次性密码用户](media/one-time-passcode/otp-users.png)
+![显示具有源的 OTP 值的一次性密码用户的屏幕截图](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
 > 在用户兑换一次性密码并稍后获得 MSA、Azure AD 帐户或其他联合帐户的情况下，他们将继续使用一次性密码进行身份验证。 如果要更新用户的身份验证方法，可以删除其来宾用户帐户并重新邀请用户。

@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/20/2019
 ms.author: mayg
-ms.openlocfilehash: 6065d83cf74b6bb7c3d80d4e452df8377dc9823e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732647"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286493"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署规划器报告
 本文介绍 Azure Site Recovery 部署规划器针对 Hyper-V 到 Azure 方案生成的 Excel 报表中包含的工作表。
@@ -275,7 +275,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 ---|---|---|---
 标准存储 | 8 KB | 每个 VM 2 MB/秒 | 每个 VM 168 GB
 高级存储 | 8 KB  | 每个 VM 5 MB/秒 | 每个 VM 421 GB
-高级存储 | 16 KB 或更高| 每个 VM 10 MB/秒 | 每个 VM 842 GB
+高级存储 | 16 KB 或更高| 每个 VM 的 20 MB/秒 | 每个 VM 1684 GB
 
 这些限制是在假设存在 30% 的 I/O 重叠的情况下给出的平均数。 Site Recovery 能够根据重叠率、较大的写入大小和实际工作负荷 I/O 行为处理更高的吞吐量。 上述数字假定通常情况下存在大约 5 分钟的积压工作。 也就是说，数据在上传后会在 5 分钟内进行处理并创建恢复点。
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: celested
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b82f32477efb2e45eb95651dd21ccd2ae3095e7c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5c7744ba4ca37a2a496c75a50f274be9bf431cc5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431303"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286578"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 
@@ -37,7 +37,7 @@ ms.locfileid: "57431303"
 1. 用户输入用于通过应用程序代理访问本地应用程序的 URL。
 2. 应用程序代理将请求重定向到 Azure AD 身份验证服务，以进行预身份验证。 此时，Azure AD 将应用所有适用的身份验证和授权策略，例如多重身份验证。 如果用户通过验证，Azure AD 将创建令牌并将其发送给用户。
 3. 用户将令牌传递给应用程序代理。
-4. 应用程序代理验证令牌并从中检索用户主体名称 (UPN)，通过双重身份验证安全通道，将请求、UPN 和服务主体名称 (SPN) 发送到连接器。
+4. 应用程序代理验证令牌，从中检索用户主体名称 (UPN)，然后连接器将拉取 UPN 和服务通过双重身份验证安全通道主体名称 (SPN)。
 5. 连接器执行与本地 AD，模拟用户获取 Kerberos 令牌对应用程序的 Kerberos 约束委派 (KCD) 协商。
 6. Active Directory 将应用程序的 Kerberos 令牌发送到连接器。
 7. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。

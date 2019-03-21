@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5588d2bd6cf2098d8744479c2bf2d308c9bf8f0d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: b275f23209979e1a8068ecd99465f7b52392bc6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460431"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082902"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>SQL 数据仓库的建议
 
@@ -63,4 +63,3 @@ SQL 数据仓库提供建议，确保以一致的方式优化数据仓库的性�
 
 > [!IMPORTANT]
 > 复制表建议不是完整的证据，且未考虑帐户数据移动操作。 我们正在努力将此添加为一种试探方法，但在此期间，请始终在应用建议后验证工作负荷。 如果你发现复制表建议导致工作负荷退化，请联系 sqldwadvisor@service.microsoft.com。 若要详细了解复制表，请访问以下[文档](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table)。
->

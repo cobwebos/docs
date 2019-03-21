@@ -1,6 +1,6 @@
 ---
-title: Azure AD 密码保护预览版中的故障排除
-description: 了解 Azure AD 密码保护预览版的常见故障排除方法
+title: Azure AD 密码保护中的故障排除
+description: 了解 Azure AD 密码保护故障排除的常见问题
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 760ad30daabee61300768b7c67824f39437ac87f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ac97d7bda56a871e0b8f6de6d5d7262f3f44667
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006948"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285694"
 ---
-# <a name="preview-azure-ad-password-protection-troubleshooting"></a>预览版：Azure AD 密码保护故障排除
-
-|     |
-| --- |
-| Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+# <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD 密码保护故障排除
 
 部署 Azure AD 密码保护后，可能需要进行故障排除。 本文详细介绍如何帮助你了解一些常见的故障排除步骤。
 
@@ -101,7 +96,7 @@ Azure AD 密码保护有一个关键依赖项上提供的 Microsoft 密钥分发
 
 ## <a name="removal"></a>删除
 
-如果决定卸载公共预览版软件并从域和林中清理所有相关状态，可使用以下步骤完成此任务：
+如果决定卸载 Azure AD 密码保护软件和清理的域和林从所有相关的状态，可以使用以下步骤完成此任务：
 
 > [!IMPORTANT]
 > 必须按顺序执行这些步骤。 如果代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象。 如果 DC 代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象和 sysvol 状态。
@@ -120,7 +115,7 @@ Azure AD 密码保护有一个关键依赖项上提供的 Microsoft 密钥分发
 
    然后，可通过管道将 `Get-ADObject` 命令找到的结果对象传送到 `Remove-ADObject`，或手动将其删除。
 
-4. 在每个域命名上下文中手动删除所有 DC 代理连接点。 根据公共预览版软件的部署范围，林中的每个域控制器可能存在其中的一个对象。 可使用以下 Active Directory PowerShell 命令发现该对象的位置：
+4. 在每个域命名上下文中手动删除所有 DC 代理连接点。 可能有每个域控制器的林，具体取决于部署软件的目标范围中这些对象。 可使用以下 Active Directory PowerShell 命令发现该对象的位置：
 
    ```PowerShell
    $scp = "serviceConnectionPoint"

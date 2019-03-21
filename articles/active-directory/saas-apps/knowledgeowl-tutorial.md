@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f53742de3242fb3b60a15d436ec6cd842aa429
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c8c86ad6e4b11f21c648083fac35e15eec7658c1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183978"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>教程：Azure Active Directory 与 KnowledgeOwl 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56183978"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 KnowledgeOwl 的集成，需要具有以下各项：
 
@@ -110,6 +110,7 @@ ms.locfileid: "56183978"
     ![KnowledgeOwl 域和 URL 单一登录信息](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
     a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+
     |||
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
@@ -117,6 +118,7 @@ ms.locfileid: "56183978"
     |||
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：
+
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -132,6 +134,7 @@ ms.locfileid: "56183978"
     ![KnowledgeOwl 域和 URL 单一登录信息](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url1.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：
+    
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -185,29 +188,29 @@ ms.locfileid: "56183978"
 
 1. 单击“设置”，然后选择“安全性”。
 
-    ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure1.png)
+     ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure1.png)
 
 1. 滚动至“SAML SSO 集成”并执行以下步骤：
     
-    ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure2.png)
+     ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure2.png)
 
-    a. 选择“启用 SAML SSO”。
+     a. 选择“启用 SAML SSO”。
 
-    b. 复制“SP 实体 ID”值并将其粘贴到 Azure 门户上“KnowledgeOwl 域和 URL”部分的“标识符(实体 ID)”中。
+     b. 复制“SP 实体 ID”值并将其粘贴到 Azure 门户上“KnowledgeOwl 域和 URL”部分的“标识符(实体 ID)”中。
 
-    c. 复制“SP 登录 URL”值并将其粘贴到 Azure 门户上“KnowledgeOwl 域和 URL”部分的“登录 URL 和答复 URL”文本框中。
+     c. 复制“SP 登录 URL”值并将其粘贴到 Azure 门户上“KnowledgeOwl 域和 URL”部分的“登录 URL 和答复 URL”文本框中。
 
-    d. 在“IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+     d. 在“IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
-    e. 在“IdP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+     e. 在“IdP 登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
-    f. 在“IdP 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值
+     f. 在“IdP 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值
 
-    g. 单击“上传 IdP 证书”，上传从 Azure 门户下载的证书。
+     g. 单击“上传 IdP 证书”，上传从 Azure 门户下载的证书。
 
-    h. 单击“映射 SAML 属性”以映射属性并执行以下操作：
+     h. 单击“映射 SAML 属性”以映射属性并执行以下操作：
     
-    ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure3.png)
+     ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure3.png)
 
     * 在“SSO ID”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid`
     * 在“用户名/电子邮件”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
@@ -215,9 +218,9 @@ ms.locfileid: "56183978"
     * 在“姓氏”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
     * 单击“保存”
 
-    i. 单击页面底部的“保存”。
+      i. 单击页面底部的“保存”。
 
-    ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure4.png)
+      ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

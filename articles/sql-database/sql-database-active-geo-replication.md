@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 21b036763a1e8a7480d11fef4c36599f92fc3657
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb83f0c38f6860340444c15b6c5eef0b990d0ad0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853182"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295243"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建和使用活动异地复制
 
@@ -115,6 +115,12 @@ ms.locfileid: "57853182"
 
 > [!NOTE]
 > 如果辅助数据库是作为故障转移组配置的一个部分创建的，则不建议对辅助数据库进行降级。 这是为了确保激活故障转移后，数据层有足够的容量来处理常规工作负荷。
+
+> [!IMPORTANT]
+> 故障转移组中的主数据库不能缩放到更高的层，除非辅助数据库第一次扩展到更高的层。 如果你尝试缩放主数据库，辅助数据库进行缩放之前，可能会收到以下错误：
+>
+> `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
+>
 
 ## <a name="preventing-the-loss-of-critical-data"></a>防止丢失关键数据
 

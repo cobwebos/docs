@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 86404f4eb2eb2de4243c6bb725f4292e7b560d18
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271018"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569886"
 ---
 # <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Azure 数据工厂映射数据流“透视”转换
 
@@ -42,7 +42,7 @@ ms.locfileid: "56271018"
 
 （可选）你可以设置一个命名模式，在其中包含要在行值中的每个新列名称中添加的前缀、中间名和后缀。
 
-例如，按“区域”透视“销售”将会得到每个销售值的新列值，例如“25”、“50”、“1000”，等等。但是，如果将前缀值设置为“销售” 
+例如，按“区域”透视“销售”将会得到每个销售值的新列值，例如“25”、“50”、“1000”，等等。但是，如果将前缀值"Sales-"，每个列的值将添加"销售-"值的开头。
 
 ![透视选项](media/data-flow/pivot5.png "透视 5")
 
@@ -56,4 +56,8 @@ ms.locfileid: "56271018"
 
 ### <a name="how-to-rejoin-original-fields"></a>如何重新联接原始字段
 > [!NOTE]
-> “透视”转换将仅对聚合、分组和透视操作中使用的列进行投影。 如果希望在流中的上一步骤中包括其他列，请在上一步骤中使用一个新分支并使用自联接模式将流与原始元数据相连接
+> “透视”转换将仅对聚合、分组和透视操作中使用的列进行投影。 如果你想要在流中包括的其他列从上一步，使用上一步的一个新分支，并使用自联接模式连接的原始元数据的流。
+
+## <a name="next-steps"></a>后续步骤
+
+请尝试[逆透视转换](data-flow-unpivot.md)以将列的值转换为行值。 

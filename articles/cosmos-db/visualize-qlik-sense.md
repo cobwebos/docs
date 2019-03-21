@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 4b37b6cd35526d6a76625dd03d1325f1688e698e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044461"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258763"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据
 
@@ -34,7 +34,7 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 本文介绍了使用 ODBC 连接器连接到 Cosmos DB SQL API 的详细信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在按照本文中的说明操作之前，请确保以下资源准备就绪：
 
@@ -42,9 +42,9 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 * 下载[电子游戏机数据](https://www.kaggle.com/gregorut/videogamesales)，此示例数据采用 CSV 格式。 将此数据存储在 Cosmos DB 帐户中并在 Qlik Sense 可视化该数据。
 
-* 使用快速入门文章的[创建帐户](create-sql-api-dotnet.md#create-a-database-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。
+* 使用快速入门文章的[创建帐户](create-sql-api-dotnet.md#create-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。
 
-* [创建数据库和集合](create-sql-api-dotnet.md#add-a-collection) – 可以将集合吞吐量值设置为 1000 RU/秒。 
+* [创建数据库和集合](create-sql-api-dotnet.md#create-collection-database) – 可以将集合吞吐量值设置为 1000 RU/秒。 
 
 * 将示例电子游戏机销售数据加载到 Cosmos DB 帐户。 可以使用 Azure Cosmos DB 数据迁移工具导入数据，可以执行[按顺序](import-data.md#SQLSeqTarget)或[批量导入](import-data.md#SQLBulkTarget)数据。 大约需要 3 到 5 分钟才能将数据导入到 Cosmos DB 帐户。
 

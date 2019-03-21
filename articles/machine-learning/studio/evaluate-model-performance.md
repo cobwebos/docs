@@ -5,17 +5,17 @@ description: 本文演示了如何在 Azure 机器学习工作室中评估模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e5c85451ca48aab8f980b89de41ebf40f1f97ff3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 37ab56c377bc53a7300b51ffc709ea8d1b9d6f9b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453947"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891580"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>如何在 Azure 机器学习工作室中评估模型性能
 
@@ -83,7 +83,7 @@ Azure 机器学习工作室通过其两个主要机器学习模块支持模型�
 图 4。 回归模型的交叉验证结果。
 
 ## <a name="evaluating-a-binary-classification-model"></a>评估二元分类模型
-在二元分类方案中，目标变量只有两个可能的结果，例如： {0, 1} 或 {false, true}、{negative, positive}。 假设提供一个具有人口统计和雇用变量的成年员工数据集，并要求预测收入水平，此处的收入水平是一个带有值 {“<=50 K”, “>50 K”} 的二进制变量。 换而言之，负类表示年收入小于或等于 50K 的员工，正类表示所有其他员工。 和在回归方案中一样，我们可以训练一个模型、评分一些数据，并评估结果。 此处的主要区别是所选的 Azure 机器学习工作室计算并输出的指标。 为了演示收入级别预测方案，我们将使用[成年人](http://archive.ics.uci.edu/ml/datasets/Adult)数据集创建工作室试验并评估双类逻辑回归模型（一种常用的二元分类器）。
+在二元分类方案中，目标变量只有两个可能的结果，例如： {0, 1} 或 {false, true}、{negative, positive}。 假设提供一个具有人口统计和雇用变量的成年员工数据集，并要求预测收入水平，此处的收入水平是一个带有值 {“<=50 K”, “>50 K”} 的二进制变量。 换而言之，负类表示年收入小于或等于 50K 的员工，正类表示所有其他员工。 和在回归方案中一样，我们可以训练一个模型、评分一些数据，并评估结果。 此处的主要区别是所选的 Azure 机器学习工作室计算并输出的指标。 为了演示收入级别预测方案，我们将使用[成年人](https://archive.ics.uci.edu/ml/datasets/Adult)数据集创建工作室试验并评估双类逻辑回归模型（一种常用的二元分类器）。
 
 ### <a name="creating-the-experiment"></a>创建实验
 在 Azure 机器学习工作室中将以下模块添加到工作区：
@@ -133,7 +133,7 @@ Azure 机器学习工作室通过其两个主要机器学习模块支持模型�
 图 9. 二元分类器的交叉验证结果。
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>评估多类分类模型
-在此实验中，我们将使用流行的[鸢尾花](http://archive.ics.uci.edu/ml/datasets/Iris "Iris")数据集，其中包含 3 中不同类型（类）的鸢尾属植物的实例。 每个实例有 4 个特征值（花萼长度/宽度和花瓣长度/宽度）。 在之前的实例中，我们使用相同的数据集训练并测试了模型。 此处，我们将使用[拆分数据][split]模块创建数据的 2 个子集、对第一个子集训练，然后对第二个子集评分和评估。 鸢尾花数据集在 [UCI 机器学习存储库](http://archive.ics.uci.edu/ml/index.html)中公开提供，并且可使用[导入数据][import-data]模块下载。
+在此实验中，我们将使用流行的[鸢尾花](https://archive.ics.uci.edu/ml/datasets/Iris "Iris")数据集，其中包含 3 中不同类型（类）的鸢尾属植物的实例。 每个实例有 4 个特征值（花萼长度/宽度和花瓣长度/宽度）。 在之前的实例中，我们使用相同的数据集训练并测试了模型。 此处，我们将使用[拆分数据][split]模块创建数据的 2 个子集、对第一个子集训练，然后对第二个子集评分和评估。 鸢尾花数据集在 [UCI 机器学习存储库](https://archive.ics.uci.edu/ml/index.html)中公开提供，并且可使用[导入数据][import-data]模块下载。
 
 ### <a name="creating-the-experiment"></a>创建实验
 在 Azure 机器学习工作室中将以下模块添加到工作区：

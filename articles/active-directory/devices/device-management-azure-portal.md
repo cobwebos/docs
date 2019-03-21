@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 830825c6ad54a6ff300fb7ee223b32ee0571a55a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: bb244cb03ed5419762541e93784bb72fcf252676
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58163528"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258048"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>如何使用 Azure 门户管理设备
 
@@ -83,7 +83,7 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 
 - **用户可跨设备同步设置和应用数据** - 此设置默认为“无”。 选择特定用户或组，或者选择“全部”，允许用户跨其 Windows 10 设备同步设置和应用数据。 深入了解 Windows 10 中同步的工作原理。
 此选项属于高级功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
- 
+
 
 
 
@@ -119,7 +119,7 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 
 ## <a name="device-management-tasks"></a>设备管理任务
 
-作为全局管理员，可以管理已注册或已加入设备。 Intune 服务管理员可执行以下操作：
+作为全局管理员或云设备管理员，你可以管理已注册或已加入设备。 Intune 服务管理员可执行以下操作：
  
 - 更新设备 - 例如启用/禁用设备等日常操作
 
@@ -151,7 +151,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 
 **备注：**
 
-- 需要具有 Azure AD 中的全局管理员身份才能启用/禁用设备。 
+- 你需要是全局管理员或云设备管理员在 Azure AD，以启用 / 禁用设备中。 
 - 禁用设备可阻止设备与 Azure AD，从而阻止设备访问你设备 CA 的受保护的 Azure AD 资源，或使用 WH4B 凭据成功进行身份验证。 
 
 

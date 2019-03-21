@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8d5dca65734640dc9e756f9130e6b362178781f2
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453505"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848912"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>为 P2S 转换到公共 CA 网关证书
 
 建立 P2S 连接时，Azure VPN 网关不再向网关颁发 Azure 级自签名证书。 颁发的证书现在由公共证书颁发机构 (CA) 签名。 但是，部分早期网关可能仍在使用自签名证书。 这些自签名证书即将到达其过期日期，必须转换为公共 CA 证书。
 
 >[!NOTE]
-> 用于 P2S 客户端身份验证的自签名证书不受此 Azure 级证书更改的影响。 可以继续照常颁发和使用自签名证书。
+> * 用于 P2S 客户端身份验证的自签名证书不受此 Azure 级证书更改的影响。 可以继续照常颁发和使用自签名证书。
 >
 
 本上下文中的证书都是额外的 Azure 级证书。 它们不是生成用于身份验证的自己的自签名根证书和客户端证书时所使用的证书链。 这些证书不受影响，并且将在你为进行身份验证而生成这些证书时过期。
@@ -38,7 +38,7 @@ ms.locfileid: "56453505"
 >
 > **所有剩余网关将在 2019 年 3 月 12 日 18:00 (UTC) 开始转换**。
 >
-> 完成网关转换过程将花费多达 2 个小时。 网关完成转换过程时，客户将收到电子邮件。
+> 网关完成转换过程时，客户将收到电子邮件。
 > 
 
 ## <a name="1-verify-your-certificate"></a>1.验证证书
@@ -50,8 +50,8 @@ ms.locfileid: "56453505"
 2. 打开或解压缩 zip 文件，并浏览到“Generic”文件夹。 Generic 文件夹中包含两个文件，其中一个是 *VPNSettings.xml*。
 3. 在任何 XML 查看器/编辑器中打开 *VPNSettings.xml*。 在该 XML 文件中搜索以下字段：
 
-  * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
-  * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
+   * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
+   * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
 4. 如果 ServerCertRotCn 和 ServerCertIssuerCn 是“DigiCert Global Root CA”，则你不受此项更新的影响，无需继续执行本文中的步骤。 但如果它们显示其他内容，则表示你的网关证书需要更新和转换。
 
 ### <a name="classic"></a>经典

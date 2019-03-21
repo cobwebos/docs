@@ -1,6 +1,6 @@
 ---
-title: Azure AD 密码保护预览版
-description: 禁止通过使用 Azure AD 密码保护预览版的本地 Active Directory 中的弱密码
+title: Azure AD 密码保护
+description: 禁止通过使用 Azure AD 密码保护的本地 Active Directory 中的弱密码
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,21 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fdf308ff6178dcb51ec73e46d43b853f62e7777
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: f1b3660d256e4beda948f723035aa75ca8a9ed2e
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840947"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284862"
 ---
-# <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>预览版：为 Windows Server Active Directory 强制执行 Azure AD 密码保护
+# <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>为 Windows Server Active Directory 强制执行 Azure AD 密码保护
 
-|     |
-| --- |
-| Azure Active Directory (Azure AD) 密码保护和自定义受禁的密码列表是 Azure AD 的公共预览版功能。 有关预览版的信息，请参阅[Supplemental Terms of Use 针对 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
-
-Azure AD 密码保护是在公共预览版，它增强了在组织中的密码策略中的新功能。 在本地部署密码保护使用这两个全局和自定义受禁密码列表存储在 Azure AD 中。 它执行相同检查在本地与 Azure AD 进行基于云的更改。
+Azure AD 密码保护是一项功能，增强了在组织中的密码策略。 在本地部署密码保护使用这两个全局和自定义受禁密码列表存储在 Azure AD 中。 它执行相同检查在本地与 Azure AD 进行基于云的更改。
 
 ## <a name="design-principles"></a>设计原理
 

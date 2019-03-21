@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: 2309e7762ad36f59e0833e675e7012ee3c459e3e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: c01cdb967fd7f9516b4403aa4f0c76f2577d5050
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997033"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294716"
 ---
 # <a name="standard-properties-in-azure-monitor-log-records"></a>Azure Monitor 日志记录中的标准属性
 Azure Monitor 中的日志数据[以一组记录的形式存储](../log-query/log-query-overview.md)，每个记录都有一个特定的数据类型，该数据类型具有一组独特属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
@@ -84,6 +84,18 @@ AzureActivity
    | summarize LoggedOnAccounts = makeset(Account) by _ResourceId 
 ) on _ResourceId  
 ```
+
+下面的查询分析 **_ResourceId**并聚合按每个 Azure 订阅的数据量计费。
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
+```
+
+请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。
 
 ## <a name="isbillable"></a>\_IsBillable
 **\_IsBillable** 属性指定是否对引入的数据进行计费。 **\_IsBillable** 等于 _false_ 的数据是免费收集的，不会向你的 Azure 帐户收费。

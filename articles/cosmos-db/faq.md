@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 7e1c6d771e2452e99b47c256c99e25e281b9a3aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c344e8c2d0ad62b394792201ab52bb37413012f8
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849221"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259901"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -159,7 +159,7 @@ GitHub 上提供了 SQL API [.NET](sql-api-dotnet-samples.md)、[Java](https://g
 
 ### <a name="how-do-i-create-a-database"></a>我如何创建数据库？
 
-可以按照[添加集合](create-sql-api-dotnet.md#create-collection)中所述使用 [Azure 门户](https://portal.azure.com)，使用某个 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或使用 [REST API](/rest/api/cosmos-db/) 来创建数据库。
+可以按照[添加集合](create-sql-api-dotnet.md#create-collection-database)中所述使用 [Azure 门户](https://portal.azure.com)，使用某个 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或使用 [REST API](/rest/api/cosmos-db/) 来创建数据库。
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>我如何设置用户和权限？
 
@@ -257,7 +257,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 * 目前不支持 CORS。
 * Azure 表存储中的表名不区分大小写，但它们是在 Azure Cosmos DB 表 API
 * Azure Cosmos DB 的某些编码信息内部格式，例如二进制字段，目前不如想像的那么有效。 因此，这会导致数据大小受到意外限制。 例如，目前无法使用整整有 1 MB 的表实体来存储二进制数据，因为编码会增大数据大小。
-* 当前不支持实体属性名称“Id”
+* 实体属性名称 'ID' 当前不支持
 * TableQuery TakeCount 不限为 1000 以内
 
 对于 REST API，有大量的终结点/查询选项不受 Azure Cosmos DB 表 API 的支持：

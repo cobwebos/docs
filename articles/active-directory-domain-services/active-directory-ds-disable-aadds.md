@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: ergreenl
-ms.openlocfilehash: d72fa2551eb4db3cb68a52cd8a76dd7b9d27b6f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: a2abdbf1409564f94356279332d253627c5b447a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178998"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111916"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户禁用 Azure Active Directory 域服务
 本文演示如何使用 Azure 门户为 Azure AD 目录禁用 Azure Active Directory (AD) 域服务。
@@ -28,12 +28,11 @@ ms.locfileid: "55178998"
 > [!WARNING]
 > **删除是永久性的，无法撤消。**
 > 请谨慎继续！ 删除托管域时：
-  * 将取消设置托管域的域控制器，并将从虚拟网络中删除。
-  * 托管域上的数据将被永久删除。 这包括已在托管域上创建的自定义 OU、GPO、自定义 DNS 记录、服务主体、GMSA 等。
-  * 已加入到托管域的计算机将丢失其与域的信任关系，需要从域中取消加入。
-  * 将无法使用公司 AD 凭据登录到这些计算机。 对这些计算机改用本地管理员凭据。
-删除托管域不会删除 Azure AD 目录，否则会对目录产生不利影响。
->
+>   * 将取消设置托管域的域控制器，并将从虚拟网络中删除。
+>   * 托管域上的数据将被永久删除。 这包括已在托管域上创建的自定义 OU、GPO、自定义 DNS 记录、服务主体、GMSA 等。
+>   * 已加入到托管域的计算机将丢失其与域的信任关系，需要从域中取消加入。
+>   * 将无法使用公司 AD 凭据登录到这些计算机。 对这些计算机改用本地管理员凭据。
+> 删除托管域不会删除 Azure AD 目录，否则会对目录产生不利影响。
 
 执行以下步骤删除 Azure AD 域服务托管域：
 1. 在 Azure 门户中导航到 [Azure AD 域服务扩展](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices)。

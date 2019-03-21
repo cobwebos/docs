@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff5b998222f9a7320384edea1ed69e7a65e9139
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 65e803ca373fb9853fc23d17f1a27ecadc6a209c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171292"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295209"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
@@ -48,15 +48,46 @@ ms.locfileid: "56171292"
 
 ### <a name="filtering-on-audit-logs"></a>根据审核日志进行筛选
 
-可以通过在“活动类别”筛选器中指定类别，在审核报告中使用高级筛选来访问特定类别的审核数据。 例如，若要查看与自助服务密码重置相关的所有活动，请选择“自助服务密码管理”类别。 
+可以使用高级筛选审核报表中访问特定类别的审核数据，通过指定其**类别**筛选器。 例如，若要查看与用户相关的所有活动，请选择**UserManagement**类别。 
 
-活动类别包括：
+类别包括：
 
+- All
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- 授权
+- 联系人
+- 设备
+- DeviceConfiguration
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- 其他
+- 策略
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+此外可以根据特定的服务使用的筛选**服务**下拉列表中筛选器。 例如，若要获取与自助服务密码管理相关的所有审核事件，请选择**自助服务密码管理**筛选器。
+
+服务包括：
+
+- All
+- 访问评审
+- 帐户预配 
+- SSO 应用程序
+- 身份验证方法
+- B2C
+- 条件性访问
 - 核心目录
-- 自助服务密码管理
+- 权利管理
+- 标识保护
+- 受邀用户
+- PIM
 - 自助服务组管理
-- 帐户预配
-
+- 自助服务密码管理
+- 使用条款
 
 ## <a name="sign-ins-report"></a>登录报告 
 
@@ -122,11 +153,11 @@ ms.locfileid: "56171292"
  
 #### <a name="cause"></a>原因
 
-在 Azure 门户中下载活动日志时，我们将规模限制为 5000 条记录，最新的记录排在最前面。 
+下载时在 Azure 门户中的活动日志，我们将规模限制为 250000 记录，按最新的第一个排序。 
 
 #### <a name="resolution"></a>解决方法
 
-可以随时通过 [Azure AD 报告 API](concept-reporting-api.md) 获取多达一百万条记录。 我们建议的方法是，[按计划运行脚本](tutorial-signin-logs-download-script.md)，通过调用报告 API 以增量方式获取某个时段（例如每日或每周）的记录。 
+可以随时通过 [Azure AD 报告 API](concept-reporting-api.md) 获取多达一百万条记录。
 
 ### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Azure 门户中缺少有关最近操作的审核数据
 

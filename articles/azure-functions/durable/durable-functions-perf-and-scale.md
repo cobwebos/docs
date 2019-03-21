@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 170f20ae65a8ba58291a630dc76496cbdcdb36de
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138110"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286374"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -60,7 +60,7 @@ Durable task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 ## <a name="storage-account-selection"></a>存储帐户的选择
 
-在配置的 Azure 存储帐户中创建 Durable Functions 使用的队列、表和 Blob。 可以使用 **host.json** 文件中的 `durableTask/azureStorageConnectionStringName` 设置指定要使用的帐户。
+队列、 表和 blob 由 Durable Functions 中配置的 Azure 存储帐户创建。 可以使用 **host.json** 文件中的 `durableTask/azureStorageConnectionStringName` 设置指定要使用的帐户。
 
 ### <a name="functions-1x"></a>Functions 1.x
 

@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10346ea0aa292be33f820bd4e92434e2c58a89ab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194302"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286850"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户分配或删除许可证 | Microsoft Docs
 许多 Azure Active Directory (Azure AD) 服务要求激活 Azure AD 产品并且针对该产品向每个用户或组（以及关联成员）授予许可。 只有具有活动许可证的用户才能访问和使用已许可的 Azure AD 服务。
@@ -47,7 +47,7 @@ ms.locfileid: "56194302"
 
     “许可证”页随即出现。
 
-    ![“许可证”页，显示已购买产品和已分配许可证数量](media/license-users-groups/license-details-blade.png)
+    ![许可证页上，与已购买的产品和已分配的许可证的数量](media/license-users-groups/license-details-blade.png)
     
 3. 选择“已购买产品”链接可查看“产品”页，以及查看每个特定产品版本的“已分配”、“可用”和“即将过期”详细信息。
 
@@ -76,7 +76,7 @@ ms.locfileid: "56194302"
 
 4. 选择“分配选项”，确保打开了相应的许可证选项，然后选择“确定”。
 
-    ![“许可证选项”页，显示版本中的所有可用选项](media/license-users-groups/license-option-blade-assignments.png)
+    ![许可证选项页上，使用相应版本中提供的所有选项](media/license-users-groups/license-option-blade-assignments.png)
 
     “分配许可证”页会进行更新，以显示选择了用户并且配置了分配。
 
@@ -102,7 +102,7 @@ ms.locfileid: "56194302"
 
 4. 选择“分配选项”，确保打开了相应的许可证选项，然后选择“确定”。
 
-    ![“许可证选项”页，显示版本中的所有可用选项](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![许可证选项页上，使用相应版本中提供的所有选项](media/license-users-groups/license-option-blade-group-assignments.png)
 
     “分配许可证”页会进行更新，以显示选择了用户并且配置了分配。
 
@@ -112,7 +112,6 @@ ms.locfileid: "56194302"
 5. 选择“分配”。
 
     组会添加到已许可组的列表，所有成员都有权访问所包含的 Azure AD 服务。
-
 
 ## <a name="remove-a-license"></a>删除许可证
 可以通过“许可证”页从用户或组删除许可证。

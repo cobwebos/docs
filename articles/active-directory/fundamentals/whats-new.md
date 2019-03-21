@@ -16,16 +16,16 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae0565bd51235f2d1b471adcc511786c204d175a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eda145f43c9268e5f6b291a767ed51249804f87d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890502"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286442"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
->通过将此 URL (`https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us`) 复制并粘贴到 ![RSS 图标](./media/whats-new/feed-icon-16x16.png)订阅源阅读器中获取有关何时重新访问此页以获得更新的通知。
+>获取有关何时通过复制并粘贴此 URL 重新访问此页，进行更新的通知：`https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us`到你![RSS 馈送读取器图标](./media/whats-new/feed-icon-16x16.png)馈送读取器。
 
 Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -577,7 +577,7 @@ Azure AD 域服务在 Azure 门户中提供有关托管域配置错误或问题�
 
 Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在帮助管理员和支持工程师排查 Azure AD 登录相关的问题。此新选项卡提供错误代码、错误消息和建议的补救措施（如果有）来帮助解决问题。 如果无法解决问题，我们还提供使用“复制到剪贴板”体验创建支持票证的新方法，该体验可在支持票证中填充日志文件的“请求 ID”和“日期(UTC)”字段。  
 
-![新选项卡中的登录日志](media/whats-new/troubleshooting-and-support.png)
+![登录日志显示在新选项卡](media/whats-new/troubleshooting-and-support.png)
 
 ---
 

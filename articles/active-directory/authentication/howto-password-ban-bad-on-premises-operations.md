@@ -1,6 +1,6 @@
 ---
-title: Azure AD 密码保护预览版中的操作和报告
-description: Azure AD 密码保护预览版中的部署后操作和报告
+title: Azure AD 密码保护操作和报告
+description: Azure AD 密码保护部署后操作和报告
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fda79f16560a5c96e1283f4d9d9f14dbe503d61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ac91a70465d79b235ae43681a1375d47e7691efe
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175233"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285796"
 ---
-# <a name="preview-azure-ad-password-protection-operational-procedures"></a>预览版：Azure AD 密码保护操作规程
-
-|     |
-| --- |
-| Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+# <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD 密码保护操作规程
 
 在本地完成 [Azure AD 密码保护的安装](howto-password-ban-bad-on-premises-deploy.md)后，必须在 Azure 门户中配置几个项目。
 
@@ -33,7 +28,7 @@ ms.locfileid: "56175233"
 
 ## <a name="enable-password-protection"></a>启用密码保护
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，并依次浏览到“Azure Active Directory”、“身份验证方法”、“密码保护(预览版)”。
+1. 登录到[Azure 门户](https://portal.azure.com)并浏览到**Azure Active Directory**，**身份验证方法**，然后**密码保护**。
 1. 将“对 Windows Server Active Directory 启用密码保护”设置为“是”
 1. 如[部署指南](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)中所述，我们建议最初将“模式”设置为“审核”
    * 在熟悉该功能后，可将“模式”切换为“强制”

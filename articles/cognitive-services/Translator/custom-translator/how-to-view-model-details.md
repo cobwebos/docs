@@ -5,22 +5,22 @@ description: 任何项目下的“模型”选项卡会显示每个模型的详�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: d82d41a254164c635f4488db63766b39d922f002
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 13f3d88ad69d2acc64b9a6469415eceaf22fa491
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219102"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764382"
 ---
 # <a name="view-model-details"></a>查看模型详细信息
 
 项目下的“模型”选项卡显示该项目中的所有模型。 为该项目训练的所有模型列在此选项卡中。
 
-对于项目中的每个模型，将显示以下模型详细信息。
+在项目中每个模型，显示了这些详细信息。
 
 1.  模型名称：显示给定模型的模型名称。
 

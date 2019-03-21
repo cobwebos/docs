@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 29e01177d4b096449cd906a22b47223078c6493e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.openlocfilehash: 8325e2d1dccf1184c5297a60161200b41fc1d412
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107814"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338274"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
 
@@ -114,7 +114,7 @@ CPU | 内存 | 缓存磁盘大小 | 数据更改率 | 受保护的计算机
 1. 若要测量这些参数，请在环境中运行 Site Recovery 部署规划器。 如需指导帮助，请参阅[关于用于 VMware 到 Azure 复制的 Site Recovery 部署规划器](site-recovery-deployment-planner.md)。
 2. 部署符合[配置服务器的大小建议](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server)的配置服务器。 如果生产工作负荷超过 650 个虚拟机，请部署另一个配置服务器。
 3. 根据测得的每日数据更改率，借助[大小指导](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)部署[横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md#download-installation-file)。
-4. 如果预期磁盘虚拟机的数据更改率超过 2 MBps，请[设置高级存储帐户](tutorial-prepare-azure.md#create-a-storage-account)。 Site Recovery 部署规划器运行特定的一段时间。 报告中可能不会捕获其他时间段的数据更改率峰值。
+4. 如果您希望的数据更改率超过 2 MBps 为磁盘虚拟机，请确保使用高级托管磁盘。 Site Recovery 部署规划器运行特定的一段时间。 报告中可能不会捕获其他时间段的数据更改率峰值。
 5. 请根据所要实现的 RPO [设置网络带宽](site-recovery-plan-capacity-vmware.md#control-network-bandwidth)。
 6. 设置基础结构时，请为工作负荷启用灾难恢复。 有关操作方法，请参阅[为 VMware 到 Azure 的复制设置源环境](vmware-azure-set-up-source.md)。
 

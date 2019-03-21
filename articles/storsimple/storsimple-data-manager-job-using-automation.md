@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 6e62e923b6e983dfff8eb72c9526708a3b360930
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494742"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086014"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>使用 Azure 自动化来触发作业
 
@@ -30,7 +30,7 @@ ms.locfileid: "55494742"
  
 本文详细介绍了如何创建 Azure 自动化 Runbook，然后使用它来启动数据转换作业。 若要了解有关如何通过 .NET SDK 启动数据转换的详细信息，请转到[使用 .NET SDK 来触发数据转换作业](storsimple-data-manager-dotnet-jobs.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，请确保具备以下条件：
 
@@ -53,20 +53,20 @@ ms.locfileid: "55494742"
 
 3. 在“添加自动化”中：
 
-    1. 提供自动化帐户的“名称”。
-    2. 选择已链接到 StorSimple 数据管理器服务的“订阅”。
-    3. 创建新的资源组，或选择现有的资源组。
-    4. 选择“位置” 。
-    5. 保留选择默认的“创建运行方式帐户”选项。
-    6. 若要在仪表板上获取快速访问的链接，请选中“固定到仪表板”。 单击“创建”。
+   1. 提供自动化帐户的“名称”。
+   2. 选择已链接到 StorSimple 数据管理器服务的“订阅”。
+   3. 创建新的资源组，或选择现有的资源组。
+   4. 选择“位置” 。
+   5. 保留选择默认的“创建运行方式帐户”选项。
+   6. 若要在仪表板上获取快速访问的链接，请选中“固定到仪表板”。 单击“创建”。
 
-    ![创建自动化运行方式帐户](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![创建自动化运行方式帐户](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
-    成功创建自动化帐户后，会收到通知。
+      成功创建自动化帐户后，会收到通知。
     
-    ![有关自动化帐户部署的通知](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
+      ![有关自动化帐户部署的通知](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-    有关详细信息，请参阅[创建运行方式帐户](../automation/automation-create-runas-account.md)。
+      有关详细信息，请参阅[创建运行方式帐户](../automation/automation-create-runas-account.md)。
 
 3. 在新建的帐户中，转到“共享资源”>“模块”并单击“+ 添加模块”。
 

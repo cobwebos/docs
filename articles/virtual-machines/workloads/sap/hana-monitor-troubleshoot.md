@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10709f4f2fcc341840753ef4c4eb479e29fb58d5
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
-ms.translationtype: HT
+ms.openlocfilehash: 392dd39e2b3b0e26e7b0ba645bf5a70231167ad5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354362"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014400"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 端的监视和故障排除
 
@@ -27,18 +27,18 @@ ms.locfileid: "44354362"
 
 在以下 SAP 说明中可以找到与 SAP HANA 性能相关的常见问题解答：
 
-- [SAP Note #2222200 - FAQ: SAP HANA Network](https://launchpad.support.sap.com/#/notes/2222200)（SAP 说明 #2222200 - 常见问题：SAP HANA 网络）
-- [SAP Note #2100040 - FAQ: SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)（SAP 说明 #2100040 - 常见问题：SAP HANA CPU）
-- [SAP Note #199997 - FAQ: SAP HANA Memory](https://launchpad.support.sap.com/#/notes/2177064)（SAP 说明 #199997 - 常见问题：SAP HANA 内存）
-- [SAP Note #200000 - FAQ: SAP HANA Performance Optimization](https://launchpad.support.sap.com/#/notes/2000000)（SAP 说明 #200000 - 常见问题：SAP HANA 性能优化）
-- [SAP Note #199930 - FAQ: SAP HANA Analysis](https://launchpad.support.sap.com/#/notes/1999930)（SAP 说明 #199930 - 常见问题：SAP HANA 分析）
-- [SAP Note #2177064 - FAQ: SAP HANA Service Restart and Crashes](https://launchpad.support.sap.com/#/notes/2177064)（SAP 说明 #2177064 - 常见问题：SAP HANA 服务重新启动和崩溃）
+- [SAP 说明 #2222200-常见问题：SAP HANA Network](https://launchpad.support.sap.com/#/notes/2222200)
+- [SAP 说明 #2100040-常见问题：SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
+- [SAP 说明 #199997-常见问题：SAP HANA Memory](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP 说明 #200000-常见问题：SAP HANA 性能优化](https://launchpad.support.sap.com/#/notes/2000000)
+- [SAP 说明 #199930-常见问题：SAP HANA I/O Analysis](https://launchpad.support.sap.com/#/notes/1999930)
+- [SAP 说明 #2177064-常见问题：SAP HANA 服务重新启动和崩溃](https://launchpad.support.sap.com/#/notes/2177064)
 
 ## <a name="sap-hana-alerts"></a>SAP HANA 警报
 
-第一步是检查当前的 SAP HANA 警报日志。 在 SAP HANA Studio 中，转到“Administration Console: Alerts: Show: all alerts”（管理控制台: 警报: 显示: 所有警报）。 此选项卡会显示超出设置的最小和最大阈值的特定值（可用物理内存、CPU 利用率等）的所有相关 SAP HANA 警报。 默认情况下，检查结果每隔 15 分钟自动刷新一次。
+第一步是检查当前的 SAP HANA 警报日志。 在 SAP HANA Studio 中，转到**管理控制台：警报：显示： 所有警报**。 此选项卡会显示超出设置的最小和最大阈值的特定值（可用物理内存、CPU 利用率等）的所有相关 SAP HANA 警报。 默认情况下，检查结果每隔 15 分钟自动刷新一次。
 
-![在 SAP HANA Studio 中，转到“Administration Console: Alerts: Show: all alerts”（管理控制台: 警报: 显示: 所有警报）](./media/troubleshooting-monitoring/image1-show-alerts.png)
+![在 SAP HANA Studio 中，转到管理控制台：警报：显示： 所有警报](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
 ## <a name="cpu"></a>CPU
 
@@ -65,7 +65,7 @@ ms.locfileid: "44354362"
 
 由于 CPU 利用率偏高而触发警报的原因有多种，包括但不限于：执行特定的事务、数据加载、挂起作业、长时间运行 SQL 语句，以及查询性能不良（例如，使用 BW on HANA 多维数据集）。
 
-有关详细故障排除步骤，请参阅 [SAP HANA Troubleshooting: CPU Related Causes and Solutions](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false)（SAP HANA 故障排除：CPU 相关的原因和解决方法）站点。
+请参阅[SAP HANA 故障排除：CPU 相关导致和解决方案](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false)站点针对详细故障排除步骤。
 
 ## <a name="operating-system"></a>操作系统
 
@@ -87,7 +87,7 @@ ms.locfileid: "44354362"
 - 列存储表主存储的内存用量（警报 45）
 - 运行时转储文件（警报 46）
 
-有关详细故障排除步骤，请参阅 [SAP HANA Troubleshooting: Memory Problems](http://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false)（SAP HANA 故障排除：内存问题）站点。
+请参阅[SAP HANA 故障排除：内存问题](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false)站点针对详细故障排除步骤。
 
 ## <a name="network"></a>网络
 
@@ -104,7 +104,7 @@ ms.locfileid: "44354362"
 
 此外，请使用开源 [IPERF](https://iperf.fr/) 工具（或类似的工具）来测量实际的应用程序网络性能。
 
-有关详细故障排除步骤，请参阅 [SAP HANA Troubleshooting: Networking Performance and Connectivity Problems](http://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false)（SAP HANA 故障排除：网络性能和连接问题）站点。
+请参阅[SAP HANA 故障排除：网络性能和连接问题](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false)站点针对详细故障排除步骤。
 
 ## <a name="storage"></a>存储
 
@@ -116,7 +116,7 @@ ms.locfileid: "44354362"
 
 ![在屏幕下半部分显示的附加卷中，可以查看卷的详细信息，如文件和 I/O 统计信息](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-有关详细故障排除步骤，请参阅 [SAP HANA Troubleshooting: I/O Related Root Causes and Solutions](http://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false)（SAP HANA 故障排除：I/O 相关的根本原因和解决方法）及 [SAP HANA Troubleshooting: Disk Related Root Causes and Solutions](http://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false)（SAP HANA 故障排除：磁盘相关的根本原因和解决方法）站点。
+请参阅[SAP HANA 故障排除：与 I/O 相关的根本原因和解决方案](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false)和[SAP HANA 故障排除：磁盘相关的根本原因和解决方案](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false)站点针对详细故障排除步骤。
 
 ## <a name="diagnostic-tools"></a>诊断工具
 
@@ -130,15 +130,15 @@ ms.locfileid: "44354362"
 
 选择存储在本地的 SQL Statements.zip 文件，随后将导入包含相应 SQL 语句的文件夹。 此时，可以使用这些 SQL 语句运行多种不同的诊断检查。
 
-例如，要测试 SAP HANA 系统复制带宽要求，请在 SQL 控制台中右键单击“Replication: Bandwidth”（复制: 带宽）下面的“Bandwidth”（带宽）语句，并选择“Open”（打开）。
+例如，若要测试 SAP HANA 系统复制带宽要求，请右键单击**带宽**下的语句**复制：带宽**，然后选择**打开**SQL 控制台中。
 
 整个 SQL 语句会打开，允许用户更改然后执行输入参数（modification 节）。
 
 ![整个 SQL 语句会打开，允许用户更改然后执行输入参数（modification 节）](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。 从上下文菜单中选择“Execute”（执行）：
+另一个示例是用鼠标右键单击下面的语句**复制：概述**。 从上下文菜单中选择“Execute”（执行）：
 
-![另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。 从上下文菜单中选择“Execute”（执行）](./media/troubleshooting-monitoring/image9-import-statements-c.png)
+![另一个示例是用鼠标右键单击复制下面的语句：概述。 从上下文菜单中选择“Execute”（执行）](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
 随后会返回可帮助进行故障排除的信息：
 
@@ -158,7 +158,7 @@ ms.locfileid: "44354362"
 
 用于显示 SAP HANA 服务信息（CPU、内存等）的 **HANA\_Services\_Statistics**。
 
-![用于显示 SAP HANA 服务信息的 HANA\_Services\_Statistics ](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![用于显示 SAP HANA 服务信息的 HANA\_Services\_Statistics](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
 用于显示有关 SAP HANA 实例的常规信息的 **HANA\_Configuration\_Overview\_Rev110+**。
 

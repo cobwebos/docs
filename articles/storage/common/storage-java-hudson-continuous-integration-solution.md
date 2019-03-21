@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: d00bf87a80e13808c42a5839ad0f4508ad7214b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467826"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011107"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>将 Azure 存储用于 Hudson 持续集成解决方案
 ## <a name="overview"></a>概述
@@ -25,7 +25,7 @@ ms.locfileid: "55467826"
 ## <a name="introduction-to-hudson"></a>Hudson 简介
 Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频繁地生成版本，实现了软件项目的持续集成，因此提高了开发人员的工作效率。 生成是版本控制的，并且可将生成项目上传到不同存储库中。 本文将演示如何将 Azure Blob 存储用作生成项目的存储库。 它还将演示如何从 Azure Blob 存储下载依赖项。
 
-有关 Hudson 的更多信息，请访问 [Hudson 概览](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)。
+有关 Hudson 的更多信息，请访问 [Hudson 概览](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)。
 
 ## <a name="benefits-of-using-the-blob-service"></a>使用 Blob 服务的好处
 使用 Blob 服务承载敏捷开发生成项目的好处包括：
@@ -35,7 +35,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 * 客户和合作伙伴下载生成项目时的性能。
 * 通过选择匿名访问、基于过期的共享访问、签名访问、专用访问等来控制用户访问策略。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 需要下列项才能将 Blob 服务用于 Hudson CI 解决方案：
 
 * 一个 Hudson 持续集成解决方案。
@@ -52,7 +52,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
   5. 完成初始设置后，取消正在运行的 Hudson WAR 实例，再次启动 Hudson WAR，然后重新打开 Hudson 仪表板 `http://localhost:8080/`，将使用它来安装和配置 Azure 存储插件。
      
       虽然典型 Hudson CI 解决方案将设置为作为一个服务运行，但在本教程中，通过命令行运行 Hudson war 就足够了。
-* 一个 Azure 帐户。 可在 <http://www.azure.com> 注册 Azure 帐户。
+* 一个 Azure 帐户。 可在 <https://www.azure.com> 注册 Azure 帐户。
 * 一个 Azure 存储帐户。 如果还没有存储帐户，可使用[创建存储帐户](../common/storage-quickstart-create-account.md)中的步骤创建一个。
 * 建议熟悉 Hudson CI 解决方案（但不是必需的），因为以下内容将使用一个基本示例向你演示使用 Blob 服务作为 Hudson CI 生成项目的存储库时所需的步骤。
 
@@ -83,7 +83,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
    
     e. [可选]如果有其他存储帐户并且希望其可供 Hudson CI 使用，请单击“添加更多存储帐户”。
    
-    f. 单击“保存”以保存设置。
+    f. Click <bpt id="p1">**</bpt>Save<ept id="p1">**</ept> to save your settings.
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>如何创建将生成项目上传到存储帐户的后期生成操作
 为了进行说明，首先我们将需要创建一个将创建若干文件的作业，然后添加后期生成操作以将文件上传到存储帐户。
@@ -134,7 +134,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 1. 在作业配置的“生成”部分中，单击“添加生成步骤”并选择“从 Azure Blob 存储下载”。
 2. 对于“存储帐户名称”，请选择要使用的存储帐户。
 3. 对于“容器名称”，指定包含要下载的 Blob 容器的名称。 可以使用环境变量。
-4. 对于“Blob 名称”，请指定 Blob 名称。 可以使用环境变量。 另外，在指定 Blob 名称的初始字母后，可以使用星号作为通配符。 例如，**project\*** 将指定名称以 **project** 开头的所有 Blob。
+4. 对于“Blob 名称”，请指定 Blob 名称。 可以使用环境变量。 另外，在指定 Blob 名称的初始字母后，可以使用星号作为通配符。 例如，**项目\\*** 将指定其名称开头的所有 blob**项目**。
 5. [可选]对于“下载路径”，在 Hudson 计算机上指定希望将文件从 Azure Blob 存储下载到的路径。 也可以使用环境变量。 （如未提供“下载路径”的值，则会将 Azure Blob 存储中的文件下载到作业工作区。）
 
 如果还希望从 Azure Blob 存储下载其他项，可以创建其他生成步骤。
@@ -158,7 +158,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>后续步骤
-* [Hudson 简介](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Hudson 简介](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)
 * [Azure 存储客户端 SDK 参考](http://dl.windowsazure.com/storage/javadoc/)
 * [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)

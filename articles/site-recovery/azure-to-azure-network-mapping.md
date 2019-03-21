@@ -5,24 +5,24 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 2/28/2018
 ms.author: mayg
-ms.openlocfilehash: fccc7379794b4b75ff53e517eddd95ff0f7db0e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 99c7309e22d8ebe61a0a85b38c92bd3027977848
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223776"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013127"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
 
-本文介绍如何映射不同 Azure 区域中的两个 Azure 虚拟网络 (VNet) 实例，以及如何设置网络之间的 IP 寻址。 网络映射可确保在目标 Azure 区域中创建的复制 VM 是在映射到源 VM VNet 的 VNet 中创建的。
+本文介绍如何映射不同 Azure 区域中的两个 Azure 虚拟网络 (VNet) 实例，以及如何设置网络之间的 IP 寻址。 网络映射提供了用于在启用复制的时间基于源网络的目标网络选择的默认行为。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在映射网络之前，应在源和目标 Azure 区域中创建 [Azure VNet](../virtual-network/virtual-networks-overview.md)。 
 
-## <a name="set-up-network-mapping"></a>设置网络映射
+## <a name="set-up-network-mapping-manually-optional"></a>设置网络映射手动 （可选）
 
 按如下所述映射网络：
 
@@ -32,7 +32,7 @@ ms.locfileid: "55223776"
 
 3. 在“添加网络映射”中，选择源和目标位置。 在本示例中，源 VM 在“东亚”区域运行，将复制到“东南亚”区域。
 
-    ![选择源和目标 ](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+    ![选择源和目标](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. 现在，在对方目录中创建网络映射。 在本示例中，源现在是“东南亚”，目标是“东亚”。
 
     ![添加网络映射窗格 - 选择目标网络的源和目标位置](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
@@ -44,8 +44,13 @@ ms.locfileid: "55223776"
 
 - Site Recovery 根据选择的目标，自动创建从源到目标区域以及从目标到源区域的网络映射。
 - 默认情况下，Site Recovery 会在目标区域中创建与源网络相同的网络。 Site Recovery 将 **-asr** 作为后缀添加到源网络名称。 可以自定义目标网络。
-- 如果已发生了网络映射，则无法更改目标虚拟网络，启用复制。 若要更改目标虚拟网络，需要修改现有的网络映射。
-- 如果修改从区域 A 到区域 B 的网络映射，请务必同时修改从区域 B 到区域 A 的网络映射。
+- 如果已经存在到源网络的网络映射，映射的目标网络时启用更多虚拟机的复制将始终为默认值。 您可以选择通过从下拉列表中选择其他可用选项来更改目标虚拟网络。 
+- 若要更改新复制的默认目标虚拟网络，你需要修改现有的网络映射。
+- 如果你想要修改从区域 A 到区域 B 的网络映射，请确保你首先删除网络映射从区域 B 到区域 a。反向映射删除后，修改从区域 A 到区域 B 的网络映射，然后创建相关的反向映射。
+
+>[!NOTE]
+>* 修改网络映射只会更改新的 VM 复制的默认值。 它不会影响现有的复制的目标虚拟网络选择。 
+>* 如果你想要修改目标网络中的现有复制，请转到计算和网络设置的复制的项。
 
 ## <a name="specify-a-subnet"></a>指定子网
 
@@ -71,6 +76,7 @@ ms.locfileid: "55223776"
 **源和目标子网** | **详细信息**
 --- | ---
 地址空间相同 | 源 VM NIC 的 IP 地址设置为目标 VM NIC IP 地址。<br/><br/> 如果该地址不可用，则将下一个可用 IP 地址设置为目标。
+
 地址空间不同<br/><br/> 目标子网中下一个可用的 IP 地址设置为目标 VM NIC 地址。
 
 

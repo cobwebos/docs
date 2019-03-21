@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 7b73a0efbe20b43b3ba8e94fce3aabf12ea918e8
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: ca58059716ebebfaf663412b37014ae4f534d0e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986050"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081502"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>将 Kubernetes 添加到 Azure Stack 市场
 
@@ -220,12 +220,12 @@ ms.locfileid: "56986050"
 1. 输入 `Custom Script for Linux` 。
 
 1. 选择具有以下配置文件的服务器：
-    - **产品/服务**：适用于 Linux 的自定义脚本 2.0
-    - **版本**：2.0.6 （或最新版本）
-    - **发布者**：Microsoft Corp
+   - **产品/服务**：适用于 Linux 的自定义脚本 2.0
+   - **版本**：2.0.6 （或最新版本）
+   - **发布者**：Microsoft Corp
 
-    > [!Note]  
-    > 可能会列出适用于 Linux 的自定义脚本的多个版本。 你将需要添加的项的最后一个版本。
+     > [!Note]  
+     > 可能会列出适用于 Linux 的自定义脚本的多个版本。 你将需要添加的项的最后一个版本。
 
 1. 选择“下载”。
 

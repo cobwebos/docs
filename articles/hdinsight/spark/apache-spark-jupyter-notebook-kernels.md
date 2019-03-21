@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 937f6ffb9865419611c35b95ac84832bb2f1f3fe
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791803"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084092"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上的 Jupyter notebook 的内核 
 
@@ -27,7 +27,7 @@ HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上
 
 在本文中，学习如何使用这些内核以及使用它们的优势。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
@@ -47,11 +47,11 @@ HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
 
-3. 单击“新建”，并单击“Pyspark”、“PySpark3”或“Spark”创建笔记本。 使用适用于 Scala 应用程序的 Spark 内核，适用于 Python2 应用程序的 PySpark 内核，以及适用于 Python3 应用程序的 PySpark3 内核。
+3. 单击“新建”，然后单击“Pyspark”、“PySpark3”或“Spark”创建 Notebook。 使用适用于 Scala 应用程序的 Spark 内核，适用于 Python2 应用程序的 PySpark 内核，以及适用于 Python3 应用程序的 PySpark3 内核。
    
     ![Spark 中 Jupyter 笔记本的内核](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 中 Jupyter 笔记本的内核") 
 
-4. 此时会打开使用所选内核的笔记本。
+4. 此时会打开使用所选内核的 Notebook。
 
 ## <a name="benefits-of-using-the-kernels"></a>使用这些内核的好处
 
@@ -59,21 +59,21 @@ HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上
 
 - **预设上下文**。 使用 **PySpark**、**PySpark3** 或 **Spark** 内核时，无需首先显式设置 Spark 或 Hive 上下文，即可开始使用应用程序。 这些上下文默认已提供。 这些上下文包括：
    
-   * **sc** - 表示 Spark 上下文
-   * **sqlContext** - 表示 Hive 上下文
+  * **sc** - 表示 Spark 上下文
+  * **sqlContext** - 表示 Hive 上下文
    
-   因此，不需要运行如下语句来设置上下文：
+    因此，不需要运行如下语句来设置上下文：
    
-          sc = SparkContext('yarn-client')
-          sqlContext = HiveContext(sc)
+         sc = SparkContext('yarn-client')
+         sqlContext = HiveContext(sc)
    
-   可以直接在应用程序中使用预设上下文。
+    可以直接在应用程序中使用预设上下文。
 
 - **单元 magic**。 PySpark 内核提供一些预定义的“magic”，这是可以结合 `%%` 调用的特殊命令（例如 `%%MAGIC` <args>）。 magic 命令必须是代码单元中的第一个字，并且允许多行内容。 magic 一字应该是单元中的第一个字。 在 magic 前面添加任何内容（即使是注释）会导致错误。     有关 magic 的详细信息，请参阅[此处](https://ipython.readthedocs.org/en/stable/interactive/magics.html)。
    
     下表列出可通过内核提供的不同 magic。
 
-   | Magic | 示例 | Description |
+   | Magic | 示例 | 描述 |
    | --- | --- | --- |
    | help |`%%help` |生成所有可用 magic 的表，其中包含示例和说明 |
    | info |`%%info` |输出当前 Livy 终结点的会话信息 |
@@ -87,16 +87,16 @@ HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上
    > [!NOTE]  
    > 除了 PySpark 内核添加的 magic 以外，还可以使用[内置的 IPython magic](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)（包括 `%%sh`）。 可以使用 `%%sh` magic 在群集头节点上运行脚本和代码块。
 
-2. **自动可视化**。 **Pyspark** 内核自动将 Hive 和 SQL 查询的输出可视化。 可以选择多种不同类型的视觉效果，包括表、饼图、折线图、分区图和条形图。
+1. **自动可视化**。 **Pyspark** 内核自动将 Hive 和 SQL 查询的输出可视化。 可以选择多种不同类型的视觉效果，包括表、饼图、折线图、分区图和条形图。
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>%%sql magic 支持的参数
 `%%sql` magic 支持不同的参数，可以使用这些参数控制运行查询时收到的输出类型。 下表列出了输出。
 
-| 参数 | 示例 | Description |
+| 参数 | 示例 | 描述 |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |使用此参数将查询结果以 [Pandas](https://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 数据帧变量的名称是指定的变量名称。 |
 | -q |`-q` |使用此参数可关闭单元可视化。 如果不想自动将单元内容可视化，而只想将它作为数据帧捕获，可以使用 `-q -o <VARIABLE>`。 如果想要关闭可视化而不捕获结果（例如，运行诸如 `CREATE TABLE` 语句的 SQL 查询），请使用不带 `-o` 参数的 `-q`。 |
-| -m |`-m <METHOD>` |其中，**METHOD** 是 **take** 或 **sample**（默认为 **take**）。 如果方法为 **take**，内核将从 MAXROWS 指定的结果数据集顶部选择元素（如此表中稍后所述）。 如果方法为 **sample**，内核会根据 `-r` 参数进行数据集的元素随机采样，如此表中稍后所述。 |
+| -m |`-m <METHOD>` |其中，**METHOD** 是 **take** 或 **sample**（默认为 **take**）。 如果方法为 **take**，内核将从 MAXROWS 指定的结果数据集顶部选择元素（如此表中稍后所述）。 如果方法为 **sample**，内核将根据 `-r` 参数进行数据集的元素随机采样，如此表中稍后所述。 |
 | -r |`-r <FRACTION>` |此处的 **FRACTION** 是介于 0.0 与 1.0 之间的浮点数。 如果 SQL 查询的采样方法为 `sample`，则内核将针对结果集元素的指定分数随机采样。 例如，如果使用参数 `-m sample -r 0.01` 运行 SQL 查询，则会随机采样 1% 的结果行。 |
 | -n |`-n <MAXROWS>` |**MAXROWS** 是整数值。 内核将输出行的数目限制为 **MAXROWS**。 如果 **MAXROWS** 是负数（例如 **-1**），结果集中的行数不受限制。 |
 
@@ -114,13 +114,13 @@ HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上
 
 ## <a name="considerations-while-using-the-new-kernels"></a>使用新内核时的注意事项
 
-不管使用哪种内核，使笔记本一直保持运行都会消耗群集资源。  使用这些内核时，由于上下文是预设的，仅退出笔记本并不会终止上下文，因此会继续占用群集资源。 合理的做法是在使用完笔记本后，使用笔记本“文件”菜单中的“关闭并停止”选项来终止上下文，并退出笔记本。     
+不管使用哪种内核，使笔记本一直保持运行都会消耗群集资源。  使用这些内核时，由于上下文是预设的，仅退出笔记本并不会终止上下文，因此会继续占用群集资源。 合理的做法是在使用完 Notebook 后，使用 Notebook “文件”菜单中的“关闭并停止”选项来终止上下文，然后退出 Notebook。     
 
 ## <a name="show-me-some-examples"></a>举例说明
 
 打开 Jupyter 笔记本时，可以在根级别看到两个文件夹。
 
-* **PySpark** 文件夹包含使用新 **Python** 内核的示例笔记本。
+* **PySpark** 文件夹包含使用新 **Python** 内核的示例 Notebook。
 * **Scala** 文件夹包含使用新 **Spark** 内核的示例笔记本。
 
 可从 **PySpark** 或 **Spark** 文件夹打开 **00 - [READ ME FIRST] Spark Magic Kernel Features** 笔记本，了解各种可用的 magic。 也可以使用这两个文件夹下面提供的其他笔记本示例，了解如何在 HDInsight Spark 群集上实现不同的 Jupyter 笔记本使用方案。

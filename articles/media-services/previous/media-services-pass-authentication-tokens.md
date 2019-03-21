@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: dwgeo
-ms.openlocfilehash: b4bcc1bbed732e09f4c4d915342a422ce6c36901
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 71925a1ee67956df45901950b2a59fa4c1b458a7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002065"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260071"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>了解客户端如何将令牌传递到 Azure 媒体服务密钥传送服务
 客户经常会问，播放器如何将令牌传递到 Azure 媒体服务密钥传送服务来进行验证，以便播放器可以获取密钥。 媒体服务支持简单 Web 令牌 (SWT) 和 JSON Web 令牌 (JWT) 格式。 令牌身份验证可应用于任何类型的密钥，不论系统中使用的是通用加密还是高级加密标准 (AES) 信封加密。
@@ -29,7 +29,7 @@ ms.locfileid: "56002065"
 
 - 通过 HTTP 授权标头。
     > [!NOTE]
-    > 根据 OAuth 2.0 规格，应使用“Bearer”前缀。 Azure 媒体播放器[演示页面](http://ampdemo.azureedge.net/)上提供了一个具有令牌配置的示例播放器。 若要设置视频源，请选择“AES（JWT 令牌）”或“AES（SWT 令牌）”。 令牌是通过授权标头传递的。
+    > 根据 OAuth 2.0 规格，应使用“Bearer”前缀。 Azure 媒体播放器[演示页面](https://ampdemo.azureedge.net/)上提供了一个具有令牌配置的示例播放器。 若要设置视频源，请选择“AES（JWT 令牌）”或“AES（SWT 令牌）”。 令牌是通过授权标头传递的。
 
 - 通过使用“token=tokenvalue”添加一个 URL 查询参数。  
     > [!NOTE]

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6e3b1e3d501355994cd81c5eb9d712a684474524
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 87da5cdd31abb41a774a46d3891006eb58ac5e4d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136184"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285118"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>快速入门：创建 Azure 搜索索引中使用 PowerShell 和 REST API
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "58136184"
 > * [门户](search-create-index-portal.md)
 > 
 
-本文将指导你完成创建、 加载和查询 Azure 搜索的过程[索引](search-what-is-an-index.md)使用 PowerShell 和[Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 索引定义和内容作为格式正确的 JSON 内容包含在请求正文。
+本文将指导你完成创建、 加载和查询 Azure 搜索的过程[索引](search-what-is-an-index.md)使用 PowerShell 和[Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 请求正文中的图片被提供作为格式正确的 JSON 内容的索引定义和可搜索内容。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -35,13 +35,13 @@ ms.locfileid: "58136184"
 
 URL 终结点和管理搜索服务的 api 密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-  1. 在 Azure 门户中，搜索服务中**概述**页上，获取该 URL。 示例终结点可能类似于 `https://my-service-name.search.windows.net`。
+1. 在 Azure 门户中，搜索服务中**概述**页上，获取该 URL。 示例终结点看起来像 https:\//my-service-name.search.windows.net。
 
-  2. 在中**设置** > **密钥**，在服务上获取的完全权限管理员密钥。 有两个可互换的管理密钥，提供业务连续性，以防你需要一个滚动更新。 添加、 修改和删除对象上的请求，可以使用主要或辅助密钥。
+2. 在中**设置** > **密钥**，在服务上获取的完全权限管理员密钥。 有两个可互换的管理密钥，提供业务连续性，以防你需要一个滚动更新。 添加、 修改和删除对象上的请求，可以使用主要或辅助密钥。
 
-  ![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "获取 HTTP 终结点和访问密钥")
+   ![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
-  所有请求都需要对每个请求发送到你的服务 api 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
+   所有请求都需要对每个请求发送到你的服务 api 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 ## <a name="connect-to-azure-search"></a>连接到 Azure 搜索
 
@@ -77,7 +77,7 @@ Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
 }
 ```
 
-## <a name="1---create-an-index"></a>1-创建索引
+## <a name="1---create-an-index"></a>1 - 创建索引
 
 除非使用门户，可以加载数据之前，服务上必须存在索引。 此步骤中定义索引，并将其推送到服务。 [创建索引 (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)用于此步骤。
 
@@ -162,6 +162,8 @@ Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertT
 
 > [!Tip]
 > 可能还检查索引列表在门户中，或重新运行用于验证服务连接的命令，以查看进行验证， *hotels*索引集合中列出的索引。
+
+<a name="load-documents"></a>
 
 ## <a name="2---load-documents"></a>2-加载文档
 
@@ -253,7 +255,7 @@ Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | Convert
 }
 ```
 
-## <a name="3---search-an-index"></a>3-搜索索引
+## <a name="3---search-an-index"></a>3 - 搜索索引
 
 此步骤说明如何使用索引进行查询[搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
@@ -344,7 +346,7 @@ $url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-1
 ```
 ## <a name="clean-up"></a>清理 
 
-如果不再需要应删除该索引。 一项免费服务被限制为三个索引。 您可能想要删除你主动不使用任何索引。
+如果不再需要应删除该索引。 一项免费服务被限制为三个索引。 您可能想要删除任何未主动使用，以便可以单步执行其他教程的索引。
 
 ```powershell
 # Set the URI to the hotel index

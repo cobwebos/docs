@@ -11,22 +11,22 @@ manager: carmonm
 ms.topic: article
 ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: da5b099a5574d34c3676819c930f3e89610cf4ad
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: f6d778ddbce16c223945d4683bd7a950bd2a0cb0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767429"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455796"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用带有 Enterprise Integration Pack 的 Azure 逻辑应用中的映射转换 XML
 
-若要使用 Azure 逻辑应用中企业集成方案适用的不同格式传输 XML 数据，逻辑应用可以使用映射，更具体地说，是可扩展样式表语言转换 (XSLT) 映射。 映射是一个 XML 文档，描述如何将 XML 文档中的数据转换为另一种格式。 
+若要将 XML 数据传输格式用于 Azure 逻辑应用中的企业集成方案之间，逻辑应用可以使用映射或更具体地说，可扩展样式表语言转换 (XSLT) 映射。 映射是一个 XML 文档，描述如何将 XML 文档中的数据转换为另一种格式。 
 
 例如，假设你从使用 YYYMMDD 日期格式的客户定期接收 B2B 订单或发票。 但是，你的组织使用 MMDDYYY 日期格式。 在将订单或发票详细信息存储在客户活动数据库中之前，可以定义并使用一个映射将 YYYMMDD 日期格式转换为 MMDDYYY 格式。
 
 有关集成帐户和映射等项目的限制，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有订阅，可以<a href="https://azure.microsoft.com/free/" target="_blank">注册免费的 Azure 帐户</a>。
 
@@ -39,7 +39,7 @@ ms.locfileid: "55767429"
   * 对于程序集，需要一个可在其中上传程序集的 Azure Blob 容器，并规划好该容器的位置。 这样，在将程序集添加到集成帐户时，便可以提供该位置。 
   对于此任务，需要提供以下各项：
 
-    | Item | 说明 |
+    | Item | 描述 |
     |------|-------------|
     | [Azure 存储帐户](../storage/common/storage-account-overview.md) | 在此帐户中创建程序集的 Azure Blob 容器。 了解[如何创建存储帐户](../storage/common/storage-quickstart-create-account.md)。 |
     | Blob 容器 | 可在此容器中上传程序集。 将程序集添加到集成帐户时，也需要此容器的位置。 了解如何[创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 |

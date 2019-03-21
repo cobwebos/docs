@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 03/19/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 6de5fefa3d70c1daecf00909d3ce44d4a4d8561c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: e078f838620f633743b27d26ba1218e753ff690e
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543557"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259816"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -262,7 +262,7 @@ ExpressRoute 高级版是以下功能的集合：
 
 ### <a name="how-do-i-disable-expressroute-premium"></a>如何禁用 ExpressRoute 高级版？
 
-可以通过调用 REST API 或 PowerShell cmdlet 来禁用 ExpressRoute 高级版。 必须确保已调整连接需求以满足默认限制，然后再禁用 ExpressRoute 高级版。 如果使用规模超出了默认限制，禁用 ExpressRoute 高级版的请求会失败。
+可以通过调用 REST API 或 PowerShell cmdlet 来禁用 ExpressRoute 高级版。 必须确保已调整连接需求以满足默认限制，再禁用 ExpressRoute 高级版。 如果使用规模超出了默认限制，禁用 ExpressRoute 高级版的请求会失败。
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>我是否可以从高级功能集选择所需的功能？
 
@@ -343,10 +343,10 @@ Office 365 服务要求启用高级版外接程序。 有关费用，请参阅[�
 
 * 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只在将路由筛选器附加到线路之后才会播发。 默认情况下，不会显示任何前缀。
 
-## <a name="expressRouteDirect"></a>ExpressRoute Direct（预览版）
+## <a name="expressRouteDirect"></a>ExpressRoute Direct
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
-## <a name="globalreach"></a>Global Reach（预览版）
+## <a name="globalreach"></a>全球覆盖
 
 [!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

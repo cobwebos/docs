@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 19206278f838b77954c28e95e9171a857ba1338a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1cf5fb00e9f1a202fe7ad46253f916e3e6bee7a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670643"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295566"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -46,15 +46,14 @@ ms.locfileid: "56670643"
 
 此容器支持设置的最小值和建议值：
 
-|设置| 最小值 | 建议 |
-|-----------|---------|-------------|
-|核心数<BR>`--cpus`|1 个内核|1 个内核|
-|内存<BR>`--memory`|2 GB|4 GB|
-|每秒事务数<BR>(TPS)|20 TPS|40 TPS|
+|容器| 最小值 | 建议 | TPS<br>（最低配置，最大值）|
+|-----------|---------|-------------|--|
+|LUIS|单核，2 GB 内存|单核，4 GB 内存|20,40|
 
-每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
+* 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
+* TP-每秒事务数
 
-`--cpus` 和 `--memory` 设置用作 `docker run` 命令的一部分。
+核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 获取容器映像
 

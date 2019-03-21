@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 03/19/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: a24448507fa16a48ab3522c3307261d989d773ee
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 25f32750b612bb66f23eb19c378f7935689f3a73
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895011"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258609"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 
@@ -26,8 +26,6 @@ ms.locfileid: "55895011"
 > 有关高级编码器的问题，请发送电子邮件到 mepd@microsoft.com。
 > 
 > 本主题中所述的媒体编码器高级工作流媒体处理器在中国不可用。 
-> 
-> 
 
 本文档包含受**媒体编码器高级工作流**公开预览版编码器支持的输入和输出文件格式及编解码器列表。
 
@@ -37,7 +35,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 
 **媒体编码器高级工作流**支持[此](#closed_captioning)部分中所述的隐藏字幕。 
 
-## <a id="input_formats"></a>Media Encoder Premium Workflow 输入格式和编解码器
+## <a id="input_formats"></a>媒体编码器高级工作流输入格式和编解码器
 
 以下部分列出了此媒体处理器支持的作为输入的编解码器和文件格式。
 
@@ -74,7 +72,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * Windows Media 音频
 * WAV/PCM
 
-## <a id="output_format"></a>Media Encoder Premium Workflow 输出格式和编解码器
+## <a id="output_format"></a>媒体编码器高级工作流输出格式和编解码器
 
 以下部分列出了支持作为此媒体处理器输入的编解码器和文件格式。
 

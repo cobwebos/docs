@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45e9553a3af8a09a6630efa771294661702feef5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
+ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670688"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294648"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
@@ -32,7 +33,7 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 
 - 状态 4：驻留在宿主组织的 Azure AD 中并且 UserType = Guest，其凭据由宿主组织管理。
 
-  ![显示邀请方的姓名首字母缩写](media/user-properties/redemption-diagram.png)
+  ![图描绘了四个用户状态](media/user-properties/redemption-diagram.png)
 
 
 现在，让我们看看 Azure AD B2B 协作用户在 Azure AD 中的大致情况。
@@ -41,7 +42,7 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 
 状态 1 和状态 2 帐户是邀请来宾用户使用来宾用户自己的凭据进行协作的结果。 最初向来宾用户发送邀请时，会在目录中创建帐户。 这个帐户没有与之关联的任何凭据，因为是由来宾用户的标识提供者执行身份验证。 目录中来宾用户帐户的“源”属性设置为“受邀用户”。 
 
-![兑换产品之前](media/user-properties/before-redemption.png)
+![显示产品/服务兑换之前的用户属性的屏幕截图](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>兑换邀请之后
 
@@ -87,7 +88,7 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 
 ## <a name="filter-for-guest-users-in-the-directory"></a>对目录中的来宾用户进行筛选
 
-![筛选来宾用户](media/user-properties/filter-guest-users.png)
+![显示来宾用户的筛选器的屏幕截图](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>转换 UserType
 可使用 PowerShell 将 UserType 从“成员”转换为“来宾”，反之亦然。 但是，UserType 属性表示用户与组织之间的关系。 因此，只有当用户与组织之间的关系发生更改时，才应当更改此属性。 如果用户的关系发生更改，用户主体名称 (UPN) 是否应该更改？ 用户是否应该继续有权访问同样的资源？ 是否应该分配邮箱？ 我们不建议使用 PowerShell 以原子活动的形式更改 UserType。 此外，为防止使用 PowerShell 导致此属性不可变，我们不建议对此值产生依赖关系。
@@ -97,7 +98,7 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 
 可以禁用默认限制，便于为公司目录中的来宾用户提供与成员用户相同的权限。
 
-![删除来宾用户限制](media/user-properties/remove-guest-limitations.png)
+![用户设置中显示的外部用户选项的屏幕截图](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全局地址列表中显示来宾用户？
 是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅[在 Office 365 组中管理来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq)中的**能否在全局地址列表中显示来宾对象？**。 

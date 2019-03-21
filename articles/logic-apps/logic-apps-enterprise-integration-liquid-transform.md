@@ -9,18 +9,18 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 3441350a07047676ac43de23262be6c54912162c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104159"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292880"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
 
-可以在逻辑应用中通过**撰写**或**分析 JSON** 等本机数据操作完成基本 JSON 转换。 若要执行高级 JSON 转换，可以使用 [Liquid](https://shopify.github.io/liquid/)（一种用于灵活 Web 应用的开源模板语言）创建模板或映射。 Liquid 模板允许你定义如何转换 JSON 输出并支持复杂的 JSON 转换，例如迭代、控制流、变量，等等。 
+可以在逻辑应用中通过**撰写**或**分析 JSON** 等本机数据操作完成基本 JSON 转换。 若要执行高级 JSON 转换，可以使用 [Liquid](https://shopify.github.io/liquid/)（一种用于灵活 Web 应用的开源模板语言）创建模板或映射。 Liquid 模板定义如何转换 JSON 输出，并支持更复杂的 JSON 转换，如迭代、 控制流、 变量等。 
 
-因此，在可以在逻辑应用中执行 Liquid 转换之前，必须先使用 Liquid 映射定义从 JSON 到 JSON 的映射，然后将该映射存储在集成帐户中。 本文展示了如何创建并使用此 Liquid 模板或映射。 
+在逻辑应用中执行 Liquid 转换之前，必须首先定义 JSON 到 JSON 的映射通过映射 Liquid 模板和应用商店集成帐户中。 本文展示了如何创建并使用此 Liquid 模板或映射。 
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -34,7 +34,10 @@ ms.locfileid: "58104159"
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>为集成帐户创建 Liquid 模板或映射
 
-1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在 Liquid 模板，你可以使用[Liquid 筛选](https://shopify.github.io/liquid/basics/introduction/#filters)，可使用该技术[DotLiquid](https://dotliquidmarkup.org/)和C#命名约定。 但是，请确保您*以大写字符开头的筛选器名称*，不是小写字符。 
+1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在 Liquid 模板，你可以使用[Liquid 筛选](https://shopify.github.io/liquid/basics/introduction/#filters)，可使用该技术[DotLiquid](https://dotliquidmarkup.org/)和C#命名约定。 
+
+   > [!NOTE]
+   > 请确保使用的筛选器名称*句子大小写*在模板中。 否则，筛选器不会工作。
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}

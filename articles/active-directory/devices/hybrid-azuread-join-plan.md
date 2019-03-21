@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 018281406bb810f6357ad00948060cedae57fc6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: de80825ccdd331f57dcd31d307196dc0b45b9cc9
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003814"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294580"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -116,7 +116,8 @@ Windows 下层设备的混合 Azure AD 加入：
 
 如果加入 Windows 10 域的设备在你的租户中[已注册 Azure AD](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices)，强烈建议在启用混合 Azure AD 加入之前删除该状态。 从 Windows 10 1809 版本开始，进行了以下更改来避免此双重状态： 
  - 在设备加入混合 Azure AD 后，会自动删除任何现有的已注册 Azure AD 状态。 
- - 可以通过添加以下注册表项阻止将已加入域的设备注册到 Azure AD - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001
+ - 可阻止您加入的域的设备成为 Azure AD 注册通过添加此注册表项-HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin，"BlockAADWorkplaceJoin"= dword: 00000001。
+ - 此更改现已可供 Windows 10 1803年发布与 KB4489894。
 
 混合 Azure AD 加入不支持与 FIPS 兼容的 Tpm。 如果你的设备具有与 FIPS 兼容的 Tpm，则必须在继续进行混合 Azure AD 加入之前禁用它们。 禁用 FIPS 模式下的 Tpm，因为它是依赖于 TPM 制造商，Microsoft 不提供任何工具。 请联系您的硬件 OEM 获取支持。
 

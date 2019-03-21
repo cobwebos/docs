@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 75e85ae15ded81faf372ba018829a185e8badd60
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224611"
+ms.locfileid: "58285065"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -31,9 +31,9 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 在备份 SQL Server 数据库之前，请检查以下条件：
 
-1. 标识或[创建](backup-azure-sql-database.md#create-a-recovery-services-vault)同一区域或区域设置用作托管的 SQL Server 实例的 VM 的恢复服务保管库。
-2. 检查备份 SQL 数据库所需的 [VM 权限](#fix-sql-sysadmin-permissions)。
-3. 验证 VM 是否已建立[网络连接](backup-azure-sql-database.md#establish-network-connectivity)。
+1. 标识或[创建](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)同一区域或区域设置用作托管的 SQL Server 实例的 VM 的恢复服务保管库。
+2. 检查备份 SQL 数据库所需的 [VM 权限](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)。
+3. 验证 VM 是否已建立[网络连接](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
 4. 检查是否根据 Azure 备份的[命名准则](#verify-database-naming-guidelines-for-azure-backup)命名了 SQL Server 数据库。
 5. 验证是否未为该数据库启用了其他任何备份解决方案。 在设置此方案之前，请禁用其他所有 SQL Server 备份。 可以同时针对某个 Azure VM 以及该 VM 上运行的 SQL Server 数据库启用 Azure 备份，而不会发生任何冲突。
 
@@ -60,7 +60,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 - 为了发现虚拟机上的数据库，Azure 备份会创建帐户 NT SERVICE\AzureWLBackupPluginSvc。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。
 - Azure 备份利用 **NT AUTHORITY\SYSTEM** 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。
 
-如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](#fix-sql-sysadmin-permissions)予以解决。
+如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)予以解决。
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>验证 Azure 备份的数据库命名准则
 

@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/25/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 664a2c6bfc4a73b7d792b71c4b81df54b05fcd74
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 373312b4c7f05fe41c9ca8165b8ff6f1b0e56f1b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081628"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454963"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 for Customer Engagement 应用程序“体验版”选项卡
 
-使用“体验版”选项卡为客户创建试用体验。  它为客户提供了以自己的方式亲手试用产品/服务主要功能和优点的机会，从而在真实的实现场景中展示这些功能及优点。  在提供的试用版选项中，体验版在生成高质量潜在顾客并提高潜在顾客转化率方面，是最有效的一个选项。  有关详细信息，请参阅[什么是体验版？](../../cloud-partner-portal-orig/what-is-test-drive.md)
+使用“体验版”选项卡为客户创建试用体验。  它为客户提供了以自己的方式亲手试用产品/服务主要功能和优点的机会，从而在真实的实现场景中展示这些功能及优点。  在提供的试用版选项中，体验版在生成高质量潜在顾客并提高潜在顾客转化率方面，是最有效的一个选项。  有关详细信息，请参阅[什么是体验版？](../test-drive/what-is-test-drive.md)
 
-Dynamics 365 应用程序体验版将作为 Microsoft 托管解决方案自动运行。  有关详细信息，请参阅[托管体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/hosted-test-drive)。
+Dynamics 365 应用程序体验版将作为 Microsoft 托管解决方案自动运行。  有关详细信息，请参阅[托管体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)。
 
 “体验版”选项卡可包含三个部分：“体验版”、“详细信息”和“技术配置”。  启用“体验版”功能后，才会显示后两个部分。  名称旁边附有星号 (*) 的字段表示必填字段。 
 
@@ -43,9 +43,9 @@ Dynamics 365 应用程序体验版将作为 Microsoft 托管解决方案自动�
 
 下表介绍为 Dynamics 365 应用程序设置体验版所需的字段。
 
-|      字段                    |    Description                  |
+|      字段                    |    描述                  |
 |    ---------                  |  ---------------                |
-|      Description              |   介绍可以在体验版上执行的操作 可以使用基本 HTML 标记来设置此说明的格式。 例如，&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt;、标题。  |
+|      描述              |   介绍可以在体验版上执行的操作 可以使用基本 HTML 标记来设置此说明的格式。 例如，&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt;、标题。  |
 |  用户手册                  |   上传客户进行体验版体验时可以使用的用户手册。 此文档必须是 .pdf 文件。              |
 |  体验版演示视频（可选） |  可以提供体验版的视频演示。 客户在进行体验之前，可以观看此视频。 提供在 YouTube 或 Vimeo 上的视频的 URL。 如果选择“+ 添加视频”，系统会提示你提供以下信息：<ul><li>名称</li><li>代码</li><li>缩略图（PNG 格式，533 x 324 像素）</li></ul>  |
 |   |   |
@@ -59,7 +59,7 @@ Dynamics 365 应用程序体验版将作为 Microsoft 托管解决方案自动�
 
 其中的字段具有以下用途：
 
-|      字段                    |    Description                  |
+|      字段                    |    描述                  |
 |    ---------                  |  ---------------                |
 | 体验版类型            | 选择“Microsoft 托管(Dynamics 365 for Customer Engagement)”。  |
 | 最大并发体验版    | 在任何给定时间点，活跃体验版的并发实例数。 当每个用户的体验版处于活动状态时，该用户将使用一个 Dynamics 许可证，因此，你需要确保至少有这么多的 Dynamics 许可证可供体验版用户使用。 建议的值为 3-5。  |

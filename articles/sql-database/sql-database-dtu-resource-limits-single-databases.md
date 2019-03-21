@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/14/2019
-ms.openlocfilehash: 37dcde3d55ce704c7a5dbb6d7757420ba8c393f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/20/2019
+ms.openlocfilehash: 7c35c1f3568ab98bdd3c7fba8acd3aa958aa795b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885095"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285120"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的单一数据库的资源限制
 
@@ -73,12 +73,14 @@ ms.locfileid: "57885095"
 | **计算大小** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | 最大 DTU 数 | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| 包含的存储 (GB) | 500 | 500 | 500 | 500 | 4096 | 4096 |
-| 最大存储选择 (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 | 4096 |
+| 包含的存储 (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
+| 最大存储选择 (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
 | 最大内存中 OLTP 存储 (GB) | 第 | 2 | 4 | 8 | 14 | 32 |
 | 最大并发工作线程数（请求数）| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | 最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
+
+\* 从 1024 GB 到 4096 GB，增量为 256 GB
 
 > [!IMPORTANT]
 > 除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：中国东部、中国北部、德国中部、德国东北部、美国中西部、US DoD 区域和美国政府中部。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅 P11-P15 当前限制。  

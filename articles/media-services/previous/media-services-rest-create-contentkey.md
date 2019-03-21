@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 6ae0b534b64ac3c845c603061ee7e0b8e8467cf0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 84fd4f0971c56d8cf2cdf138ba8ac8ea1a6e07eb
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996213"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293832"
 ---
 # <a name="create-content-keys-with-rest"></a>使用 REST 创建内容密钥
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ ms.locfileid: "55996213"
              Array.Copy(array, array2, 8);
              return Convert.ToBase64String(array2);
          }
-5. 使用前面步骤中收到的 **EncryptedContentKey**（转换为 base64 编码的字符串）、**ProtectionKeyId**、**ProtectionKeyType**、**ContentKeyType** 和 **Checksum** 值创建内容密钥。
+5. 使用前面步骤中收到的“EncryptedContentKey”（转换为 base64 编码的字符串）、“ProtectionKeyId”、“ProtectionKeyType”、“ContentKeyType”和“Checksum”值创建内容密钥。
 6. 通过 $links 操作将 **ContentKey** 实体与**资产**实体相关联。
 
 本文中未说明如何生成 AES 密钥、加密密钥以及计算校验和。 

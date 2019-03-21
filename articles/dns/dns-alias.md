@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6c5e0e47f006c6be170bdbf6fee431bfd3b6df0e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f6d6b2ae5fd3a0c08d37b93c73656ac6bb71d67
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105050"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295634"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS 别名记录概述
 
@@ -59,6 +59,13 @@ DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的�
 可以使用别名记录来解决此问题。 与 CNAME 记录不同，别名记录可以在区域顶点创建，应用程序所有者可以使用它来将其区域顶点记录指向具有外部端点的流量管理器配置文件。 应用程序所有者可以指向用于其 DNS 区域中任何其他域的相同流量管理器配置文件。
 
 例如，contoso.com 和 www\.contoso.com 可以指向同一个流量管理器配置文件。 若要详细了解如何将别名记录与 Azure 流量管理器配置文件配合使用，请参阅“后续步骤”部分。
+
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>指向 Azure CDN 终结点的区域顶点
+就像一个流量管理器配置文件中，您还可以使用别名记录以指向 Azure CDN 终结点的 DNS 区域顶点处。 创建使用 Azure 存储和 Azure CDN 的静态网站时，这很有用。 然后可访问该网站，而前面添加到你的 DNS 名称"www"。
+
+例如，如果你的静态网站名为 www.contoso.com，用户可以访问站点上使用 contoso.com，而无需在前面附加 www 的 DNS 名称。
+
+如前面所述，在区域顶点不支持 CNAME 记录。 因此，不能使用 CNAME 记录以 contoso.com 指向 CDN 终结点。 相反，可以使用别名记录为区域顶点处直接指向 CDN 终结点。
 
 ## <a name="next-steps"></a>后续步骤
 

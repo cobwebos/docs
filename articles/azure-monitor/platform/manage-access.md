@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 66cef8369a314a76cf619e436cd25d6bdf628c45
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: be285b6a51ae5a0f4239b841ce64100f1875d785
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076294"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294342"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>管理日志数据和 Azure Monitor 中的工作区
 Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区本质上是一个包含数据和配置信息的容器。 若要管理对日志数据的访问，需要对工作区执行各种管理任务。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
@@ -136,15 +136,6 @@ _访问控制模式_是每个工作区设置，它定义如何为该工作区中
 > [!NOTE]
 > 如果用户仅具有资源权限到工作区，他们将只能访问工作区中使用[为中心模式](#access-modes)。
 
-
-### <a name="define-access-control-mode-in-azure-portal"></a>在 Azure 门户中定义的访问控制模式
-您可以查看当前工作区访问控件模式上**概述**页中的工作区**Log Analytics 工作区**菜单。
-
-![查看工作区的访问控制模式](media/manage-access/view-access-control-mode.png)
-
-您可以更改此设置在**属性**工作区的页。 如果你没有权限配置工作区，将禁用更改的设置。
-
-![更改工作区的访问模式](media/manage-access/change-access-control-mode.png)
 
 ### <a name="define-access-control-mode-in-azure-portal"></a>在 Azure 门户中定义的访问控制模式
 您可以查看当前工作区访问控件模式上**概述**页中的工作区**Log Analytics 工作区**菜单。

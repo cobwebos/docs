@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 7daf76605d40495d6c9cb5076f0403a78819adfc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: aa97e60fe296190f3478d29bc80c70ea487e8955
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439157"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258575"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>大规模使用 Azure Monitor 监视
 
@@ -29,7 +29,7 @@ ms.locfileid: "57439157"
 ## <a name="using-log-analytics-workspace"></a>使用 Log Analytics 工作区
 
 > [!NOTE]
-> Azure VM 备份，MAB 代理，System Center DPM (SC DPM) 中的数据是被抽取到 Log Analytics 工作区通过诊断设置。 针对 SQL 备份 Azure Vm，Azure 文件共享备份 Microsoft Azure 备份服务器 (MABS) 中的支持即将推出。
+> 从 Azure VM 备份，MAB 代理，System Center DPM (SC DPM)，在 Azure Vm 中 SQL 备份的数据是被抽取到 Log Analytics 工作区通过诊断设置。 支持 Azure 文件共享备份，Microsoft Azure 备份服务器 (MABS) 即将推出。
 
 我们利用两个 Azure 服务的功能**诊断设置**（若要将数据从多个 Azure 资源管理器资源发送到另一个资源） 和**Log Analytics** (LA-生成您可以在其中定义使用操作组的其他通知通道的自定义警报） 用于监视在规模较大。 有关如何使用 LA 大规模监视 Azure 备份以下各节详细信息。
 

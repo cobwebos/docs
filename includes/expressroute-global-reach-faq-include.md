@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 01/29/2019
+ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 81b2db2da7c1efe0d09c065270c3493f297e49ad
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55235956"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305174"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>什么是 ExpressRoute Global Reach？
 
@@ -49,7 +49,7 @@ ExpressRoute 可在本地网络与 Microsoft 云服务之间建立连接。 Expr
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>启用 ExpressRoute Global Reach 后，本地网络之间的网络吞吐量预期有多少？
 
-ExpressRoute Global Reach 启用的本地网络之间的网络吞吐量以两条 ExpressRoute 线路中吞吐量较小者为准。
+ExpressRoute Global Reach 启用的本地网络之间的网络吞吐量以两条 ExpressRoute 线路中吞吐量较小者为准。 本地到 Azure 流量和内部部署的本地流量共享相同的线路并受到相同的带宽上限。 
 
 ### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>使用 ExpressRoute Global Reach 时，对于我可以播发的路由数和我将收到的路由数的限制是多少？
 

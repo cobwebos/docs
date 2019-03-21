@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 164ec0898e2f7ad461ab63ce0fcaf47a87998797
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997831"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286289"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的备份和还原
 
@@ -32,8 +32,8 @@ ms.locfileid: "52997831"
 
 下表提供有关适用于 Azure VM 上运行的 SQL Server 的各种备份和还原选项的信息：
 
-| 策略 | SQL 版本 | Description |
-|---|---|---|---|
+| 策略 | SQL 版本 | 描述 |
+|---|---|---|
 | [自动备份](#automated) | 2014<br/> 2016<br/> 2017 | 使用自动备份可以针对 SQL Server VM 上的所有数据库计划定期备份。 备份在 Azure 存储中最多存储 30 天。 从 SQL Server 2016 开始，自动备份 v2 提供更多选项，例如，配置手动计划，以及完整备份和日志备份的频率。 |
 | [适用于 SQL VM 的 Azure 备份](#azbackup) | 2012<br/> 2014<br/> 2016<br/> 2017 | Azure 备份为 Azure VM 中运行的 SQL Server 提供企业级备份功能。 使用此服务，可以集中管理多个服务器和数千个数据库的备份。 可在门户中将数据库还原到特定的时间点。 此服务提供可将备份保留数年之久的可自定义保留策略。 此功能目前处于公开预览状态。 |
 | [手动备份](#manual) | All | 根据所用的 SQL Server 版本，可通过不同的方法手动备份和还原 Azure VM 上运行的 SQL Server。 在这种情况下，你需要负责指定数据库的备份方式和存储位置，并管理这些备份。 |
@@ -56,10 +56,10 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 有关如何为 SQL VM 配置自动备份的详细信息，请参阅以下文章之一：
 
-- **SQL Server 2016/2017**：[适用于 Azure 虚拟机的自动备份 v2](virtual-machines-windows-sql-automated-backup-v2.md)
+- **SQL Server 2016/2017**：[为 Azure 虚拟机的自动备份 v2](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**：[适用于 SQL Server 2014 虚拟机的自动备份](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a>适用于 SQL VM 的 Azure 备份（公共预览版）
+## <a id="azbackup"></a> SQL Vm 的 azure 备份
 
 [Azure 备份](/azure/backup/)为 Azure VM 中运行的 SQL Server 提供企业级备份功能。 在恢复服务保管库中存储和管理所有备份。 此解决方案提供许多优势，尤其是针对企业：
 
@@ -76,9 +76,9 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 有关此解决方案工作原理的简要概述和演示，请观看以下视频：
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2dNbw]
+> [!VIDEO https://www.youtube.com/embed/wmbANpHos_E]
 
-适用于 SQL VM 的此 Azure 备份解决方案目前以公共预览版提供。 有关详细信息，请参阅[将 SQL Server 数据库备份到 Azure](../../../backup/backup-azure-sql-database.md)。
+此面向 SQL Vm 的 Azure 备份解决方案已正式发布。 有关详细信息，请参阅[将 SQL Server 数据库备份到 Azure](../../../backup/backup-azure-sql-database.md)。
 
 ## <a id="manual"></a>手动备份
 
@@ -144,7 +144,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 | 备份到 VM 上附加的磁盘 |   |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 集中式可自定义备份报告 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 合并的故障电子邮件警报 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| 基于 Log Analytics 自定义监视 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| 自定义监视基于 Azure Monitor 日志 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 使用 SSMS 或 Transact-SQL 脚本监视备份作业 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 使用 SSMS 或 Transact-SQL 脚本还原数据库 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

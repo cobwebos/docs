@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 60ff63a049f225886d69c1a89a2930671e533d78
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: 435c041bb5fb0a398f92914f943166108cc20080
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910907"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258337"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>在基于 Hadoop 的 HDInsight 群集上安装并使用 Presto
 
-本文介绍如何使用脚本操作在基于 Hadoop 的 Adobe HDInsight 群集上安装 Presto。 此外，还介绍如何在现有的 Presto HDInsight 群集上安装 Airpal。
+此文章介绍了如何使用脚本操作在基于 Hadoop 的 Azure HDInsight 群集上安装 Presto。 此外，还介绍如何在现有的 Presto HDInsight 群集上安装 Airpal。
 
 HDInsight 还为 Apache Hadoop 群集提供了 Starburst Presto 应用程序。 有关详细信息，请参阅[在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-install-applications)。
 
@@ -42,11 +42,11 @@ HDInsight 还为 Apache Hadoop 群集提供了 Starburst Presto 应用程序。 
 
 1. 执行[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤，开始预配群集。 请确保使用**自定义**群集创建流创建群集。 群集必须满足以下要求：
 
-    * 它必须是装有 HDInsight 3.6 版的 Hadoop 群集。
+   * 它必须是装有 HDInsight 3.6 版的 Hadoop 群集。
 
-    * 它必须使用 Azure 存储作为数据存储。 目前尚不支持在使用 Azure Data Lake Storage 作为存储选项的群集上使用 Presto。
+   * 它必须使用 Azure 存储作为数据存储。 目前尚不支持在使用 Azure Data Lake Storage 作为存储选项的群集上使用 Presto。
 
-    ![HDInsight、自定义（大小、设置、应用）](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
+     ![HDInsight、自定义（大小、设置、应用）](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
 2. 在“高级设置”区域中，选择“脚本操作”。 提供以下信息。 对于脚本类型，还可以选择“安装 Presto”选项：
    
@@ -163,7 +163,6 @@ HDInsight 还为 Apache Hadoop 群集提供了 Starburst Presto 应用程序。 
 
 5. 等待新实例准备就绪。 记下 Presto 协调器地址：
 
-
     `sudo slider registry --name presto1 --getexp presto`
 
 ## <a name="generate-benchmark-data-for-hdinsight-clusters-that-run-presto"></a>为运行 Presto 的 HDInsight 群集生成基准数据
@@ -176,8 +175,6 @@ TPC-DS 是有关测量多个决策支持系统（包括大数据系统）的性�
 * [在 HDInsight Hadoop 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 Hue 是一个 Web UI，可以使用它轻松创建、运行及保存 Apache Pig 和 Hive 作业。
 
 * [在 HDInsight Hadoop 群集上安装 Apache Giraph 并使用 Giraph 处理大型图形](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在基于 Hadoop 的 HDInsight 群集上安装 Giraph。 使用 Giraph 时，可以通过 Hadoop 执行图像处理。 它也可与 Azure HDInsight 配合使用。
-
-* [在 HDInsight Hadoop 群集上安装并使用 Apache Solr](hdinsight-hadoop-solr-install-linux.md)。 使用群集自定义在基于 Hadoop 的 HDInsight 群集上安装 Solr。 使用 Solr，可以对存储的数据执行功能强大的搜索操作。
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

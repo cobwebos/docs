@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 7bc3ea054056ac67cf0a116fb1538bc1483ab4d4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 61b3a9e066a3ee20effa97f1c6c7a0bd1ae90ac0
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223523"
+ms.locfileid: "58285832"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -33,7 +33,9 @@ ms.locfileid: "58223523"
 
 #### <a name="size-of-the-subnet"></a>子网的大小
 
-V1 SKU，如果应用程序网关使用一个专用的 IP 地址，每个实例，并使用另一个专用 IP 地址专用前端 IP 配置。 另外，Azure 会在每个子网中保留前四个 IP 地址和最后一个 IP 地址供内部使用。 例如，如果应用程序网关设置为三个实例并且没有专用前端 IP，则需要 /29 子网大小或更大。 在这种情况下，应用程序网关使用三个 IP 地址。 如果将三个实例和一个 IP 地址用于专用前端 IP 配置，则需要 /28 子网大小或更大，因为需要四个 IP 地址。
+如果配置了专用前端 IP 配置，则应用程序网关使用每个实例的一个专用 IP 地址，以及另一个专用 IP 地址。 另外，Azure 会在每个子网中保留前四个 IP 地址和最后一个 IP 地址供内部使用。 例如，如果应用程序网关设置为三个实例，并且没有专用前端 IP，然后将子网-供内部使用的五个 IP 地址和应用程序网关的三个实例的三个 IP 地址中需要至少为八个 IP 地址。 因此，在本例中，为/29 子网大小或更高版本需要。 如果具有三个实例，然后将所需的九个 IP 地址的 IP 地址的专用前端 IP 配置，三个 IP 地址为三个实例的应用程序网关，一个 IP 地址进行专用前端 IP 和五个 IP 地址内部使用。 因此，在本例中，/28 子网大小或更高版本需要。
+
+最佳做法是使用最少/28 子网大小。 这使你 11 可用地址。 如果应用程序负载要求超过 10 个实例，则应考虑/27 或/26 子网大小。
 
 #### <a name="network-security-groups-supported-on-the-application-gateway-subnet"></a>应用程序网关子网支持网络安全组
 
@@ -41,7 +43,7 @@ V1 SKU，如果应用程序网关使用一个专用的 IP 地址，每个实例�
 
 - 对于应用程序网关 v1 SKU，必须为端口 65503-65534 上的传入流量设置例外，对于 v2 SKU，必须为端口 65200 - 65535 上的传入流量设置例外。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）无法对这些终结点做出任何更改。
 
-- 不能阻止出站 Internet 连接。
+- 不能阻止出站 Internet 连接。 NSG 中的默认出站规则已经允许 Internet 连接。 建议不要删除默认的出站规则，且不要创建其他拒绝出站 Internet 连接的出站规则。
 
 - 必须允许来自 AzureLoadBalancer 标记的流量。
 
@@ -57,11 +59,12 @@ V1 SKU，如果应用程序网关使用一个专用的 IP 地址，每个实例�
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>用户定义的路由应用程序网关子网支持
 
-V1 SKU，如果用户定义的路由 (Udr)，只要它们不会更改的端到端请求/响应通信应用程序网关子网，支持。
-
-例如，可以在应用程序网关子网中设置 UDR 来指向用于数据包检查的防火墙设备，但必须确保数据包在检查后可以到达其预定目的地。 如果做不到这一点，可能会导致不正确的运行状况探测或流量路由行为。 这包括已了解的路由或通过 ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
+V1 SKU，如果用户定义的路由 (Udr)，只要它们不会更改的端到端请求/响应通信应用程序网关子网，支持。 例如，可以在应用程序网关子网中设置 UDR 来指向用于数据包检查的防火墙设备，但必须确保数据包在检查后可以到达其预定目的地。 如果做不到这一点，可能会导致不正确的运行状况探测或流量路由行为。 这包括已了解的路由或通过 ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
 
 对于 v2 不支持 SKU、 应用程序网关子网上的 Udr。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关（公共预览版）](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations)。
+
+> [!NOTE]
+> 使用应用程序网关子网上的 Udr 将导致中的运行状况状态[后端运行状况视图](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)显示为**未知**并且还将导致错误生成的应用程序网关日志和度量值。 建议您不要使用 Udr 上应用程序网关子网来查看后端运行状况、 日志和指标。
 
 ## <a name="frontend-ip"></a>前端 IP
 
@@ -87,10 +90,11 @@ V1 SKU，如果用户定义的路由 (Udr)，只要它们不会更改的端到�
 
 - 如果同一应用程序网关实例上配置多个 web 应用程序或同一父域的多个子域，则可选择多站点侦听器。 为多站点侦听器，此外需要输入主机名。 这是因为应用程序网关依赖于 HTTP 1.1 主机标头来托管相同的公共 IP 地址和端口上的多个网站。
 
-> [!NOTE]
-> 发生 v1 Sku 时向他们显示的顺序处理侦听器。 因此，如果基本侦听器与传入请求匹配，它会先处理该请求。 因此，应在基本侦听器以确保将流量路由到正确的后端之前配置多站点侦听器。
->
-> 对于 v2 Sku，多站点侦听器在基本侦听器之前进行处理。
+#### <a name="order-of-processing-listeners"></a>处理侦听器的顺序
+
+发生 v1 Sku 时向他们显示的顺序处理侦听器。 因此，如果基本侦听器与传入请求匹配，它会先处理该请求。 因此，应在基本侦听器以确保将流量路由到正确的后端之前配置多站点侦听器。
+
+对于 v2 Sku，多站点侦听器在基本侦听器之前进行处理。
 
 ### <a name="frontend-ip"></a>前端 IP
 
@@ -110,9 +114,9 @@ V1 SKU，如果用户定义的路由 (Udr)，只要它们不会更改的端到�
 
   若要配置安全套接字层 (SSL) 终止和端到端 SSL 加密，需要证书添加到以启用要派生一个根据 SSL 协议规范的对称密钥的应用程序网关的侦听器。 然后使用对称密钥进行加密和解密发送到网关的流量。 网关证书需要采用个人信息交换 (PFX) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。 
 
-#### <a name="supported-certs"></a>受支持的证书
+#### <a name="supported-certificates"></a>支持的证书
 
-支持自签名的证书、 CA 证书、 通配符证书和 EV 证书。
+请参阅[支持为 SSL 终端的证书](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination)。
 
 ### <a name="additional-protocol-support"></a>其他协议支持
 
@@ -160,11 +164,11 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 - 选择基于路径的侦听器，如果你想要将路由请求带有特定后端池的特定 URL 路径。 路径模式仅应用到 URL 的路径，而不应用到该 URL 的查询参数。
 
 
-> [!NOTE]
->
-> 如果 v1 Sku，基于路径的规则的 URL 路径映射中列出各路径的顺序处理的传入请求的模式匹配。 出于此原因，如果某个请求与匹配 URL 路径映射中的两个或多个路径中的模式，然后路径列出的第一次将匹配，并请求将转发到后端与该路径相关联。
->
-> 对于 v2 Sku 完全匹配对路径在 URL 路径映射中的列出的顺序保留更高的优先级。 为此，因此，如果请求与两个或多个路径中的模式相匹配，则请求将转发到后端与完全与请求匹配该路径相关联。 如果传入请求中的路径不完全匹配 URL 路径映射中的任何路径，然后匹配传入请求的模式的基于路径的规则的 URL 路径映射中列出各路径的顺序处理。
+#### <a name="order-of-processing-rules"></a>处理规则的顺序
+
+如果 v1 Sku，基于路径的规则的 URL 路径映射中列出各路径的顺序处理的传入请求的模式匹配。 出于此原因，如果某个请求与匹配 URL 路径映射中的两个或多个路径中的模式，然后路径列出的第一次将匹配，并请求将转发到后端与该路径相关联。
+
+对于 v2 Sku 完全匹配对路径在 URL 路径映射中的列出的顺序保留更高的优先级。 为此，因此，如果请求与两个或多个路径中的模式相匹配，则请求将转发到后端与完全与请求匹配该路径相关联。 如果传入请求中的路径不完全匹配 URL 路径映射中的任何路径，然后匹配传入请求的模式的基于路径的规则的 URL 路径映射中列出各路径的顺序处理。
 
 ### <a name="associated-listener"></a>关联的侦听器
 
@@ -186,7 +190,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 - #### <a name="redirection-type"></a>重定向类型
 
-  选择从所需的重定向的类型：永久临时的发现，或请参阅其他。
+  选择从所需的重定向的类型：Permanent(301)、 Temporary(307)、 Found(302) 或，请参阅 other(303)。
 
 - #### <a name="redirection-target"></a>重定向目标
 

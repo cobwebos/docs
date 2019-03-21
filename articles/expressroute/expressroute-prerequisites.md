@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 03/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 2458dadb8a97deee67a6df9b00ca5390fccb2902
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: afe8d3971a51d57498e3e32b7e1cf5bf5a3263d6
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812270"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295192"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 先决条件和清单
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需确认是否符合以下部分中所列的要求。
@@ -27,10 +27,11 @@ ms.locfileid: "55812270"
 ## <a name="connectivity-provider"></a>连接服务提供商
 
 * 可使用 [ExpressRoute 连接合作伙伴](expressroute-locations.md#partners) 连接到 Microsoft 云。 有 [三种方法](expressroute-introduction.md)可以在本地网络与 Microsoft 之间建立连接。
-* 即使提供商不是 ExpressRoute 连接合作伙伴，也可以通过 [云交换提供商](expressroute-locations.md#connectivity-through-exchange-providers)连接到 Microsoft 云。
+* 即使提供商不是 ExpressRoute 连接合作伙伴，也可通过[云交换提供商](expressroute-locations.md#connectivity-through-exchange-providers)连接到 Microsoft 云。
 
 ## <a name="network-requirements"></a>网络要求
-* **冗余连接**：对于你和提供商之间的物理连接，没有冗余方面的要求。 即使你只有[一个到云交换的物理连接](expressroute-faqs.md#onep2plink)，Microsoft 也会要求在 Microsoft 的路由器和对等互连路由器之间建立冗余性的 BGP 会话。
+* **每个对等互连位置的冗余**:Microsoft 要求 Microsoft 的路由器上每条 ExpressRoute 线路的对等互连路由器之间设置冗余 BGP 会话 (甚至当你刚才已[一个物理连接到云交换](expressroute-faqs.md#onep2plink))。
+* **灾难恢复的冗余**:Microsoft 强烈建议至少两个 ExpressRoute 线路位于不同的对等互连位置设置以避免单点故障。
 * **路由**：你或提供商需设置和管理针对[路由域](expressroute-circuit-peerings.md)的 BGP 会话，具体取决于连接到 Microsoft 云的方式。 某些以太网连接服务提供商或云交换服务提供商可能会以增值服务的形式提供 BGP 管理。
 * **NAT**：Microsoft 只能通过 Microsoft 对等互连接受公共 IP 地址。 如果使用的是本地网络中的专用 IP 地址，你或提供商需[使用 NAT](expressroute-nat.md)将专用 IP 地址转换为公共 IP 地址。
 * **QoS**：Skype for Business 具有各种服务（例如语音、视频、文本），这些服务所要求的 QoS 处理方式各有差异。 你和提供商应遵循 [QoS 要求](expressroute-qos.md)。
@@ -39,7 +40,7 @@ ms.locfileid: "55812270"
 ## <a name="office-365"></a>Office 365
 如果打算在 ExpressRoute 上启用 Office 365，请参阅以下文档详细了解 Office 365 方面的要求。
 
-* [Overview of ExpressRoute for Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)（适用于 Office 365 的 ExpressRoute 概述）
+* [Overview of ExpressRoute for Office 365（适用于 Office 365 的 ExpressRoute 概述）](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
 * [Routing with ExpressRoute for Office 365](https://support.office.com/article/Routing-with-ExpressRoute-for-Office-365-e1da26c6-2d39-4379-af6f-4da213218408)（通过适用于 Office 365 的 ExpressRoute 进行路由）
 * [使用 ExpressRoute 实现高可用性和故障转移](https://aka.ms/erhighavailability)
 * [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)

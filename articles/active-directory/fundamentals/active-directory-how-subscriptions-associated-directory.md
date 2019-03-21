@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 262f46b3d0b61923352f3ff98b08cb5e4f6d5e75
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: f8c5cb04c17e508409e67f0441daee4bc44c29d5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993900"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285000"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -62,11 +62,10 @@ Azure 订阅已与 Azure Active Directory (Azure AD)，这意味着该订阅信�
 
     订阅目录将发生更改并会显示一条成功消息。
 
-    ![成功消息](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
+    ![有关更改目录成功消息](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
+4. 使用**目录切换器**以转到新目录。 正确显示所有内容可能需要长达 10 分钟的时间。
 
-4. 使用目录切换器转到新目录。 正确显示所有内容可能需要长达 10 分钟的时间。
-
-    ![目录切换器页](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+    ![目录切换器页上，使用示例的信息](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
 更改订阅目录是服务级操作，不会影响订阅的账单所有权。 帐户管理员仍可从[帐户中心](https://account.azure.com/subscriptions)更改服务管理员。 若要删除原始目录，必须将订阅的账单所有权转让给新的帐户管理员。若要详细了解如何转让账单所有权，请参阅[将 Azure 订阅所有权转让给其他帐户](../../billing/billing-subscription-transfer.md)。 
 

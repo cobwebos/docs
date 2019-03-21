@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 564c4b011b26f2bc6b034233d014542172a4a739
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 665f8ac9a8b0738ed23649673c548bc6b1774d2d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885294"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259952"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure Stack 的标识概述
 
@@ -65,7 +65,7 @@ Azure Stack 要求使用 Active Directory 所支持的 Azure Active Directory (A
 - 限制为它们首先注册到的目录，即其组织的目录。
 - 可从本地目录导入。 如需详细信息，请参阅[将本地目录与 Azure Active Directory 集成](/azure/active-directory/connect/active-directory-aadconnect)。
 
-登录到组织的租户门户时，请使用 *https://portal.local.azurestack.external* URL。 从用于注册 Azure Stack 的域以外的域登录 Azure Stack 门户时，用于注册 Azure Stack 的域名必须追加到门户 URL 后面。 例如，如果 Azure Stack 注册 fabrikam.onmicrosoft.com 和中的日志记录的用户帐户是admin@contoso.com，用于登录到用户门户的 url 是： https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。
+当登录到你组织的租户门户时，使用*https:\//portal.local.azurestack.external* URL。 从用于注册 Azure Stack 的域以外的域登录 Azure Stack 门户时，用于注册 Azure Stack 的域名必须追加到门户 URL 后面。 例如，如果 Azure Stack 注册 fabrikam.onmicrosoft.com 和中的日志记录的用户帐户是admin@contoso.com，用于使用登录到用户门户的 url 将为： https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com。
 
 ### <a name="guest-users"></a>来宾用户
 
@@ -73,7 +73,7 @@ Azure Stack 要求使用 Active Directory 所支持的 Azure Active Directory (A
 
 若要邀请的来宾用户，云操作员和用户可以使用[Azure AD B2B 协作](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。 受邀的用户有权访问文档、 资源和应用程序从你的目录，并保持对你自己的资源和数据的控制。 
 
-可以作为来宾用户登录到其他组织的目录租户。 为此，请将该组织的目录名称追加到门户 URL。 例如，如果你属于 Contoso 组织，但想要登录 Fabrikam 目录，请使用 https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。
+可以作为来宾用户登录到其他组织的目录租户。 为此，请将该组织的目录名称追加到门户 URL。 例如，如果你属于 Contoso 组织，并且想要登录 Fabrikam 目录，则使用 https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com。
 
 ### <a name="applications"></a>应用程序
 
@@ -156,10 +156,10 @@ Azure Stack 的标识包括用户帐户、组和服务主体。
 
 若要在标识提供者中进行身份验证并接收 JSON Web 令牌，必须提供以下信息：
 
-1. **标识系统（颁发机构）的 URL**：可用于访问标识提供者的 URL。 例如，*https://login.windows.net*。
+1. **标识系统（颁发机构）的 URL**：可用于访问标识提供者的 URL。 例如， *https:\//login.windows.net*。
 2. **Azure 资源管理器的应用 ID URI**：已向标识提供者注册的 Azure 资源管理器的唯一标识符， 也是每个 Azure Stack 安装中的唯一标识符。
 3. **凭据**：用于在标识提供者中进行身份验证的凭据。
-4. **Azure 资源管理器 的 URL**：该 URL 是 Azure 资源管理器服务的位置。 例如，*https://management.azure.com* 或 *https://management.local.azurestack.external*。
+4. **Azure 资源管理器 的 URL**：该 URL 是 Azure 资源管理器服务的位置。 例如， *https:\//management.azure.com*或*https:\//management.local.azurestack.external*。
 
 当主体（客户端、应用程序或用户）发出访问资源所需的身份验证请求时，该请求必须包含：
 

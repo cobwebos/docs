@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b9cf271f694c0ea5da8996baac2261684e66d83
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 3525436c61038d9cdda3a1b1da8e226ab153134f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217881"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098247"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>使用深层链接登录应用程序时出现的问题
 
@@ -57,29 +57,29 @@ ms.locfileid: "56217881"
 
 若要检查是否具有正确的深层链接，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+6. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-7.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+7. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-8.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+8. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-9.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+9. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 10. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+    * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 11. 选择要检查其深层链接的应用程序。
 
@@ -145,25 +145,25 @@ ms.locfileid: "56217881"
 
 若要为应用程序配置单一登录，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
-6.  选择要配置单一登录的应用程序。
+6. 选择要配置单一登录的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8.  选择“基于密码的登录”模式。
+8. 选择“基于密码的登录”模式。
 
-9.  [将用户分配到应用程序](#how-to-assign-a-user-to-an-application-directly)。
+9. [将用户分配到应用程序](#how-to-assign-a-user-to-an-application-directly)。
 
 10. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”，并代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 
@@ -227,25 +227,25 @@ ms.locfileid: "56217881"
 
 若要直接将一个或多个用户分配到应用程序，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  从列表中选择要向其分配用户的应用程序。
+6. 从列表中选择要向其分配用户的应用程序。
 
-7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  单击“用户和组”列表顶部的“添加”按钮，以打开“添加分配”窗格。
+8. 单击“用户和组”列表顶部的“添加”按钮，以打开“添加分配”窗格。
 
-9.  在“添加分配”窗格中，单击“用户和组”选择器。
+9. 在“添加分配”窗格中，单击“用户和组”选择器。
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
 

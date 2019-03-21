@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b6e9557503933dfc5271868692cf8546c785bc03
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 8f5e3958588a597bde04ae1c8e4873006b281458
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021843"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992217"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据
 
@@ -94,6 +94,7 @@ QuickBooks 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**QuickBooksObject** | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+
 **示例**
 
 ```json

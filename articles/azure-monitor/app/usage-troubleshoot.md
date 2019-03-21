@@ -13,12 +13,12 @@ ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 7c903390af54d1771bce1b6aff96e9bb54397189
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045050"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258764"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 中用户行为分析工具的故障排除
 如果对 [Application Insights 中的用户行为分析工具](usage-overview.md)有疑问：[用户、会话、活动](usage-segmentation.md)，[漏斗图](usage-funnels.md)，[用户流](usage-flows.md)，[保留期](usage-retention.md)或队列？ 请参考下面的解答。
@@ -39,7 +39,7 @@ Application Insights 中的所有遥测事件都具有[匿名用户 ID](../../az
 ## <a name="naming-events"></a>命名事件
 **我的应用具有数千个不同的页面视图和自定义事件名称。很难对其进行区分，并且用户行为分析工具经常反应迟钝。应如何解决这些命名问题？**
 
-用户行为分析工具中会频繁使用页面视图和自定义事件名称。 若要从这些工具中获取值，为事件提供合适的名称至关重要。 目标是在具有太少过于宽泛的名称（“单击‘按钮’”）和具有太多过于具体的名称（“单击 http://www.contoso.com/index 上的‘编辑’按钮”）之间取得平衡。
+用户行为分析工具中会频繁使用页面视图和自定义事件名称。 若要从这些工具中获取值，为事件提供合适的名称至关重要。 目标是之间的平衡太少，过于通用名称 （"按钮"） 和具有太多，过于特定名称 ("http 上单击编辑按钮：\//www.contoso.com/index")。
 
 若要对应用发送的页面视图和自定义事件名称进行更改，需要更改应用的源代码并重新部署。 Application Insights 中的所有遥测数据均存储 90 天，且无法删除，因此对事件名称所做的更改需要 90 天才能完全生效。 名称更改后的 90 天中，新旧事件名称都会显示在遥测中，因此请相应调整查询并在团队内进行相应传达。
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: f3138a9d0fe201a9486c34c08b8cdb3cca47e1d7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 0da6b6b0fef0f998e20789253b2a65c54121532c
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207541"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260003"
 ---
 # <a name="manage-content-moderator-service-credentials"></a>管理内容审查器服务凭据
 
@@ -61,7 +61,7 @@ ms.locfileid: "55207541"
 
 第一部分列出了在创建审阅团队过程中生成的“审阅 API 终结点”、“团队 ID”和“Ocp-Apim-Subscription-Key”（内容审查器试用版密钥）。 它们可用于调用所有内容审查器 API（包括审阅 API）。
 
-另请注意，API 终结点的区域标识符。 例如，“westus”是“https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0”中的区域
+另请注意，API 终结点的区域标识符。 例如， **westus**是在区域"https:\//westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0"
 
 ![“审阅”工具中的内容审查器密钥](images/credentials-trialkey.PNG)
 

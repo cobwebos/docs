@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ba5f803f59263f9bfebfd4ec8635d5cdd6d90a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: cfb56ea81abeeba83bee73356c682b3e9fae866f
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171768"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292903"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>无法在已下载的 Azure Active Directory 活动日志中找到所有数据
 
@@ -34,11 +34,11 @@ ms.locfileid: "56171768"
  
 ## <a name="cause"></a>原因
 
-在 Azure 门户中下载活动日志时，我们将规模限制为 5000 条记录，最新的记录排在最前面。 
+下载时在 Azure 门户中的活动日志，我们将规模限制为 250,000 记录，按最新的第一个排序。 
 
 ## <a name="resolution"></a>解决方法
 
-可以随时通过 [Azure AD 报告 API](concept-reporting-api.md) 获取多达一百万条记录。 我们建议的方法是，[按计划运行脚本](tutorial-signin-logs-download-script.md)，通过调用报告 API 以增量方式获取某个时段（例如每日或每周）的记录。 
+可以随时通过 [Azure AD 报告 API](concept-reporting-api.md) 获取多达一百万条记录。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4e787ab134caee1a7f9a26e46f698f2fe9807d83
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: edb169d131aafd045fdf0f670e1dda87677d57ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813666"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834671"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
 
@@ -68,7 +68,7 @@ ms.locfileid: "55813666"
 进程服务器从 Azure VM 检索数据，并近期发送到本地站点。 在进程服务器与受保护计算机之间需要配置低延迟网络。
 
 - 出于测试目的，如果具有 Azure ExpressRoute 连接，可使用自动安装于配置服务器上的本地进程服务器。
-- 如果具有 VPN 连接，或者在生产环境中运行故障回复，为进行故障回复则必须将 Azure VM 设置为基于 Azure 的进程服务器。
+- 如果有 VPN 连接，或者在生产环境中运行故障回复，则必须将 Azure VM 设置为基于 Azure 的进程服务器才能进行故障回复。
 - 按照[本文](vmware-azure-set-up-process-server-azure.md)中的说明在 Azure 中设置进程服务器。
 
 ## <a name="configure-the-master-target-server"></a>配置主目标服务器

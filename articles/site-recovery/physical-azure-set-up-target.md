@@ -7,22 +7,22 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 43276aad26bc06400c1bc4b5feaace0d5646c213
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849221"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57866286"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>准备目标（VMware 到 Azure）
 
 本文介绍如何准备 Azure 环境以将运行 Windows 或 Linux 的物理服务器 (x64) 复制到 Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设：
-- 已创建恢复服务保管库，用于保护物理服务器。 已从 [Azure 门户](http://portal.azure.com "Azure 门户")创建恢复服务保管库。
-- 已[设置本地环境](physical-azure-disaster-recovery.md)，用于将物理服务器复制到 Azure。
+- 已创建恢复服务保管库，用于保护物理服务器。 已从 [Azure 门户](https://portal.azure.com "Azure 门户")创建恢复服务保管库。
+- 已[设置本地环境](physical-azure-disaster-recovery.md)用于将物理服务器复制到 Azure。
 
 ## <a name="prepare-target"></a>准备目标
 

@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c60dc2ca93547b93ce2ee457393570479069c899
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 10335f9c74b9033b303c960a77af136cc80d75bb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216262"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094358"
 ---
 # <a name="how-to-use-alternative-inputs"></a>如何使用备用输入
 
@@ -48,6 +48,8 @@ ms.locfileid: "55216262"
 3. 键入“city”作为“实体名称”。
 4. 单击“创建”按钮。
 
+![](../media/T10_actions.png)
+
 现在，创建三个操作。
 
 ### <a name="create-the-first-action"></a>创建第一个操作
@@ -58,11 +60,15 @@ ms.locfileid: "55216262"
 4. 在“取消实体资格”字段中，键入“城市。”
 5. 单击“创建”按钮。
 
+![](../media/T10_action_create_1.png)
+
 ### <a name="create-the-second-action"></a>创建第二个操作
 
 1. 在左面板中单击“操作”，然后单击“新建操作”按钮。
 2. 在“机器人的响应...”字段中，键入“$city 的天气可能为晴天。”
 3. 单击“创建”按钮。
+
+![](../media/T10_action_create_2.png)
 
 ### <a name="create-the-third-action"></a>创建第三个操作
 
@@ -71,7 +77,11 @@ ms.locfileid: "55216262"
 3. 在“取消实体资格”字段中，键入“城市。”
 4. 单击“创建”按钮。
 
+![](../media/T10_action_create_3.png)
+
 现在有三个操作。
+
+![](../media/T10_actions.png)
 
 ### <a name="train-the-model"></a>训练模型
 
@@ -82,7 +92,9 @@ ms.locfileid: "55216262"
 5. 在聊天面板中显示“键入你的消息...”的位置，键入“丹佛”
 6. 单击“对操作打分”按钮。
 7. 选择响应“丹佛的天气可能为晴天。”
-8. 单击“保存”按钮。
+8. 单击“提交更改”按钮。
+
+![](../media/T10_training_1.png)
 
 让我们创建另一个训练对话，对模型进行更多的训练。
 
@@ -96,7 +108,9 @@ ms.locfileid: "55216262"
 6. 单击“西雅图”，然后单击“实体列表”中的“城市”。
 7. 单击“对操作打分”按钮。
 8. 选择响应“西雅图的天气可能为晴天。”
-9. 单击“保存”按钮。
+9. 单击“提交更改”按钮。
+
+![](../media/T10_training_2.png)
 
 ### <a name="third-model-train-dialog-using-alternative-input"></a>使用备用输入的第三个模型训练对话
 
@@ -106,27 +120,29 @@ ms.locfileid: "55216262"
     - 模型对于最佳选项不确定，因此会默认选择最高的百分位。
 4. 单击“放弃教学”按钮，然后单击“确认”按钮。
 
-![](../media/tutorial8_closescores.png)
+![](../media/T10_training_3.png)
 
 让我们使用备用输入对系统进行更好的优化。 可以在教学时添加备用输入，也可以在以后添加。
 
-5. 在左侧面板上单击“训练对话”，然后从“训练对话”列表中 选择“你可以做些什么?”
-6. 在聊天面板中单击“你可以做些什么?” 话语。
-7. 在“添加备用输入...”字段中键入“帮助”，然后按 Enter。
-8. 单击“保存更改”按钮。
+1. 在左侧面板上单击“训练对话”，然后从“训练对话”列表中 选择“你可以做些什么?”
+1. 在聊天面板中单击“你可以做些什么?” 话语。
+1. 在“添加备用输入...”字段中键入“帮助”，然后按 Enter。
+1. 单击“保存更改”按钮。
 
-![](../media/tutorial8_helpalternates.png)
+![](../media/T10_training_4.png)
 
 让我们添加另一个备用输入来处理休斯顿的问题。
 
-9. 在聊天面板中单击“西雅图的天气怎么样?” 话语。
-10. 在“添加备用输入...”字段中键入“休斯顿的预报”，然后按 Enter。
-    - 错误消息突出显示这样一个事实：备用输入必须在语义上相同，并且必须包含与原始话语相同的实体，而不仅仅是实体的相同值。 必须存在相同的实体。
-11. 单击“休斯顿”，然后从“实体列表”中选择“城市”。
-12. 在“添加备用输入...”字段中键入“西雅图的预报”，然后按 Enter。
-13. 单击“西雅图”，然后从“实体列表”中选择“城市”。
-14. 单击“保存更改”按钮。
-15. 单击“保存编辑”按钮。
+1. 在聊天面板中单击“西雅图的天气怎么样?” 话语。
+1. 在“添加备用输入...”字段中键入“休斯顿的预报”，然后按 Enter。
+   - 错误消息突出显示这样一个事实：备用输入必须在语义上相同，并且必须包含与原始话语相同的实体，而不仅仅是实体的相同值。 必须存在相同的实体。
+1. 单击“休斯顿”，然后从“实体列表”中选择“城市”。
+1. 在“添加备用输入...”字段中键入“西雅图的预报”，然后按 Enter。
+1. 单击“西雅图”，然后从“实体列表”中选择“城市”。
+1. 单击“保存更改”按钮。
+1. 单击“保存编辑”按钮。
+
+![](../media/T10_training_5.png)
 
 ### <a name="testing-the-model"></a>测试模型
 
@@ -134,7 +150,7 @@ ms.locfileid: "55216262"
 2. 在聊天面板中显示“键入你的消息...”的位置，键入“帮助我”
 3. 在聊天面板中显示“键入你的消息...”的位置，键入“丹佛的预报”
 
-![](../media/tutorial8_altcities.png)
+![](../media/T10_logdialog.png)
 
 ## <a name="next-steps"></a>后续步骤
 

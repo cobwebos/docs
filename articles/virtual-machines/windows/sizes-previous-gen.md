@@ -1,6 +1,6 @@
 ---
 title: Azure Windows 虚拟机大小 - 前几代 | Microsoft Docs
-description: 列出 Azure 中适用于 Windows 虚拟机的前几代大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
+description: 列出 Azure 中适用于 Windows 虚拟机的前几代大小。
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -8,19 +8,19 @@ manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
-ms.service: windows-machines-windows
+ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 4f0397acaa39ca91280285d9bd5135b0f0d3cf7c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
-ms.translationtype: HT
+ms.openlocfilehash: c39a744a5ef57efa6486460ab84998d6600e7bc5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902554"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405591"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 

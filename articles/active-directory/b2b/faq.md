@@ -9,14 +9,15 @@ ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa6f0aeaa39114efbf3bd5587eac5744db386672
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 860a059f57578965045ff8e7f404c3b072df03a1
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105227"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293815"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -59,9 +60,9 @@ ms.locfileid: "58105227"
  能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
 若要阻止来宾用户访问 [Azure 门户](https://portal.azure.com)，可以在 Windows Azure 经典部署模型 API 中使用条件访问策略：
 1. 修改“所有用户”组，使其仅包含成员。
-   ![修改组屏幕截图](media/faq/modify-all-users-group.png)
+   ![显示所有用户组 UserType 不等于来宾的屏幕截图 ](media/faq/modify-all-users-group.png)
 2. 创建包含来宾用户的动态组。
-   ![创建组屏幕截图](media/faq/group-with-guest-users.png)
+   ![显示新的所有来宾用户组的屏幕截图](media/faq/group-with-guest-users.png)
 3. 设置条件访问策略以阻止来宾用户访问门户，如以下视频中所示：
   
    > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 

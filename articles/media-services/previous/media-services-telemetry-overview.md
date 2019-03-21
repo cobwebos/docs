@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 48b88aed833b0cd15f47195c67be80fe75fe153f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 5f33249496c9a4fc8a094e64f15c8d95da69194b
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005176"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294869"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure 媒体服务遥测  
 
@@ -43,7 +43,7 @@ ms.locfileid: "56005176"
 
 ## <a name="consuming-telemetry-information"></a>使用遥测信息
 
-如果为媒体服务帐户配置了遥测，遥测将写入指定存储帐户的 Azure 存储表中。 本部分介绍适用于各项指标的存储表。
+如果为媒体服务帐户配置了遥测，遥测将写入到所指定的存储帐户的 Azure 存储表中。 本部分介绍适用于各项指标的存储表。
 
 可通过以下方式之一使用遥测数据：
 
@@ -76,7 +76,7 @@ PartitionKey|{account ID}_{entity ID}|e49bef329c29495f9b9570989682069d_64435281c
 RowKey|{seconds to midnight}_{random value}|01688_00199<br/><br/>行键以距午夜的秒数开头，可允许分区内的前 n 个样式查询。 有关详细信息，请参阅[此](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)文章。 
 Timestamp|日期/时间|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 Type|提供遥测数据的实体类型|Channel/StreamingEndpoint/Archive<br/><br/>事件类型只是字符串值。
-Name|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog
+名称|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|发生遥测事件的时间 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>观察时间由发送遥测的实体（例如通道）提供。 组件之间可能存在时间同步问题，因此此值为近似值
 ServiceID|{service ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 特定于实体的属性|由事件定义|StreamName: stream1, Bitrate 10123, …<br/><br/>其余属性针对给定时间类型定义。 Azure 表内容是键值对。  （即，表中的不同行具有不同的属性集）。
@@ -97,7 +97,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 Type|Type|StreamingEndpoint
-Name|Name|StreamingEndpointRequestLog
+名称|名称|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|终结点的主机名|builddemoserver.origin.mediaservices.windows.net
@@ -115,8 +115,8 @@ E2ELatency|平均端到端延迟|250
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
-Type|Type|通道
-Name|Name|ChannelHeartbeat
+Type|Type|频道
+名称|名称|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|轨道视频/音频/文本的类型|视频/音频
@@ -140,15 +140,15 @@ Healthy|如果满足以下条件，则为 true： <br/>overlapCount、 <br/>Disc
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
-Type|Type|存档
-Name|Name|ArchiveHeartbeat
+Type|Type|Archive
+名称|名称|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|节目 URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|轨道名称|audio_1
 TrackType|轨道类型|音频/视频
 CustomAttribute|十六进制字符串，用于区分具有相同名称和比特率的不同轨道（多摄像机角度）|
-Bitrate|轨道比特率|785000
+比特率|轨道比特率|785000
 Healthy|如果 FragmentDiscardedCount == 0 且 ArchiveAcquisitionError == False，则为 true|True（这两个值不存在于指标中，但存在于源事件中）<br/><br/>Healthy 是一个复合函数，满足以下任何条件时返回 false：<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
 
 ## <a name="general-qa"></a>常见问答

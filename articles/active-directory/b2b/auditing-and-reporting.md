@@ -1,5 +1,5 @@
 ---
-title: 审核和报告 Azure Active Directory B2B 协作用户 | Microsoft 文档
+title: 审核和报告 B2B 协作用户的 Azure Active Directory |Microsoft Docs
 description: 可在 Azure Active Directory B2B 协作中配置来宾用户属性
 services: active-directory
 ms.service: active-directory
@@ -9,14 +9,15 @@ ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc36128f8f998d78dd2cf9ef112fe5961bbef5b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 5763a7e5f122702ddaf86246fbfbd18326878146
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204604"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294189"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>审核和报告 B2B 协作用户
 对于来宾用户，具有与成员用户类似的审核功能。 
@@ -28,11 +29,11 @@ ms.locfileid: "56204604"
 
 Azure AD 审核日志提供系统和用户活动的记录，包括来宾用户发起的活动。 若要访问审核日志，请在“Azure Active Directory”中的“监视”下，选择“审核日志”。 下面是受邀人 Sam Oogle 的邀请和兑换历史记录的示例：
 
-![审核日志](./media/auditing-and-reporting/audit-log.png)
+![屏幕截图显示和示例中的审核日志输出](./media/auditing-and-reporting/audit-log.png)
 
 用户可以深入了解上述每个事件，以获取详细信息。 例如，让我们看一下验收详细信息。
 
-![活动详细信息](./media/auditing-and-reporting/activity-details.png)
+![屏幕截图显示和活动的详细信息输出的示例](./media/auditing-and-reporting/activity-details.png)
 
 还可以从 Azure AD 导出这些日志，并使用所选报表工具获取自定义报表。
 

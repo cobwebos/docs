@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f699e40a4a31b6d57b12a43ae307806d3f010015
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: a931b303e40e41bc23e8b586e1d37e600625b1a8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267175"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881055"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 本文介绍如何执行初始设置、注册 StorSimple 文件服务器、完成设备设置，以及创建和连接 SMB 共享。 这是此系列部署教程的最后一篇文章，是将虚拟阵列完全部署为文件服务器或 iSCSI 服务器所必读的。
 
 完成设置和配置过程可能需要大约 10 分钟。 本文中的信息仅适用于部署 StorSimple 虚拟阵列。 要部署 StorSimple 8000 系列设备，请转到：[部署当前运行 Update 2 的 StorSimple 8000 系列设备](storsimple-deployment-walkthrough-u2.md)。
@@ -129,15 +129,15 @@ ms.locfileid: "54267175"
     ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. 在命令栏中，单击“配置”。 此时会打开“配置”边栏选项卡。 在“配置”边栏选项卡中，执行以下操作：
    
-    1. 将自动填充文件服务器名称。
+   1. 将自动填充文件服务器名称。
     
-    2. 确保云存储加密已设置为“启用”。 这会对发送到云的所有数据都进行加密。 
+   2. 确保云存储加密已设置为“启用”。 这会对发送到云的所有数据都进行加密。 
     
-    3. 将使用 256 位 AES 密钥与用户定义密钥进行加密。 指定 32 个字符的密钥，并再次输入该密钥以进行确认。 在密钥管理应用中记录密钥以供将来参考。
+   3. 将使用 256 位 AES 密钥与用户定义密钥进行加密。 指定 32 个字符的密钥，并再次输入该密钥以进行确认。 在密钥管理应用中记录密钥以供将来参考。
     
-    4. 单击“配置所需设置”，指定要用于设备的存储帐户凭据。 如果未配置任何存储帐户凭据，请单击“新增”。 **请确保所用的存储帐户支持块 blob。页 blob 不受支持。** 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
+   4. 单击“配置所需设置”，指定要用于设备的存储帐户凭据。 如果未配置任何存储帐户凭据，请单击“新增”。 **请确保所用的存储帐户支持块 blob。页 blob 不受支持。** 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
    
-    ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. 在“添加存储帐户凭据”边栏选项卡中，执行以下操作： 
 
     1. 如果存储帐户与服务位于相同的订阅中，请选择当前订阅。 如果存储帐户在服务订阅外部，则指定其他订阅。 
@@ -175,26 +175,26 @@ ms.locfileid: "54267175"
    ![添加共享](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. 指定以下共享设置：
 
-    1. 共享的唯一名称。 该名称必须是包含 3 到 127 个字符的字符串。
+   1. 共享的唯一名称。 该名称必须是包含 3 到 127 个字符的字符串。
     
-    2. 共享的可选**说明**。 可以根据说明确定共享所有者。
+   2. 共享的可选**说明**。 可以根据说明确定共享所有者。
     
-    3. 共享的**类型**。 类型可以是“分层”或“本地固定”，默认为分层。 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定”共享。 对于所有其他数据，请选择“分层”共享。
-    本地固定共享经过充分预配，可确保共享上的主数据保留在设备本地，未溢出到云。 分层共享则是进行精简预配。 创建分层共享时，10% 的空间预配在本地层，90% 的空间预配在云中。 例如，如果预配 1 TB 的卷，则当数据分层时，100 GB 会驻留在本地空间，900 GB 会在云中使用。 反过来说，这意味着，如果用光了设备上的所有本地空间，则无法预配分层共享。
+   3. 共享的**类型**。 类型可以是“分层”或“本地固定”，默认为分层。 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定”共享。 对于所有其他数据，请选择“分层”共享。
+      本地固定共享经过充分预配，可确保共享上的主数据保留在设备本地，未溢出到云。 分层共享则是进行精简预配。 创建分层共享时，10% 的空间预配在本地层，90% 的空间预配在云中。 例如，如果预配 1 TB 的卷，则当数据分层时，100 GB 会驻留在本地空间，900 GB 会在云中使用。 反过来说，这意味着，如果用光了设备上的所有本地空间，则无法预配分层共享。
    
-    4. 在“将默认完全权限设置给”字段中，将权限分配给要访问此共享的用户或组。 以 *john@contoso.com* 格式指定用户或用户组的名称。 若要启用访问这些共享所需的管理员权限，建议使用用户组（而非单个用户）。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
+   4. 在“将默认完全权限设置给”字段中，将权限分配给要访问此共享的用户或组。 指定用户或用户组中的名称*john\@contoso.com*格式。 若要启用访问这些共享所需的管理员权限，建议使用用户组（而非单个用户）。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
    
-    5. 单击“添加”以创建共享。 
+   5. 单击“添加”以创建共享。 
     
-        ![添加共享](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![添加共享](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
-        将通知你“正在创建共享”。
+       将通知你“正在创建共享”。
    
-        ![添加共享](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![添加共享](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
-    使用指定的设置创建共享后，“共享”边栏选项卡将更新以反映新共享。 默认情况下，将为共享启用监视和备份功能。
+      使用指定的设置创建共享后，“共享”边栏选项卡将更新以反映新共享。 默认情况下，将为共享启用监视和备份功能。
    
-    ![添加共享](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![添加共享](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>步骤 4：连接到共享
 现在需连接到上一步所创建的一个或多个共享。 已连接到 StorSimple 虚拟阵列的 Windows Server 主机上执行这些步骤。

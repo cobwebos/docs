@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 4aff7c486762d9ea7bd38ae152d169968432307e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7a1bd6da68b49481429709c7e4fd37dd5c07ae2c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898952"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200780"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>备份 Windows 计算机与 Azure 备份 MARS 代理
 
@@ -51,13 +51,21 @@ MARS 代理由 Azure 备份用于将从本地计算机和 Azure Vm 文件、 文
 
 ### <a name="verify-internet-access"></a>验证 Internet 访问
 
-如果你的计算机具有有限的 internet 访问权限，请确保代理在计算机上的防火墙设置允许这些 Url:
+如果你的计算机具有有限的 internet 访问权限，请确保代理在计算机上的防火墙设置允许这些 Url 和 IP 地址：
+
+**URLs**
 
 - www\.msftncsi.com
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
 - *.windows.net
+
+IP 地址
+
+- 20.190.128.0/18
+- 40.126.0.0/18
+
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 

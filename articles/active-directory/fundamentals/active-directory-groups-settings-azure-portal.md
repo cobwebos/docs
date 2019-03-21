@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5802634fe070f5d71fae01706c3cb4e83e04a72e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 691f705574050b15869a0ac8b7d128507e5aae10
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192058"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285626"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>使用 Azure Active Directory 编辑组信息
 
@@ -39,7 +39,7 @@ ms.locfileid: "56192058"
 
 4. 选择“MDM 策略 - 西部”，然后选择在“管理”区域选择“属性”。
 
-    ![组概述页面，其中突出显示数字和成员以及成员选项](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![组概述页上，使用成员选项和突出显示的信息](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
 5. 按所需更新“常规设置”信息，包括：
 

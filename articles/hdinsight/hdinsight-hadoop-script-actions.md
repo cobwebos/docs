@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5db4387c2fd610313aaac032c122366aa45dc7f9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 93313557781c6b3788d8b4d43d6676fc17625709
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720180"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201307"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>为 HDInsight 基于 Windows 的群集开发脚本操作脚本
-了解如何为 HDInsight 编写脚本操作脚本。 有关如何使用脚本操作脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md)。 有关为基于 Linux 的 HDInsight 群集编写的同一篇文章，请参阅[为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)。
+了解如何为 HDInsight 编写脚本操作脚本。 有关如何使用脚本操作脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。 有关为基于 Linux 的 HDInsight 群集编写的同一篇文章，请参阅[为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)。
 
 
 > [!IMPORTANT]  
@@ -95,12 +95,11 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 | --- | --- |
 | **安装 Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`。 请参阅[在 HDInsight 群集上安装并使用 Apache Spark][hdinsight-install-spark]。 |
 | **安装 R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`。 请参阅[在 HDInsight 群集上安装并使用 R](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster)。 |
-| **安装 Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`。 请参阅[在 HDInsight 群集上安装并使用 Apache Solr](hdinsight-hadoop-solr-install.md)。 |
 | **安装 Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`。 请参阅[在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install.md)。 |
 | **预加载 Hive 库** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`。 请参阅[在 HDInsight 群集上添加 Apache Hive 库](hdinsight-hadoop-add-hive-libraries.md) |
 
 
-脚本操作可以从 Azure 门户、Azure PowerShell 或通过使用 HDInsight .NET SDK 来部署。  有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]。
+脚本操作可以从 Azure 门户、Azure PowerShell 或通过使用 HDInsight .NET SDK 来部署。  有关详细信息，请参阅 [使用脚本操作自定义 HDInsight 群集] [hdinsight 的群集的自定义]。
 
 > [!NOTE]  
 > 示例脚本仅适用于 HDInsight 群集 3.1 或更高版本。 有关 HDInsight 群集版本的详细信息，请参阅 [HDInsight 群集版本](hdinsight-component-versioning.md)。
@@ -129,7 +128,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
 以下是通过此脚本提供的帮助器方法：
 
-| 帮助器方法 | Description |
+| 帮助器方法 | 描述 |
 | --- | --- |
 | **Save-HDIFile** |将文件从指定的统一资源标识符 (URI) 下载到本地磁盘上与分配到群集的 Azure VM 节点关联的位置。 |
 | **Expand-HDIZippedFile** |解压缩已压缩的文件。 |
@@ -169,7 +168,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
     HDInsight 具有实现高可用性的主-被体系结构，在该结构中，一个头节点处于主动模式（HDInsight 服务正在运行），而另一头节点处于备用模式（HDInsight 服务未在运行）。 如果 HDInsight 服务中断，则节点会在主动和被动模式之间切换。 如果使用脚本操作在两个头节点上安装服务以实现高可用性，请注意，HDInsight 故障转移机制无法对这些用户安装的服务自动执行故障转移。 因此，用户在 HDInsight 头节点上安装的服务如果预期具有高可用性，则必须具有自己的故障转移机制，无论是在主-被模式还是在主-主模式下。
 
-    如果将头节点角色指定为 *ClusterRoleCollection* 参数中的值，则 HDInsight 脚本操作命令会在两个头节点上运行。 因此，设计自定义脚本时，请确保脚本知道此设置。 如果在两个头节点上安装并启动相同服务，并且这两个服务以相互争用结束，则你不会遇到问题。 另请注意，数据会在重置映像期间丢失，因此，通过脚本操作安装的软件必须能够灵活应对此类事件。 应用程序应设计使用分布在很多节点上的高可用数据。 有 1/5 之多的群集节点可以同时重置映像。
+    如果将头节点角色指定为 *ClusterRoleCollection* 参数中的值，则 HDInsight 脚本操作命令会在两个头节点上运行。 因此，设计自定义脚本时，请确保脚本知道此设置。 如果在两个头节点上安装并启动相同服务，并且这两个服务以相互争用结束，则不会遇到问题。 另请注意，数据会在重置映像期间丢失，因此，通过脚本操作安装的软件必须能够灵活应对此类事件。 应用程序应设计使用分布在很多节点上的高可用数据。 有 1/5 之多的群集节点可以同时重置映像。
 * 配置自定义组件以使用 Azure Blob 存储。
 
     在群集节点上安装的自定义组件可能具有使用 Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 应该更改该配置以改用 Azure Blob 存储。 在对群集重置映像时，HDFS 文件系统会进行格式化，因此，可能会丢失存储在此处的所有数据。 改用 Azure Blob 存储可确保保留数据。
@@ -291,13 +290,11 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 如果执行失败，则描述该情况的输出也包含在此日志文件中。 这些日志中提供的信息应该对调试可能出现的脚本问题有所帮助。
 
 ## <a name="see-also"></a>另请参阅
-* [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]
+* [自定义 HDInsight 群集使用脚本操作][hdinsight 的群集的自定义]
 * [在 HDInsight 群集上安装并使用 Apache Spark][hdinsight-install-spark]
-* [在 HDInsight 群集上安装并使用 Apache Solr](hdinsight-hadoop-solr-install.md)。
 * [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install.md)。
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [powershell-install-configure]: install-configure-powershell.md
 

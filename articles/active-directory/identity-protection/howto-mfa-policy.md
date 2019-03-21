@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 03/19/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90b54a6a2a6e74e49e2401a288383e3de061a1a6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6f6b5df5144c5e9e2c211c87ed8fe70abf871435
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167025"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258031"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>如何：配置多重身份验证注册策略
 
@@ -61,7 +61,7 @@ MFA 注册策略位于 [Azure AD Identity Protection 页面](https://portal.azur
 
 - 要强制实施的访问类型：  
 
-    ![用户和组](./media/howto-mfa-policy/12.png)
+    ![Access](./media/howto-mfa-policy/12.png)
 
 - 策略的状态：
 

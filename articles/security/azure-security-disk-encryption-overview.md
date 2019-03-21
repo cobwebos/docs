@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/12/2019
+ms.date: 03/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: a7dd061d84167b172aff52e8a62ed6d43fddc108
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 66d788aec83e3e57a49b063f2ca80484360f639d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862006"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295277"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>适用于 IaaS VM 的 Azure 磁盘加密
 
@@ -81,6 +81,7 @@ Azure 磁盘加密是用于帮助加密 Windows 和 Linux IaaS VM 磁盘的功�
 * 基本层 IaaS VM。
 * 在 Linux IaaS VM 的 OS 驱动器上禁用加密。
 * 在为 Linux IaaS VM 加密了 OS 驱动器的情况下禁止对数据驱动器加密。
+* 为 Linux 虚拟机规模的 OS 驱动器加密设置。
 * 使用经典 VM 创建方法创建的 IaaS VM。
 * 在 Linux IaaS VM 上启用客户自定义映像加密。
 * 与本地密钥管理系统集成。

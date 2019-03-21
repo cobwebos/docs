@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 44efe3482e9e1657125cc28441819ea173c982ab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ae31aa19e5905ccafcd0161ea362cc68234f8295
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861938"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294735"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -127,6 +127,8 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+有关详细信息，请参阅[Azure SDK for Go](https://docs.microsoft.com/go/azure/)。
+
 ## <a name="use-terraform"></a>使用 Terraform
 
 适用于 Terraform 支持均可通过 Azure 提供程序的 1.21.0 发布： [ https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019 ](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019)。  此支持适用于所有部署通过 Terraform，其解决方案的合作伙伴和所有资源部署和按流量计费的 Azure 提供程序 (版本 1.21.0 或更高版本)。

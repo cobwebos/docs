@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad97381d983446dfcc32dd1ba82af587a500b9da
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 55c9120547472bb9a9a74533fe532d346844e89c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762137"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081757"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>教程：设置验证为服务资源
 
@@ -56,13 +56,13 @@ ms.locfileid: "57762137"
 
     若要在中分配角色**Azure Stack 验证服务**应用程序：
 
-    1. 登录到 [Azure 门户](https://portal.azure.com)。
-    2. 选择**所有服务** > **Azure Active Directory**下**标识**部分。
-    3. 选择“企业应用程序” > “Azure Stack 验证服务”应用程序。
-    4. 选择“用户和组”。 “Azure Stack 验证服务 - 用户和组”边栏选项卡会列出有权使用应用程序的用户。
-    5. 选择 **+ 添加用户**若要从你的租户添加用户并分配角色。
+   1. 登录到 [Azure 门户](https://portal.azure.com)。
+   2. 选择**所有服务** > **Azure Active Directory**下**标识**部分。
+   3. 选择“企业应用程序” > “Azure Stack 验证服务”应用程序。
+   4. 选择“用户和组”。 “Azure Stack 验证服务 - 用户和组”边栏选项卡会列出有权使用应用程序的用户。
+   5. 选择 **+ 添加用户**若要从你的租户添加用户并分配角色。
 
-    如果你想要隔离 VaaS 资源和组织内不同的组的操作，可以创建多个 Azure AD 租户目录。
+      如果你想要隔离 VaaS 资源和组织内不同的组的操作，可以创建多个 Azure AD 租户目录。
 
 ### <a name="register-your-tenant"></a>注册你的租户
 

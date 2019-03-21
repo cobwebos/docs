@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 10/25/2018
+ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 7e680e3cd8a3d7056141814c5e7d4539b72073b4
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
-ms.translationtype: HT
+ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50756926"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286119"
 ---
 # <a name="create-an-advanced-device-model"></a>创建高级设备模型
 
@@ -22,7 +22,7 @@ ms.locfileid: "50756926"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要遵循本操作指南中的步骤，需在 Azure 订阅中部署设备模拟的实例。
 
@@ -56,7 +56,7 @@ ms.locfileid: "50756926"
 每个设备定义文件包含模拟设备模型的详细信息，其中包括以下信息：
 
 * 设备模型名称：字符串。
-* 协议：AMQP | MQTT | HTTP。
+* 协议：AMQP |MQTT |HTTP。
 * 初始设备状态。
 * 刷新设备状态的频率。
 * 用于刷新设备状态的 JavaScript 文件。
@@ -162,7 +162,7 @@ IoT 设备可以使用不同的协议进行连接。 模拟允许使用 **AMQP**
 * 对象 - 使用 JSON 序列化
 * 二进制 - 使用 base64 序列化
 * 文本
-* 布尔
+* Boolean
 * Integer
 * Double
 * DateTime
@@ -486,7 +486,7 @@ function main(context, state) {
 
     // ...
 
-    return state;
+    return updateState;
 }
 ```
 
@@ -516,4 +516,4 @@ function main(context, state) {
 
 ## <a name="next-steps"></a>后续步骤
 
-在本操作指南中，我们已了解设备模拟中使用的设备模型文件，以及如何创建高级设备模型。 接下来，请探索如何[使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据](about-iot-accelerators.md)。
+在本操作指南中，我们已了解设备模拟中使用的设备模型文件，以及如何创建高级设备模型。 接下来，请探索如何[使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)。

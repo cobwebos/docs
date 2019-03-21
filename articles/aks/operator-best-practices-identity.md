@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 7d846f28e78959b6962add51070f04857f6463d7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 201fef6b3e773daa18ae252d1d5734d8d87419b5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852801"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287122"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -67,7 +67,7 @@ rules:
 绑定的 Azure AD 用户，然后会创建 RoleBinding *developer1\@contoso.com*到 RoleBinding，如下面的 YAML 清单中所示：
 
 ```yaml
-ind: RoleBinding
+kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: finance-app-full-access-role-binding
@@ -90,7 +90,7 @@ roleRef:
 
 当 pod 需要访问其他 Azure 服务（例如 Cosmos DB、Key Vault 或 Blob 存储）时，pod 需要访问凭据。 可以使用容器映像定义这些访问凭据或将其注入为 Kubernetes 机密，但需要手动创建并分配这些凭据。 通常，凭据会在不同的 pod 之间重复使用，并且不会定期轮换。
 
-使用 Azure 资源的托管标识可以通过 Azure AD 自动请求服务访问权限。 不要手动定义 pod 的凭据。pod 会实时请求访问令牌，并可以使用该令牌来访问仅为它们分配的服务。 在 AKS 中，群集操作员会部署两个组件，以允许 pod 使用托管标识：
+（当前实现为一个关联的 AKS 开放源代码项目） 的 Azure 资源的管理的标识它让你自动请求访问通过 Azure AD 的服务。 不要手动定义 pod 的凭据。pod 会实时请求访问令牌，并可以使用该令牌来访问仅为它们分配的服务。 在 AKS 中，群集操作员会部署两个组件，以允许 pod 使用托管标识：
 
 * **节点管理标识 (NMI) 服务器**是在 AKS 群集中每个节点上作为守护程序集运行的 pod。 NMI 服务器侦听发送到 Azure 服务的 pod 请求。
 * **托管标识控制器 (MIC)** 是一个中心 pod，它有权查询 Kubernetes API 服务器，并检查对应于某个 pod 的 Azure 标识映射。
@@ -105,6 +105,8 @@ roleRef:
 1. 部署 NMI 服务器和 MIC，以便将访问令牌的任何 pod 请求中继到 Azure AD。
 1. 开发人员使用托管标识部署一个 pod，该 pod 可通过 NMI 服务器请求访问令牌。
 1. 该令牌将返回给 pod，并用于访问 Azure SQL Server 实例。
+
+托管的 pod 标识是一个 AKS 开放源代码项目，并不受 Azure 技术支持。 它提供从我们的社区收集反馈和 bug。 项目不建议用于生产环境。
 
 若要使用 pod 标识，请参阅 [Kubernetes 应用程序的 Azure Active Directory 标识][aad-pod-identity]。
 

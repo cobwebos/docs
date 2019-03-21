@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: b35d3d22ce154420c9099143894688389e8af420
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 9b4bceba53658cb8ac3c73e75e0d19faf3fe3f0b
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58078034"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259748"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标 （经典）
 
@@ -23,10 +23,10 @@ ms.locfileid: "58078034"
 
 > [!NOTE]
 > 存储分析度量值是可用于 Blob、 队列、 表和文件服务。
-> 存储分析度量值现在是经典指标。 Microsoft 建议使用[Azure Monitor 中的存储指标](/azure/storage/common/storage-metrics-in-azure-monitor.md)而不是存储分析度量值。
+> 存储分析度量值现在是经典指标。 Microsoft 建议使用[Azure Monitor 中的存储指标](storage-metrics-in-azure-monitor.md)而不是存储分析度量值。
 
 ## <a name="transaction-metrics"></a>事务度量值  
- 对于每个存储服务和请求的 API 操作，以小时或分钟为间隔记录一组可靠的数据，其中包括入口/出口、可用性、错误和分类请求百分比。 可以在[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)主题中查看事务详细信息的完整列表。  
+ 对于每个存储服务和请求的 API 操作，以小时或分钟为间隔记录一组可靠的数据，其中包括入口/出口、可用性、错误和分类请求百分比。 可以在[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)主题中查看事务详细信息的完整列表。  
 
  在两个级别记录事务数据 – 服务级别和 API 操作级别。 在服务级别，汇总所有请求的 API 操作的统计信息将每小时写入一次表实体，即使未向服务发出请求也是如此。 在 API 操作级别，仅当在该小时内请求操作时才将统计信息写入实体。  
 
@@ -45,7 +45,7 @@ ms.locfileid: "58078034"
 - **ContainerCount**：存储帐户的 Blob 服务中的 blob 容器数。  
 - **ObjectCount**：在存储帐户的 Blob 服务中的提交和未提交块或页 blob 的数量。  
 
-  有关容量指标的详细信息，请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)。  
+  有关容量指标的详细信息，请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。  
 
 ## <a name="how-metrics-are-stored"></a>如何存储度量值  
 
@@ -123,7 +123,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 有关使用.NET 语言配置存储度量值的详细信息，请参阅[适用于.NET 的存储客户端库](https://msdn.microsoft.com/library/azure/mt347887.aspx)。  
 
-有关配置存储度量值使用 REST API 的常规信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics.md)。  
+有关配置存储度量值使用 REST API 的常规信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。  
 
 ##  <a name="viewing-storage-metrics"></a>查看存储度量值  
 在将存储分析度量值配置为监视存储帐户后，存储分析将使用存储帐户在一组已知表中记录度量值。 可以将图表配置为每小时查看 [Azure 门户](https://portal.azure.com)中的指标：
@@ -144,7 +144,7 @@ queueClient.SetServiceProperties(serviceProperties);
 |分钟度量值|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|仅可使用 PowerShell 启用或以编程方式。<br /><br /> 文件服务的指标是版本 2015年-04-05 开始可用。|  
 |容量|$MetricsCapacityBlob|仅限 blob 服务。|  
 
-有关这些表的完整架构详细信息，请参阅 [Storage Analytics Metrics Table Schema](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)（存储分析度量值表架构）。 以下示例行仅显示一部分可用列，但也说明了存储度量值在采用相应方式保存这些度量值时展现的一些重要功能：  
+有关这些表的完整架构详细信息，请参阅 [Storage Analytics Metrics Table Schema](/rest/api/storageservices/storage-analytics-metrics-table-schema)（存储分析度量值表架构）。 以下示例行仅显示一部分可用列，但也说明了存储度量值在采用相应方式保存这些度量值时展现的一些重要功能：  
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
@@ -227,6 +227,6 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>后续步骤
 * [如何监视存储帐户](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
-* [存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)   
-* [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)   
+* [存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
+* [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   
 * [存储分析日志记录](storage-analytics-logging.md)

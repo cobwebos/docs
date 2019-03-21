@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ff73982b706fa2d353be818f5022de8fbfec42fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 1306b97ce7fcf2cd429be31bc99d022de53805d6
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58167433"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259850"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>创建设备模板（新 UI 设计）
 
@@ -78,6 +78,8 @@ ms.locfileid: "58167433"
 ![包含温度度量详细信息的“创建遥测”窗体](./media/howto-set-up-template/measurementsform.png)
 
 选择“保存”后，度量列表中会出现“温度”度量。 不久便能看到模拟设备中的温度数据的可视化效果。
+
+在显示时的遥测，可以从以下聚合选项中进行选择：平均值、 最小值、 最大值、 Sum 和 Count。 **平均**被选为图表上的默认聚合。 
 
 > [!NOTE]
 > 遥测度量的数据类型是一个浮点数。

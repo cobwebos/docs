@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 586b423b-6668-4bdd-9592-4c237d7458fb
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ae50581404dceb7b59b2ca145207f7d4ade23440
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: c5f8b6db77cabdf5e7af66063cbd9a058bd01800
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309240"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082766"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>使用 Azure Notebooks 项目中的数据文件
 
@@ -42,13 +42,13 @@ ms.locfileid: "53309240"
 
 1. 选择“上传”命令，然后“从 URL”或“从计算机”中为要导入的数据设计必要的详细信息：
 
-    - **从 URL**：在“文件 URL”字段输入源地址，并在“文件名”字段输入在项目中分配给笔记本的文件名。 然后选择“+ 添加文件”将 URL 添加到上传列表。 对任何其他 URL 重复此过程，然后选择“完成”。
+   - **从 URL**：在“文件 URL”字段输入源地址，并在“文件名”字段输入在项目中分配给笔记本的文件名。 然后选择“+ 添加文件”将 URL 添加到上传列表。 对任何其他 URL 重复此过程，然后选择“完成”。
 
-    ![从 URL 弹出窗口上传](media/quickstarts/upload-from-url-popup.png)
+     ![从 URL 弹出窗口上传](media/quickstarts/upload-from-url-popup.png)
 
-    - **从计算机**：将文件拖放到弹出窗口，或选择“选择文件”，然后浏览并选择要导入的数据文件。 可删除或选择任意数量、类型和格式的文件，因为它是由笔记本中的代码打开文件和解析其数据。
+   - **从计算机**：将文件拖放到弹出窗口，或选择“选择文件”，然后浏览并选择要导入的数据文件。 可删除或选择任意数量、类型和格式的文件，因为它是由笔记本中的代码打开文件和解析其数据。
 
-    ![从计算机弹出窗口上传](media/quickstarts/upload-from-computer-popup.png)
+     ![从计算机弹出窗口上传](media/quickstarts/upload-from-computer-popup.png)
 
 1. 导入后，文件将显示在项目仪表板上，并且可以使用包含文件夹的相对路径名在笔记本代码中访问。
 

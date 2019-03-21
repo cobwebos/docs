@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a3687a4b8bb4e0d900ee96f52c40352db4e96df6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 270708496fbe13b9061abe5d64d5577193db4027
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635555"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450645"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Apache Hive 和 Apache Hadoop 分析 Twitter 数据
 
@@ -40,7 +40,7 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
    | 字段 | 值 |
    |:--- |:--- |
    | 名称 |MyHDInsightApp |
-   | Description |MyHDInsightApp |
+   | 描述 |MyHDInsightApp |
    | 网站 |https://www.myhdinsightapp.com |
 
 4. 选中“是，我同意”，并单击“创建 Twitter 应用程序”。
@@ -70,7 +70,7 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
 
     有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-3. 使用以下命令安装 [Tweepy](https://www.tweepy.org/)、[Progressbar](https://pypi.python.org/pypi/progressbar/2.2) 和其他所需的程序包：
+3. 使用以下命令来安装[Tweepy](https://www.tweepy.org/)，[进度栏](https://pypi.python.org/pypi/progressbar/2.2)，和其他所需的包：
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -324,7 +324,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 你已了解如何将非结构化 JSON 数据集转换为结构化 [Apache Hive](https://hive.apache.org/) 表。 若要了解有关 HDInsight 上的 Hive 的详细信息，请参阅以下文档：
 
-* [HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [开始使用 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [使用 HDInsight 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)
 
 [curl]: https://curl.haxx.se

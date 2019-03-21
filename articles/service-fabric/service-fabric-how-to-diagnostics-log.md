@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/27/2018
 ms.author: ryanwi
-ms.openlocfilehash: 42a6430162f3bafd3ec3ce2a3c523f6f5755914a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 0e5cfa42eba5a2110ebf8879c771f2fef048ae03
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835707"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加日志记录
 
@@ -132,7 +132,7 @@ ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www
 
 ### <a name="using-other-logging-providers"></a>使用其他日志记录提供程序
 
-某些第三方提供程序（包括 [Serilog](https://serilog.net/)、[NLog](http://nlog-project.org/) 和 [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)）可以使用上一部分所述的方法。 可将其中的每个提供程序插入 ASP.NET Core 日志记录，也可以单独使用。 Serilog 中的某个功能可以扩充记录器发出的所有消息。 此功能对服务名称、类型和分区信息的输出可能很有作用。 若要在 ASP.NET Core 基础结构中使用此功能，请执行以下步骤：
+某些第三方提供程序（包括 [Serilog](https://serilog.net/)、[NLog](https://nlog-project.org/) 和 [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)）可以使用上一部分所述的方法。 可将其中的每个提供程序插入 ASP.NET Core 日志记录，也可以单独使用。 Serilog 中的某个功能可以扩充记录器发出的所有消息。 此功能对服务名称、类型和分区信息的输出可能很有作用。 若要在 ASP.NET Core 基础结构中使用此功能，请执行以下步骤：
 
 1. 将 **Serilog**、**Serilog.Extensions.Logging**、**Serilog.Sinks.Literate** 和 **Serilog.Sinks.Observable** NuGet 包添加到项目。 
 2. 创建 `LoggerConfiguration` 和记录器实例。

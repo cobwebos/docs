@@ -11,19 +11,32 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8897651c963b0036bc2ac3d8cdb06a52d6f52ba1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e09127f8ed2e8e949711631a20fa5a9cd855311
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188029"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284793"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>预览版：Azure AD 密码保护代理版本历史记录
+# <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD 密码保护代理版本历史记录
 
-|     |
-| --- |
-| Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+## <a name="121160"></a>1.2.116.0
+
+发行日期：3/13/2019
+
+* Get AzureADPasswordProtectionProxy 和 Get AzureADPasswordProtectionDCAgent cmdlet 现在报表的软件版本和当前的 Azure 租户具有以下限制：
+  * 软件版本和 Azure 租户数据仅适用于 DC 代理和代理运行版本 1.2.116.0 或更高版本。
+  * Azure 租户的数据可能不会报告代理重新注册 （或续订） 之前或发生林。
+* 代理服务现在要求安装.NET 4.7。
+  * 应已完全更新的 Windows Server 上安装.NET 4.7。 如果这不是这种情况，下载并运行安装程序，请参阅[Windows.NET Framework 4.7 脱机安装程序](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
+  * 在服务器核心的系统上可能需要将 /q 标志传递到.NET 4.7 安装程序以使其成功。
+* 代理服务现在支持自动升级。 自动升级过程使用与代理服务并行安装的 Microsoft Azure AD Connect 代理更新程序服务。 自动升级是在默认情况下。
+* 自动升级可以启用或禁用使用集 AzureADPasswordProtectionProxyConfiguration cmdlet。 可以使用 Get AzureADPasswordProtectionProxyConfiguration cmdlet 查询的当前设置。
+* DC 代理服务的服务二进制已更名为 AzureADPasswordProtectionDCAgent.exe。
+* 代理服务的服务二进制已更名为 AzureADPasswordProtectionProxy.exe。 如果第三方防火墙，则在使用相应地修改可能需要防火墙规则。
+  * 注意： 如果在上一代理中使用了 http 代理配置文件安装，它将需要重命名 (从*proxyservice.exe.config*到*AzureADPasswordProtectionProxy.exe.config*) 超过此范围升级。
+* 已从 DC 代理中删除所有的限时功能检查。
+* 次要 bug 修复和日志记录改进。
 
 ## <a name="12650"></a>1.2.65.0
 

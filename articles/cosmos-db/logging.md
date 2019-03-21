@@ -4,27 +4,27 @@ description: 了解对 Azure Cosmos DB 中存储的数据进行记录和监视�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 2a08097b42f395bd0009353635cabbd264c3c421
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d75eb87bff812589e4d3a3a14079ddaaf368a588
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992084"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259765"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
-开始使用一个或多个 Azure Cosmos DB 数据库后，可能需要监视数据库的访问方式和时间。 本文概述了 Azure 平台上提供的日志。 了解如何启用诊断日志适用于监视目的发送到日志记录[Azure 存储](https://azure.microsoft.com/services/storage/)，如何日志流式传输到[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，以及如何将日志导出到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/).
+开始使用一个或多个 Azure Cosmos DB 数据库后，可能需要监视数据库的访问方式和时间。 本文概述了 Azure 平台上提供的日志。 其中介绍了如何启用监视用的诊断日志记录，以便将日志发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，以及如何将日志导出到 [Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="logs-available-in-azure"></a>在 Azure 中可用的日志
 
-在探讨如何监视 Azure Cosmos DB 帐户之前，让我们先澄清一些有关日志记录和监视的事项。 Azure 平台上有不同类型的日志。 有 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[Azure 指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)日志、事件日志、检测信号监视日志、操作日志，等等。 有很多种日志。 您可以查看中的日志的完整列表[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)在 Azure 门户中。 
+在探讨如何监视 Azure Cosmos DB 帐户之前，让我们先澄清一些有关日志记录和监视的事项。 Azure 平台上有不同类型的日志。 有 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[Azure 指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)日志、事件日志、检测信号监视日志、操作日志，等等。 有很多种日志。 可以在 Azure 门户的 [Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中看到日志的完整列表。 
 
-下图显示所提供的不同种类的 Azure 日志：
+下图显示了不同类型的可用的 Azure 日志：
 
 ![不同种类的 Azure 日志](./media/logging/azurelogging.png)
 
@@ -67,7 +67,7 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 
 若要启用诊断日志记录，必须具有以下资源：
 
-* 现有的 Azure Cosmos DB 帐户、数据库和容器。 有关创建这些资源的说明，请参阅[使用 Azure 门户创建数据库帐户](create-sql-api-dotnet.md#create-a-database-account)、[Azure CLI 示例](cli-samples.md)或 [PowerShell 示例](powershell-samples.md)。
+* 现有的 Azure Cosmos DB 帐户、数据库和容器。 有关创建这些资源的说明，请参阅[使用 Azure 门户创建数据库帐户](create-sql-api-dotnet.md#create-account)、[Azure CLI 示例](cli-samples.md)或 [PowerShell 示例](powershell-samples.md)。
 
 若要在 Azure 门户中启用诊断日志记录，请执行以下步骤：
 
@@ -99,27 +99,23 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 - 若要允许在存储帐户中存储诊断日志，请使用以下命令：
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
+   az monitor diagnostic-settings create --name DiagStorage --resource <resourceId> --storage-account <storageAccountName> --logs '[{"category": "QueryRuntimeStatistics", "enabled": true, "retentionPolicy": {"enabled": true, "days": 0}}]'
    ```
 
-   `resourceId` 是 Azure Cosmos DB 帐户的名称。 `storageId` 是要将日志发送到的存储帐户的名称。
+   `resource` 是 Azure Cosmos DB 帐户的名称。 资源采用以下格式"/subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/providers/Microsoft.DocumentDB/databaseAccounts/ < Azure_Cosmos_account_name >"`storage-account`是到的存储帐户的名称在想要将日志发送。 可以通过更新类别参数值为"MongoRequests"或"DataPlaneRequests"记录其他日志。 
 
 - 要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
+   az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --event-hub-rule <eventHubRuleID> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
-   `resourceId` 是 Azure Cosmos DB 帐户的名称。 `serviceBusRuleId` 是采用以下格式的字符串：
-
-   ```azurecli-interactive
-   {service bus resource ID}/authorizationrules/{key name}
-   ```
+   `resource` 是 Azure Cosmos DB 帐户的名称。 `event-hub-rule`是事件中心规则 id。 
 
 - 若要启用将诊断日志发送到 Log Analytics 工作区，请使用以下命令：
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
+   az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --workspace <resource id of the log analytics workspace> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
 可以组合这些参数以启用多个输出选项。
@@ -353,11 +349,11 @@ $blobs | Get-AzureStorageBlobContent `
 <a id="#view-in-loganalytics"></a>
 ## <a name="view-logs-in-azure-monitor-logs"></a>查看 Azure Monitor 日志中的日志
 
-如果所选**发送到 Log Analytics**选项时你启用了诊断日志记录诊断你的容器中的数据在两个小时内转发到 Azure Monitor 日志。 当在启用日志记录之后立即查看 Azure Monitor 日志时，不会看到任何数据。 请等待两个小时并重试。 
+如果在启用诊断日志记录时选择了“发送到 Log Analytics”选项，则容器中的诊断数据会在两个小时内转发到 Azure Monitor 日志。 如果在启用日志记录之后立即查看 Azure Monitor 日志，将看不到任何数据。 请等待两个小时并重试。 
 
-查看日志之前，检查并查看是否已升级 Log Analytics 工作区以使用新的 Kusto 查询语言。 若要检查，请打开[Azure 门户](https://portal.azure.com)，选择**Log Analytics 工作区**的最左侧，然后选择工作区名称下, 一步图中所示。 此时会显示“Log Analytics 工作区”页：
+在查看日志之前，请检查并确定 Log Analytics 工作区是否已升级为使用新的 Kusto 查询语言。 若要检查，请打开 [Azure 门户](https://portal.azure.com)，在最左侧选择“Log Analytics 工作区”，然后选择工作区名称，如下图所示。 此时会显示“Log Analytics 工作区”页：
 
-![在 Azure 门户中的 azure Monitor 日志](./media/logging/azure-portal.png)
+![Azure 门户中的 Azure Monitor 日志](./media/logging/azure-portal.png)
 
 >[!NOTE]
 >OMS 工作区现在称为 Log Analytics 工作区。  
@@ -366,7 +362,7 @@ $blobs | Get-AzureStorageBlobContent `
 
 ![Azure Monitor 日志升级消息](./media/logging/upgrade-notification.png)
 
-若要在 Azure Monitor 日志中查看诊断数据，请打开**日志搜索**页上从左侧菜单或**管理**区域页上，在下图中所示：
+若要查看 Azure Monitor 日志中的诊断数据，请打开左侧菜单中的“日志搜索”页或该页的“管理”区域，如下图所示：
 
 ![Azure 门户中的“日志搜索”选项](./media/logging/log-analytics-open-log-search.png)
 
@@ -439,7 +435,7 @@ $blobs | Get-AzureStorageBlobContent `
 
 下表描述了每个日志条目的内容。
 
-| Azure 存储字段或属性 | Azure 监视器日志属性 | 描述 |
+| Azure 存储字段或属性 | Azure Monitor 日志属性 | 描述 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|

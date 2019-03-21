@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 39864b629d41f0921c80736042ca5f8938376297
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: c51cb797ff4465f4efcbc526444cddeb5b923262
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650988"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225250"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装自定义 Apache Hadoop 应用程序
 
@@ -28,7 +28,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 * [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 如果想要在现有的 HDInsight 群集上安装 HDInsight 应用程序，必须有一个 HDInsight 群集。 若要创建群集，请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。 也可以在创建 HDInsight 群集时安装 HDInsight 应用程序。
 
 ## <a name="install-hdinsight-applications"></a>安装 HDInsight 应用程序
@@ -52,7 +52,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 2. 在“参数”  边栏选项卡中，输入以下内容：
 
    * **clusterName**：输入要安装应用程序的群集的名称。 此群集必须是现有的群集。
-3. 单击“确定”保存参数。
+3. 单击“确定”  保存参数。
 4. 在“自定义部署”边栏选项卡中输入“资源组”。  资源组是对群集、依赖存储帐户和其他资源进行分组的容器。 必须使用与群集相同的资源组。
 5. 单击“法律条款”，并单击“创建”。
 6. 确认已选中“固定到仪表板”复选框，并单击“创建”。 可以从固定到门户仪表板的磁贴和门户通知查看安装状态（单击门户顶部的铃铛图标）。  安装此应用程序大约需要 10 分钟。

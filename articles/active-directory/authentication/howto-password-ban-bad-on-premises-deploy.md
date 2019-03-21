@@ -1,6 +1,6 @@
 ---
-title: 部署 Azure AD 密码保护预览版
-description: 将 Azure AD 密码保护预览版，若要禁止错误密码的本地部署
+title: 部署 Azure AD 密码保护
+description: 将 Azure AD 密码保护，以禁止错误密码的本地部署
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 832f29d16e5976493da56b304c3de0288b83c9b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54d2d600771316b0a88ea0a2486c0dedd0f84594
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848739"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286527"
 ---
-# <a name="preview-deploy-azure-ad-password-protection"></a>预览版：部署 Azure AD 密码保护
-
-|     |
-| --- |
-| Azure Active Directory (Azure AD) 密码保护是 Azure AD 的公共预览版功能。 有关预览版的详细信息，请参阅[Supplemental Terms of Use 针对 Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
 现在，你已了解[如何强制执行 Windows Server Active directory 的 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)下, 一步是规划和执行您的部署。
 

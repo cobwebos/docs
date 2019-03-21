@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7403d4f791151b167f03ee79c30623bbd644008
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 7aa0e11ed47219829830369d17b300270d3fbffb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100670"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259408"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务将模型部署为 FPGA 上的 Web 服务
 
@@ -26,9 +26,9 @@ ms.locfileid: "56100670"
   - DenseNet-121
   - VGG-16   
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-- 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+- 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 - 已安装 Azure 机器学习服务工作区，以及适用于 Python 的 Azure 机器学习 SDK。 了解如何通过[如何配置开发环境](how-to-configure-environment.md)一文满足这些先决条件。
  
@@ -46,12 +46,8 @@ ms.locfileid: "56100670"
     pip install "tensorflow==1.10"
     ```
 
-### <a name="get-the-notebook"></a>获取 Notebook
-
-为方便起见，本教程以 Jupyter Notebook 的形式提供。 请遵循此处的代码或运行[快速入门笔记本](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb)。
-
 ## <a name="create-and-deploy-your-model"></a>创建和部署模型
-创建一个管道来预处理输入图像，在 FPGA 上使用 ResNet 50 对其进行特征化，然后通过在 ImageNet 数据集上训练的分类器来运行这些功能。
+创建管道，以便预处理输入的图像，使其使用 ResNet 50 上 FPGA 的功能，然后运行通过 ImageNet 数据集上训练的分类器的功能。
 
 遵照说明操作：
 

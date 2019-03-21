@@ -9,14 +9,15 @@ ms.date: 05/08/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c51a0f1f8eb1999ced02bf3cf14ee81e4fca08e8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 5ffebd117d1ea69a81395c1517b6f75505b83ac0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675188"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294631"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>在 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限
 
@@ -24,15 +25,15 @@ Azure Active Directory (Azure AD) B2B 协作用户已作为来宾用户添加到
 
 ## <a name="default-role"></a>默认角色
 
-![默认角色](./media/add-guest-to-role/default-role.png)
+![显示默认目录角色的屏幕截图](./media/add-guest-to-role/default-role.png)
 
 ## <a name="global-administrator-role"></a>全局管理员角色
 
-![全局管理员角色](./media/add-guest-to-role/global-admin-role.png)
+![显示全局管理员角色的屏幕截图](./media/add-guest-to-role/global-admin-role.png)
 
 ## <a name="limited-administrator-role"></a>受限制的管理员角色
 
-![受限制的管理员角色](./media/add-guest-to-role/limited-admin-role.png)
+![显示受限制的管理员角色的屏幕截图](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74b21a9dd8faa8eb35aa8a2ef738bd6303e4cdd7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: 1203f33458c83bbde7a263022b78563bad183143
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195336"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870731"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure 应用程序的“市场”选项卡
 
@@ -38,7 +38,7 @@ ms.locfileid: "53195336"
 |        标题            |        套餐的标题。 将在市场中突出显示。 最大长度为 50 个字符。           |
 |         摘要           |        套餐的简短摘要。 最大长度为 100 个字符。           |
 |         长摘要           |        套餐的较长摘要（不过，其内容可与“摘要”相同）。 最大长度为 256 个字符。           |
-|       Description            |         套餐的说明。 最大长度为 3000 个字符。 允许简单的 HTML 格式化，包括 &lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; 和标头标记。           |
+|       描述            |         套餐的说明。 最大长度为 3000 个字符。 允许简单的 HTML 格式化，包括 &lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; 和标头标记。           |
 |        营销标识符            |         与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。 为服务选择一个短且易记的营销标识符。 此项将用在此套餐的市场 URL 中。 例如，如果发布者 ID 为“contoso”，营销标识符为“sampleApp”，则套餐在 Azure 市场中的 URL 为 https://azuremarketplace.microsoft.com/en-us/marketplace/apps/contoso.sampleApp          |
 |        预览订阅 ID            |         为预览器添加 1 到 100 个订阅标识符。 在预览版套餐发布之后，这些已加入允许列表的订阅将有权在套餐上线之前访问该套餐。          |
 |         有用链接           |        可以为套餐用户提供各种资源（例如支持、文档、论坛等）的链接。请务必至少添加一个文档链接。            |
@@ -66,7 +66,7 @@ ms.locfileid: "53195336"
 
 接下来的屏幕截图显示市场搜索结果的示例。
 
-![市场套餐搜索结果 ](./media/azureapp-marketplace-example-browse.png)
+![市场套餐搜索结果](./media/azureapp-marketplace-example-browse.png)
 
 下图显示了在客户单击搜索结果中的套餐磁贴后，套餐在市场中的显示方式。
 

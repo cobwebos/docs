@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: c3b27291fc413310393cd0270ec750de14a4985b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 0bfd280e2a0a63c8fb41d0813a0ac44784e7a055
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270056"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259171"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack 数据中心集成 - 发布终结点
 
@@ -36,7 +36,7 @@ Azure Stack 为其基础结构角色设置虚拟 IP 地址 (VIP)。 这些 VIP �
 > 用户 VIP 是动态的，由用户自己定义，而不受 Azure Stack 操作员的控制。
 
 > [!Note]
-> 截至 1811年更新中，12495 30015 范围中的端口不再需要打开由于的加法[扩展主机](azure-stack-extension-host-prepare.md)。
+> 自 1811 更新起，由于添加了[扩展主机](azure-stack-extension-host-prepare.md)，因此不再需要打开 12495-30015 范围内的端口。
 
 |终结点 (VIP)|DNS 主机 A 记录|协议|端口|
 |---------|---------|---------|---------|
@@ -71,22 +71,22 @@ Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上�
 > [!Note]  
 > Azure Stack 不支持使用 ExpressRoute 访问下表中列出的 Azure 服务。
 
-|目的|目标网址|协议|端口|源网络|
+|目的|目标 URL|协议|端口|源网络|
 |---------|---------|---------|---------|---------|
-|标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|公共 VIP 的/27<br>公共基础结构网络|
-|市场联合|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|公共 VIP 的/27|
-|修补程序和更新|https://&#42;.azureedge.net|HTTPS|443|公共 VIP 的/27|
-|注册|https://management.azure.com|HTTPS|443|公共 VIP 的/27|
-|使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|公共 VIP 的/27|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|公共 VIP 的/27<br>公共基础结构网络|
-|NTP|（为部署提供的 NTP 服务器的 IP）|UDP|123|公共 VIP 的/27|
-|DNS|（为部署提供的 DNS 服务器的 IP）|TCP<br>UDP|53|公共 VIP 的/27|
-|CRL|（证书上的 CRL 分发点下的 URL）|HTTP|80|公共 VIP 的/27|
-|LDAP|提供 Graph 集成的 active Directory 林|TCP<br>UDP|389|公共 VIP 的/27|
-|LDAP SSL|提供 Graph 集成的 active Directory 林|TCP|636|公共 VIP 的/27|
-|LDAP GC|提供 Graph 集成的 active Directory 林|TCP|3268|公共 VIP 的/27|
-|LDAP GC SSL|提供 Graph 集成的 active Directory 林|TCP|3269|公共 VIP 的/27|
-|AD FS|为 AD FS 集成提供的 AD FS 的元数据终结点|TCP|443|公共 VIP 的/27|
+|标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https:\//secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|公共 VIP - /27<br>公共基础结构网络|
+|市场联合|https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|公共 VIP - /27|
+|修补程序和更新|https://&#42;.azureedge.net|HTTPS|443|公共 VIP - /27|
+|注册|https:\//management.azure.com|HTTPS|443|公共 VIP - /27|
+|使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|公共 VIP - /27|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https:\//msdl.microsoft.com/download/symbols<br>https:\//www.microsoft.com/pkiops/crl<br>https:\//www.microsoft.com/pkiops/certs<br>https:\//crl.microsoft.com/pki/crl/products<br>https:\//www.microsoft.com/pki/certs<br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|公共 VIP - /27<br>公共基础结构网络|
+|NTP|（为部署提供的 NTP 服务器的 IP）|UDP|123|公共 VIP - /27|
+|DNS|（为部署提供的 DNS 服务器的 IP）|TCP<br>UDP|53|公共 VIP - /27|
+|CRL|（证书上的 CRL 分发点下的 URL）|HTTP|80|公共 VIP - /27|
+|LDAP|为 Graph 集成提供的 Active Directory 林|TCP<br>UDP|389|公共 VIP - /27|
+|LDAP SSL|为 Graph 集成提供的 Active Directory 林|TCP|636|公共 VIP - /27|
+|LDAP GC|为 Graph 集成提供的 Active Directory 林|TCP|3268|公共 VIP - /27|
+|LDAP GC SSL|为 Graph 集成提供的 Active Directory 林|TCP|3269|公共 VIP - /27|
+|AD FS|为 AD FS 集成提供的 AD FS 元数据终结点|TCP|443|公共 VIP - /27|
 |     |     |     |     |     |
 
 > [!Note]  

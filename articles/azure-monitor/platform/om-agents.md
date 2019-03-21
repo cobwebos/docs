@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 722712d1e38efa3e1accc41abca5c9d88b3c1229
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 21294f61c77f0267601c5d0fc1fc9dcf213008e7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095919"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258814"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 若要保持 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
@@ -132,7 +132,7 @@ ms.locfileid: "58095919"
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 展开 Operations Management Suite，并单击“**连接**”。
 1. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
-1. 在“Operations Management Suite 向导:代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，然后键入带端口号的 URL，例如 <http://corpproxy:80>，然后单击“完成”。
+1. 在“Operations Management Suite 向导:**代理服务器**页上，选择**使用代理服务器访问 Operations Management Suite**，然后键入 URL 与端口号，例如，http:\//corpproxy:80，然后单击**完成**。
 
 如果代理服务器要求身份验证，请执行以下步骤，配置需要向管理组中 Log Analytics 报告的受管理计算机传播的凭据和设置。
 

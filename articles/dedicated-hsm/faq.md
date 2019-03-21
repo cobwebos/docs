@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/11/2019
+ms.date: 3/19/2019
 ms.author: barclayn
-ms.openlocfilehash: cd3228b66dbbf19b574c390733340c0ea2fb5a78
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b28d9607bf35d37e252d7d0bc59d1ce808e38665
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57846882"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259986"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -164,7 +164,7 @@ Microsoft 对 HSM 没有任何管理或加密控制权。 但 Microsoft 确实�
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>问：是否可在同一区域或跨多个区域配置高可用性？
 
-是的。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 从同一个 VNET 或其他 Vnet 位于同一区域或跨区域，或在本地 Hsm Hsm 连接到 VNET 使用站点到站点或点到点 VPN 可以添加到相同的高可用性配置。
+是的。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 从同一个 VNET 或其他 Vnet 位于同一区域或跨区域，或在本地 Hsm Hsm 连接到 VNET 使用站点到站点或点到点 VPN 可以添加到相同的高可用性配置。 应注意这会同步密钥材料，如角色不是与特定配置项目。
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：是否可将本地网络中的 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
 
@@ -176,13 +176,13 @@ Microsoft 对 HSM 没有任何管理或加密控制权。 但 Microsoft 确实�
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>问：在一个应用程序中可将多少个 HSM 添加到相同的高可用性配置？
 
-16\.
+16 高可用性组的成员具有下消失，完全限制测试很好的效果。
 
 ## <a name="support"></a>支持
 
 ### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>问：专用 HSM 服务的 SLA 是什么？
 
-目前，专用 HSM 服务不提供 SLA。 Microsoft 确保设备的网络级访问，因此标准 Azure 网络 SLA 适用。
+没有为专用 HSM 服务提供任何特定的运行时间进行保证。 Microsoft 确保设备的网络级访问，因此标准 Azure 网络 SLA 适用。
 
 ### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>问：Azure 专用 HSM 中使用的 HSM 受到怎样的保护？
 
@@ -198,15 +198,19 @@ Azure 数据中心提供全面的物理和程序性安全控制。 除此之外�
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>问：如何获取对专用 HSM 的支持？
 
-方法与获取其他所有 Azure 服务的支持一样。 根据具体的案例，在必要的情况下，Azure 支持团队会向 Gemalto 支持部门呈报问题。
+由 Microsoft 和 Gemalto 提供支持。  如果硬件出现问题或网络访问，与 Microsoft 的支持请求并且如果您有 HSM 配置、 软件和应用程序开发的问题请 rasie 支持包含 Gemalto 请求。 如果不确定的问题，引发支持请求 withg Microsoft，然后 Gemalto 可以参与作为必需。 
 
-### <a name="q-how-do-i-get-access-to-dedicated-hsm-client-software-documentation-firmware-images"></a>问：如何访问专用 HSM 客户端软件、文档和固件映像？
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>问：如何获取客户端软件、 文档和整合指南，SafeNet Luna 7 HSM 访问？
 
-客户必须直接与 Gemalto 协作才能访问 HSM 客户端软件、文档和 OS/固件映像。
+注册服务之后, Gemalto 客户 ID 会提供，可实现 Gemalto 客户支持门户中注册。 这将启用对所有软件和文档以及直接与 Gemalto 启用支持请求的访问。
 
 ### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>问：如果发现了安全漏洞，而 Gemalto 发布了相关的修补程序，由谁负责升级或修补 OS/固件？
 
 Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和修补其 HSM。
+
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>问：如果需要重新启动我的 HSM？
+
+ HSM 具有一个命令行重新启动选项，应注意，必须使用"硬重新启动"选项。 如果出于任何原因失败，引发与 Microsoft 支持请求，并且我们具有以物理方式重新启动设备。 
 
 ## <a name="cryptography-and-standards"></a>加密和标准
 
@@ -262,15 +266,13 @@ Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和�
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>问：在专用 HSM 中可以创建多少个分区？
 
-根据所用的具体 HSM 型号，最多可以创建 10 个分区。
+A790 所使用的 SafeNet Luna HSM 7 模型中的服务成本包括 10 个分区的许可证。 设备有 100 个分区的限制，添加高达此限制的分区会产生额外的许可成本，并需要在设备上的新许可证文件的安装。
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>问：专用 HSM 支持多少个密钥？
 
-最大密钥数如下。 如果使用非对称密钥，则这些数字也适用于密钥对。
+最大键数取决于可用内存。 在使用 SafeNet Luna 7 模型 A790 具有 32 MB 的内存。 下面的编号，还有适用于密钥对，如果使用非对称密钥。
 
 * RSA-2048 - 19,000
 * ECC-P256 - 91,000
-* AES-256 - 218,000
 
 容量根据密钥生成模板中设置的特定密钥属性和分区数而异。
-

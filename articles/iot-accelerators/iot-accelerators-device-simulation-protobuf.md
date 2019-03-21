@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 9657cda8b0f3a19d02ebf1907116235b88f4cb82
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 74bb2d181533f802e1428eaa8a855f60fb855193
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111508"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258816"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
 
@@ -40,7 +40,7 @@ ms.locfileid: "58111508"
 * .NET Core。 可以下载[适用于 Mac、Linux 和 Windows 的 .NET Core](https://www.microsoft.com/net/download)。
 * Postman。 可以下载[适用于 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
 * [部署到 Azure 订阅的 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 需要 IoT 中心的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
-* [已部署到 Azure 订阅的 Cosmos DB 数据库](../cosmos-db/create-sql-api-dotnet.md#create-a-database-account)，该数据库使用 SQL API，并配置为[非常一致性](../cosmos-db/manage-account.md)。 需要 Cosmos DB 数据库的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
+* [已部署到 Azure 订阅的 Cosmos DB 数据库](../cosmos-db/create-sql-api-dotnet.md#create-account)，该数据库使用 SQL API，并配置为[非常一致性](../cosmos-db/manage-account.md)。 需要 Cosmos DB 数据库的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 * [已部署到 Azure 订阅的 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)。 需要该存储帐户的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 
 ## <a name="prepare-your-development-environment"></a>准备开发环境

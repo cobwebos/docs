@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 3/19/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1b26f0833dec95d886a56dde4526d02f697926ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 665e6651db37cc04693d68bd2de2ede6e595eab4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004413"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293383"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>安装和运行识别文本容器
 
@@ -50,14 +50,14 @@ ms.locfileid: "58004413"
 
 下表列出了为每个“识别文本”容器分配的最小和建议 CPU 核心数和内存。
 
-| 容器 | 最小值 | 建议 |
-|-----------|---------|-------------|
-|识别文本|单核，8GB 内存，0.5 TPS|双核，8GB 内存，1 TPS|
+| 容器 | 最小值 | 建议 |TPS<br>（最低配置，最大值）|
+|-----------|---------|-------------|--|
+|识别文本|单核，8GB 内存，0.5 TPS|双核，8GB 内存，1 TPS|0.5, 1|
 
-每个核心至少必须为 2.6 GHz 或更快。
+* 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
+* TP-每秒事务数
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
-
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 获取容器映像
 

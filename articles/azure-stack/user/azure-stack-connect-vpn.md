@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 03/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: d2766416c84233281e55ff6f8be8519b7aadfb8c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d35ab3f477f327cb85cd8dfebd255542489debdc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763548"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286136"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>使用 VPN 将 Azure Stack 连接到 Azure
 
@@ -92,8 +92,7 @@ ms.locfileid: "57763548"
 5. 若要选择虚拟网络，请选择“虚拟网络”。 然后从列表中选择“AzureVnet”。
 6. 选择“公共 IP 地址”。 当“选择公共 IP 地址”部分打开时，选择“新建”。
 7. 在“名称”中键入 **Azure-GW-PiP**，然后选择“确定”。
-8. 对于“VPN 类型”，默认已选择“基于路由”。 保留“基于路由”VPN 类型。
-9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择“创建”。
+8. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择“创建”。
 
 ### <a name="create-the-local-network-gateway-resource"></a>创建本地网关资源
 

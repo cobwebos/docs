@@ -8,35 +8,34 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 55d0269aaa330f928a9d037eec6a3445825a5ed3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 4d82cc59eb1098451a263957aa028b66996bb072
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470335"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307176"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>将管理事件的 Azure 警报迁移到活动日志警报
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!WARNING]
 > 有关管理事件的警报将于 10 月 1 日当天或之后关闭。 请使用以下说明进行操作，以了解你是否具有这些警报，如果有，请将其迁移。
->
-> 
 
 ## <a name="what-is-changing"></a>有什么变化
 
 Azure Monitor（以前称为 Azure Insights）提供了创建警报的功能，可触发管理事件并生成发送到 webhook URL 或电子邮件地址的通知。 你可能已通过下列任一方式创建了下列任一警报：
 * 在某些资源类型的 Azure 门户中，在“监视”->“警报”->“添加警报”下，其中“警报”被设置为“事件”
-* 通过运行 Add-AzureRmLogAlertRule PowerShell cmdlet
+* 通过运行添加 AzLogAlertRule PowerShell cmdlet
 * 通过直接使用 odata.type = “ManagementEventRuleCondition” 以及 dataSource.odata.type = “RuleManagementEventDataSource” 的[警报 REST API](https://docs.microsoft.com/rest/api/monitor/alertrules)
  
 以下 PowerShell 脚本将返回订阅中所具有的有关管理事件的所有警报列表，以及每个警报所设置的条件。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 $alerts = $null
-foreach ($rg in Get-AzureRmResourceGroup ) {
-  $alerts += Get-AzureRmAlertRule -ResourceGroup $rg.ResourceGroupName
+foreach ($rg in Get-AzResourceGroup ) {
+  $alerts += Get-AzAlertRule -ResourceGroup $rg.ResourceGroupName
 }
 foreach ($alert in $alerts) {
   if($alert.Properties.Condition.DataSource.GetType().Name.Equals("RuleManagementEventDataSource")) {

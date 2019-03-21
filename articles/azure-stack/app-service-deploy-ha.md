@@ -16,12 +16,12 @@ ms.date: 03/13/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: 50e5272d92ad333e70f65173cf024d165dc7501c
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: db95be94028fcf16871a9dcfee5f0d87eb5d2cdc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58102037"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285660"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>高度可用配置中部署应用服务
 
@@ -207,7 +207,7 @@ ms.locfileid: "58102037"
     ![基础结构角色实例的值](media/app-service-deploy-ha/12.png)
 
     > [!NOTE]
-    > 从默认值为建议更改此 tutoral 增加安装应用程序服务的硬件要求。 需要 26 个内核的总数和 46,592 MB 的 RAM 来支持的 15 Vm 的建议的 21 Vm 而不是默认 18 个内核和 32,256 MB 的 RAM 时。
+    > 从默认值更改为那些建议这样 tutoral 增加了在安装应用程序服务的硬件要求。 需要 26 个内核的总数和 46,592 MB 的 RAM 来支持的 15 Vm 的建议的 21 Vm 而不是默认 18 个内核和 32,256 MB 的 RAM 时。
 
 14. 选择要用于安装应用服务基础结构 Vm 平台映像，然后单击**下一步**:
 

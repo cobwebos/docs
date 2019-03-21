@@ -8,12 +8,12 @@ ms.author: viviali
 ms.date: 12/4/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 9c774a463264a3df859ac097dce4aa21df1c1dd8
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
+ms.openlocfilehash: 6133a7441459072d0c7da1841161da563a28aa31
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163355"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730318"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>构建 IoT Central 设备网桥以将其他 IoT 云连接到 IoT Central
 
@@ -26,7 +26,9 @@ IoT Central 设备网桥是 GitHub 中的一个开源解决方案。 随时使�
 -   Azure 函数应用
 -   Azure 存储帐户
 -   使用计划
--   Azure Key Vault。函数应用是设备网桥的不可或缺的组成部分。 函数应用通过简单的 Webhook 集成从其他 IoT 平台或任何自定义平台接收 HTTP POST 请求。 我们提供了示例用于演示如何连接到 Sigfox、Particle 和 TTN 云。 如果平台可向函数应用发送 HTTP POST 请求，则你可以轻松扩展此解决方案，以连接到自定义 IoT 云。
+-   Azure 密钥保管库
+
+Function app 是不可或缺的设备桥。 函数应用通过简单的 Webhook 集成从其他 IoT 平台或任何自定义平台接收 HTTP POST 请求。 我们提供了示例用于演示如何连接到 Sigfox、Particle 和 TTN 云。 如果平台可向函数应用发送 HTTP POST 请求，则你可以轻松扩展此解决方案，以连接到自定义 IoT 云。
 函数应用将数据转换为 IoT Central 接受的格式，并通过 DPS API 转发此数据。
 
 ![Azure Functions 屏幕截图](media/howto-build-iotc-device-bridge/azfunctions.png)

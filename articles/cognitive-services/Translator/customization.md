@@ -7,15 +7,15 @@ author: Jann-Skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.topic: article
-ms.date: 05/10/2018
+ms.topic: conceptual
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: c2ff97c61cee1f2f773710103ac422fc6f1d8714
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: e66387a904f0026eb862178b19fd1b005212d674
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876056"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124008"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
@@ -42,7 +42,8 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
-传统的 Microsoft Translator Hub 可用于翻译统计机器翻译。 [了解详细信息](https://www.microsoft.com/en-us/translator/hub.aspx)
+> [!NOTE]
+> Microsoft Translator 中心将于 2019 年 4 月 30 日停用旧。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 ## <a name="custom-translator-versus-hub"></a>自定义翻译与 Hub
 
@@ -59,8 +60,8 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 
 > [!NOTE]
 > 自 2018 年 2 月 1 日起，AddTranslation() 和 AddTranslationArray() 不再可用于文本翻译 API V2.0。 这些方法将失败，不会写入任何内容。 文本翻译 API V3.0 不支持这些方法。
-
->Translator Hub API 中提供了类似的功能。 请参阅 [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
+> 
+> Translator Hub API 中提供了类似的功能。 请参阅 [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 36b60b3784739a884b887a29f3dd53c61c44cd6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961003"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57851340"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -53,9 +53,9 @@ ms.locfileid: "52961003"
 ![启用 Git][api-management-enable-git]
 
 > [!IMPORTANT]
-> 未定义为属性的任何机密都将保存在存储库中，并将保留在其历史记录中，直到禁用并重新启用 Git 访问。 属性提供了管理所有 API 配置和策略的常量字符串值（包括机密）的安全位置，因此无需将它们直接存储在策略声明中。 有关详细信息，请参阅[如何在 Azure API 管理策略中使用属性](api-management-howto-properties.md)。
-> 
-> 
+> 未定义名为的值为任何机密将存储在存储库，并将保留在其历史记录，直到禁用并重新启用 Git 访问。 已命名的值提供安全的位置来管理常量字符串值，跨所有 API 配置和策略，包括机密，因此无需将它们直接存储在策略声明。 有关详细信息，请参阅[如何在 Azure API 管理策略中使用名为值](api-management-howto-properties.md)。
+>
+>
 
 有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit)。
 
@@ -73,13 +73,13 @@ ms.locfileid: "52961003"
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>将存储库克隆到本地计算机
 
-若要克隆存储库，需要存储库的 URL、用户名和密码。 若要获取用户名和其他凭据，请单击页面顶部附近的“访问凭据”。  
- 
+若要克隆存储库，需要存储库的 URL、用户名和密码。 若要获取用户名和其他凭据，请单击页面顶部附近的“访问凭据”。
+
 若要生成密码，先确保“到期”设置为所需的到期日期和时间，然后单击“生成”。
 
 > [!IMPORTANT]
 > 记下此密码。 离开此页面后，不会再次显示该密码。
-> 
+>
 
 以下示例使用 [Git for Windows](https://www.git-scm.com/downloads) 中的 Git Bash 工具，但可以使用熟悉的任何 Git 工具。
 
@@ -125,15 +125,15 @@ git pull
 cd {name}.scm.azure-api.net/
 ```
 
-## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>将更改从本地存储库推送到服务器存储器
-要将更改从本地存储库推送到服务器存储库，必须提交更改，然后将它们推送到服务器存储库。 要提交更改，请打开 Git 命令工具、切换到本地存储库的目录，并发出以下命令。
+## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>将更改从本地存储库推送到服务器存储库
+若要将更改从本地存储库推送到服务器存储库，必须提交更改，然后将它们推送到服务器存储库。 要提交更改，请打开 Git 命令工具、切换到本地存储库的目录，并发出以下命令。
 
 ```
 git add --all
 git commit -m "Description of your changes"
 ```
 
-要将所有提交推送到服务器，请运行以下命令。
+若要将所有提交推送到服务器，请运行以下命令。
 
 ```
 git push
@@ -149,7 +149,7 @@ git push
 
 本地 Git 存储库中的文件和文件夹包含有关服务实例的配置信息。
 
-| Item | Description |
+| Item | 描述 |
 | --- | --- |
 | 根 api-management 文件夹 |包含服务实例的顶级配置 |
 | apis 文件夹 |包含服务实例中的 API 的配置 |
@@ -172,12 +172,12 @@ git push
 
 > [!NOTE]
 > 以下实体不包含在 Git 存储库中，并且无法使用 Git 进行配置。
-> 
-> * 用户
-> * 订阅
-> * 属性
+>
+> * [用户](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
+> * [订阅](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
+> * [命名的值](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
 > * 样式以外的开发人员门户实体
-> 
+>
 
 ### <a name="root-api-management-folder"></a>根 api-management 文件夹
 根 `api-management` 文件夹包含 `configuration.json` 文件，该文件包含采用以下格式的关于服务器实例的顶级信息。
@@ -223,7 +223,7 @@ git push
 ### <a name="apis-folder"></a>apis 文件夹
 `apis` 文件夹针对服务实例中的每个 API 都包含一个文件夹，该文件夹包含以下项目。
 
-* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://docs.microsoft.com/rest/api/apimanagement/api/get) 时会返回的相同信息。
+* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://docs.microsoft.com/rest/api/apimanagement/apis/get) 时会返回的相同信息。
 * `apis\<api name>\api.description.html` - 这是 API 的说明，对应于 [API 实体](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property)的 `description` 属性。
 * `apis\<api name>\operations\` - 此文件夹包含映射到 API 中的操作的 `<operation name>.description.html` 文件。 每个文件包含 API 中单个操作的说明，该说明映射到 REST API 中[操作实体](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties)的 `description` 属性。
 

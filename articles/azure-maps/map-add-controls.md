@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4947977fbed2b4fe4bd47adcc4de6516090573ad
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: c1f5dd329f34d64478d605c21d229d8c75a99300
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661303"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260132"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>将地图控件添加到 Azure Maps
 
@@ -26,7 +26,7 @@ ms.locfileid: "55661303"
 
 第一个代码块设置订阅密钥并创建 Map 对象而不预先设置样式。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
 
-缩放控件增加了放大和缩小地图的功能。 第二个代码块使用 atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) 创建一个缩放控件对象，并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。 缩放控件位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
+缩放控件增加了放大和缩小地图的功能。 第二个代码块使用 atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 创建一个缩放控件对象，并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。 缩放控件位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
 
 ## <a name="add-pitch-control"></a>添加绕 X 轴旋转控件
 
@@ -35,7 +35,7 @@ ms.locfileid: "55661303"
 
 第一个代码块设置订阅密钥并创建 Map 对象而不预先设置样式。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
 
-绕 X 轴旋转控件增加了更改地图俯仰角的功能。 第二个代码块使用 atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) 创建一个绕 X 轴旋转控件对象，并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。 绕 X 轴旋转控件位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
+绕 X 轴旋转控件增加了更改地图俯仰角的功能。 第二个代码块使用 atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 创建一个绕 X 轴旋转控件对象，并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。 绕 X 轴旋转控件位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
 
 ## <a name="add-compass-control"></a>添加指南针控件
 
@@ -44,7 +44,7 @@ ms.locfileid: "55661303"
 
 第一个代码块设置订阅密钥并创建 Map 对象而不预先设置样式。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
 
-第二个代码块使用 atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol) 创建一个指南针控件对象。 它还可使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将指南针控件添加到地图中。 指南针控件位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
+第二个代码块使用 atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) 创建一个指南针控件对象。 它还可使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将指南针控件添加到地图中。 指南针控件位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
 
 ## <a name="a-map-with-all-controls"></a>包含所有控件的地图
 
@@ -53,13 +53,13 @@ ms.locfileid: "55661303"
 
 第一个代码块设置订阅密钥并创建 Map 对象而不预先设置样式。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
 
-第二个代码块使用 atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol) 创建一个指南针控件对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。
+第二个代码块使用 atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) 创建一个指南针控件对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。
 
-第三个代码块使用 atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) 创建一个缩放控件对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。
+第三个代码块使用 atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 创建一个缩放控件对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。
 
-第四个代码块使用atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) 创建一个绕 X 轴旋转控件对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。
+第四个代码块使用atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 创建一个绕 X 轴旋转控件对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。
 
-最后一个代码块通过使用 atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) 创建一个样式选取器对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。 所有控件对象都添加到地图**事件侦听器**中，以确保它们在地图完全加载之后加载。
+最后一个代码块通过使用 atlas [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) 创建一个样式选取器对象并使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将其添加到地图中。 所有控件对象都添加到地图**事件侦听器**中，以确保它们在地图完全加载之后加载。
 
 控件对象在脚本中的顺序决定了它们在地图上的显示顺序。 若要更改控件在地图上的顺序，可以更改它们在脚本中的顺序。
 

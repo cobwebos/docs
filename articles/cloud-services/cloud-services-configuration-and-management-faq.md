@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: dd7351d2948526905c91f2eac52e48b25cf063ac
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191422"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259578"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -109,7 +109,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？
 
-此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看此公告 [https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731]。
+此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看[此建议](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
 
 有关详细信息，请参阅以下文章：
 - [如何配置和运行云服务的启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -143,7 +143,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何为云服务启用 WAD 日志记录？
 可以通过以下选项启用 Windows Azure 诊断 (WAD) 日志记录：
 1. [从 Visual Studio 启用](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [通过 .Net 代码启用](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+2. [启用通过.NET 代码](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [通过 Powershell 启用](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
 若要获取云服务的当前 WAD 设置，可以使用 [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd，也可以通过门户从“云服务 - > 扩展”边栏选项卡查看它。
@@ -314,7 +314,7 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 |值|含义|
 ------|------
 |0|没有 SNI|
-|1|已启用 SNI |
+|第|已启用 SNI |
 |2 |使用中心证书存储的非 SNI 绑定|
 |3|使用中心证书存储的 SNI 绑定 |
  

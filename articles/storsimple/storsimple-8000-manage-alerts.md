@@ -1,24 +1,25 @@
 ---
-title: "查看和管理 StorSimple 8000 系列设备的警报 | Microsoft Docs"
-description: "介绍了 StorSimple 警报条件和严重性、如何配置警报通知，以及如何使用 StorSimple 设备管理器服务管理警报。"
+title: 查看和管理 StorSimple 8000 系列设备的警报 | Microsoft Docs
+description: 介绍了 StorSimple 警报条件和严重性、如何配置警报通知，以及如何使用 StorSimple 设备管理器服务管理警报。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/09/2018
+ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: e86b6af562208e51e36b4679fd088ea399ce70b8
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4128ad53f30e74fb72f6256b78587cc222f4c282
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838708"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 设备管理器服务查看和管理 StorSimple 警报
 
@@ -55,7 +56,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 > [!NOTE]
 > 最多可为每个设备输入 20 个电子邮件地址。
 
-为设备启用电子邮件通知后，每次发生关键警报时，通知列表成员都将收到电子邮件消息。 消息将从 *storsimple-alerts-noreply@mail.windowsazure.com* 发出，并描述警报条件。 收件人可以单击“取消订阅”将自己从电子邮件通知列表中删除。
+为设备启用电子邮件通知后，每次发生关键警报时，通知列表成员都将收到电子邮件消息。 将从发送消息*storsimple 警报 noreply\@mail.windowsazure.com*并描述警报条件。 收件人可以单击“取消订阅”将自己从电子邮件通知列表中删除。
 
 #### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>为设备启用警报电子邮件通知
 1. 转到 StorSimple Device Manager 服务。 从设备列表中，选择并单击要配置的设备。
@@ -67,7 +68,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
    
    1. 在“发送电子邮件通知”字段中选择“是”。
    2. 若要让服务管理员和所有协同管理员接收警报通知，请在“电子邮件服务管理员”字段中选择“是”。
-   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以 *someone@somewhere.com* 格式输入名称。使用分号分隔电子邮件地址。 对于每个设备，最多可以配置 20 个电子邮件地址。 
+   3. 在“其他电子邮件收件人”字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 输入名称的格式*有人\@somewhere.com*。 使用分号分隔电子邮件地址。 对于每个设备，最多可以配置 20 个电子邮件地址。 
       
 3. 若要发送测试电子邮件通知，请单击“发送测试电子邮件”。 StorSimple Device Manager 服务在转发测试通知时会显示状态消息。
 
@@ -141,11 +142,11 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 如果 StorSimple 生产设备的云连接失败，根据设备状态，可能会发生以下情况：
 
-* **设备上的本地数据**：在一段时间内不中断，可继续读取。 但是，当未完成的 IO 数量增多并超过限制时，读取可能失败。
+* **在设备上的本地数据**:了一段时间，将不会中断，读取将继续提供服务。 但是，当未完成的 IO 数量增多并超过限制时，读取可能失败。
 
     根据设备上的数据量，云连接中断后的数小时内仍可持续写入。 写入速度逐渐变慢，最终在云连接中断数小时后失败。 （设备上配置了临时存储，用于保存要推送到云的数据。 发送数据后，此区域会被清空。 如果连接失败，此存储区域中的数据不会推送到云中，并且 IO 会失败。）
-* **云中的数据**：发生大部分云连接错误时都会返回一个错误。 一旦连接还原，IO 就会恢复，用户无需将卷联机。 在极少数情况下，可能需要用户干预，才能通过 Azure 门户让卷重新处于联机状态。
-* **正在进行的云快照**：在 4 到 5 小时内多次重试操作，如果连接未还原，云快照会失败。
+* **在云中的数据**:对于大多数云连接错误，返回错误。 一旦连接还原，IO 就会恢复，用户无需将卷联机。 在极少数情况下，可能需要用户干预，才能通过 Azure 门户让卷重新处于联机状态。
+* **正在进行中的云快照的**:4-5 小时内多次重试该操作，如果连接未还原，云快照会失败。
 
 ### <a name="cluster-alerts"></a>群集警报
 
@@ -201,13 +202,14 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 | 无法启动 StorSimple 服务。 |数据路径错误 |如果问题持续出现，请联系 Microsoft 支持。 |
 | 检测到“Data0”的 IP 地址重复。 | |系统检测到 IP 地址“10.0.0.1”冲突。 设备 *<device1>* 上的网络资源“Data0”已脱机。 确保此网络中的其他任何实体未使用此 IP 地址。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 请联系网络管理员帮助解决此问题。 如果问题持续出现，请联系 Microsoft 支持。 |
 | “Data0”的 IPv4（或 IPv6）地址已脱机。 | |设备 *<device1>* 上 IP 地址为“10.0.0.1”且前缀长度为“22”的网络资源“Data0”处于脱机状态。 确保此接口连接到的交换机端口运行正常。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
-| 无法连接到身份验证服务。 |数据路径错误 |用于身份验证的 URL 不可访问。 请确保防火墙规则包括为 StorSimple 设备指定的 URL 模式。 有关 Azure 门户中 URL 模式的详细信息，请转到 https://aka.ms/ss-8000-network-reqs。 如果使用 Azure 政府云，请转到 https://aka.ms/ss8000-gov-network-reqs 中的 URL 模式。|
+| 无法连接到身份验证服务。 |数据路径错误 |用于身份验证的 URL 不可访问。 请确保防火墙规则包括为 StorSimple 设备指定的 URL 模式。 有关在 Azure 门户中的 URL 模式的详细信息，请转到 https://aka.ms/ss-8000-network-reqs。 如果使用 Azure 政府版云，请转到中的 URL 模式 https://aka.ms/ss8000-gov-network-reqs。|
 
 ### <a name="performance-alerts"></a>性能警报
 
-| 警报文本 | 事件 | 详细信息/建议的操作 |
-|:--- |:--- |:--- |
-| 设备负载已超过 <*阈值*>。 |响应时间比预期慢。 |设备会报告重度输入/输出负载下的利用率。 这可能导致设备不按预期工作。 检查已附加到设备的工作负荷，确定是否可将任何工作负荷转移到另一个设备，或者是否有不再需要的工作负荷。| 无法启动 StorSimple 服务。 |数据路径错误 |如果问题持续出现，请联系 Microsoft 支持。 |若要查看当前状态，请转到[使用 StorSimple 设备管理器服务监视设备](storsimple-8000-monitor-device.md) |
+| 警报文本 | 事件 | 详细信息/建议的操作 | |
+|:--- |:--- |:--- | --- |
+| 设备负载已超过 <*阈值*>。 |响应时间比预期慢。 |设备会报告重度输入/输出负载下的利用率。 这可能导致设备不按预期工作。 检查已附加到设备的工作负荷，确定是否可将任何工作负荷转移到另一个设备，或者是否有不再需要的工作负荷。|
+| 无法启动 StorSimple 服务。 |数据路径错误 |如果问题持续出现，请联系 Microsoft 支持。 |
 
 ### <a name="security-alerts"></a>安全警报
 

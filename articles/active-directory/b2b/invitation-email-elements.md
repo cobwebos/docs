@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43fa8148fff1389982d967b2e69f4a9425841c91
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014921"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295617"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
 邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 可使用它们增强收件人的信任。 可在电子邮件中添加合法性与社交证据，确保收件人愿意选择“开始”按钮来接受邀请。 这种信任是减少共享冲突的关键。 同时还要让电子邮件赏心悦目！
 
-![Azure AD B2B 邀请电子邮件](media/invitation-email-elements/invitation-email.png)
+![显示 B2B 邀请电子邮件的屏幕截图](media/invitation-email-elements/invitation-email.png)
 
 ## <a name="explaining-the-email"></a>电子邮件说明
 让我们看看电子邮件的几个元素，以便了解如何充分利用其功能。
@@ -51,12 +51,12 @@ ms.locfileid: "58014921"
 
 如果尚未设置个人资料图片，将使用含有邀请者姓名首字母缩写的图标来取代该图片，如下所示：
 
-  ![显示邀请方的姓名首字母缩写](media/invitation-email-elements/inviters-initials.png)
+  ![显示邀请，其中包含邀请者姓名首字母缩写显示的屏幕截图](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Body
 正文包含邀请者在[使用邀请 API](customize-invitation-api.md) [邀请来宾用户访问目录、组或应用](add-users-administrator.md)时撰写的消息。 这是文本区域，因此出于安全原因不会处理 HTML 标记。
 
-  ![电子邮件正文的图片](media/invitation-email-elements/invitation-email-body.png)
+  ![显示的邀请电子邮件正文的屏幕截图](media/invitation-email-elements/invitation-email-body.png)
 
 ### <a name="footer-section"></a>页脚部分
 页脚包含 Microsoft 公司品牌徽标，告知收件人该电子邮件是否从未受监视的别名中发出。 
@@ -65,12 +65,12 @@ ms.locfileid: "58014921"
 
 - 邀请方在邀请租户中没有电子邮件地址
 
-  ![邀请方的图片在邀请租户中没有电子邮件地址](media/invitation-email-elements/inviter-no-email.png)
+  ![在邀请方在邀请租户中没有电子邮件时的屏幕截图](media/invitation-email-elements/inviter-no-email.png)
 
 
 - 收件人不需要兑换邀请
 
-  ![当收件人不需要兑换邀请时](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
+  ![当接收方不需要兑换邀请时的屏幕截图](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
 ## <a name="how-the-language-is-determined"></a>语言是如何确定的
 邀请电子邮件中呈现给来宾用户的语言是由以下设置确定的。 这些设置是按优先级顺序列出的。 如果某个设置未配置，则将由列表中的下一设置来确定语言。 

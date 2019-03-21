@@ -7,14 +7,14 @@ manager: shivamg
 keywords: 项目级恢复; 从 Azure VM 备份恢复文件; 从 Azure VM 还原文件
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/22/2018
-ms.author: pvrk
-ms.openlocfilehash: c267b3a8289d87402647a399376161cf18716112
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.date: 3/01/2019
+ms.author: pullabhk
+ms.openlocfilehash: 22ada6f9bb614bdc3698c58c6aa8ec3dd5def868
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488486"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259528"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -29,7 +29,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 若要从恢复点还原文件或文件夹，请转到虚拟机并选择所需的恢复点。
 
-1. 登录到 [Azure 门户](http://portal.Azure.com)，在左侧窗格中单击“虚拟机”。 从虚拟机列表中，选择虚拟机以打开其仪表板。
+1. 登录到 [Azure 门户](https://portal.Azure.com)，在左侧窗格中单击“虚拟机”。 从虚拟机列表中，选择虚拟机以打开其仪表板。
 
 2. 在虚拟机菜单中，单击“备份”以打开“备份”仪表板。
 
@@ -67,17 +67,23 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
     - download.microsoft.com
     - 恢复服务 URL（地区名称是指恢复服务保管库的区域）
-        - <https://pod01-rec2.geo-name.backup.windowsazure.com>（适用于 Azure 公共地区）
-        - <https://pod01-rec2.geo-name.backup.windowsazure.cn>（适用于 Azure 中国）
-        - <https://pod01-rec2.geo-name.backup.windowsazure.us>（适用于 Azure 美国政府）
-        - <https://pod01-rec2.geo-name.backup.windowsazure.de>（适用于 Azure 德国）
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.com （用于 Azure 公共地域）
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn （Azure 中国）
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.us （为 Azure 美国政府版）
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.de （Azure 德国）
     - 出站端口 3260
 
-    在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。
+> [!Note]
+> 
+> * 将已下载的脚本文件名称**异地名称**要在 URL 中填充。 有关例如：下载的脚本名称开头\'VMname\'\_\'geoname\'_\'GUID\'，喜欢 ContosoVM_wcus_12345678...<br><br>
+> * 该 URL 将"https:\//pod01-rec2.wcus.backup.windowsazure.com"
 
-    需要访问 download.microsoft.com 才能下载在运行脚本的计算机与恢复点中的数据之间构建安全通道所使用的组件。
 
-    可以在具有与备份 VM 相同（或兼容）操作系统的任何计算机上运行该脚本。 有关兼容的操作系统，请参阅[兼容的 OS 表](backup-azure-restore-files-from-vm.md#system-requirements)。 如果受保护的 Azure 虚拟机使用 Windows 存储空间（适用于 Windows Azure VM）或 LVM/RAID 阵列（适用于 Linux VM），则不能在同一虚拟机上运行该可执行文件或脚本。 而应在具有兼容操作系统的任何其他计算机上运行该可执行文件或脚本。
+   在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。
+
+   需要访问 download.microsoft.com 才能下载在运行脚本的计算机与恢复点中的数据之间构建安全通道所使用的组件。
+
+   可以在具有与备份 VM 相同（或兼容）操作系统的任何计算机上运行该脚本。 有关兼容的操作系统，请参阅[兼容的 OS 表](backup-azure-restore-files-from-vm.md#system-requirements)。 如果受保护的 Azure 虚拟机使用 Windows 存储空间（适用于 Windows Azure VM）或 LVM/RAID 阵列（适用于 Linux VM），则不能在同一虚拟机上运行该可执行文件或脚本。 而应在具有兼容操作系统的任何其他计算机上运行该可执行文件或脚本。
 
 ### <a name="identifying-volumes"></a>标识卷
 
@@ -92,7 +98,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 在 Linux 中，恢复点的卷将装载到运行脚本的文件夹。 将相应地显示附加的磁盘、卷和对应装载路径。 这些装载路径对于具有根级别访问权限的用户可见。 浏览脚本输出中涉及的卷。
 
   ![Linux 文件恢复菜单](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
-  
+
 ## <a name="closing-the-connection"></a>关闭连接
 
 识别文件并将其复制到本地存储位置后，请删除（或卸载）其他驱动器。 若要卸载驱动器，请在 Azure 门户中的“文件恢复”菜单上，单击“卸载磁盘”。
@@ -109,8 +115,8 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 如果受保护的 Azure VM 包含带有以下一个或两个特征的卷，则无法在同一 VM 上运行该可执行脚本。
 
-    - 跨多个磁盘的卷（跨区卷和带区卷）
-    - 动态磁盘上的容错卷（镜像卷和 RAID-5 卷）
+- 跨多个磁盘的卷（跨区卷和带区卷）
+- 动态磁盘上的容错卷（镜像卷和 RAID-5 卷）
 
 而应在具有兼容操作系统的任何其他计算机上运行该可执行脚本。
 
@@ -200,6 +206,11 @@ $ mount [RAID Disk Path] [/mountpath]
 | SLES | 12 及更高版本 |
 | openSUSE | 42.2 及更高版本 |
 
+> [!Note]
+> 我们发现一些问题，在 SLES 12 SP4 操作系统的计算机上运行文件恢复脚本。 调查与 SLES 团队。
+> 目前，正在运行的文件恢复脚本正致力于使用 SLES 12 SP2 和 SP3 操作系统版本的计算机。
+>
+
 该脚本还需要 Python 和 bash 组件才能执行并安全地连接到恢复点。
 
 |组件 | 版本  |
@@ -221,3 +232,41 @@ $ mount [RAID Disk Path] [/mountpath]
 | 可执行文件输出：脚本成功运行，但脚本输出中未显示“新卷已附加” |    这是暂时性的错误    | 卷其实已附加。 打开资源管理器即可浏览它们。 如果每次都使用同一台计算机来运行脚本，请考虑重新启动计算机，这样，以后运行可执行文件时应会显示列表。 |
 | Linux 特定：无法查看所需的卷 | 运行脚本的计算机的 OS 可能无法识别受保护 VM 的基础文件系统 | 检查恢复点是崩溃一致还是文件一致。 如果文件一致，请在 OS 可识别受保护 VM 的文件系统的另一台计算机上运行该脚本 |
 | Windows 特定：无法查看所需的卷 | 磁盘可能已附加，但未配置卷 | 从磁盘管理屏幕中，识别与恢复点相关的其他磁盘。 如果这些磁盘有任何一个处于脱机状态，请尝试通过右键单击该磁盘并单击“联机”来使其联机|
+
+## <a name="security"></a>安全
+
+本部分介绍从 Azure VM 备份恢复文件的实现所需的各种安全措施，使用户被注意的安全方面的功能。
+
+### <a name="feature-flow"></a>功能流
+
+此功能旨在访问而无需还原整个 VM 或 VM 的 VM 数据磁盘，在最小的步骤。 由脚本 （装载恢复卷时运行，如下所示） 提供对 VM 数据的访问，因此程序集形成的所有安全实现的基础
+
+  ![安全功能流](./media/backup-azure-restore-files-from-vm/vm-security-feature-flow.png)
+
+### <a name="security-implementations"></a>安全实现
+
+#### <a name="select-recovery-point-who-can-generate-script"></a>选择恢复点 （他可以生成脚本）
+
+此脚本提供访问 VM 数据，务必要控制谁可以在第一个位置中生成。 一个需要登录到 Azure 门户，应该[RBAC 授权](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)能够生成的脚本。
+
+文件恢复需要相同级别的授权所需的 VM 还原和磁盘还原。 换而言之，只有经过授权的用户可以查看 VM 数据可以生成的脚本。
+
+在生成的脚本的 Azure 备份服务使用正式的 Microsoft 证书进行签名。 任何篡改脚本意味着签名已断开，且为具有潜在风险突出显示的任何尝试运行该脚本是由操作系统。
+
+#### <a name="mount-recovery-volume-who-can-run-script"></a>装载恢复卷 （可以运行脚本）
+
+只有管理员可以运行该脚本，并应在提升模式下运行它。 此脚本只运行一组预生成的步骤，并不接受来自任何外部源的输入。
+
+若要运行该脚本，其中一个要求仅显示给授权用户在生成脚本时在 Azure 门户或 PowerShell/CLI 中的密码。 这是为了确保将脚本下载获授权的用户还负责运行该脚本。
+
+#### <a name="browse-files-and-folders"></a>浏览文件和文件夹
+
+若要浏览文件和文件夹，该脚本在计算机中使用 iSCSI 发起程序，并连接到配置为 iSCSI 目标的恢复点。 此处可以假设其中一个人要模拟/仿冒是/所有组件的方案。
+
+我们使用相互 CHAP 身份验证机制，以便每个组件进行其他身份验证。 这意味着它是假的发起程序可以连接到 iSCSI 目标和用于连接到该计算机运行该脚本的虚设目标很难。
+
+恢复服务和计算机之间的数据流受构建安全的 SSL 隧道通过 TCP ([应支持 TLS 1.2](#system-requirements)中运行脚本的计算机)
+
+访问控制列表 (ACL) 中父/备份 VM 存在的任何文件还保留在已装载的文件系统中。
+
+该脚本提供只读访问权限的恢复点并且有效只有 12 个小时。 如果用户想要删除的访问权限之前，然后登录到 Azure 门户/PowerShell/CLI，并执行**卸载磁盘**为该特定的恢复点。 该脚本将会立即失效。

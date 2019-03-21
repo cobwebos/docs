@@ -5,21 +5,21 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabvrigg
+ms.date: 03/20/2019
 ms.reviewer: waltero
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 6a5efce2f50a25902b33f2cb85d470a280000305
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: 01a9405c98160149782ab2cf248f64818d631dde
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002060"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293781"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>排查 Kubernetes 部署到 Azure Stack
 
@@ -66,8 +66,8 @@ ms.locfileid: "58002060"
 
     该脚本执行以下任务：
     - 安装 etcd、Docker 和 Kubernetes 资源（如 kubelet）。 etcd 是一种分布式键值存储，用于跨一组计算机存储数据。 Docker 支持基本功能操作系统级别虚拟化（称为容器）。 Kubelet 是在每个 Kubernetes 节点上运行的节点代理。
-    - 设置 etcd 服务。
-    - 设置 Kubelet 服务。
+    - 设置了**etcd**服务。
+    - 设置了**kubelet**服务。
     - 启动 kubelet。 此任务涉及以下步骤：
         1. 启动 API 服务。
         2. 启动控制器服务。
@@ -77,9 +77,9 @@ ms.locfileid: "58002060"
 7. 下载并运行自定义脚本扩展。
 
 7. 运行代理脚本。 代理自定义脚本执行以下任务：
-    - 安装 etcd
-    - 设置 Kubelet 服务
-    - 加入 Kubernetes 群集
+    - 将安装**etcd**。
+    - 设置了**kubelet**服务。
+    - 加入 Kubernetes 群集。
 
 ## <a name="steps-for-troubleshooting"></a>故障排除步骤
 
@@ -119,66 +119,52 @@ ms.locfileid: "58002060"
 
     每个项都有绿色或红色的状态图标。
 
-## <a name="get-logs-from-a-vm"></a>从 VM 获取日志
+## <a name="review-deployment-logs"></a>查看部署日志
 
-若要生成日志，需要连接到群集的主 VM，打开 bash 提示符，然后运行脚本。 主 VM 可以在群集资源组中找到，其名称为 `k8s-master-<sequence-of-numbers>`。 
+如果在 Azure Stack 门户不提供足够的信息，以便进行故障排除或克服部署失败下, 一步是深入到群集日志。 若要手动检索部署日志，通常需要连接到群集的主虚拟机之一。 更简单的另一种方法是下载并运行以下[Bash 脚本](https://aka.ms/AzsK8sLogCollectorScript)Azure Stack 团队提供的。 此脚本连接到此 DVM 和群集的虚拟机、 收集相关的系统和群集日志，并将它们下载到工作站。
 
 ### <a name="prerequisites"></a>必备组件
 
-用于管理 Azure Stack 的计算机上需要有 bash 提示符。 使用 bash 可运行访问日志的脚本。 在 Windows 计算机上，可以使用随 Git 一起安装的 bash 提示符。 若要获取最新版本的 Git，请参阅 [Git 下载](https://git-scm.com/downloads)。
+你将需要在用于管理 Azure Stack 的计算机上的 Bash 提示符。 在 Windows 计算机上，你可以获取一个 Bash 提示通过安装[Git 的 Windows](https://git-scm.com/downloads)。 安装后，寻找_Git Bash_开始菜单中。
 
-### <a name="get-logs"></a>获取日志
+### <a name="retrieving-the-logs"></a>检索日志
 
-若要获取日志，请执行以下步骤：
+请执行以下步骤收集并下载群集日志：
 
-1. 打开 bash 提示符。 如果在 Windows 计算机上使用 Git，可从以下路径打开 bash 提示符：`c:\programfiles\git\bin\bash.exe`。
-2. 运行以下 bash 命令：
+1. 打开 Bash 提示符。 在 Windows 计算机中，打开_Git Bash_或运行： `C:\Program Files\Git\git-bash.exe`。
+
+2. 通过在 Bash 提示符中运行以下命令下载日志收集器脚本：
 
     ```Bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
     curl -O https://raw.githubusercontent.com/msazurestackworkloads/azurestack-gallery/master/diagnosis/getkuberneteslogs.sh
-    sudo chmod 744 getkuberneteslogs.sh
+    chmod 744 getkuberneteslogs.sh
     ```
 
-    > [!Note]  
-    > 在 Windows 上不需要运行 `sudo`， 只需使用 `chmod 744 getkuberneteslogs.sh`。
-
-3. 在同一会话中，使用已更新为与你的环境匹配的参数运行以下命令：
-
-    ```Bash  
-    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmd-host 192.168.102.37
-    ```
-
-4. 检查参数并基于环境设置值。
+3. 该脚本所需的信息查找并运行它：
 
     | 参数           | 描述                                                                                                      | 示例                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host       | DVM 的公共 IP 或 FQDN。 该 VM 名称以 `vmd-` 开头。                                                       | IP：192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
-    | -f, --force | 上传专用密钥之前进行提示。 | |
-    | -i、--identity-file | 用于连接 kubernetes 主 VM 的 RSA 私钥文件。 密钥必须首先具有： <br>`-----BEGIN RSA PRIVATE KEY-----` | C:\data\id_rsa.pem                                                        |
-    | -h、--help  | 打印有关命令的用法`getkuberneteslogs.sh`脚本。 | |
-    | -m, --master-host          | Kubernetes 群集主 VM 的公共 IP 或完全限定的域名 (FQDN)。 该 VM 名称以 `k8s-master-` 开头。                       | IP：192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
-    | -u、--user          | Kubernetes 群集主 VM 的用户名。 在配置市场项时设置此名称。                                                                    | azureuser                                                                     |
+    | -d, --vmd-host      | 公共 IP 或此 DVM 的完全限定的域名 (FQDN)。 虚拟机名称开头`vmd-`。 | IP:192.168.102.38<br>DNS: vmd myk8s.local.cloudapp.azurestack.external |
+    | -h、--help  | 打印命令的用法。 | |
+    | -i、--identity-file | 创建 Kubernetes 群集时，RSA 私钥文件传递到 marketplace 项。 需要远程连接到 Kubernetes 节点中。 | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
+    | -m, --master-host   | 公共 IP 或 Kubernetes 主节点的完全限定的域名 (FQDN)。 虚拟机名称开头`k8s-master-`。 | IP:192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -u、--user          | 创建 Kubernetes 群集时，用户名将传递给 marketplace 项。 需要远程连接到 Kubernetes 节点中 | azureuser （默认值） |
 
 
-
-
-   添加参数值时，它可能类似于以下代码：
+   当您添加参数值时，你的命令可能如下所示：
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-    如果运行成功，则会创建日志。
+4. 在几分钟后，该脚本将输出到一个名为目录收集的日志`KubernetesLogs_{{time-stamp}}`。 其中每个虚拟机属于群集找到一个目录。
 
-    ![生成的日志](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
+    日志收集器脚本还将在日志文件中查找错误并包括故障排除步骤，如果它恰好发现一个已知的问题。 请确保正在运行的脚本，以提高查找已知的问题的可能性的最新版本。
 
-
-1. 检索由该命令创建的文件夹中的日志。 该命令将创建新文件夹并加上时间戳。
-    - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
-        - Dvmlogs
-        - Acsengine-kubernetes-dvm.log
+> [!Note]  
+> 请查看此 GitHub[存储库](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis)若要了解有关日志收集器脚本的更多详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

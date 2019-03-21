@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2018
+ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811187"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013908"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
 
@@ -74,8 +74,8 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下面以表格形式列出了受支持的 StorSimple 工作负荷的摘要。
 
-|场景     |工作负荷     |支持      |限制               |
-|-------------|-------------|---------------|---------------------------|
+|场景     |工作负荷     |支持      |限制               | 适用的版本|
+|-------------|-------------|---------------|---------------------------|--------------------|
 |远程办公室/分支机构 (ROBO)  |文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
 |云存档  |存档文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
 
@@ -101,7 +101,7 @@ StorSimple 虚拟阵列尤其适合以下工作流：
 ![基于云的存储管理](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
 ### <a name="location-independent-backup"></a>与位置无关的备份
-借助虚拟阵列，云快照提供卷或共享的与位置无关的时间点副本。 云快照默认处于启用状态，并且无法禁用。 所有卷和共享通过单个每日备份策略同时备份，并且可在必要时创建其他临时备份。
+借助虚拟阵列，云快照提供卷或共享的与位置无关的时间点副本。 云快照默认处于启用状态，并且无法禁用。 所有卷和共享备份同时通过单个每日备份策略，并且可能需要根据需要随时的其他临时备份。
 
 ### <a name="data-protection-and-disaster-recovery"></a>数据保护和灾难恢复
 虚拟阵列支持以下数据保护和灾难恢复方案：

@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccad4f9aaa85d528697c1bcf34e1b034eeabe9e1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: b7dcac665dadef7f3f192e7f0e359b6b7c244bde
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996009"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287020"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
-
-|     |
-| --- |
-| Azure AD 密码保护和自定义禁止密码列表是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
 
 行业领导者告诉你不要在多个位置使用同一密码，请使用复杂密码，不要使用诸如 Password123 的简单密码。 组织如何可以保证其用户遵守指导？ 它们如何可以确保用户不使用已知在最近的数据外泄中常见的密码？
 
@@ -31,7 +26,7 @@ ms.locfileid: "57996009"
 
 Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure AD Identity Protection 团队不断在查明常用的已泄露密码。 然后，他们在所谓的全局禁止密码列表中阻止被认为太常用的密码。 网络罪犯在其攻击中也使用类似的策略，因此 Microsoft 未公开发布此列表的内容。 这些易受攻击的密码已被阻止，因为它们已对 Microsoft 的客户造成了实际威胁。 有关我们目前在安全方面所做努力的详细信息，请参阅 [Microsoft 安全智能报告](https://www.microsoft.com/security/operations/security-intelligence-report)。
 
-## <a name="preview-custom-banned-password-list"></a>预览版：自定义禁止密码列表
+## <a name="custom-banned-password-list"></a>自定义禁止密码列表
 
 某些组织可能希望进一步采取措施，在全局禁止的 密码列表基础上添加自己的自定义项，Microsoft 称之为自定义的禁止密码列表。 然后，企业客户（例如 Contoso）可以阻止其品牌名称、公司特定项或其他项的变体。
 
@@ -41,7 +36,7 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 
 ## <a name="on-premises-hybrid-scenarios"></a>本地混合方案
 
-保护纯云帐户很有帮助，但是许多组织维护着混合方案，包括本地 Windows Server Active Directory。 可以为本地 Windows Server Active Directory（预览版）代理安装 Azure AD 密码保护来将禁止密码列表扩展到你的现有基础结构。 现在，更改、设置或重置本地密码的用户或管理员需要与纯云用户遵循相同的密码策略。
+保护纯云帐户很有帮助，但是许多组织维护着混合方案，包括本地 Windows Server Active Directory。 它是可以在安装 Azure AD 密码保护的 Windows Server Active Directory 代理在本地扩展到现有基础结构阻止的密码列表。 现在，更改、设置或重置本地密码的用户或管理员需要与纯云用户遵循相同的密码策略。
 
 ## <a name="how-are-passwords-evaluated"></a>如何评估密码
 

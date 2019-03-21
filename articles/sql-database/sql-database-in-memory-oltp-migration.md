@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: fbe05186b317d3c24dca55197c2989155b5543bd
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: ad66253d33b2e99f0be79bfaddc86b3274f5cab0
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565915"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258915"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
 
@@ -79,7 +79,7 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性�
 1. 使用 SSMS 连接到测试数据库。
 2. 在“对象资源管理器”中，右键单击该表，并单击“内存优化顾问”。
    
-   * 此时会显示“表内存优化顾问”向导。
+   * 此时将显示“表内存优化顾问”向导。
 3. 在向导中，单击“迁移验证”（或“下一步”按钮），以查看该表是否有任何在内存优化表中不受支持的功能。 有关详细信息，请参阅：
    
    * [内存优化顾问中的](https://msdn.microsoft.com/library/dn284308.aspx)*内存优化清单*。

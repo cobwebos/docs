@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 1ea34d69c867d2d14496320f497df2ece5280e0c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 78cc200a7bbaa2673cf6fea71d9be123fc96a75f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009339"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258065"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>如何在文本分析（预览版）中使用命名实体识别
 
@@ -62,7 +62,7 @@ ms.locfileid: "58009339"
 | DateTime      | Duration      | “1 minute and 45 seconds”   | 
 | DateTime      | 设置           | “every Tuesday”     | 
 | DateTime      | TimeZone      |    | 
-| 代码           | 暂无\*         | "<https://www.bing.com>"    |
+| 代码           | 暂无\*         | "https:\//www.bing.com"    |
 | 电子邮件         | 暂无\*         | "support@contoso.com" |
 
 \*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。

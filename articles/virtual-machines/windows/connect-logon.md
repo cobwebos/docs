@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: c14b6e16a16f325681722203eaa05a435b141208
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 07a8195969df7ad7afd2bfe2e9124b07144d48cb
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990629"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284776"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何连接并登录到运行 Windows 的 Azure 虚拟机
 可以从 Windows 桌面使用 Azure 门户中的“连接”按钮来启动远程桌面 (RDP) 会话。 首先连接到虚拟机，然后登录。
 
-若要从 Mac 连接到 Windows VM，需要为 Mac 安装 RDP 客户端，例如 [Microsoft 远程桌面](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417)。
+若要从 Mac 连接到 Windows VM，需要为 Mac 安装 RDP 客户端，例如 [Microsoft 远程桌面](https://aka.ms/rdmac)。
 
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com/)，请先登录。

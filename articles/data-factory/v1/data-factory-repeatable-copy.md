@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b15dcd9ae5f2f1668db3925b659625497eca491f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 20c916275acd6bb79675c592711b17b277c9fc78
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079752"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294087"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure 数据工厂中的可重复复制
 
@@ -114,7 +114,7 @@ ID    Product        Quantity    ModifiedDate
 1. 在目标 SQL 表中定义**二进制 (32)** 类型的列。 此列不应有任何约束。 在本示例中，我们将此列命名为 AdfSliceIdentifier。
 
 
-源表：
+    源表：
 
     ```sql
     CREATE TABLE [dbo].[Student](
@@ -123,7 +123,7 @@ ID    Product        Quantity    ModifiedDate
     )
     ```
 
-目标表： 
+    目标表： 
 
     ```sql
     CREATE TABLE [dbo].[Student](

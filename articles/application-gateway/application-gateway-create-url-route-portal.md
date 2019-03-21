@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 108045c691d711dfdd12df39fe72e536f842f68f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 10bc4e4c440e5495afd820f588270b7990108b68
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993215"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259255"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>通过 Azure 门户使用基于路径的路由规则创建应用程序网关
 
@@ -34,6 +34,8 @@ ms.locfileid: "52993215"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
@@ -46,20 +48,20 @@ ms.locfileid: "52993215"
 2. 选择“网络”，然后在“特色”列表中选择“应用程序网关”。
 3. 输入应用程序网关的以下值：
 
-    - *myAppGateway* - 应用程序网关的名称。
-    - *myResourceGroupAG* - 新资源组。
+   - *myAppGateway* - 应用程序网关的名称。
+   - *myResourceGroupAG* - 新资源组。
 
-    ![新建应用程序网关](./media/application-gateway-create-url-route-portal/application-gateway-create.png)
+     ![新建应用程序网关](./media/application-gateway-create-url-route-portal/application-gateway-create.png)
 
 4. 接受其他设置的默认值，然后单击“确定”。
 5. 依次单击“选择虚拟网络”、“新建”，然后输入虚拟网络的以下值：
 
-    - *myVNet* - 虚拟网络的名称。
-    - *10.0.0.0/16* - 虚拟网络地址空间。
-    - *myAGSubnet* - 子网名称。
-    - *10.0.0.0/24* - 子网地址空间。
+   - *myVNet* - 虚拟网络的名称。
+   - *10.0.0.0/16* - 虚拟网络地址空间。
+   - *myAGSubnet* - 子网名称。
+   - *10.0.0.0/24* - 子网地址空间。
 
-    ![创建虚拟网络](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
+     ![创建虚拟网络](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
 
 6. 单击“确定”创建虚拟网络和子网。
 7. 依次单击“选择公共 IP 地址”、“新建”，然后输入公共 IP 地址的名称。 在本示例中，公共 IP 地址名为 *myAGPublicIPAddress*。 接受其他设置的默认值，然后单击“确定”。
@@ -104,7 +106,7 @@ ms.locfileid: "52993215"
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -115,7 +117,7 @@ ms.locfileid: "52993215"
       -Settings $publicSettings
     ```
 
-3. 使用刚刚完成的步骤创建另外两个虚拟机并安装 IIS。 在 Set-AzureRmVMExtension 中输入 *myVM2* 和 *myVM3* 作为名称，并输入 VMName 值。
+3. 使用刚刚完成的步骤创建另外两个虚拟机并安装 IIS。 在 Set-AzVMExtension 中输入 *myVM2* 和 *myVM3* 作为名称，并输入 VMName 值。
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>使用虚拟机创建后端池
 
@@ -154,7 +156,7 @@ ms.locfileid: "52993215"
 
     ![记下应用程序网关的公共 IP 地址](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如 http:// http://40.121.222.19。
+2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，http:\//40.121.222.19。
 
     ![在应用程序网关中测试基 URL](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 

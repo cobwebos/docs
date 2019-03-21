@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 58a51fd90eb0b89048eca7c95272523ffd10c24a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 33f5cd6e1d2989a9ca5c26bbcf947bd6eade3831
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982312"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774194"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -25,23 +25,23 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 1. 在设备上安装 IoT Edge 运行时。 
 2. 将设备上的 Docker 守护程序和 IoT Edge 守护程序配置为使用代理服务器。
 3. 配置设备上 config.yaml 文件中的 edgeAgent 属性。
-4. 为部署清单中的 IoT Edge 运行时和其他 IoT Edge 模块设置环境变量。 
+4. 为部署清单中的 IoT Edge 运行时和其他 IoT Edge 模块设置环境变量。
 
 ## <a name="know-your-proxy-url"></a>知道你的代理 URL
 
-若要同时在设备上配置 Docker 守护程序和 IoT Edge，需要知道你的代理 URL。 
+若要同时在设备上配置 Docker 守护程序和 IoT Edge，需要知道你的代理 URL。
 
-代理 URL 采用以下格式：**protocol**://**proxy_host**:**proxy_port**。 
+代理 URL 采用以下格式：**protocol**://**proxy_host**:**proxy_port**。
 
 * **protocol** 是 HTTP 或 HTTPS。 Docker 守护程序可以根据容器注册表设置使用任一协议，但 IoT Edge 守护程序和运行时容器应当始终使用 HTTPS。
 
-* **proxy_host** 是代理服务器的地址。 如果你的代理服务器要求进行身份验证，则可以采用 **user**:**password**@**proxy_host** 格式将你的凭据提供为 proxy_host 的一部分。 
+* **proxy_host** 是代理服务器的地址。 如果你的代理服务器要求进行身份验证，则可以采用 **user**:**password**\@**proxy_host** 格式将你的凭据提供为 proxy_host 的一部分。
 
-* **proxy_port** 是代理用来响应网络流量的网络端口。 
+* **proxy_port** 是代理用来响应网络流量的网络端口。
 
 ## <a name="install-the-runtime"></a>安装运行时
 
-若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置包管理器后，请按照[在 Linux (ARM32v7/armhf) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux-arm.md)或[在 Linux (x64) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)中的说明照常进行操作。 
+若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置包管理器后，请按照[在 Linux (ARM32v7/armhf) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux-arm.md)或[在 Linux (x64) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)中的说明照常进行操作。
 
 如果要在 Windows 设备上安装 IoT Edge 运行时，则需要通过代理服务器一次以下载安装程序脚本文件，然后在安装期间再通过代理服务器一次以下载必要的组件。 可以在 Windows 设置中配置代理信息，或直接在安装脚本中包含代理信息。 以下 powershell 脚本是使用 `-proxy` 参数安装 Windows 的示例：
 
@@ -72,7 +72,7 @@ Install-SecurityDaemon -Manual -ContainerOs Windows -InvokeWebRequestParameters 
 
 选择适用于 Docker 版本的项目： 
 
-* [Docker](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
+* [适用于 Linux 的 Docker](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
 * [适用于 Windows 的 Docker](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
 
 ### <a name="iot-edge-daemon"></a>IoT Edge 守护程序

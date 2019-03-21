@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 60790f0f31915a50829df09d039a4f74860a47d7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
-ms.translationtype: HT
+ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076428"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452651"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 
@@ -68,8 +68,8 @@ ms.locfileid: "55076428"
     - **子网** - 若要更改子网，请选择“更改子网”。 
     - “IP 地址配置” - 指定希望使用公共、私有还是共享 IP 地址。 有关共享 IP 地址的详细信息，请参阅[了解 Azure 开发测试实验室中的共享 IP 地址](./devtest-lab-shared-ip.md)。
     - **到期日期和时间** - 指定 VM 的到期日期和时间，以便自动删除 VM。 
-    - “使此计算机可认领” - 使计算机“可认领”的意思是在创建时不会为其分配所有权。 而是，实验室用户将能够在实验室的页面上取得（“索取”）计算机的所有权。     
-    - **可认领实例数** - 指定要创建多少可认领的实例。 
+    - “使此计算机可索取” - 使计算机可“索取”的意思是在创建时不会为其分配所有权。 而是，实验室用户将能够在实验室的页面上取得（“索取”）计算机的所有权。     
+    - **可认领的实例数**-指定想要创建可认领的实例的数量。 
 8. 选择“提交”以创建公式。
 
 9. 创建公式后，它会显示在“公式”页面上的列表中。

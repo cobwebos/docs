@@ -6,22 +6,22 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428613"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286006"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>排查在 Azure 上备份 SQL Server 的问题
 
 本文提供有关在 Azure 上保护 SQL Server VM（预览版）的故障排除信息。
 
-## <a name="public-preview-limitations"></a>公共预览版的限制
+## <a name="feature-consideration-and-limitations"></a>功能注意事项和限制
 
-若要查看公共预览版的限制，请参阅[在 Azure 中备份 SQL Server 数据库](backup-azure-sql-database.md#preview-limitations)一文。
+若要查看需要考虑的功能，请参阅文章[在 Azure Vm 中的有关 SQL Server 备份](backup-azure-sql-database.md#feature-consideration-and-limitations)。
 
 ## <a name="sql-server-permissions"></a>SQL Server 权限
 
@@ -35,9 +35,9 @@ ms.locfileid: "56428613"
 
 ### <a name="backup-type-unsupported"></a>不受支持的备份类型
 
-| 严重性 | 说明 | 可能的原因 | 建议的操作 |
+| 严重性 | 描述 | 可能的原因 | 建议的操作 |
 |---|---|---|---|
-| 警告 | 此数据库的当前设置不支持关联策略中的特定备份类型。 | <li>**Master DB**：只能对 master 数据库执行完整数据库备份操作；既无法执行差异备份，也无法执行事务日志备份。 </li> <li>简单恢复模式中的任何数据库都不允许进行事务日志备份。</li> | 将数据库设置修改为支持策略中的所有备份类型。 或者，将当前策略更改为只包含受支持的备份类型。 否则，在计划备份期间将跳过不受支持的备份类型，或无法为临时备份执行备份作业。
+| 警告 | 此数据库的当前设置不支持关联策略中的特定备份类型。 | <li>**Master DB**：仅完整数据库备份操作可以执行对 master 数据库;既不**差异**备份，也事务**日志**的备份。 </li> <li>简单恢复模式中的任何数据库都不允许进行事务日志备份。</li> | 将数据库设置修改为支持策略中的所有备份类型。 或者，将当前策略更改为只包含受支持的备份类型。 否则为将在计划备份期间跳过不受支持的备份类型或备份作业的即席备份将失败。
 
 
 ## <a name="backup-failures"></a>备份失败
@@ -61,7 +61,7 @@ ms.locfileid: "56428613"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 日志链已中断。 | 数据库或 VM 是使用其他备份解决方案备份的，该解决方案截断了日志链。|<ul><li>检查是否正在使用其他备份解决方案或脚本。 如果是，请停止其他备份解决方案。 </li><li>如果备份是临时日志备份，请触发完整备份来启动新的日志链。 对于计划的日志备份，不需要执行任何操作，因为 Azure 备份服务会自动触发完整备份来解决此问题。</li>|
+| 日志链已中断。 | 数据库或 VM 是使用其他备份解决方案备份的，该解决方案截断了日志链。|<ul><li>检查是否正在使用其他备份解决方案或脚本。 如果是，请停止其他备份解决方案。 </li><li>如果备份是临时的日志备份，请触发完整备份以启动新的日志链。 对于计划的日志备份，不需要执行任何操作，因为 Azure 备份服务会自动触发完整备份来解决此问题。</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
@@ -73,14 +73,14 @@ ms.locfileid: "56428613"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-| 此数据源缺少首次完整备份。 | 数据库缺少首次完整备份。 日志备份和差异备份基于完整备份，因此，在触发差异备份或日志备份之前，必须先创建完整备份。 | 触发临时完整备份。   |
+| 此数据源缺少首次完整备份。 | 数据库缺少首次完整备份。 日志备份和差异备份基于完整备份，因此，在触发差异备份或日志备份之前，必须先创建完整备份。 | 触发即席完整备份。   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | 由于数据源的事务日志已满，无法创建备份。 | 数据库事务日志空间已满。 | 若要解决此问题，请参阅 [SQL 文档](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)。 |
-| 此 SQL 数据库不支持所请求的备份类型。 | Always On AG 次要副本不支持完整备份和差异备份。 | <ul><li>如果触发了临时备份，请在主节点上触发备份。</li><li>如果备份是由策略计划的，请确保已注册主节点。 若要注册节点，[请遵循发现 SQL Server 数据库的步骤](backup-azure-sql-database.md#discover-sql-server-databases)。</li></ul> |
+| 此 SQL 数据库不支持所请求的备份类型。 | Always On AG 次要副本不支持完整备份和差异备份。 | <ul><li>如果触发即席备份，会触发在主节点上的备份。</li><li>如果备份是由策略计划的，请确保已注册主节点。 若要注册节点，[请遵循发现 SQL Server 数据库的步骤](backup-sql-server-database-azure-vms.md#discover-sql-server-databases)。</li></ul> |
 
 ## <a name="restore-failures"></a>还原失败
 
@@ -136,6 +136,35 @@ ms.locfileid: "56428613"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | 自动保护意向被删除或不再有效。 | 在 SQL 实例上启用自动保护时，将为该实例中的所有数据库运行“配置备份”作业。 如果在作业运行时禁用自动保护，则会使用此错误代码取消**正在进行的**作业。 | 重新启用自动保护可保护所有剩余的数据库。 |
+
+## <a name="re-registration-failures"></a>重新注册失败
+
+检查一个或多个[症状](#symptoms)之前触发重新注册操作。
+
+### <a name="symptoms"></a>症状
+
+* 所有操作，如备份、 还原和配置备份无法应用于具有以下错误代码的一个 VM:**WorkloadExtensionNotReachable**， **UserErrorWorkloadExtensionNotInstalled**， **WorkloadExtensionNotPresent**， **WorkloadExtensionDidntDequeueMsg**
+* **备份状态**项显示备份**不可访问**。 尽管必须排除所有其他原因，还可能会导致同一状态：
+
+  * 没有的权限执行备份相关的 VM 上的操作  
+  * VM 已关闭造成无法执行备份
+  * 网络问题  
+
+    ![重新注册 VM](./media/backup-azure-sql-database/re-register-vm.png)
+
+* Alwayson 可用性组中，如果备份开始失败更改备份首选项后或故障转移时
+
+### <a name="causes"></a>原因
+这些症状可能会出现由于一个或多个原因如下：
+
+  * 已删除或从门户卸载扩展 
+  * 从已卸载扩展**Control Panel**下的 vm**卸载或更改程序**UI
+  * 在使用就地磁盘还原的时间已还原 VM
+  * 由于该扩展配置在其上的已过期很长一段已关闭 VM
+  * VM 已被删除，具有相同名称和已删除 VM 所在的资源组中创建另一个 VM
+  * 其中一个 AG 节点未收到完整的备份配置，这可能是在可用性组注册到保管库时，或添加新节点获取  <br>
+    在上述情况下，建议触发在 VM 上的重新注册操作。 此选项仅可通过 PowerShell，并且很快就会在 Azure 门户中可用。
+
 
 ## <a name="next-steps"></a>后续步骤
 

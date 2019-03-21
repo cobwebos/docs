@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 5174723e7c9566fe90eb8bf49a1f353a5d9ae9ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 5f34991dca4dbb4275033c764981c44492b9920e
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58083965"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257792"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 在连接的情况下，可以选择 Azure AD 或 AD FS。 在断开连接的情况下，只支持 AD FS。
@@ -122,7 +122,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 |参数|描述|示例|
 |---------|---------|---------|
 |CustomAdfsName|声明提供程序的名称。<br>AD FS 登录页上会显示此名称。|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|联合元数据链接| https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
+|CustomAD<br>FSFederationMetadataEndpointUri|联合元数据链接| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>触发自动化以便在 Azure Stack 中配置声明提供程序信任

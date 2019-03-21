@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 1996befa78409e572798a9043f7e6ee3b6f647bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887892"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286561"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图
 通过 Azure Monitor 中使用视图设计器，可以在可帮助你可视化 Log Analytics 工作区中的数据在 Azure 门户中创建各种自定义视图。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
@@ -43,6 +43,9 @@ ms.locfileid: "56887892"
 | 磁贴 | 显示在 Azure Monitor**概述**页。 每个磁贴都会显示一个可视化摘要，其中包含磁贴所代表的自定义视图。 每个磁贴类型提供的记录可视化效果各不相同。 选择磁贴即可显示自定义视图。 |
 | 自定义视图 | 在选择磁贴时显示。 每个视图包含一个或多个可视化部件。 |
 | 可视化部件 | 显示基于一个或多个 Log Analytics 工作区中数据的可视化效果[记录查询](../log-query/log-query-overview.md)。 大多数部件会包括提供高级可视化效果的标头，以及显示最匹配结果的列表。 每个部件类型提供了 Log Analytics 工作区中记录的不同可视化效果。 在执行获取详细的记录的日志查询的部分中选择元素。 |
+
+## <a name="required-permissions"></a>所需的权限
+至少需要[参与者级别权限](manage-access.md#manage-accounts-and-users)要创建或修改视图的 Log Analytics 工作区中。 如果没有此权限，视图设计器选项不会显示在菜单中。
 
 
 ## <a name="work-with-an-existing-view"></a>使用现有视图

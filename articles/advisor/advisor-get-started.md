@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: aabb316cf564520e6ea5e8689f1c18c98b94ab3c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488469"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111389"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
 
@@ -35,7 +35,7 @@ ms.locfileid: "55488469"
 
 1. 若要获取特定类别的建议，请单击以下选项卡之一：“高可用性”、“安全”、“性能”或“成本”。 
 
-  ![Azure 顾问仪表板](./media/advisor-overview/advisor-dashboard.png)
+   ![Azure 顾问仪表板](./media/advisor-overview/advisor-dashboard.png)
 
 ## <a name="get-recommendation-details-and-implement-a-solution"></a>获取建议详细信息并实现解决方案
 
