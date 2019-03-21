@@ -4,16 +4,16 @@ description: 如何使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure 文�
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 084a5c8113e73590e3e7b9603542a0d866606f96
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 1620683f4bc02d607afd8e0371e8d4a5461612b3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818951"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772324"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>在 Azure 文件中创建文件共享
 可以使用  [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。 本教程介绍：
@@ -21,7 +21,7 @@ ms.locfileid: "55818951"
 * [如何使用 Powershell 创建 Azure 文件共享](#create-file-share-through-powershell)
 * [如何使用 CLI 创建 Azure 文件共享](#create-file-share-through-command-line-interface-cli)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要创建 Azure 文件共享，可以使用已存在的存储帐户，也可以[创建新的 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 若要使用 PowerShell 创建 Azure 文件共享，需提供存储帐户的帐户密钥和名称。 如果计划使用 Powershell 或 CLI，则需存储帐户密钥。
 
 ## <a name="create-a-file-share-through-the-azure-portal"></a>通过 Azure 门户创建文件共享

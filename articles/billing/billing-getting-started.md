@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101645"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842473"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
-注册 Azure 时，可以做几件事情，以便更好地了解费用。 [定价计算器](https://azure.microsoft.com/pricing/calculator/)可在创建 Azure 资源之前提供成本估计。 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)可提供订阅的当前成本细分和预测。 如果要对不同项目或团队的成本进行分组和了解，请查看[资源标记](../azure-resource-manager/resource-group-using-tags.md)。 如果组织有希望使用的报告系统，请查看[计费 API](billing-usage-rate-card-overview.md)。
+当注册 azure 时，有的支出更好地了解您可以做几件事情。 [定价计算器](https://azure.microsoft.com/pricing/calculator/)可在创建 Azure 资源之前提供成本估计。 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)可提供订阅的当前成本细分和预测。 如果要对不同项目或团队的成本进行分组和了解，请查看[资源标记](../azure-resource-manager/resource-group-using-tags.md)。 如果组织有希望使用的报告系统，请查看[计费 API](billing-usage-rate-card-overview.md)。
 
 - 如果订阅是企业协议 (EA)，则可在 Azure 门户中通过公共预览查看费用。 如果订阅通过云解决方案提供商 (CSP) 或 Azure 赞助，则以下某些功能可能不适用。 有关详细信息，请参阅[适用于 EA、CSP 和赞助的其他资源](#other-offers)。
 
@@ -80,7 +80,7 @@ ms.locfileid: "55101645"
 
     ![基于支出阈值显示红色和黄色警报的示例](./media/billing-getting-started/schedule-alert01.png)
 
-还可以选择“成本百分比与预算”阈值指标来创建警报。 这样就可以将阈值指定为预算的百分比而不是货币值。
+还可以选择“成本百分比与预算”阈值指标来创建警报**。 这样就可以将阈值指定为预算的百分比而不是货币值。
 
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>使用 Azure 服务时监视成本的方法
 
@@ -183,8 +183,28 @@ ms.locfileid: "55101645"
 
 如果你不是帐户管理员，则某人也许可以使用 [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md) (RBAC) 向你授予部分访问权限。 若要管理订阅以及更改计费信息，请[查找帐户管理员](billing-subscription-transfer.md#whoisaa)。请求帐户管理员来执行任务，或者[将订阅转让给你](billing-subscription-transfer.md)。
 
-当帐户管理员不再属于组织，并且需要管理帐单时，请[联系我们](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+当帐户管理员不再属于组织，并且需要管理帐单时，请[联系我们](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
+
+### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>如何请求服务事件的服务级别协议信用额度
+
+服务级别协议 (SLA) 描述 Microsoft 关于运行时间和连接性方面的承诺。 Azure 服务的影响正常运行时间或连接，通常称为"中断"。 遇到的问题时，会报告服务事件 如果我们不是实现 SLA 中所述为每个服务维护服务级别，然后你可能符合用于你的每月服务费用的一部分的信用额度。
+
+若要请求信用额度：
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。 如果有多个帐户，请确保您使用一个受 Azure 停机时间。 这有助于支持自动收集必要的背景信息和更快地解决这种情况。
+2. 创建新的支持请求。
+3. 下**问题类型**，选择**计费**。
+4. 下**问题类型**，选择**退款请求**。
+5. 添加详细信息，以指定你要让 for SLA 信用额度，提到日期/时间/时区，以及受影响的服务 （如 Vm、 网站等）。
+6. 验证你的联系人详细信息，并选择**创建**按钮以提交你的请求。
+
+SLA 阈值因服务而异。 例如，SQL Web 层提供 99.9%的 SLA、 虚拟机具有 99.95%的 SLA 和 SQL 标准层提供 99.99%的 SLA。
+
+对于某些服务，没有要应用的 SLA 的先决条件。 例如，虚拟机必须具有同一可用性集中部署两个或多个实例。
+
+有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/en-us/support/legal/sla/)文档并[的 Azure 服务的 SLA 摘要](https://azure.microsoft.com/en-us/support/legal/sla/summary/)文档。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

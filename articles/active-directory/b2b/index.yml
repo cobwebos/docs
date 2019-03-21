@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 15c1e8af5e6df658ea24ce357aeeee711eaf9279
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 3ef506da391ece8f4da79283e09cd137ebec5b23
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673481"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294665"
 documentType: LandingData
 title: Azure Active Directory B2B 文档
 metadata:
@@ -25,7 +25,7 @@ abstract:
   description: 了解如何使用 Azure AD 企业到企业 (B2B) 协作以安全地将公司的应用程序和服务与来自任何组织的来宾用户和外部合作伙伴共享，同时保持对自己公司数据的控制。  以下是一些主要功能：<ul><li>通过简单的邀请和兑换过程，来宾用户可以开始在你希望他们访问的资源上进行协作。</li><li>来宾用户和外部合作伙伴通过 Azure AD、社交电子邮件帐户或任何标识提供者管理自己的标识。</li><li>可以使用 Azure AD 功能（如多重身份验证）保护公司资源。</li><li>可以使用 API 来自定义体验，例如，通过自助注册门户。</li></ul>以下资源可帮助你快速入门。
   aside:
     image:
-      alt: 
+      alt: 标题为“Azure AD B2B 简介”的视频缩略图图像
       height: 110
       src: ./media/index/video.png
       width: 246

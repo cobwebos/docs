@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 957652a63768d25e6b180feb826551ec340b9bf0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 97570a16c7d87a3c8182909b61c04fde30b3fe9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453665"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000204"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>部署并探究一个多租户 SaaS 应用，该应用通过“每租户一个数据库”模式使用 SQL 数据库
 
@@ -37,7 +37,7 @@ ms.locfileid: "55453665"
 
 可通过观看[相关教程系列](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)，了解各种 SaaS 设计和管理模式。 除了初始部署相关内容，这些教程还提供其他丰富的内容延展。 使用这些教程时，可以观察所提供的脚本来了解不同的 SaaS 模式是如何实现的。 脚本演示 SQL 数据库的功能如何简化 SaaS 应用程序的开发。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，请确保安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -56,7 +56,7 @@ ms.locfileid: "55453665"
 
 1. 若要在 Azure 门户中打开 Wingtip Tickets SaaS“每租户一个数据库”部署模板，请选择“部署到 Azure”。
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. 在模板中输入必需参数的值。
 
@@ -127,7 +127,7 @@ Wingtip 应用程序使用  [*Azure 流量管理器*](../traffic-manager/traffi
 
     下表中对前述格式的各部分进行了说明。
 
-    | URL 部分        | 说明       |
+    | URL 部分        | 描述       |
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | Wingtip 应用的事件部分。<br /><br /> *-dpt* 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个“每租户应用”(-sa) 实现，或多租户数据库 (-mt) 实现。 |
     | .*&lt;user&gt;* | 在示例中为 *af1*。 |
@@ -186,9 +186,9 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 
 4. 如果 `$OneTime = $false`，则负载生成器将启动后台作业，然后继续运行。 每隔 10 秒钟，它将监视是否预配了任何新租户。 如果设置了 `$OneTime = $true`，则负载生成器将启动后台作业，然后停止在前台运行。 在本教程中，保留为 `$OneTime = $false`。
 
-  如果要停止或重启负载生成器，可使用 Ctrl-C 或停止操作 Ctrl-Break。
+   如果要停止或重启负载生成器，可使用 Ctrl-C 或停止操作 Ctrl-Break。
 
-  如果要让负载生成器在前台继续运行，可使用另一个 PowerShell ISE 实例来运行其他 PowerShell 脚本。
+   如果要让负载生成器在前台继续运行，可使用另一个 PowerShell ISE 实例来运行其他 PowerShell 脚本。
 
 &nbsp;
 
@@ -221,7 +221,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 
 现在，你已针对该组租户运行了加载，下面让我们看看一些已部署的资源。
 
-1. 在  [Azure 门户](http://portal.azure.com)中，浏览到你的 SQL 服务器列表。 然后，打开  **catalog-dpt-&lt;USER&gt;**  服务器。
+1. 在  [Azure 门户](https://portal.azure.com)中，浏览到你的 SQL 服务器列表。 然后，打开  **catalog-dpt-&lt;USER&gt;**  服务器。
     - 目录服务器包含两个数据库：**tenantcatalog** 和 **basetenantdb**（为了创建新租户而复制的模板数据库）。
 
    ![数据库](./media/saas-dbpertenant-get-started-deploy/databases.png)

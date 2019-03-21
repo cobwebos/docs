@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 7a3ed93814407df8f3adfe7d16ba50258fcb323e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9f8ef97042d3ff5bbebc299ae212be8ed6c3b25b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082318"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096786"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>注册 Azure 企业协议并查看成本数据
 
@@ -36,9 +36,9 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 4. 在 Cloudyn 门户试用注册页上，键入公司名称，然后选择“Azure 企业合约管理员”。  
 5. 输入企业门户注册 API 密钥。 如果手边没有密钥，请单击[企业门户](https://ea.azure.com)链接并执行以下步骤：  
     ![在“计费”选项卡上粘贴 API 密钥](./media/quick-register-ea/trial-reg.png)
-  1. 登录 Azure Enterprise 网站并单击“报告”，单击“API 访问密钥”，然后复制主密钥。  
+   1. 登录 Azure Enterprise 网站并单击“报告”，单击“API 访问密钥”，然后复制主密钥。  
     ![EA 门户中的 EA API 密钥示例](./media/quick-register-ea/ea-key.png)
-  3. 返回到注册页并粘贴 API 密钥。
+   3. 返回到注册页并粘贴 API 密钥。
 6. 同意“使用条款”，并验证密钥。 单击“下一步”，授权 Cloudyn 收集 Azure 资源数据。 收集的数据包括订阅的使用情况、性能、计费和标记数据。  
     ![成功的 EA API 密钥验证示例](./media/quick-register-ea/ea-key-validated.png)
 7. 在“邀请其他利益干系人”下，可以通过键入其电子邮件地址来添加用户。 完成后，单击“下一步”。 将所有计费数据添加到 Cloudyn 可能需要长达 24 小时的时间，具体取决于 Azure 注册的大小。

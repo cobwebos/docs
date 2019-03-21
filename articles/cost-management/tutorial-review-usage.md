@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e240cbadbee87938107c4a9bf034c47db42acf92
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bb5a4b3a3019007948a9996ed6715e755f284f9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098640"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175161"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -97,19 +97,19 @@ Azure 成本管理也为 Azure 服务提供成本节省建议 有关详细信息
 
 当你在 Azure VM 上的支出接近总预算时，此示例使用“一段时间的实际成本”报表来发送通知。 在此场景中，你的总预算为 20,000 美元，你希望在成本接近预算的一半（9,000 美元）时收到通知，在成本为 10,000 美元时再次收到警报。
 
-1. 在 Cloudyn 门户顶部的菜单中，选择“成本” > “成本分析” > “时段实际成本”。 
-2. 将“组”设置为“服务”，并将“按服务筛选”设置为“Azure/VM”。 
+1. 在 Cloudyn 门户顶部的菜单中，选择“成本” > “成本分析” > “时段实际成本”。
+2. 将“组”设置为“服务”，并将“按服务筛选”设置为“Azure/VM”。
 3. 在报表的右上角，选择“操作”，然后选择“计划报表”。
-4. 若要按计划的时间间隔向自己发送有关报表的电子邮件，请在“保存或计划此报表”对话框中选择“计划”选项卡。 请务必选择“通过电子邮件发送”。 你使用的任何标记、分组和筛选均包含在通过电子邮件发送的报表中。 
-5. 选择“阈值”选项卡，然后选择“实际成本与阈值”**。**。 
-   1. 在“红色警报”阈值框中，输入 10000。 
-   2. 在“黄色警报”阈值框中，输入 9000。 
-   3. 在“连续警报数”框中，输入要接收的连续警报的数目。 当你收到的警报总数达到指定数目时，就不会再发送任何其他警报。 
+4. 若要按计划的时间间隔向自己发送有关报表的电子邮件，请在“保存或计划此报表”对话框中选择“计划”选项卡。 请务必选择“通过电子邮件发送”。 你使用的任何标记、分组和筛选均包含在通过电子邮件发送的报表中。
+5. 选择“阈值”选项卡，然后选择“实际成本与阈值”。
+   1. 在“红色警报”阈值框中，输入 10000。
+   2. 在“黄色警报”阈值框中，输入 9000。
+   3. 在“连续警报数”框中，输入要接收的连续警报的数目。 当你收到的警报总数达到指定数目时，就不会再发送任何其他警报。
 6. 选择“保存”。
 
 ![基于支出阈值显示红色和黄色警报的示例](./media/tutorial-review-usage/schedule-alert01.png)
 
-还可以选择“成本百分比与预算”阈值指标来创建警报。 这样就可以将阈值指定为预算的百分比而不是货币值。
+还可以选择“成本百分比与预算”阈值指标来创建警报**。 这样就可以将阈值指定为预算的百分比而不是货币值。
 
 ## <a name="export-data"></a>导出数据
 

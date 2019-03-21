@@ -1,26 +1,26 @@
 ---
 title: 使用 Azure IoT 中心发送云到设备消息 (.NET) | Microsoft Docs
 description: 如何使用用于 .NET 的 Azure IoT SDK 将云到设备消息从 Azure IoT 中心发送到设备。 修改设备应用以接收云到设备消息，并修改后端应用以发送云到设备消息。
-author: fsautomata
-manager: ''
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: elioda
-ms.openlocfilehash: c519a3b71068570ff864ccc0eb0292cebd51173a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.author: robin.shahan
+ms.openlocfilehash: 8a59f2ad7d3af09f776aa22b96ddf58403da28e2
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243720"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010882"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到设备
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [从设备将遥测数据发送到 IoT 中心...](quickstart-send-telemetry-dotnet.md) 介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写设备应用来发送设备到云的消息。
 
@@ -43,7 +43,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 * **SendCloudToDevice**，它通过 IoT 中心将云到设备消息发送到设备应用，然后接收其传送确认。
 
 > [!NOTE]
-> IoT 中心通过 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md) 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的分步说明，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。
+> IoT 中心通过 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md) 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程的代码以及通常如何连接到 Azure IoT 中心的分步说明，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。
 > 
 
 要完成本教程，需要以下各项：
@@ -79,7 +79,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
    在设备收到消息时，`ReceiveAsync` 方法以异步方式返回收到的消息。 它在可指定的超时期限过后返回 *null*（在本例中，使用的是默认值一分钟）。 当应用收到 *null* 时，它应继续等待新消息。 此要求是使用 `if (receivedMessage == null) continue` 行的原因。
    
-    对 `CompleteAsync()` 的调用将通知 IoT 中心，指出已成功处理消息。 可以安全地从设备队列中删除该消息。 如果因故导致设备应用无法完成消息处理作业，IoT 中心将再传递一次。 因此设备应用中的消息处理逻辑必须是幂等的，以便多次接收同一消息会生成相同的结果。 
+    对 `CompleteAsync()` 的调用通知 IoT 中心，指出已成功处理消息。 可以安全地从设备队列中删除该消息。 如果因故导致设备应用无法完成消息处理操作，IoT 中心将重新传送该消息。 因此设备应用中的消息处理逻辑必须是幂等的，以便多次接收同一消息会生成相同的结果。 
     
     应用程序也可以暂时放弃消息，让 IoT 中心将消息保留在队列中以供将来使用。 或者，应用程序可以拒绝消息，以永久性从队列中删除该消息。 有关云到设备消息生命周期的详细信息，请参阅 [IoT 中心的 D2C 和 C2D 消息传送](iot-hub-devguide-messaging.md)。
    
@@ -100,7 +100,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    
    ![Visual Studio 中的新项目](./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png)
 
-2. 在解决方案资源管理器中，右键单击该解决方案，并单击“**为解决方案管理 NuGet 包**”。 
+2. 在“解决方案资源管理器”中，右键单击该解决方案，并单击“为解决方案管理 NuGet 包...” 。 
    
     此操作将打开“管理 NuGet 包”窗口。
 

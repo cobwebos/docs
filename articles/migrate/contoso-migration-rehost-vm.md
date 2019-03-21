@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 4a6ed900753747c1d5bf394aced54da11177320f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694493"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118385"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso 迁移：将本地应用重新托管到 Azure VM
 
@@ -125,7 +125,7 @@ Contoso 将使用 Site Recovery 将应用前端和数据库 VM 迁移到 Azure V
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | 该服务协调和管理 Azure VM、本地 VM 与物理服务器的迁移和灾难恢复。  | 在复制到 Azure 的过程中，会产生 Azure 存储费用。 故障转移时会创建 Azure VM，因此会产生费用。 [详细了解](https://azure.microsoft.com/pricing/details/site-recovery/)费用和定价。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要运行此方案，Contoso 需具备以下项。
 
@@ -168,10 +168,10 @@ Contoso 需具备以下 Azure 组件才能将 VM 迁移到 Azure：
     - 应用数据库 VM (SQLVM) 将迁移到生产网络中的数据库子网 (PROD-DB-EUS2)。
 
 2. 设置存储帐户 - Contoso 在主要区域中创建一个 Azure 存储帐户 (contosovmsacc20180528)。
-    - 存储帐户必须位于与恢复服务保管库相同的区域。
-    - 公司使用具有标准存储空间的常规用途帐户，并使用 LRS 复制。
+   - 存储帐户必须位于与恢复服务保管库相同的区域。
+   - 公司使用具有标准存储空间的常规用途帐户，并使用 LRS 复制。
 
-    ![Site Recovery 存储](./media/contoso-migration-rehost-vm/asr-storage.png)
+     ![Site Recovery 存储](./media/contoso-migration-rehost-vm/asr-storage.png)
 
 3. 创建保管库 - 创建网络和存储帐户后，Contoso 现在可以创建一个恢复服务保管库 (ContosoMigrationVault)，并将其置于美国东部 2 主要区域的 ContosoFailoverRG 资源组中。
 
@@ -221,15 +221,15 @@ Contoso 管理员按如下所述设置帐户：
 
 1. 为了通过 Internet 进行访问：
 
- - 故障转移之前在本地 VM 上启用 RDP。
- - 确保为“公共”配置文件添加了 TCP 和 UDP 规则。
- - 检查“Windows 防火墙” > “允许的应用”中是否同意所有配置文件使用 RDP。
+   - 故障转移之前在本地 VM 上启用 RDP。
+   - 确保为“公共”配置文件添加了 TCP 和 UDP 规则。
+   - 检查“Windows 防火墙” > “允许的应用”中是否同意所有配置文件使用 RDP。
 
 2. 为了通过站点到站点 VPN 进行访问：
 
- - 在本地计算机上启用 RDP。
- - 在“Windows 防火墙” -> “允许的应用和功能”中同意域和专用网络使用 RDP。
- - 将本地 VM 上操作系统的 SAN 策略设置为“OnlineAll”。
+   - 在本地计算机上启用 RDP。
+   - 在“Windows 防火墙” -> “允许的应用和功能”中同意域和专用网络使用 RDP。
+   - 将本地 VM 上操作系统的 SAN 策略设置为“OnlineAll”。
 
 此外，在运行故障转移时，公司需要检查以下项目：
 
@@ -341,10 +341,10 @@ Contoso 管理员现在可以创建复制策略。
 
 4. 选择“WebVM”进行复制、检查复制策略并启用复制。
 
-    - 在此阶段，他们只选择了“WEBVM”，因为必须选择 VNet 和子网，而应用 VM 将放在其他子网中。
-    - 启用复制后，Site Recovery 会在 VM 上自动安装移动服务。
+   - 在此阶段，他们只选择了“WEBVM”，因为必须选择 VNet 和子网，而应用 VM 将放在其他子网中。
+   - 启用复制后，Site Recovery 会在 VM 上自动安装移动服务。
 
-    ![启用复制](./media/contoso-migration-rehost-vm/enable-replication3.png)
+     ![启用复制](./media/contoso-migration-rehost-vm/enable-replication3.png)
 
 5. 在“作业”中跟踪复制进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
 6. 在 Azure 门户的“概要”中，可以查看复制到 Azure 的 VM 的结构。
@@ -408,7 +408,7 @@ Contoso 管理员运行快速测试故障转移，然后运行完整故障转移
     ![恢复计划](./media/contoso-migration-rehost-vm/recovery-plan.png)
 
 2. 创建计划后，进行自定义（“恢复计划” > “SmartHotelMigrationPlan” > “自定义”）。
-2.  从“组 1:启动”中删除 WEBVM 。 这可确保第一次启动操作只影响 SQLVM。
+2.  从“组 1:启动”中删除 WEBVM **。 这可确保第一次启动操作只影响 SQLVM。
 3.  在“+组” > “添加受保护的项”中，向“组 2:启动”添加 WEBVM。 VM 需要位于两个不同的组中。
 
 

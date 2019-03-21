@@ -13,12 +13,12 @@ ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: e16d68f8c30b54c24e091d1b0c7317bf74aadeba
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234571"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105788"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>快速入门：使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据
 
@@ -65,8 +65,8 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 配置一个 Active Directory (AD) 管理员即可使用单个标识登录到 Azure 门户和 SQL 数据库。 请按照以下步骤配置 SQL Server 的 AD 管理员。
 
 > [!NOTE]
-* AD 管理员尚不支持电子邮件帐户（例如，outlook.com、gmail.com、yahoo.com 等）。 请确保选择在 Azure AD 中本机创建或联合到 Azure AD 中的用户。
-* Azure AD 管理员登录不适用于已启用双因素身份验证的帐户。
+> * AD 管理员尚不支持电子邮件帐户（例如，outlook.com、gmail.com、yahoo.com 等）。 请确保选择在 Azure AD 中本机创建或联合到 Azure AD 中的用户。
+> * Azure AD 管理员登录不适用于已启用双因素身份验证的帐户。
 
 1. 从左侧菜单中选择“所有资源”，然后选择 SQL Server。
 
@@ -125,7 +125,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    ```
 
 
-2. 选择“运行”在 `Product` 表中插入新行。 “消息”窗格显示“查询已成功：受影响的行：1”。
+2. 选择“运行”在 `Product` 表中插入新行。 “消息”窗格显示“查询已成功：受影响的行：1”**。
 
 
 ## <a name="update-data"></a>更新数据
@@ -153,7 +153,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“运行”删除 `Product` 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”。
+2. 选择“运行”删除 `Product` 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”**。
 
 
 ## <a name="query-editor-considerations"></a>查询编辑器注意事项

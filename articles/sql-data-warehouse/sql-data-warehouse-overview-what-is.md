@@ -44,7 +44,7 @@ SQL 数据仓库通过列存储将数据存储到关系表中。 此格式可显
 * [客户顾问团队博客]
 * [创建支持票证]
 * [MSDN 论坛]
-* [堆栈溢出论坛]
+* [Stackoverflow 论坛]
 * [Twitter]
 
 <!--Image references-->
@@ -68,7 +68,7 @@ SQL 数据仓库通过列存储将数据存储到关系表中。 此格式可显
 [客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN 论坛]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
-[堆栈溢出论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
+[Stackoverflow 论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/

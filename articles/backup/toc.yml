@@ -174,12 +174,14 @@ items:
     items:
     - name: Azure 门户中的 Azure VM
       href: backup-azure-vms-automation.md
-    - name: Azure 门户中的 DPM
+    - name: Azure 门户的 DPM
       href: backup-dpm-automation.md
     - name: Azure 门户中的 Windows Server
       href: backup-client-automation.md
     - name: Azure 门户中的 Azure 文件共享
       href: backup-azure-afs-automation.md
+    - name: Azure VM 备份中的 SQL
+      href: backup-azure-sql-automation.md
   - name: 使用 Azure 备份 REST API
     items:
     - name: 创建恢复服务保管库
@@ -195,7 +197,7 @@ items:
   - name: Azure VM 上的备份 SQL Server 数据库
     items:
     - name: 关于 Azure VM 中的 SQL Server 备份
-      href: backup-sql-server-azure-vms.md
+      href: backup-azure-sql-database.md
     - name: 备份 Azure VM 中的 SQL Server 数据库
       href: backup-sql-server-database-azure-vms.md
     - name: 还原 Azure VM 中的 SQL Server 数据库
@@ -278,9 +280,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 033235611271b00275a0ef759af80f2c8c9a2474
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb58460b2331ab867e064235d5a2536809b28021
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014654"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284963"

@@ -17,12 +17,12 @@ ms.date: 10/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecc7eb45b439140cf9d1de048a6d4a7db48c34c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 15d0d537a23e21eeda3b284e7ec706cde2b443e7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204401"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014075"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>更改 Azure AD Connect 同步服务帐户密码
 如果更改了 Azure AD Connect 同步服务帐户密码，则无法正常启动同步服务，除非已弃用加密密钥并重新初始化 Azure AD Connect 同步服务帐户密码。 
@@ -46,7 +46,7 @@ Azure AD Connect 是同步服务的一部分，使用加密密钥来存储 AD DS
 此时会出现错误，例如：
 
 - 如果尝试在 Windows 服务控制管理器中启动同步服务，但却无法检索加密密钥，则该服务会失败，并且会出现错误“Windows 无法在本地计算机上启动 Microsoft Azure AD 同步。有关详细信息，请查看系统事件日志。如果该服务是非 Microsoft 服务，请联系服务供应商，并请参阅特定于服务的错误代码 -21451857952</strong>。”
-- 在 Windows 事件查看器中，应用程序事件日志包含事件 ID 为 6028 且内容为“*服务器加密密钥无法访问*”的错误消息。
+- 在 Windows 事件查看器中，应用程序事件日志包含与错误**事件 ID 6028**和错误消息 *"无法访问服务器加密密钥"。*
 
 若要确保不收到这些错误，请在更改密码时，按[放弃 Azure AD Connect 同步加密密钥](#abandoning-the-azure-ad-connect-sync-encryption-key)中的过程操作。
  
@@ -99,7 +99,7 @@ Azure AD Connect 是同步服务的一部分，使用加密密钥来存储 AD DS
 3. 选择与本地 AD 对应的“AD 连接器”。 如果有多个 AD 连接器，请针对每个连接器重复以下步骤。
 4. 在“操作”下面，选择“属性”。
 5. 在弹出对话框中，选择“连接到 Active Directory 林”：
-6. 在“密码”文本框中输入 AD DS 帐户的密码。 如果不知道该密码，则必须将其设置为某个已知值，然后再执行此步骤。
+6. 在“密码”文本框中输入 AD DS 帐户的密码。 如果不知道该密码，则必须将其设置为某个已知值，再执行此步骤。
 7. 单击“确定”保存新密码并关闭弹出对话框。
 ![Azure AD Connect 同步加密密钥实用工具](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 

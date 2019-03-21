@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2775ceb3cf27b6feedfd73cd43855204490ebc31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471192"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217863"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>多租户 SaaS 数据库租户模式
 
@@ -99,7 +99,7 @@ ms.locfileid: "55471192"
 
 ![使用弹性池设计采用“每个租户各有数据库”模型的多租户应用。][image-mt-app-db-per-tenant-pool-153p]
 
-Azure SQL 数据库提供所需的工具用于配置、监视和管理共享。  可以通过 Azure 门户和 Log Analytics 查看池级和数据库级性能指标。  指标可以提供聚合性能和租户特定性能的深入见解。  可以在池之间移动单个数据库，以便向特定的租户提供保留的资源。  使用这些工具可确保以经济高效的方式获得良好性能。
+Azure SQL 数据库提供所需的工具用于配置、监视和管理共享。  可在 Azure 门户中，并通过 Azure Monitor 日志池级别和数据库级别的性能指标。  指标可以提供聚合性能和租户特定性能的深入见解。  可以在池之间移动单个数据库，以便向特定的租户提供保留的资源。  使用这些工具可确保以经济高效的方式获得良好性能。
 
 #### <a name="operations-scale-for-database-per-tenant"></a>“每个租户各有数据库”模型的操作规模
 

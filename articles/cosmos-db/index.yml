@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a94039b70ceb1cffabe90df09282f840f45f7d32
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 43740118c4379c3b30843575840a000e89cd820b
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033496"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294988"
 documentType: LandingData
 title: Azure Cosmos DB 文档
 metadata:
@@ -35,11 +35,11 @@ sections:
     columns: 3
     items:
     - href: /azure/cosmos-db/distribute-data-globally/
-      html: <p>了解适用于所有 Azure Cosmos DB ApI 的全局分发、分区、索引和其他概念。</p>
+      html: <p>了解适用于所有 Azure Cosmos DB API 的全局分发、预配的吞吐量、索引编制和其他概念。</p>
       image:
         src: media/index/azure-cosmos-db-icon.png
       title: 概念
-    - href: /azure/cosmos-db/sql-api-introduction/
+    - href: /azure/cosmos-db/sql-api-query-reference/
       html: <p>如果要生成新的非关系文档数据库并希望使用熟悉的 SQL 语法进行查询，请使用 SQL API。</p>
       image:
         src: media/index/sql-api.svg
@@ -102,7 +102,7 @@ sections:
       - href: 
       - href: 
       - href: /azure/cosmos-db/create-sql-api-xamarin-dotnet
-    - title: Azure Cosmos DB 的用于 MongoDB 的 API
+    - title: 适用于 MongoDB 的 API
       values:
       - href: /azure/cosmos-db/create-mongodb-java
       - href: /azure/cosmos-db/create-mongodb-dotnet
@@ -157,12 +157,12 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: " 创建按比例构建的 Azure Cosmos DB 数据库"
+    - title: " 创建按比例构建的 Azure Cosmos 数据库"
       href: /learn/modules/create-cosmos-db-for-scale/
       image:
         src: /learn/achievements/create-cosmos-db-for-scale.svg
         href: /learn/modules/create-cosmos-db-for-scale/
-    - title: 在 Azure Cosmos DB 数据库中插入和查询数据
+    - title: 在 Azure Cosmos 数据库中插入和查询数据
       href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
       image:
         src: /learn/achievements/access-data-with-cosmos-db-and-sql-api.svg

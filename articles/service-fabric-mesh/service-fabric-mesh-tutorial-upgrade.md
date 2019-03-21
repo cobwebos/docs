@@ -3,8 +3,8 @@ title: 教程 - 升级 Azure Service Fabric 网格应用程序 | Microsoft Docs
 description: 了解如何使用 Visual Studio 升级 Service Fabric 应用程序
 services: service-fabric-mesh
 documentationcenter: .net
-author: tylerMSFT
-manager: jeconnoc
+author: dkkapur
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/29/2018
-ms.author: twhitney
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0f6ede488ae118f8df00febda3c53eabb73f2030
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 23809abd06d626eb87e5d5d15d265f1769b97b66
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890222"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806721"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>教程：了解如何使用 Visual Studio 升级 Service Fabric 应用程序
 
@@ -70,7 +70,7 @@ ms.locfileid: "52890222"
 > 默认情况下，与 profile.yaml 文件对等的参数文件将用于提供该 profile.yaml 文件的值。
 > 例如，“环境”>“云”>“parameters.yaml”提供了“环境”>“云”>“profile.yaml”的参数值。
 >
-> 可以通过将以下内容添加到 profile.yaml 文件进行覆盖：`parametersFilePath=”relative or full path to the parameters file”`例如，`parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` 或 `parametersFilePath=”..\CommonParameters.yaml”`
+> 可以通过将以下内容添加到 profile.yaml 文件进行覆盖：`parametersFilePath=”relative or full path to the parameters file”`例如， 或 `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>修改模型
 

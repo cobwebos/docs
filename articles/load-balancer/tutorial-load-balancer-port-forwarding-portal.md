@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 6cb9e839b1fffd29ce1d78e82fb4ab054b92efc6
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 44b9e592d60c541e6b1e7f0e8c639b641af414e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959114"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118351"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教程：使用门户在 Azure 负载均衡器中配置端口转发
 
@@ -94,7 +94,7 @@ ms.locfileid: "56959114"
    - **密码**：键入“Azure1234567”。 
      在“确认密码”字段中，重新键入该密码。
    
-1. 选择“网络”选项卡，或选择“下一步:磁盘”，然后选择“下一步:网络”。 
+1. 选择“网络”选项卡，或选择“下一步:磁盘”，然后选择“下一步:网络”**。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**
@@ -220,7 +220,7 @@ ms.locfileid: "56959114"
    
 1. 选择“确定”。
    
-  ![添加负载均衡器规则](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
+   ![添加负载均衡器规则](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
 
 ## <a name="create-an-inbound-nat-port-forwarding-rule"></a>创建入站 NAT 端口转发规则
 

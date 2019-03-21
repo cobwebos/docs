@@ -7,16 +7,16 @@ items:
     href: overview.md
 - name: 快速入门
   items:
-  - name: 管理 Web 流量 - 门户
+  - name: 创建应用程序网关 - 门户
     href: quick-create-portal.md
-  - name: 管理 Web 流量 - PowerShell
+  - name: 创建应用程序网关 - PowerShell
     href: quick-create-powershell.md
-  - name: 管理 Web 流量 - Azure CLI
+  - name: 创建应用程序网关 - Azure CLI
     href: quick-create-cli.md
   expanded: true
 - name: 教程
   items:
-  - name: 管理 Web 流量
+  - name: 托管单一站点
     href: tutorial-manage-web-traffic-cli.md
   - name: 启用 Web 应用程序防火墙
     href: tutorial-restrict-web-traffic-cli.md
@@ -110,6 +110,8 @@ items:
       href: end-to-end-ssl-portal.md
     - name: 端到端 SSL - PowerShell
       href: application-gateway-end-to-end-ssl-powershell.md
+    - name: 创建证书以便将后端列入允许列表
+      href: certificates-for-backend-authentication.md
     - name: 续订证书
       href: renew-certificates.md
     - name: 配置 SSL 策略
@@ -120,7 +122,7 @@ items:
       href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
-  - name: 自定义 WAF 规则
+  - name: 配置 WAF 规则集
     items:
     - name: Azure 门户
       href: application-gateway-customize-waf-rules-portal.md
@@ -226,9 +228,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 堆栈溢出
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: ce92641c82ffd577b0611fb5da4e8e78816ae32f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 68264afadd3d05e4d11c6b4b98cd7375886e4d20
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225342"
+ms.locfileid: "58286950"

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 4441797eb41dc909a98be3c42931140e71e36f80
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fe925ed408f64424de8da98f6e182a06a41bf015
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270345"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075043"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -338,7 +338,7 @@ ms.locfileid: "56270345"
 接下来在 Azure Cosmos DB 帐户中创建一个容器，用于存储和查询数据。 
 
 > [!WARNING]
-创建容器涉及到定价。 请访问[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)，了解相关信息。
+> 创建容器涉及到定价。 请访问[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)，了解相关信息。
 
 可以使用 **Containers** 类的 `createIfNotExists` 或 create 函数创建容器。  容器包含项（在使用 SQL API 的情况下为 JSON 文档）和关联的 JavaScript 应用程序逻辑。
 
@@ -462,7 +462,7 @@ ms.locfileid: "56270345"
    /**
    * Create family item if it does not exist
    */
-  async function createFamilyItem(itemBody) {
+   async function createFamilyItem(itemBody) {
      try {
          // read the item to see if it exists
          const { item } = await client.database(databaseId).container(containerId).item(itemBody.id).read();
@@ -612,9 +612,9 @@ Azure Cosmos DB 支持删除 JSON 项。
 1. 将 **deleteFamilyItem** 函数复制并粘贴到 **replaceFamilyItem** 函数下面。
 
    ```javascript
-  /**
-  * Delete the item by ID.
-  */
+   /**
+   * Delete the item by ID.
+   */
    async function deleteFamilyItem(itemBody) {
       await client.database(databaseId).container(containerId).item(itemBody.id).delete(itemBody);
       console.log(`Deleted item:\n${itemBody.id}\n`);

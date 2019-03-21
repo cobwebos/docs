@@ -89,7 +89,7 @@ items:
       href: stream-analytics-job-reliability.md
     - name: 使用托管标识进行身份验证
       href: stream-analytics-managed-identities-adls.md
-    - name: 使用 SQL 参考
+    - name: 使用 SQL 参考数据
       href: sql-reference-data.md
   - name: 构建解决方案
     items:
@@ -440,9 +440,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 233838e88b6e7d250000c1e5d69b84a97f69b994
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e9ef3d7ed841dd5bb2a9ad21f0dd4f71e528c374
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189812"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286051"

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 974ea5803b6e31ad8f940265071f41440d5355da
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 6f6440e12840538614b4092b173ab25ae37a68a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700632"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110268"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>为迁移到 Azure 的工作负荷计算成本和调整大小的最佳做法
 
@@ -40,17 +40,18 @@ ms.locfileid: "55700632"
 
 - **Azure 定价计算器**：选择要评估费用的产品，例如 VM 和存储。 将费用输入定价计算器中，生成一个估算。
 
- ![Azure 定价计算器](./media/migrate-best-practices-costs/pricing.png) *Azure pricing calculator*
+  ![Azure 定价计算器](./media/migrate-best-practices-costs/pricing.png) *Azure pricing calculator*
 
 - **Azure Migrate**：若要估算成本，你需要查看并考虑在 Azure 中运行工作负荷需要的所有资源。 要获取该数据，需创建资产清单（资产包括服务器、VM、数据库和存储）。 可以使用 Azure Migrate 来收集这些信息。
 
- - Azure Migrate 发现并评估你的本地环境，从而提供清单。
- - Azure Migrate 可以映射并显示 VM 之间的依赖关系，使你了解全貌。
- - Azure Migrate 评估包含估计成本。
+  - Azure Migrate 发现并评估你的本地环境，从而提供清单。
+  - Azure Migrate 可以映射并显示 VM 之间的依赖关系，使你了解全貌。
+  - Azure Migrate 评估包含估计成本。
     - 计算成本：在创建评估时使用推荐的 Azure VM 大小，Azure Migrate 会使用计费 API 计算每月预估 VM 费用。 该估算会考虑操作系统、软件保障、预留实例、VM 运行时间、位置和货币设置。 它将所有 VM 的成本求和，计算每月总计算成本。
     - 存储成本：Azure Migrate 通过在评估中将所有 VM 的存储成本求和，计算每月总存储成本。 可以按照如下方式计算某台计算机的每月存储成本：将连接到该它的所有磁盘的每月成本求和。 
 
-    ![Azure Migrate](./media/migrate-best-practices-costs/assess.png) *Azure Migrate 评估*
+    ![Azure Migrate](./media/migrate-best-practices-costs/assess.png)
+    *Azure Migrate 评估*
 
 **了解更多：**
 - [使用](https://azure.microsoft.com/pricing/calculator/) Azure 定价计算器。
@@ -92,13 +93,13 @@ ms.locfileid: "55700632"
 
 Azure 提供了不同类型的存储数据。
 
-**数据类型** | **详细信息** | **使用情况** 
---- | --- |  ---
-**Blob** | 优化为可存储巨量的非结构化对象，例如文本或二进制数据<br/><br/> | 通过 HTTP/HTTPS 从任何位置访问数据。 | 用于流式处理和随机访问方案。 例如，直接向浏览器提供图像和文档，流式传输视频和音频，以及存储备份和灾难恢复数据。
-**文件** | 通过 SMB 3.0 访问的托管文件共享 | 在迁移本地文件共享时使用，用于提供对文件数据的多路访问/连接。
-**磁盘** | 基于页 blob。<br/><br/> 磁盘类型（速度）：标准（HDD 或 SSD）或高级 (SSD)。<br/><br/>磁盘管理：非托管（你管理磁盘设置和存储）或托管（你选择磁盘类型，Azure 为你管理磁盘）。 | 为 VM 使用高级磁盘。 将托管磁盘用于简单的管理和缩放。
-**队列** | 存储并检索大量由通过了身份验证的调用（HTTP 或 HTTPS）访问的消息 | 通过异步消息排队连接应用组件。
-**表** | 存储表。 | 现属于 Azure Cosmos DB 表 API。
+| **数据类型** | **详细信息** | **使用情况** |
+|--- | --- |  --- |
+|**Blob** | 优化为可存储巨量的非结构化对象，例如文本或二进制数据<br/>通过 HTTP/HTTPS 从任何位置访问数据。 | 用于流式处理和随机访问方案。 例如，直接向浏览器提供图像和文档，流式传输视频和音频，以及存储备份和灾难恢复数据。|
+|**文件** | 通过 SMB 3.0 访问的托管文件共享 | 在迁移本地文件共享时使用，用于提供对文件数据的多路访问/连接。|
+|**磁盘** | 基于页 blob。<br/><br/> 磁盘类型（速度）：标准（HDD 或 SSD）或高级 (SSD)。<br/><br/>磁盘管理：非托管（你管理磁盘设置和存储）或托管（你选择磁盘类型，Azure 为你管理磁盘）。 | 为 VM 使用高级磁盘。 将托管磁盘用于简单的管理和缩放。|
+|**队列** | 存储并检索大量由通过了身份验证的调用（HTTP 或 HTTPS）访问的消息 | 通过异步消息排队连接应用组件。|
+|**表** | 存储表。 | 现属于 Azure Cosmos DB 表 API。|
 
 
 
@@ -211,19 +212,21 @@ Microsoft 提供 Azure 成本管理来帮助你跟踪支出情况，如下所示
 
 
 - **创建预算**：创建财务问责预算。
-    - 可以考虑在特定时期（每月、每季度、每年）内使用或订阅的服务以及范围（订阅/资源组）。 例如，可以按月、按季度或按年创建 Azure 订阅预算。
-    - 创建预算后，它会显示在成本分析中。 分析成本和支出所需的第一步是：对照当前支出查看预算。
-    - 可在达到预算阈值时发送电子邮件通知。
-    - 可以将成本管理数据导出到 Azure 存储，以供分析。
+  - 可以考虑在特定时期（每月、每季度、每年）内使用或订阅的服务以及范围（订阅/资源组）。 例如，可以按月、按季度或按年创建 Azure 订阅预算。
+  - 创建预算后，它会显示在成本分析中。 分析成本和支出所需的第一步是：对照当前支出查看预算。
+  - 可在达到预算阈值时发送电子邮件通知。
+  - 可以将成本管理数据导出到 Azure 存储，以供分析。
 
-    ![成本管理预算](./media/migrate-best-practices-costs/budget.png) Azure 成本管理预算
+    ![成本的管理和预算](./media/migrate-best-practices-costs/budget.png)
+    *Azure 成本管理预算*
 
 - **执行成本分析**：获取成本分析，以便浏览和分析组织的成本，帮助你了解这些成本是如何产生的以及识别支出趋势。
-    - 成本分析可供 EA 用户使用。
-    - 可查看多个范围的成本分析数据，包括按部门、帐户、订阅或资源组查看。
-    - 你可以获取一份显示当前月份总成本和每日累积成本的成本分析。 
+  - 成本分析可供 EA 用户使用。
+  - 可查看多个范围的成本分析数据，包括按部门、帐户、订阅或资源组查看。
+  - 你可以获取一份显示当前月份总成本和每日累积成本的成本分析。 
 
-    ![成本管理分析](./media/migrate-best-practices-costs/analysis.png) Azure 成本管理分析
+    ![成本管理分析](./media/migrate-best-practices-costs/analysis.png)
+    *Azure 成本管理分析*
 - **获取建议**：获取说明如何优化和提高效率的顾问建议。
 
 
