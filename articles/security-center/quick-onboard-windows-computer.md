@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3cc6cdb84b2c77b15b79c7d6a04cc7c6ae0721e5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bee4618ff08c89bbdab7413ca7f7f74a266d96dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115849"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077898"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机加入安全中心
 加入 Azure 订阅之后，可以通过预配 Microsoft Monitoring Agent 为 Azure 外部（例如，本地或在其他云中）运行的资源启用安全中心。
@@ -37,7 +37,7 @@ ms.locfileid: "56115849"
 1. 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
 2. 在 **Microsoft Azure** 菜单上选择“安全中心”。 此时会打开“安全中心 - 概览”。
 
- ![安全中心概述][2]
+   ![安全中心概述][2]
 
 3. 在“安全中心”主菜单下，选择“入门”。
 4. 选择“入门”选项卡。
@@ -48,13 +48,13 @@ ms.locfileid: "56115849"
 
     ![添加非 Azure 计算机](./media/quick-onboard-windows-computer/non-azure.png)
 
-  将打开“直接代理”边栏选项卡，其中包含一个用于下载 Windows 代理的链接，以及在配置该代理时要使用的工作区 ID 的密钥。
+   将打开“直接代理”边栏选项卡，其中包含一个用于下载 Windows 代理的链接，以及在配置该代理时要使用的工作区 ID 的密钥。
 
-6.  选择适用于计算机处理器类型的“下载 Windows 代理”链接，以下载安装程序文件。
+6. 选择适用于计算机处理器类型的“下载 Windows 代理”链接，以下载安装程序文件。
 
-7.  在“工作区 ID”右侧选择复制图标，并将该 ID 粘贴到记事本中。
+7. 在“工作区 ID”右侧选择复制图标，并将该 ID 粘贴到记事本中。
 
-8.  在“主密钥”右侧选择复制图标，并将该密钥粘贴到记事本中。
+8. 在“主密钥”右侧选择复制图标，并将该密钥粘贴到记事本中。
 
 ## <a name="install-the-agent"></a>安装代理
 现在，必须在目标计算机上安装下载的文件。
@@ -68,7 +68,7 @@ ms.locfileid: "56115849"
 7. 如果计算机应向 Azure 政府云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择 **“Azure 美国政府”**。  如果计算机需要通过代理服务器来与 Log Analytics 服务通信，请选择“高级”并提供代理服务器的 URL 和端口号。
 8. 提供所需的配置设置后，选择“下一步”。
 
-  ![安装代理][5]
+   ![安装代理][5]
 
 9. 在“准备安装”页上检查所做的选择，并选择“安装”。
 10. 在“配置已成功完成”页上，选择“完成”

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 8f087e07bbf5033698b18b4349c4d13e862a1555
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ba66c96f9129b253fc5897c3a2eaaefb53056cea
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223334"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548722"
 ---
 # <a name="tutorial-anomaly-detection-with-java-application"></a>教程：使用 Java 应用程序进行异常情况检测
 
@@ -28,7 +28,7 @@ ms.locfileid: "55223334"
 
 ### <a name="platform-requirements"></a>平台要求
 
-本教程是采用 [IntelliJ IDEA](https://www.jetbrains.com/idea) 开发的。 此外，还需安装 1.8 版以上的 [Java 开发工具包 (JDK)](https://aka.ms/azure-jdks) 以及最新的 [Apache Maven](http://maven.apache.org/) 生成工具。
+本教程是采用 [IntelliJ IDEA](https://www.jetbrains.com/idea) 开发的。 此外，还需安装 1.8 版以上的 [Java 开发工具包 (JDK)](https://aka.ms/azure-jdks) 以及最新的 [Apache Maven](https://maven.apache.org/) 生成工具。
 
 ### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>订阅异常情况检测并获取订阅密钥 
 

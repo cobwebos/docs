@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4228692d707f0cff8be0d76bc70794f48d944143
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 751b6e5979174eae9bc815061f16bf99bd0899cf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878759"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534780"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>什么是 Web 语言模型 API？ （预览版）
 
@@ -44,7 +44,7 @@ Web 语言模型 API 支持四个查找操作：
 1. 订阅服务。
 2. 下载 [SDK](https://www.github.com/microsoft/cognitive-weblm-windows)。
 3. 运行 SDK 示例代码。
-4. 有关终结点的完整详细信息，包括采用各种语言的代码片段，请参阅 [API 参考](http://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)。
+4. 有关终结点的完整详细信息，包括采用各种语言的代码片段，请参阅 [API 参考](https://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)。
 
 ## <a name="underlying-technology"></a>基础技术
 

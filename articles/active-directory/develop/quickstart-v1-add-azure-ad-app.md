@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc60f3ac785bede0f3a2e4d83cc98980b46868e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 15e77767e16ce6ae02c6f1f93891d5acf4bfcb6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119592"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>快速入门：向 Azure Active Directory v1.0 终结点注册应用
 
@@ -52,16 +52,16 @@ ms.locfileid: "56167059"
 
 1. 出现“创建”页后，请输入应用程序的注册信息： 
 
-    - **名称：** 输入有意义的应用程序名称
-    - **应用程序类型：**
-      - 为安装在设备本地的[客户端应用程序](developer-glossary.md#client-application)选择“本机”。 此设置用于 OAuth 公共[本机客户端](developer-glossary.md#native-client)。
-      - 为安装在安全服务器上的[客户端应用程序](developer-glossary.md#client-application)和[资源/API 应用程序](developer-glossary.md#resource-server)选择“Web 应用/API”。 此设置用于 OAuth 机密性 [Web 客户端](developer-glossary.md#web-client)和公共的[基于用户代理的客户端](developer-glossary.md#user-agent-based-client)。 相同的应用程序还可以公开客户端和资源/API。
-    - **登录 URL：** 对于“Web 应用/API”应用程序，请提供应用的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 
-    - **重定向 URI：** 对于“本机”应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 `http://MyFirstAADApp`
+   - **名称：** 输入有意义的应用程序名称
+   - **应用程序类型：**
+     - 为安装在设备本地的[客户端应用程序](developer-glossary.md#client-application)选择“本机”。 此设置用于 OAuth 公共[本机客户端](developer-glossary.md#native-client)。
+     - 为安装在安全服务器上的[客户端应用程序](developer-glossary.md#client-application)和[资源/API 应用程序](developer-glossary.md#resource-server)选择“Web 应用/API”。 此设置用于 OAuth 机密性 [Web 客户端](developer-glossary.md#web-client)和公共的[基于用户代理的客户端](developer-glossary.md#user-agent-based-client)。 相同的应用程序还可以公开客户端和资源/API。
+   - **登录 URL：** 对于“Web 应用/API”应用程序，请提供应用的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 
+   - **重定向 URI：** 对于“本机”应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 `http://MyFirstAADApp`
 
-      ![注册新应用程序 - 创建](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
+     ![注册新应用程序 - 创建](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
 
-    如需 Web 应用程序或本机应用程序的特定示例，请查看文档中的“快速入门”。
+     如需 Web 应用程序或本机应用程序的特定示例，请查看文档中的“快速入门”。
 
 1. 完成后，选择“创建”。
 

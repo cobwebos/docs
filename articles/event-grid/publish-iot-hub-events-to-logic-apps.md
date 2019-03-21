@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 7c5030a80ead7e84526e01aa3a8a4a75ee2b276a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135009"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079991"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>教程：使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件
 
@@ -162,14 +162,14 @@ ms.locfileid: "53135009"
    ![创建新的事件订阅](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. 使用以下值创建事件订阅： 
-    * **事件类型**：取消选中“订阅所有事件类型”，然后从菜单中选择“已创建的设备”。
-    * **终结点详细信息**：选择“Webhook”作为“终结点类型”，单击所选终结点并粘贴从逻辑应用中复制的 URL，然后确认选择。
+   * **事件类型**：取消选中“订阅所有事件类型”，然后从菜单中选择“已创建的设备”。
+   * **终结点详细信息**：选择“Webhook”作为“终结点类型”，单击所选终结点并粘贴从逻辑应用中复制的 URL，然后确认选择。
 
-    ![选择终结点 URL](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
+     ![选择终结点 URL](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-    * **事件订阅详细信息**：提供一个说明性的名称，然后选择“事件网格架构”
+   * **事件订阅详细信息**：提供一个说明性的名称，然后选择“事件网格架构”
 
-  完成后，窗体应如以下示例所示： 
+   完成后，窗体应如以下示例所示： 
 
     ![示例事件订阅窗体](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
@@ -177,8 +177,8 @@ ms.locfileid: "53135009"
 
 6. 创建以下筛选器：
 
-  * **主题开头为**：输入 `devices/Building1_`，筛选建筑物 1 中的设备事件。
-  * **主题结尾为**：输入 `_Temperature`，筛选与温度相关的设备事件。
+   * **主题开头为**：输入 `devices/Building1_`，筛选建筑物 1 中的设备事件。
+   * **主题结尾为**：输入 `_Temperature`，筛选与温度相关的设备事件。
 
 5. 选择“创建”保存事件订阅。
 

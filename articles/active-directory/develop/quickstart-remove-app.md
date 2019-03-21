@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d71489194422a785ee98ec70a07c765c3d686808
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 20d7218b9b1d53b3cfb72a12ee34a77956327ce2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182606"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093188"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>快速入门：删除注册到 Microsoft 标识平台的应用程序（预览版）
 
@@ -52,8 +52,8 @@ ms.locfileid: "56182606"
 4. 在“概览”页中，选择“删除”。
 5. 选择“是”以确认要删除该应用。
 
-  > [!NOTE]
-  > 若要删除应用程序，你必须是应用程序的所有者或者具有管理员权限。
+   > [!NOTE]
+   > 若要删除应用程序，你必须是应用程序的所有者或者具有管理员权限。
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>删除其他组织编写的应用程序
 

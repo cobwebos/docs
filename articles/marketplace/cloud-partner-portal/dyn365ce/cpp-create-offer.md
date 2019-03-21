@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6551eab45fdfb5070b29de4152cf2b3e3d008f69
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 0138ea8dcbd780ca8aa87178dad41bdca1a72267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081601"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900652"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>创建 Dynamics 365 for Customer Engagement 应用程序产品/服务
 
@@ -28,7 +28,7 @@ ms.locfileid: "54081601"
 
 ## <a name="new-offer-form"></a>“新建套餐”窗体
 
-登录到[云合作伙伴门户](http://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”。 在“新建产品/服务”菜单上，选择“Dynamics 365 for Customer Engagement”：
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”。 在“新建产品/服务”菜单上，选择“Dynamics 365 for Customer Engagement”：
 
 ![Dynamics 365 for Customer Engagement 应用程序的“新建产品/服务”菜单项](./media/new-dyn365ce-menu-item.png)
 

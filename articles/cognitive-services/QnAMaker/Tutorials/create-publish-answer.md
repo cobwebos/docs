@@ -7,27 +7,27 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 348cb6a451f15ddec6b7ee013832ad6c563bb2da
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874936"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102156"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>教程：使用 C# 创建知识库并回答问题
 
 本教程详细介绍如何以编程方式创建和发布知识库 (KB)，然后通过知识库来回答客户问题。 
 
 > [!div class="checklist"]
-* 创建知识库 
-* 查看创建状态
-* 训练和发布知识库
-* 获取终结点信息
-* 使用 Curl 查询知识库
+> * 创建知识库 
+> * 查看创建状态
+> * 训练和发布知识库
+> * 获取终结点信息
+> * 使用 Curl 查询知识库
 
 
 本快速入门调用了 QnA Maker API：

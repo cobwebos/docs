@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 8b1290c2030835af1435e9a21602d3d2334a6737
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: e66747cd350d10a5a66ec54b9aae9e9b485b0ba2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920024"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014502"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教程：通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
@@ -50,7 +50,7 @@ ms.locfileid: "41920024"
 
     |设置|值|
     |---|---|
-    |名称|myVirtualNetwork1|
+    |Name|myVirtualNetwork1|
     |地址空间|10.0.0.0/16|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup|
@@ -64,7 +64,7 @@ ms.locfileid: "41920024"
 
     |设置|值|
     |---|---|
-    |名称|myVirtualNetwork2|
+    |Name|myVirtualNetwork2|
     |地址空间|10.1.0.0/16|
     |资源组| 选择“使用现有”，然后选择“myResourceGroup”。|
     |子网地址范围|10.1.0.0/24|
@@ -80,7 +80,7 @@ ms.locfileid: "41920024"
 
     |设置|值|
     |---|---|
-    |名称|myVirtualNetwork1-myVirtualNetwork2|
+    |Name|myVirtualNetwork1-myVirtualNetwork2|
     |订阅| 选择订阅。|
     |虚拟网络|myVirtualNetwork2 - 若要选择 *myVirtualNetwork2* 虚拟网络，请依次选择“虚拟网络”、“myVirtualNetwork2”。 可以在相同区域或不同区域中选择虚拟网络。|
 
@@ -97,7 +97,7 @@ ms.locfileid: "41920024"
 
     |设置|值|
     |---|---|
-    |名称|myVirtualNetwork2-myVirtualNetwork1|
+    |Name|myVirtualNetwork2-myVirtualNetwork1|
     |虚拟网络|myVirtualNetwork1|
 
     “对等互连状态”为“已连接”。 Azure 还将 *myVirtualNetwork2-myVirtualNetwork1* 对等互连的对等互连状态从“已启动”更改为“已连接”。 直到两个虚拟网络的对等互连状态均为“已连接”时，虚拟网络对等互连才完全建立。 
@@ -114,13 +114,14 @@ ms.locfileid: "41920024"
 
     |设置|值|
     |---|---|
-    |名称|myVM1|
+    |Name|myVM1|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“使用现有”，然后选择“myResourceGroup”。|
     |位置| 选择“美国东部”。|
 4. 在“选择大小”下选择 VM 大小。
 5. 对于“设置”选择以下值，然后选择“确定”：
+
     |设置|值|
     |---|---|
     |虚拟网络| myVirtualNetwork1 - 如果尚未选择它，请选择“虚拟网络”，然后在“选择虚拟网络”下选择“myVirtualNetwork1”。|
@@ -136,7 +137,7 @@ ms.locfileid: "41920024"
 
 |设置|值|
 |---|---|
-|名称 | myVm2|
+|Name | myVm2|
 |虚拟网络 | myVirtualNetwork2|
 
 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。

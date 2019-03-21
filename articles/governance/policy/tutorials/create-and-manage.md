@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e49cffc5ba08d400c733ef7c211132c4909f9ef4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343555"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780280"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
@@ -87,32 +87,32 @@ ms.locfileid: "56343555"
       - 策略规则/条件，此示例中为 - VM SKU 大小等于 G 系列
       - 策略效果，此示例中为“拒绝”。
 
-    JSON 应如下所示。 将修改后的代码粘贴到 Azure 门户。
+   JSON 应如下所示。 将修改后的代码粘贴到 Azure 门户。
 
-    ```json
-    {
-        "policyRule": {
-            "if": {
-                "allOf": [{
-                        "field": "type",
-                        "equals": "Microsoft.Compute/virtualMachines"
-                    },
-                    {
-                        "field": "Microsoft.Compute/virtualMachines/sku.name",
-                        "like": "Standard_G*"
-                    }
-                ]
-            },
-            "then": {
-                "effect": "deny"
-            }
-        }
-    }
-    ```
+   ```json
+   {
+       "policyRule": {
+           "if": {
+               "allOf": [{
+                       "field": "type",
+                       "equals": "Microsoft.Compute/virtualMachines"
+                   },
+                   {
+                       "field": "Microsoft.Compute/virtualMachines/sku.name",
+                       "like": "Standard_G*"
+                   }
+               ]
+           },
+           "then": {
+               "effect": "deny"
+           }
+       }
+   }
+   ```
 
-    策略规则中的 *field* 属性必须采用以下值之一：Name、Type、Location、Tags 或某个别名。 例如，别名为 `"Microsoft.Compute/VirtualMachines/Size"`。
+   策略规则中的 *field* 属性必须采用以下值之一：Name、Type、Location、Tags 或某个别名。 例如，别名为 `"Microsoft.Compute/VirtualMachines/Size"`。
 
-    若要查看其他 Azure Policy 示例，请参阅 [Azure Policy 示例](../samples/index.md)。
+   若要查看其他 Azure Policy 示例，请参阅 [Azure Policy 示例](../samples/index.md)。
 
 1. 选择“保存”。
 

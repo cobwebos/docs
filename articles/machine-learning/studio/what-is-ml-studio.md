@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 44f2c24f1fe53b6fadabf23f03a6feda75c87883
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 570f0a825f679ec5f0cc4c62b0608ec517148161
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738277"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893996"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
@@ -40,7 +40,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>下载机器学习工作室概述示意图
 下载 **Microsoft Azure 机器学习工作室功能概述** 示意图，并获取机器学习工作室功能的高级视图。 若要随时随地查看，可以打印卡片大小（11 x 17 英寸）的示意图。
 
-**此处下载关系图：[Microsoft Azure 机器学习工作室功能概述](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**此处下载关系图：[Microsoft Azure 机器学习工作室功能概述](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 ![Microsoft Azure Machine Learning Studio Capabilities Overview](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>机器学习工作室入门
@@ -61,7 +61,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * **设置** - 用于配置帐户和资源的设置集合。
 
 ### <a name="gallery"></a>库
-单击“库”就会转到 [Azure AI 库](http://gallery.azure.ai/)。 社区数据科研人员和开发人员可以在该库中共享使用 Cortana Intelligence Suite 组件创建的解决方案。
+单击“库”就会转到 [Azure AI 库](https://gallery.azure.ai/)。 社区数据科研人员和开发人员可以在该库中共享使用 Cortana Intelligence Suite 组件创建的解决方案。
 
 有关该库的详细信息，请参阅[共享和发现 Azure AI 库中的解决方案](gallery-how-to-use-contribute-publish.md)。
 

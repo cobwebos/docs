@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 6a365ef5421de3ceb31c5cc78a424f786f174ab3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 99b7f05304b48b7d885a80705d05fbe24854150f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080635"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>通过适用于 C# 的必应实体搜索 SDK 来发送搜索请求
 
@@ -26,7 +26,7 @@ ms.locfileid: "55861912"
 
 * 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
 * [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
-* 如果使用的是 Linux/MacOS，则可使用 [Mono](http://www.mono-project.com/) 运行此应用程序。
+* 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 * [必应新闻搜索 SDK NuGet 程序包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0)。 安装此程序包还会安装以下项：
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure
@@ -52,13 +52,13 @@ ms.locfileid: "55861912"
 
 ## <a name="create-a-client-and-send-a-search-request"></a>创建客户端并发送搜索请求
 
-2. 创建新的搜索客户端。 通过创建新的 `ApiKeyServiceClientCredentials` 添加你的订阅密钥。
+1. 创建新的搜索客户端。 通过创建新的 `ApiKeyServiceClientCredentials` 添加你的订阅密钥。
 
     ```csharp
     var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-3. 使用客户端的 `Entities.Search()` 函数来搜索查询：
+1. 使用客户端的 `Entities.Search()` 函数来搜索查询：
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");

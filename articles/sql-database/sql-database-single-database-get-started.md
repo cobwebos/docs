@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 64d16073062c0fd7f0b97a64950ceab9efc0eacf
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 5aeb84e5086fb0cf5c30e175ad419ee70bed55ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984877"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075179"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库
 
@@ -42,8 +42,8 @@ ms.locfileid: "56984877"
    - **资源组**：选择“新建”，键入 myResourceGroup，然后选择“确定”。
    - **选择源**：下拉列表并选择“示例(AdventureWorksLT)”。
 
-    > [!IMPORTANT]
-    > 确保选择“示例(AdventureWorksLT)”数据，这样就可以轻松地按照本指南以及使用此数据的其他 Azure SQL 数据库快速入门进行操作。
+     > [!IMPORTANT]
+     > 确保选择“示例(AdventureWorksLT)”数据，这样就可以轻松地按照本指南以及使用此数据的其他 Azure SQL 数据库快速入门进行操作。
   
    ![创建单一数据库](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "56984877"
    > [!NOTE]
    > 本快速入门使用的是[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)，但[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)也可用。
    > [!IMPORTANT]
-   > 除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：中国东部、中国北部、德国中部、德国东北部、美国中西部、US DoD 区域和美国政府中部。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+   > 除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：中国东部、中国北部、德国中部、德国东北部、美国中西部、US DoD 区域和美国政府中部。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
 
 8. 对于本快速入门，请选择“标准”服务层，然后使用滑块选择“10 DTU (S0)”和 1 GB 存储。
 9. 选择“应用”。  
@@ -76,9 +76,9 @@ ms.locfileid: "56984877"
 
 10. 在“SQL 数据库”窗体中，选择“创建”来部署和预配资源组、服务器和数据库。
 
-   部署需要几分钟时间。 可在工具栏上选择“通知”，以监视部署过程。
+    部署需要几分钟时间。 可在工具栏上选择“通知”，以监视部署过程。
 
-   ![通知](./media/sql-database-get-started-portal/notification.png)
+    ![通知](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="query-the-database"></a>查询数据库
 

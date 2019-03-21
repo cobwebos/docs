@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 246ee5f8360869c1b0f901ee54d56e017ac8aeb7
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 36815010c3e8fccc2ec24ce344071d0836da219b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649673"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097451"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 
@@ -221,7 +221,7 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时可用�
 
 1. 打开 WebsiteSqlDeploy.json 文件，在存储帐户资源后但在资源节的右 `]` 前添加以下 JSON。
 
-  ```json
+   ```json
     ,{
       "properties": {
         "lenses": {
@@ -296,7 +296,7 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时可用�
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-  ```
+   ```
 
 2. 重新部署资源组。 在 Azure 门户中查看仪表板，可以看到，共享的仪表板已添加到所选列表。
 

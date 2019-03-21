@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 8f8bdb4d601e35cf489c1c4c1db3574fb8c8f18f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0c441974b40f35bcc39aec05e5ffe66b68e46c10
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730779"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542261"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>教程：使用时序见解直观显示和分析 Azure 数字孪生空间中的事件
 
@@ -160,7 +160,7 @@ ms.locfileid: "56730779"
 
 如果不希望继续探索 Azure 数字孪生，可以删除本教程中创建的资源：
 
-1. 在 [Azure 门户](http://portal.azure.com)的左菜单中依次选择“所有资源”、数字孪生资源组、“删除”。
+1. 在 [Azure 门户](https://portal.azure.com)的左菜单中依次选择“所有资源”、数字孪生资源组、“删除”。
 
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。

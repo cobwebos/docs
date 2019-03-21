@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 50790e50602fbc8d302a67ea9963a4e492ce2f0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467326"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009759"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教程：使用流量管理器控制加权终结点的流量路由
 
@@ -54,12 +54,13 @@ ms.locfileid: "54467326"
 
     |设置|值|
     |---|---|
-    |名称|输入 **myIISVMEastUS**。|
+    |Name|输入 **myIISVMEastUS**。|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“新建”，然后输入 **myResourceGroupTM1**。|
     |位置| 选择“美国东部”。|
     |||
+
 4. 在“选择大小”下选择 VM 大小。
 5. 对于“设置”，请选择以下值，然后选择“确定”：
     
@@ -69,6 +70,7 @@ ms.locfileid: "54467326"
     |网络安全组|选择“基本”。 在“选择公共入站端口”下拉列表中选择“HTTP”和“RDP”。 |
     |启动诊断|选择“已禁用”。|
     |||
+
 6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署。
 
 7. 再次完成步骤 1-6，并做出以下更改：
@@ -80,6 +82,7 @@ ms.locfileid: "54467326"
     |VM 名称 | 输入 **myIISVMWEurope**。|
     |虚拟网络 | 选择“虚拟网络”。 在“创建虚拟网络”中，输入“myVNet2”作为“名称”。 对于“子网”，请输入“mySubnet”。|
     |||
+
 8. 创建 VM 可能需要数分钟的时间。 在两个 VM 创建好之前，不要继续执行其他步骤。
 
 ![创建 VM](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -129,7 +132,7 @@ ms.locfileid: "54467326"
 
     |设置|值|
     |---|---|
-    |名称|输入 **myVMEastUS**。|
+    |Name|输入 **myVMEastUS**。|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“使用现有”，然后选择“myResourceGroupTM1”。|
@@ -137,6 +140,7 @@ ms.locfileid: "54467326"
 
 4. 在“选择大小”下选择 VM 大小。
 5. 对于“设置”，请选择以下值，然后选择“确定”：
+
     |设置|值|
     |---|---|
     |虚拟网络| 选择“虚拟网络”。 在“创建虚拟网络”中，输入“myVNet3”作为“名称”。 对于子网，请输入“mySubnet”。|
@@ -155,7 +159,7 @@ ms.locfileid: "54467326"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 名称                   | 输入 trafficmanager.net 区域中的唯一名称。 它会生成 DNS 名称 trafficmanager.net，用于访问流量管理器配置文件。                                   |
+    | Name                   | 输入 trafficmanager.net 区域中的唯一名称。 它会生成 DNS 名称 trafficmanager.net，用于访问流量管理器配置文件。                                   |
     | 路由方法          | 选择**权重**路由方法。                                       |
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择“使用现有”，然后选择“myResourceGroupTM1”。 |
@@ -173,8 +177,8 @@ ms.locfileid: "54467326"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 类型                    | 输入 Azure 终结点。                                   |
-    | 名称           | 输入 **myEastUSEndpoint**。                                        |
+    | Type                    | 输入 Azure 终结点。                                   |
+    | Name           | 输入 **myEastUSEndpoint**。                                        |
     | 目标资源类型           | 选择“公共 IP 地址”。                          |
     | 目标资源          | 选择一个公共 IP 地址，以显示同一订阅下具有公共 IP 地址的资源的列表。 在“资源”中，选择名为 **myIISVMEastUS-ip** 的公共 IP 地址。 这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |  重量      | 输入 **100**。        |

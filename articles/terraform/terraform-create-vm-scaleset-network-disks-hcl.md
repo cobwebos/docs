@@ -2,18 +2,18 @@
 title: 使用 Terraform 创建 Azure 虚拟机规模集
 description: 有关使用 Terraform 配置 Azure 虚拟机规模集（配有虚拟网络和托管的附加磁盘）并对其进行版本控制的教程
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 虚拟机, Azure, 规模集, 网络, 存储, 模块
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 7d23e9113b83970d0cfee8f96989faa2c2760421
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 21fea65ed7056afa57d9acbacb2457bb4d09cff5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745820"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002317"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>使用 Terraform 创建 Azure 虚拟机规模集
 
@@ -41,7 +41,7 @@ ms.locfileid: "55745820"
 
 ## <a name="create-the-directory-structure"></a>创建目录结构
 
-1. 浏览到 [Azure 门户](http://portal.azure.com)。
+1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
 1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
 
@@ -80,25 +80,25 @@ ms.locfileid: "55745820"
 
 1. 在编辑器中粘贴以下代码：
 
-  ```JSON
-  variable "location" {
+   ```JSON
+   variable "location" {
     description = "The location where resources will be created"
-  }
+   }
 
-  variable "tags" {
+   variable "tags" {
     description = "A map of the tags to use for the resources that are deployed"
     type        = "map"
 
     default = {
       environment = "codelab"
     }
-  }
+   }
 
-  variable "resource_group_name" {
+   variable "resource_group_name" {
     description = "The name of the resource group in which the resources will be created"
     default     = "myResourceGroup"
-  }
-  ```
+   }
+   ```
 
 1. 按 Esc 键退出插入模式。
 
@@ -122,13 +122,13 @@ ms.locfileid: "55745820"
 1. 按 I 键进入插入模式。
 
 1. 在编辑器中粘贴以下代码，以公开虚拟机的完全限定域名 (FQDN)。
-:
+   :
 
-  ```JSON
+   ```JSON
     output "vmss_public_ip" {
         value = "${azurerm_public_ip.vmss.fqdn}"
     }
-  ```
+   ```
 
 1. 按 Esc 键退出插入模式。
 
@@ -157,78 +157,78 @@ ms.locfileid: "55745820"
 
 1. 在文件的末尾粘贴以下代码，以公开虚拟机的完全限定域名 (FQDN)。
 
-  ```JSON
-  resource "azurerm_resource_group" "vmss" {
+   ```JSON
+   resource "azurerm_resource_group" "vmss" {
     name     = "${var.resource_group_name}"
     location = "${var.location}"
     tags     = "${var.tags}"
-  }
+   }
 
-  resource "random_string" "fqdn" {
+   resource "random_string" "fqdn" {
     length  = 6
     special = false
     upper   = false
     number  = false
-  }
+   }
 
-  resource "azurerm_virtual_network" "vmss" {
+   resource "azurerm_virtual_network" "vmss" {
     name                = "vmss-vnet"
     address_space       = ["10.0.0.0/16"]
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.vmss.name}"
     tags                = "${var.tags}"
-  }
+   }
 
-  resource "azurerm_subnet" "vmss" {
+   resource "azurerm_subnet" "vmss" {
     name                 = "vmss-subnet"
     resource_group_name  = "${azurerm_resource_group.vmss.name}"
     virtual_network_name = "${azurerm_virtual_network.vmss.name}"
     address_prefix       = "10.0.2.0/24"
-  }
+   }
 
-  resource "azurerm_public_ip" "vmss" {
+   resource "azurerm_public_ip" "vmss" {
     name                         = "vmss-public-ip"
     location                     = "${var.location}"
     resource_group_name          = "${azurerm_resource_group.vmss.name}"
     allocation_method = "Static"
     domain_name_label            = "${random_string.fqdn.result}"
     tags                         = "${var.tags}"
-  }
-  ```
+   }
+   ```
 
 1. 按 Esc 键退出插入模式。
 
 1. 保存文件，然后输入以下命令退出 vi 编辑器：
 
-  ```bash
-  :wq
-  ```
+   ```bash
+   :wq
+   ```
 
 ## <a name="provision-the-network-infrastructure"></a>预配网络基础结构
 在创建了配置文件 (.tf) 的目录中使用 Azure Cloud Shell 执行以下步骤：
 
 1. 初始化 Terraform。
 
-  ```bash
-  terraform init
-  ```
+   ```bash
+   terraform init
+   ```
 
 1. 运行以下命令，在 Azure 中部署定义的基础结构。
 
-  ```bash
-  terraform apply
-  ```
+   ```bash
+   terraform apply
+   ```
 
-  由于 `variables.tf` 中定义了 **location** 变量，但从未设置该变量的值，因此，Terraform 会提示输入“location”值。 可以输入任何有效位置（例如“West US”），然后按 Enter。 （请将包含空格的任何值括在括号中。）
+   由于 `variables.tf` 中定义了 **location** 变量，但从未设置该变量的值，因此，Terraform 会提示输入“location”值。 可以输入任何有效位置（例如“West US”），然后按 Enter。 （请将包含空格的任何值括在括号中。）
 
 1. Terraform 会列显 `output.tf` 文件中定义的输出。 如以下屏幕截图所示，FQDN 采用 &lt;id>.&lt;location>.cloudapp.azure.com 格式。 id 值是一个计算值，location 是运行 Terraform 时提供的值。
 
-  ![公共 IP 地址的虚拟机规模集完全限定域名](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
+   ![公共 IP 地址的虚拟机规模集完全限定域名](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
 1. 在 Azure 门户上的主菜单中，选择“资源组”。
 
 1. 在“资源组”选项卡上，选择“myResourceGroup”查看 Terraform 创建的资源。
-  ![虚拟机规模集网络资源](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-resources.png)
+   ![虚拟机规模集网络资源](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-resources.png)
 
 ## <a name="add-a-virtual-machine-scale-set"></a>添加虚拟机规模集
 
@@ -238,22 +238,22 @@ ms.locfileid: "55745820"
 - Azure 后端地址池，并将其分配到负载均衡器
 - 运行状况探测端口，供应用程序使用并在负载均衡器上配置
 - 虚拟机规模集，位于本文前面部署的 VNET 上运行的负载均衡器后面
-- 使用 [cloud-init](http://cloudinit.readthedocs.io/en/latest/) 在虚拟机规模集节点上添加 [Nginx](http://nginx.org/)。
+- 使用 [cloud-init](https://cloudinit.readthedocs.io/en/latest/) 在虚拟机规模集节点上添加 [Nginx](https://nginx.org/)。
 
 在 Cloud Shell 中执行以下步骤：
 
 1. 打开 `vmss.tf` 配置文件。
 
-  ```bash
-  vi vmss.tf
-  ```
+   ```bash
+   vi vmss.tf
+   ```
 
 1. 转到文件末尾，并按 A 键进入追加模式。
 
 1. 在文件的末尾粘贴以下代码：
 
-  ```JSON
-  resource "azurerm_lb" "vmss" {
+   ```JSON
+   resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.vmss.name}"
@@ -264,22 +264,22 @@ ms.locfileid: "55745820"
     }
 
     tags = "${var.tags}"
-  }
+   }
 
-  resource "azurerm_lb_backend_address_pool" "bpepool" {
+   resource "azurerm_lb_backend_address_pool" "bpepool" {
     resource_group_name = "${azurerm_resource_group.vmss.name}"
     loadbalancer_id     = "${azurerm_lb.vmss.id}"
     name                = "BackEndAddressPool"
-  }
+   }
 
-  resource "azurerm_lb_probe" "vmss" {
+   resource "azurerm_lb_probe" "vmss" {
     resource_group_name = "${azurerm_resource_group.vmss.name}"
     loadbalancer_id     = "${azurerm_lb.vmss.id}"
     name                = "ssh-running-probe"
     port                = "${var.application_port}"
-  }
+   }
 
-  resource "azurerm_lb_rule" "lbnatrule" {
+   resource "azurerm_lb_rule" "lbnatrule" {
       resource_group_name            = "${azurerm_resource_group.vmss.name}"
       loadbalancer_id                = "${azurerm_lb.vmss.id}"
       name                           = "http"
@@ -289,9 +289,9 @@ ms.locfileid: "55745820"
       backend_address_pool_id        = "${azurerm_lb_backend_address_pool.bpepool.id}"
       frontend_ip_configuration_name = "PublicIPAddress"
       probe_id                       = "${azurerm_lb_probe.vmss.id}"
-  }
+   }
 
-  resource "azurerm_virtual_machine_scale_set" "vmss" {
+   resource "azurerm_virtual_machine_scale_set" "vmss" {
     name                = "vmscaleset"
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.vmss.name}"
@@ -348,8 +348,8 @@ ms.locfileid: "55745820"
     }
 
     tags = "${var.tags}"
-}
-  ```
+   }
+   ```
 
 1. 按 Esc 键退出插入模式。
 
@@ -369,77 +369,77 @@ ms.locfileid: "55745820"
 
 1. 在编辑器中粘贴以下代码：
 
-  ```JSON
-  #cloud-config
-  packages:
+   ```JSON
+   #cloud-config
+   packages:
     - nginx
-  ```
+   ```
 
 1. 按 Esc 键退出插入模式。
 
 1. 保存文件，然后输入以下命令退出 vi 编辑器：
 
-    ```bash
-    :wq
-    ```
+     ```bash
+     :wq
+     ```
 
 1. 打开 `variables.tf` 配置文件。
 
-  ```bash
-  vi variables.tf
-  ```
+    ```bash
+    vi variables.tf
+    ```
 
 1. 转到文件末尾，并按 A 键进入追加模式。
 
 1. 将以下代码粘贴到文件末尾，以自定义部署：
 
-  ```JSON
-  variable "application_port" {
-      description = "The port that you want to expose to the external load balancer"
-      default     = 80
-  }
+    ```JSON
+    variable "application_port" {
+       description = "The port that you want to expose to the external load balancer"
+       default     = 80
+    }
 
-  variable "admin_user" {
-      description = "User name to use as the admin account on the VMs that will be part of the VM Scale Set"
-      default     = "azureuser"
-  }
+    variable "admin_user" {
+       description = "User name to use as the admin account on the VMs that will be part of the VM Scale Set"
+       default     = "azureuser"
+    }
 
-  variable "admin_password" {
-      description = "Default password for admin account"
-  }
-  ```
+    variable "admin_password" {
+       description = "Default password for admin account"
+    }
+    ```
 
 1. 按 Esc 键退出插入模式。
 
 1. 保存文件，然后输入以下命令退出 vi 编辑器：
 
-    ```bash
-    :wq
-    ```
+     ```bash
+     :wq
+     ```
 
 1. 创建 Terraform 计划，以可视化虚拟机规模集部署。 （需要指定所选的密码以及资源的位置。）
 
-  ```bash
-  terraform plan
-  ```
+    ```bash
+    terraform plan
+    ```
 
-  命令的输出应如以下屏幕截图所示：
+    命令的输出应如以下屏幕截图所示：
 
-  ![创建虚拟机规模集后的输出](./media/terraform-create-vm-scaleset-network-disks-hcl/add-mvss-plan.png)
+    ![创建虚拟机规模集后的输出](./media/terraform-create-vm-scaleset-network-disks-hcl/add-mvss-plan.png)
 
 1. 在 Azure 中部署新资源。
 
-  ```bash
-  terraform apply
-  ```
+    ```bash
+    terraform apply
+    ```
 
-  命令的输出应如以下屏幕截图所示：
+    命令的输出应如以下屏幕截图所示：
 
-  ![Terraform 虚拟机规模集资源组](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
+    ![Terraform 虚拟机规模集资源组](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
 1. 打开浏览器并连接到该命令返回的 FQDN。
 
-  ![浏览到 FQDN 后的结果](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
+    ![浏览到 FQDN 后的结果](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
 ## <a name="add-an-ssh-jumpbox"></a>添加 SSH jumpbox
 SSH *jumpbox* 是为了访问网络中的其他服务器而“跳转”的单个服务器。 在本步骤中，配置以下资源：
@@ -450,25 +450,25 @@ SSH *jumpbox* 是为了访问网络中的其他服务器而“跳转”的单个
 
 1. 打开 `vmss.tf` 配置文件。
 
-  ```bash
-  vi vmss.tf
-  ```
+   ```bash
+   vi vmss.tf
+   ```
 
 1. 转到文件末尾，并按 A 键进入追加模式。
 
 1. 在文件的末尾粘贴以下代码：
 
-  ```JSON
-  resource "azurerm_public_ip" "jumpbox" {
+   ```JSON
+   resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
     location                     = "${var.location}"
     resource_group_name          = "${azurerm_resource_group.vmss.name}"
     allocation_method = "Static"
     domain_name_label            = "${random_string.fqdn.result}-ssh"
     tags                         = "${var.tags}"
-  }
+   }
 
-  resource "azurerm_network_interface" "jumpbox" {
+   resource "azurerm_network_interface" "jumpbox" {
     name                = "jumpbox-nic"
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.vmss.name}"
@@ -481,9 +481,9 @@ SSH *jumpbox* 是为了访问网络中的其他服务器而“跳转”的单个
     }
 
     tags = "${var.tags}"
-  }
+   }
 
-  resource "azurerm_virtual_machine" "jumpbox" {
+   resource "azurerm_virtual_machine" "jumpbox" {
     name                  = "jumpbox"
     location              = "${var.location}"
     resource_group_name   = "${azurerm_resource_group.vmss.name}"
@@ -515,24 +515,24 @@ SSH *jumpbox* 是为了访问网络中的其他服务器而“跳转”的单个
     }
 
     tags = "${var.tags}"
-  }
-  ```
+   }
+   ```
 
 1. 打开 `output.tf` 配置文件。
 
-  ```bash
-  vi output.tf
-  ```
+   ```bash
+   vi output.tf
+   ```
 
 1. 转到文件末尾，并按 A 键进入追加模式。
 
 1. 将以下代码粘贴到文件的末尾，以在部署完成后显示 jumpbox 的主机名：
 
-  ```
-  output "jumpbox_public_ip" {
+   ```
+   output "jumpbox_public_ip" {
       value = "${azurerm_public_ip.jumpbox.fqdn}"
-  }
-  ```
+   }
+   ```
 
 1. 按 Esc 键退出插入模式。
 
@@ -544,9 +544,9 @@ SSH *jumpbox* 是为了访问网络中的其他服务器而“跳转”的单个
 
 1. 部署 jumpbox。
 
-  ```bash
-  terraform apply
-  ```
+   ```bash
+   terraform apply
+   ```
 
 完成部署后，资源组的内容应与以下屏幕截图类似：
 

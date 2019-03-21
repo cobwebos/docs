@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/22/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 97123ec795353073b912bd83e0abb45e23549a75
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b9c89b6cb6dbc6cb217be671eb0e52c0416811ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889839"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>使用 SDK/工具通过媒体服务 v3 API 开始进行开发
 
@@ -95,7 +95,7 @@ AMSE 是一个开源项目，由社区提供支持（可以将问题报告给 ht
 - [使用 DRM 动态加密和许可证传送服务 - .NET](protect-with-drm.md)
 - [从现有策略获取签名密钥 - .NET](get-content-key-policy-dotnet-howto.md)
 - [使用媒体服务创建筛选器 - .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [使用媒体服务 v3 的 Azure Functions v2 的高级视频点播示例](http://aka.ms/ams3functions)
+- [使用媒体服务 v3 的 Azure Functions v2 的高级视频点播示例](https://aka.ms/ams3functions)
 
 ## <a name="java"></a>Java
 

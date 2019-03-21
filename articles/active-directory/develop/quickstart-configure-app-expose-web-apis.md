@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 940ca126eb18b81fd31f1ee2876948563e9d97af
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188370"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080839"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>快速入门：将应用程序配置为公开 Web API（预览版）
 
@@ -106,10 +106,10 @@ ms.locfileid: "56188370"
       }
       ```
 
-  > [!NOTE]
-  > 必须通过编程方式或 GUID 生成工具（例如 [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)）来生成 `id` 值。 `id` 表示 Web API 公开的范围的唯一标识符。 为客户端配置访问 Web API 的适当权限后，Azure AD 将为它颁发 OAuth 2.0 访问令牌。 当客户端调用 Web API 时，会出示该访问令牌，其中的范围 (scp) 声明设置为客户端应用程序注册中请求的权限。
-  >
-  > 以后可以根据需要公开其他范围。 请考虑 Web API 可能要公开与各种不同功能关联的多个范围。 在运行时，资源可以通过评估所收到的 OAuth 2.0 访问令牌中的范围 (`scp`) 声明，来控制对 Web API 的访问。
+   > [!NOTE]
+   > 必须通过编程方式或 GUID 生成工具（例如 [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)）来生成 `id` 值。 `id` 表示 Web API 公开的范围的唯一标识符。 为客户端配置访问 Web API 的适当权限后，Azure AD 将为它颁发 OAuth 2.0 访问令牌。 当客户端调用 Web API 时，会出示该访问令牌，其中的范围 (scp) 声明设置为客户端应用程序注册中请求的权限。
+   >
+   > 以后可以根据需要公开其他范围。 请考虑 Web API 可能要公开与各种不同功能关联的多个范围。 在运行时，资源可以通过评估所收到的 OAuth 2.0 访问令牌中的范围 (`scp`) 声明，来控制对 Web API 的访问。
 
 1. 完成后，单击“保存”。 现在，Web API 已配置为可供目录中的其他应用程序使用。
 1. 按步骤[验证 Web API 是否已公开给其他应用程序](#verify-the-web-api-is-exposed-to-other-applications)。

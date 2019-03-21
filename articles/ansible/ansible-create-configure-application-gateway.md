@@ -1,19 +1,19 @@
 ---
 title: 使用 Ansible 通过 Azure 应用程序网关管理 Web 流量
 description: 了解如何使用 Ansible 创建并配置 Azure 应用程序网关来管理 Web 流量
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, playbook, 应用程序网关, 负载均衡器, web 流量
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: 43e8681e5266f113d466a138abeeda77aff1c18b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 83f21573af7ec523acc376c4b3364cdcfb47f96f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052251"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792134"
 ---
 # <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>使用 Ansible 通过 Azure 应用程序网关管理 Web 流量
 

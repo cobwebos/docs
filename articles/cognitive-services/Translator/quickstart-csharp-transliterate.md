@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 00a59330d696da7f933c5354f31fccc84a7fabf6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e8da13916fbbf711304f636d9c9ccaf95c48c99a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733582"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864688"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>快速入门：使用 C# 通过文本翻译 API 对文本进行直译
 
@@ -159,7 +159,7 @@ dotnet run
 [
     {
         "script": "latn",
-        "text": "konnnichiha"
+        "text": "konnichiwa"
     }
 ]
 ```

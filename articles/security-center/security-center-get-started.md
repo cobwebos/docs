@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3442ced47e50485da1ffdd475d9649243b1c8583
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 37f85afbdd55d3f14638f0833f69bb1992770449
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116688"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086065"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>快速入门：将 Azure 订阅加入安全中心标准层
 Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁防护。 免费层只能为 Azure 资源提供有限的安全性，而标准层将这些功能扩展到了本地和其他云。 借助安全中心标准层，可以查找和修复安全漏洞、应用访问控制和应用程序控制来阻止恶意活动、使用分析和智能功能检测威胁，以及在受到攻击时迅速做出响应。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
@@ -37,7 +37,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 1. 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
 2. 在 **Microsoft Azure** 菜单上选择“安全中心”。 此时会打开“安全中心 - 概览”。
 
- ![安全中心概述][2]
+   ![安全中心概述][2]
 
 “安全中心 - 概述”提供统一的视图用于查看混合云工作负荷的安全局势，可让你发现和评估工作负荷的安全性，以及识别和缓解风险。 安全中心会自动启用以前尚未由你或其他订阅用户加入到免费层的所有 Azure 订阅。
 
@@ -55,13 +55,13 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 
 1. 在“安全中心”主菜单下，选择“入门”。
  
-  ![入门][4]
+   ![入门][4]
 
 2. 在“升级”下，安全中心将列出符合载入条件的订阅和工作区。 
    - 可以单击可展开的“申请试用”来查看所有订阅和工作区的列表及其试用资格状态。
    -    你可以升级没有资格试用的订阅和工作区。
    -    可以选择符合试用条件的工作区和订阅来开始试用。
-3.  单击“开始试用”在所选订阅上开始试用。
+3. 单击“开始试用”在所选订阅上开始试用。
 
 
   ![安全警报][9]

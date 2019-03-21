@@ -1,19 +1,19 @@
 ---
 title: 使用 Ansible 将应用程序部署到 Azure 中的虚拟机规模集
 description: 了解如何使用 Ansible 配置虚拟机规模集并将应用程序部署到 Azure 中的虚拟机规模集上
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集, vmss
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 540634d68f28aadeed308bc6cc84f459b79385e2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2214dd9505dff86ac26f01967a360140dee0069f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729281"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791726"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>使用 Ansible 将应用程序部署到 Azure 中的虚拟机规模集
 使用 Ansible 可以在环境中自动部署和配置资源。 可以使用 Ansible 将应用程序部署到 Azure。 本文介绍如何将 Java 应用程序部署到 Azure 虚拟机规模集 (VMSS)。

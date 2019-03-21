@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: ff1d873b44f91f64a114a6da01091bbd3aa01663
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8131806aa741c3f2c347599f857f45ade392d90e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424806"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451631"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>教程：将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure PowerShell 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。 
@@ -112,15 +112,10 @@ ms.locfileid: "54424806"
 ### <a name="windows-powershell"></a>Windows PowerShell
 
 #### <a name="install-azure-powershell"></a>安装 Azure PowerShell
-安装最新版的 Azure PowerShell（如果尚未在计算机上安装）。 
 
-1. 访问 [Azure SDK 下载](https://azure.microsoft.com/downloads/)。 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. 在“命令行工具”下的“PowerShell”部分选择“Windows 安装”。 
-
-1. 若要安装 Azure PowerShell，请运行 MSI 文件。 
-
-有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。 
+安装最新版的 Azure PowerShell（如果尚未在计算机上安装）。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps)。 
 
 #### <a name="log-in-to-powershell"></a>登录到 PowerShell
 
@@ -131,13 +126,13 @@ ms.locfileid: "54424806"
 1. 运行以下命令，然后输入用于登录 Azure 门户的 Azure 用户名和密码：
        
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```        
 
 1. 如果有多个 Azure 订阅，请运行以下命令，选择要使用的订阅。 请将 **SubscriptionId** 替换为自己的 Azure 订阅的 ID：
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
@@ -151,7 +146,7 @@ ms.locfileid: "54424806"
 1. 若要创建 Azure 资源组，请运行以下命令： 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
 
     如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令。
@@ -171,10 +166,10 @@ ms.locfileid: "54424806"
     $location = "East US"
     ```  
 
-1. 若要创建数据工厂，请运行以下 `Set-AzureRmDataFactoryV2` cmdlet： 
+1. 若要创建数据工厂，请运行以下 `Set-AzDataFactoryV2` cmdlet： 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 > [!NOTE]
@@ -201,7 +196,7 @@ ms.locfileid: "54424806"
 1. 创建自我托管的集成运行时。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ``` 
     下面是示例输出：
 
@@ -217,7 +212,7 @@ ms.locfileid: "54424806"
 1. 若要检索所创建的 Integration Runtime 的状态，请运行以下命令：
 
     ```powershell
-   Get-AzureRmDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
+   Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
     ```
 
     下面是示例输出：
@@ -242,7 +237,7 @@ ms.locfileid: "54424806"
 1. 若要检索可将自承载 Integration Runtime 注册到云中数据工厂服务的身份验证密钥，请运行以下命令。 复制其中一个密钥（去除引号），以便注册将在下一步安装到计算机上的自承载 Integration Runtime。 
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
+    Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
     ```
     
     下面是示例输出：
@@ -345,10 +340,10 @@ ms.locfileid: "54424806"
 
 1. 在 PowerShell 中切换到 *C:\ADFv2Tutorial* 文件夹。
 
-1. 若要创建链接服务 AzureStorageLinkedService，请运行以下 `Set-AzureRmDataFactoryV2LinkedService` cmdlet： 
+1. 若要创建链接服务 AzureStorageLinkedService，请运行以下 `Set-AzDataFactoryV2LinkedService` cmdlet： 
 
    ```powershell
-   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+   Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
    ```
 
    下面是示例输出：
@@ -423,17 +418,17 @@ ms.locfileid: "54424806"
     > - 保存文件之前，请将 **\<servername>**、**\<databasename>**、**\<username>** 和 **\<password>** 替换为 SQL Server 实例的值。
     > - 如需在用户帐户或服务器名称中使用反斜杠 (\\)，请在其前面加上转义字符 (\\)。 例如，使用 *mydomain\\\\myuser*。 
 
-1. 若要加密敏感数据（用户名、密码等），请运行 `New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential` cmdlet。  
+1. 若要加密敏感数据（用户名、密码等），请运行 `New-AzDataFactoryV2LinkedServiceEncryptedCredential` cmdlet。  
     这种加密可确保使用数据保护应用程序编程接口 (DPAPI) 加密凭据。 加密的凭据存储在自承载 Integration Runtime 节点本地（本地计算机）。 可将输出的有效负载重定向到包含已加密凭据的另一个 JSON 文件（在本例中为 *encryptedLinkedService.json*）。
     
    ```powershell
-   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+   New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
 1. 运行以下命令，创建 EncryptedSqlServerLinkedService：
 
    ```powershell
-   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
+   Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
    ```
 
 
@@ -475,10 +470,10 @@ ms.locfileid: "54424806"
     }
     ```
 
-1. 若要创建数据集 SqlServerDataset，请运行 `Set-AzureRmDataFactoryV2Dataset` cmdlet。
+1. 若要创建数据集 SqlServerDataset，请运行 `Set-AzDataFactoryV2Dataset` cmdlet。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
     ```
 
     下面是示例输出：
@@ -517,10 +512,10 @@ ms.locfileid: "54424806"
     }
     ```
 
-1. 若要创建数据集 AzureBlobDataset，请运行 `Set-AzureRmDataFactoryV2Dataset` cmdlet。
+1. 若要创建数据集 AzureBlobDataset，请运行 `Set-AzDataFactoryV2Dataset` cmdlet。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
     ```
 
     下面是示例输出：
@@ -572,10 +567,10 @@ ms.locfileid: "54424806"
     }
     ```
 
-1. 若要创建管道 SQLServerToBlobPipeline，请运行 `Set-AzureRmDataFactoryV2Pipeline` cmdlet。
+1. 若要创建管道 SQLServerToBlobPipeline，请运行 `Set-AzDataFactoryV2Pipeline` cmdlet。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
     ```
 
     下面是示例输出：
@@ -592,7 +587,7 @@ ms.locfileid: "54424806"
 针对 SQLServerToBlobPipeline 管道启动管道运行，并捕获管道运行 ID，以便将来进行监视。
 
 ```powershell
-$runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'SQLServerToBlobPipeline'
+$runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'SQLServerToBlobPipeline'
 ```
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
@@ -601,7 +596,7 @@ $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -
 
     ```powershell
     while ($True) {
-        $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+        $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
         if (($result | Where-Object { $_.Status -eq "InProgress" } | Measure-Object).count -ne 0) {
             Write-Host "Pipeline run status: In Progress" -foregroundcolor "Yellow"

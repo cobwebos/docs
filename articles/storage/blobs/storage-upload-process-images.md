@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 01404c89665ebfea62e7bda0e7566289bb15f2ae
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7d06d23af8d4d4f0282f6eb743c0f47dba80e3f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300952"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58015307"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
@@ -258,7 +258,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 在示例代码中，`post` 路由负责将图像上传到 Blob 容器中。 此路由使用模块来帮助处理上传：
 
 - [multer](https://github.com/expressjs/multer) 为路由处理程序实施上传策略。
-- [into-stream](https://github.com/sindresorhus/into-stream) 将缓冲区转换成 [createBlockBlobFromStream] 所需要的流。(http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)
+- [into-stream](https://github.com/sindresorhus/into-stream) 将缓冲区转换成 [createBlockBlobFromStream] 所需要的流。(https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)
 
 将文件发送到路由时，文件的内容仍保留在内存中，直至文件上传到 Blob 容器。
 
@@ -322,7 +322,7 @@ router.post('/', uploadStrategy, (req, res) => {
 在示例代码中，`post` 路由负责将图像上传到 Blob 容器中。 此路由使用模块来帮助处理上传：
 
 - [multer](https://github.com/expressjs/multer) 为路由处理程序实施上传策略。
-- [into-stream](https://github.com/sindresorhus/into-stream) 将缓冲区转换成 [createBlockBlobFromStream](http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html) 所需要的流。
+- [into-stream](https://github.com/sindresorhus/into-stream) 将缓冲区转换成 [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html) 所需要的流。
 
 将文件发送到路由时，文件的内容仍保留在内存中，直至文件上传到 Blob 容器。
 

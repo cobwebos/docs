@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: d3154e137aec8dcedcb066e2c9aab046b5a7b6e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d726006d3ecce69f129b1576c7c6d12833582873
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108817"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081984"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
 安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，将了解如何：
@@ -45,28 +45,28 @@ ms.locfileid: "56108817"
 
 1. 在安全中心主菜单的“检测”下，选择“安全警报”：
 
-  ![安全警报](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![安全警报](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
 
 2. 在警报列表中单击某个安全事件（警报的集合），详细了解该事件。 此时会打开“检测到的安全事件”。
 
-  ![安全事件](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![安全事件](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. 此屏幕顶部为安全事件说明，底部为此事件包含的警报的列表。 单击要进一步调查的警报可获取更多信息。
 
-  ![安全事件](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![安全事件](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-  警报类型可能多种多样。请阅读[了解 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)一文，详细了解警报类型以及可能的修正步骤。 对于可以安全消除的警报，可右键单击警报，然后选择“消除”选项：
+   警报类型可能多种多样。请阅读[了解 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)一文，详细了解警报类型以及可能的修正步骤。 对于可以安全消除的警报，可右键单击警报，然后选择“消除”选项：
 
-  ![警报](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+   ![警报](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 
 4. 如果恶意活动的根本原因和范围未知，请转到下一步进行深入调查。
 
 ## <a name="investigate-an-alert-or-incident"></a>调查警报或事件
 1. 在“安全警报”页上单击“启动调查”按钮（如果已启动，则此按钮的名称会变为“继续调查”）。
 
-  ![调查](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+   ![调查](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
 
-  调查图以图形方式表示与此安全警报或事件相关的实体。 单击图中的一个实体就会显示有关该实体的信息（其中包含新的实体），且图会展开。 图中所选实体的属性在页面右侧的窗格中突出显示。 每个选项卡上提供的信息因所选实体而异。 在调查过程中，请查看所有相关的信息，更好地了解攻击者的活动。
+   调查图以图形方式表示与此安全警报或事件相关的实体。 单击图中的一个实体就会显示有关该实体的信息（其中包含新的实体），且图会展开。 图中所选实体的属性在页面右侧的窗格中突出显示。 每个选项卡上提供的信息因所选实体而异。 在调查过程中，请查看所有相关的信息，更好地了解攻击者的活动。
 
 2. 如果需要更多证据，或者必须对调查过程中发现的实体进行深入调查，请转到下一步。
 

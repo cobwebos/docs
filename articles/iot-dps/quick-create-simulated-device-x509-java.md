@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 1c784aefca19040abb7ab34dd92dddb1ef0f28de
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 52fbef24e8a1b9fd7e0ade404c23a587c81d6b0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418222"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105992"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 X.509 设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -25,8 +25,8 @@ ms.locfileid: "50418222"
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
 Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关的设备。
-- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
 
 本文将演示单个注册。
 
@@ -86,15 +86,15 @@ Azure IoT 设备预配服务支持两类注册：
 6. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。 
 
 7. 在“添加注册”面板下，输入以下信息：
-    - 选择“X.509”作为标识证明机制。
-    - 在“主要证书 .pem 或 .cer 文件”下，单击“选择文件”选择在前述步骤中创建的证书文件 **X509individual.pem**。  
-    - （可选）可以提供以下信息：
-      - 选择与预配服务链接的 IoT 中心。
-      - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。 
-      - 使用设备所需的初始配置更新“初始设备孪生状态”。
-   - 完成后，单击“保存”按钮。 
+   - 选择“X.509”作为标识证明机制。
+   - 在“主要证书 .pem 或 .cer 文件”下，单击“选择文件”选择在前述步骤中创建的证书文件 **X509individual.pem**。  
+   - （可选）可以提供以下信息：
+     - 选择与预配服务链接的 IoT 中心。
+     - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。 
+     - 使用设备所需的初始配置更新“初始设备孪生状态”。
+     - 完成后，单击“保存”按钮。 
 
-    [![在门户中为 X.509 证明添加单个注册](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+     [![在门户中为 X.509 证明添加单个注册](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 
      成功注册以后，X.509 设备会在“单个注册”选项卡的“注册 ID”列下显示为 **microsoftriotcore**。 
 

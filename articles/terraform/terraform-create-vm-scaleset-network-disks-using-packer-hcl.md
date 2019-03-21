@@ -2,19 +2,19 @@
 title: 使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
 description: 使用 Terraform 通过 Packer 生成的自定义映像配置 Azure 虚拟机规模集（配有虚拟网络和托管的附加磁盘）并对其进行版本控制。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 规模集, 虚拟机, 网络, 存储, 模块, 自定义映像, packer
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/29/2017
-ms.openlocfilehash: 12c6ebc9b29c356ad169dbd921e71c7aa0c273b7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077498"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001990"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
 
@@ -180,7 +180,7 @@ terraform apply
 - Azure 后端地址池，将其分配给负载均衡器 
 - 运行状况探测端口，供应用程序使用并在负载均衡器上配置 
 - 虚拟机规模集，位于在之前部署的 VNET 上运行的负载均衡器后端
-- [Nginx](http://nginx.org/)，位于通过自定义映像安装的虚拟机规模集的节点上
+- [Nginx](https://nginx.org/)，位于通过自定义映像安装的虚拟机规模集的节点上
 
 
 在 `vmss.tf` 文件的末尾添加以下代码。

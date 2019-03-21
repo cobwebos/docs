@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 02/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 338907585ade0a33f74ca3e6337f1dd5cf8cc211
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820344"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076881"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入门：使用 Azure CLI 创建服务总线队列
 
@@ -61,31 +61,31 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
 
 创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中检查代码。
 
-2. 通过发出以下命令，在计算机上克隆[服务总线 GitHub 存储库](https://github.com/Azure/azure-service-bus/)：
+1. 通过发出以下命令，在计算机上克隆[服务总线 GitHub 存储库](https://github.com/Azure/azure-service-bus/)：
 
    ```bash
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. 将当前目录更改为示例文件夹，使用正斜杠作为分隔符：
+1. 将当前目录更改为示例文件夹，使用正斜杠作为分隔符：
 
    ```bash
    cd azure-service-bus/samples/Java/azure-servicebus/QueuesGettingStarted
    ```
 
-3. 发出以下命令来生成应用程序：
+1. 发出以下命令来生成应用程序：
    
    ```bash
    mvn clean package -DskipTests
    ```
 
-4. 要运行该程序，请在将连接字符串替换为前面复制的值后发出以下命令：
+1. 要运行该程序，请在将连接字符串替换为前面复制的值后发出以下命令：
 
    ```bash
    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
    ```
 
-6. 观察 10 条消息发送到队列。 消息的顺序是不确定的，但可以看到消息发送，然后可以看到确认和被接收，此外还可以看到有效负载数据：
+1. 观察 10 条消息发送到队列。 消息的顺序是不确定的，但可以看到消息发送，然后可以看到确认和被接收，此外还可以看到有效负载数据：
 
     ```
     Message sending: Id = 0

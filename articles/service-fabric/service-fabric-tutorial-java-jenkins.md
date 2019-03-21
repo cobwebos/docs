@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a4b8d930a2176c16bb9d1cbcd3b67e6f919575ed
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880580"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教程：配置 Jenkins 环境以便为 Service Fabric 上的 Java 应用程序启用 CI/CD
 
@@ -72,15 +72,15 @@ ms.locfileid: "53162216"
     * 首次登录后，可以创建自己的用户帐户或使用管理员帐户。
 
 1. 使用[生成新的 SSH 密钥并将其添加到 SSH 代理](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)中所述的步骤，将 GitHub 设置为使用 Jenkins。 由于命令是从 Docker 容器运行的，因此请遵照适用于 Linux 环境的说明。
-    * 使用 GitHub 提供的说明生成 SSH 密钥。 接下来，将 SSH 密钥添加到托管存储库的 GitHub 帐户。
-    * 在 Jenkins Docker shell（而不是主机）中运行上述链接中提到的命令。
-    * 若要从主机登录到 Jenkins shell，请使用以下命令：
+   * 使用 GitHub 提供的说明生成 SSH 密钥。 接下来，将 SSH 密钥添加到托管存储库的 GitHub 帐户。
+   * 在 Jenkins Docker shell（而不是主机）中运行上述链接中提到的命令。
+   * 若要从主机登录到 Jenkins shell，请使用以下命令：
 
-    ```sh
-    docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
-    ```
+     ```sh
+     docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
+     ```
 
-    确保托管 Jenkins 容器映像的群集或计算机使用公共 IP。 使用公共 IP 可让 Jenkins 实例从 GitHub 接收通知。
+     确保托管 Jenkins 容器映像的群集或计算机使用公共 IP。 使用公共 IP 可让 Jenkins 实例从 GitHub 接收通知。
 
 ## <a name="create-and-configure-a-jenkins-job"></a>创建和配置 Jenkins 作业
 
@@ -92,13 +92,13 @@ ms.locfileid: "53162216"
 
 1. 转到作业页，单击“配置”。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在常规部分中，选择“GitHub 项目”所对应的复选框，指定 GitHub 项目 URL。 此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 ``https://github.com/testaccount/dev_test``）集成的 Service Fabric Java 应用程序。
+   a. 在常规部分中，选择“GitHub 项目”所对应的复选框，指定 GitHub 项目 URL。 此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 ``https://github.com/testaccount/dev_test``）集成的 Service Fabric Java 应用程序。
 
    b. 在“源代码管理”部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *https://github.com/testaccount/dev_test.git*）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 **/master**）。
 
 1. 配置 *GitHub*（存储库的托管位置），使它能够与 Jenkins 通信。 请执行以下步骤：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到 GitHub 存储库页。 转到“设置” > “集成和服务”。
+   a. 转到 GitHub 存储库页。 转到“设置” > “集成和服务”。
 
    b. 选择“添加服务”，键入 **Jenkins**，并选择“Jenkins-GitHub 插件”。
 
@@ -146,7 +146,7 @@ ms.locfileid: "53162216"
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
-    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
+    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
       <Description>Voting Application</Description>
       <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="VotingWebPkg" ServiceManifestVersion="2.0.0"/>

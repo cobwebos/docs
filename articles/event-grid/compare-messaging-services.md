@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/30/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 0a71b88f6ad85cbd76f9bc789e87ad5b032418c9
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297100"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540799"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>在 Azure 消息传递服务之间进行选择 - 事件网格、事件中心和服务总线
 
@@ -34,7 +34,7 @@ Azure 提供三种协助在整个解决方案中传递事件消息的服务。 �
 
 事件是条件或状态更改的轻量通知。 事件发布者对于如何处理事件没有期望。 事件使用者决定要对通知执行的操作。 事件可以是离散单元或一系列的一部分。
 
-离散事件报告状态更改，并可操作。 若要执行下一步，使用者只需知道发生了问题。 事件数据包含关于所发生事件的信息，但不包含触发事件的数据。 例如，事件会通知使用者文件已创建。 它可能包含文件的常规信息，但不包含文件本身。 离散事件非常适合于需要缩放的[无服务器](http://azure.com/serverless)解决方案。
+离散事件报告状态更改，并可操作。 若要执行下一步，使用者只需知道发生了问题。 事件数据包含关于所发生事件的信息，但不包含触发事件的数据。 例如，事件会通知使用者文件已创建。 它可能包含文件的常规信息，但不包含文件本身。 离散事件非常适合于需要缩放的[无服务器](https://azure.com/serverless)解决方案。
 
 系列事件报告情况，并且可分析。 事件按时间排序并彼此相关。 使用者需要排序的一系列事件以分析发生的情况。
 

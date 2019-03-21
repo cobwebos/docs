@@ -2,24 +2,24 @@
 title: 使用 Azure Kubernetes 服务 (AKS) 和 Terraform 创建 Kubernetes 群集
 description: 演示如何使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集的教程
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 虚拟机, azure, kubernetes
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 57615ecd4c81359360004b732736bf757c0026c3
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009097"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集
 [Azure Kubernetes 服务 (AKS)](/azure/aks/) 管理托管的 Kubernetes 环境，使用户无需具备容器业务流程专业知识即可快速、轻松地部署和管理容器化的应用程序。 它还通过按需预配、升级和缩放资源，消除了正在进行的操作和维护的负担，而无需使应用程序脱机。
 
-本教程介绍如何使用 [Terraform](http://terraform.io) 和 AKS 来执行创建 [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) 群集的任务：
+本教程介绍如何使用 [Terraform](https://terraform.io) 和 AKS 来执行创建 [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) 群集的任务：
 
 > [!div class="checklist"]
 > * 使用 HCL（HashiCorp 语言）定义 Kubernetes 群集
@@ -37,7 +37,7 @@ ms.locfileid: "55892059"
 ## <a name="create-the-directory-structure"></a>创建目录结构
 首先，创建包含 Terraform 配置文件的目录用于练习。
 
-1. 浏览到 [Azure 门户](http://portal.azure.com)。
+1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
 1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
 

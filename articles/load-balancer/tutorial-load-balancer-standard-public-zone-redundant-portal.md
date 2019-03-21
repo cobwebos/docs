@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 2b37d77e00595be125490431694f4549f61fced6
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 912307e6509ea66be887838e875076b7a895ca94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56982787"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888140"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -43,7 +43,7 @@ ms.locfileid: "56982787"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 [http://portal.azure.com](http://portal.azure.com) 中登录 Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 
@@ -108,7 +108,7 @@ ms.locfileid: "56982787"
     - *Allow HTTP* - 负载均衡器器规则的说明。
 4. 单击“确定”。
  
- ![创建虚拟网络](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![创建虚拟网络](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. 重复步骤 2 到 4，使用以下值创建名为 *myRDPRule* 的另一规则，以允许来自端口 3389 的入站 RDP 连接：
     - 服务标记 - **源**。
     - *Internet* - **源服务标记**
@@ -137,7 +137,7 @@ ms.locfileid: "56982787"
 5. 单击“禁用”以禁用启动诊断。
 6. 创建“确定”，检查“摘要”页上的设置，然后单击“创建”。
   
- ![创建虚拟机](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
+   ![创建虚拟机](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
 
 7. 执行步骤 1-6，在区域 2 中创建名为 *VM2* 的第二个 VM，在区域 3 中创建第三个 VM，并使用 *myVnet* 作为虚拟网络名称，使用 *myBackendSubnet* 作为子网名称，使用 **myNetworkSecurityGroup* 作为网络安全组名称。
 

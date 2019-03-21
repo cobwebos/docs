@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: fcef143f48bc9e7864fe69900e3c9002fd597fb5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 264a1200ce78d85181650de716f9898033834bc0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001862"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549827"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
@@ -45,7 +45,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     John|Doe
     Jane|Doe
     ```
-2.  使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具创建 **adfv2tutorial** 容器，并在该容器中创建 **input** 文件夹。 然后，将 **input.txt** 文件上传到 **input** 文件夹。
+2.  使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具创建 **adfv2tutorial** 容器，并在该容器中创建 **input** 文件夹。 然后，将 **input.txt** 文件上传到 **input** 文件夹。
 
 ## <a name="install-the-python-package"></a>安装 Python 包
 

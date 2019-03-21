@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 5f3b9b48fc5f15738c3de9928ca0bb220a66db12
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985982"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899540"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>教程：通过 Azure 门户使用标准负载均衡器对可用性区域中的 VM 进行负载均衡
 
@@ -41,7 +41,7 @@ ms.locfileid: "56985982"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 [http://portal.azure.com](http://portal.azure.com) 中登录 Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-public-standard-load-balancer-instance"></a>创建公共标准负载均衡器实例
 
@@ -63,7 +63,7 @@ ms.locfileid: "56985982"
     |可用性区域| 选择“1”。    |
 3. 在“查看 + 创建”选项卡中，单击“创建”。   
 
- ## <a name="create-backend-servers"></a>创建后端服务器
+   ## <a name="create-backend-servers"></a>创建后端服务器
 
 在本部分，请创建虚拟网络。 另请在该地区的同一区域（即区域 1）中创建两个要添加到负载均衡器后端池的虚拟机， 然后在虚拟机上安装 IIS，以便对区域冗余的负载均衡器进行测试。 如果一个 VM 发生故障，则同一区域中 VM 的运行状况探测将会失败， 而流量可继续由同一区域中的其他 VM 处理。
 
@@ -80,8 +80,8 @@ ms.locfileid: "56985982"
 
 1. 在屏幕的左上方，选择“创建资源”。 在搜索框中，输入“网络安全组”。 在网络安全组页中，选择“创建”。
 2. 在“创建网络安全组”页中输入以下值：
-    - **myNetworkSecurityGroup**：网络安全组的名称。
-    - **myResourceGroupLBAZ**：现有资源组的名称。
+   - **myNetworkSecurityGroup**：网络安全组的名称。
+   - **myResourceGroupLBAZ**：现有资源组的名称。
    
      ![创建网络安全组](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: 8b326db24016dcc53c081ddb3dfefe44cc448e4f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d2d248840f98b4fb6a155e098740869ecc035dc8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450465"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079870"
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure 中国世纪互联开发人员指南
 Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Microsoft Azure 服务（“全球服务”）和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）。 大多数当前可用的技术内容（例如 [Azure 文档中心](https://azure.microsoft.com/documentation/)）都假设应用程序是针对全球 Azure 开发的，因此，必须了解哪些[服务和功能](https://www.azure.cn/home/features/products-by-region)可在 Microsoft Azure 中国世纪互联中使用。
@@ -77,7 +77,7 @@ Microsoft Azure 中国世纪互联与全球 Azure 有所不同，因此，必须
 | Microsoft Graph | [https://graph.microsoft.com](https://graph.microsoft.com/) | [https://microsoftgraph.chinacloudapi.cn](https://microsoftgraph.chinacloudapi.cn/) |
 | 认知服务 | <https://api.projectoxford.ai/face/v1.0> | <https://api.cognitive.azure.cn/face/v1.0> |
 | Azure Key Vault API | \*.vault.azure.net | \*.vault.azure.cn |
-| 使用 PowerShell 登录： <br>- 经典 Azure <br>- Azure 资源管理器 <br>- Azure AD| - Add-AzureAccount<br>- Connect-AzureRmAccount <br> - Connect-msolservice |  - Add-AzureAccount -Environment AzureChinaCloud <br> - Connect-AzureRmAccount -Environment AzureChinaCloud <br>- Connect-msolservice -AzureEnvironment AzureChinaCloud | | |
+| 使用 PowerShell 登录： <br>- 经典 Azure <br>- Azure 资源管理器 <br>- Azure AD| - Add-AzureAccount<br>- Connect-AzureRmAccount <br> - Connect-msolservice |  - Add-AzureAccount -Environment AzureChinaCloud <br> - Connect-AzureRmAccount -Environment AzureChinaCloud <br>- Connect-msolservice -AzureEnvironment AzureChinaCloud |
 
 ## <a name="next-steps"></a>后续步骤
 - [开发人员指南](https://www.azure.cn/documentation/articles/developerdifferences/#dev-guide)（中文版）

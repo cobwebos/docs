@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b50b8f6c54cbefde2120dd61643c23f5175927c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8706e839005d43ab9fa2662d13d7d3c3994c136
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077745"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>教程：将 Azure AD 日志存档到 Azure 存储帐户（预览版）
 
@@ -45,11 +45,11 @@ ms.locfileid: "56211744"
 3. 选择“导出设置”。 
 
 4. 在“诊断设置”窗格中，执行下述操作之一：
-    * 若要更改现有设置，请选择“编辑设置”。
-    * 若要添加新设置，请选择“添加诊断设置”。  
-      最多可以有三个设置。 
+   * 若要更改现有设置，请选择“编辑设置”。
+   * 若要添加新设置，请选择“添加诊断设置”。  
+     最多可以有三个设置。 
 
-    ![导出设置](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
+     ![导出设置](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
 
 5. 为设置输入一个可以让你记住其用途的友好名称（例如，“发送到 Azure 存储帐户”）。 
 

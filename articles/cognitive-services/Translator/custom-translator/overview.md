@@ -5,16 +5,16 @@ description: 自定义翻译提供的功能类似于 Microsoft Translator Hub �
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
+ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: c3f8d06cf68714f3a8abc203421ae3ff9b533ca6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d9b253afa7414ada4db58f98cd346e223f8282b6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737801"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775999"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 

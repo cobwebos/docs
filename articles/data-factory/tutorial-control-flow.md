@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: shlo
-ms.openlocfilehash: 53540128b5a9a1e2690179a35f26a9a82c6cb584
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: d2f892941f9d37dd3d74afe17d7952b404dc709f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446947"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551630"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 在本教程中，我们将创建一个数据工厂管道来展示某些控制流功能。 此管道执行从 Azure Blob 存储容器中某个容器到同一存储帐户中另一个容器的简单复制。 如果复制活动成功，可以在告知成功结果的电子邮件中发送成功复制操作的详细信息（例如写入的数据量）。 如果复制活动失败，可以在告知失败结果的电子邮件中发送复制失败的详细信息（例如错误消息）。 整个教程讲解了如何传递参数。
@@ -56,7 +56,7 @@ ms.locfileid: "56446947"
     John|Doe
     Jane|Doe
     ```
-2. 使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具创建 **adfv2branch** 容器，并将 **input.txt** 文件上传到该容器。
+2. 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具创建 **adfv2branch** 容器，并将 **input.txt** 文件上传到该容器。
 
 ## <a name="create-visual-studio-project"></a>创建 Visual Studio 项目
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: c247ef748628c14074c2b5ea37df251793840b16
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6f775ffaf53019cc50bc38c294b4d5f40c8eca90
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076745"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>将语音服务与语言理解应用集成
 借助[语音服务](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)，可使用单个请求接收音频并返回 LUIS 预测 JSON 对象。 本文中，你将在 Visual Studio 中下载和使用 C# 项目，从而对麦克风讲话并接收 LUIS 预测信息。 该项目使用语音 [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) 包（该包已作为参考包含在内）。 
@@ -49,11 +49,11 @@ ms.locfileid: "55876028"
 
 3. 在“密钥和终结点”页上，分配在[创建 LUIS 终结点密钥](#create-luis-endpoint-key)部分中创建的 LUIS 密钥。
 
-  在此页上，收集在[创建 LUIS 终结点密钥](#create-luis-endpoint-key)部分中创建的 LUIS 密钥的应用 ID、发布区域和订阅 ID。 需要修改代码，然后才能在文本的稍后位置使用这些值。 
+   在此页上，收集在[创建 LUIS 终结点密钥](#create-luis-endpoint-key)部分中创建的 LUIS 密钥的应用 ID、发布区域和订阅 ID。 需要修改代码，然后才能在文本的稍后位置使用这些值。 
   
-  请勿使用免费的初学者密钥进行此练习。 只能使用在 Azure 门户中创建的语言理解密钥进行此练习。 
+   请勿使用免费的初学者密钥进行此练习。 只能使用在 Azure 门户中创建的语言理解密钥进行此练习。 
 
-  https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**?subscription-key=**LUISKEY**&q=
+   https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**?subscription-key=**LUISKEY**&q=
 
 
 4. 通过选择右上方栏中的“发布”按钮发布 LUIS 应用。 

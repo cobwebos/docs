@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: f537ccfd18685cd5aa8ee06910fc80ac3d2056c9
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 286bc73cb7226d95c1e46fc51ae5999ea27d44ad
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750403"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535660"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
 
@@ -29,7 +29,7 @@ ms.locfileid: "55750403"
 > * 监视任务执行情况
 > * 检索输出文件
 
-本教程使用 [ffmpeg](http://ffmpeg.org/) 开源工具将 MP4 媒体文件并行转换为 MP3 格式。 
+本教程使用 [ffmpeg](https://ffmpeg.org/) 开源工具将 MP4 媒体文件并行转换为 MP3 格式。 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 

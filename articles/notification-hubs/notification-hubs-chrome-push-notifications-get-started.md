@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: ffac79209f998f1ef042ed5fcb4d8c6a45de2c2e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 03374f63345bd6c9e4f2b603443a1448493e1cdc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894608"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Chrome 应用推送通知
 
@@ -266,7 +266,7 @@ ms.locfileid: "54447031"
         sendNHRegistrationRequest();
     }
 
-    // From http://msdn.microsoft.com/library/dn495627.aspx
+    // From https://msdn.microsoft.com/library/dn495627.aspx
     function splitConnectionString()
     {
         var parts = connectionString.split(';');
@@ -361,17 +361,17 @@ ms.locfileid: "54447031"
 
     此脚本具有以下重要参数：
 
-    * `window.onload` 定义 UI 上的两个按钮的按钮单击事件。 第一个单击按钮事件处理器向 GCM 注册，另一个使用向 GCM 注册后返回的注册 ID 向 Azure 通知中心注册。
-    * `updateLog` 是允许使用代码日志信息的函数。
-    * `registerWithGCM` 是第一个按钮单击处理程序，它对 GCM 进行 `chrome.gcm.register` 调用，以注册当前的 Chrome 应用实例。
-    * `registerCallback` 是回调函数，会在 GCM 注册调用返回时被调用。
-    * `registerWithNH` 是第二个按钮单击处理程序，会向通知中心进行注册。 它会获取用户已指定的 `hubName` 和 `connectionString`，并创建通知中心注册 REST API 调用。
-    * `splitConnectionString` 和 `generateSaSToken` 是帮助程序，代表 SaS 令牌创建进程的 JavaScript 实现，必须在所有 REST API 调用中使用。 有关详细信息，请参阅 [基本概念](https://msdn.microsoft.com/library/dn495627.aspx)。
-    * `sendNHRegistrationRequest` 是向 Azure 通知中心发出 HTTP REST 调用的函数。
-    * `registrationPayload` 定义注册 XML 负载。 有关详细信息，请参阅 [创建注册 NH REST API]。 请使用从 GCM 接收的值在其中更新注册 ID。
-    * `client` 是应用程序用于发出 HTTP POST 请求的 `XMLHttpRequest` 的实例。 使用 `sasToken` 更新 `Authorization` 标头。 成功完成此次调用就会在 Azure 通知中心注册此 Chrome 应用实例。
+   * `window.onload` 定义 UI 上的两个按钮的按钮单击事件。 第一个单击按钮事件处理器向 GCM 注册，另一个使用向 GCM 注册后返回的注册 ID 向 Azure 通知中心注册。
+   * `updateLog` 是允许使用代码日志信息的函数。
+   * `registerWithGCM` 是第一个按钮单击处理程序，它对 GCM 进行 `chrome.gcm.register` 调用，以注册当前的 Chrome 应用实例。
+   * `registerCallback` 是回调函数，会在 GCM 注册调用返回时被调用。
+   * `registerWithNH` 是第二个按钮单击处理程序，会向通知中心进行注册。 它会获取用户已指定的 `hubName` 和 `connectionString`，并创建通知中心注册 REST API 调用。
+   * `splitConnectionString` 和 `generateSaSToken` 是帮助程序，代表 SaS 令牌创建进程的 JavaScript 实现，必须在所有 REST API 调用中使用。 有关详细信息，请参阅 [基本概念](https://msdn.microsoft.com/library/dn495627.aspx)。
+   * `sendNHRegistrationRequest` 是向 Azure 通知中心发出 HTTP REST 调用的函数。
+   * `registrationPayload` 定义注册 XML 负载。 有关详细信息，请参阅 [创建注册 NH REST API]。 请使用从 GCM 接收的值在其中更新注册 ID。
+   * `client` 是应用程序用于发出 HTTP POST 请求的 `XMLHttpRequest` 的实例。 使用 `sasToken` 更新 `Authorization` 标头。 成功完成此次调用就会在 Azure 通知中心注册此 Chrome 应用实例。
 
-    此项目的整体文件夹结构应类似于以下结构：![Google Chrome 应用 - 文件夹结构][21]
+     此项目的整体文件夹结构应类似于以下结构：![Google Chrome 应用 - 文件夹结构][21]
 
 ### <a name="set-up-and-test-your-chrome-app"></a>设置并测试 Chrome 应用
 
@@ -406,7 +406,7 @@ ms.locfileid: "54447031"
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-   [带 WindowsAzure.ServiceBus NuGet 包的 Azure 服务总线 SDK 的引用将自动添加到项目](http://nuget.org/packages/WindowsAzure.ServiceBus/)。
+   [带 WindowsAzure.ServiceBus NuGet 包的 Azure 服务总线 SDK 的引用将自动添加到项目](https://nuget.org/packages/WindowsAzure.ServiceBus/)。
 4. 打开 `Program.cs` 并添加以下 `using` 语句：
 
     ```csharp
@@ -481,8 +481,8 @@ ms.locfileid: "54447031"
 [Chrome 应用 GCM 示例]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [移动设备上的 Chrome 应用]: https://developer.chrome.com/apps/chrome_apps_on_mobile
-[创建注册 NH REST API]: http://msdn.microsoft.com/library/azure/dn223265.aspx
-[crypto-js 库]: http://code.google.com/p/crypto-js/
+[创建注册 NH REST API]: https://msdn.microsoft.com/library/azure/dn223265.aspx
+[crypto-js 库]: https://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
 [Azure Notification Hubs Notify Users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md

@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/14/2019
-ms.openlocfilehash: 4b5934123f5bb7fa9eaa2c67c212bcef2a5de0aa
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 01115524ae3890c1d6a0220bcf89e86090d148cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54479261"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078867"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>快速入门：将数据从 Logstash 引入 Azure 数据资源管理器
 
@@ -108,7 +108,7 @@ output {
 ```
 
 | 参数名称 | 说明 |
-| --- | --- | --- |
+| --- | --- |
 | **路径** | Logstash 插件会将事件写入临时文件，然后将其发送到 Azure 数据资源管理器。 此参数包含要将文件写入到的路径，以及一个用于轮转文件的时间表达式，该表达式可触发上传到 Azure 数据资源管理器服务的操作。|
 | **ingest_url** | 用于进行引入相关通信的 Kusto 终结点。|
 | **app_id**、**app_key** 和 **app_tenant**| 连接到 Azure 数据资源管理器所需的凭据。 请务必使用具有引入特权的应用程序。 |

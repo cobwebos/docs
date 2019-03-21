@@ -8,16 +8,16 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: b0f909bb7f4b59e083f0ef1c8a19c11d5d9fb312
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 90f89f9ffb1d55e7621c87f168375251c78d9730
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821297"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533487"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure 应用服务
 
-本教程通过设置 Jenkins 中的持续集成 (CI) 和持续部署 (CD)，将 GitHub 中的一个示例 Java Web 应用部署到 [Linux 上的 Azure 应用服务](/azure/app-service/containers/app-service-linux-intro)。 当你通过将提交内容推送到 GitHub 来更新应用时，Jenkins 会自动生成该应用并将其重新发布到 Azure 应用服务。 本教程中的示例应用是使用 [Spring Boot](http://projects.spring.io/spring-boot/) 框架开发的。 
+本教程通过设置 Jenkins 中的持续集成 (CI) 和持续部署 (CD)，将 GitHub 中的一个示例 Java Web 应用部署到 [Linux 上的 Azure 应用服务](/azure/app-service/containers/app-service-linux-intro)。 当你通过将提交内容推送到 GitHub 来更新应用时，Jenkins 会自动生成该应用并将其重新发布到 Azure 应用服务。 本教程中的示例应用是使用 [Spring Boot](https://projects.spring.io/spring-boot/) 框架开发的。 
 
 ![概述](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
 
@@ -193,7 +193,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
    1. 在显示的“属性内容”框中，添加以下环境变量及其值。 
 
-      ```text
+      ```ini
       AZURE_CRED_ID=yourAzureServicePrincipalName
       RES_GROUP=yourWebAppAzureResourceGroupName
       WEB_APP=yourWebAppName
@@ -212,7 +212,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 1. 在 GitHub 分叉的 `src/main/resources/` 文件夹中，创建名为 `web.config` 的应用配置文件，其中包含以下 XML（但要将 `$(JAR_FILE_NAME)` 替换为 `gs-spring-boot-0.1.0.jar`）：
 
    ```xml
-   <?xml version="1.0" encoding="UTF-8">
+   <?xml version="1.0" encoding="UTF-8"?>
    <configuration>
       <system.webServer>
          <handlers>
@@ -225,7 +225,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
 1. 在 GitHub 分支的根文件夹中，创建名为 `Jenkinsfile` 的生成和部署脚本，其中包含以下文本（[GitHub 中的源代码位于此处](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/doc/resources/jenkins/Jenkinsfile-webapp-se)）：
 
-   ```text  
+   ```groovy
    node {
       stage('init') {
          checkout scm

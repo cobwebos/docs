@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 97734ad6119e89c00634035b1646bc29ac6549bd
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a8f756385b62dfb21e910b9373dc275c7f679d3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237846"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009655"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈
 
@@ -91,13 +91,13 @@ sudo apt-get install -y nodejs
 ```
 
 ## <a name="install-mongodb-and-set-up-the-server"></a>安装 MongoDB 并设置服务器
-[MongoDB](http://www.mongodb.com) 将数据存储在灵活的、类似于 JSON 的文档中。 数据库中的字段根据文档的不同而异，数据结构随时可发生变化。 针对示例应用程序，我们要将包含书名、ISBN 编号、作者和页数的书籍记录添加到 MongoDB。 
+[MongoDB](https://www.mongodb.com) 将数据存储在灵活的、类似于 JSON 的文档中。 数据库中的字段根据文档的不同而异，数据结构随时可发生变化。 针对示例应用程序，我们要将包含书名、ISBN 编号、作者和页数的书籍记录添加到 MongoDB。 
 
 1. 在 VM 上，使用通过 SSH 打开的 bash shell 设置 MongoDB 密钥。
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
 2. 使用密钥更新包管理器。
@@ -149,7 +149,7 @@ sudo apt-get install -y nodejs
 
 ## <a name="install-express-and-set-up-routes-to-the-server"></a>安装 Express 并设置服务器的路由
 
-[Express](https://expressjs.com) 是一个微型的灵活 Node.js Web 应用程序框架，为 Web 和移动应用程序提供功能。 本教程使用 Express 将书籍信息传入和传出 MongoDB 数据库。 [Mongoose](http://mongoosejs.com) 提供简洁的基于架构的解决方案来为应用程序数据建模。 本教程使用 Mongoose 来为数据库提供书籍架构。
+[Express](https://expressjs.com) 是一个微型的灵活 Node.js Web 应用程序框架，为 Web 和移动应用程序提供功能。 本教程使用 Express 将书籍信息传入和传出 MongoDB 数据库。 [Mongoose](https://mongoosejs.com) 提供简洁的基于架构的解决方案来为应用程序数据建模。 本教程使用 Mongoose 来为数据库提供书籍架构。
 
 1. 安装 Express 和 Mongoose。
 

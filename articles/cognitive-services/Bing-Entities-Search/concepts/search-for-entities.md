@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: e78cc86a91e229b5d4d4aead5709da2f694ecac1
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 948110e5532aeeb2b9acbbb66361eb9c55eaf897
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895357"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543332"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>使用必应实体 API 搜索实体
 
@@ -72,7 +72,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
                 "mustBeCloseToContent": true,
                 "license": {
                     "name": "CC-BY-SA",
-                    "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+                    "url": "https://creativecommons.org/licenses/by-sa/3.0/"
                 },
                 "licenseNotice": "Text under CC-BY-SA license"
             },
@@ -151,7 +151,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
     "mustBeCloseToContent": true,
     "license": {
         "name": "CC-BY-SA",
-        "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+        "url": "https://creativecommons.org/licenses/by-sa/3.0/"
     },
     "licenseNotice": "Text under CC-BY-SA license"
 },

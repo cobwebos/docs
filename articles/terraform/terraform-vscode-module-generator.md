@@ -2,24 +2,24 @@
 title: 使用 Yeoman 在 Azure 中创建 Terraform 基模板
 description: 了解如何使用 Yeoman 在 Azure 中创建 Terraform 基模板。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 虚拟机, azure, yeoman
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 1133e6b35d200ec7f855b41f3ae5d6f37949fc97
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8405624831c572f194fa0afaad2f0caa40bcf9ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568492"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001276"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>使用 Yeoman 在 Azure 中创建 Terraform 基模板
 
 可以通过 [Terraform](https://docs.microsoft.com/azure/terraform/
-) 轻松地在 Azure 上创建基础结构。 [Yeoman](http://yeoman.io/) 提供卓越的最佳做法框架，大大简化了模块开发人员创建 Terraform 模块的工作。
+) 轻松地在 Azure 上创建基础结构。 [Yeoman](https://yeoman.io/) 提供卓越的最佳做法框架，大大简化了模块开发人员创建 Terraform 模块的工作。
 
 本文介绍如何使用 Yeoman 模块生成器来创建 Terraform 基模板。 然后会介绍如何使用两种不同的方法测试新的 Terraform 模板：
 

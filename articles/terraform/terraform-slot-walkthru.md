@@ -2,19 +2,19 @@
 title: Terraform 和 Azure 提供程序部署槽位
 description: 有关使用 Terraform 和 Azure 提供程序部署槽位的教程
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 虚拟机, Azure, 部署槽位
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 4/05/2018
-ms.openlocfilehash: 1564991ecfe29b1977837c2fdff4be7b3a3e1797
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074812"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992243"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>结合 Azure 部署槽位使用 Terraform 来预配基础结构
 
@@ -26,11 +26,11 @@ ms.locfileid: "54074812"
 
 - **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **GitHub 帐户**：需要通过一个 [GitHub](http://www.github.com) 帐户来克隆和使用测试 GitHub 存储库。
+- **GitHub 帐户**：需要通过一个 [GitHub](https://www.github.com) 帐户来克隆和使用测试 GitHub 存储库。
 
 ## <a name="create-and-apply-the-terraform-plan"></a>创建并应用 Terraform 计划
 
-1. 浏览到 [Azure 门户](http://portal.azure.com)。
+1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
 1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
 

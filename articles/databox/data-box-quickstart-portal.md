@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 03/12/2019
 ms.author: alkohli
-ms.openlocfilehash: ae6ab0eb4c966ef57c7859098217b5b6b560614b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188549"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834710"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Data Box
 
@@ -43,7 +43,7 @@ ms.locfileid: "54188549"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 [http://portal.azure.com](http://portal.azure.com) 中登录 Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="order"></a>顺序
 
@@ -74,7 +74,7 @@ ms.locfileid: "54188549"
     
 4. 进行设备布线，如下所示。  
 
-    ![布线后的 Data Box](media/data-box-quickstart-portal/data-box-cabled-dhcp.png)  
+    ![已连接了电缆的 Data Box 设备底板](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)  
 
     1. 将电源线连接到设备。
     2. 使用 RJ-45 CAT 6 网线将主机连接到设备上的管理端口 (MGMT)。 
@@ -86,7 +86,7 @@ ms.locfileid: "54188549"
 
 此步骤大约需要 5-7 分钟才能完成。
 
-1. 若要获取设备密码，请在 [Azure 门户](http://portal.azure.com)中转到“常规”>“设备详细信息”。
+1. 若要获取设备密码，请在 [Azure 门户](https://portal.azure.com)中转到“常规”>“设备详细信息”。
 2. 在用于连接到 Data Box 的计算机上，将静态 IP 地址 192.168.100.5 和子网 255.255.255.0 分配给以太网适配器。 通过 `https://192.168.100.10` 访问设备的本地 Web UI。 打开设备后，进行连接可能需要长达 5 分钟的时间。 
 3. 从 Azure 门户使用密码登录。 此时会出现一个错误，指出网站的安全证书有问题。 按照特定于浏览器的说明转到该网页。
 4. 默认情况下，10 Gbps（或 1 Gbps）数据接口的网络设置被配置为 DHCP。 如果需要，可以将该接口配置为静态，并提供一个 IP 地址。 

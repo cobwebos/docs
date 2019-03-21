@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2019
 ms.author: v-wimarc
-ms.openlocfilehash: 56b073ab9c21e0f2a1a02b0acb54fe0614eebf52
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ee577599650f4a5481bc4523c87dbe1e6703c413
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698046"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534865"
 ---
 # <a name="azure-china-21vianet-faq"></a>Azure 中国世纪互联常见问题解答
 获取有关世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）的常见问题的解答。 所述的主题包括帐户和订阅、门户及操作。
@@ -50,7 +50,7 @@ Azure 中国世纪互联的[订阅](https://www.azure.cn/support/faq/#What-is-th
 
 ## <a name="operations"></a>操作
 ### <a name="whats-the-criteria-for-purchasing-a-subscription-to-azure-china-21vianet"></a>购买 Azure 中国世纪互联的订阅需要满足哪些条件？
-为了遵守[反恐法](http://www.gov.cn/zhengce/2015-12/28/content_5029899.htm)，在线服务提供商在提供服务之前，有义务通过实名身份验证来验证用户的身份。 在线或通过 Microsoft 销售代表注册 Azure 中国世纪互联订阅时，必须提供以下信息：
+为了遵守[反恐法](https://www.gov.cn/zhengce/2015-12/28/content_5029899.htm)，在线服务提供商在提供服务之前，有义务通过实名身份验证来验证用户的身份。 在线或通过 Microsoft 销售代表注册 Azure 中国世纪互联订阅时，必须提供以下信息：
 - 当地的中国手机号码
 - 中国的身份证或中国注册的营业执照 
 

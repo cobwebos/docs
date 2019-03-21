@@ -12,12 +12,12 @@ ms.date: 12/06/2018
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b04831790083f9ba41f20719a7d8ffddc35348b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 037f5b554889d89fc0b50983d3d85d38f4345311
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210401"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571399"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>教程：通过 Azure Active Directory 为应用程序配置基于 SAML 的单一登录
 
@@ -189,6 +189,6 @@ Microsoft 建议在向组织推出应用程序之前，先使用多个用户或�
 若要向组织中的更多用户推出应用程序，建议使用自动用户预配。
 
 > [!div class="nextstepaction"]
->[了解如何使用自动预配来分配用户](configure-automatic-user-provisioning-portal.md)
+> [了解如何使用自动预配来分配用户](configure-automatic-user-provisioning-portal.md)
 
 

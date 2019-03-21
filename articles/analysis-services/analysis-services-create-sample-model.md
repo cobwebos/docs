@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 03/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 78b309336b21c3b6a58a37b1729f675db111c5d0
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190538"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903923"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教程：从门户添加示例模型
 
@@ -57,7 +57,7 @@ ms.locfileid: "54190538"
 
 示例模型使用了缓存内存资源。 如果不使用示例模型进行测试，则应将其从服务器中删除。
 
-下面的步骤介绍了如何使用 SSMS 从服务器中删除模型。 也可以使用预览版 Web 设计器功能来删除模型。
+下面的步骤介绍了如何使用 SSMS 从服务器中删除模型。
 
 1. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
 

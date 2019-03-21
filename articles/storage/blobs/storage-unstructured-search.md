@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/13/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 42c67d73ee776488fbe932676f61cb7166c2984b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: acf01788a1ac8ed8ca476941c402801abfbd8adf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599824"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011317"
 ---
 # <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>教程：在云存储中搜索非结构化数据
 
@@ -39,7 +39,7 @@ ms.locfileid: "53599824"
 
 每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 创建存储帐户时，可以选择创建新的资源组，或者使用现有的资源组。 本教程将创建新的资源组。
 
-登录到 [Azure 门户](http://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -63,7 +63,7 @@ ms.locfileid: "53599824"
 
 5. 选择“确定”创建容器。
 
-  ![非结构化搜索](media/storage-unstructured-search/storageactinfo.png)
+   ![非结构化搜索](media/storage-unstructured-search/storageactinfo.png)
 
 ## <a name="upload-the-example-data"></a>上传示例数据
 
@@ -77,7 +77,7 @@ ms.locfileid: "53599824"
 
 4. 选择“上传”，开始上传过程。
 
-  ![非结构化搜索](media/storage-unstructured-search/upload.png)
+   ![非结构化搜索](media/storage-unstructured-search/upload.png)
 
 上传过程可能需要花费片刻时间。
 
@@ -107,7 +107,7 @@ Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 
 
 8. 选择“创建”，创建搜索服务。
 
-  ![非结构化搜索](media/storage-unstructured-search/createsearch2.png)
+   ![非结构化搜索](media/storage-unstructured-search/createsearch2.png)
 
 ## <a name="connect-your-search-service-to-your-container"></a>将搜索服务连接到容器
 
@@ -127,13 +127,13 @@ Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 
 
 2. 由于所用的 Blob 是文本文件，因此请将“分析模式”设置为“文本”。
 
-  ![非结构化搜索](media/storage-unstructured-search/datasources.png)
+   ![非结构化搜索](media/storage-unstructured-search/datasources.png)
 
 3. 选择“存储容器”，列出可用的存储帐户。
 
 4. 选择自己的存储帐户，然后选择前面创建的容器。
 
-  ![非结构化搜索](media/storage-unstructured-search/datacontainer.png)
+   ![非结构化搜索](media/storage-unstructured-search/datacontainer.png)
 
 5. 单击“选择”返回到“新建数据源”，然后选择“确定”以继续。
 
@@ -147,7 +147,7 @@ Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 
 
 3. 选中“metadata_storage_name”下的“可检索”属性的复选框。
 
-  ![非结构化搜索](media/storage-unstructured-search/valuestoselect.png)
+   ![非结构化搜索](media/storage-unstructured-search/valuestoselect.png)
 
 4. 选择“确定”，显示“创建索引器”。
 
@@ -157,7 +157,7 @@ Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 
 
 #### <a name="field-attributes"></a>字段属性
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | *键* |为每个文档提供唯一 ID 以便查找文档的字符串。 每个索引必须有一个 key。 只有一个字段可以是 key，并且此字段类型必须设置为 Edm.String。 |
 | *Retrievable* |指定是否可以在搜索结果中返回字段。 |
@@ -172,7 +172,7 @@ Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 
 
 1. 在“名称”字段中输入一个名称，然后选择“确定”。
 
-  ![非结构化搜索](media/storage-unstructured-search/exindexer.png)
+   ![非结构化搜索](media/storage-unstructured-search/exindexer.png)
 
 2. 随后将返回到“导入数据”。 选择“确定”完成连接过程。
 
@@ -186,19 +186,19 @@ Azure 搜索是一种搜索即服务云解决方案，它提供开发人员 API 
 
 1. 转到所有资源，并查找新建的搜索服务。
 
-  ![非结构化搜索](media/storage-unstructured-search/exampleurl.png)
+   ![非结构化搜索](media/storage-unstructured-search/exampleurl.png)
 
 2. 选择索引将其打开。
 
-  ![非结构化搜索](media/storage-unstructured-search/overview.png)
+   ![非结构化搜索](media/storage-unstructured-search/overview.png)
 
 3. 选择“搜索资源管理器”打开搜索资源管理器，可在其中对数据进行实时查询。
 
-  ![非结构化搜索](media/storage-unstructured-search/indexespane.png)
+   ![非结构化搜索](media/storage-unstructured-search/indexespane.png)
 
 4. 在查询字符串字段为空时选择“搜索”。 空查询返回 blob 中的*所有*数据。
 
-  ![非结构化搜索](media/storage-unstructured-search/emptySearch.png)
+   ![非结构化搜索](media/storage-unstructured-search/emptySearch.png)
 
 ### <a name="perform-a-full-text-search"></a>执行全文搜索
 

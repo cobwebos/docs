@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 6a5c2df6859a0020160ae0de9b6e498f63dc253b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a4e3d37b2eb32fa0384986e37781f21b906bed42
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871976"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077303"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>快速入门：使用必应视频搜索 REST API 和 Node.js 来搜索视频
 
@@ -61,19 +61,19 @@ ms.locfileid: "55871976"
     };
     ```
     
-    2. 指示 `end` 时，使用 `response.on()` 存储与必应相关的标头（以 `bingapis` 或 `x-msedge-` 开头）。 然后使用 `JSON.parse()` 来分析 JSON，通过 `JSON.stringify()` 将其转换为字符串，再将其输出。
+   1. 指示 `end` 时，使用 `response.on()` 存储与必应相关的标头（以 `bingapis` 或 `x-msedge-` 开头）。 然后使用 `JSON.parse()` 来分析 JSON，通过 `JSON.stringify()` 将其转换为字符串，再将其输出。
 
-        ```javascript
-        response.on('end', function () {
-            for (var header in response.headers)
-                // header keys are lower-cased by Node.js
-                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                     console.log(header + ": " + response.headers[header]);
-            body = JSON.stringify(JSON.parse(body), null, '  ');
-            //JSON Response body
-            console.log(body);
-        });
-        ```
+       ```javascript
+       response.on('end', function () {
+           for (var header in response.headers)
+               // header keys are lower-cased by Node.js
+               if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                    console.log(header + ": " + response.headers[header]);
+           body = JSON.stringify(JSON.parse(body), null, '  ');
+           //JSON Response body
+           console.log(body);
+       });
+       ```
 
 # <a name="create-and-send-the-search-request"></a>创建并发送搜索请求
 

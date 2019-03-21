@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 12/17/2018
 ms.author: alinast
-ms.openlocfilehash: d2588090ced3e82e63397a416245ca69204f3d87
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4c41fbaa00dc3460df3f94433428c448a7b41250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583079"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089688"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
@@ -115,8 +115,8 @@ ms.locfileid: "53583079"
 1. 并排查看此命令提示符窗口和传感器数据命令提示符窗口。
 
     一个命令提示符窗口每五秒钟向数字孪生发送一次模拟的移动和二氧化碳数据。 另一命令以实时方式读取图形，根据随机的模拟数据来找出空气清新的可用房间。 它会根据上一次发送的传感器数据以近实时方式显示这其中的一个条件：
-    - 房间可用且空气清新。
-    - 房间已占用或空气质量差。
+   - 房间可用且空气清新。
+   - 房间已占用或空气质量差。
 
      ![获取空气清新的可用空间][3]
 
@@ -132,7 +132,7 @@ ms.locfileid: "53583079"
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| 名称 | 替换为 |
+| Name | 替换为 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | 数字孪生实例的名称 |
 | YOUR_LOCATION | 托管实例的服务器区域 |
@@ -149,7 +149,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 若要继续学习这些教程，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请删除通过本快速入门创建的所有资源。
 
 1. 删除下载示例存储库时创建的文件夹。
-1. 在 [Azure 门户](http://portal.azure.com)左侧的菜单中，选择“所有资源”。 然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”。
+1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。 然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”。
 
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。

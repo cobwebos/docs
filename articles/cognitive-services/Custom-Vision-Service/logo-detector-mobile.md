@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b749a85295e85ecde8d283ca02066a31be33666
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 259787a90b61b171f391dc02276214f17a57d0d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838810"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>教程：识别照片中的 Azure 服务徽标
 
@@ -101,7 +101,6 @@ ms.locfileid: "56673063"
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
 
-
 ## <a name="create-a-service-principal"></a>创建服务主体
 
 应用需要通过一个 Azure 服务主体帐户将服务部署到 Azure 订阅。 使用服务主体可以通过基于角色的访问控制向应用委托特定的权限。 若要了解详细信息，请参阅[服务主体指南](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals)。
@@ -131,6 +130,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
   ...
 }
 ```
+
 记下 `clientId` 和 `tenantId` 值。 将其添加到 *Source\VisualProvision\AppSettings.cs* 文件中的相应字段。
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
@@ -138,9 +138,10 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 ## <a name="run-the-app"></a>运行应用
 
 此时，已向应用授予以下对象的访问权限：
-* 训练的自定义视觉模型
-* 计算机视觉服务
-* 服务主体帐户 
+
+- 训练的自定义视觉模型
+- 计算机视觉服务
+- 服务主体帐户
 
 遵循以下步骤运行应用：
 
@@ -163,7 +164,6 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
     ![显示目标 Azure 订阅下拉菜单字段的应用屏幕](media/azure-logo-tutorial/app-az-subscription.png)
 
-    
 
 1. 设备上的相机将会激活。 拍摄所训练的某个 Azure 服务徽标的照片。 部署窗口应会提示你选择新服务的区域和资源组（就像从 Azure 门户部署时一样）。 
 
@@ -171,7 +171,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
     ![显示部署区域和资源组字段的应用屏幕](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>清理资源 
+## <a name="clean-up-resources"></a>清理资源
 
 如果已遵循本方案的所有步骤并已使用该应用将 Azure 服务部署到帐户，请转到 [Azure 门户](https://ms.portal.azure.com/)。 在其中取消不想使用的服务。
 

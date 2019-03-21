@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 10f3f7d6b878e8f1d4efee360e0f8a9967ac07bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: a325b976e657fbdc318a41b3b79b50e77a948e14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079837"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教程：使用 Azure 门户和主题/订阅更新清单
 
@@ -88,7 +88,7 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
    - 执行操作 2：添加自己的筛选器。
    - 执行操作 3：（可选）删除自己的筛选器。 请注意，这不会重新创建默认筛选器。
 
-    ![显示 2 的输出](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
+     ![显示 2 的输出](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
 
 8. 创建筛选器以后，即可发送消息。 按 4 即可观察到 10 条消息发送到主题：
 

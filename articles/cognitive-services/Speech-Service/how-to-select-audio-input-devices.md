@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e02c99edcc1774510f9d10a5d19f49c4fc0530a9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594077"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550664"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>使用语音 SDK 选择音频输入设备
 
@@ -223,7 +223,7 @@ namespace helloworld {
 
 设备 ID 是使用标准 ALSA 设备 ID 进行选择的。
 附加到系统的输入的 ID 包含在命令 `arecord -L` 的输出中。
-也可使用 [ALSA C 库](http://www.alsa-project.org/alsa-doc/alsa-lib/)来获取它们。
+也可使用 [ALSA C 库](https://www.alsa-project.org/alsa-doc/alsa-lib/)来获取它们。
 示例 ID 为 `hw:1,0` 和 `hw:CARD=CC,DEV=0`。
 
 ## <a name="audio-device-ids-on-macos"></a>macOS 上的音频设备 ID

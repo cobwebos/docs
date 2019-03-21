@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904501"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>教程 1：预测信用风险 - Azure 机器学习工作室
 
@@ -70,7 +70,7 @@ ms.locfileid: "56453607"
 ## <a name="upload"></a>上传现有数据
 
 若要开发用于信用风险的预测模型，我们需要用于训练和测试模型的数据。 对于本教程，我们将使用 UC Irvine 机器学习存储库的“UCI Statlog(德国信用数据)数据集”。 可在此处找到以下内容：  
-<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
+<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 使用名为 **german.data** 的文件。 将此文件下载到本地硬盘驱动器。  
 
@@ -212,18 +212,18 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 1. 回到“属性”窗格中，查找“新列名称”参数。 在此字段中，输入数据集中 21 列的名称列表，以逗号分隔并按列排序。 可以从 UCI 网站上的数据集文档中获取列名称，或为了方便起见，也可以复制并粘贴以下列表：  
 
-  ```   
-  Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
-  ```
+   ```   
+   Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
+   ```
 
-  “属性”窗格将如下所示：
+   “属性”窗格将如下所示：
 
-  ![编辑元数据的属性](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
+   ![编辑元数据的属性](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
-  > [!TIP]
-  > 若要验证列标题，请运行实验（单击实验画布下方的“运行”）。 完成运行后（[编辑元数据][edit-metadata]上会出现一个绿色对号），单击[编辑元数据][edit-metadata]模块的输出端口，并选择“可视化”。 可以用同样的方式查看任何模块的输出，以通过实验查看数据的进度。
-  > 
-  > 
+   > [!TIP]
+   > 若要验证列标题，请运行实验（单击实验画布下方的“运行”）。 完成运行后（[编辑元数据][edit-metadata]上会出现一个绿色对号），单击[编辑元数据][edit-metadata]模块的输出端口，并选择“可视化”。 可以用同样的方式查看任何模块的输出，以通过实验查看数据的进度。
+   > 
+   > 
 
 ### <a name="create-training-and-test-datasets"></a>创建训练和测试数据集
 

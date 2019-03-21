@@ -2,19 +2,19 @@
 title: 安装并使用 Azure Terraform Visual Studio Code 扩展
 description: 了解如何在 Visual Studio Code 中安装和使用 Azure Terraform 扩展。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, azure, devops, visual studio code, 扩展
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: 137a57638207a05f797692b25a5d5a31bd66ce3d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: b1102649e48af8cb36a64f1142c078bf9ebc0d99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074574"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006183"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>安装并使用 Azure Terraform Visual Studio Code 扩展
 
@@ -59,7 +59,7 @@ Microsoft Azure Terraform Visual Studio Code 扩展旨在让开发人员在创�
 
 ### <a name="install-graphviz"></a>安装 GraphViz
 
-要使用 Terraform 可视化函数，需要[安装 GraphViz](http://graphviz.org/)。
+要使用 Terraform 可视化函数，需要[安装 GraphViz](https://graphviz.org/)。
 
 >[!NOTE]
 >若要验证是否已安装 GraphViz，请打开终端窗口并输入 `dot -V`。
@@ -128,7 +128,7 @@ Microsoft Azure Terraform Visual Studio Code 扩展旨在让开发人员在创�
     ![另存为 main.tf](media/terraform-vscode-extension/tf-save-as-main.png)
 
 1. 选择“保存”。
-- 在菜单栏中，选择“文件”>“打开文件夹”。 导航到并选择所创建的新文件夹。
+1. 在菜单栏中，选择“文件”>“打开文件夹”。 导航到并选择所创建的新文件夹。
 
 ### <a name="run-terraform-init-command"></a>运行 Terraform init 命令
 

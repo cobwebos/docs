@@ -2,19 +2,19 @@
 title: 使用 Terraform 模块在 Azure 上创建 VM 群集
 description: 了解如何使用 Terraform 模块在 Azure 中创建 Windows 虚拟机群集
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 虚拟机, 网络, 模块
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: d5a820da94254fe0da416d9219f7582d3a4241cb
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c6aa780b04c85b8156463011c2b90da2da4541f6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696160"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776268"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>使用模块注册表通过 Terraform 创建 VM 群集
 

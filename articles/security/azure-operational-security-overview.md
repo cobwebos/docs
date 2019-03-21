@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116467"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241079"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -29,13 +29,13 @@ ms.locfileid: "56116467"
 
 IT 运营团队负责管理数据中心基础结构、应用程序和数据，包括这些系统的稳定性和安全性。 但是，若要获得日益增多的复杂 IT 环境的安全洞察信息，通常需要组织从多个安全性和管理系统收集数据。
 
-[Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
+[Microsoft Azure Monitor 日志](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)是基于云的 IT 管理解决方案，可帮助你管理和保护你的本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 可将来自托管源的数据收集到中央数据存储中。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集数据后，可分析、导出数据或发出警报。 
 
-可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 此外，Log Analytics 还能将数据收集与针对该数据执行的操作明确区分开来，以便能够针对所有类型的数据执行所有操作。
+可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 Azure Monitor 日志还清楚地分离开来收集的数据对该数据执行的操作，以便所有操作都都适用于所有类型的数据。
 
 ### <a name="automation"></a>自动化
 
@@ -93,7 +93,7 @@ Azure AD 中还包括了整套[标识管理功能](https://docs.microsoft.com/az
 >[!Note]
 >若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](https://docs.microsoft.com/azure/security-center/security-center-permissions)。
 
-安全中心使用 Microsoft Monitoring Agent。 这也是 Log Analytics 服务使用的代理。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
+安全中心使用 Microsoft Monitoring Agent。 这是 Azure Monitor 服务使用的同一代理。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

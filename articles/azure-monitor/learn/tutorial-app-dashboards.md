@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ce99e06ea1a8e72a8767367ddfd7bbb845c8400
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 3abe0511200bf5828b485b15a4b8a512731c4ffa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318417"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082120"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 
@@ -42,18 +42,18 @@ ms.locfileid: "54318417"
 ## <a name="create-a-new-dashboard"></a>创建新的仪表板
 单个仪表板可以包含来自多个应用程序、资源组和订阅的资源。  通过为应用程序创建新的仪表板开始本教程。  
 
-2.  在仪表板窗格中，选择“新建仪表板”。
+1. 在仪表板窗格中，选择“新建仪表板”。
 
-    ![新建仪表板](media/tutorial-app-dashboards/1newdashboard.png)
+   ![新建仪表板](media/tutorial-app-dashboards/1newdashboard.png)
 
-3. 键入仪表板的名称。
-4. 查看“磁贴库”，获取可以添加到仪表板中的各种磁贴。  除了从库添加磁贴之外，还可以将图表和其他视图直接从 Application Insights 固定到仪表板。
-5. 找到“Markdown”磁贴，并将其拖动到仪表板中。  该磁贴允许添加 markdown 格式的文本，这对于向仪表板添加描述性文本而言是理想选择。
-6. 将文本添加到磁贴属性，然后在仪表板画布上调整其大小。
+1. 键入仪表板的名称。
+1. 查看“磁贴库”，获取可以添加到仪表板中的各种磁贴。  除了从库添加磁贴之外，还可以将图表和其他视图直接从 Application Insights 固定到仪表板。
+1. 找到“Markdown”磁贴，并将其拖动到仪表板中。  该磁贴允许添加 markdown 格式的文本，这对于向仪表板添加描述性文本而言是理想选择。
+1. 将文本添加到磁贴属性，然后在仪表板画布上调整其大小。
     
     ![编辑 markdown 磁贴](media/tutorial-app-dashboards/2dashboard-text.png)
 
-6. 单击屏幕顶部的“完成自定义”以退出自定义模式。
+1. 单击屏幕顶部的“完成自定义”以退出自定义模式。
 
 ## <a name="add-health-overview"></a>添加运行状况概述
 只有静态文本的仪表板并不是很有趣，所以现在从 Application Insights 添加磁贴，以显示有关应用程序的信息。  你可以从“磁贴库”添加 Application Insights 磁贴，也可以直接从“Application Insights”屏幕固定它们。  该操作允许将已经熟悉的图表和视图固定到仪表板之前对其进行配置。  首先添加应用程序的标准运行状况概述。  这不需要进行配置，并允许在仪表板中进行最起码的自定义操作。

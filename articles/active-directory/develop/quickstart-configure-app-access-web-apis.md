@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08ad61070fd3bfb8472cffb51fd0b1bb4bcf169b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ef499e49fc4d1a0dc79dfc4efb818f7330b57b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169371"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995201"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>快速入门：将客户端应用程序配置为访问 Web API（预览版）
 
@@ -74,11 +74,11 @@ ms.locfileid: "56169371"
 
 1. 若要为 Web 和公共客户端应用程序添加自定义重定向 URI，请执行以下步骤：
 
-    1. 找到“重定向 URI”部分。
-    1. 选择要生成的应用程序的类型：“Web”或“公共客户端(移动和桌面)”。
-    1. 输入应用程序的重定向 URI。
-        * 对于 Web 应用程序，请提供应用程序的基 URL。 例如， http://localhost:31544 可以是本地计算机上运行的 Web 应用程序的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。
-        * 对于公共应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 https://MyFirstApp。
+   1. 找到“重定向 URI”部分。
+   1. 选择要生成的应用程序的类型：“Web”或“公共客户端(移动和桌面)”。
+   1. 输入应用程序的重定向 URI。
+      * 对于 Web 应用程序，请提供应用程序的基 URL。 例如，`http://localhost:31544` 可以是本地计算机上运行的 Web 应用程序的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。
+      * 对于公共应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 https://MyFirstApp。
 
 1. 若要从建议用于公共客户端（移动、桌面）的重定向 URI 中进行选择，请执行以下步骤：
 

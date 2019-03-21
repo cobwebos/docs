@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 82b3349afd10b585a10619229a2bc6d849d71524
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 44ee258567ca357687feb24337f2d5974e2532b0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246725"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57786441"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -36,7 +36,7 @@ az storage account create \
 
 ## <a name="specify-storage-account-credentials"></a>指定存储帐户凭据
 
-Azure CLI 需要存储帐户凭据才能执行本教程的大部分命令。 提供凭据的选项有多种，其中最简单方法之一是设置 `AZURE_STORAGE_ACCOUNT` 和 `AZURE_STORAGE_ACCESS_KEY` 环境变量。
+Azure CLI 需要存储帐户凭据才能执行本教程的大部分命令。 提供凭据的选项有多种，其中最简单方法之一是设置 `AZURE_STORAGE_ACCOUNT` 和 `AZURE_STORAGE_KEY` 环境变量。
 
 首先，使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令显示存储帐户密钥：
 
@@ -47,9 +47,9 @@ az storage account keys list \
     --output table
 ```
 
-现在，设置 `AZURE_STORAGE_ACCOUNT` 和 `AZURE_STORAGE_ACCESS_KEY` 环境变量。 可以通过使用 `export` 命令在 Bash Shell 中完成此操作:
+现在，设置 `AZURE_STORAGE_ACCOUNT` 和 `AZURE_STORAGE_KEY` 环境变量。 可以通过使用 `export` 命令在 Bash Shell 中完成此操作:
 
 ```bash
 export AZURE_STORAGE_ACCOUNT="mystorageaccountname"
-export AZURE_STORAGE_ACCESS_KEY="myStorageAccountKey"
+export AZURE_STORAGE_KEY="myStorageAccountKey"
 ```

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8225f5a093724c00dcc336d5dc2195f4addc998b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f0972e840fab3c624616ba8aa70bae74be5b1dc2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090468"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>快速入门：创建 ASP.NET Web 应用 
 
@@ -74,9 +74,9 @@ ms.locfileid: "56237818"
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>编辑 *CacheSecrets.config* 文件的步骤
 
-3. 在计算机上创建名为 *CacheSecrets.config* 的文件。将其放到不会连同示例应用程序的源代码一起签入的位置。 在本快速入门中，*CacheSecrets.config* 文件的路径为 *C:\AppSecrets\CacheSecrets.config*。
+1. 在计算机上创建名为 *CacheSecrets.config* 的文件。将其放到不会连同示例应用程序的源代码一起签入的位置。 在本快速入门中，*CacheSecrets.config* 文件的路径为 *C:\AppSecrets\CacheSecrets.config*。
 
-4. 编辑 *CacheSecrets.config* 文件。 然后添加以下内容：
+1. 编辑 *CacheSecrets.config* 文件。 然后添加以下内容：
 
     ```xml
     <appSettings>
@@ -84,14 +84,14 @@ ms.locfileid: "56237818"
     </appSettings>
     ```
 
-5. 将 `<cache-name>` 替换为缓存主机名。
+1. 将 `<cache-name>` 替换为缓存主机名。
 
-6. 将 `<access-key>` 替换缓存的主密钥。
+1. 将 `<access-key>` 替换缓存的主密钥。
 
     > [!TIP]
     > 在密钥轮换期间重新生成主访问密钥时，可以将辅助访问密钥用作备用密钥。
->
-7. 保存文件。
+   >
+1. 保存文件。
 
 ## <a name="update-the-mvc-application"></a>更新 MVC 应用程序
 

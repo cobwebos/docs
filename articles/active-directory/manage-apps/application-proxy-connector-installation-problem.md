@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75570cb289af7c7b718414974e5770f692233758
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 645ba6e8306b063892babe25fde41d8dd3144fee
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210860"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444275"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
 
@@ -64,7 +64,7 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>验证“admin”是否可用于安装连接器
 
-**目的：** 验证尝试安装连接器的用户是否是具有正确凭据的管理员。 目前，用户必须是应用程序管理员或全局管理员才能成功安装。
+**目的：** 验证尝试安装连接器的用户是否是具有正确凭据的管理员。 目前，用户必须是应用程序管理员或全局管理员安装成功。
 
 **若要验证凭据是否正确：**
 

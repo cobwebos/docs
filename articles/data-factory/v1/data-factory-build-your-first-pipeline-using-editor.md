@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 426a8f3df67ee00ded0591024447770e4cfedc32
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020704"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535988"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -148,7 +148,7 @@ ms.locfileid: "54020704"
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | Description |
+   | 属性 | 说明 |
    |:--- |:--- |
    | clusterSize |指定 HDInsight 群集的大小。 |
    | timeToLive | 指定 HDInsight 群集在被删除之前的空闲时间。 |
@@ -162,7 +162,7 @@ ms.locfileid: "54020704"
 
      c. HDInsight 群集在 Blob 存储中创建默认容器，该存储是在 JSON 属性 (**linkedServiceName**) 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (**timeToLive**)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
 
-     随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”模式。 使用 [Azure 存储资源管理器](http://storageexplorer.com/)等工具删除 Blob 存储中的容器。
+     随着处理的切片越来越多，Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”模式。 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Blob 存储中的容器。
 
      有关详细信息，请参阅[按需 HDInsight 链接服务](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。
 
@@ -209,7 +209,7 @@ ms.locfileid: "54020704"
     ```
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | Description |
+   | 属性 | 说明 |
    |:--- |:--- |
    | type |type 属性设置为 **AzureBlob**，因为数据位于 Blob 存储中。 |
    | linkedServiceName |表示前面创建的 AzureStorageLinkedService。 |
@@ -436,7 +436,7 @@ ms.locfileid: "54020704"
 本文创建了一个包含转换活动（HDInsight 活动）的管道，可在按需 HDInsight 群集上运行 Hive 脚本。 若要了解如何使用“复制”活动将数据从 Blob 存储复制到 SQL 数据库，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="see-also"></a>另请参阅
-| 主题 | Description |
+| 主题 | 说明 |
 |:--- |:--- |
 | [管道](data-factory-create-pipelines.md) |此文有助于了解数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |
 | [数据集](data-factory-create-datasets.md) |此文有助于了解数据工厂中的数据集。 |

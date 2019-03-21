@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bdc98a87a71dc7f8552f4bf869ec035409e0535e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091532"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843668"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>什么是 Azure 上的内容分发网络？
 内容分发网络 (CDN) 是高效地向用户分发 Web 内容的分布式服务器网络。 CDN 将缓存的内容存储在 接入点 (POP) 位置（靠近最终用户的边缘服务器），以最大程度地降低延迟。 
@@ -59,7 +59,7 @@ Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案�
  - 可以在 CDN 配置文件中创建的终结点的数量。 
  - 可以映射到终结点的自定义域的数量。
 
-有关 CDN 订阅限制的详细信息，请参阅 [CDN 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#cdn-limits)。
+有关 CDN 订阅限制的详细信息，请参阅 [CDN 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)。
     
 ## <a name="azure-cdn-features"></a>Azure CDN 功能
 Azure CDN 提供以下重要功能：
@@ -79,4 +79,3 @@ Azure CDN 提供以下重要功能：
 - 了解如何通过 [.NET](cdn-app-dev-net.md) 或 [Node.js](cdn-app-dev-node.md) 实现 Azure CDN 的自动化。
 - 若要在操作中了解 Azure CDN，请观看 [Azure CDN 视频](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest)。
 - 有关最新 Azure CDN 功能的信息，请参阅 [Azure CDN 博客](https://azure.microsoft.com/blog/tag/azure-cdn/)。
-

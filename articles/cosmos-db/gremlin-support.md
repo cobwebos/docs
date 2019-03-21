@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: e7230e9c4d97c1c3ba8f0cf20d32f5a59ea2219b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c4622293f05be5f4595136a5bbf194116fb2887c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081094"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
 Azure Cosmos DB 支持 [Apache Tinkerpop](https://tinkerpop.apache.org) 的图形遍历语言 [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)，该语言是一种 Gremlin API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
@@ -181,7 +181,7 @@ GraphSON 为顶点使用的属性如下：
 | `range` | 根据指定的值范围进行筛选| [range 步骤](https://tinkerpop.apache.org/docs/current/reference/#range-step) |
 | `repeat` | 将步骤重复指定的次数。 用于循环 | [repeat 步骤](https://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
 | `sample` | 用于对遍历返回的结果采样 | [sample 步骤](https://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | 用于投影遍历返回的结果 |  [select 步骤](https://tinkerpop.apache.org/docs/current/reference/#select-step) | |
+| `select` | 用于投影遍历返回的结果 |  [select 步骤](https://tinkerpop.apache.org/docs/current/reference/#select-step) |
 | `store` | 用于遍历返回的非阻塞聚合 | [store 步骤](https://tinkerpop.apache.org/docs/current/reference/#store-step) |
 | `tree` | 将顶点中的路径聚合到树中 | [tree 步骤](https://tinkerpop.apache.org/docs/current/reference/#tree-step) |
 | `unfold` | 将迭代器作为步骤展开| [unfold 步骤](https://tinkerpop.apache.org/docs/current/reference/#unfold-step) |

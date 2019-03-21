@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4f3f82f329e3ac8774978f6116629a4928c142ad
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 38be92a006ae6dbb7a550d2d91d886df820fb883
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261320"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093559"
 ---
 # <a name="create-a-cicd-pipeline-for-java-with-azure-devops-projects"></a>使用 Azure DevOps Projects 创建用于 Java 的 CI/CD 管道
 
@@ -55,7 +55,7 @@ Java 示例包括一个选项，可以从多个应用程序框架中进行选择
 
 1. 创建新的 Azure DevOps 组织，或者选择现有的组织。 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 为项目选择一个名称。 
+    a. 为项目选择一个名称。 
 
     b. 依次选择 Azure 订阅和位置、应用程序的名称、“完成”。  
     几分钟后，DevOps Projects 仪表板会显示在 Azure 门户中。 首先会在 Azure DevOps 组织的存储库中设置示例应用程序，然后执行生成并将应用程序部署到 Azure。 可以通过此仪表板查看代码存储库、CI/CD 管道以及 Azure 中的应用程序。
@@ -65,7 +65,7 @@ Java 示例包括一个选项，可以从多个应用程序框架中进行选择
 
     ![仪表板视图](_img/azure-devops-project-java/dashboardnopreview.png) 
     
- DevOps Projects 自动配置了 CI 生成和发布触发器。  现在可以与 Java 应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。
+   DevOps Projects 自动配置了 CI 生成和发布触发器。  现在可以与 Java 应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>提交代码更改并执行 CI/CD
 

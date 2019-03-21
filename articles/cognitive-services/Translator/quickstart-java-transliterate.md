@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 3ee586011c17125d5647d9a7baf946532190d8ca
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 58821492c6972eeef622f8dc8a777f8da70acdf1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729775"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895917"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-java"></a>快速入门：使用 Java 通过文本翻译 API 对文本进行直译
 
@@ -74,7 +74,7 @@ dependencies {
 为示例应用创建一个文件夹。 从工作目录中，运行：
 
 ```console
-mkdir -p src/main/java
+mkdir -p src\main\java
 ```
 
 接下来，在此文件夹中，创建一个名为 `Transliterate.java` 的文件。
@@ -184,7 +184,7 @@ gradle run
 ```json
 [
   {
-    "text": "konnnichiha",
+    "text": "konnichiwa",
     "script": "latn"
   }
 ]

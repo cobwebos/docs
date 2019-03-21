@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 243697c20f10a019a73326c3bd79e23fc3342640
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ddcaca46a2b8f9501337b3591d6ed666876e1de9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113594"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093763"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>教程：安装 Azure Data Box Edge（预览版）
 
@@ -94,15 +94,15 @@ ms.locfileid: "56113594"
     ![安装机架导轨](./media/data-box-edge-deploy-install/rack-mount-rail-1.png)
 
 2. 将外部导轨安装在机柜的竖杆上。 为帮助定位，导轨滑杆上标有“Front”（正面），这一端应安装在机箱的正面。    
-    1. 找到导轨组件前部和后部的导轨销。 延展导轨，使其占满机架立柱之间的距离。 先将外部导轨安装在机架的背面。 调整背面安装支架，将其定位在背面机架安装孔的内部。   
+   1. 找到导轨组件前部和后部的导轨销。 延展导轨，使其占满机架立柱之间的距离。 先将外部导轨安装在机架的背面。 调整背面安装支架，将其定位在背面机架安装孔的内部。   
 
-    2. 握紧背面支架上的触发器并推动，以露出金属挂钩。 对齐并将背面支架插入安装孔，然后释放触发器。
+   2. 握紧背面支架上的触发器并推动，以露出金属挂钩。 对齐并将背面支架插入安装孔，然后释放触发器。
 
-    3. 将正面支架与安装孔对齐。
+   3. 将正面支架与安装孔对齐。
 
-    4. 正面支架现在应固定在机架上。 （可选）如果需要，可以使用 M5 X 10L 螺丝将导轨紧固在立柱上。 
+   4. 正面支架现在应固定在机架上。 （可选）如果需要，可以使用 M5 X 10L 螺丝将导轨紧固在立柱上。 
 
-    ![安装机架导轨](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
+      ![安装机架导轨](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
 
 3. 若要在机箱上安装内部导轨，请确保内部导轨上的锁眼与机箱一侧的定位销对齐。 确保机箱定位销的头部探出内部导轨上的锁眼。 朝机箱正面方向拉动导轨，直到导轨锁入就位并发出卡嗒声。 针对另一个内部导轨重复上述过程。 将装有内部导轨的机箱推入滑杆，以完成机架安装。
 

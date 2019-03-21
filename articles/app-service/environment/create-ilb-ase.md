@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a707ae6959b035ae0bcc05ead027dabd528e1b59
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747503"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101527"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
 
@@ -80,11 +80,11 @@ ms.locfileid: "55747503"
 
    可以[将现有 DNS 名称映射到应用][customdomain]。 用于应用的自定义域名和 ASE 使用的域名不能重叠。 对于域名为 _contoso.com_ 的 ILB ASE，不能将如下所示的自定义域名用于应用：
 
-    * www.contoso.com
+   * www\.contoso.com
 
-    * abcd.def.contoso.com
+   * abcd.def.contoso.com
 
-    * abcd.contoso.com
+   * abcd.contoso.com
 
    如果知道应用的自定义域名，请为 ILB ASE 选择一个不会与这些自定义域名发生冲突的域。 在此示例中，可以为 ASE 的域使用类似于 *contoso internal.com* 的域名，因为它不会与以 *.contoso.com* 结尾的自定义域名发生冲突。
 
@@ -222,7 +222,7 @@ Azure App Service 提供大量安全措施，既可保护系统， 也有助于�
 ## <a name="get-started"></a>入门 ##
 
 * 若要开始使用 ASE，请参阅[应用服务环境简介][Intro]。
- 
+ 
 
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png

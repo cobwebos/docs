@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: c8d1f659078a36bc57e92b01e6e32502be7a0ea9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a35e65237a3f4278e9154daddff328887d9f36ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997385"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>教程：使用 Azure 门户诊断网络之间的通信问题
 
@@ -36,8 +36,8 @@ ms.locfileid: "54434744"
 ## <a name="prerequisites"></a>先决条件
 
 若要使用 VPN 诊断，必须有一个现成的正在运行的 VPN 网关。 如果没有现成的需要诊断的 VPN 网关，可以使用 [PowerShell 脚本](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)部署一个。 可通过以下程序运行 PowerShell 脚本：
-    - **本地安装的 PowerShell**：脚本要求使用 AzureRM PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 来创建与 Azure 的连接。
-    - **Azure Cloud Shell**：[Azure Cloud Shell](https://shell.azure.com/powershell) 安装并配置了最新版的 PowerShell，并允许登录到 Azure。
+- **本地安装的 PowerShell**：脚本要求使用 AzureRM PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 来创建与 Azure 的连接。
+- **Azure Cloud Shell**：[Azure Cloud Shell](https://shell.azure.com/powershell) 安装并配置了最新版的 PowerShell，并允许登录到 Azure。
 
 脚本需要大约一小时来创建 VPN 网关。 剩余步骤假定要诊断的网关是通过此脚本部署的。 如果改为诊断你自己的现有网关，结果会有所不同。
 
@@ -76,7 +76,7 @@ ms.locfileid: "54434744"
     可以看到“故障排除状态”为“不正常”，还可以在“状态”选项卡上看到问题的“摘要”和“详细信息”。
 10. 选择“操作”选项卡时，VPN 诊断会提供其他信息。 在下图所示的示例中，VPN 诊断指示应检查每个连接的运行状况：
 
-  ![操作](./media/diagnose-communication-problem-between-networks/action.png)
+    ![操作](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>诊断网关连接
 

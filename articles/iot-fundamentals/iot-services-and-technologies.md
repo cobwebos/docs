@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: e7ffd8f6f4f3aee376a09071fad0f1a36c23f1c4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: dd80095f50aa7bff488ac24e498afc0b41958dc0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694000"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403441"
 ---
 # <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>物联网 (IoT) 技术和解决方案：PaaS 和 SaaS
 
@@ -90,7 +90,7 @@ Azure IoT Central 是完全托管的 SaaS 解决方案，可以让你在没有�
 
 ### <a name="device-support"></a>设备支持
 
-可以利用 [Azure IoT 初学者套件](https://catalog.azureiotsuite.com/kits)或者从[设备目录](http://catalog.azureiotsuite.com/)的数百个 IoT 认证设备中进行选择，充满自信地开始你的 IoT 项目。 所有设备都与平台无关，并通过相关测试，可无缝连接到 IoT 中心。
+可以利用 [Azure IoT 初学者套件](https://catalog.azureiotsolutions.com/kits)或者从[设备目录](https://catalog.azureiotsolutions.com/)的数百个 IoT 认证设备中进行选择，充满自信地开始你的 IoT 项目。 所有设备都与平台无关，并通过相关测试，可无缝连接到 IoT 中心。
 使用开源[设备 SDK](/azure/iot-hub/iot-hub-devguide-sdks) 将所有设备连接到 Azure IoT。 SDK 支持多种操作系统（例如 Linux、Windows 和实时操作系统）和多种编程语言（例如 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp) 和 [Python](https://github.com/Azure/azure-iot-sdk-python)）。
 
 ### <a name="iot"></a>IoT 

@@ -1,19 +1,19 @@
 ---
 title: 使用 Ansible 创建、更改或删除 Azure 路由表
 description: 了解如何使用 Ansible 创建、更改或删除路由表
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, playbook, 网络, 路由, 路由表
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/17/2018
-ms.openlocfilehash: 29672a75408e42fb9239e5d826784b46e7280805
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 025a8182d32a7d0d00a48795c848d356eb1c3d4e
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332262"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792440"
 ---
 # <a name="create-change-or-delete-an-azure-route-table-using-ansible"></a>使用 Ansible 创建、更改或删除 Azure 路由表
 Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 若要更改 Azure 上的任何默认路由，可以创建一个[路由表](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。

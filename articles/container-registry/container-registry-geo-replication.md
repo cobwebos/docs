@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: d65267992876b3b3255a5eea22ff827522ddcdf1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674695"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541853"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -69,7 +69,7 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 ![在 Azure 门户中切换 SKU](media/container-registry-skus/update-registry-sku.png)
 
-若要为高级注册表配置异地复制，可通过 http://portal.azure.com 登录到 Azure 门户。
+若要为高级注册表配置异地复制，可通过 https://portal.azure.com 登录到 Azure 门户。
 
 导航到 Azure 容器注册表，然后选择“复制”：
 

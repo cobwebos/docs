@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 24c47acd028aa767d1f02dd7c4119692eeac479a
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 35159a1630c7f1268119cd55cc6e0ac99dfd7b5f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119201"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Python 应用
 
@@ -37,10 +37,10 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 - 如果尚未安装 Visual Studio Code，可为平台（Windows、Mac、Linux）快速安装 [VS Code](https://code.visualstudio.com/Download)。
 
 - 请务必通过安装任一常用 Python 扩展来添加 Python 语言支持。
-    1. 选择扩展。
-    2. 通过在命令面板 `Ctrl+Shift+P` 中键入 `ext install` 来安装扩展。
+  1. 选择扩展。
+  2. 通过在命令面板 `Ctrl+Shift+P` 中键入 `ext install` 来安装扩展。
 
-    本文档中的示例使用 Don Jayamanne 的常用、全功能型 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)。
+     本文档中的示例使用 Don Jayamanne 的常用、全功能型 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)。
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 

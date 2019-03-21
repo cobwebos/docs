@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.reviewer: sngun
-ms.openlocfilehash: 9a47333c8cd8968c007a2d328e81d8ea8585971c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 28e9b420f3abc972e047af72e1b5bc755e7f9d2b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037984"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001640"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教程：使用表 API 查询 Azure Cosmos DB
 
@@ -78,7 +78,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 | PartitionKey | RowKey | 电子邮件 | PhoneNumber |
 | --- | --- | --- | --- |
-| Ben |Smith | Ben@contoso.com| 425-555-0102 |
+| Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
 ## <a name="query-by-using-linq"></a>使用 LINQ 查询 
 还可使用 LINQ 进行查询，这会转换为相应的 OData 查询表达式。 以下示例演示如何使用 .NET SDK 生成查询：

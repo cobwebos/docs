@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: cf16f27a8d39871491b7cf46a509b9714a669667
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873808"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086609"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>教程：确定常见意向和实体
 
@@ -55,13 +55,13 @@ LUIS 提供几个预生成意向，以便提供常见用户意向。
 
 1. 选择以下意向，然后选择“完成”： 
 
-    * Utilities.Cancel
-    * Utilities.Confirm
-    * Utilities.Help
-    * Utilities.StartOver
-    * Utilities.Stop
+   * Utilities.Cancel
+   * Utilities.Confirm
+   * Utilities.Help
+   * Utilities.StartOver
+   * Utilities.Stop
 
-    这些意向有助于确定用户在聊天中所处的位置及其需求。 
+     这些意向有助于确定用户在聊天中所处的位置及其需求。 
 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>添加预生成的实体以帮助提取常见数据类型
@@ -74,12 +74,12 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 1. 从预生成的实体列表中选择以下实体，然后选择“完成”：
 
-    * **[PersonName](luis-reference-prebuilt-person.md)** 
-    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
+   * **[PersonName](luis-reference-prebuilt-person.md)** 
+   * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-    ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
+     ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-    这些实体可帮助你在客户端应用程序中添加名称和位置识别。
+     这些实体可帮助你在客户端应用程序中添加名称和位置识别。
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向 
 
