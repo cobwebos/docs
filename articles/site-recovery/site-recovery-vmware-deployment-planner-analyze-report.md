@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: 7504d23cbaf8a497e6ea86b5a383413474c0d034
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cd486fa504ac819684d8c547e7a0f740b3eed4e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329961"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109621"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析 Azure Site Recovery 部署规划器报告，以便从 VMware 灾难恢复到 Azure
 
@@ -41,6 +41,9 @@ ms.locfileid: "56329961"
 **每日观察到的典型数据变动量(GB)**：在所有分析日期观察到的平均数据变动量。 此数字用作输入之一，确定要在部署中使用的配置服务器和附加进程服务器的数目。
 
 ## <a name="recommendations"></a>建议
+
+>[!Note]
+>当复制直接到托管磁盘时，忽略对存储帐户数的建议。
 
 VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细信息：
 
@@ -97,7 +100,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 ![Deployment Planner 中的所需存储帐户](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
 ### <a name="required-number-of-azure-cores"></a>所需的 Azure 核心数
-此结果是在对所有兼容的 VM 进行故障转移或测试性故障转移之前需要设置的核心总数。 如果订阅中能够使用的核心太少，在执行测试性故障转移或故障转移时，Site Recovery 将无法创建 VM。
+此结果是在对所有兼容的 VM 进行故障转移或测试性故障转移之前需要设置的核心总数。 如果订阅中能够使用的核心太少，在执行测试性故障转移或故障转移时，Site Recovery 无法创建 VM。
 
 ![Deployment Planner 中的所需 Azure 核心数](media/site-recovery-vmware-deployment-planner-analyze-report/required-cores-v2a.png)
 
@@ -155,6 +158,9 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 ![500 Mbps 带宽的可实现 RPO](media/site-recovery-vmware-deployment-planner-analyze-report/achievable-rpo-v2a.png)
 
 ## <a name="vm-storage-placement"></a>VM-存储位置
+
+>[!Note]
+>当复制直接到托管磁盘时，您不必担心存储帐户数。 对于存储，在存储类型 （标准或高级） 上使用仅建议。 适用于托管磁盘相同的类型。
 
 ![VM-存储位置](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 

@@ -3,16 +3,16 @@ title: 将 Azure 存储用作 Terraform 后端
 description: 在 Azure 存储中存储 Terraform 状态的简介。
 services: terraform
 author: tomarchermsft
-ms.service: terraform
+ms.service: azure
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tarcher
-ms.openlocfilehash: 149d2bb5ca26afd530be60c5a22e449b8b2ae1ff
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
+ms.openlocfilehash: 7145a50bc53fd28afafd3de9c724b5e5f71624fa
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381878"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762292"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>在 Azure 存储中存储 Terraform 状态
 

@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c32662b446df10649617570c63ce534071ed7d27
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540308"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957515"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
@@ -48,7 +48,7 @@ ms.locfileid: "53540308"
 
     ![更改诊断日志的状态](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  设置所需的存档目标；例如存储帐户、事件中心或 Azure Log Analytics。
+5.  设置所需; 的存档目标例如，存储帐户、 事件中心或 Azure Monitor 的日志。
 
 6.  保存新的诊断设置。
 
@@ -71,7 +71,7 @@ ms.locfileid: "53540308"
 
 存档日志 JSON 字符串包括下表列出的元素：
 
-名称 | Description
+名称 | 描述
 ------- | -------
 TaskName | 失败的任务的说明。
 ActivityId | 用于跟踪的内部 ID。
@@ -109,7 +109,7 @@ category | ArchiveLogs
 
 运行日志 JSON 字符串包括下表列出的元素：
 
-名称 | Description
+名称 | 描述
 ------- | -------
 ActivityId | 用于跟踪目的的内部 ID。
 EventName | 操作名称。  

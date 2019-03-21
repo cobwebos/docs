@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
-ms.translationtype: HT
+ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035612"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821655"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
 
@@ -49,7 +49,7 @@ VPN 网关连接涉及以下组件：
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>计算最大的预期流入/流出量
 
 1.  确定应用程序的基准吞吐量需求。
-2.  确定 Azure VPN 网关的吞吐量限制。 有关帮助，请参阅[规划和设计 VPN 网关](vpn-gateway-plan-design.md)的“按 SKU 和 VPN 类型估计的吞吐量”部分。
+2.  确定 Azure VPN 网关的吞吐量限制。 有关帮助，请参阅的"网关 Sku"部分[关于 VPN 网关](vpn-gateway-about-vpngateways.md#gwsku)。
 3.  确定与 VM 大小相应的 [Azure VM 吞吐量指南](../virtual-machines/virtual-machines-windows-sizes.md)。
 4.  确定 Internet 服务提供商 (ISP) 的带宽。
 5.  计算预期吞吐量 -（VM、网关、ISP）的最小带宽 * 0.8。
@@ -77,7 +77,7 @@ VPN 网关连接涉及以下组件：
 
 2. 在两个节点上，为端口 5001 启用防火墙例外。
 
-    **Windows：** 以管理员身份运行以下命令：
+    **Windows**：以管理员身份运行以下命令：
 
     ```CMD
     netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
@@ -89,7 +89,7 @@ VPN 网关连接涉及以下组件：
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
      
-    **Azure Linux：** Azure Linux 映像都具有限制性较低的防火墙。 如果有应用程序在侦听某个端口，则流量会被允许通过。 受保护的自定义映像可能需要显式打开端口。 常见的 Linux 操作系统层防火墙包括 `iptables`、`ufw` 或 `firewalld`。
+    **Azure Linux:** Azure Linux 映像都具有宽松的防火墙。 如果有应用程序在侦听某个端口，则流量会被允许通过。 受保护的自定义映像可能需要显式打开端口。 常见的 Linux 操作系统层防火墙包括 `iptables`、`ufw` 或 `firewalld`。
 
 3. 在服务器节点上，更改为从中提取 iperf3.exe 的目录。 然后，在服务器模式下运行 iPerf 并将其设置为侦听端口 5001，如以下命令所示：
 
@@ -117,7 +117,7 @@ VPN 网关连接涉及以下组件：
     iperf3.exe -c IPofTheServerToReach -t 30 -p 5001 -P 32  >> output.txt
     ```
 
-6. 完成上述步骤后，请调换角色以使服务器节点变为客户端节点（反之亦然），并执行相同的步骤。
+6. 完成上述步骤后，请调换角色以使服务器节点变为客户端（反之亦然），然后执行相同的步骤。
 
 ## <a name="address-slow-file-copy-issues"></a>解决文件复制速度缓慢问题
 在使用 Windows 资源管理器或通过 RDP 会话拖放时，文件的复制速度可能会很缓慢。 此问题通常是由以下的一个或两个因素造成的：

@@ -7,12 +7,12 @@ ms.author: maghan
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 9d80eddffaf376b6f6f0090dce74a4884b291531
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: de67ca0c209f9a61b00c5451a27a1198d0de3724
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405523"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532895"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>如何保护对安全访问数据目录和数据资产的访问
 > [!IMPORTANT]
@@ -23,12 +23,12 @@ ms.locfileid: "47405523"
 ## <a name="catalog-users-and-permissions"></a>目录用户和权限
 为用户或组授予对数据目录的访问权并设置权限：
 
-1. 在[数据目录主页](http://www.azuredatacatalog.com)的工具栏上，单击“设置”。
+1. 在[数据目录主页](https://www.azuredatacatalog.com)的工具栏上，单击“设置”。
 
     ![数据目录 - 设置](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 2. 在设置页面中，展开“目录用户”部分。
     ![目录用户 - 添加](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 在与目录关联的 Azure Active Directory (AAD) 中输入完全限定用户名或安全组名称。 若要添加多个用户或组，请使用逗号（“,”）作为分隔符。
     ![目录用户 - 用户或组](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
 5. 在文本框外按 Enter 或 Tab。 

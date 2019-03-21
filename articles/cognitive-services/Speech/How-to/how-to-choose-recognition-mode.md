@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: ed270ed19959240bc1b90ba6171792cf4369e273
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 99e69691d9904285ecff356523813b426c98fca2
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221584"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669714"
 ---
 # <a name="bing-speech-recognition-modes"></a>必应语音识别模式
 
@@ -23,7 +24,7 @@ ms.locfileid: "55221584"
 
 必应语音转文本 API 支持多种语音识别模式。 请选择在应用中识别效果最佳的模式。
 
-| Mode | 说明 |
+| Mode | 描述 |
 |---|---|
 | *交互* | 适用于交互用户应用方案的“命令和控制”识别。 用户说出较短的短语，作为向应用发出的命令。 |
 | 听写 | 适用于听写方案的连续识别。 用户说出以文本形式显示的较长句子。 用户采用更正式的说话风格。 |

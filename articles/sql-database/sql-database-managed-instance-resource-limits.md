@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: c2cc1b5829f3bb530c01e2bfc3538006bb8663cb
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.date: 02/27/2019
+ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339305"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223812"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -55,8 +55,8 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 | 每个数据库的最大存储 | 由每个实例的最大存储大小决定 | 由每个实例的最大存储大小决定 |
 | 每个实例的数据库数目上限 | 100 | 100 |
 | 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
-| 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines)| 11 K - 110 K（每个 vCore 为 1,375） |
-|日志吞吐量 | 22 MB/s（每个实例） | 3 MB/s（每个 vCore）<br/>最大 48 MB/s |
+| 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K（每个 vCore 为 1,375） |
+| 日志吞吐量 | 22 MB/s（每个实例） | 3 MB/s（每个 vCore）<br/>每个实例的最大值为 48 MB/秒|
 | 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s（每个 vCore） |
 | IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
 | 最大 tempDB 大小 | 192 - 1,920 GB（每个 vCore 为 24 GB） | 无约束 - 受最大实例存储大小限制 |
@@ -90,6 +90,9 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 - **子网限制**：在单一区域中部署托管实例的子网数上限。
 - **实例数目限制**：可在单一区域中部署的实例数上限。
 
+> [!Note]
+> 这些限制是默认设置，而非技术限制。 限制可以增加按需通过创建特殊[在 Azure 门户中的支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)如果您需要在当前区域中的多个托管实例。 或者，可以在另一个 Azure 区域中创建新的托管实例，而不需要发送支持请求。
+
 下表显示支持的订阅所适用的默认区域限制：
 
 |订阅类型| 托管实例子网数上限 | 实例数上限 |GP 托管实例数上限*|BC 托管实例数上限*|
@@ -102,12 +105,12 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 
 \* 可在一个子网中部署 1 个 BC 或 4 个 GP 实例，使子网中的“实例单位”总数绝不超过 4 个。
 
-** 如果一个服务层中没有任何实例，就会应用另一个服务层中的实例数上限。 如果打算在相同的子网内混用 GP 和 BC 实例，请参考下一部分以了解允许的组合方式。 简单的规则是，子网总数不能超过 3 个，实例单位总数不能超过 12 个。
+** 如果一个服务层中没有任何实例，就会应用另一个服务层中的实例数上限。 如果打算在相同的子网内混用 GP 和 BC 实例，请参考下一部分以了解允许的组合方式。 简单的规则是，子网总数不能超过 3 个，且实例单元的总数不能超过 12 个。
 
-如果在当前区域中需要更多托管实例，可以[在 Azure 门户中创建特殊支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)，以提高这些限制。 或者，可以在另一个 Azure 区域中创建新的托管实例，而不需要发送支持请求。
+
 
 > [!IMPORTANT]
-> 在规划部署时，请考虑到业务关键 (BC) 实例（由于增加了冗余）通常都会使用比常规用途 (GP) 实例多 4 倍的容量。 因此，进行计算时，1 个 GP 实例 = 1 个实例单位，而 1 个 BC 实例 = 4 个实例单位。 若要简化以默认限制为准的耗用量分析，请跨区域中所有部署了托管实例的子网汇总实例单位，并将结果与你的订阅类型的实例单位限制相比较。
+> 规划部署时，请考虑到业务关键 (BC) 实例（由于增加了冗余性）通常使用比常规用途 (GP) 实例多 4 倍的容量。 因此，进行计算时，1 个 GP 实例 = 1 个实例单位，而 1 个 BC 实例 = 4 个实例单位。 若要简化以默认限制为准的耗用量分析，请跨区域中所有部署了托管实例的子网汇总实例单位，并将结果与你的订阅类型的实例单位限制相比较。
 
 ## <a name="strategies-for-deploying-mixed-general-purpose-and-business-critical-instances"></a>部署混合的常规用途和业务关键实例的策略
 
@@ -120,7 +123,7 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 
 |子网数|子网 1|子网 2|子网 3|
 |:---|:---|:---|:---|
-|1|1 个 BC 和最多 8 个 GP<br>2 个 BC 和最多 4 个 GP|不适用| 不适用|
+|第|1 个 BC 和最多 8 个 GP<br>2 个 BC 和最多 4 个 GP|不适用| 不适用|
 |2|0 个 BC，最多 4 个 GP|1 个 BC，最多 4 个 GP<br>2 个 BC，0 个 GP|不适用|
 |2|1 个 BC，0 个 GP|0 个 BC，最多 8 个 GP<br>1 个 BC，最多 4 个 GP|不适用|
 |2|2 个 BC，0 个 GP|0 个 BC，最多 4 个 GP|不适用|

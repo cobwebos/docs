@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 2eb7fb82b358d4ec8628bfa546b572ee3cbe47fa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
-ms.translationtype: HT
+ms.openlocfilehash: 136c7e497b24db99b230884514d4a286bbeb64be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40210126"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58114295"
 ---
 创建虚拟机 (VM)、重新启动已停止（解除分配）的 VM 和重设 VM 大小时，Microsoft Azure 会为订阅分配计算资源。 我们会不断投入其他基础结构和功能，确保始终提供可用于支持客户需求的所有 VM 类型。 但是，偶尔可能因特定区域中前所未有的 Azure 服务需求增长而遇到资源分配失败的情况。 当尝试在区域中创建或启动 VM，同时 VM 显示以下错误代码和消息时，会出现此问题：
 
-错误代码：AllocationFailed 或 ZonalAllocationFailed
+**错误代码**：AllocationFailed 或 ZonalAllocationFailed
 
-错误消息：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 http://aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
+**错误消息**：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 http://aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
 
 本文说明一些常见分配故障的原因，并建议可能的补救方法。
 
@@ -41,7 +41,7 @@ ms.locfileid: "40210126"
 如果 VM 可以属于不同的可用性集，请在不同的可用性集（位于相同区域）中创建 VM。 然后，可以将这个新的 VM 添加到相同的虚拟网络中。
 
 停止（解除分配）同一可用性集中的所有 VM，并重新启动每个 VM。
-要停止：单击“资源组”> [资源组] >“资源”> [可用性集] >“虚拟机”> [虚拟机] >“停止”。
+若要停止：单击“资源组”> [资源组] >“资源”> [可用性集] >“虚拟机”> [虚拟机] >“停止”。
 所有 VM 都停止后，选中第一个 VM 并单击“启动”。
 此步骤可确保运行新的分配尝试，而且可以选择有足够容量的新群集。
 
@@ -54,7 +54,7 @@ ms.locfileid: "40210126"
 ### <a name="workaround"></a>解决方法
 
 停止（解除分配）同一可用性集中的所有 VM，并重新启动每个 VM。
-要停止：单击“资源组”> [资源组] >“资源”> [可用性集] >“虚拟机”> [虚拟机] >“停止”。
+若要停止：单击“资源组”> [资源组] >“资源”> [可用性集] >“虚拟机”> [虚拟机] >“停止”。
 所有 VM 都停止后，选中第一个 VM 并单击“启动”。
 这可确保运行新的分配尝试，而且可以选择有足够容量的新群集。
 
@@ -75,14 +75,14 @@ ms.locfileid: "40210126"
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>针对较旧 VM 大小（Av1、Dv1、DSv1、D15v2、DS15v2 等）的分配失败
 
-随着我们扩展 Azure 基础结构，会部署旨在支持最新虚拟机类型的更高版本硬件。 某些较旧 VM 系列不在我们最新的基础结构上运行。 为此，客户偶尔可能遇到这些旧版 SKU 的分配失败。 若要避免此问题，鼓励使用旧版虚拟机系列的客户考虑根据以下建议移动到等效的新版 VM：这些 VM 针对最新硬件进行了优化，让你感受更高的性价比。 
+随着我们扩展 Azure 基础结构，会部署旨在支持最新虚拟机类型的更高版本硬件。 某些较旧 VM 系列不在我们最新的基础结构上运行。 为此，客户偶尔可能遇到这些旧版 SKU 的分配失败。 为避免此问题，建议使用旧版虚拟机系列的客户考虑按以下建议迁移至等效的新版 VM：这些 VM 已针对最新的硬件进行优化，具有更高的性价比。 
 
 |旧版 VM 系列/大小|建议使用新版 VM 系列/大小|详细信息|
 |----------------------|----------------------------|--------------------|
 |Av1 系列|[Av2 系列](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 Dsv3 系列](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 Dsv3 系列](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
 |Dv1 或 DSv1 系列（D11 到 D14）|[Ev3 或 Esv3 系列](../articles/virtual-machines/windows/sizes-memory.md#esv3-series)|
-|D15v2 或 DS15v2|如果你使用资源管理器部署模型以便充分利用更大的 VM 大小，请考虑移动到 E16v3/E16sv3 或 E32v3/E32sv3。 这些为在最新硬件上运行而设计。 如果使用资源管理器部署模型以确保你的 VM 实例独立于单个客户专用的硬件，请考虑移动到新的独立 VM 大小 E64i_v3 或 E64is_v3，它们为在最新硬件上运行而设计。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
+|D15v2 或 DS15v2|如果使用资源管理器部署模型以便充分利用更大的 VM 大小，请考虑移动到 E16v3/E16sv3 或 E32v3/E32sv3。 这些为在最新硬件上运行而设计。 如果使用资源管理器部署模型以确保你的 VM 实例独立于单个客户专用的硬件，请考虑移动到新的独立 VM 大小 E64i_v3 或 E64is_v3，它们为在最新硬件上运行而设计。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大型部署（超过 500 个内核）的分配失败

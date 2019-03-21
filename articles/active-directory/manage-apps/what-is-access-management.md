@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14957a94dbe8330553a4090e22d80d6cc2ee06eb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 70513675d09a663c65c6f5b3e18059467a8ba388
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217320"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109318"
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 将应用集成到组织的标识系统之后，进行中的访问管理、使用评估和报告将持续成为一项挑战。 在许多情况下，IT 管理员或支持人员需要对应用访问管理持续采取主动措施。 有时，分配由一般或分部 IT 小组执行。 分配决策往往由业务决策人委派，在 IT 人员进行分配之前需要其批准。  其他组织会投资来与现有自动化标识与访问管理系统集成，例如基于角色的访问控制 (RBAC) 或基于属性的访问控制 (ABAC)。 集成与规则开发往往是针对性的且费用高昂。 对任一管理方式进行监视或报告本身是一项独立、昂贵且复杂的投资。
@@ -29,7 +29,7 @@ ms.locfileid: "56217320"
 
 * [添加新的或现有的应用程序](configure-single-sign-on-portal.md)
 
- Azure AD 的应用程序分配着重于两种主要分配模式：
+  Azure AD 的应用程序分配着重于两种主要分配模式：
 
 * **单独分配**：具有目录全局管理员权限的 IT 管理员可以选择单个用户帐户并授予这些用户访问应用程序的权限。
 * **基于组的分配（仅限付费版 Azure AD）**：具有目录全局管理员权限的 IT 管理员可以将组分配给应用程序。 特定用户的访问权限取决于用户尝试访问应用程序时是否为组的成员。 换而言之，管理员可以有效地创建分配规则，指明“分配组的任何现有成员都有权访问应用程序”。 使用此分配选项，管理员可以受益于 Azure AD 组管理选项，包括[基于属性的动态组](../fundamentals/active-directory-groups-create-azure-portal.md)、外部系统组（例如，本地 Active Directory 或 Workday）、管理员管理的组或自助管理组。 可以轻松地将单个组分配给多个应用程序，确保具有分配关联性的应用程序可以共享分配规则，从而降低总体管理复杂性。 请注意，目前不支持使用嵌套的组成员身份来对应用程序进行基于组的分配。

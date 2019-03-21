@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: deb3b155af464e69c6811414135913917cf2193a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: fb8dedac8b795ec127d7b4a14728d73c9397a1dd
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716457"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807399"
 ---
 # <a name="configure-apps-in-azure-app-service"></a>在 Azure 应用服务中配置应用
 
@@ -106,7 +106,7 @@ ms.locfileid: "53716457"
 使用此区域可添加自定义脚本处理器，以处理特定文件扩展名的请求。 
 
 * **扩展名**。 要处理的扩展名，例如 *.php 或 handler.fcgi。 
-* **脚本处理器路径**。 脚本处理器的绝对路径。 匹配该扩展名的文件请求由脚本处理器处理。 使用路径 `D:\home\site\wwwroot` 表示应用的根目录。
+* **脚本处理器路径**。 脚本处理器的绝对路径。 与文件扩展名匹配的文件请求由脚本处理器处理。 使用路径 `D:\home\site\wwwroot` 表示应用的根目录。
 * **其他参数**。 脚本处理器的可选命令行参数 
 
 ### <a name="virtual-applications-and-directories"></a>虚拟应用程序和目录
@@ -170,6 +170,7 @@ ms.locfileid: "53716457"
 * [为 Azure 应用服务中的应用启用 HTTPS]
 * [在 Azure 应用服务中缩放应用]
 * [在 Azure 应用服务中监视基础知识]
+* [更改与 applicationHost.xdt applicationHost.config 设置](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 

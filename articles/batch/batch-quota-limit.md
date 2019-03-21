@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5194fa73d246cee039e113207bbde277b06d7130
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: f8941f84e85f330713cb4b263f2154acb80b520c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753193"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532387"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -91,7 +91,7 @@ ms.locfileid: "53753193"
 1. 选择“新建支持请求” > “基本”。
 1. 在“基本信息”中：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 “问题类型” > “配额”
+    a. “问题类型” > “配额”
    
     b. 选择订阅。
    
@@ -102,14 +102,14 @@ ms.locfileid: "53753193"
     单击“下一步”。
 1. 在“问题”中：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 根据[业务影响情况][support_sev]选择“严重性”。
+    a. 根据[业务影响情况][support_sev]选择“严重性”。
    
     b. 在“详细信息”中，指定想要更改的每个配额、Batch 帐户名和新限制。
    
     单击“下一步”。
 1. 在“联系人信息”中：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“首选联系方法”。
+    a. 选择“首选联系方法”。
    
     b. 输入并确认所需的联系人详细信息。
    
@@ -135,6 +135,6 @@ ms.locfileid: "53753193"
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
-[support_sev]: http://aka.ms/supportseverity
+[support_sev]: https://aka.ms/supportseverity
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.png

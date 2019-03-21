@@ -4,7 +4,7 @@ description: 了解如何购买应用服务证书并将其绑定到应用服务�
 services: app-service
 documentationcenter: .net
 author: cephalin
-manager: cfowler
+manager: jpconnoc
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 29e6215358eaf544f32f585744ed36f30822d134
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446743"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216571"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -30,7 +30,7 @@ ms.locfileid: "56446743"
 > App Service 证书可用于任何 Azure 或非 Azure 服务，且不限于应用服务。 为此，需要创建应用服务证书的本地 PFX 副本，以便随时随地使用它。 有关详细信息，请参阅[创建应用服务证书的本地 PFX 副本](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)。
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 按照本操作方法指南操作：
 
@@ -47,14 +47,14 @@ ms.locfileid: "56446743"
 
 使用下表来帮助配置证书。 完成后，单击“创建”。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |-|-|
-| Name | 应用服务证书证书的友好名称。 |
+| 名称 | 应用服务证书证书的友好名称。 |
 | 裸域主机名 | 如果在此处指定根域，则会获得一个证书，该证书*同时*对根域和 `www` 子域提供保护。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。 |
 | 订阅 | 托管 Web 应用的数据中心。 |
 | 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
 | 证书 SKU | 确定要创建的证书类型是标准证书还是[通配符证书](https://wikipedia.org/wiki/Wildcard_certificate)。 |
-| 法律条款 | 单击以确认你同意法律条款。 |
+| 法律条款 | 单击以确认你同意法律条款。 从 GoDaddy 获取证书。 |
 
 ## <a name="store-in-azure-key-vault"></a>存储在 Azure Key Vault 中
 
@@ -68,9 +68,9 @@ ms.locfileid: "56446743"
 
 在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库。 如果选择创建新的保管库，请使用下表以帮助配置保管库，然后单击“创建”。 查看如何在同一订阅和资源组中创建新的 Key Vault。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |-|-|
-| Name | 由字母数字字符和短划线组成的唯一名称。 |
+| 名称 | 由字母数字字符和短划线组成的唯一名称。 |
 | 资源组 | 建议选择与应用服务证书相同的资源组。 |
 | 位置 | 选择与应用服务应用相同的位置。 |
 | 定价层 | 有关信息，请参阅 [Azure Key Vault 定价详细信息](https://azure.microsoft.com/pricing/details/key-vault/)。 |
@@ -111,38 +111,45 @@ ms.locfileid: "56446743"
 
 使用下表帮助在“SSL 绑定”对话框中配置绑定，然后单击“添加绑定”。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |-|-|
 | 主机名 | 要为其添加 SSL 绑定的域名。 |
 | 私有证书指纹 | 要绑定的证书。 |
-| SSL 类型 | <ul><li>**SNI SSL** - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。</li><li>基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)中的步骤进行操作。 </li></ul> |
+| SSL 类型 | <ul><li>**SNI SSL** - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（可以在[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。</li><li>基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)中的步骤进行操作。 </li></ul> |
 
 ## <a name="verify-https-access"></a>验证 HTTPS 访问
 
 使用 `HTTPS://<domain_name>`（而非 `HTTP://<domain_name>`）访问应用，以验证是否已正确配置证书。
 
-## <a name="rekey-and-sync-certificate"></a>重新生成密钥并同步证书
+## <a name="rekey-certificate"></a>为证书重新生成密钥
 
-如果需要重新生成证书，选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页的证书，然后选择左侧导航窗格的“重新生成密钥和同步”。
+如果您认为您的证书的专用密钥已泄漏，可以重新生成你的证书。 选择中的证书[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页上，然后选择**重新生成密钥并同步**从左侧导航栏中。
 
-单击“重新生成密钥”按钮启动该过程。 此过程需要 1 - 10 分钟才能完成。
+单击**重新生成密钥**启动进程。 此过程需要 1 - 10 分钟才能完成。
 
 ![插入重新生成 SSL 密钥的图像](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
 通过重新生成证书的密钥，将使用证书颁发机构颁发的新证书滚动更新现有证书。
 
+重新生成密钥操作完成后，单击**同步**。同步操作会自动更新应用服务中的证书的主机名绑定，而不会导致任何停机时间缩到您的应用程序。
+
+> [!NOTE]
+> 如果您不单击**同步**，应用服务会自动在 48 小时内同步你的证书。
+
 ## <a name="renew-certificate"></a>续订证书
 
-若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 
+若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。
 
 选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 60 天自动续订。
 
-![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+![自动续订证书](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
 若要改为手动续订证书，请单击“手动续订”。 可以请求在到期前 60 天手动续订证书。
 
+续订操作完成后，单击**同步**。同步操作会自动更新应用服务中的证书的主机名绑定，而不会导致任何停机时间缩到您的应用程序。
+
 > [!NOTE]
-> 无论是手动续订还是自动续订，续订的证书都不会自动绑定到应用。 若要将其绑定到应用，请参阅[续订证书](./app-service-web-tutorial-custom-ssl.md#renew-certificates)。 
+> 如果您不单击**同步**，应用服务会自动在 48 小时内同步你的证书。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

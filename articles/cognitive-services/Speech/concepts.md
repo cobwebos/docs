@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816199"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670405"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -189,7 +190,7 @@ Microsoft 语音服务可在听录响应中返回各种有效负载格式。 所
 
 可通过指定 `format` URL 查询参数来控制短语结果格式。 默认情况下，该服务返回 `simple` 结果。
 
-| 格式 | 说明 |
+| 格式 | 描述 |
 |-----|-----|
 | `simple` | 简化的短语结果，包含识别状态和已识别文本的显示形式。 |
 | `detailed` | 短语结果的识别状态和 N-best 列表，其中每个短语结果包含所有四种识别形式和置信度分数。 |
@@ -198,7 +199,7 @@ Microsoft 语音服务可在听录响应中返回各种有效负载格式。 所
 
 ### <a name="n-best-values"></a>N-best 值
 
-无论是人还是计算机，任何收听者都无法确信自己听到的与他者表述的完全一致。 收听者只能向话语的特定解释分配一个概率。 
+无论是人还是计算机，任何收听者都无法确信自己听到的与他者表述的完全一致。 收听者只能向话语的特定解释分配一个概率。
 
 正常情况下，当人们与经常交往的其他人交谈时，有很大概率可以识别出其所说的字词。 基于计算机的语音侦听器努力达到类似的准确度水平，并且在适当的条件下[实现了与人类同等的水平](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v)。
 
@@ -306,9 +307,9 @@ ITN 形式最适合用于要处理已识别文本的应用程序。 例如，应
 
 Microsoft 语音服务识别所有形式的人类话语，包括许多人归类为“不当”的字词和短语。 可使用不当字词查询参数控制服务处理不当字词的方式。 默认情况下，该服务会屏蔽 speech.phrase 结果中的不当字词，并且不会返回包含不当字词的 speech.hypothesis 消息。
 
-| 不当字词值 | 说明 |
+| 不当字词值 | 描述 |
 | - | - |
-| `masked` | 用星号屏蔽不当字词。 此选项为默认行为。 | 
+| `masked` | 用星号屏蔽不当字词。 此选项为默认行为。 |
 | `removed` | 删除所有结果中的不当字词。 |
 | `raw` | 识别并返回所有结果中的不当字词。 |
 
@@ -322,7 +323,7 @@ Microsoft 语音服务识别所有形式的人类话语，包括许多人归类�
 
 #### <a name="profanity-only-utterances"></a>只含有不当字词的话语
 
-当应用程序将服务配置为删除不当字词时，用户有可能只说了含有不当字词的话语。 对于这种情况，如果识别模式为听写或对话，则服务不会返回 speech.result。 如果识别模式为交互，则服务返回带有状态代码 NoMatch 的 speech.result。 
+当应用程序将服务配置为删除不当字词时，用户有可能只说了含有不当字词的话语。 对于这种情况，如果识别模式为听写或对话，则服务不会返回 speech.result。 如果识别模式为交互，则服务返回带有状态代码 NoMatch 的 speech.result。
 
 ### <a name="profanity-value-raw"></a>不当字词值 `Raw`
 

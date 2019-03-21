@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f34b2fd2ba5f6e3e1433fb8dac04d931a36920d0
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: 5eb80051052138924cdb30655609215974435839
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188957"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729910"
 ---
 # <a name="create-hierarchies"></a>创建层次结构
 
@@ -23,7 +23,7 @@ ms.locfileid: "54188957"
   
 本课程预计完成时间：20 分钟  
   
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>必备组件  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 8 课：创建透视](../tutorials/aas-lesson-8-create-perspectives.md)。  
   
 ## <a name="create-hierarchies"></a>创建层次结构  
@@ -39,9 +39,9 @@ ms.locfileid: "54188957"
     > [!NOTE]  
     > 重命名层次结构中的某个列不会重命名表中的该列。 层次结构中的列只是表中的该列的一种表示形式。  
   
-4.  单击“ProductSubcategoryName”列并将其拖动到新的“Category”层次结构。 将其重命名为“Subcategory”。 
+4.  单击“ProductSubcategoryName”列并将其拖动到“Category”层次结构。 将其重命名为“Subcategory”。 
   
-5.  右键单击“ModelName”列，再单击“添加到层次结构”，然后选择“Category”。 将其重命名为“Model”。
+5.  右键单击“ModelName”列，单击“添加到层次结构”，然后选择“Category”。 将其重命名为“Model”。
 
 6.  最后，将“EnglishProductName”添加到 Category 层次结构。 将其重命名为“Product”。  
 
@@ -72,7 +72,7 @@ ms.locfileid: "54188957"
     *  WeekNumberOfYear
     *  DayNumberOfWeek
   
- ## <a name="whats-next"></a>后续步骤
+## <a name="whats-next"></a>后续步骤
 [第 10 课：创建分区](../tutorials/aas-lesson-10-create-partitions.md)。 
   
   

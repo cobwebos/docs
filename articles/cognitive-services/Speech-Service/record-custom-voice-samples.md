@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0ca82da43ea53aed3fbcf858b34a3ad94d712661
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: d5d3d7031f9795db0ae04bc707bd9e7707137210
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864938"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530733"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>录制语音样本用于创建自定义语音
 
@@ -105,7 +105,7 @@ ms.locfileid: "55864938"
 
 幸运的是，可完全避免这些问题。 有很多文本源无需许可或权限即可使用。
 
-|文本源|说明|
+|文本源|描述|
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|约 1100 个句子，选自专用于语音合成项目的无版权作品。 首先使用这类句子是很可取的。|
 |作品不再<br>受版权保护|通常是 1923 年之前出版的作品。 在英语方面，[Project Gutenberg](https://www.gutenberg.org/)（古腾堡计划）提供了数以万计的此类作品。 你可能想要关注较新的作品，因为语言将更接近现代英语。|
@@ -150,7 +150,7 @@ ms.locfileid: "55864938"
 
 这里使用了大部分范围（高度），但信号的最高峰未到达窗口的顶部或底部。 还可看到录制中的无声状态近似于细的水平线，它表示低噪声基底。 该录音具有可接受的动态范围和信噪比。
 
-根据使用的麦克风，使用高品质的音频接口或 USB 端口直接录制到计算机中。 对于模拟，要保持音频链简单：麦克风、前置放大器、音频接口和计算机。 每月支付合理的价格即可获得 [Avid Pro Tools](http://www.avid.com/en/pro-tools) 和 [Adobe Audition](https://www.adobe.com/products/audition.html) 许可证。 如果预算非常紧张，请试用免费的 [Audacity](https://www.audacityteam.org/)。
+根据使用的麦克风，使用高品质的音频接口或 USB 端口直接录制到计算机中。 对于模拟，要保持音频链简单：麦克风、前置放大器、音频接口和计算机。 每月支付合理的价格即可获得 [Avid Pro Tools](https://www.avid.com/en/pro-tools) 和 [Adobe Audition](https://www.adobe.com/products/audition.html) 许可证。 如果预算非常紧张，请试用免费的 [Audacity](https://www.audacityteam.org/)。
 
 以 44.1 kHz 16 位单声道（CD 质量）或更高标准进行录制。 如果设备支持，目前最先进的是 48 kHz 24 位。 在将音频提交到自定义语音门户之前，请将音频的采样频率降至 16 kHz 16 位。 尽管如此，如果需要编辑，还可以获得高质量的原始录音。
 
@@ -204,7 +204,7 @@ ms.locfileid: "55864938"
 
 自定义语音门户要求所提供的每条语句都在各自的文件中。 工作室提供的每个音频文件都包含多条语句。 因此，主要的后期制作任务是拆分录音并准备提交。 录音工程师可能已在文件中放置标记（或提供单独的提示表），用于指示每条语句的开始位置。
 
-使用注释找到想要的确切试录，然后使用声音编辑实用工具（如 [Avid Pro Tools](http://www.avid.com/en/pro-tools)、[Adobe Audition](https://www.adobe.com/products/audition.html) 或免费的 [Audacity](https://www.audacityteam.org/)）将每条语句复制到新的文件中。
+使用注释找到想要的确切试录，然后使用声音编辑实用工具（如 [Avid Pro Tools](https://www.avid.com/en/pro-tools)、[Adobe Audition](https://www.adobe.com/products/audition.html) 或免费的 [Audacity](https://www.audacityteam.org/)）将每条语句复制到新的文件中。
 
 除了第一个剪辑，每个剪辑的开头和结尾只保留约 0.2 秒的无声状态。 该文件的开头要有整整 5 秒的无声状态。 不要使用音频编辑器“清零”文件的无声部分。 包括“空间声”将有助于自定义语音算法补偿任何剩余的背景噪音。
 

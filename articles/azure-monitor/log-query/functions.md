@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 6c6bd31961022957ec1a09fef6058ad32476e1c7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005091"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750763"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
 
@@ -32,9 +32,9 @@ ms.locfileid: "56005091"
 
 ## <a name="create-a-function"></a>创建函数
 
-在 Azure 门户中的 Log Analytics 中，单击“保存”然后提供下表中的信息来创建一个函数。
+创建函数与 Log Analytics 在 Azure 门户中通过单击**保存**然后提供下表中的信息。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |:---|:---|
 | 名称           | 查询资源管理器中查询的显示名称。 |
 | 另存为        | 函数 |

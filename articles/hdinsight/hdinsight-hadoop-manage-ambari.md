@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722016"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576950"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
@@ -49,7 +49,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 > [!WARNING]  
 > 并非 Ambari Web UI 的所有功能都受 HDInsight 支持。 有关详细信息，请参阅本文档的[不受支持操作](#unsupported-operations)部分。
 
-连接到 Ambari Web UI 时，系统会提示进行页面验证。 请使用在创建群集过程中使用的群集管理员用户（默认 Admin）和密码。
+连接到 Ambari Web UI 时，系统会提示进行页面验证。 请使用在创建群集过程中你使用的群集管理员用户（默认 Admin）和密码。
 
 当该页打开时，请注意顶栏。 此栏中包含以下信息和控件：
 
@@ -102,7 +102,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ### <a name="cluster"></a>群集
 
-仪表板的“指标”选项卡包含一系列小组件，可让你一目了然地轻松监视群集状态。 “CPU 使用率”等多个 Widget 可在单击后提供更多信息。
+仪表板的“度量值”选项卡包含一系列 Widget，可让你一目了然地轻松监视群集状态。 “CPU 使用率”等多个 Widget 可在单击后提供更多信息。
 
 ![包含度量值的仪表板](./media/hdinsight-hadoop-manage-ambari/metrics.png)
 
@@ -110,7 +110,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ![包含热图的仪表板](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
 
-若要了解群集内节点的详细信息，请选择“主机”。 然后选择感兴趣的具体节点。
+若要了解群集内节点的详细信息，请选择“主机”。 然后选择你感兴趣的具体节点。
 
 ![主机详细信息](./media/hdinsight-hadoop-manage-ambari/host-details.png)
 
@@ -167,9 +167,9 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
    * **停止所有组件** - 停止主机上的所有组件。
 
-   * **重启所有组件** - 停止然后启动主机上的所有组件。
+   * **重新启动所有组件** - 停止并启动主机上的所有组件。
 
-   * **打开维护模式** - 隐藏主机的警报。 如果正在执行生成了警报的操作，则应当启用此模式。 例如，停止和启动服务。
+   * **打开维护模式** - 隐藏主机的警报。 如果你正在执行生成了警报的操作，则应当启用此模式。 例如，停止和启动服务。
 
    * **关闭维护模式** - 让主机恢复正常警报功能。
 
@@ -202,17 +202,17 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 1. 从“仪表板”或“服务”页面中选择一个服务。
 
-2. 在“摘要”选项卡的顶部，使用“服务操作”按钮，并选择要执行的操作。 这会重启所有节点上的服务。
+2. 在“摘要”选项卡的顶部，使用“服务操作”按钮，然后选择要执行的操作。 这会重启所有节点上的服务。
 
     ![服务操作](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]  
-   > 在群集运行时重新启动某些服务可能会生成警报。 要避免生成警报，可使用“服务操作”按钮来启用服务的“维护模式”，再执行重新启动。
+   > 在群集运行时重新启动某些服务可能会生成警报。 若要避免生成警报，可使用“服务操作”按钮来为服务启用**维护模式**，然后再执行重启。
 
 3. 选择某个操作后，页面顶部的“# 项操作”条目的数字便会递增，指出正在进行后台操作。 如果已配置为显示，则会显示后台操作的列表。
 
    > [!NOTE]  
-   > 如果已对服务启用了“维护模式”，请记得在操作完成后使用“服务操作”按钮来将它禁用。
+   > 如果你已为服务启用了**维护模式**，请记得在操作完成后使用“服务操作”按钮来将它禁用。
 
 若要配置服务，请使用以下步骤：
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: 94931546f3b8ddb18a5381de3baa31d66376badb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810714"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107451"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 通过脱机种子设定，Azure 备份可以使用磁盘将脱机备份数据上传到 Azure。
@@ -43,7 +43,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
   > [!NOTE]
   > 以下先决条件和工作流仅适用于使用[最新的 MARS 代理](https://aka.ms/azurebackup_agent)脱机备份文件和文件夹。 若要使用 System Center DPM 或 Azure 备份服务器执行工作负荷脱机备份，请参阅[此文](backup-azure-backup-server-import-export-.md)。 
@@ -73,7 +73,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
     ![导入屏幕](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
-  输入的说明如下：
+   输入的说明如下：
 
     * **暂存位置**：初始备份副本写入到的临时存储位置。 暂存位置可以是在网络共享或本地计算机。 如果副本计算机与源计算机不同，建议指定暂存位置的完整网络路径。
     * **Azure 资源管理器存储帐户**：任一 Azure 订阅中的资源管理器类型存储帐户的名称。
@@ -81,7 +81,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
     * **Azure 订阅 ID**：在其中创建了 Azure 存储帐户的 Azure 订阅的 ID。
     * **Azure 导入作业名称**：Azure 导入服务和 Azure 备份在跟踪磁盘上发送到 Azure 的数据的传输活动时使用的唯一名称。 
   
-  在屏幕上提供输入，然后单击“下一步”。 保存提供的“暂存位置”和“Azure 导入作业名称”值，因为准备磁盘时需要使用这些信息。
+   在屏幕上提供输入，然后单击“下一步”。 保存提供的“暂存位置”和“Azure 导入作业名称”值，因为准备磁盘时需要使用这些信息。
 
 2. 根据提示登录到 Azure 订阅。 只有在登录后，Azure 备份才能创建 Azure Active Directory 应用程序，并提供所需的权限来访问 Azure 导入服务。
 
@@ -106,20 +106,20 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
 1. 请转到该目录，将 **AzureOfflineBackupDiskPrep** 目录复制到连接了 SATA 驱动器的另一台计算机上。 在连接了 SATA 驱动器的计算机上，请确保：
 
-    * 副本计算机可使用在**启动脱机备份**工作流中提供的相同网络路径，访问脱机种子设定工作流的暂存位置。
-    * 已在副本计算机上启用 BitLocker。
-    * Azure PowerShell 3.7.0 已安装。
-    * 已安装最新的兼容浏览器（Microsoft Edge 或 Internet Explorer 11），并已启用 JavaScript。 
-    * 副本计算机可以访问 Azure 门户。 必要时，副本计算机可与源计算机相同。
+   * 副本计算机可使用在**启动脱机备份**工作流中提供的相同网络路径，访问脱机种子设定工作流的暂存位置。
+   * 已在副本计算机上启用 BitLocker。
+   * Azure PowerShell 3.7.0 已安装。
+   * 已安装最新的兼容浏览器（Microsoft Edge 或 Internet Explorer 11），并已启用 JavaScript。 
+   * 副本计算机可以访问 Azure 门户。 必要时，副本计算机可与源计算机相同。
     
-    > [!IMPORTANT] 
-    > 如果源计算机是虚拟机，则复制计算机必须是与源计算机不同的物理服务器或客户端计算机。
+     > [!IMPORTANT] 
+     > 如果源计算机是虚拟机，则复制计算机必须是与源计算机不同的物理服务器或客户端计算机。
 
 2. 在副本计算机上打开提升的命令提示符，以 AzureOfflineBackupDiskPrep 实用工具的目录作为当前目录并运行以下命令：
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
     | s:&lt;暂存位置路径&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
     | p:&lt;发布设置文件的路径&gt; |可选的输入，用于提供在**启动脱机备份**工作流中所输入的 **Azure 发布设置**文件路径。 |
@@ -137,11 +137,11 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
     工具随后便开始准备磁盘和复制备份数据。 可能需要工具的提示附加其他磁盘，以免提供的磁盘没有足够空间来容纳备份数据。 <br/>
 
     成功结束该工具的执行时，命令提示符会提供三段信息：
-    1. 准备好提供的一个或多个磁盘，以便寄送到 Azure。 
-    2. 你会收到已创建导入作业的确认。 导入作业使用提供的名称。
-    3. 该工具会显示 Azure 数据中心的寄送地址。
+   1. 准备好提供的一个或多个磁盘，以便寄送到 Azure。 
+   2. 你会收到已创建导入作业的确认。 导入作业使用提供的名称。
+   3. 该工具会显示 Azure 数据中心的寄送地址。
 
-    ![Azure 磁盘准备已完成](./media/backup-azure-backup-import-export/console2.png)<br/>
+      ![Azure 磁盘准备已完成](./media/backup-azure-backup-import-export/console2.png)<br/>
 
 6. 结束命令的执行时，可以更新寄送信息。
 

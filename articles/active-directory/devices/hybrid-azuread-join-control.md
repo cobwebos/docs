@@ -17,12 +17,12 @@ ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6b1e1c103c37874365f7e8d0b893985c9a6469c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8b113dd3e354e778d2cf16182665afff5440d2e5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171071"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408524"
 ---
 # <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>控制设备的混合 Azure AD 加入
 
@@ -31,7 +31,7 @@ ms.locfileid: "56171071"
 本文指导如何控制设备的混合 Azure AD 联接。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假定你熟悉以下内容：
 
@@ -82,7 +82,7 @@ ms.locfileid: "56171071"
 8.  右键单击“将已加入域的计算机注册为设备”，然后选择“编辑”。
 
     > [!NOTE] 
-    > 已从早期版本的组策略管理控制台对该组策略模板进行了重命名。 如果使用早期版本的控制台，请转到“计算机配置” > “策略” > “管理模板” > “Windows 组件” > “工作区加入” > “自动将客户端计算机加入工作区”。 
+    > 已从早期版本的组策略管理控制台对该组策略模板进行了重命名。 如果使用早期版本的控制台，请转到**计算机配置** > **策略** > **管理模板** > **Windows 组件** > **设备注册** > **注册域已加入设备的计算机**。 
 
 9.  选择以下某一项设置，然后选择“应用”：
 
@@ -99,16 +99,16 @@ ms.locfileid: "56171071"
 
 配置客户端设置：
 
-1.  打开 Configuration Manager，然后转到“云服务”。
+1.  打开**Configuration Manager**，选择**管理**，然后转到**客户端设置**。
 
-2.  在“设备设置”下，为“自动向 Azure Active Directory 注册已加入域的新 Windows 10 设备”选择下列某一设置：
+2.  打开的属性**默认客户端设置**，然后选择**云服务**。
+
+3.  在“设备设置”下，为“自动向 Azure Active Directory 注册已加入域的新 Windows 10 设备”选择下列某一设置：
 
     - **否**：防止自动注册设备。
     - **是**：启用自动设备注册功能。
 
-
-3.  选择“确定”。
-    
+4.  选择“确定”。
 
 需要将此客户端设置链接到所选位置。 例如，若要对组织中的所有 Window 当前设备配置此客户端设置，请将客户端设置链接到域。 若要执行受控部署，请对组织单位或安全组中已加入域的 Windows 当前设备配置此客户端设置。
 

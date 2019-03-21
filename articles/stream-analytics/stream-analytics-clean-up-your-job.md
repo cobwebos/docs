@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 85db38fef5e69c4de855f8cb6d54151496faebbe
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090238"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588714"
 ---
 # <a name="clean-up-your-azure-stream-analytics-job"></a>清理 Azure 流分析作业
 
-可以通过Azure 门户、Azure PowerShell、Azure SDK for .NET 或 REST API 轻松地删除 Azure 流分析作业。
+可以通过Azure 门户、Azure PowerShell、Azure SDK for .NET 或 REST API 轻松地删除 Azure 流分析作业。 Stream Analytics 作业无法恢复后已被删除。
 
 >[!NOTE] 
 >当停止流分析作业时，数据只会保留在输入和输出存储中，例如事件中心或 Azure SQL 数据库。 如果需要从 Azure 中删除数据，请务必遵循流分析作业的输入和输出资源删除过程进行操作。
@@ -47,7 +47,9 @@ ms.locfileid: "53090238"
 
 ## <a name="stop-or-delete-a-job-using-powershell"></a>使用 PowerShell 停止或删除作业
 
-若要使用 PowerShell 停止作业，请使用 [Stop-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob?view=azurermps-5.7.0) cmdlet。 若要使用 PowerShell 删除作业，请使用 [Remove-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/Remove-AzureRmStreamAnalyticsJob?view=azurermps-5.7.0) cmdlet。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+若要停止使用 PowerShell 作业，请使用[停止 AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) cmdlet。 若要删除使用 PowerShell 的作业，请使用[删除 AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) cmdlet。
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>使用 Azure SDK for .NET 停止或删除作业
 

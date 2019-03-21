@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: d9d87e0e6427c0a0d4b16947fd0427e1c79d8f0c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 62b526950367987e26c1c67394bc0720ae895fa6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341039"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983789"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -286,5 +286,5 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 - 要了解如何启用流日志，请参阅[启用 NSG 流日志记录](network-watcher-nsg-flow-logging-portal.md)。
 - 若要了解如何读取流日志，请参阅[读取 NSG 流日志](network-watcher-read-nsg-flow-logs.md)。
-- 如需详细了解 NSG 日志记录，请参阅[网络安全组 (NSG) 的日志分析](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- 若要了解有关 NSG 日志记录的详细信息，请参阅[网络安全组 (Nsg) Azure Monitor 日志](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 - 如需确定是允许还是拒绝流量进出 VM，请参阅[诊断 VM 网络流量筛选器问题](diagnose-vm-network-traffic-filtering-problem.md)

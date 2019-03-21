@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: af36f38bf206da588d327dc319d2418460f79b13
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e6e1b304b90b37c93bed22bcb720a646680ee083
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165022"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223608"
 ---
 # <a name="access-data-from-your-datastores"></a>访问你的数据存储中的数据
 
@@ -151,7 +151,7 @@ ds.download(target_path='your target path',
 
 下表列出了常见[ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)使数据存储在远程计算可用的方法。
 
-##
+# #
 
 方法|方法|描述
 ----|-----|--------

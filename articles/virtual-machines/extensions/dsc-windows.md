@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 1d65238115ca57a3fcc8047a27c8161aaa144ce4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407701"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451903"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
 
@@ -27,17 +27,17 @@ ms.locfileid: "49407701"
 
 适用于 Windows 的 PowerShell DSC 扩展由 Microsoft 发布和提供支持。 扩展在 Azure VM 中上传和应用 PowerShell DSC 配置。 DSC 扩展可调用 PowerShell DSC，在 VM 上启用收到的 DSC 配置。 本文档详细介绍适用于 Windows 的 DSC 虚拟机扩展支持的平台、配置和部署选项。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="operating-system"></a>操作系统
 
 DSC 扩展支持以下 OS：
 
-Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Server 2008 R2 SP1 和 Windows Client 7/8.1
+Windows Server 2019、 Windows Server 2016、 Windows Server 2012R2，Windows Server 2012、 Windows Server 2008 R2 SP1、 Windows 客户端 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
-适用于 Windows 的 DSC 代理扩展要求目标虚拟机已连接到 Internet。 
+适用于 Windows 的 DSC 扩展要求目标虚拟机能够与 Azure 和配置包 （.zip 文件） 的位置进行通信，如果将它存储在 Azure 外部的位置。 
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -47,12 +47,12 @@ Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Serv
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "Microsoft.Powershell.DSC",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-10-01",
   "location": "<location>",
   "properties": {
     "publisher": "Microsoft.Powershell",
     "type": "DSC",
-    "typeHandlerVersion": "2.73",
+    "typeHandlerVersion": "2.77",
     "autoUpgradeMinorVersion": true,
     "settings": {
         "wmfVersion": "latest",
@@ -100,14 +100,14 @@ Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Serv
 
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | 日期 |
+| apiVersion | 2018-10-01 | 日期 |
 | 发布者 | Microsoft.Powershell.DSC | 字符串 |
 | type | DSC | 字符串 |
-| typeHandlerVersion | 2.73 | int |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>设置属性值
 
-| 名称 | 数据类型 | Description
+| 名称 | 数据类型 | 描述
 | ---- | ---- | ---- |
 | settings.wmfVersion | 字符串 | 指定应在 VM 上安装的 Windows Management Framework 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”和“latest”。 这些可能值将来可能会更新。 默认值为“latest”。 |
 | settings.configuration.url | 字符串 | 指定要从中下载 DSC 配置 zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationUrlSasToken 属性设置为 SAS 令牌的值。 如果已定义 settings.configuration.script 和/或 settings.configuration.function，则需要此属性。
@@ -116,12 +116,12 @@ Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Serv
 | settings.configurationArguments | 集合 | 定义想要传递到 DSC 配置的任何参数。 不会加密此属性。
 | settings.configurationData.url | 字符串 | 指定 URL，将从中下载配置数据 (.pds1) 文件用作 DSC 配置的输入。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationDataUrlSasToken 属性设置为 SAS 令牌的值。
 | settings.privacy.dataEnabled | 字符串 | 启用或禁用遥测数据收集。 此属性的可能值只有“Enable”、“Disable”或“$null”。 将此属性留空，否则 null 将启用遥测
-| settings.advancedOptions.forcePullAndApply | Bool | 刷新模式为 Pull 时，启用 DSC 扩展以更新和执行 DSC 配置。
+| settings.advancedOptions.forcePullAndApply | Bool | 此设置旨在增强的扩展节点注册到 Azure 自动化 DSC 的使用体验。  如果值为`$true`，扩展将等待返回成功/失败之前从服务提取配置的第一次运行。  如果值设置为 $false，将仅指由扩展返回的状态是否已成功注册节点与 Azure 自动化状态配置，而不会在注册期间运行的节点配置。
 | settings.advancedOptions.downloadMappings | 集合 | 定义用于下载依赖项（如 WMF 和 .NET）的备用位置
 
 ### <a name="protected-settings-property-values"></a>受保护设置属性值
 
-| 名称 | 数据类型 | Description
+| 名称 | 数据类型 | 描述
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | 字符串 | 定义想要传递到 DSC 配置的任何参数。 将加密此属性。 |
 | protectedSettings.configurationUrlSasToken | 字符串 | 指定用于访问 configuration.url 所定义的 URL 的 SAS 令牌。 将加密此属性。 |
@@ -130,26 +130,9 @@ Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Serv
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。 包含 Log Analytics 代理 VM 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm)中找到。 
-
-虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 
-
-嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。 将扩展 JSON 放置在模板的根部时，资源名称包括对父虚拟机的引用，并且类型反映了嵌套的配置。  
-
-
-## <a name="azure-cli-deployment"></a>Azure CLI 部署
-
-可以使用 Azure CLI 将 Log Analytics 代理 VM 扩展部署到现有的虚拟机。 将 Log Analytics 密钥和 Log Analytics ID 替换为 Log Analytics 工作区中的对应项。 
-
-```azurecli
-az vm extension set \
-  --resource-group myResourceGroup \
-  --vm-name myVM \
-  --name Microsoft.Powershell.DSC \
-  --publisher Microsoft.Powershell \
-  --version 2.73 --protected-settings '{}' \
-  --settings '{}'
-```
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。
+部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
+可以上找到的 Windows 中包括 DSC 扩展的示例资源管理器模板[Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
@@ -166,7 +149,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}
 ```
 
-扩展状态文件包含子状态和状态成功/错误代码以及每个扩展运行的详细错误和说明。
+扩展状态文件包含的子状态和状态成功/错误代码以及详细的错误和运行每个扩展的说明。
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}\Status\{0}.Status  -> {0} being the sequence number
 ```

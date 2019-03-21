@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 4c48e0d6c2b9d7ff2ff82da64a240e1bf0aacd39
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 51d0c7ade46143ecbf6fe46bc54e5d383d50b382
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998238"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58173070"
 ---
 # <a name="deliver-content-to-customers"></a>向客户传送内容
 向客户传送流或视频点播内容时，目标在于向处于不同网络条件下的各种设备传送优质视频。
@@ -42,7 +42,7 @@ ms.locfileid: "55998238"
 ## <a name="dynamic-packaging"></a>动态打包
 借助媒体服务提供的动态打包功能，可采用媒体服务支持的流式传输格式（MPEG-DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流式传输格式。 我们建议使用动态打包功能传送内容。
 
-要利用动态打包，需将夹层（源）文件编码为一组自适应比特率 MP4 文件或自适应比特率平滑流式处理文件。
+若要利用动态打包，需将夹层（源）文件编码为一组自适应比特率 MP4 文件或自适应比特率平滑流式处理文件。
 
 借助动态打包功能，可存储和播放使用单一存储格式的文件。 媒体服务会根据请求生成并提供适当的响应。
 
@@ -79,7 +79,7 @@ ms.locfileid: "55998238"
 ## <a name="adaptive-streaming"></a>自适应流
 自适应比特率技术允许视频播放器应用程序确定网络条件并从多个比特率中选择。 网络通信质量下降时，客户端可以选择较低的比特率，以便能够以较低的视频质量继续播放视频。 网络条件改善时，客户端可以切换到较高的比特率，提高视频质量。 Azure 媒体服务支持以下自适应比特率技术：HTTP Live Streaming (HLS)、平滑流式处理 和 MPEG-DASH。
 
-若要为用户提供流 URL，必须先创建一个 OnDemandOrigin 定位符。 通过创建定位符，可获得包含要流式传输的内容的资产的基本路径。 但是，为了能够流式传输此内容，需要进一步修改此路径。 要构造流式处理清单文件的完整 URL，必须将定位符的 path 值与清单 (filename.ism) 文件名连接起来。 然后，向定位符路径追加 /Manifest 和相应的格式（如果需要）。
+若要为用户提供流 URL，必须先创建一个 OnDemandOrigin 定位符。 通过创建定位符，可获得包含要流式传输的内容的资产的基本路径。 但是，为了能够流式传输此内容，需要进一步修改此路径。 若要构造流式处理清单文件的完整 URL，必须将定位符的路径值与清单 (filename.ism) 文件名连接起来。 然后，向定位符路径追加/Manifest 和相应的格式（如果需要）。
 
 > [!NOTE]
 > 也可以通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，目前 AMS 对自定义域不支持 SSL。  
@@ -178,7 +178,7 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
         </StreamIndex>
     </SmoothStreamingMedia>
 
-一些旧平滑流式处理客户端可能不支持此重复标记，并且无法加载清单。 要解决此问题，可以使用旧清单格式参数 **(format=fmp4-v20)**，或将客户端更新到支持重复标记的最新版本。 有关详细信息，请参阅[平滑流式处理 2.0](media-services-deliver-content-overview.md#fmp4_v20)。
+一些旧平滑流式处理客户端可能不支持此重复标记，并且无法加载清单。 若要解决此问题，可以使用旧清单格式参数 (format=fmp4-v20)，或将客户端更新到支持重复标记的最新版本。 有关详细信息，请参阅[平滑流式处理 2.0](media-services-deliver-content-overview.md#fmp4_v20)。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

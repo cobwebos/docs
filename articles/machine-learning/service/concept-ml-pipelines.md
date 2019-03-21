@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
-ms.date: 11/07/2018
+ms.date: 12/4/2018
 ms.custom: seodec18
-ms.openlocfilehash: a8ead1fedc8c21152b1ef095dbaebe605776b6e3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 3f1dd0921153d6b65bdc257f91019483adbb18fa
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243862"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213664"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务生成机器学习管道
 
@@ -34,17 +34,27 @@ ms.locfileid: "55243862"
 
 ![Azure 机器学习服务中的机器学习管道](./media/concept-ml-pipelines/pipelines.png)
 
+### <a name="which-azure-pipeline-technology-should-i-use"></a>应使用哪种 Azure 管道技术？
+
+在 Azure 云中提供了多个其他管道，每个都有不同的用途。 下表列出了不同的管道和它们的用途：
+
+| 管道 | 作用 | 规范的管道 |
+| ---- | ---- | ---- |
+| Azure 机器学习管道 | 定义可重用的机器学习可以用作机器学习方案的模板的工作流。 | 数据-> 模型 |
+| [Azure 数据工厂管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | 组数据移动、 转换和控制活动所需执行的任务。  | 数据-> 数据 |
+| [Azure 的管道](https://azure.microsoft.com/services/devops/pipelines/) | 持续集成和交付到任何应用程序的平台/任何云  | 代码-> 应用/服务 |
+
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>为何使用 Azure 机器学习来生成管道？
 
 可以使用[适用于 Python 的 Azure 机器学习 SDK](#the-python-sdk-for-pipelines) 来创建 ML 管道并提交和跟踪单个管道运行。
 
 使用管道，可以在简洁性、速度、可移植性和重用性方面优化工作流。 使用 Azure 机器学习来生成管道时，你可以将精力集中于专业知识、机器学习，不需要关注基础设施。
 
-使用不同的步骤可以在调整和测试工作流时只重新运行所需步骤。 在管道中，一个步骤是一个计算单元。 如上图中所示，准备数据的任务可能涉及到许多步骤。 这些步骤包括但不限于规范化、转换、验证和特征化。 数据源和中间数据在整个管道中重复使用，从而节省了计算时间和资源。 
+使用不同的步骤可以在调整和测试工作流时只重新运行所需步骤。 在管道中，一个步骤是一个计算单元。 如上图中所示，准备数据的任务可能涉及到许多步骤。 这些步骤包括但不限于规范化、 转换、 验证和特征化。 数据源和中间数据在整个管道中重复使用，从而节省了计算时间和资源。 
 
 管道设计好以后，通常会有更多围绕着管道的训练循环进行的优化。 重新运行某个管道时，运行会跳到需要重新运行的步骤（例如更新的训练脚本），跳过尚未更改的。 同一范例适用于未更改的用于执行此步骤的脚本。 
 
-使用 Azure 机器学习时，可以针对管道中的每个步骤使用各种工具包和框架，例如 Microsoft 认知工具包或 TensorFlow。 Azure 会在你使用的各种[计算目标](concept-azure-machine-learning-architecture.md)之间进行协调，使中间数据可以轻松地供下游计算目标共享。 
+与 Azure 机器学习，可用于各种工具包和框架，例如 PyTorch 或 TensorFlow、 在管道中每个步骤。 Azure 会在你使用的各种[计算目标](concept-azure-machine-learning-architecture.md)之间进行协调，使中间数据可以轻松地供下游计算目标共享。 
 
 可以直接在 Azure 门户中[跟踪管道试验的指标](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)。 
 
@@ -52,7 +62,7 @@ ms.locfileid: "55243862"
 
 为机器学习工作流生成管道的主要优点包括：
 
-|主要优点|说明|
+|主要优点|描述|
 |:-------:|-----------|
 |**无人参与&nbsp;运行**|对一些步骤进行计划，使之以可靠且无人参与的方式并行或顺序运行。 由于数据准备和建模可能持续数天或数周，因此你现在可以在管道运行的时候专注于其他任务。 |
 |**混合和多样化计算**|使用多个管道，这些管道已跨异类的可缩放计算和存储进行可靠的协调。 可以在不同的计算目标（例如 HDInsight、GPU Data Science VM 和 Databricks）上运行单独的管道步骤。 这可以高效地利用可用的计算选项。|

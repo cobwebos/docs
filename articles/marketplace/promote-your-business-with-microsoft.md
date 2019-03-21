@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: b02ab403c82fd781af72c3b1f08e843c3fc770e3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
-ms.translationtype: HT
+ms.openlocfilehash: 3bd2361547a8210ae287eabaa67b60e8ba1f26e3
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094937"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738141"
 ---
 # <a name="promote-your-business-with-microsoft"></a>通过 Microsoft 促进业务发展  
 Microsoft 旨在支持合作伙伴（也就是你），并简化在市场店铺中销售应用或产品/服务的过程。 通过市场中的一览，可以访问市场中的程序和资源。 
@@ -40,4 +40,4 @@ MPN 提供了以下主题的指导。
 | 赢得云平台资格 | 赢得有助于让你在其他 Microsoft 合作伙伴中脱颖而出的资格。 获得某种 Competency 还表明你在市场方面的技术专长和所获得的客户成功。 资格是加入许多关键合作伙伴计划（如联合销售）的先决条件。<ul> <li>若要详细了解云平台资格，请访问“云平台资格”页 ([partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency))。</li> </ul> |  
 | 做好联合销售准备 | 通过“做好联合销售准备”计划，可与 Microsoft 销售人员和其他合作伙伴直接协作，共同发展目标客户和完成客户策划。 Microsoft 销售人员可以在销售人员解决方案目录中看到你的解决方案。 Microsoft 销售人员会竭诚与你协作，开创双赢局面。<ul> <li>若要详细了解“做好联合销售准备”计划，请访问“促进业务发展”页 ([partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business))。</li> </ul> |  
 
----  
+---

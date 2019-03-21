@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 0bb464d1d49438213d2b9a4e937170a075a206f5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: 9f5948887262ae190547c96aa09318a19f64812e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192377"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306623"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Log Analytics 配合使用
 
@@ -146,7 +146,10 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 >
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>使用 PowerShell 在虚拟机中为事件日志和 IIS 日志收集启用 Azure 诊断
-通过[将 Log Analytics 配置为编制 Azure 诊断索引](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics)中的步骤，将 PowerShell 用于从写入表存储的 Azure 诊断读取。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+通过[将 Log Analytics 配置为编制 Azure 诊断索引](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-collect-azure-diagnostics-from-storage)中的步骤，将 PowerShell 用于从写入表存储的 Azure 诊断读取。
 
 使用 Azure PowerShell 可以更精确地指定要写入 Azure 存储的事件。
 有关详细信息，请参阅[在 Azure 虚拟机中启用诊断](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。
@@ -177,7 +180,7 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 
     #Construct Azure diagnostics private config
 
-    $wad_storage_account_key = (Get-AzureStorageKey $wad_storage_account_name).Primary
+    $wad_storage_account_key = (Get-AzStorageKey $wad_storage_account_name).Primary
     $wad_private_config = [string]::Format("{{""storageAccountName"":""{0}"",""storageAccountKey"":""{1}""}}",$wad_storage_account_name,$wad_storage_account_key)
 
     #Enable Diagnostics Extension for Virtual Machine

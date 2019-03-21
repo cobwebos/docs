@@ -40,12 +40,26 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: 应用程序网关工作原理
-    href: how-application-gateway-works.md
-  - name: 应用程序网关组件
-    href: application-gateway-components.md
-  - name: 配置概述
-    href: configuration-overview.md
+  - name: 基础
+    items:
+    - name: 应用程序网关工作原理
+      href: how-application-gateway-works.md
+    - name: 应用程序网关组件
+      href: application-gateway-components.md
+    - name: 配置概述
+      href: configuration-overview.md
+  - name: 路由
+    items:
+    - name: 多站点托管
+      href: multiple-site-overview.md
+    - name: URL 路由
+      href: url-route-overview.md
+    - name: 重定向
+      href: redirect-overview.md
+    - name: 重写 HTTP 标头
+      href: rewrite-http-headers.md
+    - name: 自定义错误页
+      href: custom-error.md
   - name: SSL
     items:
     - name: SSL 策略概述
@@ -58,20 +72,16 @@ items:
       href: waf-overview.md
     - name: WAF 配置
       href: application-gateway-waf-configuration.md
-  - name: URL 路由
-    href: url-route-overview.md
-  - name: 多站点托管
-    href: multiple-site-overview.md
+  - name: 运行状况监视
+    items:
+    - name: 运行状况探测
+      href: application-gateway-probe-overview.md
+    - name: 诊断
+      href: application-gateway-diagnostics.md
   - name: 自动缩放和区域冗余
     href: application-gateway-autoscaling-zone-redundant.md
-  - name: 重定向支持
-    href: redirect-overview.md
-  - name: 重写 HTTP 标头
-    href: rewrite-http-headers.md
   - name: 应用服务 Web 应用和多租户支持
     href: application-gateway-web-app-overview.md
-  - name: 运行状况监视
-    href: application-gateway-probe-overview.md
   - name: WebSocket 支持
     href: application-gateway-websocket.md
   - name: 常见问题解答
@@ -96,6 +106,8 @@ items:
       href: create-ssl-portal.md
     - name: SSL 终止 - PowerShell
       href: tutorial-ssl-powershell.md
+    - name: 端到端 SSL - 门户
+      href: end-to-end-ssl-portal.md
     - name: 端到端 SSL - PowerShell
       href: application-gateway-end-to-end-ssl-powershell.md
     - name: 续订证书
@@ -180,10 +192,6 @@ items:
       href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
     - name: “错误的网关 (502)”错误
       href: application-gateway-troubleshooting-502.md
-    - name: 诊断
-      href: application-gateway-diagnostics.md
-  - name: 自定义错误页
-    href: custom-error.md
 - name: 引用
   items:
   - name: CRS 规则
@@ -218,9 +226,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 堆栈溢出
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: bd544dc507be3caade81ee45c3a5d704392c5694
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ce92641c82ffd577b0611fb5da4e8e78816ae32f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170320"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225342"

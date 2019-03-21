@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e44b6a8232bcd0bc72c4faa0f7116d42cec79111
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 67f2af94f32d5439585ad4d727fd2b1bd80fc41b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172410"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431694"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
@@ -72,9 +72,9 @@ ms.locfileid: "56172410"
 
 ![在 Azure 门户中自定义 Azure AD 智能锁定策略](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>如何确定 Smartlockout 功能是否正常运行
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>如何确定智能锁定功能起作用
 
-触发 smartlockout 阈值后，将在帐户锁定时收到以下消息：
+触发的智能锁定阈值后，将在帐户被锁定时遇到以下消息：
 
 **帐户暂时锁定以防止未经授权的使用。请稍后再试！如果仍有问题，请与管理员联系。**
 

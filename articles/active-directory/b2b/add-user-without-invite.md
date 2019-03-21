@@ -1,5 +1,5 @@
 ---
-title: 向 Azure Active Directory 添加 B2B 协作用户（无邀请）| Microsoft Docs
+title: 将无需邀请链接或电子邮件-Azure Active Directory B2B 协作用户添加 |Microsoft Docs
 description: 可允许来宾用户将其他来宾用户添加到 Azure AD，而无需在 Azure Active Directory B2B 协作中兑换邀请。
 services: active-directory
 documentationcenter: ''
@@ -12,14 +12,14 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90e156f1d1d7bbbb6c4f65a4762977d28a5a0b89
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8c33d9a3755f2fb5397dd013c88ab542e727e125
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182589"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337662"
 ---
-# <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>在没有邀请的情况下添加 B2B 协作来宾用户
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>添加 B2B 协作来宾用户，而无需邀请链接或电子邮件
 
 现在可以通过发送指向共享应用的直接链接来邀请来宾用户。 在使用此方法时，除非在某些特殊情况下，否则来宾用户不再需要使用邀请电子邮件。 来宾用户单击应用链接、查看并接受隐私条款，然后无缝访问应用。 有关详细信息，请参阅 [B2B 协作邀请兑换](redemption-experience.md)。   
 

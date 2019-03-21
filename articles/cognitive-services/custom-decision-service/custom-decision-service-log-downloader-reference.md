@@ -10,18 +10,18 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: c03278c0d0faced20f4e02fcc1f61531c88ae141
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 8a8f669c33f40fb80dc826ec04203880dee74d82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869664"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109403"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
 下载由 Azure 自定义 AI 决策服务生成的日志文件，并生成试验使用的 *.gz* 文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Python 3：已安装并在你的路径上。 我们建议使用 64 位版本来处理大文件。
 - Microsoft/mwt-ds 存储库：[克隆存储库](https://github.com/Microsoft/mwt-ds)。
@@ -41,15 +41,15 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 
 ### <a name="parameters"></a>parameters
 
-| 输入 | 说明 | 默认 |
+| 输入 | 描述 | 默认 |
 | --- | --- | --- |
 | `-h`、`--help` | 显示帮助消息并退出。 | |
-| `-a APP_ID`、`--app_id APP_ID` | 应用程序 ID（即 Azure 存储 blob 容器名称）。 | 必选 |
-| `-l LOG_DIR`、`--log_dir LOG_DIR` | 用于下载数据的基目录（创建子文件夹）。  | 必选 |
+| `-a APP_ID`、`--app_id APP_ID` | 应用程序 ID（即 Azure 存储 blob 容器名称）。 | 需要 |
+| `-l LOG_DIR`、`--log_dir LOG_DIR` | 用于下载数据的基目录（创建子文件夹）。  | 需要 |
 | `-s START_DATE`、`--start_date START_DATE` | 下载开始日期（包括），采用 *YYYY-MM-DD* 格式。 | `None` |
 | `-e END_DATE`、`--end_date END_DATE` | 下载结束日期（包括），采用 *YYYY-MM-DD* 格式。 | `None` |
 | `-o OVERWRITE_MODE`、`--overwrite_mode OVERWRITE_MODE` | 要使用的覆盖模式。 | |
-| | `0`：从不覆盖；询问用户当前是否使用了 blob。 | 默认 | |
+| | `0`：从不覆盖；询问用户当前是否使用了 blob。 | 默认 |
 | | `1`：当文件具有不同的大小或当前正在使用 blob 时，询问用户如何继续。 | |
 | | `2`：始终覆盖；下载当前使用的 blob。 | |
 | | `3`：从不覆盖，如果大小较大，则不询问直接追加；下载当前使用的 blob。 | |

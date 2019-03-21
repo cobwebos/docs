@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 867af6de05d1d9ab54cf8a4bf02221acc43a2b28
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075628"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731083"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure 市场‎商业交易功能和注意事项
 
@@ -165,7 +165,7 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 
 例如，如果客户使用信用卡购买：
 
-|Description    |    日期  |
+|描述    |    日期  |
 |----------|----------|
 |订购期   | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（月）   | 2018 年 8 月 30 日 |
@@ -179,16 +179,16 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 
 如果客户使用企业协议购买：
 
-| Description |    日期  |
+| 描述 |    日期  |
 |----------|----------|
 |订购期 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（季度） | 2018 年 9 月 30 日 |
 |计费日期 | 2018 年 10 月 15 日 |
 |代管期（仅限信用卡，30 天） | 不适用 |
 |费用收集期开始 | 2018 年 10 月 15 日 |
-|费用收集期结束（最大值，90 天） | 2018 年 1 月 15 日 |
+|费用收集期结束（最大值，90 天） | 2019 年 1 月 15 日 |
 |客户付款日期 | 2018 年 12 月 30 日 |
-|付款计算日期（每月第 15 天） | 2018 年 1 月 15 日 |
+|付款计算日期（每月第 15 天） | 2019 年 1 月 15 日 |
 |付款日期 | 2019 年 2 月 15 日 |
 
 **免费信用额度和货币承诺** 
@@ -226,7 +226,7 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 
 * 交易发布选项同时需要开发人员中心和 Microsoft 帐户，无论产品/服务的定价模型为何。
 * 开发人员中心帐户保存 Microsoft 代表发布者从客户收集费用和向发布者进行转付所需的所有相关财务详情。
-* 尽管在两个帐户中使用相同的组织或 Microsoft 登录详细信息，但开发人员中心是不同于云发布者门户帐户的独立帐户。 若要使用交易发布选项，除注册以访问云合作伙伴门户外，发布者还必须完成开发人员中心帐户注册过程。
+* 尽管你可以跨这两个帐户使用同一组织或 Microsoft 登录详细信息，开发人员中心是从云合作伙伴门户帐户的单独帐户。 若要使用交易发布选项，除注册以访问云合作伙伴门户外，发布者还必须完成开发人员中心帐户注册过程。
 
 有关如何设置这些帐户的详细信息，请参阅[成为云市场发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。
 

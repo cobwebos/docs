@@ -7,27 +7,29 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103422"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119286"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>使用应用程序网关（公共预览版）重写 HTTP 标头
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的信息。 重写这些 HTTP 标头可帮助实现多个重要方案，例如，添加安全相关的标头字段（如 HSTS/ X-XSS-Protection），或者删除可能会透露敏感信息（如后端服务器名称）的响应标头字段。
 
 应用程序网关现在支持重写传入 HTTP 请求和传出 HTTP 响应的标头。 当请求/响应数据包在客户端与后端池之间移动时，你可以添加、删除或更新 HTTP 请求和响应标头。 可以重写标准和非标准标头字段。
 
-> [!NOTE] 
->
+> [!NOTE]
+> 
 > HTTP 标头重写支持仅用于 [新的 SKU [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 
 应用程序网关标头重写支持提供：
 
 - **全局标头重写**：可以为与站点相关的所有请求和响应重写特定标头。
-- **基于路径的标头重写**：这种类型的重写支持对那些只涉及特定站点区域（例如由 /cart/* 表示的购物车区域）的请求和响应进行标头重写。
+- **基于路径的标头重写**： 重写此类型可使标头重写这些请求和响应适用于仅在特定站点区域中，例如购物车区域表示由 /cart/\*。
 
 根据这个更改，你需要：
 
@@ -48,7 +50,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
   *示例：* 
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
+  $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
   ```
 
 - 从另一个标头获取的值。 
@@ -56,7 +58,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
   *示例 1：* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
+  $requestHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
   ```
 
   > [!Note] 
@@ -65,7 +67,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
   *示例 2*：
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
+  $responseHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
   ```
 
   > [!Note] 
@@ -76,7 +78,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
   *示例：* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
+  $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
   ```
 
   > [!Note] 
@@ -90,7 +92,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 此功能支持将标头重写为以下服务器变量：
 
-| 支持的服务器变量 | 说明                                                  |
+| 支持的服务器变量 | 描述                                                  |
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | 返回客户端支持的加密列表          |
 | ciphers_used               | 返回用于已建立的 SSL 连接的加密字符串 |

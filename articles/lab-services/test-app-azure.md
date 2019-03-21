@@ -12,17 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: a58ebe14749add30deb229f1b7e30fbb6e9921d7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 9ca1c4a1ed1841f82bc386cff48315dd15ef91bb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814876"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730403"
 ---
 # <a name="test-your-app-in-azure"></a>在 Azure 中测试应用 
 本文提供有关使用开发测试实验室在 Azure 中测试应用程序的步骤。 首先，在实验室中设置一个文件共享，并将其作为驱动器装载到实验室中的本地开发计算机和 VM 上。 然后，使用 Visual Studio 2017 将应用部署到文件共享，以便可以在实验室中的 VM 上运行该应用。  
 
-## <a name="prerequisites"></a>先决条件 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="prerequisites"></a>必备组件 
 1. [创建一个 Azure 订阅](https://azure.microsoft.com/free/)（如果没有订阅），并登录到 [Azure 门户](https://portal.azure.com)。
 2. 遵照[此文](devtest-lab-create-lab.md)中的说明，使用 Azure 开发测试实验室创建一个实验室。 将该实验室固定到仪表板，以便下次登录时可以轻松找到它。 使用 Azure 开发测试实验室可在 Azure 中快速创建资源，同时可以最大程度地减少浪费和控制成本。 有关开发测试实验室的详细信息，请参阅[概述](devtest-lab-overview.md)。 
 3. 遵照[创建存储帐户](../storage/common/storage-create-storage-account.md)一文中的说明，在实验室的资源组中创建一个 Azure 存储帐户。 在“创建存储帐户”页上，为“资源组”选择“使用现有项”，然后选择“实验室的资源组”。 
@@ -56,7 +58,7 @@ ms.locfileid: "55814876"
 
     ![选择实验室 VM](media/test-app-in-azure/select-lab-vm.png)
 2. 在工具栏上选择“连接”以连接到 VM。 
-3. 在“命令行工具”部分使用“Windows 安装”链接来[安装 Azure PowerShell](https://azure.microsoft.com/downloads/)。 有关安装 Azure PowerShell 的其他方法，请参阅[此文](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1)。
+3. [安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 4. 请遵照“装载文件共享”部分的说明操作。 
 
 ## <a name="publish-your-app-from-visual-studio"></a>从 Visual Studio 发布应用

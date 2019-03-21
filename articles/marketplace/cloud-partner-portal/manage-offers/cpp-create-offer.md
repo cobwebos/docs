@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9b53a26f5163eae17198302fc26c079185cb7bd8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: af9b34d90098409135020fa8a45ecd0253f25b22
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354962"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454538"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>创建 Azure 市场和 AppSource 套餐
 
@@ -55,7 +55,7 @@ ms.locfileid: "54354962"
 |      --------       |   -------                                                            |
 | **产品/服务设置**  | 收集套餐信息和发布者身份信息。                    |
 | SKU            | 定义套餐的每个存货单位 (SKU) 版本的技术和业务特征 |
-| **体验版**      | 对于支持此可选功能的类型，请定义套餐的演示。  有关详细信息，请参阅[什么是体验版？](../../cloud-partner-portal-orig/what-is-test-drive.md)  |
+| **体验版**      | 对于支持此可选功能的类型，请定义套餐的演示。  有关详细信息，请参阅[什么是体验版？](../test-drive/what-is-test-drive.md)  |
 | “市场”或“店面” | 收集文本字符串、文档和图像用于列出市场中的套餐 |
 | **支持**         | 收集客户、工程人员和在线支持人员的联系信息  |
 |  |  |

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 12079f8dbc409afe5acc274fa08bda878c90b76e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: be3d98dc0b3a8119fb853493440c6fc78d65c5a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110745"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454232"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
 
@@ -44,7 +44,7 @@ ms.locfileid: "23110745"
 
 ## <a name="prerequisites-for-device-failover"></a>设备故障转移先决条件
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 对于设备故障转移，请确保满足以下先决条件：
 
@@ -162,7 +162,7 @@ ms.locfileid: "23110745"
 
 **在 DR 期间出现云连接中断问题**
 
-如果云连接在 DR 启动后和设备还原完成之前中断，DR 会失败。 会收到失败通知。 用于 DR 的目标设备将标记为“不可用”。 不能将同一目标设备用于将来的 DR。
+如果云连接在 DR 启动后和设备还原完成之前中断，DR 会失败。 收到故障通知。 用于 DR 的目标设备将标记为“不可用”。 不能将同一目标设备用于将来的 DR。
 
 **没有兼容的目标设备**
 

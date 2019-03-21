@@ -4,14 +4,14 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: de7d5ab73eb95e79cfca150f0692d5e793b16b76
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
+ms.openlocfilehash: da2605e7d6dc8d46aa5c5cb89ec3e6f46076ffd1
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330745"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "58115562"
 ---
-有关磁盘的详细信息，请参阅[关于虚拟机的磁盘和 VHD](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关磁盘的详细信息，请参阅[关于虚拟机的磁盘和 VHD](../articles/virtual-machines/linux/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 <a id="attachempty"></a>
 
@@ -70,7 +70,7 @@ ms.locfileid: "52330745"
      info:    vm disk list command OK
     ```
 
-3. 如果未找到要使用的磁盘，可以使用 `azure vm disk create` 或 `azure vm disk upload` 将本地 VHD 上传到订阅。 `disk create` 的示例将如以下示例所示：
+3. 如果未找到要使用的磁盘，可以使用 `azure vm disk create` 或 `azure vm disk upload` 将本地 VHD 上传到订阅。 以下是 `disk create` 的一个示例：
    
     ```azurecli
     azure vm disk create myVhd .\TempDisk\test.VHD -l "East US" -o Linux
@@ -90,7 +90,7 @@ ms.locfileid: "52330745"
     info:    vm disk create command OK
     ```
    
-   也可以使用 `azure vm disk upload` 将 VHD 上传到特定的存储帐户。 请阅读[此处](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)的文章，详细了解用于管理 Azure 虚拟机数据磁盘的命令。
+   也可以使用 `azure vm disk upload` 将 VHD 上传到特定存储帐户中。 详细阅读命令，以管理[这里](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)的 Azure 虚拟机数据磁盘。
 
 4. 现在将所需的 VHD 附加到虚拟机：
    
@@ -98,7 +98,7 @@ ms.locfileid: "52330745"
     azure vm disk attach myVM myVhd
     ```
    
-   请确保将 *myVM* 替换为虚拟机的名称，并将 *myVHD* 替换为所需的 VHD。
+   请确保将 *myVM* 替换为虚拟机的名称，将 *myVHD* 替换为所需的 VHD。
 
 5. 可以使用 `azure vm disk list <virtual-machine-name>` 验证磁盘是否已附加到虚拟机：
    

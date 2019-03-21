@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: e7d03ecd8ea4aecf1e0cfdd02d3b9bc5300abe6b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 47cde50e0874f0f73523925b6d1b2f8ee4abaea9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56212303"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727819"
 ---
 # <a name="azure-data-factory-mapping-data-flow-transformation-inspect-tab"></a>Azure 数据工厂映射数据流的“转换检查”选项卡
 
