@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: e782afb971f95a654119d9817edeef02642bee9e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 2cc5384fe039e757b33802075d0e550b369477f3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447559"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57874960"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
-本文介绍了如何通过在恢复服务保管库中部署并启用备份，使用 [Azure 备份](backup-overview.md)来备份 Azure VM。 
+本文介绍了如何通过在恢复服务保管库中部署并启用备份，使用 [Azure 备份](backup-overview.md)来备份 Azure VM。
 
 在本文中，学习如何：
 
@@ -47,13 +47,13 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
 
 在需要时安装 VM 代理，并验证来自 VM 的出站访问。
 
-### <a name="install-the-vm-agent"></a>安装 VM 代理 
+### <a name="install-the-vm-agent"></a>安装 VM 代理
 如果需要，请按如下所述安装该代理。
 
 **VM** | **详细信息**
 --- | ---
 **Windows VM** | [下载并安装](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)代理 MSI 文件。 使用管理员权限在计算机上进行安装。<br/><br/> 若要验证安装，请在 VM 上的“C:\WindowsAzure\Packages”中，右键单击“WaAppAgent.exe”并选择“属性”>“详细信息”选项卡。“产品版本”应为 2.6.1198.718 或更高。<br/><br/> 如果要更新代理，请确保没有备份操作正在运行，并[重新安装代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。
-**Linux VM** | 使用分发包存储库中的 RPM 或 DEB 包进行安装是安装和升级 Azure Linux 代理的首选方法。 所有[认可的分发版提供商](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)会将 Azure Linux 代理包集成到其映像和存储库。 [GitHub](https://github.com/Azure/WALinuxAgent) 上提供了该代理，但我们不建议从此处安装。<br/><br/> 如果要更新代理，请确保没有备份操作正在运行，并更新二进制文件。 
+**Linux VM** | 使用分发包存储库中的 RPM 或 DEB 包进行安装是安装和升级 Azure Linux 代理的首选方法。 所有[认可的分发版提供商](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)会将 Azure Linux 代理包集成到其映像和存储库。 [GitHub](https://github.com/Azure/WALinuxAgent) 上提供了该代理，但我们不建议从此处安装。<br/><br/> 如果要更新代理，请确保没有备份操作正在运行，并更新二进制文件。
 
 
 ### <a name="establish-network-connectivity"></a>建立网络连接
@@ -63,10 +63,10 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
 - Azure VM 与 Azure 备份服务通信不需要显式的出站网络访问权限。
 - 但是，当尝试进行连接时，某些较旧的虚拟机可能会遇到问题并失败，并且会出现 **ExtensionSnapshotFailedNoNetwork** 错误。 在这种情况下，请使用下列选项之一，使备份扩展能够与用于备份流量的 Azure 公共 IP 地址进行通信。
 
-   **选项** | **操作** ** | **优点** | **缺点**
+   **选项** | **Action** | **优点** | **缺点**
    --- | --- | --- | ---
    **设置 NSG 规则** | 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。<br/><br/>  可以添加一个允许使用[服务标记](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)访问 Azure 备份服务的规则，而无需分别允许并管理每个地址范围。 [详细了解](../virtual-network/security-overview.md#service-tags)服务标记。 | 无额外成本。 使用服务标记简化管理
-   **部署代理** | 部署 HTTP 代理服务器来路由流量。 | 允许访问整个 Azure，而不只是存储。 允许对存储 URL 进行精细控制。<br/><br/> 对 VM 进行单点 Internet 访问。<br/><br/> 代理不产生额外的成本。<br/><br/> 
+   **部署代理** | 部署 HTTP 代理服务器来路由流量。 | 允许访问整个 Azure，而不只是存储。 允许对存储 URL 进行精细控制。<br/><br/> 对 VM 进行单点 Internet 访问。<br/><br/> 代理不产生额外的成本。<br/><br/>
    **设置 Azure 防火墙** | 使用 Azure 备份服务的 FQDN 标记允许流量通过 VM 上的 Azure 防火墙。|  如果在 VNet 子网中设置了 Azure 防火墙，则 FQDN 标记很容易使用 | 无法创建自己的 FQDN 标记，无法修改标记中的 FQDN。<br/><br/> 如果使用 Azure 托管磁盘，可能需要在防火墙上打开另一个端口 (8443)。
 
 #### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>设置一个 NSG 规则以允许对 Azure 进行出站访问
@@ -110,22 +110,22 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
 2. 运行 **PsExec.exe -i -s cmd.exe**，以便在系统帐户下运行命令提示符。
 3. 在系统上下文中运行浏览器。 例如：对于 Internet Explorer，请运行 **%PROGRAMFILES%\Internet Explorer\iexplore.exe**。  
 4. 定义代理设置。
-    - 在 Linux 计算机上：
-        - 将以下代码行添加到 **/etc/environment** 文件：
-            - **http_proxy=http://proxy IP address:proxy port**
-        - 将以下代码行添加到 **/etc/waagent.conf** 文件：
-            - **HttpProxy.Host=proxy IP address**
-            - **HttpProxy.Port=proxy port**
-    - 在 Windows 计算机上的浏览器设置中，指定要使用代理。 如果当前在用户帐户中使用代理，则可以使用此脚本在系统帐户级别应用该设置。
-        ```powershell
-       $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
-       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
-       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
-       $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
-       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
+   - 在 Linux 计算机上：
+     - 将以下代码行添加到 **/etc/environment** 文件：
+       - **http_proxy=<http://proxy> IP address:proxy port**
+     - 将以下代码行添加到 **/etc/waagent.conf** 文件：
+         - **HttpProxy.Host=proxy IP address**
+         - **HttpProxy.Port=proxy port**
+   - 在 Windows 计算机上的浏览器设置中，指定要使用代理。 如果当前在用户帐户中使用代理，则可以使用此脚本在系统帐户级别应用该设置。
+       ```powershell
+      $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
+      Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
+      Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
+      $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+      Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
+      Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
 
-        ```
+       ```
 
 ##### <a name="allow-incoming-connections-on-the-proxy"></a>在代理上允许传入连接
 
@@ -157,45 +157,19 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
 - [了解](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)如何部署 Azure 防火墙。
 - [了解](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN 标记。
 
-## <a name="create-a-vault"></a>创建保管库
-
-保管库可以存储备份以及在不同时间创建的恢复点，并可以存储与备份的计算机相关联的备份策略。 按如下所述创建保管库：
-
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单中选择“浏览”，然后键入“恢复服务”。 选择“恢复服务保管库”。
-
-    ![在框中键入内容，并在结果中选择“恢复服务保管库”](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
-
-3. 在“恢复服务保管库”菜单中，选择“添加”。
-
-    ![创建恢复服务保管库步骤 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
-
-    ![“恢复服务保管库”窗格](./media/backup-azure-arm-vms-prepare/rs-vault-attributes.png)
-4. 在“恢复服务保管库” >  “名称”中，输入一个友好名称来标识此保管库。
-    - 名称对于 Azure 订阅需要是唯一的。
-    - 该名称可以包含 2 到 50 个字符。
-    - 名称必须以字母开头，只能包含字母、数字和连字符。
-5. 选择“订阅”查看可用订阅列表。 如果不确定要使用哪个订阅，请使用默认的（或建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。
-6. 选择“资源组”查看可用资源组列表，或选择“新建”创建新的资源组。 [详细了解](../azure-resource-manager/resource-group-overview.md)资源组。
-7. 选择“位置”，为保管库选择地理区域。 保管库必须与要备份的 VM 位于同一区域。
-8. 选择“创建”。
-    - 创建保管库可能需要一段时间。
-    - 可以在门户的右上区域中监视状态通知。
-    ![备份保管库列表](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
-
-创建保管库后，它会显示在“恢复服务保管库”的列表中。 如果未看到创建的保管库，请选择“刷新”。
-
 ## <a name="set-up-storage-replication"></a>设置存储复制
 
 默认情况下，保管库采用[异地冗余存储 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。 我们建议对主要备份使用 GRS，但也可以使用更经济的[本地冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
+Azure 备份会自动处理存储在保管库。 需要指定如何复制该存储。
 按如下所述修改存储复制：
 
-1. 在保管库中选择“备份基础结构”，然后单击“备份配置”
+1. 在“恢复服务保管库”边栏选项卡中，单击新保管库。 下**设置**部分中，单击**属性**。
+2. 在中**属性**下**备份配置**，单击**更新**。
 
-   ![备份保管库列表](./media/backup-azure-arm-vms-prepare/full-blade.png)
+3. 选择存储复制类型，然后单击**保存**。
 
-2. 在“备份配置”中，根据需要修改存储冗余方法，然后选择“保存”。
+      ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
 
 
 ## <a name="configure-a-backup-policy"></a>配置备份策略
@@ -217,23 +191,22 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
 3. 在“备份策略”中，选择要与保管库关联的策略。 然后单击“确定”。
     - 默认策略的详细信息会在下拉菜单下列出。
     - 单击“新建”以创建策略。 [详细了解](backup-azure-arm-vms-prepare.md#configure-a-backup-policy)如何定义策略。
-    
 
-    ![“备份”和“备份策略”窗格](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
+      ![“备份”和“备份策略”窗格](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
 
 4. 在“选择虚拟机”窗格中，选择要使用指定备份策略的 VM，然后单击“确定”。
 
-    - 随后将验证选定的 VM。
-    - 只能选择与保管库位于同一区域中的 VM。 只能在单个保管库中备份 VM。
+   - 随后将验证选定的 VM。
+   - 只能选择与保管库位于同一区域中的 VM。 只能在单个保管库中备份 VM。
 
-   ![“选择虚拟机”窗格](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
+     ![“选择虚拟机”窗格](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
 5. 在“备份”中，选择“启用备份”。
 
    - 这会将策略部署到保管库和 VM，并在 Azure VM 上运行的 VM 代理中安装备份扩展。
    - 此步骤不会创建 VM 的初始恢复点。
 
-   ![“启用备份”按钮](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
+     ![“启用备份”按钮](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
 启用备份后：
 
@@ -242,8 +215,8 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
     - VM 运行时，很有可能会获得应用程序一致的恢复点。
     -  但是，即使 VM 已关闭且无法安装扩展，也仍会备份 VM。 此类 VM 称为“脱机 VM”。 在这种情况下，恢复点将是 *崩溃一致性*恢复点。
     请注意，Azure 备份不支持根据 Azure VM 备份的夏令时时差自动调整时钟。 请根据需要手动修改备份策略。
-  
- ## <a name="run-the-initial-backup"></a>运行初始备份
+
+## <a name="run-the-initial-backup"></a>运行初始备份
 
 初始备份将根据计划运行，除非你立即手动运行它。 可以如下所述来手动运行初始备份：
 

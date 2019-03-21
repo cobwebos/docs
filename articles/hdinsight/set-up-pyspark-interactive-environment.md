@@ -9,12 +9,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: 45ba049717f2b9874bbac8d6493e13c2afc4b8f2
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: 8c0b40f0e6204d6cff59d3de3f20604d6913b9cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910642"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111627"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>为 Visual Studio Code 设置 PySpark 交互式环境
 
@@ -30,8 +30,8 @@ ms.locfileid: "54910642"
  
         ![Python pip 版本](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
-    > [!NOTE]
-    > 建议手动而不是使用 MacOS 默认版本安装 Python。
+     > [!NOTE]
+     > 建议手动而不是使用 MacOS 默认版本安装 Python。
 
 
 2. 通过运行以下命令，安装 virtualenv。
@@ -71,4 +71,4 @@ ms.locfileid: "54910642"
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](spark/apache-spark-jupyter-notebook-install-locally.md)
 * [在 Azure HDInsight 中使用 Microsoft Power BI 直观显示 Apache Hive 数据](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [在 Azure HDInsight 中使用 Apache Zeppelin 运行 Apache Hive 查询](hdinsight-connect-hive-zeppelin.md)
+* [使用 Apache Zeppelin 在 Azure HDInsight 运行 Apache Hive 查询](hdinsight-connect-hive-zeppelin.md)

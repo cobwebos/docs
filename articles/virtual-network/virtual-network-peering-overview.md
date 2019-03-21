@@ -7,21 +7,21 @@ documentationcenter: na
 author: jimdial
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 3f308c38e9fa23c36f964b117f620a39e56c9bbd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
+ms.openlocfilehash: e32bc2f4697b5ac32993a5da66e5c38cb7add03f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958178"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200576"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
-使用虚拟网络对等互连可以无缝连接两个 Azure [虚拟网络](virtual-networks-overview.md)。 建立对等互连后，出于连接目的，两个虚拟网络会显示为一个。 对等虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。 Azure 支持：
+虚拟网络对等互连可以无缝连接 Azure[虚拟网络](virtual-networks-overview.md)。 建立对等互连后，出于连接目的，两个虚拟网络会显示为一个。 对等虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。 Azure 支持：
 * VNet 对等互连 - 连接同一 Azure 区域中的 VNet
 * 全局 VNet 对等互连 - 跨 Azure 区域连接 VNet
 
@@ -59,11 +59,12 @@ ms.locfileid: "56958178"
 
 若已配置虚拟网络互连的两个选项，则虚拟网络之间的流量将通过对等配置（即通过 Azure 主干）流通。
 
-在同一区域中建立虚拟网络对等互连后，还可将对等互连虚拟网络中的网关配置为本地网络的传输点。 在这种情况下，使用远程网关的虚拟网络没有自己的网关。 虚拟网络只能有一个网关。 网关可能是本地网关或远程网关（对等虚拟网络中），如下图所示：
+虚拟网络对等时，用户还可以将对等虚拟网络中的网关配置为本地网络的传输点。 在这种情况下，使用远程网关的虚拟网络没有自己的网关。 虚拟网络只能有一个网关。 网关可能是本地网关或远程网关（对等虚拟网络中），如下图所示：
 
 ![虚拟网络对等互连传输](./media/virtual-networks-peering-overview/figure04.png)
 
-在不同区域中创建的虚拟网络之间的对等互连关系不支持网关传输。 要使用网关传输正常工作，对等互连关系中的两个虚拟网络必须位于同一区域。 仅当网关（VPN 或 ExpressRoute）位于虚拟网络（资源管理器）中时，才支持通过不同部署模型（资源管理器和经典）创建的虚拟网络之间的网关传输。 若要了解有关使用网关进行传输的详细信息，请参阅[配置 VPN 网关以在虚拟网络对等互连中传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+VNet 对等互连和全局 VNet 对等互连 （预览版） 支持网关传输。 可以使用远程网关，也可以在预览中的全局对等互连虚拟网络中允许网关传输。 预览版目前在所有 Azure 区域、 中国云区域和政府云区域。 未列入允许列表是必需的。 您可以通过 CLI、 PowerShell、 模板或 API 的预览版中进行测试。 门户不支持在预览中。
+仅当网关在虚拟网络 （资源管理器） 支持通过不同部署模型 （Resource Manager 和经典） 创建虚拟网络之间的网关传输。 若要了解有关使用网关进行传输的详细信息，请参阅[配置 VPN 网关以在虚拟网络对等互连中传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 正在共享单个 Azure ExpressRoute 连接的虚拟网络对等时，它们之间的流量会通过对等关系（即通过 Azure 主干网）流通。 仍可在各个虚拟网络中使用本地网关连接到本地线路。 也可使用共享网关，并为本地连接配置传输。
 
@@ -78,8 +79,8 @@ ms.locfileid: "56958178"
 ## <a name="requirements-and-constraints"></a>要求和约束
 
 仅当虚拟网络全局对等互连时，以下约束适用：
-- 一个虚拟网络中的资源无法与全局对等互连虚拟网络中 Azure 内部负载均衡器的前端 IP 地址通信。 负载均衡器和与之通信的资源必须位于同一区域中。
-- 不能使用远程网关，也不能允许网关传输。 若要使用远程网关或允许网关传输，对等互连的虚拟网络必须位于同一区域中。
+- 一个虚拟网络中的资源无法与全局对等互连的虚拟网络中的基本内部负载均衡器的前端 IP 地址通信。 基本负载均衡器的支持仅存在于同一区域内。 标准负载均衡器的支持存在全局 VNet 对等互连。
+- 可以使用远程网关，也可以在预览中的全局对等互连虚拟网络中允许网关传输。 预览版目前在所有 Azure 区域、 中国云区域和政府云区域。 未列入允许列表是必需的。 您可以通过 CLI、 PowerShell、 模板或 API 的预览版中进行测试。 门户不支持在预览中。
 
 若要详细了解要求和约束，请参阅[虚拟网络对等互连要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要了解可以为虚拟网络创建的对等互连的数目限制，请参阅 [Azure 网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 
 

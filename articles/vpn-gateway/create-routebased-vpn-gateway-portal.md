@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7139b2de79b4e092ca761a4e51061c233e6031b5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: ddc42023bae3403e7778327a40316462c85222c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470296"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005530"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>使用 Azure 门户创建基于路由的 VPN 网关
 
@@ -22,20 +22,20 @@ ms.locfileid: "49470296"
 
 ## <a name="vnet"></a>创建虚拟网络
 
-1. 从浏览器导航到 [Azure 门户](http://portal.azure.com)并使用 Azure 帐户登录。
+1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
 2. 单击“创建资源”。 在“在市场中搜索”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”页。
 3. 从靠近“虚拟网络”页底部的“选择部署模型”列表中，确认已从下拉列表中选择“资源管理器”，然后单击“创建”。 这会打开“创建虚拟网络”页。
 4. 在“创建虚拟网络”页上，配置 VNet 设置。 填写字段时，如果在字段中输入的字符有效，红色感叹号标记会变成绿色对钩标记。 使用以下值：
 
-  - **名称**：TestVNet1
-  - **地址空间**：10.1.0.0/16
-  - **订阅**：确认列出的订阅是你想要使用的订阅。 可以使用下拉列表更改订阅。
-  - **资源组**：TestRG1
-  - **位置**：美国东部
-  - **子网**：Frontend
-  - **地址范围**：10.1.0.0/24
+   - **名称**：TestVNet1
+   - **地址空间**：10.1.0.0/16
+   - **订阅**：确认列出的订阅是你想要使用的订阅。 可以使用下拉列表更改订阅。
+   - **资源组**：TestRG1
+   - **位置**：美国东部
+   - **子网**：前端
+   - **地址范围**：10.1.0.0/24
 
-  ![创建虚拟网络页](./media/create-routebased-vpn-gateway-portal/create-virtual-network.png "创建虚拟网络页")
+   ![创建虚拟网络页](./media/create-routebased-vpn-gateway-portal/create-virtual-network.png "创建虚拟网络页")
 5. 输入值后，选择“固定到仪表板”，以便可以方便地在仪表板中找到你的 VNet，然后单击“创建”。 单击“创建”后，将看到仪表板上的磁贴反映了 VNet 的进度。 创建 VNet 时，该磁贴会更改。
 
 ## <a name="gwsubnet"></a>添加网关子网
@@ -46,12 +46,12 @@ ms.locfileid: "49470296"
 2. 在“虚拟网络”页上，单击“子网”以展开“VNet1 - 子网”页。
 3. 单击顶部的“+网关子网”打开“添加子网”页。
 
-  ![添加网关子网](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "添加网关子网")
+   ![添加网关子网](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "添加网关子网")
 4. 子网的“名称”会自动填充为所需值“GatewaySubnet”。 调整自动填充的**地址范围**值，使其匹配以下值：
 
-  **地址范围(CIDR 块)**：10.1.255.0/27
+   **地址范围(CIDR 块)**：10.1.255.0/27
 
-  ![添加网关子网](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "添加网关子网")
+   ![添加网关子网](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "添加网关子网")
 5. 若要创建网关子网，请单击页底部的“确定”。
 
 ## <a name="gwvalues"></a>配置网关设置
@@ -60,35 +60,35 @@ ms.locfileid: "49470296"
 2. 在“虚拟网关”页的底部，单击“创建”打开“创建虚拟网关”页。
 3. 在“创建虚拟网关”页中，指定虚拟网关的值。
 
-  - **名称**：Vnet1GW
-  - **网关类型**：VPN 
-  - **VPN 类型**：基于路由
-  - **SKU**：VpnGw1
-  - **位置**：美国东部
-  - **虚拟网络**：单击“虚拟网络/选择虚拟网络”打开“选择虚拟网络”页。 选择 **VNet1**。
-  - **公共 IP 地址**：此设置指定与 VPN 网关关联的公共 IP 地址对象。 创建 VPN 网关后，会将公共 IP 地址动态分配给此对象。 VPN 网关当前仅支持动态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
+   - **名称**：Vnet1GW
+   - **网关类型**：VPN 
+   - **VPN 类型**：基于路由
+   - **SKU**：VpnGw1
+   - **位置**：美国东部
+   - **虚拟网络**：单击“虚拟网络/选择虚拟网络”打开“选择虚拟网络”页。 选择 **VNet1**。
+   - **公共 IP 地址**：此设置指定与 VPN 网关关联的公共 IP 地址对象。 创建 VPN 网关后，会将公共 IP 地址动态分配给此对象。 VPN 网关当前仅支持动态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 
-    - 将“新建”保留选中。
-    - 在文本框中，键入公共 IP 地址的**名称**。 对于此练习，使用 **VNet1GWIP**。<br>
+     - 让“新建”保持选中状态。
+     - 在文本框中，键入公共 IP 地址的**名称**。 对于此练习，使用 **VNet1GWIP**。<br>
 
-    ![配置网关设置](./media/create-routebased-vpn-gateway-portal/gw.png "配置网关设置")
+     ![配置网关设置](./media/create-routebased-vpn-gateway-portal/gw.png "配置网关设置")
 
 ## <a name="creategw"></a>创建 VPN 网关
 
 1. 在“创建虚拟网关”页上验证设置。 如有必要，请调整值。
 2. 在页面底部单击“创建”。
 
-  单击“创建”后，将会验证这些设置，并会在仪表板上显示“正在部署虚拟网关”磁贴。 VPN 网关可能最多需要 45 分钟。 可能需要刷新门户页才能看到完成状态。
+   单击“创建”后，将会验证这些设置，并会在仪表板上显示“正在部署虚拟网关”磁贴。 VPN 网关可能最多需要 45 分钟。 可能需要刷新门户页才能看到完成状态。
 
 ## <a name="viewgw"></a>查看 VPN 网关
 
 1. 创建网关后，请在门户中导航到 VNet1。 VPN 网关将作为已连接的设备显示在概述页上。
 
-  ![已连接的设备](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "已连接的设备")
+   ![已连接的设备](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "已连接的设备")
 
 2. 在设备列表中，单击 **VNet1GW** 可查看详细信息。
 
-  ![查看 VPN 网关](./media/create-routebased-vpn-gateway-portal/view-gateway.png "查看 VPN 网关")
+   ![查看 VPN 网关](./media/create-routebased-vpn-gateway-portal/view-gateway.png "查看 VPN 网关")
 
 ## <a name="next-steps"></a>后续步骤
 

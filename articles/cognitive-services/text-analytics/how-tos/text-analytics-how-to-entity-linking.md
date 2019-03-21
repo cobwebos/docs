@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: b2330d322c6939ba6d9581c125c512fcea9f924b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 1ea34d69c867d2d14496320f497df2ece5280e0c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242741"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009339"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>如何在文本分析（预览版）中使用命名实体识别
 
@@ -62,8 +62,9 @@ ms.locfileid: "56242741"
 | DateTime      | Duration      | “1 minute and 45 seconds”   | 
 | DateTime      | 设置           | “every Tuesday”     | 
 | DateTime      | TimeZone      |    | 
-| 代码           | 暂无\*         | "http://www.bing.com"    |
+| 代码           | 暂无\*         | "<https://www.bing.com>"    |
 | 电子邮件         | 暂无\*         | "support@contoso.com" |
+
 \*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。
 
 
@@ -74,7 +75,7 @@ ms.locfileid: "56242741"
 
 有关当前支持的语言，请参阅[此列表](../text-analytics-supported-languages.md)。
 
-每个文档的大小必须少于 5,000 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 以下示例例举了可能提交至实体链接端的内容。
+每个文档的大小必须少于 5,120 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 以下示例例举了可能提交至实体链接端的内容。
 
 ```
 {"documents": [{"id": "1",

@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 69fbcad92d31744cae798b7ff376e77f655f6440
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a2f8a9c5ceaac6209391df17f4ec08027991382b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877552"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123413"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
 
 > [!NOTE]
 > 此方法已弃用。 它在文本翻译 API V3.0 中不可用。
-
+> 
 > 以前可用于文本翻译 API V2.0 的协作性翻译框架 (CTF) 自 2018 年 2 月 1 日起被弃用。 AddTranslation 和 AddTranslationArray 函数允许用户通过协作性翻译框架启用更正。 在 2018 年 1 月 31 日之后，这两个函数不接受新的句子提交，并且用户会收到错误消息。 这些函数已被停用，并且不可替代。
-
->Translator Hub API 提供类似的功能，允许你使用术语和样式生成自定义翻译系统，并且可以使用文本翻译 API 中的类别 ID 调用它。 Translator Hub：[https://hub.microsofttranslator.com](https://hub.microsofttranslator.com)。 Translator Hub API：[https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
+> 
+> Translator Hub API 提供类似的功能，允许你使用术语和样式生成自定义翻译系统，并且可以使用文本翻译 API 中的类别 ID 调用它。 Translator Hub：[https://hub.microsofttranslator.com](https://hub.microsofttranslator.com)。 Translator Hub API：[https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
 
 协作性翻译框架 (CTF) 报告 API 返回 CTF 存储中的统计信息和实际内容。 此 API 与 GetTranslations() 方法不同，因为它：
 * 仅从你的帐户（appId 或 Azure 市场帐户）返回已翻译的内容及其总计数。
@@ -32,11 +32,11 @@ ms.locfileid: "55877552"
 * 不返回自动翻译（机器翻译）。
 
 ## <a name="endpoint"></a>终结点
-CTF 报告 API 的终结点为 http://api.microsofttranslator.com/v2/beta/ctfreporting.svc
+CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfreporting.svc
 
 
 ## <a name="methods"></a>方法
-| Name |    说明|
+| 名称 |    描述|
 |:---|:---|
 | GetUserTranslationCounts 方法 | 获取用户创建的翻译计数。 |
 | GetUserTranslations 方法 | 检索用户创建的翻译。 |
@@ -56,25 +56,25 @@ CTF 报告 API 的终结点为 http://api.microsofttranslator.com/v2/beta/ctfrep
 **语法**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslationCount[]GetUserTranslationCounts(
-           string appId,
-           string uriPrefix,
-           string from,
-           string to,
-           int? minRating,
-           int? maxRating,
-           string user,
-           string category
-           DateTime? minDateUtc,
-           DateTime? maxDateUtc,
-           int? skip,
-           int? take);
-```
+> ```cs
+> UserTranslationCount[]GetUserTranslationCounts(
+>            string appId,
+>            string uriPrefix,
+>            string from,
+>            string to,
+>            int? minRating,
+>            int? maxRating,
+>            string user,
+>            string category
+>            DateTime? minDateUtc,
+>            DateTime? maxDateUtc,
+>            int? skip,
+>            int? take);
+> ```
 
 **参数**
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix | **可选**：一个包含翻译 URI 前缀的字符串。|
@@ -96,7 +96,7 @@ UserTranslationCount[]GetUserTranslationCounts(
 
 结果集包含 **UserTranslationCount** 的数组。 每个 UserTranslationCount 都具有以下元素：
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 |:---|:---|
 | Count| 检索的结果数|
 | 源 | 源语言|
@@ -127,25 +127,25 @@ UserTranslationCount[]GetUserTranslationCounts(
 **语法**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslation[] GetUserTranslations (
-            string appId,
-            string uriPrefix,
-            string from,
-            string to,
-            int? minRating,
-            int? maxRating,
-            string user,
-            string category
-            DateTime? minDateUtc,
-            DateTime? maxDateUtc,
-            int? skip,
-            int? take);
-```
+> ```cs
+> UserTranslation[] GetUserTranslations (
+>             string appId,
+>             string uriPrefix,
+>             string from,
+>             string to,
+>             int? minRating,
+>             int? maxRating,
+>             string user,
+>             string category
+>             DateTime? minDateUtc,
+>             DateTime? maxDateUtc,
+>             int? skip,
+>             int? take);
+> ```
 
 **参数**
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix| **可选**：一个包含翻译 URI 前缀的字符串。|
@@ -167,7 +167,7 @@ UserTranslation[] GetUserTranslations (
 
 结果集包含 **UserTranslation** 的数组。 每个 UserTranslation 都具有以下元素：
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 |:---|:---|
 | CreatedDateUtc| 使用 AddTranslation() 创建条目的日期|
 | 源| 源语言|

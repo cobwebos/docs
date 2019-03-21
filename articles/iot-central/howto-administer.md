@@ -1,19 +1,19 @@
 ---
 title: 管理 Azure IoT Central 应用程序 | Microsoft Docs
-description: 如何以管理员身份管理 Azure IoT Central 应用程序
+description: 作为管理员，如何管理 Azure IoT Central 应用程序
 author: viv-liu
 ms.author: viviali
-ms.date: 04/16/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: feaedff2cb9f8eae30fd17c497b4a2f6de490b07
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 29ded279e2a76940049c257b954b1dae75f14836
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822589"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778597"
 ---
 # <a name="administer-your-iot-central-application"></a>管理 IoT Central 应用程序
 
@@ -44,11 +44,11 @@ ms.locfileid: "55822589"
 若要更改应用程序图像，请参阅[准备图像并将其上传到 Azure IoT Central 应用程序](howto-prepare-images.md)。
 
 ### <a name="copy-an-application"></a>复制应用程序
-可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 副本是付费的即用即付应用程序。 不能以这种方式创建试用版应用程序。
+可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 副本是你将支付的即用即付应用程序。 不能以这种方式创建试用版应用程序。
 
-单击“复制”按钮。 在对话框中，输入新的即用即付应用程序的详细信息。 然后单击“复制”按钮以确认继续。 在[创建应用程序](quick-deploy-iot-central.md)快速入门中详细了解此窗体中的字段。
+选择**复制**。 在对话框中，输入新的即用即付应用程序的详细信息。 然后选择**复制**以确认你想要继续操作。 在[创建应用程序](quick-deploy-iot-central.md)快速入门中详细了解此窗体中的字段。
 
-![“应用程序设置”页](media/howto-administer/appCopy2.png)
+![“应用程序设置”页](media/howto-administer/appcopy2.png)
 
 应用复制操作成功后，可以使用显示的链接转到通过复制应用程序创建的新应用程序。
 
@@ -62,7 +62,7 @@ ms.locfileid: "55822589"
 > [!Note]
 > 若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 有关详细信息，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
 
-使用“删除”按钮可以永久删除 IoT Central 应用程序。 此操作会永久删除与该应用程序关联的所有数据。
+使用“删除”按钮可以永久删除 IoT Central 应用程序。 执行此操作永久删除与该应用程序相关联的所有数据。
 
 ## <a name="manage-users"></a>管理用户
 
@@ -95,7 +95,7 @@ ms.locfileid: "55822589"
 
 ## <a name="manage-roles"></a>管理角色
 
-使用角色可以控制组织中的哪些人可以在 IoT Central 中执行各种任务。 可将三种角色分配给应用程序的用户。 
+使用角色可以控制组织中的哪些人可以在 IoT Central 中执行各种任务。 可将三种角色分配给应用程序的用户。
 
 ### <a name="administrator"></a>管理员
 
@@ -111,7 +111,6 @@ ms.locfileid: "55822589"
 
 充当“应用程序操作员”角色的用户无法对设备模板进行更改，也无法管理应用程序。 这意味着，操作员可以添加和删除设备、管理设备集，以及运行分析和作业。 操作员无权访问“应用程序构建人员”和“管理”页。
 
-
 ## <a name="view-your-bill"></a>查看帐单
 
 若要查看帐单，请在“管理”部分转到“计费”页。 Azure 计费页将在新选项卡中打开，可以在此处看到每个 Azure IoT Central 应用程序的帐单。
@@ -124,32 +123,32 @@ ms.locfileid: "55822589"
 - **即用即付**应用程序按设备收费，前 5 台设备免费。
 
 可在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上了解定价详细信息。
-    
+
 若要完成此自助服务过程，请遵循以下步骤：
 
-1. 在“管理”部分转到“计费”页。 
+1. 在“管理”部分转到“计费”页。
 
     ![试用状态](media/howto-administer/freetrialbilling.png)
 
-1. 单击“转换为即用即付”。 
+1. 选择**将转换为即用即付**。
 
     ![转换试用版](media/howto-administer/convert.png)
 
 1. 选择相应的 Azure Active Directory，然后选择要对即用即付应用程序使用的 Azure 订阅。
 
-1. 单击“转换”后，应用程序随即会变成即用即付应用程序，并开始计费。
+1. 选择后**转换**，你的应用程序现在是即用即付应用程序开始计费。
 
 ## <a name="export-data"></a>导出数据
 
-可以启用“连续数据导出”，以将度量值、设备和设备模板数据导出到 Azure Blob 存储帐户。 详细了解如何导出数据。
+可以启用“连续数据导出”，以将度量值、设备和设备模板数据导出到 Azure Blob 存储帐户。 详细了解如何[导出数据](howto-export-data.md)。
 
 ## <a name="manage-device-connection"></a>管理设备连接
 
-使用此处的密钥和证书在应用程序中大规模连接设备。 详细了解如何连接设备。
+使用此处的密钥和证书在应用程序中大规模连接设备。 详细了解如何[连接设备](concepts-connectivity.md)。
 
 ## <a name="use-access-tokens"></a>使用访问令牌
 
-生成访问令牌，以便在开发人员工具中使用。 目前，可以使用一个开发人员工具（IoT Central 资源管理器）来监视设备消息以及属性和设置的更改。 详细了解 IoT Central 资源管理器。 
+生成访问令牌，以便在开发人员工具中使用。 目前没有一个开发人员工具可用的 IoT 中心资源管理器是用于监视设备的消息和中的属性和设置的更改。 详细了解 [IoT Central 资源管理器](howto-use-iotc-explorer.md)。
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>使用 Azure SDK 进行控制平面操作
 

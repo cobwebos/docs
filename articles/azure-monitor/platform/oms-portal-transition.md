@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+ms.openlocfilehash: 7e14b5f2c5f84c4f1f21454f733987df6933f0c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213993"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886620"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "54213993"
 
 Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功能，例如，为固定资源提供仪表板、为查找资源提供智能搜索，以及为资源管理提供标记。 用于整合和简化监视与管理工作流，我们已开始将 OMS 门户功能添加到 Azure 门户。 OMS 门户的所有功能现已并入 Azure 门户。 事实上，某些新功能（例如流量分析）只在 Azure 门户中提供。 使用 Azure 门户就能完成在 OMS 门户中所能完成的任何工作，而且 Azure 门户的功能更强大。 如果你尚未使用 Azure 门户，请立即开始使用！
 
-对于 Azure 商业云和 Azure 美国政府云，**OMS 门户将于 2019 年 1 月 15 日正式停用**，整个 OMS 门户**将于 2019 年 3 月 30 日正式停用**。 我们很高兴能够转移到 Azure 门户，并且希望实现轻松过渡。 但我们也知道，变化会带来一定的困扰。 欢迎向 **LAUpgradeFeedback@microsoft.com** 发送任何问题、反馈或忧虑。 本文的剩余部分介绍此项过渡的关键场景和路线图。
+对于 Azure 商业云和 Azure 美国政府云，**OMS 门户将于 2019 年 1 月 15 日正式停用**，整个 OMS 门户**将于 2019 年 3 月 30 日正式停用**。 我们很高兴能够转移到 Azure 门户，并且希望实现轻松过渡。 但我们也知道，变化会带来一定的困扰。 发送任何问题、 反馈或考虑事项**LAUpgradeFeedback\@microsoft.com**。 本文的剩余部分介绍此项过渡的关键场景和路线图。
 
 ## <a name="what-is-changing"></a>有什么变化？ 
 随着 OMS 门户的弃用，我们将宣布以下变化。 其中的每项变化将在下面的相应部分做出详细描述。
@@ -47,7 +47,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 - 需[将用户权限迁移](#user-access-and-role-migration)到 Azure 门户。
 - 有关转移更新管理解决方案的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../../automation/migrate-oms-update-deployments.md)。
 
-参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](oms-portal-faq.md)，了解有关如何过渡到 Azure 门户的信息。 欢迎向 LAUpgradeFeedback@microsoft.com 发送任何反馈、问题或忧虑。
+参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](oms-portal-faq.md)，了解有关如何过渡到 Azure 门户的信息。 发送任何反馈、 问题或考虑事项**LAUpgradeFeedback\@microsoft.com**。
 
 ## <a name="user-access-and-role-migration"></a>用户访问权限和角色迁移
 与 OMS 门户中的访问权限管理相比，Azure 门户的访问权限管理功能是更丰富且更强大。 有关 Log Analytics 中访问权限管理的详细信息，请参阅[管理工作区](manage-access.md#manage-accounts-and-users)。

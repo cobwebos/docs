@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 7d8a654b6b2f429119323fa5d18eb0596f63e6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719687"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105261"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>使用 Apache Ambari 视图来调试 HDInsight 上的 Apache Tez 作业
 
@@ -23,7 +23,7 @@ ms.locfileid: "53719687"
 > [!IMPORTANT]  
 > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 基于 Linux 的 HDInsight 群集。 有关创建群集的步骤，请参阅[开始使用基于 Linux 的 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * 支持 HTML5 的现代 Web 浏览器。
@@ -90,14 +90,14 @@ Tez 视图提供进程的历史信息，还提供正在运行的进程的相关�
 
 5. 可通过此页上的选项卡查看以下信息：
 
-    * **查询详细信息**：有关 Hive 查询的详细信息。
-    * **时间线**：有关每个处理阶段所花时间的信息。
-    * **配置**：用于此查询的配置。
+   * **查询详细信息**：有关 Hive 查询的详细信息。
+   * **时间线**：有关每个处理阶段所花时间的信息。
+   * **配置**：用于此查询的配置。
 
-    在“查询详细信息”中，可以通过链接查找有关此查询的“应用程序”或“DAG”的信息。
+     在“查询详细信息”中，可以通过链接查找有关此查询的“应用程序”或“DAG”的信息。
     
-    * “应用程序”链接显示有关此查询的 YARN 应用程序的信息。 从此处可以访问 YARN 应用程序日志。
-    * “DAG”链接显示有关此查询的有向无环图的信息。 从此处可以查看 DAG 的图形表示形式。 还可以找到有关 DAG 顶点的信息。
+   * “应用程序”链接显示有关此查询的 YARN 应用程序的信息。 从此处可以访问 YARN 应用程序日志。
+   * “DAG”链接显示有关此查询的有向无环图的信息。 从此处可以查看 DAG 的图形表示形式。 还可以找到有关 DAG 顶点的信息。
 
 ## <a name="next-steps"></a>后续步骤
 

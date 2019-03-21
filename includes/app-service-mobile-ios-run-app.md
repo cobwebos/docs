@@ -4,19 +4,19 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 8146489a913ce863cee7534331231a248a3ea7ac
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.openlocfilehash: f4ba467b6d80c9ccafba0a91c1f04152b92cf869
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890953"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58115901"
 ---
 1. 在 Mac 上访问 [Azure 门户]。 单击“所有服务” > “应用程序服务”> 刚创建的后端。 在移动应用设置中，选择首选语言：
 
-    - Objective-C &ndash;“快速入门” > “iOS (Objective-C)”
-    - Swift &ndash;“快速入门” > “iOS (Swift)”
+   - Objective-C &ndash;“快速入门” > “iOS (Objective-C)”
+   - Swift &ndash;“快速入门” > “iOS (Swift)”
 
-    在“3. 定义操作组”下，配置客户端应用程序”下，单击“下载”。 这会下载预配置为连接到后端的完整 Xcode 项目。 使用 Xcode 打开项目。
+     在“3. 定义操作组”下，配置客户端应用程序”下，单击“下载”。 这会下载预配置为连接到后端的完整 Xcode 项目。 使用 Xcode 打开项目。
 
 1. 按“运行”  按钮生成项目，并在 iOS 模拟器中启动应用。
 

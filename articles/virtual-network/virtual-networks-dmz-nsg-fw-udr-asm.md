@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 9632bd339956aff7558461ed391cdd21c92f06ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965250"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995194"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>示例 3 – 构建外围网络以通过防火墙、UDR 和 NSG 保护网络
 [返回安全边界最佳实践页面][HOME]
@@ -106,7 +106,7 @@ VNETLocal 始终是该特定网络的 VNet 的已定义地址前缀（也就是�
          {0.0.0.0/0}       VirtualAppliance 10.0.0.4            Active
 
 
-本示例将使用以下命令来构建路由表、添加用户定义的路由，并将路由表绑定到子网（注意：下面以货币符号开头的项（例如 $BESubnet）均为本文“参考”部分的脚本中的用户定义变量）：
+本示例将使用以下命令来构建路由表、添加用户定义的路由，然后将路由表绑定到子网（注意：下面以货币符号开头的项（例如 $BESubnet）均为本文“参考”部分的脚本中的用户定义变量）：
 
 1. 首先必须创建基础路由表。 此代码段演示如何创建后端子网的路由表。 该脚本还为前端子网创建了对应的路由表。
 
@@ -153,7 +153,7 @@ VNETLocal 始终是该特定网络的 VNet 的已定义地址前缀（也就是�
 ## <a name="ip-forwarding"></a>IP 转发
 UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟设备能够接收不是要专门传送到该设备的流量，再将流量转发到其最终目标。
 
-例如，如果来自 AppVM01 的流量对 DNS01 服务器发出请求，UDR 会将此流量路由到防火墙。 在启用 IP 转发后，目标为 DNS01 (10.0.2.4) 的流量被设备 (10.0.0.4) 所接受，并转发到其最终目标 (10.0.2.4)。 如果防火墙上未启用 IP 转发，则即使路由表将防火墙用作下一跃点，流量也不会被设备所接受。 
+例如，如果来自 AppVM01 的流量对 DNS01 服务器发出请求，UDR 会将此流量路由到防火墙。 在启用 IP 转发后，目标为 DNS01 (10.0.2.4) 的流量被设备 (10.0.0.4) 所接受，然后转发到其最终目标 (10.0.2.4)。 如果防火墙上未启用 IP 转发，则即使路由表将防火墙用作下一跃点，流量也不会被设备所接受。 
 
 > [!IMPORTANT]
 > 务必谨记同时启用 IP 转发和用户定义的路由。
@@ -174,7 +174,7 @@ UDR 随附 IP 转发功能。 这是虚拟设备上的一项设置，使虚拟�
 
 1. 拒绝从 Internet 到整个 VNet（所有子网）的任何流量（所有端口）
 
-尽管本示例使用了 NSG，但它的主要用途是作为防止人为配置错误的第二道防线。 我们想要阻止由 Internet 流往前端或后端子网的所有入站流量，流量只应流经 SecNet 子网前往防火墙（并于合适时流往前端或后端子网）。 此外，配置 UDR 规则后，确实到达了前端或后端子网的流量都会被定向到防火墙（由于 UDR）。 防火墙将此流量视为非对称流量，并且会丢弃出站流量。 因此，前端和后端子网共有三个安全防护层：1) FrontEnd001 和 BackEnd001 云服务上没有开放的终结点，2) NSG 拒绝来自 Internet 的流量，3) 防火墙丢弃非对称流量。
+尽管本示例使用了 NSG，但它的主要用途是作为防止人为配置错误的第二道防线。 我们想要阻止由 Internet 流往前端或后端子网的所有入站流量，流量只应流经 SecNet 子网前往防火墙（并于合适时流往前端或后端子网）。 此外，配置 UDR 规则后，确实到达了前端或后端子网的流量都将被定向到防火墙（由于 UDR）。 防火墙将此流量视为非对称流量，并且会丢弃出站流量。 因此，前端和后端子网共有三个安全防护层：1) FrontEnd001 和 BackEnd001 云服务上没有开放的终结点，2) NSG 拒绝来自 Internet 的流量，3) 防火墙丢弃非对称流量。
 
 本示例中的网络安全组有一个有趣的特点，那就是它只包含一个规则（如下所示），它将拒绝流向整个虚拟网络（包含安全子网）的 Internet 流量。 
 
@@ -255,7 +255,7 @@ Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
     Update-AzureVM
 ```
 
-尽管此处因为使用了变量而未明确显示，但实际上**只会**打开安全云服务上的终结点。 这是为了确保所有入站流量都由防火墙处理（路由、进行 NAT 处理、丢弃）。
+尽管此处因为使用了变量而未明确显示，但实际上**只会**打开安全云服务上的终结点。 这是为了确保所有入站流量都将由防火墙处理（路由、进行 NAT 处理、丢弃）。
 
 电脑上必须安装管理客户端才能管理防火墙和创建所需的配置。 有关如何管理设备的信息，请参阅防火墙（或其他 NVA）供应商提供的文档。 本部分的余下内容和下一部分“创建防火墙规则”介绍如何通过供应商的管理客户端（即不使用 Azure 门户或 PowerShell）来配置防火墙本身。
 
@@ -286,7 +286,7 @@ Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
 必须重复此过程来创建其余服务器的 RDP 服务：AppVM02、DNS01 和 IIS01。 创建这些服务可让下一部分中的规则创建操作变得更简单明了。
 
 > [!NOTE]
-> 防火墙不需要 RDP 服务的原因有两个：1) 首先，防火墙 VM 是基于 Linux 的映像，因此会在端口 22 上使用 SSH 来管理 VM，而不是使用 RDP，2) 下面所述的第一个管理规则允许端口 22 和另外两个管理端口，以允许进行管理连接。
+> 防火墙不需要 RDP 服务的原因有两个：1) 首先，防火墙 VM 是基于 Linux 的映像，因此将在端口 22 上使用 SSH 来管理 VM，而不是使用 RDP，2) 下面所述的第一个管理规则允许端口 22 和另外两个管理端口，以允许进行管理连接。
 > 
 > 
 
@@ -348,7 +348,7 @@ Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
   
     此目标 NAT 规则允许实际的应用程序流量抵达应用程序服务器。 其他规则用于安全、管理等，而应用程序规则允许外部用户或服务访问应用程序。 就本示例而言，端口 80 上有单个 Web 服务器，因此单个防火墙应用程序规则将流往外部 IP 的入站流量，并重定向到 Web 服务器的内部 IP 地址。
   
-    **注意**：“目标列表”字段中未指定端口，因此入站端口 80（对于所选服务为 443）用于 Web 服务器的重定向。 如果 Web 服务器正在侦听不同的端口（例如端口 8080），“目标列表”字段可更新为“10.0.1.4:8080”以同时允许端口重定向。
+    **注意**：“目标列表”字段中未指定端口，因此入站端口 80（对于所选服务为 443）将用于 Web 服务器的重定向。 如果 Web 服务器正在侦听不同的端口（例如端口 8080），“目标列表”字段可更新为“10.0.1.4:8080”以同时允许端口重定向。
   
     下一个应用程序流量规则是后端规则，用于允许 Web 服务器通过任何服务与 AppVM01 服务器（而非 AppVM02）对话：
   
@@ -356,7 +356,7 @@ Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
   
     此传递规则允许前端子网上的任何 IIS 服务器在任何端口上连接到 AppVM01（IP 地址 10.0.2.5），使用任何协议来访问 Web 应用程序所需的数据。
   
-    在此屏幕截图中，“目标”字段使用“\<explicit-dest\>”来表示目标为 10.0.2.5。 这可能是如图所示的明确地址或命名网络对象（如 DNS 服务器先决条件中所述）。 至于使用哪种表示法，由防火墙管理员来决定。 要将 10.0.2.5 添加为明确目标，请双击 \<explicit-dest\> 下面的第一个空白行，并在弹出窗口中输入地址。
+    在此屏幕快照"\<显式 dest\>"在目标字段中用于表示目标目标为 10.0.2.5。 这可能是如图所示的明确地址或命名网络对象（如 DNS 服务器先决条件中所述）。 至于使用哪种表示法，由防火墙管理员来决定。 若要将 10.0.2.5 添加为显式目标，请双击下方的第一个空白行\<显式 dest\>并在弹出的窗口中输入的地址。
   
     使用此传递规则时不需要 NAT，因为这是内部流量，“连接方法”可设置为“不使用 SNAT”。
   
@@ -381,7 +381,7 @@ Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
   
     ![防火墙 DNS 规则][15]
   
-    **注意**：此屏幕截图中包含了“连接方法”。 此规则用于内部 IP 到内部 IP 的地址流量，不需要 NAT，因此传递规则的“连接方法”设置为“不使用 SNAT”。
+    **注意**：在此屏幕快照是包含连接方法。 此规则用于内部 IP 到内部 IP 的地址流量，不需要 NAT，因此传递规则的“连接方法”设置为“不使用 SNAT”。
 * **“子网到子网”规则**：此“传递”规则是经过激活并修改的默认规则，允许后端子网上的任何服务器连接到前端子网上的任何服务器。 此规则完全针对内部流量，因此可将“连接方法”设置为“不使用 SNAT”。
   
     ![防火墙 VNet 内部规则][16]
@@ -486,7 +486,7 @@ Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
 11. AppVM01 提示输入用户名和密码
 
 #### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>（允许）在 DNS 服务器上执行 Web 服务器 DNS 查找
-1. Web 服务器 IIS01 需要 www.data.gov 上的数据源，但需要解析地址。
+1. Web 服务器 IIS01 需要的数据馈送在 www\.data.gov，但需要解析地址。
 2. VNet 的网络配置将 DNS01（后端子网上的 10.0.2.4）列为主 DNS 服务器，IIS01 将 DNS 请求发送到 DNS01
 3. UDR 将出站流量路由到作为下一跃点的防火墙
 4. 没有出站 NSG 规则绑定到前端子网，允许流量
@@ -560,7 +560,7 @@ Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
 #### <a name="denied-frontend-server-to-backend-server"></a>（拒绝）前端服务器到后端服务器
 1. 假设 IIS01 遭到入侵，正在运行恶意代码以尝试扫描后端子网服务器。
 2. 前端子网 UDR 路由将任何来自 IIS01 的出站流量发送到作为下一跃点的防火墙。 遭到入侵的 VM 无法改变这一点。
-3. 如果请求是针对 AppVM01 发出的，或者是为了执行 DNS 查找而对 DNS 服务器发出的，则防火墙可能会允许并处理该流量（由于转发规则 7 和 9）。 其他所有流量会被转发规则 11（全部拒绝）阻止。
+3. 如果请求是针对 AppVM01 发出的，或者是为了执行 DNS 查找而对 DNS 服务器发出的，则防火墙可能会允许并处理该流量（由于转发规则 7 和 9）。 其他所有流量将被转发规则 11（全部拒绝）阻止。
 4. 如果防火墙上已启用高级威胁检测（本文未涵盖这方面的内容，请参阅供应商的文档，以了解特定网络设备的高级威胁功能），且流量包含带有高级威胁规则标志的已知签名或模式，即使是本文所述的基本转发规则所允许的流量也可能还会遭到阻止。
 
 #### <a name="denied-internet-dns-lookup-on-dns-server"></a>（拒绝）在 DNS 服务器上执行 Internet DNS 查找
@@ -945,7 +945,7 @@ Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
 使用更新的位置保存此 xml 文件，并将此文件的链接添加到上述脚本中的 $NetworkConfigFile 变量。
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>
@@ -990,7 +990,7 @@ Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
 [5]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpa.png "默认 RDP 规则的副本"
 [6]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpb.png "AppVM01 规则"
 [7]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconapplicationredirect.png "应用程序重定向图标"
-[8]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/icondestinationnat.png "“目标 NAT”图标"
+[8]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/icondestinationnat.png "目标 NAT 图标"
 [9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "传递图标"
 [10]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulefirewall.png "防火墙管理规则"
 [11]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulerdp.png "防火墙 RDP 规则"

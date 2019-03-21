@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/21/2019
+ms.date: 03/01/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb991de113b13666eeaab3f283b9eccd75fbd39
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e59e00b0be7b7694d03961b19fadfa92c5db98b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166023"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58171068"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件是什么？ 
 
@@ -59,7 +59,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 - **名称** - 命名位置的显示名称。
 
-- **IP 范围** - 采用 CIDR 格式的一个或多个 IPv4 地址范围。 不支持指定 Ipv6 地址范围。
+- **IP 范围** - 采用 CIDR 格式的一个或多个 IPv4 地址范围。 不支持指定的 IPv6 地址范围。
 
 - **标记为可信位置** - 可为命名位置设置标志，以指示它是可信的位置。 通常，可信位置是由 IT 部门控制的网络区域。 除条件访问以外，Azure Identity Protection 和 Azure AD 安全报告也使用可信命名位置来减少[误报](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)。
 
@@ -67,7 +67,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 - **包含未知区域** - 某些 IP 地址未映射到特定的国家/地区。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
-可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 可以配置：
+可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 你可以配置以下项之一：
 
 - 一个命名位置最多可以有 1200 个 IP 范围。
 
@@ -142,7 +142,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 ### <a name="user-ip-address"></a>用户 IP 地址
 
-在策略评估中使用的 IP 地址是用户的公共 IP 地址。 对于专用网络中的设备，这不是 Intranet 中用户设备的客户端 IP，而是专用网络连接到公共 Internet 时使用的地址。 
+在策略评估中使用的 IP 地址是用户的公共 IP 地址。 对于专用网络中的设备，这不是 Intranet 中用户设备的客户端 IP，而是专用网络连接到公共 Internet 时使用的地址。 如果你的设备具有 IPv6 地址，不支持配置位置条件。
 
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>批量上传和下载命名位置
 

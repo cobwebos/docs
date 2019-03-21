@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 713068b940532331ee4a6c5f5a92816d328e41ec
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: a4c9ec133b3686a92cec7e7c8d4552c1302e3074
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55736135"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58115138"
 ---
 通过 Resource Manager 命令和模板使用 Azure CLI 以利用资源组部署 Azure 资源和工作负荷之前，需要一个 Azure 帐户。 如果没有帐户，可以[在此处获取免费 Azure 试用帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "55736135"
 > 
 
 | 任务 | 资源管理器 |
-| --- | --- | --- |
+| --- | --- |
 | 创建最基本的 VM |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>（从 `azure vm image list` 命令获取 `image-urn`。 有关示例，请参阅[此文](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。） |
 | 创建 Linux VM |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
 | 创建 Windows VM |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |

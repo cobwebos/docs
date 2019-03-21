@@ -1,26 +1,26 @@
 ---
 title: 为进行 VMware 灾难恢复而使用 Azure Site Recovery 复制到 Azure 时排除磁盘 | Microsoft Docs
 description: 介绍为进行 VMware 灾难恢复而复制到 Azure 时，为何需要排除 VM 磁盘，以及如何这样做。
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
-ms.date: 11/27/2018
-ms.author: ramamill
+ms.date: 3/3/2019
+ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: af610aaec238e1b2ae8ec2387e5a8f71225cab8c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: 105074892cc6dfa4da1e7c8ddd0a0aad9f1b60a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848155"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002884"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>在从 VMware VM 到 Azure 的复制中排除磁盘
 
 本文介绍如何在将 VMware VM 复制到 Azure 时排除磁盘。 这种排除可以优化消耗的复制带宽，或者优化此类磁盘利用的目标端资源。 如果需要有关对 Hyper-V 排除磁盘的信息，请阅读[此文](hyper-v-exclude-disk.md)
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 默认情况下将复制计算机上的所有磁盘。 若要从复制中排除某个磁盘，则在从 VMware 复制到 Azure 的情况下，必须在启用复制前，手动在计算机上安装移动服务。
 
@@ -80,7 +80,7 @@ ms.locfileid: "52848155"
 DB-Disk0-OS | DISK0 | C:\ | 操作系统磁盘
 DB-Disk1| Disk1 | D:\ | SQL 系统数据库和用户数据库 1
 DB-Disk2（已从保护中排除该磁盘） | Disk2 | E:\ | 临时文件
-DB-Disk3（已从保护中排除该磁盘） | Disk3 | F:\ | SQL tempdb 数据库（文件夹路径 (F:\MSSQL\Data\) </br /> </br />在故障转移前记下该文件夹路径。
+DB-Disk3（已从保护中排除该磁盘） | Disk3 | F:\ | SQL tempdb 数据库（文件夹路径 (F:\MSSQL\Data\)） <br /> <br />记下在故障转移之前的文件夹路径。
 DB-Disk4 | Disk4 |G:\ |用户数据库 2
 
 在虚拟机的两个磁盘上的数据改动是临时性的，因此在保护 SalesDB 虚拟机时，可以从复制中排除 Disk2 和 Disk3。 Azure Site Recovery 不会复制这些磁盘。 进行故障转移时，这些磁盘不会存在于 Azure 的故障转移虚拟机上。
@@ -90,7 +90,7 @@ DB-Disk4 | Disk4 |G:\ |用户数据库 2
 **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | ---
 DISK0 | C:\ | 操作系统磁盘
-Disk1 | E:\ | 临时存储</br /> </br />Azure 添加此磁盘并分配第一个可用的驱动器号。
+Disk1 | E:\ | 临时存储<br /> <br />Azure 将添加此磁盘并分配第一个可用的驱动器号。
 Disk2 | D:\ | SQL 系统数据库和用户数据库 1
 Disk3 | G:\ | 用户数据库 2
 
@@ -154,7 +154,7 @@ Disk3 为 SQL tempdb 磁盘\)（tempdb 文件夹路径为 F:\MSSQL\Data），已
 **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | ---
 DISK0 | C:\ | 操作系统磁盘
-Disk1 | E:\ | 临时存储</br /> </br />Azure 添加此磁盘并分配第一个可用的驱动器号。
+Disk1 | E:\ | 临时存储<br /> <br />Azure 将添加此磁盘并分配第一个可用的驱动器号。
 Disk2 | D:\ | SQL 系统数据库和用户数据库 1
 Disk3 | G:\ | 用户数据库 2
 
@@ -173,7 +173,7 @@ Disk2 | G:\ | 用户数据库 2
 假设有一台虚拟机，其中的页面文件磁盘可以被排除。
 存在两种情况。
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>情况 1：在 D: 驱动器上配置页面文件
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>案例 1：在 D: 驱动器上配置页面文件
 以下为磁盘配置：
 
 **磁盘名称** | **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
@@ -193,7 +193,7 @@ DB-Disk3 | Disk3 | F:\ | 用户数据 2
 **磁盘名称** | **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | 操作系统磁盘
-DB-Disk1 | Disk1 | D:\ | 临时存储</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | 临时存储<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | 用户数据 1
 DB-Disk3 | Disk3 | F:\ | 用户数据 2
 
@@ -203,7 +203,7 @@ Disk1 (D:) 已排除，因此 D: 是可用列表中的首个驱动器号。 Azur
 
 ![Azure 虚拟机上的页面文件设置](./media/vmware-azure-exclude-disk/pagefile-on-azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>情况 2：在另一驱动器（D: 以外的驱动器）上配置页面文件
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>案例 2：在另一驱动器（非 D: 驱动器）上配置页面文件
 
 以下为源虚拟机磁盘配置：
 
@@ -220,10 +220,10 @@ DB-Disk3 | Disk3 | F:\ | 用户数据 2
 
 将虚拟机从 VMware 故障转移到 Azure 以后，Azure 虚拟机上的磁盘如下所示：
 
-**磁盘名称**| **来宾操作系统磁盘编号**| **驱动器号** | **磁盘上的数据类型**
+**磁盘名称** | **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |操作系统磁盘
-DB-Disk1 | Disk1 | D:\ | 临时存储</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | 临时存储<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | 用户数据 1
 DB-Disk3 | Disk3 | F:\ | 用户数据 2
 

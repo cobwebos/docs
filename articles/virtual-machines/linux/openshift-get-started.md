@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 03/01/2019
 ms.author: haroldw
-ms.openlocfilehash: bf34d7e85632999056388eb74816140ce667ce10
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
+ms.openlocfilehash: 826085df8d928cab0a05527be8c464af5f4e9180
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382363"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002515"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
 
@@ -46,11 +46,11 @@ OpenShift 包括用于容器业务流程和管理的 Kubernetes 容器。 它增
 
 容器平台 是 Red Hat 支持的企业就绪[商业版本](https://www.openshift.com)。 使用此版本时，客户需购买 OpenShift 容器平台的必要权利，并负责安装和管理整个基础结构。
 
-由于客户“拥有”整个平台，他们可在本地数据中心或公有云（例如 Azure、AWS 或 Google）位置中进行安装。
+由于客户"拥有"整个平台，他们可以在本地数据中心，或在公有云 （例如 Azure) 中安装它。
 
 ## <a name="openshift-on-azure"></a>Azure 上的 OpenShift
 
-Azure 上的 OpenShift 是一种在 Azure 中运行的完全托管的 OpenShift 产品/服务。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 群集将部署到客户的 Azure 订阅中。 此服务目前为个人预览版，计划在 CY2019 年第一季度末正式发布。 对于有兴趣参与个人预览版的客户，请填写[提名表单](http://aka.ms/openshiftazureinterest)。  随着产品/服务越来越临近正式发布，将提供更多的信息。
+Azure 上的 OpenShift 是一种在 Azure 中运行的完全托管的 OpenShift 产品/服务。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 群集将部署到客户的 Azure 订阅中。 此服务目前为个人预览版，计划在 CY2019 年第一季度末正式发布。 对于有兴趣参与个人预览版的客户，请填写[提名表单](https://aka.ms/openshiftazureinterest)。  随着产品/服务越来越临近正式发布，将提供更多的信息。
 
 ## <a name="okd-formerly-openshift-origin"></a>OKD（以前称为 OpenShift Origin）
 
@@ -58,7 +58,7 @@ OKD 是社区支持的 OpenShift 的[开源](https://www.okd.io/)上游项目。
 
 ## <a name="openshift-dedicated"></a>OpenShift Dedicated
 
-Dedicated 是 Red Hat 托管的，使用 OpenShift 容器平台的单租户 OpenShift。 Red Hat 管理所有底层基础结构（VM、OpenShift 群集、网络、存储等）。 该群集特定于一个客户，并在公有云（例如 AWS 或 Google）中运行。 起始群集包括四个应用程序节点，所有费用都按年收取并且预付款。
+Dedicated 是 Red Hat 托管的，使用 OpenShift 容器平台的单租户 OpenShift。 Red Hat 管理所有底层基础结构（VM、OpenShift 群集、网络、存储等）。 该群集特定于某个客户，并在公有云 （例如 Azure) 中运行。 起始群集包括四个应用程序节点，所有费用都按年收取并且预付款。
 
 ## <a name="openshift-online"></a>OpenShift Online
 

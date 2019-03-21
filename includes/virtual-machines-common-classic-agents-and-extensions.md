@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 9158e6bfe07fc5d06b0685d77eff26644b594a8b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264389"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "58114818"
 ---
 VM 扩展可帮助你：
 
@@ -36,7 +36,7 @@ Azure 虚拟机代理（VM 代理）是一个安全的轻型进程，用于在 A
 * 用户使用 Azure 门户，并从**市场**选择一个映像，通过这种方式创建 VM 的实例。
 * 通过 [New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx) 或 [New-AzureQuickVM](https://msdn.microsoft.com/library/azure/dn495183.aspx) cmdlet 创建 VM 实例时。 可以通过在 [Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx) cmdlet 中添加 **–DisableGuestAgent** 参数来创建没有 VM 代理的 VM。
 
-* 用户手动下载 VM 代理并将其安装在现有的 VM 实例上，然后将 **ProvisionGuestAgent** 值设置为 **true**。 可以对 Windows 和 Linux 代理使用此方法，只需使用 PowerShell 命令或 REST 调用即可。 （如果在手动安装 VM 代理后未设置 **ProvisionGuestAgent** 值，则将无法正常检测到添加的 VM 代理。）以下代码示例演示如何使用 PowerShell 执行此操作，其中 `$svc` 和 `$name` 参数已确定：
+* 用户手动下载 VM 代理并将其安装在现有的 VM 实例上，然后将 **ProvisionGuestAgent** 值设置为 **true**。 可以对 Windows 和 Linux 代理使用此方法，只需使用 PowerShell 命令或 REST 调用即可。 （如果在手动安装 VM 代理后未设置 **ProvisionGuestAgent** 值，则无法正常检测到添加的 VM 代理。）以下代码示例演示如何使用 PowerShell 执行此操作，其中 `$svc` 和 `$name` 参数已确定：
 
       $vm = Get-AzureVM –ServiceName $svc –Name $name
       $vm.VM.ProvisionGuestAgent = $TRUE

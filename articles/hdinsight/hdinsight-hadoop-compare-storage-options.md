@@ -8,24 +8,53 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 91b6808e5f74d82a980dc633b2fa2bb0fe6752f1
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: fa08d2fb2185bd4b6cd0e2e9d20e1c44a4a35eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301343"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101476"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
-创建 HDInsight 群集时，Microsoft Azure HDInsight 用户可在几个不同的存储选项之间选择：
+你可以选择几个不同的 Azure 存储服务时创建 HDInsight 群集：
 
-* Azure Data Lake Storage Gen2
 * Azure 存储
+* Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
 
 本文概述了这些存储类型和其独特功能。
 
-## <a name="azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Azure Data Lake Storage Gen2 与 Apache Hadoop 配合使用
+下表总结了使用不同版本的 HDInsight 支持的 Azure 存储服务：
+
+| 存储服务 | 帐户类型 | Namespace 类型 | 支持的服务 | 支持的性能层 | 支持的访问层 | HDInsight 版本 | 群集类型 |
+|---|---|---|---|---|---|---|---|
+|Azure Data Lake Storage Gen2| 常规用途 V2 | 分层 （文件系统） | Blob | 标准 | 热、 冷、 存档 | 3.6+ | All |
+|Azure 存储| 常规用途 V2 | 对象 | Blob | 标准 | 热、 冷、 存档 | 3.6+ | All |
+|Azure 存储| 常规用途 V1 | 对象 | Blob | 标准 | 不适用 | All | All |
+|Azure 存储| Blob 存储 | 对象 | Blob | 标准 | 热、 冷、 存档 | All | All |
+|Azure Data Lake Storage Gen1| 不适用 | 分层 （文件系统） | 不适用 | 不适用 | 不适用 | 仅 3.6 | 除 HBase |
+
+有关 Azure 存储访问层的详细信息，请参阅[Azure Blob 存储：高级 （预览版）、 热、 冷和存档存储层](../storage/blobs/storage-blob-storage-tiers.md)
+
+可以创建使用主要和可选的辅助存储服务的不同组合的群集。 下表汇总了目前支持在 HDInsight 中的群集存储配置：
+
+| HDInsight 版本 | 主存储 | 辅助存储 | 支持 |
+|---|---|---|---|
+| 3.6 & 4.0 | 标准 Blob | 标准 Blob | 是 |
+| 3.6 & 4.0 | 标准 Blob | Data Lake Storage Gen2 | 否 |
+| 3.6 & 4.0 | 标准 Blob | Data Lake Storage Gen1 | 是 |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | Data Lake Storage Gen2 | 是 |
+| 3.6 & 4.0 | Data Lake Storage Gen2* | 标准 Blob | 是 |
+| 3.6 & 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | 否 |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | 是 |
+| 3.6 | Data Lake Storage Gen1 | 标准 Blob | 是 |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | 否 |
+| 4.0 | Data Lake Storage Gen1 | 任意 | 否 |
+
+* =，只要它们是相同的托管的标识用于群集访问权限的所有安装程序，这可能是一个或多个数据湖存储第 2 代帐户。
+
+## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Azure Data Lake Storage Gen2 用于 Apache Hadoop
 
 Azure Data Lake Storage Gen2 采用了 Azure Data Lake Storage Gen1 中的核心功能，并将它们集成到了 Azure Blob 存储中。 这些功能包括与 Hadoop 兼容的文件系统、Azure Active Directory (Azure AD) 和基于 POSIX 的访问控制列表 (ACL)。 此组合使你能够利用 Azure Data Lake Storage Gen1 的性能，同时还能够使用 Blob 存储的分层和数据生命周期管理。
 
@@ -89,21 +118,10 @@ abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapredu
 
 Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无缝集成。 HDInsight 可将 Azure 存储中的 Blob 容器用作群集的默认文件系统。 HDInsight 中的整套组件可以通过 HDFS 界面直接操作以 Blob 形式存储的结构化或非结构化数据。
 
-创建 Azure 存储帐户时，可以从多个存储帐户类型中选择。 下表描述了 HDInsight 支持的选项。
-
-| **存储帐户类型** | **支持的服务** | **支持的性能层** | **支持的访问层** |
-|----------------------|--------------------|-----------------------------|------------------------|
-| 常规用途 V2   | Blob               | 标准                    | 热、冷、存档*    |
-| 常规用途 V1   | Blob               | 标准                    | 不适用                    |
-| Blob 存储         | Blob               | 标准                    | 热、冷、存档*    |
-
-* 存档访问层是一个脱机层，存在几个小时的检索延迟。 请不要对 HDInsight 使用此层。 有关详细信息，请参阅[存档访问层](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)。
-
-> [!WARNING]  
-> 不建议使用默认 Blob 容器来存储业务数据。 默认容器包含应用程序日志和系统日志。 请确保在删除默认 Blob 容器之前检索日志。 每次使用后请删除 Blob 容器，以降低存储成本。 另请注意，不可将一个 Blob 容器用作多个群集的默认文件系统。
-
+我们建议使用单独的存储容器的默认群集存储和业务数据，来隔离的 HDInsight 日志和从你自己的业务数据的临时文件。 我们还建议删除默认 blob 容器，其中包含应用程序和系统日志之后每次使用，以降低存储成本。 请确保在删除该容器之前检索日志。
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
+
 下图提供了 Azure 存储的 HDInsight 存储体系结构的抽象视图：
 
 ![显示 Hadoop 群集使用 HDFS API 来访问 Blob 存储中的结构化和非结构化数据，并在其中存储这些数据的示意图](./media/hdinsight-hadoop-compare-storage-options/HDI.WASB.Arch.png "HDInsight 存储体系结构")

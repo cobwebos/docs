@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cd7b2a8a70a315b05c0824a863803bbc6ffabb2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872129"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895441"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>使用计算机视觉检测图像类型
 
-计算机视觉通过指示图像是否为剪贴画或线条图并根据量表对可能性进行评级来分析图像的内容类型。
+与[分析图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API，计算机视觉可以分析图像的内容类型，该值指示图像是否为剪贴画或线条绘图。
 
 ## <a name="detecting-clip-art"></a>检测剪贴画
 
@@ -29,7 +29,7 @@ ms.locfileid: "55872129"
 | 值 | 含义 |
 |-------|---------|
 | 0 | 非剪贴画 |
-| 1 | 不明确 |
+| 第 | 不明确 |
 | 2 | 正常剪贴画 |
 | 3 | 良好剪贴画 |
 
@@ -115,4 +115,4 @@ ms.locfileid: "55872129"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[标记图像](concept-tagging-images.md)和[对图像进行分类](concept-categorizing-images.md)的概念。
+请参阅[分析图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)参考文档，了解如何检测图像类型。

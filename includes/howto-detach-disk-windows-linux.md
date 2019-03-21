@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 343ffb8daf19711d6c2a61b819ece92448146446
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
+ms.openlocfilehash: c97c94492417dcc87d34751908f1766393ad37ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330752"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58115907"
 ---
 不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 分离磁盘会将该磁盘从虚拟机中删除，但不会从 Azure 存储帐户中删除该磁盘。
 
@@ -28,25 +28,25 @@ ms.locfileid: "52330752"
 
 3. 在虚拟机仪表板左侧边缘上，单击“设置”下的“磁盘”。
 
- 虚拟机仪表板将列出所有附加的磁盘的名称和类型。 例如，此屏幕显示带有一个操作系统 (OS) 磁盘和一个数据磁盘的虚拟机：
+   虚拟机仪表板列出所有附加的磁盘的名称和类型。 例如，此屏幕显示带有一个操作系统 (OS) 磁盘和一个数据磁盘的虚拟机：
 
     ![查找数据磁盘](./media/howto-detach-disk-windows-linux/vmwithdisklist.png)
 
 ## <a name="detach-the-disk"></a>分离磁盘
-1. 在 Azure 门户中，单击“虚拟机”，并单击其数据磁盘需要进行分离的虚拟机的名称。
+1. 在 Azure 门户中，单击“虚拟机”，然后单击其数据磁盘需要进行分离的虚拟机的名称。
 
 2. 在虚拟机仪表板左侧边缘上，单击“设置”下的“磁盘”。
 
 3. 单击想要分离的磁盘。
 
-  ![标识要分离的磁盘](./media/howto-detach-disk-windows-linux/disklist.png)
+   ![标识要分离的磁盘](./media/howto-detach-disk-windows-linux/disklist.png)
 
 4. 在命令栏中，单击“分离”。
 
-  ![找到分离命令](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
+   ![找到分离命令](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
 
 5. 在确认窗口中，单击“是”以分离该磁盘。
 
-  ![确认分离磁盘](./media/howto-detach-disk-windows-linux/confirmdetach.png)
+   ![确认分离磁盘](./media/howto-detach-disk-windows-linux/confirmdetach.png)
 
 磁盘保留在存储中，但不再附加到虚拟机。

@@ -16,25 +16,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: bbd73035993d3a981744eb5377fe0bf2c9d55b63
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268849"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884670"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
 适用于 Linux 的数据科学虚拟机是基于 Ubuntu 的虚拟机映像，使用它可以轻松地开始在 Azure 上进行机器学习（包括深度学习）。 深度学习工具包括：
 
-  * [Caffe](http://caffe.berkeleyvision.org/)：一种以高速、清晰表达和模块化为理念建立起来的深度学习框架
+  * [Caffe](https://caffe.berkeleyvision.org/)：一种以高速、清晰表达和模块化为理念建立起来的深度学习框架
   * [Caffe2](https://github.com/caffe2/caffe2)：Caffe 的跨平台版本
   * [Microsoft 认知工具包](https://github.com/Microsoft/CNTK)：Microsoft Research 提供的深度学习软件工具包
   * [H2O](https://www.h2o.ai/)：开源大数据平台和图形用户界面
   * [Keras](https://keras.io/)：Python 中适用于 TensorFlow、Microsoft Cognitive Toolkit 和 Theano 的高级神经网络 API
-  * [MXNet](http://mxnet.io/)：灵活、高效的深度学习库，具有许多语言绑定
+  * [MXNet](https://mxnet.io/)：灵活、高效的深度学习库，具有许多语言绑定
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits)：一种简化常见深度学习任务的图形系统
-  * [PyTorch](http://pytorch.org/)：高级 Python 库，支持动态网络
+  * [PyTorch](https://pytorch.org/)：高级 Python 库，支持动态网络
   * [TensorFlow](https://www.tensorflow.org/)：Google 提供的用于机器智能的开源库
   * [Theano](http://deeplearning.net/software/theano/)：用于定义、优化和高效评估涉及多维数组的数学表达式的 Python 库
   * [Torch](http://torch.ch/)：一种广泛支持机器学习算法的科学计算框架
@@ -77,7 +77,7 @@ ms.locfileid: "56268849"
 ## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的数据科学虚拟机
 [CentOS](linux-dsvm-intro.md) 映像同样可用，它包含多种与 Ubuntu 映像相同的工具。 [Windows](provision-vm.md) 映像同样可用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 创建适用于 Linux 的数据科学虚拟机之前，必须具备 Azure 订阅。 若要获取一项订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>创建适用于 Linux 的数据科学虚拟机
@@ -120,7 +120,7 @@ ms.locfileid: "56268849"
 
 ### <a name="ssh"></a>SSH
 
-创建 VM 后，可使用 SSH 登录。 使用在步骤 3 的**基本信息**部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 上下载 [Putty](http://www.putty.org) 之类的 SSH 客户端工具。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。
+创建 VM 后，可使用 SSH 登录。 使用在步骤 3 的**基本信息**部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 上下载 [Putty](https://www.putty.org) 之类的 SSH 客户端工具。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。
 
 > [!NOTE]
 > 在测试方面，X2Go 客户端的性能优于 X11 转发。 建议对图形桌面界面使用 X2Go 客户端。
@@ -130,7 +130,7 @@ ms.locfileid: "56268849"
 ### <a name="x2go"></a>X2Go
 Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 若要连接到 Linux VM 图形桌面，请在客户端上完成以下过程：
 
-1. 从 [X2Go ](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
+1. 从 [X2Go ](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
 1. 运行 X2Go 客户端，并选择“新建会话”。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
    * **会话选项卡**：
      * **主机**：Linux Data Science VM 的主机名或 IP 地址。
@@ -205,7 +205,7 @@ R 是数据分析和机器学习的最常用语言之一。 如果要使用 R �
 
 若要启动 R 控制台，只需在 shell 中键入 **R**。 执行该操作将进入交互式环境。 要开发 R 程序，通常使用 Emacs 或 vi 等编辑器，并在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 环境来开发 R 程序。
 
-还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](http://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 此脚本可以在 R 交互式界面中运行，可以通过在 shell 中键入 **R** 来输入此脚本（如前所述）。  
+还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 此脚本可以在 R 交互式界面中运行，可以通过在 shell 中键入 **R** 来输入此脚本（如前所述）。  
 
 ### <a name="python"></a>Python
 使用 Python 2.7 和 3.5 环境安装 Anaconda Python。 2.7 环境称为根环境，3.5 环境称为 py35 环境。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。 
@@ -271,12 +271,12 @@ Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyt
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-不需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 停止这些服务。演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例在 `/dsvm/samples/MRS` 目录中提供。 
+你可以停止 Hadoop 相关服务，不需要通过运行时```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```演示如何开发和测试 MRS 在远程 Spark 上下文 （即 DSVM 上的独立 Spark 实例） 中的示例是提供，可在`/dsvm/samples/MRS`目录。 
 
 ### <a name="ides-and-editors"></a>IDE 和编辑器
 可以选择多个代码编辑器。 这包括 vi/VIM、Emacs、PyCharm、RStudio 和 IntelliJ。 IntelliJ、RStudio 和 PyCharm 是图形编辑器，需登录图形桌面才能使用。 这些编辑器具有用以启动的桌面和应用程序菜单快捷方式。
 
-**VIM** 和 **Emacs** 是基于文本的编辑器。 Emacs 上已安装名为 Emacs Speaks Statistics (ESS) 的附加包，使得在 Emacs 编辑器中使用 R 更轻松。 可在 [ESS](http://ess.r-project.org/) 了找到更多信息。
+**VIM** 和 **Emacs** 是基于文本的编辑器。 Emacs 上已安装名为 Emacs Speaks Statistics (ESS) 的附加包，使得在 Emacs 编辑器中使用 R 更轻松。 可在 [ESS](https://ess.r-project.org/) 了找到更多信息。
 
 **LaTex** 通过 texlive 包和 Emacs 外接程序 [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) 包进行安装，这简化了在 Emacs 中创作 LaTex 文档的过程。  
 

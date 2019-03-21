@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 0df548d6b3639ce2ce3c7c72695bb96cc6d0dc3d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
+ms.openlocfilehash: 0c37ad6de867c4abe4ebf0e6c7a40b5cf27c4541
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079633"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -23,7 +23,7 @@ ms.locfileid: "53581022"
 在此示例中，镜像用于在两个 HDInsight 群集之间复制主题。 这两个群集位于同一区域的 Azure 虚拟网络中。
 
 > [!WARNING]  
-> 不应将镜像视为实现容错的方法。 源和目标群集的主题内项目的偏移量不同，因此客户端不能将两者互换使用。
+> 不应将镜像视为实现容错的方法。 主题中项的偏移在源群集与目标群集之间有所不同，因此客户端不能换用这两种群集。
 >
 > 如果担心容错，应在群集内为主题设置复制。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "53581022"
 
 ![镜像过程图示](./media/apache-kafka-mirroring/kafka-mirroring.png)
 
-Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的权限。 Kafka 生成者或使用者必须与 Kafka 群集中的节点在同一 Azure 虚拟网络中。 对于此示例，Kafka 源和目标群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
+Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的权限。 Kafka 生成者或使用者必须与 Kafka 群集中的节点在同一 Azure 虚拟网络中。 对于此示例，Kafka 源和目标群集都位于 Azure 虚拟网络中。 下图显示了这两个群集之间的通信流：
 
 ![Azure 虚拟网络中的源和目标 Kafka 群集的图示](./media/apache-kafka-mirroring/spark-kafka-vnet.png)
 
@@ -102,7 +102,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
     ssh sshuser@source-BASENAME-ssh.azurehdinsight.net
     ```
 
-    用创建群集时使用的 SSH 用户名替换 **sshuser**。 用创建群集时使用的基名称替换 **BASENAME**。
+    用创建群集时使用的 SSH 用户名替换 **sshuser**。 将 **BASENAME** 替换为创建群集时使用的基名称。
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -151,7 +151,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
     ssh sshuser@dest-BASENAME-ssh.azurehdinsight.net
     ```
 
-    用创建群集时使用的 SSH 用户名替换 **sshuser**。 用创建群集时使用的基名称替换 **BASENAME**。
+    用创建群集时使用的 SSH 用户名替换 **sshuser**。 将 **BASENAME** 替换为创建群集时使用的基名称。
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -201,7 +201,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
     compression.type=none
     ```
 
-    使用上一步中获取的中转站信息替换 **DEST_BROKERS**。
+    将 **DEST_BROKERS** 替换为在上一步骤中获取的中转站信息。
 
     有关创建器配置的详细信息，请参阅 kafka.apache.org 中的[创建器配置](https://kafka.apache.org/documentation#producerconfigs)。
 
@@ -258,7 +258,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     * **--num.streams**：要创建的使用者线程数。
 
- 启动时，MirrorMaker 返回类似于以下文本的信息：
+   启动时，MirrorMaker 返回类似于以下文本的信息：
 
     ```json
     {metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-3, security.protocol=PLAINTEXT}{metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-0, security.protocol=PLAINTEXT}

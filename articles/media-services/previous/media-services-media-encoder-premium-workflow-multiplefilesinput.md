@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 267de581c04d67738399cd683f57dabda472c0f8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 608ca4bc3b58dd3c718d6239f90260154d2f6c3a
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994245"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189472"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>在高级编码器中使用多个输入文件和组件属性
 ## <a name="overview"></a>概述
@@ -296,7 +296,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 > 视频文件名已发送到 primarySourceFile 属性。 这样做的目的是要在工作流中使用此属性，以便（举例而言）使用 Expressions 构建正确的输出文件名。
 
 ### <a name="step-by-step-workflow-creation"></a>分步工作流创建
-以下步骤将创建一个工作流，该工作流采用视频和图像两个文件作为输入。 它将覆盖位于视频顶层的图像。
+以下是创建工作流的步骤，该工作流采用两个文件作为输入：视频和图像。 它将覆盖位于视频顶层的图像。
 
 打开“工作流设计器”，并选择“文件” > “新建工作区” > “转码蓝图”。
 
@@ -310,7 +310,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 新编码工作流
 
-为了接受输入媒体文件，请从添加媒体文件输入组件开始。 要将组件添加到工作流，请在“存储库”搜索框中查找它，然后将所需的项拖放到设计器窗格。
+为了接受输入媒体文件，请从添加媒体文件输入组件开始。 如果要将组件添加到工作流，请在“存储库”搜索框中查找它，并将所需的项拖放到设计器窗格。
 
 接下来，添加要用于设计工作流的视频文件。 为此，请单击工作流设计器中的背景窗格，并在右侧属性窗格中找到“主源文件”属性。 单击文件夹图标，并选择相应的视频文件。
 
@@ -324,7 +324,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 媒体文件输入源
 
-完成此操作后，媒体文件输入组件会检查文件，并填充其输出插针，以反映其检查的文件。
+完成此操作之后，媒体文件输入组件检查该文件，并填充其输出引脚，以反映它检查的文件。
 
 下一步是添加一个“视频数据类型更新器”，以将颜色空间指定为 Rec.709。 添加设置为“数据布局/布局类型 = 可配置平面”的“视频格式转换器”。 这会将视频流转换为可以用作覆盖层组件源的格式。
 
@@ -420,7 +420,7 @@ AMSE 中的高级编码器
 public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
 ```
 
-作业完成后，输出资产中的 MP4 文件会显示覆盖层！
+作业完成后，输出资产中的 MP4 文件显示覆盖层！
 
 ![视频中的覆盖层](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
 
@@ -463,7 +463,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 </transcodeRequest>
 ```
 
-* 编码资产将包含多个语言音频轨道，且可在 Azure Media Player 中选择这些轨道。
+* 编码资产会包含多语言音频轨道，且可在 Azure Media Player 中选择这些轨道。
 
 ## <a name="see-also"></a>另请参阅
 * [在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)

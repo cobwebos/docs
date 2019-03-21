@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea25510596903e4020e8237bc5bd389c584ead9
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 8e81d5513f43882093883256cf9eab4a22e9ca01
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268424"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875268"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -144,18 +144,18 @@ ms.locfileid: "56268424"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-分配许可证 | 用户帐户管理员 | 
-创建组 | 用户帐户管理员 | 
-创建、更新或删除组或应用的访问评审 | 用户帐户管理员 | 
-管理组到期时间 | 用户帐户管理员 | 
+分配许可证 | 用户管理员 | 
+创建组 | 用户管理员 | 
+创建、更新或删除组或应用的访问评审 | 用户管理员 | 
+管理组到期时间 | 用户管理员 | 
 管理组设置 | 全局管理员角色 | 
 读取所有配置（隐藏成员身份除外） | 目录读者 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)）
-读取隐藏成员身份 | 组成员 | 组所有者、密码管理员、Exchange 管理员、SharePoint 管理员、Teams 管理员、用户帐户管理员
-读取具有隐藏成员身份的组的成员身份 | 支持管理员 | 用户帐户管理员、Teams 管理员
-撤销许可证 | 许可证管理员 | 用户帐户管理员
-更新组成员身份 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户帐户管理员
-更新组所有者 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户帐户管理员
-更新组属性 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户帐户管理员
+读取隐藏成员身份 | 组成员 | 组所有者、 密码管理员、 Exchange 管理员、 SharePoint 管理员、 团队管理员、 用户管理员
+读取具有隐藏成员身份的组的成员身份 | 支持管理员 | 用户管理员、 团队管理员
+撤销许可证 | 许可证管理员 | 用户管理员
+更新组成员身份 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员
+更新组所有者 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员
+更新组属性 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员
 
 ## <a name="identity-protection"></a>标识保护
 
@@ -176,9 +176,9 @@ ms.locfileid: "56268424"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-分配许可证 | 许可证管理员 | 用户帐户管理员
+分配许可证 | 许可证管理员 | 用户管理员
 读取所有配置 | 目录读者 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)）
-撤销许可证 | 许可证管理员 | 用户帐户管理员
+撤销许可证 | 许可证管理员 | 用户管理员
 试用或购买订阅 | 计费管理员 | 
 
 
@@ -315,21 +315,21 @@ ms.locfileid: "56268424"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 将用户添加到目录角色 | 特权角色管理员 | 
-将用户添加到组 | 用户帐户管理员 | 
-分配许可证 | 许可证管理员 | 用户帐户管理员
-创建来宾用户 | 来宾邀请者 | 用户帐户管理员
-创建用户 | 用户帐户管理员 | 
-删除用户 | 用户帐户管理员 | 
-使受限管理员的刷新令牌失效（请参阅文档） | 用户帐户管理员 | 
-使非管理员的刷新令牌失效（请参阅文档） | 密码管理员 | 用户帐户管理员
+将用户添加到组 | 用户管理员 | 
+分配许可证 | 许可证管理员 | 用户管理员
+创建来宾用户 | 来宾邀请者 | 用户管理员
+创建用户 | 用户管理员 | 
+删除用户 | 用户管理员 | 
+使受限管理员的刷新令牌失效（请参阅文档） | 用户管理员 | 
+使非管理员的刷新令牌失效（请参阅文档） | 密码管理员 | 用户管理员
 使特权管理员的刷新令牌失效（请参阅文档） | 全局管理员角色 | 
 读取基本配置 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 
-重置受限管理员的密码（请参阅文档） | 用户帐户管理员 | 
-重置非管理员的密码（请参阅文档） | 密码管理员 | 用户帐户管理员
+重置受限管理员的密码（请参阅文档） | 用户管理员 | 
+重置非管理员的密码（请参阅文档） | 密码管理员 | 用户管理员
 重置特权管理员的密码 | 全局管理员角色 | 
-撤销许可证 | 许可证管理员 | 用户帐户管理员
-更新除用户主体名称之外的所有属性 | 用户帐户管理员 | 
-更新受限管理员的用户主体名称（请参阅文档） | 用户帐户管理员 | 
+撤销许可证 | 许可证管理员 | 用户管理员
+更新除用户主体名称之外的所有属性 | 用户管理员 | 
+更新受限管理员的用户主体名称（请参阅文档） | 用户管理员 | 
 更新特权管理员的用户主体名称属性（请参阅文档） | 全局管理员角色 | 
 更新用户设置 | 全局管理员角色 | 
 

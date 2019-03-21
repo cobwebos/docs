@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c622b95572a078d3f5a3e4791f959fd264eddc3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 4b72ec628e048560fbfb9da63123bbb7461811b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182164"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074278"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中删除企业应用的用户或组分配
 可以轻松地在 Azure Active Directory (Azure AD) 中删除用户或组对企业应用程序的已分配访问权限。 必须具有适当的权限才能管理企业应用，并且必须是目录的全局管理员。
@@ -51,7 +51,7 @@ ms.locfileid: "56182164"
     > 需要安装 AzureAD 模块（使用命令 `Install-Module -Name AzureAD`）。 出现安装 NuGet 模块或新的 Azure Active Directory V2 PowerShell 模块的提示时，请键入 Y，然后按 ENTER。
 
 2. 运行 `Connect-AzureAD` 并使用全局管理员用户帐户登录。
-3. 使用以下脚本将用户和角色分配到应用程序：
+3. 使用以下脚本从应用程序中删除用户和角色：
 
     ```powershell
     # Store the proper parameters
@@ -67,7 +67,7 @@ ms.locfileid: "56182164"
     #To remove the App role assignment run the following command.
     Remove-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId -AppRoleAssignmentId $assignments[assignment #].ObjectId
     ``` 
-## <a name="next-steps"></a>后续步骤
+   ## <a name="next-steps"></a>后续步骤
 
 - [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [向企业应用分配用户或组](assign-user-or-group-access-portal.md)

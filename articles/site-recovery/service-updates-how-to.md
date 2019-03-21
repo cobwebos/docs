@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 67fe5da86b4736daa43a85a7a1a077c329732b60
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 36d0a976b73fe5b6f89755ce790b919468744179
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890447"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091641"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Azure Site Recovery 中的服务更新
 组织需确定在发生计划内和计划外中断时，如何维护数据的安全，以及如何确保应用/工作负荷处于运行状态。 Azure Site Recovery 可以在站点出现故障时让应用始终在 VM 上运行并使物理服务器保持可用，以此帮助实现 BCDR 策略。 Site Recovery 可以复制在 VM 和物理服务器上运行的工作负荷，因此当主站点不可用时，始终可以在次要位置使用这些工作负荷。 当主站点重新启动并运行时，它会将工作负荷恢复到主站点。
@@ -108,7 +108,7 @@ Azure Site Recovery 定期发布服务更新 - 包括添加新功能、改进支
 建议在每次升级移动代理后重新启动，以确保在源计算机上加载所有最新更改。 不过，重新启动**不是必需的**操作。 如果上次重新启动时的代理版本与当前版本之间的差大于 4，则必须重新启动。 请参考下表中的详细说明。
 
 |**上次重新启动时的代理版本** | **升级到** | **是否必须重新启动？**|
-|---------|---------|---------|--------|
+|---------|---------|---------|
 |9.16 |  9.18 | 不是必需的|
 |9.16 | 9.19 | 不是必需的|
 | 9.16 | 9.20 | 不是必需的

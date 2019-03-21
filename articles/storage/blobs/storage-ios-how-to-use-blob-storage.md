@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 1ab799ef7eb9d7c591e76ab9180d4e3f4ba6ba59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811658"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007275"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何通过 iOS 使用 Blob 存储
 
@@ -124,7 +124,7 @@ Azure 存储空间中的每个 Blob 都必须驻留在一个容器中。 以下�
 }
 ```
 
-可通过查看 [Microsoft Azure 存储资源管理器](http://storageexplorer.com)，并验证 *newcontainer* 是否存在于存储帐户的容器列表中来确认此操作是否有效。
+可通过查看 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)，并验证 *newcontainer* 是否存在于存储帐户的容器列表中来确认此操作是否有效。
 
 ## <a name="set-container-permissions"></a>设置容器权限
 默认情况下，容器的权限配置为**专用**访问权限。 但是，容器提供了几个不同的容器访问权限选项：
@@ -203,7 +203,7 @@ Azure 存储空间中的每个 Blob 都必须驻留在一个容器中。 以下�
 }
 ```
 
-可通过查看 [Microsoft Azure 存储资源管理器](http://storageexplorer.com)并验证容器 *containerpublic* 是否包含该 Blob *sampleblob* 来确认此操作是否正常工作。 在此示例中，我们使用了公共容器，因此还可以通过转到 blob URI 来验证此应用程序是否正常工作：
+可通过查看 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)并验证容器 *containerpublic* 是否包含该 Blob *sampleblob* 来确认此操作是否正常工作。 在此示例中，我们使用了公共容器，因此还可以通过转到 blob URI 来验证此应用程序是否正常工作：
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
@@ -378,10 +378,10 @@ Azure 存储空间中的每个 Blob 都必须驻留在一个容器中。 以下�
 了解如何从 iOS 使用 Blob 存储后，请单击以下链接详细了解 iOS 库和存储服务。
 
 * [适用于 iOS 的 Azure 存储客户端库](https://github.com/azure/azure-storage-ios)
-* [Azure 存储 iOS 参考文档](http://azure.github.io/azure-storage-ios/)
+* [Azure 存储 iOS 参考文档](https://azure.github.io/azure-storage-ios/)
 * [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage)
 
-如果对此库有任何疑问，可随时会问题发布到我们的 [MSDN Azure 论坛](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)或 [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)。
+如果对此库有任何疑问，可随时会问题发布到我们的 [MSDN Azure 论坛](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)。
 如果有关于 Azure 存储的功能建议，请将建议发布到 [Azure 存储反馈](https://feedback.azure.com/forums/217298-storage/)。
 

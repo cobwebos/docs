@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
-ms.author: jeffgilb
+ms.date: 03/13/2019
+ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2c726675d799a8bb5f9ed1d1dd595aa7f4700036
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/13/2019
+ms.openlocfilehash: 06bafbcf3e668ba17b1245b9352e942e02569997
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852356"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>针对 Azure Stack 中的 Azure 应用服务服务器角色的容量计划
 
@@ -93,9 +93,17 @@ Azure 应用服务管理角色负责管理应用服务 Azure 资源管理器和 
 
    有关添加更多辅助角色实例的信息，请参阅[添加更多辅助角色](azure-stack-app-service-add-worker-roles.md)。
 
+### <a name="additional-considerations-for-dedicated-workers-during-upgrade-and-maintenance"></a>专用辅助角色的升级和维护过程的其他注意事项
+
+在升级和维护辅助角色，Azure Stack 上的 Azure 应用服务将执行维护在 20%的每个辅助角色层上一次。  因此云管理员必须始终保持 20%未分配辅助角色池每个辅助角色层以确保其租户不会在升级和维护期间遇到任何失去服务。  例如，如果辅助角色层中有 10 个辅助角色应确保 2 将未分配状态，以允许升级和维护，如果全部 10 个工作线程变得分配你应纵向扩展辅助角色层以维护的未分配工作线程池。 在升级和维护期间，Azure 应用服务将移动到未分配的辅助角色，以确保工作负荷将继续运行但如果没有未分配的辅助角色在过程中可用升级然后存在的工作负荷将租户工作负荷的可能性停机时间。  有关共享辅助角色，客户无需根据该服务将中可用的辅助角色的租户应用程序将自动分配，以实现高可用性，但是没有最低要求的两个辅助角色在此预配更多辅助角色层。
+
+云管理员可以监视 Azure Stack 管理门户中的应用服务管理区域中其辅助角色层分配。  导航到应用服务，然后选择左窗格中的辅助角色层。  辅助角色层表显示了辅助角色层名称、 大小、 所用图像、 可用工作线程数 （未分配） 的每个层中的工作线程总数和辅助角色层的整体状态。
+
+![应用服务管理-辅助角色层][1]
+
 ## <a name="file-server-role"></a>文件服务器角色
 
-对于文件服务器角色，可以使用独立的文件服务器进行开发和测试，例如，当在 Azure Stack 开发工具包 (ASDK) 上部署 Azure 应用服务时，可以使用以下模板： https://aka.ms/appsvconmasdkfstemplate。 对于生产用途，应当使用预先配置的 Windows 文件服务器，或使用预先配置的非 Windows 文件服务器。
+对于文件服务器角色，可以使用独立文件服务器，用于开发和测试;例如，部署 Azure 应用服务在 Azure Stack 开发工具包 (ASDK) 时你可以使用此[模板](https://aka.ms/appsvconmasdkfstemplate)。  对于生产用途，应当使用预先配置的 Windows 文件服务器，或使用预先配置的非 Windows 文件服务器。
 
 在生产环境中，文件服务器角色会经历密集的磁盘 I/O。 因为它容纳着用户网站的所有内容和应用程序文件，则应当为此角色预先配置以下资源之一：
 
@@ -105,10 +113,13 @@ Azure 应用服务管理角色负责管理应用服务 Azure 资源管理器和 
 - 非 Windows 文件服务器群集
 - NAS（网络附加存储）设备
 
-有关详细信息，请参阅[预配文件服务器](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server)。
+请参阅以下文章了解详细信息[预配文件服务器](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server)。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅以下文章：
 
 [开始使用 Azure Stack 上的应用服务之前](azure-stack-app-service-before-you-get-started.md)
+
+<!--Image references-->
+[1]: ./media/azure-stack-app-service-capacity-planning/worker-tier-allocation.png

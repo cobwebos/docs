@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/30/2018
-ms.openlocfilehash: 2780215e409886be82ac70642dabe05c9257945e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568441"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076354"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>针对多个 Azure SQL 数据库运行即席分析查询
 
@@ -27,7 +27,7 @@ ms.locfileid: "55568441"
 本教程介绍以下内容：
 
 > [!div class="checklist"]
-
+> 
 > * 如何部署特别报告数据库
 > * 如何对所有租户数据库运行分布式查询
 
@@ -147,7 +147,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 本教程介绍了如何：
 
 > [!div class="checklist"]
-
+> 
 > * 对所有租户数据库运行分布式查询
 > * 部署特别报告数据库并将架构添加到该数据库，以运行分布式查询。
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: c60fd90adda4c362b15fe2e324aa55a581c9e59a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 0c090499ee6ae2aaaa14af18c3c38db28ecb2f3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003758"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884721"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
 
@@ -126,7 +126,7 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
     }
 
 ## <a name="demos"></a>演示
-请参阅 [Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)。
+请参阅 [Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)。
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

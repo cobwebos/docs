@@ -11,16 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c47b45db95d428e9817220099368c14a31b4a528
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ab1f54ee8c3ebb5ae41d28b70f1cffcb244af39f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192092"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075997"
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Azure 多重身份验证服务器和 Active Directory 联合身份验证服务入门
 
-<center>![云](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
+<center>
+
+![云](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 如果组织已使用 AD FS 将本地 Active Directory 与 Azure Active Directory 联合，则使用 Azure 多重身份验证有两个选项。
 
@@ -30,7 +32,7 @@ ms.locfileid: "56192092"
 下表总结了使用 Azure 多重身份验证和 AD FS 保护资源的验证体验
 
 | 验证体验 - 基于浏览器的应用 | 验证体验 - 非基于浏览器的应用 |
-|:--- |:--- |:--- |
+|:--- |:--- |
 | 使用 Azure 多重身份验证保护 Azure AD 资源 |<li>使用 AD FS 在本地执行第一个验证步骤。</li> <li>第二步是使用云身份验证实施基于手机的验证方法。</li> |
 | 使用 Active Directory 联合身份验证服务保护 Azure AD 资源 |<li>使用 AD FS 在本地执行第一个验证步骤。</li><li>遵循声明在本地执行第二步。</li> |
 

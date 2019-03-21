@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a8ca08d93992a6e1bfe8ae24b83354503154ef31
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 0eaa5f24be85eab96f11e0c3915a3f60d79a0551
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416150"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864739"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 
@@ -153,7 +153,7 @@ ms.locfileid: "56416150"
 * [RStudio](http://www.rstudio.com)
 * [用于 Visual Studio 的 Python 工具](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
-* [Jupyter 笔记本](http://jupyter.org/)
+* [Jupyter 笔记本](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>确定高级分析方案

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2457ef2843b0d16359b7e47fc54c58e2ef5e6034
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: HT
+ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429920"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58115671"
 ---
 > [!NOTE]
 > 这些示例不适用于 S2S/ExpressRoute 共存配置。
@@ -28,8 +28,8 @@ ms.locfileid: "53429920"
 1. 使用[网络配置文件](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)一文中的步骤下载网络配置文件。 使用文本编辑器打开该文件。
 2. 向该文件中添加一个本地网络站点。 可以使用任何有效的地址前缀。 可以为 VPN 网关添加任何有效的 IP 地址。 此部分中的地址值不用于 ExpressRoute 操作，但是在进行文件验证时需要使用它们。 在示例中，“branch1”是站点的名称。 你可以使用其他名称，但一定要在该文件的 Gateway 节中使用同一值。
 
-  ```
-  <VirtualNetworkConfiguration>
+   ```
+   <VirtualNetworkConfiguration>
     <Dns />
     <LocalNetworkSites>
       <LocalNetworkSite name="branch1">
@@ -38,15 +38,15 @@ ms.locfileid: "53429920"
         </AddressSpace>
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
-  ```
+   ```
 3. 导航到 VirtualNetworkSites 并修改字段。
 
-  * 验证你的虚拟网络是否存在网关子网。 如果不存在，此时可以添加一个。 该名称必须是“GatewaySubnet”。
-  * 验证文件的 Gateway 节是否存在。 如果不存在，请添加该节。 这是将虚拟网络与本地网络站点（它表示你要连接到的网络）进行关联所必需的。
-  * 验证 connection type = Dedicated。 对于 ExpressRoute 连接，这是必需的。
+   * 验证你的虚拟网络是否存在网关子网。 如果不存在，此时可以添加一个。 该名称必须是“GatewaySubnet”。
+   * 验证文件的 Gateway 节是否存在。 如果不存在，请添加该节。 这是将虚拟网络与本地网络站点（它表示你要连接到的网络）进行关联所必需的。
+   * 验证 connection type = Dedicated。 对于 ExpressRoute 连接，这是必需的。
 
-  ```
-  </LocalNetworkSites>
+   ```
+   </LocalNetworkSites>
     <VirtualNetworkSites>
       <VirtualNetworkSite name="myAzureVNET" Location="East US">
         <AddressSpace>
@@ -69,9 +69,9 @@ ms.locfileid: "53429920"
         </Gateway>
       </VirtualNetworkSite>
     </VirtualNetworkSites>
-  </VirtualNetworkConfiguration>
-  </NetworkConfiguration>
-  ```
+   </VirtualNetworkConfiguration>
+   </NetworkConfiguration>
+   ```
 4. 保存文件并将其上传到 Azure。
 
 ### <a name="create-the-gateway"></a>创建网关
