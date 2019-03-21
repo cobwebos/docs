@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2ecbfacd16ee7ba5cfdf673bf84e20e41ad0c75d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 168e5eea2004a31b108a8a00d883298f8e2198ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025906"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090264"
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure 门户创建用于复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
@@ -201,7 +201,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    | 属性 | Description |
+    | 属性 | 说明 |
     |:--- |:--- |
     | type | type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
     | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
@@ -250,7 +250,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    | 属性 | Description |
+    | 属性 | 说明 |
     |:--- |:--- |
     | type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
     | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
@@ -315,14 +315,14 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
     
     注意以下几点：
    
-    - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
-    - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 
-    - 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。 有关复制活动支持的数据存储（以源和接收器的形式存在）的完整列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 若要了解如何使用特定的受支持的数据存储（以源/接收器的形式存在），请单击表中的链接。
-    - 开始和结束日期时间必须采用 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
+   - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
+   - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 
+   - 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。 有关复制活动支持的数据存储（以源和接收器的形式存在）的完整列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 若要了解如何使用特定的受支持的数据存储（以源/接收器的形式存在），请单击表中的链接。
+   - 开始和结束日期时间必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
      
-    在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
+     在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
 
-    有关管道定义中 JSON 属性的说明，请参阅[创建管道](data-factory-create-pipelines.md)一文。 有关复制活动定义中 JSON 属性的说明，请参阅[数据移动活动](data-factory-data-movement-activities.md)一文。 有关 BlobSource 支持的 JSON 属性的说明，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md)一文。 有关 SqlSink 支持的 JSON 属性的说明，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md)一文。
+     有关管道定义中 JSON 属性的说明，请参阅[创建管道](data-factory-create-pipelines.md)一文。 有关复制活动定义中 JSON 属性的说明，请参阅[数据移动活动](data-factory-data-movement-activities.md)一文。 有关 BlobSource 支持的 JSON 属性的说明，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md)一文。 有关 SqlSink 支持的 JSON 属性的说明，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md)一文。
 3. 单击工具栏上的“部署”，创建并部署 **ADFTutorialPipeline**。 确认树视图中显示了该管道。 
 4. 现在，请单击“X”关闭“编辑器”边栏选项卡。再次单击“X”查看 **ADFTutorialDataFactory** 的“数据工厂”主页。
 

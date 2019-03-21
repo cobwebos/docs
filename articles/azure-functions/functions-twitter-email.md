@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 4c9f92f80275d04cd1bab408213fd02abf5c9139
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5e0ef8287b7ce257cd551a1ace043ccbed72b50b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279392"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087085"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -125,7 +125,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
     ```
     此函数代码基于请求中收到的情感评分返回颜色类别。 
 
-4. 若要测试该函数，请单击最右边的“测试”展开“测试”选项卡。在“请求正文”中键入 `0.2` 的值，并单击“运行”。**`0.2` 响应正文中将返回 **RED** 值。 
+4. 若要测试该函数，请单击最右边的“测试”展开“测试”选项卡。在“请求正文”中键入 `0.2` 的值，并单击“运行”。 响应正文中将返回 **RED** 值。 
 
     ![在 Azure 门户中测试函数](./media/functions-twitter-email/07-function-test.png)
 
@@ -165,7 +165,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
     ![Twitter 连接器设置](media/functions-twitter-email/10-tweet-settings.png)
 
-    | 设置      |  建议的值   | Description                                        |
+    | 设置      |  建议的值   | 说明                                        |
     | ----------------- | ------------ | ------------- |
     | **搜索文本** | #Azure | 使用足够热门的井号标签按所选的间隔生成新的推文。 如果使用免费层并且井号标签过于热门，可能很快就会用完认知服务 API 中的事务配额。 |
     | 间隔 | 15 | 每两次处理 Twitter 请求所用的时间，采用频率单位。 |
@@ -209,7 +209,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
 4. 在“请求正文”中单击“评分”，并单击“保存”。
 
-    ![得分](media/functions-twitter-email/17-function-input-score.png)
+    ![Score](media/functions-twitter-email/17-function-input-score.png)
 
 现在，在从逻辑应用发送情感评分时，将触发该函数。 该函数会将一个带有颜色编码的类别返回到逻辑应用。 接下来，请添加当函数返回 **RED** 情感值时要发送的电子邮件通知。 
 
@@ -236,13 +236,13 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
     ![为“发送电子邮件”操作配置电子邮件。](media/functions-twitter-email/21-configure-email.png)
     
-| 设置      |  建议的值   | Description  |
+| 设置      |  建议的值   | 说明  |
 | ----------------- | ------------ | ------------- |
 | **收件人** | 键入电子邮件地址 | 接收通知的电子邮件地址。 |
 | **主题** | 检测到消极的推文情感  | 电子邮件通知的主题行。  |
 | **正文** | 推文文本、位置 | 单击“推文文本”和“位置”参数。 |
 
-5.  单击“ **保存**”。
+1. 单击“ **保存**”。
 
 完成工作流后，可以启用逻辑应用并查看函数的工作状态。
 

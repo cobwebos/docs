@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: d55c9db9af2eea9a56afe34c7a8689947a689bac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 596ed857b39cf106ed2e37ad81c5fe9e939cca61
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001431"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL 数据仓库常见问题解答
 
@@ -27,7 +27,7 @@ A. SQL DW 提供若干解决方案，用于保护数据（如 TDE）和审核。
 
 问： 从何处可以查明 SQL DW 符合哪些法律或业务标准？
 
-A. 请访问 [Microsoft 符合性]页面，查明产品（如 SOC 和 ISO）的各种符合性规定。 首先选择“符合性”标题，然后在页面右侧的“Microsoft 范围内云服务”部分展开 Azure，查看哪些服务是 Azure 符合性服务。
+A. 请访问 [Microsoft 符合性]页面，查明产品（如 SOC 和 ISO）的各种符合性规定。 首先选择“符合性”标题，并在页面右侧的“Microsoft 范围内云服务”部分展开 Azure，查看哪些服务是 Azure 符合性服务。
 
 问： 是否可以连接 PowerBI？
 
@@ -105,7 +105,7 @@ A. 可在[连接字符串]页找到 DW 驱动程序支持
 <!-- Article references -->
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [连接字符串]: ./sql-data-warehouse-connection-strings.md
-[Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [支持票证]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [安全性]: ./sql-data-warehouse-overview-manage-security.md
 [Microsoft 符合性]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings

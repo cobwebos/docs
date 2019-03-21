@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: f0050a91ca8ed380c838c96cf1e485a80a0c9297
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.openlocfilehash: c15dc83929aeaf6811f4d19bfca462abfacf4014
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445389"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892449"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
 可以通过委派使用现有网站处理开发人员的登录/注册和产品订阅事项，不需使用开发人员门户中的 内置功能。 这样就可以让网站拥有用户数据，并通过自定义方式对这些步骤进行验证。
@@ -36,7 +36,7 @@ ms.locfileid: "52445389"
 3. 委派终结点反过来会重定向到 UI 或呈现该 UI，要求用户登录或注册
 4. 成功后，用户会重定向回一开始使用的 API 管理开发人员门户页
 
-一开始需先将 API 管理设置为通过委派终结点路由请求。 在 API 管理发布者门户中单击“安全”，并单击“委派”选项卡。单击启用“委派登录和注册”的复选框。
+一开始需先将 API 管理设置为通过委派终结点来路由请求。 在 API 管理发布者门户中单击“安全”，并单击“委派”选项卡。单击启用“委派登录和注册”的复选框。
 
 ![“委派”页][api-management-delegation-signin-up]
 
@@ -47,7 +47,7 @@ ms.locfileid: "52445389"
 
 1. 接收以下形式的请求：
    
-   > http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn & returnUrl = {源页的 URL} & = {字符串} & sig = {字符串}*
    > 
    > 
    
@@ -100,11 +100,11 @@ ms.locfileid: "52445389"
 
 若要启用此功能，请在“委派”页上单击“委派产品订阅”。
 
-然后，确保委派终结点执行以下操作：
+然后，确保委派终结点执行下列操作：
 
 1. 接收以下形式的请求：
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation= {operation} & productId = {要订阅的产品} & userId = {发出请求的用户} & = {字符串} & sig = {字符串}*
    > 
    > 
    
@@ -120,7 +120,7 @@ ms.locfileid: "52445389"
    * **sig**：计算的安全哈希，用于与用户自行计算的哈希进行比较
 2. 验证请求是否来自 Azure API 管理（可选，但强烈推荐执行以确保安全）
    
-   * 根据 **productId**、**userId 和 **salt** 查询参数计算字符串的 HMAC-SHA512：
+   * 计算基于字符串的 HMAC-SHA512 **productId**， **userId**，并**salt**查询参数：
      
      > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 
