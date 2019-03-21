@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4bcd7bcef0969cec82d42ead6307e72a3abea6e1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3b46acfbfd77015193135d1a8c7646c331340145
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200644"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Apache Giraph
 
@@ -30,7 +30,7 @@ ms.locfileid: "55978862"
 
 * [在 HDInsight Hadoop 群集 (Linux) 上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
 * [在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息。
-* [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关使用脚本操作自定义 HDInsight 群集的一般信息。
+* [自定义 HDInsight 群集使用脚本操作][hdinsight 的群集的自定义]: 自定义 HDInsight 群集使用脚本操作的一般信息。
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)。
 
 ## <a name="what-is-giraph"></a>什么是 Giraph？
@@ -42,13 +42,13 @@ ms.locfileid: "55978862"
 
 ## <a name="install-giraph-using-portal"></a>使用门户安装 Giraph
 1. 按照[在 HDInsight 中创建 Hadoop 群集](hdinsight-provision-clusters.md)中的说明，使用“自定义创建”选项开始创建群集。
-2. 在向导的“脚本操作”页上，单击“添加脚本操作”，以提供有关脚本操作的详细信息，如下所示：
+2. 在向导的“脚本操作”页上，单击“添加脚本操作”，提供有关脚本操作的详细信息，如下所示：
 
     ![使用脚本操作自定义群集](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "Use Script Action to customize a cluster")
 
     |属性|值|  
     |---|---|  
-    |Name|指定脚本操作的名称。 例如，安装 Giraph|
+    |名称|指定脚本操作的名称。 例如，安装 Giraph|
     |脚本 URI|指定调用以自定义群集的脚本的统一资源标识符 (URI)。 例如 *https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
     |节点类型|指定在其上运行自定义脚本的节点。 可以选择“所有节点”、“仅限头节点”或“仅限辅助角色节点”。
     |parameters|根据脚本的需要，指定参数。 用于安装 Giraph 的脚本不需要任何参数，因此可以将此字段留空。|  
@@ -68,7 +68,7 @@ ms.locfileid: "55978862"
 
     将 tiny_graph.txt 文件上传到 HDInsight 群集的主存储。 有关如何上传数据的说明，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](hdinsight-upload-data.md)。
 
-    此数据使用 [source\_id, source\_value,[[dest\_id], [edge\_value],...]] 格式，描述定向图形中对象之间的关系。每一行代表 **source\_id** 对象与一个或多个 **dest\_id** 对象之间的关系。 **edge\_value**（或权重）可被视为 **source_id** 和 **dest\_id** 之间的连接强度或距离。
+    此数据使用 [source\_id, source\_value,[[dest\_id], [edge\_value],...]] 格式，描述定向图形中对象之间的关系。每一行代表 source\_id 对象与一个或多个 dest\_id 对象之间的关系。 **edge\_value**（或权重）可被视为 **source_id** 和 **dest\_id** 之间的连接强度或距离。
 
     使用表示对象间距离的值（或权重）绘制图形后，上述数据可能与下面类似。
 
@@ -150,18 +150,17 @@ ms.locfileid: "55978862"
     ![将对象绘制为圆圈，并绘制对象之间的最短路径](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 
 ## <a name="install-giraph-using-azure-powershell"></a>使用 Azure PowerShell 安装 Giraph
-请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)。  此示例演示如何使用 Azure PowerShell 安装 Apache Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)。
+请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。  此示例演示如何使用 Azure PowerShell 安装 Apache Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)。
 
 ## <a name="install-giraph-using-net-sdk"></a>使用 .NET SDK 安装 Giraph
-请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)。 此示例演示如何使用 .NET SDK 安装 Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)。
+请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。 此示例演示如何使用 .NET SDK 安装 Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)。
 
 ## <a name="see-also"></a>另请参阅
 * [在 HDInsight Hadoop 群集 (Linux) 上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
 * [在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-provision-clusters.md)：有关如何创建 HDInsight 群集的一般信息。
-* [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关使用脚本操作自定义 HDInsight 群集的一般信息。
+* [自定义 HDInsight 群集使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md)： 自定义 HDInsight 群集使用脚本操作的一般信息。
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)。
 * [在 HDInsight 群集上安装并使用 Apache Spark][hdinsight-install-spark]：有关如何安装 Spark 的脚本操作示例。
-* [在 HDInsight 群集上安装并使用 Apache Spark](hdinsight-hadoop-solr-install.md)：有关如何安装 Solr 的脚本操作示例。
 
 [tools]: https://github.com/Blackmist/hdinsight-tools
 [aps]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
@@ -169,4 +168,3 @@ ms.locfileid: "55978862"
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

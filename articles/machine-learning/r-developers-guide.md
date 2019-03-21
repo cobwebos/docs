@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: 0e5db2c08749a59a03e384c6048e67f7570f6750
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 70fc78fb515c56f0b3102bb006eb6491a664babd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211420"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886660"
 ---
 # <a name="r-developers-guide-to-azure"></a>Azure 中的 R 开发指南
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -33,7 +33,7 @@ Microsoft 完全接受将 R 编程语言作为数据科学家的第一类工具�
 ## <a name="azure-services-with-r-language-support"></a>支持 R 语言的 Azure 服务
 本文介绍支持 R 语言的以下 Azure 服务：
 
-|服务                                                          |说明                                                                       |
+|服务                                                          |描述                                                                       |
 |-----------------------------------------------------------------|----------------------------------------------------------------------------------|
 |[数据科学虚拟机](#data-science-virtual-machine)    |用作数据科学工作站或自定义计算目标的自定义 VM|
 |[ML Services on HDInsight](#ml-services-on-hdinsight)            |基于群集的系统，用于对跨多个节点的大型数据集运行 R 分析   |
@@ -125,7 +125,7 @@ Azure Notebooks 的免费服务层是适用于小规模项目的可行选项，�
 
 
 ### <a name="next-steps"></a>后续步骤
-* [使用 mrsdeploy 在 Azure 上运行 R 代码](http://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
+* [使用 mrsdeploy 在 Azure 上运行 R 代码](https://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
 * [云中的 Machine Learning Server](https://docs.microsoft.com/machine-learning-server/install/machine-learning-server-in-the-cloud)
 * [Machine Learning Server 和 Microsoft R 的其他资源](https://docs.microsoft.com/machine-learning-server/resources-more)
 * [R on Azure](https://github.com/yueguoguo/r-on-azure) - 概述在 Azure 中使用 R 所需的包、工具和相关案例研究
