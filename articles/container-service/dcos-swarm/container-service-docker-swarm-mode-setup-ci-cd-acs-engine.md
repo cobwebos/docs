@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: a2ecc2b0b8bfcf65d2ba566b8524a0c37c89ab78
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980544"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079088"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>（已弃用）用于通过 Azure DevOps 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -46,7 +46,7 @@ ms.locfileid: "55980544"
 7. 群集上的 Docker Swarm 模式提取最新的映像版本 
 8. 使用 Docker 堆栈部署应用程序的新版本 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始本教程之前，需要完成以下任务：
 
@@ -163,21 +163,21 @@ ms.locfileid: "55980544"
 
    ![Azure DevOps - 添加命令行任务](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-command-task.png)
 
-      1. 一个命令行任务，使用 bash 脚本将 docker-compose.yml 文件中出现的 RegistryURL 替换为 RegistryURL 变量。 
+   1. 一个命令行任务，使用 bash 脚本将 docker-compose.yml 文件中出现的 RegistryURL 替换为 RegistryURL 变量。 
     
-          ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
 
-          ![Azure DevOps - 使用注册表 URL 更新 Compose 文件](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
+       ![Azure DevOps - 使用注册表 URL 更新 Compose 文件](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
 
-      2. 一个命令行任务，使用 bash 脚本将 docker-compose.yml 文件中出现的 AgentURL 替换为 AgentURL 变量。
+   2. 一个命令行任务，使用 bash 脚本将 docker-compose.yml 文件中出现的 AgentURL 替换为 AgentURL 变量。
   
-          ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
 
-     3. 一个可将已更新的 Compose 文件转换为生成项目，使其可在发布阶段使用的任务。 请参阅以下屏幕截图中的详细信息。
+      1. 一个可将已更新的 Compose 文件转换为生成项目，使其可在发布阶段使用的任务。 请参阅以下屏幕截图中的详细信息。
 
-         ![Azure DevOps - 发布项目](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
+      ![Azure DevOps - 发布项目](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
 
-         ![Azure DevOps - 发布 Compose 文件](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
+      ![Azure DevOps - 发布 Compose 文件](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
 
 5. 单击“保存和排队”以测试生成管道。
 
@@ -187,7 +187,7 @@ ms.locfileid: "55980544"
 
 6. 如果生成正确，则一定会显示此屏幕：
 
-  ![Azure DevOps - 生成成功](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
+   ![Azure DevOps - 生成成功](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
 ## <a name="step-3-create-the-release-pipeline"></a>步骤 3：创建发布管道
 
@@ -235,14 +235,14 @@ ms.locfileid: "55980544"
 
     在主节点上执行的命令使用 Docker CLI 和 Docker-Compose CLI 来执行以下任务：
 
-    - 登录到 Azure 容器注册表（使用“变量”选项卡中定义的三个生成变量）
-    - 将 **DOCKER_HOST** 变量定义为使用 Swarm 终结点 (:2375)
-    - 导航到前面的安全复制任务创建的、包含 docker-compose.yml 文件的 *deploy* 文件夹 
-    - 执行可以拉取新映像和创建容器的 `docker stack deploy` 命令。
+   - 登录到 Azure 容器注册表（使用“变量”选项卡中定义的三个生成变量）
+   - 将 **DOCKER_HOST** 变量定义为使用 Swarm 终结点 (:2375)
+   - 导航到前面的安全复制任务创建的、包含 docker-compose.yml 文件的 *deploy* 文件夹 
+   - 执行可以拉取新映像和创建容器的 `docker stack deploy` 命令。
 
-    >[!IMPORTANT]
-    > 如之前的屏幕截图中所示，将“在 STDERR 中显示失败”复选框保持未选中状态。 此设置可让我们完成发布过程，因为 `docker-compose` 会在标准错误输出中列显一些诊断消息，例如正在停止或删除容器。 如果选中该复选框，则即使一切正常，Azure DevOps 也会报告在发布期间出错。
-    >
+     >[!IMPORTANT]
+     > 如之前的屏幕截图中所示，将“在 STDERR 中显示失败”复选框保持未选中状态。 此设置可让我们完成发布过程，因为 `docker-compose` 会在标准错误输出中列显一些诊断消息，例如正在停止或删除容器。 如果选中该复选框，则即使一切正常，Azure DevOps 也会报告在发布期间出错。
+     >
 3. 保存此项新发布管道。
 
 ## <a name="step-4-test-the-cicd-pipeline"></a>步骤 4：测试 CI/CD 管道

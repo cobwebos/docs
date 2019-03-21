@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 67cda814925c3e5b974e4580594724c890851f64
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 88d447f86dd54fc9479a6d7d2006b9a8639ad09e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176194"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089227"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
@@ -52,11 +52,11 @@ ms.locfileid: "55176194"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - inputJson: {"emailAddress": "someone@example.com", "displayName":"Someone"}
+  - inputJson: {"emailAddress": "someone@example.com", "displayName":"Someone"}
 - 输入参数：
     - claimToExtract: emailAddress
 - 输出声明： 
-    - extractedClaim: someone@example.com
+  - extractedClaim: someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
@@ -100,18 +100,18 @@ ms.locfileid: "55176194"
 ```    
 
 - 输入声明：
-    - jsonSourceClaim: [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value": true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
+  - jsonSourceClaim: [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value": true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
 - 输入参数：
     - errorOnMissingClaims: false
     - includeEmptyClaims: false
     - jsonSourceKeyName: key
     - jsonSourceValueName: value
 - 输出声明：
-    - email: "someone@example.com"
-    - displayName:"Someone"
-    - membershipNum:6353399
-    - active: true
-    - birthdate:1980-09-23T00:00:00Z
+  - email: "someone@example.com"
+  - displayName:"Someone"
+  - membershipNum:6353399
+  - active: true
+  - birthdate:1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
@@ -150,7 +150,7 @@ ms.locfileid: "55176194"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - inputJson: {"emailAddress": "someone@example.com", "displayName":"Someone", "id" :6353399}
+  - inputJson: {"emailAddress": "someone@example.com", "displayName":"Someone", "id" :6353399}
 - 输入参数
     - claimToExtract:  id
 - 输出声明： 
@@ -181,9 +181,9 @@ ms.locfileid: "55176194"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - inputJsonClaim: ["someone@example.com", "Someone", 6353399]
+  - inputJsonClaim: ["someone@example.com", "Someone", 6353399]
 - 输出声明： 
-    - extractedClaim: someone@example.com
+  - extractedClaim: someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 

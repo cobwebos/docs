@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: 4cec5dd38d41f354f4d1430240a23f0b328cbb7b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 8922d4399f52937710f111c3c8ad4c9af91b6bb7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452424"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890094"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中支持的 T-SQL 语句
 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
@@ -31,15 +31,16 @@ ms.locfileid: "55452424"
 * [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 * [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)（创建外部数据源）
 * [CREATE EXTERNAL FILE FORMAT](https://msdn.microsoft.com/library/dn935026.aspx)
-* [创建外部表](https://msdn.microsoft.com/library/dn935021.aspx)
+* [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
 * [CREATE FUNCTION](https://msdn.microsoft.com/library/mt203952.aspx)
-* [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
+* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
 * [CREATE PROCEDURE](https://msdn.microsoft.com/library/ms187926.aspx)
 * [CREATE SCHEMA](https://msdn.microsoft.com/library/ms189462.aspx)
 * [CREATE STATISTICS](https://msdn.microsoft.com/library/ms188038.aspx)
 * [CREATE TABLE](https://msdn.microsoft.com/library/mt203953.aspx)
 * [CREATE TABLE AS SELECT](https://msdn.microsoft.com/library/mt204041.aspx)
 * [CREATE VIEW](https://msdn.microsoft.com/library/ms187956.aspx)
+* [创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql)（预览版）
 * [DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/mt146367.aspx)
 * [DROP EXTERNAL FILE FORMAT](https://msdn.microsoft.com/library/mt146379.aspx)
 * [DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/mt130698.aspx)
@@ -49,6 +50,7 @@ ms.locfileid: "55452424"
 * [DROP TABLE](https://msdn.microsoft.com/library/ms173790.aspx)
 * [DROP SCHEMA](https://msdn.microsoft.com/library/ms186751.aspx)
 * [DROP VIEW](https://msdn.microsoft.com/library/ms173492.aspx)
+* [删除工作负荷分类器](/sql/t-sql/statements/drop-workload-classifier-transact-sql)（预览版）
 * [RENAME](https://msdn.microsoft.com/library/mt631611.aspx)
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)

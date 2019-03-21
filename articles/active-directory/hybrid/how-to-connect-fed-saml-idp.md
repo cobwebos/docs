@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09151dee2d458e2ff4fae8a8a3bc93fa466e4efc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8b5eb46b845bebbb81dce6aadb9d97af08955df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167790"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096939"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
 
@@ -30,16 +30,16 @@ ms.locfileid: "56167790"
 
 Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 365）与正确配置的基于 SAML 2.0 配置文件的 IdP 相集成。 SAML 2.0 标识提供者是第三方产品，因此，Microsoft 不会对与其相关的部署、配置、故障排除最佳做法等提供支持。 正确配置后，可以使用 Microsoft Connectivity Analyzer 工具来测试是否已正确配置了与 SAML 2.0 标识提供者的集成，下文将详细介绍。 有关基于 SAML 2.0 SP-Lite 配置文件的标识提供者的详细信息，请咨询其提供组织。
 
->[!IMPORTANT]
->仅有一组有限的客户端在这种采用 SAML 2.0 标识提供者的登录方案中可以使用，这包括：
-
->- 基于 Web 的客户端（如 Outlook Web Access 和 SharePoint Online）
-- 使用基本身份验证和受支持的 Exchange 访问方法（例如 IMAP、POP、Active Sync、MAPI 等）的电子邮件丰富的客户端（需要部署增强型客户端协议终结点），包括：
-    - Microsoft Outlook 2010/Outlook 2013/Outlook 2016，Apple iPhone（各种 iOS 版本）
-    - 各种 Google Android 设备
-    - Windows Phone 7、Windows Phone 7.8 和 Windows Phone 8.0
-    - Windows 8 邮件客户端和 Windows 8.1 邮件客户端
-    - Windows 10 邮件客户端
+> [!IMPORTANT]
+> 仅有一组有限的客户端在这种采用 SAML 2.0 标识提供者的登录方案中可以使用，这包括：
+> 
+> - 基于 Web 的客户端（如 Outlook Web Access 和 SharePoint Online）
+> - 使用基本身份验证和受支持的 Exchange 访问方法（例如 IMAP、POP、Active Sync、MAPI 等）的电子邮件丰富的客户端（需要部署增强型客户端协议终结点），包括：
+>     - Microsoft Outlook 2010/Outlook 2013/Outlook 2016，Apple iPhone（各种 iOS 版本）
+>     - 各种 Google Android 设备
+>     - Windows Phone 7、Windows Phone 7.8 和 Windows Phone 8.0
+>     - Windows 8 邮件客户端和 Windows 8.1 邮件客户端
+>     - Windows 10 邮件客户端
 
 其他所有客户端都不可在这种采用 SAML 2.0 标识提供者的登录方案中使用。 例如，Lync 2010 桌面客户端无法登录到配置了 SAML 2.0 标识提供者的单一登录服务中。
 
@@ -77,7 +77,7 @@ Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 
 ## <a name="required-attributes"></a>必需属性
 此表显示了 SAML 2.0 消息中特定属性的需求。
  
-|属性|说明|
+|属性|描述|
 | ----- | ----- |
 |NameID|此断言的值必须与 Azure AD 用户的 ImmutableID 一样。 它最多可由 64 个字母数字字符组成。 任何非 html 安全型字符都必须进行编码，例如，“+”字符显示为“.2B”。|
 |IDPEmail|用户主体名称 (UPN) 将以名为 IDPEmail 的元素的形式列入 SAML 响应中，这是用户在 Azure AD/Office 365 中的 UserPrincipalName (UPN)。 UPN 采用电子邮件地址格式。 Windows Office 365 (Azure Active Directory) 中的 UPN 值。|
@@ -194,9 +194,9 @@ SAML 2.0 标识提供者需要遵循有关 Azure AD 信赖方的信息。 Azure 
 有关“Set-MsolDomainAuthentication”的详细信息，请参阅：[https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx)。
 
 >[!NOTE]
->仅当为标识提供者设置了 ECP 扩展时，才必须使用“$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"”来运行。 Exchange Online 客户端（不包括 Outlook Web 应用程序 (OWA)）依赖于基于 POST 的活动终结点。 如果 SAML 2.0 STS 实现的活动终结点类似于 Shibboleth 的 ECP 实现的活动终结点，这些富客户端则有可能与 Exchange Online 服务进行交互。
+>您必须运行使用`$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"`仅当为标识提供者设置 ECP 扩展。 Exchange Online 客户端（不包括 Outlook Web 应用程序 (OWA)）依赖于基于 POST 的活动终结点。 如果 SAML 2.0 STS 实现的活动终结点类似于 Shibboleth 的 ECP 实现的活动终结点，这些富客户端则有可能与 Exchange Online 服务进行交互。
 
-配置联合后，可切换回“非联合”（或“托管”），但是此更改最长需要两个小时才能完成，并且需要为每个用户分配新的随机密码以用于基于云的登录。 某些情况下，可能需要切换回“托管”以重置设置中的错误。 有关域转换的详细信息，请参阅：[https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](httpss://msdn.microsoft.com/library/windowsazure/dn194122.aspx)。
+配置联合后，可切换回“非联合”（或“托管”），但是此更改最长需要两个小时才能完成，并且需要为每个用户分配新的随机密码以用于基于云的登录。 某些情况下，可能需要切换回“托管”以重置设置中的错误。 有关域转换的详细信息，请参阅：[https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx)。
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>向 Azure AD/Office 365 预配用户主体
 在对 Office 365 进行用户身份验证之前，必须向 Azure AD 预配与 SAML 2.0 声明中的断言相对应的用户主体。 如果 Azure AD 事先无法识别这些用户主体，则它们无法用于联合登录。 Azure AD Connect 或 Windows PowerShell 都可以用来预设用户主体。

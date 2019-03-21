@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: ac2577c6cd350d6d437d55e61ec73d954cb24893
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 07d9e03f1631ebce88a7a7c2e33be62f21dda522
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108375"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076779"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>使用 StorSimple 设备管理器服务管理备份目录
 ## <a name="overview"></a>概述
@@ -86,7 +86,7 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示执行
 
 #### <a name="to-delete-a-backup-set"></a>删除备份集
  转到 StorSimple 设备管理器服务，单击“备份目录”。
-2. 筛选选择项，如下所示：
+1. 筛选选择项，如下所示：
    
    1. 指定时间范围。 
    2. 选择适当的设备。 
@@ -97,19 +97,19 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示执行
 
       ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-3. 选择并展开备份集。 现在可以看到，备份集已根据它包含的卷进行划分。 可通过上下文菜单（右键菜单）对备份集使用“还原”和“删除”选项。 单击右键所选的备份集，从上下文菜单中选择“删除”。
+1. 选择并展开备份集。 现在可以看到，备份集已根据它包含的卷进行划分。 可通过上下文菜单（右键菜单）对备份集使用“还原”和“删除”选项。 单击右键所选的备份集，从上下文菜单中选择“删除”。
 
     ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
-4. 当系统提示确认时，请检查显示的信息，单击“删除”。 所选的备份会永久删除。
+1. 当系统提示确认时，请检查显示的信息，单击“删除”。 所选的备份会永久删除。
 
     ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
-5. 系统会在删除过程中以及删除成功完成后向用户发送通知。 删除完成后，刷新此页上的查询。 已删除的备份集不再显示在备份集列表中。
+1. 系统会在删除过程中以及删除成功完成后向用户发送通知。 删除完成后，刷新此页上的查询。 已删除的备份集不再显示在备份集列表中。
 
     ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用备份目录从备份集还原设备](storsimple-8000-restore-from-backup-set-u2.md)。
-* 了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
+* 了解如何[使用 StorSimple Device Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
 

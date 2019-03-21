@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: f9e0582a1338bcae7b330c7ece7c3d8cc8593cfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888424"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004498"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>如何在 Azure 上安装 MySQL
-在本文中，将了解如何在运行 Linux 的 Azure 虚拟机上安装和配置 MySQL。
+本文介绍如何在运行 Linux 的 Azure 虚拟机上安装和配置 MySQL。
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -51,7 +51,7 @@ ms.locfileid: "54888424"
             #[root@mysqlnode ~]# apt-get update
             #[root@mysqlnode ~]# apt-get -y install mysql-server-5.6
   
-    在安装过程中，会看到如下所示的对话窗口弹出，要求设置 MySQL 根密码。需要在此处设置该密码。
+    在安装期间，您将看到一个对话框窗口，要求你设置 MySQL 根密码，看起来和你需要此处设置该密码。
   
     ![图像](./media/mysql-install/virtual-machines-linux-install-mysql-p1.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "54888424"
   
     下载并安装 MySQL 发行包：
   
-            #[root@mysqlnode ~]# wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+            #[root@mysqlnode ~]# wget https://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
             #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm
 * 步骤 2：编辑以下文件，以便允许 MySQL 存储库下载 MySQL5.6 程序包。
   

@@ -1,26 +1,26 @@
 ---
 title: 发布知识库
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: 发布知识库是将知识库作为问答终结点提供的最后一步。 发布知识库时，知识库的 QnA 内容将从测试索引转移到 Azure 搜索中的生产索引。
+titleSuffix: QnA Maker API - Azure Cognitive Services
+description: 发布知识库使用 QnA Maker API 服务是用于使您的知识库可用作问题回答终结点的最后一步。 发布知识库时，知识库的 QnA 内容将从测试索引转移到 Azure 搜索中的生产索引。
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 03/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 585e5f8f955a405b08bef42588ab5caff71c7bba
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: c65654e7d6b2e66a07116ea9555ed316ace88912
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865907"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091947"
 ---
-# <a name="publish-a-knowledge-base-using-the-qna-maker-portal"></a>使用 QnA Maker 门户发布知识库
+# <a name="publish-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>发布使用 QnA Maker API 服务门户的知识库
 
-发布知识库是将知识库作为客户端应用程序问答终结点提供的最后一步。 
+发布知识库使用 QnA Maker API 服务是用于使您的知识库可用作问题回答终结点的最后一步。 
 
 发布知识库时，知识库的问答内容将从测试索引转移到 Azure 搜索中的生产索引。
 

@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: acaf73c2d981761b0bc57cfccbbf6c6a48e5e0c2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.openlocfilehash: d8cea95fbfb76f1dd1891045309a35aa1d0a8ab0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446494"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099478"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
 使用 Azure 虚拟网络，Azure API 管理可以管理无法通过 Internet 访问的 API。 可以使用多种 VPN 技术建立连接。 可在虚拟网络中通过两种主要模式部署 API 管理：
@@ -32,11 +32,11 @@ ms.locfileid: "52446494"
 
 * 让 API 安全地托管在专用数据中心，该数据中心可以通过站点到站点连接或 Azure ExpressRoute VPN 连接由外部的第三方访问。
 * 通过公共网关公开基于云的 API 和本地 API，以便启用混合云方案。
-* 使用单一网关终结点管理托管在多个地理位置的 API。 
+* 使用单一网关终结点管理托管在多个地理位置的 API。
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -47,7 +47,7 @@ ms.locfileid: "52446494"
 + **一个 Azure API 管理实例**。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
 ## <a name="enable-vpn"> </a>在内部虚拟网络中创建 API 管理
-内部虚拟网络中的 API 管理服务托管在内部负载均衡器 (ILB) 后面。
+内部虚拟网络中的 API 管理服务托管在后面[内部负载均衡器 （经典）](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud)。 这是唯一可用的选项，不能更改。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>使用 Azure 门户启用虚拟网络连接
 
@@ -59,7 +59,7 @@ ms.locfileid: "52446494"
 
 4. 选择“保存”。
 
-部署成功后，就会在仪表板上看到服务的内部虚拟 IP 地址。
+部署成功，应会看到后**私有**虚拟 IP 地址和**公共**API 管理服务的概述边栏选项卡上的虚拟 IP 地址。 **私有**虚拟 IP 地址是负载均衡从 API 管理中的 IP 地址对其委派子网`gateway`， `portal`，`management`和`scm`终结点可以访问。 **公共**使用虚拟 IP 地址**仅**用于控制平面流量发往`management`终结点通过端口 3443 和可以向下锁定[ApiManagement] [ServiceTags] servicetag。
 
 ![包含已配置的内部虚拟网络的 Azure API 管理仪表板][api-management-internal-vnet-dashboard]
 
@@ -67,11 +67,14 @@ ms.locfileid: "52446494"
 > Azure 门户上提供的测试控制台不适用于**内部** VNET 部署的服务，因为网关 URL 未在公共 DNS 上注册。 应改用**开发人员门户**上提供的测试控制台。
 
 ### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>使用 PowerShell cmdlet 启用虚拟网络连接
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 也可以使用 PowerShell cmdlet 启用虚拟网络连接。
 
-* 在虚拟网络中创建 API 管理服务：使用 cmdlet [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) 在虚拟网络内创建 Azure API 管理服务，并将其配置为使用内部虚拟网络类型。
+* 在虚拟网络中创建 API 管理服务：使用 cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) 在虚拟网络中创建 Azure API 管理服务，并将其配置为使用内部虚拟网络类型。
 
-* 在虚拟网络中部署现有的 API 管理服务：使用 cmdlet [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) 将现有 API 管理服务移到虚拟网络内，并将其配置为使用内部虚拟网络类型。
+* 更新 API 管理服务的虚拟网络中的现有部署：使用 cmdlet[更新 AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion)将现有 API 管理服务移到虚拟网络中的并将其配置为使用内部虚拟网络类型。
 
 ## <a name="apim-dns-configuration"></a>DNS 配置
 如果 API 管理采用外部虚拟网络模式，则 DNS 由 Azure 管理。 使用内部虚拟网络模式时，必须管理自己的路由。
@@ -80,35 +83,36 @@ ms.locfileid: "52446494"
 > API 管理服务不会侦听来自 IP 地址的请求， 它只响应到发往其服务终结点上配置的主机名的请求。 这些终结点包括网关、Azure 门户和开发人员门户、直接管理终结点和 Git。
 
 ### <a name="access-on-default-host-names"></a>基于默认主机名的访问权限
-创建 API 管理服务（例如“contoso”）时，将默认配置以下服务终结点：
+创建 API 管理服务，例如，名为"contosointernalvnet"时默认情况下配置以下服务终结点：
 
-   * 网关或代理：contoso.azure-api.net
+   * 网关或代理： contosointernalvnet.azure-api.net
 
-   * Azure 门户和开发人员门户：contoso.portal.azure-api.net
+   * 在 Azure 门户和开发人员门户： contosointernalvnet.portal.azure-api.net
 
-   * 直接管理终结点：contoso.management.azure-api.net
+   * 直接管理终结点： contosointernalvnet.management.azure-api.net
 
-   * Git：contoso.scm.azure-api.net
+   * Git: contosointernalvnet.scm.azure-api.net
 
-若要访问这些 API 管理服务终结点，可以在连接到虚拟网络（其中部署了 API 管理）的子网中创建虚拟机。 假设服务的内部虚拟 IP 地址为 10.0.0.5，则可映射 hosts 文件 (%SystemDrive%\drivers\etc\hosts)，如下所示：
+若要访问这些 API 管理服务终结点，可以在连接到虚拟网络（其中部署了 API 管理）的子网中创建虚拟机。 假设你的服务的内部虚拟 IP 地址 10.1.0.5，可以按如下所示映射 hosts 文件中，%systemdrive%\drivers\etc\hosts:
 
-   * 10.0.0.5     contoso.azure-api.net
+   * 10.1.0.5     contosointernalvnet.azure-api.net
 
-   * 10.0.0.5     contoso.portal.azure-api.net
+   * 10.1.0.5     contosointernalvnet.portal.azure-api.net
 
-   * 10.0.0.5     contoso.management.azure-api.net
+   * 10.1.0.5     contosointernalvnet.management.azure-api.net
 
-   * 10.0.0.5     contoso.scm.azure-api.net
+   * 10.1.0.5     contosointernalvnet.scm.azure-api.net
 
-然后即可从创建的虚拟机访问所有服务终结点。 如果在虚拟网络中使用自定义 DNS 服务器，则还可创建 DNS 记录并从虚拟网络中的任何位置访问这些终结点。 
+然后即可从创建的虚拟机访问所有服务终结点。
+如果在虚拟网络中使用自定义 DNS 服务器，则还可创建 DNS 记录并从虚拟网络中的任何位置访问这些终结点。
 
 ### <a name="access-on-custom-domain-names"></a>基于自定义域名的访问权限
 
-   1. 如果不想通过默认主机名访问 API 管理服务，则可为所有服务终结点设置自定义域名，如下图所示： 
+1. 如果不想通过默认主机名访问 API 管理服务，则可为所有服务终结点设置自定义域名，如下图所示：
 
    ![为 API 管理设置自定义域][api-management-custom-domain-name]
 
-   2. 然后即可在用于访问终结点的 DNS 服务器中创建记录，这些终结点只能从虚拟网络内部访问。
+2. 然后即可在用于访问终结点的 DNS 服务器中创建记录，这些终结点只能从虚拟网络内部访问。
 
 ## <a name="routing"> </a> 路由
 + 子网范围中的负载均衡专用虚拟 IP 地址将保留，并用于从 vnet 中访问 API 管理服务终结点。
@@ -122,10 +126,12 @@ ms.locfileid: "52446494"
 * [虚拟网络常见问题解答](../virtual-network/virtual-networks-faq.md)
 * [在 DNS 中创建记录](https://msdn.microsoft.com/library/bb727018.aspx)
 
-[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-menu.png
+[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-using-with-internal-vnet.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png
 [api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/api-management-custom-domain-name.png
 
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
+
+[ServiceTags]: ../virtual-network/security-overview.md#service-tags
 

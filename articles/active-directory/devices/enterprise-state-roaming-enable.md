@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ce6dc4cf98f2886eb4eed7049048d67599ac42e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: adad43f337d4cf026ca8f48976a9fc713fd52200
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207477"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077405"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 企业状态漫游可供任何拥有Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅 [Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。
@@ -37,7 +37,7 @@ ms.locfileid: "56207477"
 
 1. 选择“用户可以跨设备同步设置和应用数据”。 有关详细信息，请参阅[如何配置设备设置](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)。
   
-  ![标有“用户可以跨设备同步设置和应用数据”的设备设置的图像](./media/enterprise-state-roaming-enable/device-settings.png)
+   ![标有“用户可以跨设备同步设置和应用数据”的设备设置的图像](./media/enterprise-state-roaming-enable/device-settings.png)
   
 要让 Windows 10 设备使用企业状态漫游服务，设备必须使用 Azure AD 标识进行身份验证。 对于已加入到 Azure AD 的设备，用户的主登录标识为 Azure AD 标识，因此不需要其他配置。 对于使用本地 Active Directory 的设备，IT 管理员必须[配置加入混合 Azure Active Directory 的设备](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps)。 
 
@@ -64,11 +64,11 @@ ms.locfileid: "56207477"
 
 1. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。
   
-  ![设备同步数据设置图像](./media/enterprise-state-roaming-enable/sync-status.png)
+   ![设备同步数据设置图像](./media/enterprise-state-roaming-enable/sync-status.png)
   
 1. 如果存在同步此用户的数据的设备，此处会显示该设备。
   
-  ![设备同步纵栏表数据图像](./media/enterprise-state-roaming-enable/device-status-row.png)
+   ![设备同步纵栏表数据图像](./media/enterprise-state-roaming-enable/device-status-row.png)
 
 ## <a name="data-retention"></a>数据保留
 使用企业状态漫游同步到 Microsoft 云的数据会一直保留，直到手动将其删除，或判定相关的数据已过时。 

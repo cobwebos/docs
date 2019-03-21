@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16763827c043d56ea9a3d461873dc78456cf678d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 4df8f329a135683ea68896605a0a1c6f3ee45984
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164918"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084075"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -76,8 +76,8 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置：
    - **内部 URL**：通常提供在企业网络中时可你将转到应用登录页的 URL。 对于此方案，连接器需要将 PingAccess 代理视为应用的首页。 使用此格式：`https://<host name of your PA server>:<port>`。 默认情况下端口为 3000，但可以在 PingAccess 中对其进行配置。
 
-    > [!WARNING]
-    > 对于此类型的 SSO，内部 URL 必须使用 https，不能使用 http。
+     > [!WARNING]
+     > 对于此类型的 SSO，内部 URL 必须使用 https，不能使用 http。
 
    - **预身份验证方法**：Azure Active Directory
    - **转换标头中的 URL**：否
@@ -91,49 +91,49 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 9. 在应用管理边栏选项卡中选择“单一登录”。
 10. 从下拉菜单中选择“基于标头的登录”。 选择“保存”。
 
-   >[!TIP]
-   >如果这是第一次使用基于标头的单一登录，则需安装 PingAccess。 为了确保 Azure 订阅与 PingAccess 安装自动关联，请使用此单一登录页上的链接下载 PingAccess。 可以现在就打开下载站点，也可以稍后返回到此页面。 
+    >[!TIP]
+    >如果这是第一次使用基于标头的单一登录，则需安装 PingAccess。 为了确保 Azure 订阅与 PingAccess 安装自动关联，请使用此单一登录页上的链接下载 PingAccess。 可以现在就打开下载站点，也可以稍后返回到此页面。 
 
-   ![选择基于标头的登录](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.PNG)
+    ![选择基于标头的登录](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.PNG)
 
 11. 关闭“企业应用程序”边栏选项卡或一直向左滚动，返回“Azure Active Directory”菜单。
 12. 选择“应用注册”。
 
-   ![选择“应用注册”](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
+    ![选择“应用注册”](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
 
 13. 选择刚添加的应用，并选择“回复 URL”。
 
-   ![选择“回复 URL”](./media/application-proxy-configure-single-sign-on-with-ping-access/reply-urls.png)
+    ![选择“回复 URL”](./media/application-proxy-configure-single-sign-on-with-ping-access/reply-urls.png)
 
 14. 检查在步骤 5 中分配到应用的外部 URL 是否出现在“回复 URL”列表中。 如果未出现，现在请添加。
 15. 在应用设置边栏选项卡中，选择“所需的权限”。
 
-  ![选择“所需的权限”](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
+    ![选择“所需的权限”](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
 
 16. 选择 **添加** 。 对于 API，请选择“Windows Azure Active Directory”，并单击“选择”。 对于权限，请选择“读取和写入所有应用程序”和“登录并读取用户配置文件”，并依次单击“选择”和“完成”。  
 
-  ![选择权限](./media/application-proxy-configure-single-sign-on-with-ping-access/select-permissions.png)
+    ![选择权限](./media/application-proxy-configure-single-sign-on-with-ping-access/select-permissions.png)
 
 17. 关闭权限屏幕之前，请授予权限。 
-![授予权限](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
+    ![授予权限](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
 
 ### <a name="collect-information-for-the-pingaccess-steps"></a>收集 PingAccess 步骤的信息
 
 1. 在应用设置边栏选项卡中，选择“属性”。 
 
-  ![选择“属性”](./media/application-proxy-configure-single-sign-on-with-ping-access/properties.png)
+   ![选择“属性”](./media/application-proxy-configure-single-sign-on-with-ping-access/properties.png)
 
 2. 保存“应用程序 ID”值。 配置 PingAccess 时，此值将用作客户端 ID。
 3. 在应用设置边栏选项卡中，选择“密钥”。
 
-  ![选择“密钥”](./media/application-proxy-configure-single-sign-on-with-ping-access/Keys.png)
+   ![选择“密钥”](./media/application-proxy-configure-single-sign-on-with-ping-access/Keys.png)
 
 4. 创建密钥：输入密钥的说明，并从下拉菜单中选择过期日期。
 5. 选择“保存”。 一个 GUID 随即出现在“值”字段中。
 
-  现在请保存此值，因为关闭此窗口后再也无法看到它。
+   现在请保存此值，因为关闭此窗口后再也无法看到它。
 
-  ![新建密钥](./media/application-proxy-configure-single-sign-on-with-ping-access/create-keys.png)
+   ![新建密钥](./media/application-proxy-configure-single-sign-on-with-ping-access/create-keys.png)
 
 6. 关闭“应用注册”边栏选项卡或一直向左滚动，返回“Azure Active Directory”菜单。
 7. 选择“属性”。

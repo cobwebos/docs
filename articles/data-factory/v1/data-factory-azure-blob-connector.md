@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 733ae4451988651df2a62a22aa6eb1b6fae44309
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: ea4cf03b368cebbfc7d1229be28014b54f2c11d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331718"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004318"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -80,7 +80,7 @@ ms.locfileid: "54331718"
 
 每种数据集的 **typeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置、格式等信息。 **AzureBlob** 类型的数据集的 typeProperties 部分具有以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
 | fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，则生成的文件的名称将采用以下格式：Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -126,13 +126,13 @@ ms.locfileid: "54331718"
 
 **BlobSource** 支持 **typeProperties** 部分的以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
 
 **BlobSink** 支持以下 **typeProperties** 属性部分：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy：</b>源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 |否 |
 
@@ -172,7 +172,7 @@ ms.locfileid: "54331718"
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>演练：使用“复制向导”将数据复制到 Blob 存储/从 Blob 存储复制数据
 让我们看一下如何快速将数据复制到 Azure Blob 存储/从 Azure Blob 存储复制数据。 在本演练中，源和目标数据存储都属于以下类型：Azure Blob 存储。 本演练中的管道将数据从一个文件夹复制到同一 blob 容器中的其他文件夹中。 本演练有意简单设计，以显示使用 Blob 存储作为源或接收器时的设置或属性。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 1. 如果尚无 Azure 存储帐户，请创建一个通用 Azure 存储帐户。 在本演练中，使用 blob 存储同时作为源和目标数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
 2. 在存储帐户中创建名为 adfblobconnector 的 Blob 容器。
 4. 在 adfblobconnector 容器中创建名为 input 的文件夹。
@@ -181,6 +181,7 @@ ms.locfileid: "54331718"
     John, Doe
     Jane, Doe
     ```
+
 ### <a name="create-the-data-factory"></a>创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击左上角的“创建资源”，单击“智能 + 分析”，然后单击“数据工厂”。
@@ -249,14 +250,14 @@ ms.locfileid: "54331718"
     4. 选择 Azure 存储帐户。
     5. 单击“下一步”。
 10. 在“选择输出文件或文件夹”页上：  
-    6. 指定“文件夹路径”为 adfblobconnector/output/{年}/{月}/{日}。 输入 TAB。
-    7. 对于“年”，请选择“yyyy”。
-    8. 对于“月”，请确认它已设为“MM”。
-    9. 对于“日”，请确认它已设为“dd”。
-    10. 确认“压缩类型”已设为“无”。
-    11. 确认“复制行为”已设为“合并文件”。 如果已存在具有相同名称的输出文件，新内容将添加到相同文件的末尾。
-    12. 单击“下一步”。
-    ![复制工具 - 选择输出文件或文件夹](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+    1. 指定“文件夹路径”为 adfblobconnector/output/{年}/{月}/{日}。 输入 TAB。
+    1. 对于“年”，请选择“yyyy”。
+    1. 对于“月”，请确认它已设为“MM”。
+    1. 对于“日”，请确认它已设为“dd”。
+    1. 确认“压缩类型”已设为“无”。
+    1. 确认“复制行为”已设为“合并文件”。 如果已存在具有相同名称的输出文件，新内容将添加到相同文件的末尾。
+    1. 单击“下一步”。
+       ![复制工具 - 选择输出文件或文件夹](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. 在“文件格式设置”页上，查看设置，并单击“下一步”。 可在此处选择“向输出文件添加标题”。 如果选择该选项，将添加一个标题行，包含源架构的列名称。 查看源的架构时，可以重命名默认列名称。 例如，可以将第一列改为“名字”，而第二列改为“姓氏”。 然后，将生成输出文件和标题，其中这些名称为列名称。
     ![复制工具 - 目标的文件格式设置](media/data-factory-azure-blob-connector/file-format-destination.png)
 12. 在“性能设置”页上，确认“云单位”和“并行副本”已设为“自动”，并单击“下一步”。 有关这些设置的详细信息，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md#parallel-copy)。
@@ -281,7 +282,7 @@ ms.locfileid: "54331718"
     2017/04/24
     2017/04/25
     ```
-有关监视和管理数据工厂的详细信息，请参阅[监视和管理数据工厂管道](data-factory-monitor-manage-app.md)一文。
+   有关监视和管理数据工厂的详细信息，请参阅[监视和管理数据工厂管道](data-factory-monitor-manage-app.md)一文。
 
 ### <a name="data-factory-entities"></a>数据工厂实体
 现在，切换回具有“数据工厂”主页的选项卡。 请注意，数据工厂中现在有两个链接服务、两个数据集和一个管道。

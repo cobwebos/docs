@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: af3738849382317eeddf8bce3d2f87e38e0fb583
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427780"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074431"
 ---
 # <a name="set-up-a-capacity-pool"></a>设置容量池
 
@@ -41,19 +41,19 @@ ms.locfileid: "56427780"
     此时将显示“新建容量池”窗口。
 
 3. 提供新容量池的以下信息：  
-  * **名称**  
-    指定容量池的名称。  
-    容量池名称对于每个 NetApp 帐户必须是唯一的。
+   * **名称**  
+     指定容量池的名称。  
+     容量池名称对于每个 NetApp 帐户必须是唯一的。
 
-  * **服务级别**   
-    此字段显示容量池的目标性能。  
-    指定容量池的服务级别：[**高级**](azure-netapp-files-service-levels.md#Premium)或[**标准**](azure-netapp-files-service-levels.md#Standard)。
+   * **服务级别**   
+     此字段显示容量池的目标性能。  
+     指定容量池的服务级别：[**高级**](azure-netapp-files-service-levels.md#Premium)或[**标准**](azure-netapp-files-service-levels.md#Standard)。
 
-  * **大小**     
-    指定你购买的容量池的大小。        
-    最小容量池大小是 4 TiB。 可以创建大小为 4 TiB 的倍数的池。   
+   * **大小**     
+     指定你购买的容量池的大小。        
+     最小容量池大小是 4 TiB。 可以创建大小为 4 TiB 的倍数的池。   
       
-    ![新建容量池](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+     ![新建容量池](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
 4. 单击“确定”。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 4920d2a6c26da12effc2b44be8d3c6cbdb5e2a6f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199130"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856105"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
@@ -42,7 +42,7 @@ ms.locfileid: "54199130"
 - Azure 负载均衡器用于公开两个前端 IP 地址，每个地址对应于一个网站。 前端地址用于将流量分配到每个网站的相应 IP 配置。
 - 前端 IP 地址和后端池 IP 地址使用相同的端口号。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 方案示例假设已创建名为 **contosofabrikam** 的资源组，该资源组的配置如下：
 
@@ -62,7 +62,7 @@ ms.locfileid: "54199130"
 
 对于虚拟网络中的每个 VM，请添加辅助 NIC 的 IP 配置：  
 
-1. 浏览到 Azure 门户： http://portal.azure.com。 使用 Azure 帐户登录。
+1. 浏览到 Azure 门户： https://portal.azure.com。 使用 Azure 帐户登录。
 
 2. 在屏幕左上方，选择“资源组”图标。 然后选择 VM 所在的资源组（例如 **contosofabrikam**）。 “资源组”窗格中显示了 VM 的所有资源和 NIC。
 
@@ -86,7 +86,7 @@ ms.locfileid: "54199130"
 
 为配置创建负载均衡器：
 
-1. 浏览到 Azure 门户： http://portal.azure.com。 使用 Azure 帐户登录。
+1. 浏览到 Azure 门户： https://portal.azure.com。 使用 Azure 帐户登录。
 
 2. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”。 接下来，选择“创建”。
 
@@ -106,15 +106,15 @@ ms.locfileid: "54199130"
 
 2. 为两个网站（contoso.com 和 fabrikam.com）配置两个公共 IP 地址（**PublicIP1** 和 **PublicIP2**）：
 
-    1. 键入前端 IP 地址的名称。
+   1. 键入前端 IP 地址的名称。
 
-    2. 对于“资源组”，请选择 VM 的现有资源组（例如 **contosofabrikam**）。
+   2. 对于“资源组”，请选择 VM 的现有资源组（例如 **contosofabrikam**）。
 
-    3. 对于“位置”，请选择 VM 所在的同一位置。
+   3. 对于“位置”，请选择 VM 所在的同一位置。
 
-    4. 选择“确定”。
+   4. 选择“确定”。
 
-    创建公共 IP 地址后，它们会显示在“公共 IP 地址”下。
+      创建公共 IP 地址后，它们会显示在“公共 IP 地址”下。
 
 3. <a name="step3-3"></a>在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。 
 
@@ -194,4 +194,4 @@ ms.locfileid: "54199130"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 若要了解如何使用不同类型的日志对负载均衡器进行管理和故障排除，请参阅 [Azure 负载均衡器的 Log Analytics](../load-balancer/load-balancer-monitor-log.md)。
+- 了解如何使用不同类型的日志进行管理和故障排除中的负载均衡器[Azure Monitor for Azure 负载均衡器日志](../load-balancer/load-balancer-monitor-log.md)。

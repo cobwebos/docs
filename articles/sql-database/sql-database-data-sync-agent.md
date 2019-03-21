@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 78d85239e1e82c290b210d33d3ca7000d6a05a1f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 5d8b3b91771fda3a714112979b8bf9df39c4a9b3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567904"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088683"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的 Data Sync Agent
 
@@ -48,7 +48,7 @@ msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\
 
 若要配置 Data Sync Agent 以便可以将数据与一个或多个本地 SQL Server 数据库进行同步，请参阅[添加本地 SQL Server 数据库](sql-database-get-started-sql-data-sync.md#add-on-prem)。
 
-## <a name="agent-faq"></a> 数据同步代理常见问题解答
+## <a name="agent-faq"></a> Data Sync Agent 常见问题解答
 
 ### <a name="why-do-i-need-a-client-agent"></a>为什么需要客户端代理
 
@@ -80,7 +80,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 4. 客户端代理下载以前已注册的本地数据库列表时，请稍候。
 5. 为显示为无法访问的所有数据库提供数据库凭据。 这些数据库必须可从安装代理的新计算机上访问。
 
-## <a name="agent-tshoot"></a> 解决数据同步代理问题
+## <a name="agent-tshoot"></a> 解决 Data Sync Agent 问题
 
 - [客户端代理安装、卸载或修复失败](#agent-install)
 
@@ -102,8 +102,8 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 - **解决方法**。 若要找到失败的具体原因，请生成并查看 Windows Installer 日志。 可以在命令提示符下启用日志记录。 例如，如果下载的安装文件为 `SQLDataSyncAgent-2.0-x86-ENU.msi`，请使用以下命令行生成并检查日志文件：
 
-    -   对于安装：`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-    -   对于卸载：`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - 对于安装：`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - 对于卸载：`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     也可以对 Windows Installer 执行的所有安装启用日志记录。 Microsoft 知识库文章[如何启用 Windows Installer 日志记录](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)提供了启用 Windows Installer 的日志记录的一键式解决方案。 此外它还提供了日志的位置。
 
@@ -326,7 +326,7 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
         -  [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   最佳做法 - [Azure SQL 数据同步最佳做法](sql-database-best-practices-data-sync.md)
--   监视 - [使用 Log Analytics 监视 SQL 数据同步](sql-database-sync-monitor-oms.md)
+-   监视器-[使用 Azure Monitor 监视 SQL 数据同步日志](sql-database-sync-monitor-oms.md)
 -   故障排除 - [排查 Azure SQL 数据同步问题](sql-database-troubleshoot-data-sync.md)
 -   更新同步架构
     -   使用 Transact-SQL - [在 Azure SQL 数据同步中自动复制架构更改](sql-database-update-sync-schema.md)

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 4346b347994f49774584caf31a96ff2f81fdc0e1
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 371cbcc50b574f95e8d9ba4efe79058b2b25a8ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701210"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58016678"
 ---
 配置/进程服务器要求
 
@@ -48,7 +48,7 @@ https:\//management.azure.com | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
 time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
 time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
-- https:\//login.microsoftonline.com <br> - https:\//secure.aadcdn.microsoftonline-p.com <br> - https:\//login.live.com  <br> - https:\//graph.windows.net <br> - https:\//login.windows.net <br> - https:\//www.live.com <br> - https:\//www.microsoft.com | OVF 设置需要访问以下这些 URL： 它们由 Azure Active Directory 用于访问控制和标识管理
+| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF 设置需要访问以下这些 URL： 它们由 Azure Active Directory 用于访问控制和标识管理
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载
 |
 要安装的软件 | 

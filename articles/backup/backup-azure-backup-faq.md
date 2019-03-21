@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: bfc1c419d5d58b4528b76dbed6fd0060f6b2833d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446658"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993387"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 本文回答有关 Azure 备份服务的常见问题。
@@ -93,7 +93,7 @@ ms.locfileid: "56446658"
 ### <a name="what-operating-systems-are-supported-for-backup"></a>支持哪些操作系统进行备份？
 Azure 备份支持操作系统对文件和文件夹以及使用 Azure 备份服务器和 DPM 保护的工作负载应用程序进行备份。
 
-**OS**| **SKU** |**详细信息**
+**OS** | **SKU** | **详细信息**
 --- | --- | ---
 工作站 | |
 Windows 10 64 位 | Enterprise、Pro、Home | 计算机应运行最新服务包和更新。
@@ -101,6 +101,7 @@ Windows 8.1 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更�
 Windows 8 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 7 64 位 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | 计算机应运行最新服务包和更新。
 服务器 | |
+Windows Server 2019 64 bit | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2016 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2012 R2 64 位 | Standard、Datacenter、Foundation | 使用最新服务包/更新。
 Windows Server 2012 64 位 | Datacenter、Foundation、Standard | 使用最新服务包/更新。
@@ -117,7 +118,7 @@ Windows Server 2008 64 位 | Standard、Enterprise、Datacenter | 使用最新�
 大小限制如下所示：
 
 OS/计算机 | 数据源的大小限制
---- | --- | ---
+--- | --- 
 Windows 8 或更高版本 | 54,400 GB
 Windows 7 |1700 GB
 Windows Server 2012 或更高版本 | 54,400 GB

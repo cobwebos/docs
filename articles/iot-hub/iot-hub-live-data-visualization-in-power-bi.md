@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: a55e77853a1c9466892f686f34d17a5e84b11ba7
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: 240895f4e8567426fec8e270b96b9e6528392a46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411279"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103071"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 可视化 Azure IoT 中心的实时传感器数据
 
@@ -37,11 +37,11 @@ ms.locfileid: "54411279"
 
 ## <a name="what-you-need"></a>所需条件
 
- * 已完成教程[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)，其中涵盖以下要求：
-
-   * 一个有效的 Azure 订阅。
-   * 已在订阅中创建一个 Azure IoT 中心。
-   * 一个可向 Azure IoT 中心发送消息的客户端应用程序。
+* 已完成教程[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)，其中涵盖以下要求：
+  
+  * 一个有效的 Azure 订阅。
+  * 已在订阅中创建一个 Azure IoT 中心。
+  * 一个可向 Azure IoT 中心发送消息的客户端应用程序。
 
 * 一个 Power BI 帐户。 （[免费试用 Power BI](https://powerbi.microsoft.com/)）
 
@@ -89,7 +89,7 @@ ms.locfileid: "54411279"
 
    ![向 Azure 中的流分析作业添加输入](./media/iot-hub-live-data-visualization-in-power-bi/3_add-input-to-stream-analytics-job-azure.png)
 
-### <a name="add-an-output-to-the-stream-analytics-job"></a>将输出添加到流分析作业
+### <a name="add-an-output-to-the-stream-analytics-job"></a>向流分析作业添加输出
 
 1. 在“作业拓扑”下，单击“输出”。
 
@@ -123,7 +123,7 @@ ms.locfileid: "54411279"
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
-在流分析作业中，单击“启动” > “现在” > “启动”。 成功启动作业后，作业状态将从“已停止”更改为“正在运行”。
+在流分析作业中，单击“启动” > “现在” > “启动”。 成功启动作业以后，作业状态将从“已停止”更改为“正在运行”。
 
 ![在 Azure 中运行流分析作业](./media/iot-hub-live-data-visualization-in-power-bi/6_run-stream-analytics-job-azure.png)
 

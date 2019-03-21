@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de42312c580b6bd5b4a5148fd877d55aa00e8804
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 97dc67d46b08bf5765c59806b45edd82f38720cd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204587"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011970"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 传递身份验证：当前限制
 
@@ -34,7 +34,7 @@ ms.locfileid: "56204587"
 
 - 用户登录到基于 Web 浏览器的应用程序。
 - 用户使用旧版协议（例如 Exchange ActiveSync、EAS、SMTP、POP 和 IMAP）登录 Outlook 客户端。
-- 用户登录到旧版 Office 客户端应用程序和支持[新式身份验证](https://aka.ms/modernauthga)的 Office 应用程序：Office 2010、2013 和 2016 版。
+- 用户登录到旧版 Office 客户端应用程序和支持[新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)的 Office 应用程序：Office 2013 和 2016年版本。
 - 用户登录到旧版协议的应用程序，例如 PowerShell 1.0 版本等。
 - 适用于 Windows 10 设备的 Azure AD 联接。
 - 进行多重身份验证的应用密码。
@@ -47,11 +47,11 @@ _不_支持以下方案：
 - Azure AD 域服务需要在租户上启用密码哈希同步。 因此，_仅_使用传递身份验证的租户不适用于需要 Azure AD 域服务的方案。
 - 直通身份验证未与 [Azure AD Connect Health](whatis-hybrid-identity-health.md) 集成。
 
->[!IMPORTANT]
->仅作为不支持方案的变通方法（除 Azure AD Connect Health 集成），可在 Azure AD Connect 向导中的[可选功能](how-to-connect-install-custom.md#optional-features)页上启用“密码哈希同步”。
-
->[!NOTE]
-此外，启用“密码哈希同步”还可以选择在本地基础结构被破坏的情况下故障转移身份验证。 这种从传递身份验证到密码哈希同步的故障转移不是自动进行的。 需要使用 Azure AD Connect 手动切换登录方法。 如果运行 Azure AD Connect 的服务器出现故障，则需要 Microsoft 支持部门的帮助以关闭传递身份验证。
+> [!IMPORTANT]
+> 仅作为不支持方案的变通方法（除 Azure AD Connect Health 集成），可在 Azure AD Connect 向导中的[可选功能](how-to-connect-install-custom.md#optional-features)页上启用“密码哈希同步”。
+> 
+> [!NOTE]
+> 此外，启用“密码哈希同步”还可以选择在本地基础结构被破坏的情况下故障转移身份验证。 这种从传递身份验证到密码哈希同步的故障转移不是自动进行的。 需要使用 Azure AD Connect 手动切换登录方法。 如果运行 Azure AD Connect 的服务器出现故障，则需要 Microsoft 支持部门的帮助以关闭传递身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 - [快速入门](how-to-connect-pta-quick-start.md)：快速启动并运行 Azure AD 传递身份验证。

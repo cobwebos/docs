@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 1c05a50f82f5c235c76ff234efe183172e0863bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 584b9d67808e75222d832f045e5d3f93fbb326ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232974"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105084"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>创建和管理混合连接
 
 > [!IMPORTANT]
 > BizTalk 混合连接已停用，并由应用服务混合连接替代。 有关详细信息，包括如何管理现有 BizTalk 混合连接，请参阅 [Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)。
-
->[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
+> 
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 ## <a name="overview-of-the-steps"></a>步骤概述
 1. 通过在专用网络中为本地资源输入**主机名**或 **FQDN**，来创建混合连接。
@@ -42,7 +42,7 @@ ms.locfileid: "51232974"
 > 例如（伪代码），将 **10.4.5.6** 定义为本地主机：
 > 
 > **以下方案可以运行：**  
-> `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on-prem host`
+> `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on premises host`
 > 
 > **以下方案无法运行：**  
 > `Application code -> Connect("10.4.5.6") -> ?? -> No route to host`
@@ -55,8 +55,8 @@ ms.locfileid: "51232974"
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
 
 #### <a name="additional"></a>其他
-* 可创建多个混合连接。 请参阅 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)，了解允许的连接数。 
-* 每个混合连接均使用连接字符串对进行创建：用于发送的应用程序密钥和用于侦听的本地密钥。 每一对都有主要密钥和辅助密钥。 
+* 可创建多个混合连接。 请参阅[BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)有关允许的连接数。 
+* 使用一对连接字符串来创建每个混合连接：用于发送和本地侦听的密钥的应用程序密钥。 每一对都有主要密钥和辅助密钥。 
 
 ## <a name="LinkWebSite"></a>链接 Azure App Service Web 应用或移动应用
 要将 Azure 应用服务中的 Web 应用或移动应用链接到现有混合连接，请在“混合连接”边栏选项卡中选择“使用现有混合连接”。 
@@ -121,7 +121,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [用于在 Microsoft Azure 上管理 BizTalk 服务的 REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)  
 [创建 BizTalk 服务](biztalk-provision-services.md)  
-[Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)
+[BizTalk 服务：仪表板、 监视和缩放选项卡](biztalk-dashboard-monitor-scale-tabs.md)
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png

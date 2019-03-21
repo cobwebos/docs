@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 096bc96558f0fe33f8046622dc2443728674e405
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 825a6035a997eb27a3e8e5833a792bdd985997c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876842"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084617"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>语音设备 SDK 许可协议
 
@@ -52,7 +52,7 @@ e)  共享、发布或出借此软件（受上述适用条款约束的任何可�
 
 f)  你必须仅将此软件与 Microsoft Azure 认知服务、语音服务结合使用
 
-**3\. 数据收集。** 此软件可能与收集传输到 Microsoft 的数据的其他 Microsoft 产品进行交互。 若要详细了解 Microsoft 如何处理我们收集的个人数据，请参阅 http://go.microsoft.com/fwlink/?LinkId=248681 中的 Microsoft 隐私声明。
+**3\. 数据收集。** 此软件可能与收集传输到 Microsoft 的数据的其他 Microsoft 产品进行交互。 若要详细了解 Microsoft 如何处理我们收集的个人数据，请参阅 https://go.microsoft.com/fwlink/?LinkId=248681 中的 Microsoft 隐私声明。
 
 **4\. 预发行版软件。** 此软件是预发行版本。 它可能无法正常工作。 它可能与商业发行版本不同。
 
@@ -68,7 +68,7 @@ f)  你必须仅将此软件与 Microsoft Azure 认知服务、语音服务结�
 
 **10\. 更新。** 软件可能会定期检查更新，并为您下载和安装。 只能从 Microsoft 或授权的来源获取这些更新。 Microsoft 可能需要更新系统以为您提供更新。 您同意接收这些自动更新，系统不会发送任何其他通知。 更新可能不包括或支持所有现有软件功能、服务或外围设备。
 
-**11\. 约束性仲裁和集体诉讼豁免。** 如果您居住在美国，或者企业的主要营业地点位于美国（对于企业），则本部分适用。  如果您与 Microsoft 有争议，则您和 Microsoft 同意尝试 60 天，以非正式方式进行解决。 如果你和 Microsoft 不能解决，则你和 Microsoft 同意在美国仲裁协会面前根据联邦仲裁法 (“FAA”) 进行约束性个人仲裁，而不是在法官或陪审团面前向法庭起诉。 中立仲裁员将作出决定。 不允许集体诉讼、集体仲裁、公众利益代表人 (private attorney-general) 诉讼以及其中以代理人身份行事的任何其他诉讼；未经各方同意，也不允许组合个人诉讼。 完整的仲裁协议包含更多条款，可在 aka.ms/arb-agreement-1 处查看。 您和 Microsoft 同意这些条款。
+**11\. 约束性仲裁和集体诉讼豁免。** 如果您居住在美国，或者企业的主要营业地点位于美国（对于企业），则本部分适用。  如果您与 Microsoft 有争议，则您和 Microsoft 同意尝试 60 天，以非正式方式进行解决。 如果您和 Microsoft 不能解决，则您和 Microsoft 同意在美国仲裁协会面前根据联邦仲裁法 (FAA) 进行约束性个人仲裁，而不是在法官或陪审团面前向法庭起诉。 中立仲裁员将作出决定。 不允许集体诉讼、集体仲裁、公众利益代表人 (private attorney-general) 诉讼以及其中以代理人身份行事的任何其他诉讼；未经各方同意，也不允许组合个人诉讼。 完整的仲裁协议包含更多条款，可在 aka.ms/arb-agreement-1 处查看。 您和 Microsoft 同意这些条款。
 
 **12\. 完整协议。** 本协议以及 Microsoft 可能为补充、更新或第三方应用程序提供的任何其他条款构成该软件的完整协议。
 
@@ -83,9 +83,9 @@ b)  加拿大。 如果您在加拿大购买的此软件，则可通过关闭自
 c)  德国和奥地利。
 
 > (i)  担保。 正确许可的软件将基本上按照软件随附的任何 Microsoft 材料中的描述执行。 但是，Microsoft 不提供与许可软件相关的任何合同规定的担保。
-
+> 
 > (ii)  责任限制。 如果出现故意行为、重大疏忽、基于《产品责任法》的索赔，以及在死亡或人身伤害的情况下，Microsoft 将根据成文法承担责任。
-
+> 
 > 根据上述条款 (ii)，如果 Microsoft 违反此类重大合同义务将仅承担轻微的疏忽责任：履行后有助于促成本协议正当履行，违反了则妨碍本协议的宗旨以及双方能够一直信赖的对合约的遵从性（所谓的“基本义务”）。 在其他轻微过失的情况下，Microsoft 将不承担轻微过失的责任。
 
 **15\. 免责声明。此软件按“原样”授予许可。使用该软件的风险需要自己承担。Microsoft 不提供任何明示的担保、保证或条件。在适用法律允许的范围内，MICROSOFT 排除任何默示保证，包括适销性、对于特定目的适用性和非侵权性。**

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: 813ec8f74371b6ae76ac306aea2c462f0beea1fb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: feb7fcdd9005ef131acadfc63defbe4caeaca014
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55772098"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991933"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>通过成本警报监视使用情况和支出
 
@@ -23,7 +23,7 @@ ms.locfileid: "55772098"
 
 ## <a name="budget-alerts"></a>预算警报
 
-当基于使用情况或成本的支出达到或超出在[预算的警报条件](tutorial-acm-create-budgets.md)中定义的金额时，预算警报会通知你。 成本管理预算通过 Azure 门户或 [Azure 使用情况](https://docs.microsoft.com/rest/api/consumption) API 来创建。 
+当基于使用情况或成本的支出达到或超出在[预算的警报条件](tutorial-acm-create-budgets.md)中定义的金额时，预算警报会通知你。 成本管理预算通过 Azure 门户或 [Azure 使用情况](https://docs.microsoft.com/rest/api/consumption) API 来创建。
 
 在 Azure 门户中，预算按成本来定义。 使用 Azure 使用情况 API 时，预算是按成本或使用情况定义的。 预算警报支持基于成本的和基于使用情况的预算。 预算警报是在预算警报条件得到满足的情况下自动生成的。 可以在 Azure 门户中查看所有成本警报。 警报在生成后会显示在成本警报中。 此外，还会向预算的警报接收者列表中的人员发送警报电子邮件。
 
@@ -35,9 +35,21 @@ ms.locfileid: "55772098"
 
 当部门支出达到配额的固定阈值时，部门支出配额警报会通知你。 支出配额在 EA 门户中配置。 阈值在达到后会生成一封给部门所有者的电子邮件并显示在成本警报中。 例如，配额的 50% 或 75%。
 
+## <a name="supported-alert-features-by-offer-categories"></a>支持的产品/服务类别的警报功能
+
+为警报类型的支持取决于有 (Microsoft 产品/服务) 的 Azure 帐户的类型。 下表显示了支持的警报功能的各种 Microsoft 产品。 您可以查看 Microsoft 产品/服务的完整列表[了解成本管理数据](understand-cost-mgt-data.md)。
+
+| 警报类型 | 企业协议 | Microsoft 客户协议 | Web direct/付 As-You-进行 |
+|---|---|---|---|
+| 预算 | ✔ | ✔ | ✔ |
+| 额度 | ✔ |✘ | ✘ |
+| 部门支出配额 | ✔ | ✘ | ✘ |
+
+
+
 ## <a name="view-cost-alerts"></a>查看成本警报
 
-在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。 然后，在“成本管理”下的列表中，选择“成本警报”。
+若要查看成本警报，可在 Azure 门户并选择中打开所需的范围**预算**菜单中。 使用**作用域**药丸切换到不同的作用域。 选择**成本警报**菜单中。 有关作用域的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
 
 ![在成本管理中显示的警报的示例图像](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 

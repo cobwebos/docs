@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c9a772af79cba8b5bfb592eaf03efa37520d5e48
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 1c44d2e41d37a9236ee6d6936c349acf5ca5e44c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870599"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098757"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>将 LUIS 结果添加到 Application Insights 和 Azure 函数
 本教程将 LUIS 请求和响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 添加该数据后，可使用 Kusto 语言进行查询，或使用 PowerBi 对陈述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
@@ -26,11 +26,11 @@ ms.locfileid: "55870599"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-* 将 Application Insights 库添加到 Web 应用机器人
-* 捕获 LUIS 查询结果并发送给 Application Insights
-* 查询 Application Insights，获取首要意向、分数和表述
+> * 将 Application Insights 库添加到 Web 应用机器人
+> * 捕获 LUIS 查询结果并发送给 Application Insights
+> * 查询 Application Insights，获取首要意向、分数和表述
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 使用[上一教程](luis-nodejs-tutorial-build-bot-framework-sample.md)中已启用 Application Insights 的 LUIS Web 应用机器人。 
 
@@ -51,11 +51,11 @@ ms.locfileid: "55870599"
 
 1. 在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。 
 
-    ![在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。 ](./media/luis-tutorial-appinsights/build.png)
+    ![在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。](./media/luis-tutorial-appinsights/build.png)
 
 2. 此时会打开一个包含“应用服务编辑器”的新浏览器标签页。 在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。 
 
-    ![在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。 ](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. 在控制台中输入以下命令，安装 Application Insights 和 Underscore 包：
 
