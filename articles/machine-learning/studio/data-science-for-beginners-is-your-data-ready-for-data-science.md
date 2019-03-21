@@ -5,17 +5,17 @@ description: 数据可用于数据科学需要满足的四个条件。 本视频
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: 4f474fd6ac2fa6a4f44aacf0eacb85a92fdf1de9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 9cd2d1264d08887f75eaf7ae624b6a45ec8d6a34
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456463"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817569"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
 ## <a name="video-2-data-science-for-beginners-series"></a>视频 2：适合初学者的数据科学系列
@@ -104,4 +104,4 @@ ms.locfileid: "56456463"
 
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室尝试第一个数据科学实验](create-experiment.md)
-* [在 Microsoft Azure 上获取机器学习简介](what-is-machine-learning.md)
+* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/preview/overview-what-is-azure-ml)

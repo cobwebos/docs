@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: 68c5d6e68562d4027c102e1bde42c775648e58c4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: f919e9a7cca210fa5920bcc6bed05a9a41fba8bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124837"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192378"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>创建用于监视 Azure 逻辑应用中的端到端工作流的自定义跟踪架构
 
@@ -56,10 +56,10 @@ ms.locfileid: "43124837"
 }
 ```
 
-| 属性 | Type | Description |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | sourceType |   | 运行的源的类型。 允许的值为“Microsoft.Logic/workflows”和“自定义”。 （必需） |
-| Source |   | 如果源类型为 **Microsoft.Logic/workflows**，则源信息必须遵循此架构。 如果源类型为“自定义”；架构为 JToken。 （必需） |
+| 源 |   | 如果源类型为 **Microsoft.Logic/workflows**，则源信息必须遵循此架构。 如果源类型为“自定义”；架构为 JToken。 （必需） |
 | systemId | String | 逻辑应用系统 ID。 （必需） |
 | runId | String | 逻辑应用运行 ID。 （必需） |
 | operationName | String | 操作（例如操作或触发）的名称。 （必需） |
@@ -84,4 +84,4 @@ ms.locfileid: "43124837"
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解如何[监视 B2B 消息](logic-apps-monitor-b2b-message.md)
-* 了解如何[在 Log Analytics 中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* 了解有关[Azure Monitor 日志中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)

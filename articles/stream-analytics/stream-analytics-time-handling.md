@@ -6,17 +6,17 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.openlocfilehash: 4accff7410d17e76a000b7cef957b75c65a16960
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.date: 03/05/2018
+ms.openlocfilehash: 2a59a81b0894cbf58c5d3ab5a5569f4749b64b00
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007665"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543281"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>了解 Azure 流分析中的时间处理
 
-本文将讨论如何做出设计选择，解决 Azure 流分析服务中的实际时间处理问题。 时间处理设计决策与事件排序因素密切相关。 有关详细信息，请参阅相关文章：[Azure 流分析事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)。
+本文将讨论如何做出设计选择，解决 Azure 流分析服务中的实际时间处理问题。 时间处理设计决策与事件排序因素密切相关。
 
 ## <a name="background-time-concepts"></a>后台时间概念
 
@@ -128,7 +128,7 @@ ms.locfileid: "56007665"
 
 可以通过[流分析作业指标](stream-analytics-monitoring.md)观察一系列的事件排序时间容错效应。 以下指标是相关的：
 
-|指标  | 说明  |
+|指标  | 描述  |
 |---------|---------|
 | **无序事件数** | 表示收到的无序事件的数目，这些事件或已删除，或已为其提供调整后的时间戳。 此指标直接受 Azure 门户中作业的“事件排序”页面上“无序事件”设置的配置影响。 |
 | **延迟输入事件数** | 表示从源延迟到达的事件数目。 此指标包括已删除或者已调整其时间戳的事件。 此指标直接受 Azure 门户中作业的“事件排序”页面上的“延迟到达的事件”设置的配置影响。 |
@@ -163,7 +163,7 @@ Azure 流分析使用水印进度作为生成输出事件的唯一触发器。 �
 
 使用[时段化聚合](stream-analytics-window-functions.md)时，该服务仅在时段结束时生成输出。 在某些情况下，用户可能希望查看从时段生成的部分聚合。 Azure 流分析目前不支持某些聚合。
 
-在其他流式处理解决方案中，输出事件可以在各种触发点处具体化，具体取决于外部环境。 在某些解决方案中，可能会为给定时段组多次生成输出事件。 随着输入值的细化，聚合结果会更加准确。 可以先推测事件，然后随着时间的推移进行修正。 例如，当某个设备从网络离线时，系统可以使用估计值。 稍后，同一设备联机到网络。 然后可以将实际事件数据包含在输入流中。 处理该时段所得到的输出结果会包含更准确的输出内容。
+在其他流式处理解决方案中，输出事件可以在各种触发点处具体化，具体取决于外部环境。 就可以在给定的时间窗口的输出事件可以生成多个时间某些解决方案。 随着输入值的细化，聚合结果会更加准确。 可以先推测事件，然后随着时间的推移进行修正。 例如，当某个设备从网络离线时，系统可以使用估计值。 稍后，同一设备联机到网络。 然后可以将实际事件数据包含在输入流中。 处理该时段所得到的输出结果会包含更准确的输出内容。
 
 ## <a name="illustrated-example-of-watermarks"></a>水印示例图
 

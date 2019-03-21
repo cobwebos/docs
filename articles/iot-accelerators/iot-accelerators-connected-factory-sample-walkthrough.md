@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 19e340609e80998037938bdad59e9e6e74894bad
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: be9bde90684b46adef509532eb7b0cc236c5efb1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098300"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180596"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>连接工厂解决方案加速器演练
 
@@ -229,7 +229,7 @@ TSI 使用一个基于时间的**搜索跨度**对节点数据进行查询并按
 
 可通过阅读以下文章继续了解 IoT 解决方案加速器：
 
-* [azureiotsuite.com 站点权限][lnk-permissions]
+* [Azureiotsolutions.com 站点权限][lnk-permissions]
 * [在 Windows 或 Linux 上为连接工厂解决方案加速器部署网关](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC 发布服务器引用实现](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)。
 

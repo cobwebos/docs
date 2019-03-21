@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2B 协作授权指南 | Microsoft 文档
+title: B2B 协作许可指南-Azure Active Directory |Microsoft Docs
 description: Azure Active Directory B2B 协作无需付费的 Azure AD 许可证，但你仍然可以为 B2B 来宾用户获取付费功能
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0032eb1e6b92abb130521945f64fda3133d9b7fc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7fa01a6bf522061e54e9622cb9201f81c699a8ec
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198875"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668446"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B 协作授权指南
 

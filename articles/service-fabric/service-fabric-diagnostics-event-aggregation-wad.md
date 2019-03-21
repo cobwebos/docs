@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: afc833775894a01e8061401fe7601267f09edded
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187430"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243238"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Microsoft Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.locfileid: "55187430"
 
 当你运行 Azure Service Fabric 群集时，最好是从一个中心位置的所有节点中收集日志。 将日志放在中心位置可帮助分析和排查群集中的问题，或该群集中运行的应用程序与服务的问题。
 
-上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、也能选择发送日志到 Azure Application Insights 或 Azure 事件中心的 Microsoft Azure 诊断 (WAD) 扩展。 也可以使用外部进程读取存储中的事件，并将它们放在分析平台产品（例如 [Log Analytics](../log-analytics/log-analytics-service-fabric.md) 或其他日志分析解决方案）中。
+上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、也能选择发送日志到 Azure Application Insights 或 Azure 事件中心的 Microsoft Azure 诊断 (WAD) 扩展。 此外可以使用外部进程读取存储中的事件并将它们放在分析平台产品，例如[Azure Monitor 日志](../log-analytics/log-analytics-service-fabric.md)或其他日志分析解决方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本文中使用了以下工具：
 
 * [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)
@@ -57,10 +57,12 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
 ![群集模板](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-现在，我们将聚合 Azure 存储中的事件，[设置 Log Analytics](service-fabric-diagnostics-oms-setup.md) 来获取见解并在 Log Analytics 门户中查询它们
+现在，我们将聚合 Azure 存储中的事件[设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)获取见解并查询它们，在 Azure 监视器日志门户
 
 >[!NOTE]
 >目前没有任何方法可以筛选或清理发送到表的事件。 如果未实现某个流程来从表中删除事件，则表会不断增大（默认上限为 50 GB）。 [本文的下文中进一步说明了](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota)如何对此进行更改。 另外，在[监视器示例](https://github.com/Azure-Samples/service-fabric-watchdog-service)中有一个运行数据整理服务的示例，建议为自己编写一个，除非有需要存储超过 30 或 90 天日志的的理由。
+
+
 
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>通过 Azure 资源管理器部署诊断扩展
 
@@ -292,15 +294,57 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
 ## <a name="send-logs-to-application-insights"></a>将日志发送到 Application Insights
 
-将监视和诊断数据发送到 Application Insights (AI) 可作为 WAD 配置的一部分。 如果决定使用 AI 进行事件分析和可视化，请阅读[如何将 AI 接收器设置为“WadCfg”的一部分](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)。
+### <a name="configuring-application-insights-with-wad"></a>使用 WAD 配置 Application Insights
+
+>[!NOTE]
+>目前仅适用于 Windows 群集。
+
+有两种主要方式将数据从 WAD 发送到 Azure Application Insights，通过将 Application Insights 接收器添加到 WAD 配置，通过 Azure 门户或通过 Azure 资源管理器模板来实现。
+
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>在 Azure 门户中创建群集时添加 Application Insights 检测密钥
+
+![添加 AI 密钥](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
+
+创建群集时，如果诊断处于打开状态，会显示要求输入 Application Insights 检测密钥的可选字段。 如果在此处粘贴 Application Insights 密钥，则系统会在用于部署群集的资源管理器模板中自动配置 Application Insights 接收器。
+
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>将 Application Insights 接收器添加到资源管理器模板
+
+在 Resource Manager 模板的“WadCfg”中，通过应用以下两项更改添加“接收器”：
+
+1. 在声明完 `DiagnosticMonitorConfiguration` 后，直接添加接收器配置：
+
+    ```json
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "applicationInsights",
+                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
+            }
+        ]
+    }
+
+    ```
+
+2. 在 `DiagnosticMonitorConfiguration` 中添加接收器，具体方法是在 `WadCfg` 的 `DiagnosticMonitorConfiguration` 中添加以下代码行（紧靠声明的 `EtwProviders` 前面）：
+
+    ```json
+    "sinks": "applicationInsights"
+    ```
+
+在上面的两个代码片段中，名称“applicationInsights”用于描述接收器。 这不是必需的，并且只要接收器名称包含在“接收器”中，就可将名称设定为任何字符串。
+
+目前，群集中的日志在 Application Insights 日志查看器中显示为**跟踪**。 由于大部分跟踪来自平台的"参考"级别，您还可以考虑将接收器配置更改为仅发送日志的类型为"警告"或"错误。 这可通过将“通道”添加到接收器完成，如[本文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所示。
+
+>[!NOTE]
+>如果在门户或资源管理器模板中使用错误的 Application Insights 密钥，则必须手动更改密钥并更新/重新部署群集。
 
 ## <a name="next-steps"></a>后续步骤
 
-正确配置 Azure 诊断后，将看到来自 ETW 和 EventSource 日志的存储表中的数据。 如果选择使用 Log Analytics、Kibana 或其他不在资源管理器模板中直接配置的任何数据分析和可视化平台，请确保设置所选平台以读入这些存储表中的数据。 对于 Log Analytics 这样做相对简单，相关介绍在[事件和日志分析](service-fabric-diagnostics-event-analysis-oms.md)中。 Application Insights 则有点特殊，由于它可以被配置为诊断扩展配置中的一部分，所以如果选择使用 AI 请参考[相应的文章](service-fabric-diagnostics-event-analysis-appinsights.md)。
+正确配置 Azure 诊断后，将看到来自 ETW 和 EventSource 日志的存储表中的数据。 如果您选择使用 Azure Monitor 日志、 Kibana 或其他任何数据分析和可视化平台不在资源管理器模板中直接配置，请确保设置以读入这些存储表中的数据中所选的平台。 执行此操作日志的 Azure Monitor 相对简单，和中所述[事件和日志分析](service-fabric-diagnostics-event-analysis-oms.md)。 Application Insights 则有点特殊，由于它可以被配置为诊断扩展配置中的一部分，所以如果选择使用 AI 请参考[相应的文章](service-fabric-diagnostics-event-analysis-appinsights.md)。
 
 >[!NOTE]
 >目前没有任何方法可以筛选或清理已发送到表的事件。 如果未实施某个过程从表中删除事件，该表会不断增大。 目前，在[监视器示例](https://github.com/Azure-Samples/service-fabric-watchdog-service)中有一个运行数据整理服务的示例，建议为自己编写一个，除非有需要存储超过 30 或 90 天日志的的理由。
 
 * [了解如何使用诊断扩展收集性能计数器或日志](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [使用 Application Insights 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [使用 Log Analytics 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)
+* [使用 Azure Monitor 日志事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)

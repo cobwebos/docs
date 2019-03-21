@@ -3,7 +3,7 @@ title: 使用 Azure Cloud Shell 窗口 | Microsoft Docs
 description: 概述如何使用 Azure Cloud Shell 窗口。
 services: azure
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
-ms.author: juluk
-ms.openlocfilehash: 43da2bf5b66ff7db03a6fb5c2e1ceaebe322bcbb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: HT
+ms.author: damaerte
+ms.openlocfilehash: a02642540e6eb39f35b9cc0d38d187a7afa36b7a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28919988"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243442"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>使用 Azure Cloud Shell 窗口
 

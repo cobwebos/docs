@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/21/2019
 ms.author: juliako
-ms.openlocfilehash: d49d056ab84b60389df8bcaf1c75d6224633863d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: cda029dd11e8cb4cb07e9fce7eef95d6d4d78d7e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337850"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960203"
 ---
 # <a name="cloud-upload-and-storage"></a>云上传和存储
 
@@ -31,14 +31,14 @@ ms.locfileid: "56337850"
 
 建议使用 GPv2，以便在热存储层和冷存储层之间进行选择。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../../storage/common/storage-account-overview.md)。 
 
+有不同的 Sku，可以选择存储帐户。 有关详细信息，请参阅[存储帐户](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。 
+
 ## <a name="assets-in-a-storage-account"></a>存储帐户中的资产
 
-在媒体服务 v3 中，存储 API 用于上传文件。
+在媒体服务 v3 存储 Api 用于将文件上传到资产。 有关详细信息，请参阅[资产概念](assets-concept.md)。
 
 > [!Note]
 > 在不使用媒体服务 API 的情况下，不应该试更改媒体服务 SDK 生成的 BLOB 容器内容。
-
-若要了解如何结合使用存储 API 与媒体服务来上传输入文件，请查看[从本地文件创建作业输入](job-input-from-local-file-how-to.md)。 
  
 ## <a name="next-steps"></a>后续步骤
 

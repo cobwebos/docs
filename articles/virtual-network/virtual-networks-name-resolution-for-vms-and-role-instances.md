@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 89984335d40d7f58d39e77736c06a9ff137d7a51
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811251"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193987"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -26,7 +26,7 @@ ms.locfileid: "55811251"
 当部署在虚拟网络中的资源需要将域名解析到内部 IP 地址时，它们可以使用两种方法之一：
 
 * [Azure 提供的名称解析](#azure-provided-name-resolution)
-* [使用自己的 DNS 服务器的名称解析](#name-resolution-that-uses-your-own-dns-server)（可能会将查询转发到 Azure 提供的 DNS 服务器） 
+* [使用自己的 DNS 服务器的名称解析](#name-resolution-that-uses-your-own-dns-server)（可能会将查询转发到 Azure 提供的 DNS 服务器）
 
 使用的名称解析类型取决于资源需要以怎样的方式进行相互通信。 下表说明了各种方案及相应的名称解析解决方案：
 
@@ -52,8 +52,8 @@ ms.locfileid: "55811251"
 
 > [!NOTE]
 > 在使用云服务 Web 和辅助角色的情况下，还可以使用 Azure 服务管理 REST API 访问角色实例的内部 IP 地址。 有关详细信息，请参阅[服务管理 REST API 参考](https://msdn.microsoft.com/library/azure/ee460799.aspx)。 地址基于角色名称和实例编号。 
-> 
-> 
+>
+>
 
 ### <a name="features"></a>功能
 
@@ -104,8 +104,8 @@ Azure 提供的名称解析包括以下功能：
 
 > [!NOTE]
 > dnsmasq 包只是适用于 Linux 的众多 DNS 缓存中的一个。 在使用之前，请检查其是否适合特定需求，且没有安装其他缓存。
-> 
-> 
+>
+>
     
 ### <a name="client-side-retries"></a>客户端重试
 
@@ -126,10 +126,10 @@ resolv.conf 文件通常是自动生成的，不应进行编辑。 添加 *optio
   1. 将 options 行添加到 /etc/resolveconf/resolv.conf.d/tail。
   2. 运行 `resolvconf -u` 以进行更新。
 * **SUSE**（使用 netconf）：
-  1. 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数。 
+  1. 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数。
   2. 运行 `netconfig update` 以进行更新。
 * **OpenLogic**（使用 NetworkManager）：
-  1. 将“echo "options timeout:1 attempts:5"”添加到“/etc/NetworkManager/dispatcher.d/11-dhclient”。 
+  1. 将“echo "options timeout:1 attempts:5"”添加到“/etc/NetworkManager/dispatcher.d/11-dhclient”。
   2. 使用 `service network restart` 进行更新。
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>使用自己的 DNS 服务器的名称解析
@@ -145,9 +145,9 @@ Azure 提供的功能可能无法满足名称解析的需求。 例如，可能�
 DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本地计算机来解析 Azure 提供的主机名。 若要解析 VM 的主机名，DNS 服务器 VM 必须驻留在同一虚拟网络中，并且必须配置为将主机名查询转发到 Azure。 每个虚拟网络的 DNS 后缀不同，因此可以使用条件性转发规则将 DNS 查询发送到正确的虚拟网络进行解析。 下图显示了两个虚拟网络和一个本地网络使用本方法在虚拟网络之间进行 DNS 解析。 DNS 转发器示例可在 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) 中获取。
 
 > [!NOTE]
-> 角色实例可对同一虚拟网络中的 VM 执行名称解析， 方法是使用由 VM 主机名和 **internal.cloudapp.net** DNS 后缀组成的 FQDN。 但是，在这种情况下，仅当角色实例在[角色架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/jj156212.aspx)中定义了 VM 名称时，名称解析才会成功。 
->    <Role name="<role-name>" vmName="<vm-name>">
-> 
+> 角色实例可对同一虚拟网络中的 VM 执行名称解析， 方法是使用由 VM 主机名和 **internal.cloudapp.net** DNS 后缀组成的 FQDN。 但是，在这种情况下，仅当角色实例在[角色架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/jj156212.aspx)中定义了 VM 名称时，名称解析才会成功。
+> <Role name="<role-name>" vmName="<vm-name>">
+>
 > 需要在另一个虚拟网络中执行 VM 名称解析的角色实例（使用 **internal.cloudapp.net** 后缀的 FQDN）必须使用本部分所述的方法（在两个虚拟网络之间进行自定义 DNS 服务器转发）。
 >
 
@@ -157,7 +157,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 
 如果需要，可以使用 PowerShell 或 API 确定内部 DNS 后缀：
 
-* 对于 Azure 资源管理器部署模型中的虚拟网络，可以通过[网络接口卡 REST API](/rest/api/virtualnetwork/networkinterfaces)、[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) PowerShell cmdlet 和 [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令获取该后缀。
+* 对于 Azure 资源管理器部署模型中的虚拟网络，后缀是可通过[网络接口卡 REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces)，则[Get AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell cmdlet 和[az 网络 nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令。
 * 在经典部署模型中，可以通过 [Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 调用或 [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure/get-azurevm) cmdlet 获取该后缀。
 
 如果不想将查询转发到 Azure，应提供自己的 DNS 解析。 DNS 解决方案需要：
@@ -179,34 +179,35 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 
     ![虚拟网络名称解析的屏幕截图](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
 
-如需从使用应用服务构建的链接到虚拟网络的 Web 应用对不同虚拟网络中的 VM 执行名称解析，需要同时在两个虚拟网络中使用自定义 DNS 服务器，如下所示： 
+如需从使用应用服务构建的链接到虚拟网络的 Web 应用对不同虚拟网络中的 VM 执行名称解析，需要同时在两个虚拟网络中使用自定义 DNS 服务器，如下所示：
+
 * 在某个也可向 Azure 中的递归解析程序（虚拟 IP 为 168.63.129.16）转发查询的 VM 上的目标虚拟网络中设置 DNS 服务器。 DNS 转发器示例可在 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/301-dns-forwarder)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) 中获取。 
 * 在某个 VM 上的源虚拟网络中设置 DNS 转发程序。 将此 DNS 转发器配置为向目标虚拟网络中的 DNS 服务器转发查询。
 * 在源虚拟网络的设置中配置源 DNS 服务器。
 * 遵照[将应用与虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中的说明，为 Web 应用启用虚拟网络集成以链接到源虚拟网络。
-* 在 Azure 门户中，对于托管 Web 应用的应用服务计划，选择“网络”>“虚拟网络集成”下的“同步网络”。 
+* 在 Azure 门户中，对于托管 Web 应用的应用服务计划，选择“网络”>“虚拟网络集成”下的“同步网络”。
 
 ## <a name="specify-dns-servers"></a>指定 DNS 服务器
 使用自己的 DNS 服务器时，Azure 允许为每个虚拟网络指定多个 DNS 服务器。 也可以针对每个网络接口（适用于 Azure 资源管理器）或云服务（适用于经典部署模型）指定多个 DNS 服务器。 为网络接口或云服务指定 DNS 服务器时，其优先级高于为虚拟网络指定的 DNS 服务器。
 
 > [!NOTE]
-> 不应直接在 Windows VM 中编辑网络连接属性，例如 DNS 服务器 IP。 这是因为，在更换虚拟网络适配器后，可能会在服务修复过程中擦除这些属性。 
-> 
-> 
+> 不应直接在 Windows VM 中编辑网络连接属性，例如 DNS 服务器 IP。 这是因为，在更换虚拟网络适配器后，可能会在服务修复过程中擦除这些属性。
+>
+>
 
 使用 Azure 资源管理器部署模型时，可为虚拟网络和网络接口指定 DNS 服务器。 有关详细信息，请参阅[管理虚拟网络](manage-virtual-network.md)和[管理网络接口](virtual-network-network-interface.md)。
 
 > [!NOTE]
 > 如果为虚拟网络选择自定义 DNS 服务器，则必须至少指定一个 DNS 服务器 IP 地址；否则，虚拟网络将忽略配置，而改用由 Azure 提供的 DNS。
-> 
-> 
+>
+>
 
 使用经典部署模型时，可以在 Azure 门户或[网络配置文件](https://msdn.microsoft.com/library/azure/jj157100)中指定虚拟网络的 DNS 服务器。 对于云服务器，可以通过[服务配置文件](https://msdn.microsoft.com/library/azure/ee758710)或者在 PowerShell 中使用 [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm) 指定 DNS 服务器。
 
 > [!NOTE]
 > 如果更改已部署的虚拟网络或虚拟机的 DNS 设置，则需重启每个受影响的 VM，所做的更改才会生效。
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: abfc7ce78e8676e9560621be1ec9a81717d958e5
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: HT
+ms.openlocfilehash: b198f860c10bd207a191057e21a8a159c5ebde26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994277"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403509"
 ---
 # <a name="create-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
@@ -38,15 +38,15 @@ ms.locfileid: "53994277"
 
 让我们查看模板的各个组成部分，以了解模板的工作原理。 你的模板可能不包含此处所示的每个节。 要关注的节包括：
 
-* [parameters](resource-manager-templates-parameters.md) 节：显示在部署期间可以指定的、用于自定义所要部署的基础结构的值。 
+* [parameters](resource-group-authoring-templates.md#parameters) 节：显示在部署期间可以指定的、用于自定义所要部署的基础结构的值。 
 
-* [variables](resource-manager-templates-variables.md) 节：显示在整个模板中使用的值。
+* [variables](resource-group-authoring-templates.md#variables) 节：显示在整个模板中使用的值。
 
 * [functions](resource-group-authoring-templates.md#functions) 节：显示在模板中使用的自定义模板表达式。
 
-* [resources](resource-manager-templates-resources.md) 节：显示要部署到订阅的 Azure 资源。
+* [resources](resource-group-authoring-templates.md#resources) 节：显示要部署到订阅的 Azure 资源。
 
-* [outputs](resource-manager-templates-outputs.md) 节：显示部署完成后返回的值。
+* [outputs](resource-group-authoring-templates.md#outputs) 节：显示部署完成后返回的值。
 
 ## <a name="look-for-similar-templates"></a>查找类似的模板
 
@@ -98,7 +98,7 @@ ms.locfileid: "53994277"
 }
 ```
 
-也可以从参数动态应用标记。 有关详细信息，请参阅[模板中的标记](resource-manager-templates-resources.md#tags)。
+也可以从参数动态应用标记。 有关详细信息，请参阅[模板中的标记](resource-group-using-tags.md#templates)。
 
 ## <a name="review-template-functions"></a>查看模板函数
 
@@ -176,7 +176,7 @@ ms.locfileid: "53994277"
 }
 ```
 
-有关详细信息，请参阅 [condition 元素](resource-manager-templates-resources.md#condition)。
+有关详细信息，请参阅 [condition 元素](resource-group-authoring-templates.md#condition)。
 
 ## <a name="review-dependencies"></a>查看依赖项
 

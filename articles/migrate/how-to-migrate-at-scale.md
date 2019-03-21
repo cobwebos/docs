@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: snehaa
-ms.openlocfilehash: c0fc4fa0bdd58b8ecdf4f26051d60324118c4b21
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 74dabc49dd3d0e38f43dc758204c35ea1c0efd99
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896531"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438476"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>使用 Azure Site Recovery 进行 VM 的规模化迁移
 
@@ -25,13 +25,13 @@ ms.locfileid: "55896531"
 
 ## <a name="how-does-it-work"></a>工作原理
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 开始迁移前，需要执行以下步骤：
 - 确保在 Azure 订阅中创建了 Site Recovery 保管库
 - 确保配置服务器和进程服务器安装在源环境中，并且保管库可以发现环境
 - 确保已创建复制策略并将其与配置服务器关联
-- 确保已将 VM 管理员帐户添加到配置服务器（将用于复制本地 VM）
-- 确保创建了 Azure 中的目标项目
+- 确保已添加到配置服务器 （它将用于复制本地 Vm） 的 VM 管理员帐户
+- 确保创建在 Azure 中的目标项目
     - 目标资源组
     - 目标存储帐户（及其资源组）
     - 用于故障转移的目标虚拟网络（及其资源组）
@@ -53,13 +53,13 @@ CSV 准备就绪后，可以通过以下步骤来执行本地 VM 的迁移：
 
 **步骤编号** | **脚本名称** | **说明**
 --- | --- | ---
-1 | asr_startmigration.ps1 | 为 csv 中列出的所有 VM 启用复制，该脚本将创建一个 CSV 输出，其中包含每个 VM 的作业详细信息
+第 | asr_startmigration.ps1 | 为 csv 中列出的所有 VM 启用复制，该脚本将创建一个 CSV 输出，其中包含每个 VM 的作业详细信息
 2 | asr_replicationstatus.ps1 | 检查复制状态，该脚本会创建一个包含各 VM 的状态的 csv
 3 | asr_updateproperties.ps1 | 复制/保护 VM 后，使用此脚本更新 VM 的目标属性（计算和网络属性）
 4 | asr_propertiescheck.ps1 | 验证属性是否已正确更新
 5 | asr_testmigration.ps1 |  启动 csv 中列出的 VM 的测试故障转移，该脚本将创建一个 CSV 输出，其中包含每个 VM 的作业详细信息
 6 | asr_cleanuptestmigration.ps1 | 手动验证已执行测试故障转移的 VM 后，可以使用此脚本清理测试故障转移 VM
-7 | asr_migration.ps1 | 对 csv 中列出的 VM 执行计划外的故障转移，该脚本将创建一个 CSV 输出，其中包含每个 VM 的作业详细信息。 为实现应用程序一致性，在触发故障转移之前脚本不会关闭本地 VM，建议在执行脚本之前手动关闭 VM。
+7 | asr_migration.ps1 | 对 csv 中列出的 VM 执行计划外的故障转移，该脚本将创建一个 CSV 输出，其中包含每个 VM 的作业详细信息。 该脚本会关闭本地 Vm 执行之前触发故障转移，应用程序一致性，建议您手动先关闭 Vm 执行该脚本之前。
 8 | asr_completemigration.ps1 | 在 VM 上执行提交操作并删除 ASR 实体
 9 | asr_postmigration.ps1 | 如果计划在故障转移后将网络安全组分配给 NIC，可以使用此脚本实现该操作。 它将 NSG 分配给目标 VM 中的任何一个 NIC。
 

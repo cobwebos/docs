@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 4b305087c0c755254d72811fb9275c509343c87e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0e15f3dc448ba218ebdfe309c4308bbc789ef5be
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878391"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226257"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -75,7 +75,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
 ### <a name="available-versions"></a>可用版本
 
-下表列出了 Azure 门户中可用的 HDInsight 版本以及其他部署方法（比如 PowerShell 和 .NET SDK）。
+下表列出了在 Azure 门户和 PowerShell 和.NET SDK 等其他部署方法可用的 HDInsight 版本。
 
 | HDInsight 版本 | HDP 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户上的可用性 | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -91,7 +91,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
 ### <a name="retired-versions"></a>已停用的版本
 
-下表列出了 Azure 门户中**不**可用的 HDInsight 版本。
+下表列出了的 HDInsight 版本**不**Azure 门户中可用。
 
 | HDInsight 版本 | HDP 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户上的可用性 | 
 | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: f0ebb5cc913dda99d7e927ccf45c0f1478fa86c5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814820"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194072"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -40,7 +40,7 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 
 Azure 负载均衡器和相关资源是使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)时显式定义的。  Azure 目前提供三种不同的方法实现 Azure 资源管理器资源的出站连接。 
 
-| SKU | 场景 | 方法 | IP 协议 | 说明 |
+| SKU | 场景 | 方法 | IP 协议 | 描述 |
 | --- | --- | --- | --- | --- |
 | 标准、基本 | [1.具有实例级公共 IP 地址的 VM（有或没有负载均衡器）](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 在使用标准负载均衡器时，应使用[出站规则](load-balancer-outbound-rules-overview.md)显式定义出站连接 |
 | 标准、基本 | [2.与 VM 关联的公共负载均衡器（实例上没有实例级公共 IP 地址）](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT | TCP、UDP |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 |
@@ -70,7 +70,7 @@ SNAT 端口是按照[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 
 如果[多个公共 IP 地址与负载均衡器基本版相关联](load-balancer-multivip-overview.md)，则所有这些公共 IP 地址都是出站流的候选项，并且会随机选择其中一个。  
 
-若要监视负载均衡器基本版的出站连接运行状况，可以使用[用于负载均衡器的 Log Analytics](load-balancer-monitor-log.md) 和用于监视 SNAT 端口耗尽消息的[警报事件日志](load-balancer-monitor-log.md#alert-event-log)。
+若要监视的出站连接负载均衡器基本运行状况，可以使用[的负载均衡器日志的 Azure Monitor](load-balancer-monitor-log.md)并[警报事件日志](load-balancer-monitor-log.md#alert-event-log)要监视 SNAT 端口耗尽消息。
 
 ### <a name="defaultsnat"></a>场景 3：无实例级公共 IP 地址的独立 VM
 

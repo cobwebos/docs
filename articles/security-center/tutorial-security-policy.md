@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/4/2019
-ms.author: rkarlin
-ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.date: 3/14/2019
+ms.author: monhaber
+ms.openlocfilehash: d99ef6026f3605f4081393811d840ba3fe2892ba
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343504"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226107"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -36,7 +36,7 @@ ms.locfileid: "56343504"
 
 安全策略驱动在 Azure 安全中心获得的安全建议。 可以使用它们监视符合性以帮助识别潜在漏洞和缓解威胁。 若要详细了解如何确定适合你的选项，请参阅[内置安全性策略](security-center-policy-definitions.md)列表。
 
-当启用安全中心时，内置到安全中心的安全策略将作为内置的计划反映在 Azure Policy 中，位于“安全中心”类别下。 内置的计划自动分配给安全中心注册的所有订阅（免费或标准层）。 内置的计划仅包含审核策略。 
+当启用安全中心时，内置到安全中心的安全策略将作为内置的计划反映在 Azure Policy 中，位于“安全中心”类别下。 内置的计划自动分配给安全中心注册的所有订阅（免费或标准层）。 内置的计划仅包含审核策略。
 
 
 ### <a name="management-groups"></a>管理组
@@ -68,25 +68,25 @@ Azure Policy 由以下组件构成：
 
     ![“策略管理”窗格](./media/security-center-policies/security-center-policy-mgt.png)
 
-  在“策略管理”屏幕中，可以看到管理组数、订阅数、工作区数以及管理组结构。
+   在“策略管理”屏幕中，可以看到管理组数、订阅数、工作区数以及管理组结构。
 
-  > [!NOTE]
-  > - “安全中心”仪表板在“订阅覆盖范围”下显示的订阅数可能会高于在“策略管理”下显示的订阅数。 订阅覆盖范围显示标准订阅、免费订阅和“未覆盖”订阅的数量。 “未覆盖”订阅未启用“安全中心”，并且不会显示在“策略管理”下。
-  >
+   > [!NOTE]
+   > - “安全中心”仪表板在“订阅覆盖范围”下显示的订阅数可能会高于在“策略管理”下显示的订阅数。 订阅覆盖范围显示标准订阅、免费订阅和“未覆盖”订阅的数量。 “未覆盖”订阅未启用“安全中心”，并且不会显示在“策略管理”下。
+   >
 
-  表中的列显示了：
+   表中的列显示了：
 
- - **策略计划分配** – 分配给订阅或管理组的“安全中心”[内置策略](security-center-policy-definitions.md)和计划。
- - **覆盖范围** – 标识管理组、订阅或工作区在其上运行的定价层：免费或标准。  若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
- - **设置** – 订阅有“编辑设置”链接。 选择“编辑设置”，可为每个订阅或管理组更新[安全中心设置](security-center-policies-overview.md)。
- - **安全分数** - [安全分数](security-center-secure-score.md)可衡量工作负载安全状况的安全程度，并帮助确定改进建议的优先级。
+   - **策略计划分配** – 分配给订阅或管理组的“安全中心”[内置策略](security-center-policy-definitions.md)和计划。
+   - **覆盖范围** – 标识管理组、订阅或工作区在其上运行的定价层：免费或标准。  若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
+   - **设置** – 订阅有“编辑设置”链接。 选择“编辑设置”，可为每个订阅或管理组更新[安全中心设置](security-center-policies-overview.md)。
+   - **安全分数** - [安全分数](security-center-secure-score.md)可衡量工作负载安全状况的安全程度，并帮助确定改进建议的优先级。
 
 2. 选择想要查看其策略的订阅或管理组。
 
-  - “安全策略”屏幕反映在所选订阅或管理组上分配的策略所执行的操作。
-  - 在顶部，使用提供的链接打开适用于订阅或管理组的每个策略“分配”。 可以使用链接访问分配以及编辑或禁用策略。 例如，如果发现特定策略分配有效地拒绝终结点保护，则可以使用该链接访问策略以及辑或禁用它。
-  - 在策略列表中，可以看到策略有效应用于订阅或管理组。 这意味着将考虑适用于该范围的每个策略的设置，并提供策略所执行操作的累计效果。 例如，如果一个分配禁用此策略，而另一个设置为 AuditIfNotExist，则累计效果适用于 AuditIfNotExist。 更积极的效果始终优先。
-  - 策略的效果可以是：追加、审核、AuditIfNotExists、拒绝、DeployIfNotExists 和禁用。 有关如何应用效果的详细信息，请参阅[了解策略效果](../governance/policy/concepts/effects.md)。
+   - “安全策略”屏幕反映在所选订阅或管理组上分配的策略所执行的操作。
+   - 在顶部，使用提供的链接打开适用于订阅或管理组的每个策略“分配”。 可以使用链接访问分配以及编辑或禁用策略。 例如，如果发现特定策略分配有效地拒绝终结点保护，则可以使用该链接访问策略以及辑或禁用它。
+   - 在策略列表中，可以看到策略有效应用于订阅或管理组。 这意味着将考虑适用于该范围的每个策略的设置，并提供策略所执行操作的累计效果。 例如，如果一个分配禁用此策略，而另一个设置为 AuditIfNotExist，则累计效果适用于 AuditIfNotExist。 更积极的效果始终优先。
+   - 策略的效果可以是：追加、审核、AuditIfNotExists、拒绝、DeployIfNotExists 和禁用。 有关如何应用效果的详细信息，请参阅[了解策略效果](../governance/policy/concepts/effects.md)。
 
    ![策略屏幕](./media/security-center-policies/policy-screen.png)
 
@@ -99,6 +99,29 @@ Azure Policy 由以下组件构成：
 有关如何在 Azure Policy 中编辑安全策略的说明，请参阅[创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)。
 
 你可以在 Azure Policy 门户中通过 REST API 或 Windows PowerShell 编辑安全策略。 以下示例为使用 REST API 进行编辑的相关说明。
+
+
+## <a name="disable-security-policies"></a>禁用安全策略
+如果默认安全策略生成的不是为您的环境相关的建议，则可以通过禁用的策略定义的发送建议将其停止。
+有关建议的进一步信息，请参阅[管理的安全建议](security-center-recommendations.md)。
+
+1. 在安全中心中，从**策略和符合性**部分中，单击**安全策略**。
+
+   ![策略管理](./media/tutorial-security-policy/policy-management.png)
+
+2. 单击你想要禁用该建议的订阅。
+
+1. 单击分配的策略。
+
+   ![禁用策略](./media/tutorial-security-policy/security-policy.png)
+
+1. 在中**参数**部分中，搜索调用你想要禁用，该建议的策略，从下拉列表中，选择**已禁用**
+
+   ![禁用策略](./media/tutorial-security-policy/disable-policy.png)
+1. 单击“ **保存**”。
+   > [!Note]
+   > 禁用策略更改可能需要 12 小时才会生效。
+
 
 ### <a name="configure-a-security-policy-using-the-rest-api"></a>使用 REST API 配置安全策略
 
@@ -159,38 +182,38 @@ Azure Policy 中的重要概念：
 
 - 终结点保护 ("endpointProtectionMonitoringEffect") 
 
- 
-      PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
-      Request Body (JSON) 
-
-      { 
-
-        "properties":{ 
-
-      "displayName":"Enable Monitoring in Azure Security Center", 
-
-      "metadata":{ 
-
-      "assignedBy":"{Name}" 
-
-      }, 
-
-      "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
-
-      "parameters":{ 
-
-      "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
-
-      "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
-
-      "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
-
-      }, 
-
-       } 
-
-      } 
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    请求正文 (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName":"启用监视 Azure 安全中心"， 
+    
+    "元数据": { 
+    
+    "assignedBy":"{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parameters":{ 
+    
+    "systemUpdatesMonitoringEffect": {"value":"已禁用"}， 
+    
+    "systemConfigurationsMonitoringEffect": {"value":"已禁用"}， 
+    
+    "endpointProtectionMonitoringEffect": {"value":"已禁用"}， 
+    
+    }, 
+    
+     } 
+    
+    } 
 
 此示例演示如何删除分配：
 

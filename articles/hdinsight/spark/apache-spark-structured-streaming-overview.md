@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 0c2fd29990e180283eb25949b806c4ceac58e2f7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: 8c37093b5369d2390942bc00c1531248bc4424c8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653622"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869082"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark 结构化流的概述
 
@@ -24,7 +24,7 @@ ms.locfileid: "53653622"
 
 结构化流创建长时间运行的查询，在此期间，可对输入数据应用操作，例如选择、投影、聚合、开窗，以及将流数据帧与引用数据帧相联接。 接下来，可以使用自定义代码（例如 SQL 数据库或 Power BI）将结果输出到文件存储（Azure 存储 Blob 或 Data Lake Storage）或任何数据存储。 结构化流可向控制台提供输出以用于本地调试，还可以向内存中表提供输出，以便可以在 HDInsight 中查看用于调试的生成数据。 
 
-![使用 HDInsight 和 Spark 结构化流进行流处理 ](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+![使用 HDInsight 和 Spark 结构化流进行流处理](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
 > [!NOTE]  
 > Spark 结构化流即将取代 Spark 流 (DStreams)。 今后，结构化流会不断得到增强和维护，而 DStreams 只会保留维护模式。 在现成支持的源和接收器方面，结构化流的功能目前不如 DStreams 那样全面，因此，在选择适当的 Spark 流处理选项之前，请先评估要求。 

@@ -1,5 +1,5 @@
 ---
-title: 解决组的许可证分配问题 - Azure Active Directory | Microsoft Docs
+title: 解决许可证分配问题的组-Azure Active Directory |Microsoft Docs
 description: 使用基于 Azure Active Directory 组的许可时，如何识别和解决许可证分配问题
 services: active-directory
 keywords: Azure AD 许可
@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c40a25cd2baebaaeedc012e8e9faff91b297f57
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082494"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201528"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -35,19 +35,19 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 1. 若要查找特定组中处于错误状态的用户，请打开相应组的窗格。 如果有任何用户处于错误状态，会在“许可证”下显示通知。
 
-   ![组，错误通知](./media/licensing-groups-resolve-problems/group-error-notification.png)
+   ![组和错误通知消息](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
 2. 选择通知以打开所有受影响的用户列表。 可以分别选择每个用户以查看更多详细信息。
 
-   ![组，处于错误状态的用户的列表](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
+   ![许可错误状态的组中的用户的列表](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
 3. 若要查找包含至少一个错误的所有组，请在“Azure Active Directory”边栏选项卡上，选择“许可证”，再选择“概述”。 如果有一些组需要关注，则会显示信息框。
 
-   ![概览，有关处于错误状态的组的信息](./media/licensing-groups-resolve-problems/group-errors-widget.png)
+   ![概述和有关处于错误状态的组的信息](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
 4. 选中该框可查看具有错误的所有组的列表。 可以选择每个组以了解更多详细信息。
 
-   ![概览，具有错误的组的列表](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
+   ![概述和具有错误的组的列表](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
 
 
 以下部分提供每个潜在问题的说明及其解决方法。

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 32e705c5c338d9bd7c16514b2dc2ab081a9caf6a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115549"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245234"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
-Azure 通过 Azure Active Directory (Azure AD)、Azure Log Analytics 和 Azure 安全中心等服务提供内置的高级威胁检测功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
+Azure 提供内置的高级的威胁检测功能，通过 Azure Active Directory (Azure AD)、 Azure Monitor 日志和 Azure 安全中心等服务。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
 
 Azure 提供多种安全性配置和自定义选项，以满足应用部署的要求。 本文介绍如何满足这些要求。
 
@@ -75,17 +75,17 @@ PIM 可帮助用户进行以下操作：
 
 -   获取有关访问特权角色的警报。
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 因为 Log Analytics 是作为基于云的服务实现的，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。 自动提供新增安全功能，从而节省持续维护和升级成本。
+[Azure Monitor 日志](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)是 Microsoft 基于云的 IT 管理解决方案，可帮助你管理和保护你的本地和云基础结构。 Azure Monitor 日志作为一项基于云的服务实现，因为你可以使其启动并运行投入基础结构服务中的最小投资。 自动提供新增安全功能，从而节省持续维护和升级成本。
 
-除自行提供有价值的服务外，Log Analytics 还可与 [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) 等 System Center 组件集成，将现有安全管理投资扩展到云。 System Center 和 Log Analytics 可协同工作来提供完整的混合管理体验。
+除其自身的、 Azure Monitor 提供有价值的服务外日志可与 System Center 组件集成，如[System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/)，若要将现有安全管理投资扩展到云。 System Center 和 Azure Monitor 日志可协同工作来提供完整的混合管理体验。
 
 ### <a name="holistic-security-and-compliance-posture"></a>安全性与符合性总体情况
 
-[Log Analytics 安全和审核仪表板](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助内置搜索查询找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 安全和审核仪表板是主屏幕，提供 Log Analytics 中安全性的所有相关内容。 它提供计算机安全状态的高级洞见。 还可以查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
+[Log Analytics 安全和审核仪表板](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助内置搜索查询找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 安全和审核仪表板是 Azure Monitor 日志中与安全相关的所有内容的主屏幕。 它提供计算机安全状态的高级洞见。 还可以查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
 
-Log Analytics 有助于用户快速轻松了解任何环境中的总体安全情况，在 IT 操作的上下文中即可实现，这些操作包括软件更新评估、反恶意软件评估和配置基线。 可访问现成的安全日志数据，简化安全性和符合性审核过程。
+Azure 监视器将记录帮助快速轻松地了解任何环境中，所有 IT 操作，包括软件更新评估、 反恶意软件评估和配置基线的上下文中的总体安全状况。 可访问现成的安全日志数据，简化安全性和符合性审核过程。
 
 ![Log Analytics 安全和审核仪表板](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
@@ -102,25 +102,25 @@ Log Analytics 安全和审核仪表板有四个主要类别：
 -   **常见安全查询**：列出了可用于监视环境的最常见安全查询。 如果选择了任何查询，“搜索”窗格将打开并显示该查询的结果。
 
 ### <a name="insight-and-analytics"></a>见解与分析
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 的中心是由 Azure 托管的存储库。
+中央[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)由 Azure 托管的存储库。
 
 ![见解与分析关系图](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 通过配置数据源和向订阅添加解决方案，将连接的源中的数据收集到存储库。
 
-![Log Analytics 仪表板 ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Azure Monitor 日志仪表板](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 数据源和解决方案分别创建具有自身属性集的单独记录类型，但是用户仍可在对存储库的查询中同时对它们进行分析。 可以使用相同的工具和方法来处理由不同的源收集的各种数据。
 
 
-与 Log Analytics 的大部分交互都会通过 Azure 门户完成，该门户在任意浏览器中运行，并提供对配置设置和多个工具的访问权限，以对收集的数据进行分析和操作。 在门户中，可以使用：
+大多数人机交互的 Azure Monitor 日志是通过 Azure 门户中，任何浏览器中运行，并提供可以访问配置设置和多个工具来分析和处理收集的数据。 在门户中，可以使用：
 * [日志搜索](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)，可在其中构造查询以分析收集的数据。
 * [仪表板](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)，可以使用最有价值搜索的图形视图对其进行自定义。
 * [解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)，可提供其他功能和分析工具。
 
 ![分析工具](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-解决方案向 Log Analytics 添加功能。 解决方案主要在云中运行，并提供对 Log Analytics 存储库中收集的数据的分析。 解决方案也可以定义要收集的新记录类型，可使用日志搜索或通过解决方案在 Log Analytics 仪表板中提供的其他用户界面对这些记录类型进行分析。
+解决方案将功能添加到 Azure Monitor 日志。 它们主要在云中运行，并提供在 log analytics 存储库中收集的数据分析。 解决方案还可以定义新的记录类型收集可以使用日志搜索或通过使用该解决方案提供了 log analytics 仪表板中的其他用户界面进行分析。
 
 安全和审核仪表板是这些类型的解决方案的一个示例。
 

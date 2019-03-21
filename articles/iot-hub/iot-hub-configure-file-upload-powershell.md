@@ -1,18 +1,19 @@
 ---
 title: 使用 Azure PowerShell 配置文件上传 | Microsoft Docs
 description: 如何使用 Azure PowerShell cmdlet 配置 IoT 中心，以便从连接的设备上传文件。 包括有关配置目标 Azure 存储帐户的信息。
-author: dominicbetts
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: e8f37adc07bffb8a1e770085ecee6f813d3c2932
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.author: robin.shahan
+ms.openlocfilehash: 9754fe2bedae9c1eaf6b18614014485dbe8051f2
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425605"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010471"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 配置 IoT 中心文件上传
 
@@ -20,36 +21,38 @@ ms.locfileid: "54425605"
 
 要使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)，必须先将 Azure 存储帐户与 IoT 中心关联。 可以使用现有存储帐户，也可以创建新的存储帐户。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 要完成本教程，需要以下各项：
 
 * 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
+* [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* Azure IoT 中心。 如果没有 IoT 中心，可以使用 [New-AzureRmIoTHub cmdlet](https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub) 创建一个，或使用门户[创建 IoT 中心](iot-hub-create-through-portal.md)。
+* Azure IoT 中心。 如果没有 IoT 中心，可以使用 [New-AzIoTHub cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) 创建一个，或者使用门户[创建一个 IoT 中心](iot-hub-create-through-portal.md)。
 
-* 一个 Azure 存储帐户。 如果没有 Azure 存储帐户，可以使用 [Azure 存储 PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.storage/) 创建一个，或使用门户[创建存储帐户](../storage/common/storage-create-storage-account.md)
+* 一个 Azure 存储帐户。 如果没有 Azure 存储帐户，可以使用 [Azure 存储 PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.storage/) 创建一个，或使用门户[创建存储帐户](../storage/common/storage-create-storage-account.md)
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登录并设置 Azure 帐户
 
 登录到 Azure 帐户，并选择订阅。
 
-1. 在 PowerShell 提示符下，运行 Connect-AzureRmAccount cmdlet：
+1. 在 PowerShell 提示符下，运行 **Connect-AzAccount**：
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 2. 如果有多个 Azure 订阅，则访问 Azure 即有权访问与凭据关联的所有 Azure 订阅。 使用以下命令，列出可供使用的 Azure 订阅：
 
     ```powershell
-    Get-AzureRMSubscription
+    Get-AzSubscription
     ```
 
     使用以下命令，选择想要用于运行命令以管理 IoT 中心的订阅。 可使用上一命令输出中的订阅名称或 ID：
 
     ```powershell
-    Select-AzureRMSubscription `
+    Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
@@ -60,7 +63,7 @@ ms.locfileid: "54425605"
 若要从设备配置文件上传，需要 Azure 存储帐户的连接字符串。 存储帐户必须与 IoT 中心位于同一订阅中。 还需要存储帐户中 Blob 容器的名称。 使用以下命令检索存储帐户密钥：
 
 ```powershell
-Get-AzureRmStorageAccountKey `
+Get-AzStorageAccountKey `
   -Name {your storage account name} `
   -ResourceGroupName {your storage account resource group}
 ```
@@ -72,19 +75,19 @@ Get-AzureRmStorageAccountKey `
 * 若要列出存储帐户中的现有 Blob 容器，请使用以下命令：
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    Get-AzureStorageContainer -Context $ctx
+    Get-AzStorageContainer -Context $ctx
     ```
 
 * 若要在存储帐户中创建 Blob 容器，请使用以下命令：
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    New-AzureStorageContainer `
+    New-AzStorageContainer `
         -Name {your new container name} `
         -Permission Off `
         -Context $ctx
@@ -109,7 +112,7 @@ Get-AzureRmStorageAccountKey `
 使用以下 PowerShell cmdlet 在 IoT 中心内配置上传文件设置：
 
 ```powershell
-Set-AzureRmIotHub `
+Set-AzIotHub `
     -ResourceGroupName "{your iot hub resource group}" `
     -Name "{your iot hub name}" `
     -FileUploadNotificationTtl "01:00:00" `

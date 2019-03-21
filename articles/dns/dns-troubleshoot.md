@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: genli
-ms.openlocfilehash: 816ad6c0079e9272286cdc072ff71bf15313eb8e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: HT
+ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069093"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541564"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南
 
@@ -69,11 +69,11 @@ DNS 名称解析是一个多步骤过程，该过程失败存在多种原因。 
 
 1.  确保已在 Azure DNS 中正确配置 DNS 记录。 在 Azure 门户中查看 DNS 记录，检查区域名称、记录名称和记录类型是否正确。
 2.  确保可在 Azure DNS 名称服务器上正确解析 DNS 记录。
-    - 如果从本地电脑查询 DNS，可能会发现缓存结果未反映名称服务器当前的状态。  此外，企业网络通常使用 DNS 代理服务器，这些服务器会阻止 DNS 查询定向到特定名称服务器。  若要避免这些问题，请使用基于 Web 的名称解析服务，例如 [digwebinterface](http://digwebinterface.com)。
+    - 如果从本地电脑查询 DNS，可能会发现缓存结果未反映名称服务器当前的状态。  此外，企业网络通常使用 DNS 代理服务器，这些服务器会阻止 DNS 查询定向到特定名称服务器。  若要避免这些问题，请使用基于 Web 的名称解析服务，例如 [digwebinterface](https://digwebinterface.com)。
     - 请务必为 DNS 区域指定正确的名称服务器，如 Azure 门户中所示。
     - 检查 DNS 名称是否正确（必须指定完全限定的名称，包括区域名称），以及记录类型是否正确
 3.  确保 DNS 域名已正确[委托给 Azure DNS 名称服务器](dns-domain-delegation.md)。 存在[许多提供 DNS 委托验证的第三方网站](https://www.bing.com/search?q=dns+check+tool)。 这是区域委派测试，因此应只输入 DNS 区域名称，而不是完全限定的记录名称。
-4.  完成上述步骤后，现在应可以正确解析 DNS 记录。 若要进行验证，可再次使用 [digwebinterface](http://digwebinterface.com)，这次请使用默认名称服务器设置。
+4.  完成上述步骤后，现在应可以正确解析 DNS 记录。 若要进行验证，可再次使用 [digwebinterface](https://digwebinterface.com)，这次请使用默认名称服务器设置。
 
 
 ### <a name="recommended-documents"></a>**建议的文档**

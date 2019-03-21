@@ -9,19 +9,19 @@ ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: ec71f8998f7db07cafca7f8141acb9898b016328
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431208"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821347"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 大多数 Azure 自动化 runbook 都有某种形式的输出。 此输出可能是发给用户的错误消息，也可能是你打算用于另一个 runbook 的复杂对象。 Windows PowerShell 提供[多个流](/powershell/module/microsoft.powershell.core/about/about_redirection)，以便从脚本或工作流发送输出。 Azure 自动化以不同方式处理每个流。 在创建 runbook 时，应遵循如何使用每种方法的最佳实践。
 
 下表简要介绍了 Azure 门户中的每个流及其对已发布的 runbook 的行为以及[测试 runbook](automation-testing-runbook.md) 的时间。 后面的部分将提供有关每个流的更多详细信息。
 
-| Stream | 说明 | 已发布 | 测试 |
+| Stream | 描述 | 已发布 | 测试 |
 |:--- |:--- |:--- |:--- |
 | 输出 |对象旨在由其他 Runbook 使用。 |写入作业历史记录。 |显示在测试输出窗格中。 |
 | 警告 |面向用户的警告消息。 |写入作业历史记录。 |显示在测试输出窗格中。 |
@@ -33,7 +33,7 @@ ms.locfileid: "54431208"
 ## <a name="output-stream"></a>输出流
 输出流旨在输出脚本或工作流创建的对象（如果该脚本或工作流正常运行）。 在 Azure 自动化中，此流主要用于供[调用当前 Runbook 的父 Runbook](automation-child-runbooks.md) 使用的对象。 从父 Runbook [调用某个内联 Runbook](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) 时，后者会将输出流中的数据返回给父级。 仅在知道该 runbook 永不会被其他 runbook 调用时，才使用输出流将一般信息传回给用户。 但是，最佳做法通常是使用[详细流](#verbose-stream)向用户传递常规信息。
 
-可以通过使用 [Write-Output](https://technet.microsoft.com/library/hh849921.aspx)，或者在 Runbook 中将对象放置在其对应行中，来向输出流写入数据。
+可以使用 [Write-Output](https://technet.microsoft.com/library/hh849921.aspx)，或者在 Runbook 中将对象放置在其对应行中，向输出流写入数据。
 
 ```PowerShell
 #The following lines both write an object to the output stream.
@@ -164,7 +164,7 @@ Windows PowerShell 使用[首选项变量](https://technet.microsoft.com/library
 |:--- |:--- |:--- |
 | WarningPreference |继续 |停止<br>继续<br>SilentlyContinue |
 | ErrorActionPreference |继续 |停止<br>继续<br>SilentlyContinue |
-| VerbosePreference |SilentlyContinue |停止<br>继续<br>SilentlyContinue |
+| VerbosePreference |SilentlyContinue |Stop<br>继续<br>SilentlyContinue |
 
 下表列出了在 Runbook 中有效的 preference 变量值的行为。
 
@@ -181,7 +181,7 @@ Windows PowerShell 使用[首选项变量](https://technet.microsoft.com/library
 ### <a name="windows-powershell"></a>Windows PowerShell
 在 Windows PowerShell 中，可以使用 [Get-AzureAutomationJobOutput](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjoboutput) cmdlet 检索 Runbook 的输出和消息。 此 cmdlet 需要作业的 ID，如果指定了要返回的流，则它还要使用一个名为 Stream 的参数。 可以指定 **Any** 来返回作业的所有流。
 
-以下示例将启动一个示例 Runbook，然后等待该 Runbook 完成。 完成后，将从作业收集该 Runbook 的输出流。
+以下示例将启动一个示例 Runbook，然后等待该 Runbook 完成。 完成后，从作业收集该 Runbook 的输出流。
 
 ```PowerShell
 $job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
@@ -220,8 +220,8 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
    
    ![“图形创作日志记录和跟踪”页面](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
-自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 使用 Log Anaytics，可以：
+### <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor 日志
+自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 可以使用 Azure Monitor 日志进行以下操作：
 
 * 获取有关自动化作业的见解 
 * 基于 Runbook 作业状态（例如失败或暂停）触发电子邮件或警报 
@@ -229,7 +229,7 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 * 跨自动化帐户关联作业 
 * 可视化不同时间段的作业历史记录    
 
-有关如何配置与 Log Analytics 的集成以收集、关联和处理作业数据的详细信息，请参阅[将作业状态和作业流从自动化转发到 Log Analytics](automation-manage-send-joblogs-log-analytics.md)。
+有关如何配置与 Azure Monitor 日志的集成以收集、关联和处理作业数据的详细信息，请参阅[将作业状态和作业流从自动化转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅 [Track a runbook job](automation-runbook-execution.md)（跟踪 Runbook 作业）

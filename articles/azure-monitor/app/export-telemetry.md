@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076767"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307813"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
@@ -29,9 +29,19 @@ ms.locfileid: "54076767"
 * [Analytics](../../azure-monitor/app/analytics.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](../../azure-monitor/app/export-power-bi.md )，无需使用连续导出也可以做到。
 * 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。
-* 也可以访问[通过 Powershell 设置连续导出](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0)。
+* 也可以访问[通过 Powershell 设置连续导出](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
 
 连续导出将数据复制到存储后（数据可在其中保存任意长的时间），在正常[保留期](../../azure-monitor/app/data-retention-privacy.md)内，这些数据仍可在 Application Insights 中使用。
+
+## <a name="continuous-export-advanced-storage-configuration"></a>连续导出高级的存储配置
+
+连续导出**不支持**以下 Azure 存储功能/配置：
+
+* 利用[VNET/Azure 存储防火墙](https://docs.microsoft.com/azure/storage/common/storage-network-security)结合使用 Azure Blob 存储。
+
+* [不可变存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)适用于 Azure Blob 存储。
+
+* [Azure 数据湖存储第 2 代](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
 ## <a name="setup"></a> 创建连续导出
 1. 在应用的 Application Insights 资源中，打开“连续导出”，并选择“添加”：
@@ -140,7 +150,7 @@ ms.locfileid: "54076767"
 如需更详细的代码示例，请参阅[使用辅助角色][exportasa]。
 
 ## <a name="delete"></a>删除旧数据
-请注意，要负责管理存储容量，以及在必要时删除旧数据。
+你负责管理存储容量和删除旧数据，如有必要。
 
 ## <a name="if-you-regenerate-your-storage-key"></a>如果重新生成存储密钥...
 如果更改存储密钥，连续导出将停止运行。 Azure 帐户中会显示通知。
@@ -177,7 +187,7 @@ ms.locfileid: "54076767"
 * *存储中应会出现多少个 Blob？*
 
   * 对于选择要导出的每种数据类型，将每隔分钟创建一个新 Blob（如果有可用的数据）。
-  * 此外，对于高流量应用程序，将分配额外的分区单元。 在此情况下，每个单元每隔一分钟创建一个 Blob。
+  * 此外，对于高流量应用程序，将分配额外的分区单元。 在这种情况下，每个单元创建一个 blob 每隔一分钟。
 * *我为存储重新生成了密钥或更改了容器的名称，但现在导出不能正常进行。*
 
     请编辑导出并打开导出目标边栏选项卡。 像以前一样保留选择相同的存储，并单击“确定”以确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。

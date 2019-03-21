@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7128e4d3b0675775dc713451ef672b28a4991499
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: fd4b29134fd45ed2888fbc81ded413ecf7286959
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269920"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308646"
 ---
 # <a name="add-suggesters-to-an-azure-search-index"></a>向 Azure 搜索索引添加建议器
 
@@ -34,52 +34,52 @@ ms.locfileid: "56269920"
 
 每个索引只能有一个**建议器**资源（具体说来，在**建议器**集合中只能有一个**建议器**）。
 
-## <a name="creating-a-suggester"></a>创建建议器 
+## <a name="creating-a-suggester"></a>创建建议器
 
-可以随时创建**建议器**，但对索引的影响因字段而异。 
+可以随时创建**建议器**，但对索引的影响因字段而异。
 
 + 在同一更新过程中添加到建议器的新字段是影响力最小的，因为不需重新生成索引。
 + 但是，现有字段添加到建议器时会更改字段定义，因此必须完完全全地重新生成索引。
 
- **建议器**最适用于建议特定的文档（而不是松散的字词或短语）。 最佳的候选字段是标题、名称和其他可标识某个项目的相对较短的短语。 效果较差的是重复性字段（如类别和标记）或非常长的字段（如说明或评论字段）。  
+**建议器**最适用于建议特定的文档（而不是松散的字词或短语）。 最佳的候选字段是标题、名称和其他可标识某个项目的相对较短的短语。 效果较差的是重复性字段（如类别和标记）或非常长的字段（如说明或评论字段）。
 
-在创建建议器以后，请在查询逻辑中添加[建议 API](https://docs.microsoft.com/rest/api/searchservice/suggestions)，以便调用该功能。  
+在创建建议器以后，请在查询逻辑中添加[建议 API](https://docs.microsoft.com/rest/api/searchservice/suggestions)，以便调用该功能。
 
-定义**建议器**的属性包括以下内容：  
+定义**建议器**的属性包括以下内容：
 
-|属性|说明|  
-|--------------|-----------------|  
-|`name`|**建议器**的名称。 请在调用[建议（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/suggestions)时使用**建议器**的名称。|  
-|`searchMode`|用于搜索候选短语的策略。 当前唯一受支持的模式是 `analyzingInfixMatching`，此模式在句子开头或中间执行短语的灵活匹配。|  
-|`sourceFields`|作为建议内容源的一个或多个字段的列表。 只有 `Edm.String` 和 `Collection(Edm.String)` 类型的字段可作为建议的源。 只能使用没有自定义语言分析器的字段。 |  
+|属性|描述|
+|--------------|-----------------|
+|`name`|**建议器**的名称。 请在调用[建议（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/suggestions)时使用**建议器**的名称。|
+|`searchMode`|用于搜索候选短语的策略。 当前唯一受支持的模式是 `analyzingInfixMatching`，此模式在句子开头或中间执行短语的灵活匹配。|
+|`sourceFields`|作为建议内容源的一个或多个字段的列表。 只有 `Edm.String` 和 `Collection(Edm.String)` 类型的字段可作为建议的源。 只能使用没有自定义语言分析器的字段。 |
 
-## <a name="suggester-example"></a>建议器示例  
- **建议器**是索引定义的一部分。 在当前版本的 **fields** 集合和 **scoringProfiles** 旁边，**suggesters** 集合中只能存在一个**建议器**。  
+## <a name="suggester-example"></a>建议器示例
+**建议器**是索引定义的一部分。 在当前版本的 **fields** 集合和 **scoringProfiles** 旁边，**suggesters** 集合中只能存在一个**建议器**。
 
-```  
-{  
-  "name": "hotels",  
-  "fields": [  
-     . . .   
-   ],  
-  "suggesters": [  
-    {  
-    "name": "sg",  
-    "searchMode": "analyzingInfixMatching",  
-    "sourceFields": ["hotelName", "category"]  
-    }  
-  ],  
-  "scoringProfiles": [  
-     . . .   
-  ]  
-}  
+```
+{
+  "name": "hotels",
+  "fields": [
+    . . .
+  ],
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": ["hotelName", "category"]
+    }
+  ],
+  "scoringProfiles": [
+    . . .
+  ]
+}
 
-```  
+```
 
-## <a name="see-also"></a>另请参阅  
- [创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)   
- [更新索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/update-index)   
- [建议（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/suggestions)   
- [索引操作（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/index-operations)   
- [Azure 搜索服务 REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [Azure 搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+## <a name="see-also"></a>另请参阅
+[创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+[更新索引的&#40;Azure 搜索服务 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/update-index)  
+[建议&#40;Azure 搜索服务 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/suggestions)  
+[索引操作&#40;Azure 搜索服务 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/index-operations)  
+[Azure Search Service REST](https://docs.microsoft.com/rest/api/searchservice/)  
+[Azure 搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)

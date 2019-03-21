@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 70f8533843668a86607e31a551e6ebf9abeab6c4
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 62c9a8e6375f6ac7db86ae81cdd4e5c9eb445770
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016624"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432815"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 本文提供有关计划触发器和创建、启动和监视计划触发器的步骤的信息。 有关其他类型的触发器，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
@@ -66,6 +66,9 @@ ms.locfileid: "54016624"
     ![监视触发器运行](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 本部分介绍如何使用 Azure PowerShell 创建、启动和监视计划触发器。 若要查看此示例运行，请先查看[快速入门：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。 然后，将以下代码添加到 main 方法，该代码用于创建并启动一个每 15 分钟运行一次的计划触发器。 该触发器与快速入门中创建的名为 **Adfv2QuickStartPipeline** 的管道相关联。
 
 1. 在 C:\ADFv2QuickStartPSH\ 文件夹中创建一个名为 **MyTrigger.json** 的且包含以下内容的 JSON 文件：
@@ -108,34 +111,34 @@ ms.locfileid: "54016624"
     - 触发器与 **Adfv2QuickStartPipeline** 管道相关联。 若要将多个管道与某个触发器相关联，请添加多个 **pipelineReference** 节。
     - 快速入门中的管道采用两个**参数**值：**inputPath** 和 **outputPath**。 因此，可以通过触发器传递这些参数的值。
 
-2. 使用 **Set-AzureRmDataFactoryV2Trigger** cmdlet 创建一个触发器：
+2. 通过创建触发器**集 AzDataFactoryV2Trigger** cmdlet:
 
     ```powershell
-    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. 使用 **Get-AzureRmDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Stopped**：
+3. 确认触发器的状态是否**已停止**通过使用**Get AzDataFactoryV2Trigger** cmdlet:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. 使用 **Start-AzureRmDataFactoryV2Trigger** cmdlet 启动触发器：
+4. 通过使用启动触发器**开始 AzDataFactoryV2Trigger** cmdlet:
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. 使用 **Get-AzureRmDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Started**：
+5. 确认触发器的状态是否**Started**通过使用**Get AzDataFactoryV2Trigger** cmdlet:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  使用 **Get-AzureRmDataFactoryV2TriggerRun** cmdlet 在 Azure PowerShell 中获取触发器运行。 若要获取有关触发器运行的信息，请定期执行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 值以匹配触发器定义中的值：
+6.  获取触发器运行在 Azure PowerShell 中使用**Get AzDataFactoryV2TriggerRun** cmdlet。 若要获取有关触发器运行的信息，请定期执行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 值以匹配触发器定义中的值：
 
     ```powershell
-    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
+    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
     若要在 Azure 门户中监视触发器运行和管道运行，请参阅[监视管道运行](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)。
@@ -309,7 +312,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 ### <a name="schema-overview"></a>架构概述
 下表概述了与触发器的定期触发和计划相关的主要架构元素：
 
-| JSON 属性 | Description |
+| JSON 属性 | 描述 |
 |:--- |:--- |
 | **startTime** | 一个日期/时间值。 对于简单的计划，**startTime** 属性的值适用于第一个匹配项。 对于复杂的计划，触发器的启动时间不早于指定的 **startTime** 值。 |
 | **endTime** | 触发器的结束日期和时间。 该触发器不在指定的结束日期和时间之后执行。 属性的值不能是过去的时间。 此属性是可选的。 |
@@ -322,11 +325,11 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | Type | 需要 | 默认值 | 有效值 | 示例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | String | 是 | 无 | ISO-8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | 对象 | 是 | 无 | Recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Number | 否 | 1 | 1 到 1,000 | `"interval":10` |
+| **interval** | Number | 否 | 第 | 1 到 1,000 | `"interval":10` |
 | **endTime** | String | 是 | 无 | 代表将来某个时间的日期/时间值。 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | 对象 | 否 | 无 | Schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
@@ -356,7 +359,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 下表详细描述了 **schedule** 元素：
 
 
-| JSON 元素 | Description | 有效值 |
+| JSON 元素 | 描述 | 有效值 |
 |:--- |:--- |:--- |
 | **分钟数** | 运行触发器的小时中的分钟。 | <ul><li>Integer</li><li>整数数组</li></ul>
 | **小时数** | 运行触发器的日期中的小时。 | <ul><li>Integer</li><li>整数数组</li></ul> |
@@ -370,7 +373,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 这些示例假定 **interval** 值为 1，且根据计划定义，**frequency** 值是正确的。 例如，不能在 **frequency** 值为 "day" 的同时，在 **schedule** 对象中有一个 "monthDays" 修改项。 上一部分的表中提到了此类限制。
 
-| 示例 | Description |
+| 示例 | 描述 |
 |:--- |:--- |
 | `{"hours":[5]}` | 在每天早晨 5:00 运行。 |
 | `{"minutes":[15], "hours":[5]}` | 在每天早晨 5:15 运行。 |

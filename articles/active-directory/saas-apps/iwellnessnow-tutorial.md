@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441a00f066e897ee78476100b0fb34d411e86ac1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 02b831df98db5b9d63873a0da93e603cd7cbf308
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185496"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>教程：Azure Active Directory 与 iWellnessNow 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56185496"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 iWellnessNow 的集成，需要以下项：
 
@@ -119,7 +119,7 @@ ms.locfileid: "56185496"
 
     ![iWellnessNow 域和 URL 单一登录信息](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url3.png)
 
-1. 如果没有**服务提供程序元数据文件**并且要在 **IDP** 发起的模式下配置应用程序，请执行以下步骤：
+1. 如果您尚未**服务提供程序元数据文件**并且希望配置中的应用程序**IDP**发起的模式下，执行以下步骤：
 
     ![iWellnessNow 域和 URL 单一登录信息](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url.png)
 

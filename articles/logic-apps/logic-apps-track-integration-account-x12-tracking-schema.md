@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
-ms.openlocfilehash: cfd195f2f812c8b2e09058d325d0dbb6f7a60d59
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: 1db324006e1e6332b5fdd8afd28ebed8a32ac707
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125595"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195177"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>为 Azure 逻辑应用创建用于跟踪集成帐户中的 X12 消息的架构
 
@@ -57,7 +57,7 @@ ms.locfileid: "43125595"
 }
 ```
 
-| 属性 | Type | Description |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -72,10 +72,10 @@ ms.locfileid: "43125595"
 | transactionSetControlNumber | String | 事务集控制编号。 (可选) |
 | CorrelationMessageId | String | 关联消息 ID。 {AgreementName}{*GroupControlNumber*}{TransactionSetControlNumber} 的组合。 (可选) |
 | messageType | String | 事务集或文档类型。 (可选) |
-| isMessageFailed | 布尔 | X12 消息是否失败。 （必需） |
-| isTechnicalAcknowledgmentExpected | 布尔 | 是否已在 X12 协议中配置了技术确认。 （必需） |
-| isFunctionalAcknowledgmentExpected | 布尔 | 是否已在 X12 协议中配置了功能确认。 （必需） |
-| needAk2LoopForValidMessages | 布尔 | 有效的消息是否需要 AK2 循环。 （必需） |
+| isMessageFailed | Boolean | X12 消息是否失败。 （必需） |
+| isTechnicalAcknowledgmentExpected | Boolean | 是否已在 X12 协议中配置了技术确认。 （必需） |
+| isFunctionalAcknowledgmentExpected | Boolean | 是否已在 X12 协议中配置了功能确认。 （必需） |
+| needAk2LoopForValidMessages | Boolean | 有效的消息是否需要 AK2 循环。 （必需） |
 | segmentsCount | Integer | X12 事务集中的段数。 (可选) |
 ||||
 
@@ -113,7 +113,7 @@ ms.locfileid: "43125595"
 }
 ```
 
-| 属性 | Type | Description |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -131,11 +131,11 @@ ms.locfileid: "43125595"
 | respondingFunctionalGroupId | String | 确认中映射到 AK101 的响应功能组 ID。 (可选) |
 | respondingtransactionSetControlNumber | String | 响应事务集控制编号。 (可选) |
 | respondingTransactionSetId | String | 确认中映射到 AK201 的响应事务集 ID。 (可选) |
-| statusCode | 布尔 | 事务集确认状态代码。 （必需） |
+| statusCode | Boolean | 事务集确认状态代码。 （必需） |
 | segmentsCount | 枚举 | 确认状态代码。 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
 | processingStatus | 枚举 | 确认的处理状态。 允许的值为 **Received**、**Generated** 和 **Sent**。 （必需） |
 | CorrelationMessageId | String | 关联消息 ID。 {AgreementName}{*GroupControlNumber*}{TransactionSetControlNumber} 的组合。 (可选) |
-| isMessageFailed | 布尔 | X12 消息是否失败。 （必需） |
+| isMessageFailed | Boolean | X12 消息是否失败。 （必需） |
 | ak2Segment | String | 对接收的功能组内的事务集的确认。 (可选) |
 | ak3Segment | String | 报告数据段中的错误。 (可选) |
 | ak5Segment | String | 报告是否接受或拒绝 AK2 段中标识的事务集及其原因。 (可选) |
@@ -171,7 +171,7 @@ ms.locfileid: "43125595"
 }
 ```
 
-| 属性 | Type | Description |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -183,8 +183,8 @@ ms.locfileid: "43125595"
 | direction | 枚举 | 消息流的方向，接收或发送。 （必需） |
 | interchangeControlNumber | String | 交换控制编号。 (可选) |
 | isaSegment | String | 消息 ISA 段。 (可选) |
-| isTechnicalAcknowledgmentExpected | 布尔 | 是否已在 X12 协议中配置了技术确认。 （必需） |
-| isMessageFailed | 布尔 | X12 消息是否失败。 （必需） |
+| isTechnicalAcknowledgmentExpected | Boolean | 是否已在 X12 协议中配置了技术确认。 （必需） |
+| isMessageFailed | Boolean | X12 消息是否失败。 （必需） |
 | isa09 | String | X12 文档交换日期。 (可选) |
 | isa10 | String | X12 文档交换时间。 (可选) |
 | isa11 | String | X12 交换控制标准标识符。 (可选) |
@@ -222,7 +222,7 @@ ms.locfileid: "43125595"
 }
 ```
 
-| 属性 | Type | Description |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -235,7 +235,7 @@ ms.locfileid: "43125595"
 | interchangeControlNumber | String | 从合作伙伴收到的技术确认的交换控制编号。 (可选) |
 | isaSegment | String | 从合作伙伴收到的技术确认的 ISA 段。 (可选) |
 | respondingInterchangeControlNumber |String | 从合作伙伴收到的技术确认的交换控制编号。 (可选) |
-| isMessageFailed | 布尔 | X12 消息是否失败。 （必需） |
+| isMessageFailed | Boolean | X12 消息是否失败。 （必需） |
 | statusCode | 枚举 | 交换确认状态代码。 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
 | processingStatus | 枚举 | 确认状态。 允许的值为 **Received**、**Generated** 和 **Sent**。 （必需） |
 | ta102 | String | 交换日期。 (可选) |
@@ -275,7 +275,7 @@ ms.locfileid: "43125595"
 }
 ```
 
-| 属性 | Type | Description |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -288,9 +288,9 @@ ms.locfileid: "43125595"
 | interchangeControlNumber | String | 交换控制编号。 (可选) |
 | functionalGroupControlNumber | String | 功能控制编号。 (可选) |
 | gsSegment | String | 消息 GS 段。 (可选) |
-| isTechnicalAcknowledgmentExpected | 布尔 | 是否已在 X12 协议中配置了技术确认。 （必需） |
-| isFunctionalAcknowledgmentExpected | 布尔 | 是否已在 X12 协议中配置了功能确认。 （必需） |
-| isMessageFailed | 布尔 | X12 消息是否失败。 （必需）|
+| isTechnicalAcknowledgmentExpected | Boolean | 是否已在 X12 协议中配置了技术确认。 （必需） |
+| isFunctionalAcknowledgmentExpected | Boolean | 是否已在 X12 协议中配置了功能确认。 （必需） |
+| isMessageFailed | Boolean | X12 消息是否失败。 （必需）|
 | gs01 | String | 功能标识符代码。 (可选) |
 | gs02 | String | 应用程序发送者的代码。 (可选) |
 | gs03 | String | 应用程序接收者的代码。 (可选) |
@@ -331,7 +331,7 @@ ms.locfileid: "43125595"
 }
 ```
 
-| 属性 | Type | Description |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -347,7 +347,7 @@ ms.locfileid: "43125595"
 | gsSegment | String | 与功能组控制编号相同，但仅在特定情况下填充。 (可选) |
 | respondingfunctionalGroupControlNumber | String | 原始功能组的控制编号。 (可选) |
 | respondingFunctionalGroupId | String | 在确认功能组 ID 中映射到 AK101。 (可选) |
-| isMessageFailed | 布尔 | X12 消息是否失败。 （必需） |
+| isMessageFailed | Boolean | X12 消息是否失败。 （必需） |
 | statusCode | 枚举 | 确认状态代码。 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
 | processingStatus | 枚举 | 确认的处理状态。 允许的值为 **Received**、**Generated** 和 **Sent**。 （必需） |
 | ak903 | String | 收到的事务集的数量。 (可选) |
@@ -365,4 +365,4 @@ ms.locfileid: "43125595"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解有关[监视 B2B 消息](logic-apps-monitor-b2b-message.md)的详细信息。
-* 了解[在 Log Analytics 中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
+* 了解如何[Azure Monitor 日志中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。

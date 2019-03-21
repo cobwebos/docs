@@ -9,18 +9,23 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: f9a1076ddfb840ba845718c5ca0deea8c5788e7d
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: b81dccf3c71fbaff7b0cbb9ba00f13b458156e73
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100323"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588256"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
 ## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>为何要使用 Azure 自动化状态配置来管理计算机？
 
-与 [PowerShell Desired State Configuration ](/powershell/dsc/overview)一样，Azure Automation State Configuration 在任何云或本地数据中心都是一个简单但又强大的 DSC 节点（物理机和虚拟机）配置管理服务。 它可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。 Azure Automation State Configuration 管理层的 DSC 如同 Azure 自动化管理层的 PowerShell 脚本。 换句话说，Azure 自动化以帮助你管理 PowerShell 脚本的相同方式帮助你管理 DSC 配置。 若要详细了解使用 Azure Automation State Configuration 的好处，请参阅 [Azure Automation State Configuration 概述](automation-dsc-overview.md)。
+Azure Automation State Configuration 是一个配置管理服务，适用于任何云或本地数据中心内的 DSC 节点。
+它可让你从中心的安全位置快速轻松地扩展到数千台计算机。
+可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
+适用于 DSC 的 Azure Automation State Configuration 服务类似于 PowerShell 脚本中的 Azure 自动化 Runbook。
+换句话说，Azure 自动化以帮助你管理 PowerShell 脚本的相同方式帮助你管理 DSC 配置。
+若要详细了解使用 Azure Automation State Configuration 的好处，请参阅 [Azure Automation State Configuration 概述](automation-dsc-overview.md)。
 
 Azure Automation State Configuration 可用于管理各种不同的计算机：
 
@@ -30,7 +35,8 @@ Azure Automation State Configuration 可用于管理各种不同的计算机：
 - 位于本地或 Azure 以外的云中的物理/虚拟 Windows 计算机/AWS
 - 位于本地、Azure 或 Azure 以外的云中的物理/虚拟 Linux 计算机
 
-此外，如果未准备好从云管理计算机配置，Azure Automation State Configuration 也可用作仅限报告的终结点。 这样，便可以通过 DSC 本地设置（推送）所需配置，以及查看符合 Azure 自动化中的所需状态匹配节点的丰富报告详细信息。
+此外，如果未准备好从云管理计算机配置，Azure Automation State Configuration 也可用作仅限报告的终结点。
+这样，便可以通过 DSC 设置（推送）配置，以及查看 Azure 自动化中的报告详细信息。
 
 > [!NOTE]
 > 如果安装了高于 2.70 版的虚拟机 DSC 扩展，则包含使用 State Configuration 管理 Azure VM 的功能而无需额外付费。 有关更多详细信息，请参阅[**自动化定价页**](https://azure.microsoft.com/pricing/details/automation/)。
@@ -56,26 +62,34 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 ### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 
-可以通过 Azure 资源管理器模板部署 Azure 虚拟机和加入到 Azure Automation State Configuration。 有关将现有 VM 加入 Azure Automation State Configuration 的示例模板，请参阅[通过 DSC 扩展和 Azure Automation DSC 配置 VM](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/)。 若要查找作为此模板的输入的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
+可以通过 Azure 资源管理器模板部署 Azure 虚拟机和加入到 Azure Automation State Configuration。 有关将现有 VM 加入 Azure Automation State Configuration 的示例模板，请参阅 [Desired State Configuration 管理的服务器](https://azure.microsoft.com/en-us/resources/templates/101-automation-configuration/)。
+如果你正在管理虚拟机规模集，请参阅示例模板 [Azure 自动化管理的 VM 规模集配置](https://azure.microsoft.com/en-us/resources/templates/201-vmss-automation-dsc/)。
 
 ### <a name="powershell"></a>PowerShell
 
 可通过 PowerShell 使用 [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet 在 Azure 门户中登记虚拟机。
 
+### <a name="registering-virtual-machines-across-azure-subscriptions"></a>跨 Azure 订阅注册虚拟机
+
+注册其他 Azure 订阅中的虚拟机的最佳方法是使用 Azure 资源管理器部署模板中的 DSC 扩展。
+[Desired State Configuration 扩展与 Azure 资源管理器模板](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/dsc-template)中提供了示例。
+若要查找在模板中用作参数的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
+
 ## <a name="azure-virtual-machines-classic"></a>Azure 虚拟机（经典）
 
-利用 Azure Automation State Configuration 可以轻松加入 Azure 虚拟机（经典），以使用 Azure 门户或 PowerShell 进行配置管理。 在幕后，在不需要管理员远程连接到 VM 的情况下，Azure VM Desired State Configuration 扩展会在 Azure Automation State Configuration 中注册 VM。 因为 Azure VM 所需状态配置扩展以异步方式运行，可在以下[**排查 Azure 虚拟机登记问题**](#troubleshooting-azure-virtual-machine-onboarding)部分了解跟踪注册进度或故障排除的步骤。
+利用 Azure Automation State Configuration 可以轻松加入 Azure 虚拟机（经典），以使用 Azure 门户或 PowerShell 进行配置管理。 在幕后，在不需要管理员远程连接到 VM 的情况下，Azure VM Desired State Configuration 扩展会在 Azure Automation State Configuration 中注册 VM。
+在下面的示例提供了跟踪进度或故障排除步骤[**排查 Azure 虚拟机登记**](#troubleshooting-azure-virtual-machine-onboarding)部分。
 
-### <a name="azure-portal"></a>Azure 门户
+### <a name="azure-portal-classic-virtual-machines"></a>Azure 门户 （经典虚拟机）
 
 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览” -> “虚拟机(经典)”。 选择要登记的 Windows VM。 在虚拟机的仪表板边栏选项卡上，单击“所有设置” -> “扩展” -> “添加” -> “Azure 自动化 DSC” -> “创建”。
-输入用例所需的“[PowerShell DSC 本地配置管理器值](/powershell/dsc/metaconfig4)”、自动化帐户的注册密钥和注册 URL，并选择性地输入要分配给 VM 的节点配置。
+输入[PowerShell DSC 本地配置管理器值](/powershell/dsc/metaconfig4)的自动化帐户的注册密钥和注册 URL，并可以选择的节点配置将分配给 VM。
 
 ![DSC 的 Azure VM 扩展](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
 
 若要查找计算机所要登记到的自动化帐户的注册 URL 与密钥，请参阅以下[**安全注册**](#secure-registration)部分：
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell-classic-virtual-machines"></a>PowerShell （经典虚拟机）
 
 ```powershell
 # log in to both Azure Service Management and Azure Resource Manager
@@ -149,7 +163,7 @@ $VM | Update-AzureVM
 
 ## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>位于本地或 Azure 以外的云中的物理/虚拟 Windows 计算机/AWS
 
-还可以通过几个简单的步骤，将本地 Windows 计算机和非 Azure 云中的 Windows 计算机（例如 Amazon Web 服务）加入 Azure Automation State Configuration，前提是这些计算机可对 Internet 进行出站访问：
+还可以将本地或其他云环境中运行的 Windows 服务器加入到 Azure Automation State Configuration，只要它们能够对 Azure 进行出站访问即可：
 
 1. 确保已在要加入到 Azure Automation State Configuration 的计算机上安装最新版本的 [WMF 5](https://aka.ms/wmf5latest)。
 1. 请根据以下[**生成 DSC 元配置**](#generating-dsc-metaconfigurations)部分中的说明生成包含所需 DSC 元配置的文件夹。
@@ -162,9 +176,9 @@ $VM | Update-AzureVM
 1. 如果无法从远程应用 PowerShell DSC 元配置，请将步骤 2 中元配置的文件夹复制到每一台要登记的计算机。 然后在每台要登记的计算机上本地调用 **Set-DscLocalConfigurationManager**。
 1. 使用 Azure 门户或 cmdlet 检查要加入的计算机现在是否在 Azure 自动化帐户中显示为已注册的 State Configuration 节点。
 
-## <a name="physicalvirtual-linux-machines-on-premises-in-azure-or-in-a-cloud-other-than-azure"></a>位于本地、Azure 或 Azure 以外的云中的物理/虚拟 Linux 计算机
+## <a name="physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>位于本地或者非 Azure 云中的物理/虚拟 Linux 计算机
 
-还可以通过几个简单的步骤，将本地 Linux 计算机和非 Azure 云中的 Linux 计算机加入 Azure Automation State Configuration，前提是这些计算机可对 Internet 进行出站访问：
+还可以将本地或其他云环境中运行的 Linux 服务器加入到 Azure Automation State Configuration，只要它们能够对 Azure 进行出站访问即可：
 
 1. 确保已在希望加入到 Azure Automation State Configuration 的计算机上安装[适用于 Linux 的 PowerShell Desired State Configuration](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 的最新版本。
 1. 如果 [PowerShell DSC 本地 Configuration Manager 默认值](/powershell/dsc/metaconfig4)与用例匹配，并且想要将计算机加入为**同时**从 Azure Automation State Configuration 提取并报告信息，则请执行以下操作：
@@ -175,7 +189,7 @@ $VM | Update-AzureVM
 
    - 若要查找自动化帐户的注册密钥和注册 URL，请参阅以下[**安全注册**](#secure-registration)部分。
 
-     如果 PowerShell DSC Configuration Manager 默认值与用例**不**匹配，或者希望将计算机加入为只向 Azure Automation State Configuration 报告但不提取配置或 PowerShell 模块，请遵循步骤 3 - 6。 否则，请直接跳到步骤 6。
+     如果 PowerShell DSC 本地 Configuration Manager 默认值与用例**不**匹配，或者你想要加入计算机，使其仅向 Azure Automation State Configuration 报告，则遵循步骤 3 - 6。 否则，请直接跳到步骤 6。
 
 1. 请根据以下[**生成 DSC 元配置**](#generating-dsc-metaconfigurations)部分中的说明生成包含所需 DSC 元配置的文件夹。
 1. 从远程将 PowerShell DSC 元配置应用到想要登记的计算机：
@@ -193,7 +207,7 @@ $VM | Update-AzureVM
 
 运行此命令的计算机必须已安装最新版本的 [WMF 5](https://aka.ms/wmf5latest)。
 
-1. 如果无法从远程应用 PowerShell DSC 元配置，请针对要登记的每台 Linux 计算机，将步骤 5 所述的文件夹中对应于该计算机的元配置复制到 Linux 计算机。 然后，在每台要加入到 Azure Automation State Configuration 的 Linux 计算机上本地调用 `SetDscLocalConfigurationManager.py`：
+1. 如果无法从远程应用 PowerShell DSC 元配置，请将步骤 5 所述的文件夹中对应于该计算机的元配置复制到 Linux 计算机。 然后，在每台要加入到 Azure Automation State Configuration 的 Linux 计算机上本地调用 `SetDscLocalConfigurationManager.py`：
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
@@ -201,7 +215,7 @@ $VM | Update-AzureVM
 
 ## <a name="generating-dsc-metaconfigurations"></a>生成 DSC 元配置
 
-要以一般方式将任何计算机加入 Azure Automation State Configuration，可以生成应用时告知计算机上的 DSC 代理从 Azure Automation State Configuration 提取和/或报告的 [DSC 元配置](/powershell/dsc/metaconfig)。 Azure Automation State Configuration 的 DSC 元配置可以使用 PowerShell DSC 配置或 Azure 自动化 PowerShell cmdlet 来生成。
+若要以一般方式将任何计算机加入 Azure Automation State Configuration，可以生成 [DSC 元配置](/powershell/dsc/metaconfig)，以告知 DSC 代理从 Azure Automation State Configuration 提取数据和/或向其报告。 Azure Automation State Configuration 的 DSC 元配置可以使用 PowerShell DSC 配置或 Azure 自动化 PowerShell cmdlet 来生成。
 
 > [!NOTE]
 > DSC 元配置包含将计算机登记到进行管理的自动化帐户的机密。 请务必适当保护所创建的任何 DSC 元配置，或者在使用后将其删除。

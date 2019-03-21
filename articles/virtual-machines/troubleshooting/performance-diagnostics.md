@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: c2089f9f6267f318dafe641a6a5b22e7e87427ca
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387374"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441060"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虚拟机的性能诊断
 
@@ -42,7 +42,7 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
     ![Azure 门户的屏幕截图，其中突出显示了“安装性能诊断”按钮](media/performance-diagnostics/performance-diagnostics-install.png)
 
     > [!NOTE]
-    > 在此屏幕截图中，VM 名称的边栏选项卡已隐藏。
+    > 在此屏幕截图中，VM 名称的边栏选项卡是隐藏的。
 1. 选择存储帐户（可选）
 
     若要使用单个存储帐户来存储多个 VM 的性能诊断结果，可在工具栏中单击“设置”按钮来选择存储帐户。 选择存储帐户后，单击“确定”按钮。
@@ -143,10 +143,10 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 ### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>如何与 Microsoft 客户支持部门共享此数据？ 
 可通过多种方式来与 Microsoft 共享诊断报告。
 
-**选项 1：** 自动共享最新报告  
+**选项 1：** 自动共享最新的报表  
 向 Microsoft 开具支持票证时，必须共享性能诊断报告。 如果你在运行诊断时已选择与 Microsoft 共享此信息（选中“我同意与 Microsoft 共享诊断信息”复选框），则 Microsoft 可以在从运行日期开始算起的最长 30 天内，使用输出 zip 文件的 SAS 链接从你的存储帐户访问报告。 只会将最新的报告提供给支持工程师。 
 
-**选项 2：** 为诊断报告压缩文件生成共享访问签名  
+**选项 2：** 生成诊断报告压缩文件的共享访问签名  
 可以使用共享访问签名来共享报告压缩文件的链接。 为此，请执行以下步骤： 
 1.  在 Azure 门户中，浏览到存储了诊断数据的存储帐户。
 1.  在“Blob 服务”部分选择“Blob”。 
@@ -156,7 +156,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 1.  单击“生成 Blob SAS 令牌和 URL”。
 1.  复制“Blob SAS URL”并与支持工程师共享。 
 
-**选项 3：** 从存储帐户下载报告
+**选项 3:** 从存储帐户下载报表
 
 也可以使用“选项 2”中的步骤 1-4 找到性能诊断报告压缩文件。 选择下载文件，然后通过电子邮件共享该文件，或者请求支持工程师提供有关上传文件的说明。  
 
