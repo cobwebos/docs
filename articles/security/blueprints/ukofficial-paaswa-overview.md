@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: 7ac210d9b30a05fd5dbfd46c41c3e62a1d610357
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301785"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891097"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -57,9 +57,8 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 - API 应用
 - Azure DNS
 - Key Vault
-- Azure Monitor
+- Azure 监视器 （日志）
 - Application Insights
-- Log Analytics
 - Azure 资源管理器
 - Azure 安全中心
 - Azure SQL 数据库
@@ -169,11 +168,11 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 ### <a name="monitoring-logging-and-audit"></a>监视、日志记录和审核
 
-#### <a name="log-analytics"></a>Log Analytics
+#### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) 是 Azure 中的一项服务，可帮助收集和分析云和本地环境中资源生成的数据。
+[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)是可帮助收集和分析云中的资源生成的数据的 Azure 中的服务和本地环境。
 
-#### <a name="log-analytics-in-this-blueprint"></a>此蓝图中的 Log Analytics
+#### <a name="azure-monitor-logs-in-this-blueprint"></a>此蓝图中的 azure Monitor 日志
 
 - SQL 评估
 - Key Vault 诊断
@@ -220,7 +219,7 @@ Crown Commercial Service（一家致力于改善政府商业和采购活动的�
 
 此蓝图已通过英国国家网络安全中心审查 (NCSC) 并符合 NCSC 的 14 项云安全原则
 
-自动化模板已通过英国客户成功单元 Azure 云解决方案架体系结构团队和 Microsoft 合作伙伴 [Ampliphae](http://www.ampliphae.com/) 的测试。
+自动化模板已通过英国客户成功单元 Azure 云解决方案架体系结构团队和 Microsoft 合作伙伴 [Ampliphae](https://www.ampliphae.com/) 的测试。
 
 
 ## <a name="deploy-the-solution"></a>部署解决方案

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 8ceae771f1a66f6d999dd0dc2b1f298d4aae8f86
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017287"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997932"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,7 +65,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 ## <a name="control-activities"></a>控制活动
 支持以下控制流活动：
 
-控制活动 | Description
+控制活动 | 描述
 ---------------- | -----------
 [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md) | Execute Pipeline 活动允许数据工厂管道调用另一个管道。
 [ForEach 活动](control-flow-for-each-activity.md) | ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
@@ -94,7 +94,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | Description | 类型 | 必选
+标记 | 描述 | Type | 需要
 --- | ----------- | ---- | --------
 名称 | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
 description | 指定描述管道用途的文本。 | String | 否
@@ -127,7 +127,7 @@ parameters | **参数**部分可在在管道内定义一个或多个参数，使
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | Description | 必选
+标记 | 描述 | 需要
 --- | ----------- | ---------
 名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
 description | 描述活动用途的文本 | 是
@@ -167,7 +167,8 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
     }
 }
 ```
-JSON 名称 | Description | 允许的值 | 必选
+
+JSON 名称 | 描述 | 允许的值 | 需要
 --------- | ----------- | -------------- | --------
 timeout | 指定活动运行的超时。 | Timespan | 不是。 默认超时为 7 天。
 retry | 最大重试次数 | Integer | 不是。 默认值为 0
@@ -191,7 +192,7 @@ secureOutput | 当设置为 true 时，来自活动的输出被视为安全的�
 }
 ```
 
-标记 | Description | 必选
+标记 | 描述 | 需要
 --- | ----------- | --------
 名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
 description | 描述活动用途的文本 | 是

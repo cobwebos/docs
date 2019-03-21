@@ -5,17 +5,17 @@ description: 如何将训练实验转换为预测实验、准备进行部署，�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 5990f47a7cc1517349d85654bf5f02f6240e9baa
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 2ffc9055f23b8221a6f711f741b6146545ff0821
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327589"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895716"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>部署 Azure 机器学习工作室 Web 服务
 
@@ -93,23 +93,23 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 要使用 RRS 进行测试，请从列表视图模式中为输入键入适当的值，并单击“测试请求 - 响应”。 预测结果显示在左侧的输出列中。
 
-![部署 Web 服务](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
+![输入适当的值以测试您的 web 服务](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
 若要测试 BES，请单击“Batch”。 在 Batch 测试页上，单击输入下的“浏览”，并选择包含相应示例值的 CSV 文件。 如果没有 CSV 文件，并且已使用机器学习工作室创建了预测实验，则可以下载预测实验的数据集并使用它。
 
 若要下载数据集，请打开机器学习工作室。 打开预测实验，右键单击实验的输入。 从上下文菜单中，选择“数据集”，并选择“下载”。
 
-![部署 Web 服务](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
+![从 Studio 画布下载您的数据集](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
 单击“测试”。 Batch 执行作业的状态显示在“测试 Batch 作业”的下方。
 
-![部署 Web 服务](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
+![测试批处理执行作业使用 web 服务门户](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
 <!--![Test the web service](./media/publish-a-machine-learning-web-service/figure-3.png)-->
 
 在“配置”页上，可更改描述、标题，更新存储帐户密钥，以及启用 Web 服务的示例数据。
 
-![配置 Web 服务](./media/publish-a-machine-learning-web-service/figure-8-arm-configure.png)
+![配置你的 web 服务](./media/publish-a-machine-learning-web-service/figure-8-arm-configure.png)
 
 ### <a name="access-your-new-web-service"></a>访问新 Web 服务
 
@@ -161,7 +161,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 要部署预测实验，请单击实验画布底部的“运行”，并单击“部署 Web 服务”。 已设置 Web 服务，现在正位于 Web 服务仪表板中。
 
-![部署 Web 服务](./media/publish-a-machine-learning-web-service/figure-2.png)
+![部署从 Studio web 服务](./media/publish-a-machine-learning-web-service/figure-2.png)
 
 ### <a name="test-your-classic-web-service"></a>测试经典 Web 服务
 
@@ -181,7 +181,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 可启用日志记录来诊断在访问 Web 服务时遇到的任何故障。 有关详细信息，请参阅[为机器学习工作室 Web 服务启用日志记录](web-services-logging.md)。
 
-![配置 Web 服务](./media/publish-a-machine-learning-web-service/figure-4.png)
+![Web 服务门户中启用日志记录](./media/publish-a-machine-learning-web-service/figure-4.png)
 
 还可在 Azure 机器学习 Web 服务门户中配置 Web 服务的终结点，类似于之前在“新建 Web 服务”部分中显示的过程。 选项有所不同，可以添加或更改服务描述、启用日志记录，并启用样本数据进行测试。
 
@@ -209,7 +209,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 > [!NOTE]
 > 如果在原始 Web 服务中进行了配置更改，例如输入新的显示名称或描述，则需要重新输入这些值。
 
-更新 Web 服务的一种方法是以编程方式重新训练模型。 有关详细信息，请参阅[以编程方式重新训练机器学习工作室模型](retrain-models-programmatically.md)。
+更新 Web 服务的一种方法是以编程方式重新训练模型。 有关详细信息，请参阅[以编程方式重新训练机器学习工作室模型](/azure/machine-learning/studio/retrain-machine-learning-model)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -219,13 +219,12 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 * 可通过多种方法来使用 REST API 和访问 Web 服务。 请参阅[如何使用 Azure 机器学习工作室 Web 服务](consume-web-services.md)。
 
-
 <!-- internal links -->
 [创建训练实验]: #create-a-training-experiment
 [将其转换为预测试验]: #convert-the-training-experiment-to-a-predictive-experiment
 [新 Web 服务]: #deploy-it-as-a-new-web-service
 [经典 Web 服务]: #deploy-it-as-a-classic-web-service
-[全新]: #deploy-the-predictive-experiment-as-a-new-web-service
+[全新]: #deploy-it-as-a-new-web-service
 [classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal

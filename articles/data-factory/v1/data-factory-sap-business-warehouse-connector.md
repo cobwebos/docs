@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9e972ee64d60f0fc9703e766c3ab45c3057c32a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019871"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893248"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,7 +62,7 @@ ms.locfileid: "54019871"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了 SAP Business Warehouse (BW) 链接服务专属 JSON 元素的说明。
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
 server | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
 systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
@@ -289,27 +289,27 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 从 SAP BW 移动数据时，将使用以下从 SAP BW 类型到 .NET 类型的映射。
 
-ABAP 字典中的数据类型 | .Net 数据类型
+ABAP 字典中的数据类型 | .NET 数据类型
 -------------------------------- | --------------
-ACCP |  int
+ACCP |  Int
 CHAR | String
 CLNT | String
-CURR | 小数
+CURR | Decimal
 CUKY | String
-DEC | 小数
+DEC | Decimal
 FLTP | Double
 INT1 | Byte
 INT2 | Int16
-INT4 | int
+INT4 | Int
 LANG | String
 LCHR | String
 LRAW | Byte[]
 PREC | Int16
-QUAN | 小数
+QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
 STRING | String
-单位 | String
+UNIT | String
 DATS | String
 NUMC | String
 TIMS | String

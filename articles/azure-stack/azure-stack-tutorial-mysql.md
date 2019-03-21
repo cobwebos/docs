@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 8fc3246c76d7d09ea4518b5c548d5dbe05cc7a84
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ff1b137fb6461c4ebd17451b89a180364d833d4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164254"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116786"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>教程：提供高可用性的 MySQL 数据库
 
@@ -67,7 +67,7 @@ Azure Stack 操作员，可以配置承载 MySQL Server 数据库服务器 Vm。
 - 三个 Linux 虚拟机以托管 MySQL 群集
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. 选择**\+** **创建资源** > **计算**，，然后**MySQL 复制**。
 
@@ -168,7 +168,7 @@ MySQL 群集创建、 配置，并由 Azure Stack 操作员添加为 Azure Stack
 > 以下步骤从运行在 Azure Stack 用户门户租户用户提供 MySQL 服务器功能 （Microsoft.MySQLAdapter 服务） 的订阅。
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. 选择**\+** **创建资源** > **数据\+存储**，然后**MySQL 数据库**.<br><br>提供所需的数据库属性的信息包括名称、 排序规则、 订阅以使用和要使用的部署位置。 
 

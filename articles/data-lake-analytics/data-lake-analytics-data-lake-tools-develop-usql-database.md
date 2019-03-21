@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 4518011fbeaefbb32403f5b37e434e7315beffa0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734918"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898784"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>使用 U-SQL 数据库项目开发 Azure Data Lake 的 U-SQL 数据库
 
@@ -57,7 +57,7 @@ U-SQL 数据库项目是 Visual Studio 中的一种项目类型，可帮助开�
 
 U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称的后缀为 `.usqldbpack`。 `.usqldbpack` 包是一个 zip 文件，其中包含“DDL”文件夹中单个 U-SQL 脚本中的所有 DDL 语句，以及“Temp”文件夹中程序集的所有 DLL 和其他文件。
 
-详细了解[如何使用 MSBuild 命令行和 Azure DevOps Services 生成任务生成 U-SQL 数据库项目](data-lake-analytics-cicd-overview.md)。
+详细了解如何[如何生成 U-SQL 数据库项目使用 MSBuild 命令行，并且 Azure DevOps 服务生成任务](data-lake-analytics-cicd-overview.md)。
 
 ## <a name="deploy-a-u-sql-database"></a>部署 U-SQL 数据库
 
@@ -100,8 +100,8 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 U-SQL 项目可以引用 U-SQL 数据库项目。 该引用将影响两个工作负载：
 
-- 项目生成：在生成 U-SQL 脚本之前设置引用的数据库环境。 
-- 针对（本地项目）帐户的本地运行：在执行 U-SQL 脚本之前，将引用的数据库环境部署到（本地项目）帐户。 [在此处详细了解本地运行以及（本地计算机）和（本地项目）帐户之间的区别](data-lake-analytics-data-lake-tools-local-run.md)。
+- *生成项目*:生成的 U-SQL 脚本前设置引用的数据库环境。 
+- *本地运行 （本地项目） 针对帐户*:引用的数据库环境部署到 （本地项目） 帐户，才能执行 U-SQL 脚本。 [在此处详细了解本地运行以及（本地计算机）和（本地项目）帐户之间的区别](data-lake-analytics-data-lake-tools-local-run.md)。
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>如何添加 U-SQL 数据库引用
 

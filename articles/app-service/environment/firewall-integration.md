@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 03/12/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: af6a32d7e32f23561b207c729402eaea7925f520
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453845"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121700"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -91,7 +91,6 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 - 通配符 HTTP/HTTPS 终结点是可以根据许多限定符随 ASE 一起变化的依赖项。 
 - 仅当要在 ASE 中部署 Linux 应用时，才需要考虑 Linux 依赖项。 如果不将 Linux 应用部署到 ASE，则不需要将这些地址添加到防火墙。 
 
-
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 
 
 | 终结点 |
@@ -106,6 +105,14 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
+| 40.77.24.27:80 | 监视器和警报在 ASE 问题所需 |
+| 40.77.24.27:443 | 监视器和警报在 ASE 问题所需 |
+| 13.90.249.229:80 | 监视器和警报在 ASE 问题所需 |
+| 13.90.249.229:443 | 监视器和警报在 ASE 问题所需 |
+| 104.45.230.69:80 | 监视器和警报在 ASE 问题所需 |
+| 104.45.230.69:443 | 监视器和警报在 ASE 问题所需 |
+| 13.82.184.151:80 | 监视器和警报在 ASE 问题所需 |
+| 13.82.184.151:443 | 监视器和警报在 ASE 问题所需 |
 
 使用 Azure 防火墙时，将使用 FQDN 标记自动配置以下所有设置。 
 
@@ -140,7 +147,8 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |cacerts.digicert.com:80 |
 |azperfcounters1.blob.core.windows.net:443 |
 |azurewatsonanalysis-prod.core.windows.net:443 |
-|global.metrics.nsatc.net:80   |
+|global.metrics.nsatc.net:80 |
+|global.metrics.nsatc.net:443 |
 |az-prod.metrics.nsatc.net:443 |
 |antares.metrics.nsatc.net:443 |
 |azglobal-black.azglobal.metrics.nsatc.net:443 |
@@ -175,12 +183,6 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 | \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
-|grmdsprod\*mini\*.servicebus.windows.net:443 |
-|grmdsprod\*lini\*.servicebus.windows.net:443 |
-|grsecprod\*mini\*.servicebus.windows.net:443 |
-|grsecprod\*lini\*.servicebus.windows.net:443 |
-|graudprod\*mini\*.servicebus.windows.net:443 |
-|graudprod\*lini\*.servicebus.windows.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux 依赖项 
 

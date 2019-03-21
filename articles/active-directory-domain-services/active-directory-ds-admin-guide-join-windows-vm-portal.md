@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 41e7f0ea8616b25eac43ecff7802e0f9e1c08050
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: f18d3409d53123733d7f423c77864cd0739765eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180698"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900584"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>将 Windows Server 虚拟机加入托管域
 本文展示了如何使用 Azure 门户部署 Windows Server 虚拟机。 它还展示了如何将虚拟机加入 Azure Active Directory 域服务 (Azure AD DS) 托管域。
@@ -107,7 +107,7 @@ ms.locfileid: "55180698"
 
 7. 可以通过以下方式之一指定凭据：
 
-   * **UPN 格式**：（推荐）指定在 Azure AD 中为用户帐户配置的用户主体名称 (UPN) 后缀。 在本示例中，用户 *bob* 的 UPN 后缀为 *bob@domainservicespreview.onmicrosoft.com*。
+   * **UPN 格式**：（推荐）指定在 Azure AD 中为用户帐户配置的用户主体名称 (UPN) 后缀。 在此示例中，用户的 UPN 后缀*bob*是*bob\@domainservicespreview.onmicrosoft.com*。
 
    * **SAMAccountName 格式**：可以使用 SAMAccountName 格式指定帐户名。 在本示例中，用户 *bob* 需要输入 *CONTOSO100\bob*。
 
@@ -146,7 +146,7 @@ ms.locfileid: "55180698"
 
 * 检查托管域是否已[启用密码同步](active-directory-ds-getting-started-password-sync.md)。
 
-* 确保使用 Azure AD 中配置的用户的 UPN（例如 *bob@domainservicespreview.onmicrosoft.com*）登录。
+* 请检查在 Azure AD 中配置已使用用户的 UPN (例如， *bob\@domainservicespreview.onmicrosoft.com*) 进行登录。
 
 * 按照入门指南中所述，等待足够长的时间来完成密码同步。
 

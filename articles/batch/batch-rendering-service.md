@@ -2,22 +2,23 @@
 title: 渲染概述 - Azure Batch
 description: 介绍如何使用 Azure 进行渲染，并提供 Azure Batch 渲染功能的概述
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: bc8c96345aeb1886696326edd230666ac8b6c41d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: d4423b22c4c8afea5afa9c7040e081665b17ba87
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542187"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790334"
 ---
 # <a name="rendering-using-azure"></a>使用 Azure 进行渲染
 
 渲染是创建 3D 模型并将其转换为 2D 图像的过程。 在 Autodesk 3ds Max、Autodesk Maya 和 Blender 等应用程序中创作 3D 场景文件。  Autodesk Maya、Autodesk Arnold、Chaos Group V-Ray 和 Blender Cycles 等渲染应用程序可生成 2D 图像。  有时，可以从场景文件创建单一的图像。 但是，常见的操作是建模并渲染多个图像，然后将其组合成动画。
 
-传媒娱乐行业往往使用渲染工作负荷来生成特效 (VFX)。 广告、零售、石油和天然气及制造等其他众多行业也会使用渲染。
+传媒娱乐行业往往使用渲染工作负荷来生成特效 (VFX)。 广告、 零售、 石油和天然气、 和生产等许多其他行业也使用呈现。
 
 渲染过程属于计算密集型工作；要生成的帧/图像数可能很多，而渲染每个图像可能需要大量的时间。  因此，渲染是一个完美的批处理工作负荷，可以利用 Azure 和 Azure Batch 来并行运行多个渲染器。
 

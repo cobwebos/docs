@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8008f96e00b0d9a4366832110c696c67a9c7257
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: dc3a42c280a344ef08fa23111df8652b6167cfb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165396"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109893"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>教程：Azure Active Directory 与 Panorama9 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56165396"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Panorama9 的集成，需要以下项：
 
@@ -198,18 +198,18 @@ ms.locfileid: "56165396"
 
 1. 在顶部菜单中，单击“管理”，并单击“用户”。
    
-  ![用户](./media/panorama9-tutorial/ic790027.png "用户")
+   ![用户](./media/panorama9-tutorial/ic790027.png "用户")
 
 1. 在“用户”部分，单击“+”添加新用户。
 
- ![用户](./media/panorama9-tutorial/ic790028.png "用户")
+   ![用户](./media/panorama9-tutorial/ic790028.png "用户")
 
 1. 转到“用户数据”部分，向“电子邮件”文本框中键入要预配的有效 Azure Active Directory 用户的电子邮件地址。
 
 1. 转到“用户”部分，单击“保存”。
    
 > [!NOTE]
-    > Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
+> Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

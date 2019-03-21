@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6f7eaa91faabfea7bb951eb9863ffecd2f5499
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183146"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可是什么？
 
@@ -49,7 +49,7 @@ Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynam
 
 - 支持需要用户级许可的所有 Microsoft 云服务。 此支持包括所有 Office 365 产品、企业移动性 + 安全性和 Dynamics 365。
 
-- 基于组的许可目前仅通过 [Azure 门户](https://portal.azure.com)提供。 如果主要使用其他管理门户（例如 Office 365 门户）来管理用户和组，可以继续这样做。 但是，应该使用 Azure 门户在组级别管理许可证。
+- 基于组的许可目前仅通过[Azure 门户](https://portal.azure.com)。 如果您主要使用其他管理门户的用户和组管理，如[Microsoft 365 管理中心内](https://admin.microsoft.com)，可以继续执行此操作。 但是，应该使用 Azure 门户在组级别管理许可证。
 
 - Azure AD 会自动管理由组成员身份更改导致的许可证修改。 通常，在组成员身份发生更改时，许可证修改在几分钟内就会生效。
 

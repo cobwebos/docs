@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 中的索引类型
 description: Azure Cosmos DB 中的索引类型概述
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/5/2018
-ms.author: rimman
-ms.openlocfilehash: 02055ec07de2b08abdc949e17c668912431e00ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.date: 3/13/2019
+ms.author: mjbrown
+ms.openlocfilehash: 56c0fcb24ac5d255c6a36bcffd327df76f459963
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871245"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990555"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引类型
 
@@ -19,30 +19,24 @@ ms.locfileid: "55871245"
 
 - **数据类型：** String、Number、Point、Polygon 或 LineString（每个路径每种数据类型只能包含一个条目）。
 
-- **索引种类：** 哈希（等式查询）、范围（等式、范围或 ORDER BY 查询）或空间（空间查询）。
+- **索引种类：** 范围 （等式、 范围或 ORDER BY 查询） 或空间 （空间查询）。
 
-- **精度：** 对于字符串和数字的哈希索引，此值从 1 到 8 变化，默认值为 3。 对于范围索引，最大精度值为 -1。 对于字符串或数字值，此值可在 1 到 100（最大精度）之间变化。
+- **精度：** 对于范围索引，最大精度值为-1，这也是默认值。
 
 ## <a name="index-kind"></a>索引种类
 
-对于可为字符串和/或数字数据类型配置的每个路径，Azure Cosmos DB 支持哈希和范围索引。
+Azure Cosmos DB 支持范围索引和 / 或可配置对于字符串或数字数据类型，每个路径。
 
-- **哈希索引**支持高效的等式查询和联接查询。 在大多数使用情况下，哈希索引需要的精度不会高于 3 个字节的默认值。 数据类型可以是字符串或数字。
-
-  > [!NOTE]
-  > Azure Cosmos 容器支持不再使用哈希索引种类的新索引布局。 如果在索引策略上指定哈希索引种类，容器上的 CRUD 会以无提示方式忽略索引种类和来自容器的只包含范围索引种类的响应。 默认情况下，所有新的 Cosmos 容器都使用新索引布局。 
-  
-- **范围索引**支持高效的等式查询、范围查询（使用 >、<、>=、<=、!=）和 ORDER BY 查询。 默认情况下，ORDER BY 查询还需要最大索引精度 (-1)。 数据类型可以是字符串或数字。
+- **范围索引**支持高效的等式查询、 联接查询、 范围查询 (使用 >，<>、 =、 < =、 ！ =)，和 ORDER BY 查询。 默认情况下，ORDER BY 查询还需要最大索引精度 (-1)。 数据类型可以是字符串或数字。
 
 - **空间查询**支持高效的空间（范围内和距离）查询。 数据类型可以是 Point、Polygon 或 LineString。 对于可为 Point、Polygon 或 LineString 数据类型指定为每个路径，Azure Cosmos DB 还支持空间索引种类。 指定路径中的值必须是有效的 GeoJSON 片段，如 {"type":"Point", "coordinates": [0.0, 10.0]}。 Azure Cosmos DB 支持为 Point、Polygon 和 LineString 数据类型自动编制索引。
 
-下面是可以使用哈希、范围和空间索引提供的查询示例：
+下面是示例的范围，查询和空间索引可用于提供：
 
 | **索引种类** | **说明/用例** |
 | ---------- | ---------------- |
-| 哈希  | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash over /props/[]/? (or / or /props/) 可用于有效完成下列查询：<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5  |
-| 范围  | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop   |
-| 空间     | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type":"Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type":"Point", ... }) --启用对点的索引编制<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type":"Polygon", ... }, c.prop) --启用对多边形的索引编制。     |
+| 范围      | 对 /prop/?（或 /）应用范围索引 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop<br><br>范围通过 /props/ [] /？ (or / or /props/) 可用于有效完成下列查询：<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5  |
+| 空间    | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE ST_DISTANCE(c.prop, {"type":"Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type":"Point", ... }) --启用对点的索引编制<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type":"Polygon", ... }, c.prop) --启用对多边形的索引编制。 |
 
 ## <a name="default-behavior-of-index-kinds"></a>索引种类的默认行为
 
@@ -54,6 +48,9 @@ ms.locfileid: "55871245"
 
 ## <a name="index-precision"></a>索引精度
 
+> [!NOTE]
+> Azure Cosmos 容器支持新的索引布局，不再需要除最大精度值 (-1) 之外的自定义索引精度。 使用此方法，路径将始终以最大精度编制索引。 如果在索引策略上指定精度值，容器上的 CRUD 会以无提示方式忽略精度值和来自容器的只包含最大精度值 (-1) 的响应。  默认情况下，所有新的 Cosmos 容器都使用新索引布局。
+
 - 可以使用索引精度在索引存储开销和查询性能之间做出权衡。 对于数值，我们建议使用默认的精度配置 -1（最大）。 因为数字是 JSON 格式的 8 个字节，这相当于 8 个字节的配置。 选择较低值的精度（如 1-7）意味着在某些范围内的值会映射到相同的索引条目。 因此，可以减少索引存储空间，但查询执行可能需要处理更多的项。 因此，它会消耗更多的吞吐量/RU。
 
 - 索引精度对于字符串范围更加实用。 由于字符串可以是任意长度，索引精度的选择可能会影响字符串范围查询的性能。 也可能影响所需索引存储空间量。 可以使用介于 1 和 100 之间的精度或 -1（最大精度）来配置字符串范围索引。 如果想要对字符串属性执行 ORDER BY 查询，则必须为相应路径指定精度 -1。
@@ -61,9 +58,6 @@ ms.locfileid: "55871245"
 - 空间索引始终为所有类型（Point、LineString 和 Polygon）使用默认索引精度。 无法重写空间索引的默认索引精度。
 
 当查询使用 ORDER BY，但针对最大精度的查询路径没有范围索引时，Azure Cosmos DB 会返回一个错误。
-
-> [!NOTE]
-> Azure Cosmos 容器支持新的索引布局，不再需要除最大精度值 (-1) 之外的自定义索引精度。 使用此方法，路径将始终以最大精度编制索引。 如果在索引策略上指定精度值，容器上的 CRUD 会以无提示方式忽略精度值和来自容器的只包含最大精度值 (-1) 的响应。  默认情况下，所有新的 Cosmos 容器都使用新索引布局。
 
 ## <a name="next-steps"></a>后续步骤
 

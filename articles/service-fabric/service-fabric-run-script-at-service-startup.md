@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: caca931806aed7e1868c126d4629073bcea4b900
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 3ae43f7427996f8be15b22fec4406bbdfe8aa4fe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098606"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838436"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>以本地用户或系统帐户身份运行服务启动脚本
 在启动 Service Fabric 服务可执行文件之前，可能需要进行某种配置或设置工作。  例如，配置环境变量。 可以在服务的服务清单中指定要在服务可执行文件启动前运行的脚本。 通过为服务安装程序入口点配置 RunAs 策略，可以更改在其下运行安装程序可执行文件的帐户。  使用单独的安装程序入口点，可在短时间内运行高权限配置，因此服务主机可执行文件不需要长时间使用高权限运行。
@@ -34,8 +34,8 @@ ms.locfileid: "55098606"
 <ServiceManifest Name="MyStatelessServicePkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <Description>An example service manifest.</Description>
   <ServiceTypes>
     <StatelessServiceType ServiceTypeName="MyStatelessServiceType" />
@@ -74,7 +74,7 @@ ms.locfileid: "55098606"
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="MyStatelessService_InstanceCount" DefaultValue="-1" />
   </Parameters>
@@ -113,7 +113,7 @@ ms.locfileid: "55098606"
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="MyStatelessService_InstanceCount" DefaultValue="-1" />
   </Parameters>
@@ -147,7 +147,7 @@ ms.locfileid: "55098606"
 
 在 Visual Studio 中，右键单击服务项目，并添加名为 *MySetup.bat* 的新文件。
 
-接下来，请确保 *MySetup.bat* 文件已包含在服务包中。 默认情况下未包含该文件。 选择该文件，单击右键打开上下文菜单，并选择“**属性**”。 在“属性”对话框中，确保已将“**复制到输出目录**”设置为“**有更新时才复制**”。 请参阅下面的屏幕截图。
+接下来，请确保 *MySetup.bat* 文件已包含在服务包中。 默认情况下未包含该文件。 选择该文件，单击右键打开上下文菜单，然后选择“属性”。 在“属性”对话框中，确保已将“**复制到输出目录**”设置为“**有更新时才复制**”。 请参阅下面的屏幕截图。
 
 ![SetupEntryPoint 批处理文件的 Visual Studio CopyToOutput][image1]
 
@@ -177,7 +177,7 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
 ## <a name="run-powershell-commands-from-a-setup-entry-point"></a>从安装程序入口点运行 PowerShell 命令
-若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 **PowerShell.exe**。 首先，将 PowerShell 文件添加到服务项目（例如 **MySetup.ps1**）。 请记住设置“*如果较新则复制*”属性，以便文件还包括在服务包中。 下面的示例演示一个示例批处理文件，可启动名为 MySetup.ps1 的 PowerShell 文件，该文件用于设置系统环境变量 **TestVariable**。
+若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 **PowerShell.exe**。 首先，将 PowerShell 文件添加到服务项目（例如 **MySetup.ps1**）。 请记住设置“如果较新则复制”属性，以便文件还包括在服务包中。 下面的示例演示一个示例批处理文件，可启动名为 MySetup.ps1 的 PowerShell 文件，该文件用于设置系统环境变量 **TestVariable**。
 
 MySetup.bat 可启动 PowerShell 文件：
 

@@ -4,14 +4,14 @@ description: 本文介绍如何使用 Azure Site Recovery 添加和管理 VMware
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 6c00ed6f3bec1e16b2a3cb8588335c1741a92883
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: efbcc0143570b3d379cf392c170f599fcc0176d4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849031"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855123"
 ---
 # <a name="manage-vmware-vcenter-server"></a>管理 VMware vCenter 服务器
 
@@ -26,7 +26,7 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 2. 使用桌面快捷方式启动 cspsconfigtool.exe。
 3. 在“管理帐户”选项卡中，单击“添加帐户”。
 
-  ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
+   ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
 1. 提供帐户详细信息并单击“确定”以添加该帐户。  该帐户应具备下表中概述的权限。 
 
 大约需要 15 分钟才能将帐户信息同步到 Site Recovery 服务。
@@ -42,7 +42,7 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 
 ## <a name="add-vmware-server-to-the-vault"></a>将 VMware 服务器添加到保管库
 
-1. 在 Azure 门户上，打开你的保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器。
+1. 在 Azure 门户中，打开你的保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器。
 2. 在“详细信息”页上单击“+vCenter”。
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
@@ -54,14 +54,14 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 1. 登录到配置服务器并从桌面启动 cspsconfigtool.exe。
 2. 在“管理帐户”选项卡中，单击“添加帐户”。
 
-  ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
+   ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
 3. 提供新帐户的详细信息并单击“确定”以添加该帐户。 该帐户应具备[上方](#account-permissions)列出的权限。
 4. 在 Azure 门户上，打开保管库>“Site Recovery 基础结构” > “配置服务器”，然后打开配置服务器。
 5. 在“详细信息”页上，单击“刷新服务器”。
 6. 刷新服务器作业完成后，选择“vCenter 服务器”以打开 vCenter“摘要”页面。
 7. 在“vCenter 服务器/vSphere 主机帐户”字段选择新添加的帐户，并单击“保存”。
 
-    ![modify-account](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
+   ![modify-account](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
 ## <a name="delete-a-vcenter-server"></a>删除 vCenter 服务器
 
@@ -69,7 +69,53 @@ Site Recovery 需要 VMware 的访问权限，以便进程服务器可以自动�
 2. 在“详细信息”页上，选择 vCenter 服务器。
 3. 单击“删除”按钮。
 
-  ![delete-account](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
+   ![delete-account](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
+
+## <a name="modify-the-vcenter-ip-address-and-port"></a>修改 vCenter IP 地址和端口
+
+1. 登录到 Azure 门户。
+2. 导航到**恢复服务保管库** > **Site Recovery 基础结构** > **配置服务器**。
+3. 单击配置服务器在 vCenter 上的分配给。
+4. 在中**vCenter 服务器**部分中，单击你想要修改在 vCenter 上。
+5. 在 vCenter 摘要页上，更新 IP 地址和端口的相应字段中 vCenter 并保存所做的更改。
+
+   ![add_ip_new_vcenter](media/vmware-azure-manage-vcenter/add-ip.png)
+
+6. 更改生效，请等待 15 分钟或[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
+
+## <a name="migrate-all-protected-virtual-machines-to-a-new-vcenter"></a>将所有受保护的虚拟机迁移到新的 vCenter
+
+若要将所有虚拟机都迁移到新 vCenter，不要添加另一个 vCenter 帐户。 这可能会导致重复的条目。 只需更新新的 vCenter 的 IP 地址：
+
+1. 登录到 Azure 门户。
+2. 导航到**恢复服务保管库** > **Site Recovery 基础结构** > **配置服务器**。
+3. 单击配置服务器旧 vCenter 上的分配给。
+4. 在中**vCenter 服务器**部分中，单击想要从迁移在 vCenter 上。
+5. 在 vCenter 摘要页上更新的字段中新的 vCenter 的 IP 地址**vCenter server/vSphere 主机名或 IP 地址**。 保存所做更改。
+
+更新 IP 地址时，Site Recovery 组件将开始接收来自新的 vCenter 虚拟机的发现信息。 这不会影响正在进行的复制活动。
+
+## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>将几个受保护的虚拟机迁移到新的 vCenter
 
 > [!NOTE]
-如果需要修改 vCenter IP 地址、FQDN 或端口，则需删除 vCenter 服务器再将其重新添加到门户。
+> 仅当要将迁移受保护的虚拟机的一些到新 vCenter，此部分才适用。 如果你想要防止新 vCenter，一组新的虚拟机[将新的 vCenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault)并且开头**[启用保护](vmware-azure-tutorial.md#enable-replication)**。
+
+若要将几个虚拟机移动到新的 vCenter:
+
+1. [将新的 vCenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault)。
+2. [禁用虚拟机的复制](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)你计划迁移。
+3. 完成迁移所选虚拟机迁移到新的 vCenter。
+4. 现在，保护已迁移的虚拟机[启用保护时选择新的 vCenter](vmware-azure-tutorial.md#enable-replication)。
+
+> [!TIP]
+> 如果要迁移的虚拟机的数目**更高版本**数的虚拟机保留在旧的 vCenter 中的更新新的 vCenter 使用提供的说明的 IP 地址[此处](#modify-vcenter-ip-address-port). 在旧 vCenter 上保留的几个虚拟机[禁用复制](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure);[将新的 vCenter 详细信息添加到配置服务器](#add-vmware-server-to-the-vault)，并启动**[启用保护](vmware-azure-tutorial.md#enable-replication)**。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+1. 如果从一个 ESXi 主机之间移动受保护的虚拟机，它会影响复制吗？
+
+    否，这不会影响正在进行的复制。 但是，[确保用于部署主目标服务器具有足够的权限](vmware-azure-reprotect.md#deploy-a-separate-master-target-server)
+
+2. 什么是端口号用于到之间进行通信的 vCenter 和其他 Site Recovery 组件？
+
+    默认端口为 443。 配置服务器将通过此端口访问 vCenter/vSphere 主机的信息。 如果你想要更新此信息，请单击[此处](#modify-the-vcenter-ip-address-and-port)。

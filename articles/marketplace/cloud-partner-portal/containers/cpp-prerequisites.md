@@ -3,7 +3,7 @@ title: Azure 容器产品/服务先决条件 | Microsoft Docs
 description: 发布 Azure 容器的先决条件。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: fd308c645593a401736a0a1ab1d336d63d900217
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: 09c9afcf3126f7f84c20f5514bc038a65b2ea1b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980113"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990726"
 ---
 # <a name="container-publishing-prerequisites"></a>容器发布先决条件
 
-本文介绍在 Azure 市场上发布容器产品/服务的先决条件。
+本文介绍在 Azure 市场上发布容器产品/服务的先决条件。  如果尚未这样做，则应该查看[容器的产品/服务发布指南](../../marketplace-containers.md)。
 
 ## <a name="publishing-prerequisites"></a>发布先决条件
 
@@ -35,12 +35,11 @@ ms.locfileid: "50980113"
 - 使容器元数据可供使用。 例如，以下非详尽列表：
   - 标题
   - 说明（采用 HTML 格式）
-  - 徽标图像（PNG 格式）并采用以下固定图像大小：40x40 像素、90x90 像素、115x115 像素和 255x115 像素。
-- 使用条款和隐私策略
-- 文档
+  - 一个徽标图像（采用 PNG 格式），采用以下固定图像大小：40 x 40 px，90 x 90 像素，第 115 x 115 px 和 255 x 115 px。
+- 一个*Terms of Use*和一个*隐私策略*语句
+- 容器解决方案文档
 - 支持联系人
 
 ## <a name="next-steps"></a>后续步骤
 
-- [准备容器技术资产](./cpp-create-technical-assets.md)
-- [创建容器产品/服务](./cpp-create-offer.md) 
+如果尚未这样做，则必须[准备你的容器技术资产](./cpp-create-technical-assets.md)之前[创建容器产品](./cpp-create-offer.md)。  

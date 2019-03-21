@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3df48fd42ca998e2a64f2fbe685047da16a8bae7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 5f6fcc4d2920841c730ef179497f9184b1f6649d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193470"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>教程：Azure Active Directory 与 Syncplicity 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56193470"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Syncplicity 的集成，需要以下项：
 
@@ -206,7 +206,7 @@ ms.locfileid: "56193470"
    
     ![管理用户](./media/syncplicity-tutorial/ic769764.png "管理用户")
 
-1. 键入要预配的 AAD 帐户的**电子邮件地址**，为“角色”选择“用户”，然后单击“下一步”。
+1. 类型**电子邮件地址**想要预配的 AAD 帐户，选择**用户**作为**角色**，然后单击**下一步**。
    
     ![帐户信息](./media/syncplicity-tutorial/ic769765.png "帐户信息")
    

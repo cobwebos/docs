@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeconnoc
-ms.openlocfilehash: cf2fe10d6a0ab81ff71c948ee2defe6bc7edfd70
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: HT
+ms.openlocfilehash: 2a9879ebc55a5f25c1a358e386697dce1c55ec90
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300180"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084338"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 中为应用程序配置 SSL
 
@@ -40,7 +40,7 @@ ms.locfileid: "51300180"
 
 * 证书必须包含私钥。
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构 (CA) 处获取针对 cloudapp.net 域的 SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为 contoso.com，则将要从 CA 请求用于 *.contoso.com 或 www.contoso.com 的证书。
+* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构 (CA) 处获取针对 cloudapp.net 域的 SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名**contoso.com**会从你的 CA 请求证书 ***。 contoso.com**或**www\.contoso.com**。
 * 该证书必须使用至少 2048 位加密。
 
 出于测试目的，可以[创建](cloud-services-certs-create.md)并使用自签名证书。 自签名证书不通过 CA 进行身份验证并可使用 cloudapp.net 域作为网站 URL。 例如，以下任务使用其公用名 (CN) 为 **sslexample.cloudapp.net** 的自签名证书。
@@ -78,11 +78,11 @@ ms.locfileid: "51300180"
     </WebRole>
     ```
 
-   **Certificates** 节定义了我们的证书的名称、其位置及其所在存储的名称。
+   **Certificates** 节定义了证书的名称、位置及其所在存储的名称。
 
    权限（`permissionLevel` 属性）可以设置为以下值之一：
 
-   | 权限值 | Description |
+   | 权限值 | 描述 |
    | --- | --- |
    | limitedOrElevated |**（默认）** 所有角色进程都可以访问该私钥。 |
    | 提升的 |仅提升的进程可以访问该私钥。 |
@@ -162,10 +162,10 @@ ms.locfileid: "51300180"
 
    ![单击网站 URL](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
-2. 在 Web 浏览器中，修改链接以使用 **https** 而不是 **http**，并访问该页。
+2. 在 Web 浏览器中，修改链接以使用 **https** 而不是 **http**，然后访问该页。
 
    > [!NOTE]
-   > 如果使用的是自签名证书，则浏览到与自签名证书关联的 HTTPS 终结点时，浏览器中可能显示一个证书错误。 使用由受信任的证书颁发机构签名的证书可避免此问题；同时，可以忽略此错误。 （另一个选项是将自签名证书添加到用户的受信任证书颁发机构证书存储中。）
+   > 如果使用的是自签名证书，则浏览到与自签名证书关联的 HTTPS 终结点时，浏览器中可能显示一个证书错误。 使用由受信任证书颁发机构签名的证书可消除此问题；同时，你可以忽略此错误。 （另一个选项是将自签名证书添加到用户的受信任证书颁发机构证书存储中。）
    >
    >
 

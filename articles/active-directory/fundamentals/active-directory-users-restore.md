@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a810ae13d9cfb68d11293ba883c52858aa4a2deb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b98cc0141954a079b848bd9639b081499819b8ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164747"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876997"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 还原或删除最近删除的用户
 删除用户后，帐户将保持挂起状态 30 天。 在此 30 天期间，可以还原用户帐户及其所有属性。 30 天期限过后，将自动且永久删除用户。
@@ -31,13 +31,13 @@ ms.locfileid: "56164747"
 ## <a name="required-permissions"></a>所需的权限
 必须具有以下角色之一才能还原和永久删除用户。
 
-- 公司管理员
+- 全局管理员
 
 - 合作伙伴一线支持人员
 
 - 合作伙伴二线支持人员
 
-- 用户帐户管理员
+- 用户管理员
 
 ## <a name="view-your-restorable-users"></a>查看可还原的用户
 可以查看 30 天以内删除的所有用户。 这些用户可以还原。

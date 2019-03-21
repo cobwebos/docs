@@ -1,6 +1,6 @@
 ---
-title: Azure 数据工厂服务标识 | Microsoft Docs
-description: 了解 Azure 数据工厂中的数据工厂服务标识。
+title: 数据工厂托管标识 |Microsoft Docs
+description: 了解 Azure 数据工厂托管标识。
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -11,53 +11,55 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 7937836daad5ad299f3e5b7b6b7994ae40a833fd
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 3663526dc32b0a607c9fca3d7c76496bfb5566f4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446880"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549132"
 ---
-# <a name="azure-data-factory-service-identity"></a>Azure 数据工厂服务标识
+# <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
-本文帮助读者了解什么是数据工厂服务标识及其工作原理。
+本文可帮助你了解什么是托管的标识 （前身为托管服务标识/MSI） 的数据工厂和其工作原理。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
 
-创建数据工厂时，可在创建工厂的同时创建服务标识。 服务标识是注册到 Azure Activity Directory 的托管应用程序，表示此特定数据工厂。
+在创建数据工厂，可以工厂的同时创建托管的标识。 托管的标识是注册到 Azure Activity Directory 的托管应用程序，代表此特定数据工厂。
 
-数据工厂服务标识提供以下功能：
+数据工厂托管的标识提供以下功能：
 
-- [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)，在这种情况下，数据工厂服务标识用于 Azure Key Vault 身份验证。
+- [在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)，在这种情况下数据工厂托管标识用于 Azure 密钥保管库身份验证。
 - 连接器包括 [Azure Blob 存储](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure SQL 数据库](connector-azure-sql-database.md)和 [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md)。
 - [Web 活动](control-flow-web-activity.md)。
 
-## <a name="generate-service-identity"></a>生成服务标识
+## <a name="generate-managed-identity"></a>生成托管的标识
 
-按如下所述生成数据工厂服务标识：
+生成的数据工厂托管的标识，如下所示：
 
-- 通过“Azure 门户”或“PowerShell”创建数据工厂时，始终会自动创建服务标识。
-- 通过 **SDK** 创建数据工厂时，仅当在要创建的工厂对象中指定了“Identity = new FactoryIdentity()”时，才会创建服务标识。 请参阅 [.NET 快速入门 - 创建数据工厂](quickstart-create-data-factory-dot-net.md#create-a-data-factory)中的示例。
-- 通过 **REST API** 创建数据工厂时，仅当在请求正文中指定了 "identity" 节时，才会创建服务标识。 请参阅 [REST 快速入门 - 创建数据工厂](quickstart-create-data-factory-rest-api.md#create-a-data-factory)中的示例。
+- 创建数据工厂通过时**Azure 门户或 PowerShell**、 托管始终会自动创建标识。
+- 创建数据工厂通过时**SDK**、 托管将创建标识，仅当指定"Identity = new factoryidentity （）"中创建的工厂对象。 请参阅 [.NET 快速入门 - 创建数据工厂](quickstart-create-data-factory-dot-net.md#create-a-data-factory)中的示例。
+- 创建数据工厂通过时**REST API**、 托管在请求正文中指定"identity"节，才会创建标识。 请参阅 [REST 快速入门 - 创建数据工厂](quickstart-create-data-factory-rest-api.md#create-a-data-factory)中的示例。
 
-如果发现数据工厂没有与以下[检索服务标识](#retrieve-service-identity)说明相关的服务标识，可以使用标识发起程序以编程方式更新数据工厂，从而显式生成一个服务标识。
+如果您发现您的数据工厂不会具有以下关联的托管的标识[检索托管的标识](#retrieve-managed-identity)指令，您可以显式生成一个通过使用标识发起程序以编程方式更新数据工厂：
 
-- [使用 PowerShell 生成服务标识](#generate-service-identity-using-powershell)
-- [使用 REST API 生成服务标识](#generate-service-identity-using-rest-api)
-- 使用 Azure 资源管理器模板生成服务标识
-- [使用 SDK 生成服务标识](#generate-service-identity-using-sdk)
+- [生成托管的标识，使用 PowerShell](#generate-managed-identity-using-powershell)
+- [生成托管的标识使用 REST API](#generate-managed-identity-using-rest-api)
+- 生成托管的标识使用 Azure 资源管理器模板
+- [生成托管的标识使用 SDK](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
->- 无法修改服务标识。 更新已带有服务标识的数据工厂不会产生任何影响，服务标识将保持不变。
->- 如果更新已带有服务标识的数据工厂，但未在工厂对象中指定 "identity" 参数，或者未在 REST 请求正文中指定 "identity" 节，将会收到错误。
->- 删除某个数据工厂时，会一并删除关联的服务标识。
+>- 无法修改托管的标识。 更新已带有托管的标识的数据工厂不会产生任何影响，托管的标识将保持不变。
+>- 如果更新已有一个托管的标识，而无需指定工厂对象中的"identity"参数，或者未在 REST 请求正文中指定"identity"节的数据工厂，将会出错。
+>- 删除数据工厂时，将沿删除关联的托管的标识。
 
-### <a name="generate-service-identity-using-powershell"></a>使用 PowerShell 生成服务标识
+### <a name="generate-managed-identity-using-powershell"></a>生成托管的标识，使用 PowerShell
 
-再次调用 **Set-AzureRmDataFactoryV2** 命令，然后会看到正在生成新的 "identity" 字段：
+调用**集 AzDataFactoryV2**命令，则您看到正在生成新的"Identity"字段：
 
 ```powershell
-PS C:\WINDOWS\system32> Set-AzureRmDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
+PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
 
 DataFactoryName   : ADFV2DemoFactory
 DataFactoryId     : /subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/ADFV2DemoFactory
@@ -68,7 +70,7 @@ Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentit
 ProvisioningState : Succeeded
 ```
 
-### <a name="generate-service-identity-using-rest-api"></a>使用 REST API 生成服务标识
+### <a name="generate-managed-identity-using-rest-api"></a>生成托管的标识使用 REST API
 
 调用以下 API 并在请求正文中包含 "identity" 节：
 
@@ -89,7 +91,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**响应**：自动创建服务标识并相应地填充 "identity" 节。
+**响应**： 自动创建托管的标识，并相应地填充"identity"节。
 
 ```json
 {
@@ -112,14 +114,14 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-service-identity-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板生成服务标识
+### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>生成托管的标识使用 Azure 资源管理器模板
 
 **模板**：add "identity": { "type":"SystemAssigned" }。
 
 ```json
 {
     "contentVersion": "1.0.0.0",
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "resources": [{
         "name": "<dataFactoryName>",
         "apiVersion": "2018-06-01",
@@ -132,7 +134,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-service-identity-using-sdk"></a>使用 SDK 生成服务标识
+### <a name="generate-managed-identity-using-sdk"></a>生成托管的标识使用 SDK
 
 结合 Identity=new FactoryIdentity() 调用数据工厂 create_or_update 函数。 使用 .NET 的示例代码：
 
@@ -145,29 +147,29 @@ Factory dataFactory = new Factory
 client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 ```
 
-## <a name="retrieve-service-identity"></a>检索服务标识
+## <a name="retrieve-managed-identity"></a>检索托管的标识
 
-可以通过 Azure 门户或以编程方式检索服务标识。 以下部分演示了一些示例。
+您可以检索从 Azure 门户或以编程方式托管的标识。 以下部分演示了一些示例。
 
 >[!TIP]
-> 如果看不到服务标识，请通过更新工厂来[生成服务标识](#generate-service-identity)。
+> 如果看不到托管的标识，[生成托管的标识](#generate-managed-identity)通过更新您的工厂。
 
-### <a name="retrieve-service-identity-using-azure-portal"></a>使用 Azure 门户检索服务标识
+### <a name="retrieve-managed-identity-using-azure-portal"></a>检索托管的标识使用 Azure 门户
 
-可以通过 Azure 门户 -> 数据工厂->“设置”->“属性”找到服务标识信息：
+您可以找到从 Azure 门户的托管的标识信息-> 数据工厂-> 设置-> 属性：
 
 - 服务标识 ID
 - 服务标识租户
 - **服务标识应用程序 ID** > 复制此值
 
-![检索服务标识](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+![检索托管的标识](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 
-### <a name="retrieve-service-identity-using-powershell"></a>使用 PowerShell 检索服务标识
+### <a name="retrieve-managed-identity-using-powershell"></a>检索托管的标识，使用 PowerShell
 
-获取特定的数据工厂时，会返回服务标识主体 ID 和租户 ID，如下所示：
+按以下方式获取特定的数据工厂时，将返回托管的标识主体 ID 和租户 ID:
 
 ```powershell
-PS C:\WINDOWS\system32> (Get-AzureRmDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
+PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
 
 PrincipalId                          TenantId
 -----------                          --------
@@ -177,7 +179,7 @@ PrincipalId                          TenantId
 复制主体 ID，然后结合主体 ID 作为参数运行以下 Azure Active Directory 命令，获取用于授予访问权限的 **ApplicationId**：
 
 ```powershell
-PS C:\WINDOWS\system32> Get-AzureRmADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
+PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 
 ServicePrincipalNames : {76f668b3-XXXX-XXXX-XXXX-1b3348c75e02, https://identity.azure.net/P86P8g6nt1QxfPJx22om8MOooMf/Ag0Qf/nnREppHkU=}
 ApplicationId         : 76f668b3-XXXX-XXXX-XXXX-1b3348c75e02
@@ -187,9 +189,9 @@ Type                  : ServicePrincipal
 ```
 
 ## <a name="next-steps"></a>后续步骤
-参阅以下主题，其中介绍了何时以及如何使用数据工厂服务标识：
+请参阅以下主题，其中介绍何时以及如何使用数据工厂管理的标识：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)
 - [使用 Azure 资源的托管标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
 
-有关数据工厂服务标识所基于的 Azure 资源的托管标识的更多背景信息，请参阅 [Azure 资源的托管标识概述](/azure/active-directory/managed-identities-azure-resources/overview)。 
+请参阅[管理的标识的 Azure 资源概述](/azure/active-directory/managed-identities-azure-resources/overview)为基于 Azure 资源，哪些数据工厂托管标识的管理的标识的更多背景。 

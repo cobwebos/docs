@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be95a75e7cdcaa11ef3e90093ef52c5615608eac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 4d74b122f3b5567e8291ec5f3ff4e1dda7ff68f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458017"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835010"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
 本文档将演示如何使用 Hive 查询创建用于 Hadoop 群集中数据的功能。 这些 Hive 查询使用嵌入式 Hive 用户的定义函数 (UDF) 以及为其提供的脚本。
 
 创建功能所需要的操作可以是内存密集型。 在这种情况下，Hive 查询的性能将变得更加重要，可通过优化某些参数来对其进行改善。 将在最后部分中讨论这些参数的优化。
 
-显示的查询示例特定于 [NYC Taxi Trip Data](http://chriswhong.com/open-data/foil_nyc_taxi/)（纽约出租车行程数据）方案，[GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也提供了这些方案。 这些查询已具有指定的数据架构，并准备好提交以运行。 最后部分也会讨论用户可对其进行优化以改善 Hive 查询性能的参数。
+显示的查询示例特定于 [NYC Taxi Trip Data](https://chriswhong.com/open-data/foil_nyc_taxi/)（纽约出租车行程数据）方案，[GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也提供了这些方案。 这些查询已具有指定的数据架构，并准备好提交以运行。 最后部分也会讨论用户可对其进行优化以改善 Hive 查询性能的参数。
 
 此任务是[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)
@@ -130,7 +130,7 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
         and dropoff_latitude between 30 and 90
         limit 10;
 
-计算两个 GPS 坐标之间距离的数学等式可在 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a>（可移动类型脚本）站点上找到，该站点由 Peter Lapisu 创作。 在此 Javascript 中，函数 `toRad()` 就是 lat_or_lonpi/180*，它将度数转换为弧度。 此处，*lat_or_lon* 是纬度或经度。 由于 Hive 不提供函数 `atan2`，但提供函数 `atan`，所以 `atan2` 函数通过 <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定义由上述的 Hive 查询中的函数 `atan` 来实现。
+计算两个 GPS 坐标之间距离的数学等式可在 <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a>（可移动类型脚本）站点上找到，该站点由 Peter Lapisu 创作。 在此 Javascript 中，该函数`toRad()`只是*lat_or_lon*pi/180，将度转换为弧度。 此处，*lat_or_lon* 是纬度或经度。 由于 Hive 不提供函数 `atan2`，但提供函数 `atan`，所以 `atan2` 函数通过 <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定义由上述的 Hive 查询中的函数 `atan` 来实现。
 
 ![创建工作区](./media/create-features-hive/atan2new.png)
 
@@ -161,11 +161,11 @@ Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查
    
     通常而言：
     
-    - mapred.min.split.size 的默认值为 0，
-    - mapred.max.split.size 的默认值为 Long.MAX， 
-    - dfs.block.size 的默认值为 64 MB。
+   - mapred.min.split.size 的默认值为 0，
+   - mapred.max.split.size 的默认值为 Long.MAX， 
+   - dfs.block.size 的默认值为 64 MB。
 
-    如我们所见，根据数据大小，通过对其进行“设置”允许对使用的映射器数量进行优化，可优化这些参数。
+     如我们所见，根据数据大小，通过对其进行“设置”允许对使用的映射器数量进行优化，可优化这些参数。
 
 4. 以下是用于优化 Hive 性能的一些其他高级选项。 这些选项可用于设置分配到映射和归纳任务的内存，并可用于调节性能。 请记住，mapreduce.reduce.memory.mb 不能大于 Hadoop 群集中每个辅助角色节点的物理内存大小。
    
