@@ -10,17 +10,18 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: a1ebb1d818c0085a1741245ed236cf511b1db768
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 4db95bdc5e83badef0170bfb3b1c52bb8610c655
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218047"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669867"
 ---
 # <a name="bing-speech-client-samples"></a>必应语音客户端示例
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
- 
+
 必应语音提供端到端示例来演示各种用例，例如命令识别、连续识别和意向检测。 所有示例均在 GitHub 上提供，并可通过以下链接下载：每个存储库中的 README.md 以及[客户端库](GetStarted/GetStartedClientLibraries.md)页提供了有关如何生成和运行这些示例的详细信息。
 
 - [REST API 示例](https://github.com/Azure-Samples/SpeechToText-REST)

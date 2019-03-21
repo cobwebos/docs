@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 0698f1dbc491781089ef94eec32f2a427fd3cca4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.openlocfilehash: c129c394f3d694b832722287027c1f9e58028a33
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422382"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957685"
 ---
 # <a name="azure-firewall-logs"></a>Azure 防火墙日志
 
 可以使用防火墙日志来监视 Azure 防火墙。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。
 
-可通过门户访问其中部分日志。 可将日志发送到 [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)、存储和事件中心，并使用 Log Analytics 或其他工具（例如 Excel 和 Power BI）对其进行分析。
+可通过门户访问其中部分日志。 可将日志发送到 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)、存储和事件中心，并使用 Azure Monitor 日志或其他工具（例如 Excel 和 Power BI）对其进行分析。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
@@ -26,7 +26,7 @@ ms.locfileid: "52422382"
 
 * **应用程序规则日志**
 
-   仅当为每个 Azure 防火墙启用了应用程序规则日志时，才会将此日志保存到存储帐户、流式传输到事件中心，和/或发送到 Log Analytics。 每当建立与某个配置的应用程序规则匹配的新连接，就会为接受/拒绝的连接生成一条日志。 如以下示例中所示，数据以 JSON 格式记录：
+   应用程序规则日志保存到存储帐户，流式传输到事件中心和/或发送到 Azure Monitor 日志，仅当启用的每个 Azure 防火墙。 每当建立与某个配置的应用程序规则匹配的新连接，就会为接受/拒绝的连接生成一条日志。 如以下示例中所示，数据以 JSON 格式记录：
 
    ```
    Category: application rule logs.
@@ -49,7 +49,7 @@ ms.locfileid: "52422382"
 
 * **网络规则日志**
 
-   仅当为每个 Azure 防火墙启用了网络规则日志时，才会将此日志保存到存储帐户、流式传输到事件中心，和/或发送到 Log Analytics。 每当建立与某个配置的网络规则匹配的新连接，就会为接受/拒绝的连接生成一条日志。 如以下示例中所示，数据以 JSON 格式记录：
+   网络规则日志保存到存储帐户，流式传输到事件中心和/或发送到 Azure Monitor 日志，仅当启用的每个 Azure 防火墙。 每当建立与某个配置的网络规则匹配的新连接，就会为接受/拒绝的连接生成一条日志。 如以下示例中所示，数据以 JSON 格式记录：
 
    ```
    Category: network rule logs.
@@ -73,9 +73,9 @@ ms.locfileid: "52422382"
 
 可通过三种方式存储日志：
 
-* 存储帐户：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
-* 事件中心：若要集成其他安全信息和事件管理 (SEIM) 工具，获取资源警报，则事件中心是很好的选择。
-* Log analytics：Log analytics 最适合用于应用程序常规实时监视或查看趋势。
+* **存储帐户**：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
+* **事件中心**：若要集成其他安全信息和事件管理 (SEIM) 工具，获取资源警报，则事件中心是很好的选择。
+* **Azure Monitor 日志**：Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势。
 
 ## <a name="activity-logs"></a>活动日志
 

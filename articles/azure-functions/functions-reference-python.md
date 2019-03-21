@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: dadb645067a0f6cac436d638a829ac4c0937bd60
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
-ms.translationtype: HT
+ms.openlocfilehash: 8fa093d629eb7c655ea277b1d57f35193394f722
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304356"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729995"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -109,7 +109,7 @@ Python 函数项目的文件夹结构如下所示：
 from ..SharedCode import myFirstHelperFunction
 ```
 
-Functions 运行时使用的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须使用 Azure Functions Core Tools [注册绑定扩展](functions-triggers-bindings.md#local-development-azure-functions-core-tools)。 
+Functions 运行时使用的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须使用 Azure Functions Core Tools [注册绑定扩展](./functions-bindings-register.md#local-development-azure-functions-core-tools)。 
 
 在 Azure 中将 Functions 项目部署到函数应用时，FunctionApp 文件夹的整个内容应包含在包中，但不包含该文件夹本身。
 
@@ -211,7 +211,7 @@ def main(req):
 
 有其他日志记录方法可用于在不同跟踪级别向控制台进行写入：
 
-| 方法                 | Description                                |
+| 方法                 | 描述                                |
 | ---------------------- | ------------------------------------------ |
 | logging.**critical(_message_)**   | 在根记录器中写入具有 CRITICAL 级别的消息。  |
 | logging.**error(_message_)**   | 在根记录器中写入具有 ERROR 级别的消息。    |

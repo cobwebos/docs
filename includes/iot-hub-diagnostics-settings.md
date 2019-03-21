@@ -5,19 +5,19 @@ services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 150b800bfa6bfa20f10dbba7e8d55981ecb9df34
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 6f7772eb7f2c500bbb58c391b1bc4b7a73141699
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56422859"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675749"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>通过诊断设置启用日志记录
 
-1. 登录 [Azure 门户](https://portal.azure.com)并导航到 IoT 中心。
+1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
 
 2. 选择“诊断设置”。
 
@@ -47,6 +47,9 @@ ms.locfileid: "56422859"
    * 作业操作
    * 直接方法  
    * 分布式跟踪（预览版）
+   * 配置
+   * 设备流
+   * 设备指标
 
 6. 保存新设置。 
 

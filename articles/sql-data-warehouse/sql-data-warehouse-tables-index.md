@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: fe19510d9b4c6311923b4b2ea15f133249e6cbd5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244685"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190033"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>为 SQL 数据仓库中的表编制索引
 在 Azure SQL 数据仓库中为表编制索引的建议和示例。
@@ -45,12 +45,12 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 - 列存储表不支持 varchar(max)、nvarchar(max) 和 varbinary(max)。 可以考虑使用堆或聚集索引。
 - 对瞬态数据使用列存储表可能会降低效率。 可以考虑使用堆，甚至临时表。
-- 包含少于 1 亿行的小型表。 可以考虑使用堆表。
+- 包含不超过 6 千万行的小型表。 可以考虑使用堆表。
 
 ## <a name="heap-tables"></a>堆表
-在 SQL 数据仓库上暂时登录数据时，可能发现使用堆表可让整个过程更快速。 这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表](sql-data-warehouse-tables-temporary.md)也比将表载入永久存储更快速。  
+在 SQL 数据仓库中暂时登录数据，您会发现使用堆表，使得整个过程更快速。 这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表](sql-data-warehouse-tables-temporary.md)也比将表载入永久存储更快速。  
 
-对于包含少于 1 亿行的小型查找表，堆表通常比较适合。  超过 1 亿行后，聚集列存储表开始达到最佳压缩性能。
+小于 6000 万行的小型查找表为堆表通常有意义。  聚集列存储表开始达到最佳压缩性能，一旦超过 60 亿个行。
 
 若要创建堆表，只需在 WITH 子句中指定 HEAP：
 
@@ -79,7 +79,7 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-若要对表添加非聚集索引，只需使用以下语法：
+若要添加非聚集索引的表，请使用以下语法：
 
 ```SQL
 CREATE INDEX zipCodeIndex ON myTable (zipCode);
@@ -182,7 +182,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 这些因素可能导致列存储索引在每个行组中的行远远少于最佳数量（100 万）。 它们还会造成行转到增量行组而不是压缩的行组。 
 
 ### <a name="memory-pressure-when-index-was-built"></a>生成索引时内存有压力
-每个压缩行组的行数，与行宽度以及可用于处理行组的内存量直接相关。  当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  因此，最佳做法是尽可能让写入到列存储索引表的会话访问最多的内存。  因为内存与并发性之间有所取舍，正确的内存分配指导原则取决于表的每个行中的数据、已分配给系统的数据仓库，以及可以提供给将数据写入表的会话的并发访问槽位数。  作为一种最佳做法，如果使用 DW300 或更少，我们建议从 xlargerc 开始；如果使用 DW400 到 DW600，则从 largerc 开始；如果使用 DW1000 和更高，则从 mediumrc 开始。
+每个压缩行组的行数，与行宽度以及可用于处理行组的内存量直接相关。  当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  因此，最佳做法是尽可能让写入到列存储索引表的会话访问最多的内存。  因为内存与并发性之间有所取舍，正确的内存分配指导原则取决于表的每个行中的数据、已分配给系统的数据仓库，以及可以提供给将数据写入表的会话的并发访问槽位数。
 
 ### <a name="high-volume-of-dml-operations"></a>有大量的 DML 操作
 更新和删除行的大量 DML 操作可能造成列存储低效。 当行组中的大多数行已修改时尤其如此。
@@ -205,7 +205,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>重建索引以提升段质量
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>步骤 1：识别或创建使用适当资源类的用户
-立即提升段质量的快速方法是重建索引。  上述视图返回的 SQL 将返回可用于重建索引的 ALTER INDEX REBUILD 语句。 重建索引时，请确保将足够的内存分配给要重建索引的会话。  为此，请提高用户的资源类，该用户有权将此表中的索引重建为建议的最小值。 无法更改数据库所有者用户的资源类，因此，如果尚未在系统中创建用户，必须先这样做。 如果使用 DW300 或更少，建议的资源类最小值为 xlargerc；如果使用 DW400 到 DW600，则建议的最小值为 largerc；如果使用 DW1000 和更高，则建议的最小值为 mediumrc。
+立即提升段质量的快速方法是重建索引。  上述视图返回的 SQL 将返回可用于重建索引的 ALTER INDEX REBUILD 语句。 重建索引时，请确保将足够的内存分配给要重建索引的会话。  为此，请提高用户的资源类，该用户有权将此表中的索引重建为建议的最小值。 
 
 以下示例演示如何通过提高资源类向用户分配更多内存。 若要使用资源类，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
 
@@ -216,7 +216,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>步骤 2：使用更高的用户资源类重建聚集列存储索引
 以步骤 1 中所述用户的身份（例如 LoadUser，该用户现在使用更高的资源类）登录，并执行 ALTER INDEX 语句。 请确保此用户对重建索引的表拥有 ALTER 权限。 这些示例演示如何重新生成整个列存储索引或如何重建单个分区。 对于大型表，一次重建一个分区的索引比较合适。
 
-或者，可以[使用 CTAS](sql-data-warehouse-develop-ctas.md) 将表复制到新表，而不要重建索引。 哪种方法最合适？ 如果数据量很大，CTAS 的速度通常比 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) 要快。 对于少量的数据，ALTER INDEX 更容易使用，不需要换出表。 有关如何使用 CTAS 重建索引的详细信息，请参阅下面的**使用 CTAS 和分区切换重建索引**。
+或者，可以[使用 CTAS](sql-data-warehouse-develop-ctas.md) 将表复制到新表，而不要重建索引。 哪种方法最合适？ 如果数据量很大，CTAS 的速度通常比 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) 要快。 对于少量的数据，ALTER INDEX 更容易使用，不需要换出表。 
 
 ```sql
 -- Rebuild the entire clustered index
@@ -263,25 +263,8 @@ WHERE   [OrderDateKey] >= 20000101
 AND     [OrderDateKey] <  20010101
 ;
 
--- Step 2: Create a SWITCH out table
-CREATE TABLE dbo.FactInternetSales_20000101
-    WITH    (   DISTRIBUTION = HASH(ProductKey)
-            ,   CLUSTERED COLUMNSTORE INDEX
-            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
-                                (20000101
-                                )
-                            )
-            )
-AS
-SELECT *
-FROM    [dbo].[FactInternetSales]
-WHERE   1=2 -- Note this table will be empty
-
--- Step 3: Switch OUT the data 
-ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales_20000101] PARTITION 2;
-
--- Step 4: Switch IN the rebuilt data
-ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
+-- Step 2: Switch IN the rebuilt data with TRUNCATE_TARGET option
+ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
 有关使用 CTAS 重新创建分区的更多详细信息，请参阅[在 SQL 数据仓库中使用分区](sql-data-warehouse-tables-partition.md)。

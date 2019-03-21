@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 407bb2e39e92390576da9c23868f5af9c444bed4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.date: 02/25/2019
+ms.openlocfilehash: 64829cad24d7f436b8539659dc1f0c6ef6ed4da4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341526"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404759"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
 
@@ -37,21 +37,20 @@ ms.locfileid: "56341526"
 
 -   确保删除的不是同时在写入的文件。 
 
--   如果想要从本地系统中删除文件或文件夹，请确保使用的是版本大于 3.13 的自承载集成运行时。
+-   如果你想要从本地系统中删除文件或文件夹，请确保你使用的自承载的集成运行时使用的版本大于 3.14。
 
 ## <a name="supported-data-stores"></a>支持的数据存储
 
-### <a name="azure-data-stores"></a>Azure 数据存储
-
 -   [Azure Blob 存储](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
--   [Azure Data Lake Storage Gen2（预览版）](connector-azure-data-lake-storage.md)
+-   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 
 ### <a name="file-system-data-stores"></a>文件系统数据存储
 
 -   [文件系统](connector-file-system.md)
 -   [FTP](connector-ftp.md)
--   [HDFS](connector-hdfs.md)
+-   [SFTP](connector-sftp.md)
+-   [Amazon S3](connector-amazon-simple-storage-service.md)
 
 ## <a name="syntax"></a>语法
 
@@ -61,7 +60,7 @@ ms.locfileid: "56341526"
     "type": "Delete",
     "typeProperties": {
         "dataset": {
-            "referenceName": "<dataset name to be deleted>",
+            "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
         "recursive": true/false,
@@ -80,14 +79,14 @@ ms.locfileid: "56341526"
 
 ## <a name="type-properties"></a>Type 属性
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | dataset | 提供数据集引用以确定要删除的文件或文件夹 | 是 |
 | recursive | 表明从子文件夹中以递归方式删除数据，还是只从指定文件夹中删除数据。  | 不是。 默认为 `false`。 |
 | maxConcurrentConnections | 用于删除文件夹或文件而同时连接到“存储”库的连接数。   |  不是。 默认为 `1`。 |
 | enablelogging | 表明是否需要记录已删除的文件夹或文件名。 如果为 true，则需要进一步提供存储帐户来保存日志文件，以便可以通过读取日志文件跟踪 Delete 活动的行为。 | 否 |
 | logStorageSettings | 仅适用于 enablelogging = true 时。<br/><br/>可指定的一组存储属性，您要在其中保存包含已由 Delete 活动删除的文件夹或文件名的日志文件。 | 否 |
-| linkedServiceName | 仅适用于 enablelogging = true 时。<br/><br/>存储包含已由 Delete 活动删除的文件夹或文件名的日志文件的 [Azure 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) 链接服务。 | 否 |
+| linkedServiceName | 仅适用于 enablelogging = true 时。<br/><br/>链接的服务[Azure 存储](connector-azure-blob-storage.md#linked-service-properties)， [Azure 数据湖存储 Gen1](connector-azure-data-lake-store.md#linked-service-properties)，或[Azure 数据湖存储第 2 代](connector-azure-data-lake-storage.md#linked-service-properties)to store log file 的包含的文件夹或文件名称已删除了删除活动。 | 否 |
 | 路径 | 仅适用于 enablelogging = true 时。<br/><br/>在存储帐户中保存日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否 |
 
 ## <a name="monitoring"></a>监视
@@ -100,13 +99,15 @@ ms.locfileid: "56341526"
 
 ```json
 { 
-  "isWildcardUsed": false, 
-  "wildcard": null,
-  "type": "AzureBlobStorage",
+  "datasetName": "AmazonS3",
+  "type": "AmazonS3Object",
+  "prefix": "test",
+  "bucketName": "adf",
   "recursive": true,
-  "maxConcurrentConnections": 10,
-  "filesDeleted": 1,
-  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07/5c698705-a6e2-40bf-911e-e0a927de3f07.json",
+  "isWildcardUsed": false,
+  "maxConcurrentConnections": 2,  
+  "filesDeleted": 4,
+  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07",
   "effectiveIntegrationRuntime": "MyAzureIR (West Central US)",
   "executionDuration": 650
 }
@@ -114,22 +115,12 @@ ms.locfileid: "56341526"
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete 活动的示例日志文件
 
-```json
-{
-  "customerInput": {
-    "type": "AzureBlob",
-    "fileName": "",
-    "folderPath": "folder/filename_to_be_deleted",
-    "recursive": false,
-    "enableFileFilter": false
-  },
-  "deletedFileList": [
-    "folder/filename_to_be_deleted"
-  ],
-  "deletedFolderList": null,
-  "error":"the reason why files are failed to be deleted"
-}
-```
+| 名称 | 类别 | 状态 | 错误 |
+|:--- |:--- |:--- |:--- |
+| test1/yyy.json | 文件 | Deleted |  |
+| test2/hello789.txt | 文件 | Deleted |  |
+| test2/test3/hello000.txt | 文件 | Deleted |  |
+| test2/test3/zzz.json | 文件 | Deleted |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>使用 Delete 活动的示例
 
@@ -322,7 +313,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         },
         "type": "AzureBlob",
         "typeProperties": {
-            "fileName": "",
+            "fileName": "*",
             "folderPath": "mycontainer",
             "modifiedDatetimeEnd": "2018-01-01T00:00:00.000Z"
         }
@@ -332,7 +323,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>通过链接 Copy 活动和 Delete 活动来移动文件
 
-可以通过在管道中使用 Copy 活动复制文件，然后使用 Delete 活动删除文件来移动文件。  如果要移动多个文件，可以使用 GetMetadata 活动 + Filter 活动 + Foreach 活动 + Copy 活动 + Delete 活动，如以下示例所示：
+可以通过使用复制活动将文件复制，然后删除活动，若要删除的文件在管道中移动文件。  如果要移动多个文件，可以使用 GetMetadata 活动 + Filter 活动 + Foreach 活动 + Copy 活动 + Delete 活动，如以下示例所示：
 
 > [!NOTE]
 > 如果想要通过仅定义包含文件夹路径的数据集，然后使用 Copy 活动和 Delete 活动引用表示某文件夹的同一数据集来移动整个文件夹，则需要十分谨慎。 因为必须确保在复制操作和删除操作之间不会有新文件进入文件夹。  如果在 Copy 活动刚完成复制作业，但 Delete 活动尚未开始时有新文件进入文件夹，则 Delete 活动可能将通过删除整个文件夹来删除尚未复制到目标的此新文件。 
@@ -572,12 +563,14 @@ Copy 活动用于数据目标的数据集。
     }
 }
 ```
+## <a name="known-limitation"></a>已知限制
+
+-   删除活动不支持的通配符所描述的文件夹删除列表。
+
+-   使用文件属性筛选器时： modifiedDatetimeStart 和 modifiedDatetimeEnd 以选择文件被删除，请确保将"fileName":"*"在数据集中。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关在 Azure 数据工厂中复制文件的详细信息。
-
--   [Azure 数据工厂中的 Copy 活动](copy-activity-overview.md)
+了解有关 Azure 数据工厂中移动文件的详细信息。
 
 -   [Azure 数据工厂中的“复制数据”工具](copy-data-tool.md)
-- 

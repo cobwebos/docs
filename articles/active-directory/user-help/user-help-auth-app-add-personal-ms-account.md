@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67cb3d049cc2d2f26be6d62270e677a5cbcd39cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: bcb49048fa9200b8970f37a4f187ca995d208cc2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455035"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961578"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>添加 Microsoft 个人帐户
 将 Microsoft 个人帐户（如 Outlook.com 和 Xbox LIVE 帐户）添加到 Microsoft Authenticator 应用，以实现标准双因素验证流程和无密码电话登录方法。
@@ -67,5 +67,7 @@ ms.locfileid: "56455035"
 ## <a name="next-steps"></a>后续步骤
 
 - 将帐户添加到应用后，可以在设备上使用 Authenticator 应用登录。 有关详细信息，请参阅[使用应用登录](user-help-auth-app-sign-in.md)。
+
+- 如果在遇到个人 Microsoft 帐户获取你的验证码的问题，请参阅**验证代码问题疑难解答**一部分[Microsoft 帐户安全信息和验证代码](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes)一文。
 
 - 对于运行 iOS 的设备，还可以将帐户凭据和相关的应用设置（如帐户顺序）备份到云中。 有关详细信息，请参阅 [Microsoft Authenticator 应用备份和恢复](user-help-auth-app-backup-recovery.md)。

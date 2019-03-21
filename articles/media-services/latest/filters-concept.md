@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 09de372ffdb48c00fde9a43c07f8f8b574462d1f
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 60623ab4b41c343cab0f9be1abd8ab45051b3f9e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56372921"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889352"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>定义帐户筛选器和资产筛选器  
 
-将内容传送到客户（直播流事件或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
+你将内容传送到客户 （实时流式处理事件或视频点播） 时你的客户端可能需要更大的灵活性比默认资产的清单文件中描述的内容。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
 
 筛选器是服务器端的规则，可让客户执行以下操作： 
 
@@ -38,10 +38,9 @@ ms.locfileid: "56372921"
 
 |协议|示例|
 |---|---|
-|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
-|MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|平滑流|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>对于 HLS v3，请使用： `format=m3u8-aapl-v3`。|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|平滑流|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="define-filters"></a>定义筛选器
 
@@ -56,35 +55,35 @@ ms.locfileid: "56372921"
 
 使用以下属性来描述筛选器。 
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |firstQuality|筛选器的第一个质量比特率。|
 |presentationTimeRange|呈现时间范围。 此属性用于筛选清单起点/终点、呈现窗口长度和直播起始位置。 <br/>有关详细信息，请参阅 [PresentationTimeRange](#PresentationTimeRange)。|
 |tracks|轨迹选择条件。 有关详细信息，请参阅[轨迹](#tracks)|
 
-### <a name="presentationtimerange"></a>PresentationTimeRange
+### <a name="presentationtimerange"></a>presentationTimeRange
 
 请将此属性用于**资产筛选器**。 不建议对**帐户筛选器**设置该属性。
 
-|Name|说明|
+|名称|描述|
 |---|---|
-|**endTimestamp**|绝对结束时间边界。 适用于点播视频 (VoD)。 对于直播，将以静默方式忽略该属性；当呈现内容结束并且流变为 VoD 时，将应用该属性。<br/><br/>该值表示流的绝对终点。 它将舍入为最接近的下一个 GOP 起点。<br/><br/>使用 StartTimestamp 和 EndTimestamp 修剪播放列表（清单）。 例如，如果 StartTimestamp=40000000 并且 EndTimestamp=100000000，则会生成包含 StartTimestamp 与 EndTimestamp 之间的媒体的播放列表。 如果某个段跨越边界，则整个段将包含在清单中。<br/><br/>另请参阅下面的 **forceEndTimestamp** 定义。|
-|**forceEndTimestamp**|适用于直播筛选器。<br/><br/>**forceEndTimestamp** 是一个布尔值，指示 **endTimestamp** 是否设置为有效值。 <br/><br/>如果值为 **true**，则应指定 **endTimestamp** 值。 如果未指定，则返回错误的请求。<br/><br/>例如，若要定义一个在输入视频中 5 分钟处开始并持续到流末尾的筛选器，应将 **forceEndTimestamp** 设置为 false，并省略 **endTimestamp** 设置。|
-|**liveBackoffDuration**|仅适用于直播。 该属性用于定义直播播放位置。 使用此规则可以延迟直播播放位置，并为播放器创建服务器端缓冲区。 LiveBackoffDuration 相对于直播位置。 最大直播回退持续时间为 300 秒。|
-|**presentationWindowDuration**|适用于直播。 使用 **presentationWindowDuration** 可对播放列表应用滑动窗口。 例如，设置 presentationWindowDuration=1200000000 会应用 2 分钟的滑动窗口。 直播边缘 2 分钟内的媒体将包含在播放列表中。 如果某个段跨越边界，则整个段将包含在播放列表中。 最小呈现窗口持续时间为 60 秒。|
-|**startTimestamp**|适用于 VoD 或直播流。 该值表示流的绝对起点。 该值将舍入为最接近的下一个 GOP 起点。<br/><br/>使用 **startTimestamp** 和 **endTimestamp** 修剪播放列表（清单）。 例如，如果 startTimestamp=40000000 并且 endTimestamp=100000000，则会生成包含 StartTimestamp 与 EndTimestamp 之间的媒体的播放列表。 如果某个段跨越边界，则整个段将包含在清单中。|
-|**timescale**|适用于 VoD 或直播流。 前面指定的时间戳和持续时间使用的时间刻度。 默认时间刻度为 10000000。 可以使用备用时间刻度。 默认值为 10000000 HNS（100 纳秒）。|
+|**endTimestamp**|适用于点播视频 (VoD)。<br/>对于实时流式处理演示中，它是以无提示方式忽略，并且应用时演示结束并且流变为 VoD。<br/>这是一个长值，表示演示文稿，舍入为最接近的下一个 GOP 起始的绝对结束点。 单位为时间刻度，因此 1800000000 endTimestamp 将是 3 分钟内。<br/>使用 startTimestamp 和 endTimestamp 来修剪播放列表 （清单） 中的片段。<br/>例如，startTimestamp = 40000000 和 endTimestamp = 100000000 使用默认时间刻度将生成包含介于 4 秒 （） 和 VoD 演示文稿的 10 秒的片段播放列表。 如果某个段跨越边界，则整个段将包含在清单中。|
+|**forceEndTimestamp**|适用于实时传送视频流仅。<br/>指示是否必须存在 endTimestamp 属性。 如果为 true，则必须指定 endTimestamp 或返回了错误的请求代码。<br/>允许的值：false、true。|
+|**liveBackoffDuration**|适用于实时传送视频流仅。<br/> 此值定义客户端可以查找到的最新实时位置。<br/>使用此属性，可以延迟实时播放位置并为播放器创建服务器端缓冲区。<br/>此属性的单位是时间刻度 （见下文）。<br/>实时回退持续时间的最大值为 300 秒 (3000000000)。<br/>例如，值为最新可用的内容为 20 秒的 2000000000 表示延迟从真正实时边缘。|
+|**presentationWindowDuration**|适用于实时传送视频流仅。<br/>使用 presentationWindowDuration 应用的片段播放列表中包括的滑动窗口。<br/>此属性的单位是时间刻度 （见下文）。<br/>例如，设置 presentationWindowDuration=1200000000 会应用 2 分钟的滑动窗口。 直播边缘 2 分钟内的媒体将包含在播放列表中。 如果某个段跨越边界，则整个段将包含在播放列表中。 最小呈现窗口持续时间为 60 秒。|
+|**startTimestamp**|适用于按需 (VoD) 或实时传送视频流视频。<br/>这是一个长值，表示流的绝对起始点。 该值将舍入为最接近的下一个 GOP 起点。 单位为时间刻度，因此 150000000 startTimestamp 应为 15 秒。<br/>使用 startTimestamp 和 endTimestampp 来修剪播放列表 （清单） 中的片段。<br/>例如，startTimestamp = 40000000 和 endTimestamp = 100000000 使用默认时间刻度将生成包含介于 4 秒 （） 和 VoD 演示文稿的 10 秒的片段播放列表。 如果某个段跨越边界，则整个段将包含在清单中。|
+|**timescale**|在演示文稿时间范围，在一秒中指定的增量数为适用于所有时间戳和持续时间。<br/>默认值为每个增量将 100 纳秒长的一秒内一千万 10000000 的增量。<br/>例如，如果你想要设置为 30 秒 startTimestamp，您将使用 300000000 值时使用的默认时间刻度。|
 
 ### <a name="tracks"></a>轨迹
 
-指定筛选器轨迹属性条件 (FilterTrackPropertyConditions) 的列表，应该根据该列表将流（直播或点播视频）的轨迹包含到动态创建的清单中。 使用逻辑 **AND** 和 **OR** 运算来组合筛选器。
+您指定的筛选器跟踪属性条件 (FilterTrackPropertyConditions) 列表基于在其上轨道的流 （实时流式处理或点播视频） 应包含到动态创建的清单。 使用逻辑 **AND** 和 **OR** 运算来组合筛选器。
 
 筛选器轨迹属性条件描述轨迹类型、值（如下表所述）和运算（Equal、NotEqual）。 
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |**Bitrate**|使用轨迹的比特率进行筛选。<br/><br/>建议的值为一系列比特率，以比特/秒为单位。 例如“0-2427000”。<br/><br/>注意：尽管可以使用特定的比特率值（例如 250000 比特/秒），但不建议使用此方法，因为确切的比特率可能根据资产的不同而波动。|
-|**FourCC**|使用轨迹的 FourCC 值进行筛选。<br/><br/>该值是 [RFC 6381](https://tools.ietf.org/html/rfc6381) 中指定的编解码器格式的第一个元素。 目前支持以下编解码器： <br/>视频：“avc1”、“hev1”、“hvc1”<br/>音频：“mp4a”、“ec-3”<br/><br/>若要确定资产中轨迹的 FourCC 值，请[获取并检查清单文件](#get-and-examine-manifest-files)。|
+|**FourCC**|使用轨迹的 FourCC 值进行筛选。<br/><br/>该值是 [RFC 6381](https://tools.ietf.org/html/rfc6381) 中指定的编解码器格式的第一个元素。 目前支持以下编解码器： <br/>视频：“avc1”、“hev1”、“hvc1”<br/>音频：“mp4a”、“ec-3”<br/><br/>若要确定资产中的轨道 FourCC 值，获取并检查清单文件。|
 |**语言**|使用轨迹的语言进行筛选。<br/><br/>该值是 RFC 5646 中指定的、要包含的语言的标记。 例如，“en”。|
 |**名称**|使用轨迹的名称进行筛选。|
 |类型|使用轨迹的类型进行筛选。<br/><br/>允许以下值：“video”、“audio”或“text”。|

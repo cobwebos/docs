@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 47800ce467beb43c514e5e5474247d8c2029feff
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: d87fe608b92dd70cb2dee78c817e0055445b7c70
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188226"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732507"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
 
@@ -45,7 +45,9 @@ ms.locfileid: "54188226"
 
 ### <a name="powershell"></a>PowerShell
 
-将服务主体与 [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) 模块配合使用以进行资源管理操作时，请使用 `Login-AzureRmAccount` cmdlet。 将服务主体与 [SQLServer](https://www.powershellgallery.com/packages/SqlServer) 模块配合使用以进行服务器操作时，请使用 `Add-AzureAnalysisServicesAccount` cmdlet。 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+使用服务主体进行与资源管理操作时[Az.AnalysisServices](/powershell/module/az.analysisservices)模块，请使用`Connect-AzAccount`cmdlet。 将服务主体与 [SQLServer](https://www.powershellgallery.com/packages/SqlServer) 模块配合使用以进行服务器操作时，请使用 `Add-AzAnalysisServicesAccount` cmdlet。 
 
 以下示例使用 appID 和密码执行模型数据库刷新操作：
 
@@ -60,7 +62,7 @@ $PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
 
 $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
 
-Add-AzureAnalysisServicesAccount -Credential $Credential -ServicePrincipal -TenantId $TenantId -RolloutEnvironment "westcentralus.asazure.windows.net"
+Add-AzAnalysisServicesAccount -Credential $Credential -ServicePrincipal -TenantId $TenantId -RolloutEnvironment "westcentralus.asazure.windows.net"
 
 Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserver" -TableName "MyTable" -Database "MyDb" -RefreshType "Full"
 ```

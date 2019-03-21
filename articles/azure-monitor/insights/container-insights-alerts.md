@@ -11,24 +11,189 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 02/26/2019
 ms.author: magoedte
-ms.openlocfilehash: c275d50ab927895eca3aa018b71ab6989a4dde5a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: e6fdb0d57a44578647c1f16dc76c557296f20ddb
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238834"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886754"
 ---
-# <a name="how-to-set-up-alerts-in-azure-monitor-for-container-performance-problems"></a>如何在用于容器的 Azure Monitor 中针对性能问题设置警报
+# <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何为 Azure Monitor 中的容器的性能问题设置警报
 用于容器的 Azure Monitor 可监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 
 
-本文介绍如何在群集节点上的处理器和内存利用率超过定义的阈值时启用警报。
+本文介绍如何启用针对以下情况下发出警报：
 
-## <a name="create-alert-on-cluster-cpu-or-memory-utilization"></a>基于群集 CPU 或内存利用率创建警报
-若要在群集的 CPU 或内存利用率较高时发出警报，可以基于提供的日志查询创建指标度量警报规则。 查询使用 `now` 运算符将某个日期时间与当前时间进行比较，并将时间推后一个小时。 用于容器的 Azure Monitor 存储的所有日期均采用 UTC 格式。  
+* 当 CPU 和内存利用率在节点上的群集或超过你定义的阈值。
+* 当任何控制器中的容器上的 CPU 或内存使用率超出了与相应的资源设置的限制相比你定义的阈值。
+
+要发出警报 CPU 或内存使用率较高的群集或控制器时，您创建一个基于在提供的日志查询的指标度量警报规则。 查询比较到使用现在运算符最新的日期时间，并可回溯一小时。 用于容器的 Azure Monitor 存储的所有日期均采用 UTC 格式。
 
 在开始之前，如果你不熟悉 Azure Monitor 中的警报，请参阅 [Microsoft Azure 中的警报概述](../platform/alerts-overview.md)。 若要详细了解使用日志查询的警报，请参阅 [Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)
+
+## <a name="resource-utilization-log-search-queries"></a>资源使用率的日志搜索查询
+在本部分中的查询提供以支持每个警报的方案。 查询所需的步骤 7 下[创建警报](#create-alert-rule)下面一节。  
+
+以下查询每隔一分钟计算平均 CPU 利用率作为成员节点的平均 CPU 利用率。  
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let capacityCounterName = 'cpuCapacityNanoCores';
+let usageCounterName = 'cpuUsageNanoCores';
+KubeNodeInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+// cluster filter would go here if multiple clusters are reporting to the same Log Analytics workspace
+| distinct ClusterName, Computer
+| join hint.strategy=shuffle (
+  Perf
+  | where TimeGenerated < endDateTime
+  | where TimeGenerated >= startDateTime
+  | where ObjectName == 'K8SNode'
+  | where CounterName == capacityCounterName
+  | summarize LimitValue = max(CounterValue) by Computer, CounterName, bin(TimeGenerated, trendBinSize)
+  | project Computer, CapacityStartTime = TimeGenerated, CapacityEndTime = TimeGenerated + trendBinSize, LimitValue
+) on Computer
+| join kind=inner hint.strategy=shuffle (
+  Perf
+  | where TimeGenerated < endDateTime + trendBinSize
+  | where TimeGenerated >= startDateTime - trendBinSize
+  | where ObjectName == 'K8SNode'
+  | where CounterName == usageCounterName
+  | project Computer, UsageValue = CounterValue, TimeGenerated
+) on Computer
+| where TimeGenerated >= CapacityStartTime and TimeGenerated < CapacityEndTime
+| project ClusterName, Computer, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
+| summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
+```
+
+以下查询每隔一分钟计算平均内存利用率作为成员节点的平均内存利用率。
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let capacityCounterName = 'memoryCapacityBytes';
+let usageCounterName = 'memoryRssBytes';
+KubeNodeInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+// cluster filter would go here if multiple clusters are reporting to the same Log Analytics workspace
+| distinct ClusterName, Computer
+| join hint.strategy=shuffle (
+  Perf
+  | where TimeGenerated < endDateTime
+  | where TimeGenerated >= startDateTime
+  | where ObjectName == 'K8SNode'
+  | where CounterName == capacityCounterName
+  | summarize LimitValue = max(CounterValue) by Computer, CounterName, bin(TimeGenerated, trendBinSize)
+  | project Computer, CapacityStartTime = TimeGenerated, CapacityEndTime = TimeGenerated + trendBinSize, LimitValue
+) on Computer
+| join kind=inner hint.strategy=shuffle (
+  Perf
+  | where TimeGenerated < endDateTime + trendBinSize
+  | where TimeGenerated >= startDateTime - trendBinSize
+  | where ObjectName == 'K8SNode'
+  | where CounterName == usageCounterName
+  | project Computer, UsageValue = CounterValue, TimeGenerated
+) on Computer
+| where TimeGenerated >= CapacityStartTime and TimeGenerated < CapacityEndTime
+| project ClusterName, Computer, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
+| summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
+```
+>[!IMPORTANT]
+>下面的查询包含你的群集和控制器名称的占位符字符串值 < 你的群集名称 > 和 < 你的控制器名称 >。 占位符替换为特定于你的环境的值之前设置警报。 
+
+
+以下查询计算的控制器中的每个容器实例的 CPU 使用率的百分比表示为容器设置的限制每隔一分钟的平均值为控制器中的所有容器的平均 CPU 利用率。
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let capacityCounterName = 'cpuLimitNanoCores';
+let usageCounterName = 'cpuUsageNanoCores';
+let clusterName = '<your-cluster-name>';
+let controllerName = '<your-controller-name>';
+KubePodInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| where ClusterName == clusterName
+| where ControllerName == controllerName
+| extend InstanceName = strcat(ClusterId, '/', ContainerName),
+         ContainerName = strcat(controllerName, '/', tostring(split(ContainerName, '/')[1]))
+| distinct Computer, InstanceName, ContainerName
+| join hint.strategy=shuffle (
+    Perf
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | where ObjectName == 'K8SContainer'
+    | where CounterName == capacityCounterName
+    | summarize LimitValue = max(CounterValue) by Computer, InstanceName, bin(TimeGenerated, trendBinSize)
+    | project Computer, InstanceName, LimitStartTime = TimeGenerated, LimitEndTime = TimeGenerated + trendBinSize, LimitValue
+) on Computer, InstanceName
+| join kind=inner hint.strategy=shuffle (
+    Perf
+    | where TimeGenerated < endDateTime + trendBinSize
+    | where TimeGenerated >= startDateTime - trendBinSize
+    | where ObjectName == 'K8SContainer'
+    | where CounterName == usageCounterName
+    | project Computer, InstanceName, UsageValue = CounterValue, TimeGenerated
+) on Computer, InstanceName
+| where TimeGenerated >= LimitStartTime and TimeGenerated < LimitEndTime
+| project Computer, ContainerName, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
+| summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
+```
+
+以下查询计算的控制器中的每个容器实例的内存使用率的百分比表示为容器设置的限制每隔一分钟的平均值为控制器中的所有容器的平均内存使用率。
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let capacityCounterName = 'memoryLimitBytes';
+let usageCounterName = 'memoryRssBytes';
+let clusterName = '<your-cluster-name>';
+let controllerName = '<your-controller-name>';
+KubePodInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| where ClusterName == clusterName
+| where ControllerName == controllerName
+| extend InstanceName = strcat(ClusterId, '/', ContainerName),
+         ContainerName = strcat(controllerName, '/', tostring(split(ContainerName, '/')[1]))
+| distinct Computer, InstanceName, ContainerName
+| join hint.strategy=shuffle (
+    Perf
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | where ObjectName == 'K8SContainer'
+    | where CounterName == capacityCounterName
+    | summarize LimitValue = max(CounterValue) by Computer, InstanceName, bin(TimeGenerated, trendBinSize)
+    | project Computer, InstanceName, LimitStartTime = TimeGenerated, LimitEndTime = TimeGenerated + trendBinSize, LimitValue
+) on Computer, InstanceName
+| join kind=inner hint.strategy=shuffle (
+    Perf
+    | where TimeGenerated < endDateTime + trendBinSize
+    | where TimeGenerated >= startDateTime - trendBinSize
+    | where ObjectName == 'K8SContainer'
+    | where CounterName == usageCounterName
+    | project Computer, InstanceName, UsageValue = CounterValue, TimeGenerated
+) on Computer, InstanceName
+| where TimeGenerated >= LimitStartTime and TimeGenerated < LimitEndTime
+| project Computer, ContainerName, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
+| summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
+```
+
+## <a name="create-alert-rule"></a>创建警报规则
+执行以下步骤来使用先前提供的日志搜索规则之一在 Azure Monitor 中创建日志警报。  
+
+>[!NOTE]
+>下面的过程需要切换到新的日志警报 API，如中所述[日志警报的切换 API 首选项](../platform/alerts-log-api-switch.md)如果要创建容器资源利用率的警报规则。 
+>
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在 Azure 门户的左窗格中选择“监视”。 在“见解”部分，选择“容器”。    
@@ -36,82 +201,15 @@ ms.locfileid: "56238834"
 4. 在“监视”部分下的左窗格中，选择“日志”打开 Azure Monitor 日志页上，用于编写和执行 Azure Log Analytics 查询。
 5. 在“日志”页上，单击“+ 新建警报规则”。
 6. 在“条件”部分下，单击预定义的自定义日志条件“每当自定义日志搜索为 <logic undefined> 时”。 系统会自动选择“自定义日志搜索”信号类型，因为警报规则的创建是直接从 Azure Monitor 日志页发起的。  
-7. 将以下查询之一粘贴到“搜索查询”字段。 以下查询每隔一分钟计算平均 CPU 利用率作为成员节点的平均 CPU 利用率。
-
-    ```
-    let endDateTime = now();
-    let startDateTime = ago(1h);
-    let trendBinSize = 1m;
-    let capacityCounterName = 'cpuCapacityNanoCores';
-    let usageCounterName = 'cpuUsageNanoCores';
-    KubeNodeInventory
-    | where TimeGenerated < endDateTime
-    | where TimeGenerated >= startDateTime
-    // cluster filter would go here if multiple clusters are reporting to the same Log Analytics workspace
-    | distinct ClusterName, Computer
-    | join hint.strategy=shuffle (
-       Perf
-       | where TimeGenerated < endDateTime
-       | where TimeGenerated >= startDateTime
-       | where ObjectName == 'K8SNode'
-       | where CounterName == capacityCounterName
-       | summarize LimitValue = max(CounterValue) by Computer, CounterName, bin(TimeGenerated, trendBinSize)
-       | project Computer, CapacityStartTime = TimeGenerated, CapacityEndTime = TimeGenerated + trendBinSize, LimitValue
-    ) on Computer
-    | join kind=inner hint.strategy=shuffle (
-       Perf
-       | where TimeGenerated < endDateTime + trendBinSize
-       | where TimeGenerated >= startDateTime - trendBinSize
-       | where ObjectName == 'K8SNode'
-       | where CounterName == usageCounterName
-       | project Computer, UsageValue = CounterValue, TimeGenerated
-    ) on Computer
-    | where TimeGenerated >= CapacityStartTime and TimeGenerated < CapacityEndTime
-    | project ClusterName, Computer, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
-    | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
-    ```
-
-    以下查询每隔一分钟计算平均内存利用率作为成员节点的平均内存利用率。
-
-    ```
-    let endDateTime = now();
-    let startDateTime = ago(1h);
-    let trendBinSize = 1m;
-    let capacityCounterName = 'memoryCapacityBytes';
-    let usageCounterName = 'memoryRssBytes';
-    KubeNodeInventory
-    | where TimeGenerated < endDateTime
-    | where TimeGenerated >= startDateTime
-    // cluster filter would go here if multiple clusters are reporting to the same Log Analytics workspace
-    | distinct ClusterName, Computer
-    | join hint.strategy=shuffle (
-       Perf
-       | where TimeGenerated < endDateTime
-       | where TimeGenerated >= startDateTime
-       | where ObjectName == 'K8SNode'
-       | where CounterName == capacityCounterName
-       | summarize LimitValue = max(CounterValue) by Computer, CounterName, bin(TimeGenerated, trendBinSize)
-       | project Computer, CapacityStartTime = TimeGenerated, CapacityEndTime = TimeGenerated + trendBinSize, LimitValue
-    ) on Computer
-    | join kind=inner hint.strategy=shuffle (
-       Perf
-       | where TimeGenerated < endDateTime + trendBinSize
-       | where TimeGenerated >= startDateTime - trendBinSize
-       | where ObjectName == 'K8SNode'
-       | where CounterName == usageCounterName
-       | project Computer, UsageValue = CounterValue, TimeGenerated
-    ) on Computer
-    | where TimeGenerated >= CapacityStartTime and TimeGenerated < CapacityEndTime
-    | project ClusterName, Computer, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
-    | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
-    ```
+7. 粘贴之一[查询](#resource-utilization-log-search-queries)到前面提供**搜索查询**字段。 
 
 8. 使用以下信息配置警报：
 
     a. 从“基于”下拉列表中选择“指标度量”。 指标度量将为查询中其值超出指定阈值的每个对象创建一个警报。  
     b. 对于“条件”，请选择“大于”并输入 **75** 作为初始基线**阈值**，或输入符合条件的值。  
     c. 在“触发警报的条件”部分选择“连续违规”，然后从下拉列表中选择“大于”并输入 **2** 作为值。  
-    d. 在“评估依据”部分下，将“时段”值修改为 60 分钟。 此规则将每隔五分钟运行一次，返回从当前时间算起过去一小时内创建的记录。 将时间段设置为更宽的时间窗口可以解决数据延迟的可能性，并确保查询返回数据以避免警报永远不会触发的漏报。 
+    d. 如果在配置一个警报，以便容器 CPU 或内存使用率**聚合基于**选择**ContainerName**从下拉列表。  
+    e. 在“评估依据”部分下，将“时段”值修改为 60 分钟。 此规则将每隔五分钟运行一次，返回从当前时间算起过去一小时内创建的记录。 将时间段设置为更宽的时间窗口可以解决数据延迟的可能性，并确保查询返回数据以避免警报永远不会触发的漏报。 
 
 9. 单击“完成”，完成警报规则。
 10. 在“警报规则名称”字段中提供警报的名称。 指定“说明”以详细描述该警报的具体信息，并从提供的选项中选择相应的严重性。

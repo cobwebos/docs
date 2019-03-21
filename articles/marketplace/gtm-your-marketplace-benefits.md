@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 3fa4fb9fb7accfbe4517e2bf917a3df31ea10fa7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747520"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887244"
 ---
 # <a name="your-marketplace-benefits"></a>市场权益
 
@@ -63,9 +63,9 @@ GTM 支持包括模板、Web 内容、培训以及用于推广业务的工具。
 1. 在 Azure 市场或 AppSource 中发布套餐。
 2. 确保已在套餐的“联系信息”部分输入了营销联系人。 这应该是专用的营销资源，而不是统括式的别名。 （即，请避免使用“support\@”、“info\@”、“marketing\@”等。）
 
-根据解决方案的状态，你将收到一封包含自助资源的电子邮件，或者一封邀请你咨询专设顾问经理的信件。 你不需要做任何事就能发起呼叫 — 市场登记团队会根据你在[云合作伙伴门户](https://cloudpartner.azure.com/)中提供的信息与你取得联系。
+基于解决方案的状态，产品/服务列表、 试用版，或 Transact，您将收到包含自助资源的电子邮件或咨询调用与专用 Engagement 管理器的邀请。 你不需要做任何事就能发起呼叫 — 市场登记团队会根据你在[云合作伙伴门户](https://cloudpartner.azure.com/)中提供的信息与你取得联系。
 
-随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有商品都会收到基本级别的优化建议和升级。  根据解决方案状态、所选市场和 Microsoft 合作伙伴资质，这些商品还享有其他营销权益。 
+随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有商品都会收到基本级别的优化建议和升级。  这些列表还有其他基于解决方案的状态 （列表、 试用版或 Transact） 选择 marketplace 和 Microsoft 合作伙伴的资格认证成就的市场营销权益资格。
 
 下表汇总了资格要求：
 

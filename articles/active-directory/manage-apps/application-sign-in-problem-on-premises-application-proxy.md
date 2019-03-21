@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5e198dff2dd3cd93455d5cca25428723bf1ce9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 5ee322dd3ff6ccd68b09645fb46b1488b17819bb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171972"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871683"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理登录本地应用程序时遇到问题
 
@@ -56,7 +56,7 @@ ms.locfileid: "56171972"
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>应用程序代理程序连接器出现问题
   以下文档可帮助你解决一些此类最常见问题。
-  * [安装应用程序代理程序连接器时出现问题](application-proxy-connector-installation-problem.md)
+  * [我遇到了一些问题，安装应用程序代理程序连接器](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>后续步骤
 [如何提供对本地应用程序的安全远程访问](application-proxy.md)

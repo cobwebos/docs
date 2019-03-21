@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 96766a12d7e78dacd93432e30d12f313d52ad4c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415725"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176168"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集
 
@@ -56,7 +56,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 ## <a name="create-and-authorize-a-managed-identity"></a>创建并授权托管标识
 
-**用户分配的托管标识**用于简化和保护域服务操作。 为托管标识分配 HDInsight 域服务参与者角色后，它可以读取、创建、修改和删除域服务操作。 HDInsight 企业安全性套餐需要某些域服务操作，如创建 OU 和服务主体。 可以在任何订阅中创建托管标识。 有关详细信息，请参阅 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+**用户分配的托管标识**用于简化和保护域服务操作。 为托管标识分配 HDInsight 域服务参与者角色后，它可以读取、创建、修改和删除域服务操作。 HDInsight 企业安全性套餐需要某些域服务操作，如创建 OU 和服务主体。 可以在任何订阅中创建托管标识。 有关详细信息通常托管标识，请参阅[托管于 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/overview.md)。 有关如何将托管在 Azure HDInsight 中的标识工作的详细信息，请参阅[托管在 Azure HDInsight 中的标识](../hdinsight-managed-identities.md)。
 
 若要设置 ESP 群集，请创建用户分配的托管标识（如果还没有）。 有关说明，请参阅[使用 Azure 门户创建、列出和删除用户分配的托管标识以及为其分配角色](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。 接下来，为托管标识分配 Azure AD-DS 访问控制中的“HDInsight 域服务参与者”角色（需要 AAD-DS 管理员权限来执行此角色分配）。
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8232a197b7916c069ef17393e44a4f9a512a7598
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: f88c7b9350d104241524284950865e1f2ca6f559
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818526"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729400"
 ---
 # <a name="requirements-by-listing-type"></a>按商品信息类型列出的要求  
 技术和营销内容要求因店面、产品/服务类型和商品信息类型而异。 请查看以下规范，以确认是否合规。  
@@ -34,15 +34,15 @@ ms.locfileid: "55818526"
 
 | 要求 | 详细信息 | 必需还是建议 |  
 |:--- |:--- |:--- |  
-| ***Azure Active Directory (Azure AD)*** | 在已启用许可的情况下，应用须允许使用 Azure Active Directory 联合单一登录（Azure AD 联合 SSO）。<ul> <li>有关启用 Azure AD 联合 SSO 的详细信息，请访问“针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录”页：[docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)。</li> </ul> | 必选 |   
+| ***Azure Active Directory (Azure AD)*** | 在已启用许可的情况下，应用须允许使用 Azure Active Directory 联合单一登录（Azure AD 联合 SSO）。<ul> <li>有关启用 Azure AD 联合 SSO 的详细信息，请访问“针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录”页：[docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)。</li> </ul> | 需要 |   
 | ***与 Microsoft 云服务集成*** | 应用应该与其他 Microsoft 云服务（例如 Microsoft Power BI、Cortana Intelligence）或 Microsoft Azure 服务集成。<ul> <li>物联网就是 Microsoft 云服务的一个示例。</li> </ul> | 建议 |  
-| ***受众*** | 应用必须适用于业务线用户和业务所有者。 | 必选 | 
-| ***适合企业的软件即服务 (SaaS) 应用*** | 应用必须满足以下要求。<ul> <li>是业务线 SaaS 应用</li> <li>专注于业务流程</li> <li>以企业客户为目标</li> <li>允许用户使用其工作凭据（用户名和密码）登录</li> </ul> | 必选 |  
-| ***免费试用期和试用体验*** | 应用必须包含以下选项之一，使客户能够在有限的时间内免费使用你的应用。<ul> <li>提供 `try` 选项，使客户能够在 AppSource 中开始试用应用</li> <li>在 AppSource 中提供 `request trial` 选项，使客户能够请求应用的试用版</li> </ul>提供的免费试用版必须为客户提供一段预先规定的时间让他们试用应用，且不收取额外的费用。 | 必选 |  
-| ***可轻松配置、随时可用的解决方案*** | 应用的配置和设置必须便捷，不需要自定义。 | 必选 |  
-| ***潜在客户管理*** | 在从店面收获商机之前，请启用 CRM 来接收潜在顾客数据。<ul> <li>CRM 的例子包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 必选 |  
-| ***隐私策略和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | 必选 |  
-| ***支持*** | 应用必须使用公共 URL 提供客户支持页面的链接。 如果应用是试用版，则必须在试用期间提供支持，且不收取额外的费用。 | 必选 |  
+| ***受众*** | 应用必须适用于业务线用户和业务所有者。 | 需要 | 
+| ***适合企业的软件即服务 (SaaS) 应用*** | 应用必须满足以下要求。<ul> <li>是业务线 SaaS 应用</li> <li>专注于业务流程</li> <li>以企业客户为目标</li> <li>允许用户使用其工作凭据（用户名和密码）登录</li> </ul> | 需要 |  
+| ***免费试用期和试用体验*** | 应用必须包含以下选项之一，使客户能够在有限的时间内免费使用你的应用。<ul> <li>提供 `try` 选项，使客户能够在 AppSource 中开始试用应用</li> <li>在 AppSource 中提供 `request trial` 选项，使客户能够请求应用的试用版</li> </ul>提供的免费试用版必须为客户提供一段预先规定的时间让他们试用应用，且不收取额外的费用。 | 需要 |  
+| ***可轻松配置、随时可用的解决方案*** | 应用的配置和设置必须便捷，不需要自定义。 | 需要 |  
+| ***潜在客户管理*** | 在从店面收获商机之前，请启用 CRM 来接收潜在顾客数据。<ul> <li>CRM 的例子包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 需要 |  
+| ***隐私策略和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | 需要 |  
+| ***支持*** | 应用必须使用公共 URL 提供客户支持页面的链接。 如果应用是试用版，则必须在试用期间提供支持，且不收取额外的费用。 | 需要 |  
 
 ## <a name="storefront-requirements-azure-marketplace"></a>店面要求：Azure 市场  
 下面是 Azure 市场中商品类型的先决条件要求。  
@@ -85,7 +85,7 @@ ms.locfileid: "55818526"
 
 <!-- #### Requirements: Azure Marketplace: List: Contact Me -->
 
----   
+---
 
 ### <a name="trial"></a>试用  
 
