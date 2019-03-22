@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 369f3ebca0ca2f5862d8300934dee57a73d8bada
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c934a3b16f5cdd2b4f703b1be15ce16ddc6d8746
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903396"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338473"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
 
 当今企业正在逐渐趋向为其最终用户（外部）或员工（内部）创建移动应用程序。 它们已经拥有现成的后端系统，无论是大型机还是一些 LoB 应用程序都必须集成到移动应用程序体系结构中。 本指南介绍如何最好地实现此集成，并针对常见场景建议可能的解决方案。
 
-一个常见需求是在后端系统中发生了用户感兴趣的事件时，通过其移动应用程序向用户发送推送通知。 例如，某位在 iPhone 上安装了银行应用的客户想要在记入其帐户的借方金额超过特定值时收到通知，或者在 Intranet 方案中，某位在 Windows Phone 上安装了预算审批应用的财务部门员工，希望在收到审批请求时获得通知。
+一个常见需求是在后端系统中发生了用户感兴趣的事件时，通过其移动应用程序向用户发送推送通知。 例如，在 iPhone 具有银行应用的银行客户想要时借方一定从该帐户或在 intranet 方案中，在 Windows Phone 上具有了预算审批应用的财务部门员工希望收到通知 若要接收审批请求时通知你。
 
 银行帐户或审批处理很可能要在某个后端系统中完成，该系统必须启动到用户的推送。 可能有多个此类后端系统，所有这些系统在事件触发通知时都必须生成同样的逻辑来进行推送。 此处的复杂性在于将多个后端系统与单个推送系统集成在一起，在此系统中，最终用户可能已订阅不同的通知，甚至可能存在多个移动应用程序。 例如，对于 Intranet 移动应用来说，一个移动应用程序可能需要从多个此类后端系统接收通知。 后端系统不知道或不需要知道推送语义/技术，因此常见的解决方案是引入一个组件，该组件轮询后端系统是否存在任何相关事件并负责将推送消息发送到客户端。
 
@@ -265,7 +265,7 @@ ms.locfileid: "57903396"
 ### <a name="running-the-sample"></a>运行示例
 
 1. 确保 WebJob 成功运行并且计划为“连续运行”。
-2. 运行 EnterprisePushMobileApp，这可启动 Windows 应用商店应用。
+2. 运行**EnterprisePushMobileApp**，从而启动 Windows 应用商店应用程序。
 3. 运行 EnterprisePushBackendSystem 控制台应用程序，这可模拟 LoB 后端并开始发送消息，应该出现如下图所示的 toast 通知：
 
     ![][5]

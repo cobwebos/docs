@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 891d9b7b34e3d30efb46b69ef1aa75566fe634c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895391"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120748"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS 应用程序“技术信息”选项卡
 
@@ -44,7 +44,7 @@ ms.locfileid: "55895391"
 - 使用 Microsoft 的 SaaS API 连接你的 SaaS 服务网站。 [通过 Azure 销售 SaaS – API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis) 一文介绍了如何创建此连接。
 - 在云合作伙伴门户上的“技术配置”窗体中启用“通过 Azure 进行销售”，并提供必需的信息。 有关此计费模型及其实现方式的详细信息，请参阅 [SaaS – 通过 Azure 进行销售](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions)。
 
- ![“通过 Microsoft 进行销售”窗体](./media/saas-techinfo-sellthrough-ms.png)
+  ![“通过 Microsoft 进行销售”窗体](./media/saas-techinfo-sellthrough-ms.png)
 
 下表介绍了“通过 Microsoft 进行销售”的必需字段。
 
@@ -73,6 +73,9 @@ ms.locfileid: "55895391"
 - 与我联系
 
 有关“行动号召”选项的详细信息，请参阅“选择发布选项”。
+
+>[!Note]
+>云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
 
 ## <a name="next-steps"></a>后续步骤
 

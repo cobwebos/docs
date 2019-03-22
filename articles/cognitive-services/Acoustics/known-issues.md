@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: resources
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kylestorck
-ms.openlocfilehash: 4cbede768409596365bea0cdbbb451cc5195ac4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 50de4d983ed24440d655cf5b9ba3fb5e33d8d7cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136253"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309939"
 ---
 # <a name="project-acoustics-known-issues"></a>项目噪声的已知问题
 针对 Project Acoustics 使用设计器预览时，可能会遇到以下已知问题。
@@ -28,8 +28,9 @@ ms.locfileid: "58136253"
 
 在最新版本的 Unity (2018.2+) 上，存在一个已知 bug，在关闭项目时 Unity 会崩溃。 这由[此 Unity 问题](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project)跟踪。
 
-## <a name="trouble-deploying-to-android"></a>部署到 Android 时遇到问题
-若要在 Android 上使用 Project Acoustics，请将生成目标更改为 Android。 某些版本的 Unity 存在一个 bug 与部署音频插件。 请确保你不使用受版本[此 bug](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)。
+## <a name="deploying-to-android-from-some-unity-versions"></a>从某些 Unity 版本部署到 Android
+
+某些版本的 Unity 具有音频插件部署到 Android 的 bug。 请确保你不使用受版本[此 bug](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)。
 
 ## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>收到“找不到元数据文件 System.Security.dll”错误
 

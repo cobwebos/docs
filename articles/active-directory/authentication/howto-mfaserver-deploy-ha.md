@@ -1,5 +1,5 @@
 ---
-title: 配置 Azure MFA 服务器以实现高可用性 | Microsoft Docs
+title: 将 Azure MFA 服务器配置以实现高可用性-Azure Active Directory
 description: 在配置中部署可提供高可用性的多个 Azure 多重身份验证服务器实例。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26216131b461a395d3c87895a055d3ae30abf87c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ba8a1976fa9fc2a02f7f3e8419de10ebba7df950
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198807"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316297"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>配置 Azure 多重身份验证服务器以实现高可用性
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98df1d9612d18e4ab5044bd92822b2df76286b12
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 735835d16eb14c3847f36ecb6f46c08c0a8928ef
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340846"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339510"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -94,3 +94,116 @@ LUIS 理解以下语言：
 |葡萄牙语(巴西)|✔||||
 |西班牙语 (es-ES)|✔||||
 |西班牙语 (es-MX)|✔||||
+
+### <a name="custom-tokenizer-versions"></a>自定义标记器版本
+
+以下区域性具有自定义标记器版本：
+
+|环境|版本|目的|
+|--|--|--|
+|德语<br>`de-de`|1.0.0|基于单词拆分使用机器学习基于标记化器尝试分解复合单词按其单个组件对其进行标记。<br>如果用户输入`Ich fahre einen krankenwagen`作为查询文本，它诉诸于`Ich fahre einen kranken wagen`。 允许的标记`kranken`和`wagen`独立地为不同的实体。|
+|德语<br>`de-de`|1.0.1|基于字词的拆分在空间上进行标记。<br> 如果用户输入`Ich fahre einen krankenwagen`作为查询文本，它将保持的单个标记。 因此`krankenwagen`标记作为单个实体。 |
+
+### <a name="migrating-between-tokenizer-versions"></a>标记器版本之间进行迁移
+
+在第一个选择是要更改的标记器版本在应用程序文件中，然后导入版本。 此操作将更改查询文本时如何标记，但可以保留相同的应用程序 id。 
+
+标记器 JSON 1.0.0。 请注意，属性值`tokenizerVersion`。 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.0",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.0",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 23,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+
+标记器 JSON 版本 1.0.1。 请注意，属性值`tokenizerVersion`。 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.1",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.1",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 16,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+
+第二个选项是[导入该文件作为新的应用程序](luis-how-to-start-new-app.md#import-an-app-from-file)，而不是版本。 此操作的含义，新应用程序具有不同的应用 ID，但使用的文件中指定的标记器版本。 

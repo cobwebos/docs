@@ -1,5 +1,5 @@
 ---
-title: RADIUS 身份验证和 Azure MFA 服务器 | Microsoft Docs
+title: RADIUS 身份验证和 Azure MFA 服务器-Azure Active Directory
 description: 部署 RADIUS 身份验证和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d21ff9b56a7fcb33fbdb6bbb82c64ef97abf71
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 34cfd37caf45d709fdc0b3639a218e2e587e8164
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085773"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314342"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
 

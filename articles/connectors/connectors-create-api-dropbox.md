@@ -1,65 +1,79 @@
 ---
-title: 连接到 Dropbox - Azure 逻辑应用 | Microsoft Docs
+title: 连接到 Dropbox 的 Azure 逻辑应用
 description: 使用 Dropbox REST API 和 Azure 逻辑应用上传和管理文件
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 07/15/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: 256a0b34d5050e17abe5bb98ca0c13ab0b61787e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 5a1bfe8ca38fc23f09b13195fb8ca5bd443a4afd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094432"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314410"
 ---
-# <a name="get-started-with-the-dropbox-connector"></a>Dropbox 连接器入门
-连接到 Dropbox 管理文件。 可以在 Dropbox 中执行各种操作，例如上传、更新、获取和删除文件。
+# <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>上传和管理文件在 Dropbox 中的使用 Azure 逻辑应用
 
-若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。
+使用 Dropbox 连接器和 Azure 逻辑应用，可以创建自动化工作流，上传和管理你的 Dropbox 帐户中的文件。 
 
-## <a name="connect-to-dropbox"></a>连接到 Dropbox
-在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 连接提供逻辑应用和其他服务之间的连接性。 例如，若要连接到 Dropbox，首先需要 Dropbox *连接*。 若要创建连接，需要提供通常用于访问要连接到的服务的凭据。 因此，在 Dropbox 示例中，需要 Dropbox 帐户的凭据，才能创建到 Dropbox 的连接。 
+本文介绍如何连接到 Dropbox，从逻辑应用，以及如何将 Dropbox**时创建的文件**触发器和 Dropbox**使用路径获取文件内容**操作。
 
-### <a name="create-a-connection-to-dropbox"></a>创建到 Dropbox 的连接
-> [!INCLUDE [Steps to create a connection to Dropbox](../../includes/connectors-create-api-dropbox.md)]
-> 
-> 
+## <a name="prerequisites"></a>必备组件
 
-## <a name="use-a-dropbox-trigger"></a>使用 Dropbox 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
-在此示例中，我们将使用“创建文件时”触发器。 发生此触发器时，我们将调用“使用路径获取文件内容”Dropbox 操作。 
+* 一个[Dropbox 帐户](https://www.dropbox.com/)，这可以免费注册。 你的帐户凭据是用于创建逻辑应用和你的 Dropbox 帐户之间的连接所必需的。
 
-1. 在逻辑应用设计器上的搜索框中输入 *dropbox*，并选择“Dropbox - 创建文件时”触发器。      
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)  
-2. 选择想要跟踪文件创建的文件夹。 选择“...”（已在红色框中标识），并浏览到要为其选择触发器输入的文件夹。  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)  
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 对于本示例，需要一个空白逻辑应用。
 
-## <a name="use-a-dropbox-action"></a>使用 Dropbox 操作
-操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+## <a name="add-trigger"></a>添加触发器
 
-现已添加触发器，按照以下步骤添加将获取新文件内容的操作。
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 选择“+ 新步骤”，添加要在创建新文件时采取的操作。  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
-2. 选择“添加操作”。 这会打开可搜索要采取的任何操作的搜索框。  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
-3. 输入 *dropbox*，搜索与 Dropbox 相关的操作。  
-4. 选择“Dropbox - 使用路径获取文件内容”作为要在所选 Dropbox 文件夹中新建文件时采取的操作。 操作控制块打开。 系统会提示授权逻辑应用访问 Dropbox 帐户（如果之前尚未这样做）。  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-3.PNG)  
-5. 选择“...”（位于“文件路径”控件的右侧）并浏览到要使用的文件路径。 或者，使用“文件路径”令牌加快逻辑应用创建速度。  
-   ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)  
-6. 保存所做工作，并在 Dropbox 中新建文件以激活工作流。  
+1. 在搜索框下，选择“所有”。 在搜索框中，输入“dropbox”作为筛选器。
+从触发器列表中选择此触发器：**创建文件时**
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+   ![选择 Dropbox 触发器](media/connectors-create-api-dropbox/select-dropbox-trigger.png)
 
-在[连接器详细信息](/connectors/dropbox/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+1. 使用 Dropbox 帐户凭据登录，并授权 Azure 逻辑应用访问你的 Dropbox 数据。
 
-## <a name="more-connectors"></a>更多连接器
-返回到 [API 列表](apis-list.md)。
+1. 提供触发器的所需信息。 
+
+   在此示例中，选择想要跟踪文件创建的文件夹。 若要浏览您的文件夹，选择文件夹图标旁**文件夹**框。
+
+## <a name="add-action"></a>添加操作
+
+现在，添加任何新文件中获取的内容的操作。
+
+1. 在触发器下，选择“下一步”。 
+
+1. 在搜索框下，选择“所有”。 在搜索框中，输入“dropbox”作为筛选器。
+在操作列表中选择此操作：**使用路径获取文件内容**
+
+1. 如果已尚未获得授权访问 Dropbox 的 Azure 逻辑应用，现在授予访问权限。
+
+1. 若要浏览到你想要使用，旁边的文件路径**文件路径**框中，选择省略号 (**...**) 按钮。 
+
+   此外可以单击内**文件路径**框中，并从动态内容列表中，选择**文件路径**，其值是可用作输出从上一节中添加的触发器。
+
+1. 完成后，保存逻辑应用。
+
+1. 若要触发逻辑应用，请在 Dropbox 中创建新文件。
+
+## <a name="connector-reference"></a>连接器参考
+
+有关技术详细信息，如触发器、 操作和限制，如所述的连接器的 OpenAPI (以前称为 Swagger) 文件，请参阅[连接器的参考页](/connectors/dropbox/)。
+
+## <a name="get-support"></a>获取支持
+
+* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

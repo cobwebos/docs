@@ -4,30 +4,19 @@ description: 本文汇总了使用 Azure Site Recovery 设置将 Azure VM 灾难
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 12/12/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c1890570f153de68d187c37dc0a7bca156c2d47
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008655"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312047"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>常见问题：Azure 到 Azure 的复制
 
 本文提供使用 Azure Site Recovery 将 Azure VM 的灾难恢复 (DR) 部署到另一个 Azure 区域时可能遇到的常见问题的解答。 如果在阅读本文后有任何问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)上发布问题。
-
-
-## <a name="in-this-article"></a>本文内容 
-1.  **[Azure 到 Azure 的一般问题](#general)** 
-1.  **[复制](#replication)** 
-1.  **[复制策略](#replication-policy)** 
-1.  **[多 VM 一致性](#multi-vm-consistency)** 
-1.  **[恢复计划](#recovery-plan)** 
-1.  **[重新保护和故障回复](#reprotection-and-failback)** 
-2.  **[容量](#capacity)**
-1.  **[安全性](#security)** 
 
 
 ## <a name="general"></a>常规
@@ -186,7 +175,7 @@ Site Recovery 提供“多 VM 一致性”选项，选择该选项会创建一�
 ### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>什么是虚拟机故障转移的 RTO？
 Site Recovery 的 [RTO SLA 为 2小时](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 但是，大多数情况下，Site Recovery 会在几分钟内对虚拟机进行故障转移。 可以转到故障转移作业来计算 RTO，该作业显示启动 VM 所需的时间。 有关恢复计划 RTO，请参阅以下部分。 
 
-## <a name="recovery-plan"></a>恢复计划
+## <a name="recovery-plans"></a>恢复计划
 
 ### <a name="what-is-a-recovery-plan"></a>什么是恢复计划？
 Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有助于实现恢复的一致准确性、可重复性和自动化。 恢复计划可为用户解决以下需求：
@@ -226,7 +215,7 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 是的可以购买[保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)在 DR 区域和 ASR 故障转移操作将使用它们。 </br> 需要从客户无需额外配置。
 
 
-## <a name="security"></a>安全性
+## <a name="security"></a>安全
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>复制数据是否会发送到 Site Recovery 服务？
 否。Site Recovery 不会拦截复制的数据，也不包含虚拟机上运行的组件的任何相关信息。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。

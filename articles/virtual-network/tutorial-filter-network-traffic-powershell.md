@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 023662f0293debb1b40fc8ea10bb725eab7be4d8
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 22090bf89e469f7e8defcd50b311c555949b9bde
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649928"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317709"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>在 PowerShell 中使用网络安全组筛选网络流量
 
@@ -277,7 +277,7 @@ mstsc /v:myvmWeb
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-完成 IIS 安装后，从 *myVmWeb* VM 断开连接，从而保留 *myVmMgmt* 远程桌面连接。 若要查看 IIS 欢迎屏幕上，请打开 Internet 浏览器并浏览到 http://myVmWeb。
+完成 IIS 安装后，从 *myVmWeb* VM 断开连接，从而保留 *myVmMgmt* 远程桌面连接。 若要查看 IIS 欢迎屏幕上，打开 internet 浏览器并浏览到 http:\//myVmWeb。
 
 从 *myVmMgmt* VM 断开连接。
 

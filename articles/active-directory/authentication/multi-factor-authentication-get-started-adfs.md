@@ -1,5 +1,5 @@
 ---
-title: 双重验证和 AD FS - Azure MFA | Microsoft 文档
+title: 双重验证 Azure MFA 和 AD FS 的 Azure Active Directory
 description: 这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何将 Azure MFA 与 AD FS 配合使用。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab1f54ee8c3ebb5ae41d28b70f1cffcb244af39f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c2f5d623c23f2d3dd661f725a8d7999bfbd28377
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075997"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314530"
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Azure 多重身份验证服务器和 Active Directory 联合身份验证服务入门
 

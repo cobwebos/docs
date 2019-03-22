@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/10/2019
+ms.topic: conceptual
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d1dc92e134b7ebca8e0eed30ef125210bc00eb37
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: d86151b436ec3cc5ea3d4b687f5c8692b2ca4efa
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989978"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258694"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>如何通过 Azure 门户使用本地编码器执行实时流式处理
 > [!div class="op_single_selector"]
@@ -31,12 +31,12 @@ ms.locfileid: "55989978"
 
 本教程介绍了使用 Azure 门户创建经配置后可以进行直通传递的 **通道** 的步骤。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 以下是完成本教程所需具备的条件：
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅 [如何创建媒体服务帐户](media-services-portal-create-account.md)。
-* 网络摄像机。 例如， [Telestream Wirecast 编码器](http://www.telestream.net/wirecast/overview.htm)。
+* 网络摄像机。 例如， [Telestream Wirecast 编码器](https://www.telestream.net/wirecast/overview.htm)。
 
 强烈建议阅读以下文章：
 
@@ -82,7 +82,7 @@ ms.locfileid: "55989978"
 ## <a name="create-and-start-pass-through-channels-and-events"></a>创建并启动直通通道和事件
 频道与事件/节目相关联，使用事件/节目，可以控制实时流中的段的发布和存储。 通道管理事件。 
 
-可以通过设置 **存档窗口** 长度，指定希望保留节目录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，事件也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
+可以通过设置 **存档窗口** 长度，指定希望保留节目录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，事件也能够运行，但落在时间窗口长度后面的内容将不断被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
 
 每个事件都与某个资产关联。 若要发布事件，必须为关联的资产创建按需定位符。 创建此定位符后，可以生成一个可提供给客户端的流 URL。
 
@@ -92,14 +92,14 @@ ms.locfileid: "55989978"
 
 在准备好开始流式传输和存档时，启动事件。 在要停止对事件进行流式传输和存档时，停止节目。 
 
-要删除存档的内容，请停止并删除事件，并删除关联的资产。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
+如果要删除存档的内容，请停止并删除事件，并删除关联的资产。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 
 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。
 
 如果希望保留已存档的内容但不希望其可供流式传输，请删除流式传输定位符。
 
 ### <a name="to-use-the-portal-to-create-a-channel"></a>使用门户来创建通道
-本部分介绍如何使用“快速创建”选项创建直通通道。
+本部分演示如何使用“快速创建”  选项来创建直通通道。
 
 有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。
 
@@ -108,10 +108,10 @@ ms.locfileid: "55989978"
    
     ![入门](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
-    此时会显示“实时传送视频流”窗口。
+    此时会显示“实时传送视频流”  窗口。
 3. 单击“快速创建”  ，即可使用 RTMP 引入协议创建直通通道。
    
-    此时会显示“创建新通道”窗口。
+    此时会显示“创建新通道”  窗口。
 4. 为新通道命名，并单击“创建” 。 
    
     此时会使用 RTMP 引入协议创建直通通道。
@@ -132,7 +132,7 @@ ms.locfileid: "55989978"
 
 ![已创建](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
-停止后，实时事件会自动转换为按需内容。
+停止时，实时事件会自动转换为点播内容。
 
 ## <a name="clean-up"></a>清理
 有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。

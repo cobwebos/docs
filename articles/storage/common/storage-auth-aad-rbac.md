@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure 门户来管理对容器和队列使用 RBAC （预览版）-Azure 存储的 Azure AD 访问权限 |Microsoft Docs
+title: 使用 Azure 门户来管理对容器和队列使用 RBAC （预览版）-Azure 存储的 Azure AD 访问权限
 description: 使用 Azure 门户中基于角色的访问控制 (RBAC) 授予对容器和对安全主体的队列访问权限。 Azure 存储支持通过 Azure AD 进行身份验证的内置和自定义 RBAC 角色。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8050027bac3d2f13ac457edcdad9275c040305da
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a38cce7d15b4796bb66803d06f3589569985cb37
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431850"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319493"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>授予对 Azure 容器和队列使用 RBAC （预览版） 在 Azure 门户中的访问权限
 
@@ -101,14 +101,6 @@ RBAC 角色分配到 Azure AD 安全主体，Azure 授予访问这些资源时�
 
 > [!NOTE]
 > 将读取器角色分配是只需将需要用来访问 blob 或队列使用 Azure 门户的用户。 
-
-## <a name="use-azure-ad-credentials-with-the-portal"></a>门户中使用 Azure AD 凭据
-
-若要访问 blob 或队列使用你的 Azure AD 凭据在 Azure 门户中，使用预览链接在下图中所示：
-
-![访问 blob 或队列使用门户中的 Azure AD 凭据](media/storage-auth-aad-rbac/access-data-azure-ad.png)
-
-如果访问使用生产链接而不是预览链接的 blob 或队列数据，Azure 门户将使用你的帐户密钥来授权访问权限，而不是使用 Azure AD。
 
 ## <a name="next-steps"></a>后续步骤
 

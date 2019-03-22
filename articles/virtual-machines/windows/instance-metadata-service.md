@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8cdf8022f87c8fa3e81e2544a6678751726b2b3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 777b3a8d414f0b785d908c37da98e987445ed96d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889822"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317453"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -352,7 +352,7 @@ resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resourc
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 计划 | [计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)中为 vm 及其 Azure Marketplace 映像，包含名称、 产品和发布服务器 | 2018-04-02
 provider | 提供程序的 VM | 2018-10-01
-publicKeys | 公钥的集合 [<https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey>]，已分配给 VM 和路径 | 2018-04-02
+publicKeys | [公共键的集合](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey)分配给 VM 和路径 | 2018-04-02
 vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
 ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02

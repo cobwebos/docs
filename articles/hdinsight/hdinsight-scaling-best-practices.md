@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: e8a85401c0c7282d64ebcbe2f9180f25f36f7289
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: cae0c97cb3084b0578f277852d646c199d1e2313
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108148"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316246"
 ---
 # <a name="scale-hdinsight-clusters"></a>缩放 HDInsight 群集
 
@@ -120,7 +120,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 
 * H100 无法提交语句 show databases: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException:连接到 hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] 失败:**连接被拒绝**
 
-* H020 无法连接到 hn0-hdisrv.servername.bx.internal.cloudapp.net:10001: org.apache.thrift.transport.TTransportException:未能创建与 http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/ 的 Http 连接。 org.apache.http.conn.HttpHostConnectException:连接到 hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] 失败:连接被拒绝: org.apache.thrift.transport.TTransportException:未能创建与 http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/ 的 Http 连接。 org.apache.http.conn.HttpHostConnectException:连接到 hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] 失败:**连接被拒绝**
+* H020 无法连接到 hn0-hdisrv.servername.bx.internal.cloudapp.net:10001: org.apache.thrift.transport.TTransportException:无法创建 http 连接到 http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/。 org.apache.http.conn.HttpHostConnectException:连接到 hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] 失败:连接被拒绝: org.apache.thrift.transport.TTransportException:无法创建 http 连接到 http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/。 org.apache.http.conn.HttpHostConnectException:连接到 hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] 失败:**连接被拒绝**
 
 * 从 Hive 日志中：警告 [main]: server.HiveServer2 (HiveServer2.java:startHiveServer2(442)) – 第 21 次尝试启动 HiveServer2 时出错，将在 60 秒后重试 java.lang.RuntimeException:对 hive 配置应用授权策略时出错: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException:**无法创建目录** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374。 名称节点处于安全模式。
     报告的块数为 0，需要额外的 9 个块才能达到总块数 9 的阈值 0.9900。

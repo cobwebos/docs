@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 79440cf69f921e5933ed410e276cdf304e94fa4f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 64cfac0d689df88c4d432e772bcd0a0cc7ab4ade
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817268"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317674"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
-[Azure 存储分析](../storage-analytics.md)提供所有存储服务的指标，以及 Blob、队列和表的日志。 可以使用 [Azure 门户](https://portal.azure.com)来配置要为帐户记录哪些指标和日志，并配置图表来提供指标数据的可视表示形式。
+[Azure 存储分析](storage-analytics.md)提供所有存储服务的指标，以及 Blob、队列和表的日志。 可以使用 [Azure 门户](https://portal.azure.com)来配置要为帐户记录哪些指标和日志，并配置图表来提供指标数据的可视表示形式。
 
 > [!NOTE]
-> 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析和计费](/rest/api/storageservices/Storage-Analytics-and-Billing)。
+> 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析](storage-analytics.md)。
 >
 > Azure 文件目前支持存储分析指标，但尚不支持日志记录。
-> 
-> 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](../storage-monitoring-diagnosing-troubleshooting.md)。
+>
+> 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](storage-monitoring-diagnosing-troubleshooting.md)。
 >
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>为存储帐户配置监视
@@ -41,22 +41,22 @@ ms.locfileid: "55817268"
    若要设置数据保留策略，请移动“保留期(天)”滑块，或输入数据的保留天数（1 到 365 天）。 新存储帐户的默认保留期为 7 天。 如果不需要设置保留策略，请输入零。 如果没有保留策略，则是否删除监视数据由自己决定。
 
    > [!WARNING]
-   > 手动删除指标数据会产生费用。 陈旧的分析数据（超过保留策略的数据）会被系统删除，不会产生费用。 建议根据要将帐户的存储分析数据保留多长时间来设置保留策略。 有关详细信息，请参阅[启用存储指标时需要支付多少费用？](../common/storage-enable-and-view-metrics.md#what-charges-do-you-incur-when-you-enable-storage-metrics)
+   > 手动删除指标数据会产生费用。 陈旧的分析数据（超过保留策略的数据）将被系统删除，不会产生费用。 建议根据要将帐户的存储分析数据保留多长时间来设置保留策略。 请参阅[帐单存储度量值](storage-analytics-metrics.md#billing-on-storage-metrics)有关详细信息。
    >
 
 1. 完成监视配置后，选择“保存”。
 
-随后，一组默认的指标会显示在存储帐户边栏选项卡上的图表中，以及各个服务边栏选项卡（Blob、队列、表和文件）中。 启用服务的指标后，最长可能需要一小时，数据才会显示在其图表中。 可以在任何指标图表中选择“编辑”，配置要在图表中显示的指标。
+随后，一组默认的指标将显示在存储帐户边栏选项卡上的图表中，以及各个服务边栏选项卡（Blob、队列、表和文件）中。 启用服务的指标后，最长可能需要一小时，数据才会显示在其图表中。 可以在任何指标图表中选择“编辑”，配置要在图表中显示的指标。
 
 将“状态”设置为“关闭”可以禁用指标收集和日志记录。
 
 > [!NOTE]
-> Azure 存储使用[表存储](../common/storage-introduction.md#table-storage)来存储存储帐户的指标，将指标存储在帐户中的表内。 有关详细信息，请参阅： [指标的存储方式](../common/storage-analytics.md#how-metrics-are-stored)
+> Azure 存储使用[表存储](storage-introduction.md#table-storage)来存储存储帐户的指标，将指标存储在帐户中的表内。 有关详细信息，请参阅： [指标的存储方式](storage-analytics-metrics.md#how-metrics-are-stored)
 >
 
 ## <a name="customize-metrics-charts"></a>自定义指标图表
 
-使用以下过程选择要在指标图表中查看哪些存储指标。 
+使用以下过程选择要在指标图表中查看哪些存储指标。
 
 1. 首先在 Azure 门户中显示存储指标图表。 可以在**存储帐户边栏选项卡**以及各个服务（Blob、队列、表和文件）的“指标”边栏选项卡中找到图表。
 
@@ -130,17 +130,16 @@ ms.locfileid: "55817268"
 1. 在菜单边栏选项卡的“监视”部分选择“诊断”。
 
     ![Azure 门户中“监视”下面的诊断菜单项。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
-    
+
 1. 确保“状态”设置为“打开”，选择要为其启用日志记录的**服务**。
 
     ![在 Azure 门户中配置日志记录](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. 单击“ **保存**”。
 
-诊断日志保存在存储帐户下名为 $logs 的 Blob 容器中。 可以使用 [Microsoft 存储资源管理器](http://storageexplorer.com)等存储资源管理器，或者使用存储客户端库或 PowerShell 以编程方式来查看日志数据。
+诊断日志保存在存储帐户下名为 $logs 的 Blob 容器中。 可以使用 [Microsoft 存储资源管理器](https://storageexplorer.com)等存储资源管理器，或者使用存储客户端库或 PowerShell 以编程方式来查看日志数据。
 
-有关访问 $logs 容器的信息，请参阅[启用存储日志记录和访问日志数据](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data)。
+有关访问 $logs 容器的信息，请参阅[存储分析日志记录](storage-analytics-logging.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关存储分析的[指标、日志记录和计费](../storage-analytics.md)的详细信息。
-* 使用 PowerShell 以及通过 C# 以编程方式[启用 Azure 存储指标和查看指标数据](../storage-enable-and-view-metrics.md)。
+* 了解有关存储分析的 [指标、日志记录和计费](storage-analytics.md) 的详细信息。

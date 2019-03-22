@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: d7547ecf387e070efe788ba5f8582076388f422a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428901"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984197"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>使用认知服务生成语言理解应用的最佳做法
 使用应用创作进程生成 LUIS 应用。 
@@ -78,7 +78,9 @@ ms.locfileid: "56428901"
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>应在后续的迭代中添加短语列表和模式
 
-最佳做法是在测试应用之前不要应用这些做法。 在添加短语列表和模式之前，你应该了解应用的行为方式。 在了解没有这些项时你的应用的行为方式后，在这些功能适用于你的应用时再添加每个功能。 你不需要在每次[迭代](luis-concept-app-iteration.md)中都添加这些功能，也不需要在每个版本中都更改这些功能。 
+最佳做法是在测试应用之前不要应用这些做法。 您应该了解应用添加短语列表和模式，因为这些功能加权更重比示例语音样本，则会导致置信度之前的行为方式。 
+
+在了解没有这些项时你的应用的行为方式后，在这些功能适用于你的应用时再添加每个功能。 你不需要在每次[迭代](luis-concept-app-iteration.md)中都添加这些功能，也不需要在每个版本中都更改这些功能。 
 
 在设计模型之初就添加它们并没有什么坏处，但如果在使用言语测试模型之后再添加，则可以更容易地看出每个功能如何改变结果。 
 

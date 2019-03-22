@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d67d8462c177d19dfa3cebbd0b4b000fbe3f41b8
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: d687665a7f9b18d42dcd45953c15d2fbc6d71d2f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57894941"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335821"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -33,6 +33,12 @@ ms.locfileid: "57894941"
 * 文本转语音 REST API 需要授权标头。 这意味着，需要完成令牌交换才能访问该服务。 有关详细信息，请参阅[身份验证](#authentication)。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
+
+## <a name="regions-and-endpoints"></a>区域和终结点
+
+使用 REST API 的语音转文本听录支持以下区域。 请务必选择与订阅区域匹配的终结点。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 ## <a name="request-headers"></a>请求标头
 

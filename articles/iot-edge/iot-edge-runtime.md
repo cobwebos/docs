@@ -4,17 +4,17 @@ description: 了解 Azure IoT Edge 运行时如何管理设备上的模块、安
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/13/2018
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a2412a286015cb403fe9a2af7754c7e5346fe98c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.openlocfilehash: bb2df9c32d5adc8160da82148e4a66a4ab68d182
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230418"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311593"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 运行时及其体系结构
 
@@ -22,17 +22,17 @@ IoT Edge 运行时是一系列程序，设备安装了这些程序才可视为 I
 
 IoT Edge 运行时在 IoT Edge 设备上执行以下功能：
 
-* 安装和更新设备上的工作负荷。
+* 在设备上安装和更新工作负荷。
 * 维护设备上的 Azure IoT Edge 安全标准。
-* 确保 [IoT Edge 模块](iot-edge-modules.md)始终处于运行状态。
-* 将模块运行状况报告给云以进行远程监控。
+* 絋粄[IoT Edge 模块](iot-edge-modules.md)始终运行。
+* 将模块运行状况报告给云以进行远程监视。
 * 促进下游叶设备与 IoT Edge 设备之间的通信。
-* 促进 IoT Edge 设备上的模块间的通信。
+* 促进 IoT Edge 设备模块之间的通信。
 * 促进 IoT Edge 设备和云之间的通信。
 
 ![运行时向 IoT 中心传达见解和模块运行状况](./media/iot-edge-runtime/Pipeline.png)
 
-IoT Edge 运行时的职责分为两类：通信和模块管理。 这两种角色是由组成 IoT Edge 运行时的两个组件执行的。 IoT Edge 中心负责通信，IoT Edge 代理管理部署和监视模块。 
+IoT Edge 运行时的职责分为两类：通信和模块管理。 这两种角色是由组成 IoT Edge 运行时的两个组件执行的。 *IoT Edge 中心*负责进行通信，而*IoT Edge 代理*部署和监视模块。 
 
 IoT Edge 中心和 IoT Edge 代理都是模块，就像 IoT Edge 设备上运行的其他任何模块一样。 
 
@@ -52,11 +52,11 @@ IoT Edge 中心不是在本地运行的完整版本的 IoT 中心。 有一些�
 
 ![IoT Edge 中心是物理设备和 IoT 中心之间的网关](./media/iot-edge-runtime/Gateway.png)
 
- IoT Edge 中心可以确定其是否连接到了 IoT 中心。 如果连接丢失，IoT Edge 中心将在本地保存消息或克隆更新。 一旦重新建立连接，将同步所有数据。 此临时缓存的位置由 IoT Edge 中心的模块孪生的属性决定。 只要设备具有存储容量，缓存的大小就没有限制并且会增加。 
+IoT Edge 中心可以确定其是否连接到了 IoT 中心。 如果连接丢失，IoT Edge 中心将在本地保存消息或克隆更新。 一旦重新建立连接，将同步所有数据。 此临时缓存的位置由 IoT Edge 中心的模块孪生的属性决定。 只要设备具有存储容量，缓存的大小就没有限制并且会增加。 
 
 ### <a name="module-communication"></a>模块通信
 
- IoT Edge 中心促进模块间通信。 使用 IoT Edge 中心作为消息中转站可以保持模块之间相互独立。 模块只需指定它们接受消息的输入和写入消息的输出。 然后解决方案开发者将这些输入和输出拼结在一起，以便模块按特定于该解决方案的顺序处理数据。 
+IoT Edge 中心促进模块间通信。 使用 IoT Edge 中心作为消息中转站可以保持模块之间相互独立。 模块只需指定它们接受消息的输入和写入消息的输出。 然后解决方案开发者将这些输入和输出拼结在一起，以便模块按特定于该解决方案的顺序处理数据。 
 
 ![IoT Edge 中心促进模块间通信](./media/iot-edge-runtime/module-endpoints.png)
 

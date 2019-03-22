@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4311d71775ef877e0090abca9c6caabab503ef08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097604"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336060"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -94,7 +94,7 @@ az keyvault delete --name ContosoVault
 ```azurecli
 az keyvault list-deleted
 ```
-- ID 可用于在恢复或清除时识别资源。 
+- *ID*可用于恢复或清除时识别资源。 
 - 资源 ID是此保管库的原始资源 ID。 由于此密钥保管库现在处于已删除状态，因此该资源 ID 不存在任何资源。 
 - “计划清除日期”表示如果不采取任何操作，将永久删除保管库。 用于计算“计划清除日期”的默认保留期是 90 天。
 
@@ -222,6 +222,24 @@ az keyvault purge --location westus --name ContosoVault
 
 >[!IMPORTANT]
 >已清除的保管库对象（由“计划清除日期”字段触发清除操作）将被永久删除。 不可恢复！
+
+## <a name="enabling-purge-protection"></a>启用清除保护
+
+清除保护开启时，一个保管库或中的对象已删除超过 90 天的保留期后，才可以清除状态。 仍可以恢复此类保管库或对象。 此功能可以提高的可靠性，保管库或对象可以永远不会永久删除之前保留期已过。
+
+仅当还启用软删除时，可以启用清除保护。 
+
+若要启用这两个软删除和清除保护，创建一个保管库时，使用[az keyvault 创建](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)命令：
+
+```
+az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
+```
+
+若要将清除保护添加到现有的保管库 （即已启用软删除），请使用[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update)命令：
+
+```
+az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
+```
 
 ## <a name="other-resources"></a>其他资源
 

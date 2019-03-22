@@ -5,14 +5,14 @@ author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/19/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3da4662885b2b09c6474a1a6ceafd627e71cf236
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d34ef1bb5bea6f5f099f7fa2a24ddec2362b44ea
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081026"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336178"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -101,10 +101,10 @@ Remove-AzKeyVault -VaultName 'ContosoVault'
 使用以下命令，可查看与订阅关联且处于已删除状态的密钥保管库：
 
 ```powershell
-PS C:\> Get-AzKeyVault -InRemovedState 
+Get-AzKeyVault -InRemovedState 
 ```
 
-- ID 可用于在恢复或清除时识别资源。 
+- *ID*可用于恢复或清除时识别资源。 
 - 资源 ID是此保管库的原始资源 ID。 由于此密钥保管库现在处于已删除状态，因此该资源 ID 不存在任何资源。 
 - “计划清除日期”表示如果不采取任何操作，将永久删除保管库。 用于计算“计划清除日期”的默认保留期是 90 天。
 
@@ -233,8 +233,27 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 >[!IMPORTANT]
 >已清除的保管库对象（由“计划清除日期”字段触发清除操作）将被永久删除。 不可恢复！
 
+## <a name="enabling-purge-protection"></a>启用清除保护
+
+清除保护开启时，一个保管库或中的对象已删除超过 90 天的保留期后，才可以清除状态。 仍可以恢复此类保管库或对象。 此功能可以提高的可靠性，保管库或对象可以永远不会永久删除之前保留期已过。
+
+仅当还启用软删除时，可以启用清除保护。 
+
+若要启用这两个软删除和清除保护，创建一个保管库时，使用[新建 AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) cmdlet:
+
+```powershell
+New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
+```
+
+若要将清除保护添加到现有的保管库 （即已启用软删除），请使用[Get AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0)， [Get AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0)，并[集 AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) cmdlet:
+
+```
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
+
+Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
+```
+
 ## <a name="other-resources"></a>其他资源
 
 - 有关 Key Vault 软删除功能的概述，请参阅 [Azure Key Vault 软删除概述](key-vault-ovw-soft-delete.md)。
-- 有关 Azure 密钥保管库使用情况的综述，请参阅[什么是 Azure 密钥保管库？](key-vault-overview.md)。
-
+- 有关 Azure 密钥保管库用法的一般概述，请参阅[什么是 Azure 密钥保管库？](key-vault-overview.md)。ate = Succeeded}

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 43ac3e3cfe57ac7d6b8c575611bc4dbae3102dc5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e9e47eff3df941b0c1437083dc7440fab4091418
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439309"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317062"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -679,10 +679,6 @@ Get-AzWebSiteLog -Name <function app name> -Tail
 ```
 
 有关详细信息，请参阅[如何流式传输日志](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)。
-
-### <a name="local-view-of-log-files"></a>日志文件的本地视图
-
-[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 1eab0be59de90ad68cbf9601b7e2200e640875f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58178061"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317487"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>将 CloudEvents 架构与事件网格配合使用
 
@@ -70,7 +70,7 @@ CloudEvents v0.1 提供以下属性：
 | 源             | URI      | "/mycontext"                     | 描述事件生成者                                       | topic#subject
 | eventID            | String   | "1234-1234-1234"                 | 事件的 ID                                                    | id
 | EventTime          | Timestamp| "2018-04-05T17:31:00Z"           | 事件发生时的时间戳（可选）                    | EventTime
-| schemaURL          | URI      | "https://myschema.com"           | 数据属性所遵循的架构的链接（可选） | 未使用
+| schemaURL          | URI      | "https:\//myschema.com"           | 数据属性所遵循的架构的链接（可选） | 未使用
 | contentType        | String   | "application/json"               | 描述数据编码格式（可选）                       | 未使用
 | 扩展         | 映射      | { "extA": "vA", "extB", "vB" }  | 任何其他的元数据（可选）                                 | 未使用
 | 数据               | 对象   | { "objA": "vA", "objB", "vB" }  | 事件有效负载（可选）                                       | 数据

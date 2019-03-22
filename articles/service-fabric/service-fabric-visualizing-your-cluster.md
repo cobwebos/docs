@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: ba6a9a09945f0e822dfe02a74f2cdb8e21a1691c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 47b5e89164173869d6964e2c5e392bb99e0c8555
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674661"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317385"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
 
@@ -46,7 +46,7 @@ Service Fabric Explorer (SFX) 是一种用于检验和管理 Azure Service Fabri
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>从群集运行 Service Fabric Explorer
 
-Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点中进行托管。 若要在 Web 浏览器中启动 SFX，则从任意浏览器（如 https://clusterFQDN:19080 ）浏览到群集的 HTTP 管理终结点。
+Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点中进行托管。 若要在 web 浏览器中启动 SFX，浏览到群集的 HTTP 管理终结点从任何浏览器-例如 https:\//clusterFQDN:19080。
 
 对于开发人员工作站设置，可以通过导航到 https://localhost:19080/Explorer 在本地群集上启动 Service Fabric Explorer。 阅读本文，了解如何[准备开发环境](service-fabric-get-started.md)。
 

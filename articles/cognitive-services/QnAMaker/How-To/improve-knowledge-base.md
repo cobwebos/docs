@@ -1,29 +1,29 @@
 ---
 title: 改进知识库 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: ''
+description: 通过主动学习，可以根据用户提交的内容为问题和答案对提供替代问题建议，从而提高知识库的质量。 查看这些建议后，可以将其添加到现有问题，也可以拒绝它们。 知识库不会自动更改。 你必须接受的建议进行的任何更改才会生效。 这些建议会添加问题，但不会更改或删除现有问题。
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
+ms.openlocfilehash: 739ae64c6b32958271260bcbd01b339c1b108f11
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537892"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337419"
 ---
-# <a name="use-active-learning-to-improve-knowledge-base"></a>使用主动学习改进知识库
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用 active 学习来改善您的知识库
 
 通过主动学习，可以根据用户提交的内容为问题和答案对提供替代问题建议，从而提高知识库的质量。 查看这些建议后，可以将其添加到现有问题，也可以拒绝它们。 
 
 知识库不会自动更改。 必须先接受建议才能使更改生效。 这些建议会添加问题，但不会更改或删除现有问题。
 
-## <a name="active-learning"></a>主动学习
+## <a name="what-is-active-learning"></a>主动学习是什么？
 
 QnA Maker 通过隐式和显式反馈学习新的问题变体。
  
@@ -42,7 +42,7 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 一旦问题建议 QnA Maker 门户中，需要审阅和接受或拒绝这些建议。 
 
-## <a name="upgrade-version-to-use-active-learning"></a>升级版本以使用主动学习
+## <a name="upgrade-your-version-to-use-active-learning"></a>升级版本以使用主动学习
 
 运行时版本 4.4.0 及更高版本支持主动学习。 如果你的知识库是在早期版本上创建的，请[升级运行时](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates)以使用此功能。 
 
@@ -64,12 +64,12 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 1. 若要打开主动学习，请单击“名称”，转到 QnA Maker 门户右上角的“[服务设置](https://www.qnamaker.ai/UserSettings)”。  
 
-    ![在“服务设置”页上，启用“主动学习”](../media/improve-knowledge-base/Endpoint-Keys.png)
+    ![打开主动学习建议的问题备选方法，从服务设置页。 在右上方菜单中，选择您的用户名称，然后选择服务设置。](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
 1. 找到 QnA Maker 服务，然后切换到“主动学习”。 
 
-    [![在“服务设置”页上，启用“主动学习”](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [![在服务设置页中，切换主动学习功能。如果您不能切换功能，您可能需要升级你的服务。](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     启用“主动学习”后，知识库会根据用户提交的问题定期建议新的问题。 可以通过再次切换设置来禁用“主动学习”。
 
@@ -77,15 +77,15 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 1. 要查看建议的问题，请在“编辑”知识库页上，选择“显示建议”。 
 
-    [![在“服务设置”页上，切换“显示建议”按钮](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![在门户的编辑部分中，选择显示的建议，若要查看主动学习新问题替代项。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. 筛选要通过选择显示仅建议的问题和答案对包含的知识库**筛选器由建议**。
 
-    [![在“服务设置”页上，按建议筛选以仅查看这些问题/答案对](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![使用建议切换筛选器来查看仅主动学习问题的建议替代方法。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
 1.  每个包含建议的问题部分都会显示带有复选标记的新问题，`✔` 表示接受问题，`x` 表示拒绝建议。 选中复选标记可以添加问题。 
 
-    [![在“服务设置”页上，启用“主动学习”](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![选择或通过选择绿色的复选标记或红色删除标记拒绝主动学习问题的建议替代方法。](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     可以通过选择“全部添加”或“全部拒绝”来添加或删除“所有建议”。
 
@@ -154,7 +154,13 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 客户端应用程序显示所有问题，并且可以让用户选择最能代表其意图的问题。 
 
-用户选择一个现有问题后， 用户反馈会发送到 QnA Maker 的[训练](https://www.aka.ms/activelearningsamplebot) API，用于继续执行主动学习反馈循环。 
+一旦用户选择一个现有问题，客户端应用程序以使用 QnA Maker 训练 API 的反馈方式发送用户的选择。 此反馈完成活动学习反馈循环。 
+
+使用[Azure 智能机器人应用程序C#示例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)若要查看端到端方案中的主动学习。
+
+## <a name="train-api"></a>训练 API
+
+主动学习反馈训练 API POST 请求发送到 QnA Maker。 API 签名是：
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -163,9 +169,42 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-通过 [Azure 机器人 C# 示例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)详细了解如何使用主动学习
+|HTTP 请求属性|名称|Type|目的|
+|--|--|--|--|
+|URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
+|主机子域|QnAMaker 资源名称|字符串|在 Azure 订阅中将 QnA Maker 的主机名。 这是可在设置页上后发布该知识库。 |
+|标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
+|标头|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|POST 正文|JSON 对象|JSON|培训反馈|
 
-## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>主动学习保存在导出应用程序的 tsv 文件
+JSON 正文具有多个设置：
+
+|JSON 正文属性|Type|目的|
+|--|--|--|--|
+|`feedbackRecords`|数组|反馈的列表。|
+|`userId`|字符串|接受建议的问题的人员的用户 ID。 用户 ID 格式是由您决定。 例如，电子邮件地址可以是您的体系结构中的有效用户 ID。 可选。|
+|`userQuestion`|字符串|问题的确切文本。 必需。|
+|`qnaID`|数字|在中找到的问题的 ID [GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)。 |
+
+一个 JSON 正文示例如下所示：
+
+```json
+{
+    "feedbackRecords": [
+        {
+            "userId": "1",
+            "userQuestion": "<question-text>",
+            "qnaId": 1
+        }
+    ]
+}
+```
+
+成功响应将返回 204，而且没有 JSON 响应正文中的状态。 
+
+<a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
+
+## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>导出知识库中保存主动学习
 
 当你的应用程序启用，主动学习和导出应用程序中， `SuggestedQuestions` tsv 文件中的列将保留主动学习数据。 
 
@@ -193,4 +232,4 @@ Content-Type: application/json
 ## <a name="next-steps"></a>后续步骤
  
 > [!div class="nextstepaction"]
-> [使用 QnA Maker API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [将用于 GenerateAnswer API 元数据](metadata-generateanswer-usage.md)

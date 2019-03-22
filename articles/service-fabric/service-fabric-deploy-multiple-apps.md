@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4d9dfbcfc1dd00209a90386bf75f0c2515a28060
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ed8159f38e2763cb897212ae4f51fecb7343a683
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854460"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315585"
 ---
 # <a name="deploy-multiple-guest-executables"></a>部署多个来宾可执行文件
 本文介绍如何打包多个来宾可执行文件并部署到 Azure Service Fabric。 要生成并部署单个 Service Fabric 包，请参阅如何[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md)。
@@ -204,7 +204,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-将应用程序成功发布到本地群集之后，便可以在我们在 Node.js 应用程序的服务清单中输入的端口（例如 http://localhost:3000 ）上访问 Node.js 应用程序。
+一旦应用程序已成功发布到本地群集，可以访问我们的 Node.js 应用程序--例如 http 的服务清单中输入的端口上的 Node.js 应用程序：\//localhost:3000。
 
 在本教程中，学习了如何轻松地将两个现有应用程序打包成一个 Service Fabric 应用程序。 还已了解如何将其部署到 Service Fabric，以便它能够从一些 Service Fabric 功能（例如高可用性和运行状况系统集成）中获益。
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 567890f3beec1eff30effeec0ce23284c5fee141
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd109a72b092e963bc4fda7894bf67f998b7d0c5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109284"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309797"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>（已弃用）通过 Marathon REST API 管理 DC/OS 容器
 
@@ -30,7 +30,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 * [连接到 Azure 容器服务群集](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>访问 DC/OS API
-连接到 Azure 容器服务群集后，可通过 http://localhost:local-port 访问 DC/OS 和相关 REST API。 本文档中的示例假定在端口 80 上实现隧道连接。 例如，可以在以 `http://localhost/marathon/v2/` 为开头的 URI 上访问 Marathon 终结点。 
+在连接到 Azure 容器服务群集后，您可以通过 http 访问 DC/OS 和相关的 REST Api:\//localhost:local 的端口。 本文档中的示例假定在端口 80 上实现隧道连接。 例如，Uri 上访问 Marathon 终结点从 http: \/ /localhost/marathon/v2 /。 
 
 有关 [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) 和 [Chronos API](https://mesos.github.io/chronos/docs/api.html) 的详细信息，请参阅 Mesosphere 文档；有关 [Mesos 计划程序 API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) 的详细信息，请参阅 Apache 文档。
 
@@ -123,7 +123,7 @@ Nginx 服务器的输出与下面类似：
 从隧道连接运行以下命令来扩大应用程序。
 
 > [!NOTE]
-> URI 为 http://localhost/marathon/v2/apps/，后接要缩放的应用程序 ID。 如果使用此处提供的 Nginx 示例，URI 将为 http://localhost/marathon/v2/apps/nginx。
+> URI 为 http: \/ /localhost/marathon/v2/应用/跟要缩放的应用程序的 ID。 如果使用的 Nginx 示例，则提供在这里，则 URI 将为 http:\//localhost/marathon/v2/apps/nginx。
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -180,7 +180,7 @@ Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentTy
 运行以下命令来扩大应用程序：
 
 > [!NOTE]
-> URI 为 http://localhost/marathon/v2/apps/，后接要缩放的应用程序 ID。 如果使用此处提供的 Nginx 示例，URI 将为 http://localhost/marathon/v2/apps/nginx。
+> URI 为 http: \/ /localhost/marathon/v2/应用/跟要缩放的应用程序的 ID。 如果你在此处使用提供的 Nginx 示例，则 URI 将为 http:\//localhost/marathon/v2/apps/nginx。
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b1eb6e1458fab6de3472d68352ba7764b71007c8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58292575"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317640"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>使用 REST 配置 Azure 媒体服务遥测
 
@@ -34,7 +34,7 @@ ms.locfileid: "58292575"
 - 获取通知终结点
 - 创建用于监视的通知终结点。 
 
-    若要创建通知终结点，请将 EndPointType 设置为 AzureTable (2) 并将 endPontAddress 设置为存储表（例如 https://telemetryvalidationstore.table.core.windows.net/)）。
+    若要创建通知终结点，请将 EndPointType 设置为 AzureTable (2) 并将 endPontAddress 设置为存储表 (例如，https:\//telemetryvalidationstore.table.core.windows.net/)。
   
 - 获取监视配置
 
@@ -121,12 +121,12 @@ ms.locfileid: "58292575"
     
     {  
         "Name":"monitoring",
-        "EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/",
+        "EndPointAddress":"https:\//telemetryvalidationstore.table.core.windows.net/",
         "EndPointType":2
     }
 
 > [!NOTE]
-> 不要忘记将“https://telemetryvalidationstore.table.core.windows.net”值更改为自己的存储帐户。
+> 不要忘了将"https:\//telemetryvalidationstore.table.core.windows.net"到您的存储帐户的值。
 
 ### <a name="response"></a>响应
 

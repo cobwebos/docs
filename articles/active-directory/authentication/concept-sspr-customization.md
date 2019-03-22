@@ -1,5 +1,5 @@
 ---
-title: 自定义 Azure AD 自助密码重置
+title: 自定义 Azure AD 自助服务密码重置-Azure Active Directory
 description: 用于 Azure AD 自助服务密码重置的自定义选项
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e15de18e57e949b2e7b7146269204469e61797
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a77c6ce205c40b5814f9b26f9099d868d434d3ce
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106944"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316440"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 

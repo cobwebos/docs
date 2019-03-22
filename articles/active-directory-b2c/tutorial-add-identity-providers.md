@@ -4,17 +4,18 @@ description: 了解如何使用 Azure 门户向 Azure Active Directory B2C 应�
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
-ms.openlocfilehash: 2a1843f941c6abc46928b38a66025fa87c4bcea5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.subservice: B2C
+ms.openlocfilehash: ef264622be1e66c98f8c7f17cf3e04b3239e8553
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757309"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338269"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 应用程序
 
@@ -31,7 +32,7 @@ ms.locfileid: "55757309"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。 
 
@@ -44,7 +45,7 @@ ms.locfileid: "55757309"
 若要让用户从 Azure AD 登录，需要在 Azure AD 租户中注册应用程序。 Azure AD 租户与 Azure AD B2C 租户不同。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请务必使用包含 Azure AD 租户的目录，具体方法是单击顶部菜单中的“目录和订阅筛选器”，再选择包含 Azure AD 租户的目录。
+2. 请务必使用包含 Azure AD 租户的目录，具体方法是：单击顶部菜单中的“目录和订阅筛选器”，再选择包含 Azure AD 租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”。
 4. 选择“新建应用程序注册”。
 5. 输入应用程序的名称。 例如，`Azure AD B2C App`。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 6068f054a2ce695a889351b1f959319c64eb73fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 6e4a83eb8b3488c4ce2816151ca31b4a594dd742
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235592"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338626"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure 来宾 OS 可支持性和停用策略
 本页面上的信息与 Azure 来宾操作系统（[来宾 OS](cloud-services-guestos-update-matrix.md)）相关。来宾 OS 仅适用于云服务辅助角色和 Web 角色 (PaaS)。 而不适用于虚拟机 (IaaS)。
@@ -37,7 +37,7 @@ Microsoft 已发布[来宾 OS 的支持策略](https://support.microsoft.com/gp/
 ## <a name="when-a-guest-os-version-is-retired"></a>何时停用来宾 OS 版本
 大约每个月都会推出新来宾 OS **版本**，以合并最新 MSRC 更新。 由于定期每月更新，来宾 OS 版本正常情况下会在其发布的大约 60 天后禁用。 对于每个可供使用的系列，此活动都至少保留两个来宾 OS 版本。
 
-### <a name="process-during-a-guest-os-family-retirement"></a>来宾 OS 停用的过程
+### <a name="process-during-a-guest-os-family-retirement"></a>来宾 OS 系列停用期间的过程
 宣布停用之后，客户在较旧系列正式从服务中移除之前有 12 个月的“过渡”期。 过渡时间可能延长，这由 Microsoft 决定。 将在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中发布更新。
 
 在过渡期开始的六 (6) 个月后，将逐步执行停用过程。 在此期间：
@@ -49,15 +49,17 @@ Microsoft 已发布[来宾 OS 的支持策略](https://support.microsoft.com/gp/
 Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直至过渡期的最后一天（称为“到期日期”）。 在到期日期，仍在运行的云服务不受 Azure SLA 的支持。 在该日期后，Microsoft 有权自行强制要求升级、删除或停止这些服务。
 
 ### <a name="process-during-a-guest-os-version-retirement"></a>来宾 OS 版本停用期间的过程
-如果客户将其来宾 OS 设置为自动更新，则他们不必担心如何处理有关来宾 OS 版本的问题。 他们将始终使用最新来宾 OS 版本。
+如果客户将其来宾 OS 设置为自动更新，则他们不必担心如何处理有关来宾 OS 版本的问题。 他们始终使用最新来宾 OS 版本。
 
 来宾 OS 版本每个月发布一次。 由于常规发布的速率，每个版本都具有固定生存期。
 
 60 天使用期后，版本会“停用”。 “停用”表示该版本将从门户中删除。 该版本再也无法通过 CSCFG 配置文件进行设置。 现有部署仍保持运行。 但是不允许进行新部署以及针对现有部署的代码和配置更新。
 
-“禁用”一段时间之后，来宾 OS 版本“到期”，仍在运行该版本的任何安装都会强制升级并设置为在将来自动更新来宾 OS。 过期是分批过期的，因此从禁用到过期的时间段可能各不相同。
+一段时间后"禁用"，来宾 OS 版本"到期"，仍在运行该过期的版本的任何安装都与安全和漏洞问题。 通常情况下，过期是分批，因此从禁用到过期期间可以各不相同。
 
-这些期间可能会延长，这由 Microsoft 决定，以便于客户过渡。 将在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中通告所有更改。
+配置其服务，以手动更新来宾操作系统的客户应确保其部署在受支持的来宾 OS 上运行。 如果服务配置为自动更新来宾 OS，基础平台将确保符合性，并将升级到最新的来宾操作系统。
+
+这些期间可能会延长，这由 Microsoft 决定，以便于客户过渡。 会在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中通告所有更改。
 
 ### <a name="notifications-during-retirement"></a>停用期间的通知
 * **系列停用** <br>Microsoft 将使用博客文章和门户通知。 将通过与指定的服务管理员进行直接通信（电子邮件、门户消息、电话）以通知仍使用停用的来宾 OS 系列的客户。 将在 [Azure 来宾 OS 版本和 SDK 兼容性矩阵](cloud-services-guestos-update-matrix.md)中发布所有更改。
@@ -70,11 +72,11 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 
 1. 及早开始计划迁移到较新的系列。
 2. 设置临时测试部署以测试在新系列上运行的云服务。
-3. 将来宾 OS 版本设置为“**自动**”（在 [.cscfg](cloud-services-model-and-package.md#cscfg) 文件中设置 osVersion=*），以便自动迁移到新的来宾 OS 版本。
+3. 将来宾 OS 版本设置为“自动”（在 [.cscfg](cloud-services-model-and-package.md#cscfg) 文件中设置 osVersion=*），以便自动迁移到新的来宾 OS 版本。
 
-**如果我的 Web 应用程序需要更深入地与 OS 集成，我该怎么办？**
+**如果 Web 应用程序需要与 OS 深入集成，该怎么办？**
 
-如果 Web 应用程序体系结构依赖于操作系统的基本功能，请使用平台支持的功能（例如[启动任务](cloud-services-startup-tasks.md)）或其他扩展性机制。 此外，还可以使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/scenarios/virtual-machines/)（IaaS – 基础结构即服务），可以在其中负责维护基本操作系统。
+如果 Web 应用程序体系结构依赖于操作系统的基本功能，请使用平台支持的功能（例如[启动任务](cloud-services-startup-tasks.md)）或其他扩展性机制。 此外，还可以使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/scenarios/virtual-machines/)（IaaS – 基础结构即服务）并在其中负责维护基础操作系统。
 
 ## <a name="next-steps"></a>后续步骤
 查看最新的[来宾 OS 版本](cloud-services-guestos-update-matrix.md)。

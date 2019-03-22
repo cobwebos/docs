@@ -1,35 +1,34 @@
 ---
-title: 连接到 Azure 事件中心 - Azure 逻辑应用 | Microsoft Docs
+title: 连接到 Azure 事件中心-Azure 逻辑应用
 description: 使用 Azure 事件中心和 Azure 逻辑应用管理和监视事件
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/21/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: a91daf08a56470e4d1e112e37b51150c2c5f00ef
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: a59f21478f85f238d91c01faed44d8e49cb15f0a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230312"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310789"
 ---
-# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中心和 Azure 逻辑应用监视、接收和发送事件 
+# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中心和 Azure 逻辑应用监视、接收和发送事件
 
-本文演示如何使用 Azure 事件中心连接器监视和管理从逻辑应用发送到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)的事件。 通过这样的方式可以创建逻辑应用，从事件中心自动执行检查、发送和接收事件的任务和工作流。 
+本文演示如何使用 Azure 事件中心连接器监视和管理从逻辑应用发送到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)的事件。 通过这样的方式可以创建逻辑应用，从事件中心自动执行检查、发送和接收事件的任务和工作流。
 
 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 如需特定于连接器的技术信息，请参阅 <a href="https://docs.microsoft.com/connectors/eventhubs/" target="blank">Azure 事件中心连接器参考</a>。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * [Azure 事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)
 
-* 要在其中访问事件中心的逻辑应用。 若要通过 Azure 事件中心触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
+* 要在其中访问事件中心的逻辑应用。 若要通过 Azure 事件中心触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="permissions-connection-string"></a>
 
@@ -37,15 +36,15 @@ ms.locfileid: "50230312"
 
 要使逻辑应用能够访问事件中心，请检查权限并获取事件中心命名空间的连接字符串。
 
-1. 登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。 
+1. 登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
 
 2. 转到事件中心命名空间，而不是特定的事件中心。 在命名空间页上，在“设置”下，选择“共享访问策略”。 在“声明”下，检查你是否有该命名空间的“管理”权限。
 
    ![管理事件中心命名空间的权限](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
-3. 如果想要以后手动输入连接信息，请获取事件中心命名空间的连接字符串。 
+3. 如果想要以后手动输入连接信息，请获取事件中心命名空间的连接字符串。
 
-   1. 在“策略”下，选择“RootManageSharedAccessKey”。 
+   1. 在“策略”下，选择“RootManageSharedAccessKey”。
 
    2. 查找主键的连接字符串。 选择复制按钮，并保存连接字符串供以后使用。
 
@@ -62,14 +61,15 @@ ms.locfileid: "50230312"
 
 在 Azure 逻辑应用中，每个逻辑应用都必须从[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例并开始运行应用的工作流。
 
-此示例演示在将新事件发送到事件中心时，如何启动逻辑应用工作流。 
+此示例演示在将新事件发送到事件中心时，如何启动逻辑应用工作流。
 
 1. 在 Azure 门户或 Visual Studio 中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 此示例使用 Azure 门户。
 
-2. 在搜索框中，输入“事件中心”作为筛选器。 在触发器列表中，选择所需的触发器。 
+2. 在搜索框中，输入“事件中心”作为筛选器。 在触发器列表中，选择所需的触发器。
 
-   此示例使用此触发器： 
-   “事件中心 - 事件在事件中心可用时”****
+   此示例使用此触发器：
+
+   **事件中心-当事件在事件中心可用时**
 
    ![选择触发器](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
 
@@ -80,9 +80,9 @@ ms.locfileid: "50230312"
       ![指定事件中心或使用者组](./media/connectors-create-api-azure-event-hubs/select-event-hub.png)
 
    2. 选择希望触发器检查事件中心的时间间隔和频率。
- 
+
    3. （可选）若要选择部分高级的触发器选项，请选择“显示高级选项”。
-   
+
       ![触发高级选项](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-advanced.png)
 
       | 属性 | 详细信息 | 
@@ -108,7 +108,7 @@ ms.locfileid: "50230312"
 
 ## <a name="add-an-event-hubs-action"></a>添加事件中心操作
 
-在 Azure 逻辑应用中，[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)是指工作流中紧跟在某个触发器或另一操作后面执行的一个步骤。 对于此示例，逻辑应用从事件中心触发器开始，该触发器检查事件中心中的新事件。 
+在 Azure 逻辑应用中，[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)是指工作流中紧跟在某个触发器或另一操作后面执行的一个步骤。 对于此示例，逻辑应用从事件中心触发器开始，该触发器检查事件中心中的新事件。
 
 1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
@@ -118,22 +118,22 @@ ms.locfileid: "50230312"
    选择出现的加号 (**+**)，然后选择“添加操作”。
 
 3. 在搜索框中，输入“事件中心”作为筛选器。
-从操作列表中选择所需的操作。 
+从操作列表中选择所需的操作。
 
-   对于此示例，请选择此操作：“事件中心 - 发送事件”
+   对于本例，请选择此操作：**事件中心-发送事件**
 
    ![选择“事件中心 - 发送事件”](./media/connectors-create-api-azure-event-hubs/find-event-hubs-action.png)
 
 4. 如果系统提示输入连接详细信息，请[立即创建事件中心连接](#create-connection)。 或者，如果连接已存在，请提供操作所需的信息。
 
-   | 属性 | 必选 | Description | 
+   | 属性 | 需要 | 描述 |
    |----------|----------|-------------|
-   | 事件中心名称 | 是 | 选择要发送事件的事件中心 | 
-   | 事件内容 | 否 | 要发送的事件内容 | 
-   | 属性 | 否 | 要发送的应用属性和值 | 
-   |||| 
+   | 事件中心名称 | 是 | 选择要发送事件的事件中心 |
+   | 事件内容 | 否 | 要发送的事件内容 |
+   | 属性 | 否 | 要发送的应用属性和值 |
+   ||||
 
-   例如： 
+   例如：
 
    ![选择事件中心名称并提供事件内容](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
@@ -147,10 +147,10 @@ ms.locfileid: "50230312"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | 属性 | 必选 | 值 | Description | 
+   | 属性 | 需要 | Value | 描述 |
    |----------|----------|-------|-------------|
    | 连接名称 | 是 | <connection-name> | 为连接创建的名称 |
-   | 事件中心命名空间 | 是 | <event-hubs-namespace> | 选择要使用的事件中心命名空间。 | 
+   | 事件中心命名空间 | 是 | <event-hubs-namespace> | 选择要使用的事件中心命名空间。 |
    |||||  
 
    例如：
@@ -168,7 +168,7 @@ ms.locfileid: "50230312"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/eventhubs/)。 
+如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/eventhubs/)。
 
 ## <a name="get-support"></a>获取支持
 

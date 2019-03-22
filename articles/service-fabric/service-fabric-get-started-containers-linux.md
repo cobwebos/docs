@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 78bf30c01bc240d4fc7439ab14868bf7be90b17e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c27938ad28abc62f42024faae7931196704b9b1b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895816"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314563"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 name 用于为运行的容器（而不是容器 ID）命名。
 
-连接到正在运行的容器。 打开 Web 浏览器，指向端口 4000 上返回的 IP 地址，例如 http://localhost:4000 。 此时会看到标题“Hello World!” 显示在浏览器中。
+连接到正在运行的容器。 打开 web 浏览器的 IP 地址指向端口 4000 上返回，例如"http:\//localhost:4000"。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ![Hello World!][hello-world]
 
@@ -271,9 +271,9 @@ sfctl cluster select --endpoint http://localhost:19080
 ./install.sh
 ```
 
-打开浏览器并导航到位于 http://localhost:19080/Explorer 的 Service Fabric Explorer（如果在 Mac OS X 上使用 Vagrant，则使用 VM 的专用 IP 替换 localhost）。 展开应用程序节点，注意现在有一个条目是用于应用程序类型，另一个条目用于该类型的第一个实例。
+打开浏览器并导航到 Service Fabric 资源管理器在 http:\//localhost:19080 / 资源管理器 (如果在 Mac OS X 上使用 Vagrant 在 VM 的专用 IP 替换 localhost)。 展开应用程序节点，注意现在有一个条目是用于应用程序类型，另一个条目用于该类型的第一个实例。
 
-连接到正在运行的容器。 打开 Web 浏览器，指向端口 4000 上返回的 IP 地址，例如 http://localhost:4000 。 此时会看到标题“Hello World!” 显示在浏览器中。
+连接到正在运行的容器。 打开 web 浏览器的 IP 地址指向端口 4000 上返回，例如"http:\//localhost:4000"。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ![Hello World!][hello-world]
 

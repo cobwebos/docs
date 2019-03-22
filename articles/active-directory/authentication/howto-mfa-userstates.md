@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure 多重身份验证用户状态
+title: Azure 多重身份验证用户状态-Azure Active Directory
 description: 了解 Azure 多重身份验证中的用户状态。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39659df99951850ced07be14f81348ae9c1c1be5
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 5411770e6f9d660557ab9360f026efe4c28a9256
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428596"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314376"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
@@ -41,7 +41,7 @@ ms.locfileid: "56428596"
 
 Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
-| 状态 | 说明 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
+| 状态 | 描述 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
 |:---:|:---:|:---:|:--:|:--:|
 | 已禁用 |没有在 Azure MFA 中注册某个新用户的默认状态。 |否 |否 |否 |
 | 已启用 |用户已加入 Azure MFA 但尚未注册。 在用户下次登录时会提示他们进行注册。 |不是。  它们继续工作，直到注册过程完成。 | 是的。 会话过期后，会要求进行 Azure MFA 注册。| 是的。 访问令牌过期后，会要求进行 Azure MFA 注册。 |

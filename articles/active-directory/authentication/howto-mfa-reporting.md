@@ -1,5 +1,5 @@
 ---
-title: 用于 Azure MFA 的访问和使用情况报告 | Microsoft Docs
+title: 适用于 Azure MFA 的 Azure Active Directory 访问和使用情况报告
 description: 介绍如何使用 Azure 多重身份验证功能 - 报告。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e901f0e5fb1dc2840196bd6a739ff763b54ce8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7dd26bbb06310439aae065349c14c6df1c1c12e6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119218"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316926"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 

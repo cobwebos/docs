@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: 5ac05991bc79dcfd24a527a13084b3a9383b4839
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903975"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339221"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>使用 Azure 帐户注册 Office 365 订阅
 如果是 Azure 订阅者，则可以使用 Azure 帐户注册 Office 365 订阅。 如果是拥有 Azure 订阅的组织的成员，可在现有 Azure Active Directory (Azure AD) 中为用户创建 Office 365 订阅。 使用帐户（必须在 Azure Active Directory 租户中具有全局管理员或计费管理员权限）注册 Office 365 订阅。 有关详细信息，请参阅[在 Azure AD 中检查我的帐户权限](#RoleInAzureAD)和[在 Azure Active Directory 中分配管理员角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
@@ -43,12 +43,13 @@ ms.locfileid: "57903975"
 
     ![Office 365 订单收据屏幕截图](./media/billing-use-existing-azure-account-office-365-subscription/15-office-365-order-receipt.png)
 
-现在已全部准备就绪。 如果已为组织创建 Office 365 订阅，请使用以下步骤检查确认 Azure AD 用户现已在 Office 365 中。
+现在已全部准备就绪。
+如果已为组织创建 Office 365 订阅，请使用以下步骤检查确认 Azure AD 用户现已在 Office 365 中。
 
-1. 打开 Office 365 管理中心。
+1. 打开 Microsoft 365 管理中心。
 2. 展开“用户”，并单击“活动用户”。
 
-    ![Office 365 管理中心用户的屏幕截图](./media/billing-use-existing-azure-account-office-365-subscription/16-office-365-admin-center-users.png)
+    ![Microsoft 365 管理中心用户的屏幕截图](./media/billing-use-existing-azure-account-office-365-subscription/16-microsoft-365-admin-center-users.png)
 
 注册完以后，Office 365 订阅将添加到 Azure 订阅所属的同一 Azure Active Directory 实例中。 有关详细信息，请参阅[有关 Azure 和 Office 365 订阅的详细信息](billing-use-existing-office-365-account-azure-subscription.md#more-about-subs)和 [Azure 订阅如何与 Azure Active Directory 关联](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
@@ -58,12 +59,12 @@ ms.locfileid: "57903975"
 
     ![Azure 门户中的 Active Directory 屏幕截图](./media/billing-use-existing-azure-account-office-365-subscription/billing-more-services-active-directory.png)
 3. 单击“用户和组” > “所有用户”。
-4. 选择用户名。 
+4. 选择用户名。
 
     ![其中显示有 Azure Active Directory 用户的屏幕截图](./media/billing-use-existing-azure-account-office-365-subscription/billing-users-groups.png)
 
 5. 单击“目录角色”。
-  
+
     ![其中显示有 Azure 门户目录角色的屏幕截图](./media/billing-use-existing-azure-account-office-365-subscription/billing-user-directory-role.png)
 6.  “全局管理员”或“受限管理员” > “计费管理员”角色需在现有 Azure Active Directory 中为用户创建 Office 365 订阅。
 
@@ -71,4 +72,4 @@ ms.locfileid: "57903975"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。 
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

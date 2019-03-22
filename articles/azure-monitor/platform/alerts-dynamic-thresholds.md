@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 30f853bd65c83b922faf008fbb5279c28f197f68
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008899"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339000"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Azure Monitor 中具有动态阈值的指标警报（公共预览版）
 
@@ -83,7 +83,7 @@ ms.locfileid: "57008899"
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>需要多少数据以便在触发警报？
 
-动态阈值要求至少三天的数据，以触发警报之前确保准确的阈值。
+如果你有新的资源或缺少的指标数据，动态阈值将不会触发警报前三天的数据都可用，以确保准确的阈值。
 
 ## <a name="dynamic-thresholds-best-practices"></a>动态阈值最佳做法
 

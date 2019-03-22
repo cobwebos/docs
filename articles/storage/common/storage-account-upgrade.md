@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: tamram
-ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: df9bc1680f20fe6264da0109cd52db1072fd9fc5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217285"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311129"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -29,14 +29,14 @@ ms.locfileid: "57217285"
 2. 导航到存储帐户。
 3. 在“设置”部分单击“配置”。
 4. 在“帐户类型”下单击“升级”。
-5. 在“确认升级”下键入帐户名称。 
+5. 在“确认升级”下键入帐户名称。
 6. 单击边栏选项卡底部的“升级”。
 
 ## <a name="upgrade-with-powershell"></a>使用 PowerShell 进行升级
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-若要使用 PowerShell 将常规用途 v1 帐户升级为常规用途 v2 帐户，请先更新 PowerShell，以便使用最新版本的 **Az.Storage** 模块。 请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)，了解如何安装 PowerShell。 
+若要使用 PowerShell 将常规用途 v1 帐户升级为常规用途 v2 帐户，请先更新 PowerShell，以便使用最新版本的 **Az.Storage** 模块。 请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)，了解如何安装 PowerShell。
 
 接下来，调用以下命令来升级帐户，使用自己的资源组和存储帐户的名称来代替相应项：
 
@@ -46,17 +46,17 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 ## <a name="upgrade-with-azure-cli"></a>使用 Azure CLI 进行升级
 
-若要使用 Azure CLI 将常规用途 v1 帐户升级为常规用途 v2 帐户，请先安装最新版的 Azure CLI。 请参阅 [Install the Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（安装 Azure CLI 2.0），了解如何安装 CLI。 
+若要使用 Azure CLI 将常规用途 v1 帐户升级为常规用途 v2 帐户，请先安装最新版的 Azure CLI。 请参阅 [Install the Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（安装 Azure CLI 2.0），了解如何安装 CLI。
 
 接下来，调用以下命令来升级帐户，使用自己的资源组和存储帐户的名称来代替相应项：
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
-``` 
+```
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>指定 Blob 数据的访问层
 
-常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 Blob。 升级到常规用途 v2 存储帐户时，可以为 Blob 数据指定访问层。 
+常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 Blob。 升级到常规用途 v2 存储帐户时，可以为 Blob 数据指定访问层。
 
 有了访问层，就可以根据预期的使用模式选择最经济有效的存储。 块 Blob 可以存储在热层、冷层或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷、存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
@@ -96,7 +96,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
     - 有多少数据存储在存储帐户中？
     - 数据量每月如何变化；新数据是否不断替换旧数据？
 * Blob 存储数据的主要访问模式，包括：
-    - 从存储帐户读取了多少数据，向其写入了多少数据？ 
+    - 从存储帐户读取了多少数据，向其写入了多少数据？
     - 对存储帐户中的数据执行了多少读取操作和写入操作？
 
 若要确定最适合需求的访问层，确定 blob 数据容量以及如何使用这些数据会很有帮助。 最好通过查看帐户的监视指标来完成此操作。
@@ -108,7 +108,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 有关详细信息，请参阅 [About Storage Analytics Metrics](https://msdn.microsoft.com/library/azure/hh343258.aspx)（关于存储分析指标）和 [Storage Analytics Metrics Table Schema](https://msdn.microsoft.com/library/azure/hh343264.aspx)（存储分析指标表架构）
 
 > [!NOTE]
-> Blob 存储帐户公开表服务终结点的目的只是为了存储和访问该帐户的指标数据。 
+> Blob 存储帐户公开表服务终结点的目的只是为了存储和访问该帐户的指标数据。
 
 若要监视 Blob 存储的存储消耗情况，需启用容量指标。
 启用此功能后，会每天为存储帐户的 Blob 服务记录容量数据，并将容量数据记录为表条目写入到同一存储帐户中的 $MetricsCapacityBlob 表。
@@ -120,7 +120,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 若要对数据使用和访问模式进行准确的估算，建议为指标选择一个可代表日常使用情况的保留期，并进行推断。 一种选择是让指标数据保留七天，每周收集一次数据，并在月底进行分析。 另一种选择是让指标数据保留 30 天，在 30 天到期以后再收集和分析数据。
 
-如需详细了解如何启用、收集和查看指标数据，请参阅[启用 Azure 存储指标并查看指标数据](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+启用详细信息，收集和查看指标数据，请参阅[存储分析度量值](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
 > 存储、访问和下载分析数据也会收费，就像使用常规用户数据一样。

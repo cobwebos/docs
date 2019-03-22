@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: resources
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c43c81d42a39bda504b02eb6c053a16a2cf53aec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138042"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317300"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>项目噪声方面的常见问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "58138042"
 
 ## <a name="where-can-i-download-the-plugin"></a>在何处可以下载此插件？
 
-您可以下载项目从噪声[项目噪声下载中心页](https://www.microsoft.com/en-us/download/details.aspx?id=57346)。
+您可以下载[项目噪声 Unity 插件](https://www.microsoft.com/download/details.aspx?id=57346)或[项目噪声 Unreal 插件](https://www.microsoft.com/download/details.aspx?id=58090)。
 
 ## <a name="does-project-acoustics-support-x-platform"></a>支持项目噪声<x>平台？
 

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 76c7519a166bfbfe5d2a7695a077b809aa971489
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cb1632fe8c0ae873afcf37504dbd13bcfc753e8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904025"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338065"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -104,7 +104,7 @@ ms.locfileid: "57904025"
 
    ![为弹性池配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
-> [!NOTE]
+> [!IMPORTANT]
 > 除了配置弹性池的诊断遥测数据，您还需要配置诊断遥测的每个数据库在弹性池中，按如下所述。 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-datatbase-or-database-in-elastic-pool"></a>配置的单一数据库或弹性池中的数据库的诊断遥测数据的流式处理
@@ -159,7 +159,7 @@ ms.locfileid: "57904025"
 
    ![为托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
-> [!NOTE]
+> [!IMPORTANT]
 > 除了配置的托管实例的诊断遥测数据，您还需要配置诊断遥测的每个实例数据库中，按如下所述。 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>配置的流式传输诊断遥测实例数据库

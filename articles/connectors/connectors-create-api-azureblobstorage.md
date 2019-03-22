@@ -1,5 +1,5 @@
 ---
-title: 连接到 Azure Blob 存储 - Azure 逻辑应用 | Microsoft Docs
+title: 连接到 Azure blob 存储-Azure 逻辑应用
 description: 使用 Azure 逻辑应用在 Azure 存储中创建和管理 Blob
 services: logic-apps
 ms.service: logic-apps
@@ -10,36 +10,36 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 7d6845624c838ac0cf49e5963cae1ca0ea15ec15
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230601"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310364"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
 本文介绍如何使用 Azure Blob 存储连接器通过逻辑应用在 Azure 存储帐户中访问和管理作为 Blob 存储的文件。 可以通过这种方式创建逻辑应用，以便自动完成进行文件管理所需的任务和工作流。 例如，可以生成用于在存储帐户中创建、获取、更新和删除文件的逻辑应用。
 
-假定你有一个在 Azure 网站上进行更新的工具。 它充当逻辑应用的触发器。 当此事件发生时，可以让逻辑应用更新 Blob 存储容器中的某些文件，这是逻辑应用中的一项操作。 
+假定你有一个在 Azure 网站上进行更新的工具。 它充当逻辑应用的触发器。 当此事件发生时，可以让逻辑应用更新 Blob 存储容器中的某些文件，这是逻辑应用中的一项操作。
 
 > [!NOTE]
-> 逻辑应用不支持通过防火墙直接连接到 Azure 存储帐户。 若要访问这些存储帐户，请使用以下任一选项： 
+> 逻辑应用不支持通过防火墙直接连接到 Azure 存储帐户。 若要访问这些存储帐户，请使用以下任一选项：
 >
-> * 创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，该环境可以连接到 Azure 虚拟网络中的资源。 
-> 
+> * 创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，该环境可以连接到 Azure 虚拟网络中的资源。
+>
 > * 如果已使用 API 管理，可以将该服务用于此方案。 有关详细信息，请参阅[简单的企业集成体系结构](https://aka.ms/aisarch)。
 
 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 如需特定于连接器的技术信息，请参阅 <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">Azure Blob 存储连接器参考</a>。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
 * [Azure 存储帐户和存储容器](../storage/blobs/storage-quickstart-blobs-portal.md)
 
-* 需在其中访问 Azure Blob 存储帐户的逻辑应用。 若要通过 Azure Blob 存储触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
+* 需在其中访问 Azure Blob 存储帐户的逻辑应用。 若要通过 Azure Blob 存储触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="add-trigger"></a>
 
@@ -53,7 +53,7 @@ ms.locfileid: "50230601"
 
 2. 在搜索框中，输入“azure blob”作为筛选器。 在触发器列表中，选择所需的触发器。
 
-   此示例使用以下触发器：**Azure Blob 存储 - 添加或修改 Blob 时(仅属性)**
+   此示例使用此触发器：**Azure Blob 存储-blob 添加或修改 （仅属性） 时**
 
    ![选择触发器](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "50230601"
 
    1. 在“容器”框中，选择文件夹图标。
 
-   2. 在文件夹列表中选择右尖括号 ( **>** )，然后以浏览方式查找并选择所需的文件夹。 
+   2. 在文件夹列表中选择右尖括号 ( **>** )，然后以浏览方式查找并选择所需的文件夹。
 
       ![选择文件夹](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
@@ -90,11 +90,11 @@ ms.locfileid: "50230601"
 
 3. 在搜索框中，输入“azure blob”作为筛选器。 从操作列表中选择所需的操作。
 
-   此示例使用此操作：**Azure Blob 存储 - 获取 Blob 内容**
+   此示例使用此操作：**Azure Blob 存储-获取 blob 内容**
 
    ![选择操作](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
 
-4. 如果系统提示输入连接详细信息，请[立即创建 Azure Blob 存储连接](#create-connection)。 或者，如果连接已存在，请提供操作所需的信息。 
+4. 如果系统提示输入连接详细信息，请[立即创建 Azure Blob 存储连接](#create-connection)。 或者，如果连接已存在，请提供操作所需的信息。
 
    对于此示例，请选择所需的文件。
 
@@ -119,7 +119,7 @@ ms.locfileid: "50230601"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/azureblobconnector/)。 
+有关技术详细信息，如触发器、 操作和限制，如连接器的开放式 API 中所述 (以前称为 Swagger) 文件，请参阅[连接器的参考页](/connectors/azureblobconnector/)。
 
 ## <a name="get-support"></a>获取支持
 

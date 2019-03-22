@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359317"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842288"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure Database for MariaDB 服务器
 
@@ -45,7 +45,7 @@ az group create --name myresourcegroup --location westus
 
 使用 [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) 命令创建 Azure Database for MariaDB 服务器。 一个服务器可以管理多个数据库。 通常，每个项目或每个用户使用一个单独的数据库。
 
-设置 | 示例值 | Description
+设置 | 示例值 | 说明
 ---|---|---
 名称 | **mydemoserver** | 输入用于标识 Azure Database for MariaDB 服务器的唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 它必须包含 3 到 63 个字符。
 resource-group | myresourcegroup | 输入 Azure 资源组的名称。
@@ -147,78 +147,78 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
 
 1. 连接到服务器：
 
-  ```azurecli-interactive
-  mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
-  ```
+   ```azurecli-interactive
+   mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
+   ```
 
 2. 在 `mysql>` 提示符处查看服务器状态：
 
-  ```sql
-  status
-  ```
-  应会看到类似于以下文本的内容：
+   ```sql
+   status
+   ```
+   应会看到类似于以下文本的内容：
 
-  ```bash
-  C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
-  Enter password: ***********
-  Welcome to the MySQL monitor.  Commands end with ; or \g.
-  Your MySQL connection id is 65512
-  Server version: 5.6.39.0 MariaDB Server
+   ```bash
+   C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
+   Enter password: ***********
+   Welcome to the MySQL monitor.  Commands end with ; or \g.
+   Your MySQL connection id is 65512
+   Server version: 5.6.39.0 MariaDB Server
 
-  Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+   Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
 
-  Oracle is a registered trademark of Oracle Corporation and/or its
-  affiliates. Other names may be trademarks of their respective
-  owners.
+   Oracle is a registered trademark of Oracle Corporation and/or its
+   affiliates. Other names may be trademarks of their respective
+   owners.
 
-  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+   Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-  mysql> status
-  --------------
-  mysql  Ver 14.14 Distrib 5.7.23, for Linux (x86_64)
+   mysql> status
+   --------------
+   mysql  Ver 14.14 Distrib 5.7.23, for Linux (x86_64)
 
-  Connection id:          64681
-  Current database:
-  Current user:           myadmin@40.118.201.21
-  SSL:                    Cipher in use is AES256-SHA
-  Current pager:          stdout
-  Using outfile:          ''
-  Using delimiter:        ;
-  Server version:         5.6.39.0 MariaDB Server
-  Protocol version:       10
-  Connection:             mydemoserver.mariadb.database.azure.com via TCP/IP
-  Server characterset:    latin1
-  Db     characterset:    latin1
-  Client characterset:    utf8
-  Conn.  characterset:    utf8
-  TCP port:               3306
-  Uptime:                 1 day 3 hours 28 min 50 sec
+   Connection id:          64681
+   Current database:
+   Current user:           myadmin@40.118.201.21
+   SSL:                    Cipher in use is AES256-SHA
+   Current pager:          stdout
+   Using outfile:          ''
+   Using delimiter:        ;
+   Server version:         5.6.39.0 MariaDB Server
+   Protocol version:       10
+   Connection:             mydemoserver.mariadb.database.azure.com via TCP/IP
+   Server characterset:    latin1
+   Db     characterset:    latin1
+   Client characterset:    utf8
+   Conn.  characterset:    utf8
+   TCP port:               3306
+   Uptime:                 1 day 3 hours 28 min 50 sec
 
-  Threads: 10  Questions: 29002  Slow queries: 0  Opens: 33  Flush tables: 3  Open tables: 1  Queries per second avg: 0.293
-  --------------
+   Threads: 10  Questions: 29002  Slow queries: 0  Opens: 33  Flush tables: 3  Open tables: 1  Queries per second avg: 0.293
+   --------------
 
-  mysql>
-  ```
+   mysql>
+   ```
 
 > [!TIP]
 > 有关其他命令，请参阅 [MySQL 5.7 参考手册 - 第 4.5.1 章](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)。
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>使用 MySQL Workbench 连接服务器
 
-1.  打开客户端计算机上的 MySQL Workbench。 如果尚未安装，请[下载](https://dev.mysql.com/downloads/workbench/)并安装此应用程序。
+1. 打开客户端计算机上的 MySQL Workbench。 如果尚未安装，请[下载](https://dev.mysql.com/downloads/workbench/)并安装此应用程序。
 
-2.  在“设置新连接”对话框的“参数”选项卡上，输入以下信息：
+2. 在“设置新连接”对话框的“参数”选项卡上，输入以下信息：
 
- ![设置新连接](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
+   ![设置新连接](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
 
-  | 设置 | 建议的值 | Description |
-  |---|---|---|
-  | 连接名称 | **演示连接** | 输入此连接的标签（连接名称可以是任何内容） |
-  | 连接方法 | **标准 (TCP/IP)** | 使用 TCP/IP 协议连接到 Azure Database for MariaDB |
-  | 主机名 | **mydemoserver.mariadb.database.azure.com** | 前面记下的服务器名称。 |
-  | 端口 | **3306** | Azure Database for MariaDB 的默认端口。 |
-  | 用户名 | **myadmin@mydemoserver** | 前面记下的服务器管理员登录名。 |
-  | 密码 | 你的密码 | 使用之前设置的管理员帐户密码。 |
+   | 设置 | 建议的值 | 说明 |
+   |---|---|---|
+   | 连接名称 | **演示连接** | 输入此连接的标签（连接名称可以是任何内容） |
+   | 连接方法 | **标准 (TCP/IP)** | 使用 TCP/IP 协议连接到 Azure Database for MariaDB |
+   | 主机名 | **mydemoserver.mariadb.database.azure.com** | 前面记下的服务器名称。 |
+   | 端口 | **3306** | Azure Database for MariaDB 的默认端口。 |
+   | 用户名 | **myadmin\@mydemoserver** | 前面记下的服务器管理员登录名。 |
+   | 密码 | 你的密码 | 使用之前设置的管理员帐户密码。 |
 
 3. 若要检查所有参数是否已正确配置，请选择“测试连接”。
 

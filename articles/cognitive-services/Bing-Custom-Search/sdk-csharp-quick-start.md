@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: 2b9aa109161b68a3ed23473becee5d5f7783b956
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 100f1d4ed96f04f8208fd544d410f227561343e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859668"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871579"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>快速入门：使用 C# SDK 调用必应自定义搜索终结点 
 
@@ -24,9 +24,9 @@ ms.locfileid: "55859668"
 ## <a name="prerequisites"></a>先决条件
 
 - 必应自定义搜索实例。 请参阅[快速入门：创建第一个必应自定义搜索实例](quick-start.md)，了解详细信息。
-- Microsoft [.Net Core](https://www.microsoft.com/net/download/core)
+- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
 - 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)
-- 如果使用的是 Linux/MacOS，则可使用 [Mono](http://www.mono-project.com/) 运行此应用程序。
+- 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 - 已安装 [NuGet 自定义搜索](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)包。 
     - 在 Visual Studio 中的解决方案资源管理器中，右键单击项目并从菜单中选择 `Manage NuGet Packages`。 安装 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 包。 安装 NuGet 自定义搜索包还会安装以下程序集：
         - Microsoft.Rest.ClientRuntime

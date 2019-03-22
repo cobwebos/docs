@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: f898b21e84cc57327991c97d2694e9e44e608417
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014890"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432696"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure 数据工厂与数据工厂版本 1 之对比
 本文将数据工厂与数据工厂版本 1 进行了比较。 有关数据工厂的简介，请参阅[数据工厂简介](introduction.md)。有关数据工厂版本 1 的简介，请参阅 [Azure 数据工厂简介](v1/data-factory-introduction.md)。 
@@ -72,7 +72,7 @@ ms.locfileid: "54014890"
 ### <a name="other-control-flow-activities"></a>其他控制流活动
 下面是数据工厂的当前版本支持的其他控制流活动。 
 
-控制活动 | Description
+控制活动 | 说明
 ---------------- | -----------
 [ForEach 活动](control-flow-for-each-activity.md) | 在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中运行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
 [Web 活动](control-flow-web-activity.md) | 从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。 
@@ -118,7 +118,7 @@ Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管�
 
 - .NET SDK：.NET SDK 在当前版本中进行了更新。
 
-- PowerShell：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2**，例如：Get-AzureRmDataFactoryV2。 
+- PowerShell：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2**，例如：Get-AzDataFactoryV2. 
 
 - **Python SDK**：此 SDK 是当前版本中新增的。
 

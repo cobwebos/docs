@@ -1,5 +1,5 @@
 ---
-title: 使用现有 NPS 服务器提供 Azure MFA 功能
+title: 使用现有的 NPS 服务器提供 Azure MFA 功能-Azure Active Directory
 description: 向现有身份验证基础结构添加基于云的双重验证功能
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 108b188b0bbb63a4c9faea936360cf2fa3edc806
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b36b6e513e382e25f7d7038f49e7467a21686a0f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211608"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311724"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -43,7 +43,7 @@ NPS 扩展自动处理冗余，因此无需特殊配置。
 
 VPN 服务器会路由身份验证请求，因此它们需要留意已启用新 Azure MFA 的 NPS 服务器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满足以下先决条件。
 

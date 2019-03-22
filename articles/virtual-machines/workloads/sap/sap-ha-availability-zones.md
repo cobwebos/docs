@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094746"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339476"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)是 Azure 提供的高可用性功能之一。 使用可用性区域可提高 Azure 上 SAP 工作负荷的整体可用性。 此功能已在某些 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中推出。 今后会在更多的区域中推出。
@@ -93,7 +93,7 @@ SAP 应用层部署在一个 Azure [可用性集](https://docs.microsoft.com/azu
 > 按如上述执行的测量预期会在支持[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)的每个 Azure 区域中显示不同的结果。 即使网络延迟要求不变，也仍可能需要在不同 Azure 区域中采用不同的部署策略，因为区域之间的网络延迟可能不同。 在某些 Azure 区域中，三个不同区域之间的网络延迟可能会存在很大的差异。 在其他区域中，三个不同区域之间的网络延迟可能较为一致。 指出区域之间始终存在 1 毫秒到 2 毫秒网络延迟的声明是错误的。 Azure 区域中可用性区域之间的网络延迟不能一般化。
 
 ## <a name="activeactive-deployment"></a>主动/主动部署
-此部署体系结构之所以称为主动/主动部署，是因为要在两个或三个区域之间部署主动的 SAP 对话实例。 使用排队复制的 SAP Central Services 实例将部署在两个区域之间。 这同样适用于 DBMS 层，它将部署在 SAP Central Service 所在的相同区域中。
+此部署体系结构称为主动/主动，因为您在两个或三个区域中部署活动的 SAP 应用程序服务器。 使用排队复制的 SAP Central Services 实例将部署在两个区域之间。 这同样适用于 DBMS 层，它将部署在 SAP Central Service 所在的相同区域中。
 
 考虑此配置时，需要在区域中找到两个适当的两个可用性区域，它们的跨区域网络延迟可让工作负荷接受并满足同步 DBMS 复制的需求。 此外，请确保所选区域中的网络延迟与跨区域网络延迟的差不会过大。 原因在于，根据作业是在 DBMS 服务器所在的区域中运行还是跨区域运行，业务进程或批处理作业的运行时差异不能过大。 有些差异是可接受的，但必须消除差异因素。
 

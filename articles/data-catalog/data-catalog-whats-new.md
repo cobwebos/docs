@@ -8,12 +8,12 @@ ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 782f68c52285e787b9dfc6d21352ab2d53876085
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: 0f328c4edeaa35210c5379d84fa47980cb2f07cf
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353135"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317079"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure 数据目录中的新增功能
 我们会定期发布“Azure 数据目录”的更新。 但是，并非每个版本都包括面向用户的新功能，因为某些版本聚焦于后端的服务功能。 本页重点介绍 Azure 数据目录服务新增的面向用户的功能。
@@ -153,7 +153,7 @@ ms.locfileid: "54353135"
 
 * 在 Azure 数据目录数据源注册工具中新增重新设计的数据源选择体验。 数据源注册工具已更新，方便找到 Azure 数据目录所支持的数据源，并从中进行选择。
 * 在 Azure 数据目录门户和数据源注册工具中支持其他 10 种语言。 除英语外，Azure 数据目录体验现已支持德语、西班牙语、法语、意大利语、日语、韩语、巴西葡萄牙语、俄语、简体中文和繁体中文。 Azure 数据目录的用户体验根据在 Windows 中或在用户的 Web 浏览器中设置的语言首选项进行本地化。
-* 支持 Azure 数据目录数据的异地复制，带来业务连续性，提供灾难恢复。 所有 Azure 数据目录内容，包括数据源元数据和众包批注，现在在两个 Azure 区域之间已复制，客户无需额外付费。 预先对至少相隔 500 英里的 Azure 区域进行配对，并遵循[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)中所述的映射。
+* 支持 Azure 数据目录数据的异地复制，带来业务连续性，提供灾难恢复。 所有 Azure 数据目录内容，包括数据源元数据和众包批注，现在在两个 Azure 区域之间已复制，客户无需额外付费。 预先对至少相隔 500 英里的 Azure 区域进行配对，并遵循[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)。
 * 支持更改 Azure 数据目录使用的 Azure 订阅。 出于计费目的，Azure 数据目录管理员可以使用 Azure 数据目录门户中的设置页来选择不同的 Azure 订阅。
 
 ## <a name="whats-new-for-january-2016"></a>2016 年 1 月新增功能
@@ -240,7 +240,7 @@ ms.locfileid: "54353135"
 * 在 Azure 数据目录门户中增加了新的“入门”数据源发现体验。 当用户进入 Azure 数据目录门户的“发现”页却没有输入搜索词时，将为用户展现目录内容概述，包括最常用的标记、专家、数据源类型和对象类型。
 * 支持注册和发现 Azure SQL 数据仓库对象和数据库。 有关 Azure SQL 数据仓库的详细信息，请参阅 [SQL 数据仓库](https://azure.microsoft.com/services/sql-data-warehouse/)。
 * 支持注册和发现作为容器的 SQL Server Analysis Services 模型和 SQL Server Reporting Services 服务器。 注册 SSAS 和 SSRS 对象时，Azure 数据目录会为 SSAS 模型和 SSRS 服务器以及报表和其他对象创建条目。 可以使用 Azure 数据目录门户发现并且批注容器。 除搜索和筛选目录内容外，用户还可以搜索和筛选模型或服务器的内容。
-* 支持通过 HTTP/HTTPS 注册和发现 SQL Server Analysis Services 对象。 用户现在可以替代服务器名称使用 URL（如 https://servername/olap/msmdpump.dll)）连接到 SSAS 服务器，并且除 Windows 身份验证外，还能使用基本身份验证和匿名连接。 有关通过 HTTP/HTTPS 连接到 SSAS 的详细信息，请参阅 [配置对 Analysis Services 的 HTTP 访问](https://msdn.microsoft.com/library/gg492140.aspx)。
+* 支持通过 HTTP/HTTPS 注册和发现 SQL Server Analysis Services 对象。 用户现在可以连接到 SSAS 服务器使用的 URL (例如 https:\//servername/olap/msmdpump.dll) 而不是服务器名称，然后可以使用基本身份验证和以及 Windows 身份验证的匿名连接。 有关通过 HTTP/HTTPS 连接到 SSAS 的详细信息，请参阅 [配置对 Analysis Services 的 HTTP 访问](https://msdn.microsoft.com/library/gg492140.aspx)。
 * 支持 HDInsight 上的 Hive 数据源。 现在，用户可以在 HDInsight 本地数据源中注册和发现 Apache Hive 的 Hive 表。 有关 HDInsight 上的 Hive 的详细信息，请参阅 [HDInsight documentation center](../hdinsight/hadoop/hdinsight-use-hive.md)（HDInsight 文档中心）。
 * 支持注册和发现作为容器的 Oracle 数据库和 HDFS 群集。 注册 Oracle 表和视图或 HDFS 时，Azure 数据目录会为数据库、表和视图创建条目。 可以使用 Azure 数据目录门户发现并且批注数据库。 除搜索和筛选目录内容外，用户还可以搜索和筛选数据库或群集的内容。
 * 支持手动注册未知的数据源类型。 用户可以使用 Azure 数据目录门户手动输入数据源信息，以便批注和发现数据源注册工具未显式支持的数据源。

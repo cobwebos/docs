@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: dc0e326cf3b188a51708115e5496cfbb52a95611
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 46da7c7931eaf163c24f057bac5de35f3c727519
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57836957"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311860"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -614,13 +614,13 @@ ms.locfileid: "57836957"
 ## <a name="security"></a>安全
 | **Parameter** | **允许的值** |**升级策略**| **指导或简短说明** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|string，默认值为“”|静态|AAD 证书终结点格式，默认 Azure 商业版，为非默认环境（例如 Azure 政府“https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml”）而指定 |
+|AADCertEndpointFormat|string，默认值为“”|静态|AAD 证书终结点，默认 Azure 商业和指定格式的非默认环境，例如 Azure 政府版"https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|string，默认值为“”|静态|表示 Fabric 客户端的本机客户端应用程序名称或 ID |
 |AADClusterApplication|string，默认值为“”|静态|表示群集的 Web API 应用程序名称或 ID |
-|AADLoginEndpoint|string，默认值为“”|静态|AAD 登录终结点，默认 Azure 商业版，为非默认环境（例如 Azure 政府“https://login.microsoftonline.us”）而指定 |
+|AADLoginEndpoint|string，默认值为“”|静态|AAD 登录终结点，Azure 商业和默认值为非默认环境，例如 Azure Government 指定"https:\//login.microsoftonline.us" |
 |AADTenantId|string，默认值为“”|静态|租户 ID (GUID) |
 |AdminClientCertThumbprints|string，默认值为“”|动态|管理员角色客户端使用的证书的指纹。 该参数是以逗号分隔的名称列表。 |
-|AADTokenEndpointFormat|string，默认值为“”|静态|AAD 令牌终结点，默认 Azure 商业版，为非默认环境（例如 Azure 政府“https://login.microsoftonline.us/{0}”）而指定 |
+|AADTokenEndpointFormat|string，默认值为“”|静态|AAD 令牌终结点，Azure 商业和默认值为非默认环境，例如 Azure Government 指定"https:\//login.microsoftonline.us/{0}" |
 |AdminClientClaims|string，默认值为“”|动态|管理员客户端所需的所有可能的声明；其格式与 ClientClaims 相同；此列表会从内部添加到 ClientClaims；所以不需要另外将相同的条目添加到 ClientClaims。 |
 |AdminClientIdentities|string，默认值为“”|动态|管理员角色结构客户端的 Windows 标识；用于授权特权结构操作。 该参数是以逗号分隔的列表；每个条目是域帐户名或组名称。 为方便起见，自动向运行 fabric.exe 的帐户分配管理员角色；组 ServiceFabricAdministrators 也是这样。 |
 |AppRunAsAccountGroupX509Folder|字符串，默认为 /home/sfuser/sfusercerts |静态|AppRunAsAccountGroup X509 证书和私钥所在的文件夹 |

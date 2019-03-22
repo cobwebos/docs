@@ -1,5 +1,5 @@
 ---
-title: 对 Azure AD SSPR 和 MFA （预览） 进行组合的注册故障排除
+title: 对 Azure AD SSPR 和 MFA （预览版）-Azure Active Directory 进行组合的注册故障排除
 description: Azure AD 多重身份验证和自助服务密码重置结合使用注册 （预览版） 进行故障排除
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b247a733c6874b023d3dc8114b0538e422baccfd
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 8f799b671e6216b402aa988aa66da4c2cfc44693
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56589215"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317521"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>故障排除结合安全信息注册 （预览版）
 

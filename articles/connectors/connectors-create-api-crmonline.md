@@ -1,21 +1,21 @@
 ---
-title: 连接到 Dynamics 365 - Azure 逻辑应用 | Microsoft Docs
+title: 连接到 Dynamics 365-Azure 逻辑应用
 description: 使用 Dynamics 365（联机）REST API 和 Azure 逻辑应用创建和管理记录
+services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: Mattp123
 ms.author: matp
-ms.service: logic-apps
-services: logic-apps
 ms.reviewer: estfan, LADocs
-ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295294"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310568"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Dynamics 365 记录
 
@@ -26,13 +26,13 @@ ms.locfileid: "58295294"
 
 ## <a name="prerequisites"></a>必备组件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
 * 一个 [Dynamics 365 帐户](https://dynamics.microsoft.com)
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 要在其中访问 Dynamics 365 帐户的逻辑应用。 若要通过 Dynamics 365 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
+* 要在其中访问 Dynamics 365 帐户的逻辑应用。 若要通过 Dynamics 365 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="add-dynamics-365-trigger"></a>添加 Dynamics 365 触发器
 
@@ -50,8 +50,8 @@ ms.locfileid: "58295294"
 
 1. 提供以下触发器详细信息：
 
-   | 属性 | 需要 | 描述 | 
-   |----------|----------|-------------| 
+   | 属性 | 需要 | 描述 |
+   |----------|----------|-------------|
    | **组织名称** | 是 | 要监视的组织 Dynamics 365 实例的名称，例如“Contoso” |
    | **实体名称** | 是 | 要监视的实体的名称，例如“Leads” | 
    | **频率** | 是 | 检查触发器相关的更新时，对时间间隔使用的时间单位 |
@@ -72,21 +72,21 @@ ms.locfileid: "58295294"
 
 1. 提供以下操作详细信息：
 
-   | 属性 | 需要 | 描述 | 
-   |----------|----------|-------------| 
+   | 属性 | 需要 | 描述 |
+   |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的 Dynamics 365 实例，不一定是触发器中的同一实例；在本示例中为“Contoso” |
-   | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” | 
+   | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
    | | |
 
    ![操作详细信息](./media/connectors-create-api-crmonline/action-details.png)
 
 1. 操作中显示“主题”框后，请在“主题”框中单击，以显示动态内容列表。 在此列表中，选择要包含在与新潜在顾客记录关联的任务记录中的字段值：
 
-   | 字段 | 描述 | 
-   |-------|-------------| 
+   | 字段 | 描述 |
+   |-------|-------------|
    | **姓氏** | 记录中的潜在顾客（主要联系人）的姓氏 |
-   | **主题** | 记录中的潜在顾客的描述性名称 | 
-   | | | 
+   | **主题** | 记录中的潜在顾客的描述性名称 |
+   | | |
 
    ![任务记录详细信息](./media/connectors-create-api-crmonline/create-record-details.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "58295294"
 
    ![指定筛选器和顺序](./media/connectors-create-api-crmonline/advanced-options.png)
 
-有关详细信息，请参阅以下 Dynamics 365 客户参与 Web API 的系统查询选项： 
+有关详细信息，请参阅以下 Dynamics 365 客户参与 Web API 的系统查询选项：
 
 * [$filter](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#filter-results)
 * [$orderby](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#order-results)
@@ -128,19 +128,19 @@ ms.locfileid: "58295294"
 | 需要记录 ID 和查找类型的字段 | 主密钥 | 某些引用另一实体记录的字段需要记录 ID 和查找类型。 | 
 ||||
 
-下面是 Dynamics 365 触发器和操作中的一些示例字段，它们在上述字段类型的基础上有所延伸，需要记录 ID 和查找类型。 此项要求意味着，从动态列表中选择的值不起作用。 
+下面是 Dynamics 365 触发器和操作中的一些示例字段，它们在上述字段类型的基础上有所延伸，需要记录 ID 和查找类型。 此项要求意味着，从动态列表中选择的值不起作用。
 
-| 字段 | 描述 | 
+| 字段 | 描述 |
 |-------|-------------|
-| **所有者** | 必须是有效的用户 ID 或团队记录 ID。 | 
-| **所有者类型** | 必须是 **systemusers** 或 **teams**。 | 
-| **相关** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 | 
-| **相关类型** | 必须是查找类型，例如 **accounts** 或 **contacts**。 | 
-| **客户** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 | 
-| **客户类型** | 必须是查找类型，例如 **accounts** 或 **contacts**。 | 
+| **所有者** | 必须是有效的用户 ID 或团队记录 ID。 |
+| **所有者类型** | 必须是 **systemusers** 或 **teams**。 |
+| **相关** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 |
+| **相关类型** | 必须是查找类型，例如 **accounts** 或 **contacts**。 |
+| **客户** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 |
+| **客户类型** | 必须是查找类型，例如 **accounts** 或 **contacts**。 |
 |||
 
-在本示例中，名为“创建新记录”的操作将创建新的任务记录： 
+在本示例中，名为“创建新记录”的操作将创建新的任务记录：
 
 ![创建具有记录 ID 和查找类型的任务记录](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
@@ -148,13 +148,13 @@ ms.locfileid: "58295294"
 
 ![所有者记录 ID 和查找类型](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-此操作还会添加与“相关”字段中的记录 ID 以及“相关类型”字段中的查找类型相关联的帐户记录： 
+此操作还会添加与“相关”字段中的记录 ID 以及“相关类型”字段中的查找类型相关联的帐户记录：
 
 ![相关记录 ID 和查找类型](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
 ## <a name="find-record-id"></a>查找记录 ID
 
-若要查找记录 ID，请执行以下步骤： 
+若要查找记录 ID，请执行以下步骤：
 
 1. 在 Dynamics 365 中打开一条记录，例如帐户记录。
 
@@ -175,7 +175,7 @@ ms.locfileid: "58295294"
 
    ![逻辑应用运行状态](./media/connectors-create-api-crmonline/run-history.png)
 
-1. 展开失败的步骤，以便查看更多详细信息。 
+1. 展开失败的步骤，以便查看更多详细信息。
 
    ![展开失败的步骤](./media/connectors-create-api-crmonline/expand-failed-step.png)
 
@@ -187,7 +187,7 @@ ms.locfileid: "58295294"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/dynamicscrmonline/)。 
+有关技术详细信息，如触发器、 操作和限制，如所述的连接器的 OpenAPI (以前称为 Swagger) 文件，请参阅[连接器的参考页](/connectors/dynamicscrmonline/)。
 
 ## <a name="get-support"></a>获取支持
 

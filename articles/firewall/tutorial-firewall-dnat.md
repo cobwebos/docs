@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/28/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e37d5b050c5ca957b59c1e0a60c88171c1fc4a23
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582235"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531158"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教程：使用 Azure 门户通过 Azure 防火墙 DNAT 筛选入站流量
 
@@ -37,7 +37,7 @@ ms.locfileid: "52582235"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-1. 在 [http://portal.azure.com](http://portal.azure.com) 中登录 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在 Azure 门户主页上，依次单击“资源组”、“添加”。
 3. 对于“资源组名称”，请键入 **RG-DNAT-Test**。
 4. 对于“订阅”，请选择自己的订阅。
@@ -150,11 +150,11 @@ ms.locfileid: "52582235"
 
    |设置  |值  |
    |---------|---------|
-   |名称     |FW-DNAT-test|
+   |Name     |FW-DNAT-test|
    |订阅     |\<用户的订阅\>|
-   |资源组     |**使用现有**：RG-DNAT-Test |
+   |资源组     |**使用现有项**：RG-DNAT-Test |
    |位置     |选择前面使用的同一位置|
-   |选择虚拟网络     |**使用现有**：VN-Hub|
+   |选择虚拟网络     |**使用现有项**：VN-Hub|
    |公共 IP 地址     |**新建**。 公共 IP 地址必须为“标准 SKU”类型。|
 
 5. 单击“查看 + 创建”。

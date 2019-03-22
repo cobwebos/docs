@@ -2,19 +2,19 @@
 title: 从 Azure 流分析输出到 Azure SQL 数据库
 description: 了解如何将数据从 Azure 流分析输出到 SQL Azure，并实现更高的写入吞吐量速率。
 services: stream-analytics
-author: chetang
-ms.author: chetang
-manager: katicad
+author: chetanmsft
+ms.author: chetanmsft
+manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.openlocfilehash: 794e2f3db44c29707400f96970159578d9e83f2d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
-ms.translationtype: HT
+ms.date: 3/18/2019
+ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303269"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338422"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>从 Azure 流分析输出到 Azure SQL 数据库
 
@@ -33,7 +33,7 @@ Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 �
 
 - **批大小** - 使用 SQL 输出配置可以根据目标表/工作负荷的性质，在 Azure 流分析 SQL 输出中指定最大批大小。 批大小是随每个批量插入事务一起发送的最大记录数。 在聚集列存储索引中，批大小约为 [100K](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，这可以实现并行化、极简的日志记录和锁定优化。 在基于磁盘的表中，10K（默认值）或更小的值可能最适合解决方案，因为较大的批大小可能在批量插入期间触发锁升级。
 
-- **输入消息优化** – 如果已使用继承分区和批大小进行优化，则增大每个分区的每个消息的输入事件数有助于进一步提高写入吞吐量。 通过输入消息优化，可将 Azure 流分析中的批大小最大提高到指定的批大小，从而提高吞吐量。 可以使用高级事件中心 SKU 中提供的[压缩](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs)或更大消息大小来实现此目的。
+- **输入消息优化** – 如果已使用继承分区和批大小进行优化，则增大每个分区的每个消息的输入事件数有助于进一步提高写入吞吐量。 通过输入消息优化，可将 Azure 流分析中的批大小最大提高到指定的批大小，从而提高吞吐量。 这可以通过使用实现[压缩](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs)或增加事件中心或 Blob 中的输入的消息大小。
 
 ## <a name="sql-azure"></a>SQL Azure
 
@@ -43,7 +43,16 @@ Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 �
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure 数据工厂和内存中表
 
-- **用作临时表的内存中表** – 使用[内存中表](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)可以大大提高数据加载速度，但内存必须能够装得下这些数据。 基准测试表明，从内存中表批量加载到基于磁盘的表，比使用单个写入器直接批量插入到包含标识列和聚集索引的基于磁盘的表的速度大约要快 10 倍。 若要利用这种批量插入性能，请设置一个[使用 Azure 数据工厂的复制作业](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database)，用于将数据从内存中表复制到基于磁盘的表。
+- **内存中表作为临时表**–[内存中表](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)允许非常高速数据加载，但需要容纳在内存中数据。 基准测试表明，从内存中表批量加载到基于磁盘的表，比使用单个写入器直接批量插入到包含标识列和聚集索引的基于磁盘的表的速度大约要快 10 倍。 若要利用这种批量插入性能，请设置一个[使用 Azure 数据工厂的复制作业](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database)，用于将数据从内存中表复制到基于磁盘的表。
+
+## <a name="avoiding-performance-pitfalls"></a>避免性能缺陷
+大容量插入数据是比因为加载与单个插入数据快得多的重复避免传输数据、 分析 insert 语句中，运行该语句中，和发出的事务记录的开销。 相反，更高效的途径使用到存储引擎进行流式处理数据。 此路径的安装程序成本是但是远高于基于磁盘的表中的单个 insert 语句。 保本点通常是大约 100 行，超出的大容量加载方法通常更高效。 
+
+如果传入的事件速率较低，但它可以轻松地创建的批大小中也是低于 100 行，它使大容量插入效率低下，并使用过多磁盘空间的。 若要解决此限制，可以执行以下操作之一：
+* 创建 INSTEAD OF[触发器](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-trigger-transact-sql)使用简单的插入的每一行。
+* 在上一部分中所述，使用内存中临时表。
+
+写入到非聚集列存储索引 (NCCI)，较小的大容量插入可以在其中创建太多段，可能会崩溃索引时需要执行另一个此类方案。 在这种情况下，建议将改为使用聚集列存储索引。
 
 ## <a name="summary"></a>摘要
 

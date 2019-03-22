@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef5679ba2a6a62955f5402e8bfaa4f1884df722d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 415b33dce42945c40aedd996d4dcfa5c6b987b44
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840590"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336212"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML 单一登录对应用程序代理 （预览版） 的本地应用程序
 
@@ -54,8 +54,8 @@ SAML SSO 与应用程序代理也适用于 SAML 令牌加密功能。 有关详�
 
      ![输入基本 SAML 配置数据](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
-     > [!NOTE]
-     > 如果后端应用程序期望**回复 URL**是内部 URL，你将需要在用户的设备上安装我的应用安全登录扩展。 此扩展会自动重定向到相应的应用程序代理服务。 若要安装扩展，请参阅[我的应用安全登录扩展](../user-help/active-directory-saas-access-panel-introduction.md#my-apps-secure-sign-in-extension)。
+    > [!NOTE]
+    > 如果后端应用程序期望**回复 URL**是内部 URL，你将需要在用户的设备上安装我的应用安全登录扩展。 此扩展会自动重定向到相应的应用程序代理服务。 若要安装扩展，请参阅[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)。
 
 ## <a name="test-your-app"></a>测试应用
 

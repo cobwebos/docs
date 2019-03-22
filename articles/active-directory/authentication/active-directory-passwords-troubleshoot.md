@@ -1,5 +1,5 @@
 ---
-title: 自助密码重置疑难解答 - Azure Active Directory
+title: 自助服务密码重置故障排除-Azure Active Directory
 description: 排查 Azure AD 自助密码重置问题
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3621bbce0128fbd173120ae2a327065ee2e84e33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 297d32311b6b697b0141488878d170b3f2f4c359
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878442"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315481"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 

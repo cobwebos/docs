@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 3f4430631a664f81f53f9df1f46ebc27c635de36
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133778"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319614"
 ---
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 * 一个 [Dropbox](https://www.Dropbox.com/) 帐户 
 
 可以在逻辑应用中使用 Dropbox 帐户之前，必须先授权该逻辑应用可以连接到 Dropbox 帐户。 好在，可以从 Azure 门户中的逻辑应用内轻松地执行此操作。 

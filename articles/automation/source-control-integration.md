@@ -6,21 +6,21 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b8ec726c81dfab710d30c37d6fb1aac97c12265
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: c689a8fe35133456c476106e96336420640ebf66
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293969"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335974"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
 源代码管理可让你可以让你的 runbook 在自动化帐户是与您的脚本在 GitHub 或 Azure 存储库源控件存储库中最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。 源代码管理与自动化集成支持单向同步从源代码管理存储库。
 
-Azure 自动化支持 3 种类型的源代码管理：
+Azure 自动化支持三种类型的源代码管理：
 
 * GitHub
 * Azure 存储库 (Git)
@@ -30,6 +30,7 @@ Azure 自动化支持 3 种类型的源代码管理：
 
 * 源代码管理存储库 （GitHub 或 Azure 存储库）
 * 一个[运行方式帐户](manage-runas-account.md)
+* 请确保您具有[最新的 Azure 模块](automation-update-azure-modules.md)在自动化帐户中
 
 > [!NOTE]
 > 源代码管理同步作业以自动化帐户用户身份运行，并且按与其他自动化作业相同的费率计费。
@@ -49,10 +50,10 @@ Azure 自动化支持 3 种类型的源代码管理：
 |源代码管理名称     | 源代码管理的友好名称        |
 |源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> GitHub</br>Azure 存储库 (Git)</br> Azure 存储库 (TFVC)        |
 |存储库     | 存储库或项目的名称。 返回前 200 个存储库。 若要搜索存储库，在字段中键入名称，然后单击**GitHub 上的搜索**。|
-|分支     | 要从源文件中提取的分支。 分支目标确定不适用于 TFVC 源代码管理类型。          |
+|分支     | 要从源文件中提取的分支。 分支目标不是适用于 TFVC 源控件类型。          |
 |文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks </br>*指定的文件夹中的唯一 runbook 会同步。不支持递归。*        |
 |自动同步     | 在源代码管理存储库中提交时打开或关闭自动同步         |
-|发布 Runbook     | 如果设置为“打开”，在从源代码管理同步 runbook 后，它们将自动发布。         |
+|发布 Runbook     | 如果设置为**上**后从源代码管理，它们将自动发布同步 runbook。         |
 |描述     | 用于提供其他详细信息的一个文本字段        |
 
 ![源代码管理摘要](./media/source-control-integration/source-control-summary.png)
@@ -62,7 +63,7 @@ Azure 自动化支持 3 种类型的源代码管理：
 
 ## <a name="configure-source-control---powershell"></a>配置源代码管理-PowerShell
 
-此外可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 若要使用的 PowerShell cmdlet，配置源控件[个人访问令牌 (PAT)](#personal-access-token)需要。 您使用[新建 AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl)创建源代码管理连接。 该 cmdlet 需要安全字符串的个人访问令牌，若要了解如何创建安全字符串，请参阅[Convertto-securestring](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
+此外可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 若要使用 PowerShell cmdlet 配置源代码管理，需要个人访问令牌 (PAT)。 您使用[新建 AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl)创建源代码管理连接。 该 cmdlet 需要安全字符串的个人访问令牌，若要了解如何创建安全字符串，请参阅[Convertto-securestring](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
 
 ### <a name="azure-repos-git"></a>Azure 存储库 (Git)
 
@@ -168,7 +169,7 @@ Source Control Sync Summary:
 
 ## <a name="encoding"></a>编码
 
-如果多人正在使用不同的编辑器编辑源代码控制存储库中的 runbook 就可能会遇到编码问题。 这可以在 runbook 中插入正确的字符。 若要了解详细信息，请参阅[常见编码问题的原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+如果多人正在使用不同的编辑器编辑源代码控制存储库中的 runbook，则可能会遇到编码问题。 这种情况下可能会导致不正确的字符在 runbook 中。 若要了解详细信息，请参阅[常见编码问题的原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
 
 ## <a name="next-steps"></a>后续步骤
 

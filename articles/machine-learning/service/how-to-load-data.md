@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: cforbe
-author: cforbe
+ms.author: sihhu
+author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe676cbba89a99a3dbd29609f181274062b37d86
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 34dd20826928d1ab2ba1fc7980c7d47b796ea663
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000272"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311010"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>使用 Azure 机器学习加载和读取数据
 
@@ -291,7 +291,7 @@ servicePrincipalAppId = "8dd38f34-1fcb-4ff9-accd-7cd60b757174"
 
 ### <a name="acquire-an-oauth-access-token"></a>获取 OAuth 访问令牌
 
-使用 `adal` 包 (`pip install adal`) 在 MSFT 租户上创建身份验证上下文，并获取 OAuth 访问令牌。 对于 ADLS，令牌请求中的资源必须为“https://datalake.azure.net”，这与大多数其他 Azure 资源不同。
+使用 `adal` 包 (`pip install adal`) 在 MSFT 租户上创建身份验证上下文，并获取 OAuth 访问令牌。 对于 ADLS，令牌请求中的资源必须为 https:\//datalake.azure.net，这是不同于大多数其他 Azure 资源。
 
 ```python
 import adal

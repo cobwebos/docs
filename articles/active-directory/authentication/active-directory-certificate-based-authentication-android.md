@@ -1,5 +1,5 @@
 ---
-title: Android 上 Azure Active Directory 基于证书的身份验证
+title: Android-Azure Active Directory 基于证书的身份验证
 description: 了解 Android 设备的解决方案中配置基于证书的身份验证的支持方案和要求
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2492fe3074b72df5f9ecbaab0496fee1f54ca0e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b0f4a648227e62642bb071a76cbd1f3a50bf78ae
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211557"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314496"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
 
@@ -48,7 +48,7 @@ ms.locfileid: "56211557"
 
 ### <a name="implementation-requirements"></a>实现要求
 
-设备 OS 版本必须为 Android 5.0 (Lollipop) 及更高版本
+设备 OS 版本必须为 Android 5.0 (Lollipop) 及更高版本。
 
 必须配置联合服务器。
 

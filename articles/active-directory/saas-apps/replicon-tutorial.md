@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46466ac85a8be1dec273440751489833f12c00db
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ade40287bd38580a1e3f6377e54017bfe92bf452
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166805"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863400"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>教程：Azure Active Directory 与 Replicon 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56166805"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Replicon 的集成，需要以下项：
 
@@ -196,7 +196,7 @@ ms.locfileid: "56166805"
 
     ![用户配置文件](./media/replicon-tutorial/ic777808.png "用户配置文件")
 
-    a. 在“登录名”文本框中，键入要预配的 Azure AD 用户的 Azure AD 电子邮件地址，如 **BrittaSimon@contoso.com**。
+    a. 在中**登录名**文本框中，键入 Azure AD 电子邮件地址的 Azure AD 用户想要预配等**BrittaSimon\@contoso.com**。
 
     b. 对于“身份验证类型”，选择“SSO”。
 

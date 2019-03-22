@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: geg
-ms.openlocfilehash: 44b8d57af83f53c73868a84104da7a7f72cb1e81
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 2253e729daedc3b130919913c1616449245f9cc1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202582"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315379"
 ---
 # <a name="restore-azure-vms"></a>还原 Azure VM
 
@@ -23,7 +23,7 @@ ms.locfileid: "58202582"
 若要还原 VM 请确保已创建所需[RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)权限。
 
 > [!NOTE]
-> 如果还没有[RABAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)你可以执行的权限[还原磁盘](backup-azure-arm-restore-vms.md#create-new-restore-disks)，并创建 VM 使用[部署模板](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)功能。
+> 如果还没有[RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)你可以执行的权限[还原磁盘](backup-azure-arm-restore-vms.md#create-new-restore-disks)，并创建 VM 使用[部署模板](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)功能。
 
 ### <a name="restore-options"></a>还原选项
 

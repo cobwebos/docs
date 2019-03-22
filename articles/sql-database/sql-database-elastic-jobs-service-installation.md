@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: a1e1be24f9cb6d762d5480385843e9a5356d4a29
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 32df3e7ac6dc22e247bd4aecea4f39bf6d3a8017
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889773"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316858"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>安装弹性数据库作业概述
 
@@ -87,12 +87,12 @@ ms.locfileid: "57889773"
 
 <tr>
     <td>ServiceVmSize</td>
-    <td>提供在云服务中使用的 VM 大小。 此参数默认为 A0。 参数值.../../ 接受 A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。 有关辅助角色大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
+    <td>提供在云服务中使用的 VM 大小。 此参数默认为 A0。 参数值.../../ 接受 A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。 辅助角色大小的详细信息，请参阅<a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">弹性数据库作业组件和定价</a>。</td>
 </tr>
 
 <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>为标准版提供计算大小。 此参数默认为 S0。 参数值.../../../../ 接受 S9/S12，这会导致 Azure SQL 数据库使用各自的计算大小。 有关 SQL 数据库计算大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
+    <td>为标准版提供计算大小。 此参数默认为 S0。 参数值.../../../../ 接受 S9/S12，这会导致 Azure SQL 数据库使用各自的计算大小。 有关 SQL 数据库计算大小的详细信息，请参阅<a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">弹性数据库作业组件和定价</a>。</td>
 </tr>
 
 <tr>
@@ -137,7 +137,7 @@ ms.locfileid: "57889773"
 
 <tr>
     <td>ServiceVmSize</td>
-    <td>提供在云服务中使用的 VM 大小。 此参数默认为 A0。 参数值.../../ 接受 A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。 有关辅助角色大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
+    <td>提供在云服务中使用的 VM 大小。 此参数默认为 A0。 参数值.../../ 接受 A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。 辅助角色大小的详细信息，请参阅<a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">弹性数据库作业组件和定价</a>。</td>
 </tr>
 
 </table>

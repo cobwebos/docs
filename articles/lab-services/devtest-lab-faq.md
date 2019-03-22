@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b5c5f316ff2c3ada035736755c7898270c49dee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551817"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337691"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -27,8 +27,27 @@ ms.locfileid: "57551817"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **常规**
+
+## <a name="blog-post"></a>博客文章
+已从 20 年 3 月 2019年开始停用我们的开发测试实验室团队博客。 
+
+### <a name="where-can-i-track-feature-updates-going-forward"></a>在其中跟踪今后的功能更新？
+今后，我们将发布功能更新和/或信息性的博客文章 Azure 博客上和 Azure 更新。 任何所需位置，这些博客文章还将链接到我们的文档。
+
+订阅[开发测试实验室 Azure 博客](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)并[开发测试实验室 Azure 更新](https://azure.microsoft.com/updates/?product=devtest-lab)以便随时了解开发测试实验室中的新增功能。
+
+### <a name="what-happens-to-the-existing-blog-posts"></a>现有的博客文章会发生什么情况？
+我们目前正在迁移现有的博客文章 （不包括中断更新） 到我们[开发测试实验室文档](devtest-lab-overview.md)。 MSDN 博客已被弃用，它会将重定向到文档概述用于开发测试实验室。 一旦重定向，您可以搜索您正在寻找筛选器的标题中的文章。 请注意，我们还没有迁移所有帖子，但应通过此月结束。 
+
+
+### <a name="where-do-i-see-outage-updates"></a>其中看中断更新？
+我们将发布中断更新使用今后我们 Twitter 句柄。 若要获取最新信息更新中断和已知的 bug 在 Twitter 上关注我们。
+
+### <a name="twitter"></a>Twitter 
+我们的 twitter: azlabservices
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
-如果此处未列出相关问题，请联系我们寻求答案。
+如果此处未列出您的问题，让我们知道，并且我们可以帮助您找到答案。
 
 * 在本常见问题解答的末尾发布问题。 与 Azure 缓存团队和其他社区成员就本文进行讨论。
 * 若希望更多人看到问题，可以将问题发布在 [Azure 开发测试实验室 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)上。 与 Azure 开发测试实验室团队和其他社区成员进行讨论。
@@ -41,7 +60,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 “无忧的自助服务”是指开发人员和测试人员按需创建自己的环境。 管理员知道 Azure 开发测试实验室可帮助尽量减少浪费和控制成本，因而感到安心无忧。 管理员可以指定允许的 VM 大小、最大 VM 数量以及 VM 的启动和关机时间。 开发测试实验室还可简化成本监视和警报设置，可帮助用户始终注意实验室资源的使用方式。
 
 ## <a name="how-can-i-use-devtest-labs"></a>如何使用开发测试实验室？
-在以下任何情况下，开发测试实验室都非常有用：需要开发或测试环境，且希望快速重现该环境，或使用节省成本的策略管理该环境。
+开发测试实验室都非常有帮助你需要开发或测试环境，并想要快速，重现或使用节省成本的策略管理。
 
 下面列出了客户使用开发测试实验室的某些情形：
 
@@ -106,8 +125,8 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 
 **虚拟机**
-## <a name="why-cant-i-see-vms-on-the-virtual-machines-blade-that-i-see-in-devtest-labs"></a>为什么我无法在“虚拟机”边栏选项卡上看到可在开发测试实验室中看到的 VM？
-在开发测试实验室中创建 VM 时，用户具有访问该 VM 的权限。 可在“实验室”边栏选项卡和“虚拟机”边栏选项卡上查看该 VM。 分配到“开发测试实验室”实验室用户角色的用户可查看在实验室中通过实验室的“所有虚拟机”边栏选项卡创建的所有 VM。 但是，系统不会自动向具有“开发测试实验室”实验室用户角色的用户授予对其他用户创建的 VM 资源的读取访问权限。 因此，这些虚拟机不会显示在“虚拟机”边栏选项卡上。
+## <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>为什么无法看到我在开发测试实验室中看到的虚拟机页上的 Vm？
+在开发测试实验室中创建 VM 时，用户具有访问该 VM 的权限。 您可以查看 VM 的实验室上并在**虚拟机**页。 分配到开发测试实验室实验室用户角色的用户可以看到在实验室的实验室中创建的所有 Vm**的所有虚拟机**页。 但是，系统不会自动向具有“开发测试实验室”实验室用户角色的用户授予对其他用户创建的 VM 资源的读取访问权限。 因此，这些 Vm 不会显示在**虚拟机**页。
 
 ## <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>自定义映像与公式之间的区别是什么？
 自定义映像是一个虚拟硬盘 (VHD)。 而公式是可使用其他设置配置，并在随后保存和重现的映像。 要使用同一不可变的基本映像快速创建多个环境，最好使用自定义映像。 要使用最新位（作为虚拟网络或子网的一部分，或作为特定大小的 VM）重现 VM 的配置，选择公式可能会更好。 有关更深入的说明，请参阅[比较自定义映像和 DevTest 实验室中的公式](devtest-lab-comparing-vm-base-image-types.md)。
@@ -184,7 +203,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 **项目**
 ## <a name="what-are-artifacts"></a>项目是什么？
-项目是用于将最新位或开发工具部署到 VM 的可自定义元素。 创建 VM 时，将项目附加到 VM。 预配 VM 后，项目可以部署和配置 VM。 [公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)中提供了多种预先存在的项目。 也可以[创作自己的项目](devtest-lab-artifact-author.md)。
+项目是用于将最新位或开发工具部署到 VM 的可自定义元素。 创建 VM 时，将项目附加到 VM。 预配 VM 后，项目可以部署和配置 VM。 各种预先存在的项目均位于我们[公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)。 也可以[创作自己的项目](devtest-lab-artifact-author.md)。
 
 
 **实验室配置**
@@ -232,7 +251,7 @@ Microsoft 帐户可用于通过 Microsoft 设备和服务执行的几乎所有�
 VM 是资源组中实验室下的子资源。 使用资源管理器模板通过 PowerShell 部署 VM 时，PowerShell 脚本中提供的资源组名称应为实验室的资源组名称。 有关详细信息，请参阅[排查常见的 Azure 部署错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors)。
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM 部署失败时，可在何处查找错误详细信息？
-活动日志中会捕获 VM 部署错误。 在实验室的 VM 边栏选项卡（在“我的虚拟机”列表中选择 VM 后，会显示该选项卡）中的资源菜单上，可在“审核日志”或“虚拟机诊断”下方找到实验室 VM 活动日志。
+活动日志中会捕获 VM 部署错误。 可以找到实验室 VM 活动日志下的**审核日志**或**虚拟机诊断**实验室的虚拟机页上的资源菜单上 (在您选择从 VM 后，会显示的页**我虚拟机**列表)。
 
 有时，部署错误发生在 VM 部署开始之前。 一个示例是超过与 VM 一起创建的资源的订阅限制时。 在此情况下，会在实验室级别活动日志中捕获错误详细信息。 活动日志位于“配置和策略”设置的底部。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
 

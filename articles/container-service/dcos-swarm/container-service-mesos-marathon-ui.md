@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 41b6ce24e7c2e8565d7c2f17c32b8b6e1f38ea4f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992483"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317606"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>（已弃用）通过 Marathon Web UI 管理 Azure 容器服务 DC/OS 群集
 
@@ -25,7 +25,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 尽管框架可用于许多常见的工作负荷，本文档介绍了如何开始使用 Marathon 部署容器。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 开始了解这些示例之前，需要一个在 Azure 容器服务中配置的 DC/OS 群集。 还需要具有到此群集的远程连接。 有关这些项目的详细信息，请参阅以下文章：
 
 * [部署 Azure 容器服务群集](container-service-deployment.md)
@@ -36,12 +36,12 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 >
 
 ## <a name="explore-the-dcos-ui"></a>探索 DC/OS UI
-[建立](../container-service-connect.md)安全外壳 (SSH) 隧道后，请浏览到 http://localhost/。 这会加载 DC/OS Web UI 并显示有关群集的信息，如使用的资源、活动代理和正在运行的服务。
+使用安全外壳 (SSH) 隧道[建立](../container-service-connect.md)，浏览到 http: \/ /localhost /。 这会加载 DC/OS Web UI 并显示有关群集的信息，如使用的资源、活动代理和正在运行的服务。
 
 ![DC/OS UI](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>探索 Marathon UI
-要查看 Marathon UI，请转到 http://localhost/marathon。 在此屏幕中，可以在 Azure 容器服务 DC/OS 群集上启动新容器或其他应用程序。 还可以查看有关正在运行的容器和应用程序的信息。  
+若要查看 Marathon UI，请浏览到 http: \/ /localhost/marathon。 在此屏幕中，可以在 Azure 容器服务 DC/OS 群集上启动新容器或其他应用程序。 还可以查看有关正在运行的容器和应用程序的信息。  
 
 ![Marathon UI](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -85,7 +85,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 
 ![Marathon 主页 UI - 容器部署状态](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-切换回 DC/OS Web UI (http://localhost/)) 后，会看到 DC/OS 群集上运行着任务（本例中为 Docker 格式的容器）。
+当你切换回 DC/OS web UI (http:\//localhost/)，将看到在 DC/OS 群集上正在运行的任务 （在这种情况下，为 Docker 格式的容器）。
 
 ![DC/OS Web UI - 任务在群集上运行](./media/container-service-mesos-marathon-ui/dcos8.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure MFA 服务器的用户门户 | Microsoft 文档
+title: Azure MFA 服务器-Azure Active Directory 的用户门户
 description: 开始使用 Azure MFA 和用户门户。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddf84ea9fa2367c6bdf7b258611eca526dd2abd9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: bbee5316b78838bedc62454e8c1954eb5f9205ff
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175194"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317114"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -126,7 +126,7 @@ ms.locfileid: "56175194"
 
 Azure 多重身份验证服务器为用户门户提供了多个选项。 下表列出了这些选项及其用途的说明。
 
-| 用户门户设置 | 说明 |
+| 用户门户设置 | 描述 |
 |:--- |:--- |
 | 用户门户 URL | 输入托管门户的 URL。 |
 | 主要身份验证 | 指定在登录门户时要使用的身份验证类型。 Windows、Radius 或 LDAP 身份验证。 |

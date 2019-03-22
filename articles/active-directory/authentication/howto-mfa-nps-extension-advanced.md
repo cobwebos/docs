@@ -1,6 +1,6 @@
 ---
-title: 配置 Azure MFA NPS 扩展 | Microsoft Docs
-description: 在安装 NPS 扩展后，通过下列步骤来进行高级配置，如 IP 白名单和 UPN 替换。
+title: 配置 Azure MFA NPS 扩展的 Azure Active Directory
+description: 在安装 NPS 扩展后，通过下列步骤来进行高级配置，如 IP 允许列表和 UPN 替换。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2690cb4243597c942b6679b5864016bf14fcbad1
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: HT
+ms.openlocfilehash: 5bfae3b3be7812ff50ed90a61d495877141bbc7e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732433"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309702"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>用于多重身份验证的 NPS 扩展的高级配置选项
 

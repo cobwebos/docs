@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 78ef88d0710e8a82d30fa26b60073aa75e363c15
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080059"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315294"
 ---
 # <a name="about-the-collector-appliance"></a>关于收集器设备
 
@@ -82,7 +82,7 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 ### <a name="connect-to-the-internet-via-a-proxy"></a>通过代理连接到 Internet
 
 - 如果代理服务器需要身份验证，则可在连接控制器时指定用户名和密码。
-- 代理服务器的 IP 地址/FQDN 应该指定为 *http://IPaddress* 或 *http://FQDN*。
+- 代理服务器的 IP 地址/FQDN 应指定为*http:\//IPaddress*或*http:\//FQDN*。
 - 仅支持 HTTP 代理。 收集器不支持基于 HTTPS 的代理服务器。
 - 如果代理服务器是截取代理，则必须将代理证书导入到收集器 VM。
   1. 在收集器 VM 中，转到“开始菜单” > “管理计算机证书”。

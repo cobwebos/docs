@@ -4,18 +4,16 @@ description: 了解如何使用 Beeline 客户端通过 Hadoop on HDInsight 运�
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
-keywords: beeline hive,hive beeline
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: ba9746566f0f69ea2131b8f77a14939ea561638a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 00cf441247b9adf8547f373891bba4db29029d3f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200475"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335991"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
@@ -24,8 +22,11 @@ ms.locfileid: "58200475"
 Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 Beeline 使用 JDBC 连接到 HiveServer2，后者是 HDInsight 群集上托管的一项服务。 还可以使用 Beeline 通过 Internet 远程访问 Hive on HDInsight。 以下示例提供最常见的连接字符串，用于从 Beeline 连接到 HDInsight：
 
 * __通过与头节点或边缘节点的 SSH 连接使用 Beeline__：`-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
+
 * __在通过 Azure 虚拟网络连接到 HDInsight 的客户端上使用 Beeline__：`-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
-* __在通过 Azure 虚拟网络连接到 HDInsight 企业安全性套餐 (ESP) 群集的客户端上使用 Beeline__：`-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>`
+
+* __在通过 Azure 虚拟网络连接到 HDInsight 企业安全性套餐 (ESP) 群集的客户端上使用 Beeline__：`-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-DOMAIN>;auth-kerberos;transportMode=http' -n <username>` 
+
 * __在通过公共 Internet 连接到 HDInsight 的客户端上使用 Beeline__：`-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]  
@@ -37,7 +38,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 >
 > 通过虚拟网络连接到群集时，将 `<headnode-FQDN>` 替换为群集头节点的完全限定域名。
 >
-> 连接到企业安全性套餐 (ESP) 群集时，请将 `<AAD-Domain>` 替换为群集加入到的 Azure Active Directory (AAD) 的名称。 将 `<username>` 替换为域中有权访问群集的帐户的名称。
+> 连接到企业安全性套餐 (ESP) 群集时，请将 `<AAD-DOMAIN>` 替换为群集加入到的 Azure Active Directory (AAD) 的名称。 使用的大写字符串`<AAD-DOMAIN>`值，否则未找到凭据。 检查`/etc/krb5.conf`必要的领域名称。 将 `<username>` 替换为域中有权访问群集的帐户的名称。 
 
 ## <a id="prereq"></a>先决条件
 

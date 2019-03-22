@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: fe36336bb1bcc3b0d1cc718724ca05f6d23110c7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: db4be11286825a8a990918a80c687f86c2294c6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270529"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58186725"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-powershell"></a>使用 PowerShell 订阅资源组的事件
 
@@ -29,9 +29,13 @@ ms.locfileid: "53270529"
 
 ## <a name="sample-script---stable"></a>示例脚本 - 稳定版
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-resource-group/subscribe-to-resource-group.ps1 "Subscribe to resource group")]
 
 ## <a name="sample-script---preview-module"></a>示例脚本 - 预览模块
+
+[!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-resource-group-preview/subscribe-to-resource-group-preview.ps1 "Subscribe to resource group")]
 
@@ -41,7 +45,7 @@ ms.locfileid: "53270529"
 
 | 命令 | 说明 |
 |---|---|
-| [New-AzureRmEventGridSubscription](https://docs.microsoft.com/powershell/module/azurerm.eventgrid/new-azurermeventgridsubscription) | 创建事件网格订阅。 |
+| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 创建事件网格订阅。 |
 
 ## <a name="next-steps"></a>后续步骤
 

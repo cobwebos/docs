@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: adc85514c0f4e2f7245a7db6dffbe6b9dc5e6d42
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: 6e27d00e4b12ade82cfde6b3a4927edc7d69798a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435185"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075810"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>通过 HDInsight (SSH) 中基于 Linux 的 Apache Hadoop 使用 Apache Mahout 生成电影推荐
 
@@ -22,9 +22,9 @@ ms.locfileid: "53435185"
 
 了解如何使用 [Apache Mahout](https://mahout.apache.org) 机器学习库通过 Azure HDInsight 生成电影推荐。
 
-Mahout 是适用于 Apache Hadoop 的[机器学习][ml]库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
+Mahout 是适用于 Apache Hadoop 的 [计算机学习][ml] 库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 基于 Linux 的 HDInsight 群集。 有关创建该群集的信息，请参阅[开始在 HDInsight 中使用基于 Linux 的 Hadoop][getstarted]。
 
@@ -162,7 +162,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     按 **Ctrl-X**、**Y**，最后按 **Enter** 来保存数据。
 
-4. 运行 Python 脚本。 以下命令假设已处于所有文件都已下载的目录中：
+4. 运行 Python 脚本。 以下命令假设用户处于内含所有已下载文件的目录中：
 
     ```bash
     python show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
@@ -170,15 +170,15 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     此命令将查看为用户 ID 4 生成的建议。
 
-    * **user-ratings.txt** 文件用于检索评价过的电影。
+   * **user-ratings.txt** 文件用于检索评价过的电影。
 
-    * **moviedb.txt** 文件用于检索电影的名称。
+   * **moviedb.txt** 文件用于检索电影的名称。
 
-    * **recommendations.txt** 用于检索此用户的电影建议。
+   * **recommendations.txt** 用于检索此用户的电影建议。
 
      此命令的输出类似于以下文本：
 
-        西藏七年 (1997)，评分=5.0   夺宝奇兵 3 之圣战骑兵 (1989)，评分=5.0   大白鲨 (1975)，评分=5.0   理智与情感 (1995)，评分=5.0   独立日(ID4) (1996)，评分=5.0   我最好朋友的婚礼 (1997)，评分=5.0   甜心先生 (1996)，评分=5.0   惊声尖叫 2 (1997)，评分=5.0   杀戮时刻 (1996)，评分=5.0
+       西藏七年 (1997)，评分=5.0   夺宝奇兵 3 之圣战骑兵 (1989)，评分=5.0   大白鲨 (1975)，评分=5.0   理智与情感 (1995)，评分=5.0   独立日(ID4) (1996)，评分=5.0   我最好朋友的婚礼 (1997)，评分=5.0   甜心先生 (1996)，评分=5.0   惊声尖叫 2 (1997)，评分=5.0   杀戮时刻 (1996)，评分=5.0
 
 ## <a name="delete-temporary-data"></a>删除临时数据
 

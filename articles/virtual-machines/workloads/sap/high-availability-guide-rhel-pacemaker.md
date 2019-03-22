@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 791c63b7b7fed55f95905ba7131d6a1d4bb414ff
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 1a8e5fd82b44577aa1915d59fc7c29900a1f14ea
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010485"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319510"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -85,6 +85,8 @@ ms.locfileid: "58010485"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
+   请注意，通过将一个池附加到 Azure Marketplace PAYG RHEL 映像，你将有效地双计费 RHEL 使用量： 一次为 PAYG 映像，以及附加在池中的 RHEL 授权。 若要缓解此问题，Azure 现在提供了 BYOS RHEL 映像。 提供了详细信息[此处](https://aka.ms/rhel-byos)。
+
 1. **[A]** 为 SAP 存储库启用 RHEL
 
    为了安装所需的包，启用以下存储库。
@@ -144,10 +146,10 @@ ms.locfileid: "58010485"
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
-   
+
    # Run the following command until the status of both nodes is online
    sudo pcs status
-   
+
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -179,11 +181,10 @@ ms.locfileid: "58010485"
 STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步骤创建服务主体。
 
 1. 转到 <https://portal.azure.com>
-1. 打开“Azure Active Directory”边栏选项卡  
-   转到“属性”并记下目录 ID。 这是“租户 ID”。
+1. 打开 Azure Active Directory 边栏选项卡转到属性并记下目录 id。 这是“租户 ID”。
 1. 单击“应用注册”
 1. 单击“添加”
-1. 输入一个名称，选择应用程序类型"Web 应用 /API"，输入登录 URL (例如`http://localhost`) 并单击创建
+1. 输入一个名称，选择应用程序类型"Web 应用 /API"，输入登录 URL (例如 http:\//localhost) 并单击创建
 1. 不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: e1187867fc9da9a89f92d7b321c8703ee7a8a407
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 2ca2fdc2627245a8b7676ed0d6d5877788eb7930
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889250"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336781"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>查询 Azure 监视器用于监视 HDInsight 群集的日志
 
@@ -125,5 +125,5 @@ ms.locfileid: "56889250"
 
 ## <a name="see-also"></a>另请参阅
 
-* [OMS 日志分析：视图设计器](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [在 Azure Monitor 中使用视图设计器创建自定义视图](../azure-monitor/platform/view-designer.md)
 * [创建、 查看和管理使用 Azure Monitor 的指标警报](../azure-monitor/platform/alerts-metric.md)

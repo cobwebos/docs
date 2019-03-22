@@ -1,5 +1,5 @@
 ---
-title: Azure AD SSPR 数据要求 | Microsoft Docs
+title: Azure AD SSPR 数据要求的 Azure Active Directory
 description: Azure AD 自助密码重置的数据要求，以及如何满足这些要求
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf665147c8fea0e2ce44161ef0b5df085649a0b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 580c9080bb2b019e120ea57e5fe4444a71c24e76
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179033"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314784"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 

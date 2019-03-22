@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744439"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311673"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
@@ -26,9 +26,9 @@ ms.locfileid: "53744439"
 
 | 年 | 月 | DAY_OF_MONTH | 承运商 |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
-| 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
+| 2017 | 第 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
+| 2017 | 第 | 3 | AS | 9.435449 | 5.482143 | 572289 |
+| 2017 | 第 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
 示例管道等待一个新时间段的航班数据到达，然后将详细航班信息存储到 Apache Hive 数据仓库，用于长期分析。 管道还创建一个较小的数据集，用于汇总每日航班数据。 此每日航班汇总数据发送到 SQL 数据库，为网站等提供报表。
 
@@ -150,7 +150,7 @@ Azure SQL 数据库现已准备就绪。
 
 2. 通过导航到头节点上的 Ambari 验证隧道可操作，方法是浏览到：
 
-    http://headnodehost:8080
+    http:\//headnodehost:8080
 
 3. 若要从 Ambari 中访问“Oozie Web 控制台”，请依次选择“Oozie”、“快速链接”和“Oozie Web 控制台”。
 
@@ -176,7 +176,7 @@ Azure SQL 数据库现已准备就绪。
 
 示例数据现在可用。 但是，管道需要两个用于处理的 Hive 表，一个用于传入数据 (`rawFlights`)，一个用于汇总数据 (`flights`)。 在 Ambari 中创建这些表，如下所示。
 
-1. 通过导航到 [http://headnodehost:8080](http://headnodehost:8080) 登录 Ambari。
+1. 通过导航到 http 登录到 Ambari:\//headnodehost:8080。
 2. 从服务列表选择“Hive”。
 
     ![在 Ambari 中选择 Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)

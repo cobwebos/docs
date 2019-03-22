@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812032"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317504"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为 iSCSI 服务器
 
@@ -88,7 +88,7 @@ ms.locfileid: "55812032"
       > 如果将 iSCSI 服务器加入域，请确保虚拟阵列采用其自身的适用于 Microsoft Azure Active Directory 的组织单位 (OU)，没有对其应用任何组策略对象 (GPO)。
       > 
       > 
-   4. 此时会显示一个对话框。 按指定格式输入域凭据。 设置筛选器后，单击选中图标  ![选中图标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
+   4. 此时会显示一个对话框。 按指定格式输入域凭据。 设置筛选器后，单击选中图标  ![勾号图标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
       
        ![凭据](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. 单击“应用”。 此时会应用和验证设备设置。
@@ -98,7 +98,7 @@ ms.locfileid: "55812032"
    
     在“Web 代理”页上：
    
-   1. 以下述格式提供“Web 代理 URL”： http://host-IP 地址或 FQDN:端口号。 请注意，不支持 HTTPS URL。
+   1. 提供**Web 代理 URL**按以下格式： *http:\//host-IP 地址*或*fqdn： 端口号*。 请注意，不支持 HTTPS URL。
    2. 将“身份验证”指定为“基本”或“无”。
    3. 如果使用身份验证，则还需提供“用户名”和“密码”。
    4. 单击“应用”。 此时会验证并应用配置的 Web 代理设置。
@@ -199,8 +199,8 @@ ms.locfileid: "55812032"
    
     ![选择目标设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/image25.png)
 6. 在 Windows 主机上，按 Windows 徽标键 + X，并单击“ **运行**”。
-7. 在“运行”对话框中，键入 **Diskmgmt.msc**。 单击“确定”，将出现“磁盘管理”对话框。 右窗格中会显示在主机上的卷。
-8. 在“ **磁盘管理** ”窗口中，已装载的卷会显示在以下所示的插图中。 右键单击“发现的卷”（单击磁盘名称），并单击“ **联机**”。
+7. 在“运行”对话框中，键入 **Diskmgmt.msc**。 单击“确定”，将出现“磁盘管理”对话框。 右窗格中将显示主机上的卷。
+8. 在“磁盘管理”窗口中，将显示已装载的卷，如以下插图所示。 右键单击“发现的卷”（单击磁盘名称），并单击“ **联机**”。
    
     ![磁盘管理](./media/storsimple-virtual-array-deploy3-iscsi-setup/image26.png)
 9. 右键单击，并选择“初始化磁盘”。

@@ -1,5 +1,5 @@
 ---
-title: 通过网络策略服务器扩展集成 VPN 与 Azure MFA | Microsoft Docs
+title: 使用网络策略服务器扩展的 Azure Active Directory 与 Azure MFA 集成 VPN
 description: 使用 Microsoft Azure 的网络策略服务器扩展将 VPN 基础结构与Azure MFA 进行集成。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22b035b325582cf4a12ff10a9abbedb8837229b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d9984da8fe3648179df7bbc24d5518816a1f4db
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117874"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316314"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 

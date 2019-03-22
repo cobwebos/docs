@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 223486ec2dc184e6bbe02e1f6862b9d79d773a2c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871487"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339532"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -42,10 +42,10 @@ ms.locfileid: "57871487"
 | 堆栈     | 预期值                                                                |
 |-----------|-------------------------------------------------------------------------------|
 | Java SE   | 一个命令用于启动在`.jar`应用程序                                    |
-| Tomcat    | 若要为您的应用程序执行任何必要 configruations 脚本的位置 |
-| Node.js   | PM2 配置文件或脚本文件                                |          
+| Tomcat    | 执行您的应用程序的任何配置的脚本的位置          |
+| Node.js   | PM2 配置文件或脚本文件                                |
 | .NET Core | 作为已编译的 DLL 名称 `dotnet <myapp>.dll`                                 |
-| Ruby      | 你想要初始化应用的 Ruby 脚本                     
+| Ruby      | 你想要初始化应用的 Ruby 脚本                     |
 
 ## <a name="management"></a>管理
 

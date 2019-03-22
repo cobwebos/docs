@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459038"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311707"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器的示例工作流
 本主题讲解如何完成为导入作业准备驱动器的整个过程。  
   
 本示例将以下数据导入到名为 `mystorageaccount` 的 Microsoft Azure 存储帐户：  
   
-|位置|说明|  
+|位置|描述|  
 |--------------|-----------------|  
 |H:\Video|视频集合，总共 5 TB。|  
 |H:\Photo|照片集合，总共 30 GB。|  
@@ -31,12 +31,12 @@ ms.locfileid: "55459038"
   
 |源|目标虚拟目录或 Blob|  
 |------------|-------------------------------------------|  
-|H:\Video|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovie.ISO|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|https:\//mystorageaccount.blob.core.windows.net/music|  
   
-借助此映射，可将文件 `H:\Video\Drama\GreatMovie.mov` 导入 Blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`。  
+借助此映射，将文件`H:\Video\Drama\GreatMovie.mov`导入到 blob https:\//mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov。  
   
 接下来，为了确定所需的硬盘驱动器数目，应计算数据大小：  
   
@@ -46,11 +46,11 @@ ms.locfileid: "55459038"
   
 |位置|大小|目标虚拟目录或 Blob|  
 |--------------|----------|-------------------------------------------|  
-|H:\Video1|2.5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Video2|2.5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|30 GB|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|10 GB|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video1|2.5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Video2|2.5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|30 GB|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovies.ISO|25 GB|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|10 GB|https:\//mystorageaccount.blob.core.windows.net/music|  
   
  即使已将 `H:\Video` 目录分解为两个目录，它们也会指向存储帐户中的同一目标虚拟目录。 这样，所有视频文件将保留在存储帐户中的单个 `video` 容器下。  
   

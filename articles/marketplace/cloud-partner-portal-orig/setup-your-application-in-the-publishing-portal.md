@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847121"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310011"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>在发布门户中设置应用程序
 
@@ -53,7 +53,7 @@ ms.locfileid: "57847121"
 
 这是发布者个人资料内产品/服务的唯一标识符。 此 ID 将显示在产品 URL 中。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 此字段在套餐推出后处于锁定状态。
 
-例如，如果发布者 **“contoso”** 创建了套餐 ID 为 **“sample-WebApp”** 的套餐，该套餐将以“https://appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview”形式显示在 AppSource 中
+例如，如果发布服务器 **"contoso"** 发布服务器创建产品/服务产品/服务 ID **"示例 web 应用"**，它将显示在 AppSource 为"https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
 
 ### <a name="publisher-id"></a>发布者 ID
 

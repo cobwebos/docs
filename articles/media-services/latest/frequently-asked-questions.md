@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5b49db8d7e8360837dc209e98123eeccd5542769
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e543f6e69632da67900e3b49a9c77e125df5f852
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837739"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316909"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure 媒体服务 v3 常见问题
 
@@ -73,7 +73,7 @@ ms.locfileid: "57837739"
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>能否使用 Azure 门户来管理 v3 资源？
 
-还不可以。 你可以使用某个受支持的 SDK。 请参阅本文档集中的教程和示例。
+目前，无法使用 Azure 门户来管理 v3 资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 中是否有 AssetFile 概念？
 

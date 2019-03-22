@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4a48312dc516010b7a7fe1471ba7e555a2f92f2
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
+ms.openlocfilehash: fdb9b6c09e81ce29d2587fb0faca1aa80d28ea38
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382260"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309973"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>在本地部署远程监视解决方案加速器 - Visual Studio
 
@@ -23,7 +23,7 @@ ms.locfileid: "54382260"
 
 若要在本地计算机上的 Docker 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
@@ -96,7 +96,7 @@ npm install
 npm start
 ```
 
-在启动完成时，浏览器会显示页面 **http://localhost:3000/dashboard**。 此页面上的错误是预料之中的。 若想在无错误的情况下查看应用程序，请完成以下步骤。
+启动完成后，在浏览器显示页面**http:\//localhost:3000 / 仪表板**。 此页面上出现的错误在意料之中。 若要在无错误的情况下查看应用程序，请完成以下步骤。
 
 ### <a name="configure-and-run-nginx"></a>配置并运行 NGINX
 
@@ -109,7 +109,7 @@ npm start
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 
-若要访问远程监视解决方案仪表板，请在浏览器中导航到 [http://localhost:9000](http://localhost:9000)。
+若要访问远程监视解决方案仪表板，导航到 http:\//localhost:9000 在浏览器中的。
 
 ## <a name="clean-up"></a>清理
 

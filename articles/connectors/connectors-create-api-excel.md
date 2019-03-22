@@ -1,25 +1,25 @@
 ---
-title: 连接到 Excel Onlin - Azure 逻辑应用 | Microsoft Docs
+title: 连接到 Excel Online-Azure 逻辑应用
 description: 使用 Excel Online REST API 和 Azure 逻辑应用管理数据
-ms.service: logic-apps
 services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 917b9abd4a32b7951313c5555f4111dff990078c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230945"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314513"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Excel Online 数据
 
-使用 Azure 逻辑应用和 Excel Online 连接器，可以基于 Excel Online for Business 或 Excel Online for OneDrive 中的数据创建自动化任务和工作流。 此连接器提供了可以帮助你处理数据以及管理电子表格的操作，例如： 
+使用 Azure 逻辑应用和 Excel Online 连接器，可以基于 Excel Online for Business 或 Excel Online for OneDrive 中的数据创建自动化任务和工作流。 此连接器提供了可以帮助你处理数据以及管理电子表格的操作，例如：
 
 * 创建新的工作表和表。
 * 获取和管理工作表、表和行。
@@ -32,11 +32,11 @@ ms.locfileid: "50230945"
 > [!NOTE]
 > [Excel Online for Business](/connectors/excelonlinebusiness/) 和 [Excel Online for OneDrive](/connectors/excelonline/) 连接器可以与 Azure 逻辑应用一起工作，不同于[适用于 PowerApps 的 Excel 连接器](/connectors/excel/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
-* 用于你的工作帐户或个人 Microsoft 帐户的一个 [Office 365 帐户](https://www.office.com/) 
+* 用于你的工作帐户或个人 Microsoft 帐户的一个 [Office 365 帐户](https://www.office.com/)
 
   你的 Excel 数据可以作为以逗号分隔的值 (CSV) 文件存在于存储文件夹中，例如在 OneDrive 中。 
   还可以将同一 CSV 文件与[平面文件连接器](../logic-apps/logic-apps-enterprise-integration-flatfile.md)结合使用。
@@ -53,7 +53,7 @@ ms.locfileid: "50230945"
 
 1. 在搜索框中，输入“excel”作为筛选器。 在操作列表下，选择所需的操作。
 
-1. 如果系统提示登录到 Office 365 帐户，请选择“登录”。 
+1. 如果系统提示登录到 Office 365 帐户，请选择“登录”。
 
    你的凭据授权逻辑应用创建与 Excel Online 的连接并访问你的数据。
 
@@ -61,10 +61,10 @@ ms.locfileid: "50230945"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关技术详细信息（例如操作和限制，如连接器的 Swagger 文件所述），请查看以下连接器参考页：
+有关技术详细信息，如触发器、 操作和限制，如所述的连接器的 OpenAPI (以前称为 Swagger) 文件，请参阅这些连接器参考页面：
 
-* [Excel Online for Business](/connectors/excelonlinebusiness/) 
-* [Excel Online for OneDrive](/connectors/excelonline/) 
+* [Excel Online for Business](/connectors/excelonlinebusiness/)
+* [Excel Online for OneDrive](/connectors/excelonline/)
 
 ## <a name="get-support"></a>获取支持
 

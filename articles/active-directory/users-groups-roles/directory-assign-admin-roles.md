@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f06446cb6af1fa145e5fcec41cc85a1452af207a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5202d2775e830264543719cafefb5c48fca822d6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839247"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316416"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -134,7 +134,7 @@ ms.locfileid: "57839247"
 
 * **[合作伙伴二线支持人员](#partner-tier2-support)**：请勿使用。 此角色已弃用，并将从 Azure AD 中删除。 此角色仅供少数 Microsoft 转售合作伙伴使用，不适用于一般用途。
 
-* **[密码管理员/支持管理员](#helpdesk-administrator)**：具有此角色的用户可以更改密码、使刷新令牌失效、管理服务请求和监视服务运行状况。 使刷新令牌失效会强制用户重新登录。 支持人员管理员可以重置密码，并会使非管理员或分配以下角色的其他用户的刷新令牌无效：
+* **[支持 （密码） 管理员](#helpdesk-administrator)**:具有此角色的用户可以更改密码、使刷新令牌失效、管理服务请求和监视服务运行状况。 使刷新令牌失效会强制用户重新登录。 支持人员管理员可以重置密码，并会使非管理员或分配以下角色的其他用户的刷新令牌无效：
   * 目录读者
   * 来宾邀请者
   * 支持管理员
@@ -149,7 +149,7 @@ ms.locfileid: "57839247"
   * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
   > [!NOTE]
-  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“支持管理员”。 它是 [Azure 门户](https://portal.azure.com/)中的“密码管理员”。
+  > 此角色在中，以前称为"密码管理员" [Azure 门户](https://portal.azure.com/)。 我们正在更改其名称为"支持人员管理员"，以匹配其 Azure AD PowerShell、 Azure AD 图形 API 和 Microsoft Graph API 中的名称。 在短时间，我们将更改为"支持人员 （密码） Administrator"的名称，对"支持人员管理员"的更改之前在 Azure 门户中。
   >
   
 * **[Power BI 管理员](#power-bi-service-administrator)**：具有此角色的用户具有 Microsoft Power BI 内的全局权限（如果该服务存在），并且能够管理支持票证和监视服务运行状况。 有关详细信息，请参阅[了解 Power BI 管理员角色](https://docs.microsoft.com/power-bi/service-admin-role)。
@@ -164,7 +164,7 @@ ms.locfileid: "57839247"
 
   <b>重要说明</b>：此角色授予管理的所有 Azure AD 角色，包括全局管理员角色分配的功能。 此角色不包括 Azure AD 中的任何其他权限功能，如创建或更新用户。 但是，分配到此角色的用户可通过分配其他角色，授予自己或其他人额外的特权。
 
-* **[报告读取者](#reports-reader)**：具有此角色的用户可在 Office 365 管理中心和 Power BI 中的采用上下文包内查看使用情况报告数据和报告仪表板。 此外，此角色还提供对 Azure AD 中的登录报告和活动以及 Microsoft Graph 报告 API 返回的数据的访问权限。 分配到“报告读者”角色的用户只能访问相关使用情况和采用指标。 它们没有任何管理员权限，无法配置设置或访问产品特定的管理中心（如 Exchange）。 此角色无权查看、创建或管理支持票证。
+* **[报告读取者](#reports-reader)**：具有此角色的用户可以查看使用情况报告数据和 Microsoft 365 管理中心中的报表仪表板和采用上下文包在 Power BI 中。 此外，此角色还提供对 Azure AD 中的登录报告和活动以及 Microsoft Graph 报告 API 返回的数据的访问权限。 分配到“报告读者”角色的用户只能访问相关使用情况和采用指标。 它们没有任何管理员权限，无法配置设置或访问产品特定的管理中心（如 Exchange）。 此角色无权查看、创建或管理支持票证。
 
 * **[安全管理员](#security-administrator)**：具有此角色的用户有权管理 Microsoft 365 安全中心、Azure Active Directory Identity Protection、Azure 信息保护和 Office 365 安全与合规中心中与安全相关的功能。 [Office 365 安全与合规中心](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
   
@@ -208,9 +208,9 @@ ms.locfileid: "57839247"
   [Azure 安全中心](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | 可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改
   [Office 365 服务运行状况](https://docs.microsoft.com/office365/enterprise/view-service-health) | 查看 Office 365 服务的运行状况
 
-* **[服务支持管理员](#service-support-administrator)**：具有此角色的用户可以为 Azure 和 Office 365 服务打开 Microsoft 支持请求，还可在 Azure 门户和 Office 365 管理门户中查看访问仪表板和消息中心。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
+* **[服务支持管理员](#service-support-administrator)**：具有此角色的用户可以开具支持请求 Microsoft Azure 和 Office 365 服务和服务仪表板和消息中心中的视图[Azure 门户](https://portal.azure.com)并[Microsoft 365 管理中心内](https://admin.microsoft.com)。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
   > [!NOTE]
-  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“服务支持管理员”。 它是 [Azure 门户](https://portal.azure.com)、Office 365 管理门户和 Intune 门户中的“服务管理员”。
+  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“服务支持管理员”。 它是在"服务管理员" [Azure 门户](https://portal.azure.com)，则[Microsoft 365 管理中心内](https://admin.microsoft.com)，并在 Intune 门户。
 
 * **[SharePoint 管理员](#sharepoint-service-administrator)**：具有此角色的用户在 Microsoft SharePoint Online（如果存在此服务）中拥有全局权限，并且能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
   > [!NOTE]

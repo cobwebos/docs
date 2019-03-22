@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery 中用于 Azure 区域之间 Azure IaaS VM 灾难恢复的 Azure Site Recovery 支持矩阵 | Microsoft Docs
+title: 使用 Azure Site Recovery 的 Azure 区域之间的 Azure Vm 灾难恢复的支持矩阵 |Microsoft Docs
 description: 总结了 Azure Site Recovery 在不同区域之间复制 Azure 虚拟机 (VM) 以满足灾难恢复 (DR) 需求时支持的操作系统和配置。
 services: site-recovery
 author: rayne-wiselman
@@ -8,32 +8,32 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 0dac046c359bb8affd69145c73a66cf4ac079012
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: b0fb84131f33d216e099978a7c9ba5481c1691d1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287190"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312812"
 ---
-# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
+# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>从一个区域的 Azure Vm 复制到另一个支持矩阵
 
 本文总结了使用 [Azure Site Recovery](site-recovery-overview.md) 服务在不同 Azure 区域之间通过 Azure VM 复制、故障转移和恢复来部署灾难恢复时所支持的配置和组件。
 
 
 ## <a name="deployment-method-support"></a>部署方法支持
 
-**部署方法** |  **支持/不支持**
+**部署** |  **支持**
 --- | ---
-**Azure 门户** | 支持
-**PowerShell** | [使用 PowerShell 进行 Azure 到 Azure 的复制](azure-to-azure-powershell.md)
-**REST API** | 支持
+**Azure 门户** | 。
+**PowerShell** | 。 [了解详细信息](azure-to-azure-powershell.md)
+**REST API** | 。
 **CLI** | 目前不支持
 
 
 ## <a name="resource-support"></a>资源支持
 
 **资源操作** | **详细信息**
---- | --- 
+--- | --- | ---
 **跨资源组移动保管库** | 不支持
 **跨资源组移动计算/存储/网络资源** | 不支持。<br/><br/> 如果在 VM 复制后移动 VM 或相关组件（如存储/网络），则需要禁用并重新启用 VM 的复制。
 **将 Azure VM 从一个订阅复制到另一个订阅以进行灾难恢复** | 在同一 Azure Active Directory 租户中受支持。
@@ -57,12 +57,12 @@ Azure Government     | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚
 
 >[!NOTE]
 >
-> - 对于“巴西南部”区域，可以复制并故障转移到下列区域之一：美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2 和美国中北部区域。 应当注意，Site Recovery 仅将“巴西南部”启用为可以在其中保护 VM 的源区域。 它不能用作任何 Azure 区域（例如“美国中南部”）的目标 DR 区域。 看到的延迟是由地理距离导致的，建议选择除了“巴西南部”之外的任何其他美洲区域。
->
-> - 如果你无法查看要在其中创建保管库的区域，请确保你的订阅有权在该区域中创建资源。 例如：如果无法在法国南部创建保管库，那么你的订阅将无法访问法国南部区域。 请在发布类型“订阅管理”和问题类型“其他一般问题”下提交支持票证，主题为“将 XXX Azure 区域的订阅加入允许列表”
->
-> - 如果在启用复制期间无法在地理群集中看到某个区域，请确保你的订阅有权在该区域中创建虚拟机。 例如：如果你想要保护从法国中部到法国南部的虚拟机，但在“区域”下拉列表中看不到“法国南部”，那么你的订阅将无权在该区域中部署 VM。 请在发布类型“订阅管理”和问题类型“其他一般问题”下提交支持票证，主题为“将 XXX Azure 区域的订阅加入允许列表”
-> - 你不能跨上述地理群集选择区域。
+> - 有关**巴西南部**，可以进行复制和故障转移到这些区域：美国中南部、 美国中西部、 美国东部、 美国东部 2、 美国西部、 美国西部 2 和美国中北部。
+> - 巴西南部目前仅可用作 Vm 可以从其复制使用 Site Recovery 的源区域。 它不能充当目标区域。 这是因为延迟问题，因为地理距离。 
+> - 您可以对其具有适当的访问权限的区域中。
+> - 如果您要在其中创建保管库的区域中未显示，请确保你的订阅具有在该区域中创建资源的访问权限。 
+> - 如果在启用复制时，您无法查看地理群集内的区域，，请确保你的订阅有权在该区域中创建 Vm。 
+
 
 
 ## <a name="cache-storage"></a>缓存存储
@@ -195,7 +195,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持为[使用 Azure AD 应用的加密](https://aka.ms/ade-aad-app)启用的 VM |
 适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 不支持 |
 热添加/移除磁盘 | 不支持 | 如果在 VM 上添加或删除数据磁盘，则需为 VM 禁用复制后重新启用复制。
-排除磁盘 | [通过 powershell 支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine) |   默认排除临时磁盘。
+排除磁盘 | 支持。 必须使用[Powershell](azure-to-azure-exclude-disks.md)配置。 |  默认情况下排除临时磁盘。
 存储空间直通  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
 横向扩展文件服务器  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
 LRS | 支持 |
@@ -203,17 +203,22 @@ GRS | 支持 |
 RA-GRS | 支持 |
 ZRS | 不支持 |
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持虚拟机磁盘
-虚拟网络的 Azure 存储防火墙  | 支持 | 如果你限制了虚拟网络对存储帐户的访问，请确保“[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)”。
+虚拟网络的 Azure 存储防火墙  | 支持 | 如果将虚拟网络访问限制到存储帐户，请启用[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
 常规用途 V2 存储帐户（冷热存储层） | 否 | 与常规用途 V1 存储帐户相比，事务成本显著增加
 
 >[!IMPORTANT]
-> 确保观察 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) 虚拟机的 VM 磁盘可伸缩性和性能目标，以避免任何性能问题。 如果遵从默认设置，Site Recovery 将基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请确保遵循源 VM 的磁盘可伸缩性和性能目标。
+> 若要避免性能问题，请确保遵循的 VM 磁盘的可伸缩性和性能目标[Linux](../virtual-machines/linux/disk-scalability-targets.md)或[Windows](../virtual-machines/windows/disk-scalability-targets.md) Vm。 如果使用默认设置，Site Recovery 会创建所需的磁盘和存储帐户，基于源配置。 如果自定义和选择自己的设置，请遵循源 Vm 的磁盘可伸缩性和性能目标。
 
-## <a name="azure-site-recovery-limits-to-replicate-data-change-rates"></a>Azure Site Recovery 对数据更改复制速率的限制
-下表提供了 Azure Site Recovery 限制。 这些限制基于我们的测试，但无法涵盖所有可能的应用程序 I/O 组合。 实际结果可能因应用程序 I/O 组合而异。 我们还应注意，有两个限制需要考虑：每个磁盘的数据变动率，以及每个虚拟机的数据变动率。
-例如，查看下表中的高级 P20 磁盘可以发现，Site Recovery 能够处理每个磁盘 5 MB/秒的变动率，但由于每个 VM 的总变动率限制为 25 MB/秒，因此，它最多可以处理每个 VM 中 5 个这样的磁盘。
+## <a name="limits-and-data-change-rates"></a>限制和数据更改率
 
-**复制存储目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动量** | **每天的总源磁盘数据变动量**
+下表汇总了 Site Recovery 限制。
+
+- 这些限制基于我们的测试，但显然不涵盖所有可能的应用程序 I/O 组合。
+- 实际结果可以根据应用程序 I/O 组合而有所不同。
+- 有两个需要考虑每个磁盘数据变动量和每个虚拟机数据变动量的限制。
+- 例如，如果我们使用高级 P20 磁盘下，表中所述 Site Recovery 可以处理 5 Mb 的每个磁盘，改动与最多五个此类磁盘，每个 VM 由于 25 MB/秒总变动量的每个 VM 的限制。
+
+**存储目标** | **平均源磁盘 I/O** |**平均源磁盘数据变动量** | **每天的总源磁盘数据变动量**
 ---|---|---|---
 标准存储 | 8 KB | 2 MB/秒 | 每个磁盘 168 GB
 高级 P10 或 P15 磁盘 | 8 KB  | 2 MB/秒 | 每个磁盘 168 GB
@@ -222,7 +227,7 @@ ZRS | 不支持 |
 高级 P20、P30、P40 或 P50 磁盘 | 8 KB    | 5 MB/秒 | 每个磁盘 421 GB
 高级 P20、P30、P40 或 P50 磁盘 | 至少 16 KB |20 MB/秒 | 每个磁盘 1684 GB
 ## <a name="replicated-machines---networking"></a>复制的计算机 - 网络
-**配置** | **支持** | **详细信息**
+**设置** | **支持** | **详细信息**
 --- | --- | ---
 NIC | 特定 Azure VM 大小支持的最大数量 | 在故障转移期间创建 VM 时会创建 NIC。<br/><br/> 故障转移 VM 上的 NIC 数目取决于启用复制时源 VM 上的 NIC 数目。 如果在启用复制后添加或删除 NIC，不会影响故障转移后复制的 VM 上的 NIC 数目。
 内部负载均衡器 | 支持 | 在恢复计划中使用 Azure 自动化脚本关联预配置的负载均衡器。
@@ -235,15 +240,15 @@ NIC 上的 NSG | 支持 | 在恢复计划中使用 Azure 自动化脚本将 NSG 
 流量管理器     | 支持 | 可以预配置流量管理器，这样在正常情况下，流量路由到源区域中的终结点；发生故障转移时，流量路由到目标区域中的终结点。
 Azure DNS | 支持 |
 自定义 DNS  | 支持 |
-未经身份验证的代理 | 支持 | 请参阅[网络指南文档。](site-recovery-azure-to-azure-networking-guidance.md)    
+未经身份验证的代理 | 支持 | [了解详细信息]。(site-recovery-azure-to-azure-networking-guidance.md)   
 经过身份验证的代理 | 不支持 | 如果 VM 对出站连接使用经过身份验证的代理，则不能使用 Azure Site Recovery 复制该 VM。    
-具有本地网络的站点到站点 VPN（带或不带 ExpressRoute）| 支持 | 确保按以下方式配置 UDR 和 NSG：Site Recovery 流量不路由到本地网络。 请参阅[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)。  
-VNET 到 VNET 连接 | 支持 | 请参阅[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)。  
+VPN 站点到站点连接到本地<br/><br/>（带或不带 ExpressRoute）| 支持 | 确保按以下方式配置 UDR 和 NSG：Site Recovery 流量不路由到本地网络。 [了解详细信息](site-recovery-azure-to-azure-networking-guidance.md)    
+VNET 到 VNET 连接 | 支持 | [了解详细信息](site-recovery-azure-to-azure-networking-guidance.md)  
 虚拟网络服务终结点 | 支持 | 若要限制对存储帐户的虚拟网络访问，请确保允许受信任的 Microsoft 服务访问存储帐户。
 加速网络 | 支持 | 必须在源 VM 上启用加速网络。 [了解详细信息](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 
 
 
 ## <a name="next-steps"></a>后续步骤
-- 请参阅 [Azure VM 复制网络指南](site-recovery-azure-to-azure-networking-guidance.md)。
+- 读取[网络连接指南](site-recovery-azure-to-azure-networking-guidance.md)Azure Vm 复制。
 - 通过[复制 Azure VM](site-recovery-azure-to-azure.md) 来部署灾难恢复。

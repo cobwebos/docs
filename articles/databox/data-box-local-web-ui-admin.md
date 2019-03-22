@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 12/27/2018
+ms.date: 02/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6df44afee26570dbdc5d64b449c4e33d6a0956ae
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d5b6949930161f78c6edf4213df98471e96b1d42
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885704"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404036"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>使用本地 Web UI 管理 Data Box
 
@@ -25,6 +25,7 @@ Data Box 的本地 Web UI 用于设备的初始配置。 还可以使用本地 W
 
 - 生成支持包
 - 关闭或重启设备
+- 下载 BOM 或清单文件
 - 查看设备的可用容量
 - 跳过校验和验证 
 
@@ -104,6 +105,8 @@ Data Box 的本地 Web UI 用于设备的初始配置。 还可以使用本地 W
     |databoxe2etest_AzFile-BOM.txt    |Azure 文件         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |页 Blob         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |块 Blob         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |托管磁盘         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |托管磁盘         |SMB/NFS         |
 
 将 Data Box 寄回到 Azure 数据中心后，使用此列表来验证已上传到 Azure 存储帐户的文件。 示例清单文件如下所示。
 

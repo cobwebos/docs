@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 36d0a976b73fe5b6f89755ce790b919468744179
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e27dee213baf8365c3ad4efc69602f66e2081abe
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091641"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311146"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Azure Site Recovery 中的服务更新
 组织需确定在发生计划内和计划外中断时，如何维护数据的安全，以及如何确保应用/工作负荷处于运行状态。 Azure Site Recovery 可以在站点出现故障时让应用始终在 VM 上运行并使物理服务器保持可用，以此帮助实现 BCDR 策略。 Site Recovery 可以复制在 VM 和物理服务器上运行的工作负荷，因此当主站点不可用时，始终可以在次要位置使用这些工作负荷。 当主站点重新启动并运行时，它会将工作负荷恢复到主站点。
@@ -118,17 +118,18 @@ Azure Site Recovery 定期发布服务更新 - 包括添加新功能、改进支
 
 |更新汇总  |提供程序  |统一安装程序| OVF  |MARS|
 |---------|---------|---------|---------|--------|
+|[更新汇总 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery)     |   5.1.4000.0  |  9.23.5163.1   |  5.1.4000.0  | 2.0.9156.0
 |[更新汇总 34](https://support.microsoft.com/en-us/help/4490016/update-rollup-34-for-azure-site-recovery) - 修补程序     |   5.1.3950.0  |  9.22.5142.1   |  5.1.3950.0  | 2.0.9155.0
 |[更新汇总 33](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
 |[更新汇总 32](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
 |[更新汇总 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
 |[更新汇总 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)     |    5.1.3650.0   |   9.19.5007.1    |     5.1.3650.0    |2.0.9139.0
-|[更新汇总 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)     |   5.1.3650.0      |   9.19.4973.1     |     5.1.3700.0    |2.0.9131.0
-|[更新汇总 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery)     |  5.1.3600 .0      |    9.19.4973.1     |  5.1.3600.0       |2.0.9131.0
-| [更新汇总 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery)       |   5.1.3550.0      |    9.18.4946.1     | 5.1.3550.0         |2.0.9125.0
-
 
 ## <a name="previous-update-rollups"></a>以前的更新汇总
+
+- [更新汇总 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)
+- [更新汇总 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery)
+- [更新汇总 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery)
 - [更新汇总 26](https://support.microsoft.com/help/4344054/update-rollup-26-for-azure-site-recovery)  
 - [更新汇总 25](https://support.microsoft.com/help/4278275/update-rollup-25-for-azure-site-recovery) 
 - [更新汇总 23](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 

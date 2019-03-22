@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: f9cf5e723484196125548b9e6d3956e909e9c9b0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 0acb844b8b10ff210985dfcd8c96f15da6669356
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874935"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337470"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 门户中创建新的 LUIS 应用
 可通过多种方法创建 LUIS 应用。 可以在 [LUIS](https://www.luis.ai) 门户中创建 LUIS 应用，也可以通过 LUIS 创作 [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) 创建。
@@ -56,6 +56,16 @@ ms.locfileid: "55874935"
     > [!NOTE]
     > 创建应用程序后将无法更改区域性。 
 
+## <a name="import-an-app-from-file"></a>从文件导入应用
+
+1. 在“我的应用”页，选择“导入新应用”。
+1. 在弹出对话框中，选择一个有效的应用 JSON 文件，并选择**完成**。
+
+### <a name="import-errors"></a>导入错误
+
+可能的错误为： 
+
+* 已存在具有该名称的应用。 重新导入应用程序中，并设置**可选名称**为新名称。 
 
 ## <a name="next-steps"></a>后续步骤
 

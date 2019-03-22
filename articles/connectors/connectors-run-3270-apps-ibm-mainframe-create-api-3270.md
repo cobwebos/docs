@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: ebf858ba86758b11ee896d745d70bdf2f0d0cde6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878374"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313186"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 Azure 逻辑应用和 IBM 3270 连接器与 Azure 集成 IBM 大型机上的 3270 屏幕驱动应用
 
@@ -410,7 +410,7 @@ ms.locfileid: "57878374"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关触发器、 操作和限制的技术详细信息，其中描述了连接器的 OpenAPI (以前称为 Swagger) 描述，查看连接器的参考页面： [ https://docs.microsoft.com/connectors/<replace-with-api-topic-file-name> ](/connectors/)。
+有关触发器、 操作和限制的技术详细信息，其中描述了连接器的 OpenAPI (以前称为 Swagger) 说明，请查看[连接器的参考页](/connectors/si3270/)。
 
 ## <a name="get-support"></a>获取支持
 

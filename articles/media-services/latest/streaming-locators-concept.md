@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: be66dcf8115258b6f593ec913e75785a3f8dbe1f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 51aa33e4ff387a1030dac42bce8d12cf72343b35
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743474"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317470"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
@@ -32,7 +32,11 @@ ms.locfileid: "55743474"
 > * 属于日期/时间类型的流式处理定位符的属性始终采用 UTC 格式。
 > * 应为媒体服务帐户设计一组有限的策略，并在需要相同的选项时重新将这些策略用于流式处理定位符。 
 
-## <a name="filtering-ordering-paging"></a>筛选、排序、分页
+## <a name="associate-filters-with-streaming-locators"></a>将筛选器与流式处理定位符相关联
+
+可以指定一系列[资产或帐户筛选器](filters-concept.md)，这将会应用于你[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)。 [动态打包程序](dynamic-packaging-overview.md)适用此列表以及这些客户端在 URL 中指定的筛选器。 此组合生成[dyanamic 清单](filters-dynamic-manifest-overview.md)，后者基于在 URL 中的筛选器 + 流式处理定位符指定的筛选器。 我们建议你使用此功能，如果想要应用筛选器，但不是希望公开在 URL 中的筛选器名称。
+
+## <a name="filter-order-page-streaming-locator-entities"></a>筛选器、 顺序、 页流式处理定位符实体
 
 请参阅[媒体服务实体的筛选、排序、分页](entities-overview.md)。
 

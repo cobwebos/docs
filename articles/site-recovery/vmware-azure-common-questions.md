@@ -1,19 +1,19 @@
 ---
 title: 常见问题 - 使用 Azure Site Recovery 进行 VMware 到 Azure 的灾难恢复 | Microsoft Docs
 description: 本文汇总了使用 Azure Site Recovery 设置将本地 VMware VM 灾难恢复到 Azure 时的常见问题
-author: mayurigupta13
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/14/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: 24682156cf0c50ccf69c39f83f59e9b867bbcf0f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.author: raynew
+ms.openlocfilehash: 82ae36eaaf4616dbd85760a0962f301a2b1a20f5
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901842"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319374"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -165,6 +165,10 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
 时复制到 Azure 时，复制流量达到 Azure 存储公共终结点时，因此您只能复制通过公共 internet 与 ExpressRoute （公共对等互连），并不能使用 VPN。
+
+### <a name="can-i-use-riverbed-steelheads-for-replication"></a>可以为复制使用 Riverbed SteelHeads？
+
+Riverbed，我们的合作伙伴提供有关如何使用 Azure Site Recovery 的详细的指南。 请参阅其[解决方案指南](https://community.riverbed.com/s/article/DOC-4627)。
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>复制的 VM 要满足哪些要求？
 

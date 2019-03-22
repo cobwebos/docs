@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 1a07661d97561319b847323981dd2aa8522b0e84
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 645f3177913b903e8262c1fec08c452130e2a671
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537586"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337861"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>在 Azure 搜索中创建基本索引
 
@@ -46,7 +46,7 @@ ms.locfileid: "57537586"
 
 6. 继续使用代码来迭代设计。  
 
-由于物理结构是在服务中创建的，每当对现有的字段定义进行重大更改后，都必须[删除并重新创建索引](search-howto-reindex.md)。 这意味着，在开发期间，应该对频繁的重新生成做好规划。 可以考虑使用一部分数据来加快重新生成的速度。 
+因为在服务中，创建物理结构[删除并重新创建索引](search-howto-reindex.md)只要对现有字段定义进行重大更改。 这意味着，在开发期间，应该对频繁的重新生成做好规划。 可以考虑使用一部分数据来加快重新生成的速度。 
 
 迭代设计的建议方法是使用代码而不是门户。 如果依赖于使用门户创建索引定义，则每次重新生成都必须填充索引定义。 如果开发项目仍处于早期阶段，[Postman 和 REST API](search-fiddler.md) 等备选工具也有助于完成概念证明测试。 可对请求正文中的索引定义进行增量更改，然后将请求发送到服务，以使用更新的架构重新创建索引。
 

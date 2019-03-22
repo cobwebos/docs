@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3e1d5ed05b7acc8f7e0fcc772a4124984c6cba45
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: ae435c379a55ee2b3246cb3e757b79295c57988e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884522"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338286"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 存储最佳做法
 
@@ -34,7 +34,7 @@ HDInsight 群集可将 Azure 存储中的 blob 容器用作默认文件系统或
 
 可以使用以下格式之一访问存储在 Azure 存储中的数据：
 
-|数据访问格式 |说明 |
+|数据访问格式 |描述 |
 |---|---|
 |`wasb:///`|使用未加密通信访问默认存储。|
 |`wasbs:///`|使用加密通信访问默认存储。|
@@ -156,7 +156,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 1. 打开 [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) 文件并更改以下值：
 
-    |令牌属性|说明|
+    |令牌属性|描述|
     |---|---|
     |policy_name|要创建的存储策略所用的名称。|
     |storage_account_name|存储帐户的名称。|
@@ -221,7 +221,6 @@ Azure Data Lake Storage 提供本地冗余存储 (LRS)，但还应将关键数�
 
 有关详细信息，请参阅以下文章：
 - [将其他存储帐户添加到 HDInsight](../hdinsight-hadoop-add-storage.md)
-- [将其他 Azure 存储帐户附加到该群集](https://blogs.msdn.microsoft.com/ashish/2016/08/25/hdinsight-attach-additional-azure-storage-accounts/)
 
 ## <a name="next-steps"></a>后续步骤
 

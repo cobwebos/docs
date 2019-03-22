@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: 2cb70c67bc4719eb43c4fcb70edf574c57362f26
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 6f539cb905c0ed401816c7f223918a1416f95d6c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013285"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312268"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 
@@ -47,7 +47,7 @@ ms.locfileid: "58013285"
 
 也可以在 Internet Explorer 中使用“F12 调试工具”的“网络”标签页查看 HTTP 响应。
 
-在本示例中，我们想要查看探测 URL 返回的响应： http://watestsdp2008r2.cloudapp.net:80/Probe。 以下 PowerShell 示例演示了该问题。
+此示例中我们想要查看探测 url 的响应： http:\//watestsdp2008r2.cloudapp.net:80/Probe。 以下 PowerShell 示例演示了该问题。
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 432dcf4608d23f269c5005b86d2c58b7f70b3068
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007578"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313594"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -77,7 +77,7 @@ ms.locfileid: "58007578"
 1. 打开“Azure Active Directory”边栏选项卡
 1. 单击“应用注册”
 1. 单击“添加”
-1. 输入一个名称，选择应用程序类型"Web 应用 /API"，输入登录 URL (例如`http://localhost`)，然后单击创建
+1. 输入一个名称，选择应用程序类型"Web 应用 /API"，输入登录 URL (例如 http:\//localhost)，然后单击创建
 1. 不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”

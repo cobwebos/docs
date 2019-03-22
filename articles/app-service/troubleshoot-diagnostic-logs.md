@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7d877f467f06768c31679752d9deff1ca19d0003
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 023d12764e3dcfcf2f5471cb431528a14fbc1fed
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882869"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339629"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -115,7 +115,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](https://go.
 
     az webapp log download --resource-group resourcegroupname --name appname
 
-此命令将名为“appname”的应用的日志保存到当前目录中名为 **diagnostics.zip** 的文件。
+此命令将名为 appname 到名为的文件的应用日志保存**webapp_logs.zip**当前目录中。
 
 > [!NOTE]
 > 如果尚未安装 Azure CLI，或尚未将其配置为使用你的 Azure 订阅，请参阅[如何使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。

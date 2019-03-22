@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f854c8b27065c2d2bf0c9964fe9dfce66aba423a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9fcc6cb40d83c06a1c9f0a97c72565464e74e655
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104499"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336061"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
@@ -29,7 +29,7 @@ ms.locfileid: "58104499"
 
 ## <a name="before-you-begin"></a>开始之前
 
-我们建议安装[我的应用安全登录扩展](../user-help/active-directory-saas-access-panel-user-help.md#i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension)。 此浏览器扩展，可以轻松地解决问题的单一登录到收集的 SAML 请求和所需的 SAML 响应信息。 如果无法安装该扩展，本文介绍了在已安装和未安装该扩展的情况下如何解决问题。
+我们建议安装[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)。 此浏览器扩展，可以轻松地解决问题的单一登录到收集的 SAML 请求和所需的 SAML 响应信息。 如果无法安装该扩展，本文介绍了在已安装和未安装该扩展的情况下如何解决问题。
 
 若要下载并安装“我的应用安全登录扩展”，请使用以下链接之一。
 
@@ -64,7 +64,7 @@ ms.locfileid: "58104499"
 
 若要调试此错误，需要获取错误消息和 SAML 请求。 “我的应用安全登录扩展”会自动收集此信息，并在 Azure AD 中显示解决方法指导。 
 
-### <a name="to-resolve-the-sign-in-error-with-the-myapps-secure-sign-in-extension-installed"></a>若要解决登录错误后的使用 MyApps 安全登录扩展安装
+### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>若要解决登录错误后与我的应用安全登录扩展安装
 
 1. 出现错误时，该扩展将你重定向到 Azure AD**单一登录测试**边栏选项卡。 
 1. 上**测试单一登录**边栏选项卡，选择**下载 SAML 请求**。 
@@ -73,14 +73,14 @@ ms.locfileid: "58104499"
 
 如果没有解决方法，用于登录错误，我们建议使用反馈文本框中时通知我们。
 
-### <a name="to-resolve-the-error-without-installing-the-myapps-secure-sign-in-extension"></a>若要解决此错误，而无需安装 MyApps 安全登录扩展
+### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>若要解决此错误，而无需安装我的应用安全登录扩展
 
 1. 复制页面右下角的错误消息。 错误消息中包含：
     - CorrelationID 和 Timestamp。 创建 Microsoft 支持案例时，这些值非常重要，因为它们可以帮助工程师识别问题，并提供问题的准确解决方法。
     - 指明问题根本原因的陈述。
 1. 返回 Azure AD 并找到“测试单一登录”边栏选项卡。
 1. 在“获取解决方法指导”上面的文本框中，粘贴该错误消息。
-1. 单击“获取解决方法指导”显示解决问题的步骤。 该指导可能需要 SAML 请求或 SAML 响应中的信息。 如果未使用“我的应用安全登录扩展”，可能需要使用某种工具（例如 [Fiddler](https://www.telerik.com/fiddler)）来检索 SAML 请求和响应。
+1. 单击“获取解决方法指导”显示解决问题的步骤。 该指导可能需要 SAML 请求或 SAML 响应中的信息。 如果您不使用我的应用安全登录扩展，则可能需要一种工具如[Fiddler](https://www.telerik.com/fiddler)检索 SAML 请求和响应。
 1. 验证 SAML 请求中的目标对应于 SAML 单一登录服务 URL 从 Azure AD 获取。
 1. 验证 SAML 请求中的颁发者已配置 Azure AD 中应用程序相同的标识符。 Azure AD 使用颁发者在目录中查找应用程序。
 1. 验证 AssertionConsumerServiceURL 是应用程序能够接收来自 Azure AD 的 SAML 令牌。 您可以在 Azure AD 中配置此值，但并不总是这样如果它是 SAML 请求的一部分。
