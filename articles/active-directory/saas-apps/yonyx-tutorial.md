@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d08b1f3889136fadee68b3aa95d879b0495bddb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: fce7653770d0fb3134f266137e167125b9161865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198400"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>教程：Azure Active Directory 与 Yonyx Interactive Guides 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56198400"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Yonyx Interactive Guides 的集成，需要以下项：
 
@@ -174,8 +174,8 @@ ms.locfileid: "56198400"
 
 此部分不存在任何操作项。 如果尚不存在用户，则会在尝试访问 Yonyx Interactive Guides 期间创建一个新用户。
 
->[!NOTE]
->如果需要手动创建用户，则需要通过 <mailto:support@yonyx.com> 联系 Yonyx Interactive Guides 支持团队。 
+> [!NOTE]
+> 如果需要手动创建用户，则需要通过 <mailto:support@yonyx.com> 联系 Yonyx Interactive Guides 支持团队。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

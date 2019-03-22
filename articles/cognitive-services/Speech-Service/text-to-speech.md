@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 39d500e2ceee71bdabb198d0dc7672b113a4c1af
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 05028704c08ebd06f9b9e4e3f45c5137eb1e6b58
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853338"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226906"
 ---
 # <a name="what-is-text-to-speech"></a>文本到语音转换是什么？
 
@@ -30,7 +30,7 @@ ms.locfileid: "57853338"
 
 ### <a name="custom-voices"></a>自定义语音
 
-语音自定义项，可以创建自己的品牌的可识别的、 独一无二的声音：*语音字体。* 若要创建语音字体，请先进行录音，然后将关联的脚本以训练数据的形式上传。 然后，此服务会根据你的录音创建唯一的语音模型。 可以使用此语音字体合成语音。 有关详细信息，请参阅[自定义语音](how-to-customize-voice-font.md)。
+语音自定义项，可以创建自己的品牌的可识别的、 独一无二的声音。 若要创建自定义语音字体，则请 studio 录制并上传与训练数据关联的脚本。 然后，此服务会根据你的录音创建唯一的语音模型。 可以使用此自定义语音字体合成语音。 有关详细信息，请参阅[自定义语音](how-to-customize-voice-font.md)。
 
 ## <a name="core-features"></a>核心功能
 

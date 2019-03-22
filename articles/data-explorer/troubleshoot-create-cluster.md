@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0edf9ebcde2df7e639666f8fe7472baacdeb8640
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 9b8bfe2a4b9b7a8432f14fb53b3e7a4cae49a3b4
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212176"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189965"
 ---
 # <a name="troubleshoot-failure-to-create-a-cluster-in-azure-data-explorer"></a>故障排除：无法在 Azure 数据资源管理器中创建群集
 
@@ -23,7 +23,7 @@ ms.locfileid: "50212176"
 
 1. 确保没有任何与在 Azure 门户的“创建群集”下输入的群集名称相关的验证错误。
 
-1. 查看 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/>)。 在你尝试创建群集的区域查找 Azure 数据资源管理器的状态。
+1. 查看 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/)。 在你尝试创建群集的区域查找 Azure 数据资源管理器的状态。
 
     如果状态不佳（绿色复选标记），请在状态改善后尝试创建群集。
 

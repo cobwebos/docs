@@ -9,17 +9,17 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 802be1ad5b1029add249430ee7760002407c4641
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: HT
+ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021619"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731185"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>处理 Azure 流分析中基于可配置阈值的规则
 本文介绍如何使用参考数据实现在 Azure 流分析中使用基于可配置阈值的规则的警报解决方案。
 
-## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>方案：基于可调整规则阈值的警报
+## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>场景：警报根据可调整规则的阈值
 当传入的流式处理事件达到特定值，或者当基于传入的流式处理事件的聚合值超过特定阈值时，可能需要生成警报作为输出。 设置比较该值与预先确定的固定静态阈值的流分析查询非常简单。 固定阈值可硬编码为使用简单数值比较（大于、小于和等于）的流式处理查询语法。
 
 在某些情况下，需要能够更加轻松地配置阈值，确保无需在每次阈值发生更改时编辑查询语法。 在其他情况下，同一个查询可能需要处理多个设备或用户，并且每个查询需要在每种设备上设置不同的阈值。 

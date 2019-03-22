@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: Ankit.Sud
-ms.openlocfilehash: b48910b74d90072a360bad504e2b826402dceea5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: HT
+ms.openlocfilehash: 254215389d129874f7ac3fc855b26819d41a095c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638854"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852468"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>更新 Azure 市场中的现有 VM 套餐
 
@@ -35,6 +35,8 @@ ms.locfileid: "49638854"
 
 为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。  
 
+>[!Note]
+>云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
 
 ## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>不允许对 VM 套餐或 SKU 进行的更改
 
@@ -63,7 +65,7 @@ ms.locfileid: "49638854"
 
 4.  在“磁盘版本”下，单击“+新建磁盘版本”以添加新的 VM 映像。
 
-5.  提供新的 VM 映像**磁盘版本**。 此磁盘版本需遵循[语义版本](http://semver.org/)格式。 版本格式应为 X.Y.Z，X、Y 和 Z 是整数。 确认提供的新版本高于以往的所有版本；否则，重新发布后，新版本将不会在门户或 Azure 市场中显示。
+5.  提供新的 VM 映像**磁盘版本**。 此磁盘版本需遵循[语义版本](https://semver.org/)格式。 版本格式应为 X.Y.Z，X、Y 和 Z 是整数。 确认提供的新版本高于以往的所有版本；否则，重新发布后，新版本将不会在门户或 Azure 市场中显示。
 
 6.  对于“OS VHD URL”，请输入为操作系统 VHD 创建的[共享访问签名 (SAS) URI](./cpp-get-sas-uri.md)。 
 
@@ -149,12 +151,12 @@ ms.locfileid: "49638854"
 
 从 2018 年 9 月 1 日开始，门户中将会添加一个名为“简化的货币定价”的新部分。 Microsoft 正在针对全球客户实现更多的可预测定价和托收方案，以简化 Azure 市场业务。 这种简化涉及到减少客户发票所采用的货币数量。
 
-新部分将以这些新货币定价。 将所有客户迁移到这些新的结算货币后，原始定价部分将会停用，只保留“简化的货币定价”部分。
+新部分将以这些新货币定价。 将所有客户迁移到这些新的结算货币后，原始定价部分将会停用，只保留“简化的货币定价”部分。
 
 必须在 2018 年 11 月 1 之前，为要改变结算货币的区域设置新价格。 无法为结算货币不会改变的区域提高价格。
 
 > [!NOTE] 
-> 如果使用 API 发布套餐，可在“套餐 JSON”中看到一个新部分。 根据套餐的类型，此部分带有 `virtualMachinePricingV2` 或 `monthlyPricingV2` 批注。 
+> 如果使用 API 发布套餐，可在“套餐 JSON”中看到一个新部分。 根据套餐的类型，此部分带有 `virtualMachinePricingV2` 或 `monthlyPricingV2` 批注。 
 
 如果对此项更改有任何疑问，请联系 [Azure 市场支持人员](../../support-azure-marketplace.md)。
 

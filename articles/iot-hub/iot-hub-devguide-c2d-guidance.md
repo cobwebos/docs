@@ -1,18 +1,19 @@
 ---
 title: Azure IoT 中心从云到设备选项 | Microsoft Docs
 description: 开发人员指南 - 指导用户何时使用直接方法、设备孪生的所需属性或云到设备的消息，以进行从云到设备的通信。
-author: fsautomata
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: elioda
-ms.openlocfilehash: 2c2701b2ccfceef7f64078d13501aa9184fc87a3
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
-ms.translationtype: HT
+ms.openlocfilehash: 4b738f34ae75478c0120832e7ad2b6a6a83dbf69
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451623"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010695"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>从云到设备通信指南
 
@@ -31,7 +32,7 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 |  | 直接方法 | 克隆的所需属性 | 云到设备的消息 |
 | ---- | ------- | ---------- | ---- |
 | 场景 | 需要立即确认的命令，例如打开风扇。 | 旨在将设备置于某个所需状态的长时间运行命令。 例如，将遥测发送间隔设置为 30 分钟。 | 提供给设备应用的单向通知。 |
-| 数据流 | 双向。 设备应用可立即响应方法。 解决方案后端根据上下文接收请求结果。 | 单向。 设备应用接收更改了属性的通知。 | 单向。 设备应用接收消息
+| 数据流 | 双向。 设备应用可以立即响应方法。 解决方案后端根据上下文接收请求结果。 | 单向。 设备应用接收更改了属性的通知。 | 单向。 设备应用接收消息
 | 持续性 | 不联系已断开连接的设备。 通知解决方案后端：设备未连接。 | 设备孪生会保留属性值。 设备会在下次重新连接时读取属性值。 属性值可通过 [IoT 中心查询语言](iot-hub-devguide-query-language.md)检索。 | IoT 中心可保留消息长达 48 小时。 |
 | 目标 | 使用 **deviceId** 与单个设备通信，或使用[作业](iot-hub-devguide-jobs.md)与多个设备通信。 | 使用 **deviceId** 与单个设备通信，或使用[作业](iot-hub-devguide-jobs.md)与多个设备通信。 | 使用 **deviceId** 与单个设备通信。 |
 | 大小 | 直接方法有效负载的最大大小为 128 KB。 | 所需属性大小最大为 8 KB。 | 最多 64 KB 消息。 |

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 47d5616f86c8f4cb62773d0b92a24a5fb63b2ea7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240463"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858129"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>在 Azure 上预配地理人工智能虚拟机 
 
@@ -33,7 +33,7 @@ Geo-DSVM 包含用于人工智能的多个工具，包括：
 - 用来获取和预处理图像、文本数据的工具， 
 - 用于开发活动的工具，例如 Microsoft R Server 开发人员版、Anaconda Python、用于 Python 和 R 的 Jupyter Notebook、用于 Python 和 R 的 IDE、SQL 数据库
 - ESRI 的 ArcGIS Pro 桌面软件以及可以处理来自人工智能应用程序的地理空间数据的 Python 和 R 接口。 
-
+ 
 
 ## <a name="create-your-geo-ai-data-science-vm"></a>创建地理 AI 数据科学 VM
 
@@ -67,16 +67,16 @@ Geo-DSVM 包含用于人工智能的多个工具，包括：
    - **汇总**：验证输入的所有信息是否正确。
 
    - **购买**：单击“购买”开始预配。 此时会显示服务条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
-
+ 
 >[!NOTE]
 > 预配大约需要 20 到 30 分钟。 预配的状态在 Azure 门户上显示。
 
-
+ 
 ## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>如何访问地理 AI 数据科学虚拟机
 
-创建 VM 后，便可以开始使用在其上安装并预配置的工具。 许多工具带有开始菜单磁贴和桌面图标。 可以使用在前面的**基本信息**部分中配置的管理员帐户凭据从远程桌面登录 VM。 
+ 创建 VM 后，便可以开始使用在其上安装并预配置的工具。 许多工具带有开始菜单磁贴和桌面图标。 可以使用在前面的**基本信息**部分中配置的管理员帐户凭据从远程桌面登录 VM。 
 
-
+ 
 ## <a name="using-arcgis-pro-installed-in-the-vm"></a>使用 VM 中安装的 ArcGIS Pro
 
 Geo-DSVM 已经预先安装了 ArcGIS Pro 桌面并且预配置了环境来使用 DSVM 中的所有工具。 启动 ArcGIS 时，它会提示你登录到 ArcGIS 帐户。 如果你已有 ArcGIS 帐户并且有该软件的许可证，则可以使用现有凭据。  
@@ -87,7 +87,7 @@ Geo-DSVM 已经预先安装了 ArcGIS Pro 桌面并且预配置了环境来使�
 
 ![ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-在注册付费或免费试用版 ArcGIS 帐户后，可以根据 [ArcGIS Pro 入门文档](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)中的说明授权你的帐户使用 ArcGIS Pro。 
+在注册付费或免费试用版 ArcGIS 帐户后，可以根据 [ArcGIS Pro 入门文档](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)中的说明授权你的帐户使用 ArcGIS Pro。 
 
 使用 ArcGIS 帐户登录到 ArcGIS Pro 桌面后，可以开始将 VM 上安装并配置的数据科学工具用于地理空间分析和机器学习项目。
 

@@ -5,16 +5,16 @@ description: 此文档列表页面显示你的工作区中的前 10 个文档。
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: how to edit a model
-ms.openlocfilehash: e656c6dd7050851eb9885fe253ab29f4e3675216
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: d380c8bcdcb4954901df0b460269493c5be0a6de
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219798"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777382"
 ---
 # <a name="view-document-details"></a>查看文档详细信息
 
@@ -22,7 +22,7 @@ ms.locfileid: "55219798"
 
 单击单个文档可查看文档详细信息页。 文档详细信息页显示从文档提取的语句的列表。
 
-- 默认情况下，下拉字段中会选中“源”语言，但可以切换为以目标语言查看语句。 
+- 默认情况下，下拉字段中会选中“源”语言，但可以切换为以目标语言查看语句。
 - 默认情况下，每页显示 20 个语句。 可以使用分页控件在页面之间进行浏览。
 
 ![文档详细信息](media/how-to/how-to-view-document-details.png)

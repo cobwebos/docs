@@ -3,20 +3,20 @@ title: 在 Azure 数据工厂中复制或克隆数据工厂 | Microsoft Docs
 description: 了解如何在 Azure 数据工厂中复制或克隆数据工厂
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: douglasl
-ms.openlocfilehash: c62581447cd395bd48a787fa7dc89659d5172486
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192709"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575607"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>在 Azure 数据工厂中复制或克隆数据工厂
 
@@ -35,6 +35,8 @@ ms.locfileid: "54192709"
 1. Azure 门户中的数据工厂 UI 允许将数据工厂的整个有效负载导出到资源管理器模板，随附一份参数文件，可允许在克隆工厂时更改任何要更改的值。
 
 1. 作为先决条件，你需要从 Azure 门户创建目标数据工厂。
+
+1. 如果必须在源工厂 SelfHosted IntegrationRuntime，需要预先它创建具有相同目标工厂中的名称。 如果你想要共享 SelfHosted IRs 之间不同的工厂，可以使用已发布的模式[此处](author-visually.md#best-practices-for-git-integration)。
 
 1. 如果你处于 GIT 模式下，则每次从门户发布时，工厂的资源管理器模板都会保存到存储库的 adf_publish 分支中的 GIT 中。
 

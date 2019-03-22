@@ -1,5 +1,5 @@
 ---
-title: 复合实体"
+title: 复合实体教程
 titleSuffix: Azure Cognitive Services
 description: 添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d78c365b171ea80d208c447f4746fe80b965ef2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: c49090a5563a6d63c90b29cc7442c1e4ed9886e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883298"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091573"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>教程：对相关的数据进行分组和提取
 在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
@@ -85,18 +85,19 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 1. 从意向列表中选择“TransferEmployeeToDepartment”。
 
-1. 在第一个话语中，选择 personName 实体 `John Jackson`，然后从以下话语的弹出菜单列表中选择“开始包装复合实体”：
+1. 在查询文本`place John Jackson in engineering`，选择 personName 实体`John Jackson`，然后选择**将包装在复合实体**以下查询文本的弹出菜单列表中。 
 
-    `place John Jackson in engineering`
+    ![在下拉对话框中选择换行组合的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
 1. 然后立即选择最后一个实体，话语中的 `engineering`。 在所选字词下面绘制的绿色条指示复合实体。 在弹出菜单中，输入复合名称 `TransferEmployeeInfo`，然后选择 Enter。 
 
-1. 在“想要创建哪种类型的实体?”中，所有必需字段都在列表中：`personName` 和 `Department`。 选择“完成”。 
+    ![在下拉列表对话框中输入复合名称的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-    请注意，预构建实体 personName 已添加到复合实体中。 如果可能有预构建实体出现在复合实体的开始标记和结束标记之间，则复合实体必须包含那些预构建实体。 如果未包括预构建实体，则不能正确预测复合实体，但可以正确预测每个个体元素。
+1. 在“想要创建哪种类型的实体?”中，所有必需字段都在列表中：`personName` 和 `Department`。 选择“完成”。 请注意，预构建实体 personName 已添加到复合实体中。 如果可能有预构建实体出现在复合实体的开始标记和结束标记之间，则复合实体必须包含那些预构建实体。 如果未包括预构建实体，则不能正确预测复合实体，但可以正确预测每个个体元素。
+
+    ![在下拉列表对话框中输入复合名称的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
 ## <a name="label-example-utterances-with-composite-entity"></a>使用复合实体标记示例话语
-
 
 1. 在每个示例话语中，选择应在复合中的最左侧实体。 然后选择“在复合实体中包装”.
 
@@ -182,7 +183,7 @@ LUIS 为常见数据提取提供多个预生成的实体。
     }
     ```
 
-  此话语返回复合实体数组。 每个实体都有类型和值。 若要查找每个子实体的更高精度，请使用复合数组项中的类型和值的组合来查找实体数组中的相应项。  
+   此话语返回复合实体数组。 每个实体都有类型和值。 若要查找每个子实体的更高精度，请使用复合数组项中的类型和值的组合来查找实体数组中的相应项。  
 
 ## <a name="clean-up-resources"></a>清理资源
 

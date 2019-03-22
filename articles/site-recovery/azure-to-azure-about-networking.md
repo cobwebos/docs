@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 49b5ef6b0dca32baaf05959cc29bb2a8024b6d04
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 0e28792e49d588bfec8d1f09dec68ead7e9dfa49
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693983"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001098"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
 
@@ -101,7 +101,8 @@ Site Recovery IP 地址范围如下：
    法国南部 | 52.136.139.227 |52.136.136.62
    澳大利亚中部| 20.36.34.70 | 20.36.46.142
    澳大利亚中部 2| 20.36.69.62 | 20.36.74.130
-
+   南非西部 | 102.133.72.51 | 102.133.26.128
+   南非北部 | 102.133.160.44 | 102.133.154.128
 ## <a name="example-nsg-configuration"></a>NSG 配置示例
 
 此示例演示如何为要复制的 VM 配置 NSG 规则。
@@ -163,4 +164,4 @@ Site Recovery IP 地址范围如下：
 ## <a name="next-steps"></a>后续步骤
 - [复制 Azure 虚拟机](site-recovery-azure-to-azure.md)，开始对工作负荷进行保护。
 - 详细了解为 Azure 虚拟机故障转移[保留 IP 地址](site-recovery-retain-ip-azure-vm-failover.md)。
-- 详细了解[使用 ExpressRoute 的 Azure 虚拟机](azure-vm-disaster-recovery-with-expressroute.md)的灾难恢复。
+- 了解有关灾难恢复的详细信息[使用 ExpressRoute 的 Azure 虚拟机](azure-vm-disaster-recovery-with-expressroute.md)。

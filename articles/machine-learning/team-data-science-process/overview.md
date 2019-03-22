@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4d576fb79ed931d6a07ab231888617c95c0e465d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452544"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867195"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 
@@ -63,7 +63,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 下图提供了与这些角色（纵轴）的每个生命周期阶段（横轴）相关联的任务（蓝色）和项目（绿色）的网格视图。 
 
-[ ![TDSP-roles-and-tasks](./media/overview/tdsp-tasks-by-roles.png) ](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![TDSP-roles-and-tasks](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>标准化项目结构
 
@@ -77,7 +77,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 - 模型性能指标，例如 ROC 曲线或 MSE
 
 
-[ ![TDSP-directories](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP-directories](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
 可以从 [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate) 克隆目录结构。
 
@@ -94,7 +94,7 @@ TDSP 提供有关管理共享分析和存储基础结构的建议，例如：
 
 下面是团队处理多个项目和共享各个云分析基础结构组件的示例。
 
-[ ![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png) ](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>用于项目执行的工具和实用程序

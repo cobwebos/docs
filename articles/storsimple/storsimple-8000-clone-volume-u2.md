@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
-ms.openlocfilehash: d3965c74d51996b3e4144130fad01fae9e265897
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
-ms.translationtype: HT
+ms.openlocfilehash: 84734aefb72a3330d99c5707b461de2cd5e30484
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26333196"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097229"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>在 Azure 门户中使用 StorSimple 设备管理器服务来克隆卷
 
@@ -66,9 +66,9 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
    3. 指定时间范围。
    4. 单击“应用”执行此查询。
 
-    与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
+      与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
    
-    ![备份集列表](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![备份集列表](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
 3. 展开备份集以查看关联的卷并选择备份集中的卷。 单击右键，从上下文菜单中选择“克隆”。
 
@@ -76,21 +76,21 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
 
 3. 在“克隆”边栏选项卡中执行以下步骤：
    
-    1. 标识目标设备。 这是会在其中创建克隆的位置。 可以选择同一设备，也可以指定其他设备。
+   1. 标识目标设备。 这是会在其中创建克隆的位置。 可以选择同一设备，也可以指定其他设备。
 
       > [!NOTE]
       > 确保该克隆所需的容量低于目标设备的可用容量。
        
-    2. 指定克隆的唯一卷名称。 该名称必须包含 3 到 127 个字符。
+   2. 指定克隆的唯一卷名称。 该名称必须包含 3 到 127 个字符。
       
-        > [!NOTE]
-        > 即使克隆的是本地固定卷，“将卷克隆为”字段也会是“分层卷”。 不能更改此设置；但是，如果也需对克隆卷进行本地固定，可在成功创建克隆后将克隆转换为本地固定卷。 要了解如何将分层卷转换为本地固定卷，请转到[更改卷类型](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)。
+       > [!NOTE]
+       > 即使克隆的是本地固定卷，“将卷克隆为”字段也会是“分层卷”。 不能更改此设置；但是，如果也需对克隆卷进行本地固定，可在成功创建克隆后将克隆转换为本地固定卷。 要了解如何将分层卷转换为本地固定卷，请转到[更改卷类型](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)。
           
-    3. 在“连接的主机”下面，指定克隆的访问控制记录 (ACR)。 可以添加新的 ACR，或从现有列表中进行选择。 ACR 会确定哪些主机可以访问此克隆。
+   3. 在“连接的主机”下面，指定克隆的访问控制记录 (ACR)。 可以添加新的 ACR，或从现有列表中进行选择。 ACR 会确定哪些主机可以访问此克隆。
       
-        ![备份集列表](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![备份集列表](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
-    4. 单击“克隆”完成操作。
+   4. 单击“克隆”完成操作。
 
 4. 此时会启动克隆作业，成功创建克隆后，系统会发出通知。 单击作业通知或转到“作业”边栏选项卡可监视克隆作业。
 
@@ -119,5 +119,5 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[从备份集还原 StorSimple 卷](storsimple-8000-restore-from-backup-set-u2.md)。
-* 了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
+* 了解如何[使用 StorSimple Device Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
 

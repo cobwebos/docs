@@ -3,7 +3,7 @@ title: Azure Service Fabric 可靠集合中的事务和锁模式 | Microsoft Doc
 description: Azure Service Fabric 可靠状态管理器和可靠集合事务和锁定。
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
+author: aljo-microsoft
 manager: timlt
 editor: masnider,rajak
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: twhitney
-ms.openlocfilehash: a7e2bfba736e3b6cee738d5a2b5283f51f60d7c5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.author: aljo
+ms.openlocfilehash: 246606792797afe0e57dbe2e582c4e94df3133d4
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185386"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806430"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 
@@ -38,7 +38,7 @@ Reliable Collections 支持两种隔离级别：
 * **可重复的读取**：指定语句不能读取已由其他事务修改但尚未提交的数据，并且指定，其他任何事务都不能在当前事务完成之前修改由当前事务读取的数据。 有关详细信息，请参阅 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)。
 * **快照**：指定事务中任何语句读取的数据都是事务开始时便存在的数据的事务上一致的版本。
   事务只能识别在其开始之前提交的数据修改。
-  在当前事务中执行的语句将看不到在当前事务开始以后由其他事务所做的数据修改。
+  在当前事务中执行的语句看不到在当前事务开始以后由其他事务所做的数据修改。
   其效果就好像事务中的语句获得了已提交数据的快照，因为该数据在事务开始时就存在。
   快照跨 Reliable Collections 一致。
   有关详细信息，请参阅 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)。

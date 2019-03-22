@@ -12,19 +12,28 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 29b8e0953109238b724cc8df9f456706f71a041e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341617"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998403"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>使用 REST API 列出 Azure 资源的拒绝分配
 
-当前，拒绝分配为“只读”，且只能由 Azure 设置。 即使无法自行创建拒绝分配，也可列出拒绝分配，因为它们可能会影响你的有效权限。 本文介绍了如何使用 RBAC 和 REST API 列出拒绝分配。
+即使角色分配向用户授予了访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 本文介绍如何使用 REST API 对列表拒绝分配。
+
+> [!NOTE]
+> 在此期间，您可以添加自己的唯一方法拒绝分配是使用 Azure 蓝图。 有关详细信息，请参阅[保护 Azure 蓝图资源锁的新资源](../governance/blueprints/tutorials/protect-new-resources.md)。
+
+## <a name="prerequisites"></a>必备组件
+
+若要获取有关拒绝分配的信息，必须具有：
+
+- `Microsoft.Authorization/denyAssignments/read` 在大多数中包含的权限[Azure 资源的内置角色](built-in-roles.md)。
 
 ## <a name="list-a-single-deny-assignment"></a>列出单个拒绝分配
 
@@ -68,7 +77,7 @@ ms.locfileid: "56341617"
 
 1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件。
 
-    | 筛选器 | 说明 |
+    | 筛选器 | 描述 |
     | --- | --- |
     | (无筛选器) | 列出指定范围处、之上和之下的所有拒绝分配。 |
     | `$filter=atScope()` | 仅列出指定范围及之上的拒绝分配。 不包含子范围处的拒绝分配。 |
@@ -86,7 +95,7 @@ ms.locfileid: "56341617"
 
 1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件。 需使用筛选器。
 
-    | 筛选器 | 说明 |
+    | 筛选器 | 描述 |
     | --- | --- |
     | `$filter=atScope()` | 仅列出根范围处的拒绝分配。 不包含子范围处的拒绝分配。 |
     | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | 列出具有指定名称的拒绝分配。 |

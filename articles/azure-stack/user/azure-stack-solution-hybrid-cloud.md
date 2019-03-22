@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 5f142192571bdd15a33575a425d75baf3e5caea2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 336a2a3fd98f7829694eb095ff2646d9d361afd3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243481"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097314"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>教程：使用 Azure 和 Azure Stack 部署混合云解决方案
 
@@ -65,7 +65,7 @@ ms.locfileid: "55243481"
   - Windows Server 2016 映像
   - 包含 Microsoft SQL Server 映像的 Windows Server 2016
   - 相应的计划和产品/服务
- - Web 应用程序的域名。 如果没有域名，可以从 GoDaddy、Bluehost 和 InMotion 等域提供商购买。
+  - Web 应用程序的域名。 如果没有域名，可以从 GoDaddy、Bluehost 和 InMotion 等域提供商购买。
 - 受信任的证书颁发机构（例如 LetsEncrypt）为域颁发的 SSL 证书。
 - 与 SQL Server 数据库通信且支持 Application Insights 的 Web 应用程序。 可以从 GitHub 下载 [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) 示例应用。
 - Azure 虚拟网络与 Azure Stack 虚拟网络之间的混合网络。 有关详细说明，请参阅[使用 Azure 和 Azure Stack 配置混合云连接](azure-stack-solution-hybrid-connectivity.md)。
@@ -94,19 +94,19 @@ ms.locfileid: "55243481"
 
 7. 在“设置”>“配置可选功能”下面配置以下设置：
 
-    - **存储帐户**： 根据需要创建新帐户。
-    - **虚拟网络**
+   - **存储帐户**： 根据需要创建新帐户。
+   - **虚拟网络**
 
-      > [!Important]  
-      > 请务必将 SQL Server VM 部署到 VPN 网关所在的同一虚拟网络中。
+     > [!Important]  
+     > 请务必将 SQL Server VM 部署到 VPN 网关所在的同一虚拟网络中。
 
-    - **公共 IP 地址**。 可以使用默认设置。
-    - **网络安全组** (NSG)。 创建新 NSG。
-    - **扩展和监视**。 保留默认设置。
-    - **诊断存储帐户**。 根据需要创建新帐户。
-    - 选择“确定”以保存配置。
+   - **公共 IP 地址**。 可以使用默认设置。
+   - **网络安全组** (NSG)。 创建新 NSG。
+   - **扩展和监视**。 保留默认设置。
+   - **诊断存储帐户**。 根据需要创建新帐户。
+   - 选择“确定”以保存配置。
 
-    ![配置可选功能](media/azure-stack-solution-hybrid-cloud/image4.png)
+     ![配置可选功能](media/azure-stack-solution-hybrid-cloud/image4.png)
 
 1. 在“SQL Server 设置”下面配置以下设置：
    - 对于“SQL 连接”，请选择“公共(Internet)”。
@@ -118,7 +118,7 @@ ms.locfileid: "55243481"
 
    - 对于剩余的设置，请保留默认值。 选择“确定”。
 
-    ![配置 SQL Server 设置](media/azure-stack-solution-hybrid-cloud/image5.png)
+     ![配置 SQL Server 设置](media/azure-stack-solution-hybrid-cloud/image5.png)
 
 9. 在“摘要”中检查虚拟机配置，然后选择“确定”开始部署。
 
@@ -391,7 +391,7 @@ Web 应用程序的每个实例将使用另一种方法来连接到 SQL 数据�
 
     ![创建流量管理器配置文件](media/azure-stack-solution-hybrid-cloud/image19.png)
 
- 流量管理器配置文件的全局部署完成后，会显示在它所属的资源组的资源列表中。
+   流量管理器配置文件的全局部署完成后，会显示在它所属的资源组的资源列表中。
 
 ### <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 

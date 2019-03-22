@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 3bd7f895e3cc30c4c5a0496977d65d68c220931f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f63851359a19455ab0f46f66a801a679ee2c3bfe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084496"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079684"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>快速入门：迁移本地 Jupyter 笔记本
 
@@ -30,13 +30,13 @@ ms.locfileid: "53084496"
 
 ## <a name="create-a-project-on-azure-notebooks"></a>在 Azure Notebooks 上创建项目
 
-1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录到 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
+1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
 
-1. 从你的公开个人资料页，选择页面顶部的“我的项目”：
+1. 在公用个人资料页面中，选择页面顶部的“我的项目”：
 
     ![浏览器窗口顶部的“我的项目”链接](media/quickstarts/my-projects-link.png)
 
-1. 在“我的项目”页上，选择“+ 新项目”（键盘快捷方式：n）；如果浏览器窗口较窄，该按钮可能仅显示为 +：
+1. 在“我的项目”页面上，选择“+ 新建项目”（键盘快捷方式：N）；如果浏览器窗口较窄，该按钮可能仅显示为 +：
 
     ![“我的项目”页上的“新项目”命令](media/quickstarts/new-project-command.png)
 
@@ -50,13 +50,13 @@ ms.locfileid: "53084496"
 
    （同样，如果笔记本是在 GitHub 存储库中，则执行[快速入门：克隆笔记本](quickstart-clone-jupyter-notebook.md)上的步骤。）
 
-    - 如果使用“从计算机”，将 .ipynb 文件拖放到弹出窗口，或选择“选择文件”，然后浏览并选择要导入的文件。 然后，选择“上传”。 上传的文件与本地文件具有相同名称。 （不需要上传任何 .ipynb_checkpoints 文件夹内容。）
+   - 如果使用“从计算机”，将 .ipynb 文件拖放到弹出窗口，或选择“选择文件”，然后浏览并选择要导入的文件。 然后，选择“上传”。 上传的文件与本地文件具有相同名称。 （不需要上传任何 .ipynb_checkpoints 文件夹内容。）
 
-    ![从计算机弹出窗口上传](media/quickstarts/upload-from-computer-popup.png)
+     ![从计算机弹出窗口上传](media/quickstarts/upload-from-computer-popup.png)
 
-    - 如果使用“从 URL”，在“文件 URL”字段输入源地址，并在“文件名”字段输入在项目中分配给笔记本的文件名。 然后，选择“上传”。 如果你有多个具有独立 URL 的文件，请使用“+ 添加文件”命令检查输入的第一个 URL，然后弹出窗口将为另一个文件提供新字段。
+   - 如果使用“从 URL”，在“文件 URL”字段输入源地址，并在“文件名”字段输入在项目中分配给笔记本的文件名。 然后，选择“上传”。 如果你有多个具有独立 URL 的文件，请使用“+ 添加文件”命令检查输入的第一个 URL，然后弹出窗口将为另一个文件提供新字段。
 
-    ![从 URL 弹出窗口上传](media/quickstarts/upload-from-url-popup.png)
+     ![从 URL 弹出窗口上传](media/quickstarts/upload-from-url-popup.png)
 
 1. 打开并运行新上传的笔记本以验证其内容和操作。 完成后，选择“文件” > “停止并关闭”关闭笔记本。
 
@@ -67,4 +67,4 @@ ms.locfileid: "53084496"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：创建并运行 Jupyter 笔记本来执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)

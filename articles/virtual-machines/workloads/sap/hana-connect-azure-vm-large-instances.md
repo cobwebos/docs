@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9116dd8a27b268b656f688083032a127177d2d51
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
-ms.translationtype: HT
+ms.openlocfilehash: 2628cafada47b2602b195c44d4b6f2e6b16012ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754554"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092763"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>将 Azure VM 连接到 HANA 大型实例
 
@@ -85,7 +85,7 @@ ms.locfileid: "53754554"
 
 - **虚拟网络地址空间**：虚拟网络地址空间是在 Azure 虚拟网络中分配给地址空间参数的 IP 地址范围。 这些网络连接到 SAP HANA 大型实例环境。
 
- 我们建议将此地址空间参数设置为多行值。 它应该由 Azure VM 的子网范围和 Azure 网关的子网范围组成。 此子网范围显示在前面的图中。 此范围不得与本地或服务器 IP 池或 ER-P2P 地址范围重叠。 
+  我们建议将此地址空间参数设置为多行值。 它应该由 Azure VM 的子网范围和 Azure 网关的子网范围组成。 此子网范围显示在前面的图中。 此范围不得与本地或服务器 IP 池或 ER-P2P 地址范围重叠。 
  
 如何获取这些 IP 地址范围？ 
 
@@ -108,7 +108,7 @@ ms.locfileid: "53754554"
   
 - **服务器 IP 池地址范围：** 此 IP 地址范围用于向 HANA 大型实例服务器分配单个 IP 地址。 建议的子网大小为 /24 CIDR 块。 如果需要，可将它缩小为 64 个 IP 地址。 此范围内的前 30 个 IP 地址保留给 Microsoft 使用。 选择范围大小时，请务必考虑到这一事实。 此范围不得与本地或其他 Azure IP 地址重叠。 如何获取此 IP 地址范围？ 企业网络团队或服务提供程序应提供网络内部当前未使用的 IP 地址范围。 
 
- **这是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围**。
+  **这是需要在请求进行初始部署时提交给 Microsoft 的 IP 地址范围**。
  
 需要定义和计划前面所述的 IP 地址范围。 但是，不必将其全部发送给 Microsoft。 需要提交到 Microsoft 的 IP 地址范围包括：
 

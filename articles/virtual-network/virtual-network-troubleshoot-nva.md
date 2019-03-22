@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 0d5b345936f6c931f4210e6dc50f94544a52f571
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 40e034a563074e10a2dfbee36b6792a095022057
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700564"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649623"
 ---
-#  <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的网络虚拟设备问题
+# <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的网络虚拟设备问题
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 在 Microsoft Azure 中使用第三方网络虚拟设备 (NVA) 时，可能会遇到 VM 或 VPN 连接问题和错误。 本文介绍了帮助你验证适用于 NVA 配置的基本 Azure 平台要求的基本步骤。
 
-NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支持。 
+NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支持。
 
 > [!NOTE]
 > 如果遇到涉及 NVA 的连接或路由问题，则应直接[联系 NVA 的供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
@@ -40,7 +42,7 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 - 虚拟网络子网上的 UDR，用于定向来自 NVA 的流量
 - NVA 内的路由表和规则（例如，从 NIC1 到 NIC2）
 - 跟踪 NVA NIC 以验证接收和发送网络流量
-- 使用标准 SKU 和公共 IP 时，必须创建一个 NSG，并有明确的规则允许将流量路由到 NVA。
+- 使用标准 SKU 和公共 Ip 时，必须有创建 NSG 和显式规则以允许流量路由到 NVA。
 
 ## <a name="basic-troubleshooting-steps"></a>基本故障排除步骤
 
@@ -56,29 +58,23 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 
 使用 Azure 门户
 
-1.  在 [Azure 门户](https://portal.azure.com)中找到 NVA 资源，选择“网络”，然后选择“网络接口”。
-2.  在“网络接口”页上，选择“IP 配置”。
-3.  确保已启用 IP 转发。
+1. 在 [Azure 门户](https://portal.azure.com)中找到 NVA 资源，选择“网络”，然后选择“网络接口”。
+2. 在“网络接口”页上，选择“IP 配置”。
+3. 确保已启用 IP 转发。
 
 使用 PowerShell
 
 1. 打开 PowerShell 并登录到 Azure 帐户。
 2. 运行以下命令（用你的信息替换括号中的值）：
 
-        Get-AzureRmNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>  
+   Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>  
 
 3. 检查“EnableIPForwarding”属性。
- 
 4. 如果未启用 IP 转发，请运行以下命令将其启用：
 
-          $nic2 = Get-AzureRmNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
-          $nic2.EnableIPForwarding = 1
-          Set-AzureRmNetworkInterface -NetworkInterface $nic2
-          Execute: $nic2 #and check for an expected output:
-          EnableIPForwarding   : True
-          NetworkSecurityGroup : null
+   $nic2 = Get AzNetworkInterface-ResourceGroupName <ResourceGroupName> -名称<NicName>nic2 美元。EnableIPForwarding = 1 执行集 AzNetworkInterface NetworkInterface 美元 nic2: $nic2 #and 检查是否有预期的输出：EnableIPForwarding:True NetworkSecurityGroup: null
 
-**使用标准 SKU 公共 IP 时检查 NSG**：使用标准 SKU 和公共 IP 时，必须创建一个 NSG，并有明确的规则允许将流量路由到 NVA。
+**使用标准 SKU Pubilc IP 时，NSG 检查**使用标准 SKU 和公共 Ip 时，必须有创建 NSG 和显式规则以允许发送到 NVA 的流量。
 
 **检查流量是否可路由到 NVA**
 
@@ -88,13 +84,13 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 
 **检查流量是否可到达 NVA**
 
-1.  在 [Azure 门户](https://portal.azure.com)中，打开“网络观察程序”，然后选择“IP 流验证”。 
-2.  指定 VM 和 NVA 的 IP 地址，然后检查是否有任何网络安全组 (NSG) 阻止该流量。
-3.  如果存在阻止流量的 NSG 规则，请在“有效安全”规则中找到 NSG，并更新它以允许流量通过。 然后再次运行“IP 流验证”并使用“连接故障排除”测试从 VM 到内部或外部 IP 地址的 TCP 通信。
+1. 在 [Azure 门户](https://portal.azure.com)中，打开“网络观察程序”，然后选择“IP 流验证”。 
+2. 指定 VM 和 NVA 的 IP 地址，然后检查是否有任何网络安全组 (NSG) 阻止该流量。
+3. 如果存在阻止流量的 NSG 规则，请在“有效安全”规则中找到 NSG，并更新它以允许流量通过。 然后再次运行“IP 流验证”并使用“连接故障排除”测试从 VM 到内部或外部 IP 地址的 TCP 通信。
 
 **检查 NVA 和 VM 是否正在侦听预期的流量**
 
-1.  使用 RDP 或 SSH 连接到 NVA，然后运行以下命令：
+1. 使用 RDP 或 SSH 连接到 NVA，然后运行以下命令：
 
     对于 Windows：
 
@@ -103,15 +99,15 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
     对于 Linux：
 
         netstat -an | grep -i listen
-2.  如果未看到结果中列出的 NVA 软件使用的 TCP 端口，则必须在 NVA 和 VM 上配置应用程序，以侦听并响应到达这些端口的流量。 [如有需要，请联系 NVA 供应商以获取帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+2. 如果未看到结果中列出的 NVA 软件使用的 TCP 端口，则必须在 NVA 和 VM 上配置应用程序，以侦听并响应到达这些端口的流量。 [如有需要，请联系 NVA 供应商以获取帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
 ## <a name="check-nva-performance"></a>检查 NVA 性能
 
 ### <a name="validate-vm-cpu"></a>验证 VM CPU
 
-如果 CPU 使用率接近 100%，则可能会遇到造成网络数据包丢失的问题。 VM 报告 Azure 门户中特定时间跨度的平均 CPU。 在 CPU 峰值期间，调查来宾 VM 上的哪个进程导致高 CPU 使用率，并在可能的情况下缓解该问题。 可能还必须将 VM 大小调整为更大的 SKU 大小；或者，对于虚拟机规模集，可增加实例数或设置为自动调整 CPU 使用率。 对于上述任意问题，如有需要，[请联系 NVA 供应商以获取帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+如果 CPU 使用率接近 100%，可能会影响网络数据包下降的问题。 VM 报告 Azure 门户中特定时间跨度的平均 CPU。 在 CPU 峰值期间，调查来宾 VM 上的哪个进程导致高 CPU 使用率，并在可能的情况下缓解该问题。 可能还必须将 VM 大小调整为更大的 SKU 大小；或者，对于虚拟机规模集，可增加实例数或设置为自动调整 CPU 使用率。 对于上述任意问题，如有需要，[请联系 NVA 供应商以获取帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
-### <a name="validate-vm-network-statistics"></a>验证 VM 网络统计信息 
+### <a name="validate-vm-network-statistics"></a>验证 VM 网络统计信息
 
 如果遇到 VM 网络使用高峰或显示高使用率的时段，可能还必须增加 VM 的 SKU 大小以获得更高的吞吐量容量。 还可以通过启用加速网络来重新部署 VM。 若要验证 NVA 是否支持加速网络功能，如有需要，[请联系 NVA 供应商以获取帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
@@ -122,16 +118,15 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 
 1. 若要捕获同步网络跟踪，请运行以下命令：
 
-    对于 Windows：
+   **有关 Windows**
 
-        netsh trace start capture=yes tracefile=c:\server_IP.etl scenario=netconnection
+   netsh 跟踪启动捕获 = 是 tracefile=c:\server_IP.etl 方案 = netconnection
 
-    对于 Linux：
+   **适用于 Linux**
 
-        sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
+   sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
 2. 使用从源 VM 到目标 VM 的 PsPing 或 Nmap（例如：`PsPing 10.0.0.4:80` 或 `Nmap -p 80 10.0.0.4`）。
-
 3. 使用[网络监视器](https://www.microsoft.com/download/details.aspx?id=4865)或 tcpdump 从目标 VM 打开网络跟踪。 为运行 PsPing 或 Nmap 的源 VM 的 IP 应用显示筛选器，例如 `IPv4.address==10.0.0.4 (Windows netmon)` 或 `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux)。
 
 ### <a name="analyze-traces"></a>分析跟踪
@@ -139,4 +134,3 @@ NVA 供应商提供了对第三方 NVA 及其与 Azure 平台集成的技术支�
 如果无法看到数据包传入到后端 VM 跟踪，原因很可能是存在 NSG 或 UDR 干扰或是 NVA 路由表不正确。
 
 如果看到数据包传入但没有响应，则可能需要解决 VM 应用程序或防火墙问题。 对于上述任意问题，如有需要[请联系 NVA 供应商以获取帮助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
-

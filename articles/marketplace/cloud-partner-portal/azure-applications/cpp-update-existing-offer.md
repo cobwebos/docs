@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3fbbf688f6de7c3fceb6695a6b085f917dbec242
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: 1019c06afbdab0a6b0e172133da316aea01a5504
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195333"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216882"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>更新现有的 Azure 应用程序产品/服务
 
@@ -75,6 +75,9 @@ ms.locfileid: "53195333"
 2. 在“所有产品/服务”下，找到要更新的产品/服务。
 3. 转到“市场”选项卡。使用[发布 Azure 应用程序产品/服务](./cpp-publish-offer.md)中的说明进行元数据更改。
 4. 选择“发布”，启动发布更改的工作流。
+ 
+>[!Note]
+>云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
 
 ## <a name="deleting-an-existing-offer"></a>删除现有产品/服务
 

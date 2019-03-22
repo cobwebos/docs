@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 901afc8f28b617eb5bada2a0f58761ddb9f67607
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 1622de0cccdbc8fee0681e209e756b30da292d3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327402"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003507"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
 
@@ -66,7 +66,7 @@ IBM DB2 pureScale 环境为 Azure 提供了一个数据库群集，在 Linux 操
 
 ### <a name="compute-considerations"></a>计算注意事项
 
-此体系结构在 Azure 虚拟机上运行应用程序、存储和数据层。 [部署设置脚本](http://aka.ms/db2onazure)将创建以下内容：
+此体系结构在 Azure 虚拟机上运行应用程序、存储和数据层。 [部署设置脚本](https://aka.ms/db2onazure)将创建以下内容：
 
 -   一个 DB2 pureScale 群集。 Azure 上所需的计算资源类型取决于你的设置。 一般情况下，可以使用两种方法：
 

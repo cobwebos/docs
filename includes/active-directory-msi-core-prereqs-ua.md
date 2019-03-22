@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 106c4796bde838e28b91771454e971f9999194e1
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
-ms.translationtype: HT
+ms.openlocfilehash: dc8f9797b7b4c04da27a54dfddc79bd96d6df88d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753772"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "58114301"
 ---
-如果不熟悉 MSI，请查看[托管服务标识概述](~/articles/active-directory/managed-service-identity/overview.md)，并**确保查看[系统分配的 MSI 和用户分配的 MSI 之间的差异](~/articles/active-directory/managed-service-identity/overview.md#how-does-it-work)**。 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
+如果你熟悉 Azure 资源的管理的标识，请查看[托管标识的 Azure 资源概述](~/articles/active-directory/managed-identities-azure-resources/overview.md)，并**务必查看[系统和用户分配的区别托管标识](~/articles/active-directory/managed-identities-azure-resources/overview.md#how-does-it-work)**。 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。

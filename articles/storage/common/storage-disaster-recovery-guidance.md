@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fbd4782d7fde089f9770e148564ec5941da3dc8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753582"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871530"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure 存储中的灾难恢复和存储帐户故障转移（预览版）
 
@@ -152,7 +152,6 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 4. 等到“上次同步时间”已更新且晚于 VM 删除时间。 这一步很重要，因为如果在故障转移发生时辅助终结点尚未使用 VHD 文件完全更新，那么 VM 可能无法在新的主要区域中正常运行。
 5. 启动帐户故障转移。
 6. 等到帐户故障转移完成，且次要区域已成为新的主要区域。
-6. 在新的主要区域中创建存储帐户，并将非托管磁盘复制到其中。
 7. 在新的主要区域中创建 VM，并重新附加 VHD。
 8. 启动新 VM。
 

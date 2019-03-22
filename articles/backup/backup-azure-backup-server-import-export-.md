@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 01b90d6bb18addd6a0235101f86b9d51953cc096
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818551"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094967"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM 和 Azure 备份服务器的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 Azure 备份可压缩初始备份。 通过脱机种子设定，Azure 备份可以使用磁盘将压缩后的初始备份数据脱机上传到 Azure。
@@ -42,7 +42,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 > * 使用 System Center Data Protection Manager (SC DPM) 备份所有工作负荷和文件 
 > * 使用 Microsoft Azure 备份服务器备份所有工作负荷和文件 <br/>
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 确保在启动脱机备份工作流之前已满足以下先决条件
 * 已创建[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)。 若要创建，请参阅[这篇文章](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)中的步骤
 * Windows Server/Windows 客户端上已安装了 Azure 备份代理、Azure 备份服务器或 SC DPM（若适用），并已向恢复服务保管库注册了计算机。 确保仅使用[最新版本的 Azure 备份](https://go.microsoft.com/fwlink/?linkid=229525)。 
@@ -55,7 +55,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 
 * 在下载发布设置文件的订阅中已创建了采用经典部署模型的 Azure 存储帐户，如下所示： 
 
- ![创建经典存储帐户](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
+  ![创建经典存储帐户](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
 
 * 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少。）
 * 对于将发送到 Azure 的磁盘，请确保仅使用 2.5 英寸 SSD 或 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
@@ -74,12 +74,12 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 
     输入的说明如下：
 
-    * **暂存位置**：初始备份副本写入到的临时存储位置。 暂存位置可以是在网络共享或本地计算机。 如果副本计算机与源计算机不同，建议指定暂存位置的完整网络路径。
-    * **Azure 导入作业名称**：Azure 导入服务和 Azure 备份在跟踪磁盘上发送到 Azure 的数据的传输活动时使用的唯一名称。
-    * **Azure 发布设置**：提供发布设置文件的本地路径。
-    * **Azure 订阅 ID**：下载 Azure 发布设置文件的订阅的 Azure 订阅 ID。 
-    * **Azure 存储帐户**：Azure 订阅中与 Azure 发布设置文件关联的存储帐户的名称。
-    * **Azure 存储容器**：Azure 存储帐户中导入备份数据的目标存储 Blob 的名称。
+   * **暂存位置**：初始备份副本写入到的临时存储位置。 暂存位置可以是在网络共享或本地计算机。 如果副本计算机与源计算机不同，建议指定暂存位置的完整网络路径。
+   * **Azure 导入作业名称**：Azure 导入服务和 Azure 备份在跟踪磁盘上发送到 Azure 的数据的传输活动时使用的唯一名称。
+   * **Azure 发布设置**：提供发布设置文件的本地路径。
+   * **Azure 订阅 ID**：下载 Azure 发布设置文件的订阅的 Azure 订阅 ID。 
+   * **Azure 存储帐户**：Azure 订阅中与 Azure 发布设置文件关联的存储帐户的名称。
+   * **Azure 存储容器**：Azure 存储帐户中导入备份数据的目标存储 Blob 的名称。
 
      保存提供的暂存位置和 Azure 导入作业名称，因为准备磁盘需要它们。  
      
@@ -102,23 +102,23 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 
 1. 转到该目录，将“AzureOfflineBackupDiskPrep”目录复制到 SATA 驱动器准备连接的副本计算机上。 确保满足以下与副本计算机相关的要求：
 
-    * 副本计算机可使用在**启动脱机备份**工作流中提供的相同网络路径，访问脱机种子设定工作流的暂存位置。
-    * 已在副本计算机上启用 BitLocker。
-    * 副本计算机可以访问 Azure 门户。
+   * 副本计算机可使用在**启动脱机备份**工作流中提供的相同网络路径，访问脱机种子设定工作流的暂存位置。
+   * 已在副本计算机上启用 BitLocker。
+   * 副本计算机可以访问 Azure 门户。
 
-    必要时，副本计算机可与源计算机相同。 
+     必要时，副本计算机可与源计算机相同。 
     
-    > [!IMPORTANT] 
-    > 如果源计算机是虚拟机，则它必须使用其他物理服务器或客户端计算机作为副本计算机。
+     > [!IMPORTANT] 
+     > 如果源计算机是虚拟机，则它必须使用其他物理服务器或客户端计算机作为副本计算机。
     
     
 2. 在副本计算机上打开提升的命令提示符，以 AzureOfflineBackupDiskPrep 实用工具的目录作为当前目录并运行以下命令：
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
-    | s:&lt;暂存位置路径&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
+    | s:&lt;暂存位置路径&gt; |必需的输入，用于提供在 **启动脱机备份** 工作流中所输入的暂存位置路径。 |
     | p:&lt;发布设置文件的路径&gt; |可选的输入，用于提供在**启动脱机备份**工作流中所输入的 **Azure 发布设置**文件路径。 |
 
     > [!NOTE]
@@ -157,7 +157,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
    
    `*.\AzureOfflineBackupDiskPrep.exe*  u:  s:<*Staging Location Path*>   p:<*Path to AzurePublishSettingsFile*>`
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
     | u: | 用于更新 Azure 导入作业的寄送详情的必需输入 |
     | s:&lt;暂存位置路径&gt; | 命令不在源计算机上运行时的必需输入。 用于提供在“启动脱机备份”工作流中所输入的暂存位置路径。 |

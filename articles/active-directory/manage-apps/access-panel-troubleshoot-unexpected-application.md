@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a488c30f5b9438a91d2eae429cf65689af992dcb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: fccf671edbc121501a17975be303453a798837e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167076"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122193"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>应用程序为何在访问面板上显示
 
@@ -46,41 +46,41 @@ ms.locfileid: "56167076"
 
 若要检查是否将用户分配给了应用程序，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-6.  **搜索**有关应用程序的名称。
+6. **搜索**有关应用程序的名称。
 
-7.  单击“用户和组”。
+7. 单击“用户和组”。
 
-8.  检查用户是否被分配给应用程序。
+8. 检查用户是否被分配给应用程序。
 
-  * 要将用户从应用程序中删除，请**单击用户对应的行**，并选择“删除”。
+   * 要将用户从应用程序中删除，请**单击用户对应的行**，并选择“删除”。
 
 ### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>检查用户是否符合与应用程序相关的许可证
 
 若要检查用户的已分配许可证，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，单击“用户和组”。
 
-5.  单击“所有用户”。
+5. 单击“所有用户”。
 
-6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
+6. **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“许可证”查看当前已分配给用户的许可证。
+7. 单击“许可证”查看当前已分配给用户的许可证。
 
    * 如果已向用户分配了 Office 许可证，则第一方 Office 应用程序会显示在用户的访问面板中。
 
@@ -96,45 +96,45 @@ ms.locfileid: "56167076"
 
 若要检查组的成员身份，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，单击“用户和组”。
 
-5.  单击“所有用户”。
+5. 单击“所有用户”。
 
-6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
+6. **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“组”
+7. 单击“组”
 
-8.  检查用户是否是分配给应用程序的组的成员。
+8. 检查用户是否是分配给应用程序的组的成员。
 
    * 要将用户从组中删除，请**单击组对应的行**，并选择删除。
 
 ### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>检查用户是否是被分配许可证的组的成员
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，单击“用户和组”。
 
-5.  单击“所有用户”。
+5. 单击“所有用户”。
 
-6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
+6. **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“组”
+7. 单击“组”
 
-8.  单击特定组所在的行。
+8. 单击特定组所在的行。
 
-9.  单击“许可证”查看已分配给组的许可证有哪些。
+9. 单击“许可证”查看已分配给组的许可证有哪些。
 
-  * 如果已向组分配 Office 许可证，则某个第一方 Office 应用程序可能会显示在用户的访问面板中。
+   * 如果已向组分配 Office 许可证，则某个第一方 Office 应用程序可能会显示在用户的访问面板中。
 
 
 ## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题

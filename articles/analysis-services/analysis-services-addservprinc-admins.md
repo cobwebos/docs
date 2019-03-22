@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5089083862f243a6a6847a58ac0777c52f978e73
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: 701be795ca217c4a2dc5a7dbaa3a3717d16c85bc
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189722"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730216"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
@@ -42,7 +42,7 @@ ms.locfileid: "54189722"
 
 
 > [!NOTE]
-> 对于使用 AzureRm cmdlet 进行的服务器操作，运行计划程序的服务主体还必须属于 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中资源的“所有者”角色。 
+> 对于使用 Azure PowerShell cmdlet 的服务器操作，服务主体运行计划程序还必须属于**所有者**中的资源的角色[azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md)。 
 
 ## <a name="related-information"></a>相关信息
 

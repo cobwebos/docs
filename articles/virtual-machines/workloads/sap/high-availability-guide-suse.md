@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: f65a6a0f9564eafda36b8a8f4988e064e39a3bb1
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 9809584a3abe1d0cdde2cd6ccf90b48432d27c11
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007849"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
 
@@ -212,6 +212,9 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. ASCS ERS 的其他端口
          * 针对 ASCS ERS 的端口 33**02**、5**02**13、5**02**14、5**02**16 和 TCP 重复上述步骤
 
+> [!IMPORTANT]
+> 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)。
+
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 
 遵循[在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](high-availability-guide-suse-pacemaker.md) 中的步骤为此 (A)SCS 服务器创建一个基本 Pacemaker 群集。
@@ -230,7 +233,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
    请确保安装 SAP SUSE 群集连接器的新版本。 旧版本称为 sap_suse_cluster_connector，新版本称为 **sap-suse-cluster-connector**。
 
-   <pre><code>sudo zypper info sap-suse-cluster-connector
+   ```
+   sudo zypper info sap-suse-cluster-connector
    
    Information for package sap-suse-cluster-connector:
    ---------------------------------------------------
@@ -245,7 +249,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    Status         : up-to-date
    Source package : sap-suse-cluster-connector-3.0.0-2.2.src
    Summary        : SUSE High Availability Setup for SAP Products
-   </code></pre>
+   ```
 
 1. [A] 更新 SAP 资源代理  
    
@@ -685,7 +689,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. 准备应用程序服务器
 
-遵循前面 [SAP NetWeaver 应用程序服务器准备](high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)一章中的步骤准备应用程序服务器。
+   遵循前面 [SAP NetWeaver 应用程序服务器准备](high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)一章中的步骤准备应用程序服务器。
 
 1. 安装 SAP NetWeaver 应用程序服务器
 

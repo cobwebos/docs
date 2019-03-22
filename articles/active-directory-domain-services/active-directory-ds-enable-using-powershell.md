@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: ergreenl
-ms.openlocfilehash: 758183efd6a6a2c2b8d172c52ad3bd5c5e12d969
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: f2c4f73af00e0093ce98f2de37e9c3a0ba381eda
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169123"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119898"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 本文介绍如何使用 PowerShell 来启用 Azure Active Directory (AD) 域服务。
@@ -141,8 +141,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > 在预配托管域后，请不要忘记执行其他配置步骤。
 > 预配托管域后，仍需完成以下任务：
 > * 为虚拟网络[更新 DNS 设置](active-directory-ds-getting-started-dns.md)，以使虚拟机能够找到用于域加入或身份验证的托管域。
-* [启用 Azure AD 域服务的密码同步](active-directory-ds-getting-started-password-sync.md)，以使最终用户能够使用其企业凭据登录到托管域。
->
+> * [启用 Azure AD 域服务的密码同步](active-directory-ds-getting-started-password-sync.md)，以使最终用户能够使用其企业凭据登录到托管域。
 
 
 ## <a name="powershell-script"></a>PowerShell 脚本
@@ -226,8 +225,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > 在预配托管域后，请不要忘记执行其他配置步骤。
 > 预配托管域后，仍需完成以下任务：
 > * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
-* 启用 Azure AD 域服务的密码同步，以使最终用户能够使用其企业凭据登录到托管域。
->
+> * 启用 Azure AD 域服务的密码同步，以使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤
 创建托管域后，执行以下配置任务，以使用托管域：

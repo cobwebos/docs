@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b958a8d7aa8566c62d5fdaf6b5b51064e4e5123
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32720669ae9d8941abce4429471c13608a18cbc5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183741"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294886"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -149,7 +149,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ## <a name="download-sign-in-activities"></a>下载登录活动
 
-如果想要在 Azure 门户外部使用登录活动数据，可以[下载登录数据](quickstart-download-sign-in-report.md)。 单击**下载**为您提供创建 CSV 或 JSCON 文件中的最新 250,000 记录的选项。  
+如果想要在 Azure 门户外部使用登录活动数据，可以[下载登录数据](quickstart-download-sign-in-report.md)。 单击**下载**为您提供创建 CSV 或 JSON 文件中的最新 250,000 记录的选项。  
 
 ![下载](./media/concept-sign-ins/71.png "下载")
 
@@ -168,7 +168,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ### <a name="users-sign-ins-data-in-identity-security-protection"></a>标识安全保护中的用户登录数据
 
-“标识安全保护”概述页上的用户登录图显示了指定时间内所有用户的按周汇总的登录信息。 默认时间为 30 天。
+用户在登录中的关系图**标识的安全保护**概述页显示在给定的时间段内按周汇总的所有用户的登录名。 默认时间为 30 天。
 
 ![登录活动](./media/concept-sign-ins/06.png "登录活动")
 
@@ -214,7 +214,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![登录活动](./media/concept-sign-ins/10.png "登录活动")
 
-应用程序使用情况图显示指定时间内最常用的 3 个应用程序的按周汇总的登录情况。 默认时间为 30 天。
+应用使用情况图按周汇总的登录为某个给定的时间段内前 3 个应用程序。 默认时间为 30 天。
 
 ![登录活动](./media/concept-sign-ins/47.png "登录活动")
 

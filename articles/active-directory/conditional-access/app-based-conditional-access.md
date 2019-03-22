@@ -18,12 +18,12 @@ ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3521ea7599aecd20784bd925492649b86921c567
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 57b7f540ccf80c6d25a7dfcfcad1ba7ca6698167
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182300"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113225"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：使用条件访问要求使用经批准的设备进行云应用访问 
 
@@ -67,7 +67,7 @@ ms.locfileid: "56182300"
 - [迁移条件访问策略](best-practices.md#policy-migration)。
  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要创建基于应用程序的条件访问策略，必须先订阅企业移动性 + 安全性或 Azure Active Directory Premium，且用户必须获得 EMS 或 Azure AD 许可。 
 
@@ -97,7 +97,7 @@ ms.locfileid: "56182300"
 
 - 可访问电子邮件
 
-每次访问公司数据时，都会激活任何 Intune 应用保护策略，并且可能提示用户重启应用程序，使用其他 PIN 码等（前提是为应用程序和平台配置了策略）。
+任何 Intune 应用保护策略都激活时访问公司数据，并且可能会提示用户重新启动该应用程序，请使用其他 pin 码等 （如果已配置为应用程序和平台）。
 
 ### <a name="configuration"></a>配置 
 
@@ -292,13 +292,13 @@ ms.locfileid: "56182300"
 
 5. 对于“访问控制”，需选中以下内容：
 
-    - “要求将设备标记为合规”
+   - “要求将设备标记为合规”
 
-    - “需要批准的客户端应用(预览)”
+   - “需要批准的客户端应用(预览)”
 
-    - “需要某一已选控件”   
+   - “需要某一已选控件”   
  
-    ![条件性访问](./media/app-based-conditional-access/11.png)
+     ![条件性访问](./media/app-based-conditional-access/11.png)
 
 
 
@@ -388,13 +388,13 @@ ms.locfileid: "56182300"
 
 5. 对于“访问控制”，需选中以下内容：
 
-    - “要求将设备标记为合规”
+   - “要求将设备标记为合规”
 
-    - “需要批准的客户端应用(预览)”
+   - “需要批准的客户端应用(预览)”
 
-    - ”需要所有已选控件“   
+   - ”需要所有已选控件“   
  
-    ![条件性访问](./media/app-based-conditional-access/13.png)
+     ![条件性访问](./media/app-based-conditional-access/13.png)
 
 
 
@@ -420,13 +420,13 @@ ms.locfileid: "56182300"
 
 5. 对于“访问控制”，需选中以下内容：
 
-    - “要求将设备标记为合规”
+   - “要求将设备标记为合规”
 
-    - “需要批准的客户端应用(预览)”
+   - “需要批准的客户端应用(预览)”
 
-    - ”需要所有已选控件“   
+   - ”需要所有已选控件“   
  
-    ![条件性访问](./media/app-based-conditional-access/64.png)
+     ![条件性访问](./media/app-based-conditional-access/64.png)
 
 
 

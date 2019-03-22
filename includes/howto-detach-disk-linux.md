@@ -4,17 +4,17 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c9c52c5cda258908ac8463dd06044e244c75ee2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
+ms.openlocfilehash: 94f662cea5f20485659a7b93549b758fdd7770f6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330754"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "58115561"
 ---
-不再需要附加到虚拟机 (VM) 的数据磁盘时，可以轻松地分离它。 从 VM 中分离磁盘时，不会从存储中删除该磁盘。 如果希望再次使用磁盘上的现有数据，可以将其重新附加到相同的 VM 或另一个 VM。  
+当不再需要附加到虚拟机 (VM) 的数据磁盘时，可以轻松地分离它。 从 VM 中分离磁盘时，不会从存储中删除该磁盘。 如果希望再次使用磁盘上的现有数据，可以将其重新附加到相同的 VM 或另一个 VM。  
 
 > [!NOTE]
-> Azure 中的 VM 使用不同类型的磁盘 - 操作系统磁盘、本地临时磁盘和可选数据磁盘。 有关详细信息，请参阅[关于虚拟机的磁盘和 VHD](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 除非同时也删除 VM，否则无法分离操作系统磁盘。
+> Azure 中的 VM 使用不同类型的磁盘 - 操作系统磁盘、本地临时磁盘和可选数据磁盘。 有关详细信息，请参阅[关于虚拟机的磁盘和 VHD](../articles/virtual-machines/linux/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 除非同时也删除 VM，否则无法分离操作系统磁盘。
 
 ## <a name="find-the-disk"></a>找到磁盘
 在从 VM 中分离磁盘之前，需要先确定 LUN 号（要分离的磁盘的标识符）。 为此，请执行以下步骤：
@@ -44,7 +44,7 @@ ms.locfileid: "52330754"
 ## <a name="remove-operating-system-references-to-the-disk"></a>删除对该磁盘的操作系统引用
 从 Linux 来宾分离磁盘之前，应确保磁盘上的所有分区都未在使用。 确保操作系统在重新启动后不会尝试重新装载它们。 这些步骤将撤消在[附加](../articles/virtual-machines/linux/classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)磁盘时有可能创建的配置。
 
-1. 使用 `lsscsi` 命令发现磁盘标识符。 `lsscsi` 的安装可以通过 `yum install lsscsi`（在基于 Red Hat 的分发版上）或 `apt-get install lsscsi`（在基于 Debian 的分发版上）来进行。 可以使用 LUN 号找到要寻找的磁盘标识符。 每一行的元组中的最后一个数字就是 LUN。 在下面的示例中，从 `lsscsi` LUN 0 映射到 */dev/sdc*
+1. 使用 `lsscsi` 命令发现磁盘标识符。 可以通过 `yum install lsscsi`（在基于 Red Hat 的分发上）或 `apt-get install lsscsi`（在基于 Debian 的分发上）安装 `lsscsi`。 可以使用 LUN 号找到要寻找的磁盘标识符。 每一行的元组中的最后一个数字就是 LUN。 在下面的示例中，从 `lsscsi` LUN 0 映射到 */dev/sdc*
 
     ```bash
     [1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0

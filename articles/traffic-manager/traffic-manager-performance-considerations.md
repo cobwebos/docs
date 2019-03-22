@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1bf2222e09644520bbfc6c5424c7f29d05b3c799
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 85dd3cca081d492bfeefa3e8ea0d143c9c37af8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257691"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007948"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
@@ -28,7 +28,7 @@ ms.locfileid: "51257691"
 
 流量管理器对网站产生的唯一性能影响是初始 DNS 查找。 针对流量管理器配置文件名称发出的 DNS 请求由托管 trafficmanager.net 区域的 Microsoft DNS 根服务器处理。 流量管理器根据流量管理器策略和探测结果填充并定期更新 Microsoft DNS 根服务器。 因此，即使在初始 DNS 查找期间，也不会将 DNS 查询发送到流量管理器。
 
-流量管理器由多个组件构成：DNS 名称服务器、API 服务、存储层和终结点监视服务。 如果流量管理器服务组件发生故障，与流量管理器配置文件关联的 DNS 名称不会受到影响。 Microsoft DNS 服务器中的记录将保留不变。 但是，终结点监视和 DNS 更新不会发生。 因此，当主站点关闭时，流量管理器无法将 DNS 更新为指向故障转移站点。
+流量管理器是由多个组件构成：DNS 名称服务器、API 服务、存储层和终结点监视服务。 如果流量管理器服务组件发生故障，与流量管理器配置文件关联的 DNS 名称不会受到影响。 Microsoft DNS 服务器中的记录将保留不变。 但是，终结点监视和 DNS 更新不会发生。 因此，当主站点关闭时，流量管理器无法将 DNS 更新为指向故障转移站点。
 
 DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度取决于客户端用于名称解析的 DNS 服务器。 通常，客户端可在大约 50 毫秒内完成一个 DNS 查找。 查找结果按照 DNS 生存时间 (TTL) 的持续时间缓存。 流量管理器的默认 TTL 为 300 秒。
 
@@ -42,11 +42,11 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>用于测量 DNS 性能的工具示例
 
-* [SolveDNS](http://www.solvedns.com/dns-comparison/)
+* [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
     SolveDNS 提供许多性能工具。 DNS Comparison 工具可以显示解析 DNS 名称花费的时间，以及该时间与使用其他 DNS 服务提供程序时花费的时间的对比。
 
-* [WebSitePulse](http://www.websitepulse.com/help/tools.php)
+* [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
     其中最简单的工具就是 WebSitePulse。 输入 URL 即可查看 DNS 解析时间、第一个字节、最后一个字节和其他性能统计信息。 可以从三个不同的测试位置中选择。 在此示例中可以看到，第一次执行显示 DNS 查找花费了 0.204 秒。
 
@@ -58,19 +58,19 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
 * [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
 
-    前称 Watchmouse Check Website Tool，此站点可以同时从多个地理区域显示 DNS 解析时间。 输入 URL 即可查看 DNS 解析时间、连接时间以及各个地理位置的连接速度。 使用此测试可以查看针对全球不同位置返回了哪些托管服务。
+    以前称为监视鼠标检查网站工具，此站点显示你的 DNS 解析时间从多个地理区域同时。 输入 URL 即可查看 DNS 解析时间、连接时间以及各个地理位置的连接速度。 使用此测试可以查看针对全球不同位置返回了哪些托管服务。
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
-* [Pingdom](http://tools.pingdom.com/)
+* [Pingdom](https://tools.pingdom.com/)
 
     此工具提供网页上每个元素的性能统计信息。 “Page Analysis”（页面分析）选项卡显示 DNS 查找花费的时间百分比。
 
-* [我的 DNS 是什么？](http://www.whatsmydns.net/)
+* [我的 DNS 是什么？](https://www.whatsmydns.net/)
 
     此站点从 20 个不同的位置执行 DNS 查找，并在地图上显示结果。
 
-* [深入了解 Web 接口](http://www.digwebinterface.com)
+* [深入了解 Web 接口](https://www.digwebinterface.com)
 
     此站点显示更详细的 DNS 信息，包括 CNAME 和 A 记录。 请确保在选项下选中“着色输出”和“统计信息”，并在 Nameservers 下选中“全部”。
 

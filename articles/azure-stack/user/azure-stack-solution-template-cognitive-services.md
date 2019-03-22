@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 1ccbe8b268725cf3d0747486a20e0597d023662e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 8080355bebf00c9f37c28ae8ed54bba092f8dc17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890597"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099927"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>将 Azure 认知服务部署到 Azure Stack
 
@@ -67,12 +67,12 @@ ms.locfileid: "55890597"
 
 若要预览的人脸、 LUIS 或识别的文本容器，分别在 Azure 上创建认知服务资源。 需要使用资源中的订阅密钥和终结点 URL 来实例化认知服务容器。
 
-1.  在 Azure 门户中创建 Azure 资源。 若要预览“人脸”容器，必须先在 Azure 门户中创建相应的“人脸”资源。 有关详细信息，请参阅[快速入门：在 Azure 门户中创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。
+1. 在 Azure 门户中创建 Azure 资源。 若要预览“人脸”容器，必须先在 Azure 门户中创建相应的“人脸”资源。 有关详细信息，请参阅[快速入门：在 Azure 门户中创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。
 
-    >  [!Note]  
-    >  “人脸”或“计算机视觉”资源必须使用 F0 定价层。
+   > [!Note]
+   >  “人脸”或“计算机视觉”资源必须使用 F0 定价层。
 
-2.  获取 Azure 资源的终结点 URL 和订阅密钥。 创建 Azure 资源后，必须使用该资源中的订阅密钥和终结点 URL 来实例化相应的“人脸”、“LUIS”或“识别文本”容器，以进行预览。
+2. 获取 Azure 资源的终结点 URL 和订阅密钥。 创建 Azure 资源后，必须使用该资源中的订阅密钥和终结点 URL 来实例化相应的“人脸”、“LUIS”或“识别文本”容器，以进行预览。
 
 ## <a name="create-a-kubernetes-secret"></a>创建 Kubernetes 机密 
 

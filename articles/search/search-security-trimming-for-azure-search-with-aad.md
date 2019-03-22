@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 3f55b3b099cc22fda2bebf0dcb8d3e9c1a580f02
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099684"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102520"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器
 
@@ -22,16 +22,16 @@ ms.locfileid: "56099684"
 
 本文涵盖以下任务：
 > [!div class="checklist"]
-- 创建 AAD 组和用户
-- 将用户与创建的组相关联
-- 缓存新组
-- 使用关联的组编制文档索引
-- 使用组标识符筛选器发出搜索请求
-
->[!NOTE]
+> - 创建 AAD 组和用户
+> - 将用户与创建的组相关联
+> - 缓存新组
+> - 使用关联的组编制文档索引
+> - 使用组标识符筛选器发出搜索请求
+> 
+> [!NOTE]
 > 本文中的示例代码片段是用 C# 语言编写的。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 Azure 搜索中的索引必须有一个[安全字段](search-security-trimming-for-azure-search.md)用于存储对文档拥有读取访问权限的组标识列表。 此用例假设某个安全对象项（例如个人的大学申请）与指定谁有权访问该项（招生人员）的安全字段之间存在一对一的对应关系。
 

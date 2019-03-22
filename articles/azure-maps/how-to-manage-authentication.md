@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: fe0e325543d245e4415fea925fcdade32eb00614
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: HT
+ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570498"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259918"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
@@ -32,7 +32,7 @@ ms.locfileid: "57570498"
 
 创建 Azure Maps 帐户后，需要建立 Azure AD 租户与 Azure Maps 资源之间的链接。
 
-1. 转到 Azure AD 边栏选项卡，并创建应用注册。 提供注册的名称。 在中**单一登录 URL**框中，提供 web 应用的主页 / API (例如， https://localhost/)。 如果你已拥有已注册的应用，请转到步骤 2。
+1. 转到 Azure AD 边栏选项卡，并创建应用注册。 提供注册的名称。 在中**单一登录 URL**框中，提供 web 应用的主页 / API (例如，https:\//localhost/)。 如果你已拥有已注册的应用，请转到步骤 2。
 
     ![应用注册](./media/how-to-manage-authentication/app-registration.png)
 

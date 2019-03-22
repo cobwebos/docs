@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/06/2019
 ms.author: kuhussai
 ms.subservice: blobs
-ms.openlocfilehash: 3e89f5de247cf18abdb710577ce55c6e2cb5765e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: ec024f8f1cd411455a6cbb2a0b12e7b4751af5fe
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251888"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405328"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob 存储：高级（预览版）、热、冷、存档存储层
 
@@ -57,15 +57,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 
 对于需要快速且一致的响应时间的工作负载而言此层是理想之选。 涉及最终用户的数据（例如交互式视频编辑、静态 Web 内容和联机事务等）适合选用高级访问层。 此层专为执行多种小事务（例如捕获遥测数据、消息传递和数据转换）的工作负载量身定制。
 
-若要使用此层，请使用 [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api)、[AzCopy](/azure/storage/common/storage-use-azcopy) 或 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)预配一个新的块 Blob 存储帐户并开始创建容器和 Blob。
-
-在预览版期间，高级访问层：
-
-- 作为本地冗余存储 (LRS) 提供
-- 仅在以下区域中提供：美国东部 2、美国中部和美国西部
-- 不支持使用数据生命周期管理进行对象级别分层或自动分层
-
-若要了解如何注册高级访问层预览版，请参阅 [Azure 高级 Blob 存储简介](https://aka.ms/premiumblob)。
+有关预览版的详细信息，请参阅[Azure 高级 Blob 存储公共预览版](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/)。
 
 ## <a name="hot-access-tier"></a>热访问层
 

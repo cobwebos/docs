@@ -10,18 +10,18 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.openlocfilehash: ad7a29f4a554d599b17576921542b1ac6e403911
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: 05368f627c5e9482a43d5e30b0e16b1d47f6217c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127757"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074706"
 ---
 # <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 接收 B2B 数据
 
 创建具有合作伙伴和协议的集成帐户后，便可以使用 [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) 为逻辑应用创建企业到企业 (B2B) 工作流。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用 AS2 和 X12 操作，必须具有企业集成帐户。 了解[如何创建企业集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)。
 
@@ -47,11 +47,13 @@ ms.locfileid: "43127757"
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
 
-6. 添加要用作输入的**正文**。 在此示例中，选择触发逻辑应用的 HTTP 请求的正文。 或者在“标头”字段中输入用于输入标头的表达式：
+6. 添加要用作输入的**正文**。 
+   在此示例中，选择触发逻辑应用的 HTTP 请求的正文。 或者在“标头”字段中输入用于输入标头的表达式：
 
     @triggerOutputs()['headers']
 
-7. 为 AS2 添加所需的**标头**，这些标头可在 HTTP 请求标头中找到。 在此示例中，选择触发逻辑应用的 HTTP 请求的标头。
+7. 为 AS2 添加所需的**标头**，这些标头可在 HTTP 请求标头中找到。 
+   在此示例中，选择触发逻辑应用的 HTTP 请求的标头。
 
 8. 现在添加“解码 X12 消息”操作。 选择“添加操作”。
 
@@ -65,7 +67,8 @@ ms.locfileid: "43127757"
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
 
-11. 现在，必须指定此操作的输入。 此输入是前面的 AS2 操作的输出。
+11. 现在，必须指定此操作的输入。 
+    此输入是前面的 AS2 操作的输出。
 
     实际的消息内容在 JSON 对象中并且经过 base64 编码，因此，必须指定一个表达式作为输入。 
     在“要解码的 X12 平面文件消息”输入字段中输入以下表达式：

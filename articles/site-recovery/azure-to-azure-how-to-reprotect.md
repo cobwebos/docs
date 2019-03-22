@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0b5fe1b1df306bf0930715bc6cfb586e5445f85c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: b1676f53125694eeff3a39adf51dc854c197d756
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110488"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
 
@@ -27,7 +27,7 @@ ms.locfileid: "52839953"
 > 如果是将计算机从主要区域[迁移](migrate-overview.md#what-do-we-mean-by-migration)到了次要区域、将 VM 转移到了另一个资源组，或者删除了 Azure VM，则无法重新保护或故障回复 VM。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 1. 必须提交将 VM 从主要区域故障转移到次要区域的操作。
 2. 主要目标站点应该可用，并且应该能够在该区域中访问或创建资源。
 
@@ -35,12 +35,12 @@ ms.locfileid: "52839953"
 
 1. 在“保管库” > “复制的项”中，右键单击已故障转移的 VM，并选择“重新保护”。 重新保护方向应该显示为从次要区域到主要区域。
 
-  ![重新保护](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![重新保护](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 2. 查看资源组、网络、存储和可用性集。 然后单击“确定”。 如果有任何资源标记为“新”，则表示它们是在重新保护过程中创建的。
 3. 重新保护作业使用最新数据植入目标站点。 完成该过程后，将发生增量复制。 然后，可以故障转移回到主要站点。 可以使用自定义选项，选择要在重新保护期间使用的存储帐户或网络。
 
-  ![自定义选项](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
+   ![自定义选项](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
 
 ### <a name="customize-reprotect-settings"></a>自定义重新保护设置
 

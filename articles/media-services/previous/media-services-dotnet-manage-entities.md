@@ -2,7 +2,7 @@
 title: 使用媒体服务 .NET SDK 管理资产和相关的实体
 description: 了解如何使用适用于 .NET 的媒体服务 SDK 管理资产和相关的实体。
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 7cab21919eca9ba62fa57e1c6b2089c0b8e115dc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: d2651bc47f262a45a05217585eb00cbc721c01a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979966"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58165771"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 管理资产和相关的实体
 > [!div class="op_single_selector"]
@@ -28,12 +28,12 @@ ms.locfileid: "55979966"
 > 
 > 
 
-本主题演示如何使用 .NET 管理 Azure 媒体服务实体（旧版）
+本主题演示如何使用 .NET 管理 Azure 媒体服务实体。
 
 >[!NOTE]
 > 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也会自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
@@ -201,7 +201,7 @@ ms.locfileid: "55979966"
 ```
 
 ## <a name="list-all-access-policies"></a>列出所有访问策略
-在媒体服务中，可以对资产或其文件定义访问策略。 访问策略定义文件或资产的权限（访问类型以及持续时间）。 在媒体服务代码中，通常通过创建 IAccessPolicy 对象来定义访问策略对象，并将其与现有资产相关联。 然后创建一个 ILocator 对象，它允许你提供对媒体服务中的资产的直接访问。 本文档系列随附的 Visual Studio 项目包含几个代码示例，这些代码示例演示如何创建和分配访问策略和定位符到资产。
+在媒体服务中，可以对资产或其文件定义访问策略。 访问策略定义文件或资产的权限（访问类型以及持续时间）。 在媒体服务代码中，通常通过创建 IAccessPolicy 对象来定义访问策略对象，并将其与现有资产相关联。 然后创建一个 ILocator 对象，它可以提供对媒体服务中的资产直接访问。 本文档系列随附的 Visual Studio 项目包含几个代码示例，这些代码示例演示如何创建和分配访问策略和定位符到资产。
 
 以下代码示例演示如何列出服务器上所有的访问策略，并显示与每个策略关联的权限类型。 查看访问策略的另一个有用方法是列出服务器上的所有 ILocator 对象，然后针对每个定位符，可以使用其 AccessPolicy 属性列出其关联的访问策略。
 
@@ -293,7 +293,7 @@ ms.locfileid: "55979966"
 ## <a name="enumerating-through-large-collections-of-entities"></a>枚举大型实体集合
 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 枚举大型实体集合时，需要使用 Skip 和 Take。 
 
-以下函数将循环访问所提供的媒体服务帐户中的所有作业。 媒体服务会在作业集合中返回 1000 个作业。 该函数使用 Skip 和 Take 来确保枚举所有作业（如果帐户中的作业超过 1000 个）。
+以下函数将循环访问所提供的媒体服务帐户中的所有作业。 媒体服务会在作业集合中返回 1000 个作业。 该函数使用 Skip 和 Take 来确保枚举所有作业（如果你帐户中的作业超过 1000 个）。
 
 ```csharp
     static void ProcessJobs()

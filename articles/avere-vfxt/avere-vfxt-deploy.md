@@ -4,29 +4,27 @@ description: 在 Azure 中部署 Avere vFXT 群集的步骤
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 972ba937ad15fa9a6d2eb74e3e4c9e6e8f3923a4
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745429"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409680"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
-此过程详述如何使用 Azure 市场提供的部署向导。 此向导自动使用 Azure 资源管理器模板来部署群集。 在窗体中输入参数并单击“创建”后，Azure 会自动完成以下步骤： 
+此过程详述如何使用 Azure 市场提供的部署向导。 此向导自动使用 Azure 资源管理器模板来部署群集。 在窗体中输入参数并单击“创建”后，Azure 会自动完成以下步骤：
 
-* 创建群集控制器，该控制器是基本的 VM，其中包含部署和管理群集所需的软件。
-* 设置资源组和虚拟网络基础结构，包括根据需要创建新元素。
-* 创建群集节点 VM 并将其配置为 Avere 群集。
-* 根据请求创建新的 Azure Blob 容器并将其配置为群集核心文件管理器。
+* 创建群集控制器，这是基本的 VM，其中包含部署和管理群集所需的软件。
+* 设置资源组和虚拟网络基础结构，包括创建新元素。
+* 创建群集节点 Vm，并将它们配置为 Avere 群集。
+* 如果请求，创建新的 Azure Blob 容器，并将其配置为群集核心文件管理器。
 
-按照本文档中的说明操作后，将获得虚拟网络、子网、控制器和 vFXT 群集，如下图所示：
+本文档中的说明进行操作后，将获得一个虚拟网络、 子网、 一个控制器和 vFXT 群集，如以下关系图中所示。 下图显示的可选 Azure Blob core 筛选器，其中包括新的 Blob 存储容器 （在新的存储帐户，不会显示） 和 Microsoft 存储空间的子网的服务终结点。 
 
-![关系图，它所示的 VNET 包含可选 blob 存储以及一个子网，该子网包含三个标记为 vFXT 节点/vFXT 群集的分组 VM 和一个标记为群集控制器的 VM](media/avere-vfxt-deployment.png)
-
-创建群集后，如果使用的是 Blob 存储，则应在虚拟网络中[创建存储终结点](#create-a-storage-endpoint-if-using-azure-blob)。 
+![关系图显示三个同心矩形与 Avere 群集组件。 外部矩形标记为资源组，并包含标记为 Blob 存储 （可选） 六边形。 中的下一步矩形标记为虚拟网络：10.0.0.0/16，并且不包含任何独特的组件。 最内层矩形标记为 Subnet:10.0.0.0/24，并包含标记为群集控制器，堆栈的三个 Vm 标记为 vFXT 节点 （vFXT 群集），并标记为服务终结点六边形的 VM。 没有连接的服务终结点 （这是内部子网） 和 blob 存储 （这是外部的子网和 vnet 的资源组中） 的箭头。 通过子网和虚拟网络边界传递箭头。](media/avere-vfxt-deployment.png)  
 
 在使用创建模板之前，请确保已具备以下必备项：  
 
@@ -34,6 +32,7 @@ ms.locfileid: "55745429"
 1. [订阅所有者权限](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [vFXT 群集的配额](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
 1. [自定义访问角色](avere-vfxt-prereqs.md#create-access-roles) - 必须创建基于角色的访问控制角色，以便将其分配到群集节点。 可以选择也为群集控制器创建自定义访问角色，但大多数用户会采用默认的所有者角色，这样可以获得与资源组所有者相对应的控制器特权。 如需更多详细信息，请阅读 [Azure 资源的内置角色](../role-based-access-control/built-in-roles.md#owner)。
+1. [存储服务终结点 （如果需要）](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -必需的部署使用现有的虚拟网络和创建 blob 存储
 
 有关群集部署的步骤和计划的详细信息，请阅读[计划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)和[部署概述](avere-vfxt-deploy-overview.md)。
 
@@ -105,13 +104,13 @@ ms.locfileid: "55745429"
 
 * **Avere vFXT 群集名称** - 为群集提供唯一名称。 
 
-* **大小** - 指定创建群集节点时需要使用的 VM 类型。 
+* **大小**-本部分介绍用于在群集节点的 VM 类型。 尽管只有一个推荐的选项，但**更改大小**链接将打开此实例类型和指向定价计算器的详细信息表。  
 
 * **每个节点的缓存大小** - 群集缓存分布在多个群集节点上，因此 Avere vFXT 群集上的总缓存大小为每个节点的缓存大小乘以节点数。 
 
-  建议的配置是：如果使用 Standard_D16s_v3 群集节点，则使用每个节点 1 TB 的设置；如果使用 Standard_E32s_v3 节点，则使用每个节点 4 TB 的设置。
+  建议的配置是 Standard_E32s_v3 节点每个节点使用 4 TB。
 
-* **虚拟网络** - 选择一个现有的 VNet 来托管群集，或者定义一个新的需要创建的 VNet。 
+* **虚拟网络**-定义新的 vnet 来存放该群集，或选择现有 vnet 满足先决条件中所述[规划 Avere vFXT 系统](avere-vfxt-deploy-plan.md#resource-group-and-network-infrastructure)。 
 
   > [!NOTE]
   > 如果创建新的 VNet，群集控制器就会有一个公共 IP 地址，供你访问新的专用网络。 如果选择现有的 VNet，则配置的群集控制器没有公共 IP 地址。 
@@ -121,17 +120,21 @@ ms.locfileid: "55745429"
   >  * 如果未在控制器上设置公共 IP 地址，则必须使用其他跳转主机、VPN 连接或 ExpressRoute 来访问群集。 例如，在已配置 VPN 连接的虚拟网络中创建控制器。
   >  * 如果创建具有公共 IP 地址的控制器，则应使用网络安全组保护控制器 VM。 默认情况下，Avere vFXT for Azure 部署会创建一个网络安全组，仅限对具有公共 IP 地址的控制器的端口 22 进行入站访问。 可以通过锁定对 IP 源地址范围的访问来进一步保护系统，换句话说，只允许从你打算将其用于群集访问的计算机进行连接。
 
+  部署模板还将配置新的 vnet 与 Azure Blob 存储的存储服务终结点和锁定为仅 Ip 从群集子网的网络访问控制。 
+
 * **子网** - 从现有虚拟网络中选择一个子网，或者创建一个新的子网。 
 
-* **使用 Blob 存储** - 选择“true”，创建新的 Azure Blob 容器并将其配置为新 Avere vFXT 群集的后端存储。 此选项还会群集所属的同一资源组中创建新的存储帐户。 
+* **创建和使用 blob 存储**-选择**true**创建新的 Azure Blob 容器并将其配置为新的 Avere vFXT 群集的后端存储。 此选项还会创建新的存储帐户用作群集的群集子网内，Microsoft 存储服务终结点在同一资源组中。 
+  
+  如果您提供的现有虚拟网络，它必须具有存储服务终结点，在创建群集之前。 (有关详细信息，请阅读[规划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)。)
 
   如果不希望创建新容器，请将此字段设置为 **false**。 在这种情况下，必须在创建群集后附加和配置存储。 有关说明，请参阅[配置存储](avere-vfxt-add-storage.md)。 
 
-* **存储帐户** - 如果创建新的 Azure Blob 容器，请为新的存储帐户输入名称。 
+* **（新）存储帐户**-如果创建新的 Azure Blob 容器中，输入新的存储帐户的名称。 
 
 ## <a name="validation-and-purchase"></a>验证和购买
 
-第三页对配置进行汇总并验证参数。 验证成功后，请单击“确定”按钮继续。 
+第三页汇总了配置和验证参数。 验证成功后，请单击“确定”按钮继续。 
 
 ![部署模板的第三页 - 验证](media/avere-vfxt-deploy-3.png)
 
@@ -159,20 +162,6 @@ Avere vFXT 模板在创建完群集以后，会输出有关新群集的某些重
 1. 在左侧，单击“输出”。 复制每个字段中的值。 
 
    ![输出页面，在标签右侧的字段中显示 SSHSTRING、RESOURCE_GROUP、LOCATION、NETWORK_RESOURCE_GROUP、NETWORK、SUBNET、SUBNET_ID、VSERVER_IPs 和 MGMT_IP 的值](media/avere-vfxt-outputs-values.png)
-
-
-## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>创建存储终结点（如果使用的是 Azure Blob）
-
-如果要将 Azure Blob 存储用于后端数据存储，应在虚拟网络中创建一个存储服务终结点。 此[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)使 Azure Blob 流量保留在本地，而不是将其路由到虚拟网络之外。
-
-1. 在门户中，单击左侧的“虚拟网络”。
-1. 为控制器选择 VNET。 
-1. 单击左侧的“服务终结点”。
-1. 单击顶部的“添加”。
-1. 将服务保留为 ``Microsoft.Storage`` 并选择控制器的子网。
-1. 在底部单击“添加”。
-
-  ![带注释的 Azure 门户屏幕截图，注释标明创建服务终结点的步骤](media/avere-vfxt-service-endpoint.png)
 
 ## <a name="next-step"></a>后续步骤
 

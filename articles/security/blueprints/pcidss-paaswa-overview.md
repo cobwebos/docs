@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: cfe0a4f68d77f278745b71c13beefc97cf92aa29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: 5452a1adb419a2f57e2124d5aac49f9cdcff615a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605919"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111661"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-pci-dss"></a>Azure 安全性与合规性蓝图：PCI DSS 的 PaaS Web 应用程序
 
@@ -43,7 +43,7 @@ Azure 安全性和符合性蓝图自动化可自动部署一个 PaaS Web 应用�
 
 Azure SQL 数据库通常通过 SQL Server Management Studio 进行管理，后者通过配置为经由安全 VPN 或 ExpressRoute 连接访问 Azure SQL 数据库的本地计算机运行。
 
-此外，Application Insights 还通过 Log Analytics 提供实时应用程序性能管理和分析功能。 **Microsoft 建议配置 VPN 或 ExpressRoute 连接，从而实现管理并将数据导入参考体系结构子网。**
+此外，Application Insights 提供实时应用程序性能管理和分析通过 Azure Monitor 日志。 **Microsoft 建议配置 VPN 或 ExpressRoute 连接，从而实现管理并将数据导入参考体系结构子网。**
 
 ![符合 PCI DSS 参考体系结构的 PaaS Web 应用程序图示](images/pcidss-paaswa-architecture.png "符合 PCI DSS 参考体系结构的 PaaS Web 应用程序图示")
 
@@ -76,7 +76,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio 进行管理，后�
 
 以下部分详细描述了部署和实施要素。
 
-**Azure 资源管理器**：[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)使客户能够作为一个组使用解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
+**Azure 资源管理器**：借助[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，客户可以以组的形式使用解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
 
 **守护主机**：守护主机是允许用户访问此环境中已部署资源的单一入口点。 守护主机通过仅允许来自安全列表上的公共 IP 地址的远程流量来提供到已部署资源的安全连接。 要允许远程桌面 (RDP) 流量，需要在网络安全组中定义流量的源。
 
@@ -102,7 +102,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio 进行管理，后�
 - [Web 应用程序防火墙 - 限制数据](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - 允许 [Azure SQL 数据库流量](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Azure Web 应用**：[Azure 应用服务](https://docs.microsoft.com/azure/app-service/)让客户可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
+**Azure Web 应用**：使用 [Azure 应用服务](https://docs.microsoft.com/azure/app-service/)，客户可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
 
 ### <a name="virtual-network"></a>虚拟网络
 
@@ -118,7 +118,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio 进行管理，后�
 每个网络安全组打开了特定的端口和协议，使解决方案能够安全正确地工作。 此外，为每个网络安全组启用了以下配置：
 
 - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
-- Log Analytics 已连接到[网络安全组的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+- Azure Monitor 日志连接到[网络安全组&#39;s 诊断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 **子网**：每个子网都与其对应的网络安全组相关联。
 
@@ -176,7 +176,7 @@ Azure 安全中心使用各种检测功能，提醒客户针对其环境的潜�
 
 Azure 安全中心提供区分优先级的安全警报和事件，让客户更轻松地发现和解决潜在安全问题。 针对检测到的每种威胁生成[威胁智能报告](https://docs.microsoft.com/azure/security-center/security-center-threat-report)，帮助事件响应团队调查和解决威胁。
 
-**Azure 应用程序网关**：体系结构使用配置了 Web 应用程序防火墙并启用了 OWASP 规则集的 Azure 应用程序网关，来降低安全漏洞风险。 其他功能包括：
+**Azure 应用程序网关**：体系结构使用配置了 Web 应用程序防火墙并启用了 OWASP 规则集的应用程序网关，来降低安全漏洞风险。 其他功能包括：
 
 - [端到端 SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - 启用 [SSL 卸载](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
@@ -193,9 +193,9 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
 
-**Log Analytics**：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中进行处理、存储和在仪表板上报告。 收集后，数据在 Log Analytics 工作区内按数据类型整理到不同的表中，这样即可不考虑最初来源而集中分析所有数据。 此外，Azure 安全中心与 Log Analytics 集成，使客户能够使用 Log Analytics 查询来访问其安全事件数据，并将这些数据与其他服务中的数据合并。
+**Azure Monitor 日志**：这些日志合并在[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)进行处理、 存储和仪表板报告。 收集后，数据在 Log Analytics 工作区内按数据类型整理到不同的表中，这样即可不考虑最初来源而集中分析所有数据。 此外，Azure 安全中心与 Azure Monitor 日志允许客户使用 Kusto 查询来访问其安全事件数据并将其与其他服务中的数据集成。
 
-以下 Log Analytics [管理解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)是此体系结构的一部分：
+以下 Azure[监视解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)作为此体系结构的一部分包括在内：
 -   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署的服务器基础结构的优先建议列表。
 - [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
 - [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
@@ -228,10 +228,10 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 2. 查看 0-Setup-AdministrativeAccountAndPermission.md 并运行所提供的命令。
 
 3. 使用 Contoso 示例数据部署测试解决方案，或试用初始生产环境。
-  - 1A-ContosoWebStoreDemoAzureResources.ps1
-    - 此脚本部署了 Azure 资源，借以通过 Contoso 示例数据展示网上商店。
-  - 1-DeployAndConfigureAzureResources.ps1
-    - 此脚本部署了支持客户自有 Web 应用程序的生产环境所需的 Azure 资源。 客户应当根据组织要求进一步地自定义此环境。
+   - 1A-ContosoWebStoreDemoAzureResources.ps1
+     - 此脚本部署了 Azure 资源，借以通过 Contoso 示例数据展示网上商店。
+   - 1-DeployAndConfigureAzureResources.ps1
+     - 此脚本部署了支持客户自有 Web 应用程序的生产环境所需的 Azure 资源。 客户应当根据组织要求进一步地自定义此环境。
 
 ## <a name="guidance-and-recommendations"></a>指导和建议
 

@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: 3413b235d9202530eb1a3129637e3746bbe6585b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124656"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872547"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "43124656"
 
 ## <a name="create-an-as2-agreement"></a>创建 AS2 协议
 
-1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。  
+1.  登录 [Azure 门户](https://portal.azure.com "Azure portal")。  
 
 2. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中输入“集成”，然后选择“集成帐户”。
 
@@ -60,7 +60,7 @@ ms.locfileid: "43124656"
 
     ![提供协议详细信息](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
-    | 属性 | Description |
+    | 属性 | 描述 |
     | --- | --- |
     | 名称 |协议的名称 |
     | 协议类型 | 应为 AS2 |
@@ -98,7 +98,7 @@ ms.locfileid: "43124656"
 
 协议现已准备就绪，可以处理符合所选设置的传入消息。
 
-| 属性 | Description |
+| 属性 | 描述 |
 | --- | --- |
 | 替代消息属性 |表示可替代接收消息中的属性。 |
 | 对消息进行签名 |要求对消息进行数字签名。 配置来宾合作伙伴公共证书以进行签名验证。  |
@@ -143,7 +143,7 @@ ms.locfileid: "43124656"
 
 协议现已准备就绪，可以处理符合所选设置的传出消息。
 
-| 属性 | Description |
+| 属性 | 描述 |
 | --- | --- |
 | 启用消息签名 |要求对所有发送自此协议的消息进行签名。 |
 | MIC 算法 |用于消息签名的算法。 配置主机合作伙伴私有证书 MIC 算法以对消息进行签名。 |

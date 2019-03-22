@@ -7,40 +7,40 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/02/2018
+ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: 30f96c54dd916188296ca0245d4095a32ae0bbe4
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e8a85401c0c7282d64ebcbe2f9180f25f36f7289
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742875"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108148"
 ---
 # <a name="scale-hdinsight-clusters"></a>缩放 HDInsight 群集
 
 HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 这样，便可以在若干小时后或者在周末收缩群集，或者在业务高峰期扩展群集。
 
-例如，如果要每隔一天或每隔一个月执行某种批处理一次，则可以在该计划事件之前的几分钟扩展 HDInsight 群集，以便有足够的内存和 CPU 计算能力。 可以使用 PowerShell cmdlet [`Set–AzureRmHDInsightClusterSize`](hdinsight-administer-use-powershell.md#scale-clusters) 自动缩放。  在完成处理并且用量再次下降后，可将 HDInsight 群集缩减为更少的工作节点。
+例如，如果要每隔一天或每隔一个月执行某种批处理一次，则可以在该计划事件之前的几分钟扩展 HDInsight 群集，以便有足够的内存和 CPU 计算能力。  在完成处理并且用量再次下降后，可将 HDInsight 群集缩减为更少的工作节点。
 
-* 通过 [PowerShell](hdinsight-administer-use-powershell.md) 缩放群集：
+## <a name="utilities-to-scale-clusters"></a>实用程序来缩放群集
 
-    ```powershell
-    Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
-    ```
-    
-* 通过 [Azure 经典 CLI](hdinsight-administer-use-command-line.md) 缩放群集：
+Microsoft 提供了以下实用程序来缩放群集：
 
-    ```
-    azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-    ```
+|实用程序 | 描述|
+|---|---|
+|[PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
+|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm/overview) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --target-instance-count \<NewSize>|
+|[Azure 经典 CLI](hdinsight-administer-use-command-line.md)|azure hdinsight 群集大小调整\<群集名称 >\<目标实例计数 >|
+|[Azure 门户](https://portal.azure.com)|打开 HDInsight 群集窗格中，选择**群集大小**在左侧菜单中，然后在群集大小窗格上，键入辅助角色节点数，并选择保存。|  
 
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
-    
-* 若要通过 [Azure 门户](https://portal.azure.com)缩放群集，请打开 HDInsight 群集的窗格，在左侧菜单中选择“缩放群集”，然后在“缩放群集”窗格中键入工作节点数并选择“保存”。
-
-    ![缩放群集](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![缩放群集](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
 使用以下任一方法可在几分钟之内扩展或缩放 HDInsight 群集。
+
+> [!IMPORTANT]  
+> * Aure 经典 CLI 已弃用，仅应该用于经典部署模型。 对于所有其他部署，使用[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。  
+> * 不推荐使用的 PowerShell AzureRM 模块。  请使用[Az 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0)只要有可能。
 
 ## <a name="scaling-impacts-on-running-jobs"></a>缩放对运行的作业的影响
 
@@ -53,9 +53,10 @@ HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点�
 若要查看挂起的和正在运行的作业列表，可以遵循以下步骤使用 YARN ResourceManager UI：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中，依次选择“浏览”、“HDInsight 群集”和自己的群集。
-3. 在 HDInsight 群集窗格中，选择顶部菜单中的“仪表板”打开 Ambari UI。 输入群集登录凭据。
-4. 在左侧菜单中的服务列表内单击“YARN”。 在“YARN”页上选择“快速链接”，将鼠标悬停在活动头节点上，然后单击“ResourceManager UI”。
+2. 从左侧导航到**所有服务** > **Analytics** > **HDInsight 群集**，然后选择你的群集。
+3. 从主视图中，导航到**群集仪表板** > **Ambari 家庭**。 输入群集登录凭据。
+4. 从 Ambari UI 中，选择**YARN**上的左侧菜单上的服务列表。  
+5. 从 YARN 页中，选择**快速链接**并将鼠标悬停在活动头节点，然后选择**ResourceManager UI**。
 
     ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 
@@ -97,13 +98,11 @@ yarn application -kill "application_1499348398273_0003"
 
 ## <a name="hdinsight-name-node-stays-in-safe-mode-after-scaling-down"></a>执行缩减操作后，HDInsight 名称节点会停留安全模式
 
-![缩放群集](./media/hdinsight-scaling-best-practices/scale-cluster.png)
-
-如果将群集缩减到最少量的（一个）工作节点（如上图所示），则 Apache HDFS 可能会在工作节点由于修补而重新启动时停滞在安全模式，或者在执行缩放操作后立即发生这种情况。
+如果将群集缩减到一个辅助角色节点的最小值，Apache HDFS 可能会停滞在安全模式下时由于修补，或者在缩放操作后立即重新启动辅助角色节点。
 
 发生此问题的主要原因是 Hive 使用一些 `scratchdir` 文件，并且默认预期每个块有三个副本，但是，如果缩减到最少量的（一个）工作节点，则只会有一个副本。 因此，`scratchdir` 中的文件复制数量不足。 在完成缩放操作后重启服务时，这可能导致 HDFS 保留在安全模式。
 
-在尝试缩减时，HDInsight 依赖于 Apache Ambari 管理接口来先解除额外的多余工作节点，以将其 HDFS 块复制到其他联机工作节点，然后安全缩减群集。 HDFS 在维护时段进入安全模式，在完成缩放后应会退出此模式。 此时，HDFS 可能会停滞在安全模式。
+在一个纵向缩减尝试情况下，HDInsight 依赖于 Apache Ambari 管理接口，以便首先解除授权额外的多余工作节点，以将其 HDFS 块复制到其他联机工作节点，然后安全缩减群集。 HDFS 在维护时段进入安全模式，在完成缩放后应会退出此模式。 此时，HDFS 可能会停滞在安全模式。
 
 HDFS 是使用 `dfs.replication`设置 3 配置的。 因此，每当联机工作节点数少于三个时，scratch 文件块的复制数据就会不足，因为预期会为每个文件块提供三个副本。
 
@@ -245,7 +244,7 @@ The filesystem under path '/tmp/hive/hive' is CORRUPT
 
 ![NameNode 块的运行状况](./media/hdinsight-scaling-best-practices/ambari-hdfs-crit.png)
 
-若到清理 scratch 文件以消除块复制错误，请通过 SSH 连接到每个头节点并运行以下命令：
+若要清理 scratch 文件删除块复制错误，请通过 ssh 连接到每个头节点并运行以下命令：
 
 ```
 hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/

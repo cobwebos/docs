@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric - 使用 Log Analytics 设置性能监视 | Microsoft Docs
+title: Azure Service Fabric-使用 Azure 监视器的性能监视日志 |Microsoft Docs
 description: 了解如何设置 Log Analytics 代理以监视 Azure Service Fabric 群集的容器和性能计数器。
 services: service-fabric
 documentationcenter: .net
@@ -14,19 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: da7ae9c77d7bb94f1d06cf5fdb48149775c93201
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: HT
+ms.openlocfilehash: 6562156432a86c346a0fee382af50f210e3cf6dc
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333797"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308510"
 ---
-# <a name="performance-monitoring-with-log-analytics"></a>使用 Log Analytics 设置性能监视
+# <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志的性能监视
 
 本文介绍如何逐步将 Log Analytics 代理作为虚拟机规模集扩展添加到群集并将其连接到现有的 Azure Log Analytics 工作区。 这可收集关于容器、应用程序和性能监视的诊断数据。 通过将其作为扩展添加到虚拟机规模集资源，Azure 资源管理器可确保它安装在每个节点上，即使在缩放群集时也是如此。
 
 > [!NOTE]
-> 本文假定已设置了 Azure Log Analytics 工作区。 如果尚未设置，请转到[设置 Azure Log Analytics](service-fabric-diagnostics-oms-setup.md)
+> 本文假定已设置了 Azure Log Analytics 工作区。 如果不这样做，请转到[设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>通过 Azure CLI 添加代理扩展
 
@@ -34,16 +36,16 @@ ms.locfileid: "52333797"
 
 1. 请求 Cloud Shell 之后，请确保在资源所在的订阅中工作。 请使用 `az account show` 进行检查，并确保“名称”值与群集订阅的值匹配。
 
-2. 在门户中，导航到 Log Analytics 工作区所在的资源组。 单击进入 Log Analytics 资源（资源类型为 Log Analytics）。 进入资源概述页后，单击左侧菜单中“设置”部分下面的“高级设置”。
+2. 在门户中，导航到 Log Analytics 工作区所在的资源组。 单击进入 log analytics 资源 （资源类型为 Log Analytics 工作区）。 进入资源概述页后，单击左侧菜单中“设置”部分下面的“高级设置”。
 
-    ![Log Analytics 属性页](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
- 
+    ![Log analytics 属性页](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
+
 3. 若要建立 Windows 群集，请单击“Windows 服务器”；若要创建 Linux 群集，请单击“Linux 服务器”。 此页将显示 `workspace ID` 和 `workspace key`（在门户中列为“主键”）。 下一步骤需要使用这两个值。
 
 4. 使用 Cloud Shell 中的 `vmss extension set` API 运行命令，将 Log Analytics 代理安装到群集中：
 
     对于 Windows 群集：
-    
+
     ```sh
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
@@ -57,7 +59,7 @@ ms.locfileid: "52333797"
     以下示例展示如何将 Log Analytics 代理添加到 Windows 群集。
 
     ![Log Analytics 代理 cli 命令](media/service-fabric-diagnostics-oms-agent/cli-command.png)
- 
+
 5. 15 分钟内即可将代理成功添加到节点上。 可使用 `az vmss extension list` API 验证是否已添加代理：
 
     ```sh
@@ -72,7 +74,7 @@ ms.locfileid: "52333797"
 
 ## <a name="view-performance-counters"></a>查看性能计数器
 
-添加 Log Analytics 代理后，请转到 Log Analytics 门户，选择要收集的性能计数器。 
+添加 Log Analytics 代理后，请转到 Log Analytics 门户，选择要收集的性能计数器。
 
 1. 在 Azure 门户中，转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**。
 
@@ -90,7 +92,7 @@ ms.locfileid: "52333797"
 
 8. 将看到每个已启用的解决方案的图形形式的磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
 
-9. 将会看到一些带有有关操作通道和 Reliable Services 事件的图形的磁贴。 已选择的计数器的流入数据的图形表示形式将会显示在“节点指标”下。 
+9. 将会看到一些带有有关操作通道和 Reliable Services 事件的图形的磁贴。 已选择的计数器的流入数据的图形表示形式将会显示在“节点指标”下。
 
 10. 单击“容器指标”图形可了解更多详细信息。 还可以使用 Kusto 查询语言，像查询群集事件一样查询性能计数器数据，以及基于节点、性能计数器名称和值进行筛选。
 
@@ -99,5 +101,5 @@ ms.locfileid: "52333797"
 ## <a name="next-steps"></a>后续步骤
 
 * 收集相关[性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 若要配置 Log Analytics 代理以收集特定性能计数器，请查看[配置数据源](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)。
-* 配置 Log Analytics，设置[自动警报](../log-analytics/log-analytics-alerts.md)，以辅助检测和诊断
-* 作为替代方法，可以通过 [Azure 诊断扩展收集性能计数器并将其发送到 Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)
+* 配置 Azure Monitor 日志来设置[自动警报](../log-analytics/log-analytics-alerts.md)以辅助检测和诊断
+* 作为替代方法，可以通过 [Azure 诊断扩展收集性能计数器并将其发送到 Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

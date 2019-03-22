@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 完成组成员或用户对应用程序进行访问的访问评审 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 中针对有权访问应用程序的组成员或用户完成访问评审。
+title: 完成访问评审的组或 Azure AD 访问评审中的应用程序 |Microsoft Docs
+description: 了解如何完成访问评审的组成员或在 Azure AD 访问评审中的应用程序访问。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2da3b7f8b7ed60344978fb255696980ec620fd2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: cc5dbee47bd6a621b14b39858132ce229663481b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192262"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729604"
 ---
-# <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>在 Azure AD 中完成组成员或用户对应用程序进行访问的访问评审
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>完成访问评审的组或 Azure AD 访问评审中的应用程序
 
-管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](create-access-review.md)。 Azure AD 会自动向评审者发送一封电子邮件，提示他们评审访问权限。 如果用户未收到电子邮件，可以向他们发送[评审访问权限](perform-access-review.md)中的说明。 （注意，被指定为评审者但尚未接受邀请的来宾不会收到来自访问评审的电子邮件，因为他们在评审前必须先接受邀请。）访问评审期限结束后，或者管理员停止了访问评审后，请遵循本文中的步骤查看并应用结果。
+管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](create-access-review.md)。 Azure AD 会自动向评审者发送一封电子邮件，提示他们评审访问权限。 如果用户未收到一封电子邮件，您可以向他们发送说明[评审为组或应用程序的访问权限](perform-access-review.md)。 （注意，被指定为评审者但尚未接受邀请的来宾不会收到来自访问评审的电子邮件，因为他们在评审前必须先接受邀请。）访问评审期限结束后，或者管理员停止了访问评审后，请遵循本文中的步骤查看并应用结果。
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>在 Azure 门户中查看访问评审
 
@@ -62,5 +62,5 @@ ms.locfileid: "56192262"
 - [使用 Azure AD 访问评审管理用户访问权限](manage-user-access-with-access-reviews.md)
 - [使用 Azure AD 访问评审管理来宾访问权限](manage-guest-access-with-access-reviews.md)
 - [管理 Azure AD 访问评审的计划和控制措施](manage-programs-controls.md)
-- [创建对组成员的访问评审或对应用程序的访问](create-access-review.md)
+- [创建组或应用程序的访问评审](create-access-review.md)
 - [针对充当 Azure AD 管理角色的用户创建访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)

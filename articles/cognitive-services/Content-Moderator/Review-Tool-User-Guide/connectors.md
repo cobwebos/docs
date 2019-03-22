@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5e56579a856f7b6259acddcbe34f2e5361505cb5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 3ee582e2541e4eb55e5ea1424782df132ecf3575
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217605"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116548"
 ---
 # <a name="connect-to-other-cognitive-services"></a>连接到其他认知服务
 
@@ -33,27 +33,27 @@ ms.locfileid: "55217605"
 
 定义工作流前，请先确保拥有要使用的连接器 API 的有效凭据：
 
-1.  在“审阅”工具仪表板上，依次选择“设置” > “连接器”。
+1. 在“审阅”工具仪表板上，依次选择“设置” > “连接器”。
 
-  ![在内容审查器中选择“连接器”](images/connectors-2.png)
+   ![在内容审查器中选择“连接器”](images/connectors-2.png)
 
-2.  选择要验证其凭据的连接器旁边的“编辑”符号。
+2. 选择要验证其凭据的连接器旁边的“编辑”符号。
 
-  ![在内容审查器中选择“编辑”符号](images/connectors-3.png)
+   ![在内容审查器中选择“编辑”符号](images/connectors-3.png)
 
-3.  此时，订阅密钥显示。 如果执行任何编辑，请在完成后选择“保存”。
+3. 此时，订阅密钥显示。 如果执行任何编辑，请在完成后选择“保存”。
 
-  ![内容审查器中的“编辑连接器”页](images/connectors-4-1.png)
+   ![内容审查器中的“编辑连接器”页](images/connectors-4-1.png)
  
 ## <a name="add-a-connector"></a>添加连接器
 
-1.  必须有订阅密钥，才能添加连接器。 在“审阅”工具仪表板上，依次选择“设置” > “凭据”。 选择并复制“Ocp-Admin-Subscription-Key”框中的值。
+1. 必须有订阅密钥，才能添加连接器。 在“审阅”工具仪表板上，依次选择“设置” > “凭据”。 选择并复制“Ocp-Admin-Subscription-Key”框中的值。
 
-2.  选择“连接器”。 选择“审阅”工具仪表板上显示的可用连接器之一。 然后，选择“连接”。 
+2. 选择“连接器”。 选择“审阅”工具仪表板上显示的可用连接器之一。 然后，选择“连接”。 
 
-  ![内容审查器中的“添加连接器”页](images/connectors-5.png)
+   ![内容审查器中的“添加连接器”页](images/connectors-5.png)
 
-3.  在“Ocp-Admin-Subscription-Key”框中，粘贴所复制的密钥。 然后选择“保存”。
+3. 在“Ocp-Admin-Subscription-Key”框中，粘贴所复制的密钥。 然后选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

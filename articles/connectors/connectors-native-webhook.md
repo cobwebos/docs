@@ -11,12 +11,12 @@ ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
-ms.openlocfilehash: 7b1886321ca4afd4b4710bd9fddf16d2d5eb224b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: c0985df445ae34795d5287144d4664755cc006da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126581"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182109"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>使用 Webhook 和 Azure 逻辑应用创建基于事件的工作流或操作
 
@@ -29,9 +29,9 @@ ms.locfileid: "43126581"
 
 ## <a name="use-the-webhook-trigger"></a>使用 Webhook 触发器
 
-[触发器](connectors-overview.md)是一个会启动逻辑应用工作流的事件。 Webhook 触发器是基于事件的，不依赖针对新项的轮询。 同[请求触发器](connectors-native-reqres.md)一样，会在事件发生时触发逻辑应用。 Webhook 触发器会向一个服务注册回调 URL，并根据需要使用该 URL 触发逻辑应用。
+[触发器](connectors-overview.md)是一个会启动逻辑应用工作流的事件。 Webhook 触发器是基于事件的这不依赖于轮询新项目。 当使用 webhook 触发器保存逻辑应用或逻辑应用从禁用到更改时启用 webhook 触发器*订阅*到指定的服务或通过注册的终结点*回调 URL*与该服务或终结点。 然后，该触发器使用该 URL 来根据需要运行逻辑应用。 像[请求触发器](connectors-native-reqres.md)，立即预期的事件发生时，会触发逻辑应用。 触发器*取消订阅*如果删除的触发器并保存逻辑应用，或者当您更改为已禁用已启用从逻辑应用。
 
-以下示例演示如何在逻辑应用设计器中设置 HTTP 触发器。 这些步骤假设之前已部署或正在访问遵循[逻辑应用中的 webhook 订阅和取消订阅模式](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)的 API。 每当使用新 Webhook 保存逻辑应用或将逻辑应用从禁用切换到启用时，都进行订阅调用。 删除和保存逻辑应用 webhook 触发器或将其从启用切换为禁用时，进行取消订阅调用。
+以下示例演示如何在逻辑应用设计器中设置 HTTP 触发器。 这些步骤假设之前已部署或正在访问遵循[逻辑应用中的 webhook 订阅和取消订阅模式](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)的 API。 
 
 **添加 Webhook 触发器**
 
@@ -48,9 +48,15 @@ ms.locfileid: "43126581"
 
 ## <a name="use-the-webhook-action"></a>使用 Webhook 操作
 
-[操作](connectors-overview.md)是指在逻辑应用中定义的工作流所执行的操作。 webhook 操作会将*回调 URL* 注册到服务，并在恢复前等待该 URL 被调用。 [“发送批准电子邮件”](connectors-create-api-office365-outlook.md)是遵循此模式的连接器示例。 可通过 Webhook 操作将此模式扩展到任何服务中。 
+[*操作*](connectors-overview.md)是一种定义操作和逻辑应用的工作流运行。 逻辑应用的 webhook 操作，该操作的运行时*订阅*到指定的服务或通过注册的终结点*回调 URL*与该服务或终结点。 Webhook 操作然后等待，直到服务调用逻辑应用继续运行之前的 URL。 逻辑应用从服务或终结点在这些情况下取消订阅： 
 
-以下示例演示如何在逻辑应用设计器中设置 webhook 操作。 这些步骤假设之前已部署或正在访问遵循[逻辑应用中使用的 webhook 订阅和取消订阅模式](../logic-apps/logic-apps-create-api-app.md#webhook-actions)的 API。 逻辑应用执行 webhook 操作时，进行订阅调用。 在等待响应时或在逻辑应用超时之前取消运行时，进行取消订阅调用。
+* Webhook 操作成功完成
+* 如果等待响应时取消逻辑应用运行
+* 之前的逻辑应用超时
+
+例如， [**发送审批电子邮件**](connectors-create-api-office365-outlook.md)操作是采用这种模式的 webhook 操作的示例。 可通过 Webhook 操作将此模式扩展到任何服务中。 
+
+以下示例演示如何在逻辑应用设计器中设置 webhook 操作。 这些步骤假设之前已部署或正在访问遵循[逻辑应用中使用的 webhook 订阅和取消订阅模式](../logic-apps/logic-apps-create-api-app.md#webhook-actions)的 API。 
 
 **添加 webhook 操作**
 
@@ -76,7 +82,7 @@ ms.locfileid: "43126581"
 
 ## <a name="webhook-triggers"></a>Webhook 触发器
 
-| 操作 | Description |
+| 操作 | 描述 |
 | --- | --- |
 | HTTP Webhook |将回调 URL 订阅到可调用该 URL 的服务以按需触发逻辑应用。 |
 
@@ -87,7 +93,7 @@ ms.locfileid: "43126581"
 将回调 URL 订阅到可调用该 URL 的服务以按需触发逻辑应用。
 \* 表示必填字段。
 
-| 显示名称 | 属性名称 | Description |
+| 显示名称 | 属性名称 | 描述 |
 | --- | --- | --- |
 | 订阅方法* |方法 |要用于订阅请求的 HTTP 方法 |
 | 订阅 URI* |uri |要用于订阅请求的 HTTP URI |
@@ -104,7 +110,7 @@ ms.locfileid: "43126581"
 
 Webhook 请求
 
-| 属性名称 | 数据类型 | Description |
+| 属性名称 | 数据类型 | 描述 |
 | --- | --- | --- |
 | 标头 |对象 |Webhook 请求标头 |
 | Body |对象 |Webhook 请求对象 |
@@ -112,7 +118,7 @@ Webhook 请求
 
 ## <a name="webhook-actions"></a>Webhook 操作
 
-| 操作 | Description |
+| 操作 | 描述 |
 | --- | --- |
 | HTTP Webhook |将回调 URL 订阅到可调用该 URL 的服务以按需恢复工作流步骤。 |
 
@@ -123,7 +129,7 @@ Webhook 请求
 将回调 URL 订阅到可调用该 URL 的服务以按需恢复工作流步骤。
 \* 表示必填字段。
 
-| 显示名称 | 属性名称 | Description |
+| 显示名称 | 属性名称 | 描述 |
 | --- | --- | --- |
 | 订阅方法* |方法 |要用于订阅请求的 HTTP 方法 |
 | 订阅 URI* |uri |要用于订阅请求的 HTTP URI |
@@ -140,7 +146,7 @@ Webhook 请求
 
 Webhook 请求
 
-| 属性名称 | 数据类型 | Description |
+| 属性名称 | 数据类型 | 描述 |
 | --- | --- | --- |
 | 标头 |对象 |Webhook 请求标头 |
 | Body |对象 |Webhook 请求对象 |

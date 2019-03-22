@@ -4,16 +4,16 @@ description: 使用 REST API 将 Azure 资源的自定义指标发送到 Azure M
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: ed810726a0709c80034412eba437c05e76f65758
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: c7ec3ba960929250f2d23d09b9a5ab06e3f6cd38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460373"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095409"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
 
@@ -78,13 +78,13 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
     ``` 
 
 1. 在命令提示符窗口中，发布指标数据： 
-    - **azureRegion**。 必须与你要为其发布指标的资源的部署区域相匹配。 
-    - **resourceID**。  你要跟踪其指标的 Azure 资源的资源 ID。  
-    - **AccessToken**。 粘贴你之前获取的令牌。
+   - **azureRegion**。 必须与你要为其发布指标的资源的部署区域相匹配。 
+   - **resourceID**。  你要跟踪其指标的 Azure 资源的资源 ID。  
+   - **AccessToken**。 粘贴你之前获取的令牌。
 
-    ```Shell 
-    curl -X POST curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
-    ```
+     ```Shell 
+     curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
+     ```
 1. 更改 JSON 文件中的时间戳和值。 
 1. 多次重复前两个步骤，以便获得几分钟的数据。
 

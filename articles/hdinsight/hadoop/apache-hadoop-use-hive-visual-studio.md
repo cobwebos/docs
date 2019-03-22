@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: ae2b06f266ef19d9558511284ba94c77cdca1955
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: HT
+ms.openlocfilehash: 5cc079a5e6d78269d2df9f13dc8ccf8d026163e4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202259"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
 
@@ -75,7 +75,7 @@ ms.locfileid: "53409677"
 
    ![“提交”栏](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
 
-4. “Hive 作业摘要”会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
+4. “Hive 作业摘要”将会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
 
    ![作业摘要，显示已完成的作业](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "53409677"
 
 有关适用于 Visual Studio 的 HDInsight 工具的详细信息：
 
-* [Visual Studio 的 HDInsight 工具入门](apache-hadoop-visual-studio-tools-get-started.md)
+* [用于 Visual Studio 的 HDInsight 工具入门](apache-hadoop-visual-studio-tools-get-started.md)
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
@@ -136,7 +136,6 @@ ms.locfileid: "53409677"
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 
 
 

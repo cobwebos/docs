@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 7f864c90b8279f315fc0dbe96f41bfd03be7cebc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 8c9fba14bd3f7d3b55a245f8e647f0eae1f8ef83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883357"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118419"
 ---
 # <a name="configure-application-insights-profiler"></a>配置 Application Insights Profiler
 
@@ -111,11 +111,11 @@ ms.locfileid: "55883357"
     ![更改并保存 App Insights][change-and-save-appinsights]
 
 1. 返回到应用服务的“应用设置”窗格，确保设置了以下值：
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**：替换为 Application Insights 的正确检测密钥。
-    * **APPINSIGHTS_PORTALINFO**：ASP.NET 
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**：1.0.0
+   * **APPINSIGHTS_INSTRUMENTATIONKEY**：替换为 Application Insights 的正确检测密钥。
+   * **APPINSIGHTS_PORTALINFO**：ASP.NET 
+   * **APPINSIGHTS_PROFILERFEATURE_VERSION**：1.0.0
 
-    ![Profiler 的应用设置][app-settings-for-profiler]
+     ![Profiler 的应用设置][app-settings-for-profiler]
 
 1. （可选）选择“扩展”，然后检查扩展版本并确定更新是否可用。
 

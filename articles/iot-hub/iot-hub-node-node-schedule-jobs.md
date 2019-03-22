@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure IoT 中心安排作业 (Node) | Microsoft Docs
 description: 如何安排 Azure IoT 中心作业对多台设备调用直接方法。 使用 Azure IoT SDK for Node.js 实现模拟设备应用以及用于运行作业的服务应用。
-author: juanjperez
-manager: cberlin
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.author: juanpere
-ms.openlocfilehash: a0614b5a1eadafe78537a4793d2dc0a866337487
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.openlocfilehash: 5f0198581c83522f42a6742a0578adfd6c0cb781
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118874"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535727"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>计划和广播作业 (Node)
 
@@ -245,7 +245,7 @@ scheduleJobService.js，它调用模拟设备应用中的直接方法，并通�
 ## <a name="run-the-applications"></a>运行应用程序
 现在，已准备就绪，可以运行应用程序了。
 
-1. 在 **simDevice** 文件夹的命令提示符处，运行以下命令以开始侦听重新启动直接方法。
+1. 在 simDevice 文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
    
     ```
     node simDevice.js
@@ -255,7 +255,7 @@ scheduleJobService.js，它调用模拟设备应用中的直接方法，并通�
     ```
     node scheduleJobService.js
     ```
-3. 可在控制台查看对直接方法的设备响应。
+3. 可以在控制台中看到设备对直接方法的响应。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，使用了作业来安排用于设备的直接方法以及设备孪生属性的更新。
@@ -273,4 +273,4 @@ scheduleJobService.js，它调用模拟设备应用中的直接方法，并通�
 [lnk-fwupdate]: tutorial-firmware-update.md
 [lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

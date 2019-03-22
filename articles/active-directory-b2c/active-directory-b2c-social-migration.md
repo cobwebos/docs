@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4d4acecbbb90fff7865902a3371d282f1d402374
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662884"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089346"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C：迁移具有社交标识的用户
 计划将标识提供者迁移到 Azure AD B2C 时，可能还需要迁移具有社交标识的用户。 本文介绍如何将现有社交标识帐户（例如：Facebook、LinkedIn、Microsoft 和 Google 帐户）迁移到 Azure AD B2C。 本文也适用于联合标识，但这种迁移不太常见。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本文是“用户迁移”一文的延续，重点介绍社交标识迁移。 在开始之前，请阅读[用户迁移](active-directory-b2c-user-migration.md)。
 
 ## <a name="social-identities-migration-introduction"></a>社交标识迁移简介
@@ -32,14 +32,14 @@ ms.locfileid: "55662884"
 * **将本地帐户与社交标识相结合**。 如前所述，本地帐户登录名和社交帐户标识存储在不同的属性中。 `signInNames` 用于本地帐户，`userIdentities` 用于社交帐户。 单个 Azure AD B2C 帐户可以只是本地帐户、只是社交帐户，也可以在一条用户记录中结合本地帐户和社交标识。 此行为允许你管理单个帐户，而用户可以使用本地帐户凭据或社交标识登录。
 
 * `UserIdentity` 类型 - 包含 Azure AD B2C 租户中社交帐户用户的标识信息：
-    * `issuer` - 颁发用户标识符的标识提供者的字符串表示形式，例如 facebook.com。
-    * `issuerUserId` - 社交标识提供者使用的唯一用户标识符，采用 base64 格式。
+  * `issuer` - 颁发用户标识符的标识提供者的字符串表示形式，例如 facebook.com。
+  * `issuerUserId` - 社交标识提供者使用的唯一用户标识符，采用 base64 格式。
 
     ```JSON
     "userIdentities": [{
-            "issuer": "Facebook.com",
-            "issuerUserId": "MTIzNDU2Nzg5MA=="
-        }
+          "issuer": "Facebook.com",
+          "issuerUserId": "MTIzNDU2Nzg5MA=="
+      }
     ]
     ```
 
@@ -139,7 +139,7 @@ ms.locfileid: "55662884"
 1. 使用某个社交帐户登录
 2. 复制 JWT 令牌中的 `sub` 值。 `sub` 通常包含用户在 Azure AD B2C 中的对象 ID。 或者在 Azure 门户中打开该用户的属性，并复制对象 ID。
 3. 打开 [Azure AD 图形资源管理器](https://graphexplorer.azurewebsites.net)
-4. 使用管理员帐户登录。 N
+4. 使用管理员帐户登录。
 5. 运行以下 GET 请求。 将 userObjectId 替换为复制的用户 ID。 **GET** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 6. 在从 Azure AD B2C 返回的 JSON 中找到 `userIdentities` 元素。
 7. [可选] 可能还需要解码 `issuerUserId` 值。

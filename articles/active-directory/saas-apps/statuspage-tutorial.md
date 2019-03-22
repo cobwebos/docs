@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 912bc9fea7b721b9a74198572bbf916ee0ebe6cd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4494996ed54b25be71367dd3e3043023d0958074
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007106"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>教程：Azure Active Directory 与 StatusPage 集成
 
@@ -158,15 +158,15 @@ ms.locfileid: "58007106"
 
 1. 在“SSO 设置”页上，执行以下步骤：
    
-     ![配置单一登录](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
+      ![配置单一登录](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-     ![配置单一登录](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
+      ![配置单一登录](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
-     a. 在“SSO 目标 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+      a. 在“SSO 目标 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
-     b. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“证书”文本框中。 
+      b. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“证书”文本框中。 
 
-     c. 单击“保存配置”。
+      c. 单击“保存配置”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)

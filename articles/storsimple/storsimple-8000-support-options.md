@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 9137e52af16f63efe7f0b8169f2693a354564968
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-ms.translationtype: HT
+ms.openlocfilehash: c83326212dc84348a04d54f04348a6c4c7699bde
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36264432"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875883"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple 解决方案支持
 
@@ -42,7 +42,7 @@ Microsoft 为 StorSimple 企业存储客户提供灵活的支持选项。 我们
 | Azure 门户票证提交                                                                          | ✓                                                                               | ✓                                                                              |
 | 在线支持门户访问                                                                            | ✓                                                                               | ✓                                                                              |
 | 警报预配和管理                                                                       | ✓                                                                               | ✓                                                                              |
-| 支持人员初始响应时间 全天候支持票证提交 <br> 基于严重性的初始响应时间 <sup>2 | 严重性 A：在 2 小时内 <br> 严重性 B：在 4 小时内 <br> 严重性 C：在 8 小时内 | 严重性 A：在 60 分钟内 <br> 严重性 B：在 2 小时内 <br> 严重性 C：在 4 小时内 |
+| 支持人员初始响应时间 全天候支持票证提交 <br> 基于严重性的初始响应时间 <sup>2 | 严重性 a:在 2 小时内 <br> 严重性 b:在 4 小时内 <br> 严重性 c:在 8 小时内 | 严重性 a:在 60 分钟内 <br> 严重性 b:在 2 小时内 <br> 严重性 c:在 4 小时内 |
 | 电话支持（回电）                                                                               | ✓                                                                               | ✓                                                                              |
 | 高级更换部件（仅限 StorSimple 8000 系列）<sup>3</sup>                                              | 下一个工作日 <sup>4                                                              | 在 4 小时内                                                                 |
 | 现场服务工程师（仅限 StorSimple 8000 系列）<sup>3</sup>                                         | 不可用                                                                   | 在 4 小时内                                                                 |
@@ -60,13 +60,13 @@ Microsoft 为 StorSimple 企业存储客户提供灵活的支持选项。 我们
 
 <sup>2</sup> 严重性的定义如下： 
 
-* 严重性 A：服务出现重大损失或降级
+* 严重性 a:重大损失或降级服务
 
 
-* 严重性 B：出现中等损失或降级，但工作在受损的情况下可继续进行
+* 严重性 b:中等损失或降级，但工作仍可以继续受损
 
 
-* 严重性 C：基本运行正常，对系统功能影响很小或没有影响
+* 严重性 c:基本运行正常，一些服务障碍或无障碍对系统功能
 
     如果客户无法提供足够资源或做出适当响应来使 Microsoft 继续处理问题，则 Microsoft 可能降低严重性 A 事例的严重性级别。 预期响应时间依据如下：针对严重性 A 提供全天候英语支持，针对严重性 B 和严重性 C，提供当地营业时间支持。 
 
@@ -81,7 +81,7 @@ Microsoft 为 StorSimple 企业存储客户提供灵活的支持选项。 我们
 请注意，如果支持合同已过期，根据合同已过期的时间长短，可能在续订过程完成后，你的部件至多需要三周才能发送，因为在你的合同处理前，本地库存位置不会为你的设备贮备更换部件。
 
 ## <a name="local-language-support"></a>本地语言支持
-除英语外，营业时间内还提供以下语言的本地支持：日语、韩语、闽南语和繁体中文。
+除英语外，本地语言支持是在营业时间提供了以下语言版本：日语、 朝鲜语，中国台湾，和繁体中文。
 
 ## <a name="support-scope"></a>支持范围 
 对计费和订阅管理相关问题的支持在所有支持级别都可用。 为收到 StorSimple 支持，客户必须主动注册 StorSimple 标准或高级支持计划。 StorSimple 支持团队将负责解决影响 StorSimple 解决方案的所有问题。 为收到不与 StorSimple 直接相关的 Azure 相关问题，客户需要注册相应的 Azure 支持计划。 请参阅[此处](https://azure.microsoft.com/support/plans/)了解详细信息。 支持团队参考 Azure 团队的非 StorSimple 支持案例，以便根据客户的 Azure 授权进行跟进。 
@@ -95,7 +95,7 @@ Microsoft 为 StorSimple 企业存储客户提供灵活的支持选项。 我们
  
 <sup>1 </sup> 如果客户无法提供足够资源或做出适当响应来使 Microsoft 继续处理问题，则 Microsoft 可能降低严重性 A 事例的严重性级别。
 
-<sup>2</sup> 各预期响应时间依据如下：针对严重级别 A 提供全天候英语支持；针对严重级别 B 和 C 提供当地营业时间支持；其余本地语言（日语、闽南语、繁体中文和韩语）提供当地营业时间支持。
+<sup>2</sup>预期响应时间基于 24x7 全天候英语支持严重性 A 和当地营业时间内的严重级别 B 和 C，并且在其余本地语言支持，当地营业时间：日语、 繁体中文、 繁体中文和朝鲜语。
 
 ## <a name="cancellation-policy"></a>取消策略
 为收到 StorSimple 支持，客户在订阅期限内必须购买标准支持计划或高级支持计划。 取消订阅不会按比例获得退款。 StorSimple 支持计划符合 EA 周年纪念日减价计划资格。 但是，Microsoft 无法在没有有效支持合同的情况下向 StorSimple 客户提供支持。
@@ -119,7 +119,7 @@ StorSimple 8000 系列存储阵列支持根据 StorSimple 阵列的购买方式�
 
 
 
-<text> * 高级支持覆盖范围并不适用于所有位置 *。请在购买 StorSimple 高级支持之前与 Microsoft (SSSupOps@microsoft.com) 联系，了解地理覆盖范围。*
+<text> * 高级支持覆盖范围并不适用于所有位置 *。联系 Microsoft SSSupOps\@microsoft.com 中之前购买 StorSimple 高级支持的地理覆盖范围。*
 
 ** *必须在高级支持覆盖的区域部署 StorSimple 设备，才能符合免费升级到高级 StorSimple 支持的条件。*
 

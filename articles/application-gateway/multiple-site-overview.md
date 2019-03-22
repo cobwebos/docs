@@ -6,12 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/17/2019
 ms.author: amsriva
-ms.openlocfilehash: 5c3fd92b3aa21b749a0c8ff435a1e5c12da4f57d
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 335545f86c9c23feefb6ac21ca9cc5c8fcb5e7fb
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381986"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790606"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 

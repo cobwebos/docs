@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: cb64b96f179bd71c3f885a54b17decb794b40c1a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567377"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994910"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>部署和浏览分片多租户应用程序
 
@@ -47,7 +47,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 可以使用在此初始部署的基础上构建的一系列相关教程。 这些教程探讨了一系列 SaaS 设计和管理模式。 完成教程时，鼓励你逐步执行所提供的脚本，以了解各种 SaaS 模式是如何实现的。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，请确保已完成了以下先决条件：
 
@@ -66,9 +66,9 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 ### <a name="steps"></a>Steps
 
 1. 单击下面的“部署到 Azure”蓝色按钮。
-    - 带有 Wingtip Tickets SaaS 部署模板的 Azure 门户随即打开。
+   - 带有 Wingtip Tickets SaaS 部署模板的 Azure 门户随即打开。
 
-    [![“部署到 Azure”按钮。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+     [![“部署到 Azure”按钮。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. 输入该部署所需的参数值。
 
@@ -125,9 +125,9 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 中心式“事件中心”网页提供特定部署中租户的链接列表。 请执行以下步骤，体验**事件中心**网页和单个的 Web 应用：
 
 1. 在 Web 浏览器中打开“事件中心”：
-    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *（将 &lt;user&gt; 替换为部署的用户值。）*
+   - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *（将 &lt;user&gt; 替换为部署的用户值。）*
 
-    ![事件中心](media/saas-multitenantdb-get-started-deploy/events-hub.png)
+     ![事件中心](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. 单击“活动中心”中的“Fabrikam 爵士乐俱乐部”。
 
@@ -208,7 +208,7 @@ Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShe
 
 现在我们看一些已部署的资源：
 
-1. 在 [Azure 门户](http://portal.azure.com)中，浏览到资源组的列表。 打开你在部署应用程序时创建的资源组。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到资源组的列表。 打开你在部署应用程序时创建的资源组。
 
    ![资源组](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
@@ -275,7 +275,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 -->
 
-[link-aka-ms-deploywtp-mtapp-52k]: http://aka.ms/deploywtp-mtapp
+[link-aka-ms-deploywtp-mtapp-52k]: https://aka.ms/deploywtp-mtapp
 
 
 [link-azure-get-started-powershell-41q]: https://docs.microsoft.com/powershell/azure/get-started-azureps
@@ -286,7 +286,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 <!--  Image references.
 
-[image-deploy-to-azure-blue-48d]: http://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
+[image-deploy-to-azure-blue-48d]: https://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
 -->
 
 [image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "部署到 Azure 所需的按钮。"

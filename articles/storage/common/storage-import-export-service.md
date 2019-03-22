@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e2c770625cf92e0db269d14d2f63dc0c896cbe9c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267506"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58164920"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
@@ -76,7 +76,7 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 > [!NOTE]
 > 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户 
 >
-> 对于国外（在数据中心所在国家/地区外）装运，请共享国际承运人帐户
+> （外部数据中心所在国家/地区） 在国外发货，请共享国际承运人帐户
 
  ![图 1：导入作业流](./media/storage-import-export-service/importjob.png)
 
@@ -106,7 +106,7 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 > [!NOTE]
 > 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户 
 >
-> 对于国外（在数据中心所在国家/地区外）装运，请共享国际承运人帐户
+> （外部数据中心所在国家/地区） 在国外发货，请共享国际承运人帐户
   
  ![图 2：导出作业流](./media/storage-import-export-service/exportjob.png)
 

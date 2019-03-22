@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 03/11/2019
 ms.author: ramamill
-ms.openlocfilehash: fd434ed8d5b625a1a0ed1ff195da0f864a4024b0
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: ba80c8ce57495eaa46e915cb0c472eb4aabcee57
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769417"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863621"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 
@@ -30,7 +30,7 @@ ms.locfileid: "55769417"
 [!INCLUDE [site-recovery-vmware-upgrade -process-server](../../includes/site-recovery-vmware-upgrade-process-server-internal.md)]
 
 > [!NOTE]
-  通常，使用 Azure 库映像在 Azure 中创建用于故障回复的进程服务器时，该进程服务器运行最新的可用版本。 Site Recovery 团队会定期发布修补程序和增强功能，因此我们建议你使进程服务器保持最新。
+>   通常，使用 Azure 库映像在 Azure 中创建用于故障回复的进程服务器时，该进程服务器运行最新的可用版本。 Site Recovery 团队会定期发布修补程序和增强功能，因此我们建议你使进程服务器保持最新。
 
 ## <a name="balance-the-load-on-process-server"></a>均衡进程服务器上的负载
 
@@ -91,23 +91,23 @@ ms.locfileid: "55769417"
 
 1. 登录到进程服务器计算机。 
 2. 打开管理员 PowerShell 命令窗口并运行以下命令：
-  ```powershell
-  $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-  Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
-  net stop obengine
-  net start obengine
-  ```
+   ```powershell
+   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
+   net stop obengine
+   net start obengine
+   ```
 2. 浏览到文件夹 **%PROGRAMDATA%\ASR\Agent**，并运行以下命令：
-  ```
-  cmd
-  cdpcli.exe --registermt
+   ```
+   cmd
+   cdpcli.exe --registermt
 
-  net stop obengine
+   net stop obengine
 
-  net start obengine
+   net start obengine
 
-  exit
-  ```
+   exit
+   ```
 
 
 ## <a name="remove-a-process-server"></a>删除进程服务器

@@ -8,17 +8,17 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: cf7afb50006fb273b4d685f9e4259be1cb60fe4e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327538"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084736"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>通过 Azure 门户安装 Chef 客户端
 可以从 Azure 门户将 Chef 客户端扩展直接添加到 Linux 或 Windows 计算机上。 本文逐步讲解如何使用新 Linux 虚拟机完成该过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "56327538"
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>在新 Linux 虚拟机上安装 Chef 扩展
 在本部分，我们首先使用 Azure 门户来创建 Linux 虚拟机。 在此过程中，我们还会了解如何在新虚拟机上安装 Chef 扩展。
 
-1. 浏览到 [Azure 门户](http://portal.azure.com)。
+1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
 1. 在左侧菜单中，选择“虚拟机”选项。 如果“虚拟机”选项未显示，请依次选择“所有服务”、“虚拟机”。
 
@@ -52,31 +52,31 @@ ms.locfileid: "56327538"
 
 1. 在“基本信息”选项卡上指定以下值，然后选择“确定”。
 
-    - **名称** - 输入新虚拟机的名称。
-    - **VM 磁盘类型** - 指定“SSD”或“HDD”作为存储磁盘类型。 有关 Azure 上的虚拟机磁盘类型的详细信息，请参阅[选择磁盘类型](../virtual-machines/windows/disks-types.md)一文。
-    - **用户名** - 输入在虚拟机上被授予了管理员特权的用户名。
-    - **身份验证类型** - 选择“密码”。 也可以选择“SSH 公钥”并提供 SSH 公钥值。 本演示（以及屏幕截图中）选择了“密码”。
-    - **密码**和**确认密码** - 输入用户的密码。
-    - **使用 Azure Active Directory 登录** - 选择“已禁用”。
-    - **订阅** - 如果有多个 Azure 订阅，请选择所需的订阅。
-    - **资源组** - 输入资源组的名称。
-    - **位置** - 选择“美国东部”。
+   - **名称** - 输入新虚拟机的名称。
+   - **VM 磁盘类型** - 指定“SSD”或“HDD”作为存储磁盘类型。 有关 Azure 上的虚拟机磁盘类型的详细信息，请参阅[选择磁盘类型](../virtual-machines/windows/disks-types.md)一文。
+   - **用户名** - 输入在虚拟机上被授予了管理员特权的用户名。
+   - **身份验证类型** - 选择“密码”。 也可以选择“SSH 公钥”并提供 SSH 公钥值。 本演示（以及屏幕截图中）选择了“密码”。
+   - **密码**和**确认密码** - 输入用户的密码。
+   - **使用 Azure Active Directory 登录** - 选择“已禁用”。
+   - **订阅** - 如果有多个 Azure 订阅，请选择所需的订阅。
+   - **资源组** - 输入资源组的名称。
+   - **位置** - 选择“美国东部”。
 
-    ![用于创建虚拟机的“基本信息”选项卡](./media/chef-extension-portal/add-vm-basics.png)
+     ![用于创建虚拟机的“基本信息”选项卡](./media/chef-extension-portal/add-vm-basics.png)
 
 1. 在“选择大小”选项卡上选择虚拟机的大小，然后选择“选择”。
 
 1. 在“设置”选项卡上，系统已根据在前面选项卡中选择的值填充了大部分字段的值。 选择“扩展”。
 
-    ![扩展将通过“设置”选项卡添加到虚拟机](./media/chef-extension-portal/add-vm-select-extensions.png)
+     ![扩展将通过“设置”选项卡添加到虚拟机](./media/chef-extension-portal/add-vm-select-extensions.png)
 
 1. 在“扩展”选项卡上，选择“添加扩展”。
 
-    ![选择“添加扩展”以将扩展添加到虚拟机](./media/chef-extension-portal/add-vm-add-extension.png)
+     ![选择“添加扩展”以将扩展添加到虚拟机](./media/chef-extension-portal/add-vm-add-extension.png)
 
 1. 在“新建资源”选项卡上，选择“Linux Chef 扩展(1.2.3)”。
 
-    ![Chef 提供适用于 Linux 和 Windows 虚拟机的扩展](./media/chef-extension-portal/select-linux-chef-extension.png)
+     ![Chef 提供适用于 Linux 和 Windows 虚拟机的扩展](./media/chef-extension-portal/select-linux-chef-extension.png)
 
 1. 在“Linux Chef 扩展”选项卡上，选择“创建”。
 
@@ -94,7 +94,7 @@ ms.locfileid: "56327538"
     - **加密数据包机密** - 选择一个文件，其中包含此计算机应有权访问的加密数据包的机密。 这可以保留为空。
     - **Chef 服务器 SSL 证书** - 选择分配给 Chef 服务器的 SSL 证书。 这可以保留为空。
 
-    ![在 Linux 虚拟机上安装 Chef 服务器](./media/chef-extension-portal/install-extension.png)
+      ![在 Linux 虚拟机上安装 Chef 服务器](./media/chef-extension-portal/install-extension.png)
 
 1. 返回到“扩展”选项卡后，选择“确定”。
 

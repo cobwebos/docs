@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5ade3ac7587d4ac5c5a6d8e174e76e76088e4e57
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: bc2e41fd5da4737ea1efe329b70964535daff54a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157935"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105958"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -23,7 +23,7 @@ ms.locfileid: "55157935"
 
 使用构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架，可在用户旅程中与 RESTful API 相集成。 本演练将会介绍 Azure AD B2C 如何与 .NET Framework RESTful 服务 (Web API) 交互。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 使用 Azure AD B2C 可以通过调用 RESTful 服务，将自己的业务逻辑添加到用户旅程中。 标识体验框架在“输入声明”集合中将数据发送到 RESTful 服务，在“输出声明”集合中接收 RESTful 返回的数据。 使用 RESTful 服务集成，可以：
 
 * **验证用户输入数据**：此操作可防止将格式不正确的数据保存到 Azure AD。 如果用户提供的值无效，RESTful 服务会返回错误消息，指示用户提供有效条目。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在。
@@ -53,7 +53,7 @@ ms.locfileid: "55157935"
 * 发回会员号。
 * 将会员号添加到 JSON Web 令牌 (JWT)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
 
 ## <a name="step-1-create-an-aspnet-web-api"></a>步骤 1：创建 ASP.NET Web API
@@ -249,10 +249,10 @@ ms.locfileid: "55157935"
 以下 XML 片段包含具有两个技术配置文件的声明提供程序节点：
 
 * **TechnicalProfile Id="REST-API-SignUp"**：定义 RESTful 服务。
-   * `Proprietary` 描述为基于 RESTful 的提供程序的协议。
-   * `InputClaims` 定义要从 Azure AD B2C 发送到 REST 服务的声明。
+  * `Proprietary` 描述为基于 RESTful 的提供程序的协议。
+  * `InputClaims` 定义要从 Azure AD B2C 发送到 REST 服务的声明。
 
-   在此示例中，声明 `givenName` 的内容作为 `firstName` 发送到 REST 服务，声明 `surname` 的内容作为 `lastName` 发送到 REST 服务，`email` 按原样发送。 `OutputClaims` 元素定义要从 RESTful 服务检索回到 Azure AD B2C 的声明。
+    在此示例中，声明 `givenName` 的内容作为 `firstName` 发送到 REST 服务，声明 `surname` 的内容作为 `lastName` 发送到 REST 服务，`email` 按原样发送。 `OutputClaims` 元素定义要从 RESTful 服务检索回到 Azure AD B2C 的声明。
 
 * **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**：将验证技术配置文件添加到现有技术配置文件（在基本策略中定义）。 在执行注册旅程期间，验证技术配置文件调用上述技术配置文件。 如果 RESTful 服务返回 HTTP 错误 409（冲突错误），会向用户显示错误消息。
 

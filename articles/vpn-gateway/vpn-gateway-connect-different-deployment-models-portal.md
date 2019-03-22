@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417967"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099165"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -25,7 +25,7 @@ ms.locfileid: "56417967"
 > 
 > 
 
-将经典 VNet 连接到 Resource Manager VNet 类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。 可以在位于不同订阅、不同区域中的 VNet 之间创建连接。 还可以连接已连接到本地网络的 VNet，只要它们配置的网关是动态或基于路由的。 有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet常见问题解答](#faq)。 
+将经典 VNet 连接到资源管理器 VNet 类似于将 VNet 连接到本地站点位置。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。 可以在位于不同订阅、不同区域中的 VNet 之间创建连接。 还可以连接已连接到本地网络的 VNet，只要它们配置的网关是动态或基于路由的。 有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet常见问题解答](#faq)。 
 
 如果还没有虚拟网络网关并且不想创建一个，建议你改为考虑使用 VNet 对等互连连接 VNet。 VNet 对等互连不使用 VPN 网关。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
@@ -114,7 +114,7 @@ SKU = VpnGw1 <br>
 1. 在“新建 VPN 连接”页上，选中“立即创建网关”复选框。
 2. 单击“可选网关配置”打开“网关配置”页。
 
-  ![打开网关配置页面](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "打开网关配置页面")
+   ![打开网关配置页面](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "打开网关配置页面")
 3. 单击“子网 - 配置所需设置”，打开“添加子网”页面。 “名称”已配置有所需值：**GatewaySubnet**。
 4. “地址范围”指网关子网的范围。 虽然可以创建具有地址范围 /29（3 个地址）的网关子网，但建议创建包含更多 IP 地址的网关子网。 这可以适应将来可能需要更多可用 IP 地址的配置。 如果可能，请使用 /27 或 /28。 如果使用这些步骤进行练习，可以参考[示例](#values)值。 本示例使用“10.0.0.32/28”。 单击“确定”创建网关子网。
 5. “网关配置”页面上的“大小”指的是网关 SKU。 为 VPN 网关选择网关 SKU。
@@ -192,16 +192,16 @@ SKU = VpnGw1 <br>
 2. 在虚拟网络页面上，单击“概述”。
 3. 在“VPN 连接”部分中，单击图形中本地站点的名称。
 
-  ![VPN 连接](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN 连接")
+   ![VPN 连接](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN 连接")
 4. 在“站点到站点 VPN 连接”页面上，单击站点名称。
 
-  ![站点名称](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "本地站点名称")
+   ![站点名称](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "本地站点名称")
 5. 在本地站点的连接页面上，单击本地站点的名称以打开“本地站点”页面。
 
-  ![打开本地站点](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "打开本地站点")
+   ![打开本地站点](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "打开本地站点")
 6. 在“本地站点”页面上，将 VPN 网关的 IP 地址替换为 Resource Manager 网关的 IP 地址。
 
-  ![网关 IP 地址](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "网关 IP 地址")
+   ![网关 IP 地址](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "网关 IP 地址")
 7. 单击“确定”，更新 IP 地址。
 
 ## <a name="RMtoclassic"></a>第 4 节 - 创建从资源管理器虚拟网络到经典虚拟网络的连接
@@ -216,12 +216,12 @@ SKU = VpnGw1 <br>
 6. 在“添加连接”页面上，为连接命名。 例如，RMtoClassic。
 7. 在此页面上已选择了“站点到站点”。
 8. 选择要与此站点关联的虚拟网络网关。
-9. 创建一个**共享密钥**。 在创建的从经典 VNet 到 Resource Manager VNet 的连接中也将使用该密钥。 可以生成该密钥或者虚构一个密钥。 在我们的示例中，我们使用的是“abc123”，但可以（而且应该）使用更复杂的。
+9. 创建一个**共享密钥**。 在创建的从经典 VNet 到 Resource Manager VNet 的连接中也将使用该密钥。 可以生成该密钥或者虚构一个密钥。 在示例中使用的是“abc123”，但是可以（而且应该）使用更复杂的。
 10. 单击“确定”以创建连接。
 
 ## <a name="classictoRM"></a>第 5 节 - 创建从经典虚拟网络到资源管理器虚拟网络的连接
 
-在以下步骤中，将配置从经典 VNet 到 Resource Manager VNet 的连接。 这些步骤需要 PowerShell。 无法在门户中创建此连接。 请确保已下载并安装了经典 (SM) 和 Resource Manager (RM) PowerShell cmdlet。
+在以下步骤中，将配置从经典 VNet 到 Resource Manager VNet 的连接。 这些步骤需要 PowerShell。 无法在门户中创建此连接。 请确保已下载并安装经典 (SM) 和 Resource Manager (RM) PowerShell cmdlet。
 
 ### <a name="1-connect-to-your-azure-account"></a>1.连接到 Azure 帐户
 
@@ -281,8 +281,8 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 设置共享密钥并创建从经典 VNet 到 Resource Manager VNet 的连接。 无法使用门户设置共享密钥。 使用经典版本的 PowerShell cmdlet 登录时，请确保运行这些步骤。 为此，请使用 Add-AzureAccount。 否则无法设置“-AzureVNetGatewayKey”。
 
 - 在此示例中，**-VNetName** 是在网络配置文件中找到的经典 VNet 的名称。 
-- -LocalNetworkSiteName 是为本地站点指定的名称，与在网络配置文件中找到的一致。
-- **-SharedKey** 是生成并指定的值。 对于此示例，我们使用了 *abc123*，但可以生成更复杂的内容。 重要的是，在此处指定的值必须与创建从 Resource Manager 虚拟网络到经典虚拟网络的连接时指定的值相同。
+- **-LocalNetworkSiteName** 是为本地站点指定的名称，与在网络配置文件中找到的一样。
+- **-SharedKey** 是生成并指定的值。 在此示例中，我们使用的是 *abc123*，但可以生成更复杂的内容。 重要的是，在此处指定的值必须与创建从 Resource Manager 虚拟网络到经典虚拟网络的连接时指定的值相同。
 
 ```powershell
 Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
@@ -291,7 +291,7 @@ Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
 
 ## <a name="verify"></a>第 6 节：验证连接
 
-可使用 Azure 门户或 PowerShell 来验证连接。 验证时，由于正在创建连接，因此可能需要等待一两分钟。 连接成功后，连接状态将从“正在连接”变为“已连接”。
+可使用 Azure 门户或 PowerShell 来验证连接。 验证时，因为正在创建连接，可能需要等待一两分钟。 连接成功后，连接状态将从“正在连接”变为“已连接”。
 
 ### <a name="to-verify-the-connection-from-your-classic-vnet-to-your-resource-manager-vnet"></a>验证从经典 VNet 到 Resource Manager VNet 的连接
 

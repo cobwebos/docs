@@ -15,12 +15,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb89d3eee87c0796bcd21914e719784756bc288e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 22bf80c13ef3b18ab3119b6b35e529c8ad32f504
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165733"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285088"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
 Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、售前、计费和订阅支持。 对于 Microsoft Azure 付费版和试用版订阅，将通过在线服务和电话提供支持。 电话支持和在线计费支持以更多的语言提供。 
@@ -31,7 +31,7 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 
 * 有关面向 IT 专业人员和开发人员的操作指南信息或代码示例等内容，请参阅 [docs.microsoft.com 上的技术文档](https://docs.microsoft.com/azure/active-directory/)。
 
-* [Microsoft 技术社区](https://techcommunity.microsoft.com/)是 IT 专业合作伙伴与客户协作以及分享和学习知识的场所。 [Microsoft 技术社区信息中心](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center)用于发布通告和博客文章、任意提问 (AMA)、与专家互动以及展开其他活动。 你也可以[加入该社区以提交看法](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)。
+* [Microsoft 技术社区](https://techcommunity.microsoft.com/)是为协作、 共享和了解我们 IT 专业合作伙伴和客户的位置。 [Microsoft 技术社区信息中心](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center)用于公告、 博客文章、 请求-我的任何内容 (AMA)、 与专家和的详细信息。 你也可以[加入该社区以提交看法](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)。
 
 
 ## <a name="open-a-support-ticket"></a>开具支持票证
@@ -41,7 +41,7 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>如何在 Azure 门户中开具 Azure AD 相关的支持票证
 
 > [!NOTE]
-> 对于计费或订阅问题，必须使用 [Office 365 管理中心](https://portal.office.com)。
+> 有关计费或订阅问题，必须使用[Microsoft 365 管理中心内](https://admin.microsoft.com)。
 > 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后打开“Azure Active Directory”。
@@ -61,22 +61,20 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 8. 提供联系信息，然后选择“创建”。
   ![问题类别自助屏幕截图](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
-### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-office-365-portal"></a>如何在 Office 365 门户中开具 Azure AD 相关的支持票证
+### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>如何在 Microsoft 365 管理中心内为 Azure AD 开具支持票证
 
 > [!NOTE]
-> Office 365 管理中心内的 Azure AD 支持仅面向管理员。
-> 
+> 支持在 Azure AD [Microsoft 365 管理中心内](https://admin.microsoft.com)提供仅适用于管理员。 
 
-1. 使用拥有企业移动性 + 安全性 (EMS) 许可证的帐户登录到 [Office 365 管理中心](https://portal.office.com)。
+1. 登录到[Microsoft 365 管理中心内](https://admin.microsoft.com)使用具有企业移动性 + 安全性 (EMS) 许可证的帐户。
 
-2. 在“支持”磁贴上，选择“新建服务请求”：![Office 365 门户屏幕截图](./media/active-directory-troubleshooting-support-howto/office-portal.png)
+2. 在“支持”磁贴上，选择“新建服务请求”：
 
-3. 在“支持概述”页上，选择“标识管理”或“用户和域管理”：![Azure AD 支持类别屏幕截图](./media/active-directory-troubleshooting-support-howto/select-identity.png)
+3. 在“支持概述”页上，选择“标识管理”或“用户和域管理”：
 
 4. 对于“功能”，请选择需要获得相关支持的 Azure AD 功能。
 
 5. 对于“症状”，请选择适当的症状，概述问题并提供相关详细信息，然后选择“下一步”。
-  ![功能和症状自助屏幕截图](./media/active-directory-troubleshooting-support-howto/open-service-request.png)
 
 6. 选择提供的自助资源之一，或者选择“是，继续”或“否，取消请求”。
 

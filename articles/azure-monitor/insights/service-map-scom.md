@@ -1,24 +1,24 @@
 ---
 title: 服务映射与 System Center Operations Manager 的集成 | Microsoft 文档
 description: 服务映射是 Azure 中的解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文介绍如何使用服务映射在 Operations Manager 中自动创建分布式应用程序关系图。
-services: monitoring
+services: azure-monitor
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
-ms.author: bwren
-ms.openlocfilehash: 73e27044fc8cc79b2c95471e30bca558bd14d473
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.author: magoedte
+ms.openlocfilehash: 40e6d6ff6ea8748b525642e5507c80590b322b7a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818747"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110097"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>服务映射与 System Center Operations Manager 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "55818747"
 
 通过服务映射与 System Center Operations Manager 的此集成，可以根据服务映射中的动态依赖关系映射，在 Operations Manager 中自动创建分布式应用程序关系图。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * 管理一组服务器的 Operations Manager 管理组（2012 R2 或更高版本）。
 * 已启用服务映射解决方案的 Log Analytics 工作区。
 * 由 Operations Manager 管理并可向服务映射发送数据的一组服务器（至少一台）。 支持 Windows 和 Linux 服务器。
@@ -67,11 +67,11 @@ ms.locfileid: "55818747"
 
     若要在集成中为某个服务器构建分布式应用程序关系图，该服务器必须：
 
-    * 由 Operations Manager 管理
-    * 由服务映射管理
-    * 已列在服务映射服务器组中
+   * 由 Operations Manager 管理
+   * 由服务映射管理
+   * 已列在服务映射服务器组中
 
-    ![Operations Manager 配置组](media/service-map-scom/scom-config-group.png)
+     ![Operations Manager 配置组](media/service-map-scom/scom-config-group.png)
 
 6. 可选：选择要与 Log Analytics 通信的管理服务器资源池，然后单击“添加工作区”。
 

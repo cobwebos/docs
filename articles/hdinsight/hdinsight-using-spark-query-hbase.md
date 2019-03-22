@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 0ba61dc266add48577c3a382465ecb2cec9d2a05
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
-ms.translationtype: HT
+ms.openlocfilehash: 200691f7af16e82d554d0e1e019b6a4e5c75949f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188027"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260122"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "58188027"
 * 两个单独的 HDInsight 群集、 一个 HBase 和一个 Spark 和至少安装了 Spark 2.1 (HDInsight 3.6)。
 * Spark 集群需要按最低延迟直接与 HBase 集群进行通信，因此推荐的配置是将两个集群都部署在同一个虚拟网络中。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
-* [URI 方案](/hdinsight-hadoop-linux-information#URI-and-scheme.md)群集主存储。 这将是 wasb: / / Azure Blob 存储，abfs: / / 用于 Azure 数据湖存储第 2 代或 adl: / / 用于 Azure 数据湖存储 Gen1。 如果为 Blob 存储或数据湖存储第 2 代启用了安全传输，则 URI 将为 wasbs: / / 或 abfss: / / 分别另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)群集主存储。 这将是 wasb: / / Azure Blob 存储，abfs: / / 用于 Azure 数据湖存储第 2 代或 adl: / / 用于 Azure 数据湖存储 Gen1。 如果为 Blob 存储或数据湖存储第 2 代启用了安全传输，则 URI 将为 wasbs: / / 或 abfss: / / 分别另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 
 ## <a name="overall-process"></a>整体进程

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee936d174aa3e221bbeb0823ba1503c7cb64a9d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: f5a0700a63d21d089573f757716e08fb03665b28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185156"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164988"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>教程：Azure Active Directory 与 IQNavigator VMS 集成
 
@@ -34,12 +34,12 @@ ms.locfileid: "56185156"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 IQNavigator VMS 的集成，需要以下项：
 
 - Azure AD 订阅
-- 已启用 IQNavigator VMS 单一登录的订阅
+- IQNavigator VMS 单一登录已启用的订阅
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -91,7 +91,7 @@ ms.locfileid: "56185156"
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 IQNavigator VMS 测试用户](#creating-a-iqnavigator-vms-test-user) - 在 IQNavigator VMS 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+1. **[创建 IQNavigator VMS 测试用户](#creating-a-iqnavigator-vms-test-user)** -Britta Simon 的对应在 IQNavigator VMS 中链接到用户的 Azure AD 表示形式。
 1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -175,7 +175,7 @@ ms.locfileid: "56185156"
 
     d. 单击“创建”。
 
-### <a name="creating-a-iqnavigator-vms-test-user"></a>创建 IQNavigator VMS 测试用户
+### <a name="creating-an-iqnavigator-vms-test-user"></a>创建 IQNavigator VMS 测试用户
 
 本部分的目的是在 IQNavigator VMS 中创建名为“Britta Simon”的用户。 请与 [IQNavigator VMS 支持团队](https://www.beeline.com/iqn-product-support/)协作，将用户添加到 IQNavigator VMS 帐户中。
 

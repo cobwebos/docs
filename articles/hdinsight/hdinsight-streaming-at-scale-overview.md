@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 01db1de5c6b533c346ce35c8474d996213873d10
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
-ms.translationtype: HT
+ms.openlocfilehash: fd2614c258aff146397e24e688eae18d84d3cfa6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002189"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201154"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大规模流式处理
 
-实时大数据解决方案可以处理动态数据。 通常，这些数据在抵达时的作用最大。 如果传入的数据流比当时可处理的大小更大，则可能需要限制资源。 或者，可以按需添加节点，根据流式处理解决方案的需要纵向扩展 HDInsight 群集。
+实时大数据解决方案可以处理在移动的数据。 通常，这些数据在抵达时的作用最大。 如果传入的数据流比当时可处理的大小更大，则可能需要限制资源。 或者，可以按需添加节点，根据流式处理解决方案的需要纵向扩展 HDInsight 群集。
 
 
 在流式处理应用程序中，一个或多个数据源会生成事件（有时达到每秒几百万个事件），此时，需要在不丢弃任何有用信息的情况下快速引入这些事件。 [Apache Kafka](kafka/apache-kafka-introduction.md) 或[事件中心](https://azure.microsoft.com/services/event-hubs/)等服务使用流缓冲（也称为事件队列）来处理传入的事件。 收集事件后，可以使用流处理层中的实时分析系统（例如 [Apache Storm](storm/apache-storm-overview.md) 或 [Apache Spark Streaming](spark/apache-spark-streaming-overview.md)）来分析数据。 处理的数据可存储在长期存储系统（例如 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)）中，并实时显示在商业智能仪表板（例如 [Power BI](https://powerbi.microsoft.com)、Tableau）或自定义的网页上。
@@ -45,7 +45,7 @@ Spark Streaming 是 Spark 的一个扩展，可让你重复使用执行批处理
 
 ## <a name="scaling-a-cluster"></a>缩放群集
 
-尽管可以在创建过程中指定群集中的节点数，但可能需要扩展或缩减群集才能匹配工作负荷。 所有 HDInsight 群集允许[更改群集中的节点数](hdinsight-administer-use-management-portal.md#scale-clusters)。 由于所有数据都存储在 Azure 存储或 Data Lake Storage 中，因此可以在不丢失数据的情况下删除 Spark 群集。
+尽管可以在创建过程中指定群集中的节点数，但可能需要扩展或缩减群集才能匹配工作负荷。 所有 HDInsight 群集允许[更改群集中的节点数](hdinsight-administer-use-portal-linux.md#scale-clusters)。 由于所有数据都存储在 Azure 存储或 Data Lake Storage 中，因此可以在不丢失数据的情况下删除 Spark 群集。
 
 分离技术可以带来优势。 例如，Kafka 是一种事件缓冲技术，因此它的 IO 开销极高，但不需要大量的处理能力。 相比之下，Spark Streaming 等流处理器是计算密集型的，需要更强大的 VM。 将这些技术分离到不同的群集后，可以单独缩放每个群集，同时充分利用 VM。
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 204898026dc55e7111d3810d4938101ffaddc3f9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 4d7f3c8d8efbdc658e4f7621a0606cb7fd92c88d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698320"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103479"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso 迁移：将本地 Linux 应用重新托管到 Azure VM
 
@@ -109,7 +109,7 @@ Contoso 将按如下所述完成迁移：
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | 该服务协调和管理 Azure VM、本地 VM 与物理服务器的迁移和灾难恢复。  | 在复制到 Azure 的过程中，会产生 Azure 存储费用。  故障转移时会创建 Azure VM，因此会产生费用。 [详细了解](https://azure.microsoft.com/pricing/details/site-recovery/)费用和定价。
 
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 对于此方案，Contoso 需具备以下项。
 
@@ -314,17 +314,17 @@ Contoso 管理员现在配置目标复制设置。
 
 3. 选择“OSTICKETWEB”VM 进行复制。 
 
-    - 在此阶段，他们仅选择了“OSTICKETWEB”，因为必须选择 VNet 和子网，而 VM 不在同一子网中。
-    - 为 VM 启用复制后，Site Recovery 会自动安装移动服务。
+   - 在此阶段，他们仅选择了“OSTICKETWEB”，因为必须选择 VNet 和子网，而 VM 不在同一子网中。
+   - 为 VM 启用复制后，Site Recovery 会自动安装移动服务。
 
-    ![启用复制](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
+     ![启用复制](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
 
 4. 在 VM 属性中，他们选择了进程服务器在计算机上自动安装移动服务时使用的帐户。
 
      ![移动服务](./media/contoso-migration-rehost-linux-vm/linux-mobility.png)
 
 5. 在“复制设置” > “配置复制设置”中，检查是否已应用正确的复制策略，然后选择“启用复制”。
-6.  在“作业”中跟踪复制进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
+6. 在“作业”中跟踪复制进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
 
 
 
@@ -408,7 +408,7 @@ Contoso 管理员现已准备好根据恢复计划运行故障转移，以迁移
 
 ### <a name="connect-the-vm-to-the-database"></a>将 VM 连接到数据库
 
-在迁移过程的最后，Contoso 管理员更新应用程序的连接字符串，使其指向 **OSTICKETMYSQL** VM 上运行的应用数据库。 
+作为迁移过程的最后一步，Contoso 管理员更新为指向上运行的应用程序数据库的应用程序的连接字符串**OSTICKETMYSQL** VM。 
 
 1. Contoso 使用 Putty 或其他 SSH 客户端来与 **OSTICKETWEB** VM 建立 SSH 连接。 由于 VM 为专用，因此，他们使用专用 IP 地址进行连接。
 

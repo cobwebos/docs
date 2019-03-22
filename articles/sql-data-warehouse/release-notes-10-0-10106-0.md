@@ -10,12 +10,12 @@ author: mlee3gsd
 ms.author: anumjs
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 2de7c335e56117f2a99db5150575ed94616467e9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 0b0d302dcd86f18eef6bf7600dd93878d0d9bd99
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455579"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902682"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 本文汇总了 [Azure SQL 数据仓库](sql-data-warehouse-overview-what-is.md)的最新版本中的新功能和改进。 本文还列出了不与此版本直接相关但在同一时间范围内发布的值得注意的内容更新。 有关对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)
@@ -44,7 +44,7 @@ ms.locfileid: "56455579"
 - [博客 - Azure SQL 数据仓库](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [客户顾问团队博客](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
 - [客户成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
-- [堆栈溢出论坛](http://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Stackoverflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)
 - [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Azure 词汇表](../azure-glossary-cloud-terminology.md)

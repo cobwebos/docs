@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 0dcb769627714be9da55faf2a8e82c8750789498
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: b34ab417ab1d9ef77c3141d5aa130c338fb89188
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038844"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726322"
 ---
 # <a name="azure-front-door-service---http-headers-protocol-support"></a>Azure Front Door 服务 - HTTP 头协议支持
 本文档简要介绍了 Azure Front Door 服务支持用于调用路径各部分的协议，如下图所示。 下面的部分详细介绍了 Front Door 所支持的 HTTP 头。
@@ -28,8 +28,7 @@ ms.locfileid: "47038844"
 
 ## <a name="1-client-to-front-door"></a>1.客户端到 Front Door
 Front Door 接受来自传入请求的大多数标头（不修改它们），但是，如果发送了一些保留标头，则会将这些标头从传入请求中删除。 这包括具有以下前缀的标头：
- - X-FD*
- - X-MS*
+ - X-FD-*
 
 ## <a name="2-front-door-to-backend"></a>2.Front Door 到后端
 
@@ -37,9 +36,14 @@ Front Door 将包括来自传入请求的标头，除非这些标头由于上述
 
 | 标头  | 示例和说明 |
 | ------------- | ------------- |
-| X-MS-Ref |  *X-MS-Ref: 0WrHgWgAAAACFupORp/8MS6vxhG/WUvawV1NURURHRTAzMjEARWRnZQ==* </br> 这是一个唯一的引用字符串，用于标识 Front Door 处理的请求。 它对于故障排除至关重要，因为它用于搜索访问日志。|
-| X-MS-RequestChain |  *X-MS-RequestChain: hops=1* </br> 这是 Front Door 用于检测请求循环的标头，用户不应该依赖它。 |
-| X-MS-Via |  *X-MS-Via: Azure* </br> 这是 Front Door 添加的标头，用于指示 Azure/Front Door 是客户端和后端之间请求的中间接收者。 |
+| Via |  *通过：1.1 Azure* </br> 第一道防线添加 Azure 的值为跟通过标头的客户端的 HTTP 版本。 这添加以指示客户端的 HTTP 版本和该 Azure 的第一道防线是请求客户端和后端之间的中间收件人。  |
+| X-Azure-ClientIP | *X-Azure-ClientIP:127.0.0.1* </br> 表示与处理的请求关联的"客户端"Internet 协议地址。 例如，来自代理的请求可能会添加 X-转发-对于标头以指示原始调用方的 IP 地址。 |
+| X-Azure-SocketIP |  *X-Azure-SocketIP:127.0.0.1* </br> 表示与 TCP 连接，源自当前请求关联的套接字 Internet 协议地址。 请求的客户端 IP 地址不可能等于其套接字的 IP 地址，因为被最终用户可以随意覆盖。|
+| X-Azure-Ref |  *X-Azure-Ref:0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 这是一个唯一的引用字符串，用于标识 Front Door 处理的请求。 它对于故障排除至关重要，因为它用于搜索访问日志。|
+| X-Azure-RequestChain |  *X-Azure-RequestChain： 跃点 = 1* </br> 这是 Front Door 用于检测请求循环的标头，用户不应该依赖它。 |
+| X-Forwarded-For | *X-转发-对于：127.0.0.1* </br> X-Forwarded-For (XFF) HTTP 标头字段是用于标识连接到 web 服务器通过 HTTP 代理服务器或负载均衡器的客户端的原始 IP 地址的常见方法。 如果没有现有 XFF 标头，则第一道防线追加到其他客户端套接字 IP 添加具有客户端套接字 IP 的 XFF 标头。 |
+| X-Forwarded-Host | *X 转发主机： contoso.azurefd.net* </br> X 转发主机 HTTP 标头字段是用于标识原始请求的主机 HTTP 请求标头中的客户端，因为来自第一道防线的主机名可能不同的处理请求的后端服务器的主机的常见方法。 |
+| X-Forwarded-Proto | *X 转发 Proto: http* </br> X 转发 Proto HTTP 标头字段是用于标识 HTTP 请求的原始协议，因为根据配置，第一道防线可能与后端使用 HTTPS，即使对反向代理的请求是 HTTP 进行通信的常见方法。 |
 
 ## <a name="3-front-door-to-client"></a>3.Front Door 到客户端
 
@@ -47,7 +51,7 @@ Front Door 将包括来自传入请求的标头，除非这些标头由于上述
 
 | 标头  | 示例 |
 | ------------- | ------------- |
-| X-MS-Ref |  *X-MS-Ref: 0WrHgWgAAAACFupORp/8MS6vxhG/WUvawV1NURURHRTAzMjEARWRnZQ==* </br> 这是一个唯一的引用字符串，用于标识 Front Door 处理的请求。 它对于故障排除至关重要，因为它用于搜索访问日志。|
+| X-Azure-Ref |  *X-Azure-Ref:0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 这是一个唯一的引用字符串，用于标识 Front Door 处理的请求。 它对于故障排除至关重要，因为它用于搜索访问日志。|
 
 ## <a name="next-steps"></a>后续步骤
 

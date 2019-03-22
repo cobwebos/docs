@@ -16,12 +16,12 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f4eab44a55574f84f29488e78cd60522d7a52eb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6f2e5674413cb4057187b7573fde0bcd8899caab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171190"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905165"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
@@ -31,7 +31,7 @@ ms.locfileid: "56171190"
 
 针对 Azure AD 和 Azure 资源角色从 PIM 发送的电子邮件具有以下发件人电子邮件地址：
 
-- 电子邮件地址：**azure-noreply@microsoft.com**
+- 电子邮件地址： **azure noreply\@microsoft.com**
 - 显示名称：Microsoft Azure
 
 这些电子邮件在主题行中包括 PIM 前缀。 下面是一个示例：
@@ -68,7 +68,7 @@ Azure AD 角色的 PIM 摘要电子邮件将发送给启用了 PIM 的特权角�
 
 电子邮件包括四个磁贴：
 
-| 磁贴 | 说明 |
+| 磁贴 | 描述 |
 | --- | --- |
 | **已激活的用户** | 用户在租户内激活其符合条件角色的次数。 |
 | **永久用户** | 用户符合资格的分配被设定为永久分配的次数。 |

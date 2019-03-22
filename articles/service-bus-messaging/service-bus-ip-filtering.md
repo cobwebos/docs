@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a8d29e7cae20c37adfeccaef01e1625b6ab3e0d0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 52475a3976ef8897ffed07c499eb06e7476c0156
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852671"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136287"
 ---
 # <a name="use-firewall-rules"></a>使用防火墙规则
 
@@ -60,7 +60,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络和防火墙规则
 
 > [!IMPORTANT]
-> 虚拟网络仅在服务总线的“高级”层中受支持。
+> 仅在支持防火墙和虚拟网络**高级**层的服务总线。
 
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
 

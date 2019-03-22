@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82ccfe6a8d77926d2b908f84db600b0665565d51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 257f7b66163b72141ceb6405768e912a263fb14b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173885"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124212"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -133,8 +133,9 @@ Azure AD 中的应用程序有两种表示形式：
 * 阻止用户自行许可应用程序：
   1. 在 Azure 门户中，转到[企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)下的“用户设置”部分。
   2. 将**用户可以自行许可访问公司数据的应用**设置为**否**。 
-      > [!NOTE]
-      > 如果决定关闭用户许可，则必须由管理员许可用户需要使用的任何新应用程序。    
+     
+     > [!NOTE]
+     > 如果决定关闭用户许可，则必须由管理员许可用户需要使用的任何新应用程序。    
 * 阻止用户注册其自己的应用程序：
   1. 在 Azure 门户中，转到“Azure Active Directory”下的[用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)部分
   2. 将**用户可以注册应用程序**更改为**否**。

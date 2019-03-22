@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: d0008c19ed96f731f7b57c5d8aa41cd9f128bc20
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58165894"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Informix 连接器入门
 Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix 数据库中的资源。 Informix 连接器包括要在 TCP/IP 网络上与远程 Informix 服务器计算机通信的 Microsoft 客户端。 这包括云数据库（如在 Azure 虚拟化中运行的 Windows IBM Informix）和使用本地数据网关的本地数据库。 请参阅 IBM Informix 平台和版本（在本主题中）的[受支持列表](connectors-create-api-informix.md#supported-informix-platforms-and-versions)。
@@ -47,7 +47,7 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 ## <a name="list-tables"></a>列出表
 为任何操作创建逻辑应用包含通过 Microsoft Azure 门户执行的许多步骤。
 
-在逻辑应用内，可添加在 Informix 数据库中列出表的操作。 该操作指示连接器处理 Informix 架构语句（如 `CALL SYSIBM.SQLTABLES`）。
+在逻辑应用中，可以将操作添加在 Informix 数据库中列出表。 该操作指示连接器处理 Informix 架构语句，如`CALL SYSIBM.SQLTABLES`。
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
@@ -80,7 +80,7 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
 ## <a name="create-the-connections"></a>创建连接
 此连接器支持使用以下连接属性连接到本地数据库和云中。 
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 | --- | --- |
 | server |必需。 接受表示 TCP/IP 地址或别名的字符串值，该地址或别名采用 IPv4 或 IPv6 格式，后跟（冒号分隔）TCP/IP 端口号。 |
 | database |必需。 接受表示 DRDA 相关数据库名称 (RDBNAM) 的字符串值。 Informix 接受 128 个字节字符串（数据库称为 IBM Informix 数据库名称 (dbname)）。 |
@@ -154,7 +154,7 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
 
 ## <a name="add-one-row-using-insert"></a>使用 INSERT 添加一行
-可创建逻辑应用操作，在 Informix 表中添加一行。 该操作指示连接器处理 Informix INSERT 语句（如 `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`）。
+可以创建逻辑应用操作，在 Informix 表中添加一行。 该操作指示连接器处理 Informix INSERT 语句，如`INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`。
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
@@ -181,7 +181,7 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
 
 ## <a name="fetch-one-row-using-select"></a>使用 SELECT 获取一行
-可创建逻辑应用操作，在 Informix 表中提取一行。 该操作指示连接器处理 Informix SELECT WHERE 语句（如 `SELECT FROM AREA WHERE AREAID = '99999'`）。
+可以创建一个逻辑应用操作，获取 Informix 表中的一行。 该操作指示连接器处理 Informix SELECT WHERE 语句，如`SELECT FROM AREA WHERE AREAID = '99999'`。
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
@@ -209,7 +209,7 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
 
 ## <a name="change-one-row-using-update"></a>使用 UPDATE 更改一行
-可创建逻辑应用操作，在 Informix 表中更改一行。 该操作指示连接器处理 Informix UPDATE 语句（如 `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`）。
+可以创建逻辑应用操作，在 Informix 表中更改一行。 该操作指示连接器处理 Informix UPDATE 语句，如`UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`。
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
@@ -236,7 +236,7 @@ Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix �
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
 
 ## <a name="remove-one-row-using-delete"></a>使用 DELETE 删除一行
-可创建逻辑应用操作，在 Informix 表中删除一行。 该操作指示连接器处理 Informix DELETE 语句（如 `DELETE FROM AREA WHERE AREAID = '99999'`）。
+可以创建逻辑应用操作，在 Informix 表中删除一行。 该操作指示连接器处理 Informix DELETE 语句，如`DELETE FROM AREA WHERE AREAID = '99999'`。
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。

@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 52a441d5d8f3f44b35253e02786a033da5439597
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269850"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871632"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor 日志查询入门
 
 
 > [!NOTE]
-> 在完成本教程之前，应当先完成 [Azure Monitor Log Analytics 入门](get-started-portal.md)。
+> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)之前完成本教程。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-在本教程中，你将学习编写 Azure Monitor 日志查询。 具体内容包括：
+在本教程中您将了解如何编写 Azure Monitor 日志查询。 具体内容包括：
 
 - 了解查询的结构
 - 将查询结果排序
@@ -108,7 +108,7 @@ SecurityEvent
 
 编写筛选器条件时，可使用以下表达式：
 
-| 表达式 | 说明 | 示例 |
+| 表达式 | 描述 | 示例 |
 |:---|:---|:---|
 | == | 检查相等性<br>（区分大小写） | `Level == 8` |
 | =~ | 检查相等性<br>（不区分大小写） | `EventSourceName =~ "microsoft-windows-security-auditing"` |

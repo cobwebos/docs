@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: dcfe744cc8ca6f3b3cd201898a79fcce3f24f8d5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: HT
+ms.openlocfilehash: c21fa3cf819f48dcda46f2d444ed52bc2eb9ae3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638868"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113514"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
@@ -44,33 +44,33 @@ ms.locfileid: "49638868"
 
 在 Azure CLI 中使用以下步骤生成 SAS URI。
 
-1.  下载并安装 [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)。  版本适用于 Windows、macOS，以及 Linux 的各种分发版。 
-2.  创建一个 PowerShell 文件（扩展名为 `.ps1`），在其中复制以下代码，然后在本地保存该文件。
+1. 下载并安装 [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)。  版本适用于 Windows、macOS，以及 Linux 的各种分发版。 
+2. 创建一个 PowerShell 文件（扩展名为 `.ps1`），在其中复制以下代码，然后在本地保存该文件。
 
-    ``` powershell
-    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
-    ```
+   ``` powershell
+   az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
+   ```
     
-3.  编辑该文件以提供以下参数值。  应以 UTC 日期时间格式提供日期，例如 `10-25-2016T00:00:00Z`。
-    - `<account-name>` - Azure 存储帐户名称
-    - `<account-key>` - Azure 存储帐户密钥
-    - `<vhd-name>` - VHD 名称
-    - `<start-date>` - VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。 
-    - `<expiry-date>` - VHD 访问权限的过期日期。  请提供自当前日期开始算起的至少三周后的日期。 
+3. 编辑该文件以提供以下参数值。  应以 UTC 日期时间格式提供日期，例如 `10-25-2016T00:00:00Z`。
+   - `<account-name>` - Azure 存储帐户名称
+   - `<account-key>` - Azure 存储帐户密钥
+   - `<vhd-name>` - VHD 名称
+   - `<start-date>` - VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。 
+   - `<expiry-date>` - VHD 访问权限的过期日期。  请提供自当前日期开始算起的至少三周后的日期。 
  
-    以下示例显示了（在撰写本文时）正确的参数值。
+   以下示例显示了（在撰写本文时）正确的参数值。
 
-    ``` powershell
-        az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
-    ```
+   ``` powershell
+       az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
+   ```
  
 4. 保存对此 PowerShell 脚本所做的更改。
 5. 使用管理特权运行此脚本，以生成容器级访问权限的 SAS 连接字符串。  可以使用两种基本方法：
-    - 从控制台运行脚本。  例如，在 Windows 中，右键单击该脚本并选择“以管理员身份运行”。
-    - 使用管理特权从某个 PowerShell 脚本编辑器（例如 [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)）运行脚本。 
-  以下示例演示了在此编辑器中生成的 SAS 连接字符串。 
+   - 从控制台运行脚本。  例如，在 Windows 中，右键单击该脚本并选择“以管理员身份运行”。
+   - 使用管理特权从某个 PowerShell 脚本编辑器（例如 [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)）运行脚本。 
+     以下示例演示了在此编辑器中生成的 SAS 连接字符串。 
 
-    ![在 PowerShell ISE 中生成 SAS URI](./media/publishvm_032.png)
+     ![在 PowerShell ISE 中生成 SAS URI](./media/publishvm_032.png)
 
 6. 复制生成的 SAS 连接字符串，并将其保存到位于安全位置的某个文本文件。  稍后将要编辑此字符串，以便在其中添加关联的 VHD 位置信息来创建最终的 SAS URI。 
 7. 在 Azure 门户中，导航到包含与新生成 URI 关联的 VHD 的 Blob 存储。
@@ -102,11 +102,11 @@ ms.locfileid: "49638868"
     ![在 Azure 资源管理器中获取 SAS 项](./media/publishvm_034.png)
 
 6. 此时会显示“共享访问签名”对话框。 输入以下字段的值：
-    - **开始时间** - VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。
-    - **过期时间** - VHD 访问权限的过期日期。  请提供自当前日期开始算起的至少三周后的日期。
-    - **权限** - 选择 `Read` 和 `List` 权限。 
+   - **开始时间** - VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。
+   - **过期时间** - VHD 访问权限的过期日期。  请提供自当前日期开始算起的至少三周后的日期。
+   - **权限** - 选择 `Read` 和 `List` 权限。 
 
-    ![Azure 资源管理器中的 SAS 对话框](./media/publishvm_035.png)
+     ![Azure 资源管理器中的 SAS 对话框](./media/publishvm_035.png)
 
 7. 单击“创建”以创建与此 VHD 关联的 SAS URI。  现在，该对话框会显示有关此操作的详细信息。 
 8. 复制“URL”值，并将其保存到位于安全位置的某个文本文件。 

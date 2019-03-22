@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 8fc85f82e5b6290a0f7401581e57b77473a495ae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 770a494e93a51fc018b2bfe803ac15ba543f35d4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011349"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>启用 Azure 存储度量值并查看度量值数据
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -95,7 +95,7 @@ properties.DefaultServiceVersion = "2015-04-05";
 blobClient.SetServiceProperties(properties);
 ```
 
-## <a name="viewing-storage-metrics"></a>查看存储度量值
+## <a name="viewing-storage-metrics"></a>查看存储指标
 在将存储分析度量值配置为监视存储帐户后，存储分析将使用存储帐户在一组已知表中记录度量值。 可以将图表配置为每小时查看 [Azure 门户](https://portal.azure.com)中的指标：
 
 1. 导航到 [Azure 门户](https://portal.azure.com)中的存储帐户。
@@ -113,13 +113,13 @@ blobClient.SetServiceProperties(properties);
 有关可用工具的列表，请参阅 [Azure 存储客户端工具](storage-explorers.md)。
 
 > [!NOTE]
-> 从 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/) 0.8.0 版本开始，可以查看和下载分析度量表。
+> 从 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/) 0.8.0 版本开始，可以查看和下载分析度量表。
 >
 >
 
 要以编程方式访问分析表，请注意如果存储帐户中列出这些表，将不显示它们。 可按名称直接访问它们，也可使用 .NET 客户端库中的 [CloudAnalyticsClient API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) 查询表名。
 
-### <a name="hourly-metrics"></a>每小时度量值
+### <a name="hourly-metrics"></a>小时指标
 * $MetricsHourPrimaryTransactionsBlob
 * $MetricsHourPrimaryTransactionsTable
 * $MetricsHourPrimaryTransactionsQueue
@@ -138,8 +138,8 @@ blobClient.SetServiceProperties(properties);
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
 | 20140522T1100 |user;All |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
 | 20140522T1100 |user;QueryEntities |2014-05-22T11:01:16.7640250Z |5 |5 |2694 |45951 |100 |143.8 |7.8 |100 |
-| 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
-| 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
+| 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |第 |第 |538 |633 |100 |3 |3 |100 |
+| 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |第 |第 |771 |217 |100 |9 |6 |100 |
 
 在这个分钟度量值数据示例中，分区键按分钟使用时间。 行键可识别行中所存储信息的类型。 行键由两条信息（即访问类型和请求类型）组成：
 

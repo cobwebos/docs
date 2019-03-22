@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f0002c6aa98aaaddf50e4aac8929e8ddd379fd8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: eba4c70a25cba2e456ed418a98b938f2029c4c1f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301666"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438357"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -116,7 +116,7 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 创建时序见解即用即付环境时，会创建两个资源：时序见解环境，以及用于存储数据的 Azure 存储常规用途 V1 帐户。 我们已选择将 Azure 存储常规用途 V1 用作默认资源，由于它在互操作性、价格和性能方面具有优势。 
 
-时序见解在 Azure 存储帐户中发布每个事件的最多两个副本。 初始副本始终会保留，使你能够使用其他服务对它进行高性能的查询。 可以基于原始 Parquet 文件对时序 ID 轻松使用 Spark、Hadoop 和其他熟悉的工具，因为这些引擎支持基本的文件名筛选。 按年份和月份将 Blob 分组，是列出自定义作业特定时间范围内的 Blob 的有效方式。 
+时序见解在 Azure 存储帐户中发布每个事件的最多两个副本。 初始复制始终会保留，以便您可以通过使用其他服务快速查询。 可以基于原始 Parquet 文件对时序 ID 轻松使用 Spark、Hadoop 和其他熟悉的工具，因为这些引擎支持基本的文件名筛选。 按年份和月份将 Blob 分组，是列出自定义作业特定时间范围内的 Blob 的有效方式。 
 
 此外，时序见解可将 Parquet 文件重新分区，以优化时序见解 API。 还会保存最近重新分区的文件。
 

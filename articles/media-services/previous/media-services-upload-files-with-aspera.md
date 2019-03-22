@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 179be5df8013d4e79eca473036d1a09875cbcc61
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 28b6732745947043847ce944243bc87398e159fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865903"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892141"
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>使用 Azure 上的 Aspera Server On-Demand 服务将文件上传到媒体服务帐户 
 
@@ -37,7 +37,7 @@ ms.locfileid: "56865903"
 >使用 Azure 媒体服务媒体处理器 (MP) 进行处理时，支持的最大文件大小有限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
 >
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 要完成本教程，需要：
 
@@ -73,7 +73,7 @@ ms.locfileid: "56865903"
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera006.png)
 
-7. Azure 仪表板将告知正在预配该服务。  完成预配后，可通过在资源中搜索服务的名称来找到新订阅。 找到该服务后，双击它启动服务管理门户。
+7. Azure 仪表板会告知正在预配该服务。  完成预配后，可通过在资源中搜索服务的名称来找到新订阅。 找到该服务后，双击它启动服务管理门户。
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera007.png)
 
@@ -89,44 +89,44 @@ ms.locfileid: "56865903"
 
     以下屏幕截图显示了如何创建访问凭据。 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
 
     以下屏幕截图显示了门户中的使用情况报告界面。 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
 
 ## <a name="upload-files-with-aspera"></a>使用 Aspera 上传文件
 
 1. 下载并安装 Aspera 客户端软件：
     
-    * [浏览器插件](http://downloads.asperasoft.com/connect2/)
-    * [富客户端](http://downloads.asperasoft.com/en/downloads/2)
+    * [浏览器插件](https://downloads.asperasoft.com/connect2/)
+    * [富客户端](https://downloads.asperasoft.com/en/downloads/2)
 
 2. 进行首次传输。 若要在 Aspera 客户端中使用 Aspera 传输服务来传输文件，需要完成以下任务： 
 
-    1. 使用 Aspera 门户创建访问密钥。  
-    2. 下载、安装 Aspera 客户端并购买其许可证（可在 Aspera 门户中找到软件）。  
+   1. 使用 Aspera 门户创建访问密钥。  
+   2. 下载、安装 Aspera 客户端并购买其许可证（可在 Aspera 门户中找到软件）。  
 
-    >[!NOTE]
-    >有关配置信息，请阅读 Aspera 客户端指南。
+      >[!NOTE]
+      >有关配置信息，请阅读 Aspera 客户端指南。
     
-    3. 使用 [Azure 门户](https://portal.azure.com/)检索与 Azure 媒体帐户关联的存储帐户的某些信息。 具体而言，请检查帐户名称和密钥，以及要将内容存放到的存储 Blob 容器名称。 
+   3. 使用 [Azure 门户](https://portal.azure.com/)检索与 Azure 媒体帐户关联的存储帐户的某些信息。 具体而言，请检查帐户名称和密钥，以及要将内容存放到的存储 Blob 容器名称。 
 
-        * 要从门户获取存储信息，请找到存储帐户，单击“访问密钥”，并复制帐户的名称和密钥。
-        * 要获取容器名称，请找到你的存储帐户，选择“Blob”，并选择要将内容上载到的容器的名称。 
+       * 要从门户获取存储信息，请找到存储帐户，单击“访问密钥”，并复制帐户的名称和密钥。
+       * 要获取容器名称，请找到你的存储帐户，选择“Blob”，并选择要将内容上载到的容器的名称。 
 
-    下面是 Aspera 客户端“连接管理器”的屏幕截图，必须在其中指定“Azure”存储类型和凭据以及 Blob 容器。
+      下面是 Aspera 客户端“连接管理器”的屏幕截图，必须在其中指定“Azure”存储类型和凭据以及 Blob 容器。
 
-    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
+      ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
 ## <a name="resources"></a>资源
 
 本文涉及以下资源。 
 
-* [连接浏览器插件](http://downloads.asperasoft.com/connect2/)
-* [连接指南](http://downloads.asperasoft.com/en/documentation/8)
-* [Aspera 客户端](http://downloads.asperasoft.com/en/downloads/2)
-* [客户端指南](http://downloads.asperasoft.com/en/documentation/2)
+* [连接浏览器插件](https://downloads.asperasoft.com/connect2/)
+* [连接指南](https://downloads.asperasoft.com/en/documentation/8)
+* [Aspera 客户端](https://downloads.asperasoft.com/en/downloads/2)
+* [客户端指南](https://downloads.asperasoft.com/en/documentation/2)
 
 ## <a name="next-steps"></a>后续步骤
 

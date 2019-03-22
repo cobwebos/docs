@@ -3,17 +3,17 @@ title: Azure Maps 中的地理围栏 GeoJSON 数据格式 | Microsoft Docs
 description: 了解 Azure Maps 中的地理围栏 GeoJSON 数据格式
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/15/2018
+ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5a654b7fdae341da62d94499830a5e1202dff921
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 6f76eea365311cd6c10dd39054187bf3a07bd595
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339628"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568985"
 ---
 # <a name="geofencing-geojson-data"></a>地理围栏 GeoJSON 数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "56339628"
 * `expiredTime` 是地理围栏数据的过期日期和时间。 如果请求中 `userTime` 的值晚于此值，则将相应的地理围栏数据视为过期的数据，且不会查询这些数据。 基于这一点，此地理围栏数据的 geometryId 将包含在地理围栏响应中的 `expiredGeofenceGeometryId` 数组内。
 * `validityPeriod` 是地理围栏有效时段的列表。 如果请求中 `userTime` 的值超出有效时段，则将相应的地理围栏数据视为无效，且不会查询这些数据。 此地理围栏数据的 geometryId 包含在地理围栏响应中的 `invalidPeriodGeofenceGeometryId` 数组内。 下表显示了 validityPeriod 元素的属性。
 
-| Name | Type | 必选  | 说明 |
+| 名称 | Type | 需要  | 描述 |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datetime  | true | 有效时段的开始日期时间。 |
 | endTime   | Datetime  | true |  有效时段的结束日期时间。 |

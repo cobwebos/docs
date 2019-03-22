@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 53ddea5426d2adfa7b0ddfcbda3375efae8d0859
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250800"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845182"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>在 Azure 上预配深度学习虚拟机 
 
@@ -49,10 +49,10 @@ DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（
 > [!NOTE]
 > DLVM 支持所有 NC 和 ND 系列 GPU VM 实例。 预配 DLVM 时，必须在 Azure 中选择一个具有 GPU 的位置。 在 [Azure 产品（按区域）](https://azure.microsoft.com/regions/services/)页中查看是否有可用位置，并在“计算”下查找 **NC 系列**、**NCv2 系列**、**NCv3 系列**或 **ND 系列**。 
 
-   2. **设置**：选择 NC 系列（NC、NCv2、NCv3）或 ND 系列中满足功能要求和成本约束的 GPU 虚拟机大小之一。 为 VM 创建存储帐户。  ![dlvm 设置](./media/dlvm-provision-step-2.PNG)
+1. **设置**：选择 NC 系列（NC、NCv2、NCv3）或 ND 系列中满足功能要求和成本约束的 GPU 虚拟机大小之一。 为 VM 创建存储帐户。  ![dlvm 设置](./media/dlvm-provision-step-2.PNG)
    
-   3. **汇总**：验证输入的所有信息是否正确。
-   5. **购买**：单击“购买”开始预配。 此时会显示交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
+1. **汇总**：验证输入的所有信息是否正确。
+1. **购买**：单击“购买”开始预配。 此时会显示交易条款的链接。 除计算**大小**步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
 
 > [!NOTE]
 > 预配约需要 10 到 20 分钟。 预配的状态在 Azure 门户上显示。
@@ -66,7 +66,7 @@ DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（
 
 ### <a name="linux-edition"></a>Linux 版
 
-创建 VM 后，可使用 SSH 登录。 使用在步骤 3 的**基本信息**部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 客户端上下载 [Putty](http://www.putty.org) 之类的 SSH 客户端工具。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。
+创建 VM 后，可使用 SSH 登录。 使用在步骤 3 的**基本信息**部分中为文本 shell 接口创建的帐户凭据。 可在 Windows 客户端上下载 [Putty](https://www.putty.org) 之类的 SSH 客户端工具。 如果喜欢图形桌面（X Windows系统），可以在 Putty 上使用 X11 转发或安装 X2Go 客户端。
 
 > [!NOTE]
 > 在我们的测试中，X2Go 客户端的性能优于 X11 转发。 建议对图形桌面界面使用 X2Go 客户端。
@@ -76,7 +76,7 @@ DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（
 #### <a name="installing-and-configuring-x2go-client"></a>安装和配置 X2Go 客户端
 Linux DLVM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 若要连接到 Linux VM 图形桌面，请在客户端上完成以下过程：
 
-1. 从 [X2Go ](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
+1. 从 [X2Go ](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
 2. 运行 X2Go 客户端，并选择“新建会话”。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
    * **会话选项卡**：
      * **主机**：Linux Data Science VM 的主机名或 IP 地址。

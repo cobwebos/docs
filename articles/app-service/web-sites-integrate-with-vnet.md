@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 265dcccf9202d7b0116bba05b016e8967b68c67a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: ed99bd3626bb44bff68e4122d6b50523f19e1797
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273341"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112613"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714) 中使用应用对其进行设置。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。 然后可以使用 VPN 技术将这些网络连接到本地网络。 
@@ -82,7 +82,7 @@ VNet 集成功能目前提供处于预览阶段的新版本。 该版本不依�
 * 172.16.0.0/12 - 这指的是从 172.16.0.0 到 172.31.255.255 的 IP 地址范围 
 * 192.168.0.0/16 - 这指的是从 192.168.0.0 到 192.168.255.255 的 IP 地址范围
 
-如果只是创建网关用于应用服务 VNet 集成，则不需要上传证书。 创建网关可能需要 30 分钟。 若要将应用与 VNet 集成，必须先预配网关。 
+如果只是创建的网关应用 VNet 集成服务中使用，则不需要的证书上载。 创建网关可能需要 30 分钟。 若要将应用与 VNet 集成，必须先预配网关。 
 
 ### <a name="configure-vnet-integration-with-your-app"></a>使用应用配置 VNet 集成 ###
 
@@ -277,19 +277,20 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 应用服�
 * 新的 VNet 集成功能不适用于应用服务环境中的应用。
 * 不能删除带有集成应用的 VNet。  
 * 新的 VNet 集成功能尚不支持使用路由表和全球对等互联。  
-* 为每个应用服务计划实例使用一个地址。 由于子网大小在分配后不能更改，因此在使用子网时，其大小应该超出你的最大规模大小。 建议的大小是包含 32 个地址的 /27，因为它所容纳的应用服务计划可以扩大到 20 个实例。  可以通过新的 VNet 集成功能来使用服务终结点所保护的资源。 若要实现这一点，请在用于 VNet 集成的子网上启用服务终结点。
+* 为每个应用服务计划实例使用一个地址。 由于子网大小在分配后不能更改，因此在使用子网时，其大小应该超出你的最大规模大小。 建议的大小是包含 32 个地址的 /27，因为它所容纳的应用服务计划可以扩大到 20 个实例。
+* 可以通过新的 VNet 集成功能来使用服务终结点所保护的资源。 若要实现这一点，请在用于 VNet 集成的子网上启用服务终结点。
 
 若要使用此新功能，请执行以下操作：
 
 1. 转至门户中的“网络 UI”。 如果应用可以使用新功能，将看到使用新的预览功能的功能。  
 
- ![选择新的预览版 VNet 集成][6]
+   ![选择新的预览版 VNet 集成][6]
 
 1. 选择“添加 VNet (预览)”。  
 
 1. 选择希望与之集成的资源管理器 VNet，然后新建一个子网或从预先存在的空子网中选择一个。 集成只需不到一分钟即可完成。 在集成期间，应用会重启。  集成完成后，将能查看所集成的子网的详细信息，同时顶部会出现显示该功能处于预览状态的横幅。
 
- ![选择 VNet 和子网][7]
+   ![选择 VNet 和子网][7]
 
 若要让应用能使用为 VNet 配置的 DNS 服务器，请为应用创建应用程序设置，其中名称为 WEBSITE_DNS_SERVER，值为该服务器的 IP 地址。  如果有辅助 DNS 服务器，请创建另一个应用程序设置，其中名称为 WEBSITE_DNS_ALT_SERVER，值为该服务器的 IP 地址。 
 

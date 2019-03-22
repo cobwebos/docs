@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: c57385bc398544e786aec77dae9886784e3a0b3c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 75ce5d6a88b5398bd010cc363b4241bc90068f55
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243614"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436564"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
 建立开发/测试实验室环境之后，你需要考虑以下问题：
@@ -117,7 +117,7 @@ ms.locfileid: "56243614"
 在考虑每个用户或每个实验室的虚拟机数量时，主要有三个考虑因素：
 
 - 团队在实验室资源上花费的总成本。 运行很多计算机很容易。 为了控制成本，一种机制是限制每个用户和/或每个实验室的 VM 数量
-- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果一个订阅中有 10 个实验室，每个实验室中可容纳大约 79 个虚拟机，即（800 上限 – 10 个实验室自己的 10 个资源组）= 每个实验室 79 个虚拟机。
+- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果在订阅中有 10 个实验室，实验室可满足每个实验室 （800 上限 – 10 个实验室本身的 10 个资源组） 中的大约 79 虚拟机 = 79 每个实验室的虚拟机。
 - 举例来说，如果实验室通过 Express Route 连接到本地，则可以为 VNet/子网定义可用的 IP 地址空间。 为了确保能够在实验室中创建 VM（出现“无法获取 IP 地址”错误时无法创建），实验室所有者可以根据可用的 IP 地址空间指定每个实验室的最大 VM 数量。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 模板

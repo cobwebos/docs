@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5739c878812c09a8f2646320df4b1069dfa8810e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: eced1b92aba24c8083cbdc2ece099fab95567db7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189033"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>教程：Azure Active Directory 与 Zscaler Three 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56189033"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Zscaler Three 的集成，需要以下项：
 
@@ -159,43 +159,43 @@ ms.locfileid: "56189033"
 
 ### <a name="configure-zscaler-three-single-sign-on"></a>配置 Zscaler Three 单一登录
 
-9. 在其他 Web 浏览器窗口中，以管理员身份登录到 Zscaler Three 公司站点。
+1. 在其他 Web 浏览器窗口中，以管理员身份登录到 Zscaler Three 公司站点。
 
-10. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤：
+1. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤：
    
-    ![管理](./media/zscaler-three-tutorial/ic800206.png "Administration")
+   ![管理](./media/zscaler-three-tutorial/ic800206.png "Administration")
 
-    a. 在“身份验证类型”下选择“SAML”。
+   a. 在“身份验证类型”下选择“SAML”。
 
-    b. 单击“配置 SAML”。
+   b. 单击“配置 SAML”。
 
-11. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。  
+1. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。  
             
-    ![管理用户和身份验证](./media/zscaler-three-tutorial/ic800208.png "管理用户和身份验证")
+   ![管理用户和身份验证](./media/zscaler-three-tutorial/ic800208.png "管理用户和身份验证")
     
-    a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”。
+   a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”。
 
-    b. 在“登录名属性”文本框中，输入 **NameID**。
+   b. 在“登录名属性”文本框中，输入 **NameID**。
 
-    c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。
+   c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。
 
-    d. 切换“启用 SAML 自动预配”。
+   d. 切换“启用 SAML 自动预配”。
 
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。
+   e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。
 
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。
+   f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。
 
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
+   g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
 
-    i. 单击“ **保存**”。
+   i. 单击“ **保存**”。
 
-12. 在“配置用户身份验证”对话框页上，执行以下步骤：
+1. 在“配置用户身份验证”对话框页上，执行以下步骤：
 
-    ![管理](./media/zscaler-three-tutorial/ic800207.png)
+   ![管理](./media/zscaler-three-tutorial/ic800207.png)
 
-    a. 将鼠标悬停在左下角附近的“激活”菜单上。
+   a. 将鼠标悬停在左下角附近的“激活”菜单上。
 
-    b. 单击“激活”。
+   b. 单击“激活”。
 
 ## <a name="configuring-proxy-settings"></a>配置代理设置
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中配置代理设置
@@ -246,7 +246,7 @@ ms.locfileid: "56189033"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在中**用户名**字段中，键入**brittasimon\@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。

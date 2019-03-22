@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67083a8214724659765922047c1f0ccd6da87b9d
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: 520d417abe27887fad03257c52521c25602009eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884922"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096004"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷规划和部署清单 
 
@@ -87,76 +87,76 @@ ms.locfileid: "54884922"
  
 试点阶段可以在项目规划和准备阶段之前运行，也可以并行运行。 该阶段还可用于测试规划和准备阶段确定的方法和设计。 试点阶段可以延伸到实际的概念证明。 建议在试点部署期间设置和验证完整的 HA/DR 解决方案和安全设计。 在某些客户案例中，可伸缩性测试也可以在此阶段进行。 另一些客户则将 SAP 沙盒系统的部署用作试点阶段。 因此，我们假设你确定了一个要迁移到 Azure 以便运行试点的系统。
 
-1.  优化将数据传输到 Azure 的过程。 如果快速线路有足够的带宽，那么通过 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 从本地进行传输的速度最快（主要取决于客户案例）。 对于其他客户来说，上网速度更快
-2.  在 SAP 异构平台迁移的情况下，这涉及到数据库数据的导出和导入、测试以及优化导出和导入阶段。 对于涉及 SQL Server 作为目标平台的大型迁移，可以在[此处](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/)找到建议。 在合并迁移和 SAP 版本升级并实现某些源和目标 DBMS 平台组合（如 [SUM 2.0 SP03 的数据库迁移选项 (DMO)](https://launchpad.support.sap.com/#/notes/2631152) 中所述）时，如果不需要合并的版本升级或 [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) 过程，你可以采用迁移监视器/SWPM 的方法。 
-    1.  导出到源、导出上传到 Azure 的文件和导入性能。  使导出和导入之间的重叠最大化
-    2.  评估目标和目标平台之间的数据库容量，以反映到基础结构的大小调整中    
-    3.  验证并优化执行时间 
-3.  技术验证 
-    1.  VM 类型
-        1.  再次验证 SAP 支持说明、SAP HANA 硬件目录和 SAP PAM 上的资源，以确保支持的 Azure VM、这些 VM 类型支持的 OS 版本以及支持的 SAP 和 DBMS 版本没有发生更改
-        2.  再次验证 Azure 上部署的应用程序和基础结构的大小。 如果要移动现有应用程序，通常可以从使用的基础结构和 [SAP 基准网页](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)中获取必要的 SAPS，并将其与 SAP 支持说明 [#1928533](https://launchpad.support.sap.com/#/notes/1928533) 中列出的 SAPS 编号进行比较。 另请注意[这篇文章](https://blogs.msdn.microsoft.com/saponsqlserver/2018/11/04/saps-ratings-on-azure-vms-where-to-look-and-where-you-can-get-confused/)
-        3.  评估和测试 Azure VM 的大小，了解在规划阶段选择的不同 VM 类型的最大存储吞吐量和网络吞吐量。 数据可在以下位置找到：
-            1.  [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
-            2.  [Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)：重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
-    2.  存储
-        1.  对于数据库 VM，请使用 Azure 高级存储
-        2.  使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)
-        3.  对于使用 M 系列的 DBMS 日志驱动器，请使用 Azure 写入加速器。 请注意[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)中提供的写入加速器限制和使用情况
-        4.  对于不同的 DBMS 类型，请查看[与 SAP 相关的 DBMS 通用文档](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)以及通用文档指向的特定于 DBMS 的文档
-        5.  对于 SAP HANA，[Azure 上 的 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)中提供了详细信息
-        6.  请勿使用设备 ID 将 Azure 数据磁盘装载到 Azure Linux VM 中。 而应该使用全局唯一标识符 (UUID)。 例如，使用图形化工具装载 Azure 数据磁盘时应小心。 仔细检查 /etc/fstab 中的条目，确保使用 UUID 装载磁盘
-            1.  在[此处](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)可以找到更多详细信息
-    3.  网络
-        1.  测试和评估 VNet 基础结构以及跨不同 Azure 虚拟网络或在不同 Azure 虚拟网络内进行的 SAP 应用程序分发
-            1.  在所基于的单一 Azure 虚拟网络内，评估中心和辐射虚拟网络体系结构或微分割的方法
-                1.  由于[对等互连 Azure VNet](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 之间的数据交换而产生的成本。 请查看[虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network/)了解成本
-                2.  当虚拟网络子网中托管的应用程序或 VM 存在安全风险时，与更改 NSG 以隔离虚拟网络中的子网相比，在 Azure 虚拟网络之间快速断开对等互连的优势
-                3.  对本地、外部和 Azure 中构建的虚拟数据中心之间的网络流量集中进行日志记录和审核
-            2.  评估和测试 SAP 应用层和 SAP DBMS 层之间的数据路径。 
-                1.  不支持在 SAP 应用程序与 SAP NetWeaver、Hybris 或基于 S/4HANA 的 SAP 系统的 DBMS 层之间的通信路径中配置任何 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)
-                2.  不支持将 SAP 应用层和 SAP DBMS 放置在未对等互连的不同 Azure 虚拟网络中
-                3.  定义 SAP 应用层和 SAP DBMS 层之间的路由时支持 [Azure ASG 和 NSG 规则](https://docs.microsoft.com/azure/virtual-network/security-overview)
-            3.  确保在 SAP 应用层和 SAP DBMS 层上使用的 VM 启用了 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。 注意，需要不同的 OS 级别来支持 Azure 中的加速网络：
-                1.  Windows Server 2012 R2 或更高版本
-                2.  SUSE Linux 12 SP3 或更高版本
-                3.  RHEL 7.4 或更高版本
-                4.  Oracle Linux 7.5。 使用 RHCKL 内核时，版本需为 3.10.0-862.13.1.el7。 使用 Oracle UEK 内核时，需要版本 5
-            4.   根据 SAP 支持说明 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 SAP 支持说明 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) 测试和评估 SAP 应用层 VM 和 DBMS VM 之间的网络延迟。 根据 SAP 支持说明 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) 评估网络延迟的结果。 网络延迟应该在中等且较好的范围内。 例外情况为 VM 和 HANA 大型实例单元之间的流量（如[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)所述）
-            5.   确保 ILB 部署设置为使用直接服务器返回。 如果将 Azure ILB 用于 DBMS 层上的高可用性配置，此设置将减少延迟
-    4.   高可用性和灾难恢复部署。 
-        1.   如果在未定义特定 Azure 可用性区域的情况下部署 SAP 应用层，请确保在[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)中部署所有运行 SAP 对话框实例或运行单个 SAP 系统的中间件实例的 VM。 
-            1.   如果不需要 SAP 中心服务和 DBMS 的高可用性，则可以将这些 VM 部署到与 SAP 应用层相同的可用性集中
-        2.   如果使用被动副本保护 SAP 中心服务和 DBMS 层以实现高可用性，请将 SAP 中心服务的两个节点放在一个单独的可用性集中，将两个 DBMS 节点放在另一个可用性集中
-        3.   如果部署到 Azure 可用性区域，则无法利用可用性集。 但是，你需要确保将主动和被动中心服务节点部署到两个不同的可用性区域中，这两个可用性区域显示区域之间的最小延迟。
-            1.   注意，如果跨可用性区域为 DBMS 和 SAP 中心服务层创建 Windows 或 Pacemaker 故障转移群集，则需要使用 [Azure 标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)。 [基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus)不能用于区域部署 
-    5.   超时设置
-        1.   检查不同 SAP 实例的 SAP NetWeaver 开发人员跟踪，并确保排队服务器和 SAP 工作进程之间没有出现连接中断。 通过设置以下两个注册表参数，可以避免这些连接中断：
-            1.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000 - 另请参阅[本文](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))
-            2.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000 - 另请参阅[本文](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) 
-        2.   为了避免在本地部署的 SAP GUI 接口和 Azure 中部署的 SAP 应用层之间的 GUI 超时，请检查是否在 default.pfl 或实例配置文件中设置了以下参数：
-            1.   rdisp/keepalive_timeout = 3600
-            2.   rdisp/keepalive = 20
-        3.   如果使用 Windows 故障转移群集配置，请确保为 Azure 正确设置了用于对非响应节点做出响应的时间。 Microsoft 的[调整故障转移群集网络阈值](https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/)一文列出了参数并介绍了这些参数如何影响故障转移敏感性。 在列出的参数中，应使用以下值设置这两个参数：
-            1.   SameSubNetDelay = 2
-            2.   SameSubNetThreshold = 15
-4.   测试高可用性和灾难恢复过程
-    1.   通过关闭 VM（Windows 来宾 OS）或使操作系统处于崩溃模式（Linux 来宾 OS）来模拟故障转移情况，以确定故障转移配置是否正常运行。 
-    2.   测量执行故障转移所需的时间。 如果时间过长，请考虑：
-        1.   对于 SUSE Linux，请使用 SBD 设备而非 Azure 隔离代理来加速故障转移
-        2.   对于 SAP HANA，如果重新加载数据的时间过长，请考虑预配更多存储带宽
-    3.   测试备份/还原顺序和时间，并在必要时进行优化。 确保不仅仅是备份时间足够。 另外请测试还原，并花费时间来完成还原活动。 如果 RTO 依赖于数据库或 VM 还原过程，请确保还原时间在 RTO SLA 范围内
-    4.   测试跨区域 DR 功能和体系结构
-5.  安全检查
-    1.  测试实现的基于 Azure 角色的访问 (RBAC) 体系结构的有效性。 目标是分离和限制不同团队的访问和权限。 例如，SAP 基础团队成员应该可以部署 VM 并将 Azure 存储中的磁盘分配到给定的 Azure 虚拟网络中。 但是，SAP 基础团队应该不能创建自己的虚拟网络或更改现有虚拟网络的设置。 另一方面，网络团队的成员应该不能将 VM 部署到运行 SAP 应用程序和 DBMS VM 的虚拟网络中。 网络团队的成员也应该不能更改 VM 的属性，甚至删除 VM 或磁盘。  
-    2.  验证 [NSG 和 ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) 规则是否可以正常工作并屏蔽受保护资源
-    3.  确保所有需要加密的资源都已加密。 定义和执行备份证书、存储和访问这些证书以及恢复加密实体的流程。 
-    4.  从 OS 支持的角度来讲，尽可能使用 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq)和/或 OS 磁盘
-    5.  检查是否使用了太多的加密层。 使用 Azure 磁盘加密，然后另外使用某种 DBMS 透明数据库加密方法，确实具有一定意义。
-6.  性能测试
-    1.  在基于 SAP 跟踪和测量的 SAP 中，将前 10 个在线报告与当前的实现进行比较（如适用） 
-    2.  在基于 SAP 跟踪和测量的 SAP 中，将前 10 个批处理作业与当前的实现进行比较（如适用） 
-    3.  在基于 SAP 跟踪和测量的 SAP 中，比较通过接口传输到 SAP 系统的数据。 关注已知正在不同位置之间（例如从本地到 Azure）传输数据的接口 
+1. 优化将数据传输到 Azure 的过程。 如果快速线路有足够的带宽，那么通过 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 从本地进行传输的速度最快（主要取决于客户案例）。 对于其他客户来说，上网速度更快
+2. 在 SAP 异构平台迁移的情况下，这涉及到数据库数据的导出和导入、测试以及优化导出和导入阶段。 对于涉及 SQL Server 作为目标平台的大型迁移，可以在[此处](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/)找到建议。 在合并迁移和 SAP 版本升级并实现某些源和目标 DBMS 平台组合（如 [SUM 2.0 SP03 的数据库迁移选项 (DMO)](https://launchpad.support.sap.com/#/notes/2631152) 中所述）时，如果不需要合并的版本升级或 [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) 过程，你可以采用迁移监视器/SWPM 的方法。 
+   1.  导出到源、导出上传到 Azure 的文件和导入性能。  使导出和导入之间的重叠最大化
+   2.  评估目标和目标平台之间的数据库容量，以反映到基础结构的大小调整中    
+   3.  验证并优化执行时间 
+3. 技术验证 
+   1. VM 类型
+      1.  再次验证 SAP 支持说明、SAP HANA 硬件目录和 SAP PAM 上的资源，以确保支持的 Azure VM、这些 VM 类型支持的 OS 版本以及支持的 SAP 和 DBMS 版本没有发生更改
+      2.  再次验证 Azure 上部署的应用程序和基础结构的大小。 如果要移动现有应用程序，通常可以从使用的基础结构和 [SAP 基准网页](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)中获取必要的 SAPS，并将其与 SAP 支持说明 [#1928533](https://launchpad.support.sap.com/#/notes/1928533) 中列出的 SAPS 编号进行比较。 另请注意[这篇文章](https://blogs.msdn.microsoft.com/saponsqlserver/2018/11/04/saps-ratings-on-azure-vms-where-to-look-and-where-you-can-get-confused/)
+      3.  评估和测试 Azure VM 的大小，了解在规划阶段选择的不同 VM 类型的最大存储吞吐量和网络吞吐量。 数据可在以下位置找到：
+          1.  [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
+          2.  [Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)：重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
+   2. 存储
+      1.  对于数据库 VM，请使用 Azure 高级存储
+      2.  使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)
+      3.  对于使用 M 系列的 DBMS 日志驱动器，请使用 Azure 写入加速器。 请注意[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)中提供的写入加速器限制和使用情况
+      4.  对于不同的 DBMS 类型，请查看[与 SAP 相关的 DBMS 通用文档](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)以及通用文档指向的特定于 DBMS 的文档
+      5.  对于 SAP HANA，[Azure 上 的 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)中提供了详细信息
+      6.  请勿使用设备 ID 将 Azure 数据磁盘装载到 Azure Linux VM 中。 而应该使用全局唯一标识符 (UUID)。 例如，使用图形化工具装载 Azure 数据磁盘时应小心。 仔细检查 /etc/fstab 中的条目，确保使用 UUID 装载磁盘
+          1.  在[此处](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)可以找到更多详细信息
+   3. 网络
+      1.  测试和评估 VNet 基础结构以及跨不同 Azure 虚拟网络或在不同 Azure 虚拟网络内进行的 SAP 应用程序分发
+          1.  在所基于的单一 Azure 虚拟网络内，评估中心和辐射虚拟网络体系结构或微分割的方法
+              1.  由于[对等互连 Azure VNet](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 之间的数据交换而产生的成本。 请查看[虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network/)了解成本
+              2.  当虚拟网络子网中托管的应用程序或 VM 存在安全风险时，与更改 NSG 以隔离虚拟网络中的子网相比，在 Azure 虚拟网络之间快速断开对等互连的优势
+              3.  对本地、外部和 Azure 中构建的虚拟数据中心之间的网络流量集中进行日志记录和审核
+          2.  评估和测试 SAP 应用层和 SAP DBMS 层之间的数据路径。 
+              1.  不支持在 SAP 应用程序与 SAP NetWeaver、Hybris 或基于 S/4HANA 的 SAP 系统的 DBMS 层之间的通信路径中配置任何 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)
+              2.  不支持将 SAP 应用层和 SAP DBMS 放置在未对等互连的不同 Azure 虚拟网络中
+              3.  定义 SAP 应用层和 SAP DBMS 层之间的路由时支持 [Azure ASG 和 NSG 规则](https://docs.microsoft.com/azure/virtual-network/security-overview)
+          3.  确保在 SAP 应用层和 SAP DBMS 层上使用的 VM 启用了 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。 注意，需要不同的 OS 级别来支持 Azure 中的加速网络：
+              1.  Windows Server 2012 R2 或更高版本
+              2.  SUSE Linux 12 SP3 或更高版本
+              3.  RHEL 7.4 或更高版本
+              4.  Oracle Linux 7.5。 使用 RHCKL 内核时，版本需为 3.10.0-862.13.1.el7。 使用 Oracle UEK 内核时，需要版本 5
+          4.   根据 SAP 支持说明 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 SAP 支持说明 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) 测试和评估 SAP 应用层 VM 和 DBMS VM 之间的网络延迟。 根据 SAP 支持说明 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) 评估网络延迟的结果。 网络延迟应该在中等且较好的范围内。 例外情况为 VM 和 HANA 大型实例单元之间的流量（如[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)所述）
+          5.   确保 ILB 部署设置为使用直接服务器返回。 如果将 Azure ILB 用于 DBMS 层上的高可用性配置，此设置将减少延迟
+   4. 高可用性和灾难恢复部署。 
+      1. 如果在未定义特定 Azure 可用性区域的情况下部署 SAP 应用层，请确保在[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)中部署所有运行 SAP 对话框实例或运行单个 SAP 系统的中间件实例的 VM。 
+         1.   如果不需要 SAP 中心服务和 DBMS 的高可用性，则可以将这些 VM 部署到与 SAP 应用层相同的可用性集中
+      2. 如果使用被动副本保护 SAP 中心服务和 DBMS 层以实现高可用性，请将 SAP 中心服务的两个节点放在一个单独的可用性集中，将两个 DBMS 节点放在另一个可用性集中
+      3. 如果部署到 Azure 可用性区域，则无法利用可用性集。 但是，你需要确保将主动和被动中心服务节点部署到两个不同的可用性区域中，这两个可用性区域显示区域之间的最小延迟。
+         1.   注意，如果跨可用性区域为 DBMS 和 SAP 中心服务层创建 Windows 或 Pacemaker 故障转移群集，则需要使用 [Azure 标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)。 [基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus)不能用于区域部署 
+   5. 超时设置
+      1. 检查不同 SAP 实例的 SAP NetWeaver 开发人员跟踪，并确保排队服务器和 SAP 工作进程之间没有出现连接中断。 通过设置以下两个注册表参数，可以避免这些连接中断：
+         1.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000 - 另请参阅[本文](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))
+         2.   HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000 - 另请参阅[本文](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) 
+      2. 为了避免在本地部署的 SAP GUI 接口和 Azure 中部署的 SAP 应用层之间的 GUI 超时，请检查是否在 default.pfl 或实例配置文件中设置了以下参数：
+         1.   rdisp/keepalive_timeout = 3600
+         2.   rdisp/keepalive = 20
+      3. 如果使用 Windows 故障转移群集配置，请确保为 Azure 正确设置了用于对非响应节点做出响应的时间。 Microsoft 的[调整故障转移群集网络阈值](https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/)一文列出了参数并介绍了这些参数如何影响故障转移敏感性。 在列出的参数中，应使用以下值设置这两个参数：
+         1.   SameSubNetDelay = 2
+         2.   SameSubNetThreshold = 15
+4. 测试高可用性和灾难恢复过程
+   1. 通过关闭 VM（Windows 来宾 OS）或使操作系统处于崩溃模式（Linux 来宾 OS）来模拟故障转移情况，以确定故障转移配置是否正常运行。 
+   2. 测量执行故障转移所需的时间。 如果时间过长，请考虑：
+      1.   对于 SUSE Linux，请使用 SBD 设备而非 Azure 隔离代理来加速故障转移
+      2.   对于 SAP HANA，如果重新加载数据的时间过长，请考虑预配更多存储带宽
+   3. 测试备份/还原顺序和时间，并在必要时进行优化。 确保不仅仅是备份时间足够。 另外请测试还原，并花费时间来完成还原活动。 如果 RTO 依赖于数据库或 VM 还原过程，请确保还原时间在 RTO SLA 范围内
+   4. 测试跨区域 DR 功能和体系结构
+5. 安全检查
+   1.  测试实现的基于 Azure 角色的访问 (RBAC) 体系结构的有效性。 目标是分离和限制不同团队的访问和权限。 例如，SAP 基础团队成员应该可以部署 VM 并将 Azure 存储中的磁盘分配到给定的 Azure 虚拟网络中。 但是，SAP 基础团队应该不能创建自己的虚拟网络或更改现有虚拟网络的设置。 另一方面，网络团队的成员应该不能将 VM 部署到运行 SAP 应用程序和 DBMS VM 的虚拟网络中。 网络团队的成员也应该不能更改 VM 的属性，甚至删除 VM 或磁盘。  
+   2.  验证 [NSG 和 ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) 规则是否可以正常工作并屏蔽受保护资源
+   3.  确保所有需要加密的资源都已加密。 定义和执行备份证书、存储和访问这些证书以及恢复加密实体的流程。 
+   4.  从 OS 支持的角度来讲，尽可能使用 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq)和/或 OS 磁盘
+   5.  检查是否使用了太多的加密层。 使用 Azure 磁盘加密，然后另外使用某种 DBMS 透明数据库加密方法，确实具有一定意义。
+6. 性能测试
+   1.  在基于 SAP 跟踪和测量的 SAP 中，将前 10 个在线报告与当前的实现进行比较（如适用） 
+   2.  在基于 SAP 跟踪和测量的 SAP 中，将前 10 个批处理作业与当前的实现进行比较（如适用） 
+   3.  在基于 SAP 跟踪和测量的 SAP 中，比较通过接口传输到 SAP 系统的数据。 关注已知正在不同位置之间（例如从本地到 Azure）传输数据的接口 
 
 
 ## <a name="non-production-phase"></a>非生产阶段 

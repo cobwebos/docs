@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 93046fa8225d8c85172d113d3c7f9e979c336770
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: f28ea3dd2837a241c538057bd118409d4f5b858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096259"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>（已弃用）用于通过 Azure DevOps Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -41,7 +41,7 @@ ms.locfileid: "54331429"
 1. 群集上的 Docker Swarm 提取最新的映像版本 
 1. 使用 Docker Compose 部署应用程序的新版本 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始本教程之前，需要完成以下任务：
 
@@ -204,14 +204,14 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
     在主节点上执行的命令使用 Docker CLI 和 Docker-Compose CLI 来执行以下任务：
 
-    - 登录到 Azure 容器注册表（使用“变量”选项卡中定义的三个生成变量）
-    - 将 **DOCKER_HOST** 变量定义为使用 Swarm 终结点 (:2375)
-    - 导航到前面的安全复制任务创建的、包含 docker-compose.yml 文件的 *deploy* 文件夹 
-    - 执行可以提取新映像、停止服务、删除服务和创建容器的 `docker-compose` 命令。
+   - 登录到 Azure 容器注册表（使用“变量”选项卡中定义的三个生成变量）
+   - 将 **DOCKER_HOST** 变量定义为使用 Swarm 终结点 (:2375)
+   - 导航到前面的安全复制任务创建的、包含 docker-compose.yml 文件的 *deploy* 文件夹 
+   - 执行可以提取新映像、停止服务、删除服务和创建容器的 `docker-compose` 命令。
 
-    >[!IMPORTANT]
-    > 如上面的屏幕截图中所示，将“在 STDERR 中显示失败”复选框保持未选中状态。 这是一项重要设置，因为 `docker-compose` 会在标准错误输出中列显一些诊断消息，例如正在停止或删除容器。 如果选中该复选框，则即使一切正常，Azure DevOps Services 也会报告在发布期间出错。
-    >
+     >[!IMPORTANT]
+     > 如上面的屏幕截图中所示，将“在 STDERR 中显示失败”复选框保持未选中状态。 这是一项重要设置，因为 `docker-compose` 会在标准错误输出中列显一些诊断消息，例如正在停止或删除容器。 如果选中该复选框，则即使一切正常，Azure DevOps Services 也会报告在发布期间出错。
+     >
 1. 保存此项新发布管道。
 
 

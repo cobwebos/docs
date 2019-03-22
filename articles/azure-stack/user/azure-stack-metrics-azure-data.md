@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: fd4c1220d0652139c247ffed80e995a90a93c5b1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 469213ae67f1f2bcece6afa5d9b7873bfdfe8d6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780826"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095732"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Azure Stack 中的 Azure Monitor
 
@@ -33,10 +33,10 @@ ms.locfileid: "57780826"
 
 Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单一源。 通过 Azure Monitor，可直观显示、查询、路由和存档来自 Azure 内部资源的指标和日志并对其采取其他操作。 可以通过使用 Azure Stack 管理门户、Monitor PowerShell Cmdlet、跨平台 CLI 或 Azure Monitor REST API 来处理此数据。 有关 Azure Stack 支持的具体连接，请参阅[如何使用 Azure Stack 中的监视数据](azure-stack-metrics-monitor.md)
 
-> [!Note]  
-指标和诊断日志不可用于 Azure Stack 开发工具包。
+> [!Note]
+> 指标和诊断日志不可用于 Azure Stack 开发工具包。
 
-## <a name="prerequisites-for-azure-monitor-on-azure-stack"></a>在 Azure Stack 上的 Azure 监视的先决条件
+## <a name="prerequisites-for-azure-monitor-on-azure-stack"></a>Azure Stack 上的 Azure Monitor 的先决条件
 
 在你的订阅的套餐资源提供程序设置上注册 **Microsoft.insights** 资源提供程序。 你可以验证该资源提供程序在与你的订阅关联的套餐中是否可用：
 
@@ -46,13 +46,13 @@ Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单�
 4. 在“设置”下，选择“资源提供程序”。 
 5. 在列表中找到 **Microsoft.Insights**，并验证状态是否为“已注册”。
 
-## <a name="overview-of-azure-monitor-on-azure-stack"></a>在 Azure Stack 上的 Azure Monitor 概述
+## <a name="overview-of-azure-monitor-on-azure-stack"></a>Azure Stack 上的 Azure Monitor 概述
 
 与 Azure 上的 Azure Monitor 一样，Azure Stack 上的 Azure Monitor 针对大多数服务提供基本级别的基础结构指标和日志。
 
-## <a name="azure-monitor-sources-compute-subset"></a>Azure Monitor 源： 计算子集
+## <a name="azure-monitor-sources-compute-subset"></a>Azure Monitor 源：计算子集
 
-![Azure Stack 上的 azure Monitor 源-计算子集](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
+![Azure Stack 上的 Azure Monitor 源 - 计算子集](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
 
 Azure Stack 中的 **Microsoft.Compute** 资源提供程序包括：
  - 虚拟机 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb752a6b598c9fe7f146cd6ce96182405fc0dc6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 86148d428bc526e071f095233b0692a6f3775a7d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167671"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880632"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>教程：Azure Active Directory 与 Jitbit Helpdesk 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56167671"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Jitbit Helpdesk 的集成，需要具有以下项：
 
@@ -114,6 +114,7 @@ ms.locfileid: "56167671"
     ![配置单一登录](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_url.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL： 
+    
     | |     
     | ----------------------------------------|
     | `https://<hostname>/helpdesk/User/Login`|
@@ -224,7 +225,7 @@ ms.locfileid: "56167671"
    
    a. 在“用户名”文本框中，键入用户名“BrittaSimon”，即 Azure 门户中的用户名。
 
-   b. 在“电子邮件”文本框中，键入用户的电子邮件地址（如 BrittaSimon@contoso.com）。
+   b. 在中**电子邮件**文本框中，键入用户电子邮件地址，例如**BrittaSimon\@contoso.com**。
 
    c. 在“名字”文本框中，键入用户的名字（如“Britta”）。
 

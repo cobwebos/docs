@@ -16,18 +16,18 @@ ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31e380379b5237f6b1a72b3427eb857f64d55c2e
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: eaaad0d7351c398c9b2cc013f40d62461a2dd3f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269053"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845524"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
 **问：我最近注册了设备。但为什么在 Azure 门户中我的用户信息下看不到该设备？或对于加入混合Azure Active Directory (Azure AD) 的设备，为什么设备所有者标记为 N/A？**
 
-**答：** 已加入混合 Azure AD 的 Windows 10 设备不显示在“USER 设备”下。
+**答:** 已加入混合 Azure AD 的 Windows 10 设备不显示在“USER 设备”下。
 使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
 
 “USER 设备”下面只会列出以下设备：
@@ -36,11 +36,11 @@ ms.locfileid: "56269053"
 - 所有非 Windows 10 或 Windows Server 2016 设备。
 - 所有非 Windows 设备。 
 
---- 
+---
 
 **问：** 如何了解客户端的设备注册状态？
 
-**答：** 在 Azure 门户中，转到“所有设备”。 使用设备 ID 搜索设备。 检查“联接类型”列下的值。 有时，设备可能已重置或已重置映像。 因此，还必须检查设备上的设备注册状态：
+**答:** 在 Azure 门户中，转到“所有设备”。 使用设备 ID 搜索设备。 检查“联接类型”列下的值。 有时，设备可能已重置或已重置映像。 因此，还必须检查设备上的设备注册状态：
 
 - 对于 Windows 10 和 Windows Server 2016 或更高版本的设备，请运行 `dsregcmd.exe /status`。
 - 对于低级别操作系统版本，请运行 `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`。
@@ -49,13 +49,13 @@ ms.locfileid: "56269053"
 
 **问：我在 Azure 门户中看到了 USER 信息下面的设备记录。我在设备上看到状态为已注册。我的设置是否正确，可以使用条件访问？**
 
-**答：** deviceID 所显示的设备加入状态必须与 Azure AD 上的状态相符，并且必须符合条件性访问的任何评估条件。 有关详细信息，请参阅[通过条件访问要求使用受管理设备进行云应用访问](../conditional-access/require-managed-devices.md)。
+**答:** deviceID 所显示的设备加入状态必须与 Azure AD 上的状态相符，并且必须符合条件性访问的任何评估条件。 有关详细信息，请参阅[通过条件访问要求使用受管理设备进行云应用访问](../conditional-access/require-managed-devices.md)。
 
 ---
 
 **问：我通过 Azure 门户或使用 Windows PowerShell 删除了设备。但设备上的本地状态仍显示为已注册。**
 
-**答：** 此操作是有意为之。 设备无权访问云中的资源。 
+**答:** 此操作是有意为之。 设备无权访问云中的资源。 
 
 若要重新注册，必须在设备上执行手动操作。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "56269053"
 
 **问：Azure 门户中为何出现重复的设备条目？**
 
-**答：**
+**答:**
 
 -   对于 Windows 10 和 Windows Server 2016，如果反复尝试分离再重新加入同一个设备，则可能会出现重复条目。 
 
@@ -89,9 +89,15 @@ ms.locfileid: "56269053"
 
 ---
 
+**问：Azure AD 中的 Windows 10 设备注册不支持在 FIPS 模式下的 Tpm？**
+
+**答:** 不可以，目前 Windows 10 上的所有设备状态的混合 Azure AD 联接、 Azure AD 加入和已注册 Azure AD 的设备注册不支持 Tpm 在 FIPS 模式下。 若要成功加入或注册到 Azure AD，FIPS 模式下需要为这些设备上 Tpm 已关闭
+
+---
+
 **问：用户为什么仍然可以通过我在 Azure 门户中禁用的设备访问资源？**
 
-**答：** 最长可能需要花费一小时才能应用撤销。
+**答:** 最长可能需要花费一小时才能应用撤销。
 
 >[!NOTE] 
 >对于已注册的设备，建议擦除该设备，确保用户无法访问这些资源。 有关详细信息，请参阅[什么是设备注册？](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)。 
@@ -102,7 +108,7 @@ ms.locfileid: "56269053"
 
 **问：如何在设备上本地取消加入已加入 Azure AD 的设备？**
 
-**答：** 
+**答:** 
 - 对于加入混合 Azure AD 的设备，请确保关闭自动注册。 然后计划任务不会再次注册设备。 接下来，以管理员身份打开命令提示符并输入 `dsregcmd.exe /debug /leave`。 或者将此命令作为脚本在多个设备上运行，以批量取消加入。
 
 - 对于已加入纯 Azure AD 的设备，请确保拥有脱机本地管理员帐户或创建一个该账户。 无法使用 Azure AD 用户凭据登录。 接下来，转到“设置” > “帐户” > “访问工作单位或学校”。 选择帐户，然后选择“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
@@ -111,7 +117,7 @@ ms.locfileid: "56269053"
 
 **问：我的用户是否可以登录到已在 Azure AD 中删除或禁用的已加入 Azure AD 的设备？**
 
-**答：** 是的。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
+**答:** 是的。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
 
 设备在 Azure AD 中已删除或禁用时，Windows 设备不会知道此情况。 因此，先前登录的用户继续使用缓存的用户名和密码访问桌面。 但是，由于设备已删除或禁用，用户无法访问由基于设备的条件访问保护的任何资源。 
 
@@ -121,7 +127,7 @@ ms.locfileid: "56269053"
 
 **问：已禁用或删除的用户是否可以登录到已加入 Azure AD 的设备？**
 
-**答：** 可以，但时间有限。 在 Azure AD 中已删除或禁用用户时，Windows 设备不会立即知道此情况。 因此，先前登录的用户可以使用缓存的用户名和密码访问桌面。 
+**答:** 可以，但时间有限。 在 Azure AD 中已删除或禁用用户时，Windows 设备不会立即知道此情况。 因此，先前登录的用户可以使用缓存的用户名和密码访问桌面。 
 
 通常，设备在不到 4 小时的时间内即可了解用户状态。 然后 Windows 会阻止这些用户访问桌面。 由于在 Azure AD 中已删除或禁用用户，因此他们的所有令牌都会撤销。 因此他们无法访问任何资源。 
 
@@ -131,31 +137,31 @@ ms.locfileid: "56269053"
 
 **问：为什么我的用户在更改其 UPN 后，在已联接 Azure AD 的设备上遇到了问题？**
 
-**答：** 当前，已联接 Azure AD 的设备不完全支持 UPN 更改。 因此，在更改其 UPN 后，他们的 Azure AD 身份验证会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，用户需要使用其新 UPN 通过“其他用户”磁贴来登录 Windows，以解决此问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
+**答:** 当前，已联接 Azure AD 的设备不完全支持 UPN 更改。 因此，在更改其 UPN 后，他们的 Azure AD 身份验证会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，用户需要使用其新 UPN 通过“其他用户”磁贴来登录 Windows，以解决此问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
 
 ---
 
 **问：我的用户无法从加入 Azure AD 的设备中搜索打印机。如何从这些设备启用打印？**
 
-**答：** 若要为加入 Azure AD 的设备部署打印机，请参阅[Deploy Windows Server Hybrid Cloud Print with Pre-Authentication](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)（使用预身份验证部署 Windows Server 混合云打印）。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
+**答:** 若要为加入 Azure AD 的设备部署打印机，请参阅[Deploy Windows Server Hybrid Cloud Print with Pre-Authentication](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)（使用预身份验证部署 Windows Server 混合云打印）。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
 
 ---
 
 **问：如何连接到已加入 Azure AD 的远程设备？**
 
-**答：** 请参阅[连接到已加入远程 Azure Active Directory 的电脑](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)。
+**答:** 请参阅[连接到已加入远程 Azure Active Directory 的电脑](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)。
 
 ---
 
 **问：用户为什么会看到“无法从此处进行访问”？**
 
-**答：** 是否配置了某些条件访问规则以要求特定的设备状态? 如果设备不满足条件，就会阻止用户，并且他们会看到该消息。 评估条件性访问策略规则。 确保设备满足条件，避免出现该消息。
+**答:** 是否配置了某些条件访问规则以要求特定的设备状态? 如果设备不满足条件，就会阻止用户，并且他们会看到该消息。 评估条件性访问策略规则。 确保设备满足条件，避免出现该消息。
 
 ---
 
 **问：为什么我的一些用户在加入 Azure AD 的设备上未获得 Azure 多重身份验证提示？**
 
-**答：** 用户可能是通过使用多重身份验证加入或注册 Azure AD 设备。 然后，设备本身成为该用户信任的第二个因素。 每当同一用户登录到设备并访问应用程序，Azure AD 都会将该设备视为第二个因素。 它使用户能够无缝访问应用程序，而无需额外的多重身份验证提示。 
+**答:** 用户可能是通过使用多重身份验证加入或注册 Azure AD 设备。 然后，设备本身成为该用户信任的第二个因素。 每当同一用户登录到设备并访问应用程序，Azure AD 都会将该设备视为第二个因素。 它使用户能够无缝访问应用程序，而无需额外的多重身份验证提示。 
 
 此行为：
 
@@ -167,7 +173,7 @@ ms.locfileid: "56269053"
 
 **问：刚刚加入 Azure AD 的设备中为何会显示“用户名或密码不正确”消息？**
 
-**答：** 出现这种情况的常见原因如下：
+**答:** 出现这种情况的常见原因如下：
 
 - 用户凭据不再有效。
 
@@ -181,25 +187,25 @@ ms.locfileid: "56269053"
 
 **问：尝试在电脑上加入 Azure AD 时，为何会出现“哎呀...发生了错误!”对话框？**
 
-**答：** 使用 Intune 设置 Azure Active Directory 注册时会发生此错误。 确保尝试进行 Azure AD 加入的用户已获得正确的 Intune 许可证。 有关详细信息，请参阅[设置 Windows 设备的注册](https://docs.microsoft.com/intune/windows-enroll)。  
+**答:** 使用 Intune 设置 Azure Active Directory 注册时会发生此错误。 确保尝试进行 Azure AD 加入的用户已获得正确的 Intune 许可证。 有关详细信息，请参阅[设置 Windows 设备的注册](https://docs.microsoft.com/intune/windows-enroll)。  
 
 ---
 
 **问：我没有收到任何错误信息，但尝试将电脑加入 Azure AD 为何会失败？**
 
-**答：** 可能是由于使用本地内置管理员帐户登录到设备。 请在使用 Azure Active Directory 加入之前创建不同的本地帐户以完成设置。 
+**答:** 可能是由于使用本地内置管理员帐户登录到设备。 请在使用 Azure Active Directory 加入之前创建不同的本地帐户以完成设置。 
 
 ---
 
 问：Windows 10 设备上的 MS-Organization-P2P-Access 证书是什么？
 
-**答：** MS-Organization-P2P-Access 证书由 Azure AD 颁发给加入 Azure AD 的设备和加入混合 Azure AD 的设备。 这些证书用于在同一租户中的设备之间为远程桌面场景启用信任。 一个证书颁发给设备，另一个颁发给用户。 设备证书在 `Local Computer\Personal\Certificates` 中提供，且有效期为一天。 如果设备在 Azure AD 中仍然处于活动状态，则续订此证书（通过颁发新证书）。 用户证书在 `Current User\Personal\Certificates` 中提供，且此证书有效期为一天，但是用户尝试与另一个加入 Azure AD 的设备进行远程桌面会话时，会按需颁发。 到期不续期。 这两个证书都是使用 `Local Computer\AAD Token Issuer\Certificates` 中的 MS-Organization-P2P-Access 证书颁发的。 此证书由 Azure AD 在设备注册期间颁发。 
+**答:** MS-Organization-P2P-Access 证书由 Azure AD 颁发给加入 Azure AD 的设备和加入混合 Azure AD 的设备。 这些证书用于在同一租户中的设备之间为远程桌面场景启用信任。 一个证书颁发给设备，另一个颁发给用户。 设备证书在 `Local Computer\Personal\Certificates` 中提供，且有效期为一天。 如果设备在 Azure AD 中仍然处于活动状态，则续订此证书（通过颁发新证书）。 用户证书在 `Current User\Personal\Certificates` 中提供，且此证书有效期为一天，但是用户尝试与另一个加入 Azure AD 的设备进行远程桌面会话时，会按需颁发。 到期不续期。 这两个证书都是使用 `Local Computer\AAD Token Issuer\Certificates` 中的 MS-Organization-P2P-Access 证书颁发的。 此证书由 Azure AD 在设备注册期间颁发。 
 
 ---
 
 问：为什么在 Windows 10 设备上看到多个由 MS-Organization-P2P-Access 颁发的过期证书？如何删除它们？
 
-**答：** 在 Windows 10 版本 1709 及更低版本上，由于密码问题，过期的 MS-Organization-P2P-Access 证书会继续存在于计算机存储中。 如果使用的是无法处理大量过期证书的 VPN 客户端（如 Cisco AnyConnect），则用户可能会面临网络连接问题。 此问题在 Windows 10 1803 版本中已修复，自动删除任何此类过期的 MS-Organization-P2P-Access 证书。 可以通过将设备更新到 Windows 10 1803 来解决此问题。 如果无法更新，可以删除这些证书，而不产生任何不利影响。  
+**答:** 在 Windows 10 版本 1709 及更低版本上，由于密码问题，过期的 MS-Organization-P2P-Access 证书会继续存在于计算机存储中。 如果使用的是无法处理大量过期证书的 VPN 客户端（如 Cisco AnyConnect），则用户可能会面临网络连接问题。 此问题在 Windows 10 1803 版本中已修复，自动删除任何此类过期的 MS-Organization-P2P-Access 证书。 可以通过将设备更新到 Windows 10 1803 来解决此问题。 如果无法更新，可以删除这些证书，而不产生任何不利影响。  
 
 ---
 
@@ -208,7 +214,7 @@ ms.locfileid: "56269053"
 
 **问：在哪里可以找到用于诊断加入混合 Azure AD 失败的故障排除信息？**
 
-**答：** 有关排除故障的信息，请参阅以下文章：
+**答:** 有关排除故障的信息，请参阅以下文章：
 
 - [排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题](troubleshoot-hybrid-join-windows-current.md)
 
@@ -216,7 +222,7 @@ ms.locfileid: "56269053"
  
 **问：对于 Azure AD 设备列表中已加入 Windows 10 混合 Azure AD 的设备，我为何看到了重复的 Azure AD 已注册记录？**
 
-**答：** 用户在已加入域的设备上将其帐户添加到应用时，可能会提示他们“将帐户添加到 Windows？” 如果他们在提示时输入“确定”，设备会注册 Azure AD。 信任类型标记为已注册 Azure AD。 在组织中启用混合 Azure AD 加入后，设备还将加入混合 Azure AD。 然后显示同一设备的两种设备状态。 
+**答:** 用户在已加入域的设备上将其帐户添加到应用时，可能会提示他们“将帐户添加到 Windows？” 如果他们在提示时输入“确定”，设备会注册 Azure AD。 信任类型标记为已注册 Azure AD。 在组织中启用混合 Azure AD 加入后，设备还将加入混合 Azure AD。 然后显示同一设备的两种设备状态。 
 
 混合 Azure AD 加入优先于 Azure AD 已注册状态。 因此，对于任何身份验证和条件访问评估，视作设备已加入混合 Azure AD。 可以安全地从 Azure AD 门户中删除已注册 Azure AD 设备记录。 了解[避免或清理 Windows 10 计算机上的此双状态](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)。 
 
@@ -225,13 +231,19 @@ ms.locfileid: "56269053"
 
 **问：为什么我的用户在更改其 UPN 后，在 Windows 10 已联接混合 Azure AD 的设备上遇到了问题？**
 
-**答：** 当前，已联接混合 Azure AD 的设备不完全支持 UPN 更改。 虽然用户可以登录到设备并访问其本地应用程序，但在 UPN 更改后，他们的 Azure AD 身份验证仍会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，需要从 Azure AD 中分离设备（使用提升的权限运行“dsregcmd /leave”），然后重新联接（自动执行）来解决问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
+**答:** 当前，已联接混合 Azure AD 的设备不完全支持 UPN 更改。 虽然用户可以登录到设备并访问其本地应用程序，但在 UPN 更改后，他们的 Azure AD 身份验证仍会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，需要从 Azure AD 中分离设备（使用提升的权限运行“dsregcmd /leave”），然后重新联接（自动执行）来解决问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
 
 ---
 
 **问：Windows 10 混合 Azure AD 联接设备是否需要连接到域控制器以获取云资源的访问权限？**
 
-**答：** 不是。 在 Windows 10 混合 Azure AD 联接已完成，并且用户至少登录了一次之后，设备无需连接到域控制器即可访问云资源。 Windows 10 可以通过 Internet 连接从任何位置单一登录到 Azure AD 应用程序（除非更改了密码时）。 如果在公司网络外部更改了密码（例如使用 Azure AD SSPR），则用户需要先连接到域控制器，然后才能使用其新密码登录到设备。 否则，他们只能使用其旧密码登录，这会由 Azure AD 宣告无效，阻止进行单一登录。 但是在使用 Windows Hello 企业版时，不会出现此问题。 使用 Windows Hello 企业版登录的用户可在密码更改之后继续单一登录到 Azure AD 应用程序，即使他们未连接到其域控制器。 
+**答:** 通常不会，更改用户的密码时除外。 在 Windows 10 混合 Azure AD 联接已完成，并且用户至少登录了一次之后，设备无需连接到域控制器即可访问云资源。 Windows 10 可以通过 Internet 连接从任何位置单一登录到 Azure AD 应用程序（除非更改了密码时）。 使用 Windows hello 企业版登录继续获取单个实体的用户登录到 Azure AD 应用程序甚至更改密码后，即使它们没有连接到其域控制器。 
+
+---
+
+**问：如果用户更改其密码，并尝试登录到其 Windows 10 混合 Azure AD 会发生什么情况已加入公司网络外部的设备？**
+
+**答:**（例如，通过使用 Azure AD SSPR） 更改公司网络外部的密码时，如果用户使用新密码登录将失败。 对于混合 Azure AD 加入设备的本地 Active Directory 是主要授权机构。 如果设备不具有与域控制器建立直通，不能验证新密码。 因此，用户需要与域控制器 （无论是通过 VPN 或公司网络中） 建立连接，它们可以在登录到设备的新密码之前。 否则，他们可以仅注册使用其旧密码由于在 Windows 中的缓存的登录功能。 然而，旧密码由 Azure AD 在令牌请求期间失效，因此，防止上单一登录和失败的任何基于设备的条件性访问策略。 如果您使用 Windows hello 企业版，则不会出现此问题。 
 
 ---
 
@@ -240,11 +252,11 @@ ms.locfileid: "56269053"
 
 **问：** 我可以注册 Android 或 iOS BYOD 设备吗？
 
-**答：** 可以，但只有使用 Azure 设备注册服务的混合客户才能注册。 Active Directory 联合身份验证服务 (AD FS) 中的本地设备注册服务不支持此功能。
+**答:** 可以，但只有使用 Azure 设备注册服务的混合客户才能注册。 Active Directory 联合身份验证服务 (AD FS) 中的本地设备注册服务不支持此功能。
 
 **问：** 如何注册 macOS 设备？
 
-**答：** 执行以下步骤：
+**答:** 执行以下步骤：
 
 1.  [创建符合性策略](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
 2.  [定义适用于 macOS 设备的条件访问策略](../active-directory-conditional-access-azure-portal.md) 

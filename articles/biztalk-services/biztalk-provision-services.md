@@ -11,22 +11,22 @@ ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: fe56b84b881b2afce9da9a7f7dfe4637c3494aa8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 05327c05594d38caf5e3d54f8a13eaaaac3588ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261955"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097434"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>使用 Azure 门户创建 BizTalk 服务
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
-
+> 
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
-
+> 
 > [!TIP]
 > 若要登录 Azure 门户，需要使用 Azure 帐户和 Azure 订阅。 如果没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。 请参阅 [Azure 免费试用](https://go.microsoft.com/fwlink/p/?LinkID=239738)。
 
@@ -143,8 +143,8 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 <br/>
 
 <ul>
-<li>增强型密钥使用：Azure BizTalk 服务要求至少进行服务器身份验证。</li>
-<li>公用名：请输入 Azure BizTalk 服务 URL 的完全限定域名 (FQDN)。 请参阅本文中的<a HREF="#CreateService">创建 BizTalk 服务</a>。</li>
+<li><strong>增强型密钥用法</strong>:至少，Azure BizTalk 服务需要服务器身份验证。</li>
+<li><strong>公用名</strong>:输入 Azure BizTalk 服务 URL 的完全限定的域名 (FQDN)。 请参阅本文中的<a HREF="#CreateService">创建 BizTalk 服务</a>。</li>
 </ul>
 <br/>
 创建 BizTalk 服务后，便可以添加新的或不同的证书。
@@ -165,11 +165,11 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
  有关详细信息，包括如何创建和管理混合连接，请参阅 [混合连接](integration-hybrid-connection-overview.md) 。
 
 ## <a name="next-steps"></a>后续步骤
-现在已创建 BizTalk 服务，可以让自己熟悉以下各个选项卡： [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)。 BizTalk 服务已准备就绪，可用于应用程序了。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=235197)。
+现在，创建 BizTalk 服务时，了解了相关的不同[BizTalk 服务：](biztalk-dashboard-monitor-scale-tabs.md)中熟悉各个不同的选项卡了。 BizTalk 服务已准备就绪，可用于应用程序了。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=235197)。
 
 ## <a name="see-also"></a>另请参阅
 * [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)<br/>
-* [BizTalk 服务状态图表](biztalk-service-state-chart.md)<br/>
+* [BizTalk 服务：状态图表](biztalk-service-state-chart.md)<br/>
 * [BizTalk 服务：备份和还原](biztalk-backup-restore.md)<br/>
 * [BizTalk 服务：限制](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)<br/>

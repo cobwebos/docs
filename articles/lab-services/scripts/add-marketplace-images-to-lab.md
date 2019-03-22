@@ -1,5 +1,5 @@
 ---
-title: PowerShell 脚本：将市场映像添加到 Azure 开发测试实验室中的实验室 | Microsoft Docs
+title: PowerShell 脚本：向 Azure 开发测试实验室的实验室添加 marketplace 映像 |Microsoft Docs
 description: 此 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。
 services: lab-services
 author: spelluru
@@ -12,20 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: a3a007bf19a28e6f361837856f83a191a761ef9b
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: e099a29a198d43bf8d00487ab45e2648479aedbe
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247408"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194771"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 将市场映像添加到 Azure 开发测试实验室中的实验室
 
 此示例 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。 
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * 实验室。 此脚本要求拥有现有的实验室。 
 
 ## <a name="sample-script"></a>示例脚本
@@ -38,10 +40,10 @@ ms.locfileid: "43247408"
 
 | 命令 | 说明 |
 |---|---|
-| [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) | 基于指定参数搜索资源。 |
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | 获取资源。 |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | 修改资源。 |
-| [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | 创建资源。 |
+| Find-AzResource | 基于指定参数搜索资源。 |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | 获取资源。 |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | 修改资源。 |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | 创建资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

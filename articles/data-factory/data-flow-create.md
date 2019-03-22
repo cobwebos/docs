@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: b706e229bed48c821d5ca772450df320fd7e0b7f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270887"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728227"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>创建 Azure 数据工厂数据流
 
@@ -34,7 +34,12 @@ ms.locfileid: "56270887"
 
 [可在此处找到用于这些示例的数据](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata)。 下载示例数据并将文件存储在 Azure Blob 存储帐户中，以便执行示例。
 
+## <a name="create-new-data-flow"></a>创建新的数据流
+
 使用 ADF UI 中的“创建资源”“加号”按钮创建数据流
 
 ![数据流选项](media/data-flow/newresource.png "新资源")
 
+## <a name="next-steps"></a>后续步骤
+
+开始构建使用数据转换[源转换](data-flow-source.md)。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 3fa890b02c791f26f3f25bf2418b105d1116ca75
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.openlocfilehash: f66101d9847c57c5e078c3484a243e7b38823f53
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094420"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001787"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>将 Windows VM 从 Amazon Web Services (AWS) 移到 Azure 虚拟机
 
@@ -46,7 +46,7 @@ ms.locfileid: "50094420"
 
 ## <a name="export-and-download-the-vhd"></a>导出和下载 VHD 
 
-将 EC2 实例导出到 Amazon S3 存储桶中的 VHD。 执行 Amazon 文档[使用 VM导入/导出功能导出实例作为 VM](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) 中所述的步骤，然后运行 [create-instance-export-task](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) 命令将 EC2 实例导出到 VHD 文件。 
+将 EC2 实例导出到 Amazon S3 存储桶中的 VHD。 执行 Amazon 文档[使用 VM导入/导出功能导出实例作为 VM](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) 中所述的步骤，然后运行 [create-instance-export-task](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) 命令将 EC2 实例导出到 VHD 文件。 
 
 导出的 VHD 文件将保存在你指定的 Amazon S3 存储桶中。 下面是用于导出 VHD 的基本语法，只需将 <brackets> 中的占位符文本替换为你的信息即可。
 
@@ -55,7 +55,7 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-导出 VHD 后，按照[如何从 S3 存储桶下载对象？](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html)中的说明从 S3 存储桶下载 VHD 文件。 
+导出 VHD 后，按照[如何从 S3 存储桶下载对象？](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html)中的说明从 S3 存储桶下载 VHD 文件。 
 
 > [!IMPORTANT]
 > AWS 将收取用于下载 VHD 的数据传输费用。 有关详细信息，请参阅 [Amazon S3 定价](https://aws.amazon.com/s3/pricing/)。

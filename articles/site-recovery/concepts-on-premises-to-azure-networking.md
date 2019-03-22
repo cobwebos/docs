@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: a78e5c411c03aaff07818c4e45183f8eff40492d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 334537e77d5f291dc38e008af7fed9a4ea973265
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211349"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108842"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>设置在故障转移后用于连接到 Azure VM 的 IP 地址
 
@@ -49,8 +49,8 @@ Site Recovery 支持在通过子网故障转移到 Azure 时保留固定的 IP �
 - Woodgrove Bank 在本地站点中托管商业应用程序。 它们在 Azure 上托管其移动应用。
 - 其本地边缘网络和 Azure 虚拟网络之间存在 VPN 站点到站点连接。 由于存在 VPN 连接，Azure 中的虚拟网络显示为本地网络的扩展。
 - Woodgrove 希望使用 Site Recovery 将本地工作负荷复制到 Azure。
- - Woodgrove 的应用依赖于硬编码 IP 地址，因此需要在故障转移到 Azure 后保留应用的 IP 地址。
- - Azure 中运行的资源使用 IP 地址范围 172.16.1.0/24、172.16.2.0/24。
+  - Woodgrove 的应用依赖于硬编码 IP 地址，因此需要在故障转移到 Azure 后保留应用的 IP 地址。
+  - Azure 中运行的资源使用 IP 地址范围 172.16.1.0/24、172.16.2.0/24。
 
 ![运行子网故障转移前](./media/site-recovery-network-design/network-design7.png)
 

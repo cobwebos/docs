@@ -3,20 +3,20 @@ title: 在 Azure 数据工厂中创建自承载集成运行时 | Microsoft Docs
 description: 了解如何在 Azure 数据工厂中创建自承载集成运行时，从而允许数据工厂访问专用网络中存储的数据。
 services: data-factory
 documentationcenter: ''
-author: nabhishek
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
+author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+manager: craigg
+ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493579"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838793"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -25,11 +25,13 @@ ms.locfileid: "55493579"
 
 本文档介绍如何创建和配置自承载 IR。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="high-level-steps-to-install-a-self-hosted-ir"></a>安装自承载 IR 的概要步骤
 1. 创建自我托管的集成运行时。 可以使用 Azure 数据工厂 UI 完成此任务。 下面是 PowerShell 示例：
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
   
 2. 在本地计算机上[下载](https://www.microsoft.com/download/details.aspx?id=39717)并安装自承载集成运行时。
@@ -37,7 +39,7 @@ ms.locfileid: "55493579"
 3. 检索身份验证密钥并使用密钥注册自承载集成运行时。 下面是 PowerShell 示例：
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>使用 Azure 资源管理器模板在 Azure VM 上设置自承载 IR（自动化）
@@ -59,7 +61,7 @@ ms.locfileid: "55493579"
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>使用自承载 IR 的注意事项
 
 - 单个自承载集成运行时可用于多个本地数据源。 单个自承载集成运行时可与同一 Azure Active Directory 租户中的另一个数据工厂共享。 有关详细信息，请参阅[共享自承载集成运行时](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)。
-- 在一台计算机上只能安装一个自承载集成运行时实例。 如果有两个需要访问本地数据源的数据工厂，则需要在两台本地计算机上安装自承载集成运行时。 换言之，自承载集成运行时与特定的数据工厂相关联。
+- 在一台计算机上只能安装一个自承载集成运行时实例。 如果您有两个需要访问本地数据源的数据工厂，则需要两个在本地计算机上每个数据工厂从安装自承载的集成运行时或使用[自承载 IR 共享功能](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)与另一个数据工厂共享自承载的集成运行时。  
 - 自承载集成运行时不需要位于数据源所在的计算机上。 但是，使自承载集成运行时更接近于数据源会减少自承载集成运行时连接到数据源的时间。 建议在不同于托管本地数据源的计算机上安装自承载集成运行时。 当自承载集成运行时和数据源位于不同的计算机上时，自承载集成运行时不会与数据源竞争资源。
 - 可将不同计算机上的多个自承载集成运行时连接到同一本地数据源。 例如，可以让两个自承载集成运行时服务两个数据工厂，但这两个数据工厂注册了同一个本地数据源。
 - 如果已在计算机中安装了为 Power BI 方案提供服务的网关，那么在其他计算机上安装用于 Azure 数据工厂的单独自承载集成运行时。
@@ -68,7 +70,7 @@ ms.locfileid: "55493579"
 - 即使数据存储位于 Azure IaaS 虚拟机上的云中，也必须使用自承载集成运行时。
 - Windows Server 上安装的自承载集成运行时中的任务可能会失败，因为 Windows Server 中启用了符合 FIPS 标准的加密。 要解决此问题，请禁用服务器上符合 FIPS 标准的加密。 要禁用符合 FIPS 标准的加密，请将以下注册表值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 支持的操作系统版本有 Windows 7 Service Pack 1、Windows 8.1、Windows 10、Windows Server 2008 R2 SP1、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016。 不支持在域控制器上安装自承载集成运行时。
 - 需要 .NET Framework 4.6.1 或更高版本。 如果在 Windows 7 计算机上安装自承载集成运行时，请安装 .NET Framework 4.6.1 或更高版本。 有关详细信息，请参阅 [.NET Framework 系统需求](/dotnet/framework/get-started/system-requirements)。
@@ -96,7 +98,7 @@ ms.locfileid: "55493579"
 9. 使用 Azure PowerShell 获取身份验证密钥。 下面是检索身份验证密钥的 PowerShell 示例：
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 11. 在计算机上运行的 Microsoft Integration Runtime Configuration Manager 的“注册集成运行时(自承载)”页上，执行以下步骤：
 
@@ -112,7 +114,7 @@ ms.locfileid: "55493579"
 * 更高的自承载集成运行时可用性，使其不再是大数据解决方案或与 Azure 数据工厂集成的云数据中的单点故障，从而确保最多 4 个节点的连续性。
 * 在本地和云数据存储之间移动数据期间提高了性能和吞吐量。 获取有关[性能比较](copy-activity-performance.md)的更多信息。
 
-可以通过从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时来关联多个节点。 然后，根据此[教程](tutorial-hybrid-copy-powershell.md)中所述，使用通过 **New-AzureRmDataFactoryV2IntegrationRuntimeKey** cmdlet 获取的任一身份验证密钥来注册自承载集成运行时。
+可以通过从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)安装自承载集成运行时来关联多个节点。 然后，它通过使用任一身份验证密钥从获取的注册**新建 AzDataFactoryV2IntegrationRuntimeKey** cmdlet，如中所述[教程](tutorial-hybrid-copy-powershell.md)。
 
 > [!NOTE]
 > 不需要为关联每个节点而创建新的自承载集成运行时。 可以在另一台计算机上安装自承载集成运行时，并使用同一身份验证密钥注册它。 
@@ -143,7 +145,7 @@ ms.locfileid: "55493579"
 - 不支持使用 CNG 密钥的证书。  
 
 > [!NOTE]
-> 此证书用于加密自承载 IR 节点上的端口，以实现**节点到节点通信**（状态同步），同时从本地网络内部**将 PowerShell cmdlet 用于链接的服务凭据设置**。 如果拥有的专用网络环境不安全或同时想要确保专用网络内部节点之间通信的安全性，建议使用此证书。 自承载 IR 至其他数据存储的数据移动始终会使用加密通道，无论是否设置此证书均是如此。 
+> 使用此证书来加密使用的自承载 IR 节点上的端口**节点到节点通信**（有关状态同步，其中包括链接的服务凭据在节点之间的同步） 和 while **使用 PowerShell cmdlet 为链接的服务凭据设置**从本地网络中。 如果拥有的专用网络环境不安全或同时想要确保专用网络内部节点之间通信的安全性，建议使用此证书。 自承载 IR 至其他数据存储的数据移动始终会使用加密通道，无论是否设置此证书均是如此。 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>与多个数据工厂共享自承载集成运行时
 
@@ -198,8 +200,6 @@ ms.locfileid: "55493579"
 
 * 支持此功能的 Azure 数据工厂 .NET SDK 为 1.1.0 或更高版本。
 
-* 支持此功能的 Azure PowerShell 版本为 6.6.0 或更高版本（AzureRM.DataFactoryV2，0.5.7 或更高版本）。
-
 * 若要授予权限，用户在共享 IR 所在的数据工厂中需要“所有者”角色或继承的“所有者”角色。
 
 * 共享功能仅适用于同一 Azure Active Directory 租户中的数据工厂。
@@ -222,7 +222,7 @@ ms.locfileid: "55493579"
 
 在企业防火墙级别，需配置以下域和出站端口：
 
-域名 | 端口 | 说明
+域名 | 端口 | 描述
 ------------ | ----- | ------------
 * .servicebus.windows.net | 443 | 用来与后端数据移动服务通信
 *.core.windows.net | 443 | 用于通过 Azure Blob 存储（如果已配置）进行临时复制
@@ -343,7 +343,7 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 > [!NOTE]
 > 凭据管理器应用程序目前不可用于加密 Azure 数据工厂 V2 中的凭据。  
 
-如果选择不打开自承载集成运行时计算机上的端口 8060，请使用除“设置凭据”应用程序以外的机制来配置数据存储凭据。 例如，可以使用 **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** PowerShell cmdlet。
+如果选择不打开自承载集成运行时计算机上的端口 8060，请使用除“设置凭据”应用程序以外的机制来配置数据存储凭据。 例如，可以使用**新建 AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell cmdlet。
 
 
 ## <a name="next-steps"></a>后续步骤

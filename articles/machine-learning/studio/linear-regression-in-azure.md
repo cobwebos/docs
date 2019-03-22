@@ -1,21 +1,21 @@
 ---
-title: 将 Excel 中的分析信息迁移到 Azure 机器学习工作室
+title: 从 Excel 迁移分析
 titleSuffix: Azure Machine Learning Studio
 description: Excel 中和 Azure 机器学习工作室中的线性回归模型比较
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5db8c4be9317706fcc8a31b916cff72fd13596d6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453285"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864824"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>将 Excel 中的分析信息迁移到 Azure 机器学习工作室
 
@@ -102,14 +102,14 @@ ms.locfileid: "56453285"
 
 *Web 服务仪表板*部分包括可下载的 Excel 工作簿。 该工作簿已使用 Web 服务 API 进行预格式化，并嵌入了架构信息。 单击“下载 Excel 工作簿”时，工作簿会打开，用户可以将其保存到本地计算机。 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
+![从 Web 服务仪表板下载 Excel 工作簿](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 在工作簿打开时，请将预定义的参数复制到蓝色的 Parameter 部分，如下所示。 一旦输入这些参数，Excel 即会调用机器学习 Web 服务，而且会在绿色预测值部分显示预测的评分标签。 该工作簿会根据在 Parameters 下输入的所有行项，继续根据训练模型创建预测。 有关如何使用此功能的详细信息，请参阅[从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)。 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
+![模板 Excel 工作簿连接到已部署的 web 服务](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>优化和进一步实验
-至此，我们已经有了一个使用 Excel 模型的基线，接下来我们对机器学习线性回归模型进行了优化。 我们使用了模块[基于筛选器的功能选择][filter-based-feature-selection]来改善所选的初始数据元素，并且它帮助我们实现了平均绝对误差 4.6% 的性能提升。 对于将来的项目，我们将使用此功能，它可以在通过数据属性进行迭代以找出用于建模的正确功能集方面，为我们节省数周的时间。 
+至此，我们已经有了一个使用 Excel 模型的基线，接下来我们对机器学习线性回归模型进行了优化。 我们使用了模块[基于筛选器的功能选择][filter-based-feature-selection]来改善所选的初始数据元素，并且它帮助我们实现了平均绝对误差 4.6% 的性能提升。 针对将来的项目中，我们将使用此功能，它可以节省我们周中循环访问数据属性以查找正确的要用于建模的功能集。 
 
 接下来，我们计划在实验中包含其他算法，如[贝叶斯][bayesian-linear-regression]或[提升决策树][boosted-decision-tree-regression]，用于性能比较。 
 
@@ -132,13 +132,9 @@ ms.locfileid: "56453285"
 ## <a name="resources"></a>资源
 下面是一些可帮助用户处理回归的资源： 
 
-* Excel 中的回归。 如果从未尝试在 Excel 中使用回归，可参阅本教程轻松完成操作：[http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* Excel 中的回归。 如果从未尝试在 Excel 中使用回归，可参阅本教程轻松完成操作：[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
 * 回归与预测。 Tyler Chessman 撰写的博客文章，介绍了如何在 Excel 中进行时间序列预测，其中包括适合初学者的线性回归描述。 [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* 普通最小二乘法（线性回归）：缺陷、问题和陷阱。 有关回归的简介和讨论：[http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
-
-[1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
-[2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png
-
+* 普通最小二乘法（线性回归）：缺陷、问题和陷阱。 有关回归的简介和讨论：[https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

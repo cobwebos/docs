@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c926f0c80ce56cac3106ad97ec3ec2e18a8e2cc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109565"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121972"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>备份 StorSimple 虚拟阵列上的共享或卷
 
@@ -32,7 +32,7 @@ StorSimple Virtual Array 是一种混合云存储本地虚拟设备，可以配�
 
 ## <a name="back-up-shares-and-volumes"></a>备份共享和卷
 
-备份可提供时间点保护，并可提高可恢复性，同时最大限度地降低共享和卷的恢复时间。 可以采用两种方式备份 StorSimple 设备上的共享或卷：**按计划**或**手动**。 以下部分介绍上述每种方法。
+备份可提供时间点保护，并可提高可恢复性，同时最大限度地降低共享和卷的恢复时间。 可以备份的共享或卷中两种方法在 StorSimple 设备上：**安排**或**手动**。 以下部分介绍上述每种方法。
 
 ## <a name="change-the-backup-start-time"></a>更改备份开始时间
 
@@ -58,7 +58,7 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
    
     ![导航到“备份策略”](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 ### <a name="take-a-manual-backup"></a>创建手动备份
 
@@ -100,15 +100,15 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
     ![导航到“备份目录”](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. 指定要用于筛选的以下条件：
    
-    - **时间范围** - 可以是“过去 1 小时”、“过去 24 小时”、“过去 7 天”、“过去 30 天”、“过去一年”和“自定义日期”。
+   - **时间范围** - 可以是“过去 1 小时”、“过去 24 小时”、“过去 7 天”、“过去 30 天”、“过去一年”和“自定义日期”。
     
-    - **设备** - 从已向 StorSimple Device Manager 服务注册的文件服务器或 iSCSI 服务器的列表中选择。
+   - **设备** - 从已向 StorSimple Device Manager 服务注册的文件服务器或 iSCSI 服务器的列表中选择。
    
-    - **启动** - 可以是自动**计划**启动（由备份策略启动）或**手动**启动（由用户启动）。
+   - **启动** - 可以是自动**计划**启动（由备份策略启动）或**手动**启动（由用户启动）。
    
-    ![筛选备份](./media/storsimple-virtual-array-backup/viewbackups2.png)
+     ![筛选备份](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. 单击“应用” 。 已筛选的备份列表会显示在“备份目录”边栏选项卡中。 请注意，在给定的时间只能显示 100 个备份元素。
+3. 单击“应用”。 已筛选的备份列表会显示在“备份目录”边栏选项卡中。 请注意，在给定的时间只能显示 100 个备份元素。
    
     ![已更新的备份目录](./media/storsimple-virtual-array-backup/viewbackups3.png)
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: aaebad004e5d426ca1c593941b15a2515c4476de
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 98f22f531ca15bf88cd7d0a9add2851651e2eec7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635657"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118317"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
 
@@ -23,7 +23,7 @@ ms.locfileid: "53635657"
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) 是一种 Java 集成开发环境 (IDE)，用于开发计算机软件。 在 Hortonworks 沙盒上开发并测试应用程序以后，即可将应用程序移至 [Azure HDInsight](apache-hadoop-introduction.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 开始学习本教程之前，必须做好以下准备：
 
@@ -53,20 +53,20 @@ ms.locfileid: "53635657"
    1. 选择“HDInsight” > “Spark on HDInsight (Scala)”
    2. 在“生成工具”列表中，基于方案选择以下项之一：
 
-    * **Maven**：用于支持 Scala 项目创建向导。
-    * **SBT**：用于管理依赖项和生成 Scala 项目。
+      * **Maven**：用于支持 Scala 项目创建向导。
+      * **SBT**：用于管理依赖项和生成 Scala 项目。
 
    ![“新建项目”对话框](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. 选择“**下一步**”。
 3. 在接下来显示的“新建项目”对话框中，完成以下步骤：
 
-    1. 在“项目名称”框中输入项目名称。
-    2. 在“项目位置”框中输入项目位置。
-    3. 在“项目 SDK”下拉列表旁边，依次选择“新建”和“JDK”，并指定 Java JDK 1.7 或更高版本的文件夹。 为 Spark 2.x 群集选择 **Java 1.8**。 为 Spark 1.x 群集选择 **Java 1.7**。 默认位置为 C:\Program Files\Java\jdk1.8.x_xxx。
-    4. 在“Spark 版本”下拉列表中，Scala 项目创建向导集成了 Spark SDK 和 Scala SDK 的正确版本。 如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”。 否则，请选择“Spark 2.x”。 本示例使用“Spark 1.6.2 (Scala 2.10.5)”。 请确保使用标记为 Scala 2.10.x 的存储库。 不要使用标记为 Scala 2.11.x 的存储库。
+   1. 在“项目名称”框中输入项目名称。
+   2. 在“项目位置”框中输入项目位置。
+   3. 在“项目 SDK”下拉列表旁边，依次选择“新建”和“JDK”，并指定 Java JDK 1.7 或更高版本的文件夹。 为 Spark 2.x 群集选择 **Java 1.8**。 为 Spark 1.x 群集选择 **Java 1.7**。 默认位置为 C:\Program Files\Java\jdk1.8.x_xxx。
+   4. 在“Spark 版本”下拉列表中，Scala 项目创建向导集成了 Spark SDK 和 Scala SDK 的正确版本。 如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”。 否则，请选择“Spark 2.x”。 本示例使用“Spark 1.6.2 (Scala 2.10.5)”。 请确保使用标记为 Scala 2.10.x 的存储库。 不要使用标记为 Scala 2.11.x 的存储库。
     
-    ![创建 IntelliJ Scala 项目属性](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
+      ![创建 IntelliJ Scala 项目属性](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
 
 4. 选择“完成”。

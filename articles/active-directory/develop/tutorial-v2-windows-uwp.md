@@ -4,7 +4,7 @@ description: 通用 Windows 平台应用程序 (UWP) 如何通过 Azure Active D
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/18/2019
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e130da9bf12d25cc5c77c825512717bdf2ba5a1
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
-ms.translationtype: HT
+ms.openlocfilehash: b00a4f9ee561e8e9356b36d4a14b4bcb4f9a3357
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408810"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202854"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
@@ -37,7 +37,7 @@ ms.locfileid: "56408810"
 
 ## <a name="how-this-guide-works"></a>本指南的工作原理
 
-![本指南工作原理的示意图](./media/tutorial-v2-windows-uwp/uwp-intro.png)
+![显示了本教程中生成的示例应用程序的工作原理](./media/tutorial-v2-windows-uwp/uwp-intro-updated.png)
 
 本指南创建的示例 UWP 应用程序查询从 Azure Active Directory v2.0 终结点接受令牌的 Microsoft 图形 API 或 Web API。 在此方案中，通过 Authorization 标头向 HTTP 请求添加了令牌。 Microsoft 身份验证库 (MSAL) 处理令牌获取和续订。
 
@@ -45,7 +45,7 @@ ms.locfileid: "56408810"
 
 本指南使用以下 NuGet 包：
 
-|库|说明|
+|库|描述|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft 身份验证库|
 
@@ -355,7 +355,7 @@ ms.locfileid: "56408810"
 
 “令牌信息”框中还会显示通过 `AcquireTokenAsync` 或 `AcquireTokenSilentAsync` 获得的令牌的相关基本信息：
 
-|属性  |格式  |说明 |
+|属性  |格式  |描述 |
 |---------|---------|---------|
 |**名称** |用户全名|用户的名字和姓氏。|
 |**用户名** |<span>user@domain.com</span> |用于标识用户的用户名。|

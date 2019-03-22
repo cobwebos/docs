@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 9980650008e2d2c2f768dcb3256ea5344119fa13
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.openlocfilehash: b515a0b226723989b1cc73356f1377da421dc9aa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425174"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456323"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虚拟机使用情况
 通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](../../billing/billing-understand-your-bill.md)。
@@ -43,7 +43,7 @@ ms.locfileid: "31425174"
 | 资源组     | 部署的资源正在其中运行的资源组。 有关详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    “MyRG”                                                                                                                                                                                                                                                                                                                                                        |
 | 实例 ID        | 资源的标识符。 此标识符包含你在资源创建时为其指定的名称。 对于 VM，实例 ID 包含 SubscriptionId、ResourceGroupName 和 VMName（或规模集使用情况的规模集名称）。                                                                                                                                                                                                                                                                                                                                                                                                                    | “/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1”<br><br>或<br><br>“/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1”                                                                                           |
 | 标记               | 分配给资源的标记。 使用标记对计费记录进行分组。 了解如何[标记虚拟机](tag.md)。 这仅适用于资源管理器 VM。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | “{"myDepartment":"RD"，"myUser":"myName"}”                                                                                                                                                                                                                                                                                                                        |
-| 其他信息    | 服务特定的元数据。 对于 VM，我们在其他信息字段中填充以下内容： <ul><li>映像类型 - 所运行的特定映像。 在“映像类型”下找到受支持字符串的完整列表。</li><li>服务类型：所部署的大小。</li><li>VMName：VM 的名称。 仅规模集 VM 才填充此字段。 如果需要规模集 VM 的 VM 名称，可在上面的实例 ID 字符串中找到。</li><li>UsageType：指定其所代表的使用情况类型。<ul><li>ComputeHR 是基础 VM（如 Standard_D1_v2）的计算小时数使用情况。</li><li>ComputeHR_SW 是 VM 使用高级软件（如 Microsoft R Server）产生的高级软件费用。</li></ul></li></ul>    | 虚拟机 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}<br><br>虚拟机规模集 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}<br><br>高级软件 {"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"} |
+| 其他信息    | 服务特定的元数据。 对于 VM，我们在其他信息字段中填充以下内容： <ul><li>映像类型 - 所运行的特定映像。 在“映像类型”下找到受支持字符串的完整列表。</li><li>服务类型：所部署的大小。</li><li>VMName：VM 的名称。 仅规模集 VM 才填充此字段。 如果需要规模集 VM 的 VM 名称，可在上面的实例 ID 字符串中找到。</li><li>UsageType:这将指定的使用情况，这表示的类型。<ul><li>ComputeHR 是基础 VM（如 Standard_D1_v2）的计算小时数使用情况。</li><li>ComputeHR_SW 是 VM 使用高级软件（如 Microsoft R Server）产生的高级软件费用。</li></ul></li></ul>    | 虚拟机 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}<br><br>虚拟机规模集 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}<br><br>高级软件 {"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"} |
 
 ## <a name="image-type"></a>映像类型
 对于 Azure 库中的某些映像，会在其他信息字段中填充映像类型。 这可让用户了解和跟踪自己在虚拟机上部署的内容。 基于已部署映像在此字段填充的值如下所示：
@@ -106,7 +106,7 @@ ms.locfileid: "31425174"
 |    USGovTexas            |    美国德克萨斯州政府                           |
 |    usgovvirginia         |    USGov Virginia                        |
 |    westcentralus         |    美国中西部                       |
-|    westeurope            |    欧洲西部                           |
+|    westeurope            |    西欧                           |
 |    WestIndia             |    印度西部                               |
 |    westus                |    美国西部                               |
 |    westus2               |    美国西部 2                             |
@@ -128,9 +128,9 @@ VM 本身、在 VM 上运行的任何高级软件、与虚拟机相关的存储�
 ### <a name="why-is-the-vmname-blank-in-the-additional-info"></a>为什么其他信息字段中的 VMName 为空白？
 仅规模集 VM 的其他信息字段中才会填充 VMName。 InstanceID 字段包含非规模集 VM 的 VM 名称。
 ### <a name="what-does-computehr-mean-in-the-usagetype-field-in-the-additional-info"></a>ComputeHR 在其他信息的 UsageType 字段中意味着什么？
-ComputeHR 代表计算小时数，表示基本基础架构成本的使用情况事件。 如果 UsageType 为 ComputeHR\_SW，则使用情况事件表示 VM 的高级软件费用。
+ComputeHR 代表计算小时数，表示底层基础结构成本的使用情况事件。 如果 UsageType 为 ComputeHR\_SW，则使用情况事件表示 VM 的高级软件费用。
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>如何知道高级软件是否计费？
-请务必访问 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)，寻找最符合自己需求的 VM 映像。 映像具有软件计划费率。 如果看到费率为“免费”，该软件则不会额外收费。 
+请务必访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)，寻找最符合自己需求的 VM 映像。 映像具有软件计划费率。 如果看到费率为“免费”，该软件则不会额外收费。 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>在使用的服务中，Microsoft.ClassicCompute 和 Microsoft.Compute 有何区别？
 Microsoft.ClassicCompute 表示通过 Azure 服务管理器部署的经典资源。 如果通过资源管理器进行部署，则会在使用的服务中填充 Microsoft.Compute。 详细了解 [Azure 部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>为什么虚拟机使用情况的 InstanceID 字段为空白？

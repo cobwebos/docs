@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 1b97ff461dc3a4f7dcba0a3dbfad71a25cb3f1e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: aa8292aac82f478422f9214c26d974825872eed6
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840192"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226329"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
 
@@ -26,9 +26,9 @@ ms.locfileid: "52840192"
 > - 设置复制，包括复制策略。 添加 vCenter Server，并发现 VM。 
 > - 添加 vCenter Server 并发现 
 > - 创建存储帐户以保存复制数据，并复制 VM。
-> - 执行故障转移。 配置故障转移设置，执行复制虚拟机的 e 设置。
+> - 执行故障转移。 配置故障转移设置中，执行将虚拟机复制设置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 开始之前：
 
@@ -61,7 +61,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ProvisioningState : Succeeded
    Tags              :
    ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/VMwareDRtoAzurePS
-```
+   ```
    
 2. 创建恢复服务保管库。 在下面的示例中，恢复服务保管库名为 VMwareDRToAzurePs，创建于亚洲东部区域，且位于上一步创建的资源组中。
 
@@ -487,4 +487,4 @@ Errors           : {}
 2. 故障转移成功后，可提交故障转移操作并设置从 Azure 到本地 VMware 站点的反向复制。
 
 ## <a name="next-steps"></a>后续步骤
-了解如何使用 [Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery)自动执行更多任务。
+了解如何使用多个任务自动化[Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery)。

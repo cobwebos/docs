@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7b91f63057fa8b781fdfab17e0837a9f5547c1eb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187721"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用媒体编码器高级工作流进行高级编码
 > [!NOTE]
@@ -52,7 +52,7 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 以下示例演示了如何使用**媒体编码器高级工作流**进行编码。
 
-将执行以下步骤：
+执行以下步骤：
 
 1. 创建资产并上传工作流文件。
 2. 创建资产并上传源媒体文件。
@@ -62,12 +62,12 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
     在大多数情况下，该任务的配置字符串为空（如以下示例中所示）。 在某些高级方案中（要求动态设置运行时属性），需要为编码任务提供 XML 字符串。 此类方案的示例包括：创建一个覆盖层、并行或依序媒体拼接、字幕。
 5. 向该任务添加输入资产。
 
-    1. 第 1 个 - 工作流资产。
-    2. 第二个 - 视频资产。
+   1. 第 1 个 - 工作流资产。
+   2. 第二个 - 视频资产。
 
-    >[!NOTE]
-    >必须将工作流资产添加到媒体资产前面的任务。
-   此任务的配置字符串应为空。
+      >[!NOTE]
+      >必须将工作流资产添加到媒体资产前面的任务。
+      此任务的配置字符串应为空。
    
 6. 提交编码作业。
 

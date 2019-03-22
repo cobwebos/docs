@@ -8,14 +8,14 @@ author: preetikr
 ms.author: preetikr
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.date: 01/30/19
+ms.date: 01/30/2019
 tags: connectors
-ms.openlocfilehash: 647df9e73804c8f261b58d5ede7c4b030d448fed
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513302"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673676"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力
 
@@ -30,7 +30,7 @@ ms.locfileid: "55513302"
 
 若要详细了解 Microsoft Graph 安全性，请参阅 [Microsoft Graph 安全性 API 概述](https://aka.ms/graphsecuritydocs)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。 若要了解 Microsoft Flow 或 PowerApps，请参阅[什么是 Flow？](https://flow.microsoft.com/) 或[什么是 PowerApps？](https://powerapps.microsoft.com/)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
@@ -87,7 +87,7 @@ ms.locfileid: "55513302"
 
 若要详细了解可以与此连接器一起使用的查询，请参阅 [Microsoft Graph 安全性警报参考文档](https://docs.microsoft.com/graph/api/alert-list)。 若要使用此连接器增强体验，请详细了解连接器支持的[架构属性警报](https://docs.microsoft.com/graph/api/resources/alert)。
 
-| 操作 | 说明 |
+| 操作 | 描述 |
 |--------|-------------|
 | **获取警报** | 获取按一个或多个[警报属性](https://docs.microsoft.com/graph/api/resources/alert)筛选出的警报，例如： <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
 | **按 ID 获取警报** | 按警报 ID 获取特定警报。 | 
@@ -101,7 +101,7 @@ Microsoft Graph 支持[订阅](https://docs.microsoft.com/graph/api/resources/su
 
 `security/alerts?$filter=status eq 'New'`
 
-| 操作 | 说明 |
+| 操作 | 描述 |
 |--------|-------------|
 | **创建订阅** | [创建订阅](https://docs.microsoft.com/graph/api/subscription-post-subscriptions)，用于通知所发生的任何更改。 可以对此订阅筛选出所需的特定警报类型。 例如，可以创建订阅，用于通知非常严重的警报。 |
 | **获取有效订阅** | [获取未过期的订阅](https://docs.microsoft.com/graph/api/subscription-list)。 | 

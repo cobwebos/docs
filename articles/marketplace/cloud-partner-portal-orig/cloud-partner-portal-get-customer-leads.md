@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 997727acd1bbaf17577160bb996aad7e21d49c86
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 2a425e607ea7dac394ab90a3fed4d4026056bbc1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805579"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118572"
 ---
 <a name="get-customer-leads"></a>获取潜在客户
 ==================
@@ -39,13 +39,13 @@ ms.locfileid: "48805579"
 
 <!-- -->
 
-2.  客户选择“立即获取”即表示同意共享其信息。 此潜在顾客是表达了**初始兴趣**的潜在顾客，我们将共享已表示有兴趣购买产品并且的客户的信息。 潜在顾客位于购买漏斗的顶部。
+1. 客户选择“立即获取”即表示同意共享其信息。 此潜在顾客是表达了**初始兴趣**的潜在顾客，我们将共享已表示有兴趣购买产品并且的客户的信息。 潜在顾客位于购买漏斗的顶部。
 
-    ![“立即获取”选项](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
+   ![“立即获取”选项](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
 
-3.  客户在 [Azure 门户](https://portal.azure.com/)中选择“购买”以购买你的产品。 此潜在顾客是一个**活跃的**潜在顾客，我们将共享已开始部署产品的客户的信息。
+1. 客户在 [Azure 门户](https://portal.azure.com/)中选择“购买”以购买你的产品。 此潜在顾客是一个**活跃的**潜在顾客，我们将共享已开始部署产品的客户的信息。
 
-    ![“购买”选项](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
+   ![“购买”选项](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
 
 
 ### <a name="appsource"></a>AppSource
@@ -72,7 +72,7 @@ ms.locfileid: "48805579"
 
 潜在顾客源的格式为**源**-**操作** |  **套餐**
 
-**源**："AzureMarketplace"、"AzurePortal"、"TestDrive" 和 "AppSource (SPZA)"
+**来源**："AzureMarketplace"、"AzurePortal"、"TestDrive"和"AppSource (SPZA)"
 
 **操作**：
 - "INS" -- 安装。 当客户购买你的产品时，将在 Azure 市场或 AppSource 中执行此操作。
@@ -83,19 +83,19 @@ ms.locfileid: "48805579"
 
 **套餐**
 
-以下示例显示分配给发布者和特定套餐的唯一标识符：checkpoint.check-point-r77-10sg-byol、bitnami.openedxcypress 和 docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a。
+下面的示例显示分配给发布服务器和特定的产品/服务的唯一标识符： checkpoint.check-点-r77-10sg-byol、 bitnami.openedxcypress 和 docusign.3701c77e-1cfa-4 核 56 91e6 3ed0b622145a。
 
 
 ### <a name="customer-info"></a>客户信息
 
 以下示例中的字段显示某个潜在顾客包含的客户信息。
-- 名字：John
-- 姓氏：Smith
+- FirstName:John
+- LastName:Smith
 - 电子邮件：jsmith\@microsoft.com
-- 电话：1234567890
-- 国家/地区：美国
+- 电话:1234567890
+- 国家/地区:美国
 - 公司：Microsoft
-- 职称：CTO
+- 标题：CTO
 
 >[!Note]
 >并非以上示例中的所有数据都始终适用于每个潜在顾客。

@@ -12,12 +12,12 @@ ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: d9a17bdad0bfa4965d36fbe2a2cf3a7890060e98
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 39298d34a0d29eb1e5a4234ffe0e0fcca844226e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772557"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858178"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>快速入门：使用 Azure Stack 门户创建 Linux 服务器虚拟机
 
@@ -43,7 +43,7 @@ ms.locfileid: "57772557"
 
    如果使用 Azure Stack 开发工具包 (ASDK)，可能无法访问 SSH 客户端。 如果需要一个客户端，有多个包含 SSH 客户端的包可供使用。 例如，PuTTY 包含 SSH 客户端和 SSH 密钥生成器 (puttygen.exe)。 有关可用包的详细信息，请阅读以下 Azure 文章：[如何在 Azure 上的 Windows 中使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients)。
 
-   本快速入门使用 PuTTY 生成 SSH 密钥并连接到 Linux 服务器虚拟机。 若要下载并安装 PuTTY，请转到 [https://www.putty.org/](http://www.putty.org)。
+   本快速入门使用 PuTTY 生成 SSH 密钥并连接到 Linux 服务器虚拟机。 若要下载并安装 PuTTY，请转到 [https://www.putty.org/](https://www.putty.org)。
 
 ## <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
 
@@ -77,8 +77,8 @@ ms.locfileid: "57772557"
 
 4. 键入虚拟机信息。 对于“身份验证类型”，请选择“SSH 公钥”。 粘贴保存的 SSH 公钥，然后单击“确定”。
 
-   >[!NOTE]
- 请确保删除密钥中的所有前导和尾随空格。
+   > [!NOTE]
+   > 请确保删除密钥中的所有前导和尾随空格。
 
    ![基本信息面板 - 配置虚拟机](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
@@ -88,10 +88,10 @@ ms.locfileid: "57772557"
 
 6. 在“设置”页上，对默认设置进行任何所需的更改。
    
-    - 从 Azure Stack 版本1808 开始，可以配置**存储**，可以在其中选择使用“托管磁盘”。 在版本 1808 之前，只能使用非托管磁盘。    
-      ![为托管磁盘配置存储](media/azure-stack-quick-linux-portal/linux-03.PNG)
+   - 从 Azure Stack 版本1808 开始，可以配置**存储**，可以在其中选择使用“托管磁盘”。 在版本 1808 之前，只能使用非托管磁盘。    
+     ![为托管磁盘配置存储](media/azure-stack-quick-linux-portal/linux-03.PNG)
     
-    配置准备就绪后，选择“确定”以继续。
+     配置准备就绪后，选择“确定”以继续。
 
 7. 在“摘要”页上，单击“确定”开始部署虚拟机。  
    ![部署](media/azure-stack-quick-linux-portal/deploy.png)

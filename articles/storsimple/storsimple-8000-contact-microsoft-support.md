@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: e0df86e40d0dc1092ad7ff04f01bbc3e5e3d1c4e
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
-ms.translationtype: HT
+ms.openlocfilehash: fb8cfd4767f6bb9afe1b5731d3b4db1c68a73056
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743037"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107121"
 ---
 # <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
 
@@ -45,7 +45,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
    1. 从“颁发类型”下拉列表中，选择“技术”。
    2. 将自动选择当前**订阅**、**服务**类型和**资源**（StorSimple Device Manager 服务）。 
    3. 如果有多个计划与订阅相关联，请从下拉列表中选择一个**支持计划**。 需要付费的支持计划才能启用技术支持。
-   4. 单击“资源组名称” 的 Azure 数据工厂。
+   4. 单击“下一步”。
 
        ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
@@ -57,20 +57,20 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
     4. 提供问题的开始日期和时间。
     5. 在“文件上传”中单击文件夹图标，浏览到支持包。
     6. 选中“共享诊断信息”。
-    7. 单击“资源组名称” 的 Azure 数据工厂。
+    7. 单击“下一步”。
 
        ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. 在“新建支持请求”边栏选项卡中，单击“步骤 3: 联系人信息”。 在“联系人信息”边栏选项卡中，执行以下步骤：
 
-    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
-    2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便将其用于将来的支持请求”复选框。
-    3. 单击“创建”。
+   1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
+   2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便将其用于将来的支持请求”复选框。
+   3. 单击“创建”。
    
-        ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
-    Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
-提交请求后，支持工程师会与你尽早联系，以便处理请求。
+      Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
+      提交请求后，支持工程师会与你尽早联系，以便处理请求。
 
 ## <a name="manage-a-support-request"></a>管理支持请求
 

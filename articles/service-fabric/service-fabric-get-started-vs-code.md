@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: dc9c11e2c0d5642e31eace2a4dcb6065d990e25d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 197010271518347025157968012be31c71b3b667
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413649"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121020"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -30,7 +30,7 @@ ms.locfileid: "50413649"
 > [!IMPORTANT]
 > 可在 Windows 计算机上开发 Service Fabric Java 应用程序，但只能将其部署到 Azure Linux 群集。 Windows 不支持调试 Java 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 必须在所有环境中安装以下必备组件。
 
@@ -67,18 +67,18 @@ ms.locfileid: "50413649"
 ## <a name="commands"></a>命令
 适用于 VS Code 的 Service Fabric Reliable Services 扩展提供许多命令用于帮助开发人员创建和部署 Service Fabric 项目。 可以从**命令面板**调用命令：按 `(Ctrl + Shift + p)`，在输入栏中键入命令名称，然后从提示列表中选择所需的命令即可。 
 
-* Service Fabric: 创建应用程序 
-* Service Fabric: 发布应用程序 
-* Service Fabric: 部署应用程序 
-* Service Fabric: 删除应用程序  
-* Service Fabric: 生成应用程序 
-* Service Fabric: 清理应用程序 
+* Service Fabric:创建应用程序 
+* Service Fabric:发布应用程序 
+* Service Fabric:部署应用程序 
+* Service Fabric:删除应用程序  
+* Service Fabric:生成应用程序 
+* Service Fabric:清理应用程序 
 
-### <a name="service-fabric-create-application"></a>Service Fabric: 创建应用程序
+### <a name="service-fabric-create-application"></a>Service Fabric:创建应用程序
 
-“Service Fabric: 创建应用程序”命令在当前工作区中创建新的 Service Fabric 应用程序。 根据开发计算机上安装的 yeoman 生成器，可以创建多种类型的 Service Fabric 应用程序，包括 Java、C#、容器和来宾项目。 
+“Service Fabric:创建应用程序”命令在当前工作区中创建新的 Service Fabric 应用程序。 根据开发计算机上安装的 yeoman 生成器，可以创建多种类型的 Service Fabric 应用程序，包括 Java、C#、容器和来宾项目。 
 
-1.  选择“Service Fabric: 添加服务”命令
+1.  选择“Service Fabric:添加服务”命令
 2.  选择新 Service Fabric 应用程序的类型。 
 3.  输入要创建的应用程序的名称
 3.  选择要添加到 Service Fabric 应用程序的服务的类型。 
@@ -86,51 +86,51 @@ ms.locfileid: "50413649"
 5.  新 Service Fabric 应用程序将显示在工作区中。
 6.  打开新应用程序所在的文件夹，使其成为工作区中的根文件夹。 可以继续在此处执行命令。
 
-### <a name="service-fabric-add-service"></a>Service Fabric: 添加服务
-“Service Fabric: 添加服务”命令将新服务添加到现有的 Service Fabric 应用程序。 要将服务添加到的应用程序必须是工作区的根目录。 
+### <a name="service-fabric-add-service"></a>Service Fabric:添加服务
+“Service Fabric:添加服务”命令将新服务添加到现有的 Service Fabric 应用程序。 要将服务添加到的应用程序必须是工作区的根目录。 
 
-1.  选择“Service Fabric: 添加服务”命令。
+1.  选择“Service Fabric:添加服务”命令。
 2.  选择当前 Service Fabric 应用程序的类型。 
 3.  选择要添加到 Service Fabric 应用程序的服务的类型。 
 4.  遵照提示将服务命名。 
 5.  新服务将显示在项目目录中。 
 
-### <a name="service-fabric-publish-application"></a>Service Fabric: 发布应用程序
-“Service Fabric: 发布应用程序”命令在远程群集上部署 Service Fabric 应用程序。 目标群集可以是安全的群集，也可以是不安全的群集。 如果未在 Cloud.json 中设置参数，应用程序将部署到本地群集。
+### <a name="service-fabric-publish-application"></a>Service Fabric:发布应用程序
+“Service Fabric:发布应用程序”命令在远程群集上部署 Service Fabric 应用程序。 目标群集可以是安全的群集，也可以是不安全的群集。 如果未在 Cloud.json 中设置参数，应用程序将部署到本地群集。
 
 1.  首次生成应用程序时，将在项目目录中生成 Cloud.json 文件。
 2.  在 Cloud.json 文件中，输入要连接到的群集的值。
-3.  选择“Service Fabric: 发布应用程序”命令。
+3.  选择“Service Fabric:发布应用程序”命令。
 4.  使用 Service Fabric Explorer 查看目标群集，确认已安装该应用程序。 
 
-### <a name="service-fabric-deploy-application-localhost"></a>Service Fabric: 部署应用程序(Localhost)
-“Service Fabric: 部署应用程序”命令将 Service Fabric 应用程序部署到本地群集。 使用该命令之前，请确保本地群集正在运行。 
+### <a name="service-fabric-deploy-application-localhost"></a>Service Fabric:部署应用程序(Localhost)
+“Service Fabric:部署应用程序”命令将 Service Fabric 应用程序部署到本地群集。 使用该命令之前，请确保本地群集正在运行。 
 
-1.  选择“Service Fabric: 部署应用程序”命令
-2.  使用 Service Fabric Explorer (http://localhost:19080/Explorer) 查看本地群集，确认已安装该应用程序。 此过程可能需要一段时间，请耐心等待。
-3.  也可以在未在 Cloud.json 文件中设置任何参数的情况下，使用“Service Fabric: 发布应用程序”命令部署到本地群集。
+1. 选择“Service Fabric:部署应用程序”命令
+2. 使用 Service Fabric Explorer (http://localhost:19080/Explorer) 查看本地群集，确认已安装该应用程序。 此过程可能需要一段时间，请耐心等待。
+3. 也可以在未在 Cloud.json 文件中设置任何参数的情况下，使用“Service Fabric:发布应用程序”命令部署到本地群集。
 
 > [!NOTE]
 > Windows 计算机上不支持将 Java 应用程序部署到本地群集。
 
-### <a name="service-fabric-remove-application"></a>Service Fabric: 删除应用程序
-“Service Fabric: 删除应用程序”命令将 Service Fabric 应用程序从先前使用 VS Code 扩展将它部署到的群集中删除它。 
+### <a name="service-fabric-remove-application"></a>Service Fabric:删除应用程序
+“Service Fabric:删除应用程序”命令将 Service Fabric 应用程序从先前使用 VS Code 扩展将它部署到的群集中删除它。 
 
-1.  选择“Service Fabric: 删除应用程序”命令。
+1.  选择“Service Fabric:删除应用程序”命令。
 2.  使用 Service Fabric Explorer 查看该群集，确认已删除该应用程序。 此过程可能需要一段时间，请耐心等待。
 
-### <a name="service-fabric-build-application"></a>Service Fabric: 生成应用程序
-“Service Fabric: 生成应用程序”命令可以生成 Java 或 C# Service Fabric 应用程序。 
+### <a name="service-fabric-build-application"></a>Service Fabric:生成应用程序
+“Service Fabric:生成应用程序”命令可以生成 Java 或 C# Service Fabric 应用程序。 
 
 1.  执行此命令之前，请确保在应用程序根文件夹中操作。 该命令会识别应用程序的类型（C# 或 Java），并相应地生成应用程序。
-2.  选择“Service Fabric: 生成应用程序”命令。
+2.  选择“Service Fabric:生成应用程序”命令。
 3.  生成过程的输出将写入集成式终端。
 
-### <a name="service-fabric-clean-application"></a>Service Fabric: 清理应用程序
-“Service Fabric: 清理应用程序”命令会删除生成过程生成的所有 jar 文件和本机库。 此命令仅对 Java 应用程序有效。 
+### <a name="service-fabric-clean-application"></a>Service Fabric:清理应用程序
+“Service Fabric:清理应用程序”命令会删除生成过程生成的所有 jar 文件和本机库。 此命令仅对 Java 应用程序有效。 
 
 1.  执行此命令之前，请确保在应用程序根文件夹中操作。 
-2.  选择“Service Fabric: 清理应用程序”命令。
+2.  选择“Service Fabric:清理应用程序”命令。
 3.  清理过程的输出将写入集成式终端。
 
 ## <a name="next-steps"></a>后续步骤

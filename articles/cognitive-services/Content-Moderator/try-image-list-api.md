@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: e28342b2f2a4846f80940e701dfb638e8f860e5c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 7efa5114a903ba88010ec44f2f1038331df62948
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864343"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075691"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>借助 API 控制台中的自定义列表进行审查
 
@@ -42,9 +42,9 @@ ms.locfileid: "55864343"
 
 对图像列表进行更改后，必须刷新其索引，使更改包括在未来的扫描中。 此步骤类似于桌面上的搜索引擎（如果启用）或 Web 搜索引擎的操作，即不断刷新其索引以包含新文件或页面。
 
-1.  在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像列表”，然后选择“刷新搜索索引”。
+1. 在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像列表”，然后选择“刷新搜索索引”。
 
-  “图像列表 - 刷新搜索索引”页随即打开。
+   “图像列表 - 刷新搜索索引”页随即打开。
 
 2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。 
  
@@ -52,66 +52,66 @@ ms.locfileid: "55864343"
 
     “图像列表 - 刷新搜索索引”API 控制台随即打开。
 
-3.  在 listId 框中，输入列表 ID。 输入订阅密钥，再选择“发送”。
+3. 在 listId 框中，输入列表 ID。 输入订阅密钥，再选择“发送”。
 
-  ![“图像列表 - 刷新搜索索引”控制台响应内容框](images/try-image-list-refresh-1.png)
+   ![“图像列表 - 刷新搜索索引”控制台响应内容框](images/try-image-list-refresh-1.png)
 
 
 ## <a name="create-an-image-list"></a>创建图像列表
 
-1.  转到[图像列表管理 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)。
+1. 转到[图像列表管理 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)。
 
-  “图像列表 - 创建”页随即打开。 
+   “图像列表 - 创建”页随即打开。 
 
-3.  对于“开放 API 测试控制台”，选择与所在位置最相关的区域。
+3. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。
 
-    ![“图像列表 - 创建”页面上的区域选择](images/test-drive-region.png)
+   ![“图像列表 - 创建”页面上的区域选择](images/test-drive-region.png)
 
-    “图像列表 - 创建”API 控制台随即打开。
+   “图像列表 - 创建”API 控制台随即打开。
  
-4.  在“Ocp-Apim-Subscription-Key”框中，输入订阅密钥。
+4. 在“Ocp-Apim-Subscription-Key”框中，输入订阅密钥。
 
-5.  在“请求正文”框中，在“名称”中输入值（例如 MyList），在“说明”中输入相关说明。
+5. 在“请求正文”框中，在“名称”中输入值（例如 MyList），在“说明”中输入相关说明。
 
-  ![“图像列表 - 创建”控制台上的请求正文名称和说明](images/try-terms-list-create-1.png)
+   ![“图像列表 - 创建”控制台上的请求正文名称和说明](images/try-terms-list-create-1.png)
 
-6.  使用键值对占位符向列表分配更具描述性的元数据。
+6. 使用键值对占位符向列表分配更具描述性的元数据。
 
-        {
-           "Name": "MyExclusionList",
-           "Description": "MyListDescription",
-           "Metadata": 
-           {
-             "Category": "Competitors",
-             "Type": "Exclude"
-           }
-        }
+       {
+          "Name": "MyExclusionList",
+          "Description": "MyListDescription",
+          "Metadata": 
+          {
+            "Category": "Competitors",
+            "Type": "Exclude"
+          }
+       }
 
-  添加元数据作为键值对，而不是添加实际图像。
+   添加元数据作为键值对，而不是添加实际图像。
  
-7.  选择“发送”。 列表已创建。 请注意，ID 值与新的列表相关联。 需在其他图像列表管理功能中使用此 ID。
+7. 选择“发送”。 列表已创建。 请注意，ID 值与新的列表相关联。 需在其他图像列表管理功能中使用此 ID。
 
-  ![“图像列表 - 创建”控制台上的“响应”内容框中会显示列表 ID](images/try-terms-list-create-2.png)
+   ![“图像列表 - 创建”控制台上的“响应”内容框中会显示列表 ID](images/try-terms-list-create-2.png)
  
-8.  接下来，向 MyList 添加图像。 在左侧菜单中，选择“图像”，然后选择“添加图像”。
+8. 接下来，向 MyList 添加图像。 在左侧菜单中，选择“图像”，然后选择“添加图像”。
 
-  “图像 - 添加图像”页随即打开。 
+   “图像 - 添加图像”页随即打开。 
 
 9. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。
 
-  ![“图像 - 添加图像”页面上的区域选择](images/test-drive-region.png)
+   ![“图像 - 添加图像”页面上的区域选择](images/test-drive-region.png)
 
-  “图像 - 添加图像”API 控制台随即打开。
+   “图像 - 添加图像”API 控制台随即打开。
  
 10. 在 listId 框中输入生成的列表 ID，然后输入要添加的图像的 URL。 输入订阅密钥，再选择“发送”。
 
 11. 要验证已向列表添加图像，请在左侧菜单中选择“图像”，然后选择“获取所有图像 ID”。
 
-  “图像 - 获取所有图像 ID”API 控制台随即打开。
+    “图像 - 获取所有图像 ID”API 控制台随即打开。
   
 12. 在 listId 框中，输入列表 ID，然后输入订阅密钥。 选择“发送”。
 
-  ![“图像 - 获取所有图像 ID”控制台上的“响应”内容框中列出了所输入的图像](images/try-image-list-create-11.png)
+    ![“图像 - 获取所有图像 ID”控制台上的“响应”内容框中列出了所输入的图像](images/try-image-list-create-11.png)
  
 10. 再添加几个图像。 现在，你已创建自定义图像列表，请使用自定义图像列表尝试[评估图像](try-image-api.md)。 
 
@@ -127,29 +127,29 @@ ms.locfileid: "55864343"
 
 1. 在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像”，然后选择“删除”。 
 
-  “图像 - 删除”页随即打开。
+   “图像 - 删除”页随即打开。
 
 2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。 
 
-  ![“图像 - 删除”页面上的区域选择](images/test-drive-region.png)
+   ![“图像 - 删除”页面上的区域选择](images/test-drive-region.png)
  
-  “图像 - 删除”API 控制台随即打开。
+   “图像 - 删除”API 控制台随即打开。
  
-3.  在 listId 框中，输入要从中删除图像的列表 ID。  这是对 MyList 在“图像 - 获取所有图像 ID”控制台中返回的数字。 然后，输入要删除图像的 ImageId。 
+3. 在 listId 框中，输入要从中删除图像的列表 ID。  这是对 MyList 在“图像 - 获取所有图像 ID”控制台中返回的数字。 然后，输入要删除图像的 ImageId。 
 
 在本示例中，列表 ID 为 58953，是 ContentSource 的值。 图像 ID 是 59021，是 ContentIds 的值。
 
-4.  输入订阅密钥，再选择“发送”。
+1. 输入订阅密钥，再选择“发送”。
 
-5.  要验证已删除图像，请使用“图像 - 获取所有图像 ID”控制台。
+1. 要验证已删除图像，请使用“图像 - 获取所有图像 ID”控制台。
  
 ## <a name="change-list-information"></a>更改列表信息
 
 可以编辑列表的名称和说明，并添加元数据项。
 
-1.  在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像列表”，然后选择“更新详细信息”。 
+1. 在[图像列表管理 API 引用](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)的左侧菜单中，选择“图像列表”，然后选择“更新详细信息”。 
 
-  “图像列表 - 更新详细信息”页随即打开。
+   “图像列表 - 更新详细信息”页随即打开。
 
 2. 对于“开放 API 测试控制台”，选择与所在位置最相关的区域。  
 
@@ -157,11 +157,11 @@ ms.locfileid: "55864343"
 
     “图像列表 - 更新详细信息”API 控制台随即打开。
  
-3.  在 listId 框中，输入列表 ID，然后输入订阅密钥。
+3. 在 listId 框中，输入列表 ID，然后输入订阅密钥。
 
-4.  在“请求正文”框中，进行编辑，然后选择页面上的“发送”按钮。
+4. 在“请求正文”框中，进行编辑，然后选择页面上的“发送”按钮。
 
-  ![“图像列表 - 更新详细信息”控制台上的请求正文编辑](images/try-terms-list-change-1.png)
+   ![“图像列表 - 更新详细信息”控制台上的请求正文编辑](images/try-terms-list-change-1.png)
  
 
 ## <a name="next-steps"></a>后续步骤

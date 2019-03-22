@@ -1,6 +1,6 @@
 ---
 title: 管理 Azure Stack 存储帐户 | Microsoft Docs
-description: 了解如何查找、管理、恢复和回收 Azure Stack 存储帐户
+description: 了解如何查找、 管理、 恢复和回收 Azure Stack 存储帐户
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,29 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 840445b2c1a28d294027c7fbfda9e6bf6e431f14
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 34e49060a28869015f067f058b81239ec13eff47
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990711"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226391"
 ---
-# <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure Stack 中的存储帐户
+# <a name="manage-azure-stack-storage-accounts"></a>管理 Azure Stack 存储帐户
 
-了解如何管理 Azure Stack 中的存储帐户，以根据业务需求查找、恢复和回收存储容量。
+了解如何管理 Azure Stack 存储帐户。 查找、 恢复和回收存储容量根据业务需求。
 
 ## <a name="find-a-storage-account"></a>查找存储帐户
+
 可在 Azure Stack 中通过以下方式查看区域中的存储帐户列表：
 
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
 
-2. 选择“所有服务” > “存储帐户”。
+2. 选择**所有服务** > **存储** > **存储帐户**。
 
-   ![](media/azure-stack-manage-storage-accounts/image4.png)
+   ![Azure Stack 存储帐户](media/azure-stack-manage-storage-accounts/image4.png)
 
 默认显示前 10 个帐户。 可以单击列表底部的“加载更多”链接来提取更多的帐户。
 
@@ -46,16 +47,17 @@ ms.locfileid: "57990711"
 
 1. 选择窗格顶部的“筛选”。
 2. 在筛选器窗格中，它允许您指定**帐户名**，**订阅 ID**，或**状态**以调整要显示的存储帐户的列表。 适当地使用筛选器。
-3. 选择“更新”。 列表会相应地刷新。
+3. 键入时，列表将自动应用筛选器。  .
    
-    ![](media/azure-stack-manage-storage-accounts/image5.png)
+    ![筛选 Azure Stack 存储帐户](media/azure-stack-manage-storage-accounts/image5.png)
+
 4. 若要重置筛选器，请选择“筛选”、清除选择内容，然后更新。
 
 使用搜索文本框（位于存储帐户列表窗格的顶部）可以突出显示帐户列表中选择的文本。 无法轻松获取完整名称或 ID 时，可以使用此功能。
 
 可在此处使用任意文本，帮助找到想要查看的帐户。
 
-![](media/azure-stack-manage-storage-accounts/image6.png)
+![查找 Azure Stack 存储帐户](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>查看帐户详细信息
 找到想要查看的帐户后，可以选择特定帐户查看特定详细信息。 此时将打开新的窗格，其中包含帐户详细信息，例如帐户类型、创建时间、位置等等。
@@ -65,7 +67,7 @@ ms.locfileid: "57990711"
 ## <a name="recover-a-deleted-account"></a>恢复已删除的帐户
 有时，我们需要恢复已删除的帐户。
 
-在 Azure Stack 中，可通过一种简单的方法实现此目的：
+在 Azure Stack 没有执行此操作的简单方法：
 
 1. 浏览到存储帐户列表。 有关详细信息，请参阅本文中的“查找存储帐户”。
 2. 在列表中找到该特定帐户。 可能需要执行筛选。
@@ -97,9 +99,8 @@ ms.locfileid: "57990711"
 
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
 2. 在“管理”下选择“所有服务” > “区域管理”。
-3. 从“资源提供程序”列表中选择“存储”。
-4. 选择顶部的“设置”打开设置窗格。
-5. 选择“配置”，然后编辑保留期值。
+3. 选择**资源提供程序** > **存储** > **设置**。 你的路径是主页 >*区域*-资源提供程序 > 存储。
+4. 选择“配置”，然后编辑保留期值。
 
    设置天数并保存。
    

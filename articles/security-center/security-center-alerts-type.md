@@ -3,7 +3,7 @@ title: Azure 安全中心按类型划分的安全警报 | Microsoft Docs
 description: 本文讨论可以在 Azure 安全中心使用的不同类型的安全警报。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
@@ -12,22 +12,19 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: 6bd05a417bfb011dd86b61d654be836ef76099b7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 3/20/2018
+ms.author: monhaber
+ms.openlocfilehash: 407d0610f919b1145a91e8678f57f8d344c9c187
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439677"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286357"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>了解 Azure 安全中心中的安全警报
 本文可帮助了解 Azure 安全中心提供的各类安全警报和相关的见解。 有关如何管理警报和事件的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
 
 若要设置高级检测，请升级到 Azure 安全中心标准版。 免费试用版已推出。 若要升级，请选择 **安全策略** 中的 [定价层](tutorial-security-policy.md) 。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
-
-> [!NOTE]
-> 安全中心在功能有限的预览版中发布了新的一组检测。这些检测利用审核记录这种常用审核框架，检测 Linux 计算机上的恶意行为。 若要体验预览版，请向[我们](mailto:ASC_linuxdetections@microsoft.com)发送包含订阅 ID 的电子邮件。
 
 ## <a name="what-type-of-alerts-are-available"></a>提供了哪类警报？
 Azure 安全中心使用各种[检测功能](security-center-detection-capabilities.md)，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 警报中包含的信息根据用于检测威胁的分析类型而异。 事件也可能包含其他上下文信息，在调查威胁时有所帮助。  本文提供了有关以下警报类型的信息：

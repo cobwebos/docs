@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 48255614291086fe85666bec407ea62f7a365410
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 15f4b8b6d4a27e721dfcaed8b9dd700e87e3a257
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237359"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872873"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>在视频索引器中自定义品牌模型
 
@@ -28,7 +28,7 @@ ms.locfileid: "56237359"
 
 ![品牌概述](./media/content-model-customization/brands-overview.png)
 
-高级机器学习算法知道如何根据上下文消除歧义，在建筑上下文中谈论 windows（窗户）时，不会将单词“Windows”检测为品牌，对于 Box、Apple 和 Fox 等也是如此。 品牌检测可以针对我们支持的所有语言进行工作。 若要了解[完整的 Microsoft Build 2017 Day 2 主题视频和索引](http://www.videoindexer.ai/media/ed6ede78ad/)，请单击此处。
+高级机器学习算法知道如何根据上下文消除歧义，在建筑上下文中谈论 windows（窗户）时，不会将单词“Windows”检测为品牌，对于 Box、Apple 和 Fox 等也是如此。 品牌检测可以针对我们支持的所有语言进行工作。 若要了解[完整的 Microsoft Build 2017 Day 2 主题视频和索引](https://www.videoindexer.ai/media/ed6ede78ad/)，请单击此处。
 
 若要使用自己的品牌，请查看“后续步骤”。
 

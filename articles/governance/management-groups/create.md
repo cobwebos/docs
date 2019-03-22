@@ -10,18 +10,20 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 01bfd10b2f37a7990ab9a1badfcb09422baa391a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 8e887409c35619261544b92395301ce06a033e8b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342195"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992730"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
 管理组是一些容器，可以帮助你跨多个订阅管理访问权限、策略和符合性。 可以创建这些容器来构建可以与 [Azure Policy](../policy/overview.md) 和 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)配合使用的有效且高效的层次结构。 若要详细了解管理组，请参阅[使用 Azure 管理组整理资源](overview.md)。
 
 在目录中创建的第一个管理组可能需要最多 15 分钟才能完成。 一些进程会首次运行以在 Azure 中为目录设置管理组服务。 在进程完成后将显示通知。
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-management-group"></a>创建管理组
 
@@ -48,10 +50,10 @@ ms.locfileid: "56342195"
 
 ### <a name="create-in-powershell"></a>在 PowerShell 中创建
 
-在 PowerShell 中，使用 New-AzureRmManagementGroup cmdlet：
+在 PowerShell 中，您可以使用新建 AzManagementGroup cmdlet:
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroup -GroupName 'Contoso'
+New-AzManagementGroup -GroupName 'Contoso'
 ```
 
 **GroupName** 是要创建的唯一标识符。 此 ID 由其他命令用来引用此组，并且以后无法更改。
@@ -59,7 +61,7 @@ New-AzureRmManagementGroup -GroupName 'Contoso'
 如果希望管理组在 Azure 门户中显示一个不同的名称，则通过字符串添加 **DisplayName** 参数。 例如，如果希望创建一个 GroupName 为 Contoso 且显示名称为“Contoso Group”的管理组，需要使用以下 cmdlet：
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId 'ContosoTenant'
+New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoTenant'
 ```
 
 可以使用 **ParentId** 参数将此管理组创建到另一个管理组下。
@@ -78,6 +80,6 @@ az account management-group create --name 'Contoso'
 
 - [创建管理组来组织 Azure 资源](create.md)
 - [如何更改、删除或管理管理组](manage.md)
-- [在 Azure PowerShell 资源模块中查看管理组](https://aka.ms/mgPSdocs)
-- [在 REST API 中查看管理组](https://aka.ms/mgAPIdocs)
-- [在 Azure CLI 中查看管理组](https://aka.ms/mgclidoc)
+- [在 Azure PowerShell 资源模块中查看管理组](/powershell/module/az.resources#resources)
+- [在 REST API 中查看管理组](/rest/api/resources/managementgroups)
+- [在 Azure CLI 中查看管理组](/cli/azure/account/management-group)

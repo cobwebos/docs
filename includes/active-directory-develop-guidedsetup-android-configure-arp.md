@@ -3,8 +3,8 @@ title: include 文件
 description: include 文件
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/13/2018
-ms.author: andret
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 0154aac14168c9d897698a15e31b3124b208db46
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: b8f961ad3fe4550b915253746d0f4f677c593a8c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142661"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58214210"
 ---
 ## <a name="add-the-applications-registration-to-your-code"></a>将应用程序的注册添加到代码中
 
@@ -27,9 +27,9 @@ ms.locfileid: "50142661"
 
 1. 打开 `MainActivity`（在 `app` > `java` > `{host}.{namespace}` 下）
 2. 将以 `final static String CLIENT_ID` 开头的行替换为：
-```java
-final static String CLIENT_ID = "[Enter the application Id here]";
-```
+   ```java
+   final static String CLIENT_ID = "[Enter the application Id here]";
+   ```
 3. 打开：`app` > `manifests` > `AndroidManifest.xml`
 4. 将以下活动添加到 `manifest\application`。 `BrowserTabActivity` 允许 Microsoft 在完成身份验证后回调应用程序：
 

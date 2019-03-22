@@ -3,7 +3,7 @@ title: Bash in Azure Cloud Shell 快速入门 | Microsoft Docs
 description: Cloud Shell 中的 Bash 快速入门
 services: ''
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: juluk
-ms.openlocfilehash: 0b3616a723e793ab1ce8d7bcca1f53ca10ec4f96
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: damaerte
+ms.openlocfilehash: 1b6419feef96b57bafd0831531bd8cfa56142cc4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970646"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089142"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 快速入门
 
@@ -44,14 +44,14 @@ ms.locfileid: "46970646"
 
 ### <a name="set-your-subscription"></a>设置订阅
 1. 列出可以访问的订阅。
-```azurecli-interactive
-az account list
-```
+   ```azurecli-interactive
+   az account list
+   ```
 
 2. 设置首选订阅： <br>
-```azurecli-interactive
-az account set --subscription my-subscription-name`
-```
+   ```azurecli-interactive
+   az account set --subscription my-subscription-name`
+   ```
 
 > [!TIP]
 > 将使用 `/home/<user>/.azure/azureProfile.json` 为将来的会话记住订阅。
@@ -77,26 +77,26 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ### <a name="ssh-into-your-linux-vm"></a>通过 SSH 连接到 Linux VM
 1. 在 Azure 门户搜索栏中搜索 VM 名称。
 2. 单击“连接”以获取 VM 名称和公共 IP 地址。 <br>
-![](media/quickstart/sshcmd-copy.png)
+   ![](media/quickstart/sshcmd-copy.png)
 
 3. 使用 `ssh` 命令通过 SSH 连接到 VM。
-```
-ssh username@ipaddress
-```
+   ```
+   ssh username@ipaddress
+   ```
 
 建立 SSH 连接后，应看到 Ubuntu 欢迎提示。 <br>
 ![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>清理 
 1. 退出 SSH 会话。
-```azurecli-interactive
-exit
-```
+   ```azurecli-interactive
+   exit
+   ```
 
 2. 删除资源组及其中的任何资源。
-```azurecli-interactive
-az group delete -n MyRG
-```
+   ```azurecli-interactive
+   az group delete -n MyRG
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 [了解如何为 Cloud Shell 中的 Bash 持久保存文件](persisting-shell-storage.md) <br>

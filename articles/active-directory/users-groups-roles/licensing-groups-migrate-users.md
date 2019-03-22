@@ -1,5 +1,5 @@
 ---
-title: 将用户迁移到基于组的许可 - Azure Active Directory | Microsoft Docs
+title: 将单独许可的用户迁移到基于组的许可的 Azure Active Directory |Microsoft Docs
 description: 如何使用 Azure Active Directory 从单个用户许可证切换到基于组的许可
 services: active-directory
 keywords: Azure AD 许可
@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd800097ca5107f7df1e67c91ff4c96b9cfcd74
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199966"
 ---
-# <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>如何在 Azure Active Directory 中将经许可的用户添加到组以进行许可
+# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>如何添加迁移各个许可证的用户到组的许可
 
-可能已通过“直接分配”将现有的许可证部署到了组织中的用户；也就是说，使用 PowerShell 脚本或其他工具为单个用户分配了许可证。 如果想要开始使用基于组的许可来管理组织中的许可证，需要使用一个迁移计划，将现有解决方案无缝替换为基于组的许可。
+可能已通过“直接分配”将现有的许可证部署到了组织中的用户；也就是说，使用 PowerShell 脚本或其他工具为单个用户分配了许可证。 在开始使用基于组的许可来管理你的组织中的许可证之前，您可以使用此迁移计划无缝使用基于组的许可替换现有的解决方案。
 
 要记住的最重要的一件事是，应该避免出现迁移到基于组的许可后，导致用户暂时失去其当前分配的许可证的情况。 应该避免可能导致删除许可证的任何过程，以消除用户失去服务及其数据访问权限的风险。
 
@@ -69,18 +69,17 @@ ms.locfileid: "58107740"
 
    - 下面是迁移期间预期的用户状态：
 
-      ![预期的用户状态](./media/licensing-groups-migrate-users/expected-user-state.png)
+      ![在迁移期间预期的用户状态](./media/licensing-groups-migrate-users/expected-user-state.png)
 
    这种状态可以确认用户既有直接许可证，也有继承的许可证。 可以看到同时分配了 **EMS** 和 **E3** 许可证。
 
    - 选择每个许可证可显示有关已启用的服务的详细信息。 可以使用这些信息来检查直接许可证和组许可证是否为用户启用了完全相同的服务计划。
 
-      ![检查服务计划](./media/licensing-groups-migrate-users/check-service-plans.png)
+      ![检查用户的服务计划](./media/licensing-groups-migrate-users/check-service-plans.png)
 
 4. 确认直接许可证和组许可证相同后，可以开始删除用户的直接许可证。 一开始可以试着在门户中删除单个用户的许可证，并运行自动化脚本批量删除许可证。 下面是通过门户删除同一用户的直接许可证的示例。 请注意，许可证状态将保持不变，但我们不再会看到直接分配。
 
-   ![已删除直接许可证](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
-
+   ![确认删除直接许可证](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 ## <a name="next-steps"></a>后续步骤
 

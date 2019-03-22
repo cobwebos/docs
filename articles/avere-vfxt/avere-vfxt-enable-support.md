@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: b975f84106507da6adff11dc62441526773f5cab
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: fe096b2e2a75cc89e3ce5ef905d8e4c347cc153a
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998135"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992458"
 ---
 # <a name="enable-support-uploads"></a>启用支持上传
 
@@ -42,6 +42,6 @@ Avere vFXT for Azure 可以自动上传关于你的群集的支持数据。 这�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要将本地存储系统添加到群集，或更新新创建的 Blob 容器中的默认加密密钥，请按照[配置存储](avere-vfxt-add-storage.md)中的说明操作。 
+如果需要添加已在本地的或现有的云存储系统之间的群集，请遵循[配置存储](avere-vfxt-add-storage.md)。 
 
 如果你已准备好开始将客户端连接到群集，请阅读[装载 Avere vFXT 群集](avere-vfxt-mount-clients.md)。

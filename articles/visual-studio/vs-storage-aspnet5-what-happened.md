@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 0e38e570b5ecb2a19af943e0dde96e2ed66f3507
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 71a95e1974cbcec9afcc3337eb37275532e1b527
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146135"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999705"
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>我的 ASP.NET 5 项目（Visual Studio Azure 存储连接服务）发生了什么情况？
 ## <a name="references-added"></a>已添加引用
@@ -38,5 +38,5 @@ Azure 存储 NuGet 包已添加到 Visual Studio 项目。
 ## <a name="connection-string-for-azure-storage-added"></a>已添加 Azure 存储的连接字符串
 在项目的 config.json 文件中，已使用选定存储帐户的连接字符串和密钥创建了一个元素。
 
-有关详细信息，请参阅 [ASP.NET 5](http://www.asp.net/vnext)。
+有关详细信息，请参阅 [ASP.NET 5](https://www.asp.net/vnext)。
 

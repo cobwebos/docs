@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 576a7948d4df7957d934fb4c8888712fa94cb202
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310926"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337068"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
 
@@ -21,7 +21,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 ## <a name="metrics-in-azure"></a>Azure 中的指标
 
-[Azure Monitor 中的指标](data-collection.md#metrics)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而自定义指标是由应用程序通过[自定义事件的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 发送给 Azure 的。 自定义指标与其他特定于应用程序的指标存储在 Application Insights 资源中。
+[Azure Monitor 中的指标](data-collection.md#metrics)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而由应用程序通过发送到 Azure 的自定义指标[自定义事件和指标的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)， [Windows Azure 诊断 (WAD) 扩展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)，或由[Azure监视 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)。
 
 ## <a name="create-a-new-chart"></a>创建新图表
 
@@ -76,16 +76,16 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 5. 可以重复步骤 1-4 将多个筛选器应用到同一个图表。
 
-## <a name="segment-a-chart"></a>分割图表
+## <a name="apply-splitting-to-a-chart"></a>将应用到图表拆分
 
 可以按维度拆分指标，以直观地显示指标不同部分之间的差异，并标识出某个维度的边远部分。 
 
-### <a name="to-segment-a-chart"></a>分割图表
+### <a name="to-apply-splitting"></a>若要将应用拆分
 
 1. 单击图表上方的“应用拆分”。
  
    > [!NOTE]
-   > 任何单个图表上都可以有多个筛选器，但只能有一个拆分/分段值。
+   > 拆分不能用于具有多个指标的图表。 此外，可以有多个筛选器，但只有一个拆分维度应用于任何单个图表。
 
 2. 选择想要用于分割图表的维度：
 
