@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a00c9cb0ce1bd8a6f36070e81df1185ef23a307
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 450fcbcdfab8e90728fbbbd0068123768f3cef4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201759"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993307"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sugar-crm"></a>教程：Azure Active Directory 与 Sugar CRM 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56201759"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Sugar CRM 的集成，需要具有以下项：
 
@@ -114,6 +114,7 @@ ms.locfileid: "56201759"
     ![配置单一登录](./media/sugarcrm-tutorial/tutorial_sugarcrm_url.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://<companyname>.sugarondemand.com` |

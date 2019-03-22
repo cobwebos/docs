@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 94ed136b48c53bd582a8b3ad210d421764b9f0f6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: 271e18d370068e0445f183af0c694b19f0da22f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808453"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102748"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso 迁移：将本地应用重构到 Azure Web 应用和 Azure SQL 数据库
 
@@ -113,7 +113,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 [Azure 应用服务 - Web 应用](https://docs.microsoft.com/azure/app-service/overview) | 使用完全托管的平台，创建功能强大的云应用 | 成本取决于大小、位置和使用持续时间。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/windows/)。
 [Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | 提供一个用于应用开发的持续集成和持续部署 (CI/CD) 管道。 该管道首先会连接到用于管理应用程序代码的 Git 存储库，然后依次配置用于生成包和其他生成项目的生成系统，以及用于在开发、测试及生产环境中部署更改的发布管理系统。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要运行此方案，Contoso 需要以下项目：
 
@@ -244,9 +244,9 @@ Contoso 管理员将使用 DMA 迁移 SmartHotel360 数据库。
 
 Contoso 需要为应用程序构建 DevOps 基础结构和管道。  为此，Contoso 管理员需创建新的 DevOps 项目、导入代码，然后设置生成和发布管道。
 
-1.   在 Contoso Azure DevOps 帐户中，创建新项目 (ContosoSmartHotelRefactor)，然后选择“Git”用于版本控制。
+1. 在 Contoso Azure DevOps 帐户中，创建新项目 (ContosoSmartHotelRefactor)，然后选择“Git”用于版本控制。
 
-    ![新建项目](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
+   ![新建项目](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
 2. 导入当前保存应用代码的 Git 存储库。 该存储库位于某个[公共存储库](https://github.com/Microsoft/SmartHotel360-internal-booking-apps)中，可以下载它。
 
     ![下载应用代码](./media/contoso-migration-refactor-web-app-sql/vsts2.png)
@@ -277,7 +277,7 @@ Contoso 管理员需要确保 Web 应用和数据库都能够进行通信。 为
 
     ![连接字符串](media/contoso-migration-refactor-web-app-sql/strings3.png)
 
-5. 在代码中进行更改后，管理员需要提交所做的更改。 在 Visual Studio 中使用“团队资源管理器”进行提交和同步。
+5. 在代码中进行更改后，管理员需要提交所做的更改。 在 Visual Studio 中使用团队资源管理器，它们可以提交和同步。
 
 
 ## <a name="step-6-set-up-build-and-release-pipelines-in-azure-devops"></a>步骤 6：在 Azure DevOps 中设置生成和发布管道
@@ -306,8 +306,8 @@ Contoso 管理员现在配置 Azure DevOps 来执行生成和发布过程。
 
 6. “Drop”文件夹中包含生成结果。
 
-    - 两个 zip 文件是包含应用的包。
-    - 这些文件在用于部署到 Azure Web 应用的发布管道中使用
+   - 两个 zip 文件是包含应用的包。
+   - 这些文件在用于部署到 Azure Web 应用的发布管道中使用
 
      ![项目](./media/contoso-migration-refactor-web-app-sql/pipeline6.png)
 
@@ -341,7 +341,7 @@ Contoso 管理员现在配置 Azure DevOps 来执行生成和发布过程。
 
 16. 持续部署触发器应已设置为“已启用”。
 
-   ![已启用持续部署](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
+    ![已启用持续部署](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
 
 17. 现在，再次返回“1 个作业，1 个任务”阶段，然后单击“部署 Azure 应用服务”。
 

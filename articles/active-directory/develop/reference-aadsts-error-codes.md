@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16f7dc81d8174e3d8da39d3af95b945f8034cecd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1ff37184cd8789c5408d02a427080db86de00b7d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452005"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295447"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>身份验证和授权错误代码
 
@@ -30,6 +30,8 @@ ms.locfileid: "57452005"
 
 > [!NOTE]
 > 本文中的信息属于初步信息，随时可能更改。 遇到了问题或者找不到所需的内容？ 请创建 GitHub 问题，或查看[面向开发人员的支持和帮助选项](active-directory-develop-help-support.md)来了解其他可以获得帮助和支持的方法。
+>
+> 本文档提供有关开发人员和管理员指南，但永远不应由客户端本身。 错误代码是发生在任何时间的更改是为了提供用来生成其应用程序时帮助开发人员的更详细的错误消息。 随着时间的推移，应用程序依赖于文本或错误代码编号将被破坏。  
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 

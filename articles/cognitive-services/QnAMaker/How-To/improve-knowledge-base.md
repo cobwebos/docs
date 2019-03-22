@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: ''
 author: diberry
 manager: nitinme
-displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
+services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: 6feb521aa47ca813b3067451c8c77111deb60e73
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873999"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537892"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>使用主动学习改进知识库
 
@@ -32,13 +32,15 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 这两种方法都为排名程序提供了类似的集中查询。
 
-集中类似的查询时，QnA Maker 会向知识库设计者建议基于用户的问题用于接受或拒绝。
-
 ## <a name="how-active-learning-works"></a>主动学习的工作原理
 
 根据 QnA Maker 针对任何给定查询返回的数量最少的答案分数来触发主动学习。 如果分数差范围很小，则对于每个可能的答案，将查询视为可能的建议。 
 
 所有建议通过相似度聚集在一起，并且根据最终用户的特定查询频率显示替代问题排名靠前的建议。 在终结点获得合理数量和类型的使用查询的情况下，主动学习可提供最佳建议。
+
+当处于群集状态 5 或更多类似的查询时，每隔 30 分钟，QnA Maker 推荐到知识库设计器以接受或拒绝的基于用户的问题。
+
+一旦问题建议 QnA Maker 门户中，需要审阅和接受或拒绝这些建议。 
 
 ## <a name="upgrade-version-to-use-active-learning"></a>升级版本以使用主动学习
 
@@ -58,6 +60,8 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 默认情况下，主动学习处于关闭状态。 启用它可以查看建议的问题。 
 
+1. 选择**发布**发布知识库。 主动学习查询从 GenerateAnswer API 预测终结点仅收集。 Qna Maker 门户中测试窗格中的查询不会影响主动学习。
+
 1. 若要打开主动学习，请单击“名称”，转到 QnA Maker 门户右上角的“[服务设置](https://www.qnamaker.ai/UserSettings)”。  
 
     ![在“服务设置”页上，启用“主动学习”](../media/improve-knowledge-base/Endpoint-Keys.png)
@@ -75,7 +79,7 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
     [![在“服务设置”页上，切换“显示建议”按钮](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. 通过选择“按建议筛选”，将包含问题和答案对的知识库筛选为仅显示建议。
+1. 筛选要通过选择显示仅建议的问题和答案对包含的知识库**筛选器由建议**。
 
     [![在“服务设置”页上，按建议筛选以仅查看这些问题/答案对](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
@@ -87,6 +91,9 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 1. 选择“保存并训练”，将所做的更改保存到知识库。
 
+1. 选择**发布**以允许从 GenerateAnswer API 能够访问这些更改。
+
+    当处于群集状态 5 或更多类似的查询时，每隔 30 分钟，QnA Maker 推荐到知识库设计器以接受或拒绝的基于用户的问题。
 
 ## <a name="determine-best-choice-when-several-questions-have-similar-scores"></a>当几个问题具有相似的分数时，确定最佳选择
 
@@ -147,7 +154,7 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 客户端应用程序显示所有问题，并且可以让用户选择最能代表其意图的问题。 
 
-用户选择一个现有问题后， 用户反馈会发送到 QnA Maker 的[训练](http://www.aka.ms/activelearningsamplebot) API，用于继续执行主动学习反馈循环。 
+用户选择一个现有问题后， 用户反馈会发送到 QnA Maker 的[训练](https://www.aka.ms/activelearningsamplebot) API，用于继续执行主动学习反馈循环。 
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -157,6 +164,31 @@ Content-Type: application/json
 ```
 
 通过 [Azure 机器人 C# 示例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)详细了解如何使用主动学习
+
+## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>主动学习保存在导出应用程序的 tsv 文件
+
+当你的应用程序启用，主动学习和导出应用程序中， `SuggestedQuestions` tsv 文件中的列将保留主动学习数据。 
+
+`SuggestedQuestions`列为的隐式的信息的 JSON 对象 (`autosuggested`) 和显式 (`usersuggested`)[反馈](#active-learning)。 单个用户提交的问题此 JSON 对象的一个示例`help`是：
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+当你重新导入此应用时，主动学习继续收集的信息，建议您的知识库的建议。 
 
 ## <a name="next-steps"></a>后续步骤
  

@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0842daa9ca8e0f64d0ca7d2610b6116c2bd5b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202819"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433733"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 蝻进在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
@@ -38,7 +38,7 @@ ms.locfileid: "56202819"
 
 | 生命周期管理阶段 | 本地 | 云 | 混合 |
 | --- | --- | --- | --- |
-| 帐户管理和预配 |使用 Active Directory® 域服务 (AD DS) 服务器角色，为用户和资源管理创建可伸缩、安全和可管理的基础结构，以及为支持目录的应用程序（如 Microsoft® Exchange Server）提供支持。 <br><br> [使用标识管理器在 AD DS 中预配组](https://technet.microsoft.com/library/ff686261.aspx) <br>[在 AD DS 中预配用户](https://technet.microsoft.com/library/ff686263.aspx) <br><br> 出于安全目的，管理员可以使用访问控制来管理对共享资源的用户访问。 在 Active Directory 中，通过设置不同的对象访问级别或权限等级，例如，完全控制、写入、读取或无访问权限，在对象级管理访问控制。 在 Active Directory 中，访问控制定义不同用户使用 Active Directory 对象的方式。 默认情况下，Active Directory 中对象的权限设置为最安全的设置。 |必须为想要访问 Microsoft 云服务的每个用户创建帐户。 还可以更改用户帐户或删除不再需要的用户帐户。 默认情况下，用户不具有管理员权限，但可以选择给他们分配权限。 <br><br> Azure Active Directory 的主要功能之一是管理对资源的访问。 这些资源可以是目录的一部分（例如用于通过目录中的角色管理对象的权限）、目录外部的资源（例如 SaaS 应用程序、Azure 服务以及 SharePoint 站点）或者本地资源。 <br><br> Azure Active Directory 访问管理解决方案的核心是安全组。 资源所有者（或目录管理员）可以分配组，以提供对其拥有的资源的特定访问权限。 组成员会获得访问权限，而资源所有者可将组成员列表管理权限委托给其他人，例如，部门经理或支持管理员<br> <br> “在 Azure AD 中管理组”一节提供了通过组管理访问权限的更多信息。 |通过同步和联合身份验证将 Active Directory 标识扩展到云中 |
+| 帐户管理和预配 |使用 Active Directory® 域服务 (AD DS) 服务器角色，为用户和资源管理创建可伸缩、安全和可管理的基础结构，以及为支持目录的应用程序（如 Microsoft® Exchange Server）提供支持。 <br><br> [使用标识管理器在 AD DS 中预配组](https://technet.microsoft.com/library/ff686261.aspx) <br>[可以在 AD DS 中的用户预配](https://technet.microsoft.com/library/ff686263.aspx) <br><br> 出于安全目的，管理员可以使用访问控制来管理对共享资源的用户访问。 在 Active Directory 中，通过设置不同的对象访问级别或权限等级，例如，完全控制、写入、读取或无访问权限，在对象级管理访问控制。 在 Active Directory 中，访问控制定义不同用户使用 Active Directory 对象的方式。 默认情况下，Active Directory 中对象的权限设置为最安全的设置。 |必须为想要访问 Microsoft 云服务的每个用户创建帐户。 还可以更改用户帐户或删除不再需要的用户帐户。 默认情况下，用户不具有管理员权限，但可以选择给他们分配权限。 <br><br> Azure Active Directory 的主要功能之一是管理对资源的访问。 这些资源可以是目录的一部分（例如用于通过目录中的角色管理对象的权限）、目录外部的资源（例如 SaaS 应用程序、Azure 服务以及 SharePoint 站点）或者本地资源。 <br><br> Azure Active Directory 访问管理解决方案的核心是安全组。 资源所有者（或目录管理员）可以分配组，以提供对其拥有的资源的特定访问权限。 组成员会获得访问权限，而资源所有者可将组成员列表管理权限委托给其他人，例如，部门经理或支持管理员<br> <br> “在 Azure AD 中管理组”一节提供了通过组管理访问权限的更多信息。 |通过同步和联合身份验证将 Active Directory 标识扩展到云中 |
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 基于角色的访问控制 (RBAC) 使用角色和预配策略来评估、测试并强制执行业务流程和向用户授予访问权限的规则。 主要管理员创建预配策略并为用户分配角色，从而定义这些角色访问资源的权限集。 RBAC 扩展了标识管理解决方案，以便使用基于软件的流程并减少在预配过程中的用户手动交互。
@@ -95,7 +95,7 @@ Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序�
 | 同步管理选项 | 优点 | 缺点 |
 | --- | --- | --- |
 | 基于同步（通过 DirSync 或 AADConnect） |从本地和云同步的用户和组 <br>  **策略控制**：可通过 Active Directory 设置帐户策略，这使得管理员无需在云中执行附加任务，就能够管理密码策略、工作站、限制、锁定控制等。  <br>  **访问控制**：可限制对云服务的访问，以便通过企业环境和/或联机服务器访问这些服务。 <br>  减少支持呼叫：用户需要记住的密码数量越少，就越不容易忘记它们。 <br>  安全性：由于单一登录使用的所有服务器和服务都在本地掌握和控制，用户标识和信息可受到保护。 <br>  支持强身份验证：对于云服务，可以使用强身份验证（也称为双重身份验证）。 但是，如果使用强身份验证，必须使用单一登录。 | |
-| 基于联合身份验证（通过 AD FS） |受安全令牌服务 (STS) 支持。 使用 Microsoft 云服务配置 STS 以提供单一登录访问权限时，会在本地 STS和在 Azure AD 租户中指定的联合域之间创建联合信任。 <br> 允许最终用户使用同一组凭据来获得对多个资源的访问权限 <br>最终用户不需要维护多组凭据。 但是，用户必须为每个参与资源以及受支持的 B2B 和 B2C 方案提供凭据。 |需要专业人员部署和维护专用的本地 AD FS 服务器。 如果计划将 AD FS 用于 STS，强身份验证的使用将受到限制。 有关详细信息，请参阅[为 AD FS 2.0 配置高级选项](https://go.microsoft.com/fwlink/?linkid=235649)。 |
+| 基于联合身份验证（通过 AD FS） |受安全令牌服务 (STS) 支持。 使用 Microsoft 云服务配置 STS 以提供单一登录访问权限时，会在本地 STS和在 Azure AD 租户中指定的联合域之间创建联合信任。 <br> 允许最终用户使用同一组凭据来获得对多个资源的访问权限 <br>最终用户不需要维护多组凭据。 但是，用户必须为每个参与资源以及受支持的 B2B 和 B2C 方案提供凭据。 |需要部署和维护专用的本地 AD FS 服务器上的专业的人员。 如果计划将 AD FS 用于 STS，强身份验证的使用将受到限制。 有关详细信息，请参阅[为 AD FS 2.0 配置高级选项](https://go.microsoft.com/fwlink/?linkid=235649)。 |
 
 > [!NOTE]
 > 有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。

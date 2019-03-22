@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 57290971185d1fd64b3b5ca6ac37535070ddab9e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496476"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082800"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
 
@@ -110,9 +110,9 @@ ms.locfileid: "55496476"
    3. 在下拉列表中，选择想要选择的备份的卷或备份策略。
    4. 单击“应用”执行此查询。
 
-    与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
+      与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
    
-    ![备份集列表](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![备份集列表](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
 3. 展开备份集以查看相关联的卷。 在还原这些卷之前，必须使其在主机和设备上脱机。 在设备的“卷”边栏选项卡上访问卷，遵循[使卷脱机](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)中的步骤使其脱机。
    
@@ -127,9 +127,9 @@ ms.locfileid: "55496476"
    
     ![“确认”页](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7.  请单击“还原”。 这会启动可通过访问“作业”页面进行查看的还原作业。
+7. 请单击“还原”。 这会启动可通过访问“作业”页面进行查看的还原作业。
 
-    ![“确认”页](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![“确认”页](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. 还原完成后，可验证卷的内容是否已由备份中的卷所替换。
 

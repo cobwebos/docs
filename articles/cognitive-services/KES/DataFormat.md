@@ -10,17 +10,17 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f17bc3c0588476fdc4f8414fb020b16718bf1d90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: bba257c61509d862bb3161625750f05a86af8770
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854789"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532161"
 ---
 # <a name="data-format"></a>数据格式
 
 数据文件描述要建立索引的对象的列表。
-文件中的每一行都使用 UTF-8 编码指定 [JSON 格式](http://json.org/)的对象的属性值。
+文件中的每一行都使用 UTF-8 编码指定 [JSON 格式](https://json.org/)的对象的属性值。
 除了在[模式](SchemaFormat.md)中定义的属性之外，每个对象都有一个可选的“logprob”属性，用于指定对象之间的相对对数概率。
 当服务按概率递减的顺序返回对象时，我们可以使用“logprob”来指示匹配对象的返回顺序。
 假定概率 *p* 介于 0 和 1 之间，相应的对数概率可以计算为 log(*p*)，其中 log() 是自然对数函数。

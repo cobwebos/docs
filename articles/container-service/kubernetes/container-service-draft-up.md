@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 36e765d439d616ec165a2b53d2044586e73cde76
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 48afb867a5455ffea10f8a74b1fff2c2b7f361ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809208"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849748"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>（已弃用）结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
@@ -31,7 +31,7 @@ ms.locfileid: "55809208"
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
 可以轻松[创建新的 Azure 容器注册表](../../container-registry/container-registry-get-started-azure-cli.md)，步骤如下：
 
-1. 创建 Azure 资源组，在 ACS 中管理 ACR 注册表和 Kubernetes 群集。
+1. 创建 Azure 资源组来管理 ACR 注册表和 ACS 中的 Kubernetes 群集。
       ```azurecli
       az group create --name draft --location eastus
       ```
@@ -106,11 +106,11 @@ waiting for AAD role to propagate.done
 1. 在 https://github.com/Azure/draft/releases 为环境下载 Draft 并安装到路径中，以便可使用此命令。
 2. 在 https://github.com/kubernetes/helm/releases 为环境下载 Helm 并[安装到路径中，以便可使用此命令](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client)。
 3. 配置 Draft 来使用注册表并为所创建的每个 Helm 图表创建子域。 若要配置 Draft，需要：
-  - Azure 容器注册表名称（此示例中为 `draftacsdemo`）
-  - `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` 中的注册表项或密码。
+   - Azure 容器注册表名称（此示例中为 `draftacsdemo`）
+   - `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` 中的注册表项或密码。
 
-  调用 `draft init`，配置过程会提示用户输入上面的值；请注意，注册表 URL 的 URL 格式是注册表名称（本例中为 `draftacsdemo`）加上 `.azurecr.io`。 用户名是注册表自身的名称。 该进程会在你首次运行时，要求你提供如下所示的信息。
- ```bash
+   调用 `draft init`，配置过程会提示用户输入上面的值；请注意，注册表 URL 的 URL 格式是注册表名称（本例中为 `draftacsdemo`）加上 `.azurecr.io`。 用户名是注册表自身的名称。 该进程会在你首次运行时，要求你提供如下所示的信息。
+   ```bash
     $ draft init
     Creating /home/ralph/.draft 
     Creating /home/ralph/.draft/plugins 
@@ -132,7 +132,7 @@ waiting for AAD role to propagate.done
     3. Enter your password: 
     Draft has been installed into your Kubernetes Cluster.
     Happy Sailing!
-```
+   ```
 
 现已准备好部署应用程序。
 
@@ -169,7 +169,7 @@ Connecting to your app...SUCCESS...Connect to your app on localhost:46143
 Starting log streaming...
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+SLF4J: See https://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 == Spark has ignited ...
 >> Listening on 0.0.0.0:4567
 ```
@@ -224,7 +224,7 @@ Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），�
     ```
 
 2. 为域创建 DNS 区域。
-使用 [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) 命令获取名称服务器，为域将 DNS 控件委托给 Azure DNS。
+   使用 [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) 命令获取名称服务器，为域将 DNS 控件委托给 Azure DNS。
     ```azurecli
     az network dns zone create --resource-group squillace.io --name squillace.io
     {
@@ -247,12 +247,12 @@ Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），�
     ```
 3. 将提供的 DNS 服务器添加到部署域的域提供商，通过此可使用 Azure DNS 根据需要重新定位域。 执行此操作的方式因所提供域的不同而不同；[将域名服务器委托给 Azure DNS](../../dns/dns-delegate-domain-azure-dns.md) 包含一些应当了解的详细信息。 
 4. 将域委托给 Azure DNS 之后，就会为映射到前一部分步骤 2 中的 `ingress` IP 的部署域创建一个 A 记录集条目。
-  ```azurecli
-  az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
-  ```
-输出与下面类似：
-  ```json
-  {
+   ```azurecli
+   az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
+   ```
+   输出与下面类似：
+   ```json
+   {
     "arecords": [
       {
         "ipv4Address": "13.64.108.240"
@@ -265,23 +265,23 @@ Draft 每创建一个 Helm 图表（即每个正在处理的应用程序），�
     "resourceGroup": "squillace.io",
     "ttl": 3600,
     "type": "Microsoft.Network/dnszones/A"
-  }
-  ```
+   }
+   ```
 5. 重新安装 **Draft**
 
    1. 通过键入 `helm delete --purge draft` 从群集中删除 **draftd**。 
    2. 使用相同的 `draft-init` 命令重新安装 **Draft**，唯一不同的是该命令带有 `--ingress-enabled` 选项：
-    ```bash
-    draft init --ingress-enabled
-    ```
-   与前面第一次一样回答提示问题。 但是，这一次要回答的问题比第一次多一个，即使用为 Azure DNS 配置的完整域路径。
+      ```bash
+      draft init --ingress-enabled
+      ```
+      与前面第一次一样回答提示问题。 但是，这一次要回答的问题比第一次多一个，即使用为 Azure DNS 配置的完整域路径。
 
 6. 输入入口（例如 draft.example.com）的顶级域：draft.squillace.io
 7. 这次调用 `draft up` 时，可以在 `<appname>.draft.<domain>.<top-level-domain>` 形式的 URL 中看到应用程序（或对它执行 `curl`）。 本例中为 `http://handy-labradoodle.draft.squillace.io`。 
-```bash
-curl -s http://handy-labradoodle.draft.squillace.io
-Hello World, I'm Java!
-```
+   ```bash
+   curl -s http://handy-labradoodle.draft.squillace.io
+   Hello World, I'm Java!
+   ```
 
 
 ## <a name="next-steps"></a>后续步骤

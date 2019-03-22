@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 3a4304301b99369426aa985508d6cabd26ba2c9f
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: ffcc2f46a30569979879ff302cde1e3b146d3b50
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992023"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -65,7 +65,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 * 故障转移时创建的 VM 要连接到的 Azure 虚拟网络。 Azure 虚拟网络必须位于 Site Recovery 运行所在的同一区域。
 * 存储复制日志的 Azure 标准存储帐户。 可以是要迁移的 VM 磁盘的同一存储帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 在上一部分中了解相关的迁移方案组件。
 * 了解 [Site Recovery 中的故障转移](../../site-recovery/site-recovery-failover.md)，规划停机时间。
@@ -83,7 +83,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 ### <a name="step-2-choose-your-protection-goals"></a>步骤 2：选择保护目标 
 
 1. 在想要安装配置服务器的 VM 上，打开 [Azure 门户](https://portal.azure.com)。
-2. 转到“恢复服务保管库” > “设置” > “Site Recovery” > **步骤 1：****“保护目标” > **。
+2. 转到“恢复服务保管库” > “设置” > “Site Recovery” > **步骤 1：** 准备基础结构” > “保护目标”。
 
    ![浏览到“保护目标”窗格][2]
 
@@ -214,7 +214,7 @@ Site Recovery 将创建类型与支持高级存储的 VM 相同或类似的 VM �
 
 * [Migrate Azure Virtual Machines between Storage Accounts](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)（在存储帐户之间迁移 Azure 虚拟机）
 * [上传 Linux 虚拟硬盘](upload-vhd.md)
-* [将虚拟机从 Amazon AWS 迁移到 Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [将虚拟机从 Amazon AWS 迁移到 Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 另请参阅以下资源，以了解有关 Azure 存储和 Azure 虚拟机的详细信息：
 

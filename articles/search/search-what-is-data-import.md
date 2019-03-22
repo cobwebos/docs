@@ -6,25 +6,21 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/05/2018
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: 7d95ae1f750c59c121e998c6f51f9439b1b0339a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314850"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287088"
 ---
-# <a name="indexing-external-data-for-queries-in-azure-search"></a>为 Azure 搜索中的查询编制外部数据索引
-> [!div class="op_single_selector"]
-> * [概述](search-what-is-data-import.md)
-> * [.NET](search-import-data-dotnet.md)
-> * [REST](search-import-data-rest-api.md)
-> 
-> 
+# <a name="data-import-overview---azure-search"></a>数据导入概述-Azure 搜索
 
 在 Azure 搜索中，将会针对已加载和已保存到[搜索索引](search-what-is-an-index.md)中的内容执行查询。 本文介绍填充索引的两种基本方法：一种是推送，即以编程方式将数据推送至索引；另一种是拉取，即将 [Azure 搜索索引器](search-indexer-overview.md)指向支持的数据源，以便拉取数据。
+
+这两种方法，目的是向*将数据加载*从外部数据源到 Azure 搜索索引。 Azure 搜索将使你创建一个空的索引，但直到推送或拉取到其中的数据，不可查询。
 
 ## <a name="pushing-data-to-an-index"></a>将数据推送至索引
 推送模式用于以编程方式将数据发送到 Azure 搜索，是最灵活的方法。 首先，它对数据源类型没有限制。 任何由 JSON 文档组成的数据集都可以推送至 Azure 搜索索引，前提是数据集中的每个文档的字段都映射到索引架构中定义的字段。 其次，它对执行频率没有限制。 可以根据需要选择相应的频率，将更改推送到索引。 对于具有极低延迟要求的应用程序（例如，如果需要搜索操作与动态库存数据库同步），只能选择推送模型。
@@ -40,7 +36,38 @@ ms.locfileid: "53314850"
 
 目前尚没有支持通过门户推送数据的工具。
 
-有关每种方法的简介，请参阅[使用 REST 来导入数据](search-import-data-rest-api.md)或[使用 .NET 来导入数据](search-import-data-dotnet.md)。
+每个方法的介绍，请参阅[快速入门：创建使用 PowerShell 和 REST API 的 Azure 搜索索引](search-create-index-rest-api.md)或[快速入门：创建 Azure 搜索索引中的C# ](search-import-data-dotnet.md)。
+
+<a name="indexing-actions"></a>
+
+### <a name="indexing-actions-upload-merge-mergeorupload-delete"></a>索引操作： 上传、 合并、 mergeOrUpload，删除
+
+可以控制在每个文档模式中，索引操作的类型指定文档是否应上传完整、 合并与现有的文档内容，或已删除。
+
+在 REST API 发出 HTTP POST 请求具有 JSON 请求正文向 Azure 搜索索引的终结点 URL。 "Value"数组中的每个 JSON 对象包含文档密钥，并指定的索引操作添加的更新，或删除文档内容。 有关代码示例，请参阅[加载文档](search-create-index-rest-api.md#load-documents)。
+
+在.NET SDK 中，将数据打包到`IndexBatch`对象。 `IndexBatch`封装的集合`IndexAction`对象，其中每个包含一个文档和一个属性，它指示要在该文档上执行的操作的 Azure 搜索。 有关代码示例，请参阅[构造 IndexBatch](search-import-data-dotnet.md#construct-indexbatch)。
+
+
+| @search.action | 描述 | 每个文档必需的字段 | 说明 |
+| -------------- | ----------- | ---------------------------------- | ----- |
+| `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
+| `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 在.NET SDK 中，这包括类型的字段`DataType.Collection(DataType.String)`。 在 REST API 中，这包括类型的字段`Collection(Edm.String)`。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
+| `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |关键字段以及要定义的任何其他字段 |- |
+| `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都会被忽略。 如果要从文档中删除单个字段，请改用 `merge`，只需将该字段显式设置为 null。 |
+
+## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
+若要导入使用.NET SDK、 （上传、 合并、 删除和 mergeOrUpload） 的数据。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
+
+
+### <a name="formulate-your-query"></a>表述查询
+有两种方法可以 [使用 REST API 搜索索引](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。 一种方法是发出 HTTP POST 请求，这种请求的查询参数在请求主题的 JSON 对象中定义。 另一种方法是发出 HTTP GET 请求，这种请求的查询参数在请求 URL 中定义。 POST 的查询参数大小限制比 GET [宽松](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。 因此建议使用 POST，使用 GET 更方便的特殊情况除外。
+
+POST 和 GET 都需要在请求 URL 中提供*服务名称*、*索引名称*和正确的 *API 版本*（发布本文档时的 API 版本为 `2017-11-11`）。 GET 的 URL 末尾为*查询字符串*，用于提供查询参数。 有关 URL 格式，请参见以下内容：
+
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
+
+POST 的 URL 格式相同，只是查询字符串参数仅包含 API 版本。
 
 
 ## <a name="pulling-data-into-an-index"></a>将数据拉取到索引中

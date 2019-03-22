@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba2bde039cec65a1afe33efac58752d26f22c2b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d9cdb842c4cebe48f2f6534417a7fe6aa4686d1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171887"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Private Access Administrator 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56171887"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Zscaler Private Access Administrator 的集成，需具备以下项：
 
@@ -217,7 +217,7 @@ ms.locfileid: "56171887"
 
     ![Zscaler Private Access Administrator 用户管理](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 **BrittaSimon@contoso.com**）。
+    a. 在中**用户名**文本框中，输入类似的用户的电子邮件**BrittaSimon\@contoso.com**。
 
     b. 在“密码”文本框中，键入密码。
 
@@ -225,7 +225,7 @@ ms.locfileid: "56171887"
 
     d. 在“角色”中选择“Zscaler Private Access Administrator”。
 
-    e. 在“电子邮件”文本框中，输入用户的电子邮件地址（如 BrittaSimon@contoso.com）。
+    e. 在中**电子邮件**文本框中，输入类似的用户的电子邮件**BrittaSimon\@contoso.com**。
 
     f. 在“电话”文本框中，键入电话号码。
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6bd61923dafb605e09c6ca6ab86dcd85fe60b37c
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 79d013e5836555547cbf254bb25c06add0a717e1
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734651"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295379"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>配置自动化机器学习试验
 
@@ -111,7 +111,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 
 `get_data` 脚本可以返回：
 
-密钥 | Type |    与以下对象互斥 | 说明
+密钥 | Type |    与以下对象互斥 | 描述
 ---|---|---|---
 X | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |  用于训练的所有特征
 y | Pandas 数据帧或 Numpy 数组 |   label   | 用于训练的标签数据。 对于分类，应是一个整数数组。
@@ -285,7 +285,7 @@ run = experiment.submit(automl_config, show_output=True)
 ### <a name="classification-metrics"></a>分类指标
 在分类任务的每次迭代中保存以下指标。
 
-|主要指标|说明|计算|其他参数
+|主要指标|描述|计算|其他参数
 --|--|--|--|
 AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC 是接收方操作特性曲线下面的区域。 通过组合每个类中的真报率和误报率来全局计算 Micro| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
@@ -311,7 +311,7 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 ### <a name="regression-and-forecasting-metrics"></a>回归和预测指标
 在回归或预测任务的每次迭代中保存以下指标。
 
-|主要指标|说明|计算|其他参数
+|主要指标|描述|计算|其他参数
 --|--|--|--|
 explained_variance|解释方差是数学模型计算给定数据集的方差时遵循的比例。 它是原始数据方差与误差方差之间的递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|无|
 r2_score|R2 是与输出平均值的基线模型相比，平方误差的确定系数或递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|无|
@@ -396,4 +396,4 @@ RunDetails(local_run).show()
 
 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 
-详细了解[如何使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)或[如何在远程资源上使用自动化机器学习进行训练](how-to-auto-train-remote.md)。
+详细了解如何[如何训练回归模型使用自动机器学习](tutorial-auto-train-models.md)或[如何训练使用自动远程资源的机器学习](how-to-auto-train-remote.md)。

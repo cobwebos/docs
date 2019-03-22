@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.custom: seodec18
-ms.openlocfilehash: d65ce83465f54a30b96bc1ee6644319e1b4fb020
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 301326f4ba858c7aef6c8bdec8f2cae3ed926847
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556588"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121037"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 本文探讨时序见解资源管理器 Web 应用中可用的各种功能和选项。 在 Web 浏览器中使用时序见解资源管理器来创建数据的可视化效果。
@@ -34,7 +34,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在可以使用时序见解资源管理器之前，必须：
 - 创建时序见解环境
@@ -91,27 +91,27 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 10. 使用“图表”，可以直观地浏览数据。 图标工具包括：
 
-   - 选择/单击，可以选择特定的时间范围，或者选择一个数据系列。  
-   - 在选择的时间范围内，可以放大或浏览事件。  
-   - 在数据系列内，可以按另一列拆分系列、将系列作为新术语添加、只显示已选系列、排除已选系列、固定该系列或从已选系列中浏览事件。
-   - 在图表左侧的筛选器区域中，可以查看显示的所有数据系列并按值或名称重新排序、查看所有数据系列或者特意固定或解锁的系列。  还可以选择一个数据系列并按另一列拆分该系列、将系列作为新术语添加、只显示已选系列、排除已选系列、固定该系列或从已选系列中浏览事件。
-   - 同时查看多个术语时，可以堆叠、取消堆叠、查看有关数据系列的其他数据、通过图表右上角的按钮在所有术语中使用同一个 Y 轴。
+    - 选择/单击，可以选择特定的时间范围，或者选择一个数据系列。  
+    - 在选择的时间范围内，可以放大或浏览事件。  
+    - 在数据系列内，可以按另一列拆分系列、将系列作为新术语添加、只显示已选系列、排除已选系列、固定该系列或从已选系列中浏览事件。
+    - 在图表左侧的筛选器区域中，可以查看显示的所有数据系列并按值或名称重新排序、查看所有数据系列或者特意固定或解锁的系列。  还可以选择一个数据系列并按另一列拆分该系列、将系列作为新术语添加、只显示已选系列、排除已选系列、固定该系列或从已选系列中浏览事件。
+    - 同时查看多个术语时，可以堆叠、取消堆叠、查看有关数据系列的其他数据、通过图表右上角的按钮在所有术语中使用同一个 Y 轴。
  
-   ![图表工具](media/time-series-insights-explorer/explorer5.png) 
+    ![图表工具](media/time-series-insights-explorer/explorer5.png) 
 
 11. “热度地图”可以用来快速发现给定查询中的唯一或异常数据系列。 仅有一个搜索术语能可视化为热度地图。    
 
-   ![热度地图](media/time-series-insights-explorer/explorer6.png)
+    ![热度地图](media/time-series-insights-explorer/explorer6.png)
 
 12. **事件**：选择或右键单击以上内容来选择浏览事件时，事件面板是可用的。  在这里，可以看到所有原始事件并可将事件导出为 JSON 或 CSV 文件。 请注意，时序见解存储所有原始数据。
 
-   ![活动](media/time-series-insights-explorer/explorer7.png)
+    ![活动](media/time-series-insights-explorer/explorer7.png)
 
 13. 浏览事件以公开模式和列统计信息之后，单击“统计信息”选项卡。  
 
-   - “模式”：此功能主动显示所选数据区域中最具统计意义的模式。 这使你无需为了解最需要花费时间和精力的模式而查看数千个事件。 此外，时序见解使你能直接跳到这些具有重大统计意义的模式继续进行分析。 此功能也有助于对历史数据进行事后调查。 
+    - “模式”：此功能主动显示所选数据区域中最具统计意义的模式。 这使你无需为了解最需要花费时间和精力的模式而查看数千个事件。 此外，时序见解使你能直接跳到这些具有重大统计意义的模式继续进行分析。 此功能也有助于对历史数据进行事后调查。 
 
-   - **列统计信息**：列统计信息提供图表和表格，细分选定时间范围内所选数据系列的每列中的数据。  
+    - **列统计信息**：列统计信息提供图表和表格，细分选定时间范围内所选数据系列的每列中的数据。  
  
       ![统计信息](media/time-series-insights-explorer/explorer8.png) 
 

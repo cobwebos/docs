@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab9750620d6d7c34de1d6e3404b4ea721f330ed
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 3de8422efdbb7802e0532503e2733518e8050f6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203907"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842526"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56203907"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Riskware 的集成，需要以下项：
 
@@ -110,6 +110,7 @@ ms.locfileid: "56203907"
     ![Riskware 域和 URL 单一登录信息](./media/riskware-tutorial/tutorial_riskware_url.png)
 
     a. 在“登录 URL”文本框中，键入使用以下模式的 URL：
+
     | 环境| URL 模式|
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
@@ -118,6 +119,7 @@ ms.locfileid: "56203907"
     |||
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：
+    
     | 环境| URL 模式|
     |--|--|
     | UAT| `https://riskcloud.net/uat` |
@@ -247,7 +249,7 @@ ms.locfileid: "56203907"
 
     a. 在“身份验证”部分下，选择设置的“身份验证”模式（例如“AZURE Configuration for SSO”）。
 
-    b. 在“登录详细信息”部分下的“用户 ID”文本框中，输入类似于 **brittasimon@contoso.com** 的用户电子邮件。
+    b. 下**登录详细信息**部分中，在**用户 ID**文本框中，输入类似的用户的电子邮件**brittasimon\@contoso.com**。
 
     c. 在“密码”文本框中，输入用户的密码。
 

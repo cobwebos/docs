@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 79ba32f85c608d98b29b235bf1417e74f7e2a4d4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 5382c565e5afc42d65a3198d797b51d1b1a9dde6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313477"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550764"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -40,19 +40,13 @@ ms.locfileid: "56313477"
 
 ## <a name="preview-limitations"></a>预览版限制
 
-尽管此功能已推出预览版，但在将容器实例部署到虚拟网络时仍然存在以下限制。 
+虽然此功能处于预览状态，以下限制将应用部署到虚拟网络的容器组时。 
 
-**支持的区域和资源限制**
-
-| 位置 | 操作系统 | CPU | 内存 (GB) |
-| -------- | :---: | :---: | :-----------: |
-| 西欧 | Linux | 4 | 14 |
-| 美国东部、美国西部 | Linux | 2 | 3.5 |
-| 澳大利亚东部、北欧 | Linux | 1 | 1.5 |
+[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 容器资源限制可能与这些区域中非网络容器实例的限制不同。 目前，仅 Linux 容器支持此功能。 计划提供 Windows 支持。
 
-**不受支持的网络资源和功能**
+### <a name="unsupported-network-resources-and-features"></a>不支持的网络资源和功能
 
 * Azure 负载均衡器
 * 虚拟网络对等互连

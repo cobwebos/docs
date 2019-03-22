@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 824793c9897d7d728f621182a02a6092edc69e89
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 92ff5d21fc30d8fcafe97a2b452ff157a2cd5f86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452373"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997037"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
 
-数据科学或 AI 项目中的第一个技术步骤之一就是，识别要使用的数据集并将其引入到分析环境中。 数据科学虚拟机 (DSVM) 提供工具和库，可将来自不同来源的数据导入 DSVM 上的本地分析数据存储，或云、本地的数据平台中。 
+数据科学或 AI 项目中的第一个技术步骤之一就是，识别要使用的数据集并将其引入到分析环境中。 数据科学虚拟机 (DSVM) 提供工具和库以引入到分析数据存储在 DSVM 上本地或在数据平台中的不同来源数据在本地或云上。 
 
 以下是我们在 DSVM 上提供的一些数据移动工具。 
 

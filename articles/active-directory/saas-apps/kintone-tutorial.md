@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c4c4bb924ed6faf1b194273a3cf8c17b16d741
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6e425efda49e02c895d288b517635525e7fa444e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209874"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>教程：Azure Active Directory 与 Kintone 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56209874"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Kintone 的集成，需要以下项：
 
@@ -116,6 +116,7 @@ ms.locfileid: "56209874"
     a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.kintone.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://<companyname>.cybozu.com`|

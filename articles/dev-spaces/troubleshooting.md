@@ -1,21 +1,20 @@
 ---
-title: 故障排除 | Microsoft 文档
+title: 故障排除
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 09/11/2018
-ms.topic: article
+ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 5be6f99067f1209fcd131dfc33c46995b2a537f8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+keywords: 'Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，Helm，服务网格，服务网格路由、 kubectl，k8s '
+ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898076"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -146,8 +145,8 @@ kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-in
 
 下载并安装最新版本的 Azure Dev Spaces CLI：
 
-* [Windows](http://aka.ms/get-azds-windows)
-* [Mac](http://aka.ms/get-azds-mac)
+* [Windows](https://aka.ms/get-azds-windows)
+* [Mac](https://aka.ms/get-azds-mac)
 * [Linux](https://aka.ms/get-azds-linux)
 
 ## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>错误“azds”未识别为内部或外部命令、可运行程序或批处理文件
@@ -210,7 +209,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 运行 VS Code 调试器时，报告错误：`Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>原因
-未在开发计算机上安装适用于 C# 的 VS Code 扩展。 C# 扩展包括调试对 .Net Core (CoreCLR) 的支持。
+未在开发计算机上安装适用于 C# 的 VS Code 扩展。 C#扩展插件包括调试.NET Core (CoreCLR) 的支持。
 
 ### <a name="try"></a>请尝试：
 安装[适用于 C# 的 VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。

@@ -4,8 +4,8 @@ description: 了解如何将 SSH 与 Linux 上的 Azure 应用服务配合使用
 keywords: azure 应用服务, web 应用, linux, oss
 services: app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: wesmc
+ms.date: 02/25/2019
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9a05769b4cfd4bcaca0df9e1af1816d99f78bc62
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: a56c4b0bac61bd2039138ffed554130c6e520821
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984456"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167127"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>对 Linux 上的 Azure 应用服务的 SSH 支持
 
@@ -67,7 +67,7 @@ https://<app_name>.scm.azurewebsites.net/webssh/host
         && echo "root:Docker!" | chpasswd
     ```
 
-2. 向 Dockerfile 中添加一条 [`COPY` 指令](https://docs.docker.com/engine/reference/builder/#copy)以将 [sshd_config](https://man.openbsd.org/sshd_config) 文件复制到 */etc/ssh/* 目录中。 配置文件应当以[此处](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config)的 Azure-App-Service GitHub 存储库中的 sshd_config 文件为基础。
+2. 向 Dockerfile 中添加一条 [`COPY` 指令](https://docs.docker.com/engine/reference/builder/#copy)以将 [sshd_config](https://man.openbsd.org/sshd_config) 文件复制到 */etc/ssh/* 目录中。 配置文件应当以[此处](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)的 Azure-App-Service GitHub 存储库中的 sshd_config 文件为基础。
 
     > [!NOTE]
     > *sshd_config* 文件必须包括以下项，否则连接会失败： 
@@ -110,18 +110,6 @@ Dockerfile 使用 [`ENTRYPOINT` 指令](https://docs.docker.com/engine/reference
 使用 TCP 隧道，可以通过经身份验证的 WebSocket 连接在开发计算机与适用于容器的 Web 应用之间创建网络连接。 这样就可以通过所选客户端使用在应用服务中运行的容器打开一个 SSH 会话。
 
 若要开始，需安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要了解它在不安装 Azure CLI 的情况下的工作方式，请打开 [Azure Cloud Shell](../../cloud-shell/overview.md)。 
-
-通过运行 [az extension add](/cli/azure/extension?view=azure-cli-latest#az-extension-add) 来添加最新的应用服务扩展：
-
-```azurecli-interactive
-az extension add --name webapp
-```
-
-如果此前已运行 `az extension add`，请改为运行 [az extension update](/cli/azure/extension?view=azure-cli-latest#az-extension-update)：
-
-```azurecli-interactive
-az extension update --name webapp
-```
 
 使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) 命令打开到应用的远程连接。 为应用指定 _\<subscription\_id>_、_\<group\_name>_ 和 \_<app\_name>_。
 
@@ -167,7 +155,7 @@ A P P   S E R V I C E   O N   L I N U X
 0e690efa93e2:~#
 ```
 
-现在已连接到连接器。 
+现在已连接到连接器。  
 
 请尝试运行 [top](https://ss64.com/bash/top.html) 命令。 应该可以在进程列表中看到应用的进程。 在下面的示例输出中，它带有 `PID 263`。
 

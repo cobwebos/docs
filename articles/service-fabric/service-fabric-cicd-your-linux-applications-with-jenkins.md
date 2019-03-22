@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: 7abc15264a44c969f57071e84ffcedca30d326fb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
-ms.translationtype: HT
+ms.openlocfilehash: 3b1e6f769d5c65065d95ac96c4ab4ed10702e5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766310"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089890"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>使用 Jenkins 生成和部署 Linux 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
@@ -253,24 +253,24 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
       ```
    
    * **对于在群集外运行的 Jenkins：** 按照以下步骤将群集证书复制到容器：
-      1. 证书必须为 PEM 格式。 如果没有 PEM 文件，可以从证书 PFX 文件创建。 如果 PFX 文件不受密码保护，请从主机运行以下命令：
+     1. 证书必须为 PEM 格式。 如果没有 PEM 文件，可以从证书 PFX 文件创建。 如果 PFX 文件不受密码保护，请从主机运行以下命令：
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
+        ``` 
 
-      如果 PFX 文件受密码保护，将密码添加在 `-passin` 参数中。 例如：
+        如果 PFX 文件受密码保护，将密码添加在 `-passin` 参数中。 例如：
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
+        ``` 
 
-      1. 若要获取 Jenkins 容器的容器 ID，请从主机运行 `docker ps`。
-      1. 使用以下 Docker 命令，将 PEM 文件复制到容器：
+     1. 若要获取 Jenkins 容器的容器 ID，请从主机运行 `docker ps`。
+     1. 使用以下 Docker 命令，将 PEM 文件复制到容器：
     
-         ```sh
-         docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
-         ``` 
+        ```sh
+        docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
+        ``` 
 
 即将完成！ 保持 Jenkins 作业的打开状态。 剩下的唯一任务是将生成后步骤配置为将应用程序部署到 Service Fabric 群集：
 

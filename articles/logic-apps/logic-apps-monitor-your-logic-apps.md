@@ -10,18 +10,20 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: e06bf20a04c6a57ae5988d4cc334ec7a3cdd4bf1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543850"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112307"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
 在[创建并运行逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)后，可以检查其运行历史记录、触发历史记录、状态和性能。 对于实时事件监视和更丰富的调试，为逻辑应用设置[诊断记录](#azure-diagnostics)。 这样，就可以[查找和查看事件](#find-events)，例如触发事件、运行事件和操作事件。 还可以将此[诊断数据用于其他服务](#extend-diagnostic-data)，如 Azure 存储和 Azure 事件中心。 
 
 要获取关于故障或其他可能问题的通知，请设置[警报](#add-azure-alerts)。 例如，可以创建一个警报，用于检测“一小时内运行失败超过五次的情况”。 还可以使用 [Azure 诊断事件设置和属性](#diagnostic-event-properties)以编程方式设置监视、跟踪和记录。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="view-runs-and-trigger-history-for-your-logic-app"></a>查看逻辑应用的运行和触发历史记录
 
@@ -72,13 +74,13 @@ ms.locfileid: "53543850"
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>为逻辑应用启用诊断日志记录
 
-对于针对运行时详细信息和事件的更丰富调试，可以使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 设置诊断日志记录。 Log Analytics 是 Azure 中的一个服务，用于监视云和本地环境，帮助使其保持较高的可用性和性能。 
+对于更丰富的调试与运行时详细信息和事件，您可以设置诊断与日志记录[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)。 Azure Monitor 是监视你的云，并在本地环境，有助于保持其可用性和性能的 Azure 中的服务。 
 
-在开始之前，需要具有 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+在开始之前，需要具有一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“逻辑应用”。 
 
-2. 在“逻辑应用”边栏选项卡菜单的“监视”下，选择“诊断” > “诊断设置”。
+2. 在逻辑应用边栏选项卡菜单下**监视**，选择**诊断** > **诊断设置**。
 
    ![依次转到“监视”、“诊断”、“诊断设置”](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
@@ -91,8 +93,8 @@ ms.locfileid: "53543850"
    1. 选择“发送到 Log Analytics”。 
    2. 在“Log Analytics”下，选择“配置”。 
    3. 在“OMS 工作区”下，选择要用于日志记录的工作区。
-   > [!NOTE]
-   > OMS 工作区现在称为 Log Analytics 工作区。
+      > [!NOTE]
+      > OMS 工作区现在称为 Log Analytics 工作区。
    4. 在“日志”下，选择“WorkflowRuntime”类别。
    5. 选择指标间隔。
    6. 完成后，选择“保存”。
@@ -125,7 +127,7 @@ ms.locfileid: "53543850"
 
    ![输入搜索字符串](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 
-   详细了解[如何在 Log Analytics 中查找数据](../log-analytics/log-analytics-log-searches.md)。
+   详细了解如何[如何在 Azure Monitor 日志中查找数据](../log-analytics/log-analytics-log-searches.md)。
 
 5. 在结果页的左侧栏中，选择要查看的时间范围。
 若要通过添加筛选器优化查询，请选择“+添加”。
@@ -153,7 +155,7 @@ ms.locfileid: "53543850"
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>扩展将诊断数据用于其他服务的方式和位置
 
-结合使用 Azure Log Analytics 后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
+Azure Monitor 日志，以及可以扩展如何使用逻辑应用的诊断数据与其他 Azure 服务，例如： 
 
 * [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -176,7 +178,7 @@ ms.locfileid: "53543850"
 
 要监视逻辑应用的特定指标或超出的阈值，请[在 Azure 中设置警报](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 
 
-若要在不使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 的情况下设置警报，请按照下列步骤执行。 有关更高级的警报条件和操作，也可以[设置 Log Analytics](#azure-diagnostics)。
+若要设置警报，而无需[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，请执行以下步骤。 有关更高级的警报条件和操作，[设置 Azure Monitor 日志](#azure-diagnostics)过。
 
 1. 在“逻辑应用”边栏选项卡菜单的“监视”下，选择“诊断” > “警报规则” > “添加警报”，如下所示：
 

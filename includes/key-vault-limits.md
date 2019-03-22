@@ -4,49 +4,41 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 9a39abf77a7396302f93e5a423271402b7c3edb3
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 0e55c372c6f5dc3484bd64cf4f328479d2d0b245
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083998"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553303"
 ---
-密钥事务数（每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup>）：
+## <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>密钥事务 (每个区域保管库在 10 秒内，每个允许的最大事务<sup>1</sup>):
 
-|密钥类型|HSM-key<br>CREATE 密钥|HSM-key<br>所有其他事务|Software-key<br>CREATE 密钥|Software-key<br>所有其他事务|
+|密钥类型|HSM 密钥<br>创建密钥|HSM 密钥<br>所有其他事务|软件密钥<br>创建密钥|软件密钥<br>所有其他事务|
 |:---|---:|---:|---:|---:|
-|RSA 2048 位|5|1000|10|2000|
+|RSA 2048 位|5|1,000|10|2,000|
 |RSA 3072 位|5|250|10|500|
 |RSA 4096 位|5|125|10|250|
-|ECC P-256|5|1000|10|2000|
-|ECC P-384|5|1000|10|2000|
-|ECC P-521|5|1000|10|2000|
-|ECC SECP256K1|5|1000|10|2000|
-|
+|ECC P-256|5|1,000|10|2,000|
+|ECC P-384|5|1,000|10|2,000|
+|ECC P-521|5|1,000|10|2,000|
+|ECC SECP256K1|5|1,000|10|2,000|
 
 > [!NOTE]
-> 对上面的阈值进行了加权，执行数量为各项的总和。 可以执行 125 个 RSA-HSM-4k 操作和 0 个RSA-HSM-2k 操作，或者执行 124 个 RSA-HSM-4k 操作和 16 个 RSA-HSM-2k 操作。 之后，在同样的 10 秒间隔内，任何其他操作都将导致 AKV 客户端异常。
+> 在上表中，我们看到，对于 RSA 2048 位软件密钥，允许每 10 秒 2,000 个获取事务。 对于 RSA 2048 位的 HSM 密钥，允许每 10 秒的 1,000 个获取事务。
+>
+> 限制阈值时权重，并强制位于其总和。 例如上, 表中所示，请执行 GET 操作在 RSA HSM 密钥时它是八倍更昂贵，若要使用 4096 位密钥相比 2,048 位密钥。 这是因为 1,000/125 = 8。
+>
+> 在给定的 10 秒间隔内，Azure 密钥保管库客户端可以执行*只有一个*的以下操作之前遇到`429`限制 HTTP 状态代码：
+> - 2,000 个 RSA 2048 位软件密钥获取事务
+> - 1,000 个 RSA 2048 位 HSM 密钥获取事务
+> - 125 RSA 4096 位 HSM 密钥获取事务
+> - 124 RSA 4096 位的 HSM 密钥获取事务和 8 RSA 2048 位 HSM 密钥获取事务
 
-> [!NOTE]
-> 如果查看下表，你会看到：对于软件支持的密钥，我们允许每 10 秒完成 2000 个事务，而对于 HSM 支持的密钥，我们允许每 10 秒完成 1000 个事务。 3072 密钥与 2048 密钥的软件支持事务的比率为 500/2000 或0.4。 这意味着，如果客户在 10 秒内完成 500 个 3072 密钥事务，那么它们将达到最大限制，而不能执行任何其他密钥操作。 
-   
-|密钥类型  | 软件密钥 |HSM-key  |
-|---------|---------|---------|
-|RSA 2048 位     |    2000     |   1000    |
-|RSA 3072 位     |     500    |    250     |
-|RSA 4096 位     |    125     |    250     |
-|ECC P-256     |    2000     |  1000     |
-|ECC P-384     |    2000     |  1000     |
-|ECC P-521     |    2000     |  1000     |
-|ECC SECP256K1     |    2000     |  1000     |
-
-
-机密、托管存储帐户密钥，以及保管库事务：
-| 事务类型 | 每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup> |
+## <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>机密、 托管的存储帐户密钥和保管库事务：
+| 事务类型 | 每个区域保管库在 10 秒内，每个允许的最大事务<sup>1</sup> |
 | --- | --- |
-| 所有事务 |2000 |
-|
+| 所有事务 |2,000 |
 
-有关超出这些限制时如何处理限制的信息，请参阅 [Azure Key Vault 限制指南](../articles/key-vault/key-vault-ovw-throttling.md)。
+有关如何处理限制时超出这些限制的信息，请参阅[Azure Key Vault 限制指南](../articles/key-vault/key-vault-ovw-throttling.md)。
 
-<sup>1</sup> 所有事务类型都没有订阅范围的限制，即每个密钥保管库限制的 5 倍。 例如，每个订阅的 HSM- 其他事务数限制为 10 秒内 5000 个事务。
+<sup>1</sup>的所有事务类型的订阅范围限制为五次每个密钥保管库的限制。 例如，每个订阅的 HSM-其他事务在 10 秒内每个订阅仅限于 5,000 个事务。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 7c12b34f6d735579326d4ccdd95e7831fbb777d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d9530d35bbaf608ae25e2a753685ee90e9e13501
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181416"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823291"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -42,7 +42,7 @@ ms.locfileid: "56181416"
 ## <a name="add-slot"></a>添加槽
 应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽位。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，打开应用的[资源页](../azure-resource-manager/resource-group-portal.md#manage-resources)。
+1. 在 [Azure 门户](https://portal.azure.com/)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
 
 2. 在左侧导航栏中，选择“部署槽位(预览)”选项，然后单击“添加槽”。
    
@@ -205,7 +205,9 @@ ms.locfileid: "56181416"
         </applicationInitialization>
     </system.webServer>
 
-还可以使用下列[应用设置](https://github.com/MicrosoftDocs/azure-docs-pr/pull/web-sites-configure.md)中的一个或多个来自定义预热行为：
+有关自定义 `applicationInitialization` 元素的详细信息，请参阅[最常见的部署槽位交换故障以及如何修复它们](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)。
+
+还可以使用下列[应用设置](web-sites-configure.md)中的一个或多个来自定义预热行为：
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`：用于对你的站点进行预热的 ping 路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如，`/statuscheck`。 默认值为 `/`。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`：预热操作的有效 HTTP 响应代码。 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 例如：`200,202`。 如果返回的状态代码不在列表中，则预热和交换操作会停止。 默认情况下，所有响应代码都是有效的。

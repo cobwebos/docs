@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 4b4859c41e7a3903de68b62e8587f1c85805a782
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: b08312040f9702b8a9100886c198138431012e3f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081630"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007375"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 for Customer Engagement 先决条件
 
-本文介绍了在 AppSource 市场上发布 Dynamics 365 for Customer Engagement 应用程序产品/服务的技术和业务先决条件。
+本文介绍了在 AppSource 市场上发布 Dynamics 365 for Customer Engagement 应用程序产品/服务的技术和业务先决条件。  如果尚未这样做，请查看[Office 365，Dynamics 365，PowerApps 和 Power BI 产品/服务发布指南](../../appsource-offer-publishing-guide.md)。
 
 
 ## <a name="technical-requirements"></a>技术要求
@@ -31,7 +31,7 @@ ms.locfileid: "54081630"
 Dynamics 365 for Customer Engagement 应用程序必须符合[Microsoft AppSource 应用审核指南](https://smp-cdn-prod.azureedge.net/documents/AppsourceGuidelines/Microsoft%20AppSource%20app%20review%20guidelines_v5.pdf)，其中包括以下要求：
 
 
-|              要求             |        Description           |
+|              要求             |        描述           |
 |            ---------------           |      ---------------         |
 | Azure Active Directory 集成   | 在已启用许可的情况下，应用须允许使用 Azure Active Directory 联合单一登录（AAD 联合 SSO）。 有关详细信息，请参阅[如何使 AppSource 通过 Azure Active Directory 的认证](https://docs.microsoft.com/azure/active-directory/develop/howto-get-appsource-certified)。 |
 | 与 Microsoft 云服务集成（可选） | 如果需要此功能，应将应用与 Microsoft Power BI、Microsoft Flow 或 Microsoft Azure 服务（如机器学习或认知服务）等其他 Microsoft 云服务集成。 |

@@ -6,15 +6,15 @@ keywords: 机密
 author: aljo-microsoft
 ms.author: aljo
 ms.date: 11/28/2018
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: 06d8519836129a557ec69d59d15eb12129e8099b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236745"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900635"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>管理 Service Fabric 网格应用程序机密
 Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格机密可以是任何敏感文本信息，例如存储连接字符串、密码或应该安全存储和传输的其他值。 本文展示了如何使用 Service Fabric Secure Store Service 来部署和维护机密。
@@ -24,20 +24,20 @@ Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格
 * 存储在**机密**资源容器中的一个或多个**机密/值**资源。 每个**机密/值**资源都由版本号予以区分。 无法修改**机密/值**资源的版本，只能追加新版本。
 
 管理机密包括以下步骤：
-1. 在 Azure 资源模型 YAML 或 JSON 文件中使用 inlinedValue 种类和 SecretsStoreRef contentType 定义声明一个网格**机密**资源。
-2. 在 Azure 资源模型 YAML 或 JSON 文件中声明将存储在**机密**资源（来自步骤 1）中的网格**机密/值**资源。
+1. 声明一个网格**机密**使用 inlinedValue 种类和 SecretsStoreRef contentType 定义 Azure 资源模型 YAML 或 JSON 文件中的资源。
+2. 声明网格**机密/Values**将存储在一个 Azure 资源模型 YAML 或 JSON 文件中的资源**机密**（来自步骤 1） 的资源。
 3. 修改网格应用程序以引用网格机密值。
 4. 部署或滚动升级网格应用程序以使用机密值。
 5. 使用 Azure "az" CLI 命令进行 Secure Store Service 生命周期管理。
 
 ## <a name="declare-a-mesh-secrets-resource"></a>声明网格机密资源
-网格机密资源是在 Azure 资源模型 JSON 或 YAML 文件中使用 inlinedValue 种类和 SecretsStoreRef contentType 定义声明的。 网格机密资源支持源自 Secure Store Service 的机密。 
+网格机密资源中的 Azure 资源模型 JSON 或 YAML 文件使用 inlinedValue 种类和 SecretsStoreRef contentType 定义声明。 网格机密资源支持源自 Secure Store Service 的机密。 
 >
 下面是有关如何在 JSON 文件中声明网格机密资源的示例：
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -103,7 +103,7 @@ Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -215,9 +215,9 @@ az mesh secret show --Resource-group <myResourceGroup> --secret-name <mySecret>
 
 - 当机密正在由某个网格应用程序引用时，无法删除机密。
 - 删除机密资源会删除所有机密/资源版本。
-```azurecli-interactive
-az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
-```
+  ```azurecli-interactive
+  az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
+  ```
 
 ### <a name="list-secrets-in-subscription"></a>列出订阅中的机密
 ```azurecli-interactive

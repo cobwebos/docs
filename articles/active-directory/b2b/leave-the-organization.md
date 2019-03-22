@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 03/13/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d8183f7fa55a410b44d33295ad24f0f07adb145
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0f75f91c037a2f05c999d388ce7bb16ad2d0c9cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185921"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005669"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>以来宾用户身份离开组织
 
@@ -24,13 +24,17 @@ ms.locfileid: "56185921"
 
 ## <a name="leave-an-organization"></a>离开组织
 
-若要以 [“访问面板”](https://myapps.microsoft.com) 登录用户的身份离开组织，请执行以下操作：
+若要离开组织，请执行以下步骤。
 
-1. 如果尚未登录要离开的组织，请在右上角选择你的姓名，然后单击要离开的组织。
-2. 在右上角选择你的姓名。
-3. 在“组织”旁边，选择设置图标（齿轮）。
+1. 通过执行以下任一操作转到访问面板个人资料页：
+   
+   - 在中[Azure 门户](https://portal.azure.com)，单击右上角中的用户名，然后选择**查看帐户**。
+   - 打开你[访问面板](https://myapps.microsoft.com)，单击右上右键和向下一步中的用户名**组织**，选择设置图标 （齿轮）。
  
    ![显示访问面板中用户设置的屏幕截图](media/leave-the-organization/UserSettings.png) 
+
+   > [!NOTE]
+   > 如果你尚未登录到组织想要将保留在**组织**，单击**登录以离开组织**组织的名称旁边的链接。 你已登录后，单击您的姓名再次在右上方和旁边**组织**，选择设置图标 （齿轮）。
 
 3. 在“组织”下，找到要离开的组织，然后选择“离开组织”。
 

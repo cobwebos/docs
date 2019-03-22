@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 6c57c8ad85ef83e8739bc2bf35b3bd0dc6d5a902
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: ba8d9fd54b8b29a3e58f170402a64f5899fec002
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004836"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880681"
 ---
 # <a name="develop-video-player-applications"></a>开发视频播放器应用程序
 ## <a name="overview"></a>概述
-Azure 媒体服务提供所需的工具，以便用户创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 此主题还提供了可用来开发用户自己的客户端应用程序（这些应用程序使用 Azure 媒体服务中的流媒体）的 SDK 和播放器框架的链接。
+Azure 媒体服务提供所需的工具，以便用户创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 本主题还提供可用于开发自己的客户端应用程序（这些应用程序使用 Azure 媒体服务中的流媒体）的 SDK 和播放器框架的链接。
 
 >[!NOTE]
 >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
@@ -35,7 +35,7 @@ Microsoft Azure 媒体服务允许播放使用 DASH、平滑流和 HLS 流格式
 
 更多相关信息：
 
-* [Azure 媒体播放器](https://aka.ms/ampinfo)
+* [Azure Media Player](https://aka.ms/ampinfo)
 * [Azure 媒体播放器文档](https://aka.ms/ampdocs) 
 * [Azure 媒体播放器入门博客](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)
 * [注册以保持最新版本的 Azure 媒体播放器](https://aka.ms/ampsignup)
@@ -44,16 +44,16 @@ Microsoft Azure 媒体服务允许播放使用 DASH、平滑流和 HLS 流格式
 ## <a name="other-tools-for-creating-player-applications"></a>用于创建播放器应用程序的其他工具
 也可以使用以下任意 SDK：
 
-* [平滑流式处理客户端 SDK](http://www.iis.net/downloads/microsoft/smooth-streaming) 
+* [平滑流式处理客户端 SDK](https://www.iis.net/downloads/microsoft/smooth-streaming) 
 * [平滑流式处理 Windows 应用商店应用](media-services-build-smooth-streaming-apps.md)
-* [Microsoft 媒体平台：播放器框架](http://playerframework.codeplex.com/) 
-* [HTML5 Player Framework 文档](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
+* [Microsoft 媒体平台：播放器框架](https://playerframework.codeplex.com/) 
+* [HTML5 Player Framework 文档](https://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [用于 OSMF 的 Microsoft 平滑流式处理插件](https://www.microsoft.com/download/details.aspx?id=36057) 
 * [授权 Microsoft® 平滑流式处理客户端移植工具包](https://aka.ms/sspk) 
 * [XBOX 视频应用程序开发](https://xbox.create.msdn.com/) 
 
 ## <a name="advertising"></a>广告
-Azure 媒体服务通过“Windows 媒体平台：播放器框架”提供广告插入支持。 附带广告支持的播放器框架在 Windows 8、Silverlight、Windows Phone 8 和 iOS 设备上均可用。 每个播放器框架包含演示如何实现播放器应用程序的示例代码。 可以插入媒体中的广告有三种不同类型：
+Azure 媒体服务通过“Windows 媒体平台：播放器框架”提供广告插入支持播放器框架”提供广告插入支持。 附带广告支持的播放器框架在 Windows 8、Silverlight、Windows Phone 8 和 iOS 设备上均可用。 每个播放器框架包含演示如何实现播放器应用程序的示例代码。 可以插入媒体中的广告有三种不同类型：
 
 线性 - 暂停主视频的全帧广告
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: magattus
-ms.openlocfilehash: 45b3698dd77bda815218b43405d64819c3e4789f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: ef713c954d6eab05259547a277db12a1e9036bcf
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091260"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650540"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>分析 Azure CDN 使用模式
 
@@ -27,7 +27,7 @@ ms.locfileid: "49091260"
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>通过 Azure 诊断日志进行核心分析
 
-核心分析可用于所有定价层的 CDN 终结点。 Azure 诊断日志可以将核心分析导出到 Azure 存储、事件中心或 Azure Log Analytics。 Azure Log Analytics 提供的解决方案中具有用户可配置且可自定义的图。 有关 Azure 诊断日志的详细信息，请参阅 [Azure 诊断日志](cdn-azure-diagnostic-logs.md)。
+核心分析可用于所有定价层的 CDN 终结点。 Azure 诊断日志使核心分析导出到 Azure 存储中，事件中心或 Azure Monitor 日志。 Azure Monitor 日志提供了图形的用户配置和自定义解决方案。 有关 Azure 诊断日志的详细信息，请参阅 [Azure 诊断日志](cdn-azure-diagnostic-logs.md)。
 
 ## <a name="verizon-core-reports"></a>Verizon 核心报表
 

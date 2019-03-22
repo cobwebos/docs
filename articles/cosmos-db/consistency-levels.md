@@ -5,25 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2018
-ms.openlocfilehash: cbe7b0e243f34d9b48e837c1211b5a186946f69f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/18/2019
+ms.openlocfilehash: b43fe513b15d55ee595acaa6733d96cdb58f4e83
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903702"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294496"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性级别
 
-依赖于复制实现高可用性和/或低延迟的分布式数据库在读取一致性与可用性、延迟和吞吐量之间进行基本权衡。 大多数商用分布式数据库都要求开发人员在两种极端一致性模型之间进行选择：非常一致和最终一致。  [可线性化](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)或强一致性模型是数据可编程性的黄金标准。 但其导致的延迟代价太高（稳定状态下）且会降低可用性（遇到故障时）。 另一方面，最终一致性可提供更高的可用性和性能，但应用程序编程难度很大。 
+依赖于复制实现高可用性和/或低延迟的分布式数据库在读取一致性与可用性、延迟和吞吐量之间进行基本权衡。 大多数商用分布式的数据库要求开发人员使用两个极端一致性模型之间进行选择：*强*一致性和*最终*一致性。  [可线性化](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)或较强的一致性模型是数据可编程性的黄金标准。 但是，它将添加更高版本中的延迟时间 （稳定状态下） 的价格，并降低可用性 （在发生故障期间）。 但是，最终一致性提供更高的可用性和提高性能，并且可以运行的应用程序硬。 
 
-Azure Cosmos DB 通过某种选择范围来实现数据一致性，而不会走两种极端。 虽然强一致性和最终一致性处于极端，但在整个范围中有许多一致性选择。 开发人员可以使用这些选项在高可用性或性能方面做出精确的选择和细致的取舍。 
+Azure Cosmos DB 通过某种选择范围来实现数据一致性，而不会走两种极端。 强一致性和最终一致性是在极端情况下，在结束，但有很多的一致性选择的范畴。 开发人员可以使用这些选项进行精确选择和高可用性和性能方面的精细权衡取舍。 
 
-借助 Azure Cosmos DB，开发人员可以在一致性范围内从五个明确定义的一致性模型中进行选择。 从最强到最弱，这些模型为“强”、“有限过期”、“会话”、“一致前缀”和“最终”。 模型定义明确且直观。 它们可用于特定的真实场景。 每个模型均提供[可用性和性能权衡](consistency-levels-tradeoffs.md)，并由综合 SLA 提供支持。 下图以范围区间形式显示了不同的一致性级别。
+借助 Azure Cosmos DB，开发人员可以在一致性范围内从五个明确定义的一致性模型中进行选择。 从以更宽松的最强的模型包括*强*，*有限过期性*，*会话*，*一致前缀*，和*最终*一致性。 模型是定义完善且直观，可用于特定真实情况。 每个模型提供了[可用性和性能的权衡取舍](consistency-levels-tradeoffs.md)并由 Sla 提供支持。 下图显示为一系列不同的一致性级别。
 
 ![范围形式的一致性](./media/consistency-levels/five-consistency-levels.png)
 
-一致性级别与区域无关。 无论从哪个区域提供读取和写入、与 Azure Cosmos 帐户关联的区域数量是多少或帐户是配置了单个还是多个写入区域，所有读取操作都保证 Azure Cosmos DB 帐户的一致性级别。
+一致性级别与区域无关，而不考虑从其读取和写入提供服务，与你的 Azure Cosmos 帐户关联的区域数量的区域的所有操作保证或是否使用单个配置你的帐户或多个写入区域。
 
 ## <a name="scope-of-the-read-consistency"></a>读取一致性的范围
 

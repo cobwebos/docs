@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: ee82aab37973117b0c1960d8b75a29bfad38b7c7
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: 6f93bbceacff3731206e5f98ba9a252d6a046ac4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252069"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200066"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
-> [!div class="op_single_selector" title1="选择您正在使用的 Azure Functions 运行时的版本: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
@@ -163,7 +163,7 @@ ms.locfileid: "50252069"
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
 |已启用|true|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
@@ -210,7 +210,7 @@ ms.locfileid: "50252069"
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
 |categoryFilter|不适用|指定按类别进行筛选| 
 |defaultLevel|信息|对于 `categoryLevels` 数组中未指定的任何类别，会将此级别和更高级别的日志发送到 Application Insights。| 
@@ -220,7 +220,25 @@ ms.locfileid: "50252069"
 
 [存储队列触发器和绑定](functions-bindings-storage-queue.md)的配置设置。
 
-[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
+```json
+{
+    "queues": {
+      "maxPollingInterval": 2000,
+      "visibilityTimeout" : "00:00:30",
+      "batchSize": 16,
+      "maxDequeueCount": 5,
+      "newBatchThreshold": 8
+    }
+}
+```
+
+|属性  |默认 | 描述 |
+|---------|---------|---------| 
+|maxPollingInterval|60000|队列轮询的最大间隔时间，以毫秒为单位。| 
+|visibilityTimeout|0|消息处理失败时的重试间隔时间。| 
+|batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 | 
+|maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。| 
+|newBatchThreshold|batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -244,7 +262,7 @@ ms.locfileid: "50252069"
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -267,7 +285,7 @@ ms.locfileid: "50252069"
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
 |consoleLevel|info|控制台日志记录的跟踪级别。 选项包括：`off`、`error`、`warning`、`info` 和 `verbose`。|
 |fileLoggingMode|debugOnly|文件日志记录的跟踪级别。 选项包括 `never`、`always` 和 `debugOnly`。| 

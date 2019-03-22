@@ -4,18 +4,18 @@ description: 逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 H
 keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
 services: hdinsight
 ms.service: hdinsight
-author: jejiang
-ms.author: jejiang
+author: hrasheed
+ms.author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 1c94f184e57c125ce2520b857b47a9da99a9e517
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: 87a774fad6b7e45f233102b7fb026aa9663dceb0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601604"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005919"
 ---
 # <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用 Azure Toolkit for IntelliJ 通过 SSH 在本地或远程调试 HDInsight 群集上的 Apache Spark 应用程序
 
@@ -31,25 +31,27 @@ ms.locfileid: "53601604"
 
 1. 启动 IntelliJ IDEA 并创建一个项目。 在“新建项目”对话框中执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“HDInsight”。 
+   a. 选择**Azure 的 Spark HDInsight**。 
 
    b. 根据偏好选择 Java 或 Scala 模板。 选择下列选项之一：
 
-      - **Spark on HDInsight (Scala)**
+   - **Spark 项目 (Java)**
 
-      - **Spark on HDInsight (Java)**
+   - **Spark 项目 (Scala)**
 
-      - **Spark on HDInsight 示例 (Scala)**
+   - **Spark 项目的示例 (Scala)**
 
-      本示例使用“Spark on HDInsight 示例 (Scala)”模板。
+   - **Spark 项目与失败任务调试示例 （预览版） (Scala)**
+
+     此示例使用**Spark 项目的示例 (Scala)** 模板。
 
    c. 在“生成工具”列表中，根据需要选择以下选项之一：
 
-      - 用于支持 Scala 项目创建向导的“Maven”
+   - 用于支持 Scala 项目创建向导的“Maven”
 
-      -  用于管理依赖项和生成 Scala 项目的“SBT” 
+   - 用于管理依赖项和生成 Scala 项目的“SBT” 
 
-      ![创建调试项目](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
+     ![创建调试项目](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
    d. 选择“**下一步**”。     
  
@@ -57,7 +59,7 @@ ms.locfileid: "53601604"
 
    ![选择 Spark SDK](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入项目名称和项目位置。
+   a. 输入项目名称和项目位置。
 
    b. 在“项目 SDK”下拉列表中，选择适用于 Spark 2.x 群集的“Java 1.8”或选择适用于 Spark 1.x 群集的“Java 1.7”。
 
@@ -77,17 +79,17 @@ ms.locfileid: "53601604"
 1. 本地运行完成后，可以看到输出文件保存到当前的项目资源管理器的“数据” > “默认”中。
 
     ![本地运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
-1. 执行本地运行和本地调试时，工具已自动设置默认的本地运行配置。 打开右上角的“[Spark 作业] XXX”配置，可以看到已在“Azure HDInsight Spark 作业”下创建了“[Spark 作业]XXX”。 切换到“本地运行”选项卡。
+1. 执行本地运行和本地调试时，工具已自动设置默认的本地运行配置。 打开配置 **[在 HDInsight 上的 Spark] XXX**在右上角可以看到 **[在 HDInsight 上的 Spark] XXX**中创建**HDInsight 上的 Apache Spark**。 切换到“本地运行”选项卡。
 
     ![本地运行配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
     - [环境变量](#prerequisite-for-windows)：如果已将系统环境变量“HADOOP_HOME”设置为“C:\WinUtils”，则它可自动检测到此设置，而无需手动添加。
     - [WinUtils.exe 位置](#prerequisite-for-windows)：如果尚未设置此系统环境变量，则可单击其按钮找到它的位置。
     - 只需选择两个选项之一，在 MacOS 和 Linux 上不需要它们。
-1. 也可在执行本地运行和本地调试前手动设置此配置。 在前面的屏幕截图中，选择加号（“+”）。 然后选择“Azure HDInsight Spark 作业”选项。 输入“名称”、“主类名称”信息并保存，然后单击本地运行按钮。
+1. 也可在执行本地运行和本地调试前手动设置此配置。 在前面的屏幕截图中，选择加号（“+”）。 然后选择**HDInsight 上的 Apache Spark**选项。 输入“名称”、“主类名称”信息并保存，然后单击本地运行按钮。
 
 ### <a name="scenario-3-perform-local-debugging"></a>方案 3：执行本地调试
 1. 打开“SparkCore_wasbloTest”脚本，设置断点。
-1. 右键单击脚本编辑器，然后选择“调试 [Spark 作业]XXX”选项来执行本地调试。   
+1. 右键单击脚本编辑器，然后选择选项**调试 [在 HDInsight 上的 Spark] XXX**来执行本地调试。   
 
 
 
@@ -98,14 +100,14 @@ ms.locfileid: "53601604"
 
    ![编辑配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png) 
 
-1. 在“运行/调试配置”对话框中，选择加号 (+)。 然后选择“Azure HDInsight Spark 作业”选项。
+1. 在“运行/调试配置”对话框中，选择加号 (+)。 然后选择**HDInsight 上的 Apache Spark**选项。
 
    ![添加新配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
-1. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集”  和“Main 类名”输入信息。 然后选择“高级配置”。 工具支持使用“执行器”进行调试。 numExectors 默认值为 5。 设置的值最好不要大于 3。
+1. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集”  和“Main 类名”输入信息。 然后单击 **（远程调试） 的高级的配置**。 工具支持使用“执行器”进行调试。 numExectors 默认值为 5。 设置的值最好不要大于 3。
 
    ![运行调试配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
 
-1. 在“Spark 提交高级配置”对话框中，选择“启用 Spark 远程调试”。 输入 SSH 用户名，然后输入密码或使用私钥文件。 要保存配置，请选择“确定”。 若要执行远程调试，则需要设置它。 若只想使用远程运行，则无需设置它。
+1. 在中 **（远程调试） 的高级配置**过程中，选择**启用 Spark 远程调试**。 输入 SSH 用户名，然后输入密码或使用私钥文件。 若要执行远程调试，则需要设置它。 若只想使用远程运行，则无需设置它。
 
    ![启用 Spark 远程调试](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png)
 
@@ -161,14 +163,14 @@ ms.locfileid: "53601604"
 * 远程调试（视频）：[Use Azure Toolkit for IntelliJ to debug Apache Spark applications remotely on an HDInsight cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)（使用 Azure Toolkit for IntelliJ 远程调试 HDInsight 群集上的 Apache Spark 应用程序）
 
 ### <a name="scenarios"></a>方案
-* [Apache Spark 与 BI：配合使用 HDInsight 中的 Spark 和 BI 工具以执行交互式数据分析](apache-spark-use-bi-tools.md)
+* [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序
 * [使用 Scala 创建独立的应用程序](../hdinsight-apache-spark-create-standalone-application.md)
-* [使用 Apache Livy 在 Apache Spark 群集上远程运行作业](apache-spark-livy-rest-interface.md)
+* [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](apache-spark-intellij-tool-plugin.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 039e2d3c70493868ca2f79e89fc82d8970ec6865
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 70d9957ae5f0ec43269d371c96e3722e52edb26d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032373"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837756"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>从 Azure 虚拟机载入“更新管理”、“更改跟踪”和“清单”解决方案
 
@@ -26,7 +26,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 ## <a name="enable-the-solutions"></a>启用解决方案
 
-转到现有虚拟机。 在“操作”下，选择“更新管理”、“清单”或“更改跟踪”。
+转到现有虚拟机。 在“操作”下，选择“更新管理”、“清单”或“更改跟踪”。 虚拟机可以位于任何区域，无论你的自动化帐户的位置。
 
 若要仅为 VM 启用解决方案，请确保已选择“为此 VM 启用”。 若要将多台计算机加入到解决方案中，请选择“为此订阅中的 VM 启用”，然后选择“单击以选择要启用的计算机”。 若要了解如何一次加入多台计算机，请参阅[载入“更新管理”、“更改跟踪”和“清单”解决方案](automation-onboard-solutions-from-automation-account.md)。
 
@@ -34,7 +34,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 ![载入“更新管理”解决方案](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
-请转到其他解决方案，然后选择“启用”。 “Log Analytics 和自动化帐户”下拉列表处于禁用状态，因为这些解决方案与之前启用的解决方案使用相同的工作区和自动化帐户。
+请转到其他解决方案，然后选择“启用”。 Log Analytics 工作区和自动化帐户下拉列表被禁用，因为这些解决方案作为以前启用的解决方案使用的同一个工作区和自动化帐户。
 
 > [!NOTE]
 > **更改跟踪**和**清单**使用同一解决方案。 启用其中一个解决方案时，另一个解决方案也会被启用。
@@ -76,7 +76,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 * [更改跟踪](automation-change-tracking.md)
 * [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
 
-如果决定不再想要会自动化帐户与 Log Analytics 集成，可以直接从 Azure 门户取消链接帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
+如果你决定不再想要将你的自动化帐户与 Log Analytics 工作区相集成，您可以取消链接你直接从 Azure 门户的帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
 
 删除这些解决方案后，可以执行以下步骤取消链接自动化帐户。
 

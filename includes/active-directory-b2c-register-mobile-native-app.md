@@ -9,11 +9,11 @@ ms.date: 04/09/2018
 ms.author: davidmu
 ms.custom: include file
 ms.openlocfilehash: 8363d023e89c77aabc0d123f19264c9a0758a656
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38740455"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "58115559"
 ---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
@@ -21,9 +21,9 @@ ms.locfileid: "38740455"
 
 ![新的移动或本机应用程序的注册设置示例](./media/active-directory-b2c-register-mobile-native-app/b2c-new-mobile-native-app-settings.png)
 
-| 设置      | 示例值  | 说明                                        |
+| 设置      | 示例值  | 描述                                        |
 | ------------ | ------- | -------------------------------------------------- |
-| **Name** | Contoso B2C 应用 | 输入应用程序的“名称”，用于向使用者描述应用程序。 |
+| **名称** | Contoso B2C 应用 | 输入应用程序的“名称”，用于向使用者描述应用程序。 |
 | 本机客户端 | 是 | 对于移动或本机应用程序，请选择“是”。 |
 | 自定义重定向 URI | `com.onmicrosoft.contoso.appname://redirect/path` | 输入使用自定义方案的重定向 URI。 请确保选择[正确的重定向 URI ](../articles/active-directory-b2c/active-directory-b2c-app-registration.md)，且不能包含下划线等特殊字符。 |
 

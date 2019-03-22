@@ -7,23 +7,17 @@ ms.author: mamccrea
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2018
-ms.openlocfilehash: fa32aafa4f042351db7693ee684deafe9ed13fb0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
-ms.translationtype: HT
+ms.date: 03/13/2019
+ms.openlocfilehash: 354f6014e3230b65a0c4f1cd7507e58ca94474dd
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748317"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188095"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks 群集的区域性灾难恢复
 
 本文介绍可用于 Azure Databricks 群集的灾难恢复体系结构，以及实现该设计的步骤。
-
-## <a name="azure-databricks-overview"></a>Azure Databricks 概述
-
-Azure Databricks 是基于Apache Spark 的快速、简单、协作型分析服务。 使用大数据管道时，原始或结构化的数据将通过 Azure 数据工厂以批的形式引入 Azure，或者通过 Kafka、事件中心或 IoT 中心进行准实时的流式传输。 此数据将驻留在 Data Lake（长久存储）、Azure Blob 存储或 Azure Data Lake Storage 中。 在运行分析工作流的过程中，可以使用 Azure Databricks 从 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.md)、[Azure Cosmos DB](../cosmos-db/index.yml) 或 [Azure SQL 数据仓库](../sql-data-warehouse/index.md)等多个数据源读取数据，并使用 Spark 将数据转化为前所未有的见解。
-
-![Databricks 管道](media/howto-regional-disaster-recovery/databricks-pipeline.png)
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks 体系结构
 
@@ -37,7 +31,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
 ## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>如何创建区域性灾难恢复拓扑
 
-在上面的体系结构说明中可以看到，包含 Azure Databricks 的大数据管道使用了许多组件：Azure 存储、Azure 数据库和其他数据源。 Azure Databricks 是大数据管道的计算层。 它是临时性的层，这意味着，尽管数据仍在 Azure 存储中提供，但计算层（Azure Databricks 群集）可以终止，因此，在无需计算资源时，就无需支付其费用。 计算 (Azure Databricks) 和存储源必须位于同一区域，避免作业遇到较高的延迟。  
+如您注意到在前面的体系结构说明中，有多个用于大数据管道，其中包含 Azure Databricks 的组件：Azure 存储、 Azure 数据库和其他数据源。 Azure Databricks 是大数据管道的计算层。 它是临时性的层，这意味着，尽管数据仍在 Azure 存储中提供，但计算层（Azure Databricks 群集）可以终止，因此，在无需计算资源时，就无需支付其费用。 计算 (Azure Databricks) 和存储源必须位于同一区域，避免作业遇到较高的延迟。  
 
 若要创建自己的区域性灾难恢复拓扑，需满足以下要求：
 
@@ -269,9 +263,14 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
 10. **手动重新配置和重新应用访问控制。**
 
-   如果现有的主要工作区配置为使用高级层 (SKU)，则有可能你同时在使用[访问控制功能](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)。
+    如果现有的主要工作区配置为使用高级层 (SKU)，则有可能你同时在使用[访问控制功能](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)。
 
-   如果确实使用了访问控制功能，请手动将访问控制重新应用到资源（笔记本、群集、作业、表）。
+    如果确实使用了访问控制功能，请手动将访问控制重新应用到资源（笔记本、群集、作业、表）。
+
+## <a name="disaster-recovery-for-your-azure-ecosystem"></a>在 Azure 生态系统的灾难恢复
+
+如果使用其他 Azure 服务，请务必也实现这些服务的灾难恢复最佳做法。 例如，如果您选择使用外部 Hive 元存储实例，则应考虑的灾难恢复[Azure SQL Server](../sql-database/sql-database-disaster-recovery.md)， [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)，和/或[Azure Database for MySQL](../mysql/concepts-business-continuity.md). 有关灾难恢复的常规信息，请参阅[Azure 应用程序的灾难恢复](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)。
 
 ## <a name="next-steps"></a>后续步骤
+
 有关详细信息，请参阅 [Azure Databricks 文档](https://docs.azuredatabricks.net/user-guide/index.html)。

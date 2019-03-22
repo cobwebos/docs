@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e9240949c589717303fe00205c5374b5e3a6a791
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: c3f46e40dfaf0d1ba2ab393b593cdd479c48c45d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007495"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585056"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自动化中的 Az 模块支持
 
@@ -31,7 +31,7 @@ Azure 自动化支持在 runbook 中使用 [Azure Powershell Az 模块](/powersh
 * 依赖于该模块的其他模块被导入到 PowerShell 会话中时
 
 > [!IMPORTANT]
-> 请务必确保自动化帐户中的 runbook 仅将 `Az` 或 `AzureRM` 模块导入到 runbook 使用的 PowerShell 会话中，而不是同时导入两者。 如果 `Az` 在 `AzureRM` 之前导入到 runbook 中，则 runbook 将完成，但作业流中会显示[引用 get_SerializationSettings 方法出错](/troubleshoot/runbooks.md#get-serializationsettings)，并且 cmdlet 可能不会正确执行。 如果先导入 `AzureRM`，然后导入 `Az`，则 runbook 仍将完成，但会在作业流中看到错误，指出无法在同一会话中导入或无法在同一 runbook 中使用 `Az` 和 `AzureRM`。
+> 请务必确保自动化帐户中的 runbook 仅将 `Az` 或 `AzureRM` 模块导入到 runbook 使用的 PowerShell 会话中，而不是同时导入两者。 如果 `Az` 在 `AzureRM` 之前导入到 runbook 中，则 runbook 将完成，但作业流中会显示[引用 get_SerializationSettings 方法出错](troubleshoot/runbooks.md#get-serializationsettings)，并且 cmdlet 可能不会正确执行。 如果先导入 `AzureRM`，然后导入 `Az`，则 runbook 仍将完成，但会在作业流中看到错误，指出无法在同一会话中导入或无法在同一 runbook 中使用 `Az` 和 `AzureRM`。
 
 ## <a name="migrating-to-az-modules"></a>迁移到 Az 模块
 

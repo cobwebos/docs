@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 2f6fad0ecca09ff9210b5961301fea3446a88f11
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 43d19e5c69733689be184f06b853fa4e488dd51e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213157"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871717"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>数据序列化如何影响应用程序升级
 在[应用程序滚动升级](service-fabric-application-upgrade.md)过程中，升级应用于部分节点，一次一个升级域。 在此过程中，一些升级域位于较新版本的应用程序上，而一些升级域位于较旧版本的应用程序上。 在滚动更新期间，新版本的应用程序必须能够读取旧版本的数据，并且旧版本的应用程序必须能够读取新版本的数据。 如果数据格式不向前和向后兼容，则升级可能会失败（或更糟），甚至可能丢失数据。 本文介绍数据格式的构成，并提供确保数据向前和向后兼容的最佳实践。
@@ -36,7 +36,7 @@ ms.locfileid: "34213157"
 * 更改类名或命名空间
 
 ### <a name="data-contract-as-the-default-serializer"></a>用作默认序列化程序的数据约定
-序列化程序通常负责读取数据并将其反其序列化到当前版本中，即使该数据位于较旧或*较新*版本中。 默认序列化程序是[数据协定序列化程序](https://msdn.microsoft.com/library/ms733127.aspx)，它具有定义完善的版本控制规则。 Reliable Collections 允许替代序列化程序，但 Reliable Actors 目前不允许。 数据序列化程序在启用滚动升级中扮演着重要的角色。 数据协定序列化程序是建议用于 Service Fabric 应用程序的序列化程序。
+序列化程序通常负责读取数据并将其反序列化到当前版本中，即使该数据位于较旧或*较新*版本中。 默认序列化程序是[数据协定序列化程序](https://msdn.microsoft.com/library/ms733127.aspx)，它具有定义完善的版本控制规则。 Reliable Collections 允许替代序列化程序，但 Reliable Actors 目前不允许。 数据序列化程序在启用滚动升级中扮演着重要的角色。 数据协定序列化程序是建议用于 Service Fabric 应用程序的序列化程序。
 
 ## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>数据格式如何影响滚动升级
 滚动升级期间，主要在两种情景下序列化程序可能会遇到较旧的数据版本或*较新*的数据版本：

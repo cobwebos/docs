@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/08/2019
+ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8f57310cf4dbc2a27761fc44cfde6c8fd2791a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 03174e6336589f8aa49a7fc7197da1301ff54400
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005533"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009775"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>如何在 Azure 自动化中更新 Azure PowerShell 模块
 
@@ -41,7 +41,7 @@ ms.locfileid: "56005533"
 
 * 如果使用原始名称 `Update-AutomationAzureModulesForAccount` 导入此 Runbook，它将替代同名的内部 Runbook。 因此，按下“更新 Azure 模块”按钮，或者直接通过此自动化帐户的 Azure 资源管理器 API 调用导入的 Runbook 时，此 Runbook 将会运行。
 
-* 目前仅支持 `Azure` 和 `AzureRM.*` 模块。 新的 [Azure PowerShell Az 模块](/powershell/azure/new-azureps-module-az)目前尚不受支持。
+* 此 runbook 支持仅更新**Azure**并**AzureRm**当前模块。 [Azure PowerShell Az 模块](/powershell/azure/new-azureps-module-az)支持在自动化帐户中，但不能更新用于此 runbook。
 
 * 请避免在包含 Az 模块的自动化帐户中启动此 Runbook。
 
@@ -58,32 +58,36 @@ ms.locfileid: "56005533"
 
 1. 在自动化帐户的“模块”页中有一个名为“更新 Azure 模块”的选项。 该选项始终处于启用状态。<br><br> ![“模块”页中的“更新 Azure 模块”选项](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-  > [!NOTE]
-  > 在更新 Azure 模块之前，建议在一个测试自动化帐户中更新它们，以确保现有脚本按预期工作。
-  >
-  > “更新 Azure 模块”按钮仅在公有云中可用。 它在[主权区域](https://azure.microsoft.com/global-infrastructure/)中不可用。 请使用 **Update-AutomationAzureModulesForAccount** Runbook 来更新 Azure 模块。 可以从[更新 Azure 模块 Runbook 存储库](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)下载该 Runbook。 若要详细了解如何使用开源 Runbook，请参阅[使用开源 Runbook 更新 Azure 模块](#open-source)。
+   > [!NOTE]
+   > 在更新 Azure 模块之前，建议在一个测试自动化帐户中更新它们，以确保现有脚本按预期工作。
+   >
+   > “更新 Azure 模块”按钮仅在公有云中可用。 它在[主权区域](https://azure.microsoft.com/global-infrastructure/)中不可用。 请使用 **Update-AutomationAzureModulesForAccount** Runbook 来更新 Azure 模块。 可以从[更新 Azure 模块 Runbook 存储库](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)下载该 Runbook。 若要详细了解如何使用开源 Runbook，请参阅[使用开源 Runbook 更新 Azure 模块](#open-source)。
 
 2. 单击“更新 Azure 模块”，会出现一条询问是否要继续的确认通知。<br><br> ![更新 Azure 模块通知](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
 3. 单击“是”，模块更新过程将开始进行。 更新过程大约需要 15-20 分钟来更新以下模块：
 
-  * Azure
-  * Azure.Storage
-  * AzureRm.Automation
-  * AzureRm.Compute
-  * AzureRm.Profile
-  * AzureRm.Resources
-  * AzureRm.Sql
-  * AzureRm.Storage
+   * Azure
+   * Azure.Storage
+   * AzureRm.Automation
+   * AzureRm.Compute
+   * AzureRm.Profile
+   * AzureRm.Resources
+   * AzureRm.Sql
+   * AzureRm.Storage
 
-    如果模块已经是最新的，则该过程只需几秒钟即可完成。 更新过程完成后会收到通知。<br><br> ![更新 Azure 模块更新状态](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+     如果模块已经是最新的，则该过程只需几秒钟即可完成。 更新过程完成后会收到通知。<br><br> ![更新 Azure 模块更新状态](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
-    .NET core AzureRm 模块 (AzureRm.*.Core) 在 Azure 自动化中不受支持，并且无法导入。
+     .NET core AzureRm 模块 (AzureRm.*.Core) 在 Azure 自动化中不受支持，并且无法导入。
 
 > [!NOTE]
 > 当运行新的计划作业时，Azure 自动化将在自动化帐户中使用最新模块。  
 
 如果在 Runbook 中使用这些 Azure PowerShell 模块中的 cmdlet，需要大约每月运行一次此更新过程，以确保拥有最新的模块。 更新模块时，Azure 自动化使用 `AzureRunAsConnection` 连接进行身份验证。 如果服务主体已过期或不再以订阅级别存在，模块更新会失败。
+
+## <a name="known-issues"></a>已知问题
+
+没有更新 AzureRM 模块是具有数值名以 0 开头的资源组中的自动化帐户中的已知的问题。 若要更新 Azure 模块在自动化帐户中，它必须是字母数字名称的资源组中。 具有从 0 开始的数字名称的资源组不能在这一次更新 AzureRM 模块。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,7 +4,7 @@ description: 本文回答了关于 Azure 日志的问题。
 services: security
 documentationcenter: na
 author: TomShinder
-manager: barbkess
+manager: MBaldwin
 editor: TerryLanfear
 ms.assetid: d06d1ac5-5c3b-49de-800e-4d54b3064c64
 ms.service: security
@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: f1b809e52cc532d13be85776f73aba4465fa2140
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 4f6a724fe6c1e8668084f1c1cefbaa01cffba181
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114920"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005854"
 ---
 # <a name="azure-log-integration-faq"></a>Azure 日志集成常见问题解答
 
@@ -32,6 +32,8 @@ ms.locfileid: "56114920"
 Azure 日志集成是 Windows 操作系统服务，可用来将 Azure 资源中的原始日志集成到本地安全信息和事件管理 (SIEM) 系统。 此集成为本地或云端的所有资产提供统一的仪表板。 对于与应用程序相关的安全事件，可进行聚合、关联、分析和警报等操作。
 
 集成 Azure 日志的首选方法是，使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Azure 日志集成软件是否免费？
 
@@ -97,7 +99,7 @@ azlog createazureid 命令尝试在 Azure 登录有权访问的订阅在所有 A
 
 错误：
 
-  创建角色分配警告 - AuthorizationFailed：具有对象 ID“fe9e03e4-4dad-4328-910f-fd24a9660bd2”的客户端 janedo@microsoft.com 没有在“/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000”范围执行操作“Microsoft.Authorization/roleAssignments/write”的权限。
+  创建角色分配警告 - AuthorizationFailed：*客户端 janedo\@microsoft.com 使用对象 id fe9e03e4-4dad-4328-910f-fd24a9660bd2 不会授权以执行操作 ' Microsoft.Authorization/roleAssignments/write 对作用域 /subscriptions/70 d 95299 d689 4 c 97 b971 0d8ff0000000。*
 
 azlog authorize 命令会将 Azure AD 服务主体的读取器角色（使用 azlog createazureid 创建）分配给提供的订阅。 如果 Azure 登录不是订阅的协同管理员或所有者，就会失败，并显示“授权失败”错误消息。 需要 Azure 基于角色访问控制 (RBAC) 的共同管理员或所有者来完成此操作。
 
@@ -118,8 +120,8 @@ azlog authorize 命令会将 Azure AD 服务主体的读取器角色（使用 az
 
 以下示例将获取 Azure 诊断配置：
 
-    -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
-    $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
+    Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
+    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
@@ -136,7 +138,7 @@ azlog authorize 命令会将 Azure AD 服务主体的读取器角色（使用 az
 以下示例将设置 Azure 诊断配置：
 
     $diagnosticsconfig_path = "d:\WADConfig.xml"
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
+    Set-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
 
 完成更改后，检查存储帐户，以确保收集正确的事件。
 

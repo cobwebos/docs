@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b06ca287f03c62b3947e6c37712cf491396392e0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0ca3cee0c818bf9d5dda4a7ea8a1f356ed017973
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245827"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891080"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -31,12 +31,12 @@ ms.locfileid: "55245827"
 
 在本演练中，我们对 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集进行了分析。 这一组电子邮件被标记为 spam 或 ham（即它们不是垃圾邮件），并且还包含电子邮件内容的一些统计信息。 包含的统计信息会在下一节中讨论。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在可以使用 Linux 数据科研虚拟机之前，必须具备以下条件：
 
 * **Azure 订阅帐户**。 如果没有，请参阅[立即创建免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 * [**Linux 数据科学 VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 有关预配此 VM 的信息，请参阅[预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)。
-* 计算机上安装了 [X2Go](http://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 若要深入了解安装和配置 **X2Go 客户端**的方法，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#installing-and-configuring-x2go-client)。
+* 计算机上安装了 [X2Go](https://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 若要深入了解安装和配置 **X2Go 客户端**的方法，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#installing-and-configuring-x2go-client)。
 * 为了获得更平滑的滚动体验，请在 VM FireFox 浏览器中切换 about:config 中的 gfx.xrender.enabled 标志。 [在此处了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 另请考虑将 *mousewheel.enable_pixel_scrolling* 切换为 False。 请参阅[此处的说明](https://support.mozilla.org/en-US/questions/981140)。
 * **AzureML 帐户**。 如果还没有帐户，请在 [AzureML 主页](https://studio.azureml.net/)中注册一个新帐户。 里面有免费的使用等级可帮助用户开始使用。
 
@@ -52,7 +52,7 @@ ms.locfileid: "55245827"
 
 若要下载数据，打开终端窗口并运行以下命令：
 
-    wget http://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
 下载的文件并没有标头行，因此，让我们创建另一个有标头的文件。 运行以下命令来创建具有适当标头的文件：
 
@@ -149,7 +149,7 @@ ms.locfileid: "55245827"
 
 结果如下：
 
-![1](./media/linux-dsvm-walkthrough/decision-tree.png)
+![第](./media/linux-dsvm-walkthrough/decision-tree.png)
 
 若要确定它对训练集的执行情况，请使用下面的代码：
 
@@ -263,7 +263,7 @@ ms.locfileid: "55245827"
 对于使用 Python 进行的开发，DSVM 上已安装了 Anaconda Python 分发版 2.7 和 3.5。
 
 > [!NOTE]
-> Anaconda 发行版包含 [Condas](http://conda.pydata.org/docs/index.html)，可用来为 Python 建立已安装不同版本和 (或) 封装的自定义环境。
+> Anaconda 发行版包含 [Condas](https://conda.pydata.org/docs/index.html)，可用来为 Python 建立已安装不同版本和 (或) 封装的自定义环境。
 >
 >
 
@@ -318,21 +318,19 @@ ms.locfileid: "55245827"
 
 > [!NOTE]
 > 若要在当前内核中从 Jupyter Notebook 使用 Python 包管理器（通过 `pip` 命令），可以在代码单元中使用以下命令，例如：
-  ```python
-   import sys
-   ! {sys.executable} -m pip install numpy -y
-  ```
->
->
-
+>   ```python
+>    import sys
+>    ! {sys.executable} -m pip install numpy -y
+>   ```
+> 
+> 
+> 
 > [!NOTE]
 > 若要在当前内核中从 Jupyter Notebook 使用 Conda 安装程序（通过 `conda` 命令），可以在代码单元中使用以下命令，例如：
-  ```python
-   import sys
-   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-  ```
->
->
+>   ```python
+>    import sys
+>    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+>   ```
 
 VM 上已安装了几个示例 Notebook：
 
@@ -515,7 +513,7 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
 
 大多数 *3d* 出现率较高的电子邮件很明显是垃圾邮件，因此它可能是一个有用的特征，可用于构建预测模型来对电子邮件进行分类。
 
-如果希望使用 PostgreSQL 数据库中存储的数据执行机器学习，请考虑使用 [MADlib](http://madlib.incubator.apache.org/)。
+如果希望使用 PostgreSQL 数据库中存储的数据执行机器学习，请考虑使用 [MADlib](https://madlib.incubator.apache.org/)。
 
 ## <a name="sql-server-data-warehouse"></a>SQL Server 数据仓库
 Azure SQL 数据仓库是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。 有关详细信息，请参阅[什么是 Azure SQL 数据仓库？](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)

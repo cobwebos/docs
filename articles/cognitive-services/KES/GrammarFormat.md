@@ -10,16 +10,16 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 72dec3effe5e350818c01cf65c9140e778effd17
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 844bd9a88c52fd398fc66c71e59da513c0d7d90d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860280"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544318"
 ---
 # <a name="grammar-format"></a>语法格式
 
-语法是一个 XML 文件，它指定服务可解释的一组加权的自然语言查询，并指定了如何将这些自然语言查询转换为语义查询表达式。  语法句法基于 [SRGS](http://www.w3.org/TR/speech-grammar/)，这是一个面向语音识别语法的 W3C 标准，具有支持数据索引集成和语义函数的扩展程序。
+语法是一个 XML 文件，它指定服务可解释的一组加权的自然语言查询，并指定了如何将这些自然语言查询转换为语义查询表达式。  语法句法基于 [SRGS](https://www.w3.org/TR/speech-grammar/)，这是一个面向语音识别语法的 W3C 标准，具有支持数据索引集成和语义函数的扩展程序。
 
 下面描述了可在语法中使用的每个句法元素。  要了解在上下文中展示这些元素用法的完整语法，请参阅[本例](#example)。
 
@@ -126,7 +126,7 @@ before <attrref uri="academic#Year" op="lt" name="year"/
 
 下表列出了每个属性类型支持的 `op` 值。  要使用这些值，架构属性定义中需要包含相应的索引操作。
 
-| 属性类型 | Op 值 | 说明 | 索引操作
+| 属性类型 | Op 值 | 描述 | 索引操作
 |----|----|----|----|
 | String | eq | 字符串完全匹配 | equals |
 | String | starts_with | 字符串前缀匹配 | starts_with |

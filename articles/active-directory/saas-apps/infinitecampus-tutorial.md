@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53eb0c4ad5c0a21f46985062ef8202a87dc0d5e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e0ada3055a3347cb42179fddbba671f2f03f502d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189355"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885061"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>教程：Azure Active Directory 与 Infinite Campus 的集成
 
@@ -35,12 +35,12 @@ ms.locfileid: "56189355"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Infinite Campus 的集成，需要以下项：
 
 - Azure AD 订阅
-- 启用了 Infinite Campus 单一登录的订阅
+- 无限校园上单一登录已启用的订阅
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -49,7 +49,7 @@ ms.locfileid: "56189355"
 
 - 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
-- 你至少需要是 Azure Active Directory 管理员才能完成配置。
+- 最小值，你需要是 Azure Active Directory 管理员，并且具有校园产品安全角色的"学生信息系统 (SIS)"以完成配置。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -90,7 +90,7 @@ ms.locfileid: "56189355"
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Infinite Campus 测试用户](#creating-a-infinite-campus-test-user)** - 在 Infinite Campus 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
+3. **[创建无限校园测试用户](#creating-a-infinite-campus-test-user)** -Britta Simon 的对应在链接到用户的 Azure AD 表示形式的无限园区。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -112,7 +112,7 @@ ms.locfileid: "56189355"
 
     ![配置单一登录](common/editconfigure.png)
 
-4. 在“基本 SAML 配置”部分，如果有服务提供程序元数据文件，请完成步骤 4.a 到 4.d，然后跳到步骤 11.c。 如果没有服务提供程序元数据文件，请跳到步骤 5。
+4. 上**基本 SAML 配置**部分中，如果您具有**服务提供程序元数据文件**导出无限校园，完成步骤通过 4.d，4.a，然后跳到步骤 11.c。 如果没有服务提供程序元数据文件，请跳到步骤 5。
 
     a. 单击“上传元数据文件”。
 
@@ -168,13 +168,15 @@ ms.locfileid: "56189355"
 
     a. 选择“启用 SAML 单一登录”。
     
-    b. 在“选择检索标识提供者(IDP)服务器数据的选项”部分，选择“元数据 URL”，在框中粘贴“应用联合元数据 URL”，然后单击“同步”。
+    b. 编辑**可选属性名称**包含**名称**
+    
+    c. 上**选择一个选项来检索标识提供者 (IDP) 服务器数据**部分中，选择**元数据 URL**，将粘贴**应用联合元数据 Url** （从上面的步骤 6) 中框中，然后再单击**同步**。
 
-    c. 单击“服务提供程序元数据”链接，在计算机上保存服务提供程序元数据文件，并在“基本 SAML 配置”部分将其上传，以便在 Azure 门户中自动填充“标识符”和“回复 URL”值（若要上传和自动填充值，请参阅步骤 4；若要手动输入值，请参阅步骤 5）。
+    d. 单击“服务提供程序元数据”链接，在计算机上保存服务提供程序元数据文件，并在“基本 SAML 配置”部分将其上传，以便在 Azure 门户中自动填充“标识符”和“回复 URL”值（若要上传和自动填充值，请参阅步骤 4；若要手动输入值，请参阅步骤 5）。
 
-    d. 单击“同步”后，将在“SSO 服务提供程序配置”页中自动填充值。
+    e. 单击“同步”后，将在“SSO 服务提供程序配置”页中自动填充值。
 
-    e. 单击“ **保存**”。
+    f. 单击“ **保存**”。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -194,14 +196,14 @@ ms.locfileid: "56189355"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在中**用户名**字段中，键入**brittasimon\@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 选择“创建”。
 
-### <a name="creating-a-infinite-campus-test-user"></a>创建 Infinite Campus 测试用户
+### <a name="creating-an-infinite-campus-test-user"></a>创建无限校园测试用户
 
 Infinite Campus 采用以人口统计为中心的体系结构。 请联系 [Infinite Campus 支持团队](mailto:sales@infinitecampus.com)，以便在 Infinite Campus 平台中添加用户。
 
@@ -233,7 +235,7 @@ Infinite Campus 采用以人口统计为中心的体系结构。 请联系 [Infi
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Infinite Campus 磁贴时，应会自动登录到 Infinite Campus 应用程序。 如果你在用来管理 Azure AD 的同一浏览器中登录到 Infinite Camnpus 应用程序，请确保作为测试用户登录到 Azure AD。 有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
+单击访问面板中的 Infinite Campus 磁贴时，应会自动登录到 Infinite Campus 应用程序。 如果你登录到您管理的 Azure AD 的同一浏览器中的无限校园应用程序，请确保您已登录到 Azure AD 测试用户。 有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

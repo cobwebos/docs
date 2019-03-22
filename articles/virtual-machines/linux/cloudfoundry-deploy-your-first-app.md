@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 6e2fa77273ef35fae6c3b232cb36fa913faf879d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 9a0b12ec9d825fc665bd5beb89e911b80ed3889f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299043"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013870"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 
-[Cloud Foundry](http://cloudfoundry.org) 是 Microsoft Azure 上提供的一个常见开源应用程序平台。 本文演示如何在 Azure 环境中部署和管理 Cloud Foundry 上的应用程序。
+[Cloud Foundry](https://cloudfoundry.org) 是 Microsoft Azure 上提供的一个常见开源应用程序平台。 本文演示如何在 Azure 环境中部署和管理 Cloud Foundry 上的应用程序。
 
 ## <a name="create-a-cloud-foundry-environment"></a>创建 Cloud Foundry 环境
 
@@ -33,7 +33,7 @@ ms.locfileid: "44299043"
 
 - 使用 Azure 市场中的 [Pivotal Cloud Foundry 产品][pcf-azuremarketplace]创建包括 PCF Ops Manager 和 Azure Service Broker 的标准环境。 可在 Pivotal 文档中找到有关部署市场产品的[完整说明][pcf-azuremarketplace-pivotaldocs]。
 - 通过[手动部署 Pivotal Cloud Foundry ][pcf-custom]创建自定义环境。
-- 通过设置 [BOSH](http://bosh.io) 控制器（一种协调 Cloud Foundry 环境部署的 VM），[直接部署开源 Cloud Foundry 包][oss-cf-bosh]。
+- 通过设置 [BOSH](https://bosh.io) 控制器（一种协调 Cloud Foundry 环境部署的 VM），[直接部署开源 Cloud Foundry 包][oss-cf-bosh]。
 
 > [!IMPORTANT] 
 > 如果要从 Azure 市场部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，市场部署指南中对两者都有介绍。 完成本教程也需要它们。 在市场部署中，SYSTEMDOMAINURL 的形式为 https://system.*ip-address*.cf.pcfazure.com。
@@ -77,7 +77,7 @@ cf target -o testorg -s dev
 
 ## <a name="deploy-an-application"></a>部署应用程序
 
-使用名为 Hello Spring Cloud 的示例 Cloud Foundry 应用程序，该应用程序基于 [Spring Framework](http://spring.io) 及 [Spring Boot](http://projects.spring.io/spring-boot/) 并以 Java 语言编写。
+使用名为 Hello Spring Cloud 的示例 Cloud Foundry 应用程序，该应用程序基于 [Spring Framework](https://spring.io) 及 [Spring Boot](https://projects.spring.io/spring-boot/) 并以 Java 语言编写。
 
 ### <a name="clone-the-hello-spring-cloud-repository"></a>克隆 Hello Spring 云存储库
 
@@ -90,7 +90,7 @@ cd hello-spring-cloud
 
 ### <a name="build-the-application"></a>构建应用程序
 
-使用 [Apache Maven ](http://maven.apache.org) 生成应用。
+使用 [Apache Maven ](https://maven.apache.org) 生成应用。
 
 ```bash
 mvn clean package
@@ -158,7 +158,7 @@ cf scale -i 2 hello-spring-cloud
 [cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
-[spring-framework]: http://spring.io
+[spring-framework]: https://spring.io
 [cf-push-docs]: https://docs.cloudfoundry.org/concepts/how-applications-are-staged.html
 [cloudfoundry-docs]: https://docs.cloudfoundry.org
 [vsts-plugin]: https://github.com/Microsoft/vsts-cloudfoundry

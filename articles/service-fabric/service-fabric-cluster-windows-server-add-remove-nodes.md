@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 69680331bdad0faa36cb3df6117baf8b358da132
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: e9b87c19977fe35132d80729810c3a0547c486fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251013"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446106"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>向在 Windows Server 上运行的独立 Service Fabric 群集添加或删除节点
 [在 Windows Server 计算机上创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)之后，（业务）需求可能发生变化，因此需要向群集添加或删除节点。 本文提供了实现此目标的详细步骤。 请注意，在本地开发群集中不支持添加/删除节点的功能。
@@ -38,7 +38,7 @@ ms.locfileid: "51251013"
     ```
     脚本运行完成后，就可以检查此新节点是否已通过运行[Get-servicefabricnode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 添加。
 
-7. 要确保群集中不同节点的一致性，请务必启动配置升级。 运行 [Get ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) 获取最新配置文件并将新添加的节点添加到“节点”部分。 建议在需要使用相同配置重新部署群集的情况下，始终提供最新的群集配置。
+7. 要确保群集中不同节点的一致性，请务必启动配置升级。 运行 [Get ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) 获取最新配置文件并将新添加的节点添加到“节点”部分。 此外建议始终使用最新的用例，你需要重新部署具有相同配置的群集中可用的群集配置。
 
     ```
         {
@@ -125,7 +125,7 @@ ms.locfileid: "51251013"
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>替换群集的主节点
-应逐个节点地替换主节点，而不是批量删除再添加。
+应顺次执行主节点的替换，而不是成批删除，并成批添加。
 
 
 ## <a name="next-steps"></a>后续步骤

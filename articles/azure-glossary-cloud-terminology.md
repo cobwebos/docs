@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600295"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823852"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -44,7 +44,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 请参阅[管理 Windows 虚拟机的可用性](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[管理 Linux 虚拟机的可用性](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="classic-model"></a>Azure 经典部署模型
-用于在 Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（新模型是 Azure 资源管理器）。 有些 Azure 服务仅支持 Resource Manager 部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
+用于在 Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（新模型是 Azure 资源管理器）。 有些 Azure 服务仅支持资源管理器部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
 
 ## <a name="cli"></a>Azure 命令行接口 (CLI)
 一个命令行接口，可用于从 Windows、macOS 和 Linux 管理 Azure 服务。  某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。 请参阅 [Azure CLI](/cli/azure)
@@ -95,7 +95,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 请参阅 [Azure 区域](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>resource
-属于 Azure 解决方案的一部分的项。 每个 Azure 服务可让你部署不同类型的资源，例如数据库或虚拟机。   
+属于 Azure 解决方案的一部分的项。 每个 Azure 服务允许部署不同类型的资源，例如数据库或虚拟机。   
 请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="resource-group"></a>资源组
@@ -147,7 +147,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 请参阅[关于虚拟机扩展和功能 (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[关于虚拟机扩展和功能 (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="vnet"></a>虚拟网络
-在 Azure 资源之间提供连接并与其他所有 Azure 租户隔离的网络。 一个[Azure VPN 网关](vpn-gateway/vpn-gateway-about-vpngateways.md)，使用它可以在虚拟网络之间以及[虚拟网络与本地网络之间](vpn-gateway/vpn-gateway-plan-design.md)建立连接。 可以完全控制虚拟网络中的 IP 地址块、DNS 设置、安全策略和路由表。  
+在 Azure 资源之间提供连接并与其他所有 Azure 租户隔离的网络。 [Azure VPN 网关](vpn-gateway/vpn-gateway-about-vpngateways.md)，便可以建立虚拟网络之间以及虚拟网络与本地网络之间的连接。 可以完全控制虚拟网络中的 IP 地址块、DNS 设置、安全策略和路由表。  
 请参阅[虚拟网络概述](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Web 应用

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: cfefa8a1bfee03959d0f3b077d9915a6badb1ffd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988079"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075060"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
@@ -31,7 +31,7 @@ ms.locfileid: "55988079"
 
 **认知见解**小组件包括从视频索引过程中提取的所有视觉见解。 见解小组件支持以下可选的 URL 参数：
 
-|Name|定义|说明|
+|名称|定义|描述|
 |---|---|---|
 |widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 如果使用 **version=2**，则不支持 **widgets** URL 参数。 |
 |版本|**认知见解**小组件的版本|若要获取最新的见解小组件更新，请将 `?version=2` 查询参数添加到嵌入 URL。 例如： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> 若要获取旧版本，只需从 URL 中删除 `version=2`。
@@ -40,12 +40,12 @@ ms.locfileid: "55988079"
 
 **播放器**小组件用于通过自适应比特率来流式传输视频。 播放器小组件支持以下可选的 URL 参数：
 
-|Name|定义|说明|
+|名称|定义|描述|
 |---|---|---|
 |t|距离开始的秒数|让播放器从给定时间点开始播放。<br/>示例：t=60|
 |captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：captions=en-US|
 |showCaptions|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：showCaptions=true|
-|type||激活音频播放器外观（视频部件已删除）。<br/>示例：type=audio|"
+|type||激活音频播放器外观（视频部件已删除）。<br/>示例：type=audio|
 |autoplay|布尔值|确定播放器是否会在加载后开始播放视频（默认值为 true）。<br/>示例：autoplay=false|
 |语言|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：language=de-DE|
 

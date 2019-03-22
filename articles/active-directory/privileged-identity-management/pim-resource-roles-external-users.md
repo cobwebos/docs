@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中邀请外部用户并分配 Azure 资源角色 | Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中邀请外部用户并分配 Azure 资源角色。
+title: 邀请外部来宾和分配 Azure AD 管理员角色的 Privileged Identity Management |Microsoft Docs
+description: 了解如何可以邀请来宾用户，并将在 Azure AD Privileged Identity Management 中的 Azure Active Directory 管理员角色分配。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/29/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90d0d3d3f484044a0ffbab7a3c24a76c40aa74c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 68e76a4513d94cceb8e856c94ad6eae2bdab9c46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208267"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853250"
 ---
-# <a name="invite-external-users-and-assign-azure-resource-roles-in-pim"></a>在 PIM 中邀请外部用户并分配 Azure 资源角色
+# <a name="invite-guest-users-and-assign-azure-resource-access-in-pim"></a>邀请来宾用户并分配在 PIM 中的 Azure 资源访问权限
 
-Azure Activity Directory (Azure AD) 企业到企业 (B2B) 是 Azure AD 内的一组功能。借助它，组织可以使用任何帐户与外部用户和供应商协作。 如果将 B2B 和 Azure AD Privileged Identity Management (PIM) 组合在一起使用，则可以继续向外部用户应用合规和管理要求。 例如，可以针对 Azure 资源将下列 PIM 功能用于外部用户：
+Azure Active Directory (Azure AD) 企业到企业 (B2B) 是使组织进行协作与外部来宾用户 （来宾） 和供应商使用任何帐户的 Azure AD 中的一组功能。 将 B2B 与 Azure AD Privileged Identity Management (PIM) 时，可以继续应用于来宾法规遵从性和监管要求。 例如，您可以使用这些 PIM 功能的 Azure 标识任务与来宾：
 
 - 分配对特定 Azure 资源的访问权限
 - 启用实时访问
@@ -33,25 +33,25 @@ Azure Activity Directory (Azure AD) 企业到企业 (B2B) 是 Azure AD 内的一
 - 执行访问评审
 - 使用警报和审核日志
 
-本文介绍了如何使用 PIM 邀请外部用户进入目录，及如何管理他们对 Azure 资源的访问。
+本文介绍如何邀请来宾到你的组织和管理他们对使用 Privileged Identity Management 的 Azure 资源的访问。
 
-## <a name="when-would-you-invite-external-users"></a>在什么情况下要邀请外部用户？
+## <a name="when-would-you-invite-guests"></a>何时您将邀请来宾？
 
-下面是一些可邀请外部用户进入目录的示例场景：
+下面是几个示例方案时您可能会邀请来宾到你的组织：
 
 - 允许仅拥有电子邮件帐户的外部个体私营供应商访问项目的 Azure 资源。
 - 允许使用本地 Active Directory 联合身份验证服务的大型组织的外部合作伙伴访问费用应用程序。
 - 允许组织外的支持工程师（如 Microsoft 支持部门）临时访问 Azure 资源，以解决问题。
 
-## <a name="how-does-external-collaboration-using-b2b-work"></a>如何使用 B2B 进行外部协作？
+## <a name="how-does-collaboration-using-b2b-guests-work"></a>如何执行协作使用 B2B 来宾工作？
 
-使用 B2B 时，可以邀请外部用户进入目录。 外部用户看上去是在目录中，但该用户没有任何与目录关联的凭据。 每当外部用户需要进行身份验证时，他们必须在其主目录中进行身份验证，而不是在你的目录中进行验证。 这意味着，如果外部用户不再拥有其主目录的访问权限，他们将自动失去对你的目录的访问权限。 例如，如果外部用户离开其组织，则你无需执行任何操作，他们即会自动失去对你在你的目录中与他们共享的任何资源的访问权限。 有关 B2B 的详细信息，请参阅[什么是 Azure Active Directory B2B 中的来宾用户访问权限？](../b2b/what-is-b2b.md)。
+使用 B2B 协作时，可以对组织作为来宾邀请外部用户。 来宾似乎是在你的组织，但来宾没有与之关联的任何凭据。 每当来宾进行身份验证时，他们必须进行身份验证在其本组织并不在你的组织。 这意味着，如果来宾不再有权访问其本组织，他们也无法访问你的组织。 例如，如果来宾离开组织，它们会自动失去访问权限你与他们共享在 Azure AD 中而无需执行任何操作的任何资源。 有关 B2B 的详细信息，请参阅[什么是 Azure Active Directory B2B 中的来宾用户访问权限？](../b2b/what-is-b2b.md)。
 
-![B2B 和外部用户](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![B2B 和来宾](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
-## <a name="check-external-collaboration-settings"></a>检查外部协作设置
+## <a name="check-guest-collaboration-settings"></a>检查来宾协作设置
 
-应检查你的外部协作设置，以确保你可以邀请外部用户进入你的目录。
+若要确保你可以邀请来宾到你的组织，应检查来宾协作设置。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -63,11 +63,11 @@ Azure Activity Directory (Azure AD) 企业到企业 (B2B) 是 Azure AD 内的一
 
 1. 确保“管理员和具有来宾邀请者角色的用户可以邀请”开关设置为“是”。
 
-## <a name="invite-an-external-user-and-assign-a-role"></a>邀请外部用户并分配角色
+## <a name="invite-a-guest-and-assign-a-role"></a>邀请来宾并分配角色
 
-借助 PIM，可以邀请外部用户，并使他们如同成员用户一样符合 Azure 资源角色的条件。
+使用 PIM，可以邀请来宾，并使其符合 Azure 资源角色成员用户一样的资格。
 
-1. 使用[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)或[用户帐户管理员](../users-groups-roles/directory-assign-admin-roles.md#user-account-administrator)角色成员用户的身份登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录到[Azure 门户](https://portal.azure.com/)与用户的成员[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)或[用户管理员](../users-groups-roles/directory-assign-admin-roles.md#user-administrator)角色。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
@@ -77,7 +77,7 @@ Azure Activity Directory (Azure AD) 企业到企业 (B2B) 是 Azure AD 内的一
 
 1. 单击要管理的资源，如资源、资源组、订阅或管理组。
 
-    应将范围设置为仅外部用户所需的内容。
+    您应该只需要哪些来宾操作系统设置的作用域。
 
 1. 在“管理”下，单击“角色”以查看 Azure 资源的角色列表。
 
@@ -93,31 +93,31 @@ Azure Activity Directory (Azure AD) 企业到企业 (B2B) 是 Azure AD 内的一
 
     ![选择成员或组](./media/pim-resource-roles-external-users/select-member-group.png)
 
-1. 单击“邀请”，以邀请外部用户。
+1. 若要邀请来宾，请单击**邀请**。
 
     ![邀请来宾](./media/pim-resource-roles-external-users/invite-guest.png)
 
-1. 指定外部用户后，单击“邀请”。
+1. 选择来宾后，单击**邀请**。
 
-    应将外部用户添加为选定的成员。
+    应将来宾添加为所选的成员。
 
-1. 在“选择成员或组”窗格中单击“选择”。
+1. 在中**选择成员或组**窗格中，单击**选择**。
 
-1. 在“成员资格设置”窗格中，选择分配类型和持续时间。
+1. 在中**成员身份设置**窗格中，选择分配类型和持续时间。
 
     ![成员资格设置](./media/pim-resource-roles-external-users/membership-settings.png)
 
 1. 单击“完成”，然后单击“添加”，以完成分配。
 
-    该外部用户角色分配将在角色列表中显示。
+    来宾角色分配会在你的角色列表中。
 
-    ![外部用户的角色分配](./media/pim-resource-roles-external-users/role-assignment.png)
+    ![来宾的角色分配](./media/pim-resource-roles-external-users/role-assignment.png)
 
-## <a name="activate-role-as-an-external-user"></a>以外部用户身份激活角色
+## <a name="activate-role-as-a-guest"></a>激活角色作为来宾
 
-外部用户首先需要接受进入 Azure AD 目录的邀请，然后才可能激活角色。
+为外部用户，您首先需要接受邀请到你的 Azure AD 组织并可能激活你的角色。
 
-1. 打开包含目录邀请的电子邮件。 该电子邮件如下所示。
+1. 打开与你的邀请电子邮件。 该电子邮件如下所示。
 
     ![电子邮件邀请](./media/pim-resource-roles-external-users/email-invite.png)
 
@@ -137,7 +137,7 @@ Azure Activity Directory (Azure AD) 企业到企业 (B2B) 是 Azure AD 内的一
 
 1. 单击“激活角色”，以在 PIM 中打开你的符合条件的角色。
 
-    ![我的角色 - 符合条件](./media/pim-resource-roles-external-users/my-roles-eligible.png)
+    ![我的角色的符合条件](./media/pim-resource-roles-external-users/my-roles-eligible.png)
 
 1. 在“操作”下单击“激活”链接。
 
@@ -149,9 +149,9 @@ Azure Activity Directory (Azure AD) 企业到企业 (B2B) 是 Azure AD 内的一
 
     如果并未要求管理员批准你的请求，则你应具有了对指定资源的访问权限。
 
-## <a name="view-activity-for-an-external-user"></a>查看外部用户的活动
+## <a name="view-activity-for-a-guest"></a>查看活动的来宾
 
-如同对待成员用户一样，你可以通过查看审核日志来跟踪外部用户的活动。
+就像成员用户可以查看审核日志来跟踪来宾正在执行哪些操作。
 
 1. 以管理员身份打开 PIM，并选择已共享的资源。
 
@@ -159,13 +159,13 @@ Azure Activity Directory (Azure AD) 企业到企业 (B2B) 是 Azure AD 内的一
 
     ![资源审核](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. 依次单击“Azure Active Directory” > “用户”>“外部用户”，以查看外部用户的活动。
+1. 若要查看活动的来宾操作系统，请单击**Azure Active Directory** > **用户**> 来宾名称。
 
-1. 单击“审核日志”，以查看该目录的审核日志。 可以根据需要指定筛选器。
+1. 单击**审核日志**以查看组织的审核日志。 可以根据需要指定筛选器。
 
-    ![目录审核](./media/pim-resource-roles-external-users/audit-directory.png)
+    ![组织审核](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中分配 Azure AD 目录角色](pim-how-to-add-role-to-user.md)
+- [分配 Azure AD PIM 中的管理员角色](pim-how-to-add-role-to-user.md)
 - [什么是 Azure Active Directory B2B 中的来宾用户访问权限？](../b2b/what-is-b2b.md)

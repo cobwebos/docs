@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: b4ecebc6bef7f49a23455c7a85f25680df087a95
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313354"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530750"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>将备份保管库升级到恢复服务保管库
 
@@ -73,14 +73,14 @@ SubscriptionID - 正在升级的保管库的订阅 ID 编号。<br/>
 RecoveryServicesVaultUpgrade.ps1 -SubscriptionID 53a3c692-5283-4f0a-baf6-49412f5ebefe -VaultName "TestVault" -Location "Australia East" -ResourceType BackupVault -TargetResourceGroupName "ContosoRG"
 ```
 
-也可以不结合任何参数运行该脚本，在这种情况下，系统将要求提供所有必需参数的输入。
+也可以不结合任何参数运行该脚本，在这种情况下，系统会要求提供所有必需参数的输入。
 
 PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输入 Service Manager 帐户的凭据，另一次是输入 Resource Manager 帐户的凭据。
 
 ### <a name="pre-requisites-checking"></a>先决条件检查
 输入 Azure 凭据后，Azure 会检查环境是否满足以下先决条件：
 
-- 最低代理版本 - 将备份保管库升级到恢复服务保管库要求 MARS 代理版本至少为 2.0.9083.0。 如果使用版本低于 2.0.9083.0 的代理将项注册到了备份保管库，先决条件检查会失败。 如果先决条件检查失败，请更新代理，并重试升级保管库。 可以从 [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) 下载代理的最新版本。
+- 最低代理版本 - 将备份保管库升级到恢复服务保管库要求 MARS 代理版本至少为 2.0.9083.0。 如果使用版本低于 2.0.9083.0 的代理将项注册到了备份保管库，先决条件检查会失败。 如果先决条件检查失败，请更新代理，并重试升级保管库。 可以从 [https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) 下载代理的最新版本。
 - **执行中的配置作业**：如果某人正在针对设置为要升级的备份保管库配置作业，或者正在注册某个项，先决条件检查会失败。 请先完成配置或完成项的注册，再启动保管库升级过程。
 - **基于存储的计费模型**：恢复服务保管库支持基于实例的计费模型。 如果在使用基于存储的计费模型的备份保管库上运行保管库升级，系统会提示连同保管库一起升级计费模型。 否则，可以先更新计费模型，再运行保管库升级。
 - 标识恢复服务保管库的资源组。 若要利用 Resource Manager 部署功能，必须在资源组中放置一个恢复服务保管库。 如果不知道要使用哪个资源组，请提供一个名称，然后，升级过程会创建该资源组。 升级过程还会将保管库与新资源组相关联。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 6d3895ab288b7826e54e75c7518d325800a9a238
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a60013bce63ed234e15dfddb13c07fbdc33a4073
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875696"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339617"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
@@ -41,7 +41,7 @@ Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可�
 
 Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都包含 Azure 认知服务中的服务的功能子集：
 
-| 服务 | 容器| 说明 |
+| 服务 | 容器| 描述 |
 |---------|----------|-------------|
 |[计算机视觉](Computer-vision/computer-vision-how-to-install-containers.md) |识别文本 |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。<br/><br/>**重要提示：** 识别文本容器目前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[人脸](Face/face-how-to-install-containers.md) |人脸 |检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
@@ -57,7 +57,7 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 > [!IMPORTANT]
 > 目前，必须完成注册过程才能访问[人脸](Face/face-how-to-install-containers.md)和[识别文本](Computer-vision/computer-vision-how-to-install-containers.md)容器，注册过程需要填写关于你、你的公司和要为其实现容器的用例的问题的问卷调查，然后提交。 授予访问权限并提供凭据后，即可为人脸和识别文本容器从 Azure 容器注册表承载的私有容器注册表中拉取容器映像。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 使用 Azure 认知服务容器之前，必须先满足以下先决条件：
 

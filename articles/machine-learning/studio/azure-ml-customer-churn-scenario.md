@@ -5,17 +5,17 @@ description: 使用 Azure 机器学习工作室开发集成模型对客户流失
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: a00548bd5eb88c95ea83d492524e2ae10f274bba
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 320dd28ba22d7919e3f3afdcd8baa47780f363dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453981"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856103"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室分析客户流失
 ## <a name="overview"></a>概述
@@ -25,7 +25,7 @@ ms.locfileid: "56453981"
 Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azure 机器学习工作室前产品经理）对此试验进行了开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
 
 > [!NOTE]
-> 用于此实验的数据不会公开提供。 有关如何生成用于流失分析的机器学习模型示例，请参阅：[Azure AI 库](http://gallery.azure.ai/)中的[零售流失模型模板](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)
+> 用于此实验的数据不会公开提供。 有关如何生成用于流失分析的机器学习模型示例，请参阅：[Azure AI 库](https://gallery.azure.ai/)中的[零售流失模型模板](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)
 > 
 > 
 
@@ -106,7 +106,7 @@ Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azu
  
 
 > 请注意，此数据是私有的，因此不能共享模型和数据。
-> 但是，有关使用公开可用数据的类似模型，请参阅 [Azure AI 库](http://gallery.azure.ai/)中的以下示例实验：[Telco Customer Churn](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383)（电信客户流失）。
+> 但是，有关使用公开可用数据的类似模型，请参阅 [Azure AI 库](https://gallery.azure.ai/)中的以下示例实验：[Telco Customer Churn](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383)（电信客户流失）。
 > 
 > 若要了解如何能使用 Cortana Intelligence 套件实现流失分析，还推荐由高级经理 Wee Hyong Tok 制作的[此视频](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html)。 
 > 
@@ -213,13 +213,13 @@ Azure 机器学习工作室中即将推出的另一项令人兴奋的功能是�
 ## <a name="references"></a>参考
 [1] 预测分析：不只是预测，W. McKnight，信息管理，2011 年 7/8 月，18-20 页。  
 
-[2] Wikipedia 文章：[Accuracy and precision](http://en.wikipedia.org/wiki/Accuracy_and_precision)（准确性和精度）
+[2] Wikipedia 文章：[Accuracy and precision](https://en.wikipedia.org/wiki/Accuracy_and_precision)（准确性和精度）
 
-[3] [CRISP-DM 1.0:Step-by-Step Data Mining Guide](http://www.the-modeling-agency.com/crisp-dm.pdf)（CRISP-DM 1.0：分步数据挖掘指南）   
+[3] [CRISP-DM 1.0:Step-by-Step Data Mining Guide](https://www.the-modeling-agency.com/crisp-dm.pdf)（CRISP-DM 1.0：分步数据挖掘指南）   
 
 [4] [Big Data Marketing:Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)（大数据市场营销：更有效地吸引客户并创造价值）
 
-[5] [Azure AI 库](http://gallery.azure.ai/) 中的 [电信流失模型模板](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 
+[5] [Azure AI 库](https://gallery.azure.ai/) 中的 [电信流失模型模板](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 
  
 
 ## <a name="appendix"></a>附录

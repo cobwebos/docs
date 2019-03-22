@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 9fc20c97e19ef3a651bc6df36118bc85fefcaec3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118725"
+ms.locfileid: "58199624"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>针对虚拟网络对等互连配置 VPN 网关传输
 
@@ -37,8 +37,8 @@ ms.locfileid: "58118725"
 1. 两种虚拟网络都使用资源管理器部署模型
 2. 辐射虚拟网络为经典部署模型，带网关的中心虚拟网络为资源管理器部署模型
 
-> [!IMPORTANT]
-> 全局虚拟网络对等互连目前不支持网关传输。
+> [!IMPORTANT]  
+> 使用全局虚拟网络对等互连预览版目前支持网关传输。 预览版目前在所有 Azure 区域、 中国云区域和政府云区域，但不是能跨云。 未列入允许列表是必需的。 您可以通过 CLI、 PowerShell、 模板或 API 的预览版中进行测试。 门户不支持在预览中。 
 
 ## <a name="requirements"></a>要求
 

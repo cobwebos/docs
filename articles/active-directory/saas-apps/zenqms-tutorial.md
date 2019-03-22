@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9804dee56e9f099654359e7c336f706cedbd1f7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d5d2e734ff9bd34a176d08e36019c826dac355bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204859"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003781"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>教程：Azure Active Directory 与 ZenQMS 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56204859"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 ZenQMS 的集成，需要以下项：
 
@@ -120,6 +120,7 @@ ms.locfileid: "56204859"
     ![ZenQMS 域和 URL 单一登录信息](./media/zenqms-tutorial/tutorial_zenqms_url1.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：
+    
     | |
     |-|-|
     | `https://<INSTANCE>.zenqms.com/<ID>`|

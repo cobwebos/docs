@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
-ms.date: 10/24/2018
+ms.date: 1/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: aaca3f346fafdc6ecde069676dbe0f089a26fca8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 716de6d491be753c5c32c0a2774404140010f72c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242988"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823308"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>什么是 FPGA 和 Project Brainwave？
 
@@ -30,7 +30,7 @@ FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的
 
 ![Azure 机器学习服务 FPGA 比较示意图](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
-|处理器||说明|
+|处理器||描述|
 |---|:-------:|------|
 |特定于应用程序的集成电路|ASIC|自定义电路（例如 Google 的 TensorFlow 处理器单元 (TPU)）的效率最高。 它们不能根据需求的变化重新配置。|
 |现场可编程门阵列|FPGA|FPGA（例如 Azure 上提供的那些）提供接近于 ASIC 的性能。 它们也是灵活的，并且可以在一段时间后重新配置以实现新逻辑。|

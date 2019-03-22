@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a1f1270f5c77332cbcc8c7761203f0194be62a94
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: ade6737d2df37d35eefd0be77895a54e1cea433d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881086"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314868"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中编辑知识库
 
@@ -71,7 +71,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 ## <a name="add-metadata"></a>添加元数据
 
 
-通过选择元数据图标添加元数据对
+选择元数据图标添加元数据对。 元数据对组成一个键和一个值。
 
 ![添加元数据](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 

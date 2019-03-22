@@ -6,16 +6,18 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 1/11/2019
+ms.date: 3/20/2019
 ms.author: victorh
-ms.openlocfilehash: 040aeda10410cc164c3f68b6615ebfb12d45541e
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: ae55f2abf9815174e7258c2ace949078794c380d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453477"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286187"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general"></a>常规
 
@@ -29,7 +31,7 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 ### <a name="what-is-the-difference-between-application-gateway-and-azure-load-balancer"></a>应用程序网关与 Azure 负载均衡器之间有什么区别？
 
-应用程序网关是第 7 层负载均衡器，这意味着，它只处理 Web 流量 (HTTP/HTTPS/WebSocket)。 它支持 SSL 终止、基于 Cookie 的会话相关性以及对流量进行负载均衡的轮循机制等功能。 负载均衡器在第 4 层对流量进行负载均衡 (TCP/UDP)。
+应用程序网关是第 7 层负载均衡器，这意味着它适用于仅用于 web 流量 (HTTP/HTTPS/WebSocket/HTTP/2)。 它支持 SSL 终止、基于 Cookie 的会话相关性以及对流量进行负载均衡的轮循机制等功能。 负载均衡器在第 4 层对流量进行负载均衡 (TCP/UDP)。
 
 ### <a name="what-protocols-does-application-gateway-support"></a>应用程序网关支持哪些协议？
 
@@ -37,19 +39,11 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 ### <a name="how-does-application-gateway-support-http2"></a>应用程序网关如何支持 HTTP/2？
 
-仅针对连接到应用程序网关侦听程序的客户端提供了 HTTP/2 协议支持。 与后端服务器池的通信是通过 HTTP/1.1 进行的。 
-
-默认情况下，HTTP/2 支持处于禁用状态。 以下 Azure PowerShell 代码片段示例展示了如何启用该支持：
-
-```powershell
-$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
-$gw.EnableHttp2 = $true
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
-```
+请参阅[HTTP/2 支持](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)若要了解如何应用程序网关支持 HTTP/2 协议。
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>目前支持在后端池中添加哪些资源？
 
-后端池可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 应用程序网关后端池成员不会绑定到可用性集。 后端池的成员可以跨群集、数据中心，或者在 Azure 外部，前提是它们建立了 IP 连接。
+请参阅[支持的后端资源](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pool)若要了解应用程序网关支持哪些资源。
 
 ### <a name="what-regions-is-the-service-available-in"></a>该服务已在哪些区域推出？
 
@@ -71,6 +65,10 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 使用公共 IP 地址作为终结点时，可在公共 IP 地址资源中，或者在门户中应用程序网关的“概述”页上找到此信息。 对于内部 IP 地址，可在“概述”页上找到此信息。
 
+### <a name="what-is-keep-alive-timeout-and-tcp-idle-timeout-setting-on-application-gateway"></a>应用程序网关上的 Keep-Alive 超时和 TCP 空闲超时的设置是什么？
+
+V1 SKU 上保持活动状态的超时值为 120 秒。 v2 SKU 上的保持活动超时是 75 秒的 TCP 空闲超时是前端应用程序网关 VIP 上的 4-最小值默认设置。
+
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>在应用程序网关的生存期内，其 IP 或 DNS 名称是否会变化？
 
 如果停止再启动应用程序网关，则 VIP 可能会变化。 与应用程序网关关联的 DNS 名称在网关的整个生命周期内不会变化。 出于此原因，建议使用 CNAME 别名并使其指向应用程序网关的 DNS 地址。
@@ -88,6 +86,8 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 如果配置了专用前端 IP 配置，则应用程序网关使用每个实例的一个专用 IP 地址，以及另一个专用 IP 地址。 另外，Azure 会在每个子网中保留前四个 IP 地址和最后一个 IP 地址供内部使用。
 例如，如果应用程序网关设置为三个实例并且没有专用前端 IP，则需要 /29 子网大小或更大。 在这种情况下，应用程序网关使用三个 IP 地址。 如果将三个实例和一个 IP 地址用于专用前端 IP 配置，则需要 /28 子网大小或更大，因为需要四个 IP 地址。
 
+最佳做法是使用最少/28 子网大小。 这使你 11 可用地址。 如果应用程序负载要求超过 10 个实例，则应考虑/27 或/26 子网大小。
+
 ### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>问： 是否可将多个应用程序网关资源部署到单个子网？
 
 是，除了提供给定应用程序网关部署的多个实例以外，还可以在包含不同应用程序网关资源的现有子网中预配另一个唯一的应用程序网关资源。
@@ -96,9 +96,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>应用程序网关是否支持 x-forwarded-for 标头？
 
-支持。应用程序网关会将 x-forwarded-for、x-forwarded-proto 和 x-forwarded-port 标头插入转发到后端的请求中。 x-forwarded-for 标头的格式是逗号分隔的“IP:端口”列表。 x-forwarded-proto 的有效值为 http 或 https。 x-forwarded-port 指定请求抵达应用程序网关时所在的端口。
-
-应用程序网关还会插入 X-Original-Host 标头，其中包含随请求到达的原始主机标头。 此标头在 Azure 网站集成之类的场景中比较有用，在这类场景中，传入的主机标头在流量路由到后端之前会修改。
+是的。 请参阅[修改请求](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request)若要了解有关支持的应用程序网关 x-转发-对于标头。
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-does-my-application-gateway-still-work-when-being-updated"></a>部署应用程序网关需要多长时间？ 更新时我的应用程序网关是否仍正常工作？
 
@@ -106,15 +104,47 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 预配 V2 SKU 部署可能需要大约 5 到 6 分钟时间。
 
+### <a name="can-exchange-server-be-used-as-backend-with-application-gateway"></a>Exchange 服务器是否可以用作应用程序网关的后端
+
+否，应用程序网关不支持电子邮件协议，如 SMTP、 IMAP 和 POP3。 
+
+## <a name="performance"></a>性能
+
+### <a name="how-does-application-gateway-support-high-availability-and-scalability"></a>应用程序网关如何支持高可用性和可伸缩性？
+
+如果已部署两个或更多个实例，则应用程序网关 v1 SKU 支持高可用性方案。 Azure 将跨更新域和容错域分配这些实例，确保所有实例不会同时发生故障。 为了支持可伸缩性，v1 SKU 将添加同一网关的多个实例来分担负载。
+
+v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如果选择了区域冗余，则最新实例还将分布到各个可用性区域中以提供区域性故障复原能力。
+
+### <a name="how-do-i-achieve-dr-scenario-across-data-centers-with-application-gateway"></a>如何使用应用程序网关实现跨数据中心的灾难恢复方案？
+
+客户可以使用流量管理器跨不同数据中心内的多个应用程序网关分配流量。
+
+### <a name="is-autoscaling-supported"></a>是否支持自动缩放？
+
+是，应用程序网关 v2 SKU 支持自动缩放。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关（公共预览版）](application-gateway-autoscaling-zone-redundant.md)。
+
+### <a name="does-manual-scale-updown-cause-downtime"></a>手动扩展/缩减是否导致停机？
+
+不会出现停机。 实例将跨升级域和容错域分布。
+
+### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
+
+是的。 可配置连接排出以更改后端池内的成员，而无需中断操作。 这允许继续将现有连接发送到其以前的目标，直到该连接被关闭或可配置超时到期。 连接排出仅等待当前未完成的连接完成。 应用程序网关不了解应用程序会话状态。
+
+### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可以在不造成中断的情况下，将实例大小从中型更改为大型？
+
+可以。Azure 将跨更新域和容错域分配实例，确保所有实例不会同时发生故障。 为了支持缩放，应用程序网关可添加同一网关的多个实例来分担负载。
+
 ## <a name="configuration"></a>配置
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>是否始终要将应用程序网关部署在虚拟网络中？
 
-是的，始终要将应用程序网关部署在虚拟网络子网中。 此子网只能包含应用程序网关。
+是的，始终要将应用程序网关部署在虚拟网络子网中。 此子网只能包含应用程序网关。 请参阅[虚拟网络和子网要求](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet)若要了解有关应用程序网关的子网注意事项。
 
-### <a name="can-application-gateway-communicate-with-instances-outside-its-virtual-network"></a>应用程序网关是否能够与其虚拟网络外部的实例进行通信？
+### <a name="can-application-gateway-communicate-with-instances-outside-of-the-virtual-network-it-is-in-or-outside-of-the-subscription-it-is-in"></a>应用程序网关可以与在虚拟网络外部或它所在的订阅外部的实例通信？
 
-应用程序网关可与其所在的虚拟网络外部的实例进行通信，前提是已建立 IP 连接。 如果打算使用内部 IP 作为后端池成员，则需要使用 [VNET 对等互连](../virtual-network/virtual-network-peering-overview.md)或 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
+只要建立 IP 连接，应用程序网关可以与在虚拟网络外部或订阅中，它是外部的实例通信。 如果打算使用内部 IP 作为后端池成员，则需要使用 [VNET 对等互连](../virtual-network/virtual-network-peering-overview.md)或 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>是否可以在应用程序网关子网中部署其他任何组件？
 
@@ -126,17 +156,13 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 * 对于应用程序网关 v1 SKU，必须为端口 65503-65534 上的传入流量设置例外，对于 v2 SKU，必须为端口 65200 - 65535 上的传入流量设置例外。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）无法对这些终结点做出任何更改。
 
-* 不能阻止出站 Internet 连接。
+* 不能阻止出站 Internet 连接。 NSG 中的默认出站规则已经允许 Internet 连接。 建议不要删除默认的出站规则，且不要创建其他拒绝出站 Internet 连接的出站规则。
 
 * 必须允许来自 AzureLoadBalancer 标记的流量。
 
 ### <a name="are-user-defined-routes-supported-on-the-application-gateway-subnet"></a>应用程序网关子网是否支持用户定义的路由？
 
-只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网支持用户定义的路由。
-
-例如，可以在应用程序网关子网中设置 UDR 来指向用于数据包检查的防火墙设备，但必须确保数据包在检查后可以到达其预定目的地。 如果做不到这一点，可能会导致不正确的运行状况探测或流量路由行为。 这包括已了解的路由或通过 ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
-
-v2 SKU 不支持应用程序网关子网上的 UDR。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关（公共预览版）](application-gateway-autoscaling-zone-redundant.md#known-issues-and-limitations)。
+请参阅[用户定义的路由限制](https://docs.microsoft.com/azure/application-gateway/configuration-overview#user-defined-routes-supported-on-the-application-gateway-subnet)若要了解有关应用程序网关子网支持用户定义的路由。
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>应用程序网关有哪些限制？ 是否可以提高这些限制？
 
@@ -172,55 +198,17 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 ### <a name="can-i-whitelist-application-gateway-access-to-a-few-source-ips"></a>我可以将某些源 IP 的应用程序网关访问权限列入允许列表吗？
 
-对应用程序网关子网使用 NSG 可以完成此方案。 应按列出的优先顺序对子网采取以下限制：
-
-* 允许来自源 IP/IP 范围的传入流量。
-
-* 允许来自所有源的请求传入端口 65503-65534，进行[后端运行状况通信](application-gateway-diagnostics.md)。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
-
-* 允许 [NSG](../virtual-network/security-overview.md) 上的传入 Azure 负载均衡器探测（AzureLoadBalancer 标记）和入站虚拟网络流量（VirtualNetwork 标记）。
-
-* 使用“拒绝所有”规则阻止其他所有传入流量。
-
-* 允许所有目的地的 Internet 出站流量。
+是的。 请参阅[限制对特定源 Ip 的访问](https://docs.microsoft.com/azure/application-gateway/configuration-overview#whitelist-application-gateway-access-to-a-few-source-ips)若要了解如何确保该唯一列入允许列表的源 Ip 可以访问应用程序网关。
 
 ### <a name="can-the-same-port-be-used-for-both-public-and-private-facing-listeners"></a>能否对面向公共和面向私人的侦听器使用相同的端口？
 
 否，不支持这样做。
 
-## <a name="performance"></a>性能
-
-### <a name="how-does-application-gateway-support-high-availability-and-scalability"></a>应用程序网关如何支持高可用性和可伸缩性？
-
-如果已部署两个或更多个实例，则应用程序网关 v1 SKU 支持高可用性方案。 Azure 将跨更新域和容错域分配这些实例，确保所有实例不会同时发生故障。 为了支持可伸缩性，v1 SKU 将添加同一网关的多个实例来分担负载。
-
-v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如果选择了区域冗余，则最新实例还将分布到各个可用性区域中以提供区域性故障复原能力。
-
-### <a name="how-do-i-achieve-dr-scenario-across-data-centers-with-application-gateway"></a>如何使用应用程序网关实现跨数据中心的灾难恢复方案？
-
-客户可以使用流量管理器跨不同数据中心内的多个应用程序网关分配流量。
-
-### <a name="is-autoscaling-supported"></a>是否支持自动缩放？
-
-是，应用程序网关 v2 SKU 支持自动缩放。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关（公共预览版）](application-gateway-autoscaling-zone-redundant.md)。
-
-### <a name="does-manual-scale-updown-cause-downtime"></a>手动扩展/缩减是否导致停机？
-
-不会出现停机。 实例将跨升级域和容错域分布。
-
-### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
-
-是的。 可配置连接排出以更改后端池内的成员，而无需中断操作。 这允许继续将现有连接发送到其以前的目标，直到该连接被关闭或可配置超时到期。 连接排出仅等待当前未完成的连接完成。 应用程序网关不了解应用程序会话状态。
-
-### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可以在不造成中断的情况下，将实例大小从中型更改为大型？
-
-可以。Azure 将跨更新域和容错域分配实例，确保所有实例不会同时发生故障。 为了支持缩放，应用程序网关可添加同一网关的多个实例来分担负载。
-
-## <a name="ssl-configuration"></a>SSL 配置
+## <a name="configuration---ssl"></a>配置的 SSL
 
 ### <a name="what-certificates-are-supported-on-application-gateway"></a>应用程序网关支持哪些证书？
 
-支持自签名证书、CA 证书和通配符证书。 不支持 EV 证书。
+支持自签名证书、CA 证书、EV 证书和通配符证书。
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-application-gateway"></a>应用程序网关支持哪些最新的加密套件？
 
@@ -286,7 +274,11 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 不是，它没有与 Azure Key Vault 集成。
 
-## <a name="web-application-firewall-waf-configuration"></a>Web 应用程序防火墙 (WAF) 配置
+### <a name="how-to-configure-https-listeners-for-com-and-net-sites"></a>如何配置 HTTPS 侦听器的.com 和.net 站点？ 
+
+对于多个基于域的 （基于主机的） 路由，可以创建多站点侦听器，选择 HTTPS 作为侦听器配置中的协议和使用路由规则将侦听器相关联。 有关更多详细信息，请参阅[托管应用程序网关的多个站点](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview)。 
+
+## <a name="configuration---web-application-firewall-waf"></a>配置-Web 应用程序防火墙 (WAF)
 
 ### <a name="does-the-waf-sku-offer-all-the-features-available-with-the-standard-sku"></a>WAF SKU 是否提供标准 SKU 所提供的全部功能？
 
@@ -342,7 +334,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>如何知道后端池成员是否正常？
 
-可以使用 PowerShell cmdlet `Get-AzureRmApplicationGatewayBackendHealth`，或者在门户中访问[应用程序网关诊断](application-gateway-diagnostics.md)来验证运行状况
+可以使用 PowerShell cmdlet `Get-AzApplicationGatewayBackendHealth`，或者在门户中访问[应用程序网关诊断](application-gateway-diagnostics.md)来验证运行状况
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>什么是诊断日志的保留策略？
 
@@ -350,7 +342,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 ### <a name="how-do-i-get-audit-logs-for-application-gateway"></a>如何获取应用程序网关的审核日志？
 
-应用程序网关有相应的审核日志。 在门户上的应用程序网关菜单边栏选项卡中单击“活动日志”即可访问审核日志。 
+应用程序网关有相应的审核日志。 在门户中，单击**活动日志**应用程序网关，若要访问审核日志菜单边栏选项卡上。 
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>是否可以使用应用程序网关设置警报？
 

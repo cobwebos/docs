@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6166875c04ff9d183336a89da56c4b77521d0f29
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 89eb18a2b4af76f6489442dc66ab12d0840e92c7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217418"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669477"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>必应语音服务客户端库入门
 
@@ -43,4 +44,3 @@ ms.locfileid: "55217418"
 ## <a name="license"></a>许可证
 
 所有认知服务 SDK 和示例均获得 MIT 许可证的许可。 有关详细信息，请参阅[许可证](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md)。
-
