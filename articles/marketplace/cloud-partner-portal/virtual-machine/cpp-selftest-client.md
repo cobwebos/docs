@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa46fbce9d11a8fd380a5ee1990c0e7924079a9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078680"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309412"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>创建用来预验证 Azure 虚拟机映像的自测试客户端
 
@@ -54,7 +54,7 @@ ms.locfileid: "58078680"
 自测试 API 包含仅支持 POST 方法的单个终结点。  它具有以下结构。
 
 ```
-Uri:             https://isvapp.azurewebsites.net/selftest-vm
+Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -260,7 +260,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
    - **名称** - 输入应用的友好名称。 例如，“SelfTestClient”。
    - **应用程序类型** - 选择“Web 应用/API”
-   - **登录 URL** - 键入“https://isvapp.azurewebsites.net/selftest-vm”
+   - **登录 URL** -键入"https:\//isvapp.azurewebsites.net/selftest-vm"
 
 4. 选择“创建”。
 5. 在“应用注册”或“已注册的应用”下，复制“应用程序 ID”。
