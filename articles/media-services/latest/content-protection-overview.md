@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4d1a9ae622de103b459d256cb48c5823f5866a3b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: 984c5d6b5e6e2010489533a3889501c5b524a6bd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294070"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311316"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>使用动态加密内容保护
 
@@ -204,7 +204,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 如果收到`MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY`错误，请确保指定适当的流式处理策略。
 
-如果出现错误结尾`_NOT_SPECIFIED_IN_URL`，请确保在 URL 中指定的加密格式。 例如，.../manifest (格式 = m3u8 cmaf，加密 cbc aapl)。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption types)。
+如果出现错误结尾`_NOT_SPECIFIED_IN_URL`，请确保在 URL 中指定的加密格式。 例如，`…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,7 +1,7 @@
 ---
-title: 跟踪试验和训练指标
+title: 在训练运行日志指标
 titleSuffix: Azure Machine Learning service
-description: 借助 Azure 机器学习服务，可通过跟踪试验和监视指标来改进模型创建过程。 了解如何将日志记录添加到训练脚本、如何提交试验、如何检查正在运行的作业的进度以及如何查看运行结果。
+description: 您可以跟踪试验并监视度量值来改进模型创建过程。 了解如何将日志记录添加到训练脚本、如何提交试验、如何检查正在运行的作业的进度以及如何查看运行结果。
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 79247c4c1f26fadcd5f0291b55c9dd8d4d9aa2af
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 835d1f41ffe940422554a8ca59d0a91ac8e98607
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008818"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336588"
 ---
-# <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>跟踪试验和训练指标 - Azure 机器学习
+# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>在 Azure 机器学习中运行在定型期间日志指标
 
 在 Azure 机器学习服务中，可通过跟踪试验和监视指标来改进模型创建过程。 在本文中，了解如何将日志记录添加到训练脚本、 提交试验运行、 监视运行和查看运行结果。
 
@@ -218,7 +218,7 @@ ms.locfileid: "58008818"
    ```
 
 ## <a name="cancel-a-run"></a>取消运行
-提交某个运行后，只要知道实验名称和运行 id，即使已丢失对象引用，仍可将其取消。 
+提交运行后，您可以取消它，即使丢失的对象引用，只要您知道实验名称，并运行 id。 
 
 ```python
 from azureml.core import Experiment

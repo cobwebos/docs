@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: dd60c5d0210ffba373839fd0f194496c5dbcc20d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7983169c2b1123c57a48471e3f4d9ad6f19c84dc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999407"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314716"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机开发工具
 
@@ -65,7 +65,7 @@ ms.locfileid: "57999407"
 | 它是什么？   | R 的基于 Web 的 IDE    |
 | 支持的 DSVM 版本      | Linux      |
 | 典型用途      |  R 开发     |
-| 如何使用/运行它？      | 使用 _systemctl enable rstudio-server_ 启用该服务，然后使用 _systemctl start rstudio-server_ 启动该服务。 然后可以在 http://your-vm-ip:8787 登录到 RStudio Server。       |
+| 如何使用/运行它？      | 使用 _systemctl enable rstudio-server_ 启用该服务，然后使用 _systemctl start rstudio-server_ 启动该服务。 你可以然后登录到 RStudio Server 在 http:\// 你的 vm-ip:8787。       |
 | DSVM 上的相关工具      |   Visual Studio 2017、Visual Studio Code、RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 

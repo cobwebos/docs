@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4128ad53f30e74fb72f6256b78587cc222f4c282
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838708"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314444"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 设备管理器服务查看和管理 StorSimple 警报
 
@@ -202,7 +202,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 | 无法启动 StorSimple 服务。 |数据路径错误 |如果问题持续出现，请联系 Microsoft 支持。 |
 | 检测到“Data0”的 IP 地址重复。 | |系统检测到 IP 地址“10.0.0.1”冲突。 设备 *<device1>* 上的网络资源“Data0”已脱机。 确保此网络中的其他任何实体未使用此 IP 地址。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 请联系网络管理员帮助解决此问题。 如果问题持续出现，请联系 Microsoft 支持。 |
 | “Data0”的 IPv4（或 IPv6）地址已脱机。 | |设备 *<device1>* 上 IP 地址为“10.0.0.1”且前缀长度为“22”的网络资源“Data0”处于脱机状态。 确保此接口连接到的交换机端口运行正常。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
-| 无法连接到身份验证服务。 |数据路径错误 |用于身份验证的 URL 不可访问。 请确保防火墙规则包括为 StorSimple 设备指定的 URL 模式。 有关在 Azure 门户中的 URL 模式的详细信息，请转到 https://aka.ms/ss-8000-network-reqs。 如果使用 Azure 政府版云，请转到中的 URL 模式 https://aka.ms/ss8000-gov-network-reqs。|
+| 无法连接到身份验证服务。 |数据路径错误 |用于身份验证的 URL 不可访问。 请确保防火墙规则包括为 StorSimple 设备指定的 URL 模式。 有关在 Azure 门户中的 URL 模式的详细信息，请转到 https:\//aka.ms/ss-8000-network-reqs. 如果使用 Azure 政府版云，请转到在 https 中的 URL 模式：\//aka.ms/ss8000-gov-network-reqs.|
 
 ### <a name="performance-alerts"></a>性能警报
 

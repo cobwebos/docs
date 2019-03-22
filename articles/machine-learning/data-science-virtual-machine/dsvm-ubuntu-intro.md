@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d48f47f66bea0bb8c5e3c982f983f3673bcb157
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884670"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316982"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
@@ -144,9 +144,9 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
 
 ### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub 和 JupyterLab
 
-Ubuntu DSVM 运行 [JupyterHub](https://github.com/jupyterhub/jupyterhub)，一个多用户 Jupyter 服务器。 若要连接，请浏览到笔记本电脑或台式电脑上的 https://your-vm-ip:8000 ，输入用来创建 VM 的用户名和密码，然后登录。 提供多个示例笔记本用于浏览和试用。
+Ubuntu DSVM 运行 [JupyterHub](https://github.com/jupyterhub/jupyterhub)，一个多用户 Jupyter 服务器。 若要连接，请浏览到 https:\// 你的 vm-ip:8000 便携式计算机或桌面，输入用户名和密码，用于创建 VM，并以用户身份登录。 提供多个示例笔记本用于浏览和试用。
 
-也会提供 JupyterLab（下一代的 Jupyter 笔记本和 JupyterHub）。 若要访问它，请登录到 JupyterHub，然后浏览到 URL https://your-vm-ip:8000/user/your-username/lab。 可以通过将此行添加到 /etc/jupyterhub/jupyterhub_config.py，将 JupyterLab 设置为默认笔记本服务器：
+也会提供 JupyterLab（下一代的 Jupyter 笔记本和 JupyterHub）。 若要访问它，请登录到 JupyterHub，然后浏览到 URL https:\// 你的 vm-ip:8000/用户/你的用户名/实验室。 可以通过将此行添加到 /etc/jupyterhub/jupyterhub_config.py，将 JupyterLab 设置为默认笔记本服务器：
 
     c.Spawner.default_url = '/lab'
 

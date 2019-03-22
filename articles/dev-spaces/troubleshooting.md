@@ -9,16 +9,18 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，Helm，服务网格，服务网格路由、 kubectl，k8s '
-ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: eff7f88ec6cbf8064df42fa3b22d61bb44baa451
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898076"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339578"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
 本指南介绍使用 Azure Dev Spaces 时可能会碰到的常见问题。
+
+如果使用 Azure 开发人员空间时遇到问题，创建[Azure 开发人员空格 GitHub 存储库中的问题](https://github.com/Azure/dev-spaces/issues)。
 
 ## <a name="enabling-detailed-logging"></a>启用详细日志记录
 
@@ -262,11 +264,13 @@ az provider register --namespace Microsoft.DevSpaces
 ## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Dev Spaces 在执行“正在等待容器映像生成...”步骤（使用 AKS 虚拟节点）时超时
 
 ### <a name="reason"></a>原因
-当你尝试使用 Dev Spaces 运行配置为在 [AKS 虚拟节点](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上运行的服务时，会发生这种情况。 Dev Spaces 暂不支持在虚拟节点上生成或调试服务。
+当您尝试使用适用于开发人员空间来运行配置为在上运行的服务时，会发生此超时[AKS 虚拟节点](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)。 Dev Spaces 暂不支持在虚拟节点上生成或调试服务。
 
 如果使用 `--verbose` 开关运行 `azds up`，或在 Visual Studio 中启用详细日志记录，便会看到其他详细信息：
 
 ```cmd
+$ azds up --verbose
+
 Installed chart in 2s
 Waiting for container image build...
 pods/mywebapi-76cf5f69bb-lgprv: Scheduled: Successfully assigned default/mywebapi-76cf5f69bb-lgprv to virtual-node-aci-linux
@@ -274,7 +278,7 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-这表明，服务 Pod 分配到虚拟节点 virtual-node-aci-linux。
+上面的命令显示了服务的 pod 被赋予*虚拟节点 aci-linux*，这是虚拟节点。
 
 ### <a name="try"></a>请尝试：
 将服务的 Helm 图表更新为，删除任何允许在虚拟节点上运行服务的 nodeSelector 和/或 tolerations 值。 这些值通常是在图表的 `values.yaml` 文件中进行定义。

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: d194a5929e648c09eb204860c528e48bc55259ee
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 5f6708a9c22939395f992c2ac58a7e510b35f763
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635387"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317266"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
 
@@ -26,7 +26,7 @@ ms.locfileid: "53635387"
 > 有关在基于 Windows 的 HDInsight 上部署和监视拓扑的信息，请参阅[在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑](apache-storm-deploy-monitor-topology.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **基于 Linux 的 Storm on HDInsight 群集**：请参阅 [Apache Storm on HDInsight 入门](apache-storm-tutorial-get-started-linux.md)获取群集创建步骤
 
@@ -215,15 +215,15 @@ Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行�
 
 ### <a name="base-uri"></a>基本 URI
 
-可在 **https://HEADNODEFQDN:8744/api/v1/** 的头节点上获取基于 Linux 的 HDInsight 群集上的 REST API 的基 URI。 头节点的域名在群集创建过程中生成，且非静态。
+基于 Linux 的 HDInsight 群集上的 REST API 的基本 URI 是在头节点上可用**https:\//HEADNODEFQDN:8744/api/v1/**。 头节点的域名在群集创建过程中生成，且非静态。
 
 可以使用多种不同的方式查找群集头节点的完全限定域名 (FQDN)：
 
 * **从 SSH 会话**：通过与群集建立的 SSH 会话使用 `headnode -f` 命令。
 * **从 Ambari Web**：从页面顶部选择“服务”，然后选择“Storm”。 在“摘要”选项卡中，选择“Storm UI 服务器”。 页面顶部会显示承载 Storm UI 和 REST API 的节点的 FQDN。
-* **从 Ambari REST API**：使用 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 命令来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 将 **CLUSTERNAME** 替换为群集名称。 出现提示时，请输入登录（管理员）帐户的密码。 在响应中，“host_name”条目包含节点的 FQDN。
+* **从 Ambari REST API**：使用 `curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 命令来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 将 **CLUSTERNAME** 替换为群集名称。 出现提示时，请输入登录（管理员）帐户的密码。 在响应中，“host_name”条目包含节点的 FQDN。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 对 REST API 的请求必须使用**基本身份验证**，因此应该使用 HDInsight 群集管理员名称和密码。
 

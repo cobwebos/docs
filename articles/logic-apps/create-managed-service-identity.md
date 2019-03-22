@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: a22512a960426cc21f4f012e06b9df4fa86e637e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: 046aed64d3551d5c0b6ddae44b925452c01c297a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807263"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337573"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识进行身份验证并访问资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "54807263"
 > [!NOTE]
 > 当前，每个 Azure 订阅中最多可以有 10 个具有系统分配的托管标识的逻辑应用工作流。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅，如果没有订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
@@ -57,7 +57,7 @@ ms.locfileid: "54807263"
 
    ![对象 ID 的 GUID](./media/create-managed-service-identity/object-id.png)
 
-   | 属性 | 值 | 说明 | 
+   | 属性 | 值 | 描述 | 
    |----------|-------|-------------| 
    | **对象 ID** | <*identity-resource-ID*> | 全局唯一标识符 (GUID)，表示 Azure AD 租户中逻辑应用的系统分配托管标识 | 
    ||| 
@@ -109,7 +109,7 @@ ms.locfileid: "54807263"
 }
 ```
 
-| 属性 | 值 | 说明 | 
+| 属性 | 值 | 描述 | 
 |----------|-------|-------------|
 | **principalId** | <*principal-ID*> | 全局唯一标识符 (GUID)，表示 Azure AD 租户中的逻辑应用，有时显示为“object ID”或 `objectID` | 
 | **tenantId** | <*Azure-AD-tenant-ID*> | 全局唯一标识符 (GUID)，表示逻辑应用为其中成员的 Azure AD 租户。 在 Azure AD 租户内，服务主体与逻辑应用实例具有相同名称。 | 
@@ -152,7 +152,7 @@ ms.locfileid: "54807263"
 
 1. 为该操作提供必要的详细信息，例如要调用的资源的请求“方法”和“URI”位置。
 
-   例如，假设配合使用 Azure Active Directory (Azure AD) 身份验证和[其中一种支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)。 
+   例如，假设配合使用 Azure Active Directory (Azure AD) 身份验证和[其中一种支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 
    在“URI”框中，输入该 Azure 服务的终结点 URL。 
    因此，如果使用 Azure 资源管理器，请在“URI”属性中输入此值：
 
@@ -167,7 +167,7 @@ ms.locfileid: "54807263"
    > [!IMPORTANT]
    > 
    > 在“访问群体”属性中，资源 ID 值必须完全匹配 Azure AD 的预期，包括任何必需的尾部反斜杠。 
-   > 可以在此[描述支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)表中找到这些资源 ID 值。 
+   > 可以在此[描述支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)表中找到这些资源 ID 值。 
    > 例如，如果使用 Azure 资源管理器资源 ID，请确保 URI 具有尾部反斜杠。
 
 1. 继续按照所需方式生成逻辑应用。

@@ -1,5 +1,5 @@
 ---
-title: Windows 7 和 8.1 中的 Azure AD 自助密码重置
+title: Azure AD 自助服务密码重置 Windows 7 和 8.1-Azure Active Directory
 description: 如何使用 Windows 7 或 8.1 登录屏幕上的“忘记了密码”启用自助密码重置
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 933ac9b8f7d381db0111ee50385f11e8a22d92f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7a7752fac54f9dfb2f8fb0aecd3b6249c52c3bcf
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217813"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316348"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>如何：在 Windows 7、8 和 8.1 中启用密码重置
 
@@ -26,7 +26,7 @@ ms.locfileid: "56217813"
 
 ![显示了“忘记了密码”链接的 Windows 7 登录屏幕 示例](media/howto-sspr-windows-7-8/windows-7-logon-screen.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 必须启用 Azure AD 自助密码重置。
 * 修补的 Windows 7 或 Windows 8.1 操作系统。

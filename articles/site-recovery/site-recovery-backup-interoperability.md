@@ -1,46 +1,29 @@
 ---
-title: Azure 站点恢复的备份的互操作性 |Microsoft Docs
+title: 使用 Azure Site Recovery 与 Azure 备份的支持 |Microsoft Docs
 description: 概述如何 Azure Site Recovery 和 Azure 备份可以一起使用。
 services: site-recovery
 author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/18/2019
 ms.author: sideeksh
-ms.openlocfilehash: 6658ab8c967c70ac1deaeba3d1dfeac602515591
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: e902f70225ec0eb0caa98f7e19a16c87220cb6f9
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731863"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312880"
 ---
-# <a name="about-site-recovery-and-backup-interoperability"></a>有关 Site Recovery 和备份互操作性
+# <a name="support-for-using-site-recovery-with-azure-backup"></a>使用 Site Recovery 与 Azure 备份的支持
 
-本文提供了有关成功使用 Azure IaaS VM 备份和 Azure VM 灾难恢复的指南。
+本文汇总了支持使用[Site Recovery 服务](site-recovery-overview.md)连同[Azure 备份服务](https://docs.microsoft.com/azure/backup/backup-overview)。
 
-## <a name="azure-backup"></a>Azure 备份
-
-Azure 备份有助于保护数据的本地服务器、 虚拟机、 虚拟化工作负荷、 SQL server、 SharePoint 服务器和的详细信息。 Azure Site Recovery 可以协调和管理 Azure Vm、 本地 Vm 和物理服务器灾难恢复。
-
-## <a name="azure-site-recovery"></a>Azure Site Recovery
-
-它是可以将 VM 或一组 Vm 上配置 Azure 备份和 Azure Site Recovery。 这两种产品进行互操作。 备份和 Azure Site Recovery 之间的互操作性变得重要的几个方案如下所示：
-
-### <a name="file-backuprestore"></a>文件备份/还原
-
-如果备份和复制是同时启用了，并且执行备份，则还原在源端 VM 或 Vm 的组上的任何文件的任何问题。 复制将像往常一样继续复制运行状况中进行任何更改。
-
-### <a name="disk-backuprestore"></a>磁盘备份/还原
-
-如果从备份中还原磁盘的虚拟机的保护将不得不重新启用它。
-
-### <a name="vm-backuprestore"></a>VM 备份/还原
-
-不支持备份和还原的 VM 或 Vm 的组。 若要使其工作，需要在重新启用保护。
-
-**方案** | **支持 Azure Site recovery？** | **解决方法是，如果有**  
+**Action** | **Site Recovery 支持** | **详细信息**
 --- | --- | ---
-文件/文件夹备份 | 是 | 不适用
-磁盘备份 | 当前未 | 禁用和启用保护
-VM 备份 | 否 | 禁用和启用保护
+**将服务部署在一起** | 支持 | 服务是可互操作，可以配置在一起。
+**文件备份/还原** | 支持 | 如果为 VM 启用备份和复制备份，没有问题中还原源端虚拟机或组的 Vm 上的文件。 复制将像往常一样继续复制运行状况中进行任何更改。
+**磁盘备份/还原** | 没有当前支持 | 如果要还原备份的磁盘，需要禁用和重新启用再次复制虚拟机。
+**VM 备份/还原** | 没有当前支持 | 如果备份或还原的 VM 或 Vm 的组，您需要禁用和重新启用 VM 的复制。  
+
+

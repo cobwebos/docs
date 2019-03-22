@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4e8649096d4f7de49c9cf0d569422919f865bb3b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 45b34d12fbcecbf5f6bf1225c5bb82c5385224ed
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094086"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338388"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -26,48 +26,54 @@ Azure 数据湖存储第 2 代是专用于大数据分析、 Azure Blob 存储�
 > [!Note] 
 > 选择数据湖存储第 2 代为后你**主存储类型**，不能选择数据湖存储 Gen1 帐户作为附加存储。
 
-## <a name="create-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>创建包含数据湖存储第 2 代的 HDInsight 群集
-
-## <a name="use-the-azure-portal"></a>使用 Azure 门户
+## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-portal"></a>使用数据湖存储第 2 代通过 Azure 门户创建群集
 
 若要创建数据湖存储第 2 代用于存储的 HDInsight 群集，请执行以下步骤来配置数据湖存储第 2 代帐户。
 
-1. 创建用户分配的托管标识（如果还没有）。 请参阅[使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)。
+### <a name="create-a-user-managed-identity"></a>创建用户管理标识
 
-    ![创建用户分配的托管标识](./media/hdinsight-hadoop-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
+创建用户分配的托管标识（如果还没有）。 请参阅[使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)。 有关如何将托管在 Azure HDInsight 中的标识工作的详细信息，请参阅[托管在 Azure HDInsight 中的标识](hdinsight-managed-identities.md)。
 
-1. 创建 Azure Data Lake Storage Gen2 存储帐户。 请确保**层次结构命名空间**选项处于启用状态。 有关详细信息，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
+![创建用户分配的托管标识](./media/hdinsight-hadoop-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
-    ![显示 Azure 门户中存储帐户创建情况的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
- 
-1. 将托管标识分配到存储帐户上的“存储 Blob 数据所有者(预览版)”角色。 有关详细信息，请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）](../storage/common/storage-auth-aad-rbac.md)。
+### <a name="create-a-data-lake-storage-gen2-account"></a>创建 Data Lake Storage Gen2 帐户
 
-    1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
-    1. 选择你的存储帐户，然后选择**访问控制 (IAM)** 以显示该帐户的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
+创建 Azure Data Lake Storage Gen2 存储帐户。 请确保**层次结构命名空间**选项处于启用状态。 有关详细信息，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
+
+![显示 Azure 门户中存储帐户创建情况的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
+
+### <a name="setup-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>托管标识数据湖存储第 2 代帐户上设置权限
+
+将托管标识分配到存储帐户上的“存储 Blob 数据所有者(预览版)”角色。 有关详细信息，请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）](../storage/common/storage-auth-aad-rbac.md)。
+
+1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
+1. 选择你的存储帐户，然后选择**访问控制 (IAM)** 以显示该帐户的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
     
-        ![显示存储访问控制设置的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/portal-access-control.png)
+    ![显示存储访问控制设置的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/portal-access-control.png)
     
-    1. 选择 **+ 添加角色分配**按钮以添加新的角色。
-    1. 在“添加角色分配”窗口中，选择“存储 Blob 数据所有者(预览版)”角色。 然后，选择具有托管标识和存储帐户的订阅。 接下来，搜索并找到之前创建的用户分配托管标识。 最后，选择托管的标识，并会在下列出**所选成员**。
+1. 选择 **+ 添加角色分配**按钮以添加新的角色。
+1. 在“添加角色分配”窗口中，选择“存储 Blob 数据所有者(预览版)”角色。 然后，选择具有托管标识和存储帐户的订阅。 接下来，搜索并找到之前创建的用户分配托管标识。 最后，选择托管的标识，并会在下列出**所选成员**。
     
-        ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
+    ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
     
-    1. 选择“保存”。 所选用户分配标识现在在“参与者”角色下列出。
+1. 选择“保存”。 所选的用户分配标识现在列出在所选角色下。
+1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在群集创建菜单的“存储”部分，选择以下选项：
+        
+    * 有关**主存储类型**，选择**Azure 数据湖存储第 2 代**。
+    * 下**选择存储帐户**，搜索并选择新创建的数据湖存储第 2 代存储帐户。
+        
+        ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的存储设置](./media/hdinsight-hadoop-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
+    
+    * 下**标识**、 选择正确的订阅和新创建的用户分配托管标识。
+        
+        ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的标识设置](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+        
+> [!Note]
+> 可以将一个或多个数据湖存储第 2 代帐户添加为同一个群集上的辅助存储。 请重复上述步骤在你想要添加使用相同的托管的标识每个数据湖存储第 2 代帐户。
 
-    1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在群集创建菜单的“存储”部分，选择以下选项：
-        
-        * 有关**主存储类型**，选择**Azure 数据湖存储第 2 代**。
-        * 下**选择存储帐户**，搜索并选择新创建的数据湖存储第 2 代存储帐户。
-        
-            ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的存储设置](./media/hdinsight-hadoop-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
-        
-        * 下**标识**、 选择正确的订阅和新创建的用户分配托管标识。
-        
-            ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的标识设置](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>使用数据湖存储第 2 代通过 Azure CLI 创建群集
 
-### <a name="use-an-azure-resource-manager-template-deployed-with-the-azure-cli"></a>使用 Azure 资源管理器模板使用 Azure CLI 部署
-
-你可以[下载示例模板文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json)并[下载示例参数文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json)。 使用模板之前, 的字符串替换为`<SUBSCRIPTION_ID>`与实际的 Azure 订阅 id。 此外，替换字符串`<PASSWORD>`用您所选的密码设置的两个将用于登录到你的群集中的密码和 SSH 密码。
+你可以[下载示例模板文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json)并[下载示例参数文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json)。 使用模板之前, 的字符串替换为`<SUBSCRIPTION_ID>`与实际的 Azure 订阅 id。 此外，替换字符串`<PASSWORD>`用您所选的密码设置的两个将用于登录到群集的密码和 SSH 密码。
 
 以下代码段将执行以下初始步骤操作：
 

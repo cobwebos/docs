@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 1313616818686c7a03269fc1cc837958665732d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725229"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337538"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
 本文展示了如何为 [Azure 应用服务](overview.md)配置持续部署。 应用服务可以使用 BitBucket、GitHub 和 [Azure DevOps Services](https://www.visualstudio.com/team-services/) 实现持续部署，方法是从上述服务之一中的现有存储库拉取最新的更新。
@@ -47,6 +47,16 @@ ms.locfileid: "53725229"
 ### <a name="option-1-use-app-service-kudu-build-server"></a>选项 1：使用应用服务 Kudu 生成服务器
 
 在“配置”页面中，选择要从中进行持续部署的组织、存储库和分支。 完成后，单击“继续”。
+
+若要部署从 GitHub 组织中的存储库，浏览到 GitHub 并转到**设置** > **应用程序** > **授权 OAuth 应用**. 然后，单击"Azure 应用服务"。
+
+![设置 > 应用程序 > 经授权 OAuth 应用 > Azure 应用服务](media/app-service-continuous-deployment/github-settings-navigation.png)
+
+在下一步的页中，通过单击右侧的"授予"按钮授予对组织的存储库的应用服务访问。
+
+![单击"授予"授予对组织的存储库的应用服务访问权限](media/app-service-continuous-deployment/grant-access.png)
+
+你的组织现在应显示的"组织"列表中**配置**部署中心页。
 
 ### <a name="option-2-use-azure-pipelines-preview"></a>选项 2：使用 Azure Pipelines（预览版）
 

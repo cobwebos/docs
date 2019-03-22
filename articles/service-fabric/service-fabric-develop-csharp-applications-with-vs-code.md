@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: d2e890110194b1fbe0528191fa645628cc3a1345
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 9da735f10063649222a38498af17e0404137a706
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161353"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315345"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 开发 C# Service Fabric 应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "55161353"
 
 本文介绍如何使用 Visual Studio Code 生成、部署和调试 .NET Core Service Fabric 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设你已安装 VS Code、适用于 VS Code 的 Service Fabric Reliable Services 扩展，以及开发环境所需的所有依赖项。 有关详细信息，请参阅[入门](./service-fabric-get-started-vs-code.md#prerequisites)。
 
@@ -70,11 +70,11 @@ sudo code . --user-data-dir='.'
 
    ![VS Code 中的“部署应用程序”命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. 部署完成后，启动浏览器并打开 Service Fabric Explorer： http://localhost:19080/Explorer 。 应会看到应用程序正在运行。 此过程可能需要一段时间，请耐心等待。 
+4. 部署完成后，启动浏览器并打开 Service Fabric 资源管理器： http:\//localhost:19080 / 资源管理器。 应会看到应用程序正在运行。 此过程可能需要一段时间，请耐心等待。 
 
    ![Service Fabric Explorer 中的计数器服务应用程序](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. 确认应用程序正在运行后，启动浏览器并打开此页： http://localhost:31002 。 这是应用程序的 Web 前端。 刷新页面，查看递增的当前计数器值。
+4. 你已验证应用程序运行后，启动浏览器并打开此页： http:\//localhost:31002。 这是应用程序的 Web 前端。 刷新页面，查看递增的当前计数器值。
 
    ![浏览器中的计数器服务应用程序](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
@@ -91,7 +91,7 @@ sudo code . --user-data-dir='.'
 
    ![VS Code 工作区中的调试图标](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. 在浏览器中打开 Service Fabric Explorer： http://localhost:19080/Explorer 。 单击“应用程序”并向下钻取，以确定运行 CounterService 的主节点。 在下图中，CounterService 的主节点是“节点 0”。
+3. 在浏览器中打开 Service Fabric 资源管理器： http:\//localhost:19080 / 资源管理器。 单击“应用程序”并向下钻取，以确定运行 CounterService 的主节点。 在下图中，CounterService 的主节点是“节点 0”。
 
    ![CounterService 的主节点](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 

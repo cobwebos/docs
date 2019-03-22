@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 0b578bfdb75b0ad4d4065d8793a74e7c4284eb74
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dec5ce37aa3b4e9d4d6fcab964c1e48b606a4cd0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781582"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338048"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
@@ -31,7 +31,7 @@ ms.locfileid: "57781582"
 | Microsoft Word    | .DOCX        | Microsoft Word 文档                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .PDF         | Adobe Acrobat 可移植文档                                                                                                                                                                                                                                                |
 | HTML              | .HTML、.HTM  | HTML 文档                                                                                                                                                                                                                                                                  |
-| 文本文件         | .TXT         | UTF-16 或 UTF-8 编码的文本文件                                                                                                                                                                                                                                             |
+| 文本文件         | .TXT         | Utf-16 或 utf-8 编码文本文件。 文件名称必须不包含日语字符。                                                                                                                                                                                        |
 | 对齐的文本文件 | .ALIGN       | `.ALIGN` 是一个特殊的扩展名，如果你知道文档对中的句子已完美对齐，则可以使用此扩展名。 如果提供 `.ALIGN` 文件，自定义翻译不会对齐句子。 |
 | Excel 文件        | .XLSX        | Excel 文件（2013 或更高版本）。 电子表格的第一行应是语言代码。                                                                                                                                                                                                                                                      |
 

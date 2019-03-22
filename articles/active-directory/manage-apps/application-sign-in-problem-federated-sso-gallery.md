@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225676b144d042c51a97fe14a20a5a78f0a77244
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 623d684f701df8b1a7c4b84a2bd3840f039ad174
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013090"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312693"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的库应用程序时出现的问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "58013090"
 
 ## <a name="application-not-found-in-directory"></a>在目录中未找到应用程序
 
-*错误 AADSTS70001:在目录中找不到标识符为 ‘https://contoso.com’ 的应用程序*。
+*错误 AADSTS70001:标识符的应用程序 https:\//contoso.com 目录中未找到*。
 
 **可能的原因**
 
@@ -63,7 +63,7 @@ ms.locfileid: "58013090"
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>该答复地址与为应用程序配置的答复地址不匹配
 
-*错误 AADSTS50011:回复地址 ‘https://contoso.com’ 与为应用程序配置的回复地址不匹配*
+*错误 AADSTS50011:回复地址 https:\//contoso.com 应用程序配置的回复地址不匹配*
 
 **可能的原因**
 

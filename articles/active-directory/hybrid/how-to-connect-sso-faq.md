@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8de47aab231c66f3539c2d2f0f0e4c535a04038a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4822de6f6470547b47ecaa3874bed0df4ad20cf6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085365"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309582"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -45,16 +45,16 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 | 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
-| 访问面板 | https://myapps.microsoft.com/contoso.com |
-| Outlook 网页版 | https://outlook.office365.com/contoso.com |
-| Office 365 门户 | <https://portal.office.com?domain_hint=contoso.com>、<https://www.office.com?domain_hint=contoso.com> |
+| 访问面板 | https:\//myapps.microsoft.com/contoso.com |
+| Outlook 网页版 | https:\//outlook.office365.com/contoso.com |
+| Office 365 门户 | https:\//portal.office.com?domain_hint=contoso.com、 https:\//www.office.com?domain_hint=contoso.com |
 
-此外，用户时会获得静默登录体验应用程序将登录请求发送到 Azure AD 终结点将设置为租户-也就是说，如果 https://login.microsoftonline.com/contoso.com/<..>或 https://login.microsoftonline.com/<tenant_ID>/<..>-而不是 Azure AD 的普通终结点-即， https://login.microsoftonline.com/common/<...>。 以下为提出此类登录请求的应用程序的非详尽列表。
+此外，用户获得静默登录体验，如果应用程序发送登录请求向 Azure AD 终结点将设置为租户-即，https:\//login.microsoftonline.com/contoso.com/ <...> 或 https:\//login.microsoftonline.com/ < tenant_ID > / <...>-而不是 Azure AD 常见终结点-即，https:\//login.microsoftonline.com/common/ <...>。 以下为提出此类登录请求的应用程序的非详尽列表。
 
 | 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
-| SharePoint Online | https://contoso.sharepoint.com |
-| Azure 门户 | https://portal.azure.com/contoso.com |
+| SharePoint Online | https:\//contoso.sharepoint.com |
+| Azure 门户 | https:\//portal.azure.com/contoso.com |
 
 在上述表中，将“contoso.com”替换为域名，为租户获取正确的应用程序 URL。
 

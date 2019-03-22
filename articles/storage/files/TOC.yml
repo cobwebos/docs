@@ -64,9 +64,9 @@ items:
       href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
     - name: 共享访问签名 (SAS)
       href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-  - name: 度量值
+  - name: 监视和故障排除
     items:
-    - name: 诊断
+    - name: 监视、诊断和故障排除
       href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Azure Monitor 中的指标
       href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -115,12 +115,6 @@ items:
     items:
     - name: 监视 Azure 文件同步
       href: storage-sync-files-monitoring.md
-    - name: 指标和日志记录
-      items:
-      - name: 迁移到新指标
-        href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: 启用和查看指标（经典）
-        href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: 迁移
     items:
     - name: 迁移到 Azure 文件同步
@@ -258,9 +252,9 @@ items:
       href: https://github.com/Azure/azure-storage-cpp
     - name: Python
       href: https://github.com/Azure/azure-storage-python
-ms.openlocfilehash: 0dea31dd8e5a8886dfe658513818a0d1670b0c7d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0a54ca870727e64af7fffb0431145df1494140fe
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892415"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312540"

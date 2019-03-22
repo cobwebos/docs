@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/20/2019
 ms.author: victorh
-ms.openlocfilehash: ae55f2abf9815174e7258c2ace949078794c380d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: f549f9c612797c1c956d6921fe4898a5f8bee9e6
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286187"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319408"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -59,7 +59,7 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 ### <a name="in-what-order-are-listeners-processed"></a>按什么顺序处理侦听器？
 
-按侦听器的显示顺序进行处理。 因此，如果基本侦听器与传入请求匹配，它会先处理该请求。  应将多站点侦听器配置在基本侦听器之前，以确保将流量路由到正确的后端。
+请参阅[顺序处理侦听器](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners)。
 
 ### <a name="where-do-i-find-application-gateways-ip-and-dns"></a>在何处可以找到应用程序网关的 IP 和 DNS？
 
@@ -83,16 +83,13 @@ V1 SKU 上保持活动状态的超时值为 120 秒。 v2 SKU 上的保持活动
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>应该为应用程序网关创建多大的子网？
 
-如果配置了专用前端 IP 配置，则应用程序网关使用每个实例的一个专用 IP 地址，以及另一个专用 IP 地址。 另外，Azure 会在每个子网中保留前四个 IP 地址和最后一个 IP 地址供内部使用。
-例如，如果应用程序网关设置为三个实例并且没有专用前端 IP，则需要 /29 子网大小或更大。 在这种情况下，应用程序网关使用三个 IP 地址。 如果将三个实例和一个 IP 地址用于专用前端 IP 配置，则需要 /28 子网大小或更大，因为需要四个 IP 地址。
-
-最佳做法是使用最少/28 子网大小。 这使你 11 可用地址。 如果应用程序负载要求超过 10 个实例，则应考虑/27 或/26 子网大小。
+请参阅[应用程序网关的子网大小方面的考虑](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet)若要了解你的部署所需的子网大小。
 
 ### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>问： 是否可将多个应用程序网关资源部署到单个子网？
 
 是，除了提供给定应用程序网关部署的多个实例以外，还可以在包含不同应用程序网关资源的现有子网中预配另一个唯一的应用程序网关资源。
 
-不支持在同一子网上混合使用 Standard_v2 和标准应用程序网关。 另外，如果启用了自动缩放，则一个子网只能有一个应用程序网关。
+不支持在同一子网上混合使用 Standard_v2 和标准应用程序网关。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>应用程序网关是否支持 x-forwarded-for 标头？
 
@@ -152,13 +149,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>应用程序网关子网是否支持网络安全组？
 
-应用程序网关子网支持网络安全组 (NSG)，但存在以下限制：
-
-* 对于应用程序网关 v1 SKU，必须为端口 65503-65534 上的传入流量设置例外，对于 v2 SKU，必须为端口 65200 - 65535 上的传入流量设置例外。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）无法对这些终结点做出任何更改。
-
-* 不能阻止出站 Internet 连接。 NSG 中的默认出站规则已经允许 Internet 连接。 建议不要删除默认的出站规则，且不要创建其他拒绝出站 Internet 连接的出站规则。
-
-* 必须允许来自 AzureLoadBalancer 标记的流量。
+请参阅[应用程序网关子网的网络安全组限制](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-supported-on-the-application-gateway-subnet)了解应用程序网关子网支持网络安全组。
 
 ### <a name="are-user-defined-routes-supported-on-the-application-gateway-subnet"></a>应用程序网关子网是否支持用户定义的路由？
 
@@ -190,7 +181,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="how-are-rules-processed"></a>如何处理规则？
 
-按配置规则的顺序处理规则。 建议在基本规则之前配置多站点规则，以降低将流量路由到错误后端的可能性，因为基本规则会在评估多站点规则之前根据端口匹配流量。
+请参阅[的处理规则顺序](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules)了解路由规则的原理是在应用程序网关的进程。
 
 ### <a name="what-does-the-host-field-for-custom-probes-signify"></a>自定义探测的 Host 字段是什么意思？
 
@@ -356,7 +347,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>后端运行状况返回未知状态，什么原因导致此状态？
 
-最常见的原因是到后端的访问被 NSG 或自定义 DNS 阻止。 有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志记录和指标](application-gateway-diagnostics.md)。
+最常见原因是访问后端被 NSG，自定义 DNS 阻止或你在应用程序网关子网的 UDR。 有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志记录和指标](application-gateway-diagnostics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

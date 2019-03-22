@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 5580d67f796efc809ef536818419ab91e8ee54a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: edaa0cdcd98ce529ccbf9bf6aafaacf57a3ea383
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540005"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337521"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
 
@@ -24,9 +24,9 @@ ms.locfileid: "57540005"
 
 * 有效的 Azure 帐户。 如果没有帐户，可以[创建一个免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* 有效的 Azure Cosmos DB SQL API 帐户。 如果尚未创建此帐户，请参阅[创建数据库帐户](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account)中的演练。
+* 有效的 Azure Cosmos DB SQL API 帐户。 如果尚未创建此帐户，请参阅[创建数据库帐户](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-an-account)中的演练。
 
-* 数据库中的集合。 请参阅[添加集合](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-collection)中的演练。
+* 数据库中的集合。 请参阅[添加集合](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-database-and-a-collection)中的演练。
 
 * Azure 中的 IoT 中心。 如果尚未创建 Iot 中心，请参阅 [IoT 中心入门](../iot-hub/iot-hub-csharp-csharp-getstarted.md)中的演练。 
 
@@ -350,5 +350,3 @@ ms.locfileid: "57540005"
 * [请尝试学习 IoT 中心事件教程](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
 * 了解[事件网格](../event-grid/overview.md)的其他作用
-
-

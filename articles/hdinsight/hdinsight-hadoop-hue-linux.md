@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202684"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314986"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -95,7 +95,7 @@ https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-h
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     这是 Hue 网站所在的主头节点的主机名。
-4. 使用浏览器打开 Hue 门户 ( http://HOSTNAME:8888 )。 将 HOSTNAME 替换为在上一步骤中获取的名称。
+4. 使用浏览器打开 Hue 门户网站位于 http:\//HOSTNAME:8888。 将 HOSTNAME 替换为在上一步骤中获取的名称。
 
    > [!NOTE]  
    > 第一次登录时，系统会提示创建帐户来登录 Hue 门户。 在此处指定的凭据只能用于该门户，并且与预配群集时指定的管理员或 SSH 用户凭据不相关。

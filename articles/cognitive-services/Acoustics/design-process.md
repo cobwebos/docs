@@ -1,5 +1,5 @@
 ---
-title: 设计概念和噪声模拟
+title: 包含音效模拟的设计概念
 titlesuffix: Azure Cognitive Services
 description: 此概念概述介绍了项目噪声融合到合理的设计过程的声学模拟的了。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: dd27b660dfdd1f4bcec89291b10fd87750ad4c49
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4a1a0b15da091a1c020eb132f6b14b9ee14d334c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136150"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316054"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>项目噪声设计过程概念
 
@@ -29,7 +29,7 @@ ms.locfileid: "58136150"
 
 3D 标题使用物理激励，但设计器调整，可实现的浸入式和游戏玩法目标组合的光照量和运动物理系统。 可视化设计器不会设置单个像素的值，但它而不是调整三维模型、 材料和光线传输系统的都是以物理方式-基于来权衡视觉审美和 CPU 开销。 音频的等效过程是什么？ 项目噪声是探索这一问题的第一步。 首先我们将介绍一下传输通过空格的噪音能源的含义。
 
-![混响区域](media/reverb-zones-altspace.png)
+![叠加混响区域的屏幕截图的 AltSpace 场景](media/reverb-zones-altspace.png)
 
 ## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>脉冲响应：Acoustically 连接空间中的两个点
 
@@ -45,7 +45,7 @@ ms.locfileid: "58136150"
 
 但是，如果模拟连接直接到音频 DSP 参数，其中是设计器调整？ 我们未获得哪些优势？ 嗯，我们返回来放弃脉冲响应，并保留几个 DSP 参数获得大量的内存。 和对最终结果为设计器提供一些功能，我们只需要找到一种方法插入之间模拟和音频 DSP 设计器。
 
-![脉冲响应参数](media/acoustic-parameters.png)
+![使用参数叠加风格的脉冲响应与关系图](media/acoustic-parameters.png)
 
 ## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>通过将转换来自模拟音频 DSP 参数合理的设计
 

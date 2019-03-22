@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: c5128e904e540deeb3293fb687da4e8cafcfa1e0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a933824e9553ee7f638da495b46ebed19e04169d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870988"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316960"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到本地文件系统
 
@@ -48,7 +48,7 @@ ms.locfileid: "57870988"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 在搜索框中，输入“dropbox”作为筛选器。 从触发器列表中选择此触发器：**创建文件时** 
+1. 在搜索框中，输入“dropbox”作为筛选器。 从触发器列表中选择此触发器：**创建文件时**
 
    ![选择 Dropbox 触发器](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "57870988"
    | **gateway** | 是 | <*installed-gateway-name*> | 以前安装的网关的名称 | 
    ||| 
 
-1. 完成后，选择“创建”。 
+1. 完成后，选择“创建”。
 
    逻辑应用会配置和测试连接，以确保连接正常运行。 
    如果正确建立连接，会显示用于之前所选操作的选项。 

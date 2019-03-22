@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: glenga
-ms.openlocfilehash: 292b25987f183df2091667312d4e6730b7f40dda
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 57126c87879da9f99d224457433bbbd5f95ef021
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990894"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336722"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
 
@@ -44,7 +44,7 @@ ms.locfileid: "56990894"
 
 | 值  | 描述  |
 |---------|---------|
-| **`1`**  | 建议在 Windows 上运行的函数应用。 从函数应用的 `d:\home\data\SitePackages` 文件夹中的某个包文件运行。 如果不是 [使用 zip 部署部署] (#integration 次与 zip-部署]，此选项要求还具有名为的文件的文件夹`packagename.txt`。 此文件仅包含文件夹中包文件的名称（没有任何空白字符）。 |
+| **`1`**  | 建议在 Windows 上运行的函数应用。 从函数应用的 `d:\home\data\SitePackages` 文件夹中的某个包文件运行。 如果不是[使用 zip 部署部署](#integration-with-zip-deployment)，此选项要求还具有名为的文件的文件夹`packagename.txt`。 此文件仅包含文件夹中包文件的名称（没有任何空白字符）。 |
 |**`<url>`**  | 要运行的特定包文件的位置。 使用 Blob 存储时，应通过[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) 使用专用容器，使 Functions 运行时能够访问包。 可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)将包文件上传到 Blob 存储帐户。         |
 
 > [!CAUTION]

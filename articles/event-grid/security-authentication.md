@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: ea41f09269e3ad46db1f254965fd7d7df25232be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: d66db88dd1e962acc63c960270bb5685218aa391
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095596"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316044"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -88,7 +88,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 ### <a name="checklist"></a>清单
 
-创建事件订阅期间，是否看到“尝试验证所提供的终结点 https://your-endpoint-here 失败。 有关更多详细信息，请访问 https://aka.ms/esvalidation ”等错误消息，它表示验证握手出现故障。 若要解决此错误，请验证以下各方面：
+事件订阅在创建期间，如果看到一条错误消息如"尝试验证提供的终结点 https:\//your-endpoint-here 失败。 有关更多详细信息，请访问 https:\//aka.ms/esvalidation"，它表示验证握手中没有故障。 若要解决此错误，请验证以下各方面：
 
 * 能否控制目标终结点中的应用程序代码？ 例如，如果正在编写基于 HTTP 触发器的 Azure 函数，是否有权访问应用程序代码，以对其进行更改？
 * 如果有权访问应用程序代码，请实现基于 ValidationCode 的握手机制，如上面的示例中所示。

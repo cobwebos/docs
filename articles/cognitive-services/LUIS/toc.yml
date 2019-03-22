@@ -103,9 +103,10 @@ items:
     - name: 创作周期
       href: luis-concept-app-iteration.md
     - name: 协作
-      displayName: shared, transfer, ownership, author, access
+      displayName: shared, transfer, ownership, author, access, import
       href: luis-concept-collaborator.md
     - name: 版本控制
+      displayName: import
       href: luis-concept-version.md
   - name: 设计模型
     items:
@@ -149,17 +150,19 @@ items:
   - name: Enterprise
     items:
     - name: 设计策略
+      displayName: import
       href: luis-concept-enterprise.md
   - name: 安全
     items:
     - name: 应用访问
-      displayName: public, public app, AAD, compliance, ISO, certification, trust center
+      displayName: public, public app, AAD, compliance, ISO, certification, trust center, import
       href: luis-concept-security.md
     - name: 创作和终结点密钥
       href: luis-concept-keys.md
 - name: 操作指南
   items:
   - name: 创建新应用
+    displayName: import
     href: luis-how-to-start-new-app.md
   - name: 构建模型
     items:
@@ -168,6 +171,7 @@ items:
     - name: 将实体添加到话语
       href: luis-how-to-add-example-utterances.md
     - name: 在没有话语的情况下添加实体
+      displayName: import
       href: luis-how-to-add-entities.md
     - name: 使用预构建的模型
       items:
@@ -225,6 +229,7 @@ items:
     - name: 交互式测试
       href: luis-interactive-test.md
     - name: 批处理测试
+      displayName: import
       href: luis-how-to-batch-test.md
   - name: 发布
     href: luis-how-to-publish-app.md
@@ -238,8 +243,9 @@ items:
       href: luis-how-to-azure-subscription.md
     - name: 管理版本
       href: luis-how-to-manage-versions.md
+      diplayName: import
     - name: 管理作者和协作者
-      displayName: access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership
+      displayName: access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import
       href: luis-how-to-collaborate.md
     - name: 管理创作密钥
       href: luis-how-to-account-settings.md
@@ -250,7 +256,7 @@ items:
   - name: 使用容器
     items:
     - name: 安装并运行容器
-      displayName: docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now
+      displayName: docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull
       href: luis-container-howto.md
     - name: 配置容器
       href: luis-container-configuration.md
@@ -390,6 +396,7 @@ items:
   - name: 术语表
     href: luis-glossary.md
   - name: 故障排除
+    displayName: FAQ, import
     href: troubleshooting.md
   - name: 定价和限制
     href: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/
@@ -403,9 +410,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: 知识库
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 59950ced82f3b50ec5d0fe340157016954d2ff0b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8e684b58a3c7106f8ceca3e225b0b904d243984b
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779753"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337895"
