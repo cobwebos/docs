@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 58fca4cfc4217c67be1a4e679d1a95f34ff5726f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200678"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
@@ -157,7 +157,6 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 | 添加 Azure 存储帐户 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`。 请参阅[将其他存储帐户添加到 HDInsight](hdinsight-hadoop-add-storage.md)。 |
 | 安装 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`。 请参阅[在 HDInsight Hadoop 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
 | 安装 Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`。 请参阅 [在基于 Hadoop 的 HDInsight 群集上安装并使用 Presto](hdinsight-hadoop-install-presto.md). |
-| 安装 Solr |`https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh`。 请参阅[在 HDInsight Hadoop 群集上安装并使用 Apache Solr](hdinsight-hadoop-solr-install-linux.md)。 |
 | 安装 Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`。 请参阅[在 HDInsight Hadoop 群集上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。 |
 | 预加载 Hive 库 |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`。 请参阅[创建 HDInsight 群集时添加自定义 Apache Hive 库](hdinsight-hadoop-add-hive-libraries.md)。 |
 | 安装或更新 Mono | `https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash`。  请参阅 [在 HDInsight 上安装或更新 Mono](hdinsight-hadoop-install-mono.md). |
@@ -524,7 +523,6 @@ sudo pip install azure-storage==0.20.0
 ## <a name="next-steps"></a>后续步骤
 
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)
-* [在 HDInsight 群集上安装并使用 Apache Solr](hdinsight-hadoop-solr-install-linux.md)
 * [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
 * [将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)
 

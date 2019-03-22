@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 6f263511a7d1df4af82a690c1d6b04fecd2a8a91
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: afc60e933c9fcc154af74c47e382d8b8e7b0df8d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634535"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286306"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>如何使用 .NET 应用程序中的 Azure 搜索
 文本介绍了如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)。 可以使用 .NET SDK，在应用程序中使用 Azure 搜索实现丰富的搜索体验。
@@ -59,7 +59,7 @@ Azure 搜索 .NET SDK 支持面向 .NET Framework 4.5.2 及更高版本，以及
 * 使用文档填充索引
 * 使用全文搜索和筛选器搜索文档
 
-后续示例代码说明了其中的每一个。 可随意在自己的应用程序中使用代码片段。
+下面的示例代码说明了其中每项功能。 可随意在自己的应用程序中使用代码片段。
 
 ### <a name="overview"></a>概述
 我们将要探索的示例应用程序会创建一个名为“hotels”的新索引、用几个文档对该索引进行填充，并执行一些搜索查询。 以下是主程序，演示总体流程：
@@ -202,7 +202,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 接下来，我们会详细介绍 `Main` 调用的每个方法。
 
 ### <a name="creating-an-index"></a>创建索引
-创建 `SearchServiceClient` 后，`Main` 执行的下一步操作是删除“hotels”索引（如果该索引已存在）。 使用以下方法完成此操作：
+在创建后`SearchServiceClient`，`Main`删除"hotels"索引，如果它已存在。 使用以下方法完成此操作：
 
 ```csharp
 private static void DeleteHotelsIndexIfExists(SearchServiceClient serviceClient)
@@ -330,6 +330,8 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 
 最后，`UploadDocuments` 方法延迟了两秒钟。 编制索引在 Azure 搜索服务中异步进行，因此，示例应用程序需要等待很短时间，以确保文档可用于搜索。 此类延迟通常仅在演示、测试和示例应用程序中是必需的。
 
+<a name="how-dotnet-handles-documents"></a>
+
 #### <a name="how-the-net-sdk-handles-documents"></a>.NET SDK 如何处理文档
 用户可能想知道 Azure 搜索 .NET SDK 如何将用户定义的类（如 `Hotel` ）的实例上传到索引。 为了帮助回答这个问题，请看 `Hotel` 类：
 
@@ -394,9 +396,9 @@ public partial class Hotel
 > 
 > 
 
-要注意的第二个问题是属性，如修饰每个公共属性的 `IsFilterable`、`IsSearchable`、`Key` 和 `Analyzer`。 这些属性直接映射到 [Azure 搜索索引的相应属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。 `FieldBuilder` 类使用这些属性构造索引的字段定义。
+要注意的第二个问题是修饰每个公共属性的属性 (如`IsFilterable`， `IsSearchable`， `Key`，和`Analyzer`)。 这些属性直接映射到 [Azure 搜索索引的相应属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。 `FieldBuilder` 类使用这些属性构造索引的字段定义。
 
-有关 `Hotel` 类的第三个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `Edm.String` 类型的 `category` 字段。 `bool?` 和 `Edm.Boolean`、 `DateTimeOffset?`和 `Edm.DateTimeOffset` 等之间存在相似的类型映射。[Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)中的 `Documents.Get` 方法记录了类型映射的具体规则。 `FieldBuilder` 类会处理此映射，但你最好还是了解此映射，以便在需要排查任何序列化问题时可以下手。
+有关第三个重要的事情`Hotel`类是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `Edm.String` 类型的 `category` 字段。 `bool?` 和 `Edm.Boolean`、 `DateTimeOffset?`和 `Edm.DateTimeOffset` 等之间存在相似的类型映射。[Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)中的 `Documents.Get` 方法记录了类型映射的具体规则。 `FieldBuilder` 类会处理此映射，但你最好还是了解此映射，以便在需要排查任何序列化问题时可以下手。
 
 使用自己的类作为文档的这种功能可以在这两个方向上正常工作；此外，还可以检索搜索结果，并使用 SDK 自动将结果反序列化为所选类型，我们会在下一节中对此进行介绍。
 
@@ -585,7 +587,7 @@ WriteDocuments(results);
 
     ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
 
-本教程到此步骤结束，但不要就此打住。 **后续步骤**提供了详细了解 Azure 搜索的其他资源。
+本教程到此步骤结束，但不要就此打住。 * * 后续步骤用于详细了解 Azure 搜索提供其他资源。
 
 ## <a name="next-steps"></a>后续步骤
 * 浏览 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) 和 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 的参考资料。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cef6f47b62a500737e5b01865f73253f18fa470c
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 12b8fc2fb8df7fd730e220a3c1b60097ed7748a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960592"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433716"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ) 
 此页面解答了有关 Azure Active Directory (Azure AD) B2C 的常见问题。 请随时返回查看更新信息。
@@ -64,7 +64,7 @@ Azure AD B2C 还增加了对[自定义策略](active-directory-b2c-overview-cust
 * **横幅徽标**：显示在右下角。
 * **背景色**：显示在顶部。
 
-    ![自定义验证电子邮件的屏幕截图](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+    ![自定义的验证电子邮件的屏幕截图](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
 电子邮件签名包含首次创建 Azure AD B2C 租户时提供的 Azure AD B2C 租户名称。 可以使用以下说明更改名称：
 
