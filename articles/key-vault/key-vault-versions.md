@@ -3,7 +3,7 @@ title: Key Vault 版本
 description: 各种版本的 Azure Key Vault
 services: key-vault
 documentationcenter: ''
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
 ms.assetid: e8622dcc-59a3-4f4b-9f63-cd2232515a65
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: d74bf8603e3d5a394935994bc61fa0e96905ed25
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.author: mbaldwin
+ms.openlocfilehash: b7e3aca133e2e9614ab83be83c20a4dbc2ae5fe2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115022"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542377"
 ---
 # <a name="key-vault-versions"></a>Key Vault 版本
 
@@ -48,7 +48,7 @@ ms.locfileid: "56115022"
 
 ## <a name="2015-02-01-preview"></a>2015-02-01-预览版 
 
-2015 年 4 月 20 日发布了第二版 2015-02-01-预览版。 有关详细信息，请参阅 [REST API 更新](http://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx) 博客文章。
+2015 年 4 月 20 日发布了第二版 2015-02-01-预览版。 有关详细信息，请参阅 [REST API 更新](https://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx) 博客文章。
 
 更新了以下任务：
 

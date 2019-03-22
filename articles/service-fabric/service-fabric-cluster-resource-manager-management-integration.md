@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a1bab75521730f7e80e5b86112bbb0aed129f88
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
-ms.translationtype: HT
+ms.openlocfilehash: a51593753cab8a6b07d99df46560808de5400047
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917868"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737920"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>群集 Resource Manager 与 Service Fabric 群集管理的集成
 Service Fabric 群集资源管理器不会在 Service Fabric 中驱动升级，但会关注升级。 群集 Resource Manager 帮助进行管理的第一种方式是跟踪群集及其中服务的所需状态。 无法将群集放入所需配置时，群集 Resource Manager 会发出运行状况报告。 例如，如果容量不足，则群集资源管理器会发出运行状况警告和错误，指示该问题。 集成的另一个部分与升级的工作方式有关。 在升级期间，群集资源管理器会稍微改变其行为。  
@@ -73,11 +73,11 @@ HealthEvents          :
 
 下面是此运行状况消息指出的情况：
 
-1. 所有副本本身处于正常状态：每个副本的 AggregatedHealthState 均为正常
+1. 所有副本本身都是正常的：每个副本具有 AggregatedHealthState：正常
 2. 当前违反了升级域分发约束。 这表示特定的升级域在此分区中拥有的副本数超出了预期。
 3. 哪些节点包含会引起违规的副本。 在这种情况下，是名为“Node.8”的节点
 4. 此分区中是否正在进行升级（“当前正在升级 -- false”）
-5. 此服务的分发策略：“分发策略 -- 打包”。 这受`RequireDomainDistribution`[放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)管制。 “打包”指示在此情况下不需要 DomainDistribution，从而使我们知道未对此服务指定放置策略。 
+5. 此服务的分发策略：“分发策略 - 打包”。 这受`RequireDomainDistribution`[放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)管制。 “打包”指示在此情况下不需要 DomainDistribution，从而使我们知道未对此服务指定放置策略。 
 6. 报告发生时间 -- 2015/8/10 晚上 7:13:02
 
 此类信息丰富了生产环境中触发的警报，可让用户知道某个地方出错了，还可用于检测和暂停错误升级。 在此情况下，我们可以调查 Resource Manager 为何必须将副本打包到升级域。 例如，打包通常是暂时的，因为其他升级域中的节点已关闭。
@@ -92,12 +92,12 @@ HealthEvents          :
 ## <a name="constraint-types"></a>约束类型
 接下来，我们讨论一下这些运行状况报告中的各种约束。 不能放置副本时，将看到与这些约束相关的运行状况消息。
 
-* ReplicaExclusionStatic 和 ReplicaExclusionDynamic：这些约束指示系统拒绝某解决方案是由于同一分区中的两个服务对象必须放置在同一节点上。 不允许这样操作，因为该节点的失败会过度地影响该分区。 ReplicaExclusionStatic 和 ReplicaExclusionDynamic 遵循几乎相同的规则，有所差别也无关紧要。 如果看到的约束消除序列包含 ReplicaExclusionStatic 或 ReplicaExclusionDynamic 约束，群集资源管理器就会认为没有足够的节点。 这要求剩余的解决方案能够使用这些不允许使用的无效放置。 序列中的其他约束通常会告诉我们首先要消除节点的原因。
-* **PlacementConstraint**：如果看到此消息，表示已消除了一些节点，因为它们不符合服务的放置约束。 我们在此消息中描绘当前配置的放置约束。 如果定义了放置约束，则这种情况是正常的。 但是，如果放置约束错误地导致消除了过多的节点，则会看到这种结果。
-* NodeCapacity：此约束表示群集资源管理器无法将副本放在指定的节点上，因为这样放置会超出容量。
-* **Affinity**：此约束表示无法将副本放在受影响的节点上，因为这会导致违反相关性约束。 [此文](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)介绍了有关相关性的详细信息。
+* **ReplicaExclusionStatic** 和 **ReplicaExclusionDynamic**：这些约束指示某个解决方案遭到拒绝，因为同一分区中的两个服务对象必须放置在同一节点上。 不允许这样操作，因为该节点的失败会过度地影响该分区。 ReplicaExclusionStatic 和 ReplicaExclusionDynamic 遵循几乎相同的规则，有所差别也无关紧要。 如果看到的约束消除序列包含 ReplicaExclusionStatic 或 ReplicaExclusionDynamic 约束，群集资源管理器就会认为没有足够的节点。 这要求剩余的解决方案能够使用这些不允许使用的无效放置。 序列中的其他约束通常会告诉我们首先要消除节点的原因。
+* **PlacementConstraint**：如果看到此消息，则表示我们消除一些节点，因为它们不符合服务的放置约束。 我们在此消息中描绘当前配置的放置约束。 如果定义了放置约束，则这种情况是正常的。 但是，如果放置约束错误地导致消除了过多的节点，则会看到这种结果。
+* **NodeCapacity**：此约束意味着，群集资源管理器无法将副本放在指定的节点上，因为将放置会超出容量。
+* **Affinity**：此约束表示，我们无法将副本放在受影响的节点上因为这会导致违反相关性约束。 [此文](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)介绍了有关相关性的详细信息。
 * **FaultDomain** 和 **UpgradeDomain**：如果将副本放在指定的节点上会导致副本打包在特定的容错域或升级域中，此约束将消除节点。 [容错域与升级域约束及最终行为](service-fabric-cluster-resource-manager-cluster-description.md)中的主题提供了几个介绍此约束的示例
-* PreferredLocation：通常我们看不到这个会将节点从解决方案中删除的约束，因为该约束默认作为优化运行。 首选的位置约束还会出现在升级期间。 在升级期间，该约束用于将服务移回到开始升级时所在的位置。
+* **PreferredLocation**：通常情况下不应看到从解决方案中删除节点，因为默认情况下运行作为一种优化此约束。 首选的位置约束还会出现在升级期间。 在升级期间，该约束用于将服务移回到开始升级时所在的位置。
 
 ## <a name="blocklisting-nodes"></a>将节点列入阻止列表
 群集资源管理器报告的另一个运行状况消息是节点何时列入阻止列表。 可以将列入阻止列表看作自动应用的临时约束。 如果节点在启动该服务类型的实例时遇到重复的失败，则会将这些节点列入阻止列表。 根据每个服务类型，将节点列入阻止列表。 系统会由于一种服务类型（非另一种）而将某个节点列入阻止列表。 

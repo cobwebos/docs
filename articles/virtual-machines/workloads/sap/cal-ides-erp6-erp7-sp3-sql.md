@@ -16,17 +16,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: eb5d731fbef22c70aaf970bf64aa90361e47a542
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194192"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011277"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署与 SQL Server 和 Windows 操作系统一起运行的 SAP IDES 系统。 屏幕截图将逐步显示此过程。 若要部署另一种解决方案，请按照相同的步骤操作。
 
-若要开始使用 SAP CAL，请转到 [SAP Cloud Appliance Library](https://cal.sap.com/)网站。 有关新版 [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)，SAP 提供了博客介绍。 
+若要开始使用 SAP CAL，请转到 [SAP Cloud Appliance Library](https://cal.sap.com/)网站。 有关新版 [SAP Cloud Appliance Library 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)，SAP 提供了博客介绍。 
 
 > [!NOTE]
 > 自 2017 年 5 月 29 日起，除了优先级较低的经典部署模型外，还可使用 Azure 资源管理器部署模型来部署 SAP CAL。 建议使用新的 Resource Manager 部署模型，并忽略经典部署模型。
@@ -40,18 +40,18 @@ ms.locfileid: "53194192"
 ### <a name="create-an-account-in-the-sap-cal"></a>在 SAP CAL 中创建帐户
 1. 首次登录 SAP CAL，请使用 SAP S-User 或 SAP 中注册的其他用户。 然后定义 SAP CAL 用于在 Azure 上部署设备的 SAP CAL 帐户。 在帐户定义中，需要：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择 Azure 上的部署模型（Resource Manager 或经典）。
+    a. 选择 Azure 上的部署模型（Resource Manager 或经典）。
 
     b. 输入 Azure 订阅。 一个 SAP CAL 帐户仅可分配到一个订阅。 如果需要多个订阅，则需要另外创建 SAP CAL 帐户。
     
     c. 授予 SAP CAL 权限，以便部署到 Azure 订阅中。
 
-    > [!NOTE]
-    后续步骤演示如何创建 Resource Manager 部署的 SAP CAL 帐户。 如果已有链接到经典部署模型的 SAP CAL 帐户，则需要按照这些步骤创建新的 SAP CAL 帐户。 需要在 Resource Manager 模型中部署新的 SAP CAL 帐户。
+   > [!NOTE]
+   >  后续步骤演示如何创建 Resource Manager 部署的 SAP CAL 帐户。 如果已有链接到经典部署模型的 SAP CAL 帐户，则需要按照这些步骤创建新的 SAP CAL 帐户。 需要在 Resource Manager 模型中部署新的 SAP CAL 帐户。
 
 1. 若要创建新的 SAP CAL 帐户，“帐户”页显示 Azure 的两个选项： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 Microsoft Azure（经典）是经典部署模型，已不再是首选项。
+    a. Microsoft Azure（经典）是经典部署模型，已不再是首选项。
 
     b. Microsoft Azure 是新的 Resource Manager 部署模型。
 
@@ -91,14 +91,14 @@ ms.locfileid: "53194192"
 - 将 SAP 系统部署到 Azure 订阅。
 
 > [!NOTE]
-需要先注册 SAP CAL 订阅，才能部署基于 Windows 和 SQL Server 的 SAP IDES 解决方案。 否则，该解决方案可能在“概述”页上显示为“锁定”。
+> 需要先注册 SAP CAL 订阅，才能部署基于 Windows 和 SQL Server 的 SAP IDES 解决方案。 否则，该解决方案可能在“概述”页上显示为“锁定”。
 
 ### <a name="deploy-a-solution"></a>部署解决方案
 1. 设置 SAP CAL 帐户后，选择“Windows 和 SQL Server 上的 SAP IDES 解决方案”解决方案。 单击“创建实例”，并确认使用情况以及条款和条件。 
 
 1. 在“基本模式: 创建实例”页上，需要：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入实例“名称”。
+    a. 输入实例“名称”。
 
     b. 选择 Azure“区域”。 可能需要 SAP CAL 订阅才能获取提供的多个 Azure 区域。
 

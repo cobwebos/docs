@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: fc6d68e862f6a2f3c95f5ca6d130e42c96649eb1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 929dc7a86d141446a2070b046c6febfda4a07f0f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874600"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092559"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用列表实体提升实体检测 
 本教程展示了如何使用[列表实体](luis-concept-entity-types.md)提升实体检测。 无需标记列表实体，因为它们与术语完全匹配。  
@@ -23,11 +23,11 @@ ms.locfileid: "55874600"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-* 创建列表实体 
-* 添加规范化值和同义词
-* 验证改进后的实体标识
+> * 创建列表实体 
+> * 添加规范化值和同义词
+> * 验证改进后的实体标识
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 > [!div class="checklist"]
 > * 最新版 [Node.js](https://nodejs.org)
@@ -48,7 +48,7 @@ ms.locfileid: "55874600"
 
 |#|陈述|标识的实体|score|
 |--|--|--|--|
-|1|turn on the ac（打开空调）|HomeAutomation.Device -“ac（空调）”|0.8748562|
+|第|turn on the ac（打开空调）|HomeAutomation.Device -“ac（空调）”|0.8748562|
 |2|turn up the heat（打开供热）|HomeAutomation.Device -“heat（供热）”|0.784990132|
 |3|make it colder（降温）|||
 
@@ -214,7 +214,7 @@ node train.js
 
 |#|陈述|实体|type|值|
 |--|--|--|--|--|
-|1|turn on the ac（打开空调）| ac（空调） | DevicesList | 恒温调节器|
+|第|turn on the ac（打开空调）| ac（空调） | DevicesList | 恒温调节器|
 |2|turn up the heat（打开供热）|heat（供热）| DevicesList |恒温调节器|
 |3|make it colder（降温）|colder（降温）|DevicesList|恒温调节器|
 

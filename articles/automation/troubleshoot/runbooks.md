@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: cdcf7f466e65cffd36bdcc816a9808ecac2ae242
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: b34a1716d077aeead572c60d0c6b9bcad60a5b1e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991287"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005421"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -38,7 +38,7 @@ Unknown_user_type: Unknown User Type
 
 要确定具体错误，请执行以下步骤：  
 
-1. 请确保没有包含任何特殊字符。 这些字符包括用于连接 Azure 的自动化凭据资产名称中的 @ 字符。  
+1. 请确保没有包含任何特殊字符。 这些字符包括用于连接 Azure 的自动化凭据资产名称中的 \@ 字符。  
 2. 查看你是否能够在本地 PowerShell ISE 编辑器中使用存储在 Azure 自动化凭据中的用户名和密码。 可以通过在 PowerShell ISE 中运行以下 cmdlet 来检查用户名和密码是否正确：  
 
    ```powershell
@@ -133,7 +133,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 ## <a name="common-errors-when-working-with-runbooks"></a>使用 Runbook 时的常见错误
 
-###<a name="child-runbook-object"></a>输出流包含对象而不是简单数据类型时，子 runbook 返回错误
+### <a name="child-runbook-object"></a>输出流包含对象而不是简单数据类型时，子 runbook 返回错误
 
 #### <a name="issue"></a>问题
 
@@ -303,7 +303,7 @@ The job was tried three times but it failed
 
 3. 模块不兼容。 如果模块依赖关系不正确，则可能会发生此错误，并且如果它们不正确，则 runbook 通常会返回“找不到命令”或“无法绑定参数”消息。
 
-4. Runbook 尝试调用在 Azure 沙盒中运行的 Runbook 中的可执行文件或子过程。 Azure 沙盒不支持此方案。
+4. 在 runbook 尝试调用可执行文件或在 Azure 沙盒中运行的 runbook 中子进程。 Azure 沙盒不支持此方案。
 
 #### <a name="resolution"></a>解决方法
 

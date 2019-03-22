@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: d5a8fa61307c278a77b33868a711970850a06f3e
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: c860066608f1b78d9a4c45b03fb3948b3c888e25
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410041"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894200"
 ---
 #   <a name="text-split-cognitive-skill"></a>文本拆分认知技能
 
@@ -32,7 +32,7 @@ Microsoft.Skills.Text.SplitSkill
 
 参数区分大小写。
 
-| 参数名称     | 说明 |
+| 参数名称     | 描述 |
 |--------------------|-------------|
 | textSplitMode      | “pages”或“sentences” | 
 | maximumPageLength | 如果将 textSplitMode 设置为“pages”，它指的是由 `String.Length` 测量的最大页面长度。 最小值是 100。  如果 textSplitMode 设置为“pages”，则该算法将尝试将文本拆分为大小最多为“maximumPageLength”的区块。 在这种情况下，该算法将尽力断开句子边界上的句子，因此区块的大小可能略小于“maximumPageLength”。 | 
@@ -41,14 +41,14 @@ Microsoft.Skills.Text.SplitSkill
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 参数名称       | 说明      |
+| 参数名称       | 描述      |
 |----------------------|------------------|
 | text  | 要拆分为子字符串的文本。 |
 | languageCode  | （可选）文档的语言代码。  |
 
 ## <a name="skill-outputs"></a>技能输出 
 
-| 参数名称     | 说明 |
+| 参数名称     | 描述 |
 |--------------------|-------------|
 | textItems | 提取的子字符串数组。 |
 

@@ -12,12 +12,12 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2804ebdbeb72bd35c7e63553184157066f9cfd32
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7dfef0e27dd3e38e5a965f47a47619671a3127b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177287"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117653"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>在 Azure Active Directory 中配置单一登录到非库应用程序
 
@@ -29,8 +29,8 @@ ms.locfileid: "56177287"
 
 - 通过自助方式集成支持 SAML 2.0 标识提供者的任何应用程序（SP 发起或 IdP 发起）
 - 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](what-is-single-sign-on.md#password-based-sso) 的任何 Web 应用程序
-* 以自助方式连接使用 SCIM 协议进行用户预配的应用程序（如[此处所述](use-scim-to-provision-users-and-groups.md)）
-* 可在 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](what-is-single-sign-on.md#linked-sso)中添加任何应用程序的链接
+- 以自助方式连接使用 SCIM 协议进行用户预配的应用程序（如[此处所述](use-scim-to-provision-users-and-groups.md)）
+- 可在 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](what-is-single-sign-on.md#linked-sso)中添加任何应用程序的链接
 
 这不仅包括正在使用、但尚未登记到 Azure AD 应用程序库中的 SaaS 应用程序，也包括组织已部署到控制的服务器（在云中或本地）的第三方 Web 应用程序。
 
@@ -60,7 +60,7 @@ ms.locfileid: "56177287"
 
   ![Litware 域和 URL](./media/configure-single-sign-on-non-gallery-applications/customapp4.png)
 
-- **登录 URL (仅限 SP 发起)** – 用户可通过此 URL 登录到此应用程序。 如果将应用程序配置为执行服务提供者发起的单一登录，则当用户导航到此 URL 时，服务提供者会进行必要的重定向，重定向到 Azure AD 完成用户身份验证和登录。 如果填充了此字段，则 Azure AD 会使用此 URL 从 Office 365 和 Azure AD 访问面板启动应用程序。 如果忽略此字段，从 Office 365、Azure AD 访问面板或 Azure AD 单一登录 URL（可从“仪表板”选项卡复制）启动应用时，Azure AD 则改为执行标识提供者发起的登录。
+- **登录 URL (仅限 SP 发起)** – 用户可通过此 URL 登录到此应用程序。 如果将应用程序配置为执行服务提供者发起的单一登录，则当用户导航到此 URL 时，服务提供者会进行必要的重定向，重定向到 Azure AD 完成用户身份验证和登录。 如果填充了此字段，则 Azure AD 会使用此 URL 从 Office 365 和 Azure AD 访问面板启动应用程序。 如果省略此字段，则 Azure AD 则改为执行标识提供者-当从 Office 365，Azure AD 访问面板中，或从 Azure AD 单一登录 URL （可以从仪表板选项卡复制） 启动应用程序时启动单一登录。
 - **标识符** - 应唯一标识正为其配置单一登录的应用程序。 可以在应用程序发送的 AuthRequest（SAML 请求）中找到此值（Issuer 元素）。 该值也在应用程序提供的任何 SAML 元数据中显示为**实体 ID**。 有关实体 ID 或 Audience 值的详细信息，请查看应用程序的 SAML 文档。 
 
     以下示例显示 Identifier 和 Issuer 如何显示在应用程序发送到 Azure AD 的 SAML 请求中：

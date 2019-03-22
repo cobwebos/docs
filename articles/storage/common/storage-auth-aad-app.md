@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4c39f47169071ceb9430f419a144e11f425d65b0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 6d283840116a5e1f996602fd792456d3b8e8d9a0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240720"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456085"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>从应用程序中使用 Azure Active Directory 进行身份验证以访问 blob 和队列（预览版）
 
@@ -39,7 +39,7 @@ ms.locfileid: "55240720"
 
 若要注册 Azure 存储应用程序，请遵循[将应用程序与 Azure Active Directory 集成](../../active-directory/active-directory-integrating-applications.md)的[添加应用程序](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md)部分中的步骤。 如果将应用程序注册为本机应用程序，可以为**重定向 URI** 指定任何有效的 URI。 该值不需要是真实的终结点。
 
-![显示如何向 Azure AD 注册存储应用程序的屏幕截图](./media/storage-auth-aad-app/app-registration.png)
+![显示如何使用 Azure AD 注册应用程序的屏幕截图](./media/storage-auth-aad-app/app-registration.png)
 
 注册应用程序后，可在“设置”下看到应用程序 ID（或客户端 ID）：
 
@@ -57,14 +57,14 @@ ms.locfileid: "55240720"
 4. 在“所需的权限”边栏选项卡中，单击“添加”按钮。
 5. 在“选择 API”下，搜索“Azure 存储”，然后从结果列表中选择“Azure 存储”。
 
-    ![显示存储权限的屏幕截图](media/storage-auth-aad-app/registered-app-permissions-1.png)
+    ![存储的屏幕截图显示权限](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
 6. 在“选择权限”下，勾选“访问 Azure 存储”旁边的复选框，然后单击“选择”。
 7. 单击“完成”。
 
 “所需权限”窗口现在显示 Azure AD 应用程序拥有 Azure Active Directory 和 Azure 存储的访问权限。 首次向 Azure AD 注册应用时，系统会自动向 Azure AD 授予权限。
 
-![显示注册应用权限的屏幕截图](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![显示的屏幕截图注册应用权限](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 Blob
 
@@ -101,7 +101,7 @@ ms.locfileid: "55240720"
 2. 单击“属性”。
 3. 复制为“目录 ID”提供的 GUID 值。 该值也称为租户 ID。
 
-![显示如何复制租户 ID 的屏幕截图](./media/storage-auth-aad-app/aad-tenant-id.png)
+![显示如何将复制的租户 ID 的屏幕截图](./media/storage-auth-aad-app/aad-tenant-id.png)
 
 ### <a name="add-references-and-using-statements"></a>添加引用和 using 语句  
 

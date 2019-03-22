@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 4ecc259d40cdcba93a484f27e27191e967f10ff1
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: HT
+ms.openlocfilehash: e05813297707165d59d1b1ed969b54fb0f433277
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638869"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848084"
 ---
 # <a name="virtual-machine-skus-tab"></a>虚拟机“SKU”选项卡
 
@@ -62,8 +62,8 @@ ms.locfileid: "49638869"
 | **选择操作系统类型** | 指定的 OS 的特定供应商或版本。 |
 | **OS 友好名称** | 向客户显示的操作系统名称。  |
 | **建议的 VM 大小** | 从标准化列表中最多选择六个建议的 VM 大小。  尽管向潜在客户突出显示了这些建议的选项，但他们可以指定任何与解决方案映像兼容的 VM 大小。 | 
-| **打开端口**| 要打开的端口，以及用于支持 SKU 的协议。  这些配置必须与针对解决方案 VM 网络配置的虚拟网络相匹配。 在 VM 部署期间，这些设置将会生效。 但是，发布 SKU 后，可以修改端口设置。 有关详细信息，请参阅[如何使用 Azure 门户向虚拟机开放端口](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal)。 <br/>以下默认网络映射将添加到所有 VM。 &emsp; Windows：3389 -> 3389 TCP，5986 -> 5986 TCP；&emsp; Linux：22 -> 22，TCP (SSH)。 |
-| **磁盘版本**  | 关联的解决方案 VM，按磁盘版本号和磁盘 URL 指定。 磁盘版本必须采用[语义版本](http://semver.org/)格式：`<major>.<minor>.<patch>`。  URL 是为操作系统 VHD 创建的共享访问签名 URI。  尽管最多可为每个 SKU 添加八个磁盘版本，但 Azure 市场中只会显示 SKU 的最高磁盘版本号。 其他版本只能通过 API 显示。  <!--TD: Add more specific link to API --> <br/> 在“新建数据磁盘”可折叠部分，最多可将 15 个数据磁盘附加到 VM。  使用给定的 VM 版本和关联的数据磁盘发布 SKU 后，无法修改此配置。  如果将其他 VM 版本添加到了 SKU，这些版本也必须支持相同数量的数据磁盘。 <br/> 如果尚未创建基于 Azure 的 VM 映像，则以后可以更新此字段。  有关创建关联 VM 资源的信息，请参阅[创建 VM 技术资产](./cpp-create-technical-assets.md)。  
+| **打开端口**| 要打开的端口，以及用于支持 SKU 的协议。  这些配置必须与针对解决方案 VM 网络配置的虚拟网络相匹配。 在 VM 部署期间，这些设置将会生效。 但是，发布 SKU 后，可以修改端口设置。 有关详细信息，请参阅[如何使用 Azure 门户向虚拟机开放端口](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal)。 <br/>以下默认网络映射将添加到所有 VM。 &emsp; Windows:3389-> 3389 TCP、 5986-> 5986 TCP;&emsp; Linux:22-&GT; 22，TCP (SSH)。 |
+| **磁盘版本**  | 关联的解决方案 VM，按磁盘版本号和磁盘 URL 指定。 磁盘版本必须采用[语义版本](https://semver.org/)格式：`<major>.<minor>.<patch>`。  URL 是为操作系统 VHD 创建的共享访问签名 URI。  尽管最多可为每个 SKU 添加八个磁盘版本，但 Azure 市场中只会显示 SKU 的最高磁盘版本号。 其他版本只能通过 API 显示。  <!--TD: Add more specific link to API --> <br/> 在“新建数据磁盘”可折叠部分，最多可将 15 个数据磁盘附加到 VM。  使用给定的 VM 版本和关联的数据磁盘发布 SKU 后，无法修改此配置。  如果将其他 VM 版本添加到了 SKU，这些版本也必须支持相同数量的数据磁盘。 <br/> 如果尚未创建基于 Azure 的 VM 映像，则以后可以更新此字段。  有关创建关联 VM 资源的信息，请参阅[创建 VM 技术资产](./cpp-create-technical-assets.md)。  
 |  |  |
 
 <!-- TD: The CPP UX warning msg indicates that underscores are also supported in these SKU IDs. I suspect this might be true for other identifiers. --> 

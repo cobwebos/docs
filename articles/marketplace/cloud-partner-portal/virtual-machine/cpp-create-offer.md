@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0a875b69a10f6305b4ffe32b63d3db5b508faf01
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: HT
+ms.openlocfilehash: a3124ca2f163291d266fba77255d2ee98d30fd23
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639027"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888802"
 ---
 # <a name="create-virtual-machine-offer"></a>创建虚拟机产品/服务
 
@@ -32,15 +32,15 @@ ms.locfileid: "49639027"
 |  **资产组**   |  **说明**  |
 |  ---------------   |  ---------------  |
 |    SKU            |  产品/服务的最小可购买单位。 单个产品/服务（产品分类）可以具有多个与之关联的 SKU，以便区分所支持的功能、VM 映像类型和计费模型。 |
-|  市场       | 包含市场营销、法律以及潜在顾客管理资产和规范。  <ul><li> 市场营销资产包括产品/服务名称、说明和徽标</li> <li> 法律资产包括隐私政策、使用条款和其他法律文档</li>  <li> 潜在顾客管理政策允许你指定如何处理来自 Azure 市场最终用户门户的潜在顾客。</li> </ul> |
-| 支持            | 包含支持部门联系方式和政策信息 |
+|  市场       | 包含营销、法律和潜在顾客管理资产以及规范。  <ul><li> 营销资产包括套餐名称、说明和徽标</li> <li> 法律资产包括隐私政策、使用条款和其他法律文档</li>  <li> 潜在顾客管理政策允许你指定如何处理来自 Azure 市场最终用户门户的潜在顾客。</li> </ul> |
+| 支持            | 包含支持人员联系方式和政策信息 |
 | 体验版         | 定义最终用户在购买之前可以用来测试你的产品/服务的资产 |
 |  |  |
 
 
 ## <a name="new-offer-form"></a>“新建产品/服务”窗体
 
-登录到[云合作伙伴门户](http://cloudpartner.azure.com/)后，在左侧菜单栏上单击“+ 新建产品/服务”项。 在结果菜单中，单击“虚拟机”以显示“新建产品/服务”窗体，并启动为新的 VM 产品/服务定义资产的过程。 
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)后，在左侧菜单栏上单击“+ 新建产品/服务”项。 在结果菜单中，单击“虚拟机”以显示“新建产品/服务”窗体，并启动为新的 VM 产品/服务定义资产的过程。 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
 ![新建虚拟机产品/服务用户界面选择](./media/publishvm_003.png)

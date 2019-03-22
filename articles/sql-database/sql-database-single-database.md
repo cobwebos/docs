@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: e8af73c955305c54efc478290608e627acb431ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: ad164e150b22af7d5a0c91fa0a8a80156952cfd0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099320"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431109"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
@@ -26,9 +26,9 @@ ms.locfileid: "56099320"
 > [!IMPORTANT]
 > 单一数据库是用于 Azure SQL 数据库的三个部署选项之一。 其他两个是[弹性池](sql-database-elastic-pool.md)和[托管实例](sql-database-managed-instance.md)。
 > [!NOTE]
-> 有关 Azure SQL 数据库中的术语词汇表，请参阅 [SQL 数据库术语词汇表](sql-database-glossary-terms.md)
+> 有关 Azure SQL 数据库术语词汇表，请参阅 [SQL 数据库术语词汇表](sql-database-glossary-terms.md)
 
-## <a name="dynamic-scalabilty"></a>动态可伸缩性
+## <a name="dynamic-scalability"></a>动态可伸缩性
 
 可以在小型单一数据库中构建你的第一个应用，每个月只需在低性价比服务层中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将[服务层更改为](sql-database-single-database-scale.md)较高性价比服务层。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
@@ -42,7 +42,7 @@ ms.locfileid: "56099320"
 
 ## <a name="availability-capabilities"></a>可用性功能
 
-单一数据库、弹性池和托管实例全都提供许多可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
+单个数据库、 弹性池，托管的实例都提供了许多的可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
 
 ## <a name="transact-sql-differences"></a>Transact-SQL 的差异
 

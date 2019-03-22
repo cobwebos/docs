@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bc0afcf1ac7d9e7a777d850e1b6df7b915837f3a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956868"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435127"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "52956868"
    self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
    client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
    ```
-   此方法将使用移动应用 SDK 中提供的 `MSCoreDataStore` 接口创建本地存储。 或者，也可以通过实现 `MSSyncContextDataSource` 协议提供不同的本地存储。 此外，**MSSyncContext** 的第一个参数用于指定冲突处理程序。 由于已传递 `nil`，因此我们将获取默认冲突处理程序，该处理程序在发生任何冲突时会失败。
+   此方法使用移动应用 SDK 提供的接口 `MSCoreDataStore` 创建本地存储。 或者，也可以通过实现 `MSSyncContextDataSource` 协议提供不同的本地存储。 此外，**MSSyncContext** 的第一个参数用于指定冲突处理程序。 由于已传递 `nil`，因此会获取默认的冲突处理程序，但该处理程序在发生任何冲突时会失败。
 
 现在，让我们执行实际的同步操作，从远程后端获取数据：
 
@@ -101,7 +101,7 @@ ms.locfileid: "52956868"
 
           if error != nil {
               // A real application would handle various errors like network conditions,
-              // server conflicts, etc via the MSSyncContextDelegate
+              // server conflicts, etc. via the MSSyncContextDelegate
               print("Error: \(error!.description)")
 
               // We will discard our changes and keep the server's copy for simplicity
@@ -123,7 +123,7 @@ ms.locfileid: "52956868"
    }
    ```
 
-在 Objective-C 版本中的 `syncData` 内，先对同步上下文调用 **pushWithCompletion**。 此方法是 `MSSyncContext`（而不是异步表本身）的成员，因为它将更改推送到所有表。 只有已在本地以某种方式修改（通过 CUD 操作来完成）的记录才会发送到服务器。 然后将调用 **pullData** 帮助器，该帮助器调用 **MSSyncTable.pullWithQuery** 检索远程数据并将其存储在本地数据库中。
+在 Objective-C 版本中的 `syncData` 内，先对同步上下文调用 **pushWithCompletion**。 此方法是 `MSSyncContext`（而不是同步表本身）的成员，因为它会将更改推送到所有表。 只有已在本地以某种方式修改（通过 CUD 操作来完成）的记录才会发送到服务器。 然后将调用 pullData 帮助程序，后者再调用 MSSyncTable.pullWithQuery 以检索远程数据并将其存储在本地数据库中。
 
 在 Swift 版本中，由于推送操作不是绝对必需的，因此不存在对 **pushWithCompletion** 的调用。 如果同步上下文中正在进行推送操作的表存在任何挂起的更改，则提取始终会先发出推送。 但是，如果有多个同步表，则最好显式调用推送，确保所有内容在相关表中保持一致。
 
@@ -147,7 +147,7 @@ ms.locfileid: "52956868"
   * TodoItem：存储待办事项。 系统列 **createdAt**、**updatedAt** 和 **version** 都是可选的系统属性。
 
 > [!NOTE]
-> 移动应用 SDK 会保留以“**``**”开头的列名称。 请不要将此前缀用于系统列以外的任何项。 否则，在使用远程后端时，列名称会被修改。
+> 移动应用 SDK 会保留以“**``**”开头的列名称。 请不要在系统列以外的其他列中使用此前缀。 否则，在使用远程后端时，列名称会被修改。
 >
 >
 
@@ -155,11 +155,11 @@ ms.locfileid: "52956868"
 
 ### <a name="system-tables"></a>系统表
 
-**MS_TableOperations**  
+MS_TableOperations  
 
 ![MS_TableOperations 表属性][defining-core-data-tableoperations-entity]
 
-| 属性 | 类型 |
+| 属性 | Type |
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
@@ -168,11 +168,11 @@ ms.locfileid: "52956868"
 | tableKind | 16 位整数 |
 
 
-**MS_TableOperationErrors**
+MS_TableOperationErrors
 
  ![MS_TableOperationErrors 表属性][defining-core-data-tableoperationerrors-entity]
 
-| 属性 | 类型 |
+| 属性 | Type |
 | --- | --- |
 | id |String |
 | operationId |64 位整数 |
@@ -183,11 +183,11 @@ ms.locfileid: "52956868"
 
  ![][defining-core-data-tableconfig-entity]
 
-| 属性 | 类型 |
+| 属性 | Type |
 | --- | --- |
 | id |String |
 | key |String |
-| keyType |64 位整数 |
+| keyType |Integer 64 |
 | 表 |String |
 | 值 |字符串 |
 
@@ -195,7 +195,7 @@ ms.locfileid: "52956868"
 
 **TodoItem**
 
-| 属性 | 类型 | 注意 |
+| 属性 | Type | 注意 |
 | --- | --- | --- |
 | id | 字符串（标记为必需） |远程存储中的主键 |
 | complete | Boolean | 待办事项字段 |
@@ -233,7 +233,7 @@ ms.locfileid: "52956868"
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="test-app"></a>测试应用
+## <a name="test-app"></a>测试应用程序
 在本部分，将连接到无效的 URL，以模拟脱机方案。 添加数据项时，数据项将保存在本地 Core Data 存储中，而不会与移动应用后端同步。
 
 1. 将 **QSTodoService.m** 中的移动应用 URL 更改为无效 URL，然后再次运行该应用：
@@ -254,7 +254,7 @@ ms.locfileid: "52956868"
 
 4. 验证新项是否*未*与服务器同步。
 
-5. 将 **QSTodoService.m** 中的 URL 更改回正确的 URL，然后重新运行应用。
+5. 将 **QSTodoService.m**中的 URL 更改回正确的 URL，并重新运行应用。
 
 6. 通过下拉项列表来执行刷新手势。  
 此时会显示进度微调控件。

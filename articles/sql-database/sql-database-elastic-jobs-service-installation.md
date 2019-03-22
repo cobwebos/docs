@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: fb405d40458461fbdff8a7720425ff352bfc61de
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a1e1be24f9cb6d762d5480385843e9a5356d4a29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565473"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889773"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>安装弹性数据库作业概述
 
@@ -27,12 +27,12 @@ ms.locfileid: "55565473"
 
 可以通过 PowerShell 或 Azure 门户安装[**弹性数据库作业**](sql-database-elastic-jobs-overview.md)。只有安装了 PowerShell 程序包，才能获取使用 PowerShell API 创建和管理作业的权限。 此外，PowerShell API 目前提供的功能明显多于门户。
 
-如果从现有的“弹性池”通过门户安装了“弹性数据库作业”，最新的 Powershell 预览包含用于升级现有安装的脚本。 强烈建议将安装升级到最新的**弹性数据库作业**组件，以便利用通过 PowerShell API 公开的新功能。
+如果你安装了**弹性数据库作业**通过在门户中的现有**弹性池**，最新的 PowerShell 预览包含用于升级现有安装的脚本。 强烈建议将安装升级到最新的**弹性数据库作业**组件，以便利用通过 PowerShell API 公开的新功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * Azure 订阅。 如需免费试用，请参阅[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * Azure PowerShell。 使用 [Web 平台安装程序](https://go.microsoft.com/fwlink/p/?linkid=320376)安装最新版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
-* [NuGet 命令行实用程序](https://nuget.org/nuget.exe)用于安装弹性数据库作业包。 有关详细信息，请参阅 http://docs.nuget.org/docs/start-here/installing-nuget。
+* [NuGet 命令行实用程序](https://nuget.org/nuget.exe)用于安装弹性数据库作业包。 有关详细信息，请参阅 https://docs.nuget.org/docs/start-here/installing-nuget。
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>下载并导入弹性数据库作业 PowerShell 程序包
 1. 启动 Microsoft Azure PowerShell 命令窗口，并导航到 NuGet 命令行实用程序 (nuget.exe) 所下载到的目录。
@@ -75,9 +75,7 @@ ms.locfileid: "55565473"
     <td>提供为了包含新建的 Azure 组件而创建的 Azure 资源组名称。 此参数默认为“__ElasticDatabaseJob”。 不建议更改此值。</td>
     </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ResourceGroupLocation</td>
     <td>提供用于保存新建的 Azure 组件的 Azure 位置。 此参数默认为“美国中部”位置。</td>
 </tr>
@@ -85,28 +83,24 @@ ms.locfileid: "55565473"
 <tr>
     <td>ServiceWorkerCount</td>
     <td>提供要安装的服务辅助角色数目。 此参数默认为 1。 可以使用更多的辅助角色来扩大服务，并提供高可用性。 建议针对需要服务高可用性的部署使用“2”。</td>
-    </tr>
-
 </tr>
-    <tr>
+
+<tr>
     <td>ServiceVmSize</td>
-    <td>提供在云服务中使用的 VM 大小。 此参数默认为 A0。 接受参数值 A0/A1/A2/A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。 有关辅助角色大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
+    <td>提供在云服务中使用的 VM 大小。 此参数默认为 A0。 参数值.../../ 接受 A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。 有关辅助角色大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>为标准版提供计算大小。 此参数默认为 S0。 接受参数值 S0/S1/S2/S3/S4/S6/S9/S12，这会导致 Azure SQL 数据库使用各自的计算大小。 有关 SQL 数据库计算大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
+    <td>为标准版提供计算大小。 此参数默认为 S0。 参数值.../../../../ 接受 S9/S12，这会导致 Azure SQL 数据库使用各自的计算大小。 有关 SQL 数据库计算大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorUserName</td>
     <td>提供新建的 Azure SQL 数据库服务器的管理员用户名。 如果未指定，系统将打开 PowerShell 凭据窗口提示输入凭据。</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorPassword</td>
     <td>提供新建的 Azure SQL 数据库服务器的管理员密码。 如果未提供，系统将打开 PowerShell 凭据窗口提示输入凭据。</td>
 </tr>
@@ -131,24 +125,19 @@ ms.locfileid: "55565473"
   <th>说明</th>
 </tr>
 
-  <tr>
+<tr>
     <td>ResourceGroupName</td>
     <td>标识最初安装弹性数据库作业组件时使用的 Azure 资源组名称。 此参数默认为“__ElasticDatabaseJob”。 因为不建议更改此值，因此，应该不必指定此参数。</td>
-    </tr>
 </tr>
 
-</tr>
-
-  <tr>
+<tr>
     <td>ServiceWorkerCount</td>
     <td>提供要安装的服务辅助角色数目。  此参数默认为 1。  可以使用更多的辅助角色来扩大服务，并提供高可用性。  建议针对需要服务高可用性的部署使用“2”。</td>
 </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ServiceVmSize</td>
-    <td>提供在云服务中使用的 VM 大小。 此参数默认为 A0。 接受参数值 A0/A1/A2/A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。 有关辅助角色大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
+    <td>提供在云服务中使用的 VM 大小。 此参数默认为 A0。 参数值.../../ 接受 A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。 有关辅助角色大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
 </tr>
 
 </table>
@@ -164,13 +153,13 @@ ms.locfileid: "55565473"
 4. 在“安装服务”视图中，单击“**作业凭据**”。
    
     ![安装服务][1]
-5. 键入数据库管理员的用户名和密码。在安装过程中，将新建 Azure SQL 数据库服务器。 在此新服务器中，创建了一个称为控制数据库的新数据库，用于包含弹性数据库作业的元数据。 此处创建的用户名和密码用于登录控制数据库。 单独的凭据用于对池中的数据库执行脚本。
+5. 键入数据库管理员的用户名和密码。在安装过程中，会新建 Azure SQL 数据库服务器。 在此新服务器中，创建了一个称为控制数据库的新数据库，用于包含弹性数据库作业的元数据。 此处创建的用户名和密码用于登录控制数据库。 单独的凭据用于对池中的数据库执行脚本。
    
     ![创建用户名和密码][2]
-6. 单击“确定”按钮。 几分钟后，会在新的[资源组](../azure-resource-manager/resource-group-overview.md)中创建组件。 新资源组已固定到开始面板，如下所示。 创建后，弹性数据库作业（云服务、SQL 数据库、服务总线和存储空间）都在该组中创建。
+6. 单击“确定”按钮。 几分钟后，会在新的[资源组](../azure-resource-manager/resource-group-overview.md)中为你创建组件。 新资源组已固定到开始面板，如下所示。 创建后，弹性数据库作业（云服务、SQL 数据库、服务总线和存储空间）都在该组中创建。
    
     ![开始面板中的资源组][3]
-7. 如果在安装弹性数据库作业时尝试创建或管理某个作业，则在提供“**凭据**”时，将看到以下消息。
+7. 如果你在安装弹性数据库作业时尝试创建或管理某个作业，则在提供“凭据”  时，你会看到以下消息。
    
     ![部署仍在进行][4]
 

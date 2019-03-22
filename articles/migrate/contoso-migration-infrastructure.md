@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec8eb779dec560cfc5350fecc0fb819e89195a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 5dfe768ddb3509f896b90f913ffecdf33907357a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340121"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876674"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 部署迁移基础结构
 
@@ -101,10 +101,10 @@ Contoso 通过[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise
 - Azure 企业许可登记表定义了 Azure 服务在公司内的形式与用法，以及核心管理结构。
 - 首先，Contoso 已确定一个结构（称为企业许可登记表的企业基架）。 Contoso 使用[此文](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-governance)帮助了解和设计基架。
 - 现在，Contoso 已决定使用函数式方法来管理其订阅。
-    - 在企业内部，由一个 IT 部门来控制 Azure 预算。 该部门是具有订阅的唯一组。
-    - Contoso 将来可扩展此模型，以便其他公司组可以作为部门加入企业许可登记表。
-    - 在 IT 部门内，Contoso 安排了两个订阅：生产和开发。
-    - 如果 Contoso 将来需要更多订阅，则需要管理这些订阅的访问权限、策略和符合性。 为此，Contoso 引入了 [Azure 管理组](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview)，作为订阅之上的附加层。
+  - 在企业内部，由一个 IT 部门来控制 Azure 预算。 该部门是具有订阅的唯一组。
+  - Contoso 将来可扩展此模型，以便其他公司组可以作为部门加入企业许可登记表。
+  - 在 IT 部门内，Contoso 安排了两个订阅：生产和开发。
+  - 如果 Contoso 将来需要更多订阅，则需要管理这些订阅的访问权限、策略和符合性。 为此，Contoso 引入了 [Azure 管理组](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview)，作为订阅之上的附加层。
 
     ![企业结构](./media/contoso-migration-infrastructure/enterprise-structure.png) 
 
@@ -146,7 +146,7 @@ Azure 混合权益为 Contoso 提供了一种经济高效的迁移方法，即�
 
 Contoso 使用 Azure 订阅中包含的 Azure AD Free 版本。 Contoso 管理员按如下所述设置 AD 目录：
 
-1. 在 [Azure 门户](http://portal.azure.com/)中，导航到“创建资源” > “标识” > “Azure Active Directory”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，导航到“创建资源” > “标识” > “Azure Active Directory”。
 2. 在“创建目录”中，指定目录名称、初始域名，以及应在其中创建 Azure AD 目录的区域。
 
     ![创建 Azure AD](./media/contoso-migration-infrastructure/azure-ad-create.png) 
@@ -310,7 +310,7 @@ Contoso 已决定采取折中的方式。 Contoso 将应用和资源部署在主
 
 Contoso 为 Azure 与本地数据中心之间的混合网络规划了大量[体系结构](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)。 [详细了解](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/considerations)比较选项。
 
-提醒一下，Contoso 本地网络基础结构当前包含纽约的数据中心和美国东部的本地分支。  所有位置都有与 Internet 的业务级连接。  然后，每个分支可通过基于 Internet 的 IPSec VPN 隧道连接到数据中心。
+提醒一下，Contoso 本地网络基础结构当前包含纽约的数据中心和美国东部的本地分支。  所有位置都有与 Internet 的业务级连接。  每个分支然后程序通过 internet 连接到数据中心通过 IPSec VPN 隧道。
 
 ![Contoso 网络](./media/contoso-migration-infrastructure/contoso-networking.png) 
 
@@ -451,7 +451,7 @@ Azure IaaS 组件位于生产网络中。 每个应用层都有自己的子网�
 **PROD-FE-EUS2** | 10.245.32.0/22 | 1019 | 前端/Web 层 VM
 **PROD-APP-EUS2** | 10.245.36.0/22 | 1019 | 应用层 VM
 **PROD-DB-EUS2** | 10.245.40.0/23 | 507 | 数据库 VM
-**PROD-DC-EUS2** | 10.245.42.0/23 | 251 | 域控制器 VM
+**PROD-DC-EUS2** | 10.245.42.0/24 | 251 | 域控制器 VM
 
 
 ![中心网络体系结构](./media/contoso-migration-infrastructure/azure-networks-eus2.png)
@@ -581,18 +581,18 @@ CUS | CONTOSODC6 | VNET-PROD-CUS | PROD-DC-CUS | 10.255.42.4
 
 1. 在 Azure 门户中，将新的 Windows Server VM 部署到相应的 VNet。
 2. 在 VM 的每个位置创建可用性集。 可用性集可执行以下操作：
-    - 确保 Azure 结构将 VM 分隔到 Azure 区域中的不同基础结构。 
-    -  使 Contoso 能够为 Azure 中的 VM 获取 99.95% 的 SLA。  [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)。
+   - 确保 Azure 结构将 VM 分隔到 Azure 区域中的不同基础结构。 
+   - 使 Contoso 能够为 Azure 中的 VM 获取 99.95% 的 SLA。  [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)。
 
-    ![可用性组](./media/contoso-migration-infrastructure/availability-group.png) 
+     ![可用性组](./media/contoso-migration-infrastructure/availability-group.png) 
 3. 部署 VM 后，打开 VM 的网络接口。 将专用 IP 地址设为静态，然后指定一个有效地址。
 
     ![VM NIC](./media/contoso-migration-infrastructure/vm-nic.png)
 
 4. 现在，将新的数据磁盘附加到 VM。 此磁盘包含 Active Directory 数据库和 sysvol 共享。 
-    - 磁盘的大小将确定支持的 IOPS 数。
-    - 随着时间的推移，磁盘大小可能需要随着环境增长而增大。
-    - 不应将驱动器设置为针对主机缓存进行读/写。 Active Directory 数据库不支持此操作。
+   - 磁盘的大小将确定支持的 IOPS 数。
+   - 随着时间的推移，磁盘大小可能需要随着环境增长而增大。
+   - 不应将驱动器设置为针对主机缓存进行读/写。 Active Directory 数据库不支持此操作。
 
      ![Active Directory 磁盘](./media/contoso-migration-infrastructure/ad-disk.png)
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 5902ba86b51ca1998364e393ac02bbb0d0a23a28
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327549"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432628"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -63,10 +63,30 @@ ms.locfileid: "56327549"
 
 如果看不到 Kubernetes 仪表板，请检查 `kube-proxy` Pod 是否在 `kube-system` 命名空间中运行。 如果未处于运行状态，请删除 Pod，它会重启。
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 我收到“来自服务器的错误：拨号后端时出错: 拨打 tcp...” 我该怎么办？
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 我收到"从服务器错误： 错误拨号后端： 拨打 tcp..."。 我该怎么办？
 
-请确保默认网络安全组 (NSG) 未被修改并且端口 22 已打开以连接到 API 服务器。 检查 `tunnelfront` Pod是否在 `kube-system` 命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
+请确保不会修改默认网络安全组和端口 22 已打开用于连接到 API 服务器。 检查是否`tunnelfront`中运行 pod *kube 系统*命名空间使用`kubectl get pods --namespace kube-system`命令。 如果没有，请强制删除 Pod，它会重启。
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>我在尝试进行升级或缩放，并收到“消息：不允许更改属性‘imageReference’”错误。  如何修复此问题？
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>我在尝试进行升级或缩放，并收到“消息：不允许更改属性‘imageReference’”错误。 如何修复此问题？
 
 收到此错误的原因可能是，你修改了 AKS 群集内代理节点中的标记。 如果修改和删除 MC_* 资源组中资源的标记和其他属性，可能会导致意外结果。 修改 AKS 群集中 MC_ * 组下的资源会中断服务级别目标 (SLO)。
+
+## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>我收到错误，我的群集处于失败状态，升级或缩放修复之前将无法工作
+
+*此故障排除协助定向从 https://aka.ms/aks-cluster-failed*
+
+当群集输入多个原因失败的状态时，将发生此错误。 请执行以下步骤来解决群集失败状态，然后重试先前失败的操作：
+
+1. 直到群集共`failed`状态，`upgrade`和`scale`操作不会成功。 常见的根本问题和解决方法包括：
+    * 使用缩放**不足，无法计算 (CRP) 配额**。 若要解决，第一个缩放你的群集返回稳定的目标状态配额内。 请按照这些[步骤，以请求计算配额增加](../azure-supportability/resource-manager-core-quotas-request.md)之前尝试纵向扩展再次超越初始配额限制。
+    * 缩放群集的高级网络并**不足子网 （网络） 资源**。 若要解决，第一个缩放你的群集返回稳定的目标状态配额内。 然后按照[这些步骤，以请求资源配额增加](../azure-resource-manager/resource-manager-quota-errors.md#solution)之前尝试纵向扩展再次超越初始配额限制。
+2. 解决升级失败的根本原因后，群集应处于成功状态。 一旦验证成功的状态，重试原始操作。
+
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>我收到错误时尝试升级或状态我的群集的规模是当前正在升级或已失败的升级
+
+*此故障排除协助定向从 https://aka.ms/aks-pending-upgrade*
+
+正在执行活动的升级操作或尝试完全同步，但随后失败，升级时，群集操作将受限制。 若要诊断此问题，运行`az aks show -g myResourceGroup -n myAKSCluster -o table`检索在群集上的详细的状态。 根据结果：
+
+* 如果主动升级群集，请等待，直到该操作将终止。 如果成功，请尝试以前失败的操作。
+* 如果群集具有失败的升级，请按照上面所述的步骤

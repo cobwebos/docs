@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 7609f3b0c04bdf74c87123f1125973219e6dda17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567207"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012673"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的独立单租户应用程序
 
@@ -76,11 +76,11 @@ ms.locfileid: "55567207"
 
 1. 在不同的浏览器选项卡中打开三个租户各自的活动页面：
 
-    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
 
-    （在每个 URL 中，请将 &lt;user&gt; 替换为自己的部署 user 值。）
+     （在每个 URL 中，请将 &lt;user&gt; 替换为自己的部署 user 值。）
 
    ![活动](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "55567207"
 
 请看看一些已部署的资源：
 
-1. 在 [Azure 门户](http://portal.azure.com)中，浏览到资源组列表。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到资源组列表。
 2. 应能看到三个租户资源组。
 3. 打开 wingtip-sa-fabrikam-&lt;user&gt; 资源组，其中包括“Fabrikam 爵士乐俱乐部”这一部署的资源。  fabrikamjazzclub-&lt;user&gt; 服务器包括 fabrikamjazzclub 数据库。
 

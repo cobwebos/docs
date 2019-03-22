@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f2bd1d863a7900b50712eb23c1088c6b271befa3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 777bf38fbc8a90335af79bbd0fb2ce74310bd991
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755883"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006803"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -42,13 +42,13 @@ ms.locfileid: "55755883"
 
 如果所有组件都是单个的 Application Insights 资源中的角色，则不需要此发现步骤。 这样的应用程序的初始负载将具有所有组件。
 
-![应用程序映射屏幕截图](media/app-map/001.png)
+![应用程序映射屏幕截图](media/app-map/app-map-001.png)
 
 使用此体验的主要目标之一是能够实现可视化效果具有数百个组件的复杂拓扑。
 
 单击以查看相关的见解，转到的性能和失败的该组件的会审体验的任何组件。
 
-![浮出控件](media/app-map/application-map-001.png)
+![浮出控件](media/app-map/application-map-002.png)
 
 ### <a name="investigate-failures"></a>调查故障
 

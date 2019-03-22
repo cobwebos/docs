@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8009f50643121f1def184485aa383fe3ce8033dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 13b0c03f03012058616dba21536cfc3f292fff4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184935"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091505"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中添加应用程序时选择应用程序类型
 了解可以添加到 Azure Active Directory (Azure AD) 的四种类型的应用程序。 在 Azure Active Directory 中添加应用程序时，系统将提示你选择四种应用程序类型之一。 
@@ -67,32 +67,32 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 下面是 Azure AD 应用程序支持的**单一登录**模式。
 
--   **禁用 Azure AD 单一登录** - 如果尚未准备好将此应用程序与使用 Azure AD 的单一登录集成，或只是要进行测试，则选择禁用 Azure AD 单一登录**单一登录模式**
+- **禁用 Azure AD 单一登录** - 如果尚未准备好将此应用程序与使用 Azure AD 的单一登录集成，或只是要进行测试，则选择禁用 Azure AD 单一登录**单一登录模式**
 
--   **链接登录** - 如果具有已连接到现有单一登录解决方案的应用程序，或只是想在用户的[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)或 [Office 365 应用程序启动器](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)中为其发布简单链接，则选择[链接登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)**单一登录模式**
+- **链接登录** - 如果具有已连接到现有单一登录解决方案的应用程序，或只是想在用户的[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)或 [Office 365 应用程序启动器](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)中为其发布简单链接，则选择[链接登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)**单一登录模式**
 
--   **基于密码的登录** - 如果应用程序呈现 HTML 用户名和密码字段，且想要安全存储该用户名和密码，以便稍后将其重播到应用程序，则选择[基于密码的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)**单一登录模式**
+- **基于密码的登录** - 如果应用程序呈现 HTML 用户名和密码字段，且想要安全存储该用户名和密码，以便稍后将其重播到应用程序，则选择[基于密码的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)**单一登录模式**
 
--   **基于 SAML 的登录** - 如果应用程序支持 SAML 或 OpenID Connect 协议，或希望能够根据在 SAML 声明中定义的规则将用户映射到特定应用程序角色，则选择[基于 SAML 的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)单一登录模式*
+- **基于 SAML 的登录** - 如果应用程序支持 SAML 或 OpenID Connect 协议，或希望能够根据在 SAML 声明中定义的规则将用户映射到特定应用程序角色，则选择[基于 SAML 的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)单一登录模式*
 
-   >[!NOTE]
-   >如果已为应用程序配置了应用程序代理，则此选项不可用。
-   >
-   >
+  >[!NOTE]
+  >如果已为应用程序配置了应用程序代理，则此选项不可用。
+  >
+  >
 
--   **基于标头的登录** - 如果具有一个应用程序，该程序使用支持基于 HTTP 头的身份验证的 PingAccess，且想要对此身份验证执行单一登录，则选择此[基于标头的登录](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad)单一登录模式 
+- **基于标头的登录** - 如果具有一个应用程序，该程序使用支持基于 HTTP 头的身份验证的 PingAccess，且想要对此身份验证执行单一登录，则选择此[基于标头的登录](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad)单一登录模式 
 
-   >[!NOTE]
-   >仅当为应用程序配置了应用程序代理和 PingAccess 时，此选项才可用。
-   >
-   >
+  >[!NOTE]
+  >仅当为应用程序配置了应用程序代理和 PingAccess 时，此选项才可用。
+  >
+  >
 
--   **集成 Windows 身份验证** - 公开要对之执行单一登录的本地 WIA 应用程序时，选择[集成 Windows 身份验证](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)单一登录模式 
+- **集成 Windows 身份验证** - 公开要对之执行单一登录的本地 WIA 应用程序时，选择[集成 Windows 身份验证](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)单一登录模式 
 
-   >[!NOTE]
-   >为应用程序配置应用程序代理时，此选项才可用。
-   >
-   >
+  >[!NOTE]
+  >为应用程序配置应用程序代理时，此选项才可用。
+  >
+  >
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>适用于以自定义方式开发的应用程序的单一登录模式
 
@@ -112,39 +112,39 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 若要设置应用程序的“单一登录”模式，请按照以下说明进行操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  选择要为其配置单一登录的应用程序。
+6. 选择要为其配置单一登录的应用程序。
 
-7.  加载应用程序后，在应用程序的左侧导航菜单中，单击“单一登录”。
+7. 加载应用程序后，在应用程序的左侧导航菜单中，单击“单一登录”。
 
 ## <a name="how-to-choose-a-provisioning-mode"></a>如何选择预配模式
 
--   **手动预配** - 如果已有帐户，或想要在 Azure AD 之外管理此应用程序的帐户，请选择[手动](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes)预配模式。
+- **手动预配** - 如果已有帐户，或想要在 Azure AD 之外管理此应用程序的帐户，请选择[手动](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes)预配模式。
 
--   **自动预配** - 如果想要对此应用程序的用户帐户启用自动的基于 API 的预配和/或取消预配，请选择[自动](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning)**预配模式** 
+- **自动预配** - 如果想要对此应用程序的用户帐户启用自动的基于 API 的预配和/或取消预配，请选择[自动](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning)**预配模式** 
 
-   >[!NOTE]
-   >此选项仅对 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal)中**特色**类别中的应用程序可用。
-   >
-   >
+  >[!NOTE]
+  >此选项仅对 [Azure AD 应用程序库](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal)中**特色**类别中的应用程序可用。
+  >
+  >
 
--   **基于 SCIM 的自动预配** - 如果应用程序支持 SCIM 协议以检测用户和组的更改，请使用[基于 SCIM 的自动预配](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning)，该预配可针对与 Azure AD 集成的任何应用程序的更改自动发出 
+- **基于 SCIM 的自动预配** - 如果应用程序支持 SCIM 协议以检测用户和组的更改，请使用[基于 SCIM 的自动预配](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning)，该预配可针对与 Azure AD 集成的任何应用程序的更改自动发出 
 
-   >[!NOTE]
-   >此选项未列为特定预配模式，但默认情况下为与 Azure AD 集成的所有应用程序启用。
-   >
-   >
+  >[!NOTE]
+  >此选项未列为特定预配模式，但默认情况下为与 Azure AD 集成的所有应用程序启用。
+  >
+  >
 
 ## <a name="how-to-set-an-applications-provisioning-mode"></a>如何设置应用程序的预配模式
 
@@ -152,21 +152,21 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 若要设置应用程序的“单一登录”模式，请按照以下说明进行操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
-6.  选择要为其配置预配的应用程序。
+6. 选择要为其配置预配的应用程序。
 
-7.  加载应用程序后，在应用程序的左侧导航菜单中，单击“预配”。
+7. 加载应用程序后，在应用程序的左侧导航菜单中，单击“预配”。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](what-is-application-management.md)

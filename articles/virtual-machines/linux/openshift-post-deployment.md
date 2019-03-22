@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 8436b530ac01f03e071604e5023b50f8de6989fd
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: bc7a49aa143400387afcd59d5b9307d82a028486
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034801"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098655"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
 部署 OpenShift 群集后，可以配置附加的项。 本文介绍：
 
 - 了解如何使用 Azure Active Directory (Azure AD) 配置单一登录
-- 如何配置 Log Analytics 来监视 OpenShift
+- 如何配置 Azure Monitor 日志以监视 OpenShift
 - 如何配置指标和日志记录
 - 如何安装 Open Service Broker for Azure (OSBA)
 
@@ -39,11 +39,11 @@ ms.locfileid: "51034801"
 
 这些步骤使用 Azure CLI 创建应用注册，然后使用 GUI（门户）设置权限。 若要创建应用注册，需要提供以下五项信息：
 
-- 显示名称：应用注册名称（例如 OCPAzureAD）
-- 主页：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 标识符 URI：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 答复 URL：主公用 URL 和应用注册名称（例如 https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
-- 密码：安全密码（使用强密码）
+- 显示名称：应用注册名称 (例如 OCPAzureAD)
+- 主页上：OpenShift 控制台 URL （例如， https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- 标识符 URI:OpenShift 控制台 URL （例如， https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- 回复 URL:主机公共 URL 和应用注册名称 （例如， https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- 密码：安全密码 （使用强密码）
 
 以下示例使用上述信息创建应用注册：
 
@@ -75,23 +75,23 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 在 Azure 门户中：
 
-1.  选择“Azure Active Directory” > “应用注册”。
-2.  搜索应用注册（例如 OCPAzureAD）。
-3.  在结果中，单击“应用注册”。
-4.  在“设置”下，选择“所需的权限”。
-5.  在“所需的权限”下，选择“添加”。
+1. 选择“Azure Active Directory” > “应用注册”。
+2. 搜索应用注册（例如 OCPAzureAD）。
+3. 在结果中，单击“应用注册”。
+4. 在“设置”下，选择“所需的权限”。
+5. 在“所需的权限”下，选择“添加”。
 
-  ![应用注册](media/openshift-post-deployment/app-registration.png)
+   ![应用注册](media/openshift-post-deployment/app-registration.png)
 
-6.  依次单击“步骤 1: 选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。 单击底部的“选择”。
+6. 单击步骤 1:选择 API，并单击**Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**。 单击底部的“选择”。
 
-  ![应用注册选择 API](media/openshift-post-deployment/app-registration-select-api.png)
+   ![应用注册选择 API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7.  在“步骤 2: 选择权限”中，选择“委托的权限”下的“登录并读取用户配置文件”，并单击“选择”。
+7. 在步骤 2:选择权限中，选择**登录并读取用户个人资料**下**委托的权限**，然后单击**选择**。
 
-  ![应用注册访问权限](media/openshift-post-deployment/app-registration-access.png)
+   ![应用注册访问权限](media/openshift-post-deployment/app-registration-access.png)
 
-8.  选择“完成”。
+8. 选择“完成”。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>为 Azure AD 身份验证配置 OpenShift
 
@@ -179,11 +179,11 @@ sudo systemctl restart origin-master
 
 在 OpenShift 控制台中，现在可以看到两个身份验证选项：“htpasswd_auth”和“[应用注册]”。
 
-## <a name="monitor-openshift-with-log-analytics"></a>使用 Log Analytics 监视 OpenShift
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 OpenShift
 
 可通过三种方法将 Log Analytics 代理添加到 OpenShift。
 - 在每个 OpenShift 节点上直接安装适用于 Linux 的 Log Analytics 代理
-- 在每个 OpenShift 节点上启用 Log Analytics VM 扩展
+- 每个 OpenShift 节点上启用 Azure 监视器 VM 扩展
 - 安装 Log Analytics 代理作为 OpenShift daemon-set
 
 https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift 中提供了完整说明。

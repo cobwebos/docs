@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 上的语音服务创建自定义语音终结点 | Microsoft Docs
-description: 了解如何使用认知服务中的语音服务创建自定义语音转文本终结点。
+title: 使用 Azure 上的语音服务创建自定义语音终结点 |Microsoft Docs
+description: 了解如何创建自定义语音到文本终结点使用 Azure 的语音服务。
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,19 +9,19 @@ ms.subservice: custom-speech
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: panosper
-ms.openlocfilehash: 63d2c15c14340b0d7407b0144a8b8c75a2634e6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 1f7a84d187ba6279caad4926d54bfc56254152af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220230"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862992"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>创建自定义语音转文本终结点
 
-创建自定义声学模型或语言模型后，可以将它们部署到自定义语音转文本终结点。 
+创建自定义声学模型或语言模型后，可以将它们部署到自定义语音转文本终结点。
 
 ## <a name="create-an-endpoint"></a>创建终结点
-若要新建自定义终结点，请选择页面顶部“自定义语音”菜单上的“终结点”。 执行此操作后会重定向到“终结点”页，其中包含当前自定义终结点的表。 如果尚未创建任何终结点，此表为空。 表标题反映了当前的区域设置。 
+若要新建自定义终结点，请选择页面顶部“自定义语音”菜单上的“终结点”。 执行此操作后会重定向到“终结点”页，其中包含当前自定义终结点的表。 如果尚未创建任何终结点，此表为空。 表标题反映了当前的区域设置。
 
 若要为其他语言创建部署，请选择“更改区域设置”。 有关支持的语言的详细信息。
 

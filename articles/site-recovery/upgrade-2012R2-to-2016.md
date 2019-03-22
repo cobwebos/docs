@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: e7644128a3f0e0ea531933286e95b15149fdebd3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: b67290f72f762331a6d699fb79aef0c0d7f9fb65
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557848"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853267"
 ---
 # <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>将使用 Azure Site Recovery 配置的 Windows Server 2012 R2 主机和 SCVMM 2012 R2 升级到 Windows Server 2016 和 SCVMM 2016
 
@@ -50,8 +50,8 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
     - 确保添加到群集的新 SCVMM 的名称与以前相同。 
 
 - 如果在两端由 SCVMM 管理的两个站点之间复制，请确保先升级恢复端，然后再升级主要端。
-> [!WARNING]
-> 升级 SCVMM 2012 R2 时，请在分发式密钥管理下选择**在 Active Directory 中存储加密密钥**。 请慎重选择服务帐户和分布式密钥管理的设置。 根据所做的选择，加密的数据（例如模板中的密码）在升级后可能不可用，并可能会影响使用 Azure Site Recovery 进行的复制
+  > [!WARNING]
+  > 升级 SCVMM 2012 R2 时，请在分发式密钥管理下选择**在 Active Directory 中存储加密密钥**。 请慎重选择服务帐户和分布式密钥管理的设置。 根据所做的选择，加密的数据（例如模板中的密码）在升级后可能不可用，并可能会影响使用 Azure Site Recovery 进行的复制
 
 > [!IMPORTANT]
 > 请参阅[先决条件](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)的详细 SCVMM 文档
@@ -79,8 +79,8 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 4. [安装 VMM 2016](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. 启动 SCVMM，在“结构”选项卡下检查每个主机的状态。单击“刷新”获取最新状态。 应会看到状态为“需要注意”。 
-17. 在 SCVMM 上安装最新的 [Microsoft Azure Site Recovery 提供程序](http://aka.ms/downloaddra)。
-16. 在群集的每个主机上安装最新的 [Microsoft Azure 恢复服务 (MARS) 代理](http://aka.ms/latestmarsagent)。 刷新以确保 SCVMM 能够成功查询主机。
+17. 在 SCVMM 上安装最新的 [Microsoft Azure Site Recovery 提供程序](https://aka.ms/downloaddra)。
+16. 在群集的每个主机上安装最新的 [Microsoft Azure 恢复服务 (MARS) 代理](https://aka.ms/latestmarsagent)。 刷新以确保 SCVMM 能够成功查询主机。
 
 **将 Windows Server 2012 R2 主机升级到 Windows Server 2016**
 
@@ -97,8 +97,8 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 1.  导航到“控制面板”->“程序”->“程序和功能”->“Microsoft Azure Site Recovery”并单击“卸载”，以卸载 ASR 提供程序
 2. 根据想要执行的升级模式遵循[此处](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server)所述的步骤。
 3. 启动 SCVMM 控制台，在“结构”选项卡下检查每个主机的状态。单击“刷新”获取最新状态。 应会看到状态为“需要注意”。
-4. 在 SCVMM 上安装最新的 [Microsoft Azure Site Recovery 提供程序](http://aka.ms/downloaddra)。
-5. 在群集的每个主机上更新到最新的 [Microsoft Azure 恢复服务 (MARS) 代理](http://aka.ms/latestmarsagent)。 刷新以确保 SC VMM 能够成功查询主机。
+4. 在 SCVMM 上安装最新的 [Microsoft Azure Site Recovery 提供程序](https://aka.ms/downloaddra)。
+5. 在群集的每个主机上更新到最新的 [Microsoft Azure 恢复服务 (MARS) 代理](https://aka.ms/latestmarsagent)。 刷新以确保 SC VMM 能够成功查询主机。
 
 
 **将 Windows Server 2012 R2 主机升级到 Windows Server 2016**

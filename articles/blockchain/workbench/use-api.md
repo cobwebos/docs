@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/14/2018
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c1a9b526f08f330d62c30dd1d676e95460aee6c2
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: eb4b87a008b9e43de7e7a5f7895449303f1e44a6
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712341"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593975"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>使用 Azure Blockchain Workbench REST API
 
@@ -210,8 +210,8 @@ Content-type: application/json
 
 一旦用户决定深入了解某个合同，区块链客户端就会显示给定合同的状态下可用的用户操作。 在此示例中，用户将查看适用于新建智能合同的所有操作：
 
-* 修改：允许用户修改资产的说明和价格。
-* 终止：允许用户终止资产合同。
+* 修改：允许用户修改的说明和资产的价格。
+* 终止：允许用户若要结束的资产协定。
 
 使用 [Contract Action GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget)：
 
@@ -277,7 +277,7 @@ Content-type: application/json
 
 然后，用户可以根据指定的智能合同实例来决定要采取的操作。 在此示例中，假设这样一种场景：用户要将资产的说明和价格修改为如下操作：
 
-* 说明：“My updated car”
+* 说明:"我已更新的汽车"
 * 价格：54321
 
 使用 [Contract Action POST API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost)：

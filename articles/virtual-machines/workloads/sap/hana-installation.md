@@ -1,6 +1,6 @@
 ---
 title: 在 Azure SAP HANA（大型实例）上安装 SAP HANA | Microsoft Docs
-description: 如何在 Azure SAP HANA（大型实例）上安装 SAP HANA。
+description: 如何在 Azure （大型实例） 上的 SAP HANA 上安装 SAP HANA。
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
+ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc63eb792e58d960ae67138b5e58e6b705945030
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 5b6c636366d494901a34078100290084298de686
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446386"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999835"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -28,7 +28,7 @@ ms.locfileid: "56446386"
 SAP HANA 的安装由你负责。 可以在 Azure 虚拟网络与 HANA 大型实例单元之间建立连接之后再开始安装新的 Azure 上的 SAP HANA（大型实例）。 
 
 > [!Note]
-> 根据 SAP 政策，SAP HANA 的安装必须由通过了“SAP 技术认证专员”考试、“SAP HANA 安装”认证考试的人员，或者 SAP 认证的系统集成商 (SI) 来完成。
+> 根据 SAP 政策，SAP HANA 安装必须由谁已通过 SAP 技术认证专员考试、 SAP HANA 安装认证考试或谁是 SAP 认证的系统集成商 (SI) 执行。
 
 计划安装 HANA 2.0 时，请参阅 [SAP 支持说明 #2235581 - SAP HANA：支持的操作系统](https://launchpad.support.sap.com/#/notes/2235581/E)，确保所要安装的 SAP HANA 版本支持该 OS。 HANA 2.0 支持的 OS 比 HANA 1.0 支持的 OS 限制性更强。 
 
@@ -50,7 +50,7 @@ SAP HANA 的安装由你负责。 可以在 Azure 虚拟网络与 HANA 大型实
 
 HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，请参阅[如何为 SUSE Linux 设置 SMT 服务器](hana-setup-smt.md)）。 或者，需要在所要连接的 Red Hat 订阅管理器中注册 Red Hat OS。 有关详细信息，请参阅[什么是 Azure 上的 SAP HANA（大型实例）？](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的备注。 
 
-若要修补 OS（由客户负责），也需要执行此步骤。 对于 SUSE，可在有关 [SMT 安装](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)的页面中找到有关安装和配置 SMT 的文档。
+此步骤是必需的修补 OS，这是客户的责任。 对于 SUSE，可在有关 [SMT 安装](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)的页面中找到有关安装和配置 SMT 的文档。
 
 **第二个步骤**是检查特定 OS 发行版/版本的新修补程序和修复程序。 验证 HANA 大型实例的修补级别是否处于最新状态。 有时可能未包含最新修补程序。 在接管 HANA 大型实例单元后，必须检查是否需要应用修补程序。
 
@@ -80,6 +80,7 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 
 **第五个步骤**是检查 etc/hosts。 交接刀片服务器后，会根据不同的用途为它们分配不同的 IP 地址。 检查 etc/hosts 文件。 如果将单元添加到了现有租户，请不要料想会使用以前交付的系统的 IP 地址正确维护新部署的系统的 etc/hosts。 客户需负责确保新部署的实例能够与租户中以前部署的单元交互并解析其名称。 
 
+
 ## <a name="operating-system"></a>操作系统
 
 > [!IMPORTANT] 
@@ -95,17 +96,17 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 
 - [SAP HANA on SUSE Linux 站点](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
 - [Best Practice for SAP:Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)（SAP 最佳实践：排队复制 - 基于 SUSE Linux Enterprise 12 的 SAP NetWeaver）
-- [ClamSAP – SLES virus protection for SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap)（ClamSAP - 适用于 SAP 的 SLES 病毒防护）（包括 SLES 12 for SAP Applications）
+- [ClamSAP – SLES virus protection for SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap)（ClamSAP - 适用于 SAP 的 SLES 病毒防护）（包括 SLES 12 for SAP Applications）
 
 下面是适用于实施 SAP HANA on SLES 12 的 SAP 支持说明：
 
-- [SAP support note #1944799 – SAP HANA guidelines for SLES operating system installation](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)（SAP 支持说明 #1944799 - 适用于 SLES 操作系统安装的 SAP HANA 指导原则）
+- [SAP support note #1944799 – SAP HANA guidelines for SLES operating system installation](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)（SAP 支持说明 #1944799 - 适用于 SLES 操作系统安装的 SAP HANA 指导原则）
 - [SAP support note #2205917 – SAP HANA DB recommended OS settings for SLES 12 for SAP applications](https://launchpad.support.sap.com/#/notes/2205917/E)（SAP 支持说明 #2205917 - SAP HANA DB 建议的适用于 SLES 12 for SAP Applications 的 OS 设置）
 - [SAP support note #1984787 – SUSE Linux Enterprise Server 12:  installation notes](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #1984787 - SUSE Linux Enterprise Server 12：安装说明）
 - [SAP support note #171356 – SAP software on Linux:General Information](https://launchpad.support.sap.com/#/notes/1984787)（SAP 支持说明 #171356 - Linux 上的 SAP 软件：常规信息）
 - [SAP support note #1391070 – Linux UUID solutions](https://launchpad.support.sap.com/#/notes/1391070)（SAP 支持说明 #1391070 - Linux UUID 解决方案）
 
-[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) 是用于在 HANA 大型实例上运行 SAP HANA 的另一个产品。 现在有 RHEL 6.7 和 7.2 版本可用。 请注意，与仅支持 RHEL 7.2 及更高版本的本机 Azure VM 不同，HANA 大型实例还支持 RHEL 6.7。 但是我们建议使用 RHEL 7.x 版本。
+[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) 是用于在 HANA 大型实例上运行 SAP HANA 的另一个产品。 现在有 RHEL 6.7 和 7.2 版本可用。 请注意，相比于本机 Azure Vm 仅 RHEL 7.2 及更高版本支持的位置，HANA 大型实例还支持 RHEL 6.7。 但是我们建议使用 RHEL 7.x 版本。
 
 下面是与 SAP on Red Hat 相关的其他有用链接：
 - [SAP HANA on Red Hat Linux 站点](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat)。
@@ -142,7 +143,7 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 
 ## <a name="storage"></a>存储
 
-SAP HANA 根据 SAP 建议的指导原则在 Azure 服务管理中配置 Azure 上的 SAP HANA（大型实例）存储布局。 [SAP HANA 存储要求](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了这些指导原则。 
+SAP HANA 根据 SAP 建议的指导原则在 Azure 服务管理中配置 Azure 上的 SAP HANA（大型实例）存储布局。 [SAP HANA 存储要求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了这些指导原则。 
 
 有关包含不同 HANA 大型实例 SKU 的各卷的粗略大小，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -200,6 +201,17 @@ S72m HANA 大型实例单元上的命令 df -h 的输出如下所示：
 对于 SAP HANA 1.0 SPS12 或更低版本，可根据 [SAP 说明 #2267798 - SAP HANA 数据库的配置](https://launchpad.support.sap.com/#/notes/2267798)中所述，在安装 SAP HANA 数据库期间设置这些参数
 
 也可以在安装 SAP HANA 数据库之后使用 hdbparam 框架配置这些参数。 
+
+在 HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)每个文件。 与不同的文件大小限制在 EXT3 文件系统中，在 HANA 并不知道隐式强制实施通过 HANA 大型实例存储的存储限制。 因此 HANA 不会自动创建新的数据文件时达到文件大小限制为 16 TB。 当 HANA 尝试增长超过 16 TB 的文件，HANA 将报告错误和索引服务器将结束时崩溃。
+
+> [!IMPORTANT]
+> 为了防止 HANA 尝试增长超过 16 TB 的文件大小限制的 HANA 大型实例存储的数据文件，您需要在 SAP HANA global.ini 配置文件中设置以下参数
+> 
+> - datavolume_striping=true
+> - datavolume_striping_size_gb = 15000
+> - 另请参阅 SAP 说明[#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - SAP 说明注意[#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+
 
 在 SAP HANA 2.0 中，hdbparam 框架已弃用。 因此，必须使用 SQL 命令设置这些参数。 有关详细信息，请参阅 [SAP note #2399079:Elimination of hdbparam in HANA 2](https://launchpad.support.sap.com/#/notes/2399079)（SAP 说明 #2399079：在 HANA 2 中弃用 hdbparam）。
 

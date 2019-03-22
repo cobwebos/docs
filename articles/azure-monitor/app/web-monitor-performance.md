@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8f5a0a22ecea0b5df0f4108984b2a65d4add2bf8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301768"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901162"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
@@ -112,7 +112,7 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 * 将请求计数与其他指标比较，查看故障或响应缓慢是否与负载有关。
 * 在代码中[插入和搜索跟踪语句][diagnostic]以帮助查明问题。
 * 使用[实时指标流][livestream]监视正在运行的 Web 应用。
-* 使用[快照调试器][snapshot]捕获 .Net 应用程序的状态。
+* 使用.NET 应用程序的状态捕获[快照调试器][snapshot]。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>通过性能调查体验来发现和修复性能瓶颈
 

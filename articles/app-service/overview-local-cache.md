@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ea17db9af92887ff775e580224b66fed22c65d41
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 1d6e233509b50f0b03678f2e62267169d02133a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963856"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990770"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
@@ -35,7 +35,7 @@ Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提�
 * 内容跨应用的多个虚拟机 (VM) 实例共享。
 * 内容是持久性的，运行应用即可对其进行修改。
 * 在同一共享内容文件夹下提供日志文件和诊断数据文件。
-* 发布新内容会直接更新内容文件夹。 可以通过 SCM 网站和运行的应用即时查看相同的内容（通常情况下，在文件发生更改时，可以通过 ASP.NET 之类的特定技术重新启动应用，获取最新内容）。
+* 发布新内容会直接更新内容文件夹。 您可以立即查看相同的内容通过 SCM 网站和运行的应用程序 （通常 ASP.NET 之类的特定技术执行应用程序重新启动上某些文件更改，以获取最新内容）。
 
 虽然许多应用使用所有此类功能或其中一项功能，但某些应用只需要高性能的只读内容存储，此类存储可用性高且支持这些应用的运行。 这些应用可以充分利用特定本地缓存的 VM 实例。
 

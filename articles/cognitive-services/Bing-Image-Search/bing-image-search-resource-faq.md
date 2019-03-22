@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: troubleshooting
-ms.date: 10/06/2017
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: af592e47d443caac23a3ba51a8e4b37fec069bc9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a6d5d7b3ab83c8e405c6866562b4095434b9acff
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876481"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539014"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
 
@@ -65,4 +65,4 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-image-s
 
 ## <a name="see-also"></a>另请参阅
 
- [堆栈溢出：认知服务](http://stackoverflow.com/questions/tagged/bing-api)
+ [堆栈溢出：认知服务](https://stackoverflow.com/questions/tagged/bing-api)

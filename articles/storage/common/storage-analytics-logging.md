@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 8137e59de7ad33ea806fcc2be36bb778448c9adc
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: ab235c67e3a0e60999a0348d03a6e938944f7030
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58077269"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260174"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -37,7 +37,7 @@ ms.locfileid: "58077269"
 - 使用共享访问签名 (SAS) 或 OAuth，包括失败和成功请求的请求
 - 分析数据请求
 
-  不会记录存储分析本身发出的请求，如创建或删除日志。 [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)及[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format.md)主题中提供了所记录数据的完整列表。
+  不会记录存储分析本身发出的请求，如创建或删除日志。 [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)及[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)主题中提供了所记录数据的完整列表。
 
 ### <a name="logging-anonymous-requests"></a>记录匿名请求
 
@@ -48,7 +48,7 @@ ms.locfileid: "58077269"
 - 客户端和服务器的超时错误
 - 失败的 GET 请求，错误代码为 304（未修改）
 
-  不会记录所有其他失败的匿名请求。 [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)及[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format.md)主题中提供了所记录数据的完整列表。
+  不会记录所有其他失败的匿名请求。 [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)及[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)主题中提供了所记录数据的完整列表。
 
 ## <a name="how-logs-are-stored"></a>如何存储日志
 
@@ -200,9 +200,9 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
 
  有关如何以编程方式下载日志数据的示例，请参阅博客文章[Windows Azure 存储日志记录：使用日志跟踪存储请求](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)并搜索"dumplogs 一"词的页上。  
 
- 下载日志数据后，可以在文件中查看日志条目。 这些日志文件使用带分隔符的文本格式，许多日志读取工具可分析，包括 Microsoft Message Analyzer (有关详细信息，请参阅指南[进行监视、 诊断和故障排除 Microsoft Azure 存储](storage-monitoring-diagnosing-troubleshooting.md)). 不同的工具使用不同设施的格式设置、 筛选、 排序和搜索日志文件的内容。 有关存储日志记录日志文件格式和内容的详细信息，请参阅[存储分析日志格式](storage-analytics-logging.md)并[存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)。
+ 下载日志数据后，可以在文件中查看日志条目。 这些日志文件使用带分隔符的文本格式，许多日志读取工具可分析，包括 Microsoft Message Analyzer (有关详细信息，请参阅指南[进行监视、 诊断和故障排除 Microsoft Azure 存储](storage-monitoring-diagnosing-troubleshooting.md)). 不同的工具使用不同设施的格式设置、 筛选、 排序和搜索日志文件的内容。 有关存储日志记录日志文件格式和内容的详细信息，请参阅[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)并[存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
 
 ## <a name="next-steps"></a>后续步骤
-* [Storage Analytics Log Format](/rest/api/storageservices/storage-analytics-log-format.md)（存储分析日志格式）
-* [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)
+* [Storage Analytics Log Format](/rest/api/storageservices/storage-analytics-log-format)（存储分析日志格式）
+* [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [存储分析指标 （经典）](storage-analytics-metrics.md)

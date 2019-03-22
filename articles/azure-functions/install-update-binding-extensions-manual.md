@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
-ms.openlocfilehash: 77b863bc32442261e220b5dd3f11c0bd33b4fa7a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805242"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727105"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>从门户手动安装或更新 Azure Functions 绑定扩展
 
-Azure Functions 版本 2.x 运行时使用绑定扩展来实现触发器和绑定的代码。 NuGet 包中提供了绑定扩展。 注册一个扩展，实际上是安装一个包。 在开发函数时，安装绑定扩展的方式取决于开发环境。 有关详细信息，请参阅触发器和绑定文章中的[注册绑定扩展](functions-triggers-bindings.md#register-binding-extensions)。
+Azure Functions 版本 2.x 运行时使用绑定扩展来实现触发器和绑定的代码。 NuGet 包中提供了绑定扩展。 注册一个扩展，实际上是安装一个包。 在开发函数时，安装绑定扩展的方式取决于开发环境。 有关详细信息，请参阅触发器和绑定文章中的[注册绑定扩展](./functions-bindings-register.md)。
 
 有时，需要在 Azure 门户中手动安装或更新绑定扩展。 例如，可能需要将已注册的绑定更新为一个较新的版本。 可能还需要注册一个无法在门户的“集成”选项卡中安装的支持的绑定。
 

@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 14326714fc8258e184024edb83666d3ed0c3eee7
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 160ff8bbcb8ce5a4f1f32245cc366281640c5919
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270888"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854240"
 ---
-# <a name="azure-data-factory-mapping-data-flow-unpivot-transformation"></a>Azure 数据工厂映射数据流逆透视转换
+# <a name="azure-data-factory-unpivot-transformation"></a>Azure 数据工厂逆透视转换
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -51,3 +51,7 @@ ms.locfileid: "56270888"
 ![逆透视转换](media/data-flow//unpivot7.png "逆透视选项 5")
 
 最终的已逆透视数据结果集显示已逆透视到单独行值的列总值。
+
+## <a name="next-steps"></a>后续步骤
+
+使用[透视转换](data-flow-pivot.md)将透视行到列。

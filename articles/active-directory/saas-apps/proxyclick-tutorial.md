@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52d3e058c7e604a31493bf3b1972b39c9922fd90
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e5ce628716e9e8d0094f678c3d67dcfad9e24ada
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163508"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860527"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>教程：Azure Active Directory 与 Proxyclick 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56163508"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Proxyclick 的集成，需要准备好以下各项：
 
@@ -214,7 +214,7 @@ ms.locfileid: "56163508"
 
     ![添加员工](./media/proxyclick-tutorial/user3.png)
 
-    a. 在“电子邮件”文本框中，键入用户的电子邮件地址，如 brittasimon@contoso.com。
+    a. 在中**电子邮件**文本框中，键入用户电子邮件地址，例如**brittasimon\@contoso.com**。
 
     b. 在“名字”文本框中，键入用户的名字（如“Britta”）。
 

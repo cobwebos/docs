@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633855"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537221"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
@@ -55,14 +55,14 @@ ms.locfileid: "53633855"
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2017-11-11 
-{  
-    "search": "Spacious, air-condition* +\"Ocean view\"",  
-    "searchFields": "description, title",  
+{
+    "search": "Spacious, air-condition* +\"Ocean view\"",
+    "searchFields": "description, title",
     "searchMode": "any",
-    "filter": "price ge 60 and price lt 300",  
+    "filter": "price ge 60 and price lt 300",
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
- } 
+}
 ~~~~
 
 对于此请求，搜索引擎将执行以下操作：
@@ -117,7 +117,7 @@ Spacious,||air-condition*+"Ocean view"
 假设我们现在设置为 `searchMode=all`。 在这种情况下，空格被解释为“and”运算。 文档中必须包含每个剩余的字词，才能将该文档视为匹配项。 生成的示例查询将按以下方式解释： 
 
 ~~~~
-+Spacious,+air-condition*+"Ocean view"  
++Spacious,+air-condition*+"Ocean view"
 ~~~~
 
 此查询的修改查询树如下所示，其中的匹配文档是所有三个子查询的交集： 
@@ -155,7 +155,7 @@ Spacious,||air-condition*+"Ocean view"
 可以使用[分析 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) 测试分析器的行为。 提供要分析的文本，查看给定的分析器会生成哪些字词。 例如，若要查看标准分析器如何处理文本“air-condition”，可以发出以下请求：
 
 ~~~~
-{ 
+{
     "text": "air-condition",
     "analyzer": "standard"
 }
@@ -164,7 +164,7 @@ Spacious,||air-condition*+"Ocean view"
 标准分析器会将输入文本分解成以下两个标记，使用起始和结束偏移（用于命中项突出显示）以及文本的位置（用于短语匹配）等属性来批注输入文本：
 
 ~~~~
-{  
+{
   "tokens": [
     {
       "token": "air",
@@ -195,11 +195,11 @@ Spacious,||air-condition*+"Ocean view"
 文档检索是否在索引中查找包含匹配词的文档。 最好是通过一个示例来理解此阶段。 我们从一个采用以下简单架构的酒店索引着手： 
 
 ~~~~
-{   
-    "name": "hotels",     
-    "fields": [     
-        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },     
-        { "name": "title", "type": "Edm.String", "searchable": true },     
+{
+    "name": "hotels",
+    "fields": [
+        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+        { "name": "title", "type": "Edm.String", "searchable": true },
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
@@ -208,28 +208,28 @@ Spacious,||air-condition*+"Ocean view"
 进一步假设此索引包含以下四个文档： 
 
 ~~~~
-{ 
+{
     "value": [
-        {         
-            "id": "1",         
-            "title": "Hotel Atman",         
-            "description": "Spacious rooms, ocean view, walking distance to the beach."   
-        },       
-        {         
-            "id": "2",         
-            "title": "Beach Resort",        
-            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."     
-        },       
-        {         
-            "id": "3",         
-            "title": "Playa Hotel",         
+        {
+            "id": "1",
+            "title": "Hotel Atman",
+            "description": "Spacious rooms, ocean view, walking distance to the beach."
+        },
+        {
+            "id": "2",
+            "title": "Beach Resort",
+            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."
+        },
+        {
+            "id": "3",
+            "title": "Playa Hotel",
             "description": "Comfortable, air-conditioned rooms with ocean view."
-        },       
-        {         
-            "id": "4",         
-            "title": "Ocean Retreat",         
+        },
+        {
+            "id": "4",
+            "title": "Ocean Retreat",
             "description": "Quiet and secluded"
-        }    
+        }
     ]
 }
 ~~~~
@@ -255,7 +255,7 @@ Spacious,||air-condition*+"Ocean view"
 
 | 术语 | 文档列表 |
 |------|---------------|
-| atman | 1 |
+| atman | 第 |
 | beach | 2 |
 | hotel | 1, 3 |
 | ocean | 4  |
@@ -271,10 +271,10 @@ Spacious,||air-condition*+"Ocean view"
 |------|---------------|
 | air | 3
 | and | 4
-| beach | 1
+| beach | 第
 | conditioned | 3
 | comfortable | 3
-| distance | 1
+| distance | 第
 | island | 2
 | kauaʻi | 2
 | located | 2
@@ -286,11 +286,11 @@ Spacious,||air-condition*+"Ocean view"
 | rooms  | 1, 3
 | secluded | 4
 | shore | 2
-| spacious | 1
+| spacious | 第
 | the | 1, 2
-| to | 1
+| to | 第
 | view | 1, 2, 3
-| walking | 1
+| walking | 第
 | 替换为 | 3
 
 
@@ -327,7 +327,7 @@ Spacious,||air-condition*+"Ocean view"
 search=Spacious, air-condition* +"Ocean view"  
 ~~~~
 ~~~~
-{  
+{
   "value": [
     {
       "@search.score": 0.25610128,

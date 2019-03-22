@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 31959cc1bef6b6434f6d3f586052a845837aa438
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442585"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454501"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理实例的容量
 
@@ -24,7 +24,7 @@ ms.locfileid: "52442585"
 
 本文介绍**容量**的定义及其行为。 其中介绍了如何在 Azure 门户中访问**容量**指标，并建议何时应考虑扩展或升级 API 管理实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要遵循本文中的步骤，必须准备好：
 
@@ -78,7 +78,7 @@ ms.locfileid: "52442585"
 4. 在绿色部分选择“位置”，以便按维度拆分指标。
 5. 从该部分的顶部栏中选择所需的时间范围。
 
-    可以设置指标警报，以便在发生意外的情况时收到通知。 例如，当 APIM 实例超出预期峰值容量有 20 分钟以上时收到通知。
+    可以设置指标警报，以便在发生意外的情况时收到通知。 例如，在自己的 APIM 实例具有已超出预期的峰值容量的 20 多分钟时收到通知。
 
     >[!TIP]
     > 可以配置警报，以便在服务容量不足时知道这种状况；或者使用 Azure Monitor 自动缩放功能自动添加 Azure API 管理单元。 缩放操作可能需要大约 30 分钟，因此请相应地安排规则。  

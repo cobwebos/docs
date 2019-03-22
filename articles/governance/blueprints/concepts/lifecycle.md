@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 71a5233c6d5af21d7bc5430cda14e156e16d5cd4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563705"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001567"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
 
@@ -35,7 +35,7 @@ ms.locfileid: "55563705"
 
 创建蓝图时，请向其添加项目、将其保存到管理组或订阅，并提供唯一名称和唯一版本。 目前，蓝图处于“草稿”模式，尚不可分配。 但在“草稿”模式下，仍可继续更新和更改此蓝图。
 
-如果“草稿”模式下的某个蓝图从未发布过，则它在“蓝图定义”页面上显示的图标将与已发布的蓝图所显示的不同。 对于从未发布过的蓝图，最新版本也显示为“草稿”。
+如果“草稿”模式下的某个蓝图从未发布过，则它在“蓝图定义”页面上显示的图标将与已发布的蓝图所显示的不同。 **最新版本**显示为**草稿**这些永远不会发布蓝图。
 
 使用 [Azure 门户](../create-blueprint-portal.md#create-a-blueprint)或 [REST API](../create-blueprint-rest-api.md#create-a-blueprint) 创建和编辑蓝图。
 
@@ -68,13 +68,13 @@ ms.locfileid: "55563705"
 > [!NOTE]
 > 不能删除具有活动分配项的蓝图。 请先删除分配项，再删除要移除的版本。
 
-1. 单击“所有服务”，然后在左窗格中搜索并选择“策略”。 在“策略”页上，单击“蓝图”。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 从左侧页面选择“蓝图定义”，再使用筛选器选项找到要删除其版本的蓝图。 单击它以打开“编辑”页面。
+1. 选择**蓝图定义**的页面上的左侧和使用筛选器的选项，可以找到你想要删除的版本的蓝图。 单击它以打开“编辑”页面。
 
 1. 单击“已发布的版本”选项卡，找到要删除的版本。
 
-1. 右键单击要删除的版本，再选择“删除此版本”。
+1. 右键单击要删除和选择的版本**删除此版本**。
 
 ## <a name="deleting-the-blueprint"></a>删除蓝图
 
@@ -103,8 +103,8 @@ ms.locfileid: "55563705"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[静态和动态参数](parameters.md)
-- 了解如何自定义[蓝图排序顺序](sequencing-order.md)
-- 了解如何使用[蓝图资源锁定](resource-locking.md)
-- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)
-- 使用[常规疑难解答](../troubleshoot/general.md)在蓝图分配期间解决问题
+- 了解如何使用[静态和动态参数](parameters.md)。
+- 了解如何自定义[蓝图排序顺序](sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](resource-locking.md)。
+- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

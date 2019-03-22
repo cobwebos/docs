@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: c8320a0f504927830c47400f1f1ef0369c0e1cad
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116528"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011191"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
 
@@ -26,14 +26,12 @@ ms.locfileid: "54116528"
 
 如果[已通过 Application Insights 检测 Java Web 服务][java]，则通常会使用 collectd。 它可提供更多数据，有助于增强应用性能或诊断问题。 
 
-![示例图表](./media/java-collectd/sample.png)
-
 ## <a name="get-your-instrumentation-key"></a>获取检测密钥
 在 [Microsoft Azure 门户](https://portal.azure.com)中，打开要显示数据的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 （或[创建新资源](../../azure-monitor/app/create-new-resource.md )。）
 
 复制可标识资源的检测密钥。
 
-![浏览全部，打开资源，并在“概要”下拉菜单中选择并复制该检测密钥](./media/java-collectd/02-props.png)
+![浏览全部，打开资源，并在“概要”下拉菜单中选择并复制该检测密钥](./media/java-collectd/instrumentation-key-001.png)
 
 ## <a name="install-collectd-and-the-plug-in"></a>安装 collectd 和插件
 在 Linux 服务器计算机上：
@@ -93,9 +91,7 @@ ms.locfileid: "54116528"
 根据其[手册](https://collectd.org/wiki/index.php/First_steps)重启 collectd。
 
 ## <a name="view-the-data-in-application-insights"></a>查看 Application Insights 中的数据
-在 Application Insights 资源中，打开[指标资源管理器和添加图表][metrics]，选择要从“自定义”类别查看的指标。
-
-![](./media/java-collectd/result.png)
+在 Application Insights 资源中，打开[度量值和添加图表][metrics]，选择你想要从自定义类别查看的度量值。
 
 默认情况下，会从收集指标的所有主机中聚合指标。 要查看每个主机的指标，在“图表”详细信息边栏选项卡中，打开“分组”，并选择按 CollectD-Host 分组。
 

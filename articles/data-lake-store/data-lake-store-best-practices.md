@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 45d828b32984363f611828ca3ea33e5fa96a5017
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 53af7ff840f9d04f0e09010b72e9eefc32a8eadd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745837"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961884"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
 
@@ -140,7 +140,7 @@ Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
-设置属性并重启节点后，Data Lake Storage Gen1 诊断即会写入到节点上的 YARN 日志 (/tmp/\<user\>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 也可在 [Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md) 帐户的“诊断”边栏选项卡的 Log Analytics（或日志传送到的任何位置）中监视这些相同的信息。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Storage Gen1 的客户端日志记录或利用其日志传送选项。
+设置属性并重启节点后，Data Lake Storage Gen1 诊断即会写入到节点上的 YARN 日志 (/tmp/\<user\>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 此外可以在 Azure Monitor 日志或日志传送到处于任何位置监视此相同的信息[诊断](data-lake-store-diagnostic-logs.md)数据湖存储 Gen1 帐户边栏选项卡。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Storage Gen1 的客户端日志记录或利用其日志传送选项。
 
 ### <a name="run-synthetic-transactions"></a>运行综合事务
 

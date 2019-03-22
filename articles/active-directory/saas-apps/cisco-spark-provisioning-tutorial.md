@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c45a19c8f6bbce2ffdfff0758eb3e57203b7cf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8fd7145be5f82a90acced0f02e35f6c8880dbcad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211200"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120391"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>教程：为 Cisco Spark 配置自动用户预配
 
@@ -31,7 +31,7 @@ ms.locfileid: "56211200"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -113,28 +113,28 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
     *   在“机密令牌”字段中，填充步骤 6 中所述的机密令牌。
 
 1. 可以通过使用管理员帐户登录 [Cisco Spark 开发人员网站](https://developer.webex.com/)，找到 Cisco Spark 帐户的租户 ID和密钥令牌。 登录后 -
-    * 转到 [Getting Started page](https://developer.webex.com/getting-started.html)（入门页）
-    * 向下滚动到[身份验证部分](https://developer.webex.com/getting-started.html#authentication)
-    ![Cisco Spark 身份验证令牌](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
-    * 框中的字母数字字符串是密钥令牌。 将此令牌复制到剪贴板
-    * 转到[“获取我的详细信息”页](https://developer.webex.com/endpoint-people-me-get.html)
-        * 请确保“测试模式”为“开”
-        * 键入“Bearer”一词，在该词后添加一个空格，然后将密钥令牌粘贴到授权字段 ![Cisco Spark 身份验证令牌](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
-        * 单击“运行”
-    * 在右侧的响应文本中，“租户 ID”显示为“orgId”：
+   * 转到 [Getting Started page](https://developer.webex.com/getting-started.html)（入门页）
+   * 向下滚动到[身份验证部分](https://developer.webex.com/getting-started.html#authentication)
+     ![Cisco Spark 身份验证令牌](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
+   * 框中的字母数字字符串是密钥令牌。 将此令牌复制到剪贴板
+   * 转到[“获取我的详细信息”页](https://developer.webex.com/endpoint-people-me-get.html)
+       * 请确保“测试模式”为“开”
+       * 键入“Bearer”一词，在该词后添加一个空格，然后将密钥令牌粘贴到授权字段 ![Cisco Spark 身份验证令牌](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
+       * 单击“运行”
+   * 在右侧的响应文本中，“租户 ID”显示为“orgId”：
 
-    ```json
-    {
-        "id": "(...)",
-        "emails": [
-            "admin.user@contoso.com"
-        ],
-        "displayName": "John Smith",
-        "nickName": "John",
-        "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        (...)
-    }
-    ```
+     ```json
+     {
+       "id": "(...)",
+       "emails": [
+           "admin.user@contoso.com"
+       ],
+       "displayName": "John Smith",
+       "nickName": "John",
+       "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+       (...)
+     }
+     ```
 
 1. 填入步骤 5 中所示的字段后，单击“测试连接”确保 Azure AD 可以连接到 Cisco Spark。 如果连接失败，请确保 Cisco Spark 帐户具有管理员权限，然后重试。
 

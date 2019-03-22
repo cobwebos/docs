@@ -5,13 +5,14 @@ author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: microsoft-docs
+ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: c3557d54b9fb3fd0173eec1e327050ac7cc80fc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792474"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>使用 Azure 基于角色的访问控制 (RBAC) 控制用于创建和管理支持请求的访问权限
 
@@ -19,7 +20,7 @@ ms.lasthandoff: 04/16/2018
 Azure 门户（[portal.azure.com](https://portal.azure.com)）中的支持请求创建使用 Azure 的 RBAC 模型定义谁可以创建和管理支持请求。
 访问权限是通过将相应的 RBAC 角色分配给特定范围（可以是订阅、资源组或资源）内的用户、组和应用程序来授予的。
 
-让我们举个例子：作为在订阅范围内具有读取权限的资源组所有者，可以管理资源组中的所有资源，如网站、虚拟机和子网。
+让我们看一个示例：作为具有订阅范围内的读取权限的资源组所有者，你可以管理下的资源组，如网站、 虚拟机和子网的所有资源。
 但是，尝试针对虚拟机资源创建支持请求时，遇到以下错误
 
 ![订阅错误](./media/create-manage-support-requests-using-access-control/subscription-error.png)

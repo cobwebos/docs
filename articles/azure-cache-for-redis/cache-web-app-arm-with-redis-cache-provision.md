@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 52c5fb8a6da7e3f12d621406542f0e31f7ece1de
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 23b8e4e7e88f5b993f9b0f9981bbae6b884e2818
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233279"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880001"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>使用模板创建 Web 应用和 Azure Redis 缓存
 
@@ -35,7 +35,7 @@ ms.locfileid: "56233279"
 在此模板中，将部署：
 
 * Azure Web 应用
-* Azure Redis 缓存。
+* 用于 Redis 的 Azure 缓存
 
 若要自动运行部署，请单击以下按钮：
 
@@ -62,7 +62,7 @@ ms.locfileid: "56233279"
 ### <a name="azure-cache-for-redis"></a>用于 Redis 的 Azure 缓存
 创建用于 Web 应用的 Azure Redis 缓存。 缓存的名称在 **cacheName** 变量中指定。
 
-该模板会在资源组所在的同一位置中创建缓存。
+该模板在资源组所在的同一位置中创建缓存。
 
     {
       "name": "[variables('cacheName')]",
@@ -86,7 +86,7 @@ ms.locfileid: "56233279"
 ### <a name="web-app"></a>Web 应用
 使用 **webSiteName** 变量中指定的名称创建 Web 应用。
 
-请注意，在 Web 应用中配置的应用设置属性使其可与 Azure Redis 缓存配合工作。 此应用设置是根据部署期间提供了值动态创建的。
+请注意，在 Web 应用中配置的应用设置属性使其可与 Azure Redis 缓存配合工作。 这些设置，将动态创建的应用程序基于在部署过程中提供的值。
 
     {
       "apiVersion": "2015-08-01",

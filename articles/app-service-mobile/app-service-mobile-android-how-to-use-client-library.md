@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/07/2019
 ms.author: crdun
-ms.openlocfilehash: 11eb06c77fec29bef5329b143fecdfa4bb938d6d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328399"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732107"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK
 
@@ -53,12 +53,20 @@ ms.locfileid: "56328399"
 
 更改以下两个 **build.gradle** 文件：
 
-1. 将以下代码添加到 *buildscript* 标记内*项目*级别的 **build.gradle** 文件：
+1. 添加到此代码*项目*级别**build.gradle**文件：
 
     ```gradle
     buildscript {
         repositories {
             jcenter()
+            google()
+        }
+    }
+
+    allprojects {
+        repositories {
+            jcenter()
+            google()
         }
     }
     ```
@@ -66,7 +74,7 @@ ms.locfileid: "56328399"
 2. 将以下代码添加到*依赖关系*标记内*模块应用*级别的 **build.gradle** 文件：
 
     ```gradle
-    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
+    implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
     目前的最新版本为 3.4.0。 [bintray][14] 中列出了支持的版本。
@@ -150,7 +158,7 @@ Azure 移动应用 SDK 的核心作用是让你访问移动应用后端上的 SQ
 
 ### <a name="define-client-data-classes"></a>定义客户端数据类
 
-若要访问 SQL Azure 表的数据，可定义对应于移动应用后端中表的客户端数据类。 本主题中的示例采用名为 **MyDataTable** 的表，其中包含以下列：
+若要访问 SQL Azure 表的数据，可定义对应于移动应用后端中的表的客户端数据类。 本主题中的示例采用名为 **MyDataTable** 的表，其中包含以下列：
 
 * id
 * text
@@ -378,7 +386,7 @@ List<ToDoItem> results = mToDoTable
 
 ### <a name="sorting"></a>对返回的数据进行排序
 
-下面的代码返回 **ToDoItems** 表中的所有项目，并按 *text* 字段升序排列。 *mToDoTable* 是对前面创建的后端表的引用：
+以下代码返回 **ToDoItems** 表中的所有项，返回的结果已按 *text* 字段的升序排序。 *mToDoTable* 是对前面创建的后端表的引用：
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -448,7 +456,7 @@ do {
 
 ### <a name="chaining"></a>如何：连接查询方法
 
-用于查询后端表的方法是可以连接的。 链接查询方法使你能够选择已排序并分页的筛选行的特定列。 可以创建复杂的逻辑筛选器。  每个查询方法将返回一个查询对象。 若要结束方法序列并真正运行查询，可以调用 **execute** 方法。 例如：
+用于查询后端表的方法是可以连接的。 通过链接查询方法，可以选择已排序并分页的筛选行的特定列。 可以创建复杂的逻辑筛选器。  每个查询方法将返回一个查询对象。 若要结束方法序列并真正运行查询，可以调用 **execute** 方法。 例如：
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -605,7 +613,7 @@ ToDoItemAdapter 构造函数的第二个参数是对布局的引用。 我们现
 
 ## <a name="inserting"></a>将数据插入后端
 
-实例化 *ToDoItem* 类的实例并设置该实例的属性。
+实例化 *ToDoItem* 类的实例并设置其属性。
 
 ```java
 ToDoItem item = new ToDoItem();
@@ -631,7 +639,7 @@ ToDoItem entity = mToDoTable
 * 更方便地合并不同表或数据库中的记录。
 * ID 值能够更好地与应用程序的逻辑集成。
 
-对于脱机同步支持，字符串 ID 值为 **REQUIRED**。  将 ID 存储到后端数据库后，无法对它进行更改。
+若要支持脱机同步， **必需** 提供字符串 ID 值。  将 ID 存储到后端数据库后，无法对它进行更改。
 
 ## <a name="updating"></a>更新移动应用中的数据
 
@@ -688,7 +696,7 @@ mJsonToDoTable = mClient.getTable("ToDoItem");
 
 创建 **MobileServiceJsonTable** 的实例后，它几乎具有与类型化编程模型相同的可用 API。 在某些情况下，这些方法采用非类型化参数而不是类型化参数。
 
-### <a name="json_insert"></a>插入到非类型化表
+### <a name="json_insert"></a>插入到非类型化的表
 以下代码演示了如何执行插入。 第一步是创建属于 [gson][3] 库的 [JsonObject][1]。
 
 ```java
@@ -711,7 +719,7 @@ JsonObject insertedItem = mJsonToDoTable
 String id = insertedItem.getAsJsonPrimitive("id").getAsString();
 ```
 ### <a name="json_delete"></a>从非类型化表中删除
-以下代码演示了如何删除一个实例，在本例中，该实例就是我们在前一个 *insert* 示例中创建的 **JsonObject** 的实例。 该代码与类型化案例相同，但方法具有不同的签名，因为它引用了 **JsonObject**。
+以下代码演示了如何删除一个实例，在本例中，该实例就是我们在前一个 **insert** 示例中创建的 *JsonObject* 的实例。 该代码与类型化案例相同，但方法具有不同的签名，因为它引用了 **JsonObject**。
 
 ```java
 mToDoTable
@@ -974,17 +982,17 @@ android {
 }
 ```
 
-最后，将 `com.android.support:customtabs:23.0.1` 添加到 `build.gradle` 文件中的依赖项列表：
+最后，将 `com.android.support:customtabs:28.0.0` 添加到 `build.gradle` 文件中的依赖项列表：
 
 ```gradle
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.code.gson:gson:2.3'
-    compile 'com.google.guava:guava:18.0'
-    compile 'com.android.support:customtabs:23.0.1'
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.code.gson:gson:2.3'
+    implementation 'com.google.guava:guava:18.0'
+    implementation 'com.android.support:customtabs:28.0.0'
+    implementation 'com.squareup.okhttp:okhttp:2.5.0'
+    implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
 }
 ```
 
@@ -997,7 +1005,7 @@ dependencies {
 
 缓存身份验证令牌需要将用户 ID 和身份验证令牌存储在设备本地。 下一次启动应用程序时，只需检查缓存，如果这些值存在，则可以跳过登录过程，并使用这些数据重新进入客户端。 但是，这些数据是敏感的，为安全起见，应该以加密形式存储，以防手机失窃。  可以在[缓存身份验证令牌][7]部分中了解有关如何缓存身份验证令牌的完整示例。
 
-尝试使用过期的令牌时，将收到“401 未授权”响应。 可以使用筛选器处理身份验证错误。  筛选器可截获到应用服务后端的请求。 此时，筛选器代码将测试 401 响应，根据需要触发登录进程，并恢复生成 401 响应的请求。
+尝试使用过期的令牌时，会收到“401 未授权”  响应。 可以使用筛选器处理身份验证错误。  筛选器可截获到应用服务后端的请求。 此时，筛选器代码将测试 401 响应，根据需要触发登录进程，并恢复生成 401 响应的请求。
 
 ### <a name="refresh"></a>使用刷新令牌
 
@@ -1071,7 +1079,7 @@ MobileServiceUser user = mClient
 
 ### <a name="adal"></a>使用 Active Directory 身份验证库 (ADAL) 对用户进行身份验证
 
-可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用客户端流登录通常比使用 `loginAsync()` 方法更有利，因为它提供更直观的 UX 风格，并允许进行其他自定义。
+可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用客户端流登录通常比使用 `loginAsync()` 方法更有利，因为它提供更直观的 UX 风格，并允许其他自定义。
 
 1. 根据[如何为 Active Directory 登录配置应用服务][22]教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。
 2. 可通过修改 build.gradle 文件并包含以下定义来安装 ADAL：
@@ -1091,11 +1099,11 @@ MobileServiceUser user = mClient
         exclude 'META-INF/MSFTSIG.SF'
     }
     dependencies {
-        compile fileTree(dir: 'libs', include: ['*.jar'])
-        compile('com.microsoft.aad:adal:1.1.1') {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation('com.microsoft.aad:adal:1.16.1') {
             exclude group: 'com.android.support'
-        } // Recent version is 1.1.1
-        compile 'com.android.support:support-v4:23.0.0'
+        } // Recent version is 1.16.1
+        implementation 'com.android.support:support-v4:28.0.0'
     }
     ```
 

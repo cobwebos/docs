@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb1f4861f3867c592ecab86e85d3a4dfbab6738e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473759"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002949"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>对 Azure 存储服务的跨域资源共享 (CORS) 支持
-从版本 2013-08-15 开始，Azure 存储服务支持 Blob、表、队列和文件服务的跨域资源共享 (CORS)。 CORS 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为[同源策略](http://www.w3.org/Security/wiki/Same_Origin_Policy)的安全限制，防止网页调用不同域中的 API；CORS 提供了一种安全的方法，允许一个域（源域）调用其他域中的 API。 有关 CORS 的详细信息，请参阅 [CORS 规范](http://www.w3.org/TR/cors/)。
+从版本 2013-08-15 开始，Azure 存储服务支持 Blob、表、队列和文件服务的跨域资源共享 (CORS)。 CORS 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为[同源策略](https://www.w3.org/Security/wiki/Same_Origin_Policy)的安全限制，防止网页调用不同域中的 API；CORS 提供了一种安全的方法，允许一个域（源域）调用其他域中的 API。 有关 CORS 的详细信息，请参阅 [CORS 规范](https://www.w3.org/TR/cors/)。
 
 可分别为每个存储服务设置 CORS 规则，方式请参阅 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）和 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）。 为服务设置 CORS 规则后，会对从另一个域对服务发出的经过正确授权的请求进行评估，以根据指定的规则确定是否允许该请求。
 
@@ -29,7 +29,7 @@ ms.locfileid: "55473759"
 ## <a name="understanding-cors-requests"></a>了解 CORS 请求
 来自源域的 CORS 请求可能由两个单独的请求组成：
 
-* 预检请求，它查询服务施加的 CORS 限制。 仅当请求方法是[简单方法](http://www.w3.org/TR/cors/)（即 GET、HEAD 或 POST）时，才需要预检请求。
+* 预检请求，它查询服务施加的 CORS 限制。 仅当请求方法是[简单方法](https://www.w3.org/TR/cors/)（即 GET、HEAD 或 POST）时，才需要预检请求。
 * 实际请求，它针对所需资源发出。
 
 ### <a name="preflight-request"></a>预检请求
@@ -131,7 +131,7 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 | --- | --- | --- | --- | --- |
 | **方法** |**源** |**请求标头** |**规则匹配** |**结果** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |第一条规则 |Success |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |第二条规则 |Success |
+| **GET** |http://www.contoso.com |x-ms-blob-content-type |第二条规则 |成功 |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |第二条规则 |失败 |
 
 第一个请求与第一条规则相匹配，源域与允许的来源相匹配，方法与允许的方法相匹配，标头与允许的标头相匹配，所以第一个请求成功。
@@ -146,7 +146,7 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 > 
 
 ## <a name="understanding-how-the-vary-header-is-set"></a>了解如何设置 Vary 标头
-*Vary* 标头是一个由一组请求标头字段组成的标准 HTTP/1.1 标头，这些字段可告知浏览器或用户代理服务器选择用于处理该请求的条件。 *Vary* 标头主要用于代理、浏览器和 CDN 缓存，它们使用该标头来确定应如何缓存响应。 有关详细信息，请参阅 [Vary 标头](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)的规范。
+*Vary* 标头是一个由一组请求标头字段组成的标准 HTTP/1.1 标头，这些字段可告知浏览器或用户代理服务器选择用于处理该请求的条件。 *Vary* 标头主要用于代理、浏览器和 CDN 缓存，它们使用该标头来确定应如何缓存响应。 有关详细信息，请参阅 [Vary 标头](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)的规范。
 
 当浏览器或其他用户代理缓存 CORS 请求的响应时，源域将作为允许的来源缓存。 如果第二个域在缓存处于活动时对存储资源发出相同请求，用户代理会检索缓存的源域。 由于第二个域与缓存的域不匹配，因此原本应该成功的请求会失败。 在某些情况下，Azure 存储会将 Vary 标头设置为 **Origin**，以便在发出请求的域不同于缓存的来源时，指示用户代理将后续 CORS 请求发送到服务。
 
@@ -162,7 +162,7 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 下表指示了 Azure 存储如何基于前面提供的情况响应 GET/HEAD 请求：
 
 | 请求 | 帐户设置和规则评估结果 |  |  | 响应 |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | **请求中存在 Origin 标头** |**为此服务指定了 CORS 规则** |**存在允许所有源 (*) 的匹配规则** |**存在精确匹配域的匹配规则** |**响应包含设置为 Origin 的 Vary 标头** |**响应包含 Access-Control-Allowed-Origin：“*”** |**响应包含 Access-Control-Exposed-Headers** |
 | 否 |否 |否 |否 |否 |否 |否 |
 | 否 |是 |否 |否 |是 |否 |否 |
@@ -184,5 +184,5 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 
 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）
 
-[W3C 跨域资源共享规范](http://www.w3.org/TR/cors/)
+[W3C 跨域资源共享规范](https://www.w3.org/TR/cors/)
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cb0822380fd375c111f8acb8b28132727a7c048
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8ee74c5caed04d2626fea27d3419d0b0d685d675
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188301"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>教程：Azure Active Directory 与 Insignia SAML SSO 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56188301"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Insignia SAML SSO 的集成，需做好以下准备：
 
@@ -112,6 +112,7 @@ ms.locfileid: "56188301"
     ![Insignia SAML SSO 域和 URL 单一登录信息](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_url.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://<customername>.insigniails.com/ils` |

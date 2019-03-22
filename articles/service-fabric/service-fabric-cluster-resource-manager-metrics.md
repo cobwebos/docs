@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a7d3ad59d743287e5fe13c52c6c6a1a115d53f3
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 642f479aba62e5cc9dde63aed7c30de39b513a5e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053306"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093343"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用指标管理资源消耗和负载
 指标是服务关切的、由群集中的节点提供的资源。 指标是要进行管理以提升或监视服务性能的任何信息。 例如，可能需要监视内存消耗量以了解服务是否过载。 另一个用途是确定服务是否可以移动到内存较少受限的其他位置，以便获得更佳性能。
@@ -35,9 +35,9 @@ ms.locfileid: "44053306"
 
 | 指标 | 无状态实例负载 | 有状态辅助负载 | 有状态主要负载 | 重量 |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |高 |
-| ReplicaCount |0 |1 |1 |中型 |
-| Count |1 |1 |1 |低 |
+| PrimaryCount |0 |0 |第 |高 |
+| ReplicaCount |0 |1 |第 |中型 |
+| Count |第 |1 |第 |低 |
 
 
 对于脚本工作负荷，默认指标实现群集中的适当工作分布。 在下面的示例中，让我们看看创建两个服务并依赖默认指标进行平衡时会发生什么情况。 第一个服务是具有 3 个分区的有状态服务，目标副本集大小为 3。 第二个服务是具有 1 个分区的无状态服务，实例数为 3。
@@ -45,6 +45,7 @@ ms.locfileid: "44053306"
 下面是得到的情况：
 
 <center>
+
 ![包含默认指标的群集布局][Image1]
 </center>
 
@@ -70,8 +71,8 @@ ms.locfileid: "44053306"
 * 默认负载：默认负载根据服务是无状态还是有状态服务以不同的方式表示。
   * 对于无状态服务，每个指标都具有名为“DefaultLoad”的单个属性
   * 对于有状态服务，可以定义：
-    * PrimaryDefaultLoad：此服务使用此指标（主要指标）的默认量
-    * SecondaryDefaultLoad：此服务使用此指标（辅助指标）的默认量
+    * PrimaryDefaultLoad：此服务充当主副本时消耗此指标的默认数量
+    * SecondaryDefaultLoad：此服务充当辅助副本时消耗此指标的默认数量
 
 > [!NOTE]
 > 如果定义了自定义指标，并且希望同时使用默认指标，则需重新显式添加默认指标并为其定义权重和值。 这是因为必须定义默认指标和自定义指标之间的关系。 例如，与主要分布相比，也许更关心 ConnectionCount 或 WorkQueueDepth。 默认情况下，PrimaryCount 指标的权重为“高”，因此需要在添加其他指标时将其降低至“中”，以确保优先处理其他指标。
@@ -162,7 +163,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 群集资源管理器允许有状态服务为其主要副本和次要副本指定不同的默认负载。 无状态服务只能指定一个值，该值适用于所有实例。 对于有状态服务，主要副本和次要副本的默认负载通常不同，因为副本在每个角色中执行不同类型的工作。 例如，主要副本通常服务于读取和写入，并处理大部分计算负担，而次要副本则不同。 通常，主要副本的默认负载高于次要副本的默认负载。 实数应取决于你自己的度量值。
 
 ## <a name="dynamic-load"></a>动态负载
-假设服务已经运行了一段时间。 通过一些监视注意到：
+假设我们已运行服务一段时间。 通过一些监视注意到：
 
 1. 给定服务的某些分区或实例比其他分区或实例消耗更多的资源
 2. 某些服务的负载随时间而变化。
@@ -215,6 +216,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 让我们看一下可能的群集布局情况：
 
 <center>
+
 ![使用默认和自定义指标平衡的群集][Image2]
 </center>
 
@@ -239,7 +241,8 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 让我们查看一个负载报告示例，以及不同的指标权重如何在群集中造成不同的分配。 在此示例中，我们看到切换指标的相对权重会导致群集资源管理器创建不同的服务排列。
 
 <center>
-![指标权重示例及其对平衡解决方案的影响][Image3]
+
+![指标权重示例和及其对平衡解决方案的影响][Image3]
 </center>
 
 此示例中有 4 种不同的服务，所有服务都针对两个不同指标 MetricA 和 MetricB 报告不同的值。 在其中一个用例中，所有服务定义 MetricA 为最重要的指标（权重 = 高），MetricB 为不重要的指标（权重 = 低）。 因此会看到群集资源管理器在放置服务时会采用使得 MetricA 比 MetricB 更均衡的方式。 “更均衡”意味着 MetricA 具有比 MetricB 更小的标准偏差。 在第二个方案中，我们反转指标权重。 结果，群集资源管理器会交换服务 A 与 B，以产生 MetricB 比 MetricA 更加均衡的分配。
@@ -256,6 +259,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 如果群集 Resource Manager 不在意全局和局部均衡，会发生什么状况？ 构造全局均衡的解决方案虽然很简单，但这会导致单个服务的资源不够均衡。 在以下示例中，我们关注仅使用默认指标配置的服务，并了解只考虑全局均衡时会发生什么情况：
 
 <center>
+
 ![全局唯一解决方案的影响][Image4]
 </center>
 
@@ -265,8 +269,8 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="next-steps"></a>后续步骤
 - 有关服务配置的详细信息，请参阅[了解如何配置服务](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- 定义重整指标是合并（而不是分散）节点上负载的一种方式。若要了解如何配置重整，请参阅[此文](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
+- 定义重整指标是合并（而不是分散）节点上负载的一种方式。若要了解如何配置碎片整理，请参阅[此文](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关 [均衡负载](service-fabric-cluster-resource-manager-balancing.md)
 - 从头开始并[获取 Service Fabric 群集 Resource Manager 简介](service-fabric-cluster-resource-manager-introduction.md)
 - 移动成本是向群集 Resource Manager 发出信号，表示移动某些服务比移动其他服务会产生更高成本的方式之一。 若要了解有关移动成本的详细信息，请参阅[此文](service-fabric-cluster-resource-manager-movement-cost.md)
 

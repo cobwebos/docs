@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics 中视图设计器磁贴的参考指南 | Microsoft Docs
-description: 使用 Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
+title: Azure Monitor 中的视图设计器磁贴的参考指南 |Microsoft Docs
+description: 通过 Azure Monitor 中使用视图设计器，可以创建自定义视图，在 Azure 门户中显示并包含各种上 Log Analytics 工作区中数据的可视化效果。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 5b01b55c8b2367861459069cc255840e883b9fc5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: c380f0391c51628b0eb71723a0faf982a4399680
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817374"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887754"
 ---
-# <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Log Analytics 中视图设计器磁贴的参考指南
-使用 Azure Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
+# <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Monitor 中的视图设计器磁贴的参考指南
+通过 Azure Monitor 中使用视图设计器，可以在可帮助你可视化 Log Analytics 工作区中的数据在 Azure 门户中创建各种自定义视图。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
 
 有关视图设计器的详细信息，请参阅：
 
@@ -31,7 +31,7 @@ ms.locfileid: "55817374"
 
 下表描述了可用的视图设计器磁贴：  
 
-| 磁贴 | 说明 |
+| 磁贴 | 描述 |
 |:--- |:--- |
 | [数字](#number-tile) |查询中的记录数。 |
 | [两个数字](#two-numbers-tile) |两个不同查询中的记录数。 |
@@ -47,10 +47,10 @@ ms.locfileid: "55817374"
 
 ![数字磁贴](media/view-designer-tiles/tile-number.png)
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |:--- |:--- |
-| Name |在磁贴顶部显示的文本。 |
-| 说明 |在磁贴名称下面显示的文本。 |
+| 名称 |在磁贴顶部显示的文本。 |
+| 描述 |在磁贴名称下面显示的文本。 |
 | **磁贴** | |
 | 图例 |在值下面显示的文本。 |
 | Query |运行的查询。 显示由查询返回的记录数。 |
@@ -65,10 +65,10 @@ ms.locfileid: "55817374"
 
 ![两个数字磁贴](media/view-designer-tiles/tile-two-numbers.png)
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |:--- |:--- |
-| Name |在磁贴顶部显示的文本。 |
-| 说明 |在磁贴名称下面显示的文本。 |
+| 名称 |在磁贴顶部显示的文本。 |
+| 描述 |在磁贴名称下面显示的文本。 |
 | **第一个磁贴** | |
 | 图例 |在值下面显示的文本。 |
 | Query |运行的查询。 显示由查询返回的记录数。 |
@@ -86,10 +86,10 @@ ms.locfileid: "55817374"
 
 ![圆环图磁贴](media/view-designer-tiles/tile-donut.png)
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |:--- |:--- |
-| Name |在磁贴顶部显示的文本。 |
-| 说明 |在磁贴名称下面显示的文本。 |
+| 名称 |在磁贴顶部显示的文本。 |
+| 描述 |在磁贴名称下面显示的文本。 |
 | **圆环图** | |
 | Query |要为该圆环图运行的查询。 第一个属性应为文本值，第二个属性应为数值。 此查询通常使用 *measure* 关键字来汇总结果。 |
 | **圆环图** |**> 中心** |
@@ -110,10 +110,10 @@ ms.locfileid: "55817374"
 
 ![折线图和标注磁贴](media/view-designer-tiles/tile-line-chart.png)
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |:--- |:--- |
-| Name |在磁贴顶部显示的文本。 |
-| 说明 |在磁贴名称下面显示的文本。 |
+| 名称 |在磁贴顶部显示的文本。 |
+| 描述 |在磁贴名称下面显示的文本。 |
 | **折线图** | |
 | Query |要为该折线图运行的查询。 第一个属性应为文本值，第二个属性应为数值。 此查询通常使用 *measure* 关键字来汇总结果。 如果查询使用 *interval* 关键字，则 X 轴将使用此时间间隔。 如果查询不使用 *interval* 关键字，则 X 轴使用每小时间隔。 |
 | **折线图** |**> Y 轴** |
@@ -131,10 +131,10 @@ ms.locfileid: "55817374"
 
 ![折线图和标注磁贴](media/view-designer-tiles/tile-line-chart-callout.png)
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |:--- |:--- |
-| Name |在磁贴顶部显示的文本。 |
-| 说明 |在磁贴名称下面显示的文本。 |
+| 名称 |在磁贴顶部显示的文本。 |
+| 描述 |在磁贴名称下面显示的文本。 |
 | **折线图** | |
 | Query |要为该折线图运行的查询。 第一个属性应为文本值，第二个属性应为数值。 此查询通常使用 *measure* 关键字来汇总结果。 如果查询使用 *interval* 关键字，则 X 轴将使用此时间间隔。 如果查询不使用 *interval* 关键字，则 X 轴使用每小时间隔。 |
 | **折线图** |**> 标注** |
@@ -156,10 +156,10 @@ ms.locfileid: "55817374"
 
 ![两个时间线磁贴](media/view-designer-tiles/tile-two-timelines.png)
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |:--- |:--- |
-| Name |在磁贴顶部显示的文本。 |
-| 说明 |在磁贴名称下面显示的文本。 |
+| 名称 |在磁贴顶部显示的文本。 |
+| 描述 |在磁贴名称下面显示的文本。 |
 | 第一个图表 | |
 | 图例 |在第一个序列的标注下显示的文本。 |
 | 颜色 |用于第一个序列中的列的颜色。 |
@@ -177,5 +177,5 @@ ms.locfileid: "55817374"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关[日志搜索](../../azure-monitor/log-query/log-query-overview.md)以支持磁贴中的查询。
+* 了解如何[记录查询](../log-query/log-query-overview.md)以支持磁贴中的查询。
 * 将[可视化部件](view-designer-parts.md)添加到自定义视图。

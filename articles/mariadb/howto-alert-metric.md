@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661694"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122703"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 门户设置针对 Azure Database for MariaDB 指标的警报
 
@@ -60,21 +60,21 @@ ms.locfileid: "55661694"
 
 10. 配置“电子邮件/短信/推送/语音”操作类型。
     
-   选择“电子邮件 Azure 资源管理器角色”以选择订阅所有者、参与者和读取器来接收通知。
+    选择“电子邮件 Azure 资源管理器角色”以选择订阅所有者、参与者和读取器来接收通知。
    
-   （可选）如果希望在警报触发时调用有效的 URI，请将其放入“Webhook”字段。
+    （可选）如果希望在警报触发时调用有效的 URI，请将其放入“Webhook”字段。
 
-   完成后选择“确定”。
+    完成后选择“确定”。
 
-   ![操作组](./media/howto-alert-metric/10-action-group-type.png)
+    ![操作组](./media/howto-alert-metric/10-action-group-type.png)
 
 11. 指定预警规则名称、说明和严重性。
 
-   ![操作组](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![操作组](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. 选择“创建警报规则”可以创建警报。
 
-   几分钟后，警报将处于活动状态，并按前面所述进行触发。
+    几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 ## <a name="manage-your-alerts"></a>管理警报
 创建警报后，可选择它并执行以下操作：
@@ -86,4 +86,4 @@ ms.locfileid: "55661694"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[在警报中配置 Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)的详细信息。
-* 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
+* [大致了解指标收集](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

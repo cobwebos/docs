@@ -9,18 +9,20 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 4d090740b75acbe2629ae4f1e13cde8947f190bb
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236968"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286425"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
 本文提供故障排查步骤，可帮助解决与 VM 代理和扩展通信相关的 Azure 备份错误。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+
 
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM 代理无法与 Azure 备份通信
 
@@ -54,7 +56,7 @@ ms.locfileid: "56236968"
 建议的操作：<br>
 若要解决此问题，请删除 VM 资源组中的锁，并重试触发清理的操作。
 > [!NOTE]
-    > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>` 例如：AzureBackupRG_northeurope_1
+> 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>` 例如：AzureBackupRG_northeurope_1
 
 **步骤 1：[删除还原点资源组中的锁](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **步骤 2：[清理还原点集合](#clean_up_restore_point_collection)**<br>
@@ -64,7 +66,7 @@ ms.locfileid: "56236968"
 **错误代码**：UserErrorKeyvaultPermissionsNotConfigured <br>
 **错误消息**：备份服务对 Key Vault 没有足够的权限，无法备份已加密的 VM。 <br>
 
-要使备份操作在加密的 VM 上成功，该服务必须具有访问密钥保管库的权限。 这可以使用 [Azure 门户](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)或通过 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) 来完成
+要使备份操作在加密的 VM 上成功，该服务必须具有访问密钥保管库的权限。 这可以使用[Azure 门户](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)或通过[PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)。
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - 由于虚拟机上无网络连接，快照操作失败
 
@@ -100,19 +102,12 @@ ms.locfileid: "56236968"
 **原因 5：备份服务因资源组锁定而无权删除旧的还原点** <br>
 **原因 6：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize - 当前，Azure 备份不支持大于 1023GB 的磁盘大小
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize-当前 Azure 备份不支持大于 4095 GB 的磁盘大小
 
 **错误代码**：UserErrorUnsupportedDiskSize <br>
-**错误消息**：当前 Azure 备份不支持大于 1023GB 的磁盘大小 <br>
+**错误消息**：目前 Azure 备份不支持大于 4095 GB 的磁盘大小 <br>
 
-对磁盘大小大于 1023GB 的 VM 进行备份时，备份操作可能会失败，因为你的保管库未升级到即时还原。 升级到即时还原将提供高达 4TB 的支持，请参阅[此文](backup-instant-restore-capability.md#upgrading-to-instant-restore)。 升级后，订阅最多需要两个小时才能利用此功能。 重试该操作之前，请提供足够的缓冲区。  
-
-## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported - 当前，Azure 备份不支持标准 SSD 磁盘
-
-**错误代码**：UserErrorStandardSSDNotSupported <br>
-**错误消息**：当前，Azure 备份不支持标准 SSD 磁盘 <br>
-
-目前，Azure 备份仅支持升级到[即时还原](backup-instant-restore-capability.md)的保管库的标准 SSD 磁盘。
+磁盘大小大于 4095 GB 备份 VM 时，备份操作可能会失败。 对大型磁盘的支持即将推出。  
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 无法启动备份，因为另一个备份操作当前正在进行中
 
@@ -126,12 +121,12 @@ ms.locfileid: "56236968"
 3. 在保管库仪表板菜单中，单击“备份作业”显示所有备份作业。
 
     * 如果某个备份作业正在进行，请等待它完成或取消备份作业。
-        * 若要取消备份作业，请右键单击备份作业并单击“取消”或使用 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0)。
+        * 若要取消备份作业，请右键单击备份作业并单击“取消”或使用 [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)。
     * 如果已在另一个保管库中重新配置了备份，则确保旧保管库中没有正在运行的备份作业。 如果存在，则取消备份作业。
-        * 若要取消备份作业，请右键单击备份作业并单击“取消”或使用 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0)
+        * 若要取消备份作业，请右键单击备份作业并单击“取消”或使用 [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
 4. 请重试备份操作。
 
-如果计划备份操作花费时间长且与下一个备份配置冲突，请查看[最佳做法](backup-azure-vms-introduction.md#best-practices)、[备份性能](backup-azure-vms-introduction.md#backup-performance)和[还原注意事项](backup-azure-vms-introduction.md#restore-considerations)。
+如果计划备份操作花费时间长且与下一个备份配置冲突，请查看[最佳做法](backup-azure-vms-introduction.md#best-practices)、[备份性能](backup-azure-vms-introduction.md#backup-performance)和[还原注意事项](backup-azure-vms-introduction.md#backup-and-restore-considerations)。
 
 
 ## <a name="causes-and-solutions"></a>原因和解决方法
@@ -166,15 +161,15 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 
 1. 按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md)的说明进行操作。
 
- > [!NOTE]
- > 我们强烈建议只通过分发存储库更新代理。 不建议直接从 GitHub 下载代理代码进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
+   > [!NOTE]
+   > 我们强烈建议只通过分发存储库更新代理。 不建议直接从 GitHub 下载代理代码进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
 
 2. 运行以下命令，确保 Azure 代理可在 VM 上运行：`ps -e`
 
- 如果该进程未运行，请使用以下命令进行重启：
+   如果该进程未运行，请使用以下命令进行重启：
 
- * 对于 Ubuntu：`service walinuxagent start`
- * 对于其他分发版：`service waagent start`
+   * 对于 Ubuntu：`service walinuxagent start`
+   * 对于其他分发版：`service waagent start`
 
 3. [配置自动重启代理](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash)。
 4. 运行新的测试备份。 如果仍然失败，请从 VM 收集以下日志：
@@ -198,7 +193,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 | 原因 | 解决方案 |
 | --- | --- |
 | 由于在远程桌面协议 (RDP) 中关闭了 VM，VM 状态报告不正确。 | 如果在 RDP 中关闭了 VM，请检查门户，确定 VM 状态是否正确。 如果不正确，请在门户中使用 VM 仪表板上的“关闭”选项来关闭 VM。 |
-| VM 无法从 DHCP 获取主机或结构地址。 | 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果 VM 无法从 DHCP 响应 245 获取主机或结构地址，则无法下载或运行任何扩展。 如果需要静态专用 IP，则应通过 Azure 门户或 PowerShell 进行配置，同时确保启用 VM 内的 DHCP 选项。 有关如何通过 PowerShell 设置静态 IP 的详细信息，请参阅[经典 VM](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) 和[资源管理器 VM](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)。
+| VM 无法从 DHCP 获取主机或结构地址。 | 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果 VM 无法从 DHCP 响应 245 获取主机或结构地址，则无法下载或运行任何扩展。 如果需要静态专用 IP，则应配置通过**Azure 门户**或**PowerShell**并确保启用 VM 内的 DHCP 选项。 [了解详细信息](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)有关设置静态 IP 地址使用 PowerShell 的信息。
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>无法更新或加载备份扩展
 如果无法加载扩展，则会由于无法创建快照而导致备份失败。
@@ -220,36 +215,36 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 完成这些步骤可在下一次备份期间重新安装扩展。
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
-1. 登录到 [Azure 门户](http://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 转到“所有资源选项”，选择采用 AzureBackupRG_`<Geo>`_`<number>` 格式的还原点集合资源组。
 3. 在“设置”部分，选择“锁”以显示锁。
 4. 若要删除锁，请选择省略号，然后单击“删除”。
 
-    ![删除锁 ](./media/backup-azure-arm-vms-prepare/delete-lock.png)
+    ![删除锁](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
 ### <a name="clean_up_restore_point_collection"></a>清理还原点集合
 删除锁后，必须清理还原点。 若要清理还原点，请执行以下任一方法：<br>
-* [通过运行即席备份来清理还原点集合](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+* [运行即席备份，清理还原点集合](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 * [从 Azure 门户清理还原点集合](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>通过运行即席备份来清理还原点集合
-删除锁后，触发即席/手动备份。 这可以确保自动清理还原点。 预期此即席/手动操作第一次会失败；但是，它可以确保自动完成清理，而无需手动删除还原点。 清理后，下一个计划的备份应会成功。
+#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>运行即席备份，清理还原点集合
+删除锁后, 触发 ad hoc/手动备份。 这可以确保自动清理还原点。 预期失败第一次; 此 ad hoc/手动操作但是，它将确保自动清理，而不是手动删除的还原点。 清理后，下一个计划的备份应会成功。
 
 > [!NOTE]
-    > 自动清理将在触发即席/手动备份的数小时后发生。 如果计划的备份仍然失败，请尝试使用[此处](#clean-up-restore-point-collection-from-azure-portal)列出的步骤手动删除还原点集合。
+> 触发 ad hoc/手动备份的几个小时后会自动清理。 如果计划的备份仍然失败，请尝试使用[此处](#clean-up-restore-point-collection-from-azure-portal)列出的步骤手动删除还原点集合。
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>从 Azure 门户清理还原点集合 <br>
 
 若要手动清除由于资源组中存在锁而未能清除的还原点集合，请尝试以下步骤：
-1. 登录到 [Azure 门户](http://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“中心”菜单中单击“所有资源”，选择 VM 所在的、采用 AzureBackupRG_`<Geo>`_`<number>` 格式的资源组。
 
-    ![删除锁 ](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![删除锁](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. 单击“资源组”。此时会显示“概述”边栏选项卡。
 4. 选择“显示隐藏的类型”选项，以显示所有已隐藏的资源。 选择采用 AzureBackupRG_`<VMName>`_`<number>` 格式的还原点集合。
 
-    ![删除锁 ](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![删除锁](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
 5. 单击“删除”以清理还原点集合。
 6. 再次重试备份操作。

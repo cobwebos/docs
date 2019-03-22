@@ -9,12 +9,12 @@ ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 3d4411153f2c5c342b1640865f05b6bf4c4b0f61
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: df894fee3328b2199b8f7436adabfd3db62f4004
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212606"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737121"
 ---
 # <a name="use-the-anomaly-finder-api-with-python"></a>将异常查找器 API 与 Python 配合使用
 
@@ -22,7 +22,7 @@ ms.locfileid: "55212606"
 
 本文提供了相关信息和示例代码，帮助用户快速开始将异常查找器 API 与 Python 配合使用，从而获取时序数据异常结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 

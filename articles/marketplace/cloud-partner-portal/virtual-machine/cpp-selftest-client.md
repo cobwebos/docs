@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7afa64ebedb38b4514bbd155bf8f29268d420d18
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: aa46fbce9d11a8fd380a5ee1990c0e7924079a9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745752"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078680"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>创建用来预验证 Azure 虚拟机映像的自测试客户端
 
@@ -73,7 +73,7 @@ Request body:    The Request body parameters should use the following JSON forma
 下表描述了 API 各字段。
 
 
-|      字段         |    说明    |
+|      字段         |    描述    |
 |  ---------------   |  ---------------  |
 |  授权     |  “持有者 xxxx-xxxx-xxxx-xxxxx”字符串包含可通过使用 PowerShell 创建的 Azure Active Directory (AD) 客户端令牌。          |
 |  DNSName           |  要测试的 VM 的 DNS 名称    |
@@ -297,8 +297,8 @@ https://isvapp.azurewebsites.net/selftest-vm
     - 选择“保存”以生成密钥。
     - 在“值”下，复制该密钥。
 
-     >[!Important]
-     >退出“密钥”表单后，将无法看到密钥值。
+      >[!Important]
+      >退出“密钥”表单后，将无法看到密钥值。
 
     ![密钥值表单](./media/stclient-create-key.png)
 

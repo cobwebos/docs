@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.openlocfilehash: 361ab36d3029dbc00e8d1e53ef9f9af42be3e1eb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 17428405a0be45854a2eaaef831864f529ed145a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255829"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994475"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
 
@@ -94,6 +94,7 @@ StorSimple 提供以下优势：
 |------------------------|---------------|-----------------|
 | 本地存储容量 | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | 云存储容量 | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \* 未经过重复数据删除或压缩的存储大小。
 
 **用于主备份和辅助备份的 StorSimple 容量**
@@ -207,16 +208,16 @@ StorSimple 提供以下优势：
 
 ### <a name="operating-system-best-practices"></a>操作系统最佳实践
 
--   在 NTFS 文件系统中禁用 Windows Server 加密和重复数据删除。
--   在 StorSimple 卷上禁用 Windows Server 碎片整理。
--   在 StorSimple 卷上禁用 Windows Server 索引编制。
--   在源主机上运行防病毒扫描（不是针对 StorSimple 卷）。
--   在任务管理器中关闭默认的[Windows Server 维护](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)。 通过以下方式之一执行此操作：
-    - 在 Windows 任务计划程序中关闭“维护”配置器。
-    - 通过 Windows Sysinternals 下载 [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx)。 下载 PsExec 后，以管理员身份运行 Windows PowerShell，键入：
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- 在 NTFS 文件系统中禁用 Windows Server 加密和重复数据删除。
+- 在 StorSimple 卷上禁用 Windows Server 碎片整理。
+- 在 StorSimple 卷上禁用 Windows Server 索引编制。
+- 在源主机上运行防病毒扫描（不是针对 StorSimple 卷）。
+- 在任务管理器中关闭默认的[Windows Server 维护](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)。 通过以下方式之一执行此操作：
+  - 在 Windows 任务计划程序中关闭“维护”配置器。
+  - 通过 Windows Sysinternals 下载 [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx)。 下载 PsExec 后，以管理员身份运行 Windows PowerShell，键入：
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple 最佳实践
 
@@ -251,12 +252,13 @@ StorSimple 提供以下优势：
 
 | 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
-| 每周完整备份 | 1 | 4  | 4 |
+| 每周完整备份 | 第 | 4  | 4 |
 | 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用 2 个以提高配额） |
-| 每月完整备份 | 1 | 12 | 12 |
-| 每年完整备份 | 1  | 10 | 10 |
+| 每月完整备份 | 第 | 12 | 12 |
+| 每年完整备份 | 第  | 10 | 10 |
 | GFS 要求 |   | 38 |   |
 | 提高的配额  | 4  |   | 总共 42，满足 GFS 要求  |
+
 \* GFS 乘数是需要根据备份策略要求保护和保留的副本数。
 
 ## <a name="set-up-netbackup-storage"></a>设置 NetBackup 存储
@@ -292,7 +294,7 @@ StorSimple 提供以下优势：
 
 下图显示了典型卷到备份作业的映射。 在本例中，所有每周备份映射到星期六完整备份磁盘，增量备份映射到星期一至星期五增量备份磁盘。 所有备份和还原操作从 StorSimple 分层卷发生。
 
-![主备份目标配置逻辑示意图 ](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
+![主备份目标配置逻辑示意图](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
 
 ### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>用作主备份目标的 StorSimple 的 GFS 计划示例
 
@@ -302,7 +304,7 @@ StorSimple 提供以下优势：
 |---|---|---|
 | 每周（第 1-4 周） | 星期六 | 星期一至星期五 |
 | 每月  | 星期六  |   |
-| 每年 | 星期六  |   |   |
+| 每年 | 星期六  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>将 StorSimple 卷分配到 NetBackup 备份作业
 
@@ -310,69 +312,69 @@ StorSimple 提供以下优势：
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>将 StorSimple 卷分配到 NetBackup 备份作业
 
-1.  在 NetBackup 管理控制台中，选择“NetBackup 管理”，右键单击“策略”，并选择“新建策略”。
+1. 在 NetBackup 管理控制台中，选择“NetBackup 管理”，右键单击“策略”，并选择“新建策略”。
 
-    ![NetBackup 管理控制台，创建新策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
+   ![NetBackup 管理控制台，创建新策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2.  在“添加新策略”对话框中，输入策略的名称，并选中“使用策略配置向导”复选框。 选择“确定”。
+2. 在“添加新策略”对话框中，输入策略的名称，并选中“使用策略配置向导”复选框。 选择“确定”。
 
-    ![NetBackup 管理控制台，“添加新策略”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
+   ![NetBackup 管理控制台，“添加新策略”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
-3.  在备份策略配置向导中，选择所需的备份类型，并选择“下一步”。
+3. 在备份策略配置向导中，选择所需的备份类型，并选择“下一步”。
 
-    ![NetBackup 管理控制台，选择备份类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
+   ![NetBackup 管理控制台，选择备份类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4.  要设置策略类型，请选择“标准”，并选择“下一步”。
+4. 要设置策略类型，请选择“标准”，并选择“下一步”。
 
-    ![NetBackup 管理控制台，选择策略类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
+   ![NetBackup 管理控制台，选择策略类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。 选择“**下一步**”。
+5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。 选择“**下一步**”。
 
-    ![NetBackup 管理控制台，在新策略中列出客户端](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
+   ![NetBackup 管理控制台，在新策略中列出客户端](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
-6.  选择要备份的驱动器。
+6. 选择要备份的驱动器。
 
-    ![NetBackup 管理控制台，新策略的备份选择内容](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
+   ![NetBackup 管理控制台，新策略的备份选择内容](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
 
-7.  选择满足备份轮转要求的频率和保留值。
+7. 选择满足备份轮转要求的频率和保留值。
 
-    ![NetBackup 管理控制台，新策略的备份频率和轮转](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
+   ![NetBackup 管理控制台，新策略的备份频率和轮转](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8.  选择“下一步” > “下一步” > “完成”。  创建策略后，可以修改计划。
+8. 选择“下一步” > “下一步” > “完成”。  创建策略后，可以修改计划。
 
-9.  选择刚刚创建的策略将它展开，然后选择“计划”。
+9. 选择刚刚创建的策略将它展开，然后选择“计划”。
 
-    ![NetBackup 管理控制台，新策略的计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
+   ![NetBackup 管理控制台，新策略的计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10.  右键单击“Differential-Inc”，选择“复制到新计划”，并选择“确定”。
+10. 右键单击“Differential-Inc”，选择“复制到新计划”，并选择“确定”。
 
     ![NetBackup 管理控制台，将计划复制到新策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
-11.  右键单击新建的计划，并选择“更改”。
+11. 右键单击新建的计划，并选择“更改”。
 
-12.  在“属性”选项卡中，选中“覆盖策略存储选择”复选框，并选择星期一增量备份要存储到的卷。
+12. 在“属性”选项卡中，选中“覆盖策略存储选择”复选框，并选择星期一增量备份要存储到的卷。
 
     ![NetBackup 管理控制台，更改计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
-13.  在“开始时段”选项卡中选择备份的时段。
+13. 在“开始时段”选项卡中选择备份的时段。
 
     ![NetBackup 管理控制台，更改开始时段](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14.  选择“确定”。
+14. 选择“确定”。
 
-15.  针对每个增量备份重复步骤 10-14。 针对创建的每个备份选择适当的卷和计划。
+15. 针对每个增量备份重复步骤 10-14。 针对创建的每个备份选择适当的卷和计划。
 
-16.  右键单击“Differential-Inc”计划并将它删除。
+16. 右键单击“Differential-Inc”计划并将它删除。
 
-17.  根据备份需要修改完整备份计划。
+17. 根据备份需要修改完整备份计划。
 
     ![NetBackup 管理控制台，更改完整备份计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage17.png)
 
-18.  更改开始时段。
+18. 更改开始时段。
 
     ![NetBackup 管理控制台，更改开始时段](./media/storsimple-configure-backup-target-using-netbackup/nbimage18.png)
 
-19.  最终的计划如下所示：
+19. 最终的计划如下所示：
 
     ![NetBackup 管理控制台，最终的计划](./media/storsimple-configure-backup-target-using-netbackup/nbimage19.png)
 
@@ -395,15 +397,16 @@ StorSimple 提供以下优势：
 
 | 备份类型和保留期 | 配置的存储 | 大小 (TiB) | GFS 乘数 | 总容量\* (TiB) |
 |---|---|---|---|---|
-| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 1 |
-| StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 1 | 4 | 4 |
-| 每月完整备份 |StorSimple 磁盘（长期） | 1 | 12 | 12 |
-| 每年完整备份 |StorSimple 磁盘（长期） | 1 | 1 | 1 |
+| 第 1 周（完整和增量） |本地磁盘（短期）| 第 | 1 | 第 |
+| StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 第 | 4 | 4 |
+| 每月完整备份 |StorSimple 磁盘（长期） | 第 | 12 | 12 |
+| 每年完整备份 |StorSimple 磁盘（长期） | 第 | 1 | 第 |
 |GFS 卷大小要求 |  |  |  | 18*|
+
 \* 总容量包括 17 TiB 的 StorSimple 磁盘和 1 TiB 的本地 RAID 卷。
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GSF 示例计划：每周、每月和每年 GFS 轮转计划
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS 示例计划：每周、每月和每年 GFS 轮转计划
 
 | 周次 | 完整 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
 |---|---|---|---|---|---|---|
@@ -412,7 +415,7 @@ StorSimple 提供以下优势：
 | 第 3 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 第 4 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 每月 | StorSimple 每月备份 |   |   |   |   |   |
-| 每年 | StorSimple 每年备份  |   |   |   |   |   |   |
+| 每年 | StorSimple 每年备份  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>将 StorSimple 卷分配到 NetBackup 存档和重复数据删除作业
@@ -427,53 +430,54 @@ StorSimple 提供以下优势：
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>将 StorSimple 卷分配到 NetBackup 存档和重复数据删除作业
 
-1.  在 NetBackup 管理控制台中，选择“存储” > “存储生命周期策略” > “新建存储生命周期策略”。
+1. 在 NetBackup 管理控制台中，选择“存储” > “存储生命周期策略” > “新建存储生命周期策略”。
 
-    ![NetBackup 管理控制台，新建存储生命周期策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
+   ![NetBackup 管理控制台，新建存储生命周期策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
-2.  输入快照的名称，并选择“添加”。
+2. 输入快照的名称，并选择“添加”。
 
-3.  在“新建操作”对话框中的“属性”选项卡上，为“操作”选择“备份”。 为“目标存储”、“保留类型”和“保留期”选择所需的值。 选择“确定”。
+3. 在“新建操作”对话框中的“属性”选项卡上，为“操作”选择“备份”。 为“目标存储”、“保留类型”和“保留期”选择所需的值。 选择“确定”。
 
-    ![NetBackup 管理控制台，“新建操作”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
+   ![NetBackup 管理控制台，“新建操作”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
-    现已定义第一个备份操作和存储库。
+   现已定义第一个备份操作和存储库。
 
-4.  突出显示前一个操作将其选中，然后选择“添加”。 在“更改存储操作”对话框中，为“目标存储”、“保留类型”和“保留期”选择所需的值。
+4. 突出显示前一个操作将其选中，然后选择“添加”。 在“更改存储操作”对话框中，为“目标存储”、“保留类型”和“保留期”选择所需的值。
 
-    ![NetBackup 管理控制台，“更改存储操作”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
+   ![NetBackup 管理控制台，“更改存储操作”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 
-5.  突出显示前一个操作将其选中，然后选择“添加”。 在“新建存储生命周期策略”对话框框中，添加一年的每月备份。
+5. 突出显示前一个操作将其选中，然后选择“添加”。 在“新建存储生命周期策略”对话框框中，添加一年的每月备份。
 
-    ![NetBackup 管理控制台，“新建存储生命周期策略”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
+   ![NetBackup 管理控制台，“新建存储生命周期策略”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
 
-6.  重复步骤 4-5，直到已创建所需的全面 SLP 保留策略。
+6. 重复步骤 4-5，直到已创建所需的全面 SLP 保留策略。
 
-    ![NetBackup 管理控制台，在“新建存储生命周期策略”对话框中添加策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
+   ![NetBackup 管理控制台，在“新建存储生命周期策略”对话框中添加策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
 
-7.  定义完 SLP 保留策略后，请在“策略”下面，根据[将 StorSimple 卷分配到 NetBackup 备份作业](#assigning-storsimple-volumes-to-a-netbackup-backup-job)中详述的步骤定义备份策略。
+7. 定义完 SLP 保留策略后，请在“策略”下面，根据[将 StorSimple 卷分配到 NetBackup 备份作业](#assigning-storsimple-volumes-to-a-netbackup-backup-job)中详述的步骤定义备份策略。
 
-8.  在“更改计划”对话框中的“计划”下面，右键单击“完整”，并选择“更改”。
+8. 在“更改计划”对话框中的“计划”下面，右键单击“完整”，并选择“更改”。
 
-    ![NetBackup 管理控制台，“更改计划”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
+   ![NetBackup 管理控制台，“更改计划”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9.  选择“覆盖策略存储选择”，并选择在步骤 1-6 中创建的 SLP 保留策略。
+9. 选择“覆盖策略存储选择”，并选择在步骤 1-6 中创建的 SLP 保留策略。
 
-    ![NetBackup 管理控制台，覆盖策略存储选择](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
+   ![NetBackup 管理控制台，覆盖策略存储选择](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10.  选择“确定”，并针对增量备份计划重复上述步骤。
+10. 选择“确定”，并针对增量备份计划重复上述步骤。
 
     ![NetBackup 管理控制台，增量备份的“更改计划”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
 
 | 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
-| 每周完整备份 |  1  |  4 | 4  |
+| 每周完整备份 |  第  |  4 | 4  |
 | 每日增量备份  | 0.5  | 20（周期等于每月的周数） | 12（使用 2 个以提高配额） |
-| 每月完整备份  | 1 | 12 | 12 |
-| 每年完整备份 | 1  | 10 | 10 |
+| 每月完整备份  | 第 | 12 | 12 |
+| 每年完整备份 | 第  | 10 | 10 |
 | GFS 要求  |     |     | 38 |
 | 提高的配额  | 4  |    | 总共 42，满足 GFS 要求 |
+
 \* GFS 乘数是需要根据备份策略要求保护和保留的副本数。
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple 云快照
@@ -503,13 +507,13 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>启动或删除云快照
 
-1.  [安装 Azure PowerShell](/powershell/azure/overview)。
+1. [安装 Azure PowerShell](/powershell/azure/overview)。
 2. 下载和安装 [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell 脚本。
 3. 在运行脚本的服务器上，以管理员身份运行 PowerShell。 确保运行脚本时使用 `-WhatIf $true`，以查看该脚本会导致哪些变化。 完成验证后，立即传递 `-WhatIf $false`。 运行下列命令：
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  将该脚本添加到 NetBackup 中的备份作业。 为此，请编辑 NetBackup 作业选项的前处理和后处理命令。
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. 将该脚本添加到 NetBackup 中的备份作业。 为此，请编辑 NetBackup 作业选项的前处理和后处理命令。
 
 > [!NOTE]
 > 建议在每日备份作业结束时，以后处理脚本的形式运行 StorSimple 云快照备份策略。 有关如何备份和还原备份应用程序环境以帮助满足 RPO 和 RTO 要求的详细信息，请咨询备份架构师。
@@ -536,7 +540,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 本文参考了以下文档：
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md)（StorSimple 多路径 I/O 设置）
-- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)（存储方案：精简预配）
+- [存储方案：精简预配](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)（使用 GPT 驱动器）
 - [Set up shadow copies for shared folders](https://technet.microsoft.com/library/cc771893.aspx)（设置共享文件夹的卷影副本）
 

@@ -12,24 +12,24 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf07541c23ba2295a367ac8ba6a514b7dee6ee9a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453828"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085076"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>设置安全信息（预览版）以使用电话呼叫
-可以按照以下步骤添加双重验证和密码重置方法。 在第一次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
+可以按照以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
 
 如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
->[!Note]
->安全信息不支持使用电话分机。 即使添加正确的“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
-
->如果看不到电话选项，则可能是因为组织不允许你使用电话号码进行验证。 在这种情况下，需选择另一种方法，或与管理员联系以获取进一步帮助。
+> [!Note]
+> 安全信息不支持使用电话分机。 即使添加正确的“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
+> 
+> 如果看不到电话选项，则可能是因为组织不允许你使用电话号码进行验证。 在这种情况下，需选择另一种方法，或与管理员联系以获取进一步帮助。
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>从“安全信息”页面设置电话呼叫
 也许可以使用电话呼叫作为安全信息方法之一，具体取决于组织的设置。
@@ -41,13 +41,13 @@ ms.locfileid: "56453828"
 
 1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
 
-    ![“我的个人资料”页面，显示突出显示的安全信息链接](media/security-info/securityinfo-myprofile.png)
+    ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
-2. 从左侧导航窗格中或从“安全信息”块中的链接中选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
+2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. 在“添加方法”页面上，从下拉列表中选择“电话”，然后选择“添加”。
+3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”。
 
     ![“添加方法”框，已选中“电话”](media/security-info/securityinfo-myprofile-addphonetext.png)
 
@@ -75,14 +75,14 @@ ms.locfileid: "56453828"
 
     ![从安全信息中删除电话方法的链接](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. 从确认框中选择“是”，以删除**电话**号码。 删除电话号码后，它就会从你的安全信息中删除，并从“安全信息”页面消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
+2. 从确认框中选择“是”，以删除**电话**号码。 删除电话号码后，该帐户将从你的安全信息中删除，并从“安全信息”页消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
     
 ## <a name="change-your-default-security-info-method"></a>更改默认的安全信息方法
 如果你在使用双重验证登录工作或学校帐户时希望电话呼叫成为默认使用的方法，或者希望电话呼叫成为默认用于密码重置请求的方法，则可以从“安全信息”页面对其进行设置。
 
 ### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法的步骤
 
-1. 在“安全信息”页面上，选择“默认登录方法”信息旁边的“更改”链接。
+1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接。
 
     ![更改默认登录方法的链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 

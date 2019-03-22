@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: fcfb3943109adbc095b90073f041662fb5c65b56
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: eb49d0fe610a78b8d1a407644a206fddaba0a67a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078875"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116209"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>“虚拟机”产品/服务发布指南
 
@@ -56,17 +56,20 @@ ms.locfileid: "54078875"
 
 将虚拟设备部署到与客户关联的订阅时，请使用“虚拟机”产品/服务类型。 使用即用即付或自带许可 (BYOL) 许可模型为 VM 启用完整商务功能。 Microsoft 托管商业事务并代你向客户计费。 可获得的好处是能够利用客户与 Microsoft 之间达成的首选付费关系（包括任何企业协议）。
 
->[!NOTE]
->目前可针对 VM 的 Azure 使用情况，而非软件许可费用，使用与企业协议关联的货币承诺。  
-
->[!NOTE]
->通过将映像和定价发布为“专有”产品/服务，可将 VM 的发现和部署限制为特定的一组客户。 “专有”产品/服务能够为关系最密切的客户提供专属优惠，并提供自定义软件和条款。 这些自定义条款可在一系列场景中提供助力，包括使用特殊定价和条款的现场导向型交易以及对限制性版本软件的早期访问。 “专有”产品/服务可让你通过创建包含这些细节的新 SKU，向有限的一组客户提供特定的定价或产品。  
-*   有关专有产品/服务的详细信息，请访问“Azure 市场中的专有产品/服务”页 [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)。  
+> [!NOTE]
+> 目前可针对 VM 的 Azure 使用情况，而非软件许可费用，使用与企业协议关联的货币承诺。  
+> 
+> [!NOTE]
+> 通过将映像和定价发布为“专有”产品/服务，可将 VM 的发现和部署限制为特定的一组客户。 “专有”产品/服务能够为关系最密切的客户提供专属优惠，并提供自定义软件和条款。 这些自定义条款可在一系列场景中提供助力，包括使用特殊定价和条款的现场导向型交易以及对限制性版本软件的早期访问。 “专有”产品/服务可让你通过创建包含这些细节的新 SKU，向有限的一组客户提供特定的定价或产品。  
+> *   有关专有产品/服务的详细信息，请访问“Azure 市场中的专有产品/服务”页 [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)。  
 
 | 要求 | 详细信息 |  
 |:--- |:--- | 
 | 计费和计量 | VM 必须支持 BYOL 或即用即付每月计费。 |  
 | 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 <ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |  
+
+>[!Note]
+>云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](./cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
 
 ## <a name="next-steps"></a>后续步骤
 

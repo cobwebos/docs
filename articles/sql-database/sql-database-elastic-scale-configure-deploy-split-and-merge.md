@@ -12,19 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 7939de5cf45535dc911c25ae8fa8c914a214fa3c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458051"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995825"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 
 可使用拆分/合并工具在分片数据库之间移动数据。 请参阅[在扩展云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)
 
 ## <a name="download-the-split-merge-packages"></a>下载拆分/合并包
-1. 从 [NuGet](http://docs.nuget.org/docs/start-here/installing-nuget) 下载最新的 NuGet 版本。
+1. 从 [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget) 下载最新的 NuGet 版本。
 2. 打开命令提示符，并导航到下载 nuget.exe 的目录。 此下载包括 PowerShell 命令。
 3. 使用以下命令将最新的拆分/合并包下载到当前目录中：
    ```
@@ -33,7 +33,7 @@ ms.locfileid: "55458051"
 
 文件放置在名为 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目录中，其中 *x.x.xxx.x* 表示版本号。 拆分/合并服务文件可在 **content\splitmerge\service** 子目录中找到；拆分/合并 PowerShell 脚本（和所需的客户端 dll）可在 **content\splitmerge\powershell** 子目录中找到。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 1. 创建将用作拆分/合并状态数据库的 Azure SQL DB。 转到 [Azure 门户](https://portal.azure.com)。 创建新的 **SQL** 数据库。 为数据库指定一个名称，并创建一个新的管理员和密码。 确保记录该名称和密码以供日后使用。
 2. 确保 Azure SQL DB 服务器允许 Azure 服务与其连接。 在门户上的“防火墙设置”中，确保“允许访问 Azure 服务”设置设为“打开”。 单击“保存”图标。
 3. 创建用于诊断输出的 Azure 存储帐户。
@@ -326,7 +326,7 @@ ms.locfileid: "55458051"
 [Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'. 
 ```
 
-在这种情况下，请检查配置文件，尤其是 **WorkerRoleSynchronizationStorageAccountConnectionString** 的设置。 此错误通常表示辅助角色无法成功初始化首次使用的元数据数据库。 
+在这种情况下，请检查配置文件，尤其是 **WorkerRoleSynchronizationStorageAccountConnectionString**的设置。 此错误通常表示辅助角色无法成功初始化首次使用的元数据数据库。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

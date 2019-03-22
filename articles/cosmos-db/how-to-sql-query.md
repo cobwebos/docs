@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 的 SQL 查询
-description: 了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查询。 SQL 可在 Azure Cosmos DB 中作为 JSON 查询语言使用。
+description: 了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查询。 SQL 可以用作 Azure Cosmos DB 中的 JSON 查询语言。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 822c4631c08da27ef7b92af2df5e5e0d04f063b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013900"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 SQL 查询示例
 
@@ -160,7 +160,7 @@ Azure Cosmos DB 通过将 SQL（结构化查询语言）用作 JSON 查询语言
 
 * 结构化查询语言适用于无架构的数据。 因此，需要动态绑定类型系统。 相同的表达式在不同项上可能会产生不同的类型。 查询的结果是一个有效的 JSON 值，但不保证它为固定的架构。  
 
-* Azure Cosmos DB 仅支持严格的 JSON 项。 这意味着类型系统和表达式仅限于处理 JSON 类型。 有关更多详细信息，请参阅 [JSON 规范](http://www.json.org/)。  
+* Azure Cosmos DB 仅支持严格的 JSON 项。 这意味着类型系统和表达式仅限于处理 JSON 类型。 有关更多详细信息，请参阅 [JSON 规范](https://www.json.org/)。  
 
 * Cosmos DB 容器是 JSON 项的一个无架构集合。 在容器中，文档内和跨项的数据实体的关系是按包含关系隐式捕获的，而不是按主键和外键关系。 考虑到稍后会在本文中讨论项内联接，因此这是一个值得注意的重要方面。
 
@@ -421,7 +421,7 @@ WHERE 子句（**`WHERE <filter_condition>`**）可选。 它指定由源提供�
 如果筛选器中标量表达式的结果为 Undefined，则相应的项不会包含在结果中，因为 Undefined 在逻辑上不等于“True”。
 
 ## <a name="between-keyword"></a>BETWEEN 关键字
-也可以使用 BETWEEN 关键字来对一定范围内的值（如在 ANSI SQL 中）进行快速查询。 可对字符串或数字使用 BETWEEN。
+还可以使用 BETWEEN 关键字来对一定范围内的值（如在 ANSI SQL 中）进行快速查询。 可对字符串或数字使用 BETWEEN。
 
 例如，此查询返回在其中第一个子女的年级为 1-5 之间（包括 1 和 5）的所有家庭项。
 
@@ -820,7 +820,7 @@ TOP 关键字可用于限制来自查询中的值的数量。 当 TOP 与 ORDER 
 
 下表显示了 SQL API 中受支持的聚合函数的列表。 `SUM` 和 `AVG` 基于数字值执行，而 `COUNT`、`MIN`、`MAX` 则可基于数字、字符串、布尔值和 null 值执行。
 
-| 使用情况 | 说明 |
+| 使用情况 | 描述 |
 |-------|-------------|
 | COUNT | 在表达式中返回项的数目。 |
 | SUM   | 在表达式中返回所有值的总和。 |
@@ -1363,7 +1363,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
 每个数学函数均执行一个计算，基于作为参数提供的输出值，并返回数值。 以下是受支持的内置数学函数表。
 
-| 使用情况 | 说明 |
+| 使用情况 | 描述 |
 |----------|--------|
 | [ABS (num_expr) | 返回指定数值表达式的绝对（正）值。 |
 | CEILING (num_expr) | 返回大于或等于指定数值表达式的最小整数值。 |
@@ -1438,7 +1438,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
 下面的标量函数对字符串输入值执行操作，并返回字符串、数值或布尔值。 以下是内置字符串函数表：
 
-| 使用情况 | 说明 |
+| 使用情况 | 描述 |
 | --- | --- |
 | [LENGTH (str_expr)](sql-api-query-reference.md#bk_length) | 返回指定字符串的字符数 |
 | [CONCAT (str_expr, str_expr [, str_expr])](sql-api-query-reference.md#bk_concat) | 返回一个字符串，该字符串是连接两个或多个字符串值的结果。 |
@@ -1457,7 +1457,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 | [REPLICATE (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | 将一个字符串值重复指定的次数。 |
 | [REVERSE (str_expr)](sql-api-query-reference.md#bk_reverse) | 返回字符串值的逆序排序形式。 |
 
-使用这些函数，现在可以运行以下查询。 例如，可以返回大写形式的家庭名称，如下所示：
+借助这些函数，现可以运行以下查询。 例如，可以返回大写形式的家庭名称，如下所示：
 
 **查询**
 
@@ -1520,7 +1520,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
 以下标量函数对数组输入值执行操作，并返回数值、布尔值或数组值。 以下是内置数组函数表：
 
-| 使用情况 | 说明 |
+| 使用情况 | 描述 |
 | --- | --- |
 | [ARRAY_LENGTH (arr_expr)](sql-api-query-reference.md#bk_array_length) |返回指定数组表达式的元素数。 |
 | [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](sql-api-query-reference.md#bk_array_concat) |返回一个数组，该数组是连接两个或更多数组值的结果。 |
@@ -1589,7 +1589,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
 Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 (OGC) 内置函数。 
 
-| 使用情况 | 说明 |
+| 使用情况 | 描述 |
 | --- | --- |
 | ST_DISTANCE (point_expr、point_expr) | 返回两个 GeoJSON 点、多边形或 LineString 表达式之间的距离。 |
 | T_WITHIN (point_expr, polygon_expr) | 返回一个布尔表达式，指示第一个 GeoJSON 对象（点、多边形或 LineString）是否在第二个 GeoJSON 对象 （点、多边形或 LineString）内。 |
@@ -1621,7 +1621,7 @@ Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 
 
 LINQ 是一个 .NET 编程模型，它将计算表示为对对象流的查询。 Cosmos DB 提供一个客户端库，通过促进 JSON 与 .NET 对象之间的转换，以及从 LINQ 查询的子集到 Cosmos DB 查询的映射，来与 LINQ 进行交互。
 
-下面的图片显示了支持使用 Cosmos DB 的 LINQ 查询的体系结构。  使用 Cosmos DB 客户端，开发人员可以创建直接查询 Cosmos DB 查询提供程序的 IQueryable 对象，该提供程序随后会将 LINQ 查询转换为 Cosmos DB 查询。 该查询会传递到 Cosmos DB 服务器，用于检索一组 JSON 格式的结果。 在客户端上，返回的结果会反序列化为 .NET 对象的流。
+下面的图片显示了支持使用 Cosmos DB 的 LINQ 查询的体系结构。  使用 Cosmos DB 客户端，开发人员可以创建直接查询 Cosmos DB 查询提供程序的 **IQueryable** 对象，该提供程序随后会将 LINQ 查询转换为 Cosmos DB 查询。 该查询会传递到 Cosmos DB 服务器，用于检索一组 JSON 格式的结果。 在客户端上，返回的结果会反序列化为 .NET 对象的流。
 
 ![支持使用 SQL API 的 LINQ 查询的体系结构 - SQL语法、JSON 查询语言、数据库概念和 SQL 查询][1]
 
@@ -1751,7 +1751,7 @@ Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最�
 
 ### <a name="sql-query-operators"></a>SQL 查询运算符
 
-以下示例演示了如何将一些标准 LINQ 查询运算符转换为 Cosmos DB 查询。
+以下示例演示了一些标准 LINQ 查询运算符是如何转换为 Cosmos DB 查询的。
 
 #### <a name="select-operator"></a>Select 运算符
 
@@ -2113,9 +2113,9 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 可以使用 Azure
 
 如果查询的结果无法包含在一页内，那么 REST API 通过 `x-ms-continuation-token` 响应标头返回继续标记。 客户端可以通过在后续结果中包含该标头对结果进行分页。 可以通过 `x-ms-max-item-count` 数量标头控制每页的结果数。 如果指定的查询有一个聚合函数（例如 `COUNT`），则查询页可能会通过结果页返回部分聚合的值。 若要生成最终结果，客户端必须对这些结果执行二级聚合，例如，对各个页面中返回的计数进行总计，以便返回总的计数。
 
-若要管理查询的数据一致性策略，请使用 `x-ms-consistency-level` 标头（如所有的 REST API 请求）。 对于会话一致性，还需要回显查询请求中最新的 `x-ms-session-token` Cookie 标头。 查询容器的索引策略也可以影响查询结果的一致性。 使用默认的索引策略设置，容器的索引始终与项内容保持同步，且查询结果将与为数据选择的一致性匹配。 如果索引策略太放松而具有延迟，那么查询会返回过时的结果。 有关详细信息，请参阅 [Azure Cosmos DB 一致性级别][consistency-levels]。
+若要管理查询的数据一致性策略，请使用 `x-ms-consistency-level` 标头（如所有的 REST API 请求）。 对于会话一致性，还需要回显查询请求中最新的 `x-ms-session-token` Cookie 标头。 查询容器的索引策略也可以影响查询结果的一致性。 使用默认的索引策略设置，容器的索引始终与项内容保持同步，且查询结果将与为数据选择的一致性匹配。 有关详细信息，请参阅 [Azure Cosmos DB 一致性级别][consistency-levels]。
 
-如果容器上配置的索引策略不能支持指定的查询，Azure Cosmos DB 服务器会返回 400“错误的请求”。 在对为哈希（等式）查找配置的路径，以及从索引中显式排除的路径进行范围查询时，将返回此错误消息。 当索引不可用时，可通过指定 `x-ms-documentdb-query-enable-scan` 标头以允许查询执行扫描。
+如果容器上配置的索引策略不能支持指定的查询，Azure Cosmos DB 服务器会返回 400“错误的请求”。 与从索引中显式排除的路径，如果查询返回此错误消息。 当索引不可用时，可通过指定 `x-ms-documentdb-query-enable-scan` 标头以允许查询执行扫描。
 
 可通过将 `x-ms-documentdb-populatequerymetrics` 标头设置为 `True` 获取有关查询执行的详细指标。 有关详细信息，请参阅 [Azure Cosmos DB 的 SQL 查询指标](sql-api-query-metrics.md)。
 

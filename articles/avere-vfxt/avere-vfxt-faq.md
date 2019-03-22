@@ -4,14 +4,14 @@ description: 有关 Avere vFXT for Azure 的常见问题解答
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: dbd9eaf531dcad230c23d1b41110036102faf3df
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652653"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404631"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure FAQ
 
@@ -63,7 +63,7 @@ Avere vFXT 是一种缓存。 不专门存储数据。 它联合使用 RAM 和 S
 
 ### <a name="what-regions-are-supported"></a>哪些区域受支持？
 
-从 2018 年 11 月 1 日起，除主权区域（中国、德国）和政府领域外，所有地区都支持 Avere vFXT for Azure。 请确保要使用的区域可以支持大量的计算核心以及创建 Avere vFXT 群集所需的 VM 实例。
+除了主权区域 （中国、 德国） 的所有区域都支持 Avere vFXT 适用于 Azure。 请确保要使用的区域可以支持大量的计算核心以及创建 Avere vFXT 群集所需的 VM 实例。
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>如何获取 Avere vFXT 的相关帮助？
 
@@ -88,15 +88,17 @@ Avere vFXT 是由多个 Azure 虚拟机组成的集群设备。 Python 库可处
 
 ### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Avere vFXT 在哪种 Azure 虚拟机上运行？  
 
-Avere vFXT for Azure 群集使用 Microsoft Azure E32s_v3 或 D16s_v3 虚拟机。 
+Azure 群集 Avere vFXT 使用 Microsoft Azure 与 E32s_v3 虚拟机。 
 
-### <a name="can-i-mix-and-match-virtual-machine-types-for-my-cluster"></a>可否为我的群集混搭虚拟机类型？
+<!-- ### Can I mix and match virtual machine types for my cluster?
 
-否，只能选择一种虚拟机类型或另一种。
+No, you must choose one virtual machine type or the other.
     
-### <a name="can-i-move-between-virtual-machine-types"></a>可否虚拟机类型之间切换？
+### Can I move between virtual machine types?
 
-是，存在从一种 VM 类型迁移到另一种 VM 类型的途径。 [打开支持票证](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)，了解如何操作。
+Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
+
+-->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>Avere vFXT 环境是否可以缩放？
 
@@ -175,7 +177,7 @@ Avere vFXT for Azure 当前不支持本地 SSD。 用于 Avere vFXT 的磁盘必
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Avere vFXT 是否需要自己的子网？
 
-是的。 Avere vFXT 严格作为 HA 群集运行且需要多个 IP 地址以进行操作。 如果群集位于自己的子网中，则可以避免 IP 地址冲突的风险，冲突可能导致安装和正常操作出现问题。 只要 IP 地址没有重叠，群集的子网就可以位于现有的虚拟网络中。
+是的。 Avere vFXT 严格作为高可用性 (HA) 群集中运行，并且要求多个 IP 地址进行操作。 如果群集位于自己的子网中，则可以避免 IP 地址冲突的风险，冲突可能导致安装和正常操作出现问题。 只要 IP 地址没有重叠，群集的子网就可以位于现有的虚拟网络中。
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>可否在 InfiniBand 上运行 Avere vFXT？
 
@@ -214,6 +216,10 @@ Avere vFXT 不是存储。 它是用于从多个存储目标（称为核心文�
 
 * Dell EMC Isilon（OneFS 7.1、7.2、8.0 和 8.1） 
 * NetApp ONTAP（群集模式 9.4、9.3、9.2、9.1P1、8.0-8.3）和（7-Mode 7.*、8.0-8.3） 
+
+  > [!NOTE] 
+  > 目前不支持 azure 的 NetApp 文件。 
+
 * Azure blob 容器（仅本地冗余存储） 
 * AWS S3 存储桶 
 * Google Cloud 存储桶

@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 1e922f1c02876f09dcf51b192bc08c4f4fccac9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879014"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100473"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram 方法
 
@@ -27,10 +27,10 @@ calchistogram REST API 用于计算一组论文实体的属性值分布。
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 ``` 
 <br>
-  
+
 ## <a name="request-parameters"></a>请求参数
 
-Name  |值 | 必需？  |说明
+名称  |值 | 必需？  |描述
 -----------|----------|--------|----------
 **expr**    |文本字符串 | 是  |指定计算哪些实体的直方图的查询表达式。
 **model** |文本字符串 | 否 |选择要查询的模型的名称。  默认值暂为“latest”。
@@ -41,7 +41,7 @@ timeout  |Number | 否<br>默认值：1000 |超时（以毫秒为单位）。 �
 
 ## <a name="response-json"></a>响应 (JSON)
 
-Name | 说明
+名称 | 描述
 --------|---------
 **expr**  |请求中的 expr 参数。
 **num_entities** | 匹配实体总数。

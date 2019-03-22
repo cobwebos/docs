@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871313"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004932"
 ---
 # <a name="evaluate-method"></a>Evaluate 方法
 
@@ -27,8 +27,10 @@ evaluate REST API 用于根据查询表达式返回一组学术实体。
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate? 
 ```   
 <br>
+
 ## <a name="request-parameters"></a>请求参数  
-Name     | 值 | 必需？  | 说明
+
+名称     | 值 | 必需？  | 描述
 -----------|-----------|---------|--------
 **expr**       | 文本字符串 | 是 | 指定应返回哪些实体的查询表达式。
 **model**      | 文本字符串 | 否  | 要查询的模型的名称。  默认值暂为“latest”。        
@@ -38,14 +40,17 @@ Name     | 值 | 必需？  | 说明
 **orderby** |   文本字符串 | 否<br>默认值：by decreasing prob | 用于对实体排序的属性的属性名。 可以视需要指定升序/降序。 格式为 name:asc 或 name:desc。
   
  <br>
+
 ## <a name="response-json"></a>响应 (JSON)
-Name | 说明
+
+名称 | 描述
 -------|-----   
 **expr** |  请求中的 expr 参数。
 **entities** |  一组与查询表达式匹配的 0 个或多个实体。 每个实体都包含自然对数概率值，以及其他请求获取的属性值。
 **aborted** | 如果请求超时，则为 True。
 
 <br>
+
 #### <a name="example"></a>示例：
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?expr=

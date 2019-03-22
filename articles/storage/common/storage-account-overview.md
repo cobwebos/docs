@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: ce9635c108a948b4773c7d27cb254f01d06896f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327844"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544233"
 ---
 # <a name="azure-storage-account-overview"></a>Azure 存储帐户概述
 
@@ -38,7 +38,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 > [!NOTE]
 > Microsoft 建议对大多数方案使用常规用途 v2 存储帐户。 可以轻松将常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 帐户，无需停机且无需复制数据。
 >
-> 有关升级到常规用途 v2 帐户的详细信息，请参阅[升级到常规用途 v2 存储帐户](storage-account-upgrade.md)。 
+> 有关升级到常规用途 v2 帐户的详细信息，请参阅[升级到常规用途 v2 存储帐户](storage-account-upgrade.md)。
 
 常规用途 v2 存储帐户提供多个访问层用于根据使用模式存储数据。 有关详细信息，请参阅[块 Blob 数据的访问层](#access-tiers-for-block-blob-data)。
 
@@ -60,11 +60,9 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 * 使用了早于 2014-02-14 的 [存储服务 REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) 的版本或使用了版本低于 4.x 的客户端库，并且无法升级应用程序。
 
-### <a name="blob-storage-accounts"></a>Blob 存储帐户
+### <a name="block-blob-storage-accounts"></a>块 blob 存储帐户
 
-Blob 存储帐户是将非结构化对象数据作为块 Blob 存储的专用存储帐户。 Blob 存储帐户提供与常规用途 v2 存储帐户相同的持久性、可用性、可伸缩性和性能功能。 Blob 存储帐户支持存储块 Blob 和追加 Blob，但不支持存储页 Blob。
-
-Blob 存储帐户提供多个访问层用于根据使用模式存储数据。 有关详细信息，请参阅[块 Blob 数据的访问层](#access-tiers-for-block-blob-data)。
+块 blob 存储帐户是专用的存储帐户用于存储非结构化的对象数据作为块 blob 或追加 blob。 块 blob 存储帐户提供了多个用于存储基于使用情况模式的数据访问层。 有关详细信息，请参阅[块 Blob 数据的访问层](#access-tiers-for-block-blob-data)。
 
 ## <a name="naming-storage-accounts"></a>为存储帐户命名
 
@@ -87,7 +85,7 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 可用的访问层包括：
 
 > [!NOTE]
-> [高级访问层](../blobs/storage-blob-storage-tiers.md#premium-access-tier)在北欧、美国东部 2、美国中部和美国西部区域中以本地冗余存储 (LRS) 帐户的形式提供，目前为受限预览版。 若要了解如何注册预览版，请参阅 [Azure 高级 Blob 存储简介](https://aka.ms/premiumblob)。
+> [高级访问层 （预览版）](../blobs/storage-blob-storage-tiers.md#premium-access-tier)，进行了优化对于性能敏感型应用程序，提供具有高吞吐量和事务率较低和一致延迟。 仅支持块 Blob 存储帐户 （预览版） 高级访问级别。 有关详细信息，请参阅[Azure 高级 Blob 存储公共预览版](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/)。
 
 * **热**访问层，已针对存储帐户中频繁访问的对象进行优化。 访问热层中的数据是最经济高效的，不过，存储开销要高一些。 默认情况下，新存储帐户在热层中创建。
 * **冷**访问层，已针对存储不常访问且存储时间至少为 30 天的大量数据进行优化。 将数据存储在冷层中是较为经济高效的做法，但访问这些数据的开销可能比访问热层中的数据更高一些。

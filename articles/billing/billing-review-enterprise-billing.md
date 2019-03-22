@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 5cb26b98f5969032bcff95e4408fcf685399d6da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114495"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898697"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>使用 Azure REST API 查看企业合约计费信息
 
@@ -41,7 +41,7 @@ Authorization: Bearer
 
 以下标头是必需的： 
 
-|请求标头|说明|  
+|请求标头|描述|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
 |Authorization：|必需。 设置为有效的 `Bearer` [API 密钥](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
@@ -78,7 +78,7 @@ Authorization: Bearer
 }
 ```  
 
-此示例已经过缩略；有关每个响应字段和错误处理的完整说明，请参阅[为计费帐户获取使用情况详细信息](/rest/api/consumption/usagedetails/listbybillingaccount)。
+此示例已经过缩略；有关每个响应字段和错误处理的完整说明，请参阅[为计费帐户获取使用情况详细信息](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist)。
 
 ## <a name="department-billing"></a>部门计费 
 
@@ -94,7 +94,7 @@ Authorization: Bearer
 
 以下标头是必需的： 
 
-|请求标头|说明|  
+|请求标头|描述|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
 |Authorization：|必需。 设置为有效的 `Bearer` [API 密钥](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
@@ -134,7 +134,7 @@ Authorization: Bearer
 }
 ```  
 
-此示例已经过缩略；有关每个响应字段和错误处理的完整说明，请参阅[为部门获取使用情况详细信息](/rest/api/consumption/usagedetails/listbydepartment)。
+此示例已经过缩略；有关每个响应字段和错误处理的完整说明，请参阅[为部门获取使用情况详细信息](/rest/api/consumption/usagedetails/list#departmentusagedetailslist)。
 
 ## <a name="enrollment-account-billing"></a>合约帐户计费
 
@@ -150,7 +150,7 @@ Authorization: Bearer
 
 以下标头是必需的： 
 
-|请求标头|说明|  
+|请求标头|描述|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
 |Authorization：|必需。 设置为有效的 `Bearer` [API 密钥](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
@@ -187,7 +187,7 @@ Authorization: Bearer
 }
 ``` 
 
-此示例已经过缩略；有关每个响应字段和错误处理的完整说明，请参阅[为合约帐户获取使用情况详细信息](/rest/api/consumption/usagedetails/listbyenrollmentaccount)。
+此示例已经过缩略；有关每个响应字段和错误处理的完整说明，请参阅[为合约帐户获取使用情况详细信息](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist)。
 
 ## <a name="next-steps"></a>后续步骤 
 - 查看 [Enterprise Reporting 概述](https://docs.microsoft.com/azure/billing/billing-enterprise-api)

@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: c6bba6a428e5ff339b1d269965fa1948bddc696e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4edaf782b193e99dfe4002eedb6f3a046fb7dcd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081451"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>在 Azure Stack 中创建虚拟机磁盘存储
 
@@ -68,56 +68,56 @@ ms.locfileid: "57764421"
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>使用门户创建并附加新的数据磁盘
 
-1.  在门户中，选择“所有服务” > “虚拟机”。    
-    示例：![VM 仪表板](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+1. 在门户中，选择“所有服务” > “虚拟机”。    
+   示例：![VM 仪表板](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-2.  选择以前创建的虚拟机。   
-    ![示例：在仪表板中选择 VM](media/azure-stack-manage-vm-disks/select-a-vm.png)
+2. 选择以前创建的虚拟机。   
+   ![示例：在仪表板中选择 VM](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  对于虚拟机，请选择“磁盘” > “添加数据磁盘”。       
-    示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+3. 对于虚拟机，请选择“磁盘” > “添加数据磁盘”。       
+   示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  对于“数据磁盘”：
-    -  输入 **LUN**。 LUN 必须是有效的编号。
-    -  选择“创建磁盘”。
-    示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
+4. 对于“数据磁盘”：
+   -  输入 **LUN**。 LUN 必须是有效的编号。
+   -  选择“创建磁盘”。
+   示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
 
-5.  在“创建托管磁盘”边栏选项卡中：
-    -  输入磁盘的**名称**。
-    -  选择现有的资源组，或创建新的**资源组**。
-    -  选择“位置”。 默认情况下，位置设置为 OS 磁盘所在的同一容器。
-    -  选择“帐户类型”。 
-        示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/create-manage-disk.png)
+5. 在“创建托管磁盘”边栏选项卡中：
+   - 输入磁盘的**名称**。
+   - 选择现有的资源组，或创建新的**资源组**。
+   - 选择“位置”。 默认情况下，位置设置为 OS 磁盘所在的同一容器。
+   - 选择“帐户类型”。 
+      示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/create-manage-disk.png)
 
-        **高级·SSD**  
-        高级磁盘 (SSD) 基于固态硬盘，提供一致的低延迟性能。 高级磁盘可在价格与性能之间实现最佳平衡，非常适合用于 I/O 密集型应用程序和生产工作负荷。
+      **高级·SSD**  
+      高级磁盘 (SSD) 基于固态硬盘，提供一致的低延迟性能。 高级磁盘可在价格与性能之间实现最佳平衡，非常适合用于 I/O 密集型应用程序和生产工作负荷。
        
-        **标准 HDD**  
-        标准磁盘 (HDD) 基于磁驱动器，适用于不经常访问数据的应用程序。 区域冗余磁盘基于区域冗余存储 (ZRS)，此存储可跨多个区域复制数据，即使单个区域出现故障，也仍可供使用。 
+      **标准 HDD**  
+      标准磁盘 (HDD) 基于磁驱动器，适用于不经常访问数据的应用程序。 区域冗余磁盘基于区域冗余存储 (ZRS)，此存储可跨多个区域复制数据，即使单个区域出现故障，也仍可供使用。 
 
-    -  选择“源类型”。
+   - 选择“源类型”。
 
-       从其他磁盘的快照、存储帐户的 Blob 中创建磁盘，或创建空磁盘。
+     从其他磁盘的快照、存储帐户的 Blob 中创建磁盘，或创建空磁盘。
 
-        **快照**  
-        选择一个快照（如果有）。 该快照必须在 VM 的订阅和位置中可用。
+      **快照**  
+      选择一个快照（如果有）。 该快照必须在 VM 的订阅和位置中可用。
 
-        **存储 Blob**  
-        - 添加包含磁盘映像的存储 Blob 的 URI。  
-        - 选择“浏览”打开“存储帐户”边栏选项卡。 有关说明，请参阅[从存储帐户添加数据磁盘](#add-a-data-disk-from-a-storage-account)。
-        - 选择映像的 OS 类型：“Windows”、“Linux”或“无(数据磁盘)”。
+      **存储 Blob**  
+     - 添加包含磁盘映像的存储 Blob 的 URI。  
+     - 选择“浏览”打开“存储帐户”边栏选项卡。 有关说明，请参阅[从存储帐户添加数据磁盘](#add-a-data-disk-from-a-storage-account)。
+     - 选择映像的 OS 类型：“Windows”、“Linux”或“无(数据磁盘)”。
 
-        **无(空磁盘)**
+       **无(空磁盘)**
 
-    -  选择“大小(GiB)”。
+   - 选择“大小(GiB)”。
 
-       标准磁盘的费用随着磁盘大小的增大而提高。 高级磁盘的费用和性能随着磁盘大小的增大而提高。 有关详细信息，请参阅[托管磁盘定价](https://go.microsoft.com/fwlink/?linkid=843142)。
+     标准磁盘的费用随着磁盘大小的增大而提高。 高级磁盘的费用和性能随着磁盘大小的增大而提高。 有关详细信息，请参阅[托管磁盘定价](https://go.microsoft.com/fwlink/?linkid=843142)。
 
-    -  选择“创建”。 Azure Stack 将创建并验证托管磁盘。
+   - 选择“创建”。 Azure Stack 将创建并验证托管磁盘。
 
-5.  在 Azure Stack 创建磁盘并将磁盘附加到虚拟机之后，新磁盘列在“数据磁盘”下的虚拟机磁盘设置中。   
+5. 在 Azure Stack 创建磁盘并将磁盘附加到虚拟机之后，新磁盘列在“数据磁盘”下的虚拟机磁盘设置中。   
 
-    ![示例：查看磁盘](media/azure-stack-manage-vm-disks/view-data-disk.png)
+   ![示例：查看磁盘](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 ### <a name="add-a-data-disk-from-a-storage-account"></a>从存储帐户添加数据磁盘
 

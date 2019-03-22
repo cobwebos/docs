@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/14/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0e3d6255d6e2787d407d24a4217a0262ae4c974d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 411a3d606ac8ec2f262ec9a1aabac7b74ccd110a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098471"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010927"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>连接 Amazon Web Services 帐户
 
@@ -127,11 +127,11 @@ Cloudyn 将开始收集数据并填充报告。 接下来，[启用详细 AWS �
 6. 在“检查”页上，单击“创建存储桶”。 此时会显示存储桶列表。
 7. 单击创建的存储桶，依次选择“权限”选项卡和“存储桶策略”。 此时会打开存储桶策略编辑器。
 8. 复制以下 JSON 示例，并将其粘贴到存储桶策略编辑器中。
-  - 将 `<BillingBucketName>` 替换为 S3 存储桶的名称。
-  - 将 `<ReadOnlyUserOrRole>` 替换为前面复制的角色或用户 ARN。
+   - 将 `<BillingBucketName>` 替换为 S3 存储桶的名称。
+   - 将 `<ReadOnlyUserOrRole>` 替换为前面复制的角色或用户 ARN。
 
-  ```json
-  {
+   ```json
+   {
     "Version": "2012-10-17",
     "Id": "Policy1426774604000",
     "Statement": [
@@ -169,8 +169,8 @@ Cloudyn 将开始收集数据并填充报告。 接下来，[启用详细 AWS �
             "Resource": "arn:aws:s3:::<BillingBucketName>/*"
         }
     ]
-  }
-  ```
+   }
+   ```
 
 9. 单击“ **保存**”。  
     ![在“储存桶策略”编辑器中单击“保存”](./media/connect-aws-account/bucket-policy-editor.png)

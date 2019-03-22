@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 07f4506b7dd0ac8ca0462e2a418983e561859c91
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: e0a0a88e249c0a032e5afaeea14b9b3cfcbdc319
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208374"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080654"
 ---
 ## <a name="control-flow"></a>控制流
 
@@ -25,13 +25,13 @@ ms.locfileid: "55208374"
 
 1. 用户在机器人中输入词或短语，例如，“西雅图的天气如何？”
 1. CL 将用户输入传递给提取实体的机器学习模型
-    - 该模型由对话学习器构建，由 www.luis.ai 托管
+   - 该模型由对话学习器构建，由 www.luis.ai 托管
 1. 提取的任何实体和用户输入的文本都将传递给机器人代码中的实体检测回调方法。
     - 此代码可设置/清除/操作实体值
 1. 然后，CL 神经网络获取实体提取和用户输入的输出，并对机器人中定义的所有操作打分
-    - 在此示例中，最可能的操作是提供天气预报：
+   - 在此示例中，最可能的操作是提供天气预报：
 
-    ![](media/controlflow_forecast.PNG)
+     ![](media/controlflow_forecast.PNG)
 
 1. 在这种情况下，所选操作需要执行 API 调用来检索天气预报。 
 1. 随后便会调用此 API，它已使用 CL.AddCallback 方法进行注册。  然后，此 API 的结果会以消息形式返回给用户，例如，“晴，最高温度华氏 67°”。
@@ -41,4 +41,4 @@ ms.locfileid: "55208374"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何训练对话学习器](./how-to-teach-cl.md)
+> [如何指导使用对话学习器](./how-to-teach-cl.md)

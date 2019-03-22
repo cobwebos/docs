@@ -15,12 +15,12 @@ ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e1d3058600bca6630c3efcbb860b7f8eeeaf57
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 80b8db3bb2e7a21011508f30492bf99c7ecca583
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176826"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096854"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -195,8 +195,8 @@ Azure AD 以已签名 Windows Installer 程序包 (MSI) 的形式，托管该软
 3. 更新程序验证此 MSI 已由 Microsoft 签名。
 4. 更新程序运行该 MSI。 此操作涉及以下步骤：
 
- > [!NOTE]
- > 更新程序使用[本地系统](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)权限运行。
+   > [!NOTE]
+   > 更新程序使用[本地系统](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)权限运行。
 
     - 停止身份验证代理服务
     - 在服务器上安装新版本的身份验证代理

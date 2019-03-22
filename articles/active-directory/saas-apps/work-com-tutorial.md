@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5d097afa3af111a7de8341b90d8c6c05ac0347
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6a37a811c7944334571b4043d8ba937ffadc1e71
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205743"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891563"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教程：Azure Active Directory 与 Work.com 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56205743"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Work.com 的集成，需要准备好以下各项：
 
@@ -262,9 +262,9 @@ ms.locfileid: "56205743"
     
     c. 在“别名”文本框中，键入用户的**别名** (**BrittaS**)。
     
-    d. 在“电子邮件”文本框中，键入用户的**电子邮件地址**（例如 **Brittasimon@contoso.com**）。
+    d. 在中**电子邮件**文本框中，键入**电子邮件地址**的用户**Brittasimon\@contoso.com**。
     
-    e. 在“用户名”文本框中，键入用户的用户名（例如 **Brittasimon@contoso.com**）。
+    e. 在中**用户名**文本框中，键入用户的用户名称等**Brittasimon\@contoso.com**。
     
     f. 在“昵称”文本框中，键入用户的**昵称** (**Simon**)。
     

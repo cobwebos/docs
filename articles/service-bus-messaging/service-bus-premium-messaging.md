@@ -11,15 +11,15 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/30/2018
+ms.topic: conceptual
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: ae35f73e601cfa83fc960c5331f9956863677941
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 9e9c8918556b7ff003bcfed062ea1e15233b2845
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855289"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761950"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -54,6 +54,21 @@ ms.locfileid: "54855289"
 由于高级消息传送在一个完全隔离的运行时环境中运行，因此高级命名空间中不支持快速实体。 有关快速功能的详细信息，请参阅 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性。
 
 如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
+
+## <a name="premium-messaging-resource-usage"></a>高级消息传送资源使用情况
+一般情况下，对实体的任何操作可能会导致 CPU 和内存使用情况。 下面是一些这些操作： 
+
+- 管理操作，例如 CRUD （创建、 检索、 更新和删除） 操作队列、 主题和订阅。
+- 运行时操作 （发送和接收消息）
+- 监视操作和警报
+
+此外但不定价的更多 CPU 和内存使用情况。 对于高级消息传送层中，没有消息单元的单个价格。
+
+CPU 和内存使用情况跟踪，并向你显示原因如下： 
+
+- 提供到系统内部的透明度
+- 了解资源购买的容量。
+- 容量规划，可帮助你决定增加/减少。
 
 ## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
 

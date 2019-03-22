@@ -4,15 +4,15 @@ description: 介绍 Azure Migrate 中的收集器设备。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813324"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080059"
 ---
 # <a name="about-the-collector-appliance"></a>关于收集器设备
 
@@ -85,22 +85,22 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 - 代理服务器的 IP 地址/FQDN 应该指定为 *http://IPaddress* 或 *http://FQDN*。
 - 仅支持 HTTP 代理。 收集器不支持基于 HTTPS 的代理服务器。
 - 如果代理服务器是截取代理，则必须将代理证书导入到收集器 VM。
-    1. 在收集器 VM 中，转到“开始菜单” > “管理计算机证书”。
-    2. 在“证书”工具中，在“证书 - 本地计算机”下，找到“受信任的发布者”“证书” > 。
+  1. 在收集器 VM 中，转到“开始菜单” > “管理计算机证书”。
+  2. 在“证书”工具中，在“证书 - 本地计算机”下，找到“受信任的发布者”“证书” > 。
 
-        ![“证书”工具](./media/concepts-intercepting-proxy/certificates-tool.png)
+      ![“证书”工具](./media/concepts-intercepting-proxy/certificates-tool.png)
 
-    3. 将代理证书复制到收集器 VM。 你可能需要联系网络管理员获取代理证书。
-    4. 双击证书打开证书，并单击“安装证书”。
-    5. 在“证书导入向导”>“存储位置”中，选择“本地计算机”。
+  3. 将代理证书复制到收集器 VM。 你可能需要联系网络管理员获取代理证书。
+  4. 双击证书打开证书，并单击“安装证书”。
+  5. 在“证书导入向导”>“存储位置”中，选择“本地计算机”。
 
-    ![证书存储位置](./media/concepts-intercepting-proxy/certificate-store-location.png)
+     ![证书存储位置](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
-    6. 选择“将所有证书放入下列存储” > “浏览” > “受信任的发布者”。 单击“完成”导入证书。
+  6. 选择“将所有证书放入下列存储” > “浏览” > “受信任的发布者”。 单击“完成”导入证书。
 
-    ![证书存储](./media/concepts-intercepting-proxy/certificate-store.png)
+     ![证书存储](./media/concepts-intercepting-proxy/certificate-store.png)
 
-    7. 检查证书是否按预期导入，并检查 Internet 连接性先决条件检查是否按预期工作。
+  7. 检查证书是否按预期导入，并检查 Internet 连接性先决条件检查是否按预期工作。
 
 
 ### <a name="urls-for-connectivity"></a>用于连接的 URL
@@ -111,7 +111,7 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 --- | --- | ---
 *.portal.azure.com | 适用于 Azure 全局。 检查与 Azure 服务和时间同步的连接。 | 必须能够访问 URL。<br/><br/> 如果没有连接，先决条件检查会失败。
 *.portal.azure.us | 仅适用于 Azure 政府。 检查与 Azure 服务和时间同步的连接。 | 必须能够访问 URL。<br/><br/> 如果没有连接，先决条件检查会失败。
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| 用于下载 PowerShell vCenter PowerCLI 模块。 | 可选的 URL 访问。<br/><br/> 先决条件检查不会失败。<br/><br/> 收集器 VM 上的自动模块安装将失败。 需要手动安装该模块。
+*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| 用于下载 PowerShell vCenter PowerCLI 模块。 | Url 的访问权限是必需的。<br/><br/> 先决条件检查不会失败。<br/><br/> 收集器 VM 上的自动模块安装将失败。 你将需要在已建立 internet 连接的计算机手动安装该模块，然后将这些模块复制到设备。 [了解详细信息，请转到步骤 #4 在此故障排除指南](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception)。
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>手动安装 VMware PowerCLI 模块
@@ -211,7 +211,7 @@ net.transmitted.average | 计算 VM 大小
 网络适配器详细信息（每个 NIC） | IPv6 地址 | vm.Guest.Net
 网络适配器详细信息（每个 NIC） | 读取吞吐量（兆字节/秒） | net.received.average
 网络适配器详细信息（每个 NIC） | 写入吞吐量（兆字节/秒） | net.transmitted.average
-库存路径详细信息 | Name | container.GetType().Name
+库存路径详细信息 | 名称 | container.GetType().Name
 库存路径详细信息 | 子对象类型 | container.ChildType
 库存路径详细信息 | 引用详细信息 | container.MoRef
 库存路径详细信息 | 完整库存路径 | container.Name + 完整路径

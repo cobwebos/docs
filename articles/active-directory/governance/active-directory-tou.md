@@ -15,12 +15,12 @@ ms.subservice: compliance
 ms.date: 02/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 987b2b1ca028b816ed6909781f56c0b5174541bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8f2de9274e1b6c996e75148d1a1f018d73a721bb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163761"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443447"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
@@ -51,7 +51,7 @@ Azure AD 使用条款提供以下功能：
 - 显示使用条款活动的日志，以了解合规性和进行审核。
 - 使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement)（目前提供预览版）创建和管理使用条款。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要使用和配置 Azure AD 使用条款，必须具备以下先决条件：
 
 - Azure AD Premium P1、P2、EMS E3 或 EMS E5 订阅。
@@ -121,7 +121,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
     ![条件访问模板](./media/active-directory-tou/conditional-access-templates.png)
 
-    | 模板 | 说明 |
+    | 模板 | 描述 |
     | --- | --- |
     | **所有来宾对云应用的访问权限** | 将会针对所有来宾和所有云应用创建一个条件访问策略。 此策略会影响 Azure 门户。 创建后，可能需要注销再登录。 |
     | **所有用户对云应用的访问权限** | 将会针对所有用户和所有云应用创建条件访问策略。 此策略会影响 Azure 门户。 创建后，需要注销再登录。 |
@@ -315,7 +315,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 大多数组织都在实施相应的流程，让其员工同意组织的使用条款和隐私声明。 但是，对于通过 SharePoint 或 Teams 添加的 Azure AD 企业到企业 (B2B) 来宾，如何强制要求他们同样表示同意？ 使用条件访问和使用条款，可以直接对 B2B 来宾用户强制实施策略。 在邀请兑换流程中，用户会看到使用条款。 这种支持目前处于预览状态。
 
-仅当用户在 Azure AD 中具有来宾帐户时，才显示使用条款。 SharePoint Online 目前提供一个[临时外部共享接收方体验](/sharepoint/what-s-new-in-sharing-in-targeted-release)用于共享文档或文件夹，而不要求用户具有来宾帐户。 在这种情况下，不会显示使用条款。
+仅当用户在 Azure AD 中具有来宾帐户时，才显示使用条款。 SharePoint Online 当前具有[即席外部共享收件人体验](/sharepoint/what-s-new-in-sharing-in-targeted-release)共享文档或不需要用户具有来宾帐户的文件夹。 在这种情况下，不会显示使用条款。
 
 ![所有来宾用户](./media/active-directory-tou/b2b-guests.png)
 

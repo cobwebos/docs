@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2e1b97d228de47634e570a407ec03d7a13e540
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4c831a5a939e946d7189e4d35eaf051508e904a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199627"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999524"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
@@ -68,7 +68,7 @@ ms.locfileid: "56199627"
 
 | 错误代码 | 错误消息 | 建议的步骤 | 
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | 输入了错误的代码\OATH 代码不正确 | 并非错误；用户输入了错误的代码。 | 用户输入了错误的代码。 让他们通过请求新的代码或重新登录来重试。 | 
+| **OathCodeIncorrect** | 输入了错误的代码\OATH 代码不正确 | 用户输入了错误的代码。 让他们通过请求新的代码或重新登录来重试。 | 
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | 达到了允许的代码重试次数上限 | 用户通不过验证质询的次数过多。 根据设置，管理员可能需要立即将他们解除阻止。  |
 | **SMSAuthFailedWrongCodeEntered** | 输入了错误的代码/短信 OTP 不正确 | 用户输入了错误的代码。 让他们通过请求新的代码或重新登录来重试。 |
 

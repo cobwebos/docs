@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e947b71fe6bb9e6bd884b8b2dd0397a63bea2a95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8b5ec711f0e43d9d29d962d43ed8b1d86338db87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203635"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881208"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>教程：Azure Active Directory 与 xMatters OnDemand 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56203635"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 xMatters OnDemand 的集成，需要以下项：
 
@@ -114,6 +114,7 @@ ms.locfileid: "56203635"
     ![配置单一登录](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
     a. 在“标识符”文本框中，使用以下模式键入 URL：
+
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -123,6 +124,7 @@ ms.locfileid: "56203635"
     | `https://<companyname>.xmatters.com.au/`|
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -209,9 +211,9 @@ ms.locfileid: "56203635"
 
 1. 登录到 **XMatters OnDemand** 租户。
 
-1.  单击“用户”选项卡，并单击“添加用户”。
+1. 单击“用户”选项卡，并单击“添加用户”。
 
-    ![用户](./media/xmatters-ondemand-tutorial/IC781048.png "用户")
+   ![用户](./media/xmatters-ondemand-tutorial/IC781048.png "用户")
 
 1. 在“添加用户”部分中，执行以下步骤：
 

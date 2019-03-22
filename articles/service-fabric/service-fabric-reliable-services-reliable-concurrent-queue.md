@@ -3,7 +3,7 @@ title: Azure Service Fabric 中的可靠并发队列
 description: 可靠并发队列是一种高吞吐量队列，适用于并行排队和取消排队。
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
+author: aljo-microsoft
 manager: timlt
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: twhitney
-ms.openlocfilehash: 61b53a23fdbb08b226878d9b702ec6bb2879f8bc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: HT
+ms.author: aljo
+ms.openlocfilehash: 6fefbd21a5c301111afdc27ec1d332d713c669ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119643"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的可靠并发队列简介
 可靠并发队列是一种异步的、事务性的已复制队列，其特点是排队和取消排队操作的高并发性。 它旨在降低[可靠队列](https://msdn.microsoft.com/library/azure/dn971527.aspx)提供的严格的 FIFO 排序要求，代之以“尽力排序”要求，从而提高吞吐量并降低延迟。
@@ -45,7 +45,7 @@ ms.locfileid: "53185029"
 * 队列不保证严格的 FIFO 排序。
 * 队列不读取自己的写入。 项在事务中排队时，该项对于同一事务中的取消排队者来说为不可见。
 * 取消排队不是相互隔离的。 如果项 A 在事务 txnA 中取消排队，则即使 txnA 尚未提交，项 A 也不会对并发事务 txnB 可见。  如果 txnA 中止，A 会立刻变得对 txnB 可见。
-* 可以先使用 TryDequeueAsync，再中止事务，从而实现 TryPeekAsync 行为。 “编程模式”部分提供了一个这样的示例。
+* 可以先使用 TryDequeueAsync，然后中止事务，从而实施 TryPeekAsync 行为。 “编程模式”部分提供了一个这样的示例。
 * 计数是非事务性的。 可以通过计数来了解队列中的元素数目，但计数只代表一个时间点的情况，可靠性不强。
 * 不应在事务处于活动状态时对取消排队项执行开销昂贵的处理，以免事务长时间运行，对系统造成性能影响。
 
@@ -70,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 假定任务已成功完成，且没有并发事务在修改队列。 用户可以预期队列包含的项采用以下顺序：
 
 > 10, 20
-
+> 
 > 20, 10
 
 
@@ -165,7 +165,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 中止事务后，项会采用以下顺序之一添加回队列头：
 > 10, 20
-
+> 
 > 20, 10
 
 事务未成功提交的所有案例均是如此。
@@ -270,7 +270,7 @@ while(!cancellationToken.IsCancellationRequested)
 ### <a name="best-effort-drain"></a>尽力清空
 考虑到数据结构的并发特性，不保证队列会被清空。  即使队列没有正在进行的用户操作，也可能会出现对 TryDequeueAsync 进行具体调用时不返回项（此前已排队并提交）的情况。  排队的项最终必定会变得对取消排队操作可见，但在没有带外通信机制的情况下，独立的使用者无法知道队列是否已达到稳定状态，即使系统已停止所有生成者且不允许新的排队操作。 因此，清空操作只能尽力而为，其执行情况如下所示。
 
-用户应停止所有后续的生成者和使用者任务，等待正在进行的事务提交或中止，并尝试清空队列。  如果用户知道队列中预计会有多少项，则可设置一个通知，在所有项都已取消排队后发出指示。
+用户应停止所有后续的生成者和使用者任务，等待正在进行的事务提交或中止，然后尝试清空队列。  如果用户知道队列中预计会有多少项，则可设置一个通知，在所有项都已取消排队后发出指示。
 
 ```
 int numItemsDequeued;
@@ -307,7 +307,7 @@ do
 ```
 
 ### <a name="peek"></a>速览
-可靠并发队列不提供 TryPeekAsync API。 用户可以先使用 TryDequeueAsync，再中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。
+可靠并发队列不提供 TryPeekAsync API。 用户可以先使用 *TryDequeueAsync*，然后中止事务，从而获取速览语义。 在以下示例中，仅当项的值大于 10 时，才会处理取消排队操作。
 
 ```
 using (var txn = this.StateManager.CreateTransaction())

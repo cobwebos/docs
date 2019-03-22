@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: bc7a183220219b14cb793f8115284d38d544b0e0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 883e1c11e3485c0bf3441a67a3a191563ea3aed4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453172"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990783"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>数据科学虚拟机支持的语言 
 
@@ -222,7 +222,7 @@ Linux：
 打开终端并运行 `julia` 即可。 
 * 在 IDE 中使用
 
-使用 `Juno`，安装在 DSVM 上并可用作应用程序菜单快捷方式的 Julia IDE。
+使用`Juno`DSVM 上已安装并可用作应用程序菜单快捷方式的 Julia IDE。
 
 * 在 Jupyter 中使用
 

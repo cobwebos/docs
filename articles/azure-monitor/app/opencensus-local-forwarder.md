@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights OpenCensus 分布式跟踪本地转发器 | Microsoft docs
+title: Azure Application Insights OpenCensus 分布式跟踪本地转发器 （预览版） |Microsoft docs
 description: 将 Python 和 Go 等语言的 OpenCensus 分布式跟踪与范围转发到 Azure Application Insights
 services: application-insights
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
-ms.translationtype: HT
+ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002819"
 ---
-# <a name="local-forwarder"></a>本地转发器
+# <a name="local-forwarder-preview"></a>本地转发器 （预览版）
 
 本地转发器是从各种框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测数据并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。 也可以在 macOS 下运行，但目前并不正式支持这种运行方式。
 
@@ -79,14 +79,14 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 对于某些用例，以控制台应用程序的形式运行本地转发器可能更有利。 服务版本随附了控制台主机的以下可执行文件版本：
 * 框架相关的 .NET Core 二进制文件 */ConsoleHost/publish/Microsoft.LocalForwarder.ConsoleHost.dll*。 运行此二进制文件需要安装 .NET Core 运行时；请参阅此下载[页](https://www.microsoft.com/net/download/dotnet-core/2.1)了解详细信息。
-```batchfile
-E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
-```
+  ```batchfile
+  E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
+  ```
 * 适用于 x86 和 x64 平台的独立 .NET Core 二进制文件集。 不需要 .NET Core 运行时即可运行这些二进制文件。 */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*、*/ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*。
-```batchfile
-E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
-E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
-```
+  ```batchfile
+  E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
+  E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
+  ```
 
 ### <a name="linux"></a>Linux
 
