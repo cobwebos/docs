@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: c5e67e581d3fc370710528609bf94b1110416c33
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 2fc881aac096ccbafa351fcac2d726cc51d8f178
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311369"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286884"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -43,7 +43,7 @@ ms.locfileid: "56311369"
 
 * 对 Azure 托管的 RHUI 的访问限制为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内的 VM。 若要通过本地网络基础结构代理所有 VM 流量，可能需要为 RHEL PAYG VM 设置用户定义的路由才能访问 Azure RHUI。
 
-### <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS 和版本锁定 RHEL VM
+## <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS 和版本锁定 RHEL VM
 某些客户可能希望将其 RHEL VM 锁定在特定的 RHEL 次版本。 可以通过对存储库进行更新以指向扩展的更新支持存储库来将 RHEL VM 的版本锁定到特定的次版本。 使用以下指令将 RHEL VM 锁定到特定的次版本：
 
 >[!NOTE]
@@ -72,7 +72,7 @@ ms.locfileid: "56311369"
     sudo yum update
     ```
 
-### <a name="the-ips-for-the-rhui-content-delivery-servers"></a>RHUI 内容传送服务器的 IP
+## <a name="the-ips-for-the-rhui-content-delivery-servers"></a>RHUI 内容传送服务器的 IP
 
 在 RHEL 按需映像可用的所有区域中都提供了 RHUI。 目前包括 [Azure 状态仪表板](https://azure.microsoft.com/status/)页上列出的所有公共区域、Azure 美国政府区域和 Microsoft Azure 德国区域。
 
@@ -95,15 +95,12 @@ ms.locfileid: "56311369"
 51.4.228.145
 ```
 
-## <a name="rhui-azure-infrastructure-update"></a>RHUI Azure 基础结构更新
+## <a name="azure-rhui-infrastructure"></a>Azure RHUI 基础结构
 
-2016 年 9 月，我们部署了更新的 Azure RHUI。 2017 年 4 月，我们关闭了旧版 Azure RHUI。 如果一直在使用 2016 年 9 月或之后的 RHEL PAYG 映像（或其快照），则会自动连接到新的 Azure RHUI。 但是，如果在 VM 上使用旧版本的快照，则需手动更新其配置以访问 Azure RHUI，如以下部分所述。
-
-新的 Azure RHUI 服务器通过 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)进行配置。 在流量管理器中，任何 VM 都可使用单一终结点 (rhui-1.microsoft.com)，而无需考虑区域。
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>更新 VM 上已过期的 RHUI 客户端证书
 
-如果使用较旧的 RHEL VM 映像（例如，RHEL 7.4（映像 URN：`RedHat:RHEL:7.4:7.4.2018010506`）），则由于 SSL 客户端证书现已过期，你将遇到与 RHUI 的连接问题。 你看到的错误可能类似于“SSL 对等机已拒绝你的证书，因为已过期”或“错误：无法为存储库检索存储库元数据(repom .xml): ...请验证其路径并重试”。 若要解决此问题，请使用以下命令更新 VM 上的 RHUI 客户端程序包：
+如果使用较旧的 RHEL VM 映像（例如，RHEL 7.4（映像 URN：`RedHat:RHEL:7.4:7.4.2018010506`）），则由于 SSL 客户端证书现已过期，你将遇到与 RHUI 的连接问题。 你看到的错误可能类似于“SSL 对等机已拒绝你的证书，因为已过期”或“错误：无法为存储库检索存储库元数据(repom .xml): ...请验证其路径并重试”_。 若要解决此问题，请使用以下命令更新 VM 上的 RHUI 客户端程序包：
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
@@ -124,6 +121,12 @@ sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 1. Azure 托管的 RHUI 仅限 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内的 VM 进行访问。
 
 1. 如果使用新配置并已确认 VM 从 Azure IP 范围建立了连接，但仍无法连接到 Azure RHUI，请向 Microsoft 或 Red Hat 提出支持案例。
+
+### <a name="infrastructure-update"></a>基础结构更新
+
+2016 年 9 月，我们部署了更新的 Azure RHUI。 2017 年 4 月，我们关闭了旧版 Azure RHUI。 如果一直在使用 2016 年 9 月或之后的 RHEL PAYG 映像（或其快照），则会自动连接到新的 Azure RHUI。 但是，如果在 VM 上使用旧版本的快照，则需手动更新其配置以访问 Azure RHUI，如以下部分所述。
+
+新的 Azure RHUI 服务器通过 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)进行配置。 在流量管理器中，任何 VM 都可使用单一终结点 (rhui-1.microsoft.com)，而无需考虑区域。
 
 ### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>执行手动更新过程以使用 Azure RHUI 服务器
 此过程仅供参考。 RHEL PAYG 映像已包含用于连接 Azure RHUI 的正确配置。 要手动更新配置以使用 Azure RHUI 服务器，请完成以下步骤：

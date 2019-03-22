@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f6e9641d106c40c061752b57744eda09aac157a5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: aad35aa7a958e8bdaf1479d1ffbbad5bf213d46a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821960"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339238"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
 
@@ -23,7 +23,7 @@ ms.locfileid: "55821960"
 
 ### <a name="resolution-steps"></a>解决步骤
 
-事先在 HDInsight 中设置此过程的配置值。 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因。 
+可以优化 Spark 配置值帮助避免 Apache Spark 应用程序出现 OutofMemoryError 异常。 以下步骤在 Azure HDInsight 中显示默认的 Spark 配置值： 
 
 1. 在群集列表中选择“Spark2”。
 
@@ -85,8 +85,7 @@ ms.locfileid: "55821960"
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[在 HDInsight 群集上提交 Apache Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+[在 HDInsight 群集上提交 Apache Spark 作业](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>如何在群集上使用 Jupyter Notebook 配置 Apache Spark 应用程序？
 
@@ -100,7 +99,7 @@ ms.locfileid: "55821960"
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[在 HDInsight 群集上提交 Apache Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[在 HDInsight 群集上提交 Apache Spark 作业](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>如何在群集上使用 Apache Livy 配置 Apache Spark 应用程序？
@@ -117,8 +116,7 @@ ms.locfileid: "55821960"
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[在 HDInsight 群集上提交 Apache Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+[在 HDInsight 群集上提交 Apache Spark 作业](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>如何在群集上使用 spark-submit 配置 Apache Spark 应用程序？
 
@@ -134,7 +132,7 @@ ms.locfileid: "55821960"
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[在 HDInsight 群集上提交 Apache Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[在 HDInsight 群集上提交 Apache Spark 作业](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>哪些因素会导致 Apache Spark 应用程序出现 OutofMemoryError 异常？
@@ -205,12 +203,12 @@ java.lang.OutOfMemoryError
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
     ```
 
-    计算所有执行程序使用的内存总量： 
+    若要计算所有执行程序使用的总内存： 
     
     ```apache
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
-   计算驱动程序使用的内存总量：
+   若要计算驱动程序使用的总内存：
     
     ```apache
     spark.driver.memory + spark.yarn.driver.memoryOverhead
@@ -219,9 +217,8 @@ java.lang.OutOfMemoryError
 ### <a name="additional-reading"></a>其他阅读材料
 
 - [Apache Spark 内存管理概述](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [在 HDInsight 群集上调试 Apache Spark 应用程序](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [在 HDInsight 群集上调试 Apache Spark 应用程序](https://web.archive.org/web/20190112152909/ https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>另请参阅
 [使用 Azure HDInsight 进行故障排除](../../hdinsight/hdinsight-troubleshoot-guide.md)
-

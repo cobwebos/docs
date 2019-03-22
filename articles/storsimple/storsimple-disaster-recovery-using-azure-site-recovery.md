@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: f5b128306389a87c432b869b4756a6d232dc903c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: f5eefd1d3fa26738729d98e60d8a56cd8d33d86c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084872"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 ## <a name="overview"></a>概述
@@ -34,7 +34,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 ## <a name="supported-azure-site-recovery-deployment-options"></a>支持的 Azure Site Recovery 部署选项
 客户可以将文件服务器部署为在 Hyper-V 或 VMware 上运行的物理服务器或虚拟机 (VM)，然后基于从 StorSimple 存储中划分出来的卷创建文件共享。 Azure Site Recovery 可以保护辅助站点或 Azure 中的物理部署与虚拟部署。 本文档详细介绍某个 DR 解决方案，它使用 Azure 作为 Hyper-V 上托管的文件服务器 VM 的恢复站点，在 StorSimple 存储中使用文件共享。 文件服务器 VM 位于 VMware VM 或物理计算机上的其他方案也可以通过类似的方式实现。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 使用 Azure Site Recovery 针对 StorSimple 存储上托管的文件共享实现单键灾难恢复解决方案时，必须满足以下先决条件：
 
    - 已在 Hyper-V 或 VMware 或物理计算机上托管本地 Windows Server 2012 R2 文件服务器 VM
@@ -179,7 +179,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    - *RecoveryPlanName***-StorageAccountKey**：上述存储帐户的访问密钥。
    - *RecoveryPlanName***-VMGUIDS**：保护 VM 时，Azure Site Recovery 将为每台 VM 分配唯一 ID，此 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，请选择“恢复服务”选项卡，然后依次单击“受保护的项”&gt;“保护组”&gt;“计算机”&gt;“属性”。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
 
-    例如，如果恢复计划名为 fileServerpredayRP，“变量”、“连接”和“证书”选项卡在添加完所有资产后应如下所示。
+     例如，如果恢复计划名为 fileServerpredayRP，“变量”、“连接”和“证书”选项卡在添加完所有资产后应如下所示。
 
       ![资产](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
@@ -250,16 +250,16 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    
    - 打开“插入操作”边栏选项卡，输入名称，在“运行位置”选项中选择“主端”选项，选择自动化帐户（在其中添加了 runbook），并选择“Failover-StorSimple-Volume-Containers”runbook。
    
-   - 右键单击“组 1:启动”并单击“添加受保护的项”选项，然后选择要在恢复计划中进行保护的 VM 并单击“确定”按钮。 （可选）如果已选择 VM。
+   - 右键单击“组 1:启动”并单击“添加受保护的项”选项，然后选择要在恢复计划中进行保护的 VM 并单击“确定”按钮**。 （可选）如果已选择 VM。
    
-   - 右键单击“组 1:启动”并单击“之后的操作”选项，然后添加以下所有脚本：  
+   - 右键单击“组 1:启动”并单击“之后的操作”选项，然后添加以下所有脚本**：  
       
       - Start-StorSimple-Virtual-Appliance Runbook  
       - Fail over-StorSimple-volume-containers Runbook  
       - Mount-volumes-after-failover Runbook  
       - Uninstall-custom-script-extension Runbook  
         
-   - 在同一个“组 1:之后的步骤”部分中，在上面 4 个脚本后面添加一个手动操作。 通过此操作可以确认所有配置是否正常运行。 只需为测试故障转移添加此操作（因此选中“测试故障转移”复选框即可）。
+   - 在同一个“组 1:之后的步骤”部分中，在上面 4 个脚本后面添加一个手动操作**。 通过此操作可以确认所有配置是否正常运行。 只需为测试故障转移添加此操作（因此选中“测试故障转移”复选框即可）。
     
    - 执行手动操作后，使用针对其他 runbook 执行的相同过程添加 **Cleanup** 脚本。 **保存**恢复计划。
     
@@ -332,30 +332,30 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    - 确定所需的 Internet 带宽。
 
 ## <a name="limitations"></a>限制
-   - 目前只能故障转移 1 台 StorSimple 设备（故障转移到单个 StorSimple Cloud Appliance）。 不支持跨越多台 StorSimple 设备的文件服务器方案。
-   - 如果在为 VM 启用保护时发生错误，请确保已断开连接 iSCSI 目标。
-   - 由于备份策略跨越不同卷容器而分组在一起的所有卷容器将一同故障转移。
-   - 在卷容器中选择的所有卷将故障转移。
-   - 总大小超过 64 TB 的卷无法故障转移，因为单个 StorSimple Cloud Appliance 的容量上限为 64 TB。
-   - 如果计划内/计划外故障转移失败并且 Azure 中已创建 VM，请不要清理 VM， 而应该执行故障回复。 如果删除了 VM，则无法再次打开本地 VM。
-   - 故障转移后如果看不到卷，请转到 VM，打开“磁盘管理”，重新扫描磁盘，然后将卷联机。
-   - 在某些情况下，DR 站点中的盘符可能与本地盘符不同。 如果发生此情况，需要在故障转移完成后手动更正问题。
-   - 故障转移作业超时：如果故障转移卷容器花费的时间超过每个脚本的 Azure Site Recovery 限制（目前为 120 分钟），StorSimple 脚本会超时。
-   - 备份作业超时：如果备份卷花费的时间超过每个脚本的 Azure Site Recovery 限制（目前为 120 分钟），StorSimple 脚本会超时。
+- 目前只能故障转移 1 台 StorSimple 设备（故障转移到单个 StorSimple Cloud Appliance）。 不支持跨越多台 StorSimple 设备的文件服务器方案。
+- 如果在为 VM 启用保护时发生错误，请确保已断开连接 iSCSI 目标。
+- 由于备份策略跨越不同卷容器而分组在一起的所有卷容器将一同故障转移。
+- 在卷容器中选择的所有卷将故障转移。
+- 总大小超过 64 TB 的卷无法故障转移，因为单个 StorSimple Cloud Appliance 的容量上限为 64 TB。
+- 如果计划内/计划外故障转移失败并且 Azure 中已创建 VM，请不要清理 VM， 而应该执行故障回复。 如果删除了 VM，则无法再次打开本地 VM。
+- 故障转移后如果看不到卷，请转到 VM，打开“磁盘管理”，重新扫描磁盘，然后将卷联机。
+- 在某些情况下，DR 站点中的盘符可能与本地盘符不同。 如果发生此情况，需要在故障转移完成后手动更正问题。
+- 故障转移作业超时：如果故障转移卷容器花费的时间超过每个脚本的 Azure Site Recovery 限制（目前为 120 分钟），StorSimple 脚本会超时。
+- 备份作业超时：如果备份卷花费的时间超过每个脚本的 Azure Site Recovery 限制（目前为 120 分钟），StorSimple 脚本会超时。
    
-   > [!IMPORTANT]
-   > 请从 Azure 门户手动运行备份，并再次运行恢复计划。
+  > [!IMPORTANT]
+  > 请从 Azure 门户手动运行备份，并再次运行恢复计划。
    
-   - 克隆作业超时：如果克隆卷花费的时间超过每个脚本的 Azure Site Recovery 限制（目前为 120 分钟），StorSimple 脚本会超时。
-   - 时间同步错误：StorSimple 脚本出错，指出尽管在门户中备份成功，但事实上备份失败。 发生此问题的可能原因是 StorSimple 设备的时间没有与时区中的当前时间同步。
+- 克隆作业超时：如果克隆卷花费的时间超过每个脚本的 Azure Site Recovery 限制（目前为 120 分钟），StorSimple 脚本会超时。
+- 时间同步错误：StorSimple 脚本出错，指出尽管在门户中备份成功，但事实上备份失败。 发生此问题的可能原因是 StorSimple 设备的时间没有与时区中的当前时间同步。
    
-   > [!IMPORTANT]
-   > 请将设备时间与时区中的当前时间同步。
+  > [!IMPORTANT]
+  > 请将设备时间与时区中的当前时间同步。
    
-   - 设备故障转移错误：如果运行恢复计划时进行设备故障转移，StorSimple 脚本可能会失败。
+- 设备故障转移错误：如果运行恢复计划时进行设备故障转移，StorSimple 脚本可能会失败。
    
-   > [!IMPORTANT]
-   > 请在设备故障转移完成后重新运行恢复计划。
+  > [!IMPORTANT]
+  > 请在设备故障转移完成后重新运行恢复计划。
 
 
 ## <a name="summary"></a>摘要

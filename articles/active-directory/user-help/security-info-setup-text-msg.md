@@ -1,5 +1,5 @@
 ---
-title: 设置安全信息（预览版）以使用短信 - Azure Active Directory | Microsoft Docs
+title: 设置安全信息 （预览版） 使用文本消息传送-Azure Active Directory |Microsoft Docs
 description: 如何设置安全信息以使用短信和移动设备验证身份。
 services: active-directory
 author: eross-msft
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a130113c7e6052befdc61927589c1151a062bdb9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: ea9e4ae21ecc6538b33aed1566c10ddcd22b86c7
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456089"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341028"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>设置安全信息以使用短信（预览版）
-可以按照以下步骤添加双因素验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
+可以按照以下步骤添加双因素验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
 
 如果在登录工作或学校帐户后系统提示立即进行设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
@@ -39,11 +39,11 @@ ms.locfileid: "56456089"
 
 1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
 
-    ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile.png)
+    ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
-2. 从左侧导航窗格或“安全信息”块的链接中选择“安全信息”，然后从“安全信息”页选择“添加方法”。
+2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”。
 

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4dc50de7a97055e336627e34f747a17fcedc7e58
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 37a8882653ffede121d2e2cd3f3357741d8d641a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091539"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336416"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache HBase 进行故障排除
 
@@ -344,7 +344,7 @@ HMaster 超时时出现类似于“java.io.IOException:超时 300000 毫秒，�
 
 ### <a name="issue"></a>问题
 
-可以遵循以下最佳做法来防止区域服务器重启失败。 我们建议在计划重启 HBase 区域服务器时，暂停繁重的工作负荷活动。 如果在关闭过程中应用程序继续与区域服务器进行连接，则这会将区域服务器重启操作拖慢几分钟。 另外，最好是先刷新所有表。 有关如何刷新表的参考信息，请参阅 [HDInsight HBase：如何通过刷新表改进 Apache HBase 群集重启时间](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)。
+可以遵循以下最佳做法来防止区域服务器重启失败。 我们建议在计划重启 HBase 区域服务器时，暂停繁重的工作负荷活动。 如果在关闭过程中应用程序继续与区域服务器进行连接，则这会将区域服务器重启操作拖慢几分钟。 另外，最好是先刷新所有表。 有关如何刷新表的参考信息，请参阅 [HDInsight HBase：如何通过刷新表改进 Apache HBase 群集重启时间](https://web.archive.org/web/20190112153155/ https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)。
 
 如果通过 Apache Ambari UI 在 HBase 区域服务器上开始重启操作，马上就会看到区域服务器关闭，但不会立即重启。 
 

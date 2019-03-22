@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 20a4e24800b2fa05990d294cb374841c50c4f79b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 89cc8c4bffe910de0861d7f44925a10df3811fdb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805268"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097468"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -49,7 +49,7 @@ ms.locfileid: "48805268"
 
 例如，可以使用：<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-2. （高级）：在 URL 中使用支持的通用营销活动 ID 之一。 我们希望能够顺应你需要使用的其他推荐标记，因此我们支持自动识别这些附加标记的约定：
+1. （高级）：在 URL 中使用我们支持的通用市场活动 Id 之一。 我们希望能够顺应你需要使用的其他推荐标记，因此我们支持自动识别这些附加标记的约定：
     
     1. **utm\_campaign**
     2. **utm\_source**

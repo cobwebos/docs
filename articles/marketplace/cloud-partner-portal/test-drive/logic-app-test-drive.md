@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d784941c43da13a2c1bd120599aa02fe14e5a5b4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4fd946b53956509844ad0a9396575f1ee2450414
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457262"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338592"
 ---
 <a name="logic-app-test-drive"></a>逻辑应用体验版
 ====================
@@ -137,6 +137,10 @@ ms.locfileid: "57457262"
 **Azure AD 应用密钥 -** [必填字段] 最终的字段将会生成身份验证密钥。 在密钥下添加密钥说明，将持续时间设置为永不过期，然后选择“保存”。 必须避免使用已过期的密钥，否则，在生产环境中体验版将会中断。 复制此值，并将其粘贴到所需的体验版字段中。
 
 ![Azure Active Directory 密钥部分](./media/azure-resource-manager-test-drive/subdetails8.png)
+
+> [!CAUTION]
+> 无法使用 Azure 应用程序注册预览版，因为当前生成 base64 编码密钥。
+
 
 <a name="next-steps"></a>后续步骤
 ----------

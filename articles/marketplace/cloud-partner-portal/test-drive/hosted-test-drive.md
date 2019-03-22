@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1ab9fcd50ad7081f8047d62e545287fa75db75e4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5057c0c781cb9ec60ecde7dd3f4bf96089b902df
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457582"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312676"
 ---
 # <a name="hosted-test-drive"></a>托管体验版
 
@@ -48,12 +48,12 @@ ms.locfileid: "57457582"
 - **测试驱动器类型**:选择\'Microsoft 托管 （例如 Dynamics 365 for Customer Engagement） 选项。 这表示 Microsoft 将托管和维护用于执行体验版用户预配和取消预配的服务。
 - **最大并发测试驱动器**:此字段设置为可以在任何给定时间点有一个活动的测试驱动器的并发用户数。 当每个用户的体验版处于活动状态时，该用户将使用一个 Dynamics 许可证，因此，你需要确保至少有这么多的 Dynamics 许可证可供体验版用户使用。 建议的值为 3-5。
 - **测试驱动器持续时间 （小时）**:此字段设置的小时数为体验版将处于活动状态的用户。 此小时数过后，将从租户中取消预配该用户。 建议的值为 2-24 小时，具体取决于应用的复杂性。 如果用户已耗尽时间并想要再次访问体验版，始终可以请求另一个体验版。
-- **实例 URL**:提供体验版用户最初后将导航到他们开始测试驱动器的 URL。 这通常是应用和示例数据所安装到的 Dynamics 365 实例的 URL。 示例值： https://testdrive.crm.dynamics.com
+- **实例 URL**:提供体验版用户最初后将导航到他们开始测试驱动器的 URL。 这通常是应用和示例数据所安装到的 Dynamics 365 实例的 URL。 示例值： https:\//testdrive.crm.dynamics.com
 - **Azure AD 租户 ID**:Dynamics 365 实例提供 Azure 租户的 ID。 若要检索此值，请登录到 Azure 门户并导航到“Azure Active Directory” -\> 从菜单边栏选项卡中选择“属性”-\> 复制“目录 ID”。 示例值：72f988bf-86f1-41af-91ab-2d7cd0111234
 - **Azure AD 应用 ID**:步骤 7 中创建的 Azure AD 应用 ID。 \ 示例值：53852862-a2ae-4e43-9461-faa49650a096
 - **Azure AD 应用密钥**:在密钥创建的 Azure AD 应用的步骤 7。 \ 示例值：IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
 - **Azure AD 租户名称**:Dynamics 365 实例提供的 Azure 租户的名称。 使用 \<tenantname.\>onmicrosoft.com 格式。 示例值：testdrive.onmicrosoft.com
-- **实例的 Web API URL**:为 Dynamics 365 实例提供 Web API URL。 可以登录到 Microsoft Dynamics 365 实例，并导航“设置”-\>“自定义”-\>“开发人员资源”-\>“实例 Web API”（复制此 URL）来检索此值。 示例值： https://testdrive.crm.dynamics.com/api/data/v9.0 
+- **实例的 Web API URL**:为 Dynamics 365 实例提供 Web API URL。 可以登录到 Microsoft Dynamics 365 实例，并导航“设置”-\>“自定义”-\>“开发人员资源”-\>“实例 Web API”（复制此 URL）来检索此值。 示例值： https:\//testdrive.crm.dynamics.com/api/data/v9.0 
 - **角色名称**:提供已为体验版创建的自定义 Dynamics 365 安全角色的名称。 这是在用户使用体验版期间为其分配的角色。 示例值： testdriverole
 
 ## <a name="next-steps"></a>后续步骤

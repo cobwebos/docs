@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: 描述的过程，该 power Azure 开发人员空格和如何 azds.yaml 配置文件中配置
 keywords: azds.yaml，Azure 开发人员空格、 开发空格、 Docker、 Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 4d0b2d24335b03fb1afc729e4cb8f7fc07f8a77e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8d17be31acc6868399e8f785255d28fa2314d48c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457332"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316110"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure 开发人员空间如何工作，是配置
 
@@ -59,7 +59,7 @@ Azure 开发人员空间的两个与交互的不同组件： 在控制器和客�
 
 在你的应用程序运行时，客户端还工具：
 * 接收并显示 stdout 和 stderr 的在 AKS 中运行的应用程序。
-* 使用[端口转发](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)以允许对应用程序使用的 web 访问 http://locahost。
+* 使用[端口转发](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)以允许对使用 http 的应用程序的 web 访问：\//localhost。
 * 将调试器附加到在 AKS 中运行的应用程序。
 * 同步源的代码与你的开发空间时为增量生成，实现快速迭代检测到更改。
 

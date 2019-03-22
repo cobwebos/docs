@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure 销售 SaaS - API | Microsoft Docs
-description: 介绍如何通过市场 API 创建 SaaS 套餐。
+title: SaaS 履行 API V1-Azure 应用商店 |Microsoft Docs
+description: 介绍如何创建使用相关联的履行 V1 Api 在 Azure marketplace SaaS 产品/服务。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: v-miclar
@@ -12,18 +12,24 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: reference
-ms.date: 09/17/2018
+ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 432120c324aa81107946fc30548e6e49acce6575
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: d9443349ea7ce91a3b8ab01510917bc82ae9b8ad
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002333"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316127"
 ---
-# <a name="saas-sell-through-azure---apis"></a>通过 Azure 销售 SaaS - API
+# <a name="saas-fulfillment-apis-version-1"></a>SaaS 履行 Api 版本 1
 
-本文介绍如何使用 API 创建 SaaS 套餐。 如果已选择“通过 Azure 销售”，则必须通过 API 来订阅你的 SaaS 套餐。  本文划分为两个部分：
+本文介绍如何使用 API 创建 SaaS 套餐。 如果已选择“通过 Azure 销售”，则必须通过 API 来订阅你的 SaaS 套餐。  
+
+> [!WARNING]
+> 此初始版本的 SaaS 履行 API 已弃用;请改用[SaaS 履行 API V2](./cpp-saas-fulfillment-api-v2.md)。
+
+
+本文划分为两个部分：
 
 -   SaaS 服务与 Azure 市场之间的服务到服务身份验证
 -   API 方法和终结点
@@ -37,7 +43,7 @@ ms.locfileid: "58002333"
 
 下图显示了新客户的订阅流，以及这些 API 的使用时机：
 
-![SaaS 套餐 API 流](./media/saas-offer-publish-api-flow.png)
+![SaaS 套餐 API 流](./media/saas-offer-publish-api-flow-v1.png)
 
 
 ## <a name="service-to-service-authentication-between-saas-service-and-azure-marketplace"></a>SaaS 服务与 Azure 市场之间的服务到服务身份验证
@@ -57,7 +63,7 @@ Azure 不会对 SaaS 服务公开给其最终用户的身份验证施加任何�
 2. 如果你的帐户有权访问多个租户，请在右上角单击该帐户，并将门户会话设置为所需的 Azure AD 租户。
 3. 在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”、“新建应用程序注册”。
 
-   ![SaaS AD 应用注册](./media/saas-offer-app-registration.png)
+   ![SaaS AD 应用注册](./media/saas-offer-app-registration-v1.png)
 
 4. 在“创建”页上，输入应用程序的注册信息：
    - **名称**：输入有意义的应用程序名称
@@ -65,14 +71,17 @@ Azure 不会对 SaaS 服务公开给其最终用户的身份验证施加任何�
      - 为安装在设备本地的[客户端应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)选择“本机”。 此设置用于 OAuth 公共[本机客户端](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)。
      - 为安装在安全服务器上的[客户端应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)和[资源/API 应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)选择“Web 应用/API”。 此设置用于 OAuth 机密性 [Web 客户端](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)和公共的[基于用户代理的客户端](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)。
      相同的应用程序还可以公开客户端和资源/API。
-   - **登录 URL**：对于 Web 应用/API 应用程序，请提供应用的基 URL。 例如，**http://localhost:31544** 可以是本地计算机上运行的 Web 应用的 URL。 然后，用户将使用此 URL 登录到 Web 客户端应用程序。
-   - **重定向 URI**：对于本机应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于你的应用程序的值，例如 **http://MyFirstAADApp**。
+   - **登录 URL**：对于 Web 应用/API 应用程序，请提供应用的基 URL。 例如， **http:\//localhost:31544**可能是在本地计算机上运行的 web 应用的 URL。 然后，用户将使用此 URL 登录到 Web 客户端应用程序。
+   - **重定向 URI**：对于本机应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入值特定于应用程序，例如**http:\//MyFirstAADApp**。
 
-     ![SaaS AD 应用注册](./media/saas-offer-app-registration-2.png)有关 Web 应用程序或本机应用程序的具体示例，请查看 [Azure AD 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)的“快速入门”部分中提供的快速入门引导设置。
+     ![SaaS AD 应用注册](./media/saas-offer-app-registration-v1-2.png)
+
+     有关 web 应用程序或本机应用程序的特定示例，请查看本快速入门教程引导式设置的入门部分中的可用[Azure AD 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
 
 5. 完成后，单击“创建”。 Azure AD 会将唯一的应用程序 ID 分配给应用程序，同时你会转到应用程序的注册主页。 根据应用程序是 Web 应用程序还是本机应用程序，会提供不同的选项用于将更多功能添加到应用程序。
 
-   **注意：** 默认情况下，新注册的应用程序配置为只允许同一租户中的用户登录到应用程序。
+>[!Note]
+>默认情况下，新注册的应用程序被配置为仅允许用户从同一租户中登录到你的应用程序。
 
 <a name="api-methods-and-endpoints"></a>API 方法和终结点
 -------------------------
@@ -638,3 +647,8 @@ SaaS webhook 用于主动将更改通知给 SaaS 服务。 此 POST API 应当�
 | action                 | String        | 触发此通知的操作。 可能的值 - Activate、Delete、Suspend、Reinstate、Update          |
 | timeStamp                 | String        | 此通知的触发时间的时间戳值（采用 UTC 格式）。          |
 |  |  |  |
+
+
+## <a name="next-steps"></a>后续步骤
+
+开发人员可以以编程方式检索和操作工作负荷，产品/服务，并且发布者配置文件使用[云合作伙伴门户 REST Api](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)。

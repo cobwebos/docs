@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b46acfbfd77015193135d1a8c7646c331340145
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 96a334b4bd39513bfad128a8f1b59f319fef013e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200644"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317402"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Apache Giraph
 
@@ -49,7 +49,7 @@ ms.locfileid: "58200644"
     |属性|值|  
     |---|---|  
     |名称|指定脚本操作的名称。 例如，安装 Giraph|
-    |脚本 URI|指定调用以自定义群集的脚本的统一资源标识符 (URI)。 例如 *https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
+    |脚本 URI|指定调用以自定义群集的脚本的统一资源标识符 (URI)。 例如， *https:\//hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
     |节点类型|指定在其上运行自定义脚本的节点。 可以选择“所有节点”、“仅限头节点”或“仅限辅助角色节点”。
     |parameters|根据脚本的需要，指定参数。 用于安装 Giraph 的脚本不需要任何参数，因此可以将此字段留空。|  
 

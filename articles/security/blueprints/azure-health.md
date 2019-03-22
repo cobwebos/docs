@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 92b7714e9f6635cf0b44a98a16ddb4616643ba81
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5f23435a43d139ecb9f20e5036124f175b1830c9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544556"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225359"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
@@ -359,7 +359,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 - [Application Insights](/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它检测性能异常。 其中包含强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。 Application Insights 有助于持续提高性能与可用性。
 
 ### <a name="azure-alerts"></a>Azure 警报
-- 可以通过警报这种方法来监视 Azure 服务并根据数据来配置条件。 当警报条件与监视的数据匹配时，警报还会提供通知。
+- [警报](/azure/azure-monitor/platform/alerts-metric)种方法来监视 Azure 服务并允许您配置数据条件。 当警报条件与监视的数据匹配时，警报还会提供通知。
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 [Azure Monitor 日志](/azure/operations-management-suite/operations-management-suite-overview)是管理服务的集合。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: cc7d9a8e0d2689be4a8beb5d42c43b9e18157472
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 49bc3c22eecf804e6930899478fe3be189677382
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238107"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985897"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 
@@ -143,6 +143,20 @@ KeyVault-BYOK-Tools-Japan.zip
 KeyVault-BYOK-Tools-Korea.zip
 
 71AB6BCFE06950097C8C18D532A9184BEF52A74BB944B8610DDDA05344ED136F
+
+- - -
+**南非：**
+
+KeyVault-BYOK-Tools-SouthAfrica.zip
+
+C41060C5C0170AAAAD896DA732E31433D14CB9FC83AC3C67766F46D98620784A
+
+- - -
+**阿拉伯联合酋长国：**
+
+KeyVault-BYOK-Tools-UAE.zip
+
+FADE80210B06962AA0913EA411DAB977929248C65F365FD953BB9F241D5FC0D3
 
 - - -
 **澳大利亚：**
@@ -304,6 +318,12 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
    * 韩国：
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-KOREA-1 -w BYOK-SecurityWorld-pkg-KOREA-1
+   * 南非：
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SA-1 -w BYOK-SecurityWorld-pkg-SA-1
+   * 有关阿拉伯联合酋长国：
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UAE-1 -w BYOK-SecurityWorld-pkg-UAE-1
    * 澳大利亚：
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
@@ -390,6 +410,12 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 * 韩国：
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1
+* 南非：
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1
+* 有关阿拉伯联合酋长国：
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1
 * 澳大利亚：
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
@@ -415,7 +441,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
-运行此命令时，请将 *contosokey* 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
+运行此命令时，请将 *contosokey* 替换为在生成密钥步骤的“步骤 3.5：新建密钥”中指定的相同值。**
 
 系统会要求插入安全体系的管理员卡。
 
@@ -429,7 +455,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 * kmfile-dump.exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  运行这些命令时，请将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
+  运行这些命令时，请将 contosokey 替换为在生成密钥步骤的“步骤 3.5：新建密钥”中指定的相同值。**
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>步骤 4.2：使用 Microsoft 的密钥交换密钥加密密钥
 
@@ -453,6 +479,12 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 * 韩国：
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-KOREA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-KOREA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* 南非：
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* 有关阿拉伯联合酋长国：
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UAE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UAE-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * 澳大利亚：
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
@@ -480,8 +512,8 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 运行此命令时，请使用以下说明︰
 
-* 将 *contosokey* 替换为用于在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中生成密钥的标识符。
-* 将 *SubscriptionID* 替换为包含密钥保管库的 Azure 订阅 ID。 以前已在[准备连接到 Internet 的工作站](#step-1-prepare-your-internet-connected-workstation)步骤的**步骤 1.2：获取 Azure 订阅 ID** 中检索此值。
+* 将 *contosokey* 替换为用于在生成密钥步骤的“步骤 3.5：新建密钥”中生成密钥的标识符。**
+* 将 *SubscriptionID* 替换为包含密钥保管库的 Azure 订阅 ID。 以前已在准备连接到 Internet 的工作站步骤的**步骤 1.2：获取 Azure 订阅 ID** 中检索此值。
 * 将 *ContosoFirstHSMKey* 替换为用于输出文件名称的标签。
 
 此操作成功完成后，它会显示“结果:成功”，并且具有以下名称的当前文件夹中会出现一个新文件：KeyTransferPackage-*ContosoFirstHSMkey*.byok
