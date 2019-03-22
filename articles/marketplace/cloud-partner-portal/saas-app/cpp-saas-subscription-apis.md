@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 432120c324aa81107946fc30548e6e49acce6575
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: d6ab18d68d6508a18f0b36ab5a39e15fa7c0555a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002333"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311656"
 ---
 # <a name="saas-sell-through-azure---apis"></a>通过 Azure 销售 SaaS - API
 
@@ -65,8 +65,8 @@ Azure 不会对 SaaS 服务公开给其最终用户的身份验证施加任何�
      - 为安装在设备本地的[客户端应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)选择“本机”。 此设置用于 OAuth 公共[本机客户端](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)。
      - 为安装在安全服务器上的[客户端应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)和[资源/API 应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)选择“Web 应用/API”。 此设置用于 OAuth 机密性 [Web 客户端](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)和公共的[基于用户代理的客户端](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)。
      相同的应用程序还可以公开客户端和资源/API。
-   - **登录 URL**：对于 Web 应用/API 应用程序，请提供应用的基 URL。 例如，**http://localhost:31544** 可以是本地计算机上运行的 Web 应用的 URL。 然后，用户将使用此 URL 登录到 Web 客户端应用程序。
-   - **重定向 URI**：对于本机应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于你的应用程序的值，例如 **http://MyFirstAADApp**。
+   - **登录 URL**：对于 Web 应用/API 应用程序，请提供应用的基 URL。 例如， **http:\//localhost:31544**可能是在本地计算机上运行的 web 应用的 URL。 然后，用户将使用此 URL 登录到 Web 客户端应用程序。
+   - **重定向 URI**：对于本机应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入值特定于应用程序，例如**http:\//MyFirstAADApp**。
 
      ![SaaS AD 应用注册](./media/saas-offer-app-registration-2.png)有关 Web 应用程序或本机应用程序的具体示例，请查看 [Azure AD 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)的“快速入门”部分中提供的快速入门引导设置。
 
@@ -118,7 +118,7 @@ HTTP 方法
 
 *响应*
 
-|  **名称**  | 类型       |  **说明**    |
+|  **名称**  | **类型**       |  **说明**    |
 | ---------- | -------------  | ------------------- |
 | 200 正常    | TokenResponse  | 请求成功   |
 |  |  |  |
@@ -436,7 +436,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | **参数名称** | **数据类型** | **说明**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
 | id                 | String        | 操作的 ID。                                                                      |
-| status             | 枚举          | 操作状态，值为下列其中一项：`In Progress`、`Succeeded` 或 `Failed`。          |
+| 状态             | 枚举          | 操作状态，值为下列其中一项：`In Progress`、`Succeeded` 或 `Failed`。          |
 | resourceLocation   | String        | 链接到已创建或修改的订阅。 这可以帮助客户端获取更新的状态发布操作。 不会对 `Unsubscribe` 操作设置此值。 |
 | created            | DateTime      | 操作创建时间 (UTC)。                                                           |
 | lastModified       | DateTime      | 上次更新操作的时间 (UTC)。                                                      |
