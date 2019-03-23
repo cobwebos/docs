@@ -7,26 +7,26 @@ author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: sample
-ms.date: 05/03/2018
+ms.topic: article
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: a285bc4c6eecf1a8cdda758af9df1a697c374b5a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
+ms.openlocfilehash: e50933ea0231b4be22c2d0f82d33fd02dd0918f5
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533963"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351603"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>借助自定义影像服务分类器使用预测终结点以编程方式测试图像
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically"></a>使用预测终结点来以编程方式测试映像
 
-训练模型后，可以通过将图像提交到预测 API 来以编程方式测试这些图像。 
+训练模型后，可以通过将图像提交到预测 API 来以编程方式测试这些图像。
 
 > [!NOTE]
 > 本文档演示如何使用 C# 将图像提交到预测 API。 有关 API 用法的详细信息和示例，请参阅[预测 API 参考](https://go.microsoft.com/fwlink/?linkid=865445)。
 
 ## <a name="get-the-url-and-prediction-key"></a>获取 URL 和预测密钥
 
-从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡。若要显示有关预测 API（包括 Prediction-key）用法的信息，请选择“预测 URL”。 对于附加到 Azure 资源的项目，还可在 [Azure 门户](https://portal.azure.com)页中关联 Azure 资源的“密钥”下找到 Prediction-key。 复制要在应用程序中使用的以下信息：
+从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡。若要显示有关预测 API（包括 Prediction-key）用法的信息，请选择“预测 URL”。 对于项目附加到 Azure 资源，你__预测键__还可在[Azure 门户](https://portal.azure.com)下的关联 Azure 资源页__密钥__。 复制要在应用程序中使用的以下信息：
 
 * 使用图像文件的 URL。
 * “Prediction-key”值。
@@ -40,7 +40,7 @@ ms.locfileid: "57533963"
 
 1. 在 Visual Studio 中创建新的 C# 控制台应用程序。
 
-2. 使用以下代码作为“Program.cs”文件的主体。
+1. 使用以下代码作为“Program.cs”文件的主体。
 
     > [!IMPORTANT]
     > 更改以下信息：

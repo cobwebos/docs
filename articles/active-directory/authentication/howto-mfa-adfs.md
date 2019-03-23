@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f508475166346c56b3bd0c8607c27beb7aba66c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316467"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371522"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>将 Azure 多重身份验证与 AD FS 配合使用来保护云资源
 
@@ -30,15 +30,15 @@ ms.locfileid: "58316467"
 2. 在左侧选择“信赖方信任”。
 3. 右键单击“Microsoft Office 365 标识平台”，然后选择“编辑声明规则”。
 
-   ![云](./media/howto-mfa-adfs/trustedip1.png)
+   ![ADFS 控制台中的信赖方信任](./media/howto-mfa-adfs/trustedip1.png)
 
 4. 在“颁发转换规则”上，单击 **添加规则**。
 
-   ![云](./media/howto-mfa-adfs/trustedip2.png)
+   ![编辑颁发转换规则](./media/howto-mfa-adfs/trustedip2.png)
 
 5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，并单击“下一步”。
 
-   ![云](./media/howto-mfa-adfs/trustedip3.png)
+   ![添加转换声明规则向导](./media/howto-mfa-adfs/trustedip3.png)
 
 6. 为规则提供一个名称。 
 7. 选择“身份验证方法引用”作为传入声明类型。
@@ -58,15 +58,15 @@ ms.locfileid: "58316467"
 
 1. 打开“AD FS 管理”。
 2. 在左侧选择“信赖方信任”。
-3. 右键单击 **Microsoft Office 365 标识平台** ，并选择 **编辑声明规则...**
-   ![云](./media/howto-mfa-adfs/trustedip1.png)
-4. 在“颁发转换规则”上，单击 **添加规则。**
-   ![云](./media/howto-mfa-adfs/trustedip2.png)
+3. 右键单击**Microsoft Office 365 标识平台**，然后选择**编辑声明规则...** 
+    ![ADFS 控制台-编辑声明规则](./media/howto-mfa-adfs/trustedip1.png)
+4. 在颁发转换规则，单击**添加规则。**
+   ![添加声明规则](./media/howto-mfa-adfs/trustedip2.png)
 5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，并单击“下一步”。
-   ![云](./media/howto-mfa-adfs/trustedip3.png)
+   ![添加转换声明规则向导](./media/howto-mfa-adfs/trustedip3.png)
 6. 在“声明规则名称”旁边的框中，为规则指定名称。 例如：InsideCorpNet。
 7. 从“传入声明类型”旁边的下拉列表中，选择“公司网络内部”。
-   ![云](./media/howto-mfa-adfs/trustedip4.png)
+   ![公司网络内部添加声明](./media/howto-mfa-adfs/trustedip4.png)
 8. 单击“完成”。
 9. 在“颁发转换规则”上，单击“添加规则”。
 10. 在“添加转换声明规则向导”上，从下拉列表中选择“使用自定义规则发送声明”，并单击“下一步”。
@@ -75,8 +75,8 @@ ms.locfileid: "58316467"
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![云](./media/howto-mfa-adfs/trustedip5.png)
-13. 单击“完成” 。
+    ![创建自定义声明，以确保登录的用户](./media/howto-mfa-adfs/trustedip5.png)
+13. 单击“完成”。
 14. 单击“应用”。
 15. 单击“确定” 。
 16. 关闭“AD FS 管理”。
