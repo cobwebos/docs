@@ -134,8 +134,11 @@ ms.collection: M365-identity-device-management
                     <div class="cardText">
                         <h3>“我的应用”门户帮助</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/active-directory-saas-access-panel-introduction">什么是“我的应用”门户？</a><br/>
-                        <a href="/azure/active-directory/active-directory-saas-access-panel-user-help">故障排除</a>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access">访问并使用“我的应用”门户</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-update-profile">更新配置文件和帐户信息</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-groups">更新与组相关的信息</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access-reviews">执行自己的访问评审</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-troubleshoot">故障排除</a>
                         </p>
                     </div>
                 </div>

@@ -1,0 +1,57 @@
+items:
+- name: Windows 虚拟桌面
+  href: index.yml
+- name: 概述
+  items:
+  - name: 什么是 Windows 虚拟桌面？
+    href: overview.md
+- name: 教程
+  items:
+  - name: 1. 在 Windows 虚拟桌面中创建租户
+    href: tenant-setup-azure-active-directory.md
+  - name: 2. 通过 Azure 市场创建主机池
+    href: create-host-pools-azure-marketplace.md
+  - name: 3. 管理应用组
+    href: manage-app-groups.md
+  - name: 4. 使用 PowerShell 创建服务主体和角色分配
+    href: create-service-principal-role-powershell.md
+- name: 操作说明
+  items:
+  - name: 连接到 Windows 虚拟桌面资源
+    items:
+    - name: 使用 Windows 7 和 Windows 10 进行连接
+      href: connect-windows-7-and-10.md
+    - name: 使用 Web 客户端进行连接
+      href: connect-web.md
+  - name: 使用 Azure 资源管理器模板创建主机池
+    href: create-host-pools-arm-template.md
+  - name: 使用 PowerShell 创建主机池
+    href: create-host-pools-powershell.md
+  - name: 为主机池设置用户配置文件共享
+    href: create-host-pools-user-profile.md
+  - name: 配置 Windows 虚拟桌面负载均衡方法
+    href: configure-host-pool-load-balancing.md
+  - name: 确定诊断功能的问题
+    href: diagnostics-role-service.md
+  - name: 准备和自定义主 VHD 映像
+    href: set-up-customize-master-image.md
+  - name: 自动缩放会话主机
+    href: set-up-scaling-script.md
+- name: 概念
+  items:
+  - name: Windows 虚拟桌面环境
+    href: environment-setup.md
+  - name: Windows 虚拟桌面中的委托访问
+    href: delegated-access-virtual-desktop.md
+  - name: 主机池负载均衡方法
+    href: host-pool-load-balancing.md
+- name: 引用
+  items:
+  - name: PowerShell
+    href: /powershell/windows-virtual-desktop/overview
+ms.openlocfilehash: 2f321b25d6ba1ad8545bf161dd37e270890efcec
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58318763"

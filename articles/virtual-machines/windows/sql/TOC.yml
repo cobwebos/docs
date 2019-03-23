@@ -1,0 +1,129 @@
+items:
+- name: 概述
+  items:
+  - name: 关于 Windows SQL Server VM
+    href: virtual-machines-windows-sql-server-iaas-overview.md
+  - name: 发行说明
+    href: virtual-machines-windows-sql-server-iaas-release-notes.md
+- name: 快速入门
+  items:
+  - name: 创建 SQL VM - 门户
+    href: quickstart-sql-vm-create-portal.md
+  - name: 创建 SQL VM - PowerShell
+    href: quickstart-sql-vm-create-powershell.md
+- name: 概念
+  items:
+  - name: 最佳做法
+    items:
+    - name: 性能最佳做法
+      href: virtual-machines-windows-sql-performance.md
+    - name: 安全注意事项
+      href: virtual-machines-windows-sql-security.md
+    - name: 应用程序模式
+      href: virtual-machines-windows-sql-server-app-patterns-dev-strategies.md
+  - name: 业务连续性
+    items:
+    - name: 高可用性选项
+      href: virtual-machines-windows-sql-high-availability-dr.md
+    - name: Always On 可用性组
+      href: virtual-machines-windows-portal-sql-availability-group-overview.md
+    - name: 备份和还原
+      href: virtual-machines-windows-sql-backup-recovery.md
+    - name: SQL Server 2014 自动备份
+      href: virtual-machines-windows-sql-automated-backup.md
+    - name: SQL Server 2016+ 自动备份
+      href: virtual-machines-windows-sql-automated-backup-v2.md
+  - name: 管理
+    items:
+    - name: 连接到 VM
+      href: virtual-machines-windows-sql-connect.md
+    - name: 配置存储
+      href: virtual-machines-windows-sql-server-storage-configuration.md
+    - name: 自动执行管理任务
+      items:
+      - name: 使用 SQL Server IaaS 代理扩展
+        href: virtual-machines-windows-sql-server-agent-extension.md
+      - name: 自动修补
+        href: virtual-machines-windows-sql-automated-patching.md
+      - name: 配置 Azure Key Vault 集成
+        href: virtual-machines-windows-ps-sql-keyvault.md
+- name: 操作指南
+  items:
+  - name: 创建 SQL VM
+    items:
+    - name: 使用门户
+      href: virtual-machines-windows-portal-sql-server-provision.md
+    - name: 使用 Azure PowerShell
+      href: virtual-machines-windows-ps-sql-create.md
+  - name: 更改 SQL VM 的许可模型
+    href: virtual-machines-windows-sql-ahb.md
+  - name: 迁移
+    items:
+    - name: 迁移 SQL Server 数据库
+      href: virtual-machines-windows-migrate-sql.md
+  - name: 配置高可用性
+    items:
+    - name: 使用 Azure 存储进行备份和还原
+      href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
+    - name: Always On 可用性组
+      items:
+      - name: Azure SQL VM CLI
+        href: virtual-machines-windows-sql-availability-group-cli.md
+      - name: Azure 门户模板
+        href: virtual-machines-windows-portal-sql-alwayson-availability-groups.md
+      - name: Azure 快速入门模板
+        href: virtual-machines-windows-sql-availability-group-quickstart-template.md
+      - name: 多个区域
+        href: virtual-machines-windows-portal-sql-availability-group-dr.md
+      - name: 手动配置
+        items:
+        - name: 先决条件
+          href: virtual-machines-windows-portal-sql-availability-group-prereq.md
+        - name: 教程
+          href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
+        - name: 负载均衡器 - Azure 门户
+          href: virtual-machines-windows-portal-sql-alwayson-int-listener.md
+        - name: 负载均衡器 - Azure PowerShell
+          href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
+    - name: 故障转移群集实例
+      items:
+      - name: 配置
+        href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+- name: 引用
+  items:
+  - name: Azure PowerShell
+    href: /powershell/azure/overview
+  - name: Azure CLI
+    href: /cli/azure/
+  - name: T-SQL
+    href: https://docs.microsoft.com/sql/t-sql/language-reference
+  - name: SQL Server 驱动程序
+    href: https://docs.microsoft.com/sql/connect/sql-connection-libraries
+  - name: REST
+    href: /rest/api/
+- name: 资源
+  items:
+  - name: 常见问题解答
+    href: virtual-machines-windows-sql-server-iaas-faq.md
+  - name: 定价
+    href: virtual-machines-windows-sql-server-pricing-guidance.md
+  - name: PaaS 或 IaaS？
+    href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
+  - name: SQL Server Data Tools (SSDT)
+    href: https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt
+  - name: SQL Server Management Studio (SSMS)
+    href: https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms
+  - name: SQL Server 工具
+    href: https://docs.microsoft.com/sql/tools/overview-sql-tools
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: MSDN 论坛
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server
+  - name: 堆栈溢出
+    href: https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server
+ms.openlocfilehash: 4e3e565bd700bb4106028e98a2a7833707561376
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340619"

@@ -1,0 +1,199 @@
+items:
+- name: Data Lake Storage Gen1 文档
+  href: index.md
+- name: 切换到 Data Lake Storage Gen2 文档
+  href: https://docs.microsoft.com/azure/storage/data-lake-storage/introduction
+- name: 概述
+  items:
+  - name: Data Lake Storage Gen1 概述
+    href: data-lake-store-overview.md
+  - name: 与 Azure 存储进行比较
+    href: data-lake-store-comparison-with-blob-storage.md
+  - name: 处理大数据
+    href: data-lake-store-data-scenarios.md
+  - name: 使用开放源代码应用程序
+    href: data-lake-store-compatible-oss-other-applications.md
+  - name: 最佳做法
+    href: data-lake-store-best-practices.md
+- name: 入门
+  items:
+  - name: 使用 Azure 门户
+    href: data-lake-store-get-started-portal.md
+  - name: 使用 Azure PowerShell
+    href: data-lake-store-get-started-powershell.md
+  - name: 使用 Azure CLI
+    href: data-lake-store-get-started-cli-2.0.md
+- name: 如何
+  items:
+  - name: 加载和移动数据
+    items:
+    - name: 使用 Azure 数据工厂
+      href: ../data-factory/load-azure-data-lake-store.md
+    - name: 使用存储资源管理器
+      href: data-lake-store-in-storage-explorer.md
+    - name: 使用 AdlCopy
+      href: data-lake-store-copy-data-azure-storage-blob.md
+    - name: 使用 DistCp
+      href: data-lake-store-copy-data-wasb-distcp.md
+    - name: 使用 Sqoop
+      href: data-lake-store-data-transfer-sql-sqoop.md
+    - name: 从脱机源上传数据
+      href: data-lake-store-offline-bulk-data-upload.md
+    - name: 跨区域迁移 Data Lake Store Gen1
+      href: data-lake-store-migration-cross-region.md
+  - name: 保护数据
+    items:
+    - name: 安全概述
+      href: data-lake-store-security-overview.md
+    - name: 访问控制
+      href: data-lake-store-access-control.md
+    - name: 保护存储的数据
+      href: data-lake-store-secure-data.md
+    - name: 加密
+      href: data-lake-store-encryption.md
+    - name: 虚拟网络集成
+      href: data-lake-store-network-security.md
+  - name: 使用 Data Lake Storage Gen1 进行身份验证
+    items:
+    - name: 身份验证选项
+      href: data-lakes-store-authentication-using-azure-active-directory.md
+    - name: 最终用户身份验证
+      href: data-lake-store-end-user-authenticate-using-active-directory.md
+      items:
+      - name: 使用 Java
+        href: data-lake-store-end-user-authenticate-java-sdk.md
+      - name: 使用 .NET SDK
+        href: data-lake-store-end-user-authenticate-net-sdk.md
+      - name: 使用 REST API
+        href: data-lake-store-end-user-authenticate-rest-api.md
+      - name: 使用 Python
+        href: data-lake-store-end-user-authenticate-python.md
+    - name: 服务到服务身份验证
+      href: data-lake-store-service-to-service-authenticate-using-active-directory.md
+      items:
+      - name: 使用 Java
+        href: data-lake-store-service-to-service-authenticate-java.md
+      - name: 使用 .NET SDK
+        href: data-lake-store-service-to-service-authenticate-net-sdk.md
+      - name: 使用 REST API
+        href: data-lake-store-service-to-service-authenticate-rest-api.md
+      - name: 使用 Python
+        href: data-lake-store-service-to-service-authenticate-python.md
+  - name: 使用 Data Lake Storage Gen1
+    items:
+    - name: 帐户管理操作
+      items:
+      - name: 使用 .NET SDK
+        href: data-lake-store-get-started-net-sdk.md
+      - name: 使用 REST API
+        href: data-lake-store-get-started-rest-api.md
+      - name: 使用 Python
+        href: data-lake-store-get-started-python.md
+    - name: 文件系统操作
+      items:
+      - name: 使用 .NET SDK
+        href: data-lake-store-data-operations-net-sdk.md
+      - name: 使用 Java SDK
+        href: data-lake-store-get-started-java-sdk.md
+      - name: 使用 REST API
+        href: data-lake-store-data-operations-rest-api.md
+      - name: 使用 Python
+        href: data-lake-store-data-operations-python.md
+  - name: 性能
+    items:
+    - name: 概述
+      href: data-lake-store-performance-tuning-guidance.md
+    - name: 使用 Azure PowerShell
+      href: data-lake-store-performance-tuning-powershell.md
+    - name: 使用 Spark on HDInsight
+      href: data-lake-store-performance-tuning-spark.md
+    - name: 使用 Hive on HDInsight
+      href: data-lake-store-performance-tuning-hive.md
+    - name: 使用 MapReduce on HDInsight
+      href: data-lake-store-performance-tuning-mapreduce.md
+    - name: 使用 Storm on HDInsight
+      href: data-lake-store-performance-tuning-storm.md
+  - name: 与 Azure 服务集成
+    items:
+    - name: 与 HDInsight 配合使用
+      items:
+      - name: 使用 Azure 门户
+        href: data-lake-store-hdinsight-hadoop-use-portal.md
+      - name: 使用 Azure PowerShell（默认存储）
+        href: data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md
+      - name: 使用 Azure PowerShell（附加存储）
+        href: data-lake-store-hdinsight-hadoop-use-powershell.md
+      - name: 使用 Azure 模板
+        href: data-lake-store-hdinsight-hadoop-use-resource-manager-template.md
+    - name: 从 Azure VNET 中的 VM 访问
+      href: data-lake-store-connectivity-from-vnets.md
+    - name: 与 Data Lake Analytics 配合使用
+      href: ../data-lake-analytics/data-lake-analytics-get-started-portal.md
+    - name: 与 Azure 事件中心配合使用
+      href: data-lake-store-archive-eventhub-capture.md
+    - name: 与数据工厂配合使用
+      href: ../data-factory/load-azure-data-lake-store.md
+    - name: 与流分析配合使用
+      href: data-lake-store-stream-analytics.md
+    - name: 与 Power BI 配合使用
+      href: data-lake-store-power-bi.md
+    - name: 与数据目录配合使用
+      href: data-lake-store-with-data-catalog.md
+    - name: 在 SQL 数据仓库中与 PolyBase 配合使用
+      href: ../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md
+    - name: 与 SQL Server Integration Services 配合使用
+      href: https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager
+    - name: 更多 Azure 集成选项
+      href: data-lake-store-integrate-with-other-services.md
+  - name: 管理
+    items:
+    - name: 访问诊断日志
+      href: data-lake-store-diagnostic-logs.md
+    - name: 高可用性规划
+      href: data-lake-store-disaster-recovery-guidance.md
+- name: 引用
+  items:
+  - name: 代码示例
+    href: https://azure.microsoft.com/resources/samples/?service=data-lake-store
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.datalakestore
+  - name: .NET
+    href: https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet
+  - name: Java
+    href: https://docs.microsoft.com/java/api/overview/azure/datalake?view=azure-java-stable
+  - name: Node.js
+    href: https://www.npmjs.com/package/azure-arm-datalake-store
+  - name: Python（帐户管理）
+    href: https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python
+  - name: Python（文件系统管理）
+    href: https://azure-datalake-store.readthedocs.io/en/latest
+  - name: REST
+    href: /rest/api/datalakestore
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.datalakestore/allversions
+  - name: Azure CLI
+    href: https://docs.microsoft.com/cli/azure/dls
+- name: 资源
+  items:
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/updates/?product=data-lake-store
+  - name: Data Lake Store 博客
+    href: https://blogs.msdn.microsoft.com/azuredatalake/
+  - name: 在 UserVoice 上提供反馈
+    href: https://feedback.azure.com/forums/327234-data-lake
+  - name: MSDN 论坛
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/data-lake-store/
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Stack Overflow 论坛
+    href: https://stackoverflow.com/questions/tagged/azure-data-lake
+  - name: 视频
+    href: https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store
+ms.openlocfilehash: 8112eab2dc35ba7ff80cd9f1591d999c1d7d6980
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341214"

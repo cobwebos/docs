@@ -1,0 +1,97 @@
+items:
+- name: 概述
+  items:
+  - name: Windows SQL Server VM
+    href: ../sql/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/virtual-machines/windows/
+  - name: 常见问题解答
+    href: ../sql/virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+- name: 入门
+  items:
+  - name: 在 Azure 门户中预配 VM
+    href: ../sql/virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: 使用 Azure PowerShell 预配 VM
+    href: virtual-machines-windows-classic-ps-sql-create.md
+  - name: 连接到 VM
+    href: virtual-machines-windows-classic-sql-connect.md
+  - name: 迁移 SQL Server 数据库
+    href: ../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+- name: 如何
+  items:
+  - name: 配置高可用性
+    items:
+    - name: 高可用性选项
+      href: ../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+    - name: 使用 PowerShell 配置 Always On 可用性组
+      href: virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
+    - name: 为可用性组配置内部侦听器
+      href: virtual-machines-windows-classic-ps-sql-int-listener.md
+    - name: 为可用性组配置外部侦听器
+      href: virtual-machines-windows-classic-ps-sql-ext-listener.md
+    - name: 将本地可用性组扩展到 Azure
+      href: virtual-machines-windows-classic-sql-onprem-availability.md
+  - name: 管理
+    items:
+    - name: 使用 SQL Server IaaS 代理扩展
+      href: virtual-machines-windows-classic-sql-server-agent-extension.md
+    - name: 自动修补
+      href: virtual-machines-windows-classic-sql-automated-patching.md
+    - name: 配置 Azure Key Vault 集成
+      href: virtual-machines-windows-classic-ps-sql-keyvault.md
+    - name: 使用高级存储
+      href: virtual-machines-windows-classic-sql-server-premium-storage.md
+    - name: 安全注意事项
+      href: ../sql/virtual-machines-windows-sql-security.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: 备份和还原
+    items:
+    - name: 备份和还原
+      href: ../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+    - name: 自动备份
+      href: virtual-machines-windows-classic-sql-automated-backup.md
+    - name: 使用 Azure 存储进行备份和还原
+      href: ../sql/virtual-machines-windows-use-storage-sql-server-backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: 商业智能
+    items:
+    - name: Azure VM 中的 SQL Server 商业智能
+      href: virtual-machines-windows-classic-ps-sql-bi.md
+    - name: 在 Azure 托管的网站中使用 ReportViewer
+      href: virtual-machines-windows-classic-sql-server-reportviewer.md
+    - name: 使用 Azure PowerShell 创建包含报表服务器的 Azure VM
+      href: virtual-machines-windows-classic-ps-sql-report.md
+  - name: 性能最佳做法
+    href: ../sql/virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: 应用程序模式
+    href: ../sql/virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+- name: 引用
+  items:
+  - name: Azure PowerShell
+    href: /powershell/azure/overview?view=azuresmps-3.7.0
+  - name: Azure CLI
+    href: /cli/azure/
+  - name: T-SQL
+    href: https://docs.microsoft.com/sql/t-sql/language-reference
+  - name: SQL Server 驱动程序
+    href: https://docs.microsoft.com/sql/connect/sql-server-drivers
+  - name: REST
+    href: /rest/api/
+- name: 资源
+  items:
+  - name: MSDN 论坛
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: SQL Server Data Tools (SSDT)
+    href: https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt
+  - name: SQL Server Management Studio (SSMS)
+    href: https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms
+  - name: SQL Server 工具
+    href: https://docs.microsoft.com/sql/tools/overview-sql-tools
+  - name: 堆栈溢出
+    href: https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server
+ms.openlocfilehash: 66cc42f9be1a2147597e81ec774b01aa7b59e383
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341163"

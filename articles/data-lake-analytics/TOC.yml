@@ -1,0 +1,163 @@
+items:
+- name: Data Lake Analytics 文档
+  href: index.md
+- name: 概述
+  items:
+  - name: 什么是 Data Lake Analytics？
+    href: data-lake-analytics-overview.md
+- name: 入门
+  items:
+  - name: Azure 门户
+    href: data-lake-analytics-get-started-portal.md
+  - name: Visual Studio
+    href: data-lake-analytics-data-lake-tools-get-started.md
+  - name: Visual Studio Code
+    href: data-lake-analytics-data-lake-tools-for-vscode.md
+  - name: Azure PowerShell
+    href: data-lake-analytics-get-started-powershell.md
+  - name: Azure CLI
+    href: data-lake-analytics-get-started-cli.md
+- name: 如何
+  items:
+  - name: 管理 Data Lake Analytics
+    items:
+    - name: Azure 门户
+      href: data-lake-analytics-manage-use-portal.md
+    - name: 命令行
+      items:
+      - name: Azure CLI
+        href: data-lake-analytics-manage-use-cli.md
+      - name: Azure PowerShell
+        href: data-lake-analytics-manage-use-powershell.md
+    - name: SDK
+      items:
+      - name: .NET
+        href: data-lake-analytics-manage-use-dotnet-sdk.md
+      - name: Python
+        href: data-lake-analytics-manage-use-python-sdk.md
+      - name: Java
+        href: data-lake-analytics-manage-use-java-sdk.md
+      - name: Node.js
+        href: data-lake-analytics-manage-use-nodejs.md
+    - name: 添加用户
+      href: data-lake-analytics-add-users.md
+    - name: 策略
+      href: data-lake-analytics-policies.md
+    - name: 保护作业文件夹
+      href: data-lake-analytics-secure.md
+    - name: 访问诊断日志
+      href: data-lake-analytics-diagnostic-logs.md
+    - name: 调整配额限制
+      href: data-lake-analytics-quota-limits.md
+  - name: 开发 U-SQL 程序
+    items:
+    - name: U-SQL 模型语言
+      items:
+      - name: 基础
+        href: data-lake-analytics-u-sql-get-started.md
+      - name: 语言参考
+        href: https://msdn.microsoft.com/library/azure/mt591959
+      - name: 目录
+        href: data-lake-analytics-u-sql-catalog.md
+      - name: 用户定义的运算符
+        href: data-lake-analytics-u-sql-develop-user-defined-operators.md
+      - name: Python 扩展
+        href: data-lake-analytics-u-sql-python-extensions.md
+      - name: R 扩展
+        href: data-lake-analytics-u-sql-r-extensions.md
+      - name: 认知扩展
+        href: data-lake-analytics-u-sql-cognitive.md
+      - name: 可编程性指南
+        href: data-lake-analytics-u-sql-programmability-guide.md
+    - name: Visual Studio
+      items:
+      - name: 安装
+        href: data-lake-analytics-data-lake-tools-install.md
+      - name: 本地运行
+        href: data-lake-analytics-data-lake-tools-local-run.md
+      - name: 本地调试
+        href: data-lake-analytics-data-lake-tools-local-debug.md
+      - name: 开发 U-SQL 数据库
+        href: data-lake-analytics-data-lake-tools-develop-usql-database.md
+      - name: 浏览和查看作业
+        href: data-lake-analytics-data-lake-tools-view-jobs.md
+      - name: 调试自定义 C# 代码
+        href: data-lake-analytics-debug-u-sql-jobs.md
+      - name: 排查定期作业的问题
+        href: data-lake-analytics-data-lake-tools-debug-recurring-job.md
+      - name: 顶点执行详细信息
+        href: data-lake-analytics-data-lake-tools-use-vertex-execution-view.md
+      - name: 导出 U-SQL 数据库
+        href: data-lake-analytics-data-lake-tools-export-database.md
+      - name: 分析网站日志
+        href: data-lake-analytics-analyze-weblogs.md
+      - name: 解决数据倾斜问题
+        href: data-lake-analytics-data-lake-tools-data-skew-solutions.md
+      - name: 作业的监视和故障排除
+        href: data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md
+    - name: Visual Studio Code
+      items:
+      - name: 创作
+        href: data-lake-analytics-data-lake-tools-for-vscode.md
+      - name: 自定义代码
+        href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+      - name: 本地运行和调试
+        href: data-lake-tools-for-vscode-local-run-and-debug.md
+  - name: 计划 U-SQL 作业
+    items:
+    - name: 使用 SSIS 计划作业
+      href: data-lake-analytics-schedule-jobs-ssis.md
+  - name: 持续集成和持续部署
+    items:
+    - name: 概述
+      href: data-lake-analytics-cicd-overview.md
+    - name: 程序集注册
+      href: data-lake-analytics-cicd-manage-assemblies.md
+    - name: 设置测试
+      href: data-lake-analytics-cicd-test.md
+    - name: U-SQL SDK
+      href: data-lake-analytics-u-sql-sdk.md
+- name: 引用
+  items:
+  - name: Azure PowerShell
+    href: /powershell/module/az.datalakeanalytics
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.datalake.analytics
+  - name: Node.js
+    href: https://www.npmjs.com/package/azure-arm-datalake-analytics
+  - name: Python
+    href: https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python
+  - name: REST
+    href: /rest/api/datalakeanalytics/
+  - name: 资源管理器模板
+    href: /azure/templates/microsoft.datalakeanalytics/allversions
+  - name: CLI
+    href: https://docs.microsoft.com/cli/azure/dla
+- name: 资源
+  items:
+  - name: Azure Data Lake 博客
+    href: https://blogs.msdn.microsoft.com/azuredatalake/
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
+  - name: 请求更改
+    href: https://feedback.azure.com/forums/327234-data-lake
+  - name: MSDN 论坛
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/data-lake-analytics/
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: 服务更新
+    href: https://azure.microsoft.com/updates/?product=data-lake-analytics
+  - name: 堆栈溢出
+    href: https://stackoverflow.com/questions/tagged/azure-data-lake
+  - name: 视频
+    href: https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics
+  - name: 代码示例
+    href: https://azure.microsoft.com/resources/samples/?service=data-lake-analytics
+ms.openlocfilehash: 34553cebfdad45477b0442e9966b3b15c81bd1f4
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340976"

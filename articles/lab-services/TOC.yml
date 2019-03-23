@@ -89,6 +89,8 @@ items:
       href: test-app-azure.md
     - name: 导出或删除个人数据
       href: personal-data-delete-export.md
+    - name: 从另一个实验室导入虚拟机
+      href: import-virtual-machines-from-another-lab.md
     - name: 设置企业中的开发测试实验室基础结构
       href: devtest-lab-guidance-prescriptive-adoption.md
       items:
@@ -250,9 +252,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: 常见问题
       href: devtest-lab-faq.md
-ms.openlocfilehash: 773faa503cb3fc29ef07b310b5ee2a7af5089d49
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: a0b21dfaa64b351e98b6f505568bdbc06c48dd1c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188997"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338371"

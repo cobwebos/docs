@@ -24,6 +24,12 @@ items:
       href: azure-to-azure-tutorial-failover-failback.md
     - name: 运行故障回复
       href: azure-to-azure-tutorial-failback.md
+  - name: 移动 Azure VM
+    items:
+    - name: 将 Azure VM 移动到另一区域
+      href: azure-to-azure-tutorial-migrate.md
+    - name: 将 Azure VM 移动到可用性区域
+      href: move-Azure-VMs-AVset-Azone.md
   - name: VMware VM 灾难恢复到 Azure
     items:
     - name: 准备 Azure
@@ -60,19 +66,11 @@ items:
       href: migrate-tutorial-windows-server-2008.md
     - name: 将 AWS 实例迁移到 Azure
       href: migrate-tutorial-aws-azure.md
-  - name: 移动 Azure VM
-    items:
-    - name: 概述
-      href: azure-to-azure-move-overview.md
-    - name: 将 Azure VM 移动到另一区域
-      href: azure-to-azure-tutorial-migrate.md
-    - name: 将 Azure VM 移动到可用性区域
-      href: move-Azure-VMs-AVset-Azone.md
 - name: 概念
   items:
   - name: 有关 Site Recovery 的常见问题
     href: site-recovery-faq.md
-  - name: 关于 Azure VM 灾难恢复到 Azure
+  - name: 关于 Azure VM 的灾难恢复
     items:
     - name: Azure 到 Azure 体系结构
       href: azure-to-azure-architecture.md
@@ -80,12 +78,14 @@ items:
       href: azure-to-azure-common-questions.md
     - name: Azure 到 Azure 支持矩阵
       href: azure-to-azure-support-matrix.md
+    - name: 将 Site Recovery 与 Azure 备份配合使用
+      href: site-recovery-backup-interoperability.md
     - name: 为 Azure VM 灾难恢复而加速的联网
       href: azure-vm-disaster-recovery-with-accelerated-networking.md
     - name: 将 ExpressRoute 与 Azure VM 灾难恢复配合使用
       href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Azure VM 灾难恢复和 Azure 备份互操作性
-      href: site-recovery-backup-interoperability.md
+  - name: 关于如何移动 Azure VM
+    href: azure-to-azure-move-overview.md
   - name: 关于 VMware VM 灾难恢复到 Azure
     items:
     - name: VMware 灾难恢复概述
@@ -468,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 5286e3479561e6effd279978e84f045207a0a7a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 66b14ba7100b8bd8e4bb3a100e8fd10d226f555e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835293"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317096"

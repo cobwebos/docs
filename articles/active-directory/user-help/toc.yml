@@ -94,14 +94,20 @@ items:
 - name: “我的应用”门户帮助
   items:
   - name: 概述
-    href: user-help-my-apps-overview.md
-  - name: 什么是“我的应用”门户？
-    href: active-directory-saas-access-panel-introduction.md
+    href: my-apps-portal-end-user-overview.md
+  - name: 访问并使用“我的应用”门户
+    href: my-apps-portal-end-user-access.md
+  - name: 更新配置文件和帐户信息
+    href: my-apps-portal-end-user-update-profile.md
+  - name: 更新组信息
+    href: my-apps-portal-end-user-groups.md
+  - name: 执行自己的访问评审
+    href: my-apps-portal-end-user-access-reviews.md
   - name: 排查问题
-    href: active-directory-saas-access-panel-user-help.md
-ms.openlocfilehash: ce88ac8f7ca81009f7c28b08408723ac5161eda1
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+    href: my-apps-portal-end-user-troubleshoot.md
+ms.openlocfilehash: be7c20053ab6ee3a18f81aec9dc973a3032aa5c6
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340055"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339529"
