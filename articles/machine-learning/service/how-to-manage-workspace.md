@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: c7dd2fba852881680b43ceabafec2ac6b2751df4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e65f739a9641181381205c7255d0472325e8055c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839587"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359880"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>创建和管理 Azure 机器学习服务工作区
 
@@ -28,24 +28,19 @@ ms.locfileid: "57839587"
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="view-a-workspace"></a>查看工作区
+## <a name="view"></a>查看工作区
 
 1. 选择门户左上角的“所有服务”。 
 
-1. 在“所有服务”筛选器字段中，键入“机器学习服务工作区”。  
+1. 在中**所有服务**筛选器字段中，键入**机器学习服务**。  
 
-   ![搜索 Azure 机器学习服务工作区](media/how-to-manage-workspace/allservices-search1.png)
+1. 选择**机器学习服务工作区**。
 
-1. 在筛选器结果中，选择“机器学习服务工作区”，以显示工作区列表。 
-
-   ![列出 Azure 机器学习服务工作区](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Azure 机器学习服务工作区中搜索](media/how-to-manage-workspace/all-services.png)
 
 1. 浏览筛选出的工作区列表。 筛选依据可包括订阅、资源组和位置。  
 
-   ![查看工作区](media/how-to-manage-workspace/allservices_view_workspace.PNG)
-
-1. 选择刚刚创建的工作区，即可查看它的属性。
-
+1. 选择工作区以显示其属性。
    ![工作区属性](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>创建工作区

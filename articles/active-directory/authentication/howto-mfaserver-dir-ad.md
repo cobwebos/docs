@@ -12,21 +12,22 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0422cc3376caa6c2f99a0838684d84047a5937ed
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: f97b4ee364ecadde7738b8fe077f21d5732365f6
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313560"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371798"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 
 使用 Azure MFA 服务器的“目录集成”部分可与 Active Directory 或其他 LDAP 目录集成。 可以配置属性来匹配目录架构，并设置用户自动同步。
 
 ## <a name="settings"></a>设置
+
 默认情况下，Azure 多重身份验证 (MFA) 服务器配置为从 Active Directory 导入或同步用户。  使用“目录集成”选项卡可覆盖默认行为，以及绑定到其他 LDAP 目录、ADAM 目录或特定的 Active Directory 域控制器。  它还允许将 LDAP 身份验证用于代理 LDAP 或将 LDAP 绑定用作 RADIUS 目标、将预身份验证用于 IIS 身份验证，或者将主要身份验证用于用户门户。  下表描述了各项设置。
 
-![设置](./media/howto-mfaserver-dir-ad/dirint.png)
+![编辑 LDAP 配置在 MFA 服务器](./media/howto-mfaserver-dir-ad/dirint.png)
 
 | Feature | 描述 |
 | --- | --- |
@@ -50,9 +51,10 @@ ms.locfileid: "58313560"
 | “测试”按钮 |单击“测试”可测试 LDAP 服务器的绑定。  <br><br>无需选择“使用 LDAP”选项来测试绑定。 使用此选项可在使用 LDAP 配置之前测试绑定。 |
 
 ## <a name="filters"></a>筛选器
+
 使用筛选器可在执行目录搜索时，设置条件来限定记录。  通过设置筛选器，可将范围限制为想要同步的对象。  
 
-![筛选器](./media/howto-mfaserver-dir-ad/dirint2.png)
+![配置 MFA 服务器中筛选目录](./media/howto-mfaserver-dir-ad/dirint2.png)
 
 Azure 多重身份验证提供以下三个筛选选项：
 
@@ -61,11 +63,12 @@ Azure 多重身份验证提供以下三个筛选选项：
 * **用户筛选器** - 指定用于在执行目录搜索时限定用户记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectClass=user)(objectCategory=person))。  对于其他 LDAP 目录，请根据目录架构使用 (objectClass=inetOrgPerson) 或类似语句。 <br>注意：如果留空，将默认使用 (&(objectCategory=person)(objectClass=user))。
 
 ## <a name="attributes"></a>属性
+
 可以根据需要自定义特定目录的属性。  这样，便可以添加自定义属性，优化为只同步所需的属性。 使用每个属性字段的值的目录架构中定义的属性的名称。 下表提供了有关每项功能的更多信息。
 
 可以手动输入属性，它们不需要与属性列表中的某个属性匹配。
 
-![属性](./media/howto-mfaserver-dir-ad/dirint3.png)
+![自定义 MFA 服务器中的目录集成属性](./media/howto-mfaserver-dir-ad/dirint3.png)
 
 | Feature | 描述 |
 | --- | --- |
@@ -96,9 +99,10 @@ Azure 多重身份验证提供以下三个筛选选项：
 
 若要编辑属性，请在“属性”选项卡上单击“编辑”。此时会打开一个窗口，可在其中编辑属性。 选择任一属性旁边的“...”会打开一个窗口，可在其中选择要显示的属性。
 
-![编辑属性](./media/howto-mfaserver-dir-ad/dirint4.png)
+![编辑在 MFA 服务器目录属性映射](./media/howto-mfaserver-dir-ad/dirint4.png)
 
 ## <a name="synchronization"></a>同步
+
 同步能使 Azure MFA 用户数据库与 Active Directory 或其他轻型目录访问协议 (LDAP) 目录中的用户保持同步。 该进程类似于从 Active Directory 手动导入用户，但会定期轮询 Active Directory 用户和安全组对进程所做的更改。  它还能禁用或删除已从容器、安全组或 Active Directory 中删除的用户。
 
 Multi-Factor Auth AdSync 服务是一种 Windows 服务，它定期轮询 Active Directory。  请勿与 Azure AD Sync 或 Azure AD Connect 相混淆。  Multi-Factor Auth ADSync 尽管构建在类似的代码基础之上，但专用于 Azure 多重身份验证服务器。  它在停止状态进行安装，并在配置好可以运行时由 Multi-Factor Auth 服务器服务启动。  如果具有多服务器 Multi-Factor Auth 服务器配置，则 Multi-Factor Auth AdSync 只能运行在单个服务器上。
@@ -107,7 +111,7 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 
 如果 LDAP 目录支持 DirSync 并进行了相应的配置，则轮询用户和安全组更改的工作方式与通过 Active Directory 进行轮询相同。  如果 LDAP 目录不支持 DirSync 控件，则会在每个周期执行完全同步一次。
 
-![同步](./media/howto-mfaserver-dir-ad/dirint5.png)
+![同步到 MFA 服务器的目录对象](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 下表包含有关“同步”选项卡中每项设置的更多信息。
 
@@ -133,7 +137,8 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 > [!TIP]
 > 删除同步项之后，应执行完全同步。  在对同步项进行排序后，应执行完全同步。  单击“立即同步”可执行完全同步。
 
-## <a name="multi-factor-auth-servers"></a>Multi-Factor Auth 服务器
-可以设置额外的 Multi-Factor Auth 服务器作为备份 RADIUS 代理、LDAP 代理，或将其用于 IIS 身份验证。 同步配置在所有代理之间共享。 但是，只有其中一个代理可以让 Multi-Factor Auth 服务器服务运行。 此选项卡允许选择可用于同步的 Multi-Factor Auth 服务器。
+## <a name="multi-factor-authentication-servers"></a>多重身份验证服务器
 
-![Multi-Factor-Auth 服务器](./media/howto-mfaserver-dir-ad/dirint6.png)
+其他多重身份验证服务器可能被设置为提供服务作为备份 RADIUS 代理、 LDAP 代理，或用于 IIS 身份验证。 同步配置在所有代理之间共享。 但是，仅其中一个代理可能具有多重身份验证服务器服务正在运行。 此选项卡，可选择应为同步启用多重身份验证服务器。
+
+![相关的多重身份验证服务器](./media/howto-mfaserver-dir-ad/dirint6.png)

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: 963fd1bfd67a20033f0712d3b447091abda40d11
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262483"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369888"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
-为 Log Analytics 初始部署 Windows 或 Linux 代理后，可能需要重新配置代理，或者在代理到达生命周期中的停用阶段时将其从计算机中删除。 可以轻松地手动或自动管理这些日常维护任务，从而减少运行错误并降低费用。
+初始部署之后的日志分析 Windows 或 Azure Monitor 中的 Linux 代理，你可能需要重新配置代理，或从计算机到达其生命周期中的停用阶段时删除它。 可以轻松地手动或自动管理这些日常维护任务，从而减少运行错误并降低费用。
 
 ## <a name="adding-or-removing-a-workspace"></a>添加或删除工作区
 
@@ -115,7 +115,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="update-settings-using-powershell"></a>使用 PowerShell 更新设置
 
-复制以下示例 PowerShell 代码，使用特定于自己环境的信息对其进行更新，并使用 PS1 文件扩展名将其保存。 在直接连接到 Log Analytics 服务的每台计算机上运行该脚本。
+复制以下示例 PowerShell 代码，使用特定于自己环境的信息对其进行更新，并使用 PS1 文件扩展名将其保存。 直接连接到 Azure Monitor 中的 Log Analytics 工作区的每台计算机上运行该脚本。
 
 ```PowerShell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))

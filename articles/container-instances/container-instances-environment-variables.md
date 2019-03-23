@@ -5,20 +5,20 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: 0c43c81528c2de656e1d788f6af6ba337d7aacb8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 3e7e292f36296ce09af89f03e8b154b57e18b55c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403016"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369968"
 ---
 # <a name="set-environment-variables"></a>设置环境变量。
 
 通过在容器实例中设置环境变量，可为容器运行的应用程序或脚本提供动态配置。 若要设置容器中的环境变量，请在创建容器实例时进行指定。 可以在使用 [Azure CLI](#azure-cli-example)、[Azure PowerShell](#azure-powershell-example) 和 [Azure 门户](#azure-portal-example)启动容器时设置环境变量。
 
-例如，如果运行 [microsoft/aci-wordcount][aci-wordcount] 容器映像，可以通过指定以下环境变量来修改其行为：
+例如，如果您运行 Microsoft [aci wordcount] [ aci-wordcount]容器映像，您可以通过指定以下环境变量修改其行为：
 
 *NumWords*：发送到 STDOUT 的单词数。
 
@@ -28,13 +28,13 @@ ms.locfileid: "57403016"
 
 ## <a name="azure-cli-example"></a>Azure CLI 示例
 
-若要查看 [microsoft/aci-wordcount][aci-wordcount] 容器的默认输出，请首先使用此 [az container create][az-container-create] 命令来运行它（不指定环境变量）：
+若要查看的默认输出[aci wordcount] [ aci-wordcount]容器，与此首先运行[az 容器创建][ az-container-create]命令 （否环境变量中指定）：
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer1 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -44,7 +44,7 @@ az container create \
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
@@ -83,13 +83,13 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 在 PowerShell 中设置环境变量类似于在 CLI 中进行的相应操作，但需使用 `-EnvironmentVariable` 命令行参数。
 
-首先，启动[microsoft/aci wordcount] [ aci-wordcount]以默认配置与此容器[新建 AzContainerGroup] [ new-Azcontainergroup]命令：
+首先，启动[aci wordcount] [ aci-wordcount]以默认配置与此容器[新建 AzContainerGroup] [ new-Azcontainergroup]命令：
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer1 `
-    -Image microsoft/aci-wordcount:latest
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
 现在，运行以下[新建 AzContainerGroup] [ new-Azcontainergroup]命令。 此命令在填充数组变量 `envVars` 后指定 *NumWords* 和 *MinLength* 环境变量：
@@ -99,7 +99,7 @@ $envVars = @{'NumWords'='5';'MinLength'='8'}
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer2 `
-    -Image microsoft/aci-wordcount:latest `
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest `
     -RestartPolicy OnFailure `
     -EnvironmentVariable $envVars
 ```
@@ -143,7 +143,7 @@ Azure:\
 
 使用门户进行部署时，目前仅限使用三个变量，并且必须以 `"variableName":"value"` 格式输入它们
 
-若要查看示例，请使用 *NumWords* 和 *MinLength* 变量启动 [microsoft/aci-wordcount][aci-wordcount] 容器。
+若要查看示例，请启动[aci wordcount] [ aci-wordcount]容器*NumWords*并*MinLength*变量。
 
 1. 在“配置”中将“重启策略”设置为“在故障时”
 2. 为第一个变量输入 `"NumWords":"5"`，在“添加其他环境变量”下选择“是”，然后为第二个变量输入 `"MinLength":"8"`。 选择“确定”进行确认，然后部署容器。
@@ -246,7 +246,7 @@ my-secret-value
 [portal-env-vars-02]: ./media/container-instances-environment-variables/portal-env-vars-02.png
 
 <!-- LINKS - External -->
-[aci-wordcount]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

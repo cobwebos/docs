@@ -1,23 +1,25 @@
 ---
-title: 将记忆式键入功能添加到您的搜索框-Azure 搜索的示例
-description: 演示如何使用 Azure 搜索自动完成功能和建议 API 改善数据导向型应用程序的最终用户体验的示例。
+title: 记忆式键入功能添加到搜索框-Azure 搜索 typeahead 示例
+description: 通过创建建议器和系统地阐明在具有已完成的词或短语的搜索框中填充的请求启用 typeahead Azure 搜索中的查询操作。
 manager: pablocas
 author: mrcarter8
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 03/22/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: b754f00e9bed34717734c4aec81e5489d2c12b63
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: b78fdf0c493e4631e4cdd7e26b154570b6226d1f
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200270"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369560"
 ---
-# <a name="example-add-autocomplete-to-your-search-box-using-azure-search"></a>示例：使用 Azure 搜索将自动完成功能添加到搜索框
+# <a name="example-add-autocomplete-to-partial-term-inputs-in-azure-search"></a>示例：将记忆式键入功能添加到 Azure 搜索中的部分术语输入
+
+此预览功能"完成"的部分术语输入通过提供 Azure 搜索索引中的文档中已完成的字词。 您可能已经注意到商业搜索引擎中的此功能。 向 Azure 搜索解决方案以简化查询获取，现在可以添加此功能目前处于公共预览状态。
 
 在此示例中，您将学习如何使用[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)，[记忆式键入功能](https://docs.microsoft.com/rest/api/searchservice/autocomplete)并[方面](search-faceted-navigation.md)中[Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)和[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet)构建功能强大的搜索框。 
 

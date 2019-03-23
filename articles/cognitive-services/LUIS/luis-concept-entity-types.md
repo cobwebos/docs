@@ -1,7 +1,7 @@
 ---
 title: 实体类型
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 在语言理解智能服务 (LUIS) 应用中添加实体（应用程序域中的关键数据）。
+description: 实体从查询文本中提取数据。 实体类型提供可预测的数据提取。 有两种类型的实体： 机器学习的内容和机器学习。 请务必知道哪种类型的查询文本中使用的实体。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d12ea20f9f510b0e2d3d3512d8d8c71a3fb96eec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844582"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372516"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>实体类型及其在 LUIS 中的目的
 
-实体是话语中的字词或短语，而话语是应用程序域中的关键数据。
+实体从查询文本中提取数据。 实体类型提供可预测的数据提取。 有两种类型的实体： 机器学习的内容和机器学习。 请务必知道哪种类型的查询文本中使用的实体。 
 
 ## <a name="entity-compared-to-intent"></a>实体与意向
 
@@ -190,7 +190,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 * 数据与语言区域性预生成实体支持的常见用例相匹配。 
 
-随时可以添加和删除预生成实体。 如果你发现在示例话语中检测到了某个预生成实体，因此无法标记自定义实体，请从应用中删除该预生成实体，标记自己的实体，然后重新添加该预生成实体。 
+随时可以添加和删除预生成实体。
 
 ![编号预生成实体](./media/luis-concept-entities/number-entity.png)
 
@@ -198,6 +198,29 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 [实体的 JSON 响应示例](luis-concept-data-extraction.md#prebuilt-entity-data)
 
 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。 
+
+### <a name="troubleshooting-prebuilt-entities"></a>故障排除预生成的实体
+
+在 LUIS 门户中，如果预生成的实体标记而不是自定义实体，则将必须如何解决此问题几个的选择。
+
+将添加到应用程序的预建的实体_始终_返回，即使查询文本应该提取自定义实体的相同的文本。 
+
+#### <a name="change-tagged-entity-in-example-utterance"></a>示例查询文本中的标记更改实体
+
+如果预生成的实体作为自定义实体是相同的文本或标记，选择示例查询文本中的文本，并更改标记查询文本。 
+
+如果预生成的实体标记有更多文本或比自定义实体的令牌，则有两个选项如何修复此问题：
+
+* [删除示例查询文本](#remove-example-utterance-to-fix-tagging)方法
+* [删除预建的实体](#remove-prebuilt-entity-to-fix-tagging)方法
+
+#### <a name="remove-example-utterance-to-fix-tagging"></a>删除示例查询文本以修复标记 
+
+第一个选择是删除示例查询文本，然后重新训练的应用。 重新添加只是单词或短语，它是作为示例查询文本中，实体，然后标记的实体和训练。 现在重新添加预生成的实体和原始的示例查询文本。 自定义的实体应继续标记而不是预生成的实体。 
+
+#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>删除预建的实体，以修复标记
+
+第二种选择是从应用程序中，删除预建的实体然后标记的自定义实体中的示例查询文本，然后返回到应用中添加预生成的实体。 此修补程序假定预生成的实体不是复合实体的一部分。 
 
 ## <a name="regular-expression-entity"></a>正则表达式实体 
 

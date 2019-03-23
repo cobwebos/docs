@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 97464115b87ca5facdc055e0031bc5fc4e962a22
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 349f2c4eea743c3e44e492dfa76be4a70f2c37d6
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295651"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362019"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX 和 Azure 机器学习：创建和部署可互操作的 AI 模型
 
@@ -102,7 +102,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 下面是一个部署 ONNX 模型的示例：
 
-1. 初始化 Azure 机器学习服务工作区。 如果尚不具有，请了解如何在[本快速入门](quickstart-get-started.md)中创建工作区。
+1. 初始化 Azure 机器学习服务工作区。 如果你没有订阅，了解如何[创建工作区](setup-create-workspace.md)。
 
    ```python
    from azureml.core import Workspace

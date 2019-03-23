@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8a1976fa9fc2a02f7f3e8419de10ebba7df950
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 71b7784d054f279dfccdb3a2424fd427789ca658
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316297"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370068"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>配置 Azure 多重身份验证服务器以实现高可用性
 
@@ -26,7 +26,7 @@ ms.locfileid: "58316297"
 
 Azure MFA 服务器服务体系结构由下图中所示的多个组件构成：
 
- ![MFA 服务器体系结构](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
+ ![MFA 服务器体系结构组件](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
 
 MFA 服务器是装有 Azure 多重身份验证软件的 Windows 服务器。 MFA 服务器实例必须由 Azure 中的 MFA 服务激活才能正常运行。 可在本地安装多个 MFA 服务器。
 

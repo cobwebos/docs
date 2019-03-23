@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ea2fe0f7e326db00a63529c0279c9c15d30c744c
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+ms.openlocfilehash: c0ecfd3f148cecae713740ef37d4fe7a2e2f184f
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744813"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361806"
 ---
 # <a name="use-apache-maven-to-build-java-applications-that-use-apache-hbase-with-windows-based-hdinsight-apache-hadoop"></a>借助 Apache Maven 生成可将 Apache HBase 与基于 Windows 的HDInsight (Apache Hadoop) 配合使用的 Java 应用程序
 了解如何通过使用 Apache Maven 在 Java 中创建和构建 [Apache HBase](https://hbase.apache.org/) 应用程序。 然后，将该应用程序用于 Azure HDInsight (Apache Hadoop)。
@@ -25,6 +25,9 @@ ms.locfileid: "53744813"
 > 本文档中的步骤需要使用 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="requirements"></a>要求
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * [Java 平台 JDK](https://aka.ms/azure-jdks) 7 或更高版本
 * [Apache Maven](https://maven.apache.org/)
 * 装有 HBase 的基于 Windows 的 HDInsight 群集
@@ -179,7 +182,7 @@ ms.locfileid: "53744813"
 6. 保存 **hbase-site.xml** 文件。
 
 ## <a name="create-the-application"></a>创建应用程序
-1. 转到 **hbaseapp\src\main\java\com\microsoft\examples** 目录，然后将 app.java 文件重命名为 **CreateTable.java**。
+1. 转到 hbaseapp\src\main\java\com\microsoft\examples 目录，然后将 app.java 文件重命名为 CreateTable.java。
 2. 打开 **CreateTable.java** 文件，并将现有内容替换为以下代码：
 
         package com.microsoft.examples;
@@ -349,7 +352,7 @@ ms.locfileid: "53744813"
 7. 保存 **DeleteTable.java** 文件。
 
 ## <a name="build-and-package-the-application"></a>生成并打包应用程序
-1. 打开命令提示符，然后将目录更改为 **hbaseapp** 目录。
+1. 打开命令提示符，并将目录更改为 **hbaseapp** 目录。
 2. 使用以下命令来构建包含应用程序的 JAR 文件：
 
         mvn clean package
@@ -420,32 +423,32 @@ ms.locfileid: "53744813"
         $jarFile = "wasb:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
 
         # The job definition
-        $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
+        $jobDefinition = New-AzHDInsightMapReduceJobDefinition `
             -JarFile $jarFile `
             -ClassName $className `
             -Arguments $emailRegex
 
         # Get the job output
-        $job = Start-AzureRmHDInsightJob `
+        $job = Start-AzHDInsightJob `
             -ClusterName $clusterName `
             -JobDefinition $jobDefinition `
             -HttpCredential $creds
         Write-Host "Wait for the job to complete ..." -ForegroundColor Green
-        Wait-AzureRmHDInsightJob `
+        Wait-AzHDInsightJob `
             -ClusterName $clusterName `
             -JobId $job.JobId `
             -HttpCredential $creds
         if($showErr)
         {
         Write-Host "STDERR"
-        Get-AzureRmHDInsightJobOutput `
+        Get-AzHDInsightJobOutput `
                     -Clustername $clusterName `
                     -JobId $job.JobId `
                     -HttpCredential $creds `
                     -DisplayOutputType StandardError
         }
         Write-Host "Display the standard output ..." -ForegroundColor Green
-        Get-AzureRmHDInsightJobOutput `
+        Get-AzHDInsightJobOutput `
                     -Clustername $clusterName `
                     -JobId $job.JobId `
                     -HttpCredential $creds
@@ -506,7 +509,7 @@ ms.locfileid: "53744813"
             $storage = GetStorage -clusterName $clusterName
 
             # Upload file to storage, overwriting existing files if -force was used.
-            Set-AzureStorageBlobContent -File $localPath `
+            Set-AzStorageBlobContent -File $localPath `
                 -Blob $destinationPath `
                 -force:$force `
                 -Container $storage.container `
@@ -515,10 +518,10 @@ ms.locfileid: "53744813"
 
         function FindAzure {
             # Is there an active Azure subscription?
-            $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+            $sub = Get-AzSubscription -ErrorAction SilentlyContinue
             if(-not($sub))
             {
-                throw "No active Azure subscription found! If you have a subscription, use the Connect-AzureRmAccount cmdlet to login to your subscription."
+                throw "No active Azure subscription found! If you have a subscription, use the Connect-AzAccount cmdlet to login to your subscription."
             }
         }
 
@@ -527,7 +530,7 @@ ms.locfileid: "53744813"
                 [Parameter(Mandatory = $true)]
                 [String]$clusterName
             )
-            $hdi = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+            $hdi = Get-AzHDInsightCluster -ClusterName $clusterName
             # Does the cluster exist?
             if (!$hdi)
             {
@@ -541,14 +544,14 @@ ms.locfileid: "53744813"
             $resourceGroup = $hdi.ResourceGroup
             $storageAccountName=$hdi.DefaultStorageAccount.split('.')[0]
             $container=$hdi.DefaultStorageContainer
-            $storageAccountKey=(Get-AzureRmStorageAccountKey `
+            $storageAccountKey=(Get-AzStorageAccountKey `
                 -Name $storageAccountName `
             -ResourceGroupName $resourceGroup)[0].Value
             # Get the resource group, in case we need that
             $return.resourceGroup = $resourceGroup
             # Get the storage context, as we can't depend
             # on using the default storage context
-            $return.context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+            $return.context = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
             # Get the container, so we know where to
             # find/store blobs
             $return.container = $container
@@ -567,7 +570,7 @@ ms.locfileid: "53744813"
    * **Add-HDInsightFile** - 用于将文件上传到 HDInsight
    * **Start-HBaseExample** - 用于运行以前创建的类
 2. 保存 **hbase-runner.psm1** 文件。
-3. 打开新 Azure PowerShell 窗口，将目录切换到 **hbaseapp** 目录，然后运行以下命令。
+3. 打开新的 Azure PowerShell 窗口，将目录切换到 **hbaseapp** 目录，并运行以下命令。
 
         PS C:\ Import-Module c:\path\to\hbase-runner.psm1
 
@@ -583,7 +586,7 @@ ms.locfileid: "53744813"
 
     将 **hdinsightclustername** 替换为 HDInsight 群集的名称。
 
-    此命令会在 HDInsight 群集中创建名为 **people** 的新表。 此命令在控制台窗口中不显示任何输出。
+    此命令在 HDInsight 群集中创建名为 **people** 的新表。 此命令在控制台窗口中不显示任何输出。
 6. 若要在表中搜索条目，请使用以下命令：
 
         Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com

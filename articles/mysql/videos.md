@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL 视频
 description: 本页列出了用于了解 Azure Database for MySQL（Microsoft 在 Azure 中提供的托管 MySQL 产品/服务）的相关视频内容。
-author: jasonwhowell
-ms.author: jasonh
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 7bb584e24dcfaff34bbca2bc8a9db99a7007c8f0
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: c18604a9f4b95f4b586efaf3201dd0a679d8d316
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538578"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351281"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL 视频
 

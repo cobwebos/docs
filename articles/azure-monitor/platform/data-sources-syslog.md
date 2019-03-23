@@ -11,17 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: fa94bffc05879be9d6bbaaa7cd884c36ffe7e0b8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451273"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372295"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
-Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。  安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。  然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
+Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
 
 > [!NOTE]
 > 当 rsyslog 为默认守护程序时，Azure Monitor 支持 rsyslog 或 syslog-ng 发送的消息集合。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 [rsyslog 守护程序](http://rsyslog.com)以替换 sysklog。
@@ -30,20 +30,38 @@ Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将�
 
 ![Syslog 收集](media/data-sources-syslog/overview.png)
 
+系统日志收集器支持以下功能：
+
+* kern
+* user
+* mail
+* daemon
+* auth
+* syslog
+* lpr
+* news
+* uucp
+* cron
+* authpriv
+* ftp
+* local0-local7
+
+针对任何其他设施[自定义日志数据源配置](data-sources-custom-logs.md)Azure 监视器中。
+ 
 ## <a name="configuring-syslog"></a>配置 Syslog
-针对 Linux 的 Log Analytics 代理将仅收集在其配置中指定设施和严重级别的事件。  通过 Azure 门户或通过管理 Linux 代理的配置文件来配置 Syslog。
+针对 Linux 的 Log Analytics 代理将仅收集在其配置中指定设施和严重级别的事件。 通过 Azure 门户或通过管理 Linux 代理的配置文件来配置 Syslog。
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>在 Azure 门户中配置 Syslog
-从[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Syslog。  此配置将传递到每个 Linux 代理上的配置文件。
+从[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Syslog。 此配置将传递到每个 Linux 代理上的配置文件。
 
-通过键入设施名称并单击 **+** 可添加新设施。  对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。  不能向筛选消息提供任何其他条件。
+通过键入设施名称并单击 **+** 可添加新设施。 对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。 不能向筛选消息提供任何其他条件。
 
 ![配置 Syslog](media/data-sources-syslog/configure.png)
 
-默认情况下，所有配置更改均会自动推送到所有代理。  如果想在每个 Linux 代理上手动配置Syslog，则取消选中“*将下面的配置应用到我的 Linux 计算机*”框即可。
+默认情况下，所有配置更改均会自动推送到所有代理。 如果想在每个 Linux 代理上手动配置Syslog，则取消选中“*将下面的配置应用到我的 Linux 计算机*”框即可。
 
 ### <a name="configure-syslog-on-linux-agent"></a>在 Linux 代理上配置 Syslog
-[Log Analytics 代理安装在 Linux 客户端上](../../azure-monitor/learn/quick-collect-linux-computer.md)后，它将安装可定义收集的消息的设施和严重级别的默认 syslog 配置文件。  可以修改此文件以更改配置。  此配置文件视客户端已安装的 Syslog 守护程序而异。
+[Log Analytics 代理安装在 Linux 客户端上](../../azure-monitor/learn/quick-collect-linux-computer.md)后，它将安装可定义收集的消息的设施和严重级别的默认 syslog 配置文件。 可以修改此文件以更改配置。 此配置文件视客户端已安装的 Syslog 守护程序而异。
 
 > [!NOTE]
 > 如果编辑 syslog 配置，必须重新启动 syslog 守护程序才能使更改生效。
@@ -51,7 +69,7 @@ Syslog 是普遍适用于 Linux 的事件日志记录协议。  应用程序将�
 >
 
 #### <a name="rsyslog"></a>rsyslog
-rsyslog 的配置文件位于 **/etc/rsyslog.d/95-omsagent.conf**。  其默认内容如下所示。  这会收集针对警告或更高级别的全部设施从本地代理发送的 syslog 消息。
+rsyslog 的配置文件位于 **/etc/rsyslog.d/95-omsagent.conf**。 其默认内容如下所示。 这会收集针对警告或更高级别的全部设施从本地代理发送的 syslog 消息。
 
     kern.warning       @127.0.0.1:25224
     user.warning       @127.0.0.1:25224
@@ -71,13 +89,13 @@ rsyslog 的配置文件位于 **/etc/rsyslog.d/95-omsagent.conf**。  其默认�
     local6.warning     @127.0.0.1:25224
     local7.warning     @127.0.0.1:25224
 
-通过删除设施的配置文件部分可删除某个设施。  通过修改设施条目，可以针对某个特定设施限制收集的严重级别。  例如，要将用户设施限制为错误或更高严重级别的消息，则需要将配置文件的相应行修改为如下所示：
+通过删除设施的配置文件部分可删除某个设施。 通过修改设施条目，可以针对某个特定设施限制收集的严重级别。 例如，要将用户设施限制为错误或更高严重级别的消息，则需要将配置文件的相应行修改为如下所示：
 
     user.error    @127.0.0.1:25224
 
 
 #### <a name="syslog-ng"></a>syslog-ng
-syslog-ng 的配置文件位于 **/etc/syslog-ng/syslog-ng.conf**。  其默认内容如下所示。  这会收集针对全部设施和所有严重级别的从本地代理发送的 syslog 消息。   
+syslog-ng 的配置文件位于 **/etc/syslog-ng/syslog-ng.conf**。  其默认内容如下所示。 这会收集针对全部设施和所有严重级别的从本地代理发送的 syslog 消息。   
 
     #
     # Warnings (except iptables) in one file:
@@ -128,7 +146,7 @@ syslog-ng 的配置文件位于 **/etc/syslog-ng/syslog-ng.conf**。  其默认�
     filter f_user_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(user); };
     log { source(src); filter(f_user_oms); destination(d_oms); };
 
-通过删除设施的配置文件部分可删除某个设施。  通过将严重级别从其列表中删除，可以针对某个特定设施限制收集的严重级别。  例如，要将用户设施限制为仅警告和关键消息，则需要将配置文件的相应部分修改为如下所示：
+通过删除设施的配置文件部分可删除某个设施。 通过将严重级别从其列表中删除，可以针对某个特定设施限制收集的严重级别。  例如，要将用户设施限制为仅警告和关键消息，则需要将配置文件的相应部分修改为如下所示：
 
     #OMS_facility = user
     filter f_user_oms { level(alert,crit) and facility(user); };
@@ -168,7 +186,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* 若要修改 syslog-ng 配置，应复制下面显示的示例配置，然后将自定义修改设置添加到 syslog-ng.conf 配置文件（位于 `/etc/syslog-ng/`）的末尾。  不要使用默认标签 %WORKSPACE_ID%_oms 或 %WORKSPACE_ID_OMS，请定义自定义标签，以帮助区分你的更改。  
+* 若要修改 syslog-ng 配置，应复制下面显示的示例配置，然后将自定义修改设置添加到 syslog-ng.conf 配置文件（位于 `/etc/syslog-ng/`）的末尾。 不要使用默认标签 %WORKSPACE_ID%_oms 或 %WORKSPACE_ID_OMS，请定义自定义标签，以帮助区分你的更改。  
 
     > [!NOTE]
     > 如果修改了配置文件中的默认值，代理应用默认配置时将覆盖这些值。

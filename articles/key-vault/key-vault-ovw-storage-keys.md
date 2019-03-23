@@ -6,15 +6,15 @@ ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
 author: prashanthyv
-ms.author: pryerram
+ms.author: prashanthyv
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: c2107e501affd5e3dd22e0fbc83d078b51d414a5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5ec5109aa8079b37015f66443b8ebac905ad2fcb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57841134"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370550"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault 托管存储帐户 - CLI
 
@@ -73,6 +73,8 @@ Key Vault 托管存储帐户功能代你执行多种管理功能：
 > Azure AD 租户为每个已注册的应用程序提供充当应用程序标识的[服务主体](/azure/active-directory/develop/developer-glossary#service-principal-object)。 通过基于角色的访问控制 (RBAC) 授权该服务主体访问其他 Azure 资源时，将使用它的应用程序 ID。 由于 Key Vault 是一个 Microsoft 应用程序，因此它已预先注册到每个 Azure 云内同一个应用程序 ID 下的所有 Azure AD 租户中：
 > - Azure 政府云中的 Azure AD 租户使用应用程序 ID `7e7c393b-45d0-48b1-a35e-2905ddf8183c`。
 > - Azure 公有云及所有其他云中的 Azure AD 租户使用应用程序 ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`。
+
+> - 目前可以使用用户主体要求 Key Vault 管理存储帐户和服务主体
 
 
 1. 创建存储帐户后，运行以下命令来获取要管理的存储帐户的资源 ID

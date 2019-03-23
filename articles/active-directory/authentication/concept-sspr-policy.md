@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36959582a3866426f8dc0e9969210e29e751ea60
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311894"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360497"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -93,7 +93,7 @@ ms.locfileid: "58311894"
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>在 Azure AD 中设置密码过期策略
 
-Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Microsoft Azure AD 模块将用户密码设置为不过期。 还可以使用 Windows PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。 
+全局管理员或 Microsoft 云服务的用户管理员可以使用 Windows PowerShell 的 Microsoft Azure AD 模块将用户密码未过期设置。 还可以使用 Windows PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。 
 
 本指南适用于其他提供程序（如 Intune 和 Office 365），这些提供程序也依赖于 Azure AD 提供标识和目录服务。 密码过期是策略中唯一可更改的部分。
 
@@ -107,7 +107,7 @@ Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Micr
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>检查密码过期策略
 
-1. 使用公司管理员凭据连接到 Windows PowerShell。
+1. 使用您的用户管理员或公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
    * 若要查看单个用户的密码已设置为永不过期，运行以下 cmdlet 使用的 UPN (例如， *aprilr\@contoso.onmicrosoft.com*) 或你想要检查的用户的用户 ID: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -115,7 +115,7 @@ Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Micr
 
 ### <a name="set-a-password-to-expire"></a>设置密码过期
 
-1. 使用公司管理员凭据连接到 Windows PowerShell。
+1. 使用您的用户管理员或公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
    * 若要设置某一用户的密码使其过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：`Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
@@ -123,7 +123,7 @@ Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Micr
 
 ### <a name="set-a-password-to-never-expire"></a>将密码设置为永不过期
 
-1. 使用公司管理员凭据连接到 Windows PowerShell。
+1. 使用您的用户管理员或公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
    * 若要将某一用户的密码设置为永不过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：`Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 637ec63d1c3e5a3eb1ce26765b1ab22e9823e9a1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 63821ef5ebc36f49d4f3a43a7fbfbcf8fda12c50
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317419"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352028"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 可以使用[Azure 备份服务](backup-overview.md)备份的本地计算机和工作负荷和 Azure 虚拟机 (Vm)。 使用 Azure 备份的 Azure Vm 备份时，本文汇总了支持设置和限制。
@@ -82,7 +82,7 @@ Azure Vm (仅 Windows) 的直接备份  | 备份特定的文件/文件夹/卷。
 - Azure 备份不支持 Core OS Linux。
 - Azure 备份不支持 32 位操作系统。
 - 其他自带您自己的 Linux 发行版可能正常工作，只要[适用于 Linux 的 Azure VM 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)可用的 VM 上，并且只要支持 Python。
-- Azure 备份不支持运行的虚拟机 **Python 版本 2.6*仅** 使用代理配置。
+- Azure 备份不支持运行 Python 版本 2.6* 仅使用代理服务器配置的虚拟机。
 
 
 

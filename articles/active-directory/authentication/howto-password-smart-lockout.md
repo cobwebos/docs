@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 402a2d6afc7b58d4dfc1c9fa67e354b4d157bd4c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310228"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370182"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
@@ -40,8 +40,8 @@ ms.locfileid: "58310228"
 
 使用[直通身份验证](../hybrid/how-to-connect-pta.md)时，需要确保：
 
-   * Azure AD 的锁定阈值小于 Active Directory 的帐户锁定阈值。 请设置此值，以便使 Active Directory 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。 
-   * Azure AD 的锁定持续时间（以秒计）长于 Active Directory 的“在...后重置帐户锁定计数器”的持续时间（以分钟计）。
+* Azure AD 的锁定阈值小于 Active Directory 的帐户锁定阈值。 请设置此值，以便使 Active Directory 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。 
+* Azure AD 的锁定持续时间（以秒计）长于 Active Directory 的“在...后重置帐户锁定计数器”的持续时间（以分钟计）。
 
 > [!IMPORTANT]
 > 目前，如果用户的云帐户已被智能锁定功能锁定，管理员将无法为其解锁。 管理员必须等到锁定持续时间到期。
@@ -55,7 +55,7 @@ ms.locfileid: "58310228"
 3. 浏览到“计算机配置” > “策略” > “Windows 设置” > “安全设置” > “帐户策略” > “帐户锁定策略”。
 4. 验证“帐户锁定阈值”和“在此后重置帐户锁定计数器”值。
 
-![使用组策略对象修改本地 Active Directory 帐户锁定策略](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![修改本地 Active Directory 帐户锁定策略](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>管理 Azure AD 智能锁定值
 
@@ -78,9 +78,7 @@ ms.locfileid: "58310228"
 
 **帐户暂时锁定以防止未经授权的使用。请稍后再试！如果仍有问题，请与管理员联系。**
 
-
 ## <a name="next-steps"></a>后续步骤
 
-[了解如何使用 Azure AD 禁止组织中的错误密码。](howto-password-ban-bad.md)
-
-[配置自助服务密码重置，让用户能够解锁自己的帐户。](quickstart-sspr.md)
+* [了解如何使用 Azure AD 禁止组织中的错误密码。](howto-password-ban-bad.md)
+* [配置自助服务密码重置，让用户能够解锁自己的帐户。](quickstart-sspr.md)

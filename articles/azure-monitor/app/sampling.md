@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 83c286be6429376d4d0b4009b18c5f751a4b158f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: cd0369f45529082ac929b1d87608204033cd78f6
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226685"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370510"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -517,7 +517,14 @@ ASP.NET 版本 2.0.0 和 Java SDK 版本 2.0.1 及以上版本中 SDK 的固定�
 
 *我总是想要查看某些罕见的事件。如何让它们通过采样模块？*
 
-* 使用新的 TelemetryConfiguration（不是默认活动项）初始化 TelemetryClient 的单独实例。 使用它来发送罕见的事件。
+* 实现此目的的最佳方法是编写一个自定义[TelemetryProcessor](../../azure-monitor/app/api-filtering-sampling.md#filtering)，哪个集`SamplingPercentage`到 100 之间的遥测项要保留的如下所示。 这可确保所有采样技术将都忽略此项从任何采样注意事项。
+
+```csharp
+    if(somecondition)
+    {
+        ((ISupportSampling)item).SamplingPercentage = 100;
+    }
+```
 
 ## <a name="next-steps"></a>后续步骤
 

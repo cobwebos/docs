@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 835d1f41ffe940422554a8ca59d0a91ac8e98607
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 50cd5969ce02ee5eea0637c950069d684d67b5d3
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336588"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361449"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>在 Azure 机器学习中运行在定型期间日志指标
 
@@ -32,7 +32,7 @@ ms.locfileid: "58336588"
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
 |行|函数：<br>`run.log_row(name, description=None, **kwargs)`<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row 创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row 一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
 |表|函数：<br>`run.log_table(name, value, description='')`<br><br>示例：<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 使用给定名称将字典对象记录到运行中。 |
-|映像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>run.log_image("ROC", plt) | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
+|映像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>`run.log_image("ROC", plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
 |标记一个运行|函数：<br>`run.tag(key, value=None)`<br><br>示例：<br>run.tag("selected", "yes") | 使用一个字符串键和可选字符串值标记运行。|
 |上传文件或目录|函数：<br>`run.upload_file(name, path_or_stream)`<br> <br> 示例：<br>run.upload_file("best_model.pkl", "./model.pkl") | 将文件上传到运行记录。 在指定输出目录中自动运行捕获文件，对于大多数运行类型，该目录默认为 "./outputs"。  仅当需要上传其他文件或未指定输出目录时使用 upload_file。 建议在名称中添加 `outputs` 以便将其上传到输出目录。 可通过调用 `run.get_file_names()` 列出与此运行记录关联的所有文件|
 
@@ -48,7 +48,7 @@ ms.locfileid: "58336588"
 ## <a name="set-up-the-workspace"></a>设置工作区
 添加日志记录和提交试验之前，必须设置工作区。
 
-1. 加载工作区。 若要详细了解如何设置工作区配置，请参阅[快速入门](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started)。
+1. 加载工作区。 若要了解有关设置工作区配置的详细信息，请按照中的步骤[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)。
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -218,7 +218,9 @@ ms.locfileid: "58336588"
    ```
 
 ## <a name="cancel-a-run"></a>取消运行
-提交运行后，您可以取消它，即使丢失的对象引用，只要您知道实验名称，并运行 id。 
+
+提交更改运行时，您可以取消它即使丢失的对象引用，只要您知道实验名称，并运行 id。 
+
 
 ```python
 from azureml.core import Experiment
@@ -239,7 +241,7 @@ print(type(r), r.get_status())
 if r.get_status() not in ['Complete', 'Failed']:
     r.cancel()
 ```
-请注意，当前仅 ScriptRun 和 PipelineRun 类型支持取消操作。
+目前仅 ScriptRun 和 PipelineRun 类型支持取消操作。
 
 此外，还可以使用以下命令取消通过 CLI 运行的操作：
 ```shell
@@ -261,7 +263,7 @@ az ml run cancel -r <run_id> -p <project_path>
 
    ![Jupyter 笔记本小组件的屏幕截图](./media/how-to-track-experiments/widgets.PNG)
 
-2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 请将 `<<experiment_name>>` 替换为相应的试验名称：
+2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 替换为`<<experiment_name>>`具有相应试验名称：
 
    ``` 
    from azureml.widgets import RunDetails

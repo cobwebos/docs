@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f3d4bfa7d8ffda1ab2789927d03a777fab0ed89c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 365264d40554f45533e2ddf0aeb9d85f3e8f8d2d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281575"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370612"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器实例中装载 Azure 文件共享
 
@@ -70,7 +70,7 @@ echo $STORAGE_KEY
 az container create \
     --resource-group $ACI_PERS_RESOURCE_GROUP \
     --name hellofiles \
-    --image microsoft/aci-hellofiles \
+    --image mcr.microsoft.com/azuredocs/aci-hellofiles \
     --dns-name-label aci-demo \
     --ports 80 \
     --azure-file-volume-account-name $ACI_PERS_STORAGE_ACCOUNT_NAME \
@@ -83,7 +83,7 @@ az container create \
 
 ## <a name="manage-files-in-mounted-volume"></a>管理已装载卷中的文件
 
-在容器启动后，可以使用通过 [microsoft/aci-hellofiles][aci-hellofiles] 映像部署的简单 Web 应用在你指定的装载路径下的 Azure 文件共享中创建小的文本文件。 使用 [az container show][az-container-show] 命令获取 Web 应用的完全限定域名 (FQDN)：
+容器启动后，可以使用通过 Microsoft 部署的简单 web 应用[aci hellofiles] [ aci-hellofiles]图指定装载路径处的 Azure 文件共享中创建的小型文本文件。 使用 [az container show][az-container-show] 命令获取 Web 应用的完全限定域名 (FQDN)：
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn
@@ -140,7 +140,7 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 * [在 Azure 容器实例中装载机密卷](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->
-[aci-hellofiles]: https://hub.docker.com/r/microsoft/aci-hellofiles/
+[aci-hellofiles]: https://hub.docker.com/_/microsoft-azuredocs-aci-hellofiles 
 [portal]: https://portal.azure.com
 [storage-explorer]: https://storageexplorer.com
 

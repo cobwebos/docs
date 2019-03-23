@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 080a4691869c4deaf86f0e27961e80b60d439f05
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 405b6ebd06091536749751a94362d8c4a6495dbc
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857237"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351282"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>导出模型以用于移动设备
 
-自定义影像服务支持导出分类器以脱机运行。 可以将导出的分类器嵌入应用程序，并在设备上本地运行，进行实时分类。 
+自定义影像服务支持导出分类器以脱机运行。 可以将导出的分类器嵌入应用程序，并在设备上本地运行，进行实时分类。
 
 自定义影像服务支持导出以下内容：
 
@@ -37,7 +37,7 @@ ms.locfileid: "55857237"
 
 > [!NOTE]
 > 本部分中的步骤仅适用于现有分类器未设置为压缩域的情况。
- 
+
 若要转换现有分类器的域，请采用以下步骤：
 
 1. 在[自定义影像页面](https://customvision.ai)，选择“主页”图标以查看项目列表。 也可以访问 [https://customvision.ai/projects](https://customvision.ai/projects) 查看项目。

@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure 资源的 Azure Active Directory 托管标识（预览版）验证对 Blob 和队列的访问权限 - Azure 存储 | Microsoft Docs
+title: Azure 资源的 Azure 存储 blob 和队列与 Azure Active Directory 管理标识的访问进行身份验证 |Microsoft Docs
 description: Azure Blob 和队列存储支持使用 Azure 资源的托管标识进行 Azure Active Directory 身份验证。 可以使用 Azure 资源的托管标识在应用程序中验证对 Blob 和队列的访问权限，此类应用程序可以运行在 Azure 虚拟机、函数应用、虚拟机规模集等位置中。 通过使用 Azure 资源的托管标识并利用 Azure AD 身份验证功能，可避免将凭据随在云中运行的应用程序一起存储。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 15c37be3f3b1b3f72c32865e095091fa10ee9750
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 4372045590938df701dd00e58a111215f6e8e56d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251684"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369643"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>使用 Azure 资源托管标识（预览版）验证对 Blob 和队列的访问权限
+# <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources"></a>进行对 blob 和队列管理的标识访问 Azure 资源的身份验证
 
 Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集等位置中运行的应用程序使用 Azure AD 凭据验证对 Blob 和队列的访问权限。 通过使用 Azure 资源的托管标识并利用 Azure AD 身份验证功能，可避免将凭据随在云中运行的应用程序一起存储。  
 
-若要向 Blob 容器或队列的托管标识授予权限，请将基于角色的访问控制 (RBAC) 角色分配给托管标识，该标识包含的权限适用于适当范围的该资源。 有关存储中的 RBAC 角色的详细信息，请参阅[使用 RBAC 管理存储数据访问权限（预览版）](storage-auth-aad-rbac.md)。 
+若要向 Blob 容器或队列的托管标识授予权限，请将基于角色的访问控制 (RBAC) 角色分配给托管标识，该标识包含的权限适用于适当范围的该资源。 有关在存储中的 RBAC 角色的详细信息，请参阅[存储的数据使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。 
 
 本文介绍如何使用 Azure VM 中的托管标识向 Azure Blob 或队列存储进行身份验证。  
 
@@ -37,7 +37,7 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 
 ## <a name="assign-an-rbac-role-to-an-azure-ad-managed-identity"></a>将 RBAC 角色分配给 Azure AD 托管标识
 
-若要从 Azure 存储应用程序对托管标识进行身份验证，请先为该托管标识配置基于角色的访问控制 (RBAC) 设置。 Azure 存储定义包含容器和队列权限的 RBAC 角色。 将 RBAC 角色分配给托管标识时，将授予该托管标识对此资源的访问权限。 有关详细信息，请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）](storage-auth-aad-rbac.md)。
+若要从 Azure 存储应用程序对托管标识进行身份验证，请先为该托管标识配置基于角色的访问控制 (RBAC) 设置。 Azure 存储定义包含容器和队列权限的 RBAC 角色。 将 RBAC 角色分配给托管标识时，将授予该托管标识对此资源的访问权限。 有关详细信息，请参阅[到 Azure Blob 和队列数据，使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。
 
 ## <a name="get-a-managed-identity-access-token"></a>获取托管标识访问令牌
 
@@ -49,7 +49,7 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 
 ### <a name="add-references-and-using-statements"></a>添加引用和 using 语句  
 
-在 Visual Studio 中，安装 Azure 存储客户端库的预览版本。 在“工具”菜单中，依次选择“NuGet 包管理器”和“包管理器控制台”。 在控制台中键入以下命令：
+在 Visual Studio 中，安装 Azure 存储客户端库。 在“工具”菜单中，依次选择“NuGet 包管理器”和“包管理器控制台”。 在控制台中键入以下命令：
 
 ```
 Install-Package https://www.nuget.org/packages/WindowsAzure.Storage  
@@ -63,7 +63,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 
 ### <a name="create-credentials-from-the-managed-identity-access-token"></a>通过托管标识访问令牌创建凭据
 
-若要创建块 blob，请使用预览版程序包提供的 **TokenCredentials** 类。 构造新的 **TokenCredentials** 实例，传入之前获取的托管标识访问令牌：
+若要创建块 blob，请使用**TokenCredentials**类。 构造新的 **TokenCredentials** 实例，传入之前获取的托管标识访问令牌：
 
 ```dotnet
 // Create storage credentials from your managed identity access token.
@@ -79,7 +79,6 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[通过 RBAC 管理存储数据访问权限（预览）](storage-auth-aad-rbac.md)。
+- 若要了解有关 Azure 存储的 RBAC 角色的详细信息，请参阅[存储的数据使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。
 - 若要了解如何从存储应用程序内授予容器和队列访问权限，请参阅[将 Azure AD 与存储应用程序配合使用](storage-auth-aad-app.md)。
-- 若要了解如何使用 Azure AD 标识登录 Azure CLI 和 PowerShell，请参阅[使用 Azure AD 标识通过 CLI 或 PowerShell 访问 Azure 存储（预览版）](storage-auth-aad-script.md)。
-- 有关适用于 Azure Blob 和队列的 Azure AD 集成的其他信息，请参阅 Azure 存储团队博客文章[宣布推出适用于 Azure 存储的 Azure AD 身份验证预览版](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)。
+- 若要了解如何使用 Azure AD 标识登录到 Azure CLI 和 PowerShell，请参阅[使用 Azure AD 标识访问 Azure 存储使用 CLI 或 PowerShell](storage-auth-aad-script.md)。

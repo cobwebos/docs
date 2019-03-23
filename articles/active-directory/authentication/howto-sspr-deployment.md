@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338032b19d22432c34891de68c6a5ba71de60555
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170680"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370667"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置功能
 
@@ -49,7 +49,7 @@ ms.locfileid: "56170680"
 * **SSPR 桌面帐篷**：可以放在午餐室、会议室或办公桌上的桌卡，以鼓励用户完成注册。
 * **SSPR 贴纸**：可以自定义并打印的贴纸模板，可以贴在笔记本电脑、显示器、键盘或手机上，让你记住如何访问 SSPR。
 
-![SSPR 电子邮件示例][Email]
+![SSPR 范围内部署到用户的电子邮件示例][Email]
 
 ## <a name="create-your-own-password-portal"></a>创建自己的密码门户
 

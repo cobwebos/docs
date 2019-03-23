@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f685521adbbd8b9be9128ff77ab38b42860518b6
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100354"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351042"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -170,9 +170,16 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 <!-- For a client app that can receive sampling decisions from the cloud, check out [this sample](https://aka.ms/iottracingCsample).  -->
 
-### <a name="using-third-party-clients"></a>使用第三方客户端
+### <a name="workaround-for-third-party-clients"></a>解决方法的第三方客户端
 
-如果不使用 C SDK 但仍然想要预览 IoT 中心的分布式跟踪，请将消息构造为包含 `tracestate` 应用程序属性，该属性以 Unix 时间戳格式附带消息的创建时间。 例如，`tracestate=timestamp=1539243209`。 若要控制包含此属性的消息百分比，请实现相应的逻辑来侦听云发起的事件，例如孪生更新。
+它具有**不普通**而无需使用 C SDK 预览分布式的跟踪功能。 因此，不建议使用此方法。
+
+首先，您必须实现所有 IoT 中心协议基元在消息中的开发人员指导[创建和读取的 IoT 中心消息](iot-hub-devguide-messages-construct.md)。 然后，编辑的协议属性中要添加的 MQTT/AMQP 消息`tracestate`作为**系统属性**。 具体而言：
+
+* 对于 MQTT，添加`%24.tracestate=timestamp%3d1539243209`到消息主题，其中`1539243209`应替换为 unix 时间戳格式中的消息的创建时间。 作为示例，请参阅实现[C SDK 中](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)
+* 对于 AMQP，添加`key("tracestate")`和`value("timestamp=1539243209")`作为消息批注。 引用实现中，请参阅[此处](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)。
+
+若要控制包含此属性的消息百分比，请实现相应的逻辑来侦听云发起的事件，例如孪生更新。
 
 ## <a name="update-sampling-options"></a>更新采样选项 
 

@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2019
 ms.author: kumud
-ms.openlocfilehash: ea1ef845f55fbdadeea1992e167ef6568572abc9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
+ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141707"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369626"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
 
@@ -54,7 +54,18 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
+从 Ubuntu 17.10 开始，默认网络配置机制是[NETPLAN]( https://netplan.io)。  在安装/实例化时，NETPLAN 读取网络配置 YAML 配置文件中此位置: / {lib,etc,run}/netplan/*.yaml。
 
+请附上*dhcp6:true*在配置中每个以太网接口的语句。  例如：
+  
+        network:
+          version: 2
+          ethernets:
+            eno1:
+              dhcp6: true
+
+在早期启动过程 netplan"网络呈现器"将写入到的配置/关闭设备的控制移交运行到指定网络守护程序 NETPLAN，有关参考信息请参阅 https://netplan.io/reference。
+ 
 ## <a name="debian"></a>Debian
 
 1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行：

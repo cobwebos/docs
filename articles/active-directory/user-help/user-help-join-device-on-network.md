@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b433d8556377206ea53ece2764e251dcb266eb95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e2ba6b2d33c3fb5d9fda6821718ac61513a958b7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192347"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369133"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。
@@ -26,7 +26,7 @@ ms.locfileid: "56192347"
 ## <a name="what-happens-when-you-join-your-device"></a>加入设备时会发生什么情况
 在将 Windows 10 设备加入组织的网络中时，会发生以下操作：
 
-- Windows 向组织的网络注册设备，使你能够使用个人帐户访问资源。 设备注册后，Windows 将设备加入网络，因此你可以使用组织的用户名和密码来登录并访问受限的资源。
+- Windows 注册你的设备到组织的网络，让你访问你使用个人帐户的资源。 设备注册后，Windows 将设备加入网络，因此你可以使用组织的用户名和密码来登录并访问受限的资源。
 
 - （可选）根据组织的选择，可能需要通过[多重身份验证](multi-factor-authentication-end-user-first-time.md)或[安全信息](user-help-security-info-overview.md)设置双重验证。
 

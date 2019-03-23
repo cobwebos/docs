@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: f1bc19833e0e0cc2026ae22977d9a3b371924fe2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: aed7d4fedd4781eac8c127744e5fe93fb054b99d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337105"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369711"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -64,7 +64,12 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>如何转让 LUIS 应用的所有权？
 若要将某个 LUIS 应用转让给另一 Azure 订阅，请导出该 LUIS 应用，然后使用新帐户来导入它。 在进行调用的客户端应用程序中更新 LUIS 应用 ID。 新应用返回的 LUIS 分数与原始应用返回的可能稍有不同。
 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>预生成的实体标记中的示例查询文本，而不是我的自定义实体中。 如何修复此问题? 
+
+请参阅[故障排除预生成的实体](luis-concept-entity-types.md#troubleshooting-prebuilt-entities)。
+
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我尝试导入的应用程序或版本文件，但收到错误，发生了什么情况？ 
+
 详细了解[版本导入错误](luis-how-to-manage-versions.md#import-errors)并[应用程序导入错误](luis-how-to-start-new-app.md#import-errors)。
 
 <a name="luis-collaborating"></a>

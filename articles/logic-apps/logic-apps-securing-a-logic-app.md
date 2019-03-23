@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 34076b790a91b1c0e9d8bee224423aab0db7c8f3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6f878e05255be8f65868d8d1dcdbacb3ccfa2729
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891801"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369932"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>保护 Azure 逻辑应用中的访问
 
@@ -34,7 +34,7 @@ ms.locfileid: "57891801"
 当逻辑应用使用基于 HTTP 请求的触发器（如[请求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md) 触发器）时，你可以限制访问权限，以便只有经过授权的客户端才能启动逻辑应用。 逻辑应用接收到的所有请求都使用安全套接字层 (SSL) 协议进行加密和保护。 可使用不同的方法来保护对此触发器类型的访问：
 
 * [生成共享访问签名](#sas)
-* [限制传入 IP 地址](#restrict-incoming-IP)
+* [限制传入 IP 地址](#restrict-incoming-ip-addresses)
 * [添加 Azure Active Directory、OAuth 或其他安全标准](#add-authentication)
 
 <a name="sas"></a>

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: af1fbe66c805517c07975b2e4cf6e13e87ec661c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388266"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369652"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 gitRepo 卷
 
@@ -27,7 +27,7 @@ ms.locfileid: "49388266"
 
 装载 *gitRepo* 卷时，可以设置三个属性以对卷进行配置：
 
-| 属性 | 必选 | Description |
+| 属性 | 需要 | 描述 |
 | -------- | -------- | ----------- |
 | `repository` | 是 | 要克隆的 Git 存储库的完整 URL，包括 `http://` 或 `https://`。|
 | `directory` | 否 | 存储库应克隆到的目录。 路径不得包含“`..`”，也不能以其开头。  如果指定“`.`”，存储库将克隆到卷的目录。 否则，Git 存储库将克隆到卷目录中给定名称的子目录。 |
@@ -37,13 +37,13 @@ ms.locfileid: "49388266"
 
 在使用 [Azure CLI](/cli/azure) 部署容器实例时若要装载 gitRepo 卷，请在 [az container create][az-container-create] 命令中提供 `--gitrepo-url` 和 `--gitrepo-mount-path` 参数。 还可以指定要将卷克隆到其中的目录 (`--gitrepo-dir`) 和要克隆的修订版的提交哈希 (`--gitrepo-revision`)。
 
-此示例命令将 [aci-helloworld][aci-helloworld] 示例应用程序克隆到容器实例中的 `/mnt/aci-helloworld`：
+此示例命令克隆 Microsoft [aci helloworld] [ aci-helloworld]示例应用程序到`/mnt/aci-helloworld`容器实例中：
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name hellogitrepo \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --dns-name-label aci-demo \
     --ports 80 \
     --gitrepo-url https://github.com/Azure-Samples/aci-helloworld \
@@ -68,7 +68,8 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 例如，以下资源管理器模板创建了一个包含单个容器的容器组。 该容器克隆由 *gitRepo* 卷块指定的两个 GitHub 存储库。 第二个卷包括其他属性以指定要克隆到的目录和要克隆的特定修订的提交哈希。
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json --> [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
+[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 前面的模板中定义的两个克隆存储库的生成目录结构如下：
 
@@ -97,9 +98,9 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 有关 GitHub 和 Azure Repos 的个人访问令牌的详细信息，请参阅以下内容：
 
-GitHub：[创建命令行的个人访问令牌][pat-github]
+GitHub:[创建命令行的个人访问令牌][pat-github]
 
-Azure Repos：[创建个人访问令牌以对访问进行身份验证][pat-repos]
+Azure Repos：[创建个人访问令牌来访问进行身份验证][pat-repos]
 
 ## <a name="next-steps"></a>后续步骤
 
