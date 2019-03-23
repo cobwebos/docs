@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: cc5aae0e46e181e8063a4e01a832e68eab0eae0e
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 32f96a28e027bfd0e65d934bb47bb98400af459d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226601"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360714"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时间序列预测的模型
 
@@ -27,7 +27,7 @@ ms.locfileid: "58226601"
 
 ## <a name="prerequisites"></a>必备组件
 
-* Azure 机器学习服务工作区。 若要创建工作区，请参阅 [Azure 机器学习服务入门](quickstart-get-started.md)。
+* Azure 机器学习服务工作区。 若要创建工作区，请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
 * 本文假定你基本熟悉设置自动化机器学习实验。 请按照[教程](tutorial-auto-train-models.md)或[操作指南](how-to-configure-auto-train.md)若要查看基本自动化的机器学习实验设计模式。
 
 ## <a name="preparing-data"></a>准备数据
