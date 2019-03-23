@@ -9,18 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 281b4b8d20957cbbbf0f4ff52166e8c3a78b3e7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5154058bb1562b670e24f8813e979588a536f086
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108131"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359851"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>分析 HDInsight 上 Apache Kafka 的日志
 
 了解如何使用 Azure Monitor 日志分析 HDInsight 上 Apache Kafka 生成的日志。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>为 Apache Kafka 中启用 Azure Monitor 日志
 
@@ -33,7 +35,7 @@ ms.locfileid: "58108131"
 3. 配置 Kafka 群集以使用 Azure Monitor 日志。 有关详细信息，请参阅[使用 Azure Monitor 日志来监视 HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md)文档。
 
     > [!NOTE]  
-    > 此外可以配置群集，以使用 Azure Monitor 日志`Enable-AzureRmHDInsightOperationsManagementSuite`cmdlet。 此 cmdlet 需要以下信息：
+    > 此外可以配置群集，以使用 Azure Monitor 日志`Enable-AzHDInsightOperationsManagementSuite`cmdlet。 此 cmdlet 需要以下信息：
     >
     > * HDInsight 群集名称。
     > * Azure Monitor 日志工作区 ID。 可以在 Log Analytics 工作区中找到工作区 ID。

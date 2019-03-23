@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65c64e420bd22498fa2d778095def96cce218055
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313951"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369989"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -76,7 +76,7 @@ ms.locfileid: "58313951"
 > [!WARNING]
 > 要使用[管理员重置策略差异](concept-sspr-policy.md#administrator-reset-policy-differences)中定义的方法，将需要具有分配了帐户的 Azure 管理员角色。
 
-![身份验证][Authentication]
+![在 Azure 门户中的身份验证方法选择][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>所需身份验证方法的数量
 
@@ -160,7 +160,7 @@ ms.locfileid: "58313951"
 
 如果已安装、配置并启用 Azure AD Connect，可以使用以下附加选项进行本地集成。 如果这些选项灰显，则表示写回配置不正确。 有关详细信息，请参阅[配置密码写回](howto-sspr-writeback.md)。
 
-![写回][Writeback]
+![验证密码写回已启用和使用][Writeback]
 
 本页提供了本地写回客户端的快速状态，根据当前配置将显示以下消息之一：
 
@@ -180,7 +180,7 @@ ms.locfileid: "58313951"
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>允许用户在不重置密码的情况下解锁帐户
 
-此控制机制指定是否应为浏览密码重置门户的用户提供选项，让他们在无需重置密码的情况下解锁本地 Active Directory 帐户。 默认情况下，Azure AD 在执行密码重置时会解锁帐户。 使用此设置可区分这两项操作。 
+此控制机制指定是否应为浏览密码重置门户的用户提供选项，让他们在无需重置密码的情况下解锁本地 Active Directory 帐户。 默认情况下，Azure AD 在执行密码重置时会解锁帐户。 使用此设置可区分这两项操作。
 
 * 如果设置为“是”，将为用户提供重置其密码和解锁帐户的选项，或者在无需重置密码的情况下解锁其帐户的选项。
 * 如果设置为“否”，用户只能同时执行密码重置和帐户解锁的操作。
@@ -193,9 +193,9 @@ Azure AD 自助服务密码重置相当于在 Active Directory 中执行管理�
 
 所有企业到企业 (B2B) 配置完全支持密码重置和更改。 以下三种情况支持 B2B 用户密码重置：
 
-   * **已有 Azure AD 租户的合作伙伴组织中的用户**：如果与你合作的组织已有 Azure AD 租户，我们将遵守该租户中已启用的任何密码重置策略。 要使密码重置正常工作，合作伙伴组织只需确保启用 Azure AD SSPR。 这不会给 Office 365 客户造成额外的费用，可以遵循[密码管理入门](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)指南中的步骤启用 SSPR。
-   * 通过自助注册**注册的用户**：如果合作组织使用[自助注册](../users-groups-roles/directory-self-service-signup.md)功能来访问租户，我们将允许他们使用已注册的电子邮件来重置密码。
-   * **B2B 用户**：使用新的 [Azure AD B2B 功能](../active-directory-b2b-what-is-azure-ad-b2b.md)创建的任何新 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来重置其密码。
+* **已有 Azure AD 租户的合作伙伴组织中的用户**：如果与你合作的组织已有 Azure AD 租户，我们将遵守该租户中已启用的任何密码重置策略。 要使密码重置正常工作，合作伙伴组织只需确保启用 Azure AD SSPR。 这不会给 Office 365 客户造成额外的费用，可以遵循[密码管理入门](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)指南中的步骤启用 SSPR。
+* 通过自助注册**注册的用户**：如果合作组织使用[自助注册](../users-groups-roles/directory-self-service-signup.md)功能来访问租户，我们将允许他们使用已注册的电子邮件来重置密码。
+* **B2B 用户**：使用新的 [Azure AD B2B 功能](../active-directory-b2b-what-is-azure-ad-b2b.md)创建的任何新 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来重置其密码。
 
 若要测试此方案，请通过这些合作伙伴用户之一转到 https://passwordreset.microsoftonline.com。 如果他们定义了备用电子邮件或身份验证电子邮件，则密码重置就能按预期方式工作。
 

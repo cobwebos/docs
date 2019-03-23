@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ed99bd3626bb44bff68e4122d6b50523f19e1797
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 768179f8569eac14166bcbb0a888e1cdbe41d497
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112613"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369694"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714) 中使用应用对其进行设置。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。 然后可以使用 VPN 技术将这些网络连接到本地网络。 
@@ -247,7 +247,7 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 应用服�
 
 混合连接要求在网络中安装名为混合连接管理器 (HCM) 的中继代理。 HCM 需要能够连接到 Azure 以及应用程序。 混合连接不需要远程网络的入站 Internet 可访问终结点，但却是 VPN 连接所需的。 HCM 只能在 Windows 上运行，最多可以运行 5 个实例以确保为用户提供高可用性。 不过，混合连接只支持 TCP，而且每个 HC 终结点必须与特定的主机:端口组合匹配。 
 
-应用服务环境功能允许在 VNet 中运行 Azure 应用服务的单个租户实例。 如果应用在应用服务环境中，则不需要任何额外步骤即可访问 VNet 中的资源。 使用应用服务环境，应用在更多功能强大的辅助角色上运行，并能纵向扩展至 100 个 ASP 实例。 应用服务环境适用于所有网络功能，包括 ExpressRoute 和服务终结点。  
+应用服务环境功能允许在 VNet 中运行 Azure 应用服务的单个租户实例。 如果应用在应用服务环境中，则不需要任何额外步骤即可访问 VNet 中的资源。 应用服务环境与您的应用程序在功能更强大的辅助角色上运行，并可以扩展最多 100 个 ASP 实例。 应用服务环境适用于所有网络功能，包括 ExpressRoute 和服务终结点。  
 
 尽管使用起来存在功能重叠的情况，但这些功能却无法彼此替代。 需要知道使用哪种功能取决于具体需要。 例如：
 

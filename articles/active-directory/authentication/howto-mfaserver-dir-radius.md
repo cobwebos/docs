@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cfd37caf45d709fdc0b3639a218e2e587e8164
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0c1a05cc25be7a5763a8891b92e870a92792191d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314342"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372168"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
 
@@ -27,7 +27,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 >
 > 在此配置中，单向 SMS 和 OATH 令牌将不起作用，因为 MFA 服务器无法使用替代协议发起成功的 RADIUS 质询响应。
 
-![Radius 身份验证](./media/howto-mfaserver-dir-radius/radius.png)
+![在 MFA 服务器的 radius 身份验证](./media/howto-mfaserver-dir-radius/radius.png)
 
 ## <a name="add-a-radius-client"></a>添加 RADIUS 客户端
 
@@ -66,9 +66,10 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
 重复上述步骤，添加更多 RADIUS 服务器。 使用“上移”和“下移”按钮配置 Azure MFA 服务器调用这些 RADIUS 服务器时应使用的顺序。
 
-已成功配置 Azure 多重身份验证服务器。 该服务器正在已配置端口上侦听来自已配置客户端的 RADIUS 访问请求。   
+已成功配置 Azure 多重身份验证服务器。 该服务器正在已配置端口上侦听来自已配置客户端的 RADIUS 访问请求。
 
 ## <a name="radius-client-configuration"></a>RADIUS 客户端配置
+
 若要配置 RADIUS 客户端，请遵循以下准则：
 
 * 将设备/服务器配置为通过 RADIUS 向 Azure 多重身份验证服务器的 IP 地址进行身份验证，后者充当 RADIUS 服务器。

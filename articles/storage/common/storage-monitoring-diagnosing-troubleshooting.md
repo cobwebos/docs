@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 51d8b9bad4bb4a3663b07a711f363b263f5d64db
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339680"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351909"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>对 Microsoft Azure 存储进行监视、诊断和故障排除
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -246,7 +246,7 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 >
 
 ### <a name="server-request-id"></a>服务器请求 ID
-存储服务会自动生成服务器请求 ID。
+存储服务会自动生成的服务器请求 Id。
 
 * 在服务器端存储日志记录日志中，服务器请求 ID 显示在“请求 ID 标头”列中。
 * 在网络跟踪（如 Fiddler 捕获的跟踪）中，服务器请求 ID 在响应消息中显示为 x-ms-request-id HTTP 标头值。
@@ -814,9 +814,9 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 * [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
 * [存储分析](storage-analytics.md)
 * [存储分析度量值](storage-analytics-metrics.md)
-* [存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)
+* [存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [存储分析日志](storage-analytics-logging.md)
-* [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format.md)
+* [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
 [介绍]: #introduction

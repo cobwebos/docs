@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: a497662ac7a885b53e69bb8c86a646045bd2eef7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 47b589d32accc4a699e7260b9e4b2de4cca58f2b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314664"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369609"
 ---
-# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway"></a>通过使用 Log Analytics 网关无法访问 internet 的计算机连接
+# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>通过使用 Azure Monitor 中的 Log Analytics 网关无法访问 internet 的计算机连接
 
 >[!NOTE]
 >Microsoft Operations Management Suite (OMS) 过渡到 Microsoft Azure 监视器，因为术语发生了变化。 此篇文章介绍了 OMS 网关与 Azure Log Analytics 网关。 
 >
 
-本文介绍如何使用 Log Analytics 网关直接连接或 Operations Manager 监视的计算机没有 internet 访问时配置与 Azure 自动化和 Log Analytics 的通信。 
+本文介绍如何使用 Log Analytics 网关直接连接或 Operations Manager 监视的计算机没有 internet 访问时使用 Azure 自动化和 Azure Monitor 配置的通信。 
 
-Log Analytics 网关是使用 HTTP CONNECT 命令支持 HTTP 隧道的 HTTP 转发代理。 此网关可以收集数据并将其发送到 Azure 自动化和 Log Analytics 代表未连接到 internet 的计算机。  
+Log Analytics 网关是使用 HTTP CONNECT 命令支持 HTTP 隧道的 HTTP 转发代理。 此网关可以收集数据并将其发送到 Azure 自动化和 Log Analytics 工作区中 Azure Monitor 代表未连接到 internet 的计算机。  
 
 Log Analytics 网关支持：
 
 * 报告到相同的四个 Log Analytics 工作区代理，位于它并使用 Azure 自动化混合 Runbook 辅助角色进行配置的。  
-* Windows 计算机的 Microsoft Monitoring Agent 直接连接到 Log Analytics 工作区。
-* 在其适用于 Linux 的 Log Analytics 代理直接连接到 Log Analytics 工作区的 Linux 计算机。  
+* Windows 计算机的 Microsoft Monitoring Agent 直接连接到 Azure Monitor 中的 Log Analytics 工作区。
+* 在其适用于 Linux 的 Log Analytics 代理直接连接到 Azure Monitor 中的 Log Analytics 工作区的 Linux 计算机。  
 * System Center Operations Manager 2012 SP1 UR7、 Operations Manager 2012 R2 ur3 或 Operations Manager 2016 或更高版本的管理组与 Log Analytics 集成。  
 
-有些 IT 安全策略不允许网络计算机的 internet 连接。 这些未连接的计算机可能是销售点 (POS) 设备或支持 IT 服务，例如服务器的点。 若要将这些设备连接到 Azure 自动化或 Log Analytics 以便管理和监视它们，将其配置为直接与 Log Analytics 网关通信。 Log Analytics 网关可以接收配置信息和代表他们转发数据。 如果计算机上配置了可直接连接到 Log Analytics 工作区的 Log Analytics 代理，计算机改为与 Log Analytics 网关通信。  
+有些 IT 安全策略不允许网络计算机的 internet 连接。 这些未连接的计算机可能是销售点 (POS) 设备或支持 IT 服务，例如服务器的点。 若要将这些设备连接到 Azure 自动化或 Log Analytics 工作区以便你可以管理和监视它们，将其配置为直接与 Log Analytics 网关通信。 Log Analytics 网关可以接收配置信息和代表他们转发数据。 如果计算机上配置了可直接连接到 Log Analytics 工作区的 Log Analytics 代理，计算机改为与 Log Analytics 网关通信。  
 
 Log Analytics 网关直接将数据传输从代理到服务。 它不会分析传输中的数据。
 
 当与 Log Analytics 集成的 Operations Manager 管理组时，可以配置管理服务器为连接到 Log Analytics 网关，以接收配置信息并发送收集的数据，具体取决于已启用的解决方案.  Operations Manager 代理向管理服务器发送某些数据。 例如，代理可能会发送 Operations Manager 警报、 配置评估数据、 实例空间数据和容量数据。 其他大批量的数据，如 Internet 信息服务 (IIS) 日志、 性能数据和安全事件是直接发送到 Log Analytics 网关。 
 
-如果部署了一个或多个 Operations Manager 网关服务器用于监视在外围网络或隔离的网络中的不受信任的系统，这些服务器无法与 Log Analytics 网关通信。  Operations Manager 网关服务器可以只向管理服务器报告。  如果将 Operations Manager 管理组配置为与 Log Analytics 网关通信，代理配置信息会自动分发到代理管理的、配置为收集 Log Analytics 数据的每台计算机，即使设置为空。    
+如果部署了一个或多个 Operations Manager 网关服务器用于监视在外围网络或隔离的网络中的不受信任的系统，这些服务器无法与 Log Analytics 网关通信。  Operations Manager 网关服务器可以只向管理服务器报告。  如果 Operations Manager 管理组配置为与 Log Analytics 网关通信，代理配置信息会自动分发到每台代理管理的计算机配置为收集日志数据的 Azure Monitor即使设置为空。    
 
-若要直接提供的高可用性连接或通过网关与 Log Analytics 通信的 Operations Management 组使用网络负载平衡 (NLB) 重定向和分配流量跨多个网关服务器。 这样一来，如果一个网关服务器出现故障，流量将重定向到另一个可用节点。  
+若要直接提供的高可用性连接或通过网关，Log Analytics 工作区进行通信的 Operations Management 组使用网络负载平衡 (NLB) 重定向和分配流量跨多个网关服务器。 这样一来，如果一个网关服务器出现故障，流量将重定向到另一个可用节点。  
 
 运行 Log Analytics 网关的计算机需要 Log Analytics Windows 代理，以标识该网关需要与进行通信的服务终结点。 此外需要直接向同一个工作区报告的网关代理的代理或 Operations Manager 管理组在网关后面配置了。 此配置允许网关和代理后，若要向其分配工作区进行通信。
 

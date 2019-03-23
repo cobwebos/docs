@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d34ef1bb5bea6f5f099f7fa2a24ddec2362b44ea
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336178"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368674"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -49,9 +49,6 @@ Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，�
 ## <a name="enabling-soft-delete"></a>启用软删除
 
 启用“软删除”以允许恢复已删除的密钥保管库或存储在密钥保管库的对象。
-
-> [!IMPORTANT]
-> 在密钥保管库上启用“软删除”是不可逆的操作。 将软删除属性设置为“true”后，将无法更改或删除该属性。  
 
 ### <a name="existing-key-vault"></a>现有的密钥保管库
 

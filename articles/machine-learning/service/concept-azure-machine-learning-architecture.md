@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1640b1cdb9410f33f6556667f36aafcfe575a082
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080316"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361092"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -70,7 +70,7 @@ ms.locfileid: "58080316"
 
 试验是指定的脚本中多个运行的分组。 它始终属于工作区。 当你提交运行时，需提供试验名称。 运行的信息存储在该试验下。 如果提交运行，并指定一个不存在的试验名称，则系统将使用新指定的名称自动创建一个新试验。
 
-有关使用试验的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-get-started.md)。
+有关使用试验的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-run-cloud-notebook.md)。
 
 ## <a name="model"></a>模型
 
@@ -80,7 +80,7 @@ ms.locfileid: "58080316"
 
 Azure 机器学习服务与框架无关。 创建模型时，可以使用任何流行的机器学习框架，例如 Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer 和 Microsoft Cognitive Toolkit（前称为 CNTK）。
 
-有关训练模型的示例，请参阅[快速入门：创建机器学习服务工作区](quickstart-get-started.md)。
+为模型定型的示例，请参阅[教程：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
 
 ### <a name="model-registry"></a>模型注册表
 
@@ -143,7 +143,7 @@ Azure 机器学习服务与框架无关。 创建模型时，可以使用任何�
 
 若要定型模型，你可以指定包含培训脚本和关联文件的目录。 此外，还可指定一个试验名称，用于存储在训练期间收集的信息。 在训练期间，会将整个目录复制到训练环境（计算目标），并启动运行配置指定的脚本。 目录的快照同样存储在工作区中的试验下。
 
-有关示例，请参阅[使用 Python 创建工作区](quickstart-get-started.md)。
+有关示例，请参阅[教程：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
 
 ## <a name="run"></a>运行
 
@@ -156,7 +156,7 @@ Azure 机器学习服务与框架无关。 创建模型时，可以使用任何�
 
 提交脚本以训练模型时，会生成运行。 运行可以有零次或多次子级运行。 例如，顶级运行可以有两次子级运行，其中每个可以有其自己的子级运行。
 
-有关查看由训练模型产生的运行次数的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-get-started.md)。
+有关查看由训练模型产生的运行次数的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-run-cloud-notebook.md)。
 
 ## <a name="snapshot"></a>快照
 
@@ -206,7 +206,7 @@ Azure 机器学习可以创建两种类型的映像：
 
 ### <a name="iot-module"></a>IoT 模块
 
-已部署 IoT 模块是一个 Docker 容器，包括模型和关联脚本或应用程序，以及任何其他依赖项。 在边缘设备上使用 Azure IoT Edge 部署这些模块。
+已部署 IoT 模块是一个 Docker 容器，包括模型和关联脚本或应用程序，以及任何其他依赖项。 在 edge 设备上使用 Azure IoT Edge 部署这些模块。
 
 如果已启用监视，Azure 会从 Azure IoT Edge 模块内的模型中收集遥测数据。 遥测数据仅供你访问，并且存储在存储帐户实例中。
 
@@ -227,6 +227,6 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 若要开始使用 Azure 机器学习服务，请参阅：
 
 * [什么是 Azure 机器学习服务？](overview-what-is-azure-ml.md)
-* [快速入门：使用 Python 创建工作区](quickstart-get-started.md)
+* [创建 Azure 机器学习服务工作区](setup-create-workspace.md)
 * [教程：训练模型](tutorial-train-models-with-aml.md)
-* [使用资源管理器模板创建工作区](how-to-create-workspace-template.md)
+* [使用资源管理器模板创建一个工作区](how-to-create-workspace-template.md)

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e81d5513f43882093883256cf9eab4a22e9ca01
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875268"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361364"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -235,13 +235,13 @@ ms.locfileid: "57875268"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-配置身份验证方法 | 全局管理员角色 | 
-配置自定义 | 全局管理员角色 | 
-配置通知 | 全局管理员角色 | 
-配置本地集成 | 全局管理员角色 | 
-配置密码重置属性 | 全局管理员角色 | 
-配置注册 | 全局管理员角色 | 
-读取所有配置 | 安全管理员、用户管理员 | 
+配置身份验证方法 | 全局管理员角色 |
+配置自定义 | 全局管理员角色 |
+配置通知 | 全局管理员角色 |
+配置本地集成 | 全局管理员角色 |
+配置密码重置属性 | 用户管理员 | 全局管理员角色
+配置注册 | 全局管理员角色 |
+读取所有配置 | 安全管理员 | 用户管理员 |
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 247d72396d1737d568a89656c544bbe699f11e30
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 8f8af438d4034fc945a717fee0b720e3fe13cf56
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342382"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351994"
 ---
 # <a name="analyzing-video-and-audio-files"></a>分析视频和音频文件
 
@@ -25,7 +25,7 @@ ms.locfileid: "56342382"
 若要使用媒体服务 v3 预设分析内容，请创建**转换**，然后提交使用以下某个预设的**作业**：[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) 或 **AudioAnalyzerPreset**。 以下文章演示了如何使用 **VideoAnalyzerPreset**：[教程：使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
 
 > [!NOTE]
-> 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体保留单位。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。
+> 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体保留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
 
 ## <a name="built-in-presets"></a>内置预设
 
@@ -61,7 +61,7 @@ ms.locfileid: "56342382"
 
 ### <a name="transcript"></a>脚本
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
@@ -99,7 +99,7 @@ ms.locfileid: "56342382"
 
 ### <a name="ocr"></a>ocr
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
@@ -142,7 +142,7 @@ ms.locfileid: "56342382"
 
 ### <a name="faces"></a>人脸
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |id|人脸 ID。|
 |名称|人脸姓名。 可以为“Unknown #0”、公认的名人或客户训练的人。|
@@ -187,7 +187,7 @@ ms.locfileid: "56342382"
 
 ### <a name="shots"></a>截图
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |id|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
@@ -244,7 +244,7 @@ ms.locfileid: "56342382"
 
 ### <a name="statistics"></a>statistics
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |WordCount|每个发言人的单词数。|
@@ -257,7 +257,7 @@ ms.locfileid: "56342382"
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
@@ -292,7 +292,7 @@ ms.locfileid: "56342382"
 
 ### <a name="labels"></a>标签
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |id|标签 ID。|
 |名称|标签名称（例如“计算机”、“电视”）。|
@@ -351,7 +351,7 @@ ms.locfileid: "56342382"
 
 ### <a name="keywords"></a>关键字
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
@@ -400,13 +400,13 @@ ms.locfileid: "56342382"
 
 visualContentModeration 块包含视频索引器找到的、可能具有成人内容的时间范围。 如果 visualContentModeration 为空，则表示未识别到成人内容。
 
-找到的包含成人或猥亵内容的视频可能仅供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
+被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
 
-|Name|说明|
+|名称|描述|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
-|racyScore|猥亵内容评分（由内容审核员提供）。|
+|racyScore|不雅内容评分（由内容审核员提供）。|
 |instances|显示此视觉内容审核的时间范围列表。|
 
 ```json

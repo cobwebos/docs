@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 7e1fa82e71738ac113bfe748a7117d0c3a10b14b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 81213d1f7cfeb7ea10cdadfb124047ecb76aa7d4
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57319022"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352079"
 ---
-# <a name="saas-fulfillment-api-version-2"></a>SaaS 履行 API 版本 2
+# <a name="saas-fulfillment-api"></a>SaaS 执行 API
 
 本文详细介绍了 Azure Marketplace 的 API，使独立软件供应商 (Isv)，将其 SaaS 应用程序进行集成。 此 API 使 ISV 应用程序可以参与所有启用的商务通道： 直接、 合作伙伴主导式 （经销商） 和字段导致。  此 API 是事务 SaaS 提供了在 Azure Marketplace 上列出的要求。
 

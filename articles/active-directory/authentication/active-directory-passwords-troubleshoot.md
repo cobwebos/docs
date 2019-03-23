@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 297d32311b6b697b0141488878d170b3f2f4c359
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 81519a9452bf578c2640b547b2102b8e162e2878
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315481"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369779"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -35,7 +35,6 @@ ms.locfileid: "58315481"
 | UserNotProperlyConfigured = 14 | 抱歉，由于帐户缺少必要信息，目前无法重置密码。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们为你重置密码。 有权重新访问帐户后，需要注册必要的信息。 若要注册信息，请遵循[注册自助密码重置](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register)一文中的步骤。 | SSPR_0014：还需要提供其他安全信息才能重置密码。 若要继续，请联系管理员，并请求他们重置你的密码。 有权访问帐户后，可前往 https://aka.ms/ssprsetup 注册额外安全信息。 管理员可按照[为密码重置设置和读取身份验证数据](howto-sspr-authenticationdata.md)中所述的步骤，向帐户添加额外安全信息。 |
 | OnPremisesAdminActionRequired = 29 | 抱歉，由于贵组织的密码重置配置出现问题，目前无法重置密码。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们进行调查。 若要了解有关潜在问题的详细信息，请参阅[排查密码写回问题](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)。 | SSPR_0029：由于本地配置中的错误，无法重置你的密码。 请联系管理员，并请求他们进行调查。 |
 | OnPremisesConnectivityError = 30 | 抱歉，由于组织的连接问题，目前无法重置密码。 当前没有可执行的操作，但如果稍后重新尝试，问题有可能已得到解决。 如果问题仍然存在，请联系管理员，并请求他们进行调查。 若要了解有关连接问题的详细信息，请参阅[排查密码写回连接问题](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)。 | SSPR_0030：由于与本地环境的连接不佳，无法重置你的密码。 请联系管理员，并请求他们进行调查。|
-
 
 ## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>在 Azure 门户中排查密码重置配置问题
 
@@ -94,7 +93,7 @@ ms.locfileid: "58315481"
 
 ## <a name="password-writeback-event-log-error-codes"></a>密码写回事件日志错误代码
 
-在排查密码写回问题时，最佳做法是检查 Azure AD Connect 计算机上的该应用程序事件日志。 此事件日志包含来自与密码写回相关的两个源的事件。 PasswordResetService 源描述与密码写回操作相关的操作和问题。 ADSync 源描述与在 Active Directory 环境中设置密码相关的操作和问题。
+排查密码写回的问题时，最佳做法是检查 Azure AD Connect 计算机上的应用程序事件日志。 此事件日志包含来自与密码写回相关的两个源的事件。 PasswordResetService 源描述与密码写回操作相关的操作和问题。 ADSync 源描述与在 Active Directory 环境中设置密码相关的操作和问题。
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>如果事件的源是 ADSync
 
@@ -168,8 +167,8 @@ ms.locfileid: "58315481"
 
 对于 Azure AD Connect 1.1.443.0 和更高版本，需要对以下站点进行出站 HTTPS 访问：
 
-   - passwordreset.microsoftonline.com
-   - servicebus.windows.net
+* passwordreset.microsoftonline.com
+* servicebus.windows.net
 
 若要进行更精细的访问，请参考 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的更新列表，该列表在每周三更新，在下周一生效。
 
@@ -184,7 +183,7 @@ ms.locfileid: "58315481"
 1. 找到“Microsoft Azure AD Sync”条目。
 1. 右键单击该服务条目，选择“重启”，并等待操作完成。
 
-   ![重新启动 Azure AD Sync 服务][Service restart]
+   ![重新启动 Azure AD Sync 服务使用 GUI][Service restart]
 
 这些步骤重新建立与云服务的连接，并解决可能出现的任何中断。 如果重启 ADSync 服务无法解决所遇到的问题，我们建议尝试禁用密码写回功能，然后重新启用该功能。
 
@@ -215,7 +214,6 @@ ms.locfileid: "58315481"
 
 > [!WARNING]
 > 如果自定义了现成的同步规则，请先备份这些规则，再继续进行升级，并在完成后手动重新部署这些规则。
->
 
 1. 从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?LinkId=615771)下载最新版本的 Azure AD Connect。
 1. 由于已安装 Azure AD Connect，则需要执行就地升级将 Azure AD Connect 安装更新到最新版本。
@@ -231,33 +229,27 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 
 1. 登录到 Azure AD Connect 服务器，并选择“开始” > “同步服务”启动“Synchronization Service Manager”。
 1. 在“连接器”选项卡下，选择本地“Active Directory 域服务器”连接器，并选择“属性”。  
-   ![有效权限 - 步骤 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
+   ![同步服务管理器显示了如何编辑属性](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
 1. 在弹出窗口中，选择“连接到 Active Directory 林”，并记下“用户名”属性。 此属性是 Azure AD Connect 用于执行目录同步的 AD DS 帐户。 若要让 Azure AD Connect 执行密码写回，AD DS 帐户必须具有重置密码权限。  
-   
-   ![有效权限 - 步骤 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
+
+   ![查找同步服务 Active Directory 用户帐户](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
 1. 登录到本地域控制器并启动“Active Directory 用户和计算机”应用程序。
 1. 选择“视图”并确保已启用“高级功能”选项。  
-   
-   ![有效权限 - 步骤 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
+
+   ![Active Directory 用户和计算机显示高级功能](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
 1. 查找要验证的 Active Directory 用户帐户。 右键单击帐户名称并选择“属性”。  
-   
-   ![有效权限 - 步骤 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
-
 1. 在弹出窗口中，转到“安全”选项卡，并选择“高级”。  
-   
-   ![有效权限 - 步骤 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
-   
 1. 在“管理员的高级安全设置”弹出窗口中，转到“有效访问权限”选项卡。
 1. 选择“选择用户”并选择 Azure AD Connect 使用的 AD DS 帐户（请参阅步骤 3），然后选择“查看有效访问权限”。
 
-   ![有效权限 - 步骤 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
+   ![显示同步帐户的有效访问选项卡](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
 1. 向下滚动并查找“重置密码”。 如果已选中该条目，则表示 AD DS 帐户有权重置所选 Active Directory 用户帐户的密码。  
-   
-   ![有效权限 - 步骤 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
+
+   ![验证同步帐户具有重置密码权限](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
 ## <a name="azure-ad-forums"></a>Azure AD 论坛
 
@@ -272,17 +264,17 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 * **错误的一般描述**：错误是什么？ 看到该错误时出现了哪种行为？ 我们如何再现该错误？ 请尽量提供详尽的信息。
 * **页面**：在哪个页面上看到了该错误？ 请附送页面的 URL（如果可以）和屏幕截图。
 * **支持代码**：用户看到该错误时生成了哪个支持代码？
-  * 若要找到此代码，请再现错误，然后选择屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师。
+   * 若要找到此代码，请再现错误，然后选择屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师。
 
-    ![在屏幕底部查找支持代码][Support code]
+   ![在屏幕底部查找支持代码][Support code]
 
   * 如果所在页面的底部没有支持代码，请按 F12，搜索 SID 和 CID，然后将这两个结果发送给支持工程师。
 * **日期、时间和时区**：包含发生错误时的确切日期和时间及“时区”。
 * **用户 ID**：哪个用户看到了该错误？ 例如，*用户\@contoso.com*。
-    * 是否是联合用户？
-    * 是否是直通身份验证用户？
-    * 是否是密码哈希同步的用户？
-    * 是否是仅限云的用户？
+   * 是否是联合用户？
+   * 是否是直通身份验证用户？
+   * 是否是密码哈希同步的用户？
+   * 是否是仅限云的用户？
 * **许可**：该用户是分配有 Azure AD Premium 许可证还是 Azure AD Basic 许可证？
 * **应用程序事件日志**：如果你使用的是密码写回，并且错误发生在本地基础结构中，请包含 Azure AD Connect 服务器中的应用程序事件日志的压缩副本。
 

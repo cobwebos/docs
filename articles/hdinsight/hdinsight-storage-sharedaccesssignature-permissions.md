@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d248db787db1e3945fb632c6770d45e4bf9a8f02
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202667"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360990"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -27,6 +27,8 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 > HDInsight 必须对群集的默认存储拥有完全访问权限。
 
 ## <a name="requirements"></a>要求
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Azure 订阅
 * C# 或 Python。 已提供 C# 示例代码作为 Visual Studio 解决方案。
@@ -160,12 +162,12 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 1. 在提示符下使用以下命令对 Azure 订阅进行身份验证：
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
     出现提示时，使用的帐户登录 Azure 订阅。
 
-    如果帐户与多个 Azure 订阅关联，可能需要使用 `Select-AzureRmSubscription` 来选择想要使用的订阅。
+    如果帐户与多个 Azure 订阅关联，可能需要使用 `Select-AzSubscription` 来选择想要使用的订阅。
 
 4. 在提示符下，将目录更改为包含 HDInsightSAS.ps1 文件的 `CreateCluster` 目录。 然后使用以下命令运行该脚本
 
@@ -273,11 +275,11 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 **症状**：使用 PowerShell 脚本创建群集时，可能会收到以下错误消息：
 
-    New-AzureRmHDInsightCluster : A task was canceled.
+    New-AzHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
-    +     New-AzureRmHDInsightCluster `
+    +     New-AzHDInsightCluster `
     +     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
+        + CategoryInfo          : NotSpecified: (:) [New-AzHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
 **原因**：如果使用群集管理员/HTTP 用户的密码，或（对于基于 Linux 的群集）SSH 用户的密码，则可能发生此错误。

@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 26e4b921b4050efa5217e3b599b9dc942a003090
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 61a4be19000265910493963db9f29df143a7e21c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58173917"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360344"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>为 Azure HDInsight 上的 Apache Kafka 创建自己的密钥（预览版）
 
@@ -26,6 +26,8 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 所有发送到 Kafka 群集的消息（包括由 Kafka 维护的副本）都使用对称数据加密密钥 (DEK) 进行加密。 使用密钥保管库中的密钥加密密钥 (KEK) 保护 DEK。 加密和解密过程完全由 Azure HDInsight 处理。 
 
 可以使用 Azure 门户或 Azure CLI 安全地旋转密钥保管库中的密钥。 当密钥旋转时，HDInsight Kafka 群集会在几分钟内开始使用新密钥。 启用“不清除”和“软删除”密钥保护功能，以防止出现勒索软件情况和意外删除。 不支持没有这些保护功能的密钥。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-byok"></a>BYOK 入门
 
@@ -99,7 +101,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
 **如果删除密钥，如何恢复群集？**
 
-   由于仅支持“软删除”启用密钥，因此，如果密钥保管库中的密钥已恢复，则群集应重新获得对密钥的访问权限。 若要还原 Azure Key Vault 密钥，请参阅 [Restore-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)。
+   由于仅支持“软删除”启用密钥，因此，如果密钥保管库中的密钥已恢复，则群集应重新获得对密钥的访问权限。 若要还原的 Azure 密钥保管库密钥，请参阅[还原 AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey)。
 
 **是否可以让生成方/使用者应用程序同时使用 BYOK 集群和非 BYOK 集群？**
 

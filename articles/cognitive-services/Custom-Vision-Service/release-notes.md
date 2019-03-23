@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: b712f47fe9272e0ae6ccb9ab9847462729434698
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.openlocfilehash: 1850959946531abbaf531484696951dee59dadbb
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894405"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351756"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
 

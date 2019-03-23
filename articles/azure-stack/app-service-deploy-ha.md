@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: ''
-ms.date: 03/13/2019
+ms.date: 03/23/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: db95be94028fcf16871a9dcfee5f0d87eb5d2cdc
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: 1c105548f19994c4ca0ce161eedcfe11736864c7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285660"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370017"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>高度可用配置中部署应用服务
 
@@ -54,8 +54,7 @@ ms.locfileid: "58285660"
 ### <a name="deploy-the-app-service-infrastructure"></a>部署应用服务基础结构
 使用在本部分中的步骤创建一个自定义部署使用**appservice 的文件共享-sqlserver-ha** Azure Stack 快速入门模板。
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. 选择**\+** **创建资源** > **自定义**，，然后**模板部署**。
 
@@ -94,8 +93,7 @@ ms.locfileid: "58285660"
 
 请按照下列步骤以发现模板输出值：
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. 在管理门户中，选择**资源组**然后的资源组的名称创建自定义部署的和 (**应用服务-ha**在此示例中)。 
 
@@ -168,9 +166,20 @@ ms.locfileid: "58285660"
 
     ![文件共享输出信息](media/app-service-deploy-ha/07.png)
 
-9. 因为用于安装应用服务的计算机不在与用于托管应用服务文件共享的文件服务器相同的 VNet 上，将无法解析名称。 这是预期的行为。<br><br>验证输入文件共享 UNC 路径和帐户信息的信息是否正确，然后按**是**警报对话框以继续安装应用服务上。
+9. 因为用于安装应用服务的计算机不在与用于托管应用服务文件共享的文件服务器相同的 VNet 上，将无法解析名称。 **这是预期的行为**。<br><br>验证输入文件共享 UNC 路径和帐户信息的信息是否正确，然后按**是**警报对话框以继续安装应用服务上。
 
     ![预期的错误对话框](media/app-service-deploy-ha/08.png)
+
+    如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 转到管理门户中 WorkersNsg 并添加出站安全规则具有以下属性：
+    - 源：任意
+    - 源端口范围：*
+    - 目标：IP 地址
+    - 目标 IP 地址范围：文件服务器的 IP 范围
+    - 目标端口范围：445
+    - 协议：TCP
+    - 操作：允许
+    - 优先级：700
+    - 姓名：Outbound_Allow_SMB445
 
 10. 提供标识应用程序 ID 的路径和标识证书的密码，然后单击**下一步**:
     - 标识应用程序证书 (采用格式**sso.appservice.local.azurestack.external.pfx**)
@@ -189,7 +198,7 @@ ms.locfileid: "58285660"
 
     ![SQL Server 连接信息](media/app-service-deploy-ha/10.png)
 
-12. 因为用于安装应用服务的计算机不在与 SQL server 用于托管应用服务数据库相同的 VNet 上，将无法解析名称。  这是预期的行为。<br><br>验证输入的 SQL Server 名称和帐户信息的信息是否正确，然后按**是**才能继续应用服务安装。 单击“下一步”。
+12. 因为用于安装应用服务的计算机不在与 SQL server 用于托管应用服务数据库相同的 VNet 上，将无法解析名称。  **这是预期的行为**。<br><br>验证输入的 SQL Server 名称和帐户信息的信息是否正确，然后按**是**才能继续应用服务安装。 单击“下一步”。
 
     ![SQL Server 连接信息](media/app-service-deploy-ha/11.png)
 
@@ -231,3 +240,5 @@ ms.locfileid: "58285660"
 [横向扩展应用服务](azure-stack-app-service-add-worker-roles.md)。 您可能需要添加更多应用服务基础结构角色辅助角色以满足您的环境中的预期的应用程序需求。 默认情况下，Azure Stack 上的应用服务支持免费和共享辅助角色层。 若要添加其他辅助角色层，需添加更多的辅助角色。
 
 [配置部署源](azure-stack-app-service-configure-deployment-sources.md)。 支持按需部署从 GitHub、 BitBucket、 OneDrive 和 DropBox 等的多个源代码管理提供程序还需要其他配置。
+
+[应用服务备份](app-service-back-up.md)。 后已成功部署和配置应用服务，应确保为灾难恢复所必需的所有组件进行都备份以便防止数据丢失，并在恢复操作期间避免不必要的服务停机时间。

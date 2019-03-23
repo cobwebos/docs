@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a77c6ce205c40b5814f9b26f9099d868d434d3ce
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316440"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369218"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -26,12 +26,12 @@ ms.locfileid: "58316440"
 
 即使未启用 SSPR，用户在密码重置门户中也仍可找到“联系管理员”链接。 如果用户选择该链接，它将执行以下任务之一：
 
-   * 向管理员发送一封电子邮件，请求他们帮助更改用户的密码。
-   * 将用户指引到指定的 URL 以获取帮助。
+* 向管理员发送一封电子邮件，请求他们帮助更改用户的密码。
+* 将用户指引到指定的 URL 以获取帮助。
 
 建议将此联系人设置为用户已用来提问支持问题的电子邮件地址或网站等内容。
 
-![联系人][Contact]
+![若要重置电子邮件发送给管理员的示例请求][Contact]
 
 此联系人电子邮件按以下顺序发送到以下收件人：
 
@@ -68,8 +68,8 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 * 用户输入其用户名后
 * 如果用户通过以下方式访问自定义的 URL：
-    * 通过传递`whr`到密码重置页，例如 `https://login.microsoftonline.com/?whr=contoso.com`
-    * 通过传递`username`到密码重置页，例如 `https://login.microsoftonline.com/?username=admin@contoso.com`
+   * 通过传递`whr`到密码重置页，例如 `https://login.microsoftonline.com/?whr=contoso.com`
+   * 通过传递`username`到密码重置页，例如 `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 有关如何配置公司品牌的详细信息，请参阅[将公司品牌添加到 Azure AD 中的登录页](../fundamentals/customize-branding.md)一文。
 

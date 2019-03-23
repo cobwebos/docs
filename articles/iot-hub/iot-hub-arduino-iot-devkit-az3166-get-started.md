@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 12/19/2018
+ms.date: 03/21/2019
 ms.author: wesmc
-ms.openlocfilehash: e35e669c4abc4815b932e09d369af28e42617e8c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 941455e39a32405097563b043046866aeb5c7964
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535667"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351926"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -128,7 +128,7 @@ DevKit 上运行的默认应用会检查固件的最新版本，并显示某些�
 遵循以下步骤准备 DevKit 的开发环境：
 
 1. 安装 [Arduino IDE](https://www.arduino.cc/en/Main/Software)。 此 IDE 提供必要的工具链用于编译和上传 Arduino 代码。
-    * Windows：使用 Windows Installer 版本。 不要从应用商店安装。
+    * Windows：使用 Windows Installer 版本。 不从应用商店安装。
     * **macOS**：将解压缩的 **Arduino.app** 拖放到 `/Applications` 文件夹中。
     * **Ubuntu**：解压缩到某个文件夹中，例如 `$HOME/Downloads/arduino-1.8.8`
 
@@ -139,6 +139,9 @@ DevKit 上运行的默认应用会检查固件的最新版本，并显示某些�
 
 4. 在扩展市场中找到 **Azure IoT Tools** 并安装它。
     ![安装 Azure IoT Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
+
+    > [!div class="nextstepaction"]
+    > [安装 Azure IoT 工具扩展包](vscode:extension/vsciot-vscode.azure-iot-tools)
 
 5. 为 VS Code 配置 Arduino 设置。
 
@@ -175,11 +178,11 @@ DevKit 上运行的默认应用会检查固件的最新版本，并显示某些�
 
 ### <a name="install-st-link-drivers"></a>安装 ST-Link 驱动程序
 
-[ST-Link/V2](https://www.st.com/en/development-tools/st-link-v2.html) 是 IoT DevKit 用来与开发计算机通信的 USB 接口。 需要在其上安装 Windows 以启用 flash 编译的设备代码到 DevKit。 遵循 OS 特定的步骤，使计算机能够访问你的设备。
+[ST-Link/V2](https://www.st.com/en/development-tools/st-link-v2.html) 是 IoT DevKit 用来与开发计算机通信的 USB 接口。 您需要将其安装在 Windows 闪烁，DevKit 的设备已编译的代码。 遵循 OS 特定的步骤，使计算机能够访问你的设备。
 
-* Windows：从 [STMicroelectronics 网站](https://www.st.com/en/development-tools/stsw-link009.html)下载并安装 USB 驱动程序。
+* Windows：下载并安装 USB 驱动程序从[STMicroelectronics 网站](https://www.st.com/en/development-tools/stsw-link009.html)有关[直接链接](https://aka.ms/stlink-v2-windows)。
 * **macOS**：macOS 无需驱动程序。
-* **Ubuntu**：在终端中运行以下命令，然后注销并登录，使组更改生效：
+* **Ubuntu**：在终端中运行命令和注销并登录组才能使更改生效：
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
     sudo cp ~/.arduino15/packages/AZ3166/tools/openocd/0.10.0/linux/contrib/60-openocd.rules /etc/udev/rules.d/
@@ -194,16 +197,47 @@ DevKit 上运行的默认应用会检查固件的最新版本，并显示某些�
 
 ## <a name="build-your-first-project"></a>生成第一个项目
 
-1. 确保 IoT DevKit **未连接**到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
+### <a name="open-sample-code-from-sample-gallery"></a>从示例库中打开示例代码
 
+1. 确保 IoT DevKit **未连接**到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
 
 1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:**打开示例...”** 。然后选择“IoT DevKit”作为开发板。
 
 1. 在 IoT Workbench 的“示例”页中，找到“入门”并单击“打开示例”。 然后选择用于下载示例代码的默认路径。
     ![打开示例](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
 
+### <a name="provision-azure-iot-hub-and-device"></a>预配 Azure IoT 中心和设备
+
 1. 在打开的新项目窗口中，单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:预配 Azure 服务...”。遵照分步指南完成预配 Azure IoT 中心和创建 IoT 中心设备的操作。
-    ![云预配](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/cloud-provision.png)
+    ![设置命令](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision.png)
+
+    > [!NOTE]
+    > 如果你不具有登录在 Azure 中。 请按照签名的弹出通知。
+
+1. 选择要使用的订阅。
+    ![选择子](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-subscription.png)
+
+1. 然后选择或创建一个新[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#terminology)。
+    ![选择资源组](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-resource-group.png)
+
+1. 在您指定的资源组，请按照指南来选择或创建新的 Azure IoT 中心。
+    ![选择 IoT 中心相关的步骤](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provision.png)
+
+    ![选择 IoT 中心](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-hub.png)
+
+    ![所选的 IoT 中心](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-selected.png)
+
+1. 在输出窗口中，你将看到预配 Azure IoT 中心![IoT 中心预配](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provisioned.png)
+
+1. 选择或创建新的设备预配的 Azure IoT 中心中。
+    ![选择 IoT 设备的步骤](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-device-provision.png)
+
+    ![选择预配的 IoT 设备](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-device.png)
+
+1. 现在可以预配的 Azure IoT 中心和在其中创建的设备。 此外设备连接字符串将保存在 VS Code 中配置 IoT DevKit 更高版本。
+    ![预配完成](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision-done.png)
+
+### <a name="configure-and-compile-device-code"></a>配置和设备代码编译
 
 1. 在右下方的状态栏中，检查选定的开发板是否为 **MXCHIP AZ3166**，以及是否使用了带有 **STMicroelectronics** 的串行端口。
     ![选择开发板和 COM](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
@@ -252,6 +286,16 @@ DevKit 将重新启动并开始运行代码。
 
 1. 在“输出”窗格中，可以看到传入 IoT 中心的 D2C 消息。
     ![D2C 消息](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
+
+## <a name="review-the-code"></a>查看代码
+
+`GetStarted.ino`是主要的 Arduino 草图文件。
+
+![D2C 消息](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/code.png)
+
+若要查看设备遥测数据发送到 Azure IoT 中心的方式，请打开`utility.cpp`同一文件夹中的文件。 视图[API 参考](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/)若要了解如何使用 IoT DevKit 上的传感器和外围设备。
+
+`DevKitMQTTClient`一起使用是的一个包装**iothub_client**从[Microsoft Azure IoT Sdk 和适用于 C 库](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client)与 Azure IoT 中心进行交互。
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 

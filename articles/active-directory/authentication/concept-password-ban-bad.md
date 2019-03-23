@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 645dd7fe35ba3e7d83a3ee374d7ab566ad193cc2
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 795abcadb1cee7599665f7bc3b8e0d3e08a3da05
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314121"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369065"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
 
@@ -32,7 +32,7 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 
 自定义的禁止密码列表和启用本地 Active Directory 集成的能力是使用 Azure 门户管理的。
 
-![在 Azure 门户中的“身份验证方法”下修改自定义禁止密码列表](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+![修改自定义受禁的密码列表下的身份验证方法](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
 
 ## <a name="on-premises-hybrid-scenarios"></a>本地混合方案
 

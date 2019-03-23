@@ -11,20 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beeeea13c46c489fbd0e5c26d18d3d8c7994dccd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6404356edca606d78656011b9dec654e9f29edd3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314225"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368571"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>配置适用于 IIS Web 应用的 Azure 多重身份验证服务器
 
 使用 Azure 多重身份验证 (MFA) 服务器的 IIS 身份验证部分来启用并配置 IIS 身份验证，以便与 Microsoft IIS Web 应用程序集成。 Azure MFA 服务器将安装一个插件，该插件可以筛选向 IIS Web 服务器发出的用于添加 Azure 多重身份验证的请求。 IIS 插件支持基于窗体的身份验证和集成式 Windows HTTP 身份验证。 还可以配置受信任的 IP，使内部 IP 地址免于进行双因素身份验证。
 
-![IIS 身份验证](./media/howto-mfaserver-iis/iis.png)
+![在 MFA 服务器的 IIS 身份验证](./media/howto-mfaserver-iis/iis.png)
 
 ## <a name="using-form-based-iis-authentication-with-azure-multi-factor-authentication-server"></a>将基于窗体的 IIS 身份验证用于 Azure 多重身份验证服务器
+
 若要保护使用基于窗体的身份验证的 IIS Web 应用程序，请在 IIS Web 服务器上安装 Azure 多重身份验证服务器，并按以下过程配置该服务器：
 
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的 IIS 身份验证图标。
@@ -48,6 +49,7 @@ ms.locfileid: "58314225"
 14. 检测到或输入 URL 和页面变量后，网站数据会显示在基于表单的面板中。
 
 ## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>将集成 Windows 身份验证用于 Azure 多重身份验证服务器
+
 要保护使用集成式 Windows HTTP 身份验证的 IIS Web 应用程序，请在 IIS Web 服务器上安装 Azure MFA 服务器，并按以下步骤配置该服务器：
 
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的 IIS 身份验证图标。
@@ -60,6 +62,7 @@ ms.locfileid: "58314225"
 8. 单击“确定”。
 
 ## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>为 Azure 多重身份验证服务器启用 IIS 插件
+
 配置基于窗体的身份验证或 HTTP 身份验证 URL 和设置后，请在 IIS 中选择应加载并启用 Azure 多重身份验证 IIS 插件的位置。 请按以下过程操作：
 
 1. 如果在 IIS 6 上运行，单击“ISAPI”选项卡。选择在其中运行 Web 应用程序的网站（例如默认网站），以便为该网站启用 Azure 多重身份验证 ISAPI 筛选器插件。
@@ -67,6 +70,7 @@ ms.locfileid: "58314225"
 3. 单击屏幕顶部的“启用 IIS 身份验证”框。 现在，Azure 多重身份验证将保护所选 IIS 应用程序。 确保已将用户导入该服务器。
 
 ## <a name="trusted-ips"></a>受信任的 IP
+
 受信任的 IP 允许用户跳过对从特定 IP 地址或子网发起的网站请求的 Azure 多重身份验证。 例如，当用户从办公室登录时，你可能想让这些用户免除 Azure 多重身份验证。 为此，可将办公室子网指定为受信任的 IP 条目。 若要配置受信任的 IP，请使用以下过程：
 
 1. 在“IIS 身份验证”部分中，单击“受信任的 IP”选项卡。

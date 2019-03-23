@@ -8,14 +8,15 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e9b562cb04bb8916245d9df7b9b6d526bd443a24
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113293"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352130"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
+
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。 其他指标可在门户或旧版 API 中使用。 下面的此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
 > [!NOTE]
@@ -660,7 +661,6 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 | MetadataRequests |    元数据请求   |Count| Count   | 元数据请求的计数。 Azure Cosmos DB 为每个帐户维护系统元数据集合，允许你免费枚举集合、数据库及其配置等等。    | DatabaseName, CollectionName, Region, StatusCode| All|  |用于监视由于元数据请求而导致的限制。|
 | MongoRequests |   Mongo 请求| Count | Count|  已发出的 Mongo 请求数   | DatabaseName, CollectionName, Region, CommandName, ErrorCode| All |Mongo 查询请求速率、Mongo 更新请求速率、Mongo 删除请求速率、Mongo 插入请求速率、Mongo 计数请求速率|   用于监视 Mongo 请求错误以及每个命令类型的使用情况。 |
 
-
 ### <a name="request-unit-metrics"></a>请求单位指标
 
 |指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
@@ -673,7 +673,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
 |---|---|---|---|---|---| ---| ---| ---|
-| AvailableStorage| 可用存储   |字节| 总计|  每个区域按 5 分钟粒度报告的可用存储总量|   DatabaseName、CollectionName、Region|   5M| 可用存储|   用于监视可用存储容量（仅适用于固定存储集合）。最小粒度应当为 5 分钟。| 
+| AvailableStorage| 可用存储   |字节| 总计|  每个区域按 5 分钟粒度报告的可用存储总量|   DatabaseName、CollectionName、Region|   5M| 可用存储|   用于监视可用存储容量（仅适用于固定存储集合）。最小粒度应当为 5 分钟。|
 | DataUsage |数据使用情况 |字节| 总计   |每个区域按 5 分钟粒度报告的可用存储总量|    DatabaseName、CollectionName、Region|   5M  |数据大小  | 用于在集合和区域级别监视总的数据使用情况，最小粒度应当为 5 分钟。|
 | IndexUsage|   索引使用情况|    字节|  总计   |每个区域按 5 分钟粒度报告的总的索引使用情况|    DatabaseName、CollectionName、Region|   5M| 索引大小| 用于在集合和区域级别监视总的数据使用情况，最小粒度应当为 5 分钟。 |
 | DocumentQuota|    文档配额| 字节|  总计|  每个区域按 5 分钟粒度报告的存储配额总量。 适用于固定的存储集合| DatabaseName、CollectionName、Region|   5M  |存储容量|  用于在集合和区域级别监视总的配额，最小粒度应当为 5 分钟。|
@@ -805,6 +805,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |ScaleActionsInitiated|启动的缩放操作|Count|总计|缩放操作的方向。|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
+
 （公共预览版）
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
@@ -1224,7 +1225,6 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |更新|更新|Count|平均值|更新|Computer、Product、Classification、UpdateState、Optional、Approved|
 |事件|事件|Count|平均值|事件|Source, EventLog, Computer, EventCategory, EventLevel, EventLevelName, EventID|
 
-
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
@@ -1608,7 +1608,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |MemoryPercentage|内存百分比|百分比|平均值|内存百分比|实例|
 
 ## <a name="next-steps"></a>后续步骤
+
 * [了解 Azure Monitor 中的指标](../../azure-monitor/platform/data-collection.md)
 * [针对指标创建警报](../../azure-monitor/platform/alerts-overview.md)
 * [将指标导出到存储、事件中心或 Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)
-

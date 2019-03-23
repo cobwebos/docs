@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6bd67e500756fe5a7ba5ee29db88b9aedb103e4
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3e21f7a67b11caf0180959de68d698f0ff4a1af1
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315974"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371853"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
@@ -155,13 +155,13 @@ Microsoft Authenticator 应用或其他第三方应用可用作生成 OATH 验�
 
 OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 请注意，密钥限制为 128 个字符，可能不会与所有令牌兼容。
 
-![将 OATH 令牌上传到 Azure 门户中的 MFA 服务器 OATH 令牌边栏选项卡](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![将 OATH 令牌上传到 MFA 服务器 OATH 令牌边栏选项卡](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
 OATH 硬件令牌目前作为公共预览版的一部分受支持。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 获取令牌后，必须以逗号分隔值 (CSV) 文件格式将其上传，包括 UPN、序列号、密钥、时间间隔、制造商以及型号，如下所示。
 
-```
+```csv
 upn,serial number,secret key,timeinterval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```

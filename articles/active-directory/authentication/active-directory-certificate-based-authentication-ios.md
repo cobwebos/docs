@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7243249e7aabf588115ef74f838be8ca67a94c7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309480"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369422"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上 Azure Active Directory 基于证书的身份验证
 
@@ -35,16 +35,16 @@ ms.locfileid: "58309480"
 
 | 应用 | 支持 |
 | --- | --- |
-| Azure 信息保护应用 |![勾选标记][1] |
-| Intune 公司门户 |![勾选标记][1] |
-| Microsoft Teams |![勾选标记][1] |
-| OneNote |![勾选标记][1] |
-| OneDrive |![勾选标记][1] |
-| Outlook |![勾选标记][1] |
-| Power BI |![勾选标记][1] |
-| Skype for Business |![勾选标记][1] |
-| Word/Excel/PowerPoint |![勾选标记][1] |
-| Yammer |![勾选标记][1] |
+| Azure 信息保护应用 |![选中标记，表明此应用程序支持][1] |
+| Intune 公司门户 |![选中标记，表明此应用程序支持][1] |
+| Microsoft Teams |![选中标记，表明此应用程序支持][1] |
+| OneNote |![选中标记，表明此应用程序支持][1] |
+| OneDrive |![选中标记，表明此应用程序支持][1] |
+| Outlook |![选中标记，表明此应用程序支持][1] |
+| Power BI |![选中标记，表明此应用程序支持][1] |
+| Skype for Business |![选中标记，表明此应用程序支持][1] |
+| Word/Excel/PowerPoint |![选中标记，表明此应用程序支持][1] |
+| Yammer |![选中标记，表明此应用程序支持][1] |
 
 ## <a name="requirements"></a>要求
 

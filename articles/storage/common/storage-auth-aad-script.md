@@ -5,25 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f8fd3cdcf73749d787fc6f1c2222946961091f80
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6c57367a3a11aeb5bdded8e19ce57b7e265aeea9
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849833"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369235"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell"></a>使用 Azure AD 标识访问 Azure 存储使用 CLI 或 PowerShell
 
-Azure 存储提供的 Azure CLI 和 PowerShell，您可以登录并运行基于 Azure Active Directory (Azure AD) 标识的脚本命令扩展。 Azure AD 标识可以是用户、组或应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 可通过基于角色的访问控制 (RBAC) 向 Azure AD 标识分配访问存储资源的权限。 有关 Azure 存储中 RBAC 角色的详细信息，请参阅[通过 RBAC 管理 Azure 存储数据访问权限（预览）](storage-auth-aad-rbac.md)。
+Azure 存储提供的 Azure CLI 和 PowerShell，您可以登录并运行基于 Azure Active Directory (Azure AD) 标识的脚本命令扩展。 Azure AD 标识可以是用户、组或应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 可通过基于角色的访问控制 (RBAC) 向 Azure AD 标识分配访问存储资源的权限。 有关在 Azure 存储中的 RBAC 角色的详细信息，请参阅[到 Azure 存储数据，使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。
 
-使用 Azure AD 标识登录 Azure CLI 或 PowerShell 时，会返回一个用于访问该标识下 Azure 存储的访问令牌。 CLI 或 PowerShell 之后自动使用该令牌针对 Azure 存储进行操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
+当您登录到 Azure CLI 或 PowerShell 与 Azure AD 标识时，会返回访问令牌以该身份访问 Azure 存储。 CLI 或 PowerShell 之后自动使用该令牌针对 Azure 存储进行操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
 
 ## <a name="supported-operations"></a>支持的操作
 
-容器和队列上的操作支持扩展。 可调用的操作取决于向 Azure AD 标识授予的权限，此类权限用于登录 Azure CLI 或 PowerShell。 Azure 存储容器或队列的权限通过基于角色的访问控制 (RBAC) 进行分配。 例如，如果向该标识分配数据读取者角色，则可运行从容器或队列读取数据的脚本命令。 如果向该标识分配数据贡献者角色，则可运行脚本命令来读取、写入或删除容器、队列或其中所含数据。 
+容器和队列上的操作支持扩展。 可以调用哪些操作取决于与你登录到 Azure CLI 或 PowerShell 的 Azure AD 标识授予的权限。 Azure 存储容器或队列的权限通过基于角色的访问控制 (RBAC) 进行分配。 例如，如果向该标识分配数据读取者角色，则可运行从容器或队列读取数据的脚本命令。 如果向该标识分配数据贡献者角色，则可运行脚本命令来读取、写入或删除容器、队列或其中所含数据。 
 
 若要详细了解针对容器或队列的每个 Azure 存储操作所需的权限，请参阅[用于调用 REST 操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。  
 
@@ -61,10 +61,10 @@ Azure CLI 支持`--auth-mode`针对 Azure 存储的数据操作的参数：
         --encryption-services blob
     ```
     
-1. 在创建容器之前，将分配[存储 Blob 数据参与者 （预览）](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)给自己的角色。 即使你是帐户所有者，你将需要显式权限才能执行针对存储帐户的数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure 容器和队列使用 RBAC （预览版） 在 Azure 门户中的访问](storage-auth-aad-rbac.md)。
+1. 在创建容器之前，将分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)给自己的角色。 即使你是帐户所有者，你将需要显式权限才能执行针对存储帐户的数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure 容器和队列使用 RBAC 在 Azure 门户中的访问](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
-    > 对 blob 和队列的 Azure AD 支持预览版 RBAC 角色分配可能需要 5 分钟来传播。
+    > RBAC 角色分配可能需要几分钟来传播。
     
 1. 调用[az 存储容器创建](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)命令`--auth-mode`参数设置为`login`若要创建使用 Azure AD 凭据的容器：
 
@@ -114,10 +114,10 @@ Azure CLI 支持`--auth-mode`针对 Azure 存储的数据操作的参数：
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. 在创建容器之前，将分配[存储 Blob 数据参与者 （预览）](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)给自己的角色。 即使你是帐户所有者，你将需要显式权限才能执行针对存储帐户的数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure 容器和队列使用 RBAC （预览版） 在 Azure 门户中的访问](storage-auth-aad-rbac.md)。
+1. 在创建容器之前，将分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)给自己的角色。 即使你是帐户所有者，你将需要显式权限才能执行针对存储帐户的数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure 容器和队列使用 RBAC 在 Azure 门户中的访问](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
-    > 对 blob 和队列的 Azure AD 支持预览版 RBAC 角色分配可能需要 5 分钟来传播。
+    > RBAC 角色分配可能需要几分钟来传播。
 
 1. 通过调用创建一个容器[新建 AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer)。 因为此调用将使用在上一步骤中创建的上下文，使用你的 Azure AD 凭据创建容器。 
 
@@ -128,6 +128,6 @@ Azure CLI 支持`--auth-mode`针对 Azure 存储的数据操作的参数：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[通过 RBAC 管理存储数据访问权限（预览）](storage-auth-aad-rbac.md)。
-- 若要了解如何将 Azure 资源的托管标识与 Azure 存储一起使用，请参阅[使用 Azure 资源的 Azure 托管标识（预览）验证对 Blob 和队列的访问权限](storage-auth-aad-msi.md)。
+- 若要了解有关 Azure 存储的 RBAC 角色的详细信息，请参阅[存储的数据使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。
+- 若要了解如何使用适用于使用 Azure 存储的 Azure 资源管理的标识，请参阅[blob 和队列使用 Azure 进行身份验证访问 Azure 资源的托管标识](storage-auth-aad-msi.md)。
 - 若要了解如何从存储应用程序内授予容器和队列访问权限，请参阅[将 Azure AD 与存储应用程序配合使用](storage-auth-aad-app.md)。

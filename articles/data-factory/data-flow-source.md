@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 54302f97913fd01dc8f8e4a8d987a407c8bdf9a7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569019"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369159"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>映射数据流源转换
 
@@ -74,7 +74,7 @@ ms.locfileid: "57569019"
 ## <a name="source-file-management"></a>源文件管理
 ![新源设置](media/data-flow/source2.png "新设置")
 
-* 源文件夹的通配符路径，将从中选取一系列与模式匹配的文件。 这将覆盖您的数据集定义中设置了任何文件。
+* 通配符路径选取一系列从你的源文件夹与模式匹配的文件。 这将覆盖您的数据集定义中设置了任何文件。
 * 文件列表。 与文件集相同。 指向你创建的、包含要处理的相对路径文件列表的文本文件。
 * 用于存储文件名的列将在数据列中存储来自源的文件名。 请在此处输入新名称以存储文件名字符串。
 * 完成后（数据流执行后你可以选择不对源文件执行任何操作、删除源文件或移动源文件）。 移动路径是相对路径。
@@ -83,7 +83,7 @@ ms.locfileid: "57569019"
 
 使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源时，可以使用其他选项。
 
-* 查询：输入针对源的 SQL 查询。 设置查询会替代在数据集中选择的任何表。 请注意，此处不支持 Order By 子句。
+* 查询：输入针对源的 SQL 查询。 设置查询会替代在数据集中选择的任何表。 请注意，此处不支持 Order By 子句。 但是，您可以此处设置一个完整的 SELECT FROM 语句。
 
 * 批大小：输入批大小，以将大型数据分块成批大小的读取。
 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/18/2019
+ms.date: 03/22/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e7ab09522184f5c2d1c5168b24b2948f58e5189e
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189557"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368955"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
@@ -67,7 +67,7 @@ from cte;
 ```
 
 trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示没有修整，且行组的质量为最佳）。 下列修整原因指示行组的过早修整：
-- BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在此方案中，请考虑增加批加载窗口以累计更多的行。 此外，请重新评估分区方案，避免其过度具体，因为行组无法跨越分区边界。
+- BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在此方案中，请考虑增加批处理负载以包括更多的行。 此外，请重新评估分区方案，避免其过度具体，因为行组无法跨越分区边界。
 - MEMORY_LIMITATION：要创建具有 100 万行的行组，引擎需要一定量的工作内存。 当加载会话的可用内存小于所需的工作内存时，将提前修整行组。 以下各部分说明如何估计所需内存和分配更多内存。
 - DICTIONARY_SIZE：此修整原因指示，由于至少有一个字符串列具有宽和/或高基数字符串，因此发生行组修整。 字典大小的内存限制为 16 MB，一旦达到此限制，将压缩行组。 如果遇到这种情况，请考虑将有问题的列隔离到单独的表中。
 

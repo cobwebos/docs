@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: de88fbc2960be452df0c9067dca3715d9f6febb0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+ms.openlocfilehash: df8e15bbde5ad60d2e5cb90ba37892c135070f41
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744031"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359290"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-apache-hadoop-in-hdinsight-powershell"></a>将 Apache Mahout 与 HDInsight 中的 Apache Hadoop 配合使用生成电影推荐 (PowerShell)
 
@@ -22,7 +22,9 @@ ms.locfileid: "53744031"
 
 了解如何使用 [Apache Mahout](https://mahout.apache.org) 机器学习库通过 Azure HDInsight 生成电影推荐。 本文档中的示例使用 Azure PowerShell 运行 Mahout 作业。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * 基于 Linux 的 HDInsight 群集。 有关创建该群集的信息，请参阅[开始在 HDInsight 中使用基于 Linux 的 Hadoop][getstarted]。
 
@@ -67,7 +69,7 @@ user-ratings.txt 中包含的数据具有 `userID`、`movieID`、`userRating` �
 使用以下 Windows PowerShell 脚本来运行作业，以将 Mahout 推荐引擎用于电影数据：
 
 > [!NOTE]  
-> 此文件会提示输入用于连接到 HDInsight 群集和运行作业的信息。 完成作业和下载 output.txt 文件可能需要几分钟时间。
+> 此文件会提示你输入用于连接到 HDInsight 群集和运行作业的信息。 完成作业和下载 output.txt 文件可能需要几分钟时间。
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
@@ -141,10 +143,10 @@ Mahout 作业不清理在处理期间创建的临时文件。 此外，作业不
 ```powershell
 # Login to your Azure subscription
 # Is there an active Azure subscription?
-$sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+$sub = Get-AzSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
 {
-    Connect-AzureRmAccount
+    Connect-AzAccount
 }
 
 # Get cluster info
@@ -152,32 +154,32 @@ $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
 $creds=Get-Credential -Message "Enter the login for the cluster"
 
 #Get the cluster info so we can get the resource group, storage, etc.
-$clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+$clusterInfo = Get-AzHDInsightCluster -ClusterName $clusterName
 $resourceGroup = $clusterInfo.ResourceGroup
 $storageAccountName = $clusterInfo.DefaultStorageAccount.split('.')[0]
 $container = $clusterInfo.DefaultStorageContainer
-$storageAccountKey = (Get-AzureRmStorageAccountKey `
+$storageAccountKey = (Get-AzStorageAccountKey `
     -Name $storageAccountName `
 -ResourceGroupName $resourceGroup)[0].Value
 
 #Create a storage context and upload the file
-$context = New-AzureStorageContext `
+$context = New-AzStorageContext `
     -StorageAccountName $storageAccountName `
     -StorageAccountKey $storageAccountKey
 
 #Azure PowerShell can't delete blobs using wildcard,
 #so have to get a list and delete one at a time
 # Start with the output
-$blobs = Get-AzureStorageBlob -Container $container -Context $context -Prefix "example/out"
+$blobs = Get-AzStorageBlob -Container $container -Context $context -Prefix "example/out"
 foreach($blob in $blobs)
 {
-    Remove-AzureStorageBlob -Blob $blob.Name -Container $container -context $context
+    Remove-AzStorageBlob -Blob $blob.Name -Container $container -context $context
 }
 # Next the temp files
-$blobs = Get-AzureStorageBlob -Container $container -Context $context -Prefix "example/temp"
+$blobs = Get-AzStorageBlob -Container $container -Context $context -Prefix "example/temp"
 foreach($blob in $blobs)
 {
-    Remove-AzureStorageBlob -Blob $blob.Name -Container $container -context $context
+    Remove-AzStorageBlob -Blob $blob.Name -Container $container -context $context
 }
 ```
 

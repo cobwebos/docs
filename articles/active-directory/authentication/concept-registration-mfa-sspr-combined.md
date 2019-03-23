@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2865c19e747ca1c5b0a6cda84b8be18bfaeb9335
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 536d26abf563f18ed7cec6668fcd1d4223f5a135
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317657"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370153"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合的安全信息注册 （预览版）
 
 组合注册之前用户注册 Azure 多重身份验证 (MFA) 和两个不同的体验通过自助服务密码重置 (SSPR) 身份验证方法。 用户已针对 Azure MFA 和 SSPR 使用了类似方法，但它们必须单独注册每个功能相混淆。 现在，进行组合的注册，用户可以一次注册并获取 Azure MFA 和 SSPR 的优势。
 
-![结合使用安全信息-我的个人资料显示已注册用户，包括： Microsoft Authenticator 和电话目录中的示例用户的安全信息。](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![我的配置文件显示已注册的用户的安全信息](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 启用新的体验之前, 查看此管理员为中心的文档和专注于用户的文档以确保您了解的功能和影响此功能。 使您的用户文档的新体验准备你的用户和帮助确保成功推出的培训。
 
@@ -36,7 +36,7 @@ ms.locfileid: "58317657"
 
 MyProfile 页面将本地化基于访问页面的计算机上的当前语言设置。 Microsoft 将存储利用浏览器缓存中，以便访问的后续尝试仍将呈现在最后一个语言中使用的最新语言。 清除缓存将会重新呈现页面。 如果你想要强制特定语言添加`?lng=de-DE`到 URL 的末尾位置`de-DE`设置到的相应语言代码将强制在该语言中要呈现的页。
 
-![显示安全信息和用户设置 SSPR 或其他安全验证的其他方法允许我配置文件的接口。](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
+![设置 SSPR 或其他额外的安全验证方法](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
 ## <a name="methods-available-in-converged-registration"></a>聚合注册中可用的方法
 
@@ -99,7 +99,7 @@ Mfa，用户可以为其默认方法设置以下选项：
 
 以下流程图描述了哪些方法显示给用户时中断在登录过程中注册：
 
-![结合使用解释的方法时的详细信息是必需的在登录时所需数量的安全信息流程图。 如果只需要 MFA 或仅 SSPR，这可能会更改](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
+![组合的安全信息流程图](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
 如果您具有 MFA 和启用 SSPR，我们建议您强制执行 MFA 注册。
 

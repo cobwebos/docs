@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: qianw211
-ms.openlocfilehash: 1efe65feaac6e71437958451e8c1a44027495fce
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
-ms.translationtype: HT
+ms.openlocfilehash: c3294aaa2b6c88e08028c8958d2ab3a7297aea74
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620007"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351807"
 ---
 # <a name="private-offers"></a>专用套餐
 
@@ -55,6 +55,9 @@ ms.locfileid: "52620007"
 ![[专用套餐]](./media/marketplace-publishers-guide/private-offer.png)
 
 专用套餐也会显示在搜索结果中。 只需查看“专用”徽章即可。
+
+> [!Note]
+> 通过云解决方案提供商计划 (CSP) 的经销商建立的订阅不支持专用产品/服务。
 
 ## <a name="next-steps"></a>后续步骤
 

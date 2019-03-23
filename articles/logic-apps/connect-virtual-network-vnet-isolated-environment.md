@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 8bbbe7a924c98c9628ce967892177599a1d13017
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cb3abff10482ec7e58b4b049f051e99178cb742
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854987"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371973"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -46,7 +46,14 @@ ms.locfileid: "57854987"
 
 * [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 如果没有虚拟网络，请了解如何[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 
 
-  * 你的虚拟网络必须有四个*空*部署以及在 ISE 中创建资源的子网。 可以提前创建这些子网或可以等待，直到您创建可以在同一时间创建子网在 ISE。 详细了解如何[子网的要求](#create-subnet)。
+  * 你的虚拟网络必须有四个*空*部署以及在 ISE 中创建资源的子网。 可以提前创建这些子网或可以等待，直到您创建可以在同一时间创建子网在 ISE。 详细了解如何[子网的要求](#create-subnet)。 
+  
+    > [!NOTE]
+    > 如果您使用[ExpressRoute](../expressroute/expressroute-introduction.md)，它提供与 Microsoft 云服务的专用连接，则必须[向每个子网中添加以下路由](../virtual-network/virtual-network-manage-subnet.md)由你 ISE。 如果使用子网，使用路由表[向路由表中添加以下路由](../virtual-network/manage-route-table.md):
+    > 
+    > **名称**：D3655BASE-route<br>
+    > **地址前缀**:0.0.0.0/0<br>
+    > **下一跃点**：Internet
 
   * 请确保你的虚拟网络[使这些端口可](#ports)以便在 ISE 可正常运行且保持可访问。
 
@@ -138,6 +145,12 @@ ms.locfileid: "57854987"
      * `10.0.0.0/28` 仅有 16 位地址长度且太小，因为 2<sup>(32-28)</sup>为 2<sup>4</sup>或 16。
 
      若要了解有关计算地址的详细信息，请参阅[IPv4 CIDR 块](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)。
+
+   * 如果您使用[ExpressRoute](../expressroute/expressroute-introduction.md)，请记住，登录[向每个子网中添加以下路由](../virtual-network/virtual-network-manage-subnet.md)由你 ISE。 如果使用子网，使用路由表[向该路由表中添加以下路由](../virtual-network/manage-route-table.md):
+
+     **名称**：D3655BASE-route<br>
+     **地址前缀**:0.0.0.0/0<br>
+     **下一跃点**：Internet
 
    1. 在“子网”列表下，选择“管理子网配置”。
 

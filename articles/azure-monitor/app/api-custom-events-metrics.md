@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4269f4ac24a842bf203456026234182934f1732f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fca93c002fba4d54e8e87ca31e0fd1c258826665
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878459"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369728"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -1076,6 +1076,17 @@ Visual Basic
 
 ```vb
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
+```
+
+*Node.js*
+
+适用于 Node.js，你可以通过启用通过内部日志记录启用开发人员模式下`setInternalLogging`和设置`maxBatchSize`为 0，这将导致遥测数据收集时，就立即发送。
+
+```js
+applicationInsights.setup("ikey")
+  .setInternalLogging(true, true)
+  .start()
+applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
 ## <a name="ikey"></a>设置所选自定义遥测的检测密钥
