@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549422"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350634"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
 
@@ -90,7 +90,7 @@ Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 �
 
 使用 Azure DevOps 进行持续部署有两种方法：
 
-*   使用 Git 项目。 使用该存储库的部署选项，通过应用服务进行连接。
+*   使用 Git 项目。 使用部署中心连接通过应用服务。
 *   使用 Team Foundation 版本控制 (TFVC) 项目。 通过对应用服务使用生成代理来进行部署。
 
 这两个选项的持续代码部署都依赖于现有开发人员工作流和签入过程。 有关详细信息，请参阅以下文章： 

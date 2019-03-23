@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 21d8f6a3b10de17172ff59463cca4162585fe40f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: d516cee81aef66ec58399cb5ff23c89db16bf2ab
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858981"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350430"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>使用自定义影像服务测试和重新训练模型
 
@@ -35,7 +35,7 @@ ms.locfileid: "55858981"
 
 现可将此测试图像添加到模型，然后重新训练模型。
 
-## <a name="use-the-predicted-image-for-training"></a>使用预测图像进行训练。
+## <a name="use-the-predicted-image-for-training"></a>使用预测的映像进行培训
 
 要使用之前提交的图像进行训练，请执行以下步骤：
 

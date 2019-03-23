@@ -16,12 +16,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: aff9dade7fe0238c0ea8ccc3ae5bba57437c6f89
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 3d9376ba5945c97d18f6cf68c242d5217beee679
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339536"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349699"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack 中的配额类型
 
@@ -40,7 +40,10 @@ ms.locfileid: "58339536"
 | 标准托管磁盘的最大容量 (GB) | 2048 | 可以在此位置中创建的标准托管磁盘的最大容量。 |
 | 高级托管磁盘的最大容量 (GB) | 2048 | 可以在此位置中创建的高级托管磁盘的最大容量。 |
 
-## <a name="storage-quota-types"></a>存储配额类型
+> [!NOTE]  
+> 非托管磁盘 (页 blob) 的最大容量是独立于托管的磁盘配额，它应在存储配额设置。
+
+## <a name="storage-quota-types"></a>存储配额类型 
 
 | **Item** | **默认值** | **说明** |
 | --- | --- | --- |
@@ -48,7 +51,7 @@ ms.locfileid: "58339536"
 | 存储帐户的总数 |20 |订阅可以在此位置创建的存储帐户数目上限。 |
 
 > [!NOTE]  
-> 强制实施存储配额最多可能需要两个小时。
+> 强制实施存储配额最多可能需要两个小时。 托管磁盘的最大容量是独立于总存储配额，它应在计算配额设置。
 
 ## <a name="network-quota-types"></a>网络配额类型
 

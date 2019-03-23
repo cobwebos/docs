@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78879f0e54dbd8f573ade7381ba83429346d00db
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 093849e10e9776327a54ea3a9ae22b863a528d37
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314257"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58367858"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 身份验证和 Azure 多重身份验证服务器
 
@@ -25,6 +25,7 @@ ms.locfileid: "58314257"
 若要使用 Azure 多重身份验证作为 LDAP 代理，请在 LDAP 客户端（例如 VPN 设备、应用程序）与 LDAP 目录服务器之间插入 Azure 多重身份验证服务器。 必须将 Azure 多重身份验证服务器配置为同时与客户端服务器和 LDAP 目录进行通信。 在此配置中，Azure 多重身份验证服务器接受来自客户端服务器和应用程序的 LDAP 请求，并将这些请求转发到目标 LDAP 目录服务器以验证主要凭据。 如果 LDAP 目录验证主要凭据有效，Azure 多重身份验证将执行双重身份验证，并将响应发送回 LDAP 客户端。 仅当 LDAP 服务器身份验证和双重验证都成功时，整个身份验证才成功。
 
 ## <a name="configure-ldap-authentication"></a>配置 LDAP 身份验证
+
 若要配置 LDAP 身份验证，请在 Windows Server 上安装 Azure 多重身份验证服务器。 请按以下过程操作：
 
 ### <a name="add-an-ldap-client"></a>添加 LDAP 客户端
@@ -32,7 +33,7 @@ ms.locfileid: "58314257"
 1. 在 Azure 多重身份验证服务器中，选择左侧菜单中的“LDAP 身份验证”图标。
 2. 选中“启用 LDAP 身份验证”复选框。
 
-   ![LDAP 身份验证](./media/howto-mfaserver-dir-ldap/ldap2.png)
+   ![在 MFA 服务器的 LDAP 身份验证](./media/howto-mfaserver-dir-ldap/ldap2.png)
 
 3. 如果 Azure 多重身份验证 LDAP 服务应绑定到非标准端口来侦听 LDAP 请求，请在“客户端”选项卡上更改 TCP 端口和 SSL 端口。
 4. 如果计划从客户端到 Azure 多重身份验证服务器使用 LDAPS，则必须在与 MFA 服务器相同的服务器上安装 SSL 证书。 单击 SSL 证书框旁边的“浏览”，并选择要用于安全连接的证书。
@@ -51,7 +52,7 @@ ms.locfileid: "58314257"
 3. 选择“编辑...”
 4. 在“编辑 LDAP 配置”对话框中，使用连接到 LDAP 目录时所需的信息填充字段。 Azure 多重身份验证服务器帮助文件中提供了字段说明。
 
-    ![目录集成](./media/howto-mfaserver-dir-ldap/ldap.png)
+    ![目录集成 LDAP 配置](./media/howto-mfaserver-dir-ldap/ldap.png)
 
 5. 通过单击“测试”按钮来测试 LDAP 连接。
 6. 如果 LDAP 连接测试成功，请单击“确定”按钮。
@@ -61,16 +62,16 @@ ms.locfileid: "58314257"
 10. 在“编辑属性”对话框中，修改目录的 LDAP 属性映射。 可以通过单击每个字段旁边的“...” 按钮来键入或选择属性名称。 有关属性的详细信息，请单击“帮助”链接。
 11. 单击“确定”按钮。
 12. 单击“公司设置”图标，并选择“用户名解析”选项卡。
-13. 如果从已加入域的服务器连接到 Active Directory，请将“使用 Windows 安全标识符 (SID) 匹配用户名”单选按钮保持选中状态。 否则，请选中“使用 LDAP 唯一标识符属性匹配用户名”单选按钮。 
+13. 如果从已加入域的服务器连接到 Active Directory，请将“使用 Windows 安全标识符 (SID) 匹配用户名”单选按钮保持选中状态。 否则，请选中“使用 LDAP 唯一标识符属性匹配用户名”单选按钮。
 
 “使用 LDAP 唯一标识符属性匹配用户名”单选按钮处于选中状态时，Azure 多重身份验证服务器会尝试将每个用户名解析为 LDAP 目录中的唯一标识符。 将对“目录集成 -> 属性”选项卡中定义的用户名属性执行 LDAP 搜索。当用户进行身份验证时，将用户名解析为 LDAP 目录中的唯一标识符。 该唯一标识符用于匹配 Azure 多重身份验证数据文件中的用户。 这允许不区分大小写的比较以及长、短用户名格式。
 
 完成上述步骤后，MFA 服务器会在配置的端口上侦听来自配置的客户端的 LDAP 访问请求，并充当代理将这些请求发送到 LDAP 目录进行身份验证。
 
 ## <a name="configure-ldap-client"></a>配置 LDAP 客户端
+
 若要配置 LDAP 客户端，请遵循以下准则：
 
 * 将设备、服务器或应用程序配置为通过 LDAP 向 Azure 多重身份验证服务器进行身份验证，就如同它是 LDAP 目录一样。 使用通常用于直接连接到 LDAP 目录的设置（服务器名称或 IP 地址除外，应使用 Azure 多重身份验证服务器的服务器名称或 IP 地址）。
 * 将 LDAP 超时配置为 30-60 秒，以便有时间使用 LDAP 目录验证用户的凭据、执行双重验证、接收其响应，然后对 LDAP 访问请求做出响应。
 * 如果使用 LDAPS，进行 LDAP 查询的设备或服务器必须信任 Azure 多重身份验证服务器上安装的 SSL 证书。
-

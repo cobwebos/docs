@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: e6185a7b62e3c599a7c3588824e3a9c4ac60cb53
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 7edce5175a1dda66abf3316cb8f0eb33e9f64ef7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467622"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371462"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>在创建资源时使用 Resource Manager 模板自动启用诊断设置
-本文介绍如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这样可以让用户在创建资源时自动将诊断日志和指标流式传输到事件中心、将其存档在存储帐户中，或者发送到 Log Analytics。
+本文介绍如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这可以自动启动流式处理将诊断日志和指标到事件中心、 将其存档在存储帐户，或将它们发送到 Log Analytics 工作区中，创建一个资源。
 
 > [!WARNING]
 > 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -40,7 +40,7 @@ ms.locfileid: "54467622"
 ## <a name="non-compute-resource-template"></a>非计算资源模板
 对于非计算资源，需要做两件事：
 
-1. 根据存储帐户名称、事件中心授权规则 ID 和/或 Log Analytics 工作区 ID 向参数 blob 添加参数（允许在存储帐户中存档诊断日志、将日志流式传输到事件中心和/或将日志发送到 Log Analytics）。
+1. 向存储帐户名称、 事件中心授权规则 ID 和/或 Log Analytics 工作区 ID （允许在存储帐户，日志流式传输到事件中心和/或将日志发送到 Azure Monitor 中存档诊断日志） 的参数 blob 添加参数。
    
     ```json
     "settingName": {
@@ -116,7 +116,7 @@ ms.locfileid: "54467622"
     ]
     ```
 
-诊断设置的属性 blob 遵循[此文所述的格式](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)。 添加 `metrics` 属性还可将资源指标发送到这些相同输出，前提是[该资源支持 Azure Monitor 指标](../../azure-monitor/platform/metrics-supported.md)。
+诊断设置的属性 blob 遵循 [此文所述的格式](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)。 添加 `metrics` 属性还可将资源指标发送到这些相同输出，前提是[该资源支持 Azure Monitor 指标](../../azure-monitor/platform/metrics-supported.md)。
 
 下面是一个完整的示例，说明了如何创建逻辑应用，以及如何启用流式传输到事件中心和在存储帐户中进行存储的功能。
 
@@ -259,7 +259,7 @@ ms.locfileid: "54467622"
 3. 将 WADCfg XML 文件的内容添加到 XMLCfg 属性中，对所有 XML 字符进行适当的转义。
 
 > [!WARNING]
-> 这最后一步操作起来比较复杂。 请[参阅此文](../../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables)获取相关示例，了解如何将诊断配置架构拆分成进行了正确转义和格式化操作的变量。
+> 这最后一步操作起来比较复杂。 [参阅此文](../../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables)获取相关示例，了解如何将诊断配置架构拆分成进行了正确转义和格式化操作的变量。
 > 
 > 
 

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a51e57cfac326663d41b545c9f2883a446467d3
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1d4144a2a6cf41d594ee096d8802ccc5b29009a5
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340756"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361789"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -40,7 +40,7 @@ ms.locfileid: "57340756"
 
 ## <a name="prerequisites"></a>必备组件
 
-- Azure 机器学习服务工作区。 若要创建工作区，请参阅 [Azure 机器学习服务入门](quickstart-get-started.md)。
+- Azure 机器学习服务工作区。 若要创建工作区，请参阅[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
 
 - 任一[Anaconda](https://www.anaconda.com/download/)或[Miniconda](https://conda.io/miniconda.html)包管理器。
 
@@ -61,7 +61,7 @@ ms.locfileid: "57340756"
 * 已安装 Azure 机器学习 SDK。
 * 在 Azure 门户中创建了 Azure 机器学习服务工作区之后，可以单击相应的按钮将 Azure Notebook 环境自动配置为使用该工作区。
 
-若要开始使用 Azure Notebooks 进行开发，请参阅 [Azure 机器学习服务入门](quickstart-get-started.md)。
+若要开始使用 Azure Notebooks 进行开发，请参阅 [Azure 机器学习服务入门](quickstart-run-cloud-notebook.md)。
 
 默认情况下，Azure Notebooks 使用限制为 4GB 内存和 1GB 数据的免费服务层。 不过，可以通过向 Azure Notebooks 项目附加 Data Science Virtual Machine 实例来解除这些限制。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。
 
@@ -350,7 +350,7 @@ SDK databricks **WITH**自动执行机器学习![SDK 自动安装在 Databricks 
 
 可通过三种方式创建配置文件：
 
-* **遵循 [Azure 机器学习快速入门](quickstart-get-started.md)**：将在 Azure Notebooks 库中创建一个 *config.json* 文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
+* **按照中的步骤[创建 Azure 机器学习服务工作区](setup-create-workspace.md#sdk)**:将在 Azure Notebooks 库中创建一个 *config.json* 文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
 
 * **手动创建文件**：此方法使用文本编辑器。 可以通过访问 [Azure 门户](https://portal.azure.com)中的工作区来查找要在配置文件中提供的值。 复制工作区名称、资源组和订阅 ID 值，并在配置文件中使用这些值。
 

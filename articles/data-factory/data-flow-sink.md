@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a56f391aa76bd1216fd51d516adb836a2093bcba
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852434"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371133"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>映射数据流接收器转换
 
@@ -57,7 +57,7 @@ ms.locfileid: "57852434"
 ## <a name="file-name-options"></a>文件名选项
 
    * 默认值：允许 Spark 根据 PART 默认值为文件命名
-   * 模式：输入输出文件的名称
+   * 模式：输入输出文件的一种模式。 例如，将创建"贷款 [n]"loans1.csv、 loans2.csv，...
    * 按分区：输入每个分区的文件名
    * 作为列中的数据：将输出文件设置为列的值
 
@@ -66,11 +66,16 @@ ms.locfileid: "57852434"
 
 ## <a name="database-options"></a>数据库选项
 
-* 允许插入、 更新、 删除、 更新插入。 默认值是允许插入。 如果您希望更新、 插入更新或插入行，必须首先将 alter 行转换添加到这些特定操作的标记行。
+* 允许插入、 更新、 删除、 更新插入。 默认值是允许插入。 如果您希望更新、 更新插入或删除行，必须首先将 alter 行转换添加到这些特定操作的标记行。 关闭"允许插入"将阻止 ADF 从您的源中插入新行。
 * 截断的表 （删除所有行从您的目标表前完成流的数据）
 * 重新创建的表 （删除/创建目标表之前执行完成流的数据）
 * 较大数据负载的批大小。 分解成多存储桶写入到输入的数字
 * 启用暂存：这将指示 ADF Polybase 加载时要使用 Azure 数据仓库作为接收器数据集
+
+> [!NOTE]
+> 在数据流中，可以让 ADF 通过接收器转换具有新的表名称中设置数据集在目标数据库中创建新的表定义。 在 SQL 数据集，表名称下面单击"编辑"并输入新的表名称。 然后，在接收器转换中，打开"允许架构偏差"。 Seth 的"导入架构"设置为无。
+
+![源转换架构](media/data-flow/dataset2.png "SQL 架构")
 
 ![SQL 接收器选项](media/data-flow/alter-row2.png "SQL 选项")
 

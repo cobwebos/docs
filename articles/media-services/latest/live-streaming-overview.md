@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 67876532496aa0a295bf32692534b16d38599492
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a31cd950ae241eb55c840c716f4679c5a67b1379
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839502"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350006"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -28,23 +28,46 @@ ms.locfileid: "57839502"
 - 一个实时视频编码器，用于将相机（或其他设备，例如便携式计算机）的信号转换为可发送到媒体服务的贡献源。 贡献源可包括与广告相关的信号，例如 SCTE-35 标记。<br/>有关推荐的实时传送视频流编码器的列表，请参阅[实时传送视频流编码器](recommended-on-premises-live-encoders.md)。 另外，请查看以下博客：[采用 OBS 的实时传送视频流生产](https://link.medium.com/ttuwHpaJeT)。
 - 媒体服务中的组件，用于引入、预览、打包、记录、加密实时事件并将其广播给客户，或者广播给 CDN 进行进一步分发。
 
-借助媒体服务，可以利用**动态打包**，以便预览和广播要发送到服务的贡献源中采用 [MPEG DASH、HLS 和平滑流式处理格式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)的实时流。 观看者可以使用任何与 HLS、DASH 或平滑流式处理兼容的播放器播放实时流。 可以使用 Web 应用程序或移动应用程序中的 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) 传送采用上述任何协议的流。
+本文提供了概述和指南的实时传送视频流媒体服务和其他相关文章的链接。
 
-借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中的任意一个动态加密（**动态加密**）的内容。 媒体服务还提供用于向已授权客户端传送 AES 密钥和 DRM 许可证的服务。 有关如何使用媒体服务加密内容的详细信息，请参阅[保护内容概述](content-protection-overview.md)
+> [!NOTE]
+> 目前，无法使用 Azure 门户来管理 v3 资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
 
-还可以应用动态筛选，以便控制发送到播放器的篇目数目、格式、比特率和呈现时间窗口。 有关详细信息，请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
+## <a name="dynamic-packaging"></a>动态打包
 
-本文提供了使用媒体服务实时传送视频流的概述和指南。
+使用媒体服务时，您可以充分利用可用于预览和广播实时流中的动态 Packaging](dynamic-packaging-overview.md) [MPEG DASH、 HLS 和平滑流式处理格式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)从所占比例向服务发送的源。 观看者可以使用任何与 HLS、DASH 或平滑流式处理兼容的播放器播放实时流。 可以使用 Web 应用程序或移动应用程序中的 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) 传送采用上述任何协议的流。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="dynamic-encryption"></a>动态加密
 
-若要了解媒体服务 v3 中的实时传送视频流工作流，你需要查看并了解以下概念： 
+动态加密，可动态加密使用 AES-128 或三个主要数字版权管理 (DRM) 系统的任何实时或按需内容：内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
+
+## <a name="dynamic-manifest"></a>动态清单
+
+使用动态筛选来控制跟踪、 格式、 比特率和演示文稿时间窗口，发送到参与方的数目。 有关详细信息，请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
+
+## <a name="live-event-types"></a>实时事件类型
+
+实时事件可以是两种类型之一： 直通和实时编码。 有关实时传送视频流媒体服务 v3 中的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
+
+### <a name="pass-through"></a>直通
+
+![直通](./media/live-streaming/pass-through.svg)
+
+使用直通**实时事件**，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 然后，实时事件会接受无需进一步处理的传入视频流。 此类传递实时事件适用于长时间运行的实时事件或 24x365 线性实时传送视频流。 
+
+### <a name="live-encoding"></a>实时编码  
+
+![实时编码](./media/live-streaming/live-encoding.svg)
+
+将实时编码与媒体服务配合使用时，需配置本地实时编码器，以便将单比特率视频作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 实时事件会将该传入的单比特率流编码为[多比特率视频流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，使其可通过 MPEG-DASH、HLS 和平滑流式处理等协议传送到播放设备。 
+
+## <a name="live-streaming-workflow"></a>实时传送视频流工作流
+
+若要了解媒体服务 v3 中的实时流式处理工作流，你必须首先回顾一下，并了解以下概念： 
 
 - [流式处理终结点](streaming-endpoint-concept.md)
 - [实时事件和实时输出](live-events-outputs-concept.md)
 - [流式处理定位符](streaming-locators-concept.md)
-
-## <a name="live-streaming-workflow"></a>实时传送视频流工作流
 
 下面是实时传送视频流工作流的步骤：
 

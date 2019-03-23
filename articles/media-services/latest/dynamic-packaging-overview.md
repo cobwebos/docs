@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d9c59bdb2e8a7b115761554f70ebedeecaf5d04e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9ba1b5a9b231822fd12d5a349e2518bc77669274
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901710"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351399"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
 Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和 XBOX）传送多种媒体源文件格式、媒体流格式和内容保护格式。 这些客户端可识别不同的协议，例如，iOS 需要 HTTP Live Streaming (HLS) 格式，Xbox 需要平滑流式处理。 如果有一组自适应比特率 （多码率） MP4 （ISO 基媒体 14496-12） 文件或一组自适应比特率平滑流式处理文件要提供给了解 HLS、 MPEG DASH 或平滑流式处理的客户端，您可以充分利用动态打包。 支持 SD/HD/UHD-4k、 打包是不可知的视频分辨率。
 
-[流式处理终结点](streaming-endpoint-concept.md)是用于向客户端播放器提供媒体内容的媒体服务中的动态打包服务。 动态打包是一项功能提供对所有的标准**流式处理终结点**（标准或高级）。 没有无需额外成本与媒体服务 v3 中的此功能相关联。 
+[流式处理终结点](streaming-endpoint-concept.md)是用于向客户端播放器提供媒体内容的媒体服务中的动态打包服务。 动态打包是一项功能提供对所有的标准**流式处理终结点**（标准或高级）。 
 
 若要充分利用**动态打包**，你需要准备**资产**具有一组自适应比特率 MP4 文件和所需的 Media Services 动态打包的流式处理配置文件。 若要获取的文件的一种方法是使用媒体服务将夹层 （源） 文件编码。 若要使视频编码资产中播放的客户端，您必须创建**流式处理定位符**和生成流 Url。 然后，根据流式处理客户端清单 （HLS、 DASH 或平滑流） 中指定的格式，具有选定的协议接收流。
 
@@ -34,24 +34,8 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和
 
 ![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-## <a name="common-video-on-demand-workflow"></a>常见视频按需工作流
-
-以下是常见的 Media Services 流式处理工作流使用动态打包的位置。
-
-1. 上传一个输入文件（称为夹层文件）。 例如，H.264、MP4 或 WMV（有关受支持格式的列表，请参阅[Media Encoder Standard 支持的格式](media-encoder-standard-formats.md)）。
-2. 将夹层文件编码为 H.264 MP4 自适应比特率集。
-3. 发布包含自适应比特率 MP4 集的资产。 通过创建发布**流式处理定位符**。
-4. 创建面向不同的格式 （HLS、 Dash 和平滑流式处理） 的 Url。 **流式处理终结点**将负责为正确的清单并对所有这些不同格式的请求提供服务。
-
-## <a name="encode-to-adaptive-bitrate-mp4s"></a>编码为自适应比特率 mp4
-
-璝惠[如何使用媒体服务的视频进行编码](encoding-concept.md)，请参阅下面的示例：
-
-* [从 HTTPS URL 使用内置的预设编码](job-input-from-http-how-to.md)
-* [对本地文件使用内置的预设进行编码](job-input-from-local-file-how-to.md)
-* [生成自定义预设，以满足特定的方案或设备要求](customize-encoder-presets-how-to.md)
-
-Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编解码器](media-encoder-standard-formats.md)
+> [!NOTE]
+> 目前，无法使用 Azure 门户来管理 v3 资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
 
 ## <a name="delivery-protocols"></a>传递协议
 
@@ -64,13 +48,60 @@ Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编�
 |MPEG DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |平滑流| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
+## <a name="common-on-demand-workflow"></a>常见的按需工作流
+
+以下是常见的 Media Services 流式处理工作流使用动态打包的位置。
+
+1. 上传一个输入文件（称为夹层文件）。 例如，H.264、MP4 或 WMV（有关受支持格式的列表，请参阅[Media Encoder Standard 支持的格式](media-encoder-standard-formats.md)）。
+2. 将夹层文件编码为 H.264 MP4 自适应比特率集。
+3. 发布包含自适应比特率 MP4 集的资产。 通过创建发布**流式处理定位符**。
+4. 创建面向不同的格式 （HLS、 Dash 和平滑流式处理） 的 Url。 **流式处理终结点**将负责为正确的清单并对所有这些不同格式的请求提供服务。
+
+### <a name="encode-to-adaptive-bitrate-mp4s"></a>编码为自适应比特率 mp4
+
+璝惠[如何使用媒体服务的视频进行编码](encoding-concept.md)，请参阅下面的示例：
+
+* [从 HTTPS URL 使用内置的预设编码](job-input-from-http-how-to.md)
+* [对本地文件使用内置的预设进行编码](job-input-from-local-file-how-to.md)
+* [生成自定义预设，以满足特定的方案或设备要求](customize-encoder-presets-how-to.md)
+
+Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编解码器](media-encoder-standard-formats.md)
+
+## <a name="common-live-streaming-workflow"></a>常见实时流式处理工作流
+
+下面是实时传送视频流工作流的步骤：
+
+1. 创建[实时事件](live-events-outputs-concept.md)。
+1. 获取引入 URL 并配置本地编码器以使用 URL 发送贡献源。
+1. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
+1. 创建一个新**资产**。
+1. 创建**实时输出**并使用创建的资产名称。<br/>**实时输出**会将流存档到**资产**中。
+1. 使用内置的**流式处理策略**类型创建**流式处理定位符**。<br/>如果想要加密内容，请查看[内容保护概述](content-protection-overview.md)。
+1. 列出流式处理定位器的路径，以取回要使用的 URL。
+1. 获取要从中流式传输的“流式处理终结点”的主机名。
+1. 创建面向不同的格式 （HLS、 Dash 和平滑流式处理） 的 Url。 **流式处理终结点**将负责为正确的清单并对所有这些不同格式的请求提供服务。
+
+实时事件可以是两种类型之一： 直通和实时编码。 有关实时传送视频流媒体服务 v3 中的详细信息，请参阅[实时传送视频流概述](live-streaming-overview.md)。
+
+下图显示了实时流式处理与动态打包工作流。
+
+![直通](./media/live-streaming/pass-through.svg)
+
+## <a name="dynamic-encryption"></a>动态加密
+
+**动态加密**使您能够动态加密使用 AES-128 或三个主要数字版权管理 (DRM) 系统的任何实时或按需内容：内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
+
+## <a name="dynamic-manifest"></a>动态清单
+
+使用动态筛选来控制跟踪、 格式、 比特率和演示文稿时间窗口，发送到参与方的数目。 有关详细信息，请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
+
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>支持的动态打包的视频编解码器
 
 动态打包支持 MP4 文件，其中包含使用编码的视频[H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) （mpeg-4 AVC 或 AVC1） [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC，hev1 或 hvc1)。
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>动态打包支持的音频编解码器
 
-动态打包支持 MP4 文件，其中包含使用编码的音频[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、 HE-AAC v1、 HE-AAC v2)， [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) （高级 ac-3 或 e-ac3） 或[DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (DTS速成版，DTS LBR、 DTS HD、 DTS HD 无损）。
+动态打包支持 MP4 文件，其中包含使用编码的音频[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、 HE-AAC v1、 HE-AAC v2)， [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（高级 ac-3 或 e-ac3） Dolby Atmos 或[DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)（DTS 速成版，DTS LBR、 DTS HD、 DTS HD 无损）。 标准像 MPEG DASH 协议，使用常见流格式 (CSF) 或常见媒体应用程序格式 (CMAF) 零碎的 MP4，以及通过 HTTP Live Streaming (HLS) 与 CMAF 支持 Dolby Atmos 内容的流式处理。
 
 > [!NOTE]
 > 动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。

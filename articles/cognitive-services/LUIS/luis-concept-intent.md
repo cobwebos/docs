@@ -1,7 +1,7 @@
 ---
-title: 用户意向
+title: 意向
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 意向表示用户想执行的任务或操作。 它是用户话语中表达的目的或目标。
+description: 单个意向表示任务或操作用户想要执行。 它是用户话语中表达的目的或目标。 定义一组意向，对应于用户希望在应用程序中执行的操作。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae1dd16e3296c11d6bce6ea623f590deaee8f65d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871347"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371105"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>关于 LUIS 应用中的意向的概念
 
@@ -31,7 +31,7 @@ ms.locfileid: "55871347"
  CheckWeather | “波士顿的天气怎样？” <br/> “显示本周末的天气预报” |
  无         | “给我一份饼干食谱”<br>“湖人赢了吗？” |
 
-所有应用程序均附带了预定义意向“[None](#none-intent-is-fallback-for-app)”，这是一个回退意向。 
+所有应用程序都具有预定义的目的，"[None](#none-intent-is-fallback-for-app)"，即回退的意图。 
 
 ## <a name="prebuilt-domains-provide-intents"></a>预生成域提供意向
 除了定义的意向外，还可以使用其中一个预生成域中的预生成意向。 有关详细信息，请参阅[在 LUIS 应用中使用预生成域](luis-how-to-use-prebuilt-domains.md)，了解如何从预生成域自定义意向以用于应用。
@@ -57,7 +57,11 @@ ms.locfileid: "55871347"
 
 [预生成域](luis-how-to-use-prebuilt-domains.md)具有带有陈述的意向。  
 
-## <a name="none-intent-is-fallback-for-app"></a>None 意向是应用的回退意向
+## <a name="none-intent"></a>None 意向
+
+**None**意图对每个应用程序非常重要且不应具有零个语音样本。
+
+### <a name="none-intent-is-fallback-for-app"></a>None 意向是应用的回退意向
 “None”意向是全方位或或回退意向。 它用于训练应用域（主题区域）中不重要的 LUIS 陈述。 None 意向应占应用程序中总陈述数的 10 % 到 20%。 不要将“None”意向留空。 
 
 ### <a name="none-intent-helps-conversation-direction"></a>None 意向有助于指导会话
@@ -76,6 +80,12 @@ None 意向是必需的意向，不能删除或重命名。
 
 ## <a name="negative-intentions"></a>反面意图 
 如果希望确定正面和反面意向，例如“我想要一辆车”和“我不想要一辆车”，则可以创建两个意图（一个正面意向和一个反面意向），并为每个意向添加适当的陈述。 或者，可以创建单个意向，并将两个不同的正面和反面术语标记为实体。  
+
+## <a name="intents-and-patterns"></a>意向和模式
+
+如果你有示例语音样本，部分或整个正则表达式来定义，请考虑使用[正则表达式实体](luis-concept-entity-types.md#regular-expression-entity)已与配对[模式](luis-concept-patterns.md)。 
+
+使用正则表达式的实体可保证数据提取，以便匹配模式。 模式匹配可保证返回准确的意图。 
 
 ## <a name="intent-balance"></a>意向平衡
 应用域意向应让每个意向的陈述数保持平衡。 请勿出现一个意向具有 10 个陈述，而另一个意向具有 500 个陈述的情况。 这样不平衡。 如果遇到这种情况，请查看具有 500 个陈述的意向，了解是否可将其中许多意向重新组织为[模式](luis-concept-patterns.md)。 
@@ -96,6 +106,8 @@ None 意向是必需的意向，不能删除或重命名。
 
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>请求具有大量意向的应用的帮助
 如果减少意向数或将意向划分给多个应用不起作用，请与支持部门联系。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

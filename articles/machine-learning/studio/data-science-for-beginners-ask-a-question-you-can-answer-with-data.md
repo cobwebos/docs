@@ -6,16 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: garyericson
-ms.author: garye
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.date: 01/03/2018
-ms.openlocfilehash: fcd79b94c1a32fa912f00df616787f8859005895
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+author: sdgilley
+ms.author: sgilley
+ms.date: 03/22/2019
+ms.openlocfilehash: 815aeb9ae6036f08fc87e41980a623e2be8414e5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820157"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371088"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列

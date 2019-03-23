@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1be51c4f5aede58a975dc9441b3bec7a83f7becd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 90fa56bb0e2044d24533c35a051d3f4b644e05b5
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900907"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349631"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -41,6 +41,7 @@ ms.locfileid: "57900907"
  美国中部 | centralus | https://centralus.cris.ai
  美国中北部 | northcentralus | https://northcentralus.cris.ai
  美国中南部 | southcentralus | https://southcentralus.cris.ai
+ 印度中部 | centralindia | https://centralindia.cris.ai
  东亚 | `eastasia` | https://eastasia.cris.ai
  东南亚 | `southeastasia` | https://southeastasia.cris.ai
  日本东部 | `japaneast` | https://japaneast.cris.ai

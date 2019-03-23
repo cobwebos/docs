@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/12/2019
+ms.date: 03/22/2019
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b475eae337b7e6a7e26b3e5a7518be0e461c9fa4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6a303319a3f87f684b72bcddd8d30cd4a2c60642
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170609"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351518"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -144,20 +144,25 @@ ms.locfileid: "58170609"
 此设置适用于所有浏览器。 但是，若要符合设备策略（如兼容设备要求），支持以下操作系统和浏览器：
 
 
-| 操作系统                     | 浏览器                            | 支持     |
-| :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer、Microsoft Edge、Chrome     | ![勾选标记][1] |
-| Windows 8/8.1        | Internet Explorer、Chrome           | ![勾选标记][1] |
-| Windows 7              | Internet Explorer、Chrome           | ![勾选标记][1] |
-| iOS                    | Safari、Intune Managed Browser      | ![勾选标记][1] |
-| Android                | Chrome、Intune Managed Browser      | ![勾选标记][1] |
-| Windows Phone          | Internet Explorer、Microsoft Edge             | ![勾选标记][1] |
-| Windows Server 2016    | Internet Explorer、Microsoft Edge             | ![勾选标记][1] |
-| Windows Server 2016    | Chrome                              | 即将支持 |
-| Windows Server 2012 R2 | Internet Explorer、Chrome           | ![勾选标记][1] |
-| Windows Server 2008 R2 | Internet Explorer、Chrome           | ![勾选标记][1] |
-| macOS                  | Chrome、Safari                      | ![勾选标记][1] |
+| 操作系统                     | 浏览器                                      |
+| :--                    | :--                                           |
+| Windows 10             | Internet Explorer、Microsoft Edge、Chrome     |
+| Windows 8/8.1        | Internet Explorer、Chrome                     |
+| Windows 7              | Internet Explorer、Chrome                     |
+| iOS                    | Safari、Intune Managed Browser                |
+| Android                | Chrome、Intune Managed Browser                |
+| Windows Phone          | Internet Explorer、Microsoft Edge             |
+| Windows Server 2016    | Internet Explorer、Microsoft Edge             |
+| Windows Server 2016    | Chrome                                        |
+| Windows Server 2012 R2 | Internet Explorer、Chrome                     |
+| Windows Server 2008 R2 | Internet Explorer、Chrome                     |
+| macOS                  | Chrome、Safari                                |
+ 
 
+
+#### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>为什么看提示在浏览器中的证书
+
+Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书与 Azure AD 注册设备时预配的设备。  当用户首次登录通过浏览器提示用户选择的证书。 使用浏览器之前，用户必须选择此证书。
 
 
 #### <a name="chrome-support"></a>Chrome 支持

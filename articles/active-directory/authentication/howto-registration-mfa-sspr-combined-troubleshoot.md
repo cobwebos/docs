@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f799b671e6216b402aa988aa66da4c2cfc44693
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d926f7312b62e788289939dfd81c236a33503b43
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317521"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370459"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>故障排除结合安全信息注册 （预览版）
 
@@ -31,7 +31,7 @@ ms.locfileid: "58317521"
 
 在 Azure AD 中将"身份验证方法"类别下的组合的注册记录的事件审核日志。
 
-![Azure AD 审核日志的目录中显示某些安全信息注册事件的新用户界面](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Azure AD 审核日志显示注册事件的接口](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
 下面列出了生成的组合注册的所有审核事件：
 
@@ -162,4 +162,4 @@ foreach($line in Get-Content $path)
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关组合注册自助服务密码重置和 Azure 多重身份验证的公共预览版的详细信息](concept-registration-mfa-sspr-combined.md)
+* [了解有关组合注册自助服务密码重置和 Azure 多重身份验证的公共预览版的详细信息](concept-registration-mfa-sspr-combined.md)

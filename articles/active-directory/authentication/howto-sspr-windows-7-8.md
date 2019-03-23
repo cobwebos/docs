@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a7752fac54f9dfb2f8fb0aecd3b6249c52c3bcf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 57d3e955059724756eb7102c1b9fbbf55ed203ab
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316348"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370442"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>如何：在 Windows 7、8 和 8.1 中启用密码重置
 
@@ -46,7 +46,7 @@ ms.locfileid: "58316348"
 1. 重新启动后，在登录屏幕中选择一个用户，然后单击“忘记了密码?” 启动密码重置工作流。
 1. 遵循屏幕上的步骤完成重置密码的工作流。
 
-![在 Windows 7 中单击“忘记了密码?”后的 自助密码重置工作流示例](media/howto-sspr-windows-7-8/windows-7-sspr.png)
+![在 Windows 7 中单击“忘记了密码?”后的 SSPR 流](media/howto-sspr-windows-7-8/windows-7-sspr.png)
 
 ### <a name="silent-installation"></a>无提示安装
 
@@ -67,13 +67,11 @@ ms.locfileid: "58316348"
 
 Azure AD 事件包括有关发生密码重置的 IP 地址和 ClientType 的信息。
 
-![Windows 7 登录屏幕示例 - Azure AD 审核日志中的密码重置](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
+![示例 Windows 7 中密码重置 Azure AD 审核日志](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
 
 如果需要记录更多的日志，可以更改计算机上的注册表项，以启用详细日志记录。 请仅出于故障排除的目的启用详细日志记录。
 
-```
-HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}
-```
+`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
 * 若要启用详细日志记录，请创建 REG_DWORD“EnableLogging”并将其设置为 1。
 * 若要禁用详细日志记录，请将 REG_DWORD“EnableLogging”更改为 0。
@@ -82,4 +80,4 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Provide
 
 ## <a name="next-steps"></a>后续步骤
 
-[使 Windows 10 用户能够在登录屏幕上重置其密码](tutorial-sspr-windows.md)
+* [使 Windows 10 用户能够在登录屏幕上重置其密码](tutorial-sspr-windows.md)

@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: c1a0e77f98d269185bc065c86a367c3ed6519fb5
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 28210048cd007fc10dcd4cf5e92577cbd121e2a3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961969"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368266"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘：差异和注意事项
 
@@ -68,7 +68,7 @@ Azure Stack 托管磁盘支持以下 API 版本：
 
 ## <a name="convert-to-managed-disks"></a>转换为托管磁盘
 
-可以使用以下脚本将转换为当前预配的 VM 从非托管磁盘。 将占位符替换为自己的值：
+可以使用以下脚本将当前预配的 VM 从非托管磁盘转换为托管磁盘。 将占位符替换成自己的值：
 
 ```powershell
 $subscriptionId = 'subid'
@@ -134,13 +134,27 @@ Azure Stack 支持托管映像，可让你在通用化 VM（非托管和托管�
 - 你有通用化的非托管 VM，后来想要使用托管磁盘。
 - 你有通用化的托管 VM，并想要创建多个类似的托管 VM。
 
-### <a name="migrate-unmanaged-vms-to-managed-disks"></a>将非托管 VM 迁移到托管磁盘
+### <a name="step-1-generalize-the-vm"></a>步骤 1：一般化 VM
+对于 Windows，请按照"通用化 Windows VM 使用 Sysprep"部分下面： https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep 对于 Linux，请在此处执行步骤 1: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm 
+
+注意：不要忘记将 VM 通用化。 VMProvisioningTimeout 错误将导致从从未正确通用化映像创建 VM。
+
+### <a name="step-2-create-the-managed-image"></a>步骤 2：创建托管的映像
+可以使用门户、 powershell 或 cli 来执行此操作。 此处请遵循 Azure 文档： https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource
+
+### <a name="step-3-choose-the-use-case"></a>步骤 3：选择的用例：
+#### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>案例 1：将非托管 VM 迁移到托管磁盘
+不要忘记将 VM 通用化正确执行此步骤前。 Post 泛化，此 VM 不能使用的进一步。 VMProvisioningTimeout 错误将导致从从未正确通用化映像创建 VM。 
 
 遵照[此处](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account)的说明，从存储帐户中的通用化 VHD 创建托管映像。 以后可以使用此映像创建接托管 VM。
 
-### <a name="create-managed-image-from-vm"></a>从 VM 创建托管映像
+#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>案例 2：从托管映像使用 Powershell 创建托管 VM
 
 使用[此处](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell)的脚本从现有托管磁盘 VM 创建映像之后，以下示例脚本从现有映像对象创建类似的 Linux VM：
+
+Azure Stack powershell 模块 1.7.0 或更高版本：按照说明进行操作[此处](../../virtual-machines/windows/create-vm-generalized-managed.md) 
+
+Azure Stack powershell 模块 1.6.0 或更低：
 
 ```powershell
 # Variables for common values
@@ -191,7 +205,7 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-有关详细信息，请参阅 Azure 托管映像文章：[在 Azure 中创建通用化 VM 的托管映像](../../virtual-machines/windows/capture-image-resource.md)和[从托管映像创建 VM](../../virtual-machines/windows/create-vm-generalized-managed.md)。
+此外可以使用门户从托管映像创建 VM。 有关详细信息，请参阅 Azure 托管映像文章：[在 Azure 中创建通用化 VM 的托管映像](../../virtual-machines/windows/capture-image-resource.md)和[从托管映像创建 VM](../../virtual-machines/windows/create-vm-generalized-managed.md)。
 
 ## <a name="configuration"></a>配置
 

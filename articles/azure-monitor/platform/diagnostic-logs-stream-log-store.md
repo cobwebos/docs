@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309309"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351537"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>将 Azure 诊断日志流式传输到 Log Analytics
 
@@ -100,6 +100,39 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>如何在 Log Analytics 中查询数据？
 
 在门户的“日志搜索”边栏选项卡中或作为 Log Analytics 的一部分的高级分析体验中，可以查询诊断日志作为 AzureDiagnostics 表下日志管理解决方案的一部分。 此外，还可以安装 [Azure 资源的多个解决方案](../../azure-monitor/insights/solutions.md)，以立即深入了解发送到 Log Analytics 的日志数据。
+
+### <a name="known-limitation-column-limit-in-azurediagnostics"></a>已知的限制： AzureDiagnostics 列限制
+因为许多资源发送的数据类型发送到同一个表 (_AzureDiagnostics_)，此表的架构是超级一组的收集的所有不同的数据类型的架构。 例如，如果创建了以下数据类型的集合的诊断设置后，所有正在发送到同一个工作区：
+- 审核日志的资源 1 （无架构，其中包括列 A、 B 和 C）  
+- 错误日志的资源 2 （具有架构，其中包括的列 D、 E 和 F）  
+- 将流日志数据的资源 3 （具有包含列 G，H，和我的架构）  
+ 
+AzureDiagnostics 表将用一些示例数据，如下所示，查找：  
+ 
+| ResourceProvider | 类别 | A | B | C | D | E | F | G | H | I |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+| Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+| Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+| Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+| ... |
+ 
+没有任何给定的 Azure 日志表不具有 500 多个列显式限制。 一旦达到，会在引入时中删除任何包含数据与前 500 个之外的任何列的行。 AzureDiagnostics 表是特别容易为受影响的此限制。 这通常发生在发送到同一个工作区的大量不同的数据源发送到同一个工作区，因为或几个非常详细的数据源。 
+ 
+#### <a name="azure-data-factory"></a>Azure 数据工厂  
+Azure 数据工厂中，由于一组非常详细的日志，而是已知会特别受此限制的资源。 具体而言：  
+- *针对你的管道中的任何活动定义的用户参数*： 将为每个唯一命名的用户参数与任何活动创建一个新列。 
+- *活动输入和输出*： 这些不同活动活动并生成大量的由于其详细特性的列。 
+ 
+作为与更广泛的解决方法建议，建议将 ADF 日志隔离到其自己的工作区以影响其他日志类型，在您的工作区中收集这些日志的可能性降到最低。 我们希望策划准备了日志用于 Azure 数据工厂可按年 4 月中旬 2019年。
+ 
+#### <a name="workarounds"></a>解决方法
+短期来看，直到重新定义的 500 列限制，建议将隔离到单独的工作区以减少可能达到的限制的详细数据类型。
+ 
+更长的时间，Azure 诊断将会抛弃统一、 稀疏架构到每个数据类型，每个单独的表对动态类型的支持与配对，这样可以大大提高数据传入 Azure 日志，通过 Azure 诊断机制的可用性。 你可以已经看到此选择 Azure 资源类型，例如[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)或[Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor)日志。 请查找有关在 Azure 上支持这些组织有序的日志中的新资源类型的消息[的 Azure 更新](https://azure.microsoft.com/updates/)博客 ！
+
 
 ## <a name="next-steps"></a>后续步骤
 

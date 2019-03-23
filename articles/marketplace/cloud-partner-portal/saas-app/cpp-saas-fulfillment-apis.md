@@ -14,19 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9c3fbe7cd7ebd41f59be360f40d66b8d38dbce5e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6084687f54be265e88e6755e7d082da7c32eda1b
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57319272"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349512"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS 执行 Api
 
 SaaS 履行 API，独立软件供应商 (Isv) 可以将其 SaaS 应用程序集成在 Azure marketplace 中销售。 此 API 使 ISV 应用程序可以参与所有启用的商务通道： 直接、 合作伙伴主导式 （经销商） 和字段导致。  此 API 是事务 SaaS 提供了在 Azure Marketplace 上列出的要求。
-
-此 API 的当前版本为版本 2，这应该用于所有新的 SaaS 提供。  第 1 版 API 已过时，维护以支持现有产品/服务。
-
 
 ## <a name="business-model-support"></a>业务模型支持
 
@@ -40,4 +37,4 @@ SaaS 履行 API，独立软件供应商 (Isv) 可以将其 SaaS 应用程序集�
 
 ## <a name="next-steps"></a>后续步骤
 
-使用此接口的最新版本进行开发：[SaaS 履行 API 版本 2](./cpp-saas-fulfillment-api-v2.md)。
+此接口可用于开发：[SaaS 履行 API 版本 2](./cpp-saas-fulfillment-api-v2.md)。

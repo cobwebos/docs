@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43c21fb3c3e7c00ecdbadb1e730ba5ce303dc869
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 36172850c345fc190c3326413f2883dc2b070e98
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312183"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58367883"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 身份验证和 Azure 多重身份验证服务器
 
@@ -29,9 +29,10 @@ ms.locfileid: "58312183"
 > [!NOTE]
 > 不支持使用此功能为 Windows Server 2012 R2 上的终端服务提供安全保障。
 
-## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>若要使用 Windows 身份验证保护应用程序，请使用以下过程。
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>若要保护的应用程序使用 Windows 身份验证，使用以下过程
+
 1. 在 Azure 多重身份验证服务器中，单击“Windows 身份验证”图标。
-   ![Windows 身份验证](./media/howto-mfaserver-windows/windowsauth.png)
+   ![在 MFA 服务器的 Windows 身份验证](./media/howto-mfaserver-windows/windowsauth.png)
 2. 选中“启用 Windows 身份验证”复选框。 默认情况下，此框处于未选中状态。
 3. 使用“应用程序”选项卡，管理员可以为 Windows 身份验证配置一个或多个应用程序。
 4. 选择服务器或应用程序 - 指定是否启用服务器/应用程序。 单击“确定”。

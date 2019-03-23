@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 6e4a83eb8b3488c4ce2816151ca31b4a594dd742
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ce66d44c0ddb84ed8c2908d02b8062195d6b461d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338626"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351008"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure 来宾 OS 可支持性和停用策略
 本页面上的信息与 Azure 来宾操作系统（[来宾 OS](cloud-services-guestos-update-matrix.md)）相关。来宾 OS 仅适用于云服务辅助角色和 Web 角色 (PaaS)。 而不适用于虚拟机 (IaaS)。
@@ -57,7 +57,7 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 
 一段时间后"禁用"，来宾 OS 版本"到期"，仍在运行该过期的版本的任何安装都与安全和漏洞问题。 通常情况下，过期是分批，因此从禁用到过期期间可以各不相同。
 
-配置其服务，以手动更新来宾操作系统的客户应确保其部署在受支持的来宾 OS 上运行。 如果服务配置为自动更新来宾 OS，基础平台将确保符合性，并将升级到最新的来宾操作系统。
+配置其服务，以手动更新来宾操作系统的客户应确保其服务正在运行受支持的来宾 OS 上。 如果服务配置为自动更新来宾 OS，基础平台将确保符合性，并将升级到最新的来宾操作系统。
 
 这些期间可能会延长，这由 Microsoft 决定，以便于客户过渡。 会在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中通告所有更改。
 

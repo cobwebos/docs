@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂映射数据流数据集
-description: Azure 数据工厂映射数据流有 sepecific 数据集兼容性
+description: Azure 数据工厂映射数据流有特定的数据集兼容性
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ad6cfdad519ab3901c58979970ea07439b3106e9
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 4e36e96947e6a8595230023065eb9f44a5a1f3d2
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726917"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371309"
 ---
 # <a name="mapping-data-flow-datasets"></a>映射数据流数据集
 
@@ -42,6 +42,12 @@ ms.locfileid: "57726917"
 ## <a name="import-schemas"></a>导入架构
 
 导入数据流数据集的架构时，将看到“导入架构”按钮。 单击该按钮将显示两个选项：从源导入或从本地文件导入。 在大多数情况下，将直接从源导入架构。 但是，如果有现成的架构文件（Parquet 文件或带有标头的 CSV），则可以指向该本地文件，数据工厂将根据该架构文件定义架构。
+
+## <a name="create-new-table"></a>创建新表
+
+在数据流中，可以让 ADF 通过接收器转换具有新的表名称中设置数据集在目标数据库中创建新的表定义。 在 SQL 数据集，表名称下面单击"编辑"并输入新的表名称。 然后，在接收器转换中，打开"允许架构偏差"。 Seth 的"导入架构"设置为无。
+
+![源转换架构](media/data-flow/dataset2.png "SQL 架构")
 
 ## <a name="delimited-text-dataset"></a>带分隔符的文本数据集
 

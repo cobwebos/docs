@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e4a79d7528f2e814e6370a5ead7d77a19057ebbb
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d8790eac93b288d5d5254f188fe5c901b5d5df14
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311265"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351484"
 ---
 # <a name="media-services-concepts"></a>媒体服务概念
 
@@ -102,6 +102,8 @@ ms.locfileid: "58311265"
 
 - [处理事件网格事件](reacting-to-media-services-events.md)
 - [架构](media-services-event-schemas.md)
+- [指标和诊断日志](media-services-metrics-diagnostic-logs.md)
+- [诊断日志架构](media-services-diagnostic-logs-schema.md)
 
 ## <a name="player-clients"></a>播放器客户端
 

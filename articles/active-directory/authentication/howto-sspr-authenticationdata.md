@@ -11,18 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 580c9080bb2b019e120ea57e5fe4444a71c24e76
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314784"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371360"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
 若要部署 Azure Active Directory (Azure AD) 自助密码重置 (SSPR)，身份验证数据必须存在。 某些组织让其用户输入其身份验证数据本身。 但是，许多组织倾向于与 Active Directory 中已存在的数据同步。 在以下情况下，无需用户交互已同步的数据就会提供给 Azure AD 和 SSPR：
-   * 在本地目录中正确设置数据的格式。
-   * [使用快速设置配置 Azure AD Connect](../hybrid/how-to-connect-install-express.md)。
+
+* 在本地目录中正确设置数据的格式。
+* [使用快速设置配置 Azure AD Connect](../hybrid/how-to-connect-install-express.md)。
 
 若要正常工作，电话号码必须采用“+国家/地区代码 电话号码”格式，例如，+1 4255551234。
 
@@ -46,7 +47,7 @@ ms.locfileid: "58314784"
 
 全局管理员可以手动为用户设置身份验证联系人信息，如以下屏幕截图中所示。
 
-![联系人][Contact]
+![身份验证在 Azure AD 中联系人的用户信息][Contact]
 
 如果“电话”字段已填充且在 SSPR 策略中启用了“移动电话”，则用户将在密码重置注册页和密码重置工作流中看到该号码。
 
@@ -84,7 +85,7 @@ ms.locfileid: "58314784"
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>使用 PowerShell 版本 1 设置身份验证数据
 
-```
+```PowerShell
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
@@ -96,7 +97,7 @@ Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("emai
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>使用 PowerShell 版本 1 读取身份验证数据
 
-```
+```PowerShell
 Connect-MsolService
 
 Get-MsolUser -UserPrincipalName user@domain.com | select AlternateEmailAddresses
@@ -110,7 +111,7 @@ Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,Mobi
 
 若要在使用 PowerShell 版本 1 时读取**身份验证电话**和**身份验证电子邮件**，请使用以下命令：
 
-```
+```PowerShell
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select PhoneNumber
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
@@ -122,7 +123,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 若要从支持安装模块的最新版本 PowerShell 快速安装，请运行以下命令。 （第一行检查是否已安装该模块。）
 
-```
+```PowerShell
 Get-Module AzureADPreview
 Install-Module AzureADPreview
 Connect-AzureAD
@@ -130,7 +131,7 @@ Connect-AzureAD
 
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>使用 PowerShell 版本 2 设置身份验证数据
 
-```
+```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
@@ -142,7 +143,7 @@ Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mo
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>使用 PowerShell 版本 2 读取身份验证数据
 
-```
+```PowerShell
 Connect-AzureAD
 
 Get-AzureADUser -ObjectID user@domain.com | select otherMails
