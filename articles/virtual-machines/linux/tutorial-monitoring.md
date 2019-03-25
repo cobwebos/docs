@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7916995d2630e9b33e3695c5c505925851ba4934
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fba54fa1d2ca6675b41728b460a07515b05758f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092740"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531583"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视和更新 Azure 中的 Linux 虚拟机
 
@@ -189,7 +189,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 ![启用“更新管理解决方案”](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
-启用解决方案最多可能需要 15 分钟。 在此期间，不应关闭浏览器窗口。 启用该解决方案后，VM 中缺少的更新信息会流向 Log Analytics。 这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
+启用解决方案最多可能需要 15 分钟。 在此期间，不应关闭浏览器窗口。 启用该解决方案后，VM 中缺少的更新信息会流向 Azure Monitor 日志。 这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
 
 ### <a name="view-update-assessment"></a>查看更新评估
 
@@ -294,7 +294,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 在 VM 连接到的 Log Analytics 工作区中，也可通过[丰富的查询语言](../../azure-monitor/log-query/log-query-overview.md)检索、合并和分析收集的数据。 
 
-![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Log Analytics 工作区](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>后续步骤
 

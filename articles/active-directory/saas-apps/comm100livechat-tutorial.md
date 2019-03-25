@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 0340d7f3-ab54-49ef-b77c-62a0efd5d49c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 873b9d89889317a5c406313811c74286caf7d0e1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 203c082275dc75a7dcf948eb42a383300955f355
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882036"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858093"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>教程：Azure Active Directory 与 Comm100 Live Chat 的集成
 
@@ -154,29 +154,29 @@ ms.locfileid: "56882036"
 
 ### <a name="configure-comm100-live-chat-single-sign-on"></a>配置 Comm100 Live Chat 单一登录
 
-9. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Comm100 Live Chat。
+1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Comm100 Live Chat。
 
-10. 单击页面右上角的“我的帐户”。
+1. 单击页面右上角的“我的帐户”。
 
-    ![Comm100 Live Chat - 我的帐户](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+   ![Comm100 Live Chat - 我的帐户](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
 
-11. 在菜单左侧单击“安全性”，然后单击“代理单一登录”。
+1. 在菜单左侧单击“安全性”，然后单击“代理单一登录”。
 
-    ![Comm100 Live Chat - 安全性](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![Comm100 Live Chat - 安全性](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
-12. 在“代理单一登录”页上，执行以下步骤：
+1. 在“代理单一登录”页上，执行以下步骤：
 
-    ![Comm100 Live Chat - 安全性](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
+   ![Comm100 Live Chat - 安全性](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
 
-    a. 复制第一个突出显示的链接，并将其粘贴到 Azure 门户上“Comm100 Live Chat 域和 URL”部分中的“单一登录 URL”文本框内。
+   a. 复制第一个突出显示的链接，并将其粘贴到 Azure 门户上“Comm100 Live Chat 域和 URL”部分中的“单一登录 URL”文本框内。
 
-    b. 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+   b. 在“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    c. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+   c. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    d. 单击“选择文件”，将从 Azure 门户下载的 base-64 编码证书上传到“证书”中。
+   d. 单击“选择文件”，将从 Azure 门户下载的 base-64 编码证书上传到“证书”中。
 
-    e. 单击“保存更改”
+   e. 单击“保存更改”
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -196,7 +196,7 @@ ms.locfileid: "56882036"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -249,7 +249,7 @@ ms.locfileid: "56882036"
 
     ![Comm100 Live Chat - 新建代理](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
 
-    a. a. 在“电子邮件”文本框中，输入用户的电子邮件，例如 **Brittasimon@contoso.com**。
+    a. a. 在“电子邮件”文本框中，输入用户的电子邮件，例如 Brittasimon\@contoso.com。
 
     b. 在“名字”文本框中，输入用户的名字，如 Britta。
 

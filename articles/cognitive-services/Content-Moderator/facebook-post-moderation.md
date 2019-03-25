@@ -1,49 +1,55 @@
 ---
-title: 教程：Facebook 内容审核 - Azure 内容审查器
+title: 教程：审查 Facebook 内容 - 内容审查器
 titlesuffix: Azure Cognitive Services
 description: 在本教程中，你将了解如何使用基于机器学习的内容审查器帮助审查 Facebook 帖子和评论。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 86c89164e3ccd5bf5df303b98cf6d336f3916e2b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 01/18/2019
+ms.author: pafarley
+ms.openlocfilehash: 662eca2a727f3112f169ab8d669bf18c81700275
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878045"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871022"
 ---
-# <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>教程：使用内容审查器执行 Facebook 内容审核
+# <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查 Facebook 帖子和评论
 
-在本教程中，你将了解如何使用基于机器学习的内容审查器帮助审查 Facebook 帖子和评论。
+本教程介绍如何使用 Azure 内容审查器帮助审查 Facebook 页面上的帖子和评论。 Facebook 会将访客发布的内容发送到内容审查器服务。 然后，内容审查器工作流会根据内容评分和阈值发布内容，或者在评审工具中创建评审。 有关此方案的可行示例，请参阅[版本 2017 演示视频](https://channel9.msdn.com/Events/Build/2017/T6033)。
 
-教程将指导完成以下步骤：
+本教程演示如何：
 
-1. 创建内容审查器团队。
-2. 创建 Azure Functions，用于侦听来自内容审查器和 Facebook 的 HTTP 事件。
-3. 创建 Facebook 页面和应用，并将其连接到内容审查器。
+> [!div class="checklist"]
+> * 创建内容审查器团队。
+> * 创建 Azure Functions，用于侦听来自内容审查器和 Facebook 的 HTTP 事件。
+> * 使用 Facebook 应用程序将 Facebook 页面链接到内容审查器。
 
-完成操作后，Facebook 将向内容审查器发送访问者发布的内容。 根据匹配阈值，内容审查器工作流将发布内容，或在评审工具中创建评审。 
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-下图显示了解决方案的构建基块。
+此图演示了此方案的每个组件：
 
-![Facebook 帖子审查](images/tutorial-facebook-moderation.png)
+![通过“FBListener”从 Facebook 接收信息，并通过“CMListener”发送信息的内容审查器示意图](images/tutorial-facebook-moderation.png)
 
-## <a name="create-a-content-moderator-team"></a>创建内容审查器团队
+## <a name="prerequisites"></a>先决条件
 
-请参阅[在 Web 上试用内容审查器](quick-start.md)快速入门来注册内容审查器并创建团队。
+- 内容审查器的订阅密钥。 遵照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器服务并获取密钥。
+- 一个 [Facebook 帐户](https://www.facebook.com/)。
 
-## <a name="configure-image-moderation-workflow-threshold"></a>配置图像审查工作流（阈值）
+## <a name="create-a-review-team"></a>创建评审团队
 
-请参阅[工作流](review-tool-user-guide/workflows.md)页面，以配置自定义图像工作流（阈值）。 注意工作流名称。
+请参阅[在 Web 上试用内容审查器](quick-start.md)快速入门，获取有关如何注册[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)和创建评审团队的说明。 记下“凭据”页上的“团队 ID”值。
 
-## <a name="3-configure-text-moderation-workflow-threshold"></a>3.配置文本审查工作流（阈值）
+## <a name="configure-image-moderation-workflow"></a>配置图像审查工作流
 
-使用[工作流](review-tool-user-guide/workflows.md)页面上的类似步骤，配置自定义文本阈值和工作流。 注意工作流名称。
+请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南，以创建自定义图像工作流。 这样，内容审查器便可以自动检查 Facebook 上的图像，并将其中的某些图像发送到评审工具。 记下工作流的**名称**。
+
+## <a name="configure-text-moderation-workflow"></a>配置文本审查工作流
+
+同样请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南；这一次需创建自定义文本工作流。 这样，内容审查器便可以自动检查文本内容。 记下工作流的**名称**。
 
 ![配置文本工作流](images/text-workflow-configure.PNG)
 
@@ -53,59 +59,57 @@ ms.locfileid: "55878045"
 
 ## <a name="create-azure-functions"></a>创建 Azure Functions
 
-登录 [Azure 管理门户](https://portal.azure.com/)，以创建 Azure Functions。 执行以下步骤:
+登录到 [Azure 门户](https://portal.azure.com/)并执行以下步骤：
 
 1. 按照 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) 页面所示，创建 Azure Function App。
-2. 打开新创建的 Function App。
-3. 在 App 中，导航到“平台功能”->“应用程序设置”
-4. 定义以下[应用程序设置](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings)：
+2. 打开新建的函数应用。
+3. 在该应用中，转到“平台功能”选项卡并选择“应用程序设置”。 在下一页的“应用程序设置”部分，滚动到列表底部并单击“添加新设置”。 添加以下键/值对
+    
+    | 应用设置名称 | 值   | 
+    | -------------------- |-------------|
+    | cm:TeamId   | 内容审查器 TeamId  | 
+    | cm:SubscriptionKey | 内容审查器的订阅密钥 - 请参阅[凭据](review-tool-user-guide/credentials.md) | 
+    | cm:Region | 内容审查器的区域名称，不含空格。 请参阅前面的说明。 |
+    | cm:ImageWorkflow | 对图像运行的工作流的名称 |
+    | cm:TextWorkflow | 对文本运行的工作流的名称 |
+    | cm:CallbackEndpoint | 在本指南后面部分创建的 CMListener Function App 的 URL |
+    | fb:VerificationToken | 机密令牌，还用于订阅 Facebook 源事件 |
+    | fb:PageAccessToken | Facebook 图形 API 访问令牌不会过期，并允许函数代表你隐藏/删除帖子。 |
 
-> [!NOTE]
-> cm:Region 应为区域名称（无空格）。
-> 例如，应为 westeurope，而不是 West Europe；应为 westcentralus，而不是 West Central US，以此类推。
->
+    单击页面顶部的“保存”按钮。
 
-| 应用设置 | 说明   | 
-| -------------------- |-------------|
-| cm:TeamId   | 内容审查器 TeamId  | 
-| cm:SubscriptionKey | 内容审查器的订阅密钥 - 请参阅[凭据](review-tool-user-guide/credentials.md) | 
-| cm:Region | 内容审查器的区域名称，不含空格。 请参阅前面的说明。 |
-| cm:ImageWorkflow | 对图像运行的工作流的名称 |
-| cm:TextWorkflow | 对文本运行的工作流的名称 |
-| cm:CallbackEndpoint | 在本指南后面部分创建的 CMListener Function App 的 URL |
-| fb:VerificationToken | 机密令牌，还用于订阅 Facebook 源事件 |
-| fb:PageAccessToken | Facebook 图形 API 访问令牌不会过期，并允许函数代表你隐藏/删除帖子。 |
+1. 使用左窗格中的 **+** 按钮打开“新建函数”窗格。
 
-5. 创建名为 FBListener 的新 HttpTrigger-CSharp 函数。 此函数接收来自 Facebook 的事件。 通过执行以下步骤创建此函数：
+    ![Azure Functions 窗格，其中已突出显示“添加函数”按钮。](images/new-function.png)
 
-    1. 保持 [Azure Functions 创建](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal)页处于打开状态，以供参考。
-    2. 单击“+”创建新函数。
-    3. 选择“开始使用自己的/自定义函数”选项，而非内置模板。
-    4. 单击显示为 HttpTrigger-CSharp 的磁贴。
-    5. 输入名称 FBListener。 “授权级别”字段应设置为“函数”。
-    6. 单击“创建”。
-    7. 将 run.csx 的内容替换为 [FbListener/run.csx](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FbListener/run.csx) 的内容。
+    然后单击页面顶部的“+ 新建函数”。 此函数接收来自 Facebook 的事件。 通过执行以下步骤创建此函数：
 
-6. 创建名为 CMListener 的新 HttpTrigger-CSharp 函数。 此函数接收来自内容审查器的事件。 按照以下步骤创建此函数。
+    1. 单击显示了“HTTP 触发器”的磁贴。
+    1. 输入名称 FBListener。 “授权级别”字段应设置为“函数”。
+    1. 单击“创建”。
+    1. 将 **run.csx** 的内容替换为 **FbListener/run.csx** 中的内容。
 
-    1. 保持 [Azure Functions 创建](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal)页处于打开状态，以供参考。
-    2. 单击“+”创建新函数。
-    3. 选择“开始使用自己的/自定义函数”选项，而非内置模板。
-    4. 单击显示 HttpTrigger-CSharp 的磁贴
-    5. 输入名称 CMListener。 “授权级别”字段应设置为“函数”。
-    6. 单击“创建”。
-    7. 将 run.csx 的内容替换为 [CMListener/run.csx](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/CmListener/run.csx) 的内容。
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-160)]
+
+1. 创建名为 **CMListener** 的新“HTTP 触发器”函数。 此函数接收来自内容审查器的事件。 将 **run.csx** 的内容替换为 **CMListener/run.csx** 中的内容。
+
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-106)]
+
+---
 
 ## <a name="configure-the-facebook-page-and-app"></a>配置 Facebook 页面和应用
 1. 创建 Facebook 应用。
 
+    ![Facebook 开发人员页面](images/facebook-developer-app.png)
+
     1. 导航到 [Facebook 开发人员网站](https://developers.facebook.com/)
     2. 单击“我的应用”。
     3. 添加新应用。
-    4. 选择“Webhook”->“开始”
-    5. 选择“页面”->“订阅此主题”
-    6. 提供 FBListener URL 作为回叫 URL，并在“Function App 设置”下提供配置的“验证令牌”
-    7. 订阅后，向下滚动到源，然后选择“订阅”。
+    1. 为应用命名
+    1. 选择“Webhook”->“设置”
+    1. 在下拉菜单中选择“页面”，然后选择“订阅此对象”
+    1. 提供 FBListener URL 作为回叫 URL，并在“Function App 设置”下提供配置的“验证令牌”
+    1. 订阅后，向下滚动到源，然后选择“订阅”。
 
 2. 创建 Facebook 页面。
 
@@ -134,29 +138,22 @@ ms.locfileid: "55878045"
         2. [Postman 环境](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. 更新以下环境变量：
     
-    | 密钥 | 值   | 
-    | -------------------- |-------------|
-    | appId   | 在此处插入你的 Facebook 应用标识符  | 
-    | appSecret | 在此处插入 Facebook 应用的机密 | 
-    | short_lived_token | 插入在上一步中生成的短期用户访问令牌 |
+        | 密钥 | 值   | 
+        | -------------------- |-------------|
+        | appId   | 在此处插入你的 Facebook 应用标识符  | 
+        | appSecret | 在此处插入 Facebook 应用的机密 | 
+        | short_lived_token | 插入在上一步中生成的短期用户访问令牌 |
     4. 现在，运行集合中列出的 3 个 API： 
         1. 选择“生成长期访问令牌”并单击“发送”。
         2. 选择“获取用户 ID”并单击“发送”。
         3. 选择“获取永久页面访问令牌”并单击“发送”。
     5. 复制响应中的 access_token 值并将其分配给应用设置，fb:PageAccessToken。
 
-就这么简单！
-
-解决方案将向内容审查器发送 Facebook 页上发布的所有图像和文本。 将调用之前配置的工作流。 未通过工作流中所定义条件的内容将进入评审工具内接受评审。 其余内容将发布。
-
-## <a name="license"></a>许可
-
-所有 Microsoft 认知服务 SDK 和示例均获得 MIT 许可证的许可。 有关详细信息，请参阅[许可证](https://microsoft.mit-license.org/)。
+解决方案将向内容审查器发送 Facebook 页上发布的所有图像和文本。 然后会调用前面配置的工作流。 不符合工作流中所定义条件的内容将传入评审工具进行评审。 剩余的内容会自动发布。
 
 ## <a name="next-steps"></a>后续步骤
 
-1. 观看 Microsoft Build 2017 中此解决方案的[演示（视频）](https://channel9.msdn.com/Events/Build/2017/T6033)。
-1. [GitHub 上的 Facebook 示例](https://github.com/MicrosoftContentModerator/samples-fbPageModeration)
-1. https://docs.microsoft.com/azure/azure-functions/functions-create-github-webhook-triggered-function
-2. http://ukimiawz.github.io/facebook/2015/08/12/webhook-facebook-subscriptions/
-3. http://stackoverflow.com/questions/17197970/facebook-permanent-page-access-token
+在本教程中，你已设置一个程序用于分析产品图像，以便按产品类型对其进行标记，并使评审团队能够在内容审查方面做出明智的决策。 接下来，请了解有关图像审查的详细信息。
+
+> [!div class="nextstepaction"]
+> [图像审查](./image-moderation-api.md)

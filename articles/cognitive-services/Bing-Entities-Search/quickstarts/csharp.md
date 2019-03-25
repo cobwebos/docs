@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: b61db97cec77fc724933c2b4e7d3fa7f7afc0ab6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 09eed87dce65325a5b3466346b073a0d786bfb89
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884947"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861445"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>快速入门：使用 C# 向必应实体搜索 REST API 发送搜索请求
 
@@ -28,7 +28,12 @@ ms.locfileid: "55884947"
 
 * 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
 * [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
-* 如果使用的是 Linux/MacOS，则可使用 [Mono](http://www.mono-project.com/) 运行此应用程序。
+    * 若要在 Visual studio 中安装 NuGet 包，请执行以下操作：
+        1. 右键单击解决方案管理器
+        2. 单击“管理 NuGet 包”。
+        3. 搜索 **newtonsoft.json** 并安装该包
+
+* 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
@@ -38,6 +43,7 @@ ms.locfileid: "55884947"
 1. 在 Visual Studio 中创建一个新的 C# 控制台解决方案。 然后将以下命名空间添加到主代码文件。
     
     ```csharp
+    using Newtonsoft.Json;
     using System;
     using System.Net.Http;
     using System.Text;
@@ -68,25 +74,26 @@ ms.locfileid: "55884947"
 
 1. 在该类中创建一个名为 `Search()` 的函数。 创建一个新的 `HttpClient` 对象，并将你的订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
 
-    1. 通过将主机和路径进行组合来构造你的请求的 URI。 然后，添加你的市场，并对你的查询进行 URL 编码。
-    2. 等待 `client.GetAsync()` 获得 HTTP 响应，然后通过等待 `ReadAsStringAsync()` 来存储 JSON 响应。
-    3. 将字符串输出到控制台。
+   1. 通过将主机和路径进行组合来构造你的请求的 URI。 然后，添加你的市场，并对你的查询进行 URL 编码。
+   2. 等待 `client.GetAsync()` 获得 HTTP 响应，然后通过等待 `ReadAsStringAsync()` 来存储 JSON 响应。
+   3. 使用 `JsonConvert.DeserializeObject()` 设置 JSON 字符串的格式并将其输出到控制台。
 
-    ```csharp
-    async static void Search()
-    {
-        //...
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+      ```csharp
+      async static void Search()
+      {
+       //...
+       HttpClient client = new HttpClient();
+       client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-        string uri = host + path + "?mkt=" + market + "&q=" + System.Net.WebUtility.UrlEncode(query);
+       string uri = host + path + "?mkt=" + market + "&q=" + System.Net.WebUtility.UrlEncode(query);
 
-        HttpResponseMessage response = await client.GetAsync(uri);
+       HttpResponseMessage response = await client.GetAsync(uri);
 
-        string contentString = await response.Content.ReadAsStringAsync();
-        Console.WriteLine(JsonPrettyPrint(contentString));
-    }
-    ```
+       string contentString = await response.Content.ReadAsStringAsync();
+       dynamic parsedJson = JsonConvert.DeserializeObject(contentString);
+       Console.WriteLine(parsedJson);
+      }
+      ```
 
 2. 在应用程序的 main 方法中调用 `Search()` 函数。
     
@@ -139,7 +146,7 @@ ms.locfileid: "55884947"
         "_type": "Restaurant",
         "webSearchUrl": "https://www.bing.com/search?q=Pickles+and+Preserves...",
         "name": "Munson's Pickles and Preserves Farm",
-        "url": "http://www.princi.com/",
+        "url": "https://www.princi.com/",
         "entityPresentationInfo": {
           "entityScenario": "ListItem",
           "entityTypeHints": [

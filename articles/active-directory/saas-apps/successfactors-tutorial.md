@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 32bd8898-c2d2-4aa7-8c46-f1f5c2aa05f1
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c964d4e070bafc6e8e66535c3963d82803d3cd1e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2281fb046ca9b96aa5800150d630b9086236c5c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865767"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57846916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>教程：Azure Active Directory 与 SuccessFactors 集成
 
@@ -106,6 +106,7 @@ ms.locfileid: "56865767"
     ![SuccessFactors 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -114,6 +115,7 @@ ms.locfileid: "56865767"
     | `https://<companyname>.sapsf.eu`|
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
+
     | |
     |--|
     | `https://www.successfactors.com/<companyname>`|
@@ -127,6 +129,7 @@ ms.locfileid: "56865767"
     | `https://www.successfactors.cn/<companyname>`|
 
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：
+
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -242,7 +245,7 @@ ms.locfileid: "56865767"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

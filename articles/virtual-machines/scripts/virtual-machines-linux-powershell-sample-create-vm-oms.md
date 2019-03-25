@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell 脚本示例 - Log Analytics | Microsoft Docs
-description: Azure PowerShell 脚本示例 - Log Analytics
+title: Azure PowerShell 脚本示例 - Azure Monitor 日志 | Microsoft Docs
+description: Azure PowerShell 脚本示例 - Azure Monitor 日志
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 33dbaea4b4658e189555f39ddeff9d33c7b48112
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e32729ba9a8ae4e10fe696c130b32b76bcf8fd2c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984046"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536419"
 ---
-# <a name="create-a-log-analytics-monitored-vm-with-powershell"></a>使用 PowerShell 创建一个 Log Analytics 监视的 VM
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>使用 PowerShell 创建 Azure Monitor VM
 
 此脚本创建一个 Azure 虚拟机，安装 Log Analytics 代理，并将系统注册到 Log Analytics 工作区。 运行脚本后，该虚拟机会显示在控制台中。
 

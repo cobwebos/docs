@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: 30f6d08594bdf2e5d78bc8c7881a135d6e57f397
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852183"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399682"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>载入 Azure Sentinel 预览
 
@@ -75,7 +75,6 @@ Azure Sentinel 通过连接到服务并将事件和日志转发给 Azure Sentine
 在底部，Azure Sentinel 提供的建议为哪些仪表板应安装每个连接器使你可以立即获取有趣见解数据。 <br> 按照安装说明进行操作或[，请参阅相关的连接指南](connect-data-sources.md)有关详细信息。 有关数据连接器的信息，请参阅[连接 Microsoft 服务](connect-data-sources.md)。
 
 后数据源连接，你的数据启动到 Azure Sentinel 流式处理，并已准备就绪，若要开始使用。 您可以查看中的日志[的内置仪表板](quickstart-get-visibility.md)，并开始构建到 Log Analytics 中的查询[调查数据](tutorial-investigate-cases.md)。
-
 
 
 

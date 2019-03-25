@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/04/2019
+ms.date: 1/4/2019
 ms.author: jowargo
-ms.openlocfilehash: 5d287bfc38f7bbdda7aab928a5fca6e9209c1faa
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f7088179f43c69fb9f72eacd6ff3703a926cabe2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447075"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886552"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.Android 应用推送通知
 
@@ -46,7 +46,7 @@ ms.locfileid: "54447075"
 
 ## <a name="create-a-firebase-project-and-enable-firebase-cloud-messaging"></a>创建 Firebase 项目并启用 Firebase Cloud Messaging
 
-[!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
+[!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging-xamarin.md)]
 
 ## <a name="create-a-notification-hub"></a>创建通知中心
 
@@ -66,10 +66,18 @@ ms.locfileid: "54447075"
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>创建 Visual Studio 项目并添加 NuGet 包
 
-1. 在 Visual Studio 中打开“文件”菜单，选择“新建”，然后选择“项目”。
+1. 在 Visual Studio 中打开“文件”菜单，选择“新建”，然后选择“项目”。 在“新建项目”窗口中执行以下步骤： 
+    1. 展开“已安装”、“Visual C#”，然后单击“Android”。
+    2. 从列表中选择“Android 应用(Xamarin)”。 
+    3. 输入项目的**名称**。 
+    4. 选择项目的**位置**。 
+    5. 选择“确定” 
 
-    ![Visual Studio - 新建 Android 项目](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog.png)
-2. 在“解决方案资源管理器”窗口中展开“属性”，然后单击“AndroidManifest.xml”。 更新包名，使之与你在 Google Firebase Console 中将 Firebase Cloud Messaging 添加到项目时输入的包名匹配。
+        ![“新建项目”对话框](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)        
+2. 在“新建 Android 应用”对话框中，选择“空白应用”，然后选择“确定”。 
+
+    ![“新建项目”对话框](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+1. 在“解决方案资源管理器”窗口中展开“属性”，然后单击“AndroidManifest.xml”。 更新包名，使之与你在 Google Firebase Console 中将 Firebase Cloud Messaging 添加到项目时输入的包名匹配。
 
     ![GCM 中的包名](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 3. 右键单击项目，然后选择“管理 NuGet 包...”。
@@ -281,17 +289,17 @@ ms.locfileid: "54447075"
 [30]: ./media/notification-hubs-android-get-started/notification-hubs-test-send.png
 
 <!-- URLs. -->
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio with Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 [Azure 门户]: https://portal.azure.com/
-[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Android]: http://msdn.microsoft.com/library/dn282661.aspx
+[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [GitHub]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid

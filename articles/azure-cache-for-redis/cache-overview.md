@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5b2b3a3ec0e9aec603a69211a7493afc31e83283
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236543"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433801"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>什么是 Azure Redis 缓存
 
@@ -57,7 +57,7 @@ Azure Redis 缓存在下述层中提供：
 
 可以在缓存创建以后将其提升到更高的层。 不允许降到更低的层。 有关缩放的分步说明，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)和[如何自动执行缩放操作](cache-how-to-scale.md#how-to-automate-a-scaling-operation)。
 
-### <a name="feature-comparision"></a>功能比较
+### <a name="feature-comparison"></a>功能比较
 
 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)页对每个层进行了详细比较。 下表介绍了每个层支持的部分功能：
 

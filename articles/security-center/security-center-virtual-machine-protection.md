@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/25/2019
+ms.date: 3/20/2019
 ms.author: monhaber
-ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa664952f3eb7d6f9e611fb87a9e484e97f388a2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106553"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403827"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>在 Azure 安全中心保护计算机和应用程序
-Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。 建议适用于以下 Azure 资源类型：虚拟机 (VM) 和计算机、应用程序、网络、SQL，以及“标识和访问”。
+Azure 安全中心将分析 Azure 资源、 非 Azure 服务器和虚拟机的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。 建议适用于以下 Azure 资源类型：虚拟机 (VM) 和计算机、应用程序、网络、SQL，以及“标识和访问”。
 
 本文介绍适用于计算机和应用程序的建议。
 
@@ -53,7 +53,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 每个选项卡可能包含多个部分，在每个部分，可以选择单个选项详细查看可解决该特定问题的建议步骤。
 
 ### 不受监视的 VM 和计算机 <a name="unmonitored-vms-and-computers"></a>
-如果某个 VM 或计算机未运行 Microsoft Monitoring Agent 扩展，则它不受安全中心的监视。 计算机上可能已安装了本地代理，例如 OMS 直接代理或 SCOM 代理。 装有这些代理的计算机被标识为未受监视，因为安全中心不完全支持这些代理。 若要充分利用安全中心的所有功能，需要使用 Microsoft Monitoring Agent 扩展。
+如果某个 VM 或计算机未运行 Microsoft Monitoring Agent 扩展，则它不受安全中心的监视。 一台计算机可能已安装本地代理，例如 OMS 直接代理或 System Center Operations Manager 代理。 装有这些代理的计算机被标识为未受监视，因为安全中心不完全支持这些代理。 若要充分利用安全中心的所有功能，需要使用 Microsoft Monitoring Agent 扩展。
 
 除了已安装的本地代理，还可以在未受监视的 VM 或计算机上安装该扩展。 对两个代理进行相同的配置，将二者连接到同一工作区。 这样，安全中心就能与 Microsoft Monitoring Agent 扩展交互并收集数据。 请参阅[启用 VM 扩展](../azure-monitor/learn/quick-collect-azurevm.md)，获取如何安装 Microsoft Monitoring Agent 扩展的说明。
 
@@ -103,7 +103,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 ![Azure 经典 VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Azure 经典 VM。
 
 
-![从工作区中识别的 VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) 只能通过工作区（属于所查看的订阅）标识的 VM。 其中包括其他订阅中向此订阅中的工作区报告的 VM，以及使用 SCOM 直接代理安装的 VM（没有资源 ID）。
+![从工作区中识别的 VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) 只能通过工作区（属于所查看的订阅）标识的 VM。 这包括虚拟机从其他订阅该报表中此订阅，并随 Operations Manager 直接代理一起安装的 Vm 的工作区和有没有资源 id。
 
 每条建议下面显示的图标有助于快速识别需要关注的 VM 和计算机以及建议的类型。 也可使用筛选器，按“资源类型”和“严重性”搜索列表。
 
@@ -172,7 +172,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 
 若要将新规模集设置为自动安装 Microsoft Monitoring Agent，请执行以下操作：
 1. 转到 Azure Policy，单击“定义”。
-2. 搜索策略“为 Windows VM 规模集部署 Log Analytics 代理”，然后单击它。
+2. 搜索策略**适用于 Windows 虚拟机规模集部署 Log Analytics 代理**并单击它。
 3. 单击“分配”。
 4. 设置“范围”和“Log Analytics 工作区”，然后单击“分配”。
 

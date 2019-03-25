@@ -1,37 +1,60 @@
 ---
-title: Azure VM 备份常见问题解答
-description: 针对下述常见问题的解答：Azure VM 备份原理、限制以及更改策略时会发生什么情况
+title: 有关使用 Azure 备份的 Azure Vm 备份常见问题解答
+description: 有关使用 Azure 备份的 Azure Vm 备份的常见问题的解答。
 services: backup
 author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/16/2018
+ms.date: 03/22/2019
 ms.author: sogup
-ms.openlocfilehash: 10b49c5ebcd73010a52da1fada32ba55198b287a
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: ef46c37fec3e5438aeb4f9309201d45365a96fdc
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961527"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402059"
 ---
-# <a name="frequently-asked-questions-azure-backup"></a>常见问题 - Azure 备份
+# <a name="frequently-asked-questions-back-up-azure-vms"></a>常见的问题-备份 Azure Vm
 
-本文回答有关 [Azure 备份](backup-introduction-to-azure-backup.md)服务的常见问题。
-
-## <a name="general-questions"></a>一般问题
-
-### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>可以使用 Azure 备份对哪些 Azure VM 进行备份？
-[查看](backup-azure-arm-vms-prepare.md#before-you-start)支持的操作系统和限制。
+本文解答有关 Azure Vm 备份[Azure 备份](backup-introduction-to-azure-backup.md)服务。
 
 
 ## <a name="backup"></a>备份
 
+### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>创建它们时，可以为备份启用的 VM 映像？
+在创建 VM 时，可以运行的 Vm 启用备份[受支持的操作系统](backup-support-matrix-iaas.md#supported-backup-actions)
+ 
+### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>备份成本包含在 VM 成本是多少？ 
+
+不是。 备份成本是独立于 VM 的成本。 详细了解如何[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
+ 
+### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>为 vm 启用备份需要哪些权限？ 
+
+如果你是 VM 参与者，您可以启用 VM 上的备份。 如果您使用的自定义角色，需要以下权限才能启用 VM 上的备份： 
+
+- Microsoft.RecoveryServices/Vaults/write 
+- Microsoft.RecoveryServices/Vaults/read 
+- Microsoft.RecoveryServices/locations/* 
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read 
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read 
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write 
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write 
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read 
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write 
+ 
+如果您的恢复服务保管库和 VM 具有不同的资源组，请确保在恢复服务保管库的资源组中具有写入权限。  
+
+
+### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>可以使用 Azure 备份对哪些 Azure VM 进行备份？
+
+审阅[支持矩阵](backup-support-matrix-iaas.md)支持详细信息和限制。
+
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>按需备份作业是否使用与计划备份相同的保留计划？
-不是。 应为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。
+不是。 指定的保持期为按需备份作业。 默认情况下，从门户触发时，该作业会保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我最近在一些 VM 上启用了 Azure 磁盘加密。 我的备份是否继续有效？
-需提供 Azure 备份访问 Key Vault 所需的权限。 按照 [Azure 备份 PowerShell](backup-azure-vms-automation.md) 文档中的“启用备份”部分所述，在 PowerShell 中指定权限。
+提供有关 Azure 备份密钥保管库的访问权限。 按照 [Azure 备份 PowerShell](backup-azure-vms-automation.md) 文档中的“启用备份”部分所述，在 PowerShell 中指定权限。
 
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>我将 VM 磁盘迁移到了托管磁盘。 我的备份是否继续有效？
 是的，备份可以顺利工作。 没有必要重新配置任何内容。
@@ -57,7 +80,7 @@ ms.locfileid: "56961527"
 Azure 备份可使用最多 16 个磁盘备份 VM。 [即时还原](backup-instant-restore-capability.md)中提供了对 16 个磁盘的支持。
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure 备份是否支持标准 SSD 托管磁盘？
-Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。 SSD 托管磁盘为 Azure VM 提供了一种新型的持久存储。 [即时还原](backup-instant-restore-capability.md)中提供了对 SSD 托管磁盘的支持。
+Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。 SSD 托管磁盘的 Azure Vm 提供一种新型的持久存储。 [即时还原](backup-instant-restore-capability.md)中提供了对 SSD 托管磁盘的支持。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>可使用支持写入加速器 (WA) 的磁盘备份 VM 吗？
 无法在已启用 WA 的磁盘上拍摄快照。 但是，Azure 备份服务可以从备份中排除已启用 WA 的磁盘。 仅对升级到即时还原的订阅支持已启用 WA 的磁盘的 VM 磁盘排除。
@@ -65,17 +88,17 @@ Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/ann
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>我有一个安装了写入加速器 (WA) 磁盘和 SAP HANA 的 VM。 我该如何备份？
 Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排除。 但是，备份不会提供数据库一致性，因为未备份已启用 WA 的磁盘上的信息。 如果需要备份操作系统磁盘和备份未启用 WA 的磁盘，则可以使用此配置备份磁盘。
 
-我们确实提供 SAP HANA 备份的个人预览版，RPO 为 15 分钟。 它以与 SQL 数据库备份类似的方式构建，并将 backInt 接口用于 SAP HANA 认证的第三方解决方案。 如果对个人预览版感兴趣，请发送电子邮件至 ` AskAzureBackupTeam@microsoft.com `，主题为“注册个人预览版以备份 Azure VM 中的 SAP HANA”。
+我们正在与 15 分钟 RPO 运行 SAP HANA 备份的专用预览版。 它以与 SQL 数据库备份类似的方式构建，并将 backInt 接口用于 SAP HANA 认证的第三方解决方案。 如果您感兴趣，发送电子邮件至` AskAzureBackupTeam@microsoft.com `与该主题**注册的 Azure Vm 中的 SAP HANA 备份的专用预览版**。
 
 
 ## <a name="restore"></a>还原
 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>如何确定仅还原磁盘还是完整 VM？
-将 VM 还原视为 Azure VM 的快速创建选项。 此选项可更改磁盘名称、磁盘使用的容器、公共 IP 地址和网络接口名称。 创建 VM 时，更改将维护唯一资源。 未将 VM 添加到可用性集。
+将 VM 还原视为 Azure VM 的快速创建选项。 此选项可更改磁盘名称，磁盘、 公共 IP 地址和网络接口名称使用的容器。 创建 VM 时，更改将维护唯一资源。 未将 VM 添加到可用性集。
 
 若要执行以下操作，可使用还原磁盘选项：
   * 自定义创建的 VM。 例如，更改大小。
-  * 添加备份时不存在的配置设置
+  * 添加配置设置，在备份时不存在。
   * 控制创建的资源的命名约定。
   * 将 VM 添加到可用性集。
   * 添加必须使用 PowerShell 或模板配置的任何其他设置。
@@ -114,6 +137,6 @@ Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排�
 
 1. 暂时停止备份，并保留备份数据。
 2. 将 VM 移动到目标资源组。
-3. 在同一个或新的保管库中重新启用备份。
+3. 相同的或新保管库中的重新启用的备份。
 
 可以从在移动操作之前创建的可用还原点还原 VM。

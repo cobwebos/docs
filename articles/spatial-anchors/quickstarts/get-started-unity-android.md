@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e92c812ffc8b72fe79248c602e48ff01ef9fefcb
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 21a10bcedc25ddce63ba468e400dcea1f77148a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961001"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863111"
 ---
 # <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Android Unity 应用
 
@@ -36,6 +36,8 @@ ms.locfileid: "56961001"
 若要完成本快速入门，请确保具备以下项：
 
 - Windows 或 macOS 计算机，已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3+</a> 和 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3+</a>。
+  - 如果在 Windows 上运行，则还需要 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
+  - 如果在 macOS 上运行，请通过 HomeBrew 安装 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后运行 `brew install git`。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">支持开发人员</a>和 <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 功能</a>的 Android 设备。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -58,32 +60,12 @@ ms.locfileid: "56961001"
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-选择“导出”，以打开一个对话框。 然后选择一个文件夹，以导出 Android Studio 项目。
+确保“导出项目”复选框没有复选标记。 单击“生成并运行”。 系统会要求保存 `.apk` 文件，可以为它挑选任何名称。
 
-导出完成后，会显示一个文件夹，其中包括包含名为 HelloAR U3D 的子文件夹的已导出的 Android Studio 项目。
-
-## <a name="deploy-the-android-application"></a>部署 Android 应用程序
-
-打开 Android Studio 并选择“打开现有的 Android Studio 项目”。 然后，从导出的 Android Studio 项目选择 HelloAR U3D 子文件夹，然后单击“确定”。
-
-打开后，将显示提示，要求使用 Gradle 包装器。 选择“确定”以使用 Gradle 包装器打开该项目。
-
-打开 Android 设备，登录并使用 USB 电缆将其连接到电脑。
-
-从 Android Studio 工具栏中选择“运行”。
-
-![Android Studio 部署和运行](./media/get-started-unity-android/android-studio-deploy-run.png)
-
-在“选择部署目标”对话框中选择 Android 设备，然后选择“确定”以在 Android 设备上运行应用。
-
-按照应用中的说明，放置并重新调用定位标记。
+按照应用中的说明，放置并重新调用定位点。
 
 > [!NOTE]
 > 运行应用时，如果没看到作为背景的照相机（例如，你看到的是空白、蓝色或其他纹理），则可能需要重新导入 Unity 中的资产。 停止应用。 在 Unity 中的顶部菜单中，选择“资产”->“重新导入全部”。 然后再次运行应用。
-
-通过在 Android Studio 工具栏中选择“停止”，从而停止应用。
-
-![停止 Android Studio](./media/get-started-unity-android/android-studio-stop.png)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

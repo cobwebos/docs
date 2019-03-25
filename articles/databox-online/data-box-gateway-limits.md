@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 34aac9a589516ace080906095ef3c14b34469bbd
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311182"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401566"
 ---
-# <a name="azure-data-box-gateway-limits-preview"></a>Azure Data Box Gateway 限制（预览版）
-
+# <a name="azure-data-box-gateway-limits"></a>Azure 数据框网关限制
 
 在部署和操作 Microsoft Azure Data Box Gateway 解决方案时请考虑这些限制。 
-
-> [!IMPORTANT] 
-> Data Box Gateway 以预览版提供。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
 
 ## <a name="data-box-gateway-service-limits"></a>Data Box Gateway 服务限制
@@ -32,11 +28,11 @@ ms.locfileid: "56311182"
 
 下表介绍了 Data Box Gateway 设备的限制。
 
-| 说明 | 值 |
+| 描述 | 值 |
 |---|---|
 |不是。 设备的文件数 |1 亿 <br> 限制为每 2 TB 磁盘空间大约 2500 万个文件，最大限制为 1 亿 |
 |不是。 设备的共享数 |24 |
-|不是。 Azure 存储容器的共享数 |1 |
+|不是。 Azure 存储容器的共享数 |第 |
 |写入到共享的最大文件大小|对于 2 TB 的虚拟设备，最大文件大小为 500 GB。 <br> 最大文件大小按上述比例随数据磁盘大小而增大，直至到达最大大小 5 TB。 |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制

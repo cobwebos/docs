@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 627275855f231f5a4336075df3864448325127f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888291"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>教程：Azure Active Directory 与 Palo Alto Networks Captive Portal 的集成
 
@@ -105,12 +105,12 @@ Palo Alto Networks Captive Portal 支持以下方案：
 
     ![Palo Alto Networks Captive Portal 的“基本 SAML 配置”窗格](common/idp-intiated.png)
 
-    1. 对于“标识符”，请输入采用 `https://<customer_firewall_host_name>/SAML20/SP` 模式的 URL。
+   1. 对于“标识符”，请输入采用 `https://<customer_firewall_host_name>/SAML20/SP` 模式的 URL。
 
-    2. 对于“回复 URL”，请输入采用 `https://<customer_firewall_host_name>/SAML20/SP/ACS` 模式的 URL。
+   2. 对于“回复 URL”，请输入采用 `https://<customer_firewall_host_name>/SAML20/SP/ACS` 模式的 URL。
 
-    > [!NOTE]
-    > 请将此步骤中的占位符值更新为实际的标识符和回复 URL。 若要获取实际值，请联系 [Palo Alto Networks Captive Portal 客户端支持团队](https://support.paloaltonetworks.com/support)。
+      > [!NOTE]
+      > 请将此步骤中的占位符值更新为实际的标识符和回复 URL。 若要获取实际值，请联系 [Palo Alto Networks Captive Portal 客户端支持团队](https://support.paloaltonetworks.com/support)。
 
 5. 在“SAML 签名证书”部分中的“联合元数据 XML”旁边，选择“下载”。 将下载的文件保存在计算机上。
 
@@ -158,7 +158,7 @@ Palo Alto Networks Captive Portal 支持以下方案：
 
     1. 对于“姓名”，请输入 **BrittaSimon**。
   
-    2. 对于“用户名”，请输入 **BrittaSimon@\<公司域\>**。 例如，**BrittaSimon@contoso.com**。
+    2. 对于“用户名”，请输入“BrittaSimon\@\<your_company_domain\>”。 例如，“BrittaSimon\@contoso.com”。
 
     3. 对于“密码”，请输入一个密码。 建议保留好所输入密码的记录。 可以选中“显示密码”复选框来显示密码。
 

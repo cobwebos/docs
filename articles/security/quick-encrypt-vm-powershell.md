@@ -3,8 +3,8 @@ title: 快速入门 - 使用 Azure PowerShell 加密 Windows IaaS VM | Microsoft
 description: 本快速入门介绍如何使用 Azure PowerShell 加密 Azure 中的 Windows IaaS VM。
 services: security
 documentationcenter: na
-author: mestew
-manager: barbkess
+author: msmbaldwin
+manager: MBaldwin
 ms.assetid: c8abd340-5ed4-42ec-b83f-4d679b61494d
 ms.service: security
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
-ms.author: mstewart
+ms.author: mbaldwin
 ms.custom: seodec18
-ms.openlocfilehash: c1b6d8be66323c94837adea90723d0842d168ddc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4af2db5af49e1fc70ee46f4fc4c953731daedf0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109123"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862363"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 加密 Windows IaaS VM
 
@@ -29,9 +29,11 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
 
 ## <a name="prerequisites"></a>先决条件
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - Windows PowerShell ISE
-- 安装或更新到[最新版本的 AzureRM PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)
-    - AzureRM 模块版本需要是 6.0.0 或更高版本。 `Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path`
+- 安装或更新到[最新版本的 Azure PowerShell 模块](/powershell/azure/install-az-ps)
+    - Az 模块版本需要是 1.0.0 或更高版本。 使用 `Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path` 检查版本。
 - [Azure 磁盘加密先决条件脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)的副本。
     - 如果已经有此脚本，请下载新的副本，因为它最近进行了更改。 
     - 请使用 **CTRL-A** 选择所有文本，然后使用 **CTRL-C** 将所有文本复制到记事本中。
@@ -45,7 +47,7 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
 1. 在脚本窗格中，键入以下 cmdlet： 
 
      ```azurepowershell
-      Connect-AzureRMAccount
+      Connect-AzAccount
      ```
 
 1. 单击“运行脚本”所对应的绿色箭头，或者使用 F5。 
@@ -58,8 +60,8 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
 1. 在“管理员:Windows PowerShell ISE”窗口中，单击“文件”，然后单击“打开”。 导航到 **ADEPrereqScript.ps1** 文件，然后双击它。 此脚本会在脚本窗格中打开。
 2. 单击“运行脚本”所对应的绿色箭头，或者使用 F5 来运行脚本。 
 3. 键入新**资源组**和新**密钥保管库**的名称。 请勿在本快速入门中使用现有的资源组或密钥保管库，因为我们会在稍后删除资源组。 
-4. 键入要在其中创建资源的位置，例如 **EastUS**。 使用 `Get-AzureRMLocation` 获取位置列表。
-5. 将**订阅 ID** 复制进去。 可以使用 `Get-AzureRMSubscription` 获取订阅 ID。  
+4. 键入要在其中创建资源的位置，例如 **EastUS**。 使用 `Get-AzLocation` 获取位置列表。
+5. 将**订阅 ID** 复制进去。 可以使用 `Get-AzSubscription` 获取订阅 ID。  
 6. 单击“运行脚本”所对应的绿色箭头。 
 7. 复制返回的将要在以后使用的 **DiskEncryptionKeyVaultUrl** 和 **DiskEncryptionKeyVaultId**。
 
@@ -81,52 +83,52 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
     $cred = Get-Credential -Message "Enter a username and password for the virtual machine."
     
     # Create a resource group
-    #New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+    #New-AzResourceGroup -Name $resourceGroup -Location $location
     
     # Create a subnet configuration
-    $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+    $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
     
     # Create a virtual network
-    $vnet = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
       -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
     
     # Create a public IP address and specify a DNS name
-    $pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+    $pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
       -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
     
     # Create an inbound network security group rule for port 3389
-    $nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+    $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
       -DestinationPortRange 3389 -Access Allow
     
     # Create a network security group
-    $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+    $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
       -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
     
     # Create a virtual network card and associate with public IP address and NSG
-    $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
+    $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
       -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
     
     # Create a virtual machine configuration
-    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D2_v3 | `
-    Set-AzureRmVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
-    Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter-smalldisk -Version latest | `
-    Add-AzureRmVMNetworkInterface -Id $nic.Id
+    $vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D2_v3 | `
+    Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
+    Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter-smalldisk -Version latest | `
+    Add-AzVMNetworkInterface -Id $nic.Id
     
     # Create a virtual machine
-    New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+    New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
    ```
 
 2. 单击“运行脚本”所对应的绿色箭头，以便生成 VM。  
 
 
 ## <a name="encrypt-the-disk-of-the-vm"></a>加密 VM 的磁盘
-创建并配置密钥保管库和 VM 以后，即可使用 **Set-AzureRmVmDiskEncryptionExtension** cmdlet 来加密磁盘。 
+创建并配置密钥保管库和 VM 以后，即可使用 **Set-AzVmDiskEncryptionExtension** cmdlet 来加密磁盘。 
  
 1. 运行以下 cmdlet 以加密 VM 的磁盘：
 
     ```azurepowershell
-     Set-AzureRmVmDiskEncryptionExtension -ResourceGroupName "MySecureRG" -VMName "MySecureVM" `
+     Set-AzVmDiskEncryptionExtension -ResourceGroupName "MySecureRG" -VMName "MySecureVM" `
      -DiskEncryptionKeyVaultId "<Returned by the prerequisites script>" -DiskEncryptionKeyVaultUrl "<Returned by the prerequisites script>"
      ```
 
@@ -134,9 +136,9 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
 1. 加密完成后，即可使用以下 cmdlet 验证磁盘是否已加密： 
 
      ```azurepowershell
-     Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName "MySecureRG" -VMName "MySecureVM"
+     Get-AzVmDiskEncryptionStatus -ResourceGroupName "MySecureRG" -VMName "MySecureVM"
      ```
-    ![Get-AzureRmVmDiskEncryptionStatus output](media/azure-security-disk-encryption/ade-get-encryption-status.PNG)
+    ![Get-AzVmDiskEncryptionStatus output](media/azure-security-disk-encryption/ade-get-encryption-status.PNG)
     
 ## <a name="clean-up-resources"></a>清理资源
  **ADEPrereqScript.ps1** 在密钥保管库上创建资源锁。 若要清理本快速入门中的资源，需先删除资源锁，然后删除资源组。 
@@ -144,13 +146,13 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
 1. 删除密钥保管库的资源锁
 
      ```azurepowershell
-     $LockId =(Get-AzureRMResourceLock -ResourceGroupName "MySecureRG" -ResourceName "MySecureVault" -ResourceType "Microsoft.KeyVault/vaults").LockID 
-     Remove-AzureRmResourceLock -LockID $LockId
+     $LockId =(Get-AzResourceLock -ResourceGroupName "MySecureRG" -ResourceName "MySecureVault" -ResourceType "Microsoft.KeyVault/vaults").LockID 
+     Remove-AzResourceLock -LockID $LockId
       ```
     
 2. 删除资源组。 此操作也会删除组中的所有资源。 
      ```azurepowershell
-      Remove-AzureRmResourceGroup -Name "MySecureRG"
+      Remove-AzResourceGroup -Name "MySecureRG"
       ```
 
 ## <a name="next-steps"></a>后续步骤

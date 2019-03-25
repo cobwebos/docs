@@ -10,12 +10,12 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 7dddf7e48913aea9d84e0f8b66c2c9d29449ee6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5d66dcaccc6ca2e40fbd516f535ec56c1baf6b17
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825635"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195588"
 ---
 ### <a name="run-the-service"></a>运行该服务
 
@@ -81,7 +81,7 @@ http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 > * 在团队环境中高效地开发和测试代码。
 > * 使用 Dev Spaces 建立功能基线可在较大微服务应用程序的上下文中轻松测试隔离的更改
 
-现在，已探索了 Azure Dev Spaces，请[与团队成员共享你的开发空间](../articles/dev-spaces/how-to/share-dev-spaces.md)，并帮助他们了解一起协作是多么容易。
+现在已探索了Azure Dev Spaces，请[与团队成员共享开发空间](../articles/dev-spaces/how-to/share-dev-spaces.md)并开始协作。
 
 ## <a name="clean-up"></a>清理
 若要完全删除群集中的某个 Azure Dev Spaces 实例，包括所有设备空间以及其中正在运行的服务，请使用 `az aks remove-dev-spaces` 命令。 请记住，此操作是不可逆的。 可以再次在群集上添加 Azure Dev Spaces 支持，但这就像重新开始一样。 旧服务和空间不会还原。

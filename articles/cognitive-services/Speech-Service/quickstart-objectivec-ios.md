@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 67acc7a074b26cb7614b5e08d25afd7b7c1caa74
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958501"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094916"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -75,7 +75,7 @@ ms.locfileid: "56958501"
 ## <a name="add-the-sample-code"></a>添加示例代码
 
 1. 下载[示例 wav 文件](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)，方法是：右键单击链接，然后选择“将目标另存为...”。将 wav 文件作为资源添加到项目，方法是将其从 Finder 窗口拖放到“项目”视图的根级别目录中。
-在以下对话框中单击“完成”，不更改设置。
+   在以下对话框中单击“完成”，不更改设置。
 1. 通过以下方式替换自动生成的 `ViewController.m` 文件的内容：
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
@@ -92,10 +92,10 @@ ms.locfileid: "56958501"
 1. 使调试输出可见（“视图” > “调试区域” > “激活控制台”）。
 1. 从“产品” -> “目标”菜单中的列表中，选择 iOS 模拟器或连接到开发计算机的 iOS 设备作为应用的目标位置。
 1. 在 iOS 模拟器中生成并运行示例代码，方法是在菜单中选择“产品” -> “运行”，或者单击“播放”按钮。
-目前，语音 SDK 仅支持 64 位 iOS 平台。
+   目前，语音 SDK 仅支持 64 位 iOS 平台。
 1. 单击应用中的“识别(文件)”按钮以后，应看到音频文件的内容“天气怎么样?” 显示在屏幕下部。
 
- ![模拟的 iOS 应用](media/sdk/qs-objectivec-simulated-app.png)
+   ![模拟的 iOS 应用](media/sdk/qs-objectivec-simulated-app.png)
 
 1. 单击应用中的“识别(麦克风)”按钮并讲几句话后，应在屏幕下方看到所述文本。
 

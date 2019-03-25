@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: e0aa3468bda9f904d62e9e20545ac5f990cef521
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: e0b8b35c654f0716fae1e6ab785f57dcf04e1a5a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57905282"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400886"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge-preview"></a>在 Azure 数据框 edge （预览版） 管理访问、 电源和连接模式
 
@@ -31,11 +31,11 @@ ms.locfileid: "57905282"
 
 ## <a name="manage-device-access"></a>管理对设备的访问
 
-向你的数据框边缘设备的访问控制通过使用设备管理员密码。 可以通过本地 Web UI 更改管理员密码。 还可以在 Azure 门户中重置设备管理员密码。
+向你的数据框边缘设备的访问控制通过使用设备密码。 你可以通过本地 web UI 密码。 此外可以重置设备密码在 Azure 门户中。
 
-### <a name="change-device-administrator-password"></a>更改设备管理员密码
+### <a name="change-device-password"></a>更改设备密码
 
-在本地 UI 中遵循以下步骤更改设备管理员密码。
+请按照下列步骤在本地 UI 更改设备密码。
 
 1. 在本地 Web UI 中，转到“维护”>“密码更改”。
 2. 依次输入当前密码和新密码。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 确认新密码。
@@ -44,7 +44,7 @@ ms.locfileid: "57905282"
 
 3. 选择“更改密码”。
  
-### <a name="reset-device-administrator-password"></a>重置设备管理员密码
+### <a name="reset-device-password"></a>重置设备密码
 
 重置工作流不需要用户回忆旧密码，在密码丢失时非常有用。 在 Azure 门户中执行此工作流。
 
@@ -63,7 +63,7 @@ ms.locfileid: "57905282"
 
 - **完全连接**-这是正常的默认模式在设备上进行操作。 在此模式下启用的云上传和下载数据。 可以使用 Azure 门户或本地 web UI 来管理设备。
 
-- **部分离线** – 在此模式下，设备无法将任何数据上传到共享，但可以通过 Azure 门户管理设备。
+- **部分已断开连接**– 该设备不能在此模式下上, 传或下载但是可以通过 Azure 门户中管理数据的任何共享。
 
     使用按流量计费的卫星网络，并且目标是尽量减少网络带宽消耗时，通常会使用此模式。 执行设备监视操作时，仍有可能会消耗少量的网络带宽。
 

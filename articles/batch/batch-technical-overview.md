@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e3fcc8be68282f6ce491ff49f0dc5059d79fa98f
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35621273"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730944"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 
@@ -30,7 +30,7 @@ ms.locfileid: "35621273"
 
 使用 Batch 不会产生额外的费用。 仅针对所使用的基础资源（例如虚拟机、存储和网络）计费。
 
-有关 Batch 与 Azure 中其他 HPC 解决方案选项的比较，请参阅 [HPC、Batch 和 Big 计算解决方案](../virtual-machines/linux/high-performance-computing.md)。
+有关 Batch 与 Azure 中其他 HPC 解决方案选项的比较，请参阅 [Azure 上的高性能计算 (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)。
 
 ## <a name="run-parallel-workloads"></a>运行并行工作负荷
 Batch 很适合处理本质并行（也称为“易并行”）的工作负荷。 本质并行工作负荷是指应用程序可以在其中独立运行，每个实例都会完成一部分工作的工作负荷。 应用程序在执行时，可能会访问一些公共的数据，但不会与该应用程序的其他实例通信。 因此，本质并行工作负荷可以大规模运行，具体取决于可以用来同时运行应用程序的计算资源的量。
@@ -72,7 +72,7 @@ Batch 的常用方案涉及在计算节点池中横向扩展本质并行工作�
 ![Batch 解决方案演练](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|步骤  |Description  |
+|步骤  |说明  |
 |---------|---------|
 |1.将**输入文件**和处理这些文件的**应用程序**上传到 Azure 存储帐户。     |输入文件可以是应用程序处理的任何数据，例如财务建模数据或要转码的视频文件。 应用程序文件可以包含处理数据的脚本或应用程序，例如媒体转码器。|
 |2.创建一个包含 Batch 帐户中的计算节点的 Batch **池**、一个用于在池中运行工作负荷的**作业**，以及作业中的**任务**。     | 池节点是执行任务的 VM。 指定属性，例如节点的数目和大小、Windows 或 Linux VM 映像，以及在节点加入池时要安装的应用程序。 管理池的成本和大小，方法是：使用[低优先级 VM](batch-low-pri-vms.md)，或者在工作负荷变化时[自动缩放](batch-automatic-scaling.md)节点数。 <br/><br/>将任务添加到作业时，Batch 服务会自动计划任务在池中的计算节点上执行。 每项任务使用上传的应用程序来处理输入文件。 |

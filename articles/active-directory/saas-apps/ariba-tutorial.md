@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 45a8364c-55d1-4dc7-b079-9eb2a701842d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6882cfc0b972fa0ea2a43081b1d6d62671d9da7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 6e6655c1f67b5655dbde8c04f09a664f64350e3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881577"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>教程：Azure Active Directory 与 Ariba 集成
 
@@ -106,6 +106,7 @@ ms.locfileid: "56881577"
     ![Ariba 域和 URL 单一登录信息](common/sp-identifier.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://<subdomain>.sourcing.ariba.com` |
@@ -142,7 +143,7 @@ ms.locfileid: "56881577"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

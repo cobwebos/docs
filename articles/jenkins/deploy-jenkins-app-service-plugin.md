@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 0ecd0603a5750b6d03da7cf2c577c668482048aa
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 58835b66824d55b64b77e34df64d34c8da1c269a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077311"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864807"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 
@@ -77,7 +77,7 @@ sudo apt-get install -y maven
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
     ```
     
-3. 设置应用所需的 Java 运行时配置。 以下 Azure CLI 命令配置的 Web 应用可在最新的 JDK 8 和 [Apache Tomcat](http://tomcat.apache.org/) 版本 8.0 上运行：
+3. 设置应用所需的 Java 运行时配置。 以下 Azure CLI 命令配置的 Web 应用可在最新的 JDK 8 和 [Apache Tomcat](https://tomcat.apache.org/) 版本 8.0 上运行：
     ```azurecli-interactive
     az webapp config set \
     --name <myAppName> \
@@ -90,7 +90,7 @@ sudo apt-get install -y maven
 ### <a name="set-up-the-jenkins-job"></a>设置 Jenkins 作业
 
 1. 在 Jenkins 仪表板上创建新的自由式项目。
-2. 配置“源代码管理”字段，以使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)的本地分支。 提供“存储库 URL”值。 例如： http://github.com/&lt;your_ID>/javawebappsample。
+2. 配置“源代码管理”字段，以使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)的本地分支。 提供“存储库 URL”值。 例如：http:\//github.com/&lt;your_ID>/javawebappsample。
 3. 添加步骤以使用 Maven 生成项目，可通过添加 Execute shell 命令实现该操作。 在此示例中，需使用其他命令将目标文件夹中的 \*.war 文件重命名为 ROOT.war：   
     ```bash
     mvn clean package
@@ -143,7 +143,7 @@ Linux 上的 Web 应用还支持 Git 和文件上传等传统部署方法，但�
 ### <a name="set-up-the-jenkins-job-for-docker"></a>设置适用于 Docker 的 Jenkins 作业
 
 1. 在 Jenkins 仪表板上创建新的自由式项目。
-2. 配置“源代码管理”字段，以使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)的本地分支。 提供“存储库 URL”值。 例如： http://github.com/&lt;your_ID>/javawebappsample。
+2. 配置“源代码管理”字段，以使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)的本地分支。 提供“存储库 URL”值。 例如：http:\//github.com/&lt;your_ID>/javawebappsample。
 3. 添加步骤以使用 Maven 生成项目，可通过添加 Execute shell 命令实现该操作。 在命令中包括以下行：
     ```bash
     mvn clean package

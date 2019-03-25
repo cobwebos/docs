@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: be51e6c829c5f12d17c6302bb951039711f12075
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 73f97128dc7b71179c0b0ab41340af6c0f371da1
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113220"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402960"
 ---
-# <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box Gateway 系统要求（预览版）
+# <a name="azure-data-box-gateway-system-requirements"></a>Azure 数据框网关系统要求
 
 本文介绍了 Microsoft Azure Data Box Gateway 解决方案以及连接到 Azure Data Box Gateway 的客户端的重要系统要求。 建议在部署 Data Box Gateway 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。
 
@@ -24,14 +24,12 @@ Data Box Gateway 虚拟设备的系统要求包括：
 - **主机的软件要求** - 介绍了支持的平台、本地配置 UI 的浏览器、SMB 客户端以及连接到设备的主机的任何其他要求。
 - **设备的网络要求** - 提供有关虚拟设备运转的网络要求的信息。
 
-> [!IMPORTANT]
-> Data Box Gateway 以预览版提供。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
 ## <a name="specifications-for-the-virtual-device"></a>虚拟设备的规范
 
 Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设备：
 
-| 规范                                          | 说明              |
+| 规范                                          | 描述              |
 |---------------------------------------------------------|--------------------------|
 | 虚拟处理器（核心数）   | 最低为 4 核 |            
 | 内存  | 最低为 8 GB|

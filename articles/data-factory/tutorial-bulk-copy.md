@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d22ea75dff884adbfaaa7975eb1d1542b4721f16
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 718e34cdba31b3b747ebb5c10f5c5708c0572448
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438569"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436589"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
@@ -46,7 +46,9 @@ ms.locfileid: "54438569"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+* **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
 * **Azure 存储帐户**。 Azure 存储帐户用作批量复制操作中的过渡 Blob 存储。 
 * **Azure SQL 数据库**。 此数据库包含源数据。 
 * **Azure SQL 数据仓库**。 此数据仓库包含从 SQL 数据库复制的数据。 
@@ -78,24 +80,24 @@ ms.locfileid: "54438569"
     运行以下命令并输入用于登录 Azure 门户的用户名和密码：
         
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
     运行以下命令查看此帐户的所有订阅：
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
     运行以下命令选择要使用的订阅。 请将 **SubscriptionId** 替换为自己的 Azure 订阅的 ID：
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. 运行 **Set-AzureRmDataFactoryV2** cmdlet 创建数据工厂。 执行该命令之前，请将占位符替换为自己的值。 
+2. 运行 **Set-AzDataFactoryV2** cmdlet 创建数据工厂。 执行该命令之前，请将占位符替换为自己的值。 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
     $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>"
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
     请注意以下几点：
@@ -137,10 +139,10 @@ ms.locfileid: "54438569"
 
 2. 在 **Azure PowerShell** 中，切换到 **ADFv2TutorialBulkCopy** 文件夹。
 
-3. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureSqlDatabaseLinkedService**。 
+3. 运行 **Set-AzDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureSqlDatabaseLinkedService**。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
     下面是示例输出：
@@ -174,10 +176,10 @@ ms.locfileid: "54438569"
     }
     ```
 
-2. 若要创建链接服务 **AzureSqlDWLinkedService**，请运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet。
+2. 若要创建链接服务 **AzureSqlDWLinkedService**，请运行 **Set-AzDataFactoryV2LinkedService** cmdlet。
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
     ```
 
     下面是示例输出：
@@ -213,10 +215,10 @@ ms.locfileid: "54438569"
     }
     ```
 
-2. 若要创建链接服务 **AzureStorageLinkedService**，请运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet。
+2. 若要创建链接服务 **AzureStorageLinkedService**，请运行 **Set-AzDataFactoryV2LinkedService** cmdlet。
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
     下面是示例输出：
@@ -252,10 +254,10 @@ ms.locfileid: "54438569"
     }
     ```
 
-2. 若要创建数据集 **AzureSqlDatabaseDataset**，请运行 **Set-AzureRmDataFactoryV2Dataset** cmdlet。
+2. 若要创建数据集 **AzureSqlDatabaseDataset**，请运行 **Set-AzDataFactoryV2Dataset** cmdlet。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
     ```
 
     下面是示例输出：
@@ -296,10 +298,10 @@ ms.locfileid: "54438569"
     }
     ```
 
-2. 若要创建数据集 **AzureSqlDWDataset**，请运行 **Set-AzureRmDataFactoryV2Dataset** cmdlet。
+2. 若要创建数据集 **AzureSqlDWDataset**，请运行 **Set-AzDataFactoryV2Dataset** cmdlet。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
     ```
 
     下面是示例输出：
@@ -388,10 +390,10 @@ ms.locfileid: "54438569"
     }
     ```
 
-2. 若要创建管道 **IterateAndCopySQLTables**，请运行 **Set-AzureRmDataFactoryV2Pipeline** cmdlet。
+2. 若要创建管道 **IterateAndCopySQLTables**，请运行 **Set-AzDataFactoryV2Pipeline** cmdlet。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
     ```
 
     下面是示例输出：
@@ -464,10 +466,10 @@ ms.locfileid: "54438569"
     }
     ```
 
-2. 若要创建管道 **GetTableListAndTriggerCopyData**，请运行 **Set-AzureRmDataFactoryV2Pipeline** cmdlet。
+2. 若要创建管道 **GetTableListAndTriggerCopyData**，请运行 **Set-AzDataFactoryV2Pipeline** cmdlet。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
     ```
 
     下面是示例输出：
@@ -485,14 +487,14 @@ ms.locfileid: "54438569"
 1. 针对“GetTableListAndTriggerCopyData”主管道启动管道运行，并捕获管道运行 ID，以便将来进行监视。 随后，此管道根据 ExecutePipeline 活动中的指定，触发管道“IterateAndCopySQLTables”的运行。
 
     ```powershell
-    $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'GetTableListAndTriggerCopyData'
+    $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'GetTableListAndTriggerCopyData'
     ```
 
 2.  运行以下脚本可持续检查管道 **GetTableListAndTriggerCopyData** 的运行状态，并列显最终管道运行和活动运行的结果。
 
     ```powershell
     while ($True) {
-        $run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
+        $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
             if ($run.Status -ne 'InProgress') {
@@ -507,7 +509,7 @@ ms.locfileid: "54438569"
         Start-Sleep -Seconds 15
     }
 
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     Write-Host "Activity run details:" -foregroundcolor "Yellow"
     $result
     ```
@@ -574,7 +576,7 @@ ms.locfileid: "54438569"
     ```
 
     ```powershell
-    $result2 = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId <copy above run ID> -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result2 = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId <copy above run ID> -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $result2
     ```
 

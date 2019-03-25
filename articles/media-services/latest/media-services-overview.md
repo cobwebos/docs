@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/26/2019
+ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: de1bd8599682baae860737401d02c7c1dec9e223
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 018392db2ffb510d41385d8e0af19635c35678e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960643"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003418"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
 
@@ -49,9 +49,9 @@ v3 基于一个统一的 API 接口，该接口公开了基于 Azure 资源管�
 
 * “转换”有助于定义媒体处理或分析任务的简单工作流。 “转换”是处理视频和音频文件的一种方法。 可以通过将作业提交到“转换”，重复应用“转换”来处理内容库中的所有文件。
 * “作业”用于处理（编码或分析）视频。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径，在作业上指定输入内容。 目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
-* “通知”用于监视作业进度或状态，或实时频道启动/停止和错误事件。 “通知”与 Azure 事件网格通知系统集成。 在 Azure 媒体服务中可以轻松订阅多个资源的事件。 
-* Azure 资源管理模板可用于创建和部署转换、流式处理终结点、频道等等。
-* 可在资源级别设置基于角色的访问控制，从而锁定对特定资源（如转换、频道）的访问。
+* “通知”用于监视作业进度或状态，或实时事件启动/停止和错误事件。 “通知”与 Azure 事件网格通知系统集成。 在 Azure 媒体服务中可以轻松订阅多个资源的事件。 
+* **Azure 资源管理**模板可用于创建和部署转换、流式处理终结点、实时事件等等。
+* 可在资源级别设置**基于角色的访问控制**，从而锁定对特定资源（如转换、实时事件等）的访问。
 * 多种语言的客户端 SDK：.NET、.NET core、Python、Go、Java 和 Node.js。
 
 ## <a name="naming-conventions"></a>命名约定

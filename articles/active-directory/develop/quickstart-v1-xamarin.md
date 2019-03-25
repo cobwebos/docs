@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6266ec1f01a50756f745c3e8185c9fe34e102b4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2e25848359de91d67925f49901c6c170978ea592
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196189"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078697"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>快速入门：构建集成 Microsoft 登录的 Xamarin 应用
 
@@ -59,11 +59,12 @@ ms.locfileid: "56196189"
 3. 在左窗格中，单击“所有服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”，并选择“添加”。
 5. 若要创建新的“本机客户端应用程序”，请遵照提示操作。
-  * “名称”向用户描述应用。
-  * **重定向 URI** 是 Azure AD 用来返回令牌响应的方案与字符串组合。 输入值 （例如 http://DirectorySearcher)  。
+   * “名称”向用户描述应用。
+   * **重定向 URI** 是 Azure AD 用来返回令牌响应的方案与字符串组合。 输入值（例如 `http://DirectorySearcher`）。
 6. 完成注册后，Azure AD 将为应用分配唯一的应用程序 ID。 复制“应用程序”选项卡中的值，因为稍后需用到此值。
 7. 在“设置”页上，选择“所需权限”，并选择“添加”。
-8. 选择“Microsoft Graph”作为 API。 在“委派权限”下面，添加“读取目录数据”权限。 此操作可让应用查询用户的图形 API。
+8. 选择“Microsoft Graph”作为 API。 在“委派权限”下面，添加“读取目录数据”权限。 
+   此操作可让应用查询用户的图形 API。
 
 ## <a name="step-3-install-and-configure-adal"></a>步骤 3：安装并配置 ADAL
 
@@ -95,9 +96,9 @@ ms.locfileid: "56196189"
 2. 在 DirectorySearcherLib 项目中，打开 DirectorySearcher.cs。
 3. 将类成员值替换为在 Azure 门户中输入的值。 只要使用 ADAL，代码就会引用这些值。
 
-  * *tenant* 是 Azure AD 租户的域（例如 contoso.onmicrosoft.com）。
-  * *clientId* 是从门户中复制的应用的客户端 ID。
-  * returnUri 是在门户中输入的重定向 URI （例如 http://DirectorySearcher)  。
+   * *tenant* 是 Azure AD 租户的域（例如 contoso.onmicrosoft.com）。
+   * *clientId* 是从门户中复制的应用的客户端 ID。
+   * returnUri 是在门户中输入的重定向 URI （例如 `http://DirectorySearcher`）。
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>步骤 4：使用 ADAL 从 Azure AD 获取令牌
 

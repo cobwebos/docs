@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e16a46db-5de2-4681-b7e0-94c670e3e54e
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c9b2770f861098993623d69f6b9f6a1577c9cf27
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: d1cc7735b8caa952a5ab7695d3e1f35b03fec1bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890512"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890672"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>教程：Azure Active Directory 与 PureCloud by Genesys 的集成
 
@@ -105,6 +105,7 @@ ms.locfileid: "56890512"
     ![PureCloud by Genesys 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，根据区域键入 URL：
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -114,6 +115,7 @@ ms.locfileid: "56890512"
     | `https://login.mypurecloud.au/saml` |
 
     b. 在“回复 URL”文本框中，根据区域键入 URL：
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -127,6 +129,7 @@ ms.locfileid: "56890512"
     ![PureCloud by Genesys 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，根据区域键入 URL：
+    
     | |
     |--|
     | `https://login.mypurecloud.com` |
@@ -220,7 +223,7 @@ ms.locfileid: "56890512"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -275,7 +278,7 @@ ms.locfileid: "56890512"
 
     a. 在“全名”文本框中，输入用户姓名，例如 Brittasimon。
 
-    b. 在“电子邮件”文本框中，输入用户的电子邮件，例如 **brittasimon@contoso.com**。
+    b. 在“电子邮件”文本框中，输入用户的电子邮件，例如 brittasimon\@contoso.com。
     
     c. 单击“创建”。
 

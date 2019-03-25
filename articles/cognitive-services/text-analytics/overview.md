@@ -1,38 +1,43 @@
 ---
-title: 什么是文本分析？
+title: 什么是文本分析 API？ - 功能 -
 titleSuffix: Azure Cognitive Services
-description: Azure 认知服务中用于情绪分析、关键短语提取、语言检测和实体链接的文本分析。
+description: Azure 认知服务中用于情绪分析、关键短语提取、语言检测和实体链接的文本分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 03/01/2019
 ms.author: aahi
-ms.openlocfilehash: 7623f98b9fd6c4bad8a41050e39b6e0e8650dccc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1e6aea792666447141e504f45a3ff55cb70f6261
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889270"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533232"
 ---
-# <a name="what-is-text-analytics"></a>什么是文本分析？
+# <a name="what-is-text-analytics-api"></a>什么是文本分析 API？
 
 文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、语言检测和实体链接。
 
 该 API 是 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。
 
-## <a name="capabilities-in-text-analytics"></a>文本分析的功能
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-文本分析可能有不同的含义，但在认知服务中，文本分析 API 提供下表所述的四种分析。
+文本分析可能有不同的含义，但在认知服务中，文本分析 API 提供如下所述的四种分析。
 
-| 操作| 说明 | API |
-|-----------|-------------|------|
-|[**情绪分析**](how-tos/text-analytics-how-to-sentiment-analysis.md) | 通过在原始文本中分析有关积极和消极情绪的线索，确定客户如何看待你的品牌或主题。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。<br /> 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](text-analytics-supported-languages.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package)  |
-|[**关键短语提取**](how-tos/text-analytics-how-to-keyword-extraction.md) | 自动提取关键短语，以快速识别要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。  | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
-|[**语言检测**](how-tos/text-analytics-how-to-language-detection.md) | 针对多达 120 种语言，该 API 将检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
-|[**实体识别（预览版）**](how-tos/text-analytics-how-to-entity-linking.md) | 识别文本中的实体并将其分类为人员、地点、组织、日期/时间、数量、百分比、货币等。 已知实体也可以在 Web 上识别并链接到更多信息。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) |
+## <a name="sentiment-analysis"></a>情绪分析
+通过在原始文本中分析有关积极和消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)确定客户如何看待你的品牌或主题。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。<br /> 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](text-analytics-supported-languages.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 可以使用 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) API 或 [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK。
+
+## <a name="key-phrase-extraction"></a>关键短语提取
+自动[提取关键短语](how-tos/text-analytics-how-to-keyword-extraction.md)，以快速识别要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 可以使用此处的 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) API，也可以使用 [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK。
+
+## <a name="language-detection"></a>语言检测
+可以针对多达 120 种语言，[检测输入文本是使用哪种语言编写的](how-tos/text-analytics-how-to-language-detection.md)，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 可以使用 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) API 或 [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK。
+
+## <a name="entity-recognition-preview"></a>实体识别（预览版）
+[识别文本中的实体并将其分类](how-tos/text-analytics-how-to-entity-linking.md)为人员、地点、组织、日期/时间、数量、百分比、货币等。 已知实体也可以在 Web 上识别并链接到更多信息。 可以使用 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) API。
 
 ## <a name="use-containers"></a>使用容器
 
@@ -80,18 +85,10 @@ ms.locfileid: "56889270"
 
 ## <a name="next-steps"></a>后续步骤
 
-首先请尝试[交互式演示](https://azure.microsoft.com/services/cognitive-services/text-analytics/)。 可以粘贴一段文本输入（最多 5,120 个字符）来检测语言（最多 120 种）、计算情绪评分，或提取关键短语。 不需要注册。
-
-准备好直接调用 API 时：
-
 + [注册](how-tos/text-analytics-how-to-signup.md)访问密钥，并查看[调用 API](how-tos/text-analytics-how-to-call-api.md) 的步骤。
 
-+ [快速入门](quickstarts/csharp.md)演练了以 C# 编写的 REST API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。
++ [快速入门](quickstarts/csharp.md)演练了以 C# 编写的 REST API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。 如果你愿意，可以改为从 [Python 快速入门](quickstarts/python.md)着手。
 
-+ [API 参考文档](//go.microsoft.com/fwlink/?LinkID=759346)提供了 API 的技术文档。 该文档支持嵌入式调用，使你能够从每个文档页调用 API。
++ 更深入地探讨此[情绪分析教程](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services)（使用 Azure Databricks）。
 
-+ [外部和社区内容](text-analytics-resource-external-community.md)提供了演示如何结合其他工具和技术使用文本分析的博客文章与视频列表。
-
-## <a name="see-also"></a>另请参阅
-
- [认知服务文档页](https://docs.microsoft.com/azure/cognitive-services/)
++ 在[外部和社区内容页](text-analytics-resource-external-community.md)中查看一系列博客文章和更多的视频，了解如何结合其他工具和技术使用文本分析 API。

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: ab6048ff54f9c593bb62fb3e9c40af930bf1edad
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 4759676eff03606998759a586f758b7a26ead23d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091583"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077541"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box 的布线选项
 
@@ -39,7 +39,7 @@ ms.locfileid: "50091583"
     - 将“IP 地址”设置为 192.168.100.5
     - 将“子网”设置为 255.255.255.0
 
-3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
+3. 在以下网址访问设备的本地 Web UI：192.168.100.10。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 
 
 ## <a name="transfer-via-data-port-with-static-ips"></a>使用静态 IP 通过 DATA 端口进行传输
@@ -62,12 +62,12 @@ ms.locfileid: "50091583"
 2. 使用用于 DATA 3 的 RJ45 或 SFP+ 电缆将 DATA 1 或 DATA 2 连接到充当数据源的服务器。 建议使用 10-GbE DATA 1 或 DATA 2 端口以确保良好的性能。
 3. 在服务器上，请完成以下设置：
 
-    - 将“IP 地址”设置为 192.168.100.5
-    - 将“子网”设置为 255.255.255.0
+   - 将“IP 地址”设置为 192.168.100.5
+   - 将“子网”设置为 255.255.255.0
 
-    ![双端口设置](media/data-box-cable-options/cabling-2-port-setup.png)
+     ![双端口设置](media/data-box-cable-options/cabling-2-port-setup.png)
 
-3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
+3. 在以下网址访问设备的本地 Web UI：192.168.100.10。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 4. 为已配置的数据端口分配静态 IP。
 
 ### <a name="option-2---initial-setup-via-separate-computer"></a>选项 2 - 通过单独的计算机进行的初始设置
@@ -78,12 +78,12 @@ ms.locfileid: "50091583"
 2. 使用用于 DATA 3 的 RJ45 或 SFP+ 电缆将 DATA 1 或 DATA 2 连接到服务器。 建议使用 10-GbE DATA 1 或 DATA 2 端口以确保良好的性能。 数据端口通过 10-GbE 交换机连接到包含数据的服务器。
 3. 配置所用笔记本的以太网适配器，以便通过以下设置连接到设备：
 
-    - **IP 地址** 192.168.100.5
-    - **子网** 255.255.255.0。
+   - **IP 地址** 192.168.100.5
+   - **子网** 255.255.255.0。
 
-    ![通过交换机进行的双端口设置](media/data-box-cable-options/cabling-with-static-ip.png)
+     ![通过交换机进行的双端口设置](media/data-box-cable-options/cabling-with-static-ip.png)
 
-3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
+3. 在以下网址访问设备的本地 Web UI：192.168.100.10。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 4. 标识 DHCP 服务器分配的 IP 地址。
 
 ## <a name="transfer-via-data-port-with-static-ips-using-a-switch"></a>使用交换机和静态 IP 通过 DATA 端口进行传输 
@@ -102,12 +102,12 @@ ms.locfileid: "50091583"
 2. 使用用于 DATA 3 的 RJ45 或 SFP+ 电缆将 DATA 1 或 DATA 2 连接到服务器。 建议使用 10-GbE DATA 1 或 DATA 2 端口以确保良好的性能。
 3. 配置所用笔记本的以太网适配器，以便通过以下设置连接到设备：
 
-    - **IP 地址** 192.168.100.5
-    - **子网** 255.255.255.0。
+   - **IP 地址** 192.168.100.5
+   - **子网** 255.255.255.0。
 
-    ![通过交换机进行的双端口设置](media/data-box-cable-options/cabling-with-switch-static-ip.png)
+     ![通过交换机进行的双端口设置](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
-3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
+3. 在以下网址访问设备的本地 Web UI：192.168.100.10。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 4. 为已配置的数据端口分配静态 IP。
 
 

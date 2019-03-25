@@ -1,24 +1,24 @@
 ---
-title: 连接使用 Windows 7 和 Windows 10 （预览版）-Azure
-description: 如何连接到 Windows 虚拟桌面 HTML5 web 客户端。
+title: 连接到使用 Windows 7 和 Windows 10-Azure Windows 虚拟桌面预览
+description: 如何连接到 Windows 7 或 Windows 10 的 Windows 虚拟桌面预览客户端。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 925d762bb065567f6462fdb1614fc308e87b5247
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 644a1d650384f151d9c43b9efa5f47532c58ce14
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318234"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399731"
 ---
-# <a name="connect-with-windows-7-and-windows-10-preview"></a>连接使用 Windows 7 和 Windows 10 （预览）
+# <a name="connect-with-windows-7-and-windows-10"></a>使用 Windows 7 和 Windows 10 进行连接
 
 > 适用于Windows 7 和 Windows 10。
 
-提供可下载的客户端，提供对访问的 Windows 虚拟桌面 （预览版） 资源从运行 Windows 7 和 Windows 10 的设备。
+提供可下载的客户端，提供对访问的 Windows 虚拟桌面预览资源从运行 Windows 7 和 Windows 10 的设备。
 
 ## <a name="install-the-client"></a>安装客户端
 

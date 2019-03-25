@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2c5a7dc08886e21ef8e287540d9139ec555b11a2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242286"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400630"
 ---
 # <a name="collect-data-from-threat-intelligence-providers"></a>从威胁智能提供程序收集数据 
 
@@ -31,6 +31,8 @@ ms.locfileid: "57242286"
 若要使您能够跨检查警报和规则使用，则返回 true 的威胁智能，例如，如果警报是由特定的 IP 地址，将能够让你知道是否最近找到该 IP 地址为恶意威胁智能提供程序集成Azure Sentinel 可与集成[威胁智能提供商处](https://aka.ms/graphsecuritytips)。 
 
 可以通过单击一次流式威胁智能提供程序中的日志传输到 Azure Sentinel。 此连接，可将合并指标包含各种类型的可观察量，如 IP 地址、 域名、 URL 和文件哈希以搜索以及创建自定义警报规则在 Azure Sentinel。  
+> [!NOTE]
+> 你可以输入自定义的威胁指示器 Azure Sentinel 在警报规则、 仪表板，以及搜索方案中使用通过集成[Microsoft Graph Security tiIndicator](https://aka.ms/graphsecuritytiindicators)实体或通过使用[Microsoft图形安全集成威胁智能平台](https://aka.ms/graphsecuritytips)。
 
 ## <a name="prerequisites"></a>必备组件  
 

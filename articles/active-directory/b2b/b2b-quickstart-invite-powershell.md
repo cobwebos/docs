@@ -9,13 +9,14 @@ ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8417e2118de01d00e8b0450374a9b10bff40221f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 7b9274652b7164a4aef71499912cb8b38ace29ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675137"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854443"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>快速入门：使用 PowerShell 添加来宾用户
 
@@ -73,7 +74,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-an-invitation"></a>发送邀请
 
-1. 要向测试电子邮件帐户发送邀请，请运行以下 PowerShell 命令（将“Sanda”和 sanda@fabrikam.com 更换为你的测试电子邮件帐户名和电子邮件地址）： 
+1. 要向测试电子邮件帐户发送邀请，请运行以下 PowerShell 命令（将“Sanda”和“sanda\@fabrikam.com”替换为你的测试电子邮件帐户名和电子邮件地址）： 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
@@ -89,7 +90,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. 查看输出，确保已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress#EXT#@domain 的格式。 例如，sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com，其中 contoso.onmicrosoft.com 是你发送其邀请的组织。
+3. 查看输出，确保已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress#EXT#\@domain 的格式。 例如，sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com，其中 contoso.onmicrosoft.com 是你从其发送邀请的组织。
 
    ![显示已添加的来宾用户的 PowerShell 输出](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

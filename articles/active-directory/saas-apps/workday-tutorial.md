@@ -3,59 +3,48 @@ title: 教程：Azure Active Directory 与 Workday 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Workday 之间配置单一登录。
 services: active-directory
 documentationCenter: na
-author: cmmdesai
-manager: daveba
-ms.reviewer: jeedes
+author: jeevansd
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: e9da692e-4a65-4231-8ab3-bc9a87b10bca
 ms.service: active-directory
-ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/11/2018
-ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae93cce7a26666383b609ac898a25fb84caee517
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.topic: tutorial
+ms.date: 03/04/2019
+ms.author: jeedes
+ms.openlocfilehash: 9bcc74e395746ae82867d915ea37962bf8880a3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>教程：Azure Active Directory 与 Workday 的集成
 
 本教程介绍如何将 Workday 与 Azure Active Directory (Azure AD) 集成。
-
 将 Workday 与 Azure AD 集成可提供以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 Workday。
-- 可让用户使用其 Azure AD 帐户自动登录 Workday（单一登录）。
-- 可在中心位置（即 Azure 门户）管理帐户。
+* 可在 Azure AD 中控制谁有权访问 Workday。
+* 可让用户使用其 Azure AD 帐户自动登录到 Workday（单一登录）。
+* 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Workday 的集成，需要以下项：
 
-- Azure AD 订阅
-- 已启用 Workday 单一登录的订阅
-
-> [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
-
-测试本教程中的步骤应遵循以下建议：
-
-- 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 已启用 Workday 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
 
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-1. 从库中添加 Workday
-2. 配置和测试 Azure AD 单一登录
+* Workday 支持 **SP** 和 **IDP** 发起的 SSO
 
 ## <a name="adding-workday-from-the-gallery"></a>从库中添加 Workday
 
@@ -63,113 +52,119 @@ ms.locfileid: "56301632"
 
 若要从库中添加 Workday，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![“Azure Active Directory”按钮][1]
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-    ![“企业应用程序”边栏选项卡][2]
-    
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新增应用程序”按钮][3]
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中键入“Workday”，在结果面板中选择“Workday”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的 Workday](./media/workday-tutorial/tutorial_workday_addfromgallery.png)
+     ![结果列表中的 Workday](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Workday 的 Azure AD 单一登录。
-
-为了使单一登录能正常工作，Azure AD 需要知道 Workday 中与 Azure AD 用户相对应的用户。 换句话说，需要在 Azure AD 用户与 Workday 中的相关用户间建立关联。
-
-通过将 Azure AD 中“用户名”的值指定为 Workday 中“用户名”的值来建立此链接关系。
+在本部分，我们基于名为 **Britta Simon** 的测试用户来配置并测试 Workday 的 Azure AD 单一登录。
+若要正常使用单一登录，需要在 Azure AD 用户与 Workday 相关用户之间建立链接关系。
 
 若要配置和测试 Workday 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Workday 测试用户](#create-a-workday-test-user)** - 在 Workday 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+2. **[配置 Workday 单一登录](#configure-workday-single-sign-on)** - 在应用程序端配置单一登录。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+5. **[创建 Workday 测试用户](#create-workday-test-user)** - 在 Workday 中创建 Britta Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
+6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Workday 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
 若要配置 Workday 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 Azure 门户中的 Workday 应用程序集成页上，单击“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Workday”应用程序集成页上，选择“单一登录”。
 
-    ![配置单一登录链接][4]
+    ![配置单一登录链接](common/select-sso.png)
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
-    ![“单一登录”对话框](./media/workday-tutorial/tutorial_workday_samlbase.png)
+    ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“Workday 域和 URL”部分中，执行以下步骤：
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    ![Workday 域和 URL 单一登录信息](./media/workday-tutorial/tutorial_workday_url.png)
+    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://impl.workday.com/<tenant>/login-saml2.flex`
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    b. 在“标识符”文本框中，键入一个 URL：`https://www.workday.com`
+    ![Workday 域和 URL 单一登录信息](common/sp-identifier.png)
 
-4. 选中“显示高级 URL 设置”，并执行以下步骤：
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https:\//impl.workday.com/<tenant>/login-saml2.flex`。
 
-    ![Workday 域和 URL 单一登录信息](./media/workday-tutorial/tutorial_workday_url1.png)
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.workday.com`
 
-    在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
+5. 单击“设置其他 URL”并执行以下步骤：
+
+    ![Workday 域和 URL 单一登录信息](./media/workday-tutorial/reply.png)
+
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https:\//impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 回复 URL 必须具有一个子域（例如：www、wd2、wd3、wd3-impl、wd5 和 wd5-impl）。
-    > 使用类似于“*http://www.myworkday.com*”的内容有效，但“*http://myworkday.com*”无效。 请联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)获取这些值。
+    > 可以使用类似于 `http://www.myworkday.com` 的内容，但不能使用 `http://myworkday.com`。 请联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. Workday 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示了此配置的示例。
+6. Workday 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Workday 应用程序要求通过 **user.mail**、**UPN** 等对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
-    ![配置单一登录](./media/Workday-tutorial/tutorial_workday_attributes.png)
+    ![图像](common/edit-attribute.png)
 
     > [!NOTE]
     > 此处我们已将名称 ID 与 UPN (user.userprincipalname) 映射为默认值。 需要在 Workday 帐户（电子邮件、UPN 等）中将名称 ID 与实际用户 ID 进行映射，以便成功运行 SSO。
 
-6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
-    ![证书下载链接](./media/workday-tutorial/tutorial_workday_certificate.png)
+    ![证书下载链接](common/certificatebase64.png)
 
-7. 单击“保存”按钮。
+8. 在“设置 Workday”部分，根据要求复制相应的 URL。
 
-    ![配置单一登录“保存”按钮](./media/workday-tutorial/tutorial_general_400.png)
+    ![复制配置 URL](common/copy-configuration-urls.png)
 
-8. 在“Workday 配置”部分，单击“配置 Workday”，打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+    a. 登录 URL
 
-    ![Workday 配置](./media/workday-tutorial/tutorial_workday_configure.png)
+    b. Azure AD 标识符
 
-9. 在另一 Web 浏览器窗口中，以管理员身份登录 Workday 公司站点。
+    c. 注销 URL
 
-10. 在主页左上方的“搜索框”中使用名称“编辑租户设置 - 安全性”搜索。
+### <a name="configure-workday-single-sign-on"></a>配置 Workday 单一登录
+
+1. 在另一 Web 浏览器窗口中，以管理员身份登录 Workday 公司站点。
+
+2. 在主页左上方的“搜索框”中使用名称“编辑租户设置 - 安全性”搜索。
 
     ![编辑租户安全性](./media/workday-tutorial/IC782925.png "编辑租户安全性")
 
-11. 在“重定向 URL”部分中，执行以下步骤：
+3. 在“重定向 URL”部分中，执行以下步骤：
 
     ![重定向 URL](./media/workday-tutorial/IC7829581.png "重定向 URL")
 
     a. 单机“添加行”。
 
-    b. 在“登录重定向 URL”文本框和“移动重定向 URL”文本框中，键入在 Azure 门户的“Workday 域和 URL”部分中输入的登录 URL。
+    b. 在“登录重定向 URL”文本框和“移动重定向 URL”文本框中，键入在 Azure 门户的“基本 SAML 配置”部分中输入的“登录 URL”。
 
-    c. 在 Azure 门户的“配置登录”窗口中，复制“注销 URL”，然后将其粘贴到“注销重定向 URL”文本框。
+    c. 在 Azure 门户的“设置 Workday”部分复制“注销 URL”，然后将其粘贴到“注销重定向 URL”文本框中。
 
     d. 在“用于环境”文本框中，选择环境名称。  
 
-    >[!NOTE]
-    > “环境”属性的值与租户 URL 的值绑定：  
-    >-如果 Workday 租户 URL 的域名以 impl 开头（例如：*https://impl.workday.com/\<tenant\>/login-saml2.flex*），则“环境”属性必须设置为“实现”。  
-    >如果域名以其他内容开头，则需要联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)，获取匹配的“环境”值。
+   > [!NOTE]
+   > “环境”属性的值与租户 URL 的值绑定：  
+   > 如果 Workday 租户 URL 的域名以 impl 开头（例如：*https:\//impl.workday.com/\<tenant\>/login-saml2.flex*），则“环境”属性必须设置为“实现”。  
+   > 如果域名以其他内容开头，则需要联系 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)，获取匹配的“环境”值。
 
-12. 在“SAML 设置”部分中执行以下步骤：
+4. 在“SAML 设置”部分中执行以下步骤：
 
     ![SAML 设置](./media/workday-tutorial/IC782926.png "SAML 设置")
 
@@ -177,19 +172,19 @@ ms.locfileid: "56301632"
 
     b.  单击“添加行”。
 
-13. 在“SAML 标识提供者”部分中，执行以下步骤：
+5. 在“SAML 标识提供者”部分中，执行以下步骤：
 
     ![SAML 标识提供者](./media/workday-tutorial/IC7829271.png "SAML 标识提供者")
 
     a. 在“标识提供者名称”文本框中，键入提供者名称（例如：SPInitiatedSSO）。
 
-    b. 在 Azure 门户的“配置登录”窗口中，复制“SAML 实体 ID”值，然后将其粘贴到“颁发者”文本框。
+    b. 在 Azure 门户的“设置 Workday”部分复制“Azure AD 标识符”值，然后将其粘贴到“颁发者”文本框中。
 
     ![SAML 标识提供者](./media/workday-tutorial/IC7829272.png "SAML 标识提供者")
 
-    c. 在 Azure 门户的“配置登录”窗口中，复制“注销 URL”值，然后将其粘贴到“注销响应 URL”文本框中。
+    c. 在 Azure 门户的“设置 Workday”部分复制“注销 URL”值，然后将其粘贴到“注销响应 URL”文本框中。
 
-    d. 在 Azure 门户的“配置登录”窗口中，复制“SAML 单一登录服务 URL”值，然后将其粘贴到“IdP SSO 服务 URL”文本框。
+    d. 在 Azure 门户的“设置 Workday”部分复制“登录 URL”值，然后将其粘贴到“IdP SSO 服务 URL”文本框中。
 
     e. 在“用于环境”文本框中，选择环境名称。
 
@@ -201,7 +196,7 @@ ms.locfileid: "56301632"
 
     ![创建](./media/workday-tutorial/IC782929.png "创建")
 
-14. 在“查看 x509 公钥”部分中，执行以下步骤：
+6. 在“查看 x509 公钥”部分中，执行以下步骤：
 
     ![查看 x509 公钥](./media/workday-tutorial/IC782930.png "查看 x509 公钥")
 
@@ -222,7 +217,7 @@ ms.locfileid: "56301632"
 
     f.  单击“确定”。
 
-15. 执行以下步骤：
+7. 执行以下步骤：
 
     ![SSO 配置](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO 配置")
 
@@ -241,95 +236,72 @@ ms.locfileid: "56301632"
     > [!NOTE]
     > 请确保正确设置单一登录。 如果使用不正确的设置启用单一登录，则可能无法使用凭据进入应用程序并被锁定。在这种情况下，Workday 提供备份登录 URL，用户可以使用以下格式的普通用户名和密码登录：[Workday URL]/login.flex?redirect=n
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-   ![创建 Azure AD 测试用户][100]
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![“用户和组”以及“所有用户”链接](common/users.png)
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![“Azure Active Directory”按钮](./media/workday-tutorial/create_aaduser_01.png)
+    ![“新建用户”按钮](common/new-user.png)
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+3. 在“用户属性”中，按照以下步骤操作。
 
-    ![“用户和组”以及“所有用户”链接](./media/workday-tutorial/create_aaduser_02.png)
+    ![“用户”对话框](common/user-properties.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
-
-    ![“添加”按钮](./media/workday-tutorial/create_aaduser_03.png)
-
-4. 在“用户”对话框中，执行以下步骤：
-
-    ![“用户”对话框](./media/workday-tutorial/create_aaduser_04.png)
-
-    a. 在“姓名”框中，键入“BrittaSimon”。
-
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    a. 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中，键入 **brittasimon\@yourcompanydomain.extension**  
+    例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 单击“创建”。
- 
-### <a name="create-a-workday-test-user"></a>创建 Workday 测试用户
-
-在本部分中，将在 Workday 中创建一个名为“Britta Simon”的用户。 请与 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)协作来在 Workday 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 本部分中，通过授予 Britta Simon 访问 Workday 的权限，允许她使用 Azure 单一登录。
 
-![分配用户角色][200] 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Workday”。
 
-若要将 Britta Simon 分配到 Workday，请执行以下步骤：
-
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
-
-    ![分配用户][201] 
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
 2. 在应用程序列表中，选择“Workday”。
 
-    ![应用程序列表中的 Workday 链接](./media/workday-tutorial/tutorial_workday_app.png)  
+    ![应用程序列表中的 Workday 链接](common/all-applications.png)
 
-3. 在左侧菜单中，单击“用户和组”。
+3. 在左侧菜单中，选择“用户和组”。
 
-    ![“用户和组”链接][202]
+    ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![“添加分配”窗格][203]
+    ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
-    
-### <a name="test-single-sign-on"></a>测试单一登录
+7. 在“添加分配”对话框中，单击“分配”按钮。
+
+### <a name="create-workday-test-user"></a>创建 Workday 测试用户
+
+在本部分中，将在 Workday 中创建一个名为“Britta Simon”的用户。 请与 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)协作来在 Workday 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+
+### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Workday”磁贴时，应当会自动登录到 Workday 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+在访问面板中单击“Workday”磁贴时，应会自动登录到设置了 SSO 的 Workday。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[1]: ./media/workday-tutorial/tutorial_general_01.png
-[2]: ./media/workday-tutorial/tutorial_general_02.png
-[3]: ./media/workday-tutorial/tutorial_general_03.png
-[4]: ./media/workday-tutorial/tutorial_general_04.png
-
-[100]: ./media/workday-tutorial/tutorial_general_100.png
-
-[200]: ./media/workday-tutorial/tutorial_general_200.png
-[201]: ./media/workday-tutorial/tutorial_general_201.png
-[202]: ./media/workday-tutorial/tutorial_general_202.png
-[203]: ./media/workday-tutorial/tutorial_general_203.png

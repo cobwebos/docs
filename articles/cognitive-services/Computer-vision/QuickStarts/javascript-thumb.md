@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 095866c08ca160664ba03ae0d0bdc4840f9ac954
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 20ce4ce311e657f4d34359c96dda939d0ced01b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865040"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834381"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-javascript-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 JavaScript 生成缩略图
 
-在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法，可以生成图像的缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
+在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
@@ -164,10 +164,6 @@ Image for thumbnail:
 ## <a name="examine-the-response"></a>检查响应
 
 成功的响应将以二进制数据形式返回，这些数据表示缩略图的图像数据。 如果请求成功，会根据响应中的二进制数据生成缩略图，并在浏览器窗口中显示该缩略图。 如果请求失败，则响应将显示在控制台窗口中。 失败请求的响应包含错误代码和消息，用以帮助确定出错的地方。
-
-## <a name="clean-up-resources"></a>清理资源
-
-不再需要该文件时，请将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

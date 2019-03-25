@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 262f7f49987dba8340ba4a1f0e6e505b9858e1e5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1930ef761b4be9d8085fd6e1785e78146c6b5547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109152"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的必应新闻搜索 SDK 执行新闻搜索
 
@@ -52,7 +52,7 @@ ms.locfileid: "55863867"
 
 ## <a name="send-a-search-query"></a>发送搜索查询
 
-3. 使用客户端通过查询词进行搜索，在本例中查询词为“Winter Olympics”：
+1. 使用客户端通过查询词进行搜索，在本例中查询词为“Winter Olympics”：
     
     ```javascript
     client.newsOperations.search(search_term).then((result) => {
@@ -72,4 +72,4 @@ ms.locfileid: "55863867"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-[创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)
+> [创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

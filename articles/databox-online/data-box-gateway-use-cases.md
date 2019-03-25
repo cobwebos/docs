@@ -1,18 +1,18 @@
 ---
-title: Microsoft Azure Data Box Gateway 用例 | Microsoft Docs
-description: 介绍 Azure Data Box Gateway（一种可以将数据传输到 Azure 的虚拟设备存储解决方案）的用例
+title: Microsoft Azure 数据框网关用例 |Microsoft Docs
+description: Azure 数据框网关，使您能够将数据传输到 Azure 的虚拟设备存储解决方案描述用例
 services: databox
 author: alkohli
 ms.service: databox
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 03/2/2019
 ms.author: alkohli
-ms.openlocfilehash: d1367504182eb8d8335796dc37800c30e0a563b8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 37ec1d05d07f33343b9ff21380a277d00b242b7c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438586"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403793"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的用例
 
@@ -26,8 +26,6 @@ Azure Data Box Gateway 是一种驻留在本地的云存储网关设备，可将
 
 后续部分将详细介绍以上每种场景。
 
-> [!IMPORTANT]
-> Data Box Gateway 以预览版提供。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="continuous-data-ingestion"></a>持续数据引入
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a00ecf6e-917a-4284-b998-41506931585e
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5523394387802e895c487ed1a7df2e4e28125d9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 12eb3c9bc011a6dd0af2054d8a0f3b1568d0ed21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869184"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850830"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>教程：Azure Active Directory 与 EmpCenter 的集成
 
@@ -106,6 +106,7 @@ ms.locfileid: "56869184"
     ![EmpCenter 域和 URL 单一登录信息](common/sp-signonurl.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://<subdomain>.EmpCenter.com/<instancename>` |
@@ -150,7 +151,7 @@ ms.locfileid: "56869184"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

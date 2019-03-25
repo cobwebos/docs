@@ -1,7 +1,7 @@
 ---
 title: Azure SQL 数据仓库 Gen2 支持较低的计算层 | Microsoft Docs
 description: Azure SQL 数据仓库 Gen2 现支持较低的计算层
-author: antvgski
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.subservice: design
 ms.date: 12/03/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: bd0ec4d334b581d86451e5e534e80c1fde1e33ac
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 23617f3a7eca72e549bcf0e44805d21eef6ffa9b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445231"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400320"
 ---
 # <a name="azure-sql-data-warehouse-gen2-support-for-lower-compute-tiers"></a>Azure SQL 数据仓库 Gen2 支持较低的计算层
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a04b9383-3a60-4d54-9412-123daaddff3b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2c6b95d62f6210ecfdd560bc1c00a3e055be3ee
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c24cbf8ad21c7dd5875a71532a5278e313774e66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880337"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883961"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>教程：Azure Active Directory 与 dmarcian 集成
 
@@ -106,6 +106,7 @@ ms.locfileid: "56880337"
     ![dmarcian 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：
+
     | |
     | -- |
     | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
@@ -113,6 +114,7 @@ ms.locfileid: "56880337"
     | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：
+
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
@@ -124,6 +126,7 @@ ms.locfileid: "56880337"
     ![dmarcian 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
@@ -186,7 +189,7 @@ ms.locfileid: "56880337"
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -239,7 +242,7 @@ ms.locfileid: "56880337"
 
     ![新用户](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. 在“新用户的电子邮件”文本框中，输入用户的电子邮件地址，例如 **brittasimon@contoso.com**。
+    a. 在“新建用户电子邮件”文本框中，输入用户的电子邮件，例如 brittasimon\@contoso.com。
 
     b. 若要向该用户授予管理员权限，请选择“将用户设为管理员”。
 

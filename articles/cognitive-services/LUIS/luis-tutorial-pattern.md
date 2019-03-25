@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 01/30/2019
+ms.date: 02/22/2019
 ms.author: diberry
-ms.openlocfilehash: 3fe549a63f0fb4662ba5beb2e28f1ca72fcc1ee4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 33541d2a61c52476f6e314f6981a623390de8fa9
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55855877"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193732"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>教程：添加常见的模式模板话语格式
 
@@ -221,22 +221,7 @@ ms.locfileid: "55855877"
 
 **尽管模式允许提供较少的示例话语，但如果未检测到实体，则该模式将不匹配。**
 
-在本教程中，添加两个新的意向：`OrgChart-Manager` 和 `OrgChart-Reports`。 
-
-|意向|话语|
-|--|--|
-|OrgChart-Manager|Jill Jones 向谁报告？|
-|OrgChart-Reports|谁向 Jill Jones 报告？|
-
-LUIS 向客户端应用返回预测后，意向名称可以用作客户端应用中的函数名称，并且“员工”实体可以用作该函数的参数。
-
-```javascript
-OrgChartManager(employee){
-    ///
-}
-```
-
-请记住，员工是在[列表实体教程](luis-quickstart-intent-and-list-entity.md)中创建的。
+## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>添加 OrgChart-Manager 意向的模式
 
 1. 选择顶部菜单中的“生成”。
 
@@ -259,7 +244,7 @@ OrgChartManager(employee){
 
     [![为意向输入模板话语的屏幕截图](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. 选择 **OrgChart-Reports** 意向，然后输入以下模板话语：
+4. 在“模式”页上选择“OrgChart-Reports”意向，然后输入以下模板言语：
 
     |模板话语|
     |:--|
@@ -272,11 +257,13 @@ OrgChartManager(employee){
 
 ## <a name="query-endpoint-when-patterns-are-used"></a>使用模式时查询终结点
 
+将模式添加到应用后，在预测运行时终结点上训练、发布和查询应用。
+
 1. 再次定型并发布应用。
 
-2. 将浏览器选项卡切换回终结点 URL 选项卡。
+1. 将浏览器选项卡切换回终结点 URL 选项卡。
 
-3. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?` 作为话语。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
+1. 将光标定位到地址中 URL 的末尾，并输入 `Who is the boss of Jill Jones?` 作为话语。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
     ```json
     {
@@ -362,11 +349,11 @@ OrgChartManager(employee){
     }
     ```
 
-意向预测现在明显更高。
+现在，意向预测的置信度已明显提高。
 
 ## <a name="working-with-optional-text-and-prebuilt-entities"></a>使用可选文本和预构建的实体
 
-本教程中前面的模式模板话语包含几个可选文本示例，例如字母 s 的所有格 `'s` 的使用以及问号 `?` 的使用。 假设终结点话语表明，经理和人力资源代表在查找历史数据以及计划在将来某个日期在公司内进行的员工移动。
+本教程中前面的模式模板话语包含几个可选文本示例，例如字母 s 的所有格 `'s` 的使用以及问号 `?` 的使用。 假设需要在言语文本中允许当前和未来日期。
 
 示例话语如下：
 
@@ -379,23 +366,22 @@ OrgChartManager(employee){
 
 这些示例每个都使用 LUIS 需要正确预测的动词时态 `was`、`is`、`will be` 以及日期 `March 3`、`now` 和 `in a month`。 注意，除了 `in` 和 `on` 之外，最后两个示例使用了几乎相同的文本。
 
-示例模板话语如下：
+允许此可选信息的示例模板言语： 
+
 |意向|包含可选文本和预构建的实体的示例话语|
 |:--|:--|
 |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`]|
 |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
 
 可选语法方括号 `[]` 的使用使此可选文本易于添加到模板话语中，并且可以嵌套到另一个级别 `[[]]` 并包括实体或文本。
 
-**问：为何不能将最后两句示例话语合并为单个模板话语？** 模式模板不支持 OR 语法。 为了同时捕获 `in` 版本和 `on` 版本，每句话语都必须作为单独的模板话语。
 
 **问：为何所有 `w` 字母（每句模板话语中的第一个字母）都是小写？它们不应当任选使用大写或小写吗？** 由客户端应用程序提交到查询终结点的话语将转换为小写。 模板话语可以为大写或小写，终结点话语也可以任意使用大写或小写。 比较始终在转换为小写后进行。
 
 **问：如果 March 3 被同时预测为数字 `3` 和日期 `March 3`，预构建的数字为何不是模板话语的一部分？** 模板话语从上下文来看使用的是日期，无论是逐字表示为 `March 3` 还是抽象为 `in a month`. 日期可以包含数字，但数字不一定会被视为日期。 请始终使用能够最好地表示你要在预测 JSON 结果中返回的类型的实体。  
 
-**问：如果使用了措辞不当的话语（例如 `Who will {Employee}['s] manager be on March 3?`），将会怎样？** 像这种在语法上不同的动词时态（其中 `will` 和 `be` 是独立的）需要作为一句新的模板话语。 现有模板话语将不会匹配它。 虽然话语的意向未更改，但是话语中的单词位置已更改。 此更改会影响 LUIS 中的预测。
+**问：如果使用了措辞不当的话语（例如 `Who will {Employee}['s] manager be on March 3?`），将会怎样？** 像这种在语法上不同的动词时态（其中 `will` 和 `be` 是独立的）需要作为一句新的模板话语。 现有模板话语将不会匹配它。 虽然话语的意向未更改，但是话语中的单词位置已更改。 此更改会影响 LUIS 中的预测。 可以使用 [group 和 or 运算符](#use-the-or-operator-and-groups)来组合谓语时态，以合并这些言语。 
 
 **请记住：将首先查找实体，然后再匹配模式。**
 
@@ -403,11 +389,9 @@ OrgChartManager(employee){
 
 1. 在 LUIS 网站上，在顶部的菜单中选择“生成”，然后在左侧菜单中选择“模式”。 
 
-2. 找到现有模板话语 `Who is {Employee}['s] manager[?]`，并选择右侧的省略号 (***...***)。 
+1. 搜索现有的模板言语 `Who is {Employee}['s] manager[?]`，选择右侧的省略号 (***...***)，然后在弹出菜单中选择“编辑”。 
 
-3. 从弹出菜单中选择“编辑”。 
-
-4. 将模板话语更改为：`who is {Employee}['s] manager [[on]{datetimeV2}?]]`
+1. 将模板话语更改为：`who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
 ## <a name="add-new-pattern-template-utterances"></a>添加新的模式模板话语
 
@@ -416,7 +400,6 @@ OrgChartManager(employee){
     |意向|包含可选文本和预构建的实体的示例话语|
     |--|--|
     |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
@@ -426,7 +409,7 @@ OrgChartManager(employee){
 
 4. 输入多条测试话语来验证模式是否匹配以及意向得分是否很高。 
 
-    输入第一条话语后，选择结果下的“检查”，以便可以看到所有预测结果。
+    输入第一条话语后，选择结果下的“检查”，以便可以看到所有预测结果。 每个言语应该包含 **OrgChart Manager** 意向，并且应提取 Employee 和 datetimeV2 实体的值。
 
     |话语|
     |--|
@@ -438,6 +421,51 @@ OrgChartManager(employee){
     |Who will be Jill Jones manager in a month?|
 
 所有这些话语都在内部找到了实体，因此它们将匹配相同的模式，并且具有很高的预测得分。
+
+## <a name="use-the-or-operator-and-groups"></a>使用 OR 运算符和 group
+
+前面的几个模板言语非常接近。 使用 **group** `()` 和 **OR** `|` 语法可以减少模板言语。 
+
+使用 group `()` 和 OR `|` 语法可将以下 2 个模式合并成单个模式。
+
+|意向|包含可选文本和预构建的实体的示例话语|
+|--|--|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+
+新的模板言语为： 
+
+`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`。 
+
+此代码围绕所需的谓语时态使用 **group**，并在两者之间结合 **or** 管道使用可选的 `in` 和 `on`。 
+
+1. 在“模式”页上，选择“OrgChart-Manager”筛选器。 通过搜索 `manager` 来缩小列表范围。 
+
+    ![在 OrgChart-Manager 意向模式中搜索“manager”一词](./media/luis-tutorial-pattern/search-patterns.png)
+
+1. 保留模板言语的一个版本（以便在下一步骤中编辑），并删除其他变体。 
+
+1. 将模板言语更改为： 
+
+    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`。
+
+1. 将应用定型。
+
+1. 使用“测试”窗格测试言语的版本：
+
+    |在“测试”窗格中输入的言语|
+    |--|
+    |`Who is Jill Jones manager this month`|
+    |`Who is Jill Jones manager on July 5th`|
+    |`Who was Jill Jones manager last month`|
+    |`Who was Jill Jones manager on July 5th`|    
+    |`Who will be Jill Jones manager in a month`|
+    |`Who will be Jill Jones manager on July 5th`|
+
+
+## <a name="use-the-utterance-beginning-and-ending-anchors"></a>使用言语开头和结尾定位符
+
+模式语法提供包含脱字号 `^` 的开头和结尾言语定位符语法。 开头和结尾言语定位符可以结合使用，以针对非常具体的、可能是文本的言语；或者，可以单独使用以针对意向。 
 
 ## <a name="clean-up-resources"></a>清理资源
 

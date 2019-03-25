@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 08/14/2018
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2cf135cc984ce032113de65bead210bd4c5e95ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861793"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847977"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>什么是必应 Web 搜索 API？
 
-必应 Web 搜索 API 是一项 RESTful 服务，可以针对用户查询提供即时应答。 搜索结果可以轻松地进行配置，可以包括网页、图像、视频、新闻、翻译等。 结果以 JSON 形式提供，并取决于搜索相关性和必应 Web 搜索订阅。
+必应 Web 搜索 API 是一项 RESTful 服务，可以针对用户查询提供即时应答。 搜索结果可以轻松地进行配置，可以包括网页、图像、视频、新闻、翻译等。 必应 Web 搜索根据搜索相关性和必应 Web 搜索订阅以 JSON 的形式提供结果。
 
 此 API 适用于需要访问的所有内容都是与用户的搜索查询相关的应用程序。 如果要生成的应用程序只需特定类型的结果，可以考虑使用[必应图像搜索 API](../Bing-Image-Search/overview.md)、[必应视频搜索 API](../Bing-Video-Search/search-the-web.md) 或[必应新闻搜索 API](../Bing-News-Search/search-the-web.md)。 如需必应搜索 API 的完整列表，请参阅[认知服务 API](https://docs.microsoft.com/azure/cognitive-services)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "55861793"
 
 ## <a name="features"></a>功能  
 
-除了即时应答，必应 Web 搜索还提供其他特性和功能，用于为用户自定义搜索结果。
+必应 Web 搜索不仅能让你访问即时答案， 它还提供其他特性和功能，用于为用户自定义搜索结果。
 
 | Feature | 说明 |
 |---------|-------------|
@@ -40,7 +40,7 @@ ms.locfileid: "55861793"
 
 ## <a name="workflow"></a>工作流
 
-可以轻松地通过任何编程语言调用必应 Web 搜索 API，只要该语言能够发出 HTTP 请求和分析 JSON 响应即可。 此服务可以通过 [REST API](quickstarts/python.md) 或[必应 Web 搜索 SDK](web-sdk-python-quickstart.md) 进行访问。  
+可以轻松地通过任何编程语言调用必应 Web 搜索 API，只要该语言能够发出 HTTP 请求和分析 JSON 响应即可。 此服务可以通过 [REST API](quickstarts/python.md) 或[必应 Web 搜索 SDK](web-sdk-python-quickstart.md) 进行访问。
 
 1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。  
 2. [向必应 Web 搜索 API 发送请求](quickstarts/python.md)。

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: d73638e0c02af5dc07e80084dd2ce5a7e090ecd2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4b04a1a5805ff11ad51cec53cdcccf2ea34f1c65
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043441"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443243"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB：SQL API 入门教程
 
@@ -62,10 +62,10 @@ ms.locfileid: "54043441"
 1. 在计算机上打开 **Visual Studio 2017**。
 2. 在“文件”菜单中，选择“新建”，并选择“项目”。
 3. 在“新建项目”对话框中，选择“模板” / “Visual C#” / “控制台应用程序”，为项目命名，并单击“确定”。
-   ![“新建项目”窗口屏幕截图](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
+   ![“新建项目”窗口的屏幕截图](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
 4. 在“解决方案资源管理器”中，右键单击 Visual Studio 解决方案下方的新控制台应用程序，并单击“管理 NuGet 包...”
     
-    ![“项目”右键菜单屏幕截图](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+    ![项目的右键菜单的屏幕截图](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 5. 在“NuGet”选项卡上，单击“浏览”，并在搜索框中键入 **azure documentdb**。
 6. 在结果中找到 **Microsoft.Azure.DocumentDB**，并单击“安装”。
    Azure Cosmos DB SQL API 客户端库的程序包 ID 是 [Microsoft Azure Cosmos DB 客户端库](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)。

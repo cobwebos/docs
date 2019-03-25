@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
-ms.openlocfilehash: ec05fb3ea2aa968ebd34c8c1e156f3621e4049fa
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 9a17bbc26a65d3747683ad0fc0ecba40a22088d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190132"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856203"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建用于 PostgreSQL 的 Azure 数据库服务器
 
@@ -38,7 +38,7 @@ ms.locfileid: "54190132"
 
     ![创建服务器](./media/quickstart-create-database-portal/3-create.png)
 
-    设置|建议的值|Description
+    设置|建议的值|说明
     ---|---|---
     服务器名称 |*mydemoserver*|用于标识用于 PostgreSQL 的 Azure 数据库服务器的唯一名称。 域名 *postgres.database.azure.com* 附加到提供的服务器名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 该名称必须至少包含 3 到 63 个字符。
     订阅|订阅名称|要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
@@ -48,7 +48,7 @@ ms.locfileid: "54190132"
     密码 |你的密码| 服务器管理员帐户的新密码。 该密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字 (0 到 9)和非字母数字字符（!, $, #, % 等）。
     位置|离用户最近的区域| 最靠近用户的位置。
     版本|最新主版本| 除非另有特定的要求，否则为最新 PostgreSQL 主版本。
-    定价层 | **常规用途**、**第 4 代**、**2 个 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。 接下来，选择“常规用途”选项卡。*第 4 代*、*2 个 vCore*、*5 GB*和 *7 天*分别是**计算的代**、**vCore**、**存储**和**备份保留期**的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”。 若要保存此定价层选择，请选择“确定”。 下一个屏幕截图捕获了这些选择。
+    定价层 | **常规用途**、**第 5 代**、**2 个 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。 接下来，选择“常规用途”选项卡。“第 5 代”、“2 个 vCore”、“5 GB”和“7 天”分别是“计算代”、“vCore”、“存储”和“备份保留期”的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”。 若要保存此定价层选择，请选择“确定”。 下一个屏幕截图捕获了这些选择。
 
    > [!NOTE]
    > 如果轻量级计算和 I/O 足以满足工作负荷要求，请考虑使用“基本”定价层。 请注意，在“基本”定价层中创建的服务器以后不能扩展到“常规用途”或“内存优化”定价层。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。
@@ -112,16 +112,16 @@ ms.locfileid: "54190132"
     psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
     ```
 
-    psql 参数 |值|Description
+    psql 参数 |值|说明
     ---|---|---
     --host | 服务器名称 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时使用过的服务器名称值。 显示的示例服务器为 mydemoserver.postgres.database.azure.com。 请使用完全限定的域名 (**\*.postgres.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
     --port | 5432 | 连接到用于 PostgreSQL 的 Azure 数据库服务器时使用的端口。 
-    --username | 服务器管理员登录名 |此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username@servername。
+    --username | 服务器管理员登录名 |此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为“username\@servername”。
     --dbname | postgres | 首次连接时系统生成的默认数据库名称。 以后可创建自己的数据库。
 
     使用自己的参数值运行 psql 命令以后，系统会提示输入服务器管理员密码。 此密码是在创建服务器时提供的密码。 
 
-    psql 参数 |建议的值|Description
+    psql 参数 |建议的值|说明
     ---|---|---
     password | 管理员密码 | 键入的密码字符不会显示在 bash 提示符处。 键入所有字符后，请按 Enter 键以便进行身份验证和连接。
 
@@ -176,12 +176,12 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 
    ![“连接”选项卡](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    pgAdmin 参数 |值|Description
+    pgAdmin 参数 |值|说明
     ---|---|---
     主机名/地址 | 服务器名称 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时使用过的服务器名称值。 示例服务器为 mydemoserver.postgres.database.azure.com。 请使用完全限定的域名 (**\*.postgres.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
     端口 | 5432 | 连接到用于 PostgreSQL 的 Azure 数据库服务器时使用的端口。 
     维护数据库 | postgres | 系统生成的默认数据库名称。
-    用户名 | 服务器管理员登录名 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username@servername。
+    用户名 | 服务器管理员登录名 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为“username\@servername”。
     密码 | 管理员密码 | 之前在此快速入门中创建服务器时选择的密码。
     角色 | 留空 | 此时无需提供角色名称。 此字段留空。
     SSL 模式 | *必需* | 可以在 pgAdmin 的 SSL 选项卡中设置 SSL 模式。默认情况下，所有 Azure Database for PostgreSQL 服务器在创建时都会启用“SSL 强制实施”。 若要关闭“SSL 强制实施”，请参阅 [SSL 强制实施](./concepts-ssl-connection-security.md)。
@@ -198,7 +198,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 
 10. 从列表框中选择数据库的“所有者”。 选择服务器管理员登录名，例如“my admin”。
 
-   ![在 pgadmin 中创建数据库](./media/quickstart-create-database-portal/11-pgadmin-database.png)
+    ![在 pgadmin 中创建数据库](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
 11. 选择“保存”创建新的空白数据库。
 

@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: bb7a48b08fde07380276d33393225c3f5220b93f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5d5398f4da7563c6f53c17d0305f54c4360f1c65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880693"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076847"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板预配 Azure Database for MySQL 服务器
 
@@ -87,8 +87,8 @@ Azure 资源管理器利用基础 REST API 来声明并计划大规模部署所�
 +   `storageProfile/geoRedundantBackup` - 根据 Geo-DR 需求指定“已启用/已禁用”。
 +   `sku/tier` - 指定部署的 Basic、GeneralPurpose 或 MemoryOptimized 层。
 +   `sku/capacity` - 指定 vCore 容量。 可能值包括 2、4、8、16、32 或 64。
-+   `sku/family` - 指定 Gen4 或 Gen5 以选择用于服务器部署的硬件代系。
-+   `sku/name` - 指定 TierPrefix_family_capacity。 例如 B_Gen4_1、GP_Gen5_16、MO_Gen5_32。 请参阅[定价层](./concepts-pricing-tiers.md)文档，了解每个区域和每个层的有效值。
++   `sku/family` - 指定 Gen5 以选择用于服务器部署的硬件代系。
++   `sku/name` - 指定 TierPrefix_family_capacity。 例如 B_Gen5_1、GP_Gen5_16、MO_Gen5_32。 请参阅[定价层](./concepts-pricing-tiers.md)文档，了解每个区域和每个层的有效值。
 +   `resources/properties/virtualNetworkSubnetId` - 指定 Azure MySQL 服务器应位于的 VNet 中的子网的 Azure 标识符。 
 +   `tags(optional)` - 指定可选标记为用于对资源进行分类，以便计费等的键值对。
 
@@ -127,8 +127,8 @@ az mysql server show --resource-group myresourcegroup --name mydemoserver
   "resourceGroup": "myresourcegroup",
  "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },
@@ -207,5 +207,5 @@ SELECT * FROM inventory;
 > * 加载示例数据
 > * 查询数据
 > * 更新数据
-
+> 
 > [如何将应用程序连接到 Azure Database for MySQL](./howto-connection-string.md)

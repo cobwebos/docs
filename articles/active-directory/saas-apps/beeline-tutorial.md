@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 0726859d-1dac-44a0-810b-da56d89039ee
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f846791bfcaadbfec85f150654e18e55517acdcc
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: ec694e9d0bf69ca1d9adbe1c12beedba24d9994b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984928"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>教程：Azure Active Directory 与 BeeLine 集成
 
@@ -108,6 +108,7 @@ ms.locfileid: "56984928"
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://projects.beeline.net/<instancename>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://projects.beeline.net/<instancename>/SSO_External.ashx`|
@@ -156,7 +157,7 @@ ms.locfileid: "56984928"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

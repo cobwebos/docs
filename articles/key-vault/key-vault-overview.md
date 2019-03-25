@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 474148289bb03088bbf92eeadc4049ce19625e3e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 06f1a2b33b177cf667fc2d3c5932f7ff117d2bdc
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115940"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195466"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
@@ -55,7 +55,7 @@ Azure Key Vault 有助于解决以下问题：
 
 - 存档到存储帐户。
 - 流式传输到事件中心。
-- 将日志发送到 Log Analytics。
+- 将日志发送到 Azure Monitor 日志。
 
 可以控制自己的日志，可以通过限制访问权限来确保日志的安全，还可以删除不再需要的日志。
 

@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 2/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 117271b0a952090bf8af2416206652972ae274ff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9aa8fc4c6b27c2a2c7d11a95ddb2ecca347ec0e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210820"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858818"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>快速入门：使用 Ruby 调用必应 Web 搜索 API  
 
 使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Ruby 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是使用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
+
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [Ruby 2.4 或更高版本](https://www.ruby-lang.org/en/downloads/)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ce55185effc67709157ce6219c405bb8e32dd5db
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 023f5ed43453d7fb20dec5d91651230aa8fb4370
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768573"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571297"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -22,15 +22,21 @@ Azure Maps 是通过可用的全新地图数据解锁的一系列地理空间服
 
 以下视频深入介绍了 Azure Maps：
 
-<iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 ## <a name="map-controls"></a>地图控件
 
-### <a name="web-control"></a>Web 控件
+### <a name="web-sdk"></a>Web SDK
 
-有了 Azure Maps Web 控件，就可以使用自己的内容和图像来自定义交互式地图，以便在 Web 或移动应用程序中显示。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此控件进行开发。
+Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图，以便在 Web 或移动应用程序中显示。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。
 
-![Azure Maps Web 控件](media/about-azure-maps/Introduction_WebMapControl.png)
+![Azure Maps Web SDK](media/about-azure-maps/Introduction_WebMapControl.png)
+
+### <a name="android-sdk"></a>Android SDK
+
+使用 Azure Maps Android SDK 可以创建功能强大的移动映射应用程序。 
+
+![Azure Maps Android SDK](media/about-azure-maps/AndroidSDK.png)
 
 ## <a name="services-in-azure-maps"></a>Azure Maps 中的服务
 

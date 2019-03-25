@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: ae609583-f875-4cb8-b68e-1b0b7938e9a7
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2029b90b4f23b22fa20ad8a89af308f6c16b410e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8eec05507cd66e2b856e3110bfb60f24c87dfdf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872567"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57879952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>教程：Azure Active Directory 与 Arc Publishing - SSO 集成
 
@@ -154,11 +154,11 @@ ms.locfileid: "56872567"
     > [!NOTE]
     > 此处使用 user.assignedroles 映射组属性。 这些是在 Azure AD 中创建的自定义角色，以将组名称映射回应用程序。 可在[此处](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)找到有关如何在 Azure AD 中创建自定义角色的更多指导。 
 
-8. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-9. 在“设置 Arc Publishing - SSO”部分，根据需求复制相应的 URL。
+1. 在“设置 Arc Publishing - SSO”部分，根据需求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -190,7 +190,7 @@ ms.locfileid: "56872567"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

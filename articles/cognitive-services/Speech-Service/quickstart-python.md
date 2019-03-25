@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: d3a6b8389d44d3ad92f9305124884d97fa293429
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 1464d1ca8fcf1ad5a955d69aa76caec9aa568dad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447101"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886111"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>快速入门：使用适用于 Python 的语音 SDK 识别语音
 
@@ -27,7 +27,7 @@ ms.locfileid: "56447101"
 
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 * [Python 3.5 或更高版本](https://www.python.org/downloads/)。
-* Python 语音 SDK 包适用于以下操作系统： 
+* Python 语音 SDK 包适用于以下操作系统：
     * Windows：x64 和 x86。
     * Mac：macOS X 10.12 或更高版本。
     * Linux：x64 架构上的 Ubuntu 16.04 或 18.04。
@@ -50,11 +50,11 @@ ms.locfileid: "56447101"
 pip install azure-cognitiveservices-speech
 ```
 
-## <a name="support-and-updates"></a>支持和更新 
+## <a name="support-and-updates"></a>支持和更新
 
 语音 SDK Python 包的更新将通过 PyPI 分发，[发行说明](./releasenotes.md)中会发布相关通告。
 如果有新版本可用，可以使用 `pip install --upgrade azure-cognitiveservices-speech` 命令进行更新。
-通过查看 `azure.cognitiveservices.speech.__version__` 变量来检查当前安装的版本。 
+通过查看 `azure.cognitiveservices.speech.__version__` 变量来检查当前安装的版本。
 
 如果遇到问题或者缺少某项功能，请查看[支持和帮助选项](./support.md)。
 
@@ -68,7 +68,7 @@ pip install azure-cognitiveservices-speech
 python quickstart.py
 ```
 
-或者，可以从[语音 SDK 示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk/)以 [Jupyter](https://jupyter.org) Notebook 的形式下载本快速入门教程，并将其作为 Notebook 运行。 
+或者，可以从[语音 SDK 示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk/)以 [Jupyter](https://jupyter.org) Notebook 的形式下载本快速入门教程，并将其作为 Notebook 运行。
 
 ### <a name="sample-code"></a>代码示例
 
@@ -86,7 +86,7 @@ python quickstart.py
 1. 在 Visual Studio Code 中选择“文件”图标。 然后打开创建的文件夹。
 
    ![打开文件夹](media/sdk/qs-python-vscode-python-open-folder.png)
-   
+
 1. 选择“新建文件”图标创建新的 Python 源文件 `speechsdk.py`。
 
    ![创建文件](media/sdk/qs-python-vscode-python-newfile.png)

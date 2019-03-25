@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/5/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 17d80d07f9b272b0dcb7449404d5d6626e72ce65
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692833"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842939"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>教程：使用 Azure 虚拟 WAN（预览版）创建 ExpressRoute 关联
 
@@ -37,11 +37,13 @@ ms.locfileid: "55692833"
 
 ## <a name="before-you-begin"></a>开始之前
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>注册此功能
 
-在配置虚拟 WAN 之前，必须先在预览版中注册订阅。 否则无法在门户中使用虚拟 WAN。 若要注册，请向 **azurevirtualwan@microsoft.com** 发送一封包含订阅 ID 的电子邮件。 注册订阅后，你会收到电子邮件。
+在配置虚拟 WAN 之前，必须先在预览版中注册订阅。 否则无法在门户中使用虚拟 WAN。 若要注册，请使用订阅 ID 向 **azurevirtualwan\@microsoft.com** 发送电子邮件。 注册订阅后，你会收到电子邮件。
 
 **预览注意事项：**
 
@@ -69,15 +71,15 @@ ms.locfileid: "55692833"
 ## <a name="hub"></a>4.查找线路并将其关联到中心
 
 1. 选择 vWAN，在“虚拟 WAN 体系结构”下，选择“ExpressRoute 线路”
-2. 如果 ExpressRoute 线路与 vWAN 在同一订阅中，请在订阅中单击“选择 ExpressRoute 线路” 
-3. 使用下拉菜单，选择要关联到中心的 ExpressRoute。
-4. 如果 ExpressRoute 线路不在同一订阅中，或者你已获得[授权密钥和对等 ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)，请选择“查找兑换授权密钥的线路”
-5. 输入以下详细信息：
-* **授权密钥** - 如上所述，由线路所有者生成
-* **对等线路 URI** - 线路所有者提供的线路 URI，是线路的唯一标识符
-* **路由权重** - [路由权重](../expressroute/expressroute-optimize-routing.md) - 当来自不同对等互连位置的多个线路连接到同一个中心时，允许你选择某些路径
-6. 单击“查找线路”并选择线路（如果找到）
-7. 从下拉列表中选择一个或多个中心，然后单击“保存”
+1. 如果 ExpressRoute 线路与 vWAN 在同一订阅中，请在订阅中单击“选择 ExpressRoute 线路” 
+1. 使用下拉菜单，选择要关联到中心的 ExpressRoute。
+1. 如果 ExpressRoute 线路不在同一订阅中，或者你已获得[授权密钥和对等 ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)，请选择“查找兑换授权密钥的线路”
+1. 输入以下详细信息：
+1. **授权密钥** - 如上所述，由线路所有者生成
+1. **对等线路 URI** - 线路所有者提供的线路 URI，是线路的唯一标识符
+1. **路由权重** - [路由权重](../expressroute/expressroute-optimize-routing.md) - 当来自不同对等互连位置的多个线路连接到同一个中心时，允许你选择某些路径
+1. 单击“查找线路”并选择线路（如果找到）
+1. 从下拉列表中选择一个或多个中心，然后单击“保存”
 
 ## <a name="vnet"></a>5.将 VNet 连接到中心
 
@@ -110,10 +112,10 @@ ms.locfileid: "55692833"
 
 ## <a name="cleanup"></a>9.清理资源
 
-如果不再需要这些资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
+不再需要这些资源时，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤

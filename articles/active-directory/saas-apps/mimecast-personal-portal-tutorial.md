@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd08de2711e8584b9f2bbe17716fe14400c8bf7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ed7d8d1a2c2f8c515fa520f6701068e4655cad35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871363"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>教程：Azure Active Directory 与 Mimecast Personal Portal 的集成
 
@@ -208,7 +208,7 @@ ms.locfileid: "56871363"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -267,7 +267,7 @@ ms.locfileid: "56871363"
    
     ![保存](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
    
-    a. 在“电子邮件地址”文本框中，将用户的“电子邮件地址”键入为“BrittaSimon@contoso.com”。
+    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（如 **BrittaSimon\@contoso.com**）。
     
     b. 在“全局名称”文本框中，将“用户名”键入为“BrittaSimon”。
 

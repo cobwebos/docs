@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: hning86
-ms.author: haining
-ms.reviewer: sgilley
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7397546d4dc576a8488f605e20a0bfe15a01d7c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: cc0631052fa915ae946e791c907e405d70713ad2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860546"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务定型图像分类模型
 
@@ -29,13 +28,12 @@ ms.locfileid: "56311165"
 > [!div class="checklist"]
 > * 设置开发环境。
 > * 访问和检查数据。
-> * 使用常用的 scikit-learn 机器学习库在本地定型简单的逻辑回归。 
-> * 在远程群集上定型多个模型。
+> * 在远程群集上训练一个简单的逻辑回归模型。
 > * 查看定型结果，然后注册最佳模型。
 
 你会在[本教程的第二部分](tutorial-deploy-models-with-aml.md)学习如何选择模型并对其进行部署。 
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 >[!NOTE]
 > 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.8 进行测试。

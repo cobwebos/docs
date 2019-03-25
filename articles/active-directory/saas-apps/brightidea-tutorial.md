@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3adae3e0-f43b-492f-b373-6a512d2d6046
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589aa227352a839e1d77a35412d2193fa05df420
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: bc45c63d3168a15b4701dcaff7bb531f759d47ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873435"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>教程：Azure Active Directory 与 Brightidea 的集成
 
@@ -163,18 +163,18 @@ ms.locfileid: "56873435"
     
     ![Brightidea 配置](./media/brightidea-tutorial/configure4.png)
     
-     * 输入“SAML 配置文件名称”，例如 `Azure Ad SSO`
+   * 输入“SAML 配置文件名称”，例如 `Azure Ad SSO`
     
-     * 对于“上传元数据”，请单击“选择文件”，然后上传从 Azure 门户下载的元数据文件。
+   * 对于“上传元数据”，请单击“选择文件”，然后上传从 Azure 门户下载的元数据文件。
 
      > [!NOTE]
      > 上传元数据文件后，剩余的字段“单一登录服务”、“标识提供者颁发者”和“上传公钥”将自动填充。
 
-     * 在“电子邮件”文本框中，输入 `mail` 作为值。
+   * 在“电子邮件”文本框中，输入 `mail` 作为值。
      
-     * 在“屏幕名称”文本框中，输入 `givenName` 作为值。
+   * 在“屏幕名称”文本框中，输入 `givenName` 作为值。
      
-     * 单击“保存更改”。  
+   * 单击“保存更改”。  
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -194,7 +194,7 @@ ms.locfileid: "56873435"
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

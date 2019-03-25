@@ -1,31 +1,31 @@
 ---
-title: 快速入门：必应自动建议 API，PHP
+title: 快速入门：使用必应自动建议 REST API 和 PHP 建议搜索查询
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应自动建议 API。
+description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 139c7149173285283041f5f4b30d2002e40810c2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: bfaab155c98b0721868a46a6d34c3402d08c053f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872911"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547905"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-php"></a>将必应自动推荐 API 与 PHP 配合使用快速入门
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>快速入门：使用必应自动建议 REST API 和 PHP 建议搜索查询
 
-本文介绍如何结合使用[必应自动建议 API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) 与 PHP。 必应自动推荐 API 根据用户在搜索框中输入的部分查询字符串返回建议查询的列表。 通常情况下，每当用户在搜索框中键入新字符时均会调用此 API，然后搜索框的下拉列表中会显示建议。 本文介绍如何发送请求，以针对 sail 返回建议的查询字符串。
+使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 PHP 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [PHP 5.6.x](http://php.net/downloads.php) 来运行此代码。
+* [PHP 5.6.x](https://php.net/downloads.php) 或更高版本
 
-必须创建一个具有**必应自动推荐 API v7** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#search)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ## <a name="get-autosuggest-results"></a>获取自动建议结果
 
@@ -61,7 +61,7 @@ function get_suggestions ($host, $path, $key, $mkt, $query) {
     "Ocp-Apim-Subscription-Key: $key\r\n";
 
   // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-  // http://php.net/manual/en/function.stream-context-create.php
+  // https://php.net/manual/en/function.stream-context-create.php
   $options = array (
     'http' => array (
       'header' => $headers,

@@ -2,18 +2,18 @@
 title: 准备 Azure 以使用 Azure Site Recovery 对本地计算机进行灾难恢复 | Microsoft Docs
 description: 了解如何使用 Azure Site Recovery 准备 Azure，对本地计算机进行灾难恢复。
 services: site-recovery
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/08/2019
-ms.author: raynew
+ms.date: 03/03/2019
+ms.author: mayg
 ms.custom: MVC
-ms.openlocfilehash: da71857e84b27b9e9a063d707f75fdf33e5d6a96
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5168fc28952631f00c2415d6bc171a130dc85dfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838555"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>准备 Azure 资源，以便对本地计算机进行灾难恢复
 
@@ -28,7 +28,6 @@ ms.locfileid: "54159003"
 
 > [!div class="checklist"]
 > * 验证 Azure 帐户是否具有复制权限。
-> * 创建 Azure 存储帐户。 已复制计算机的映像存储在其中。
 > * 创建恢复服务保管库。 保管库保存 VM 和其他复制组件的元数据和配置信息。
 > * 设置 Azure 网络。 在故障转移后创建的 Azure VM 会加入此 Azure 网络。
 
@@ -36,7 +35,7 @@ ms.locfileid: "54159003"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](http://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="verify-account-permissions"></a>验证帐户权限
 
@@ -44,27 +43,11 @@ ms.locfileid: "54159003"
 
 - 在所选资源组中创建 VM。
 - 在所选虚拟网络中创建 VM。
-- 向所选存储帐户进行写入。
+- 写入到存储帐户。
+- 写入到托管磁盘。
 
 若要完成这些任务，应为帐户分配“虚拟机参与者”内置角色。 此外，若要在保管库中管理 Site Recovery 操作，应为帐户分配“Site Recovery 参与者”内置角色。
 
-## <a name="create-a-storage-account"></a>创建存储帐户
-
-已复制计算机的映像保存在 Azure 存储中。 在从本地故障转移到 Azure 时，会从该存储中创建 Azure VM。 存储帐户必须位于与恢复服务保管库相同的区域。 在本教程中，我们将使用西欧。
-
-1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“创建资源” > “存储” > “存储帐户 - blob、文件、表、队列”。
-2. 在“创建存储帐户”中，输入帐户的名称。 对于这些教程，我们使用 **contosovmsacct1910171607**。 所选名称在 Azure 中必须唯一，长度介于 3-24 个字符，且仅包含数字和小写字母。
-3. 在“部署模型”中，选择“资源管理器”。
-4. 在“帐户类型”中，选择“存储(常规用途 v1)”。 请不要选择 blob 存储。
-5. 在“复制”中，选择默认的“读取访问异地冗余存储”作为存储冗余。 我们将“需要安全传输”保留为“已禁用”。
-6. 在“性能”中，选择“标准”，在“访问层”中选择默认选项“热”。
-7. 在“订阅”中，选择要在其中创建新存储帐户的订阅。
-8. 在“资源组”中，输入新的资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 对于这些教程，我们使用 **ContosoRG**。
-9. 在“位置”中，选择存储帐户的地理位置。 
-
-   ![创建存储帐户](media/tutorial-prepare-azure/create-storageacct.png)
-
-9. 选择“创建”以创建存储帐户。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -81,7 +64,7 @@ ms.locfileid: "54159003"
 
 ## <a name="set-up-an-azure-network"></a>设置 Azure 网络
 
-在故障转移后创建的 Azure VM 会加入此网络。
+在故障转移后从托管磁盘创建 Azure VM 时，这些 Azure VM 将加入此网络。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “网络” > “虚拟网络”。
 2. 我们保留将“资源管理器”选为部署模型。
@@ -100,8 +83,7 @@ ms.locfileid: "54159003"
 ## <a name="useful-links"></a>有用链接
 
 - [了解](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) Azure 网络。
-- [了解](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts) Azure 存储的类型。
-- [详细了解](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage)存储冗余和存储的[安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)。
+- [了解](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)托管磁盘。
 
 
 

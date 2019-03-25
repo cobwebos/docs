@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: e28d6191-c375-43c6-b2df-22daa88d9939
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35e7ef28a98cc660f11ec12c19cf45f8c3e224cf
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 126d5b501b9c4239fbdbe06318604bcfaf861150
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879690"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kronos"></a>教程：Azure Active Directory 与 Kronos 的集成
 
@@ -68,7 +68,7 @@ ms.locfileid: "56879690"
 4. 在搜索框中，键入“Kronos”，在结果面板中选择“Kronos”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Kronos](common/search-new-app.png)
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+   ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
 在本部分中，将基于名为 **Britta Simon** 的测试用户配置和测试 Kronos 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Kronos 中相关用户之间建立链接关系。
@@ -155,7 +155,7 @@ ms.locfileid: "56879690"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

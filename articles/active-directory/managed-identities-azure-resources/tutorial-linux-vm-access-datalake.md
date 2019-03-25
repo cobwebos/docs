@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d050cbfbe3def0e6475b807f88102f3edfe4f7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3bae4012f20d5f655dba014a0e71616101bc42a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204655"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092049"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure Data Lake Store
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍了如何使用 Linux 虚拟机 (VM) 的系统分配的托管标识来访问 Cosmos DB。 学习如何： 
+本教程介绍如何使用 Linux 虚拟机 (VM) 的系统分配托管标识访问 Azure Data Lake Store。 学习如何： 
 
 本教程介绍如何执行下列操作：
 
@@ -71,7 +71,7 @@ Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接
 
 1. 在门户中，浏览到自己的 Linux VM。 在“概述”中，选择“连接”。  
 2. 使用所选的 SSH 客户端连接到该 VM。 
-3. 在终端窗口中，使用 cURL 向 Azure 资源终结点的本地托管标识发出请求，获取访问 Data Lake Store 系统所需的访问令牌。 Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  请务必在资源标识符中包含尾部反斜杠。
+3. 在终端窗口中，使用 cURL 向 Azure 资源终结点的本地托管标识发出请求，获取访问 Data Lake Store 系统所需的访问令牌。 Data Lake Store 的资源标识符是 `https://datalake.azure.net/`。  请务必在资源标识符中包含尾部反斜杠。
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   

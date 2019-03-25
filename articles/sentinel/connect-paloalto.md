@@ -1,6 +1,6 @@
 ---
-title: 收集 Azure Sentinel 预览版中的 Palo Alto 数据 |Microsoft Docs
-description: 了解如何收集 Azure Sentinel 中的 Palo Alto 数据。
+title: 收集 Azure Sentinel 预览版中的 Palo Alto Networks 数据 |Microsoft Docs
+description: 了解如何收集 Azure Sentinel 中的 Palo Alto Networks 数据。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 149b3b813091033bf5c1685e8b0793f955169808
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6145d77e6485a33ea3a9f9d66a4356587966bc5f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841202"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403555"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>将 Palo Alto Networks 设备连接
 
@@ -27,14 +27,14 @@ ms.locfileid: "57841202"
 > Azure Sentinel 目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-您可以连接 Azure Sentinel 到任何 Palo Alto Networks 设备通过将日志文件保存为 Syslog CEF。 与 Azure Sentinel 的集成，可轻松地在日志文件数据从 Palo Alto 运行分析和查询。 有关如何 Azure Sentinel 引入 CEF 数据的详细信息，请参阅[连接 CEF 设备](connect-common-event-format.md)。
+您可以连接 Azure Sentinel 到任何 Palo Alto Networks 设备通过将日志文件保存为 Syslog CEF。 与 Azure Sentinel 的集成，可轻松地运行分析和查询在日志文件数据之间的 Palo Alto Networks。 有关如何 Azure Sentinel 引入 CEF 数据的详细信息，请参阅[连接 CEF 设备](connect-common-event-format.md)。
 
 > [!NOTE]
-> - 数据将存储在其运行 Azure Sentinel 的工作区的地理位置。
+> 数据将存储在其运行 Azure Sentinel 的工作区的地理位置。
 
-## <a name="step-1-connect-your-palo-alto-appliance-using-an-agent"></a>步骤 1：将 Palo Alto 设备使用一个代理连接
+## <a name="step-1-connect-your-palo-alto-networks-appliance-using-an-agent"></a>步骤 1：将 Palo Alto Networks 设备使用一个代理连接
 
-若要连接到 Azure Sentinel Palo Alto 设备，需要专用的计算机上部署代理 (VM 或本地) 以支持设备和 Azure Sentinel 之间的通信。 你可以自动或手动部署代理。 仅在专用的计算机是否在 Azure 中创建新的 VM 提供了自动部署。 
+若要连接到 Azure Sentinel Palo Alto Networks 设备，需要专用的计算机上部署代理 (VM 或本地) 以支持设备和 Azure Sentinel 之间的通信。 你可以自动或手动部署代理。 仅在专用的计算机是否在 Azure 中创建新的 VM 提供了自动部署。 
 
 或者，你可以部署在另一个云中的 VM 上的现有的 Azure VM 上手动或在本地计算机上的代理。
 
@@ -46,7 +46,7 @@ ms.locfileid: "57841202"
 1. 在 Azure Sentinel 门户中，单击**数据收集**，然后选择你的设备类型。 
 
 1. 下**Linux Syslog 代理配置**:
-   - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将转到购买页自动连接到工作区，是的专用 vm。 VM 处于**标准 D2s v3 （2 个 vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
+   - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将转到购买页自动连接到工作区，是的专用 vm。 VM 处于**标准 D2s v3 （2 个 Vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
       1. 在中**自定义部署**页上，提供你的详细信息和选择用户名和密码，如果你同意条款和条件，购买的 VM。
       1. 配置你的设备，可使用连接页中列出的设置发送日志。 适用于通用的通用事件格式连接器，使用以下设置：
          - 协议 = UDP
@@ -98,12 +98,12 @@ ms.locfileid: "57841202"
       1. 重新启动 Syslog 代理使用以下命令： `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. 确认没有任何错误代理日志中通过运行以下命令： `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-palo-alto-logs-to-the-syslog-agent"></a>步骤 2：将 Palo Alto 日志转发到 Syslog 代理
+## <a name="step-2-forward-palo-alto-networks-logs-to-the-syslog-agent"></a>步骤 2：将 Palo Alto Networks 日志转发到 Syslog 代理
 
 配置 Palo Alto Networks 转发到 Azure 工作区通过 Syslog 代理 CEF 格式中的 Syslog 消息：
-1.  转到[通用事件格式 (CEF) 的配置指南](https://docs.paloaltonetworks.com/resources/cef)和下载你的设备类型 pdf 文件。 所有按照说明进行操作指南中要将 Palo Alto 设备设置为收集 CEF 事件。 
+1.  转到[通用事件格式 (CEF) 的配置指南](https://docs.paloaltonetworks.com/resources/cef)和下载你的设备类型 pdf 文件。 所有按照说明进行操作指南中要将 Palo Alto Networks 设备设置为收集 CEF 事件。 
 
-1.  转到[配置 Syslog 监视](https://aka.ms/asi-syslog-paloalto-forwarding)并按照步骤 2 和 3 以配置到 Azure Sentinel CEF 事件转发从 Palo Alto 设备。
+1.  转到[配置 Syslog 监视](https://aka.ms/asi-syslog-paloalto-forwarding)并按照步骤 2 和 3 以配置到 Azure Sentinel CEF 事件转发从 Palo Alto Networks 设备。
 
     1. 请务必设置**Syslog 服务器格式**到**BSD**。
     1. 请确保您设置**设施数**为在系统日志代理中设置相同的值。
@@ -130,7 +130,7 @@ ms.locfileid: "57841202"
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 Palo Alto 设备连接到 Azure Sentinel。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文档中，您学习了如何将 Palo Alto Networks 设备连接到 Azure Sentinel。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
 - 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
 

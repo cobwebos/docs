@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 18216c636ebcd84172154ac46fdcd54de64c9bb9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d2dcb1eb9132e68bebbe84d81a4e4f17df79f2d3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241793"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399778"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>有用的资源，使用 Azure Sentinel 预览版
 
@@ -36,7 +36,7 @@ Azure 逻辑应用连接器： <https://docs.microsoft.com/connectors/>
 
 | **供应商**  | **Azure Sentinel 中的用例** | **链接**|
 |----|----|----|
-| GitHub| 用于访问社区页| <https://github.com/join> |
+| GitHub| 用于访问社区页| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| 配置 CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kusto 查询语言课程| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 445ddb3c580218e21410c961c614a8a9e29d21a0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2ea228a1db204170f947b5fe71f1865a4620b0f4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328327"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549028"
 ---
 # <a name="query-an-azure-cosmos-container"></a>查询 Azure Cosmos 容器
 
@@ -32,7 +32,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 下面的查询在分区键 (`DeviceId`) 上没有筛选器，并且以扇形展开到针对分区索引运行该查询的所有分区。 若要跨分区运行查询，请将 `EnableCrossPartitionQuery` 设置为 true（如果是在 REST API 中，则设置为 `x-ms-documentdb-query-enablecrosspartition` ）。
 
-EnablecrossPartitionQuery 属性接受布尔值。 当设置为 true 时，如果你的查询没有分区键，则 Azure Cosmos DB 将跨分区分布查询。 分布是通过向所有分区发出单独的查询来完成的。 若要读取查询结果，客户端应用程序应使用 FeedResponse 中的结果并检查 ContinuationToken 属性。 若要读取所有结果，请循环访问数据，直到 ContinuationToken 为 null。 
+EnableCrossPartitionQuery 属性接受布尔值。 当设置为 true 时，如果你的查询没有分区键，则 Azure Cosmos DB 将跨分区分布查询。 分布是通过向所有分区发出单独的查询来完成的。 若要读取查询结果，客户端应用程序应使用 FeedResponse 中的结果并检查 ContinuationToken 属性。 若要读取所有结果，请循环访问数据，直到 ContinuationToken 为 null。 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading

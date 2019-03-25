@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 52d2061262fd04e68ed13aac8932c23b7074f83e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 125ad28f049662ae6d91c61bb5ee79c1c1428af5
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113764"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401760"
 ---
-# <a name="azure-data-box-edge-system-requirements-preview"></a>Azure Data Box Edge系统要求（预览版）
+# <a name="azure-data-box-edge-system-requirements"></a>Azure 数据框边缘系统要求
 
 本文介绍 Microsoft Azure Data Box Edge 解决方案以及连接到 Azure Data Box Edge 的客户端的重要系统要求。 我们建议在部署 Data Box Edge 之前仔细查看这些信息。 在部署和执行后续操作期间，如有必要，可以回来参考此信息。
 
@@ -23,9 +23,6 @@ Data Box Edge 的系统要求包括：
 
 - **主机的软件要求** - 介绍支持的平台、本地配置 UI 的浏览器、SMB 客户端以及访问设备的客户端的任何其他要求。
 - **设备的网络要求** - 提供有关物理设备运转的网络要求的信息。
-
-> [!IMPORTANT]
-> Data Box Edge 以预览版提供。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>连接到设备的客户端支持的 OS
 
@@ -61,12 +58,9 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 必选 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 需要 | 指南 |
 |----------|-----------|------------|----------|----------|
-| TCP 5671 (AMQP)| 出       | WAN        | 是      | IoT Edge 的默认通信协议。 如果未为其他支持的协议配置 Azure IoT Edge，或者 AMQP 是所需的通信协议，则必须打开此端口。 <br>IoT Edge 不支持将端口 5672 用于 AMQP。 <br>当 Azure IoT Edge 使用不同的受 IoT 中心支持的协议时，请阻止此端口。 |
-| TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 如果透明网关中的叶设备可能发送方法请求， 则无需向外部网络打开端口 443，即可连接到 IoT 中心或通过 Azure IoT Edge 提供 IoT 中心服务。 因此，传入规则可限制为只能从内部网络打开入站连接。 |
-| TCP 5671 (AMQP) | In        |            | 否       | 应阻止入站连接。|
-| TCP 443 (HTTPS) | In        |            | 对于某些情况，请参阅注释 | 只应针对特定的情况打开入站连接。 如果无法配置非 HTTP 协议（例如 AMQP、MQTT），可以使用端口 443 通过 WebSocket 发送消息。 |
+| TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 
 有关完整信息，请转到 [IoT Edge 部署的防火墙和端口配置规则](https://docs.microsoft.com/azure/iot-edge/troubleshoot)。
 

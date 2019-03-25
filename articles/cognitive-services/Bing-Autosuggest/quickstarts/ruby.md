@@ -1,71 +1,84 @@
 ---
-title: 快速入门：必应自动建议 API，Ruby
+title: 快速入门：使用必应自动建议 REST API 和 Ruby 建议搜索查询
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应自动建议 API。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 0093554c1d4b9b315dcf7b6171d5ed1ff5ab9057
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: c7ba0fd34c789735cd92c25a728aec346dc88fcc
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875563"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009728"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-ruby"></a>将必应自动推荐 API 与 Ruby 配合使用快速入门 
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>快速入门：使用必应自动建议 REST API 和 Ruby 建议搜索查询
 
-本文介绍如何结合使用[必应自动建议 API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) 与 Ruby。 必应自动推荐 API 根据用户在搜索框中输入的部分查询字符串返回建议查询的列表。 通常情况下，每当用户在搜索框中键入新字符时均会调用此 API，然后搜索框的下拉列表中会显示建议。 本文介绍如何发送请求，以针对 sail 返回建议的查询字符串。
+使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 Ruby 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) 或更高版本来运行此代码。
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) 或更高版本。
 
-必须创建一个具有**必应自动推荐 API v7** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#search)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>获取自动建议结果
+## <a name="create-a-new-application"></a>创建新应用程序
 
-1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+1. 在最喜爱的 IDE 或编辑器中创建一个新的 Ruby 文件。 添加以下要求：
 
-```ruby
-require 'net/https'
-require 'uri'
-require 'json'
+    ```ruby
+    require 'net/https'
+    require 'uri'
+    require 'json'
+    ```
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+2. 为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)、部分搜索查询创建变量。
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'enter key here'
+    ```ruby
+    subscriptionKey = 'enter your key here'
+    host = 'https://api.cognitive.microsoft.com'
+    path = '/bing/v7.0/Suggestions'
+    mkt = 'en-US'
+    query = 'sail'
+    ```
 
-host = 'https://api.cognitive.microsoft.com'
-path = '/bing/v7.0/Suggestions'
+3. 通过将市场代码追加到 `?mkt=` 参数并将查询追加到 `&q=` 参数来创建参数字符串。 然后通过组合 API 主机、路径和参数字符串来构造请求 URI。
 
-mkt = 'en-US'
-query = 'sail'
+    ```ruby
+    params = '?mkt=' + mkt + '&q=' + query
+    uri = URI (host + path + params)
+    ```
 
-params = '?mkt=' + mkt + '&q=' + query
-uri = URI (host + path + params)
+## <a name="create-and-send-an-api-request"></a>创建和发送 API 请求
 
-request = Net::HTTP::Get.new(uri)
-request['Ocp-Apim-Subscription-Key'] = subscriptionKey
+1. 使用 URI 创建请求，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
+    
+    ```ruby
+    request = Net::HTTP::Get.new(uri)
+    request['Ocp-Apim-Subscription-Key'] = subscriptionKey
+    ```
 
-response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-    http.request (request)
-end
+2. 发送请求并存储响应。
+    
+    ```ruby
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+        http.request (request)
+    end
+    ```
 
-puts JSON::pretty_generate (JSON (response.body))
-```
+3. 输出 JSON 响应。
+    
+    ```ruby
+    puts JSON::pretty_generate (JSON (response.body))
+    ```
 
-### <a name="response"></a>响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示：
 
@@ -136,7 +149,7 @@ puts JSON::pretty_generate (JSON (response.body))
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应自动建议教程](../tutorials/autosuggest.md)
+> [创建单页 Web 应用](../tutorials/autosuggest.md)
 
 ## <a name="see-also"></a>另请参阅
 

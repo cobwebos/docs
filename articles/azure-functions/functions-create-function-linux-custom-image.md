@@ -1,28 +1,28 @@
 ---
-title: 在 Linux 上使用自定义映像创建函数（预览）| Microsoft Docs
+title: 在 Linux 上使用自定义映像创建 Azure Functions
 description: 了解如何创建在自定义 Linux 映像中运行的 Azure Functions。
 services: functions
 keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 10/19/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 2c80f988583571f3394a29747a6f452951cea878
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 976bab529dc77621ce92dff0d2ae665777023a01
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978028"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337568"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>在 Linux 上使用自定义映像创建函数（预览）
+# <a name="create-a-function-on-linux-using-a-custom-image"></a>在 Linux 上使用自定义映像创建函数
 
-使用 Azure Functions 可将函数托管在 Linux 上的自己的自定义容器中。 还可以[托管在默认的 Azure 应用服务容器中](functions-create-first-azure-function-azure-cli-linux.md)。 此功能目前为预览版，并且需要 [Functions 2.0 运行时](functions-versions.md)。
+使用 Azure Functions 可将函数托管在 Linux 上的自己的自定义容器中。 还可以[托管在默认的 Azure 应用服务容器中](functions-create-first-azure-function-azure-cli-linux.md)。 此功能要求使用 [Functions 2.x 运行时](functions-versions.md)。
 
-本教程介绍如何将函数作为自定义 Docker 映像部署到 Azure。 需要自定义内置的应用服务容器映像时，此模式很有用。 当函数需要特定的语言版本，或者需要内置映像中未预配的特定依赖项或配置时，可以使用自定义映像。
+本教程介绍如何将函数作为自定义 Docker 映像部署到 Azure。 需要自定义内置的应用服务容器映像时，此模式很有用。 当函数需要特定的语言版本，或者需要内置映像中未预配的特定依赖项或配置时，可以使用自定义映像。 Azure Functions 支持的基础映像可以在 [Azure Functions 基础映像存储库](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。 [Python 支持](functions-reference-python.md)目前为预览版。
 
 本教程逐步讲解如何使用 Azure Functions Core Tools 在自定义 Linux 映像中创建函数。 请将此映像发布到 Azure 中的函数应用，该应用是使用 Azure CLI 创建的。
 
@@ -36,6 +36,7 @@ ms.locfileid: "55978028"
 > * 创建 Linux 应用服务计划。
 > * 从 Docker 中心部署函数应用。
 > * 将应用程序设置添加到函数应用。
+> * 启用持续部署
 
 支持在 Mac、Windows 或 Linux 计算机上执行以下步骤。  
 
@@ -67,6 +68,8 @@ func init MyFunctionProj --docker
 * `dotnet`：创建一个 .NET 类库项目 (.csproj)。
 * `node`：创建一个 JavaScript 项目。
 * `python`：创建 Python 项目。
+
+[!INCLUDE functions-python-preview-note]
 
 执行命令后，看到的内容如以下输出所示：
 
@@ -101,7 +104,7 @@ COPY . /home/site/wwwroot
 ```
 
 > [!NOTE]
-> 在专用容器注册表中托管映像时，应使用 Dockerfile 中的 **ENV** 变量将连接设置添加到函数应用。 由于本教程无法保证使用的是专用注册表，因此连接设置是[在部署后使用 Azure CLI 添加的](#configure-the-function-app)，这是一种最佳安全做法。
+> Azure Functions 支持的基础映像的完整列表可以在 [Azure Functions 基础映像页](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。
 
 ### <a name="run-the-build-command"></a>运行 `build` 命令
 在根文件夹中运行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，并提供名称 `mydockerimage` 和标记 `v1.0.0`。 将 `<docker-id>` 替换为 Docker 中心帐户 ID。 此命令为容器生成 Docker 映像。
@@ -223,20 +226,20 @@ az functionapp create --name <app_name> --storage-account  <storage_name>  --res
 }
 ```
 
-_deployment-container-image-name_ 参数表示 Docker 中心托管的、用于创建函数应用的映像。
+_deployment-container-image-name_ 参数表示 Docker 中心托管的、用于创建函数应用的映像。 若要查看用于部署的映像的相关信息，请使用 [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) 命令。 若要从另一映像进行部署，请使用 [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) 命令。
 
 ## <a name="configure-the-function-app"></a>配置函数应用
 
 该函数需要使用连接字符串连接到默认的存储帐户。 将自定义映像发布到专用容器帐户时，应该使用 [ENV 指令](https://docs.docker.com/engine/reference/builder/#env)或类似的命令将这些应用程序设置指定为 Dockerfile 中的环境变量。
 
-在本例中，`<storage_account>` 是所创建的存储帐户的名称。 使用 [az storage account show-connection-string](/cli/azure/storage/account) 命令获得连接字符串。 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令将这些应用程序设置添加到函数应用。
+在本例中，`<storage_name>` 是所创建的存储帐户的名称。 使用 [az storage account show-connection-string](/cli/azure/storage/account) 命令获得连接字符串。 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令将这些应用程序设置添加到函数应用。
 
 ```azurecli-interactive
-$storageConnectionString=$(az storage account show-connection-string \
---resource-group myResourceGroup --name <storage_account> \
+storageConnectionString=$(az storage account show-connection-string \
+--resource-group myResourceGroup --name <storage_name> \
 --query connectionString --output tsv)
 
-az functionapp config appsettings set --name <function_app> \
+az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
 --settings AzureWebJobsDashboard=$storageConnectionString \
 AzureWebJobsStorage=$storageConnectionString
@@ -252,6 +255,24 @@ AzureWebJobsStorage=$storageConnectionString
 现在，可以测试 Azure 中的 Linux 上运行的函数。
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+## <a name="enable-continuous-deployment"></a>启用持续部署
+
+使用容器的一大好处是，在注册表中更新容器时可以自动部署更新。 使用 [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) 命令启用持续部署。
+
+```azurecli-interactive
+az functionapp deployment container config --enable-cd \
+--query CI_CD_URL --output tsv \
+--name <app_name> --resource-group myResourceGroup
+```
+
+此命令在启用持续部署后返回部署 Webhook URL。 也可使用 [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) 命令返回该 URL。 
+
+复制部署 URL 并浏览到 DockerHub 存储库，选择“Webhook”选项卡，键入 Webhook 的 **Webhook 名称**，将 URL 粘贴到“Webhook URL”中，然后选择加号 (**+**)。
+
+![将 Webhook 添加到 DockerHub 存储库中](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+
+设置 Webhook 以后，只要 DockerHub 中的链接映像进行了更新，函数应用就会下载并安装最新映像。
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

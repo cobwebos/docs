@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: bb173981e3f06c923fa7357eb64777493bd17b8c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 33169448b5b1e4496f42d157cb77134b90804fa6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958263"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433172"
 ---
 # <a name="what-is-azure-data-explorer"></a>什么是 Azure 数据资源管理器？
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 它可以帮助你处理现代软件发出的许多数据流，以便收集、存储和分析数据。 Azure 数据资源管理器非常适合用于分析来自任何数据源（例如网站、应用程序、IoT 设备等）的大量不同数据。 此数据用于诊断、监视、报告、机器学习和其他分析功能。 Azure 数据资源管理器可以轻松地引入数据，并使你能够在几秒钟内对数据执行复杂的即席查询。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 它可以帮助你处理现代软件发出的许多数据流，以便收集、存储和分析数据。 Azure 数据资源管理器非常适合用于分析来自任何数据源（例如网站、应用程序、IoT 设备等）的大量不同数据。 此数据用于诊断、监视、报告、机器学习和其他分析功能。 Azure 数据资源管理器可以轻松地引入此数据，并使你能够在几秒钟内对数据执行复杂的即席查询。
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>是什么让 Azure 数据资源管理器与众不同？
 

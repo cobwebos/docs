@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c3c79e7bd68e7c96b57ea66951c080b7d952ee8c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441751"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762715"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>自定义开发人员门户页面的样式
 
@@ -40,8 +40,8 @@ ms.locfileid: "52441751"
 ## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
++ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -57,11 +57,11 @@ ms.locfileid: "52441751"
     可以使用“样式”自定义的所有元素都显示在该页面上
 5. 在“更改变量值以自定义开发人员门户外观:”字段中输入“headings-color”。
 
-    **@headings-color** 元素将显示在页面上。 此变量控制文本的颜色。
+    **\@headings-color** 元素将显示在页面上。 此变量控制文本的颜色。
 
     ![自定义样式](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. 单击 **@headings-color** 变量对应的字段。 
+6. 单击 **\@headings-color** 变量对应的字段。 
     
     此时会打开颜色选取器下拉列表。
 7. 从颜色选取器下拉列表中选择一种新颜色。

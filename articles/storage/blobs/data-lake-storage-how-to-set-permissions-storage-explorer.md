@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: b64b433920a5ce769122c7956c18997c28a3d11a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d1e941e41871de4a11641254f40c53285b096807
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867046"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546297"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限
 
@@ -33,7 +33,7 @@ Azure Data Lake Storage Gen2 中存储的文件支持细化权限和访问控制
 
 ## <a name="managing-access"></a>管理访问权限
 
-你可以在文件系统的根目录中设置权限。 要执行此操作，请右键单击文件系统，然后选择“管理权限”，打开“管理权限”对话框。
+你可以在文件系统的根目录中设置权限。 为此，你必须使用有权执行此操作的个人帐户登录到 Azure 存储资源管理器（而不是使用连接字符串）。 请右键单击文件系统，然后选择“管理权限”，打开“管理权限”对话框。
 
 ![Microsoft Azure 存储资源管理器 - 管理目录访问权限](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 

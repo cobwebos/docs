@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: babanisa
-ms.openlocfilehash: a77c208c208ef7e0df170733dbe89963fc5cb846
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727173"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863162"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
 
@@ -28,7 +28,7 @@ ms.locfileid: "56727173"
 
 1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 请务必记下此 URL，因为稍后需要用到。
@@ -54,10 +54,10 @@ ms.locfileid: "56727173"
 
 1. 在“事件网格主题”菜单中，选择“+添加”以创建主要主题。
 
-    * 为该主题提供逻辑名称，并添加“-primary”后缀以方便跟踪。
-    * 此主题的区域是主要区域。
+   * 为该主题提供逻辑名称，并添加“-primary”后缀以方便跟踪。
+   * 此主题的区域是主要区域。
 
-    ![“事件网格主题”中的创建主要主题对话框](./media/custom-disaster-recovery/create-primary-topic.png)
+     ![“事件网格主题”中的创建主要主题对话框](./media/custom-disaster-recovery/create-primary-topic.png)
 
 1. 创建主题后，导航到该主题，并复制“主题终结点”。 稍后需要使用该 URI。
 
@@ -69,11 +69,11 @@ ms.locfileid: "56727173"
 
 1. 在“主题”边栏选项卡中，单击“+事件订阅”以创建订阅连接，用于订阅在本教程的先决条件部分所创建的事件接收者网站。
 
-    * 为事件订阅提供逻辑名称，并添加“-primary”后缀以方便跟踪。
-    * 选择终结点类型 Web Hook。
-    * 将终结点设置为事件接收者的事件 URL，类似于 `https://<your-event-reciever>.azurewebsites.net/api/updates`
+   * 为事件订阅提供逻辑名称，并添加“-primary”后缀以方便跟踪。
+   * 选择终结点类型 Web Hook。
+   * 将终结点设置为事件接收者的事件 URL，类似于 `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-    ![事件网格主要事件订阅](./media/custom-disaster-recovery/create-primary-es.png)
+     ![事件网格主要事件订阅](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. 重复相同的流程以创建辅助主题和订阅。 这一次，请将“-primary”后缀替换为“-secondary”以方便跟踪。 最后，请确保将它们放在不同的 Azure 区域。 尽管可将其放在任何位置，但建议使用 [Azure 配对区域](../best-practices-availability-paired-regions.md)。 将辅助主题和订阅放在不同的区域可确保即使主要区域出现故障，也仍可传送新事件。
 
@@ -91,7 +91,7 @@ ms.locfileid: "56727173"
 
 ### <a name="basic-client-side-implementation"></a>基本的客户端实现
 
-以下示例代码是一个简单的 .Net 发布者，它始终尝试先发布到主要主题。 如果不成功，则故障转移辅助主题。 在任一情况下，它还会针对 `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` 执行 GET，以检查另一主题的运行状况 API。 针对 **/api/health** 终结点执行 GET 后，正常的主题应该始终以 **200 OK** 做出响应。
+以下示例代码是一个简单的 .NET 发布者，它始终尝试先发布到主要主题。 如果不成功，则故障转移辅助主题。 在任一情况下，它还会针对 `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` 执行 GET，以检查另一主题的运行状况 API。 针对 **/api/health** 终结点执行 GET 后，正常的主题应该始终以 **200 OK** 做出响应。
 
 ```csharp
 using System;

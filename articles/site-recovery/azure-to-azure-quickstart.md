@@ -6,30 +6,30 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 12/27/2018
+ms.date: 03/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8fea062e2c72410b13fa70cc5cad22b7e677086b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f7adcb7d4516e9013bf87306fff77b566885e018
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211842"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855276"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复        
 
 [Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
-本快速入门介绍如何将 Azure VM 复制到不同的 Azure 区域。
+本快速入门介绍了如何通过将 Azure VM 复制到不同的 Azure 区域来为其设置灾难恢复。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 本文旨在引导新用户使用默认选项和最小的自定义来获取 Azure Site Recovery 体验。 若要详细了解可以自定义的各种设置，请参阅[为 Azure VM 启用复制的教程](azure-to-azure-tutorial-enable-replication.md)
+> 本文是针对新用户的快速演练。 它使用带有默认选项和最小自定义的最简单路径。  有关更完整的演练，请查看[我们的教程](azure-to-azure-tutorial-enable-replication.md)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-通过 http://portal.azure.com 登录到 Azure 门户。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="enable-replication-for-the-azure-vm"></a>为 Azure VM 启用复制
 
@@ -54,8 +54,8 @@ ms.locfileid: "55211842"
 
 对主要区域中的 VM 禁用复制时，该 VM 会停止复制：
 
-- 将自动清除源复制设置。 请注意，作为复制的一部分安装的 Site Recovery 扩展未删除，需要手动删除。 
-- 对 VM 的 Site Recovery 计费也会停止。
+- 将自动清除源复制设置。 在复制过程中安装在 VM 上的 Site Recovery 扩展不会被删除，必须手动删除。 
+- 对 VM 的 Site Recovery 计费会停止。
 
 按如下所述停止复制
 
@@ -66,7 +66,7 @@ ms.locfileid: "55211842"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，将单个 VM 复制到了次要区域。 现在可以浏览更多的选项并尝试按恢复计划复制一组 Azure VM。
+在本快速入门中，将单个 VM 复制到了次要区域。 现在，请尝试使用恢复计划复制多个 Azure VM。
 
 > [!div class="nextstepaction"]
 > [为 Azure VM 配置灾难恢复](azure-to-azure-tutorial-enable-replication.md)

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: a9f6676f1b2fdf812ec87595083ba6317a11873c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb5997c2ae8f93068b0ad2a77b5109f6c79b9b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462141"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003512"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
 
@@ -72,6 +72,20 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
+### <a id="nodejs-enable-withexpiry"></a>NodeJS SDK
+
+```javascript
+const containerDefinition = {
+          id: "sample container1",
+        };
+
+async function createcontainerWithTTL(db: Database, containerDefinition: ContainerDefinition, collId: any, defaultTtl: number) {
+      containerDefinition.id = collId;
+      containerDefinition.defaultTtl = defaultTtl;
+      await db.containers.create(containerDefinition);
+}
+```
+
 ## <a name="set-time-to-live-on-an-item"></a>在某个项上设置生存时间
 
 除了在容器上设置默认的生存时间，还可以为项设置生存时间。 在项级别设置生存时间将重写该容器中项的默认 TTL。
@@ -81,6 +95,37 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
 * 如果项没有 TTL 字段，则默认情况下，设置到容器的 TTL 将应用到项。
 
 * 如果在容器级别禁用了 TTL，在项上的 TTL 字段会被忽略，直到在容器上再次启用 TTL。
+
+### <a id="portal-set-ttl-item"></a>Azure 门户
+
+使用以下步骤在项上启用生存时间：
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+
+2. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
+
+3. 打开“数据资源管理器”窗格。
+
+4. 选择一个现有的容器，将其展开并修改以下值：
+
+   * 打开“规模和设置”窗口。
+   * 在“设置”下找到“生存时间”。
+   * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值。 
+   * 单击“保存”以保存更改。
+
+5. 接下来，导航到要为其设置生存时间的项，添加 `ttl` 属性并选择“更新”。 
+
+   ```json
+   {
+    "id": "1",
+    "_rid": "Jic9ANWdO-EFAAAAAAAAAA==",
+    "_self": "dbs/Jic9AA==/colls/Jic9ANWdO-E=/docs/Jic9ANWdO-EFAAAAAAAAAA==/",
+    "_etag": "\"0d00b23f-0000-0000-0000-5c7712e80000\"",
+    "_attachments": "attachments/",
+    "ttl": 10,
+    "_ts": 1551307496
+   }
+   ```
 
 ### <a id="dotnet-set-ttl-item"></a>.NET SDK
 
@@ -94,7 +139,7 @@ public class SalesOrder
     public string CustomerId { get; set; }
     // used to set expiration policy
     [JsonProperty(PropertyName = "ttl", NullValueHandling = NullValueHandling.Ignore)]
-    public int? TimeToLive { get; set; }
+    public int? ttl { get; set; }
 
     //...
 }
@@ -103,9 +148,21 @@ SalesOrder salesOrder = new SalesOrder
 {
     Id = "SO05",
     CustomerId = "CO18009186470",
-    TimeToLive = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days
+    ttl = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days
 };
 ```
+
+### <a id="nodejs-set-ttl-item"></a>NodeJS SDK
+
+```javascript
+const itemDefinition = {
+          id: "doc",
+          name: "sample Item",
+          key: "value", 
+          ttl: 2
+        };
+```
+
 
 ## <a name="reset-time-to-live"></a>重置生存时间
 
@@ -121,7 +178,7 @@ response = await client.ReadDocumentAsync(
     new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
 
 Document readDocument = response.Resource;
-readDocument.TimeToLive = 60 * 30 * 30; // update time to live
+readDocument.ttl = 60 * 30 * 30; // update time to live
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
@@ -139,14 +196,14 @@ response = await client.ReadDocumentAsync(
     new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
 
 Document readDocument = response.Resource;
-readDocument.TimeToLive = null; // inherit the default TTL of the collection
+readDocument.ttl = null; // inherit the default TTL of the collection
 
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
 ## <a name="disable-time-to-live"></a>禁用生存时间
 
-若要在容器上禁用生存时间并阻止后台进程查找过期项，则应删除容器上的 `DefaultTimeToLive` 属性。 删除此属性不同于将其设置为 -1。 将它设置为 -1 时，添加到容器的新项将永久生存。但是，可以在容器中的特定项上重写此值。 从容器中删除 TTL 属性后项会过期，即使这些项已显式重写了以前的默认 TTL 值。
+若要在容器上禁用生存时间并阻止后台进程查找过期项，则应删除容器上的 `DefaultTimeToLive` 属性。 删除此属性不同于将其设置为 -1。 将它设置为 -1 时，添加到容器的新项将永久生存。但是，可以在容器中的特定项上重写此值。 从容器中删除 TTL 属性后项将永不会过期，即使这些项已显式重写了以前的默认 TTL 值。
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK
 

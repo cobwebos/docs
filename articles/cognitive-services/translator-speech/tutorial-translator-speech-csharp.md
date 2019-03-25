@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3ed13cfe764c4f94dfa50fd096cfc7a8ac7656d
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673745"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900822"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>教程：以 C# 编写的语音翻译应用程序
 
@@ -40,7 +40,7 @@ Visual Studio 解决方案还会生成应用程序安装程序。 需要 [WiX �
 
 还需要语音翻译服务的订阅密钥，可从 Microsoft Azure 仪表板获取。 可使用免费定价层进行翻译，免费定价层每个月免费提供 10 小时的语音翻译服务。 此层对本教程而言就已足够。
 
-还需要第三方 [JSON.Net 库](https://www.newtonsoft.com/json)（来自 Newtonsoft）。 如果在 Visual Studio 选项中启用了两个“包还原”复选框，则此程序集由 NuGet 自动安装。
+还需要第三方 [JSON.NET 库](https://www.newtonsoft.com/json)（来自 Newtonsoft）。 如果在 Visual Studio 选项中启用了两个“包还原”复选框，则此程序集由 NuGet 自动安装。
 
 ## <a name="trying-the-translation-app"></a>试用翻译应用
 

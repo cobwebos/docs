@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2018
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15707e9854e79b3aa05ff9024fc5b3c7a38fa8f2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106879"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402110"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>在 Azure 安全中心自定义 OS 安全配置（预览）
 
@@ -112,7 +112,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
     - 允许的用户组列表，例如：管理员、备份操作员
 
--   **state**：该字符串可以包含选项 Disabled 或 Enabled。 在此个人预览版中，该字符串区分大小写。
+-   **state**：该字符串可以包含选项 Disabled 或 Enabled。 对于此版本，该字符串是区分大小写。
 
 只能配置这些字段。 如果不符合文件格式或大小，则无法保存更改。 你会收到一条错误消息，指出需上传有效的 JSON 配置文件。
 

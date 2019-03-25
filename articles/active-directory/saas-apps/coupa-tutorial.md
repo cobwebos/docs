@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 47f27746-9057-4b9c-991e-3abf77710f73
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d1bac1e9fee9b06fb88237ddc3a7374eed32e40
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879625"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>教程：Azure Active Directory 与 Coupa 的集成
 
@@ -111,6 +111,7 @@ ms.locfileid: "56879625"
     > 登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [Coupa 客户端支持团队](https://success.coupa.com/Support/Contact_Us?)获取此值。
 
     b. 在“标识符”框中，键入一个 URL：
+
     | 环境  | 代码 |
     |:-------------|----|
     | 沙盒 | `devsso35.coupahost.com`|
@@ -118,6 +119,7 @@ ms.locfileid: "56879625"
     | | |
 
     c. 在“回复 URL”文本框中键入 URL：
+
     | 环境 | 代码 |
     |------------- |----|
     | 沙盒 | `https://devsso35.coupahost.com/sp/ACS.saml2`|
@@ -174,7 +176,7 @@ ms.locfileid: "56879625"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

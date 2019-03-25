@@ -2,23 +2,18 @@
 title: 什么是 Azure 预留项？ | Microsoft Docs
 description: 了解 Azure 预订和定价以节省虚拟机、SQL 数据库、Azure Cosmos DB 和其他资源的成本。
 services: billing
-documentationcenter: ''
 author: yashesvi
 manager: yashar
-editor: ''
 ms.service: billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/06/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: a4ad3574849d3c80f671abc93e463b06454289e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3081ab352152d6d736f20da94ed0b513121e231b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904161"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401800"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -44,17 +39,11 @@ ms.locfileid: "57904161"
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>谁有资格购买预留？
 
-使用以下订阅类型的 Azure 客户可购买预订：
+若要购买计划，必须具有 （MS-条-0017 P 或 MS-条-0148 P） 的企业或即用即付订阅 （MS-条-003 P 或 MS-条-0023 P） 中的订阅所有者角色。 云解决方案提供商可以使用 Azure 门户或 [合作伙伴中心](/partner-center/azure-reservations) 购买 Azure 保留项。
 
-- 企业协议订阅套餐类型（MS-AZR-0017P 或 MS-AZR-0148P）。
-- 即用即付订阅套餐类型（MS-AZR-003P 或 MS-AZR-0023P）。
-- 云解决方案提供商 (CSP) 合作伙伴可使用 Azure 门户或[合作伙伴中心](https://docs.microsoft.com/partner-center/azure-reservations)购买 Azure 预订。
+EA 客户可以通过禁用限制到 EA 管理员购买**添加保留实例**EA 门户中的选项。 EA 管理员必须至少一个 EA 订阅是订阅所有者才能购买预订。 选项为适用于想要购买的不同的成本中心保留一个集中式的团队企业非常有用。 在购买集中式的团队可以将成本中心所有者添加到保留项。 所有者可以然后范围限定到自己的订阅保留。 中心团队不需要购买预订时具有订阅所有者的访问。
 
 预订折扣仅适用于与企业、即用即付或 CSP 订阅类型相关联的资源。
-
- 若要购买计划：
-
-- 你必须至少具有一个企业或即用即付订阅的所有者角色。
 
 ## <a name="how-is-a-reservation-billed"></a>预留如何计费？
 

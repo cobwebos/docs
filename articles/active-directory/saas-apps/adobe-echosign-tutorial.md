@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9af11c7c347481921f04e63276e946e679b03cdd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8942ebf3f006c2e1cc72b322dd243d46bf69f04d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876205"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
 
@@ -128,7 +128,7 @@ ms.locfileid: "56876205"
 
 ### <a name="configure-adobe-sign-single-sign-on"></a>配置 Adobe Sign 单一登录
 
-7. 在配置之前，请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，以便将域添加到 Adobe Sign 的允许列表中。 下面介绍如何添加域：
+1. 在配置之前，请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，以便将域添加到 Adobe Sign 的允许列表中。 下面介绍如何添加域：
 
     a. [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)会向你发送随机生成的令牌。 对于域，令牌将如下所示：**adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 
@@ -147,33 +147,33 @@ ms.locfileid: "56876205"
     * 添加带有 Adobe 提供的完整令牌值的 TXT 记录。
     * 保存所做更改。
 
-8. 在其他 Web 浏览器窗口中，以管理员身份登录到 Adobe Sign 公司站点。
+1. 在其他 Web 浏览器窗口中，以管理员身份登录到 Adobe Sign 公司站点。
 
-9. 在 SAML 菜单中，选择“帐户设置” > “SAML 设置”。
+1. 在 SAML 菜单中，选择“帐户设置” > “SAML 设置”。
    
     ![Adobe Sign SAML 设置页的屏幕截图](./media/adobe-echosign-tutorial/ic789520.png "帐户")
 
-10. 在“SAML 设置”部分执行以下步骤：
+1. 在“SAML 设置”部分执行以下步骤：
   
-    ![SAML 设置的屏幕截图](./media/adobe-echosign-tutorial/ic789521.png "SAML 设置")
+   ![SAML 设置的屏幕截图](./media/adobe-echosign-tutorial/ic789521.png "SAML 设置")
    
-    ![SAML 设置的屏幕截图](./media/adobe-echosign-tutorial/ic789522.png "SAML 设置")
+   ![SAML 设置的屏幕截图](./media/adobe-echosign-tutorial/ic789522.png "SAML 设置")
 
-    a. 在“SAML 模式”下，选择“SAML 强制”。
+   a. 在“SAML 模式”下，选择“SAML 强制”。
    
-    b. 选择“允许 Echosign 帐户管理员使用 Echosign 凭据登录”。
+   b. 选择“允许 Echosign 帐户管理员使用 Echosign 凭据登录”。
    
-    c. 在“用户创建”下，选择“自动添加通过 SAML 验证了身份的用户”。
+   c. 在“用户创建”下，选择“自动添加通过 SAML 验证了身份的用户”。
 
-    d. 将从 Azure 门户复制的“Azure AD 标识符”粘贴到“Idp 实体 ID”文本框。
+   d. 将从 Azure 门户复制的“Azure AD 标识符”粘贴到“Idp 实体 ID”文本框。
     
-    e. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“Idp 登录 URL”。
+   e. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“Idp 登录 URL”。
    
-    f. 在“Idp 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”。
+   f. 在“Idp 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”。
 
-    g. 在记事本中打开已下载的 **Certificate(Base64)** 文件。 将其内容复制到剪贴板，然后将其粘贴到“IdP 证书”文本框。
+   g. 在记事本中打开已下载的 **Certificate(Base64)** 文件。 将其内容复制到剪贴板，然后将其粘贴到“IdP 证书”文本框。
 
-    h. 选择“保存更改”。
+   h. 选择“保存更改”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -193,7 +193,7 @@ ms.locfileid: "56876205"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

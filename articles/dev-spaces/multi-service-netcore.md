@@ -1,21 +1,20 @@
 ---
-title: 使用 .NET Core 和 VS Code 运行多个依赖的服务 | Microsoft Docs
+title: 使用 .NET Core 和 VS Code 运行多个依赖的服务
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: DrEsteban
 ms.author: stevenry
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 39c9d2f938dd3e06a328626756ddcc80d0aad47b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
+ms.openlocfilehash: ff2031395eb14cc1b9d8fda2150523c37fdcab69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821228"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870941"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行多服务开发
 
@@ -33,8 +32,8 @@ ms.locfileid: "56821228"
 ### <a name="run-mywebapi"></a>运行 *mywebapi*
 1. 在单独的 VS Code 窗口中打开文件夹 `mywebapi`。
 1. 打开**命令面板**（使用“视图”|“命令面板”菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 此命令不应与 `azds prep` 命令混淆，后者配置部署的项目。
-1. 按 F5，等待服务生成和部署。 当 VS Code 调试栏出现时，表示服务已准备就绪。
-1. 终结点 URL 将类似于 http://localhost:\<portnumber\>。 **提示：VS Code 状态栏会显示一个可点击的 URL。** 容器看起来像是在本地运行，但实际上是在 Azure 的开发空间中运行。 出现 localhost 地址的原因是，`mywebapi` 尚未定义任何公共终结点，只能从 Kubernetes 实例内部访问。 为方便操作以及便于与本地计算机中的专用服务交互，Azure Dev Spaces 将与 Azure 中运行的容器建立临时的 SSH 隧道。
+1. 按 F5，等待服务生成和部署。 当应用程序启动时，你就会知道它已准备就绪。按 Ctrl+C 将其关闭。 调试控制台中将显示消息。
+1. 终结点 URL 将类似于 `http://localhost:<portnumber>`。 **提示：VS Code 状态栏会显示一个可点击的 URL。** 容器看起来像是在本地运行，但实际上是在 Azure 的开发空间中运行。 出现 localhost 地址的原因是，`mywebapi` 尚未定义任何公共终结点，只能从 Kubernetes 实例内部访问。 为方便操作以及便于与本地计算机中的专用服务交互，Azure Dev Spaces 将与 Azure 中运行的容器建立临时的 SSH 隧道。
 1. 当 `mywebapi` 准备就绪时，请在浏览器中打开 localhost 地址。 将 `/api/values` 追加到 URL 的后面，以针对 `ValuesController` 调用默认的 GET API。
 1. 如果成功执行所有步骤，应会看到 `mywebapi` 服务发出的响应。
 

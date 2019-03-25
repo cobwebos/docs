@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 41437933f715af092dea563b0b1be4794c71925c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5c4d2320ffd54054eb8a5bb26ef14c8e99dabb33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863153"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855948"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
 
@@ -43,7 +43,7 @@ GitHub 上的[电子商务目录审查示例](https://github.com/MicrosoftConten
 
 ## <a name="create-a-review-team"></a>创建评审团队
 
-参阅[熟悉内容审查器](quick-start.md)快速入门，获取有关如何注册[内容审查器审查工具](https://contentmoderator.cognitive.microsoft.com/)和创建评审团队的说明。 记下“凭据”页上的“团队 ID”值。
+请参阅[在 Web 上试用内容审查器](quick-start.md)快速入门，获取有关如何注册[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)和创建评审团队的说明。 记下“凭据”页上的“团队 ID”值。
 
 ## <a name="create-custom-moderation-tags"></a>创建自定义审查标记
 

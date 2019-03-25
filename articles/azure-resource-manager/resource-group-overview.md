@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/13/2019
+ms.date: 03/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: d275455f502cf20eaa573c1716c38023f8e7236e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 115b1fcd1b1e878a9b4a7efdf6f24d7391945619
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821894"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409833"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
 
@@ -51,7 +51,16 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一致的管
 * 可以将标记应用到资源，以逻辑方式组织订阅中的所有资源。
 * 可以通过查看一组共享相同标记的资源的成本来理清组织的帐单。
 
+## <a name="understand-management-scope"></a>了解管理范围
+
+Azure 提供四个级别的管理范围：管理组、订阅、资源组和资源。 [管理组](../governance/management-groups/index.md)处于预览状态。 下图显示了一个这些层的示例。
+
+![范围](./media/resource-group-overview/scope-levels.png)
+
+将在上述任何级别的作用域中应用管理设置。 所选的级别确定应用设置的广泛程度。 较低级别继承较高级别的设置。 例如，将[策略](../governance/policy/overview.md)应用于订阅时，该策略将应用于订阅中的所有资源组和资源。 在资源组上应用策略时，该策略将应用于资源组及其所有资源。 但是，其他资源组没有该策略分配。
+
 ## <a name="guidance"></a>指南
+
 以下建议将帮助你在使用解决方案时充分利用 Resource Manager。
 
 * 通过 Resource Manager 模板中的声明性语法而不是强制性的命令来定义和部署基础结构。

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 35a041216bf24a4c6ab73f9d5c3e85dff38a4501
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 423db264c8035f9b089524eb4b19a13baccdf2e0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588103"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404699"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教程：通过 NFS 将数据复制到 Azure Data Box
 
@@ -40,9 +40,10 @@ ms.locfileid: "56588103"
 
 根据选择的存储帐户，Data Box 将会：
 - 为每个关联的 GPv1 和 GPv2 存储帐户最多创建三个共享。
-- 为高级或 Blob 存储帐户创建一个共享。 
+- 用于高级存储的一个共享。 
+- 用于 Blob 存储帐户的一个共享。 
 
-块 Blob 和页 Blob 共享下的一级实体为容器，二级实体为 Blob。 在 Azure 文件共享下，一级实体为共享，二级实体为文件。
+在块 blob 和页 blob 共享下，一级实体为容器，二级实体为 blob。 在 Azure 文件共享下，一级实体为共享，二级实体为文件。
 
 下表显示了 Data Box 上共享的 UNC 路径以及上传数据的 Azure 存储路径 URL。 最终的 Azure 存储路径 URL 可以从 UNC 共享路径派生。
  
@@ -125,6 +126,9 @@ ms.locfileid: "56588103"
      其中，j 指定并行化数目，X 为并行副本数
 
      我们建议从 16 个并行副本开始，并根据可用的资源增加线程数。
+
+> [!IMPORTANT]
+> 不支持以下 Linux 文件类型：符号链接、字符文件、块文件、套接字和管道。 在**准备交付**步骤期间，这些文件类型将导致失败。
 
 - 为确保数据完整性，复制数据时将以内联方式计算校验和。 复制完成后，检查设备上的已用空间和可用空间。
     

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 12/4/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: e61975d81fd5920feb5fd47845c67d0aa5293ae6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093416"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure DNS 区域和记录
 
@@ -38,20 +38,20 @@ az group create --name MyResourceGroup --location "East US"
 
 使用 `az network dns zone create` 命令创建 DNS 区域。 若要查看此命令的帮助，请键入 `az network dns zone create -h`。
 
-以下示例在 *MyResourceGroup* 资源组中创建名为 *contoso.com* 的 DNS 区域。 使用该示例创建 DNS 区域，将相应的值替换成自己的值。
+以下示例在 *MyResourceGroup* 资源组中创建名为 *contoso.xyz* 的 DNS 区域。 使用该示例创建 DNS 区域，将相应的值替换成自己的值。
 
 ```azurecli
-az network dns zone create -g MyResourceGroup -n contoso.com
+az network dns zone create -g MyResourceGroup -n contoso.xyz
 ```
 
 ## <a name="create-a-dns-record"></a>创建 DNS 记录
 
 若要创建 DNS 记录，请使用 `az network dns record-set [record type] add-record` 命令。 有关 A 记录的帮助，请参阅 `azure network dns record-set A add-record -h`。
 
-以下示例在资源组“MyResourceGroup”中创建在 DNS 区域“contoso.com”中具有相对名称为“www”的一个记录集。 记录集的完全限定名称为“www.contoso.com”。 记录类型为“A”，IP 地址为“1.2.3.4”，并且使用了默认 TTL 3600 秒（1 小时）。
+以下示例在资源组“MyResourceGroup”中创建在 DNS 区域“contoso.xyz”中具有相对名称为“www”的一个记录。 记录集的完全限定名称为“www.contoso.xyz”。 记录类型为“A”，IP 地址为“10.10.10.10”，并且使用了默认 TTL 3600 秒（1 小时）。
 
 ```azurecli
-az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
+az network dns record-set a add-record -g MyResourceGroup -z contoso.xyz -n www -a 10.10.10.10
 ```
 
 ## <a name="view-records"></a>查看记录
@@ -59,41 +59,43 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 若要列出区域中的 DNS 记录，请运行：
 
 ```azurecli
-az network dns record-set list -g MyResourceGroup -z contoso.com
+az network dns record-set list -g MyResourceGroup -z contoso.xyz
 ```
 
-## <a name="update-name-servers"></a>更新名称服务器
+## <a name="test-the-name-resolution"></a>测试名称解析
 
-正确设置 DNS 区域和记录后，需要将域名配置为使用 Azure DNS 名称服务器，从而使 Internet 上的其他用户能够找到你的 DNS 记录。
+现在，你已有一个测试 DNS 区域且其中有一个测试“A”记录，可以使用名为 *nslookup* 的工具来测试名称解析了。 
 
-区域的名称服务器是通过 `az network dns zone show` 命令指定的。 若要查看名称服务器名称，请使用 JSON 输出，如以下示例中所示。
+**测试 DNS 名称解析：**
 
-```azurecli
-az network dns zone show -g MyResourceGroup -n contoso.com -o json
+1. 运行以下 cmdlet 以获取区域的名称服务器列表：
 
-{
-  "etag": "00000003-0000-0000-b40d-0996b97ed101",
-  "id": "/subscriptions/a385a691-bd93-41b0-8084-8213ebc5bff7/resourceGroups/myresourcegroup/providers/Microsoft.Network/dnszones/contoso.com",
-  "location": "global",
-  "maxNumberOfRecordSets": 5000,
-  "name": "contoso.com",
-  "nameServers": [
-    "ns1-01.azure-dns.com.",
-    "ns2-01.azure-dns.net.",
-    "ns3-01.azure-dns.org.",
-    "ns4-01.azure-dns.info."
-  ],
-  "numberOfRecordSets": 3,
-  "resourceGroup": "myresourcegroup",
-  "tags": {},
-  "type": "Microsoft.Network/dnszones"
-}
-```
+   ```azurecli
+   az network dns record-set ns show --resource-group MyResourceGroup --zone-name contoso.xyz --name @
+   ```
 
-这些名称服务器应当配置有域名注册机构（向其购买域名的机构）。 域名注册机构将提供选项来为域设置名称服务器。 有关详细信息，请参见[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md#delegate-the-domain)。
+1. 从上一步的输出中复制其中一个名称服务器名称。
+
+1. 打开一个命令提示符，并运行以下命令：
+
+   ```
+   nslookup www.contoso.xyz <name server name>
+   ```
+
+   例如：
+
+   ```
+   nslookup www.contoso.xyz ns1-08.azure-dns.com.
+   ```
+
+   应当会看到类似以下屏幕的内容：
+
+   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+
+主机名 **www\.contoso.xyz** 解析为 **10.10.10.10**，正如你配置的那样。 此结果表明名称解析正常工作。
 
 ## <a name="delete-all-resources"></a>删除所有资源
- 
+
 当不再需要时，可以通过删除资源组来删除本快速入门中创建的所有资源：
 
 ```azurecli

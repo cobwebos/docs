@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: a7dd8cd349703fc9009695e570b66c3a3e626d15
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 52dee0ee60c111c56c42e0452f8f8750ea9ea4e6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593176"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436538"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -32,6 +32,8 @@ ms.locfileid: "56593176"
 > * 创建、运行和监视完整复制管道
 > * 在源表中添加或更新数据
 > * 创建、运行和监视增量复制管道
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
 在数据集成解决方案中，一种广泛使用的方案是在完成初始数据加载后以增量方式加载数据。 在某些情况下，可以通过某种方式（例如，使用 LastModifyTime、CreationTime 等属性）将源数据存储中某个时段的更改数据轻松地进行切分。 在某些情况下，没有明确的方式可以将增量数据从上一次处理过的数据中区分出来。 可以使用 Azure SQL 数据库、SQL Server 等数据存储支持的更改跟踪技术来确定增量数据。  本教程介绍如何将 Azure 数据工厂与 SQL 更改跟踪技术配合使用，通过增量方式将增量数据从 Azure SQL 数据库加载到 Azure Blob 存储中。  有关 SQL 更改跟踪技术的更具体的信息，请参阅 [SQL Server 中的更改跟踪](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 
@@ -68,7 +70,8 @@ ms.locfileid: "56593176"
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="prerequisites"></a>先决条件
-* Azure PowerShell。 按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+
+* Azure PowerShell。 按[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明安装最新的 Azure PowerShell 模块。
 * **Azure SQL 数据库**。 将数据库用作**源**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文获取创建步骤。
 * **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
 
@@ -145,7 +148,7 @@ ms.locfileid: "56593176"
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+按[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明安装最新的 Azure PowerShell 模块。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如：`"adfrg"`。 
@@ -163,7 +166,7 @@ ms.locfileid: "56593176"
 3. 若要创建 Azure 资源组，请运行以下命令： 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
     如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令。 
 3. 定义一个用于数据工厂名称的变量。 
@@ -174,10 +177,10 @@ ms.locfileid: "56593176"
     ```powershell
     $dataFactoryName = "IncCopyChgTrackingDF";
     ```
-5. 若要创建数据工厂，请运行以下 **Set-AzureRmDataFactoryV2** cmdlet： 
+5. 要创建数据工厂，请运行以下 **Set-AzDataFactoryV2** cmdlet： 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 请注意以下几点：
@@ -214,10 +217,10 @@ ms.locfileid: "56593176"
     }
     ```
 2. 在 **Azure PowerShell** 中切换到 **C:\ADFTutorials\IncCopyChgTrackingTutorial** 文件夹。
-3. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureStorageLinkedService**。 在以下示例中，传递 **ResourceGroupName** 和 **DataFactoryName** 参数的值。 
+3. 运行 **Set-AzDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureStorageLinkedService**。 在以下示例中，传递 **ResourceGroupName** 和 **DataFactoryName** 参数的值。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
     下面是示例输出：
@@ -248,10 +251,10 @@ ms.locfileid: "56593176"
         }
     }
     ```
-2. 在 **Azure PowerShell** 中，运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureSQLDatabaseLinkedService**。 
+2. 在 **Azure PowerShell** 中，运行 **Set-AzDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureSQLDatabaseLinkedService**。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
     下面是示例输出：
@@ -287,10 +290,10 @@ ms.locfileid: "56593176"
     }   
     ```
 
-2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 来创建数据集：SourceDataset
+2.  运行 Set-AzDataFactoryV2Dataset cmdlet 以创建数据集：SourceDataset
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
@@ -329,10 +332,10 @@ ms.locfileid: "56593176"
     ```
 
     在 Azure Blob 存储中创建 adftutorial 容器，这是先决条件的部分要求。 创建容器（如果不存在），或者将容器设置为现有容器的名称。 在本教程中，输出文件名是使用以下表达式动态生成的：@CONCAT('Incremental-', pipeline().RunId, '.txt')。
-2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 来创建数据集：SinkDataset
+2.  运行 Set-AzDataFactoryV2Dataset cmdlet 以创建数据集：SinkDataset
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
@@ -367,10 +370,10 @@ ms.locfileid: "56593176"
     ```
 
     创建 table_store_ChangeTracking_version 表，这是先决条件的部分要求。
-2.  运行 Set-AzureRmDataFactoryV2Dataset cmdlet 来创建数据集：WatermarkDataset
+2.  运行 Set-AzDataFactoryV2Dataset cmdlet 以创建数据集：WatermarkDataset
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
@@ -416,10 +419,10 @@ ms.locfileid: "56593176"
         }
     }
     ```
-2. 运行 Set-AzureRmDataFactoryV2Pipeline cmdlet 来创建管道：FullCopyPipeline。
+2. 运行 Set-AzDataFactoryV2Pipeline cmdlet 来创建管道：FullCopyPipeline。
     
    ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
    ``` 
 
    下面是示例输出： 
@@ -433,10 +436,10 @@ ms.locfileid: "56593176"
    ```
  
 ### <a name="run-the-full-copy-pipeline"></a>运行完整的复制管道
-运行管道：使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道 **FullCopyPipeline**。 
+运行管道：使用 **Invoke-AzDataFactoryV2Pipeline** cmdlet 运行管道 **FullCopyPipeline**。 
 
 ```powershell
-Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
+Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
 ``` 
 
 ### <a name="monitor-the-full-copy-pipeline"></a>监视完整的复制管道
@@ -605,10 +608,10 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     }
     
     ```
-2. 运行 Set-AzureRmDataFactoryV2Pipeline cmdlet 来创建管道：FullCopyPipeline。
+2. 运行 Set-AzDataFactoryV2Pipeline cmdlet 来创建管道：FullCopyPipeline。
     
    ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
    下面是示例输出： 
@@ -622,10 +625,10 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
    ```
 
 ### <a name="run-the-incremental-copy-pipeline"></a>运行增量复制管道
-运行管道：使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道 **IncrementalCopyPipeline**。 
+运行管道：使用 **Invoke-AzDataFactoryV2Pipeline** cmdlet 运行管道 **IncrementalCopyPipeline**。 
 
 ```powershell
-Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
+Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
 ``` 
 
 

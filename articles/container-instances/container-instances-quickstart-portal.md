@@ -1,6 +1,6 @@
 ---
-title: 快速入门 - 在 Azure 容器实例中运行应用程序 - 门户
-description: 在本快速入门中，将使用 Azure 门户部署 Docker 容器应用程序，以在 Azure 容器实例中的独立容器中运行
+title: 快速入门 - 将 Docker 容器部署到 Azure 容器实例 - 门户
+description: 本快速入门将使用 Azure 门户快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,16 +8,18 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d6a1d442eca0cf5e433a82fb52ed54b09b56c779
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 41313a8b140886247b830db7ca9b34a22257de96
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566078"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729155"
 ---
-# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>快速入门：在 Azure 门户中的 Azure 容器实例中运行容器应用程序
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure 中部署容器实例
 
-使用 Azure 容器实例在 Azure 中快速方便地运行 Docker 容器。 不需要部署虚拟机或使用 Kubernetes 之类的完整容器业务流程平台。 在本快速入门中，将使用 Azure 门户在 Azure 中创建一个容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在配置一些设置并部署容器后，你可以浏览到正在运行的应用程序：
+使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。
+
+本快速入门将使用 Azure 门户部署一个独立的 Docker 容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在配置一些设置并部署容器后，你可以浏览到正在运行的应用程序：
 
 ![在浏览器中显示的已部署到 Azure 容器实例的应用][aci-portal-07]
 
@@ -41,9 +43,9 @@ ms.locfileid: "55566078"
 
 ![在 Azure 门户中配置新的容器实例的基本设置][aci-portal-03]
 
-对于本快速入门，请保留默认设置“公共”以部署来自公共 Docker 中心注册表的 `microsoft/aci-helloworld` 映像。 此映像打包了一个用 Node.js 编写的小型 Web 应用程序，该应用程序提供静态 HTML 页面。
+对于本快速入门，请保留默认设置“公共”以部署公共 `microsoft/aci-helloworld` 映像。 此映像打包了一个用 Node.js 编写的小型 Web 应用程序，该应用程序提供静态 HTML 页面。
 
-在“配置”下，为容器指定一个 **DNS 名称标签**。 该名称在创建容器实例的 Azure 区域中必须是唯一的。 容器将可通过 `<dns-name-label>.<region>.azurecontainer.io` 公开访问。
+在“配置”下，为容器指定一个 **DNS 名称标签**。 该名称在创建容器实例的 Azure 区域中必须是唯一的。 容器将可通过 `<dns-name-label>.<region>.azurecontainer.io` 公开访问。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
 
 将“配置”中的其他设置保留为各自的默认设置，然后选择“确定”来验证配置。
 

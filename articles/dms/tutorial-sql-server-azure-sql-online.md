@@ -2,21 +2,21 @@
 title: 教程：使用 Azure 数据库迁移服务从 SQL Server 联机迁移到 Azure SQL 数据库中的单一/入池数据库 | Microsoft Docs
 description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 联机迁移到 Azure SQL 数据库中的单一数据库或入池数据库。
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/07/2019
-ms.openlocfilehash: acb5c5851c65c42995f2018a8155a72a55814bca
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/12/2019
+ms.openlocfilehash: 6c026fe06fcfa5a06d700ba8dfc3789c59776a15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999703"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093103"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库中的单一数据库或入池数据库
 
@@ -53,8 +53,17 @@ ms.locfileid: "55999703"
     > 如果你使用 SQL Server Integration Services (SSIS) 并且希望将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 Azure SQL 数据库，则当你在 Azure 数据工厂 (ADF) 中预配 SSIS 时，系统会代表你自动创建和管理目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
 
 - 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 或更高版本。
-- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNET，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
-- 确保 Azure 虚拟网络 (VNET) 网络安全组规则未阻止通信端口 443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNET)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+
+    > [!NOTE]
+    > 在 VNET 设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，则请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+    > - 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
+    > - 存储终结点
+    > - 服务总线终结点
+    >
+    > 因为 Azure 数据库迁移服务缺少 Internet 连接，则此配置是必需的。
+
+- 确保 VNET 网络安全组规则未阻止以下通信端口：443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 - 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 - 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 - 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -121,10 +130,10 @@ ms.locfileid: "55999703"
 
     评估迁移到 Azure SQL 数据库中的单一数据库或入池数据库的源 SQL Server 数据库时，可以选择以下一种或两种评估报告类型：
 
-    - 检查数据库兼容性
-    - 检查功能奇偶校验
+   - 检查数据库兼容性
+   - 检查功能奇偶校验
 
-    默认情况下会选择这两种报告类型。
+     默认情况下会选择这两种报告类型。
 
 3. 在 DMA 的“选项”屏幕上，选择“下一步”。
 4. 在“选择源”屏幕上的“连接到服务器”对话框中，向 SQL Server 提供连接详细信息，然后选择“连接”。
@@ -153,7 +162,7 @@ ms.locfileid: "55999703"
 > [!IMPORTANT]
 > 如果你使用 SSIS，则 DMA 目前不支持迁移源 SSISDB，但你可以将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
 
-若要将 **AdventureWorks2012** 架构迁移到 Azure SQL 数据库中的单一数据库或入池数据库，请执行以下步骤：
+要将 AdventureWorks2012 架构迁移到 Azure SQL 数据库中的单一数据库或共用数据库，请执行以下步骤：
 
 1. 在数据迁移助手中，选择“新建 (+)”图标，然后在“项目类型”下选择“迁移”。
 2. 指定项目名称，在“源服务器类型”文本框中，选择“SQL Server”，然后在“目标服务器类型”文本框中，选择“Azure SQL 数据库”。

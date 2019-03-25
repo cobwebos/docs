@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 443b57986f7080970780c108447e9d7d4e4ea365
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: fb039f58a9a13cf3241c50d6cf31e777a654dcdb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311386"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435144"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Java 提取手写文本
 
-在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)和[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)方法，可以检测图像中的手写文本，并将识别的字符提取到计算机可用的字符流中。
+在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API 和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API，可以检测图像中的手写文本，并将识别的字符提取到计算机可用的字符流中。
 
 > [!IMPORTANT]
-> 不同于 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，识别文本方法返回 `Operation-Content` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)方法，同时检查状态并返回识别文本方法调用的结果。
+> 不同于 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，批量读取方法返回 `Operation-Content` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，以便检查状态并返回批量读取方法调用的结果。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "56311386"
 
 1. 将 `Main` 公共类替换为以下代码，然后根据需要在代码中进行以下更改：
    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
-   1. 如有必要，将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)方法的终结点 URL。
+   1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法的终结点 URL。
    1. （可选）将 `imageToAnalyze` 的值替换为要从中提取手写文本的另一图像的 URL。
 1. 保存，然后生成 Java 项目。
 1. 如果使用的是 IDE，请运行 `Main`。 否则，请打开一个命令提示窗口，然后使用 `java` 命令运行已编译的类。 例如，`java Main`。
@@ -83,7 +83,7 @@ public class Main {
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
+        "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
     private static final String imageToAnalyze =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +
@@ -196,272 +196,100 @@ Text recognition result response:
 
 {
   "status": "Succeeded",
-  "recognitionResult": {"lines": [
+  "recognitionResults": [
     {
-      "boundingBox": [
-        2,
-        84,
-        783,
-        96,
-        782,
-        154,
-        1,
-        148
-      ],
-      "words": [
+      "page": 1,
+      "clockwiseOrientation": 349.59,
+      "width": 3200,
+      "height": 3200,
+      "unit": "pixel",
+      "lines": [
         {
-          "boundingBox": [
-            6,
-            86,
-            92,
-            87,
-            71,
-            151,
-            0,
-            150
-          ],
-          "text": "Pack"
+          "boundingBox": [202,618,2047,643,2046,840,200,813],
+          "text": "Our greatest glory is not",
+          "words": [
+            {
+              "boundingBox": [204,627,481,628,481,830,204,829],
+              "text": "Our"
+            },
+            {
+              "boundingBox": [519,628,1057,630,1057,832,518,830],
+              "text": "greatest"
+            },
+            {
+              "boundingBox": [1114,630,1549,631,1548,833,1114,832],
+              "text": "glory"
+            },
+            {
+              "boundingBox": [1586,631,1785,632,1784,834,1586,833],
+              "text": "is"
+            },
+            {
+              "boundingBox": [1822,632,2115,633,2115,835,1822,834],
+              "text": "not"
+            }
+          ]
         },
         {
-          "boundingBox": [
-            86,
-            87,
-            172,
-            88,
-            150,
-            152,
-            64,
-            151
-          ],
-          "text": "my"
+          "boundingBox": [420,1273,2954,1250,2958,1488,422,1511],
+          "text": "but in rising every time we fall",
+          "words": [
+            {
+              "boundingBox": [423,1269,634,1268,635,1507,424,1508],
+              "text": "but"
+            },
+            {
+              "boundingBox": [667,1268,808,1268,809,1506,668,1507],
+              "text": "in"
+            },
+            {
+              "boundingBox": [874,1267,1289,1265,1290,1504,875,1506],
+              "text": "rising"
+            },
+            {
+              "boundingBox": [1331,1265,1771,1263,1772,1502,1332,1504],
+              "text": "every"
+            },
+            {
+              "boundingBox": [1812, 1263, 2178, 1261, 2179, 1500, 1813, 1502],
+              "text": "time"
+            },
+            {
+              "boundingBox": [2219, 1261, 2510, 1260, 2511, 1498, 2220, 1500],
+              "text": "we"
+            },
+            {
+              "boundingBox": [2551, 1260, 3016, 1258, 3017, 1496, 2552, 1498],
+              "text": "fall"
+            }
+          ]
         },
         {
-          "boundingBox": [
-            165,
-            88,
-            241,
-            89,
-            219,
-            152,
-            144,
-            152
-          ],
-          "text": "box"
-        },
-        {
-          "boundingBox": [
-            234,
-            89,
-            343,
-            90,
-            322,
-            154,
-            213,
-            152
-          ],
-          "text": "with"
-        },
-        {
-          "boundingBox": [
-            347,
-            90,
-            432,
-            91,
-            411,
-            154,
-            325,
-            154
-          ],
-          "text": "five"
-        },
-        {
-          "boundingBox": [
-            432,
-            91,
-            538,
-            92,
-            516,
-            154,
-            411,
-            154
-          ],
-          "text": "dozen"
-        },
-        {
-          "boundingBox": [
-            554,
-            92,
-            696,
-            94,
-            675,
-            154,
-            533,
-            154
-          ],
-          "text": "liquor"
-        },
-        {
-          "boundingBox": [
-            710,
-            94,
-            800,
-            96,
-            800,
-            154,
-            688,
-            154
-          ],
-          "text": "jugs"
+          "boundingBox": [1612, 903, 2744, 935, 2738, 1139, 1607, 1107],
+          "text": "in never failing ,",
+          "words": [
+            {
+              "boundingBox": [1611, 934, 1707, 933, 1708, 1147, 1613, 1147],
+              "text": "in"
+            },
+            {
+              "boundingBox": [1753, 933, 2132, 930, 2133, 1144, 1754, 1146],
+              "text": "never"
+            },
+            {
+              "boundingBox": [2162, 930, 2673, 927, 2674, 1140, 2164, 1144],
+              "text": "failing"
+            },
+            {
+              "boundingBox": [2703, 926, 2788, 926, 2790, 1139, 2705, 1140],
+              "text": ",",
+              "confidence": "Low"
+            }
+          ]
         }
-      ],
-      "text": "Pack my box with five dozen liquor jugs"
-    },
-    {
-      "boundingBox": [
-        2,
-        52,
-        65,
-        46,
-        69,
-        89,
-        7,
-        95
-      ],
-      "words": [{
-        "boundingBox": [
-          0,
-          62,
-          79,
-          39,
-          94,
-          82,
-          0,
-          105
-        ],
-        "text": "dog"
-      }],
-      "text": "dog"
-    },
-    {
-      "boundingBox": [
-        6,
-        2,
-        771,
-        13,
-        770,
-        75,
-        5,
-        64
-      ],
-      "words": [
-        {
-          "boundingBox": [
-            8,
-            4,
-            92,
-            5,
-            77,
-            71,
-            0,
-            71
-          ],
-          "text": "The"
-        },
-        {
-          "boundingBox": [
-            89,
-            5,
-            188,
-            5,
-            173,
-            72,
-            74,
-            71
-          ],
-          "text": "quick"
-        },
-        {
-          "boundingBox": [
-            188,
-            5,
-            323,
-            6,
-            308,
-            73,
-            173,
-            72
-          ],
-          "text": "brown"
-        },
-        {
-          "boundingBox": [
-            316,
-            6,
-            386,
-            6,
-            371,
-            73,
-            302,
-            73
-          ],
-          "text": "fox"
-        },
-        {
-          "boundingBox": [
-            396,
-            7,
-            508,
-            7,
-            493,
-            74,
-            381,
-            73
-          ],
-          "text": "jumps"
-        },
-        {
-          "boundingBox": [
-            501,
-            7,
-            604,
-            8,
-            589,
-            75,
-            487,
-            74
-          ],
-          "text": "over"
-        },
-        {
-          "boundingBox": [
-            600,
-            8,
-            673,
-            8,
-            658,
-            75,
-            586,
-            75
-          ],
-          "text": "the"
-        },
-        {
-          "boundingBox": [
-            670,
-            8,
-            800,
-            9,
-            787,
-            76,
-            655,
-            75
-          ],
-          "text": "lazy"
-        }
-      ],
-      "text": "The quick brown fox jumps over the lazy"
+      ]
     }
-  ]}
+  ]
 }
 ```
 

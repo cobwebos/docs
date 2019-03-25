@@ -7,20 +7,20 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/15/2019
+ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef0638afd162dc179a2a7dec54b60bfb1f89144
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: eb64495d727429ff4dcfc233adee7dd5c60aaa8d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869762"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>教程：Azure Active Directory 与 Cisco Webex 的集成
 
@@ -46,6 +46,8 @@ ms.locfileid: "56869762"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Cisco Webex 支持 SP 发起的 SSO
+
+* Cisco Webex 支持**自动用户预配**
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>从库中添加 Cisco Webex
 
@@ -120,7 +122,7 @@ ms.locfileid: "56869762"
     
     | Name |  源属性|
     | ---------------|--------- |
-    | UID | user.userprincipalname |
+    | uid | user.userprincipalname |
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
 
@@ -190,7 +192,7 @@ ms.locfileid: "56869762"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -243,7 +245,7 @@ ms.locfileid: "56869762"
 
     b. 在“姓氏”文本框中，键入用户的姓氏，例如 **Simon**。
 
-    c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址，例如 **britta.simon@contoso.com**。
+    c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址，例如 **britta.simon\@contoso.com**。
 
 5. 单击加号以添加 Britta Simon。 然后单击“下一步”。
 
@@ -259,6 +261,8 @@ ms.locfileid: "56869762"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [配置用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial) 

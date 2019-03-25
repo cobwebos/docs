@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 7/24/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 73b8dfd741543560cd6ebf26178618a70bdae5f6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b4d75c7a6db89b19d88cddcc564fd4e6a9ad0f49
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992766"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770453"
 ---
 # <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Azure DNS 专用区域
 
@@ -53,7 +53,7 @@ New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-private-zone"></a>创建 DNS 专用区域
 
-结合 **ZoneType** 参数的 *Private* 值使用 `New-AzDnsZone` cmdlet 创建 DNS 区域。 以下示例在名为 **MyAzureResourceGroup** 的资源组中创建名为 **contoso.local** 的 DNS 区域，并将 DNS 区域提供给名为 **MyAzureVnet** 的虚拟网络。
+结合 **ZoneType** 参数的 *Private* 值使用 `New-AzDnsZone` cmdlet 创建 DNS 区域。 以下示例在名为 **MyAzureResourceGroup** 的资源组中创建名为 **private.contoso.com** 的 DNS 区域，并将 DNS 区域提供给名为 **MyAzureVnet** 的虚拟网络。
 
 如果省略 **ZoneType** 参数，则会将区域创建为公共区域。因此，创建专用区域时必须使用此参数。 
 
@@ -66,7 +66,7 @@ $vnet = New-AzVirtualNetwork `
   -AddressPrefix 10.2.0.0/16 `
   -Subnet $backendSubnet
 
-New-AzDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
+New-AzDnsZone -Name private.contoso.com -ResourceGroupName MyAzureResourceGroup `
    -ZoneType Private `
    -RegistrationVirtualNetworkId @($vnet.Id)
 ```
@@ -118,10 +118,10 @@ New-AzVm `
 
 ## <a name="create-an-additional-dns-record"></a>创建额外的 DNS 记录
 
-可以使用 `New-AzDnsRecordSet` cmdlet 创建记录集。 下面的示例在 DNS 区域 **contoso.local** 的资源组 **MyAzureResourceGroup** 中创建相对名称为 **db** 的一个记录集。 记录集的完全限定名称为 **db.contoso.local**。 记录类型为“A”，IP 地址为“10.2.0.4”，TTL 为 3600 秒。
+可以使用 `New-AzDnsRecordSet` cmdlet 创建记录集。 下面的示例在 DNS 区域 **private.contoso.com** 的资源组 **MyAzureResourceGroup** 中创建相对名称为 **db** 的一个记录。 记录集的完全限定名称为 **db.private.contoso.com**。 记录类型为“A”，IP 地址为“10.2.0.4”，TTL 为 3600 秒。
 
 ```azurepowershell
-New-AzDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
+New-AzDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
    -ResourceGroupName MyAzureResourceGroup -Ttl 3600 `
    -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.2.0.4")
 ```
@@ -131,13 +131,13 @@ New-AzDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
 若要列出区域中的 DNS 记录，请运行：
 
 ```azurepowershell
-Get-AzDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGroup
+Get-AzDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 请记住，你将不会看到为两台测试虚拟机自动创建的 A 记录。
 
 ## <a name="test-the-private-zone"></a>测试专用区域
 
-现在，可以测试 **contoso.local** 专用区域的名称解析。
+现在，可以测试 **private.contoso.com** 专用区域的名称解析。
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>将 VM 配置为允许入站 ICMP
 
@@ -156,13 +156,13 @@ Get-AzDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGro
 
 1. 从 myVM02 Windows PowerShell 命令提示符下，使用自动注册的主机名对 myVM01 执行 ping 命令：
    ```
-   ping myVM01.contoso.local
+   ping myVM01.private.contoso.com
    ```
    应当会看到与以下内容类似的输出：
    ```
-   PS C:\> ping myvm01.contoso.local
+   PS C:\> ping myvm01.private.contoso.com
 
-   Pinging myvm01.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging myvm01.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time=1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
@@ -176,13 +176,13 @@ Get-AzDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGro
    ```
 2. 现在，对之前创建的 **db** 名称执行 ping 命令：
    ```
-   ping db.contoso.local
+   ping db.private.contoso.com
    ```
    应当会看到与以下内容类似的输出：
    ```
-   PS C:\> ping db.contoso.local
+   PS C:\> ping db.private.contoso.com
 
-   Pinging db.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging db.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128

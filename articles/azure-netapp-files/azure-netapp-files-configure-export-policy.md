@@ -1,6 +1,6 @@
 ---
-title: 为 Azure NetApp 文件卷配置导出策略 |Microsoft Docs
-description: 介绍了如何配置导出策略来控制对 Azure NetApp 文件卷的访问
+title: 配置 NFS 卷使用 Azure NetApp 文件的导出策略 |Microsoft Docs
+description: 介绍如何配置导出策略来控制对 NFS 卷使用 Azure NetApp 文件访问
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 03/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 1098c5c2f42b242b3ba2f68ec7480de90dd7c22e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766642"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401490"
 ---
-# <a name="configure-export-policy-for-a-volume"></a>为卷配置导出策略
+# <a name="configure-export-policy-for-an-nfs-volume"></a>配置导出策略的 NFS 卷
 
-你可以配置导出策略来控制对 Azure NetApp 文件卷的访问。 
+你可以配置导出策略来控制对 Azure NetApp 文件卷的访问。 导出策略是仅对 NFS 卷的支持。 
 
 ## <a name="steps"></a>Steps 
 
@@ -47,7 +47,7 @@ ms.locfileid: "57766642"
 
     * **协议**   
         指定要用于导出策略的协议。   
-        目前，Azure NetApp 文件仅支持 NFSv3。
+        目前，Azure NetApp 文件导出策略支持仅 NFSv3。
 
     ![导出策略](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

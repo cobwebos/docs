@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 3902e6ae93159266de9f9e9cc0f355a37976a8ed
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 18d293270c3af486a1ea3756048a504d9ae70fce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425656"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076371"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -222,7 +222,10 @@ END
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-按[安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+按[安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明安装最新的 Azure PowerShell 模块。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如 `"adfrg"`。 
@@ -241,7 +244,7 @@ END
 1. 若要创建 Azure 资源组，请运行以下命令： 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
     如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令
 
@@ -253,10 +256,10 @@ END
     ```powershell
     $dataFactoryName = "ADFIncMultiCopyTutorialFactory";
     ```
-1. 若要创建数据工厂，请运行以下 **Set-AzureRmDataFactoryV2** cmdlet： 
+1. 要创建数据工厂，请运行以下 **Set-AzDataFactoryV2** cmdlet： 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 请注意以下几点：
@@ -337,10 +340,10 @@ END
 
 1. 在 PowerShell 中切换到 C:\ADFTutorials\IncCopyMultiTableTutorial 文件夹。
 
-1. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet，创建链接服务 AzureStorageLinkedService。 在以下示例中，传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值： 
+1. 运行 **Set-AzDataFactoryV2LinkedService** cmdlet 以创建链接服务 AzureStorageLinkedService。 在以下示例中，传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值： 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
     ```
 
     下面是示例输出：
@@ -369,10 +372,10 @@ END
         }
     }
     ```
-1. 在 PowerShell 中运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet，以便创建链接服务 AzureSQLDatabaseLinkedService。 
+1. 在 PowerShell 中运行 **Set-AzDataFactoryV2LinkedService** cmdlet，以便创建链接服务 AzureSQLDatabaseLinkedService。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
     下面是示例输出：
@@ -410,10 +413,10 @@ END
 
     表名为虚拟名称。 管道中的 Copy 活动使用 SQL 查询来加载数据，而不是加载整个表。
 
-1. 运行 **Set-AzureRmDataFactoryV2Dataset** cmdlet 以创建数据集 SourceDataset。
+1. 运行 **Set-AzDataFactoryV2Dataset** cmdlet 以创建数据集 SourceDataset。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
@@ -454,10 +457,10 @@ END
     }
     ```
 
-1. 运行 **Set-AzureRmDataFactoryV2Dataset** cmdlet 以创建数据集 SinkDataset。
+1. 运行 **Set-AzDataFactoryV2Dataset** cmdlet 以创建数据集 SinkDataset。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
@@ -490,10 +493,10 @@ END
         }
     }    
     ```
-1. 运行 **Set-AzureRmDataFactoryV2Dataset** cmdlet 以创建数据集 WatermarkDataset。
+1. 运行 **Set-AzDataFactoryV2Dataset** cmdlet 以创建数据集 WatermarkDataset。
     
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
@@ -652,10 +655,10 @@ END
         }
     }
     ```
-1. 运行 **Set-AzureRmDataFactoryV2Pipeline** cmdlet，以便创建管道 IncrementalCopyPipeline。
+1. 运行 **Set-AzDataFactoryV2Pipeline** cmdlet 以创建管道 IncrementalCopyPipeline。
     
    ```powershell
-   Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
+   Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
    下面是示例输出： 
@@ -691,10 +694,10 @@ END
         ]
     }
     ```
-1. 使用 **Invoke-AzureRmDataFactoryV2Pipeline** cmdlet 运行管道 IncrementalCopyPipeline。 将占位符替换为自己的资源组和数据工厂名称。
+1. 使用 **Invoke-AzDataFactoryV2Pipeline** cmdlet 运行管道 IncrementalCopyPipeline。 将占位符替换为自己的资源组和数据工厂名称。
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
+    $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
     ``` 
 
 ## <a name="monitor-the-pipeline"></a>监视管道
@@ -796,7 +799,7 @@ VALUES
 1. 现在，通过执行以下 PowerShell 命令重新运行管道：
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
+    $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
 1. 按照[监视管道](#monitor-the-pipeline)部分的说明监视管道运行。 由于管道状态为“正在进行”，因此可以在“操作”下看到另一操作链接，用于取消管道运行。 
 

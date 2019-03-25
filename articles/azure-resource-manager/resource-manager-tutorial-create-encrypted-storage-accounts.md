@@ -10,22 +10,24 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/06/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 1f831f2d962626de6f847e2fe775605b7bfca5b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 68199083369018cab1c9f83dd6781653a8cae37c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097584"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849289"
 ---
 # <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>教程：利用 Azure 资源管理器模板参考
 
 了解如何查找模板架构信息，以及如何使用该信息创建 Azure 资源管理器模板。
 
 在本教程中，请使用 Azure 快速入门模板中提供的基础模板。 根据模板参考文档自定义模板，以便创建加密的存储帐户。
+
+![资源管理器模板参考部署加密的存储帐户](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 本教程涵盖以下任务：
 
@@ -76,9 +78,9 @@ ms.locfileid: "53097584"
 
 ## <a name="find-the-template-reference"></a>查找模板参考
 
-1. 浏览到 [Azure 模板](https://docs.microsoft.com/azure/templates/)。
-2. 在“按标题筛选”中，输入“存储帐户”。
-3. 选择“参考/模板参考/存储/<Version>/存储帐户”，如以下屏幕截图中所示：
+1. 浏览到 [Azure 模板参考](https://docs.microsoft.com/azure/templates/)。
+2. 在“按标题筛选”框中，输入“存储帐户”。
+3. 选择“参考/模板参考/存储/&lt;版本>/存储帐户”，如以下屏幕截图中所示：
 
     ![资源管理器模板参考存储帐户](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 

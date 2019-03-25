@@ -4,23 +4,22 @@ description: 了解如何在 Azure Active Directory 和 Pluralsight 之间配置
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4c3f07d2-4e1f-4ea3-9025-c663f1f2b7b4
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/26/2018
+ms.date: 03/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 844e8abff45f663b39846c9b8dc9b55be0d43f4f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b2d8d98fb9c953ef8063bf2081201f7d9bdf3649
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875610"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57874977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>教程：Azure Active Directory 与 Pluralsight 集成
 
@@ -46,6 +45,8 @@ ms.locfileid: "56875610"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Pluralsight 支持 **SP** 发起的 SSO
+
+* Pluralsight 支持“实时”用户预配 
 
 ## <a name="adding-pluralsight-from-the-gallery"></a>从库中添加 Pluralsight
 
@@ -114,16 +115,15 @@ ms.locfileid: "56875610"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [Pluralsight 客户端支持团队](mailto:support@pluralsight.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. Pluralsight 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
-
-    ![图像](common/edit-attribute.png)
+5. Pluralsight 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****  **** 。
+    ![图片](common/edit-attribute.png)
 
     >[!NOTE]
     >还可以添加“唯一 ID”属性，并根据组织情况为其设置适当的值（例如 EmployeeID 或其他）。 另请注意，这不是必需的属性；但是，添加以后可以标识唯一用户。
 
-6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+6. 除了上述属性，Pluralsight 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
-    | 名称 | 源属性|
+    | Name | 源属性|
     | --------------- | --------- |
     | 名字  | user.givenname  |
     | 姓氏  | user.surname  |
@@ -173,7 +173,7 @@ ms.locfileid: "56875610"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -208,7 +208,7 @@ ms.locfileid: "56875610"
 
 ### <a name="create-pluralsight-test-user"></a>创建 Pluralsight 测试用户
 
-本部分的目的是在 Pluralsight 中创建名为“Britta Simon”的用户。 请与 [Pluralsight 客户端支持团队](mailto:support@pluralsight.com)合作，在 Pluralsight 帐户中添加用户。  使用单一登录前，必须先创建并激活用户。
+在本部分中，我们将在 Pluralsight 中创建一个名为 Britta Simon 的用户。 Pluralsight 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Pluralsight 中尚不存在用户，身份验证后会创建一个新用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

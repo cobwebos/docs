@@ -8,28 +8,31 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
+ms.openlocfilehash: 625556986c5034303e83cc23b4ba06b1638115d1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804633"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448418"
 ---
-# <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>快速入门：通过订阅事件网格通知将 Azure Blob 引入 Azure 数据资源管理器
+# <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>快速入门：通过订阅事件网格通知将 Blob 引入 Azure 数据资源管理器
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可以持续从写入到 Blob 容器中的 Blob 引入数据（数据加载）。 这是通过为 Blob 创建事件设置 [Azure 事件网格](/azure/event-grid/overview)订阅，并通过事件中心将这些事件路由到 Kusto 来实现的。 本快速入门假设你有一个存储帐户，以及一个可将通知发送到事件中心的事件网格订阅。 然后，你可以创建事件网格数据连接，并查看整个系统中的数据流。
+Azure 数据资源管理器是一项快速且可缩放的数据探索服务，适用于日志和遥测数据。 它可以持续从写入到 Blob 容器中的 Blob 引入数据（数据加载）。 
+
+本快速入门将会介绍如何设置 [Azure 事件网格](/azure/event-grid/overview)订阅，并通过事件中心将事件路由到 Azure 数据资源管理器。 在开始之前，应已准备好一个存储帐户，以及一个可将通知发送到 Azure 事件中心的事件网格订阅。 然后创建事件网格数据连接，并查看整个系统中的数据流。
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 如果没有 Azure 订阅，请创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)
-1. [群集和数据库](create-cluster-database-portal.md)
-1. [存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
-1. [事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
+* Azure 订阅。 创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* [一个群集和数据库](create-cluster-database-portal.md)。
+* [一个存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)。
+* [一个事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
 
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>在存储帐户中创建事件网格订阅
 
-1. 在 Azure 门户中导航到你的存储帐户
-1. 依次单击“事件”选项卡、“事件订阅”
+1. 在 Azure 门户中找到你的存储帐户。
+1. 选择“事件” > “事件订阅”。
 
     ![查询应用程序链接](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
@@ -41,14 +44,14 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | 事件架构 | *事件网格架构* | 事件网格要使用的架构。 |
     | 主题类型 | *存储帐户* | 事件网格主题的类型。 |
     | 主题资源 | *gridteststorage* | 你的存储帐户的名称。 |
-    | 订阅所有事件类型 | *取消选中* | 不要获取有关所有事件的通知。 |
+    | 订阅所有事件类型 | *clear* | 不要获取有关所有事件的通知。 |
     | 定义的事件类型 | *已创建 Blob* | 要获取其通知的特定事件。 |
     | 终结点类型 | *事件中心* | 要将事件发送到的终结点的类型。 |
     | 终结点 | test-hub | 你创建的事件中心。 |
     | | |
 
 1. 若要跟踪特定容器中的文件，请选择“其他功能”选项卡。 按如下所述设置通知筛选器：
-    * “主题开头为”字段是 Blob 容器的文本前缀（由于应用的模式是 *startswith*，因此可以跨越多个容器）。 不允许通配符。
+    * “主题开头为”字段是 Blob 容器的文本前缀。 由于应用的模式是 *startswith*，因此可以跨越多个容器。 不允许通配符。
      必须设置为：*`/blobServices/default/containers/`*[容器前缀]
     * “主题末尾为”字段是 Blob 的文本后缀。 不允许通配符。
 
@@ -80,17 +83,17 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在工具栏上选择“通知”，以验证事件中心部署是否成功。
 
-1. 在创建的群集下，选择“数据库”，然后选择“TestDatabase”。
+1. 在创建的群集下，选择“数据库” > “TestDatabase”。
 
     ![选择测试数据库](media/ingest-data-event-grid/select-test-database.png)
 
-1. 选择“数据引入”，然后选择“添加数据连接”。
+1. 选择“数据引入” > “添加数据连接”。
 
     ![数据引入](media/ingest-data-event-grid/data-ingestion-create.png)
 
-1. 选择连接类型：**Blob 存储**。
+1.  选择连接类型：**Blob 存储**。
 
-1. 在表单中填写以下信息，然后单击“创建”。
+1. 在窗体中填写以下信息，然后选择“创建”。
 
     ![事件中心连接](media/ingest-data-event-grid/create-event-grid-data-connection.png)
 
@@ -102,7 +105,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | 存储帐户订阅 | 订阅 ID | 存储帐户所在的订阅 ID。|
     | 存储帐户 | *gridteststorage* | 前面创建的存储帐户的名称。|
     | 事件网格 | *test-grid-connection* | 已创建的事件网格的名称。 |
-    | 事件中心名称 | test-hub | 你创建的事件中心。 选取事件网格时，会自动填充此字段。 |
+    | 事件中心名称 | test-hub | 创建的事件中心。 选取事件网格时，会自动填充此字段。 |
     | 使用者组 | test-group | 在创建的事件中心定义的使用者组。 |
     | | |
 
@@ -119,9 +122,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 连接 Azure 数据资源管理器和存储帐户后，可以创建示例数据并将其上传到 Blob 存储。
 
-我们将使用一个小型 shell 脚本，该脚本会发出一些基本的 Azure CLI 命令来与 Azure 存储资源交互。 该脚本首先在存储帐户中创建新容器，然后将现有文件（作为 Blob）上传到该容器。 然后，该脚本列出容器中的所有 Blob。 可以直接在门户中使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 执行该脚本。
+我们将使用一个小型 shell 脚本，该脚本会发出一些基本的 Azure CLI 命令来与 Azure 存储资源交互。 此脚本在存储帐户中创建新容器，将现有文件（作为 Blob）上传到该容器，然后列出容器中的 Blob。 可以直接在门户中使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 执行该脚本。
 
-将以下数据保存到某个文件中并在以下脚本中使用此数据：
+将数据保存到某个文件，然后使用以下脚本上传该文件：
 
 ```Json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
@@ -154,7 +157,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 ## <a name="review-the-data-flow"></a>查看数据流
 
 > [!NOTE]
-> ADX 提供用于数据引入的聚合（批处理）策略，旨在优化引入过程。
+> Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。
 默认情况下，该策略配置为 5 分钟。
 以后可根据需要更改该策略。 在本快速入门中，预期会发生几分钟的延迟。
 
@@ -191,7 +194,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在“test-resource-group”下，选择“删除资源组”。
 
-1. 在新窗口中，键入要删除的资源组的名称 (test-hub-rg)，然后选择“删除”。
+1. 在新窗口中输入要删除的资源组的名称 (*test-hub-rg*)，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

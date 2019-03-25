@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e0c8986f-2acd-418d-a306-437abc44b640
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87b3ee979c39e80c771b49abb51358b75ff4df54
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5ca35e1c6966365fab1a53fe9674a8f361422eea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>教程：Azure Active Directory 与 Directions on Microsoft 集成
 
@@ -106,12 +106,14 @@ ms.locfileid: "56875712"
     ![Directions on Microsoft 域和 URL 单一登录信息](common/sp-identifier.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+
     |  |
     | --- |
     | `https://www.directionsonmicrosoft.com/user/login` |
     | `https://<subdomain>.devcloud.acquia-sites.com/<companyname>` |
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    
     |  |
     | --- |
     | `https://rhelmdirectionsonmicrosoftcomtest.devcloud.acquia-sites.com/simplesaml/<companyname>` |
@@ -159,7 +161,7 @@ ms.locfileid: "56875712"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

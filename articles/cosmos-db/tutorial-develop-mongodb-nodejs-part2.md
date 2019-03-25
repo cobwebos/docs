@@ -11,12 +11,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: bcc0d69024954b0b8cbf58fb3eac938ff3e1b0e6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039854"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435263"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 创建 Node.js Express 应用
 
@@ -103,7 +103,7 @@ ms.locfileid: "54039854"
     * 提供 dist 文件夹中将会成为静态内容的所有内容
     * 为应用程序提供服务，为服务器上找不到的任何 GET 请求提供 index.html（用于深层链接）
     * 通过 app.listen 启动服务器
-    * 使用 arow 函数来记录端口处于活动状态这一情况
+    * 使用 arrow 函数来记录端口处于活动状态这一情况
     
    ```node
    const express = require('express');

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 848f319836e492e486bfdcb3c9080860144a7e68
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3424137b36e4e277a8914ab04cdf7097660930e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869392"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860748"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>快速入门：使用用于 C# 的必应 Web 搜索 SDK
 
@@ -32,7 +32,7 @@ ms.locfileid: "55869392"
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [适用于 Visual Studio Code 的 C#](https://visualstudio.microsoft.com/downloads/)
   * [NuGet 包管理器](https://github.com/jmrog/vscode-nuget-package-manager)
-* [.Net Core SDK](https://www.microsoft.com/net/download)
+* [.NET Core SDK](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>创建项目并安装依赖项
 
@@ -61,7 +61,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>创建项目基架
 
-创建新的控制台项目时，应该已经创建应用程序的命名空间和类。 程序应如下所示：
+创建新的控制台项目时，应该已经创建应用程序的命名空间和类。 程序应如下例所示：
 
 ```csharp
 namespace WebSearchSDK
@@ -101,7 +101,7 @@ public static void WebResults(WebSearchAPI client)
 
 ## <a name="handle-the-response"></a>处理响应
 
-接下来，让我们添加一些对响应进行分析并输出结果的代码。 将会输出第一个网页、图像、新闻文章和视频的 `name` 和 `url`（如果存在于响应对象中）。
+接下来，让我们添加一些对响应进行分析并输出结果的代码。 将会输出第一个网页、图像、新闻文章和视频的 `Name` 和 `Url`（如果存在于响应对象中）。
 
 ```csharp
 if (webData?.WebPages?.Value?.Count > 0)
@@ -234,9 +234,10 @@ dotnet run
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>限制必应返回的结果数
 
-此示例使用 `count` 和 `offset` 参数限制针对“西雅图最好的餐馆”搜索返回的结果数。 将会输出初始结果的 `name` 和 `URL`。
+此示例使用 `count` 和 `offset` 参数限制针对“西雅图最好的餐馆”搜索返回的结果数。 将会输出初始结果的 `Name` 和 `Url`。
 
 1. 将以下代码添加到控制台项目：
+
     ```csharp
     public static void WebResultsWithCountAndOffset(WebSearchAPI client)
     {
@@ -271,7 +272,9 @@ dotnet run
         }
     }
     ```
+
 2. 将 `WebResultsWithCountAndOffset` 添加到 `main`：
+
     ```csharp
     static void Main(string[] args)
     {
@@ -285,13 +288,15 @@ dotnet run
         Console.ReadKey();
     }
     ```
+
 3. 运行应用程序。
 
 ### <a name="filter-for-news"></a>新闻筛选器
 
-此示例使用 `response_filter` 参数筛选搜索结果。 返回的搜索结果仅限“Microsoft”的新闻文章。 将会输出初始结果的 `name` 和 `URL`。
+此示例使用 `response_filter` 参数筛选搜索结果。 返回的搜索结果仅限“Microsoft”的新闻文章。 将会输出初始结果的 `Name` 和 `Url`。
 
 1. 将以下代码添加到控制台项目：
+
     ```csharp
     public static void WebSearchWithResponseFilter(WebSearchAPI client)
     {
@@ -328,7 +333,9 @@ dotnet run
         }
     }
     ```
+
 2. 将 `WebResultsWithCountAndOffset` 添加到 `main`：
+
     ```csharp
     static void Main(string[] args)
     {
@@ -344,13 +351,15 @@ dotnet run
         Console.ReadKey();
     }
     ```
+
 3. 运行应用程序。
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>使用安全搜索、答案计数和提升筛选器
 
-此示例使用 `answer_count`、`promote` 和 `safe_search` 参数筛选“音乐视频”的搜索结果。 将会显示初始结果的 `name` 和 `URL`。
+此示例使用 `answer_count`、`promote` 和 `safe_search` 参数筛选“音乐视频”的搜索结果。 将会显示初始结果的 `Name` 和 `ContentUrl`。
 
 1. 将以下代码添加到控制台项目：
+
     ```csharp
     public static void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchAPI client)
     {
@@ -386,7 +395,9 @@ dotnet run
         }
     }
     ```
+
 2. 将 `WebResultsWithCountAndOffset` 添加到 `main`：
+
     ```csharp
     static void Main(string[] args)
     {
@@ -404,6 +415,7 @@ dotnet run
         Console.ReadKey();
     }
     ```
+
 3. 运行应用程序。
 
 ## <a name="clean-up-resources"></a>清理资源

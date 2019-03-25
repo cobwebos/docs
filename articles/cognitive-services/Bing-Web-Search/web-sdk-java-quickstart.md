@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 420a0769af85d050f2786b65eb929a24d8b9da5d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863774"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>快速入门：使用用于 Java 的必应 Web 搜索 SDK
 
@@ -28,15 +28,16 @@ ms.locfileid: "55874152"
 另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="prerequisites"></a>先决条件
+
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [JDK 7 或 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) 或你喜欢使用的生成自动化工具
 * 订阅密钥
 
-## <a name="create-a-project-and-configure-your-pom-file"></a>创建一个项目并配置 POM 文件
+## <a name="create-a-project-and-set-up-your-pom-file"></a>创建一个项目并设置 POM 文件
 
-使用 Maven 或你喜欢使用的生成自动化工具新建一个 Java 项目。 假设你使用 Maven，请将以下行添加到 POM 文件。 将 `mainClass` 的所有实例替换为你的应用程序。
+使用 Maven 或你喜欢使用的生成自动化工具新建一个 Java 项目。 假设你使用 Maven，请将以下行添加到[项目对象模型 (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) 文件。 将 `mainClass` 的所有实例替换为你的应用程序。
 
 ```xml
 <build>
@@ -180,7 +181,7 @@ public static boolean runSample(BingWebSearchAPI client) {
 ```java
 /*
 * WebPages
-* If the search response contains web pages, the first result's name
+* If the search response has web pages, the first result's name
 * and url are printed.
 */
 if (webData != null && webData.webPages() != null && webData.webPages().value() != null &&
@@ -200,7 +201,7 @@ if (webData != null && webData.webPages() != null && webData.webPages().value() 
 }
 /*
  * Images
- * If the search response contains images, the first result's name
+ * If the search response has images, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.images() != null && webData.images().value() != null &&
@@ -220,7 +221,7 @@ if (webData != null && webData.images() != null && webData.images().value() != n
 }
 /*
  * News
- * If the search response contains news articles, the first result's name
+ * If the search response has news articles, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.news() != null && webData.news().value() != null &&
@@ -240,7 +241,7 @@ if (webData != null && webData.news() != null && webData.news().value() != null 
 
 /*
  * Videos
- * If the search response contains videos, the first result's name
+ * If the search response has videos, the first result's name
  * and url are printed.
  */
 if (webData != null && webData.videos() != null && webData.videos().value() != null &&

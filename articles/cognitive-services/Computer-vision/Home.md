@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453046"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432101"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -42,12 +42,11 @@ ms.locfileid: "56453046"
 |**[生成缩略图](concept-generating-thumbnails.md)**|分析图像的内容，生成该图像的相应缩略图。 计算机视觉首先生成高质量缩略图，然后通过分析图像中的对象来确定“感兴趣区域”。 然后，计算机视觉会裁剪图像以满足感兴趣区域的要求。 可以用户需求使用与原始图像的纵横比不同的纵横比显示生成的缩略图。|
 |**[获取感兴趣区域](concept-generating-thumbnails.md#area-of-interest)**|分析图像内容，以返回“感兴趣区域”的坐标。 这是用于生成缩略图的相同函数，但是计算机视觉并没有裁剪图像，而是返回该区域的边框坐标，因此调用的应用程序可以根据需要修改原始图像。|
 
-
 ## <a name="extract-text-from-images"></a>从图像中提取文本
 
-可以使用计算机视觉[通过光学字符识别 (OCR) 来提取文本](concept-extracting-text-ocr.md)，将文本从图像提取到计算机可读的字符流中。 如果需要，OCR 会校正已识别文本的旋转角度并提供每个词的帧坐标。 OCR 支持 25 种语言，并会自动检测已识别文本的语言。
+可以使用计算机视觉通过[光学字符识别 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) 将图像中的文本提取到机器可读的字符流中。 如果需要，OCR 会校正已识别文本的旋转角度并提供每个词的帧坐标。 OCR 支持 25 种语言，并会自动检测已识别文本的语言。
 
-也可在图像中[识别印刷体文本和手写文本](concept-recognizing-text.md)。 计算机视觉可以在图像中检测并提取印刷文本和手写文本，这些图像包含各种具有不同表面和背景的对象（例如收据、海报、名片、信函、白板）。 目前，印刷体文本和手写文本识别功能以预览版提供，并且仅支持英语。 
+还可以使用 [Read API](concept-recognizing-text.md#read-api) 从图像和以文本为主的文档中提取印刷体文本和手写文本。 Read API 使用更新的模型，适用于具有不同表面和背景的各种对象，比如收据、海报、名片、信件和白板。 目前，Read API 处于预览状态，英语是唯一受支持的语言。
 
 ## <a name="moderate-content-in-images"></a>管理图像中的内容
 

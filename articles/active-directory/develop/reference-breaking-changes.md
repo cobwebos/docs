@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4a04f1598b3ab0efd9ff95a707d3837bb37503
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2fcc400f952cc89f5fb4bf6e8d6f0f331483868e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196019"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401298"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -42,6 +42,37 @@ ms.locfileid: "56196019"
 ## <a name="upcoming-changes"></a>即将推出的更改
 
 目前没有计划。 
+
+## <a name="march-2019"></a>2019 年 3 月
+
+### <a name="looping-clients-will-be-interrupted"></a>将中断循环的客户端
+
+**生效日期**：2019 年 3 月 25日日
+
+**受影响的终结点**：v1.0 和 v2.0
+
+**受影响的协议**：所有流
+
+客户端应用程序可以有时错误行为，通过短时间内发出数百个相同的登录请求。  这些请求可能会或可能不会成功，但它们都会影响用户体验不佳和更高的工作负荷的 IDP，增加的所有用户的延迟时间并减少，IDP 的可用性。  这些应用程序正常使用的边界之外运行，并且应更新为正常运行。  
+
+发出多个时间的重复请求的客户端将发送`invalid_grant`错误： `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`。 
+
+大多数客户端将不需要更改行为，以避免此错误。  只有配置错误的客户端 （不带令牌缓存或那些已暴露提示循环） 将受此错误。  客户端根据每个实例本地 （通过 cookie) 跟踪于以下因素：
+
+* 用户提示，如果有
+
+* 作用域或所请求资源
+
+* 客户端 ID
+
+* 重定向 URI
+
+* 响应类型和模式
+
+在短时间的时间 （5 分钟） 发出多个请求 （15 +） 的应用将收到`invalid_grant`错误，它们将循环。  正在请求具有足够长的生存期 （10 分钟最小值，默认为 60 分钟），因此重复请求此时间段内的令牌是不必要的。  
+
+所有应用程序应处理`invalid_grant`通过显示交互式提示，而不是以无提示方式请求令牌。  若要避免此错误，客户端应确保它们正确缓存他们收到的令牌。
+
 
 ## <a name="october-2018"></a>2018 年 10 月
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 680c10d8402853f1ac2f519b8f07f81b9718ab9e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866984"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855718"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>教程：使用适用于 C# 的语音 SDK 从语音中识别意向
 
@@ -47,7 +47,7 @@ ms.locfileid: "56866984"
 
 LUIS 与语音服务集成，可从语音中识别意向。 不需要语音服务订阅，只需要 LUIS。
 
-LUIS 使用两种密钥： 
+LUIS 使用两种密钥：
 
 |密钥类型|目的|
 |--------|-------|
@@ -56,7 +56,7 @@ LUIS 使用两种密钥：
 
 终结点密钥是本教程所需的 LUIS 密钥。 本教程使用一个示例家庭自动化 LUIS 应用，可以遵循[使用预生成的家庭自动化应用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
 
-当你创建 LUIS 应用时，系统会自动生成一个初学者密钥，让你使用文本查询测试该应用。 此密钥不会启用语音服务集成，因此不适用于本教程。 必须在 Azure 仪表板中创建 LUIS 资源并将其分配给 LUIS 应用。 在本教程中，可以使用免费订阅层。 
+当你创建 LUIS 应用时，系统会自动生成一个初学者密钥，让你使用文本查询测试该应用。 此密钥不会启用语音服务集成，因此不适用于本教程。 必须在 Azure 仪表板中创建 LUIS 资源并将其分配给 LUIS 应用。 在本教程中，可以使用免费订阅层。
 
 在 Azure 仪表板中创建 LUIS 资源之后，请登录到 [LUIS 门户](https://www.luis.ai/home)，在“我的应用”页上选择自己的应用程序，然后切换到应用的“管理”页。 最后，在侧栏中单击“密钥和终结点”。
 
@@ -174,7 +174,7 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 
 另一项功能是从 WAV 文件中读取包含要处理的语音的音频。 这涉及到创建音频配置，创建意向识别器时可以使用该配置。 该文件必须是采样率为 16 kHz 的单声道（单音）音频。
 
-若要尝试这些功能，请将 `RecognizeIntentAsync()` 方法的正文替换为以下代码。 
+若要尝试这些功能，请将 `RecognizeIntentAsync()` 方法的正文替换为以下代码。
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 

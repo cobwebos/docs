@@ -4,17 +4,17 @@ description: 通过 Azure 门户使用 Azure 蓝图创建、定义和部署项�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7aeb3cf2d56dbe20c85adca2243f5830575693e3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: fdf87bff026dee4969b3995b37c31de3ead7714b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004919"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>在门户中定义和分配 Azure 蓝图
 
@@ -42,7 +42,7 @@ ms.locfileid: "56818657"
 
    ![创建蓝图](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. 提供“蓝图名称”，例如“MyBlueprint”（字母和数字 - 最多 48 个字符，但不包含空格或特殊字符），但暂时将“蓝图描述”保留为空。  在“定义位置”框中，单击右侧的省略号，选择要在其中保存蓝图的[管理组](../management-groups/overview.md)或订阅，然后单击“选择”。
+1. 提供“蓝图名称”，例如“MyBlueprint”（字母和数字 - 最多 48 个字符，但不包含空格或特殊字符），但暂时将“蓝图描述”保留为空。 在“定义位置”框中，单击右侧的省略号，选择要在其中保存蓝图的[管理组](../management-groups/overview.md)或订阅，然后单击“选择”。
 
 1. 验证信息是否正确（稍后无法更改“蓝图名称”和“定义位置”字段）并单击页面底部的“下一步：项目”或页面顶部的“项目”选项卡。
 
@@ -84,7 +84,7 @@ ms.locfileid: "56818657"
            },
            "location": {
                "type": "string",
-               "defaultValue": "[resourceGroup().location]",
+               "defaultValue": "[resourceGroups('ResourceGroup').location]",
                "metadata": {
                    "description": "Location for all resources."
                }
@@ -129,7 +129,7 @@ ms.locfileid: "56818657"
 
 1. 在蓝图列表中，右键单击之前创建的蓝图，然后选择“编辑蓝图”。
 
-1. 在“蓝图说明”中，提供有关蓝图和组成它的项目的一些信息。  在本示例中，输入如下内容：“此蓝图在订阅上设置标记策略和角色分配，创建 ResourceGroup，并将资源模板和角色分配部署到该 ResourceGroup。”
+1. 在“蓝图说明”中，提供有关蓝图和组成它的项目的一些信息。 在本示例中，输入如下内容：“此蓝图在订阅上设置标记策略和角色分配，创建 ResourceGroup，并将资源模板和角色分配部署到该 ResourceGroup。”
 
 1. 单击页面底部的“下一步:项目”或页面顶部的“项目”选项卡。
 
@@ -188,11 +188,15 @@ ms.locfileid: "56818657"
 
 1. 对于“分配名称”，请为此分配提供唯一名称。
 
-1. 在“位置”中，选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+1. 在“位置”中，选择要在其中创建托管标识和订阅部署对象的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-1. 在“v1”条目上保留已发布版本的蓝图定义版本下拉列表（默认为最近的已发布版本）。
+1. 在“v1”条目上保留已发布版本的“蓝图定义版本”下拉列表（默认为最近的已发布版本）。
 
 1. 对于“锁定分配”，保留默认值“不锁定”。 有关更多信息，请参阅[蓝图资源锁定](./concepts/resource-locking.md)。
+
+   ![分配 - 锁定和托管标识](./media/create-blueprint-portal/assignment-locking-mi.png)
+
+1. 在**托管标识**下，保留默认值“系统已分配”。
 
 1. 对于订阅级别的角色分配“[用户组或应用程序名称]:参与者”，搜索并选择用户、应用或组。
 
@@ -245,9 +249,9 @@ ms.locfileid: "56818657"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](./concepts/lifecycle.md)
-- 了解如何使用[静态和动态参数](./concepts/parameters.md)
-- 了解如何自定义[蓝图排序顺序](./concepts/sequencing-order.md)
-- 了解如何使用[蓝图资源锁定](./concepts/resource-locking.md)
-- 了解如何[更新现有分配](./how-to/update-existing-assignments.md)
-- 使用[常规疑难解答](./troubleshoot/general.md)在蓝图分配期间解决问题
+- 了解[蓝图生命周期](./concepts/lifecycle.md)。
+- 了解如何使用[静态和动态参数](./concepts/parameters.md)。
+- 了解如何自定义[蓝图排序顺序](./concepts/sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](./concepts/resource-locking.md)。
+- 了解如何[更新现有分配](./how-to/update-existing-assignments.md)。
+- 使用[一般故障排除](./troubleshoot/general.md)在蓝图的分配期间解决问题。

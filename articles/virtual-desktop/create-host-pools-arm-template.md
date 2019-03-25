@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 资源管理器模板 （预览版）-Azure 中创建主机池
-description: 如何使用 Azure 资源管理器模板在 Windows 虚拟桌面中创建主机池。
+title: 使用 Azure 资源管理器模板-Azure 中创建 Windows 虚拟桌面预览主机池
+description: 如何使用 Azure 资源管理器模板在 Windows 虚拟桌面预览中创建主机池。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7f4849c19d56bb385e7ad3ce0aa95e16d5c53c23
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 262ec35a8a177652dff12bccb3b5435cb5856d81
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318459"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401420"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template-preview"></a>使用 Azure 资源管理器模板 （预览版） 创建主机池
+# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建主机池
 
-主机池是一系列一个或多个相同的虚拟机在 Windows 虚拟桌面租户 （预览版） 环境中。 每个主机池可以包含用户可以与交互，就像在物理桌面上的应用程序组。
+主机池是一系列一个或多个相同的虚拟机在 Windows 虚拟桌面预览租户环境中。 每个主机池可以包含用户可以与交互，就像在物理桌面上的应用程序组。
 
 按照本部分的说明为 Windows 虚拟桌面租户使用 Microsoft 提供的 Azure 资源管理器模板创建主机池。 本文将告诉您如何在 Windows 虚拟桌面中创建主机池、 Azure 订阅中的 Vm 创建资源组、 加入 AD 域中，这些 Vm 和 Vm 注册到 Windows 虚拟桌面。
 

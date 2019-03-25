@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 02/26/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: c99d3df23e0ba9733e8762fe8fc22a4c69d3bcfb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ca18042985669899247c3a0a16b41a98c5c6d1ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075162"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -40,7 +40,11 @@ ms.locfileid: "51236850"
 
 ## <a name="before-you-begin"></a>开始之前
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="vnet"></a>1.创建虚拟网络
 
@@ -60,12 +64,12 @@ ms.locfileid: "51236850"
 2. 在“VPN 站点”页上，单击“+创建站点”。
 3. 在“创建站点”页上填写以下字段：
 
-  * **名称** - 本地站点的名称。
-  * **公开 IP 地址** - 驻留在本地站点中的 VPN 设备的公共 IP 地址。
-  * **专用地址空间** - 位于本地站点的 IP 地址空间。 发往此地址空间的流量将路由到本地站点。
-  * **订阅** - 验证订阅。
-  * **资源组** - 要使用的资源组。
-  * **位置**。
+   * **名称** - 本地站点的名称。
+   * **公开 IP 地址** - 驻留在本地站点中的 VPN 设备的公共 IP 地址。
+   * **专用地址空间** - 位于本地站点的 IP 地址空间。 发往此地址空间的流量将路由到本地站点。
+   * **订阅** - 验证订阅。
+   * **资源组** - 要使用的资源组。
+   * **位置**。
 4. 单击“显示高级”查看其他设置。 可以选择“BGP”以启用 BGP，这会在 Azure 中为此站点创建的所有连接上启用此功能。 还可以输入**设备信息**（可选字段）。 这有助于 Azure 团队更好地了解你的环境，以便将来添加更多的可用优化选项，或帮助你进行故障排除。
 5. 单击“确认”。
 6. 单击“确认”后，在“VPN 站点”页上查看状态。 该站点将从“正在预配”转为“已预配”。
@@ -267,10 +271,10 @@ ms.locfileid: "51236850"
 
 ## <a name="cleanup"></a>11.清理资源
 
-如果不再需要这些资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
+不再需要这些资源时，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,6 +1,6 @@
 ---
-title: 快速入门 - 在 Azure 容器实例中运行应用程序 - PowerShell
-description: 本快速入门介绍如何使用 Azure PowerShell，通过 Azure PowerShell 将 Docker 容器应用程序部署到 Azure 容器实例
+title: 快速入门 - 将 Docker 容器部署到 Azure 容器实例 - PowerShell
+description: 本快速入门将使用 Azure PowerShell 快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,16 +8,18 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8cb84523288f45dfb719d69e4f7d227039598a9
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 00f5f8e045a2ec78751d115db3d9d75ec76189e8
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806906"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732302"
 ---
-# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure 容器实例中运行容器应用程序
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure 中部署容器实例
 
-使用 Azure 容器实例在 Azure 中快速方便地运行 Docker 容器。 不需要部署虚拟机或使用 Kubernetes 之类的完整容器业务流程平台。 在本快速入门中，我们将使用 Azure 门户在 Azure 中创建一个 Windows 容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在执行单个部署命令几秒钟之后，可以浏览到正在运行的应用程序：
+使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。
+
+本快速入门将使用 Azure PowerShell 部署一个独立的 Windows 容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在执行单个部署命令几秒钟之后，可以浏览到正在容器中运行的应用程序：
 
 ![在浏览器中显示的已部署到 Azure 容器实例的应用][qs-powershell-01]
 
@@ -45,7 +47,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 可以通过指定要打开的一个或多个端口、一个 DNS 名称标签（或同时指定两者）来向 Internet 公开容器。 在本快速入门中，你将部署一个具有 DNS 名称标签的容器，以便 IIS 可供公开访问。
 
-执行以下命令以启动容器实例。 在创建实例的 Azure 区域中，`-DnsNameLabel` 值必须是唯一的。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
+执行类似于以下的命令以启动容器实例。 设置在创建实例的 Azure 区域中唯一的 `-DnsNameLabel` 值。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win

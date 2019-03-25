@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 965fa1e82be3fb87bf58a0114f97091bad212738
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 079fe74ec11570b26cbba93e4aba26d7359bef20
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450730"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402365"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions 中管理连接
 
@@ -57,7 +57,7 @@ public static async Task Run(string input)
 
 有关常见问题[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)在.NET 中是"应该我释放我的客户端？" 一般情况下，在释放的对象的实现`IDisposable`完成后使用它们。 您不释放静态客户端因为未完成，但在函数结束时使用它。 你需要将静态客户端一直保留到应用程序生存期结束。
 
-### <a name="http-agent-examples-nodejs"></a>HTTP 代理示例 (Node.js)
+### <a name="http-agent-examples-javascript"></a>HTTP 代理示例 (JavaScript)
 
 因为它提供了更好的连接管理选项，所以你应当使用本机 [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) 类而不应当使用非本机方法，例如 `node-fetch` 模块。 在配置连接参数通过选项`http.agent`类。 有关详细的选项可使用 HTTP 代理，请参阅[新的代理 (\[选项\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)。
 
@@ -105,6 +105,25 @@ public static async Task Run(string input)
     await documentClient.UpsertDocumentAsync(collectionUri, document);
     
     // Rest of function
+}
+```
+
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient 的代码示例 (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient)会连接到 Azure Cosmos DB 实例。 Azure Cosmos DB 文档建议[在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端](../cosmos-db/performance-tips.md#sdk-usage)。 以下示例展示了在函数中执行该操作的一种模式：
+
+```javascript
+const cosmos = require('@azure/cosmos');
+const endpoint = process.env.COSMOS_API_URL;
+const masterKey = process.env.COSMOS_API_KEY;
+const { CosmosClient } = cosmos;
+
+const client = new CosmosClient({ endpoint, auth: { masterKey } });
+// All function invocations also reference the same database and container.
+const container = client.database("MyDatabaseName").container("MyContainerName");
+
+module.exports = async function (context) {
+    const { result: itemArray } = await container.items.readAll().toArray();
+    context.log(itemArray);
 }
 ```
 

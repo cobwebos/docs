@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 9cb3abff10482ec7e58b4b049f051e99178cb742
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2f84c48092581a313ff7bead7a862221e0fe4eee
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371973"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400909"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -49,9 +49,9 @@ ms.locfileid: "58371973"
   * 你的虚拟网络必须有四个*空*部署以及在 ISE 中创建资源的子网。 可以提前创建这些子网或可以等待，直到您创建可以在同一时间创建子网在 ISE。 详细了解如何[子网的要求](#create-subnet)。 
   
     > [!NOTE]
-    > 如果您使用[ExpressRoute](../expressroute/expressroute-introduction.md)，它提供与 Microsoft 云服务的专用连接，则必须[向每个子网中添加以下路由](../virtual-network/virtual-network-manage-subnet.md)由你 ISE。 如果使用子网，使用路由表[向路由表中添加以下路由](../virtual-network/manage-route-table.md):
+    > 如果您使用[ExpressRoute](../expressroute/expressroute-introduction.md)，它提供与 Microsoft 云服务的专用连接，则必须[创建一个路由表](../virtual-network/manage-route-table.md)，具有以下路由并将该表链接由你 ISE 每个子网：
     > 
-    > **名称**：D3655BASE-route<br>
+    > **名称**: <*路由名称*><br>
     > **地址前缀**:0.0.0.0/0<br>
     > **下一跃点**：Internet
 
@@ -146,9 +146,9 @@ ms.locfileid: "58371973"
 
      若要了解有关计算地址的详细信息，请参阅[IPv4 CIDR 块](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)。
 
-   * 如果您使用[ExpressRoute](../expressroute/expressroute-introduction.md)，请记住，登录[向每个子网中添加以下路由](../virtual-network/virtual-network-manage-subnet.md)由你 ISE。 如果使用子网，使用路由表[向该路由表中添加以下路由](../virtual-network/manage-route-table.md):
+   * 如果您使用[ExpressRoute](../expressroute/expressroute-introduction.md)，请记住，登录[创建一个路由表](../virtual-network/manage-route-table.md)，具有以下路由并将该表链接由你 ISE 每个子网：
 
-     **名称**：D3655BASE-route<br>
+     **名称**: <*路由名称*><br>
      **地址前缀**:0.0.0.0/0<br>
      **下一跃点**：Internet
 

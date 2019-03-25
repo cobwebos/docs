@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.topic: article
 ms.author: jowargo
 ms.date: 02/14/2019
-ms.openlocfilehash: 4d3ee3a318385e96b70a38556835f6427b407a59
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9ed69ac3526098cd5426c966952de97c948322b5
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848705"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402382"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure 通知中心 SDK
 
-Microsoft 和第三方发布 Azure 通知中心的 SDK。
+Microsoft 和第三方发布 Azure 通知中心的 SDK。 为 Android、 iOS 和.NET 的 Microsoft 存储库还包括为每个目标平台的示例应用程序。
 
 | SDK 中 IsInRole 中的声明            | 发布者      |
 | -------------- | -------------- |

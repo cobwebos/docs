@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bba95df3-75a4-4a93-8805-b3a8aa3d4861
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03f1172b20442799ed9aeb395526d4cbbb3bcfb7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8252dea33ff5cde07e021421d9772a69ea9f143b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840828"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>教程：Azure Active Directory 与 Collaborative Innovation 集成
 
@@ -180,7 +180,7 @@ ms.locfileid: "56875423"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

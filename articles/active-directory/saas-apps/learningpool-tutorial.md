@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 51e8695f-31e1-4d09-8eb3-13241999d99f
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1b988fe2049a81fe98636d52f56c85f7b80f9e4
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 16cf541dca003446e7b49033018d5b9950bfc54f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>教程：Azure Active Directory 与 Learningpool Act 的集成
 
@@ -108,6 +108,7 @@ ms.locfileid: "56986254"
     a. 在“登录 URL”文本框中，键入 URL：`https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://<subdomain>.Learningpool.com/shibboleth` |
@@ -185,7 +186,7 @@ ms.locfileid: "56986254"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure DevOps Projects 部署 ASP.NET 应用和 Azure SQL 数据库代码
-description: 通过 DevOps Projects 可以轻松开始使用 Azure。 借助 DevOps Projects，可以通过几个快速步骤部署 ASP.NET 应用和 Azure SQL 数据库代码。
+description: 可以通过 DevOps Projects 轻松地在 Azure 上开始操作。 借助 DevOps Projects，可以通过几个快速步骤部署 ASP.NET 应用和 Azure SQL 数据库代码。
 ms.author: mlearned
 ms.manager: douge
 ms.prod: devops
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 32f33e4ac66ad456b5ff8807d6a1b5ea5f541fed
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 0d05a2f3de92791572f0a5e6313777b5388af3df
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161391"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845216"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>教程：使用 Azure DevOps Projects 部署 ASP.NET 应用和 Azure SQL 数据库代码
 
@@ -97,7 +97,7 @@ DevOps Projects 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道�
     此窗格显示最近针对生成所做的更改的审核线索。 Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
 1. 选择“触发器”。  
-    DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分支。
+    DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分库。
 
 1. 选择“保留期”。  
     可以根据方案指定策略，以保留或删除特定数目的生成。
@@ -107,13 +107,13 @@ DevOps Projects 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道�
 DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure 订阅所要执行的步骤。 这些步骤包括配置 Azure 服务连接，以便在 Azure 订阅中进行 Azure DevOps 身份验证。 自动化还会创建一个 CD 管道，用于提供到 Azure 虚拟机的 CD。 若要详细了解 Azure DevOps CD 管道，请执行以下操作：
 
 1. 依次选择“生成和发布”、“发布”。  
-    DevOps Projects 会创建一个发布管道用于管理到 Azure 的部署。
+    DevOps Projects 会创建一个发布管道，用于管理到 Azure 的部署。
 
 1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。  
     发布管道包含一个*管道*，用于定义发布过程。
 
 1. 在“项目”下选择“删除”。  
-    在前述步骤中检查过的生成管道将生成用于项目的输出。 
+    在前述步骤中检查过的生成管道会生成用于项目的输出。 
 
 1. 在“删除”图标的右侧，选择“持续部署触发器”。  
     此发布管道有一个已启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会执行部署。 （可选）可以禁用此触发器，这样就需要手动执行部署。 
@@ -122,8 +122,8 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
     
 1. 在左侧选择“变量”。 
 
-  > [!NOTE]
-  > 仅当更改了 SQL Server 密码时，才执行以下步骤。 有一个 password 变量。
+   > [!NOTE]
+   > 仅当更改了 SQL Server 密码时，才执行以下步骤。 有一个 password 变量。
   
 1. 在“值”框的旁边选择挂锁图标，输入新密码，然后选择“保存”。
 
@@ -136,13 +136,13 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 1. 在右侧选择“查看发布”，以显示发布历史记录。
 
 1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。  
-    可以浏览多个菜单，例如发布摘要、关联的工作项和测试。
+     可以浏览多个菜单，例如发布摘要、关联的工作项和测试。
 
 1. 选择“提交”。  
-    此视图显示与此部署关联的代码提交。 请对发布进行比较，查看不同部署之间的提交差异。
+     此视图显示与此部署关联的代码提交。 请对发布进行比较，查看不同部署之间的提交差异。
 
 1. 选择“日志”。  
-    日志包含有关部署过程的有用信息。 可以在部署期间和之后查看日志。
+     日志包含有关部署过程的有用信息。 可以在部署期间和之后查看日志。
 
 ## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>提交对 Azure Repos 所做的更改并将其自动部署到 Azure 
 
@@ -182,17 +182,17 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
     现在可以选择性地使用客户端工具（例如 SQL Server Management Studio 或 Visual Studio）连接到 SQL Server 和 Azure SQL 数据库。 使用“服务器名称”属性进行连接。
 
-    如果最初在 DevOps Projects 中配置项目时未更改数据库用户名，则用户名为电子邮件地址的本地部分。 例如，如果电子邮件地址为 *johndoe@microsoft.com*，则用户名为 *johndoe*。
+    如果最初在 DevOps Projects 中配置项目时未更改数据库用户名，则用户名为电子邮件地址的本地部分。 例如，如果电子邮件地址为“johndoe\@microsoft.com”，则用户名为“johndoe”。
 
- > [!NOTE]
- > 如果更改了 SQL 登录名的密码，则必须根据“检查 CD 管道”部分中所述，在发布管道变量中更改密码。
+   > [!NOTE]
+   > 如果更改了 SQL 登录名的密码，则必须根据“检查 CD 管道”部分中所述，在发布管道变量中更改密码。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 测试后，可以清理资源，以避免产生费用。 不再需要本教程中创建的 Azure SQL 数据库和相关资源时，可将其删除。 为此，可以使用 DevOps Projects 仪表板上的“删除”功能。
 
 > [!IMPORTANT]
-> 以下过程会永久删除资源。 “删除”功能会销毁 DevOps Projects 中的项目在 Azure 和 Azure DevOps 中创建的数据，删除后无法检索这些数据。 请只在仔细阅读提示后才使用此过程。
+> 以下过程会永久删除资源。 “删除”功能会销毁 DevOps Projects 中的项目在 Azure 和 Azure DevOps 中创建的数据，删除后无法检索这些数据。 只能在仔细阅读提示后才使用此过程。
 
 1. 在 Azure 门户中，转到 DevOps Projects 仪表板。
 2. 在右上角选择“删除”。 
@@ -214,7 +214,7 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 若要详细了解 CI/CD 管道，请参阅：
 
 > [!div class="nextstepaction"]
-> [定义多阶段持续部署 (CD) 管道](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Define your multi-stage continuous deployment (CD) pipeline](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)（定义多阶段持续部署 (CD) 管道）
 
 ## <a name="videos"></a>视频
 

@@ -3,21 +3,20 @@ title: 使用资源管理器模板创建 Azure 数据工厂 | Microsoft Docs
 description: 本教程使用 Azure 资源管理器模板创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-ms.author: douglasl
-ms.openlocfilehash: c3a9864a901d44d0c84c6946c55e5dc2c700cbac
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 1d4eb3d2978be98d81b42dd66a75b21563c23a1a
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447593"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576644"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
 
@@ -34,7 +33,9 @@ ms.locfileid: "56447593"
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+按[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明安装最新的 Azure PowerShell 模块。
 
 ## <a name="resource-manager-templates"></a>资源管理器模板
 
@@ -51,7 +52,7 @@ ms.locfileid: "56447593"
 ```json
 {
     "contentVersion": "1.0.0.0",
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "parameters": {
         "dataFactoryName": {
             "type": "string",
@@ -328,7 +329,7 @@ ms.locfileid: "56447593"
 在 PowerShell 中运行以下命令，使用在本快速入门前面创建的资源管理器模板来部署数据工厂实体。
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
 ```
 
 将显示类似于以下示例的输出：
@@ -368,9 +369,9 @@ DeploymentDebugLogLevel :
 - 包含复制活动的管道
 - 用于触发管道的触发器
 
-部署的触发器处于已停止状态。 若要启动触发器，一种方式是使用 **Start-AzureRmDataFactoryV2Trigger** PowerShell cmdlet。 以下过程提供了详细步骤：
+部署的触发器处于已停止状态。 若要启动触发器，一种方式是使用 **Start-AzDataFactoryV2Trigger** PowerShell cmdlet。 以下过程提供了详细步骤：
 
-1. 在 PowerShell 窗口中创建一个变量，用于保存资源组的名称。 将以下命令复制到 PowerShell 窗口中，然后按 ENTER。 如果已为 New-AzureRmResourceGroupDeployment 命令指定了其他资源组名称，请在此处更新该值。
+1. 在 PowerShell 窗口中创建一个变量，用于保存资源组的名称。 将以下命令复制到 PowerShell 窗口中，然后按 ENTER。 如果已为 New-AzResourceGroupDeployment 命令指定了其他资源组名称，请在此处更新该值。
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -388,7 +389,7 @@ DeploymentDebugLogLevel :
 4. 获取**触发器的状态**，方法是在指定数据工厂和触发器的名称后，运行以下 PowerShell 命令：
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
     下面是示例输出：
@@ -405,7 +406,7 @@ DeploymentDebugLogLevel :
 5. **启动触发器**。 触发器在相应时间运行在模板中定义的管道。 也就是说，如果在下午 2:25 执行此命令，则触发器会在下午 3 点首次运行管道。 然后，触发器会每小时运行一次管道，直至为触发器指定的结束时间。
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     下面是示例输出：
@@ -416,10 +417,10 @@ DeploymentDebugLogLevel :
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. 再次运行 Get-AzureRmDataFactoryV2Trigger 命令，确认触发器已启动。
+6. 再次运行 Get-AzDataFactoryV2Trigger 命令，确认触发器已启动。
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     下面是示例输出：
@@ -466,7 +467,7 @@ DeploymentDebugLogLevel :
 8. 看到运行成功/失败以后，即可停止触发器。 触发器一小时运行管道一次。 每次运行时，管道会将同一文件从 input 文件夹复制到 output 文件夹。 若要停止触发器，请在 PowerShell 窗口中运行以下命令。
     
     ```powershell
-    Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Stop-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
@@ -604,7 +605,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 
 #### <a name="trigger"></a>触发器
 
-定义一个每小时运行一次管道的触发器。 部署的触发器处于已停止状态。 使用 **Start-AzureRmDataFactoryV2Trigger** cmdlet 启动触发器。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)一文。
+定义一个每小时运行一次管道的触发器。 部署的触发器处于已停止状态。 使用 **Start-AzDataFactoryV2Trigger** cmdlet 启动触发器。 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)一文。
 
 ```json
 {
@@ -647,11 +648,11 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 示例：
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
 ```
 
 请注意，三条命令分别使用开发环境、测试环境和生产环境的参数文件。

@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb21ddc36141dfee1be6f0e42811e6ccbeb44143
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2750de16c71e7d678810316f281e28ca8c40553d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217490"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403147"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -48,7 +48,7 @@ ms.locfileid: "56217490"
 > [!NOTE]
 > 如果看不到“说明”后的“示例值”列，请最大化浏览器窗口并滚动/轻扫，直至看到“示例值”列。
 
-| 密钥  | 值类型 | 说明  | 示例值 |
+| 密钥  | 值类型 | 描述  | 示例值 |
 |---------|---------|---------|---------|
 | `accessTokenAcceptedVersion` | 可为 Null 的 Int32 | 指定资源所需的访问令牌版本。 这会更改独立于用于请求访问令牌的终结点或客户端生成的 JWT 的版本和格式。<br/><br/>使用的端点 v1.0 或 v2.0 由客户端选择，仅影响 id_tokens 的版本。 资源需要显式配置 `accesstokenAcceptedVersion` 以指示受支持的访问令牌格式。<br/><br/>`accesstokenAcceptedVersion` 的可能值为 1、2 或为 null。 如果值为 null，则默认为 1，这对应于 v1.0 终结点。 | `2` |
 | `allowPublicClient` | 布尔值 | 指定回退应用程序类型。 默认情况下，Azure AD 基于 replyUrlsWithType 推断应用程序类型。 某些情况下，Azure AD 无法确定客户端应用类型（例如，其中发生了没有 URL 重定向的 HTTP 请求的 [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) 流）。 在这种情况下，Azure AD 将基于此属性的值解释应用程序类型。 如果此值设置为 true，则回退应用程序类型设置为公共客户端，例如在移动设备上运行的已安装应用。 默认值为 false，这意味着，回退应用程序类型为机密，例如 Web 应用。 | `false` |
@@ -77,6 +77,14 @@ ms.locfileid: "56217490"
 | `signInUrl` | 字符串 | 指定应用主页的 URL。 | `https://MyRegisteredApp` |
 | `signInAudience` | 字符串 | 指定当前应用程序支持哪些 Microsoft 帐户。 支持的值是：<ul><li>**AzureADMyOrg** - 在我的组织的 Azure AD 租户（即，单租户）中具有 Microsoft 工作或学校帐户的用户</li><li>**AzureADMultipleOrgs** - 在任何组织的 Azure AD 租户（即，多租户）中具有 Microsoft 工作或学校帐户的用户</li> <li>**AzureADandPersonalMicrosoftAccount** - 在任何组织的 Azure AD 租户中具有个人 Microsoft 帐户、工作或学校帐户的用户</li></ul> | `AzureADandPersonalMicrosoftAccount` |
 | `tags` | 字符串数组 | 可用来对应用程序进行分类和标识的自定义字符串。 | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
+
+
+## <a name="manifest-limits"></a>清单限制
+应用程序清单具有多个属性的集合如 approles、 keycredentials、 knownClientApplications、 identifierUris、 rediretUris、 requiredResourceAccess、 oauth2Permissions 称为等。 在完整的应用程序清单中的任何应用程序，结合使用的所有集合中的条目总数已被限制在 1200年。 如果已有 100 重定向 URI 的应用程序清单中指定，那么您就剩下唯一与 1100年剩余条目中的所有其他集合中使用组合这构成了清单。
+
+> [!NOTE]
+> 如果你尝试添加应用程序清单中的 1200 多个条目。 可能会收到错误 **"未能更新应用程序 xxxxxx。错误详细信息：在清单的大小已超出其限制。请减少的值数量，然后重试请求。**"
+
 
 ## <a name="next-steps"></a>后续步骤
 

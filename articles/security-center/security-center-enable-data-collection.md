@@ -12,28 +12,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 03/20/2018
 ms.author: monhaber
-ms.openlocfilehash: 7be86ae7b425c8497b017672ae2e828ccbf65049
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 2ce3a94b7ea4745ec3727e508cd10bb580a74c98
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223693"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401036"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
-安全中心从 Azure 虚拟机 (Vm)、 虚拟机规模集 (VMSS)、 IaaS 容器和监视安全漏洞和威胁 （包括在本地） 非 Azure 计算机收集数据。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Microsoft Monitoring Agent 代理还将故障转储文件复制到你的工作区。
+安全中心从 Azure 虚拟机 (Vm)、 虚拟机规模集、 IaaS 容器和监视安全漏洞和威胁 （包括在本地） 非 Azure 计算机收集数据。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Microsoft Monitoring Agent 代理还将故障转储文件复制到你的工作区。
 
 必须收集数据才能深入了解缺少的更新、配置不当的 OS 安全设置、终结点保护启用情况，以及运行状况和威胁检测结果。 
 
 本文提供有关如何安装 Microsoft Monitoring Agent，以及设置用于存储所收集数据的 Log Analytics 工作区的指导。 这两项操作都需要启用数据收集。 
 
 > [!NOTE]
-
 > - 数据收集才需要计算资源 （Vm、 虚拟机规模集、 IaaS 容器和非 Azure 计算机）。 即使未预配代理，也能从 Azure 安全中心受益；但是，安全性会受到限制，并且上面列出的功能不受支持。  
 > - 有关支持的平台列表，请参阅 [Azure 安全中心支持的平台](security-center-os-coverage.md)。
 > - 目前不支持虚拟机规模集的数据收集。
-
+> - 在 Log Analytics 中存储数据，无论你是使用新的或现有工作区中，可能会产生附加费用数据存储，请参阅定价页更多详细信息。
 
 ## 启用 Microsoft Monitoring Agent 的自动预配 <a name="auto-provision-mma"></a>
 
@@ -88,7 +87,8 @@ ms.locfileid: "58223693"
 1. 安全中心将会根据针对订阅设置的定价层，在工作区中自动启用安全中心解决方案。 
 
 > [!NOTE]
-> Log analytics 定价层创建安全中心的工作区不会影响安全中心计费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案。 对于“免费层”，安全中心将在默认工作区中启用 *SecurityCenterFree* 解决方案。 对于“标准层”，安全中心将在默认工作区中启用 *Security* 解决方案。
+> 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案。 对于“免费层”，安全中心将在默认工作区中启用 *SecurityCenterFree* 解决方案。 对于“标准层”，安全中心将在默认工作区中启用 *Security* 解决方案。
+> 在 Log Analytics 中存储数据可能会产生额外的数据存储费用，有关详细信息，请参阅定价页。
 
 有关详细信息，请参阅[安全中心 定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
@@ -102,7 +102,7 @@ ms.locfileid: "58223693"
 
 > [!NOTE]
 > 在现有工作区中启用的解决方案将应用到与该工作区相连接的 Azure VM。 对于付费的解决方案，这可能会产生额外的费用。 出于数据隐私的考虑，请确保所选工作区位于适当的地理区域。
->
+> 将数据存储在 log analytics 中可能会产生附加费用数据存储，请参阅定价页更多详细信息。
 
 选择现有 Log Analytics 工作区的具体步骤：
 
@@ -211,9 +211,9 @@ ms.locfileid: "58223693"
 为现有机上订阅载入到安全中心之前 2019年-03-17，当将检测到现有代理，将不会安装 Microsoft Monitoring Agent 扩展并在计算机不会受到影响。 这些计算机，请参阅"解决监视你的计算机上的代理运行状况问题"建议，若要解决代理安装问题，在这些计算机上。
 
   
-- 在计算机上安装 SCOM 代理<br>
-安全中心会安装到现有 SCOM 的 Microsoft Monitoring Agent 扩展的并排方案。 现有 SCOM 代理将继续正常报告与 SCOM 服务器。 请注意，SCOM 代理和 Microsoft Monitoring Agent 共享常见的运行时库，将在此处理期间更新到最新版本。
-请注意--如果安装 SCOM 代理版本 2012年，则**不这样做**启用自动预配。<br>
+- 在计算机上安装 system Center Operations Manager 代理<br>
+安全中心会安装到现有的 Operations Manager 的 Microsoft Monitoring Agent 扩展的并排方案。 现有的 Operations Manager 代理将继续正常情况下报告到 Operations Manager 服务器。 请注意，Operations Manager 代理和 Microsoft Monitoring Agent 共享公共运行时库，后者将在此过程中更新到最新版本。
+请注意--如果安装 Operations Manager 代理版本 2012年，则**不这样做**启用自动预配。<br>
 
 - 存在现有的 VM 扩展<br>
     - 作为扩展安装监视代理时，扩展配置允许向单个工作区报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心将已连接，在工作区中存储 VM 的安全数据，前提是已安装在其上的"安全性"或"securityFree"解决方案。 安全中心可以升级到此过程中的最新版本的扩展版本。  
@@ -225,7 +225,7 @@ ms.locfileid: "58223693"
 
 
 1. 返回到“安全中心”主菜单，选择“安全策略”。
-2. 选择希望禁用自动设置的订阅。
+2. 单击**编辑设置**你想要禁用自动预配的订阅的行中。
 3. 在“安全策略 - 数据收集”边栏选项卡的“自动预配”下，选择“关闭”。
 4. 选择“保存”。
 
@@ -271,7 +271,9 @@ ms.locfileid: "58223693"
    > [!NOTE]
    > “收集事件和性能数据”部分是可选的。
    >
-6. 若要使用 PowerShell 将扩展部署，请使用以下 PowerShell 示例：  [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+6. 若要使用 PowerShell 部署扩展，请使用以下 PowerShell 示例：
+   
+   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
    
    1. 转到“Log Analytics”并单击“高级设置”。
     
@@ -285,7 +287,6 @@ ms.locfileid: "58223693"
      
            $PublicConf = '{
                "workspaceId": "WorkspaceID value",
-               "MultipleConnections": true
            }' 
  
            $PrivateConf = '{

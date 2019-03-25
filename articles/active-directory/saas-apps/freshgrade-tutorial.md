@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1055bba6-f4df-462e-bc9b-1ad5ada0f638
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cb2eb42757d321648ea1ace000913916b1b7a05
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3dcbbfcdff0f30b8300e4fe767e27efb65723c5b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880659"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>教程：Azure Active Directory 与 FreshGrade 集成
 
@@ -105,12 +105,14 @@ ms.locfileid: "56880659"
     ![FreshGrade 域和 URL 单一登录信息](common/sp-identifier.png)
 
      a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+
       | |
       |--|
       | `https://<subdomain>.freshgrade.com/login` |
       | `https://<subdomain>.onboarding.freshgrade.com/login` |
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    
       | |
       |--|
       | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
@@ -145,7 +147,7 @@ ms.locfileid: "56880659"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

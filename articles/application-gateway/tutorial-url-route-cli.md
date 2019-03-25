@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 68532ec4ae7e6d6b496ece8d08755555f756a60e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413445"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006472"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>教程 - 使用 Azure CLI 基于 URL 对 Web 流量进行路由
+# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>教程：使用 Azure CLI 基于 URL 对 Web 流量进行路由
 
 作为管理 Web 流量的 IT 管理员，你希望帮助客户或用户尽快获取其需要的信息。 若要优化其体验，一种方法是将不同类型的 Web 流量路由到不同的服务器资源。 本教程介绍如何使用 Azure CLI 为应用程序中的不同类型的流量设置和配置应用程序网关路由。 然后，路由会根据 URL 将流量定向到不同的服务器池。
 
@@ -96,7 +96,7 @@ az network application-gateway create \
  创建应用程序网关可能需要几分钟时间。 创建应用程序网关后，可以看到以下新功能：
 
 
-|功能  |Description  |
+|Feature  |说明  |
 |---------|---------|
 |appGatewayBackendPool     |应用程序网关必须至少具有一个后端地址池。|
 |appGatewayBackendHttpSettings     |指定将端口 80 和 HTTP 协议用于通信。|
@@ -234,7 +234,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-若要获取应用程序网关的公共 IP 地址，请使用 az network public-ip show。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，*http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm*, 或 *http://40.121.222.19:8080/video/test.htm*。
+若要获取应用程序网关的公共 IP 地址，请使用 az network public-ip show。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，`http://40.121.222.19`、`http://40.121.222.19:8080/images/test.htm` 或 `http://40.121.222.19:8080/video/test.htm`。
 
 ```azurecli-interactive
 az network public-ip show \

@@ -1,22 +1,22 @@
 ---
-title: 自动缩放会话主机-Azure
-description: 介绍如何设置自动缩放脚本为 （预览版） 的 Windows 虚拟桌面会话主机。
+title: 自动缩放 Windows 虚拟桌面预览会话主机-Azure
+description: 介绍如何为 Windows 虚拟桌面预览会话主机设置自动缩放脚本。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: d800b45310ae476ec0c54460d9719c17e35dfe5a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bee02549d68b1dbdba3f0e62477b28bbd475ea32
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318354"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402484"
 ---
 # <a name="automatically-scale-session-hosts"></a>自动缩放会话主机
 
-对于在 Azure 中的许多 Windows 虚拟桌面部署，虚拟机成本表示总体的 Windows 虚拟桌面部署成本的重要部分。 为了降低成本，最好是关闭的情况下并释放会话主机虚拟机 (Vm) 在非高峰使用时间，然后重新启动它们在高峰使用情况。
+对于在 Azure 中的许多 Windows 虚拟桌面预览部署，虚拟机成本表示总体的 Windows 虚拟桌面部署成本的重要部分。 为了降低成本，最好是关闭的情况下并释放会话主机虚拟机 (Vm) 在非高峰使用时间，然后重新启动它们在高峰使用情况。
 
 本文使用一个简单的缩放脚本来自动缩放 Windows 虚拟桌面环境中的会话主机虚拟机。 若要了解有关缩放的脚本的工作原理的详细信息，请参阅[缩放脚本的工作方式](#how-the-scaling-script-works)部分。
 

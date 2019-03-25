@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: a0d782ac1ba14e58e3cc377bb55ea25bb923c5c4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 36465c253996e4cecc665b2fd1d59c03adc78a2f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038902"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110539"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB 简介：Gremlin API
 
@@ -49,31 +49,31 @@ Azure Cosmos DB 是一个完全托管的图形数据库，提供全局分发、�
 
 * 可弹性缩放的吞吐量和存储
 
- 现实世界中的图形需要扩展到超越单个服务器的容量。 使用 Azure Cosmos DB 可跨多个服务器无缝缩放图形。 还可以根据访问模式独立缩放图形的吞吐量。 Azure Cosmos DB 支持几乎可以扩展到无限存储大小和预配吞吐量的图形数据库。
+  现实世界中的图形需要扩展到超越单个服务器的容量。 使用 Azure Cosmos DB 可跨多个服务器无缝缩放图形。 还可以根据访问模式独立缩放图形的吞吐量。 Azure Cosmos DB 支持几乎可以扩展到无限存储大小和预配吞吐量的图形数据库。
 
 * 多区域复制
 
- Azure Cosmos DB 以透明方式将图形数据复制到与你的帐户关联的所有区域。 通过复制可以开发需要访问数据全局访问权限的应用程序。 在一致性、可用性和性能以及对应保证的领域中，需要进行权衡。 Azure Cosmos DB 通过多宿主 API 提供透明区域故障转移。 可以在全球范围内灵活缩放吞吐量和存储。
+  Azure Cosmos DB 以透明方式将图形数据复制到与你的帐户关联的所有区域。 通过复制可以开发需要访问数据全局访问权限的应用程序。 在一致性、可用性和性能以及对应保证的领域中，需要进行权衡。 Azure Cosmos DB 通过多宿主 API 提供透明区域故障转移。 可以在全球范围内灵活缩放吞吐量和存储。
 
 * 使用熟悉的 Gremlin 语法的快速查询和遍历
 
- 存储异类顶点和边缘，并通过熟悉的 Gremlin 语法查询这些文档。 Azure Cosmos DB 使用高并发、无锁、日志结构化索引技术为所有内容自动编制索引。 此功能可以实现丰富的实时查询和遍历，而无需指定架构提示、二级索引或视图。 在[通过使用 Gremlin 查询图形](gremlin-support.md)中了解详细信息。
+  存储异类顶点和边缘，并通过熟悉的 Gremlin 语法查询这些文档。 Azure Cosmos DB 使用高并发、无锁、日志结构化索引技术为所有内容自动编制索引。 此功能可以实现丰富的实时查询和遍历，而无需指定架构提示、二级索引或视图。 在[通过使用 Gremlin 查询图形](gremlin-support.md)中了解详细信息。
 
 * 完全托管
 
- 通过 Azure Cosmos DB 无需管理数据库和计算机资源。 作为一种完全托管的 Microsoft Azure 服务，无需管理虚拟机、部署并配置软件、管理数据库和资源的增减，或处理复杂的数据层升级。 每个图形会自动备份，以防受到区域故障的影响。 你可以轻松添加 Azure Cosmos DB 帐户并根据需要预配容量，以便可以专注于应用程序而不是操作和管理数据库。
+  通过 Azure Cosmos DB 无需管理数据库和计算机资源。 作为一种完全托管的 Microsoft Azure 服务，无需管理虚拟机、部署并配置软件、管理数据库和资源的增减，或处理复杂的数据层升级。 每个图形会自动备份，以防受到区域故障的影响。 你可以轻松添加 Azure Cosmos DB 帐户并根据需要预配容量，以便可以专注于应用程序而不是操作和管理数据库。
 
 * 自动索引编制
 
- 默认情况下，Azure Cosmos DB 自动为图形中的节点和边缘包含的所有属性编制索引，无需任何架构或创建二级索引。
+  默认情况下，Azure Cosmos DB 自动为图形中的节点和边缘包含的所有属性编制索引，无需任何架构或创建二级索引。
 
 * 与 Apache TinkerPop 兼容
 
- Azure Cosmos DB 原生支持开源 Apache TinkerPop 标准，可与其他支持 TinkerPop 的图形系统集成。 因此，可以轻松地从 Titan 或 Neo4j 等其他图形数据库迁移，或者将 Azure Cosmos DB 与 Apache Spark GraphX 等图形分析框架配合使用。
+  Azure Cosmos DB 原生支持开源 Apache TinkerPop 标准，可与其他支持 TinkerPop 的图形系统集成。 因此，可以轻松地从 Titan 或 Neo4j 等其他图形数据库迁移，或者将 Azure Cosmos DB 与 Apache Spark GraphX 等图形分析框架配合使用。
 
 * 可优化的一致性级别
 
- 从五个妥善定义的一致性级别中选择，实现一致性与性能之间的最佳平衡。 对于查询和读取操作，Azure Cosmos DB 提供五种不同的一致性级别：强、有限过时、会话、一致前缀和最终。 通过这些细化的妥善定义的一致性级别，可以在一致性、可用性与延迟之间实现合理的平衡。 有关详细信息，请参阅 [Azure Cosmos DB 中的可优化数据一致性级别](consistency-levels.md)。
+  从五个妥善定义的一致性级别中选择，实现一致性与性能之间的最佳平衡。 对于查询和读取操作，Azure Cosmos DB 提供五种不同的一致性级别：强、有限过时、会话、一致前缀和最终。 通过这些细化的妥善定义的一致性级别，可以在一致性、可用性与延迟之间实现合理的平衡。 有关详细信息，请参阅 [Azure Cosmos DB 中的可优化数据一致性级别](consistency-levels.md)。
 
 Azure Cosmos DB 还可以在相同的容器/数据库中使用多个模型（例如文档和图形）。 可以使用文档容器将图形数据与文档一起存储。 可以使用 JSON 上的 SQL 查询和 Gremlin 查询来查询与图形相同的数据。
 
@@ -123,19 +123,19 @@ Azure Cosmos DB 还可以在相同的容器/数据库中使用多个模型（例
 
 * 社交网络
 
- 通过合并有关客户及其与其他人的互动的数据，可以开发个性化的体验、预测客户行为，或者将某些人员与其他具有类似兴趣的人员相连接。 使用 Azure Cosmos DB 可以管理社交网络以及跟踪客户的喜好与数据。
+  通过合并有关客户及其与其他人的互动的数据，可以开发个性化的体验、预测客户行为，或者将某些人员与其他具有类似兴趣的人员相连接。 使用 Azure Cosmos DB 可以管理社交网络以及跟踪客户的喜好与数据。
 
 * 推荐引擎
 
- 此场合通常用于零售行业。 通过合并有关产品、用户和用户互动（例如购买、浏览某件商品或者为商品评分）的信息，可以生成自定义的推荐内容。 Azure Cosmos DB 的低延迟、弹性缩放和原生图形支持是为这些互动建模的理想选择。
+  此场合通常用于零售行业。 通过合并有关产品、用户和用户互动（例如购买、浏览某件商品或者为商品评分）的信息，可以生成自定义的推荐内容。 Azure Cosmos DB 的低延迟、弹性缩放和原生图形支持是为这些互动建模的理想选择。
 
 * 地理空间
 
- 电信、物流和旅行规划行业中的许多应用程序需要在某个区域中查找兴趣点，或者查找两个地点之间最短/最佳的路线。 Azure Cosmos DB 天生就很适合解决这些问题。
+  电信、物流和旅行规划行业中的许多应用程序需要在某个区域中查找兴趣点，或者查找两个地点之间最短/最佳的路线。 Azure Cosmos DB 天生就很适合解决这些问题。
 
 * 物联网
 
- 当 IoT 设备之间的网络和连接建模为图形时，可以更好地理解设备和资产的状态。 还可以了解网络一个部分的更改可能对另一个部分造成的影响。
+  当 IoT 设备之间的网络和连接建模为图形时，可以更好地理解设备和资产的状态。 还可以了解网络一个部分的更改可能对另一个部分造成的影响。
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解 Azure Cosmos DB 中的图形支持，请参阅：

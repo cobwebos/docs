@@ -1,22 +1,22 @@
 ---
-title: 主机池-Azure 将用户配置文件共享设置
-description: 如何设置 Windows 虚拟机 （预览版） 主机池 FSLogix 配置文件容器。
+title: Windows 虚拟桌面预览主机池-Azure 将用户配置文件共享设置
+description: 如何设置 Windows 虚拟桌面预览主机池 FSLogix 配置文件容器。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 9dfbda6e17cf954369fd6caa533ba9eef41fd451
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c9c2ca2cc27c5fa757b8ff6846e0a6a8f7087875
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336008"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403708"
 ---
-# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>设置主机池的用户配置文件共享
+# <a name="set-up-a-user-profile-share-for-a-host-pool"></a>为主机池设置用户配置文件共享
 
-Windows 虚拟桌面服务 （预览版） 提供与建议的用户配置文件解决方案的 FSLogix 配置文件的容器。 我们不建议使用用户配置文件磁盘 (UPD) 解决方案，并将 Windows 虚拟桌面的未来版本中弃用。
+Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案 FSLogix 配置文件的容器。 我们不建议使用用户配置文件磁盘 (UPD) 解决方案，并将 Windows 虚拟桌面的未来版本中弃用。
 
 本部分将介绍如何设置主机池 FSLogix 配置文件容器共享。
 

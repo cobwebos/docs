@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/26/2019
+ms.date: 02/28/2019
 ms.author: pafarley
-ms.openlocfilehash: d14b9c88b447583eedc8b50f4f9acf80ae4e3c75
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: ffecc07c49db8fd1b27cc2dd82192aa31a7fbd19
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889624"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194973"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>适用于 Python 的 Azure 认知服务计算机视觉 SDK
 
@@ -42,7 +42,7 @@ ms.locfileid: "56889624"
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>如果你没有 Azure 订阅
 
-创建有效期为 7 天的免费密钥，获得试用体验。 创建密钥后，复制密钥和区域名称。 需要这些来[创建客户端](#create-client)。
+创建有效期为 7 天的免费密钥，获得计算机视觉服务的**[试用][computervision_resource]** 体验。 创建密钥后，复制密钥和区域名称。 需要这些来[创建客户端](#create-client)。
 
 创建密钥后，保留以下项：
 
@@ -51,7 +51,7 @@ ms.locfileid: "56889624"
 
 ### <a name="if-you-have-an-azure-subscription"></a>如果你拥有 Azure 订阅
 
-如果需要计算机视觉 API 帐户，在订阅中创建帐户的最简单方法是使用以下 [Azure CLI][azure_cli] 命令。 需要选择资源组名称（例如“my-cogserv-group”）和计算机视觉资源名称（例如“my-computer-vision-resource”）。 
+在订阅中创建资源的最简单方法是使用以下 [Azure CLI][azure_cli] 命令。 这样会创建一个认知服务密钥，该密钥可以在许多认知服务中使用。 需要选择现有的资源组名称（例如“my-cogserv-group”）和新的计算机视觉资源名称（例如“my-computer-vision-resource”）。 
 
 ```Bash
 RES_REGION=westeurope 
@@ -62,8 +62,8 @@ az cognitiveservices account create \
     --resource-group $RES_GROUP \
     --name $ACCT_NAME \
     --location $RES_REGION \
-    --kind ComputerVision \
-    --sku S1 \
+    --kind CognitiveServices \
+    --sku S0 \
     --yes
 ```
 
@@ -96,20 +96,18 @@ pip install azure-cognitiveservices-vision-computervision
 
 创建 [ComputerVisionAPI][ref_computervisionclient] 客户端对象的实例时需要使用这些值。 
 
-<!--
-
-For example, use the Bash terminal to set the environment variables:
+例如，使用 Bash 终端设置环境变量：
 
 ```Bash
 ACCOUNT_REGION=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 ```
 
-### For Azure subscription usrs, get credentials for key and region
+### <a name="for-azure-subscription-users-get-credentials-for-key-and-region"></a>对于 Azure 订阅用户，请获取密钥和区域的凭据
 
-If you do not remember your region and key, you can use the following method to find them. If you need to create a key and region, you can use the method for [Azure subscription holders](#if-you-have-an-azure-subscription) or for [users without an Azure subscription](#if-you-dont-have-an-azure-subscription).
+如果忘记了区域和密钥，可以使用以下方法找到它们。 如需创建密钥和区域，则可使用适用于 [Azure 订阅持有人](#if-you-have-an-azure-subscription)的方法，或者使用适用于[没有 Azure 订阅的用户](#if-you-dont-have-an-azure-subscription)的方法。
 
-Use the [Azure CLI][cloud_shell] snippet below to populate two environment variables with the Computer Vision account **region** and one of its **keys** (you can also find these values in the [Azure portal][azure_portal]). The snippet is formatted for the Bash shell.
+使用以下 [Azure CLI][cloud_shell] 代码片段在两个环境变量中填充计算机视觉帐户的**区域**及其**密钥**之一（也可以在 [Azure 门户][azure_portal]中找到这些值）。 此代码片段已针对 Bash shell 格式化。
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
@@ -127,23 +125,30 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
     --query key1 \
     --output tsv)
 ```
--->
+
 
 ### <a name="create-client"></a>创建客户端
 
-创建 [ComputerVisionAPI][ref_computervisionclient] 客户端对象。 将以下代码示例中的区域和密钥值更改为你自己的值。
+从环境变量获取区域和密钥，然后创建 [ComputerVisionAPI][ref_computervisionclient] 客户端对象。  
 
 ```Python
 from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-region = "westcentralus"
-key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# Get region and key from environment variables
+import os
+region = os.environ['ACCOUNT_REGION']
+key = os.environ['ACCOUNT_KEY']
 
+# Set credentials
 credentials = CognitiveServicesCredentials(key)
+
+# Create client
 client = ComputerVisionAPI(region, credentials)
 ```
+
+## <a name="examples"></a>示例
 
 在使用以下任何任务前，你需要 [ComputerVisionAPI][ref_computervisionclient] 客户端对象。
 
@@ -224,7 +229,7 @@ raw = True
 custom_headers = None
 numberOfCharsInOperationId = 36
 
-# SDK call
+# Async SDK call
 rawHttpResponse = client.recognize_text(url, mode, custom_headers,  raw)
 
 # Get ID from returned headers
@@ -233,7 +238,9 @@ idLocation = len(operationLocation) - numberOfCharsInOperationId
 operationId = operationLocation[idLocation:]
 
 # SDK call
-result = client.get_text_operation_result(operationId)
+while result.status in ['NotStarted', 'Running']:
+    time.sleep(1)
+    result = client.get_text_operation_result(operationId)
 
 # Get data
 if result.status == TextOperationStatusCodes.succeeded:
@@ -321,7 +328,7 @@ SDK 的 GitHub 存储库中提供了多个计算机视觉 Python SDK 示例。 �
 [pip]: https://pypi.org/project/pip/
 [python]: https://www.python.org/downloads/
 
-[azure_cli]: https://docs.microsoft.com/cli/azure
+[azure_cli]: https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create
 [azure_pattern_circuit_breaker]: https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker
 [azure_pattern_retry]: https://docs.microsoft.com/azure/architecture/patterns/retry
 [azure_portal]: https://portal.azure.com
@@ -342,7 +349,7 @@ SDK 的 GitHub 存储库中提供了多个计算机视觉 Python SDK 示例。 �
 [ref_httpfailure]: https://docs.microsoft.com/python/api/msrest/msrest.exceptions.httpoperationerror?view=azure-python
 
 
-[computervision_resource]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe
+[computervision_resource]: https://azure.microsoft.com/en-us/try/cognitive-services/?
 
 [computervision_docs]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/home
 

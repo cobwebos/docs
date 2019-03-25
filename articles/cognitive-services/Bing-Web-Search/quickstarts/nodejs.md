@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 3233357d9013c2a1f9d77178c217ca9310a34ac4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198195"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834483"
 ---
-# <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>使用必应 Web 搜索 REST API 和 Node.js 搜索网页
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>快速入门：使用必应 Web 搜索 REST API 和 Node.js 搜索网页
 
 使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Node.js 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
+
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [Node.js 6](https://nodejs.org/en/download/) 或更高版本
@@ -43,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>设置订阅密钥
 
-此代码片段使用 `AZURE_SUBSCRIPTION_KEY` 环境变量来存储你的订阅密钥，这是在部署代码时防止你的密钥意外泄露的一个好办法。 请[单击此处](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)来查找你的订阅密钥。
+此代码片段使用 `AZURE_SUBSCRIPTION_KEY` 环境变量来存储你的订阅密钥，这是在部署代码时防止你的密钥意外泄露的一个好办法。 转到[“你的 API”页](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)以查找订阅密钥。
 
 如果你熟悉使用环境变量，或希望尽快运行此应用程序，则可以将 `process.env['AZURE_SUBSCRIPTION_KEY']` 替换为你的订阅密钥（设置为字符串形式）。
 
@@ -110,7 +111,7 @@ bingWebSearch(query)
 const https = require('https')
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
 if (!SUBSCRIPTION_KEY) {
-  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment varable')
+  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment variable')
 }
 function bingWebSearch(query) {
   https.get({

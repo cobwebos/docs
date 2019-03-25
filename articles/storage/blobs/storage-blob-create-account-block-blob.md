@@ -7,18 +7,18 @@ ms.date: 03/23/2019
 author: twooley
 ms.author: twooley
 ms.subservice: blobs
-ms.openlocfilehash: 16ecade7a8d0049e098bb06bd14828b19934f5f5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: f4d3e3ad923b6a603902bc007107cb41dae8cf6c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373040"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400468"
 ---
 # <a name="create-a-block-blob-storage-account"></a>创建块 blob 存储帐户
 
 块 blob 存储帐户类型，可以使用高级性能特征创建块 blob。 针对具有高事务率的工作负荷优化此类型的存储帐户，或者要求非常快的访问时间。 本文介绍如何使用 Azure 门户、 Azure CLI 或 Azure PowerShell 创建块 blob 存储帐户。
 
-详细了解块 blob 存储帐户，请参阅[Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
+有关块 blob 存储帐户的详细信息，请参阅[Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
 ## <a name="create-account-in-the-azure-portal"></a>在 Azure 门户中创建帐户
 
@@ -54,7 +54,7 @@ ms.locfileid: "58373040"
 
 1. 选择“创建”。
 
-### <a name="create-account-using-azure-powershell"></a>使用 Azure PowerShell 创建帐户
+## <a name="create-account-using-azure-powershell"></a>使用 Azure PowerShell 创建帐户
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

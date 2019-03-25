@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ebc9b83c3aa135c90f18ff982621e862cb01d72
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5ff065816e287e0d4e37cdea9a7770c9ff806520
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879600"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890740"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
@@ -60,7 +60,7 @@ ms.locfileid: "56879600"
 
 门户的工作区仪表板仅在 Microsoft Edge、Chrome 和 Firefox 浏览器上受支持：
 
-[![联机门户](./media/overview-what-happened-to-workbench/image001.png)] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
+[![在线门户](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
 使用新的 CLI 和 SDK 开始训练模型并跟踪运行历史记录。 可以了解如何使用[教程：使用 Azure 机器学习服务训练模型](tutorial-train-models-with-aml.md)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "56879600"
 
 已有的数据准备文件不可移植到最新版本中，因为 Machine Learning Workbench 已遭弃用。 但你仍然可以为建模准备任何大小的数据集。   
 
-使用任何大小的数据集，可以在编写 Python 代码进行建模之前使用 [Azure 机器学习数据准备 SDK](http://aka.ms/data-prep-sdk) 快速准备数据。 
+使用任何大小的数据集，可以在编写 Python 代码进行建模之前使用 [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk) 快速准备数据。 
 
 可以按照[本教程](tutorial-data-prep.md)，深入了解如何使用 Azure 机器学习数据准备 SDK。
 
@@ -84,7 +84,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 了解如何开始[在 Python 中使用主 SDK](quickstart-create-workspace-with-python.md) 或使用 [Azure 门户](quickstart-get-started.md)。
 
 ## <a name="what-about-my-registered-models-and-images"></a>我注册的模型和映像又如何？
- 
+
 若要继续使用旧模型注册表中注册的模型，必须将它们迁移到新工作区。 若要迁移模型，请下载模型并将其在新工作区中重新注册。 
 
 若要继续使用在旧映像注册表中创建的映像，必须在新工作区中重新创建它们。 可以按照[配置和创建映像](how-to-deploy-and-where.md#configureimage)部分重新创建这些映像。 
@@ -109,7 +109,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 在此最新版本中，该扩展已重命名为 Azure Machine Learning for Visual Studio Code，并已进行了扩展和改进，以使用上述新功能。
 
-[![用于 Visual Studio Code 的 Azure 机器学习](./media/overview-what-happened-to-workbench/vscode.png)] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+[![适用于 Visual Studio Code 的 Azure 机器学习](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>域包又如何？
 

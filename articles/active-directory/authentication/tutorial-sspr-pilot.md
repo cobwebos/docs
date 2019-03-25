@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe472a45d99f966c851934ea44a346326cb4201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175143"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215585"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>教程：完成 Azure AD 自助密码重置试点推广
 
@@ -42,8 +42,8 @@ ms.locfileid: "56175143"
       * 确保所选组中的用户已获得适当的许可。
    * 单击“保存”
 1. 在“身份验证方法”页上
-   * 将“重置所需的方法数”设置为 **2**
-   * 选择组织允许的“可供用户使用的方法”。 在本教程中，请勾选相应的复选框，以便启用“电子邮件”、“移动电话”、“办公电话”。
+   * 将“重置所需的方法数”设置为 **1**
+   * 选择组织允许的“可供用户使用的方法”。 对于本教程，请选中相应复选框以启用“电子邮件”和“移动应用代码(预览版)”。
    * 单击“保存”
 1. 在“注册”页上
    * 针对“要求用户在登录时注册”选择“是”。

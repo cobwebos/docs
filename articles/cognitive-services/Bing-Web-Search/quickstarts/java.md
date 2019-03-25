@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 0d20d147bc77698e97630ad3bd5e58348db45f5b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8282838f778516e31080960400e5b1435f0b5673
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57866320"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>快速入门：使用必应 Web 搜索 REST API 和 Java 搜索网页
 
 使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Java 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
+
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [JDK 7 或 8](https://aka.ms/azure-jdks)
@@ -54,7 +55,7 @@ import com.google.gson.JsonParser;
 <dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
-    <version>2.8.1</version>
+    <version>2.8.5</version>
 </dependency>
 ```
 
@@ -72,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>定义变量
 
-以下代码设置 `subscriptionKey`、`host`、`path`、`searchTerm`。 确认终结点正确并将 `subscriptionKey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `searchTerm` 的值随意自定义搜索查询。
+以下代码设置 `subscriptionKey`、`host`、`path`、`searchTerm`。 确认终结点正确并将 `subscriptionKey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `searchTerm` 的值随意自定义搜索查询。 请记住将此代码添加到 `BingWebSearch` 类，如上所述。
 
 ```java
 // Enter a valid subscription key.
@@ -184,8 +185,8 @@ class SearchResults{
 最后一步是编译代码并运行它！ 命令如下：
 
 ```powershell
-javac BingWebSearch.java -classpath ./gson-2.8.1.jar -encoding UTF-8
-java -cp ./gson-2.8.1.jar BingWebSearch
+javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
+java -cp ./gson-2.8.5.jar BingWebSearch
 ```
 
 如果希望将你的代码与我们的进行比较，请查看 [GitHub 上提供的示例代码](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java)。

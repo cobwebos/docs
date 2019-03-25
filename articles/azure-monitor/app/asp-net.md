@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 358ca13548f0215fabee949c5fa3dee64beb2d6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fbb8eabebd5728c3ff772f78f01b8ea93ff0a526
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996958"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400200"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -131,6 +131,10 @@ Visual Studio 中会显示已记录的事件数。
 
 * [在运行时检测 Web 应用](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure 云服务](../../azure-monitor/app/cloudservices.md)
+
+## <a name="video"></a>视频
+
+* 有关外部分步视频[使用从零开始的.NET 应用程序配置 Application Insights](https://www.youtube.com/watch?v=blnGAVgMAfA)。
 
 ### <a name="more-telemetry"></a>其他遥测数据
 

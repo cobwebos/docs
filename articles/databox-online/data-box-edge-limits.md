@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 30e0c37d3d0c03e77b6dab9c06c0a50bff27e8bc
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: a687398032adffe5e787ef1469abe0b2627a38fe
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966440"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403530"
 ---
-# <a name="azure-data-box-edge-limits-preview"></a>Azure Data Box Edge 限制（预览版）
+# <a name="azure-data-box-edge-limits"></a>Azure 数据框边缘限制
 
 在部署和操作 Microsoft Azure Data Box Edge 解决方案时请考虑这些限制。
-
-> [!IMPORTANT]
-> Data Box Edge 以预览版提供。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 
 ## <a name="data-box-edge-service-limits"></a>Data Box Edge 服务限制
 
@@ -31,11 +27,11 @@ ms.locfileid: "55966440"
 
 下表介绍了 Data Box Edge 设备的限制。
 
-| 说明 | 值 |
+| 描述 | 值 |
 |---|---|
 |不是。 设备的文件数 |1 亿 |
 |不是。 设备的共享数 |24 |
-|不是。 每个容器的共享数 |1 |
+|不是。 每个容器的共享数 |第 |
 |写入到共享的最大文件大小| 5 TB |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制

@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d664c33c4535d25ec93fd1f36c990f2764a4e071
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: ea1b4bd904a9936c401f6b0ea6ac9663c20bc92b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000807"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400040"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 可以向 Azure Active Directory (Azure AD) B2C 应用程序添加自己的 JavaScript 客户端代码。 本文介绍如何更改[用户流](user-flow-javascript-overview.md)或[自定义策略](active-directory-b2c-overview-custom.md)以启用脚本执行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 为应用程序的用户界面元素选择[页协定](page-contract.md)。 如果打算使用 JavaScript，需要为用户流或自定义策略中的所有内容定义定义一个页协定版本。
 

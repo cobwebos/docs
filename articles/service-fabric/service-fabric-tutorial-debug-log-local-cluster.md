@@ -15,21 +15,16 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c1a8b18062f61be9eb020beefd3ad741c41b55f8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c5ff1a0373fcce339bea2b235d86f20dc861a15c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652696"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444253"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>教程：调试本地 Service Fabric 群集上部署的 Java 应用程序
 
 本教程是一个系列中的第二部分。 其中介绍了如何使用适用于 Service Fabric 应用程序的 Eclipse 来附加远程调试器。 此外，介绍如何将运行中应用程序发出的日志重定向到方便开发人员处理的位置。
-
-本系列教程的第二部分将介绍如何：
-> [!div class="checklist"]
-> * 使用 Eclipse 调试 Java 应用程序
-> * 将日志重定向到可配置的位置
 
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]
@@ -38,6 +33,13 @@ ms.locfileid: "38652696"
 > * [将应用程序部署到 Azure 群集](service-fabric-tutorial-java-deploy-azure.md)
 > * [设置监视和诊断应用程序](service-fabric-tutorial-java-elk.md)
 > * [设置 CI/CD](service-fabric-tutorial-java-jenkins.md)
+
+
+本系列教程的第二部分将介绍如何：
+> [!div class="checklist"]
+> * 使用 Eclipse 调试 Java 应用程序
+> * 将日志重定向到可配置的位置
+
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,7 +65,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 3. 在“导入项目”窗口中，选择“选择根目录”选项并选取“Voting”目录。 如果已学完了系列教程 1，则“Voting”目录出现在“Eclipse-workspace”目录中。
 
-4. 更新要调试的服务的 entryPoint.sh，以便使用远程调试参数启动 Java 进程。 本教程使用了无状态前端：*Voting/VotingApplication/VotingWebPkg/Code/entryPoint.sh*。在此示例中调试时，设置端口 8001。
+4. 更新要调试的服务的 entryPoint.sh，以便使用远程调试参数启动 Java 进程。 在本教程中，使用了无状态前端：*Voting/VotingApplication/VotingWebPkg/Code/entryPoint.sh*。在此示例中调试时，设置端口 8001。
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingWeb.jar
@@ -89,13 +91,15 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 10. 在 Eclipse IDE 中，选择“运行”->“调试配置”->“远程 Java 应用程序”，单击创建的“投票”配置，然后单击“调试”。
 
-11. 转到 Web 浏览器并访问 **localhost:8080** 以命中断点，然后在 Eclipse 中输入“调试透视图”。
+11. 转到 Web 浏览器并访问 **localhost:8080**。 这将自动命中断点，Eclipse 将进入**调试透视图**。
+
+现在，可以应用这些相同的步骤来在 Eclipse 中调试任何 ServiceFabric 应用程序。
 
 ## <a name="redirect-application-logs-to-custom-location"></a>将应用程序日志重定向到自定义位置
 
 以下步骤说明如何将应用程序日志从默认的 */var/log/syslog* 位置重定向到自定义位置。
 
-1. 目前，Service Fabric Linux 群集中运行的应用程序仅支持选取一个日志文件。 因此，日志始终会发到 */tmp/mysfapp0.0.log*。 在 *Voting/VotingApplication/VotingWebPkg/Code/logging.properties* 位置创建名为 logging.properties 的文件，并添加以下内容。
+1. 目前，Service Fabric Linux 群集中运行的应用程序仅支持选取一个日志文件。 要设置应用程序以便日志始终转到 */tmp/mysfapp0.0.log*，请在位置 *Voting/VotingApplication/VotingWebPkg/Code/logging.properties* 创建名为 logging.properties 的文件并添加以下内容。
 
     ```
     handlers = java.util.logging.FileHandler
@@ -103,7 +107,8 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     java.util.logging.FileHandler.level = ALL
     java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 
-    # This value specifies your custom location. You will have to ensure this path has read and write access by the process running the SF Application
+    # This value specifies your custom location.
+    # You will have to ensure this path has read and write access by the process running the SF Application
     java.util.logging.FileHandler.pattern = /tmp/mysfapp0.0.log
     ```
 
@@ -113,7 +118,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     -Djava.util.logging.config.file=logging.properties
     ```
 
-    以下示例演示了示例执行：
+    下面的示例显示了附加了调试器的示例执行，与前一部分中的执行类似。
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2465dd6c22567a3d8b50a7cfad4e26491bbe773e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 384294dfcd443f0bdbb7a915069d2563bcc35ae4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885194"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533879"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -46,6 +46,9 @@ ms.locfileid: "54885194"
 
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 在计算机上安装 [Curl](https://curl.haxx.se/dlwiz/) 。 配合使用 CURL 工具与 REST 命令来创建数据工厂。
 * 遵循 [此文](../../active-directory/develop/howto-create-service-principal-portal.md) 的说明：
@@ -55,13 +58,13 @@ ms.locfileid: "54885194"
   4. 将 **ADFGetStartedApp** 应用程序分配到“数据工厂参与者”角色。
 * 安装 [Azure PowerShell](/powershell/azure/overview)。
 * 启动 **PowerShell** 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
-  1. 运行 **Connect-AzureRmAccount** 并输入用于登录 Azure 门户的用户名和密码。
-  2. 运行 **Get-AzureRmSubscription** ，查看此帐户的所有订阅。
-  3. 运行 **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext** 选择要使用的订阅。 将 **NameOfAzureSubscription** 替换为 Azure 订阅的名称。
+  1. 运行 **Connect-AzAccount** 并输入用于登录 Azure 门户的用户名和密码。
+  2. 运行 **Get-AzSubscription**，查看此帐户的所有订阅。
+  3. 运行 **Get-AzSubscription -SubscriptionName NameOfAzureSubscription | Set-AzContext** 选择要使用的订阅。 将 **NameOfAzureSubscription** 替换为 Azure 订阅的名称。
 * 在 PowerShell 中运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组：
 
     ```PowerShell
-    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
    本教程中的某些步骤假设使用名为 ADFTutorialResourceGroup 的资源组。 如果使用不同的资源组，需使用该资源组的名称取代本教程中的 ADFTutorialResourceGroup。
@@ -132,7 +135,7 @@ ms.locfileid: "54885194"
 * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。
 * HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建**默认容器**。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。
 
-    随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
+    随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循模式：“adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 
 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 
@@ -325,12 +328,12 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
     ```PowerShell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
       可运行以下命令来确认数据工厂提供程序是否已注册：
     ```PowerShell
-    Get-AzureRmResourceProvider
+    Get-AzResourceProvider
     ```
   * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，并导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作会自动注册提供程序。
 

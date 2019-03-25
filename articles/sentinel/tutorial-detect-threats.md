@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08f84a3e037301837da984b0891d978027dc2e11
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a0a16fbda662ee1d3718dbafc4231de67aab277e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083158"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400674"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>教程：检测到威胁 Azure Sentinel 预览版
 
@@ -27,18 +27,21 @@ ms.locfileid: "58083158"
 > Azure Sentinel 目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本教程帮助用户检测到威胁 Azure Sentinel。
-
 检查完[连接的数据源](quickstart-onboard.md)要向 Azure Sentinel，一些可疑发生时收到通知。 若要使您能够执行此操作，Azure Sentinel 的，您可以创建高级可以分配的情况下生成的警报的规则和使用进行深入地调查异常和环境中的威胁。 
 
-
+本教程帮助用户检测到威胁 Azure Sentinel。
 > [!div class="checklist"]
 > * 创建检测规则
 > * 应对威胁
 
 ## <a name="create-detection-rules"></a>创建检测规则
 
-若要调查情况下，首先需要创建检测规则。 检测规则基于类型的威胁和异常的可能是你想要立即，了解有关在环境中可疑确保它们进行显示、 调查，并进行修正。 
+若要调查情况下，首先需要创建检测规则。 
+
+> [!NOTE]
+> 在 Azure Sentinel 中生成的警报都可以通过[Microsoft Graph Security](https://aka.ms/securitygraphdocs)。 请参阅[Microsoft Graph 安全警报文档](https://aka.ms/graphsecurityreferencebetadocs)更多详细信息和集成合作伙伴。
+
+检测规则基于类型的威胁和异常的可能是你想要立即，了解有关在环境中可疑确保它们进行显示、 调查，并进行修正。 
 
 1. 在 Azure 门户中 Azure Sentinel 下，选择**Analytics**。
 
@@ -87,7 +90,9 @@ Azure Sentinel 提供两个主要选项用于响应使用 playbook 的威胁。 
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，您学习了如何开始使用 Azure Sentinel 的威胁检测。 继续学习以下教程[如何响应使用自动化操作手册的威胁](tutorial-respond-threats-playbook.md)。
+在本教程中，您学习了如何开始使用 Azure Sentinel 的威胁检测。 
+
+若要了解如何自动执行对威胁，你做出响应[如何响应使用自动化操作手册的威胁](tutorial-respond-threats-playbook.md)。
 > [!div class="nextstepaction"]
 > [应对威胁](tutorial-respond-threats-playbook.md)来自动执行对威胁你做出响应。
 

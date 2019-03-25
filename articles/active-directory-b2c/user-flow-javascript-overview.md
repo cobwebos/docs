@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 997babef5860488232f0b530c90b44aba6608ac5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 5102755c9e830f43fa92e8546e5125960e0a2f9a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007465"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401561"
 ---
 # <a name="about-using-javascript-and-page-contract-versions-in-a-user-flow"></a>关于如何在用户流中使用 JavaScript 和页面协定版本
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaScript 适用于用户流中的用户界面元素。 若要在用户流中启用 [JavaScript](javascript-samples.md) 客户端代码，需确保 JavaScript 所基于的元素是不可变的。 否则，任何更改都可能会导致用户流页面上出现意外行为。 为了防止这些问题，可以将页面协定强制用于用户流，并指定页面协定版本。 这样做可以确保 JavaScript 所基于的所有内容定义不可变。 即使不打算为用户流启用 JavaScript，也可为用户流页面指定页面协定版本。
 

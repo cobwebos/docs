@@ -2,19 +2,19 @@
 title: 检查设备到 Azure IoT 中心的连接性
 description: 在开发期间使用 IoT 中心工具排查设备连接到 IoT 中心的问题。
 services: iot-hub
-author: dominicbetts
-manager: timlt
-ms.author: dobett
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: ebd206f6de031ea73d621568e091632e2e8123b9
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cd60129e2da0b0c2130b300159953bd81c4aeb82
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674492"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077558"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 
@@ -135,7 +135,7 @@ az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubNam
 
 记下已生成的 SAS 令牌的完整文本。 SAS 令牌如下所示：`SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
-在开发计算机的终端窗口中，导航到下载的示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Tutorials\ConnectivityTests\simulated-device** 文件夹。
+在开发计算机的终端窗口中，导航到下载的示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Tutorials\ConnectivityTests** 文件夹。
 
 在终端窗口中，运行以下命令，安装所需的库，并运行模拟设备应用程序：
 
@@ -176,7 +176,7 @@ node SimulatedDevice-2.js "{Your SAS token}"
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-若要运行可发送消息的模拟设备，请导航到已下载代码中的 **iot-hub\Tutorials\ConnectivityTests\simulated-device** 文件夹。
+若要运行可发送消息的模拟设备，请导航到已下载代码中的 **iot-hub\Tutorials\ConnectivityTests** 文件夹。
 
 在终端窗口中，运行以下命令，安装所需的库，并运行模拟设备应用程序：
 

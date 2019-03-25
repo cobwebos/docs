@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 5ce816c9e8bec716de840cc5f6fdd546b6abd298
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 2965f72a1f0532cd9e13d5fa03750cf4ed8bab99
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649775"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403453"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - Resource Manager，不同订阅
 
@@ -283,7 +283,7 @@ ms.locfileid: "56649775"
    }
    ```
 
-3. 以用户 A 的身份登录 Azure，并使用[门户](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)、[PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-templates-stored-locally) 或 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) 来部署模板。 指定在步骤 2 中用于保存示例 json 文本的文件的文件名。
+3. 以用户 A 的身份登录 Azure，并使用[门户](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)、[PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) 或 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) 来部署模板。 指定在步骤 2 中用于保存示例 json 文本的文件的文件名。
 4. 将步骤 2 中的示例 json 复制到本地计算机上的某地文件中，并对如下开头的行进行更改：
    - **名称**：将 myVnetA/myVnetAToMyVnetB 更改为 myVnetB/myVnetBToMyVnetA。
    - **id**：将 `<subscription ID>` 替换为用户 B 的订阅 ID，并将 myVnetB 更改为 myVnetA。

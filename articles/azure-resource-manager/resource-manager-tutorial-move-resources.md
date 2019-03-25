@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/19/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5bc8a408ce247ad2980983c3eb32807074af599f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 62e35a361f2fcf9d6f484b699084a78f66121957
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820818"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310091"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group"></a>教程：将 Azure 资源移动到其他资源组
 
 了解有关如何将 Azure 资源在资源组之间移动。 此外还可以将 Azure 资源在订阅间移动。 在本教程中，使用资源管理器模板来部署两个资源组和一个存储帐户。 然后，将存储帐户从一个资源组移动到另一个资源组。
+
+![“Azure 资源管理器移动资源”示意图](./media/resource-manager-tutorial-move-resources/resource-manager-template-move-resources.png)
 
 本教程涵盖以下任务：
 

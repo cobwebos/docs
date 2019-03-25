@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 0ca570235ac2a87b62c5d0fcebbd24dc5186e37d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 67caaa2c6c9bd615d0b88bdd5de3442b46aa32cb
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556509"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403487"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>管理通过 Windows PowerShell 的 Azure 数据框网关设备
 
@@ -30,18 +30,9 @@ Azure 数据框网关解决方案，可通过网络将数据发送到 Azure。 �
 - 在非 DHCP 环境中启动
 - 查看设备信息
 
-> [!IMPORTANT]
-> Azure 数据框网关当前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="connect-to-the-powershell-interface"></a>连接到 PowerShell 界面
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
-
-## <a name="start-a-support-session"></a>启动支持会话
-
-[!INCLUDE [Connect to support runspace](../../includes/data-box-edge-gateway-connect-support.md)]
 
 ## <a name="create-a-support-package"></a>创建支持包
 

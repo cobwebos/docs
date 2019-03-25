@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 248861848aa905f9cbff01ab60affd7cf21aae78
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004812"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>快速入门：使用 SignalR 服务创建聊天室
 
@@ -267,6 +267,6 @@ connection.start()
 本快速入门中已创建新的 Azure SignalR 服务资源，并将其与 ASP.NET Core Web 应用结合使用，从而将内容更新实时推送到多个连接的客户端。 若要深入了解如何使用 Azure SignalR 服务，请继续学习下一个教程，其中将介绍如何进行身份验证。
 
 > [!div class="nextstepaction"]
-> [Azure SignalR 服务身份验证](./signalr-authenticate-oauth.md)
+> [Azure SignalR 服务身份验证](./signalr-concept-authenticate-oauth.md)
 
 

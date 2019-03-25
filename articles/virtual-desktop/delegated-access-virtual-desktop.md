@@ -1,22 +1,22 @@
 ---
-title: Windows 虚拟桌面 （预览版）-Azure 中的委托的访问
-description: 如何委托上的 Windows 虚拟桌面部署，包括示例的管理功能。
+title: 在 Windows 虚拟桌面预览-Azure 中的委托的访问
+description: 如何委托上的 Windows 虚拟桌面预览部署，包括示例的管理功能。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 49645b697071abb8a2f8c85ebde1e6761a3536ab
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336093"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400017"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Windows 虚拟桌面 （预览版） 中的委托的访问
+# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>在 Windows 虚拟桌面预览中的委托的访问
 
-Windows 虚拟桌面 （预览版） 提供了委托的访问模式，允许您定义的特定用户可通过将其分配一个角色拥有的访问权限。 角色分配有三个组件： 安全主体、 角色定义和作用域。 Windows 虚拟桌面的委托的访问模型基于 Azure RBAC 模型。 若要了解有关特定的角色分配和其组件的详细信息，请参阅[Azure 基于角色的访问控制概述](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)。
+Windows 虚拟桌面预览提供了委托的访问模式，允许您定义的特定用户可通过将其分配一个角色拥有的访问权限。 角色分配有三个组件： 安全主体、 角色定义和作用域。 Windows 虚拟桌面的委托的访问模型基于 Azure RBAC 模型。 若要了解有关特定的角色分配和其组件的详细信息，请参阅[Azure 基于角色的访问控制概述](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)。
 
 Windows 虚拟机委派访问支持的角色分配每个元素的以下值：
 
@@ -66,4 +66,4 @@ Windows 虚拟机委派访问支持的角色分配每个元素的以下值：
 
 每个角色可以使用 PowerShell cmdlet 的更完整列表，请参阅[PowerShell 参考](/powershell/windows-virtual-desktop/overview)。
 
-有关如何设置 Windows 虚拟桌面环境的指导，请参阅[设置的 Windows 虚拟桌面环境](environment-setup.md)。
+有关如何设置 Windows 虚拟桌面环境的指导，请参阅[Windows 虚拟桌面预览环境](environment-setup.md)。

@@ -10,28 +10,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: bd574eb2d3537d3e5c0774f57e37283817cc7879
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3468f5b625911cd637b22e2c1d35a47fb7d7b0e4
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112018"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402824"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>使用 Resource Manager 模板和 Resource Manager REST API 部署资源
 
 本文介绍如何将 Resource Manager REST API 与 Resource Manager 模板配合使用向 Azure 部署资源。  
 
-> [!TIP]
-> 有关在部署过程中调试错误的帮助，请参阅：
-> 
-> * [查看部署操作](resource-manager-deployment-operations.md)，了解如何获取有助于排查错误的信息
-> * [排查使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)，了解如何解决常见的部署错误
-> 
-> 
-
 可以在请求正文中包含模板或链接到文件。 使用文件时，它可以是本地文件，也可以是通过 URI 提供的外部文件。 如果模板位于存储帐户中，可以限制对该模板的访问，并在部署过程中提供共享访问签名 (SAS) 令牌。
+
+## <a name="deployment-scope"></a>部署范围
+
+你可以面向你部署到 Azure 订阅或在订阅中的资源组。 在大多数情况下，将目标部署到资源组。 使用订阅部署在订阅中应用策略和角色分配。 此外可以使用订阅部署创建资源组和将资源部署到它。 具体取决于部署的范围，您可以使用不同的命令。
+
+若要将部署到**资源组**，使用[部署-创建](/rest/api/resources/deployments/createorupdate)。
+
+若要将部署到**订阅**，使用[部署-在订阅范围内创建](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。
+
+在本文中的示例使用的资源组部署。 有关订阅部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
 ## <a name="deploy-with-the-rest-api"></a>使用 REST API 进行部署
 1. 设置[常见参数和标头](/rest/api/azure/)，包括身份验证令牌。

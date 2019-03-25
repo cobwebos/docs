@@ -3,18 +3,18 @@ title: 在 Azure IoT Central 中监视设备 | Microsoft Docs
 description: 作为操作员，使用 Azure IoT Central 应用程序监视设备。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/12/2018
+ms.date: 02/01/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 941fbffaa7a0129de30d6fdf14d3d0559429309f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 561477d8bf3a64397e9964499339c368dec5470d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200235"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760466"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>教程：使用 Azure IoT Central 监视设备
 
@@ -41,7 +41,7 @@ Azure IoT Central 将有关设备的通知作为电子邮件发送。 构建者�
 
 打开你在[配置用于设备的规则和操作](tutorial-configure-rules.md)教程结束时收到的电子邮件。 在此电子邮件中，选择“单击此处打开设备”：
 
-![应用程序构建者规则](media/tutorial-monitor-devices/email.png)
+![警报通知电子邮件](media/tutorial-monitor-devices/email.png)
 
 此时将在浏览器中打开前面教程中创建的“已连接空调 - 1” 模拟设备的“设备”页：
 
@@ -55,13 +55,13 @@ Azure IoT Central 将有关设备的通知作为电子邮件发送。 构建者�
 
 ![设备仪表板](media/tutorial-monitor-devices/initial_screen.png)
 
-仪表板上的图表显示了设备温度的曲线图。 还可以在“设置目标温度”磁贴中查看设备的当前目标温度。 你确定目标温度过高。
+仪表板上的图表显示了设备温度的曲线图。 还可以在“设备属性”磁贴中查看设备的当前目标温度。 你确定目标温度过高。
 
 ## <a name="remediate-an-issue"></a>解决问题
 
 若要更改设备的目标温度，请使用“设置”页：
 
-1. 选择“设置”。 将“设置温度”更改为 75。 选择“更新”，将新的目标温度发送到设备。 当设备确认设置更改时，设置值的状态将变为“已同步”：
+1. 选择“设置”。 将“设置温度”更改为 75。 选择“更新”，将新的目标温度发送到设备。 当设备确认设置发生了更改时，设置的状态将变为“已同步”：
 
     ![更新设置](media/tutorial-monitor-devices/change_settings.png)
 

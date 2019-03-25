@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 3c64841656f81f2f78c02c54f08ca24cccd78586
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843877"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>快速入门：使用必应 Web 搜索 REST API 和 Go 搜索网页
 
@@ -309,7 +309,7 @@ func main() {
 
 ## <a name="sample-response"></a>示例响应  
 
-来自必应 Web 搜索 API 的响应以 JSON 形式返回。 此示例响应已使用 `BingAnswer` 结构进行了格式化并显示了 `result.Name` 和 `result.URL`。
+来自必应 Web 搜索 API 的响应以 JSON 形式返回。 此示例响应已使用 `BingAnswer` 结构进行了格式设置并显示了 `result.Name` 和 `result.URL`。
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services

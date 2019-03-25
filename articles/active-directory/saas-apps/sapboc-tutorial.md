@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 6c5e44f0-4e52-463f-b879-834d80a55cdf
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c397cd3b535c7bf918eac2ac1e9ae1f967d7b95a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c64fb2dc4c494252f0078b8d23e05b15f07ebe00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877497"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894557"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>教程：Azure Active Directory 与 SAP Business Object Cloud 的集成
 
@@ -106,12 +106,14 @@ ms.locfileid: "56877497"
     ![SAP Business Object Cloud 域和 URL 单一登录信息](common/sp-identifier.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+
     | |
     |-|-|
     | `https://<sub-domain>.sapanalytics.cloud/` |
     | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    
     | |
     |-|-|
     | `<sub-domain>.sapbusinessobjects.cloud` |
@@ -178,7 +180,7 @@ ms.locfileid: "56877497"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -237,7 +239,7 @@ ms.locfileid: "56877497"
 
     d. 在“显示名称”框中，输入用户的全名，如 Britta Simon。
 
-    e. 在“电子邮件”框中，输入用户的电子邮件地址，如 brittasimon@contoso.com。
+    e. 在“电子邮件”框中，输入用户的电子邮件地址，例如 **brittasimon\@contoso.com**。
 
     f. 在“选择角色”页上，选择适当的用户角色，然后选择“确定”。
 

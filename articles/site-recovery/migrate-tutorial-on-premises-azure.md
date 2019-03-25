@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6c97289cd1ad406769613621afdc16c8096f4aeb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116161"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110301"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -36,6 +36,8 @@ ms.locfileid: "56116161"
 
 在开始之前，查看用于灾难恢复的 [VMware](vmware-azure-architecture.md) 或 [Hyper-V](hyper-v-azure-architecture.md) 体系结构会有所帮助。
 
+> [!TIP]
+> 正在寻找将 VMware VM 迁移到 Azure 的无代理方式？ 请[单击此处](https://aka.ms/migrateVMs-signup)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +56,6 @@ ms.locfileid: "56116161"
    ![新保管库](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
 新保管库将添加到“仪表板”中的“所有资源”下，以及“恢复服务保管库”主页面上。
-
 
 
 ## <a name="select-a-replication-goal"></a>选择复制目标
@@ -112,10 +113,10 @@ ms.locfileid: "56116161"
 5. 检查 Azure VM 是否在 Azure 中按预期显示。
 6. 在“复制的项”中，右键单击 VM >“完成迁移”。 这样会执行以下操作：
 
-    - 完成迁移过程，停止 AWS VM 复制，并停止 VM 的 Site Recovery 计费。
-    - 此步骤清除复制数据。 它不删除迁移的 VM。
+   - 完成迁移过程，停止 AWS VM 复制，并停止 VM 的 Site Recovery 计费。
+   - 此步骤清除复制数据。 它不删除迁移的 VM。
 
-    ![完成迁移](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![完成迁移](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]

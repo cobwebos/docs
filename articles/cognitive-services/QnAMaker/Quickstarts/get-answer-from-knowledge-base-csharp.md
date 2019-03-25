@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/19/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: f2b5089f1ec334f80ccb4ce80ba9b512f3305859
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2d011dffa4db68a0cdf6ac3415ff1316906a4e87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861113"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883995"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>使用 C# 从知识库获取问题的答案
 
-本快速入门详细介绍如何以编程方式从已发布的 QnA Maker 知识库获取答案。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 JSON 格式的问题在 API 请求的正文中发送。 
+本快速入门详细介绍如何以编程方式从已发布的 QnA Maker 知识库获取答案。 知识库包含来自[数据源](../Concepts/data-sources-supported.md)的问题和答案，例如常见问题解答。 [问题](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)将发送到 QnA Maker 服务。 [响应](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含最常见的预测答案。 
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -37,7 +37,7 @@ ms.locfileid: "55861113"
 ## <a name="create-a-knowledge-base-project"></a>创建知识库项目
 
 1. 打开 Visual Studio 2017 Community Edition。
-1. 创建一个新的“控制台应用(.Net Core)”项目并将项目命名为 QnaMakerQuickstart。 接受其余设置的默认值。
+1. 创建一个新的“控制台应用(.NET Core)”项目并将项目命名为 QnaMakerQuickstart。 接受其余设置的默认值。
 
 ## <a name="add-the-required-dependencies"></a>添加必需的依赖项
 
@@ -58,6 +58,8 @@ ms.locfileid: "55861113"
 [!code-csharp[Add a POST request to send question to knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=32-57 "Add a POST request to send question to knowledge base")]
 
 `Authorization` 标头的值包括字符串 `EndpointKey `。 
+
+详细了解[请求](../how-to/metadata-generateanswer-usage.md#generateanswer-request)和[响应](../how-to/metadata-generateanswer-usage.md#generateanswer-response)。 
 
 ## <a name="build-and-run-the-program"></a>生成并运行程序
 

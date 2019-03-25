@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 0900f5e2cab24004c4e2a358a98cd750f0968b50
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 44e386b7da6fde2b24f02381760fcd96118f7e51
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752972"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092950"
 ---
 # <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>在混合环境中为 Windows 计算机配置 Log Analytics 代理
 [Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) 可将物理或虚拟 Windows 计算机中的数据从数据中心或其他云环境直接收集到单个存储库中，以便进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Windows 计算机中配置或收集数据。  有关 Azure Windows VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](../../azure-monitor/learn/quick-collect-azurevm.md)。  
@@ -35,13 +35,13 @@ ms.locfileid: "55752972"
 1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/quick-collect-windows-computer/azure-portal-01.png)<br><br>  
 2. 单击“创建”，然后为以下各项选择选项：
 
-  * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。 
-  * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
-  * 对于“资源组”，选择包含一个或多个 Azure 虚拟机的现有资源组。  
-  * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。  
-  * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
+   * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。 
+   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
+   * 对于“资源组”，选择包含一个或多个 Azure 虚拟机的现有资源组。  
+   * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。  
+   * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
-        ![Create Log Analytics resource blade](media/quick-collect-windows-computer/create-loganalytics-workspace-02.png)<br>  
+        ![创建 Log Analytics 资源边栏选项卡](media/quick-collect-windows-computer/create-loganalytics-workspace-02.png)<br>  
 
 3. 在“Log Analytics 工作区”窗格上提供所需信息后，单击“确定”。  
 

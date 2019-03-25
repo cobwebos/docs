@@ -1,164 +1,96 @@
 ---
-title: 快速入门：必应自动建议 API，C#
+title: 快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应自动建议 API。
+description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 331b7f3cffa07003908cd339adf9dbea2a4593e0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: 10e25797c15a821579cd15333cdd833e491acbd0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878208"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546103"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-c"></a>通过 C# 使用必应自动建议 API 快速入门
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
 
-本文介绍如何结合使用[必应自动建议 API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) 与 C#。 必应自动推荐 API 根据用户在搜索框中输入的部分查询字符串返回建议查询的列表。 通常情况下，每当用户在搜索框中键入新字符时均会调用此 API，然后搜索框的下拉列表中会显示建议。 本文介绍如何发送请求，以针对 sail 返回建议的查询字符串。
+使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 C# 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
+* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
-必须创建一个具有**必应自动推荐 API v7** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#search)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>获取自动建议结果
+## <a name="create-a-visual-search-solution"></a>创建视觉搜索解决方案
 
-1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+1. 在 Visual Studio 中创建一个新的控制台解决方案。 然后将以下命名空间添加到主代码文件。
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
+    ```
 
-namespace AutosuggestSample1
-{
-    class Program
+2. 在新类中，为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)和部分搜索查询创建变量。
+
+    ```csharp
+    static string host = "https://api.cognitive.microsoft.com";
+    static string path = "/bing/v7.0/Suggestions";
+    static string market = "en-US";
+    static string key = "your-api-key";
+    
+    static string query = "sail";
+    ```
+
+
+## <a name="create-and-send-an-api-request"></a>创建和发送 API 请求
+
+1. 创建名为 `Autosuggest()` 的函数，以便向 API 发送请求。 新建 `HttpClient()`，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
+
+    ```csharp
+    async static void Autosuggest()
     {
-        static string host = "https://api.cognitive.microsoft.com";
-        static string path = "/bing/v7.0/Suggestions";
-
-        // For a list of available markets, go to:
-        // https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes
-        static string market = "en-US";
-
-        // NOTE: Replace this example key with a valid subscription key.
-                static string key = "INSERT API KEY";
-
-        static string query = "sail";
-
-        // These properties are used for optional headers (see below).
-        // static string ClientId = "<Client ID from Previous Response Goes Here>";
-        // static string ClientIp = "999.999.999.999";
-        // static string ClientLocation = "+90.0000000000000;long: 00.0000000000000;re:100.000000000000";
-
-        async static void Autosuggest()
-        {
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-
-            // The following headers are optional, but it is recommended they be treated as required.
-            // These headers help the service return more accurate results.
-            //client.DefaultRequestHeaders.Add("X-Search-Location", ClientLocation);
-            //client.DefaultRequestHeaders.Add("X-MSEdge-ClientID", ClientId);
-            //client.DefaultRequestHeaders.Add("X-MSEdge-ClientIP", ClientIp);
-
-            string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
-
-            HttpResponseMessage response = await client.GetAsync(uri);
-
-            string contentString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(JsonPrettyPrint(contentString));
-        }
-
-        static void Main(string[] args)
-        {
-            Autosuggest();
-            Console.ReadLine();
-        }
-
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json)) {
-                return string.Empty;
-            }
-
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
-
-            StringBuilder sb = new StringBuilder();
-            bool quote = false;
-            bool ignore = false;
-            char last = ' ';
-            int offset = 0;
-            int indentLength = 3;
-
-            foreach (char ch in json)
-            {
-                switch (ch)
-                {
-                    case '"':
-                        if (!ignore) quote = !quote;
-                        break;
-                    case '\\':
-                        if (quote && last != '\\') ignore = true;
-                        break;
-                }
-
-                if (quote)
-                {
-                    sb.Append(ch);
-                    if (last == '\\' && ignore) ignore = false;
-                }
-                else
-                {
-                    switch (ch)
-                    {
-                        case '{':
-                        case '[':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', ++offset * indentLength));
-                            break;
-                        case '}':
-                        case ']':
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', --offset * indentLength));
-                            sb.Append(ch);
-                            break;
-                        case ',':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', offset * indentLength));
-                            break;
-                        case ':':
-                            sb.Append(ch);
-                            sb.Append(' ');
-                            break;
-                        default:
-                            if (quote || ch != ' ') sb.Append(ch);
-                            break;
-                    }
-                }
-                last = ch;
-            }
-
-            return sb.ToString().Trim();
-        }
+        HttpClient client = new HttpClient();
+        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+        //..
     }
-}
-```
+    ```
 
-### <a name="response"></a>响应
+2. 在上面的同一函数中，通过组合 API 主机和路径来创建请求 URI。 将市场追加到 `?mkt=` 参数，并将查询追加到 `&query=` 参数。 确保对查询进行 URL 编码。 
+
+    ```csharp
+    string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
+    ```
+
+3. 将请求发送到上面构造的 URI，并输出响应。
+
+    ```csharp
+    HttpResponseMessage response = await client.GetAsync(uri);
+
+    string contentString = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(contentString);
+    ```
+
+4. 在程序的主方法中，调用 `Autosuggest()`。
+
+    ```csharp
+    static void Main(string[] args)
+    {
+        Autosuggest();
+        Console.ReadLine();
+    }
+    ```
+
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 

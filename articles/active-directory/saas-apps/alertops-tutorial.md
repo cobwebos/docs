@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3db13ed4-35c2-4b1e-bed8-9b5977061f93
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1874950e733df1cf14fba2f53fdb49d478cb6f8a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7914bc3775631f3cc5d6ae68fed10c6d5fecb853
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866039"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838045"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alertops"></a>教程：Azure Active Directory 与 AlertOps 的集成
 
@@ -176,7 +176,7 @@ ms.locfileid: "56866039"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -227,7 +227,7 @@ ms.locfileid: "56866039"
 
     a. 在“登录用户名”文本框中输入用户的用户名，例如 **Brittasimon**。
 
-    b. 在“正式电子邮件”文本框中，输入用户的电子邮件地址，例如 **Brittasimon@contoso.com**。
+    b. 在“正式电子邮件”文本框中，输入用户的电子邮件地址，例如 **Brittasimon\@contoso.com**。
 
     c. 在“名字”文本框中，输入用户的名字（如“Britta”）。
 

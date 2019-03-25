@@ -7,20 +7,20 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 0ebdab6c-83a8-4737-a86a-974f37269c31
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/05/2019
+ms.date: 03/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4175b626040f5fcb7ec157120f19b89508e67239
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 641fe5439e320208d41969b9563293257648d488
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>教程：Azure Active Directory 与 Zoom 的集成
 
@@ -112,20 +112,20 @@ ms.locfileid: "56872601"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Zoom 客户端支持团队](https://support.zoom.us/hc/en-us)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. Zoom 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+5. Zoom 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框 ****  **** 。
 
     ![图像](common/edit-attribute.png)
 
-6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+6. 除了上述属性，Zoom 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
     | Name | 命名空间  |  源属性|
     | ---------------| --------------- | --------- |
-    | 电子邮件地址  | user.mail  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail |
-    | 名字  | user.givenname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname |
-    | 姓氏  | user.surname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname |
-    | 电话号码  | user.telephonenumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
-    | 部门  | user.department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
-    | role |    user.assignedrole |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role |
+    | 电子邮件地址  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
+    | 名字  | user.givenname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
+    | 姓氏  | user.surname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
+    | 电话号码  | user.telephonenumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
+    | 部门  | user.department  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department` |
+    | role |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
 
     > [!NOTE]
     > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -179,13 +179,23 @@ ms.locfileid: "56872601"
 
     a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+    b. 对于**注销页 URL** 值，需要转到 Azure 门户并单击左侧的 **Azure Active Directory**，然后导航到“应用注册”。
 
-    c. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，再粘贴到“标识提供者证书”文本框中。
+    ![“Azure Active Directory”按钮](./media/zoom-tutorial/appreg.png)
 
-    d. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。 
+    c. 单击“终结点”
 
-    e. 单击“ **保存**”。
+    ![“终结点”按钮](./media/zoom-tutorial/endpoint.png)
+
+    d. 复制 **SAML-P 注销终结点**并将其粘贴到“注销页 URL”文本框中。
+
+    ![“复制终结点”按钮](./media/zoom-tutorial/endpoint1.png)
+
+    e. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后再粘贴到“标识提供者证书”文本框中。
+
+    f. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。 
+
+    g. 单击“ **保存**”。
 
     > [!NOTE]
     > 有关详细信息，请访问 zoom 文档 [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)
@@ -208,7 +218,7 @@ ms.locfileid: "56872601"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

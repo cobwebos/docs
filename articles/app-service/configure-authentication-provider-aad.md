@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d0c39462bc046b13a2756d37c089ba0e68c90452
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: 0c5ceda99fe35fafff23f2bcf4ea766d7dd42b75
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456633"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403215"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>将应用服务应用配置为使用 Azure Active Directory 登录
+
+> [!NOTE]
+> 在此期间，AAD V2 （包括 MSAL） 不支持为 Azure 应用服务和 Azure Functions。 请记得回头检查更新。
+>
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
@@ -36,7 +40,7 @@ ms.locfileid: "56456633"
 4. 选择“确定”，在 Azure Active Directory 中注册应用服务应用。 这会创建一个新的应用注册。 如果想要选择现有应用注册，请单击“选择现有应用”，并在租户中搜索以前创建的应用注册的名称。
    单击应用注册将其选中，然后单击“确定”。 然后在 Azure Active Directory 设置页上单击“确定”。
    默认情况下，应用服务提供身份验证但不限制对站点内容和 API 的已授权访问。 必须在应用代码中为用户授权。
-5. （可选）要限制只有通过 Azure Active Directory 身份验证的用户可以访问站点，请将“请求未经身份验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。 这会要求对所有请求进行身份验证，所有未经身份验证的请求将重定向到 Azure Active Directory 以进行身份验证。
+5. （可选）若要限制只有通过 Azure Active Directory 身份验证的用户可以访问站点，请将“请求未经身份验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。 这会要求对所有请求进行身份验证，而所有未经身份验证的请求都将被重定向到 Azure Active Directory 进行身份验证。
 6. 单击“ **保存**”。
 
 现在，可以使用 Azure Active Directory 在应用服务应用中进行身份验证。

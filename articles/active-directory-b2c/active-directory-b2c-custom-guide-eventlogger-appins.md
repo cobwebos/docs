@@ -10,14 +10,16 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5bc9e44cc1f1759231d405e64fab097d73d48486
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 51342a7544295b465d1f2dfc3e1b27d8285b3588
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160520"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403810"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 将 Azure Application Insights 与 Azure Active Directory (Azure AD) B2C 配合使用时，可以获得用户情况的详细自定义事件日志。 在本文中，学习如何：
 
@@ -25,9 +27,6 @@ ms.locfileid: "55160520"
 * 排查自己在开发或生产过程中的策略问题。
 * 衡量性能。
 * 通过 Application Insights 创建通知。
-
-> [!NOTE]
-> 此功能为预览版。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -37,7 +36,7 @@ Azure AD B2C 中的标识体验框架包括提供程序 `Handler="Web.TPEngine.P
 
 Application Insights 可以使用关联 ID 来记录用户会话，以便统一事件。 Application Insights 可以在数秒内提供事件和会话，并提供许多可视化工具、导出工具和分析工具。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 本文假设使用的是自定义策略初学者包。 但是，初学者包不是必需的。
 

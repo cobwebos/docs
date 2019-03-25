@@ -1,22 +1,22 @@
 ---
 title: 准备和自定义主 VHD 映像-Azure
-description: 了解如何准备、 自定义并将 Windows 虚拟桌面 （预览版） 的主映像上传到 Azure。
+description: 了解如何准备、 自定义并将 Windows 虚拟桌面预览主映像上传到 Azure。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 53bf33aad6511cc282f53659bbe43873cacfc3ff
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ca186090f28f04811030e83b159782a9bfeb87f9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318414"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400775"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
-本文将介绍如何准备要上传到 Azure，包括如何创建虚拟机 (Vm) 和安装并在其上配置软件的主虚拟硬盘 (VHD) 映像。 这些说明适用于可以与组织的现有进程使用的 Windows 虚拟桌面特定 （预览版） 配置。
+本文将介绍如何准备要上传到 Azure，包括如何创建虚拟机 (Vm) 和安装并在其上配置软件的主虚拟硬盘 (VHD) 映像。 这些说明适用于可以与组织的现有进程使用的特定于 Windows 的虚拟桌面预览版的配置。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -370,8 +370,8 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 
 现在，你具有映像后，可以创建或更新主机池。 若要了解有关如何创建和更新主机池的详细信息，请参阅以下文章：
 
-- [使用 Azure 资源管理器模板 （预览版） 创建主机池](create-host-pools-arm-template.md)
-- [教程：使用 Azure Marketplace （预览版） 创建主机池](create-host-pools-azure-marketplace.md)
-- [使用 PowerShell （预览版） 创建主机池](create-host-pools-powershell.md)
+- [使用 Azure 资源管理器模板创建一个主机池](create-host-pools-arm-template.md)
+- [教程：使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace.md)
+- [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
 - [设置主机池的用户配置文件共享](create-host-pools-user-profile.md)
 - [配置 Windows 虚拟机负载平衡方法](configure-host-pool-load-balancing.md)

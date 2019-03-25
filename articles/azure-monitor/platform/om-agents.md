@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 3e11c4dc8aa082723223fb998e599aa514febd3b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d2ecebf47c77baa81193939b64c27348541f7686
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369950"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403402"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -43,9 +43,10 @@ ms.locfileid: "58369950"
 ## <a name="prerequisites"></a>必备组件 
 在开始之前，请查看以下要求。
 
-* Azure Monitor 仅支持 System Center Operations Manager 1807、 Operations Manager 1801、 Operations Manager 2016、 Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
+* Azure Monitor 仅支持 System Center Operations Manager 2016 或更高版本，Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
+* 将 System Center Operations Manager 2016 与美国政府版云集成需要更新包含更新汇总 2 或更高版本的 Advisor 管理包。 System Center Operations Manager 2012 R2 需要包含更新汇总 3 或更高版本的更新的顾问的管理包。
 * 所有 Operations Manager 代理必须满足最低支持要求。 确保代理中安装了最起码的更新，否则 Windows 代理通信可能失败，并在 Operations Manager 事件日志中生成错误。
-* Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json)。
+* Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json)。   
 * 使用 [Log Analytics 参与者角色](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users)成员帐户在 Azure 中进行身份验证。  
 
 >[!NOTE]

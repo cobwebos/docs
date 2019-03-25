@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 677183b1-5348-4302-88cc-5c8ab63a3c6c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 636331c5ad39887ec8d8c92720cfa4fb3b3b3663
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 632ae913214794a114bc12019d92b6902172fca7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883379"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>教程：Azure Active Directory 与 Birst Agile Business Analytics 集成
 
@@ -109,12 +109,12 @@ ms.locfileid: "56883379"
 
     该 URL 将取决于 Birst 帐户所在的数据中心：
 
-    * 对于美国数据中心，请使用模式：`https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
+   * 对于美国数据中心，请使用模式：`https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
 
-    * 对于欧洲数据中心，请使用模式：`https://login.eu1.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
+   * 对于欧洲数据中心，请使用模式：`https://login.eu1.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
 
-    > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [Birst Agile Business Analytics 客户端支持团队](mailto:info@birst.com)联系。
+     > [!NOTE]
+     > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [Birst Agile Business Analytics 客户端支持团队](mailto:info@birst.com)联系。
 
 5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -155,7 +155,7 @@ ms.locfileid: "56883379"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

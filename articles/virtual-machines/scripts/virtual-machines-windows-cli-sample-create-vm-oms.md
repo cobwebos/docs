@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 示例 - 创建运行 Log Analytics 监视的 Azure VM | Microsoft Docs
-description: Azure CLI 示例 - 创建运行 Windows Server 2016 VM 和 Log Analytics 监视的 Azure VM。
+title: Azure CLI 示例 - 创建运行 Azure Monitor 的 Azure VM | Microsoft Docs
+description: Azure CLI 示例 - 创建运行 Windows Server 2016 VM 和 Azure Monitor 的 Azure VM。
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 06e853534dc811ba5b37b192a9da75e88eedd778
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2565433b8f42a3b81b843a972dd27850cce124b8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668307"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543315"
 ---
-# <a name="monitor-a-vm-with-log-analytics"></a>使用 Log Analytics 监视 VM
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 VM
 
 此脚本创建一个 Azure 虚拟机，安装 Log Analytics 代理，并将系统注册到 Log Analytics 工作区。 运行脚本后，该虚拟机会显示在 Azure Monitoring 中。
 

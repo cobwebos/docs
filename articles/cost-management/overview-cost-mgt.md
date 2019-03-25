@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2018
+ms.date: 03/14/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: e526d7fac3c66c5eaf9686db3c9f9f9506d6fc6b
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 69f91949347eadcffb3c0d3ff833a40b5e483e24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768649"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003174"
 ---
 # <a name="what-is-azure-cost-management"></a>Azure 成本管理是什么？
 
@@ -23,7 +23,7 @@ ms.locfileid: "55768649"
 
 虽然与计费相关，但计费不等同于成本管理。 计费是为客户开具商品或服务的发票及管理商业关系的过程。  采购团队和财务团队通常负责执行计费任务。
 
-成本管理会借助高级分析显示组织的成本和使用模式。 成本管理中的报表将显示 Azure 成本、使用情况、预留实例和 Azure 混合权益使用情况。 总的来说，这些报表显示了内部和外部使用成本以及 Azure 市场费用。 报告中尚未显示其他费用，例如预订购买费用、支持费用和税费。 报表可以帮助用户了解支出和资源使用情况，并帮助查找支出异常情况。 另外，还可以进行预测分析。 成本管理使用 Azure 管理组、预算和建议来清楚地显示费用规划情况，以及如何能够降低成本。
+成本管理会借助高级分析显示组织的成本和使用模式。 成本管理中的报告显示 Azure 服务和第三方市场产品/服务所消耗的基于使用情况的成本。 成本基于协商价格和预留因素以及 Azure 混合权益折扣。 总的来说，这些报表显示了内部和外部使用成本以及 Azure 市场费用。 报告中尚未显示其他费用，例如预订购买费用、支持费用和税费。 报表可以帮助用户了解支出和资源使用情况，并帮助查找支出异常情况。 另外，还可以进行预测分析。 成本管理使用 Azure 管理组、预算和建议来清楚地显示费用规划情况，以及如何能够降低成本。
 
 你可以使用 Azure 门户或各种 API 执行自动导出，从而将成本数据与外部系统和过程进行整合。 另外，还可自动导出计费数据和计划的报表。
 
@@ -41,7 +41,7 @@ ms.locfileid: "55768649"
 
 ## <a name="consider-cloudyn"></a>考虑使用 Cloudyn
 
-[Cloudyn](overview.md) 是与成本管理相关的一项 Azure 服务。 使用 Cloudyn，你可以跟踪 Azure 资源的云使用情况和支出。 同时，它还支持其他云提供程序，包括 AWS 和 Google。 便于理解的仪表板报告也有助于成本分配和 Showback/Chargeback。 目前，成本管理不支持 Showback/Chargeback 或其他云服务提供程序。 但是，Cloudyn 支持这些提供程序。 目前，成本管理仅支持 Azure EA 帐户。 虽然它不支持个人或即用即付帐户或 Microsoft 云服务提供商帐户，但 Cloudyn 支持。 如果你拥有其中一个帐户，则可以使用 Cloudyn 来帮助管理成本。
+[Cloudyn](overview.md) 是与成本管理相关的一项 Azure 服务。 使用 Cloudyn，你可以跟踪 Azure 资源的云使用情况和支出。 同时，它还支持其他云提供程序，包括 AWS 和 Google。 便于理解的仪表板报告也有助于成本分配和 Showback/Chargeback。 目前，成本管理不支持 Showback/Chargeback 或其他云服务提供程序。 但是，Cloudyn 支持这些提供程序。 目前，成本管理不支持 Microsoft 云服务提供商 (CSP) 帐户，但 Cloudyn 支持。 如果你有 CSP 帐户，或者想要使用报销/退款，则可以使用 Cloudyn 来帮助管理成本。
 
 ## <a name="additional-azure-tools"></a>其他 Azure 工具
 

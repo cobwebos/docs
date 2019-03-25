@@ -10,19 +10,18 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 777aca4754d4d5dc893f930994ffe61db18362fd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ca3fd76cfeb09fe4e18a04bff38e166928ef38b2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089329"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401779"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
 资源所有者密码凭据 (ROPC) 流是 OAuth 标准身份验证流，其中应用程序（也称为信赖方）使用有效凭据（例如用户 ID 和密码）交换 ID 令牌、访问令牌和刷新令牌。 
 
-> [!NOTE]
-> 此功能为预览版。
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 在 Azure Active Directory (Azure AD) B2C 中支持以下选项：
 

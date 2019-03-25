@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: 7e4a4572a53338dc0c7b5d7d11dca7130c8979be
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 276b2815b36f05aa49183681b6c9e622155938e9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226889"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401134"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
 此 FAQ 解答有关 Azure 安全中心的问题。Azure 安全中心可帮助预防、检测和响应威胁，同时增加 Microsoft Azure 资源的可见性和安全方面的可控性。
@@ -291,11 +291,14 @@ Microsoft 安全响应中心 (MSRC) 会执行 Azure 网络和基础结构的选�
 Azure 安全中心监视以下 Azure 资源：
 
 * 虚拟机 (VM)（包括 [云服务](../cloud-services/cloud-services-choose-me.md)）
+* 虚拟机规模集 (VMSSs)
 * Azure 虚拟网络
 * Azure SQL 服务
 * Azure 存储帐户
 * [应用服务环境](../app-service/environment/intro.md) 中的 Azure Web 应用
 * 与 Azure 订阅集成的合作伙伴解决方案，例如 VM 和应用服务环境上的 Web 应用程序防火墙
+
+此外，（包括在本地） 非 Azure 计算机也都可以通过 Azure 安全中心监视 (同时[Windows 计算机](./quick-onboard-windows-computer.md)并[Linux 计算机](./quick-onboard-linux-computer.md)支持)
 
 ## <a name="virtual-machines"></a>虚拟机
 ### <a name="what-types-of-virtual-machines-are-supported"></a>支持哪些类型的虚拟机？

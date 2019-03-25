@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: b3effdbace2be582bfe85d0402088f8aa0d96fe7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9b0e94deda205497cda4ebf383f302c6c3bb896a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556449"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403589"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell-preview"></a>管理 Azure 数据框边缘设备通过 Windows PowerShell （预览版）
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>管理通过 Windows PowerShell 的 Azure 数据框边缘设备
 
 Azure 数据框边缘解决方案，可处理数据并将其通过网络发送到 Azure。 本文介绍了一些数据框 Edge 设备的配置和管理任务。 可以使用 Azure 门户、 本地 web UI 或 Windows PowerShell 界面来管理你的设备。
 
@@ -32,18 +32,9 @@ Azure 数据框边缘解决方案，可处理数据并将其通过网络发送�
 - 获取计算日志
 - 监视和故障排除计算模块
 
-> [!IMPORTANT]
-> Azure 数据框边缘目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="connect-to-the-powershell-interface"></a>连接到 PowerShell 界面
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
-
-## <a name="start-a-support-session"></a>启动支持会话
-
-[!INCLUDE [Connect to support runspace](../../includes/data-box-edge-gateway-connect-support.md)]
 
 ## <a name="create-a-support-package"></a>创建支持包
 
@@ -73,11 +64,15 @@ Azure 数据框边缘解决方案，可处理数据并将其通过网络发送�
     ```
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
     ```
-    下面是使用该 cmdlet 的参数的说明： 
+    下面是使用该 cmdlet 的参数的说明：
     - `Path`：提供你想要创建计算日志包的共享网络路径。
     - `Credential`：为网络共享中提供的用户名和密码。
     - `RoleInstanceName`：提供此字符串`IotRole`为此参数。
     - `FullLogCollection`：此参数可确保日志包将包含计算的所有日志。 默认情况下，日志包仅包含一部分的日志。
+
+## <a name="monitor-and-troubleshoot-compute-modules"></a>监视和故障排除计算模块
+
+[!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
 
 ## <a name="next-steps"></a>后续步骤

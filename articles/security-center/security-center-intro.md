@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 16473b7814763d80f7e850acf44839f5ef640a18
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109038"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242031"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -128,7 +128,7 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 ## <a name="get-secure-faster"></a>更快地获取安全性
 
-本机 Azure 集成（包括 Azure Policy 和 Log Analytics）与其他 Microsoft 安全解决方案（如 Microsoft Cloud App Security 和 Windows Defender 高级威胁防护）的无缝集成相结合，有助于确保安全解决方案的全面性，并且易于载入和推出。
+本机 Azure 集成（包括 Azure Policy 和 Azure Monitor 日志）与其他 Microsoft 安全解决方案（如 Microsoft Cloud App Security 和 Windows Defender 高级威胁防护）的无缝集成相结合，有助于确保安全解决方案的全面性，并且易于载入和推出。
 
 此外，可以将完整的解决方案扩展到 Azure 外在其他云和本地数据中心中运行的工作负荷。
 

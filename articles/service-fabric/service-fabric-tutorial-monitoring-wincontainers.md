@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中监视和诊断 Service Fabric 上的 Windows 容器 |Microsoft Docs
-description: 本教程介绍如何配置 Log Analytics 以便监视和诊断 Azure Service Fabric 上的 Windows 容器。
+description: 本教程介绍如何配置 Azure Monitor 日志，以便监视和诊断 Azure Service Fabric 上的 Windows 容器。
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -15,23 +15,25 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: aljo, dekapur
 ms.custom: mvc
-ms.openlocfilehash: f6aa0dcfa4a4f9e2780c8fb886523da347eeaa31
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 085357e5922378d413dab75e434c932c534e135b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806447"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244204"
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>教程：使用 Log Analytics 监视 Service Fabric 上的 Windows 容器
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>教程：使用 Azure Monitor 日志监视 Service Fabric 上的 Windows 容器
 
-这是教程的第三部分，将详细介绍如何设置 Log Analytics，以监视 Service Fabric 上安排的 Windows 容器。
+这是教程的第三部分，将详细介绍如何设置 Azure Monitor 日志，以监视 Service Fabric 上安排的 Windows 容器。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 为 Service Fabric 群集配置 Log Analytics
+> * 为 Service Fabric 群集配置 Azure Monitor 日志
 > * 使用 Log Analytics 工作区查看和查询容器和节点中的日志
 > * 配置 Log Analytics 代理，以选取容器和节点指标
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,14 +42,14 @@ ms.locfileid: "56806447"
 * 在 Azure 上拥有一个群集，或者[使用此教程创建一个群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * [将容器化的应用程序部署到该群集](service-fabric-host-app-in-a-container.md)
 
-## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>在资源管理器模板中为群集设置 Log Analytics
+## <a name="setting-up-azure-monitor-logs-with-your-cluster-in-the-resource-manager-template"></a>在资源管理器模板中为群集设置 Azure Monitor 日志
 
-如果使用了本教程第一部分中[提供的模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure)，则它应包含常规 Service Fabric Azure 资源管理器模板的下列附加件。 如果拥有自己的群集，并且想要对它进行设置，以便使用 Log Analytics 监视容器：
+如果使用了本教程第一部分中[提供的模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure)，则它应包含常规 Service Fabric Azure 资源管理器模板的下列附加件。 如果拥有自己的群集，并且想要对它进行设置，以便使用 Azure Monitor 日志监视容器：
 
 * 在资源管理器模板中进行以下更改。
 * 使用 PowerShell 部署它，以通过[部署模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)升级群集。 Azure 资源管理器会确认此资源的存在，以将它作为升级内容推出。
 
-### <a name="adding-log-analytics-to-your-cluster-template"></a>将 Log Analytics 添加到群集模板
+### <a name="adding-azure-monitor-logs-to-your-cluster-template"></a>向群集模板添加 Azure Monitor 日志
 
 在 template.json 中进行以下更改：
 
@@ -202,7 +204,7 @@ ms.locfileid: "56806447"
 
 ![容器解决方案登陆页面](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-单击“容器监视解决方案”后，会将你转到更加详细的仪表板，在其中可以滚动浏览多个面板并可在 Log Analytics 中运行查询。
+单击“容器监视解决方案”后，会将你转到更加详细的仪表板，在其中可以滚动浏览多个面板并可在 Azure Monitor 日志中运行查询。
 
 请注意，自 2017 年 9 月起，该解决方案一直在进行更新 - 请忽略你可能会收到的关于 Kubernetes 事件的任何错误消息，因为我们正在致力于将多个业务流程协调程序集成到同一个解决方案中。
 
@@ -210,18 +212,18 @@ ms.locfileid: "56806447"
 
 ![容器解决方案仪表板](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-单击这些面板中的任意一个，均会将你转到 Log Analytics 查询，该查询将生成显示值。 将此查询更改为 *\**，可看到正在收集的所有不同的日志类型。 在此处，你可以查询或筛选容器性能、日志，或查看 Service Fabric 平台事件。 此外，代理也会不断从各个节点发出检测信号，你可以查看这些信号，以确保群集配置更改后是否仍在从所有计算机收集数据。
+单击这些面板中的任意一个，均会将你转到 Kusto 查询，该查询将生成显示值。 将此查询更改为 *\**，可看到正在收集的所有不同的日志类型。 在此处，你可以查询或筛选容器性能、日志，或查看 Service Fabric 平台事件。 此外，代理也会不断从各个节点发出检测信号，你可以查看这些信号，以确保群集配置更改后是否仍在从所有计算机收集数据。
 
 ![容器查询](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
 ## <a name="configure-log-analytics-agent-to-pick-up-performance-counters"></a>配置 Log Analytics 代理以收集性能计数器
 
-使用 Log Analytics 代理的另一个好处是，可以通过 Log Analytics 用户界面体验更改想要收集的性能计数器，而不必配置 Azure 诊断代理并每次都基于资源管理器模板进行升级。 若要执行此操作，请单击容器监视（或 Service Fabric）解决方案登陆页面上的“OMS 工作区”。
+使用 Log Analytics 代理的另一个好处是，可以通过 Log Analytics UI 体验更改想要收集的性能计数器，而不必配置 Azure 诊断代理并每次都基于资源管理器模板进行升级。 若要执行此操作，请单击容器监视（或 Service Fabric）解决方案登陆页面上的“OMS 工作区”。
 
 此操作会将你转到 Log Analytics 工作区，可以从中查看解决方案、创建自定义仪表板，以及配置 Log Analytics 代理。 
 * 单击“高级设置”以打开“高级设置”菜单。
 * 单击“连接的源” > “Windows Server”，验证是否已连接了 5 个 Windows 计算机。
-* 单击“数据” > “Windows 性能计数器”，搜索并添加新性能计数器。 此处，你将看到 Log Analytics 提供的关于可收集的性能计数器的建议列表，以及用于搜索其他计数器的选项。 验证是否正在收集 **Processor(_Total)\% Processor Time** 和 **Memory(*)\Available MBytes** 计数器。
+* 单击“数据” > “Windows 性能计数器”，搜索并添加新性能计数器。 此处会看到 Azure Monitor 日志提供的关于可收集的性能计数器的建议列表，以及用于搜索其他计数器的选项。 验证是否正在收集 **Processor(_Total)\% Processor Time** 和 **Memory(*)\Available MBytes** 计数器。
 
 几分钟后刷新容器监视解决方案，应开始看到计算机性能数据出现。 此数据将有助于你了解的资源的使用情况。 此外，还可以使用这些指标做出适当的群集缩放决策，或者使用它们确认群集是否正在按照预期方式平衡负载。
 
@@ -231,16 +233,16 @@ ms.locfileid: "56806447"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 为 Service Fabric 群集配置 Log Analytics
+> * 为 Service Fabric 群集配置 Azure Monitor 日志
 > * 使用 Log Analytics 工作区查看和查询容器和节点中的日志
 > * 配置 Log Analytics 代理，以选取容器和节点指标
 
 至此，你已设置对容器化应用程序的监视，接下来请尝试以下操作：
 
-* 按照上述类似步骤操作，为 Linux 群集设置 Log Analytics。 请参考[此模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)，对资源管理器模板进行更改。
-* 配置 Log Analytics，设置[自动警报](../log-analytics/log-analytics-alerts.md)，以辅助检测和诊断。
+* 按照与上述步骤类似的步骤操作，为 Linux 群集设置 Azure Monitor 日志。 请参考[此模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)，对资源管理器模板进行更改。
+* 配置 Azure Monitor 日志，以便设置有助于检测和诊断的[自动警报](../log-analytics/log-analytics-alerts.md)。
 * 浏览 Service Fabric 的[性能计数器建议](service-fabric-diagnostics-event-generation-perf.md)列表，以为群集配置它们。
-* 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。

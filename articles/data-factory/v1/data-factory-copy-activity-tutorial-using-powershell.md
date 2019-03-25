@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 12c4241da2f4a65205d128d72f86ce2bc91a853c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7031e003ad05d647ccfaebf9239f26ef0af00a7d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435577"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110709"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建移动数据的数据工厂管道
 > [!div class="op_single_selector"]
@@ -42,13 +42,16 @@ ms.locfileid: "54435577"
 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[管道中的多个活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 > [!NOTE]
-> 本文不会介绍所有数据工厂 cmdlet。 有关这些 cmdlet 的综合文档，请参阅[数据工厂 cmdlet 参考](/powershell/module/azurerm.datafactories)。
+> 本文不会介绍所有数据工厂 cmdlet。 有关这些 cmdlet 的综合文档，请参阅[数据工厂 cmdlet 参考](/powershell/module/az.datafactory)。
 > 
 > 本教程中的数据管道将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Hadoop 群集构建用于转换数据的管道](data-factory-build-your-first-pipeline.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 - 完成[教程先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)一文中列出的先决条件步骤。
-- 安装 **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明。
+- 安装 **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
 
 ## <a name="steps"></a>Steps
 下面是本教程中要执行的步骤：
@@ -80,31 +83,31 @@ ms.locfileid: "54435577"
     运行以下命令并输入用于登录 Azure 门户的用户名和密码：
 
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```   
    
     运行以下命令查看此帐户的所有订阅：
 
     ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     运行以下命令选择要使用的订阅。 将 **&lt;NameOfAzureSubscription**&gt; 替换为 Azure 订阅的名称：
 
     ```PowerShell
-    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 1. 运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组：
 
     ```PowerShell
-    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     
     本教程中的某些步骤假设使用名为 **ADFTutorialResourceGroup**的资源组。 如果使用不同的资源组，需使用该资源组取代本教程中的 ADFTutorialResourceGroup。
-1. 运行 **New-AzureRmDataFactory** cmdlet，创建名为 **ADFTutorialDataFactoryPSH** 的数据工厂：  
+1. 运行 **New-AzDataFactory** cmdlet，创建名为 **ADFTutorialDataFactoryPSH** 的数据工厂：  
 
     ```PowerShell
-    $df=New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
+    $df=New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
     ```
     此名称可能已使用。 因此，可以通过添加前缀或后缀（例如：ADFTutorialDataFactoryPSH05152017）使数据工厂的名称变得唯一，并再次运行该命令。  
 
@@ -122,13 +125,13 @@ ms.locfileid: "54435577"
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
     ```PowerShell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
     运行以下命令，确认数据工厂提供程序是否已注册：
 
     ```PowerShell
-    Get-AzureRmResourceProvider
+    Get-AzResourceProvider
     ```
   * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com)。 在 Azure 门户中转到“数据工厂”边栏选项卡，或创建一个数据工厂。 此操作会自动注册提供程序。
 
@@ -161,10 +164,10 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
      }
     ``` 
 1. 在 **Azure PowerShell** 中，切换到 **ADFGetStartedPSH** 文件夹。
-1. 运行 **New-AzureRmDataFactoryLinkedService** cmdlet 以创建链接服务：**AzureStorageLinkedService**。 此 cmdlet 以及本教程中使用的其他数据工厂 cmdlet 要求传递 **ResourceGroupName** 和 **DataFactoryName** 参数的值。 或者，可以传递 New-AzureRmDataFactory cmdlet 返回的 DataFactory 对象，不需在每次运行 cmdlet 时键入 ResourceGroupName 和 DataFactoryName。 
+1. 运行 **New-AzDataFactoryLinkedService** cmdlet 以创建链接服务：**AzureStorageLinkedService**。 此 cmdlet 以及本教程中使用的其他数据工厂 cmdlet 要求传递 **ResourceGroupName** 和 **DataFactoryName** 参数的值。 或者，可以传递 New-AzDataFactory cmdlet 返回的 DataFactory 对象，而无需在每次运行 cmdlet 时键入 ResourceGroupName 和 DataFactoryName。 
 
     ```PowerShell
-    New-AzureRmDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
+    New-AzDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
     ```
     下面是示例输出：
 
@@ -179,7 +182,7 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
     创建此链接服务的另一方式是，指定资源组名称和数据工厂名称，而不指定 DataFactory 对象。  
 
     ```PowerShell
-    New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName <Name of your data factory> -File .\AzureStorageLinkedService.json
+    New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName <Name of your data factory> -File .\AzureStorageLinkedService.json
     ```
 
 ### <a name="create-a-linked-service-for-an-azure-sql-database"></a>为 Azure SQL 数据库创建链接服务
@@ -204,7 +207,7 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
 1. 运行以下命令创建链接服务：
 
     ```PowerShell
-    New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
+    New-AzDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
     
     下面是示例输出：
@@ -288,7 +291,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 1. 运行以下命令创建数据工厂数据集。
 
     ```PowerShell  
-    New-AzureRmDataFactoryDataset $df -File .\InputDataset.json
+    New-AzDataFactoryDataset $df -File .\InputDataset.json
     ```
     下面是示例输出：
 
@@ -351,7 +354,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 1. 运行以下命令创建数据工厂数据集。
 
     ```PowerShell   
-    New-AzureRmDataFactoryDataset $df -File .\OutputDataset.json
+    New-AzDataFactoryDataset $df -File .\OutputDataset.json
     ```
 
     下面是示例输出：
@@ -420,23 +423,23 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ```
     请注意以下几点：
    
-    - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
-    - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 
-    - 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。 有关复制活动支持的数据存储（以源和接收器的形式存在）的完整列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 若要了解如何使用特定的受支持的数据存储（以源/接收器的形式存在），请单击表中的链接。  
+   - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
+   - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 
+   - 在 **typeProperties** 节中，**BlobSource** 指定为源类型，**SqlSink** 指定为接收器类型。 有关复制活动支持的数据存储（以源和接收器的形式存在）的完整列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 若要了解如何使用特定的受支持的数据存储（以源/接收器的形式存在），请单击表中的链接。  
      
-    将 **start** 属性的值替换为当前日期，将 **end** 值替换为下一个日期。 可以仅指定日期部分，跳过日期时间的时间部分。 例如，“2016-02-03”等效于“2016-02-03T00:00:00Z”
+     将 **start** 属性的值替换为当前日期，将 **end** 值替换为下一个日期。 可以仅指定日期部分，跳过日期时间的时间部分。 例如，“2016-02-03”等效于“2016-02-03T00:00:00Z”
      
-    开始和结束日期时间必须采用 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 
+     开始和结束日期时间必须采用 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2016-10-14T16:32:41Z。 **结束** 时间是可选的，但本教程使用该时间。 
      
-    如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
+     如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算。 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。
      
-    在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
+     在上述示例中，由于每小时生成一个数据切片，因此共有 24 个数据切片。
 
-    有关管道定义中 JSON 属性的说明，请参阅[创建管道](data-factory-create-pipelines.md)一文。 有关复制活动定义中 JSON 属性的说明，请参阅[数据移动活动](data-factory-data-movement-activities.md)一文。 有关 BlobSource 支持的 JSON 属性的说明，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md)一文。 有关 SqlSink 支持的 JSON 属性的说明，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md)一文。
+     有关管道定义中 JSON 属性的说明，请参阅[创建管道](data-factory-create-pipelines.md)一文。 有关复制活动定义中 JSON 属性的说明，请参阅[数据移动活动](data-factory-data-movement-activities.md)一文。 有关 BlobSource 支持的 JSON 属性的说明，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md)一文。 有关 SqlSink 支持的 JSON 属性的说明，请参阅 [Azure SQL 数据库连接器](data-factory-azure-sql-connector.md)一文。
 1. 运行以下命令创建数据工厂表。
 
     ```PowerShell   
-    New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
+    New-AzDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
     ```
 
     下面是示例输出： 
@@ -454,15 +457,15 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 ## <a name="monitor-the-pipeline"></a>监视管道
 本步骤使用 Azure PowerShell 监视 Azure 数据工厂的运行情况。
 
-1. 将 &lt;DataFactoryName&gt; 替换为数据工厂的名称，然后运行 **Get-AzureRmDataFactory** 并将输出分配给变量 $df。
+1. 将 &lt;DataFactoryName&gt; 替换为数据工厂的名称，然后运行 **Get-AzDataFactory** 并将输出分配给变量 $df。
 
     ```PowerShell  
-    $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
+    $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
     ```
 
     例如：
     ```PowerShell
-    $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
+    $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
     
     然后运行“输出 $df 的内容”，会看到以下输出： 
@@ -478,10 +481,10 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     Properties        : Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties
     ProvisioningState : Succeeded
     ```
-1. 运行 **Get-AzureRmDataFactorySlice**，获取有关 **OutputDataset**（管道的输出数据集）的所有切片的详细信息。  
+1. 运行 **Get-AzDataFactorySlice**，获取有关 **OutputDataset**（管道的输出数据集）的所有切片的详细信息。  
 
     ```PowerShell   
-    Get-AzureRmDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
+    Get-AzDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
     ```
 
    此设置应与管道 JSON 中的 **Start** 值匹配。 应会看到 24 个切片，从当日 12 AM 到下一日 12 AM，每小时各有一个。
@@ -522,10 +525,10 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-1. 运行 **Get-AzureRmDataFactoryRun**，获取**特定**切片的活动运行详细信息。 从前一命令的输出复制日期时间值，以便指定 StartDateTime 参数的值。 
+1. 运行 **Get-AzDataFactoryRun**，获取**特定**切片的活动运行详细信息。 从前一命令的输出复制日期时间值，以便指定 StartDateTime 参数的值。 
 
     ```PowerShell  
-    Get-AzureRmDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
+    Get-AzDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
     ```
 
    下面是示例输出： 
@@ -550,7 +553,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     Type                : Copy  
     ```
 
-有关数据工厂 cmdlet 的综合文档，请参阅[数据工厂 cmdlet 参考](/powershell/module/azurerm.datafactories)。
+有关数据工厂 cmdlet 的综合文档，请参阅[数据工厂 cmdlet 参考](/powershell/module/az.datafactory)。
 
 ## <a name="summary"></a>摘要
 本教程创建了一个 Azure 数据工厂，用于将数据从 Azure Blob 复制到 Azure SQL 数据库。 已使用 Visual PowerShell 创建数据工厂、链接服务、数据集和管道。 下面是本教程中执行的高级步骤：  

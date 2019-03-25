@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094671"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401731"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>开发 C# IoT Edge 模块以在 Data Box Edge（预览版）上移动文件
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>开发C#IoT Edge 模块来移动数据框边缘上的文件
 
 本文逐步讲解如何使用 Data Box Edge 设备创建 IoT Edge 模块以供部署。 Azure Data Box Edge 是可用于处理数据并通过网络将其发送到 Azure 的存储解决方案。
 
@@ -27,19 +27,13 @@ ms.locfileid: "58094671"
 > * 创建容器注册表来存储和管理你的模块（Docker 映像）。
 > * 创建 IoT Edge 模块以在 Data Box Edge 设备上部署。
 
-> [!IMPORTANT]
-> Data Box Edge 以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
 ## <a name="about-the-iot-edge-module"></a>关于 IoT Edge 模块
 
 你的 Data Box Edge 设备可以部署和运行 IoT Edge 模块。 Edge 模块实质上是执行特定任务的 Docker 容器，如从设备引入消息、转换消息，或将消息发送到 IoT 中心。 在本文中，将创建一个模块以在 Data Box Edge 设备上将文件从本地共享复制云共享。
 
 1. 在 Data Box Edge 设备上，文件将写入到本地共享。
-2. 文件事件生成器将为写入到本地共享的每个文件创建文件事件。 随后，将文件事件发送到 IoT Edge 中心（在 IoT Edge 运行时中）。
-
-   > [!IMPORTANT]
-   > 仅为新创建的文件生成文件事件。 修改现有文件不会生成任何文件事件。
-
+2. 文件事件生成器将为写入到本地共享的每个文件创建文件事件。 修改文件时，还会生成文件事件。 随后，将文件事件发送到 IoT Edge 中心（在 IoT Edge 运行时中）。
 3. IoT Edge 自定义模块处理文件事件，来为文件创建还包含文件相对路径的文件事件对象。 该模块将使用相对文件路径生成绝对路径，并将文件从本地共享复制到云共享。 然后，该模块从本地共享中删除文件。
 
 ![Azure IoT Edge 模块在 Data Box Edge 上如何运行](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
@@ -52,8 +46,9 @@ ms.locfileid: "58094671"
 
 - Data Box Edge 设备正在运行。
 
-    - 该设备还具有一个关联的 IoT 中心资源。 有关详细信息，请转到 Data Box Edge 对应的[创建 IoT 中心资源](data-box-edge-deploy-configure-compute.md#create-an-iot-hub-resource)。
-    - 该设备已配置 Edge 计算角色。 有关详细信息，请转到 Data Box Edge 上的[设置计算角色](data-box-edge-deploy-configure-compute.md#set-up-compute-role)。
+    - 该设备还具有一个关联的 IoT 中心资源。
+    - 该设备已配置 Edge 计算角色。
+    有关详细信息，请转到[配置计算](data-box-edge-deploy-configure-compute.md#configure-compute)为你的数据框的边缘。
 
 - 以下开发资源：
 
@@ -128,7 +123,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-1. 在 VS Code 资源管理器中，打开“modules”>“CSharpModule”>“Program.cs”。
+1. 在 VS Code 资源管理器中打开**模块 > FileCopyModule > Program.cs**。
 2. 在 FileCopyModule namespace 的顶部，为稍后要使用的类型添加三个 using 语句。 Microsoft.Azure.Devices.Client.Transport.Mqtt 是一种协议，可将消息发送到 IoT Edge 中心。
 
     ```
@@ -141,12 +136,9 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
     class Program
         {
             static int counter;
-            private const string InputFolderPath = "/home/LocalShare";
-            private const string OutputFolderPath = "/home/CloudShare";
+            private const string InputFolderPath = "/home/input";
+            private const string OutputFolderPath = "/home/output";
     ```
-
-    > [!IMPORTANT]
-    > 记下 `InputFolderPath` 和 `OutputFolderPath`。 在部署此模块时，需要提供这些路径。
 
 4. 将 MessageBody 类添加到 Program 类。 这些类将为传入消息的正文定义所需的架构。
 
@@ -189,7 +181,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 6. 插入 FileCopy 的代码。
 
     ```
-            /// <summary>
+        /// <summary>
         /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
@@ -241,8 +233,6 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
             Console.WriteLine($"Processed event.");
             return MessageResponse.Completed;
         }
-
-    }
     ```
 
 7. 保存此文件。
@@ -251,7 +241,8 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 在上一部分中，你创建了 IoT Edge 解决方案并将代码添加到了 FileCopyModule，以将文件从本地共享复制到云共享。 现在需将解决方案生成为容器映像并将其推送到容器注册表。
 
-1. 在 Visual Studio Code 集成终端输入以下命令，登录到 Docker。
+1. 在 VSCode，转到终端 > 新终端打开新的 Visual Studio Code 集成的终端。
+2. 在集成终端中输入以下命令登录到 Docker。
 
     `docker login <ACR login server> -u <ACR username>`
 
@@ -282,4 +273,4 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要在 Data Box Edge 上部署并运行此模块，请参阅[添加自定义模块](data-box-edge-deploy-configure-compute.md#add-a-custom-module)中的步骤。
+若要部署和数据框边缘上运行此模块，请参阅中的步骤[添加一个模块](data-box-edge-deploy-configure-compute.md#add-a-module)。

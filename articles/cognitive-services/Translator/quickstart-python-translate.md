@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 4518f5a6bd232bce3cf973c21944ef3aa722d1f7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 573c45eb9c48d7b6663b518d4830577f951ec70d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727139"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899394"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>快速入门：使用 Python 通过文本翻译 API 来翻译字符串
 
@@ -32,7 +32,7 @@ ms.locfileid: "56727139"
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
-使用最喜欢的 IDE 或编辑器创建新的 Python 项目。 然后，将此代码片段复制到项目的名为 `translate-text.py` 的文件中。
+使用最喜欢的 IDE 或编辑器创建新的 Python 项目。 然后，将此代码片段复制到项目的名为 `translate-text.py` 的文件中。 请确保 IDE 解释器引用了正确的 Python 版本，以避免无法识别库。
 
 ```python
 # -*- coding: utf-8 -*-

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 017d693f0d71692abfb432216ca0645dee80d7df
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f8def13360bba2f82d5adf315503dc7d655f490d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865223"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899819"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教程：将 Azure Active Directory 与 SAP HANA 集成
 
@@ -195,7 +195,7 @@ ms.locfileid: "56865223"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -248,8 +248,8 @@ SAP HANA 支持默认启用的“实时预配”。
 
 4. 添加“外部标识”（本例中为 BrittaSimon）或选择“任何”。 然后选择“确定”。
 
-    >[!Note]
-    >如果未选中“任何”复选框，则 HANA 中的用户名必须与域后缀前面的 UPN 中的用户名完全匹配。 （例如，BrittaSimon@contoso.com 在 HANA 中将会变成 BrittaSimon。）
+   > [!Note]
+   > 如果未选中“任何”复选框，则 HANA 中的用户名必须与域后缀前面的 UPN 中的用户名完全匹配。 （例如，BrittaSimon@contoso.com 在 HANA 中将会变成 BrittaSimon。）
 
 5. 针对测试，请将所有“XS”角色分配给该用户。
 

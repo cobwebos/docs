@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1eaeef9b-4479-4a9f-b1b2-bc13b857c75c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65f8e023e087c3ca49e0d53f5760fbcd9a5f4d9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 395d3887e35d6e9c043d4d947b605e71eb58bd6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869201"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897327"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>教程：Azure Active Directory 与 iProva 集成
 
@@ -221,7 +221,7 @@ ms.locfileid: "56869201"
 
     a. 在“名称”字段中输入名称，例如 **BrittaSimon**。
   
-    b. 在“用户名”框中输入 *yourname@yourcompanydomain.extension*。 
+    b. 在“用户名”框中，输入 yourname\@yourcompanydomain.extension。 
     例如 BrittaSimon@contoso.com。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -266,14 +266,14 @@ ms.locfileid: "56869201"
 
 5. 选择 **添加** 。
 
-6. 在“用户名”框中输入 *brittasimon@yourcompanydomain.extension*。 
+6. 在“用户名”框中，输入 brittasimon\@yourcompanydomain.extension。 
     例如 BrittaSimon@contoso.com。
 
 7. 在“全名”框中输入完整名称，例如 **BrittaSimon**。
 
 8. 选择“无密码(使用单一登录)”选项。
 
-9. 在“电子邮件地址”框中输入 *yourname@yourcompanydomain.extension*。 
+9. 在“电子邮件地址”框中，输入 yourname\@yourcompanydomain.extension。 
    例如 BrittaSimon@contoso.com。
 
 10. 向下滚动到页面底部，选择“完成”。

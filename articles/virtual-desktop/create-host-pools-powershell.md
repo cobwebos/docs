@@ -1,22 +1,22 @@
 ---
-title: 使用 PowerShell （预览版）-Azure 中创建主机池
-description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面中创建主机池。
+title: 使用 PowerShell 的 Azure 中创建 Windows 虚拟桌面预览主机池
+description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面预览中创建主机池。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 4b65d7614db94a9cc3fdca3f4b784c2c84ebaef8
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7b9b7ffbb034a7fb1256d9cc44048cfa55b02245
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318534"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402720"
 ---
-# <a name="create-a-host-pool-with-powershell-preview"></a>使用 PowerShell （预览版） 创建主机池
+# <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 
-主机池是一系列一个或多个相同的虚拟机在 Windows 虚拟桌面租户 （预览版） 环境中。 每个主机池可以包含用户可以与交互，就像在物理桌面上的应用程序组。
+主机池是一系列一个或多个相同的虚拟机在 Windows 虚拟桌面预览租户环境中。 每个主机池可以包含用户可以与交互，就像在物理桌面上的应用程序组。
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>使用 PowerShell 客户端创建主机池
 
@@ -70,12 +70,12 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 - [从托管映像创建虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [从非托管映像创建虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>对于 Windows 虚拟桌面代理安装准备的虚拟机
+## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>对于 Windows 虚拟桌面预览代理安装准备的虚拟机
 
 需要执行以下操作来准备虚拟机，然后可以安装的 Windows 虚拟桌面代理并注册到 Windows 虚拟机主机池的虚拟机：
 
 - 必须在计算机加入域。 这样，传入的 Windows 虚拟桌面用户若要从其 Azure Active Directory 帐户映射到其 Active Directory 帐户，并成功地允许对虚拟机的访问。
-- 如果虚拟机正在运行 Windows Server 操作系统，必须安装远程桌面会话主机 (RDSH) 角色 （预览版）。 RDSH 角色允许的 Windows 虚拟桌面代理才能正常安装。
+- 如果虚拟机正在运行 Windows Server 操作系统，必须安装远程桌面会话主机 (RDSH) 角色。 RDSH 角色允许的 Windows 虚拟桌面代理才能正常安装。
 
 已成功加入域，请执行以下操作在每个虚拟机上的操作：
 
@@ -85,7 +85,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 4. 选择**域**，然后输入虚拟网络上的 Active Directory 域。
 5. 使用有权限将计算机加入域的域帐户进行身份验证。
 
-## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>注册到 Windows 虚拟机主机池的虚拟机
+## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>注册到 Windows 虚拟桌面预览主机池的虚拟机
 
 注册到 Windows 虚拟机主机池的虚拟机是作为安装的 Windows 虚拟桌面代理一样简单。
 
@@ -114,7 +114,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，所做的主机池，就可以使用 RemoteApps （预览版） 填充它。 若要了解有关如何管理 Windows 虚拟桌面中的应用的详细信息，请参阅管理应用程序组教程。
+现在，所做的主机池，可以用 RemoteApps 填充它。 若要了解有关如何管理 Windows 虚拟桌面中的应用的详细信息，请参阅管理应用程序组教程。
 
 > [!div class="nextstepaction"]
 > [管理应用程序组教程](./manage-app-groups.md)

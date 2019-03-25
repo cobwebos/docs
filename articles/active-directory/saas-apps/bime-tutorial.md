@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bdcf0729-c880-4c95-b739-0f6345b17dd8
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bd08f5fab1469898f0f3a8213b1ff7da367b6eb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 6c0d595bcd96bb38021a2128138f7ee49f9b8354
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>教程：Azure Active Directory 与 Bime 集成
 
@@ -168,7 +168,7 @@ ms.locfileid: "56878653"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -225,7 +225,7 @@ ms.locfileid: "56878653"
 
     b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）。
 
-    c. 在“电子邮件”文本框中，输入用户的电子邮件地址（如 brittasimon@contoso.com）。
+    c. 在“电子邮件”文本框中，输入用户的电子邮件，例如 brittasimon\@contoso.com。
 
     d. 单击“ **保存**”。
 

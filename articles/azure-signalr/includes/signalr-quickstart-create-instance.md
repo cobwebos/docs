@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: c95f05127d62d366e1ad78b45df23d04ced0164a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 15eded28e38279ea01bf019566d4fda5e7ac6c3e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262755"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57588096"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>创建 Azure SignalR 服务实例
 
@@ -26,7 +26,7 @@ ms.locfileid: "53262755"
 
 1. 输入以下设置。
 
-    | 设置      | 建议的值  | Description                                        |
+    | 设置      | 建议的值  | 说明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **资源名称** | 全局唯一名称 | 用于标识新的 SignalR 服务实例的名称。 有效的字符是 `a-z`、`0-9` 和 `-`。  | 
     | **订阅** | 订阅 | 在其下创建此新 SignalR 服务实例的订阅。 | 
@@ -38,3 +38,7 @@ ms.locfileid: "53262755"
     ![创建 SignalR 服务](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. 选择“创建”以开始部署 SignalR 服务实例。
+
+1. 部署该实例后，在门户中打开它并找到其“设置”页。 将服务模式设置更改为“无服务器”。
+
+    ![SignalR 服务模式](../media/signalr-concept-azure-functions/signalr-service-mode.png)

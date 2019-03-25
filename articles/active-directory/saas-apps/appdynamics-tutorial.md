@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 25fd1df0-411c-4f55-8be3-4273b543100f
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79424ff3fe3bce006932c19dba8cf5fc4bce4f2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d6b8edf2627ade23fc6d1125afbabc34a1d9d21b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878619"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860374"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>教程：Azure Active Directory 与 AppDynamics 集成
 
@@ -130,29 +130,29 @@ ms.locfileid: "56878619"
 
 ### <a name="configure-appdynamics-single-sign-on"></a>配置 AppDynamics 单一登录
 
-7. 在其他 Web 浏览器窗口中，以管理员身份登录 AppDynamics 公司站点。
+1. 在其他 Web 浏览器窗口中，以管理员身份登录 AppDynamics 公司站点。
 
-8. 在顶部工具栏中，单击“设置”，并单击“管理”。
+1. 在顶部工具栏中，单击“设置”，并单击“管理”。
 
     ![管理](./media/appdynamics-tutorial/ic790216.png "Administration")
 
-9. 单击“身份验证提供程序”选项卡。
+1. 单击“身份验证提供程序”选项卡。
 
     ![身份验证提供程序](./media/appdynamics-tutorial/ic790224.png "Authentication Provider")
 
-10. 在“身份验证提供程序”部分中，执行以下步骤：
+1. 在“身份验证提供程序”部分中，执行以下步骤：
 
-    ![SAML 配置](./media/appdynamics-tutorial/ic790225.png "SAML 配置")
+   ![SAML 配置](./media/appdynamics-tutorial/ic790225.png "SAML 配置")
 
-    a. 对于“身份验证提供程序”，选择“SAML”。
+   a. 对于“身份验证提供程序”，选择“SAML”。
 
-    b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+   b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    c. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+   c. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    d. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“证书”文本框中
+   d. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“证书”文本框中
 
-    e. 单击“ **保存**”。
+   e. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -172,7 +172,7 @@ ms.locfileid: "56878619"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

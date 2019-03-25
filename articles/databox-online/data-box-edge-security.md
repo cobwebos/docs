@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: e3a24117cfd01c1c0bd0f08e8eca5adddf5ee7b6
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 43de22f7e56178559df4fc45980d064962580d2b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58119779"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403385"
 ---
-# <a name="data-box-edge-security-and-data-protection-preview"></a>数据框边缘安全和数据保护 （预览版）
+# <a name="data-box-edge-security-and-data-protection"></a>数据框边缘安全和数据保护
 
 安全性是主要考虑因素时采用新技术，尤其是当该技术使用包含机密或专有数据。 Microsoft Azure 数据框边缘解决方案可帮助确保只有经过授权的实体可以查看、 修改或删除你的数据。
 
@@ -27,9 +27,6 @@ Azure 数据框边缘解决方案包含四个彼此交互的主要组件：
 - **数据框边缘设备**– 已寄送给你将在本地数据导入到 Azure 的传输设备。
 - **连接到设备的客户端/主机**– 基础结构中，连接到数据框边缘设备，并且包含需要保护的数据的客户端。
 - **云存储** – Azure 云中存储数据的位置。 此位置通常是存储帐户链接到你创建的数据框边缘资源。
-
-> [!IMPORTANT]
-> Data Box Edge 以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
 
 ## <a name="data-box-edgedata-box-gateway-service-protection"></a>数据框边缘/数据框网关服务保护
@@ -44,7 +41,7 @@ Azure 数据框边缘解决方案包含四个彼此交互的主要组件：
 数据框边缘设备是在本地设备，可帮助通过本地处理，然后将它发送到 Azure 来转换数据。 你的设备：
 
 - 需要激活密钥来访问数据框边缘/数据框网关服务。
-- 是始终受到保护的设备管理员密码。
+- 是始终受到保护的设备密码。
 - 是锁定的设备。 设备 BMC 和 BIOS 是有关 BIOS 的有限用户访问受密码保护。
 - 已启用安全启动。
 - 在运行 Windows Defender Device Guard。 Device Guard，可运行仅受信任的应用程序在你的代码完整性策略中定义。 
@@ -68,14 +65,14 @@ Azure 数据框边缘解决方案包含四个彼此交互的主要组件：
 可以：
 
 - 连接到本地 web UI 中通过浏览器设备，然后提供密码以登录到该设备。
-- 远程连接到设备的 PowerShell 接口通过 HTTP。 默认情况下，远程管理启用。 然后可以提供要登录到该设备的设备管理员密码。 有关详细信息，请转到[远程连接到数据框边缘设备](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface)。
+- 远程连接到设备的 PowerShell 接口通过 HTTP。 默认情况下，远程管理启用。 然后可以提供用于登录到该设备的设备密码。 有关详细信息，请转到[远程连接到数据框边缘设备](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface)。
 
 牢记以下最佳实践：
 
 - 数据框边缘服务无法检索现有密码： 它可以仅通过 Azure 门户重置密码。 我们建议将所有密码都存储在安全位置，以便在忘记密码时不必重置密码。 如果重置密码，请务必通知所有用户，然后再重置。
 - 使用本地 web UI[更改密码](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)。 如果你更改密码，请务必通知所有远程访问用户，以便它们不会遇到登录失败。
 - 可以通过 HTTP 远程访问你的设备的 Windows PowerShell 界面。 作为安全性最佳实践，应仅在受信任的网络上使用 HTTP。
-- 确保设备管理员密码具有很高强度并受到严密保护。 请按照[密码最佳实践](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management)。
+- 确保设备密码具有很高强度并受到严密保护。 请按照[密码最佳实践](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management)。
 
 ## <a name="protect-the-data"></a>保护数据
 

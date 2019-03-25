@@ -11,22 +11,23 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 7a83153d4439fe25d92f149b7efe5231151b4dc4
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 03/12/2019
+ms.openlocfilehash: 1dc2f4e80e5b1c4fa1fb6f09e769a116516dc71c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390741"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840607"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>使用 PowerShell 更新现有同步组中的同步架构
 
 此 PowerShell 示例更新现有“SQL 数据同步”同步组中的同步架构。 同步多个表时，此脚本可帮助你有效地更新同步架构。 此示例演示如何使用 **UpdateSyncSchema** 脚本，该脚本在 GitHub 上以 [UpdateSyncSchema.ps1](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/sql-data-sync/UpdateSyncSchema.ps1) 的形式提供。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](../sql-database-sync-data.md)。
 
@@ -76,11 +77,11 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscription_id> -ResourceGroupName <resou
 
 | 命令 | 说明 |
 |---|---|
-| [Get-AzureRmSqlSyncGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlsyncgroup) | 返回有关同步组的信息。 |
-| [Update-AzureRmSqlSyncGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/update-azurermsqlsyncgroup) | 更新同步组。 |
-| [Get-AzureRmSqlSyncMember](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlsyncmember) | 返回有关同步成员的信息。 |
-| [Get-AzureRmSqlSyncSchema](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlsyncschema) | 返回有关同步架构的信息。 |
-| [Update-AzureRmSqlSyncSchema](https://docs.microsoft.com/powershell/module/azurerm.sql/update-azurermsqlsyncschema) | 更新同步架构。 |
+| [Get-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncgroup) | 返回有关同步组的信息。 |
+| [Update-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | 更新同步组。 |
+| [Get-AzSqlSyncMember](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncmember) | 返回有关同步成员的信息。 |
+| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncschema) | 返回有关同步架构的信息。 |
+| [Update-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | 更新同步架构。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤
@@ -99,7 +100,7 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscription_id> -ResourceGroupName <resou
         -  [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](sql-database-sync-data-between-azure-onprem.md)
 -   Data Sync Agent - [Azure SQL 数据同步的 Data Sync Agent](../sql-database-data-sync-agent.md)
 -   最佳做法 - [Azure SQL 数据同步最佳做法](../sql-database-best-practices-data-sync.md)
--   监视 - [使用 Log Analytics 监视 SQL 数据同步](../sql-database-sync-monitor-oms.md)
+-   监视 - [使用 Azure Monitor 日志监视 SQL 数据同步](../sql-database-sync-monitor-oms.md)
 -   故障排除 - [排查 Azure SQL 数据同步问题](../sql-database-troubleshoot-data-sync.md)
 -   更新同步架构
     -   使用 Transact-SQL - [在 Azure SQL 数据同步中自动复制架构更改](../sql-database-update-sync-schema.md)

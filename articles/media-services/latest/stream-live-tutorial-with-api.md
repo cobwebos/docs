@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 410955936e07b79128e1892d72644eaeb18ee036
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338591"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863757"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>教程：使用 .NET 通过媒体服务 v3 进行实时流式传输
 
@@ -33,7 +33,7 @@ ms.locfileid: "56338591"
 > [!div class="checklist"]
 > * 下载本主题中所述的示例应用
 > * 检查执行实时传送视频流的代码
-> * 使用 [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) 在 http://ampdemo.azureedge.net 观看事件
+> * 使用 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) 在 https://ampdemo.azureedge.net 观看事件
 > * 清理资源
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -81,9 +81,9 @@ ms.locfileid: "56338591"
 
 ### <a name="create-a-live-event"></a>创建直播事件
 
-本部分介绍如何创建**直通**类型的实时事件（LiveEventEncodingType 设置为 None）。 若要创建为实时编码启用的实时事件，请将 LiveEventEncodingType 设置为 **Standard**。 
-
-可能需要在创建直播事件时指定的一些其他事项包括：
+本部分介绍如何创建**直通**类型的实时事件（LiveEventEncodingType 设置为 None）。 有关实时事件的可用类型的详细信息，请参阅[实时事件类型](live-events-outputs-concept.md#live-event-types)。 
+ 
+可能需要在创建实时事件时指定的一些事项包括：
 
 * 媒体服务位置 
 * 实时事件的流式处理协议（目前支持 RTMP 和平滑流式处理协议）。<br/>运行实时事件或其关联的实时输出时，无法更改协议选项。 如果需要其他协议，应当为每个流式处理协议创建单独的实时事件。  
@@ -166,7 +166,7 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ## <a name="watch-the-event"></a>观看事件
 
-若要观看事件，请复制流式传输 URL（在运行“创建流定位符”中所述的代码时获得），然后使用所选的播放器。 可以使用 [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) 来测试 http://ampdemo.azureedge.net 中的流。 
+若要观看事件，请复制流式传输 URL（在运行“创建流定位符”中所述的代码时获得），然后使用所选的播放器。 可以使用 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) 来测试 https://ampdemo.azureedge.net 中的流。 
 
 实时事件在停止后会自动转换为点播内容。 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 

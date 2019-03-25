@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: dbfb559516177d496f5b16dc31f0ef8d0603cf68
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b37f198052ee927ea986d2a6046bfd93b6ee5d5e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904008"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399971"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -28,7 +28,7 @@ ms.locfileid: "57904008"
 
 ## <a name="change-the-scope-for-a-reservation"></a>更改预订范围
 
- 预订折扣适用于与预订匹配并在预订范围内运行的虚拟机、SQL 数据库、Azure Cosmos DB 或其他资源。 预订范围可以是计费上下文中的单个订阅或所有订阅。 如果将范围设置为单个订阅，预留将与所选订阅中正在运行的资源匹配。 如果将范围设置为共享，Azure 会将预留与计费上下文内所有订阅中运行的资源匹配。 计费上下文依赖于用于购买预订的订阅。
+ 预订折扣适用于虚拟机、 SQL 数据库、 Azure Cosmos DB 或与预订匹配并在预订范围中运行的其他资源。 计费上下文依赖于用于购买预订的订阅。
 
 若要更新预订范围，请执行以下操作：
 
@@ -115,6 +115,10 @@ ms.locfileid: "57904008"
 4. 选择“设置” > “配置”。
 5. 更改“优化对象”设置。
 
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
@@ -130,7 +134,3 @@ ms.locfileid: "57904008"
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 - [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
-
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

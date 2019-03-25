@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbc04791791510c6248fab0ae276bb360ce9747
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5ff1718211fa298e4daee694795a0b2438033fe2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>教程：Azure Active Directory 与 Egnyte 集成
 
@@ -178,7 +178,7 @@ ms.locfileid: "56868029"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -229,7 +229,7 @@ ms.locfileid: "56868029"
     
     ![新建标准用户](./media/egnyte-tutorial/ic787825.png "New Standard User")   
 
-    a. 在“电子邮件”文本框中，输入用户的电子邮件，例如 **Brittasimon@contoso.com**。
+    a. 在“电子邮件”文本框中，输入用户的电子邮件，例如 Brittasimon\@contoso.com。
 
     b. 在“用户名”文本框中输入用户的用户名，例如“Brittasimon”。
 

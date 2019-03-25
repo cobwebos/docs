@@ -1,18 +1,18 @@
 ---
-title: Azure SignalR Service 无服务器快速入门 - JavaScript
+title: Azure SignalR 服务无服务器快速入门 - JavaScript
 description: 使用 Azure SignalR 服务和 Azure Functions 创建聊天室的快速入门。
 author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 09/23/2018
+ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f0044ca206d15762d44d8d4ea2d58c93950c5e1e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c66323a430e86053627577b40f66b3f4be11c74f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252450"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535608"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>快速入门：使用 Azure Functions 和 SignalR 服务通过 JavaScript 创建聊天室
 
@@ -81,7 +81,7 @@ ms.locfileid: "53252450"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你在 Visual Studio 中生成并运行了一个实时无服务器应用程序。 接下来，详细了解如何使用 Visual Studio 开发和部署 Azure Functions。
+在本快速入门中，你在 VS Code 中生成并运行了一个实时无服务器应用程序。 接下来，详细了解如何从 VS Code 中部署 Azure Functions。
 
 > [!div class="nextstepaction"]
-> [使用 Visual Studio 开发 Azure Functions](../azure-functions/functions-develop-vs.md)
+> [使用 VS Code 部署 Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started)

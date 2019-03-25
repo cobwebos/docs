@@ -3,20 +3,20 @@ title: 在 Azure IoT Central 中配置规则和操作 | Microsoft Docs
 description: 本教程演示，作为构建者，如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 10/12/2018
+ms.date: 01/28/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: d7269f61579ce1ffd9a686634effd153837a2f25
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 096daa28b7548401adc857c3c6c8327ef1d1eb00
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662972"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769398"
 ---
-# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>教程：在 Azure IoT Central 中配置用于设备的规则和操作
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central-new-ui-design"></a>教程：在 Azure IoT Central 中配置用于设备的规则和操作（新的 UI 设计）
 
 *本文适用于操作员、构建者和管理员。*
 
@@ -28,31 +28,23 @@ ms.locfileid: "55662972"
 > * 创建基于遥测的规则
 > * 添加操作
 
-[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
-
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，应完成[在应用程序中定义新的设备类型](tutorial-define-device-type.md)教程，以创建要使用的“已连接空调”设备模板。
 
 ## <a name="create-a-telemetry-based-rule"></a>创建基于遥测的规则
 
-1. 若要为应用程序添加新的基于遥测的规则，请在左侧导航菜单中选择 **Device Explorer**：
+1. 若要为应用程序添加新的基于遥测的规则，请在左侧导航菜单中选择“设备模板”：
 
-    ![Device Explorer 页](media/tutorial-configure-rules/explorerpage1.png)
+    ![“设备模板”页](media/tutorial-configure-rules/templatespage1.png)
 
-    可看到在上一教程中创建的“已连接空调 (1.0.0)”设备模板和“已连接空调-1”设备。
+    可以看到在上一教程中创建的“已连接空调 (1.0.0)”设备模板。
 
-2. 若要开始自定义连接的空调设备，请选择在上一教程中创建的设备：
+2. 若要自定义设备模板，请选择在上一教程中创建的“已连接空调”模板。
 
-    ![“已连接空调”页](media/tutorial-configure-rules/builderdevicelist1.png)
+3. 若要在“规则”视图中添加基于遥测的规则，请依次选择“规则”、“+ 新建规则”和“遥测”：
 
-3. 若要开始在“规则”视图中添加规则，请选择“规则”，然后单击“编辑模板”：
-
-    ![“规则”视图](media/tutorial-configure-rules/builderedittemplate.png)
-
-4. 若要创建基于阈值的遥测规则，请单击“新建规则”，然后选择“遥测”。
-
-    ![编辑模板](media/tutorial-configure-rules/buildernewrule.png)
+    ![“规则”视图](media/tutorial-configure-rules/newrule.png)
 
 5. 若要定义规则，请使用下表中的信息：
 
@@ -60,19 +52,20 @@ ms.locfileid: "55662972"
     | -------------------------------------------- | ------------------------------    |
     | Name                                         | 空调温度警报 |
     | 为此此模板中的所有设备启用规则 | 启用                                |
-    | 在此设备上启用规则                   | 启用                                |
     | 条件                                    | 温度大于 90    |
     | 聚合                                  | 无                              |
 
-    ![温度规则条件](media/tutorial-configure-rules/buildertemperaturerule1.png)
+    ![温度规则条件](media/tutorial-configure-rules/temperaturerule.png)
+
+    再选择“保存”。
 
 ## <a name="add-an-action"></a>添加操作
 
-定义规则时，还需要定义在符合规则条件时要运行的操作。 在本教程中，将添加一个操作以发送电子邮件，作为触发规则的通知。
+定义规则时，还需要定义在符合规则条件时要运行的操作。 在本教程中，你将创建一个规则，使其包含用于发送电子邮件通知的操作。
 
-1. 若要添加操作，首先请“保存”规则，然后在“配置遥测规则”面板中向下滚动并选择“操作”旁边的 +，然后选择“电子邮件”：
+1. 若要添加操作，请首先保存规则，然后在“配置遥测规则”面板中向下滚动。 选择“操作”旁边的 **+**，然后选择“电子邮件”：
 
-    ![温度规则操作](media/tutorial-configure-rules/builderaddaction1.png)
+    ![温度规则操作](media/tutorial-configure-rules/addaction.png)
 
 2. 若要定义操作，请使用下表中的信息：
 
@@ -84,23 +77,16 @@ ms.locfileid: "55662972"
     > [!NOTE]
     > 若要接收电子邮件通知，电子邮件地址必须是[应用程序中的用户 ID](howto-administer.md)，并且该用户必须至少登录过应用程序一次。
 
-    ![应用程序构建者温度操作](media/tutorial-configure-rules/buildertemperatureaction.png)
+    ![温度操作](media/tutorial-configure-rules/temperatureaction.png)
 
-3. 选择“保存”。 你的规则将列在“规则”页上：
-
-    ![应用程序构建者规则](media/tutorial-configure-rules/builderrules1.png)
-
-4. 选择“完成”，退出“编辑模板”模式。
- 
+3. 选择“保存”。 你的规则将列在“规则”页上。
 
 ## <a name="test-the-rule"></a>测试规则
 
 保存规则后不久，它将变为活动状态。 满足规则中定义的条件时，应用程序会将消息发送到操作中指定的电子邮件地址。
 
-![电子邮件操作](media/tutorial-configure-rules/email.png)
-
 > [!NOTE]
-> 测试完成后，请关闭角色，停止在收件箱中接收警报。 
+> 测试完成后，关闭该规则以停止在收件箱中接收警报。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -111,7 +97,7 @@ ms.locfileid: "55662972"
 > * 创建基于遥测的规则
 > * 添加操作
 
-现在已定义了基于阈值的规则，建议的下一步是[自定义操作员的视图](tutorial-customize-operator.md)。
+现在，你已定义了基于阈值的规则，建议执行的下一步骤是[自定义操作员的视图](tutorial-customize-operator.md)。
 
 若要详细了解 Azure IoT Central 中不同类型的规则以及如何参数化规则定义，请参阅：
 * [创建遥测规则并设置通知](howto-create-telemetry-rules.md)。

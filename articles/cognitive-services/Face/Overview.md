@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: dcfb50c58f1205a5ab31c3fc6b9b22fdb503e4ec
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455970"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588952"
 ---
 # <a name="what-is-the-azure-face-api"></a>什么是 Azure 人脸 API？
 
@@ -26,12 +26,12 @@ Azure 人脸 API 服务是一项认知服务，其提供的算法可用于检测
 
 人脸 API 可以检测图像中的人脸，并返回其位置的矩形坐标。 人脸检测还可提取一系列人脸相关属性，例如身体姿势、头部姿势、性别、年龄、情感、面部毛发和眼镜。
 
+> [!NOTE] 
+> 人脸检测功能也可通过[计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 获取，但若要对人脸数据执行进一步的操作，则应使用人脸 API（本服务）。
+
 ![一位女士和一位男士的图像，在其面部绘制了矩形并显示了年龄和性别](./Images/Face.detection.jpg)
 
-> [!NOTE] 
-> 人脸检测功能也可通过[计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 获取，但若要对人脸数据执行进一步的操作，则应使用人脸 API（本服务）。 
-
-有关人脸检测的详细信息，请参阅[检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)。
+有关人脸检测的详细信息，请参阅[人脸检测操作指南](face-api-how-to-topics/howtodetectfacesinimage.md)，或浏览[检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 参考文档。
 
 ## <a name="face-verification"></a>人脸验证
 

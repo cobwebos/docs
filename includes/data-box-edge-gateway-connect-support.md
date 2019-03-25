@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 796b6280c2814e6358ce1942a230488cd484415d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556729"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58405927"
 ---
 若要排查任何设备问题，您需要与 Microsoft 支持团队合作。 Microsoft 支持部门可能需要使用支持会话登录到你的设备。
 

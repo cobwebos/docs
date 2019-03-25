@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 025f2ecef070170fef216d7533150359cf11c50f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092570"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193358"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入门：将 Azure 存储帐户与 Azure CDN 集成
 在此快速入门中，你将启用 [Azure 内容分发网络 (CDN)](cdn-overview.md) 来缓存 Azure 存储中的内容。 Azure CDN 为开发人员提供了一个用于交付高带宽内容的全局解决方案。 它可以在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 blob 和计算实例的静态内容。
@@ -31,7 +31,7 @@ ms.locfileid: "49092570"
 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
-使用以下过程为 Azure 订阅创建新的存储帐户。 通过存储帐户可访问 Azure 存储服务。 存储帐户表示用于访问每个 Azure 存储服务组件的最高级别的命名空间：Azure Blob、队列和表存储。 有关详细信息，请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)。
+使用以下过程为 Azure 订阅创建新的存储帐户。 通过存储帐户可访问 Azure 存储服务。 存储帐户表示用于访问每个 Azure 存储器服务组件的最高级别的命名空间：Azure Blob、队列和表存储。 有关详细信息，请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)。
 
 要创建存储帐户，必须是相关订阅的服务管理员或联合管理员。
 
@@ -80,7 +80,7 @@ ms.locfileid: "49092570"
     
 5. 选择“固定到仪表板”，以便在创建存储帐户后将其保存到仪表板。
     
-6. 选择**创建**。 创建存储帐户可能需要几分钟时间才能完成。
+6. 选择“创建”。 创建存储帐户可能需要几分钟时间才能完成。
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>为存储帐户启用 Azure CDN
 
@@ -96,11 +96,12 @@ ms.locfileid: "49092570"
 
     | 设置  | 值 |
     | -------- | ----- |
-    | **CDN 配置文件** | 选择“新建”并输入 *my-cdn-profile-123* 作为配置文件名称。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。  |
+    | **CDN 配置文件** | 选择“新建”并输入配置文件名称，例如“my-cdn-profile-123”。 该名称必须全局唯一。  |
     | **定价层** | 从下拉列表中选择“标准 Verizon”。 |
-    | **CDN 终结点名称** | 输入 *my-endpoint-123* 作为终结点主机名。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。 此名称用于访问在域 _&lt;终结点名称&gt;_.azureedge.net 中缓存的资源。 默认情况下，新的 CDN 终结点使用存储帐户的主机名作为源服务器。|
+    | **CDN 终结点名称** | 输入终结点主机名，即 *my-endpoint-123*。 该名称必须全局唯一。 此名称用于访问在域 _&lt;终结点名称&gt;_.azureedge.net 中缓存的资源。 |
+    | **源服务器主机名** | 默认情况下，新的 CDN 终结点使用存储帐户的主机名作为源服务器。 |
 
-3. 选择**创建**。 创建终结点之后，它会出现在终结点列表中。
+3. 选择“创建”。 创建终结点之后，它会出现在终结点列表中。
 
     ![存储新的 CDN 终结点](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
 
@@ -145,5 +146,5 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 若要了解如何在 CDN 终结点上添加自定义域和启用 HTTPS，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [教程：通过 HTTPS 使用 Azure CDN 自定义域访问存储 blob](cdn-storage-custom-domain-https.md)
+> [教程：通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob](cdn-storage-custom-domain-https.md)
 

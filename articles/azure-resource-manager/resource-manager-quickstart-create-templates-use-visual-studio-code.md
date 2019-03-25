@@ -10,19 +10,23 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/25/2019
+ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 33bc10bb601fa14a34b6032c54b0c751a3608ccc
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c73084b03736a422e5e3b617ec058ade1de0fbb9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823648"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317112"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
 了解如何使用 Visual Studio Code 和 Azure 资源管理器工具扩展创建和编辑 Azure 资源管理器模板。 可以在 Visual Studio Code 中不使用扩展创建资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
+
+在本教程中，你将部署存储帐户：
+
+![资源管理器模板快速入门 visual studio 代码关系图](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -90,15 +94,24 @@ ms.locfileid: "56823648"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-可通过多种方法来部署模板。  在本快速入门中，请使用 Azure Cloud shell。 Cloud shell 是一个 Web 应用程序，不需要进行任何配置。 它同时支持 Azure CLI 和 Azure PowerShell。
+可通过多种方法来部署模板。 在本快速入门中将使用 Azure Cloud shell。 cloud shell 支持 Azure CLI 和 Azure PowerShell。 使用选项卡选择器在 CLI 和 PowerShell 之间进行选择。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-
 1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
+2. 通过在左上角选择“PowerShell”或“Bash”(CLI) 来选择你喜欢使用的环境。  进行切换时，需重启 shell。
+
+    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+
     ![Azure 门户 - Cloud Shell - CLI](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-2. 通过在左上角选择“PowerShell”或“Bash”来选择你喜欢使用的环境。 若要使用 CLI，需打开一个 Bash 会话。 若要运行 Azure PowerShell，需打开一个 PowerShell 会话。 选择向下箭头可在 Bash 与 PowerShell 之间切换。 请参阅上面的屏幕截图。 进行切换时，需重启 shell。
+
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+
+    ![Azure 门户 Cloud shell PowerShell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
+
+    ---
+
 3. 依次选择“上传/下载文件”、“上传”。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)

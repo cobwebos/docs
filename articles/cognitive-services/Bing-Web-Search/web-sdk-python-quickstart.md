@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: ec7221837145db73386f146aa839b83ee23c1510
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 273922c8cf48c24ff3b1b55fa44b36b69e061057
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865100"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863893"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>快速入门：使用用于 Python 的必应 Web 搜索 SDK
 
@@ -81,7 +81,9 @@ python -m pip install azure-cognitiveservices-search-websearch
 如果响应包含网页、图像、新闻或视频，则会输出各自的初始结果。
 
 1. 使用最喜欢的 IDE 或编辑器创建新的 Python 项目。
-2. 将以下示例代码复制到项目中：  
+
+1. 将以下示例代码复制到项目中：  
+
     ```python
     # Import required modules.
     from azure.cognitiveservices.search.websearch import WebSearchAPI
@@ -161,19 +163,22 @@ python -m pip install azure-cognitiveservices-search-websearch
     else:
         print("Didn't find any videos...")
     ```
-3. 将 `subscription_key` 替换为有效订阅密钥。
-4. 运行该程序。 例如：`python your_program.py`。
+
+1. 将 `subscription_key` 替换为有效订阅密钥。
+
+1. 运行该程序。 例如：`python your_program.py`。
 
 ## <a name="define-functions-and-filter-results"></a>定义函数并筛选结果
 
-对必应 Web 搜索 API 进行首次调用以后，让我们看看一些函数，这些函数突出显示了用于优化查询和筛选结果的 SDK 功能。 每个函数都可以添加到在上一部分创建的 Python 程序中。
+现在你已经第一次调用了必应 Web 搜索 API，让我们看看几个函数。 以下部分重点介绍用于优化查询和筛选结果的 SDK 功能。 每个函数都可以添加到在上一部分创建的 Python 程序中。
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>限制必应返回的结果数
 
-此示例使用 `count` 和 `offset` 参数限制通过 SDK 的 [`search` 方法](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)返回的结果数。 将会输出初始结果的 `name` 和 `URL`。
+此示例使用 `count` 和 `offset` 参数限制通过 SDK 的 [`search` 方法](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)返回的结果数。 将会输出初始结果的 `name` 和 `url`。
 
 1. 将以下代码添加到 Python 项目：
-    ```python
+
+   ```python
     # Declare the function.
     def web_results_with_count_and_offset(subscription_key):
         client = WebSearchAPI(CognitiveServicesCredentials(subscription_key))
@@ -203,13 +208,15 @@ python -m pip install azure-cognitiveservices-search-websearch
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. 运行该程序。
+
+1. 运行该程序。
 
 ### <a name="filter-for-news-and-freshness"></a>新闻和新鲜度的筛选器
 
-此示例使用 `response_filter` 和 `freshness` 参数筛选通过 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)获得的搜索结果。 返回的搜索结果仅限必应发现的过去 24 小时的新闻文章和网页。 将会输出初始结果的 `name` 和 `URL`。
+此示例使用 `response_filter` 和 `freshness` 参数筛选通过 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)获得的搜索结果。 返回的搜索结果仅限必应发现的过去 24 小时的新闻文章和网页。 将会输出初始结果的 `name` 和 `url`。
 
 1. 将以下代码添加到 Python 项目：
+
     ```python
     # Declare the function.
     def web_search_with_response_filter(subscription_key):
@@ -251,13 +258,15 @@ python -m pip install azure-cognitiveservices-search-websearch
     # Call the function.
     web_search_with_response_filter(subscription_key)
     ```
-2. 运行该程序。
+
+1. 运行该程序。
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>使用安全搜索、答案计数和提升筛选器
 
-此示例使用 `answer_count`、`promote` 和 `safe_search` 参数筛选通过 SDK 的 [`search` 方法](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)获得的搜索结果。 将会显示初始结果的 `name` 和 `URL`。
+此示例使用 `answer_count`、`promote` 和 `safe_search` 参数筛选通过 SDK 的 [`search` 方法](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)获得的搜索结果。 将会显示初始结果的 `name` 和 `url`。
 
 1. 将以下代码添加到 Python 项目：
+
     ```python
     # Declare the function.
     def web_search_with_answer_count_promote_and_safe_search(subscription_key):
@@ -294,7 +303,8 @@ python -m pip install azure-cognitiveservices-search-websearch
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. 运行该程序。
+
+1. 运行该程序。
 
 ## <a name="clean-up-resources"></a>清理资源
 

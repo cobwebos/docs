@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 和模板部署资源 | Microsoft Docs
-description: 使用 Azure 资源管理器和 Azure PowerShell 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
+description: 使用 Azure 资源管理器和 Azure PowerShell 来将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -10,38 +10,51 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: daeff897cf284df6e820afbcdd35ee54bf88db08
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8005b187f300375b62c254516a61f4993675b0b9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405396"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403102"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>使用 Resource Manager 模板和 Azure PowerShell 部署资源
 
 了解如何将 Azure PowerShell 与 资源管理器模板配合使用，以向 Azure 部署资源。 有关部署和管理 Azure 解决方案的概念的详细信息，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
 
-若要部署模板，通常需要执行两个步骤：
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. 创建资源组。 资源组充当已部署资源的容器。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 它不能以句点结尾。
-2. 部署模板。 模板定义要创建的资源。  部署在指定资源组中创建资源。
+## <a name="deployment-scope"></a>部署范围
 
-本文使用此两步部署方法。  另一个选项是同时部署资源组和资源。  有关详细信息，请参阅[创建资源组并部署资源](./deploy-to-subscription.md#create-resource-group-and-deploy-resources)。
+你可以面向你部署到 Azure 订阅或在订阅中的资源组。 在大多数情况下，将目标部署到资源组。 使用订阅部署在订阅中应用策略和角色分配。 此外可以使用订阅部署创建资源组和将资源部署到它。 具体取决于部署的范围，您可以使用不同的命令。
+
+若要将部署到**资源组**，使用[新建 AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+```
+
+若要将部署到**订阅**，使用[新建 AzDeployment](/powershell/module/az.resources/new-azdeployment):
+
+```azurepowershell
+New-AzDeployment -Location <location> -TemplateFile <path-to-template>
+```
+
+在本文中的示例使用的资源组部署。 有关订阅部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
+您需要在模板中部署。 如果你还没有一个，下载并保存[示例模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)从 Azure 快速入门模板存储库。 本文中使用的本地文件名称为 **c:\MyTemplates\azuredeploy.json**。
+
 除非使用 [Azure Cloud shell](#deploy-templates-from-azure-cloud-shell) 部署模板，否则需要安装 Azure PowerShell 并连接到 Azure：
+
 - **在本地计算机上安装 Azure PowerShell cmdlet。** 有关详细信息，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。
 - **使用 [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount) 连接到 Azure**。 如果有多个 Azure 订阅，则可能还需要运行 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。 有关详细信息，请参阅[使用多个 Azure 订阅](/powershell/azure/manage-subscriptions-azureps)。
-- *下载并保存[快速入门模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)。 本文中使用的本地文件名称为 **c:\MyTemplates\azuredeploy.json**。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="deploy-local-template"></a>部署本地模板
 
-## <a name="deploy-templates-stored-locally"></a>部署本地存储的模板
-
-以下示例将创建一个资源组，并从本地计算机部署模板：
+下面的示例创建一个资源组，并将部署在本地计算机中的模板。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 它不能以句点结尾。
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -52,11 +65,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateFile c:\MyTemplates\azuredeploy.json
 ```
 
-请注意，*c:\MyTemplates\azuredeploy.json* 是快速入门模板。  请参阅[先决条件](#prerequisites)。
-
 部署可能需要几分钟才能完成。
 
-## <a name="deploy-templates-stored-externally"></a>部署外部存储的模板
+## <a name="deploy-remote-template"></a>部署远程模板
 
 可能更愿意将 Resource Manager 模板存储在外部位置，而不是将它们存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
 
@@ -73,7 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[部署具有 SAS 令牌的专用模板](resource-manager-powershell-sas-token.md)。 若要完成教程，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./resource-manager-tutorial-use-key-vault.md)。
 
-## <a name="deploy-templates-from-azure-cloud-shell"></a>从 Azure Cloud shell 部署模板
+## <a name="deploy-from-azure-cloud-shell"></a>从 Azure Cloud shell 部署
 
 可以使用 [Azure Cloud Shell](https://shell.azure.com) 来部署模板。 若要部署外部模板，请提供模板的 URI。 要部署本地模板，必须先将模板加载到 Cloud Shell 的存储帐户。 若要将文件上传到 shell，请从 shell 窗口选择“上传/下载文件”菜单图标。
 
@@ -89,10 +100,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 ```
 
 若要将代码粘贴到 shell 中，请在 shell 内右键单击，然后选择“粘贴”。
-
-## <a name="deploy-to-multiple-resource-groups-or-subscriptions"></a>部署到多个资源组或订阅
-
-通常情况下，将模板中的所有资源部署到单个资源组。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组或订阅中。 在单个部署中可以仅部署到五个资源组。 有关详细信息，请参阅[将 Azure 资源部署到多个资源组和订阅](resource-manager-cross-resource-group-deployment.md)。
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
