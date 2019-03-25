@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 使用 Azure Monitoring 创建 Linux VM | Microsoft Docs
-description: Azure CLI 脚本示例 - 使用 Azure Monitoring 创建 Linux VM
+title: Azure CLI 脚本示例 - 使用 Azure Monitor 创建 Linux VM | Microsoft Docs
+description: Azure CLI 脚本示例 - 使用 Azure Monitor 创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 70eb7ef93d4802f30bb1343c442c414cda48464b
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6aed5f40d689fc84c82f37760e78fc7c3fe94dd1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732781"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535615"
 ---
-# <a name="monitor-a-vm-with-azure-monitoring"></a>使用 Azure Monitoring 监视 VM
+# <a name="monitor-a-vm-with-azure-monitor"></a>使用 Azure Monitor 监视 VM
 
 此脚本创建一个 Azure 虚拟机，安装 Log Analytics 代理，并将系统注册到 Log Analytics 工作区。 运行脚本后，该虚拟机会显示在控制台中。
 
@@ -51,7 +51,7 @@ az group delete --name myResourceGroup
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 针对虚拟机运行 VM 扩展。 在此示例中，使用 Log Analytics 代理扩展安装 Log Analytics 代理，并在 Log Analytics 工作区中注册 VM。 |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 针对虚拟机运行 VM 扩展。 在此示例中，使用 Azure Monitor 代理扩展安装 Log Analytics 代理，并在 Log Analytics 工作区中注册 VM。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

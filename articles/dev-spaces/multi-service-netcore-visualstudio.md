@@ -1,23 +1,22 @@
 ---
-title: 使用 NET Core 和 Visual Studio 运行多个依赖的服务 | Microsoft Docs
+title: 使用 NET Core 和 Visual Studio 运行多个依赖的服务
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 6a9058d7f84b336b332ffdaf9b41abfb660433e6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
+ms.openlocfilehash: e302a4edc54b98f0dd731f65d0d45aa592cc72ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819848"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076762"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行多服务开发
 
@@ -35,7 +34,7 @@ ms.locfileid: "56819848"
 1. 在单独的 Visual Studio 窗口中打开项目 `mywebapi`。
 1. 像前面针对 `webfrontend` 项目所做的一样，从启动设置下拉列表中选择“Azure Dev Spaces”。 这次不要创建新的 AKS 群集，而是选择已创建的群集。 如前所述，将“空间”保留默认值 `default`，并单击“确定”。 在“输出”窗口中可以看到，Visual Studio 开始在开发空间中“预热”此新服务，以便在开始调试时加速操作。
 1. 按 F5，等待服务生成和部署。 如果 Visual Studio 状态栏变为橙色，则表示服务已准备就绪
-1. 记下“输出”窗口中“Azre Dev Spaces for AKS”窗格内显示的终结点 URL。 该 URL 应类似于 http://localhost:\<portnumber\>。 容器看起来像是在本地运行，但实际上是在 Azure 的开发空间中运行。
+1. 记下“输出”窗口中“Azre Dev Spaces for AKS”窗格内显示的终结点 URL。 该 URL 应类似于 `http://localhost:<portnumber>`。 容器看起来像是在本地运行，但实际上是在 Azure 的开发空间中运行。
 2. `mywebapi` 准备就绪后，在浏览器中打开 localhost 地址，并在 URL 后面追加 `/api/values` 以针对 `ValuesController` 调用默认的 GET API。 
 3. 如果成功执行所有步骤，应会看到 `mywebapi` 服务发出的响应，如下所示。
 

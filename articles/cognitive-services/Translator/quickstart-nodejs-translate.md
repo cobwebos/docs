@@ -10,19 +10,18 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: e89593e33dd7330ce64c46c826c9d0437c4c27d2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 08dca771050f1b62cd85208a4b8f3d39340fb97d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738039"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834284"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>快速入门：使用 Node.js 通过文本翻译 API 来翻译字符串
 
 本快速入门介绍如何使用 Node.js 和文本翻译 REST API 将文本字符串从英文翻译为意大利文和德文。
 
 此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +32,7 @@ ms.locfileid: "56738039"
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
-使用最喜欢的 IDE 或编辑器创建新的项目。 然后，将此代码片段复制到项目的名为 `translate-text.js` 的文件中。
+使用你喜欢的 IDE 或编辑器创建一个新项目，或者在桌面上创建一个包含名为 `translate-text.js` 的文件的新文件夹。 然后将以下代码片段复制到项目/文件中：
 
 ```javascript
 const request = require('request');

@@ -1,110 +1,91 @@
 ---
-title: 什么是语音服务？
+title: 什么是 Azure 语音服务？
 titleSuffix: Azure Cognitive Services
-description: 语音服务是 Azure 认知服务的一部分，它将以前单独提供的几种语音服务结合在一起：必应语音（其中包括语音识别和文本转语音）、自定义语音和语音翻译。
+description: Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用语音 SDK、语音设备 SDK 或 REST API 可以轻松在应用程序、工具和设备中添加语音。 可将语音功能添加到现有的聊天机器人，在翻译应用程序中将文本转换为语音，或者听录大量的呼叫中心数据。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 12/13/2018
+ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: d60e5f881e44f397090a3ba5e467c08f20137d72
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d4587b5268635691d55b51a7bf88bbe01df2a0c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871631"
 ---
-# <a name="what-is-speech-services"></a>什么是语音服务？
+# <a name="what-are-the-speech-services"></a>什么是语音服务？
 
-与其他 Azure 语音服务一样，语音服务由在 Cortana 和 Microsoft Office 之类的产品中使用的语音技术提供支持。
+Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 SDK](speech-sdk-reference.md)、[语音设备 SDK](speech-devices-sdk-qsg.md) 或 [REST API](rest-apis.md) 可以轻松在应用程序、工具和设备中启用语音。
 
-语音服务合并了此前通过[必应语音 API](https://docs.microsoft.com/azure/cognitive-services/speech/home)、[语音翻译](https://docs.microsoft.com/azure/cognitive-services/translator-speech/)、[自定义语音](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home)和[自定义声音](http://customvoice.ai/)服务提供的 Azure 语音功能。 现在，可以通过一个订阅来访问所有这些功能。
+> [!IMPORTANT]
+> 语音服务已替代必应语音 API、语音翻译和自定义语音。 有关迁移说明，请参阅*操作指南 > 迁移*。
 
-## <a name="main-speech-services-functions"></a>语音服务的主要功能
+这些功能构成了 Azure 语音服务。 请使用下表中的链接详细了解每项功能的常见用例或浏览 API 参考信息。
 
-语音服务的主要功能为语音转文本（也称为语音识别或听录）、文本转语音（语音合成）和语音翻译。
+| 服务 | Feature | 说明 | SDK 中 IsInRole 中的声明 | REST |
+|---------|---------|-------------|-----|------|
+| [语音转文本](speech-to-text.md) | 语音转文本 | 语音转文本可将音频流实时听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [批量听录](batch-transcription.md) | 使用批量听录能够以异步方式对大量的数据进行语音转文本听录。 这是一个基于 REST 的服务，它使用的终结点与自定义和模型管理相同。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |
+| | [自定义](#customize-your-speech-experience) | 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |
+| [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可将输入文本转换为类似人类的合成语音。 可以选择标准语音或神经语音（请参阅[语言支持](language-support.md)）。 | 否 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [自定义](#customize-your-speech-experience) | 创建专属于品牌或产品的自定义语音字体。 | 否 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [语音翻译](speech-translation.md) | 语音翻译 | 使用语音翻译可在应用程序、工具和设备中实现实时的多语言语音翻译。 进行语音转语音和语音转文本翻译时可以使用此服务。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | 否 |
 
-|函数|功能|
-|-|-|
-|[语音转文本](speech-to-text.md)| <li>将连续的实时语音转换为文本。<li>可以从音频录音对语音进行批量转换。 <li>支持中间结果、语音结束检测、自动设置文本格式以及不雅内容屏蔽。 <li>可以通过调用[语言理解](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS)，从转换的语音获取用户意向。\*|
-|[文本转语音](text-to-speech.md)| <li>**新增功能**：提供神经文本转语音的声音，几乎与人类语音无法区分（英语）。 <li>将文本转换为自然发音的语音。 <li>为许多支持的语言提供多种性别和/或方言。 <li>支持纯文本输入或语音合成标记语言 (SSML)。 |
-|[语音翻译](speech-translation.md)| <li>以近实时方式翻译流式传输音频。<li> 也可处理记录的语音。<li>以文本或合成语音的方式提供结果。 |
+## <a name="news-and-updates"></a>新增功能和更新
 
+了解 Azure 语音服务的新增功能。
 
-## <a name="customize-speech-features"></a>自定义语音功能
+* 2019 年 2 月 - 发布了支持 [Unity (beta)](quickstart-csharp-unity.md) 的语音 SDK 1.3.0。 添加了对 `AudioInput` 类的支持，使用该类可以选择音频流源。 有关增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
+* 2018 年 12 月 - 发布了支持 [Python](quickstart-python.md)、[Node.js](quickstart-js-node.md) 和 Ubuntu 18.04 LTS 的语音 SDK 1.2.0。 有关详细信息，请参阅[发行说明](releasenotes.md)。
+* 2018 年 12 月 - 添加了适用于 [.NET Core](quickstart-dotnet-text-to-speech.md)、[Python](quickstart-python-text-to-speech.md) 和 [Node.js](quickstart-nodejs-text-to-speech.md) 的文本转语音快速入门。 [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http) 中提供了更多示例。
 
-可以使用自己的数据来训练语音服务的语音转文本和文本转语音功能下的模型。
+## <a name="try-speech-services"></a>试用语音服务
 
-|Feature|模型|目的|
-|-|-|-|
-|语音转文本|[声学模型](how-to-customize-acoustic-models.md)|有助于转换特定发声对象和环境，例如汽车或工厂。|
-||[语言模型](how-to-customize-language-model.md)|有助于转换特定于领域的词汇和语法，例如医学或 IT 专业术语。|
-||[发音模型](how-to-customize-pronunciation.md)|有助于转换缩写和首字母缩写，例如“IOU”是“i owe you”的首字母缩写。 |
-|文本转语音|[语音字体](how-to-customize-voice-font.md)|根据人类语音的示例来训练模型，为应用提供它自己的语音。|
+我们提供了适用于大多数流行编程语言的快速入门，旨在帮助你在 10 分钟以内运行代码。 下表包含有关每项功能在最流行编程语言中的用法的快速入门。 使用左侧的导航栏可以浏览其他语言和平台。
 
-自定义模型可以用在任何位置，只要可以在该位置使用应用的语音转文本或文本转语音功能中的标准模型。
+| 语音转文本 (SDK) | 翻译 (SDK) | 文本转语音 (REST) |
+|-------------------|-------------------|-----------------------|
+| [C#、.NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [Java（Windows、Linux）](quickstart-translate-speech-java-jre.md) | [Python（Windows、Linux、macOS）](quickstart-python-text-to-speech.md) |
+| [Javascript（浏览器）](quickstart-js-browser.md) | [C#、.NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) | [C#、.NET Core（Windows、Linux、macOS）](quickstart-dotnet-text-to-speech.md) |
+| [Python（Windows、Linux、macOS）](quickstart-python.md) | [C#、.NET Framework (Windows)](quickstart-translate-speech-dotnetframework-windows.md) | [Node.js（Windows、Linux、macOS）](quickstart-nodejs-text-to-speech.md) |
+| [Java（Windows、Linux）](quickstart-java-jre.md) | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) | |
 
-## <a name="use-the-speech-service"></a>使用语音服务
+有机会使用语音服务后，请尝试学习有关如何使用语音 SDK 和 LUIS 从语音中识别意向的教程。
 
-为了简化支持语音的应用程序的开发，Microsoft 提供了可以与[语音服务](speech-sdk.md)配合使用的语音 SDK。 语音 SDK 提供一致的本机语音转文本和语音翻译 API，适用于 C#、C++ 和 Java。 如果使用这其中的某种语言进行开发，你会发现语音 SDK 有助于开发，因为它可以为你处理网络详细信息。
+* [教程：使用适用于 C# 的语音 SDK 和 LUIS 从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)
 
-语音服务还有一个 [REST API](rest-apis.md)，此 API 适用于任何能够发出 HTTP 请求的编程语言。 此 REST 接口不提供 SDK 的流式处理实时功能。
+## <a name="get-sample-code"></a>获取示例代码
 
-|<br>方法|语音<br>转文本|文本转<br>语音|语音<br>翻译|<br>说明|
-|-|-|-|-|-|
-|[语音 SDK](speech-sdk.md)|是|否|是|适用于 C#、C++ 和 Java 的本机 API，可以简化开发。|
-|[REST API](rest-apis.md)|是|是|否|一个基于 HTTP 的简单 API，可以轻松地将语音添加到应用程序。|
+GitHub 中提供了每个 Azure 语音服务的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。 使用以下链接查看 SDK 和 REST 示例：
 
-### <a name="websockets"></a>WebSockets
+* [语音转文本和语音翻译示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [批量听录示例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+* [文本转语音示例 (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-语音服务还支持 WebSocket 协议，用于流式传输语音转文本和语音翻译内容。 语音 SDK 使用这些协议与语音服务通信。 使用语音 SDK，而不是尝试实现你自己与语音服务的 WebSocket 通信。
+## <a name="customize-your-speech-experience"></a>自定义语音体验
 
-如果已经有可以通过 WebSocket 使用必应语音或语音翻译的代码，则可更新代码以使用语音服务。 WebSocket 协议是兼容的，但是终结点不同。
+Azure 语音服务能够很好地与内置模型配合工作，但是，你可能想要根据自己的产品或环境，进一步自定义和优化体验。 自定义选项的范围从声学模型优化，到专属于自有品牌的语音字体。 生成自定义模型后，可将其与任何 Azure 语音服务配合使用。
 
-### <a name="speech-devices-sdk"></a>语音设备 SDK
+| 语音服务 | 模型 | 说明 |
+|----------------|-------|-------------|
+| 语音转文本 | [声学模型](how-to-customize-acoustic-models.md) | 为特定环境（例如汽车或工厂车间）中使用的应用程序、工具或设备创建自定义声学模型，每个模型具有特定的录制条件。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
+| | [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型来改善特定领域的词汇和语法的听录，例如医疗术语中或 IT 行话。 |
+| | [发音模型](how-to-customize-pronunciation.md) | 借助自定义发音模型，可以定义语音形式以及字词或术语的显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。 |
+| 文本转语音 | [语音字体](how-to-customize-voice-font.md) | 使用自定义语音字体可为自有品牌创建可识别的独一无二的声音。 只需使用少量的数据即可开始创建。 提供的数据越多，语音字体就越自然，且越接近人类语音。 |
 
-[语音设备 SDK](speech-devices-sdk.md) 是一种集成式硬件和软件平台，适用于支持语音的设备的开发人员。 我们的硬件合作伙伴提供参考设计和开发单元。 Microsoft 提供设备优化的 SDK，该 SDK 可以充分利用硬件的功能。
+## <a name="reference-docs"></a>参考文档
 
-
-## <a name="speech-scenarios"></a>语音方案
-
-语音服务用例包括：
-
-> [!div class="checklist"]
-> * 创建语音触发的应用
-> * 转录呼叫中心录制内容
-> * 实现语音机器人
-
-### <a name="voice-user-interface"></a>语音用户界面
-
-语音输入是使应用变得灵活、免持和快速可用的极佳办法。 使用支持语音的应用，用户只需请求所需的信息即可。
-
-如果应用面向公众，可以使用默认语音识别模型。 此类模型能够识别常规环境中的各种发声对象。
-
-如果在特定领域（例如医学或 IT）中使用应用，可以创建[语言模型](how-to-customize-language-model.md)。 可以使用此模型向语音服务传授应用使用的特殊术语。
-
-如果在噪音环境（例如工厂）中使用应用，可以创建自定义[声学模型](how-to-customize-acoustic-models.md)。 此模型可帮助语音服务将语音与噪音区分开来。
-
-### <a name="call-center-transcription"></a>呼叫中心听录
-
-通常，仅当来电中提出了某个问题时，才会查阅呼叫中心的录制内容。 借助语音服务，可以轻松将所有录制内容转录为文本。 可以轻松为文本编制索引以执行[全文搜索](https://docs.microsoft.com/azure/search/search-what-is-azure-search)，或应用[文本分析](https://docs.microsoft.com/azure/cognitive-services/Text-Analytics/)来检测情绪、语言和关键短语。
-
-如果呼叫中心录制内容使用了专业术语（例如产品名称或 IT 行话），则可创建一个[语言模型](how-to-customize-language-model.md)来向语音服务传授这些词汇。 自定义[声学模型](how-to-customize-acoustic-models.md)可帮助语音服务理解欠佳的电话连接。
-
-有关此方案的详细信息，请详细阅读语音服务的[批处理脚本](batch-transcription.md)。
-
-### <a name="voice-bots"></a>语音机器人
-
-[机器人](https://dev.botframework.com/)是让用户接触到他们所需的信息，或者让客户接触到他们所热衷的业务的一种流行方式。 将聊天用户界面添加到网站或应用后，可更轻松地查找和更快地访问其功能。 借助语音服务，这种聊天能以全新的流畅度进行，能够对语音查询进行语音响应。
-
-若要将独特的个性化特点添加到支持语音的机器人，可在机器人中提供其自己的语音。 创建自定义语音的过程包括两个步骤。 首先[录制](record-custom-voice-samples.md)想要使用的语音。 然后，[将这些录制内容以及文本脚本提交](how-to-customize-voice-font.md)到语音服务的[语音自定义门户](https://cris.ai/Home/CustomVoice)，后者会完成剩余的工作。 创建自定义语音后，在应用中使用该语音的步骤就非常简单了。
+* [语音 SDK](speech-sdk-reference.md)
+* [语音设备 SDK](speech-devices-sdk.md)
+* [REST API：语音转文本](rest-speech-to-text.md)
+* [REST API：文本转语音](rest-text-to-speech.md)
+* [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>后续步骤
 
-获取语音服务的订阅密钥。
-
 > [!div class="nextstepaction"]
-> [免费试用语音服务](get-started.md)
+> [免费获取语音服务订阅密钥](get-started.md)

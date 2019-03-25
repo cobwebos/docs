@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d702810ae7de03a14e50f56c2b8e819c31f3ea9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e7a45e85b35ab48f95ecff07043484b322f237a8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192704"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538045"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>快速入门：通过 Azure 门户下载审核报表
 
-在此快速入门中，你将学习如何下载租户过去 24 小时的审核日志。 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间进行排序，因此默认情况下获取的是最近 5000 条记录。 
+在此快速入门中，你将学习如何下载过去 24 小时内租户的审核日志的 CSV 文件。 最多可从 Azure 门户下载 250,000 条记录。 记录按最近时间进行排序，因此默认情况下获取的是最近 250,000 条记录。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "56192704"
 2. 从左侧导航窗格中选择“Azure Active Directory”，然后使用“切换目录”按钮选择活动目录。
 3. 从仪表板中，选择“Azure Active Directory”，然后选择“审核日志”。 
 4. 在“日期范围”筛选器下拉列表中选择“过去 24 小时”，再选择“应用”以查看过去 24 小时的审核日志。 
-5. 选择“下载”按钮，以下载包含所筛选记录的 CSV 文件。 
+5. 选择“下载”按钮，选择“CSV”作为文件格式，并指定文件名以下载包含已筛选记录的 CSV 文件。 
 
 ![报告](./media/quickstart-download-audit-report/download-audit-logs.png)
 

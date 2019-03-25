@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3f378edb-9ac9-494d-a84a-03357b923ee1
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: aad6abce87ce56c0a4ef546e208bf23b14068247
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 94686d62e8019bfc5dba1ccd4a00142512930c0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>教程：Azure Active Directory 与 Periscope Data 集成
 
@@ -105,6 +105,7 @@ ms.locfileid: "56808862"
     ![Periscope Data 域和 URL 单一登录信息](common/sp-identifier.png)
 
     a. 在“登录 URL”文本框中，键入任何 URL：
+    
     | |
     |--|
     | `https://app.periscopedata.com/` |
@@ -165,7 +166,7 @@ ms.locfileid: "56808862"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -218,7 +219,7 @@ ms.locfileid: "56808862"
 
     b. 在“姓氏”文本框中，输入用户的名字，如 Simon。
 
-    c. 在“电子邮件”文本框中，输入用户的电子邮件，例如 **brittasimon@contoso.com**。
+    c. 在“电子邮件”文本框中，输入用户的电子邮件，例如 brittasimon\@contoso.com。
 
     d. 单击“添加”。
 

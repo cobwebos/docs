@@ -8,30 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 08e2ef1b219ed66a39d38c08be80df89814afbaf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 871cca9fe2b3ff50202feb4925a267b93d432700
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180481"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842067"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>快速入门：使用必应 Web 搜索 REST API 和 C# 搜索网页
-
 
 使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 C# 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
+
 下面是在开始本快速入门之前需要准备好的项目：
 
 * Windows:[Visual Studio 2017](https://www.visualstudio.com/downloads/)
-* Linux/macOS：[Mono](http://www.mono-project.com/)  
+* Linux/macOS：[Mono](https://www.mono-project.com/)  
 * 订阅密钥
 
 此示例程序仅使用 .NET Core 类。
-
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -63,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>定义变量
 
-必须设置几个变量，然后才能继续操作。 确认 `uriBase` 有效并将 `accessKey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `searchTerm` 的值随意自定义搜索查询。
+必须设置几个变量，然后才能继续操作。 确认 `uriBase` 有效并将 `accessKey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `searchTerm` 的值随意自定义搜索查询。 请记住将此代码添加到 `Program` 类，如上所述。
 
 ```csharp
 // Enter a valid subscription key.
@@ -79,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>声明 Main 方法
 
-`Main()` 是必需的，它是启动程序时调用的第一个方法。 在此应用程序中，main 方法会验证 `accessKey`，发出一个请求，然后输出响应。
+`Main()` 方法是必需的，它是启动程序时调用的第一个方法。 在此应用程序中，main 方法会验证 `accessKey`，发出一个请求，然后输出响应。
 
 请记住，`main()` 依赖于在随后几个部分中创建的方法。
 

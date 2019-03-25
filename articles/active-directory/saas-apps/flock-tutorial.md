@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7b2c3ac5-17f1-49a0-8961-c541b258d4b1
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ace39ad587fa8a3bf78f3807cbee4970d29c910e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 93ac6009e593fa5eaefd14b09ce8eecd513688e5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878432"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>教程：Azure Active Directory 与 Flock 集成
 
@@ -163,7 +163,7 @@ ms.locfileid: "56878432"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -212,7 +212,7 @@ ms.locfileid: "56878432"
 
     ![添加员工](./media/flock-tutorial/user2.png)
 
-4. 输入用户的电子邮件地址（例如 **Brittasimon@contoso.com**），然后选择“添加用户”。
+4. 输入用户的电子邮件地址（例如 **Brittasimon\@contoso.com**），然后选择“添加用户”。
 
     ![添加员工](./media/flock-tutorial/user3.png)
 

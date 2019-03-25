@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cdde9f0ec69bec48ae0fb747db0cc49e81920817
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872548"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>快速入门：使用适用于 Unity 的语音 SDK (Beta) 识别语音
 
@@ -82,8 +82,8 @@ ms.locfileid: "56878007"
 
 1. 双击脚本对其进行编辑。
 
-  > [!NOTE]
-  > 可以在“编辑” > “首选项”下配置要启动的代码编辑器，详情请参阅 [Unity 用户手册](https://docs.unity3d.com/Manual/Preferences.html)。
+   > [!NOTE]
+   > 可以在“编辑” > “首选项”下配置要启动的代码编辑器，详情请参阅 [Unity 用户手册](https://docs.unity3d.com/Manual/Preferences.html)。
 
 1. 将所有代码替换为以下内容：
 
@@ -97,13 +97,13 @@ ms.locfileid: "56878007"
 
 1. 返回到 Unity 编辑器。需要将脚本作为组件添加到游戏对象之一。
 
-  * 单击“层次结构窗口”中的“画布”对象。 随后会在[检查器窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中打开该对象的设置。
-  * 单击“检查器窗口”中的“添加组件”按钮，然后搜索并添加前面创建的 HelloWorld 脚本。
-  * 请注意，Hello World 组件包含两个未初始化的属性：“输出文本”和“开始识别按钮”，它们与 `HelloWorld` 类的公共属性相匹配。
-    若要连接它们，请单击对象选取器（属性右侧的小圆圈图标），并选择前面创建的文本和按钮对象。
+   * 单击“层次结构窗口”中的“画布”对象。 这会在[检查器窗口](https://docs.unity3d.com/Manual/UsingTheInspector.html)（默认位于右侧）中打开设置。
+   * 单击“检查器窗口”中的“添加组件”按钮，然后搜索并添加前面创建的 HelloWorld 脚本。
+   * 请注意，Hello World 组件包含两个未初始化的属性：“输出文本”和“开始识别按钮”，它们与 `HelloWorld` 类的公共属性相匹配。
+     若要连接它们，请单击对象选取器（属性右侧的小圆圈图标），并选择前面创建的文本和按钮对象。
 
-    > [!NOTE]
-    > 按钮中还包括嵌套的文本对象。 请确保不要意外选择该对象来提供文本输出（或者，可以使用“检查器窗口”中的“名称”字段来重命名某个文本对象，以避免混淆）。
+     > [!NOTE]
+     > 按钮中还包括嵌套的文本对象。 请确保不要意外选择该对象来提供文本输出（或者，可以使用“检查器窗口”中的“名称”字段来重命名某个文本对象，以避免混淆）。
 
 ## <a name="run-the-application-in-the-unity-editor"></a>在 Unity 编辑器中运行应用程序
 

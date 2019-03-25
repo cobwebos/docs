@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1a02862d3ea2e17cfa25a2a2d96e1454699ae7f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166277"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858195"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>快速入门：使用 PHP 调用必应 Web 搜索 API  
 
 使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Node.js 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
+
 下面是在开始本快速入门之前需要准备好的项目：
 
-* [PHP 5.6.x](http://php.net/downloads.php) 或更高版本
+* [PHP 5.6.x](https://php.net/downloads.php) 或更高版本
 * 订阅密钥  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
@@ -34,11 +35,11 @@ ms.locfileid: "56166277"
 
 在开始之前，请找到 `php.ini` 并取消以下行的注释：
 
-```
-;extension=php_openssl.dll
+```php
+; extension=php_openssl.dll
 ```
 
-## <a name="create-a-project-and-define-variables"></a>创建项目并定义变量  
+## <a name="create-a-project-and-define-variables"></a>创建项目并定义变量
 
 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。 请勿忘记添加开始和结束标记 `<?php` 和 `?>`。
 

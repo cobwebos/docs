@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/23/2019
 ms.author: shvija
-ms.openlocfilehash: 073d1b54b1c6da2b1178f482d17b4de7abcc8a51
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: a7976c0798bd78fd51632d3025147526a645b041
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888917"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528790"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
@@ -60,7 +60,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
    ![“添加”工具栏按钮](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. 在“创建命名空间”页上执行以下步骤：
     1. 输入该命名空间的名称。 系统会立即检查该名称是否可用。
-    2. 选择定价层（“基本”或“标准”）。
+    2. 选择定价层（基本或标准）。
     3. 选择要在其中创建命名空间的**订阅**。
     4. 选择命名空间所在的**位置**。
     5. 选择“创建”。 可能需要等待几分钟让系统完全预配资源。

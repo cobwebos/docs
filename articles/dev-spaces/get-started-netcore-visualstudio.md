@@ -1,23 +1,22 @@
 ---
-title: 使用 .NET Core 和 Visual Studio 在云中创建 Kubernetes 开发空间 | Microsoft Docs
+title: 使用 .NET Core 和 Visual Studio 在云中创建 Kubernetes 开发空间
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: f345ff2e64670536771a639a7619c6e1d4d2d82d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
+ms.openlocfilehash: 9b5f5d41a35b608ecec5e9ab2161a6c122e7aa82
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823937"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894149"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>在 .NET Core 和 Visual Studio 中开始使用 Azure Dev Spaces
 
@@ -34,18 +33,17 @@ ms.locfileid: "56823937"
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>创建为 Azure Dev Spaces 启用的 Kubernetes 群集
 
-1. 通过 http://portal.azure.com 登录到 Azure 门户。
+1. 通过 https://portal.azure.com 登录到 Azure 门户。
 1. 选择“创建资源”，搜索“Kubernetes”，选择“Kubernetes 服务” > “创建”。
 
-   在创建 AKS 群集窗体的每个标题下完成以下步骤。
+   在“创建 Kubernetes 群集”表单的每个标题下完成以下步骤，并验证所选[区域是否支持 Azure Dev Spaces](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)。
 
-    - **项目详细信息**：选择 Azure 订阅和一个新的或现有的 Azure 资源组。
-    - **群集详细信息**：输入 AKS 群集的名称、区域（当前必须选择 EastUS、EastUS2、Central US、WestEurope、WestUS2、SoutheastAsia、CanadaCentral 或 CanadaEast）、版本和 DNS 名称前缀。
-    - **规模**：选择 AKS 代理节点的 VM 大小和节点数。 如果是刚开始使用 Azure Dev Spaces，则采用一个节点来公开所有功能就足够了。 在部署群集后，随时可以轻松调整节点数。 请注意，在部署 AKS 群集后无法更改 VM 大小。 但是，在部署 AKS 群集后，如果需要纵向扩展，可以轻松创建具有更大 VM 的新 AKS 群集并使用 Dev Spaces 重新部署到该更大的群集。
-
-   请确保选择 Kubernetes 版本 1.9.6 或更高版本。
+   - **项目详细信息**：选择 Azure 订阅和一个新的或现有的 Azure 资源组。
+   - **群集详细信息**：输入 AKS 群集的名称、区域、版本和 DNS 名称前缀。
+   - **规模**：选择 AKS 代理节点的 VM 大小和节点数。 如果是刚开始使用 Azure Dev Spaces，则采用一个节点来公开所有功能就足够了。 在部署群集后，随时可以轻松调整节点数。 请注意，在部署 AKS 群集后无法更改 VM 大小。 但是，在部署 AKS 群集后，如果需要纵向扩展，可以轻松创建具有更大 VM 的新 AKS 群集并使用 Dev Spaces 重新部署到该更大的群集。
 
    ![Kubernetes 配置设置](media/common/Kubernetes-Create-Cluster-2.PNG)
+
 
    在完成时选择“下一步:身份验证”。
 

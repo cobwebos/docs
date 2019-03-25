@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 220c419142f31261a193795da85eedd841183db9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7308d5715b1ac8abc62bb26ad3636423bbd727ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889754"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure 存储
 
@@ -30,8 +30,8 @@ ms.locfileid: "56202700"
 
 > [!div class="checklist"]
 > * 在存储帐户中创建 Blob 容器
-> * 向 Windows VM 的系统分配的托管标识授予对存储帐户的访问权限 
-> * 获取访问令牌并使用它来调用 Azure 存储 
+> * 向 Windows VM 的系统分配的托管标识授予对存储帐户的访问权限
+> * 获取访问令牌并使用它来调用 Azure 存储
 
 > [!NOTE]
 > 适用于 Azure 存储的 Azure Active Directory 身份验证当前处于公共预览版。
@@ -40,14 +40,14 @@ ms.locfileid: "56202700"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>创建存储帐户 
+## <a name="create-a-storage-account"></a>创建存储帐户
 
-在本部分中，创建一个存储帐户。 
+在本部分中，创建一个存储帐户。
 
 1. 单击 Azure 门户左上角的“+ 创建资源”按钮。
 2. 单击“存储”，然后单击“存储帐户 - Blob、文件、表、队列”。
-3. 在“名称”下，输入存储帐户的名称。  
-4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“存储(常规用途 v1)”。 
+3. 在“名称”下，输入存储帐户的名称。
+4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“存储(常规用途 v1)”。
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。
 6. 单击“创建”。
 
@@ -64,22 +64,22 @@ ms.locfileid: "56202700"
 
     ![创建存储容器](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-5. 使用你选择的编辑器，在本地计算机上创建一个标题为 *hello world.txt* 的文件。  打开该文件并添加文本“Hello world! :）”（不包括引号），然后保存该文件。 
+5. 使用你选择的编辑器，在本地计算机上创建一个标题为 *hello world.txt* 的文件。 打开该文件并添加文本“Hello world! :）”（不包括引号），然后保存该文件。
 6. 通过单击容器名称并单击“上传”，将该文件上传到新创建的容器。
 7. 在“上传 blob”窗格中，在“文件”下，单击文件夹图标并浏览到本地计算机上的文件 **hello_world.txt**，选择该文件，然后单击“上传”。
     ![上传文本文件](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>向 VM 授予对 Azure 存储容器的访问权限 
+## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>向 VM 授予对 Azure 存储容器的访问权限
 
-可以使用 VM 的系统分配的托管标识检索 Azure 存储 blob 中的数据。   
+可以使用 VM 的系统分配的托管标识检索 Azure 存储 blob 中的数据。
 
-1. 导航回新创建的存储帐户。  
-2. 单击左侧面板中的“访问控制(IAM)”链接。  
+1. 导航回新创建的存储帐户。
+2. 单击左侧面板中的“访问控制(IAM)”链接。
 3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配。
-4. 在“角色”下，从下拉列表中，选择“存储 Blob 数据读取器(预览)”。 
-5. 在下一个下拉列表中，在“将访问权限分配到”下，选择“虚拟机”。  
-6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
-7. 在“选择”下，选择你的 VM 并单击“保存”。 
+4. 在“角色”下，从下拉列表中，选择“存储 Blob 数据读取器(预览)”。
+5. 在下一个下拉列表中，在“将访问权限分配到”下，选择“虚拟机”。
+6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。
+7. 在“选择”下，选择你的 VM 并单击“保存”。
 
     ![分配权限](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "56202700"
 
 Azure 存储原本就支持 Azure AD 身份验证，因此可以直接接受使用托管标识获取的访问令牌。 在某种程度上，这是将 Azure 存储与 Azure AD 集成，不同于在连接字符串中提供凭据。
 
-下面是一个 .Net 代码示例，它使用访问令牌打开到 Azure 存储的连接，然后读取之前创建的文件的内容。 此代码必须在 VM 上运行才能访问 VM 的托管标识终结点。 使用访问令牌方法需要 .Net Framework 4.6 或更高版本。 相应地替换 `<URI to blob file>` 的值。 可以通过以下方式获取此值：在“概述”页上的“属性”下，导航到你创建并上传到 blob 存储的文件，然后复制 **URL**。
+下面是一个 .NET 代码示例，它使用访问令牌打开到 Azure 存储的连接，然后读取之前创建的文件的内容。 此代码必须在 VM 上运行才能访问 VM 的托管标识终结点。 使用访问令牌方法需要 .NET Framework 4.6 或更高版本。 相应地替换 `<URI to blob file>` 的值。 可以通过以下方式获取此值：在“概述”页上的“属性”下，导航到你创建并上传到 blob 存储的文件，然后复制 **URL**。
 
 ```csharp
 using System;
@@ -97,7 +97,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
-using System.Web.Script.Serialization; 
+using System.Web.Script.Serialization;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -109,7 +109,7 @@ namespace StorageOAuthToken
         {
             //get token
             string accessToken = GetMSIToken("https://storage.azure.com/");
-           
+
             //create token credential
             TokenCredential tokenCredential = new TokenCredential(accessToken);
 
@@ -120,7 +120,7 @@ namespace StorageOAuthToken
 
             //create block blob using storage credentials
             CloudBlockBlob blob = new CloudBlockBlob(blobAddress, storageCredentials);
-        
+
             //retrieve blob contents
             Console.WriteLine(blob.DownloadText());
             Console.ReadLine();
@@ -152,7 +152,7 @@ namespace StorageOAuthToken
                 string errorText = String.Format("{0} \n\n{1}", e.Message, e.InnerException != null ? e.InnerException.Message : "Acquire token failed");
                 return accessToken;
             }
-        }            
+        }
     }
 }
 ```
@@ -167,6 +167,3 @@ namespace StorageOAuthToken
 
 > [!div class="nextstepaction"]
 > [Azure 存储](/azure/storage/common/storage-introduction)
-
-
-

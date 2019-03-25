@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 675dca98-f119-4463-8350-d6a45d5601e3
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f51ade234c8792f235bd8c9218b3c6ef9f22de7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9a1b0763e33607367939476ca155040295de864c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870816"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>教程：Azure Active Directory 与 Cisco Umbrella 的集成
 
@@ -173,7 +173,7 @@ ms.locfileid: "56870816"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -229,7 +229,7 @@ ms.locfileid: "56870816"
 
     c. 在“选择委派的管理员角色”中选择角色。
   
-    d. 在“电子邮件地址”字段中，输入用户的电子邮件地址（例如 **brittasimon@contoso.com**）。
+    d. 在“电子邮件地址”字段中，输入用户的电子邮件地址（例如 **brittasimon\@contoso.com**）。
 
     e. 在“密码”字段中输入自己的密码。
 

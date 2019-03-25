@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 1aca53c876b6cc982c141d74cdf727f9c966adfe
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a4041d7d2cc9d3fd42a541c316d8d739b3ab733d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233857"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539864"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 SQL 数据库
 在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -53,7 +53,7 @@ ms.locfileid: "56233857"
     Jane,Doe
     ```
 
-1. 在 Blob 存储中创建名为 **adftutorial** 的容器。 在该容器中创建名为 input 的文件夹。 然后，将 **emp.txt** 文件上传到 **input** 文件夹。 请使用 Azure 门户或工具（例如 [Azure 存储资源管理器](http://storageexplorer.com/)）执行这些任务。
+1. 在 Blob 存储中创建名为 **adftutorial** 的容器。 在该容器中创建名为 input 的文件夹。 然后，将 **emp.txt** 文件上传到 **input** 文件夹。 请使用 Azure 门户或工具（例如 [Azure 存储资源管理器](https://storageexplorer.com/)）执行这些任务。
 
 #### <a name="create-a-sink-sql-table"></a>创建接收器 SQL 表
 
@@ -232,7 +232,7 @@ ms.locfileid: "56233857"
 
 1. 若要调试管道，请在工具栏上选择“调试”。 可以在窗口底部的“输出”选项卡中看到管道运行的状态。 
 
-1. 在管道可以成功运行后，在工具栏中选择“全部发布”。 此操作将所创建的实体（数据集和管道）发布到数据工厂。
+1. 在管道可以成功运行后，在顶部工具栏中选择“全部发布”。 此操作将所创建的实体（数据集和管道）发布到数据工厂。
 
     ![发布](./media/tutorial-copy-data-portal/publish-button.png)
 

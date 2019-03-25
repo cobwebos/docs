@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 2bbe69d114df61f6ca01add0b3459220d59d83e0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 29ad35b30e7f75259b9c4d0174c16c6c9c40a917
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880509"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852520"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for MariaDB 数据库
 
@@ -90,7 +90,7 @@ Azure Database for MariaDB 受防火墙保护。 默认情况下，将拒绝与�
 
    ![服务器属性](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-在我们的示例中，服务器名称是 mydemoserver.mariadb.database.azure.com，服务器管理员登录名是 **myadmin@mydemoserver**。
+在我们的示例中，服务器名称是 mydemoserver.mariadb.database.azure.com，服务器管理员登录名是 myadmin\@mydemoserver。
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>通过 mysql 连接到服务器
 

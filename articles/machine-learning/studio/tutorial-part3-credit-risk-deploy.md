@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839011"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>教程 3：部署信用风险模型 - Azure 机器学习工作室
 
@@ -72,12 +72,11 @@ ms.locfileid: "56823784"
 
 选择每个模块并按 Delete 键，或右键单击模块并选择“删除”。 
 
-![删除 SVM 模型](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
-
+![突出显示要删除的模块以删除支持向量机模型](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
 
 模型现在看起来应与下图类似：
 
-![删除 SVM 模型](./media/tutorial-part3-credit-risk-deploy/publish3.png)
+![删除支持向量机模型时产生的试验](./media/tutorial-part3-credit-risk-deploy/publish3.png)
 
 现已准备好使用[双类提升决策树][two-class-boosted-decision-tree]部署此模型。
 

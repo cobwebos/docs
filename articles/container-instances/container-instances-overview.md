@@ -2,19 +2,19 @@
 title: 什么是 Azure 容器实例？
 description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的最简捷方式，既无需管理虚拟机，也不必采用更高级的业务流程协调程序。
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
 ms.date: 11/30/2018
-ms.author: seanmck
+ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ba454965ff2bb78ebe526e71d9280200b1f4b08b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8362ae5e9647c023ff950a363f9ba7bfde37fdb6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187188"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863315"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -48,9 +48,14 @@ ms.locfileid: "53187188"
 
 Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 直接在创建[容器组](container-instances-container-groups.md)时指定 OS 类型。
 
-某些功能当前仅限于 Linux 容器。 我们正致力于为 Windows 容器提供功能奇偶一致性。可在 [Azure 容器实例的配额和区域可用性](container-instances-quotas.md)中了解当前的平台差异。
+某些功能当前仅限于 Linux 容器：
 
-Azure 容器实例支持基于长期服务频道 (LTSC) 版本的 Windows 映像。 不支持 Windows 半年频道 (SAC) 发行版，例如 1709 和 1803。
+* 每个容器组多个容器
+* 卷装载（[Azure 文件存储](container-instances-volume-azure-files.md)、[emptyDir](container-instances-volume-emptydir.md)、[GitRepo](container-instances-volume-gitrepo.md)、[机密](container-instances-volume-secret.md)）
+* [虚拟网络部署](container-instances-vnet.md)（预览版）
+* [GPU 资源](container-instances-gpu.md)（预览版）
+
+Azure 容器实例支持基于长期服务渠道 (LTSC) 版本的 Windows Server 2016 映像。 不支持 Windows 半年频道 (SAC) 发行版，例如 1709 和 1803。
 
 ## <a name="co-scheduled-groups"></a>共同计划组
 

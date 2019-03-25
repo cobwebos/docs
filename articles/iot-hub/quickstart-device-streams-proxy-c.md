@@ -8,28 +8,29 @@ services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 300b42c9452fc58c857d075a7fd8c42fd6a1c409
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 59a84190386b554716472b4cb46c94030a66a4cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731727"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077099"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>快速入门：使用 C 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
+
+Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 服务和设备应用程序可以使用 [IoT 中心设备流](./iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 有关设置概述，请参阅[此页](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。
 
 本文档介绍通过设备流以隧道方式传输 SSH 流量（使用端口 22）的设置。 针对 RDP 流量的设置与此类似，只需进行简单的配置更改即可。 由于设备流不区分应用程序和协议，因此，可以修改现有快速入门（通过更改通信端口）来适应其他类型的应用程序流量。
 
 ## <a name="how-it-works"></a>工作原理：
-下图演示了设备本地和服务本地代理程序的设置如何在 SSH 客户端与 SSH 守护程序进程之间实现端到端的连接。 在公共预览期，C SDK 仅支持设备端中的设备流。 因此，本快速入门只会提供有关运行设备本地代理应用程序的说明。 应该运行 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)或 [Node.js 快速入门](./quickstart-device-streams-proxy-nodejs.md)指南中随附的服务本地代理应用程序。
+下图演示了设备本地和服务本地代理程序如何在 SSH 客户端与 SSH 守护程序进程之间实现端到端的连接这样一种设置。 在公共预览期，C SDK 仅支持设备端的设备流。 因此，本快速入门只会提供有关运行设备本地代理应用程序的说明。 应该运行 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)或 [Node.js 快速入门](./quickstart-device-streams-proxy-nodejs.md)指南中随附的服务本地代理应用程序。
 
 ![替代文本](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg "本地代理设置")
-
 
 1. 服务本地代理连接到 IoT 中心，并向目标设备发起设备流。
 
@@ -48,6 +49,11 @@ ms.locfileid: "55731727"
 
 ## <a name="prerequisites"></a>先决条件
 
+* 目前仅支持在以下区域中创建的 IoT 中心的设备流预览：
+
+  * 美国中部
+  * **美国中部 EUAP**
+
 * 安装 [Visual Studio 2017](https://www.visualstudio.com/vs/) 并启用[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷。
 * [安装最新版本的 Git](https://git-scm.com/download/)。
 
@@ -55,24 +61,23 @@ ms.locfileid: "55731727"
 
 针对本快速入门，你将使用[适用于 C 的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)。准备一个用于从 GitHub 克隆和生成 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的开发环境。 GitHub 上的 SDK 包括在本快速入门中使用的示例代码。 
 
-
-1. 从 [GitHub](https://github.com/Kitware/CMake/releases/tag/v3.11.4) 下载 3.11.4 版的 [CMake 生成系统](https://cmake.org/download/)。 使用相应的加密哈希值验证下载的二进制文件。 以下示例使用了 Windows PowerShell 来验证 x64 MSI 分发版本 3.11.4 的加密哈希：
+1. 下载 3.13.4 版的 [CMake 生成系统](https://cmake.org/download/)。 使用相应的加密哈希值验证下载的二进制文件。 以下示例使用了 Windows PowerShell 来验证 x64 MSI 发行版本 3.13.4 的加密哈希：
 
     ```PowerShell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
+    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
     True
     ```
-    
-    在撰写本文时，在 CMake 站点上列出了版本 3.11.4 的以下哈希值：
+
+    在撰写本文时，在 CMake 站点上列出了版本 3.13.4 的以下哈希值：
 
     ```
-    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
-    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
-    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
+    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
+    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
+    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
     ```
 
-    在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 必备组件到位并验证下载内容后，安装 CMake 生成系统。
 
 2. 打开命令提示符或 Git Bash shell。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
     
@@ -80,7 +85,6 @@ ms.locfileid: "55731727"
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
     ```
     此存储库的大小目前大约为 220 MB。 应该预料到此操作需要几分钟才能完成。
-
 
 3. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 
 
@@ -90,28 +94,27 @@ ms.locfileid: "55731727"
     cd cmake
     ```
 
-4. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 在 Windows 中，模拟设备的 Visual Studio 解决方案将在 `cmake` 目录中生成。 
+4. 从 `cmake` 目录运行以下命令，以生成特定于开发客户端平台的 SDK 版本。
 
-```
-    # In Linux
-    cmake ..
-    make -j
-```
+   * 在 Linux 中：
 
-在 Windows 中，请在 Visual Studio 2015 或 2017 的开发人员命令提示符下运行以下命令：
+      ```bash
+      cmake ..
+      make -j
+      ```
 
-```
-    rem In Windows
-    rem For VS2015
-    cmake .. -G "Visual Studio 15 2015"
+   * 在 Windows 中，请在 Visual Studio 2015 或 2017 的开发人员命令提示符下运行以下命令。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。
 
-    rem Or for VS2017
-    cmake .. -G "Visual Studio 15 2017"
+      ```cmd
+      rem For VS2015
+      cmake .. -G "Visual Studio 14 2015"
 
-    rem Then build the project
-    cmake --build . -- /m /p:Configuration=Release
-```
-    
+      rem Or for VS2017
+      cmake .. -G "Visual Studio 15 2017"
+
+      rem Then build the project
+      cmake --build . -- /m /p:Configuration=Release
+      ```
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -146,61 +149,60 @@ ms.locfileid: "55731727"
 
     稍后会在快速入门中用到此值。
 
-
 ## <a name="ssh-to-a-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 
 ### <a name="run-the-device-local-proxy-application"></a>运行设备本地代理应用程序
 
-- 编辑源文件 `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample/iothub_client_c2d_streaming_proxy_sample.c`，并提供设备连接字符串、目标设备 IP/主机名和 RDP 端口 22：
-```C
-  /* Paste in the your iothub connection string  */
-  static const char* connectionString = "[Connection string of IoT Hub]";
-  static const char* localHost = "[IP/Host of your target machine]"; // Address of the local server to connect to.
-  static const size_t localPort = 22; // Port of the local server to connect to.
-```
+1. 编辑源文件 `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample/iothub_client_c2d_streaming_proxy_sample.c`，并提供设备连接字符串、目标设备 IP/主机名，以及 SSH 端口 22：
 
-- 按如下所示编译示例：
+   ```C
+   /* Paste in the your iothub connection string  */
+   static const char* connectionString = "[Connection string of IoT Hub]";
+   static const char* localHost = "[IP/Host of your target machine]"; // Address of the local server to connect to.
+   static const size_t localPort = 22; // Port of the local server to connect to.
+   ```
 
-```
+2. 编译示例：
+
+   ```bash
     # In Linux
     # Go to the sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     make -j
-```
+   ```
 
-```
+   ```cmd
     rem In Windows
     rem Go to cmake at root of repository
     cmake --build . -- /m /p:Configuration=Release
-```
+   ```
 
-- 在设备上运行编译的程序：
-```
+3. 在设备上运行编译的程序：
+
+   ```bash
     # In Linux
-    # Go to sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
+    # Go to the sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     ./iothub_client_c2d_streaming_proxy_sample
-```
+   ```
 
-```
+   ```cmd
     rem In Windows
-    rem Go to sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
+    rem Go to the sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
     iothub_client_c2d_streaming_proxy_sample.exe
-```
+   ```
 
 ### <a name="run-the-service-local-proxy-application"></a>运行服务本地代理应用程序
 
-若要按[如上](#how-it-works)所述建立端到端的流以通过隧道传输 SSH 流量，需要在每端（即服务和设备端）设置一个本地代理。 不过，在公共预览期，IoT 中心 C SDK 仅支持设备端中的设备流。 对于服务本地代理，请改用 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)或 [Node.js 快速入门](./quickstart-device-streams-proxy-nodejs.md)中随附的指南。
-
+若要按[如前](#how-it-works)所述建立端到端的流以通过隧道传输 SSH 流量，需要在每端（服务端和设备端）设置一个本地代理。 在公共预览期，IoT 中心 C SDK 仅支持设备端的设备流。 若要生成并运行服务本地代理，请按照 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)或 [Node.js 快速入门](./quickstart-device-streams-proxy-nodejs.md)中提供的步骤操作。
 
 ### <a name="establish-an-ssh-session"></a>从 SSH 会话建立连接
 
-假设设备本地代理和服务本地代理都在运行，请使用 SSH 客户端程序并连接到端口 2222 上的服务本地代理（而不要直接连接到 SSH 守护程序）。 
+设备本地代理和服务本地代理都在运行以后，请使用 SSH 客户端程序并连接到端口 2222 上的服务本地代理（而不要直接连接到 SSH 守护程序）。
 
-```
+```cmd/sh
 ssh <username>@localhost -p 2222
 ```
 
 此时会看到 SSH 登录提示，其中要求输入凭据。
-
 
 通过 `IP_address:22` 连接到 SSH 守护程序的设备本地代理中的控制台输出：![替代文本](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "设备本地代理输出")
 

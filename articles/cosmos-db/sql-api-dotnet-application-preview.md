@@ -1,6 +1,6 @@
 ---
-title: 教程：通过 .Net 预览版 SDK 开发使用 Azure Cosmos DB 的 ASP.NET MVC Web 应用程序。
-description: 本教程介绍如何创建使用 Azure Cosmos DB 的 ASP.NET MVC Web 应用程序。 将通过在 Azure 上托管的待办事项应用存储和访问 JSON 数据。
+title: 教程：通过 .NET 预览版 SDK 开发使用 Azure Cosmos DB 的 ASP.NET MVC Web 应用程序。
+description: 本教程介绍如何使用 Azure Cosmos DB 创建 ASP .NET MVC Web 应用程序。 将通过在 Azure 上托管的待办事项应用存储和访问 JSON 数据。
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: e3ad852246b4b78d5ed7ac938348e59e9b7e6ce0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: bf1da7e8a1041b15076ebda6eeac9b0a75c567c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037117"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857158"
 ---
-# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>教程：通过 .Net 预览版 SDK 开发使用 Azure Cosmos DB 的 ASP.NET MVC Web 应用程序 
+# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>教程：通过 .NET 预览版 SDK 开发使用 Azure Cosmos DB 的 ASP.NET MVC Web 应用程序 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -26,9 +26,9 @@ ms.locfileid: "54037117"
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
 
-本教程介绍如何使用 Azure Cosmos DB 通过 Azure 上托管的 ASP.NET MVC 应用程序存储和访问数据。 在本教程中，请使用目前为预览版的 .Net SDK V3。 下图显示将要使用本文中的示例生成的网页：
+本教程介绍如何使用 Azure Cosmos DB 通过 Azure 上托管的 ASP.NET MVC 应用程序存储和访问数据。 在本教程中，请使用目前为预览版的 .NET SDK V3。 下图显示将要使用本文中的示例生成的网页：
  
-![屏幕截图：“ASP NET MVC 教程分步说明”教程创建的待办事项列表 MVC Web 应用程序](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-image01.png)
+![屏幕截图：本教程 - ASP NET MVC 教程分步创建的待办事项列表 MVC Web 应用程序](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-image01.png)
 
 如果没有时间完成本教程，可以从 [GitHub][GitHub] 下载完整的示例项目。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "54037117"
 
 * 针对 Visual Studio 2017 的用于 .NET 的 Microsoft Azure SDK，可通过 Visual Studio 安装程序获得。
 
-本文中的所有屏幕截图均使用 Microsoft Visual Studio Community 2017 采集。 如果系统配置了不同的版本，那么，屏幕和选项可能不会完全相符，但只要符合上述先决条件，本解决方案应该还是有效的。
+本文中的所有屏幕截图均使用 Microsoft Visual Studio Community 2017 拍摄。 如果系统配置了不同的版本，那么，屏幕和选项可能不会完全相符，但只要符合上述先决条件，本解决方案应该还是有效的。
 
 ## <a name="create-an-azure-cosmos-account"></a>步骤 1：创建 Azure Cosmos 帐户
 
@@ -77,7 +77,7 @@ ms.locfileid: "54037117"
 
 3. 在“名称”框中，键入项目的名称。 本教程使用名称“todo”。 如果选择使用其他名称，则每当本教程提及 todo 命名空间时，请调整所提供的代码示例，以便使用为应用程序命名的名称。 
 
-4. 选择“浏览”，导航到要在其中创建项目的文件夹，然后选择 **.Net Framework 4.6.1** 或更高版本。 选择“确定”。 
+4. 选择“浏览”，导航到要在其中创建项目的文件夹，然后选择 **.NET Framework 4.6.1** 或更高版本。 选择“确定”。 
 
 5. 将出现“新建 ASP.NET Web 应用程序”对话框。 在模板窗格中，选择“MVC”。
 
@@ -91,7 +91,7 @@ ms.locfileid: "54037117"
 
 1. Azure Cosmos DB .NET SDK 将打包并以 NuGet 包的形式分发。 若要在 Visual Studio 中获取 NuGet 包，请使用 Visual Studio 中的 NuGet 包管理器，方法是右键单击“解决方案资源管理器”中的项目，然后选择“管理 NuGet 包”。
    
-   ![屏幕截图：解决方案资源管理器中 Web 应用程序项目的右键单击选项，其中突出显示了“管理 NuGet 程序包”。](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-manage-nuget.png)
+   ![屏幕截图：解决方案资源管理器中 Web 应用程序项目的右键单击选项，其中突出显示了“管理 NuGet 包”。](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-manage-nuget.png)
    
 2. 此时会显示“管理 NuGet 包”对话框。 在 NuGet 的“浏览”框中，键入 **Microsoft.Azure.Cosmos**。 安装结果中显示的 **Microsoft.Azure.Cosmos** 3.0.0.1-preview 版本。 它会下载并安装 Azure Cosmos DB 包及其依赖项，例如 Newtonsoft.Json。 在“预览”窗口中选择“确定”，在“接受许可证”窗口中选择“我接受”，以完成安装。
    
@@ -151,7 +151,7 @@ ms.locfileid: "54037117"
 
 1. 在“解决方案资源管理器”中，展开“视图”文件夹，右键单击先前在添加 **ItemController** 时 Visual Studio 创建的空白“项”文件夹，单击“添加”，然后单击“视图”。
    
-   ![屏幕截图：显示 Visual Studio 使用突出显示的“添加视图”命令创建的 Item 文件夹的解决方案资源管理器](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-add-view.png)
+   ![解决方案资源管理器的屏幕截图，显示了 Visual Studio 创建的项文件夹，并突出显示了“添加视图”命令](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-add-view.png)
 
 2. 在“添加视图”对话框中，更新以下值：
    
@@ -235,7 +235,7 @@ ms.locfileid: "54037117"
    defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
    ```
 
-  若未在 URL 中指定控制路由行为的值，此代码会让 ASP.NET MVC 知道改用“项”（而不是“主页”）作为控制器，并使用“索引”作为视图。
+   若未在 URL 中指定控制路由行为的值，此代码会让 ASP.NET MVC 知道改用“项”（而不是“主页”）作为控制器，并使用“索引”作为视图。
 
 若运行应用程序，它现在会调用 **ItemController**，后者通过在下一部分定义的 TodoItemService 类调用 GetItems 方法。 
 

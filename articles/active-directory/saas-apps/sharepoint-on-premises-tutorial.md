@@ -4,23 +4,23 @@ description: 了解如何在 Azure Active Directory 与本地 SharePoint 之间�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 85b8d4d0-3f6a-4913-b9d3-8cc327d8280d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/24/2018
+ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbd824d843eafc23f35097bf580743a47c73b75b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: dca14f4c74c130145ba6792d2a3ee5c43f3c72b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882954"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57874790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 与本地 SharePoint 的集成
 
@@ -67,7 +67,7 @@ ms.locfileid: "56882954"
 
 4. 在搜索框中键入“本地 SharePoint”，在结果面板中选择“本地 SharePoint”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的“本地 SharePoint”](common/search-new-app.png)
+    ![结果列表中的“本地 SharePoint”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -79,9 +79,10 @@ ms.locfileid: "56882954"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置本地 SharePoint 单一登录](#configure-sharepoint-on-premises-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[向本地 SharePoint 测试用户授予访问权限](#grant-access-to-sharepoint-on-premises-test-user)** - 在本地 SharePoint 中创建 Britta Simon 的对应用户，并将其关联到该用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+4. **[在 Azure 门户中创建 Azure AD 安全组](#create-an-azure-ad-security-group-in-the-azure-portal)** - 在 Azure AD 中启用新的安全组用于单一登录。
+5. **[授予对 SharePoint 本地安全组的访问权限](#grant-access-to-sharepoint-on-premises-security-group)** - 授予 Azure AD 对特定组的访问权限。
+6. **[在 Azure 门户中分配 Azure AD 安全组](#assign-the-azure-ad-security-group-in-the-azure-portal)** - 将特定的组分配到 Azure AD 用于身份验证。
+7. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
@@ -119,9 +120,9 @@ ms.locfileid: "56882954"
     ![证书下载链接](common/certificatebase64.png)
 
     > [!Note]
-    > 记下下载证书文件的文件路径。 稍后在 PowerShell 脚本中进行配置时需要该文件。
+    > 请记下你将证书文件下载到的文件路径，因为稍后需要在用于配置的 PowerShell 脚本中使用它。
 
-6. 在“设置本地 SharePoint”部分，根据要求复制相应 URL。 对于“单一登录服务 URL”，请使用采用以下模式的值：`https://login.microsoftonline.com/_my_directory_id_/wsfed` 
+6. 在“设置本地 SharePoint”部分，根据要求复制相应 URL。 对于“单一登录服务 URL”，请使用采用以下模式的值：`https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ 是 Azure AD 订阅的租户 ID。
@@ -135,7 +136,7 @@ ms.locfileid: "56882954"
     c. 注销 URL
 
     > [!NOTE]
-    > 本地 SharePoint 应用程序使用 SAML 1.1 令牌，因此，Azure AD 预期 WS 联合身份验证请求来自 SharePoint 服务器；身份验证后，它会颁发 SAML 1.1。 令牌。
+    > 本地 SharePoint 应用程序使用 SAML 1.1 令牌，因此，Azure AD 预期 WS 联合身份验证请求来自 SharePoint 服务器；身份验证后，它会颁发 SAML 1.1 令牌。
 
 ### <a name="configure-sharepoint-on-premises-single-sign-on"></a>配置本地 SharePoint 单一登录
 
@@ -146,7 +147,7 @@ ms.locfileid: "56882954"
     登录到 SharePoint Server 2016 服务器并打开 SharePoint 2016 Management Shell。 从 Azure 门户中填写 $realm（Azure 门户中“SharePoint 本地域和 URL”部分中的标识符值）、$wsfedurl（单一登录服务 URL）和 $filepath（你将证书文件下载到的文件路径），并运行以下命令来配置新的可信标识提供者。
 
     > [!TIP]
-    > 如果不熟悉 PowerShell 的用法，或想要详细了解 PowerShell 的工作原理，请参阅 [SharePoint PowerShell](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps)。 
+    > 如果不熟悉 PowerShell 的用法，或想要详细了解 PowerShell 的工作原理，请参阅 [SharePoint PowerShell](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps)。
 
     ```
     $realm = "<Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal>"
@@ -158,6 +159,7 @@ ms.locfileid: "56882954"
     $map2 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname" -IncomingClaimTypeDisplayName "GivenName" -SameAsIncoming
     $map3 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" -IncomingClaimTypeDisplayName "SurName" -SameAsIncoming
     $map4 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" -IncomingClaimTypeDisplayName "Email" -SameAsIncoming
+    $map5 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" -IncomingClaimTypeDisplayName "Role" -SameAsIncoming
     $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "SharePoint secured by Azure AD" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map,$map2,$map3,$map4 -SignInUrl $wsfedurl -IdentifierClaim "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
     ```
 
@@ -176,7 +178,7 @@ ms.locfileid: "56882954"
     ![配置身份验证提供程序](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
-    > 某些外部用户将不能使用此单一登录集成，因为其 UPN 将具有错位值，例如 `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`。 不久，我们将允许自定义应用配置根据用户类型来处理 UPN。 在那之后，所有来宾用户应当都能够与组织员工一样无缝地使用 SSO。
+    > 某些外部用户将不能使用此单一登录集成，因为其 UPN 将具有扭曲的值，例如 `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`。 不久，我们将允许客户应用配置如何根据用户类型来处理 UPN。 在那之后，所有来宾用户应当都能够与组织员工一样无缝地使用 SSO。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -196,40 +198,103 @@ ms.locfileid: "56882954"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 **brittasimon\@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 单击“创建”。
 
-### <a name="grant-access-to-sharepoint-on-premises-test-user"></a>向本地 SharePoint 测试用户授予访问权限
+### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>在 Azure 门户中创建 Azure AD 安全组
 
-必须授予登录 Azure AD 并访问 SharePoint 的用户对应用程序的访问权限。使用以下步骤设置访问 Web 应用程序的权限。
+1. 单击“Azure Active Directory”>“所有组”。
 
-1. 在管理中心，单击“应用程序管理”。
+    ![创建 Azure AD 安全组](./media/sharepoint-on-premises-tutorial/allgroups.png)
 
-2. 在“应用程序管理”页上的“Web 应用程序”部分，单击“管理 Web 应用程序”。
+2. 单击“新建组”：
 
-3. 单击相应的 Web 应用程序，然后单击“用户策略”。
+    ![创建 Azure AD 安全组](./media/sharepoint-on-premises-tutorial/newgroup.png)
 
-4. 在“Web 应用程序的策略”中，单击“添加用户”。
+3. 填写“组类型”、“组名称”、“组说明”和“成员资格类型”。 单击箭头选择成员，然后搜索或单击要添加到该组的成员。 单击“选择”以添加选定的成员，然后单击“创建”。
 
-    ![按名称声明搜索用户](./media/sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
+    ![创建 Azure AD 安全组](./media/sharepoint-on-premises-tutorial/addingmembers.png)
 
-5. 在“添加用户”对话框中的“区域”内单击相应的区域，然后单击“下一步”。
+    > [!NOTE]
+    > 若要将 Azure Active Directory 安全组分配到本地 SharePoint，需要在本地 SharePoint 场中安装并配置 [AzureCP](https://yvand.github.io/AzureCP/)，或者开发并配置 SharePoint 的替代自定义声明提供程序。  如果不使用 AzureCP，请参阅本文档末尾的“更多信息”部分来了解如何创建自己的自定义声明提供程序。
 
-6. 在“Web 应用程序的策略”对话框中的“选择用户”部分，单击“浏览”图标。
+### <a name="grant-access-to-sharepoint-on-premises-security-group"></a>向 SharePoint 本地安全组授予访问权限
 
-7. 在“查找”文本框中，键入已在 Azure AD 中为其配置 SharePoint 本地应用程序的**用户主体名称(UPN)** 值，然后单击“搜索”。 </br>示例：*brittasimon@contoso.com*。
+**在应用注册中配置安全组和权限**
 
-8. 在列表视图中的 AzureAD 标题下，选择名称属性，单击“添加”，然后单击“确定”关闭对话框。
+1. 在 Azure 门户中，依次选择“Azure Active Directory”、“应用注册”。
 
-9. 在“权限”中，单击“完全控制”。
+    ![“企业应用程序”边栏选项卡](./media/sharepoint-on-premises-tutorial/appregistrations.png)
 
-    ![向声明用户授予完全控制权限](./media/sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
+2. 在搜索框中，键入并选择“本地 SharePoint”。
 
-10. 依次单击“完成”、“确定”。
+    ![结果列表中的“本地 SharePoint”](./media/sharepoint-on-premises-tutorial/appsearch.png)
+
+3. 单击“清单”。
+
+    ![清单选项](./media/sharepoint-on-premises-tutorial/manifest.png)
+
+4. 将“`groupMembershipClaims`: `NULL`”修改为“`groupMembershipClaims`: `SecurityGroup`”。 然后单击“保存”
+
+    ![编辑清单](./media/sharepoint-on-premises-tutorial/manifestedit.png)
+
+5. 依次单击“设置”、“所需的权限”。
+
+    ![所需的权限](./media/sharepoint-on-premises-tutorial/settings.png)
+
+6. 依次单击“添加”、“选择 API”。
+
+    ![API 访问权限](./media/sharepoint-on-premises-tutorial/required_permissions.png)
+
+7. 添加“Windows Azure Active Directory”和“Microsoft Graph API”，但每次只能选择一个。
+
+    ![API 选择](./media/sharepoint-on-premises-tutorial/permissions.png)
+
+8. 选择“Windows Azure Active Directory”，选中“读取目录数据”，然后单击“选择”。 返回并添加“Microsoft Graph”，同样，为其选择“读取目录数据”。  依次单击“选择”、“完成”。
+
+    ![启用访问权限](./media/sharepoint-on-premises-tutorial/readpermission.png)
+
+9. 现在，在“所需的设置”下单击“授予权限”，然后单击“是，授予权限”。
+
+    ![授予权限](./media/sharepoint-on-premises-tutorial/grantpermission.png)
+
+    > [!NOTE]
+    > 查看通知，确定是否已成功授予权限。  如果未成功授权，则 AzureCP 无法正常工作，并且无法使用 Azure Active Directory 安全组配置本地 SharePoint。
+
+10. 在本地 SharePoint 场或替代的自定义声明提供程序解决方案中配置 AzureCP。  本示例使用 AzureCP。
+
+    > [!NOTE]
+    > 请注意，AzureCP 不是 Microsoft 产品，Microsoft 技术支持部门不会为其提供支持。 根据 https://yvand.github.io/AzureCP/ 中所述，在本地 SharePoint 场中下载、安装并配置 AzureCP 
+
+11. **在本地 SharePoint 中向 Azure Active Directory 安全组授予访问权限**：- 必须向这些组授予对本地 SharePoint 中的应用程序的访问权限。  使用以下步骤设置访问 Web 应用程序的权限。
+
+12. 在管理中心依次单击“应用程序管理”、“管理 Web 应用程序”，选择该 Web 应用程序以激活功能区，然后单击“用户策略”。
+
+    ![管理中心](./media/sharepoint-on-premises-tutorial/centraladministration.png)
+
+13. 在“Web 应用程序的策略”下，单击“添加用户”，选择区域，然后单击“下一步”。  单击“通讯簿”。
+
+    ![Web 应用程序的策略](./media/sharepoint-on-premises-tutorial/webapp-policy.png)
+
+14. 搜索并添加“Azure Active Directory 安全组”，然后单击“确定”。
+
+    ![添加安全组](./media/sharepoint-on-premises-tutorial/securitygroup.png)
+
+15. 选择“权限”，然后单击“完成”。
+
+    ![添加安全组](./media/sharepoint-on-premises-tutorial/permissions1.png)
+
+16. 在“Web 应用程序的策略”下，可以看到已添加“Azure Active Directory 组”。  组声明显示了“用户名”的“Azure Active Directory 安全组对象 ID”。
+
+    ![添加安全组](./media/sharepoint-on-premises-tutorial/addgroup.png)
+
+17. 浏览到 SharePoint 站点集合，并同样在此处添加该组。 单击“站点设置”，然后单击“站点权限”和“授予权限”。  搜索“组角色声明”，分配权限级别，然后单击“共享”。
+
+    ![添加安全组](./media/sharepoint-on-premises-tutorial/grantpermission1.png)
 
 ### <a name="configuring-one-trusted-identity-provider-for-multiple-web-applications"></a>为多个 Web 应用程序配置一个受信任标识提供者
 
@@ -239,7 +304,7 @@ ms.locfileid: "56882954"
 
 2. 单击“设置”。
 
-3. 在“设置”边栏选项卡中，单击“回复 URL”。 
+3. 在“设置”边栏选项卡中，单击“回复 URL”。
 
 4. 为附加的 Web 应用程序添加 URL 并将 `/_trust/default.aspx` 追加到 URL 后面（如 `https://sales.contoso.local/_trust/default.aspx`），并单击“保存”。
 
@@ -264,9 +329,7 @@ ms.locfileid: "56882954"
 
 为了帮助解决这种情况，名为 [AzureCP](https://yvand.github.io/AzureCP/) 的开源解决方案为 SharePoint 2016 提供自定义的声明提供程序。 它使用 Azure AD Graph 来解析进入并执行验证功能的用户。 详细了解 [AzureCP](https://yvand.github.io/AzureCP/)。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分，我们通过授予 Britta Simon 访问本地 SharePoint 的权限，使其能够使用 Azure 单一登录。
+### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>在 Azure 门户中分配 Azure AD 安全组
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“本地 SharePoint”。
 
@@ -280,21 +343,22 @@ ms.locfileid: "56882954"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 搜索要使用的安全组，然后单击该组将其添加到“选择成员”部分。 依次单击“选择”、“分配”。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+    ![搜索安全组](./media/sharepoint-on-premises-tutorial/securitygroup1.png)
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+    > [!NOTE]
+    > 检查菜单栏中的通知，确定是否已在 Azure 门户中将该组成功分配到企业应用程序。
 
 ### <a name="create-sharepoint-on-premises-test-user"></a>创建本地 SharePoint 测试用户
 
 在本部分，我们将在本地 SharePoint 中创建一个名为 Britta Simon 的用户。 与 [本地 SharePoint 支持团队](https://support.office.com/)协作，在本地 SharePoint 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: 54d5fdf925769a5dd0db73ae964419388cae913c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0b637ab5f2b6234fed301a60ee1857960a464a33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866940"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864433"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for MySQL 数据库
 Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放高可用性的 MySQL 数据库。 使用 Azure 门户可以轻松管理服务器和设计数据库。
@@ -48,14 +48,14 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
     ---|---|---
     服务器名称 | 唯一的服务器名称 | 选择用于标识 Azure Database for MySQL 服务器的唯一名称。 例如，mydemoserver。 域名 *.mysql.database.azure.com* 将追加到所提供的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
     订阅 | 订阅 | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
-    资源组 | myresourcegroup | 提供新的或现有的资源组名称。    资源组|myresourcegroup| 新的资源组名称，或订阅中的现有资源组。
+    资源组 | myresourcegroup | 提供新的或现有的资源组名称。
     选择源 | *空白* | 选择“空白”可从头开始创建新服务器。 （如果要从现有 Azure Database for MySQL 服务器的异地备份创建服务器，请选择“备份”）。
     服务器管理员登录名 | myadmin | 连接到服务器时需使用的登录帐户。 管理员登录名不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。
     密码 | *由用户选择* | 为服务器管理员帐户提供新密码。 必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字 (0-9)和非字母数字字符（!, $, #, % 等）。
     确认密码 | *由用户选择*| 确认管理员帐户密码。
     位置 | *离用户最近的区域*| 选择最靠近用户或其他 Azure 应用程序的位置。
     版本 | 最新版本| 最新版本，有特定要求（即需要其他版本）的除外。
-    定价层 | **常规用途**、**第 4 代**、**2 个 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。 接下来，选择“常规用途”选项卡。*第 4 代*、*2 个 vCore*、*5 GB*和 *7 天*分别是**计算的代**、**vCore**、**存储**和**备份保留期**的默认值。 可以按原样保留这些滑块。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”。 若要保存此定价层选择，请选择“确定”。 下一个屏幕截图捕获了这些选择。
+    定价层 | **常规用途**、**第 5 代**、**2 个 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。 接下来，选择“常规用途”选项卡。“第 5 代”、“2 个 vCore”、“5 GB”和“7 天”分别是“计算代”、“vCore”、“存储”和“备份保留期”的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”。 若要保存此定价层选择，请选择“确定”。 下一个屏幕截图捕获了这些选择。
     
    ![定价层](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
@@ -81,7 +81,7 @@ Azure Databases for MySQL 受防火墙保护。 默认情况下，将拒绝与�
 2. 在“概述”页上，记下**服务器名称**和**服务器管理员登录名**。 可以单击每个字段旁边的“复制”按钮，将其复制到剪贴板。
    ![4-2 服务器属性](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-在此示例中，服务器名称是 *mydemoserver.mysql.database.azure.com*，服务器管理员登录名是 *myadmin@mydemoserver*。
+在此示例中，服务器名称是 mydemoserver.mysql.database.azure.com，服务器管理员登录名是 myadmin\@mydemoserver。
 
 ## <a name="connect-to-the-server-using-mysql"></a>使用 mysql 连接服务器
 使用 [mysql 命令行工具](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)建立与 Azure Database for MySQL 服务器的连接。 可以通过 Azure Cloud Shell 在浏览器中运行 mysql 命令行工具，也可以使用本地安装的 mysql 工具在自己的计算机上运行。 若要启动 Azure Cloud Shell，请单击本文中代码块上的 `Try It` 按钮，或访问 Azure 门户并单击右上角工具栏中的 `>_` 图标。 

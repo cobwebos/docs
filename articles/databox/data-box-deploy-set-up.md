@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: alkohli
-ms.openlocfilehash: e7c58978c7d6542887854c5a1996b15252fdb025
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b601ad5936820e2c237b7b9d37d9af73aa468bbc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982397"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895747"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>教程：为 Azure Data Box 连接电缆并连接到它
 
@@ -40,7 +40,7 @@ ms.locfileid: "55982397"
     - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路，但复制速度会受影响。 
 6. 必须找到一个可以放置 Data Box 的平面。 如需将设备置于标准的机架上，则需要数据中心机架中的一个 7U 槽。 可以将设备平放或直放在机架中。
 7. 你已经采购了以下电缆，用于将 Data Box 连接到主机。
-    - 一根或多根 10-GbE SFP+ Twinax 铜线或 SFP+ 光纤电缆（用于 DATA 1、DATA 2 网络接口）。 Data Box 使用带 PCI Express 3.0 网络接口的 Mellanox ConnectX®-3 Pro EN 双端口 10GBASE-T 适配器，因此与该接口兼容的电缆都可以用。 例如，使用 CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M 电缆进行内部测试。
+    - 一根或多根 10-GbE SFP+ Twinax 铜线或 SFP+ 光纤电缆（用于 DATA 1、DATA 2 网络接口）。 Data Box 使用带 PCI Express 3.0 网络接口的 Mellanox ConnectX®-3 Pro EN 双端口 10GBASE-T 适配器，因此与该接口兼容的电缆都可以用。 例如，使用 CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M 电缆进行内部测试。 有关详细信息，请参阅 [Mellanox 支持的电缆和交换机的列表](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf)。
     - 一根 RJ-45 CAT 6 网线（用于 MGMT 网络接口）
     - 一根 RJ-45 CAT 6A 网线或一根 RJ-45 CAT 6 网线（用于 DATA 3 网络接口，分别配置为 10 Gbps 或 1 Gbps）
 
@@ -83,10 +83,10 @@ ms.locfileid: "55982397"
     
 7. 提供你在上一步骤中从 Azure 门户获取的设备密码来登录到设备的本地 Web UI。 单击“登录”。
 8. 在“仪表板”上，确保已配置了网络接口。 
-    - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 
-    - 如果未启用 DHCP，请转到“设置网络接口”，并根据需要分配静态 IP。
+   - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 
+   - 如果未启用 DHCP，请转到“设置网络接口”，并根据需要分配静态 IP。
 
-    ![设备仪表板](media/data-box-deploy-set-up/data-box-dashboard-1.png)
+     ![设备仪表板](media/data-box-deploy-set-up/data-box-dashboard-1.png)
 
 配置数据网络接口以后，也可使用任何 DATA 1 - DATA 3 接口的 IP 地址来访问本地 Web UI `https://<IP address of a data network interface>`。 
 

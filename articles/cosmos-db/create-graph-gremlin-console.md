@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: b431d1b739342c54cbc218efdfded1ee516ecaa7
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 06601fbad43b3daf00e06efbe95a092e76559e36
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586386"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849816"
 ---
-# <a name="quickstart-create-query-and-traverse-a-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入门：使用 Gremlin 控制台创建、查询和遍历 Azure Cosmos DB 图形数据库
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入门：使用 Gremlin 控制台创建、查询和遍历 Azure Cosmos DB 图形数据库
 
 > [!div class="op_single_selector"]
 > * [Gremlin 控制台](create-graph-gremlin-console.md)
@@ -81,13 +81,13 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 确保将 hosts 参数的值括在括号 [] 中。 
 
-3. 在终端中运行 `bin/gremlin.bat` 或 `bin/gremlin.sh` 启动[Gremlin 控制台](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)。
-4. 在终端中运行 `:remote connect tinkerpop.server conf/remote-secure.yaml` 连接到应用服务。
+1. 在终端中运行 `bin/gremlin.bat` 或 `bin/gremlin.sh` 启动[Gremlin 控制台](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)。
+1. 在终端中运行 `:remote connect tinkerpop.server conf/remote-secure.yaml` 连接到应用服务。
 
     > [!TIP]
     > 如果收到错误`No appenders could be found for logger`，请确保已更新 remote-secure.yaml 文件中的序列化程序值，如步骤 2 中所述。 
 
-5. 接下来运行 `:remote console`，将所有控制台命令重定向到远程服务器。
+1. 接下来运行 `:remote console`，将所有控制台命令重定向到远程服务器。
 
    > [!NOTE]
    > 如果你不运行 `:remote console` 命令但希望将所有控制台命令重定向到远程服务器，则应在命令前添加 `:>` 前缀，例如，应该以 `:> g.V().count()` 形式运行命令。 此前缀是命令的一部分，在将 Gremlin 控制台与 Azure Cosmos DB 一起使用时非常重要。 省略此前缀将指示控制台在本地执行命令，通常针对一个内存中图表执行。 使用此前缀 `:>` 则指示控制台执行远程命令，在此示例中针对 Azure Cosmos DB（localhost 仿真器或 Azure 实例）执行。

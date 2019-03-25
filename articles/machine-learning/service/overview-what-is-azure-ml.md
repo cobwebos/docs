@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fd6ecb6cb45aef399a137c9eac2c8c6f845b610b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2f55ca6d0dae8ca1eaba1f409bd6a9faa75baf9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872482"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849204"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -32,10 +32,10 @@ Azure 机器学习服务是一项云服务，可以使用它来训练、部署�
 
 Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来准备数据、培训、测试、部署、管理和跟踪机器学习模型。
 
-[![Azure 机器学习服务工作流](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Azure 机器学习服务工作流](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Azure 机器学习服务完全支持开源技术。 因此，你可以使用几万个包含机器学习组件的开源 Python 包， 例如 PyTorch、TensorFlow 和 scikit-learn。
-它支持丰富的工具，可让你以交互方式轻松浏览和准备数据，然后开发和测试模型。 工具示例包括 [Jupyter Notebook](http://jupyter.org) 或[适用于 Visual Studio Code 的 Azure 机器学习](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview)扩展。
+它支持丰富的工具，可让你以交互方式轻松浏览和准备数据，然后开发和测试模型。 工具示例包括 [Jupyter Notebook](https://jupyter.org) 或[适用于 Visual Studio Code 的 Azure 机器学习](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview)扩展。
 此外，Azure 机器学习服务还包括[自动化模型生成和优化](tutorial-auto-train-models.md)的功能，能够帮助你轻松、高效和准确地创建模型。
 
 使用 Azure 机器学习服务可以先在本地计算机上开始训练，然后扩展到云中。 借助许多可用的[计算目标](how-to-set-up-training-targets.md)（例如 Azure 机器学习计算和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)）以及[高级超参数优化服务](how-to-tune-hyperparameters.md)，可以利用云的强大功能更快地生成更好的模型。
@@ -56,7 +56,7 @@ Azure 机器学习服务完全支持开源技术。 因此，你可以使用几�
 - <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>
 - <a href="https://pytorch.org" target="_blank">PyTorch</a>
 - CNTK<a href="https://www.microsoft.com/en-us/cognitive-toolkit/" target="_blank"></a>
-- <a href="http://mxnet.io" target="_blank">MXNet</a>
+- <a href="https://mxnet.io" target="_blank">MXNet</a>
 
 Azure 机器学习服务还可以自动训练模型和自动优化模型。
 有关示例，请参阅[使用自动化机器学习训练回归模型](tutorial-auto-train-models.md)。
@@ -81,7 +81,7 @@ Azure 机器学习服务还可以自动训练模型和自动优化模型。
 
 ## <a name="free-trial"></a>免费试用
 
-如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 你将获得可用于 Azure 服务的额度。 信用额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。 或者[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)，享受每月试用付费版 Azure 服务的信用额度。
 
@@ -92,11 +92,11 @@ Azure 机器学习服务还可以自动训练模型和自动优化模型。
 - 按照完整的教程进行操作： 
   + [使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md) 
   + [准备数据并使用自动化机器学习来自动训练回归模型](tutorial-data-prep.md)
-  
+
 - 使用 [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk) 准备数据。
 
 - 了解[机器学习管道](/azure/machine-learning/service/concept-ml-pipelines)，以便生成、优化和管理机器学习方案。
 
 - 阅读深入的 [Azure 机器学习服务体系结构和概念](concept-azure-machine-learning-architecture.md)文章。
 
-- 有关详细信息，请参阅 [Microsoft 提供的其他机器学习产品](./overview-more-machine-learning.md)。
+- 有关详细信息，请参阅 [Microsoft 提供的其他机器学习产品](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)。

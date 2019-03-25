@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a7fa7d95a3ce00c1a906b0c1b2bd8cc6852f84f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9385ec6a86c24e619ffafdae67bc66f66e099f3b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865461"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>教程：Azure Active Directory 与 8x8 Virtual Office 的集成
 
@@ -128,41 +128,41 @@ ms.locfileid: "56865461"
 
 ### <a name="configure-8x8-virtual-office-single-sign-on"></a>配置 8x8 Virtual Office 单一登录
 
-7. 以管理员身份登录到 8x8 Virtual Office 租户。
+1. 以管理员身份登录到 8x8 Virtual Office 租户。
 
-8. 在“应用程序”面板上选择“Virtual Office 帐户管理器”。
+1. 在“应用程序”面板上选择“Virtual Office 帐户管理器”。
 
     ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
-9. 选择要管理的“企业”帐户，并单击“登录”按钮。
+1. 选择要管理的“企业”帐户，并单击“登录”按钮。
 
     ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
-10. 在菜单列表中单击“帐户”选项卡。
+1. 在菜单列表中单击“帐户”选项卡。
 
-    ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+   ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
-11. 在帐户列表中单击“单一登录”。
+1. 在帐户列表中单击“单一登录”。
   
-    ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
+   ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
-12. 在“身份验证”方法下选择“单一登录”，然后单击“SAML”。
+1. 在“身份验证”方法下选择“单一登录”，然后单击“SAML”。
 
-    ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+   ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
-13. 在“SAML 单一登录”部分中，执行以下步骤：
+1. 在“SAML 单一登录”部分中，执行以下步骤：
 
-    ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
+   ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
-    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+   a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
+   b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    c. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
+   c. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
-    d. 单击“浏览”按钮，上传已从 Azure 门户下载的证书。
+   d. 单击“浏览”按钮，上传已从 Azure 门户下载的证书。
 
-    e. 单击“保存”按钮  。
+   e. 单击“保存”按钮  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -182,7 +182,7 @@ ms.locfileid: "56865461"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

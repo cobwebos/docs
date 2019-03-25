@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 2e34aef9a6f184c60fbb23023f798941a1fc11da
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 3ec3abffc7962051f4cfc02d5369581ca193d70e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894422"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775571"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>教程：访问 Azure 实验室服务中的课堂实验室
 在本教程中，你会作为一名学生连接到教室实验室中的虚拟机 (VM)。 
@@ -44,8 +44,9 @@ ms.locfileid: "55894422"
 1. 在要访问的实验室虚拟机的磁贴上，选择“连接”。 
 
     ![连接到 VM](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
-2. 将 RDP 文件保存到硬盘，然后将其打开（假定 VM 为 Windows VM）
-3. 使用从教师/教授处获取的用户名和密码登录到计算机。 
+2. 执行以下步骤之一： 
+    1. 对于 **Windows** 虚拟机，将 **RDP** 文件保存到硬盘。 打开 RDP 文件以连接到虚拟机。 使用从教师/教授处获取的用户名和密码登录到计算机。 
+    3. 对于 **Linux** 虚拟机，请在“连接到虚拟机”对话框中复制并保存 SSH 连接字符串。 从 SSH 终端（如 [Putty](https://www.putty.org/)）使用此连接字符串连接到虚拟机。 
 
 ## <a name="next-steps"></a>后续步骤
 本教程使用了从教师/教授处获取的注册链接来访问教室实验室。

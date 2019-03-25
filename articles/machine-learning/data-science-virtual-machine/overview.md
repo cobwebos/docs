@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 44427183b6cc785af33daf92bda050336eec5284
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f90e82fea9cbb3c3052738d15ff4a3838f1ad000
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863234"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
@@ -38,7 +38,7 @@ Data Science Virtual Machine (DSVM) 的目标在于向所有技能级别和各�
 本部分提示一些可部署数据科学 VM 的关键方案。
 
 ### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>在云中预配分析桌面
-数据科学 VM 为寻求使用托管的云桌面替换本地桌面的数据科学团队提供了基线配置。 此基线确保团队中的所有数据科学家具有可验证实验并促进协作的一致设置。 通过减少 sysadmin 负担并节省评估、安装和维护高级分析所需各种程序包所需的时间，它还降低了成本。  
+数据科学 VM 为寻求使用托管的云桌面替换本地桌面的数据科学团队提供了基线配置。 此基线确保团队中的所有数据科学家具有可验证实验并促进协作的一致设置。 通过减少 sysadmin 负担并节省评估、安装和维护高级分析所需各种程序包所需的时间，它还降低了成本。
 
 ### <a name="data-science-training-and-education"></a>数据科学训练和培训
 教授数据科学课程的企业培训师和教师通常会提供虚拟机映像，确保学生设置一致，并可以预测示例运行情况。 数据科学 VM 创建可缓解支持和不兼容性挑战的一致设置的按需环境。 这些环境需要频繁生成，特别是短期培训课程的情况从中获益极大。
@@ -50,7 +50,7 @@ Data Science Virtual Machine (DSVM) 的目标在于向所有技能级别和各�
 数据科学 VM 可用于评估或学习工具，例如 Microsoft ML Server、SQL Server、Visual Studio 工具、Jupyter、深度学习/ML 工具包以及社区热门且需要最少设置工作量的新工具。 因为 Data Science VM 可快速设置，所以可应用于其他短期使用方案，例如复制发布的实验、执行演示、遵循在线会话和会议教程中的演练。
 
 ### <a name="deep-learning"></a>深度学习
-Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用深度学习算法的训练模型。 利用 Azure 云的 VM 缩放功能，DSVM 可帮助根据需要在云上使用基于 GPU 的硬件。 如果训练大型模型或在保留相同 OS 磁盘的同时需要高速计算，可以切换到基于 GPU 的 VM。  Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU 版本的深度学习框架。 在 Linux 版上，在 CentOS 和 Ubuntu DSVM 中都启用了 GPU 上的深度学习。 在所有深度学习框架都将回退到 CPU 模式的情况下，可以将 Ubuntu、CentOS 或 Windows 2016 版本的 Data Science VM 部署到非基于 GPU 的 Azure 虚拟机。 
+Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用深度学习算法的训练模型。 利用 Azure 云的 VM 缩放功能，DSVM 可帮助根据需要在云上使用基于 GPU 的硬件。 如果训练大型模型或在保留相同 OS 磁盘的同时需要高速计算，可以切换到基于 GPU 的 VM。  Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU 版本的深度学习框架。 在 Linux 版上，在 CentOS 和 Ubuntu DSVM 中都启用了 GPU 上的深度学习。 在所有深度学习框架都将回退到 CPU 模式的情况下，可以将 Ubuntu、CentOS 或 Windows 2016 版本的 Data Science VM 部署到非基于 GPU 的 Azure 虚拟机。
 
 ## <a name="whats-included-in-the-data-science-vm"></a>数据科学 VM 中包含什么内容？
 数据科学虚拟机已安装并配置了许多热门数据科学工具和深度学习工具。 它还包括了其他工具，可以用来轻松利用各种 Azure 数据和分析产品（例如，用于构建预测模型的 Microsoft ML Server（R、Python）或用于探究大型数据集的 SQL Server 2017）。 还包括开源社区和 Microsoft 的其他工具主机，示例代码和笔记本也包括在内。 下表详细列举并比较了包括在数据科学虚拟机 Windows 和 Linux 版中的主要组件。
@@ -66,7 +66,7 @@ Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用
 | 关系数据库                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS)、<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |
 | 数据库工具                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp、sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC 驱动程序| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)（查询工具）、 <br /> * bcp、sqlcmd <br /> * ODBC/JDBC 驱动程序|
 | 在带有 SQL Server ML 服务（R、Python）的数据库内分析中可扩展 | Y     |N              |
-| **带有以下内核的 [Jupyter Notebook Server](http://jupyter.org/)：**                                  | Y     | Y |
+| **带有以下内核的 [Jupyter Notebook Server](https://jupyter.org/)：**                                  | Y     | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Python | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | Y | Y |
@@ -76,17 +76,17 @@ Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用
 | JupyterHub（多用户笔记本服务器）| N | Y |
 | JupyterLab（多用户笔记本服务器） | N | 是（仅适用于 Ubuntu） |
 | **开发工具、IDE 和代码编辑器**| | |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017（社区版）](https://www.visualstudio.com/community/)，包括 Git 插件、Azure HDInsight (Hadoop)、Data Lake、SQL Server Data Tools、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](https://aka.ms/ptvs) 和[针对 Visual Studio 的 R 工具 (RTVS)](http://microsoft.github.io/RTVS-docs/) | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017（社区版）](https://www.visualstudio.com/community/)，包括 Git 插件、Azure HDInsight (Hadoop)、Data Lake、SQL Server Data Tools、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](https://aka.ms/ptvs) 和[针对 Visual Studio 的 R 工具 (RTVS)](https://microsoft.github.io/RTVS-docs/) | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Atom](https://atom.io/) | N | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (Julia IDE)](http://junolab.org/)| Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (Julia IDE)](https://junolab.org/)| Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Vim 和 Emacs | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Git 和 GitBash | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | Y | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* .Net Framework | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* .NET Framework | Y | N |
 | PowerBI Desktop | Y | N |
 | 访问服务的 Azure 和 Cortana Intelligence Suite 的 SDK | Y | Y |
 | **数据移动和管理工具** | | |
@@ -99,12 +99,12 @@ Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用
 | &nbsp;&nbsp;&nbsp;&nbsp;* [DocDB 数据迁移工具](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft 数据管理网关](https://msdn.microsoft.com/library/dn879362.aspx)：在本地和云之间移动数据 | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Unix/Linux 命令行实用程序 | Y | Y |
-| 用于数据浏览的 [Apache Drill](http://drill.apache.org) | Y | Y |
+| 用于数据浏览的 [Apache Drill](https://drill.apache.org) | Y | Y |
 | **机器学习工具** |||
 | &nbsp;&nbsp;&nbsp;&nbsp;* 与 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)集成（R、Python） | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Xgboost](https://github.com/dmlc/xgboost) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | Y | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Weka](http://www.cs.waikato.ac.nz/ml/weka/) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Weka](https://www.cs.waikato.ac.nz/ml/weka/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](https://togaware.com/rattle/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | N | 是（仅适用于 Ubuntu） |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CatBoost](https://tech.yandex.com/catboost/) | N | 是（仅适用于 Ubuntu） |
@@ -113,21 +113,21 @@ Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow](https://www.tensorflow.org/) | Y (Windows 2016) | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Horovod](https://github.com/uber/horovod) | N | Y (Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Y (Windows 2016) | Y|
+| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](https://mxnet.io/) | Y (Windows 2016) | Y|
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Caffe 和 Caffe2](https://github.com/caffe2/caffe2) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Chainer](https://chainer.org/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Torch](http://torch.ch/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Theano](https://github.com/Theano/Theano) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Keras](https://keras.io/)| N | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [PyTorch](http://pytorch.org/)| N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [PyTorch](https://pytorch.org/)| N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [NVidia Digits](https://github.com/NVIDIA/DIGITS) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet 模型服务器](https://github.com/awslabs/mxnet-model-server) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow 服务](https://www.tensorflow.org/serving/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA、CUDNN、NVIDIA 驱动程序](https://developer.nvidia.com/cuda-toolkit) | Y | Y |
 | **大数据平台（仅限 Devtest）**|||
-| &nbsp;&nbsp;&nbsp;&nbsp;* 本地独立 [Spark](http://spark.apache.org/) | Y | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* 本地 [Hadoop](http://hadoop.apache.org/)（HDFS、YARN） | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* 本地独立 [Spark](https://spark.apache.org/) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* 本地 [Hadoop](https://hadoop.apache.org/)（HDFS、YARN） | N | Y |
 
 ## <a name="get-started"></a>入门
 

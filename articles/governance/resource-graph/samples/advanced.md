@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8bb1733090ac2a4f3fad837e55943706309c4a5a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 9cb43cfdf930b14449f5c7130df275ef0b8d6484
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344006"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842611"
 ---
 # <a name="advanced-resource-graph-queries"></a>高级资源图表查询
 
@@ -74,7 +74,7 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 ## <a name="vm-regex"></a>由正则表达式匹配的虚拟机
 
 此查询查找与某个[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)（称为 _regex_）匹配的虚拟机。
-可以使用 **matches regex @** 定义要匹配的正则表达式，即 `^Contoso(.*)[0-9]+$`。 该 regex 定义说明如下：
+可以使用 **matches regex \@** 定义要匹配的正则表达式，即 `^Contoso(.*)[0-9]+$`。 该 regex 定义说明如下：
 
 - `^` - 匹配项必须以该字符串的开头开头。
 - `Contoso` - 区分大小写的字符串。

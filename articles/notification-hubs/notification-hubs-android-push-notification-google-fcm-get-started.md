@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/05/2019
 ms.author: jowargo
-ms.openlocfilehash: d2de4a4be8838cf696d2d3ed6589e8f154a6ca05
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 2fe448f3ed91f2c6dd242c24aa378c3541eceecc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959819"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857940"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>教程：使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到 Android 设备
 
@@ -29,7 +29,7 @@ ms.locfileid: "55959819"
 
 本教程介绍如何使用 Azure 通知中心和 Firebase Cloud Messaging (FCM) 将通知推送到 Android 应用程序。 在本教程中，请创建一个空白 Android 应用，以便使用 Firebase Cloud Messaging (FCM) 接收推送通知。
 
-可以从 [此处](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStartedFirebase)的 GitHub 中下载本教程的已完成代码。
+可以从 [此处](https://github.com/Azure/azure-notificationhubs-android/tree/master/samples/FCMTutorialApp)的 GitHub 中下载本教程的已完成代码。
 
 在本教程中，我们将执行以下步骤：
 
@@ -92,7 +92,7 @@ ms.locfileid: "55959819"
 1. 在**应用**的 `Build.Gradle` 文件中，在 **dependencies** 部分添加以下行。
 
     ```gradle
-    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
@@ -101,7 +101,7 @@ ms.locfileid: "55959819"
     ```gradle
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -111,7 +111,7 @@ ms.locfileid: "55959819"
 1. 在**应用**的 `Build.Gradle` 文件中的 **dependencies** 节内添加以下行（如果没有此行）。 
 
     ```gradle
-    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
     ```
 
 2. 在该文件的末尾添加以下插件（如果尚不存在）。 
@@ -186,8 +186,8 @@ ms.locfileid: "55959819"
         }
         ```
 
-    > [!IMPORTANT]
-    > 输入通知中心的**名称**和 **DefaultListenSharedAccessSignature**，然后继续。 
+     > [!IMPORTANT]
+     > 输入通知中心的**名称**和 **DefaultListenSharedAccessSignature**，然后继续。 
 2. 添加名为 `MyInstanceIDService` 的另一个类。 此类是实例 ID 侦听器服务实现。
 
     此类的代码调用 `IntentService` 以在后台 [刷新 FCM 令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
@@ -554,7 +554,7 @@ ms.locfileid: "55959819"
 <!-- URLs. -->
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
+[Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
