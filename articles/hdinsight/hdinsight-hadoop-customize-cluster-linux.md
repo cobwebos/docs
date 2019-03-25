@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200678"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361687"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
@@ -26,6 +26,8 @@ Azure HDInsight 提供一个称为“脚本操作”的配置方法，该方法�
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Windows 停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 还可以将脚本操作作为 HDInsight 应用程序发布到 Azure 市场。 有关 HDInsight 应用程序的详细信息，请参阅[在 Azure 市场中发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>权限
 
@@ -131,7 +133,7 @@ Azure HDInsight 提供一个称为“脚本操作”的配置方法，该方法�
 >
 > 使用 root 权限运行的脚本操作。 确保先了解脚本的作用，然后再将它应用到群集。
 
-将脚本应用到群集时，群集状态将从“正在运行”更改为“已接受”。 然后，状态将更改为“HDInsight 配置”，最后恢复为“正在运行”，表示脚本成功。 脚本状态记录在脚本操作历史记录中。 此信息告知脚本是成功还是失败。 例如，`Get-AzureRmHDInsightScriptActionHistory` PowerShell cmdlet 显示脚本的状态。 它会返回类似于以下文本的信息：
+将脚本应用到群集时，群集状态将从“正在运行”更改为“已接受”。 然后，状态将更改为“HDInsight 配置”，最后恢复为“正在运行”，表示脚本成功。 脚本状态记录在脚本操作历史记录中。 此信息告知脚本是成功还是失败。 例如，`Get-AzHDInsightScriptActionHistory` PowerShell cmdlet 显示脚本的状态。 它会返回类似于以下文本的信息：
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 8/14/2017 7:40:55 PM
@@ -223,7 +225,7 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>在创建群集期间从 Azure PowerShell 使用脚本操作
 
-本部分使用 [Add-AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) cmdlet 来调用脚本，以自定义群集。 开始之前，请确保安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install)。
+在本部分中，你使用[添加 AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) cmdlet 来调用脚本，以自定义群集。 开始之前，请确保安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install)。
 
 以下脚本演示如何在使用 PowerShell 创建群集时应用脚本操作：
 
@@ -368,13 +370,13 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 | cmdlet | 函数 |
 | --- | --- |
-| `Get-AzureRmHDInsightPersistedScriptAction` |检索有关持久化脚本操作的信息。 |
-| `Get-AzureRmHDInsightScriptActionHistory` |检索已应用到群集的脚本操作的历史记录，或特定脚本的详细信息。 |
-| `Set-AzureRmHDInsightPersistedScriptAction` |将即席脚本操作升级为持久化脚本操作。 |
-| `Remove-AzureRmHDInsightPersistedScriptAction` |将持久化脚本操作降级为即席脚本操作。 |
+| `Get-AzHDInsightPersistedScriptAction` |检索有关持久化脚本操作的信息。 |
+| `Get-AzHDInsightScriptActionHistory` |检索已应用到群集的脚本操作的历史记录，或特定脚本的详细信息。 |
+| `Set-AzHDInsightPersistedScriptAction` |将即席脚本操作升级为持久化脚本操作。 |
+| `Remove-AzHDInsightPersistedScriptAction` |将持久化脚本操作降级为即席脚本操作。 |
 
 > [!IMPORTANT]  
-> `Remove-AzureRmHDInsightPersistedScriptAction` 不会撤消脚本执行的操作。 此 cmdlet 仅删除持久化标志。
+> `Remove-AzHDInsightPersistedScriptAction` 不会撤消脚本执行的操作。 此 cmdlet 仅删除持久化标志。
 
 以下示例脚本演示如何使用 cmdlet 来升级再降级脚本。
 
