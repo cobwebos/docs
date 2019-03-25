@@ -7,16 +7,18 @@ items:
     href: data-explorer-overview.md
 - name: 快速入门
   items:
-  - name: 创建群集 - Azure 门户
-    href: create-cluster-database-portal.md
-  - name: 创建群集 - Azure CLI
-    href: create-cluster-database-cli.md
-  - name: 创建群集 - PowerShell
-    href: create-cluster-database-powershell.md
-  - name: 创建群集 - C#
-    href: create-cluster-database-csharp.md
-  - name: 创建群集 - Python
-    href: create-cluster-database-python.md
+  - name: 创建群集和数据库
+    items:
+    - name: Azure 门户
+      href: create-cluster-database-portal.md
+    - name: Azure CLI
+      href: create-cluster-database-cli.md
+    - name: PowerShell
+      href: create-cluster-database-powershell.md
+    - name: C#
+      href: create-cluster-database-csharp.md
+    - name: Python
+      href: create-cluster-database-python.md
   - name: 引入数据
     items:
     - name: 流式处理数据 - 事件中心
@@ -133,9 +135,9 @@ items:
     href: https://aka.ms/adecostestimator
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 485a49d46e76c0e1db7d8d1297e126819ec6cd12
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: f3be712f345e603f3959c753ad3c81faaa1e00cf
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286476"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402654"

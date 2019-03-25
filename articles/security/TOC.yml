@@ -58,6 +58,7 @@ items:
         - name: 加密 VM - Azure PowerShell
           href: quick-encrypt-vm-powershell.md
       - name: Azure 磁盘加密
+        href: azure-security-disk-encryption-appendix.md
         items:
         - name: 磁盘加密先决条件
           href: azure-security-disk-encryption-prerequisites.md
@@ -65,8 +66,9 @@ items:
           href: azure-security-disk-encryption-windows.md
         - name: 适用于 Linux VM 的磁盘加密
           href: azure-security-disk-encryption-linux.md
-      - name: 有关磁盘加密的附录
-        href: azure-security-disk-encryption-appendix.md
+        - name: 使用 VMSS 扩展序列化进行磁盘加密
+          href: azure-security-disk-encryption-extension-sequencing.md
+        - name: 有关磁盘加密的附录
       - name: 磁盘加密常见问题解答
         href: azure-security-disk-encryption-faq.md
       - name: 故障排除
@@ -335,7 +337,7 @@ items:
       items:
       - name: 审核和日志记录
         href: azure-security-threat-modeling-tool-auditing-and-logging.md
-      - name: 身份验证
+      - name: Authentication
         href: azure-security-threat-modeling-tool-authentication.md
       - name: 授权
         href: azure-security-threat-modeling-tool-authorization.md
@@ -353,9 +355,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: 会话管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 5cb4cbbbeb1773874a0de976f600dbb694cd7bcb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: dc0f98ace10f61a423e72fc0a61899ac1ed4b5b3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766958"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402467"

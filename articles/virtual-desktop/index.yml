@@ -1,17 +1,17 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 06b95c24914574a2aea59c6c597e3d9b3d5097cc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b9f4cd78288d1b9868a823c5e0ccd0b68b324229
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318729"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400247"
 documentType: LandingData
-title: Windows 虚拟桌面文档
+title: Windows 虚拟桌面预览版文档
 metadata:
-  title: Windows 虚拟桌面文档 - 教程、快速入门和 API 参考 | Microsoft Docs
-  description: 适用于 Azure 的 Windows 虚拟桌面是已在云中虚拟化的多用户 Windows 10 企业版体验。
+  title: Windows 虚拟桌面预览版文档 - 教程、快速入门和 API 参考 | Microsoft Docs
+  description: 适用于 Azure 的 Windows 虚拟桌面预览版是在云中虚拟化的多用户 Windows 10 企业版体验。
   author: Heidilohr
-  manager: dansimp
+  manager: daveba
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
@@ -23,11 +23,11 @@ sections:
 - title: 概述
   items:
   - type: paragraph
-    text: 了解 Windows 虚拟桌面及其使用方法。 教程、操作方法、参考内容等演示了如何设置主机池和租户并将角色分配给 Windows 虚拟桌面环境的用户。
+    text: 了解 Windows 虚拟桌面预览版及其使用方法。 教程、操作方法、参考内容等演示了如何设置主机池和租户并将角色分配给 Windows 虚拟桌面环境的用户。
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/virtual-desktop/overview">什么是 Windows 虚拟桌面（预览版）？</a>
+    - html: <a href="/azure/virtual-desktop/overview">什么是 Windows 虚拟桌面预览版？</a>
 - title: 分步教程
   items:
   - type: paragraph
@@ -44,4 +44,4 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell（预览版）</a>
+    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
