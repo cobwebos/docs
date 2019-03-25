@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: b12809627bc7a3ab3f17f4c3b11bc3a899fd0485
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849918"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368946"
 ---
 # <a name="azure-backup-architecture"></a>Azure 备份体系结构
 
@@ -179,7 +179,7 @@ Vm 磁盘存储空间和可用的磁盘类型的详细信息，请参阅以下�
 可以使用高级存储的 Azure 备份来备份 Azure Vm:
 
 - 在备份虚拟机使用高级存储的过程中，备份服务会创建名为的临时暂存位置*AzureBackup-*，存储帐户中。 暂存位置的大小等于恢复点快照大小。
-- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 [了解详细信息](../storage/common/storage-scalability-targets.md#premium-storage-account-scale-limits)。 不要修改暂存位置。
+- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 [了解详细信息](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits)。 不要修改暂存位置。
 - 备份作业完成后，将删除暂存位置。
 - 用于暂存位置的存储的价格与[高级存储定价](../virtual-machines/windows/disks-types.md#billing)相一致。
 

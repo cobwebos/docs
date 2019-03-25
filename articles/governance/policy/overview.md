@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1cfe7dab907a332f1a38560c39d4f6476cee81aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7b5d9d483d05ac8225ea4b7497922192be44f1bc
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004721"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731689"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -22,7 +22,7 @@ ms.locfileid: "56004721"
 你的公司是否正遇到了大量似乎难以解决的 IT 问题？
 良好的 IT 治理涉及在战略级别上规划各项举措和设置优先级，以便管理和预防问题。 Azure Policy 迎合了此策略需求。
 
-Azure Policy 是 Azure 中的一项服务，可用于创建、分配和管理策略。 这些策略将在整个资源中强制实施不同的规则和效果，以便这些资源符合公司标准和服务级别协议。 Azure Policy 通过评估资源是否符合指定策略来满足此需求。 例如，可以设置一项策略，仅允许环境中有特定 SKU 大小的虚拟机。 实施此策略后，将评估新资源和现有资源的符合性。 通过使用正确的策略类型，可以确保现有资源的符合性。 本文档后面将更详细地讲述如何使用 Azure Policy 创建和实施策略。
+Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理策略。 这些策略将在整个资源中强制实施不同的规则和效果，以便这些资源符合公司标准和服务级别协议。 Azure Policy 通过评估资源是否符合指定策略来满足此需求。 例如，可以设置一项策略，仅允许环境中有特定 SKU 大小的虚拟机。 实施此策略后，将评估新资源和现有资源的符合性。 通过使用正确的策略类型，可以确保现有资源的符合性。 本文档后面将更详细地讲述如何使用 Azure Policy 创建和实施策略。
 
 > [!IMPORTANT]
 > 现在，无论定价层如何，为所有分配都提供了 Azure Policy 的符合性评估。 如果分配未显示符合性数据，请确保已向 Microsoft.PolicyInsights 资源提供程序注册订阅。
