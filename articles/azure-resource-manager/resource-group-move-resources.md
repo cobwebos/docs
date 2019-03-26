@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 98236133a90cfddfe2ea476486556318b2c88b10
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081247"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418884"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -49,7 +49,7 @@ ms.locfileid: "58081247"
 
 ## <a name="services-that-can-be-moved"></a>可以移动的服务
 
-以下列表汇总提供了可移动到新资源组和订阅的 Azure 服务。 有关更为详细的信息，请参阅[支持移动操作的资源](move-support-resources.md)。
+以下列表汇总提供了可移动到新资源组和订阅的 Azure 服务。 列表中的哪些资源类型支持移动，请参阅[移动对资源的操作支持](move-support-resources.md)。
 
 * Analysis Services
 * API 管理
@@ -143,7 +143,7 @@ ms.locfileid: "58081247"
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes 服务
-* 实验室服务 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
+* 实验室服务-教室实验室不能移动到新的资源组或订阅。 开发测试实验室可以移动到新的资源组在同一订阅中，但不是能跨订阅。
 * 托管应用程序
 * Microsoft 基因组学
 * Azure 上的 SAP HANA

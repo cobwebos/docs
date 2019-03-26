@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: ca186090f28f04811030e83b159782a9bfeb87f9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ccea3ebae4bcc19410cfb5537a7140f69b04c4e7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400775"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438778"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
@@ -162,8 +162,8 @@ reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hide
 
 若要禁用自动更新：
 
-1. 按照中的说明安装 office 365 [Office 映像准备](set-up-customize-master-image.md#office-image-preparation)。
-2. 按照中的说明安装任何其他应用程序[用户配置文件设置 (FSLogix)](set-up-customize-master-image.md#user-profile-setup-fslogix)， [Windows Defender](set-up-customize-master-image.md#windows-defender)，和[其他应用程序和注册表配置](set-up-customize-master-image.md#other-applications-and-registry-configuration).
+1. 按照中的说明安装 office 365[软件准备和安装](set-up-customize-master-image.md#software-preparation-and-installation)。
+2. 按照中的说明安装任何其他应用程序[设置用户配置文件容器 (FSLogix)](set-up-customize-master-image.md#set-up-user-profile-container-fslogix)，[配置 Windows Defender](set-up-customize-master-image.md#configure-windows-defender)，和[其他应用程序和注册表配置](set-up-customize-master-image.md#other-applications-and-registry-configuration)。
 3. 禁用本地 VM 上的 Windows 自动更新服务。
 4. 打开**本地组策略编辑器\\管理模板\\Windows 组件\\Windows Update**。
 5. 右键单击**配置自动更新**并将其设置为**禁用**。
@@ -171,7 +171,7 @@ reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hide
 此外可以在命令提示符下，禁用自动更新上运行以下命令。
 
 ```batch
-reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
+reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
 运行此命令适用于 Windows 10 电脑指定开始布局。
@@ -232,9 +232,7 @@ Windows 虚拟桌面不正式支持适用于业务和团队 Skype。
 
 ### <a name="set-up-user-profile-container-fslogix"></a>设置用户配置文件容器 (FSLogix)
 
-若要包含 FSLogix 容器映像的一部分，按照中的说明[主机池将用户配置文件共享设置](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)。
-
-在文件共享注册表项时，使用中创建的文件共享[配置为文件服务器的权限](set-up-customize-master-image.md#configure-permissions-for-the-file-server)计划存储配置文件容器。 您还可以测试 FSLogix 容器使用此功能，[快速入门](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start)。
+若要包含 FSLogix 容器映像的一部分，按照中的说明[主机池将用户配置文件共享设置](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)。 你可以测试 FSLogix 容器使用的功能[本快速入门](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start)。
 
 ### <a name="configure-windows-defender"></a>配置 Windows Defender
 

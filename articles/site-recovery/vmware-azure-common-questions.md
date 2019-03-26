@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 03/21/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 82ae36eaaf4616dbd85760a0962f301a2b1a20f5
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: cdb8fe5deb71c014f7e0af01d070e5004d8c9994
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319374"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418782"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -57,12 +57,12 @@ ms.locfileid: "58319374"
 
 * Vs 的标准存储帐户。标准 HDD 托管磁盘
 
-    - **Asr 的预配的存储磁盘**:S10
+    - **预配的存储磁盘由 Azure Site Recovery**:S10
     - **按天计费的标准存储帐户使用卷**: 5 美元 / 月
     - **标准托管的磁盘收费预配的卷**: 5.89 美元 / 月
 
 * 高级存储帐户 Vs。高级 SSD 托管的磁盘 
-    - **Asr 的预配的存储磁盘**:P10
+    - **预配的存储磁盘由 Azure Site Recovery**:P10
     - **在预配的卷上的高级存储帐户收费**: 17.92 美元 / 月
     - **高级托管的磁盘收费预配的卷**: 17.92 美元 / 月
 
@@ -203,7 +203,7 @@ Riverbed，我们的合作伙伴提供有关如何使用 Azure Site Recovery 的
 对于从 VMware 复制到 Azure，可以修改磁盘大小。 如果要添加新磁盘，则需要为 VM 添加磁盘并重新启用保护。
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>可以在迁移到新 Vcenter 的本地计算机上而不会影响正在进行的复制？
-否，更改 Vcenter 或迁移将影响正在进行的复制。 你需要为 ASR 设置新的 Vcenter 并为计算机启用复制。
+否，更改 Vcenter 或迁移将影响正在进行的复制。 您需要设置 Azure Site Recovery 和新的 Vcenter 和对计算机启用复制。
 
 ### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>是否可以复制到在其上配置了 Vnet（具有 Azure 存储防火墙）的缓存/目标存储帐户？
 否，Azure Site Recovery 不支持复制到 Vnet 上的存储。
@@ -275,7 +275,7 @@ Riverbed，我们的合作伙伴提供有关如何使用 Azure Site Recovery 的
 安装程序保存在配置服务器上的 **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** 文件夹中。
 
 ## <a name="how-do-i-install-the-mobility-service"></a>如何安装移动服务？
-可以使用[推送安装](vmware-azure-install-mobility-service.md)，或者通过 UI 或 Powershell 使用[手动安装](vmware-physical-mobility-service-install-manual.md)，在要复制的每个 VM 上安装移动服务。 或者，可以使用 [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) 等部署工具进行部署。
+可以使用[推送安装](vmware-physical-mobility-service-overview.md#push-installation)，或者通过 UI 或 Powershell 使用[手动安装](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)，在要复制的每个 VM 上安装移动服务。 或者，可以使用 [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) 等部署工具进行部署。
 
 
 

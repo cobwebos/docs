@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5d4d591c465cae91c59e8f86ea9d3e421db0f952
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3097f4a1716718df5d67769e234562a234623cfe
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112103"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407022"
 ---
-# <a name="monitoring-metrics-for-front-door"></a>监视 Front Door 的指标
+# <a name="monitoring-metrics-and-logs-for-front-door"></a>监视指标和日志中的第一道防线
 
 通过使用 Azure 第一道防线服务，可以按下列方式监视资源：
-* [日志](#diagnostic-logging)：通过日志记录，可出于监视目的从资源保存或使用性能、访问及其他数据。
 
 * [指标](#metrics)：应用程序网关当前有七个指标可用来查看性能计数器。
+* [日志](#diagnostic-logging)：通过日志记录，可出于监视目的从资源保存或使用性能、访问及其他数据。
 
 ## <a name="metrics"></a>度量值
 

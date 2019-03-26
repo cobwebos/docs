@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 5be1835de2aa1631c4ec2115dd34ea85f0267403
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 954d19fb557540e4fdc6b17f313127e01eba97a7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870884"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435594"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>针对内容分发类型优化 Azure CDN
 
@@ -38,6 +38,8 @@ ms.locfileid: "56870884"
 
 * [常规 Web 分发](#general-web-delivery)。 此优化也用于媒体流式处理和大型文件下载。
 
+> [!NOTE]
+> 通过提供来自 Microsoft 的动态站点加速[Azure 第一道防线服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)。
 
 **来自 Verizon 的标准 Azure CDN** 和 **来自 Verizon 的高级 Azure CDN** 配置文件支持以下优化：
 
@@ -120,6 +122,9 @@ Microsoft 建议测试不同提供程序的性能差异，以选择最适合分�
 ### <a name="dynamic-site-acceleration"></a>动态站点加速
 
  动态站点加速 (DSA) 适用于**来自 Akamai 的标准 Azure CDN**、**来自 Verizon 的标准 Azure CDN** 和**来自 Verizon 的高级 Azure CDN** 配置文件。 使用此优化涉及额外的费用；有关详细信息，请参阅[内容分发网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
+
+> [!NOTE]
+> 通过提供来自 Microsoft 的动态站点加速[Azure 第一道防线服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)这是一个全局[任意播](https://en.wikipedia.org/wiki/Anycast)利用 Microsoft 的私有全局网络来提供应用程序工作负荷的服务。
 
 DSA 包括各种对动态内容延迟和性能有益的技术。 这些技术包括路由和网络优化、TCP 优化等。 
 

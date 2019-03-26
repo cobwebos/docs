@@ -3,7 +3,7 @@ title: Azure Monitor（预览版）中的 Azure Active Directory 登录日志架
 description: 介绍在 Azure Monitor（预览版）中使用的 Azure AD 登录日志架构
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0834333dbec9f8aa23092339ea41d0b6cc5aba08
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 78ce1de5b5b9ff46efcc9e7faed9aa147b53211a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169711"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439050"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor（预览版）中的 Azure AD 登录日志架构
 
@@ -151,7 +151,7 @@ ms.locfileid: "56169711"
 
 ## <a name="field-descriptions"></a>字段说明
 
-| 字段名 | 说明 |
+| 字段名 | 描述 |
 |------------|-------------|
 | 时间 | 日期和时间 (UTC)。 |
 | ResourceId | 此值未映射，可以放心地忽略此字段。  |

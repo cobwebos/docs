@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 88abd3d17218f1168119a66701f1474d27244acf
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122920"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438251"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 
@@ -150,7 +150,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 可以通过编辑自定义策略，将 HTML5/CSS 模板的链接直接添加到用户旅程。
 
-要在用户旅程中使用的自定义 HTML5/CSS 模板必须在可在用户旅程中使用的内容定义列表中指定。 为此，必须在自定义策略 XML 文件的 *<BuildingBlocks>* 节下面声明一个可选的 *<ContentDefinitions>* XML 元素。
+要在用户旅程中使用的自定义 HTML5/CSS 模板必须在可在用户旅程中使用的内容定义列表中指定。 为此，一个可选 *\<ContentDefinitions >* XML 元素必须声明下 *\<BuildingBlocks >* 自定义策略 XML 文件的部分。
 
 下表描述了 Azure AD B2C 标识体验引擎识别的内容定义 ID 集及其相关的页面类型。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 73f97128dc7b71179c0b0ab41340af6c0f371da1
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 0d898c8d2273c431967603c36c8ff9d0dd8b4b7b
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402960"
+ms.locfileid: "58417839"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure 数据框网关系统要求
 
@@ -31,7 +31,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 | 规范                                          | 描述              |
 |---------------------------------------------------------|--------------------------|
-| 虚拟处理器（核心数）   | 最低为 4 核 |            
+| 虚拟处理器（核心数）   | 最低为 4 核 |
 | 内存  | 最低为 8 GB|
 | 可用性|单节点|
 | 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、预配精简，并且必须由 SSD 提供支持|

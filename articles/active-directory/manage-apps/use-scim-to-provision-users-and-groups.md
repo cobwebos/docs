@@ -11,49 +11,52 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 2/22/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946a70a1b3fe2ddcaf8ec58b9ebc297f1d8894fd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 18042b34e7c3a32dd5e4706c8020324c0cef0754
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178849"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437384"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
 ## <a name="overview"></a>概述
-Azure Active Directory (Azure AD) 可以使用[跨域标识管理系统 (SCIM) 2.0 协议规范](https://tools.ietf.org/html/draft-ietf-scim-api-19)中定义的接口，将用户和组自动预配到以 Web 服务为前端的任何应用程序或标识存储。 Azure Active Directory 可将创建、修改或删除分配用户和组的请求发送到 web 服务。 然后，Web 服务可将这些请求转换为针对目标标识存储的操作。 
+
+SCIM 是标准化的协议和架构的目标是为驱动器中标识跨多个系统的管理方式更好的一致性。 在应用程序进行用户管理支持 SCIM 终结点，Azure AD 用户预配服务可以发送请求来创建、 修改或删除已分配的用户和组添加到此终结点。 
+
+Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../saas-apps/tutorial-list.md)实现 SCIM，如接收用户的方法更改通知。  除此之外，客户可以连接支持的特定配置文件的应用程序[SCIM 2.0 协议规范](https://tools.ietf.org/html/rfc7644)Azure 门户中使用泛型"非库"集成选项。 
+
+本文档的主要重点是作为非库应用其泛型 SCIM 连接器的一部分实现的 Azure AD 的 SCIM 2.0 的配置文件。 但是，成功测试的应用程序支持 SCIM 的一般的 Azure ad 连接器是将为支持用户预配 Azure AD 库中列出的应用的步骤。 Azure AD 应用程序库中列出你的应用程序的详细信息，请参阅[Microsoft 应用程序网络](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)。
+ 
 
 >[!IMPORTANT]
 >Azure AD SCIM 实现的行为最近于 2018 年 12 月 18 日更新。 有关更改内容的信息，请参阅 [Azure AD 用户预配服务 SCIM 2.0 协议合规性](application-provisioning-config-problem-scim-compatibility.md)。
 
 ![][0]
-*图 1：通过 Web 服务从 Azure Active Directory 预配到标识存储*
+*图 1：从 Azure Active Directory 预配到实现 SCIM 的应用程序或标识存储*
 
-此功能可与 Azure AD 中的“携带自己的应用“功能结合使用。 此功能允许对由 SCIM Web 服务前置的应用程序启用单一登录和自动用户预配。
+本文分为四个部分：
 
-在 Azure Active Directory 中使用 SCIM 有两种用例：
+* **[预配的用户和组添加到第三方应用程序支持 SCIM 2.0](#provisioning-users-and-groups-to-applications-that-support-scim)**  -如果你的组织使用，实现的 SCIM 2.0 Azure AD 配置文件支持，可以开始自动同时运行的第三方应用程序预配和取消预配的用户和组今天。
 
-* **将用户和组预配到支持 SCIM 的应用程序** - 支持 SCIM 2.0 并使用 OAuth 持有者令牌进行身份验证的应用程序可与 Azure AD 配合使用，无需配置。
+* **[了解 Azure AD SCIM 实现](#understanding-the-azure-ad-scim-implementation)** -如果要构建支持 SCIM 2.0 用户管理 API 的应用程序，此部分详细介绍了如何实现 Azure AD SCIM 客户端，以及如何应对建模SCIM 协议请求处理和响应。
   
-* 为支持其他基于 API 的预配的应用程序构建自己的预配解决方案 - 对于非 SCIM 应用程序，可以创建一个 SCIM 终结点用于在 Azure AD SCIM 终结点与应用程序为用户预配支持的任何 API 之间进行转换。 为了帮助开发 SCIM 终结点，我们提供了公共语言基础结构 (CLI) 库以及代码示例，这些代码示例说明如何提供 SCIM 终结点和转换 SCIM 消息。  
+* **[构建使用 Microsoft CLI 库的 SCIM 终结点](#building-a-scim-endpoint-using-microsoft-cli-libraries)** -帮助开发 SCIM 终结点，但公共语言基础结构 (CLI) 库以及代码示例演示如何提供 SCIM 终结点和转换 SCIM 消息。  
+
+* **[用户和组架构参考](#user-and-group-schema-reference)** -介绍了支持的非库应用程序的 Azure AD SCIM 实现的用户和组架构。 
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>将用户和组预配到支持 SCIM 的应用程序
-Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标识管理系统 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) Web 服务、并接受使用 OAuth 持有者令牌进行身份验证的应用程序。 在 SCIM 2.0 规范中，应用程序必须符合以下要求：
-
-* 支持根据 SCIM 协议第 3.3 部分创建用户和/或组。  
-* 支持根据 SCIM 协议第 3.5.2 部分修改具有修补请求的用户和/或组。  
-* 支持根据 SCIM 协议第 3.4.1 部分检索已知资源。  
-* 支持根据 SCIM 协议第 3.4.2 部分查询用户和/或组。  默认情况下，用户是根据 externalId 查询的，组是根据 displayName 查询的。  
-* 支持根据 SCIM 协议第 3.4.2 部分，按 ID 和管理员查询用户。  
-* 支持根据 SCIM 协议第 3.4.2 部分，按 ID 和成员查询组。  
-* 接受根据 SCIM 协议第 2.1 部分使用 OAuth 持有者令牌进行授权。
+可以将 azure AD 配置为自动预配分配用户和组添加到实现的特定配置文件的应用程序[SCIM 2.0 协议](https://tools.ietf.org/html/rfc7644)。 配置文件的详细信息记录在了解 Azure AD SCIM 实现中。
 
 请咨询应用程序提供者，或参阅应用程序提供者文档中的说明，以了解是否符合这些要求。
+
+>[!IMPORTANT]
+>Azure AD SCIM 实现基于 Azure AD 用户预配服务，它旨在永久保留在 Azure AD 之间同步用户和目标应用程序，并实现一组非常特定的标准操作。 请务必了解这些行为，以便了解 Azure AD SCIM 客户端的行为。 有关详细信息，请参阅[用户预配过程中发生？](user-provisioning.md#what-happens-during-provisioning)。
 
 ### <a name="getting-started"></a>入门
 支持本文所述 SCIM 配置文件的应用程序可以使用 Azure AD 应用程序库中的“非库应用程序”功能连接到 Azure Active Directory。 连接后，Azure AD 将每隔 40 分钟运行同步过程，此过程将为分配的用户和组查询应用程序的 SCIM 终结点，并根据分配详细信息创建或修改这些用户和组。
@@ -97,18 +100,519 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 > 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 
 
 
-## <a name="building-your-own-provisioning-solution-for-any-application"></a>为任何应用程序生成自己的预配解决方案
-创建可与 Azure Active Directory 交互的 SCIM Web 服务后，可为提供 REST 或 SOAP 用户预配 API 的几乎所有应用程序启用单一登录和自动用户预配。
+## <a name="understanding-the-azure-ad-scim-implementation"></a>了解 Azure AD SCIM 实现
+
+如果要构建支持 SCIM 2.0 用户管理 API 的应用程序，此部分详细介绍了如何实现 Azure AD SCIM 客户端，以及如何应对建模 SCIM 协议请求处理和响应。 在已实现 SCIM 终结点之后, 您可以按照上一部分中所述的过程来测试它。
+
+内[SCIM 2.0 协议规范](http://www.simplecloud.info/#Specification)，你的应用程序必须满足以下要求：
+
+* 支持创建用户和 （可选） 还组，部分所述[SCIM 协议 3.3](https://tools.ietf.org/html/rfc7644#section-3.3)。  
+* 修改用户和/或具有修补请求为每个组的支持[部分的 SCIM 协议 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)。  
+* 检索已知的资源的用户或组之前创建的支持为每个[部分的 SCIM 协议 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1)。  
+* 支持查询用户和/或组，部分所述[SCIM 协议第 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2)。  默认情况下，用户通过检索其`id`由和查询其`username`并`externalid`，并对组进行查询的`displayName`。  
+* 支持根据 SCIM 协议第 3.4.2 部分，按 ID 和管理员查询用户。  
+* 支持根据 SCIM 协议第 3.4.2 部分，按 ID 和成员查询组。  
+* 接受单个持有者令牌进行身份验证和授权的 Azure AD 向应用程序。
+
+此外，实现的 SCIM 终结点，以确保与 Azure AD 的兼容性时按照下述通用准则：
+
+* `id` 是必需的属性的所有资源;每个资源应确保每个资源将返回的响应具有此属性，除了`ListResponse`与零个成员。
+* 应始终为响应查询/筛选器请求`ListResponse`。
+* 组是可选的但只有如果 SCIM 实现支持 PATCH 请求支持。
+* 不需要在修补程序响应中包含整个资源。
+* Microsoft Azure AD 仅使用以下运算符  
+     - `eq`
+     - `and`
+* 不需要区分大小写的匹配项中 SCIM，在特定的修补程序的结构化元素上`op`操作的值，如中所定义 https://tools.ietf.org/html/rfc7644#section-3.5.2。 Azure AD 发出操作的值作为`Add`， `Replace`，和`Remove`。
+* Microsoft Azure AD 发出请求以提取一个随机的用户和组，以确保终结点和凭据有效。 它还会作为的一部分**测试连接**流入[Azure 门户](https://portal.azure.com)。 
+* 可以在查询资源的属性应设置为匹配的属性中的应用程序[Azure 门户](https://portal.azure.com)。 有关详细信息，请参阅[自定义用户预配属性映射](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+
+### <a name="user-provisioning-and-de-provisioning"></a>用户预配和取消预配
+如下图所示，Azure Active Directory 将发送到 SCIM 服务以管理应用程序的标识存储中的用户的生命周期的消息。  
+
+![][4]
+*图 4：用户预配和取消预配顺序*
+
+### <a name="group-provisioning-and-de-provisioning"></a>组预配和取消预配
+组预配和取消预配是可选的。 实现并启用时下, 图显示的消息，Azure AD 会发送到 SCIM 服务以管理应用程序的标识存储中的组的生命周期。  这些消息与两种方法中的用户相关的消息不同： 
+
+* 检索组的请求规定将成员属性从请求响应中提供的任何资源中排除。  
+* 确定引用属性是否具有特定值的请求是有关成员属性的请求。  
+
+![][5]
+*图 5：组预配和取消预配顺序*
+
+### <a name="scim-protocol-requests-and-responses"></a>SCIM 协议请求和响应
+本部分提供示例 SCIM 请求发出的 Azure AD SCIM 客户端，以及预期的示例响应。 为获得最佳结果，因此应将应用以处理这些请求以这种格式，并发出预期的响应。
+
+>[!IMPORTANT]
+>若要了解 Azure AD 用户预配服务如何以及何时发出如下所述的操作，请参阅[用户预配过程中发生？](user-provisioning.md#what-happens-during-provisioning)。
+
+- [用户操作](#user-operations)
+  - [创建用户](#create-user)
+    - [请求](#request)
+    - [响应](#response)
+  - [获取用户](#get-user)
+    - [请求](#request-1)
+    - [响应](#response-1)
+  - [通过查询获取用户](#get-user-by-query)
+    - [请求](#request-2)
+    - [响应](#response-2)
+  - [获取用户查询的零个结果](#get-user-by-query---zero-results)
+    - [请求](#request-3)
+    - [响应](#response-3)
+  - [更新用户多值属性](#update-user-multi-valued-properties)
+    - [请求](#request-4)
+    - [响应](#response-4)
+  - [更新用户单值属性](#update-user-single-valued-properties)
+    - [请求](#request-5)
+    - [响应](#response-5)
+  - [删除用户](#delete-user)
+    - [请求](#request-6)
+    - [响应](#response-6)
+- [组操作](#group-operations)
+  - [创建组](#create-group)
+    - [请求](#request-7)
+    - [响应](#response-7)
+  - [获取组](#get-group)
+    - [请求](#request-8)
+    - [响应](#response-8)
+  - [获取组的显示名称](#get-group-by-displayname)
+    - [请求](#request-9)
+    - [响应](#response-9)
+  - [更新组 [非成员属性]](#update-group-non-member-attributes)
+    - [请求](#request-10)
+    - [响应](#response-10)
+  - [更新组 [添加成员。](#update-group-add-members)
+    - [请求](#request-11)
+    - [响应](#response-11)
+  - [更新组 [删除成员]](#update-group-remove-members)
+    - [请求](#request-12)
+    - [响应](#response-12)
+  - [删除组](#delete-group)
+    - [请求](#request-13)
+    - [响应](#response-13)
+
+### <a name="user-operations"></a>用户操作
+
+* 用户可以通过查询`userName`或`email[type eq "work"]`属性。  
+
+#### <a name="create-user"></a>创建用户
+
+###### <a name="request"></a>请求
+*POST/用户*
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User",
+        "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"],
+    "externalId": "0a21f0f2-8d2a-4f8e-bf98-7363c4aed4ef",
+    "userName": "Test_User_ab6490ee-1e48-479e-a20b-2d77186b5dd1",
+    "active": true,
+    "emails": [{
+        "primary": true,
+        "type": "work",
+        "value": "Test_User_fd0ea19b-0777-472c-9f96-4f70d2226f2e@testuser.com"
+    }],
+    "meta": {
+        "resourceType": "User"
+    },
+    "name": {
+        "formatted": "givenName familyName",
+        "familyName": "familyName",
+        "givenName": "givenName"
+    },
+    "roles": []
+}
+```
+
+##### <a name="response"></a>响应
+*HTTP/1.1 201 已创建*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+    "id": "48af03ac28ad4fb88478",
+    "externalId": "0a21f0f2-8d2a-4f8e-bf98-7363c4aed4ef",
+    "meta": {
+        "resourceType": "User",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+    },
+    "userName": "Test_User_ab6490ee-1e48-479e-a20b-2d77186b5dd1",
+    "name": {
+        "formatted": "givenName familyName",
+        "familyName": "familyName",
+        "givenName": "givenName",
+    },
+    "active": true,
+    "emails": [{
+        "value": "Test_User_fd0ea19b-0777-472c-9f96-4f70d2226f2e@testuser.com",
+        "type": "work",
+        "primary": true
+    }]
+}
+```
+
+
+#### <a name="get-user"></a>获取用户
+
+###### <a name="request"></a>请求
+*GET /Users/5d48a0a8e9f04aa38008* 
+
+###### <a name="response"></a>响应
+*HTTP/1.1 200 确定*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+    "id": "5d48a0a8e9f04aa38008",
+    "externalId": "58342554-38d6-4ec8-948c-50044d0a33fd",
+    "meta": {
+        "resourceType": "User",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+    },
+    "userName": "Test_User_feed3ace-693c-4e5a-82e2-694be1b39934",
+    "name": {
+        "formatted": "givenName familyName",
+        "familyName": "familyName",
+        "givenName": "givenName",
+    },
+    "active": true,
+    "emails": [{
+        "value": "Test_User_22370c1a-9012-42b2-bf64-86099c2a1c22@testuser.com",
+        "type": "work",
+        "primary": true
+    }]
+}
+```
+#### <a name="get-user-by-query"></a>通过查询获取用户
+
+##### <a name="request"></a>请求
+*GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
+
+##### <a name="response"></a>响应
+*HTTP/1.1 200 确定*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+    "totalResults": 1,
+    "Resources": [{
+        "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+        "id": "2441309d85324e7793ae",
+        "externalId": "7fce0092-d52e-4f76-b727-3955bd72c939",
+        "meta": {
+            "resourceType": "User",
+            "created": "2018-03-27T19:59:26.000Z",
+            "lastModified": "2018-03-27T19:59:26.000Z"
+            
+        },
+        "userName": "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081",
+        "name": {
+            "familyName": "familyName",
+            "givenName": "givenName"
+        },
+        "active": true,
+        "emails": [{
+            "value": "Test_User_91b67701-697b-46de-b864-bd0bbe4f99c1@testuser.com",
+            "type": "work",
+            "primary": true
+        }]
+    }],
+    "startIndex": 1,
+    "itemsPerPage": 20
+}
+
+```
+
+#### <a name="get-user-by-query---zero-results"></a>获取用户查询的零个结果
+
+##### <a name="request"></a>请求
+*GET/用户？ 筛选器 = 用户名 eq"不存在用户"*
+
+##### <a name="response"></a>响应
+*HTTP/1.1 200 确定*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+    "totalResults": 0,
+    "Resources": [],
+    "startIndex": 1,
+    "itemsPerPage": 20
+}
+
+```
+
+#### <a name="update-user-multi-valued-properties"></a>更新用户多值属性
+
+##### <a name="request"></a>请求
+*修补程序/用户/6764549bef60420686bc HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [
+            {
+            "op": "Replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "updatedEmail@microsoft.com"
+            },
+            {
+            "op": "Replace",
+            "path": "name.familyName",
+            "value": "updatedFamilyName"
+            }
+    ]
+}
+```
+
+##### <a name="response"></a>响应
+*HTTP/1.1 200 确定*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+    "id": "6764549bef60420686bc",
+    "externalId": "6c75de36-30fa-4d2d-a196-6bdcdb6b6539",
+    "meta": {
+        "resourceType": "User",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+    },
+    "userName": "Test_User_fbb9dda4-fcde-4f98-a68b-6c5599e17c27",
+    "name": {
+        "formatted": "givenName updatedFamilyName",
+        "familyName": "updatedFamilyName",
+        "givenName": "givenName"
+    },
+    "active": true,
+    "emails": [{
+        "value": "updatedEmail@microsoft.com",
+        "type": "work",
+        "primary": true
+    }]
+}
+```
+
+#### <a name="update-user-single-valued-properties"></a>更新用户单值属性
+
+##### <a name="request"></a>请求
+*修补程序/用户/5171a35d82074e068ce2 HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [{
+        "op": "Replace",
+        "path": "userName",
+        "value": "5b50642d-79fc-4410-9e90-4c077cdd1a59@testuser.com"
+    }]
+}
+```
+
+##### <a name="response"></a>响应
+*HTTP/1.1 200 确定*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+    "id": "5171a35d82074e068ce2",
+    "externalId": "aa1eca08-7179-4eeb-a0be-a519f7e5cd1a",
+    "meta": {
+        "resourceType": "User",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+        
+    },
+    "userName": "5b50642d-79fc-4410-9e90-4c077cdd1a59@testuser.com",
+    "name": {
+        "formatted": "givenName familyName",
+        "familyName": "familyName",
+        "givenName": "givenName",
+    },
+    "active": true,
+    "emails": [{
+        "value": "Test_User_49dc1090-aada-4657-8434-4995c25a00f7@testuser.com",
+        "type": "work",
+        "primary": true
+    }]
+}
+```
+
+#### <a name="delete-user"></a>删除用户
+
+##### <a name="request"></a>请求
+*DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
+
+##### <a name="response"></a>响应
+*HTTP/1.1 204 无内容*
+
+### <a name="group-operations"></a>组操作
+
+* 始终应使用空成员列表创建组。
+* 可以通过查询组`displayName`属性。
+* 更新组 PATCH 请求应产生*HTTP 204 无内容*在响应中。 不建议返回正文，其中含有列表的所有成员。
+* 不需要支持返回组的所有成员。
+
+#### <a name="create-group"></a>创建组
+
+##### <a name="request"></a>请求
+*POST /Groups HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
+    "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
+    "id": "c4d56c3c-bf3b-4e96-9b64-837018d6060e",
+    "displayName": "displayName",
+    "members": [],
+    "meta": {
+        "resourceType": "Group"
+    }
+}
+```
+
+##### <a name="response"></a>响应
+*HTTP/1.1 201 已创建*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+    "id": "927fa2c08dcb4a7fae9e",
+    "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
+    "meta": {
+        "resourceType": "Group",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+        
+    },
+    "displayName": "displayName",
+    "members": []
+}
+```
+
+#### <a name="get-group"></a>获取组
+
+##### <a name="request"></a>请求
+*GET/组/40734ae655284ad3abcc？ excludedAttributes = 成员 HTTP/1.1*
+
+##### <a name="response"></a>响应
+*HTTP/1.1 200 确定*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+    "id": "40734ae655284ad3abcc",
+    "externalId": "60f1bb27-2e1e-402d-bcc4-ec999564a194",
+    "meta": {
+        "resourceType": "Group",
+        "created": "2018-03-27T19:59:26.000Z",
+        "lastModified": "2018-03-27T19:59:26.000Z"
+    },
+    "displayName": "displayName",
+}
+```
+
+#### <a name="get-group-by-displayname"></a>获取组的显示名称
+
+##### <a name="request"></a>请求
+*GET /Groups？ excludedAttributes = 成员筛选器 = displayName eq"displayName"HTTP/1.1*
+
+##### <a name="response"></a>响应
+*HTTP/1.1 200 确定*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+    "totalResults": 1,
+    "Resources": [{
+        "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
+        "id": "8c601452cc934a9ebef9",
+        "externalId": "0db508eb-91e2-46e4-809c-30dcbda0c685",
+        "meta": {
+            "resourceType": "Group",
+            "created": "2018-03-27T22:02:32.000Z",
+            "lastModified": "2018-03-27T22:02:32.000Z",
+            
+        },
+        "displayName": "displayName",
+    }],
+    "startIndex": 1,
+    "itemsPerPage": 20
+}
+```
+#### <a name="update-group-non-member-attributes"></a>更新组 [非成员属性]
+
+##### <a name="request"></a>请求
+*PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [{
+        "op": "Replace",
+        "path": "displayName",
+        "value": "1879db59-3bdf-4490-ad68-ab880a269474updatedDisplayName"
+    }]
+}
+```
+
+##### <a name="response"></a>响应
+*HTTP/1.1 204 无内容*
+
+### <a name="update-group-add-members"></a>更新组 [添加成员。
+
+##### <a name="request"></a>请求
+*修补/组/a99962b9f99d4c4fac67 HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [{
+        "op": "Add",
+        "path": "members",
+        "value": [{
+            "$ref": null,
+            "value": "f648f8d5ea4e4cd38e9c"
+        }]
+    }]
+}
+```
+
+##### <a name="response"></a>响应
+*HTTP/1.1 204 无内容*
+
+#### <a name="update-group-remove-members"></a>更新组 [删除成员]
+
+##### <a name="request"></a>请求
+*修补/组/a99962b9f99d4c4fac67 HTTP/1.1*
+```json
+{
+    "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations": [{
+        "op": "Remove",
+        "path": "members",
+        "value": [{
+            "$ref": null,
+            "value": "f648f8d5ea4e4cd38e9c"
+        }]
+    }]
+}
+```
+
+##### <a name="response"></a>响应
+*HTTP/1.1 204 无内容*
+
+#### <a name="delete-group"></a>删除组
+
+##### <a name="request"></a>请求
+*DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
+
+##### <a name="response"></a>响应
+*HTTP/1.1 204 无内容*
+
+
+## <a name="building-a-scim-endpoint-using-microsoft-cli-libraries"></a>构建使用 Microsoft CLI 库的 SCIM 终结点
+通过与 Azure Active Directory 中创建的 SCIM web 服务的接口，可以启用自动用户预配为几乎任何应用程序或标识存储。
 
 工作方式如下：
 
-1. Azure AD 提供名为 [Microsoft.SystemForCrossDomainIdentityManagement](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/) 的公共语言基础结构库。 系统集成商和开发商可以使用此库来创建与部署能够将 Azure AD 连接到任何应用程序的标识存储的、基于 SCIM 的 Web 服务终结点。
-2. 将在 Web 服务中实现映射，以将标准化用户架构映射到用户架构和应用程序所需的协议。
+1. Azure AD 提供一个名为 Microsoft.SystemForCrossDomainIdentityManagement，示例如下所述的代码中包含的公共语言基础结构 (CLI) 库。 系统集成商和开发商可以使用此库来创建与部署能够将 Azure AD 连接到任何应用程序的标识存储的、基于 SCIM 的 Web 服务终结点。
+2. 在 Web 服务中实现映射，将标准化用户架构映射到用户架构和应用程序所需的协议。 
 3. 终结点 URL 在 Azure AD 中注册为应用程序库中自定义应用程序的一部分。
 4. 用户和组在 Azure AD 中分配到此应用程序。 分配后，它们会被放入队列，以同步到目标应用程序。 处理队列的同步过程每隔 40 分钟运行一次。
 
 ### <a name="code-samples"></a>代码示例
-为简化此过程，我们提供了[代码示例](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)，用于创建 SCIM Web 服务终结点并演示自动预配。 其中一个示例是维护包含逗号分隔值行（代表用户和组的）的文件的提供程序。  另一个是在 Amazon Web 服务标识与访问管理服务上运行的提供程序。  
+为简化此过程，我们提供了[代码示例](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)，用于创建 SCIM Web 服务终结点并演示自动预配。 该示例是维护一个文件，与表示用户和组以逗号分隔值的行的提供程序。    
 
 **先决条件**
 
@@ -133,7 +637,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 
 5. 构建 FileProvisioningService 项目。
 6. 在 Windows 中启动命令提示符应用程序（以管理员身分），并使用 cd 命令将目录切换到 \AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug 文件夹。
-7. 运行以下命令，并将 <ip-address> 替换为 Windows 计算机的 IP 地址或域名：
+7. 运行以下命令，替换`<ip-address>`与 Windows 计算机的 IP 地址或域名名：
 
    ```
     FileSvc.exe http://<ip-address>:9000 TargetFile.csv
@@ -151,7 +655,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 5. 在“预配模式”菜单中，选择“自动”。
     
    ![][2]
-   *图 4：在 Azure 门户中配置预配*
+   *图 6：在 Azure 门户中配置预配*
     
 6. 在“租户 URL”字段中，输入面向 Internet 的 URL 和 SCIM 终结点的端口。 该条目类似于 http://testmachine.contoso.com:9000 或 http://\<ip-address>:9000/，其中 \<ip-address> 是 Internet 公开 IP 地址。  
 7. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，则 Azure AD 会在每个请求中包含从 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供程序的应用可以验证 Azure AD 颁发的此令牌。
@@ -174,14 +678,14 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 ### <a name="development-libraries"></a>开发库
 若要开发自己的符合 SCIM 规范的 Web 服务，请先熟悉 Microsoft 提供的、有助于加速开发过程的以下库： 
 
-1. 提供公共语言基础结构 (CLI) 库以配合基于该基础结构的语言，例如 C#。 其中一个库 [Microsoft.SystemForCrossDomainIdentityManagement.Service](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/) 声明接口 Microsoft.SystemForCrossDomainIdentityManagement.IProvider，如下图所示：使用这些库的开发人员将对某个类（一般称为提供程序）实现该接口。 通过库，开发者可部署符合 SCIM 规范的 Web 服务。 Web 服务可以托管在 Internet Information Services 中，也可托管在任何可执行的公共语言基础结构程序集中。 请求将转换为对提供程序方法的调用，这些方法由开发者编程，以便对某些标识存储执行操作。
+1. 提供公共语言基础结构 (CLI) 库以配合基于该基础结构的语言，例如 C#。 其中一个库，Microsoft.SystemForCrossDomainIdentityManagement.Service，声明了一个接口 Microsoft.SystemForCrossDomainIdentityManagement.IProvider，如下图中所示。 使用这些库的开发人员将对某个类（一般称为提供程序）实现该接口。 通过库，开发者可部署符合 SCIM 规范的 Web 服务。 可以在 Internet 信息服务或任何可执行的 CLI 程序集内或者托管 web 服务。 请求将转换为对提供程序方法的调用，这些方法由开发者编程，以便对某些标识存储执行操作。
   
    ![][3]
   
 2. [快速路由处理程序](https://expressjs.com/guide/routing.html)用于分析代表对 node.js Web 服务的调用（由 SCIM 规范定义）的 node.js 请求对象。   
 
 ### <a name="building-a-custom-scim-endpoint"></a>构建自定义 SCIM 终结点
-通过 CLI 库，使用这些库的开发者将其服务托管在任何可执行的公共语言基础结构程序集或 Internet Information Services 中。 以下代码示例用于将服务托管在地址为 http://localhost:9000: 的可执行程序集中： 
+使用 CLI 库，使用这些库的开发人员可以其服务托管在任何可执行文件的 CLI 程序集，或 Internet 信息服务中。 以下代码示例用于将服务托管在地址为 http://localhost:9000: 的可执行程序集中： 
 
     private static void Main(string[] arguments)
     {
@@ -270,7 +774,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 
 此处，为 certhash 参数提供的值为证书指纹，为 appid 参数提供的值为任意全局唯一标识符。  
 
-要将服务托管在 Internet Information Services 中，开发人员需构建一个 CLA 代码库程序集，并在该程序集的默认命名空间中使用名为 Startup 的类。  以下是这种类的示例： 
+若要将服务托管在 Internet 信息服务，开发人员将程序集的默认命名空间中使用名为 Startup 的类构建的 CLI 代码库程序集。  以下是这种类的示例： 
 
     public class Startup
     {
@@ -301,9 +805,9 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
     }
 
 ### <a name="handling-endpoint-authentication"></a>处理终结点身份验证
-来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应该代表所需的 Azure Active Directory 租户将颁发者作为 Azure Active Directory 进行身份验证，以访问 Azure Active Directory Graph Web 服务。  在令牌中，颁发者是由一个 iss 声明标识的，例如 "iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"。  在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 代表颁发令牌时 Azure Active Directory 租户的唯一标识符。  如果颁发的令牌用于访问 Azure Active Directory Graph Web 服务，该服务的标识符 00000002-0000-0000-c000-000000000000 应在令牌的 aud 声明值中。  
+来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应该代表所需的 Azure Active Directory 租户将颁发者作为 Azure Active Directory 进行身份验证，以访问 Azure Active Directory Graph Web 服务。  在令牌中，颁发者是由一个 iss 声明标识的，例如 "iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"。  在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 代表颁发令牌时 Azure Active Directory 租户的唯一标识符。  如果颁发的令牌用于访问 Azure Active Directory Graph Web 服务，该服务的标识符 00000002-0000-0000-c000-000000000000 应在令牌的 aud 声明值中。  请注意每个在单个租户中注册应用程序可能会收到相同`iss`SCIM 请求声明。
 
-使用 Microsoft 提供的 CLA 库构建 SCIM 服务的开发者可以按照以下步骤使用 Microsoft.Owin.Security.ActiveDirectory 包对 Azure Active Directory 的请求进行身份验证： 
+使用 CLI 库构建 SCIM 服务由 Microsoft 提供的开发人员可以通过执行以下步骤使用 Microsoft.Owin.Security.ActiveDirectory 包的 Azure Active Directory 中的请求进行身份验证： 
 
 1. 在提供程序中，通过每次启动服务时让服务返回要调用的方法来实现 Microsoft.SystemForCrossDomainIdentityManagement.IProvider.StartupBehavior 属性： 
 
@@ -356,61 +860,54 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
      }
    ```
 
+### <a name="handling-provisioning-and-deprovisioning-of-users"></a>处理预配和取消预配的用户
 
-## <a name="user-and-group-schema"></a>用户和组架构
-Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  这些类型的资源是用户和组。  
+1. Azure Active Directory 会在服务中查询是否有某个用户的 externalId 属性值与 Azure AD 中用户的 mailNickname 属性值匹配。 查询表示为此示例中，jyoung 是 Azure Active Directory 中用户的 mailNickname 示例如超文本传输协议 (HTTP) 请求。
 
-用户资源由协议规范 http://tools.ietf.org/html/draft-ietf-scim-core-schema 中包含的架构标识符“urn:ietf:params:scim:schemas:extension:enterprise:2.0:User”予以标识。  以下表 1 提供了 Azure Active Directory 中用户属性与“urn:ietf:params:scim:schemas:extension:enterprise:2.0:User”资源属性之间的默认映射。  
+    >[!NOTE]
+    > 这只是一个示例。 并非所有用户将都可以 mailNickname 属性和用户具有的值可能不是唯一的目录中。 此外，用于匹配 （这在此情况下是 externalId） 的属性是可在中配置[Azure AD 属性映射](customize-application-attributes.md)。
 
-组资源由架构标识符 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group 予以标识。  下表 2 显示了 Azure Active Directory 中的组属性与 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group 资源的属性之间的默认映射。  
+   ````
+    GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
+    Authorization: Bearer ...
+   ````
+   如果使用由 Microsoft 提供用于实现 SCIM 服务的 CLI 库生成服务，则会将请求转换为对服务的提供者的查询方法的调用。  以下是该方法的签名： 
+   ````
+    // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+    // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
+    // Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
+    // Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters is defined in 
+    // Microsoft.SystemForCrossDomainIdentityManagement.Protocol.  
 
-### <a name="table-1-default-user-attribute-mapping"></a>表 1：默认用户属性映射
+    System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource[]> Query(
+      Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters parameters, 
+      string correlationIdentifier);
+   ````
+   以下是 Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters 接口的定义： 
+   ````
+    public interface IQueryParameters: 
+      Microsoft.SystemForCrossDomainIdentityManagement.IRetrievalParameters
+    {
+        System.Collections.Generic.IReadOnlyCollection <Microsoft.SystemForCrossDomainIdentityManagement.IFilter> AlternateFilters 
+        { get; }
+    }
 
-| Azure Active Directory 用户 | “urn:ietf:params:scim:schemas:extension:enterprise:2.0:User” |
-| --- | --- |
-| IsSoftDeleted |活动 |
-| displayName |displayName |
-| Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
-| givenName |name.givenName |
-| jobTitle |title |
-| mail |emails[type eq "work"].value |
-| mailNickname |externalId |
-| manager |manager |
-| mobile |phoneNumbers[type eq "mobile"].value |
-| objectId |ID |
-| postalCode |addresses[type eq "work"].postalCode |
-| proxy-Addresses |emails[type eq "other"].Value |
-| physical-Delivery-OfficeName |addresses[type eq "other"].Formatted |
-| streetAddress |addresses[type eq "work"].streetAddress |
-| surname |name.familyName |
-| telephone-Number |phoneNumbers[type eq "work"].value |
-| user-PrincipalName |userName |
-
-### <a name="table-2-default-group-attribute-mapping"></a>表 2：默认组属性映射
-
-| Azure Active Directory 组 | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
-| --- | --- |
-| displayName |externalId |
-| mail |emails[type eq "work"].value |
-| mailNickname |displayName |
-| members |members |
-| objectId |ID |
-| proxyAddresses |emails[type eq "other"].Value |
-
-## <a name="user-provisioning-and-de-provisioning"></a>用户预配和取消预配
-下图显示了 Azure Active Directory 发送到 SCIM 服务以管理用户在其他标识存储中的生命周期的消息。 该图还显示了使用 Microsoft 提供的、用于构建此类服务的 CLI 库所实现的 SCIM 服务如何将这些请求转换为对提供程序的方法调用。  
-
-![][4]
-*图 5：用户预配和取消预配顺序*
-
-1. Azure Active Directory 会在服务中查询是否有某个用户的 externalId 属性值与 Azure AD 中用户的 mailNickname 属性值匹配。 查询以类似此例的超文本传输协议 (HTTP) 请求形式表示，其中，jyoung 是 Azure Active Directory 中某个用户的 mailNickname 示例： 
+    public interface Microsoft.SystemForCrossDomainIdentityManagement.IRetrievalParameters
+    {
+      system.Collections.Generic.IReadOnlyCollection<string> ExcludedAttributePaths 
+      { get; }
+      System.Collections.Generic.IReadOnlyCollection<string> RequestedAttributePaths 
+      { get; }
+      string SchemaIdentifier 
+      { get; }
+    }
 
    ```
      GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
      Authorization: Bearer ...
    ```
 
-   如果使用 Microsoft 提供的、用于实现 SCIM 服务的公共语言基础结构库构建了服务，则将请求转换为对服务提供者的 Query 方法调用。  以下是该方法的签名： 
+   If the service was built using the Common Language Infrastructure libraries provided by Microsoft for implementing SCIM services, then the request is translated into a call to the Query method of the service’s provider.  Here is the signature of that method: 
 
    ```
      // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
@@ -424,7 +921,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
        string correlationIdentifier);
    ```
 
-   以下是 Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters 接口的定义： 
+   Here is the definition of the Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters interface: 
 
    ```
      public interface IQueryParameters: 
@@ -462,126 +959,93 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
      }
    ```
 
-   在查询具有给定 externalId 属性值的用户的下列示例中，传递给 Query 方法的参数值是： 
-   * parameters.AlternateFilters.Count:1
+   In the following sample of a query for a user with a given value for the externalId attribute, values of the arguments passed to the Query method are: 
+   * parameters.AlternateFilters.Count: 1
    * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
-   * parameters.AlternateFilters.ElementAt(0).ComparisonOperator:ComparisonOperator.Equals
+   * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
    * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
-   * correlationIdentifier:System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
+   * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
-2. 如果在 Web 服务中查询是否有某个用户的 externalId 属性值与用户的 mailNickname 属性值匹配时，该查询的响应未返回任何用户，Azure Active Directory 将请求服务预配一个与 Azure Active Directory 中的用户相对应的用户。  以下是此类请求的示例： 
+2. If the response to a query to the web service for a user with an externalId attribute value that matches the mailNickname attribute value of a user does not return any users, then Azure Active Directory requests that the service provision a user corresponding to the one in Azure Active Directory.  Here is an example of such a request: 
 
-   ```
-     POST https://.../scim/Users HTTP/1.1
-     Authorization: Bearer ...
-     Content-type: application/scim+json
-     {
-       "schemas":
-       [
-         "urn:ietf:params:scim:schemas:core:2.0:User",
-         "urn:ietf:params:scim:schemas:extension:enterprise:2.0User"],
-       "externalId":"jyoung",
-       "userName":"jyoung",
-       "active":true,
-       "addresses":null,
-       "displayName":"Joy Young",
-       "emails": [
-         {
-           "type":"work",
-           "value":"jyoung@Contoso.com",
-           "primary":true}],
-       "meta": {
-         "resourceType":"User"},
-        "name":{
-         "familyName":"Young",
-         "givenName":"Joy"},
-       "phoneNumbers":null,
-       "preferredLanguage":null,
-       "title":null,
-       "department":null,
-       "manager":null}
-   ```
+   ````
+    开机自检 https://.../scim/Users HTTP/1.1 授权：持有者...内容类型： 应用程序/scim + json {"架构": ["urn:ietf:params:scim:schemas:core:2.0:user"，"urn: ietf:params:scim:schemas:extension:enterprise:2.0User"]"externalId":"jyoung"，"userName":"jyoung"，"活动": true，"地址": null，   "displayName":"乐趣 Young"、"电子邮件": [{"type":"工作"，"value":"jyoung@Contoso.com"、"主要": true}]，"meta": {"resourceType":"用户"}"name": {"familyName":"年轻"、"givenName":"乐趣"}，"phoneNumbers": preferredLa 为 null，"nguage": null、"title": null、"部门": null，则"manager": null}
+   ````
+   The CLI libraries provided by Microsoft for implementing SCIM services would translate that request into a call to the Create method of the service’s provider.  The Create method has this signature: 
+   ````
+    System.Threading.Tasks.Tasks mscorlib.dll 中定义。  
+    在中定义 Microsoft.SystemForCrossDomainIdentityManagement.Resource / / Microsoft.SystemForCrossDomainIdentityManagement.Schemas。  
 
-   Microsoft 提供的、用于实现 SCIM 服务的通用语言基础结构库将请求转换为对服务提供者的 Create 方法调用。  Create 方法具有此签名： 
+    System.Threading.Tasks.Task < Microsoft.SystemForCrossDomainIdentityManagement.Resource > 创建 （Microsoft.SystemForCrossDomainIdentityManagement.Resource 资源、 字符串 correlationIdentifier）
+   ````
+   In a request to provision a user, the value of the resource argument is an instance of the Microsoft.SystemForCrossDomainIdentityManagement. Core2EnterpriseUser class, defined in the Microsoft.SystemForCrossDomainIdentityManagement.Schemas library.  If the request to provision the user succeeds, then the implementation of the method is expected to return an instance of the Microsoft.SystemForCrossDomainIdentityManagement. Core2EnterpriseUser class, with the value of the Identifier property set to the unique identifier of the newly provisioned user.  
 
-   ```
-     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
-     // Microsoft.SystemForCrossDomainIdentityManagement.Resource is defined in 
-     // Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
- 
-     System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource> Create (
-       Microsoft.SystemForCrossDomainIdentityManagement.Resource resource, 
-       string correlationIdentifier);
-   ```
+3. To update a user known to exist in an identity store fronted by an SCIM, Azure Active Directory proceeds by requesting the current state of that user from the service with a request such as: 
+   ````
+    GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1  Authorization:持有者...
+   ````
+   In a service built using the CLI libraries provided by Microsoft for implementing SCIM services, the request is translated into a call to the Retrieve method of the service’s provider.  Here is the signature of the Retrieve method: 
+   ````
+    System.Threading.Tasks.Tasks mscorlib.dll 中定义。  
+    Microsoft.SystemForCrossDomainIdentityManagement.Resource 和 / / Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters / / 在 Microsoft.SystemForCrossDomainIdentityManagement.Schemas 中定义。  
+    System.Threading.Tasks.Task < Microsoft.SystemForCrossDomainIdentityManagement.Resource > 检索 （Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 参数、 字符串 correlationIdentifier）
 
-   如果请求预配用户，资源参数的值将是 Microsoft.SystemForCrossDomainIdentityManagement 的实例。 Core2EnterpriseUser 类，在 Microsoft.SystemForCrossDomainIdentityManagement.Schemas 库中定义。  如果预配用户的请求成功，则方法的实现应返回 Microsoft.SystemForCrossDomainIdentityManagement 的实例。 Core2EnterpriseUser 类，其 Identifier 属性值设置为新预配用户的唯一标识符。  
-
-3. 为了更新存在于前端为 SCIM 的标识存储中的已知用户，Azure Active Directory 将通过类似于下面的请求向服务请求该用户的当前状态来继续处理： 
-
-   ```
-     GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
-     Authorization: Bearer ...
-   ```
-
-   如果使用 Microsoft 提供的、用于实现 SCIM 服务的公共语言基础结构库生成了服务，则将请求转换为对服务提供者的 Retrieve 方法调用。  以下是 Retrieve 方法的签名： 
-
-    ```
-     // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
-     // Microsoft.SystemForCrossDomainIdentityManagement.Resource and 
-     // Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 
-     // are defined in Microsoft.SystemForCrossDomainIdentityManagement.Schemas.  
-     System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource> 
-        Retrieve(
-          Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 
-            parameters, 
-            string correlationIdentifier);
- 
-     public interface 
-       Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters:   
-         IRetrievalParameters
-         {
-           Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier 
-             ResourceIdentifier 
-               { get; }
-     }
-     public interface Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier
-     {
-         string Identifier 
-           { get; set; }
-         string Microsoft.SystemForCrossDomainIdentityManagement.SchemaIdentifier 
-           { get; set; }
-     }
-   ```
-
-   在检索用户当前状态的请求示例中，作为参数自变量值提供的对象属性值如下所示： 
+    Microsoft.SystemForCrossDomainIdentityManagement.IResourceRetrievalParameters 的公共接口：   
+        IRetrievalParameters {Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier ResourceIdentifier {get;}} 公共接口 Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier {string 标识符 {get; set;}字符串 Microsoft.SystemForCrossDomainIdentityManagement.SchemaIdentifier {get; set;}}
+   ````
+   In the example of a request to retrieve the current state of a user, the values of the properties of the object provided as the value of the parameters argument are as follows: 
   
-   * 标识符："54D382A4-2050-4C03-94D1-E769F1D15682"
+   * Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
    * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-4. 要更新引用属性，Azure Active Directory 将查询服务以判断以该服务为前端的标识存储中的引用属性的当前值是否已经与 Azure Active Directory 中该属性的值相匹配。 对于用户，以这种方式查询当前值的唯一属性是 manager 属性。 确定特定用户对象的 manager 属性当前是否具有特定值的请求示例如下： 
+4. If a reference attribute is to be updated, then Azure Active Directory queries the service to determine whether or not the current value of the reference attribute in the identity store fronted by the service already matches the value of that attribute in Azure Active Directory. For users, the only attribute of which the current value is queried in this way is the manager attribute. Here is an example of a request to determine whether the manager attribute of a particular user object currently has a certain value: 
 
-   ```
-     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq  2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
-     Authorization: Bearer ...
-   ```
+   If the service was built using the CLI libraries provided by Microsoft for implementing SCIM services, then the request is translated into a call to the Query method of the service’s provider. The value of the properties of the object provided as the value of the parameters argument are as follows: 
+  
+   * parameters.AlternateFilters.Count: 2
+   * parameters.AlternateFilters.ElementAt(x).AttributePath: "ID"
+   * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
+   * parameters.AlternateFilter.ElementAt(x).ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
+   * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
+   * parameters.AlternateFilters.ElementAt(y).ComparisonOperator: ComparisonOperator.Equals
+   * parameters.AlternateFilter.ElementAt(y).ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
+   * parameters.RequestedAttributePaths.ElementAt(0): "ID"
+   * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-   属性查询参数“ID”的值，表示如果满足提供为筛选器查询参数值的表达式的用户对象存在，则服务应以“urn:ietf:params:scim:schemas:core:2.0:User”或“urn:ietf:params:scim:schemas:extension:enterprise:2.0:User”资源做出响应（仅包括该资源的“ID”属性值）。  对请求者而言，ID 属性值是已知的。 它包含在筛选器查询参数的值中；请求它的目的实际上是请求满足筛选表达式的资源的精简表示形式（指示是否存在任何此类对象）。   
+   Here, the value of the index x may be 0 and the value of the index y may be 1, or the value of x may be 1 and the value of y may be 0, depending on the order of the expressions of the filter query parameter.   
+
+5. Here is an example of a request from Azure Active Directory to an SCIM service to update a user: 
+   ````
+    PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1  Authorization:持有者...内容类型： 应用程序/scim + json {"架构": ["urn: ietf:params:scim:api:messages:2.0:PatchOp"]，"操作": [{"op":"添加"、"路径":"manager"、"value": [{"$ref":"http://.../scim/Users/2819c223-7f76-453a-919d-413861904646"、"value":"2819c223-7f76-453a-919d-413861904646"}]}]}
+   ````
+   The Microsoft CLI libraries for implementing SCIM services would translate the request into a call to the Update method of the service’s provider. Here is the signature of the Update method: 
+   ````
+    System.Threading.Tasks.Tasks 和 / / System.Collections.Generic.IReadOnlyCollection<T> / / 在 mscorlib.dll 中定义。  
+    Microsoft.SystemForCrossDomainIdentityManagement.IPatch，/ / Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase，/ / Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier，/ /Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation，/ / Microsoft.SystemForCrossDomainIdentityManagement.OperationName，/ / Microsoft.SystemForCrossDomainIdentityManagement.IPath 和 / /Microsoft.SystemForCrossDomainIdentityManagement.OperationValue / / 是所有中定义的 Microsoft.SystemForCrossDomainIdentityManagement.Protocol。 
+
+    System.Threading.Tasks.Task 更新 （Microsoft.SystemForCrossDomainIdentityManagement.IPatch 修补程序、 字符串 correlationIdentifier）;
+
+    公共接口 Microsoft.SystemForCrossDomainIdentityManagement.IPatch {Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase PatchRequest {get; set;}Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier ResourceIdentifier {get; set;}        
+    }
+
+    公共类 PatchRequest2:  Microsoft.SystemForCrossDomainIdentityManagement.PatchRequestBase {公共 System.Collections.Generic.IReadOnlyCollection < Microsoft.SystemForCrossDomainIdentityManagement.PatchOperation > 操作 {get;}
+
 
    如果使用 Microsoft 提供的、用于实现 SCIM 服务的公共语言基础结构库构建了服务，则将请求转换为对服务提供者的 Query 方法调用。 作为参数自变量值提供的对像属性值如下： 
   
-   * parameters.AlternateFilters.Count:2
-   * parameters.AlternateFilters.ElementAt(x).AttributePath:“ID”
-   * parameters.AlternateFilters.ElementAt(x).ComparisonOperator:ComparisonOperator.Equals
-   * parameters.AlternateFilter.ElementAt(x).ComparisonValue:"54D382A4-2050-4C03-94D1-E769F1D15682"
-   * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
-   * parameters.AlternateFilters.ElementAt(y).ComparisonOperator:ComparisonOperator.Equals
-   * parameters.AlternateFilter.ElementAt(y).ComparisonValue:"2819c223-7f76-453a-919d-413861904646"
-   * parameters.RequestedAttributePaths.ElementAt(0):“ID”
-   * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+* parameters.AlternateFilters.Count:2
+* parameters.AlternateFilters.ElementAt(x).AttributePath:“ID”
+* parameters.AlternateFilters.ElementAt(x).ComparisonOperator:ComparisonOperator.Equals
+* parameters.AlternateFilter.ElementAt(x).ComparisonValue:"54D382A4-2050-4C03-94D1-E769F1D15682"
+* parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
+* parameters.AlternateFilters.ElementAt(y).ComparisonOperator:ComparisonOperator.Equals
+* parameters.AlternateFilter.ElementAt(y).ComparisonValue:"2819c223-7f76-453a-919d-413861904646"
+* parameters.RequestedAttributePaths.ElementAt(0):“ID”
+* parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-   此处，索引 x 的值可以是 0 并且索引 y 的值可以是 1，或者，x 值可以是 1 并且 y 的值可以是 0，具体根据筛选器查询参数表达式的顺序而定。   
+  此处，索引 x 的值可以是 0 并且索引 y 的值可以是 1，或者，x 值可以是 1 并且 y 的值可以是 0，具体根据筛选器查询参数表达式的顺序而定。   
 
-5. 以下是从 Azure Active Directory 向 SCIM 服务发出更新用户请求的示例： 
+1. 以下是从 Azure Active Directory 向 SCIM 服务发出更新用户请求的示例： 
 
    ```
      PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
@@ -690,14 +1154,14 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
   
    * ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
    * ResourceIdentifier.SchemaIdentifier:  "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
-   * (PatchRequest as PatchRequest2).Operations.Count:1
+   * (PatchRequest as PatchRequest2).Operations.Count:第
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName:OperationName.Add
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Path.AttributePath: "manager"
-   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count:1
+   * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count:第
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
    * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value:2819c223-7f76-453a-919d-413861904646
 
-6. 若要从 SCIM 服务面对的标识存储中取消预配用户，Azure AD 会发送如下请求： 
+1. 若要从 SCIM 服务面对的标识存储中取消预配用户，Azure AD 会发送如下请求： 
 
    ```
      DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
@@ -718,18 +1182,66 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 
    在取消预配用户的请求示例中，作为 resourceIdentifier 参数值提供的对象具有以下属性值： 
 
+1. 若要从 SCIM 服务面对的标识存储中取消预配用户，Azure AD 会发送如下请求： 
+   ````
+    DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+    Authorization: Bearer ...
+   ````
+   如果使用由 Microsoft 提供用于实现 SCIM 服务的 CLI 库生成服务，则会将请求转换为对服务的提供程序的 Delete 方法的调用。   该方法具有以下签名： 
+   ````
+    // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+    // Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier, 
+    // is defined in Microsoft.SystemForCrossDomainIdentityManagement.Protocol. 
+    System.Threading.Tasks.Task Delete(
+      Microsoft.SystemForCrossDomainIdentityManagement.IResourceIdentifier  
+        resourceIdentifier, 
+      string correlationIdentifier);
+   ````
+   在取消预配用户的请求示例中，作为 resourceIdentifier 参数值提供的对象具有以下属性值： 
+  
    * ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
    * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-## <a name="group-provisioning-and-de-provisioning"></a>组预配和取消预配
-下图显示了 Azure AD 发送到 SCIM 服务以管理其他标识存储中的组生命周期的消息。  这些消息在以下三个方面与用户相关的消息不同： 
+## <a name="user-and-group-schema-reference"></a>用户和组架构参考
+Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  这些类型的资源是用户和组。  
 
-* 组资源的架构标识为 `http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group`。  
-* 检索组的请求规定将成员属性从请求响应中提供的任何资源中排除。  
-* 确定引用属性是否具有特定值的请求是有关成员属性的请求。  
+用户资源由架构标识符`urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`，此协议规范中包括的哪些： https://tools.ietf.org/html/rfc7643。  下表 1 中提供的 Azure Active Directory 中用户的用户资源的属性的属性的默认映射。  
 
-![][5]
-*图 6：组预配和取消预配顺序*
+组资源由架构标识符 `urn:ietf:params:scim:schemas:core:2.0:Group` 予以标识。  表 2 列出对组资源的属性在 Azure Active Directory 中显示的组属性的默认映射。  
+
+### <a name="table-1-default-user-attribute-mapping"></a>表 1：默认用户属性映射
+
+| Azure Active Directory 用户 | “urn:ietf:params:scim:schemas:extension:enterprise:2.0:User” |
+| --- | --- |
+| IsSoftDeleted |活动 |
+| displayName |displayName |
+| Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
+| givenName |name.givenName |
+| jobTitle |title |
+| mail |emails[type eq "work"].value |
+| mailNickname |externalId |
+| manager |manager |
+| mobile |phoneNumbers[type eq "mobile"].value |
+| objectId |ID |
+| postalCode |addresses[type eq "work"].postalCode |
+| proxy-Addresses |emails[type eq "other"].Value |
+| physical-Delivery-OfficeName |addresses[type eq "other"].Formatted |
+| streetAddress |addresses[type eq "work"].streetAddress |
+| surname |name.familyName |
+| telephone-Number |phoneNumbers[type eq "work"].value |
+| user-PrincipalName |userName |
+
+### <a name="table-2-default-group-attribute-mapping"></a>表 2：默认组属性映射
+
+| Azure Active Directory 组 | urn:ietf:params:scim:schemas:core:2.0:Group |
+| --- | --- |
+| displayName |externalId |
+| mail |emails[type eq "work"].value |
+| mailNickname |displayName |
+| members |members |
+| objectId |ID |
+| proxyAddresses |emails[type eq "other"].Value |
+
 
 ## <a name="related-articles"></a>相关文章
 * [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)

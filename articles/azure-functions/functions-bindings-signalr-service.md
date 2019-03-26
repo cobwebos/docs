@@ -8,19 +8,19 @@ manager: jeconnoc
 editor: ''
 tags: ''
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: ab050a683913e62c6671bf01397e76311a08952b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f0d4a607676285ed4f0f91d8ce8c83ddf1313b89
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006790"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437792"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions 的 SignalR Service 绑定
 
@@ -48,7 +48,7 @@ ms.locfileid: "58006790"
 ```
 
 > [!NOTE]
-> 若要使用 Java，请确保使用版本 2.4.419 或更高版本的 Azure Functions Core Tools （主机版本 2.0.12332） 中的 SignalR 服务绑定。
+> 若要在 Java 中使用 SignalR 服务绑定，请确保使用的是 Azure Functions Core Tools（主机版本 2.0.12332）2.4.419 版或更高版本。
 
 ## <a name="using-signalr-service-with-azure-functions"></a>使用 Azure Functions 和 SignalR 服务
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 67ddc7a8e9d79d0eef9c017b315385df62c18e33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ccd31a0e8b91bc95ac364fe5bc0ec0ecdfaa4618
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997713"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438608"
 ---
 # <a name="view-system-test-results"></a>查看系统测试结果
 
@@ -78,6 +78,9 @@ ms.locfileid: "57997713"
     ![部署模型](media/how-to/how-to-deploy-model-regions.png)
 
 5.  可在“状态”列中查看模型的状态。
+
+>[!Note]
+>自定义转换器支持时间中的任何位置工作区中的 10 个已部署的模型。
 
 ## <a name="update-deployment-settings"></a>更新部署设置
 

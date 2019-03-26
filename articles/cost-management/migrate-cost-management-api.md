@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 9f5ea30c458954a3e87b9575b5632fbfb0df97b8
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 283808c0bd3f5297011b25619d6f978c99d4dc32
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318594"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439220"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>企业协议从迁移到 Microsoft 客户协议 Api
 
@@ -463,7 +463,7 @@ Microsoft 客户协议的价格被定义的方式不同于企业协议。 企业
 | offerId | 不适用。 对应于 productOrderName MCA 中。 |
 | meterCategory  | 不适用。 对应于 MCA 中的服务。 |
 | 单位 | 不适用。 可以从 unitOfMeasure 分析。 |
-| currencyCode | 与相同中 MCA pricingCurrency。 |
+| currencyCode | 与在 MCA pricingCurrency 相同。 |
 | meterLocation | 与在 MCA meterRegion 相同。 |
 | partNumber partnumber | 不适用，因为 MCA 发票中未列出部件号。 而不是 partnumber，使用的 meterId 和 productOrderName 组合来唯一标识的价格。 |
 | totalIncludedQuantity | 不适用。 |

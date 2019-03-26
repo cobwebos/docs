@@ -11,16 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b79e9e1a274002514561ef3f96c364bf9bc27071
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ae2d18541788e769e4f1b44319aa1be200921b88
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309599"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437537"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD 密码保护中的监视和日志记录
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文详细介绍了各种监视技术，包括每项服务在哪里记录日志信息，以及如何报告 Azure AD 密码保护使用情况。
+
+监视和报告完成事件日志消息或通过运行 PowerShell cmdlet。 DC 代理和代理服务这两个记录事件日志消息。 如下所述的所有 PowerShell cmdlet 都才可用代理服务器上 （请参阅 AzureADPasswordProtection PowerShell 模块）。 DC 代理软件不会安装 PowerShell 模块。
 
 ## <a name="dc-agent-event-logging"></a>DC 代理事件日志记录
 

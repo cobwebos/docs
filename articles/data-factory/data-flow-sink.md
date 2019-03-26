@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: a56f391aa76bd1216fd51d516adb836a2093bcba
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a39fa0949276b7e86c7fdd0d0861492a9a0b723e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371133"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438626"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>映射数据流接收器转换
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![接收器选项](media/data-flow/windows1.png "接收器 1")
+![接收器选项](media/data-flow/sink1.png "接收器 1")
 
 数据流转换完成后，可将转换的数据沉积到目标数据集中。 在接收器转换中，可以选择要用于目标输出数据的数据集定义。 可根据数据流的需要创建任意个接收器转换。
 

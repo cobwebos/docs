@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9820fcae0dfb366c1722c50c95400c7de0fbeb12
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: fb29fb5ef2e755ff456ad177b66349792b2fa21c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285779"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418850"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 每个新的 Azure AD 租户都附带了初始域名 *domainname*.onmicrosoft.com。 无法更改或删除初始域名，但可以将组织的名称添加到列表中。 添加自定义域名可帮助你熟悉的用户，如用户名*alain\@contoso.com*。
@@ -84,6 +84,8 @@ ms.locfileid: "58285779"
 4. 在“Contoso”页上，选择“验证”以确保自定义域已正确注册并且在 Azure AD 中有效。
 
     ![包含 DNS 条目信息和“验证”按钮的“Contoso”页](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
+
+在验证自定义域名后，可以删除验证 TXT 或 MX 文件。
 
 ## <a name="common-verification-issues"></a>常见验证问题
 - 如果 Azure AD 无法验证自定义域名，请尝试以下建议的方法：

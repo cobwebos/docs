@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7b9b7ffbb034a7fb1256d9cc44048cfa55b02245
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: bd46e5f7428bab58508521b2c7d4d7cca25d689b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402720"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439067"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 
@@ -54,7 +54,7 @@ Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGr
 
 **添加 RdsAppGroupUser** cmdlet 不支持添加安全组，并仅将一个用户一次添加到应用程序组。 如果你想要将多个用户添加到应用程序组，请重新运行 cmdlet 和相应的用户主体名称。
 
-运行以下 cmdlet 将导出到一个变量，将更高版本中使用的注册令牌[注册到 Windows 虚拟机主机池的虚拟机](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)。
+运行以下 cmdlet 将导出到一个变量，将更高版本中使用的注册令牌[注册到 Windows 虚拟机主机池的虚拟机](#register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool)。
 
 ```powershell
 $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname>).Token

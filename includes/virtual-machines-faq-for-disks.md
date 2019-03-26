@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 94893a5b5716c9bd207ad2a8bc8ca457974dddd4
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 233834bd040362e27ffadc3d0003a87827012352
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395585"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407982"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -300,7 +300,7 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 
 **操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
-Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 2 TiB。 Azure 支持的托管数据磁盘最大大小为 32 TiB。 大于 4 TiB 的托管磁盘大小处于预览状态。 它们的详细信息，请参阅我们[博客文章](https://aka.ms/azure-large-disk-32TB-preview-blog)。
+Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 2 TiB。 Azure 支持最多 32 TiB 的全局 Azure，Azure 主权云 4 TiB 中的托管的数据磁盘。
 
 **操作系统和数据磁盘支持的最大非托管磁盘大小是多少？**
 
@@ -335,7 +335,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 **可以您重设大小现有托管磁盘大小从少于 4 tib 的) 为最多 32 TiB 的新新引入的磁盘大小？**
 
-新的托管磁盘大小 8 TiB、16 TiB 和 32 TiB 目前处于预览状态。 我们尚不支持将现有磁盘大小调整到新磁盘大小。
+是的。
 
 **什么是 Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小？**
 

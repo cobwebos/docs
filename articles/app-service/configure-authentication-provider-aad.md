@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 0c5ceda99fe35fafff23f2bcf4ea766d7dd42b75
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403215"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438218"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>将应用服务应用配置为使用 Azure Active Directory 登录
 
@@ -43,8 +43,6 @@ ms.locfileid: "58403215"
 5. （可选）若要限制只有通过 Azure Active Directory 身份验证的用户可以访问站点，请将“请求未经身份验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。 这会要求对所有请求进行身份验证，而所有未经身份验证的请求都将被重定向到 Azure Active Directory 进行身份验证。
 6. 单击“ **保存**”。
 
-现在，可以使用 Azure Active Directory 在应用服务应用中进行身份验证。
-
 ## <a name="advanced"> </a>使用高级设置进行配置
 
 也可以手动提供配置设置。 如果要使用的 Azure Active Directory 租户不同于登录 Azure 所用的租户，这是较好的解决方案。 要完成配置，必须先在 Azure Active Directory 中创建注册，然后向应用服务提供一些注册详细信息。
@@ -57,8 +55,12 @@ ms.locfileid: "58403215"
 4. 几秒钟后即可看到刚刚创建的新应用注册。
 5. 添加应用注册后，单击应用注册名称，单击顶部的“设置”，然后单击“属性” 
 6. 在“应用 ID URI”框中粘贴应用程序 URL（来自于步骤 1），并在“主页 URL”中粘贴应用程序 URL（来自于步骤 1），然后单击“保存”
-7. 现在，单击“答复 URL”，编辑“答复 URL”，粘贴应用程序 URL（来自于步骤 1），然后在 URL 末尾追加 /.auth/login/aad/callback（例如 `https://contoso.azurewebsites.net/.auth/login/aad/callback`）。 单击“ **保存**”。   
-8.  此时，复制应用的“应用程序 ID”。 保留此 ID 供将来使用。 需要使用它来配置应用服务应用。
+7. 现在，单击**回复 Url**，编辑**回复 URL**，粘贴应用程序 URL （来自步骤 1），然后将其追加到 URL，末尾 */.auth/login/aad/callback* （适用于示例中， `https://contoso.azurewebsites.net/.auth/login/aad/callback`)。 单击“ **保存**”。
+
+   > [!NOTE]
+   > 可以通过添加更多对多个域使用相同的应用注册**答复 Url**。 请确保模型具有其自己注册每个应用服务实例，因此它具有其自己的权限和许可。 此外请考虑使用单独的应用程序注册为单独的站点槽。 这是为了避免环境，之间共享的权限，以便在测试新代码中的 bug 不会影响生产。
+    
+8. 此时，复制应用的“应用程序 ID”。 保留此 ID 供将来使用。 需要使用它来配置应用服务应用。
 9. 关闭“已注册应用”页。 在“应用注册”页中，单击顶部的“终结点”按钮，然后复制“WS-FEDERATION SIGN-ON ENDPOINT”URL，但要从 URL 中删除 `/wsfed` 末尾。 最终结果应类似于 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000`。 主权云的域名可能有所不同。 这将作为更高版本的颁发者 URL。
 
 ### <a name="secrets"> </a>将 Azure Active Directory 信息添加到应用服务应用

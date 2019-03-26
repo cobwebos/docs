@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 03/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 92bd57822226e683f17582bb1534b84961f61032
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 7921454cc9269278db58fcc50bc63ca49b41b1e0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187158"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417927"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
@@ -29,10 +29,10 @@ ms.locfileid: "55187158"
 |-|-------------------|-----------------|
 | 目标用户 | 具有或不具有标识专业知识的所有应用程序开发人员。 | 标识专业人员、系统集成人员、顾问和内部标识团队。 他们能够熟悉运作 OpenIDConnect 流，并了解标识提供者和基于声明的身份验证。 |
 | 配置方法 | 具有用户友好用户界面 (UI) 的 Azure 门户。 | 直接编辑 XML 文件，并上传到 Azure 门户。 |
-| UI 自定义 | 完整的 UI 自定义包括 HTML 和 CSS。<br><br>使用自定义字符串实现多语言支持。 | 相同 |
+| UI 自定义 | 完全 UI 自定义包括 HTML、 CSS 和 JavaScript。<br><br>使用自定义字符串实现多语言支持。 | 相同 |
 | 属性自定义 | 标准和自定义属性。 | 相同 |
 | 令牌和会话管理 | 自定义令牌和多个会话选项。 | 相同 |
-| 标识提供者 | 预定义的本地或社交提供程序。 | 基于标准的 OIDC、OAUTH 和 SAML。 |
+| 标识提供者 | 预定义的本地或社交提供程序和大多数 OIDC 标识提供程序，如与 Azure Active Directory 租户的联合身份验证。 | 基于标准的 OIDC、OAUTH 和 SAML。  身份验证，也可以通过使用集成的 REST Api。 |
 | 标识任务 | 使用本地帐户或许多社交帐户注册或登录。<br><br>自助密码重置。<br><br>配置文件编辑。<br><br>多重身份验证。<br><br>自定义令牌和会话。<br><br>访问令牌流。 | 使用自定义标识提供者或自定义范围完成与用户流相同的任务。<br><br>注册时在另一系统中预配用户帐户。<br><br>使用自己的电子邮件服务提供程序发送欢迎电子邮件。<br><br>使用 Azure AD B2C 外部的用户存储。<br><br>使用 API 通过受信任的系统验证用户提供的信息。 |
 
 ## <a name="policy-files"></a>策略文件

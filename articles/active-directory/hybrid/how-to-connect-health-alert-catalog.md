@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fd790550569fa34f6b2bb598221ab2e8ba3d784
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c64f9f835393c5ad2bf6022e4a274e8e2eeb1830
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187717"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435923"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health 警报目录 
 
@@ -29,13 +29,13 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 
 ## <a name="general-alerts"></a>常规警报
 
-| 警报名称 | 说明 | 补救 |
+| 警报名称 | 描述 | 补救 |
 | --- | --- | ----- |
 | 运行状况服务数据不是最新的 | 在一台或多台服务器上运行的运行状况代理未连接到运行状况服务，且运行状况服务未收到来自此服务器的最新数据。 运行状况服务处理的最后数据已过去 2 小时。 | 请确保运行状况代理具有到所需服务和终结点的出站连接。 [阅读详细信息](how-to-connect-health-data-freshness.md) |
 
 ## <a name="alerts-for-azure-ad-connect-sync"></a>Azure AD Connect 警报（同步）
 
-| 警报名称 | 说明 | 补救 |
+| 警报名称 | 描述 | 补救 |
 | --- | --- | ----- |
 | Azure AD Connect 同步服务未运行 | Microsoft Azure AD Sync Windows 服务未运行，或无法启动。 因此，对象将无法与 Azure Active Directory 进行同步。 | 启动 Microsoft Azure Active Directory 同步服务</b> <ol> <li>依次单击“开始”和“运行”，键入“Services.msc”，然后单击“确定”<b></b><b></b><b></b><b></b>。</li> <li>找到“Microsoft Azure AD 同步服务”，然后检查是否已启动该服务<b></b>。 如果未启动该服务，请右键单击该服务，然后单击“启动”<b></b>。 | 
 | 从 Azure Active Directory 导入失败 | 从 Azure Active Directory 连接器执行的导入操作失败。 |  请调查导入操作的事件日志错误，以获取更多详细信息。  |
@@ -50,13 +50,13 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 | 导出到 Azure Active Directory 的操作已停止。 已达到意外删除阈值 | 到 Azure Active Directory 的导出操作失败。 要删除的对象数多于配置的阈值。 因此，未导出任何对象。 | <li> 标记为要删除的对象数超出了设定的阈值。 请确保该结果是你所需要的。</li> <li> 若要继续导出，请执行以下步骤： <ol type="a"> <li>通过运行 Disable-ADSyncExportDeletionThreshold 禁用阈值</li> <li>启动 Synchronization Service Manager</li> <li>在类型为 Azure Active Directory 的连接器上运行导出</li> <li>成功导出对象后，通过运行以下命令启用阈值：Enable-ADSyncExportDeletionThreshold</li> </ol> </li> |
 
 ## <a name="alerts-for-active-directory-federation-services"></a>Active Directory 联合身份验证服务的警报
-| 警报名称 | 说明 | 补救 |
+| 警报名称 | 描述 | 补救 |
 | --- | --- | ----- |
 |测试身份验证请求（综合事务）无法获取令牌 | 从此服务器启动的测试身份验证请求（综合事务）尝试 5 次后仍无法获取令牌。 这可能是由于临时网络问题、AD DS 域控制器可用性或 AD FS 服务器配置错误。  因此，联合身份验证服务处理的身份验证请求可能会失败。 代理使用本地计算机帐户上下文获取联合身份验证服务的令牌。 | 确保按照以下步骤操作，验证服务器的运行状况。<ol><li>验证场中的此服务器或其他 AD FS 服务器没有其他未解决的警报。</li><li>从 https://{your_adfs_server_name}/adfs/ls/idpinitiatedsignon.aspx 上的 AD FS 登录页面，以测试用户的身份登录，验证此状态不是暂时性的故障</li><li>转到 <a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a> 并选择“Office 365”选项卡。执行“Office 365 单一登录测试”。</li><li>通过在此服务器上的命令提示符执行以下命令，验证是否可从此服务器解析 AD FS 服务名称。 nslookup your_adfs_server_name</li></ol><p>如果无法解析服务名称，请参阅 FAQ 部分，了解有关添加 AD FS 服务的 HOST 文件条目和此服务器 IP 地址的说明。 这将允许此服务器上运行的综合事务模块请求一个令牌</p> | 
-| 代理服务器无法访问联合服务器 | 此 AD FS 代理服务器无法与 AD FS 服务联系。 因此，此服务器处理的身份验证请求将失败。 | 执行以下步骤，验证此服务器和 AD FS 服务之间的连接。 <ol><li> 确保此服务器和 AD FS 服务之间的防火墙配置正确。 </li><li> 确保 AD FS 服务名称的 DNS 解析适当地指向位于公司网络内的 AD FS 服务。 这可通过在外围网络中为该服务器提供服务的 DNS 服务器，或通过 AD FS 服务名称的 HOSTS 文件中的条目来实现。 </li><li> 通过打开此服务器上的浏览器，并访问位于 https://<your-adfs-service-name>/federationmetadata/2007-06/federationmetadata.xml 的联合元数据终结点来验证网络连接 </li> | 
+| 代理服务器无法访问联合服务器 | 此 AD FS 代理服务器无法与 AD FS 服务联系。 因此，此服务器处理的身份验证请求将失败。 | 执行以下步骤，验证此服务器和 AD FS 服务之间的连接。 <ol><li> 确保此服务器和 AD FS 服务之间的防火墙配置正确。 </li><li> 确保 AD FS 服务名称的 DNS 解析适当地指向位于公司网络内的 AD FS 服务。 这可通过在外围网络中为该服务器提供服务的 DNS 服务器，或通过 AD FS 服务名称的 HOSTS 文件中的条目来实现。 </li><li> 通过此服务器上的浏览器打开和访问联合身份验证元数据终结点，这是在验证网络连接 `https://<your-adfs-service-name>/federationmetadata/2007-06/federationmetadata.xml` </li> | 
 | SSL 证书即将过期 | 联合服务器使用的 SSL 证书即将在 90 天内过期。 过期后，任何需要有效 SSL 连接的请求都将失败。 例如，对于 Office 365 客户，邮件客户端将无法进行身份验证。 | 更新每台 AD FS 服务器上的 SSL 证书。<ol><li>获取具有以下要求的 SSL 证书。<ol type="a"><li>增强型密钥使用至少是服务器身份验证。 </li><li>证书使用者或使用者可选名称 (SAN) 包含联合身份验证服务的 DNS 名称或适当的通配符。 例如：sso.contoso.com 或 *.contoso.com</li></ol></li><li>在本地计算机证书存储中的每台服务器上安装新的 SSL 证书。</li><li>确保 AD FS 服务帐户具有对证书私钥的读取访问权限</li></ol></p><p><b>对于 Windows Server 2008 R2 中的 AD FS 2.0：</b><ul><li>将新的 SSL 证书绑定到承载联合身份验证服务的 IIS 中的 Web 站点。 请注意，必须在每个联合服务器和联合服务器代理上执行此步骤。</li></ul></p><p><b>对于 Windows Server 2012 R2 和更高版本中的 AD FS：</b> <li>  请参阅<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 证书</a> </li> | 
 | AD FS 服务未在服务器上运行 | Active Directory 联合身份验证服务（Windows 服务）未在此服务器上运行。 针对此服务器的任何请求都将失败。 | 启动 Active Directory 联合身份验证服务（Windows 服务）：<ol><li>以管理员身份登录到服务器。</li><li> 打开 services.msc</li><li>找到“Active Directory 联合身份验证服务”。 </li><li>右键单击并选择“启动”。 | 
-| 联合身份验证服务的 DNS 可能配置错误 | 可将 DNS 服务器配置为使用 AD FS 服务器场名称的 CNAME 记录。 建议为 AD FS 使用 A 或 AAAA 记录，以便 Windows 集成身份验证在公司网络中无缝运行。 | 确保 AD FS 场 <Farm Name> 的 DNS 记录不是 CNAME 类型。 将其配置为 A 或 AAAA 记录。 | 
+| 联合身份验证服务的 DNS 可能配置错误 | 可将 DNS 服务器配置为使用 AD FS 服务器场名称的 CNAME 记录。 建议为 AD FS 使用 A 或 AAAA 记录，以便 Windows 集成身份验证在公司网络中无缝运行。 | 确保 AD FS 场 `<Farm Name>` 的 DNS 记录不是 CNAME 类型。 将其配置为 A 或 AAAA 记录。 | 
 | 已禁用 AD FS 审核 | 已为服务器禁用 AD FS 审核。 门户上的“AD FS 使用情况”部分将不会包括来自此服务器的数据。 | 如果未启用 AD FS 审核，请按照以下说明操作：<ol><li>在 AD FS 服务器上授予 AD FS 服务帐户“生成安全审核”权限。<li>打开服务器 gpedit.msc 上的本地安全策略。</li><li>导航到“计算机配置”\“Windows 设置”\“本地策略”\“用户权限分配” </li><li>添加 AD FS 服务帐户以具有“生成安全审核”权限。</li></li><li>从命令提示符处运行以下命令：<br>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable<i></i></li><li>更新联合身份验证服务属性以包括成功和失败审核。<li>在 AD FS 控制台中，选择“编辑联合身份验证服务属性”。</li><li>从“联合身份验证服务属性”对话框中，选择“事件”选项卡，然后选择“成功审核”和“失败审核”。</li></li></ol></p><p>完成上述步骤后，“事件查看器”中应显示 AD FS 审核事件。 要验证：<ol><li>转到“事件查看器”/“Windows 日志”/“安全”。</li><li>选择“筛选当前日志”，然后从“事件”源下拉菜单中选择“AD FS 审核”。 对于启用了 AD FS 审核的活动 AD FS 服务器，事件应对上述筛选可见。</li></ol></p><p>如果之前已按上述说明操作，但仍可看到此警报，可能是组策略对象已禁用 AD FS 审核。 根本原因可能是以下项之一：<ol><li>已删除 AD FS 服务帐户“生成安全审核”的权限。</li><li>组策略对象中的自定义脚本已基于“生成的应用程序”禁用成功和失败审核。</li><li>未启用 AD FS 配置，因此无法生成成功/失败审核。 | 
 | AD FS SSL 证书为自签名证书 | 当前正在 AD FS 场中使用自签名证书作为 SSL 证书。 因此，Office 365 的电子邮件客户端身份验证将失败 | <p> 更新每台 AD FS 服务器上的 SSL 证书。 </p> <ol><li>获取具有以下要求的公开受信任的 SSL 证书。 </li><li>证书安装文件包含其私钥。 </li> <li>增强型密钥使用至少是服务器身份验证。 </li> <li>证书使用者或使用者可选名称 (SAN) 包含联合身份验证服务的 DNS 名称或适当的通配符。 例如：sso.contoso.com 或 *.contoso.com </li></ol> <p>在本地计算机证书存储中的每台服务器上安装新的 SSL 证书。 </p> <ol>确保 AD FS 服务帐户具有对证书私钥的读取访问权限。 <br /> <b>对于 Windows Server 2008R2 中的 AD FS 2.0：</b> <li>将新的 SSL 证书绑定到承载联合身份验证服务的 IIS 中的 Web 站点。 请注意，必须在每个联合服务器和联合服务器代理上执行此步骤。 </li> <br /><b>对于 Windows Server 2012 R2 或更高版本中的 AD FS：</b> <li>  请参阅<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 证书</a> </li> </ol> | 
 | 代理服务器与联合服务器之间的信任无效 | 无法建立或续订联合服务器代理与联合身份验证服务之间的信任。 | 更新代理服务器上的代理信任证书。 重新运行代理配置向导。 |
@@ -68,16 +68,16 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 | SSL 证书已过期 | AD FS 服务的 SSL 证书已过期。 因此，任何需要有效 SSL 连接的身份验证请求都将失败。 例如：电子邮件客户端身份验证将无法对 Office 365 进行身份验证。 | 更新每台 AD FS 服务器上的 SSL 证书。<ol><li>获取具有以下要求的 SSL 证书。<li>增强型密钥使用至少是服务器身份验证。 </li><li>证书使用者或使用者可选名称 (SAN) 包含联合身份验证服务的 DNS 名称或适当的通配符。 例如：sso.contoso.com 或 *.contoso.com</li></li><li>在本地计算机证书存储中的每台服务器上安装新的 SSL 证书。</li><li>确保 AD FS 服务帐户具有对证书私钥的读取访问权限</li></ol></p><p><b>对于 Windows Server 2008 R2 中的 AD FS 2.0：</b><ul><li>将新的 SSL 证书绑定到承载联合身份验证服务的 IIS 中的 Web 站点。 请注意，必须在每个联合服务器和联合服务器代理上执行此步骤。</li></ul></p><p><b>对于 Windows Server 2012 R2 或更高版本中的 AD FS：</b>请参阅：<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 证书</a> </li> | 
 | 未启用 Azure Active Directory 所需的终结点（针对 Office 365） | 未为联合身份验证服务启用 Exchange 联机服务、Azure AD 和 Office 365 所需的以下一组终结点： <li>/adfs/services/trust/2005/usernamemixed</li><li>/adfs/services/trust/2005/windowstransport</li><li>/adfs/ls/</li> |  在联合身份验证服务上启用 Microsoft 云服务必需的终结点。<br>对于 Windows Server 2012R2 或更高版本中的 AD FS： <li> 请参阅：<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 证书</a> </li></p> | 
 | 联合服务器无法连接到 AD FS 配置数据库 | AD FS 服务帐户在连接到 AD FS 配置数据库时遇到问题。 因此，此计算机上的 AD FS 服务可能无法按预期运行。 | <li> 确保 AD FS 服务帐户有权访问配置数据库。 </li><li>确保 AD FS 配置数据库服务可用且可访问。 </li> | 
-| 必需的 SSL 绑定缺失或未配置 | 此联合服务器用于成功执行身份验证必需的 SSL 绑定配置错误。 因此，AD FS 无法处理任何传入请求。 | 对于 Windows Server 2012 R2</b><br>打开提升的管理命令提示符，并执行以下命令： <ol> <li> 查看当前的 SSL 绑定：<i>Get-AdfsSslCertificate </i> <li> 添加新绑定：netsh http add sslcert hostnameport=<federation service name>:443 certhash=0102030405060708090A0B0C0D0E0F1011121314 appid={00112233-4455-6677-8899-AABBCCDDEEFF} certstorename=MY<i></i> |
+| 必需的 SSL 绑定缺失或未配置 | 此联合服务器用于成功执行身份验证必需的 SSL 绑定配置错误。 因此，AD FS 无法处理任何传入请求。 | 对于 Windows Server 2012 R2</b><br>打开提升的管理命令提示符，并执行以下命令： <ol> <li> 查看当前的 SSL 绑定：<i>Get-AdfsSslCertificate </i> <li> 若要添加新绑定： <i> netsh http 添加 sslcert hostnameport =\<联合身份验证服务名称 >: 443 certhash = 0102030405060708090A0B0C0D0E0F1011121314 appid = {00112233-4455-6677-8899-AABBCCDDEEFF} certstorename = MY </i> |
 | 主要 AD FS 令牌签名证书已过期 | AD FS 令牌签名证书已过期。 此证书无效时，AD FS 无法颁发已签名的令牌。 | 如果启用了自动证书续期，AD FS 将管理更新令牌签名证书。</p><p>如果手动管理证书，请按照以下说明操作。 <ol><li><b>获取新的令牌签名证书</b>。<ol type="a"><li>确保增强型密钥使用 (EKU) 包括“数字签名”。 </li><li>使用者或使用者可选名称 (SAN) 没有任何限制。 </li><li>请记住，验证令牌签名证书时，联合服务器、资源伙伴联合服务器和信赖方应用程序服务器需要能够链接到受信任的根证书颁发机构。</li></ol></li><li><b>在每个联合服务器的本地证书存储中安装证书</b>。 <ul><li>确保证书安装文件在每个服务器上都有证书的私钥。</li></ul></li><li><b>确保联合身份验证服务帐户有权访问新证书的私钥</b>。</li><li> <b>将新证书添加到 AD FS</b>。<ol type="a"><li>从“管理工具”菜单中启动 AD FS 管理。</li><li>展开“服务”，然后选择“证书”</li><li>在“操作”窗格中，单击“添加令牌签名证书”</li><li>系统将展示对令牌签名有效的证书列表。 如果发现新证书未显示在列表中，需要返回并确保证书位于本地计算机个人存储中，并与私钥关联，且证书包含数字签名 KU。</li><li>选择新的“令牌签名证书”，然后单击“确定”</li></ol></li><li><b>将令牌签名证书中的更改告知所有信赖方</b>。<ol type="a"><li>使用 AD FS 联合元数据的信赖方必须请求新的联合元数据，然后开始使用新证书。</li><li>未使用 AD FS 联合元数据的信赖方必须手动更新新令牌签名证书的公钥。 与信赖方共享 .cer 文件。</li></ol></li><li><b>将新的令牌签名证书设为主证书</b>。<ol type="a"><li>在“AD FS 管理”中选中“证书”节点之后，现在“令牌签名”下应显示两个证书：现有证书和新证书。</li><li>选择新的令牌签名证书，右键单击，然后选择“设置为主证书”<b></b></li><li>保留旧证书作为辅助证书，以便续期。 确定不再需要旧证书进行续期或证书过期后，请计划将其删除。 请记住，当前用户的 SSO 会话已签名。 当前 AD FS 代理信任关系将利用使用旧证书签名和加密的令牌。 </li></ol></li>|
 | 代理服务器正在删除请求以进行拥塞控制 | 由于此代理服务器与联合服务器之间的延迟高于正常值，此代理服务器当前正在删除来自外网的请求。 因此，AD FS 代理服务器处理的身份验证请求可能会部分失败。 | <li>验证联合代理服务器和联合服务器之间的网络延迟是否在可接受的范围内。 有关“令牌请求延迟”的趋势值，请参阅“监视”部分。 延迟高于 [1500 ms] 时，应视为高延迟。 如果检测到高延迟，请确保 AD FS 与 AD FS 代理服务器之间的网络没有连接问题。</li><li>请确保联合服务器的身份验证请求未重载。 “监视”部分提供了每秒令牌请求数、CPU 利用率和内存消耗的趋势视图。</li><li>如果已确认上述项正常，但此问题仍然存在，请根据相关链接中的指南，调整每个联合代理服务器上的拥塞规避设置。 | 
-| 拒绝 AD FS 服务帐户访问任一证书的私钥。 | AD FS 服务帐户无权访问此计算机上的任一 AS FS 证书的私钥。 | 确保 AD FS 服务帐户可以访问存储在本地计算机证书存储中的 SSL、令牌签名和令牌解密证书。<ol> <li> 从命令行键入 MMC。</li><li>转到“文件”>“添加”/“删除管理单元”</li><li> 选择“证书”，然后单击“添加”。 -> 选择“计算机帐户”，然后单击“下一步”。 -> 选择“本地计算机”，然后单击“完成”。 单击“确定”。 </li></ol> <br>打开证书（本地计算机）/个人/证书。对于 AD FS 使用的所有证书：<ol><li>右键单击证书。</li><li>选择“所有任务”>“管理私钥”。</li><li>在“组”或“用户名”下的“安全”选项卡上，确保存在 AD FS 服务帐户。 如果未选择“添加”，则添加 AD FS 服务帐户。</li><li>选择 AD FS 服务帐户，并在“<AD FS Service Account Name> 的权限”下确保勾选了读取权限（复选标记）。 | 
+| 拒绝 AD FS 服务帐户访问任一证书的私钥。 | AD FS 服务帐户无权访问此计算机上的任一 AS FS 证书的私钥。 | 确保 AD FS 服务帐户可以访问存储在本地计算机证书存储中的 SSL、令牌签名和令牌解密证书。<ol> <li> 从命令行键入 MMC。</li><li>转到“文件”>“添加”/“删除管理单元”</li><li> 选择“证书”，然后单击“添加”。 -> 选择“计算机帐户”，然后单击“下一步”。 -> 选择“本地计算机”，然后单击“完成”。 单击“确定”。 </li></ol> <br>打开证书（本地计算机）/个人/证书。对于 AD FS 使用的所有证书：<ol><li>右键单击证书。</li><li>选择“所有任务”>“管理私钥”。</li><li>在“组”或“用户名”下的“安全”选项卡上，确保存在 AD FS 服务帐户。 如果未选择“添加”，则添加 AD FS 服务帐户。</li><li>选择 AD FS 服务帐户并在"权限\<AD FS 服务帐户名称 >"请确保勾选了读取权限 （复选标记）。 | 
 | AD FS SSL 证书没有私钥 | 在没有私钥的情况下，安装了 AD FS SSL 证书。 因此，通过 SSL 的任何身份验证请求都将失败。 例如，Office 365 的电子邮件客户端身份验证将失败。 | 更新每台 AD FS 服务器上的 SSL 证书。<ol><li>获取具有以下要求的公开受信任的 SSL 证书。<ol type="a"><li>证书安装文件包含其私钥。</li><li>增强型密钥使用至少是服务器身份验证。 </li><li>证书使用者或使用者可选名称 (SAN) 包含联合身份验证服务的 DNS 名称或适当的通配符。 例如：sso.contoso.com 或 *.contoso.com</li></ol></li><li>在本地计算机证书存储中的每台服务器上安装新的 SSL 证书。</li><li>确保 AD FS 服务帐户具有对证书私钥的读取访问权限</li></ol></p><p><b>对于 Windows Server 2008 R2 中的 AD FS 2.0：</b><ul><li>将新的 SSL 证书绑定到承载联合身份验证服务的 IIS 中的 Web 站点。 请注意，必须在每个联合服务器和联合服务器代理上执行此步骤。</li></ul></p><p><b>对于 Windows Server 2012 R2 或更高版本中的 AD FS：</b> <li> 请参阅：<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 证书</a> </li> | 
 | 主要 AD FS 令牌解密证书已过期 | 主要 AD FS 令牌解密证书已过期。 AD FS 无法解密来自受信任声明提供程序的令牌。 AD FS 无法解密已加密的 SSO Cookie。 最终用户无法进行身份验证，因此无法访问资源。 | <p>如果启用了自动证书续期，AD FS 将管理令牌解密证书。</p><p>如果手动管理证书，请按照以下说明操作。<ol><li><b>获取新的令牌解密证书</b>。<ul><li>确保增强型密钥使用 (EKU) 包括“密钥加密”。</li><li>使用者或使用者可选名称 (SAN) 没有任何限制。</li><li>请注意，验证令牌解密证书时，联合服务器和声明提供程序合作伙伴需要能够链接到受信任的根证书颁发机构。</li></ul></li><li><b>确定声明提供程序合作伙伴信任新令牌解密证书的方式</b><ul><li>请求合作伙伴在更新证书后拉取联合元数据。</li><li>与合作伙伴共享 新证书（.cer 文件）的公钥。 在声明提供程序合作伙伴 AD FS 服务器上，从“管理工具”菜单上启动 AD FS 管理。 在“信任关系”/“信赖方信任”下，选择为你创建的信任。 在“属性”/“加密”下，单击“浏览”以选择新的令牌解密证书，然后单击“确定”。</li></ul></li><li><b>在每个联合服务器的本地证书存储中安装证书</b>。<ul><li>确保证书安装文件在每个服务器上都有证书的私钥。</li></ul></li><li><b>确保联合身份验证服务帐户有权访问新证书的私钥</b>。</li><li><b>将新证书添加到 AD FS</b>。<ul><li>从“管理工具”菜单中启动 AD FS 管理</li><li>展开“服务”，然后选择“证书”</li><li>在“操作”窗格中，单击“添加令牌解密证书”</li><li>系统将显示对令牌解密有效的证书列表。 如果发现新证书未显示在列表中，需要返回并确保证书位于本地计算机个人存储中，并与私钥关联，且证书包含作为扩展密钥使用的密钥加密。</li><li>选择新的“令牌解密证书”，然后单击“确定”。</li></ul></li><li><b>将新的令牌解密证书设为主证书</b>。<ul><li>在“AD FS 管理”中选中“证书”节点之后，现在“令牌解密”下应显示两个证书：现有证书和新证书。</li><li>选择新的令牌解密证书，右键单击，然后选择“设置为主证书”。</li><li>保留旧证书作为辅助证书，以便续期。 确定不再需要旧证书进行续期或证书过期后，应计划将其删除。 </li></ul></li> | 
 
 ## <a name="alerts-for-active-directory-domain-services"></a>Azure Active Directory 域服务警报
 
-| 警报名称 | 说明 | 补救 |
+| 警报名称 | 描述 | 补救 |
 | --- | --- | ----- |
 | 无法通过 LDAP ping 访问域控制器 | 无法通过 LDAP ping 访问域控制器。 这可能是由于网络问题或计算机问题所致。 因此，LDAP Ping 将失败。 |  <li>检查警报列表中是否存在相关警报，例如：域控制器未在播发。 </li><li>确保受影响的域控制器有足够的磁盘空间。 空间不足将阻止 DC 将其自身作为 LDAP 服务器来播发。 </li><li> 尝试查找 PDC：运行 <br> 在受影响的域控制器上运行 netdom query fsmo<i></i> </br> 。 <li> 确保物理网络配置/连接正确。 </li> |
 | 发生了 Active Directory 复制错误 | 此域控制器发生的是复制问题，可转到“复制状态”仪表板找到该问题。 复制错误可能是由于配置不正确或其他相关问题所致。 未处理的复制错误可能会导致数据不一致。 | 有关受影响的源和目标 DC 的名称，请参阅其他详细信息。 导航到“复制状态”仪表板，并在受影响的 DC 上查找活动错误。 单击错误，以打开包含有关如何修复该特定错误的更多详细信息的边栏选项卡。| 

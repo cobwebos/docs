@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/09/2019
+ms.date: 03/24/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f2de9274e1b6c996e75148d1a1f018d73a721bb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3f6ac8a693e09d0efbac080d7effc6ce21c6a094
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443447"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418958"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
@@ -190,11 +190,15 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 ![用户 Web 登录](./media/active-directory-tou/user-tou.png)
 
+用户可以查看的使用条款和，如有必要，使用按钮放大和缩小。
+
+![使用缩放按钮的查看使用条款](./media/active-directory-tou/zoom-buttons.png)
+
 以下屏幕显示了使用条款在移动设备上的外观。
 
 ![用户移动登录](./media/active-directory-tou/mobile-tou.png)
 
-用户只需接受一次使用条款，他们将不会在后续登录时再次看到使用条款。
+用户只需接受一次的使用条款，他们将看不使用条款再次在后续登录。
 
 ### <a name="how-users-can-review-their-terms-of-use"></a>用户如何查看其使用条款
 用户可按以下过程查看已接受的使用条款。

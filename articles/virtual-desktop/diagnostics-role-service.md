@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: a9b8be58e8dfb27fbe896cf1c8d8dc0e91e3b24c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402841"
+ms.locfileid: "58418629"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>确定诊断功能的问题
 
@@ -32,20 +32,20 @@ Windows 虚拟桌面诊断程序将使用只是一个 PowerShell cmdlet，但包
 
 ### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>检索你的租户中的诊断活动
 
-可以通过输入检索诊断活动**Get RdsDiagnosticsActivities** cmdlet。 下面的示例 cmdlet 将返回一系列诊断活动，按从最具体到最早。
+可以通过输入检索诊断活动**Get RdsDiagnosticActivities** cmdlet。 下面的示例 cmdlet 将返回一系列诊断活动，按从最具体到最早。
 
 ```powershell
-Get-RdsDiagnosticsActivities -TenantName <tenantName>
+Get-RdsDiagnosticActivities -TenantName <tenantName>
 ```
 
 与其他 Windows 虚拟桌面 PowerShell cmdlet，必须使用 **-TenantName**参数来指定你想要用于查询的租户的名称。 租户名称是适用于几乎所有诊断活动查询。
 
 ### <a name="retrieve-detailed-diagnostic-activities"></a>检索详细的诊断活动
 
-**-详细**参数为返回每个诊断活动提供更多详细信息。 每个活动的格式因其活动类型而异。 **-详细**参数可以添加到任何**Get RdsDiagnosticsActivities**查询，如下面的示例中所示。
+**-详细**参数为返回每个诊断活动提供更多详细信息。 每个活动的格式因其活动类型而异。 **-详细**参数可以添加到任何**Get RdsDiagnosticActivities**查询，如下面的示例中所示。
 
 ```powershell
-Get-RdsDiagnosticsActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
 ```
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>检索特定的诊断活动通过活动 ID

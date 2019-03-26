@@ -3,7 +3,7 @@ title: 解释 Azure Monitor（预览版）中的 Azure Active Directory 审核�
 description: 介绍在 Azure Monitor（预览版）中使用的 Azure AD 审核日志架构
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 12/14/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25afb2a7e6c29a3c55300dc4e8519f1ca076021a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 4832776dee7c478996bcfc2a903a6d8e2a3c4426
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173175"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436959"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor 中的 Azure AD 审核日志架构（预览版）
 
@@ -147,7 +147,7 @@ ms.locfileid: "56173175"
 
 ## <a name="field-and-property-descriptions"></a>字段和属性说明
 
-| 字段名 | 说明 |
+| 字段名 | 描述 |
 |------------|-------------|
 | time       | 日期和时间 (UTC)。 |
 | operationName | 操作的名称。 |
@@ -167,7 +167,7 @@ ms.locfileid: "56173175"
 
 <br>
 
-| 属性名称 | 说明 |
+| 属性名称 | 描述 |
 |---------------|-------------|
 | AuditEventCategory | 审核事件的类型。 它可以是“用户管理”、“应用程序管理”或其他类型。|
 | 标识类型 | 类型可以是“应用程序”或“用户”。 |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 7d44f7f5d97e558121c5611bc34282989b12f535
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761236"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407617"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>在 Azure API 管理中使用用于 Redis 的外部 Azure 缓存
 
@@ -66,7 +66,7 @@ ms.locfileid: "57761236"
 ![将自己的缓存带到 APIM](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
-> “使用以下位置中的”设置指定当 API 管理存在多区域配置时，哪个 API 管理区域部署将与所配置的缓存进行通信。 指定为**默认**的缓存将替代为具有区域值的缓存。
+> **使用从**设置指定区域的部署将进行通信的 API 管理与 API 管理的多区域配置时配置的缓存。 指定为**默认**的缓存将替代为具有区域值的缓存。
 >
 > 例如，如果 API 管理承载在“美国东部”、“东南亚”和“西欧”，并且配置了两个缓存，一个用于**默认**，另一个用于**东南亚**，则**东南亚**中的 API 管理将使用其自己的缓存，而其他两个区域将使用**默认**缓存项。
 
@@ -76,7 +76,7 @@ ms.locfileid: "57761236"
 2. 从左侧的菜单中选择“外部缓存”选项卡。
 3. 单击“**+ 添加**”按钮。
 4. 从“缓存实例”下拉字段中选择你的缓存。
-5. 在“使用以下位置中的”下拉字段中选择“默认”或指定所需的区域。
+5. 选择**默认**，或指定所需的区域中**从使用**下拉列表中的字段。
 6. 单击“ **保存**”。
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>添加位于当前 Azure 订阅外部或 Azure 外部（后者为一般情况）的用于 Redis 的 Azure 缓存
@@ -85,7 +85,7 @@ ms.locfileid: "57761236"
 2. 从左侧的菜单中选择“外部缓存”选项卡。
 3. 单击“**+ 添加**”按钮。
 4. 从“缓存实例”下拉字段中选择“自定义”。
-5. 在“使用以下位置中的”下拉字段中选择“默认”或指定所需的区域。
+5. 选择**默认**，或指定所需的区域中**从使用**下拉列表中的字段。
 6. 在“连接字符串”字段中提供用于 Redis 的 Azure 缓存连接字符串。
 7. 单击“ **保存**”。
 

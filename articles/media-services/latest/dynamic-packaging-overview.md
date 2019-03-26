@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 9ba1b5a9b231822fd12d5a349e2518bc77669274
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 77cbc73c6c6aef40c482b0cfe456dcbd4b7e85d0
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351399"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435306"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
@@ -30,32 +30,20 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和
 
 因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。 
 
-在媒体服务动态打包使用是否进行实时或按需流式处理。 下图显示了按需流式处理与动态打包工作流。
-
-![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
-
-> [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
-
-## <a name="delivery-protocols"></a>传递协议
-
-|协议|示例|
-|---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
-|平滑流| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
+在媒体服务动态打包使用是否进行实时或按需流式处理。 
 
 ## <a name="common-on-demand-workflow"></a>常见的按需工作流
 
 以下是常见的 Media Services 流式处理工作流使用动态打包的位置。
 
-1. 上传一个输入文件（称为夹层文件）。 例如，H.264、MP4 或 WMV（有关受支持格式的列表，请参阅[Media Encoder Standard 支持的格式](media-encoder-standard-formats.md)）。
+1. 上传一个输入文件（称为夹层文件）。 例如，MP4、 MOV 或 MXF (支持的格式列表，请参阅[支持的 Media Encoder Standard 格式](media-encoder-standard-formats.md)。
 2. 将夹层文件编码为 H.264 MP4 自适应比特率集。
 3. 发布包含自适应比特率 MP4 集的资产。 通过创建发布**流式处理定位符**。
 4. 创建面向不同的格式 （HLS、 Dash 和平滑流式处理） 的 Url。 **流式处理终结点**将负责为正确的清单并对所有这些不同格式的请求提供服务。
+
+下图显示了按需流式处理与动态打包工作流。
+
+![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>编码为自适应比特率 mp4
 
@@ -87,13 +75,16 @@ Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编�
 
 ![直通](./media/live-streaming/pass-through.svg)
 
-## <a name="dynamic-encryption"></a>动态加密
+## <a name="delivery-protocols"></a>传递协议
 
-**动态加密**使您能够动态加密使用 AES-128 或三个主要数字版权管理 (DRM) 系统的任何实时或按需内容：内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
-
-## <a name="dynamic-manifest"></a>动态清单
-
-使用动态筛选来控制跟踪、 格式、 比特率和演示文稿时间窗口，发送到参与方的数目。 有关详细信息，请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
+|协议|示例|
+|---|---|
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
+|MPEG DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
+|MPEG DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
+|平滑流| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>支持的动态打包的视频编解码器
 
@@ -105,6 +96,10 @@ Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编�
 
 > [!NOTE]
 > 动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。
+
+## <a name="dynamic-encryption"></a>动态加密
+
+**动态加密**使您能够动态加密使用 AES-128 或三个主要数字版权管理 (DRM) 系统的任何实时或按需内容：内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
 
 ## <a name="manifests"></a>清单 
  
@@ -195,6 +190,14 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
    </StreamIndex>
 </SmoothStreamingMedia>
 ```
+
+## <a name="dynamic-manifest"></a>动态清单
+
+使用动态筛选来控制跟踪、 格式、 比特率和演示文稿时间窗口，发送到参与方的数目。 有关详细信息，请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
+
+> [!NOTE]
+> 目前，无法使用 Azure 门户来管理 v3 资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 [上传、编码、流式处理视频](stream-files-tutorial-with-api.md)

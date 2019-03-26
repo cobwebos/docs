@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: raynew
-ms.openlocfilehash: e83698af6bb1caab1568375b726753d34a8c8467
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1cc86470b9e45469d633d47121869b3c2dc1b052
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861343"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438999"
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
 
@@ -31,7 +31,7 @@ ms.locfileid: "57861343"
 - 如果您不想保留任何数据恢复服务保管库，并想要删除保管库，可以删除强行保管库。
 - 如果尝试删除保管库但未成功，此保管库仍配置为接收备份数据。
 
-若要了解如何删除保管库，请参阅[在 Azure 门户中删除保管库](backup-azure-delete-vault.md#delete-a-vault-from-azure-portal)部分。 如果部分中，[删除该保管库强行](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force)。 如果不确定保管库中的内容，并需要确保可以删除保管库，请参阅[删除保管库依赖项并删除保管库](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault)部分。
+若要了解如何删除保管库，请参阅[在 Azure 门户中删除保管库](#delete-a-vault-from-the-azure-portal)部分。 如果部分中，[删除该保管库强行](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force)。 如果不确定保管库中的内容，并需要确保可以删除保管库，请参阅[删除保管库依赖项并删除保管库](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault)部分。
 
 ## <a name="delete-a-vault-from-the-azure-portal"></a>Azure 门户中删除保管库
 
@@ -90,7 +90,7 @@ PowerShell 可用于强制删除恢复服务保管库。 这意味着将永久�
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
-9. 如果保管库的不为空，将收到错误"因为没有在此保管库中的现有资源，无法删除保管库"。 若要删除包含在保管库中，执行以下操作：
+9. 如果保管库的不为空，将收到错误"因为没有在此保管库中的现有资源，无法删除保管库"。 若要删除保管库中的容器，请执行以下操作：
 
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 287a4104104c12e33fa2c50c398f422f9e6ea8c5
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107587"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418697"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 
@@ -48,11 +48,10 @@ ms.locfileid: "58107587"
     3. 确保从防病毒软件中排除[要从防病毒程序中排除的 Site Recovery 文件夹](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)中列出的文件夹。  
     4. 解决问题后，遵照[将源计算机注册到配置服务器](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)中的指导原则重试注册。
 
-7. 在 Linux 上，如果 <INSTALLATION_DIR\>/etc/drscout.conf 中的平台值已损坏，则注册将会失败。 若要识别此问题，请打开 /var/log/ua_install.log 文件。 搜索字符串 **Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure**。 平台应设置为 **VmWare** 或 **Azure**。 如果 drscout.conf 文件已损坏，我们建议[卸载移动代理](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service)，然后重新安装移动代理。 如果卸载失败，请完成以下步骤：
-    1. 打开 Installation_Directory/uninstall.sh 文件，并注释掉对 **StopServices** 函数的调用。
-    2. 打开 Installation_Directory/Vx/bin/uninstall.sh 文件，并注释掉对 **stop_services** 函数的调用。
-    3. 打开 Installation_Directory/Fx/uninstall.sh 文件，并注释掉尝试停止 Fx 服务的整个节。
-    4. [卸载](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service)移动服务。 成功卸载后，重新启动系统，然后尝试安装移动代理。
+7. 在 Linux 上，如果 <INSTALLATION_DIR\>/etc/drscout.conf 中的平台值已损坏，则注册将会失败。 若要识别此问题，请打开 /var/log/ua_install.log 文件。 搜索字符串 **Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure**。 平台应设置为 **VmWare** 或 **Azure**。 如果 drscout.conf 文件已损坏，我们建议[卸载移动代理](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)，然后重新安装移动代理。 如果卸载失败，请完成以下步骤：。 打开 Installation_Directory/uninstall.sh 文件，并注释掉对 **StopServices** 函数的调用。
+    b. 打开 Installation_Directory/Vx/bin/uninstall.sh 文件，并注释掉对 **stop_services** 函数的调用。
+    c. 打开 Installation_Directory/Fx/uninstall.sh 文件，并注释掉尝试停止 Fx 服务的整个节。
+    d. [卸载](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)移动服务。 成功卸载后，重新启动系统，然后尝试安装移动代理。
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>安装失败：无法加载帐户
 
@@ -80,9 +79,9 @@ ms.locfileid: "58107587"
 
 无法创建用于在 Site Recovery 中进行身份验证的证书。 确保以本地管理员的身份运行安装程序后，重新运行安装程序。
 
-## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>未能从 Server Standard EVALUATION 向 Server Standard 激活Windows 许可证
+## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>如果不激活 Windows 许可证服务器标准计算到 Server Standard
 
-1. 作为通过 OVF 配置服务器部署的一部分，将使用 evaluation 许可证，其有效期为 180 天。 需要在此许可证过期之前进行激活。 否则，这可能导致配置服务器频繁关闭，因而妨碍复制活动。
+1. 作为通过 OVF 配置服务器部署的一部分，将使用 evaluation 许可证，其有效期为 180 天。 需要在此许可证过期之前进行激活。 否则，这可以导致频繁的配置服务器关闭，因此会导致影响复制活动。
 2. 如果无法激活 Windows 许可证，请联系 [Windows 支持团队](https://aka.ms/Windows_Support)以解决此问题。
 
 ## <a name="register-source-machine-with-configuration-server"></a>将源计算机注册到配置服务器
@@ -146,7 +145,7 @@ ms.locfileid: "58107587"
    
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
  
-    如果源服务器条目为“OnPrem-VM01”且 ipaddress 为10.0.0.4，则改为使用以下命令。
+    如果源服务器的条目"OnPrem VM01"的具有 ip 地址为 10.0.0.4 然后使用以下命令。
  
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
  

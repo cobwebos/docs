@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a286b3578cc159b6771df3f91bcd3f2fd35a161
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0d4f9c69d6ddcbef96a88a0df10c3b0974cd5b74
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201664"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437078"
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配�
 * `IssueInstant` - 这是一个 `DateTime` 字符串，它包含协调世界时 (UTC) 值并采用[往返格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)。 Azure AD 需要此类型的值，但不强制要求。
 
 ### <a name="issuer"></a>颁发者
-`LogoutRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的 **ServicePrincipalNames** 之一完全匹配。 通常，此参数设置为应用程序注册期间指定的**应用 ID URI**。
+`LogoutRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的 **ServicePrincipalNames** 之一完全匹配。 通常，此参数设置为应用程序注册期间指定的 **应用 ID URI** 。
 
 ### <a name="nameid"></a>NameID
 `NameID` 元素的值必须与所要注销的用户的 `NameID` 完全匹配。
@@ -69,10 +69,10 @@ Azure AD 在响应 `LogoutRequest` 元素时发送 `LogoutResponse`。 以下摘
 ```
 
 ### <a name="logoutresponse"></a>LogoutResponse
-Azure AD 将设置 `LogoutResponse` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它还将 `InResponseTo` 元素设置为获取响应的 `LogoutRequest` 的 `ID` 属性值。
+Azure AD 会在 `LogoutResponse` 元素中设置 `ID`、`Version` 和 `IssueInstant` 值。 它还将 `InResponseTo` 元素设置为获取响应的 `LogoutRequest` 的 `ID` 属性值。
 
 ### <a name="issuer"></a>颁发者
-Azure AD 将此值设为 `https://login.microsoftonline.com/<TenantIdGUID>/`，其中，<TenantIdGUID> 是 Azure AD 租户的租户 ID。
+Azure AD 将此值设置为`https://login.microsoftonline.com/<TenantIdGUID>/`其中\<TenantIdGUID > 是 Azure AD 租户的租户 ID。
 
 若要评估 `Issuer` 元素的值，请使用应用程序注册期间提供的**应用 ID URI** 值。
 

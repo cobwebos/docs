@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c2c22d2d3d68080b1d4e05410121ea1d1be283d
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862706"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439169"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教程：使用视频索引器 API
 
@@ -73,19 +73,6 @@ ms.locfileid: "57862706"
 访问令牌在 1 小时后过期。 在使用操作 API 之前，请确保访问令牌有效。 如果令牌已过期，请再次调用授权 API 来获取新访问令牌。
  
 现在，便可以开始与 API 集成。 查找[每个视频索引器 REST API 的详细说明](https://api-portal.videoindexer.ai/)。
-
-## <a name="location"></a>位置
-
-所有操作 API 都需要一个 Location 参数，该参数指示要将调用路由到的，并在其中创建帐户的区域。
-
-下表中所述的值适用。 “参数值”是使用 API 时传递的值。
-
-|**名称**|**参数值**|**说明**|
-|---|---|---|
-|试用|trail|表示试用帐户。|
-|美国西部|westus2|表示 Azure 美国西部 2 区域。|
-|北欧 |northeurope|表示 Azure 北欧区域。|
-|东亚|eastasia|表示 Azure 东亚区域。|
 
 ## <a name="account-id"></a>帐户 ID 
 
@@ -224,6 +211,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>后续步骤
 
-[检查输出 JSON 的详细信息](video-indexer-output-json-v2.md)。
-
-[视频索引器概述](video-indexer-overview.md)
+- [检查输出 JSON 的详细信息](video-indexer-output-json-v2.md)。
+- [视频索引器概述](video-indexer-overview.md)
+- [区域](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

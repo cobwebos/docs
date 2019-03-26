@@ -1,24 +1,24 @@
 ---
 title: 了解部署排序顺序
-description: 了解蓝图的整个生命周期及每个阶段的详细信息。
+description: 了解有关蓝图定义所经历的生命周期和有关每个阶段的详细信息。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/12/2018
+ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8451b858717e1a3e66214f66db624ee41f6da375
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990567"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434800"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
-Azure 蓝图使用排序顺序来确定处理蓝图分配时资源创建的顺序。 本文解释了以下概念：
+Azure 蓝图使用**序列化顺序**处理蓝图定义的分配时确定的顺序创建资源。 本文解释了以下概念：
 
 - 使用的默认序列化顺序
 - 如何自定义顺序
@@ -30,7 +30,7 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ## <a name="default-sequencing-order"></a>默认排序顺序
 
-如果蓝图不包含用于部署项目的顺序的指令或指令为 NULL，则使用以下顺序：
+如果蓝图定义包含顺序，以便将项目部署任何指令或指令为 null，则使用以下顺序：
 
 - 订阅级别“角色分配”项目按项目名称排序
 - 订阅级别“策略分配”项目按项目名称排序
@@ -45,16 +45,14 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ## <a name="customizing-the-sequencing-order"></a>自定义排序顺序
 
-在编撰大型蓝图时，可能需要按特定顺序来创建资源。 此方案的最常见使用模式发生在蓝图包含多个 Azure 资源管理器模板时。 蓝图通过允许定义排序顺序来处理此模式。
+当撰写大型蓝图定义时，可能有必要为按特定顺序创建资源。 蓝图定义包含多个 Azure 资源管理器模板时，此方案的最常见的使用模式。 蓝图通过允许定义排序顺序来处理此模式。
 
-排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 只有蓝图（用于资源组）和项目对象支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
+排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 蓝图定义中，为资源组和项目对象支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
 
-> [!NOTE]
-> **资源组**资源组支持 `dependsOn` 属性，但不能以任何项目类型作为 `dependsOn` 的目标。
+### <a name="example---ordered-resource-group"></a>示例-排序资源组
 
-### <a name="example---blueprint-with-ordered-resource-group"></a>示例 - 具有已排序资源组的蓝图
-
-此示例蓝图具有一个通过声明 `dependsOn` 的值定义了自定义排序顺序的资源组，以及一个标准资源组。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。 standard-rg 将按默认排序顺序进行处理。
+此示例蓝图定义具有已通过声明的值来定义自定义排序顺序的资源组`dependsOn`，以及标准的资源组。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。
+standard-rg 将按默认排序顺序进行处理。
 
 ```json
 {
@@ -104,6 +102,42 @@ JSON 示例中的有些变量需要用自己的值替换：
 }
 ```
 
+### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>示例-具体取决于资源组的订阅级别模板项目
+
+此示例适用于在订阅级别，以依赖于资源组部署的资源管理器模板。 在默认排序，将任何资源组和资源组中的子项目之前创建的订阅级别项目。 蓝图定义此类中定义的资源组：
+
+```json
+"resourceGroups": {
+    "wait-for-me": {
+        "metadata": {
+            "description": "Resource Group that is deployed prior to the subscription level template artifact"
+        }
+    }
+}
+```
+
+具体取决于订阅级别模板项目**等待-对-我**资源组定义如下：
+
+```json
+{
+    "properties": {
+        "template": {
+            ...
+        },
+        "parameters": {
+            ...
+        },
+        "dependsOn": ["wait-for-me"],
+        "displayName": "SubLevelTemplate",
+        "description": ""
+    },
+    "kind": "template",
+    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
+    "type": "Microsoft.Blueprint/blueprints/artifacts",
+    "name": "subtemplateWaitForRG"
+}
+```
+
 ## <a name="processing-the-customized-sequence"></a>处理自定义排序
 
 在创建过程中，将使用拓扑排序来创建蓝图项目的依赖项关系图。 此检查可确保资源组与项目之间每个级别的依赖项都得到支持。
@@ -112,8 +146,8 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[蓝图生命周期](lifecycle.md)。
+- 了解[蓝图生命周期](lifecycle.md)。
 - 了解如何使用[静态和动态参数](parameters.md)。
-- 了解如何使利用[蓝图资源锁定](resource-locking.md)。
+- 了解如何利用[蓝图资源锁定](resource-locking.md)。
 - 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
-- 使用蓝图赋值的过程中解决的问题[常规故障排除](../troubleshoot/general.md)。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

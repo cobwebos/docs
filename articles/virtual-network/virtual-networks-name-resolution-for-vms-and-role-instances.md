@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 3/25/2019
 ms.author: subsarma
-ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193987"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418731"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -74,6 +74,7 @@ Azure 提供的名称解析包括以下功能：
 * 主机名必须符合 DNS。 名称只能使用 0-9、a-z 和“-”，并且不能以“-”开头或结尾。
 * DNS 查询流量按照 VM 进行限制。 限制不会影响大部分应用程序。 如果遵循请求限制，请确保启用客户端缓存。 有关详细信息，请参阅 [DNS 客户端配置](#dns-client-configuration)。
 * 在经典部署模型中，每个虚拟网络仅注册前 180 个云服务中的 VM。 此限制不适用于 Azure 资源管理器中的虚拟网络。
+* Azure DNS IP 地址为 168.63.129.16。 这是一个静态 IP 地址，将不会更改。
 
 ## <a name="dns-client-configuration"></a>DNS 客户端配置
 

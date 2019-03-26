@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 0790b7d5280b3fdf26c34c3903a6257d21bc877c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28aef1c1b5091db75b4a1fb6786ee712b42a1ea2
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835826"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418765"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -33,9 +33,9 @@ ms.locfileid: "57835826"
 本操作指南文章介绍了以下四个用例：
 
 1. [快速连接单个设备使用 SAS](#connect-a-single-device)
-1. 连接设备进行大规模使用 SAS
+1. [连接设备进行大规模使用 SAS](#connect-devices-at-scale-using-sas)
 1. [连接设备进行大规模使用 X.509 证书](#connect-devices-using-x509-certificates)这是推荐用于生产环境的方法。
-1. 直接连接而无需首先注册设备 
+1. [直接连接而无需首先注册设备](#connect-without-registering-devices)
 
 ## <a name="connect-a-single-device"></a>连接单个设备
 

@@ -1,7 +1,7 @@
 ---
 title: 发布区域和终结点
 titleSuffix: Azure Cognitive Services
-description: 发布 LUIS 应用的区域对应于创建 Azure LUIS 终结点密钥时在 Azure 门户中指定的区域或位置。 发布应用时，LUIS 会自动为与密钥关联的区域生成终结点 URL。
+description: 3 个创作区域和它们的门户网站支持所有多个发布的区域。 发布 LUIS 应用的区域对应于创建 Azure LUIS 终结点密钥时在 Azure 门户中指定的区域或位置。 发布应用时，LUIS 会自动为与密钥关联的区域生成终结点 URL。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,27 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 01444cec798763bc4e44bcabe0d7ebb640e537a8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765164"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436330"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
 
-发布 LUIS 应用的区域对应于创建 Azure LUIS 终结点密钥时在 Azure 门户中指定的区域或位置。 [发布应用](./luis-how-to-publish-app.md)时，LUIS 会自动为与密钥关联的区域生成终结点 URL。 若要将 LUIS 应用发布到多个区域，每个区域至少需要一个密钥。 
+三个创作区域和它们的门户网站支持所有多个发布的区域。 发布 LUIS 应用的区域对应于创建 Azure LUIS 终结点密钥时在 Azure 门户中指定的区域或位置。 [发布应用](./luis-how-to-publish-app.md)时，LUIS 会自动为与密钥关联的区域生成终结点 URL。 若要将 LUIS 应用发布到多个区域，每个区域至少需要一个密钥。 
 
-## <a name="luis-website"></a>LUIS 网站
+<a name="luis-website"></a>
+
+## <a name="luis-authoring-regions"></a>LUIS 创作区域
 LUIS 网站基于区域分为三个网站。 必须在同一区域中创建和发布应用。 
 
-|LUIS|区域|
-|--|--|
-|[www.luis.ai][www.luis.ai]|美国<br>非欧洲<br>非澳大利亚|
-|[au.luis.ai][au.luis.ai]|澳大利亚|
-|[eu.luis.ai][eu.luis.ai]|欧洲|
+|LUIS|全球区域|创作 Azure 中的区域|
+|--|--|--|
+|[www.luis.ai][www.luis.ai]|美国<br>非欧洲<br>非澳大利亚| `westus`|
+|[au.luis.ai][au.luis.ai]|澳大利亚| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai]|欧洲|`westeurope`|
+
+与其他 Azure 发布区域中的已部署 LUIS 服务进行交互，可以使用创作的区域。  
+
+创作区域具有[配对故障转移区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
 
 ## <a name="regions-and-azure-resources"></a>区域和 Azure 资源
 该应用将发布到与 LUIS 门户中添加的 LUIS 资源关联的所有区域。 例如，对于在 [www.luis.ai][www.luis.ai] 上创建的应用，如果你在 **westus** 中创建 LUIS 资源并将其作为资源添加到该应用，则该应用将发布到该区域中。 

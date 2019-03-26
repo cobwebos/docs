@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: b1b5dffed0a82e3e3c91efd4024bafdc64f0d3d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119031"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417762"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器日志
 在 Azure Database for MySQL 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。 
@@ -44,40 +44,40 @@ ms.locfileid: "58119031"
 有关慢查询日志参数的完整说明，请参阅 MySQL [慢查询日志文档](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
 
 ## <a name="diagnostic-logs"></a>诊断日志
-Azure Database for MySQL 集成了 Azure Monitor 诊断日志。 具有 MySQL 服务器上启用慢查询日志，您可以选择将它们发送至 Azure Monitor 日志、 事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/diagnostic-logs-overview.md)中的操作说明部分。
+Azure Database for MySQL 集成了 Azure Monitor 诊断日志。 在 MySQL 服务器上启用慢查询日志后，可以选择将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/diagnostic-logs-overview.md)中的操作说明部分。
 
 > [!IMPORTANT]
-> 此诊断功能的服务器日志中的常规用途和内存优化才[定价层](concepts-pricing-tiers.md)。
+> 服务器日志的此诊断功能仅适用于“常规用途”和“内存优化”的[定价层](concepts-pricing-tiers.md)。
 
 下表介绍了每个日志中的内容。 包括的字段以及它们的出现顺序可能有所不同，具体取决于输出方法。
 
 | **属性** | **说明** |
 |---|---|
-| TenantId | 租户 ID |
-| SourceSystem | `Azure` |
-| TimeGenerated [UTC] | 记录日志时的时间戳 (UTC) |
-| Type | 日志类型。 始终是 `AzureDiagnostics` |
-| SubscriptionId | 服务器所属的订阅的 GUID |
-| resourceGroup | 服务器所属的资源组的名称 |
-| ResourceProvider | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMYSQL` |
-| ResourceType | `Servers` |
-| ResourceId | 资源 URI |
-| 资源 | 服务器的名称 |
-| 类别 | `MySqlSlowLogs` |
-| OperationName | `LogEvent` |
-| Logical_server_name_s | 服务器的名称 |
-| start_time_t [UTC] | 查询开始时间 |
-| query_time_s | 查询执行所用的总时间 |
-| lock_time_s | 查询锁定的总时间 |
-| user_host_s | 用户名 |
-| rows_sent_s | 发送的行数 |
-| rows_examined_s | 检查的行数 |
-| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
-| insert_id_s | 插入 ID |
-| sql_text_s | 完整的查询 |
-| server_id_s | 服务器的 ID |
-| thread_id_s | 线程 ID |
-| \_ResourceId | 资源 URI |
+| `TenantId` | 租户 ID |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated` [UTC] | 记录日志时的时间戳 (UTC) |
+| `Type` | 日志类型。 始终是 `AzureDiagnostics` |
+| `SubscriptionId` | 服务器所属的订阅的 GUID |
+| `ResourceGroup` | 服务器所属的资源组的名称 |
+| `ResourceProvider` | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMYSQL` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | 资源 URI |
+| `Resource` | 服务器的名称 |
+| `Category` | `MySqlSlowLogs` |
+| `OperationName` | `LogEvent` |
+| `Logical_server_name_s` | 服务器的名称 |
+| `start_time_t` [UTC] | 查询开始时间 |
+| `query_time_s` | 查询执行所用的总时间 |
+| `lock_time_s` | 查询锁定的总时间 |
+| `user_host_s` | 用户名 |
+| `rows_sent_s` | 发送的行数 |
+| `rows_examined_s` | 检查的行数 |
+| `last_insert_id_s` | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| `insert_id_s` | 插入 ID |
+| `sql_text_s` | 完整的查询 |
+| `server_id_s` | 服务器的 ID |
+| `thread_id_s` | 线程 ID |
+| `\_ResourceId` | 资源 URI |
 
 ## <a name="next-steps"></a>后续步骤
 - [如何通过 Azure CLI 配置和访问服务器日志](howto-configure-server-logs-in-cli.md)。

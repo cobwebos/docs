@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1794aa26fc725207c4a901c11c345eeaa3d2f65d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a72182091721dd6a1104cb8e3495aee1a3b25eb8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867726"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439374"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 使用 Azure 存储 GPv2 帐户可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 利用 Azure 存储中的托管，可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他 PaaS 服务。
@@ -46,6 +46,9 @@ https://contoso.z4.web.core.windows.net/image.png
 ```
 
 如果未提供文件名，选定的默认文件名将在根目录和任何子目录中使用。 如果服务器返回了 404 错误，并且你未提供错误文档路径，则向用户返回默认的 404 页面。
+
+> [!NOTE]
+> 文件的默认公共访问级别是私有的。 因为文件通过匿名访问请求提供服务，将忽略此设置。 没有公共访问权限的所有文件，并且 RBAC 权限将被忽略。
 
 ## <a name="cdn-and-ssl-support"></a>CDN 和 SSL 支持
 

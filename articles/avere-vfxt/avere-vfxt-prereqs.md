@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 5642f3acd108d0d3f504fc132522936d1b5ab870
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 04af92f21cecaa832e857a7017b67f815f6ab685
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082579"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417966"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -57,7 +57,7 @@ ms.locfileid: "58082579"
 
 |Azure 组件|Quota|
 |----------|-----------|
-|虚拟机|3 个或多个与 E32s_v3|
+|虚拟机|3 个或更多个 E32s_v3|
 |高级 SSD 存储|200 GB OS 空间加上每个节点的 1 TB 到 4 TB 缓存空间 |
 |存储帐户（可选） |v2|
 |数据后端存储（可选） |一个新的 LRS Blob 容器 |
@@ -125,6 +125,7 @@ ms.locfileid: "58082579"
           "Microsoft.Compute/virtualMachines/read",
           "Microsoft.Network/networkInterfaces/read",
           "Microsoft.Network/networkInterfaces/write",
+          "Microsoft.Network/virtualNetworks/read",
           "Microsoft.Network/virtualNetworks/subnets/read",
           "Microsoft.Network/virtualNetworks/subnets/join/action",
           "Microsoft.Network/networkSecurityGroups/join/action",

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: b367251e6799031ed96058d21e606446e14636c7
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730095"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407600"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
@@ -278,7 +278,7 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 **可以使用 Azure 门户中购买的域以改为指向 Azure VM？**
 
-是的你可以指向 VM、 存储等域。有关详细信息，请参阅[在 Azure 门户中为 Windows VM 创建自定义的 FQDN](../virtual-machines/windows/portal-create-fqdn.md)。
+是的您可以将域指向 VM 了。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
 
 **通过 GoDaddy 或 Azure DNS 托管我的域？**
 

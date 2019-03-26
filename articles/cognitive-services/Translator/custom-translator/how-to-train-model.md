@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 8fee19b4d7a1ae05ca9a38c5a9ba374c0674a867
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2045041a9ee4872e4510e5ee0deba258b0342557
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776251"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437282"
 ---
 # <a name="train-a-model"></a>训练模型
 
@@ -51,6 +51,9 @@ ms.locfileid: "57776251"
 6.  自定义翻译将提交训练，并在“模型”选项卡中显示训练状态。
 
     ![“训练模型”页面](media/how-to/how-to-train-model-3.png)
+
+>[!Note]
+>自定义转换器支持时间中的任何位置工作区中的 10 个并发培训。
 
 
 ## <a name="edit-a-model"></a>编辑模型

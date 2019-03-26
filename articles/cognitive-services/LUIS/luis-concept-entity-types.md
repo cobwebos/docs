@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: d12ea20f9f510b0e2d3d3512d8d8c71a3fb96eec
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: efe50533a03551a673583265e107263d79cff90a
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372516"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418680"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>实体类型及其在 LUIS 中的目的
 
@@ -216,11 +216,20 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 #### <a name="remove-example-utterance-to-fix-tagging"></a>删除示例查询文本以修复标记 
 
-第一个选择是删除示例查询文本，然后重新训练的应用。 重新添加只是单词或短语，它是作为示例查询文本中，实体，然后标记的实体和训练。 现在重新添加预生成的实体和原始的示例查询文本。 自定义的实体应继续标记而不是预生成的实体。 
+第一个选择是要删除的示例查询文本。 
+
+1. 删除示例查询文本。
+1. 重新训练的应用。 
+1. 重新添加只是单词或短语，它是实体，这将被标记为预生成的实体，作为完整的示例查询文本。 词或短语仍将被标记为预生成的实体。 
+1. 在选择的示例查询文本中的实体**意向**页上，并将更改为自定义实体和重新定型。 这应防止 LUIS 将此确切文本标记为任何使用该文本的示例查询文本中的预建实体。 
+1. 将整个原始示例语音样本添加回意图。 自定义的实体应继续标记而不是预生成的实体。 如果未标记的自定义实体，你需要在查询文本中添加该文本的更多示例。
 
 #### <a name="remove-prebuilt-entity-to-fix-tagging"></a>删除预建的实体，以修复标记
 
-第二种选择是从应用程序中，删除预建的实体然后标记的自定义实体中的示例查询文本，然后返回到应用中添加预生成的实体。 此修补程序假定预生成的实体不是复合实体的一部分。 
+1. 从应用中删除预生成的实体。 
+1. 上**意向**页上，将标记的示例查询文本中的自定义实体。
+1. 将应用定型。
+1. 返回到应用中添加预生成的实体并定型应用。 此修补程序假定预生成的实体不是复合实体的一部分。
 
 ## <a name="regular-expression-entity"></a>正则表达式实体 
 

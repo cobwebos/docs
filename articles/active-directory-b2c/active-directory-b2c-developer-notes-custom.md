@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C 中有关使用自定义策略的开发人员说明 | Microsoft Docs
+title: 自定义策略-Azure Active Directory B2C 的开发人员说明 |Microsoft Docs
 description: 有关使用自定义策略配置和维护 Azure AD B2C 的开发人员说明。
 services: active-directory-b2c
 author: davidmu1
@@ -7,137 +7,134 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 03/18/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 0a5255974c7399f9307d8b06a58f4f977be89829
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: cf9c6f6a54c38f00e477e2a9d62e72ab5faccdef
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172878"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418918"
 ---
-# <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Azure Active Directory B2C 自定义策略公共预览版发行说明
-自定义策略功能集现已推出公共预览版，供所有 Azure Active Directory B2C (Azure AD B2C) 客户评估。 此功能集面向构建最复杂标识解决方案的高级标识开发人员。  
+# <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略的开发人员说明
 
-目前，此功能集要求开发人员直接通过 XML 文件编辑配置标识体验框架。 这种配置方法非常有效，但也比较复杂。 使用标识体验框架的高级标识开发人员应投入时间完成演练并阅读参考文档。 
+Azure Active Directory B2C 中的自定义策略配置现已公开发布。 这种配置方法构建复杂的标识解决方案的高级的标识开发人员的目标。 自定义策略使标识体验框架的强大功能在 Azure AD B2C 租户中可用。 高级的标识开发人员使用自定义策略应投入时间完成演练并阅读参考文档。
 
-## <a name="features-included-in-this-public-preview"></a>此公共预览版包含的功能
-公共预览版中引入的新功能可让开发人员执行以下任务：<br>
+虽然大部分可用的自定义策略选项现已公开上市，但在基础功能，例如技术配置文件类型和内容定义在软件生命周期中的不同阶段的 Api。 即将推出更多。 下表指定更高粒度级别的可用性的级别。  
 
-使用自定义策略创作并上传自定义身份验证用户旅程。 
-   * 将用户旅程逐步描述为声明提供程序之间的交换。 
-   * 在用户旅程中定义条件分支。 在自定义身份验证用户旅程中集成已启用 REST API 的服务。  
-* 添加与符合 OpenIDConnect 标准的标识提供者的联合。 <br>
-* 添加与遵守 SAML 2.0 协议的标识提供者的联合。 
+## <a name="features-that-are-generally-available"></a>已公开发布的功能
 
-## <a name="terms-of-the-public-preview"></a>公共预览版条款
-
-建议将新功能仅用于评估。<br>
-不应在生产环境中使用新功能。<br>
-服务级别协议 (SLA) 不适用于新功能。 <br>
-可通过普通支持渠道提出支持请求。 <br>
-尚未确定公开上市的日期。<br>
-Microsoft 可以出于任何原因，根据自身的判断，标识并拒绝或限制已超出充当客户标识和访问管理 (CIAM) 平台的 Azure AD B2C 产品规章范围的方案和用户旅程。
+- 使用自定义策略创作并上传自定义身份验证用户旅程。  
+    - 将用户旅程逐步描述为声明提供程序之间的交换。  
+    - 在用户旅程中定义条件分支。  
+- 与已启用 REST API 的自定义身份验证用户旅程中的服务进行互操作。  
+- 与符合 OpenIDConnect 协议的标识提供者联合。  
+- 联合与遵守 SAML 2.0 协议的标识提供程序。   
 
 ## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>自定义策略功能集开发人员的责任
-手动策略配置授予对 Azure AD B2C 基础平台的较低访问级别，因此要求创建唯一的、完全可自定义的信任框架。 自定义标识提供者、信任关系、与外部服务的集成以及分步工作流的各种排列组合方式，对使用这些资源的高级开发人员提出了更高的要求。
 
-为充分利用公共预览版，建议使用自定义策略功能集的开发人员遵守以下准则：
-* 熟悉标识体验框架和密钥/机密管理的配置语言。
-* 取得方案和自定义集成的所有权。
-* 执行有序的方案测试。
-* 在至少一个开发和测试环境以及一个生产环境中遵循软件开发与过渡最佳做法。
-* 随时了解与之集成的标识提供程序和服务的新进展。 例如，跟踪机密的更改情况以及对服务的计划内和计划外更改。
-* 设置主动监控，监控生产环境的响应能力。
-* 在 Azure 订阅中保留最新的联系电子邮件地址，并快速回复 Microsoft 活动站点团队的电子邮件。
-* 根据 Microsoft 活动站点团队的通知及时采取措施。 
+手动策略配置授予对基础平台的 Azure AD B2C 和结果中创建唯一的信任框架的较低级别访问权限。 自定义标识提供者、 信任关系的多个可能的排列与外部服务，以及分步工作流的集成需要设计和配置有序的方法。 
+
+使用自定义策略功能集开发人员应遵守以下准则：
+
+- 熟悉自定义策略和密钥/机密管理的配置语言。 有关详细信息，请参阅[TrustFrameworkPolicy](trustframeworkpolicy.md)。 
+- 取得方案和自定义集成的所有权。 记录你的工作并通知你实时站点的组织。  
+- 执行有序的方案测试。 
+- 在至少一个开发和测试环境以及一个生产环境中遵循软件开发与过渡最佳做法。 
+- 随时了解与之集成的标识提供程序和服务的新进展。 例如，跟踪机密的更改情况以及对服务的计划内和计划外更改。 
+- 设置主动监控，监控生产环境的响应能力。 有关使用 Application Insights 集成的详细信息，请参阅[Azure Active Directory B2C:收集日志](active-directory-b2c-custom-guide-eventlogger-appins.md)。 
+- 在 Azure 订阅中保留最新的联系电子邮件地址，并快速回复 Microsoft 活动站点团队的电子邮件。 
+- 根据 Microsoft 活动站点团队的通知及时采取措施。
+
+## <a name="terms-for-features-in-public-preview"></a>公共预览版中功能的条款
+
+- 我们鼓励您使用的公共预览版功能仅用于评估目的。 
+- 服务级别协议 (Sla) 不适用于公共预览版功能。
+- 可以通过普通支持渠道提出有关公共预览版功能的支持请求。 
 
 ## <a name="features-by-stage-and-known-issues"></a>按阶段的功能和已知问题
-自定义策略/标识体验框架功能正在持续而快速地进行开发。  下表是功能 / 组件可用性的索引。
 
-请将问题发布到 Stack Overflow，网址为 [https://aka.ms/aadb2cso](https://aka.ms/aadb2cso)
-
+自定义策略/标识体验框架功能正在持续而快速地开发。 下表是功能和组件的可用性的索引。
 
 ### <a name="identity-providers-tokens-protocols"></a>标识提供者、令牌、协议
-与外部组件和应用程序的接口
 
 | Feature | 开发 | 预览 | GA | 说明 |
-|---------------------------------------------|-------------|---------|----|-------|
-| IDP-OpenIDConnect |  | x |  | 例如 Google+ |
-| IDP-OAUTH2 |  | x |  | 例如 Facebook  |
-| IDP-OAUTH1 |  | x |  | 例如 Twitter |
-| IDP-SAML |  | x |  | 例如 Salesforce、ADFS |
-| IDP-WSFED | x |  |  |  |
-| 信赖方 OAUTH |  | x |  |  |
-| 信赖方 OIDC |  | x |  |  |
-| 信赖方 SAML | x |  |  |  |
-| 信赖方 WSFED | x |  |  |  |
-| 具有基本和证书身份验证的 REST API |  | x |  | 例如 Azure Functions |
-
+|-------- | ----------- | ------- | -- | ----- |
+| IDP-OpenIDConnect |  |  | X | 例如，Google +。  |
+| IDP-OAUTH2 |  |  | X | 例如，Facebook。  |
+| IDP OAUTH1 (twitter) |  | X |  | 例如，Twitter。 |
+| IDP OAUTH1 (例如 twitter) |  |  |  | 不支持 |
+| IDP-SAML |  |   | X | 例如，Salesforce、 ADFS。 |
+| IDP-WSFED | X |  |  |  |
+| 信赖方 OAUTH1 |  |  |  | 不支持。 |
+| 信赖方 OAUTH2 |  |  | X |  |
+| 信赖方 OIDC |  |  | X |  |
+| 信赖方 SAML | X |  |  |  |
+| 信赖方 WSFED | X |  |  |  |
+| 使用基本的 REST API 和证书身份验证 |  |  | X | 例如，Azure 逻辑应用。 |
 
 ### <a name="component-support"></a>组件支持
 
-
 | Feature | 开发 | 预览 | GA | 说明 |
-|-------------------------------------------|-------------|---------|----|-------|
-| Azure 多重身份验证 |  | x |  |  |
-| Azure Active Directory 用作本地目录 |  | x |  |  |
-| 用于 2FA 的 Azure 电子邮件子系统 |  | x |  |  |
-| 多语言支持|  | x |  |  |
-| 密码复杂性 | x |  |  |  |
-
+| ------- | ----------- | ------- | -- | ----- |
+| Azure 多重身份验证 |  |  | X |  |
+| Azure Active Directory 用作本地目录 |  |  | X |  |
+| 电子邮件验证的 azure 电子邮件子系统 |  |  | X |  |
+| 多语言支持|  |  | X |  |
+| 谓词验证 |  |  | X | 例如，密码复杂性。 |
+| 使用第三方电子邮件服务提供程序 | X |  |  |  |
 
 ### <a name="content-definition"></a>内容定义
 
 | Feature | 开发 | 预览 | GA | 说明 |
-|-----------------------------------------------------------------------------|-------------|---------|----|-------|
-|   错误页，api.error |  | x |  |  |
-|   IDP 选择页，api.idpselections |  | x |  |  |
-|   用于注册的 IDP 选择，api.idpselections.signup |  | x |  |  |
-|   忘记密码，api.localaccountpasswordreset |  | x |  |  |
-|   本地帐户登录，api.localaccountsignin |  | x |  |  |
-|   本地帐户注册，api.localaccountsignup |  | x |  |  |
-|   MFA 页，api.phonefactor |  | x |  |  |
-|   自我断言 - 例如社交帐户注册，api.selfasserted |  | x |  |  |
-|   自我断言配置文件更新，api.selfasserted.profileupdate |  | x |  |  |
-|   统一的注册或登录页，api.signuporsignin |  | x |  |  |
-
+| ------- | ----------- | ------- | -- | ----- |
+| 错误页，api.error |  |  | X |  |
+| IDP 选择页，api.idpselections |  |  | X |  |
+| 用于注册的 IDP 选择，api.idpselections.signup |  |  | X |  |
+| 忘记密码，api.localaccountpasswordreset |  |  | X |  |
+| 本地帐户登录，api.localaccountsignin |  |  | X |  |
+| 本地帐户注册，api.localaccountsignup |  |  | X |  |
+| MFA 页，api.phonefactor |  |  | X |  |
+| 自断言的社交帐户注册，api.selfasserted |  |  | X |  |
+| 自我断言配置文件更新，api.selfasserted.profileupdate |  |  | X |  |
+| 统一的注册或登录页，api.signuporsignin，使用参数"disableSignup" |  |  | X |  |
+| JavaScript / 页合同 |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>App-IEF 集成
-| Feature | 开发 | 预览 | GA | 说明 |
-|--------------------------------------------------|-------------|---------|----|-------------------------------------------------|
-| 查询字符串参数 id_token_hint | x |  |  |  |
-| 查询字符串参数 domain_hint |  | x |  | 作为声明提供时，可以传递给 IDP |
-| 查询字符串参数 login_hint |  | x |  | 作为声明提供时，可以传递给 IDP |
-| 通过 client_assertion 将 JSON 插入到 UserJourney 中 | x |  |  | 即将弃用 |
-| 将 JSON 作为 id_token_hint 插入到 UserJourney 中 | x |  |  | 用于传递 JSON 的前向方法 |
 
+| Feature | 开发 | 预览 | GA | 说明 |
+| ------- | ----------- | ------- | -- | ----- |
+| 查询字符串参数 domain_hint |  |  | X | 可用作声明，可以传递给 IDP。 |
+| 查询字符串参数 login_hint |  |  | X | 可用作声明，可以传递给 IDP。 |
+| 通过 client_assertion 将 JSON 插入到 UserJourney 中 | X |  |  | 将被弃用。 |
+| 将 JSON 作为 id_token_hint 插入到 UserJourney 中 |  | X |  | 转到的前向方法传递 JSON。 |
+| 将 IDP 令牌传递到应用程序 |  | X |  | 例如，从 Facebook 到应用程序。 |
 
 ### <a name="session-management"></a>会话管理
 
 | Feature | 开发 | 预览 | GA | 说明 |
-|---------------------------------|-------------|---------|----|-------|
-| SSO 会话提供程序 |  | x |  |  |
-| 外部登录会话提供程序 |  | x |  |  |
-| SAML SSO 会话提供程序 |  | x |  |  |
-
+| ------- | ----------- | ------- | -- | ----- |
+| SSO 会话提供程序 |  |  | X |  |
+| 外部登录会话提供程序 |  |  | X |  |
+| SAML SSO 会话提供程序 |  |  | X |  |
+| 默认 SSO 会话提供程序 |  |  | X |  |
 
 ### <a name="security"></a>安全
-| Feature | 开发 | 预览 | GA | 说明 |
-|---------------------------------------------|-------------|---------|----|-------|
-| 策略密钥 - 生成、手动、上传 |  | x |  |  |
-| 策略密钥 - RSA/证书、机密 |  | x |  |  |
 
+| Feature | 开发 | 预览 | GA | 说明 |
+|-------- | ----------- | ------- | -- | ----- |
+| 策略密钥 - 生成、手动、上传 |  |  | X |  |
+| 策略密钥 - RSA/证书、机密 |  |  | X |  |
+| 策略上传 |  |  | X |  |
 
 ### <a name="developer-interface"></a>开发人员接口
+
 | Feature | 开发 | 预览 | GA | 说明 |
-|---------------------------------------------|-------------|---------|----|-------|
-| Azure 门户-IEF UX |  | x |  |  |
-| Application Insights UserJourney 日志  |  | x |  |  |
-| Application Insights 事件日志 |x|  |  |  |
-
-
+| ------- | ----------- | ------- | -- | ----- |
+| Azure 门户-IEF UX |  |  | X |  |
+| Application Insights UserJourney 日志 |  | X |  | 用于在开发过程故障排除。  |
+| Application Insights 事件日志 （通过业务流程步骤） |  | X |  | 用于监视在生产环境中的用户流。 |
 
 ## <a name="next-steps"></a>后续步骤
-[自定义策略入门](active-directory-b2c-get-started-custom.md)。
+[了解有关自定义策略和用户流的差异的详细信息](active-directory-b2c-overview-custom.md)。

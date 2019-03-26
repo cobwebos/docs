@@ -1,8 +1,16 @@
-      ---
-author: alkohli ms.service: databox  
-ms.topic： 包括 ms.date:03/21/2019 ms.author: alkohli
 ---
-
+author: alkohli
+ms.service: databox
+ms.topic: include
+ms.date: 03/25/2019
+ms.author: alkohli
+ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58431554"
+---
 | 端口号。| 入或出 | 端口范围| 需要|   说明 |   |
 |--------|-----|-----|-----------|----------|-----------|
 | TCP 80 (HTTP)|出|WAN |否|出站端口用于 Internet 访问以检索更新。 <br>出站 Web 代理可由用户配置。 |
@@ -15,4 +23,3 @@ ms.topic： 包括 ms.date:03/21/2019 ms.author: alkohli
 | TCP 443 (HTTPS)|出/入|LAN|是|此端口是设备上用于本地管理的本地 UI 的入站端口。 |
 | TCP 445 (SMB)|In|LAN|某些情况下<br>请参阅说明|仅当通过 SMB 连接时，才需要此端口。 |
 | TCP 2049 (NFS)|In|LAN|某些情况下<br>请参阅说明|仅当通过 NFS 连接时，才需要此端口。 |
-

@@ -12,12 +12,12 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dfef0e27dd3e38e5a965f47a47619671a3127b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eefde6173156ea86f210ecc196c848fd97aaa0c8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117653"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435775"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>在 Azure Active Directory 中配置单一登录到非库应用程序
 
@@ -124,7 +124,7 @@ ms.locfileid: "58117653"
 
 ### <a name="set-up-target-application"></a>设置目标应用程序
 
-若要配置应用程序单一登录，请找到应用程序的文档。 若要找到文档，请滚动到基于 SAML 的登录配置页的末尾，然后单击“配置 <application name>”。 
+若要配置应用程序单一登录，请找到应用程序的文档。 要查找的文档，滚动至末尾基于 SAML 的单一登录配置页面，然后单击**配置\<应用程序名称 >**。 
 
 所需值根据应用程序的不同而异。 有关详细信息，请参阅应用程序的 SAML 文档。 “登录”和“注销”服务 URL 解析为相同的终结点，即 Azure AD 实例的 SAML 请求处理终结点。 “SAML 实体 ID”是颁发给应用程序的 SAML 令牌中显示为 Issuer 的值。
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: b43fe513b15d55ee595acaa6733d96cdb58f4e83
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 836d36cc6f220bb544e0c7723506c624c5f9fc39
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294496"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407294"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性级别
 
@@ -31,41 +31,41 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性，而不会走�
 
 ## <a name="configure-the-default-consistency-level"></a>配置默认一致性级别
 
-随时都可在 Azure Cosmos DB 帐户中配置默认的一致性级别。 在帐户中配置的默认一致性级别适用于该帐户下的所有 Azure Cosmos DB 数据库和容器。 针对某个容器或数据库发出的所有读取和查询默认使用指定的一致性级别。 有关详细信息，请参阅如何[配置默认一致性级别](how-to-manage-consistency.md#configure-the-default-consistency-level)。
+随时都可在 Azure Cosmos DB 帐户中配置默认的一致性级别。 在你的帐户上配置的默认一致性级别适用于所有 Azure Cosmos 数据库和该帐户下的容器。 针对某个容器或数据库发出的所有读取和查询默认使用指定的一致性级别。 有关详细信息，请参阅如何[配置默认一致性级别](how-to-manage-consistency.md#configure-the-default-consistency-level)。
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>与一致性级别关联的保证
 
-Azure Cosmos DB 提供的综合 SLA 可保证 100% 的读取请求满足所选任何一致性级别的一致性保证。 如果满足与一致性级别关联的所有一致性保证，则读取请求满足一致性 SLA。 [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) GitHub 存储库中提供了 Azure Cosmos DB 中使用 [TLA+ 规范语言](https://lamport.azurewebsites.net/tla/tla.html)的五个一致性级别的精确定义。 
+Azure Cosmos DB 提供的综合 SLA 可保证 100% 的读取请求满足所选任何一致性级别的一致性保证。 如果满足与一致性级别关联的所有一致性保证，则读取请求满足一致性 SLA。 在 Azure Cosmos DB 中使用的五个一致性级别的精确定义[TLA + 规范语言](https://lamport.azurewebsites.net/tla/tla.html)中提供[azure cosmos tla](https://github.com/Azure/azure-cosmos-tla) GitHub 存储库。 
 
 下面描述了五个一致性级别的语义：
 
 - **非常一致性**：强一致性提供[可线性化](https://aphyr.com/posts/313-strong-consistency-models)保证。 保证读取操作返回项的最新提交版本。 客户端永远不会看到未提交或不完整的写入。 始终保证用户读取最新确认的写入。
 
-- **有限过期性**：保证读取操作遵循一致性前缀保证。 读取操作可以滞后于写入操作最多 K 个项版本（即“更新”）或“t”时间间隔。 如果选择有限过期，则可以通过两种方式配置“过期”： 
+- **有限过期性**：保证读取操作遵循一致性前缀保证。 读取操作可能会滞后于写入操作最多 *"K"* 版本 （即，"更新"） 的项或通过 *"T"* 时间间隔。 换而言之，当您选择有限的过期时，可以两种方式配置"停滞": 
 
-  * 项的版本数 (K)
-  * 读取操作可以滞后于写入操作的时间间隔 (t) 
+  * 版本数 (*K*) 的项
+  * 时间间隔 (*T*) 通过其读取可能会写入操作滞后 
 
-  有限过期提供全局整体顺序，但在“过期窗口”中除外。 过期窗口内部和外部的区域中提供单调读取保证。 强一致性的语义与有限过期提供的语义相同。 过期窗口等于零。 有限过期也称为“延时可线性化”。 当客户端在接受写入的区域中执行读取操作时，有限过期一致性提供的保证与强一致性的保证相同。
+  有限过期提供全局整体顺序，但在“过期窗口”中除外。 过期窗口内部和外部的区域中提供单调读取保证。 强一致性具有所提供的有限过期的语义相同。 过期窗口等于零。 有限过期也称为“延时可线性化”。 当客户端执行接受写入区域内的读取的操作时，提供的有限的过期一致性保证的那些通过强一致性保证相同。
 
 - **会话一致性**：保证读取操作遵循一致前缀（假定一个“writer”会话）、单调读取、单调写入、读取写入和写入后读取保证。 会话一致性划归到客户端会话。
 
-- 一致前缀：返回的更新包含所有更新的一些前缀，不带间隔。 一致前缀保证读取永远不会看到无序写入。
+- 一致前缀：返回的更新包含所有更新的一些前缀，不带间隔。 一致前缀一致性级别保证读取永远不会看到无序写入。
 
 - **最终一致性**：不保证读取的顺序。 如果缺少任何进一步的写入，则副本最终会收敛。
 
 ## <a name="consistency-levels-explained-through-baseball"></a>借助棒球解释一致性级别
 
-让我们以棒球比赛场景为例。 想象一系列表示棒球比赛得分的写入。 在 [Replicated data consistency through baseball](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf)（借助棒球阐释复制数据一致性）一文中描述了逐局得分。 这场虚构的棒球比赛目前正处于第七局的中段。 这是第七局的比赛。 客队以 2 比 5 的比分落后。
+让我们以棒球比赛场景为例。 想象一系列表示棒球比赛得分的写入。 在 [Replicated data consistency through baseball](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf)（借助棒球阐释复制数据一致性）一文中描述了逐局得分。 这场虚构的棒球比赛目前正处于第七局的中段。 这是第七局的比赛。 访问者位于分数为 2 到 5，如下所示：
 
 | | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **本垒打次数** |
 | - | - | - | - | - | - | - | - | - | - | - |
 | **客队** | 0 | 0 | 1 | 0 | 1 | 0 | 0 |  |  | 2 |
 | **主队** | 第 | 0 | 1 | 第 | 0 | 2 |  |  |  | 5 |
 
-Azure Cosmos DB 容器保存客队和主队的本垒打总次数。 当比赛正在进行时，不同的读取保证可能会导致客户端读取不同的分数。 下表列出了使用每种（共五种）一致性保证读取客队和主队分数后可能返回的完整分数集。 首先列出客队的得分。 不同的可能返回值以逗号分隔。
+Azure Cosmos 容器适用于访问者和家庭团队运行的总计。 当比赛正在进行时，不同的读取保证可能会导致客户端读取不同的分数。 下表列出了使用每种（共五种）一致性保证读取客队和主队分数后可能返回的完整分数集。 首先列出客队的得分。 不同的可能返回值以逗号分隔。
 
-| **一致性级别** | **分数** |
+| **一致性级别** | **评分 （访问者，主页）** |
 | - | - |
 | **非常** | 2-5 |
 | **有限过期** | 最多一个已过期的回合比分：2-3、2-4、2-5 |

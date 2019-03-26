@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9cb9877015f2cfe61799a56be6490a3f4e2fb60
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d976a43173ce4f9deee0a723a895b40678e173b3
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012775"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437877"
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 
@@ -158,7 +158,7 @@ Azure AD 将忽略 `AuthnRequest` 元素的 `Subject` 元素。
 
 ### <a name="issuer"></a>颁发者
 
-Azure AD 将 `Issuer` 元素设置为 `https://login.microsoftonline.com/<TenantIDGUID>/`，其中，<TenantIDGUID> 是 Azure AD 租户的租户 ID。
+Azure AD 集`Issuer`元素`https://login.microsoftonline.com/<TenantIDGUID>/`其中\<TenantIDGUID > 是 Azure AD 租户的租户 ID。
 
 例如，具有 Issuer 元素的响应如以下示例所示：
 
@@ -193,7 +193,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 
 #### <a name="issuer"></a>颁发者
 
-此元素设置为 `https://sts.windows.net/<TenantIDGUID>/`，其中，<TenantIDGUID> 是 Azure AD 租户的租户 ID。
+此值设置为`https://sts.windows.net/<TenantIDGUID>/`其中\<TenantIDGUID > 是 Azure AD 租户的租户 ID。
 
 ```
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>

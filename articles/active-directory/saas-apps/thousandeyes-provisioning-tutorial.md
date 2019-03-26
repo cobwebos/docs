@@ -16,28 +16,31 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b9b39cfc6ac760c41b58c050cb1ebf39d3f93a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: f008e981abb11a4927ec045c33342bbac9a05bd8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180923"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436789"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>教程：为 ThousandEyes 配置自动用户预配
 
 
 本教程的目的是说明从 Azure AD 自动将用户帐户预配到 ThousandEyes 和取消其预配而需要在 ThousandEyes 和 Azure 中执行的步骤。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户
-*   已启用[标准计划](https://www.thousandeyes.com/pricing)或更高版本的 ThousandEyes 租户 
-*   在 ThousandEyes 中具有管理员权限的用户帐户 
+*   活动[ThousandEyes 帐户](https://www.thousandeyes.com/pricing)
+*   ThousandEyes 用户帐户已分配的角色，其中包括以下 3 个权限：
+    * 查看所有用户
+    * 编辑用户
+    * API 访问权限
 
 > [!NOTE]
-> Azure AD 预配集成依赖于 [ThousandEyes SCIM API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK)，标准计划或更高版本中向 ThousandEyes 团队提供 ThousandEyes SCIM API。
+> Azure AD 预配集成依赖于[ThousandEyes SCIM API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK_ThousandEyes-support-for-SCIM)。 
 
 ## <a name="assigning-users-to-thousandeyes"></a>将用户分配到 ThousandEyes
 
@@ -51,7 +54,19 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 *   建议将单个 Azure AD 用户分配到 ThousandEyes 以测试预配配置。 其他用户和/或组可以稍后分配。
 
-*   如果将用户分配到 ThousandEyes，必须在分配对话框中选择用户角色或其他特定于应用程序的有效角色（如果有）。 “默认访问权限”角色不可用于预配，将跳过这些用户。
+*   如果将用户分配到 ThousandEyes，必须选择**用户**角色或其他有效特定于应用程序角色 （如果可用） 在分配对话框中的。 “默认访问权限”角色不可用于预配，将跳过这些用户。
+
+## <a name="configure-auto-provisioned-user-roles-in-thousandeyes"></a>在 ThousandEyes 中配置自动预配用户角色
+
+对于每个帐户组中，会自动预配到您的用户可以配置一组角色时创建新的用户帐户应用。 默认情况下，自动预配用户分配_普通用户_所有帐户的角色组，除非已另外进行配置。
+
+1. 若要指定一组新的自动预配用户的角色日志到 ThousandEyes，并导航到 SCIM 设置部分 **> 您在右上角中的用户图标 > 帐户设置 > 组织 > 安全性和身份验证。** 
+
+   ![导航到 SCIM API 设置](https://monosnap.com/file/kqY8Il7eysGFAiCLCQWFizzM27PiBG)
+
+2. 为每个帐户组添加一个条目，然后分配一组角色*保存*所做的更改。
+
+   ![为用户创建通过 SCIM API 设置默认角色和帐户组](https://monosnap.com/file/16siam6U8xDQH1RTnaxnmIxvsZuNZG)
 
 
 ## <a name="configuring-user-provisioning-to-thousandeyes"></a>向 ThousandEyes 配置用户预配 
@@ -59,7 +74,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 本部分将指导用户完成以下操作：将 Azure AD 连接到 ThousandEyes 的用户帐户预配 API，配置预配服务以便基于 Azure AD 中的用户和组分配在 ThousandEyes 中创建、更新和禁用所分配的用户帐户。
 
 > [!TIP]
-> 还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 ThousandEyes 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
+> 您还可以选择启用基于 SAML 的单一登录 (SSO) 为 ThousandEyes，遵循[提供 Azure 知识库中的说明](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-tutorial)完成 SSO。 可以独立于自动预配配置 SSO，尽管这两个功能互相补充。
 
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>在 Azure AD 中为 ThousandEyes 配置自动用户帐户预配
@@ -75,7 +90,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![ThousandEyes 预配](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. 在“管理员凭据”部分下，输入 ThousandEyes 帐户生成的“OAuth 持有者令牌”（可在 ThousandEyes 帐户的“配置文件”部分下找到或生成令牌）。
+5. 下**管理员凭据**部分中，输入**OAuth 持有者令牌**ThousandEyes' 帐户生成的 (您可以查找和或生成的令牌在 ThousandEyes 帐户下**配置文件**部分)。
 
     ![ThousandEyes 预配](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 

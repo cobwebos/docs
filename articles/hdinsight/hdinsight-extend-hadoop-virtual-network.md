@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: e7d264e5d5d289117dbc30b71e317506006e1f30
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b9462866f0be62d288e121b71119d0f9885a0d39
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401597"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439407"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -284,6 +284,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
     | 中国 | 中国北部 | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | 443 | 入站 |
     | &nbsp; | 中国东部 | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | 443 | 入站 |
     | &nbsp; | 中国北部 2 | 40.73.37.141</br>40.73.38.172 | 443 | 入站 |
+    | &nbsp; | 中国东部 2 | 139.217.227.106</br>139.217.228.187 | 443 | 入站 |
     | 欧洲 | 北欧 | 52.164.210.96</br>13.74.153.132 | 443 | 入站 |
     | &nbsp; | 西欧| 52.166.243.90</br>52.174.36.244 | 443 | 入站 |
     | 法国 | 法国中部| 20.188.39.64</br>40.89.157.135 | 443 | 入站 |

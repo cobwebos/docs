@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/25/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: b4553a392795bb8578f24848ccacc870b654bce9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ae278ac3e0fd9f93e080da8f52b9728e9c22a436
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116226"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439237"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>快速入门：创建使用 QnA Maker API 服务门户的知识库
 
@@ -69,6 +69,8 @@ QnA Maker API 服务门户轻松创建一个知识库时添加现有数据源。
 使用完知识库后，在 QnA Maker 门户中将其删除。
 
 ## <a name="next-steps"></a>后续步骤
+
+有关成本节约措施，你可以[共享](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker)QnA maker 创建的部分而不是所有 Azure 资源。
 
 > [!div class="nextstepaction"]
 > [添加个人聊天内容](./chit-chat-knowledge-base.md)
