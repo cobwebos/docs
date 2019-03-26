@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 310e0e77b898171aea3fdcf5996cbc53f9f582a6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 32faab707b7a40a9f637e4ee5863690a9d9ff4c3
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864603"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439273"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>通过 Azure PowerShell 使用基于 URL 路径的路由规则创建应用程序网关
 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网配置 *myAGSubnet* 和 *myBackendSubnet*。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 *myVNet* 的虚拟网络。 最后使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网配置 *myAGSubnet* 和 *myBackendSubnet*。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 *myVNet* 的虚拟网络。 最后使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 myAGPublicIPAddress 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -347,7 +347,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的公共 IP 地址。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如， `http://52.168.55.24`， `http://52.168.55.24:8080/images/test.htm`，或`http://52.168.55.24:8080/video/test.htm`。
+可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的公共 IP 地址。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，`http://52.168.55.24`、`http://52.168.55.24:8080/images/test.htm` 或 `http://52.168.55.24:8080/video/test.htm`。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -355,11 +355,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![在应用程序网关中测试基 URL](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-将 URL 更改为 http://<ip-address>:8080/video/test.htm（请将 <ip-address> 替换为自己的 IP 地址），应会看到如以下示例所示的内容：
+将 URL 更改为`http://<ip-address>:8080/video/test.htm`，并替换自己的 IP 地址`<ip-address>`，并应看到类似于下面的示例：
 
 ![在应用程序网关中测试映像 URL](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-更改 http://<ip-address>:8080/video/test.htm 的 URL，应看到类似下例所示的内容：
+将 URL 更改为`http://<ip-address>:8080/video/test.htm`和，应看到类似于下面的示例：
 
 ![在应用程序网关中测试视频 URL](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 

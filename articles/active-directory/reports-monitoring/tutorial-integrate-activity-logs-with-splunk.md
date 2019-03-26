@@ -3,7 +3,7 @@ title: 使用 Azure Monitor（预览版）将 Azure Active Directory 日志流�
 description: 了解如何使用 Azure Monitor 将 Azure Active Directory 日志与 Splunk 集成（预览）
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: c4b605b6-6fc0-40dc-bd49-101d03f34665
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31a4f5028cc6711ec92a495b19a17e8a0fbf11aa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 94039655a6cbe7878fa1f61ce759485392dc7e98
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170447"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438846"
 ---
 # <a name="integrate-azure-ad-logs-with-splunk-using-azure-monitor-preview"></a>使用 Azure Monitor（预览版）将 Azure AD 日志与 Splunk 集成
 
 本文介绍如何使用 Azure Monitor 将 Azure Active Directory (Azure AD) 日志与 Splunk 集成。 首先将日志路由到 Azure 事件中心，然后将事件中心与 Splunk 集成。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用此功能，需满足以下条件:
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 

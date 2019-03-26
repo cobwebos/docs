@@ -1,5 +1,5 @@
 ---
-title: 简单的查询示例 - Azure 搜索
+title: 使用"简单"的搜索语法的 Azure 搜索的查询示例
 description: 用于查询 Azure 搜索索引的全文搜索、筛选搜索、地理搜索、分面搜索和其他搜索字符串的简单查询示例。
 author: HeidiSteen
 manager: cgronlun
@@ -7,17 +7,17 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a975c95af75e9f3e09e5d0142716795ab4b90e28
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136472"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439103"
 ---
-# <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>有关在 Azure 搜索中生成查询的简单语法查询示例
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>在 Azure 搜索中使用"简单"的搜索语法的查询示例
 
 [简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)调用默认查询分析器，用于对 Azure 搜索索引执行全文搜索查询。 简单查询分析器速度很快，处理对象是 Azure 搜索中的全文搜索、筛选及分面搜索和地理搜索等常见方案。 本文逐步展示了一些示例，它们显示在使用简单语法时可用的查询操作。
 
@@ -55,7 +55,9 @@ URL 组合具备以下元素：
 
 ## <a name="send-your-first-query"></a>发送自己的第一个查询
 
-进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 可在下方第一个示例复制粘贴此 URL。
+进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 返回整个文档，其中可以查看所有字段并将所有值。
+
+作为验证步骤并查看文档结构，请将此 URL 粘贴到 REST 客户端。
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
@@ -74,6 +76,20 @@ URL 组合具备以下元素：
 第一个示例并未特定于分析器，但我们将先使用它来介绍第一个基本查询概念，即“包含”。 本示例显示查询执行情况以及对几个特定字段的响应。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
 
 出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 语法是 searchFields 和 select，前者将查询执行限制为只执行 business_title 字段，后者指定响应中包含哪些字段。
+
+### <a name="partial-query-string"></a>部分查询字符串
+
+```http
+searchFields=business_title&$select=business_title&search=*
+```
+
+下面是使用以逗号分隔列表中的多个字段相同的查询。
+
+```http
+search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+```
+
+### <a name="full-url"></a>完整的 URL
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*

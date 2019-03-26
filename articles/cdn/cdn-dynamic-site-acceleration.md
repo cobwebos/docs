@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 4fa681e800197ea241ba1c6cf2180ba04b6e565b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 6bd1d24cdece91265a7355678ea2bc0b0f9e3910
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092571"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439152"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>通过 Azure CDN 进行动态站点加速
 
@@ -27,7 +27,7 @@ ms.locfileid: "49092571"
 
 标准内容分发网络 (CDN) 功能包括更接近于最终用户缓存文件，以加快静态文件的分发这一功能。 但是，使用动态 web 应用程序无法在边缘位置缓存该内容，因为服务器将生成内容以响应用户行为。 加快此类内容交付比传统边缘缓存更加复杂，需要沿着从开始到交付的整个数据路径微调每个元素的端到端解决方案。 通过 Azure CDN 动态站点加速 (DSA) 优化，显著改进了包含动态内容的网页性能。
 
-在终结点创建期间，Akamai 的 Azure CDN 和 Verizon 的 Azure CDN 都通过“优化对象”菜单提供 DSA 优化。
+在终结点创建期间，Akamai 的 Azure CDN 和 Verizon 的 Azure CDN 都通过“优化对象”菜单提供 DSA 优化。 通过提供来自 Microsoft 的动态站点加速[Azure 第一道防线服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)。
 
 > [!Important]
 > 对于“Akamai 的 Azure CDN”配置文件，可以在创建 CDN 终结点后更改其优化设置。
@@ -109,9 +109,9 @@ TCP 慢启动是 TCP 协议的算法，用于通过限制通过网络发送的�
 
 1. 通过监视运行状况和带宽来测量边缘 PoP 服务器之间的连接带宽。
     
-2. 在边缘 PoP 服务器之间共享指标，以便每个服务器都知道其周围的其他 PoP 的网络状况和服务器运行状况。  
+2. 在边缘 PoP 服务器之间共享指标，以便每个服务器都知道其周围的其他 PoP 的网络状况和服务器运行状况。  
     
-3. CDN 边缘服务器对某些传输参数做出假设，如与其附近的其他 CDN 边缘服务器通信时的最佳窗口大小应该是什么。 此步骤意味着如果 CDN 边缘服务器之间的连接的运行状况能够支持更高的数据包数据传输，则可以增加初始拥塞窗口大小。  
+3. CDN 边缘服务器对某些传输参数做出假设，如与其附近的其他 CDN 边缘服务器通信时的最佳窗口大小应该是什么。 此步骤意味着如果 CDN 边缘服务器之间的连接的运行状况能够支持更高的数据包数据传输，则可以增加初始拥塞窗口大小。  
 
 #### <a name="leveraging-persistent-connections"></a>利用持久连接
 
@@ -157,7 +157,7 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 访问缓存规则：
 
-1. 从“CDN 配置文件”页面中，在“设置”下，选择“缓存规则”。  
+1. 从“CDN 配置文件”页面中，在“设置”下，选择“缓存规则”。  
     
     ![CDN 缓存规则按钮](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -169,7 +169,7 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 访问规则引擎：
     
-1. 从“CDN 配置文件”页中，选择“管理”。  
+1. 从“CDN 配置文件”页中，选择“管理”。  
     
     ![CDN 配置文件管理按钮](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
@@ -183,7 +183,7 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 或者，可以使用两个 CDN 终结点：一个终结点使用 DSA 进行优化，用于传送动态资产，另一个终结点使用静态优化类型进行优化（例如常规 Web 交付），用于传送可缓存的资产。 修改网页 URL 以直接链接到计划使用的 CDN 终结点上的资产。 
 
-例如：`mydynamic.azureedge.net/index.html` 是动态页面，从 DSA 终结点进行加载。  HTML 页面引用多个静态资产，如 JavaScript 库或从静态 CDN 终结点加载的图像，如 `mystatic.azureedge.net/banner.jpg` 和 `mystatic.azureedge.net/scripts.js`。 
+例如：`mydynamic.azureedge.net/index.html` 是动态页面，从 DSA 终结点进行加载。  HTML 页面引用多个静态资产，如 JavaScript 库或从静态 CDN 终结点加载的图像，如 `mystatic.azureedge.net/banner.jpg` 和 `mystatic.azureedge.net/scripts.js`。 
 
 
 

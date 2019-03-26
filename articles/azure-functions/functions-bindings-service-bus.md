@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 85fdd67cd676db2a7c54c10523787b0d395de5dc
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9955068fbc0d6493add83c6c92390413b3975106
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870782"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437165"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -77,7 +77,7 @@ public static void Run(
 - [省略访问权限参数](#trigger---configuration)
 - 将日志参数的类型从 `TraceWriter` 更改为 `ILogger`
 - 将 `log.Info` 更改为 `log.LogInformation`
- 
+
 ### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
 
 以下示例演示 *function.json* 文件中的一个服务总线触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 此函数将读取[消息元数据](#trigger---message-metadata)并记录服务总线队列消息。
@@ -160,7 +160,7 @@ let Run(myQueueItem: string, log: ILogger) =
  ) {
      context.getLogger().info(message);
  }
- ```
+```
 
 向服务总线主题添加消息时，也可以触发 Java 函数。 下面的示例使用`@ServiceBusTopicTrigger`批注来描述触发器配置。
 
@@ -177,7 +177,7 @@ let Run(myQueueItem: string, log: ILogger) =
     ) {
         context.getLogger().info(message);
     }
- ```
+```
 
 ### <a name="trigger---javascript-example"></a>触发器 - JavaScript 示例
 
@@ -279,7 +279,7 @@ module.exports = function(context, myQueueItem) {
 |---------|---------|----------------------|
 |类型 | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 | 
+|name | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
@@ -339,7 +339,21 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 
 [host.json](functions-host-json.md#servicebus) 文件包含控制服务总线触发器行为的设置。
 
-[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-service-bus.md)]
+```json
+{
+    "serviceBus": {
+      "maxConcurrentCalls": 16,
+      "prefetchCount": 100,
+      "maxAutoRenewDuration": "00:05:00"
+    }
+}
+```
+
+|属性  |默认 | 描述 |
+|---------|---------|---------|
+|maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 |
+|prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。|
+|maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
 
 ## <a name="output"></a>输出
 
@@ -471,7 +485,7 @@ public String pushToQueue(
       result.setValue(message + " has been sent.");
       return message;
  }
- ```
+```
 
  在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入服务总线队列的函数参数使用 `@QueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是 POJO 的任何本机 Java 类型。
 
@@ -582,7 +596,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |---------|---------|----------------------|
 |类型 | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 | 
+|name | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在发送主题消息的情况下设置，不为队列设置。|
 |**连接**|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
@@ -641,11 +655,11 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 ```
 
 |属性  |默认 | 描述 |
-|---------|---------|---------| 
-|maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。| 
-|autoComplete|true|触发器应立即标记为已完成（自动完成），还是等待调用完成的处理。| 
-|maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 | 
-|prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。| 
+|---------|---------|---------|
+|maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
+|autoComplete|true|触发器应立即标记为已完成（自动完成），还是等待调用完成的处理。|
+|maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 |
+|prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。|
 
 
 ## <a name="next-steps"></a>后续步骤
