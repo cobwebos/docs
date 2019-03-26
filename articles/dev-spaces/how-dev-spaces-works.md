@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: 描述的过程，该 power Azure 开发人员空格和如何 azds.yaml 配置文件中配置
 keywords: azds.yaml，Azure 开发人员空格、 开发空格、 Docker、 Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 8d17be31acc6868399e8f785255d28fa2314d48c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b6f178628961001c4022ffc86bc13ee0e529e3c4
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316110"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438965"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure 开发人员空间如何工作，是配置
 
@@ -167,6 +167,8 @@ install:
         kubernetes.io/ingress.class: traefik-azds
       hosts:
         # This expands to [space.s.][rootSpace.]webfrontend.<random suffix>.<region>.azds.io
+        # Customize the public URL by changing the 'webfrontend' text between the $(rootSpacePrefix) and $(hostSuffix) tokens
+        # For more information see https://aka.ms/devspaces/routing
         - $(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)
 configurations:
   develop:
@@ -315,6 +317,8 @@ install:
         kubernetes.io/ingress.class: traefik-azds
       hosts:
       # This expands to [space.s.][rootSpace.]webfrontend.<random suffix>.<region>.azds.io
+      # Customize the public URL by changing the 'webfrontend' text between the $(rootSpacePrefix) and $(hostSuffix) tokens
+      # For more information see https://aka.ms/devspaces/routing
       - $(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)
 ...
 ```

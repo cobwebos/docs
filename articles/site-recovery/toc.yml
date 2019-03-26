@@ -212,12 +212,10 @@ items:
         href: vmware-azure-set-up-replication.md
       - name: 部署移动服务
         items:
-        - name: 移动服务安装
+        - name: 移动服务概述和安装
           href: vmware-physical-mobility-service-overview.md
         - name: 准备 Mobility Service 的推送安装
           href: vmware-azure-install-mobility-service.md
-        - name: 手动安装移动服务
-          href: vmware-physical-mobility-service-install-manual.md
         - name: 使用 System Center Configuration Manager 部署移动服务
           href: vmware-azure-mobility-install-configuration-mgr.md
       - name: 为 VMware VM 启用复制
@@ -244,6 +242,8 @@ items:
         href: vmware-azure-install-linux-master-target.md
     - name: 管理
       items:
+      - name: 管理 VMware 的移动代理
+        href: vmware-physical-manage-mobility-service.md
       - name: 为 VMware 管理配置服务器
         href: vmware-azure-manage-configuration-server.md
       - name: 管理进程服务器
@@ -276,8 +276,6 @@ items:
           href: vmware-physical-mobility-service-overview.md
         - name: 准备 Mobility Service 的推送安装
           href: vmware-azure-install-mobility-service.md
-        - name: 手动安装移动服务
-          href: vmware-physical-mobility-service-install-manual.md
         - name: 使用 System Center Configuration Manager 部署移动服务
           href: vmware-azure-mobility-install-configuration-mgr.md
         - name: 演练 - 设置灾难恢复
@@ -286,6 +284,8 @@ items:
       href: physical-to-azure-failover-failback.md
     - name: 管理
       items:
+      - name: 管理物理服务器的移动代理
+        href: vmware-physical-manage-mobility-service.md
       - name: 管理配置服务器以进行物理服务器复制
         href: physical-manage-configuration-server.md
       - name: 管理进程服务器
@@ -468,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 66b14ba7100b8bd8e4bb3a100e8fd10d226f555e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b486afff5bc65e58fc89d4b9f0bee4d9c0ff0b5c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317096"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418990"

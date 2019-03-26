@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 44c7f6d32737fe83e80a2f2df15f0ae078a5849e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 376f2bd792cb1b3190507f5571a8b7a33daf2542
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400284"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439102"
 documentType: LandingData
 title: Azure Data Box 文档 - 联机传输
 metadata:
@@ -16,10 +16,10 @@ metadata:
   ms.service: databox
   ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 03/22/2019
+  ms.date: 03/25/2019
   ms.author: alkohli
 abstract:
-  description: 使用 Azure Data Box 系列能够以快速、廉价且可靠的方式将数百 TB 的数据传输到 Azure。 使用 Data Box 设备进行网络高性能数据传输。<p>选择 Data Box Gateway<SUP>预览版</SUP>发送数据，以便进行云存档、灾难恢复或处理云规模的数据。  使用 Data Box Edge<SUP>预览版</SUP>在将数据移动到 Azure 过程中对其进行筛选、分析和转换。</p><p>通过我们的教程，了解如何利用 Data Box Gateway 和 Data Box Edge 实现基于网络的传输。</p>
+  description: 使用 Azure Data Box 系列能够以快速、廉价且可靠的方式将数百 TB 的数据传输到 Azure。 使用 Data Box 设备进行网络高性能数据传输。<p>选择 Data Box Gateway 发送数据，以便进行云存档、灾难恢复，或者处理云规模的数据。  当数据移动到 Azure 时，使用 Data Box Edge 可对其进行筛选、分析和转换。</p><p>通过我们的教程，了解如何利用 Data Box Gateway 和 Data Box Edge 实现基于网络的传输。</p>
 sections:
 - title: 教程
   items:

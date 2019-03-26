@@ -91,6 +91,15 @@ items:
       href: personal-data-delete-export.md
     - name: 从另一个实验室导入虚拟机
       href: import-virtual-machines-from-another-lab.md
+    - name: 创建映像工厂
+      href: image-factory-create.md
+      items:
+      - name: 从 AzureDevOps 运行映像工厂
+        href: image-factory-set-up-devops-lab.md
+      - name: 保存自定义映像并分发到多个实验室
+        href: image-factory-save-distribute-custom-images.md
+      - name: 设置保留策略并运行清理脚本
+        href: image-factory-set-retention-policy-cleanup.md
     - name: 设置企业中的开发测试实验室基础结构
       href: devtest-lab-guidance-prescriptive-adoption.md
       items:
@@ -132,6 +141,8 @@ items:
         href: devtest-lab-redeploy-vm.md
       - name: 导入 VM
         href: devtest-lab-import-vm.md
+      - name: 使用 PowerShell 或 CLI 启动或停止 VM
+        href: use-command-line-start-stop-virtual-machines.md
     - name: 在实验室中使用环境
       items:
       - name: 创建环境
@@ -252,9 +263,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: 常见问题
       href: devtest-lab-faq.md
-ms.openlocfilehash: a0b21dfaa64b351e98b6f505568bdbc06c48dd1c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 03ae5399295c0f9fac29fb4cd88cea85130881f7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338371"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435628"

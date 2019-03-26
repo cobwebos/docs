@@ -17,7 +17,7 @@ ms.author: alkohli
 <p>Azure Data Box 系列提供不同存储容量的产品，可帮助以快速、廉价且可靠的方式将数 TB 的数据发送到 Azure。 Microsoft 提供支持脱机或网络数据传输的专有存储设备，从而加快安全数据传输速度。</p>
 <h2>脱机数据传输</h2>
 <p>限于无网络带宽的情况</p>
-<ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
+<ul class="cardsA panelContent singlePanelContent cols cols3">
     <li>
         <a href="/azure/databox/data-box-disk-overview">
             <div class="cardSize">
@@ -29,7 +29,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk</b>，适用于数据大小 < 40 TB 的情况。 Microsoft 提供 1 至 5 个加密固态驱动器 (SSDs) 以复制数据，完成后需发回。</p>
+                            <p><b>Data Box Disk</b>，适用于数据大小 &lt; 40 TB 的情况。 Microsoft 提供 1 至 5 个加密固态驱动器 (SSDs) 以复制数据，完成后需发回。</p>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Heavy <SUP>预览版</SUP></b>，用于数据大于 500 TB 的情况。 Microsoft 通过货运提供 1 PB 大小的设备以复制数据，完成后需发回。</p>
+                            <p><b>Data Box Heavy</b>，适用于数据大小 &gt; 500 TB 的情况。 Microsoft 通过货运提供 1 PB 大小的设备以复制数据，完成后需发回。</p>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Gateway <SUP>预览版</SUP></b>，带有存储功能的虚拟设备。 使用此设备通过网络将数据发送到 Azure。</p>
+                            <p><b>Data Box Gateway</b> 虚拟设备，带有存储功能。 使用此设备通过网络将数据发送到 Azure。</p>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Edge <SUP>预览版</SUP></b>，带有存储和计算功能的物理设备。 若要在将数据移动到 Azure 的过程中分析、转换或筛选数据，请使用此设备。</p>
+                            <p><b>Data Box Edge</b> 物理设备，带有存储和计算功能。 若要在将数据移动到 Azure 的过程中分析、转换或筛选数据，请使用此设备。</p>
                         </div>
                     </div>
                 </div>
