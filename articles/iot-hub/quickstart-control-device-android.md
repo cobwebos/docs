@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/19/2018
 ms.author: wesmc
-ms.openlocfilehash: b8623acc9d29f083e34c7fa7494e866317146802
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a9e5b00ad84a57f49303f2e6f9389b4791fd0f60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252552"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58166940"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
@@ -91,7 +91,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 记下如下所示的服务连接字符串：
@@ -116,11 +116,18 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
 
 3. 在 Android Studio 中，单击“文件” > “将项目与 Gradle 文件同步”。 验证生成是否已完成。
 
+   > [!NOTE]
+   > 如果项目同步失败，可能是由于以下某个原因：
+   >
+   > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于你的 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
+   > * Android SDK 的许可协议尚未签署。 请按照 Build 输出中的说明签署许可协议并下载 SDK。
+
+
 4. 生成完成以后，请单击“运行” > “运行‘应用’”。 将应用配置为在物理 Android 设备或 Android 模拟器上运行。 若要详细了解如何在物理设备或模拟器上运行 Android 应用，请参阅[运行您的应用](https://developer.android.com/training/basics/firstapp/running-app)。
 
 5. 待应用加载以后，请单击“启动”按钮，开始将遥测数据发送到 IoT 中心：
 
-    ![Application](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![应用程序](media/quickstart-send-telemetry-android/sample-screenshot.png)
 
 在运行时期间执行服务 SDK 示例以更新遥测时间间隔时，需要让此应用在物理设备或模拟器上运行。
 
@@ -163,6 +170,13 @@ IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松�
     ```
 
 3. 在 Android Studio 中，单击“文件” > “将项目与 Gradle 文件同步”。 验证生成是否已完成。
+
+   > [!NOTE]
+   > 如果项目同步失败，可能是由于以下某个原因：
+   >
+   > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于你的 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
+   > * Android SDK 的许可协议尚未签署。 请按照 Build 输出中的说明签署许可协议并下载 SDK。
+
 
 4. 生成完成以后，请单击“运行” > “运行‘应用’”。 将应用配置为在单独的物理 Android 设备或 Android 模拟器上运行。 若要详细了解如何在物理设备或模拟器上运行 Android 应用，请参阅[运行您的应用](https://developer.android.com/training/basics/firstapp/running-app)。
 

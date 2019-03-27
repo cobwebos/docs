@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c7759b9f0787b7926b3642b8b912ec5391347adf
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 84025953e74cb2ace358aa041f55dc1498d22f2f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911483"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079054"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板
 
 了解如何使用 Azure 门户生成资源管理器模板，以及从门户编辑和部署该模板的过程。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
+
+![资源管理器模板快速入门门户关系图](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 完成本教程后，部署 Azure 存储帐户。 可以通过同一过程来部署其他 Azure 资源。
 
@@ -32,7 +34,7 @@ ms.locfileid: "54911483"
 
 从头开始创建资源管理器模板不是一项容易的任务，尤其是在不熟悉 Azure 部署和 JSON 格式的情况下。 可以使用 Azure 门户来配置资源（例如 Azure 存储帐户）。 在部署资源之前，可以将配置导出到资源管理器模板中。 可以保存模板，便于将来重复使用。
 
-需要有经验的模板开发人员在尝试部署不熟悉的 Azure 资源时，会使用此方法来生成工作模板。
+需要有经验的模板开发人员在尝试部署不熟悉的 Azure 资源时，会使用此方法来生成模板。 有关使用门户导出模板的更多信息，请参阅[将资源组导出到模板](./manage-resource-groups-portal.md#export-resource-groups-to-templates)。 查找工作模板的另一种方法是 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“创建资源” > “存储” > “存储帐户 - Blob、文件、表、队列”。
@@ -40,8 +42,10 @@ ms.locfileid: "54911483"
     ![使用 Azure 门户创建 Azure 存储帐户](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 3. 输入以下信息：
 
-    - **资源组**：选择“新建”，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg*。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。
-    - **名称**：为存储帐户指定唯一的名称。 在屏幕截图中，名称为 *mystorage1016*。
+    |Name|值|
+    |----|----|
+    |**资源组**|选择“新建”，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg*。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。 |
+    |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“&lt;名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016”。 有关详细信息，请参阅[命名规则和限制](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)。|
 
     可对剩余的属性使用默认值。
 
@@ -50,7 +54,7 @@ ms.locfileid: "54911483"
     > [!NOTE]
     > 某些导出的模板需要经过一些编辑才能部署。
 
-4. 在屏幕底部选择“查看 + 创建”。
+4. 在屏幕底部选择“查看 + 创建”。 请勿在下一步中选择“创建”。
 5. 在屏幕底部选择“下载自动化模板”。 门户显示生成的模板：
 
     ![通过门户生成模板](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
@@ -59,13 +63,14 @@ ms.locfileid: "54911483"
 
     定义了六个参数。 其中一个名为 **storageAccountName**。 在上一屏幕截图中，第二个突出显示的部分显示如何在模板中引用此参数。 在下一部分，请编辑此模板，以便将生成的名称用于存储帐户。
 
-    在模板中定义了一个 Azure 资源。 类型为 [Microsoft.Storage/storageAccounts]。 查看资源定义方式和定义结构。
-6. 选择“下载”。 将已下载包中的 **template.json** 保存到计算机。 在下一部分，请使用模板部署工具来编辑此模板。
-7. 选择“参数”选项卡，查看为参数提供的值。 部署模板时，请写下这些值，下一部分需要它们。
+    在模板中定义了一个 Azure 资源。 类型为 `Microsoft.Storage/storageAccounts`。 查看资源定义方式和定义结构。
+6. 在屏幕顶部选择“下载”。 
+7. 打开下载的 zip 文件，然后将“template.json”保存到计算机。 在下一部分，请使用模板部署工具来编辑此模板。
+8. 选择“参数”选项卡，查看为参数提供的值。 部署模板时，请写下这些值，下一部分需要它们。
 
     ![通过门户生成模板](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
-    使用模板和 parameters 文件可以创建一个资源（在本教程中为 Azure 存储帐户）。
+    使用模板文件和参数文件可以创建一个资源（在本教程中为 Azure 存储帐户）。
 
 ## <a name="edit-and-deploy-the-template"></a>编辑和部署模板
 
@@ -81,79 +86,82 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 4. 选择“创建”。
 5. 选择“在编辑器中生成自己的模板”。
 6. 选择“加载文件”，然后按说明加载在上部分下载的 template.json。
-7. 添加一个变量，如以下屏幕截图所示：
+7. 对模板进行以下三处更改：
 
-    ```json
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
-    ```
     ![Azure 资源管理器模板](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-    此处使用了两个模板函数：`concat()` 和 `uniqueString()`。
+   - 删除“storageAccountName”参数，如上一屏幕截图所示。
+   - 添加一个名为“storageAccountName”的变量，如上一屏幕截图所示：
 
-8. 删除上面屏幕截图中突出显示的 **storageAccountName** 参数。
-9. 更新 **Microsoft.Storage/storageAccounts** 资源的 name 元素，以使用新定义的变量而不是参数：
+       ```json
+       "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+       ```
 
-    ```json
-    "name": "[variables('storageAccountName')]",
-    ```
+       此处使用了两个模板函数：`concat()` 和 `uniqueString()`。
+   - 更新 **Microsoft.Storage/storageAccounts** 资源的 name 元素，以使用新定义的变量而不是参数：
 
-    最终的模板应如下所示：
+       ```json
+       "name": "[variables('storageAccountName')]",
+       ```
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "location": {
-                "type": "string"
-            },
-            "accountType": {
-                "type": "string"
-            },
-            "kind": {
-                "type": "string"
-            },
-            "accessTier": {
-                "type": "string"
-            },
-            "supportsHttpsTrafficOnly": {
-                "type": "bool"
-            }
-        },
-        "variables": {
-            "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
-        },
-        "resources": [
-            {
-                "name": "[variables('storageAccountName')]",
-                "type": "Microsoft.Storage/storageAccounts",
-                "apiVersion": "2018-07-01",
-                "location": "[parameters('location')]",
-                "properties": {
-                    "accessTier": "[parameters('accessTier')]",
-                    "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]"
-                },
-                "dependsOn": [],
-                "sku": {
-                    "name": "[parameters('accountType')]"
-                },
-                "kind": "[parameters('kind')]"
-            }
-        ],
-        "outputs": {}
-    }
-    ```
-7. 选择“保存”。
-8. 输入以下值：
+     最终的模板应如下所示：
 
-    - **资源组**：选择“新建”，然后使用唯一的名称为资源组命名。
-    - **位置**：选择资源组的位置。 例如“美国中部”。 
-    - **位置**：选择存储帐户的位置。 例如“美国中部”。
-    - **帐户类型**：对于本快速入门，请输入 **Standard_LRS**。
-    - **种类**：对于本快速入门，请输入“StorageV2”。
-    - **访问层**：对于本快速入门，请输入“Hot”。
-    - **启用仅限 Https 流量**。  对于本快速入门，请选择“true”。
-    - **我同意上述条款和条件**：（选中）
+     ```json
+     {
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion": "1.0.0.0",
+       "parameters": {
+           "location": {
+               "type": "string"
+           },
+           "accountType": {
+               "type": "string"
+           },
+           "kind": {
+               "type": "string"
+           },
+           "accessTier": {
+               "type": "string"
+           },
+           "supportsHttpsTrafficOnly": {
+               "type": "bool"
+           }
+       },
+       "variables": {
+           "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+       },
+       "resources": [
+           {
+               "name": "[variables('storageAccountName')]",
+               "type": "Microsoft.Storage/storageAccounts",
+               "apiVersion": "2018-07-01",
+               "location": "[parameters('location')]",
+               "properties": {
+                   "accessTier": "[parameters('accessTier')]",
+                   "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]"
+               },
+               "dependsOn": [],
+               "sku": {
+                   "name": "[parameters('accountType')]"
+               },
+               "kind": "[parameters('kind')]"
+           }
+       ],
+       "outputs": {}
+     }
+     ```
+8. 选择“保存”。
+9. 输入以下值：
+
+    |Name|值|
+    |----|----|
+    |**资源组**|选择在上一部分中创建的资源组名称。 |
+    |**位置**|选择存储帐户的位置。 例如“美国中部”。 |
+    |**帐户类型**|对于本快速入门，请输入 **Standard_LRS**。 |
+    |**种类**|对于本快速入门，请输入“StorageV2”。 |
+    |**访问层**|对于本快速入门，请输入“Hot”。 |
+    |**启用仅限 Https 流量**| 对于本快速入门，请选择“true”。 |
+    |**我同意上述条款和条件**|（选择）|
 
     下面是示例部署的屏幕截图：
 

@@ -10,21 +10,23 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/25/2019
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: be1249969fc50f5305dc5844f2578f8a24a6a220
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7e6ac19d3116b51a309816170413b694a15ef0c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086218"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：创建包含依赖的资源的 Azure 资源管理器模板
 
-了解如何创建 Azure 资源管理器模板，以便部署多个资源。  创建模板以后，请通过 Azure 门户使用 Cloud Shell 部署该模板。
+了解如何创建 Azure 资源管理器模板以部署多个资源和配置部署顺序。 创建模板以后，请通过 Azure 门户使用 Cloud Shell 部署该模板。
 
 本教程介绍如何创建存储帐户、虚拟机、虚拟网络以及一些其他的依赖资源。 某些资源的部署依赖于另一资源的存在。 例如，创建虚拟机的前提是其存储帐户和网络接口存在。 可通过将一个资源标记为依赖于其他资源来定义此关系。 Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 有关详细信息，请参阅[定义 Azure 资源管理器模板中部署资源的顺序](./resource-group-define-dependencies.md)。
+
+![资源管理器模板依赖资源部署顺序图](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
 本教程涵盖以下任务：
 
@@ -75,13 +77,13 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
     有五个通过此模板定义的资源：
 
-    * `Microsoft.Storage/storageAccounts`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
-    * `Microsoft.Network/publicIPAddresses`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
-    * `Microsoft.Network/virtualNetworks`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
-    * `Microsoft.Network/networkInterfaces`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
-    * `Microsoft.Compute/virtualMachines`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
+   * `Microsoft.Storage/storageAccounts`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
+   * `Microsoft.Network/publicIPAddresses`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
+   * `Microsoft.Network/virtualNetworks`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
+   * `Microsoft.Network/networkInterfaces`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
+   * `Microsoft.Compute/virtualMachines`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
 
-    在自定义模板之前，不妨对其进行一些基本的了解。
+     在自定义模板之前，不妨对其进行一些基本的了解。
 
 2. 展开第一个资源。 它是一个存储帐户。 将资源定义和[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)进行比较。
 

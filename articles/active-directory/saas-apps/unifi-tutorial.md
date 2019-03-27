@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: e1f49ee4-d2d4-4a82-9baf-0587ca1f20f6
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef76cf9cfa97d7d3ecc6c511c269b52ce6a2dec0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 27028a4e95abd2f190dd1f37bb877ed28fe8aade
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876829"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>教程：Azure Active Directory 与 UNIFI 集成
 
@@ -170,7 +170,7 @@ ms.locfileid: "56876829"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

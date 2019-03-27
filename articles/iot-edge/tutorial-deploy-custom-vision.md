@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7a5a92635114be87e59fe8f779c36d4c401a1427
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075822"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087153"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -22,13 +22,18 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 例如，IoT Edge 设备上的自定义视觉可以确定某条高速公路的交通流量是高于还是低于正常，或者某个室内停车场是否有连续的停车位。 这些见解可以与其他服务共享，方便采取行动。 
 
-
 本教程介绍如何执行下列操作： 
 
 > [!div class="checklist"]
+>
 > * 使用自定义视觉生成图像分类器。
 > * 开发用于在设备上查询自定义视觉 Web 服务器的 IoT Edge 模块。
 > * 将图像分类器的结果发送到 IoT 中心。
+
+<center>
+
+![示意图 - 架构、阶段和部署分类器教程](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+</center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +48,7 @@ Azure IoT Edge 设备：
 
 * Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
 * 容器注册表。 本教程使用 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。 
-    * 知道容器注册表[管理员帐户](../container-registry/container-registry-authentication.md#admin-account)的凭据。
+* 知道容器注册表[管理员帐户](../container-registry/container-registry-authentication.md#admin-account)的凭据。
 
 开发资源：
 
@@ -72,8 +77,8 @@ Azure IoT Edge 设备：
 
    | 字段 | 值 |
    | ----- | ----- |
-   | 名称 | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
-   | Description | 可选项目说明。 |
+   | Name | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
+   | 说明 | 可选项目说明。 |
    | 资源组 | 接受默认的“有限试用版”。 |
    | 项目类型 | **分类** |
    | 分类类型 | **多类(一个图像一个标记)** | 

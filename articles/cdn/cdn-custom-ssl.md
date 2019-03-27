@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: c9fb24cd6bcfae273c5430eee8d1fa8df58c6202
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1ebac5476c90b3cb49fccbb95ef8dedf413a6127
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236305"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200287"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -172,7 +172,7 @@ CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* �
 
 | 名称            | 类型  | 值                 |
 |-----------------|-------|-----------------------|
-| www.contoso.com | CNAME | contoso.azureedge.net |
+| <www.contoso.com> | CNAME | contoso.azureedge.net |
 
 有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)。
 
@@ -190,7 +190,7 @@ CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* �
 >[!NOTE]
 >如果使用 **Akamai 的 Azure CDN** 配置文件，则目前不能对自定义域所有权进行电子邮件验证。 此功能目前尚未完成。 
 
-在自定义域上启用 HTTPS 后，DigiCert CA 会根据域的 [WHOIS](http://whois.domaintools.com/) 注册者信息，通过联系域的注册者来验证域的所有权。 通过 WHOIS 注册中列出的电子邮件地址（默认）或电话号码进行联系。 必须先完成域验证，才能在自定义域上激活 HTTPS。 可在 6 个工作日内批准域。 自动取消 6 个工作日内未批准的请求。 
+在自定义域上提交启用 HTTPS 的请求后，DigiCert CA 会根据域的 [WHOIS](http://whois.domaintools.com/) 注册者信息，通过联系域的注册者来验证域的所有权。 通过 WHOIS 注册中列出的电子邮件地址（默认）或电话号码进行联系。 必须先完成域验证，才能在自定义域上激活 HTTPS。 可在 6 个工作日内批准域。 自动取消 6 个工作日内未批准的请求。 
 
 ![WHOIS 记录](./media/cdn-custom-ssl/whois-record.png)
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 75a78e303991e5426c97b8ceb0eb1375e03be2a2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868181"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106893"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box Disk 并进行验证
 
@@ -32,35 +32,53 @@ ms.locfileid: "56868181"
 - 已完成[教程：安装和配置 Azure Data Box Disk](data-box-disk-deploy-set-up.md)。
 - 磁盘已解锁，并且已连接到客户端计算机。
 - 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)。
-- 请确保数据的预期存储类型与[支持的存储类型](data-box-disk-system-requirements.md#supported-storage-types)匹配。
+- 请确保数据的预期存储类型与[支持的存储类型](data-box-disk-system-requirements.md#supported-storage-types-for-upload)匹配。
+- 查看 [Azure 对象大小限制中的托管磁盘限制](data-box-disk-limits.md#azure-object-size-limits)。
 
 
 ## <a name="copy-data-to-disks"></a>将数据复制到磁盘
 
+在将数据复制到磁盘之前，请查看以下注意事项：
+
+- 你需要负责确保将数据复制到与适当数据格式对应的文件夹中。 例如，将块 Blob 数据复制到块 Blob 的文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
+- 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 磁盘限制](data-box-disk-limits.md)中所述的大小限制。
+- 如果 Data Box 磁盘正在上传的数据同时已由 Data Box 磁盘外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
+
+如果在订单中指定了托管磁盘，请查看以下其他注意事项：
+
+- 在所有预先创建的文件夹和所有 Data Box Disk 中，一个资源组只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果 VHD 具有相同的名称，则只有一个 VHD 将转换为具有该名称的托管磁盘。 其他 VHD 作为页 blob 上传到临时存储帐户。
+- 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
+- 只能上传固定的 VHD 来创建托管磁盘。 不支持动态 VHD、差异 VHD 或 VHDX 文件。
+
+
 执行以下步骤，连接到计算机并将其上的数据复制到 Data Box 磁盘。
 
-1. 查看已解锁的驱动器的内容。
+1. 查看已解锁的驱动器的内容。 根据放置 Data Box Disk 顺序时选择的选项，驱动器中预先创建的文件夹和子文件夹的列表会有所不同。
 
-    ![查看驱动器内容](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
+    |所选的存储目标  |存储帐户类型|临时存储帐户类型 |文件夹和子文件夹  |
+    |---------|---------|---------|------------------|
+    |存储帐户     |GPv1 或 GPv2                 | NA | BlockBlob <br> PageBlob <br> AzureFile        |
+    |存储帐户     |Blob 存储帐户         | NA | BlockBlob        |
+    |托管磁盘     |NA | GPv1 或 GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
+    |存储帐户 <br> 托管磁盘     |GPv1 或 GPv2 | GPv1 或 GPv2         |BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |存储帐户 <br> 托管磁盘    |Blob 存储帐户 | GPv1 或 GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+
+    下面显示了指定 GPv2 存储帐户的订单的示例屏幕截图：
+
+    ![磁盘驱动器的内容](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. 将需要作为块 Blob 导入的数据复制到 BlockBlob 文件夹中。 同理，将 VHD/VHDX 等数据复制到 PageBlob 文件夹中。 
+2. 将需要作为块 Blob 导入的数据复制到 BlockBlob 文件夹中。 同样，将 VHD/VHDX 等数据复制到 PageBlob 文件夹并将数据复制到 AzureFile 文件夹。
 
     在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob 和 PageBlob 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 `$root` 中。 `$root` 容器中的所有文件始终作为块 Blob 上传。
 
+   将文件复制到“AzureFile”文件夹中的文件夹。 AzureFile 文件夹中的子文件夹创建文件共享。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传。
+
     如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
 
-    在容器和 Blob 名称方面遵循 Azure 命名要求。
+    > [!IMPORTANT]
+    > 所有容器、Blob 和文件名都应符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。 如果不遵循这些规则，则无法将数据上传到 Azure。
 
-    #### <a name="azure-naming-conventions-for-container-and-blob-names"></a>Azure 针对容器和 blob 名称的命名约定
-    |实体   |约定  |
-    |---------|---------|
-    |容器名称：块 Blob 和页 Blob     |必须以字母或数字开头，只能包含小写字母、数字和连字符 (-)。 每个连字符 (-) 字符的前后必须紧接字母或数字。 名称中不允许连续的连字符。 <br>必须是有效的 DNS 名称，长度为 3 到 63 个字符。          |
-    |块 Blob 和页 Blob 的 Blob 名称    |Blob 名称区分大小写，只能包含字符的任意组合。 <br>Blob 名称的长度必须为 1 到 1,024 个字符。<br>必须正确地对保留的 URL 字符进行转义。<br>构成 Blob 名称的路径段数目不能超过 254 个。 路径段是指对应于虚拟目录名称的相邻分隔符（例如，正斜杠“/”）之间的字符串。         |
-
-    > [!IMPORTANT] 
-    > 所有容器和 Blob 应符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)。 如果不遵循这些规则，则无法将数据上传到 Azure。
-
-3. 复制文件时，请确保块 Blob 的文件不超过大约 4.7 TiB，页 Blob 的文件不超过大约 8 TiB。 
+3. 复制文件时，确保块 Blob 的文件不超过大约 4.7 TiB，页 Blob 的文件不超过大约 8 TiB，Azure 文件不超过大约 1 TiB。 
 4. 可以使用文件资源管理器中的拖放操作复制数据。 也可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用以下 Robocopy 命令启动多个复制作业：
 
     `Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt` 
@@ -80,7 +98,7 @@ ms.locfileid: "56868181"
     |/FFT                | 采用 FAT 文件时间（精度为两秒）。        |
     |/Log:<Log File>     | 将状态输出写入到日志文件（覆盖现有的日志文件）。         |
 
-    可以配合每个磁盘上运行的多个作业一起使用多个磁盘。 
+    可以配合每个磁盘上运行的多个作业一起使用多个磁盘。
 
 6. 当作业正在进行时检查复制状态。 以下示例显示了将文件复制到 Data Box 磁盘的 robocopy 命令的输出。
 
@@ -151,8 +169,8 @@ ms.locfileid: "56868181"
     若要优化性能，请在复制数据时使用以下 robocopy 参数。
 
     |    平台    |    大多为小于 512 KB 的小型文件                           |    大多为 512 KB-1 MB 的中型文件                      |    大多为 1 MB 以上的大型文件                             |   
-    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-    |    Data Box Disk        |    4 个 Robocopy 会话* <br> 每个会话 16 个线程    |    2 个 Robocopy 会话* <br> 每个会话 16 个线程    |    2 个 Robocopy 会话* <br> 每个会话 16 个线程    |  |
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+    |    Data Box Disk        |    4 个 Robocopy 会话* <br> 每个会话 16 个线程    |    2 个 Robocopy 会话* <br> 每个会话 16 个线程    |    2 个 Robocopy 会话* <br> 每个会话 16 个线程    |
     
     **每个 Robocopy 会话最多可包含 7,000 个目录和 1.5 亿个文件。*
     
@@ -163,17 +181,13 @@ ms.locfileid: "56868181"
 
 6. 打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的日志文件。 日志文件位于 robocopy 命令中指定的位置。
  
-> [!IMPORTANT]
-> - 你需要负责确保将数据复制到与适当数据格式对应的文件夹中。 例如，将块 Blob 数据复制到块 Blob 的文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
-> -  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 磁盘限制](data-box-disk-limits.md)中所述的大小限制。
-> - 如果 Data Box 磁盘正在上传的数据同时已由 Data Box 磁盘外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
-
 ### <a name="split-and-copy-data-to-disks"></a>拆分数据并将其复制到磁盘
 
 如果使用多个磁盘，并且需要拆分大型数据集并将其复制到所有磁盘中，则可以使用此可选过程。 借助 Data Box 拆分复制工具可以在 Windows 计算机上拆分和复制数据。
 
 >[!IMPORTANT]
 > Data Box 拆分复制工具还会验证数据。 如果使用 Data Box 拆分复制工具复制数据，则可以跳过[验证步骤](#validate-data)。
+> 托管磁盘不支持拆分复制工具。
 
 1. 在 Windows 计算机上，请确保将 Data Box 拆分复制工具下载并提取到某个本地文件夹中。 下载适用于 Windows 的 Data Box Disk 工具集时已下载此工具。
 2. 打开文件资源管理器。 记下分配给 Data Box Disk 的数据源驱动器和驱动器号。 
@@ -195,10 +209,10 @@ ms.locfileid: "56868181"
  
 5. 修改 `SampleConfig.json` 文件。
  
-    - 提供作业名称。 这会在 Data Box Disk 中创建一个文件夹，该文件夹最终将成为与这些磁盘关联的 Azure 存储帐户中的容器。 作业名称必须遵循 Azure 容器命名约定。 
-    - 在 `SampleConfigFile.json` 中提供源路径并记下路径格式。 
-    - 输入对应于目标磁盘的驱动器号。 数据取自源路径，并在多个磁盘之间复制。
-    - 提供日志文件的路径。 默认情况下，日志文件将发送到 `.exe` 所在的当前目录中。
+   - 提供作业名称。 这会在 Data Box Disk 中创建一个文件夹，该文件夹最终将成为与这些磁盘关联的 Azure 存储帐户中的容器。 作业名称必须遵循 Azure 容器命名约定。 
+   - 在 `SampleConfigFile.json` 中提供源路径并记下路径格式。 
+   - 输入对应于目标磁盘的驱动器号。 数据取自源路径，并在多个磁盘之间复制。
+   - 提供日志文件的路径。 默认情况下，日志文件将发送到 `.exe` 所在的当前目录中。
 
      ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 

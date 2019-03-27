@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 181e2c1d1a9758d6f196c9cb2b281eefa141d81a
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: fcf3fe85b6dd184b4f58060aab4fcf3ce146af13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984758"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58015155"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
 
@@ -151,7 +151,7 @@ ms.locfileid: "56984758"
 
           ![创建新文件夹](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. 在 **adftutorial** 文件夹下[创建新的 Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python)，将其命名为 **mynotebook**，然后单击“创建”。
+       1. 在 adftutorial 文件夹下[创建新的笔记本](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python) 并将其命名为 mynotebook，然后单击“创建”。
 
           ![创建新的 Notebook](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -173,13 +173,13 @@ ms.locfileid: "56984758"
 
        1. 在此示例中，“Notebook 路径”为 **/adftutorial/mynotebook**
 
-1.  切换回“数据工厂 UI 创作工具”。 导航到“Notebook1 活动”下的“设置”选项卡。 
-    
+1.  切换回“数据工厂 UI 创作工具”。 导航到“Notebook1 活动”下的“设置”选项卡。
+
     a.  通过“添加参数”向 Notebook 活动添加参数。 使用的参数与此前添加到“管道”的参数相同。
 
        ![添加参数](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  将参数命名为 **input**，并以 **@pipeline().parameters.name** 表达式的方式提供值。
+    b.  将参数命名为 input，并以 \@pipeline().parameters.name 表达式的形式提供值。
 
 1.  若要验证管道，请选择工具栏中的“验证”按钮。 ****  若要关闭验证窗口，请选择  **\>\>** （向右键头）按钮。
 

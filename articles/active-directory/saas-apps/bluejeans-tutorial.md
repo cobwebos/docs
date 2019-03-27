@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de0e20eb096ba127790019c1c07fbdd504d3a480
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b22a7a86862f02c3320b7c14cc1ed878a57bd23d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877905"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>教程：Azure Active Directory 与 BlueJeans 集成
 
@@ -182,7 +182,7 @@ ms.locfileid: "56877905"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -244,7 +244,7 @@ ms.locfileid: "56877905"
 
     e. 在“公司”文本框中，输入你的公司。
 
-    f. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 **brittasimon@contoso.com**。
+    f. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon\@contoso.com。
 
     g. 在“创建 BlueJeans 会议 ID”文本框中，输入你的会议 ID。
 

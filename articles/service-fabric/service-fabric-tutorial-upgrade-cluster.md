@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: e34856704b474ac1b7d25d589be5f98be2b113cc
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 02f973af71f0ee7e1fd1bcf712a08e001ec41667
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671550"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224951"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教程：升级 Azure 中 Service Fabric 群集的运行时
 
-本教程是系列教程的第 3 部分，介绍如何升级 Azure Service Fabric 群集上的 Service Fabric 运行时。 本教程部分是针对 Azure 上运行的 Service Fabric 群集编写的，不适用于独立 Service Fabric 群集。
+本教程是四篇系列教程中的一篇，介绍如何升级 Azure Service Fabric 群集上的 Service Fabric 运行时。 本教程部分是针对 Azure 上运行的 Service Fabric 群集编写的，不适用于独立 Service Fabric 群集。
 
 > [!WARNING]
 > 本教程部分要求使用 PowerShell。 目前尚不支持使用 Azure CLI 工具升级群集运行时。 或者，可以在门户中升级群集。 有关详细信息，请参阅[升级 Azure Service Fabric 群集](service-fabric-cluster-upgrade.md)。
@@ -40,6 +40,7 @@ ms.locfileid: "56671550"
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * 使用模板在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+> * [监视群集](service-fabric-tutorial-monitor-cluster.md)
 > * [缩小或扩大群集](service-fabric-tutorial-scale-cluster.md)
 > * 升级群集的运行时
 > * [删除群集](service-fabric-tutorial-delete-cluster.md)

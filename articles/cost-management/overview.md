@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c99d638845cf0cd00ddbacf1ed0dcf3da889dd6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 08a1980a8855fc119a5066e058e9bb4d2df6646e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082537"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998867"
 ---
 # <a name="what-is-the-cloudyn-service"></a>什么是 Cloudyn 服务？
 
@@ -24,6 +24,35 @@ Cloudyn（一家 Microsoft 子公司）可以跟踪 Azure 资源和其他云提�
 若要观看介绍性视频，请参阅 [Azure Cloudyn 简介](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo)。
 
 Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是一个本机 Azure 成本管理解决方案。 借助它，可以分析成本、创建和管理预算、导出数据，并能查看和采纳优化建议，从而节省资金。 有关详细信息，请参阅 [Azure 成本管理](overview-cost-mgt.md)。
+
+## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Cloudyn 功能移动到 Azure 成本管理
+
+Microsoft 收购了 Cloudyn，并将其成本管理功能从 Cloudyn 门户本机迁移到 Azure。 若要使用新功能，请登录到 Azure 门户并导航到 Azure 服务列表中的[成本管理和账单](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview)。 与 Cloudyn 相比，本机体验提高了性能并减少了大约八小时的数据延迟。
+
+将企业协议、即用即付和 MSDN 产品/服务类别的主要功能迁移到 Azure 成本管理的过程已完成。 CSP 订阅正在迁移到 Azure 成本管理。
+
+如果有一个产品/服务类别尚未迁移，应继续使用 Cloudyn 门户。 其他所有人都可以使用 Azure 成本管理。
+
+| Microsoft Azure 产品/服务和功能 | 推荐的成本管理服务 |
+| --- | --- |
+| Azure 企业协议 | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Web Direct (PAYG/MSDN) | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Government  | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
+| 对 AWS 的跨云成本分析支持（预览版） | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| AWS 建议 | [Cloudyn](https://azure.cloudyn.com) |
+
+Cloudyn 中提供了以下某些功能，但所有这些功能现在都可在 Azure 成本管理中使用。
+
+- API
+- Azure 计算建议
+- Azure 预留建议
+- 预算
+- 成本分析
+- 将数据导出到 Azure 存储帐户
+- 更低的延迟
+- Power BI 内容包和连接器
+- 资源标记支持
 
 ## <a name="monitor-usage-and-spending"></a>监视使用量和支出
 
@@ -46,6 +75,7 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 借助 Cloudyn，可以确定最佳 VM 使用情况并识别空闲 VM，或者删除空闲 VM 和未附加的磁盘。 使用大小优化和低效报告中的信息，可以创建一个计划以缩小或删除空闲 VM。 但是，目前 CSP 合作伙伴帐户或订阅不支持优化报告。
 
 如果已预配 AWS 预留实例，可以使用优化报告提升预留实例利用率，使用该报告还可以查看购买建议、修改未使用的预订并计划预配。
+
 
 ## <a name="next-steps"></a>后续步骤
 

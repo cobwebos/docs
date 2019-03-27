@@ -4,15 +4,15 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 03/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 317e843f1fcc2fc85ffbc590d48e9bdf4aa934c1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7f0b3a0f63b87928938e5c0e9d39cc49c0fc791d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415759"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999970"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -30,15 +30,17 @@ Azure Migrate 有助于：
 ## <a name="current-limitations"></a>当前限制
 
 - 只能评估要迁移到 Azure VM 的本地 VMware 虚拟机 (VM)。 VMware VM 必须通过 vCenter Server（5.5、6.0、6.5 或 6.7 版）进行管理。
-- 若要评估 Hyper-VM 和物理服务器，请使用 [Azure Site Recovery 部署规划器](https://aka.ms/asr-dp-hyperv-doc)进行 Hyper-V 评估，使用我们的[合作伙伴工具](https://azure.microsoft.com/migration/partners/)进行物理计算机评估。
+- 对 Hyper-V 的支持当前处于预览版且提供生产支持；如果有兴趣试用一下，请在[此处](https://aka.ms/migratefuture)注册。
+- 要对物理服务器进行评估，可使用我们的[合作伙伴工具](https://azure.microsoft.com/migration/partners/)。
 - 一次发现最多可以发现 1500 个 VM，单个项目中最多可以发现 1500 个 VM。 另外，单次评估最多可以评估 1500 个 VM。
 - 若要发现更大的环境，可以拆分发现，然后创建多个项目。 [了解详细信息](how-to-scale-assessment.md)。 Azure Migrate 最多允许每个订阅 20 个项目。
 - Azure Migrate 仅支持使用托管磁盘进行迁移评估。
 -  只能在以下地域创建 Azure Migrate 项目。 但是，这不会限制你为其他目标 Azure 位置创建评估。
+
     **地域** | **存储位置**
     --- | ---
     Azure Government  | 美国政府弗吉尼亚州
-    亚洲 | 东南亚
+    亚洲 | 东南亚或东亚
     欧洲 | 欧洲北部或欧洲西部
     美国 | 美国东部或美国中西部
 
@@ -72,27 +74,27 @@ Azure Migrate 有助于：
 
 ## <a name="how-does-azure-migrate-work"></a>Azure Migrate 工作原理
 
-1.  创建 Azure Migrate 项目。
-2.  Azure Migrate 使用名为“收集器设备”的本地 VM 来发现有关本地计算机的信息。 若要创建该设备，请以开放虚拟化设备 (.ova) 格式下载安装程序文件，然后将其作为 VM 导入到本地 vCenter Server。
+1. 创建 Azure Migrate 项目。
+2. Azure Migrate 使用名为“收集器设备”的本地 VM 来发现有关本地计算机的信息。 若要创建该设备，请以开放虚拟化设备 (.ova) 格式下载安装程序文件，然后将其作为 VM 导入到本地 vCenter Server。
 3. 请从 vCenter Server 连接到 VM，并在连接时为其指定新密码。
 4. 在要启动发现的 VM 上运行收集器。
 5. 收集器使用 VMware PowerCLI cmdlet 收集 VM 元数据。 发现是无代理发现，且不在 VMware 主机或 VM 上安装任何内容。 收集的元数据包括 VM 信息（核心、内存、磁盘、磁盘大小、网络适配器）。 此外还收集 VM 的性能数据，包括 CPU 和内存使用情况、磁盘 IOPS、磁盘吞吐量 (MBps)、网络输出 (MBps)。
-5.  元数据推送到 Azure Migrate 项目， 可以在 Azure 门户中查看。
-6.  将发现的 VM 按组收集，以便进行评估。 例如，可以将运行同一应用程序的 VM 作为一组。 若要进行更精确的分组，还可以使用依赖关系可视化来查看特定计算机的依赖关系，或者查看一个组中所有计算机的依赖关系，然后对组进行优化。
-7.  定义某个组以后，请为其创建评估。
-8.  评估完成以后，可以在门户中查看，也可以通过 Excel 格式来下载。
+5. 元数据推送到 Azure Migrate 项目， 可以在 Azure 门户中查看。
+6. 将发现的 VM 按组收集，以便进行评估。 例如，可以将运行同一应用程序的 VM 作为一组。 若要进行更精确的分组，还可以使用依赖关系可视化来查看特定计算机的依赖关系，或者查看一个组中所有计算机的依赖关系，然后对组进行优化。
+7. 定义某个组以后，请为其创建评估。
+8. 评估完成以后，可以在门户中查看，也可以通过 Excel 格式来下载。
 
-  ![Azure Migrate 体系结构](./media/migration-planner-overview/overview-1.png)
+   ![Azure Migrate 体系结构](./media/migration-planner-overview/overview-1.png)
 
 ## <a name="what-are-the-port-requirements"></a>有哪些端口要求？
 
 下表汇总了进行 Azure Migrate 通信所需的端口。
 
-组件 | 通信对象 |  详细信息
---- | --- |---
-收集器  | Azure Migrate 服务 | 连接器通过 SSL 端口 443 连接到服务。
-收集器 | vCenter Server | 默认情况下，收集器在端口 443 上连接到 vCenter Server。 如果服务器在另一端口上侦听，请在收集器 VM 上将其配置为传出端口。
-本地 VM | Log Analytics 工作区 | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) 使用 TCP 端口 443 连接到 Log Analytics。 只有在使用需要 MMA 代理的依赖关系可视化功能时，才需要此端口。
+| 组件 | 通信对象 |  详细信息 |
+| --- | --- |--- |
+|收集器  | Azure Migrate 服务 | 连接器通过 SSL 端口 443 连接到服务。|
+|收集器 | vCenter Server | 默认情况下，收集器在端口 443 上连接到 vCenter Server。 如果服务器在另一端口上侦听，请在收集器 VM 上将其配置为传出端口。|
+|本地 VM | Log Analytics 工作区 | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) 使用 TCP 端口 443 连接到 Azure Monitor 日志。 只有在使用需要 MMA 代理的依赖关系可视化功能时，才需要此端口。|
 
 
 ## <a name="what-happens-after-assessment"></a>评估后会发生什么情况？

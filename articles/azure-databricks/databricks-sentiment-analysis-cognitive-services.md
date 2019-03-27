@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 12/07/2018
-ms.openlocfilehash: 6509db136524d90db11b83acb701bda71c541060
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 54a7f308163cb2463554da32f0fae8b897c0742f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882605"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080533"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据执行情绪分析
 
@@ -40,6 +40,10 @@ ms.locfileid: "56882605"
 > * 对推文运行情绪分析
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+
+> [!Note]
+> 不能使用 Azure 免费试用订阅完成本教程。
+> 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -97,11 +101,11 @@ ms.locfileid: "56882605"
 
     除以下值外，接受其他所有默认值：
 
-    * 输入群集的名称。
-    * 在本文中，请创建运行时为 **4.0 (beta)** 的群集。
-    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+   * 输入群集的名称。
+   * 在本文中，请创建运行时为 **4.0 (beta)** 的群集。
+   * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
-    选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 
@@ -125,16 +129,16 @@ ms.locfileid: "56882605"
 
 本教程使用 Twitter API 将推文发送到事件中心。 也可以使用 [Apache Spark 事件中心连接器](https://github.com/Azure/azure-event-hubs-spark)在 Azure 事件中心读取和写入数据。 若要将这些 API 用作群集的一部分，请将其作为库添加到 Azure Databricks，然后将其与 Spark 群集相关联。 以下说明介绍如何将库添加到工作区中的 **Shared** 文件夹。
 
-1.  在 Azure Databricks 工作区中选择“工作区”，然后右键单击“共享”。 从上下文菜单中选择“创建” > “库”。
+1. 在 Azure Databricks 工作区中选择“工作区”，然后右键单击“共享”。 从上下文菜单中选择“创建” > “库”。
 
-    ![“添加库”对话框](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "“添加库”对话框")
+   ![“添加库”对话框](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "“添加库”对话框")
 
 2. 在“新建库”页中，为“源”选择“Maven 坐标”。 对于“坐标”，请输入要添加的包的坐标。 下面是本教程中使用的库的 Maven 坐标：
 
-    * Spark 事件中心连接器 - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
-    * Twitter API - `org.twitter4j:twitter4j-core:4.0.6`
+   * Spark 事件中心连接器 - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
+   * Twitter API - `org.twitter4j:twitter4j-core:4.0.6`
 
-    ![提供 Maven 坐标](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "提供 Maven 坐标")
+     ![提供 Maven 坐标](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "提供 Maven 坐标")
 
 3. 选择“创建库”。
 
@@ -164,13 +168,13 @@ ms.locfileid: "56882605"
 
     ![创建认知服务帐户](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "创建认知服务帐户")
 
-    - 为认知服务帐户输入一个名称。
-    - 选择在其下创建帐户的 Azure 订阅。
-    - 选择 Azure 位置。
-    - 选择服务定价层。 有关认知服务定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/)。
-    - 指定是要创建新的资源组还是选择现有的资源组。
+   - 为认知服务帐户输入一个名称。
+   - 选择在其下创建帐户的 Azure 订阅。
+   - 选择 Azure 位置。
+   - 选择服务定价层。 有关认知服务定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/)。
+   - 指定是要创建新的资源组还是选择现有的资源组。
 
-    选择“创建”。
+     选择“创建”。
 
 5. 创建帐户后，请从“概述”选项卡中选择“显示访问密钥”。
 

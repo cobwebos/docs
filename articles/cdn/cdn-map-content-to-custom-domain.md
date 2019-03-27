@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b9bcba78600e90c28f95c4ea842bf4b25b1c0da7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c5eb69ddd9c621024799b940ef58c34e7caaa3ff
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722782"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294019"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
@@ -45,10 +45,12 @@ ms.locfileid: "53722782"
 
 ## <a name="create-a-cname-dns-record"></a>创建 CNAME DNS 记录
 
-在将自定义域与 Azure CDN 终结点结合使用之前，必须先在域提供商的配合下创建一个规范名称 (CNAME) 记录，使之指向 CDN 终结点。 CNAME 记录是一种 DNS 记录，用于将源域名映射到目标域名。 就 Azure CDN 来说，源域名是自定义域名，目标域名是 CDN 终结点主机名。 在 Azure CDN 验证已创建的 CNAME 记录以后，目标为源自定义域（例如 www.contoso.com）的流量就会路由到指定的目标 CDN 终结点主机名（例如 contoso.azureedge.net）。 
+在将自定义域与 Azure CDN 终结点结合使用之前，必须先在域提供商的配合下创建一个规范名称 (CNAME) 记录，使之指向 CDN 终结点。 CNAME 记录是一种 DNS 记录，用于将源域名映射到目标域名。 就 Azure CDN 来说，源域名是自定义域名，目标域名是 CDN 终结点主机名。 在 Azure CDN 验证已创建的 CNAME 记录以后，目标为源自定义域（例如 www\.contoso.com）的流量就会路由到指定的目标 CDN 终结点主机名（例如 contoso.azureedge.net）。 
 
 一个自定义域及其子域一次只能与一个终结点相关联。 但是，可以通过使用多个 CNAME 记录，将同一自定义域中的不同子域用于不同的 Azure 服务终结点。 还可以将包含不同子域的自定义域映射到同一 CDN 终结点。
 
+> [!NOTE]
+> 如果使用 Azure DNS 作为域提供商，则任何别名记录类型都可以用于自定义域。 本演练使用 CNAME 记录类型。 如果使用 A 或 AAAA 记录类型，则只需遵循以下相同步骤，同时将 CNAME 替换为所选的记录类型。 如果使用别名记录将根域添加为自定义域，并且要启用 SSL，则必须使用手动验证，如[此处](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)所述
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>映射临时的 cdnverify 子域
 
@@ -64,11 +66,11 @@ ms.locfileid: "53722782"
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | 源                    | 类型  | 目标                     |
+    | 源                    | Type  | 目标                     |
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - 源：采用 cdnverify._&lt;自定义域名&gt; 格式输入自定义域名，包括 cdnverify 子域。 例如，cdnverify.www.contoso.com。
+    - 源：采用 cdnverify.&lt;&gt; 格式输入自定义域名，包括 cdnverify 子域。 例如，cdnverify.www.contoso.com。
 
     - 键入：输入 *CNAME*。
 
@@ -123,7 +125,7 @@ ms.locfileid: "53722782"
 
 4. 对于**终结点主机名**，用作 CNAME 记录的目标域的终结点主机名已预先填好，并源自 CDN 终结点 URL：*&lt;终结点主机名&gt;*.azureedge.net。 无法进行更改。
 
-5. 对于**自定义主机名**，请输入自定义域（包括子域），以用作 CNAME 记录的源域。 例如，www.contoso.com 或 cdn.contoso.com。 请勿使用 cdnverify 子域名称。
+5. 对于**自定义主机名**，请输入自定义域（包括子域），以用作 CNAME 记录的源域。 例如，www\.contoso.com 或 cdn.contoso.com。 请勿使用 cdnverify 子域名称。
 
    ![CDN“自定义域”对话框](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
@@ -158,15 +160,15 @@ ms.locfileid: "53722782"
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | 源          | 类型  | 目标           |
+    | 源          | Type  | 目标           |
     |-----------------|-------|-----------------------|
-    | www.contoso.com | CNAME | contoso.azureedge.net |
+    | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
-    - 源：输入自定义域名（例如 www.contoso.com）。
+   - 源：输入自定义域名（例如 www\.contoso.com）。
 
-    - 键入：输入 *CNAME*。
+   - 键入：输入 *CNAME*。
 
-    - 目标：输入 CDN 终结点主机名。 必须采用 _&lt;endpoint name&gt;_.azureedge.net 格式， 例如 contoso.azureedge.net。
+   - 目标：输入 CDN 终结点主机名。 必须采用 _&lt;endpoint name&gt;_.azureedge.net 格式， 例如 contoso.azureedge.net。
 
 4. 保存所做更改。
 

@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 2/5/2019
-ms.openlocfilehash: c171962fd6177a01afdb8e9605b09574c99f485e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 3/14/2019
+ms.openlocfilehash: 422813c1ddb77aa11195d3021484744839c4e3bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994340"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>教程：在 Azure 数据资源管理器中不使用任何代码引入数据
 
@@ -38,29 +38,44 @@ ms.locfileid: "56889216"
 
 ## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Azure Monitor 数据提供程序：诊断日志和活动日志
 
-查看并了解 Azure Monitor 诊断和活动日志提供的数据。 我们将基于这些数据架构创建引入管道。
+查看并了解以下 Azure Monitor 诊断和活动日志提供的数据。 我们将基于这些数据架构创建引入管道。 请注意，日志中的每个事件都具有记录数组。 稍后在本教程中，将拆分此记录数组。
 
 ### <a name="diagnostic-logs-example"></a>诊断日志示例
 
-Azure 诊断日志由 Azure 服务发出，提供与该服务的操作相关的数据。 数据以 1 分钟的时间粒度聚合。 诊断日志中的每个事件都包含一条记录。 以下是有关查询持续时间的 Azure 数据资源管理器指标事件架构示例：
+Azure 诊断日志由 Azure 服务发出，提供与该服务的操作相关的数据。 数据以 1 分钟的时间粒度聚合。 以下是有关查询持续时间的 Azure 数据资源管理器指标事件架构示例：
 
 ```json
 {
-    "count": 14,
-    "total": 0,
-    "minimum": 0,
-    "maximum": 0,
-    "average": 0,
-    "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
-    "time": "2018-12-20T17:00:00.0000000Z",
-    "metricName": "QueryDuration",
-    "timeGrain": "PT1M"
+    "records": [
+    {
+        "count": 14,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-20T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    },
+    {
+        "count": 12,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-21T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    }
+    ]
 }
 ```
 
 ### <a name="activity-logs-example"></a>活动日志示例
 
-Azure 活动日志是包含一系列记录的订阅级日志。 这些日志可让用户洞察对订阅中的资源执行的操作。 与诊断日志不同，活动日志中的每个事件都包含一组记录。 稍后在本教程中，我们需要拆分此记录数组。 下面是用于检查访问权限的活动日志事件示例：
+Azure 活动日志是订阅级日志，提供对订阅中的资源执行的操作的深入见解。 下面是用于检查访问权限的活动日志事件示例：
 
 ```json
 {
@@ -129,6 +144,8 @@ Azure 活动日志是包含一系列记录的订阅级日志。 这些日志可�
 
 ### <a name="create-the-target-tables"></a>创建目标表
 
+Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事件扩展到一个或多个记录。 将原始数据引入到活动日志的名为 ActivityLogsRawRecords 的中间表和诊断日志的名为 DiagnosticLogsRawRecords 的中间表。 此时，数据已经过处理和扩展。 使用更新策略，将扩展的数据引入到活动日志的 ActivityLogsRecords 表和诊断日志的 DiagnosticLogsRecords 表。 这意味着需要创建两个单独的表来引入活动日志，并创建两个单独的表来引入诊断日志。
+
 使用 Azure 数据资源管理器 Web UI 在 Azure 数据资源管理器数据库中创建目标表。
 
 #### <a name="the-diagnostic-logs-table"></a>诊断日志表
@@ -143,9 +160,13 @@ Azure 活动日志是包含一系列记录的订阅级日志。 这些日志可�
 
     ![运行查询](media/ingest-data-no-code/run-query.png)
 
-#### <a name="the-activity-logs-tables"></a>活动日志表
+1. 使用以下查询在 TestDatabase 数据库中创建名为 DiagnosticLogsRawRecords 的中间数据表，以进行数据操纵。 选择“运行”以创建该表。
 
-由于活动日志的结构并非表格式，因此需要处理数据并将每个事件扩展到一个或多个记录。 原始数据将引入到名为 ActivityLogsRawRecords 的中间表。 此时，数据已经过处理和扩展。 然后，使用更新策略将扩展的数据引入到 ActivityLogsRecords 表。 这意味着需要为引入活动日志创建两个单独的表。
+    ```kusto
+    .create table DiagnosticLogsRawRecords (Records:dynamic)
+    ```
+
+#### <a name="the-activity-logs-tables"></a>活动日志表
 
 1. 在 TestDatabase 数据库中创建名为 ActivityLogsRecords 的表，用于接收活动日志记录。 若要创建该表，请运行以下 Azure 数据资源管理器查询：
 
@@ -174,7 +195,7 @@ Azure 活动日志是包含一系列记录的订阅级日志。 这些日志可�
 若要将诊断日志的数据映射到表，请使用以下查询：
 
 ```kusto
-.create table DiagnosticLogsRecords ingestion json mapping 'DiagnosticLogsRecordsMapping' '[{"column":"Timestamp","path":"$.time"},{"column":"ResourceId","path":"$.resourceId"},{"column":"MetricName","path":"$.metricName"},{"column":"Count","path":"$.count"},{"column":"Total","path":"$.total"},{"column":"Minimum","path":"$.minimum"},{"column":"Maximum","path":"$.maximum"},{"column":"Average","path":"$.average"},{"column":"TimeGrain","path":"$.timeGrain"}]'
+.create table DiagnosticLogsRawRecords ingestion json mapping 'DiagnosticLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
 #### <a name="table-mapping-for-activity-logs"></a>活动日志的表映射
@@ -185,9 +206,11 @@ Azure 活动日志是包含一系列记录的订阅级日志。 这些日志可�
 .create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-### <a name="create-the-update-policy-for-activity-logs-data"></a>创建活动日志数据的更新策略
+### <a name="create-the-update-policy-for-log-data"></a>创建日志数据的更新策略
 
-1. 创建一个[函数](/azure/kusto/management/functions)用于扩展记录集合，使集合中的每个值收到一个单独的行。 使用 [`mvexpand`](/azure/kusto/query/mvexpandoperator) 运算符：
+#### <a name="activity-log-data-update-policy"></a>活动日志数据更新策略
+
+1. 创建一个[函数](/azure/kusto/management/functions)用于扩展活动日志记录集合，使集合中的每个值收到一个单独的行。 使用 [`mvexpand`](/azure/kusto/query/mvexpandoperator) 运算符：
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
@@ -212,6 +235,32 @@ Azure 活动日志是包含一系列记录的订阅级日志。 这些日志可�
 
     ```kusto
     .alter table ActivityLogsRecords policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    ```
+
+#### <a name="diagnostic-log-data-update-policy"></a>诊断日志数据更新策略
+
+1. 创建一个[函数](/azure/kusto/management/functions)用于扩展诊断日志记录集合，使集合中的每个值收到一个单独的行。 使用 [`mvexpand`](/azure/kusto/query/mvexpandoperator) 运算符：
+     ```kusto
+    .create function DiagnosticLogRecordsExpand() {
+        DiagnosticLogsRawRecords
+        | mvexpand events = Records
+        | project
+            Timestamp = todatetime(events["time"]),
+            ResourceId = tostring(events["resourceId"]),
+            MetricName = tostring(events["metricName"]),
+            Count = toint(events["count"]),
+            Total = todouble(events["total"]),
+            Minimum = todouble(events["minimum"]),
+            Maximum = todouble(events["maximum"]),
+            Average = todouble(events["average"]),
+            TimeGrain = tostring(events["timeGrain"])
+    }
+    ```
+
+2. 将[更新策略](/azure/kusto/concepts/updatepolicy)添加到目标表。 此策略将针对 DiagnosticLogsRawRecords 中间数据表中任何新引入的数据自动运行查询，并将查询结果引入到 DiagnosticLogsRecords 表中：
+
+    ```kusto
+    .alter table DiagnosticLogsRecords policy update @'[{"Source": "DiagnosticLogsRawRecords", "Query": "DiagnosticLogRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
 ## <a name="create-an-azure-event-hubs-namespace"></a>创建一个 Azure 事件中心命名空间
@@ -252,12 +301,12 @@ Azure 活动日志是包含一系列记录的订阅级日志。 这些日志可�
     ![诊断设置](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. “诊断设置”窗格打开。 执行以下步骤：
-    1. 将诊断日志数据命名为 ADXExportedData。
-    1. 在“指标”下方，选择“AllMetrics”复选框（可选）。
-    1. 选择“流式传输到事件中心”复选框。
-    1. 选择“配置”。
+   1. 将诊断日志数据命名为 ADXExportedData。
+   1. 在“指标”下方，选择“AllMetrics”复选框（可选）。
+   1. 选择“流式传输到事件中心”复选框。
+   1. 选择“配置”。
 
-    ![诊断设置窗格](media/ingest-data-no-code/diagnostic-settings-window.png)
+      ![诊断设置窗格](media/ingest-data-no-code/diagnostic-settings-window.png)
 
 1. 在“选择事件中心”窗格中，配置将数据从诊断日志导出到所创建事件中心的方法：
     1. 在“选择事件中心命名空间”列表中，选择 AzureMonitoringData。
@@ -330,7 +379,7 @@ Azure 活动日志是包含一系列记录的订阅级日志。 这些日志可�
 
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | **表** | *DiagnosticLogsRecords* | 在 TestDatabase 数据库中创建的表。 |
+    | **表** | *DiagnosticLogsRawRecords* | 在 TestDatabase 数据库中创建的表。 |
     | **数据格式** | *JSON* | 表中使用的格式。 |
     | **列映射** | *DiagnosticLogsRecordsMapping* | 在 TestDatabase 数据库中创建的映射，它将传入的 JSON 数据映射到 DiagnosticLogsRecords 表的列名和数据类型。|
     | | |
@@ -400,6 +449,7 @@ ActivityLogsRecords
 ```
 
 查询结果：
+
 |   |   |
 | --- | --- |
 |   |  avg(DurationMs) |

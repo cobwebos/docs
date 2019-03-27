@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 634b175ec0b5771e3ff2fa061532106eb124ea4e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 9dada3c6f0718db41a24368aca594bbd3215fec5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338421"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994867"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>使用 REST API 定义和分配 Azure 蓝图
 
@@ -70,6 +70,9 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 - `{YourMG}` - 替换为管理组的 ID
 - `{subscriptionId}` - 替换为订阅 ID
+
+> [!NOTE]
+> 也可以在订阅级别创建蓝图。 要查看示例，请参阅[在订阅示例级别创建蓝图](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)。
 
 1. 创建初始 blueprint 对象。 请求正文包括有关蓝图的属性、要创建的任何资源组，以及所有蓝图级别参数。 参数在分配过程中设置并由在后续步骤中添加的项目使用。
 
@@ -262,7 +265,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
                      "tags": {
                         "[parameters('tagNameFromBP')]": "[parameters('tagValueFromBP')]"
                      },
-                     "location": "[resourceGroup().location]",
+                     "location": "[resourceGroups('storageRG').location]",
                      "sku": {
                          "name": "[parameters('storageAccountTypeFromBP')]"
                      },
@@ -435,9 +438,9 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](./concepts/lifecycle.md)
-- 了解如何使用[静态和动态参数](./concepts/parameters.md)
-- 了解如何自定义[蓝图排序顺序](./concepts/sequencing-order.md)
-- 了解如何使用[蓝图资源锁定](./concepts/resource-locking.md)
-- 了解如何[更新现有分配](./how-to/update-existing-assignments.md)
-- 使用[常规疑难解答](./troubleshoot/general.md)在蓝图分配期间解决问题
+- 了解[蓝图生命周期](./concepts/lifecycle.md)。
+- 了解如何使用[静态和动态参数](./concepts/parameters.md)。
+- 了解如何自定义[蓝图排序顺序](./concepts/sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](./concepts/resource-locking.md)。
+- 了解如何[更新现有分配](./how-to/update-existing-assignments.md)。
+- 使用[一般故障排除](./troubleshoot/general.md)在蓝图的分配期间解决问题。

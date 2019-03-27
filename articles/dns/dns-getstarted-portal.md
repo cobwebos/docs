@@ -1,27 +1,27 @@
 ---
-title: 快速入门 - 使用 Azure 门户创建 DNS 区域和记录
+title: 快速入门 - 使用 Azure 门户创建 Azure DNS 区域和记录
 description: 使用此分步快速入门指南了解如何使用 Azure 门户创建 Azure DNS 区域和记录。
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 12/4/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9929662f1fe4612e51c82248f64e3191f7fdb223
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: feb46114b3cf1b04e6a181f84bcdc41c17f1c0ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955192"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119065"
 ---
-# <a name="quickstart-configure-azure-dns-for-name-resolution-by-using-the-portal"></a>快速入门：使用门户配置用于名称解析的 Azure DNS
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure DNS 区域和记录
 
-可以将 Azure DNS 配置为解析公共域中的主机名。 例如，如果从某个域名注册机构购买了 *contoso.com* 域名，则可配置 Azure DNS 来托管 *contoso.com* 域，并将 *www.contoso.com* 解析为 Web 服务器或 Web 应用的 IP 地址。
+可以将 Azure DNS 配置为解析公共域中的主机名。 例如，如果从某个域名注册机构购买了 contoso.xyz 域名，则可配置 Azure DNS 来托管 contoso.xyz 域，并将 www.contoso.xyz 解析为 Web 服务器或 Web 应用的 IP 地址。
 
 在本快速入门中，你将创建一个测试域，然后创建一个地址记录来将 *www* 解析为 IP 地址 *10.10.10.10*。
 
 >[!IMPORTANT]
->本快速入门中的所有名称和 IP 地址都是示例，不代表实际场景。 本快速入门还根据情况讨论了现实意义。
+>本快速入门中的所有名称和 IP 地址都是示例，不代表实际场景。
 
 <!---
 You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
@@ -38,16 +38,16 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 **创建 DNS 区域：**
 
 1. 在左上角，选择“创建资源”，然后依次选择“网络”和“DNS 区域”。
-   
+
 1. 在“创建 DNS 区域”页上，键入或选择以下值：
-   
+
    - **名称**：对于本快速入门示例，键入 contoso.xyz。 DNS 区域名称可以是尚未在 Azure DNS 服务器上配置的任何值。 实际值可以是从域名注册机构购买的域。
-   - **资源组**：选择“新建”，输入 dns-test，然后选择“确定”。 资源组名称在 Azure 订阅中必须唯一。 
-   
+   - **资源组**：选择“新建”，输入 MyResourceGroup，然后选择“确定”。 资源组名称在 Azure 订阅中必须唯一。 
+
 1. 选择“创建”。
 
    ![DNS 区域](./media/dns-getstarted-portal/openzone650.png)
-   
+
 创建区域可能需要几分钟。
 
 ## <a name="create-a-dns-record"></a>创建 DNS 记录
@@ -56,7 +56,7 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 **创建“A”记录：**
 
-1. 在 Azure 门户中，在“所有资源”下，打开 **dns-test** 资源组中的 **contoso.xyz** DNS 区域。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。
+1. 在 Azure 门户中，在“所有资源”下，打开 MyResourceGroup 资源组中的 contoso.xyz DNS 区域。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。
 
 1. 在“DNS 区域”页面顶部，选择“+ 记录集”。
 
@@ -68,7 +68,7 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
    - **TTL 单位**：选择“小时”。 这是用于 **TTL** 值的时间单位。 
    - **IP 地址**：对于本快速入门示例，键入 10.10.10.10。 此值是记录名称解析为的 IP 地址。 在现实场景中，则应输入 Web 服务器的公用 IP 地址。
 
-因为本快速入门未使用真实的域，因此不需要在域名注册机构那里配置 Azure DNS 名称服务器。 对于现实域，你希望 Internet 上的任何人都能够解析主机名，以便连接到你的 Web 服务器或应用。 你将访问域名注册机构来将名称服务器记录替换为 Azure DNS 名称服务器。 有关详细信息，请参见[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md#delegate-the-domain)。
+因为本快速入门仅用于快速测试目的，因此不需要在域名注册机构那里配置 Azure DNS 名称服务器。 对于现实生产域，你希望 Internet 上的任何人都能够解析主机名，以便连接到你的 Web 服务器或应用。 你将访问域名注册机构来将名称服务器记录替换为 Azure DNS 名称服务器。 有关详细信息，请参见[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md#delegate-the-domain)。
 
 ## <a name="test-the-name-resolution"></a>测试名称解析
 
@@ -76,36 +76,33 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 **测试 DNS 名称解析：**
 
-1. 在 Azure 门户中，在“所有资源”下，打开 **dns-test** 资源组中的 **contoso.xyz** DNS 区域。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。
+1. 在 Azure 门户中，在“所有资源”下，打开 MyResourceGroup 资源组中的 contoso.xyz DNS 区域。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。
 
 1. 在“概述”页面上从名称服务器列表中复制其中一个名称服务器名称。 
-   
+
    ![区域](./media/dns-getstarted-portal/viewzonens500.png)
-   
-   >[!NOTE]
-   >在现实场景中，你将复制全部四个名称服务器名称，包括尾部句点，并在你的域注册机构那里将其用于新的 Azure DNS 名称服务器名称。 有关详细信息，请参阅[将域委托给 Azure DNS](dns-delegate-domain-azure-dns.md)。
-   
+
 1. 打开一个命令提示符，并运行以下命令：
 
    ```
-   nslookup <host name> <name server name>
+   nslookup www.contoso.xyz <name server name>
    ```
-   
+
    例如：
-   
+
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
    ```
-   
+
    应当会看到类似以下屏幕的内容：
-   
+
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-主机名 **www.contoso.xyz** 解析为 **10.10.10.10**，正如你配置的那样。 此结果表明名称解析正常工作。 
+主机名 www\.contoso.xyz 解析为 10.10.10.10，正如你配置的那样。 此结果表明名称解析正常工作。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要你在本快速入门中创建的资源时，通过删除 **dns-test** 资源组将它们删除。 打开 **dns-test** 资源组，并选择“删除资源组”。
+当不再需要你在本快速入门中创建的资源时，通过删除 MyResourceGroup 资源组将它们删除。 打开 MyResourceGroup 资源组，并选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

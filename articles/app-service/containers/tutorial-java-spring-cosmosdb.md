@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: a0a07a78d36e4c0d11132d0c7d5ff947f7073029
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 792346edf1d2b2326f7f5f5f53304ceca347508d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353560"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901111"
 ---
 # <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>教程：使用 Spring 和 Azure Cosmos DB 生成 Java Web 应用
 
@@ -101,7 +101,7 @@ export COSMOSDB_URI=<put-your-COSMOS-DB-documentEndpoint-URI-here>
 export COSMOSDB_KEY=<put-your-COSMOS-DB-primaryMasterKey-here>
 export COSMOSDB_DBNAME=<put-your-COSMOS-DB-name-here>
 
-// App Service Linux Configuration
+# App Service Linux Configuration
 export RESOURCEGROUP_NAME=<put-your-resource-group-name-here>
 export WEBAPP_NAME=<put-your-Webapp-name-here>
 export REGION=<put-your-REGION-here>
@@ -230,7 +230,7 @@ bash-3.2$ mvn package spring-boot:run
 
 ```bash
 
-// Deploy
+# Deploy
 bash-3.2$ mvn azure-webapp:deploy
 [INFO] Scanning for projects...
 [INFO] 

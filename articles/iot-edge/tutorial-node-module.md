@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f5cf14ae1dcbbb00d723a86213c2707ad91794b7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 10026f0a9ff702ee45926ca097e9123ea3db06d5
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564912"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225920"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>教程：开发 Node.js IoT Edge 模块并将其部署到模拟设备
 
@@ -61,14 +61,14 @@ Azure IoT Edge 设备：
 
 2. 提供以下值，以便创建容器注册表：
 
-   | 字段 | 值 | 
+   | 字段 | 值 |
    | ----- | ----- |
    | 注册表名称 | 提供唯一名称。 |
    | 订阅 | 从下拉列表中选择“订阅”。 |
    | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
    | 位置 | 选择靠近你的位置。 |
    | 管理员用户 | 设置为“启用”。 |
-   | SKU | 选择“基本”。 | **终端**
+   | SKU | 选择“基本”。 |
 
 5. 选择“创建”。
 
@@ -107,7 +107,7 @@ Azure IoT Edge 设备：
  
    ![提供 Docker 映像存储库](./media/tutorial-node-module/repository.png)
 
-VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作区包含五个顶级组件。 **modules** 文件夹包含模块的 Node.js 代码以及用于将模块构建为容器映像的 Dockerfile。 **\.env** 文件存储容器注册表凭据。 **deployment.template.json** 文件包含 IoT Edge 运行时用于在设备上部署模块的信息。 **deployment.debug.template.json** 文件包含模块的调试版本。 你不会在本教程中编辑 **\.vscode** 文件夹或 **\.gitignore** 文件。 
+VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作区包含五个顶级组件。 **modules** 文件夹包含模块的 Node.js 代码以及用于将模块构建为容器映像的 Dockerfile。 **\.env** 文件存储容器注册表凭据。 deployment.template.json 文件包含 IoT Edge 运行时用于在设备上部署模块的信息，而 deployment.debug.template.json 文件包含模块的调试版本。 你不会在本教程中编辑 **\.vscode** 文件夹或 **\.gitignore** 文件。 
 
 如果在创建解决方案时未指定容器注册表，但接受了默认的 localhost:5000 值，则不会有 \.env 文件。 
 
@@ -197,11 +197,11 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 11. 将 NodeModule 模块孪生添加到部署清单。 在 `moduleContent` 节底部 `$edgeHub` 模块孪生后插入以下 JSON 内容： 
 
    ```json
-       "NodeModule": {
-           "properties.desired":{
-               "TemperatureThreshold":25
-           }
-       }
+     "NodeModule": {
+         "properties.desired":{
+             "TemperatureThreshold":25
+         }
+     }
    ```
 
    ![将模块孪生添加到部署模板](./media/tutorial-node-module/module-twin.png)

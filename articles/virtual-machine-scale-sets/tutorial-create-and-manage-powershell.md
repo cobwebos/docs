@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 10fc55886e4c91a2d468704d13d3b206f4a9cf51
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0eb5a33b91925260c89e0b1c23800614ed637bdb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980238"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990651"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理虚拟机规模集
 
@@ -140,7 +140,7 @@ IpAddress
 52.168.121.216
 ```
 
-创建连接到第一个 VM 实例所需的远程连接。 指定所需 VM 实例的公共 IP 地址和端口号，如前述命令所示。 出现提示时，输入创建规模集时使用的凭据（在示例命令中，默认为 *azureuser* 和 *P@ssw0rd!*）。 如果使用 Azure Cloud Shell，请通过本地 PowerShell 命令提示符或远程桌面客户端执行此步骤。 以下示例连接到 VM 实例 *1*：
+创建连接到第一个 VM 实例所需的远程连接。 指定所需 VM 实例的公共 IP 地址和端口号，如前述命令所示。 出现提示时，输入创建规模集时使用的凭据（在示例命令中，默认为 azureuser 和 P\@ssw0rd!）。 如果使用 Azure Cloud Shell，请从本地 PowerShell 命令提示符或远程桌面客户端执行此步骤。 以下示例连接到 VM 实例 *1*：
 
 ```powershell
 mstsc /v 52.168.121.216:50001

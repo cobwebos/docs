@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d4f530e38b6fd69d814765f4133201dd12a87f22
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 62372b4ce4032e019219b5be8c5a49ea135782c1
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668576"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223268"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>教程：删除在 Azure 中运行的 Service Fabric 群集
 
-本教程是一个系列的第四部分，介绍了如何删除在 Azure 中运行的 Service Fabric 群集。 若要彻底删除 Service Fabric 群集，还需要删除该群集使用的所有资源。 可使用两种方法：删除该群集所在的资源组（此操作将删除群集资源以及该资源组中的所有其他资源），或特定删除群集资源及其关联资源（而不删除资源组中的其他资源）。
+本教程是一个系列的第五部分，介绍了如何删除在 Azure 中运行的 Service Fabric 群集。 若要彻底删除 Service Fabric 群集，还需要删除该群集使用的所有资源。 可使用两种方法：删除该群集所在的资源组（此操作将删除群集资源以及该资源组中的所有其他资源），或特定删除群集资源及其关联资源（而不删除资源组中的其他资源）。
 
 本教程介绍如何执行下列操作：
 
@@ -35,6 +35,7 @@ ms.locfileid: "56668576"
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * 使用模板在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+> * [监视群集](service-fabric-tutorial-monitor-cluster.md)
 > * [缩小或扩大群集](service-fabric-tutorial-scale-cluster.md)
 > * [升级群集的运行时](service-fabric-tutorial-upgrade-cluster.md)
 > * 删除群集
@@ -50,7 +51,7 @@ ms.locfileid: "56668576"
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>删除包含 Service Fabric 群集的资源组
 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
-登录到 Azure，选择要删除的群集的订阅 ID。  可通过登录到 [Azure 门户](http://portal.azure.com)查找订阅 ID。 使用[Remove-AzureRMResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) cmdlet 或 [az group delete](/cli/azure/group?view=azure-cli-latest) 命令删除资源组和所有群集资源。
+登录到 Azure，选择要删除群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 使用[Remove-AzureRMResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) cmdlet 或 [az group delete](/cli/azure/group?view=azure-cli-latest) 命令删除资源组和所有群集资源。
 
 ```powershell
 Connect-AzureRmAccount

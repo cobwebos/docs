@@ -1,5 +1,5 @@
 ---
-title: 教程：调用认知搜索 API - Azure 搜索
+title: 有关在索引管道中调用认知服务 API 的教程 - Azure 搜索
 description: 在本教程中，在用于数据提取和转换的 Azure 搜索索引中分步完成数据提取、自然语言和图像 AI 处理的示例。
 manager: pablocas
 author: luiscabrer
@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 03/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a4481e1bbc6248a9616fa7b3fe1d67c7d90af56e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: c888c134054f50bc8ab17d17524a4f89d5081dfc
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429411"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259612"
 ---
-# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>教程：了解如何调用认知搜索 API（预览版）
+# <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>教程：在 Azure 搜索索引管道中调用认知服务 API（预览版）
 
-本教程介绍使用认知技能在 Azure 搜索中扩充编程数据的机制。 认知技能属于自然语言处理 (NLP) 和图像分析操作，它们可以提取文本和图像的文本表示形式，以及检测语言、实体、关键短语等内容。 最终结果是在认知搜索索引管道创建的 Azure 搜索索引中提供丰富的附加内容。 
+本教程介绍使用认知技能在 Azure 搜索中扩充编程数据的机制。 技能由自然语言处理 (NLP) 和认知服务中的图像分析功能提供支持。 通过技能集组合和配置，可以提取图像或扫描的文档文件的文本和文本表示形式。 还可以检测语言、实体、关键短语等。 最终结果是 Azure 搜索索引中的丰富附加内容，由 AI 支持的索引编制管道创建。 
 
 在本教程中，我们将发出 REST API 调用来执行以下任务：
 
@@ -55,27 +55,27 @@ ms.locfileid: "56429411"
 
 1. 单击“创建资源”，搜索“Azure 搜索”，然后单击“创建”。 首次设置搜索服务时，请参阅[在门户中创建 Azure 搜索服务](search-create-service-portal.md)。
 
-  ![仪表板门户](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "在门户中创建 Azure 搜索服务")
+   ![仪表板门户](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "在门户中创建 Azure 搜索服务")
 
 1. 对于“资源组”，请创建一个资源组用于包含本教程中创建的所有资源。 这样可以在完成本教程后更轻松地清理资源。
 
-1. 对于“位置”，请为认知搜索选择[支持的区域](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob#supported-regions)之一。
+1. 选择位置时，选择邻近你的数据和其他云应用的区域。
 
 1. 对于“定价层”，可以创建“免费”服务来完成教程和快速入门。 要使用自己的数据进行更深入的调查，请创建一个[付费服务](https://azure.microsoft.com/pricing/details/search/)，例如“基本”或“标准”层的服务。 
 
-  “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
+   “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
-  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service1.png "门户中的服务定义页")
-  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service2.png "门户中的服务定义页")
+   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service1.png "门户中的服务定义页")
+   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service2.png "门户中的服务定义页")
 
  
 1. 将服务固定到仪表板，以快速访问服务信息。
 
-  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service3.png "门户中的服务定义页")
+   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service3.png "门户中的服务定义页")
 
 1. 创建服务后，收集以下信息：“概述”页中的 **URL** 以及“密钥”页中的 **api-key**（主密钥或辅助密钥）。
 
-  ![门户中的终结点和密钥信息](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "门户中的终结点和密钥信息")
+   ![门户中的终结点和密钥信息](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "门户中的终结点和密钥信息")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>设置 Azure Blob 服务并加载示例数据
 
@@ -89,7 +89,7 @@ ms.locfileid: "56429411"
 
 1. 加载示例文件后，获取 Blob 存储的容器名称和连接字符串。 为此，请在 Azure 门户中导航到你的存储帐户。 在“访问密钥”中，复制“连接字符串”字段值。
 
-  存储连接字符串应是类似于以下示例的 URL：
+   存储连接字符串应是类似于以下示例的 URL：
 
       ```http
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
@@ -106,21 +106,21 @@ ms.locfileid: "56429411"
 ### <a name="sample-request"></a>示例请求
 ```http
 POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
-Content-Type: application/json  
-api-key: [admin key]  
+Content-Type: application/json
+api-key: [admin key]
 ```
 #### <a name="request-body-syntax"></a>请求正文语法
 ```json
-{   
-    "name" : "demodata",  
-    "description" : "Demo files to demonstrate cognitive search capabilities.",  
-    "type" : "azureblob",
-    "credentials" :
-    { "connectionString" :
-      "DefaultEndpointsProtocol=https;AccountName=<your account name>;AccountKey=<your account key>;"
-    },  
-    "container" : { "name" : "<your blob container name>" }
-}  
+{
+  "name" : "demodata",
+  "description" : "Demo files to demonstrate cognitive search capabilities.",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" :
+    "DefaultEndpointsProtocol=https;AccountName=<your account name>;AccountKey=<your account key>;"
+  },
+  "container" : { "name" : "<your blob container name>" }
+}
 ```
 发送请求。 Web 测试工具应返回状态代码 201，确认请求成功。 
 
@@ -158,7 +158,7 @@ Content-Type: application/json
 #### <a name="request-body-syntax"></a>请求正文语法
 ```json
 {
-  "description": 
+  "description":
   "Extract entities, detect language and extract key-phrases",
   "skills":
   [
@@ -193,26 +193,26 @@ Content-Type: application/json
     },
     {
       "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
-      "textSplitMode" : "pages", 
+      "textSplitMode" : "pages",
       "maximumPageLength": 4000,
       "inputs": [
-      {
-        "name": "text",
-        "source": "/document/content"
-      },
-      { 
-        "name": "languageCode",
-        "source": "/document/languageCode"
-      }
-    ],
-    "outputs": [
-      {
-            "name": "textItems",
-            "targetName": "pages"
-      }
-    ]
-  },
-  {
+        {
+          "name": "text",
+          "source": "/document/content"
+        },
+        {
+          "name": "languageCode",
+          "source": "/document/languageCode"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "textItems",
+          "targetName": "pages"
+        }
+      ]
+    },
+    {
       "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
       "context": "/document/pages/*",
       "inputs": [
@@ -256,7 +256,7 @@ Content-Type: application/json
 
 本演练使用以下字段和字段类型：
 
-| field-names: | id       | 内容   | languageCode | keyPhrases         | organizations     |
+| field-names: | `id`       | 内容   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -351,41 +351,41 @@ Content-Type: application/json
   "targetIndexName" : "demoindex",
   "skillsetName" : "demoskillset",
   "fieldMappings" : [
-        {
-          "sourceFieldName" : "metadata_storage_path",
-          "targetFieldName" : "id",
-          "mappingFunction" : 
-            { "name" : "base64Encode" }
-        },
-        {
-          "sourceFieldName" : "content",
-          "targetFieldName" : "content"
-        }
-   ],
-  "outputFieldMappings" : 
+    {
+      "sourceFieldName" : "metadata_storage_path",
+      "targetFieldName" : "id",
+      "mappingFunction" :
+        { "name" : "base64Encode" }
+    },
+    {
+      "sourceFieldName" : "content",
+      "targetFieldName" : "content"
+    }
+  ],
+  "outputFieldMappings" :
   [
-        {
-          "sourceFieldName" : "/document/organizations", 
-          "targetFieldName" : "organizations"
-        },
-        {
-          "sourceFieldName" : "/document/pages/*/keyPhrases/*", 
-          "targetFieldName" : "keyPhrases"
-        },
-        {
-            "sourceFieldName": "/document/languageCode",
-            "targetFieldName": "languageCode"
-        }      
+    {
+      "sourceFieldName" : "/document/organizations",
+      "targetFieldName" : "organizations"
+    },
+    {
+      "sourceFieldName" : "/document/pages/*/keyPhrases/*",
+      "targetFieldName" : "keyPhrases"
+    },
+    {
+      "sourceFieldName": "/document/languageCode",
+      "targetFieldName": "languageCode"
+    }
   ],
   "parameters":
   {
     "maxFailedItems":-1,
     "maxFailedItemsPerBatch":-1,
-    "configuration": 
+    "configuration":
     {
-        "dataToExtract": "contentAndMetadata",
-        "imageAction": "generateNormalizedImages"
-        }
+      "dataToExtract": "contentAndMetadata",
+      "imageAction": "generateNormalizedImages"
+    }
   }
 }
 ```
@@ -443,7 +443,7 @@ Content-Type: application/json
 
 针对其他字段（本演练中的 content、language、keyphrases 和 organizations）重复上述步骤。 可以使用逗号分隔列表通过 `$select` 返回多个字段。
 
-可以根据查询字符串的复杂性和长度，使用 GET 或 POST。 有关详细信息，请参阅[使用 REST API 进行查询](https://docs.microsoft.com/azure/search/search-query-rest-api)。
+可以根据查询字符串的复杂性和长度，使用 GET 或 POST。 有关详细信息，请参阅[使用 REST API 进行查询](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
 <a name="access-enriched-document"></a>
 

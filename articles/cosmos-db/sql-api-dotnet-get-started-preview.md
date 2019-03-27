@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 2e0dc5c69a6cc875f4e673a494387db79c1dd1fa
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a942f91dfa03eea2d9dc14b4b44e2ef5ee57c1ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672537"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078629"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用（SDK 版本 3 预览）
 
@@ -61,14 +61,14 @@ ms.locfileid: "56672537"
 1. 在计算机上打开 **Visual Studio 2017**。
 1. 在“文件”菜单中，选择“新建”，并选择“项目”。
 1. 在“新建项目”对话框中，选择“Visual C#” / “控制台应用(.NET Framework)”，为项目命名，并单击“确定”。
-    ![“新建项目”窗口屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
+    ![“新建项目”窗口的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
 1. 在“解决方案资源管理器”中，右键单击 Visual Studio 解决方案下方的新控制台应用程序，并单击“管理 NuGet 包...”
     
-    ![“项目”右键菜单屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget.png)
+    ![项目的右键菜单的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget.png)
 1. 在“NuGet”选项卡上，单击“浏览”，并在搜索框中键入 **Microsoft.Azure.Cosmos**。 请务必选中“包括预发行版”，以便查找预览版。
 1. 在结果中找到“Microsoft.Azure.Cosmos”，并单击“安装”。
    Azure Cosmos DB SQL API 客户端库的程序包 ID 是 [Microsoft Azure Cosmos DB 客户端库](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)。
-   ![用于查找 Azure Cosmos DB 客户端 SDK 的 NuGet 菜单的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
+   ![用于查找 Azure Cosmos DB 客户端 SDK 的 NuGet 菜单屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
 
     如果获得有关查看解决方案更改的消息，请单击“确定”。 如果获得有关接受许可证的消息，请单击“我接受”。
 
@@ -119,7 +119,7 @@ ms.locfileid: "56672537"
 
     从门户中复制该 URI 并将它粘贴到 ```Program.cs``` 文件中的 `<your endpoint URL>`。 从门户中复制“主密钥”并将它粘贴到 `<your primary key>`。
 
-   ![从 Azure 门户获取 Azure Cosmos DB 密钥的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-portal-keys.png)
+   ![显示从 Azure 门户获取 Azure Cosmos DB 密钥的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-portal-keys.png)
 
 1. 接下来，我们将创建 ```CosmosClient``` 的新实例并为程序设置一些基架。
 
@@ -321,7 +321,7 @@ ms.locfileid: "56672537"
         await this.CreateContainer();
     }
     ```
-选择 **F5** 来运行应用程序。
+   选择 **F5** 来运行应用程序。
 
 祝贺你！ 已成功创建 Azure Cosmos DB 容器。  
 
@@ -331,7 +331,7 @@ ms.locfileid: "56672537"
 在本例中，首先需要创建 **Family** 类来表示存储在 Azure Cosmos DB 中的对象。 此外还将创建 **Family** 中使用的 **Parent**、**Child**、**Pet** 和 **Address** 子类。 请注意，文档必须将 **ID** 属性序列化为 JSON 格式的 **ID**。 
 1. 选择“Ctrl + Shift + A”以打开“添加新项”对话框。 将新类“Family.cs”添加到项目中。 
 
-    ![将新的“Family.cs”类添加到项目中的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
+    ![显示向项目添加新的 Family.cs 类的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
 
 1. 将“Family”、“Parent”、“Child”、“Pet”和“Address”类复制并粘贴到“Family.cs”。 
     ```csharp
@@ -599,7 +599,7 @@ Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行[各种查
         await this.ReplaceFamilyItem();
     }
     ```
-选择 **F5** 来运行应用程序。
+   选择 **F5** 来运行应用程序。
 
 祝贺你！ 已成功替换了 Azure Cosmos DB 项。
 

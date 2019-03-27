@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: f5cfa3de962c51ac7ff43d9b83bdea9f408f5bcf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616183"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097417"
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
 
@@ -26,12 +26,12 @@ ms.locfileid: "42616183"
 > [!div class="checklist"]
 > * 下载和设置 MARS 代理
 > * 为服务器备份配置备份时间和保留计划
-> * 执行即席备份
+> * 执行临时备份
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 http://portal.azure.com 登录到 Azure 门户。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -88,11 +88,11 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
 
 1. 找到并双击已下载的 MARSagentinstaller.exe。
 2. “Microsoft Azure 恢复服务代理安装向导”随即出现。 执行向导的过程中，显示提示时请提供以下信息，然后单击“注册”。
-    - 文件夹的安装和缓存位置。
-    - 代理服务器信息（如果使用代理服务器连接到 Internet）。
-    - 用户名和密码详细信息（如果使用经验证的代理）。
+   - 文件夹的安装和缓存位置。
+   - 代理服务器信息（如果使用代理服务器连接到 Internet）。
+   - 用户名和密码详细信息（如果使用经验证的代理）。
 
-    ![准备基础结构](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
+     ![准备基础结构](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
 
 3. 向导结束时，单击“继续注册”，并提供先前过程中下载的“保管库凭据”文件。
  
@@ -128,7 +128,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
 
 11. 在向导完成创建备份计划后，请单击“**关闭**”。
 
-## <a name="perform-an-ad-hoc-back-up"></a>执行即席备份
+## <a name="perform-an-ad-hoc-back-up"></a>执行临时备份
 
 备份作业运行时表示计划已建立。 但服务器尚未备份。 运行按需备份是灾难恢复最佳做法，可确保服务器的数据弹性。
 

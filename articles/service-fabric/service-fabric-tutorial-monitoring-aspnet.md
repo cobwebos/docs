@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中监视和诊断 Service Fabric 上的 ASP.NET Core 服务 |Microsoft Docs
-description: 本教程介绍如何设置 Azure Service Fabric ASP.NET Core 应用程序的监视和诊断。
+description: 在本教程中，你会学习如何为 Azure Service Fabric ASP.NET Core 应用程序设置监视和诊断。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/17/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 27a114378cf72e766e894dc0dd6886197f56a841
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8657e9cabdf7dcd4900f65b6bef56f62a1caf472
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390251"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901709"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 
@@ -103,50 +103,50 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. 在弹出的“审阅更改”对话框中单击“确定”，接受“接受许可证”中的条款。 这样即可将 NuGet 添加到服务。
 6. 现在需在两个服务中设置遥测初始值设定项。 为此，请打开“VotingWeb.cs”和“VotingData.cs”。 对这两个文件执行下述两项步骤：
-    1. 在每个 \<ServiceName>.cs 顶部添加下面这两个 using 语句：
+   1. 在每个 \<ServiceName>.cs 顶部添加下面这两个 using 语句：
 
-    ```csharp
-    using Microsoft.ApplicationInsights.Extensibility;
-    using Microsoft.ApplicationInsights.ServiceFabric;
-    ```
+      ```csharp
+      using Microsoft.ApplicationInsights.Extensibility;
+      using Microsoft.ApplicationInsights.ServiceFabric;
+      ```
 
-    2. 在 CreateServiceInstanceListeners() 或 CreateServiceReplicaListeners() 的嵌套式 return 语句中，在 ConfigureServices > services 下两个已声明的单一实例服务之间添加：`.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`
-    此时会向遥测添加服务上下文，方便用户更好地理解 Application Insights 中遥测的源代码。 VotingWeb.cs 中的嵌套式 return 语句应如下所示：
+   2. 在 CreateServiceInstanceListeners() 或 CreateServiceReplicaListeners() 的嵌套式 return 语句中，在 ConfigureServices > services 下两个已声明的单一实例服务之间添加：`.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`
+      此时会向遥测添加服务上下文，方便用户更好地理解 Application Insights 中遥测的源代码。 VotingWeb.cs 中的嵌套式 return 语句应如下所示：
 
-    ```csharp
-    return new WebHostBuilder()
-        .UseKestrel()
-        .ConfigureServices(
-            services => services
-                .AddSingleton<HttpClient>(new HttpClient())
-                .AddSingleton<FabricClient>(new FabricClient())
-                .AddSingleton<StatelessServiceContext>(serviceContext)
-                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
-        .UseContentRoot(Directory.GetCurrentDirectory())
-        .UseStartup<Startup>()
-        .UseApplicationInsights()
-        .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
-        .UseUrls(url)
-        .Build();
-    ```
+      ```csharp
+      return new WebHostBuilder()
+       .UseKestrel()
+       .ConfigureServices(
+           services => services
+               .AddSingleton<HttpClient>(new HttpClient())
+               .AddSingleton<FabricClient>(new FabricClient())
+               .AddSingleton<StatelessServiceContext>(serviceContext)
+               .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
+       .UseContentRoot(Directory.GetCurrentDirectory())
+       .UseStartup<Startup>()
+       .UseApplicationInsights()
+       .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
+       .UseUrls(url)
+       .Build();
+      ```
 
-    同样，VotingData.cs 中的内容应如下所示：
+      同样，VotingData.cs 中的内容应如下所示：
 
-    ```csharp
-    return new WebHostBuilder()
-        .UseKestrel()
-        .ConfigureServices(
-            services => services
-                .AddSingleton<StatefulServiceContext>(serviceContext)
-                .AddSingleton<IReliableStateManager>(this.StateManager)
-                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
-        .UseContentRoot(Directory.GetCurrentDirectory())
-        .UseStartup<Startup>()
-        .UseApplicationInsights()
-        .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.UseUniqueServiceUrl)
-        .UseUrls(url)
-        .Build();
-    ```
+      ```csharp
+      return new WebHostBuilder()
+       .UseKestrel()
+       .ConfigureServices(
+           services => services
+               .AddSingleton<StatefulServiceContext>(serviceContext)
+               .AddSingleton<IReliableStateManager>(this.StateManager)
+               .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
+       .UseContentRoot(Directory.GetCurrentDirectory())
+       .UseStartup<Startup>()
+       .UseApplicationInsights()
+       .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.UseUniqueServiceUrl)
+       .UseUrls(url)
+       .Build();
+      ```
 
 仔细进行检查，确保在两个文件中调用 `UseApplicationInsights()` 方法，如上所示。
 

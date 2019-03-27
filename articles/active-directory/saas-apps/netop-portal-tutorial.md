@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 63f7eab5-412a-4a5c-84bc-7473087abb49
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e359d85b0aca2a2003650f72a3b25d07b144c8f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: d33ef63f142763d5d29c9cb1931fdd87bae5976e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808819"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891012"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>教程：Azure Active Directory 与 Netop Portal 集成
 
@@ -174,7 +174,7 @@ ms.locfileid: "56808819"
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

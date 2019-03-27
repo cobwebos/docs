@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9dade2ccebfb96cd54bdb9c8ef70c14fdeadad76
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106441"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225767"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>快速入门：在 Azure 数据资源管理器中查询数据
 
@@ -39,7 +39,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在应用程序的左上角，选择“添加群集”。
 
-1. 在“添加群集”对话框中，输入 `https://help.kusto.windows.net`，然后选择“添加”。
+1. 在“添加群集”对话框中，输入 URI，然后选择“添加”。
+
+   可使用 help 群集 URI `https://help.kusto.windows.net`。 如果你有自己的群集，请提供自己的群集 URI。 例如，`https://mydataexplorercluster.westus.kusto.windows.net`，如下图所示：
+
+    ![门户中的服务器 URI](media/web-query-data/server-uri.png)
 
 1. 在左侧窗格中，现在应看到 help 群集。 展开“示例”数据库，以便可查看有权访问的示例表。
 

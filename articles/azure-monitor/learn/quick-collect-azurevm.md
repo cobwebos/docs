@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 2c756e9e2944895cc493aa56d1dd20254e5d8ea0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e135c7fa9907d218ed32b6bdb0fd60da0ecf1851
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084702"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>收集 Azure 虚拟机相关数据
 [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 可直接从 Azure 虚拟机及环境中的其他资源收集数据，并将数据置于单个存储库进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Azure Linux 或 Windows VM 中配置或收集数据。  
@@ -36,13 +36,13 @@ ms.locfileid: "53188486"
 
 2. 单击“创建”，然后为以下各项选择选项：
 
-  * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。 OMS 工作区现在称为 Log Analytics 工作区。  
-  * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
-  * 对于“资源组”，选择包含一个或多个 Azure 虚拟机的现有资源组。  
-  * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
-  * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
+   * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。 OMS 工作区现在称为 Log Analytics 工作区。  
+   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
+   * 对于“资源组”，选择包含一个或多个 Azure 虚拟机的现有资源组。  
+   * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
+   * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
   
-        ![Create Log Analytics resource blade](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![创建 Log Analytics 资源边栏选项卡](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
 
 3. 在“Log Analytics 工作区”窗格上提供所需信息后，单击“确定”。  
 

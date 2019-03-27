@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
-ms.openlocfilehash: 937f57190236e3b5d3c92df5f50167880fef4bb4
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: eba1ffcbe07c617661d902de0726f17e4fec0a00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756710"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992080"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for PostgreSQL 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
@@ -46,12 +46,12 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
 使用 [az postgres server create](/cli/azure/postgres/server) 命令创建 [Azure Database for PostgreSQL 服务器](overview.md)。 服务器包含作为组进行管理的一组数据库。 
 
-下面的示例使用服务器管理员登录名 `myadmin` 在资源组 `myresourcegroup` 中创建名为 `mydemoserver` 的服务器。 服务器的名称映射到 DNS 名称，因此需要在 Azure 中全局唯一。 用自己的值替换 `<server_admin_password>`。 它是第 4 代常规用途服务器，带有 2 个 2 vCore。
+下面的示例使用服务器管理员登录名 `myadmin` 在资源组 `myresourcegroup` 中创建名为 `mydemoserver` 的服务器。 服务器的名称映射到 DNS 名称，因此需要在 Azure 中全局唯一。 用自己的值替换 `<server_admin_password>`。 它是一台常规用途第 5 代服务器，具有 2 个 vCore。
 ```azurecli-interactive
-az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
+az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如以下示例中所示：
-+ `--sku-name B_Gen4_4` 映射到基本、第 4 代和 4 个 vCore。
++ `--sku-name B_Gen5_2` 映射到基本、第 5 代和 2 个 vCore。
 + `--sku-name GP_Gen5_32` 映射到常规用途、第 5 层和 32 个 vCore。
 + `--sku-name MO_Gen5_2` 映射到内存优化、第 5 层和 2 个 vCore。
 
@@ -98,8 +98,8 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
   "resourceGroup": "myresourcegroup",
   "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },
@@ -121,25 +121,25 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
 如果客户端计算机已安装 PostgreSQL，则可使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 的本地实例，或 Azure 云控制台连接到 Azure PostgreSQL 服务器。 现在，使用 psql 命令行实用工具连接到“用于 PostgreSQL 的 Azure 数据库”服务器。
 
 1. 运行以下 psql 命令连接到 Azure Database for PostgreSQL 数据库：
-```azurecli-interactive
-psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
-```
+   ```azurecli-interactive
+   psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
+   ```
 
-  例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mydemoserver.postgres.database.azure.com 上名为“postgres”的默认数据库。 提示输入密码时，输入之前选择的 `<server_admin_password>`。
+   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mydemoserver.postgres.database.azure.com 上名为“postgres”的默认数据库。 提示输入密码时，输入之前选择的 `<server_admin_password>`。
   
-  ```azurecli-interactive
-psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
-```
+   ```azurecli-interactive
+   psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
+   ```
 
-2.  连接到服务器后，在出现提示时创建空数据库：
-```sql
-CREATE DATABASE mypgsqldb;
-```
+2. 连接到服务器后，在出现提示时创建空数据库：
+   ```sql
+   CREATE DATABASE mypgsqldb;
+   ```
 
-3.  出现提示时，请执行以下命令，将连接切换到新建的数据库 mypgsqldb：
-```sql
-\c mypgsqldb
-```
+3. 出现提示时，请执行以下命令，将连接切换到新建的数据库 mypgsqldb：
+   ```sql
+   \c mypgsqldb
+   ```
 
 ## <a name="create-tables-in-the-database"></a>在数据库中创建表
 现已介绍了如何连接 Azure Database for PostgreSQL，接下来你可以完成一些基本任务：
@@ -192,6 +192,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 `az postgres server restore` 命令需以下参数：
+
 | 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |

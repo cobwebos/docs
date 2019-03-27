@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/02/2019
+ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f00df841f81ea5c7aa1fd53309b00487602e5143
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564555"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200616"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>快速入门：使用技能和示例数据创建认知搜索管道
 
@@ -32,21 +32,7 @@ ms.locfileid: "55564555"
 
 ## <a name="supported-regions"></a> 支持的区域
 
-可在以下区域中创建的 Azure 搜索服务中试用认知搜索：
-
-* 美国中西部
-* 美国中南部
-* 美国东部
-* 美国东部 2
-* 美国西部 2
-* 加拿大中部
-* 西欧
-* 英国南部
-* 北欧
-* 巴西南部
-* 东南亚
-* 印度中部
-* 澳大利亚东部
+在所有 Azure 搜索区域都可以通过认知服务进行 AI 扩充的索引编制。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -69,11 +55,11 @@ ms.locfileid: "55564555"
 
 首先注册 Azure 搜索服务。 
 
-1. 转到 [Azure 门户](https://portal.azure.com)，使用 Azure 帐户登录。
+1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 单击“创建资源”，搜索“Azure 搜索”，然后单击“创建”。 首次设置搜索服务时如需更多帮助，请参阅[在门户中创建 Azure 搜索服务](search-create-service-portal.md)。
 
-  ![仪表板门户](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "在门户中创建 Azure 搜索服务")
+   ![仪表板门户](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "在门户中创建 Azure 搜索服务")
 
 1. 对于“资源组”，请创建一个新的资源组用于包含本快速入门中创建的所有资源。 这样可以在完成本快速入门后更轻松地清理资源。
 
@@ -81,16 +67,16 @@ ms.locfileid: "55564555"
 
 1. 对于“定价层”，可以创建“免费”服务来完成教程和快速入门。 要使用自己的数据进行更深入的调查，请创建一个[付费服务](https://azure.microsoft.com/pricing/details/search/)，例如“基本”或“标准”层的服务。 
 
-  “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
+   “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
-  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service2.png "门户中的服务定义页")
+   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service2.png "门户中的服务定义页")
 
-  > [!NOTE]
-  > 认知搜索目前提供公共预览版。 技能集执行目前已在所有层中推出，包括免费层。 你将能够在不关联付费认知服务资源的情况下执行有限数量的扩充。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
+   > [!NOTE]
+   > 认知搜索目前提供公共预览版。 技能集执行目前已在所有层中推出，包括免费层。 你将能够在不关联付费认知服务资源的情况下执行有限数量的扩充。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
 
 1. 将服务固定到仪表板，以快速访问服务信息。
 
-  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service3.png "门户中的服务定义页")
+   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service3.png "门户中的服务定义页")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>设置 Azure Blob 服务并加载示例数据
 
@@ -98,11 +84,13 @@ ms.locfileid: "55564555"
 
 1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中包括不同类型的小型文件集。 
 
-1. 注册 Azure Blob 存储，创建存储帐户，打开 Blob 服务页并创建容器。 在容器上将公共访问级别设置为“容器”。 有关详细信息，请参阅*搜索非结构化数据*教程中的[“创建容器”部分](../storage/blobs/storage-unstructured-search.md#create-a-container)。
+1. 注册 Azure Blob 存储，创建存储帐户，打开 Blob 服务页并创建容器。 
+
+1. 在容器中将公共访问级别设置为“容器(对容器和 Blob 进行匿名读取访问)”。 有关详细信息，请参阅*搜索非结构化数据*教程中的[“创建容器”部分](../storage/blobs/storage-unstructured-search.md#create-a-container)。
 
 1. 在创建的容器中，单击“上传”以上传在上一步中下载的示例文件。
 
-  ![Azure Blob 存储中的源文件](./media/cognitive-search-quickstart-blob/sample-data.png)
+   ![Azure Blob 存储中的源文件](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 ## <a name="create-the-enrichment-pipeline"></a>创建扩充管道
 
@@ -126,17 +114,17 @@ ms.locfileid: "55564555"
 
 1. 展开“附加认服务”以查看用于向认知服务 API 提供资源的选项。 在本教程中，你可以使用“免费”资源。
 
-  ![附加认知服务](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![附加认知服务](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 2. 展开“添加扩充”并选择执行自然语言处理的技能。 在本快速入门中，我们针对人员、组织和地点选择了实体识别。
 
-  ![附加认知服务](media/cognitive-search-quickstart-blob/skillset.png)
+   ![附加认知服务](media/cognitive-search-quickstart-blob/skillset.png)
 
-  门户提供了用于 OCR 处理和文本分析的内置技能。 在门户中，技能集针对单个源字段运行。 这看上去像是一个小目标，但对于 Azure Blob 而言，`content` 字段包含大部分 Blob 文档（例如，Word 文档或 PowerPoint 幻灯片）。 因此，此字段是理想的输入，因为 Blob 的所有内容都包含在其中。
+   门户提供了用于 OCR 处理和文本分析的内置技能。 在门户中，技能集针对单个源字段运行。 这看上去像是一个小目标，但对于 Azure Blob 而言，`content` 字段包含大部分 Blob 文档（例如，Word 文档或 PowerPoint 幻灯片）。 因此，此字段是理想的输入，因为 Blob 的所有内容都包含在其中。
 
 3. 继续转到下一页。
 
-  ![下一页可自定义索引](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
+   ![下一页可自定义索引](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
 
 > [!NOTE]
 > 自然语言处理技能针对示例数据集中的文本内容运行。 由于我们未选择 OCR 选项，因此，本快速入门不会处理示例数据集中的 JPEG 和 PNG 文件。 

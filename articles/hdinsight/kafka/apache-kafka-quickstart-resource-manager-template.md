@@ -8,18 +8,18 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: ff34eef76e03bbf4ae0195960847b7748235483c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b359716db5a30f8a77b9f54c2b0bc7b4d00a7f39
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822453"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225750"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>快速入门：创建 Apache Kafka on HDInsight 群集
 
 [Apache Kafka](https://kafka.apache.org/) 是开源分布式流式处理平台。 通常用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。 
 
-在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 资源管理器模板创建 [Apache Kafka](https://kafka.apache.org) 群集。 还介绍了如何使用已包含的实用工具发送并接收使用 Kafka 的信息。 可以在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)中查看类似的模板。 可以在[此处](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions)找到模板参考。
+在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 资源管理器模板创建 [Apache Kafka](https://kafka.apache.org) 群集。 还介绍了如何使用已包含的实用工具发送并接收使用 Kafka 的信息。 可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)中查看类似的模板。 可以在[此处](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions)找到模板参考。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -36,9 +36,9 @@ ms.locfileid: "55822453"
 
     在 Linux、Unix 和 macOS 系统中，默认提供 `ssh` 命令。 在 Windows 10 上，使用以下方式之一安装 `ssh` 命令：
 
-    * 使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)。 Cloud Shell 提供 `ssh` 命令，并且可以配置为将 Bash 或 PowerShell 用作 shell 环境。
+  * 使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)。 Cloud Shell 提供 `ssh` 命令，并且可以配置为将 Bash 或 PowerShell 用作 shell 环境。
 
-    * [安装适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。 可通过 Microsoft Store 提供 `ssh` 命令获得 Linux 分发版。
+  * [安装适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。 可通过 Microsoft Store 提供 `ssh` 命令获得 Linux 分发版。
 
     > [!IMPORTANT]  
     > 本文档中的此步骤假定正在使用上述 SSH 客户端之一。 如果正在使用不同的 SSH 客户端并遇到问题，请查阅 SSH 客户端的文档。

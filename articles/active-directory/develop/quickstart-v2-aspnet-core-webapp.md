@@ -4,7 +4,7 @@ description: 了解如何使用 OpenID Connect 在 ASP.NET Core Web 应用上实
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2018
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cf4fbe17df05b6d55f3ce309ff8cecbb47d455
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fed62dfc3f7e7dc974fb709261e363f26ce97c51
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204706"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200984"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
@@ -30,8 +30,7 @@ ms.locfileid: "56204706"
 
 本快速入门介绍如何使用 ASP.NET Core Web 应用从任何 Azure Active Directory (Azure AD) 实例中登录个人帐户（hotmail.com、outlook.com 等）以及学校和工作帐户。
 
-![本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.png)
-
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
@@ -143,7 +142,7 @@ public void ConfigureServices(IServiceCollection services)
 > |其中  |  |
 > |---------|---------|
 > | ClientId  | Azure 门户中注册的应用程序的应用程序（客户端）ID。 |
-> | 颁发机构 | 用户要进行身份验证的 STS 终结点。 对于公有云，此项通常为 https://login.microsoftonline.com/{tenant}/v2.0，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common |
+> | 颁发机构 | 用户要进行身份验证的 STS 终结点。 对于公有云，此项通常为 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common |
 > | TokenValidationParameters | 用于令牌验证的参数列表。 在这种情况下，`ValidateIssuer` 设置为 `false`，以指示它可以接受来自任何个人或工作或学校帐户的登录。 |
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>保护控制器或控制器的方法

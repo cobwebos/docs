@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/12/2018
-ms.openlocfilehash: 179bb4586ce7d6b306decfcf4d312d541dc9232e
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 549468cb28a73b6c6f4c066ddba9f3ffe6745e86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330471"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087510"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure Databricks 上运行 Spark 作业
 
@@ -24,6 +24,10 @@ ms.locfileid: "56330471"
 在运行本快速入门所述的 Spark 作业期间，我们将分析收音机频道订阅数据，以根据人口统计信息洞察免费/付费节目的使用情况。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+
+> [!Note]
+> 不能使用 Azure 免费试用订阅完成本教程。
+> 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
@@ -115,7 +119,7 @@ ms.locfileid: "56330471"
 
           spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
 
-    有关如何检索存储帐户密钥的说明，请参阅[管理存储访问密钥](../storage/common/storage-account-manage.md#access-keys)。
+     有关如何检索存储帐户密钥的说明，请参阅[管理存储访问密钥](../storage/common/storage-account-manage.md#access-keys)。
 
    > [!NOTE]
    > 还可以对 Azure Databricks 中的 Spark 群集使用 Azure Data Lake Store。 有关说明，请参阅[对 Azure Databricks 使用 Data Lake Store](https://go.microsoft.com/fwlink/?linkid=864084)。

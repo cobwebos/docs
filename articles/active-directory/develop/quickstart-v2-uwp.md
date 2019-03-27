@@ -3,8 +3,8 @@ title: Azure AD v2 Windows UWP 快速入门 | Microsoft Docs
 description: 了解通用 Windows 平台 (XAML) 应用程序如何获取访问令牌并调用受 Azure Active Directory v2.0 终结点保护的 API。
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/01/2018
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 890bef048fbb9bd8bb7d246e4f09dc4ec420a7a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97ad2c5a395eb22ec8f20d4bab3e12f1091dceb0
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197311"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200933"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -30,7 +30,7 @@ ms.locfileid: "56197311"
 
 本快速入门包含了一个代码示例，该示例演示了通用 Windows 平台 (UWP) 应用程序如何让用户使用个人、工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
 
-![本快速入门生成的示例应用的工作原理](media/quickstart-v2-uwp/uwp-intro.png)
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-uwp/uwp-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用

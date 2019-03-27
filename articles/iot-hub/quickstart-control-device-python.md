@@ -1,21 +1,21 @@
 ---
 title: 从 Azure IoT 中心控制设备快速入门 (Python) | Microsoft Docs
 description: 在本快速入门中，会运行两个示例 Python 应用程序。 一个为后端应用程序，可远程控制连接到中心的设备。 另一个应用程序可模拟连接到中心的可受远程控制的设备。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/30/2018
-ms.author: dobett
-ms.openlocfilehash: 08b2018ec1f1d34291778df0fa217b874cc3ffab
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 801258f2f6f56fc3fd9e7c830e93bf0dbfa9c134
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515081"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170354"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>快速入门：控制连接到 IoT 中心的设备 (Python)
 
@@ -53,13 +53,13 @@ python3 --version
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)，则可跳过此步骤。
+如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)，则可以跳过此步骤。
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>注册设备
 
-如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)，则可跳过此步骤。
+如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)，则可以跳过此步骤。
 
 必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本快速入门中，将使用 Azure Cloud Shell 来注册模拟设备。
 
@@ -94,7 +94,7 @@ python3 --version
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --hub-name YourIoTHubName \
+      --name YourIoTHubName \
       --output table
     ```
 

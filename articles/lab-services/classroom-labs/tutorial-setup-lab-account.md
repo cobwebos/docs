@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 7cf0788bdd013eb6a42ee5aa3f5c054a557cbc77
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4c63cb69cd5ce824648d2bf0a6735e316791c44e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651832"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079920"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>教程：使用 Azure 实验室服务设置实验室帐户
 在 Azure 实验室服务中，实验室帐户充当管理组织实验室的中心帐户。 在你的实验室帐户中，授予他人创建实验室的权限，并设置适用于实验室帐户下所有实验室的策略。 在本教程中，了解如何以实验室管理员身份创建实验室帐户。 
@@ -48,8 +48,9 @@ ms.locfileid: "56651832"
     2. 选择要在其中创建实验室帐户的“Azure 订阅”。
     3. 在“资源组”中选择“新建”，然后输入资源组的名称。
     4. 为“位置”选择要在其中创建实验室帐户的位置/区域。 
-    5. 对于“允许实验室创建者选择实验室位置”字段，请指定是否希望实验室创建者能够选择实验室位置。 默认情况下，此选项已禁用。 此选项禁用时，实验室创建者无法为他们正在创建的实验室指定位置。 实验室在距离实验室帐户最近的地理位置进行创建。 此选项启用时，实验室创建者可以在创建实验室时选择位置。 
-    6. 选择“创建”。 
+    5. 对于“对等虚拟网络”，请选择实验室网络的对等虚拟网络 (VNet)。 在此帐号中创建的实验室连接到所选 VNet 并在所选 VNet 中具有对资源的访问权限。 
+    6. 对于“允许实验室创建者选择实验室位置”字段，请指定是否希望实验室创建者能够选择实验室位置。 默认情况下，此选项已禁用。 此选项禁用时，实验室创建者无法为他们正在创建的实验室指定位置。 实验室在距离实验室帐户最近的地理位置进行创建。 此选项启用时，实验室创建者可以在创建实验室时选择位置。 
+    7. 选择“创建”。 
 
         ![创建实验室帐户窗口](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. 选择工具栏上的**钟形图标**（**通知**），确认部署已成功，然后选择“转到资源”。 

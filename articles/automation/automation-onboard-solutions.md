@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 5cf09753645d8238232e064af2ba1a301a2a7217
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41924729"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082188"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>将更新和更改跟踪解决方案加入 Azure 自动化
 
@@ -81,7 +81,7 @@ ms.locfileid: "41924729"
    ![为虚拟机启用更新解决方案](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> 如果不等待至另一个解决方案完成，启用下一个解决方案时会收到一条消息：*此虚拟机或另一台虚拟机上正在安装另一个解决方案。待该解决方案安装完成后，“启用”按钮处于启用状态，可请求在此虚拟机上安装下一个解决方案。*
+> 如果不等待其他解决方案完成，则在启用下一个解决方案时，你会收到一条消息，说明：*此虚拟机或其他虚拟机上正在安装其他解决方案。待该解决方案安装完成后，“启用”按钮处于启用状态，可请求在此虚拟机上安装下一个解决方案。*
 
 ## <a name="install-and-update-modules"></a>安装和更新模块
 
@@ -105,7 +105,7 @@ ms.locfileid: "41924729"
 1. 选择“浏览库”。
 1. 搜索“更新和更改跟踪”，单击 runbook，然后选择“查看源”页上的“导入”。 选择“确定”，将 runbook 导入自动化帐户。
 
-  ![导入载入 Runbook](media/automation-onboard-solutions/import-from-gallery.png)
+   ![导入载入 Runbook](media/automation-onboard-solutions/import-from-gallery.png)
 
 1. 在“Runbook”页上，选择“编辑”，然后选择“发布”。 在“发布 Runbook”对话框中，选择“是”以发布 runbook。
 

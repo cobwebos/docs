@@ -5,18 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 2/19/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9ed0c8763835add485d6c60a43f4e4113ecde12e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 43df80e060ff698537f7fd65075006e6dfffe6c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429275"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117143"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教程：为 Web 应用在自定义域中创建 DNS 记录 
 
-可以配置 Azure DNS 来托管 Web 应用的自定义域。 例如，可以创建一个 Azure Web 应用，并让用户使用 www.contoso.com 或 contoso.com 作为完全限定的域名 (FQDN) 访问它。
+可以配置 Azure DNS 来托管 Web 应用的自定义域。 例如，可创建 Azure Web 应用，并让用户使用 www\.contoso.com 或 contoso.com 作为完全限定的域名 (FQDN) 访问它。
 
 > [!NOTE]
 > 本教程通篇都使用 Contoso.com 作为示例。 请将 contoso.com 替换为你自己的域名。
@@ -47,12 +47,13 @@ ms.locfileid: "56429275"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [创建应用服务应用](../app-service/app-service-web-get-started-html.md)，或使用为另一教程创建的应用。
+* 必须有一个可以用来测试的域名，可以在 Azure DNS 中托管该域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
+* [创建应用服务应用](../app-service/app-service-web-get-started-html.md)，或使用为另一教程创建的应用。
 
-- 在 Azure DNS 中创建一个 DNS 区域，并将注册机构中的区域委派给 Azure DNS。
+* 在 Azure DNS 中创建一个 DNS 区域，并将注册机构中的区域委派给 Azure DNS。
 
    1. 若要创建 DNS 区域，请按照[创建 DNS 区域](dns-getstarted-create-dnszone.md)中的步骤执行操作。
-   2. 若要将区域委派给 Azure DNS，请按照 [DNS 域委派](dns-domain-delegation.md)中的步骤执行操作。
+   2. 若要将区域委派给 Azure DNS，请按照 [DNS 域委派](dns-delegate-domain-azure-dns.md)中的步骤执行操作。
 
 在创建区域并将它委派给 Azure DNS 之后，可以为自定义域创建记录。
 
@@ -72,7 +73,7 @@ A 记录可用于将名称映射到其 IP 地址。 在下面的示例中，使�
 
 ### <a name="create-the-a-record"></a>创建 A 记录
 
-```powershell
+```azurepowershell
 New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
  -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -IPv4Address "<your web app IP address>")
@@ -82,7 +83,10 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 
 应用服务仅在配置时使用此记录来验证你是否拥有自定义域。 自定义域经过验证并且在应用服务中配置后，可以删除此 TXT 记录。
 
-```powershell
+> [!NOTE]
+> 如果想要验证域名，但是不将生产流量路由到 Web 应用，只需指定验证步骤的 TXT 记录即可。  验证不需要除 TXT 记录之外的 A 或 CNAME 记录。
+
+```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
  -Name "@" -RecordType "txt" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
@@ -96,7 +100,7 @@ New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 
 ### <a name="create-the-record"></a>创建记录
 
-```powershell
+```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
  -Name "www" -RecordType "CNAME" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -cname "contoso.azurewebsites.net")
@@ -158,7 +162,7 @@ contoso.com text =
 
 现在，可以向 Web 应用添加自定义主机名：
 
-```powershell
+```azurepowershell
 set-AzWebApp `
  -Name contoso `
  -ResourceGroupName MyAzureResourceGroup `

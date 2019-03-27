@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: 1138af0e073f68842861df86acd4d9d6eb467782
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: bd8fa10ca0a9809891efc67ff930ab01d502eda9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824706"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117075"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>使用 Jenkins Azure Functions 插件部署到 Azure Functions
 
@@ -24,8 +24,8 @@ ms.locfileid: "56824706"
 - **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - **Jenkins 服务器**：如果未安装 Jenkins 服务器，请参阅文章[在 Azure 上创建 Jenkins 服务器](./install-jenkins-solution-template.md)。
 
- > [!TIP]
- > 本教程中使用的源代码位于 [Visual Studio China GitHub 存储库](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java)。
+  > [!TIP]
+  > 本教程中使用的源代码位于 [Visual Studio China GitHub 存储库](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java)。
 
 ## <a name="create-a-java-function"></a>创建 Java 函数
 
@@ -89,6 +89,14 @@ ms.locfileid: "56824706"
 
 1. 使用 Azure 服务主体在 Jenkins 中添加“Microsoft Azure 服务主体”凭据类型。 请参阅[部署到 Azure 应用服务](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins)教程。
 
+## <a name="fork-the-sample-github-repo"></a>分叉示例 GitHub 存储库
+
+1. [登录到 GitHub 存储库获取奇数或偶数示例应用](https://github.com/VSChina/odd-or-even-function.git)。
+
+1. 在 GitHub 的右上角，选择“分叉”。
+
+1. 遵照提示选择 GitHub 帐户并完成分叉。
+
 ## <a name="create-a-jenkins-pipeline"></a>创建 Jenkins 管道
 
 在本部分中，将创建 [Jenkins 管道](https://jenkins.io/doc/book/pipeline/)。
@@ -107,7 +115,27 @@ ms.locfileid: "56824706"
     
 1. 在“管道”->“定义”部分中，选择“来自 SCM 的管道脚本”。
 
-1. 使用提供的[脚本示例](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile)输入 SCM 存储库 URL 和脚本路径。
+1. 输入 GitHub 分叉的 URL 和要在 [JenkinsFile 示例](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile)中使用的脚本路径 ("doc/resources/jenkins/JenkinsFile")。
+
+   ```
+   node {
+    stage('Init') {
+        checkout scm
+        }
+
+    stage('Build') {
+        sh 'mvn clean package'
+        }
+
+    stage('Publish') {
+        azureFunctionAppPublish appName: env.FUNCTION_NAME, 
+                                azureCredentialsId: env.AZURE_CRED_ID, 
+                                filePath: '**/*.json,**/*.jar,bin/*,HttpTrigger-Java/*', 
+                                resourceGroup: env.RES_GROUP, 
+                                sourceDirectory: 'target/azure-functions/odd-or-even-function-sample'
+        }
+    }
+    ```
 
 ## <a name="build-and-deploy"></a>生成并部署
 

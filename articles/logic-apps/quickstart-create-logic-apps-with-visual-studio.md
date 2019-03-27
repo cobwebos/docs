@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 07/31/2018
-ms.openlocfilehash: 9d2fe2c18452537f734a8bf176130e1ad68d40e1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: e1d845d1d90a3a70590778013504fea7c0aec85c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231026"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097655"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建并自动执行任务、流程和工作流 - Visual Studio
 
@@ -83,17 +83,19 @@ ms.locfileid: "50231026"
 
 在创建 Azure 资源组项目以后，请从**空白逻辑应用**模板开始创建并生成逻辑应用。
 
-1. 在解决方案资源管理器中，打开适用于 **LogicApp.json** 文件的快捷菜单。 选择“使用逻辑应用设计器打开”。 （键盘：Ctrl+L）
+1. 在解决方案资源管理器中，打开适用于 **LogicApp.json** 文件的快捷菜单。 
+   选择“使用逻辑应用设计器打开”。 （键盘：Ctrl+L）
 
    ![使用逻辑应用设计器打开 LogicApp.json 文件](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
-2. 对于“订阅”，请选择要使用的 Azure 订阅。 对于“资源组”，请选择“新建...”，以便创建新的 Azure 资源组。 
+2. 对于“订阅”，请选择要使用的 Azure 订阅。 
+   对于“资源组”，请选择“新建...”，以便创建新的 Azure 资源组。 
 
    ![选择 Azure 订阅、资源组和资源位置](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
    Visual Studio 需要你提供 Azure 订阅和资源组才能创建和部署与逻辑应用和连接相关联的资源。 
 
-   | 设置 | 示例值 | Description | 
+   | 设置 | 示例值 | 说明 | 
    | ------- | ------------- | ----------- | 
    | 用户配置文件列表 | Contoso <br> jamalhartnett@contoso.com | 默认为曾经用来登录的帐户 | 
    | **订阅** | 即用即付 <br> (jamalhartnett@contoso.com) | Azure 订阅的名称以及关联的帐户 |
@@ -101,7 +103,8 @@ ms.locfileid: "50231026"
    | **位置** | MyLogicApp-RG2 <br> （美国西部） | 在不希望使用资源组位置的情况下可以使用的其他位置 |
    ||||
 
-3. 逻辑应用设计器打开并显示一个包含简介视频和常用触发器的页面。 滚动浏览视频和触发器。 在“模板”下选择“空白逻辑应用”。
+3. 逻辑应用设计器打开并显示一个包含简介视频和常用触发器的页面。 
+   滚动浏览视频和触发器。 在“模板”下选择“空白逻辑应用”。
 
    ![选择“空白逻辑应用”](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 
@@ -109,7 +112,7 @@ ms.locfileid: "50231026"
 
 接下来请添加一个[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)，该触发器在出现新的 RSS 源项时触发。 每个逻辑应用都必须从触发器开始，该触发器在特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来运行工作流。
 
-1. 在逻辑应用设计器的搜索框中输入“rss”。 选择触发器“发布源项时”
+1. 在逻辑应用设计器的搜索框中输入“rss”。 选择此触发器：**发布源项时**
 
    ![通过添加触发器和操作来生成逻辑应用](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 

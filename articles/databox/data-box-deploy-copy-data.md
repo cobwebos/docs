@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 62675df9f440df77d1098d5c89bd6810349fb3af
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 3474d4ee8751bcd472aa109e9e541d639344276d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749998"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118078"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>教程：通过 SMB 将数据复制到 Azure Data Box
 
@@ -41,9 +41,10 @@ ms.locfileid: "56749998"
 
 根据选择的存储帐户，Data Box 将会：
 - 为每个关联的 GPv1 和 GPv2 存储帐户最多创建三个共享。
-- 为高级或 Blob 存储帐户创建一个共享。
+- 用于高级存储的一个共享。 
+- 用于 Blob 存储帐户的一个共享。 
 
-块 Blob 和页 Blob 共享下的一级实体为容器，二级实体为 Blob。 在 Azure 文件共享下，一级实体为共享，二级实体为文件。
+在块 blob 和页 blob 共享下，一级实体为容器，二级实体为 blob。 在 Azure 文件共享下，一级实体为共享，二级实体为文件。
 
 下表显示了 Data Box 上共享的 UNC 路径以及上传数据的 Azure 存储路径 URL。 最终的 Azure 存储路径 URL 可以从 UNC 共享路径派生。
  
@@ -195,8 +196,8 @@ ms.locfileid: "56749998"
 若要优化性能，请在复制数据时使用以下 robocopy 参数。
 
 |    平台    |    大多为小于 512 KB 的小型文件                           |    大多为 512 KB-1 MB 的中型文件                      |    大多为 1 MB 以上的大型文件                             |   
-|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-|    Data Box         |    2 个 Robocopy 会话 <br> 每个会话 16 个线程    |    3 个 Robocopy 会话 <br> 每个会话 16 个线程    |    2 个 Robocopy 会话 <br> 每个会话 24 个线程    |  |
+|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+|    Data Box         |    2 个 Robocopy 会话 <br> 每个会话 16 个线程    |    3 个 Robocopy 会话 <br> 每个会话 16 个线程    |    2 个 Robocopy 会话 <br> 每个会话 24 个线程    |
 
 
 有关 Robocopy 命令的详细信息，请转到 [Robocopy 和几个示例](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)。

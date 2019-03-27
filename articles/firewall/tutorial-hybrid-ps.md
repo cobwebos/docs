@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 1/30/2019
+ms.date: 3/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 973d5c5c3822eaddce2bc77d06d01930606994c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815738"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182568"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -25,7 +25,7 @@ ms.locfileid: "55815738"
 
 - **VNet-Hub** - 防火墙在此虚拟网络中。
 - **VNet-Spoke** - 分支虚拟网络代表 Azure 中的工作负荷。
-- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 Route 连接来连接它。 为简单起见，本教程将使用 VPN 网关连接，并使用 Azure 中的某个虚拟网络来代表本地网络。
+- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 ExpressRoute 来连接它。 为简单起见，本教程将使用 VPN 网关连接，并使用 Azure 中的某个虚拟网络来代表本地网络。
 
 ![混合网络中的防火墙](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -51,13 +51,16 @@ ms.locfileid: "55815738"
 
 - 分支子网中有一个指向 Azure 防火墙 IP 地址（用作默认网关）的用户定义的路由 (UDR)。 必须在此路由表中**禁用** BGP 路由传播。
 - 中心网关子网中的 UDR 必须指向用作分支网络下一跃点的防火墙 IP 地址。
-- 无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
+
+   无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 - 在 VNet-Hub 与 VNet-Spoke 之间建立对等互连时，请务必设置 **AllowGatewayTransit**；在 VNet-Spoke 与 VNet-Hub 之间建立对等互连时，请务必设置 **UseRemoteGateways**。
 
-请参阅本教程的“创建路由”部分来了解如何创建这些路由。
+请参阅本教程的[创建路由](#create-the-routes)部分了解如何创建这些路由。
 
 >[!NOTE]
->Azure 防火墙必须具有直接的 Internet 连接。 如果已通过 ExpressRoute 或应用程序网关启用到本地的强制隧道，则需要配置 UDR 0.0.0.0/0，并将 **NextHopType** 值设置为 **Internet**，然后将其分配到 **AzureFirewallSubnet**。
+>Azure 防火墙必须具有直接的 Internet 连接。 默认情况下，AzureFirewallSubnet 只允许使用其 NextHopType 值设置为 Internet 的 UDR 0.0.0.0/0。
+>
+>如果已通过 ExpressRoute 或应用程序网关启用到本地的强制隧道，可能需要显式配置 UDR 0.0.0.0/0，并将 NextHopType 值设置为 Internet，然后将其与 AzureFirewallSubnet 关联。 如果组织需要 Azure 防火墙流量的强制隧道，请联系支持人员，以便我们将你的订阅列入允许列表，并确保保留所需的防火墙 Internet 连接。
 
 >[!NOTE]
 >即使 UDR 指向作为默认网关的 Azure 防火墙，也会直接路由直接对等互连 VNet 之间的流量。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。

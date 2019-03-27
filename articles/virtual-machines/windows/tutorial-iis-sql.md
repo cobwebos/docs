@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aa8f4e188761c50391cd2ead49ae8d8b9081188f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 770fa89bc08b448482b4a74d21ee307df8a9f836
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983485"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167909"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows VM 中安装 SQL、IIS、.NET 堆栈
 
@@ -38,7 +38,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
-## <a name="create-a-iis-vm"></a>创建 IIS VM 
+## <a name="create-an-iis-vm"></a>创建 IIS VM 
 
 在此示例中，我们使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 在 PowerShell Cloud Shell 中快速创建 Windows Server 2016 VM，然后安装 IIS 和 .NET Framework。 IIS 和 SQL VM 共享资源组和虚拟网络，因此我们创建这些名称的变量。
 

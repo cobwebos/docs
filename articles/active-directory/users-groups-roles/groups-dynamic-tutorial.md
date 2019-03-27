@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3883ddcad1c41e131d52016e4fa94a3e668adcd1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 93b59a108d5d87479c12174e97713d4c12d84f2e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209721"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200049"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教程：自动添加或删除组成员
 
@@ -28,7 +28,7 @@ ms.locfileid: "56209721"
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
-> * 在特定的合作伙伴公司中创建自动填充的来宾用户组
+> * 在合作伙伴公司中创建自动填充的来宾用户组
 > * 向特定于合作伙伴的功能所对应的组分配许可证，方便来宾用户访问
 > * 额外内容：通过删除来宾用户来实现特定的功能（例如允许成员用户访问内部站点），从而确保“所有用户”组的安全
 
@@ -46,13 +46,13 @@ ms.locfileid: "56209721"
 
 1. 使用一个其身份为租户全局管理员的帐户登录到 Azure 门户 (https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “组” > “新建组”。
-  ![选择“新建组”命令](./media/groups-dynamic-tutorial/new-group.png)
+   ![选择命令以启动新组](./media/groups-dynamic-tutorial/new-group.png)
 3. 在“组”边栏选项卡上执行以下操作：
   
-  * 选择“安全性”作为组类型
-  * 输入 `Guest users Contoso` 作为组的名称和说明
-  * 将“成员身份类型”更改为“动态用户”
-  * 选择“添加动态查询”
+   * 选择“安全性”作为组类型
+   * 输入 `Guest users Contoso` 作为组的名称和说明
+   * 将“成员身份类型”更改为“动态用户”
+   * 选择“添加动态查询”
   
 4. 选择“高级规则”，然后在“高级规则”框中输入 `(user.userType -eq "Guest") -and (user.companyName -eq "Contoso")`
 5. 选择“添加查询”，以便关闭边栏选项卡。

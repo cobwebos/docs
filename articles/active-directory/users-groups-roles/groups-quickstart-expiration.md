@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e799c1728175431f94f720ec57b6332147741b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e0573448c753c763e818d641216033dbeacb9e9a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194472"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199301"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>快速入门：将 Azure Active Directory 中的 Office 365 组设置为过期
 
@@ -35,15 +35,15 @@ ms.locfileid: "56194472"
 
 ## <a name="prerequisite"></a>先决条件
 
-只有租户中的全局管理员或用户帐户管理员才能设置组过期。
+只有组织中的全局管理员或用户管理员才能设置组过期。
 
 ## <a name="turn-on-user-creation-for-groups"></a>为组启用创建用户的功能
 
-1. 使用充当目录全局管理员或用户帐户管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用充当组织全局管理员或用户管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 依次选择“组”、“常规”。
   
-  ![自助组设置](./media/groups-quickstart-expiration/self-service-settings.png)
+   ![自助组设置页](./media/groups-quickstart-expiration/self-service-settings.png)
 
 3. 将“用户可创建 Office 365 组”设置为“是”。
 
@@ -53,7 +53,7 @@ ms.locfileid: "56194472"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，选择“Azure Active Directory” > “组” > “过期”打开过期设置。
   
-  ![过期设置](./media/groups-quickstart-expiration/expiration-settings.png)
+   ![组过期设置页](./media/groups-quickstart-expiration/expiration-settings.png)
 
 2. 设置过期时间间隔。 选择一个预设值，或者输入一个超过 31 天的自定义值。 
 
@@ -67,13 +67,13 @@ ms.locfileid: "56194472"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-**删除过期策略**
+### <a name="to-remove-the-expiration-policy"></a>删除过期策略
 
 1. 确保已使用一个其身份为租户全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “组” > “过期”。
 3. 将“为这些 Office 365 组启用过期”设置为“无”。
 
-**为组禁用创建用户的功能**
+### <a name="to-turn-off-user-creation-for-groups"></a>为组禁用创建用户的功能
 
 1. 选择“Azure Active Directory” > “组” > “常规”。 
 2. 将“用户可以在 Azure 门户中创建 Office 365 组”设置为“否”。

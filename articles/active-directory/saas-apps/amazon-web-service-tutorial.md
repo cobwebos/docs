@@ -7,20 +7,20 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/16/2019
+ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e49bc5a468777197eaf88a492566a606e7b9f93
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 6f58c8c3ea76cf44730a54897e6b77ef6e648a49
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成
 
@@ -133,7 +133,7 @@ c. 可单独为应用分配应用所有者，应用所有者可以直接在 Azur
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。  单击“ **保存**”。
+4. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”按钮来保存配置。
 
     ![图像](./media/amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_url.png)
 
@@ -401,7 +401,7 @@ c. 可单独为应用分配应用所有者，应用所有者可以直接在 Azur
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

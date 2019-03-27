@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e4ae0c944323f18876ffcd1ee5c21aa29e9806cc
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4b95c75b863cdc86dd8a1ebe8347b77b637b110c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650812"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999103"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>快速入门：在 Linux 上的应用服务中创建 Java 应用
 
@@ -55,25 +55,18 @@ code pom.xml
     <!--*************************************************-->
     <!-- Deploy to Tomcat in App Service Linux           -->
     <!--*************************************************-->
-      
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
         <version>1.5.3</version>
         <configuration>
-            <!-- Specify v2 schema -->
-            <schemaVersion>v2</schemaVersion>
             <!-- App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
    
             <!-- Java Runtime Stack for App on Linux-->
-            <runtime>
-                <os>linux</os>
-                <javaVersion>jre8</javaVersion>
-                <webContainer>tomcat 8.5</webContainer>
-            </runtime>
+            <linuxRuntime>tomcat 8.5-jre8</linuxRuntime> 
         </configuration>
     </plugin>
 </plugins>
@@ -115,7 +108,8 @@ mvn package azure-webapp:deploy
 在本快速入门中，你已使用 Maven 创建了一个 Java 应用，配置了[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java 应用部署到了 Linux 上的应用服务。 有关在 Linux 上的应用服务中托管 Java 应用程序的详细信息，请参阅以下教程和操作指南文章。
 
 - [教程：使用 PostgreSQL 部署 Java 企业应用](tutorial-java-enterprise-postgresql-app.md)
-- [配置 Tomcat 数据源](app-service-linux-java.md#connecting-to-data-sources)
+- [配置 Tomcat 数据源](app-service-linux-java.md#tomcat)
 - [将 CI/CD 与 Jenkins 配合使用](/azure/jenkins/deploy-jenkins-app-service-plugin)
 - [设置应用程序性能监视工具](how-to-java-apm-monitoring.md)
+- [Linux 上的应用服务的 Java 开发人员指南](app-service-linux-java.md)
 

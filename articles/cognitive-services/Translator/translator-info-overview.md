@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 02/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 80c9944628eaa828a34ea16eb9f79271d6cd5728
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 79f0474950cf1f48f3552b1ae843a29b5d8dbb24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729204"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883366"
 ---
 # <a name="what-is-translator-text-api"></a>什么是文本翻译 API？
 
@@ -28,7 +28,7 @@ ms.locfileid: "56729204"
 
 Microsoft Translator 是基于云的机器翻译服务。 核心服务是文本翻译 API，该 API 为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使他们的内容可传播到全球的受众。
 
-语音翻译由文本翻译 API 提供支持，也通过 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/)提供。 它将语音翻译 API、必应语音 API 和自定义语音服务（预览版）的功能组合成了一项统一的可完全自定义的服务。 语音服务将替换语音翻译 API，后者自 2019 年 10 月 15 日起停用。
+语音翻译由文本翻译 API 提供支持，也通过 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/)提供。 它将语音翻译 API 和自定义语音服务的功能组合成了一项统一的可完全自定义的服务。 语音服务将替换语音翻译 API，后者自 2019 年 10 月 15 日起停用。
 
 ## <a name="language-support"></a>语言支持
 

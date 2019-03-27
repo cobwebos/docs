@@ -1,346 +1,402 @@
 ---
-title: 通过 .NET SDK 使用表 API 进行开发
-titleSuffix: Azure Cosmos DB
-description: 了解如何通过 .NET SDK 使用 Azure Cosmos DB 中的表 API 进行开发
+title: 通过 .NET Standard SDK 开始使用 Azure Cosmos DB 表 API
+description: 使用 Azure Cosmos DB 表 API 将结构化数据存储在云中。
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
-ms.topic: tutorial
-ms.date: 12/07/2018
-author: wmengmsft
-ms.author: wmeng
-ms.custom: seodec18
-ms.reviewer: sngun
-ms.openlocfilehash: 0f0e5219298cf0bce30e2a1e9d66135b4146db5d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.topic: sample
+ms.date: 03/11/2019
+ms.openlocfilehash: 0f324d39db38b17d436583277d60d87b2878d131
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036777"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880783"
 ---
-# <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>通过 .NET SDK 使用 Azure Cosmos DB 的表 API 进行开发
+# <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
+[!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
-本教程涵盖以下任务： 
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-> [!div class="checklist"] 
-> * 创建 Azure Cosmos DB 帐户 
-> * 启用 app.config 文件中的功能 
-> * 使用[表 API](table-introduction.md) 创建表
-> * 将实体添加到表 
-> * 插入一批实体 
-> * 检索单个实体 
-> * 使用自动辅助索引查询实体 
-> * 替换实体 
-> * 删除实体 
-> * 删除表
- 
-## <a name="tables-in-azure-cosmos-db"></a>Azure Cosmos DB 中的表 
+可以使用 Azure Cosmos DB 表 API 或 Azure 表存储将结构化的 NoSQL 数据存储在云中，以便通过无架构设计提供密钥/属性存储。 由于 Azure Cosmos DB 表 API 和表存储是无架构的，因此随着应用程序需求的发展，可以轻松调整数据。 可以使用 Azure Cosmos DB 表 API 或表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，或者服务需要的其他类型的元数据。 
 
-Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduction.md)，这些应用程序需要采用无架构设计的键-值存储。 Azure Cosmos DB 表 API 和 [Azure 表存储](../storage/common/storage-introduction.md)现在都支持相同的 SDK 和 REST API。 可以使用 Azure Cosmos DB 创建具有高吞吐量要求的表。
+本教程介绍了一个示例，展示如何将[适用于 .NET 的 Microsoft Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)用于 Azure Cosmo DB 表 API 和 Azure 表存储方案。 必须使用特定于 Azure 服务的连接。 这些方案使用 C# 示例进行讨论，说明了如何创建表、插入/更新数据、查询数据和删除表。
 
-本教程供熟悉 Azure 表存储 SDK 并想要通过 Azure Cosmos DB 使用高级功能的开发人员使用。 本教程基于[通过 .NET 开始使用 Azure 表存储](table-storage-how-to-use-dotnet.md)，并演示如何利用辅助索引、预配的吞吐量和多宿主等附加功能。 本教程说明如何使用 Azure 门户创建 Azure Cosmos DB 帐户，生成并部署表 API 应用程序。 还将演练用于创建和删除表，以及插入、更新、删除和查询表数据的 .NET 示例。 
+## <a name="prerequisites"></a>先决条件
 
-如果当前使用 Azure 表存储，可以通过 Azure Cosmos DB 表 API 获得以下好处：
+若要成功完成此示例，需要以下项：
 
-- 具有多宿主的统包[全局分发](distribute-data-globally.md)与[自动和手动故障转移](high-availability.md)
-- 支持针对所有属性的自动架构不可知索引（“辅助索引”）和快速查询 
-- 支持跨任意数量的区域实现[存储和吞吐量的独立缩放](partition-data.md)
-- 支持[按表的专用吞吐量](request-units.md)，可以从每秒数百个请求扩展到每秒数百万个请求
-- 支持[五个可调整一致性级别](consistency-levels.md)，可基于应用程序需要权衡可用性、延迟和一致性
-- 单个区域内可用性达 99.99%，可添加更多区域以提高可用性，以及获得可通用的[行业领先的综合 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- 使用现有的 Azure 存储 .NET SDK，而不会更改应用程序的任何代码
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 
-本教程介绍使用 .NET SDK 的 Azure Cosmos DB 表 API。 可以从 NuGet 下载 [Azure Cosmos DB 表 API .NET SDK](https://aka.ms/tableapinuget)。
+* [适用于 .NET 的 Microsoft Azure CosmosDB 表库](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) - 此库目前仅适用于 .NET Standard 和 .NET 框架。 
 
-若要详细了解复杂的 Azure 表存储任务，请参阅：
+* [Azure Cosmos DB 表 API 帐户](create-table-dotnet.md#create-a-database-account)。
 
-* [Azure Cosmos DB 表 API 简介](table-introduction.md)
-* 表服务参考文档提供有关可用 API [Azure Cosmos DB 表 API .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cosmosdb/client?view=azure-dotnet) 的完整详情
+## <a name="create-an-azure-cosmos-db-table-api-account"></a>创建 Azure Cosmos DB 表 API 帐户
 
-### <a name="about-this-tutorial"></a>关于本教程
-本教程供熟悉 Azure 表存储 SDK 并想要通过 Azure Cosmos DB 使用高级功能的开发人员使用。 本教程基于[通过 .NET 开始使用 Azure 表存储](table-storage-how-to-use-dotnet.md)，并演示如何利用辅助索引、预配的吞吐量和多宿主等附加功能。 涵盖如何使用 Azure 门户创建 Azure Cosmos DB 帐户，生成并部署表应用程序。 还将演练用于创建和删除表，以及插入、更新、删除和查询表数据的 .NET 示例。 
+[!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
-如果尚未安装 Visual Studio 2017，可以下载并使用免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
+## <a name="create-a-net-console-project"></a>创建 .NET 控制台项目
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+在 Visual Studio 中，创建新的 .NET 控制台应用程序。 以下步骤演示了如何在 Visual Studio 2017 中创建控制台应用程序。 在其他版本的 Visual Studio 中，这些步骤是类似的。 可以在任意类型的 .NET 应用程序（包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序）中使用 Azure Cosmos DB 表库。 为简单起见，我们在本指南中使用控制台应用程序。
 
-## <a name="create-a-database-account"></a>创建数据库帐户
+1. 选择“文件” > “新建” > “项目”。
 
-现在首先在 Azure 门户中创建 Azure Cosmos DB 帐户。  
- 
-> [!IMPORTANT]  
-> 必须新建表 API 帐户，才能使用正式发布的表 API SDK。 正式发布的 SDK 不支持在预览期间创建的表 API 帐户。 
->
+1. 选择“已安装” > “Visual C#” > “控制台应用(.NET Core)”。
 
-[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
+1. 在“名称”字段中，为你的应用程序输入名称，例如“CosmosTableSamples”（根据需要可以提供其他名称）。
 
-## <a name="clone-the-sample-application"></a>克隆示例应用程序
+1. 选择“确定”。
 
-现在让我们从 GitHub 克隆表应用，设置连接字符串，然后运行该应用。 会看到以编程方式处理数据是多么容易。 
+本示例中的所有代码示例都可以添加到控制台应用程序的 Program.cs 文件的 Main() 方法。
 
-1. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为相应的示例应用程序安装文件夹。 
+## <a name="install-the-required-nuget-package"></a>安装所需的 NuGet 包
 
-    ```bash
-    cd "C:\git-samples"
-    ```
+要获取 NuGet 包，请执行以下步骤：
 
-2. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+1. 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包”。
 
-    ```bash
-    git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
-    ```
+1. 联机搜索 `Microsoft.Azure.Cosmos.Table`、`Microsoft.Extensions.Configuration`、`Microsoft.Extensions.Configuration.Json`、`Microsoft.Extensions.Configuration.Binder`，并选择“安装”以安装 Microsoft Azure Cosmos DB 表库。
 
-3. 然后在 Visual Studio 中打开解决方案文件。 
+## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
 
-## <a name="update-your-connection-string"></a>更新连接字符串
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”。 使用窗口右侧的复制按钮复制“主连接字符串”。
 
-现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
-
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”。 
-
-    使用屏幕右侧的复制按钮复制“主连接字符串”。
-
-    ![在“连接字符串”窗格中查看并复制“连接字符串”](./media/create-table-dotnet/connection-string.png)
-
-2. 在 Visual Studio 中，打开 app.config 文件。 
-
-3. 取消注释第 8 行的 StorageConnectionString 并注释掉第 7 行的 StorageConnectionString，因为本教程不使用存储模拟器。 第 7 行和第 8 行现在应如下所示：
-
-    ```
-    <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
-    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
-    ```
-
-4. 将主连接字符串从门户粘贴到第 8 行的 StorageConnectionString 值。 粘贴引号内的字符串。
+   ![在“连接字符串”窗格中查看并复制“主连接字符串”](./media/create-table-dotnet/connection-string.png)
    
-    > [!IMPORTANT]
-    > 如果终结点使用 documents.azure.com，表示已有预览帐户。必须[新建表 API 帐户](#create-a-database-account)，才能使用正式版表 API SDK。 
-    >
+1. 要配置连接字符串，请在 Visual Studio 中右键单击项目“CosmosTableSamples”。
 
-    第 8 行现在应类似于：
+1. 依次选择“添加”、“新项”。 创建新文件“Settings.json”，其文件类型为“TypeScript JSON 配置”文件。 
 
-    ```
-    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
-    ```
+1. 将 Settings.json 文件中的代码替换为以下代码并分配主连接字符串：
 
-5. 保存 app.config 文件。
+   ```csharp
+   {
+   "StorageConnectionString": <Primary connection string of your Azure Cosmos DB account>
+   }
+   ```
 
-现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
+1. 右键单击项目“CosmosTableSamples”。 选择“添加”、“新项”，并添加名为“AppSettings.cs”的类。
 
-## <a name="azure-cosmos-db-capabilities"></a>Azure Cosmos DB 功能
-Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。 
+1. 将以下代码添加到 AppSettings.cs 文件。 此文件从 Settings.json 文件中读取连接字符串，并将其分配给配置参数：
 
-某些功能通过 CreateCloudTableClient 的新重载进行访问，用户可以使用这些新重载指定连接策略和一致性级别。
-
-| 表连接设置 | Description |
-| --- | --- |
-| 连接模式  | Azure Cosmos DB 支持两种连接模式。 在`Gateway`模式下，将始终向 Azure Cosmos DB 网关发出请求，该网关会将其转发到相应的数据分区。 在`Direct`连接模式下，客户端会提取表到分区的映射，且会直接针对数据分区发出请求。 建议使用`Direct`（默认）。  |
-| 连接协议 | Azure Cosmos DB 支持两种连接协议 - `Https` 和 `Tcp`。 默认为 `Tcp`，并推荐使用该协议，因为它更轻质。 |
-| 首选位置 | 以逗号分隔的首选（多主页）位置列表，用于读取。 每个 Azure Cosmos DB 帐户可与 1-30+ 个区域关联。 每个客户端实例可按首选顺序指定这些区域的一个子集以实现低延迟的读取。 必须使用这些区域的[显示名称](https://msdn.microsoft.com/library/azure/gg441293.aspx)命名这些区域，例如 `West US`。 另请参阅[多宿主 API](tutorial-global-distribution-table.md)。 |
-| 一致性级别 | 通过在后列五个定义完善的一致性级别之间进行选择，可在延迟、一致性和可用性之间权衡：`Strong`、`Session`、`Bounded-Staleness`、`ConsistentPrefix` 和 `Eventual`。 默认为 `Session`。 一致性级别的选择会在多区域设置中产生显著的性能差异。 有关详细信息，请参阅[一致性级别](consistency-levels.md)。 |
-
-可以通过以下 `appSettings` 配置值启用其他功能。
-
-| 密钥 | Description |
-| --- | --- |
-| TableQueryMaxItemCount | 配置单个往返过程中按每个表查询所返回的最大项数。 默认为 `-1`，使 Azure Cosmos DB 在运行时能够动态确定该值。 |
-| TableQueryEnableScan | 如果查询无法使用任何筛选器的索引，则无论如何要通过扫描运行它。 默认为 `false`。|
-| TableQueryMaxDegreeOfParallelism | 用于执行跨分区查询的并行度。 `0` 是不使用任何预提取的串行，`1` 是使用预提取的串行，更高的值会增加并行度的速率。 默认为 `-1`，使 Azure Cosmos DB 在运行时能够动态确定该值。 |
-
-若要更改默认值，请从 Visual Studio 中的解决方案资源管理器打开 `app.config` 文件。 添加 `<appSettings>` 元素的内容，如下所示。 将 `account-name` 替换为存储帐户名称，将 `account-key` 替换为帐户访问密钥。 
-
-```xml
-<configuration>
-    ...
-    <appSettings>
-      <!-- Client options -->
-      <add key="CosmosDBStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.azure.com" />
-      <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key; TableEndpoint=https://account-name.documents.azure.com" />
-
-      <!-- Table query options -->
-      <add key="TableQueryMaxItemCount" value="-1"/>
-      <add key="TableQueryEnableScan" value="false"/>
-      <add key="TableQueryMaxDegreeOfParallelism" value="-1"/>
-      <add key="TableQueryContinuationTokenLimitInKb" value="16"/>
-            
-    </appSettings>
-</configuration>
-```
-
-快速查看应用中发生的情况。 打开 `Program.cs` 文件，会发现以下几行代码将创建表资源。 
-
-## <a name="create-the-table-client"></a>创建表客户端
-初始化 `CloudTableClient`，以连接到表帐户。
-
-```csharp
-CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-```
-使用 `TableConnectionMode`、`TableConnectionProtocol`、`TableConsistencyLevel` 和 `TablePreferredLocations` 配置值初始化此客户端（如已在应用设置中指定）。
-
-## <a name="create-a-table"></a>创建表
-
-然后使用 `CloudTable` 创建表。 Azure Cosmos DB 中的表可就存储和吞吐量进行独立缩放，分区由服务自动处理。 
-
-```csharp
-CloudTable table = tableClient.GetTableReference("people");
-400
-table.CreateIfNotExists(throughput: 800);
-```
-
-在表创建方式上存在一个重要差异。 与 Azure 存储的基于消耗的事务模型不同，Azure Cosmos DB 保留吞吐量。 吞吐量是专用/保留的，因此即使请求速率处于配置的吞吐量水平或以下，用户也不会受到限制。
-
-可以通过以 CreateIfNotExists 参数的形式提供它来配置默认吞吐量。
-
-对 1-KB 实体的 1 次读取规范化为 1 RU，并会根据其他操作的 CPU、内存和 IOPS 消耗量将其规范化为固定 RU 值。 详细了解 [Azure Cosmos DB 中的请求单位](request-units.md)，具体说来就是[密钥值存储](key-value-store-cost.md)的请求单位。
-
-接下来，我们将使用 Azure 表存储 SDK 逐步演练简单的读取和写入 (CRUD) 操作。 本教程演示通过 Azure Cosmos DB 实现的可预测的低至个位数的毫秒延迟和快速查询。
-
-## <a name="add-an-entity-to-a-table"></a>将实体添加到表
-Azure 表存储中的实体从 `TableEntity` 类扩展，且必须具有 `PartitionKey` 和 `RowKey` 属性。 以下是客户实体定义的示例。
-
-```csharp
-public class CustomerEntity : TableEntity
-{
-    public CustomerEntity(string lastName, string firstName)
+   ```csharp
+   namespace CosmosTableSamples
+   {
+    using Microsoft.Extensions.Configuration;
+    public class AppSettings
     {
-        this.PartitionKey = lastName;
-        this.RowKey = firstName;
+        public string StorageConnectionString { get; set; }
+        public static AppSettings LoadAppSettings()
+        {
+            IConfigurationRoot configRoot = new ConfigurationBuilder()
+                .AddJsonFile("Settings.json")
+                .Build();
+            AppSettings appSettings = configRoot.Get<AppSettings>();
+            return appSettings;
+        }
+    }
+   }
+   ```
+
+## <a name="parse-and-validate-the-connection-details"></a>分析和验证连接详细信息 
+
+1. 右键单击项目“CosmosTableSamples”。 选择“添加”、“新项”，并添加名为“Common.cs”的类。 将编写代码来验证连接详细信息并在此类中创建表。
+
+1. 按如下所示定义方法 `CreateStorageAccountFromConnectionString`。 此方法将分析连接字符串详细信息，并验证“Settings.json”文件中提供的帐户名称和帐户密钥详细信息是否有效。 
+
+   ```csharp
+   public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+    {
+            CloudStorageAccount storageAccount;
+            try
+            {
+                storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the application.");
+                throw;
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
+                Console.ReadLine();
+                throw;
+            }
+
+            return storageAccount;
+        }
+   ```
+
+
+## <a name="create-a-table"></a>创建表 
+
+[CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtableclient?redirectedfrom=MSDN&view=azure-dotnet) 类用于检索存储在表存储中的表和实体。 由于 Cosmos DB 表 API 帐户中没有任何表，请将 `CreateTableAsync` 方法添加到 Common.cs 类来创建表：
+
+```csharp
+public static async Task<CloudTable> CreateTableAsync(string tableName)
+  {
+    string storageConnectionString = AppSettings.LoadAppSettings().StorageConnectionString;
+
+    // Retrieve storage account information from connection string.
+    CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString);
+
+    // Create a table client for interacting with the table service
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient(new TableClientConfiguration());
+
+    Console.WriteLine("Create a Table for the demo");
+
+    // Create a table client for interacting with the table service 
+    CloudTable table = tableClient.GetTableReference(tableName);
+    if (await table.CreateIfNotExistsAsync())
+    {
+      Console.WriteLine("Created Table named: {0}", tableName);
+    }
+    else
+    {
+      Console.WriteLine("Table {0} already exists", tableName);
     }
 
-    public CustomerEntity() { }
-
-    public string Email { get; set; }
-
-    public string PhoneNumber { get; set; }
+    Console.WriteLine();
+    return table;
 }
 ```
 
-以下代码片段演示如何使用 Azure 存储 SDK 插入实体。 Azure Cosmos DB 的设计旨在保证针对世界范围内的任何规模实现低延迟。
+## <a name="define-the-entity"></a>定义实体 
 
-对于在与 Azure Cosmos DB 帐户相同的区域中运行的应用程序，写入完成延迟为 <15 毫秒（p99）和约 6 毫秒（p50）。 这一持续时间造成后列事实：仅当写入被同步复制、持久提交以及对所有内容编制了索引后，这些写入才会被确认回客户端。
+实体使用派生自 [TableEntity](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx)的自定义类映射到 C# 对象。 要将实体添加到表，请创建用于定义实体的属性的类。
 
-
-```csharp
-// Create a new customer entity.
-CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
-customer1.Email = "Walter@contoso.com";
-customer1.PhoneNumber = "425-555-0101";
-
-// Create the TableOperation object that inserts the customer entity.
-TableOperation insertOperation = TableOperation.Insert(customer1);
-
-// Execute the insert operation.
-table.Execute(insertOperation);
-```
-
-## <a name="insert-a-batch-of-entities"></a>插入一批实体
-Azure 表存储支持批量操作 API，这样便能够通过批量操作合并更新、删除和插入操作。
+右键单击项目“CosmosTableSamples”。 选择“添加”、“新建文件夹”并将其命名为“模型”。 在“模型”文件夹中添加名为“CustimerEntity.cs”的类，并向其添加以下代码。
 
 ```csharp
-// Create the batch operation.
-TableBatchOperation batchOperation = new TableBatchOperation();
-
-// Create a customer entity and add it to the table.
-CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
-customer1.Email = "Jeff@contoso.com";
-customer1.PhoneNumber = "425-555-0104";
-
-// Create another customer entity and add it to the table.
-CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
-customer2.Email = "Ben@contoso.com";
-customer2.PhoneNumber = "425-555-0102";
-
-// Add both customer entities to the batch insert operation.
-batchOperation.Insert(customer1);
-batchOperation.Insert(customer2);
-
-// Execute the batch operation.
-table.ExecuteBatch(batchOperation);
-```
-## <a name="retrieve-a-single-entity"></a>检索单个实体
-在同一 Azure 区域中，Azure Cosmos DB 中的检索 (GET) 完成延迟为 < 10 毫秒（p99）和约 1 毫秒（p50）。 通过设置 `TablePreferredLocations`，可以将任意多个区域添加到帐户中以实现低延迟读取，并部署应用程序以便从其本地区域（“多宿主”）读取。 
-
-可以使用以下代码片段检索单个实体：
-
-```csharp
-// Create a retrieve operation that takes a customer entity.
-TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
-
-// Execute the retrieve operation.
-TableResult retrievedResult = table.Execute(retrieveOperation);
-```
-> [!TIP]
-> 请参阅[使用多个区域进行开发](tutorial-global-distribution-table.md)，了解多宿主 API
->
-
-## <a name="query-entities-using-automatic-secondary-indexes"></a>使用自动辅助索引查询实体
-可以使用 `TableQuery` 类查询表。 Azure Cosmos DB 具有写入优化数据库引擎，可自动索引表中的所有列。 Azure Cosmos DB 中的索引是架构不可知的。 因此，即使架构在行间是不同的，或者架构随着时间的推移不断发展，仍会自动对其进行索引。 由于 Azure Cosmos DB 支持自动辅助索引，因此针对任何属性的查询均可有效使用索引。
-
-```csharp
-CloudTable table = tableClient.GetTableReference("people");
-
-// Filter against a property that's not partition key or row key
-TableQuery<CustomerEntity> emailQuery = new TableQuery<CustomerEntity>().Where(
-    TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal, "Ben@contoso.com"));
-
-foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
+namespace CosmosTableSamples.Model
 {
-    Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
-        entity.Email, entity.PhoneNumber);
+    using Microsoft.Azure.Cosmos.Table;
+    public class CustomerEntity : TableEntity
+    {
+        public CustomerEntity()
+        {
+        }
+
+        public CustomerEntity(string lastName, string firstName)
+        {
+            PartitionKey = lastName;
+            RowKey = firstName;
+        }
+
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+    }
 }
 ```
 
-对于表 API，Azure Cosmos DB 支持与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 有关这些功能的概述，请参阅 [Azure Cosmos DB 查询](how-to-sql-query.md)。 
+此代码定义将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度快于查询分区键不同的实体的速度，但使用不同的分区键可实现更高的并行操作可伸缩性。 需要存储在表中的实体必须是受支持的类型，例如，必须派生自 [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableentity?redirectedfrom=MSDN&view=azure-dotnet) 类。 要存储在表中的实体属性必须是相应类型的公共属性，并且允许获取和设置值。 此外，实体类型必须公开无参数构造函数。
 
-## <a name="replace-an-entity"></a>替换实体
-要更新实体，请从表服务中检索它，修改实体对象，然后将更改保存回表服务。 以下代码将更改现有客户的电话号码。 
+## <a name="insert-or-merge-an-entity"></a>插入或合并实体
+
+以下代码示例创建实体对象并将其添加到表中。 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) 类中的 InsertOrMerge 方法用于插入或合并实体。 调用 [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtable.executeasync?view=azure-dotnet) 方法来执行此操作。 
+
+右键单击项目“CosmosTableSamples”。 选择“添加”、“新项”，并添加名为“SamplesUtils.cs”的类。 此类存储对实体执行 CRUD 操作所需的全部代码。 
 
 ```csharp
-TableOperation updateOperation = TableOperation.Replace(updateEntity);
-table.Execute(updateOperation);
+public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
+    {
+      if (entity == null)
+    {
+       throw new ArgumentNullException("entity");
+    }
+    try
+    {
+       // Create the InsertOrReplace table operation
+       TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
+
+       // Execute the operation.
+       TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
+       CustomerEntity insertedCustomer = result.Result as CustomerEntity;
+        
+        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
+        if (result.RequestCharge.HasValue)
+          {
+            Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
+          }
+
+        return insertedCustomer;
+        }
+        catch (StorageException e)
+        {
+          Console.WriteLine(e.Message);
+          Console.ReadLine();
+          throw;
+        }
+    }
 ```
-同样，可以执行 `InsertOrMerge` 或 `Merge` 操作。  
+
+### <a name="get-an-entity-from-a-partition"></a>从分区获取实体
+
+可以通过使用 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) 类下的 Retrieve 方法从分区获取实体。 以下代码示例获取客户实体的分区键行密钥、电子邮件和电话号码。 此示例还打印出用于查询实体的请求单元。 要查询实体，请将以下代码追加到“SamplesUtils.cs”文件： 
+
+```csharp
+public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)
+    {
+      try
+      {
+        TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>(partitionKey, rowKey);
+        TableResult result = await table.ExecuteAsync(retrieveOperation);
+        CustomerEntity customer = result.Result as CustomerEntity;
+        if (customer != null)
+        {
+          Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", customer.PartitionKey, customer.RowKey, customer.Email, customer.PhoneNumber);
+        }
+
+        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
+        if (result.RequestCharge.HasValue)
+        {
+           Console.WriteLine("Request Charge of Retrieve Operation: " + result.RequestCharge);
+        }
+
+        return customer;
+        }
+        catch (StorageException e)
+        {
+           Console.WriteLine(e.Message);
+           Console.ReadLine();
+           throw;
+        }
+    }
+```
 
 ## <a name="delete-an-entity"></a>删除实体
-在检索实体之后，可使用更新实体的相同演示模式轻松删除该实体。 以下代码检索并删除一个客户实体。
+
+在检索实体之后，可使用更新实体的相同演示模式轻松删除该实体。 以下代码检索并删除一个客户实体。 要删除实体，请将以下代码追加到“SamplesUtils.cs”文件： 
 
 ```csharp
-TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
-table.Execute(deleteOperation);
+public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity deleteEntity)
+   {
+     try
+     {
+        if (deleteEntity == null)
+     {
+        throw new ArgumentNullException("deleteEntity");
+     }
+
+    TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
+    TableResult result = await table.ExecuteAsync(deleteOperation);
+
+    // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
+    if (result.RequestCharge.HasValue)
+    {
+       Console.WriteLine("Request Charge of Delete Operation: " + result.RequestCharge);
+    }
+
+    }
+    catch (StorageException e)
+    {
+        Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
+    }
+}
 ```
 
-## <a name="delete-a-table"></a>删除表
-最后，以下代码示例将从存储帐户中删除表。 可以立即使用 Azure Cosmos DB 删除并重新创建表。
+## <a name="execute-the-crud-operations-on-sample-data"></a>对示例数据执行 CRUD 操作
+
+定义创建表、插入或合并实体的方法后，对示例数据运行这些方法。 要执行此操作，请右键单击项目“CosmosTableSamples”。 选择“添加”、“新项”，然后添加名为“BasicSamples.cs”的类，并向其添加以下代码。 此代码将创建表并向该表添加实体。 如果要删除项目末尾的实体和表，请从以下代码中删除 `table.DeleteIfExistsAsync()` 和 `SamplesUtils.DeleteEntityAsync(table, customer)` 方法中的注释：
 
 ```csharp
-CloudTable table = tableClient.GetTableReference("people");
-table.DeleteIfExists();
+using System;
+namespace CosmosTableSamples
+{
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Cosmos.Table;
+    using Model;
+
+    class BasicSamples
+    {
+        public async Task RunSamples()
+        {
+            Console.WriteLine("Azure Cosmos DB Table - Basic Samples\n");
+            Console.WriteLine();
+
+            string tableName = "demo" + Guid.NewGuid().ToString().Substring(0, 5);
+
+            // Create or reference an existing table
+            CloudTable table = await Common.CreateTableAsync(tableName);
+
+            try
+            {
+                // Demonstrate basic CRUD functionality 
+                await BasicDataOperationsAsync(table);
+            }
+            finally
+            {
+                // Delete the table
+                // await table.DeleteIfExistsAsync();
+            }
+        }
+
+        private static async Task BasicDataOperationsAsync(CloudTable table)
+        {
+            // Create an instance of a customer entity. See the Model\CustomerEntity.cs for a description of the entity.
+            CustomerEntity customer = new CustomerEntity("Harp", "Walter")
+            {
+                Email = "Walter@contoso.com",
+                PhoneNumber = "425-555-0101"
+            };
+
+            // Demonstrate how to insert the entity
+            Console.WriteLine("Insert an Entity.");
+            customer = await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
+
+            // Demonstrate how to Update the entity by changing the phone number
+            Console.WriteLine("Update an existing Entity using the InsertOrMerge Upsert Operation.");
+            customer.PhoneNumber = "425-555-0105";
+            await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
+            Console.WriteLine();
+
+            // Demonstrate how to Read the updated entity using a point query 
+            Console.WriteLine("Reading the updated Entity.");
+            customer = await SamplesUtils.RetrieveEntityUsingPointQueryAsync(table, "Harp", "Walter");
+            Console.WriteLine();
+
+            // Demonstrate how to Delete an entity
+            //Console.WriteLine("Delete the entity. ");
+            //await SamplesUtils.DeleteEntityAsync(table, customer);
+            //Console.WriteLine();
+        }
+    }
+}
 ```
 
-## <a name="clean-up-resources"></a>清理资源
+上述代码会创建以“demo”开头的表并将生成的 GUID 追加到表名。 然后，它会添加姓名为“Harp Walter”的客户实体，并稍后更新此用户的电话号码。 
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+在本教程中，你生成了对表 API 帐户中存储的数据执行基本 CRUD 操作的代码。 还可以执行高级操作，例如批量插入数据、查询分区中的所有数据、查询分区中的一系列数据、列出名称以指定前缀开头的帐户中的表。 可以从 [azure-cosmos-table-dotnet-core-getting-started](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) GitHub 存储库中下载完整的示例。 [AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/master/CosmosTableSamples/AdvancedSamples.cs) 类具有可对数据执行的更多操作。  
+
+## <a name="run-the-project"></a>运行项目
+
+立即生成解决方案并按 F5 运行该项目。 运行项目时，将在命令提示符中看到以下输出：
+
+![来自命令提示符的输出](./media/tutorial-develop-table-standard/output-from-sample.png)
+
+如果收到说明在运行项目时无法找到 Settings.json 文件的错误，可以通过将以下 XML 条目添加到项目设置来解决该问题。 右键单击 CosmosTableSamples，选择“编辑 CosmosTableSamples.csproj”并添加以下 itemGroup： 
+
+```csharp
+  <ItemGroup>
+    <None Update="Settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+```
+现在可以登录到 Azure 门户，并验证表中是否存在数据。 
+
+![门户中的结果](./media/tutorial-develop-table-standard/results-in-portal.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍如何将 Azure Cosmos DB 与表 API 配合使用，现已完成以下操作： 
-
-> [!div class="checklist"] 
-> * 创建 Azure Cosmos DB 帐户 
-> * 启用 app.config 文件中的功能 
-> * 创建表 
-> * 将实体添加到表 
-> * 插入一批实体 
-> * 检索单个实体 
-> * 使用自动辅助索引查询实体 
-> * 替换实体 
-> * 删除实体 
-> * 删除表  
-
-现可继续学习下一教程，并了解有关查询表数据的详细信息。 
+现在可以继续学习下一教程，了解如何将数据迁移到 Azure Cosmos DB 表 API 帐户。 
 
 > [!div class="nextstepaction"]
-> [使用表 API 查询](tutorial-query-table.md)
+>[如何查询数据](../cosmos-db/table-import.md)

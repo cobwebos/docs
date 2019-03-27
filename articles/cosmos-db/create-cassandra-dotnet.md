@@ -8,12 +8,12 @@ ms.author: sngun
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 881677916bb22d4b1046f19047819a636027290d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 2e43b2d6f5a127f7f0f81c2dfc2fd3737c9ee787
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585791"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880256"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -144,7 +144,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 5. 保存 Program.cs 文件。
     
-## <a name="run-the-net-app"></a>运行.Net 应用
+## <a name="run-the-net-app"></a>运行 .NET 应用
 
 1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “包管理器控制台”。
 

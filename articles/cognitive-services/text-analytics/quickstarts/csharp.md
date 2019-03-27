@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: 9b56104934c1ddcc60222c988efdf173ca33d77b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189642"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 C# 调用文本分析认知服务
 <a name="HOLTop"></a>
@@ -30,26 +30,25 @@ ms.locfileid: "56871003"
 
 还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。
 
-
 ## <a name="install-the-nuget-sdk-package"></a>安装 NuGet SDK 包
 1. 在 Visual Studio 中创建一个新的控制台解决方案。
 1. 右键单击解决方案，然后单击“管理解决方案的 NuGet 包”
 1. 选中“包括预发行版”复选框。
 1. 选择“浏览”选项卡，然后搜索“Microsoft.Azure.CognitiveServices.Language.TextAnalytics”
-1. 选择 NuGet 包并安装它。
+1. 选择 NuGet 包并安装它。 当前可能需要 v2.8.0 (3-18-2019) 而不是 v3.0.0，直到软件中的 bug 修复为止。
 
 > [!Tip]
 >  虽然可以直接从 C# 调用 [HTTP 终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)，但使用 Microsoft.Azure.CognitiveServices.Language SDK 可以更轻松地调用服务，而不必担心 JSON 的序列化和反序列化。
 >
 > 一些有用链接：
-> - [SDK Nuget 页](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [SDK Nuget 页](<https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics>)
 > - [SDK 代码](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
-
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>使用 SDK 调用文本分析 API
+
 1. 将 Program.cs 替换为下面提供的代码。 此程序通过三个部分（语言提取、关键短语提取和情绪分析）演示了文本分析 API 的功能。
 1. 将 `Ocp-Apim-Subscription-Key` 标头值替换为对订阅有效的访问密钥。
-1. 将 `Endpoint` 中的位置替换为注册的终结点。 可在 Azure 门户资源上找到该终结点。 终结点通常以“https://[region].api.cognitive.microsoft.com”开头，在此处请仅包括协议和主机名。
+1. 替换 `Endpoint` 中的区域。 可在 [Azure 门户](<https://ms.portal.azure.com>)的文本分析资源中的概述部分中查找终结点。 仅含入终结点的此部分：“https://[region].api.cognitive.microsoft.com”。
 1. 运行该程序。
 
 ```csharp

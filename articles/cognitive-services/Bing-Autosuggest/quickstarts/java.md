@@ -1,121 +1,139 @@
 ---
-title: 快速入门：必应自动建议 API，Java
+title: 快速入门：使用必应自动建议 REST API 和 Java 建议搜索查询
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应自动建议 API。
+description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 75d451123441f543094143adfc1df5dfd0c5bdb9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: 64b6ed680ba0812322d5796debc5edada19bc926
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875308"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118827"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-java"></a>必应自动建议 API 与 Java 快速入门
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>快速入门：使用必应自动建议 REST API 和 Java 建议搜索查询
 
-本文介绍如何结合使用[必应自动建议 API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) 与 Java。 必应自动推荐 API 根据用户在搜索框中输入的部分查询字符串返回建议查询的列表。 通常情况下，每当用户在搜索框中键入新字符时均会调用此 API，然后搜索框的下拉列表中会显示建议。 本文介绍如何发送请求，以针对 sail 返回建议的查询字符串。
+
+使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 Java 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) 上获得
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
+* [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* [Gson 库](https://github.com/google/gson)
 
-必须创建一个具有必应自动建议 API v7 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/#search)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>获取自动建议结果
+## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加下方提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。
+
+    ```java
+    import java.io.*;
+    import java.net.*;
+    import java.util.*;
+    import javax.net.ssl.HttpsURLConnection;
+    import com.google.gson.Gson;
+    import com.google.gson.GsonBuilder;
+    import com.google.gson.JsonObject;
+    import com.google.gson.JsonParser;
+    ```
+
+2. 为订阅密钥、API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)和搜索查询创建变量。
+    
+    ```java
+    static String subscriptionKey = "enter key here";
+    static String host = "https://api.cognitive.microsoft.com";
+    static String path = "/bing/v7.0/Suggestions";
+    static String mkt = "en-US";
+    static String query = "sail";
+    ```
+
+
+## <a name="format-the-response"></a>设置响应的格式
+
+创建名为 `prettify()` 的方法，用于设置必应视频 API 返回的响应的格式。 使用 Gson 库的 `JsonParser` 提取 JSON 字符串，并将其转换为对象。 然后，使用 `GsonBuilder()` 和 `toJson()` 创建带格式的字符串。
 
 ```java
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
-
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- *
- * Once you have compiled or downloaded gson-2.8.1.jar, assuming you have placed it in the
- * same folder as this file (Autosuggest.java), you can compile and run this program at
- * the command line as follows.
- *
- * javac Autosuggest.java -classpath .;gson-2.8.1.jar -encoding UTF-8
- * java -cp .;gson-2.8.1.jar Autosuggest
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-public class Autosuggest {
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the subscriptionKey string value with your valid subscription key.
-  static String subscriptionKey = "enter key here";
-
-  static String host = "https://api.cognitive.microsoft.com";
-  static String path = "/bing/v7.0/Suggestions";
-
-  static String mkt = "en-US";
-  static String query = "sail";
-
-  public static String get_suggestions () throws Exception {
-        String encoded_query = URLEncoder.encode (query, "UTF-8");
-        String params = "?mkt=" + mkt + "&q=" + encoded_query;
-    URL url = new URL (host + path + params);
-
-    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-    connection.setRequestMethod("GET");
-    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-    connection.setDoOutput(true);
-
-    StringBuilder response = new StringBuilder ();
-    BufferedReader in = new BufferedReader(
-    new InputStreamReader(connection.getInputStream()));
-    String line;
-    while ((line = in.readLine()) != null) {
-      response.append(line);
-    }
-    in.close();
-
-    return response.toString();
-    }
-
-  public static String prettify (String json_text) {
+// pretty-printer for JSON; uses GSON parser to parse and re-serialize
+public static String prettify(String json_text) {
     JsonParser parser = new JsonParser();
     JsonObject json = parser.parse(json_text).getAsJsonObject();
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     return gson.toJson(json);
-  }
-
-  public static void main(String[] args) {
-    try {
-      String response = get_suggestions ();
-      System.out.println (prettify (response));
-    }
-    catch (Exception e) {
-      System.out.println (e);
-    }
-  }
 }
 ```
 
-### <a name="response"></a>响应
+## <a name="construct-and-send-the-search-request"></a>构造并发送搜索请求
+
+1. 创建名为 `get_suggestions()` 的新方法并执行以下步骤：
+
+   1. 通过组合 API 主机、路径并编码搜索查询来构造请求的 URL。 在追加查询之前，请务必对查询进行 URL 编码。 通过将市场代码追加到 `mkt=` 参数并将查询追加到 `q=` 参数来为查询创建参数字符串。
+    
+      ```java
+  
+      public static String get_suggestions () throws Exception {
+         String encoded_query = URLEncoder.encode (query, "UTF-8");
+         String params = "?mkt=" + mkt + "&q=" + encoded_query;
+         //...
+      }
+      ```
+    
+   2. 使用上面创建的 API 主机、路径和参数为请求创建新的 URL。 
+    
+       ```java
+       //...
+       URL url = new URL (host + path + params);
+       //...
+       ```
+    
+   3. 创建 `HttpsURLConnection` 对象，并使用 `openConnection()` 创建连接。 将请求方法设置为 `GET`，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
+
+      ```java
+       //...
+       HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+       connection.setRequestMethod("GET");
+       connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+       connection.setDoOutput(true);
+       //...
+      ```
+
+   4. 读入对 `StringBuilder` 的 API 响应。 捕获响应后，关闭 `InputStreamReader` 流，并返回该响应。
+
+       ```java
+       //...
+       StringBuilder response = new StringBuilder ();
+       BufferedReader in = new BufferedReader(
+       new InputStreamReader(connection.getInputStream()));
+       String line;
+       while ((line = in.readLine()) != null) {
+         response.append(line);
+       }
+       in.close();
+    
+       return response.toString();
+       ```
+
+2. 在应用程序的主函数中，调用 `get_suggestions()` 并使用 `prettify()` 输出响应。
+    
+    ```java
+    public static void main(String[] args) {
+      try {
+        String response = get_suggestions ();
+        System.out.println (prettify (response));
+      }
+      catch (Exception e) {
+        System.out.println (e);
+      }
+    }
+    ```
+
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -186,9 +204,7 @@ public class Autosuggest {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应自动建议教程](../tutorials/autosuggest.md)
-
-## <a name="see-also"></a>另请参阅
+> [创建单页 Web 应用](../tutorials/autosuggest.md)
 
 - [什么是必应自动建议？](../get-suggested-search-terms.md)
 - [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 76f09af66e362fb6b03346b43a6be1a3ec7cf681
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: a8ed25f761e3109b0b97ee9b604a7a2d58e5aa8e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976760"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081332"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>快速入门：创建 Apache Kafka on HDInsight 群集
 
@@ -36,9 +36,9 @@ Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，
 
     在 Linux、Unix 和 macOS 系统中，默认提供 `ssh` 命令。 在 Windows 10 上，使用以下方式之一安装 `ssh` 命令：
 
-    * 使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)。 Cloud Shell 提供 `ssh` 命令，并且可以配置为将 Bash 或 PowerShell 用作 shell 环境。
+  * 使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)。 Cloud Shell 提供 `ssh` 命令，并且可以配置为将 Bash 或 PowerShell 用作 shell 环境。
 
-    * [安装适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。 可通过 Microsoft Store 提供 `ssh` 命令获得 Linux 分发版。
+  * [安装适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)。 可通过 Microsoft Store 提供 `ssh` 命令获得 Linux 分发版。
 
     > [!IMPORTANT]  
     > 本文档中的此步骤假定正在使用上述 SSH 客户端之一。 如果正在使用不同的 SSH 客户端并遇到问题，请查阅 SSH 客户端的文档。
@@ -180,6 +180,9 @@ ssuhuser@hn0-mykafk:~$
     ```
 
 2. 若要将环境变量设置为群集名称，请使用以下命令：
+
+    > [!Important]
+    > 全部以小写字母输入此命令的群集名称，即使名称中使用大写字母进行预配。 Zookeeper 或中转站信息不能使用大写的名称。
 
     ```bash
     read -p "Enter the Kafka on HDInsight cluster name: " CLUSTERNAME

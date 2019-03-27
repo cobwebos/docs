@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c70c6187672c47a9f6dc09e1ccb8e6eadeff6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187665"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287054"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>注册 Azure Active Directory Premium 版本
 可购买 Azure Active Directory (Azure AD) Premium 版本并将其与 Azure 订阅进行关联。 如果需要创建新的 Azure 订阅，则还需要激活许可计划和 Azure AD 服务访问权限。
@@ -65,17 +65,17 @@ Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版
 ### <a name="to-activate-your-license-plan"></a>激活许可计划
 - 打开在注册后从 Microsoft 处收到的确认电子邮件，然后单击“登录”或“注册”。
    
-    ![登录](media/active-directory-get-started-premium/MOLSEmail.png)
+    ![电子邮件与登录和注册链接的确认信息](media/active-directory-get-started-premium/MOLSEmail.png)
 
     - 登录。 如果当前具有租户，则选择此链接，然后使用现有的管理员帐户进行登录。 你必须是要激活许可证的租户上的全局管理员。
 
     - 注册。 如果要打开“创建帐户配置文件”页面并为许可计划创建新的 Azure AD 租户，请选择此链接。
 
-        ![创建帐户配置文件](media/active-directory-get-started-premium/MOLSAccountProfile.png)
+        ![创建帐户配置文件页面，其中包含示例信息](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
 完成后，将看到一个确认框，其中显示了感谢你为租户激活许可计划的消息。
 
-![确认](media/active-directory-get-started-premium/MOLSThankYou.png)
+![带有感谢使用信息的确认框](media/active-directory-get-started-premium/MOLSThankYou.png)
 
 ## <a name="activate-your-azure-ad-access"></a>激活 Azure AD 访问权限
 如果要向现有订阅添加新的 Azure AD Premium 许可证，则应已激活 Azure AD 访问权限。 否则，需在收到欢迎电子邮件后激活 Azure AD 访问权限。  
@@ -89,11 +89,11 @@ Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版
 
 1. 打开“欢迎电子邮件”，然后单击“登录”。
    
-    ![欢迎电子邮件](media/active-directory-get-started-premium/AADEmail.png)
+    ![欢迎使用电子邮件，其中突出显示登录链接](media/active-directory-get-started-premium/AADEmail.png)
 
 2. 成功登录后，要使用移动设备完成双重验证。
    
-    ![手机验证](media/active-directory-get-started-premium/SignUppage.png)
+    ![使用移动验证的双重验证页面](media/active-directory-get-started-premium/SignUppage.png)
 
 激活过程通常只需几分钟的时间，然后即可使用 Azure AD 租户。 
 

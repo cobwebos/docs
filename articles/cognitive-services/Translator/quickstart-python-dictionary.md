@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: f00cc893f21db302c2efe63da285c8843958b1ee
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 55cb9564205c99abc868413ebf43e575999198ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731236"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183690"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>快速入门：通过 Python 使用双语字典查找字词
 
@@ -32,7 +32,7 @@ ms.locfileid: "56731236"
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
-使用最喜欢的 IDE 或编辑器创建新的 Python 项目。 然后，将此代码片段复制到项目的名为 `dictionary-lookup.py` 的文件中。
+使用喜欢的 IDE 或编辑器创建一个新 Python 项目，或在桌面上创建新的文件夹。 将此代码片段复制到项目/文件夹的 `dictionary-lookup.py` 文件中。
 
 ```python
 # -*- coding: utf-8 -*-
@@ -60,8 +60,8 @@ else:
     print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
     exit()
 # If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
+# below and add your subscription key. Then, be sure to delete your "os" import.
+# subscriptionKey = 'put_your_key_here'
 ```
 
 文本翻译全局终结点设置为 `base_url`。 `path` 设置 `dictionary/lookup` 路由并确定我们需使用 API 的版本 3。
@@ -123,7 +123,7 @@ print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separat
 就是这样，你已构建了一个简单的程序。该程序可以调用文本翻译 API 并返回 JSON 响应。 现在，可以运行该程序了：
 
 ```console
-python dictionary-lookup.py
+python alt-translations.py
 ```
 
 如果希望将你的代码与我们的进行比较，请查看 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python) 上提供的完整示例。

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：查看组织的组和成员 - Azure Active Directory | Microsoft Docs
+title: 快速入门：查看组和成员 - Azure Active Directory | Microsoft Docs
 description: 介绍如何搜索和查看组织的组及其分配的成员。
 services: active-directory
 author: eross-msft
@@ -10,15 +10,15 @@ ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ee02944e32a11a3749d6730b9263254fa9bda
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8eef6f7a363fe7b020a3ef18ae26799d7d5452ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183269"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881004"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -61,7 +61,7 @@ ms.locfileid: "56183269"
 
     - **名称：** 键入 Alain Charon。
 
-    - **用户名：** 键入 alain@contoso.com。
+    - **用户名：** 键入 alain\@contoso.com。
 
 3. 复制“密码”框中提供的自动生成的密码，然后选择“创建”。
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1a51e677-c62b-4aee-9c61-56926aaaa899
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3cd6a299cdad93cf9e403cb04a4b7dfda85cbb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 19e46c77d3204cc6cd037e5ef8252aa7598d624d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883107"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>教程：Azure Active Directory 与 BitaBIZ 集成
 
@@ -178,7 +178,7 @@ ms.locfileid: "56883107"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

@@ -11,34 +11,35 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: e6b8e9dd3f5723a460b514b93ffb3962f97004b1
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.date: 03/12/2019
+ms.openlocfilehash: c7c016629141b978e472ba2339b9ba4ef95a876b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100068"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892347"
 ---
 # <a name="use-powershell-to-copy-a-sql-database-to-a-new-server"></a>使用 PowerShell 将 SQL 数据库复制到新服务器
 
 以下 PowerShell 脚本示例在新服务器中创建现有数据库的副本。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="copy-a-database-to-a-new-server"></a>将数据库复制到新服务器
 
-[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/copy-database-to-new-server/copy-database-to-new-server.ps1?highlight=18-21 "Copy database to new server")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/copy-database-to-new-server/copy-database-to-new-server.ps1?highlight=20-23 "Copy database to new server")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
 运行脚本示例后，可以使用以下命令删除资源组以及与其关联的所有资源。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $sourceresourcegroupname
-Remove-AzureRmResourceGroup -ResourceGroupName $targetresourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $sourceresourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $targetresourcegroupname
 ```
 
 ## <a name="script-explanation"></a>脚本说明
@@ -47,11 +48,11 @@ Remove-AzureRmResourceGroup -ResourceGroupName $targetresourcegroupname
 
 | 命令 | 说明 |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | 创建托管单一数据库或弹性池的 SQL 数据库服务器。 |
-| [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | 创建单一数据库或弹性池。 |
-| [New-AzureRmSqlDatabaseCopy](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy) | 创建当前使用快照的数据库副本。 |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库或弹性池的 SQL 数据库服务器。 |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 创建单一数据库或弹性池。 |
+| [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) | 创建当前使用快照的数据库副本。 |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤

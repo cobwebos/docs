@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 63dbdc7dc647a05da11192476076c3ee08a5e2bf
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: e0b7995a8234ddb5927c4ef3e1ddd31fab9a00b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768198"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996400"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>教程：通过 Azure CLI 使用基于 URL 路径的重定向创建应用程序网关
 
@@ -283,7 +283,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如， *http://40.121.222.19*、 *http://40.121.222.19:8080/images/test.htm*、 *http://40.121.222.19:8080/video/test.htm* 或 *http://40.121.222.19:8081/images/test.htm*。
+若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，`http://40.121.222.19`、`http://40.121.222.19:8080/images/test.htm`、`http://40.121.222.19:8080/video/test.htm` 或 `http://40.121.222.19:8081/images/test.htm`。
 
 ```azurepowershell-interactive
 az network public-ip show \

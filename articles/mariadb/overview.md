@@ -6,17 +6,17 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 12/03/2018
-ms.openlocfilehash: 7fecc280d4e92df88f5f8e9b9e571273328d2458
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 03/20/2019
+ms.openlocfilehash: a5d00c24531099e66afcb6ccf07cfdf99abd28d1
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352302"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295141"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什么是 Azure Database for MariaDB？
 
-在 Microsoft 云中，Azure Database for MariaDB 是关系数据库服务。 Azure Database for MariaDB 基于 [MariaDB 社区版](https://mariadb.org/download/)数据库引擎，版本为 10.2。
+在 Microsoft 云中，Azure Database for MariaDB 是关系数据库服务。 Azure Database for MariaDB 基于 [MariaDB 社区版](https://mariadb.org/download/)（可在 GPLv2 许可证下使用）数据库引擎，版本为 10.2。
 
 Azure Database for MariaDB 的优点包括：
 

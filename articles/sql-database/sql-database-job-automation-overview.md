@@ -3,7 +3,6 @@ title: Azure SQL 作业自动化 | Microsoft Docs
 description: 使用作业自动化跨一个或多个 Azure SQL 数据库运行 Transact-SQL (T-SQL) 脚本
 services: sql-database
 ms.service: sql-database
-ms.subservice: database-features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
@@ -12,18 +11,20 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1fd524e858b20c75aef4101ad98ac54c4f485d1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457201"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901961"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 
 Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期执行的作业，以运行 T-SQL 查询和执行维护任务。 每个作业会记录执行状态，如果发生任何失败，则还会自动重试操作。
 可以定义目标数据库或者要在其中执行作业的 Azure SQL 数据库组，同时定义作业的运行计划。
 作业可以处理登录到目标数据库的任务。 此外，可以定义、维护以及保存要跨一组 Azure SQL 数据库执行的 Transact-SQL 脚本。
+
+## <a name="when-to-use-automated-jobs"></a>何时使用自动化作业
 
 作业自动化有多种使用方案：
 
@@ -36,8 +37,10 @@ Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期�
   - 将 Azure SQL 数据库集合中的数据聚合到单个目标表中。
   - 对大量的数据库执行长时间运行的数据处理查询，例如，收集客户遥测数据。 结果将收集到单个目标表以供进一步分析。
 - 数据移动
- - 创建作业，用于将数据库中所做的更新复制到其他数据库，或者收集远程数据库中所做的更新，并在数据库中应用更改。
- - 创建作业用于通过 SQL Server Integration Services (SSIS) 从/向数据库加载数据。
+  - 创建作业，用于将数据库中所做的更新复制到其他数据库，或者收集远程数据库中所做的更新，并在数据库中应用更改。
+  - 创建作业用于通过 SQL Server Integration Services (SSIS) 从/向数据库加载数据。
+
+## <a name="overview"></a>概述
 
 在 Azure SQL 数据库中可以使用以下作业计划技术：
 
@@ -158,9 +161,9 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 - SQL 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。
 - 目前，托管实例不支持启用/禁用代理。 SQL 代理始终运行。
 - 部分支持通知
- - 不支持寻呼机。
- - 不支持 NetSend。
- - 尚不支持警报。
+  - 不支持寻呼机。
+  - 不支持 NetSend。
+  - 尚不支持警报。
 - 不支持代理。
 - 不支持事件日志。
 

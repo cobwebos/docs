@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: ab00e74a704afe2f5fc6ef81f4f023b190a32d0b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f4acab2cb4522048f4a78b12ca41161695a31e18
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878334"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259595"
 ---
 # <a name="quickstart-url-preview-with-java"></a>快速入门：通过 Java 使用 URL 预览
 
@@ -27,7 +27,7 @@ ms.locfileid: "55878334"
 
 ## <a name="request"></a>请求 
 
-下面的代码创建 `WebRequest`、设置访问密钥标头，并为“https://swiftkey.com/en”添加查询字符串。  然后发送请求，并将响应分配到包含 JSON 文本的字符串。
+下面的代码创建 `WebRequest`、设置访问密钥标头，并为“https:\//swiftkey.com/en”添加查询字符串。  然后发送请求，并将响应分配到包含 JSON 文本的字符串。
 
 ```
     // construct URL of search request (endpoint + query string)

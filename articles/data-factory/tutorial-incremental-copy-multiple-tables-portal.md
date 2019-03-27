@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: e6a24bfe25513b1b4eacd8bc192caa5518c896c6
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 12ca210e1fe7aa60515f5b8c4c0ad830dcdd9594
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593193"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078952"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -382,7 +382,7 @@ END
    ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
- 1. 单击“完成”后，可以看到表名为 **@dataset().SinkTableName**。
+   1. 单击“完成”后，可以看到表名为 \@dataset().SinkTableName。
    
    ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -424,11 +424,11 @@ END
     ![管道名称](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. 在“属性”窗口中执行以下步骤： 
 
-    1. 单击“+ 新建”。 
-    1. 输入 **tableList** 作为参数**名称**。 
-    1. 选择“对象”作为参数**类型**。
+   1. 单击“+ 新建”。 
+   1. 输入 **tableList** 作为参数**名称**。 
+   1. 选择“对象”作为参数**类型**。
 
-    ![管道参数](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
+      ![管道参数](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
 1. 在“活动”工具栏中展开“迭代和条件语句”，然后将 **ForEach** 活动拖放到管道设计器图面。 在属性窗口的“常规”选项卡中，输入 **IterateSQLTables**。 
 
     ![ForEach 活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
@@ -457,69 +457,69 @@ END
     ![第二个查找活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
 1. 切换到“设置”选项卡。
 
-    1. 为“源数据集”选择“SourceDataset”。 
-    1. 为“使用查询”选择“查询”。
-    1. 为“查询”输入以下 SQL 查询。
+     1. 为“源数据集”选择“SourceDataset”。 
+     1. 为“使用查询”选择“查询”。
+     1. 为“查询”输入以下 SQL 查询。
 
-        ```sql    
-        select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
-        ```
+         ```sql    
+         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
+         ```
     
-        ![第二个查找活动 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+         ![第二个查找活动 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
 1. 从“活动”工具箱拖放**复制**活动，然后输入 **IncrementalCopyActivity** 作为**名称**。 
 
-    ![复制活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
+     ![复制活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
 1. 逐个地将“查找”活动连接到“复制”活动。 若要进行连接，可以开始将附加到“查找”活动的**绿色**框拖放到“复制”活动。 “复制”活动的边框颜色变为**蓝色**时，松开鼠标按键。
 
-    ![将“查找”活动连接到“复制”活动](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+     ![将“查找”活动连接到“复制”活动](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
 1. 选择管道中的“复制”活动。 切换到“属性”窗口中的“源”选项卡。 
 
-    1. 为“源数据集”选择“SourceDataset”。 
-    1. 为“使用查询”选择“查询”。 
-    1. 为“查询”输入以下 SQL 查询。
+     1. 为“源数据集”选择“SourceDataset”。 
+     1. 为“使用查询”选择“查询”。 
+     1. 为“查询”输入以下 SQL 查询。
 
-        ```sql
-        select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
-        ```
+         ```sql
+         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
+         ```
 
-        ![复制活动 - 源设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+         ![复制活动 - 源设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. 切换到“接收器”选项卡，然后选择“SinkDataset”作为“接收器数据集”。 
         
-    ![复制活动 - 接收器设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
+     ![复制活动 - 接收器设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. 切换到“参数”选项卡，然后执行以下步骤：
 
-    1. 至于“接收器存储过程名称”属性，请输入 `@{item().StoredProcedureNameForMergeOperation}`。
-    1. 至于“接收器表类型”属性，请输入 `@{item().TableType}`。
-    1. 在“接收器数据集”部分，请输入 `@{item().TABLE_NAME}` 作为 **SinkTableName** 参数。
+     1. 至于“接收器存储过程名称”属性，请输入 `@{item().StoredProcedureNameForMergeOperation}`。
+     1. 至于“接收器表类型”属性，请输入 `@{item().TableType}`。
+     1. 在“接收器数据集”部分，请输入 `@{item().TABLE_NAME}` 作为 **SinkTableName** 参数。
 
-        ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+         ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。 将“复制”活动连接到“存储过程”活动。 
 
-    ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
+     ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
 1. 在管道中选择“存储过程”活动，然后在“属性”窗口的“常规”选项卡中输入 **StoredProceduretoWriteWatermarkActivity** 作为**名称**。 
 
-    ![存储过程活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
+     ![存储过程活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
 1. 切换到“SQL 帐户”选项卡。至于“链接服务”，请选择 **AzureSqlDatabaseLinkedService**。
 
-    ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. 切换到“存储过程”选项卡，然后执行以下步骤：
 
-    1. 至于“存储过程名称”，请选择 `usp_write_watermark`。 
-    1. 选择“导入参数”。 
-    1. 指定以下参数值： 
+     1. 至于“存储过程名称”，请选择 `usp_write_watermark`。 
+     1. 选择“导入参数”。 
+     1. 指定以下参数值： 
 
-        | Name | 类型 | 值 | 
-        | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+         | Name | 类型 | 值 | 
+         | ---- | ---- | ----- |
+         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
-        ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+         ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. 在左窗格中单击“发布”。 此操作将创建的实体发布到数据工厂服务。 
 
-    ![发布按钮](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
+     ![发布按钮](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
 1. 等待“已成功发布”消息出现。 若要查看通知，请单击“显示通知”链接。 单击“X”关闭通知窗口。
 
-    ![显示通知](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
+     ![显示通知](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
 
  
 ## <a name="run-the-pipeline"></a>运行管道

@@ -3,8 +3,8 @@ title: Azure AD v2.0 ASP.NET Web 服务器快速入门 | Microsoft Docs
 description: 了解如何使用 OpenID Connect 在 ASP.NET Web 应用上实现 Microsoft 登录。
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc5200156533abf940ce8fc7ff2186ba3a961bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9ae388798716565c1fdeeb10b274c2a168ca86ea
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200473"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200253"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "56200473"
 
 本快速入门介绍如何使用 ASP.NET Web 应用从任何 Azure Active Directory (Azure AD) 实例中登录个人帐户（hotmail.com、outlook.com 等）以及学校和工作帐户。
 
-![本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.png)
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
@@ -147,7 +147,7 @@ public void Configuration(IAppBuilder app)
 > |其中  |  |
 > |---------|---------|
 > | `ClientId`     | Azure 门户中注册的应用程序的应用程序 ID |
-> | `Authority`    | 用户要进行身份验证的 STS 终结点。 对于公有云，通常为 https://login.microsoftonline.com/{tenant}/v2.0，其中 {tenant} 是租户名称、租户 ID 或者对于常用终结点（用于多租户应用程序）的引用，即 common |
+> | `Authority`    | 用户要进行身份验证的 STS 终结点。 对于公有云，通常为 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 是租户名称、租户 ID 或者对于常用终结点（用于多租户应用程序）的引用，即 common |
 > | `RedirectUri`  | 一个 URL，在通过 Azure AD v2.0 终结点进行身份验证之后，会将用户发送到此 URL |
 > | `PostLogoutRedirectUri`     | 一个 URL，在注销以后，会将用户发送到此 URL |
 > | `Scope`     | 请求的作用域的列表，使用空格进行分隔 |

@@ -4,7 +4,7 @@ description: 了解 .NET Core 进程如何使用应用的自身标识获取访�
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 1/11/2019
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27cc0334e8332e3bc09ae4302e0b0efdda8067f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5c63269630d0ed74d1b17edbc5cb9e787499604e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194438"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200508"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从控制台应用中调用 Microsoft Graph API
 
@@ -30,7 +30,7 @@ ms.locfileid: "56194438"
 
 本快速入门介绍如何编写 .NET Core 应用程序，以便使用应用的自身标识获取访问令牌，然后调用 Microsoft Graph API，以便在目录中显示[用户列表](https://docs.microsoft.com/graph/api/user-list)。 此方案适用于无外设且无人参与的作业或 Windows 服务需要使用应用程序标识而非用户标识运行的情况。
 
-![本快速入门生成的示例应用的工作原理](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.png)
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-netcore-daemon/netcore-daemon-intro-updated.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -198,7 +198,7 @@ var app = new ConfidentialClientApplication(
 > |---------|---------|
 > | `secret` | 是在 Azure 门户中为应用程序创建的客户端机密。 |
 > | `clientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
-> | `Authority`    | （可选）用户要进行身份验证的 STS 终结点。 对于公有云，通常为 https://login.microsoftonline.com/{tenant}，其中 {tenant} 是租户名称或租户 ID。|
+> | `Authority`    | （可选）用户要进行身份验证的 STS 终结点。 对于公有云，通常为 <https://login.microsoftonline.com/{tenant}>，其中 {tenant} 是租户名称或租户 ID。|
 > | `redirectUri`  | 用于在身份验证后发送用户的 URL。 在此示例中，由于这是控制台/非交互式应用程序，因此未使用此参数 |
 > | `clientCredentials`  | 客户端凭据对象，包含机密或证书 |
 > | `userTokenCache`  | 适用于用户的令牌缓存的实例。 在此示例中，由于此应用在应用上下文而非用户上下文中运行，因此此值为 null|

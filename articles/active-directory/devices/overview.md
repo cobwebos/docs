@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/31/2019
+ms.date: 03/01/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3711f2b2901ddbe49b4d6a49cabef12ac5dab3e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b303841dffd09e2c2f8250e4a7885fda36ab4a38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192466"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168599"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>什么是 Azure Active Directory 中的设备管理？
 

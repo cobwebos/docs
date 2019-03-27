@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: dfdccaf929aa382c8003bc4c3cc0988a7123bf2d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d802fade0ff9c5b4bc329c7451144d8c782f8d3c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316006"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097934"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
@@ -53,7 +53,7 @@ ms.locfileid: "53316006"
 
    |**设置**  |**建议的值** |**说明**  |
    |---------|---------|---------|
-   |名称     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
+   |Name     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
    |订阅     |   用户的订阅\<\>      |   选择要在其中创建事件中心的 Azure 订阅。      |
    |资源组     |   MyASADemoRG      |  选择“新建”，然后输入帐户的新资源组名称。       |
    |位置     |   美国西部 2      |    一个位置，可在其中部署事件中心命名空间。     |
@@ -180,7 +180,7 @@ ms.locfileid: "53316006"
 3. 选择“+ 添加” > “Power BI”。 然后在窗体中填写以下详细信息并选择“授权”：
 
    |**设置**  |**建议的值**  |
-   |---------|---------|---------|
+   |---------|---------|
    |输出别名  |  MyPBIoutput  |
    |数据集名称  |   ASAdataset  |
    |表名称 |  ASATable  |

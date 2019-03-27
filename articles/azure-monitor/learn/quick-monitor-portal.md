@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 8d4b5bb987e04e30953c7a2bb3a3d2387e51fdeb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 9a4c6b8046934159533755f048e1aa158e7e591e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54080357"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011770"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>开始监视 ASP.NET Web 应用程序
 

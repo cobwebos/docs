@@ -1,20 +1,20 @@
 ---
-title: 教程：将 Azure 机器学习部署到设备 - Azure IoT Edge | Microsoft Docs
-description: 在本教程中，请将 Azure 机器学习作为一个模块部署到边缘设备
+title: 将 Azure 机器学习部署到设备 - Azure IoT Edge | Microsoft Docs
+description: 在本教程中，将创建 Azure 机器学习模型，然后将其作为一个模块部署到边缘设备
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/21/2019
+ms.date: 03/07/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0f7201ffd71a6bc3e68f83f005c693cae4fef84a
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 985f1f73fbfc8c75df8393615fca32f5d1c08b9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648994"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078306"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块进行部署（预览版）
 
@@ -40,13 +40,15 @@ ms.locfileid: "56648994"
 
 Azure IoT Edge 设备：
 
-* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
+* 可以按照适用于 [Linux](quickstart-linux.md) 的快速入门中的步骤，将 Azure 虚拟机用作 IoT Edge 设备。
+* Azure 机器学习模块不支持 Windows 容器。
 * Azure 机器学习模块不支持 ARM 处理器。
 
 云资源：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* Azure 机器学习工作区。 按照[准备好在 IoT Edge 上部署模型](../machine-learning/service/how-to-deploy-to-iot.md)中的说明创建一个。
+* Azure 机器学习工作区。 按照[通过 Azure 门户开始使用 Azure 机器学习](../machine-learning/service/quickstart-get-started.md)中的说明创建一个工作区并了解如何使用它。
+   * 请记下工作区名称、资源组和订阅 ID。 Azure 门户中的工作区概述中提供了这些值。 你将在本教程后面部分使用这些值，将 Azure 笔记本连接到工作区资源。 
 
 
 ### <a name="disable-process-identification"></a>禁用进程标识
@@ -54,9 +56,9 @@ Azure IoT Edge 设备：
 >[!NOTE]
 >
 > Azure 机器学习预览版不支持 IoT Edge 中默认启用的进程标识安全功能。
-> 以下是禁用它的步骤。 不过，这不适合在生产中使用。 这些步骤只是在 Linux 上是必需的，因为在执行 Windows Edge 运行时安装时你已完成了这些步骤。
+> 以下是禁用它的步骤。 不过，这不适合在生产中使用。 这些步骤仅在 Linux 设备上是必需的。 
 
-若要在 IoT Edge 设备上禁用进程标识，需在 IoT Edge 守护程序配置的 **connect** 部分中为 **workload_uri** 和 **management_uri** 提供 IP 地址和端口。
+若要在 IoT Edge 设备上禁用进程标识，需在 IoT Edge 守护程序配置的 connect 节中为 workload_uri 和 management_uri 提供 IP 地址和端口。
 
 先获取 IP 地址。 在命令行中输入 `ifconfig`，复制 **docker0** 接口的 IP 地址。
 
@@ -81,74 +83,75 @@ listen:
   workload_uri: "http://172.17.0.1:15581"
 ```
 
-创建包含 management_uri 地址的环境变量 IOTEDGE_HOST（若要对其进行永久设置，请将其添加到 `/etc/environment`）。例如：
+保存并关闭配置文件。
+
+创建包含 management_uri 地址的环境变量 IOTEDGE_HOST（若要对其进行永久设置，请将其添加到 `/etc/environment`）。 例如：
 
 ```cmd/sh
 export IOTEDGE_HOST="http://172.17.0.1:15580"
 ```
 
+重启 IoT Edge 服务以使更改生效。
 
-## <a name="create-the-azure-machine-learning-service-container"></a>创建 Azure 机器学习服务容器
-在本部分中，你将下载已训练的模型文件并将它们转换为 Azure 机器学习服务容器。
+```cmd/sh
+sudo systemctl restart iotedge
+```
 
-按照[准备好在 IoT Edge 上部署模型](../machine-learning/service/how-to-deploy-to-iot.md)文档中的说明，使用机器学习模型创建 Docker 容器。  Docker 映像所需的所有组件都在 [Azure IoT Edge Git 存储库的 AI 工具包](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)中。
+## <a name="create-and-deploy-azure-machine-learning-module"></a>创建和部署 Azure 机器学习模块
 
-### <a name="view-the-container-repository"></a>查看容器存储库
+在本部分中，将已训练的机器学习模型文件转换为 Azure 机器学习服务容器。 Docker 映像所需的所有组件都在 [Azure IoT Edge Git 存储库的 AI 工具包](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)中。 请按照下列步骤将该存储库上传到 Microsoft Azure Notebooks 中，以创建容器并将其推送到 Azure 容器注册表。
 
-检查容器映像是否已成功创建并存储在与机器学习环境关联的 Azure 容器注册表中。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，转到“所有服务”并选择“容器注册表”。
-2. 选择你的注册表。 名称应当以 **mlcr** 开头，并且它属于你用来设置模块管理的资源组、位置和订阅。
-3. 选择“访问密钥”
-4. 复制“登录服务器”、“用户名”和“密码”的值。  你需要使用这些值来从 Edge 设备访问注册表。
-5. 选择“存储库”
-6. 选择“machinelearningmodule”
-7. 你现在已获得了容器的完整映像路径。 请记下此映像路径供下一部分使用。 它应当类似于以下内容：**<registry_name>.azurecr.io/machinelearningmodule:1**
+1. 导航到 Azure Notebooks 项目。 可以从 [Azure 门户](https://portal.azure.com)中的 Azure 机器学习服务工作区获取，也可以通过使用 Azure 帐户登录 [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) 获取。
 
-## <a name="deploy-to-your-device"></a>部署到设备
+2. 选择“上传 GitHub 存储库”。
 
-1. 在 [Azure 门户](https://portal.azure.com)中导航到 IoT 中心。
+3. 提供以下 GitHub 存储库名称：`Azure/ai-toolkit-iot-edge`。 如果要将项目设为专用，请取消选中“公共”框。 选择“导入”。 
 
-1. 转到“IoT Edge”，然后选择 IoT Edge 设备。
+4. 导入完成后，导航到新的 ai-toolkit-iot-edge 项目，然后打开“IoT Edge 异常情况检测教程”文件夹。 
 
-1. 选择“设置模块”。
+5. 验证项目是否正在运行。 如果没有，请选择“在免费计算上运行”。
 
-1. 在“注册表设置”部分，添加从 Azure 容器注册表复制的凭据。
+   ![在免费计算上运行](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
 
-   ![将注册表凭据添加到清单](./media/tutorial-deploy-machine-learning/registry-settings.png)
+6. 打开 aml_config/config.json 文件。
 
-1. 如果以前已将 tempSensor 模块部署到 IoT Edge 设备，则它可能会自动填充。 如果它尚未出现在模块列表中，请添加它。
+7. 编辑配置文件以包含以下值：Azure 订阅 ID、订阅中的资源组以及 Azure 机器学习服务工作区名称。 可以从 Azure 工作区的“概述”部分获取所有这些值。 
 
-    1. 单击“添加”，然后选择“IoT Edge 模块”。
-    2. 在“名称”字段中，输入 `tempSensor`。
-    3. 在“映像 URI”字段中，输入 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`。
-    4. 选择“保存”。
+8. 保存 config 文件。
 
-1. 添加你创建的机器学习模块。
+9. 打开 00-anomaly-detection-tutorial.ipynb 文件。
 
-    1. 单击“添加”，然后选择“IoT Edge 模块”。
-    1. 在“名称”字段中，输入 `machinelearningmodule`。
-    1. 在“映像”字段中，输入映像地址；例如 `<registry_name>.azurecr.io/machinelearningmodule:1`。
-    1. 选择“保存”。
+10. 出现提示时，选择“Python 3.6”内核，然后选择“设置内核”。
 
-1. 返回到“添加模块”步骤，选择“下一步”。
+11. 根据注释中的说明编辑笔记本中的第一个单元格。 使用添加到配置文件的相同资源组、订阅 ID 和工作区名称。
 
-1. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 第一个路由通过“amlInput”终结点将消息从温度传感器传输到机器学习模块，这是所有 Azure 机器学习模块都使用的终结点。 第二个路由会将消息从机器学习模块传输到 IoT 中心。 在此路由中，“amlOutput”是所有 Azure 机器学习模块用来输出数据的终结点，“$upstream”表示 IoT 中心。
+12. 通过选择它们并选择“运行”或按下 `Shift + Enter` 来运行笔记本中的单元格。
 
-    ```json
-    {
-        "routes": {
-            "sensorToMachineLearning":"FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/machinelearningmodule/inputs/amlInput\")",
-            "machineLearningToIoTHub": "FROM /messages/modules/machinelearningmodule/outputs/amlOutput INTO $upstream"
-        }
-    }
-    ```
+    >[!TIP]
+    >异常情况检测教程笔记本中的一些单元是可选的，因为它们创建了一些用户可能拥有或可能没有的资源，如 IoT 中心。 如果将现有资源信息放在第一个单元格中，则在运行创建新资源的单元格时会收到错误，因为 Azure 不会创建重复的资源。 这没什么关系，可以忽略错误或完全跳过这些可选部分。 
 
-1. 选择“**下一步**”。
+完成笔记本中的所有步骤后，你将已训练异常情况检测模型，将其构建为 Docker 容器映像，并将该映像推送到 Azure 容器注册表。 然后，你测试了该模型，并最终将其部署到 IoT Edge 设备。 
 
-1. 在“复查部署”步骤中，选择“提交”。
+## <a name="view-container-repository"></a>查看容器存储库
 
-1. 返回到“设备详细信息”页，并选择“刷新”。  你应该会看到新的“machinelearningmodule”在与“tempSensor”模块和 IoT Edge 运行时模块同时运行。
+检查容器映像是否已成功创建并存储在与机器学习环境关联的 Azure 容器注册表中。 在上一节中使用的笔记本自动将容器映像和注册表凭据提供到 IoT Edge 设备，但你应该知道它们的存储位置，以便以后可以自行查找信息。 
+
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到 Azure 机器学习服务工作区。 
+
+2. 概述部分列出了工作区详细信息及其相关资源。 选择“注册表”值，该值应为工作区名称，后跟随机数字。 
+
+3. 在容器注册表中，选择“存储库”。 应会看到一个名为“tempanomalydetection”的存储库，它是通过在前面部分中运行的笔记本创建的。 
+
+4. 选择“tempanomalydetection”。 应看到存储库中有一个标记：1。 
+
+   现在你已知道注册表名称、存储库名称和标记，你知道了容器的完整映像路径。 映像路径如下所示 \<registry_name\>.azurecr.io/tempanomalydetection:1。 映像路径可用于将此容器部署到 IoT Edge 设备。 
+
+5. 在容器注册表中，选择“访问密钥”。 应看到多个访问凭据，包括“登录服务器”以及管理员用户的“用户名”和“密码”。
+
+   这些凭据可以包含在部署清单中，使 IoT Edge 设备能够从注册表中拉取容器映像。 
+
+现在你已了解机器学习容器映像的存储位置。 下一节将逐步介绍它在 IoT Edge 设备上作为已部署模块的性能。 
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
@@ -158,7 +161,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 在 IoT Edge 设备上，可以查看从每个单独的模块发送的消息。
 
-如果在 Linux 设备上执行这些命令，可能需要使用 `sudo` 以获取提升的权限。
+可能需要使用提升权限的 `sudo` 来运行 `iotedge` 命令。 注销并重新登录到设备会自动更新权限。
 
 1. 查看 IoT Edge 设备上的所有模块。
 
@@ -188,7 +191,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 4. 再次选择 **...**，然后选择“开始监视 D2C 消息”。
 
-5. 观察每五秒来自 tempSensor 的消息。 消息正文包含 machinelearningmodule 提供的名为 **anomaly**、值为 true 或 false 的属性。 如果模型成功运行，**AzureMLResponse** 属性包含值“OK”。
+5. 观察每五秒来自 tempSensor 的消息。 消息正文包含 machinelearningmodule 提供的名为 anomaly、值为 true 或 false 的属性。 如果模型成功运行，**AzureMLResponse** 属性包含值“OK”。
 
    ![消息正文中的 Azure 机器学习服务响应](./media/tutorial-deploy-machine-learning/ml-output.png)
 
@@ -199,9 +202,6 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 否则，可以删除本文中创建的本地配置和 Azure 资源，以避免收费。
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
-[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
-
 
 ## <a name="next-steps"></a>后续步骤
 

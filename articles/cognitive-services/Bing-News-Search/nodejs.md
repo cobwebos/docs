@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 287a82292994a629bde8255321c7f603fdf00b67
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 86c00242d2d7dbb9441b09dc327e4ee8cbbd729b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869273"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099961"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>快速入门：使用 Node.js 和必应新闻搜索 REST API 执行新闻搜索
 
@@ -71,7 +71,7 @@ ms.locfileid: "55869273"
         });
         ```
 
-    3. 当通过信号发出了 **end** 标志时，可以查看 JSON 和标头。
+    3. 当通过信号发出了 end 标志时，可以查看 JSON 和标头。
 
         ```javascript
         response.on('end', function () {
@@ -184,4 +184,4 @@ ms.locfileid: "55869273"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-[创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)
+> [创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

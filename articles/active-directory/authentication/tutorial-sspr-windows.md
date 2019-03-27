@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0463a2ad3fa74f33a52e15a246dfd4ffd63107a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200864"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224645"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的“Azure AD 密码重置”
 
@@ -34,7 +34,9 @@ ms.locfileid: "56200864"
    * [已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)，可以通过网络连接到域控制器。
 * 必须启用 Azure AD 自助密码重置。
 * 如果 Windows 10 设备位于代理服务器或防火墙后面，则必须向 HTTPS 流量（端口 443）的“允许的 URL”列表添加 URL、`passwordreset.microsoftonline.com` 和 `ajax.aspnetcdn.com`。
+* Windows 10 的 SSPR 仅支持计算机级别代理
 * 请查看下面的限制，然后再在环境中尝试此功能。
+* 如果使用映像，则在 sysprep 之前，请确保先为内置 Administrator 清除 Web 缓存，再执行 CopyProfile 步骤。 有关此内容的更多信息，请参阅支持文章[使用自定义默认用户配置文件时性能较差](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)。
 
 ## <a name="configure-reset-password-link-using-intune"></a>使用 Intune 配置“重置密码”链接
 

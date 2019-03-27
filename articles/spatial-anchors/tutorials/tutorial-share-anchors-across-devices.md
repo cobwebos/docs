@@ -1,6 +1,6 @@
 ---
 title: 教程 - 使用 Azure 空间定位点在会话和设备间进行共享 | Microsoft Docs
-description: 在本教程中，你会了解如何使用后端服务在 Unity 中的设备之间共享 Azure 空间定位点标识符。
+description: 在本教程中，你会了解如何使用后端服务在 Unity 中的 Android/iOS 设备之间共享 Azure 空间定位点标识符。
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: df7f8aa5b49e3fe17be3b17a6e0f5d8861b26253
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 7d9fe58b7db60513eed81aae628ebd7ca754a53a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753431"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901298"
 ---
 # <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors"></a>教程：使用 Azure 空间定位点在会话和设备间进行共享
 
@@ -41,11 +41,19 @@ Azure 空间定位点是一种跨平台开发人员服务。通过该服务，�
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
+## <a name="open-the-sample-project-in-unity"></a>在 Unity 中打开示例项目
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
 ## <a name="deploy-your-sharing-anchors-service"></a>部署共享定位点服务
 
 打开 Visual Studio，然后在 `Sharing\SharingServiceSample` 文件夹中打开项目。
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
+
+## <a name="open-the-sample-project-in-unity"></a>在 Unity 中打开示例项目
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
@@ -53,7 +61,9 @@ Azure 空间定位点是一种跨平台开发人员服务。通过该服务，�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你在 Azure 中部署了 ASP.NET Core Web 应用，然后配置并部署了 Unity 应用。 你使用应用创建了空间定位点，然后使用 ASP.NET Core Web 应用与其他设备共享它们。 若要了解有关如何改进 ASP.NET Core Web 应用，以便它使用 Cosmos DB 存储共享空间定位点的详细信息，请继续阅读下一个教程。
+在本教程中，你在 Azure 中部署了 ASP.NET Core Web 应用，然后配置并部署了 Unity 应用。 你使用应用创建了空间定位点，然后使用 ASP.NET Core Web 应用与其他设备共享它们。
+
+要详细了解如何改进 ASP.NET Core Web 应用，使其使用 Cosmos DB 存储共享空间定位点，请继续阅读下一个教程。
 
 > [!div class="nextstepaction"]
-> [教程：使用 Cosmos DB 存储定位点](./tutorial-use-cosmos-db-to-store-anchors.md)
+> [教程：使用 Azure Cosmos DB 存储定位点](./tutorial-use-cosmos-db-to-store-anchors.md)

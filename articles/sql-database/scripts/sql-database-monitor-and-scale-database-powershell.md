@@ -11,36 +11,37 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 33523d407fa153958ec9a4d3df44f1cc4c66e43e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/12/2019
+ms.openlocfilehash: 0972df18c65ee6b61db4113eaebc1f2912cd6064
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462386"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892874"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-sql-database"></a>使用 PowerShell 监视和缩放单个 SQL 数据库
 
 此 PowerShell 脚本示例监视数据库的性能指标，将数据库扩展到更高的计算大小，并根据性能指标之一创建警报规则。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=13-14 "Monitor and scale single database")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=15-16 "Monitor and scale single database")]
 
 > [!TIP]
-> 使用 [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) 获取数据库操作的状态，并使用 [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity) 取消数据库上的更新操作。
+> 使用 [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) 获取数据库操作的状态，并使用 [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity) 取消数据库上的更新操作。
 
 ## <a name="clean-up-deployment"></a>清理部署
 
 运行脚本示例后，可以使用以下命令删除资源组以及与其关联的所有资源。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="script-explanation"></a>脚本说明
@@ -49,12 +50,12 @@ Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 
 | 命令 | 说明 |
 |---|---|
- [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | 创建用于存储所有资源的资源组。 |
-| [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | 创建托管单一数据库或弹性池的 SQL 数据库服务器。 |
-| [Get-AzureRmMetric](/powershell/module/azurerm.insights/get-azurermmetric) | 显示数据库的大小使用情况信息。|
-| [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) | 更新数据库属性，或者将数据库移入、移出弹性池或在弹性池之间移动。 |
-| [Add-AzureRMMetricAlertRule](/powershell/module/azurerm.insights/add-azurermmetricalertrule) | 设置警报规则，以便在将来自动监视 DTU。 |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
+ [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库或弹性池的 SQL 数据库服务器。 |
+| [Get-AzMetric](/powershell/module/az.monitor/get-azmetric) | 显示数据库的大小使用情况信息。|
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | 更新数据库属性，或者将数据库移入、移出弹性池或在弹性池之间移动。 |
+| [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | 设置警报规则，以便在将来自动监视 DTU。 |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤

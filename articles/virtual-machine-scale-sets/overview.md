@@ -16,12 +16,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: manayar
-ms.openlocfilehash: 5cd9593bba1e97f52bfa37467920959b1ef0f698
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1ace0ddd3b29f844488eb7579934541fa8273fa0
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329597"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199896"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什么是虚拟机规模集？
 使用 Azure 虚拟机规模集可以创建并管理一组完全相同的、负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新大量 VM。 可以使用虚拟机规模集为计算、大数据和容器工作负荷等领域构建大规模的服务。
@@ -46,7 +46,7 @@ Azure 虚拟机规模集为跨多个 VM 运行的应用程序提供管理功能�
     - 另外，自动缩放还可以尽量降低在需求较低时运行应用程序的不必要的 VM 实例数，并可让客户在需求增加时继续享受可以接受的性能级别，而且会自动添加更多的 VM 实例。 此功能有助于降低成本，并根据需要高效地创建 Azure 资源。
 
 - **大规模工作**
-    - 规模集最多支持 1,000 个 VM 实例。 如果创建和上传自己的自定义 VM 映像，则该限制为 300 个 VM 实例。
+    - 规模集最多支持 1,000 个 VM 实例。 如果创建和上传自己的自定义 VM 映像，则该限制为 600 个 VM 实例。
     - 若要尽量提高生产工作负荷的性能，请使用 [Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)。
 
 

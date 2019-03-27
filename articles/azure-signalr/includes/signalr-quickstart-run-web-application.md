@@ -4,24 +4,24 @@ description: include 文件
 author: anthonychu
 ms.service: signalr
 ms.topic: include
-ms.date: 09/14/2018
+ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 73d40bfb5a7e691cead5a84be70398e9cbf6656a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 73d4d4e1a5f148dce6099b2d747ee1c290bcf7c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262742"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051590"
 ---
 ## <a name="run-the-web-application"></a>运行 Web 应用程序
 
-1. 为方便起见，GitHub 中有一个示例单页 Web 应用程序。 将浏览器打开至 [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat/)。
+1. 为方便起见，GitHub 中有一个示例单页 Web 应用程序。 将浏览器打开至 [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/)。
 
     > [!NOTE]
-    > HTML 文件的源位于 [/docs/demo/chat/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat/index.html)。
+    > HTML 文件的源位于 [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html)。
 
-1. 系统提示输入函数应用的基 URL 时，输入 *http://localhost:7071*。
+1. 系统提示输入函数应用的基 URL 时，输入 `http://localhost:7071`。
 
 1. 出现提示时输入用户名。
 
@@ -32,3 +32,6 @@ ms.locfileid: "53262742"
     ![运行应用程序](../media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-run-application.png)
 
 1. 在另一个浏览器窗口中打开另一个 Web 应用程序实例。 你将看到发送的任何消息都将出现在应用程序的所有实例中。
+
+> [!IMPORTANT]
+> 由于 HTML 页面是使用 HTTPS 提供的，但本地 Azure Functions 运行时默认使用 HTTP，因此浏览器（例如 Firefox）可能会强制执行阻止从网页到函数的请求的混合内容策略。 要解决此问题，请使用没有此限制的浏览器或启动本地 HTTP 服务器，例如 /docs/demo/chat-v2 目录中的 [http-server](https://www.npmjs.com/package/http-server)。 请确保将原点添加到 local.settings.json 中的 `CORS` 设置。

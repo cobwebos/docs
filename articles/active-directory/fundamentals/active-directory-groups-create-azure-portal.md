@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 03/01/2019
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037638367da4b34868befa9934d3b1fbb1b9420d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78e83f4a1aea04bbaea12181419de6c5c06034f2
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161551"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287071"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 创建基本组并添成员
 使用 Azure Active Directory (Azure AD) 门户可以创建基本组。 为了更好地阐述本文，资源所有者（管理员）将基本组添加到单个资源，基本组中包含了需要访问该资源的特定成员（员工）。 有关更复杂的方案（包括动态成员身份和规则创建），请参阅 [Azure Active Directory 用户管理文档](../users-groups-roles/index.yml)。
@@ -31,32 +31,32 @@ ms.locfileid: "56161551"
 
 2. 依次选择“Azure Active Directory”、“组”、“新建组”。
 
-    ![显示组的 Azure AD](media/active-directory-groups-create-azure-portal/group-full-screen.png)
+    ![显示组的 Azure AD 页](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
 3. 在“组”页面中，填写必填信息。
 
     ![已填写示例信息的“新建组”页](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
-    - **组类型（必填）。** 选择预定义的组类型。 这包括：
+   - **组类型（必填）。** 选择预定义的组类型。 这包括：
         
-        - **安全性**。 用于管理成员和一组用户对共享资源的计算机访问权限。 例如，可以为某一特定安全策略创建一个安全组。 以此方式可以一次性为所有成员赋予一组权限，而不必单独地向每个成员添加权限。 有关管理对资源的访问权限的详细信息，请参阅[使用 Azure Active Directory 组管理对资源的访问权限](active-directory-manage-groups.md)。
+       - **安全性**。 用于管理成员和一组用户对共享资源的计算机访问权限。 例如，可以为某一特定安全策略创建一个安全组。 以此方式可以一次性为所有成员赋予一组权限，而不必单独地向每个成员添加权限。 有关管理对资源的访问权限的详细信息，请参阅[使用 Azure Active Directory 组管理对资源的访问权限](active-directory-manage-groups.md)。
         
-        - **Office 365**。 通过向成员赋予对共享邮箱、日历、文件、SharePoint 站点等的访问权限，提供协作机会。 你也可以通过此选项向组织外部的人员赋予对组的访问权限。 有关 Office 365 组的详细信息，请参阅[了解 Office 365 组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
+       - **Office 365**。 通过向成员赋予对共享邮箱、日历、文件、SharePoint 站点等的访问权限，提供协作机会。 你也可以通过此选项向组织外部的人员赋予对组的访问权限。 有关 Office 365 组的详细信息，请参阅[了解 Office 365 组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
 
-    - **组名称（必填）。** 添加组名称，可以使用容易记住以及具有某种意义的名称作为组名称。
+   - **组名称（必填）。** 添加组名称，可以使用容易记住以及具有某种意义的名称作为组名称。
 
-    - **组描述。** 向组添加说明（可选操作）。
+   - **组描述。** 向组添加说明（可选操作）。
 
-    - **成员身份类型（必填）。** 选择预定义的成员身份类型。 这包括：
+   - **成员身份类型（必填）。** 选择预定义的成员身份类型。 这包括：
 
-        - **已分配。** 允许添加特定用户成为该组成员并获得独特权限。 为了更好地阐述本文，我们使用此选项。
+     - **已分配。** 允许添加特定用户成为该组成员并获得独特权限。 为了更好地阐述本文，我们使用此选项。
 
-        - **动态用户。** 允许使用动态组规则自动添加和删除成员。 如果成员的属性改变，系统会查看该目录的动态组规则，了解该成员是满足规则要求（添加），还是不再满足规则要求（删除）。
+     - **动态用户。** 允许使用动态成员身份规则自动添加和删除成员。 如果成员的属性改变，系统会查看该目录的动态组规则，了解该成员是满足规则要求（添加），还是不再满足规则要求（删除）。
 
-        - **动态设备。** 允许使用动态组规则自动添加和删除设备。 如果设备的属性改变，系统会查看该目录的动态组规则，了解该设备是满足规则要求（添加），还是不再满足规则要求（删除）。
+     - **动态设备。** 允许使用动态组规则自动添加和删除设备。 如果设备的属性改变，系统会查看该目录的动态组规则，了解该设备是满足规则要求（添加），还是不再满足规则要求（删除）。
 
-        >[!Important]
-        >可以分别创建设备或用户的动态组，不能同时创建。 也不能根据设备所有者的属性创建设备组。 设备成员资格只能引用设备属性。 有关为用户和设备创建动态组的详细信息，请参阅[创建动态组并检查状态](../users-groups-roles/groups-create-rule.md)。
+       >[!Important]
+       >可以分别创建设备或用户的动态组，不能同时创建。 也不能根据设备所有者的属性创建设备组。 设备成员资格只能引用设备属性。 有关为用户和设备创建动态组的详细信息，请参阅[创建动态组并检查状态](../users-groups-roles/groups-create-rule.md)。
 
 4. 选择“创建”。
 
@@ -71,6 +71,10 @@ ms.locfileid: "56161551"
     “组概述”页已更新，可显示当前添加到组的成员数。
 
     ![突出显示成员数的“组概述”页](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
+
+## <a name="turn-on-or-off-welcome-email"></a>打开或关闭欢迎电子邮件
+
+创建任何新的 Office 365 组时，无论是使用动态还是静态成员身份，都会向添加到该组的所有用户发送欢迎通知。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行潜在的成员身份更改。 添加的用户也会收到欢迎通知。 可以在 [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps) 中关闭此行为。 
 
 ## <a name="next-steps"></a>后续步骤
 现在已添加一个组和至少一个用户，你可以：

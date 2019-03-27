@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cc3f7c72acc0723c522b595ea106f72947e9d014
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 87d0339de117330bf6d586cd653b0d4d16a8cbca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087697"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>教程：使用 IoT 中心配置消息路由
 
@@ -144,7 +144,7 @@ echo "Service Bus namespace = " $sbNameSpace
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
-    
+
 # The Service Bus queue name must be globally unique, so add a random number to the end.
 sbQueueName=ContosoSBQueue$RANDOM
 echo "Service Bus queue name = " $sbQueueName
@@ -276,7 +276,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 现在为存储帐户设置路由。 你转到“消息路由”窗格，然后添加路由。 添加路由时，请为路由定义新的终结点。 此设置完成后，“级别”属性设置为“storage”的消息将自动写入存储帐户。 
 
-数据以 Avro 格式写入 Blob 存储。
+默认情况下，数据以 Avro 格式写入 Blob 存储。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，单击“资源组”，然后选择你的资源组。 本教程使用 ContosoResources。 
 
@@ -301,8 +301,9 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
    > 
    > 例如，使用默认 Blob 文件名格式时，如果中心名称为 ContosoTestHub，日期/时间为 2018 年 10 月 30 日上午 10:56，则 Blob 名称将类似于：`ContosoTestHub/0/2018/10/30/10/56`。
    > 
-   > Blob 以 Avro 格式写入。
-   >
+   > 默认情况下，Blob 以 Avro 格式写入。 你可选择按 JSON 格式写入文件。 JSON 格式编码的功能现处于预览版状态，IoT 中心可在任意区域使用（美国东部、美国西部和欧洲西部除外）。 请参阅[有关路由到 blob 存储的指南](iot-hub-devguide-messages-d2c.md#azure-blob-storage)。
+   > 
+   > 在路由到 blob 存储时，请列出 blob，再循环访问它们，以确保读取所有容器而不进行任何分区假设。 在 [Microsoft 发起的故障转移](iot-hub-ha-dr.md#microsoft-initiated-failover)或 IoT 中心[手动故障转移](iot-hub-ha-dr.md#manual-failover-preview)期间，分区范围可能发生变化。 要了解如何枚举 blob 列表，请参阅[路由到 blob 存储](iot-hub-devguide-messages-d2c.md#azure-blob-storage)
 
 8. 单击“创建”以创建存储终结点并将其添加到路由。 随即返回到“添加路由”窗格。
 
@@ -311,15 +312,15 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
    **名称**：为路由查询输入名称。 本教程使用 StorageRoute。
 
    **终结点**：选择刚刚设置的终结点。 
-   
+
    **数据源**：从下拉列表选择“设备遥测消息”。
 
    **启用路由**：确保启用此选项。
-   
+
    **路由查询**：输入 `level="storage"` 作为查询字符串。 
 
    ![显示为存储帐户创建路由查询的屏幕截图。](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
-   
+
    单击“ **保存**”。 完成后，返回到“消息路由”窗格，可在其中看到存储的新路由查询。 关闭“路由”窗格，将返回到资源组页。
 
 ### <a name="routing-to-a-service-bus-queue"></a>路由到服务总线队列 
@@ -337,14 +338,14 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 4. 填写字段：
 
    **终结点名称**：为终结点输入名称。 本教程使用 CriticalQueue。
-   
+
    **服务总线命名空间**：单击此字段以显示下拉列表；选择你在准备步骤中设置的服务总线命名空间。 本教程使用 ContosoSBNamespace。
 
    **服务总线队列**：单击此字段以显示下拉列表；从下拉列表中选择服务总线队列。 本教程使用 contososbqueue。
 
 5. 单击“创建”添加服务总线队列终结点。 随即返回到“添加路由”窗格。 
 
-6.  现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的服务总线队列的条件。 填充屏幕上的字段。 
+6. 现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的服务总线队列的条件。 填充屏幕上的字段。 
 
    **名称**：为路由查询输入名称。 本教程使用 SBQueueRoute。 
 
@@ -401,7 +402,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
    ![显示为服务总线队列设置连接的屏幕截图。](./media/tutorial-routing/logic-app-define-connection.png)
 
    单击“服务总线”命名空间。 本教程使用 ContosoSBNamespace。 选择该命名空间时，门户会查询该“服务总线”命名空间以检索密钥。 选择“RootManageSharedAccessKey”，并单击“创建”。 
-   
+
    ![显示完成设置连接的屏幕截图。](./media/tutorial-routing/logic-app-finish-connection.png)
 
 6. 在下一步屏幕上，从下拉列表选择队列名称（本教程使用 contososbqueue）。 其余字段可使用默认值。 
@@ -442,9 +443,9 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>将输入添加到流分析作业
 
-4. 在“作业拓扑”下，单击“输入”。
+1. 在“作业拓扑”下，单击“输入”。
 
-5. 在“输入”窗格中，单击“添加流输入”，选择 IoT 中心。 在出现的屏幕上，填写以下字段：
+1. 在“输入”窗格中，单击“添加流输入”，选择 IoT 中心。 在出现的屏幕上，填写以下字段：
 
    **输入别名**：本教程使用 contosoinputs。
 
@@ -457,12 +458,12 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
    **共享访问策略名称**：选择“iothubowner”。 门户将填充共享访问策略密钥。
 
    **使用者组**：选择之前创建的使用者组。 本教程使用 contosoconsumers。
-   
+
    其余字段接受默认值。 
 
    ![显示如何为流分析作业设置输入的屏幕截图。](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-6. 单击“ **保存**”。
+1. 单击“ **保存**”。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>将输出添加到流分析作业
 
@@ -631,4 +632,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 转到下一教程，了解如何管理 IoT 设备的状态。 
 
 > [!div class="nextstepaction"]
-[通过 IoT 中心设置和使用指标和诊断](tutorial-use-metrics-and-diags.md)
+> [通过 IoT 中心设置和使用指标和诊断](tutorial-use-metrics-and-diags.md)

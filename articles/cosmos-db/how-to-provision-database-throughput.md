@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 759adf95604e66209cf3ec5083246d16e952114a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c0a947c9cf2c1d4a11d310b9bab0774a70534a1e
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884182"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259425"
 ---
 # <a name="provision-throughput-for-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中为数据库预配吞吐量
 
-本文介绍如何在 Azure Cosmos DB 中为数据库预配吞吐量。 可以为单个[容器](how-to-provision-container-throughput.md)预配吞吐量，也可以为数据库预配吞吐量，并在数据库中的容器之间共享吞吐量。 可以使用 Azure 门户或 Azure Cosmos DB SDK 来预配数据库级别吞吐量。
+本文介绍如何在 Azure Cosmos DB 中为数据库预配吞吐量。 可以为单个[容器](how-to-provision-container-throughput.md)预配吞吐量，也可以为数据库预配吞吐量，并在数据库中的容器之间共享吞吐量。 若要了解何时使用容器级别和数据库级别吞吐量，请参阅[容器和数据库预配吞吐量的用例](set-throughput.md)一文。 可以使用 Azure 门户或 Azure Cosmos DB SDK 来预配数据库级别吞吐量。
 
 ## <a name="provision-throughput-by-using-azure-portal"></a>使用 Azure 门户预配吞吐量
 
@@ -23,7 +23,7 @@ ms.locfileid: "55884182"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. [创建新的 Azure Cosmos DB 帐户](create-sql-api-dotnet.md#create-a-database-account)或选择现有的帐户。
+1. [创建新的 Azure Cosmos DB 帐户](create-sql-api-dotnet.md#create-account)或选择现有的帐户。
 
 1. 打开“数据资源管理器”窗格，然后选择“新建数据库”。 提供以下详细信息：
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d627158744ae89e3c614d10a64886cee6879a3fb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0c89cdc34c23c461e5cebf3026cb0774bf91b75d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116043"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998559"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>教程：将现有的自定义 SSL 证书绑定到 Azure 应用服务
 
@@ -264,7 +264,7 @@ New-AzWebAppSSLBinding `
 ## <a name="public-certificates-optional"></a>公用证书（可选）
 如果应用需要访问充当客户端的远程资源，而远程资源需要证书身份验证，则可将[公用证书](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)上传到应用。 对应用进行 SSL 绑定不需公用证书。
 
-若要更详细地了解如何在应用中加载和使用公用证书，请参阅[在 Azure 应用服务的应用程序代码中使用 SSL 证书](app-service-web-ssl-cert-load.md)。 还可以对应用服务环境中的应用使用公用证书。 若要将证书存储在 LocalMachine 证书存储中，需要在应用服务环境中使用应用。 有关详细信息，请参阅[如何将公用证书配置到应用服务应用](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)。
+若要更详细地了解如何在应用中加载和使用公用证书，请参阅[在 Azure 应用服务的应用程序代码中使用 SSL 证书](app-service-web-ssl-cert-load.md)。 还可以对应用服务环境中的应用使用公用证书。 如需在 LocalMachine 证书存储空间存储证书，则需要在应用服务环境中使用应用。 有关详细信息，请参阅[如何将公用证书配置到应用服务应用](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)。
 
 ![上传公用证书](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

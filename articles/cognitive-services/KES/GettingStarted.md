@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 815147abba444f0a55a8455c0a818aa048271b92
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309635"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994952"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>知识探索服务入门
 
@@ -64,7 +64,7 @@ ms.locfileid: "56309635"
 
 ## <a name="generate-data"></a>生成数据
 
-数据文件描述要索引的出版物列表，每一行都以 [JSON 格式](http://json.org/)指定论文的属性值。  下面的示例是来自数据文件 Academic.data 的单行，其格式设置具备可读性：
+数据文件描述要索引的出版物列表，每一行都以 [JSON 格式](https://json.org/)指定论文的属性值。  下面的示例是来自数据文件 Academic.data 的单行，其格式设置具备可读性：
 
 ```
 ...
@@ -207,7 +207,7 @@ ms.locfileid: "56309635"
 
 ## <a name="host-the-grammar-and-index-in-a-web-service"></a>在 Web 服务中承载语法和索引
 
-对于快速原型制作，可以使用 [`kes.exe host_service`](CommandLine.md#host_service-command) 在本地计算机的 Web 服务中承载语法和索引。 然后，可以通过 [Web API](WebAPI.md) 来访问服务以验证数据的正确性以及语法设计。 在此示例中，将语法文件 Academic.grammar 和索引文件 Academic.index 承载在 http://localhost:8000/ 中。 请使用以下命令：
+对于快速原型制作，可以使用 [`kes.exe host_service`](CommandLine.md#host_service-command) 在本地计算机的 Web 服务中承载语法和索引。 然后，可以通过 [Web API](WebAPI.md) 来访问服务以验证数据的正确性以及语法设计。 在此示例中，将语法文件 Academic.grammar 和索引文件 Academic.index 承载在 `http://localhost:8000/` 中。 请使用以下命令：
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 
