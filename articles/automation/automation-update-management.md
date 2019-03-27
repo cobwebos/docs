@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5267467b2874c1cc36c8a9f5f27cc1c348eba7ac
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a2adb0dbbacbec28f241ae89d1b9f763e0f00b90
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369762"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447596"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -238,7 +238,7 @@ Heartbeat
 
 ### <a name="multi-tenant"></a>跨租户更新部署
 
-如果你在向“更新管理”进行报告的另一个 Azure 租户中存在需要修补的计算机，则需要使用以下解决方法来计划它们。 你可以使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) cmdlet 和开关 `-ForUpdate` 来创建计划，然后使用 [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+如果你在向“更新管理”进行报告的另一个 Azure 租户中存在需要修补的计算机，则需要使用以下解决方法来计划它们。 你可以使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 和开关 `-ForUpdate` 来创建计划，然后使用 [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) cmdlet 并将另一个租户中的计算机传递给 `-NonAzureComputer` 参数。 以下示例展示了如何执行此操作：
 
 ```azurepowershell-interactive
@@ -355,7 +355,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 除了 Azure 门户中提供的详细信息以外，还可以针对日志执行搜索。 在解决方案页上，选择“Log Analytics”。 此时将打开“日志搜索”窗格。
 
-还可访问 Log Analytics 搜索 API 文档，了解如何自定义查询或从不同客户端使用查询等。
+还可访问 Log Analytics 搜索 API 文档，[了解如何自定义查询或从不同客户端使用查询等](
+https://dev.loganalytics.io/)。
 
 ### <a name="sample-queries"></a>示例查询
 

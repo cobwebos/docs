@@ -9,12 +9,12 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 02/09/2019
-ms.openlocfilehash: 2ac60287c9d92ab6230e1dd6777504036e54492d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: e77556ac0d6f64797906c0f3b4181f147b1668e2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244668"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448411"
 ---
 # <a name="azure-sql-data-warehouse-release-notes-and-documentation-updates"></a>Azure SQL 数据仓库发行说明和文档更新
 
@@ -22,9 +22,10 @@ Azure SQL 数据仓库 (SQL DW) 是基于云的企业数据仓库，可利用大
 
 单击下面的链接可了解有关 Azure SQL 数据仓库的最新版本中可以预期的新功能和改进的更多信息。 你可以期望在确定的维护计划期间收到这些服务更新。
 
-- [SQL 数据仓库版本 10.0.10106.0（一月）](./release-notes-10-0-10106-0.md)
-- [2018 年 12 月](./release-notes-december-2018.md)
-- [2018 年 10 月](./release-notes-october-2018.md)
+- [2019 年 3 月](./release-notes-10-0-10106-0.md#march-2019)
+- [2019 年 1 月](./release-notes-10-0-10106-0.md#january-2019)
+- [2018 年 12 月](./release-notes-10-0-10106-0.md#december-2018)
+- [2018 年 10 月](./release-notes-10-0-10106-0.md#october-2018)
 - [2018 年 9 月](./release-notes-september-2018.md)
 - [2018 年 8 月](./release-notes-august-2018.md)
 - [2018 年 7 月](./release-notes-july-2018.md)
@@ -39,9 +40,9 @@ Azure SQL 数据仓库 (SQL DW) 是基于云的企业数据仓库，可利用大
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-示例输出：![SQL 数据仓库版本](./media/release-notes/dw-version.png)
+示例输出：![SQL 数据仓库版本](./media/release-notes/sql_data_warehouse_version.png)
 
-请使用标识的版本确认已将哪个版本应用于 Azure SQL 数据仓库。 
+请使用标识的日期确认已将哪个版本应用于 Azure SQL 数据仓库。 
 
 
 ## <a name="next-steps"></a>后续步骤

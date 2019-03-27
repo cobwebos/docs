@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: c64a3455e1189b83558707a96dc80b88dc242b48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eaea0719aa8ca981da68841dae365decdd3c860e
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181650"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499856"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自定义 Media Encoder Standard 预设  
 
@@ -28,6 +28,9 @@ ms.locfileid: "58181650"
 本文演示如何通过使用自定义预设的 Media Encoder Standard (MES) 执行高级编码。 本文使用 .NET 创建编码任务和执行此任务的作业。  
 
 本文介绍如何使用 [H264 多比特率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 预设并减少层数，从而自定义预设。 [自定义 Media Encoder Standard 预设](media-services-advanced-encoding-with-mes.md)这篇文章演示了可用于执行高级编码任务的自定义预设。
+
+> [!NOTE]
+> 不能用于在本文中所述的自定义预设[媒体服务 V3](https://docs.microsoft.com/azure/media-services/latest/)转换或 CLI 命令。 请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)的更多详细信息。
 
 ## <a id="customizing_presets"></a>自定义 MES 预设
 
@@ -260,6 +263,11 @@ namespace CustomizeMESPresests
     }
 }
 ```
+
+## <a name="see-also"></a>另请参阅
+
+- [如何使用 CLI 编码自定义转换](../latest/custom-preset-cli-howto.md)
+- [使用媒体服务 v3 进行编码](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

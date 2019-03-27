@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53c14ce92a422c2254a1e9b7fc4989b49790a88a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774432"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487308"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置会采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Office 365 工作负荷的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -99,6 +99,12 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
 3. [应用并验证更改](#apply-and-verify-changes)。
 
 ### <a name="select-the-domains-to-be-synchronized"></a>选择要同步的域
+有两种方法来选择要同步的域：
+    - 使用同步服务
+    - 使用 Azure AD Connect 向导。
+
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>选择要使用同步服务同步的域
 若要设置域筛选器，请执行以下步骤：
 
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
@@ -112,6 +118,17 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
    ![需要刷新](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. 完成后，请单击“确定”关闭“属性”对话框。 如果在林中删除了域，屏幕上会弹出消息，指出已删除域且将清除配置。
 7. 继续调整运行配置文件。
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>选择要使用 Azure AD Connect 向导同步的域
+若要设置域筛选器，请执行以下步骤：
+
+1.  启动 Azure AD Connect 向导
+2.  单击 **“配置”**。
+3.  选择**自定义同步选项**然后单击**下一步**。
+4.  输入 Azure AD 凭据
+5.  上**连接目录**屏幕单击**下一步**。
+6.  上**域和 OU 筛选页面**单击**刷新**。  现在会出现不良的新域，已删除的域会消失。
+   ![分区](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>更新运行配置文件
 如果已修改域筛选器，则还需要更新运行配置文件。

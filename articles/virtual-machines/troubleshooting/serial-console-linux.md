@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 4fd96aedc658833493d6fddb704104a70c01df44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f407d87249c44ad3a4773b2cd8fc85ee09506ceb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010989"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445661"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>适用于 Linux 的虚拟机串行控制台
 
@@ -41,9 +41,9 @@ ms.locfileid: "58010989"
 
 - 使用串行控制台的 Azure 帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
-    - 你要在其中访问串行控制台的 VM 必须具有基于密码的帐户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。
+- 你要在其中访问串行控制台的 VM 必须具有基于密码的帐户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。
 
-    - 有关特定于 Linux 分发版的设置，请参阅[串行控制台 Linux 分发版可用性](#serial-console-linux-distribution-availability)。
+- 有关特定于 Linux 分发版的设置，请参阅[串行控制台 Linux 分发版可用性](#serial-console-linux-distribution-availability)。
 
 
 
@@ -85,12 +85,11 @@ Oracle Linux        | 默认已启用串行控制台访问。
 
 场景          | 串行控制台中的操作
 :------------------|:-----------------------------------------
-*FSTAB* 文件受损 | 按 **Enter** 键继续，然后使用文本编辑器修复 *FSTAB* 文件。 可能需要在单用户模式下执行此操作。 有关详细信息，请参阅[如何修复 fstab 问题](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)和[使用串行控制台访问 GRUB 和单用户模式](serial-console-grub-single-user-mode.md)。
-错误的防火墙规则 | 访问串行控制台并修复 iptables。
-文件系统损坏/检查 | 访问串行控制台并恢复文件系统。
-SSH/RDP 配置问题 | 访问串行控制台并更改设置。
-网络锁定系统| 通过 Azure 门户访问串行控制台以管理系统。
-与引导加载程序交互 | 从串行控制台边栏选项卡中重启 VM 以访问 Linux VM 上的 GRUB。 有关详细信息，请参阅[使用串行控制台访问 GRUB 和单用户模式](serial-console-grub-single-user-mode.md)。
+*FSTAB* 文件受损 | 按 **Enter** 键继续，然后使用文本编辑器修复 *FSTAB* 文件。 可能需要在单用户模式下执行此操作。 有关详细信息，请参阅的串行控制台部分[如何修复 fstab 问题](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)并[使用串行控制台访问 GRUB 和单用户模式下](serial-console-grub-single-user-mode.md)。
+错误的防火墙规则 |  如果已配置 ip 表来阻止 SSH 连接，可以使用串行控制台进行与 VM 交互而无需 SSH。 更多详细信息，请参阅[iptables 手册页](https://linux.die.net/man/8/iptables)。 同样，如果您 firewalld 阻止 SSH 访问，可以通过串行控制台访问 VM，并重新配置 firewalld。 更多详细信息可在[firewalld 文档](https://firewalld.org/documentation/)。
+文件系统损坏/检查 | 请参阅的串行控制台部分[Azure Linux VM 因文件系统错误而无法启动](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck)的详细故障排除的详细信息已损坏的文件系统使用串行控制台。
+SSH 配置问题 | 访问串行控制台并更改设置。 串行控制台可以使用而不考虑 VM 的 SSH 配置，因为它不需要 VM 具有网络连接。 故障排除指南位于[排除使用 SSH 连接到 Azure Linux VM 的失败，出现错误，或被拒绝](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection)。 更多详细信息位于[详细 SSH 故障排除连接到 Azure 中的 Linux VM 的问题的步骤](./detailed-troubleshoot-ssh-connection.md)
+与引导加载程序交互 | 从串行控制台边栏选项卡中重启 VM 以访问 Linux VM 上的 GRUB。 有关更多详细信息和特定于发行版的信息，请参阅[使用串行控制台访问 GRUB 和单用户模式下](serial-console-grub-single-user-mode.md)。
 
 ## <a name="disable-the-serial-console"></a>禁用串行控制台
 默认情况下，所有订阅为所有 VM 启用了串行控制台访问。 可以在订阅级别或 VM 级别禁用串行控制台。

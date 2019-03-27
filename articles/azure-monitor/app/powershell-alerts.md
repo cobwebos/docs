@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1da3b71cbb809c92ba3228676f8a47235829b499
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309530"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481785"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 
@@ -41,7 +41,7 @@ ms.locfileid: "57309530"
 ## <a name="connect-to-azure"></a>连接到 Azure
 启动 Azure PowerShell 并[连接到订阅](/powershell/azure/overview)：
 
-```PowerShell
+```powershell
 
     Add-AzAccount
 ```

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: d66db88dd1e962acc63c960270bb5685218aa391
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 23654dd41714314ab5c9f217d4f805d7b9d62413
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316044"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472800"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -41,7 +41,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
    从版本 2018-05-01-preview 开始，事件网格支持手动验证握手。 如果你在创建事件订阅时使用的 SDK 或工具使用了 API 版本 2018-05-01-preview 或更高版本，则事件网格将在订阅验证事件的数据部分中发送 `validationUrl` 属性。 若要完成握手，请在事件数据中找到该 URL 并向其发送一个 GET 请求。 你可以使用 REST 客户端或 Web 浏览器。
 
-   所提供的 URL 的有效期为 10 分钟。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 10 分钟内未完成手动验证，则配置状态被设为 `Failed`。 你将必须在开始手动验证之前重新创建事件订阅。
+   所提供的 URL 的有效期为 5 分钟。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 10 分钟内未完成手动验证，则配置状态被设为 `Failed`。 你将必须在开始手动验证之前重新创建事件订阅。
 
 ### <a name="validation-details"></a>验证详细信息
 

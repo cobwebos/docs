@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871530"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486034"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure 存储中的灾难恢复和存储帐户故障转移（预览版）
 
@@ -121,14 +121,14 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 若要注册预览版，请在 PowerShell 中运行以下命令。 请务必将括号中的占位符替换为你自己的订阅 ID：
 
-```PowerShell
+```powershell
 Connect-AzureRmAccount -SubscriptionId <subscription-id>
 Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 可能需要 1-2 天的时间，才能获准使用预览版。 若要验证注册是否已获准，请运行以下命令：
 
-```PowerShell
+```powershell
 Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
@@ -164,6 +164,7 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 - 无法对使用 Azure Data Lake Storage Gen2 分层命名空间的存储帐户执行故障转移。
 - 无法对包含已存档 blob 的存储帐户执行故障转移。 请在你不打算执行故障转移的单独存储帐户中维护已存档 blob。
 - 无法对包含高级块 blob 的存储帐户执行故障转移。 支持高级块 blob 的存储帐户暂不支持异地冗余。
+- 完成故障转移后如果最初启用了以下功能将停止工作：[事件订阅](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)，[生命周期策略](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)，[存储分析日志记录](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging)。
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>除了故障转移外，还可以复制数据
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e594ace368799f85eea2e7291ead6febea0ea4b7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dc6e218fe048e1781f53c53935308eb193fcd094
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543876"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487152"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>使用 PowerShell 基于 VHD 文件创建自定义映像
 
@@ -37,20 +37,20 @@ ms.locfileid: "57543876"
 
 1. 在 PowerShell 提示符下，登录到 Azure 帐户的以下调用**Connect AzAccount** cmdlet。  
     
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 
 1.  选择所需的 Azure 订阅，通过调用**选择 AzSubscription** cmdlet。 将 **$subscriptionId** 变量的以下占位符替换为有效的 Azure 订阅 ID。 
 
-    ```PowerShell
+    ```powershell
     $subscriptionId = '<Specify your subscription ID here>'
     Select-AzSubscription -SubscriptionId $subscriptionId
     ```
 
 1.  获取实验室对象通过调用**Get AzResource** cmdlet。 将 **$labRg** 和 **$labName** 变量的以下占位符替换为环境的相应值。 
 
-    ```PowerShell
+    ```powershell
     $labRg = '<Specify your lab resource group name here>'
     $labName = '<Specify your lab name here>'
     $lab = Get-AzResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
@@ -58,20 +58,20 @@ ms.locfileid: "57543876"
  
 1.  从实验室对象中获取实验室存储帐户和实验室存储帐户密钥值。 
 
-    ```PowerShell
+    ```powershell
     $labStorageAccount = Get-AzResource -ResourceId $lab.Properties.defaultStorageAccount 
     $labStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
     ```
 
 1.  将 **$vhdUri** 变量的以下占位符替换为已上传 VHD 文件的 URI。 可以从 Azure 门户中存储帐户的 blob 边栏选项卡获取 VHD 文件的 URI。
 
-    ```PowerShell
+    ```powershell
     $vhdUri = '<Specify the VHD URI here>'
     ```
 
 1.  创建自定义映像使用**新建 AzResourceGroupDeployment** cmdlet。 将 **$customImageName** 和 **$customImageDescription** 变量的以下占位符替换为对环境有意义的名称。
 
-    ```PowerShell
+    ```powershell
     $customImageName = '<Specify the custom image name>'
     $customImageDescription = '<Specify the custom image description>'
 
@@ -84,7 +84,7 @@ ms.locfileid: "57543876"
 
 以下 PowerShell 脚本可用于基于 VHD 文件创建自定义映像。 将占位符（以尖括号开始和结束）替换为所需的相应值。 
 
-```PowerShell
+```powershell
 # Log in to your Azure account.  
 Connect-AzAccount
 

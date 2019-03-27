@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 1c28c0bb3fdc2bb94595910ccff9f86769b17da5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 81e00c4a3b9490a05667d58952f7bdf8945bacdb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547123"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446590"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>针对通过 SSH 连接到 Azure Linux VM 时发生的失败、错误或被拒绝问题进行故障排除
 尝试连接到 Linux 虚拟机 (VM) 时，可能会由于安全外壳 (SSH) 错误、SSH 连接失败或 SSH 被拒绝而发生问题，本文可帮助你查找并更正这些问题。 可以使用 Azure 门户、Azure CLI 或适用于 Linux 的 VM 访问扩展来排查和解决连接问题。
@@ -37,7 +37,7 @@ ms.locfileid: "57547123"
 3. 验证[网络安全组](../../virtual-network/security-overview.md)规则是否允许 SSH 流量。
    * 确保有一条[网络安全组规则](#security-rules)允许 SSH 流量（默认为 TCP 端口 22）。
    * 在不使用 Azure 负载均衡器的情况下无法使用端口重定向/映射。
-4. 查看 [VM 资源运行状况](../../resource-health/resource-health-overview.md)。 
+4. 查看 [VM 资源运行状况](../../resource-health/resource-health-overview.md)。
    * 确保 VM 报告为正常。
    * 如果[已启用启动诊断](boot-diagnostics.md)，请验证 VM 是否在日志中报告了启动错误。
 5. [重启 VM](#restart-vm)。
@@ -49,6 +49,7 @@ ms.locfileid: "57547123"
 可以使用以下方法之一重置凭据或 SSH 配置：
 
 * [Azure 门户](#use-the-azure-portal) - 如果需要快速重置 SSH 配置或 SSH 密钥，并且没有安装 Azure 工具，则很适合使用此方法。
+* [Azure VM 的串行控制台](https://aka.ms/serialconsolelinux)-虚拟机串行控制台将工作而不考虑 SSH 配置，并将为您提供一个交互式控制台到 VM。 实际上，"不能 SSH"情况下都是尤其是串行控制台是旨在帮助解决。 下面的更多详细信息。
 * [Azure CLI](#use-the-azure-cli) - 如果已打开命令行，则可以快速重置 SSH 配置或凭据。 如果要处理经典 VM，则可以使用 [Azure 经典 CLI](#use-the-azure-classic-cli)。
 * [Azure VMAccessForLinux 扩展](#use-the-vmaccess-extension) - 创建和重复使用 json 定义文件来重置 SSH 配置或用户凭据。
 
@@ -76,6 +77,26 @@ ms.locfileid: "57547123"
 ### <a name="check-routing"></a>检查路由
 
 使用网络观察程序的[下一跃点](../../network-watcher/network-watcher-check-next-hop-portal.md)功能确认路由未阻止将流量路由到虚拟机或从虚拟机路由流量。 还可以查看有效路由，以了解网络接口的所有有效路由。 有关详细信息，请参阅[使用有效路由排查 VM 流量流问题](../../virtual-network/diagnose-network-routing-problem.md)。
+
+## <a name="use-the-azure-vm-serial-console"></a>使用 Azure 虚拟机串行控制台
+[Azure 虚拟机串行控制台](./serial-console-linux.md)提供对 Linux 虚拟机用于基于文本的控制台的访问。 可以使用控制台进行故障排除交互式 shell 中建立的 SSH 连接。 请确保已满足[先决条件](./serial-console-linux.md#prerequisites)使用串行控制台，然后重试的以下命令进一步排查 SSH 连接。
+
+### <a name="check-that-ssh-is-running"></a>检查正在运行 SSH
+可以使用以下命令来验证 SSH 上你的 VM 是否正在运行：
+```
+$ ps -aux | grep ssh
+```
+如果没有任何输出，则 SSH 已启动并运行。
+
+### <a name="check-which-port-ssh-is-running-on"></a>检查运行 SSH 的端口
+可以使用以下命令来检查运行 SSH 的端口：
+```
+$ sudo grep Port /etc/ssh/sshd_config
+```
+你的输出将如下所示：
+```
+Port 22
+```
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户（如果尚未这样做）。
@@ -209,8 +230,8 @@ azure vm restart --resource-group myResourceGroup --name myVM
 
 > [!NOTE]
 > 完成此操作后，临时磁盘数据将丢失，系统将更新与虚拟机关联的动态 IP 地址。
-> 
-> 
+>
+>
 
 ### <a name="azure-portal"></a>Azure 门户
 要使用 Azure 门户重新部署 VM，请选择 VM，并向下滚动到“支持 + 故障排除”部分。 选择“重新部署”，如以下示例中所示：
@@ -236,12 +257,12 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 
 * 从 [Azure 门户](https://portal.azure.com)重置远程访问。 在 Azure 门户中，选择你的 VM，然后选择“重置远程...”。
 * 重启 VM。 在 [Azure 门户](https://portal.azure.com)中，选择你的 VM，然后选择“重启”。
-    
+
 * 将 VM 重新部署到新的 Azure 节点。 有关如何重新部署 VM 的信息，请参阅[将虚拟机重新部署到新的 Azure 节点](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-  
+
     完成此操作后，临时磁盘数据会丢失，并且系统会更新与虚拟机关联的动态 IP 地址。
 * 按照[如何为基于 Linux 的虚拟机重置密码或 SSH](../linux/classic/reset-access-classic.md) 中的说明执行以下操作：
-  
+
   * 重置密码或 SSH 密钥。
   * 创建 *sudo* 用户帐户。
   * 重置 SSH 配置。

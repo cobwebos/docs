@@ -3,7 +3,7 @@ title: 引发的常见 FabricClient 异常 | Microsoft 文档
 description: 描述在执行应用程序和群集管理操作时，FabricClient API 可能会引发的常见异常和错误。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: oanapl
 manager: timlt
 editor: ''
 ms.assetid: bb821313-b221-479f-b08e-36cf07e60a07
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/20/2018
-ms.author: ryanwi
-ms.openlocfilehash: fae345530a28bc7fdb875570546b125b13a79310
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.author: oanapl
+ms.openlocfilehash: 2932274849782b1f485a97813c281850b53fc15d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104026"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499448"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>使用 FabricClient API 时常见的异常和错误
 借助 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API，群集和应用程序管理员可以对 Service Fabric 应用程序、服务或群集执行管理任务。 例如，部署、升级和删除应用程序、检查群集的运行状况或测试服务。 应用程序开发人员和群集管理员可以使用 FabricClient API 来开发用于管理 Service Fabric 群集和应用程序的工具。
@@ -28,7 +28,7 @@ ms.locfileid: "56104026"
 
 | 异常 | 引发时机 |
 | --- |:--- |
-| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 对象处于关闭状态。 释放正在使用的 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 对象，并实例化新的 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 对象。 |
+| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 对象处于关闭状态。 释放正在使用的 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 对象，然后实例化新的 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 对象。 |
 | [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception) |操作超时。如果完成操作所需的时间超过 MaxOperationTimeout，则返回 [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode)。 |
 | [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception) |对操作的访问权限检查失败。 返回了 E_ACCESSDENIED。 |
 | [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |执行操作时发生运行时错误。 任何 FabricClient 方法都可能引发 [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception)，[ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception.ErrorCode) 属性指明了引发异常的确切原因。 [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) 枚举中定义了错误代码。 |

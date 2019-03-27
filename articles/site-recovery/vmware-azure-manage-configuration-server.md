@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: da7750198f76bc9e17c23b1347e9fc78262aa06c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d8b0d78d33c0780b05ac6f4bd8a21c6423d801f4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086949"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445068"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
 
@@ -234,7 +234,7 @@ ProxyPassword="Password"
 
 还可以选择使用 PowerShell 删除配置服务器。
 
-1. [安装](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell 模块。
+1. [安装](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) Azure PowerShell 模块。
 2. 使用以下命令登录到你的 Azure 帐户：
 
     `Connect-AzureRmAccount`

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: b02f5011b9482481ca3fbe439061c160b3c73a1e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016607"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481393"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 
@@ -30,7 +30,7 @@ ms.locfileid: "54016607"
 
 记下接收方的 IP 地址。 暂且将该 IP 称为“a.b.c.r”
 
-记下 VM 上的核心数。 暂且将其称为“\#num\_cores”
+记下 VM 上的核心数。 我们将其称为“\#num\_cores”
 
 在发送方 VM 和接收方 VM 上运行 NTTTCP 测试 300 秒（5 分钟）。
 
@@ -46,7 +46,7 @@ ms.locfileid: "54016607"
 发送方参数：ntttcp -s10.27.33.7 -t 10 -n 1 -P 1
 
 > [!NOTE]
-> 以上示例应仅用于确认配置。 本文档中稍后介绍测试的有效示例。
+> 以上示例应仅用于确认配置。 本文档稍后会介绍测试的有效示例。
 
 ## <a name="testing-vms-running-windows"></a>测试运行 WINDOWS 的 VM：
 
@@ -132,13 +132,13 @@ ntttcp -s10.0.0.4 -t 300
 
 #### <a name="from-linux-to-windows"></a>从 Linux 到 Windows：
 
-接收方 <Windows>：
+接收方\<Windows >:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-发送方 <Linux>：
+发件人\<Linux >:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -146,13 +146,13 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>从 Windows 到 Linux：
 
-接收方 <Linux>：
+接收方\<Linux >:
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-发送方 <Windows>：
+发件人\<Windows >:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300

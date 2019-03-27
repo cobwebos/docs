@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: a63a10225f4dc55092c62e39b22cdf15d7f7ca5e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: aa287111a9880911c7807734b566bf60f42db85e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217507"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447790"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
@@ -133,7 +133,7 @@ ms.locfileid: "56217507"
 下面为应用程序为实现对 KeyVault 的身份验证而获取凭据的方式：
 
 A. 在应用程序生成/打包作业期间，可以将证书拉进 SF 应用的数据包中，并使用此实现对 KeyVault 的身份验证。
-B. 对于支持虚拟机规模集 MSI 的主机，可为 SF 应用开发一个简单的 PowerShell SetupEntryPoint，以便[从 MSI 终结点获取访问令牌](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然后[从 KeyVault 检索机密](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0)
+B. 对于支持虚拟机规模集 MSI 的主机，可为 SF 应用开发一个简单的 PowerShell SetupEntryPoint，以便[从 MSI 终结点获取访问令牌](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然后[从 KeyVault 检索机密](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret)
 
 ## <a name="application-design"></a>应用程序设计
 
@@ -175,7 +175,7 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 ## <a name="other-questions"></a>其他问题
 
-### <a name="how-does-service-fabric-relate-to-containers"></a>Service Fabric 与容器之间存在怎样的关系？
+### <a name="how-does-service-fabric-relate-to-containers"></a>Service Fabric 如何与容器关联？
 
 容器提供打包服务及其依赖项的简单方法，以便它们能够在所有环境中一致地运行并且可在单台计算机上以隔离方式运行。 Service Fabric 提供部署和管理服务的方法，包括 [已打包在容器中的服务](service-fabric-containers-overview.md)。
 

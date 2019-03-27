@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ff543b7275ab05a83b1be1d156cbc6059a3b5430
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 08fdc20df70e4a97dd0cb99468354ef2b5c51f2b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369882"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447037"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>访问 Azure blob 和队列使用 Azure Active Directory 进行身份验证
 
@@ -22,8 +22,6 @@ Azure 存储支持为 Blob 和队列服务使用 Azure Active Directory (AD) 进
 与其他授权方式相比，使用 Azure AD 凭据对用户或应用程序进行身份验证可以提供优越的安全性和易用性。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。 Microsoft 建议尽量对 Azure 存储应用程序使用 Azure AD 身份验证。
 
 身份验证和授权与 Azure AD 凭据是适用于所有常规用途 v2、 常规用途 v1 和 Blob 存储帐户中的所有公共区域。 只有存储帐户使用 Azure 资源管理器部署模型支持创建 Azure AD 授权。
-
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blob 和队列的 Azure AD 的概述
 
@@ -41,7 +39,11 @@ RBAC 角色分配到 Azure AD 安全主体，Azure 授予访问这些资源时�
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-若要了解如何将在 Azure 门户中的内置角色分配，请参阅[授予对 Azure 容器和队列使用 RBAC 在 Azure 门户中的访问](storage-auth-aad-rbac.md)。
+若要了解如何分配内置的 RBAC 的 Azure 存储资源，请参阅以下主题之一：
+
+- [授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问权限](storage-auth-aad-rbac-portal.md)
+- [授予对 Azure blob 和队列数据与使用 Azure CLI 的 RBAC 访问权限](storage-auth-aad-rbac-cli.md)
+- [授予对 Azure blob 和队列数据与使用 PowerShell 的 RBAC 访问权限](storage-auth-aad-rbac-powershell.md)
 
 ### <a name="access-permissions-granted-by-rbac-roles"></a>通过 RBAC 角色授予访问权限 
 
@@ -49,7 +51,6 @@ RBAC 角色分配到 Azure AD 安全主体，Azure 授予访问这些资源时�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [授予对 Azure 容器和 Azure 门户中使用 RBAC 的队列的访问权限](storage-auth-aad-rbac.md)
 - [从应用程序中使用 Azure Active Directory 进行身份验证以访问 blob 和队列](storage-auth-aad-app.md)
 - [进行对 blob 和队列管理的标识访问 Azure 资源的身份验证](storage-auth-aad-msi.md)
-- [使用 Azure AD 标识访问 Azure 存储使用 CLI 或 PowerShell](storage-auth-aad-script.md)
+- Azure 文件仅支持使用 Azure AD 通过 SMB 进行身份验证，以用于加入域的 VM（预览版）。 若要了解有关在 Azure 文件中通过 SMB 使用 Azure AD 的信息，请参阅[通过 SMB 对 Azure 文件进行 Azure Active Directory身份验证概述（预览版）](../files/storage-files-active-directory-overview.md)。

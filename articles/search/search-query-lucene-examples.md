@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c7c120b9bac33f71df72650d8a9d9a72e819d227
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 6f7fce7eab697f6517b351d00595cb02110d3641
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439178"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499567"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>使用"完整"Lucene 搜索语法 （Azure 搜索中的高级查询） 的查询示例
 
@@ -139,6 +139,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 * business_title:(senior NOT junior)
 * state:("New York" AND "New Jersey")
+* business_title:(senior NOT junior) AND posting_type:external
 
 如果想要两个字符串评估为单个实体，请务必将多个字符串放置在引号内，正如这个在位置字段中搜索两个不同城市的情况一样。 此外，请确保运算符大写，就像你看到的 NOT 和 AND 一样。
 

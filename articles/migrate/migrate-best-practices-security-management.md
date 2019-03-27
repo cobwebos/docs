@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 0bd19492c844e217dc520ae0c189ca467bb7ac0a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: afcd180146bc349bda9375f10eb56f85f67ccb52
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011084"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498731"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>有关保护和管理已迁移到 Azure 的工作负荷的最佳做法
 
@@ -437,7 +437,7 @@ Azure SQL 数据库是完全托管式的 PaaS 数据库引擎。 它提供许多
 
 **了解更多：**
 
-- 适用于 Azure DevOps 的[数据保护](https://docs.microsoft.com/azure/devops/articles/team-services-security-whitepaper?view=vsts)。
+- 适用于 Azure DevOps 的[数据保护](/azure/devops/organizations/security/data-protection)。
 
 ## <a name="best-practice-set-up-disaster-recovery"></a>最佳做法：设置灾难恢复 
 

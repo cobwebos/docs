@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880919"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445642"
 ---
 # <a name="azure-networking"></a>Azure 网络
 
@@ -34,7 +34,7 @@ Azure 提供可以结合使用或单独使用的各种网络功能。 请单击�
 - [可管理性](#manageability)：监视和管理 Azure 网络资源。
 - [部署和配置工具](#tools)：使用基于 Web 的门户或跨平台命令行工具来部署和配置网络资源。
 
-## <a name="Connectivity"></a>Azure 资源之间的连接
+## <a name="connectivity"></a>Azure 资源之间的连接
 
 虚拟机、云服务、虚拟机规模集和 Azure 应用服务环境等 Azure 资源可以通过 Azure 虚拟网络 (VNet) 进行私密通信。 VNet 是对专用于[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json)的 Azure 云进行的逻辑隔离。 可在每个 Azure 订阅和 Azure [区域](https://azure.microsoft.com/regions)中实现多个 VNet。 每个 VNet 与其他 VNet 隔离。 对于每个 VNet，可执行以下操作：
 
@@ -150,7 +150,7 @@ Azure 提供以下工具用于监视和管理网络：
 可使用以下任何工具来部署和配置 Azure 网络资源：
 
 - **Azure 门户：** 在浏览器中运行的图形用户界面。 打开 [Azure 门户](https://portal.azure.com)。
-- **Azure PowerShell：** 用于在 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure PowerShell 概述](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure PowerShell 的详细信息。
+- **Azure PowerShell：** 用于在 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure PowerShell 的详细信息。
 - **Azure 命令行界面 (CLI)：** 用于在 Linux、macOS 或 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure CLI 概述](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure CLI 的详细信息。
 - **Azure 资源管理器模板：** 用于定义 Azure 解决方案的基础结构和配置的文件（采用 JSON 格式）。 使用模板，可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解如何创作模板，请参阅[有关创作模板的最佳做法](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。 可以使用 Azure 门户、CLI 或 PowerShell 部署模板。 若要立即开始使用模板，请部署 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=network)库中预配置的众多模板之一。 
 

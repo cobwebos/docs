@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 9b739fe3a8bd068d55009498b56f315b197769b1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 03df2ceb2df4d857e48f1790703a1d87647e43d0
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727530"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445280"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 中心设备管理
 
@@ -48,7 +48,7 @@ ms.locfileid: "56727530"
 * 一个有效的 Azure 订阅。
 * 已在订阅中创建一个 Azure IoT 中心。
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [适用于 VS Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+* [适用于 VS Code 的 azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或[在 Visual Studio Code 中打开此链接](vscode:extension/vsciot-vscode.azure-iot-tools)。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 

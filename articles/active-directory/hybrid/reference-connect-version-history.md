@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 840ea818c7c2e197f1ab65f4bd61067bf5e51283
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ab0e7ce1891dc3553f89f652c7dac70e66a4df0
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57836974"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499907"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -40,6 +40,56 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 >[!NOTE]
 >并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态将指示版本是否可用于自动升级或仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect。 请注意，并非所有 Azure AD Connect 配置都有资格进行自动升级。 请点击此链接阅读有关[自动升级](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)的详细信息
+
+## <a name="13900"></a>1.3.90.0 
+
+### <a name="release-status"></a>版本状态 
+
+3/25/2019:尚未发布 
+ 
+### <a name="new-features-and-improvements"></a>新增功能和改进 
+
+
+
+- 添加对域刷新的支持 
+- Exchange 邮件公用文件夹功能公开上市 
+- 提高处理服务故障的向导错误 
+- 添加了的连接器属性页面上的旧 UI 的警告链接。 
+- 统一组写回功能现已正式上市 
+- 改进了的 SSPR 时收到错误消息 DC 缺少 LDAP 控件 
+- 安装添加的诊断信息过程中的 DCOM 注册表错误  
+- 改进了跟踪的 PHS RPC 错误 
+- 允许从子域的 EA 凭据 
+- 允许在安装 （默认名称 ADSync） 过程中输入数据库名称
+- 升级到 ADAL 3.19.8 为 Ping 选取的 WS 信任修补程序并添加对新的 Azure 实例的支持 
+- 修改组同步规则来传送 samAccountName、 DomainNetbios 和 DomainFQDN 到云-所需的声明 
+- 修改默认同步规则处理 – 阅读更多[此处](how-to-connect-fix-default-rules.md)。
+- 添加新的代理作为 windows 服务运行。 此代理，名为"管理代理"，让你的 Azure AD Connect 服务器，以帮助进行故障排除时打开一个支持案例的 Microsoft 工程师的更深入地远程诊断。 阅读有关管理代理的详细信息[此处](whatis-aadc-admin-agent.md)。 
+- 更新最终用户许可协议 (EULA) 
+- 添加了自动升级为使用 AD FS 作为登录名类型的部署支持。  这也将删除作为升级过程的一部分更新 AD FS 的 Azure AD 信赖方信任的要求。 
+- 添加一个 Azure AD 信任管理任务，提供两个选项： 分析/更新信任和重置信任。 
+- 更改 AD FS 的 Azure AD 信赖方信任行为，以便它始终使用-SupportMultipleDomain 开关 (包括信任和 Azure AD 域更新)。 
+- 更改安装新的 AD FS 场行为，以使其通过删除使用预安装的证书的选项需要.pfx 证书。
+- 更新安装新的 AD FS 场工作流，使它只允许 1年个 AD FS 和 1 个 WAP 服务器部署。  初始安装后，将完成所有其他服务器。 
+
+### <a name="fixed-issues"></a>修复的问题 
+
+
+- 修复 SQL 重新连接为 ADSync 服务的逻辑 
+- 修复，用于允许使用空的 SQL AOA DB 的全新安装 
+- 修复 PS 权限脚本，以优化 GWB 权限 
+- 修复使用 LocalDB 的 VSS 错误  
+- 对象类型不在范围内时修复误导性错误消息 
+- 更正了其中的服务器上安装的 Azure AD PowerShell 可能会导致冲突的程序集使用 Azure AD Connect 的问题。 
+- 修复了 PHS bug 连接器凭据更新旧 UI 中时的暂存服务器上。 
+- 修复了一些内存泄漏 
+- 杂项自动升级修补程序 
+- 导出和导入处理未确认的杂项修补程序 
+- 修复了 bug 处理反斜杠在域和 OU 筛选 
+- 修复了其中 ADSync 服务需要多个 2 分钟来停止并在升级时导致问题的问题。 
+
+
+
 
 ## <a name="12700"></a>1.2.70.0
 

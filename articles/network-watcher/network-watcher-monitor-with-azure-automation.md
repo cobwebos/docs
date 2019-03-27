@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: a102916bb0626f5b110fb134a8a25c902cfaefe7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 4995d7ae846652c374a289603f29f88f6f56dfef
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598126"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485487"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用网络观察程序故障排除功能监视 VPN 网关
 
 若要向客户提供可靠的服务，获取网络性能的深入见解至关重要。 因此，必须能够快速检测网络中断状态，并采取纠正措施来缓解中断状态。 在 Azure 自动化中，可以通过 Runbook 以编程方式实施和运行任务。 使用 Azure 自动化可以创建完美的脚本来执行连续、主动的网络监视和警报。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 下图中的方案是一个多层应用程序，其中使用 VPN 网关和隧道建立了本地连接。 确保 VPN 网关正常运行对于应用程序的性能至关重要。
 
@@ -84,7 +84,7 @@ ms.locfileid: "31598126"
 
 使用以下代码，并单击“保存”
 
-```PowerShell
+```powershell
 # Set these variables to the proper values for your environment
 $o365AutomationCredential = "<Office 365 account>"
 $fromEmail = "<from email address>"

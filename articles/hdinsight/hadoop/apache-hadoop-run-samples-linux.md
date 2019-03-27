@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f9bafec093a3ad6e26eb12cfdb321945353b4d08
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: 7ff91a4fdc4bf0118c231a1ac18ebb521530a980
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434131"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447018"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 随附的 MapReduce 示例
 
@@ -23,7 +23,7 @@ ms.locfileid: "53434131"
 
 了解如何在 HDInsight 上运行 Apache Hadoop 随附的 MapReduce 示例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **一个 HDInsight 群集**：请参阅[开始在 Linux 上的 HDInsight 中将 Apache Hadoop 与 Apache Hive 配合使用](apache-hadoop-linux-tutorial-get-started.md)
 
@@ -197,7 +197,7 @@ GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
     ```
 
-    `-Dmapred.reduce.tasks` 告诉 Hadoop 多少个化简任务用于此作业。 最后两个参数只是数据的输入和输出位置。
+    `-Dmapred.reduce.tasks` 告诉 Hadoop 多少个化简任务会用于此作业。 最后两个参数只是数据的输入和输出位置。
 
 3. 使用以下方法来验证排序所生成的数据：
 
@@ -215,8 +215,4 @@ GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 
 
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:apache-hadoop-introduction.md
-
-
-
-[hdinsight-samples]: hdinsight-run-samples.md
 

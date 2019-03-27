@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
 ms.subservice: common
-ms.openlocfilehash: 8928e59b97143038e0850132196f1ce9a1da131d
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337878"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447262"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -50,7 +50,7 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 
 与 ZRS 之间来回迁移数据需要不同的策略。 ZRS 迁移涉及到将数据从单个存储阵列物理迁移到某个区域中的多个阵列。
 
-可以使用两个主要选项迁移到 ZRS 或从中迁移： 
+有用于迁移到 ZRS 的两个主要选项： 
 
 - 手动将现有帐户中的数据复制或移动到新的 ZRS 帐户。
 - 请求实时迁移。
@@ -73,6 +73,7 @@ Microsoft 强烈建议执行手动迁移。 手动迁移比实时迁移更灵活
 - 帐户必须包含数据。
 - 只能在同一区域中迁移数据。 若要将数据迁移到不包含源帐户的区域中的 ZRS 帐户，则必须执行手动迁移。
 - 只有标准存储帐户类型才支持实时迁移。 高级存储帐户必须手动迁移。
+- 不支持从 ZRS 到 LRS、 GRS 或 RA-GRS 的实时迁移。 你将需要手动将数据移到新的或现有的存储帐户。
 
 可以通过 [Azure 支持门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)请求实时迁移。 在门户中，选择要转换为 ZRS 的存储帐户。
 1. 选择“新建支持请求”
@@ -120,7 +121,7 @@ ZRS 仅支持常规用途 v2 帐户，因此在提交之前为实时迁移到 ZR
 > [!NOTE]
 > Microsoft 将于 2021 年 3 月 31 日弃用并迁移 ZRS 经典版帐户。 在弃用之前会向 ZRS 经典版客户提供更多详细信息。 
 >
-> 在某个区域推出 ZRS [正式版](#support-coverage-and-regional-availability)后，客户将无法在该区域中通过门户创建 ZRS 经典版帐户。 在弃用 ZRS 经典版之前，可以使用 Microsoft PowerShell 和 Azure CLI 创建 ZRS 经典版帐户。
+> 当 ZRS 变得[正式](#support-coverage-and-regional-availability)在区域中，客户无法再从该区域中的门户创建 ZRS 经典版帐户。 在弃用 ZRS 经典版之前，可以使用 Microsoft PowerShell 和 Azure CLI 创建 ZRS 经典版帐户。
 
 ZRS 经典版以异步方式在一到两个区域中的数据中心之间复制数据。 除非 Microsoft 发起了到次要区域的故障转移，否则复制的数据可能不可用。 ZRS 经典版帐户无法与 LRS、GRS 或 RA-GRS 相互转换。 ZRS 经典版帐户也不支持指标或日志记录。
 
@@ -128,7 +129,19 @@ ZRS 经典版仅适用于常规用途 V1 (GPv1) 存储帐户中的块 Blob。 �
 
 若要向/从 LRS、ZRS 经典版、GRS 或 RA-GRS 帐户手动迁移 ZRS 帐户数据，请使用以下工具之一：AzCopy、Azure 存储资源管理器、Azure PowerShell 或 Azure CLI。 此外，可以使用某个 Azure 存储客户端库生成自己的迁移解决方案。
 
-此外可以为 ZRS 在门户或使用 Azure PowerShell 或 Azure CLI 中升级 ZRS 经典版帐户。
+此外可以升级到 ZRS 在门户或使用 Azure PowerShell 或 Azure CLI 在 ZRS 可用的区域中的 ZRS 经典版帐户。
+
+若要升级到在门户中的 ZRS 转到该帐户的配置节，并选择升级：![升级到 ZRS 在门户中的 ZRS 经典](media/storage-redundancy-zrs/portal-zrs-classic-upgrade.jpg)
+
+若要升级到 ZRS 使用 PowerShell，请调用以下命令：
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
+```
+
+若要升级到 ZRS 使用 CLI，请调用以下命令：
+```cli
+az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
+```
 
 ## <a name="see-also"></a>另请参阅
 - [Azure 存储复制](storage-redundancy.md)

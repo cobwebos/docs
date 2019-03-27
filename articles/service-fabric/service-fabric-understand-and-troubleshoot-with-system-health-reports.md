@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d62fd909d10515c9217a4dd0aa760afa376b8d7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9b3ba8d216f3e82c9aff7f2b49b9c24115b32f2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838895"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487900"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还将这些实体组织为层次结构以捕获实体交互。
@@ -84,7 +84,7 @@ System.FM 表示“故障转移管理器”服务，是管理群集节点相关�
 
 以下示例显示 System.FM 事件，且节点正常运行时的运行状况状态为正常：
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
 
 NodeName              : _Node_0
@@ -137,7 +137,7 @@ System.CM 表示群集管理器服务，是管理应用程序相关信息的主�
 
 以下示例显示 **fabric:/WordCount** 应用程序上的状态事件：
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
 
 ApplicationName                 : fabric:/WordCount
@@ -169,7 +169,7 @@ System.FM 表示故障转移管理器服务，是管理服务相关信息的主�
 
 以下示例显示服务 **fabric:/WordCount/WordCountWebService** 上的状态事件：
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
 
 
@@ -224,7 +224,7 @@ System.FM 表示故障转移管理器服务，是管理服务分区相关信息�
 
 以下示例显示了一个运行状况良好的分区：
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountWebService | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics -ReplicasFilter None
 
 PartitionId           : 8bbcd03a-3a53-47ec-a5f1-9b77f73c53b2
@@ -246,7 +246,7 @@ HealthEvents          :
 
 下面的示例展示了小于目标副本计数的分区运行状况。 下一步是获取分区描述，其中显示了如何配置：**MinReplicaSetSize**为 3 和**TargetReplicaSetSize**为 7。 然后，获取群集中的节点数（在此示例中为 5）。 因此，在此示例中，无法放置两个副本，因为副本的目标数量大于可用节点数。
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
 
 
@@ -324,7 +324,7 @@ PS C:\> @(Get-ServiceFabricNode).Count
 
 下面的示例展示了无法运行重新配置（原因是用户不履行 RunAsync 方法中的取消令牌）的分区运行状况。 调查标记为主要 (P) 的任何副本的运行状况报告有助于深入了解问题。
 
-```PowerShell
+```powershell
 PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
 
 
@@ -388,7 +388,7 @@ HealthEvents          :
 
 以下示例显示了一个运行状况良好的副本：
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
 
 PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
@@ -419,7 +419,7 @@ HealthEvents          :
 
 下面的示例展示了从打开方法抛出 `TargetInvocationException` 的副本运行状况。 说明包含故障点 (IStatefulServiceReplica.Open)、异常类型 (TargetInvocationException) 和堆栈跟踪。
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
 
 
@@ -470,7 +470,7 @@ Exception has been thrown by the target of an invocation.
 
 下面的示例展示了在关闭期间不断发生故障的副本：
 
-```PowerShell
+```powershell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
 
 
@@ -515,7 +515,7 @@ HealthEvents          :
 
 下面的示例展示了重新配置在本地副本上无法运行的运行状况报告。 在此示例中，这是由于服务不履行取消令牌所致。
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
 
 
@@ -601,7 +601,7 @@ HealthEvents          :
 
 下面的示例展示了 System.RAP 中因 Reliable Service 不履行 RunAsync 中的取消令牌而发生的运行状况事件：
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
 
 
@@ -679,7 +679,7 @@ System.Replicator 报告警告。 在主要副本上，由于一个或多个次�
 
 以下示例显示了创建服务操作。 该操作花的时间超过配置的持续时间。 “AO”重试并将工作发送到“NO”。 “NO”在完成上一个操作时出现超时。 在这种情况下，同一个副本对于“AO”和“NO”角色来说都是主要副本。
 
-```PowerShell
+```powershell
 PartitionId           : 00000000-0000-0000-0000-000000001000
 ReplicaId             : 131064359253133577
 AggregatedHealthState : Warning
@@ -736,7 +736,7 @@ HealthEvents          :
 
 下面的示例展示了成功激活：
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ExcludeHealthStatistics
 
 ApplicationName                    : fabric:/WordCount
@@ -793,7 +793,7 @@ HealthEvents                       :
 
 以下示例显示了一个正常的已部署服务包：
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
 
 

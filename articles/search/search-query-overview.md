@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 6afc9325cb2aababb286f653323531c9ebb04b4a
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: cfc9b44963f6880e97859bc7ab77bff12d258471
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438795"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500162"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>如何在 Azure 搜索中撰写查询
 
@@ -76,7 +76,7 @@ ms.locfileid: "58438795"
 上面的屏幕截图是房地产示例的索引属性的部分列表。 可在门户中查看整个索引架构。 有关索引属性的详细信息，请参阅[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
 > [!Note]
-> 某些查询功能在索引范围启用，而不是按字段启用。 这些功能包括：[同义词映射](search-synonyms.md)、[自定义分析器](index-add-custom-analyzers.md)、[建议器构造（用于自动完成和自动提示）](index-add-suggesters.md)、[排名结果的评分逻辑](index-add-scoring-profiles.md)。
+> 某些查询功能在索引范围启用，而不是按字段启用。 这些功能包括：[同义词映射](search-synonyms.md)，[自定义分析器](index-add-custom-analyzers.md)，[建议器 （适用于记忆式键入功能和建议的查询） 构造](index-add-suggesters.md)，[评分逻辑排名结果](index-add-scoring-profiles.md)。
 
 ## <a name="elements-of-a-query-request"></a>查询请求的元素
 

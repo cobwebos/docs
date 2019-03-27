@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 56ca87f318aa5f1843a3b28480be834df1669c71
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: 96f580532d9ea45dd767e32c2451243e83af66ea
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811003"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480798"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
 
@@ -45,11 +45,11 @@ ms.locfileid: "54811003"
 
 在较低层（“基本”、“标准”和“高级”）与“高级 V2”层之间缩放应用时，应用的出站 IP 地址集会发生更改。
 
-不管定价层是什么，都可以通过查找 `possibleOutboundIPAddresses` 属性，来找到应用可能使用的所有出站 IP 地址集。 请参阅[查找出站 IP](#find-outbound-ips)。
+可以找到的所有出站 IP 地址可以使用您的应用程序，而不考虑定价层，通过查找一套`possibleOutboundIPAddresses`属性中或在**其他出站 IP 地址**字段中**属性** Azure 门户边栏选项卡。 请参阅[查找出站 IP](#find-outbound-ips)。
 
 ## <a name="find-outbound-ips"></a>查找出站 IP
 
-若要在 Azure 门户中查找应用当前使用的出站 IP 地址，请单击应用左侧导航窗格中的“属性”。 
+若要在 Azure 门户中查找应用当前使用的出站 IP 地址，请单击应用左侧导航窗格中的“属性”。 中列出**出站 IP 地址**字段。
 
 在 [Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令也可以找到相同的信息。
 
@@ -61,7 +61,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-若要查找应用可能使用的所有出站 IP 地址（不管定价层是什么），请在 [Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令。
+若要查找_所有_可能出站 IP 地址为你的应用，而不考虑定价层中，单击**属性**应用的左侧导航窗格中。 中列出**其他出站 IP 地址**字段。
+
+在 [Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令也可以找到相同的信息。
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv

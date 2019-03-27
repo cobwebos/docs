@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 12b8fc2fb8df7fd730e220a3c1b60097ed7748a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 89ad91316da027e399891a7e1b348e66c1d3a4f5
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433716"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499890"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ) 
 此页面解答了有关 Azure Active Directory (Azure AD) B2C 的常见问题。 请随时返回查看更新信息。
@@ -113,7 +113,8 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>如何删除 Azure AD B2C 租户？
 请按照以下步骤删除 Azure AD B2C 租户：
 
-1. 删除 Azure AD B2C 租户中的所有策略。
+1. 删除所有用户流 （策略） 在 Azure AD B2C 租户中。
+1. 删除 Azure AD B2C 租户中注册的所有应用程序。
 1. 现在，以订阅管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 （使用在注册 Azure 时使用的同一工作或学校帐户，或同一 Microsoft 帐户。）
 1. 切换到要删除的 Azure AD B2C 租户。
 2. 导航到左侧的 Active Directory 菜单。

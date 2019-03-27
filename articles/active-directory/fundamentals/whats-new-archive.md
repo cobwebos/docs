@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5c78786d48dbd8d399013507fe8edcd2ce2ad45
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cb75c57b832dbd12dbd06fd42b636a16b40ff10e
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456221"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499346"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -1223,7 +1223,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 - 在扩展中使用快捷方式访问最近使用的应用
 - 此扩展适用于 Microsoft Edge、Chrome 和 Firefox。
  
-有关详细信息，请参阅[我的应用安全登录扩展](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension)。
+有关详细信息，请参阅[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)。
 
 ---
 

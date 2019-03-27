@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 718a679418790a6bf1207a96e5c204f7962de239
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.openlocfilehash: a4d1a54e94b3228c64352bf08cd8cc69820a5e2d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411248"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500043"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>将符号层添加到地图
 
@@ -36,9 +36,12 @@ ms.locfileid: "54411248"
 
 某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。  在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源、点击事件侦听器和符号层并将其添加到地图，以确保完全加载地图后显示该点。
 
+> [!TIP]
+> 默认情况下，为性能，符号层优化通过隐藏重叠的符号的符号的呈现。 在隐藏符号中放大时变得可见。 若要禁用此功能，并在所有时间呈现所有符号，设置`allowOverlap`的属性`iconOptions`到选项`true`。
+
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>将自定义图标添加到符号层
 
-符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 本示例演示如何将自定义符号图标添加到地图资源，然后结合地图上的自定义符号使用此图标来呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在本例中，我们希望以文本值的形式呈现点特征的温度属性。 可以使用表达式 `['get', 'temperature']` 来实现此目的。 
+符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 本示例演示如何将自定义符号图标添加到地图资源，然后结合地图上的自定义符号使用此图标来呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在这种情况下，我们想要呈现的文本值的点功能温度属性。 可以使用表达式 `['get', 'temperature']` 来实现此目的。 
 
 <br/>
 

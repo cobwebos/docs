@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c4aeb25530739931a18f010a579bd8354d6fdc5a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 34e0023a00aeffc5788754062a2c11fdeea58f7f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223285"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500060"
 documentType: LandingData
 title: Azure 蓝图文档
 metadata:
@@ -15,7 +15,7 @@ metadata:
   manager: carmonm
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 03/18/2019
+  ms.date: 03/26/2019
   ms.author: dacoulte
 abstract:
   description: Azure 蓝图帮助你使用可组合的项目（例如 Azure 资源管理器模板）预配资源、基于角色的访问控制和策略，从而以可重复的方式部署和更新云环境。
@@ -43,6 +43,8 @@ sections:
     style: cards
     className: cardsD
     items:
+    - title: 命令行
+      html: <p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/blueprints/management">用于 .NET 的 Azure SDK</a></p>
     - title: REST

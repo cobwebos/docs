@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 3b302c60aefec1c4cd37a7dde82a2f11a9eeed33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 20c58647b8a6283de4ca2b90c830fe54db927095
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862856"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484180"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -150,14 +150,14 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 订阅管理员将 `key vault Contributor` 和 `User Access Administrator` 角色分配给安全团队。 这些角色使安全团队可管理对其他资源和密钥保管库的访问，且它们都位于 **ContosoAppRG** 资源组中。
 
-```PowerShell
+```powershell
 New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
 New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
 安全团队创建密钥保管库并设置日志记录和访问权限。 有关密钥保管库访问策略权限的详细信息，请参阅[关于 Azure 密钥保管库密钥、机密和证书](about-keys-secrets-and-certificates.md)。
 
-```PowerShell
+```powershell
 # Create a key vault and enable logging
 $sa = Get-AzStorageAccount -ResourceGroup ContosoAppRG -Name contosologstorage
 $kv = New-AzKeyVault -Name ContosoKeyVault -ResourceGroup ContosoAppRG -SKU premium -Location 'westus' -EnabledForDeployment

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: bee02549d68b1dbdba3f0e62477b28bbd475ea32
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 379e73c33aa4570c3e56f902b011d75944c94a8d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402484"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497891"
 ---
 # <a name="automatically-scale-session-hosts"></a>自动缩放会话主机
 
@@ -81,7 +81,7 @@ ms.locfileid: "58402484"
 | currentAzureSubscriptionId    | 会话在其中托管 Vm 的 Azure 订阅的 ID 运行                        |
 | tenantName                    | Windows 虚拟桌面租户名称                                                    |
 | hostPoolName                  | Windows 虚拟机主机池名称                                                 |
-| RDBroker                      | 指向 WVD 服务，默认值的 URL <https://rdbroker.wvd.microsoft.com>             |
+| RDBroker                      | WVD 服务 URL 默认值 https:\//rdbroker.wvd.microsoft.com             |
 | 用户名                      | （它是可能如下所示 AADApplicationId 有相同的服务主体） 的服务主体应用程序 ID 或标准用户，而无需多重身份验证 |
 | isServicePrincipal            | 接受的值是 **，则返回 true**或**false**。 指示是否正在使用的凭据的第二个集是服务主体或标准帐户。 |
 | BeginPeakTime                 | 高峰期开始时                                                            |

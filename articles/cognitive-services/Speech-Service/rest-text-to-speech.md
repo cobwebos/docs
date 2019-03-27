@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d687665a7f9b18d42dcd45953c15d2fbc6d71d2f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e6913b1de0045f86667fdcea824ee4cc613c4bc3
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335821"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497663"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
-语音服务允许将转换为文本到语音转换使用 REST API。 每个可访问的终结点都与某个区域相关联。 应用程序需要所用终结点的订阅密钥。 文本转语音 REST API 支持神经和标准文本转语音，每种语音支持区域设置标识的特定语言和方言。
+语音服务允许你[文本转换合成语音](#convert-text-to-speech)并[获取一系列支持语音](#get-a-list-of-voices)区域使用一组 REST Api。 每个可用的终结点都与区域相关联。 你打算使用的终结点/地区的订阅密钥是必需的。
+
+文本转语音 REST API 支持神经和标准文本转语音，每种语音支持区域设置标识的特定语言和方言。
 
 * 有关语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
 * 有关区域可用性的信息，请参阅[区域](regions.md#text-to-speech)。
@@ -34,15 +36,117 @@ ms.locfileid: "58335821"
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>区域和终结点
+## <a name="get-a-list-of-voices"></a>获取语音的列表
 
-使用 REST API 的语音转文本听录支持以下区域。 请务必选择与订阅区域匹配的终结点。
+`voices/list`终结点可以用于特定的区域/终结点，获取语音的完整列表。
+
+### <a name="regions-and-endpoints"></a>区域和终结点
+
+| 区域 | 终结点 |
+|--------|----------|
+| 美国西部 | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list  |
+| 美国西部 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 美国东部 | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 美国东部 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 东亚 | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 东南亚 | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 北欧 | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| 西欧 | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+
+### <a name="request-headers"></a>请求标头
+
+此表列出了必需和可选标头的文本到语音转换请求。
+
+| 标头 | 描述 | 必需/可选 |
+|--------|-------------|---------------------|
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 需要 |
+
+### <a name="request-body"></a>请求正文
+
+正文不是必需的`GET`到此终结点的请求。
+
+### <a name="sample-request"></a>示例请求
+
+此请求只需要一个授权标头。
+
+```http
+GET /cognitiveservices/voices/list HTTP/1.1
+
+Host: westus.tts.speech.microsoft.com
+Authorization: Bearer [Base64 access_token]
+```
+
+### <a name="sample-response"></a>示例响应
+
+此响应已被截断，以阐明的响应的结构。
+
+> [!NOTE]
+> 语音可用性因区域/终结点。
+
+```json
+[
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+        "ShortName": "ar-EG-Hoda",
+        "Gender": "Female",
+        "Locale": "ar-EG"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
+        "ShortName": "ar-SA-Naayf",
+        "Gender": "Male",
+        "Locale": "ar-SA"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
+        "ShortName": "bg-BG-Ivan",
+        "Gender": "Male",
+        "Locale": "bg-BG"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
+        "ShortName": "ca-ES-HerenaRUS",
+        "Gender": "Female",
+        "Locale": "ca-ES"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)",
+        "ShortName": "cs-CZ-Jakub",
+        "Gender": "Male",
+        "Locale": "cs-CZ"
+    },
+
+    ...
+
+]
+```
+
+### <a name="http-status-codes"></a>HTTP 状态代码
+
+每个响应的 HTTP 状态代码指示成功或一般错误。
+
+| HTTP 状态代码 | 描述 | 可能的原因 |
+|------------------|-------------|-----------------|
+| 200 | OK | 请求已成功。 |
+| 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
+| 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
+| 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
+| 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
+
+
+## <a name="convert-text-to-speech"></a>将文本转换到语音
+
+`v1`终结点允许将转换为文本到语音转换使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。
+
+### <a name="regions-and-endpoints"></a>区域和终结点
+
+使用 REST API 的文本转语音支持以下区域。 请务必选择与订阅区域匹配的终结点。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-## <a name="request-headers"></a>请求标头
+### <a name="request-headers"></a>请求标头
 
-下表列出了语音转文本请求的必需和可选标头。
+此表列出了必需和可选标头的文本到语音转换请求。
 
 | 标头 | 描述 | 必需/可选 |
 |--------|-------------|---------------------|
@@ -51,7 +155,7 @@ ms.locfileid: "58335821"
 | `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 需要 |
 | `User-Agent` | 应用程序名称。 提供的值必须是少于 255 个字符。 | 需要 |
 
-## <a name="audio-outputs"></a>音频输出
+### <a name="audio-outputs"></a>音频输出
 
 这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。 语音服务支持 24 KHz，16 KHz 和 8 KHz 音频输出。
 
@@ -68,14 +172,14 @@ ms.locfileid: "58335821"
 > [!NOTE]
 > 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，24khz 语音不支持 `audio-16khz-16kbps-mono-siren` 和 `riff-16khz-16kbps-mono-siren` 输出格式。
 
-## <a name="request-body"></a>请求正文
+### <a name="request-body"></a>请求正文
 
 每个 `POST` 请求的正文作为[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 发送。 SSML 允许选择文本到语音转换服务返回的合成语音的语音和语言。 有关受支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
 
 > [!NOTE]
 > 如果使用自定义语音，请求正文可以作为纯文本（ASCII 或 UTF-8）发送。
 
-## <a name="sample-request"></a>示例请求
+### <a name="sample-request"></a>示例请求
 
 此 HTTP 请求使用 SSML 指定语音和语言。 正文不能超过 1,000 个字符。
 
@@ -100,7 +204,7 @@ Authorization: Bearer [Base64 access_token]
 * [Python](quickstart-python-text-to-speech.md)
 * [Node.js](quickstart-nodejs-text-to-speech.md)
 
-## <a name="http-status-codes"></a>HTTP 状态代码
+### <a name="http-status-codes"></a>HTTP 状态代码
 
 每个响应的 HTTP 状态代码指示成功或一般错误。
 

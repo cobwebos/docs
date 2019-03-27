@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cc5b40b6a800ff185c6c52652435b558fabe091f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e3311aab74f58e3936039393eab76dee12b83ea
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57873880"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496932"
 ---
 # <a name="object-detection"></a>对象检测
 
@@ -97,7 +97,7 @@ ms.locfileid: "57873880"
 
 ## <a name="use-the-api"></a>使用 API
 
-对象检测功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 获取完整的 JSON 响应，请在分析的内容的字符串`"objects"`部分。
+对象检测功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 包括`Objects`中**visualFeatures**查询参数。 然后，当您获得完整的 JSON 响应，只需分析字符串内容的`"objects"`部分。
 
 * [快速入门：分析图像 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [快速入门：分析图像 (REST API)](./quickstarts/csharp-analyze.md)

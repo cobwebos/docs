@@ -7,26 +7,25 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: e83b15b5e53a203a3583c02565ea9c316b7c481c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: 4f558d8d1e5e4e743e6d44cca1a804b3e5898b30
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832358"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443422"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>配置和管理用于从 VMware 灾难恢复到 Azure 的复制策略
 本文介绍如何配置复制策略，以便使用 [Azure Site Recovery](site-recovery-overview.md) 将 VMware VM 复制到 Azure。
 
-
 ## <a name="create-a-policy"></a>创建策略
 
 1. 选择“管理” > “Site Recovery 基础结构”。
-1. 在“适用于 VMware 和物理计算机”中选择“复制策略”。 
-1. 单击“+复制策略”，并指定策略名称。
-1. 在“RPO 阈值”中：指定 RPO 限制。 当连续复制超出此限制时，将生成警报。
-1. 在“恢复点保留期”中，针对每个恢复点指定保留期的时长（以小时为单位）。 受保护的计算机可以恢复到某个保留期时段内的任意时间点。 复制到高级存储的计算机最长支持 24 小时的保留期。 标准存储最长支持 72 个小时。
-1. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（以分钟为单位）。
-1. 单击“确定”。 应会在 30 秒到 1 分钟之内创建好策略。
+2. 在“适用于 VMware 和物理计算机”中选择“复制策略”。 
+3. 单击“+复制策略”，并指定策略名称。
+4. 在“RPO 阈值”中：指定 RPO 限制。 当连续复制超出此限制时，将生成警报。
+5. 在“恢复点保留期”中，针对每个恢复点指定保留期的时长（以小时为单位）。 受保护的计算机可以恢复到某个保留期时段内的任意时间点。 复制到高级存储的计算机最长支持 24 小时的保留期。 标准存储最长支持 72 个小时。
+6. 在中**应用程序一致性快照频率**，选择何种频率 （以小时为单位） 下拉列表中应创建包含应用程序一致性快照的恢复点。 如果你想要关闭的应用程序一致性点生成，选择"关闭"下拉列表中的值。
+7. 单击“确定”。 应会在 30 秒到 1 分钟之内创建好策略。
 
 创建复制策略时，会使用后缀“failback”自动创建相应的故障回复复制策略。 创建策略后，可以通过选择它 >“编辑设置”对其进行编辑。
 
@@ -37,14 +36,21 @@ ms.locfileid: "52832358"
 1. 单击“关联”，并选择配置服务器。
 
     ![关联配置服务器](./media/vmware-azure-set-up-replication/associate1.png)
-
-1. 单击“确定”。 应会在 1 到 2 分钟内关联配置服务器。
+2. 单击“确定”。 应会在 1 到 2 分钟内关联配置服务器。
 
     ![配置服务器关联](./media/vmware-azure-set-up-replication/associate2.png)
 
+## <a name="edit-a-policy"></a>编辑策略
+
+1. 选择**管理** > **Site Recovery 基础结构** > **复制策略**。
+2. 选择你想要修改的复制策略。
+3. 单击**编辑设置**，并更新的 RPO 阈值/恢复点保留期小时/应用一致的快照频率字段为必需。
+4. 如果你想要关闭的应用程序一致性点生成，请选择"关"的字段的下拉列表中的值**应用程序一致性快照频率**。
+5. 单击“ **保存**”。 应在 30 到 60 秒内更新策略。
 
 ## <a name="disassociate-or-delete-a-replication-policy"></a>取消关联或删除复制策略
+
 1. 选择复制策略。
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要将策略与配置服务器取消关联，请确保没有复制计算机在使用该策略。 然后，单击“取消关联”。
+    a. 若要将策略与配置服务器取消关联，请确保没有复制计算机在使用该策略。 然后，单击“取消关联”。
     b. 若要删除策略，请确保它未与配置服务器关联。 然后单击“删除”。 应需要 30-60 秒才能删除。
-1. 单击“确定”。
+2. 单击“确定”。

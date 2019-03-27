@@ -8,22 +8,17 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: 5328173090bce3e3adf51a1503e18c8da5532b0e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b6009471048232b52020e4bef6272ed8cb1bd35b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310890"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497748"
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
 
-> [!WARNING]
-> 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
-
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在开始之前，需要[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)，将活动日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将诊断日志和指标存档到存储帐户，则也可将该存储帐户用于活动日志，使得所有监视数据都位于一个中心位置。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必与订阅发出日志位于同一订阅中。
 
 ## <a name="log-profile"></a>日志配置文件
@@ -65,7 +60,7 @@ ms.locfileid: "57310890"
 | --- | --- | --- |
 | StorageAccountId |是 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
 | 位置 |是 |要为其收集活动日志事件的逗号分隔区域的列表。 可以使用 `(Get-AzLocation).Location` 查看订阅的所有区域列表。 |
-| RetentionInDays |否 |事件的保留天数，介于 1 到 2147483647 之间。 值为零时，将无限期（永久）存储日志。 |
+| RetentionInDays |否 |应保留的事件，介于 1 到 365 天的数。 值为零时，将无限期（永久）存储日志。 |
 | 类别 |否 |应收集的事件类别的逗号分隔列表。 可能值包括：Write、Delete 和 Action。  如果未提供，则假定所有可能的值 |
 
 ## <a name="archive-the-activity-log-via-cli"></a>通过 CLI 存档活动日志
@@ -79,7 +74,7 @@ ms.locfileid: "57310890"
 | 名称 |是 |日志配置文件的名称。 |
 | storage-account-id |是 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
 | 位置 |是 |要为其收集活动日志事件的空格分隔区域列表。 可以使用 `az account list-locations --query [].name` 查看订阅的所有区域列表。 |
-| days |是 |事件的保留天数，介于 1 到 2147483647 之间。 值为零时，将无限期（永久）存储日志。  如果为零，则启用的参数应设置为 true。 |
+| days |是 |应保留的事件，介于 1 到 365 天的数。 值为零时，将无限期（永久）存储日志。  如果为零，则启用的参数应设置为 true。 |
 |已启用 | 是 |True 或 False。  用于启用或禁用保留策略。  如果为 True，则 days 参数必须为大于 0 的值。
 | categories |是 |应收集的事件类别的空格分隔列表。 可能值包括：Write、Delete 和 Action。 |
 

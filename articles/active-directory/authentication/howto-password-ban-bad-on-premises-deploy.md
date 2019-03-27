@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8502ab3257bc1d121e0440ba765dfd19a6722cec
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3be702d1f75b0a96e22ea03602c924be580b0968
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311962"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499244"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -36,7 +36,7 @@ ms.locfileid: "58311962"
 
 ## <a name="deployment-requirements"></a>部署要求
 
-* 获取 DC 代理服务的 Azure AD 密码保护安装必须运行 Windows Server 2012 或更高版本的所有域控制器。
+* 获取 DC 代理服务的 Azure AD 密码保护安装必须运行 Windows Server 2012 或更高版本的所有域控制器。 此要求并不表示，Active Directory 域或林还必须在 Windows Server 2012 域或林功能级别。 如中所述[设计原则](concept-password-ban-bad-on-premises.md#design-principles)，没有最小 DFL 或 FFL 所需的 DC 代理或代理软件运行。
 * 获取代理服务的 Azure AD 密码保护安装必须运行 Windows Server 2012 R2 或更高版本的所有计算机。
 * 将安装 Azure AD 密码保护代理服务的所有计算机都必须安装的.NET 4.7。
   应已完全更新的 Windows Server 上安装.NET 4.7。 如果这不是这种情况，下载并运行安装程序，请参阅[Windows.NET Framework 4.7 脱机安装程序](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
@@ -85,7 +85,7 @@ ms.locfileid: "58311962"
 1. 以管理员身份打开 PowerShell 窗口。
    * 该密码保护代理软件包含新的 PowerShell 模块*AzureADPasswordProtection*。 运行此 PowerShell 模块中的各种 cmdlet 的以下步骤。 按如下所示导入新的模块：
 
-      ```PowerShell
+      ```powershell
       Import-Module AzureADPasswordProtection
       ```
 
@@ -106,7 +106,7 @@ ms.locfileid: "58311962"
 
      * 交互式身份验证模式：
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
         > [!NOTE]
@@ -114,7 +114,7 @@ ms.locfileid: "58311962"
 
      * 设备代码身份验证模式：
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
         ```
@@ -123,7 +123,7 @@ ms.locfileid: "58311962"
 
      * 无提示（基于密码）身份验证模式：
 
-        ```PowerShell
+        ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionProxy -AzureCredential $globalAdminCredentials
         ```
@@ -146,7 +146,7 @@ ms.locfileid: "58311962"
 
      * 交互式身份验证模式：
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
         > [!NOTE]
@@ -154,7 +154,7 @@ ms.locfileid: "58311962"
 
      * 设备代码身份验证模式：
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
         ```
@@ -162,7 +162,7 @@ ms.locfileid: "58311962"
         然后，按照以下不同的设备上显示的说明完成身份验证。
 
      * 无提示（基于密码）身份验证模式：
-        ```PowerShell
+        ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
         ```
@@ -221,7 +221,7 @@ ms.locfileid: "58311962"
 1. 可选：配置密码保护，以侦听特定端口的代理服务。
    * 在域控制器上的密码保护的 DC 代理软件通过 TCP 使用 RPC 与代理服务进行通信。 默认情况下，代理服务在任何可用的动态 RPC 终结点上进行侦听。 但您可以将服务配置为侦听特定 TCP 端口，如果这是必要由于网络拓扑或您的环境中的防火墙要求。
       * <a id="static" /></a>若要配置静态端口下运行的服务，请使用`Set-AzureADPasswordProtectionProxyConfiguration`cmdlet。
-         ```PowerShell
+         ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
 
@@ -229,7 +229,7 @@ ms.locfileid: "58311962"
          > 必须停止并重启服务，才能让这些更改生效。
 
       * 若要配置动态端口下运行的服务，使用相同的过程，但设置*StaticPort*为零：
-         ```PowerShell
+         ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```
 
@@ -241,7 +241,7 @@ ms.locfileid: "58311962"
 
    * 若要查询的服务的当前配置，请使用`Get-AzureADPasswordProtectionProxyConfiguration`cmdlet:
 
-      ```PowerShell
+      ```powershell
       Get-AzureADPasswordProtectionProxyConfiguration | fl
 
       ServiceName : AzureADPasswordProtectionProxy

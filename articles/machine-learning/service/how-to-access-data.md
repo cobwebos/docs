@@ -11,18 +11,18 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: c171e35c6542febffc666ad5abfab50e093bb698
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 25da234e4210c98ce17bdeb502493c5c649dab28
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359273"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481631"
 ---
 # <a name="access-data-from-your-datastores"></a>访问你的数据存储中的数据
 
-数据存储，可与交互以及是否在计算群集上，或在虚拟机上，就本地，运行你的代码访问你的数据。 在本文中，了解 Azure 机器学习工作流，以确保你的数据存储是可访问以及可供计算上下文。
+ 在 Azure 机器学习服务中，数据存储是计算独立于位置的机制来访问存储而无需更改你的源代码。 是否编写培训采用路径作为参数，或直接向估算器提供一种数据存储，Azure 机器学习工作流将确保你的数据存储位置可访问，并提供给您的计算上下文。
 
-本操作说明展示了以下任务的示例：
+本操作说明显示了示例的以下任务：
 * [选择一种数据存储](#access)
 * [获取数据](#get)
 * [上传和下载数据到数据存储](#up-and-down)
@@ -30,7 +30,7 @@ ms.locfileid: "58359273"
 
 ## <a name="prerequisites"></a>必备组件
 
-若要使用数据存储，需要[工作区](concept-azure-machine-learning-architecture.md#workspace)第一个。 
+若要使用数据存储，首先需要一个[工作区](concept-azure-machine-learning-architecture.md#workspace)。
 
 首先，请[创建新工作区](setup-create-workspace.md#sdk)或检索现有的工作区：
 
@@ -49,14 +49,16 @@ ws = Workspace.from_config()
 
 ### <a name="use-the-default-datastore-in-your-workspace"></a>在你的工作区中使用的默认数据存储
 
-无需创建或配置存储帐户，因为每个工作区都有默认数据存储。 可以使用该数据存储立即因为它已在工作区中注册。 
+ 每个工作区都有可以立即使用的已注册，默认数据存储。
 
 若要获取工作区的默认数据存储：
+
 ```Python
 ds = ws.get_default_datastore()
 ```
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>向工作区中注册你自己的数据存储
+
 如果已有现有的 Azure 存储，可将其注册为工作区中的数据存储。   所有注册方法都是在[ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)类，并具有窗体 register_azure_ *。 
 
 以下示例演示了将注册为一种数据存储的 Azure Blob 容器或 Azure 文件共享。
@@ -145,19 +147,17 @@ ds.download(target_path='your target path',
 <a name="train"></a>
 ## <a name="access-datastores-during-training"></a>在训练期间访问数据存储
 
-一旦您使你的数据存储在远程计算上，可以在训练运行 （例如，培训或验证数据） 只需向其传递路径，作为训练脚本中的参数来访问它。
+一旦您使你的数据存储在计算目标上，可以在训练运行 （例如，培训或验证数据） 只需向其传递路径，作为训练脚本中的参数来访问它。
 
-下表列出了常见[ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)使数据存储在远程计算可用的方法。
+下表列出[ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)告知如何在运行期间使用的数据存储的计算目标的方法。
 
-# #
-
-方法|方法|描述
+方法|方法|描述|
 ----|-----|--------
-装载| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| 使用远程计算机上安装一种数据存储。 数据存储的默认模式。
-下载|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|使用从指定的位置下载数据`path_on_compute`数据存储到远程计算机上。
-上载|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| 用于从指定的位置将数据上载到你的数据存储的根目录`path_on_compute`。
+装载| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| 使用计算目标上安装数据存储。
+下载|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|使用你的数据存储的内容下载到指定的位置`path_on_compute`。 <br> 对于训练运行上下文中，此下载运行前发生。
+上载|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| 使用指定的位置中的文件上传`path_on_compute`到你的数据存储。 <br> 有关运行定型的上下文，此上传在运行后发生。
 
-```Python
+ ```Python
 import azureml.data
 from azureml.data import DataReference
 
@@ -166,22 +166,38 @@ ds.as_download(path_on_compute='your path on compute')
 ds.as_upload(path_on_compute='yourfilename')
 ```  
 
-若要引用数据存储中的特定文件夹或文件，请使用数据存储的 [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) 函数。
+若要引用特定的文件夹或你的数据存储中的文件，并能在计算目标上，使用的数据存储[ `path()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-)函数。
 
 ```Python
-#download the contents of the `./bar` directory from the datastore to the remote compute
+#download the contents of the `./bar` directory in ds to the compute target
 ds.path('./bar').as_download()
 ```
 
+> [!NOTE]
+> 任何`ds`或`ds.path`对象将解析为格式的环境变量名`"$AZUREML_DATAREFERENCE_XXXX"`其值表示在目标计算上的装入/下载路径。 在目标计算上的数据存储路径可能不可用于训练脚本的执行路径相同。
+
+### <a name="compute-context-and-datastore-type-matrix"></a>计算上下文和数据存储类型矩阵
+
+以下矩阵将显示不同的计算上下文和数据存储方案的可用数据访问功能。 此矩阵中的"管道"一词是指使用数据存储作为输入或输出中的功能[Azure 机器学习管道](https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines)。
+
+||本地计算|Azure 机器学习计算|数据传输|Databricks|HDInsight|Azure 批处理|Azure DataLake Analytics|虚拟机|
+-|--|-----------|----------|---------|-----|--------------|---------|---------|
+|AzureBlobDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] <br> 管道|管道|管道|[`as_download()`] <br> [`as_upload()`]|管道||[`as_download()`] <br> [`as_upload()`]|
+|AzureFileDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] Pipeline |||[`as_download()`] [`as_upload()`]|||[`as_download()`] [`as_upload()`]|
+|AzureDataLakeDatastore|||管道|管道|||管道||
+|AzureDataLakeGen2Datastore|||管道||||||
+|AzureDataPostgresSqlDatastore|||管道||||||
+|AzureSqlDatabaseDataDatastore|||管道||||||
 
 
 > [!NOTE]
-> 任何 `ds` 或 `ds.path` 对象都将解析为格式 `"$AZUREML_DATAREFERENCE_XXXX"` 的环境变量名，其值表示远程计算上的装载/下载路径。 远程计算机上的数据存储路径可能不可用于训练脚本的执行路径相同。
+> 可能有在其中具有高迭代性，大型数据的进程运行速度更快的使用的方案 [`as_download()`] 而不是 [`as_mount()`]; 这可以呈下降趋式验证。
 
 ### <a name="examples"></a>示例 
 
-以下说明示例特定于[ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类用于在训练过程中访问你的数据存储。
+下面的代码示例是特定于[ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类用于在训练过程中访问你的数据存储。
 
+此代码将创建使用训练脚本，估算器`train.py`，从使用中定义的参数指示的源目录`script_params`，所有内容位于指定的计算目标。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -191,17 +207,16 @@ script_params = {
 }
 
 est = Estimator(source_directory='your code directory',
+                entry_script='train.py',
                 script_params=script_params,
-                compute_target=compute_target,
-                entry_script='train.py')
+                compute_target=compute_target
+                )
 ```
 
-由于`as_mount()`是默认模式为一种数据存储，您可以直接传递`ds`到`'--data_dir'`参数。
-
-传递给估算器构造函数中的数据存储列表或`inputs`参数来装载或向/从你的数据存储复制。 此代码示例：
-* 数据存储中的所有内容都下载`ds1`训练脚本之前远程计算到`train.py`运行
-* 下载文件夹`'./foo'`数据存储中`ds2`到之前的远程计算`train.py`运行
-* 将文件上传`'./bar.pkl'`从数据存储到远程计算`ds3`运行脚本后
+您还可以在数据存储列表中向传递估算器构造函数`inputs`参数来装载或向/从你的数据存储复制。 此代码示例：
+* 数据存储中的所有内容都下载`ds1`到计算目标之前训练脚本`train.py`运行
+* 下载文件夹`'./foo'`数据存储中`ds2`到计算目标之前`train.py`运行
+* 将文件上传`'./bar.pkl'`从数据存储到计算目标`ds3`运行脚本后
 
 ```Python
 est = Estimator(source_directory='your code directory',
@@ -209,7 +224,6 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[ds1.as_download(), ds2.path('./foo').as_download(), ds3.as_upload(path_on_compute='./bar.pkl')])
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

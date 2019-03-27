@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ef8498ae1aa9be0322f508b3723778311e2cdd5
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 6abfd26e63cc8001f501371fffce0a4c10f4ff85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327776"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483505"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
 
@@ -158,7 +158,7 @@ ms.locfileid: "56327776"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56327776"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -314,7 +314,7 @@ ms.locfileid: "56327776"
 有关支持在 Azure 上的 Oracle 中运行 SAP 的 Oracle 版本及相应 OS 版本，可参阅 SAP 说明 [2039619]。
 
 有关在 Oracle 上运行 SAP Business Suite 的常规信息可在 [Oracle 上的 SAP](https://www.sap.com/community/topic/oracle.html) 中找到。
-Oracle 支持在 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请查看 [Oracle 和 Microsoft Azure 常见问题解答](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)。 
+Oracle 支持在 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请查看 [Oracle 和 Microsoft Azure 常见问题解答](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)。 
 
 ## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>与 Oracle、SAP 和 Azure 相关的 SAP 说明 
 
@@ -426,7 +426,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中介绍了使用 Oracle Database 的 VM 部署相关的其他重要概念，包括 Azure 可用性集和 SAP 监视。
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>有关 Oracle Linux 上的 Oracle Database 的具体信息
-Oracle 支持在 Oracle Linux 作为来宾 OS 的 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请参阅 [Azure 和 Oracle 常见问题解答](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)。 
+Oracle 支持在 Oracle Linux 作为来宾 OS 的 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper-V 和 Azure 常规支持的详细信息，请参阅 [Azure 和 Oracle 常见问题解答](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)。 
 
 SAP 应用程序使用 Oracle Database 的特定方案也受支持。 详细信息将在本文档的下一部分中讨论。
 
@@ -463,12 +463,13 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 若要确定支持的 Azure VM 类型，请参阅 SAP 说明 [1928533]。
 
 最低配置：
+
 | 组件 | 磁盘 | 缓存 | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/<SID>/origlogaA & mirrlogB | 高级 | 无 | 无需 |
-| /oracle/<SID>/origlogaB & mirrlogA | 高级 | 无 | 无需 |
-| /oracle/<SID>/sapdata1...n | 高级 | 只读 | 可使用 |
-| /oracle/<SID>/oraarch | 标准 | 无 | 无需 |
+| /oracle/\<SID > / origlogaA & mirrlogB | 高级 | 无 | 无需 |
+| /oracle/\<SID > / origlogaB & mirrlogA | 高级 | 无 | 无需 |
+| /oracle/\<SID>/sapdata1...n | 高级 | 只读 | 可使用 |
+| /oracle/\<SID > / oraarch | 标准 | 无 | 无需 |
 | Oracle 主页, saptrace, ... | 操作系统磁盘 | | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
@@ -476,15 +477,16 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 托管 Oracle 的联机重做日志的磁盘选择应由 IOP 要求驱动。 只要卷、IOPS 和吞吐量满足要求，就可以将所有 sapdata1...n（表空间）存储在一个已装载的磁盘上。 
 
 性能配置：
+
 | 组件 | 磁盘 | 缓存 | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/<SID>/origlogaA | 高级 | 无 | 可使用  |
-| /oracle/<SID>/origlogaB | 高级 | 无 | 可使用 |
-| /oracle/<SID>/mirrlogAB | 高级 | 无 | 可使用 |
-| /oracle/<SID>/mirrlogBA | 高级 | 无 | 可使用 |
-| /oracle/<SID>/sapdata1...n | 高级 | 只读 | 建议  |
-| /oracle/SID/sapdata(n+1)* | 高级 | 无 | 可使用 |
-| /oracle/<SID>/oraarch* | 高级 | 无 | 无需 |
+| /oracle/\<SID>/origlogaA | 高级 | 无 | 可使用  |
+| /oracle/\<SID > / origlogaB | 高级 | 无 | 可使用 |
+| /oracle/\<SID>/mirrlogAB | 高级 | 无 | 可使用 |
+| /oracle/\<SID>/mirrlogBA | 高级 | 无 | 可使用 |
+| /oracle/\<SID>/sapdata1...n | 高级 | 只读 | 建议  |
+| /oracle/\<SID>/sapdata(n+1)* | 高级 | 无 | 可使用 |
+| /oracle/\<SID > / oraarch * | 高级 | 无 | 无需 |
 | Oracle 主页, saptrace, ... | 操作系统磁盘 | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 7a478a9f73edae463a5dace1b1a28180e5d09bdc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6a7e0a27d3cda4193a04467d541f851a9e57fa46
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437728"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446705"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure SQL 数据仓库加载数据
 
@@ -45,10 +45,11 @@ ms.locfileid: "57437728"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“新建” > “数据 + 分析” > “数据工厂”： 
+1. 在左侧菜单中，选择**创建资源** > **数据 + 分析** > **数据工厂**: 
    
-   ![新建数据工厂](./media/load-azure-sql-data-warehouse/new-azure-data-factory-menu.png)
-1. 在“新建数据工厂”页中，为下图中所示的字段提供值：
+   ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
+2. 在“新建数据工厂”页中，为下图中所示的字段提供值：
       
    ![“新建数据工厂”页](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
  
@@ -58,8 +59,8 @@ ms.locfileid: "57437728"
     * **版本**：选择“V2”。
     * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
 
-1. 选择“创建”。
-1. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
+3. 选择“创建”。
+4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
    
    ![数据工厂主页](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 

@@ -4,15 +4,15 @@ description: 介绍 Azure Migrate 中的收集器设备。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 78ef88d0710e8a82d30fa26b60073aa75e363c15
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315294"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498411"
 ---
 # <a name="about-the-collector-appliance"></a>关于收集器设备
 
@@ -150,6 +150,9 @@ vCenter Server | TCP 443 | 收集器必须能够与 vCenter Server 进行通信�
 RDP | TCP 3389 |
 
 ## <a name="collected-metadata"></a>收集的元数据
+
+> [!NOTE]
+> 元数据收集器设备用于帮助您正确调整其大小在应用程序迁移到 Azure，Azure Migrate 发现执行 Azure 适用性分析、 应用程序依赖项分析和规划成本。 Microsoft 不使用此数据相对于任何许可证符合性审核。
 
 收集器设备发现每个 VM 的以下配置元数据。 VM 的配置数据在发现启动后一小时即可使用。
 

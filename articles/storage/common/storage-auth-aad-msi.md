@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4372045590938df701dd00e58a111215f6e8e56d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 76bf36f63051f02d6c37261799342f424609f9b2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369643"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442303"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources"></a>进行对 blob 和队列管理的标识访问 Azure 资源的身份验证
 
@@ -22,8 +22,6 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 若要向 Blob 容器或队列的托管标识授予权限，请将基于角色的访问控制 (RBAC) 角色分配给托管标识，该标识包含的权限适用于适当范围的该资源。 有关在存储中的 RBAC 角色的详细信息，请参阅[存储的数据使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。 
 
 本文介绍如何使用 Azure VM 中的托管标识向 Azure Blob 或队列存储进行身份验证。  
-
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上启用托管标识
 
@@ -42,6 +40,8 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 ## <a name="get-a-managed-identity-access-token"></a>获取托管标识访问令牌
 
 若要使用托管标识进行身份验证，应用程序或脚本必须获取托管标识访问令牌。 若要了解如何获取访问令牌，请参阅[如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
+
+要使用 OAuth 令牌授权 blob 和队列操作，必须使用 HTTPS。
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 Blob
 

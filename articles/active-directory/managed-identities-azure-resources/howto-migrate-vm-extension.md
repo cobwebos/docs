@@ -3,7 +3,7 @@ title: 停止使用托管的标识 VM 扩展并开始使用 Azure 实例元数�
 description: 逐步介绍了如何停止使用 VM 扩展并开始使用 Azure 实例元数据服务 (IMDS) 进行身份验证步骤。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: priyamo
-ms.openlocfilehash: c29eb22f2606fc44cfd7d948f2c363cb51c811dd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.author: markvi
+ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227544"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498326"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>如何停止使用的虚拟机托管标识扩展并开始使用 Azure 实例元数据服务
 
@@ -196,7 +196,7 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 
 ## <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
-[Azure 实例元数据服务 (IMDS)](https://docs.microsoft.com/azure/virtual-machines/instance-metadata-service)是提供有关正在运行的可用于管理和配置虚拟机的虚拟机实例的信息的 REST 终结点。 终结点位于已知不可路由的 IP 地址 (`169.254.169.254`) 可仅从虚拟机中访问。
+[Azure 实例元数据服务 (IMDS)](/azure/virtual-machines/windows/instance-metadata-service)是提供有关正在运行的可用于管理和配置虚拟机的虚拟机实例的信息的 REST 终结点。 终结点位于已知不可路由的 IP 地址 (`169.254.169.254`) 可仅从虚拟机中访问。
 
 有以下几个以请求令牌使用 Azure IMDS 优点。 
 

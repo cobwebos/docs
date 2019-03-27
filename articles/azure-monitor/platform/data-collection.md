@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: b65613de8f11aa36c398d15176541ac43a3dba69
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e6d953841e5c22c21640f874ecad942f8db76ad1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770214"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448900"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor 收集的监视数据
 [Azure Monitor](../overview.md) 是可以帮助你监视应用程序及其依赖的资源的服务。 存储来自受监视源的遥测数据和其他数据是此功能的核心所在。 本文提供有关 Azure Monitor 如何存储和使用此类数据的完整说明。
@@ -102,7 +102,7 @@ Azure Monitor 从三个基本源收集指标。 所有这些指标将在指标�
 - 将指标连同日志数据一起路由到日志以分析指标数据，可将指标值存储 93 天以上。 
 - 将指标流式传输到[事件中心](stream-monitoring-data-event-hubs.md)，以便路由到 [Azure 流分析](../../stream-analytics/stream-analytics-introduction.md)或外部系统。
 - 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](../../azure-monitor/learn/tutorial-archive-data.md)。
-- 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) 或 [REST API](rest-api-walkthrough.md) 从命令行或自定义应用程序访问指标值。
+- 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.insights/) 或 [REST API](rest-api-walkthrough.md) 从命令行或自定义应用程序访问指标值。
 
 
 
@@ -146,7 +146,7 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 - 配置[日志警报规则](alerts-log.md)，以便在查询结果与特定的结果匹配时发送通知或执行[自动化操作](action-groups.md)。
 - 使用[逻辑应用](~/articles/logic-apps/index.yml)基于日志数据生成工作流。
 - 将查询结果导出到 [Power BI](powerbi.md)，以使用不同的可视化效果并与 Azure 外部的用户共享。
-- 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) 或 [REST API](https://dev.loganalytics.io/) 从命令行或自定义应用程序访问指标值。
+- 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) 或 [REST API](https://dev.loganalytics.io/) 从命令行或自定义应用程序访问指标值。
 
 ### <a name="viewing-log-data"></a>查看日志数据
 Azure Monitor 中的所有日志数据都是使用以 [Kusto 查询语言](../log-query/get-started-queries.md)编写的[日志查询](../log-query/log-query-overview.md)检索的，这使得你可以快速检索、合并和分析所收集的数据。 可以在 Azure 门户中使用 [Log Analytics](../log-query/portals.md) 编写和测试查询。 可以通过交互方式使用结果，也可以将其固定到某个仪表板，与其他可视化效果一起查看。 还可以使用 [Azure 监视 REST API](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) 来检索日志。

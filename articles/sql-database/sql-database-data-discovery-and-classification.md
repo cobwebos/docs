@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库数据发现和分类 | Microsoft Docs
-description: Azure SQL 数据库数据发现和分类
+title: Azure SQL 数据库和 SQL 数据仓库数据发现和分类 |Microsoft Docs
+description: Azure SQL 数据库和数据发现和分类
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/22/2019
+ms.openlocfilehash: 74bd3af3e1ffd126f8cb4f2347e4566cc4708e25
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202973"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58495980"
 ---
-# <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL 数据库数据发现和分类
+# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL 数据库和 SQL 数据仓库数据发现和分类
 
 数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 & 
 发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
@@ -28,10 +28,10 @@ ms.locfileid: "58202973"
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
 - 控制对包含高度敏感数据的数据库的访问并强化其安全性。
 
-数据发现和分类包含在[高级数据安全](sql-database-advanced-data-security.md) (ADS) 产品/服务中，该产品是高级 SQL 安全功能统一软件包。 可通过中心 SQL ADS 门户访问和管理数据发现和分类。
+数据发现和分类是组成部分[高级数据安全](sql-database-advanced-data-security.md)(ADS) 产品/服务，它是统一的高级 SQL 安全功能包。 可通过中心 SQL ADS 门户访问和管理数据发现和分类。
 
 > [!NOTE]
-> 本文档仅与 Azure SQL 数据库相关。 SQL Server （本地），请参阅[SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
+> 本文档与 Azure SQL 数据库和 Azure SQL 数据仓库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 SQL Server （本地），请参阅[SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
 
 ## <a id="subheading-1"></a>什么是数据发现和分类
 

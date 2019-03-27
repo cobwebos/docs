@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c9bd14128a6874f06983aa99ebb5a8a9a85843a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2ed92486b55aa4fd7dce32f54f0b6567c7bb3cf2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550663"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486727"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -46,7 +46,9 @@ ms.locfileid: "57550663"
 
 预定事件提供以下用例中的事件：
 - 平台启动维护（例如主机 OS 更新）
+- 降级的硬件
 - 用户启动的维护（例如，用户重启或重新部署 VM）
+- [低优先级 VM 逐出](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets)中缩放设置
 
 ## <a name="the-basics"></a>基础知识  
 
@@ -55,15 +57,16 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 ### <a name="endpoint-discovery"></a>终结点发现
 对于启用了 VNET 的 VM，元数据服务可通过不可路由的静态 IP (`169.254.169.254`) 使用。 最新版本的计划事件的完整终结点是： 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
 
 如果不是在虚拟网络中创建虚拟机（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的 IP 地址。 请参阅此示例，了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)。
 
 ### <a name="version-and-region-availability"></a>版本和区域可用性
-计划事件服务受版本控制。 版本是必需的，当前版本为 `2017-08-01`。
+计划事件服务受版本控制。 版本是必需的，当前版本为 `2017-11-01`。
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - |
+| 2017-11-01 | 正式版 | All | <li> 添加了的对低优先级 VM 逐出 EventType 抢占<br> | 
 | 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
 | 2017-03-01 | 预览 | All |<li>初始版本
 
@@ -90,7 +93,7 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 
 #### <a name="powershell"></a>Powershell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
 ```
 
 响应包含计划事件的数组。 空数组表示目前没有计划事件。
@@ -101,7 +104,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -116,7 +119,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 |属性  |  描述 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：计划将虚拟机暂停几秒。 暂停 CPU，但不会对内存、打开文件或网络连接造成影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 |
+| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：计划将虚拟机暂停几秒。 暂停 CPU，但不会对内存、打开文件或网络连接造成影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li>`Preempt`：正在删除低优先级虚拟机 （临时磁盘将丢失）。|
 | ResourceType | 此事件影响的资源的类型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 资源| 此事件影响的资源的列表。 保证包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | 事件状态 | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 未提供 `Completed` 或相似状态；事件完成后，将不再返回。
@@ -130,6 +133,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 | 冻结| 15 分钟 |
 | 重新启动 | 15 分钟 |
 | 重新部署 | 10 分钟 |
+| 抢占 | 30 秒 |
 
 ### <a name="event-scope"></a>事件作用域     
 计划的事件传送到：        
@@ -156,7 +160,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 
 #### <a name="powershell"></a>Powershell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
 ```
 
 > [!NOTE] 
@@ -167,7 +171,7 @@ curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": 
 
 以下示例将查询计划事件的元数据服务并审核每个未完成事件。
 
-```PowerShell
+```powershell
 # How to get scheduled events 
 function Get-ScheduledEvents($uri)
 {
@@ -202,7 +206,7 @@ function Handle-ScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-08-01' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-11-01' -f $localHostIP 
 
 # Get events
 $scheduledEvents = Get-ScheduledEvents $scheduledEventURI

@@ -18,25 +18,25 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ea0be84cc36ca6fa6547d01054599e37229d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0aac3e40089c67cd71a2c634280e333964e47902
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162928"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499975"
 ---
 # <a name="application-types-for-v20"></a>v2.0 的应用程序类型
 
-Azure Active Directory (Azure AD) v2.0 终结点支持各种现代应用体系结构的身份验证，所有这些体系结构都基于行业标准协议 [OAuth 2.0 或 OpenID Connect](active-directory-v2-protocols.md)。 本指南介绍可以通过 Azure AD v2.0 构建的应用的类型，而不考虑首选语言或平台。 本文中的信息旨在帮助你在[开始处理代码](v2-overview.md#getting-started)之前了解高级方案。
+Azure Active Directory (Azure AD) v2.0 终结点支持各种现代应用体系结构的身份验证，所有这些体系结构都基于行业标准协议 [OAuth 2.0 或 OpenID Connect](active-directory-v2-protocols.md)。 本指南介绍可以通过 Azure AD v2.0 构建的应用的类型，而不考虑首选语言或平台。 本文旨在帮助你在[开始处理代码](v2-overview.md#getting-started)之前了解高级方案。
 
 > [!NOTE]
 > v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
 
 ## <a name="the-basics"></a>基础知识
 
-必须在 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com)中注册使用 v2.0 终结点的每个应用。 应用注册过程将收集这些值并将其分配给应用：
+必须在 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com)中注册使用 v2.0 终结点的每个应用。 应用注册过程收集并分配应用的以下值：
 
-* 用于唯一标识应用的**应用程序 ID**
+* 用于唯一标识应用的 **应用程序 ID**
 * 用于将响应定向回应用的重定向 URI
 * 其他一些特定于方案的值
 
@@ -110,7 +110,7 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 
 若要了解如何使用 OAuth2 访问令牌保护 Web API，请查看 [v2.0 入门](v2-overview.md#getting-started)部分提供的 Web API 代码示例。
 
-在许多情况下，Web API 还需要对由 Azure Active Directory 保护的其他下游 Web API 发出出站请求。 为执行此操作，Web API 可以利用 Azure AD 的代理流，它允许 Web API 将传入的访问令牌替换为会在出站请求中使用的另一个访问令牌。 [此处](v2-oauth2-on-behalf-of-flow.md)详细介绍 v2.0 终结点的代理流。
+在许多情况下，Web API 还需要对由 Azure Active Directory 保护的其他下游 Web API 发出出站请求。 为执行此操作，Web API 可以利用 Azure AD 的代理流，它允许 Web API 将传入的访问令牌替换为将在出站请求中使用的另一个访问令牌。 [此处](v2-oauth2-on-behalf-of-flow.md)详细介绍 v2.0 终结点的代理流。
 
 ## <a name="mobile-and-native-apps"></a>移动和本机应用
 
@@ -124,7 +124,7 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 
 包含长时运行进程或无需用户交互便可操作的应用还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用可以通过 OAuth 2.0 客户端凭据流使用应用的标识（而不是用户的委派标识）来进行身份验证和获取令牌。 可以使用客户端机密或证书证明应用的身份。 有关详细信息，请参阅[使用证书在守护程序应用中对 Azure AD 进行身份验证](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/)。
 
-在该流中，应用通过直接与 `/token` 终结点交互来获取令牌：
+在此流中，应用程序直接交互`/token`终结点以获取访问权限：
 
 ![守护程序应用身份验证流](./media/v2-app-types/convergence_scenarios_daemon.png)
 

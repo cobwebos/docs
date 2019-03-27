@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2019
 ms.author: ramamill
-ms.openlocfilehash: ef0e29217e03b3c5d1b2880a6ce755c6cc02ceba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fb558644f29cd7b84156f976f525a88080f101dc
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004457"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449216"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -121,7 +121,7 @@ ms.locfileid: "58004457"
 
 ### <a name="configure-settings"></a>配置设置
 
-1. 在配置服务器管理向导中，选择“设置连接”。 从下拉列表中，首先选择发现和推送安装的源计算机上的移动服务中内置的进程服务器使用的 NIC，然后选择配置服务器用于与 Azure 的连接的 NIC。 再选择“保存”。 配置后，不能更改此设置。 强烈建议不要更改配置服务器的 IP 地址。 请确保分配给配置服务器的 IP 是静态 IP，而不是 DHCP IP。
+1. 在配置服务器管理向导中，选择“设置连接”。 在下拉列表中，首先选择内置进程服务器用于发现的 NIC，将移动服务的安装推送到源计算机上，然后选择配置服务器用来与 Azure 连接的 NIC。 再选择“保存”。 配置后，不能更改此设置。 强烈建议不要更改配置服务器的 IP 地址。 请确保分配给配置服务器的 IP 是静态 IP，而不是 DHCP IP。
 2. 在中**选择恢复服务保管库**，使用在中使用凭据登录到 Microsoft Azure**步骤 6**的"[注册配置服务器与 Azure Site Recovery 服务](#register-the-configuration-server-with-azure-site-recovery-services)".
 3. 登录后，选择你的 Azure 订阅以及相关的资源组和保管库。
 
@@ -184,7 +184,7 @@ ms.locfileid: "58004457"
     在“恢复服务保管库”中，“管理” > “Site Recovery 基础结构” > “配置服务器”。 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。
 10. 是否可以克隆现有配置服务器并将其用于复制业务流程？
 
-    **不能**，不支持使用克隆的配置服务器组件。
+    **不能**，不支持使用克隆的配置服务器组件。 克隆的横向扩展进程服务器也是不支持的方案。 克隆站点恢复组件会影响正在进行的复制。
 
 11. 能否更改配置服务器的 IP？
 

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d25963d44960ec3ab15fdee2c264c3bf18e26c2a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8183ac9241ab57150717eebd85267a33912f1660
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540562"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445431"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流
 
@@ -76,10 +76,10 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>在应用注册门户中请求权限
 
-1. 通过[应用程序注册门户](quickstart-v2-register-an-app.md)或新的[应用注册（预览版）体验](quickstart-register-app.md)注册和创建应用。
-1. 在用于注册或创建应用的门户中，转到你的应用程序。 创建应用时，至少需要使用一个应用程序机密。
-1. 找到“API 权限”部分，然后添加应用所需的**应用程序权限**。
-1. **保存**应用注册。
+1. 注册并创建新的应用[应用注册 （预览版） 体验](quickstart-register-app.md)。
+2. 请转到应用程序注册 （预览版） 体验中的应用程序。 导航到**证书和机密**部分，并添加**新的客户端机密**，因为你将需要使用至少一个客户端机密来请求令牌。
+3. 找到“API 权限”部分，然后添加应用所需的**应用程序权限**。
+4. **保存**应用注册。
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>建议：让用户登录到应用
 
@@ -172,7 +172,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `tenant` | 需要 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
 | `client_id` | 需要 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
 | `scope` | 需要 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 对于 Microsoft Graph 示例，该值为 `https://graph.microsoft.com/.default`。 </br>此值告知 v2.0 终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_secret` | 需要 | 在应用注册门户中为应用生成的应用程序机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
+| `client_secret` | 需要 | 为应用注册门户中应用生成客户端密码。 在发送客户端密码之前必须对其进行 URL 编码。 |
 | `grant_type` | 需要 | 必须设置为 `client_credentials`。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求

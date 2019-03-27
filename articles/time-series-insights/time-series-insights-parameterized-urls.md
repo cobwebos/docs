@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 305d81d6614d1f0654e0d96b10f1759498683003
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 172e6f53b25a1aeef67afea0c1769e6fcaf497cd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558458"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487866"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -81,13 +81,13 @@ ms.locfileid: "53558458"
 - “multiChartStack=false&multiChartSameScale=true” 
   - 必须启用堆叠才能在不同的条件中使用同一 Y 轴比例。  它在默认情况下为“false”，因此传递“true”即可启用此功能。  
   
-可以通过“timeBucketUnit=<Unit>&timeBucketSize=<integer>”来调整时间间隔滑块，使图表的视图更精细或更光滑，聚合程度更高。  
-- “timeBucketUnit=<Unit>&timeBucketSize=<integer>”
+`timeBucketUnit=<Unit>&timeBucketSize=<integer>`使您可以调整的时间间隔滑块，以提供更精细或流畅些，更聚合图表的视图。  
+- `timeBucketUnit=<Unit>&timeBucketSize=<integer>`
   - 单位为天、小时、分钟、秒、毫秒。  请始终将单位大写。
   - 为 timeBucketSize 传递所需的整数即可定义单位数。  注意，平滑度最多可以调整为 7 天。  
   
-可以通过“timezoneOffset=<integer>”参数将显示图表的时区设置为 UTC 的偏移量。  
-  - “timezoneOffset=-<integer>”
+`timezoneOffset=<integer>`参数使你可以在中查看为 UTC 的偏移量的图表的时区设置。  
+  - `timezoneOffset=-<integer>`
     - 整数的单位始终为毫秒。  
     - 注意，此功能与我们在 TSI 浏览器中启用的功能稍有差别，该浏览器允许选择本地浏览器时间或 UTC。  
  

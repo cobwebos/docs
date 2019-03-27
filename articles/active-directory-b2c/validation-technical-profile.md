@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3172354752e2c6a1a7368b297e3cc6e763cd2fcb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 466ed4c2bd353e4a5ec3bec5535b70a90446ee0b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900567"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483890"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
@@ -65,8 +65,8 @@ Precondition 元素包含以下属性：
 
 | 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| Type | 是 | 要对前置条件执行的检查或查询的类型。 指定 `ClaimsExist` 以确保在用户当前声明集中存在指定声明时应执行操作，或指定 `ClaimEquals` 以便仅当指定声明存在且其值等于指定值时才应执行操作。 |
-| ExecuteActionsIf | 是 | 指示在测试为 true 或 false 时是否应执行前置条件中的操作。 |
+| `Type` | 是 | 要对前置条件执行的检查或查询的类型。 指定 `ClaimsExist` 以确保在用户当前声明集中存在指定声明时应执行操作，或指定 `ClaimEquals` 以便仅当指定声明存在且其值等于指定值时才应执行操作。 |
+| `ExecuteActionsIf` | 是 | 指示在测试为 true 或 false 时是否应执行前置条件中的操作。 |
 
 Precondition 元素包含以下元素：
 

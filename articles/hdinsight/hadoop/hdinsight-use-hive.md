@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 5b5f323e20bbaf91c151641f8dc78fbc8cde8c24
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 6d667df3062112e0c805e3ba26bc6240022cab8b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351627"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446328"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -204,8 +204,6 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 [Apache Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含有关实现选项和优化配置的详细信息。
 
-为了帮助调试使用 Tez 运行的作业，HDInsight 提供了以下 Web UI，使你可以查看 Tez 作业的详细信息：[在基于 Linux 的 HDInsight 上使用 Apache Ambari Tez 视图](../hdinsight-debug-ambari-tez-view.md)。
-
 ### <a name="low-latency-analytical-processing-llap"></a>低延迟分析处理 (LLAP)
 
 [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)（有时称为 Live Long and Process）是 Hive 2.0 中的一项新功能，可对查询进行内存中缓存。 LLAP 能够大幅加快 Hive 查询的速度，[在某些情况下，速度比 Hive 1.x 要快 2.6 倍](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)。
@@ -256,7 +254,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流和协调系统。 有关�
 [ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 
 [hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-use-oozie]: hdinsight-use-oozie.md
+[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 
 

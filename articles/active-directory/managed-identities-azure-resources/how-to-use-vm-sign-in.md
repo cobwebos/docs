@@ -3,7 +3,7 @@ title: 如何在 Azure VM 上使用 Azure 资源的托管标识进行登录
 description: 有关使用 Azure 资源服务主体的 Azure VM 托管标识进行脚本客户端登录和资源访问的逐步说明与示例。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 645fb4e939e308eecdd2b6933197493919c2dd1d
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 43aa0859fa67cc6b2f5c5974f072e7b6d4b29527
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338575"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442131"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 资源的托管标识进行登录 
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 5324f1ed92ae4513dcd877853cb6fa2f4c7dd8f3
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446369"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497952"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
@@ -108,7 +108,7 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 安装在设备中的应用程序（例如移动和桌面应用程序）通常需要代表用户访问后端服务或 Web API。 可将自定义的标识管理体验添加到本机应用程序，使用 Azure AD B2C 和 [OAuth 2.0 授权代码流](active-directory-b2c-reference-oauth-code.md)安全调用后端服务。  
 
-在此流中，应用程序执行[策略](active-directory-b2c-reference-policies.md)，在用户完成策略之后，从 Azure AD 接收 `authorization_code`。 `authorization_code` 表示应用程序有权代表当前登录的用户调用后端服务。 然后，该应用程序即可在后台将 `authorization_code` 交换成 `id_token` 和 `refresh_token`。  应用程序可以在 HTTP 请求中使用 `id_token` 向后端 Web API 进行身份验证。 它还可以使用 `refresh_token` 获取新的 `id_token`（如果旧令牌已过期）。
+在此流中，应用程序执行[策略](active-directory-b2c-reference-policies.md)，在用户完成策略之后，从 Azure AD 接收 `authorization_code`。 `authorization_code` 表示应用程序有权代表当前登录的用户调用后端服务。 然后，该应用程序即可在后台将 `authorization_code` 交换成 `access_token` 和 `refresh_token`。  应用程序可以在 HTTP 请求中使用 `access_token` 向后端 Web API 进行身份验证。 它还可以使用 `refresh_token` 获取新的 `access_token`（如果旧令牌已过期）。
 
 ## <a name="current-limitations"></a>当前限制
 

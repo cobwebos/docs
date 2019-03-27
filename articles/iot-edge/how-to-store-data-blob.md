@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0fc34c913453abd174009213233a54e30b9346d3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3a0df408e70ed61355ffba319f6261f90d8e4348
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881378"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499152"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>通过 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据
 
@@ -345,7 +345,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
     }
 
    ```
-  ## <a name="logs"></a>日志
+## <a name="logs"></a>日志
 
 请按照说明为[配置 IoT Edge 模块在 docker 日志](production-checklist.md#set-up-logs-and-diagnostics)
 
@@ -383,9 +383,10 @@ Azure Blob 存储文档包括以多种语言提供示例代码的快速入门。
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
 
 ### <a name="azure-storage-explorer"></a>Azure 存储资源管理器
-此外可以尝试[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)连接到本地存储帐户。 我们已尝试使用[以前版本 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0)的 Azure 资源管理器。
+此外可以尝试"Azure 存储资源管理器"连接到本地存储帐户。 它适用于[Azure 存储资源管理器版本 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0)。
+
 > [!NOTE]
-> 您可能会执行以下步骤时遇到错误，忽略和刷新。 
+> 执行以下步骤，例如将连接添加到本地存储帐户，或在本地存储帐户中创建容器时，可能会遇到错误。 请忽略并刷新。 
 
 1. 下载并安装 Azure 存储资源管理器
 2. 连接到 Azure 存储中使用的连接字符串

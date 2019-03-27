@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: f871174982e965a32d5f2dca5e2e53c5dc436055
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: eeb9765cfd6242ecdc14dd59dd9b5337cc56c597
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405481"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481209"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -28,7 +28,7 @@ ms.locfileid: "57405481"
 * 至少一个支持与 Azure 文件同步进行同步的 Windows Server 实例或 Windows Server 群集。有关支持的 Windows Server 版本的详细信息，请参阅 [Windows Server 的互操作性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)。
 * 确保已在 Windows Server 上安装 PowerShell 5.1。 如果使用的是 Windows Server 2012 R2，请确保至少运行 PowerShell 5.1.\*。 由于 PowerShell 5.1 是现成的默认版本，因此你可以在 Windows Server 2016 上安全地跳过此检查。 在 Windows Server 2012 R2 上，可通过查看 $PSVersionTable 对象的“PSVersion”属性值来验证是否正在运行 PowerShell 5.1.\*：
 
-    ```PowerShell
+    ```powershell
     $PSVersionTable.PSVersion
     ```
 
@@ -40,7 +40,7 @@ ms.locfileid: "57405481"
     - 可以按照以下说明安装 Az 模块：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 
     - 可以通过执行以下 PowerShell cmdlet 来安装 AzureRM PowerShell 模块：
     
-        ```PowerShell
+        ```powershell
         Install-Module AzureRM
         ```
 
@@ -59,7 +59,7 @@ ms.locfileid: "57405481"
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 若要禁用“Internet Explorer 增强的安全性配置”，请在权限提升的 PowerShell 会话中执行以下命令：
 
-```PowerShell
+```powershell
 # Disable Internet Explorer Enhanced Security Configuration 
 # for Administrators
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0 -Force
@@ -100,7 +100,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 > [!Note]  
 > 包含 Azure 文件同步管理 cmdlet 的 StorageSync.Management.PowerShell.Cmdlets.dll 包（有意）包含了一个带有未经批准的谓词 (`Login`) 的 cmdlet。 选择的名称 `Login-AzureStorageSync` 与 Azure PowerShell 模块中 `Login-AzAccount` cmdlet 的别名匹配。 将 Azure 文件同步代理添加到 Azure PowerShell 模块后，将删除此错误消息（和 cmdlet）。
 
-```PowerShell
+```powershell
 $acctInfo = Login-AzAccount
 
 # The location of the Azure File Sync Agent. If you have installed the Azure File Sync 
@@ -160,7 +160,7 @@ Login-AzureRmStorageSync `
 
 使用 `Login-AzureR,StorageSync` cmdlet 创建 Azure 文件同步上下文后，可以创建存储同步服务。 请务必将 `<my-storage-sync-service>` 替换为存储同步服务的所需名称。
 
-```PowerShell
+```powershell
 $storageSyncName = "<my-storage-sync-service>"
 New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 ```
@@ -188,7 +188,7 @@ Azure 文件同步代理安装完成后，服务器注册 UI 自动打开。 在
 > [!Important]  
 > 如果要对故障转移群集使用 Azure 文件同步，则 必须在群集中的每个节点上安装 Azure 文件同步代理。 必须注册群集中的每个节点才能使用 Azure 文件同步。
 
-```PowerShell
+```powershell
 # Gather the OS version
 $osver = [System.Environment]::OSVersion.Version
 
@@ -242,7 +242,7 @@ Remove-Item -Path ".\StorageSyncAgent.exe", ".\afstemp" -Recurse -Force
 选择相应的信息之后，选择“注册”完成服务器注册。 在注册过程中，系统会提示进行其他登录。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $storageSyncName
 ```
 
@@ -271,14 +271,14 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 若要创建同步组，请执行以下 PowerShell。 请记得将 `<my-sync-group>` 替换为同步组的所需名称。
 
-```PowerShell
+```powershell
 $syncGroupName = "<my-sync-group>"
 New-AzureRmStorageSyncGroup -SyncGroupName $syncGroupName -StorageSyncService $storageSyncName
 ```
 
 成功创建同步组后，可以创建云终结点。 请务必将 `<my-storage-account>` 和 `<my-file-share>` 替换为预期的值。
 
-```PowerShell
+```powershell
 # Get or create a storage account with desired name
 $storageAccountName = "<my-storage-account>"
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup | Where-Object {
@@ -335,7 +335,7 @@ New-AzureRmStorageSyncCloudEndpoint `
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 执行以下 PowerShell 命令创建服务器终结点（请务必将 `<your-server-endpoint-path>` 和 `<your-volume-free-space>` 替换为所需值）。
 
-```PowerShell
+```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>

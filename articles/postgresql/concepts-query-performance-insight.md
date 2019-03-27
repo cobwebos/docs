@@ -5,27 +5,24 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 1a71fb81acc91036ce12ff15f6b2762b808c7473
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.date: 03/26/2019
+ms.openlocfilehash: 69963f34cb49482cc7eae25320a6a3a5f176f8dd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541603"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486573"
 ---
 # <a name="query-performance-insight"></a>查询性能见解 
 
 **适用于：** Azure Database for PostgreSQL 9.6 和 10
-
-> [!IMPORTANT]
-> Query Performance Insight 功能现提供公共预览版。 
 
 Query Performance Insight 可帮助你快速确定运行时间最长的查询、它们如何随时间的推移而变化，以及哪些等待因素会影响它们。
 
 ## <a name="permissions"></a>权限
 查看 Query Performance Insight 中查询文本所需的“所有者”或“参与者”权限。 读者可以查看图表和表格，但不能查看查询文本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要运行 Query Performance Insight，数据必须存在于[查询存储](concepts-query-store.md)中。
 
 ## <a name="viewing-performance-insights"></a>查看性能见解

@@ -2,20 +2,20 @@
 title: 支持 Azure 资源托管标识的 Azure 服务
 description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务列表
 services: active-directory
-author: priyamohanram
+author: MarkusVi
 ms.author: priyamo
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
-manager: daveba
+manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6c511c605a98a696fb542638e86e63f0226150
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 8cd0612f865b82537e914ce6b6e062038a570c98
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340250"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449116"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 

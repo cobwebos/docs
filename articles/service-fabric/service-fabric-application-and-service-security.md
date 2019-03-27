@@ -3,7 +3,7 @@ title: 了解 Azure Service Fabric 应用程序安全性 | Microsoft Docs
 description: 有关如何在 Service Fabric 中安全运行微服务应用程序的概述。 了解如何以不同的安全帐户运行服务和启动脚本、对用户进行身份验证和授权、管理应用程序机密、保护服务通信、使用 API 网关，以及保护应用程序的静态数据。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: msfussell
 manager: timlt
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
-ms.author: ryanwi
-ms.openlocfilehash: 91e7fdd215d246156f601d3b5e6e05b7f8f71f59
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.author: mfussell
+ms.openlocfilehash: fd90bdba94a985a2a3529f605972217382b23b2a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116450"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498343"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
 微服务体系结构可以带来[诸多好处](service-fabric-overview-microservices.md)。 但是，管理微服务的安全性有一定的难度，比管理传统单体式应用程序的安全性更复杂。 
@@ -66,7 +66,7 @@ API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路
 3. 在部署应用程序时使用证书加密机密值，并将其注入服务的 Settings.xml 配置文件。
 4. 通过使用相同的加密证书进行解密，从 Settings.xml 中读取加密值。 
 
-[Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，也可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
+[Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
 
 有关示例，请参阅[管理应用程序机密](service-fabric-application-secret-management.md)。
 

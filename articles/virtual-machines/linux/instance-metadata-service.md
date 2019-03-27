@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: c38b21d860e25c0f31122e75d822257e14ca01db
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 7c5e979f399a487d29138b57d1fc4ee2c77622ff
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351960"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445489"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -111,7 +111,10 @@ API | 默认数据格式 | 其他格式
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
-### <a name="security"></a>“安全”
+> [!NOTE]
+> 对于叶节点`format=json`不起作用。 这些查询`format=text`需要显式指定是否默认格式是 json。
+
+### <a name="security"></a>安全
 
 只能从不可路由的 IP 地址上正在运行的虚拟机实例中访问实例元数据服务终结点。 此外，服务会拒绝任何带有 `X-Forwarded-For` 标头的请求。
 请求必须包含 `Metadata: true` 标头，以确保实际请求是直接计划好的，而不是无意重定向的一部分。
@@ -123,8 +126,8 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 HTTP 状态代码 | 原因
 ----------------|-------
 200 正常 |
-400 错误请求 | 缺少 `Metadata: true` 标头
-404 未找到 | 请求的元素不存在 
+400 错误请求 | 缺少`Metadata: true`标头或查询的叶节点时丢失格式
+404 未找到 | 请求的元素不存在
 不允许使用 405 方法 | 仅支持 `GET` 和 `POST` 请求
 429 请求过多 | 目前该 API 每秒最多支持 5 个查询
 500 服务错误     | 请稍后重试

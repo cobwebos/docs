@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 4ab26891a98418fae75c3be18f17f1d8e02d8b36
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8b86103f76e2425acea1b4f7c590204f0a893510
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216707"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484422"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>排查 SQL 数据同步的问题
 
@@ -250,7 +250,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
         -  [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Data Sync Agent - [Azure SQL 数据同步的 Data Sync Agent](sql-database-data-sync-agent.md)
 -   最佳做法 - [Azure SQL 数据同步最佳做法](sql-database-best-practices-data-sync.md)
--   监视器-[使用 Azure Monitor 监视 SQL 数据同步日志](sql-database-sync-monitor-oms.md)
+-   监视 - [使用 Azure Monitor 日志监视 SQL 数据同步](sql-database-sync-monitor-oms.md)
 -   更新同步架构
     -   使用 Transact-SQL - [在 Azure SQL 数据同步中自动复制架构更改](sql-database-update-sync-schema.md)
     -   使用 PowerShell - [使用 PowerShell 更新现有同步组中的同步架构](scripts/sql-database-sync-update-schema.md)

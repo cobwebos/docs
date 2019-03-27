@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 7713b449d5e5291ce1dd6c9b814ebefd07bc53a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 68101be211335d51eb4bf99361ea36b73fa19218
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737665"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485393"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
 
@@ -29,7 +29,7 @@ ms.locfileid: "56737665"
 
 性能计数器由两个部分组成：集名称（也称为类别），以及一个或多个计数器。 可以使用 PowerShell 获取可用性能计数器的列表：
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Select-Object CounterSetName, Paths | Sort-Object CounterSetName
 
 CounterSetName                                  Paths
@@ -56,7 +56,7 @@ Authorization Manager Applications              {\Authorization Manager Appl...
 
 若要获取某个集的所有计数器，请使用 `CounterSetName` 值并扩展 `Paths` 集合。 每个路径项是可以查询的计数器。 例如，若要获取 `Processor` 集相关的可用计数器，请扩展 `Paths` 集合：
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -ExpandProperty Paths
 
 \Processor(*)\% Processor Time

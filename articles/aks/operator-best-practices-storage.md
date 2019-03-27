@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: iainfou
-ms.openlocfilehash: 691decb88188a428edfeab1ea9e99c48876b6d9f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110727"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496168"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
 
@@ -91,9 +91,9 @@ AKS 节点作为 Azure VM 运行。 有不同类型和大小的 VM 可使用。 
 
 ## <a name="secure-and-back-up-your-data"></a>保护和备份数据
 
-**最佳做法指南** - 使用适合自己存储类型的工具来备份数据，例如 Heptio Ark 或 Azure Site Recovery。 验证这些备份的完整性和安全性。
+**最佳实践指南**-备份你的数据为您的存储类型，如 Velero 或 Azure Site Recovery 使用相应的工具。 验证这些备份的完整性和安全性。
 
-当应用程序存储和使用永久存储在磁盘或文件中的数据时，需要定期备份或创建数据的快照。 Azure 磁盘可以使用内置快照技术。 在执行快照操作之前，可能需要一个挂钩，让应用程序能够刷新磁盘的写入操作。 [Heptio Ark][heptio-ark] 可以备份永久性卷以及其他群集资源和配置。 如果无法[从应用程序中删除状态][remove-state]，请从永久性卷备份数据并定期测试还原操作以验证数据完整性和所需的过程。
+当应用程序存储和使用永久存储在磁盘或文件中的数据时，需要定期备份或创建数据的快照。 Azure 磁盘可以使用内置快照技术。 在执行快照操作之前，可能需要一个挂钩，让应用程序能够刷新磁盘的写入操作。 [Velero] [ velero]可以备份以及其他群集资源和配置的永久性卷。 如果无法[从应用程序中删除状态][remove-state]，请从永久性卷备份数据并定期测试还原操作以验证数据完整性和所需的过程。
 
 了解不同数据备份方法的局限性，以及是否需要在快照之前使数据处于静默状态。 数据备份不一定能恢复应用程序的群集部署环境。 有关这些方案的详细信息，请参阅 [AKS 中的业务连续性和灾难恢复的最佳做法][best-practices-multi-region]。
 
@@ -102,7 +102,7 @@ AKS 节点作为 Azure VM 运行。 有不同类型和大小的 VM 可使用。 
 本文重点介绍了 AKS 中的最佳存储做法。 有关 Kubernetes 中存储基础知识的详细信息，请参阅 [AKS 中应用程序的存储概念][aks-concepts-storage]。
 
 <!-- LINKS - External -->
-[heptio-ark]: https://github.com/heptio/ark
+[velero]: https://github.com/heptio/velero
 [dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bc4896f634bb98b4663dfc3fbc6bad7ba9bace3e
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: 5a4426b665c58dd2c0bf7f5b5b41ebfca158e782
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319618"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444726"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户来访问 blob 或队列数据
 
@@ -43,7 +43,7 @@ ms.locfileid: "58319618"
 - 你已分配了 Azure 资源管理器[读取器](../../role-based-access-control/built-in-roles.md#reader)角色，至少，作用域内的存储帐户级别或更高版本。 **读取器**角色授予的最受限制的权限，但还可授予对存储帐户管理资源的访问权限的另一个 Azure 资源管理器角色。
 - 你分配了可以提供对 blob 或队列数据访问的内置或自定义角色。
 
-**读取器**角色分配或另一个 Azure 资源管理器角色分配是必需，以便用户可以查看和导航 Azure 门户中的存储帐户管理资源。 授予对 blob 或队列数据的访问的 RBAC 角色不授予对存储帐户管理资源的访问。 若要访问门户中的 blob 或队列数据，用户需要有权导航存储帐户资源。 有关此要求的详细信息，请参阅[分配读者角色以访问门户](../common/storage-auth-aad-rbac.md#assign-the-reader-role-for-portal-access)。
+**读取器**角色分配或另一个 Azure 资源管理器角色分配是必需，以便用户可以查看和导航 Azure 门户中的存储帐户管理资源。 授予对 blob 或队列数据的访问的 RBAC 角色不授予对存储帐户管理资源的访问。 若要访问门户中的 blob 或队列数据，用户需要有权导航存储帐户资源。 有关此要求的详细信息，请参阅[分配读者角色以访问门户](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)。
 
 支持对 blob 或队列数据的访问的内置角色包括：
 
@@ -96,5 +96,7 @@ ms.locfileid: "58319618"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure blob 和队列使用 Azure Active Directory （预览版） 的访问进行身份验证](storage-auth-aad.md)
-- [授予对 Azure 容器和队列使用 RBAC （预览版） 在 Azure 门户中的访问权限](storage-auth-aad-rbac.md)
+- [访问 Azure blob 和队列使用 Azure Active Directory 进行身份验证](storage-auth-aad.md)
+- [授予对 Azure 容器和 Azure 门户中使用 RBAC 的队列的访问权限](storage-auth-aad-rbac-portal.md)
+- [授予对 Azure blob 和队列数据与使用 Azure CLI 的 RBAC 访问权限](storage-auth-aad-rbac-cli.md)
+- [授予对 Azure blob 和队列数据与使用 PowerShell 的 RBAC 访问权限](storage-auth-aad-rbac-powershell.md)

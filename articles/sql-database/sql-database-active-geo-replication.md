@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cb83f0c38f6860340444c15b6c5eef0b990d0ad0
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 03/26/2019
+ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295243"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498479"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建和使用活动异地复制
 
@@ -75,8 +75,11 @@ ms.locfileid: "58295243"
 
   应用程序可使用与访问主数据库时所用的相同或不同的安全主体来访问辅助数据库以执行只读操作。 辅助数据库在快照隔离模式下运行，以确保对主数据库的更新的复制（日志重播）不会因辅助数据库上执行的查询操作而延迟。
 
-  > [!NOTE]
-  > 如果主数据库上有架构更新，则日志重播会在辅助数据库上延迟。 因为架构更新需要在辅助数据库上有架构锁。
+> [!NOTE]
+> 如果主数据库上有架构更新，则日志重播会在辅助数据库上延迟。 因为架构更新需要在辅助数据库上有架构锁。
+> [!IMPORTANT]
+> 可以使用异地复制在主数据库所在的同一区域中创建辅助数据库。 可以在同一区域中使用此辅助数据库的负载平衡的只读工作负荷。 但是，同一区域中的辅助数据库不提供其他故障恢复能力，并因此不是灾难恢复的合适的故障转移目标。 它也不会保证 avaialability 区域隔离。 使用业务关键或具有高级服务层[区域冗余配置](sql-database-high-availability.md#zone-redundant-configuration)以实现 avaialability 区域隔离。   
+>
 
 - **计划内故障转移**
 

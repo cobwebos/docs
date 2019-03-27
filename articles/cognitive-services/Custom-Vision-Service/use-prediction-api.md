@@ -8,33 +8,49 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 03/26/2019
 ms.author: anroth
-ms.openlocfilehash: e50933ea0231b4be22c2d0f82d33fd02dd0918f5
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 715fa526c83608c9922315e3a0d89b67b31e0d16
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351603"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472713"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically"></a>使用预测终结点来以编程方式测试映像
+#  <a name="use-your-model-with-the-prediction-api"></a>您的模型使用预测 API
 
 训练模型后，可以通过将图像提交到预测 API 来以编程方式测试这些图像。
 
 > [!NOTE]
-> 本文档演示如何使用 C# 将图像提交到预测 API。 有关 API 用法的详细信息和示例，请参阅[预测 API 参考](https://go.microsoft.com/fwlink/?linkid=865445)。
+> 本文档演示如何使用 C# 将图像提交到预测 API。 有关 API 用法的详细信息和示例，请参阅[预测 API 参考](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)。
+
+## <a name="publish-your-trained-iteration"></a>发布已训练的迭代
+
+从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡。
+
+若要提交映像分发到预测 API，你将首先需要发布用于预测，这可以通过选择迭代__发布__和指定的名称的已发布的迭代。 这将使您的模型可以预测 api 自定义视觉 Azure 资源的访问。 
+
+![用红色矩形围绕发布按钮，显示性能选项卡。](./media/use-prediction-api/unpublished-iteration.png)
+
+已成功发布您的模型之后, 你将看到显示在左侧边栏中，以及小版本的说明中已发布的迭代名称迭代旁边的"已发布"标签。
+
+![显示性能选项卡，用红色矩形围绕的已发布的标签和已发布的迭代的名称。](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>获取 URL 和预测密钥
 
-从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡。若要显示有关预测 API（包括 Prediction-key）用法的信息，请选择“预测 URL”。 对于项目附加到 Azure 资源，你__预测键__还可在[Azure 门户](https://portal.azure.com)下的关联 Azure 资源页__密钥__。 复制要在应用程序中使用的以下信息：
+一旦已发布您的模型，可以检索有关使用预测 API，通过选择信息__预测 URL__。 这会打开一个对话框，类似如下所示使用预测 API 的信息包括__预测 URL__并__预测密钥__。
 
-* 使用图像文件的 URL。
-* “Prediction-key”值。
+![性能选项卡显示一个红色矩形围绕预测 URL 按钮。](./media/use-prediction-api/published-iteration-prediction-url.png)
+
+![性能选项卡显示一个红色矩形周围使用的图像文件和预测密钥值的预测 URL 值。](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> 如果具有多个迭代，则可以通过将某个迭代设置为默认，控制使用的迭代。 从“迭代”部分选择该迭代，然后在页面顶部选择“设为默认”。
+> 你__预测键__还可在[Azure 门户](https://portal.azure.com)页上自定义视觉 Azure 资源关联到你的项目，在__密钥__。 
 
-![显示性能选项卡，其预测 URL 周围有红色矩形框。](./media/use-prediction-api/prediction-url.png)
+从对话框中，应用程序中的复制使用的以下信息：
+
+* __预测 URL__是用于__映像文件__。
+* __预测密钥__值。
 
 ## <a name="create-the-application"></a>创建应用程序
 
@@ -46,8 +62,8 @@ ms.locfileid: "58351603"
     > 更改以下信息：
     >
     > * 将“命名空间”设置为项目名称。
-    > * 设置之前在以 `client.DefaultRequestHeaders.Add("Prediction-Key",` 开头的行中接收到的“Prediction-Key”值。
-    > * 设置之前在以 `string url =` 开头的行中接收到的“URL”值。
+    > * 设置__预测键__数值前面的开头的行检索`client.DefaultRequestHeaders.Add("Prediction-Key",`。
+    > * 设置__预测 URL__数值前面的开头的行检索`string url =`。
 
     ```csharp
     using System;
@@ -56,37 +72,30 @@ ms.locfileid: "58351603"
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    namespace CSPredictionSample
+    namespace CVSPredictionSample
     {
-        static class Program
+        public static class Program
         {
-            static void Main()
+            public static void Main()
             {
                 Console.Write("Enter image file path: ");
                 string imageFilePath = Console.ReadLine();
 
                 MakePredictionRequest(imageFilePath).Wait();
 
-                Console.WriteLine("\n\n\nHit ENTER to exit...");
+                Console.WriteLine("\n\nHit ENTER to exit...");
                 Console.ReadLine();
             }
 
-            static byte[] GetImageAsByteArray(string imageFilePath)
-            {
-                FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                return binaryReader.ReadBytes((int)fileStream.Length);
-            }
-
-            static async Task MakePredictionRequest(string imageFilePath)
+            public static async Task MakePredictionRequest(string imageFilePath)
             {
                 var client = new HttpClient();
 
-                // Request headers - replace this example key with your valid subscription key.
-                client.DefaultRequestHeaders.Add("Prediction-Key", "13hc77781f7e4b19b5fcdd72a8df7156");
+                // Request headers - replace this example key with your valid Prediction-Key.
+                client.DefaultRequestHeaders.Add("Prediction-Key", "3b9dde6d1ae1453a86bfeb1d945300f2");
 
-                // Prediction URL - replace this example URL with your valid prediction URL.
-                string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/prediction/d16e136c-5b0b-4b84-9341-6a3fff8fa7fe/image?iterationId=f4e573f6-9843-46db-8018-b01d034fd0f2";
+                // Prediction URL - replace this example URL with your valid Prediction URL.
+                string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/8622c779-471c-4b6e-842c-67a11deffd7b/classify/iterations/Cats%20vs.%20Dogs%20-%20Published%20Iteration%203/image";
 
                 HttpResponseMessage response;
 
@@ -100,23 +109,30 @@ ms.locfileid: "58351603"
                     Console.WriteLine(await response.Content.ReadAsStringAsync());
                 }
             }
+
+            private static byte[] GetImageAsByteArray(string imageFilePath)
+            {
+                FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                return binaryReader.ReadBytes((int)fileStream.Length);
+            }
         }
     }
     ```
 
 ## <a name="use-the-application"></a>使用应用程序
 
-运行应用程序时，输入图像文件的路径。 图像将提交到 API，结果将以 JSON 文档的形式返回。 以下 JSON 是响应的示例
+运行程序时，你将在控制台中的图像文件中输入的路径。 图像提交到预测 API 和预测结果返回为 JSON 文档。 以下 JSON 是响应的示例。
 
 ```json
 {
-    "Id":"3f76364c-b8ae-4818-a2b2-2794cfbe377a",
-    "Project":"2277aca4-7aff-4742-8afb-3682e251c913",
-    "Iteration":"84105bfe-73b5-4fcc-addb-756c0de17df2",
-    "Created":"2018-05-03T14:15:22.5659829Z",
+    "Id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
+    "Project":"8622c779-471c-4b6e-842c-67a11deffd7b",
+    "Iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
+    "Created":"2019-03-20T16:47:31.322Z",
     "Predictions":[
-        {"TagId":"35ac2ad0-e3ef-4e60-b81f-052a1057a1ca","Tag":"dog","Probability":0.102716163},
-        {"TagId":"28e1a872-3776-434c-8cf0-b612dd1a953c","Tag":"cat","Probability":0.02037274}
+        {"TagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","TagName":"cat", "Probability":1.0},
+        {"TagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","TagName":"dog", "Probability":0.1087869}
     ]
 }
 ```
@@ -124,3 +140,13 @@ ms.locfileid: "58351603"
 ## <a name="next-steps"></a>后续步骤
 
 [导出模型供移动设备使用](export-your-model.md)
+
+[开始使用.NET Sdk](csharp-tutorial.md)
+
+[开始使用 Python Sdk](python-tutorial.md)
+
+[开始使用 Java Sdk](java-tutorial.md)
+
+[开始使用 Node Sdk](node-tutorial.md)
+
+[开始使用 Go Sdk](go-tutorial.md)

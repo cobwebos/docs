@@ -11,33 +11,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/14/2019
+ms.date: 3/26/2019
 ms.author: raiye
-ms.openlocfilehash: ec50cff2a2d3323b988632fd7ee96b73f60117b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 42c241ce6b14eac2f76785b7b16b537d3e88bd8d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887283"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500604"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
-
->[!NOTE]
->3 月版来宾 OS 是当前正在对配置为自动更新的云服务 Vm 推出。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 3 月版 OS 中包含以下修补程序。 此列表可能随时变动。
-
 
 ## <a name="march-2019-guest-os"></a>2019 年 3 月来宾 OS
 
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
-| Rel 19 03 | [4489873] | Internet Explorer | 2.84, 3.71, 4.64 | 2019 年 3 月 12日日 |
-| Rel 19 03 | [4489907] | 闪烁 | 3.71, 4.64, 5.29, 6.5 | 2019 年 3 月 12日日 |
-| Rel 19 03 | [4489885] | Windows 安全性 | 2.84 | 2019 年 3 月 12日日 |
-| Rel 19 03 | [4489884] | Windows 安全性 | 3.71 | 2019 年 3 月 12日日 |
-| Rel 19 03 | [4489883] | Windows 安全性 | 4.64 | 2019 年 3 月 12日日 |
-| Rel 19 03 | [4489882] | Windows 10 安全性 | 5.29 | 2019 年 3 月 12日日 |
-| Rel 19 03 | [4489899] | Windows 10 安全性 | 6.5 | 2019 年 3 月 12日日 |
+| Rel 19 03 | [4489873] | Internet Explorer | 2.84, 3.71, 4.64 | 2019 年 3 月 12 日 |
+| Rel 19 03 | [4489907] | 闪烁 | 3.71, 4.64, 5.29, 6.5 | 2019 年 3 月 12 日 |
+| Rel 19 03 | [4489885] | Windows 安全性 | 2.84 | 2019 年 3 月 12 日 |
+| Rel 19 03 | [4489884] | Windows 安全性 | 3.71 | 2019 年 3 月 12 日 |
+| Rel 19 03 | [4489883] | Windows 安全性 | 4.64 | 2019 年 3 月 12 日 |
+| Rel 19 03 | [4489882] | Windows 10 安全性 | 5.29 | 2019 年 3 月 12 日 |
+| Rel 19 03 | [4489899] | Windows 10 安全性 | 6.5 | 2019 年 3 月 12 日 |
 | Rel 19 03 | [4486563] | 年 2 月非安全性汇总 | 2.84 | 2019 年 2 月 12 日 |
 | Rel 19 03 | [4483458] | 年 2 月非安全性汇总.NET 3.x | 2.84 | 2019 年 2 月 12 日 |
 | Rel 19 03 | [4483455] | 年 2 月非安全性汇总.NET 4.x | 2.84 | 2019 年 2 月 12 日 |

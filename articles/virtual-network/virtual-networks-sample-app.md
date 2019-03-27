@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ca111623f6d3d7c61b1bfc4e1af328f9599c2440
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6753b3a76ff5d3e0266f238d8e354943dec694a8
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884500"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480452"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>用于 DMZ 的示例应用程序
 [返回安全边界最佳实践页面][HOME]
@@ -30,7 +30,7 @@ ms.locfileid: "57884500"
 ## <a name="firewall-rule-to-allow-icmp"></a>允许 ICMP 的防火墙规则
 此简单的 PowerShell 语句可以在任意 Windows VM 上运行以允许 ICMP (Ping) 流量。 通过允许 ping 协议通过 Windows 防火墙（对于大部分 Linux 发行版而言，ICMP 默认打开），此防火墙更新将简化测试和故障排除。
 
-```PowerShell
+```powershell
 # Turn On ICMPv4
 New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
@@ -49,7 +49,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 
 当 RDP 进入 IIS01 时，应在本地运行此 PowerShell 脚本。
 
-```PowerShell
+```powershell
 # IIS Server Post Build Config Script
 # Get Admin Account and Password
     Write-Host "Please enter the admin account information used to create this VM:" -ForegroundColor Cyan
@@ -161,7 +161,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 
 当 RDP 进入 AppVM01 时，应在本地运行此 PowerShell 脚本。 需要以管理员身份运行 PowerShell 以确保成功执行。
 
-```PowerShell
+```powershell
 # AppVM01 Server Post Build Config Script
 # PowerShell must be run as Administrator for Net Share commands to work
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: f6e604940c9e2e84f119fdd1859ad4b2cda23aef
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 1001e6aec7ba2f6ce62eb267d218149296048bb9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588697"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485877"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中为实验室虚拟机指定资源组
 
@@ -47,7 +47,7 @@ ms.locfileid: "57588697"
 ## <a name="use-powershell"></a>使用 PowerShell 
 下面的示例演示如何使用 PowerShell 脚本来创建新的资源组中的所有实验室虚拟机。
 
-```PowerShell
+```powershell
 [CmdletBinding()]
 Param(
     $subId,
@@ -71,7 +71,7 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
 
 使用以下命令来调用脚本。 ResourceGroup.ps1 是包含前面的脚本中的文件：
 
-```PowerShell
+```powershell
 .\ResourceGroup.ps1 -subId <subscriptionID> -labRg <labRGNAme> -labName <LanName> -vmRg <RGName> 
 ```
 

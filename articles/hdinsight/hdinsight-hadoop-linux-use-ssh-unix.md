@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 keywords: linux 中的 hadoop 命令,hadoop linux 命令,hadoop macos,ssh hadoop,ssh hadoop 群集
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 03/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 82f57701a2ba83d500747383d49bbefaa23877f2
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: b7cad422cd7e177206e21bfa8941afe70a7864fd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361211"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497799"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
 

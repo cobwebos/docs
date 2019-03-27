@@ -1,20 +1,20 @@
 ---
 title: 在 Azure 门户中创建认知服务帐户
 titlesuffix: Azure Cognitive Services
-description: 如何在 Azure 门户中创建 Microsoft 认知服务 API 帐户。
+description: 如何在 Azure 门户中创建的 Azure 认知服务 Api 帐户。
 services: cognitive-services
 author: garyericson
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/22/2019
 ms.author: garye
-ms.openlocfilehash: 21e1eb00f688f2e7061e876cc4375d6d780838fc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7df429aa848c6f9fb9abe09fbf4357db20fcde6a
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534797"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472848"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建认知服务帐户
 
@@ -29,7 +29,7 @@ ms.locfileid: "57534797"
 开始之前，请务必了解有两种类型的 Azure 认知服务订阅。 第一个是单服务订阅，例如计算机视觉或语音服务。 单服务订阅仅限于该资源。 第二个是 Azure 认知服务的多服务订阅。 此订阅允许将一个订阅用于大多数 Azure 认知服务。 此选项还可整合帐单。 请参阅[认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)了解其他信息。
 
 >[!WARNING]
-> 目前，以下服务不支持多服务密钥：QnA Maker、语音服务和自定义视觉。
+> 目前，以下服务不支持多服务密钥：QnA Maker、 语音服务、 自定义影像和异常情况检测程序。
 
 以下部分将引导创建单服务或多服务订阅。
 

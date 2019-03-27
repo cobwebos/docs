@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 03/25/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dd89d9645d2054f301ed999121fefc417ea5c6fa
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 6a69d8d60b2e588ded9ccca20521195ae11ff136
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293900"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449424"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -45,9 +45,9 @@ ms.locfileid: "58293900"
 
 * 即使在查询池中有没有副本，则允许同步。 如果从零到使用新数据的一个或多个副本从主服务器上的处理操作扩展，与查询池内的任何副本先执行同步，然后向外扩展。同步之前向外扩展可避免冗余，资源混合速度的新添加的副本。
 
-* 当从主服务器中删除的模型数据库，它不会不自动会从删除查询池中的副本。 必须执行从副本的共享的 blob 存储位置中删除该数据库的文件/秒，然后删除在查询池中的副本上的模型数据库的同步操作。
+* 当从主服务器中删除的模型数据库，它不会不自动会从删除查询池中的副本。 必须使用来执行同步操作[同步 AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance)从副本的共享的 blob 存储位置中删除该数据库的文件/秒，然后删除该模型的 PowerShell 命令在查询池中的副本上的数据库。
 
-* 重命名主服务器上的数据库时要确保数据库已正确同步到任何副本所需额外的步骤。 重命名后，执行一个同步指定`-Database`使用旧的数据库名称的参数。 此同步从任何副本中删除的数据库和具有旧名称的文件。 然后执行另一个同步指定`-Database`使用新的数据库名称的参数。 第二个同步新命名的数据库复制到文件的第二个集，并将生成的任何副本。 无法在门户中使用同步模型命令执行这些同步。
+* 重命名主服务器上的数据库时要确保数据库已正确同步到任何副本所需额外的步骤。 重命名后，通过使用执行同步[同步 AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance)命令并且指定`-Database`使用旧的数据库名称的参数。 此同步从任何副本中删除的数据库和具有旧名称的文件。 然后执行另一个同步指定`-Database`使用新的数据库名称的参数。 第二个同步新命名的数据库复制到文件的第二个集，并将生成的任何副本。 无法在门户中使用同步模型命令执行这些同步。
 
 ### <a name="separate-processing-from-query-pool"></a>从查询池分离处理操作
 
@@ -103,6 +103,20 @@ ms.locfileid: "58293900"
 
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
+返回状态代码：
+
+
+|代码  |描述  |
+|---------|---------|
+|-1     |  无效       |
+|0     | 正在复制        |
+|第     |  解除冻结       |
+|2     |   已完成       |
+|3     |   已失败      |
+|4     |    正在完成     |
+|||
+
+
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -112,6 +126,8 @@ ms.locfileid: "58293900"
 若要运行同步，请使用[同步 AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance)。
 
 若要设置查询副本的数量，请使用[集 AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定可选的 `-ReadonlyReplicaCount` 参数。
+
+若要分离处理服务器与查询池，请使用[集 AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定可选`-DefaultConnectionMode`参数，以使用`Readonly`。
 
 ## <a name="connections"></a>连接
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 116defb43126932c1a9ce0e7a9d588e731abff78
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: a6cb5ffe6c21c6eda9eb8b7f610952e92707a6bd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182024"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483465"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java 客户端 API
 
@@ -126,11 +126,11 @@ ms.locfileid: "55182024"
 你会发现每个 API 有四个实现重载。 如果有可选参数，你会发现另外还有四个包含这些可选参数的变体。 这里以 API ``removeReplica`` 为例。
  1. **public void removeReplica(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout)**
     * 这是 removeReplica API 调用的同步变体
- 2. **public ServiceFuture<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout, final ServiceCallback<Void> serviceCallback)**
+ 2. **公共 ServiceFuture\<Void > removeReplicaAsync (字符串节点名称、 UUID partitionId、 字符串 replicaId、 布尔 forceRemove、 长超时，最终 ServiceCallback\<Void > serviceCallback)**
     * 若要使用基于未来的异步编程并使用回调，则可使用 API 调用的此变体
- 3. **public Observable<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId)**
+ 3. **公共的可观察量\<Void > removeReplicaAsync （字符串 nodeName、 UUID partitionId、 字符串 replicaId）**
     * 若要使用反应式异步编程，则可使用 API 调用的此变体
- 4. **public Observable<ServiceResponse<Void>> removeReplicaWithServiceResponseAsync(String nodeName, UUID partitionId, String replicaId)**
+ 4. **public Observable\<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync(String nodeName, UUID partitionId, String replicaId)**
     * 若要使用反应式异步编程并处理原始 REST 响应，则可使用 API 调用的此变体
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012333"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445997"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure 存储性能和可伸缩性清单
 ## <a name="overview"></a>概述
@@ -98,7 +98,7 @@ Azure 存储本身的限制是在每个订阅/每个区域创建的存储帐户�
 如果即将达到特定订阅/区域组合中的存储帐户限制，请评估应用程序和存储帐户的用量，并确定是否存在以下任一情况。
 
 * 使用存储帐户作为非托管磁盘，并将这些磁盘添加到虚拟机。 对于这种情况，我们建议使用[托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)，因为它们可以自动处理存储磁盘的可伸缩性，你无需创建和管理单个存储帐户。
-* 对每个客户使用一个存储帐户，以实现数据隔离。 对于这种情况，我们建议对每个客户使用存储容器，而不要使用一个完整的存储帐户。 Azure 存储现在允许[按容器](storage-auth-aad-rbac.md)指定基于角色的访问控制。
+* 对每个客户使用一个存储帐户，以实现数据隔离。 对于这种情况，我们建议对每个客户使用存储容器，而不要使用一个完整的存储帐户。 Azure 存储现在允许[按容器](storage-auth-aad-rbac-portal.md)指定基于角色的访问控制。
 * 使用多个存储帐户进行分片，以提高流入量/流出量/IOPS/容量的可伸缩性。 对于这种情况，我们建议在可能的情况下，利用标准存储帐户的[更高限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)来减少工作负荷所需的存储帐户数量。
 
 如果应用程序正接近单个存储帐户的可伸缩性目标，可考虑采用以下方法之一：  

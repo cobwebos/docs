@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 4656cc5a27d459c4f30f7cf23cc41b9525e79dcd
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: d27b1ae05205d5b9c19b99733a3fa647a7f69c58
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437615"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499177"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -42,7 +42,7 @@ ms.locfileid: "58437615"
 | 云到设备的接收<sup>1</sup> <br/> （仅当设备使用 HTTPS 时）| 16.67/秒/单位（1000/分钟/单位） | 16.67/秒/单位（1000/分钟/单位） | 833.33/秒/单位（50000/分钟/单位） |
 | 文件上传 | 1.67 文件上传通知/秒/单位（100/分钟/单位） | 1.67 文件上传通知/秒/单位（100/分钟/单位） | 83.33 文件上传通知/秒/单位（5000/分钟/单位） |
 | 直接方法<sup>1</sup> | 160KB/秒/单位<sup>2</sup> | 480KB/秒/单位<sup>2</sup> | 24MB/秒/单位<sup>2</sup> | 
-| 查询 | 20/秒/单位 | 20/秒/单位 | 1000/秒/单位 |
+| 查询 | 20/分钟/单位 | 20/分钟/单位 | 1000/分钟/单位 |
 | 孪生（设备和模块）读取<sup>1</sup> | 100/秒 | 高于 100/秒或 10/秒/单位 | 500/秒/单位 |
 | 孪生更新（设备和模块）<sup>1</sup> | 50/秒 | 更高版本为 50/秒或 5/秒/单位 | 250/秒/单位 |
 | 作业操作<sup>1、3</sup> <br/> （创建、更新、列表、删除） | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/秒/单位（5000/分钟/单位） |

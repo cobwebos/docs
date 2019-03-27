@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bd1d3c71660ae584b0aa57c7cc765fdc519f4b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863587"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498377"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [ASP.NET 调试概览](https://msdn2.microsoft.com/library/ms227556.aspx)、[ASP.NET 跟踪概览](https://msdn2.microsoft.com/library/bb386420.aspx)、[如何：启用 ASP.NET 应用程序跟踪](https://msdn2.microsoft.com/library/0x5wc973.aspx)、[如何：启用 ASP.NET 应用程序调试](https://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **参考**              | [ASP.NET 调试概览](https://msdn.microsoft.com/library/ms227556.aspx)、[ASP.NET 跟踪概览](https://msdn.microsoft.com/library/bb386420.aspx)、[如何：启用 ASP.NET 应用程序跟踪](https://msdn.microsoft.com/library/0x5wc973.aspx)、[如何：启用 ASP.NET 应用程序调试](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **步骤** | 为页面启用跟踪后，请求该页面的每个浏览器也会获取包含有关内部服务器状态和工作流的数据的跟踪信息。 该信息可能是安全敏感信息。 为页面启用调试后，服务器上发生的错误会导致向浏览器提供完整的堆栈跟踪数据。 该数据可能会透露有关服务器工作流的安全敏感信息。 |
 
 ## <a id="js-trusted"></a>仅从受信任源访问第三方 JavaScript

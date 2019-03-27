@@ -1,24 +1,21 @@
 ---
 title: Azure Database for PostgreSQL 中的性能建议
-description: 本文介绍可在 Azure Database for PostgreSQL 中获得的性能建议。
+description: 本文介绍用于 PostgreSQL 的 Azure 数据库中的性能建议功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 1dedc08f27d1a483290dc61cce879290ca66592d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.date: 03/26/2018
+ms.openlocfilehash: d8edbc2847c06e95e658a1324f2e85f1758e60be
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548086"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487934"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的性能建议
 
 **适用于：** Azure Database for PostgreSQL 9.6 和 10
-
-> [!IMPORTANT]
-> 性能建议为公共预览版。
 
 “性能建议”功能将标识可在 Azure Database for PostgreSQL 服务器中创建的顶部索引，以便提高性能。 若要生成索引建议，该功能会考虑各种数据库特征，包括其架构以及如“查询存储”报告的工作负载。 实施任何性能建议后，客户应测试性能以评估这些更改的影响。 
 

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: 6ef020ff1054416e2b9af5af824b9aa27f0b1e64
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ad005ff879ef5e4c0fb2fb72ce3062a5dd25d99a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247233"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486778"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>对于 Azure SQL 数据库中的托管实例的连接体系结构 
 
@@ -110,6 +110,8 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点是该
 |管理  |80、443、12000|TCP     |任意              |Internet   |允许 |
 |mi_subnet   |任意           |任意     |任意              |MI SUBNET*  |允许 |
 
+> 请确保没有为端口 9000，只有一个入站的规则 9003，为端口 80、 443、 12000 1438年、 1440年、 1452年和一个出站规则。 如果入站和输出规则单独配置为每个端口，托管实例预配通过 ARM 部署可能会失败。 
+
 \* MI 子网是指在窗体 10.x.x.x/y 中的子网的 IP 地址范围。 您可以在 Azure 门户中，子网属性中找到此信息。
 
 > [!IMPORTANT]
@@ -167,6 +169,6 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点是该
 - [计算子网的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)你想要部署托管的实例。
 - 了解如何创建托管的实例：
   - 通过 [Azure 门户](sql-database-managed-instance-get-started.md)。
-  - 通过使用[PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/)。
+  - 通过使用[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
   - 通过使用[的 Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
   - 通过使用[（使用包含的 SSMS 中使用 JumpBox，） 的 Azure 资源管理器模板](https://portal.azure.com/)。

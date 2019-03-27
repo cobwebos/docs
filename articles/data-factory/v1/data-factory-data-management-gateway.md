@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 5fa553d63a33f06432d8ae3e5247d7eca0fde90a
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351892"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487781"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -283,12 +283,12 @@ ms.locfileid: "58351892"
 2. 切换到 C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off
     ```
 4. 若要重新打开，请执行以下操作：
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
    [对于多节点高度可用的可扩展网关](data-factory-data-management-gateway-high-availability-scalability.md)
@@ -297,12 +297,12 @@ ms.locfileid: "58351892"
 3. 运行以下命令以关闭自动更新功能（禁用）。
 
     对于具有高可用性功能的网关，需要额外的 AuthKey 参数。
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off -AuthKey <your auth key>
     ```
 4. 若要重新打开，请执行以下操作：
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
@@ -485,12 +485,12 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 1. 在管理员模式下启动 **Azure PowerShell**。
 2. 运行以下命令并输入 Azure 凭据登录到 Azure 帐户。
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 3. 使用**新建 AzDataFactoryGateway** cmdlet 来创建逻辑网关，如下所示：
 
-    ```PowerShell
+    ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
     **示例命令和输出**：
@@ -513,7 +513,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 
 1. 在 Azure PowerShell 中，切换到的文件夹：**C:\\程序 Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\**。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
-    ```PowerShell
+    ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
     ```
     ```
@@ -521,25 +521,25 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     ```
     可以通过 IsRegisterOnRemoteMachine 参数注册远程计算机上的网关。 示例：
 
-    ```PowerShell
+    ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
 2. 可以使用**Get AzDataFactoryGateway** cmdlet 来获取在数据工厂中的网关列表。 当“状态”显示为“联机”时，这意味着网关可用。
 
-    ```PowerShell        
+    ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
    您可以删除网关使用**删除 AzDataFactoryGateway**网关使用的 cmdlet，并更新说明**集 AzDataFactoryGateway** cmdlet。 有关语法和上述 cmdlet 的其他详细信息，请参阅《数据工厂 Cmdlet 参考》。  
 
 ### <a name="list-gateways-using-powershell"></a>使用 PowerShell 列出网关
 
-```PowerShell
+```powershell
 Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
 ### <a name="remove-gateway-using-powershell"></a>使用 PowerShell 移除网关
 
-```PowerShell
+```powershell
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 

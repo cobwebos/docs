@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f214688aa1e33bd58e8460baab75228d7c5d1a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 12cbd9bebf001eb902147175c89b5d7ce49e8449
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317232"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487220"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD 密码保护故障排除
 
@@ -105,7 +105,7 @@ Azure AD 密码保护有一个关键依赖项上提供的 Microsoft 密钥分发
 2. 从所有域控制器中卸载 DC 代理软件。 完成此步骤后**需要**重新启动。
 3. 在每个域命名上下文中手动删除所有代理服务连接点。 可使用以下 Active Directory PowerShell 命令发现这些对象的位置：
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -117,7 +117,7 @@ Azure AD 密码保护有一个关键依赖项上提供的 Microsoft 密钥分发
 
 4. 在每个域命名上下文中手动删除所有 DC 代理连接点。 可能有每个域控制器的林，具体取决于部署软件的目标范围中这些对象。 可使用以下 Active Directory PowerShell 命令发现该对象的位置：
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -129,7 +129,7 @@ Azure AD 密码保护有一个关键依赖项上提供的 Microsoft 密钥分发
 
 5. 手动删除林级配置状态。 林配置状态保留在 Active Directory 配置命名上下文中的某个容器内。 可按如下所示发现和删除该状态：
 
-   ```PowerShell
+   ```powershell
    $passwordProtectionConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject -Recursive $passwordProtectionConfigContainer
    ```
