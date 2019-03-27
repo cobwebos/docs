@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 03/11/2019
 ms.author: dineshm
-ms.openlocfilehash: 14e8d54b7b9cf579bb5dcbce595e2591c158b841
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 7f712bcf3e82005480d4960484cb0ea3ad51fbff
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585418"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226753"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 数据
 
@@ -38,16 +38,16 @@ ms.locfileid: "56585418"
 
 * 安装 AzCopy v10。 请参阅[使用 AzCopy v10 传输数据](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-*  创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+* 创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
-   在执行该文中的步骤时，需要完成一些特定的事项。
+  在执行该文中的步骤时，需要完成一些特定的事项。
 
-   :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给服务主体。
+  :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给服务主体。
 
-   > [!IMPORTANT]
-   > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
+  > [!IMPORTANT]
+  > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
 
-   :heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
+  :heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
 
 ### <a name="download-the-flight-data"></a>下载航班数据
 
@@ -147,12 +147,12 @@ ms.locfileid: "56585418"
 
    * `storage-account-name` 是 Azure Data Lake Storage Gen2 存储帐户的名称。
 
-    > [!NOTE]
-    > 在生产设置中，请考虑将身份验证密钥存储在 Azure Databricks 中。 然后，将查找密钥（而不是身份验证密钥）添加到代码块。 完成了本快速入门之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文以查看此方法的示例。
+   > [!NOTE]
+   > 在生产设置中，请考虑将身份验证密钥存储在 Azure Databricks 中。 然后，将查找密钥（而不是身份验证密钥）添加到代码块。 完成了本快速入门之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文以查看此方法的示例。
 
 19. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 
-    请将此笔记本保持打开状态，因为稍后要在其中添加命令。
+   请将此笔记本保持打开状态，因为稍后要在其中添加命令。
 
 ## <a name="ingest-data"></a>引入数据
 
@@ -171,9 +171,10 @@ ms.locfileid: "56585418"
 2. 若要复制 *.csv* 帐户中的数据，请输入以下命令。
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
    ```
-   * 将 `<csv-folder-path>` 占位符值替换为 *.csv* 文件的目录路径（不包括文件名）。
+
+   * 将 `<csv-folder-path>` 占位符值替换为 .csv 文件的路径。
 
    * 将 `storage-account-name` 占位符值替换为存储帐户的名称。
 
@@ -181,28 +182,28 @@ ms.locfileid: "56585418"
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>使用 Databricks Notebook 将 CSV 转换为 Parquet
 
-在前面创建的笔记本中添加一个新的单元，并将以下代码粘贴到该单元中。 将此代码片段中的 `storage-account-name` 占位符值替换为 csv 文件所保存到的文件夹的名称。
+在前面创建的笔记本中添加一个新的单元，并将以下代码粘贴到该单元中。 
 
 ```python
 # Use the previously established DBFS mount point to read the data.
 # create a data frame to read data.
 
-flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/*.csv")
+flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/*.csv")
 
 # read the airline csv file and write the output to parquet format for easy query.
- flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
- print("Done")
- ```
+flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
+print("Done")
+```
 
 ## <a name="explore-data"></a>浏览数据
 
-在新单元中粘贴以下代码，以获取通过 AzCopy 上传的 CSV 文件列表。 将 `<csv-folder-path>` 占位符值替换为前面使用的相同占位符值。
+在新单元中粘贴以下代码，以获取通过 AzCopy 上传的 CSV 文件列表。
 
 ```python
 import os.path
 import IPython
 from pyspark.sql import SQLContext
-display(dbutils.fs.ls("/mnt/flightdata/On_Time/<your-folder-name>"))
+display(dbutils.fs.ls("/mnt/flightdata"))
 ```
 
 若要创建新文件并列出 *parquet/flights* 文件夹中的文件，请运行以下脚本：
@@ -220,13 +221,11 @@ dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 
 若要为数据源创建数据帧，请运行以下脚本：
 
-* 将 `<csv-folder-path>` 占位符值替换为 *.csv* 文件的目录路径（不包括文件名）。
-
-* 将 `<your-csv-file-name` 占位符值替换为 *csv* 文件的名称。
+* 将 `<csv-folder-path>` 占位符值替换为 .csv 文件的路径。
 
 ```python
 #Copy this into a Cmd cell in your notebook.
-acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/<your-csv-file-name>.csv")
+acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time.csv")
 acDF.write.parquet('/mnt/flightdata/parquet/airlinecodes')
 
 #read the existing parquet file for the flights database that was created earlier
@@ -285,5 +284,5 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 ## <a name="next-steps"></a>后续步骤
 
-[!div class="nextstepaction"] 
+> [!div class="nextstepaction"] 
 > [使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)

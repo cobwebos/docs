@@ -1,22 +1,21 @@
 ---
-title: 在云中创建 Kubernetes 开发空间 | Microsoft Docs
+title: 在云中创建 Kubernetes 开发空间
 titleSuffix: Azure Dev Spaces
 author: stepro
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 manager: mmontwil
-ms.openlocfilehash: c8c85c9220574a3e18e5549e1607dafe1aec03ab
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 98f7669a34d65d42e2437b440446b3a3066853d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818164"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904059"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-java-and-vs-code"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes dev 空间（Java 和 VS Code）
 
@@ -38,7 +37,7 @@ ms.locfileid: "56818164"
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.10.9 --generate-ssh-keys
+    az aks create -g MyResourceGroup -n myAKS --location <region> --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>设置 Azure Dev Spaces
@@ -57,13 +56,13 @@ ms.locfileid: "56818164"
 
    ```output
     (pending registration) Service 'webfrontend' port 'http' will be available at <url>
-    Service 'webfrontend' port 80 (TCP) is available at http://localhost:<port>
+    Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
    ```
 
    在浏览器窗口中打开此 URL，你应看到 Web 应用加载。
 
    > [!Note]
-   > 首次运行时，公共 DNS 可能要花费几分钟时间才能准备就绪。 如果公共 URL 无法解析，可以使用控制台输出中显示的替代 http://localhost:<portnumber> URL。 如果使用该 localhost URL，则容器看起来是在本地运行，但实际上是在 AKS 中运行。 为方便操作以及便于与本地计算机中的服务交互，Azure Dev Spaces 将与 Azure 中运行的容器建立临时的 SSH 隧道。 你可以返回，稍后在 DNS 记录准备就绪时再尝试公共 URL。
+   > 首次运行时，公共 DNS 可能要花费几分钟时间才能准备就绪。 如果公共 URL 无法解析，可以使用控制台输出中显示的替代 `http://localhost:<portnumber>` URL。 如果使用该 localhost URL，则容器看起来是在本地运行，但实际上是在 AKS 中运行。 为方便操作以及便于与本地计算机中的服务交互，Azure Dev Spaces 将与 Azure 中运行的容器建立临时的 SSH 隧道。 你可以返回，稍后在 DNS 记录准备就绪时再尝试公共 URL。
 
 ### <a name="update-a-code-file"></a>更新代码文件
 

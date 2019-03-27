@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/22/2018
+ms.date: 03/05/2019
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 56fc3942b82d43273ea39f6075382bcb255fc0f7
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 87c1d047e783715b3a5beee4604e064322f965dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101881"
 ---
 # <a name="get-started"></a>快速入门：使用 Azure PowerShell 创建标准负载均衡器
 
@@ -227,7 +227,7 @@ $nsg = New-AzNetworkSecurityGroup `
 $nicVM1 = New-AzNetworkInterface `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
--Name 'MyNic1' `
+-Name 'MyVM1' `
 -LoadBalancerBackendAddressPool $backendPool `
 -NetworkSecurityGroup $nsg `
 -LoadBalancerInboundNatRule $natrule1 `
@@ -237,7 +237,7 @@ $nicVM1 = New-AzNetworkInterface `
 $nicVM2 = New-AzNetworkInterface `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
--Name 'MyNic2' `
+-Name 'MyVM2' `
 -LoadBalancerBackendAddressPool $backendPool `
 -NetworkSecurityGroup $nsg `
 -LoadBalancerInboundNatRule $natrule2 `
@@ -245,19 +245,6 @@ $nicVM2 = New-AzNetworkInterface `
 ```
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
-要提高应用的高可用性，请将 VM 放置在可用性集中。
-
-使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为“myAvailabilitySet”的可用性集：
-
-```azurepowershell-interactive
-$availabilitySet = New-AzAvailabilitySet `
-  -ResourceGroupName "myResourceGroupLB" `
-  -Name "myAvailabilitySet" `
-  -Location "EastUS" `
-  -Sku aligned `
-  -PlatformFaultDomainCount 2 `
-  -PlatformUpdateDomainCount 2
-```
 
 使用 [New-AzureRmNetworkInterface](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 的管理员用户名和密码：
 
@@ -265,7 +252,7 @@ $availabilitySet = New-AzAvailabilitySet `
 $cred = Get-Credential
 ```
 
-现在，可使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 创建 VM。 以下示例创建两台 VM 和所需的虚拟网络组件（如果它们尚不存在）：
+现在，可使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 创建 VM。 以下示例创建两台 VM 和所需的虚拟网络组件（如果它们尚不存在）。 在此示例中，上一步中创建的 NIC（VM1 和 VM2）将自动分配给虚拟机 VM1 和 VM2，因为它们具有相同的名称，并分配了相同的虚拟网络 (myVnet) 和子网 (mySubnet)。 此外，由于 NIC 与负载均衡器的后端池关联，因此 VM 会自动添加到该后端池。
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -278,7 +265,6 @@ for ($i=1; $i -le 2; $i++)
         -SubnetName "mySubnet" `
         -SecurityGroupName "myNetworkSecurityGroup" `
         -OpenPorts 80 `
-        -AvailabilitySetName "myAvailabilitySet" `
         -Credential $cred `
         -AsJob
 }
@@ -292,11 +278,11 @@ for ($i=1; $i -le 2; $i++)
 
 1. 获取负载均衡器的公用 IP 地址。 使用 `Get-AzPublicIPAddress`，获取负载均衡器的公用 IP 地址。
 
-  ```azurepowershell-interactive
+   ```azurepowershell-interactive
     Get-AzPublicIPAddress `
     -ResourceGroupName "myResourceGroupLB" `
     -Name "myPublicIP" | select IpAddress
-  ```
+   ```
 2. 使用在上一步骤中获取的公用 IP 地址创建到 VM1 的远程桌面连接。 
 
    ```azurepowershell-interactive

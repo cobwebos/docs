@@ -5,19 +5,19 @@ author: rezas
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
 ms.custom: include file
-ms.openlocfilehash: ea82bdca23d8b34898261eb60fd908d281451fd0
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d1cfe3d998c08aef2b845315a16d881dea1cd1f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825658"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124348"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 选择+“创建资源”，然后选择“物联网”。
 
@@ -31,7 +31,7 @@ ms.locfileid: "56825658"
 
    **资源组**：可创建新的资源组或使用现有资源组。 若要新建一个，请单击“新建”，并填写要使用的名称。 若要使用现有资源组，请单击“使用现有资源组”并从下拉列表中选择该组。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](../articles/azure-resource-manager/manage-resource-groups-portal.md)。
 
-   **区域**：这是要在其中设置中心的区域。 确保选择受支持的区域（例如，美国中部或美国中部 EUAP）。
+   **区域**：这是要在其中设置中心的区域。 选择支持 IoT 中心设备流预览的区域，美国中部或美国中部 EUAP。
 
    **IoT 中心名称**：输入 IoT 中心的名称。 该名称必须全局唯一。 如果输入的名称可用，会显示一个绿色复选标记。
 
@@ -41,8 +41,7 @@ ms.locfileid: "56825658"
 
    ![屏幕截图显示使用 Azure 门户为新的 IoT 中心设置大小和缩放级别](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-2-free.png)
 
-
-   在此屏幕上，可以采用默认值，只需在底部单击“查看+创建”即可。 
+   在此屏幕上，可以采用默认值，只需在底部单击“查看+创建”即可。
 
    **定价和缩放层**：确保选择标准（S1、S2、S3）层或免费 (F1) 层中的一个。 也可根据队列大小以及预期在中心会出现的非流式处理工作负荷（例如遥测消息）完成该选择。 例如，免费层适用于测试和评估。 它允许 500 台设备连接到 IoT 中心，并且每天最多传输 8,000 条信息。 每个 Azure 订阅可以在免费层中创建一个 IoT 中心。 
 

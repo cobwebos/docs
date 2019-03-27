@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 02/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 357fa8a34afc8b426d308940462e22895130169f
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0dd0474ad1ad360fd82cfdf746d2e9837f74833a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158765"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108369"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>教程：退回 Azure Data Box Disk 并验证到 Azure 的数据上传
 
@@ -33,7 +33,7 @@ ms.locfileid: "54158765"
 
 1. 数据验证完成后，请取出磁盘。 拔下连接线。
 2. 将磁盘和连接线包装在汽泡袋中，并在其放入包装箱。
-3. 使用粘贴在包装箱上的透明塑料套管中提供的退件发货标签。 如果该标签损坏或丢失，请从 Azure 门户下载新的发货标签，并将其粘贴在设备上。 转到“概况”>“下载发货标签”。 
+3. 使用粘贴在包装箱上的透明塑料套管中提供的退件发货标签。 如果该标签损坏或丢失，请从 Azure 门户下载新的发货标签，并将其粘贴在设备上。 转到“概况”>“下载发货标签”。
 
     ![下载发货标签](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "54158765"
 4. 密封包装箱，并确保退件发货标签可见。
 5. 如果在美国境内退回设备，请安排 UPS 提货。 如果在欧洲使用 DHL 退回设备，请访问 DHL 网站并指定航空运单号，请求 DHL 提货。 转到 DHL Express 运营国家/地区的网站，选择“Book a Courier Collection > eReturn Shipment”（“预订快递取件”>“eReturn 发货”）。
 
-    ![DHL eReturn 发货](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
+    ![DHL 退还运输](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
     
     指定运单号，然后单击“Schedule Pickup”（安排提货）以安排提货。
 
@@ -66,7 +66,28 @@ ms.locfileid: "54158765"
 
 ![数据复制完成](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
 
-从源中删除数据之前，请确认数据已存储在存储帐户中。 若要验证数据是否已上传到 Azure，请执行以下步骤：
+从源中删除数据之前，请确认数据已存储在存储帐户中。 你的数据可位于：
+
+- Azure 存储帐户。 将数据复制到 Data Box 时，会根据类型将数据将上传到 Azure 存储帐户中的以下路径之一。
+
+  - 对于块 blob 和页 blob：`https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+  - 对于 Azure 文件：`https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+
+    或者，可以转到 Azure 门户中的 Azure 存储帐户并从那里导航。
+
+- 托管磁盘资源组。 创建托管磁盘时，VHD 作为页 blob 进行上传，然后转换为托管磁盘。 托管磁盘会附加到在创建排序时指定的资源组上。
+
+  - 如果在 Azure 中成功复制到托管磁盘，则可转到 Azure 门户中的“订单详细信息”，记下为托管磁盘指定的资源组。
+
+      ![查看订单详细信息](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
+
+    转到所记录的资源组，并找到你的托管磁盘。
+
+      ![托管磁盘资源组](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
+
+  - 如果复制了 VHDX 或动态/差异 VHD，则 VHDX/VHD 会作为块 blob 上传到临时存储帐户。 请转到临时存储帐户 > Blob，然后选择响应的容器 - StandardSSD、StandardHDD 或 PremiumSSD。 VHDX/VHD 应会在临时存储帐户中显示为块 blob。
+
+若要验证数据是否已上传到 Azure，请执行以下步骤：
 
 1. 转到与磁盘订单关联的存储帐户。
 2. 转到“Blob 服务”>“浏览 Blob”。 此时会显示容器列表。 在存储帐户中，将创建与 *BlockBlob* 和 *PageBlob* 文件夹下的子文件夹同名的容器。
@@ -78,7 +99,7 @@ ms.locfileid: "54158765"
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>从 Data Box 磁盘中擦除数据
 
-完成复制并已验证数据位于 Azure 存储帐户中后，请根据 NIST 标准安全擦除磁盘。 
+完成复制并已验证数据位于 Azure 存储帐户中后，请根据 NIST 标准安全擦除磁盘。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: ff214a545023364b09a0e757462a1b3f3d963d44
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d421abf0a3cc402cf8d040363dfe79b07b66bf95
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105703"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>快速入门：使用适用于 Java 的必应视频搜索 SDK 执行视频搜索
 
@@ -41,7 +41,7 @@ ms.locfileid: "55885015"
   </dependencies> 
 ```
 
-## <a name="create-and-initalize-a-project"></a>创建并初始化项目
+## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
 
 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。
@@ -61,7 +61,7 @@ ms.locfileid: "55885015"
 
 ## <a name="create-a-search-client"></a>创建搜索客户端
 
-2. 实现 `VideoSearchAPIImpl` 客户端，这需要使用你的 API 终结点以及 `ServiceClientCredentials` 类的实例。
+1. 实现 `VideoSearchAPIImpl` 客户端，这需要使用你的 API 终结点以及 `ServiceClientCredentials` 类的实例。
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -115,7 +115,7 @@ ms.locfileid: "55885015"
         //...
         ```
 
-## <a name="send-a-search-request-and-recieve-the-response"></a>发送搜索请求并接收响应 
+## <a name="send-a-search-request-and-receive-the-response"></a>发送搜索请求并接收响应 
 
 1. 创建名为 `VideoSearch()` 的函数，该函数采用字符串形式的订阅密钥。 实例化前面创建的搜索客户端。
     

@@ -10,18 +10,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 12/27/2018
-ms.openlocfilehash: 5814c3f386ed31d8804469fa1a261ab9bda6b8f8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 220549c4ac3b6db584654b2c8bf27d9b4519b54a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865852"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225801"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive
 
 本文介绍如何使用资源管理器模板在 HDInsight 中创建 [Apache Hadoop](https://hadoop.apache.org/) 群集，以及之后如何在 HDInsight 中运行 Hive 作业。 大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，并删除群集。 在本文中，将会执行所有这三项任务。
 
-在本快速入门教程中，可以使用资源管理器模板创建 HDInsight Hadoop 群集。 也可以使用 [Azure 门户](apache-hadoop-linux-create-cluster-get-started-portal.md)创建群集。  可以在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)中查看类似的模板。 可以在[此处](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions)找到模板参考。
+在本快速入门教程中，可以使用资源管理器模板创建 HDInsight Hadoop 群集。 也可以使用 [Azure 门户](apache-hadoop-linux-create-cluster-get-started-portal.md)创建群集。  可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)中查看类似的模板。 可以在[此处](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions)找到模板参考。
 
 目前，HDInsight 附带[七个不同的群集类型](./apache-hadoop-introduction.md#cluster-types-in-hdinsight)。 每个群集类型都支持一组不同的组件。 所有群集类型都支持 Hive。 有关 HDInsight 中受支持组件的列表，请参阅 [HDInsight 提供的 Hadoop 群集版本中有哪些新功能？](../hdinsight-component-versioning.md)  
 
@@ -121,10 +121,10 @@ ms.locfileid: "56865852"
 
 可以使用两个选项来创建并运行 Hive 查询：
 
-* 创建临时查询
+* 创建即席查询
 * 创建 Hive 应用程序
 
-若要创建和运行临时查询，请执行以下操作：
+要创建并运行临时查询：
 
 1. 在“服务器资源管理器”中，选择“Azure” > “HDInsight 群集”。
 

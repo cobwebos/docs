@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
-ms.openlocfilehash: e739ed1f7cd1b832ffe11299d3444c9bf0ac99e9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 296005f68592a8c89f3ec78da8ece4d1741f253f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874454"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880817"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure Database for MariaDB 服务器
 
@@ -72,11 +72,11 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 
 若要创建服务器级防火墙规则，请执行以下操作：
 
-1.   部署完成后，请找到服务器。 可以根据需要进行搜索。 例如，在左侧菜单中，选择“所有资源”。 然后，输入服务器名称。 例如，输入 **mydemoserver**，以便搜索新建的服务器。 从搜索结果列表中选择服务器名称。 此时会打开服务器的“概览”页。 可以在此页上更改其他设置。
+1. 部署完成后，请找到服务器。 可以根据需要进行搜索。 例如，在左侧菜单中，选择“所有资源”。 然后，输入服务器名称。 例如，输入 **mydemoserver**，以便搜索新建的服务器。 从搜索结果列表中选择服务器名称。 此时会打开服务器的“概览”页。 可以在此页上更改其他设置。
 
 2. 在服务器概览页中，选择“连接安全性”。
 
-3.  在“防火墙规则”下，选择“规则名称”列中的空白文本框，开始创建防火墙规则。 指定将连接到此服务器的客户端的精确 IP 范围。
+3. 在“防火墙规则”下，选择“规则名称”列中的空白文本框，开始创建防火墙规则。 指定将连接到此服务器的客户端的精确 IP 范围。
    
    ![连接安全性 - 防火墙规则](./media/quickstart-create-mariadb-server-database-using-azure-portal/5-firewall-2.png)
 
@@ -94,7 +94,7 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 
 2. 若要复制这些值，请将光标放置在要复制的字段上方。 复制图标会显示在文本右侧。 根据需要选择复制图标即可复制这些值。
 
-在我们的示例中，服务器名称是 mydemoserver.mariadb.database.azure.com，服务器管理员登录名是 **myadmin@mydemoserver**。
+在我们的示例中，服务器名称是 mydemoserver.mariadb.database.azure.com，服务器管理员登录名是 myadmin\@mydemoserver。
 
 ## <a name="connect-to-azure-database-for-mariadb-by-using-the-mysql-command-line"></a>使用 mysql 命令行连接到 Azure Database for MariaDB
 
@@ -103,9 +103,9 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 首先，我们将使用 [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) 命令行工具来演示如何连接到该服务器。 也可使用 Web 浏览器和 Azure Cloud Shell，不安装软件。 如果已通过本地方式安装了 mysql 实用程序，也可从该处进行连接。
 
 1. 通过 Azure 门户右上工具栏中的终端图标 (**>_**) 启动 Azure Cloud Shell。
-![Azure Cloud Shell 终端符号](./media/quickstart-create-mariadb-server-database-using-azure-portal/7-cloud-console.png)
+   ![Azure Cloud Shell 终端符号](./media/quickstart-create-mariadb-server-database-using-azure-portal/7-cloud-console.png)
 
-2.  Azure Cloud Shell 会在浏览器中打开。 可以在 Cloud Shell 中使用 bash shell 命令。
+2. Azure Cloud Shell 会在浏览器中打开。 可以在 Cloud Shell 中使用 bash shell 命令。
 
    ![命令提示符 - mysql 命令行示例](./media/quickstart-create-mariadb-server-database-using-azure-portal/8-bash.png)
 
@@ -126,7 +126,7 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
     mysql 参数 |建议的值|说明
     ---|---|---
     --host | 服务器名称 | 在创建 Azure Database for MariaDB 服务器时使用的服务器名称值。 示例服务器为 **mydemoserver.mariadb.database.azure.com**。 请使用完全限定的域名 (**\*.mariadb.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请完成上一部分的步骤，以便获取连接信息。
-    --user | 服务器管理员登录名 |在创建 Azure Database for MariaDB 服务器时使用的服务器管理员登录用户名。 如果不记得用户名，请完成上一部分的步骤，以便获取连接信息。 格式为 username@servername。
+    --user | 服务器管理员登录名 |在创建 Azure Database for MariaDB 服务器时使用的服务器管理员登录用户名。 如果不记得用户名，请完成上一部分的步骤，以便获取连接信息。 格式为 username\@servername。
     -p | 你的密码<br>（等待系统提示） |出现提示时，输入用于创建服务器的密码。 键入密码字符时，这些字符不会显示在 bash 提示符处。 输入密码后，按 Enter。
 
    连接 mysql 实用程序后，它会显示 `mysql>` 提示符。 可以在提示符下输入命令。 
@@ -165,14 +165,14 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
    > [!TIP]
    > 有关其他命令，请参阅 [MySQL 5.7 参考手册 - 第 4.5.1 章](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)。
 
-5.  在出现 `mysql>` 提示时通过输入以下命令，以便创建空数据库：
+5. 在出现 `mysql>` 提示时通过输入以下命令，以便创建空数据库：
 
-    ```sql
-    CREATE DATABASE quickstartdb;
-    ```
-    该命令可能需要几分钟时间才能完成。 
+   ```sql
+   CREATE DATABASE quickstartdb;
+   ```
+   该命令可能需要几分钟时间才能完成。 
 
-    可以在 Azure Database for MariaDB 服务器中创建一个或多个数据库。 可以为每个服务器创建单一数据库来使用所有资源，也可以创建多个数据库来共享资源。 可以创建的数据库数目没有限制，但多个数据库共享相同的服务器资源。 
+   可以在 Azure Database for MariaDB 服务器中创建一个或多个数据库。 可以为每个服务器创建单一数据库来使用所有资源，也可以创建多个数据库来共享资源。 可以创建的数据库数目没有限制，但多个数据库共享相同的服务器资源。 
 
 6. 若要列出数据库，请在 `mysql>` 提示符处输入以下命令：
 
@@ -180,7 +180,7 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
     SHOW DATABASES;
     ```
 
-7.  输入 **\q**，然后按 Enter 关闭 mysql 工具。 然后可以关闭 Azure Cloud Shell。
+7. 输入 **\q**，然后按 Enter 关闭 mysql 工具。 然后可以关闭 Azure Cloud Shell。
 
 你已连接到 Azure Database for MariaDB 服务器并创建一个空白用户数据库。 在下一部分，请使用另一常用工具（即 MySQL Workbench）连接到同一服务器。
 
@@ -202,7 +202,7 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
     连接方法 | **标准 (TCP/IP)** | 标准 (TCP/IP) 就足够了。 |
     主机名 | 服务器名称 | 在创建 Azure Database for MariaDB 服务器时使用的服务器名称值。 示例服务器为 **mydemoserver.mariadb.database.azure.com**。 请使用完全限定的域名 (**\*.mariadb.database.azure.com**)，如示例中所示。 如果不记得服务器名称，请完成本文前面的步骤，以便获取连接信息。|
      端口 | 3306 | 连接到 Azure Database for MariaDB 服务器时要使用的端口。 |
-    用户名 |  服务器管理员登录名 | 在创建 Azure Database for MariaDB 服务器时使用的服务器管理员登录信息。 示例用户名为 **myadmin@mydemoserver**。 如果不记得用户名，请完成本文前面的步骤，以便获取连接信息。 格式为 username@servername。
+    用户名 |  服务器管理员登录名 | 在创建 Azure Database for MariaDB 服务器时使用的服务器管理员登录信息。 示例用户名是 myadmin\@mydemoserver。 如果不记得用户名，请完成本文前面的步骤，以便获取连接信息。 格式为 username\@servername。
     密码 | 你的密码 | 若要保存密码，请选择“在保管库中存储”。 |
 
 4. 若要检查所有参数是否已正确配置，请选择“测试连接”。 然后，选择“确定”以保存连接。 
@@ -227,13 +227,13 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 
 仅删除新建的服务器：
 
-1.  在 Azure 门户中找到服务器（如果尚未将其打开）。 在左侧菜单中，选择“所有资源”。 然后搜索所创建的服务器。
+1. 在 Azure 门户中找到服务器（如果尚未将其打开）。 在左侧菜单中，选择“所有资源”。 然后搜索所创建的服务器。
 
-2.  在“概览”页上，选择“删除”。 
+2. 在“概览”页上，选择“删除”。 
 
    ![Azure Database for MariaDB - 删除服务器](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 
-3.  确认要删除的服务器的名称。 在它下面显示会受删除影响的数据库。 输入确认删除的服务器名称（在我们的示例中为 **mydemoserver**）。 选择“删除”。
+3. 确认要删除的服务器的名称。 在它下面显示会受删除影响的数据库。 输入确认删除的服务器名称（在我们的示例中为 **mydemoserver**）。 选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8f0ed678615b65e6ec15a516c349a40c279a4da1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 91cc28ec3df6a1d9ef4fc773687a0ec2870b623d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427303"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001378"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持基于 URL 路径的重定向的应用程序网关
 
@@ -37,39 +37,41 @@ ms.locfileid: "54427303"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 3.6 或更高版本。 若要查找版本，请运行 ` Get-Module -ListAvailable AzureRM`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 若要查找版本，请运行 ` Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建 Azure 资源组。  
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。  
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
+New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) 创建 *myBackendSubnet* 和 *myAGSubnet* 的子网配置。 使用 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) 和子网配置创建名为 *myVNet* 的虚拟网络。 最后使用 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建 myBackendSubnet 和 myAGSubnet 的子网配置。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 myVNet 的虚拟网络。 最后使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 myAGPublicIPAddress 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```azurepowershell-interactive
-$backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myBackendSubnet `
   -AddressPrefix 10.0.1.0/24
 
-$agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myAGSubnet `
   -AddressPrefix 10.0.2.0/24
 
-New-AzureRmVirtualNetwork `
+New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $backendSubnetConfig, $agSubnetConfig
 
-New-AzureRmPublicIpAddress `
+New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
@@ -86,41 +88,41 @@ New-AzureRmPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>创建 IP 配置和前端端口
 
-使用 [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration) 将前面创建的 *myAGSubnet* 关联到应用程序网关。 使用 [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig) 将 *myAGPublicIPAddress* 分配给应用程序网关。 然后，可以创建使用 [New-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendport) 创建 HTTP 端口。
+使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 将前面创建的 myAGSubnet 关联到应用程序网关。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 将 myAGPublicIPAddress 分配给应用程序网关。 然后，可以使用 [New-AzApplicationGatewayFrontendPort](/powershell/module/az.network/new-azapplicationgatewayfrontendport) 创建 HTTP 端口。
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Name myVNet
 
 $subnet=$vnet.Subnets[0]
 
-$pip = Get-AzureRmPublicIpAddress `
+$pip = Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Name myAGPublicIPAddress
 
-$gipconfig = New-AzureRmApplicationGatewayIPConfiguration `
+$gipconfig = New-AzApplicationGatewayIPConfiguration `
   -Name myAGIPConfig `
   -Subnet $subnet
 
-$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig `
+$fipconfig = New-AzApplicationGatewayFrontendIPConfig `
   -Name myAGFrontendIPConfig `
   -PublicIPAddress $pip
 
-$frontendport = New-AzureRmApplicationGatewayFrontendPort `
+$frontendport = New-AzApplicationGatewayFrontendPort `
   -Name myFrontendPort `
   -Port 80
 ```
 
 ### <a name="create-the-default-pool-and-settings"></a>创建默认池和设置
 
-使用 [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool) 为应用程序网关创建名为 *appGatewayBackendPool* 的默认后端池。 使用 [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings) 配置后端池的设置。
+使用 [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) 为应用程序网关创建名为 appGatewayBackendPool 的默认后端池。 使用 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsettings) 配置后端池的设置。
 
 ```azurepowershell-interactive
-$defaultPool = New-AzureRmApplicationGatewayBackendAddressPool `
+$defaultPool = New-AzApplicationGatewayBackendAddressPool `
   -Name appGatewayBackendPool
 
-$poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
+$poolSettings = New-AzApplicationGatewayBackendHttpSettings `
   -Name myPoolSettings `
   -Port 80 `
   -Protocol Http `
@@ -130,18 +132,18 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>创建默认侦听器和规则
 
-应用程序网关需要侦听器才能适当地将流量路由到后端池。 在本教程中，将创建多个侦听器。 第一个基本侦听器应在根 URL 收到流量。 其他侦听器应在特定 URL（如 http://52.168.55.24:8080/images/ 或 http://52.168.55.24:8081/video/）收到流量。
+应用程序网关需要侦听器才能适当地将流量路由到后端池。 在本教程中，将创建多个侦听器。 第一个基本侦听器应在根 URL 收到流量。 其他侦听器应在特定 URL（如 `http://52.168.55.24:8080/images/` 或 `http://52.168.55.24:8081/video/`）收到流量。
 
-使用 [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建名为 *defaultListener* 的侦听器。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) 创建一个名为 *rule1* 的基本规则。
+使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建名为 defaultListener 的侦听器。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 rule1 的基本规则。
 
 ```azurepowershell-interactive
-$defaultlistener = New-AzureRmApplicationGatewayHttpListener `
+$defaultlistener = New-AzApplicationGatewayHttpListener `
   -Name defaultListener `
   -Protocol Http `
   -FrontendIPConfiguration $fipconfig `
   -FrontendPort $frontendport
 
-$frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
+$frontendRule = New-AzApplicationGatewayRequestRoutingRule `
   -Name rule1 `
   -RuleType Basic `
   -HttpListener $defaultlistener `
@@ -151,15 +153,15 @@ $frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>创建应用程序网关
 
-现在已创建所需的支持资源，请使用 [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) 为名为 *myAppGateway* 的应用程序网关指定参数，然后再使用 [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway) 创建它。
+现在已创建所需的支持资源，请使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 为名为 myAppGateway 的应用程序网关指定参数，然后再使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 创建它。
 
 ```azurepowershell-interactive
-$sku = New-AzureRmApplicationGatewaySku `
+$sku = New-AzApplicationGatewaySku `
   -Name Standard_Medium `
   -Tier Standard `
   -Capacity 2
 
-New-AzureRmApplicationGateway `
+New-AzApplicationGateway `
   -Name myAppGateway `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
@@ -175,134 +177,134 @@ New-AzureRmApplicationGateway `
 
 ### <a name="add-backend-pools-and-ports"></a>添加后端池和端口
 
-可以使用 [Add-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/add-azurermapplicationgatewaybackendaddresspool) 向应用程序网关添加后端池。 在此示例中，将创建 *imagesBackendPool* 和 *videoBackendPool*。 使用 [Add-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/add-azurermapplicationgatewayfrontendport) 添加池的前端端口。 然后使用 [Set-AzureRmApplicationGateway](/powershell/module/azurerm.network/set-azurermapplicationgateway) 提交对应用程序网关所做的更改。
+可以使用 [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool) 向应用程序网关添加后端池。 在此示例中，将创建 *imagesBackendPool* 和 *videoBackendPool*。 使用 [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport) 添加池的前端端口。 然后使用 [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway) 提交对应用程序网关所做的更改。
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-Add-AzureRmApplicationGatewayBackendAddressPool `
+Add-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name imagesBackendPool
 
-Add-AzureRmApplicationGatewayBackendAddressPool `
+Add-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name videoBackendPool
 
-Add-AzureRmApplicationGatewayFrontendPort `
+Add-AzApplicationGatewayFrontendPort `
   -ApplicationGateway $appgw `
   -Name bport `
   -Port 8080
 
-Add-AzureRmApplicationGatewayFrontendPort `
+Add-AzApplicationGatewayFrontendPort `
   -ApplicationGateway $appgw `
   -Name rport `
   -Port 8081
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 ## <a name="add-listeners-and-rules"></a>添加侦听器和规则
 
 ### <a name="add-listeners"></a>添加侦听器
 
-使用 [Add-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/add-azurermapplicationgatewayhttplistener) 添加路由流量所需的名为 *backendListener* 和 *redirectedListener* 的侦听器。
+使用 [Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener) 添加路由流量所需的名为 backendListener 和 redirectedListener 的侦听器。
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$backendPort = Get-AzureRmApplicationGatewayFrontendPort `
+$backendPort = Get-AzApplicationGatewayFrontendPort `
   -ApplicationGateway $appgw `
   -Name bport
 
-$redirectPort = Get-AzureRmApplicationGatewayFrontendPort `
+$redirectPort = Get-AzApplicationGatewayFrontendPort `
   -ApplicationGateway $appgw `
   -Name rport
 
-$fipconfig = Get-AzureRmApplicationGatewayFrontendIPConfig `
+$fipconfig = Get-AzApplicationGatewayFrontendIPConfig `
   -ApplicationGateway $appgw
 
-Add-AzureRmApplicationGatewayHttpListener `
+Add-AzApplicationGatewayHttpListener `
   -ApplicationGateway $appgw `
   -Name backendListener `
   -Protocol Http `
   -FrontendIPConfiguration $fipconfig `
   -FrontendPort $backendPort
 
-Add-AzureRmApplicationGatewayHttpListener `
+Add-AzApplicationGatewayHttpListener `
   -ApplicationGateway $appgw `
   -Name redirectedListener `
   -Protocol Http `
   -FrontendIPConfiguration $fipconfig `
   -FrontendPort $redirectPort
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 ### <a name="add-the-default-url-path-map"></a>添加默认 URL 路径映射
 
-URL 路径映射可确保将特定的 URL 路由到特定的后端池。 可以使用 [New-AzureRmApplicationGatewayPathRuleConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewaypathruleconfig) 和 [Add-AzureRmApplicationGatewayUrlPathMapConfig](/powershell/module/azurerm.network/add-azurermapplicationgatewayurlpathmapconfig) 创建名为 *imagePathRule* 和 *videoPathRule* 的 URL 路径映射。
+URL 路径映射可确保将特定的 URL 路由到特定的后端池。 可以使用 [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) 和 [Add-AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig) 创建名为 imagePathRule 和 videoPathRule 的 URL 路径映射。
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$poolSettings = Get-AzureRmApplicationGatewayBackendHttpSettings `
+$poolSettings = Get-AzApplicationGatewayBackendHttpSettings `
   -ApplicationGateway $appgw `
   -Name myPoolSettings
 
-$imagePool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$imagePool = Get-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name imagesBackendPool
 
-$videoPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$videoPool = Get-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name videoBackendPool
 
-$defaultPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$defaultPool = Get-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name appGatewayBackendPool
 
-$imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig `
+$imagePathRule = New-AzApplicationGatewayPathRuleConfig `
   -Name imagePathRule `
   -Paths "/images/*" `
   -BackendAddressPool $imagePool `
   -BackendHttpSettings $poolSettings
 
-$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig `
+$videoPathRule = New-AzApplicationGatewayPathRuleConfig `
   -Name videoPathRule `
   -Paths "/video/*" `
   -BackendAddressPool $videoPool `
   -BackendHttpSettings $poolSettings
 
-Add-AzureRmApplicationGatewayUrlPathMapConfig `
+Add-AzApplicationGatewayUrlPathMapConfig `
   -ApplicationGateway $appgw `
   -Name urlpathmap `
   -PathRules $imagePathRule, $videoPathRule `
   -DefaultBackendAddressPool $defaultPool `
   -DefaultBackendHttpSettings $poolSettings
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 ### <a name="add-redirection-configuration"></a>添加重定向配置
 
-可以使用 [Add-AzureRmApplicationGatewayRedirectConfiguration](/powershell/module/azurerm.network/add-azurermapplicationgatewayredirectconfiguration) 为侦听器配置重定向。
+可以使用 [Add-AzApplicationGatewayRedirectConfiguration](/powershell/module/az.network/add-azapplicationgatewayredirectconfiguration) 为侦听器配置重定向。
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$backendListener = Get-AzureRmApplicationGatewayHttpListener `
+$backendListener = Get-AzApplicationGatewayHttpListener `
   -ApplicationGateway $appgw `
   -Name backendListener
 
-$redirectConfig = Add-AzureRmApplicationGatewayRedirectConfiguration `
+$redirectConfig = Add-AzApplicationGatewayRedirectConfiguration `
   -ApplicationGateway $appgw `
   -Name redirectConfig `
   -RedirectType Found `
@@ -310,84 +312,84 @@ $redirectConfig = Add-AzureRmApplicationGatewayRedirectConfiguration `
   -IncludePath $true `
   -IncludeQueryString $true
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 ### <a name="add-the-redirection-url-path-map"></a>添加重定向 URL 路径映射
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$poolSettings = Get-AzureRmApplicationGatewayBackendHttpSettings `
+$poolSettings = Get-AzApplicationGatewayBackendHttpSettings `
   -ApplicationGateway $appgw `
   -Name myPoolSettings
 
-$defaultPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$defaultPool = Get-AzApplicationGatewayBackendAddressPool `
   -ApplicationGateway $appgw `
   -Name appGatewayBackendPool
 
-$redirectConfig = Get-AzureRmApplicationGatewayRedirectConfiguration `
+$redirectConfig = Get-AzApplicationGatewayRedirectConfiguration `
   -ApplicationGateway $appgw `
   -Name redirectConfig
 
-$redirectPathRule = New-AzureRmApplicationGatewayPathRuleConfig `
+$redirectPathRule = New-AzApplicationGatewayPathRuleConfig `
   -Name redirectPathRule `
   -Paths "/images/*" `
   -RedirectConfiguration $redirectConfig
 
-Add-AzureRmApplicationGatewayUrlPathMapConfig `
+Add-AzApplicationGatewayUrlPathMapConfig `
   -ApplicationGateway $appgw `
   -Name redirectpathmap `
   -PathRules $redirectPathRule `
   -DefaultBackendAddressPool $defaultPool `
   -DefaultBackendHttpSettings $poolSettings
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 ### <a name="add-routing-rules"></a>添加路由规则
 
-路由规则可将 URL 映射与所创建的侦听器相关联。 可以使用 [Add-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/add-azurermapplicationgatewayrequestroutingrule) 添加名为 *defaultRule* 和 *redirectedRule* 的规则。
+路由规则可将 URL 映射与所创建的侦听器相关联。 可以使用 [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) 添加名为 defaultRule 和 redirectedRule 的规则。
 
 
 ```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$backendlistener = Get-AzureRmApplicationGatewayHttpListener `
+$backendlistener = Get-AzApplicationGatewayHttpListener `
   -ApplicationGateway $appgw `
   -Name backendListener
 
-$redirectlistener = Get-AzureRmApplicationGatewayHttpListener `
+$redirectlistener = Get-AzApplicationGatewayHttpListener `
   -ApplicationGateway $appgw `
   -Name redirectedListener
 
-$urlPathMap = Get-AzureRmApplicationGatewayUrlPathMapConfig `
+$urlPathMap = Get-AzApplicationGatewayUrlPathMapConfig `
   -ApplicationGateway $appgw `
   -Name urlpathmap
 
-$redirectPathMap = Get-AzureRmApplicationGatewayUrlPathMapConfig `
+$redirectPathMap = Get-AzApplicationGatewayUrlPathMapConfig `
   -ApplicationGateway $appgw `
   -Name redirectpathmap
 
-Add-AzureRmApplicationGatewayRequestRoutingRule `
+Add-AzApplicationGatewayRequestRoutingRule `
   -ApplicationGateway $appgw `
   -Name defaultRule `
   -RuleType PathBasedRouting `
   -HttpListener $backendlistener `
   -UrlPathMap $urlPathMap
 
-Add-AzureRmApplicationGatewayRequestRoutingRule `
+Add-AzApplicationGatewayRequestRoutingRule `
   -ApplicationGateway $appgw `
   -Name redirectedRule `
   -RuleType PathBasedRouting `
   -HttpListener $redirectlistener `
   -UrlPathMap $redirectPathMap
 
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
+Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
 ## <a name="create-virtual-machine-scale-sets"></a>创建虚拟机规模集
@@ -395,23 +397,23 @@ Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 在此示例中，将创建三个虚拟机规模集以支持所创建的三个后端池。 创建的规模集分别名为 *myvmss1*、*myvmss2* 和 *myvmss3*。 每个规模集包含两个在其上安装了 IIS 的虚拟机实例。 配置 IP 设置时将规模集分配给后端池。
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Name myVNet
 
-$appgw = Get-AzureRmApplicationGateway `
+$appgw = Get-AzApplicationGateway `
   -ResourceGroupName myResourceGroupAG `
   -Name myAppGateway
 
-$backendPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$backendPool = Get-AzApplicationGatewayBackendAddressPool `
   -Name appGatewayBackendPool `
   -ApplicationGateway $appgw
 
-$imagesPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$imagesPool = Get-AzApplicationGatewayBackendAddressPool `
   -Name imagesBackendPool `
   -ApplicationGateway $appgw
 
-$videoPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+$videoPool = Get-AzApplicationGatewayBackendAddressPool `
   -Name videoBackendPool `
   -ApplicationGateway $appgw
 
@@ -430,36 +432,36 @@ for ($i=1; $i -le 3; $i++)
     $poolId = $videoPool.Id
   }
 
-  $ipConfig = New-AzureRmVmssIpConfig `
+  $ipConfig = New-AzVmssIpConfig `
     -Name myVmssIPConfig$i `
     -SubnetId $vnet.Subnets[1].Id `
     -ApplicationGatewayBackendAddressPoolsId $poolId
 
-  $vmssConfig = New-AzureRmVmssConfig `
+  $vmssConfig = New-AzVmssConfig `
     -Location eastus `
     -SkuCapacity 2 `
     -SkuName Standard_DS2 `
     -UpgradePolicyMode Automatic
 
-  Set-AzureRmVmssStorageProfile $vmssConfig `
+  Set-AzVmssStorageProfile $vmssConfig `
     -ImageReferencePublisher MicrosoftWindowsServer `
     -ImageReferenceOffer WindowsServer `
     -ImageReferenceSku 2016-Datacenter `
     -ImageReferenceVersion latest `
     -OsDiskCreateOption FromImage
 
-  Set-AzureRmVmssOsProfile $vmssConfig `
+  Set-AzVmssOsProfile $vmssConfig `
     -AdminUsername azureuser `
     -AdminPassword "Azure123456!" `
     -ComputerNamePrefix myvmss$i
 
-  Add-AzureRmVmssNetworkInterfaceConfiguration `
+  Add-AzVmssNetworkInterfaceConfiguration `
     -VirtualMachineScaleSet $vmssConfig `
     -Name myVmssNetConfig$i `
     -Primary $true `
     -IPConfiguration $ipConfig
 
-  New-AzureRmVmss `
+  New-AzVmss `
     -ResourceGroupName myResourceGroupAG `
     -Name myvmss$i `
     -VirtualMachineScaleSet $vmssConfig
@@ -474,16 +476,16 @@ $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azu
 
 for ($i=1; $i -le 3; $i++)
 {
-  $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss$i
+  $vmss = Get-AzVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss$i
 
-  Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+  Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
     -Name "customScript" `
     -Publisher "Microsoft.Compute" `
     -Type "CustomScriptExtension" `
     -TypeHandlerVersion 1.8 `
     -Setting $publicSettings
 
-  Update-AzureRmVmss `
+  Update-AzVmss `
     -ResourceGroupName myResourceGroupAG `
     -Name myvmss$i `
     -VirtualMachineScaleSet $vmss
@@ -492,10 +494,10 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-可以使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取应用程序网关的公共 IP 地址。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如， *http://52.168.55.24*、 *http://52.168.55.24:8080/images/test.htm*、 *http://52.168.55.24:8080/video/test.htm* 或 *http://52.168.55.24:8081/images/test.htm*。
+可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的公共 IP 地址。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，`http://52.168.55.24`、`http://52.168.55.24:8080/images/test.htm`、`http://52.168.55.24:8080/video/test.htm` 或 `http://52.168.55.24:8081/images/test.htm`。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
+Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
 ![在应用程序网关中测试基 URL](./media/tutorial-url-redirect-powershell/application-gateway-iistest.png)
@@ -512,10 +514,10 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、应用程序网关和所有相关资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 将其删除。
+如果不再需要资源组、应用程序网关和所有相关资源，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 将其删除。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroupAG
+Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,18 +8,20 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 0231b67ee56de5e1729c02ed3d87b2461f025b84
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: a737413f6692b4ee811d0590351a385552cc9a8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887421"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085569"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>快速入门：使用 Node.js 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
+
+Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 服务和设备应用程序可以使用 [IoT 中心设备流](./iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 本快速入门指南介绍如何执行一个在服务端中运行的 Node.js 代理应用程序，以通过设备流将 SSH 和 RDP 流量发送到设备。 有关设置概述，请参阅[此文](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。 在公共预览期，Node.js SDK 仅支持服务端的设备流。 因此，本快速入门指南只会提供有关运行服务本地代理的说明。 应该运行 [C 快速入门](./quickstart-device-streams-proxy-c.md)或 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)指南中随附的设备本地代理。
 
@@ -32,6 +34,11 @@ ms.locfileid: "54887421"
 
 
 ## <a name="prerequisites"></a>先决条件
+
+目前仅以下区域中创建的 IoT 中心支持设备流预览：
+
+  - 美国中部
+  - **美国中部 EUAP**
 
 若要运行本快速入门中所述的服务本地应用程序，需要在开发计算机上安装 Node.js v4.x.x 或更高版本。
 
@@ -75,7 +82,7 @@ node --version
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --hub-name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
     记下返回的值，如下所示：
@@ -95,7 +102,7 @@ node --version
 假设[设备本地代理](#run-the-device-local-proxy)正在运行，请遵循以下步骤运行以 Node.js 编写的服务本地代理：
 
 - 以环境变量的形式提供服务凭据、运行 SSH 守护程序的目标设备 ID，以及设备上运行的代理的端口号。
-```
+  ```
   # In Linux
   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
   export STREAMING_TARGET_DEVICE="MyDevice"
@@ -105,11 +112,11 @@ node --version
   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
   SET STREAMING_TARGET_DEVICE=MyDevice
   SET PROXY_PORT=2222
-```
-更改上述值以匹配设备 ID 和连接字符串。
+  ```
+  更改上述值以匹配设备 ID 和连接字符串。
 
 - 导航到解压缩的项目文件夹中的 `Quickstarts/device-streams-service`，并运行服务本地代理。
-```
+  ```
   cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
 
   # Install the preview service SDK, and other dependencies
@@ -118,7 +125,7 @@ node --version
 
   # Run the service-local proxy application
   node proxy.js
-```
+  ```
 
 ### <a name="ssh-to-your-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 在 Linux 中，请在终端上使用 `ssh $USER@localhost -p 2222` 运行 SSH。 在 Windows 中，请使用偏好的 SSH 客户端（例如 PuTTY）。

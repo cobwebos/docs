@@ -3,20 +3,20 @@ title: 教程：使用 Azure 数据库迁移服务将 MySQL 联机迁移到 Azur
 description: 了解如何使用 Azure 数据库迁移服务执行从本地 MySQL 到 Azure Database for MySQL 的联机迁移。
 services: dms
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: 52346e25c0b0e1b1b0c0befb6b5285f66b9a95d7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 2fe104868e4f11b39edfb52ae0dae0365ebed954
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724566"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183197"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 MySQL 实例迁移到 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)。 换句话说，可以在尽量减少应用程序故障时间的情况下进行迁移。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **Employees** 示例数据库从 MySQL 5.7 的本地实例迁移到 Azure Database for MySQL。
@@ -40,8 +40,17 @@ ms.locfileid: "53724566"
 
 - 下载并安装 [MySQL 社区版](https://dev.mysql.com/downloads/mysql/) 5.6 或 5.7。 本地 MySQL 版本必须与 Azure Database for MySQL 版本相符。 例如，MySQL 5.6 只能迁移到 Azure Database for MySQL 5.6，不能升级到 5.7。
 - [在 Azure Database for MySQL 中创建一个实例](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)。 有关如何使用 Azure 门户连接和创建数据库的详细信息，请参阅[使用 MySQL Workbench 进行连接并查询数据](https://docs.microsoft.com/azure/mysql/connect-workbench)一文。  
-- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNET，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
-- 确保 Azure 虚拟网络 (VNET) 网络安全组规则未阻止通信端口 443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
+- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNET)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+
+    > [!NOTE]
+    > 在 VNET 设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+    > - 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
+    > - 存储终结点
+    > - 服务总线终结点
+    >
+    > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
+ 
+- 请确保 VNET 网络安全组规则未阻止以下通信端口：443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
 - 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 - 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 MySQL Server（默认情况下为 TCP 端口 3306）。
 - 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
@@ -152,7 +161,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     有关成本和定价层的详细信息，请参阅[价格页](https://aka.ms/dms-pricing)。
 
-    如果需要有关如何选择合适的 Azure 数据库迁移服务层的帮助，请参阅博客文章 [Choosing an Azure Database Migration Service (Azure DMS) tier](https://go.microsoft.com/fwlink/?linkid=861067)（选择 Azure 数据库迁移服务 (Azure DMS) 层）中的建议。 
+    如果需要有关如何选择合适的 Azure 数据库迁移服务层的帮助，请参阅博客文章[选择 Azure 数据库迁移服务 (Azure DMS) 层](https://go.microsoft.com/fwlink/?linkid=861067)中的建议。 
 
      ![配置 Azure 数据库迁移服务实例设置](media/tutorial-mysql-to-azure-mysql-online/dms-settings3.png)
 

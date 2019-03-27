@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0885671d777d79c6f8a9fc993aa1224312705bce
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 5d6a7d77b442383817179fadc5878f02dfe86628
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650897"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089516"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -145,7 +145,7 @@ ms.locfileid: "56650897"
 
 此时会显示“添加主机名”页。 
 
-确保“主机名记录类型”设置为“CNAME (www.example.com 或任何子域)”。
+确保“主机名记录类型”设置为“CNAME (www\.example.com 或任何子域)”。
 
 选择“添加主机名”。
 
@@ -282,7 +282,7 @@ ms.locfileid: "56650897"
 
 “添加主机名”按钮会被激活。 
 
-确保“主机名记录类型”设置为“CNAME 记录 (www.example.com 或任何子域)”。
+确保“主机名记录类型”设置为“CNAME 记录(www\.example.com 或任何子域)”。
 
 选择“添加主机名”。
 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/27/2019
 ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 87b8543d8cb658b46ab5e589a310a17a69508a47
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 9fe0c7f7ae0c19833421b647449f0e4100904f5b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411384"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226226"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>教程：使用 Azure 虚拟 WAN（预览版）创建点到站点连接
 
@@ -38,11 +38,13 @@ ms.locfileid: "54411384"
 
 ## <a name="before-you-begin"></a>开始之前
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>注册此功能
 
-单击“试用”以使用 Azure Cloud Shell 轻松注册此功能。 如果希望在本地运行 PowerShell，请确保使用最新版本并使用 **Connect-AzureRmAccount** 和 **Select-AzureRmSubscription** 命令登录。
+单击“试用”以使用 Azure Cloud Shell 轻松注册此功能。 如果希望在本地运行 PowerShell，请确保使用最新版本并使用 Connect-AzAccount 和 Select-AzSubscription 命令登录。
 
 >[!NOTE]
 >如果未注册此功能，则将无法使用它，也无法在门户中看到它。
@@ -52,25 +54,25 @@ ms.locfileid: "54411384"
 单击“试用”打开 Azure Cloud Shell后，复制并粘贴以下命令：
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
  
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
 该功能显示为已注册后，请将订阅重新注册到 Microsoft.Network 命名空间。
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 ## <a name="vnet"></a>1.创建虚拟网络
@@ -101,13 +103,13 @@ P2S 配置定义连接远程客户端的参数。
 4. 单击页面顶部的“+添加点到站点配置”，打开“创建新的点到站点配置”页。
 5. 在“创建新的点到站点配置”页上填写以下字段：
 
-  *  **配置名称** - 这是需要按其来引用配置的名称。
-  *  **隧道类型** - 用于隧道的协议。
-  *  **地址池** - 这是 IP 地址池，为客户端分配的 IP 来自该池。
-  *  **根证书名称** - 证书的说明性名称。
-  *  **根证书数据** - Base-64 编码的 X.509 证书数据。
+   *  **配置名称** - 这是需要按其来引用配置的名称。
+   *  **隧道类型** - 用于隧道的协议。
+   *  **地址池** - 这是 IP 地址池，为客户端分配的 IP 来自该池。
+   *  **根证书名称** - 证书的说明性名称。
+   *  **根证书数据** - Base-64 编码的 X.509 证书数据。
 
-5. 单击“创建”以创建配置。
+6. 单击“创建”以创建配置。
 
 ## <a name="hub"></a>5.编辑中心分配
 
@@ -115,9 +117,10 @@ P2S 配置定义连接远程客户端的参数。
 2. 选择要向其分配点到站点配置的中心。
 3. 单击“...”，选取“编辑虚拟中心”
 4. 勾选“包括点到站点网关”。
-5. 为客户端选择“网关缩放单元”、“点到站点配置”和“地址池”。
-6. 单击“确认”。 
-7. 此操作可能最多需要 30 分钟才能完成。
+5. 从下拉列表中，选择“网关缩放单元”。
+6. 从下拉列表中，选择所创建的“点到站点配置”。
+7. 为客户端配置“地址池”。
+8. 单击“确认”。 此操作可能最多需要 30 分钟才能完成。
 
 ## <a name="vnet"></a>6.将 VNet 连接到中心
 
@@ -131,6 +134,7 @@ P2S 配置定义连接远程客户端的参数。
     * **中心** - 选择要与此连接关联的中心。
     * **订阅** - 验证订阅。
     * **虚拟网络** - 选择要连接到此中心的虚拟网络。 此虚拟网络不能包含现有的虚拟网络网关。
+4. 单击“确定”添加连接。
 
 ## <a name="device"></a>7.下载 VPN 配置文件
 
@@ -149,7 +153,7 @@ P2S 配置定义连接远程客户端的参数。
 #### <a name="openvpn"></a>OpenVPN
 
 1.  从官方网站下载并安装 OpenVPN 客户端。
-2.  下载网关的 VPN 配置文件。 这可以通过 Azure 门户中的“点到站点配置”选项卡或 PowerShell 中的 New-AzureRmVpnClientConfiguration 来完成。
+2.  下载网关的 VPN 配置文件。 可通过 Azure 门户中的“点到站点配置”选项卡或 PowerShell 中的 New-AzVpnClientConfiguration 来完成。
 3.  解压缩该配置文件。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
 4.  使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 请参阅此处，了解如何导出证书以获取已编码的公钥。
 5.  使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 请参阅此处，了解如何提取私钥。
@@ -168,7 +172,7 @@ P2S 配置定义连接远程客户端的参数。
 #### <a name="openvpn"></a>OpenVPN
 
 1.  下载并安装 OpenVPN 客户端，例如从 https://tunnelblick.net/downloads.html 下载并安装 TunnelBlik 
-2.  下载网关的 VPN 配置文件。 这可以通过 Azure 门户中的“点到站点配置”选项卡或 PowerShell 中的 New-AzureRmVpnClientConfiguration 来完成。
+2.  下载网关的 VPN 配置文件。 可通过 Azure 门户中的“点到站点配置”选项卡或 PowerShell 中的 New-AzVpnClientConfiguration 来完成。
 3.  解压缩该配置文件。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
 4.  使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 请参阅此处，了解如何导出证书以获取已编码的公钥。
 5.  使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 请参阅此处，了解如何提取私钥。
@@ -201,10 +205,10 @@ Azure 不提供用于本机 Azure 证书身份验证的 mobileconfig 文件。 �
 
 ## <a name="cleanup"></a>12.清理资源
 
-如果不再需要这些资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
+不再需要这些资源时，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤

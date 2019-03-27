@@ -1,23 +1,23 @@
 ---
-title: 在 Postman 或 Fiddler Web HTTP 测试工具中探索 REST API - Azure 搜索
-description: 如何使用 Fiddler 或 Postman 发出对 Azure 搜索的 HTTP 请求和 REST API 调用。
+title: 在 Postman 或 Fiddler 中探索 REST API - Azure 搜索
+description: 如何使用 Postman 或 Fiddler 发出对 Azure 搜索的 HTTP 请求和 REST API 调用。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 04/20/2018
+ms.date: 03/12/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 06e2667b59b27039ad3c62379f654dd693999f99
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 946d8196fbe49e452dab8fa36e4c746a1bcaf490
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756069"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137617"
 ---
-# <a name="explore-azure-search-rest-apis-using-postman-or-fiddler"></a>使用 Postman 或 Fiddler 探索 Azure 搜索 REST API
+# <a name="quickstart-explore-azure-search-rest-apis-using-postman-or-fiddler"></a>快速入门：使用 Postman 或 Fiddler 探索 Azure 搜索 REST API
 
 若要探索 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)，最轻松的方式之一是使用 Postman 或 Fiddler 来构建 HTTP 请求并检查响应。 在编写任何代码之前，可以使用适当的工具按照这些说明发送请求和查看响应。
 
@@ -31,7 +31,7 @@ ms.locfileid: "55756069"
 
 如果还没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，然后[注册 Azure 搜索](search-create-service-portal.md)。
 
-## <a name="download-and-install-tools"></a>下载并安装工具
+## <a name="download-tools"></a>下载工具
 
 以下工具广泛用于 Web 开发，但如果你熟悉其他工具，则仍可在使用该工具时遵循本文中的说明。
 
@@ -42,11 +42,16 @@ ms.locfileid: "55756069"
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-1. 在 Azure 门户中，从仪表板打开搜索服务页，或者在服务列表中[查找服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
-2. 在“概览” > “重要信息” > “URL”中获取终结点。 示例终结点可能类似于 `https://my-service-name.search.windows.net`。
-3. 在“设置” > “密钥”中获取 api-key。 有两个冗余性的管理密钥，在需要滚动更新密钥时可以使用。 管理密钥授予对服务的写入权限，这是创建和加载索引所必需的。 可以使用主密钥或辅助密钥进行写入操作。
+1. 在 Azure 门户中的搜索服务“概述”页上，获取该 URL。 示例终结点可能类似于 `https://my-service-name.search.windows.net`。
 
-## <a name="configure-request-headers"></a>配置请求标头
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+
+![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
+
+所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
+
+
+## <a name="configure-headers"></a>配置标头
 
 每个工具都会持久保留会话的请求标头信息，这意味着只需输入 URL 终结点、api-version、api-key 和 content-type 一次。
 
@@ -61,8 +66,15 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 请求标头组合包括 content-type 和 api-key 这两个元素，如前一部分所述：
 
-         content-type: application/json
-         api-key: <placeholder>
+    api-key: <placeholder>
+    Content-Type: application/json
+
+
+### <a name="postman"></a>Postman
+
+构建如以下屏幕截图所示的请求。 选择 PUT 作为谓词。 
+
+![Postman 请求标头][6]
 
 ### <a name="fiddler"></a>Fiddler
 
@@ -71,15 +83,9 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 ![Fiddler 请求标头][1]
 
 > [!Tip]
-> 可以关闭 Web 流量，以便隐藏与所执行任务无关的 HTTP 活动。 在 Fiddler 中转到“文件”菜单，关闭“捕获流量”。 
+> 关闭 web 流量，以便隐藏多余的不相关 HTTP 活动。 在 Fiddler 的“文件”菜单中，关闭“捕获流量”。 
 
-### <a name="postman"></a>Postman
-
-构建如以下屏幕截图所示的请求。 选择 PUT 作为谓词。 
-
-![Postman 请求标头][6]
-
-## <a name="create-the-index"></a>创建索引
+## <a name="1---create-an-index"></a>1 - 创建索引
 
 请求正文包含索引定义。 添加请求正文以后，即完成了用于生成索引的请求。
 
@@ -109,11 +115,6 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 如果收到 HTTP 504，请验证该 URL 是否指定了 HTTPS。 如果看到 HTTP 400 或 404，请检查请求正文，以验证是否没有复制粘贴错误。 HTTP 403 通常指示 api-key 有问题（密钥无效或指定 api-key 的方式有语法问题）。
 
-### <a name="fiddler"></a>Fiddler
-
-将索引定义复制到请求正文（类似于以下屏幕截图），然后单击右上角的“执行”，以便发送完成的请求。
-
-![Fiddler 请求正文][7]
 
 ### <a name="postman"></a>Postman
 
@@ -121,7 +122,13 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ![Postman 请求正文][8]
 
-## <a name="load-documents"></a>加载文档
+### <a name="fiddler"></a>Fiddler
+
+将索引定义复制到请求正文（类似于以下屏幕截图），然后单击右上角的“执行”，以便发送完成的请求。
+
+![Fiddler 请求正文][7]
+
+## <a name="2---load-documents"></a>2 - 加载文档
 
 创建索引和填充索引是分开的步骤。 在 Azure 搜索中，索引包含所有可搜索数据，这些数据可以作为 JSON 文档提供。 若要查看此操作的 API，请参阅 [Add, update, or delete documents (REST)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)（添加、更新或删除文档 (REST)）。
 
@@ -199,11 +206,6 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 > [!Tip]
 > 对于所选数据源，可以选择备用的 indexer 方法，以便简化并减少进行索引操作所需的代码量。 有关详细信息，请参阅 [Indexer operations](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)（Indexer 操作）。
 
-### <a name="fiddler"></a>Fiddler
-
-将谓词更改为 POST。 更改 URL，使之包括 `/docs/index`。 将文档复制到请求正文中（类似于以下屏幕截图），然后执行请求。
-
-![Fiddler 请求有效负载][9]
 
 ### <a name="postman"></a>Postman
 
@@ -211,8 +213,14 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ![Postman 请求有效负载][10]
 
-## <a name="query-the-index"></a>查询索引
-现在，已加载索引和文档，可以针对它们发出查询了。 有关此 API 的详细信息，请参阅 [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents)（搜索文档 (REST)）  
+### <a name="fiddler"></a>Fiddler
+
+将谓词更改为 POST。 更改 URL，使之包括 `/docs/index`。 将文档复制到请求正文中（类似于以下屏幕截图），然后执行请求。
+
+![Fiddler 请求有效负载][9]
+
+## <a name="3---search-an-index"></a>3 - 搜索索引
+现在，已加载索引和文档，可以使用[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents) REST API 针对它们发出查询了。
 
 + 将谓词更改为 GET（适用于此步骤）。
 + 更改终结点，使之包括查询参数（包括搜索字符串）。 查询 URL 可能类似于 `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
@@ -234,7 +242,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 
-## <a name="query-index-properties"></a>查询索引属性
+## <a name="get-index-properties"></a>获取索引属性
 还可以查询系统信息，获取文档计数和存储使用量：`https://my-app.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 在 Postman 中，请求应如下所示，响应包括文档计数和所用空间（以字节为单位）。
@@ -254,9 +262,8 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 REST 客户端对于即席探索很有用，但在了解 REST API 工作原理以后，则可继续代码操作。 有关后续步骤，请参阅以下链接：
 
-+ [创建索引 (REST)](search-create-index-rest-api.md)
-+ [导入数据 (REST)](search-import-data-rest-api.md)
-+ [搜索索引 (REST)](search-query-rest-api.md)
++ [快速入门：使用 .NET SDK 创建索引](search-create-index-dotnet.md)
++ [快速入门：使用 PowerShell 创建索引 (REST)](search-create-index-rest-api.md)
 
 <!--Image References-->
 [1]: ./media/search-fiddler/fiddler-url.png

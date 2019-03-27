@@ -7,20 +7,20 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8569cae1-87dd-4c40-9bbb-527ac80d6a96
-ms.service: Azure-Active-Directory
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/12/2019
+ms.date: 03/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecfdd76e171ed237e3e87c98f6596634784faea1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d58da4781a7c5c93d897e0efd7cf3d5aee612d78
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865308"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225666"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>教程：Azure Active Directory 与 Figma 集成
 
@@ -32,14 +32,16 @@ ms.locfileid: "56865308"
 * 可在中心位置（即 Azure 门户）管理帐户。
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Figma 的集成，需要以下项目：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 Figma 单一登录的订阅
+* Figma 组织计划
+
+>[!NOTE]
+>为了测试本教程中的步骤，我们不建议使用生产环境。 Figma 专业团队的新客户和活动订阅者可以联系 Figma 以将他们的订阅升级到 [Figma 组织计划](https://www.figma.com/pricing/)。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -107,20 +109,20 @@ ms.locfileid: "56865308"
 
     ![Figma 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/consume`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>/consume`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Figma 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/start`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>/start`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Figma 客户端支持团队](mailto:support@figma.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 将从 Figma 的 [Configure Azure Active Directory SAML SSO process](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso)（配置 Azure Active Directory SAML SSO 进程）文章中步骤 11 获取 `TENANT ID`。
 
-6. Figma 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标添加属性。
+6. Figma 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标，打开“用户属性”对话框 **** 。
 
     ![图像](common/edit-attribute.png)
 
@@ -157,10 +159,10 @@ ms.locfileid: "56865308"
 8. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
-
+  
 ### <a name="configure-figma-single-sign-on"></a>配置 Figma 单一登录
 
-若要在 Figma 端配置单一登录，请填写此表单：[https://goo.gl/forms/XkRB1z5ed4eVUzXn2](https://goo.gl/forms/XkRB1z5ed4eVUzXn2)。 它将接受步骤 8 中的应用联合元数据 URL。
+若要在 Figma 端配置单一登录，需要遵循 Figma 的 [Configure Azure Active Directory SAML SSO process](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso)（配置 Azure Active Directory SAML SSO 进程）文章进行操作。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -180,7 +182,7 @@ ms.locfileid: "56865308"
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -230,3 +232,4 @@ ms.locfileid: "56865308"
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

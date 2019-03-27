@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 183a6ddf3fd47be552ba13ce42c1f6e29fca4410
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a30281012d28489a40e3366585164628d87c220
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162231"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994616"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>教程：批量邀请 Azure AD B2B 协作用户
 
@@ -119,7 +119,7 @@ foreach ($email in $invitations)
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-应会看到已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress#EXT#@domain 的格式。 例如，lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com，其中 contoso.onmicrosoft.com 是从中发送邀请的组织。
+应会看到已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress#EXT#\@domain 的格式。 例如，lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com，其中 contoso.onmicrosoft.com 是你从其发送邀请的组织。
 
 ## <a name="clean-up-resources"></a>清理资源
 

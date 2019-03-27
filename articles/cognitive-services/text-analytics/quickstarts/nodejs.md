@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: e11e4a59e447a8befcfaedb7ddedbb9aabdfaa28
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 61cfb5fa78a735d2ef542c30b445f3200f256d7c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330692"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226923"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Node.js 调用文本分析认知服务  
 <a name="HOLTop"></a>
@@ -28,7 +28,7 @@ ms.locfileid: "56330692"
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。 
+还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。
 
 <a name="Detect"></a>
 
@@ -36,11 +36,11 @@ ms.locfileid: "56330692"
 
 语言检测 API 使用[检测语言方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)检测文本文档的语言。
 
-1. 在你喜欢使用的 IDE 中新建一个 Node.JS 项目。
-2. 添加下面提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+1. 在最喜爱的 IDE 或桌面上的某个文件夹中创建一个新的 Node.JS 项目。
+2. 将下面提供的代码添加到新的 `.js` 文件中。
+3. 将 `accessKey` 值替换为 Azure 中文本分析资源的订阅密钥。
 4. 将 `uri` 中的位置（当前为 `westus`）替换为进行注册的区域。
-5. 运行该程序。
+5. 从 IDE 或命令行运行该程序，例如 `npm start` 或 `node detect.js`。
 
 ```javascript
 'use strict';
@@ -156,13 +156,13 @@ get_language (documents);
 
 ## <a name="analyze-sentiment"></a>分析情绪
 
-情绪分析 API 使用[情绪方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 以下示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
+情绪分析 API 使用 [Sentiment 方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 通过在原始文本中分析有关积极和消极情绪的线索，可以使用情绪分析确定客户如何看待你的品牌或主题。 以下示例提供了两个文档的分数，一个是英文文档，另一个是西班牙文文档。
 
-1. 在你喜欢使用的 IDE 中新建一个 Node.JS 项目。
-2. 添加下面提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+1. 在最喜爱的 IDE 或桌面上的某个文件夹中创建一个新的 Node.JS 项目。
+2. 将下面提供的代码添加到新的 `.js` 文件中。
+3. 将 `accessKey` 值替换为 Azure 中文本分析资源的订阅密钥。
 4. 将 `uri` 中的位置（当前为 `westus`）替换为进行注册的区域。
-5. 运行该程序。
+5. 从 IDE 或命令行运行该程序，例如 `npm start` 或 `node sentiment.js`。
 
 ```javascript
 'use strict';
@@ -229,7 +229,8 @@ get_sentiments (documents);
 
 **情绪分析响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+如果得分接近 1.0，则测量结果为积极；如果得分接近 0.0，则测量结果为消极。
+在 JSON 中返回成功的响应，如以下示例所示：
 
 ```json
 {
@@ -251,13 +252,13 @@ get_sentiments (documents);
 
 ## <a name="extract-key-phrases"></a>提取关键短语
 
-关键短语提取 API 使用[关键短语方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 以下示例为英文和西班牙文文档提取关键短语。
+关键短语提取 API 使用[关键短语方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 关键短语提取用于快速识别文档或文本的要点。 以下示例为英文和西班牙文文档提取关键短语。
 
-1. 在你喜欢使用的 IDE 中新建一个 Node.JS 项目。
-2. 添加下面提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+1. 在最喜爱的 IDE 或桌面上的某个文件夹中创建一个新的 Node.JS 项目。
+2. 将下面提供的代码添加到新的 `.js` 文件中。
+3. 将 `accessKey` 值替换为 Azure 中文本分析资源的订阅密钥。
 4. 将 `uri` 中的位置（当前为 `westus`）替换为进行注册的区域。
-5. 运行该程序。
+5. 从 IDE 或命令行运行该程序，例如 `npm start` 或 `node key-phrases.js`。
 
 ```javascript
 'use strict';
@@ -367,13 +368,13 @@ get_key_phrases (documents);
 
 ## <a name="identify-linked-entities"></a>识别链接实体
 
-实体 API 使用[实体方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)识别文本文档中的已知实体。 以下示例识别英文文档的实体。
+实体 API 使用[实体方法](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)识别文本文档中的已知实体。 [实体](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)从文本中提取字词，如“United States”，然后提供此词语的类型和/或维基百科的链接。 “United States”的类型为 `location`，而在维基百科上的链接为 `https://en.wikipedia.org/wiki/United_States`。  以下示例识别英文文档的实体。
 
-1. 在你喜欢使用的 IDE 中新建一个 Node.JS 项目。
-2. 添加下面提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+1. 在最喜爱的 IDE 或桌面上的某个文件夹中创建一个新的 Node.JS 项目。
+2. 将下面提供的代码添加到新的 `.js` 文件中。
+3. 将 `accessKey` 值替换为 Azure 中文本分析资源的订阅密钥。
 4. 将 `uri` 中的位置（当前为 `westus`）替换为进行注册的区域。
-5. 运行该程序。
+5. 从 IDE 或命令行运行该程序，例如 `npm start` 或 `node entities.js`。
 
 ```javascript
 'use strict';
@@ -440,7 +441,7 @@ get_entities (documents);
 
 **实体提取响应**
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示：
 
 ```json
 {

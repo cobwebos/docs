@@ -6,16 +6,16 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: conceptual
-ms.date: 01/18/2019
+ms.topic: overview
+ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d2086f02cc981ad944c030ad40083d153c520359
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 3c2567564e015ef19adf9f8c776e1f377a9cdf30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133053"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>什么是 Azure 搜索中的“认知搜索”？
 
@@ -92,31 +92,9 @@ Azure 搜索中的认知技能基于认知服务 API 中的机器学习模型：
 
 ## <a name="where-do-i-start"></a>从哪里开始？
 
-**步骤 1：在提供 API 的区域中[创建 Azure 搜索资源](search-create-service-portal.md)** 
+**步骤 1：[创建 Azure 搜索资源](search-create-service-portal.md)** 
 
-+ 美国中西部
-+ 美国中南部
-+ 美国中北部
-+ 美国东部
-+ 美国东部 2
-+ 美国西部
-+ 美国西部 2
-+ 美国中部
-+ 加拿大中部
-+ 西欧
-+ 北欧
-+ 英国南部
-+ 法国中部
-+ 巴西南部
-+ 东亚
-+ 东南亚
-+ 印度中部
-+ 日本西部
-+ 日本东部
-+ 韩国中部
-+ 澳大利亚东部
-
-**步骤 2：掌握工作流的实践体验**
+**步骤 2：亲自体验，尝试一些快速入门操作和示例**
 
 + [快速入门（门户）](cognitive-search-quickstart-blob.md)
 + [教程（HTTP 请求）](cognitive-search-tutorial-blob.md)

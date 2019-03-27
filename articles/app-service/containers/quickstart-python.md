@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 02/08/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 24d282b6e6e6f627d5893bb3514a77e4f82968e1
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 5cca0d866442583c87665b3a1db8c65c66d12f0a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309434"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285371"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python 应用
 
@@ -109,12 +109,12 @@ Checking connectivity... done.
 
 切换到包含示例代码的目录并运行 `az webapp up` 命令。
 
-在以下示例中，请将 <app_name> 替换为一个唯一的应用名称。
+在以下示例中，请将 <app-name> 替换为一个唯一的应用名称。
 
 ```bash
 cd python-docs-hello-world
 
-az webapp up -n <app_name>
+az webapp up -n <app-name>
 ```
 
 此命令可能需要花费几分钟时间运行。 运行时，该命令会显示类似于以下示例的信息：
@@ -125,15 +125,15 @@ Creating Resource group 'appsvc_rg_Linux_CentralUS' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_CentralUS' ...
 App service plan creation complete
-Creating app '<app_name>' ....
+Creating app '<app-name>' ....
 Webapp creation complete
 Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
 Preparing to deploy contents to app.
 All done.
 {
-  "app_url": "https:/<app_name>.azurewebsites.net",
+  "app_url": "https:/<app-name>.azurewebsites.net",
   "location": "Central US",
-  "name": "<app_name>",
+  "name": "<app-name>",
   "os": "Linux",
   "resourcegroup": "appsvc_rg_Linux_CentralUS ",
   "serverfarm": "appsvc_asp_Linux_CentralUS",
@@ -144,22 +144,14 @@ All done.
 }
 ```
 
-`az webapp up` 命令执行以下操作：
-
-- 创建一个默认的资源组。
-
-- 创建一个默认的应用服务计划。
-
-- 创建一个采用指定名称的应用。
-
-- [使用 Zip](https://docs.microsoft.com/azure/app-service/deploy-zip) 将文件从当前工作目录部署到应用。
+[!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>浏览到应用
 
 使用 Web 浏览器浏览到已部署的应用程序。
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
@@ -182,10 +174,10 @@ return "Hello Azure!"
 
 保存更改并退出编辑器。 使用命令 `^S` 来保存，使用 `^Q` 来退出。
 
-现在，你将重新部署应用。 将 `<app_name>` 替换为你的应用。
+现在，你将重新部署应用。 将 `<app-name>` 替换为你的应用。
 
 ```bash
-az webapp up -n <app_name>
+az webapp up -n <app-name>
 ```
 
 完成部署后，切换回**浏览到应用**步骤中打开的浏览器窗口，然后刷新页面。

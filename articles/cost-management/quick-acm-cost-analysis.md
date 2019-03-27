@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 931732c047a5ffe22ad456a115c36d7c882d01bc
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 55407ec1846a0fe2eb037756dc2e97d8b05e7330
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769845"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997308"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -51,7 +51,7 @@ ms.locfileid: "55769845"
 
 ## <a name="review-costs-in-cost-analysis"></a>通过成本分析查看成本
 
-若要通过成本分析查看成本，请在 Azure 门户中导航到“成本管理 + 计费”&gt;“成本分析”。 选择“范围:_ScopeName_”，选择一个范围，然后单击“选择”。
+若要通过成本分析查看成本，请在 Azure 门户打开所需范围并在菜单中选择“成本分析”。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析”。 使用“范围”框可在成本分析中切换到不同的范围。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 所选的范围将用于整个成本管理，以提供数据整合和控制对成本信息的访问。 使用范围时，不要多选它们。 而应选择一个其他范围汇总到的较大范围，然后筛选到所需的范围。 理解这一点很重要，因为有些人不应该有权访问子范围汇总到的父范围。
 

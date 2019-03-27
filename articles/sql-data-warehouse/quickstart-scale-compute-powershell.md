@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6df0ff292c21ceb99bc30c7cd8cab007a27a0fcb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bd137b71cab4a345afce835effd2ecb0c03df312
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57882975"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>快速入门：使用 PowerShell 在 Azure SQL 数据仓库中缩放计算资源
 
@@ -23,30 +23,30 @@ ms.locfileid: "55469441"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-本教程需要 Azure PowerShell 模块版本 5.1.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
-
 ## <a name="before-you-begin"></a>开始之前
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 本快速入门教程假定已有可缩放的 SQL 数据仓库。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
-若要查看正在使用的订阅，请运行 [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription)。
+若要查看正在使用的订阅，请运行 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)。
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
-如果需要使用与默认订阅不同的订阅，请运行 [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext)。
+如果需要使用与默认订阅不同的订阅，请运行 [Set-AzContext](/powershell/module/az.accounts/set-azcontext)。
 
 ```powershell
-Set-AzureRmContext -SubscriptionName "MySubscription"
+Set-AzContext -SubscriptionName "MySubscription"
 ```
 
 ## <a name="look-up-data-warehouse-information"></a>查找数据仓库信息
@@ -68,18 +68,18 @@ Set-AzureRmContext -SubscriptionName "MySubscription"
 
 在 SQL 数据仓库中，可以通过调整数据仓库单位来增加或减少计算资源。 [创建和 Connect - 门户](create-data-warehouse-portal.md)创建 **mySampleDataWarehouse** 并初始化 400 DWU。 以下步骤调整为 DWU **mySampleDataWarehouse**。
 
-若要更改数据仓库单位，请使用 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell cmdlet。 以下示例将数据库 **mySampleDataWarehouse**（在服务器 **mynewserver-20180430** 上资源组 **myResourceGroup** 中托管）的数据仓库单位设置为 DW300。
+若要更改数据仓库单位，请使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet。 以下示例将数据库 **mySampleDataWarehouse**（在服务器 **mynewserver-20180430** 上资源组 **myResourceGroup** 中托管）的数据仓库单位设置为 DW300。
 
 ```Powershell
-Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
+Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
 ```
 
 ## <a name="check-data-warehouse-state"></a>检查数据仓库状态
 
-若要查看数据仓库的当前状态，使用 [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell cmdlet。 这将获得资源组 **myResourceGroup** 和服务器 **mynewserver-20180430.database.windows.net** 中 **mySampleDataWarehouse** 数据库的状态。
+若要查看数据仓库的当前状态，使用 [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell cmdlet。 这将获得资源组 **myResourceGroup** 和服务器 **mynewserver-20180430.database.windows.net** 中 **mySampleDataWarehouse** 数据库的状态。
 
 ```powershell
-$database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
+$database = Get-AzSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
 $database
 ```
 

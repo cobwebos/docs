@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 62d19432cba431bce4485aaa2af3e0a23ad8b5f6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970968"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104091"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>部署 Azure 虚拟网络容器网络接口插件
 
@@ -31,7 +31,7 @@ Azure 虚拟网络容器网络接口 (CNI) 插件安装在 Azure 的虚拟机中
 
 ACS-Engine 使用 Azure 资源管理器模板部署 Kubernetes 群集。 群集配置在 JSON 文件中指定，该文件在生成模板时传递给工具。 要详细了解受支持的群集设置及其说明的完整列表，请参阅 [Microsoft Azure 容器服务引擎 - 群集定义](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md)。 该插件是使用 ACS-Engine 创建的集群的默认网络插件。 配置插件时，以下网络配置设置非常重要：
 
-  | 设置                              | Description                                                                                                           |
+  | 设置                              | 说明                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | 分配给主节点的 IP 地址。 这是必需设置。                                     |
   | kubernetesConfig 下的 clusterSubnet | 在其中部署集群并将 IP 地址分配给 Pod 的虚拟网络子网的 CIDR   |
@@ -95,10 +95,10 @@ ACS-Engine 使用 Azure 资源管理器模板部署 Kubernetes 群集。 群集�
 1. [下载并安装插件](#download-and-install-the-plug-in)。
 2. 在每个虚拟机上预分配虚拟网络 IP 地址池，IP 地址从中分配给 Pod。 每个 Azure 虚拟机在每个网络接口上都附带一个主虚拟网络专用 IP 地址。 Pod 的 IP 地址池将作为辅助地址 (ipconfigs) 添加到虚拟机网络接口上，方法是使用以下某个选项：
 
-   - **CLI**：[使用 Azure CLI 分配多个 IP 地址](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**：[使用 PowerShell 分配多个 IP 地址](virtual-network-multiple-ip-addresses-powershell.md)
-   - **门户**：[使用 Azure 门户分配多个 IP 地址](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure 资源管理器模板**：[使用模板分配多个 IP 地址](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**： [使用 Azure CLI 分配多个 IP 地址](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**： [使用 PowerShell 分配多个 IP 地址](virtual-network-multiple-ip-addresses-powershell.md)
+   - **门户**： [使用 Azure 门户分配多个 IP 地址](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure 资源管理器模板**： [使用模板分配多个 IP 地址](virtual-network-multiple-ip-addresses-template.md)
 
    确保为你希望在虚拟机上出现的所有 Pod 添加足够的 IP 地址。
 
@@ -106,13 +106,13 @@ ACS-Engine 使用 Azure 资源管理器模板部署 Kubernetes 群集。 群集�
 4. 如果希望 Pod 可以访问互联网，请在 Linux 虚拟机上添加以下 iptables 规则，对 Internet 流量进行源 NAT。 在以下示例中，指定的 IP 范围是 10.0.0.0/8。
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
    该规则对未流向指定 IP 范围的流量进行 NAT。 假设以前范围之外的所有流量都是 Internet 流量。 可以选择指定虚拟机的虚拟网络、对等虚拟网络和本地网络的 IP 范围。
 
-  Windows 虚拟机自动为流往虚拟机所属子网范围之外的流量进行源 NAT。 无法指定自定义 IP 范围。
+   Windows 虚拟机自动为流往虚拟机所属子网范围之外的流量进行源 NAT。 无法指定自定义 IP 范围。
 
 完成前面的步骤后，将自动从虚拟网络向 Kubernetes 代理虚拟机上出现的 Pod 分配专用 IP 地址。
 
@@ -157,12 +157,12 @@ CNI 网络配置文件以 JSON 格式描述。 默认情况下，它出现在 `/
 
 #### <a name="settings-explanation"></a>设置说明
 
-- **cniVersion**：Azure 虚拟网络 CNI 插件支持 [CNI 规范](https://github.com/containernetworking/cni/blob/master/SPEC.md)的 0.3.0 和 0.3.1版本。
+- **cniVersion**：Azure 虚拟网络 CNI 插件支持  [CNI 规范](https://github.com/containernetworking/cni/blob/master/SPEC.md)的 0.3.0 和 0.3.1版本。
 - **名称**：网络的名称。 此属性可以设置为任何唯一值。
-- **类型**：网络插件的名称。 设置为 azure vnet。
-- **模式**：操作模式。 此字段可选。 支持的唯一模式是“桥接”。 有关更多详细信息，请参阅[操作模式](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)。
+- **类型**：网络插件的名称。 设置为“azure vnet” **。
+- **模式**：操作模式。 此字段可选。 支持的唯一模式是“桥接”。 有关详细信息，请参阅 [操作模式](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)。
 - **桥**：将用于将容器连接到虚拟网络的桥的名称。 此字段可选。 如果省略，则插件会根据主接口索引自动选择唯一名称。
-- **ipam 类型**：IPAM 插件的名称。 始终设置为 azure vnet ipam。
+- **ipam 类型**：IPAM 插件的名称。 始终设置为 azure vnet ipam **。
 
 ## <a name="download-and-install-the-plug-in"></a>下载并安装插件
 

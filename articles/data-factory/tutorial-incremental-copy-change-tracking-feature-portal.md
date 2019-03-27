@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 70159b975fd38c918f0b21a384b76666957f058b
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: a5a364c2065a7f4b9607eb4b078456324f261ce8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593142"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121870"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -144,7 +144,10 @@ ms.locfileid: "56593142"
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+按[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明安装最新的 Azure PowerShell 模块。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -257,7 +260,7 @@ ms.locfileid: "56593142"
 
     1. 为“链接服务”选择“AzureStorageLinkedService”。
     2. 输入 **adftutorial/incchgtracking** 作为 **filePath** 的**文件夹**部分。
-    3. 输入 **@CONCAT('Incremental-', pipeline().RunId, '.txt')** 作为 **filePath** 的**文件**部分。  
+    3. 输入 \@CONCAT('Incremental-', pipeline().RunId, '.txt') 作为 filePath 的文件部分。  
 
        ![接收器数据集 - 连接](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -369,29 +372,29 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     ![查找活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. 在“属性”窗口中切换到“设置”选项卡，然后执行以下步骤：
 
-    1. 为“源数据集”字段选择“SourceDataset”。
-    2. 为“使用查询”选择“查询”。 
-    3. 为“查询”输入以下 SQL 查询。 
+   1. 为“源数据集”字段选择“SourceDataset”。
+   2. 为“使用查询”选择“查询”。 
+   3. 为“查询”输入以下 SQL 查询。 
 
-        ```sql
-        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
-        ```
+       ```sql
+       SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
+       ```
 
-    ![查找活动 - 设置](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![查找活动 - 设置](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. 在“活动”工具箱中展开“数据流”，将“复制”活动拖放到管道设计器图面。 将活动的名称设置为 **IncrementalCopyActivity**。 此活动将上次跟踪版本与当前更改跟踪版本之间的数据复制到目标数据存储。 
 
     ![复制活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
 8. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤：
 
-    1. 为“源数据集”选择“SourceDataset”。 
-    2. 为“使用查询”选择“查询”。 
-    3. 为“查询”输入以下 SQL 查询。 
+   1. 为“源数据集”选择“SourceDataset”。 
+   2. 为“使用查询”选择“查询”。 
+   3. 为“查询”输入以下 SQL 查询。 
 
-        ```sql
-        select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
-        ```
+       ```sql
+       select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
+       ```
     
-    ![复制活动 - 源设置](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
+      ![复制活动 - 源设置](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
 9. 切换到“接收器”选项卡，为“接收器数据集”字段选择“SinkDataset”。 
 
     ![复制活动 - 接收器设置](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
@@ -422,9 +425,9 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 15. 在工具栏中单击“验证”。 确认没有任何验证错误。 单击 **>>** 关闭“管道验证报告”窗口。 
 
     ![“验证”按钮](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
-16.  单击“全部发布”按钮，将实体（链接服务、数据集和管道）发布到数据工厂服务。 等到“发布成功”消息出现。 
+16. 单击“全部发布”按钮，将实体（链接服务、数据集和管道）发布到数据工厂服务。 等到“发布成功”消息出现。 
 
-        ![发布按钮](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![发布按钮](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>运行增量复制管道
 1. 在工具栏中单击管道对应的“触发器”，然后单击“立即触发”。 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: b4d8214608e8193172da078fc352c66145253ada
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c8f7e3cd6a2b4b6105547d7a4429803a00f6999f
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878959"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285507"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -31,7 +31,7 @@ ms.locfileid: "56878959"
 接下来，选择要在其中安装扩展的组织。 
 
 > [!NOTE]
-> 若要将扩展安装到 Azure DevOps 组织，你必须是帐户所有者或项目集合管理员。 如果你没有权限，但却是帐户成员，可以改为请求扩展。 [了解详细信息。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
+> 要将扩展安装到 Azure DevOps 组织，必须是帐户所有者或项目集合管理员。 如果你没有权限，但却是帐户成员，可以改为请求扩展。 [了解详细信息。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
 
 ![选择要在其中安装扩展的 Azure DevOps 组织](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "56878959"
 
 安装扩展以后，请登录 Azure DevOps 帐户，从项目仪表板中找到项目。 可以向项目添加[生成管道](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)，也可以修改现有的生成管道。 如果已经有生成管道，则可跳转到[向生成定义添加模拟器生成任务](#addEmulatorBuildTaskToBuildDefinition)。
 
-1. 若要创建新的生成定义，请导航到 Azure DevOps 中的 **“生成”** 选项卡。 选择 **“+新建”**。 > **新建生成管道**
+1. 若要创建新的生成定义，请导航到 Azure DevOps 中的 **“生成”** 选项卡。 选择 **“+新建”**。 \> **新建生成管道**
 
    ![创建新的生成管道](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 

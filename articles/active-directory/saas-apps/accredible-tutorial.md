@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f816a6629ef561067f5a40ba15064b98b34c99
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2f8be215f1a972539aff47347395f041d89d4e81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>教程：Azure Active Directory 与 Accredible 集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "56871428"
 
 要配置 Accredible 与 Azure AD 的集成，需要从库中将 Accredible 添加到托管 SaaS 应用列表。
 
-要从库中添加 Accredible，请执行以下步骤：
+**要从库中添加 Accredible，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -154,7 +154,7 @@ ms.locfileid: "56871428"
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -189,7 +189,7 @@ ms.locfileid: "56871428"
 
 ### <a name="create-accredible-test-user"></a>创建 Accredible 测试用户
 
-本部分需在 Accredible 中创建名为“Britta Simon”的用户。 你需要将用户的 emailid 发送给  [Accredible 支持团队](mailto:support@accredible.com)，他们稍后会验证电子邮件并向你发送邀请邮件，以便你将用户添加到 accredible 平台中。
+本部分需在 Accredible 中创建名为“Britta Simon”的用户。 你需要将用户的电子邮件 id 发送给  [Accredible 支持团队](mailto:support@accredible.com)，他们稍后会验证电子邮件并向你发送邀请邮件，以便你将用户添加到 accredible 平台中。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

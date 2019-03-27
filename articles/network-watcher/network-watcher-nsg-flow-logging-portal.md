@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 09d43386b994ffc046f8c3e22c82f13ec15acd38
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428965"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124070"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -40,7 +40,7 @@ ms.locfileid: "56428965"
 ## <a name="create-a-vm"></a>创建 VM
 
 1. 选择 Azure 门户左上角的“+ 创建资源”。
-2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或“Ubuntu Server”版本。
+2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或某一版本的“Ubuntu Server”。
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”：
 
     |设置|值|
@@ -100,7 +100,10 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 
 6. 从 NSG 列表中选择名为 **myVm-nsg** 的 NSG。
 7. 在“流日志设置”下选择“启用”。
-8. 选择流日志记录版本。 版本 2 包含流会话统计信息（字节和数据包）a. ![选择流日志版本](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+8. 选择流日志记录版本。 版本 2 包含流会话统计信息（字节和数据包）
+
+   ![选择流日志版本](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+
 9. 选择在步骤 3 中创建的存储帐户。
 10. 将“保留期(天)”设置为 5，然后选择“保存”。
 
@@ -109,17 +112,13 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 1. 在门户的网络观察程序的“日志”下选择“NSG 流日志”。
 2. 选择“可从配置的存储帐户下载流日志”，如下图所示：
 
-  ![下载流日志](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
+   ![下载流日志](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. 选择在[启用 NSG 流日志](#enable-nsg-flow-log)的步骤 2 中配置的存储帐户。
-4. 在“Blob 服务”下选择“容器”，然后选择“insights-logs-networksecuritygroupflowevent”容器，如下图所示：
+4. 在“Blob 服务”下选择“Blob”，然后选择“insights-logs-networksecuritygroupflowevent”容器。
+5. 在容器中，导航浏览文件夹层次结构，直至找到 PT1H.json 文件，如下图所示。 日志文件写入遵循以下命名约定的文件夹层次结构： https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
-    ![选择容器](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
-5. 导航文件夹层次结构，直至找到 PT1H.json 文件，如下图所示：
-
-    ![日志文件](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
-
-    日志文件写入遵循以下命名约定的文件夹层次结构： https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+   ![流日志](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. 选择 PT1H.json 文件右侧的“...”，然后选择“下载”。
 
@@ -196,7 +195,6 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 }
 ```
 
-
 在前面的输出中，**mac** 的值是在创建 VM 时创建的网络接口的 MAC 地址。 **flowTuples** 的逗号分隔信息如下所示：
 
 | 示例数据 | 数据代表的内容   | 说明                                                                              |
@@ -213,7 +211,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 | 30 | 发送的数据包数 - 源到目标**仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包的总数。 |
 | 16978 | 发送的字节数 - 源到目标**仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。 | 
 | 24 | 发送的数据包数 - 目标到源**仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 或 UDP 数据包的总数。 |
-| 14008| 发送的字节数 - 目标到源**仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 和 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。| |
+| 14008| 发送的字节数 - 目标到源**仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 和 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。|
 
 ## <a name="next-steps"></a>后续步骤
 

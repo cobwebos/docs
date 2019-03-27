@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3488ac27-0417-4ad9-b9a3-08325fe8ea0d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e86ede90a19d829e87b47d49fa4a12a17fe1d5c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 617a01fdce71e76cf4783ee6a274ee428b0b3b57
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867042"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教程：Azure Active Directory 与 Snowflake 集成
 
@@ -134,29 +134,29 @@ ms.locfileid: "56867042"
 
 ### <a name="configure-snowflake-single-sign-on"></a>配置 Snowflake 单一登录
 
-8. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Snowflake。
+1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Snowflake。
 
-9. 通过单击页面右上方的“配置文件”，使用“切换角色”将角色切换为“ACCOUNTADMIN”。
+1. 通过单击页面右上方的“配置文件”，使用“切换角色”将角色切换为“ACCOUNTADMIN”。
 
     > [!NOTE]
     > 这与你在右上角“用户名”下选择的上下文不同
     
     ![Snowflake 管理员](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
-10. 在记事本中打开**下载的 Base 64 证书**。 复制“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”之间的值，并将其粘贴到下面**证书**旁边的引号中。 在 **ssoUrl** 中，粘贴从 Azure 门户复制的“登录 URL”值。 选择“所有查询”，然后单击“运行”。
+1. 在记事本中打开**下载的 Base 64 证书**。 复制“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”之间的值，并将其粘贴到下面**证书**旁边的引号中。 在 **ssoUrl** 中，粘贴从 Azure 门户复制的“登录 URL”值。 选择“所有查询”，然后单击“运行”。
 
-    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
+   ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 
-    ```
-    use role accountadmin;
-    alter account set saml_identity_provider = '{
-    "certificate": "<Paste the content of downloaded certificate from Azure portal>",
-    "ssoUrl":"<Login URL value which you have copied from the Azure portal>",
-    "type":"custom",
-    "label":"AzureAD"
-    }';
-    alter account set sso_login_page = TRUE;
-    ```
+   ```
+   use role accountadmin;
+   alter account set saml_identity_provider = '{
+   "certificate": "<Paste the content of downloaded certificate from Azure portal>",
+   "ssoUrl":"<Login URL value which you have copied from the Azure portal>",
+   "type":"custom",
+   "label":"AzureAD"
+   }';
+   alter account set sso_login_page = TRUE;
+   ```
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -176,7 +176,7 @@ ms.locfileid: "56867042"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。

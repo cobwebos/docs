@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 02ff1822bab0abb4850541135a6ea51ea0e7119f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: df4994475bf10fa902a2902b69b231821601d33b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58174335"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>教程：使用 Cloudyn 管理成本
 
@@ -23,7 +23,7 @@ ms.locfileid: "53083557"
 
 例如，你可能需要报销工程费用。 你需要能够根据资源成本向工程团队出示你需要报销的一个具体金额。 此时，你可以向他们提供所有已使用的标记为“工程”的资源。
 
-在本文中，标记和类别有时是同义词。 类别是广泛的集合，可以表示很多元素。 它们可能包括业务单位、成本中心、Web 服务或任何标记的对象。 标记是名称/值对，通过将相同的标记应用到多个资源和资源组，可以对资源进行分类并查看和管理合并的账单信息。 在早期版本的 Azure 门户中，*标记名称*被称为*键*。 标记针对单一 Azure 订阅创建并由其存储。 AWS 中的标记由键/值对组成。 由于 Azure 和 AWS 都使用了*键*这一术语，Cloudyn 也使用该术语。 类别管理器使用键（标记名称）来合并标记。
+在本文中，标记和类别有时是同义词。 类别是广泛的集合，可以表示很多元素。 它们可能包括业务单位、成本中心、Web 服务或任何标记的对象。 标记是名称/值对，通过将相同的标记应用到多个资源和资源组，可以对资源进行分类并查看和管理合并的帐单信息。 在早期版本的 Azure 门户中，*标记名称*被称为*键*。 标记针对单一 Azure 订阅创建并由其存储。 AWS 中的标记由键/值对组成。 由于 Azure 和 AWS 都使用了*键*这一术语，Cloudyn 也使用该术语。 类别管理器使用键（标记名称）来合并标记。
 
 本教程介绍如何执行下列操作：
 

@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c064874c7eeeae0ae0b1176e3756be24f225e7fb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e30e65ba2efaf60a0e2d0a6df409c96db4d6285e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818623"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295804"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>教程：通过自动化机器学习来构建回归模型
 
@@ -35,7 +35,7 @@ ms.locfileid: "56818623"
 > * 使用自定义参数在本地运行模型。
 > * 浏览结果。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 >[!NOTE]
 > 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.0 进行测试。
@@ -82,18 +82,19 @@ Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks
 
     ```shell
     jupyter notebook
+    ```
 
-## <a name="start"></a>Set up your development environment
+## <a name="start"></a>设置开发环境
 
-All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+开发工作的所有设置都可以在 Python Notebook 中完成。 安装包括以下操作：
 
-* Install the SDK
-* Import Python packages
-* Configure your workspace
+* 安装 SDK
+* 导入 Python 包
+* 配置工作区
 
-### Install and import packages
+### <a name="install-and-import-packages"></a>安装并导入包
 
-If you are following the tutorial in your own Python environment, use the following to install necessary packages.
+若要按照教程在自己的 Python 环境中操作，请使用以下命令安装必需的包。
 
 ```shell
 pip install azureml-sdk[automl,notebooks] matplotlib
@@ -111,7 +112,7 @@ import os
 
 ### <a name="configure-workspace"></a>配置工作区
 
-从现有工作区创建工作区对象。 `Workspace` 是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。
+从现有工作区创建工作区对象。 [工作区](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。
 
 `Workspace.from_config()` 读取 **aml_config/config.json** 文件并将详细信息加载到名为 `ws` 的对象中。  在本教程中，`ws` 在代码的其余部分使用。
 

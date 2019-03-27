@@ -4,20 +4,23 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: b802c9dbd0cef65325cb03538b68b49c57b85bb3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e8daaaf5b6b15eb3095f11e94c707a33b4b18e28
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56890974"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305335"
 ---
-选择“生成”，以打开一个对话框。 然后选择一个文件夹以导出 Xcode 项目。
+选择“生成”。 在打开的对话框中，选择要将 Xcode 项目导出到的文件夹。
 
-导出完成后，将显示一个文件夹，其中包含导出的 Xcode 项目。
+导出完成后，将显示包含所导出 Xcode 项目的文件夹。
+
+> [!NOTE]
+> 如果出现询问是否要替换或追加的窗口，建议选择“追加​​”，因为它速度更快。 如果要更改场景中的资产，则只需选择“替换”。 （例如，如果要添加、删除或更改父级/子级关系，或者要添加、删除或更改属性。）如果仅更改源代码，“追加​​”就足够了。
 
 ### <a name="open-the-xcode-project"></a>打开 XCode 项目
 
-在导出的 Xcode 项目文件夹中，运行以下命令，为项目安装必要的 CocoaPod：
+在导出的 Xcode 项目文件夹中，在终端中运行此命令，为项目安装必要的 CocoaPod：
 
 ```bash
 pod install --repo-update
@@ -30,11 +33,11 @@ open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> 如果看到 `library not found for -lPods-Unity-iPhone` 错误，则可能是打开了 `.xcodeproj` 文件而不是 `.xcworkspace`。 请打开 `.xcworkspace` 然后重试。
+> 如果看到 `library not found for -lPods-Unity-iPhone` 错误，则可能是打开了 `.xcodeproj` 文件，而没有打开 `.xcworkspace` 文件。 
 
 选择根“Unity-iPhone”节点以查看项目设置，然后选择“常规”选项卡。
 
-在“签名”下，选择“自动管理签名”。 在出现的对话框中选择“启用自动”以重置生成设置。
+在“签名”下，确保已启用“自动管理签名”。 如果未启用，请启用，然后在出现的对话框中选择“启用自动”，以重置生成设置。
 
 在“部署信息”下，确保“部署目标”设置为 `11.0`。
 

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 39877e01eb8b9690dc1ac7b1dbb79bab450814c4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456922"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226209"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 数据库中托管实例的安全性
 
@@ -148,13 +148,13 @@ ms.locfileid: "56456922"
 
 1. 在 SQL Server Management Studio 中使用 Azure AD 服务器主体（登录名）连接到托管实例。 输入托管实例主机名。 若要在 SSMS 中进行身份验证，可在使用 Azure AD 帐户登录时从三个选项中选择：
 
-    - Active Directory - 支持 MFA 的通用方法
-    - Active Directory - 密码
-    - Active Directory - 集成 </br>
+   - Active Directory - 支持 MFA 的通用方法
+   - Active Directory - 密码
+   - Active Directory - 集成 </br>
 
-    ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
+     ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
 
-    有关详细信息，请参阅以下文章：[使用 SQL 数据库和 SQL 数据仓库进行通用身份验证（MFA 的 SSMS 支持）](sql-database-ssms-mfa-authentication.md)
+     有关详细信息，请参阅以下文章：[使用 SQL 数据库和 SQL 数据仓库进行通用身份验证（MFA 的 SSMS 支持）](sql-database-ssms-mfa-authentication.md)
 
 1. 选择“Active Directory - 支持 MFA 的通用方法”。 此时会打开“多重身份验证(MFA)登录”窗口。 使用 Azure AD 密码登录。
 
@@ -207,10 +207,10 @@ ms.locfileid: "56456922"
 1. 在“对象资源管理器”中右键服务器，然后选择新连接对应的“新建查询”。
 1. 执行以下命令，检查新建的 Azure AD 服务器主体（登录名）的服务器权限：
 
-    ```sql
-    SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
-    GO
-    ```
+      ```sql
+      SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
+      GO
+      ```
 
 > [!NOTE]
 > 对于 Azure AD 来宾用户，仅当已将其添加为 Azure AD 组的一部分时，才支持将其用于托管实例登录名。 Azure AD 来宾用户是指在另一个 Azure AD 中邀请其加入托管实例所属 Azure AD 的帐户。 例如，可将 joe@contoso.com（Azure AD 帐户）或 steve@outlook.com（MSA 帐户）添加到 Azure AD aadsqlmi 中的组。 将用户添加到组后，可以使用 **CREATE LOGIN** 语法在托管实例 **master** 数据库中为该组创建登录名。 属于此组的来宾用户可以使用其当前登录名（例如 joe@contoso.com 或 steve@outlook.com）连接到托管实例。
@@ -360,7 +360,7 @@ ms.locfileid: "56456922"
     GO
     ```
 
-1. 使用以下命令来查看执行该存储过程时模拟的用户是否为 **bob@aadsqlmi.net**。
+1. 使用以下命令来查看执行该存储过程时模拟的用户是否为 bob\@aadsqlmi.net。
 
     ```sql
     Exec dbo.usp_Demo

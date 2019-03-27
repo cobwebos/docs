@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 2979f64934b2ea4517800f5bf0a17e96a1b238dc
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 3f10c8d38d37682e2a949397d9747ec094bdb9af
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587848"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170099"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 .NET Framework 或 Core 应用程序
 
@@ -160,7 +160,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 1. 从 [Azure 门户](https://portal.azure.com/)中，导航到你的图形数据库帐户。 在“概述”选项卡中，可以看到两个终结点： 
  
-   **.Net SDK URI** - 使用 Microsoft.Azure.Graphs 库连接到图形帐户时将使用此值。 
+   **.NET SDK URI** - 使用 Microsoft.Azure.Graphs 库连接到图形帐户时将使用此值。 
 
    **Gremlin 终结点** - 使用 Gremlin.Net 库连接到图形帐户时将使用此值。
 

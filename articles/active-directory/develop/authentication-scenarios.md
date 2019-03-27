@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b0d2c12a4e2088964e397b1bc499fa4adfdff3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 172bc96857c6aa0ab19fd4f1a13870dd493100bf
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244549"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295702"
 ---
 # <a name="what-is-authentication"></a>什么是身份验证？
 
@@ -79,7 +79,7 @@ Azure AD 表示遵循特定模型的应用程序，该模型旨在实现两个�
 
 在 Azure AD 中，应用程序对象将应用程序描述为抽象实体。 开发人员使用应用程序。 在部署时，Azure AD 使用给定的应用程序对象作为蓝图来创建服务主体，它表示目录或租户中的应用程序的具体实例。 该服务主体用于定义应用在特定目标目录中可以实际执行的操作、使用者是谁、以及可以访问哪些资源等。 Azure AD 通过“同意”使用应用程序对象创建服务主体。
 
-下图显示了征得同意后经过简化的 Azure AD 预配流程。
+下图显示了征得同意后经过简化的 Azure AD 预配流程。  其中存在两个租户（A 和 B），租户 A 拥有应用程序，租户 B 通过服务主体实例化应用程序。  
 
 ![征得同意后经过简化的预配流程](./media/authentication-scenarios/simplified-provisioning-flow-consent.png)
 
@@ -87,14 +87,14 @@ Azure AD 表示遵循特定模型的应用程序，该模型旨在实现两个�
 
 |   |   |
 |---|---|
-| 1 | 来自 B 的用户尝试使用该应用登录 |
+| 1 | 来自租户 B 的用户尝试使用该应用登录 |
 | 2 | 获取并验证用户凭据 |
 | 3 | 系统会提示用户同意使用应用以访问租户 B |
-| 4 | Azure AD 使用 A 中的应用程序对象作为在 B 中创建服务主体的蓝图 |
+| 4 | Azure AD 使用 A 中的应用程序对象作为在租户 B 中创建服务主体的蓝图 |
 | 5 | 用户收到请求的令牌 |
 |   |   |
 
-你可以根据需要对其他租户（C、D 等）重复此过程。 目录 A 保留了应用（应用程序对象）的蓝图。 应用获得许可的所有其他租户中的用户和管理员通过每个租户中的相应服务主体对象保留对应用程序允许执行的操作的控制权。 有关详细信息，请参阅 [Azure AD 中的应用程序和服务主体对象](app-objects-and-service-principals.md)。
+你可以根据需要对其他租户（C、D 等）重复此过程。 租户 A 保留了应用（应用程序对象）的蓝图。 应用获得许可的所有其他租户中的用户和管理员通过每个租户中的相应服务主体对象保留对应用程序允许执行的操作的控制权。 有关详细信息，请参阅 [Azure AD 中的应用程序和服务主体对象](app-objects-and-service-principals.md)。
 
 ## <a name="claims-in-azure-ad-security-tokens"></a>Azure AD 安全令牌中的声明
 

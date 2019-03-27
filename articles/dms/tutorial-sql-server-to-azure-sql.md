@@ -2,21 +2,21 @@
 title: 教程：使用 Azure 数据库迁移服务从 SQL Server 脱机迁移到 Azure SQL 数据库中的单一/入池数据库 | Microsoft Docs
 description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或入池数据库。
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/07/2019
-ms.openlocfilehash: e716646ecf1646c561e9eeed71a83e99f1d1e6d2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/12/2019
+ms.openlocfilehash: fcfb5d78ed1604c407e86e656746a4da47df3d75
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989400"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106026"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或入池数据库
 
@@ -42,14 +42,23 @@ ms.locfileid: "55989400"
 
 - 下载并安装 [SQL Server 2016 或更高版本](https://www.microsoft.com/sql-server/sql-server-downloads)（任意版本）。
 - 按照[启用或禁用服务器网络协议](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文中的说明启用 TCP/IP 协议（在安装 SQL Server Express 时，会默认禁用它）。
-- 按照[使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started)一文中的详细信息在 Azure SQL 数据库中创建单一（或入池）数据库。
+- 遵循[使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started)一文中的详细信息在 Azure SQL 数据库中创建单一（或入池）数据库。
 
     > [!NOTE]
-    > 如果你使用 SQL Server Integration Services (SSIS) 并且希望将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 Azure SQL 数据库，则当你在 Azure 数据工厂 (ADF) 中预配 SSIS 时，系统会代表你自动创建和管理目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。 
+    > 如果你使用 SQL Server Integration Services (SSIS) 并且希望将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 Azure SQL 数据库，则当你在 Azure 数据工厂 (ADF) 中预配 SSIS 时，系统会代表你自动创建和管理目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
   
 - 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更高版本。
-- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNET，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
-- 确保 Azure 虚拟网络 (VNET) 网络安全组规则未阻止通信端口 443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNET)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+
+    > [!NOTE]
+    > 在 VNET 设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+    > - 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
+    > - 存储终结点
+    > - 服务总线终结点
+    >
+    > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
+
+- 请确保 VNET 网络安全组规则未阻止以下通信端口：443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 - 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 - 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 - 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -60,17 +69,17 @@ ms.locfileid: "55989400"
 
 ## <a name="assess-your-on-premises-database"></a>访问本地数据库
 
-在将数据从本地 SQL Server 实例迁移到 Azure SQL 数据库中的单一数据库或入池数据库之前，需要对 SQL Server 数据库进行评估，了解任何可能会阻止迁移的阻塞问题。 使用数据迁移助手 v3.3 或更高版本，按照[执行 SQL Server 迁移评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所述的步骤，完成对本地数据库的评估。 所需步骤汇总如下：
+在将数据从本地 SQL Server 实例迁移到 Azure SQL 数据库中的单一数据库或入池数据库之前，需要对 SQL Server 数据库进行评估，了解任何可能会阻止迁移的阻碍性问题。 使用数据迁移助手 v3.3 或更高版本，按照[执行 SQL Server 迁移评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所述的步骤，完成对本地数据库的评估。 所需步骤汇总如下：
 
 1. 在数据迁移助手中，选择“新建 (+)”图标，然后选择“评估”项目类型。
 2. 指定项目名称，在“源服务器类型”文本框中，选择“SQL Server”，在“目标服务器类型”文本框中，选择“Azure SQL 数据库”，然后选择“创建”，从而创建项目。
 
-    当你在评估迁移到 Azure SQL 数据库中的单一数据库或入池数据库的源 SQL Server 数据库时，可以选择以下一种或两种评估报告类型：
+    评估迁移到 Azure SQL 数据库中的单一数据库或入池数据库的源 SQL Server 数据库时，可以选择以下一种或两种评估报告类型：
 
-    - 检查数据库兼容性
-    - 检查功能奇偶校验
+   - 检查数据库兼容性
+   - 检查功能奇偶校验
 
-    默认情况下会选择这两种报告类型。
+     默认情况下会选择这两种报告类型。
 
 3. 在数据迁移助手的“选项”屏幕上，选择“下一步”。
 4. 在“选择源”屏幕上的“连接到服务器”对话框中，向 SQL Server 提供连接详细信息，然后选择“连接”。
@@ -99,7 +108,7 @@ ms.locfileid: "55989400"
 > [!IMPORTANT]
 > 如果你使用 SSIS，则 DMA 目前不支持迁移源 SSISDB，但你可以将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
 
-若要将 AdventureWorks2012 架构迁移到 Azure SQL 数据库中的单一数据库或入池数据库，请执行以下步骤：
+要将 AdventureWorks2012 架构迁移到 Azure SQL 数据库中的单一数据库或共用数据库，请执行以下步骤：
 
 1. 在数据迁移助手中，选择“新建 (+)”图标，然后在“项目类型”下选择“迁移”。
 2. 指定项目名称，在“源服务器类型”文本框中，选择“SQL Server”，然后在“目标服务器类型”文本框中，选择“Azure SQL 数据库”。
@@ -134,7 +143,7 @@ ms.locfileid: "55989400"
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，依次选择“所有服务”和“订阅”。
+1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
 
    ![显示门户订阅](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
 
@@ -199,7 +208,7 @@ ms.locfileid: "55989400"
 
 1. 在“迁移源详细信息”屏幕上，指定源 SQL Server 实例的连接详细信息。
 
-    请确保为源 SQL Server 实例名称使用完全限定的域名 (FQDN)。 如果不能使用 DNS 名称解析，也可使用 IP 地址。
+    请确保为源 SQL Server 实例名称使用完全限定的域名 (FQDN)。 即使不能使用 DNS 名称解析，也可使用 IP 地址。
 
 2. 如果尚未在源服务器上安装受信任的证书，请选中“信任服务器证书”复选框。
 

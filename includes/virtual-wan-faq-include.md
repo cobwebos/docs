@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/19/2019
+ms.date: 03/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c0da70426d8962999fd8d2cf2852a9bd8d255fc8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 931bc26e22db4bbf02a18d4824b9c846f1e66b18
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55736205"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190647"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 虚拟网络网关（VPN 网关）与 Azure 虚拟 WAN vpngateway 之间有什么差别？
 
 虚拟 WAN 提供大规模站点到站点连接，在设计上考虑到了吞吐量、可伸缩性和易用性。 ExpressRoute 和点到站点连接功能当前为预览版。 CPE 分支设备自动预配并连接到 Azure 虚拟 WAN。 这些设备由一个不断扩张的 SD-WAN 和 VPN 合作伙伴生态系统提供。 请参阅[首选合作伙伴列表](https://go.microsoft.com/fwlink/p/?linkid=2019615)。
 
-### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>推出时支持哪些设备提供商（虚拟 WAN 合作伙伴）？ 
+### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>推出时支持哪些设备提供商（虚拟 WAN 合作伙伴）？
 
 目前，许多合作伙伴都支持全自动虚拟 WAN 体验。 有关详细信息，请参阅[虚拟 WAN 合作伙伴](https://go.microsoft.com/fwlink/p/?linkid=2019615)。 
 
@@ -69,7 +69,7 @@ ms.locfileid: "55736205"
 
 ### <a name="is-there-support-for-bgp"></a>是否支持 BGP？
 
-是的，支持 BGP。 为了确保来自 NVA VNet 的路由适当播发，如果分支已连接到 NVA VNet，而后者又连接到虚拟中心，则分支必须禁用 BGP。 此外，请将辐射 VNet 连接到虚拟中心以确保辐射 VNet 路由传播到本地系统。
+是的，支持 BGP。 创建 VPN 站点时，可以在其中提供 BGP 参数。 这表示在 Azure 中为该站点创建的任何连接都将启用 BGP。 此外，如果 VNet 具有 NVA 且此 NVA VNet 已附加到虚拟 WAN 中心，为了确保适当地公布来自 NVA VNet 的路由，附加到 NVA VNet 的辐射必须禁用 BGP。 此外，请将这些辐射 VNet 连接到虚拟中心 VNet，以确保辐射 VNet 路由传播到本地系统。
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>是否可以在虚拟中心使用 UDR 定向流量？
 
@@ -79,9 +79,17 @@ ms.locfileid: "55736205"
  
 是的。 请参阅[定价](https://azure.microsoft.com/pricing/details/virtual-wan/)页面。
 
+### <a name="how-do-i-calculate-price-of-a-hub"></a>如何计算中心的价格？
+ 
+根据使用的中心服务付费。 例如，需要连接到 Azure 虚拟 WAN 的 10 个分支或本地设备表示连接到中心的 VPN 端点。 假设这是 1 个缩放单元的 VPN，为 500 Mbps，费用为 0.361 美元/小时。 每个连接的费用为 0.08 美元/小时。 10 个连接的每小时服务总费用为 0.361 + 0.8 美元/小时。 离开 Azure 的数据流量也将收费。 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>没有在启动合作伙伴列表中列出的新合作伙伴如何加入？
 
 向 azurevirtualwan@microsoft.com 发送电子邮件。 理想的合作伙伴具有可以预配 IKEv1 或 IKEv2 IPsec 连接的设备。
+
+### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>如果使用的设备不在虚拟 WAN 合作伙伴列表中，该怎么办？ 还可以用它来连接到 Azure 虚拟 WAN VPN 吗？
+
+是的，只要设备支持 IPsec IKEv1 或 IKEv2 即可。 虚拟 WAN 合作伙伴自动执行设备到 Azure VPN 端点的连接。 这表示自动执行“分支信息上传”、“IPsec 和配置”以及“连接”等步骤。由于设备不是来自虚拟 WAN 合作伙伴生态系统，因此需要大量手动执行 Azure 配置和更新设备才能建立 IPsec 连接。 
 
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>是否可以使用资源管理器模板构造 Azure 虚拟 WAN？
 
@@ -99,6 +107,10 @@ ms.locfileid: "55736205"
 
 虚拟网络网关 VPN 限制为 30 个隧道。 对于连接，应当为大型 VPN 使用虚拟 WAN。 对于除中西部区域之外的所有区域，你可以以 2 Gbps 的速率最多连接到 1000 个分支。 对于中西部区域，可以提供 20 Gbps 的速率。 我们将来会向其他区域推出 20 Gbps 的速率。 连接是从本地 VPN 设备到虚拟中心的主动-主动隧道。 每个区域中可以有一个中心，这意味着你可以跨中心连接到 1000 多个分支。
 
+### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>虚拟 WAN 如何支持 SD-WAN 设备？
+
+虚拟 WAN 合作伙伴自动执行 Azure VPN 端点的 IPsec 连接。 如果虚拟 WAN 合作伙伴是 SD-WAN 提供商，则表示 SD-WAN 控制器管理到 Azure VPN 端点的自动化和 IPsec 连接。 如果 SD-WAN 设备需要自己的端点而不是 Azure VPN 来实现任何专有 SD-WAN 功能，则可以在 Azure VNet 中部署 SD-WAN 端点并与 Azure 虚拟 WAN 共存。
+
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>此虚拟 WAN 是否要求每个站点中都有 ExpressRoute？
 
 否，虚拟 WAN 不要求每个站点中都有 ExpressRoute。 它通过 Internet 链接使用从设备到 Azure 虚拟 WAN 中心的标准 IPsec 站点到站点连接。 可以使用 ExpressRoute 线路将站点连接到提供商网络。 对于使用虚拟中心（预览版）内的 ExpressRoute 进行连接的站点，站点在 VPN 与 ExpressRoute 之间可能有分支到分支流量流。 
@@ -109,12 +121,12 @@ ms.locfileid: "55736205"
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>虚拟 WAN 是否允许本地设备并行利用多个 ISP？亦或它始终为单个 VPN 隧道？
 
-是的，可以有来自单个分支的主动-主动隧道（2 个隧道 = 1 个 Azure 虚拟 WAN 连接），具体取决于分支设备。
+使用分支提供的链接与建立 WAN VPN 连接始终是主动-主动隧道（在同一中心/区域具有复原能力）。 此链接可以是本地分支的 ISP 链接。 虚拟 WAN 不提供任何用于并行设置多个 ISP 的特殊逻辑；在分支中跨 ISP 管理故障转移完全是以分支为中心的网络操作。 可以使用自己喜欢的 SD-WAN 解决方案在分支中进行路径选择。
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>流量在 Azure 主干网上是如何路由的？
 
-流量遵循以下模式：分支设备->ISP->Microsoft Edge->Microsoft DC->Microsoft Edge->ISP->分支设备
+流量遵循以下模式：分支设备->ISP->Microsoft Edge->Microsoft DC->Microsoft Edge（中心 VNet）->ISP->分支设备
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>在此模型中，需要在每个站点执行什么操作？ 只需要创建 Internet 连接？
 
-是的。 一个 Internet 连接和物理设备，最好是来自我们的集成[合作伙伴](https://go.microsoft.com/fwlink/p/?linkid=2019615)。 还可以从你偏爱的设备手动管理 Azure 的配置和连接。
+是的。 支持 IPsec 的 Internet 连接和物理设备，最好是来自我们的集成[合作伙伴](https://go.microsoft.com/fwlink/p/?linkid=2019615)。 还可以从你偏爱的设备手动管理 Azure 的配置和连接。

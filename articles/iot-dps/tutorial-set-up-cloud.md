@@ -1,20 +1,20 @@
 ---
 title: 在门户中针对 Azure IoT 中心设备预配服务设置云 | Microsoft Docs
 description: Azure 门户中的 IoT 中心自动设备预配
-author: sethmanheim
-ms.author: sethm
+author: wesmc7777
+ms.author: wesmc
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 971b00f54d59782d5aa7ca752fc06e490d372760
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8f06d3f033a2bf5907dc2ee324359bef0eb247d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514836"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170728"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
@@ -85,7 +85,7 @@ ms.locfileid: "51514836"
 
     * **IoT 中心：** 选择要与此设备预配服务实例进行链接的 IoT 中心的名称。
 
-    * **访问策略：** 选择 **iothubowner** 作为用于与 IoT 中心建立链接的凭据。
+    * **访问策略：** 选择 iothubowner 作为用于与 IoT 中心建立链接的凭据。
 
    ![链接中心名称，以便链接到门户中的设备预配服务](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
@@ -95,9 +95,9 @@ ms.locfileid: "51514836"
 
 1. **最低延迟**：将设备预配到具有最低延迟的 IoT 中心。
 
-2. **均匀加权分发**（默认）：链接的 IoT 中心等可能地获得预配到它们的设备。 此设置为默认设置。 如果只将设备预配到一个 IoT 中心，则可以保留此设置。 
+2. **均衡加权分布**（默认）：链接的 IoT 中心等可能地获得预配到它们的设备。 此设置为默认设置。 如果只将设备预配到一个 IoT 中心，则可以保留此设置。 
 
-3. **通过注册列表进行静态配置**：注册列表中所需 IoT 中心的规范优先于设备预配服务级别的分配策略。
+3. **通过注册列表进行静态注册**：注册列表中所需 IoT 中心的规范优先于设备预配服务级别的分配策略。
 
 若要设置分配策略，请单击“设备预配服务”页上的“管理分配策略”。 确保将分配策略设置为“均匀加权分发”（默认）。 如果进行了任何更改，请在完成后单击“保存”。
 
