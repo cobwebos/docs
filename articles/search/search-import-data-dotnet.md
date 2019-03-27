@@ -1,71 +1,58 @@
 ---
-title: 使用 .NET SDK 在代码中上传数据 - Azure 搜索
+title: 将数据加载到 C# (.NET SDK) 中的 Azure 搜索索引 - Azure 搜索
 description: 了解如何使用 C# 示例代码和 .NET SDK 将数据上传到 Azure 搜索中的全文可搜索索引。
-author: brjohnstmsft
-manager: jlembicz
-ms.author: brjohnst
+author: heidisteen
+manager: cgronlun
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/13/2017
-ms.custom: seodec2018
-ms.openlocfilehash: a34a48f8816315602fc497d4f39dcfee7fe2b032
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 03/20/2019
+ms.openlocfilehash: d2d54d1425bbb67a3f5ba1b6081a9f74ff87f4d6
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634892"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286901"
 ---
-# <a name="upload-data-to-azure-search-using-the-net-sdk"></a>使用 .NET SDK 将数据上传到 Azure 搜索
-> [!div class="op_single_selector"]
-> * [概述](search-what-is-data-import.md)
-> * [.NET](search-import-data-dotnet.md)
-> * [REST](search-import-data-rest-api.md)
-> 
-> 
+# <a name="quickstart-2---load-data-to-an-azure-search-index-using-c"></a>快速入门：2 - 使用 C# 将数据加载到 Azure 搜索索引
 
-本文说明如何使用 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk) 将数据导入到 Azure 搜索索引中。
+本文介绍如何使用 C# 和 [.NET SDK](https://aka.ms/search-sdk) 将数据导入到 [Azure 搜索索引](search-what-is-an-index.md)。 执行以下任务可将文档推送到索引：
 
-在开始本演练前，应已 [创建 Azure 搜索索引](search-what-is-an-index.md)。 本文还假定已创建 `SearchServiceClient` 对象，如 [使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#CreateSearchServiceClient)中所示。
+> [!div class="checklist"]
+> * 创建 [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) 对象以连接到搜索索引。
+> * 创建包含要添加、修改或删除的文档的 [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 对象。
+> * 在 `SearchIndexClient` 上调用 `Documents.Index` 方法以将文档上传到索引。
 
-> [!NOTE]
-> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
+## <a name="prerequisites"></a>先决条件
 
-要使用 .NET SDK 将文档推送到索引，需要执行以下操作：
+[创建 Azure 搜索索引](search-create-index-dotnet.md)和 `SearchServiceClient` 对象，如[“创建客户端”](search-create-index-dotnet.md#CreateSearchServiceClient)中所示。
 
-1. 创建 `SearchIndexClient` 对象以连接到搜索索引。
-2. 创建包含要添加、修改或删除的文档的 `IndexBatch` 。
-3. 调用 `SearchIndexClient` 的 `Documents.Index` 方法，将 `IndexBatch` 发送到搜索索引。
 
-## <a name="create-an-instance-of-the-searchindexclient-class"></a>创建 SearchIndexClient 类的实例
-要使用 Azure 搜索 .NET SDK 将数据导入到索引中，需要创建 `SearchIndexClient` 类的实例。 可以自己构造此实例，但如果已有可调用其 `Indexes.GetClient` 方法的 `SearchServiceClient` 实例会更容易。 例如，下面是如何从名为 `serviceClient` 的 `SearchServiceClient` 获取名为“hotels”的索引的 `SearchIndexClient`：
+## <a name="create-a-client"></a>创建客户端
+若要导入数据，则需要 `SearchIndexClient` 类的一个实例。 有几种方法可用于创建此类，包括使用已创建的 `SearchServiceClient` 实例。 
+
+如以下示例所示，可使用 `SearchServiceClient` 实例并调用其 `Indexes.GetClient` 方法。 此代码片段从名为 `serviceClient` 的 `SearchServiceClient` 中获取名为“hotels”的索引的 `SearchIndexClient`。
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-> [!NOTE]
-> 在典型的搜索应用程序中，索引管理和填充由搜索查询中的一个单独的组件处理。 `Indexes.GetClient` 对于填充索引很方便，因为使用它则无需提供另一个 `SearchCredentials`。 它通过向新 `SearchIndexClient` 传递用于创建 `SearchServiceClient` 的管理密钥来实现此目的。 但是，在执行查询的应用程序中，最好直接创建 `SearchIndexClient` ，这样可以传入查询密钥而不是管理密钥。 这与 [最小特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege) 一致，可帮助使应用程序更安全。 可在 [Azure 搜索 REST API 参考](https://docs.microsoft.com/rest/api/searchservice/)中了解管理密钥和查询密钥的详细信息。
-> 
-> 
-
 `SearchIndexClient` 具有 `Documents` 属性。 此属性提供在索引中添加、修改、删除或查询文档所需的所有方法。
 
-## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
-要使用 .NET SDK 导入数据，需要将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 搜索要对该文档上执行什么操作（上传、合并、删除等）。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
+> [!NOTE]
+> 在典型的搜索应用程序中，单独处理查询和索引。 虽然 `Indexes.GetClient` 很方便，因为可重复使用 `SearchCredentials` 等对象，但更可靠的方法是直接创建 `SearchIndexClient`，这样就可传入查询密钥而不是管理密钥。 此做法与[最小特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege)一致，可帮助使应用程序更安全。 可在下一个练习中构造 `SearchIndexClient`。 有关密钥的详细信息，请参阅[创建和管理 Azure 搜索服务的 API 密钥](search-security-api-keys.md)。
+> 
+> 
 
-| 操作 | Description | 每个文档必需的字段 | 说明 |
-| --- | --- | --- | --- |
-| `Upload` |`Upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
-| `Merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 这包括 `DataType.Collection(DataType.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
-| `MergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `Merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `Upload` 。 |关键字段以及要定义的任何其他字段 |- |
-| `Delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都会被忽略。 如果要从文档中删除单个字段，请改用 `Merge`，只需将该字段显式设置为 null。 |
+<a name="construct-indexbatch"></a>
 
-可以指定要用于 `IndexBatch` 和 `IndexAction` 类的各个静态方法的操作，如下一部分中所示。
+## <a name="construct-indexbatch"></a>构造 IndexBatch
 
-## <a name="construct-your-indexbatch"></a>构造 IndexBatch
-知道要对文档执行哪些操作后，就可以构造 `IndexBatch`了。 以下示例演示如何创建包含几个不同操作的 Batch。 请注意，此示例使用一个名为 `Hotel` 的自定义类，它映射到“hotels”索引中的文档。
+若要使用 .NET SDK 导入数据，请将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 搜索要对该文档执行什么操作（上传、合并、删除和 mergeOrUpload 等）。 有关索引操作的详细信息，请参阅[索引操作：上传、合并、mergeOrUpload、删除](search-what-is-data-import.md#indexing-actions)。
+
+假设你已知道要对文档执行哪些操作，现在可以构造 `IndexBatch` 了。 以下示例演示如何创建包含几个不同操作的 Batch。 此示例使用一个名为 `Hotel` 的自定义类，它映射到“hotels”索引中的文档。
 
 ```csharp
 var actions =
@@ -127,7 +114,7 @@ var batch = IndexBatch.New(actions);
 > 
 > 
 
-## <a name="import-data-to-the-index"></a>将数据导入到索引
+## <a name="call-documentsindex"></a>调用 Documents.Index
 获得已初始化的 `IndexBatch` 对象后，便可以通过对 `SearchIndexClient` 对象调用 `Documents.Index` 将其发送到索引。 以下示例说明如何调用 `Index`，以及需要执行的一些额外步骤：
 
 ```csharp
@@ -153,84 +140,11 @@ Thread.Sleep(2000);
 
 最后，上面示例中的代码延迟了两秒钟。 编制索引在 Azure 搜索服务中异步进行，因此，示例应用程序需要等待很短时间，以确保文档可用于搜索。 此类延迟通常仅在演示、测试和示例应用程序中是必需的。
 
-<a name="HotelClass"></a>
+有关文档处理的详细信息，请参阅[“.NET SDK 如何处理文档”](search-howto-dotnet-sdk.md#how-dotnet-handles-documents)。
 
-### <a name="how-the-net-sdk-handles-documents"></a>.NET SDK 如何处理文档
-用户可能想知道 Azure 搜索 .NET SDK 如何将用户定义的类（如 `Hotel`）的实例上传到索引。 为了帮助回答这个问题，让我们看一下 `Hotel` 类，该类映射到 [使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#DefineIndex)中定义的索引架构：
-
-```csharp
-[SerializePropertyNamesAsCamelCase]
-public partial class Hotel
-{
-    [Key]
-    [IsFilterable]
-    public string HotelId { get; set; }
-
-    [IsFilterable, IsSortable, IsFacetable]
-    public double? BaseRate { get; set; }
-
-    [IsSearchable]
-    public string Description { get; set; }
-
-    [IsSearchable]
-    [Analyzer(AnalyzerName.AsString.FrLucene)]
-    [JsonProperty("description_fr")]
-    public string DescriptionFr { get; set; }
-
-    [IsSearchable, IsFilterable, IsSortable]
-    public string HotelName { get; set; }
-
-    [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-    public string Category { get; set; }
-
-    [IsSearchable, IsFilterable, IsFacetable]
-    public string[] Tags { get; set; }
-
-    [IsFilterable, IsFacetable]
-    public bool? ParkingIncluded { get; set; }
-
-    [IsFilterable, IsFacetable]
-    public bool? SmokingAllowed { get; set; }
-
-    [IsFilterable, IsSortable, IsFacetable]
-    public DateTimeOffset? LastRenovationDate { get; set; }
-
-    [IsFilterable, IsSortable, IsFacetable]
-    public int? Rating { get; set; }
-
-    [IsFilterable, IsSortable]
-    public GeographyPoint Location { get; set; }
-
-    // ToString() method omitted for brevity...
-}
-```
-
-首先要注意的是 `Hotel` 的每个公共属性都对应于索引定义中的一个字段，但有一个重要差异：每个字段的名称以小写字母开头（“骆驼拼写法”），而 `Hotel` 的每个公共属性的名称以大写字母开头（“帕斯卡拼写法”）。 在执行目标架构不受应用程序开发人员控制的数据绑定的 .NET 应用程序中，这种情况很常见。 不必违反 .NET 命名准则将属性名设为 camel 大小写，而可以使用 `[SerializePropertyNamesAsCamelCase]` 属性指示 SDK 将属性名自动映射到 camel 大小写。
-
-> [!NOTE]
-> Azure 搜索 .NET SDK 使用 [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) 库将自定义模型对象序列化为 JSON 和从 JSON 反序列化。 如果需要，可以自定义此序列化。 可在[使用 JSON.NET 的自定义序列](search-howto-dotnet-sdk.md#JsonDotNet)中了解更多详细信息。 此类的一个示例是对上面的示例代码中的 `DescriptionFr` 属性使用 `[JsonProperty]` 特性。
-> 
-> 
-
-有关 `Hotel` 类的第二个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `DataType.String` 类型的 `category` 字段。 `bool?` 和 `DataType.Boolean`、`DateTimeOffset?`和 `DataType.DateTimeOffset` 等之间存在相似的类型映射。 [Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)中的 `Documents.Get` 方法记录了类型映射的具体规则。
-
-使用自己的类作为文档的这种功能可以在这两个方向上正常工作；此外，还可以检索搜索结果，并使用 SDK 自动将结果反序列化为所选类型，如 [下一篇文章](search-query-dotnet.md)中所示。
-
-> [!NOTE]
-> Azure 搜索 .NET SDK 还使用 `Document` 类支持动态类型化文档，该类是字段名称到字段值的键/值映射。 如果在设计时不知道索引架构，或者绑定到特定模型类不太方便，这很有用。 该 SDK 中处理文档的所有方法都有使用 `Document` 类的重载，以及采用泛型类型参数的强类型重载。 本文中的示例代码仅使用后者。
-> 
-> 
-
-**为何应使用可为 null 的数据类型**
-
-设计自己的模型类以映射到 Azure 搜索索引时，建议将值类型的属性（如 `bool` 和 `int`）声明为可以为 null（例如，`bool?` 而不是 `bool`）。 如果使用不可为 null 属性，必须 **保证** 索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 搜索服务都不会帮助强制实施此检查。
-
-这不只是假想的问题：假设将新字段添加到 `DataType.Int32` 类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
-
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
-
-由于此原因，最佳做法是建议在模型类中使用可以为 null 的类型。
 
 ## <a name="next-steps"></a>后续步骤
-填充 Azure 搜索索引后，即可发出查询，搜索文档。 有关详细信息，请参阅 [查询 Azure 搜索索引](search-query-overview.md) 。
+填充 Azure 搜索索引后，下一步是发出查询，搜索文档。 
 
+> [!div class="nextstepaction"]
+> [在 C# 中查询 Azure 搜索索引](search-query-dotnet.md)

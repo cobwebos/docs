@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a7c503fba534b72323472fa58b14188bc412003c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a0b50b86ca164199ca723354e39e194c6cd7423f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100676"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014127"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "56100676"
 > * 验证收集的数据
 
 ## <a name="prerequisites"></a>先决条件
-针对各种 Azure 帐户类型提供了数据导出功能，包括[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 每个订阅支持以下 Azure 权限，以便用户和组导出数据：
+针对各种 Azure 帐户类型提供了数据导出功能，包括[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 对于按用户和组导出的数据，每个订阅均支持以下 Azure 权限或作用域。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 - 所有者 - 可以为订阅创建、修改或删除计划导出。
 - 参与者 - 可以创建、修改或删除自己的计划导出。 可以修改其他人创建的计划导出的名称。
@@ -45,9 +45,9 @@ ms.locfileid: "56100676"
 
 ## <a name="create-a-daily-export"></a>创建每日导出
 
-“成本管理 + 计费”&gt;“成本管理”&gt; 在订阅中选择订阅或资源组 &gt;“导出”&gt;“添加”。
+要创建或查看数据导出或计划导出，请在 Azure 门户中打开所需的作用域，然后在菜单中选择“成本分析”。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析”。 在“成本分析”页的顶部，单击“导出”，然后选择导出选项。 例如，单击“计划导出”。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
-为导出键入一个名称，然后选择“每日导出本月截止到现在的成本”选项。 单击“下一步”。
+单击“添加”，为导出键入名称，然后选择“本月至今日成本每日导出”选项。 单击“下一步”。
 
 ![显示导出类型的新导出示例](./media/tutorial-export-acm-data/basics_exports.png)
 

@@ -5,21 +5,23 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: overview
-ms.date: 09/26/2018
+ms.date: 03/05/2019
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: db6a02db3a154193a9326e2957038e5daa2faae7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 0960977a17925ffd922e75fa03847b7023241c4e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992366"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201494"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
 可以使用 Azure Kubernetes 服务 (AKS) 在 Azure 中轻松地部署托管的 Kubernetes 群集。 AKS 通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes 所产生的复杂性和操作开销。 作为一个托管 Kubernetes 服务，Azure 可以自动处理运行状况监视和维护等关键任务。 Kubernetes 主节点由 Azure 管理。 你只管理和维护代理节点。 作为托管型 Kubernetes 服务，AKS 是免费的 - 你只需支付群集中的代理节点费，不需支付主节点的费用。
 
 可以在 Azure 门户中使用 Azure CLI 或模板驱动型部署选项（例如资源管理器模板和 Terraform）来创建 AKS 群集。 当你部署 AKS 群集时，系统会为你部署和配置 Kubernetes 主节点和所有节点。 另外，也可在部署过程中配置其他功能，例如高级网络、Azure Active Directory 集成、监视。
+
+有关 Kubernetes 基础知识的详细信息，请参阅 [AKS 的 Kubernetes 核心概念][concepts-clusters-workloads]。
 
 若要开始，请[通过 Azure 门户][aks-portal]或者[通过 Azure CLI][aks-cli] 完成 AKS 快速入门。
 
@@ -30,6 +32,8 @@ ms.locfileid: "52992366"
 ### <a name="identity-and-security-management"></a>标识和安全管理
 
 为了限制对群集资源的访问，AKS 支持 [Kubernetes 基于角色的访问控制 (RBAC)][kubernetes-rbac]。 RBAC 允许你控制用户访问 Kubernetes 资源和命名空间，并控制在这些资源上设置的具体权限。 还可将 AKS 群集配置为与 Azure Active Directory (AD) 集成。 使用 Azure AD 集成时，可以将 Kubernetes 访问权限配置为基于现有标识和组成员身份。 可以为现有的 Azure AD 用户和组提供对 AKS 资源的访问权限，以及提供集成式登录体验。
+
+有关标识的详细信息，请参阅 [AKS 的访问权限和标识选项][concepts-identity]。
 
 若要确保 AKS 群集的安全性，请参阅[将 Azure Active Directory 与 AKS 集成][aks-aad]。
 
@@ -65,13 +69,17 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 
 若要支持应用程序工作负荷，可以为持久保存的数据装载存储卷。 静态和动态卷都可以使用。 根据要共享存储的已连接 Pod 的数目，可以使用 Azure 磁盘支持的存储进行单个 Pod 的访问，也可以使用 Azure 文件支持的存储进行多个并发 Pod 的访问。
 
-通过 [Azure 磁盘][azure-disk]或 [Azure 文件][azure-files]完成动态永久性卷的入门。
+有关详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
+
+使用 [Azure 磁盘][azure-disk]或 [Azure 文件存储][azure-files]完成动态永久性卷的入门。
 
 ## <a name="virtual-networks-and-ingress"></a>虚拟网络和入口
 
 AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中的每个 Pod 在虚拟网络中分配有一个 IP 地址，并可直接与群集中的其他 Pod 以及虚拟网络中的其他节点通信。 Pod 也可通过 ExpressRoute 或站点到站点 (S2S) VPN 连接与对等互连虚拟网络中的其他服务和本地网络建立连接。
 
-有关详细信息，请参阅 [AKS 网络概述][aks-networking]。
+有关详细信息，请参阅 [AKS 中应用程序的网络概念][aks-networking]。
+
+有关入口流量的入门，请参阅 [HTTP 应用程序路由][aks-http-routing]。
 
 ### <a name="ingress-with-http-application-routing"></a>使用 HTTP 应用程序路由的入口
 
@@ -101,7 +109,7 @@ Azure Kubernetes 服务 (AKS) 已被 CNCF 认证为符合 Kubernetes 规范。
 
 ## <a name="regulatory-compliance"></a>法规符合性
 
-Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。
+Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有关详细信息，请参阅 [Microsoft Azure 符合性概述][compliance-doc]。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -112,10 +120,8 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。
 
 <!-- LINKS - external -->
 [aks-engine]: https://github.com/Azure/aks-engine
-[draft]: https://github.com/Azure/draft
-[helm]: https://helm.sh/
 [kubectl-overview]: https://kubernetes.io/docs/user-guide/kubectl-overview/
-[kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[compliance-doc]: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
 
 <!-- LINKS - internal -->
 [acr-docs]: ../container-registry/container-registry-intro.md
@@ -134,3 +140,7 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。
 [container-health]: ../monitoring/monitoring-container-health.md
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
+[concepts-clusters-workloads]: concepts-clusters-workloads.md
+[kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
+[concepts-identity]: concepts-identity.md
+[concepts-storage]: concepts-storage.md

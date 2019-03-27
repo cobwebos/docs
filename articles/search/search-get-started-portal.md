@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270328"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137821"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>快速入门：使用内置门户工具在 Azure 搜索中进行导入、索引编制和查询
 
@@ -34,13 +34,7 @@ ms.locfileid: "56270328"
 
 ## <a name="prerequisites"></a>先决条件
 
-[创建 Azure 搜索服务](search-create-service-portal.md)，或者在当前订阅下找到一个现有的服务。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 打开 Azure 搜索服务的服务仪表板。 如果未将服务磁贴固定到仪表板，可通过以下方式找到服务：
-
-   * 在跳转栏中，单击左侧导航窗格中的“所有服务”。
-   * 在搜索框中，键入“搜索”获取订阅的搜索相关服务列表。 单击“搜索服务”。 服务应会出现在该列表中。
+[创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
 ### <a name="check-for-space"></a>检查空间
 

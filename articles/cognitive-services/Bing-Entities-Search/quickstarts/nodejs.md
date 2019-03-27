@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 87afdd9e949ec866c6ee962c2b68af42590bee67
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8007d576a6b896f12423087cfd4a483d9171abc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104363"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>快速入门：使用 Node.js 向必应实体搜索 REST API 发送搜索请求
 
@@ -74,7 +74,7 @@ ms.locfileid: "55878708"
         });
         ```
 
-    3. 指示了 **end** 标志后，请分析并输出 JSON。
+    3. 指示了 end 标志后，请分析并输出 JSON。
 
         ```javascript
         response.on ('end', function () {
@@ -87,24 +87,24 @@ ms.locfileid: "55878708"
 
 1. 创建名为 `Search` 的函数，以便发送搜索请求。 在其中执行以下步骤。
 
-    1. 创建包含请求参数的 JSON 对象：使用 `Get` 作为方法，并添加主机和路径信息。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。 
-    2. 使用 `https.request()` 来发送请求，请求中包含此前创建的响应处理程序和搜索参数。
+   1. 创建包含请求参数的 JSON 对象：使用 `Get` 作为方法，并添加主机和路径信息。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。 
+   2. 使用 `https.request()` 来发送请求，请求中包含此前创建的响应处理程序和搜索参数。
     
-    ```javascript
-    let Search = function () {
-        let request_params = {
-            method : 'GET',
-            hostname : host,
-            path : path + query,
-            headers : {
-                'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            }
-        };
+      ```javascript
+      let Search = function () {
+       let request_params = {
+           method : 'GET',
+           hostname : host,
+           path : path + query,
+           headers : {
+               'Ocp-Apim-Subscription-Key' : subscriptionKey,
+           }
+       };
     
-        let req = https.request (request_params, response_handler);
-        req.end ();
-    }
-    ```
+       let req = https.request (request_params, response_handler);
+       req.end ();
+      }
+      ```
 
 2. 调用 `Search()` 函数。
 
@@ -148,7 +148,7 @@ ms.locfileid: "55878708"
         "_type": "Restaurant",
         "webSearchUrl": "https://www.bing.com/search?q=Pickles+and+Preserves...",
         "name": "Munson's Pickles and Preserves Farm",
-        "url": "http://www.princi.com/",
+        "url": "https://www.princi.com/",
         "entityPresentationInfo": {
           "entityScenario": "ListItem",
           "entityTypeHints": [

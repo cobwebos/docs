@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/10/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 47a4b3bc1e71c9dacc53ca3ff507768d4a0f20e9
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: efe24f5203c0479c71b565b8cf2c272dc107a96b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510572"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088105"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
 
@@ -87,7 +87,7 @@ ms.locfileid: "55510572"
    
    ![了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
- 停止应用程序的方法是先在终端窗口中按 CTRL+C，然后选择“y”终止批处理作业。
+   停止应用程序的方法是先在终端窗口中按 CTRL+C，然后选择“y”终止批处理作业。
 
 ## <a name="_Toc395783179"></a>安装所需的模块
 
@@ -99,7 +99,7 @@ ms.locfileid: "55510572"
    npm install async --save
    ```
 
-2. 通过 npm 安装 **@azure/cosmos** 模块。 
+2. 通过 npm 安装 **\@azure/cosmos** 模板。 
 
    ```bash
    npm install @azure/cosmos
@@ -183,7 +183,7 @@ ms.locfileid: "55510572"
       const { body } = await this.container.item(itemId).read();
       return body;
     }
-  }
+   }
 
    module.exports = TaskDao;
    ```
@@ -243,9 +243,9 @@ ms.locfileid: "55510572"
 
       res.redirect("/");
     }
-  }
+   }
 
-  module.exports = TaskList;
+   module.exports = TaskList;
    ```
 
 3. 保存并关闭 **tasklist.js** 文件。

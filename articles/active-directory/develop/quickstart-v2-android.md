@@ -3,8 +3,8 @@ title: Azure AD v2 Android 快速入门 | Microsoft Docs
 description: 了解 Android 应用程序如何才能通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 227f8691e65e588d4eb274fd11f76ebd01bb7834
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 35cf0f7ffe118a3c878e14e4a81793d18a646fa9
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207307"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202881"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -30,7 +30,7 @@ ms.locfileid: "56207307"
 
 本快速入门包含了一个代码示例，该示例演示了 Android 应用程序如何将个人、工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
 
-![本快速入门生成的示例应用如何工作](media/quickstart-v2-android/android-intro.png)
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-android/android-intro-updated.png)
 
 > [!NOTE]
 > **先决条件**

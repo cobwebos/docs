@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 31bf2de7417a1be6139de3ec9dcc8d531df586d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649574"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090315"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -69,9 +69,9 @@ ms.locfileid: "56649574"
 
     ![完成配置后的“配置模板”页](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. 在“配置模板”页上执行以下步骤：对于此教程来说，这些步骤是**可选**的。
-    2. 选择“连接”以连接到模板 VM。 
-    3. 在模板 VM 上安装并配置软件。     
-    5. 输入模板的**说明**
+    1. 选择“连接”以连接到模板 VM。 
+    2. 在模板 VM 上安装并配置软件。     
+    3. 输入模板的**说明**
 9. 在模板页上选择“下一步”。 
 10. 在“发布模板”页上执行以下操作。 
     1. 若要立即发布模板，请选择“发布”。  
@@ -108,15 +108,15 @@ ms.locfileid: "56649574"
     ![用户列表](../media/how-to-configure-student-usage/users-list-new.png)
 
 
-## <a name="send-registration-link-to-students"></a>将注册链接发送给学生
-
+## <a name="send-an-email-with-the-registration-link"></a>发送包含注册链接的电子邮件
 1. 切换到“用户”视图（如果尚未转到该页）。 
-2. 在工具栏上选择“获取注册链接”。
-1. 在“用户注册”对话框中，选择“复制”按钮。 将链接复制到剪贴板。
+2. 在列表中选择特定或所有用户。 要选择特定用户，请选中列表第一列中的复选框。 要选择所有用户，请选中第一列标题前面的复选框（名称），或选中列表中所有用户的所有复选框。
+3. 选择工具栏上的“发送邀请”。 此外可以将鼠标悬停在列表中的学生姓名上，然后发送电子邮件图标。 
 
-    ![注册链接](../media/tutorial-setup-classroom-lab/registration-link.png)
-1. 在“用户注册”对话框中，选择“关闭”。 
-2. 与某个学生共享注册链接，使其能够注册课程。
+    ![通过电子邮件发送注册链接](../media/tutorial-setup-classroom-lab/send-email.png)
+4. 在“通过电子邮件发送注册链接”页上，请按照下列步骤操作： 
+    1. 键入要发送给学生的“可选邮件”。 电子邮件自动包含注册链接。 
+    2. 在“通过电子邮件发送注册链接”页上，请选择“发送”。 
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，创建并配置了课堂实验室。 若要了解学生如何使用注册链接访问实验室中的 VM，请转到下一教程：

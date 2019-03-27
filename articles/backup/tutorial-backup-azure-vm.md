@@ -1,90 +1,126 @@
 ---
-title: 在 Azure 中大规模备份 Azure VM
-description: 本教程详细介绍了如何将多个 Azure 虚拟机备份到恢复服务保管库。
-services: backup
+title: 使用 PowerShell 备份多个 Azure VM
+description: 本教程详细介绍了如何使用 Azure PowerShell 将多个 Azure VM 备份到恢复服务保管库。
 author: rayne-wiselman
 manager: carmonm
-keywords: 虚拟机备份; 备份虚拟机; 备份和灾难恢复
 ms.service: backup
 ms.topic: tutorial
-ms.date: 09/06/2017
-ms.author: trinadhk
+ms.date: 03/05/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d2b83963f7af52101ed298e85b6c7fd64fc99a07
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 85e5fc7e1c8a4561b51afaf0d665fedb6d9cde1f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875580"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258371"
 ---
-# <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>在 Azure 中大规模备份 Azure 虚拟机
+# <a name="back-up-azure-vms-with-powershell"></a>使用 PowerShell 备份 Azure VM
 
-本教程详细介绍了如何将 Azure 虚拟机备份到恢复服务保管库。 备份虚拟机的大部分工作是准备工作。 在备份（或保护）虚拟机之前，必须完成[先决条件](backup-azure-arm-vms-prepare.md)中的步骤来准备好保护 VM 的环境。 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+本教程介绍如何使用 PowerShell 部署 [Azure 备份](backup-overview.md)以备份多个 Azure VM。  
+
+本教程介绍如何执行下列操作：
+
+> [!div class="checklist"]
+> * 创建恢复服务保管库并设置保管库上下文。
+> * 定义备份策略
+> * 应用备份策略以保护多个虚拟机
+> * 对保护的虚拟机触发按需备份作业 在备份（或保护）虚拟机之前，必须完成[先决条件](backup-azure-arm-vms-prepare.md)中的步骤来准备好保护 VM 的环境。 
 
 > [!IMPORTANT]
 > 本教程假定已创建资源组和 Azure 虚拟机。
 
+
+## <a name="log-in-and-register"></a>登录和注册
+
+
+1. 使用 `Connect-AzAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+
+    ```powershell
+    Connect-AzAccount
+    ```
+2. 首次使用 Azure 备份时，必须使用 [Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider) 在订阅中注册 Azure 恢复服务提供程序。 如果已注册，则跳过此步骤。
+
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    ```
+
+
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)是保存要备份项的恢复点的容器。 恢复服务保管库是一种 Azure 资源，可以作为 Azure 资源组的一部分进行部署和管理。 在本教程中，在保护虚拟机的相同资源组中创建恢复服务保管库。
+[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)是一个逻辑容器，用于存储受保护资源（例如 Azure VM）的备份数据。 运行备份作业时，该作业会在恢复服务保管库中创建一个恢复点。 然后，可以使用其中一个恢复点将数据还原到给定的时间点。
 
 
-首次使用 Azure 备份时，必须使用订阅注册 Azure 恢复服务提供程序。 如果已使用订阅注册了该提供程序，请转到下一步。
+- 在本教程中，会在与要备份的 VM 相同的资源组和位置中创建保管库。
+- Azure 备份会自动处理备份数据的存储。 默认情况下，保管库使用[异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md)。 异地冗余可确保将备份数据复制到距主区域数百英里以外的辅助 Azure 区域。
+
+按如下所述创建保管库：
+
+1. 使用 [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) 创建保管库。 指定要备份的 VM 的资源组名称和位置。
+
+    ```powershell
+    New-AzRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
+    ```
+2. 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，在变量中存储备份恢复服务保管库对象可提供方便。
+
+    ```powershell
+    $vault1 = Get-AzRecoveryServicesVault –Name myRSVault
+    ```
+    
+3. 使用 [Set-AzRecoveryServicesVaultContext](/powershell/module/az.RecoveryServices/Set-azRecoveryServicesVaultContext) 设置保管库上下文。
+
+   - 保管库上下文是在保管库中受保护的数据的类型。
+   - 设置上下文后，它将应用于所有后续 cmdlet
+
+     ```powershell
+     Get-AzRecoveryServicesVault -Name "myRSVault" | Set-AzRecoveryServicesVaultContext
+     ```
+
+## <a name="back-up-azure-vms"></a>备份 Azure VM
+
+备份会根据备份策略中指定的计划来运行。 在创建恢复服务保管库时，它附带了默认的保护和保留策略。
+
+- 默认保护策略在一天的指定时间触发备份作业。
+- 默认保留策略将每日恢复点保留 30 天。 
+
+为了在本教程中启用和备份 Azure VM，我们执行以下操作：
+
+1. 使用 [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) 指定保管库中保存备份数据的容器。
+2. 进行备份的每个 VM 都是一个项目。 若要启动备份作业，请使用 [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) 获取有关 VM 的信息。
+3. 使用 [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) 运行临时备份。 
+    - 第一个初始备份作业会创建一个完整恢复点。
+    - 初始备份之后，每个备份作业都会创建增量恢复点。
+    - 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
+
+启用并运行备份，如下所示：
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+$namedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM"
+$item = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadType AzureVM
+$job = Backup-AzRecoveryServicesBackupItem -Item $item
 ```
 
-使用 **New-AzureRmRecoveryServicesVault** 创建恢复服务保管库。 请确保指定在配置要备份的虚拟机时使用的资源组名称和位置。 
+## <a name="troubleshooting"></a>故障排除 
 
-```powershell
-New-AzureRmRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
-```
+如果在备份虚拟机时遇到问题，请参阅此[故障排除文章](backup-azure-vms-troubleshoot.md)。
 
-许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，在变量中存储备份恢复服务保管库对象可提供方便。 然后，使用 **Set-AzureRmRecoveryServicesBackupProperties** 将 **-BackupStorageRedundancy** 选项设置为[异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md)。 
+### <a name="deleting-a-recovery-services-vault"></a>删除恢复服务保管库
 
-```powershell
-$vault1 = Get-AzureRmRecoveryServicesVault –Name myRSVault
-Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
-```
-
-## <a name="back-up-azure-virtual-machines"></a>备份 Azure 虚拟机
-
-必须设置保管库上下文，才能运行初始备份。 保管库上下文是在保管库中受保护的数据的类型。 在创建恢复服务保管库时，它附带了默认的保护和保留策略。 默认保护策略在每天的指定时间触发备份作业。 默认保留策略将每日恢复点保留 30 天。 在本教程中，接受默认策略。 
-
-使用 **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** 设置保管库上下文。 设置保管库上下文后，它将应用于所有后续 cmdlet。 
-
-```powershell
-Get-AzureRmRecoveryServicesVault -Name myRSVault | Set-AzureRmRecoveryServicesVaultContext
-```
-
-使用 **[Backup-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem)** 触发备份作业。 备份作业将创建恢复点。 如果它是初始备份，恢复点将是一个完整备份。 后续备份将创建增量副本。
-
-```powershell
-$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM"
-$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType AzureVM
-$job = Backup-AzureRmRecoveryServicesBackupItem -Item $item
-```
-
-## <a name="delete-the-recovery-services-vault"></a>删除恢复服务保管库
-
-若要删除恢复服务保管库，必须首先删除保管库中的任何恢复点，然后将保管库取消注册。 以下命令详细介绍了这些步骤。 
+如果需要删除保管库，请首先删除保管库中的恢复点，然后将保管库取消注册，如下所示：
 
 
 ```powershell
-$Cont = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered
-$PI = Get-AzureRmRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVm
-Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints $PI[0]
-Unregister-AzureRmRecoveryServicesBackupContainer -Container $namedContainer
-Remove-AzureRmRecoveryServicesVault -Vault $vault1
+$Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered
+$PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVm
+Disable-AzRecoveryServicesBackupProtection -RemoveRecoveryPoints $PI[0]
+Unregister-AzRecoveryServicesBackupContainer -Container $namedContainer
+Remove-AzRecoveryServicesVault -Vault $vault1
 ```
-
-## <a name="troubleshooting-errors"></a>排查错误
-如果在备份虚拟机时遇到问题，请参阅[备份 Azure 虚拟机故障排除文章](backup-azure-vms-troubleshoot.md)以获取帮助。
 
 ## <a name="next-steps"></a>后续步骤
-既然你的虚拟机已受到保护，请参阅以下文章，了解管理任务以及如何从恢复点还原虚拟机。
 
-* 若要修改备份策略，请参阅[使用 AzureRM.RecoveryServices.Backup cmdlet 来备份虚拟机](backup-azure-vms-automation.md#create-a-protection-policy)。
-* [管理和监视虚拟机](backup-azure-manage-vms.md)
-* [恢复虚拟机](backup-azure-arm-restore-vms.md)
+- [查看](backup-azure-vms-automation.md)使用 PowerShell 备份和还原 Azure VM 的更详细演练。 
+- [管理和监视 Azure VM](backup-azure-manage-vms.md)
+- [还原 Azure VM](backup-azure-arm-restore-vms.md)

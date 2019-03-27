@@ -14,30 +14,32 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 44ae922b182874eef378d4868fb278c3c76252db
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d5e1e5989f9902d9ab8dcc3e6c2b9d2a71f12df9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884409"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224373"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
-ASP.NET Core 拥有可插入配置系统，能够从多种来源读取配置数据并能动态处理更改，且不会造成应用程序重启。 它支持将配置设置绑定到强类型 NET 类并使用多种 `IOptions<T>` 模式将其注入代码。 其中一种模式，特别是 `IOptionsSnapshot<T>`，可在基础数据发生更改时，实现自动重载应用程序配置。 可将 `IOptionsSnapshot<T>` 注入应用程序的控制器，以访问 Azure 应用配置中存储的最新配置。 此外，可以设置应用配置 ASP.NET Core 客户端库，通过按定义的时间间隔进行轮询，持续监视和检索应用配置存储区中的任何更改。
+ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据。 它可以动态处理更改，而不会导致应用程序重启。 ASP.NET Core 支持将配置设置绑定到强类型 .NET 类。 它通过使用各种 `IOptions<T>` 模式将其注入到代码中。 其中一种模式（特别是 `IOptionsSnapshot<T>`）会在基础数据发生更改时自动重载应用程序的配置。 
 
-本教程演示如何在代码中实现动态配置更新。 它建立在快速入门中介绍的 Web 应用之上。 请先完成[使用应用配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)部分，然后再继续。
+可将 `IOptionsSnapshot<T>` 注入应用程序的控制器，以访问 Azure 应用配置中存储的最新配置。 还可以设置应用程序配置 ASP.NET Core 客户端库，以持续监视和检索应用程序配置存储区中的任何更改。 定义用于轮询的周期性间隔。
 
-可使用任何代码编辑器来完成本快速入门中的步骤。 但是，[Visual Studio Code](https://code.visualstudio.com/) 是一个很好的选项，可用于 Windows、macOS 和 Linux 平台。
+本教程演示如何在代码中实现动态配置更新。 它建立在快速入门中介绍的 Web 应用之上。 在继续操作之前，请先完成[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
+
+你可使用任意代码编辑器来执行该快速入门中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 设置应用程序，使其能够更新配置以响应应用配置存储区中的更改
-> * 在应用程序的控制器中注入最新配置
+> * 设置应用程序，使其能够更新配置以响应应用程序配置存储区中的更改。
+> * 在应用程序的控制器中注入最新配置。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
+要完成本快速入门，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -59,7 +61,7 @@ ASP.NET Core 拥有可插入配置系统，能够从多种来源读取配置数�
             .UseStartup<Startup>();
     ```
 
-    `.Watch` 方法中的第二个参数表示轮询间隔，ASP.NET 客户端库按此间隔查询应用配置存储区，查看特定配置设置是否发生任何更改。
+    `.Watch` 方法中的第二个参数表示轮询间隔，ASP.NET 客户端库按此间隔查询应用程序配置存储区。 客户端库检查特定配置设置，以查看是否发生了任何更改。
 
 2. 添加 Settings.cs 文件，用于定义和实现新的 `Settings` 类。
 
@@ -76,7 +78,7 @@ ASP.NET Core 拥有可插入配置系统，能够从多种来源读取配置数�
     }
     ```
 
-3. 打开 Startup.cs 并更新 `ConfigureServices` 方法，从而将配置数据绑定到 `Settings` 类。
+3. 打开 Startup.cs 并更新 `ConfigureServices` 方法，将配置数据绑定到 `Settings` 类。
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -95,7 +97,7 @@ ASP.NET Core 拥有可插入配置系统，能够从多种来源读取配置数�
 
 ## <a name="use-the-latest-configuration-data"></a>使用最新的配置数据
 
-1. 打开“控制器”目录中的 HomeController.cs，更新 `HomeController` 类，通过依赖项注入接收 `Settings`，并利用其值。
+1. 在 Controllers 目录中打开 HomeController.cs 文件。 更新 `HomeController` 类，通过依赖项注入接收 `Settings` 并利用其值。
 
     ```csharp
     public class HomeController : Controller
@@ -118,7 +120,7 @@ ASP.NET Core 拥有可插入配置系统，能够从多种来源读取配置数�
     }
     ```
 
-2. 在“视图” > “主页”目录中打开 Index.cshtml，并将其内容替换如下：
+2. 在“视图”>“主页”目录中打开 Index.cshtml，并将其内容替换为以下脚本：
 
     ```html
     <!DOCTYPE html>
@@ -143,21 +145,21 @@ ASP.NET Core 拥有可插入配置系统，能够从多种来源读取配置数�
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 若要使用 .NET Core CLI 生成应用，请在命令行界面中执行以下命令：
+1. 要通过使用 .NET Core CLI 生成应用，请在命令行界面中执行以下命令：
 
         dotnet build
 
-2. 成功完成应用生成后，执行以下命令，在本地运行 Web 应用：
+2. 生成成功完成后，请运行以下命令以在本地运行 Web 应用：
 
         dotnet run
 
-3. 启动浏览器窗口并导航到 `http://localhost:5000`，即本地托管的 Web 应用的默认 URL。
+3. 启动浏览器窗口并转到 `http://localhost:5000`，即本地托管的 Web 应用的默认 URL。
 
     ![本地启动应用快速入门](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. 登录到 [Azure 门户](https://aka.ms/azconfig/portal)，单击“所有资源”和快速入门中创建的应用配置存储区实例。
+4. 登录到 [Azure 门户](https://aka.ms/azconfig/portal)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例。
 
-5. 单击“键/值资源管理器”并更新以下密钥值：
+5. 选择“键/值资源管理器”并更新以下密钥值：
 
     | 密钥 | 值 |
     |---|---|
@@ -175,7 +177,7 @@ ASP.NET Core 拥有可插入配置系统，能够从多种来源读取配置数�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，通过添加 Azure 托管服务标识简化了应用配置访问并改进了应用凭据管理。 若要了解有关使用应用配置的详细信息，请继续学习 Azure CLI 示例。
+在本教程中，通过添加 Azure 托管服务标识简化了应用配置访问并改进了应用凭据管理。 若要了解有关如何使用应用程序配置的更多信息，请继续阅读 Azure CLI 示例。
 
 > [!div class="nextstepaction"]
 > [CLI 示例](./cli-samples.md)

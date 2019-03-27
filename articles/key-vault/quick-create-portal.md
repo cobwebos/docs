@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 03/14/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dd81fd03c39dec3c34e614234a563ec8c2ced38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0902e3fb64a73a095b457306aa561c13519e4066
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117096"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000610"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 
@@ -28,7 +28,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 http://portal.azure.com 登录到 Azure 门户。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-a-vault"></a>创建保管库
 
@@ -43,7 +43,6 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
     - **订阅**：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。
-    - 勾选“固定到仪表板”复选框。
     - 让其他选项保留默认值。
 6. 提供上述信息后，选择“创建”。
 
@@ -70,7 +69,11 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 收到机密已成功创建的消息后，即可单击列表中的该机密， 然后就可以看到某些属性。 如果单击当前版本，则可看到在上一步指定的值。
 
-![机密属性](./media/quick-create-portal/version.png)
+![机密属性](./media/quick-create-portal/current-version-hidden.png)
+
+单击右侧窗格中的“显示机密值”按钮后，可看到隐藏的值。 
+
+![显示的机密值](./media/quick-create-portal/current-version-shown.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

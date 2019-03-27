@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 1/22/2019
+ms.date: 03/20/2019
 ms.author: victorh
-ms.openlocfilehash: c574e3ab82f97f5fffc7c834a53d19df93fc426f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bb849e80e83edc4a25ad2f891d2c6c433ba0d106
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448936"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225529"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
@@ -70,11 +70,15 @@ Web 应用程序防火墙 (WAF) 是应用程序网关的功能，可以对 Web �
 
 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击、跨站点脚本攻击等。 防止应用程序代码中的此类攻击颇具挑战性，可能需要在应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可将现有应用程序网关轻松转换为支持 Web 应用程序防火墙的应用程序网关。
 
+有关详细信息，请参阅[应用程序网关中的 Web 应用程序防火墙 (WAF)](https://docs.microsoft.com/azure/application-gateway/waf-overview)。
+
 ## <a name="url-based-routing"></a>基于 URL 的路由
 
 基于 URL 路径的路由用于根据请求的 URL 路径，将流量路由到后端服务器池。 方案之一是将不同内容类型的请求路由到不同的池。
 
 例如，将 `http://contoso.com/video/*` 的请求路由到 VideoServerPool，将 `http://contoso.com/images/*` 的请求路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
+
+有关详细信息，请参阅[使用应用程序网关进行基于 URL 的路由](https://docs.microsoft.com/azure/application-gateway/url-route-overview)。
 
 ## <a name="multiple-site-hosting"></a>多站点托管
 
@@ -83,6 +87,8 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool。
 
 同样，可以将同一父域的两个子域托管在同一应用程序网关部署中。 例如，在单个应用程序网关部署中托管的 `http://blog.contoso.com` 和 `http://app.contoso.com` 都是使用子域。
+
+有关详细信息，请参阅[使用应用程序网关进行多站点托管](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview)。
 
 ## <a name="redirection"></a>重定向
 
@@ -96,6 +102,8 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 - 基于路径的重定向。 这种类型的重定向只能在特定站点区域（例如 `/cart/*` 表示的购物车区域）中进行 HTTP 到 HTTPS 的重定向。
 - 重定向到外部站点。
 
+有关详细信息，请参阅使用应用程序网关[重定向流量](https://docs.microsoft.com/azure/application-gateway/redirect-overview)。
+
 ## <a name="session-affinity"></a>会话相关性
 
 需要在同一服务器上保留用户会话时，可以使用基于 Cookie 的会话相关性功能。 借助网关托管的 Cookie，应用程序网关可以将来自用户会话的后续流量定向到同一服务器进行处理。 在用户会话的会话状态在服务器上进行本地保存的情况下，此功能十分重要。
@@ -105,6 +113,8 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 应用程序网关为 WebSocket 和 HTTP/2 协议提供本机支持。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。
 
 WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 不同于 HTTP，这些协议的开销很低，并且可以对多个请求/响应重复使用同一 TCP 连接，从而提高资源利用率。 这些协议设计为通过传统 HTTP 端口 80 和 443 运行。
+
+有关详细信息，请参阅 [WebSocket 支持](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket)和 [HTTP/2 支持](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)。 
 
 ## <a name="rewrite-http-headers-public-preview"></a>重写 HTTP 标头（公共预览版）
 

@@ -9,14 +9,15 @@ ms.date: 07/02/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb01ae6514dfb97cc8a923619513383ace0b09a5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: f4935cc15bf3edeccd6b6ce9da701904a32606db
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669969"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295022"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>快速入门：在 Azure 门户中将来宾用户添加到目录
 
@@ -39,15 +40,15 @@ ms.locfileid: "56669969"
 2. 在左窗格中选择“Azure Active Directory”。
 3.  在“管理”下，选择“用户”。
 
-    ![选择“Azure Active Directory”](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
+    ![显示在何处选择“用户”选项的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
 4.  选择“新来宾用户”。
 
-    ![选择“Azure Active Directory”](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
+    ![显示选择“新来宾用户”选项的位置的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
 5.  在“用户名”下，输入外部用户的电子邮件地址。 在“包含带邀请的个人消息”下，键入欢迎消息。 
 
-    ![选择“Azure Active Directory”](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
+    ![显示在何处输入来宾用户邀请消息的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
 
 6. 选择“邀请”，以自动向来宾用户发送邀请。 右上角会显示一则通知，其中的消息显示“已成功邀请用户”。 
 7.  发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
@@ -59,7 +60,7 @@ ms.locfileid: "56669969"
 3.  选择“新建应用程序”。
 4. 在“从库中添加”下，搜索 Salesforce，然后将其选中。
 
-    ![选择“Azure Active Directory”](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
+    ![显示“从库添加”搜索框的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. 选择 **添加** 。
 6. 在“管理”下，选择“单一登录”，再在“单一登录模式”下选择“基于密码的登录”，然后单击“保存”。
 7. 在“管理”下，选择“用户和组” > “添加用户” > “用户和组”。
@@ -71,11 +72,11 @@ ms.locfileid: "56669969"
 1.  登录到测试来宾用户的电子邮件帐户。
 2.  在收件箱中，找到“你已受邀”电子邮件。
 
-    ![B2B 邀请电子邮件](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
+    ![显示企业间邀请电子邮件的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
 3.  在电子邮件正文中，选择“入门”。 浏览器中随即打开一个“查看权限”页面。 
 
-    ![B2B 接受邀请页面](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
+    ![显示“查看权限”页的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
 4. 选择“接受”。 随即打开访问面板，其中列出来宾用户可访问的应用程序。
 

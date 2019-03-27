@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225945c3accb9a92cc4a04faa9ba029092feae57
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 35bd52904ab081e41cb43a346288234c18a7f43b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868680"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>教程：Azure Active Directory 与 Adobe Creative Cloud 集成
 
@@ -205,7 +205,7 @@ ms.locfileid: "56868680"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -249,9 +249,9 @@ ms.locfileid: "56868680"
 2. 添加 Adobe 控制台中的用户作为“联合 ID”，并将其分配到某个产品配置文件。 有关添加用户的详细信息，请参阅[在 Adobe 管理控制台中添加用户](https://helpx.adobe.com/enterprise/using/users.html#Addusers) 
 
 3. 现在，请在“Adobe 登录”窗体中键入电子邮件地址/UPN，按 Tab，随后应会联合回到 Azure AD：
-    * Web 访问：www.adobe.com > 登录
-    * 在“桌面应用实用工具”>“登录”中
-    * 在“应用程序”>“帮助”>“登录”中
+   * Web 访问：www\.adobe.com > 登录
+   * 在“桌面应用实用工具”>“登录”中
+   * 在“应用程序”>“帮助”>“登录”中
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
