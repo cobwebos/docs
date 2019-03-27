@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a313061f89d33ee2bf5379dbd37495db06b64440
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8fdc4445e28a420b6b4f7935443d7d991d9e8a4d
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369507"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446057"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>从进行身份验证与 Azure Active Directory 应用程序可访问 blob 和队列
 
@@ -21,11 +21,11 @@ ms.locfileid: "58369507"
 
 本文介绍如何配置应用程序使用 Azure AD 进行身份验证。 代码示例使用 .NET，但其他语言使用类似的方法。
 
-请先为安全主体配置基于角色的访问控制 (RBAC) 设置，然后才能从 Azure 存储应用程序对该安全主体进行身份验证。 Azure 存储定义包含容器和队列权限的 RBAC 角色。 如果将 RBAC 角色分配给安全主体，该安全主体会获得该资源的访问权限。 有关详细信息，请参阅[存储的数据使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。
+进行安全主体身份验证从 Azure 存储应用程序之前，配置基于角色的访问控制 (RBAC) 设置为该安全主体。 Azure 存储定义包含容器和队列权限的 RBAC 角色。 如果将 RBAC 角色分配给安全主体，该安全主体会获得该资源的访问权限。 有关详细信息，请参阅[存储的数据使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。
 
 有关 OAuth 2.0 代码授权流的概述，请参阅[使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序](../../active-directory/develop/v1-protocols-oauth-code.md)。
 
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+要使用 OAuth 令牌授权 blob 和队列操作，必须使用 HTTPS。
 
 ## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>将 RBAC 角色分配给 Azure AD 安全主体
 
@@ -157,7 +157,7 @@ static string GetUserOAuthToken()
 
 ### <a name="create-the-block-blob"></a>创建块 blob
 
-最后，使用访问令牌新建存储凭据，然后使用这些凭据创建 blob：
+最后，使用访问令牌来创建新的存储凭据，然后将这些凭据用于创建 blob。 请注意，若要授权使用 OAuth 令牌的 blob 和队列操作，则必须使用 HTTPS。:
 
 ```dotnet
 // Get the access token.

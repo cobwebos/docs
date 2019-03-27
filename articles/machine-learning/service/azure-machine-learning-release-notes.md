@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b9ab48ea971a5e7f5e9c72f9e729d2fcb5ed37f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c1c6e0408145ea76ad93b6dc3803fd56a01dc6d4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437860"
+ms.locfileid: "58444660"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -29,6 +29,23 @@ ms.locfileid: "58437860"
 
 + **新功能**
   + *Azureml.core.Run.create_children*方法允许多个子级的低延迟创建运行一次调用。
+
+### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure 机器学习数据准备 SDK v1.1.0
+
++ **重大更改**
+  + 数据准备包的概念已被弃用并不再受支持。 而不是持久保存在一个包中的多个数据流，您可以单独保留数据流。
+    + 操作方法指南：[打开和保存数据流的 notebook](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
+
++ **新功能**
+  + 数据准备现在可以识别的类型匹配的特定语义，并相应地拆分的列。 目前支持 STypes 包括： 电子邮件地址、 地理坐标 （纬度和经度）、 IPv4 和 IPv6 地址、 美国电话号码和美国邮政编码。
+    + 操作方法指南：[语义类型 notebook](https://aka.ms/aml-data-prep-semantic-types-nb)
+  + 数据准备现在支持从两个数值列生成结果的列执行以下操作： 减、 乘、 除、 和取模。
+  + 您可以调用`verify_has_data()`上检查是否在数据流将生成的记录，如果执行的数据流。
+
++ **Bug 修复和改进**
+  + 现在可以指定要在直方图中使用的数值列配置文件的箱数。
+  + `read_pandas_dataframe`转换表现在要求具有字符串的数据帧或字节类型的列名称。
+  + 修复了 bug`fill_nulls`转换，其中的值未正确填写如果列已丢失。
 
 ## <a name="2019-03-11"></a>2019-03-11
 

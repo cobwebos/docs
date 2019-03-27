@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: afec42551f124890dd2cc7b03cce48c359fc88c4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 25ebd72c512eb92c5d9a464a4b4d74f9e41ae389
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194089"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484098"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
 
@@ -55,7 +55,7 @@ ms.locfileid: "57194089"
 
 使用以下命令启动 Azure PowerShell 会话，并登录 Azure 帐户：  
 
-```PowerShell
+```powershell
 Connect-AzAccount
 ```
 
@@ -63,13 +63,13 @@ Connect-AzAccount
 
 您可能需要指定用来创建密钥保管库的订阅。 输入以下命令以查看你的帐户的订阅：
 
-```PowerShell
+```powershell
 Get-AzSubscription
 ```
 
 然后，若要指定与您将日志记录在密钥保管库相关联的订阅，请输入：
 
-```PowerShell
+```powershell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
@@ -81,7 +81,7 @@ PowerShell 指向正确的订阅是一个重要步骤，尤其是如果你有多
 
 为进一步简化管理，我们还将使用相同的资源组作为一个包含密钥保管库。 从[快速入门教程](key-vault-get-started.md)，此资源组名为**ContosoResourceGroup**，我们将继续使用亚洲东部位置。 这些值将替换为自己，（如果适用）：
 
-```PowerShell
+```powershell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
@@ -94,7 +94,7 @@ PowerShell 指向正确的订阅是一个重要步骤，尤其是如果你有多
 
 在中[快速入门教程](key-vault-get-started.md)，密钥保管库名称为**ContosoKeyVault**。 我们将继续使用该名称，并将详细信息存储在名为**kv**:
 
-```PowerShell
+```powershell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
@@ -102,7 +102,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 若要启用的密钥保管库日志记录，我们将使用**集 AzDiagnosticSetting** cmdlet，同时我们为新的存储帐户和密钥保管库创建的变量。 我们还会设置 **-启用**标记，用于 **$true**并将类别设置为**AuditEvent** （密钥保管库日志记录的唯一类别）：
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
@@ -122,7 +122,7 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 （可选） 可以为你的日志设置保留策略，以便自动删除较旧的日志。 例如，通过设置来设置保留策略 **-RetentionEnabled**标记，用于 **$true**，并设置 **-RetentionInDays**参数**90**，以便自动删除早于 90 天的日志。
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
@@ -141,13 +141,13 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 首先，请为容器名称创建一个变量。 你将使用此变量完成本演练的剩余部分。
 
-```PowerShell
+```powershell
 $container = 'insights-logs-auditevent'
 ```
 
 若要列出此容器中的所有 blob，请输入：
 
-```PowerShell
+```powershell
 Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
@@ -174,19 +174,19 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 
 创建一个文件夹用于下载 blob。 例如：
 
-```PowerShell 
+```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 ```
 
 然后获取所有 blob 的列表：  
 
-```PowerShell
+```powershell
 $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 通过此列表通过管道传递**Get AzStorageBlobContent**若要将 blob 下载到目标文件夹：
 
-```PowerShell
+```powershell
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
@@ -196,19 +196,19 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 * 如果有多个密钥保管库，并只想要下载其中名为 CONTOSOKEYVAULT3 的密钥保管库的日志：
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * 如果有多个资源组，并只想要下载其中某个资源组的日志，请使用 `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`：
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * 如果你想要下载适用于 2019 年 1 月的月份的所有日志，使用`-Blob '*/year=2019/m=01/*'`:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
@@ -221,7 +221,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 每个 Blob 存储为文本，并格式化为 JSON Blob。 让我们看看一个示例日志条目。 运行以下命令：
 
-```PowerShell
+```powershell
 Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 

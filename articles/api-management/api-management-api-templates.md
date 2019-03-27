@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: ba56804431048005914a79c4cd957a8365de067a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970886"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486359"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 
@@ -88,9 +88,9 @@ ms.locfileid: "52970886"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|Description|  
+|属性|Type|描述|  
 |--------------|----------|-----------------|  
-|apis|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体的集合。|对当前用户可见的 API。|  
+|`apis`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体的集合。|对当前用户可见的 API。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -343,17 +343,17 @@ ms.locfileid: "52970886"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|Description|  
+|属性|Type|描述|  
 |--------------|----------|-----------------|  
-|apiId|字符串|当前 API 的 ID。|  
-|apiName|字符串|API 的名称。|  
-|apiDescription|字符串|API 的说明。|  
-|api|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  
-|operation|[操作](api-management-template-data-model-reference.md#Operation)|当前显示的操作。|  
-|sampleUrl|字符串|当前操作的 URL。|  
-|operationMenu|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作的菜单。|  
-|consoleUrl|URI|“试用”按钮的 URI。|  
-|示例|[代码示例](api-management-template-data-model-reference.md#Sample)实体的集合。|当前操作的代码示例。|  
+|`apiId`|字符串|当前 API 的 ID。|  
+|`apiName`|字符串|API 的名称。|  
+|`apiDescription`|字符串|API 的说明。|  
+|`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  
+|`operation`|[操作](api-management-template-data-model-reference.md#Operation)|当前显示的操作。|  
+|`sampleUrl`|字符串|当前操作的 URL。|  
+|`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作的菜单。|  
+|`consoleUrl`|URI|“试用”按钮的 URI。|  
+|`samples`|[代码示例](api-management-template-data-model-reference.md#Sample)实体的集合。|当前操作的代码示例。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

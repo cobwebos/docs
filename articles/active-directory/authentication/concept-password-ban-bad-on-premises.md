@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0a25dd3a2228f0b1b3ab33db0c9c689d7b2899d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e6623e18fa319066f121dced551dcada133ebd5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310551"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479523"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>为 Windows Server Active Directory 强制执行 Azure AD 密码保护
 
@@ -32,8 +32,15 @@ Azure AD 密码保护专为提供记住这些原则：
 * 没有最小 Active Directory 域或林功能级别 (DFL/FFL) 是必需的。
 * 该软件不会创建或要求它保护的 Active Directory 域中的帐户。
 * 在密码验证期间或在其他任何时间，用户明文密码不要将域控制器。
-* 支持增量部署。 但是，仅安装域控制器和代理 （DC 代理） 实施密码策略。
-* 我们建议，以确保通用密码保护安全实施的所有域控制器上安装 DC 代理。
+* 支持增量部署，但仅安装域控制器和代理 （DC 代理） 实施密码策略。 请参阅下一主题的更多详细信息。
+
+## <a name="incremental-deployment"></a>增量部署
+
+Azure AD 密码保护跨 Active Directory 域中域控制器支持增量部署，但务必要了解这确实意味着和权衡是什么。
+
+安装在域控制器上，且仅针对发送到此域控制器的密码更改时，Azure AD 密码保护 DC 代理软件仅可验证密码。 不能控制哪些域控制器选择的用于处理用户的密码更改的 Windows 客户端计算机。 若要保证一致的行为和通用密码保护安全强制，必须在域中的所有域控制器上安装 DC 代理软件。
+
+许多组织将想要进行仔细测试的子集上执行完整部署之前其域控制器的 Azure AD 密码保护。 Azure AD 密码保护不支持部分部署，即在给定的 DC 上的 DC 代理软件将主动验证密码即使在域中的其他 Dc 没有安装 DC 代理软件。 此类型的部分部署不安全，而不不推荐使用以进行测试。
 
 ## <a name="architectural-diagram"></a>体系结构图
 

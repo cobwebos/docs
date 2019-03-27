@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 715b0f9c5a5a68bb1fc42ed4206ca81ad85b844f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4ebd53db9622c5a40f67cba04aa35cbfbaa78c8d
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450679"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446109"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ az account set --subscription $subscriptionId
 以下命令可创建 Windows 或 Linux 群集，需指定相应的操作系统。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书，但要确保已创建该证书文件夹。 此命令还采用 VM SKU 等其他参数。
 
 > [!NOTE]
-> 以下 PowerShell 命令仅适用于 Azure 资源管理器 PowerShell 6.1 以上版本。 若要检查 Azure 资源管理器 PowerShell 版的当前版本，请运行以下 PowerShell 命令“Get-Module AzureRM”。 单击[此链接](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.3.0)升级 Azure 资源管理器 PowerShell 的版本。 
+> 以下 PowerShell 命令仅适用于 Azure 资源管理器 PowerShell 6.1 以上版本。 若要检查 Azure 资源管理器 PowerShell 版的当前版本，请运行以下 PowerShell 命令“Get-Module AzureRM”。 单击[此链接](/powershell/azure/azurerm/install-azurerm-ps)升级 Azure 资源管理器 PowerShell 的版本。 
 >
 >
 

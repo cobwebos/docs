@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 63b134ab9bfdac3617c845da7a14ee6b9234c84d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5647802ff383ce046d108f25384df81bcbd08cd3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782014"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484891"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -243,12 +243,12 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 1. 使用 `Get-AzSubscription` 获取订阅列表。
 1. 设置要在其中创建/更新虚拟机的订阅：
 
-   ```PowerShell
+   ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
 1. 若要为部署的 VM 创建新资源组，请运行以下命令：
 
-   ```PowerShell
+   ```powershell
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
@@ -258,7 +258,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
    > [!NOTE]
    > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾。
 
-   ```PowerShell
+   ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 

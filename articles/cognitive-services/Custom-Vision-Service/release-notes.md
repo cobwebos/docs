@@ -9,14 +9,28 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 1850959946531abbaf531484696951dee59dadbb
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: ce48a240c67c6077027210ffb0ca85db93610782
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351756"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472950"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
+
+## <a name="march-26-2019"></a>2019 年 3 月 26日日
+- 自定义影像服务已在 Azure 上进入正式发布 ！ 
+- 添加了新的机器学习为改进性能，尤其是在具有挑战性的数据集和精细分类上的后端的高级培训功能。 高级培训，可以指定培训和自定义视觉的计算时间预算呈下降趋式确定最佳的培训和扩充设置。 对于快速迭代，你可以继续使用现有快速的定型。 
+- 引入了 3.0 Api。 宣布即将弃用的 pre 3.0 Api 于 2019 年 10 月 1 日。 请参阅快速入门的文档的[.Net](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/csharp-tutorial)， [Python](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/python-tutorial)，[节点](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/node-tutorial)， [Java](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/java-tutorial)，或[转](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/go-tutorial)有关示例有关如何开始。 
+- 替换为"默认迭代"使用发布/取消发布在 3.0 中的 Api。 
+- 已添加新模型导出目标。 Dockerfile 导出已升级以支持 ARM 的 Raspberry Pi 3。 导出支持添加到[视觉 AI 开发人员工具包。](https://visionaidevkit.com/) 
+- 标记的每个项目为 500 的 S0 级别的增加的限制。 映像的每个项目为 100,000 的 S0 级别的增加的限制。
+- 已删除的成人域。 常规域而是建议。
+- 宣布推出[定价](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-vision-service/)公开上市。  
+
+
+## <a name="february-25-2019"></a>2019 年 2 月 25日日
+- 宣布推出的限时试用项目 （不与 Azure 资源关联的项目），最终当自定义视觉接近完成其迁移到 Azure 公共预览版。 从 2019 年 3 月 25 日，CustomVision.ai 站点仅支持与 Azure 资源，例如免费的自定义视觉资源相关联的查看项目。 通过 2019 年 10 月 1 日，你仍可以访问自定义视觉 Api 通过现有的受限试用版项目。 这将授予更新 API 密钥的任何应用程序已使用自定义视觉编写您的时间。 2019 年 10 月 1 日之后, 将删除任何有限的试用版项目尚未移到 Azure。
 
 ## <a name="january-22-2019"></a>2019 年 1 月 22 日
 - 为新的 Azure 区域添加的支持：美国西部 2、美国东部、美国东部 2、欧洲西部、欧洲北部、亚洲东南部、澳大利亚东部、印度中部、英国南部、日本东部和美国中北部。 对美国中南部的持续支持。 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: 102d06f6d4a51f7edc1fc269180f8fb3e5b0626c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ff7aa1ab8972b6cbb891a67b1065044b48f1cfa3
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121462"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446220"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的应用程序生命周期管理
 Azure 机器学习工作室是一个在 Azure 云平台中运行的工具，用于开发机器学习实验。 它类似于将 Visual Studio IDE 和可缩放云服务合并到单个平台。 可以将标准的应用程序生命周期管理 (ALM) 实践（从各种资产的版本管理到自动执行和部署）合并到 Azure 机器学习工作室中。 本文介绍一些选项和方法。
@@ -73,7 +73,7 @@ Azure 机器学习工作室中的训练的模型序列化为称为 iLearner 文�
 还可以创建许多相同的 Web 服务终结点，然后将不同版本的 iLearner 文件修补到要实现类似效果的终结点。 [本文](create-models-and-endpoints-with-powershell.md)更详细地介绍了如何完成此操作。
 
 ### <a name="new-web-service"></a>新的 Web 服务
-如果创建新的基于 Azure 资源管理器的 Web 服务，终结点构造不再可用。 相反，可以通过以下两种方法生成 JSON 格式的 Web 服务定义 (WSD) 文件：使用 [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell commandlet 从预测实验，或使用 [*Export-AzureRmMlWebservice*](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice?view=azurermps-6.6.0) PowerShell commandlet 从已部署的基于 Resource Manager 的 Web 服务。
+如果创建新的基于 Azure 资源管理器的 Web 服务，终结点构造不再可用。 相反，可以通过以下两种方法生成 JSON 格式的 Web 服务定义 (WSD) 文件：使用 [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell commandlet 从预测实验，或使用 [*Export-AzureRmMlWebservice*](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) PowerShell commandlet 从已部署的基于 Resource Manager 的 Web 服务。
 
 有了导出的 WSD 文件并可对其进行版本控制以后，还可以将 WSD 部署为不同 Azure 区域中不同 Web 服务计划中的新 Web 服务。 只需确保提供正确的存储帐户配置以及新的 Web 服务计划 ID。 要修补其他 iLearner 文件，可以修改 WSD 文件、更新训练模型的位置引用，然后将其部署为新的 Web 服务。
 

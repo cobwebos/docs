@@ -7,15 +7,15 @@ manager: cgrounlun
 ms.service: cognitive-services
 ms.technology: anomaly-finder
 ms.topic: include
-ms.date: 11/15/2018
+ms.date: 03/21/2019
 ms.author: nitinme
 ms.custom: include file
-ms.openlocfilehash: e93b889ee3ead06c28f9fec5659a61aad2752bac
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: HT
+ms.openlocfilehash: 1dab9b0e23b5fe574f9b4506fdcad510d378bfef
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716132"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494623"
 ---
 > [!NOTE]
-> 异常查找器现提供个人预览版。 若要加入异常查找器个人预览版，请[与我们联系](mailto:kenshoteam@microsoft.com)。 获得访问权限后，请参阅访问控制的[异常查找器个人预览版文档](https://aka.ms/AnomalyFinderPrivatePreview)以了解详细信息。
+> 异常情况检测程序 API （现在在公共预览版） 替换异常查找器实验室。 现有异常查找器实验室将于 2019 年 4 月 30 日删除。 我们鼓励您将在此时间之前迁移到异常情况检测程序。 请参阅[异常情况检测程序 API 文档](../articles/cognitive-services/anomaly-detector/index.yml)有关详细信息。 

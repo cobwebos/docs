@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 9929b09280cea56a5fadcd4d0d9aba5b851f326e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7d1c5bc54d909d1a948123839d95e1ee1158a5c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544029"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444826"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自动缩放和区域冗余应用程序网关（公共预览版）
 
@@ -29,6 +29,29 @@ ms.locfileid: "57544029"
 > 自动缩放和区域冗余应用程序网关 SKU 目前处于公共预览状态。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+
+## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>SKU v1 和 v2 SKU 之间的功能比较
+
+下表比较了每个 SKU 提供的功能。
+
+|                                                   | v1 SKU   | v2 SKU   |
+| ------------------------------------------------- | -------- | -------- |
+| 自动缩放                                       |          | &#x2713; |
+| 区域冗余                                   |          | &#x2713; |
+| &nbsp;静态 VIP&nbsp;&nbsp;                      |          | &#x2713; |
+| 基于 URL 的路由                                 | &#x2713; | &#x2713; |
+| 多站点托管                             | &#x2713; | &#x2713; |
+| 流量重定向                               | &#x2713; | &#x2713; |
+| Web 应用程序防火墙 (WAF)                    | &#x2713; | &#x2713; |
+| 安全套接字层 (SSL) 终止            | &#x2713; | &#x2713; |
+| 端到端 SSL 加密                         | &#x2713; | &#x2713; |
+| 会话相关性                                  | &#x2713; | &#x2713; |
+| 自定义错误页                                | &#x2713; | &#x2713; |
+| 重写 HTTP (S) 标头                           |          | &#x2713; |
+| WebSocket 支持                                 | &#x2713; | &#x2713; |
+| HTTP/2 支持                                    | &#x2713; | &#x2713; |
+| 连接清空                               | &#x2713; | &#x2713; |
+| Azure Kubernetes 服务 (AKS) 入口控制器 |          | &#x2713; |
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -48,7 +71,7 @@ ms.locfileid: "57544029"
 |入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
 |Azure 诊断中的性能日志|不支持。<br>应当使用 Azure 指标。|
 |计费|目前不收费。|
-|FIPS 模式、WebSocket|目前不支持。|
+|FIPS 模式|目前不支持。|
 |“仅 ILB”模式|目前不支持。 同时支持公共和 ILB 模式。|
 |Netwatcher 集成|在公共预览版中不受支持。|
 

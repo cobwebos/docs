@@ -74,21 +74,6 @@ items:
       - name: 将 HDInsight 应用发布到 Azure 市场
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: 安装已发布的应用 - Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: 安装已发布的应用 - Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: 安装已发布的应用 - Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: 安装已发布的应用 - H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: 安装已发布的应用 - Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: 安全
     items:
     - name: 将 SSH 与 HDInsight 配合使用
@@ -178,9 +163,6 @@ items:
       maintainContext: true
     - name: 为工作流使用 Apache Oozie
       href: ../hdinsight-use-oozie-linux-mac.md
-      maintainContext: true
-    - name: 使用基于时间的 Apache Oozie 协调器
-      href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: 群集及服务端口和 URI
       href: ../hdinsight-hadoop-port-settings-for-services.md
@@ -283,20 +265,6 @@ items:
     - name: 将 .NET 解决方案迁移到 Linux 群集
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: 部署和管理 Apache Storm 拓扑
-      href: apache-storm-deploy-monitor-topology.md
-    - name: 使用 Apache Maven 构建 Java 应用程序
-      href: ../hdinsight-hbase-build-java-maven.md
-      maintainContext: true
-    - name: 访问 Apache Hadoop YARN 应用程序日志
-      href: ../hdinsight-hadoop-access-yarn-app-logs.md
-      maintainContext: true
-    - name: 开发脚本操作
-      href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: 使用 Apache Ambari API 监视群集
-      href: ../hdinsight-monitor-use-ambari-api.md
-      maintainContext: true
 - name: 资源
   items:
   - name: Azure 路线图
@@ -312,9 +280,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2dd6ba413eaaad3e740c9c4dcc905f7384172f1a
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: b8a55191f78010bab759cf90880c3b7aaddab7ba
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359784"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444960"

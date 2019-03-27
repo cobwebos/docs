@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: 77a391cc661ed33f5888d2b18cb9c5db16498cd6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5ad1339c04444bcb4cc550be26e239e65227d2ce
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553338"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494851"
 ---
 | 资源 | 默认限制 | 注意 |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ ms.locfileid: "57553338"
 | 每个侦听器的 URL 映射数 |第 | |
 | 每个 URL 映射基于路径的最大规则数|100||
 | 重定向配置数 |100<sup>1</sup>| |
-| 并发的 WebSocket 连接数 |5,000| |
+| 并发的 WebSocket 连接数 |中型网关 20k<br> 大型网关 50k| |
 | 最大 URL 长度|8,000||
 | 最大文件上传大小标准 |2 GB | |
 | 最大文件上传大小 WAF |中型 WAF 网关，100 MB<br>大型 WAF 网关，500 MB| |

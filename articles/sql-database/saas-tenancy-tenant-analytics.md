@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 9f88314bbf507dc3b4e282532acfa079c2a63cce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0be39aaf5526ea288764fc72d6c498cca2d659b7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890536"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481682"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>使用提取的数据运行跨租户分析 - 单租户应用
  
@@ -91,7 +91,7 @@ ms.locfileid: "57890536"
 2. 设置脚本中的 $DemoScenario 变量，使其与所选的分析存储匹配：
     - 若要使用不包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **2**
     - 若要使用包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **3**  
-3. 按 **F5** 运行演示脚本（用于调用 *Deploy-TenantAnalytics<XX>.ps1* 脚本），以创建租户分析存储。 
+3. 按**F5**若要运行演示脚本 (用于调用*Deploy-tenantanalytics\<XX >.ps1*脚本) 以便创建租户分析存储。 
 
 现在，已部署应用程序，并填充了感兴趣的租户数据，使用[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)连接**tenants1-dpt-&lt;用户&gt;** 和**目录-dpt-&lt;用户&gt;** 服务器使用的登录名 =*开发人员*，密码 = *P\@ssword1*。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
 
@@ -120,7 +120,7 @@ ms.locfileid: "57890536"
 
 1. 在 SSMS 中，连接到 catalog-dpt-&lt;User&gt; 中的 **jobaccount** 数据库。
 2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
-3. 修改脚本顶部的 @User 变量，将 <User> 替换为部署 Wingtip SaaS 应用时使用的用户值。
+3. 修改脚本顶部的 @User 变量，将 `<User>` 替换为部署 Wingtip SaaS 应用时使用的用户值。
 4. 按 **F5** 运行脚本，以创建两个目标组。
 
 ### <a name="extract-raw-data-from-all-tenants"></a>从所有租户提取原始数据
@@ -134,7 +134,7 @@ ms.locfileid: "57890536"
 
 1. 在 SSMS 中，连接到 catalog-dpt-&lt;User&gt; 服务器中的 **jobaccount** 数据库。
 2. 在 SSMS 中，打开 *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*。
-3. 修改脚本顶部的 @User，将 <User> 替换为部署 Wingtip SaaS 应用时使用的用户名 
+3. 修改脚本顶部的 @User，将 `<User>` 替换为部署 Wingtip SaaS 应用时使用的用户名 
 4. 按 F5 运行脚本，以创建并运行从每个租户数据库提取门票和客户数据的作业。 该作业会将数据保存到分析存储中。
 5. 查询 tenantanalytics 数据库中的 TicketsRawData 表，确保该表中已填充来自所有租户的门票信息。
 

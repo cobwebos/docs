@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 0fd96f9bd3027568e81e9c56ddb095297c699683
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
-ms.translationtype: HT
+ms.openlocfilehash: 77519c57c9a603ae0eff46d248ff15432d0404fa
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089768"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485384"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>使用 REST API 通过安全组视图分析虚拟机安全性
 
@@ -42,7 +42,7 @@ ms.locfileid: "39089768"
 
 ## <a name="log-in-with-armclient"></a>使用 ARMClient 登录
 
-```PowerShell
+```powershell
 armclient login
 ```
 

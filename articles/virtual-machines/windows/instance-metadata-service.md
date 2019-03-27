@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 777b3a8d414f0b785d908c37da98e987445ed96d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c54d2aef2d8e748e31bffcecef323c4806d15f60
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317453"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482043"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -96,6 +96,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > 所有实例元数据查询都要区分大小写。
 
 ### <a name="data-output"></a>数据输出
+
 默认情况下，实例元数据服务以 JSON 格式返回数据 (`Content-Type: application/json`)。 但是，如果提出请求，不同 API 可以其他格式返回数据。
 下表为 API 可能支持的其他数据格式的参考。
 
@@ -111,7 +112,10 @@ API | 默认数据格式 | 其他格式
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
-### <a name="security"></a>“安全”
+> [!NOTE]
+> 对于叶节点`format=json`不起作用。 这些查询`format=text`需要显式指定是否默认格式是 json。
+
+### <a name="security"></a>安全
 
 只能从不可路由的 IP 地址上正在运行的虚拟机实例中访问实例元数据服务终结点。 此外，服务会拒绝任何带有 `X-Forwarded-For` 标头的请求。
 请求必须包含 `Metadata: true` 标头，以确保实际请求是直接计划好的，而不是无意重定向的一部分。
@@ -123,8 +127,8 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 HTTP 状态代码 | 原因
 ----------------|-------
 200 正常 |
-400 错误请求 | 缺少 `Metadata: true` 标头
-404 未找到 | 请求的元素不存在 
+400 错误请求 | 缺少`Metadata: true`标头或查询的叶节点时丢失格式
+404 未找到 | 请求的元素不存在
 不允许使用 405 方法 | 仅支持 `GET` 和 `POST` 请求
 429 请求过多 | 目前该 API 每秒最多支持 5 个查询
 500 服务错误     | 请稍后重试
@@ -503,12 +507,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Azure 具有各种主权云，如 [Azure 政府](https://azure.microsoft.com/overview/clouds/government/)。 有时你需要使用 Azure 环境来做出一些运行时决策。 以下示例显示了如何实现此行为。
 
 **请求**
-``` bash
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **响应**
-```
+```bash
 AZUREPUBLICCLOUD
 ```
 

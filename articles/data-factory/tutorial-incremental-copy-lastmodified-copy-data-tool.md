@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: e5e184e6dadfa993e0b758ad32b54ea6ccfcb272
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d79b44d0123d64d6280939767e5df7b5f64a5fcb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546528"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445957"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>以增量方式将通过复制数据工具基于 LastModifiedDate 的新功能和更改文件的复制
 
@@ -49,9 +49,10 @@ ms.locfileid: "57546528"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“+ 新建” > “数据 + 分析” > “数据工厂”： 
+1. 在左侧菜单中，选择**创建资源** > **数据 + 分析** > **数据工厂**: 
    
-   ![新建数据工厂](./media/tutorial-copy-data-tool/new-azure-data-factory-menu.png)
+   ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory**。 
       
      ![新建数据工厂](./media/tutorial-copy-data-tool/new-azure-data-factory.png)

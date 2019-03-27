@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 3f4f99a37718fac3ae4baa14553290d63c7bce63
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: 2b0f3a4394267a808b6e6e0a73abfaf1e698ff1c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653962"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445023"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用
 
@@ -69,7 +69,7 @@ HDInsight 提供各种示例数据集，它们存储在 `/example/data` 和 `/Hd
 在前面的示例中，日志级别为 ERROR。
 
 > [!NOTE]  
-> 还可以使用 [Apache Log4j](https://en.wikipedia.org/wiki/Log4j) 日志记录工具来生成 log4j 文件，然后将该文件上传到 Blob。 请参阅[将数据上传到 HDInsight](../hdinsight-upload-data.md) 以获取相关说明。 有关如何将 Azure 存储中的 Blob 与 HDInsight 配合使用的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](../hdinsight-hadoop-use-blob-storage.md)。
+> 还可以使用 [Apache Log4j](https://en.wikipedia.org/wiki/Log4j) 日志记录工具来生成 log4j 文件，并将该文件上传到 Blob。 请参阅[将数据上传到 HDInsight](../hdinsight-upload-data.md) 以获取相关说明。 有关如何将 Azure 存储中的 Blob 与 HDInsight 配合使用的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](../hdinsight-hadoop-use-blob-storage.md)。
 
 ## <a id="job"></a>示例作业
 
@@ -117,7 +117,7 @@ HDInsight 可以使用各种方法来运行 Pig Latin 作业。 使用下表来�
 * [将数据上传到 HDInsight](../hdinsight-upload-data.md)
 * [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
 * [将 Apache Sqoop 与 HDInsight 配合使用](hdinsight-use-sqoop.md)
-* [将 Apache Oozie 和 HDInsight 配合使用](../hdinsight-use-oozie.md)
+* [将 Apache Oozie 和 HDInsight 配合使用](../hdinsight-use-oozie-linux-mac.md)
 * [将 MapReduce 作业与 HDInsight 配合使用][hdinsight-use-mapreduce]
 
 [apachepig-home]: https://pig.apache.org/

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8cda538cade4750e03ecb91dfb2c478df730e556
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 20ca4b9d347b9dc01e3b890fcf3758fb2fb135b9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961289"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486132"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -63,8 +63,8 @@ OrchestrationStep 元素包含以下属性：
 
 | 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| 顺序 | 是 | 业务流程步骤的顺序。 | 
-| Type | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange - 指示业务流程步骤与声明提供程序交换声明。</li><li>SendClaims - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> | 
+| `Order` | 是 | 业务流程步骤的顺序。 | 
+| `Type` | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange - 指示业务流程步骤与声明提供程序交换声明。</li><li>SendClaims - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> | 
 | ContentDefinitionReferenceId | 否 | 与此业务流程步骤相关联的[内容定义](contentdefinitions.md)的标识符。 通常内容定义引用标识符在自断言的技术配置文件中定义。 但是，在某些情况下，Azure AD B2C 需要显示无技术配置文件的某些内容。 如果业务流程步骤的类型是以下项（`ClaimsProviderSelection` 或 `CombinedSignInAndSignUp`）之一，则有两个示例。 Azure AD B2C 需要在没有技术配置文件的情况下显示标识提供者选择。 | 
 | CpimIssuerTechnicalProfileReferenceId | 否 | 业务流程步骤的类型是 `SendClaims`。 此属性定义为信赖方颁发令牌的声明提供程序的技术配置文件标识符。  如果不存在，则不会创建任何信赖方令牌。 |
 
@@ -92,8 +92,8 @@ Precondition 元素包含以下属性：
 
 | 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| Type | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist（指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals（指定当指定声明存在且其值等于指定值时应执行操作）。 |
-| ExecuteActionsIf | 是 | 使用 true 或 false 测试确定是否应执行前置条件中的操作。 | 
+| `Type` | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist（指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals（指定当指定声明存在且其值等于指定值时应执行操作）。 |
+| `ExecuteActionsIf` | 是 | 使用 true 或 false 测试确定是否应执行前置条件中的操作。 | 
 
 Precondition 元素包含以下元素：
 

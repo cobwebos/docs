@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d558f0fa5abc421785ff6f9fcc2a6318819e3ebc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ae2384d0ac6773ccd362778d2913cdcaa9cb4d6c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012726"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446706"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -93,23 +93,15 @@ Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关�
 
 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 
 
-## <a name="accessing-your-blobs-files-and-queues"></a>访问 Blob、文件和队列
+## <a name="securing-access-to-storage-accounts"></a>保护对存储帐户的访问
 
-每个存储帐户都有两个身份验证密钥，任何一个都可以用于任何操作。 由于有两个密钥，因此可以不定期地对其滚动更新以增强安全性。 确保密钥安全至关重要，因为使用密钥和帐户名即可对存储帐户中的所有数据进行无限制的访问。
+到 Azure 存储的每个请求必须进行授权。 Azure 存储支持以下授权方法：
 
-本部分探讨如何通过两种方式来确保存储帐户及其数据的安全性。 若要详细了解如何确保存储帐户及其数据的安全性，请参阅 [Azure 存储安全指南](storage-security-guide.md)。
-
-### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>使用 Azure AD 确保对存储帐户进行安全访问
-
-若要确保对存储数据进行安全访问，一种方式是控制对存储帐户密钥的访问。 使用资源管理器基于角色的访问控制 (RBAC) 时，可以向用户、组或应用程序分配角色。 这些角色与特定的一组允许的或禁止的操作绑定。 通过 RBAC 授予对存储帐户的访问权限只是对该存储帐户的管理操作（例如更改访问层）进行的处理。 不能使用 RBAC 授予对数据对象（例如特定容器或文件共享）的访问权限。 但是，可以使用 RBAC 授予对存储帐户密钥的访问权限，然后即可使用这些密钥读取数据对象。
-
-### <a name="securing-access-using-shared-access-signatures"></a>使用共享访问签名来确保访问安全性
-
-可以使用共享访问签名和存储的访问策略来确保数据对象的安全性。 共享访问签名 (SAS) 是一个字符串，包含可附加到资产的 URI 的安全令牌，用于委派特定存储对象的访问权限，以及指定访问的权限和日期/时间范围等限制。 此功能用途很广。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)。
-
-### <a name="public-access-to-blobs"></a>公开访问 Blob
-
-可以通过 Blob 服务提供对容器及其 Blob 或特定 Blob 的公开访问权限。 指定某个容器或 Blob 为公用的时，任何人都可以匿名读取它，不需要进行身份验证。 举例来说，如果你的网站使用 Blob 存储中的图像、视频或文档，则需这样做。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
+- **Blob 和队列数据的 azure Active Directory (Azure AD) 集成。** Azure 存储支持通过基于角色的访问控制 (RBAC) 的 Blob 和队列服务的身份验证和授权与 Azure AD 凭据。 授权请求与 Azure AD 建议用于卓越的安全性和易用性。 有关详细信息，请参阅[进行身份验证访问 Azure blob 和队列使用 Azure Active Directory](storage-auth-aad.md)。
+- **Azure AD 授权 SMB 上 Azure 文件 （预览版）。** 通过 SMB （服务器消息块） 通过 Azure Active Directory 域服务，azure 文件支持基于标识的授权。 已加入域的 Windows 虚拟机 (Vm) 可以访问 Azure 文件共享使用 Azure AD 凭据。 有关详细信息，请参阅[SMB 上的 Azure 文件 （预览版） 的概述的 Azure Active Directory 授权](../files/storage-files-active-directory-overview.md)。
+- **使用共享密钥的授权。** Azure 存储 Blob、 队列和表服务和 Azure 文件支持授权对具有共享该客户端使用授权将每个请求都使用存储帐户访问密钥进行签名的标头传递的共享密钥。 有关详细信息，请参阅[通过共享密钥进行授权](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
+- **授权使用共享访问签名 (SAS)。** 共享的访问签名 (SAS) 是一个包含可以追加到存储资源的 URI 的安全令牌的字符串。 安全令牌将封装权限和访问的时间间隔等限制。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)。
+- **对容器和 blob 的匿名访问。** 容器和其 blob 可能公开可用。 当您指定容器或 blob 是公共的时任何人都可以读取它以匿名方式;无身份验证是必需的。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
 
 ## <a name="encryption"></a>加密
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2c04c13eb6399bebf908337d8f71bd03adf4d06a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101085"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447218"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
 
@@ -39,9 +39,10 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“新建” > “数据 + 分析” > “数据工厂”：
+1. 在左侧菜单中，选择**创建资源** > **数据 + 分析** > **数据工厂**:
    
-   ![新建数据工厂](./media/load-azure-data-lake-storage-gen2/new-azure-data-factory-menu.png)
+   ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. 在“新建数据工厂”页中，为下图中所示的字段提供值： 
       
    ![“新建数据工厂”页](./media/load-azure-data-lake-storage-gen2//new-azure-data-factory.png)

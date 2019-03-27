@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2b4fcb42c913149f8caf05a72fb089586ee21e2a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106114"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498165"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>使用事件处理程序主机从 Azure 事件中心接收事件
 
@@ -83,7 +83,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 接下来，实例化 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 实例。 根据具体的重载，在构造函数中创建 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 实例时，将使用以下参数：
 
-- **hostName：** 每个使用者实例的名称。 **EventProcessorHost** 的每个实例必须在使用者组中对此变量使用唯一值，因此，最好不要对此值进行硬编码。
+- **hostName：** 每个使用者实例的名称。 每个实例**EventProcessorHost**必须具有使用者组，因此不要硬编码此值中此变量的唯一值。
 - **eventHubPath：** 事件中心的名称。
 - **consumerGroupName：** 事件中心使用 $Default 作为默认使用者组的名称，但合理的做法是创建一个使用者组，以进行特定方面的处理。
 - **eventHubConnectionString：** 事件中心的连接字符串，可从 Azure 门户中检索。 此连接字符串应该对事件中心拥有“侦听”权限。
@@ -113,7 +113,7 @@ public class SimpleEventProcessor : IEventProcessor
 | **使用者组名称** | **分区 ID** | **主机名（所有者）** | **租约（或所有权）获取时间** | **分区（检查点）中的偏移量** |
 | --- | --- | --- | --- | --- |
 | $Default | 0 | Consumer\_VM3 | 2018-04-15T01:23:45 | 156 |
-| $Default | 1 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
+| $Default | 第 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
 | $Default | 2 | Consumer\_VM0 | 2018-04-15T01:22:56 | 122 |
 | : |   |   |   |   |
 | : |   |   |   |   |
@@ -125,7 +125,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 每次调用 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 都会提供事件的集合。 你需要负责处理这些事件。 如果要确保处理器主机将每条消息至少处理一次，则需要编写自己的继续重试代码。 但请注意有害消息。
 
-建议以相对较快的速度执行操作；也就是说，尽量减少处理量。 改用使用者组。 如果需要写入存储并执行某种路由，通常最好是使用两个使用者组，并使用两个可以单独运行的 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 实现。
+建议以相对较快的速度执行操作；也就是说，尽量减少处理量。 改用使用者组。 如果需要写入到存储并进行某些路由，则最好使用两个使用者组，并有两个[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)单独运行的实现。
 
 在处理过程中的某个阶段，你可能想要跟踪已读取和已完成哪些信息。 如果必须重新开始读取，以免返回到流的开头，则保持跟踪至关重要。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 使用检查点简化了这种跟踪。 检查点是给定使用者组中给定分区的位置或偏移量，你希望在此位置处理消息。 在 **EventProcessorHost** 中标记检查点的过程是通过在 [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) 对象中调用 [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) 方法实现的。 此操作是在 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 方法中完成，但也可以在 [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 中完成。
 
@@ -141,7 +141,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 ## <a name="shut-down-gracefully"></a>正常关闭
 
-最后，[EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) 能够干净关闭所有分区读取器，始终应该在关闭 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 的实例时调用它。 否则，在由于租约过期和时期冲突而启动 **EventProcessorHost** 的其他实例时可能导致延迟。 此[博客文章](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/)详细介绍了时期管理
+最后，[EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) 能够干净关闭所有分区读取器，始终应该在关闭 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 的实例时调用它。 否则，在由于租约过期和时期冲突而启动 **EventProcessorHost** 的其他实例时可能导致延迟。 中详细介绍 epoch 管理[Epoch](#epoch)本文的相关部分。 
 
 ## <a name="lease-management"></a>租约管理
 向 EventProcessorHost 实例注册事件处理程序类会启动事件处理。 主机实例租用事件中心的一些分区，可能会从其他主机实例中获取一些租用，以实现跨所有主机实例均匀分布分区。 对于每个租用分区，主机实例先创建所提供事件处理程序类的实例，再从相应分区接收事件，并将它们传递给事件处理程序实例。 随着添加的实例和获取的租用变多，EventProcessorHost 最终会均衡所有使用者之间的负载。
@@ -159,6 +159,32 @@ public class SimpleEventProcessor : IEventProcessor
 - [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout)：如果此参数为 **true**，则当接收分区中事件的底层调用超时时，会调用 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)。在分区不活动期间，可以使用此方法执行基于时间的操作。
 - [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider)：用于设置函数指针或 lambda 表达式，当读取器开始读取分区时，可以调用该函数或表达式来提供初始偏移量。 如果未指定此偏移量，读取器会从最旧的事件开始，除非已在提供给 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 构造函数的存储帐户中保存了包含偏移量的 JSON 文件。 若要更改读取器的启动行为，此方法很有用。 调用此方法时，对象参数将包含正在为其启动读取器的分区 ID。
 - [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs)：用于接收 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 中发生的任何底层异常的通知。 如果操作未按预期进行，很适合从此事件开始调查。
+
+## <a name="epoch"></a>Epoch
+
+下面是接收时期的工作原理：
+
+### <a name="with-epoch"></a>使用纪元
+Epoch 是服务使用，以强制实施分区/租用所有权的唯一标识符 （epoch 值）。 创建使用基于时期的接收器[CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet)方法。 此方法创建的 Epoch 基于接收方。 从指定的使用者组特定的事件中心分区创建接收者时。
+
+Epoch 功能提供用户能够确保，只有一个接收方上有一个使用者组随时中时，使用以下规则：
+
+- 如果使用者组中没有任何现有的接收方，用户可以使用任何 epoch 值创建接收方。
+- 如果没有纪元值 e1 与接收方和使用 epoch 值 e2 创建新的接收方其中 e1 < = e2，将自动断开连接 e1 与接收方，e2 与接收方已成功创建。
+- 如果没有纪元值 e1 与接收方和使用 epoch 值 e2 创建新的接收方其中 e1 > e2，然后创建与 e2 失败并出现错误：Epoch e1 与接收方已存在。
+
+### <a name="no-epoch"></a>没有纪元
+创建使用基于非 Epoch 接收者[CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet)方法。 
+
+在流处理用户想要从中创建多个接收方上单个使用者组中有一些方案。 若要支持这种情况下，我们提供创建而无需 epoch 接收者功能并在这种情况下我们允许最多 5 个并发接收程序上的使用者组。
+
+### <a name="mixed-mode"></a>混合的模式
+我们不建议在其中创建接收方使用时期，然后切换到无 epoch 或进行相反转换的相同使用者组上的应用程序使用情况。 但是，在这种情况，该服务处理它使用以下规则：
+
+- 如果没有为接收方已创建的 epoch e1 与主动接收事件并使用没有纪元创建新的接收方，新的接收方的创建将失败。 Epoch 接收者始终优先在系统中。
+- 如果没有为接收方已使用 epoch e1 创建，并且已断开连接，并使用新 MessagingFactory 上没有纪元创建新的接收方，创建新的接收方将会成功。 有一点需要此处我们的系统将检测在大约 10 分钟后的"接收方断开连接"。
+- 如果有一个或多个接收方使用任何时期中，创建和使用 epoch e1 创建新的接收方，所有旧的接收方断开连接。
+
 
 ## <a name="next-steps"></a>后续步骤
 

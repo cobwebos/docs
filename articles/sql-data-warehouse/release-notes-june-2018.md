@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 672bfee600f19661c6bc68535a68fff4a0ccc43f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f39def90aa8a5b6532f5e7c58db1dc455acb24d5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835361"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486880"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 6 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 6 月发行的版本中所引入的新功能和所做的更改。 
@@ -27,7 +27,7 @@ SQL 数据仓库每 8 小时就会自动拍摄数据仓库的快照，从而保�
 
 SQL 数据仓库现在支持[用户定义的还原点](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/)通过[新建 AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) cmdlet。
 
-```PowerShell
+```powershell
 New-AzSqlDatabaseRestorePoint
     -ResourceGroupName $ResourceGroupName
     -ServerName $ServerName
@@ -118,7 +118,7 @@ start_time                | end_time                | command
 * [功能请求]
 * [视频]
 * [客户顾问团队博客]
-* [堆栈溢出论坛]
+* [Stackoverflow 论坛]
 * [Twitter]
 
 
@@ -126,7 +126,7 @@ start_time                | end_time                | command
 [客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [客户成功案例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[堆栈溢出论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
+[Stackoverflow 论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

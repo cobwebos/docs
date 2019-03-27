@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 493f6f3380dee4ed70bb6e0bc9bba24f93071097
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 954cbe66bfc4a0cebf7692a90aeee637ffcb6ca3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165325"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485049"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>管理已向 Azure 文件同步注册的服务器
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -25,7 +25,7 @@ ms.locfileid: "56165325"
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>向存储同步服务注册/注销服务器
 向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点，该终结点表示应与 Azure 文件共享（也称为云终结点）同步的特定文件夹。 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 若要向存储同步服务注册服务器，首先必须确保服务器满足以下先决条件：
 
 * 服务器必须运行支持的 Windows Server 版本。 有关详细信息，请参阅 [Azure 文件同步系统要求和互操作性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)。
@@ -101,7 +101,7 @@ ms.locfileid: "56165325"
 #### <a name="register-the-server-with-powershell"></a>使用 PowerShell 注册服务器
 也可以通过 PowerShell 执行服务器注册。 这是云解决方案提供商 (CSP) 订阅唯一支持的服务器注册方法：
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 Login-AzureRmStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
 Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
@@ -116,7 +116,7 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - Res
 #### <a name="optional-recall-all-tiered-data"></a>（可选）召回所有分层数据
 如果希望在删除 Azure 文件同步后当前分层的文件可用（即，这是一个生产环境，而不是测试环境），请召回每个包含服务器终结点的卷上的所有文件。 对所有服务器终结点禁用云分层，然后运行以下 PowerShell cmdlet：
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
@@ -134,7 +134,7 @@ Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 
 这还可以通过简单的 PowerShell 脚本来实现：
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
 $accountInfo = Connect-AzAccount
@@ -172,20 +172,20 @@ Get-AzureRmStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEac
 
 例如，可以创建新的中止值来确保 Azure 文件同步在工作周的上午 9 点到下午 5 点（17:00 点）之间不超过 10 Mbps： 
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 New-StorageSyncNetworkLimit -Day Monday, Tuesday, Wednesday, Thursday, Friday -StartHour 9 -EndHour 17 -LimitKbps 10000
 ```
 
 可以使用以下 cmdlet 查看限制：
 
-```PowerShell
+```powershell
 Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
 若要删除网络限制，请使用 `Remove-StorageSyncNetworkLimit`。 例如，可使用以下命令删除所有网络限制：
 
-```PowerShell
+```powershell
 Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 

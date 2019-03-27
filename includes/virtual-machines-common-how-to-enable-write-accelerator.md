@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/22/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 44533bc6ed0656be387fa76c0e975046ad7f79ab
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741498"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494988"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
 
@@ -96,7 +96,7 @@ Azure PowerShell 模块 5.5.0 和更高版本对相关的 cmdlet 做了更改，
 
 示例命令如下所示：
 
-```PowerShell
+```powershell
 New-AzVMConfig | Set-AzVMOsDisk | Add-AzVMDataDisk -Name "datadisk1" | Add-AzVMDataDisk -Name "logdisk1" -WriteAccelerator | New-AzVM
 
 Get-AzVM | Update-AzVM -OsDiskWriteAccelerator $true
@@ -114,7 +114,7 @@ Get-AzVmss | Update-AzVmss -OsDiskWriteAccelerator:$false
 
 将 `myVM`、`myWAVMs`、`log001`、磁盘大小和磁盘的 LunID 替换为适用于特定部署的值。
 
-```PowerShell
+```powershell
 # Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group
@@ -137,7 +137,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 可以使用以下脚本在现有磁盘上启用写入加速器。 将 `myVM`、`myWAVMs` 和 `test-log001` 替换为适用于特定部署的值。 该脚本会将写入加速器添加到 **$newstatus** 值设置为“$true”的现有磁盘。 使用 $false 值会在给定的磁盘上禁用写入加速器。
 
-```PowerShell
+```powershell
 #Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group

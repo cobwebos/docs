@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 03/02/2019
+ms.date: 03/26/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 86e28c3561968b1411a3baa9ec0daecfab6ac73f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 32328b89e8a220269f0d07c3700566db5b899d5b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202871"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445690"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
@@ -46,6 +46,8 @@ Azure Blob 存储的不可变存储使用户能够将业务关键数据对象存
 ## <a name="how-it-works"></a>工作原理
 
 Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于时间的保留和法定保留。 在容器上应用基于时间的保留策略或合法保留时，所有现有 blob 将移到不可变的蠕虫病毒状态在 30 秒内。 上传到该容器的所有新 blob 也会将迁移到不可变状态。 所有 blob 都移动到不可变状态后，确认的不可变的策略，并且所有覆盖或删除后不允许操作不可变的容器中的现有和新对象。
+
+容器和帐户删除也不允许如果受保护的不可变的策略的任何 blob。 如果至少存在一个 Blob 使用锁定的基于时间的保留策略或法定保留，则“删除容器”操作会失败。 如果至少有一个 WORM 容器有法定保留，或者有一个 Blob 有活动的保留时间间隔，则存储帐户删除操作会失败。 
 
 ### <a name="time-based-retention"></a>基于时间的保留期
 
@@ -85,12 +87,10 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 使用此功能不会产生额外的费用。 不可变数据的定价方式与常规的可变数据相同。 有关 Azure Blob 存储的定价详细信息，请参阅 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="getting-started"></a>入门
+不可变的存储是仅适用于常规用途 v2 和 Blob 存储帐户。 必须通过管理这些帐户[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 有关升级现有的常规用途 v1 存储帐户的信息，请参阅[存储帐户升级](../common/storage-account-upgrade.md)。
 
 最新版本的[Azure 门户](https://portal.azure.com)， [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并[Azure PowerShell](https://github.com/Azure/azure-powershell/releases)支持 Azure Blob 存储的不可变的存储。 [客户端库支持](#client-libraries)还提供了。
 
-> [!NOTE]
->
-> 不可变的存储是仅适用于常规用途 v2 和 Blob 存储帐户。 必须通过管理这些帐户[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 有关升级现有的常规用途 v1 存储帐户的信息，请参阅[存储帐户升级](../common/storage-account-upgrade.md)。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -114,17 +114,19 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
     ![菜单中的“锁定策略”](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
-    选择**锁定策略**。 策略现在已被锁定，且不能删除，将允许仅在保留间隔的扩展。
+6. 选择**锁定策略**并确认该锁。 策略现在已被锁定，且不能删除，将允许仅在保留间隔的扩展。 Blob 删除和不允许使用替代。 
 
-6. 若要启用法定保留，请选择“+ 添加策略”。 从下拉菜单中选择“法定保留”。
+    ![确认菜单上的"锁定策略"](media/storage-blob-immutable-storage/portal-image-5-lock-policy.png)
+
+7. 若要启用法定保留，请选择“+ 添加策略”。 从下拉菜单中选择“法定保留”。
 
     ![菜单中“策略类型”下面的“法定保留”](media/storage-blob-immutable-storage/portal-image-legal-hold-selection-7.png)
 
-7. 使用一个或多个标记创建法定保留。
+8. 使用一个或多个标记创建法定保留。
 
     ![策略类型下面的“标记名称”框](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-8. 若要清除合法保留，只需删除应用的合法保留标识符标记。
+9. 若要清除合法保留，只需删除应用的合法保留标识符标记。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -170,9 +172,9 @@ Az.Storage 预览版模块支持不可变存储。  若要启用该功能，请�
 
 不可变存储可以用于任何 Blob 类型，但我们建议主要将其用于块 Blob。 与块 Blob 不同，页 Blob 和追加 Blob 需先在 WORM 容器外部创建，然后复制到容器中。 复制这些 blob 到蠕虫容器中，不进一步后*追加*追加允许 blob 或页 blob 的更改。
 
-**是否始终需要创建新的存储帐户才能使用此功能？**
+**我是否需要创建新的存储帐户才能使用此功能？**
 
-与任何现有或新创建常规用途 v2 或 Blob 存储帐户，可以使用不可变的存储。 此功能适用于使用 GPv2 和 Blob 存储帐户中的块 blob 的使用情况。
+不可以，你可以与任何现有或新创建常规用途 v2 或 Blob 存储帐户使用不可变的存储。 此功能适用于使用 GPv2 和 Blob 存储帐户中的块 blob 的使用情况。 常规用途 v1 存储帐户不受支持，但可以轻松地升级到常规用途 v2。 有关升级现有的常规用途 v1 存储帐户的信息，请参阅[存储帐户升级](../common/storage-account-upgrade.md)。
 
 **可以将应用的合法保留和基于时间的保留策略？**
 
@@ -188,7 +190,7 @@ Az.Storage 预览版模块支持不可变存储。  若要启用该功能，请�
 
 **如果尝试删除的存储帐户有一个 WORM 容器，而该容器使用锁定的基于时间的保留策略或法定保留，会发生什么情况？**
 
-如果至少有一个 WORM 容器有法定保留，或者有一个 Blob 有活动的保留时间间隔，则存储帐户删除操作会失败。  必须先删除所有 WORM 容器，然后才能删除存储帐户。 有关删除容器的信息，请查看上一个问题。
+如果至少有一个 WORM 容器有法定保留，或者有一个 Blob 有活动的保留时间间隔，则存储帐户删除操作会失败。 必须先删除所有 WORM 容器，然后才能删除存储帐户。 有关删除容器的信息，请查看上一个问题。
 
 **当 Blob 处于不可变状态时，是否可以跨不同的 Blob 层（热、凉、冷）来移动数据？**
 

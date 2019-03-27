@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 635700529007cc90c7e9b79c224f55f34b326f0f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 5d7036f2c7301223b27c80402dace8e9ea05b7f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167064"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487815"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,13 +42,13 @@ ClaimsSchema 元素定义了可以引用为策略的一部分的声明类型。 
 
 ClaimType 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于声明类型的标识符。 其他元素可以在策略中使用此标识符。 |
 
 ClaimType 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | 在各种屏幕上向用户显示的标题。 可将值[本地化](localization.md)。 |
 | 数据类型 | 0:1 | 声明类型。 可以使用 boolean、date、dateTime、int、long、string、stringCollection、alternativeSecurityIdCollection 等数据类型。 |
@@ -63,13 +63,13 @@ PredicateValidationReference| 0:1 | 对 **PredicateValidationsInput** 元素的�
 
 DefaultPartnerClaimTypes 可能包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | 协议 | 0:n | 具有其默认合作伙伴声明类型名称的协议的列表。 |
 
 Protocol 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | Name | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值包括：OAuth1、OAuth2、SAML2、OpenIdConnect、WsFed 或 WsTrust。 |
 | PartnerClaimType | 是 | 要使用的声明类型名称。 |
@@ -104,10 +104,10 @@ Protocol 元素包含以下属性：
 
 Mask 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| Type | 是 | 声明掩码的类型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示简单的文本掩码应用于字符串声明的前导部分。 `Regex` 值指示正则表达式总体上应用于字符串声明。  如果指定了 `Regex` 值，则还必须通过要使用的正则表达式定义可选属性。 |
-| 正则表达式 | 否 | 如果将“类型”设置为 `Regex`，请指定要使用的正则表达式。
+| `Type` | 是 | 声明掩码的类型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示简单的文本掩码应用于字符串声明的前导部分。 `Regex` 值指示正则表达式总体上应用于字符串声明。  如果指定了 `Regex` 值，则还必须通过要使用的正则表达式定义可选属性。 |
+| `Regex` | 否 | 如果**`Type`** 设置为`Regex`，指定要使用的正则表达式。
 
 以下示例将配置具有 `Simple` 掩码的 PhoneNumber 声明：
 
@@ -144,13 +144,13 @@ Mask 元素包含以下属性：
 
 Restriction 元素可能包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | MergeBehavior | 否 | 用于将枚举值与具有相同标识符的父策略中的 ClaimType 合并的方法。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值是应追加到父策略中指定的集合的末尾的数据集合。 `Prepend` 值是应在父策略中指定的集合之前添加的数据集合。 `ReplaceAll` 值是应忽略的父策略中指定的数据集合。 |
 
 Restriction 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | 枚举 | 1:n | 可让用户在用户界面中为声明选择的可用选项，例如下拉列表中的值。 |
 | 模式 | 1:1 | 要使用的正则表达式。 |
@@ -159,7 +159,7 @@ Restriction 元素包含以下元素：
 
 Enumeration 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | 文本 | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
 |值 | 是 | 与此选项关联的声明值。 |
@@ -188,7 +188,7 @@ Enumeration 元素包含以下属性：
 
 Pattern 元素可以包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | RegularExpression | 是 | 此类型的声明必须匹配才能有效的正则表达式。 |
 | HelpText | 否 | 此声明的模式或正则表达式。 |

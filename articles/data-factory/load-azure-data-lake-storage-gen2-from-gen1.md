@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: e1dd3953925d4907617295fbc14a1a4e042213e1
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: b975b34c638db812d3809bf50d1eccbb651028b5
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309601"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448932"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
@@ -30,7 +30,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 本文介绍如何使用数据工厂复制数据工具将数据从 _Azure Data Lake Storage Gen1_ 复制到 _Azure Data Lake Storage Gen2_。 可以遵循类似步骤，从其他类型的数据存储中复制数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 其中有数据的 Azure Data Lake Storage Gen1 帐户。
@@ -38,9 +38,10 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“新建” > “数据 + 分析” > “数据工厂”：
+1. 在左侧菜单中，选择**创建资源** > **数据 + 分析** > **数据工厂**:
    
-   ![新建数据工厂](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory-menu.png)
+   ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. 在“新建数据工厂”页中，为下图中所示的字段提供值： 
       
    ![“新建数据工厂”页](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)

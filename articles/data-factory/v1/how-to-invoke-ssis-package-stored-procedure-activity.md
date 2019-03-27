@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ed53f9bf2e22e1d69a4e00de1e8d71291a5be46d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d61874a57801a6c02af885cab6a97ed38da1deb1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108706"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487917"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -229,7 +229,7 @@ ms.locfileid: "58108706"
         }
     ```
 2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹。
-3. 运行**新建 AzDataFactoryLinkedService** cmdlet 创建链接的服务：**AzureSqlDatabaseLinkedService**。 
+3. 运行 **New-AzDataFactoryLinkedService** cmdlet 以创建链接服务：**AzureSqlDatabaseLinkedService**。 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -306,13 +306,13 @@ ms.locfileid: "58108706"
 
 1. 运行**Get AzDataFactorySlice**以获取有关所有切片的输出数据集 * *，这是管道的输出表的详细信息。
 
-    ```PowerShell
+    ```powershell
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     请注意，此处指定的 StartDateTime 与在管道 JSON 中指定的开始时间是相同的。 
 1. 运行**Get AzDataFactoryRun**获取的详细信息的活动运行的特定部分。
 
-    ```PowerShell
+    ```powershell
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
 

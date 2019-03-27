@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: d9bce32e87984193938099b96a358cc4495fd0c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 522b9743af28dedb2aec5682a1ae95b9d52ad2d9
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119714"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446460"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
 
@@ -46,7 +46,8 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 
 1. 在左侧菜单中，选择“创建资源” > “Analytics” > “数据工厂”：
    
-   ![新建数据工厂](./media/load-data-into-azure-data-lake-store/new-azure-data-factory-menu.png)
+   ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. 在“新建数据工厂”页中，为下图中所示的字段提供值： 
       
    ![“新建数据工厂”页](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
