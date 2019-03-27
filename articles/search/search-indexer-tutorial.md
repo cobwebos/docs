@@ -1,32 +1,31 @@
 ---
 title: 有关在 Azure 门户中为 Azure SQL 数据库编制索引的教程 - Azure 搜索
-description: 在本教程中，对 Azure SQL 数据库进行爬网，提取可搜索的数据并填充 Azure 搜索索引。
+description: 在本教程中，连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 搜索索引。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312045"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201392"
 ---
 # <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>教程：使用 Azure 搜索索引器搜索 Azure SQL 数据库
 
-本教程演示如何配置索引器，以便从示例 Azure SQL 数据库提取可搜索的数据。 [索引器](search-indexer-overview.md)是 Azure 搜索组件，用于对外部数据源进行爬网，使用内容来填充[搜索索引](search-what-is-an-index.md)。 Azure SQL 数据库的索引器是所有索引器中使用最广泛的。 
+了解如何配置索引器来从示例 Azure SQL 数据库中提取可搜索的数据。 [索引器](search-indexer-overview.md)是 Azure 搜索组件，用于对外部数据源进行爬网，使用内容来填充[搜索索引](search-what-is-an-index.md)。 在所有索引器中，Azure SQL 数据库索引器运用最为广泛。 
 
 熟练掌握索引器的配置很有用，因为这样可以减少需编写和维护的代码量。 可以将索引器附加到数据源，让索引器提取数据并将其插入索引中，然后即可选择定期按计划运行索引器，以便拾取基础源中所做的更改，不必准备和推送符合架构的 JSON 数据集。
 
-在本教程中，请使用 [Azure 搜索 .NET 客户端库](https://aka.ms/search-sdk)和 .NET Core 控制台应用程序执行以下任务：
+在本教程中，使用 [Azure 搜索 .NET 客户端库](https://aka.ms/search-sdk)和 .NET Core 控制台应用程序来执行以下任务：
 
 > [!div class="checklist"]
-> * 下载并配置解决方案
 > * 将搜索服务信息添加到应用程序设置
 > * 在 Azure SQL 数据库中准备外部数据集 
 > * 查看示例代码中的索引和索引器定义
@@ -38,16 +37,16 @@ ms.locfileid: "53312045"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 搜索服务。 如需设置方面的帮助，请参阅[创建搜索服务](search-create-service-portal.md)。
+[创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
 
-* Azure SQL 数据库，提供索引器使用的外部数据源。 示例解决方案提供了一个用于创建表的 SQL 数据文件。
+* [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)，它提供索引器所用的外部数据源。 示例解决方案提供了一个用于创建表的 SQL 数据文件。
 
-* Visual Studio 2017。 可以使用免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 
+* + [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
 
 > [!Note]
 > 如果使用免费的 Azure 搜索服务，则仅限使用三个索引、三个索引器和三个数据源。 本教程每样创建一个。 请确保服务中有空间来接受新资源。
 
-## <a name="download-the-solution"></a>下载解决方案
+### <a name="download-the-solution"></a>下载解决方案
 
 本教程中使用的索引器解决方案来自一个 Azure 搜索示例集合，只需进行一次主下载即可获得。 用于本教程的解决方案为 DotNetHowToIndexers。
 
@@ -63,7 +62,7 @@ ms.locfileid: "53312045"
 
 6. 在“解决方案资源管理器”中，右键单击顶级节点父解决方案 >“还原 NuGet 包”。
 
-## <a name="set-up-connections"></a>设置连接
+### <a name="set-up-connections"></a>设置连接
 所需服务的连接信息在解决方案的 **appsettings.json** 文件中指定。 
 
 在解决方案资源管理器中打开 **appsettings.json**，以便根据本教程中的说明填充每项设置。  
@@ -90,22 +89,22 @@ ms.locfileid: "53312045"
 
 4. 在 Visual Studio 中将其作为第一个条目复制并粘贴到 **appsettings.json**。
 
-  > [!Note]
-  > 服务名称是包含 search.windows.net 的终结点的一部分。 如果有兴趣，可以在“概述”页的“概要”中查看完整 URL。 URL 如以下示例所示： https://your-service-name.search.windows.net
+   > [!Note]
+   > 服务名称是包含 search.windows.net 的终结点的一部分。 如果有兴趣，可以在“概述”页的“概要”中查看完整 URL。 URL 如以下示例所示： https://your-service-name.search.windows.net
 
 5. 在左侧的“设置” > “密钥”中，复制其中一个管理密钥并将其作为第二个条目粘贴到 **appsettings.json**。 密钥是在预配期间为服务生成的字母数字字符串，是对服务操作进行授权访问所必需的。 
 
-  添加两项设置以后，文件应如以下示例所示：
+   添加两项设置以后，文件应如以下示例所示：
 
-  ```json
-  {
+   ```json
+   {
     "SearchServiceName": "azs-tutorial",
     "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
     . . .
-  }
-  ```
+   }
+   ```
 
-## <a name="prepare-an-external-data-source"></a>准备外部数据源
+## <a name="prepare-sample-data"></a>准备示例数据
 
 在此步骤中，请创建一个可供索引器爬网的外部数据源。 本教程的数据文件为 hotels.sql，在 \DotNetHowToIndexers 解决方案文件夹中提供。 
 
@@ -125,7 +124,7 @@ ms.locfileid: "53312045"
 
 4. 打开新数据库的“SQL 数据库”页（如果尚未打开）。 资源名称应显示为“SQL 数据库”而非“SQL Server”。
 
-  ![“SQL 数据库”页](./media/search-indexer-tutorial/hotels-db.png)
+   ![“SQL 数据库”页](./media/search-indexer-tutorial/hotels-db.png)
 
 4. 在命令栏中单击“工具” > “查询编辑器”。
 
@@ -135,24 +134,24 @@ ms.locfileid: "53312045"
 
 7. 选择该文件，然后单击“打开”。 此脚本应与以下屏幕截图类似：
 
-  ![SQL 脚本](./media/search-indexer-tutorial/sql-script.png)
+   ![SQL 脚本](./media/search-indexer-tutorial/sql-script.png)
 
 8. 单击“运行”以执行查询。 在“结果”窗格中，应看到一条 3 行内容的消息，指示查询成功。
 
 9. 若要从此表返回一个行集，可执行以下充当验证步骤的查询：
 
-   ```sql
-   SELECT HotelId, HotelName, Tags FROM Hotels
-   ```
-   原型查询 `SELECT * FROM Hotels` 在查询编辑器中不起作用。 示例数据包括“位置”字段的地理坐标，目前在编辑器中无法处理。 如需要查询的其他列的列表，可执行以下语句：`SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    ```sql
+    SELECT HotelId, HotelName, Tags FROM Hotels
+    ```
+    原型查询 `SELECT * FROM Hotels` 在查询编辑器中不起作用。 示例数据包括“位置”字段的地理坐标，目前在编辑器中无法处理。 如需要查询的其他列的列表，可执行以下语句：`SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. 有了外部数据集以后，请复制数据库的 ADO.NET 连接字符串。 在数据库的“SQL 数据库”页，转到“设置” > “连接字符串”，然后复制 ADO.NET 连接字符串。
  
-  ADO.NET 连接字符串类似于以下示例，经修改后可使用有效的数据库名称、用户名和密码。
+    ADO.NET 连接字符串类似于以下示例，经修改后可使用有效的数据库名称、用户名和密码。
 
-  ```sql
-  Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-  ```
+    ```sql
+    Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    ```
 11. 在 Visual Studio 中将连接字符串粘贴到“AzureSqlConnectionString”中，作为 **appsettings.json** 文件中的第三个条目。
 
     ```json
@@ -250,15 +249,15 @@ public string HotelName { get; set; }
 
 2. 单击“搜索”按钮，发出一个空的搜索指令。 
 
-  索引中的三个条目以 JSON 文档的形式返回。 搜索浏览器返回 JSON 格式的文档，方便你查看整个结构。
+   索引中的三个条目以 JSON 文档的形式返回。 搜索浏览器返回 JSON 格式的文档，方便你查看整个结构。
 
 3. 接下来，输入搜索字符串：`search=river&$count=true`。 
 
-  此查询调用 `river` 一词的全文搜索，结果包含匹配文档的计数。 在索引很大且文档成千上万甚至数百万的测试方案中，返回匹配文档的计数很有用。 在本示例中，只有一个文档与查询匹配。
+   此查询调用 `river` 一词的全文搜索，结果包含匹配文档的计数。 在索引很大且文档成千上万甚至数百万的测试方案中，返回匹配文档的计数很有用。 在本示例中，只有一个文档与查询匹配。
 
 4. 最后，输入一个搜索字符串，将 JSON 输出限制为感兴趣的字段：`search=river&$count=true&$select=hotelId, baseRate, description`。 
 
-  查询响应范围缩小为选定字段，使输出更简洁。
+   查询响应范围缩小为选定字段，使输出更简洁。
 
 ## <a name="view-indexer-configuration"></a>查看索引器配置
 
@@ -268,7 +267,7 @@ public string HotelName { get; set; }
 2. 向下滚动，找到对应于“索引器”和“数据源”的磁贴。
 3. 单击一个磁贴，打开相应资源的列表。 可以选择单个索引器或数据源来查看或修改配置设置。
 
-  ![索引器和数据源磁贴](./media/search-indexer-tutorial/tiles-portal.png)
+   ![索引器和数据源磁贴](./media/search-indexer-tutorial/tiles-portal.png)
 
 
 ## <a name="clean-up-resources"></a>清理资源
