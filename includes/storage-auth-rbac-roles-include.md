@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: c7fa81f6d23962eedb3dfeafdd397b62a83d130e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 4c66f35537cff87eb53a6cfe9bc0389f038f1a10
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372657"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449762"
 ---
 Azure 提供了用于访问存储的数据的以下内置 RBAC 角色：
 
@@ -24,5 +24,8 @@ Azure 提供了用于访问存储的数据的以下内置 RBAC 角色：
 - [存储队列数据读取器](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader-preview):用来授予对 Azure 队列的只读权限。
 - [存储队列数据消息处理器](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor-preview):用于对授予扫视、 检索、 和到 Azure 存储队列中的消息的删除权限。
 - [存储队列数据消息发件人](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender-preview):用于授予将权限添加到 Azure 存储队列中的消息。
+
+> [!IMPORTANT]
+> RBAC 角色分配可能需要五分钟来传播。
 
 有关如何为 Azure 存储定义内置角色的详细信息，请参阅[了解角色定义](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview)。 有关创建自定义 RBAC 角色的信息，请参阅[创建用于 azure 基于角色的访问控制的自定义角色](../articles/role-based-access-control/custom-roles.md)。 

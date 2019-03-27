@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 143d14df3019aa0c5c5dd798f656f95c8ebde372
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731096"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485146"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 使用服务映射，可按所需方式查看服务器：将其视为提供重要服务的互连系统。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -372,52 +372,52 @@ Linux：
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL 记录
 类型为 *ServiceMapComputer_CL* 的记录包含具有服务映射代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | 工作区中计算机的唯一标识符 |
-| ResourceName_s | 工作区中计算机的唯一标识符 |
-| ComputerName_s | 计算机 FQDN |
-| Ipv4Addresses_s | 服务器的 IPv4 地址列表 |
-| Ipv6Addresses_s | 服务器的 IPv6 地址列表 |
-| DnsNames_s | DNS 名称的数组 |
-| OperatingSystemFamily_s | Windows 或 Linux |
-| OperatingSystemFullName_s | 操作系统的全名  |
-| Bitness_s | 计算机的位数（32 位或 64 位）  |
-| PhysicalMemory_d | 物理内存（以 MB 为单位） |
-| Cpus_d | CPU 数 |
-| CpuSpeed_d | CPU 速度（以 MHz 为单位）|
-| VirtualizationState_s | *未知*、*物理*、*虚拟*、*虚拟机监控程序* |
-| VirtualMachineType_s | *hyperv*、*vmware* 等等 |
-| VirtualMachineNativeMachineId_g | 由虚拟机监控程序分配的 VM ID |
-| VirtualMachineName_s | VM 的名称 |
-| BootTime_t | 引导时间 |
+| `Type` | *ServiceMapComputer_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | 工作区中计算机的唯一标识符 |
+| `ResourceName_s` | 工作区中计算机的唯一标识符 |
+| `ComputerName_s` | 计算机 FQDN |
+| `Ipv4Addresses_s` | 服务器的 IPv4 地址列表 |
+| `Ipv6Addresses_s` | 服务器的 IPv6 地址列表 |
+| `DnsNames_s` | DNS 名称的数组 |
+| `OperatingSystemFamily_s` | Windows 或 Linux |
+| `OperatingSystemFullName_s` | 操作系统的全名  |
+| `Bitness_s` | 计算机的位数（32 位或 64 位）  |
+| `PhysicalMemory_d` | 物理内存（以 MB 为单位） |
+| `Cpus_d` | CPU 数 |
+| `CpuSpeed_d` | CPU 速度（以 MHz 为单位）|
+| `VirtualizationState_s` | *未知*、*物理*、*虚拟*、*虚拟机监控程序* |
+| `VirtualMachineType_s` | *hyperv*、*vmware* 等等 |
+| `VirtualMachineNativeMachineId_g` | 由虚拟机监控程序分配的 VM ID |
+| `VirtualMachineName_s` | VM 的名称 |
+| `BootTime_t` | 引导时间 |
 
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 类型记录
 类型为 *ServiceMapProcess_CL* 的记录包含具有服务映射代理的服务器上 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | 工作区中进程的唯一标识符 |
-| ResourceName_s | 进程在运行它的计算机中的唯一标识符|
-| MachineResourceName_s | 计算机的资源名称 |
-| ExecutableName_s | 进程可执行文件的名称 |
-| StartTime_t | 进程池启动时间 |
-| FirstPid_d | 进程池中的第一个 PID |
-| Description_s | 进程说明 |
-| CompanyName_s | 公司名称 |
-| InternalName_s | 内部名称 |
-| ProductName_s | 产品名称 |
-| ProductVersion_s | 产品版本 |
-| FileVersion_s | 文件版本 |
-| CommandLine_s | 命令行 |
-| ExecutablePath_s | 可执行文件的路径 |
-| WorkingDirectory_s | 工作目录 |
-| UserName | 执行进程所用的帐户 |
-| UserDomain | 执行进程所在的域 |
+| `Type | *ServiceMapProcess_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | 工作区中进程的唯一标识符 |
+| `ResourceName_s` | 进程在运行它的计算机中的唯一标识符|
+| `MachineResourceName_s` | 计算机的资源名称 |
+| `ExecutableName_s` | 进程可执行文件的名称 |
+| `StartTime_t` | 进程池启动时间 |
+| `FirstPid_d` | 进程池中的第一个 PID |
+| `Description_s` | 进程说明 |
+| `CompanyName_s` | 公司名称 |
+| `InternalName_s` | 内部名称 |
+| `ProductName_s` | 产品名称 |
+| `ProductVersion_s` | 产品版本 |
+| `FileVersion_s` | 文件版本 |
+| `CommandLine_s` | 命令行 |
+| `ExecutablePath _s` | 可执行文件的路径 |
+| `WorkingDirectory_s` | 工作目录 |
+| `UserName` | 执行进程所用的帐户 |
+| `UserDomain` | 执行进程所在的域 |
 
 ## <a name="sample-log-searches"></a>示例日志搜索
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 76944d98d6a5fe7c3f83ce12bb2fdf1a34d5e234
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c904d8306c145bad57ca7d77b139a2ad6d216b0b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839094"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500247"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -274,7 +274,7 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) 使用加密、标识和授权策略帮助保护文件与电子邮件。 Azure RMS 可跨多个设备工作 — 手机、平板电脑和台式电脑保护组织内部和外部的数据。 因为 Azure RMS 添加了数据所属的保护级别，所以即使数据离开组织边界，此功能仍然可行。
 
-使用 Azure RMS 保护文件时，意味着使用行业标准加密并配合 [FIPS 140-2](https://csrc.nist.gov/groups/STM/cmvp/standards.html) 的完全支持。 使用 Azure RMS 进行数据保护时，即使文件被复制到不受 IT 控制的存储（例如云存储服务），也可保证该文件持续受到保护。 同样的情况出现在通过电子邮件共享的文件，文件将以电子邮件的附件形式受到保护，并提供如何打开受保护附件的说明。
+使用 Azure RMS 保护文件时，意味着使用行业标准加密并配合 [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) 的完全支持。 使用 Azure RMS 进行数据保护时，即使文件被复制到不受 IT 控制的存储（例如云存储服务），也可保证该文件持续受到保护。 同样的情况出现在通过电子邮件共享的文件，文件将以电子邮件的附件形式受到保护，并提供如何打开受保护附件的说明。
 规划 Azure RMS 采用时，建议执行以下操作：
 
 - 安装 [RMS 共享应用](https://technet.microsoft.com/library/dn339006.aspx)。 此应用通过安装 Office 外挂程序来与 Office 应用程序集成，使用户可以轻松地直接保护文件。

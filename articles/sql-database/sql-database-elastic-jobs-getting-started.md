@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 5fd51e2d847b540d2eb8c17c2bc31f4e162a21ee
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 68a5bdef17077d1815b6d85e121d9bb26c2280bf
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904620"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484248"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>弹性数据库作业入门
 
@@ -52,7 +52,7 @@ ms.locfileid: "57904620"
 
 ## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>创建自定义集合，并将服务器中的所有数据库添加到 master 以外的自定义集合目标
 
-   ```PowerShell
+   ```powershell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -316,7 +316,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 若要提交取消请求，请使用 **Stop-AzureSqlJobExecution** cmdlet 并设置 **JobExecutionId** 参数。
 
-   ```PowerShell
+   ```powershell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```

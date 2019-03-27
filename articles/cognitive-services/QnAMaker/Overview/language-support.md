@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 820a9ae0df91fba8cf00764428867bec6196841a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a6304a93b1409cff871ed1c4c1d7e66d6c8c6f53
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335855"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497680"
 ---
 # <a name="language-support-for-qna-maker"></a>QnA Maker 的语言支持
 
@@ -37,7 +37,7 @@ QnA Maker 支持提取任何语言页面中的问题/解答，但对于以下语
 
 用于检测的主要语言设置的 QnA Maker 资源并在第一个文档或 URL 添加到第一个知识库时，该资源上创建的所有知识库。 不能更改的语言。 
 
-如果用户计划以支持多种语言，它们需要有新的 QnA Maker 资源的每种语言。 了解如何[创建基于语言的 QnA Maker 知识库](/how-to/language-knowledge-base.md)。  
+如果用户计划以支持多种语言，它们需要有新的 QnA Maker 资源的每种语言。 了解如何[创建基于语言的 QnA Maker 知识库](../how-to/language-knowledge-base.md)。  
 
 验证的主要语言通过执行以下步骤：
 

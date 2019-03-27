@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa6a44a3fb92647ba74f865b2a1a46bdd79eb433
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e7b0242a8e3745a0014e5c2a1289ca2bc8c85c75
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174078"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484537"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
@@ -79,7 +79,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 ### <a name="configurable-token-lifetime-properties"></a>可配置的令牌生存期属性
 | 属性 | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
-| 访问令牌生存期 |AccessTokenLifetime |访问令牌、ID 令牌、SAML2 令牌 |1 小时	 |10 分钟 |1 天 |
+| 访问令牌生存期 |AccessTokenLifetime |访问令牌、ID 令牌、SAML2 令牌 |1 小时 |10 分钟 |1 天 |
 | 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
 | 单因素刷新令牌最大期限 |MaxAgeSingleFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
 | 多因素刷新令牌最大期限 |MaxAgeMultiFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
@@ -201,7 +201,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * 为调用 Web API 的本机应用创建策略
 * 管理高级策略
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果是 Azure AD 新手，我们建议在继续学习这些示例之前，先了解[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。  
 
 若要开始，请执行以下步骤：
@@ -209,13 +209,13 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 1. 首先请下载最新的 [Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。
 2. 运行 `Connect` 命令登录到 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
 
-    ```PowerShell
+    ```powershell
     Connect-AzureAD -Confirm
     ```
 
 3. 若要查看组织中创建的所有策略，请运行以下命令。 执行以下方案中的大多数操作之后，都要运行此命令。 运行此命令还可帮助获取策略的 ** **。
 
-    ```PowerShell
+    ```powershell
     Get-AzureADPolicy
     ```
 
@@ -226,7 +226,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
     1.  将单因素刷新令牌设置为“直到吊销”。 在吊销访问权限之前该令牌不会过期。 创建以下策略定义：
 
-        ```PowerShell
+        ```powershell
         @('{
             "TokenLifetimePolicy":
             {
@@ -238,13 +238,13 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
     2.  若要创建该策略，请运行以下命令：
 
-        ```PowerShell
+        ```powershell
         New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3.  若要查看新策略并获取其 **ObjectId**，请运行以下命令：
+    3.  若要查看新策略并获取其 ObjectId，请运行以下命令：
 
-        ```PowerShell
+        ```powershell
         Get-AzureADPolicy
         ```
 
@@ -252,7 +252,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
     假设在本示例中创建的第一个策略不像服务要求的那样严格。 要将单因素刷新令牌设置为在两天后过期，请运行以下命令：
 
-    ```PowerShell
+    ```powershell
     Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
@@ -266,13 +266,13 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
     1.  若要创建该策略，请运行以下命令：
 
-        ```PowerShell
+        ```powershell
         New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
     2.  若要查看新策略并获取其 **ObjectId**，请运行以下命令：
 
-        ```PowerShell
+        ```powershell
         Get-AzureADPolicy
         ```
 
@@ -282,7 +282,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
     2.  获取服务主体的 **ObjectId** 后，运行以下命令：
 
-        ```PowerShell
+        ```powershell
         Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
         ```
 
@@ -294,13 +294,13 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
     1.  若要为 Web API 创建一个严格的策略，请运行以下命令：
 
-        ```PowerShell
+        ```powershell
         New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
     2.  若要查看新策略并获取其 **ObjectId**，请运行以下命令：
 
-        ```PowerShell
+        ```powershell
         Get-AzureADPolicy
         ```
 
@@ -308,7 +308,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
    获取应用的 **ObjectId** 后，运行以下命令：
 
-        ```PowerShell
+        ```powershell
         Add-AzureADApplicationPolicy -Id <ObjectId of the Application> -RefObjectId <ObjectId of the Policy>
         ```
 
@@ -318,15 +318,15 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 1. 创建令牌生存期策略。
 
-    1.  要创建一个将单因素刷新令牌生存期设置为 30 天的组织默认策略，请运行以下命令：
+    1.  若要创建一个将单因素刷新令牌生存期设置为 30 天的组织默认策略，请运行以下命令：
 
-        ```PowerShell
+        ```powershell
         New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
     2.  若要查看新策略并获取其 **ObjectId**，请运行以下命令：
 
-        ```PowerShell
+        ```powershell
         Get-AzureADPolicy
         ```
 
@@ -338,19 +338,19 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
     2.  获取服务主体的 **ObjectId** 后，运行以下命令：
 
-            ```PowerShell
+            ```powershell
             Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
             ```
         
 3. 将 `IsOrganizationDefault` 标志设置为 false：
 
-    ```PowerShell
+    ```powershell
     Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
 4. 创建新的组织默认策略：
 
-    ```PowerShell
+    ```powershell
     New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
     ```
 
@@ -366,11 +366,11 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 
 创建新策略。
 
-```PowerShell
+```powershell
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |包含所有策略规则的字符串化 JSON 的数组。 | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |策略名称的字符串。 |`-DisplayName "MyTokenPolicy"` |
@@ -383,11 +383,11 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 #### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
 获取所有 Azure AD 策略或指定的策略。
 
-```PowerShell
+```powershell
 Get-AzureADPolicy
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [可选] |所需策略的 **ObjectId (Id)**。 |`-Id <ObjectId of Policy>` |
 
@@ -396,11 +396,11 @@ Get-AzureADPolicy
 #### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
 获取已链接到策略的所有应用和服务主体。
 
-```PowerShell
+```powershell
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |所需策略的 **ObjectId (Id)**。 |`-Id <ObjectId of Policy>` |
 
@@ -409,11 +409,11 @@ Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 #### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
 更新现有策略。
 
-```PowerShell
+```powershell
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |所需策略的 **ObjectId (Id)**。 |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |策略名称的字符串。 |`-DisplayName "MyTokenPolicy"` |
@@ -427,11 +427,11 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 #### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
 删除指定的策略。
 
-```PowerShell
+```powershell
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |所需策略的 **ObjectId (Id)**。 | `-Id <ObjectId of Policy>` |
 
@@ -443,11 +443,11 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 #### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
 将指定的策略链接到应用程序。
 
-```PowerShell
+```powershell
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的 **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |策略的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -457,11 +457,11 @@ Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectI
 #### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
 获取已分配到应用程序的策略。
 
-```PowerShell
+```powershell
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的 **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 
@@ -470,11 +470,11 @@ Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 #### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
 从应用程序中删除策略。
 
-```PowerShell
+```powershell
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的 **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
@@ -487,11 +487,11 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 #### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
 将指定的策略链接到服务主体。
 
-```PowerShell
+```powershell
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的 **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |策略的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -501,11 +501,11 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectI
 #### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
 获取已链接到指定服务主体的任何策略。
 
-```PowerShell
+```powershell
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的 **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 
@@ -514,11 +514,11 @@ Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 #### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
 从指定的服务主体中删除策略。
 
-```PowerShell
+```powershell
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| parameters | 说明 | 示例 |
+| parameters | 描述 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的 **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |

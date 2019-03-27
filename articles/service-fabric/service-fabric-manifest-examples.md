@@ -3,7 +3,7 @@ title: Azure Service Fabric 容器应用程序清单示例 | Microsoft Docs
 description: 了解如何为 Service Fabric 应用程序配置应用程序和服务清单设置。
 services: service-fabric
 documentationcenter: na
-author: rwike77
+author: peterpogorski
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
-ms.author: ryanwi
-ms.openlocfilehash: 8336f0a63f74aa0db176adbb3baf462c903ba2ec
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.author: pepogors
+ms.openlocfilehash: 552ff326ed38175f711924873daab4fcc48f0d09
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095573"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500383"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric 应用程序和服务清单示例
 本部分包含应用程序和服务清单的示例。 这些示例并非用来展示重要方案，而是用来展示可用的各种设置以及如何使用它们。 
 
 下面是所显示的功能以及它们所属的示例清单的索引。
 
-|功能|清单|
+|Feature|清单|
 |---|---|
 |[资源调控](service-fabric-resource-governance.md)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)、[容器应用程序清单](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[以本地管理帐户身份运行服务](service-fabric-application-runas-security.md)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|

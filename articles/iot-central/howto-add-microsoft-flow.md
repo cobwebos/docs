@@ -1,25 +1,32 @@
 ---
 title: 在 Microsoft Flow 中使用 Azure IoT Central 连接器生成工作流 | Microsoft Docs
-description: 在 Microsoft Flow 中使用 IoT Central 连接器触发工作流并在工作流中创建、更新和删除设备。
+description: 在 Microsoft Flow 中使用 IoT Central 连接器，触发工作流和创建、 获取、 更新、 删除设备和工作流中运行命令。
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2019
+ms.date: 03/26/2019
 ms.topic: conceptual
 ms.service: iot-central
-manager: peterpr
-ms.openlocfilehash: 555fe54174c9e13319af676cab3a5d3dcfaf2fe5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+manager: hegate
+ms.openlocfilehash: 2c4ee6a2feb737bcafc64b1c8503c03757a53364
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770243"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497731"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>在 Microsoft Flow 中使用 IoT Central 连接器生成工作流
 
 本主题适用于构建者和管理员。
 
-使用 Microsoft Flow 跨企业用户依赖的多个应用程序和服务自动完成工作流。 如果在 Microsoft Flow 中使用 IoT Central 连接器，则当规则在 IoT Central 中触发时，就可以触发工作流。 在 IoT Central 或任何其他应用程序触发的工作流中，可以使用 IoT Central 连接器中的操作来创建设备、更新设备的属性和设置，或者删除设备。 请检查[这些 Microsoft Flow 模板](https://aka.ms/iotcentralflowtemplates)，此类模板可以将 IoT Central 连接到其他服务，例如移动通知和 Microsoft Teams。
+使用 Microsoft Flow 跨企业用户依赖的多个应用程序和服务自动完成工作流。 如果在 Microsoft Flow 中使用 IoT Central 连接器，则当规则在 IoT Central 中触发时，就可以触发工作流。 在通过 IoT Central 或任何其他应用程序触发的工作流，可以在 IoT Central 连接器中使用操作：
+- 创建设备
+- 获取设备信息
+- 更新设备的属性和设置
+- 在设备上运行命令
+- 删除设备
+
+请检查[这些 Microsoft Flow 模板](https://aka.ms/iotcentralflowtemplates)，此类模板可以将 IoT Central 连接到其他服务，例如移动通知和 Microsoft Teams。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -28,19 +35,19 @@ ms.locfileid: "57770243"
 
 ## <a name="trigger-a-workflow"></a>触发工作流
 
-本部分演示了如何触发时 IoT Central 中的规则将触发的 Flow 移动应用中的移动通知。
+本部分演示了如何触发时 IoT Central 中的规则将触发的 Flow 移动应用中的移动通知。 您可以使用嵌入的 Microsoft Flow 设计器在 IoT Central 应用程序中构建这整个工作流。
 
-1. 首先[在 IoT Central 中创建规则](howto-create-telemetry-rules.md)。 保存规则条件后，选择**Microsoft Flow 操作**作为新的操作。 此时会在浏览器中打开新的标签页或窗口，让你进入 Microsoft Flow 中。
+1. 首先[在 IoT Central 中创建规则](howto-create-telemetry-rules.md)。 保存规则条件后，选择**Microsoft Flow 操作**作为新的操作。 可用于配置您的工作流将打开一个对话框窗口。 你已登录到的 IoT Central 用户帐户将用于登录到 Microsoft Flow。
 
     ![新建 Microsoft Flow 操作](media/howto-add-microsoft-flow/createflowaction.png)
 
-1. 登录到 Microsoft Flow。 此帐户不需要是在 IoT Central 中使用的帐户。 此时会登陆到一个概览页，显示 IoT Central 连接器正在连接到自定义操作。
+1. 您将看到工作流 tha 有权访问和附加到此 IoT Central 规则的列表。 单击**浏览模板**或**新建 > 从模板创建**，可以选择从任何可用的模板。 
 
-1. 登录到 IoT Central 连接器并选择**继续**。 此时会转到 Microsoft Flow 设计器，可以在其中生成工作流。 工作流有一个 IoT Central 触发器，其中已填充应用程序和规则。
+    ![可用的 Microsoft Flow 模板](media/howto-add-microsoft-flow/flowtemplates.png)
 
-1. 选择“+ 新建步骤”和“添加操作”。 此时可向工作流添加任何所需操作。 例如，可以发送移动通知。 搜索“通知”，然后选择“通知 - 向我发送移动通知”。
+1. 系统将提示您登录到您选择的模板中的连接器。 连接器登录后，将进入设计器来生成工作流。 工作流有一个 IoT Central 触发器，其中已填充应用程序和规则。
 
-1. 在操作的“文本”字段中填充希望通知中包含的内容。 可以包括 IoT Central 规则提供的动态内容，将设备名称和时间戳等重要信息传递给通知。
+1. 通过自定义传递给此操作和添加新操作的信息，可以自定义工作流。 在此示例中，该操作是**通知-向我发送移动通知**。 可以包括 IoT Central 规则提供的动态内容，将设备名称和时间戳等重要信息传递给通知。
 
     > [!NOTE]
     > 选择**查看更多**动态内容的窗口，以获取触发规则的度量值和属性值中的文本。
@@ -52,9 +59,9 @@ ms.locfileid: "57770243"
     > [!NOTE]
     > 如果希望 IoT Central 应用中的其他用户编辑此规则，则必须在 Microsoft Flow 中将其与这些用户共享。 在工作流中将这些用户的 Microsoft Flow 帐户作为所有者添加。
 
-1. 如果回到 IoT Central 应用，则会看到此规则在“操作”区域下有一个 Microsoft Flow 操作。
+1. 如果要返回到 IoT 中心应用中，您将看到此规则的操作区域中具有 Microsoft Flow 操作。
 
-随时可以在 Microsoft Flow 中使用 IoT Central 连接器开始生成工作流。 然后可以选择要连接到的具体 IoT Central 应用和规则。
+此外可以构建使用 IoT Central 连接器直接从 Microsoft Flow 的工作流。 然后可以选择要连接到哪个 IoT Central 应用。
 
 ## <a name="create-a-device-in-a-workflow"></a>在工作流中创建设备
 
@@ -107,6 +114,18 @@ ms.locfileid: "57770243"
 1. 最后，保存工作流。
 
 1. 在 Microsoft Flow 移动应用中试用工作流。 转到应用中的“按钮”选项卡。 此时会看到“按钮 -> 更新设备”工作流。 输入输入内容，此时会看到设备在 IoT Central 中进行了更新！
+
+## <a name="get-device-information-in-a-workflow"></a>在工作流中获取设备信息
+
+就可以通过其设备 ID 将使用的设备信息**Azure IoT Central-获取设备**操作。 可以获取设备名称、 设备模板名称、 属性值和设置的值传递到更高版本在工作流中的操作等信息。 下面是从设备的客户名称属性值一起传递到 Microsoft Teams 的示例工作流。
+
+   ![流获取设备工作流](./media/howto-add-microsoft-flow/flowgetdevice.png)
+
+
+## <a name="run-a-command-on-a-device-in-a-workflow"></a>在工作流中的设备上运行命令
+可以通过使用其设备 ID 指定在设备上运行命令**Azure IoT Central-运行命令**操作。 可以选取要运行并通过此操作在该命令的参数中传递的命令。 下面是从 Microsoft Flow 移动应用中的按钮运行设备重新启动命令的示例工作流。
+
+   ![流获取设备工作流](./media/howto-add-microsoft-flow/flowrunacommand.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>在工作流中删除设备
 

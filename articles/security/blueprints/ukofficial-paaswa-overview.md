@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b30ef7d0b373f0d9a440b6649f819e429e28328c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314920"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482977"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -95,7 +95,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-overview)是个性化的云顾问程序，可帮助遵循最佳做法来优化 Azure 部署。 它可分析资源配置和遥测使用情况，并推荐解决方案，有助于提高 Azure 资源的经济效益、性能、高可用性和安全性。
 
-[Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 默认情况下，此选项安装在基础 PaaS 虚拟机基础结构上，并由 Azure Fabric 以向客户透明的方式进行管理，确保
+[Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 默认情况下这基础 PaaS 虚拟机基础结构上安装，并通过以透明方式向客户的 Azure 结构进行管理。
 
 ### <a name="paas-services-in-this-blueprint"></a>此蓝图中的 PaaS 服务
 

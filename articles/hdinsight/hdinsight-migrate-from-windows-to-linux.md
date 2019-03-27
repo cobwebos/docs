@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 02f698d531555aa9b5498060918a2a361b28817e
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: ec40c587ea4c609b1f8201e9860eb0e98e06ec62
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361245"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448189"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集
 
@@ -238,7 +238,7 @@ Oozie 工作流支持 shell 操作。 shell 操作将默认 shell 用于操作�
 
 在基于 Linux 的群集上，HBase 的 znode 父级为 `/hbase-unsecure`。 在使用本机 HBase Java API 的任何 Java 客户端应用程序的配置中设置此值。
 
-有关用于设置此值的示例客户端，请参阅[构建基于 Java 的 Apache HBase 应用程序](hdinsight-hbase-build-java-maven.md)。
+有关用于设置此值的示例客户端，请参阅[构建基于 Java 的 Apache HBase 应用程序](hbase/apache-hbase-build-java-maven-linux.md)。
 
 ## <a name="spark"></a>Spark
 
