@@ -1,0 +1,47 @@
+items:
+- name: 异常检测器文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: 什么是异常检测器 API？
+    href: overview.md
+  expanded: true
+- name: 快速入门
+  items:
+  - name: 检测数据中的异常
+    items:
+    - name: 使用 C#
+      href: quickstarts/detect-data-anomalies-csharp.md
+    - name: 使用 Java
+      href: quickstarts/detect-data-anomalies-java.md
+    - name: 使用 Python
+      href: quickstarts/detect-data-anomalies-python.md
+  expanded: true
+- name: 操作指南
+  items:
+  - name: 识别数据中的异常
+    href: how-to/identify-anomalies.md
+- name: 概念
+  items:
+  - name: 异常情况检测 API 最佳做法
+    href: concepts/anomaly-detection-best-practices.md
+- name: 引用
+  items:
+  - name: REST API 参考
+    href: https://aka.ms/anomaly-detector-rest-api-ref
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://aka.ms/anomaly-detector-dotnet-ref
+- name: 资源
+  items:
+  - name: 定价
+    href: https://aka.ms/anomaly-detector-pricing
+  - name: 区域可用性
+    href: https://aka.ms/anomaly-detector-region
+ms.openlocfilehash: c752383026434ca2f8f1d3f047bb1dbc3740c7ea
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58473358"

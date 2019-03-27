@@ -1,31 +1,38 @@
 items:
-- name: Azure 门户自定义文档
+- name: Azure 门户文档
   href: index.yml
-- name: Azure 仪表板
+- name: 概述
+  items:
+  - name: 关于 Azure 门户
+    href: azure-portal-overview.md
+  - name: 支持的浏览器和设备
+    href: azure-portal-supported-browsers-devices.md
+- name: 概念
   items:
   - name: 创建并共享 Azure 仪表板
     href: azure-portal-dashboards.md
-  - name: 使用自定义 markdown 磁贴
-    href: azure-portal-markdown-tile.md
   - name: 使用基于角色的访问控制共享仪表板
     href: azure-portal-dashboard-share-access.md
-  - name: Azure 仪表板结构
-    href: azure-portal-dashboards-structure.md
   - name: 以编程方式创建 Azure 仪表板
     href: azure-portal-dashboards-create-programmatically.md
-- name: 设置
+- name: 操作指南
+  items:
+  - name: 启用高对比度或更改主题
+    href: azure-portal-change-theme-high-contrast.md
+  - name: 使用自定义 markdown 磁贴
+    href: azure-portal-markdown-tile.md
+  - name: 导出或删除用户设置
+    href: azure-portal-export-delete-settings.md
+- name: 引用
   items:
   - name: 键盘快捷方式
     href: azure-portal-keyboard-shortcuts.md
-  - name: 支持的浏览器和设备
-    href: ../azure-preview-portal-supported-browsers-devices.md
-  - name: 启用高对比度或更改主题
-    href: azure-portal-change-theme-high-contrast.md
-  - name: 导出或删除用户设置
-    href: azure-portal-export-delete-settings.md
-  expanded: true
+  - name: Azure 仪表板结构
+    href: azure-portal-dashboards-structure.md
 - name: 资源
   items:
+  - name: Azure 门户“操作说明”视频系列
+    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
   - name: Azure 路线图
     href: https://azure.microsoft.com/updates/
   - name: 利用 Microsoft Learn 掌握技能
@@ -36,11 +43,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 堆栈溢出
     href: https://stackoverflow.com/questions/tagged/azure-management-portal
-  - name: 视频
+  - name: Azure 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 7fee5a433470309384931e6ea43817288aecf7a8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 43a009582b565f10261c0cc6cc24507c3ef6e44e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902765"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443880"

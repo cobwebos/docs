@@ -291,7 +291,7 @@ ms.topic: hub-page
                         <h3>视觉 API</h3>
                         <p><a href="/azure/cognitive-services/computer-vision/">计算机视觉</a></p>
                         <p><a href="/azure/cognitive-services/content-moderator/">内容审查器</a></p>
-                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/"><span>自定义视觉服务&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/">自定义视觉服务</a></p>
                         <p><a href="/azure/cognitive-services/face/">人脸 API</a></p>
                         <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">视频索引器</a></p>
                     </div>
@@ -366,20 +366,8 @@ ms.topic: hub-page
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>实验室</h3>
-                        <p><a href="https://docs.microsoft.com/gestures/">项目手势</a></p>
-                        <p><a href="/azure/cognitive-services/project-personality-chat/overview">项目个性化聊天</a></p>
-                        <p><a href="https://labs.cognitive.microsoft.com/en-us/Project-Cuzco/documentation/overview">项目事件跟踪</a></p>
-                        <p><a href="/azure/cognitive-services/academic-knowledge/home">项目学术知识</a></p>
-                        <p><a href="https://labs.cognitive.microsoft.com/en-us/Project-Wollongong/documentation">项目本地见解</a></p>
-                        <p><a href="/azure/cognitive-services/kes/overview">项目知识探索服务</a></p>
-                        <p><a href="/azure/cognitive-services/entitylinking/home">项目实体链接</a></p>
-                        <p><a href="/azure/cognitive-services/labs/url-preview/overview">项目 URL 预览</a></p>
-                        <p><a href="/azure/cognitive-services/labs/answer-search/overview">项目答案搜索</a></p>
-                        <p><a href="/azure/cognitive-services/labs/anomaly-finder/overview">项目异常查找器</a></p>
-                        <p><a href="/azure/cognitive-services/labs/conversation-learner/overview">项目对话学习器</a></p>
-                        <p><a href="/azure/cognitive-services/acoustics/what-is-acoustics">项目音响效果</a></p>
-                        <p><a href="/azure/cognitive-services/custom-decision-service/"><span>自定义 AI 决策服务&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
+                        <h3>异常检测</h3>
+                        <p><a href="/azure/cognitive-services/anomaly-detector/"><span>异常检测器&nbsp;<sup style="font-size:70%">预览版</sup></span></a></p>               
                     </div>
                 </div>
             </div>

@@ -114,6 +114,20 @@ items:
       href: notification-hubs-php-push-notification-tutorial.md
     - name: 创建通知中心 - Python
       href: notification-hubs-python-push-notification-tutorial.md
+  - name: 配置平台通知服务设置
+    items:
+    - name: 配置 Apple Push Notification 服务设置
+      href: configure-apple-push-notification-service.md
+    - name: 配置 Google Firebase Cloud Messaging 设置
+      href: configure-google-firebase-cloud-messaging.md
+    - name: 配置 Windows 推送通知服务
+      href: configure-windows-push-notification-service.md
+    - name: 配置 Microsoft 推送通知服务
+      href: configure-microsoft-push-notification-service.md
+    - name: 配置 Android Device Messaging
+      href: configure-android-device-messaging.md
+    - name: 配置百度云推送
+      href: configure-baidu-cloud-push.md
   - name: 使用应用程序后端注册
     href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
   - name: 在 Apple 设备中使用基于令牌的身份验证
@@ -150,9 +164,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 支持选项
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: a618c3788c501f28d822021b35c925fcf85c7b3c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a5681a615638fdd14aecb2654e2c6d46f0a7bda4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438761"
+ms.locfileid: "58486948"
