@@ -4,7 +4,7 @@ description: 了解 JavaScript 应用程序如何才能通过 Azure Active Direc
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a97e03f3c195b9fbd0ee7a09950414b7a940c7c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fe8c2287da7a7eabc26ff134d8bb44c5e45085f1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217473"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203041"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>快速入门：通过 JavaScript 应用程序登录用户并获取访问令牌
 
@@ -29,7 +29,7 @@ ms.locfileid: "56217473"
 
 在本快速入门中，你将了解如何使用代码示例，该示例演示了 JavaScript 单页应用程序 (SPA) 登录个人、工作和学校帐户并获取访问令牌以调用 Microsoft Graph API 或任何 Web API 的方式。
 
-![本快速入门生成的示例应用如何工作](media/quickstart-v2-javascript/javascriptspa-intro.png)
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-javascript/javascriptspa-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>注册并下载快速入门应用程序
@@ -74,14 +74,15 @@ ms.locfileid: "56217473"
 * [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
 将 zip 文件提取到本地文件夹（例如，**C:\Azure-Samples**）。
+若要打开文件夹中的文件，请使用类似 [Visual Studio Code](https://code.visualstudio.com/) 的编辑器。
 
 #### <a name="step-3-configure-your-javascript-app"></a>步骤 3：配置 JavaScript 应用
 
 > [!div renderon="docs"]
-> 编辑 `index.html` 并在 `applicationConfig` 下设置 `clientID` 和 `authority` 值。
+> 在 JavaScriptSPA 文件夹下，编辑 `index.html` 并在 `applicationConfig` 下设置 `clientID` 和 `authority` 值。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> 编辑 `index.html` 并将 `applicationConfig` 替换为：
+> 在 JavaScriptSPA 文件夹下，编辑 `index.html`，并将 `applicationConfig` 替换为：
 
 ```javascript
 var applicationConfig = {
@@ -103,13 +104,9 @@ var applicationConfig = {
 > > [!TIP]
 > > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。
 
-> [!NOTE]
-> 服务器配置为在 [Node.js](https://nodejs.org/en/download/) 项目中的 server.js 文件中以及 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 项目中的 .csproj 文件中的端口 30662 上进行侦听。
->
-
 #### <a name="step-4-run-the-project"></a>步骤 4：运行项目
 
-* 如果使用 Node.js：
+* 如果使用 [Node.js](https://nodejs.org/en/download/)：
 
     1. 通过项目的目录运行以下命令，以便启动服务器：
 
@@ -122,7 +119,7 @@ var applicationConfig = {
     1. 单击“登录”按钮以开始登录，然后调用 Microsoft Graph API。
 
 
-* 如果使用 Visual Studio，请确保选择项目解决方案，然后按 **F5** 来运行项目。
+* 如果使用 [Visual Studio](https://visualstudio.microsoft.com/downloads/)，请确保选择项目解决方案，然后按 **F5** 来运行项目。
 
 ## <a name="more-information"></a>更多信息
 
@@ -217,9 +214,9 @@ myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (access
 ### <a name="learn-the-steps-to-create-the-application-for-this-quickstart"></a>了解为本快速入门创建应用程序的步骤
 
 > [!div class="nextstepaction"]
-> [调用 Graph API 教程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
+> [有关登录和调用 MS Graph 的教程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
 
 ### <a name="browse-the-msal-repo-for-documentation-faq-issues-and-more"></a>浏览 MSAL 存储库中的文档、常见问题解答、问题等
 
 > [!div class="nextstepaction"]
-> [msal.js GitHub 存储库](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL.js GitHub 存储库](https://github.com/AzureAD/microsoft-authentication-library-for-js)
