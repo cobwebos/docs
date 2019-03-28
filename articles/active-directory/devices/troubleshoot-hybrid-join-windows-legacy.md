@@ -3,7 +3,7 @@ title: 排查已加入混合 Azure Active Directory 的下层设备问题 | Micr
 description: 排查已加入混合 Azure Active Directory 的下层设备问题。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e79b0fc0ef23287c8871b7a7634d28d129b900e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 76177972cbd002793f5d9fc4ab8bbe6ef2121e91
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101136"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521442"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -59,7 +59,7 @@ ms.locfileid: "58101136"
 
 - 对于 Windows 7 SP1 或 Windows Server 2008 R2 SP1，请确保安装 [KB4284842](https://support.microsoft.com/help/4284842)。 此更新可防止将来因客户更改密码后无法访问受保护密钥而导致身份验证失败。
 
-## <a name="step-1-retrieve-the-registration-status"></a>步骤 1：检索注册状态 
+## <a name="step-1-retrieve-the-registration-status"></a>步骤 1:检索注册状态 
 
 **验证注册状态：**  
 
@@ -71,7 +71,7 @@ ms.locfileid: "58101136"
 
 此命令会显示一个对话框，其中提供了有关加入状态的详细信息。
 
-![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
+![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>步骤 2：评估混合 Azure AD 加入状态 
@@ -83,7 +83,7 @@ ms.locfileid: "58101136"
 
 - AD FS 或 Azure AD 配置不当或网络存在问题
 
-    ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
   - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 可能的原因如下：AD FS 缺少或配置不当（对于联合域）、Azure AD 无缝单一登录缺少或配置不当（对于托管域）或者网络存在问题。 
     
@@ -101,7 +101,7 @@ ms.locfileid: "58101136"
 
 - 登录身份不是域用户
 
-    ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
     
     以下几种不同原因可能会导致此问题：
     
@@ -111,11 +111,11 @@ ms.locfileid: "58101136"
 
 - 已达到配额
 
-    ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
 
 - 服务未响应 
 
-    ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
+    ![Workplace Join for Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
 还可以在以下路径下的事件日志中找到状态信息：**Applications and Services Log\Microsoft-Workplace Join**
   

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726866"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540034"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>映射数据流联接转换
 
@@ -67,6 +67,10 @@ ms.locfileid: "57726866"
 ![自联接](media/data-flow/selfjoin.png "自联接")
 
 在上面的关系图中，“选择”转换位于顶部。 它所做的所有工作就是将原始流的别名指定为“OrigSourceBatting”。 在它下方突出显示的“联接”转换中，你可以看到我们将此“选择别名”流用作右侧联接，以便可以在内部联接的左侧和右侧引用同一个键。
+
+## <a name="composite-and-custom-keys"></a>组合键和自定义
+
+内部联接转换动态，您可以构建自定义和复合键。 添加行对于每个关系行旁边的加号 （+） 的其他联接列。 或计算动态上联接值表达式生成器中的一个新的密钥值。
 
 ## <a name="next-steps"></a>后续步骤
 

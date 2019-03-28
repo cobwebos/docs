@@ -4,7 +4,7 @@ description: 了解如何使用位置条件基于用户的网络位置来控制�
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/01/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e59e00b0be7b7694d03961b19fadfa92c5db98b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 886bfb97b5aac303b99d3e8da0a19b38b7049012
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58171068"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521782"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件是什么？ 
 
@@ -42,7 +42,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 位置是网络位置的标签，表示命名位置或多重身份验证信任的 IP。
 
 
-## <a name="named-locations"></a>命名位置 
+## <a name="named-locations"></a>已命名的位置 
 
 使用命名位置可以创建 IP 地址范围、国家和地区的逻辑分组。 
 
@@ -104,7 +104,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 - 任何位置 
 - 所有受信任的位置
-- 选定的位置
+- 选定位置
 
 ![位置](./media/location-condition/01.png)
 
@@ -112,7 +112,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 默认情况下，选择“任何位置”会将策略应用到所有 IP 地址，即 Internet 上的所有地址。 此设置不限于已配置为命名位置的 IP 地址。 选择“任何位置”时，仍可从策略中排除特定位置。 例如，可将策略应用到除可信位置以外的所有位置，以将作用域设置为除企业网络以外的所有位置。
 
-### <a name="all-trusted-locations"></a>所有受信任的位置
+### <a name="all-trusted-locations"></a>所有受信任位置
 
 此选项将应用到：
 
@@ -120,7 +120,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 - **MFA 受信任的 IP**（如果已配置）
 
 
-### <a name="selected-locations"></a>选定的位置
+### <a name="selected-locations"></a>选定位置
 
 使用此选项可以选择一个或多个命名位置。 对于要应用此设置的策略，用户需要从任一选定位置建立连接。 单击“选择”时，将会打开显示命名网络列表的命名网络选择控件。 此列表还显示网络位置是否已标记为可信。 名为“MFA 受信任的 IP”的命名位置用于包含可在多重身份验证服务设置页中配置的 IP 设置。
 

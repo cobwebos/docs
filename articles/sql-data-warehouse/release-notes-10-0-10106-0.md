@@ -5,17 +5,17 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: b208ab10568740e3e1bcadd5f072f2080a573cef
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: ae9f2cbdd659b7eaf3558717be19f324e803d906
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369473"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522326"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
@@ -28,7 +28,7 @@ ms.locfileid: "58369473"
 |**目前以预览版提供的工作负荷重要性**|工作负荷重要性使数据工程师能够使用重要性来对请求进行分类。 具有较高的优先级请求更快地访问资源，这有助于满足 Sla 保证。  工作负荷重要性允许具有高业务值工作较少的资源的共享环境中满足 sla 要求。<br/><br/>工作负荷重要性的详细信息，请参阅[分类](sql-data-warehouse-workload-classification.md)并[重要性](sql-data-warehouse-workload-importance.md)文档中的概述文章。 请查看[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)以及文档。<br/><br/>请参阅中的操作中的工作负荷重要性下方视频：<br/>[工作负荷管理概念](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[工作负荷管理方案](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**GROUP BY 汇总**|汇总现已是受支持的 GROUP BY 选项在 Azure 数据仓库中。   GROUP BY ROLLUP 创建每个列表达式组合为一个组。 GROUP BY 还"汇总"结果到小计和总计。 若要执行此操作，即会从右到左，减少对其创建的组和从右向列表达式的数目。  列的顺序会影响 ROLLUP 的输出，而且可能会影响在结果集中的行数。<br/><br/>GROUP BY ROLLUP 的详细信息，请参阅文章， [GROUP BY (TRANSACT-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
 |**改进了的准确性的已用的 DWU 和 CPU 门户指标**|SQL 数据仓库会显著提高在 Azure 门户中的度量准确性。  此版本中包括要在所有计算节点之间正确反映你的工作负荷的 CPU 和已用的指标定义的修复的程序。|
-|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围已扩展为包括对支持：<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;    [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)
+|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围已扩展为包括对支持：<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;    [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)<br/>&bull; &nbsp; [TRIM (Transact-SQL)](/sql/t-sql/functions/trim-transact-sql)
 | | |
 
 ### <a name="documentation-improvements"></a>文档改进
@@ -94,7 +94,7 @@ ms.locfileid: "58369473"
 - [博客 - Azure SQL 数据仓库](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [客户顾问团队博客](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
 - [客户成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
-- [Stackoverflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)
 - [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Azure 词汇表](../azure-glossary-cloud-terminology.md)

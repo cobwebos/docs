@@ -4,7 +4,7 @@ description: 在本快速入门中，你将了解如何使用 Azure Active Direc
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/30/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07466e40834b8bfaf4a452cf728bae517b8c7b00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cbcb0271a1bd80f0f7155c379de7b5149c76fcca
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122702"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520422"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>快速入门：要求使用 Azure Active Directory 条件访问对特定应用进行 MFA 
 
@@ -33,7 +33,7 @@ ms.locfileid: "58122702"
 ![创建策略](./media/app-based-mfa/32.png)
 
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "58122702"
 |---     | --- |
 |用户和组 | Isabella Simonsen |
 |云应用 | Microsoft Azure 管理 |
-|授予访问权限 | 需要多重身份验证 |
+|授予访问权限 | 要求多重身份验证 |
  
 
 ![创建策略](./media/app-based-mfa/31.png)
@@ -91,7 +91,7 @@ ms.locfileid: "58122702"
 
 3. 在“Azure Active Directory”页的“安全性”部分中，单击“条件访问”。
 
-    ![条件性访问](./media/app-based-mfa/03.png)
+    ![条件访问](./media/app-based-mfa/03.png)
  
 4. 在“条件访问”页顶部的工具栏中，单击“新建策略”。
 
@@ -140,7 +140,7 @@ ms.locfileid: "58122702"
 
 11. 在“授权”页，执行以下步骤：
 
-    ![授权](./media/app-based-mfa/11.png)
+    ![授予](./media/app-based-mfa/11.png)
 
     a. 选择“授予访问权限”。
 
@@ -152,7 +152,7 @@ ms.locfileid: "58122702"
 
     ![启用策略](./media/app-based-mfa/18.png)
 
-13. 单击“创建”。
+13. 单击**创建**。
 
 
 ## <a name="evaluate-a-simulated-sign-in"></a>评估模拟登录

@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 8fca59eeea415581cbfb340c1e5932b1e5113814
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 6057fa52cd2f1e9b9fd525723f96ab66983fb5d4
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439187"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521714"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>如何排查“Azure Functions 运行时无法访问”的问题
 
 
 ## <a name="error-text"></a>错误文本
-本文档主要介绍如何排查在 Azure Functions 门户中显示时出现以下错误的问题。
+本文档介绍如何排查在 Azure Functions 门户中显示时出现以下错误的问题。
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
 ### <a name="summary"></a>摘要
-当 Azure Functions 运行时无法启动时，会出现此问题。 出现此错误最常见的原因是，Function App 无法访问其存储帐户。 [在此处阅读有关存储帐户要求的详细信息](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+当 Azure Functions 运行时无法启动时，会出现此问题。 出现此错误最常见的原因是，函数应用无法访问其存储帐户。 [在此处阅读有关存储帐户要求的详细信息](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>故障排除
 我们将通过四种最常见的错误事例来说明如何识别以及如何解决每种事例。
@@ -41,33 +41,33 @@ ms.locfileid: "58439187"
 
 ## <a name="storage-account-deleted"></a>存储帐户已删除
 
-每个 Function App 都需要存储帐户才能运行。 如果该帐户已删除，则你的 Function 将无法使用。
+每个函数应用都需要存储帐户才能运行。 如果该帐户已删除，则函数将无法使用。
 
 ### <a name="how-to-find-your-storage-account"></a>如何查找存储帐户
 
 首先在“应用程序设置”中查找存储帐户名称。 `AzureWebJobsStorage` 或 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 将包含在连接字符串中包装的存储帐户名称。 请阅读[此处应用程序设置参考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)中的更多细节
 
-在 Azure 门户中搜索存储帐户，以确定它是否仍然存在。 如果它已被删除，则需要重新创建存储帐户，并替换存储连接字符串。 你的函数代码将丢失，需要再次重新部署它。
+在 Azure 门户中搜索存储帐户，确定它是否仍然存在。 如果它已被删除，则需要重新创建存储帐户，并替换存储连接字符串。 函数代码会丢失，需要再次重新部署它。
 
 ## <a name="storage-account-application-settings-deleted"></a>存储帐户应用程序设置已删除
 
-在上一步骤中，如果没有存储帐户连接字符串，则说明可能已删除或覆盖它们。 当使用部署槽位或 Azure 资源管理器脚本来设置应用程序设置时，通常会删除应用程序设置。
+在上一步骤中，如果没有存储帐户连接字符串，则说明可能已删除或覆盖它们。 使用部署槽位或 Azure 资源管理器脚本来设置应用程序设置时，通常会删除应用程序设置。
 
 ### <a name="required-application-settings"></a>必需的应用程序设置
 
 * 需要
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * 消耗计划函数需要
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#websitecontentazurefileconnectionstring)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#websitecontentshare)
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
 [在此处阅读有关这些应用程序设置的信息](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
 ### <a name="guidance"></a>指南
 
-* 对于这些设置中的任何设置，不要选中“插槽设置”。 当交换部署槽位时，Function 将中断。
+* 对于这些设置中的任何设置，不要选中“插槽设置”。 当交换部署槽位时，函数会会中断。
 * 不要修改这些设置作为自动部署的一部分。
-* 必须在创建时提供这些设置并使其有效。 不包含这些设置的自动部署将导致应用程序无法运行，即使事后添加了这些设置也是如此。
+* 必须在创建时提供这些设置并使其生效。 不包含这些设置的自动部署会导致应用无法运行，即使事后添加了这些设置也是如此。
 
 ## <a name="storage-account-credentials-invalid"></a>存储帐户凭据无效
 
@@ -75,10 +75,10 @@ ms.locfileid: "58439187"
 
 ## <a name="storage-account-inaccessible"></a>无法访问存储帐户
 
-Function App 必须能够访问存储帐户。 阻止 Function 访问存储帐户的常见问题是：
+Function App 必须能够访问存储帐户。 阻止 Functions 访问存储帐户的常见问题是：
 
-* 在没有正确网络规则的情况下部署到应用服务环境的 Function App 允许在存储帐户中传入和传出流量
-* 存储帐户防火墙已启用，但未配置为允许在 Function 中传入和传出流量。 [在此处阅读有关存储帐户防火墙配置的详细信息](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* Function App 在部署到应用服务环境时，没有正确的网络规则来允许在存储帐户中传入和传出流量
+* 存储帐户防火墙已启用，但未配置为允许在 Functions 中传入和传出流量。 [在此处阅读有关存储帐户防火墙配置的详细信息](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
 ## <a name="daily-execution-quota-full"></a>每日执行配额已满
 

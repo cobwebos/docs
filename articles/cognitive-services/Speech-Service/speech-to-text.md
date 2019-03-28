@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: acf338afdf33408637bf7cca79d28f5e90888eba
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6400e3d3fa7f0317ff927f2931e705365a450770
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224433"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520660"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音到文本？
 
 从 Azure 语音服务，也称为语音到文本，使实时听录的音频流到应用程序、 工具或设备便可以使用，文本的语音到文本显示，并作为命令的输入对其执行操作。 此服务是由相同的识别技术，Microsoft 使用 Cortana 和 Office 产品，并无缝配合，翻译和文本到语音转换提供支持。  有关可用的语音到文本语言的完整列表，请参阅[支持的语言](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speech-to-text)。
 
-默认情况下，语音转文本服务使用的通用语言模型。 此模型使用 Microsoft 拥有的数据训练和已部署的云。 其最适合于交谈和听写方案。 如果将语音转文本用于识别和听录独特环境中的，可以创建并定型到地址避免环境噪音或特定于行业的词汇的自定义声学、 语言和发音模型。 
+默认情况下，语音转文本服务使用的通用语言模型。 此模型使用 Microsoft 拥有的数据训练和已部署的云。 其最适合于交谈和听写方案。 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 
 
-可以轻松地捕获来自麦克风的音频、 从流中读取或从存储使用语音 SDK 和 REST Api 访问音频文件。 Speech SDK 支持语音识别的 WAV/PCM 16 位、 16 kHz、 单声道音频。 使用支持其他音频格式[语音到文本 REST 终结点](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-formats)或[批处理脚本服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)。
+可以轻松地捕获来自麦克风的音频、 从流中读取或从存储使用语音 SDK 和 REST Api 访问音频文件。 Speech SDK 支持语音识别的 WAV/PCM 16 位、 16 kHz、 单声道音频。 使用支持其他音频格式[语音到文本 REST 终结点](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)或[批处理脚本服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)。
 
 ## <a name="core-features"></a>核心功能
 
 此处是通过 Speech SDK 和 REST Api 提供的功能：
 
-| 使用案例 | SDK 中 IsInRole 中的声明 | REST |
+| 用例 | SDK | REST |
 |----------|-----|------|
 | 转录短的查询文本 (< 15 秒)。 仅支持最终脚本结果。 | 是 | 是 |
 | 连续的长语音样本和流式处理音频转录 (> 15 秒)。 支持中期和最终脚本结果。 | 是 | 否 |
@@ -47,7 +47,7 @@ ms.locfileid: "58224433"
 
 ## <a name="get-started-with-speech-to-text"></a>开始使用语音转文本
 
-我们提供了最常用编程语言中的每个旨在让您在 10 分钟内运行代码的快速入门。 此表包括按语言的语音 SDK 快速入门的完整列表。
+我们提供了适用于大多数流行编程语言的快速入门，旨在帮助你在 10 分钟以内运行代码。 此表包括按语言的语音 SDK 快速入门的完整列表。
 
 | 快速入门 | 平台 | API 参考 |
 |------------|----------|---------------|
@@ -67,14 +67,14 @@ ms.locfileid: "58224433"
 
 ## <a name="tutorials-and-sample-code"></a>教程和示例代码
 
-在过去的人可以使用语音服务后，请尝试我们本教程教您如何识别从语音使用语音 SDK 和 LUIS 意向。
+有机会使用语音服务后，请尝试学习有关如何使用语音 SDK 和 LUIS 从语音中识别意向的教程。
 
-* [教程：从使用语音 SDK 和 LUIS，语音意图识别C#](how-to-recognize-intents-from-speech-csharp.md)
+* [教程：使用适用于 C# 的语音 SDK 和 LUIS 从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)
 
-Speech SDK 的示例代码位于 GitHub 上提供。 这些示例涵盖了从文件或流，连续和单步识别读取音频和使用自定义模型等常见方案。
+Speech SDK 的示例代码位于 GitHub 上提供。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。
 
 * [语音到文本示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [批处理脚本示例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+* [批量听录示例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 
 ## <a name="customization"></a>自定义
 
@@ -84,7 +84,7 @@ Speech SDK 的示例代码位于 GitHub 上提供。 这些示例涵盖了从文
 |-------|-------------|
 | [声学模型](how-to-customize-acoustic-models.md) | 创建自定义声学模型将应用程序、 工具或设备使用在特定环境中，如汽车或特定录制条件与工厂中的情况下十分有用。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
 | [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型，以提高脚本的特定于行业的词汇和语法，如医疗术语中或 IT 专业术语。 |
-| [发音模型](how-to-customize-pronunciation.md) | 使用自定义发音模型中，您可以定义的拼音窗体和显示字词或术语。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。 |
+| [发音模型](how-to-customize-pronunciation.md) | 借助自定义发音模型，可以定义语音形式以及字词或术语的显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。 |
 
 > [!NOTE]
 > 自定义选项因语言/区域设置而异 (请参阅[支持的语言](supported-languages.md))。
@@ -103,9 +103,9 @@ Speech SDK 的示例代码位于 GitHub 上提供。 这些示例涵盖了从文
 
 * [语音 SDK](speech-sdk-reference.md)
 * [语音设备 SDK](speech-devices-sdk.md)
-* [REST API：语音到文本](rest-speech-to-text.md)
-* [REST API：Text-to-speech](rest-text-to-speech.md)
-* [REST API：批处理脚本和自定义](https://westus.cris.ai/swagger/ui/index)
+* [REST API：语音转文本](rest-speech-to-text.md)
+* [REST API：文本转语音](rest-text-to-speech.md)
+* [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>后续步骤
 

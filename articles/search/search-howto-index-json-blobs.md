@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d70ad65f5bbc4424b4224cf601d903ad7ec10691
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405105"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518735"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>如何使用 Azure 搜索 Blob 索引器的 JSON blob 编制索引
 本文介绍如何配置 Azure 搜索 blob[索引器](search-indexer-overview.md)从 Azure Blob 存储中的 JSON 文档中提取结构化的内容，并使其可在 Azure 搜索中搜索。 此工作流创建 Azure 搜索索引并将其加载与从 JSON blob 中提取的现有文本。 
@@ -211,7 +211,7 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 
 
 计划和参数是可选的。 如果将其忽略，索引器会立即运行，使用`json`作为分析模式。
 
-此特定的索引器不包括[字段映射](#field-mappings)。 在索引器定义中，您可以省略**字段映射**如果源 JSON 文档的属性与目标搜索索引的字段匹配。 
+此特定的索引器不包括字段映射。 在索引器定义中，您可以省略**字段映射**如果源 JSON 文档的属性与目标搜索索引的字段匹配。 
 
 
 ### <a name="rest-example"></a>REST 示例
@@ -253,7 +253,7 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 
 
 ### <a name="indexer-request"></a>索引器请求
 
-此请求显示完全指定的索引器。 它包括[字段映射](#field-mappings)，这已在前面的示例中省略。 回想一下该"schedule"，"parameters"和"fieldMappings"都是可选的只要没有用的默认值。 省略"计划"会导致要立即运行索引器。 省略"parsingMode"会导致要使用"json"默认的索引。
+此请求显示完全指定的索引器。 它包括已在前面的示例中省略的字段映射。 回想一下该"schedule"，"parameters"和"fieldMappings"都是可选的只要没有用的默认值。 省略"计划"会导致要立即运行索引器。 省略"parsingMode"会导致要使用"json"默认的索引。
 
 创建 Azure 搜索索引器将触发数据导入。 它立即，并且之后按计划运行如果提供了一个。
 

@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 1c0a04a074cfbd96423502ac92dd5821bade78e1
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 841193305556e3bc9e543abc47974c7b91b0cea1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258524"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518026"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>使用 Azure Data Box 将数据从本地 HDFS 存储迁移到 Azure 存储
 
@@ -111,7 +111,7 @@ ms.locfileid: "58258524"
 
 按照以下步骤来准备并寄回给 Microsoft Data Box 设备。
 
-1. 数据复制完成后，运行[准备交付](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#prepare-to-ship)数据框上。 设备准备完成后，下载物料清单文件。 将使用这些 BOM 或清单文件更高版本以验证数据上传到 Azure。 关闭设备，请拔下电缆。 
+1. 数据复制完成后，运行[准备交付](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)数据框上。 设备准备完成后，下载物料清单文件。 将使用这些 BOM 或清单文件更高版本以验证数据上传到 Azure。 关闭设备，请拔下电缆。 
 2.  安排提货带到 UPS[寄送到 Azure 在数据框](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)。 
 3.  Microsoft 会收到你的设备、 连接到网络的数据中心和数据上传到存储帐户 （使用禁用的分层命名空间） 指定后当你订购 Data Box。 验证对物料清单文件将数据上载到 Azure。 现在可以将这些数据移到数据湖存储第 2 代存储帐户。
 

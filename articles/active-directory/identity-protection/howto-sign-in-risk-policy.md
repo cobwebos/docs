@@ -4,7 +4,7 @@ description: 了解如何配置 Azure AD Identity Protection 登录风险策略�
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: markvi
-ms.reviewer: raluthra
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da3f03cfcf821fa093e9f21cf9a11a2d99d67683
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fe9e0a4d481ef7b802c50fdc347872e389fa8ef7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999040"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518029"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>如何：配置登录风险策略
 
@@ -57,7 +57,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 - 当满足登录风险级别时要强制实施的访问类型：  
 
-    ![Access](./media/howto-sign-in-risk-policy/13.png)
+    ![访问](./media/howto-sign-in-risk-policy/13.png)
 
 - 策略的状态：
 
@@ -66,7 +66,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 策略配置对话框提供了一个选项来评估重新配置的影响。
 
-![估计的影响](./media/howto-sign-in-risk-policy/15.png)
+![估计影响](./media/howto-sign-in-risk-policy/15.png)
 
 ## <a name="what-you-should-know"></a>要点
 
@@ -97,7 +97,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 * [有风险的登录已阻止](flows.md#risky-sign-in-blocked)  
 * [Azure AD Identity Protection 中的登录体验](flows.md)  
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 选择“高”阈值可减少触发策略的次数，最大程度地降低对用户的影响。  
 

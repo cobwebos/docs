@@ -1,21 +1,19 @@
 ---
 title: 在 Power BI 工作区集合中保存报表 | Microsoft Docs
 description: 了解如何在 Power BI 工作区集合中保存报表。 需要有适当的权限才能成功执行此操作。
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: ''
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 8de31479e55aca64a5412bb89765c9b6062c0358
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc3c9f71900abcbba440db259d92df53a4c7a586
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864875"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516444"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中保存报表
 
@@ -24,7 +22,7 @@ ms.locfileid: "57864875"
 > [!IMPORTANT]
 > Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
-在 Power BI 工作区集合中，可编辑和保存现有报表。 还可以创建一个新报表，然后将它另存为新报表来创建另一个报表。
+在 Power BI 工作区集合中，可编辑和保存现有报表。 还可以创建一个新报表，并将它另存为新报表来创建另一个报表。
 
 若要保存报表，首先需要为特定的报表创建具有适当范围的令牌：
 
@@ -43,7 +41,7 @@ ms.locfileid: "57864875"
 
 ## <a name="embed-report-in-edit-mode"></a>嵌入处于编辑模式的报表
 
-假设要在应用中嵌入一个处于编辑模式的报表，为此，只需在 Embed 配置中传递适当的属性，并调用 powerbi.embed()。 提供权限和 viewMode 才能在编辑模式下看到“保存”和“另存为”按钮。 有关详细信息，请参阅[嵌入配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
+假设用户要在应用中嵌入一个处于编辑模式的报表，为此，只需在 Embed 配置中传递适当的属性，并调用 powerbi.embed()。 提供权限和 viewMode 才能在编辑模式下看到“保存”和“另存为”按钮。 有关详细信息，请参阅 [Embed 配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
 
 例如，在 JavaScript 中：
 
@@ -138,5 +136,5 @@ var embedConfiguration = {
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
 

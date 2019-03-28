@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 934d0a73bf6345edd79ae00526a1db0361b3524d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ae0d3658d9ae8534b1596fa7363495926cd0dfe7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482769"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520745"
 ---
-# <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
+# <a name="application-insights-for-aspnet-core"></a>适用于 ASP.NET Core 的 Application Insights
 
 Azure Application Insights 提供 Web 应用程序的监视信息，深度可达代码级别。 使用它可以轻松监视 Web 应用程序的可用性、性能和使用情况。 还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。
 
@@ -217,7 +217,7 @@ Application Insights 支持通过 ILogger 发送的捕获日志。 若要设置�
 
 ## <a name="collect-failed-requests-live-stream-and-page-view-load-time"></a>收集“失败的请求数”、“实时流”和“页面视图加载时间”
 
-### <a name="failed-requests"></a>失败的请求数
+### <a name="failed-requests"></a>失败的请求
 
 从技术上讲，系统已开始收集“失败的请求数”，但目前并未发生失败的请求。 要加速此过程，可将一个自定义异常添加到现有项目，以模拟真实的异常。 如果在继续加速之前应用仍在 Visual Studio 中运行，请选择“停止调试”(Shift+F5)。
 
@@ -409,6 +409,6 @@ CoreCLR 仍会加载 Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll
 
 ## <a name="next-steps"></a>后续步骤
 * [浏览用户流](../../azure-monitor/app/usage-flows.md)，了解用户如何在应用中导航。
-* [配置快照收集](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)，以便在引发异常时查看源代码和变量的状态。
+* [配置快照收集](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)，以便在引发异常时查看源代码和变量的状态。
 * [使用 API](../../azure-monitor/app/api-custom-events-metrics.md)，发送自己的事件和指标以获取应用的性能和使用情况的更详细视图。
 * 使用[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)从世界各地不断检查应用。

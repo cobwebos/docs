@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 2f84c48092581a313ff7bead7a862221e0fe4eee
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 6be897cc1ae11b8d3032e3ffc669eac05dafe5b2
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400909"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522309"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -72,7 +72,7 @@ ms.locfileid: "58400909"
 > [!IMPORTANT]
 > 对于子网内的内部通信，ISE 需要打开这些子网中的所有端口。
 
-| 目的 | 方向 | 端口 | 源服务标记 | 目标服务标记 | 说明 |
+| 用途 | 方向 | 端口 | 源服务标记 | 目标服务标记 | 说明 |
 |---------|-----------|-------|--------------------|-------------------------|-------|
 | 从 Azure 逻辑应用通信 | 出站 | 80 和 443 | VIRTUAL_NETWORK | INTERNET | 端口取决于逻辑应用服务与之通信的外部服务 |
 | Azure Active Directory | 出站 | 80 和 443 | VIRTUAL_NETWORK | AzureActiveDirectory | |
@@ -121,7 +121,7 @@ ms.locfileid: "58400909"
    | **集成服务环境名称** | 是 | <*environment-name*> | 为环境指定的名称 |
    | **位置** | 是 | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 |
    | **额外容量** | 是 | 0、1、2、3 | 要使用此 ISE 资源的处理单位数。 若要在创建后添加容量，请参阅[添加容量](#add-capacity)。 |
-   | **虚拟网络** | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络，可以在此处创建一个。 <p>**重要说明**：创建 ISE 时可以仅执行此注入。 但是，在创建此关系之前，请确保已[在 Azure 逻辑应用的虚拟网络中设置基于角色的访问控制](#vnet-access)。 |
+   | **虚拟网络** | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络，可以在此处创建一个。 <p>**重要说明**：创建 ISE 时可以仅执行此注入。 但是，可以创建此关系之前，请确保你设置了基于角色的访问控制在虚拟网络中为 Azure 逻辑应用。 |
    | **子网** | 是 | <*subnet-resource-list*> | ISE 需要四个空的子网来在环境中创建资源。 要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。  |
    |||||
 

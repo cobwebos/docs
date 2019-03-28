@@ -3,7 +3,7 @@ title: Azure Active Directory 条件访问设置参考 | Microsoft Docs
 description: 获取 Azure Active Directory 条件访问策略中受支持设置的概述。
 services: active-directory.
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/22/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a303319a3f87f684b72bcddd8d30cd4a2c60642
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: e1fb51803efa9043e50bfda6b38d15cd969f6928
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351518"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517362"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -144,7 +144,7 @@ ms.locfileid: "58351518"
 此设置适用于所有浏览器。 但是，若要符合设备策略（如兼容设备要求），支持以下操作系统和浏览器：
 
 
-| 操作系统                     | 浏览器                                      |
+| OS                     | 浏览器                                      |
 | :--                    | :--                                           |
 | Windows 10             | Internet Explorer、Microsoft Edge、Chrome     |
 | Windows 8/8.1        | Internet Explorer、Chrome                     |
@@ -175,7 +175,7 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 |名称 | 第 |
-|Type | REG_SZ (String) |
+|类型 | REG_SZ (String) |
 |数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
@@ -184,7 +184,7 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |名称 | 第 |
-|Type | REG_SZ (String) |
+|类型 | REG_SZ (String) |
 |数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。 

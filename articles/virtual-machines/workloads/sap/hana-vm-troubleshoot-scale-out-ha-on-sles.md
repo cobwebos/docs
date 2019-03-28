@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: HT
+ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994703"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520575"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
 
@@ -964,7 +964,7 @@ https://&ltnode&gt:7630
 ![在 Hawk 中列出约束](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-还可以在 Hawk 的“历史记录”下上传 hb_report 输出，如下方所示。 请参阅 [hb_report 收集日志文件](#hbreport-to-collect-log-files)： 
+还可以在 Hawk 的“历史记录”下上传 hb_report 输出，如下方所示。 Hb_report 收集日志文件，请参阅： 
 
 ![在 Hawk 中上传 hb_report 输出](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 

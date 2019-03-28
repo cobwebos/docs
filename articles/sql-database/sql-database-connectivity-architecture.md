@@ -12,16 +12,16 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: cfa9f6bcb81182f4e76e995d626b207f8e130a80
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 801e3b20908c3e92693e5e800428773bf5c90539
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840913"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521459"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 
-本文介绍 Azure SQL 数据库和 SQL 数据仓库连接体系结构，以及如何使用不同的组件将流量定向到 Azure SQL 实例。 借助这些连接组件，可以通过连接自 Azure 内部的客户端和连接自 Azure 外部的客户端将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库。 本文还提供脚本示例用于更改连接方式，以及提供与更改默认连接设置相关的注意事项。
+本文介绍 Azure SQL 数据库和 SQL 数据仓库连接体系结构，以及如何使用不同的组件将流量定向到 Azure SQL 实例。 借助这些连接组件，可以通过连接自 Azure 内部的客户端和连接自 Azure 外部的客户端将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库。 本文还提供脚本示例（用于更改连接发生的方式）以及与更改默认连接设置相关的注意事项。
 
 > [!IMPORTANT]
 > **[即将发生的更改] 对于到 Azure SQL Server 的服务终结点连接，`Default` 连接行为会更改为`Redirect`。**
@@ -43,7 +43,7 @@ ms.locfileid: "57840913"
 
 ## <a name="connectivity-architecture"></a>连接体系结构
 
-下图提供了 Azure SQL Database 连接体系结构的高级别概述。
+下图提供 Azure SQL 数据库连接体系结构的高级概述。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
@@ -61,13 +61,13 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 - **代理：** 在此模式下，所有连接都是通过 Azure SQL 数据库网关代理的。 若要启用连接，客户端必须包含只允许 Azure SQL 数据库网关 IP 地址（通常每个区域有两个 IP 地址）的出站防火墙规则。 选择此模式可能导致延迟增大、吞吐量降低，具体取决于工作负荷的性质。 我们强烈建议使用 `Redirect` 连接策略而不要使用 `Proxy` 连接策略，以最大程度地降低延迟和提高吞吐量。
 - **默认：** 除非显式将连接策略更改为 `Proxy` 或 `Redirect`，否则，在创建后，此连接策略将在所有服务器上生效。 有效策略取决于连接是源自 Azure 内部（`Redirect`）还是外部（`Proxy`）。
 
-## <a name="connectivity-from-within-azure"></a>从 Azure 内部连接
+## <a name="connectivity-from-within-azure"></a>从 Azure 内连接
 
 如果从 Azure 内部连接，则连接默认具有 `Redirect` 连接策略。 `Redirect` 策略是指建立到 Azure SQL 数据库的 TCP 会话连接后，会将 Azure SQL 数据库网关的目标虚拟 IP 更改为群集的目标虚拟 IP，从而将客户端会话重定向到适当的数据库群集。 此后，所有后续数据包绕过 Azure SQL 数据库网关，直接传输到群集。 下图演示了此流量流。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
-## <a name="connectivity-from-outside-of-azure"></a>从 Azure 外部连接
+## <a name="connectivity-from-outside-of-azure"></a>从 Azure 外连接
 
 如果从 Azure 外部连接，则连接默认具有 `Proxy` 连接策略。 `Proxy` 策略是指通过 Azure SQL 数据库网关建立 TCP 会话，并且所有后续数据包通过网关传输。 下图演示了此流量流。
 
@@ -91,7 +91,7 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 中国东部 2 | 40.73.82.1 | |
 | 中国北部 1 | 139.219.15.17 | |
 | 中国北部 2 | 40.73.50.0 | |
-| 东亚 | 191.234.2.139 | 52.175.33.150 |
+| 亚洲东部 | 191.234.2.139 | 52.175.33.150 |
 | 美国东部 1 | 191.238.6.43 | 40.121.158.30 |
 | 美国东部 2 | 191.239.224.107 | 40.79.84.180 * |
 | 法国中部 | 40.79.137.0 | 40.79.129.1 |
@@ -105,12 +105,13 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 韩国中部 | 52.231.32.42 | |
 | 韩国南部 | 52.231.200.86 |  |
 | 美国中北部 | 23.98.55.75 | 23.96.178.199 |
-| 北欧 | 191.235.193.75 | 40.113.93.91 |
+| 欧洲北部 | 191.235.193.75 | 40.113.93.91 |
 | 美国中南部 | 23.98.162.75 | 13.66.62.124 |
-| 东南亚 | 23.100.117.95 | 104.43.15.0 |
+| 亚洲东南部 | 23.100.117.95 | 104.43.15.0 |
 | 英国南部 | 51.140.184.11 | |
+| 英国西部 | 51.141.8.11| |
 | 美国中西部 | 13.78.145.25 | |
-| 西欧 | 191.237.232.75 | 40.68.37.158 |
+| 欧洲西部 | 191.237.232.75 | 40.68.37.158 |
 | 美国西部 1 | 23.99.34.75 | 104.42.238.205 |
 | 美国西部 2 | 13.66.226.202 | |
 ||||
@@ -121,7 +122,7 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 
 若要更改 Azure SQL 数据库服务器的 Azure SQL 数据库连接策略，请使用 [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) 命令。
 
-- 如果将连接策略设置为 `Proxy`，则所有网络数据包均通过 Azure SQL 数据库网关进行传输。 对于此设置，需要允许仅出站到 Azure SQL 数据库网关 IP。 使用 `Proxy` 设置比使用 `Redirect` 设置的延迟时间更长。
+- 如果将连接策略设置为 `Proxy`，则所有网络数据包均通过 Azure SQL 数据库网关进行传输。 对于此设置，需要只允许出站到 Azure SQL 数据库网关 IP。 使用 `Proxy` 设置比使用 `Redirect` 设置的延迟时间更长。
 - 如果连接策略设置为 `Redirect`，则所有网络数据包直接向数据库群集传输。 对于此设置，需要允许出站到多个 IP。
 
 ## <a name="script-to-change-connection-settings-via-powershell"></a>通过 PowerShell 编写脚本以更改连接设置
@@ -173,5 +174,5 @@ az resource update --ids $id --set properties.connectionType=Proxy
 ## <a name="next-steps"></a>后续步骤
 
 - 有关如何更改 Azure SQL 数据库服务器的 Azure SQL 数据库连接策略的信息，请参阅 [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)。
-- 有关使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为的信息，请参阅[用于 ADO.NET 4.5 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
-- 有关常规应用程序开发的概述信息，请参阅[SQL 数据库应用程序开发概述](sql-database-develop-overview.md)。
+- 若要了解使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为，请参阅[用于 ADO.NET 4.5 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
+- 若要了解常规应用程序开发的概述信息，请参阅[SQL 数据库应用程序开发概述](sql-database-develop-overview.md)。

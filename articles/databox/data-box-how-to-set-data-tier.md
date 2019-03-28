@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: dc84d5850656a0898fba328b652d86f3d8995bef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb1d6c5bd51fcfe35127c2f6d8dd6a80b727c45f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118368"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517141"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 将数据发送到合适的 Azure 存储 Blob 层
 
@@ -27,7 +27,7 @@ Azure Data Box 通过向你发送专有存储设备来将大量数据移动到 A
 
 冷存储层适用于需要存储至少 30 天的不经常访问的数据。 冷存储层成本低于热存储层，但数据访问费用较高。
 
-Azure 存档存储层是脱机的，其存储成本最低，但访问成本最高。 此层适用于要在存档存储中保留至少 180 天的数据。 有关这些层级和定价模型的详细信息，请转到[存储层的比较](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#comparison-of-the-storage-tiers)。
+Azure 存档存储层是脱机的，其存储成本最低，但访问成本最高。 此层适用于要在存档存储中保留至少 180 天的数据。 有关这些层级和定价模型的详细信息，请转到[存储层的比较](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)。
 
 Data Box 中的数据会上传到和存储帐户有关的存储层。 创建存储帐户时，可以将访问层指定为“热”或“冷”。 根据工作负荷和成本的访问模式，可以将数据从默认层级移动到另一个存储层。
 
@@ -52,7 +52,7 @@ Data Box 中的数据上传到默认层后，可能需要将数据移到非默�
 
 以下步骤介绍如何使用 Azure PowerShell 脚本将 Blob 层设置为存档存储层。
 
-1. 打开已提升的 Windows PowerShell 会话。 请确保运行的是 PowerShell 5.0 或更高版本。 键入：
+1. 打开已提升的 Windows PowerShell 会话。 请确保运行的是 PowerShell 5.0 或更高版本。 类型：
 
    `$PSVersionTable.PSVersion`     
 

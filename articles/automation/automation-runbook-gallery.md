@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58f666d7ebf8ac02d393a42f55e00f08d82b8cae
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 20aafc117ad8b6bd625894180fdfe79bd86192bd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337081"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518994"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure 自动化的 Runbook 和模块库
 
 无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的方案。
 
-可以获取[PowerShell runbook](#runbooks-in-runbook-gallery)并[模块](#modules-in-powerShell-gallery)从 PowerShell 库和[Python runbook](#python-runbooks)从脚本中心库。 还可以通过共享开发的方案来为社区做出贡献，请参阅[将 Runbook 添加到库](#adding-a-runbook-to-the-runbook-gallery)
+可以获取 PowerShell runbook 和[模块](#modules-in-powershell-gallery)从 PowerShell 库和[Python runbook](#python-runbooks)从脚本中心库。 此外可以通过共享开发时，方案将 runbook 添加到库，请参阅参与到社区
 
 ## <a name="runbooks-in-powershell-gallery"></a>PowerShell 库中的 Runbook
 

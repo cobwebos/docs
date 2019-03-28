@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 11372894e1dbcac6a49205ff56d8b30ffb6ee976
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: d3eb0fba2b7178b8b1702d4ca89ff85a441c20d6
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261258"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541071"
 ---
-# <a name="create-custom-fields-in-log-analytics"></a>在 Log Analytics 中创建自定义字段
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中的 Log Analytics 工作区中创建自定义字段
 
 > [!NOTE]
-> 本文介绍如何在收集 Log Analytics 时解析文本数据。 如[解析 Log Analytics](../log-query/parse-text.md) 的文本数据中所述，在收集查询中的文本数据之后，解析文本数据是有好处的。
+> 本文介绍如何分析 Log Analytics 工作区中的文本数据，因为它收集。 有一些好处分析查询中的文本数据收集中所述[分析 Azure Monitor 中的文本数据](../log-query/parse-text.md)。
 
-Log Analytics 的**自定义字段**功能使你可以通过添加自己的可搜索字段来扩展 Log Analytics 中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
+**自定义字段**Azure Monitor 的功能，可通过添加自己的可搜索字段来扩展 Log Analytics 工作区中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
 
 ![自定义字段概述](media/custom-fields/overview.png)
 
@@ -87,7 +87,7 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 
 我们输入以下查询从服务控制管理器中返回事件 ID 为 7036 的所有事件（即指示服务启动或停止的事件）。
 
-![Query](media/custom-fields/query.png)
+![查询](media/custom-fields/query.png)
 
 然后，我们选择事件 ID 为 7036 的任一记录。
 

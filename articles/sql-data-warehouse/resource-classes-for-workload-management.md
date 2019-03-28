@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5b21c16a166a3a264156b7719be6a331e00e6e8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881361"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520048"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
 
@@ -130,7 +130,21 @@ ms.locfileid: "57881361"
 
 以下语句属于资源类的例外情况，始终在 smallrc 中运行：
 
--创建或删除表的 ALTER TABLE...SWITCH、 SPLIT 或 MERGE PARTITION 的 ALTER INDEX DISABLE-DROP INDEX-创建、 更新或删除统计信息-TRUNCATE TABLE-ALTER AUTHORIZATION-创建登录名的创建、 ALTER 或 DROP USER-创建、 ALTER 或 DROP PROCEDURE-创建或删除视图-将值插入的选择从系统视图和 Dmv-解释-DBCC
+- CREATE 或 DROP TABLE
+- ALTER TABLE ...SWITCH、SPLIT 或 MERGE PARTITION
+- ALTER INDEX DISABLE
+- DROP INDEX
+- CREATE、UPDATE 或 DROP STATISTICS
+- TRUNCATE TABLE
+- ALTER AUTHORIZATION
+- CREATE LOGIN
+- CREATE、ALTER 或 DROP USER
+- CREATE、ALTER 或 DROP PROCEDURE
+- CREATE 或 DROP VIEW
+- INSERT VALUES
+- SELECT（从系统视图和 DMV）
+- EXPLAIN
+- DBCC
 
 <!--
 Removed as these two are not confirmed / supported under SQL DW

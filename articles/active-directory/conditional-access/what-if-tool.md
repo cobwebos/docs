@@ -4,7 +4,7 @@ description: 了解如何理解条件访问策略对环境的影响。
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ec279b9c3333c365e5e516fb61fc10016fefe80
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6271c7a99e82fb1fff2815167b0149c74212f260
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170116"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521867"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的模拟工具是什么？
 
@@ -31,13 +31,13 @@ ms.locfileid: "58170116"
 
 本文介绍如何使用此工具来测试条件访问策略。
 
-## <a name="what-it-is"></a>作用
+## <a name="what-it-is"></a>描述
 
 通过“条件访问模拟策略工具”，可了解条件访问策略对环境的影响。 通过此工具，可以评估模拟的用户登录，而不是通过手动执行多个登录来驱动策略的测试。 该模拟会估计此登录对策略的影响并生成模拟报表。 报表不仅列出应用的条件访问策略，还列出[经典策略](policy-migration.md#classic-policies)（如果存在）。    
 
 此外，模拟工具还提供一种方法，用于快速确定应用于特定用户的策略。 如果需要解决问题等，则可以使用此信息。  
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 
 在“条件访问模拟工具”中，首先需要配置想要模拟的登录方案的设置。 这些设置包括：
 
@@ -102,7 +102,7 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 此设置模拟[登录风险条件](conditions.md#sign-in-risk)。   
 
 
-## <a name="evaluation"></a>计算 
+## <a name="evaluation"></a>评估 
 
 通过单击“模拟”启动评估。 评估结果提供包含以下内容的报表： 
 

@@ -8,30 +8,30 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 978566eb9e0073c60046eca024e09ba63c642180
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.openlocfilehash: b378f77874b1ebef243836c101fa71a53f4775d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458224"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517736"
 ---
 # <a name="exclude-disks-from-replication-of-azure-vms-to-azure-using-azure-powershell"></a>将磁盘从 Azure VM 复制到 Azure 时使用 Azure PowerShell 排除磁盘
 
 本文介绍如何在复制 Azure VM 时排除磁盘。 这种排除可以优化消耗的复制带宽，或者优化此类磁盘利用的目标端资源。 目前，仅通过 Azure PowerShell 公开此功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 开始之前：
 
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
-- 拥有 5.7.0 或更高版本的 AzureRm PowerShell 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azureps-cmdlets-docs)。
+- 拥有 5.7.0 或更高版本的 AzureRm PowerShell 模块。 如需安装或升级 Azure PowerShell，请参阅 [Azure PowerShell 安装和配置指南](/powershell/azureps-cmdlets-docs)。
 - 已创建恢复服务保管库，并且至少已对虚拟机进行了一次保护。 如果没有，请使用[此处](azure-to-azure-powershell.md)提到的文档进行操作 
 
-## <a name="why-exclude-disks-from-replication"></a>为何要从复制中排除磁盘？
+## <a name="why-exclude-disks-from-replication"></a>为什么要从复制中排除磁盘？
 从复制中排除磁盘通常因以下原因而有必要：
 
-- 虚拟机已达到 [Azure Site Recovery 对数据更改复制速率的限制](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#azure-site-recovery-limits-to-replicate-data-change-rates)
+- 虚拟机已达到 [Azure Site Recovery 对数据更改复制速率的限制](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)
 
 - 排除的磁盘上改动的数据不重要或不需要复制。
 

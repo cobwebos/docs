@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92cb4f1093d8450bb2c32d99f4ccedd0a5688253
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 845ab85ae10a9d57bf3e263d49532675f60cd84f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165911"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教程：Azure Active Directory 与 InsideView 的集成
 
@@ -91,7 +91,7 @@ ms.locfileid: "58165911"
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 InsideView 测试用户](#creating-a-insideview-test-user)** -Britta Simon 的对应在 InsideView 链接到用户的 Azure AD 表示形式。
+1. **[创建 InsideView 测试用户](#creating-an-insideview-test-user)** -Britta Simon 的对应在 InsideView 链接到用户的 Azure AD 表示形式。
 1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -154,7 +154,7 @@ ms.locfileid: "58165911"
     
     g. 在“Crm 姓氏映射”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。  
 
-    h. 单击“ **保存**”。
+    h.如果该值不存在，请单击“添加行”。 单击“保存” 。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -189,7 +189,7 @@ ms.locfileid: "58165911"
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="creating-an-insideview-test-user"></a>创建 InsideView 测试用户
 
@@ -254,4 +254,3 @@ ms.locfileid: "58165911"
 [201]: ./media/insideview-tutorial/tutorial_general_201.png
 [202]: ./media/insideview-tutorial/tutorial_general_202.png
 [203]: ./media/insideview-tutorial/tutorial_general_203.png
-

@@ -4,7 +4,7 @@ description: 本快速入门介绍如何配置 Azure Active Directory (Azure AD)
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/14/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e950450a1ebe710a56ccfa0e8abefc7104602ec5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 4de5fdfab0858536cdd0cd81a81ea7cbc012b855
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206168"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518212"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问检测到会话风险时阻止访问  
 
@@ -33,11 +33,11 @@ ms.locfileid: "56206168"
 ![创建策略](./media/app-sign-in-risk/1000.png)
 
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 若要完成本教程中的方案，需要：
 
@@ -72,7 +72,7 @@ ms.locfileid: "56206168"
 | 用户和组 | Alain Charon  |
 | 云应用 | 所有云应用 |
 | 登录风险 | 中型 |
-| 授权 | 阻止访问 |
+| 授予 | 阻止访问 |
  
 
 ![创建策略](./media/app-sign-in-risk/130.png)
@@ -90,15 +90,15 @@ ms.locfileid: "56206168"
 
 3. 在“Azure Active Directory”页的“安全性”部分中，单击“条件性访问”。
 
-    ![条件性访问](./media/app-sign-in-risk/03.png)
+    ![条件访问](./media/app-sign-in-risk/03.png)
  
 4. 在“条件性访问”页顶部的工具栏中，单击“添加”。
 
-    ![Name](./media/app-sign-in-risk/108.png)
+    ![名称](./media/app-sign-in-risk/108.png)
 
 5. 在“新建”页上的“名称”文本框中，键入“出现中等风险级别时阻止访问”。
 
-    ![Name](./media/app-sign-in-risk/104.png)
+    ![名称](./media/app-sign-in-risk/104.png)
 
 6. 在“分配”部分中，单击“用户和组”。
 
@@ -106,7 +106,7 @@ ms.locfileid: "56206168"
 
 7. 在“用户和组”页上：
 
-    ![条件性访问](./media/app-sign-in-risk/107.png)
+    ![条件访问](./media/app-sign-in-risk/107.png)
 
     a. 单击“选择用户和组”，然后选择“用户和组”。
 
@@ -122,11 +122,11 @@ ms.locfileid: "56206168"
 
 9. 在“云应用”页上：
 
-    ![条件性访问](./media/app-sign-in-risk/109.png)
+    ![条件访问](./media/app-sign-in-risk/109.png)
 
     a. 单击“所有云应用”。
 
-    b. 单击“完成”。
+    b. 单击“Done”（完成） 。
 
 10. 单击“条件”。 
 
@@ -154,7 +154,7 @@ ms.locfileid: "56206168"
 
 11. 在“授予”页上：
 
-    ![条件性访问](./media/app-sign-in-risk/105.png)
+    ![条件访问](./media/app-sign-in-risk/105.png)
 
     a. 选择“阻止访问”。
 
@@ -164,7 +164,7 @@ ms.locfileid: "56206168"
 
     ![启用策略](./media/app-sign-in-risk/18.png)
 
-13. 单击“创建”。
+13. 单击**创建**。
 
 
 ## <a name="evaluate-a-simulated-sign-in"></a>评估模拟登录

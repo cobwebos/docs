@@ -1,5 +1,5 @@
 ---
-title: Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 简介
+title: Azure 应用程序网关的 web 应用程序防火墙简介
 description: 本文概述应用程序网关的 Web 应用程序防火墙 (WAF)
 services: application-gateway
 author: vhorne
@@ -7,150 +7,153 @@ ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 914583747d4e0e045d5023d9072451983037e57f
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 830513a03bd65ca14cb0938ae599a676f1bb3bca
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790351"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518178"
 ---
-# <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
+# <a name="web-application-firewall-for-azure-application-gateway"></a>Azure 应用程序网关的 web 应用程序防火墙
 
-Web 应用程序防火墙 (WAF) 是应用程序网关的功能，可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。
+Azure 应用程序网关提供了进行集中的保护 web 应用程序受到的常见攻击和漏洞的 web 应用程序防火墙 (WAF)。 通过利用常见的已知漏洞的恶意攻击越来越多地针对 web 应用程序。 SQL 注入和跨站点脚本是最常见的攻击。
 
-Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击和跨站点脚本攻击等。 
+阻止应用程序代码中的此类攻击是一个挑战。 它可以要求严格的维护、 修补和监视应用程序拓扑的多个层。 集中式的 web 应用程序防火墙可帮助进行安全管理要简单得多。 WAF 还使应用程序管理员可以保护以防御威胁与入侵，更好的保障。
 
-防止应用程序代码遭受此类攻击颇具挑战性，并且可能需要对应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可将现有应用程序网关轻松转换为支持 Web 应用程序防火墙的应用程序网关。
+WAF 解决方案可通过集中修补已知的漏洞，而不是保护每个单独的 web 应用程序响应速度更快的安全威胁。 现有应用程序网关能够轻松转换到火灾墙上启用应用程序网关。
 
-WAF 基于 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则。 它会自动更新以包含针对新漏洞的保护，而无需其他配置。
+根据应用程序网关 WAF[核心规则集 (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中打开 Web Application Security Project (OWASP)。 WAF 会自动更新以包括在无需额外配置的保护，防御新漏洞。
 
-![imageURLroute](./media/waf-overview/WAF1.png)
+![应用程序网关 WAF 关系图](./media/waf-overview/WAF1.png)
 
-应用程序网关可作为应用程序传送控制器 (ADC) 运行，并提供 SSL 终止、基于 cookie 的会话相关性、轮循负载分发、基于内容的路由，以及托管多个网站和安全增强功能的能力。
+应用程序网关用作应用程序传送控制器 (ADC)。 它提供了安全套接字层 (SSL) 终止、 基于 cookie 的会话相关性、 轮循负载分发、 基于内容的路由、 托管多个网站和安全增强功能的能力。
 
-应用程序网关提供的安全增强功能包括 SSL 策略管理和端到端 SSL 支持。 通过直接集成到 ADC 产品的 WAF（Web 应用程序防火墙），应用程序的安全性现已得到增强。 这提供了易于配置的中央位置，可用于管理和保护 Web 应用程序，使其免受常见 Web 漏洞的威胁。
+应用程序网关的安全增强功能包括 SSL 策略管理和端到端 SSL 支持。 应用程序的安全性得到加强的应用程序网关与 WAF 集成。 组合可保护 web 应用程序受到常见漏洞的影响。 它提供了轻松配置中心位置来管理。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>权益
 
-下面是应用程序网关和 Web 应用程序防火墙提供的核心优势：
+本部分介绍应用程序网关和其 WAF 提供的核心优势。
 
 ### <a name="protection"></a>保护
 
-* 无需修改后端代码即可保护 Web 应用程序免受 Web 漏洞和攻击的威胁。
+* 保护 web 应用程序免受 web 漏洞和攻击而无需对后端代码进行修改。
 
-* 在应用程序网关背后同时保护多个 Web 应用程序。 应用程序网关支持在单个网关背后托管最多 20 个网站，并使用 WAF 防止所有这些网站受到 Web 攻击的威胁。
+* 在同时保护多个 web 应用程序。 应用程序网关的实例可以托管的 web 应用程序防火墙保护的最多 20 个网站。
 
 ### <a name="monitoring"></a>监视
 
-* 使用实时 WAF 日志监视 Web 应用程序受到的攻击。 此日志与 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 集成，让你跟踪 WAF 警报和日志并轻松监视趋势。
+* 使用实时 WAF 日志监视 web 应用程序针对的攻击。 日志集成与[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md)来跟踪 WAF 警报和轻松监视趋势。
 
-* WAF 已与 Azure 安全中心集成。 使用 Azure 安全中心可在一个中心位置查看所有 Azure 资源的安全状态。
+* 应用程序网关 WAF 与 Azure 安全中心集成。 安全中心提供的所有 Azure 资源的安全状态的核心概况。
 
 ### <a name="customization"></a>自定义
 
-* 可根据应用程序的要求自定义 WAF 规则和规则组，并消除误报。
+* 您可以自定义 WAF 规则和规则组，以适应应用程序的需求，并消除误报。
 
 ## <a name="features"></a>功能
 
-- SQL 注入保护
-- 跨站点脚本保护
-- 常见 Web 攻击保护，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含攻击
-- 防止 HTTP 协议违反行为
-- 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）
-- 防止自动程序、爬网程序和扫描程序
-- 检测常见应用程序错误配置（例如 Apache、IIS 等）
-- 请求大小限制 - Web 应用程序防火墙允许用户在下限和上限内配置请求大小限制。
-- 排除列表 - WAF 排除列表允许用户忽略 WAF 评估中的某些请求属性。 常见示例是 Active Directory 插入的令牌，这些令牌用于身份验证或密码字段。
+- SQL 注入保护。
+- 跨站点脚本保护。
+- 针对其他常见 web 攻击，例如命令注入、 HTTP 请求走私、 HTTP 响应拆分和远程文件包含的保护。
+- 防止 HTTP 协议冲突。
+- 防止 HTTP 协议异常行为，例如缺少主机用户代理和 accept 标头。
+- 针对智能机器人、 爬网程序和扫描仪的保护。
+- 检测常见应用程序错误配置 （例如，Apache 和 IIS）。
+- 可配置的请求大小限制的下限和上限。
+- 排除列表中，可以忽略来自 WAF 评估某些请求属性。 常见示例是用于身份验证或密码字段的 Active Directory 插入令牌。
 
 ### <a name="core-rule-sets"></a>核心规则集
 
-应用程序网关支持两个规则集：CRS 3.0 和 CRS 2.2.9。 这些核心规则集是防范 Web 应用程序中的恶意活动的规则集合。
+应用程序网关支持 CRS 3.0 和 CRS 2.2.9 两个规则集。 这些规则保护 web 应用程序免受恶意活动。
 
-Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使用版本 2.2.9。 与版本 2.2.9 相比，CRS 3.0 的误报数更少。 提供[根据需求自定义规则](application-gateway-customize-waf-rules-portal.md)的功能。 Web 应用程序防火墙防范的某些常见 Web 安全漏洞包括：
+应用程序网关 WAF 预先配置 CRS 3.0 默认情况下。 但您可以选择以改为使用 CRS 2.2.9。 CRS 3.0 减少与 CRS 2.2.9 相比的假正值。 此外可以[自定义规则，以满足您的需要](application-gateway-customize-waf-rules-portal.md)。
 
-- SQL 注入保护
-- 跨站点脚本保护
-- 常见 Web 攻击保护，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含攻击
-- 防止 HTTP 协议违反行为
-- 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）
-- 防止自动程序、爬网程序和扫描程序
-- 检测常见应用程序错误配置（例如 Apache、IIS 等）
+WAF 可保护针对以下 web 漏洞：
 
-有关规则及其保护措施的更详细列表，请参阅[核心规则集](#core-rule-sets)。
+- SQL 注入式攻击
+- 跨站点脚本攻击
+- 其他常见的攻击，例如命令注入、 HTTP 请求走私、 HTTP 响应拆分和远程文件包含
+- HTTP 协议冲突
+- HTTP 协议异常行为，例如缺少主机用户代理和 accept 标头
+- 智能机器人、 爬网程序和扫描仪
+- 常见的应用程序配置错误 （例如，Apache 和 IIS）
 
-#### <a name="owasp30"></a>OWASP_3.0
+#### <a name="owasp-crs-30"></a>OWASP CRS 3.0
 
-如下表中所示，提供的 3.0 核心规则集包含 13 个规则组。 每个规则组包含多个可以禁用的规则。
+CRS 3.0 包含 13 个规则组下, 表中所示。 每个组包含多个规则，可禁用。
 
-|RuleGroup|描述|
+|规则组|描述|
 |---|---|
-|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|包含用于锁定方法（PUT、PATCH）的规则|
-|**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| 包含用于防范端口和环境扫描程序的规则。|
-|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|包含用于防范协议和编码问题的规则。|
-|**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|包含用于防范标头注入、请求走私和响应拆分的规则|
-|**[REQUEST-930-APPLICATION-ATTACK-LFI](application-gateway-crs-rulegroups-rules.md#crs930)**|包含用于防范文件和路径攻击的规则。|
-|**[REQUEST-931-APPLICATION-ATTACK-RFI](application-gateway-crs-rulegroups-rules.md#crs931)**|包含用于防范远程文件包含 (RFI) 的规则|
-|**[REQUEST-932-APPLICATION-ATTACK-RCE](application-gateway-crs-rulegroups-rules.md#crs932)**|包含用于防范远程代码执行的规则。|
-|**[REQUEST-933-APPLICATION-ATTACK-PHP](application-gateway-crs-rulegroups-rules.md#crs933)**|包含用于防范 PHP 注入攻击的规则。|
-|**[REQUEST-941-APPLICATION-ATTACK-XSS](application-gateway-crs-rulegroups-rules.md#crs941)**|包含用于防范跨站点脚本的规则。|
-|**[REQUEST-942-APPLICATION-ATTACK-SQLI](application-gateway-crs-rulegroups-rules.md#crs942)**|包含用于防范 SQL 注入攻击的规则。|
-|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](application-gateway-crs-rulegroups-rules.md#crs943)**|包含用于防范会话固定攻击的规则。|
+|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|锁定方法 (PUT、 PATCH)|
+|**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**|防范端口和环境扫描程序|
+|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|防范协议和编码问题|
+|**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|防范标头注入、 请求走私和响应拆分|
+|**[REQUEST-930-APPLICATION-ATTACK-LFI](application-gateway-crs-rulegroups-rules.md#crs930)**|针对文件和路径攻击提供保护|
+|**[REQUEST-931-APPLICATION-ATTACK-RFI](application-gateway-crs-rulegroups-rules.md#crs931)**|远程文件包含 (RFI) 攻击|
+|**[REQUEST-932-APPLICATION-ATTACK-RCE](application-gateway-crs-rulegroups-rules.md#crs932)**|重新保护远程代码执行攻击|
+|**[REQUEST-933-APPLICATION-ATTACK-PHP](application-gateway-crs-rulegroups-rules.md#crs933)**|防范 PHP 注入攻击|
+|**[REQUEST-941-APPLICATION-ATTACK-XSS](application-gateway-crs-rulegroups-rules.md#crs941)**|防止跨站点脚本攻击|
+|**[REQUEST-942-APPLICATION-ATTACK-SQLI](application-gateway-crs-rulegroups-rules.md#crs942)**|防范 SQL 注入攻击|
+|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](application-gateway-crs-rulegroups-rules.md#crs943)**|防范会话固定攻击|
 
-#### <a name="owasp229"></a>OWASP_2.2.9
+#### <a name="owasp-crs-229"></a>OWASP CRS 2.2.9
 
-如下表中所示，提供的 2.2.9 核心规则集包含 10 个规则组。 每个规则组包含多个可以禁用的规则。
+CRS 2.2.9 包括 10 个规则组下, 表中所示。 每个组包含多个规则，可禁用。
 
-|RuleGroup|描述|
+|规则组|描述|
 |---|---|
-|**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|包含用于防范协议冲突（无效字符、使用请求正文执行 GET 等等）的规则。|
-|**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|包含用于防范错误标头信息的规则。|
-|**[crs_23_request_limits](application-gateway-crs-rulegroups-rules.md#crs23)**|包含用于防范参数或文件超出限制的规则。|
-|**[crs_30_http_policy](application-gateway-crs-rulegroups-rules.md#crs30)**|包含用于防范受限方法、标头和文件类型的规则。 |
-|**[crs_35_bad_robots](application-gateway-crs-rulegroups-rules.md#crs35)**|包含用于防范 Web 爬网程序和扫描程序的规则。|
-|**[crs_40_generic_attacks](application-gateway-crs-rulegroups-rules.md#crs40)**|包含用于防范普通攻击（会话固定、远程文件包含、PHP 注入等等）的规则。|
-|**[crs_41_sql_injection_attacks](application-gateway-crs-rulegroups-rules.md#crs41sql)**|包含用于防范 SQL 注入攻击的规则|
-|**[crs_41_xss_attacks](application-gateway-crs-rulegroups-rules.md#crs41xss)**|包含用于防范跨站点脚本的规则。|
-|**[crs_42_tight_security](application-gateway-crs-rulegroups-rules.md#crs42)**|包含用于防范路径遍历攻击的规则|
-|**[crs_45_trojans](application-gateway-crs-rulegroups-rules.md#crs45)**|包含用于防范后门特洛伊木马的规则。|
+|**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|防范协议冲突 （例如无效的字符或使用请求正文获取）|
+|**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|防范错误标头信息|
+|**[crs_23_request_limits](application-gateway-crs-rulegroups-rules.md#crs23)**|防范参数或文件超出限制|
+|**[crs_30_http_policy](application-gateway-crs-rulegroups-rules.md#crs30)**|防范受限的方法、 标头和文件类型|
+|**[crs_35_bad_robots](application-gateway-crs-rulegroups-rules.md#crs35)**|防范 web 爬网程序和扫描仪的步骤|
+|**[crs_40_generic_attacks](application-gateway-crs-rulegroups-rules.md#crs40)**|防范普通攻击 （如会话固定、 远程文件包含和 PHP 注入）|
+|**[crs_41_sql_injection_attacks](application-gateway-crs-rulegroups-rules.md#crs41sql)**|防范 SQL 注入攻击|
+|**[crs_41_xss_attacks](application-gateway-crs-rulegroups-rules.md#crs41xss)**|防止跨站点脚本攻击|
+|**[crs_42_tight_security](application-gateway-crs-rulegroups-rules.md#crs42)**|防范路径遍历攻击|
+|**[crs_45_trojans](application-gateway-crs-rulegroups-rules.md#crs45)**|防范后门特洛伊木马|
 
 ### <a name="waf-modes"></a>WAF 模式
 
-应用程序网关 WAF 可配置为在以下两种模式中运行：
+可以将应用程序网关 WAF 配置为在以下两种模式中运行：
 
-* **检测模式** - 配置为在检测模式下运行时，应用程序网关 WAF 将监视所有威胁警报并将其记录到日志文件中。 应使用“诊断”部分打开应用程序网关的日志记录诊断。 还需确保已选择并打开 WAF 日志。 在检测模式下运行时，Web 应用程序防火墙不会阻止传入的请求。
-* **阻止模式** - 配置为在阻止模式下运行时，应用程序网关主动阻止其规则检测到的入侵和攻击。 攻击者会收到 403 未授权访问异常，且连接会终止。 阻止模式会继续在 WAF 日志中记录此类攻击。
+* **检测模式**:监视并记录所有威胁警报。 你的应用程序网关在启用日志记录诊断**诊断**部分。 您还必须确保已选择并打开 WAF 日志。 在检测模式下运行时，web 应用程序防火墙不会阻止传入的请求。
+* **阻止模式下**:块入侵和攻击检测规则。 攻击者会收到"403 未授权的访问"异常并终止连接。 阻止模式下在 WAF 日志中记录此类攻击。
 
-### <a name="anomaly-scoring-mode"></a>异常评分模式 
+### <a name="anomaly-scoring-mode"></a>异常评分模式
  
-OWASP 使用两种模式来确定是否阻止流量： 传统模式和异常评分模式。 在传统模式下，将独立评估与任何规则匹配的流量，无论是否也匹配其他规则。 尽管这种模式更易于理解，但它存在一种限制：不知道特定的请求激发的多少个规则。 针对这种局限，我们引入了异常评分模式，它已成为 OWASP 3.x 中的默认模式。 
+OWASP 有两种模式以决定是否要阻止的流量：传统模式和异常评分模式。
 
-在异常评分模式下，上一部分所述的某个规则与流量匹配这一事实并不直接意味着将要阻止该流量（假设防火墙处于“阻止”模式）。 规则采用特定的严重性（严重、错误、警告和通知），并根据该严重性增大调用异常评分的请求的数值。 例如，一个匹配的“警告”规则的评分值为 3，而一个匹配的“严重”规则的评分值为 5。 
+在传统模式下，与任何规则匹配的流量被视为独立于其他规则的匹配项。 此模式非常易于理解。 但缺少的有关的规则数量匹配特定请求的信息是一个限制。 因此，引入了异常评分模式。 默认值为 OWASP 3 它。*x*。
 
-异常评分有一个设置为 5 的阈值，低于该阈值的流量不会删除。 这意味着，单个匹配的“严重”规则就足以让处于“阻止”模式的 Azure WAF 阻止请求（因为根据上一段落所述，“关键”规则会将异常评分增加 5）。 但是，一个“警告”级别的匹配规则只会将异常评分增加 3。 由于 3 仍低于阈值 5，因此不会阻止流量，即使 WAF 处于“阻止”模式。 
+在异常评分模式下，与任何规则匹配的流量不会立即阻止防火墙在阻止模式下时。 规则具有特定严重级别：*关键*，*错误*，*警告*，或*通知*。 该严重性级别会影响用于请求，这名为异常分数的数值。 例如，一个*警告*匹配分配分数为 3 的规则。 一个*严重*匹配参与 5 的规则。
 
-请注意，当 WAF 规则与流量匹配时记录的消息会包含值为“Blocked”的 action_s 字段，但这不一定意味着真正阻止了流量。 若要真正阻止流量，异常评分必须至少达到 5。  
+没有阻止通信异常分数为 5 的阈值。 因此，单个*严重*规则匹配足以让应用程序网关 WAF，若要阻止的请求，甚至在阻止模式下。 但一个*警告*匹配项，仅增加异常分数 3，这还不够本身来阻止流量的规则。
 
-### <a name="application-gateway-waf-reports"></a>WAF 监视
+> [!NOTE]
+> WAF 规则匹配流量时，将记录该消息包含操作值"已阻止"。 但流量是实际仅被阻止的异常情况分数为 5 或更高版本。  
 
-监视应用程序网关的运行状况非常重要。 借助日志记录以及与 Azure Monitor、Azure 安全中心和 Azure Monitor 日志的集成，可以监视 Web 应用程序防火墙及其保护的应用程序的运行状况。
+### <a name="waf-monitoring"></a>WAF 监视
 
-![诊断](./media/waf-overview/diagnostics.png)
+监视应用程序网关的运行状况非常重要。 通过与 Azure 安全中心，Azure Monitor 的集成支持监视 WAF 和它保护的应用程序的运行状况和 Azure Monitor 日志。
+
+![应用程序网关 WAF 诊断的关系图](./media/waf-overview/diagnostics.png)
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-每个应用程序网关日志与 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 集成。  这样，你便可以跟踪包括 WAF 警报和日志在内的诊断信息。  门户中“诊断”选项卡上的“应用程序网关”资源中提供了此功能，也可以通过 Azure Monitor 服务直接访问此功能。 若要详细了解如何为应用程序网关启用诊断日志，请参阅[应用程序网关诊断](application-gateway-diagnostics.md)
+应用程序网关日志集成在一起[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md)。 此功能可跟踪包括 WAF 警报和日志的诊断信息。 你可以访问此功能上**诊断**的应用程序网关资源在门户中或直接通过 Azure Monitor 中的选项卡。 若要了解有关启用日志的详细信息，请参阅[应用程序网关诊断](application-gateway-diagnostics.md)。
 
 #### <a name="azure-security-center"></a>Azure 安全中心
 
-[Azure 安全中心](../security-center/security-center-intro.md)有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 应用程序网关现在会[集成到 Azure 安全中心](application-gateway-integration-security-center.md)。 Azure 安全中心会扫描环境以检测未受保护的 Web 应用程序。 它现在可以建议应用程序网关 WAF 保护这些易受攻击的资源。 可直接从 Azure 安全中心创建应用程序网关 WAF。  这些 WAF 实例与 Azure 安全中心集成，并将警报和运行状况信息发送回 Azure 安全中心，以便进行报告。
+[安全中心](../security-center/security-center-intro.md)可帮助你防止、 检测和响应威胁。 它提供增加的可见性并控制 Azure 资源的安全性。 应用程序网关[与安全中心集成](application-gateway-integration-security-center.md)。 安全中心会扫描环境以检测未受保护的 web 应用程序。 它可以建议应用程序网关 WAF 保护这些易受攻击的资源。 直接从安全中心创建防火墙。 这些 WAF 实例与安全中心集成。 它们向发送警报和运行状况信息安全中心进行报告。
 
-![图 1](./media/waf-overview/figure1.png)
+![安全中心概述窗口](./media/waf-overview/figure1.png)
 
 #### <a name="logging"></a>日志记录
 
-应用程序网关 WAF 提供有关检测到的每个威胁的详细报告。 日志记录与 Azure 诊断日志集成，警报以 JSON 格式记录。 这些日志可与 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)集成。
+应用程序网关 WAF 提供详细报告检测到每个威胁。 与 Azure 诊断日志集成日志记录。 警报记录.json 格式。 这些日志可与 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)集成。
 
-![imageURLroute](./media/waf-overview/waf2.png)
+![应用程序网关诊断日志 windows](./media/waf-overview/waf2.png)
 
 ```json
 {
@@ -182,11 +185,10 @@ OWASP 使用两种模式来确定是否阻止流量： 传统模式和异常评�
 
 ## <a name="application-gateway-waf-sku-pricing"></a>应用程序网关 WAF SKU 定价
 
-Web 应用程序防火墙在新的 WAF SKU 中提供。 此 SKU 仅在 Azure 资源管理器预配模型中可用，在经典部署模型中不可用。 此外，WAF SKU 仅提供中型和大型应用程序网关实例大小。 应用程序网关的所有限制同样适用于 WAF SKU。
+是在新应用程序网关 WAF SKU。 此 SKU 的只能在 Azure 资源管理器预配模型，而不是经典部署模型中可用。 此外，WAF SKU 仅提供中型和大型应用程序网关实例大小。 应用程序网关的所有限制也都适用于 WAF SKU。
 
-定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。 不会按规则或规则组收费。 可以使用同一个 Web 应用程序防火墙保护多个 Web 应用程序，并且无需为支持多个应用程序付费。
+定价基于每小时的网关实例费和数据处理费用。 [应用程序网关定价](https://azure.microsoft.com/pricing/details/application-gateway/)WAF SKU 不同于标准 SKU 费用。 数据处理费用是相同的。 将没有每个规则组收费。 你可以保护同一个 web 应用程序防火墙后面的多个 web 应用程序。 不需要支付支持多个应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 WAF 后，请参阅[如何在应用程序网关上配置 Web 应用程序防火墙](tutorial-restrict-web-traffic-powershell.md)。
-
+请参阅[如何在应用程序网关上配置 web 应用程序防火墙](tutorial-restrict-web-traffic-powershell.md)。

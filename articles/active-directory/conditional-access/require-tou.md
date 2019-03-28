@@ -4,7 +4,7 @@ description: 本快速入门介绍在访问受 Azure Active Directory 条件访�
 services: active-directory
 keywords: 对应用的条件访问, 使用 Azure AD 进行条件访问, 保护对公司资源的访问, 条件访问策略, 使用条款
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/14/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5375f86e9ac9c26646e6e8560775d2dea3a2d1ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ac82892fd5edb9cb3544184a1ac36a540a760da9
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170966"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519810"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款 
 
@@ -36,7 +36,7 @@ ms.locfileid: "58170966"
 ![创建策略](./media/require-tou/5555.png)
 
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 
@@ -81,7 +81,7 @@ ms.locfileid: "58170966"
 
 5. 在“Azure Active Directory”页的“安全性”部分中，单击“条件性访问”。
 
-    ![条件性访问](./media/require-tou/03.png) 
+    ![条件访问](./media/require-tou/03.png) 
 
 6. 在“管理”部分，单击“使用条款”。
 
@@ -107,7 +107,7 @@ ms.locfileid: "58170966"
 
     f. 对于“强制实施条件访问策略模板”，请选择“自定义策略”。
 
-    g. 单击“创建”。
+    g. 单击**创建**。
  
 
 
@@ -177,7 +177,7 @@ ms.locfileid: "58170966"
 
 7. 在“授予”页上：
 
-    ![授权](./media/require-tou/111.png)
+    ![授予](./media/require-tou/111.png)
 
     a. 选择“授予访问权限”。
 
@@ -189,7 +189,7 @@ ms.locfileid: "58170966"
 
     ![启用策略](./media/require-tou/18.png)
 
-9. 单击“创建”。
+9. 单击**创建**。
 
 
 ## <a name="evaluate-a-simulated-sign-in"></a>评估模拟登录

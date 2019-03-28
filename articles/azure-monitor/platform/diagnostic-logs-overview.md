@@ -1,19 +1,19 @@
 ---
 title: Azure 诊断日志概述
 description: 了解什么是 Azure 诊断日志，以及如何使用该诊断日志了解发生在 Azure 资源内的事件。
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
-ms.author: johnkem
+ms.date: 03/26/2019
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: 07ea18a767044f0f74249859bb46d8285d52d7ab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 890f2224a4053ec8cad65b44b85eab0e31be3b64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310176"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519385"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>从 Azure 资源收集和使用日志数据
 
@@ -44,15 +44,10 @@ ms.locfileid: "57310176"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有合适的 RBAC 访问权限。
+可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置设置的用户必须对这两个订阅具有相应的 RBAC 访问权限。
 
 > [!NOTE]
 >  当前无法将网络流日志存档到安全虚拟网络后的存储帐户。
-
-> [!WARNING]
-> 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
 
 ## <a name="diagnostic-settings"></a>诊断设置
 
@@ -61,9 +56,9 @@ ms.locfileid: "57310176"
 * 将诊断日志和指标发送到的位置（存储帐户、事件中心和/或 Azure Monitor）。
 * 发送哪些日志类别，是否也会发送指标数据。
 * 应该将每个日志类别在存储帐户中保留多长时间
-    - 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
+    - 保留期为 0 天意味着永久保留日志。 否则，值可以是任意数量的 1 至 365 天之间。
     - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择了“事件中心”或“Log Analytics”选项），则保留策略无效。
-    - 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。
+    - 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。
 
 这些设置可以通过门户中的诊断设置、Azure PowerShell 和 CLI 命令或 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 轻松进行配置。
 
@@ -103,7 +98,7 @@ ms.locfileid: "57310176"
 
    ![添加诊断设置 - 现有的设置](media/diagnostic-logs-overview/diagnostic-settings-configure.png)
 
-4. 单击“ **保存**”。
+4. 单击“保存” 。
 
 几分钟后，新设置会显示在此资源的设置列表中，只要生成新的事件数据，就会立即将诊断日志发送到指定的目标。
 
@@ -145,7 +140,7 @@ Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id
 (Get-AzOperationalInsightsWorkspace).ResourceId
 ```
 
-可以组合这些参数以启用多个输出选项。
+可以结合这些参数启用多个输出选项。
 
 目前无法使用 Azure PowerShell 配置租户诊断设置。
 
@@ -219,7 +214,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 ## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>在门户中管理资源诊断设置
 
-确保使用诊断设置来设置所有资源。 在门户中导航到“监视”并打开“诊断设置”。
+确保已使用诊断设置设置所有资源。 在门户中导航到“监视”并打开“诊断设置”。
 
 ![门户中的“诊断日志”边栏选项卡](./media/diagnostic-logs-overview/diagnostic-settings-nav.png)
 

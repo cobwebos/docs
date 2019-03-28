@@ -10,19 +10,19 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: bcc09095955a28bde3ed999f23180e08485543fc
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: c27856da0a5131f2c0e8dfd4d929b577a0a68421
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57993998"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520122"
 ---
 # <a name="sql-data-warehouse-workload-classification-preview"></a>SQL 数据仓库工作负荷分类 （预览版）
 
 此文章介绍了 SQL 数据仓库工作负荷分类程序传入的请求分配的资源类和重要性。
 
 > [!Note]
-> SQL 数据仓库 Gen2 上提供了工作负荷分类。
+> 在第 2 代 SQL 数据仓库中可以使用工作负荷分类。
 
 ## <a name="classification"></a>分类
 
@@ -33,6 +33,8 @@ ms.locfileid: "57993998"
 虽然有多种方法可以对数据仓库工作负荷进行分类，最简单且最常见分类为负载和查询。 加载数据使用 insert、 update 和 delete 语句。  查询使用选择的数据。 数据仓库解决方案通常会加载活动，例如，分配更高的资源类具有更多资源的工作负荷策略。 不同工作负荷策略可应用到查询中，例如比较，以加载活动的重要性较低。
 
 此外可以 subclassify 工作负载和查询负载。 细分类提供更好地控制您的工作负载。 例如，查询工作负荷可以包含的多维数据集刷新、 仪表板查询或即席查询。 你可以对每个不同的资源类或重要性设置这些查询工作负荷分类。 负载可以是有益的细分类。 大型转换可以分配给较大资源类。 可以使用较高的优先级，以确保密钥的销售数据之前的天气数据的加载程序或者社交数据馈送。
+
+并非所有语句都归类为它们不需要的资源，或者需要重要性来影响执行。  DBCC 命令，BEGIN、 COMMIT 和 ROLLBACK TRANSACTION 语句不会被归类。
 
 ## <a name="classification-process"></a>分类过程
 
@@ -59,7 +61,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 系统替你创建的分类器提供用于将迁移到工作负荷分类的轻松途径。 分类优先级使用资源类角色映射，可能会导致错误分类，当你开始使用重要性创建新的分类器。
 
-请考虑以下方案：
+假设出现了下面这种情景：
 
 •An 现有数据仓库具有 DBAUser 分配到 largerc 资源类角色的数据库用户。 使用 sp_addrolemember 做是资源类分配。
 • 该数据仓库工作负荷管理现已更新。
@@ -82,4 +84,4 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 SQL 数据仓库工作负荷分类和重要性的详细信息，请参阅[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)并[SQL 数据仓库重要性](sql-data-warehouse-workload-importance.md)。 请参阅[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)若要查看查询和分配的重要性。
+有关 SQL 数据仓库工作负荷分类和重要性的详细信息，请参阅[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)并[SQL 数据仓库重要性](sql-data-warehouse-workload-importance.md)。 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。

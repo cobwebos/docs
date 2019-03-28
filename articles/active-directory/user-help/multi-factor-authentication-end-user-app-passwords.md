@@ -14,12 +14,12 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d0dbfeaf3fb018c8dd3f671ce7ad9d7d50e5fca
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c6790fa1cbb10999a751b31bcb27db2edcb67b4a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336297"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517745"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
@@ -40,7 +40,7 @@ ms.locfileid: "58336297"
 
 在最初注册双重验证期间，系统会提供一个应用密码。 如果需要多个密码，可以根据双重验证的使用方式创建更多的密码：
 
-- **对工作或学校帐户以及 MyApps 门户使用双重验证。** 遵照本文的[使用 MyApps 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-my-apps-portal)部分中的说明创建和删除应用密码。 有关 MyApps 门户以及如何使用该门户的详细信息，请参阅[什么是 Azure Active Directory 中的 MyApps 门户？](active-directory-saas-access-panel-introduction.md)。
+- **对工作或学校帐户以及 MyApps 门户使用双重验证。** 创建和删除应用密码使用中创建的说明和删除应用密码使用 MyApps 门户部分中。 有关 MyApps 门户以及如何使用该门户的详细信息，请参阅[什么是 Azure Active Directory 中的 MyApps 门户？](active-directory-saas-access-panel-introduction.md)。
 
 - **对工作或学校帐户以及 Office 365 门户使用双重验证。** 遵照本文的[使用 Office 365 门户创建和删除应用密码](#create-and-delete-app-passwords-using-the-office-365-portal)部分中的说明创建和删除应用密码。
 
@@ -55,7 +55,7 @@ ms.locfileid: "58336297"
 
 2. 选择右上角的姓名，然后选择“个人资料”。
 
-3. 选择“其他安全性验证”。
+3. 选择“其他安全性验证” 。
 
    ![选择“其他安全性验证”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
 
@@ -63,11 +63,11 @@ ms.locfileid: "58336297"
 
    ![选择“应用密码”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
 
-5. 单击“创建”。
+5. 单击**创建**。
 
 6. 键入应用密码的名称，然后选择“下一步”。
 
-7. 将应用密码复制到剪贴板，并将它粘贴到你的应用。
+7. 将应用密码复制到剪贴板，并将它粘贴到用户的应用。
    
     ![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 

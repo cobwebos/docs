@@ -4,7 +4,7 @@ description: 了解如何使用 Azure AD Identity Protection 来限制攻击者�
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: markvi
-ms.reviewer: raluthra
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eecdf4382fff441ca7c7d6bd4c63d12b87a73ccf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 304e23ec76a2f79d0ab3852efe2a483cf86c51b8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169694"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520694"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 是什么？
 
@@ -35,7 +35,7 @@ Azure Active Directory Identity Protection 是 Azure AD Premium P2 版本的功�
 - 调查可疑事件，并采取适当的措施解决   
 
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 Microsoft 在基于云的标识保护方面拥有数十载的经验。 通过 Azure Active Directory Identity Protection，可以在环境中使用与 Microsoft 用于保护标识相同的保护系统。
 

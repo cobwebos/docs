@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 899068141a936aa5257501e733c6600185f22b8e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285065"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522156"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -145,7 +145,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
    - 选择默认策略： HourlyLogBackup。
    - 选择前面为 SQL 创建的现有备份策略。
-   - 根据 RPO 和保留范围[定义新策略](#configure-a-backup-policy)。
+   - 定义基于 RPO 和保留期范围的新策略。
 
      ![选择“备份策略”](./media/backup-azure-sql-database/select-backup-policy.png)
 
@@ -242,7 +242,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 若要启用自动保护的步骤如下所示：
 
   1. 在“要备份的项”中，选择要为其启用自动保护的实例。
-  2. 选择“自动保护”下面的下拉列表，并设置为“打开”。 然后单击“确定”。
+  2. 选择“自动保护”下面的下拉列表，并设置为“打开”。 。
 
       ![针对 Always On 可用性组启用自动保护](./media/backup-azure-sql-database/enable-auto-protection.png)
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0e5e4e207542a74ef3fc5ff7fc78431b7956e54c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 523567a0db79e54bea1ed6ff23557c7fa29c74f6
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449255"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541094"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -125,14 +125,14 @@ ms.locfileid: "58449255"
 #### <a name="registration-settings"></a>注册设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+使用情况 | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
 代理配置日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log 下。
 /CSEndPoint | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
 /PassphraseFilePath |  必需。 通行短语的位置。 使用任何有效的 UNC 或本地文件路径。
 
 ### <a name="on-a-linux-machine"></a>在 Linux 计算机上
 
-1. 将安装程序复制到要保护的服务器上的某个本地文件夹（例如 /tmp）。 在终端运行以下命令：
+1. 将安装程序复制到要保护的服务器上的某个本地文件夹（例如 /tmp）。 在终端中，运行以下命令：
 
     ```
     cd /tmp ;
@@ -154,7 +154,7 @@ ms.locfileid: "58449255"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | ./install -d <Install Location> -r <MS|MT> -v VmWare -q
+使用情况 | 。 / 安装-d\<安装位置 >-r < MS|MT> -v VmWare -q
 -r | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 -d | 可选参数。 指定移动服务的安装位置：/usr/local/ASR。
 -v | 必需。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。 
@@ -163,9 +163,9 @@ ms.locfileid: "58449255"
 #### <a name="registration-settings"></a>注册设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i <CSIP> -P <PassphraseFilePath>
+使用情况 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
 -i | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
--P |  必需。 通行短语所保存到的文件的完整文件路径。 使用任何有效文件夹。
+-p |  必需。 通行短语所保存到的文件的完整文件路径。 使用任何有效文件夹。
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 虚拟机代理
 

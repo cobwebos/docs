@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0192b88525d326840283f79ecea7027516ce8c7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 04490abb8b7f3f4c39e4134a314429e190db5174
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483432"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540782"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
 
@@ -213,12 +213,12 @@ ms.locfileid: "58483432"
 
   有关新的 SAP 群集资源 DLL 的详细信息，请参阅此博客：[新的 SAP 群集资源 DLL 已推出 ！][sap-blog-new-sap-cluster-resource-dll].
 
-我们不会介绍数据库管理系统 (DBMS) 安装，因为安装因使用的 DBMS 而异。 但是，本文假设 DBMS 在高可用性方面的疑虑已通过不同 DBMS 供应商为 Azure 提供的功能支持而获得解决。 此类功能包括：适用于 SQL Server 的 AlwaysOn 或数据库镜像，以及适用于 Oracle 数据库的 Oracle Data Guard。 在本文中所使用的方案中，我们未向 DBMS 添加更多保护。
+我们不会介绍数据库管理系统 (DBMS) 安装，因为安装因使用的 DBMS 而异。 但是，本文假设 DBMS 在高可用性方面的疑虑已通过不同 DBMS 供应商为 Azure 提供的功能支持而获得解决。 此类功能包括：适用于 SQL Server 的 AlwaysOn 或数据库镜像，以及适用于 Oracle 数据库的 Oracle Data Guard。 在本文使用的方案中，并未对 DBMS 添加更多保护。
 
 当不同的 DBMS 服务与 Azure 中这种群集 SAP ASCS/SCS 配置交互时，不存在任何特殊注意事项。
 
 > [!NOTE]
-> SAP NetWeaver ABAP 系统、Java 系统和 ABAP+Java 系统的安装过程几乎完全相同。 最明显的差别在于，SAP ABAP 系统只有一个 ASCS 实例。 SAP Java 系统有一个 SCS 实例。 SAP ABAP+Java 系统有一个 ASCS 实例和一个在相同 Microsoft 故障转移群集组中运行的 SCS 实例。 将明确说明每个 SAP NetWeaver 安装堆栈的所有安装差异。 可假定所有其他部分都相同。  
+> SAP NetWeaver ABAP 系统、Java 系统和 ABAP+Java 系统的安装过程几乎完全相同。 最明显的差别在于，SAP ABAP 系统只有一个 ASCS 实例。 SAP Java 系统只有一个 SCS 实例， 而 SAP ABAP+Java 系统则有一个 ASCS，以及一个在同一 Microsoft 故障转移群集组中运行的 SCS 实例。 将明确说明每个 SAP NetWeaver 安装堆栈的所有安装差异。 可以假设其他所有部分相同。  
 >
 >
 
@@ -278,7 +278,7 @@ New-SmbShare -Name saploc -Path c:\usr\sap -FullAccess "BUILTIN\Administrators",
 
 在 SOFS 群集上创建以下卷和文件共享：
 
-* SOFS 群集共享卷 (CSV) 上的 SAP GLOBALHOST 文件 C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS\ 结构
+* SAP GLOBALHOST 文件`C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`结构在 SOFS 群集共享卷 (CSV)
 
 * SAPMNT 文件共享
 
@@ -347,8 +347,8 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 ## <a name="move-the-sys-folder-to-the-sofs-cluster"></a>将 \SYS\... 文件夹移至 SOFS 群集
 
 执行以下步骤：
-1. 将 SYS 文件夹（例如，C:\usr\sap\\<SID>\SYS）从某个 ASCS/SCS 群集节点复制到 SOFS 群集（例如，复制到 C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS）。
-2. 从两个 ASCS/SCS 群集节点删除 C:\usr\sap\\<SID>\SYS 文件夹。
+1. 将 SYS 文件夹复制 (例如， `C:\usr\sap\<SID>\SYS`) 从一个 ASCS/SCS 群集节点移动到 SOFS 群集 (例如，若`C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS`)。
+2. 删除`C:\usr\sap\<SID>\SYS`从两个 ASCS/SCS 群集节点的文件夹。
 
 ## <a name="update-the-cluster-security-setting-on-the-sap-ascsscs-cluster"></a>更新 SAP ASCS/SCS 群集上的群集安全设置
 
@@ -374,7 +374,7 @@ Get-ClusterAccess
 
 ## <a name="update-the-default-and-sap-ascsscs-instance-profile"></a>更新默认设置和 SAP ASCS/SCS 实例配置文件
 
-若要使用新的 SAP ASCS/SCS 虚拟主机名和 SAP 全局主机名，必须更新默认设置和 SAP ASCS/SCS 实例配置文件 \<SID>_ASCS/SCS\<Nr>_<Host>。
+若要使用新的 SAP ASCS/SCS 虚拟主机名和 SAP 全局主机名，必须更新默认和 SAP ASCS/SCS 实例配置文件\<SID >_ASCS/SCS\<Nr >_\<主机 >。
 
 
 | 旧值 |  |
@@ -459,7 +459,7 @@ _**图 1**:SAPScripts.psm1 输出_
 
 有关详细信息，请参阅 [SAP 说明 1596496 - 如何更新群集资源监视器的 SAP 资源类型 DLL][1596496]。
 
-## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>创建 SAP <SID> 群集组、网络名称和 IP
+## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>创建 SAP \<SID > 群集组、 网络名称和 IP
 
 若要创建 SAP \<SID> 群集组、ASCS/SCS 网络名称和相应的 IP 地址，请运行以下 PowerShell cmdlet：
 

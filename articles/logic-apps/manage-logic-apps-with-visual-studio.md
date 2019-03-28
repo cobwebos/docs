@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.openlocfilehash: 9f626e2a5c277cdce78c6e90046a1d40dac2d588
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3a9a1cb7a5829c7c824f9aa61d5f4976a533f4a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078663"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519725"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
 
@@ -42,6 +42,13 @@ ms.locfileid: "58078663"
   
     可以直接从 Visual Studio Marketplace 下载并安装 Azure 逻辑应用工具，或了解<a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">如何从 Visual Studio 内部安装此扩展</a>。 
     完成安装后，请务必重启 Visual Studio。
+
+* 用于 Visual Studio 2017 或 Visual Studio 2015 的云资源管理器
+
+  * 对于 Visual Studio 2017 中，运行 Visual Studio 安装程序，并安装**Azure 工作负荷**。 有关详细信息，请参阅[管理与你在 Visual Studio Cloud Explorer 中的 Azure accuonts 关联资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2017)。
+
+  * Visual Studio 2015 中，对于[从 Visual Studio Marketplace 下载云资源管理器](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)。 
+  有关详细信息，请参阅[管理与你在 Visual Studio Cloud Explorer (2015) 的 Azure 帐户关联的资源](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015)。
 
 * 使用嵌入式逻辑应用设计器时访问 Web
 

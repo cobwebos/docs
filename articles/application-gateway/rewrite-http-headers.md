@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 846f07051ee65a542b56624fa84a9bdc4ca0f4e6
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 67603e326583400e8fc250ea6120297e7a94d101
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418000"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520915"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>使用应用程序网关（公共预览版）重写 HTTP 标头
 
@@ -96,11 +96,11 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | 返回客户端支持的加密列表          |
 | ciphers_used               | 返回用于已建立的 SSL 连接的加密字符串 |
-| client_ip                  | 客户端; IP 地址在客户要重写的 X-转发-对于标头设置应用程序网关，以便标头包含的 IP 地址将不带端口信息的方案中特别有用。 |
+| client_ip                  | 从其应用程序网关接收请求的客户端的 IP 地址。 如果然后在应用程序网关和原始客户端之前, 的反向代理*client_ip*将返回反向代理 IP 地址。 tjsi 变量是在客户要重写的 X-转发-对于标头设置应用程序网关，以便标头包含的 IP 地址将不带端口信息的方案中特别有用。 |
 | client_port                | 客户端端口                                                  |
 | client_tcp_rtt             | 关于客户端 TCP 连接的信息；在支持 TCP_INFO 套接字选项的系统上可用 |
 | client_user                | 使用 HTTP 身份验证时，为身份验证提供的用户名 |
-| host                       | 按此优先顺序排列：请求行中的主机名，或“主机”请求标头字段中的主机名，或与请求匹配的服务器名 |
+| 主机                       | 按此优先顺序排列：请求行中的主机名，或“主机”请求标头字段中的主机名，或与请求匹配的服务器名 |
 | cookie_*name*              | *名称*cookie |
 | http_method                | 用于发出 URL 请求的方法。 例如 GET，POST 等。 |
 | http_status                | 会话状态，例如：200、400、403 等。                       |
@@ -121,7 +121,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 - 仅 新的 SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) 支持 HTTP 标头重写支持。 旧的 SKU 将不支持此功能。
 
-- 尚不支持重写 Connect、Upgrade 和 Host 标头。
+- 重写的连接、 升级和主机标头尚不支持。
 
 - 不久后会推出获取有条件地重写 http 标头的功能。
 

@@ -2,7 +2,7 @@
 title: 常见问题 - Azure 专用 HSM | Microsoft Docs
 description: 涵盖了有关 Azure 专用 HSM 的各种主题的常见问题
 services: dedicated-hsm
-author: johndaw
+author: johncdawson
 manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/19/2019
+ms.date: 3/27/2019
 ms.author: barclayn
-ms.openlocfilehash: b28d9607bf35d37e252d7d0bc59d1ce808e38665
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 19e2fb7736457884d29a142e997338e3c7ef72e7
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259986"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540816"
 ---
-# <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
+# <a name="frequently-asked-questions-faq"></a>常见问题解答 (FAQ)
 
 查找有关 Microsoft Azure 专用 HSM 的常见问题的解答。
 
@@ -28,7 +28,7 @@ ms.locfileid: "58259986"
 
 ### <a name="q-what-is-a-hardware-security-module-hsm"></a>问：什么是硬件安全模块 (HSM)？
 
-硬件安全模块 (HSM) 是用于保护和管理加密密钥的物理计算设备。 HSM 中存储的密钥可用于加密操作。 密钥材料安全保存在防篡改的硬件模块中。 HSM 仅允许经过身份验证和授权的应用程序使用密钥。 密匙材料永远不会离开 HSM 保护边界。
+硬件安全模块 (HSM) 是用于保护和管理加密密钥的物理计算设备。 HSM 中存储的密钥可用于加密操作。 密钥材料安全保存在防篡改的硬件模块中。 HSM 仅允许经过身份验证和授权的应用程序使用密钥。 密匙材料从不离开 HSM 保护边界。
 
 ### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>问：什么是 Azure 专用 HSM 产品/服务？
 
@@ -58,9 +58,28 @@ HSM 用于存储以下加密功能使用的加密密钥，这些功能包括 SSL
 
 Microsoft 仅通过专用 HSM 服务提供 Gemalto SafeNet Luna 网络 HSM，不能托管客户提供的任何设备。
 
-### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>问：Azure 专用 HSM 是否支持 PIN/ETF 功能或者满足 PCI HSM v1 或 v2 认证要求？
+### <a name="q-does-azure-dedicated-hsm-support-payment-pinetf-features"></a>问：Azure 专用 HSM 支持支付 (固定/ETF) 功能？
 
-Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备。 这些设备不支持付款 HSM 特定功能（例如 PIN 或 ETF）或认证。 如果你希望 Azure 专用 HSM 服务将来支持付款 HSM，请在下方提供反馈。
+Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备。 这些设备不支持付款 HSM 特定功能（例如 PIN 或 ETF）或认证。 如果想要 Azure 专用 HSM 服务，以支持在将来付款 Hsm，请传递的反馈到你的 Microsoft 客户代表。
+
+### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>问：哪些 Azure 区域是专用 HSM 中可用？
+
+截至后期年 3 月 2019，专用 HSM 中提供了 14 个区域下方列出。 更多的区域计划，并通过你的 Microsoft 帐户代表还可以讨论。
+
+* 美国东部
+* 美国东部 2
+* 美国西部
+* 美国中南部
+* 亚洲东南部
+* 亚洲东部
+* 欧洲北部
+* 欧洲西部
+* 英国南部
+* 英国西部
+* 加拿大中部
+* 加拿大东部
+* 澳大利亚东部
+* 澳大利亚东南部
 
 ## <a name="interoperability"></a>互操作性
 
@@ -78,7 +97,7 @@ Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备�
 
 ### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>问：是否可以使用专用 HSM 中存储的密钥来加密其他 Azure 服务所用的数据？
 
-不是。 只能从虚拟网络内部访问 Azure 专用 HSM。
+不。 只能从虚拟网络内部访问 Azure 专用 HSM。
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>问：是否可将现有本地 HSM 中的密钥导入到专用 HSM？
 
@@ -103,7 +122,7 @@ PKCS#11、Java (JCA/JCE)、Microsoft CAPI、CNG 和 OpenSSL
 
 ### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>问：是否可将 Luna 5/6 HSM 中的密钥导入/迁移到 Azure 专用 HSM？
 
-是的。 请参阅 Gemalto 迁移指南。 
+可以。 请参阅 Gemalto 迁移指南。 
 
 ## <a name="using-your-hsm"></a>使用 HSM
 
@@ -124,13 +143,13 @@ Azure 专用 HSM 是最适合迁移方案。 即，将已在使用 HSM 的本地
 
 ### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>问：专用 HSM 是否可与 Office 365 客户密钥、Azure 信息保护、Azure Data Lake Store、磁盘加密、Azure 存储加密和 Azure SQL TDE 一起使用？
 
-不是。 专用 HSM 直接在客户的专用 IP 地址空间中预配，因此，其他 Azure 或 Microsoft 服务无法访问它。
+不。 专用 HSM 直接在客户的专用 IP 地址空间中预配，因此，其他 Azure 或 Microsoft 服务无法访问它。
 
 ## <a name="administration-access-and-control"></a>管理、访问和控制
 
 ### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>问：客户是否可以获取专用 HSM 中 HSM 的完全独占控制权？
 
-是的。 每个 HSM 设备完全由一个客户专用，经预配或者更改管理员密码后，其他任何人都对它没有管理控制权。
+可以。 每个 HSM 设备完全由一个客户专用，经预配或者更改管理员密码后，其他任何人都对它没有管理控制权。
 
 ### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>问：Microsoft 对我的 HSM 拥有哪种访问级别？
 
@@ -138,7 +157,7 @@ Microsoft 对 HSM 没有任何管理或加密控制权。 但 Microsoft 确实�
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>问：Microsoft 或 Microsoft 的任何员工是否可以访问我的专用 HSM 中的密钥？
 
-不是。 Microsoft 对客户分配的专用 HSM 中存储的密钥没有任何访问权限。
+不。 Microsoft 对客户分配的专用 HSM 中存储的密钥没有任何访问权限。
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>问：是否可以在分配给我的 HSM 上升级软件/固件？
 
@@ -158,21 +177,21 @@ Microsoft 对 HSM 没有任何管理或加密控制权。 但 Microsoft 确实�
 
 ### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>问：是否可以全权访问专用 HSM 中所有 HSM 操作的日志？
 
-是的。 可将来自 HSM 设备的日志发送到 syslog 服务器
+可以。 可将来自 HSM 设备的日志发送到 syslog 服务器
 
 ## <a name="high-availability"></a>高可用性
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>问：是否可在同一区域或跨多个区域配置高可用性？
 
-是的。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 从同一个 VNET 或其他 Vnet 位于同一区域或跨区域，或在本地 Hsm Hsm 连接到 VNET 使用站点到站点或点到点 VPN 可以添加到相同的高可用性配置。 应注意这会同步密钥材料，如角色不是与特定配置项目。
+可以。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 从同一个 VNET 或其他 Vnet 位于同一区域或跨区域，或在本地 Hsm Hsm 连接到 VNET 使用站点到站点或点到点 VPN 可以添加到相同的高可用性配置。 应注意这会同步密钥材料，如角色不是与特定配置项目。
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：是否可将本地网络中的 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
 
-是的。 这些 HSM 必须符合 SafeNet Luna Network HSM 7 的高可用性要求。
+可以。 这些 HSM 必须符合 SafeNet Luna Network HSM 7 的高可用性要求。
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：是否可将本地网络中的 Luna 5/6 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
 
-不是。
+不。
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>问：在一个应用程序中可将多少个 HSM 添加到相同的高可用性配置？
 
@@ -244,7 +263,7 @@ Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和�
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>问：专用 HSM 是否已通过 FIPS 140-2 级别 3 验证？
 
-是的。 专用 HSM 服务将预配 SafeNet Network HSM 7 设备，这些设备使用 FIPS 140-2 级别 3 验证的 HSM。
+可以。 专用 HSM 服务将预配 SafeNet Network HSM 7 设备，这些设备使用 FIPS 140-2 级别 3 验证的 HSM。
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>问：如何确保在 FIPS 140-2 级别 3 验证模式下运行专用 HSM？
 
@@ -254,7 +273,7 @@ Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和�
 
 在请求取消预配之前，客户必须使用 Gemalto 提供的 HSM 客户端工具将 HSM 归零。
 
-## <a name="performance-and-scale"></a>性能和缩放性
+## <a name="performance-and-scale"></a>性能和扩展
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>问：专用 HSM 支持每秒多少次加密操作？
 

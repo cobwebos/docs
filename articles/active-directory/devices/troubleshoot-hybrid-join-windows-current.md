@@ -3,7 +3,7 @@ title: 排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows S
 description: 排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae53d8b0de6c9d73eb43524e31a2f55690390c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dcb7dc356c8101c1b0907818b45618ef6372c691
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004958"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517430"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题 
 
@@ -46,7 +46,7 @@ ms.locfileid: "58004958"
 
 对于 Windows 10 和 Windows Server 2016，混合 Azure Active Directory 加入功能支持 Windows 10 November 2015 Update 和更高版本。 我们建议使用周年更新版。
 
-## <a name="step-1-retrieve-the-join-status"></a>步骤 1：检索加入状态 
+## <a name="step-1-retrieve-the-join-status"></a>步骤 1:检索加入状态 
 
 **检索加入状态：**
 

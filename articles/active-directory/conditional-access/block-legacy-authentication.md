@@ -4,7 +4,7 @@ description: 了解如何通过使用 Azure AD 条件访问阻止旧式身份验
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.subservice: conditional-access
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/25/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42f46e6759b0803b49316219f2ca2a6a7beb3818
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 3d2841d3be584cae45ef49ad9ff20da8a232c366
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434749"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519914"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问策略来阻止旧身份验证   
 
@@ -86,7 +86,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 - 阻止访问
  
 
-![分配](./media/block-legacy-authentication/03.png)
+![作业](./media/block-legacy-authentication/03.png)
 
 
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: b007575c614134f298a16b32c3179f7f0dfd31e5
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: edd035bc95cd2e694a7cfac39e447c63fce0f7d3
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436687"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520144"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -26,13 +26,13 @@ ms.locfileid: "58436687"
 
 [![认知服务的容器演示](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必备组件
 
 若要运行 LUIS 容器，必须具有以下各项： 
 
-|需要|目的|
+|需要|用途|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
@@ -46,7 +46,7 @@ ms.locfileid: "58436687"
 
 此容器支持设置的最小值和建议值：
 
-|容器| 最小值 | 建议 | TPS<br>（最低配置，最大值）|
+|容器| 最小值 | 推荐 | TPS<br>（最低配置，最大值）|
 |-----------|---------|-------------|--|
 |LUIS|单核，2 GB 内存|单核，4 GB 内存|20,40|
 
@@ -101,7 +101,7 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 
 |包类型|查询终结点 API|查询可用性|包文件名格式|
 |--|--|--|--|
-|训练结束|获取、发布|仅容器|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|训练完成|获取、发布|仅容器|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
 |过渡|获取、发布|Azure 和容器|`{APPLICATION_ID}_STAGING.gz`|
 |生产|获取、发布|Azure 和容器|`{APPLICATION_ID}_PRODUCTION.gz`|
 
@@ -258,17 +258,17 @@ ApiKey={ENDPOINT_KEY}
 |包类型|方法|路由|查询参数|
 |--|--|--|--|
 |已发布|[获取](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)、[发布](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>&staging<br>[&timezoneOffset]<br>[&verbose]<br>[&log]<br>|
-|训练结束|获取、发布|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[&verbose]<br>[&log]|
+|训练完成|获取、发布|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[&verbose]<br>[&log]|
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|Type|目的|
+|查询参数|类型|用途|
 |--|--|--|
 |`q`|字符串|用户的话语。|
-|`timezoneOffset`|数字|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
-|`verbose`|布尔值|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
-|`staging`|布尔值|设置为 true 时，返回过渡环境结果中的查询。 |
-|`log`|布尔值|记录查询，可供以后[主动学习](luis-how-to-review-endoint-utt.md)。 默认值为 true。|
+|`timezoneOffset`|号|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
+|`verbose`|布尔|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
+|`staging`|布尔|设置为 true 时，返回过渡环境结果中的查询。 |
+|`log`|布尔|记录查询，可供以后[主动学习](luis-how-to-review-endoint-utt.md)。 默认值为 true。|
 
 ### <a name="query-published-app"></a>查询已发布的应用
 
@@ -309,6 +309,11 @@ curl -X GET \
 
 上传日志后，在 LUIS 门户中[查看终结点](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances)话语。
 
+
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
 ## <a name="stop-the-container"></a>停止容器
 
 若要关闭容器，请在运行容器的命令行环境中按 Ctrl+C。
@@ -316,10 +321,6 @@ curl -X GET \
 ## <a name="troubleshooting"></a>故障排除
 
 如果运行启用了输出[装入点](luis-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。 
-
-## <a name="containers-api-documentation"></a>容器的 API 文档
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>计费
 
@@ -340,7 +341,7 @@ LUIS 容器使用 Azure 帐户中的语言理解资源向 Azure 发送账单信�
 |所有区域性不支持的实体|所有区域性的 [KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) 预生成实体|
 |英语 (EN-US) 区域性不支持的实体|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) 预生成实体|
 |语音启动|容器中不支持外部依赖项。|
-|情绪分析|容器中不支持外部依赖项。|
+|观点分析|容器中不支持外部依赖项。|
 |必应拼写检查|容器中不支持外部依赖项。|
 
 ## <a name="summary"></a>摘要

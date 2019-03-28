@@ -3,7 +3,7 @@ title: 为 Azure Active Directory 条件访问设置 SharePoint Online 和 Excha
 description: 了解如何为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 62349fba-3cc0-4ab5-babe-372b3389eff6
@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4015f99e9281285c530c6ae40dbda4e97846af8
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a90cd381dbe3feaad110c7f10ae328915c051d0a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311022"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517719"
 ---
 # <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>如何：为 Azure Active Directory 条件访问设置 SharePoint Online 和 Exchange Online 
 
@@ -42,7 +42,7 @@ ms.locfileid: "57311022"
 
 - 使用[新式身份验证](https://support.office.com/article/Using-Office-365-modern-authentication-with-Office-clients-776c0036-66fd-41cb-8928-5495c0f9168a)的客户端应用
 
-- Exchange ActiveSync 
+- Exchange ActiveSync  
 
 某些云应用还支持旧式身份验证协议。 例如，SharePoint Online 和 Exchange Online 就支持这些协议。 如果客户端应用可以使用旧式身份验证协议访问云应用，则 Azure AD 无法针对此访问尝试实施条件访问策略。 为了防止客户端应用绕过策略的实施，应该检查它是否能够做到只对受影响的云应用启用新式身份验证。 
 
@@ -67,13 +67,13 @@ ms.locfileid: "57311022"
 
 为 Exchange Online 设置条件访问策略时，需要检查以下各项：
 
-- Exchange ActiveSync
+- Exchange ActiveSync 
 
 - 旧式身份验证协议
 
 
 
-### <a name="exchange-activesync"></a>Exchange ActiveSync
+### <a name="exchange-activesync"></a>Exchange ActiveSync 
 
 尽管 Exchange Active Sync 支持新式身份验证，但对条件访问方案的支持还有一些限制：
 
@@ -83,7 +83,7 @@ ms.locfileid: "57311022"
 
 - 不支持设置多重身份验证要求  
 
-    ![条件性访问](./media/conditional-access-for-exo-and-spo/01.png)
+    ![条件访问](./media/conditional-access-for-exo-and-spo/01.png)
 
 若要有效保护从 Exchange ActiveSync 对 Exchange Online 的访问，可以：
 
@@ -91,7 +91,7 @@ ms.locfileid: "57311022"
 
     a. 只选择“Office 365 Exchange Online”作为云应用。  
 
-    ![条件性访问](./media/conditional-access-for-exo-and-spo/04.png)
+    ![条件访问](./media/conditional-access-for-exo-and-spo/04.png)
 
     b. 选择**Exchange Active Sync**作为**客户端应用**。  
 

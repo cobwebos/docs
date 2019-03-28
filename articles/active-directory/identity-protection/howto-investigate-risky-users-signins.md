@@ -4,9 +4,9 @@ description: 了解如何在 Azure Active Directory Identity Protection（已刷
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: mtillman
-ms.author: markvi
+ms.author: joflore
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.reviewer: raluthra
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 546d9f6771ea75c2601630850f4e9ef082fd5623
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 743b078eac783365ae83e540a7dc05aba0ae8754
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210979"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517584"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>如何：调查有风险的用户和登录 
 
@@ -46,7 +46,7 @@ ms.locfileid: "56210979"
 
 “有风险用户”报告的默认视图显示以下信息：
 
-- Name
+- 名称
 
 - 风险状态
 
@@ -56,7 +56,7 @@ ms.locfileid: "56210979"
 
 - 风险上次更新时间
 
-- Type
+- 类型
 
 - 状态
  
@@ -105,7 +105,7 @@ ms.locfileid: "56210979"
 
 若要将报告数据的范围缩小到适当级别，可使用下面的默认字段来筛选有风险用户数据：
 
-- Name
+- 名称
 
 - 用户名
 
@@ -113,7 +113,7 @@ ms.locfileid: "56210979"
 
 - 风险级别
 
-- Type
+- 类型
 
 - 状态
 
@@ -145,7 +145,7 @@ ms.locfileid: "56210979"
 
 使用“状态”筛选器，可以选择：
 
-- Deleted
+- 已删除
 - 活动
 
 
@@ -185,7 +185,7 @@ ms.locfileid: "56210979"
 
 “有风险登录”报告的默认视图显示以下信息：
 
-- 日期
+- Date
 
 - 用户
 
@@ -199,7 +199,7 @@ ms.locfileid: "56210979"
 
 - 风险级别(实时)
 
-- 条件性访问
+- 条件访问
 
 - 需要 MFA  
  
@@ -228,7 +228,7 @@ ms.locfileid: "56210979"
 
 - MFA 信息
 
-- 条件性访问
+- 条件访问
 
 
 
@@ -257,8 +257,8 @@ ms.locfileid: "56210979"
 - 风险状态
 - 风险级别(总计)
 - 风险级别(实时)
-- 条件性访问
-- 日期
+- 条件访问
+- Date
 - 风险级别类型
 
 ![风险登录报告](./media/howto-investigate-risky-users-signins/14.png)
@@ -271,8 +271,8 @@ ms.locfileid: "56210979"
 
 “登录状态”筛选器用于选择：
 
-- All
-- Success
+- 全部
+- 成功
 - 失败
 
 
@@ -300,9 +300,9 @@ ms.locfileid: "56210979"
 
 使用“条件访问”筛选器，可以选择：
 
-- All
+- 全部
 - 未应用
-- Success
+- 成功
 - 失败
 
 
@@ -310,8 +310,8 @@ ms.locfileid: "56210979"
 可能的值包括：
 
 - 过去 1 个月
-- 过去 7 天
-- 过去 24 小时
+- 最近 7 天
+- 前 24 小时
 - 自定义时间范围
 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 28aef1c1b5091db75b4a1fb6786ee712b42a1ea2
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: e45960363290879af2e72211f5ef31b825461947
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418765"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522088"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -69,7 +69,7 @@ ms.locfileid: "58418765"
 若要检索的导入设备的连接信息[从 IoT 中心应用程序中导出 CSV 文件](howto-manage-devices.md#export-devices)。
 
 > [!NOTE]
-> 若要了解如何注册的情况下第一个 IoT Central 中的连接的设备，请参阅不使用第一个注册设备的连接。
+> 若要了解如何注册的情况下第一个 IoT Central 中的连接的设备，请参阅[第一个设备注册不连接](#connect-without-registering-devices)。
 
 ### <a name="set-up-your-devices"></a>设置你的设备
 
@@ -212,7 +212,7 @@ Azure 设备 Sdk 的产品/服务最简单的方法为您实现您的设备代�
 
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
-| 度量：遥测 | 设备到云的消息传递 |
+| 度量：遥测 | 设备到云的消息传送 |
 | 设备属性 | 设备孪生报告属性 |
 | 设置 | 设备孪生所需的和报告的属性 |
 
@@ -234,7 +234,7 @@ Azure 设备 Sdk 的产品/服务最简单的方法为您实现您的设备代�
 
 如果设备无法使用这些受支持协议中的任何一种，可以使用 Azure IoT Edge 进行协议转换。 IoT Edge 支持其他边缘智能方案，可以将处理从 Azure IoT Central 应用程序卸载到边缘。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 在设备与 Azure IoT Central 之间交换的所有数据都经过加密。 如果设备已连接到任何面向设备的 IoT 中心终结点，则 IoT 中心会对从该设备发出的所有请求进行身份验证。 为了避免通过网络交换凭据，设备使用签名的令牌进行身份验证。 有关详细信息，请参阅[控制对 IoT 中心的访问](../iot-hub/iot-hub-devguide-security.md)。
 

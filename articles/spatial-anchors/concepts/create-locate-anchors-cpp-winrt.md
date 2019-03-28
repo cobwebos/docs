@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e2e6b6c22f94a35b50ff51f19b1959135b3c4c34
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 368becde83748f0bffee75274e3734b739067628
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875492"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519776"
 ---
 # <a name="create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>创建并找到在 C + 中使用 Azure 空间的定位点的定位点 + / WinRT
 
@@ -115,7 +115,7 @@ ms.locfileid: "57875492"
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-详细了解如何[ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#processframe)方法。
+详细了解如何[ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession)方法。
 
 ```cpp
     m_cloudSession->ProcessFrame(ar_frame_);

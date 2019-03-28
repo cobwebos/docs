@@ -4,7 +4,7 @@ description: 了解基线保护如何确保在 Azure Active Directory 环境中�
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79cde42056d3943b8a3e15f46c57fdf6a0730de4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 5b3d8b1daef9f780bbba53f33ae451c63f80249b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166158"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519759"
 ---
 # <a name="what-is-baseline-protection-preview"></a>何为基线保护（预览）？  
 
@@ -70,13 +70,13 @@ ms.locfileid: "56166158"
 
 3. 在“Azure Active Directory”页的“安全性”部分中，单击“条件性访问”。
 
-    ![条件性访问](./media/baseline-protection/05.png)
+    ![条件访问](./media/baseline-protection/05.png)
 
 4. 在策略列表中，单击以 **Baseline policy:** 开头的某个策略。 
 
 5. 若要启用策略，请单击“立即使用策略”。
 
-6. 单击“ **保存**”。 
+6. 单击“保存” 。 
  
   
  

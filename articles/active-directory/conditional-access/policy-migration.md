@@ -4,7 +4,7 @@ description: 了解在 Azure 门户中迁移经典策略所要掌握的知识。
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/24/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a52f0521caa86cfeaa4417a90ea6c7bc51fce0d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f3246a7efa36e6c6ef0dac93e659a73dac17090a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58163630"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516869"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的策略迁移是什么？ 
 
@@ -84,7 +84,7 @@ ms.locfileid: "58163630"
 
 对于 Azure 门户中的条件访问，可以在一个中心位置管理所有策略。 由于条件访问的实现方式已发生很大变化，在迁移经典策略之前，应熟悉基本的概念。
 
-请参阅：
+请参阅:
 
 - [Azure Active Directory 中的条件访问是什么](../active-directory-conditional-access-azure-portal.md)，了解基本概念和术语。
 

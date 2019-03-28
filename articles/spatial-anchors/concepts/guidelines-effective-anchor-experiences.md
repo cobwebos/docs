@@ -8,12 +8,12 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4714ea7aa4bf55f7cbd4500977b09505788233dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e77dcd96ffa0fbd57aa0ed1b4f857279ca768a7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895798"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520796"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>使用 Azure 空间的定位点创建有效的定位点体验
 
@@ -86,7 +86,7 @@ ms.locfileid: "57895798"
 
 在空间方案中，用户输入一个空格，只需知道存在的定位点位置。 用户使用其设备扫描空间，并快速找到定位点。
 
-这种体验通常要求您创建良好的组织有序的定位点，如中所述[各种查看透视](#consider-various-viewing-perspectives)。 如果你在创建定位点时扫描从多个视角空间，用户可以在尝试查找它时几乎任何地方扫描。
+这种体验通常要求您创建良好的组织有序的定位点，各种不同的查看观点中所述。 如果你在创建定位点时扫描从多个视角空间，用户可以在尝试查找它时几乎任何地方扫描。
 
 ![图中的用户可以如何扫描空间来查找定位点](./media/scan-room.png)
 

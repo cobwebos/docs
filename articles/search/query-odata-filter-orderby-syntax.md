@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06478cb3366054bd20239bf80f026562efd26232
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f0fd93af7cba3057ad4c2224aa1298a221505645
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087391"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541029"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Azure 搜索中适用于筛选器和 order-by 子句的 OData 表达式语法
 
@@ -128,10 +128,10 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 ## <a name="filter-examples"></a>筛选器示例  
 
- 查找基准费率低于 100 美元且评分为 4 分或以上的所有酒店：  
+ 查找小于 200 美元信用额度在 4 或更高分级的基本价格的所有酒店：  
 
 ```
-$filter=baseRate lt 100.0 and rating ge 4
+$filter=baseRate lt 200.0 and rating ge 4
 ```
 
  查找除“Roach Motel”以外的自 2010 年以来经过翻修的所有酒店：  
@@ -140,10 +140,10 @@ $filter=baseRate lt 100.0 and rating ge 4
 $filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
 ```
 
- 查找基准费率低于 200 美元、自 2012 年以来经过翻修且日期/时间文本包含太平洋标准时间时区信息的所有酒店：  
+ 查找基本费率小于 200 美元自 2010 年的日期时间文字，其中包含太平洋标准时间的时区信息已翻新的所有酒店：  
 
 ```
-$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00
+$filter=baseRate lt 200 and lastRenovationDate ge 2010-01-01T00:00:00-08:00
 ```
 
  查找拥有停车场且不允许吸烟的所有酒店：  

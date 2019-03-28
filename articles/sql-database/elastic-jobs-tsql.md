@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 057f5fcf9f050bdce9efb301db43b909893ade60
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d2b0209f57ff5f59d59ee057db7675b2dcd071b8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769160"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522054"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -408,19 +408,19 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 |存储过程  |描述  |
 |---------|---------|
-|[sp_add_job](#spaddjob)     |     添加新的作业。    |
-|[sp_update_job](#spupdatejob)    |      更新现有的作业。   |
-|[sp_delete_job](#spdeletejob)     |      删除现有的作业。   |
-|[sp_add_jobstep](#spaddjobstep)    |    向作业添加步骤。     |
-|[sp_update_jobstep](#spupdatejobstep)     |     更新作业步骤。    |
-|[sp_delete_jobstep](#spdeletejobstep)     |     删除作业步骤。    |
-|[sp_start_job](#spstartjob)    |  开始执行作业。       |
-|[sp_stop_job](#spstopjob)     |     停止作业的执行。   |
-|[sp_add_target_group](#spaddtargetgroup)    |     添加目标组。    |
-|[sp_delete_target_group](#spdeletetargetgroup)     |    删除目标组。     |
-|[sp_add_target_group_member](#spaddtargetgroupmember)     |    向目标组添加一个或一组数据库。     |
-|[sp_delete_target_group_member](#spdeletetargetgroupmember)     |     从目标组中删除目标组成员。    |
-|[sp_purge_jobhistory](#sppurgejobhistory)    |    删除作业的历史记录。     |
+|sp_add_job     |     添加新的作业。    |
+|sp_update_job    |      更新现有的作业。   |
+|sp_delete_job     |      删除现有的作业。   |
+|sp_add_jobstep    |    向作业添加步骤。     |
+|sp_update_jobstep     |     更新作业步骤。    |
+|sp_delete_jobstep     |     删除作业步骤。    |
+|sp_start_job    |  开始执行作业。       |
+|sp_stop_job     |     停止作业的执行。   |
+|sp_add_target_group    |     添加目标组。    |
+|sp_delete_target_group     |    删除目标组。     |
+|sp_add_target_group_member     |    向目标组添加一个或一组数据库。     |
+|sp_delete_target_group_member     |     从目标组中删除目标组成员。    |
+|sp_purge_jobhistory    |    删除作业的历史记录。     |
 
 
 
@@ -1195,13 +1195,13 @@ GO
 
 |查看  |描述  |
 |---------|---------|
-|[jobs_executions](#jobsexecutions-view)     |  显示作业执行历史记录。      |
+|jobs_executions     |  显示作业执行历史记录。      |
 |[jobs](#jobs-view)     |   显示所有作业。      |
-|[job_versions](#jobversions-view)     |   显示所有作业版本。      |
+|job_versions     |   显示所有作业版本。      |
 |[jobsteps](#jobsteps-view)     |     显示每项作业的当前版本中的所有步骤。    |
-|[jobstep_versions](#jobstepversions-view)     |     显示每项作业的所有版本中的所有步骤。    |
-|[target_groups](#targetgroups-view)     |      显示所有目标组。   |
-|[target_group_members](#targetgroups-view)     |   显示所有目标组的所有成员。      |
+|jobstep_versions     |     显示每项作业的所有版本中的所有步骤。    |
+|target_groups     |      显示所有目标组。   |
+|target_group_members     |   显示所有目标组的所有成员。      |
 
 
 ### <a name="jobsexecutions-view"></a>jobs_executions 视图
@@ -1211,7 +1211,7 @@ GO
 显示作业执行历史记录。
 
 
-|列名称|   数据类型   |描述|
+|列名|   数据类型   |描述|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  一个作业执行操作实例的唯一 ID。
 |**job_name**   |nvarchar(128)  |作业的名称。
@@ -1239,12 +1239,12 @@ GO
 
 显示所有作业。
 
-|列名称|   数据类型|  描述|
+|列名|   数据类型|  描述|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
 |**job_version**    |int    |作业的版本（每次修改作业时自动更新）。|
-|**说明**    |nvarchar(512)| 作业的说明。 enabled 为 bit    指示作业是已启用还是已禁用。 1 指示作业已启用，0 指示作业已禁用。|
+|description    |nvarchar(512)| 作业的说明。 enabled 为 bit    指示作业是已启用还是已禁用。 1 指示作业已启用，0 指示作业已禁用。|
 |**schedule_interval_type** |nvarchar(50)   |指示何时执行作业的值：'Once'、'Minutes'、'Hours'、'Days'、'Weeks'、'Months'
 |**schedule_interval_count**|   int|    每次执行作业时，其间会出现的 schedule_interval_type 期间数。|
 |**schedule_start_time**    |datetime2(7)|  作业上次开始执行的日期和时间。|
@@ -1257,7 +1257,7 @@ GO
 
 显示所有作业版本。
 
-|列名称|   数据类型|  描述|
+|列名|   数据类型|  描述|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1270,7 +1270,7 @@ GO
 
 显示每项作业的当前版本中的所有步骤。
 
-|列名称    |数据类型| 描述|
+|列名    |数据类型| 描述|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| 作业的名称。|
 |**job_id** |uniqueidentifier   |作业的唯一 ID。|
@@ -1311,7 +1311,7 @@ GO
 
 列出所有目标组。
 
-|列名称|数据类型| 描述|
+|列名|数据类型| 描述|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |目标组（数据库集合）的名称。 
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。
@@ -1322,7 +1322,7 @@ GO
 
 显示所有目标组的所有成员。
 
-|列名称|数据类型| 描述|
+|列名|数据类型| 描述|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|目标组（数据库集合）的名称。 |
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。|
@@ -1340,7 +1340,7 @@ GO
 
 ## <a name="resources"></a>资源
 
- - ![主题链接图标](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "主题链接图标") [Transact-SQL 语法约定](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![主题链接图标](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "主题链接图标") [TRANSACT-SQL 语法约定](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>后续步骤

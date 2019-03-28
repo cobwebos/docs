@@ -3,7 +3,7 @@ title: 如何在 Azure Active Directory (Azure AD) 中规划混合 Azure Active 
 description: 了解如何配置联接到混合 Azure Active Directory 的设备。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de80825ccdd331f57dcd31d307196dc0b45b9cc9
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 9fc0105fa2e56760554946b4e871a2dc3ff4d8bc
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294580"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518875"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -44,16 +44,16 @@ ms.locfileid: "58294580"
 >[!NOTE]
 >  所需的最低所需 Windows 10 混合 Azure AD join 是 Windows Server 2008 R2 域功能和林功能级别。 在较低版本中，用户可能无法获得主刷新令牌在由于 LSA 问题的 Windows 登录过程 
 
-## <a name="plan-your-implementation"></a>规划实施
+## <a name="plan-your-implementation"></a>计划实施
 
 若要规划混合 Azure AD 实现，应做好以下准备：
 
 |   |   |
 |---|---|
-|![勾选标记][1]|查看支持的设备|
-|![勾选标记][1]|查看应该知道的事项|
-|![勾选标记][1]|查看如何控制设备的混合 Azure AD 加入|
-|![勾选标记][1]|选择方案|
+|![检查][1]|查看支持的设备|
+|![检查][1]|查看应该知道的事项|
+|![检查][1]|查看如何控制设备的混合 Azure AD 加入|
+|![检查][1]|选择方案|
 
 
  

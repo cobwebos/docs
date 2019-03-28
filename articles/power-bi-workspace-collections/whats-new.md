@@ -1,21 +1,19 @@
 ---
 title: Power BI 工作区集合中的新增功能
 description: 获取有关 Power BI 工作区集合中的新增功能的最新信息
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: 2794ae98-b9a7-45df-b6e1-962a395b91fa
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 072fa8978bd4f08494191708d9a71c6c112a0629
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: b29996b8e2cd9a95b9c1566036b1009b65c18bfa
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252047"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518059"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Power BI 工作区集合中的新增功能
 
@@ -49,7 +47,7 @@ ms.locfileid: "51252047"
 
 ## <a name="december-2016"></a>2016 年 12 月
 
-* [新的 JavaScript 嵌入式示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)
+* [新 JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
 ## <a name="october-2016"></a>2016 年 10 月
 
@@ -71,6 +69,6 @@ ms.locfileid: "51252047"
 * 对应用令牌和嵌入的报表的行级别安全性 (RLS) 支持。 若要了解详细信息，请参阅[将行级别安全性用于 Power BI 工作区集合](row-level-security.md)。
 * 为所有 **v1.0** API 调用更新了示例应用程序。
 * 提供了对 Azure SDK、PowerShell 和 CLI 的 Power BI 工作区集合支持。
-* 用户可以将可视化数据导出到 **.csv** 文件。
+* 用户可以将可视化数据导出到 **.csv**文件。
 * 现在，与 Microsoft Azure 相同的所有语言/区域设置都支持 Power BI 工作区集合。 若要了解详细信息，请参阅 [Azure - 语言](https://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)。
 

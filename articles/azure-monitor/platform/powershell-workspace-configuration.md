@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 创建和配置 Log Analytics 工作区 | Microsoft 文档
-description: Log Analytics 使用来自本地或云基础结构中的服务器的数据。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
+description: Azure Monitor 中的 log Analytics 工作区将来自服务器的数据存储在你的本地或云基础结构。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
 services: log-analytics
 author: richrundmsft
 ms.service: log-analytics
@@ -8,18 +8,18 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: 956c6c7c17812996853f35440c60251aa5a91057
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: f37c8290defa5e7c9baa3b705393aba376936fd8
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482092"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539371"
 ---
-# <a name="manage-log-analytics-using-powershell"></a>使用 PowerShell 管理 Log Analytics
+# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>管理 Log Analytics 工作区中使用 PowerShell 的 Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可使用 [Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) 从命令行或作为脚本的一部分在 Log Analytics 中执行各种函数。  可使用 PowerShell 执行的任务示例包括：
+可以使用[Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/)的 Log Analytics 工作区 Azure Monitor 中从命令行或脚本的一部分执行各种功能。  可使用 PowerShell 执行的任务示例包括：
 
 * 创建工作区
 * 添加或删除解决方案
@@ -195,20 +195,20 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | `yyyy-MM-ddTHH:mm:ss` <br> T 是文字字母 T | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>配置 Log Analytics 发送 Azure 诊断
-要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据直接发送到 Log Analytics 并且不要求将数据写入到存储帐户。 支持的资源包括：
+要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据发送到工作区直接并不需要的数据写入到存储帐户。 支持的资源包括：
 
 | 资源类型 | 日志 | 度量值 |
 | --- | --- | --- |
 | 应用程序网关    | 是 | 是 |
 | 自动化帐户     | 是 | |
-| 批处理帐户          | 是 | 是 |
+| Batch 帐户          | 是 | 是 |
 | Data Lake Analytics     | 是 | |
 | Data Lake Store         | 是 | |
 | SQL 弹性池        |     | 是 |
 | 事件中心命名空间     |     | 是 |
 | IoT 中心                |     | 是 |
 | Key Vault               | 是 | |
-| 负载均衡器          | 是 | |
+| 负载平衡器          | 是 | |
 | 逻辑应用              | 是 | 是 |
 | 网络安全组 | 是 | |
 | 用于 Redis 的 Azure 缓存             |     | 是 |
@@ -233,15 +233,15 @@ Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Ena
 还可以使用前面的 cmdlet 从不同订阅中的资源收集日志。 该 cmdlet 能够跨订阅工作，你同时提供创建日志的资源的 ID 和日志发送到的工作区的 ID。
 
 
-## <a name="configuring-log-analytics-to-collect-azure-diagnostics-from-storage"></a>配置 Log Analytics 从存储中收集 Azure 诊断
-要从正在运行的经典云服务或 service fabric 群集实例内收集日志数据，需要首先将数据写入到 Azure 存储。 然后，将 Log Analytics 配置为从存储帐户收集日志。 支持的资源包括：
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>配置 Log Analytics 工作区以从存储中收集 Azure 诊断
+要从正在运行的经典云服务或 service fabric 群集实例内收集日志数据，需要首先将数据写入到 Azure 存储。 Log Analytics 工作区然后配置为从存储帐户收集日志。 支持的资源包括：
 
 * 经典云服务（Web 和辅助角色）
 * Service Fabric 群集
 
 以下示例介绍如何：
 
-1. 列出 Log Analytics 将为其中的数据编制索引的现有存储帐户和位置
+1. 列出现有的存储帐户和工作区将索引中的数据的位置
 2. 创建配置以从存储帐户读取
 3. 更新新创建的配置以为来自其他位置的数据编制索引
 4. 删除新创建的配置
@@ -250,7 +250,7 @@ Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Ena
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
 $workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to index
+# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
 $storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f6887a403e03ac11bb080a1d9855daff66ca088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096769"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517260"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>跟踪与 Azure 开发测试实验室中的实验室相关的成本
 本文介绍如何跟踪你的实验室的成本。 它演示如何查看估计费用为 trent 实验室在当前日历月。 本文还介绍了如何在实验室中查看每个资源的月-日成本。
@@ -71,7 +71,7 @@ ms.locfileid: "58096769"
    - 指定目标成本。 例如，多少您计划在此实验室上花费您定义的时间段中。
    - 选择启用或禁用任何需报告的阈值 - 增量为 25% - 高达指定目标成本的 125%。
       - **通知**:达到此阈值时，你会收到通知你指定的 webhook url。
-      - **显示在图表上**:如中所述达到此阈值时，可以查看的成本趋势图上绘制结果[查看月评估成本趋势图表](#viewing-the-monthly-estimated-cost-trend-chart)。
+      - **显示在图表上**:达到此阈值时，结果将绘制在可以查看的成本趋势图上，查看月评估成本趋势图表中所述。
    - 如果选择达到阈值时接收通知，须指定 Webhook URL。 在成本集成区域中，选择“单击此处”可添加集成。 输入**Webhook URL**中配置通知窗格，然后选择**确定**。
 
        ![“配置通知”窗格](./media/devtest-lab-configure-cost-management/configure-notification.png)

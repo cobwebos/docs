@@ -2,7 +2,7 @@
 title: 规划 Azure Active Directory 中的条件访问策略 | Microsoft Docs
 description: 本文介绍如何为 Azure Active Directory 规划条件访问策略。
 services: active-directory
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 tags: azuread
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: conditional-access
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/25/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d43c7943eedcfdf839303a6a55d7727a8483441
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e4832055bffa72732991cb766ce88cc48c07530e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175806"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518705"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划 Azure Active Directory 中的条件访问部署
 
@@ -193,7 +193,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 测试计划非常重要，它可以在预期结果与实际结果之间进行比较。 进行测试之前，始终应该持有某种预期。 下表概述了示例测试用例。 根据 CA 策略的配置方式调整方案和预期结果。
 
-|策略 |场景 |预期结果 | 结果 |
+|策略 |方案 |预期结果 | 结果 |
 |---|---|---|---|
 |[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户在受信任的位置/工作时登录到应用|不提示用户执行 MFA| |
 |[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户不在受信任的位置/工作时登录到应用|提示用户执行 MFA，他们可以成功登录| |
@@ -208,7 +208,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 条件访问策略的管理是一项手动任务。 在 Azure 门户中，可在一个中心位置（条件访问页）管理条件访问策略。 条件访问页的一个入口点是 **Active Directory** 导航窗格中的“安全性”部分。 
 
-![条件性访问](media/plan-conditional-access/03.png)
+![条件访问](media/plan-conditional-access/03.png)
 
 
 若要详细了解如何创建条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定的应用执行 MFA](app-based-mfa.md)。 此快速入门可帮助你：

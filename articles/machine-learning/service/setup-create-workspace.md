@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: 2c3b63e671240a239dc2037ce56e56af4a8f95e7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: e55c898cdbb45dc7ff3466c61e968e3ae52be0cb
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369150"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521000"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>创建 Azure 机器学习服务工作区
 
@@ -24,7 +24,7 @@ ms.locfileid: "58369150"
 在本文中，您将学习如何创建工作区中使用任何一种方法： 
 * [Azure 门户](#portal)接口
 * [Azure 机器学习的 Python SDK](#sdk)
-* [Azure 资源管理器模板](#template)
+* Azure 资源管理器模板
 * [Azure 机器学习 CLI](#cli)
 
 使用此处中的步骤创建的工作区可以用作其他教程和操作指南文章的先决条件。 
@@ -34,7 +34,7 @@ ms.locfileid: "58369150"
 - [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)
 - [Azure 存储](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
-- [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
+- [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
 >与其他 Azure 服务一样，机器学习也有相关的限制和配额。 [了解配额以及如何请求提高配额。](how-to-manage-quotas.md)
@@ -116,7 +116,7 @@ ms.locfileid: "58369150"
     ```
 
 > [!IMPORTANT]
-> 在某些命令行工具，您可能需要添加引号，如下所示：
+> 在某些命令行工具中，可能需要添加引号，如下所示：
 > *  'azureml-sdk[notebooks]'
 > * 'azureml-sdk[automl]'
 >

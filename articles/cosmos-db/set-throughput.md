@@ -1,17 +1,17 @@
 ---
-title: 对 Azure Cosmos 容器和数据库预配吞吐量
+title: 在 Azure Cosmos 容器和数据库上预配吞吐量
 description: 了解如何为 Azure Cosmos 容器和数据库设置预配的吞吐量。
 author: aliuy
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 03/19/2019
 ms.author: andrl
-ms.openlocfilehash: 439b48c271260e9744bb9c9ca0e2b21e61cf4687
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 8335a235de708227136400f3af8fa7b4d0a52e29
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005057"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520898"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -75,6 +75,20 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 * 可对名为 B 的容器显式配置“P”RU 的预配吞吐量。
 * “K”RU 吞吐量在 A、C、D 和 E 这四个容器之间共享。A、C、D 或 E 的确切可用吞吐量有所不同。 每个容器的吞吐量没有 SLA 的保障。
 * 保证名为 B 的容器始终可以获得“P”RU 吞吐量。 该容器有 SLA 的保障。
+
+## <a name="update-throughput-on-a-database-or-a-container"></a>更新数据库或容器上的吞吐量
+
+创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 最大预配的吞吐量，可以配置对该数据库或容器中没有任何限制。 最小的预配的吞吐量取决于以下因素： 
+
+* 曾经在容器中存储的最大数据大小
+* 你曾在容器设置最大吞吐量
+* 千万别创建具有共享吞吐量的数据库中的 Azure Cosmos 容器最大数目。 
+
+可以使用 Sdk 以编程方式检索容器或数据库的最小吞吐量或在 Azure 门户中查看的值。 在使用.NET SDK [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet)方法，可缩放的预配的吞吐量值。 在使用 Java SDK [RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples)方法，可缩放的预配的吞吐量值。 
+
+在使用.NET SDK [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet)方法，可检索的容器或数据库的最小吞吐量。 
+
+可以在任何时候缩放的容器或数据库预配的吞吐量。 可以运行缩减操作后空闲期为 4 小时。 作为时间定义空闲时间段期间不出现任何产品/服务容器或数据库上的 （其中包括纵向扩展和缩减） 替换操作时。 
 
 ## <a name="comparison-of-models"></a>模型比较
 

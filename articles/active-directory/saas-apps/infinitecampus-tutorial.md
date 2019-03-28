@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0ada3055a3347cb42179fddbba671f2f03f502d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d7d194d810e0fd3b9fb57b0876bee12447f65c6
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885061"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>教程：Azure Active Directory 与 Infinite Campus 的集成
 
@@ -90,7 +90,7 @@ ms.locfileid: "57885061"
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建无限校园测试用户](#creating-a-infinite-campus-test-user)** -Britta Simon 的对应在链接到用户的 Azure AD 表示形式的无限园区。
+3. **[创建无限校园测试用户](#creating-an-infinite-campus-test-user)** -Britta Simon 的对应在链接到用户的 Azure AD 表示形式的无限园区。
 4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -120,11 +120,11 @@ ms.locfileid: "57885061"
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
 
-    ![图像](common/b9(1)_saml.png)
+    ![image](common/b9(1)_saml.png)
 
     c. 成功将元数据文件上传后，**标识符**和**回复 URL** 值会自动填充在“基本 SAML 配置”部分的文本框中，如下所示：
 
-    ![图像](./media/infinitecampus-tutorial/tutorial_infinitecampus_url.png)
+    ![image](./media/infinitecampus-tutorial/tutorial_infinitecampus_url.png)
 
     d. 在“登录 URL”文本框中，使用以下模式键入 URL（域将因托管模型而异）：`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
@@ -176,7 +176,7 @@ ms.locfileid: "57885061"
 
     e. 单击“同步”后，将在“SSO 服务提供程序配置”页中自动填充值。
 
-    f. 单击“ **保存**”。
+    f. 单击“保存” 。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -196,12 +196,12 @@ ms.locfileid: "57885061"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在中**用户名**字段中，键入**brittasimon\@yourcompanydomain.extension**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 选择“创建”。
+    d. 选择“创建” 。
 
 ### <a name="creating-an-infinite-campus-test-user"></a>创建无限校园测试用户
 

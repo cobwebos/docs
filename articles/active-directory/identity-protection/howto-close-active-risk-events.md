@@ -4,7 +4,7 @@ description: 了解用于关闭活动风险事件的选项。
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: markvi
-ms.reviewer: raluthra
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50448cc5d4fe6714aa0cd29216209506eccf7a7c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2e003aec8fa5aeab587fa07acdae3a13b370a535
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201612"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521153"
 ---
 # <a name="how-to-close-active-risk-events"></a>如何：关闭活动风险事件
 
@@ -50,7 +50,7 @@ Azure Active Directory 使用[风险事件](../reports-monitoring/concept-risk-e
 
 通过配置[用户风险条件访问策略](howto-user-risk-policy.md)，可以要求在自动检测到指定的用户风险级别时更改密码。 
 
-![重置密码](./media/howto-close-active-risk-events/13.png)
+![重新设置密码](./media/howto-close-active-risk-events/13.png)
 
 密码重置会关闭相关用户的所有活动风险事件，并使标识恢复安全状态。 使用用户风险策略是关闭活动风险事件的首选方法，因为此方法是自动化的。 受影响的用户与支持人员或管理员之间不需要交互。
 
@@ -65,12 +65,12 @@ Azure Active Directory 使用[风险事件](../reports-monitoring/concept-risk-e
 
 如果无法要求使用用户风险策略重置密码，可以使用手动密码重置关闭用户的所有风险事件。
 
-![重置密码](./media/howto-close-active-risk-events/04.png)
+![重新设置密码](./media/howto-close-active-risk-events/04.png)
 
 
 相关对话框中提供了重置密码的两种不同方法：
 
-![重置密码](./media/howto-close-active-risk-events/05.png)
+![重新设置密码](./media/howto-close-active-risk-events/05.png)
 
 
 **生成临时密码** - 生成临时密码可以立即让标识恢复安全状态。 此方法需要与受影响的用户交互，因为这些用户需要知道临时密码。 例如，可将新的临时密码发送到用户的备用电子邮件地址或用户的经理。 由于该密码是临时性的，因此系统会在用户下次登录时提示更改密码。
@@ -83,7 +83,7 @@ Azure Active Directory 使用[风险事件](../reports-monitoring/concept-risk-e
 
 如果密码重置不可行，也可以消除所有风险事件。 
 
-![重置密码](./media/howto-close-active-risk-events/03.png)
+![重新设置密码](./media/howto-close-active-risk-events/03.png)
 
 单击“清除所有事件”时，所有事件都会关闭，受影响的用户不再有风险。 但是，此方法不会对现有密码产生影响，因为它不能将相关的标识恢复安全状态。 如果删除了存在活动风险事件的用户，则此方法是首选方法。 
 

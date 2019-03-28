@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5f6bc30c318e2f5511b352f1a52f0a5360e4b6f1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 0fb7cdaa24d139549545c93c920d60936d3c9fc1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58367875"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517226"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建遥测规则并设置通知
 
@@ -112,4 +112,5 @@ ms.locfileid: "58367875"
 
 - [在规则中添加 Microsoft Flow 操作](howto-add-microsoft-flow.md)
 - [在规则中添加 Webhook 操作](howto-create-webhooks.md)
+- [若要从一个或多个规则运行的多个操作进行分组](howto-use-action-groups.md)
 - [如何管理设备](howto-manage-devices.md)

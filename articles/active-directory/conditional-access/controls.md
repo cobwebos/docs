@@ -4,7 +4,7 @@ description: 了解 Azure Active Directory 条件访问中的访问控制的工�
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/23/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f8cc85900ef8b7a21b8ae2b3f12e38657a093f8
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: ceaf472f53c48b17701b14fdf4107045c2e43fdc
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370221"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521969"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？
 
@@ -51,7 +51,7 @@ ms.locfileid: "58370221"
 
 本主题介绍了 Azure AD 条件访问中的各种控制。 
 
-## <a name="grant-controls"></a>授权控制
+## <a name="grant-controls"></a>授权控件
 
 使用授权控制，可以完全阻止访问，也可以选择所需的控制，限制为只有满足其他要求才能访问。 如果有多个控制，可以要求：
 
@@ -70,7 +70,7 @@ ms.locfileid: "58370221"
 
 使用多重身份验证有助于保护资源，使其免遭可能已有权访问有效用户的主要凭据的未授权用户访问。
 
-### <a name="compliant-device"></a>合规的设备
+### <a name="compliant-device"></a>兼容设备
 
 可以配置基于设备的条件访问策略。 基于设备的条件性访问策略旨在仅从[受管理设备](require-managed-devices.md)授予对所选云应用的访问权限。 要求将设备标记为合规是限制对受管理设备的访问可以选择的一个选项。 可以通过 Intune（适用于任何设备 OS）或通过适用于 Windows 10 设备的第三方 MDM 系统将设备标记为合规。 不支持除 Windows 10 以外的设备 OS 类型的第三方 MDM 系统。 
 
@@ -99,7 +99,7 @@ ms.locfileid: "58370221"
 
 在向某个资源授予访问权限之前，可以要求租户中的用户同意相关使用条款。 作为管理员，可以通过上传 PDF 文档配置和自定义使用条款。 如果用户属于此控制范围，则仅在同意使用条款的情况下才授予某个应用程序的访问权限。
 
-### <a name="custom-controls-preview"></a>自定义控件（预览版）
+### <a name="custom-controls-preview"></a>自定义控件(预览版)
 
 可以在条件访问中创建将用户重定向至兼容服务的自定义控件，以满足 Azure Active Directory 之外的其他要求。 这允许用户使用某个外部的多重身份验证和验证提供程序，强制实施条件访问规则或建立自己的自定义服务。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。 
 
@@ -144,7 +144,7 @@ ms.locfileid: "58370221"
 
 2. 单击...  
 
-3. 选择“删除”。
+3. 选择“删除” 。
 
 ### <a name="editing-custom-controls"></a>编辑自定义控件
 
@@ -152,11 +152,11 @@ ms.locfileid: "58370221"
 
 ## <a name="session-controls"></a>会话控制
 
-通过会话控制，可以限制云应用程序中的体验。 会话控制由云应用强制实施，取决于由 Azure AD 提供给应用的有关会话的其他信息。
+可通过会话控件在云应用中获取有限体验。 会话控制由云应用强制实施，取决于由 Azure AD 提供给应用的有关会话的其他信息。
 
 ![控制](./media/controls/31.png)
 
-### <a name="use-app-enforced-restrictions"></a>使用应用所强制实施的限制
+### <a name="use-app-enforced-restrictions"></a>使用应用强制实施的限制
 
 可以使用此控制要求 Azure AD 将设备信息传递给所选云应用。 设备信息使云应用能够知道连接是从兼容设备还是已加入域设备发起的。 此控制仅支持将 SharePoint Online 和 Exchange Online 作为选定的云应用。 选择后，云应用会使用设备信息为用户提供有限或完整的体验，具体取决于设备状态。
 

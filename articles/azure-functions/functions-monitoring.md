@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: e9e47eff3df941b0c1437083dc7440fab4091418
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0224d9ba5a430635e4675c2fb2bf354e7c975f31
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317062"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518722"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -24,7 +24,7 @@ ms.locfileid: "58317062"
 
 ![Application Insights 指标资源管理器](media/functions-monitoring/metrics-explorer.png)
 
-Azure Functions 还具有[内置的监视不使用 Application Insights](#monitoring-without-application-insights)。 我们建议使用 Application Insights，因为它提供更多的数据和更好的方式来分析数据。
+Azure Functions 还具有内置的监视不使用 Application Insights。 我们建议使用 Application Insights，因为它提供更多的数据和更好的方式来分析数据。
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights 定价和限制
 
@@ -39,7 +39,7 @@ Azure Functions 还具有[内置的监视不使用 Application Insights](#monito
 * [自动连接新的 function app](#new-function-app)
 * [手动连接 Application Insights 资源](#manually-connect-an-app-insights-resource)
 
-### <a name="new-function-app"></a>新建函数应用
+### <a name="new-function-app"></a>新建 Function App
 <!-- Add a transitional sentence to introduce the procedure. -->
 
 1. 转到函数应用的“创建”页。
@@ -71,13 +71,13 @@ Azure Functions 还具有[内置的监视不使用 Application Insights](#monito
 
    ![将检测密钥添加到应用设置](media/functions-monitoring/add-ai-key.png)
 
-1. 选择“保存”。
+1. 选择“其他安全性验证” 。
 
 <!-- Before the next H2 heading, add transitional sentences to summarize why the procedures were necessary. -->
 
 ## <a name="disable-built-in-logging"></a>禁用内置日志记录
 
-如果启用 Application Insights 时，会禁用[使用 Azure 存储的内置日志记录](#logging-to-storage)。 内置日志记录对于使用轻工作负荷测试非常有用，但并不是为了高负载生产环境中使用。 对于生产监视，我们建议使用 Application Insights。 如果在生产环境中使用内置日志记录，则日志记录记录可能不完整由于 Azure 存储限制。
+当启用 Application Insights 时，请禁用使用 Azure 存储的内置日志记录。 内置日志记录对于使用轻工作负荷测试非常有用，但并不是为了高负载生产环境中使用。 对于生产监视，我们建议使用 Application Insights。 如果在生产环境中使用内置日志记录，则日志记录记录可能不完整由于 Azure 存储限制。
 
 若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”部分。 删除应用设置之前，请确保没有现有函数相同的函数应用中使用 Azure 存储触发器或绑定设置。
 
@@ -125,9 +125,9 @@ Azure Functions 还具有[内置的监视不使用 Application Insights](#monito
 
 ![指标资源管理器](media/functions-monitoring/metrics-explorer.png)
 
-在[失败](../azure-monitor/app/asp-net-exceptions.md)选项卡上，可以基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 除非您实现依赖项中的失败不会显示[自定义遥测](#custom-telemetry-in-c-functions)依赖项。
+在[失败](../azure-monitor/app/asp-net-exceptions.md)选项卡上，可以基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 依赖项中的失败不会显示，除非实现依赖项的自定义遥测数据。
 
-![失败数](media/functions-monitoring/failures.png)
+![失败](media/functions-monitoring/failures.png)
 
 在[性能](../azure-monitor/app/performance-counters.md)选项卡上，可以分析性能问题。
 
@@ -201,7 +201,7 @@ Functions 运行时创建日志具有类别开头"主机。 "函数已启动，"
 |信息 | 2 |
 |警告     | 3 |
 |错误       | 4 |
-|严重    | 5 |
+|关键    | 5 |
 |无        | 6 |
 
 日志级别 `None` 将在下一节中进行介绍。 
@@ -423,7 +423,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 logger.LogMetric("TestMetric", 1234);
 ```
 
-此代码是调用的替代方法`TrackMetric`通过使用[适用于.NET 的 Application Insights API](#custom-telemetry-in-c-functions)。
+此代码是调用的替代方法`TrackMetric`通过用于.NET 的 Application Insights API。
 
 ## <a name="write-logs-in-javascript-functions"></a>在 JavaScript 函数中写入日志
 
@@ -441,7 +441,7 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 context.log.metric("TestMetric", 1234);
 ```
 
-此代码是调用的替代方法`trackMetric`通过使用[Application Insights Node.js SDK](#custom-telemetry-in-javascript-functions)。
+此代码是调用的替代方法`trackMetric`通过用于 Application Insights Node.js SDK。
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>登录自定义遥测C#函数
 
@@ -632,7 +632,7 @@ module.exports = function (context, req) {
 
 ### <a name="dependencies"></a>依赖项
 
-该函数所拥有的其他服务的依赖项不会自动显示。 可以编写自定义代码来显示依赖项。 有关示例，请参阅中的示例代码[C#自定义遥测部分](#custom-telemetry-in-c-functions)。 示例代码会导致*应用程序映射*在 Application Insights 中看起来像以下映像：
+该函数所拥有的其他服务的依赖项不会自动显示。 可以编写自定义代码来显示依赖项。 有关示例，请参阅中的示例代码[C#自定义遥测部分](#log-custom-telemetry-in-c-functions)。 示例代码会导致*应用程序映射*在 Application Insights 中看起来像以下映像：
 
 ![应用程序映射](media/functions-monitoring/app-map.png)
 

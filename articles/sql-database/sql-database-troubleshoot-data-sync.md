@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 8b86103f76e2425acea1b4f7c590204f0a893510
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484422"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539626"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>排查 SQL 数据同步的问题
 
@@ -40,7 +40,7 @@ ms.locfileid: "58484422"
 
 - [发现性能显著降低](#sync-perf)
 
-- [看到此消息：“无法在列 <column> 中插入 NULL 值。此列不允许 null 值。”这是什么意思，如何解决该错误？](#sync-nulls)
+- [我看到以下消息："不能将值 NULL 插入列\<列 >。此列不允许 null 值。”这是什么意思，如何解决该错误？](#sync-nulls)
 
 - [数据同步如何处理循环引用？也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？](#sync-circ)
 
@@ -105,7 +105,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 最佳解决方案就是预防。 确保同步组中没有循环引用。 由一个同步组同步的任何行都不能由其他同步组同步。
 
-### <a name="sync-nulls"></a>看到此消息：“无法在列 <column> 中插入 NULL 值。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
+### <a name="sync-nulls"></a> 我看到以下消息："不能将值 NULL 插入列\<列 >。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
 此错误消息表示发生了两个以下问题之一：
 -  某个表没有主键。 若要解决此问题，请将主键添加到要同步的所有表。
 -  CREATE INDEX 语句中可能存在 WHERE 子句。 数据同步不会处理这种情况。 若要解决此问题，请删除 WHERE 子句，或手动对所有数据库进行更改。 

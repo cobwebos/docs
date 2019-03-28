@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433444"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521748"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -26,7 +26,7 @@ ms.locfileid: "57433444"
 
 IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计算机、服务器上运行的虚拟机，等等。 可通过物理方式或虚拟连接来访问设备，而设备也有可能长时间处于隔离状态。 无论设备处于哪种状态，都需要确保对其进行适当的配置，使其保持良好的性能。 
 
-* **重要说明**
+* 重要说明
     * 安装生产证书
     * 创建设备管理计划
     * 使用 Moby 作为容器引擎
@@ -122,7 +122,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ## <a name="container-management"></a>容器管理
 
-* **重要说明**
+* 重要说明
     * 管理对容器注册表的访问
     * 使用标记管理版本
 
@@ -134,13 +134,13 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 
-标记是一个 Docker 概念，可用于区分 Docker 容器的版本。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。 
+标记是可用于区分版本的 docker 容器的 docker 概念。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。 
 
 标记还可帮助你针对 IoT Edge 设备强制实施更新。 将模块的更新版本推送到容器注册表时，请递增标记。 然后，使用递增的标记将新部署推送到设备。 容器引擎将递增的标记识别为新版本，并将最新模块版本提取到设备。 
 
 有关标记约定的示例，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md#understand-iot-edge-tags)，了解 IoT Edge 如何使用滚动更新标记和特定标记来跟踪版本。 
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
 
 * **有用提示**
     * 检查出站/入站配置
@@ -172,7 +172,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
    | \*.azurecr.io | 443 | 个人和第三方容器注册表 |
    | \*.blob.core.windows.net | 443 | 下载映像增量数据 | 
    | \*.azure-devices.net | 5671、8883、443 | IoT 中心访问 |
-   | \*.docker.io  | 443 | Docker 访问（可选） |
+   | \*.docker.io  | 443 | Docker 中心访问 （可选） |
 
 ### <a name="configure-communication-through-a-proxy"></a>配置为通过代理进行通信
 
@@ -186,16 +186,57 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 ### <a name="set-up-logs-and-diagnostics"></a>设置日志和诊断
 
-在 Linux 上，IoT Edge 守护程序作为默认日志记录驱动程序使用日志。 可以使用命令行工具 `journalctl` 查询守护程序日志。 在 Windows 上，IoT Edge 守护程序使用 PowerShell 诊断。 使用 `Get-WinEvent` 可以查看守护程序的日志。 IoT Edge 模块使用 JSON 驱动程序（Docker 默认设置）进行日志记录。  
+在 Linux 上，IoT Edge 守护程序使用日志作为默认的日志记录驱动程序。 可以使用命令行工具 `journalctl` 查询守护程序日志。 在 Windows 上，IoT Edge 守护程序使用 PowerShell 诊断。 使用 `Get-WinEvent` 可以查看守护程序的日志。 IoT Edge 模块使用 JSON 驱动程序进行日志记录，这是默认值。  
 
 测试 IoT Edge 部署时，通常可以访问设备来检索日志和进行故障排除。 在部署方案中，可能做不到这一点。 考虑如何收集有关生产环境中设备的信息。 一种做法是使用日志记录模块从其他模块收集信息，然后将其发送到云中。 日志记录模块的一个示例是 [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics)，你也可以设计自己的模块。 
 
-如果担心资源受限的设备上的日志变得过大，可以通过几种做法来减少内存用量。 
+### <a name="place-limits-on-log-size"></a>设置日志大小限制
 
-* 具体而言，可以在 Docker 守护程序本身中限制所有 Docker 日志文件的大小。 对于 Linux，可在 `/etc/docker/daemon.json` 中配置守护程序。 对于 Windows，可在 `C:\ProgramData\docker\confige\daemon.json` 中配置守护程序。 
-* 可在每个模块的 CreateOptions 中调整每个容器的日志文件大小。 
-* 将 Docker 配置为自动管理通过适用于 Docker 作为默认日志记录驱动程序设置日志的日志。 
-* 安装适用于 Docker 的 logrotate 工具，以便从设备中定期删除旧日志。 使用以下文件规范： 
+默认情况下小鲸鱼容器引擎不会设置容器日志大小限制。 随着时间的推移这可能会导致日志填满磁盘空间不足的设备。 请考虑以下选项来防止这种情况：
+
+**选项：设置适用于容器的所有模块的全局限制**
+
+可以限制容器引擎日志选项中的所有容器日志文件的大小。 以下示例将日志记录驱动程序设置为`json-file`（推荐） 上的文件大小和数量的限制：
+
+    {
+        "log-driver": "json-file",
+        "log-opts": {
+            "max-size": "10m",
+            "max-file": "3"
+        }
+    }
+
+添加 （或附加） 到名为的文件的此信息`daemon.json`并将其置于你的设备平台的正确位置。
+
+| 平台 | 位置 |
+| -------- | -------- |
+| Linux | `/etc/docker/` |
+| Windows | `C:\ProgramData\iotedge-moby-data\config\` |
+
+更改才能生效，必须重新启动容器引擎。
+
+**选项：调整每个容器模块的日志设置**
+
+可以在执行**createOptions**的每个模块。 例如：
+
+    "createOptions": {
+        "HostConfig": {
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-size": "10m",
+                    "max-file": "3"
+                }
+            }
+        }
+    }
+
+
+**在 Linux 系统上的其他选项**
+
+* 配置要发送到日志的容器引擎`systemd`[日记本](https://docs.docker.com/config/containers/logging/journald/)通过设置`journald`作为默认日志记录驱动程序。 
+
+* 定期删除旧日志从你的设备通过安装 logrotate 工具。 使用以下文件规范： 
 
    ```
    /var/lib/docker/containers/*/*-json.log{

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 资源管理器中为 Windows VM 设置密钥保管库 | Microsoft Docs
-description: 如何设置与 Azure 资源管理器虚拟机搭配使用的密钥保管库。
+description: 如何设置与 Azure Resource Manager 虚拟机搭配使用的密钥保管库。
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: bc83a2cde841e7d1e90cb46304c879fcc6cedb72
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: a8c29f015b6b3652361a886585cb4ccc3f3b7293
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105767"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519939"
 ---
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>在 Azure 资源管理器中为虚拟机设置密钥保管库
+# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>在 Azure Resource Manager 中为虚拟机设置密钥保管库
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-在 Azure 资源管理器堆栈中，密码/证书被建模为密钥保管库资源提供程序所提供的资源。 若要了解有关密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-whatis.md)
+在 Azure Resource Manager 堆栈中，密码/证书被建模为密钥保管库资源提供程序所提供的资源。 若要了解有关 Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-whatis.md)
 
 > [!NOTE]
-> 1. 为了让密钥保管库能与 Azure 资源管理器虚拟机搭配使用，必须将密钥保管库上的 **EnabledForDeployment** 属性设置为 true。 可以在各种客户端中执行此操作。
-> 2. 需要在与虚拟机相同的订阅和位置中创建密钥保管库。
+> 1. 为了让密钥保管库能与 Azure Resource Manager 虚拟机搭配使用，必须将密钥保管库上的 **EnabledForDeployment** 属性设置为 true。 可以在各种客户端中执行此操作。
+> 2. 需要在与虚拟机相同的订阅和位置中创建 Key Vault。
 >
 >
 
@@ -50,10 +50,10 @@ ms.locfileid: "56105767"
 
 使用 CLI 时，必须先创建密钥保管库，然后分配部署策略。 可以使用以下命令来执行此操作：
 
-    azure keyvault set-policy ContosoKeyVault –enabled-for-deployment true
+    az keyvault set-policy ContosoKeyVault –enabled-for-deployment true
 
 ## <a name="use-templates-to-set-up-key-vault"></a>使用模板设置密钥保管库
-使用模板时，必须将密钥保管库资源的 `enabledForDeployment` 属性设置为 `true`。
+使用模板时，必须将 Key Vault 资源的 `enabledForDeployment` 属性设置为 `true`。
 
     {
       "type": "Microsoft.KeyVault/vaults",

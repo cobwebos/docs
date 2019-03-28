@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 4e36e96947e6a8595230023065eb9f44a5a1f3d2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: efb82c57a5620ef3eace8b39f6f27f2286202f84
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371309"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521833"
 ---
 # <a name="mapping-data-flow-datasets"></a>映射数据流数据集
 
@@ -26,7 +26,7 @@ ms.locfileid: "58371309"
 
 目前，数据流中有四种数据集类型：
 
-* Azure SQL 数据库
+* Azure SQL DB
 * Azure SQL DW
 * Parquet （从 ADLS 和 Blob）
 * 带分隔符的文本 （从 ADLS 和 Blob）
@@ -49,9 +49,27 @@ ms.locfileid: "58371309"
 
 ![源转换架构](media/data-flow/dataset2.png "SQL 架构")
 
-## <a name="delimited-text-dataset"></a>带分隔符的文本数据集
+## <a name="choose-your-type-of-data-first"></a>首先选择您的数据类型
 
-在带分隔符的文本数据集，您将设置要处理任一单个分隔符的分隔符 ('\t '为 TSV，'，' csv，' |'...) 或使用多个字符作为分隔符。 将标头行开关设置，然后转到要自动检测数据类型的源转换。
+### <a name="delimited-text"></a>带分隔符的文本
+
+在带分隔符的文本数据集，您将设置要处理任一单个分隔符的分隔符 ('\t '为 TSV，'，' csv，' |'...) 或使用多个字符作为分隔符。 将标头行开关设置，然后转到要自动检测数据类型的源转换。 如果使用的接收器的分隔的文本数据集，以便将数据移入，只需选择目标文件夹。 在接收器设置中，可以定义的输出文件的名称。
+
+### <a name="parquet"></a>Parquet
+
+Parquet 用作首选 ADF 数据流中的临时数据集类型。 Parquet 将存储以及数据的丰富的元数据架构。
+
+### <a name="database-types"></a>数据库类型
+
+可以选择 Azure SQL DB 或 Azure SQL DW。
+
+对于其他 ADF 数据集类型，使用复制活动暂存数据。 在模板库，以帮助您构建这种模式中没有的 ADF 模板。
+
+![将暂存复制](media/data-flow/templatedf.png "复制过渡环境")
+
+## <a name="choose-your-connection-type"></a>选择你的连接类型
+
+如果使用 Parquet 或分隔的文本数据集，然后可以为你的数据选择位置：ADLS 或 Blob。
 
 ## <a name="next-steps"></a>后续步骤
 

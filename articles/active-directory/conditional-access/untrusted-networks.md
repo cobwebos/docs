@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 中针对来自不受信任�
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.subservice: conditional-access
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4391264dfa0b85ef8139478c3bbbbd8b828d368
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ebf8cb1c3b49975356389c7c9444aff319326f74
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217303"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518858"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>如何：使用条件访问要求来自不受信任网络的访问进行 MFA   
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 本文提供了在配置条件访问策略以要求来自不受信任网络的访问进行 MFA 时需要的信息。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假定你熟悉以下内容： 
 
@@ -73,11 +73,11 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 - 包括任何位置 
 
-    ![条件性访问](./media/untrusted-networks/02.png)
+    ![条件访问](./media/untrusted-networks/02.png)
 
 - 排除所有受信任的位置 
 
-    ![条件性访问](./media/untrusted-networks/01.png)
+    ![条件访问](./media/untrusted-networks/01.png)
 
 
 

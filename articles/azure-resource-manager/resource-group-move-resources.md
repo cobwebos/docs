@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 98236133a90cfddfe2ea476486556318b2c88b10
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: e74b9b5c8347c7348c4da27b80d00daa091b826f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418884"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521085"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
 本文说明了如何将 Azure 资源移动到另一 Azure 订阅，或移动到同一订阅下的另一资源组。 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 移动资源。 若要完成教程，请参阅[教程：将 Azure 资源移到另一个资源组或订阅](./resource-manager-tutorial-move-resources.md)。
 
-在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源，但并不意味着资源已被冻结。 例如，如果将 SQL Server 及其数据库移动到新的资源组中，则使用该数据库的应用程序将不会遇到停机的情况。 它仍可读取和写入到数据库。
+在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源，但并不意味着资源已被冻结。 例如，如果将 SQL Server 及其数据库移到新的资源组中，使用数据库的应用程序体验不到停机， 仍可读取和写入到数据库。
 
 移动资源仅能够将其移动到新的资源组。 移动操作不能更改该资源的位置。 新的资源组可能有不同的位置，但这不会更改该资源的位置。
 
@@ -37,19 +37,19 @@ ms.locfileid: "58418884"
 
 ## <a name="when-to-call-azure-support"></a>何时致电 Azure 支持人员
 
-可以通过本文中所述的自助服务操作移动大部分资源。 使用自助服务操作可以：
+可以通过本文中所述的自助服务操作移动大部分资源。 使用自助服务操作：
 
 * 移动 Resource Manager 资源。
-* 根据[经典部署限制](#classic-deployment-limitations)移动经典资源。
+* 根据 [经典部署限制](#classic-deployment-limitations)移动经典资源。
 
 有以下需要时，请联系[支持人员](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)：
 
 * 将资源移到新的 Azure 帐户（和 Azure Active Directory 租户），并且对于上一部分中的说明需要帮助。
-* 移动经典资源时遇到限制方面的问题。
+* 移动经典资源，但遇到限制问题。
 
 ## <a name="services-that-can-be-moved"></a>可以移动的服务
 
-以下列表汇总提供了可移动到新资源组和订阅的 Azure 服务。 列表中的哪些资源类型支持移动，请参阅[移动对资源的操作支持](move-support-resources.md)。
+以下列表提供了可移动到新资源组和订阅的 Azure 服务的一般摘要。 列表中的哪些资源类型支持移动，请参阅[移动对资源的操作支持](move-support-resources.md)。
 
 * Analysis Services
 * API 管理
@@ -68,11 +68,11 @@ ms.locfileid: "58418884"
 * Azure Monitor 日志
 * Azure 中继
 * Azure Stack - 注册
-* Batch
+* 批处理
 * BizTalk 服务
-* Bot 服务
+* 机器人服务
 * CDN
-* 云服务 - 请参阅[经典部署限制](#classic-deployment-limitations)
+* 云服务 - 请参阅 [经典部署限制](#classic-deployment-limitations)
 * 认知服务
 * 容器注册表 - 启用异地复制后无法移动容器注册表。
 * 内容审查器
@@ -104,16 +104,17 @@ ms.locfileid: "58418884"
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 可以移动基本 SKU 公共 IP。 不能移动标准 SKU 公共 IP。
 * 恢复服务保管库 - 注册[预览版](#recovery-services-limitations)。
+* Azure 上的 SAP HANA
 * 计划程序
 * 搜索 - 不能一次性移动不同区域中的多个搜索资源。 只能通过多个单独的操作移动它们。
 * 服务总线
 * Service Fabric
 * Service Fabric 网格
 * SignalR 服务
-* 存储 - 不同区域中的存储帐户不能在同一操作中移动。 相反，为每个区域使用单独的操作。
+* 存储 - 不同区域的存储帐户无法通过同一操作进行移动。 请改为对每个区域使用单独的操作。
 * 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 流分析 - 当流分析作业处于运行状态时，则无法进行移动。
-* SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
+* SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 移动 SQL 服务器时，也会移动其所有数据库。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
 * 时序见解
 * 流量管理器
 * 虚拟机-请参阅[虚拟机限制](#virtual-machines-limitations)
@@ -124,7 +125,7 @@ ms.locfileid: "58418884"
 
 ### <a name="services-that-cannot-be-moved"></a>无法移动的服务
 
-以下列表汇总提供了不能移动到新资源组和订阅的 Azure 服务。 有关更为详细的信息，请参阅[支持移动操作的资源](move-support-resources.md)。
+以下列表提供了不能移动到新资源组和订阅的 Azure 服务的一般摘要。 有关更多详细信息，请参阅[资源的移动操作支持](move-support-resources.md)。
 
 * AD 域服务
 * AD 混合运行状况服务
@@ -144,10 +145,9 @@ ms.locfileid: "58418884"
 * ExpressRoute
 * Kubernetes 服务
 * 实验室服务-教室实验室不能移动到新的资源组或订阅。 开发测试实验室可以移动到新的资源组在同一订阅中，但不是能跨订阅。
-* 托管应用程序
+* 托管的应用程序
 * Microsoft 基因组学
-* Azure 上的 SAP HANA
-* 安全
+* 安全性
 * Site Recovery
 * StorSimple 设备管理器
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
@@ -230,9 +230,9 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 移动通过经典模型部署的资源时，其选项各不相同，具体取决于是在订阅内移动资源，还是将资源移到新的订阅。
 
-#### <a name="same-subscription"></a>相同的订阅
+#### <a name="same-subscription"></a>同一订阅
 
-在同一订阅内将资源从一个资源组移到另一个资源组时存在以下限制：
+在同一订阅内将资源从一个资源组移动到另一个资源组时，存在以下限制：
 
 * 不能移动虚拟网络（经典）。
 * 虚拟机（经典）必须与云服务一起移动。
@@ -251,7 +251,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 * 目标订阅不得包含任何其他经典资源。
 * 只能通过独立的适用于经典移动的 REST API 来请求移动。 将经典资源移到新订阅时，不能使用标准的资源管理器移动命令。
 
-要将经典资源移动到新订阅，请使用特定于经典资源的 REST 操作。 若要使用 REST，请执行以下步骤：
+若要将经典资源移动到新订阅，请使用特定于经典资源的 REST 操作。 若要使用 REST，请执行以下步骤：
 
 1. 检查源订阅是否可以参与跨订阅移动。 使用以下操作：
 
@@ -267,7 +267,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
    }
    ```
 
-     验证操作的响应采用以下格式：
+     验证操作的响应格式如下：
 
    ```json
    {
@@ -293,14 +293,14 @@ _在订阅之间_移动 Web 应用时存在以下限制：
    }
    ```
 
-     响应的格式与源订阅验证相同。
-3. 如果两个订阅都通过了验证，可使用以下操作将所有经典资源从一个订阅移到另一个订阅：
+     响应的格式与源订阅验证的响应格式相同。
+3. 如果两个订阅都通过了验证，可使用以下操作将所有经典资源从一个订阅移动到另一个订阅：
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
    ```
 
-    在请求正文中包含以下内容：
+    在请求正文中包括：
 
    ```json
    {
@@ -308,7 +308,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
    }
    ```
 
-运行该操作可能需要几分钟。
+此操作可能需要运行几分钟。
 
 ### <a name="recovery-services-limitations"></a>恢复服务限制
 
@@ -333,9 +333,9 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ### <a name="hdinsight-limitations"></a>HDInsight 限制
 
-可以将 HDInsight 群集移到新的订阅或资源组。 但是，无法在订阅之间移动链接到 HDInsight 群集的网络资源（例如虚拟网络、NIC 或负载均衡器）。 此外，无法将连接到群集的虚拟机的 NIC 移到新的资源组。
+可以将 HDInsight 群集移到新订阅或资源组。 但是，无法在订阅之间移动链接到 HDInsight 群集的网络资源（例如虚拟网络、NIC 或负载均衡器）。 此外，无法将连接到群集的虚拟机的 NIC 移到新的资源组。
 
-将 HDInsight 群集移到新的订阅时，首先移动其他资源（如存储帐户）。 然后移动 HDInsight 群集本身。
+将 HDInsight 群集移至新订阅时，请先移动其他资源（例如存储帐户）。 然后移动 HDInsight 群集本身。
 
 ## <a name="checklist-before-moving-resources"></a>移动资源前需查看的清单
 
@@ -364,7 +364,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
    * [将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
    * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。 将资源移到新的订阅时，可能会看到此错误，但该订阅从未配合该资源类型使用。
+1. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则，会收到错误，指明 **未针对资源类型注册订阅**。 将资源移到新的订阅时，可能会看到此错误，但该订阅从未配合该资源类型使用。
 
    对于 PowerShell，请使用以下命令来获取注册状态：
 
@@ -401,7 +401,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 1. 在可能的情况下，将大型移动分为单独的移动操作。 在一次操作中有 800 多项资源时，资源管理器会立即返回错误。 但是，移动 800 项以下的资源也可能因超时而失败。
 
-1. 该服务必须支持移动资源的功能。 若要确定移动是否会成功，[验证你的移动请求](#validate-move)。 请参阅本文中的以下部分，了解[支持对资源进行移动的服务](#services-that-can-be-moved)和[不支持对资源进行移动的服务](#services-that-cannot-be-moved)。
+1. 服务必须支持移动资源的功能。 若要确定移动是否会成功，[验证你的移动请求](#validate-move)。 请参阅本文中的以下部分，了解[支持对资源进行移动的服务](#services-that-can-be-moved)和[不支持对资源进行移动的服务](#services-that-cannot-be-moved)。
 
 ## <a name="validate-move"></a>验证移动
 
@@ -466,11 +466,11 @@ Authorization: Bearer <access-token>
 
 选择是要将资源移到新资源组还是新订阅。
 
-选择要移动的资源和目标资源组。 确认需要更新这些资源的脚本，选择“确定”。 如果在上一步中已选择“编辑订阅”图标，则还必须选择目标订阅。
+选择要移动的资源和目标资源组。 确认需要更新这些资源的脚本，选择“确定” 。 如果在上一步中已选择“编辑订阅”图标，则还必须选择目标订阅。
 
 ![选择目标](./media/resource-group-move-resources/select-destination.png)
 
-在“通知”中，可以看到移动操作正在运行。
+在“通知” 中，可以看到移动操作正在运行。
 
 ![显示移动状态](./media/resource-group-move-resources/show-status.png)
 
@@ -510,7 +510,7 @@ az resource move --destination-group newgroup --ids $webapp $plan
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}
 ```
 
-在请求正文中，指定目标资源组和要移动的资源。 有关移动 REST 操作的详细信息，请参阅[移动资源](/rest/api/resources/Resources/MoveResources)。
+在请求正文中，指定目标资源组和要移动的资源。 有关移动 REST 操作的详细信息，请参阅 [移动资源](/rest/api/resources/Resources/MoveResources)。
 
 ## <a name="next-steps"></a>后续步骤
 

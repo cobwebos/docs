@@ -3,7 +3,7 @@ title: Azure Active Directory 设备管理常见问题解答 | Microsoft Docs
 description: Azure Active Directory 设备管理常见问题解答。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f41e18b0ab546da87ea7a4a6d53bad370fefe670
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: acf17971bde840743d17dd0b66078630c2d4e7c1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351739"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518782"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -63,15 +63,15 @@ ms.locfileid: "58351739"
 
 1.  以管理员身份打开命令提示符。
 
-2.  输入 `dsregcmd.exe /debug /leave` 。
+2.  输入 `dsregcmd.exe /debug /leave`。
 
 3.  注销并再次登录，以触发可以将设备注册到 Azure AD 的计划任务。 
 
 对于加入本地 Active Directory 域的低级别 Windows 操作系统版本，请执行以下步骤：
 
 1.  以管理员身份打开命令提示符。
-2.  输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` 。
-3.  输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` 。
+2.  输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`。
+3.  输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
 
 ---
 
@@ -117,7 +117,7 @@ ms.locfileid: "58351739"
 
 ### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>问：可以我的用户登录到要删除或禁用在 Azure AD 中的 Azure AD 加入设备？
 
-**答:** 是的。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
+**答:** 可以。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
 
 设备在 Azure AD 中已删除或禁用时，Windows 设备不会知道此情况。 因此，先前登录的用户继续使用缓存的用户名和密码访问桌面。 但是，由于设备已删除或禁用，用户无法访问由基于设备的条件访问保护的任何资源。 
 

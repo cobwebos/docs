@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: raynew
-ms.openlocfilehash: 3133f22a4d9ecd8a0ee4bff9f8b0be9c1f4eb705
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 7fc724f1aff40c6dedff59ce3919496a30b30337
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403657"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520167"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -51,7 +51,7 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
 **VM** | **详细信息**
 --- | ---
 **Windows VM** | 1.[下载并安装](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)代理 MSI 文件。<br/><br/> 2.使用管理员权限在计算机上进行安装。<br/><br/> 3.验证安装。 在中*C:\WindowsAzure\Packages*的 VM 上，右键单击 WaAppAgent.exe >**属性**，>**详细信息**选项卡。“产品版本”应为 2.6.1198.718 或更高。<br/><br/> 如果要更新代理，请确保没有备份操作正在运行，并[重新安装代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。
-**Linux VM** | 从分发的包存储库使用 RPM 或 DEB 包安装。 这是用于安装和升级 Azure Linux 代理的首选的方法。 所有[认可的分发版提供商](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)会将 Azure Linux 代理包集成到其映像和存储库。 [GitHub](https://github.com/Azure/WALinuxAgent) 上提供了该代理，但我们不建议从此处安装。<br/><br/> 如果正在更新代理，请确保任何备份操作正在运行，并更新二进制文件。
+**Linux VM** | 从分发的包存储库使用 RPM 或 DEB 包安装。 这是用于安装和升级 Azure Linux 代理的首选的方法。 所有 [认可的分发版提供商](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) 会将 Azure Linux 代理包集成到其映像和存储库。 [GitHub](https://github.com/Azure/WALinuxAgent) 上提供了该代理，但我们不建议从此处安装。<br/><br/> 如果正在更新代理，请确保任何备份操作正在运行，并更新二进制文件。
 
 
 ### <a name="establish-network-connectivity"></a>建立网络连接
@@ -66,7 +66,7 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
 
 如果 VM 无法连接到备份服务，明确允许使用一个表中汇总的方法的出站访问。
 
-**选项** | **Action** | **详细信息** 
+**选项** | **操作** | **详细信息** 
 --- | --- | --- 
 **设置 NSG 规则** | 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 | 而不是允许和管理每个地址范围，可以添加一个允许对 Azure 备份服务使用的访问规则[服务标记](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)。 [了解详细信息](../virtual-network/security-overview.md#service-tags)。<br/><br/> 无额外成本。<br/><br/> 简单地管理服务标记。
 **部署代理** | 部署 HTTP 代理服务器来路由流量。 | 允许访问整个 Azure，而不只是存储。<br/><br/> 允许对存储 URL 进行精细控制。<br/><br/> 对 VM 进行单点 Internet 访问。<br/><br/> 代理不产生额外的成本。
@@ -195,7 +195,7 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
 
    此步骤向保管库注册 VM 扩展。 随后将会关闭“备份目标”窗格，并打开“备份策略”窗格。
 
-3. 在“备份策略”中，选择要与保管库关联的策略。 然后单击“确定”。
+3. 在“备份策略”中，选择要与保管库关联的策略。 。
     - 默认策略的详细信息会在下拉菜单下列出。
     - 单击“新建”以创建策略。 [详细了解](backup-azure-arm-vms-prepare.md#configure-a-backup-policy)如何定义策略。
 
@@ -220,7 +220,8 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
 - 初始备份将根据备份计划运行。
 - 无论 VM 是否在运行，备份服务都会安装备份扩展。
     - VM 运行时，很有可能会获得应用程序一致的恢复点。
-    -  但是，即使 VM 已关闭且无法安装扩展，也仍会备份 VM。 它被称为脱机 VM。 在这种情况下，恢复点是崩溃一致。 [了解详细信息]()请注意，Azure 备份不支持的 Azure VM 备份的夏时制保存更改的时钟自动调整。 请根据需要手动修改备份策略。
+    -  但是，即使 VM 已关闭且无法安装扩展，也仍会备份 VM。 它被称为脱机 VM。 在这种情况下，恢复点是崩溃一致。
+    请注意，Azure 备份不支持根据 Azure VM 备份的夏令时时差自动调整时钟。 请根据需要手动修改备份策略。
 
 ## <a name="run-the-initial-backup"></a>运行初始备份
 

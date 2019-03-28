@@ -4,7 +4,7 @@ description: 就 IT 管理员可能会遇到的一些设置和应用数据同步
 services: active-directory
 keywords: 企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.subservice: devices
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e2b99871cc1da2b1e8e136fc4d689e90dfad77a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 728a67513bd66b6c39d1f366789172ee2963f6cc
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081230"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517464"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
@@ -40,10 +40,10 @@ ms.locfileid: "58081230"
 1. 必须已经为用户分配了 Azure Active Directory Premium 许可证。  
 1. 必须重启设备，并且用户必须重新登录才能访问企业状态漫游功能。
 
-## <a name="information-to-include-when-you-need-help"></a>需要帮助时应包含的信息
+## <a name="information-to-include-when-you-need-help"></a>需要帮助时应提供的信息
 如果根据以下指导仍然无法解决问题，请联系我们的支持工程师。 在联系支持工程师时，请提供以下信息：
 
-* **错误的一般说明**：用户是否看到了错误消息？ 如果没有任何错误消息，请详细描述所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
+* **错误的一般说明**：用户是否看到了错误消息？ 如果没有任何错误消息，请详细描述你所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
 * **受影响的用户** – 同步的成功/失败是针对一个用户还是多个用户？ 每个用户涉及到多少台设备？ 这些设备是否全都不能同步，或者只是同步其中的一部分？
 * **关于用户的信息** - 用户登录到设备时使用的是哪个标识？ 用户如何登录到设备？ 他们是否属于可同步的选定安全组？ 
 * **关于设备的信息** – 此设备是否已加入 Azure AD 或已加入域？ 设备位于哪个内部版本中？ 有哪些最新的更新？
@@ -176,7 +176,7 @@ ms.locfileid: "58081230"
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>事件 ID 1098：错误：0xCAA5001C 令牌代理操作失败  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>事件 ID 1098：错误:0xCAA5001C 令牌代理操作失败  
 
 在事件查看器中，在 AAD/Operational 日志下，可能会看到事件 ID 为 1104 的以下错误：AAD 云 AP 插件调用“获取令牌”返回了错误：0xC000005F。 如果缺少权限或所有权属性，将出现此问题。  
 

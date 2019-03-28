@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905047"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521808"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -153,7 +153,7 @@ ms.locfileid: "57905047"
 
 **所有**八进制数的客户端 web 地址始终设置为 0，查找异地位置属性。
 
-## <a name="my-ikey-is-visible-in-my-web-page-source"></a>在网页源中可见我的 iKey。 
+## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>我的检测密钥在网页源中是可见的。 
 
 * 这是监视解决方案的常见做法。
 * 它不能用于窃取数据。
@@ -162,7 +162,7 @@ ms.locfileid: "57905047"
 
 可以：
 
-* 将两个单独 iKey（独立的 Application Insights 资源）分别用于客户端和服务器数据。 或
+* （单独的 Application Insights 资源） 的两个的单独的检测密钥，用于客户端和服务器数据。 或
 * 编写一个在服务器中运行的代理，并使 Web 客户端通过该代理发送数据。
 
 ## <a name="post"></a>如何在诊断搜索中查看 POST 数据？

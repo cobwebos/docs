@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 18013050546cc5e204d9cc07a2f499388596164c
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: ca4f9bf00d70f327ff756558e25315762a9a77a8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319442"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519742"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -41,7 +41,7 @@ ms.locfileid: "58319442"
 
 有以下限制应用程序网关子网支持网络安全组 (Nsg): 
 
-- 对于应用程序网关 v1 SKU，必须为端口 65503-65534 上的传入流量设置例外，对于 v2 SKU，必须为端口 65200 - 65535 上的传入流量设置例外。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）无法对这些终结点做出任何更改。
+- 对于应用程序网关 v1 SKU，必须为端口 65503-65534 上的传入流量设置例外，对于 v2 SKU，必须为端口 65200 - 65535 上的传入流量设置例外。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
 
 - 不能阻止出站 Internet 连接。 NSG 中的默认出站规则已经允许 Internet 连接。 建议不要删除默认的出站规则，且不要创建其他拒绝出站 Internet 连接的出站规则。
 
@@ -54,8 +54,8 @@ ms.locfileid: "58319442"
 1. 允许来自源 IP/IP 范围的传入流量。
 2. 允许来自所有源的请求传入端口 65503-65534，进行[后端运行状况通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
 3. 允许 [NSG](https://docs.microsoft.com/azure/virtual-network/security-overview) 上的传入 Azure 负载均衡器探测（AzureLoadBalancer 标记）和入站虚拟网络流量（VirtualNetwork 标记）。
-4. 使用“拒绝所有”规则阻止其他所有传入流量。
-5. 允许所有目的地的 Internet 出站流量。
+4. 使用“全部拒绝”规则阻止其他所有传入流量。
+5. 允许发往 Internet 的所有目标的出站流量。
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>用户定义的路由应用程序网关子网支持
 
@@ -72,7 +72,7 @@ V1 SKU，如果用户定义的路由 (Udr)，只要它们不会更改的端到�
 
 仅支持一个公共 IP 地址或一个专用 IP 地址。 创建应用程序网关时选择前端 IP。 
 
-- 如果公共 IP，你可以选择创建新的公共 IP，或在与应用程序网关位于同一位置中使用现有的公共 IP。 如果创建新的公共 IP 地址，则以后无法更改 IP 地址选择的类型 （static 或 dynamic）。 有关详细信息，请参阅[静态与动态公共 IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip) 
+- 如果公共 IP，你可以选择创建新的公共 IP，或在与应用程序网关位于同一位置中使用现有的公共 IP。 如果创建新的公共 IP 地址，则以后无法更改 IP 地址选择的类型 （static 或 dynamic）。 有关详细信息，请参阅[静态与动态公共 IP](https://docs.microsoft.com/azure/application-gateway/application-gateway-components) 
 
 - 如果专用 IP，你可以选择指定从在其中创建应用程序网关的子网的专用 IP 地址。 如果未显式指定，将子网中自动选择的任意 IP 地址。 有关详细信息，请参阅[创建内部负载均衡器 (ILB) 终结点的应用程序网关。](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)
 
@@ -110,7 +110,7 @@ V1 SKU，如果用户定义的路由 (Udr)，只要它们不会更改的端到�
 
 - 如果选择 HTTP，将流的客户端和应用程序网关之间的通信未加密。
 
-- 如果您感兴趣，请选择 HTTPS[安全套接字层 (SSL) 终止](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl)或[端到端 SSL 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。 如果您选择 HTTPS，客户端和应用程序网关之间的流量会被加密，将在应用程序网关上终止 SSL 连接。  如果需要端到端 SSL 加密，将另外需要配置时选择 HTTPS 协议*后端 HTTP 设置*。 这将确保传输到后端应用程序网关中时重新加密流量。
+- 如果您感兴趣，请选择 HTTPS[安全套接字层 (SSL) 终止](https://docs.microsoft.com/azure/application-gateway/overview)或[端到端 SSL 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。 如果您选择 HTTPS，客户端和应用程序网关之间的流量会被加密，将在应用程序网关上终止 SSL 连接。  如果需要端到端 SSL 加密，将另外需要配置时选择 HTTPS 协议*后端 HTTP 设置*。 这将确保传输到后端应用程序网关中时重新加密流量。
 
   若要配置安全套接字层 (SSL) 终止和端到端 SSL 加密，需要证书添加到以启用要派生一个根据 SSL 协议规范的对称密钥的应用程序网关的侦听器。 然后使用对称密钥进行加密和解密发送到网关的流量。 网关证书需要采用个人信息交换 (PFX) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。 
 
@@ -220,7 +220,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 需要在同一台服务器上保留用户会话时，此功能非常有用。 借助网关托管的 Cookie，应用程序网关可以将来自用户会话的后续流量定向到同一服务器进行处理。 在用户会话的会话状态在服务器上进行本地保存的情况下，此功能十分重要。 如果应用程序不能处理基于 cookie 的相关性，你将无法使用此功能。 若要使用基于 cookie 的会话相关性，应确保客户端必须支持 cookie。 
 
-### <a name="connection-draining"></a>连接清空
+### <a name="connection-draining"></a>连接排出
 
 连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 在创建规则期间，可将此设置应用到后端池的所有成员。 启用后，可确保应用程序网关的后端池的所有取消注册实例不会同时允许现有已配置的时间限制内完成的请求中收到任何新请求。 这适用于通过 API 调用显式从后端池中删除的后端实例，以及所报告的由运行状况探测确定为不正常的后端实例。
 
@@ -228,7 +228,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 应用程序网关支持 HTTP 和 HTTPS 协议的请求路由到后端服务器。 如果选择 HTTP 协议，然后流量流到后端服务器以未加密状态。 在这些情况下，与后端服务器的未加密的通信不是可接受的选项，则应选择 HTTPS 协议。 此设置与在侦听器中选择 HTTPS 协议，可启用[端到端 SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。 这允许你安全地传输到后端加密的敏感数据。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
 
-### <a name="port"></a>端口
+### <a name="port"></a>Port
 
 这是后端服务器侦听来自应用程序网关的流量的端口。 您可以配置 1 到 65535 范围内的端口。
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 845bf72f52bb83fa597c597871599c826e5749f6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479965"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540136"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -207,7 +207,7 @@ ms.locfileid: "58479965"
 
 > [!NOTE]
 >
-> 此功能仅在 Azure 资源管理器部署模型中可用。
+> 此功能仅在 Azure Resource Manager 部署模型中可用。
 >
 >每个 Azure 内部负载均衡器的专用前端 IP 数有限制。
 >
@@ -227,11 +227,11 @@ ms.locfileid: "58479965"
 _**图 1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 
 > [!IMPORTANT]
-> 该设置必须满足以下条件：
+> 安装必须满足以下条件：
 > * SAP ASCS/SCS 实例必须共享同一个 WSFC 群集。
 > * 属于不同 SAP SID 的不同 SAP 全局主机文件共享必须共享相同的 SOFS 群集。
 > * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。
-> * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。
+> * 属于同一 SAP 系统 SID 的 SAP 应用程序服务器必须具有自身的专用 VM。
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>使用文件共享实现的 SAP ASCS/SCS 多 SID 体系结构
 
@@ -241,7 +241,7 @@ _**图 1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 
 _**图 2：** 两个群集中的 SAP 多 SID 配置_
 
-安装其他 SAP \<SID2> 系统与安装一个 <SID> 系统完全相同。 还需要在 ASCS/SCS 群集和文件共享 SOFS 群集上完成额外两步准备操作。
+安装其他**SAP \<SID2 >** 系统等同于安装一个\<SID > 系统。 还需要在 ASCS/SCS 群集和文件共享 SOFS 群集上完成额外两步准备操作。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>为 SAP 多 SID 方案准备基础结构
 
@@ -261,7 +261,7 @@ _**图 2：** 两个群集中的 SAP 多 SID 配置_
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>通过使用现有的 SAP 全局主机在 SOFS 群集上准备基础结构
 
-可以重用第一个 SAP <SID1> 系统的现有 \<SAPGlobalHost> 和 Volume1。
+您可以重复使用现有\<SAPGlobalHost > 和 Volume1 的第一个 SAP \<SID1 > 系统。
 
 ![图 3：多 SID SOFS 使用相同的 SAP 全局主机名][sap-ha-guide-figure-8014]
 
@@ -271,10 +271,10 @@ _**图 3：** 多 SID SOFS 使用相同的 SAP 全局主机名_
 >对于第二个 SAP \<SID2> 系统，使用相同的 Volume1 和 \<SAPGlobalHost> 网络名称。
 >因为已经设置了 SAPMNT 作为各种 SAP 系统的共享名称，若要重复使用 \<SAPGlobalHost> 网络名称，则必须使用相同 Volume1.
 >
-><SID2> 全局主机的文件路径是 C:\ClusterStorage\\Volume1\usr\sap\<SID2>\SYS\.
+>文件路径\<SID2 > 全局主机是 C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
 >
 
-对于 \<SID2> 系统，必须准备 SAP 全局主机 ..\SYS\.。 SOFS 群集上的文件夹。
+对于 \<SID2> 系统，必须准备 SAP 全局主机 ..\SYS\. SOFS 群集上的文件夹。
 
 若要为 \<SID2> 实例准备 SAP 全局主机，请执行下面的 PowerShell 脚本：
 

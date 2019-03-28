@@ -4,7 +4,7 @@ description: 如何在 Azure Active Directory Identity Protection（已刷新）
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2019
-ms.author: markvi
-ms.reviewer: raluthra
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1385442ace852c310ca6796da9294ca57c797690
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7724d69a9294b420ca061d5ad26ad64826372203
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211030"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517668"
 ---
 # <a name="how-to-improve-the-detection-accuracy"></a>如何：提高检测精度 
 
@@ -126,7 +126,7 @@ Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD �
 
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 如果此举被用户风险策略阻止，并且由于未启用密码重置和/或 MFA 而无法自我修复，那么消除用户风险是一种解除阻止的方法。 在此情况下，最好确保用户随后注册了密码重置和 MFA，以便在将来能够自行修复任何风险事件。
 

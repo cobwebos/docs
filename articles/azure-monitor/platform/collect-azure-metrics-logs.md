@@ -1,6 +1,6 @@
 ---
-title: 为 Log Analytics 收集 Azure 服务日志和指标 | Microsoft 文档
-description: 在 Azure 资源上配置诊断，将日志和度量值写入 Log Analytics。
+title: 收集到 Log Analytics 工作区的 Azure 服务日志和指标 |Microsoft Docs
+description: 若要将日志和度量值写入到 Azure Monitor 中的 Log Analytics 工作区的 Azure 资源上配置诊断。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 034abe4e3c37c94afbe431a51efd9493b707fa89
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 5a619b768d61875a03e53a613dfb9a3fb01dd7aa
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498530"
+ms.locfileid: "58540170"
 ---
-# <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>在 Log Analytics 中收集要使用的 Azure 服务日志和指标
+# <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>收集到 Log Analytics 工作区中 Azure Monitor 的 Azure 服务日志和指标
 
 有四种不同方式可收集 Azure 服务的日志和度量值：
 
-1. 将 Azure 诊断定向到 Log Analytics（下表中的*诊断*）
-2. 将 Azure 诊断定向到 Azure 存储定向到 Log Analytics（下表中的*存储*）
+1. Azure 诊断定向到 Azure Monitor 中的 Log Analytics 工作区 (*诊断*下表中)
+2. Azure 诊断定向到 Azure 存储到 Azure Monitor 中的 Log Analytics 工作区 (*存储*下表中)
 3. Azure 服务的连接器（下表中的*连接器*）
-4. 使用脚本收集，然后将数据放入 Log Analytics 中（下表中的空白，用于未列出的服务）
+4. 脚本收集，然后将数据发布到 Azure Monitor （下表中和未列出的服务，则为空白） 中的 Log Analytics 工作区
 
 
 | 服务                 | 资源类型                           | 日志        | 度量值     | 解决方案 |
 | --- | --- | --- | --- | --- |
-| 应用程序网关数    | Microsoft.Network/applicationGateways   | 诊断 | 诊断 | [Azure 应用程序网关分析](../../azure-monitor/insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
+| 应用程序网关    | Microsoft.Network/applicationGateways   | 诊断 | 诊断 | [Azure 应用程序网关分析](../../azure-monitor/insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
 | Application insights    |                                         | 连接器   | 连接器   | [Application Insights Connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)（预览版） |
 | 自动化帐户     | Microsoft.Automation/AutomationAccounts | 诊断 |             | [详细信息](../../automation/automation-manage-send-joblogs-log-analytics.md)|
-| 批处理帐户          | Microsoft.Batch/batchAccounts           | 诊断 | 诊断 | |
+| Batch 帐户          | Microsoft.Batch/batchAccounts           | 诊断 | 诊断 | |
 | 经典云服务  |                                         | 存储     |             | [详细信息](azure-storage-iis-table.md) |
 | 认知服务      | Microsoft.CognitiveServices/accounts    |             | 诊断 | |
 | Data Lake Analytics     | Microsoft.DataLakeAnalytics/accounts    | 诊断 |             | |
@@ -43,7 +43,7 @@ ms.locfileid: "58498530"
 | 事件中心命名空间     | Microsoft.EventHub/namespaces           | 诊断 | 诊断 | |
 | IoT 中心                | Microsoft.Devices/IotHubs               |             | 诊断 | |
 | Key Vault               | Microsoft.KeyVault/vaults               | 诊断 |             | [密钥保管库分析](../../azure-monitor/insights/azure-key-vault.md) |
-| 负载均衡器          | Microsoft.Network/loadBalancers         | 诊断 |             |  |
+| 负载平衡器          | Microsoft.Network/loadBalancers         | 诊断 |             |  |
 | 逻辑应用              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | 诊断 | 诊断 | |
 | 网络安全组 | Microsoft.Network/networksecuritygroups | 诊断 |             | [Azure 网络安全组分析](../../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | 恢复保管库         | Microsoft.RecoveryServices/vaults       |             |             | [Azure 恢复服务分析（预览版）](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
@@ -52,7 +52,7 @@ ms.locfileid: "58498530"
 | Service Fabric          |                                         | 存储     |             | [Service Fabric 分析（预览版）](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 诊断 | [Azure SQL Analytics（预览版）](../../azure-monitor/insights/azure-sql.md) |
 | 存储                 |                                         |             | 脚本      | [Azure 存储分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
-| 虚拟机        | Microsoft.Compute/virtualMachines       | 分机   | 分机 <br> 诊断  | |
+| 虚拟机        | Microsoft.Compute/virtualMachines       | 分机   | 扩展 <br> 诊断  | |
 | 虚拟机规模集 | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | 诊断 | |
 | Web 服务器场        | Microsoft.Web/serverfarms               |             | 诊断 | |
 | 网站               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 诊断 | [Azure Web 应用分析（预览版）](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
@@ -64,12 +64,12 @@ ms.locfileid: "58498530"
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>将 Azure 诊断定向到 Log Analytics
-许多 Azure 资源都能将诊断日志和度量值直接写入到 Log Analytics，这是收集数据进行分析的首选方法。 使用 Azure 诊断时，数据将立即写入到 Log Analytics，而无需先将数据写入到存储。
+许多 Azure 资源都可以将诊断日志和指标直接写入到 Azure Monitor 中的 Log Analytics 工作区，这是收集数据以进行分析的首选的方法。 数据时使用 Azure 诊断，将立即写入到工作区中，并且没有无需首先将数据写入到存储。
 
-支持 [Azure Monitor](../../azure-monitor/overview.md) 的 Azure 资源可以直接向 Log Analytics 发送其日志和度量值。
+支持的 azure 资源[Azure 监视器](../../azure-monitor/overview.md)可以直接向 Log Analytics 工作区中发送的日志和指标。
 
 > [!NOTE]
-> 当前不支持通过诊断设置将多维指标发送到 Log Analytics。 多维指标将按平展后的单维指标导出，并跨维值聚合。
+> 当前不支持将多维指标发送到 Log Analytics 工作区通过诊断设置。 多维指标将按平展后的单维指标导出，并跨维值聚合。
 >
 > 例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
 >
@@ -123,11 +123,11 @@ Set-AzDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enab
 
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>将 Azure 诊断定向到存储，再定向到 Log Analytics
+## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>将 Azure 诊断定向到存储，然后再定向到 Log Analytics
 
-要从某些资源中收集日志，可以将日志发送到 Azure 存储，然后再将 Log Analytics 配置为从存储中读取日志。
+收集从某些资源中的日志，就可以将日志发送到 Azure 存储空间，然后配置要从存储中读取日志的 Log Analytics 工作区。
 
-Log Analytics 可使用此方法从 Azure 存储收集以下资源和日志的诊断信息：
+Azure 监视器可以使用此方法以从以下资源和日志的 Azure 存储收集的诊断：
 
 | 资源 | 日志 |
 | --- | --- |
@@ -136,23 +136,23 @@ Log Analytics 可使用此方法从 Azure 存储收集以下资源和日志的�
 | Web 角色 <br> 辅助角色 |Linux Syslog <br> Windows 事件 <br> IIS 日志 <br> Windows ETWEvent |
 
 > [!NOTE]
-> 当用户向存储帐户发送诊断时，以及当 Log Analytics 从存储帐户读取数据时，系统会针对存储和事务收取正常 Azure 数据费率。
+> 将诊断发送到存储帐户时，Log Analytics 工作区读取的数据从存储帐户时，会产生费用正常 Azure 数据费率对存储和事务。
 >
 >
 
-若要详细了解 Log Analytics 如何收集这些日志，请参阅[使用适用于 IIS 的 Blob 存储和适用于事件的表存储](azure-storage-iis-table.md)。
+请参阅[blob 存储适用于事件的 IIS 和表存储用于](azure-storage-iis-table.md)若要了解有关 Azure Monitor 可以如何收集这些日志的详细信息。
 
 ## <a name="connectors-for-azure-services"></a>Azure 服务的连接器
 
-Application Insights 有连接器，它允许 Application Insights 收集要发送给 Log Analytics 的数据。
+没有为应用程序的见解，以允许发送到 Log Analytics 工作区的 Application Insights 收集的数据连接器。
 
 详细了解 [Application Insights 连接器](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)。
 
-## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>使用脚本收集数据并将数据发布到 Log Analytics
+## <a name="scripts-to-collect-and-post-data-to-log-analytics-workspace"></a>脚本收集，将数据发布到 Log Analytics 工作区
 
-对于未提供直接方式将日志和度量值发送到 Log Analytics 的 Azure 服务，可以使用 Azure 自动化脚本来收集日志和度量值。 然后，该脚本可以使用[数据收集器 API](../../azure-monitor/platform/data-collector-api.md) 将数据发送到 Log Analytics
+不提供直接的方法来将日志和指标发送到 Log Analytics 工作区的 Azure 服务可以使用 Azure 自动化脚本来收集日志和指标。 该脚本然后可以将数据发送到工作区使用[数据收集器 API](../../azure-monitor/platform/data-collector-api.md)
 
-Azure 模板库有[使用 Azure 自动化的示例](https://azure.microsoft.com/resources/templates/?term=OMS)，可从服务收集数据并将数据发送到 Log Analytics。
+Azure 模板库有[使用 Azure 自动化的示例](https://azure.microsoft.com/resources/templates/?term=OMS)从服务收集数据并将其发送到 Azure Monitor。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,16 +9,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: heidist
-ms.openlocfilehash: 541feee2005428226b3f46927bc0e4bfb53cc98d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7a91ad691089ac816b31ebe1fce202110e580f71
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781708"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520558"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 搜索服务
 > [!div class="op_single_selector"]
-> * [门户](search-manage.md)
+> * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
@@ -30,7 +30,7 @@ ms.locfileid: "57781708"
 > * [列出所有订阅中的搜索服务](#list-search-services)
 > * [获取有关特定的搜索服务的信息](#get-search-service-information)
 > * [创建或删除服务](#create-or-delete-a-service)
-> * [重新生成管理员 API 密钥](#regenerate-admin-api-keys)
+> * 重新生成管理员 API 密钥
 > * [创建或删除查询 api 密钥](#create-or-delete-query-keys)
 > * [通过增加或减少副本和分区缩放服务](#scale-replicas-and-partitions)
 

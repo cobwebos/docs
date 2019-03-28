@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: ad971ae3157dd17ecd4af662626c986584a27fe2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 63f301b4618df9764460d0a9a133834fb72e33bb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329160"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540578"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 
@@ -103,7 +103,21 @@ ms.locfileid: "56329160"
 完成准备步骤后，可以升级过渡环境。 下图演示了这些升级步骤：
 
 1. 将生产环境中的主数据库设置为只读模式 (10)。 此模式保证在升级过程中生产数据库 (V1) 不会更改，避免 V1 和 V2 数据库实例之间出现数据分歧。
-2. 使用计划的终止模式断开同一区域中的辅助数据库的连接 (11)。 此操作创建生产数据库的独立但完全同步的副本。 将升级该数据库。
+
+```sql
+-- Set the production database to read-only mode
+ALTER DATABASE <Prod_DB>
+SET (ALLOW_CONNECTIONS = NO)
+```
+
+2. 通过断开辅助数据库 (11) 终止地域复制。 此操作创建生产数据库的独立但完全同步的副本。 将升级该数据库。 下面的示例使用 TRANSACT-SQL，但[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0)也是可用。 
+
+```sql
+-- Disconnect the secondary, terminating geo-replication
+ALTER DATABSE V1
+REMOVE SECONDARY ON SERVER <Partner-Server>
+```
+
 3. 针对 `contoso-1-staging.azurewebsites.net`、`contoso-dr-staging.azurewebsites.net` 和过渡主数据库运行升级脚本 (12)。 数据库更改会自动复制到过渡辅助数据库。
 
 ![可实现云灾难恢复的 SQL 数据库异地复制配置。](media/sql-database-manage-application-rolling-upgrade/option2-2.png)

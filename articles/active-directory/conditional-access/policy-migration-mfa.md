@@ -4,7 +4,7 @@ description: 本文演示如何迁移要求在 Azure 门户中进行多重身份
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/13/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204fec96a58bf1dca55bb0fde14ce6f85c46e05b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e5e26f901b0170116a83663176a402b55d6d70b0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185751"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522139"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>迁移要求在 Azure 门户中进行多重身份验证的经典策略 
 
@@ -54,7 +54,7 @@ ms.locfileid: "56185751"
 
 2. 在“Azure Active Directory”页的“管理”部分，单击“条件性访问”。
 
-    ![条件性访问](./media/policy-migration-mfa/02.png)
+    ![条件访问](./media/policy-migration-mfa/02.png)
 
 3. 在“管理”部分中，单击“经典策略(预览)”。
 
@@ -74,39 +74,39 @@ ms.locfileid: "56185751"
 
 2. 在“Azure Active Directory”页的“管理”部分，单击“条件性访问”。
 
-    ![条件性访问](./media/policy-migration/02.png)
+    ![条件访问](./media/policy-migration/02.png)
 
 
 
 3. 在“条件性访问”页顶部的工具栏中单击“添加”，打开“新建”页。
 
-    ![条件性访问](./media/policy-migration/03.png)
+    ![条件访问](./media/policy-migration/03.png)
 
 4. 在“新建”页上的“名称”文本框中，键入策略的名称。
 
-    ![条件性访问](./media/policy-migration/29.png)
+    ![条件访问](./media/policy-migration/29.png)
 
 5. 在“分配”部分中，单击“用户和组”。
 
-    ![条件性访问](./media/policy-migration/05.png)
+    ![条件访问](./media/policy-migration/05.png)
 
     a. 如果已在经典策略中选择所有用户，请单击“所有用户”。 
 
-    ![条件性访问](./media/policy-migration/35.png)
+    ![条件访问](./media/policy-migration/35.png)
 
     b. 如果已在经典策略中选择组，请单击“选择用户和组”，并选择所需的用户和组。
 
-    ![条件性访问](./media/policy-migration/36.png)
+    ![条件访问](./media/policy-migration/36.png)
 
     c. 如果需要排除组，请单击“排除”选项卡，并选择所需的用户和组。 
 
-    ![条件性访问](./media/policy-migration/37.png)
+    ![条件访问](./media/policy-migration/37.png)
 
 6. 在“新建”页的“分配”部分中单击“云应用”，打开“云应用”页。
 
 8. 在“云应用”页上执行以下步骤：
 
-    ![条件性访问](./media/policy-migration/08.png)
+    ![条件访问](./media/policy-migration/08.png)
 
     a. 单击“选择应用”。
 
@@ -120,11 +120,11 @@ ms.locfileid: "56185751"
 
 9. 如果已选择“需要多重身份验证”：
 
-    ![条件性访问](./media/policy-migration/26.png)
+    ![条件访问](./media/policy-migration/26.png)
 
     a. 在“访问控制”部分中，单击“授予”。
 
-    ![条件性访问](./media/policy-migration/27.png)
+    ![条件访问](./media/policy-migration/27.png)
 
     b. 在“授予”页上，依次单击“授予访问权限”、“需要多重身份验证”。
 
@@ -133,7 +133,7 @@ ms.locfileid: "56185751"
 
 10. 单击“打开”启用策略。
 
-    ![条件性访问](./media/policy-migration/30.png)
+    ![条件访问](./media/policy-migration/30.png)
 
 
 

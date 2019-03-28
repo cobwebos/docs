@@ -4,12 +4,12 @@ ms.service: log-analytics
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 44febf95c660601df78047fc473f61e0d3169890
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269001"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505832"
 ---
 ### <a name="troubleshoot-azure-diagnostics"></a>排查 Azure 诊断问题
 
@@ -32,6 +32,6 @@ ms.locfileid: "52269001"
 
 在 PowerShell 中，如果收到以下错误消息，则需更新 PowerShell 版本：
 
-`Set-AzureRmDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
+`Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-根据 [Get started with Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)（Azure PowerShell cmdlet 入门）一文的说明，将 PowerShell 更新到“2016 年 11 月(v2.3.0)”或更高版本。
+更新你的 Azure PowerShell 版本，请按照中的说明[安装 Azure PowerShell](/powershell/azure/install-az-ps)一文。

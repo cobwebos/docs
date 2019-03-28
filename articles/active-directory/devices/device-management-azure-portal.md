@@ -3,7 +3,7 @@ title: 如何使用 Azure 门户管理设备 | Microsoft Docs
 description: 了解如何使用 Azure 门户管理设备。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb244cb03ed5419762541e93784bb72fcf252676
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 516a2d3b0f81bcef1ed636be9d1da9a270cc7069
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258048"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520014"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>如何使用 Azure 门户管理设备
 
@@ -250,8 +250,8 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 - 活动资源类型
 - 活动
 - 日期范围
-- 目标
-- 发起者（参与者）
+- 确定目标
+- 发起人(操作者)
 
 除筛选器外，还可搜索特定条目。
 

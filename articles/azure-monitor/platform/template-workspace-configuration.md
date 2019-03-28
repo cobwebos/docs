@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: c59e0e7cd846f77082b7131aaec15e4945a18191
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0578b50952c12d4587f7a4751bc831d3134c64e7
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110148"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540765"
 ---
-# <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
+# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>管理 Log Analytics 工作区使用 Azure 资源管理器模板
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
+可以使用[Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Azure Monitor 中的 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
 * 创建工作区，包括设置定价层 
 * 添加解决方案
@@ -44,10 +44,10 @@ ms.locfileid: "58110148"
 
 | 资源 | 资源类型 | API 版本 |
 |:---|:---|:---|
-| 工作区   | workspaces    | 2017-03-15-preview |
+| 工作区   | 工作区    | 2017-03-15-preview |
 | 搜索      | savedSearches | 2015-03-20 |
 | 数据源 | datasources   | 2015-11-01-preview |
-| 解决方案    | solutions     | 2015-11-01-preview |
+| 解决方案    | 解决方案     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 以下示例将使用本地计算机的模板创建一个工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。  
@@ -59,11 +59,11 @@ ms.locfileid: "58110148"
 
 > [!NOTE]
 >如果在订阅中创建或配置 Log Analytics 工作区，而该订阅已加入 2018 年 4 月的新定价模型，则唯一有效的 Log Analytics 定价层为 **PerGB2018**。  
->如果在 [2018 年 4 月前的定价模型](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model)中拥有一些订阅，那么可以指定**独立**定价层，且对于 2018 年 4 月前的定价模型中的订阅和新定价中的订阅都能成功进行此操作。 至于已采用新定价模型的订阅中的工作区，定价层将设置为 PerGB2018。 
+>如果在 [2018 年 4 月前的定价模型](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model)中有一些订阅，则可指定“独立”定价层，并且对于 2018 年 4 月前的定价模型中的订阅和新定价中的订阅都能成功进行此操作。 至于已采用新定价模型的订阅中的工作区，定价层将设置为 PerGB2018。 
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
-1. 将以下 JSON 语法复制并粘贴到文件中：
+1. 将以下 JSON 语法复制并粘贴到该文件中：
 
     ```json
     {

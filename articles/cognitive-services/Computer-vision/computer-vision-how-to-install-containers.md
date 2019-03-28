@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 3/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 84af16c156635f7f7dbfb42972e564dd21a554bb
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b7e60b4fbdf076c50a7d9a29092de9ab1c32b210
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436883"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520643"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>安装和运行识别文本容器
 
@@ -24,13 +24,13 @@ ms.locfileid: "58436883"
 > [!IMPORTANT]
 > 识别文本容器目前仅适用于英语。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必备组件
 
 使用“识别文本”容器前，必须先满足以下先决条件：
 
-|需要|目的|
+|需要|用途|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
@@ -50,7 +50,7 @@ ms.locfileid: "58436883"
 
 下表列出了为每个“识别文本”容器分配的最小和建议 CPU 核心数和内存。
 
-| 容器 | 最小值 | 建议 |TPS<br>（最低配置，最大值）|
+| 容器 | 最小值 | 推荐 |TPS<br>（最低配置，最大值）|
 |-----------|---------|-------------|--|
 |识别文本|单核，8GB 内存，0.5 TPS|双核，8GB 内存，1 TPS|0.5, 1|
 
@@ -133,6 +133,11 @@ ApiKey={BILLING_KEY}
 
 可使用 `POST /vision/v2.0/recognizeTextDirect` 操作以同步方式识别图像中的印刷文本。 由于此操作是同步的，因此此操作的请求正文与 `POST /vision/v2.0/recognizeText` 操作的请求正文相同，但此操作的响应正文与 `GET /vision/v2.0/textOperations/*{id}*` 操作返回的响应正文相同。
 
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+
 ## <a name="stop-the-container"></a>停止容器
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
@@ -141,9 +146,6 @@ ApiKey={BILLING_KEY}
 
 如果运行启用了输出[装入点](./computer-vision-resource-container-config.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。 
 
-## <a name="containers-api-documentation"></a>容器的 API 文档
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>计费
 

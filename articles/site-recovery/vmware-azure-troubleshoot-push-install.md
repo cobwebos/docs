@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
-ms.openlocfilehash: 65b8253a307693d00f5eaefe7660d500dce49be4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0278332105f2102fc82122c5a74db6326f011e81
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078646"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541174"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -183,7 +183,7 @@ GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/
 设备名应替换为相应的 UUID。<br>
 
 
-1. 执行命令“blkid <device name>”找到设备的 UUID。 例如：<br>
+1. 通过执行该命令找到的设备的 UUID"blkid\<设备名称 >"。 例如：<br>
    ```
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
@@ -191,7 +191,7 @@ GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
    ```
 
-2. 现在请将设备名替换为设备 UUID，格式类似于“root=UUID=<UUID>”。 例如，如果我们替换为设备名称 UUID 根和恢复的文件中上面提到的参数"/ boot/grub2/grub.cfg"，"/ boot/grub2/grub.cfg"或"/ 等/默认/grub: 文件中的行如下所示。 <br>
+2. 将设备名称替换格式应类似于在其 UUID 现在为"根 = UUID =\<UUID >"。 例如，如果我们替换为设备名称 UUID 根和恢复的文件中上面提到的参数"/ boot/grub2/grub.cfg"，"/ boot/grub2/grub.cfg"或"/ 等/默认/grub: 文件中的行如下所示。 <br>
    *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 3. 再次重启保护
 
